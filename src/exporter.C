@@ -108,12 +108,14 @@ bool Exporter::Export(Buffer * buffer, string const & format,
 	return true;
 }
 
+
 bool Exporter::Export(Buffer * buffer, string const & format,
 		      bool put_in_tempdir)
 {
 	string result_file;
 	return Export(buffer, format, put_in_tempdir, result_file);
 }
+
 
 bool Exporter::Preview(Buffer * buffer, string const & format)
 {
@@ -162,6 +164,7 @@ string const Exporter::BufferFormat(Buffer const * buffer)
 	else
 		return "latex";
 }
+
 
 vector<string> const Exporter::Backends(Buffer const * buffer)
 {
