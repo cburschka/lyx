@@ -52,7 +52,7 @@ using std::ostringstream;
 
 
 Paragraph::Paragraph()
-	: y(0), pimpl_(new Paragraph::Pimpl(this))
+	: y(0), height(0), pimpl_(new Paragraph::Pimpl(this))
 {
 	itemdepth = 0;
 	params().clear();
@@ -60,7 +60,7 @@ Paragraph::Paragraph()
 
 
 Paragraph::Paragraph(Paragraph const & lp)
-	: y(0), text_(lp.text_), pimpl_(new Paragraph::Pimpl(*lp.pimpl_, this))
+	: y(0), height(0), text_(lp.text_), pimpl_(new Paragraph::Pimpl(*lp.pimpl_, this))
 {
 	itemdepth = 0;
 	// this is because of the dummy layout of the paragraphs that

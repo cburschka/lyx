@@ -575,6 +575,7 @@ int LyXText::redoParagraphInternal(ParagraphList::iterator pit)
 	int par_width = 0;
 	// set height and fill and width of rows
 	int const ww = workWidth();
+	pit->height = 0;
 	for (rit = pit->rows.begin(); rit != end; ++rit) {
 		int const f = fill(pit, rit, ww);
 		int const w = ww - f;
@@ -583,8 +584,10 @@ int LyXText::redoParagraphInternal(ParagraphList::iterator pit)
 		rit->width(w);
 		prepareToPrint(pit, rit);
 		setHeightOfRow(pit, rit);
-		height += rit->height();
+		rit->y_offset(pit->height);
+		pit->height += rit->height();
 	}
+	height += pit->height;
 
 	//lyxerr << "redoParagraph: " << pit->rows.size() << " rows\n";
 	return par_width;
@@ -1404,7 +1407,7 @@ void LyXText::setCursor(LyXCursor & cur, paroffset_type par,
 
 	ParagraphList::iterator pit = getPar(par);
 	RowList::iterator row = getRow(pit, pos);
-	int y = row->y();
+	int y = pit->y + row->y_offset();
 
 	// y is now the beginning of the cursor row
 	y += row->baseline();
@@ -1661,7 +1664,7 @@ void LyXText::setCursorFromCoordinates(LyXCursor & cur, int x, int y)
 	// Get the row first.
 	ParagraphList::iterator pit;
 	RowList::iterator rit = getRowNearY(y, pit);
-	y = rit->y();
+	y = pit->y + rit->y_offset();
 
 	bool bound = false;
 	pos_type const column = getColumnNearX(pit, rit, x, bound);

@@ -23,14 +23,14 @@ using lyx::pos_type;
 
 
 Row::Row()
-	: pos_(0), end_(0), fill_(0), height_(0), width_(0), y_(0),
+	: pos_(0), end_(0), fill_(0), height_(0), width_(0), y_offset_(0),
 	  ascent_of_text_(0), baseline_(0),
 	  x_(0), fill_separator_(0), fill_hfill_(0), fill_label_hfill_(0)
 {}
 
 
 Row::Row(pos_type pos)
-	: pos_(pos), end_(0), fill_(0), height_(0), width_(0), y_(0),
+	: pos_(pos), end_(0), fill_(0), height_(0), width_(0), y_offset_(0),
 	  ascent_of_text_(0), baseline_(0),
 	  x_(0), fill_separator_(0), fill_hfill_(0), fill_label_hfill_(0)
 {}
@@ -181,6 +181,6 @@ void Row::dump(const char * s) const
 		<< " fill: " << fill_
 		<< " ascent_of_text: " << ascent_of_text_
 		<< " top_of_text: " << top_of_text_
-		<< " y: " << y_ << std::endl;
+		<< " y_offset: " << y_offset_ << std::endl;
 }
 

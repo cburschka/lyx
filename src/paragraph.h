@@ -302,6 +302,8 @@ public:
 	mutable RowList rows;
 	/// last draw y position (baseline of top row)
 	int y;
+	///
+	int height;
 
 private:
 	///

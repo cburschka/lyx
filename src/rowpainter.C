@@ -1089,7 +1089,7 @@ int paintText(BufferView & bv)
 	int const topy = bv.top_y();
 	ParagraphList::iterator pit;
 	RowList::iterator rit = bv.text->getRowNearY(topy, pit);
-	int y = rit->y() - topy;
+	int const y = pit->y + rit->y_offset() - topy;
 	return paintRows(bv, *bv.text, pit, rit, 0, y, y, 0);
 }
 

@@ -59,9 +59,9 @@ public:
 	/// return true if this row is the start of a paragraph
 	bool isParStart() const;
 	/// return the cached y position
-	unsigned int y() const { return y_; }
+	unsigned int y_offset() const { return y_offset_; }
 	/// cache the y position
-	void y(unsigned int newy) { y_ = newy; }
+	void y_offset(unsigned int newy) { y_offset_ = newy; }
 	///
 	float x() const;
 	///
@@ -93,7 +93,7 @@ private:
 	///
 	unsigned int width_;
 	/// cached y position
-	unsigned int y_;
+	unsigned int y_offset_;
 	/// ascent from baseline including prelude space
 	unsigned short ascent_of_text_;
 	/// the top of the real text in the row

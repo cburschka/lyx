@@ -313,7 +313,8 @@ void LyXText::cursorNext()
 	}
 
 	ParagraphList::iterator dummypit;
-	y = getRowNearY(y, dummypit)->y();
+	RowList::iterator rr = getRowNearY(y, dummypit);
+	y = dummypit->y + rr->y_offset();
 
 	setCursorFromCoordinates(cursor.x_fix(), y);
 	// + bv->workHeight());

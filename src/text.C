@@ -93,12 +93,8 @@ void LyXText::updateRowPositions()
 	ParagraphList::iterator pit = ownerParagraphs().begin();
 	ParagraphList::iterator end = ownerParagraphs().end();
 	for (height = 0; pit != end; ++pit) {
-		RowList::iterator rit = pit->rows.begin();
-		RowList::iterator rend = pit->rows.end();
-		for ( ; rit != rend ; ++rit) {
-			rit->y(height);
-			height += rit->height();
-		}
+		pit->y = height;
+		height += pit->height;
 	}
 }
 
@@ -2021,8 +2017,8 @@ RowList::iterator LyXText::cursorIRow() const
 }
 
 
-RowList::iterator LyXText::getRowNearY(int y,
-	ParagraphList::iterator & pit) const
+RowList::iterator LyXText::getRowNearY(int y, ParagraphList::iterator & pit)
+	const
 {
 	//lyxerr << "getRowNearY: y " << y << endl;
 
@@ -2031,7 +2027,7 @@ RowList::iterator LyXText::getRowNearY(int y,
 	RowList::iterator rit = lastRow();
 	RowList::iterator rbegin = firstRow();
 
-	while (rit != rbegin && static_cast<int>(rit->y()) > y)
+	while (rit != rbegin && pit->y + rit->y_offset() > y)
 		previousRow(pit, rit);
 
 	return rit;

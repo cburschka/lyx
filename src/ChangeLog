@@ -3,6 +3,16 @@
 	* lyxfunc.C (getStatus): also set flag disabled if it is a unknown
 	action.
 
+2003-10-16  André Pönitz  <poenitz@gmx.net>
+
+	* lyxrow.[Ch]:
+	* paragraph.h:
+	* rowpainter.C:
+	* text.C:
+	* text2.C:
+	* text3.C: speed up by storing y positions per paragraph plus per-row
+	offset instead of having a 'full' y position in the row.
+
 2003-10-15  André Pönitz  <poenitz@gmx.net>
 
 	* iterators.[Ch]:
