@@ -1101,19 +1101,23 @@ void LyXText::setCounter(Buffer const * buf, ParagraphList::iterator pit)
 
 		// the caption hack:
 		if (layout->labeltype == LABEL_SENSITIVE) {
+			ParagraphList::iterator end = ownerParagraphs().end();
 			ParagraphList::iterator tmppit = pit;
 			InsetOld * in = 0;
 			bool isOK = false;
-			while (tmppit != ownerParagraphs().end() &&
-			       tmppit->inInset()
+			while (tmppit != end && tmppit->inInset()
 			       // the single '=' is intended below
-			       && (in = tmppit->inInset()->owner())) {
+			       && (in = tmppit->inInset()->owner()))
+			{
 				if (in->lyxCode() == InsetOld::FLOAT_CODE ||
 				    in->lyxCode() == InsetOld::WRAP_CODE) {
 					isOK = true;
 					break;
 				} else {
-					tmppit = std::find(ownerParagraphs().begin(), ownerParagraphs().end(), *in->parOwner());
+					tmppit = ownerParagraphs().begin();
+					for ( ; tmppit != end; ++tmppit)
+						if (&*tmppit == in->parOwner())
+							break;
 				}
 			}
 

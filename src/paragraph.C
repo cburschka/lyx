@@ -1116,7 +1116,7 @@ bool Paragraph::isMultiLingual(BufferParams const & bparams)
 	for (; cit != end; ++cit)
 		if (cit->font().language() != ignore_language &&
 		    cit->font().language() != latex_language &&
-			cit->font().language() != doc_language)
+		    cit->font().language() != doc_language)
 			return true;
 	return false;
 }
@@ -1354,7 +1354,7 @@ bool Paragraph::isFreeSpacing() const
 	// for now we just need this, later should we need this in some
 	// other way we can always add a function to InsetOld::() too.
 	if (pimpl_->inset_owner && pimpl_->inset_owner->owner())
-		return (pimpl_->inset_owner->owner()->lyxCode() == InsetOld::ERT_CODE);
+		return pimpl_->inset_owner->owner()->lyxCode() == InsetOld::ERT_CODE;
 	return false;
 }
 
@@ -1364,13 +1364,6 @@ bool Paragraph::allowEmpty() const
 	if (layout()->keepempty)
 		return true;
 	if (pimpl_->inset_owner && pimpl_->inset_owner->owner())
-		return (pimpl_->inset_owner->owner()->lyxCode() == InsetOld::ERT_CODE);
+		return pimpl_->inset_owner->owner()->lyxCode() == InsetOld::ERT_CODE;
 	return false;
-}
-
-
-bool operator==(Paragraph const & lhs, Paragraph const & rhs)
-{
-#warning FIXME this implementatoin must be completely wrong...
-	return &lhs == &rhs;
 }
