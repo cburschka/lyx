@@ -1585,13 +1585,13 @@ DispatchResult LyXText::dispatch(FuncRequest const & cmd)
 	case LFUN_FINISHED_LEFT:
 		lyxerr << "swallow LFUN_FINISHED_LEFT" << endl;
 		if (rtl())
-			cursorRight(bv);
+			cursorRight(true);
 		break;
 
 	case LFUN_FINISHED_RIGHT:
 		lyxerr << "swallow LFUN_FINISHED_RIGHT" << endl;
 		if (!rtl())
-			cursorRight(bv);
+			cursorRight(true);
 		break;
 
 	case LFUN_FINISHED_UP:
@@ -1600,7 +1600,7 @@ DispatchResult LyXText::dispatch(FuncRequest const & cmd)
 
 	case LFUN_FINISHED_DOWN:
 		lyxerr << "swallow LFUN_FINISHED_DOWN" << endl;
-		cursorRight(bv);
+		cursorRight(true);
 		break;
 
 	default:

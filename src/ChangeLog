@@ -1,3 +1,10 @@
+2003-11-18  Alfredo Braunstein  <abraunst@lyx.org>
+
+	* text2.C (setCursorIntern): move the x_target update here *
+	* text3.C: change some bv() to true/false in calls to
+	cursorUp/Down/Right/Left
+	* cursor.C: use helper function.
+
 2003-11-17  Alfredo Braunstein  <abraunst@lyx.org>
 
 	* BufferView_pimpl.C: send LFUN_MOUSE_MOTION to the cursor

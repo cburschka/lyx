@@ -257,7 +257,7 @@ void LyXText::toggleInset()
 		    && inset_owner->owner()->isOpen()) {
 			finishUndo();
 			inset_owner->owner()->close(bv());
-			bv()->getLyXText()->cursorRight(bv());
+			bv()->getLyXText()->cursorRight(true);
 			bv()->updateParagraphDialog();
 		}
 		return;
@@ -1175,7 +1175,7 @@ void LyXText::setSelectionRange(lyx::pos_type length)
 
 	selection.cursor = cursor;
 	while (length--)
-		cursorRight(bv());
+		cursorRight(true);
 	setSelection();
 }
 
@@ -1340,7 +1340,6 @@ void LyXText::setCursor(LyXCursor & cur, paroffset_type par,
 	}
 	// now get the cursors x position
 	cur.x(int(getCursorX(pit, row, pos, boundary)));
-	bv()->x_target(cur.x());
 }
 
 
@@ -1405,6 +1404,7 @@ void LyXText::setCursorIntern(paroffset_type par,
 			      pos_type pos, bool setfont, bool boundary)
 {
 	setCursor(cursor, par, pos, boundary);
+	bv()->x_target(cursor.x());
 	if (setfont)
 		setCurrentFont();
 }
@@ -1620,7 +1620,7 @@ DispatchResult LyXText::moveRightIntern(bool front, bool activate_inset, bool se
 		return DispatchResult(false, FINISHED_RIGHT);
 	if (activate_inset && checkAndActivateInset(front))
 		return DispatchResult(true, true);
-	cursorRight(bv());
+	cursorRight(true);
 	if (!selecting)
 		clearSelection();
 	return DispatchResult(true);
@@ -1632,7 +1632,7 @@ DispatchResult LyXText::moveLeftIntern(bool front,
 {
 	if (cursor.par() == 0 && cursor.pos() <= 0)
 		return DispatchResult(false, FINISHED);
-	cursorLeft(bv());
+	cursorLeft(true);
 	if (!selecting)
 		clearSelection();
 	if (activate_inset && checkAndActivateInset(front))
@@ -1645,7 +1645,7 @@ DispatchResult LyXText::moveUp()
 {
 	if (cursorRow() == firstRow())
 		return DispatchResult(false, FINISHED_UP);
-	cursorUp(bv());
+	cursorUp(false);
 	clearSelection();
 	return DispatchResult(true);
 }
@@ -1655,7 +1655,7 @@ DispatchResult LyXText::moveDown()
 {
 	if (cursorRow() == lastRow())
 		return DispatchResult(false, FINISHED_DOWN);
-	cursorDown(bv());
+	cursorDown(false);
 	clearSelection();
 	return DispatchResult(true);
 }
