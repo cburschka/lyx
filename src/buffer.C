@@ -282,9 +282,19 @@ void Buffer::setFileName(string const & newfile)
 namespace {
 
 string last_inset_read;
-string inset_ert_contents;
-bool ert_active = false;
-bool in_tabular = false;
+
+struct ErtComp 
+{
+	ErtComp() : active(false), in_tabular(false) {
+	}
+	string contents;
+	bool active;
+	bool in_tabular;
+};
+
+std::stack<ErtComp> ert_stack;
+ErtComp ert_comp;
+
 
 } // anon
 
@@ -301,9 +311,9 @@ bool in_tabular = false;
 bool Buffer::readLyXformat2(LyXLex & lex, Paragraph * par)
 {
 #ifdef NO_LATEX
-	inset_ert_contents.erase();
-	ert_active = false;
-	in_tabular = false;
+	ert_comp.contents.erase();
+	ert_comp.active = false;
+	ert_comp.in_tabular = false;
 #endif
 	
 	int pos = 0;
@@ -362,15 +372,15 @@ bool Buffer::readLyXformat2(LyXLex & lex, Paragraph * par)
 void Buffer::insertErtContents(Paragraph * par, int & pos,
 			       LyXFont const & font, bool set_inactive) 
 {
-	if (!inset_ert_contents.empty()) {
+	if (!ert_comp.contents.empty()) {
 		lyxerr[Debug::INSETS] << "ERT contents:\n"
-		       << inset_ert_contents << endl;
-		Inset * inset = new InsetERT(inset_ert_contents);
+		       << ert_comp.contents << endl;
+		Inset * inset = new InsetERT(ert_comp.contents);
 		par->insertInset(pos++, inset, font);
-		inset_ert_contents.erase();
+		ert_comp.contents.erase();
 	}
 	if (set_inactive) {
-		ert_active = false;
+		ert_comp.active = false;
 	}
 }
 
@@ -396,8 +406,8 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 	
 	if (token[0] != '\\') {
 #ifdef NO_LATEX
-		if (ert_active) {
-			inset_ert_contents += token;
+		if (ert_comp.active) {
+			ert_comp.contents += token;
 		} else {
 #endif
 		for (string::const_iterator cit = token.begin();
@@ -416,7 +426,7 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 		++pos;
 	} else if (token == "\\layout") {
 #ifdef NO_LATEX
-		in_tabular = false;
+		ert_comp.in_tabular = false;
 		// Do the insetert.
 		insertErtContents(par, pos, font);
 #endif
@@ -428,7 +438,7 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 
 #ifdef NO_LATEX
 		if (compare_no_case(layoutname, "latex") == 0) {
-			ert_active = true;
+			ert_comp.active = true;
 		}
 #endif
 #ifdef USE_CAPTION
@@ -912,7 +922,7 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 			// Do the insetert.
 			insertErtContents(par, pos, font);
 		} else if (tok == "latex") {
-			ert_active = true;
+			ert_comp.active = true;
 		} else if (tok == "default") {
 			// Do the insetert.
 			insertErtContents(par, pos, font);
@@ -1004,9 +1014,15 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 		// the inset isn't it? Lgb.
 	} else if (token == "\\begin_inset") {
 #ifdef NO_LATEX
-		insertErtContents(par, pos, font);
+		insertErtContents(par, pos, font, false);
+		ert_stack.push(ert_comp);
+		ert_comp = ErtComp();
 #endif
 		readInset(lex, par, pos, font);
+#ifdef NO_LATEX
+		ert_comp = ert_stack.top();
+		ert_stack.pop();
+#endif
 	} else if (token == "\\SpecialChar") {
 		LyXLayout const & layout =
 			textclasslist.Style(params.textclass, 
@@ -1038,8 +1054,8 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 	} else if (token == "\\newline") {
 #ifdef NO_LATEX
 
-		if (!in_tabular && ert_active) {
-			inset_ert_contents += char(Paragraph::META_NEWLINE);
+		if (!ert_comp.in_tabular && ert_comp.active) {
+			ert_comp.contents += char(Paragraph::META_NEWLINE);
 		} else {
 			// Since we cannot know it this is only a regular
 			// newline or a tabular cell delimter we have to
@@ -1055,7 +1071,7 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 #endif
 	} else if (token == "\\LyXTable") {
 #ifdef NO_LATEX
-		in_tabular = true;
+		ert_comp.in_tabular = true;
 #endif
 		Inset * inset = new InsetTabular(*this);
 		inset->read(this, lex);
@@ -1090,8 +1106,8 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 		par->bibkey->read(this, lex);		        
 	} else if (token == "\\backslash") {
 #ifdef NO_LATEX
-		if (ert_active) {
-			inset_ert_contents += "\\";
+		if (ert_comp.active) {
+			ert_comp.contents += "\\";
 		} else {
 #endif
 		par->insertChar(pos, '\\', font);
@@ -1109,8 +1125,8 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 		minipar = parBeforeMinipage = 0;
 	} else {
 #ifdef NO_LATEX
-		if (ert_active) {
-			inset_ert_contents += token;
+		if (ert_comp.active) {
+			ert_comp.contents += token;
 		} else {
 #endif
 		// This should be insurance for the future: (Asger)
