@@ -59,7 +59,7 @@
 #ifndef BOOST_CONFIG_HPP
 #define BOOST_CONFIG_HPP
 
-#define BOOST_VERSION 102300
+#define BOOST_VERSION 102400
 
 //  BOOST_VERSION % 100 is the sub-minor version
 //  BOOST_VERSION / 100 % 1000 is the minor version
@@ -74,11 +74,11 @@
 //  burden where it should be, on non-conforming compilers.  In the future,
 //  hopefully, less rather than more conformance flags will have to be defined.
 
-//  BOOST_NO_CV_SPECIALIZATIONS: if template specialisations for cv-qualified types
-//  conflict with a specialistaion for unqualififed type.
+//  BOOST_NO_CV_SPECIALIZATIONS: if template specializations for cv-qualified
+//  types conflict with a specialization for unqualififed type.
 
-//  BOOST_NO_CV_VOID_SPECIALIZATIONS: if template specialisations for cv-void types
-//  conflict with a specialistaion for void.
+//  BOOST_NO_CV_VOID_SPECIALIZATIONS: if template specializations for cv-void
+//  types conflict with a specialization for void.
 
 //  BOOST_NO_ARGUMENT_DEPENDENT_LOOKUP: Compiler does not implement
 //  argument-dependent lookup (also named Koenig lookup); see std::3.4.2
@@ -294,6 +294,9 @@
 # elif defined __COMO__
 #   if __COMO_VERSION__ <= 4245
 #     define BOOST_FUNCTION_USE_VIRTUAL_FUNCTIONS
+#     if defined(_MSC_VER) && _MSC_VER <= 1200
+#       define BOOST_NO_STDC_NAMESPACE
+#     endif
 #   endif
 
 //  Compaq Tru64 Unix cxx ---------------------------------------------------
@@ -310,7 +313,7 @@
 #      define BOOST_NO_AUTO_PTR
 #   endif
 #   if __GNUC__ == 2 && __GNUC_MINOR__ <= 97
-#     include "LString.h"  // not sure this is the right way to do this -JGS
+#     include <string>  // not sure this is the right way to do this -JGS
 #     if defined(__BASTRING__) && !defined(__GLIBCPP__) && !defined(_CXXRT_STD) && !defined(__SGI_STL) // need to ask Dietmar about this -JGS
         // this should only detect the stdlibc++ that ships with gcc, and
         // not any replacements that may be installed...
@@ -410,8 +413,10 @@
 //  Metrowerks CodeWarrior  -------------------------------------------------//
 
 # elif defined  __MWERKS__
-#   if __MWERKS__ <= 0x2401  // 6.2
+#   if __MWERKS__ <= 0x2405  // 7
 #     define BOOST_NO_MEMBER_TEMPLATE_FRIENDS
+#   endif
+#   if __MWERKS__ <= 0x2401  // 6.2
 #     define BOOST_WEAK_FUNCTION_TEMPLATE_ORDERING
 #   endif
 #   if __MWERKS__ <= 0x2301  // 5.3
@@ -518,7 +523,9 @@
 #       ifndef _GLOBAL_USING    // can be defined in yvals.h
 #         define BOOST_NO_STDC_NAMESPACE
 #       endif
-#       define BOOST_MSVC_STD_ITERATOR
+#       if _CPPLIB_VER < 308 // fix due to kensai@pacbell.net
+#        define BOOST_MSVC_STD_ITERATOR
+#       endif
 #     else
 #       define BOOST_MSVC_STD_ITERATOR
 #       define BOOST_NO_SLIST

@@ -17,6 +17,8 @@
 //  See http://www.boost.org for most recent version including documentation.
 
 //  Revision History
+//   6 Jul 01  Reorder shared_ptr code so VC++ 6 member templates work, allowing
+//             polymorphic pointers to now work with that compiler (Gary Powell)
 //  21 May 01  Require complete type where incomplete type is unsafe.
 //             (suggested by Vladimir Prus)
 //  21 May 01  operator= fails if operand transitively owned by *this, as in a
@@ -69,13 +71,13 @@
 #include <boost/static_assert.hpp> // for BOOST_STATIC_ASSERT
 
 #ifdef LYX_NO_EXCEPTIONS
-#include <assert.h>
+#include <cassert>
 #endif
 
 #ifdef BOOST_MSVC  // moved here to work around VC++ compiler crash
 # pragma warning(push)
 # pragma warning(disable:4284) // return type for 'identifier::operator->' is not a UDT or reference to a UDT. Will produce errors if applied using infix notation
-#endif
+#endif    
 
 namespace boost {
 
@@ -146,23 +148,16 @@ template<typename T> class shared_ptr {
    explicit shared_ptr(T* p =0) : px(p) {
 #ifndef LYX_NO_EXCEPTIONS
       try { pn = new long(1); }  // fix: prevent leak if new throws
-      catch (...) { checked_delete(p); throw; } 
+      catch (...) { checked_delete(p); throw; }
 #else
-	  pn = new long(1);
-	  assert(pn != 0);
+      pn = new long(1);
+      assert(pn != 0);
 #endif
    }
 
-   shared_ptr(const shared_ptr& r) : px(r.px) { ++*(pn = r.pn); }  // never throws
-
    ~shared_ptr() { dispose(); }
 
-   shared_ptr& operator=(const shared_ptr& r) {
-      share(r.px,r.pn);
-      return *this;
-   }
-
-#if !defined( BOOST_NO_MEMBER_TEMPLATES )
+#if !defined( BOOST_NO_MEMBER_TEMPLATES ) || defined (BOOST_MSVC6_MEMBER_TEMPLATES)
    template<typename Y>
       shared_ptr(const shared_ptr<Y>& r) : px(r.px) {  // never throws 
          ++*(pn = r.pn); 
@@ -216,11 +211,20 @@ template<typename T> class shared_ptr {
 #endif
 #endif
 
+   // The assignment operator and the copy constructor must come after
+   // the templated versions for MSVC6 to work. (Gary Powell)
+   shared_ptr(const shared_ptr& r) : px(r.px) { ++*(pn = r.pn); }  // never throws
+
+   shared_ptr& operator=(const shared_ptr& r) {
+      share(r.px,r.pn);
+      return *this;
+   }
+
    void reset(T* p=0) {
       if ( px == p ) return;  // fix: self-assignment safe
       if (--*pn == 0) { checked_delete(px); }
       else { // allocate new reference counter
-#ifndef LYX_NO_EXCEPTIONS		  
+#ifndef LYX_NO_EXCEPTIONS
         try { pn = new long; }  // fix: prevent leak if new throws
         catch (...) {
           ++*pn;  // undo effect of --*pn above to meet effects guarantee 
@@ -228,8 +232,8 @@ template<typename T> class shared_ptr {
           throw;
         } // catch
 #else
-		pn = new long;
-		assert(pn != 0);
+	pn = new long;
+	assert(pn != 0);
 #endif
       } // allocate new reference counter
       *pn = 1;
@@ -253,7 +257,7 @@ template<typename T> class shared_ptr {
 // Tasteless as this may seem, making all members public allows member templates
 // to work in the absence of member template friends. (Matthew Langston)
 // Don't split this line into two; that causes problems for some GCC 2.95.2 builds
-#if defined(BOOST_NO_MEMBER_TEMPLATES) || !defined( BOOST_NO_MEMBER_TEMPLATE_FRIENDS )
+#if ( defined(BOOST_NO_MEMBER_TEMPLATES) && !defined(BOOST_MSVC6_MEMBER_TEMPLATES) ) || !defined( BOOST_NO_MEMBER_TEMPLATE_FRIENDS )
    private:
 #endif
 
@@ -299,10 +303,10 @@ template<typename T> class shared_array {
    explicit shared_array(T* p =0) : px(p) {
 #ifndef LYX_NO_EXCEPTIONS
       try { pn = new long(1); }  // fix: prevent leak if new throws
-      catch (...) { checked_array_delete(p); throw; } 
+      catch (...) { checked_array_delete(p); throw; }
 #else
-	  pn = new long(1);
-	  assert(pn != 0);
+      pn = new long(1);
+      assert(pn != 0);
 #endif
    }
 
@@ -334,8 +338,8 @@ template<typename T> class shared_array {
           throw;
         } // catch
 #else
-		pn = new long;
-		assert(pn != 0);
+	pn = new long;
+	assert(pn != 0);
 #endif
       } // allocate new reference counter
       *pn = 1;
@@ -422,8 +426,8 @@ template<typename T>
 #endif  // ifndef BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION
 
 #ifdef BOOST_MSVC
-#pragma warning(pop)
-#endif
+# pragma warning(pop)
+#endif    
 
 #endif  // BOOST_SMART_PTR_HPP
 

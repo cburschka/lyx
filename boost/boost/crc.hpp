@@ -38,7 +38,7 @@
 // arguments explicitly specified.  At least one compiler that needs this
 // workaround also needs the default value for the dummy argument to be
 // specified in the definition.
-#ifndef BOOST_MSVC
+#ifndef BOOST_NO_EXPLICIT_FUNCTION_TEMPLATE_ARGUMENTS
 #define BOOST_CRC_DUMMY_PARM_TYPE
 #define BOOST_CRC_DUMMY_INIT
 #define BOOST_ACRC_DUMMY_PARM_TYPE
@@ -280,15 +280,10 @@ namespace detail
         typedef typename base_type::least  least;
         typedef typename base_type::fast   fast;
 
-#ifdef __DECCXX
-	    static const least high_bit = 1ul << (Bits - 1u);
-	    static const fast high_bit_fast = 1ul << (Bits - 1u);
-#else
         BOOST_STATIC_CONSTANT( least, high_bit = (least( 1u ) << ( Bits
          - 1u )) );
         BOOST_STATIC_CONSTANT( fast, high_bit_fast = (fast( 1u ) << ( Bits
          - 1u )) );
-#endif
 
     };  // boost::detail::high_uint_t
 
@@ -345,11 +340,7 @@ namespace detail
         BOOST_STATIC_CONSTANT( fast, high_bit_fast = base_type::high_bit_fast );
         #endif
 
-#ifdef __DECCXX
-	    static const least sig_bits = (~( ~(0ul) << Bits));
-#else
         BOOST_STATIC_CONSTANT( least, sig_bits = (~( ~(least( 0u )) << Bits )) );
-#endif
         BOOST_STATIC_CONSTANT( fast, sig_bits_fast = fast(sig_bits) );
 
     };  // boost::detail::mask_uint_t
