@@ -78,6 +78,8 @@ struct BufferView::Pimpl : public SigC::Object {
 	///
 	void tripleClick(int x, int y, unsigned int button);
 	///
+	void selectionRequested();
+	///
 	void enterView();
 	///
 	void leaveView();

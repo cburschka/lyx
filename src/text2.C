@@ -1796,14 +1796,7 @@ void LyXText::cutSelection(BufferView * bview, bool doclear, bool realcut)
 
 void LyXText::copySelection(BufferView * bview)
 {
-	// Stuff what we got on the clipboard. Even if there is no selection.
-
-	// There is a problem with having the stuffing here in that the
-	// larger the selection the slower LyX will get. This can be
-	// solved by running the line below only when the selection has
-	// finished. The solution used currently just works, to make it
-	// faster we need to be more clever and probably also have more
-	// calls to stuffClipboard. (Lgb)
+	// stuff the selection onto the X clipboard, from an explicit copy request
 	bview->stuffClipboard(selectionAsString(bview->buffer(), true));
 
 	// this doesnt make sense, if there is no selection

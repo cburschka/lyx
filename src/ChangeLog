@@ -1,3 +1,11 @@
+2001-11-26  John Levon  <moz@compsoc.man.ac.uk>
+
+	* BufferView_pimpl.h:
+	* BufferView_pimpl.C:
+	* WorkArea.h:
+	* WorkArea.C:
+	* text2.C: tell X when we have made a selection for copying
+
 2002-01-13  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* BufferView_pimpl.C (MenuInsertLyXFile): 

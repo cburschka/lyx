@@ -155,6 +155,8 @@ BufferView::Pimpl::Pimpl(BufferView * b, LyXView * o,
 		.connect(slot(this, &BufferView::Pimpl::tripleClick));
 	workarea_.workAreaKeyPress
 		.connect(slot(this, &BufferView::Pimpl::workAreaKeyPress));
+	workarea_.selectionRequested
+		.connect(slot(this, &BufferView::Pimpl::selectionRequested)); 
 	
 	cursor_timeout.timeout.connect(slot(this,
 					    &BufferView::Pimpl::cursorToggle));
@@ -736,6 +738,15 @@ void BufferView::Pimpl::tripleClick(int /*x*/, int /*y*/, unsigned int button)
 }
 
 
+void BufferView::Pimpl::selectionRequested()
+{
+	string const sel(bv_->getLyXText()->selectionAsString(bv_->buffer(), false)); 
+	if (!sel.empty()) {
+		workarea_.putClipboard(sel);
+	}
+}
+
+ 
 void BufferView::Pimpl::enterView()
 {
 	if (active() && available()) {
@@ -780,6 +791,11 @@ void BufferView::Pimpl::workAreaButtonRelease(int x, int y,
 	if (button == 2)
 		return;
 
+	// finish selection
+	if (button == 1) {
+		workarea_.haveSelection(bv_->getLyXText()->selection.set());
+	}
+ 
 	setState();
 	owner_->showState();
 	owner_->updateMenubar();

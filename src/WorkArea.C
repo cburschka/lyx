@@ -31,6 +31,10 @@
 #include <cmath>
 #include <cctype>
 
+// xforms doesn't define this (but it should be in <forms.h>).
+extern "C"
+FL_APPEVENT_CB fl_set_preemptive_callback(Window, FL_APPEVENT_CB, void *);
+ 
 using std::endl;
 using std::abs;
 
@@ -64,6 +68,13 @@ extern "C" {
 		return WorkArea::work_area_handler(ob, event,
 						   0, 0, key, xev);
         }
+
+	static
+	int C_WorkAreaEventCB(FL_FORM * form, void * xev) {
+		WorkArea * wa=static_cast<WorkArea*>(form->u_vdata);
+ 		wa->event_cb(static_cast<XEvent*>(xev));
+		return 0;
+	}
 }
 
 
@@ -172,6 +183,10 @@ WorkArea::WorkArea(int xpos, int ypos, int width, int height)
 	fl_set_object_resize(obj, FL_RESIZE_ALL);
 	fl_set_object_gravity(obj, NorthWestGravity, SouthEastGravity);
 
+	/// X selection hook - xforms gets it wrong
+	fl_current_form->u_vdata = this;
+	fl_register_raw_callback(fl_current_form, FL_ALL_EVENT, C_WorkAreaEventCB); 
+ 
 	fl_unfreeze_all_forms();
 }
 
@@ -559,6 +574,27 @@ extern "C" {
 
 } // namespace anon
 
+void WorkArea::event_cb(XEvent * xev)
+{
+	if (xev->type != SelectionRequest)
+		return;
+ 
+	selectionRequested.emit();
+	return;
+}
+
+
+void WorkArea::haveSelection(bool yes) const
+{
+	if (!yes) {
+		XSetSelectionOwner(fl_get_display(), XA_PRIMARY, None, CurrentTime);
+		return;
+	}
+ 
+	XSetSelectionOwner(fl_get_display(), XA_PRIMARY, FL_ObjWin(work_area), CurrentTime);
+}
+
+ 
 string const WorkArea::getClipboard() const 
 {
 	clipboard_read = false;

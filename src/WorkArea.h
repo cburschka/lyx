@@ -95,6 +95,8 @@ public:
 				     int /*key*/, void * xev);
 	/// xforms callback
 	static void scroll_cb(FL_OBJECT *, long);
+	/// a selection exists
+	void haveSelection(bool) const;
 	///
 	string const getClipboard() const;
 	///
@@ -124,9 +126,15 @@ public:
 	SigC::Signal3<void, int, int, unsigned int> workAreaDoubleClick;
 	///
 	SigC::Signal3<void, int, int, unsigned int> workAreaTripleClick;
+	/// emitted when an X client has requested our selection
+	SigC::Signal0<void> selectionRequested;
+ 
+	/// handles SelectionRequest X Event, to fill the clipboard
+	void WorkArea::event_cb(XEvent * xev);
 private:
 	///
 	void createPixmap(int, int);
+ 
 	///
 	FL_OBJECT * backgroundbox;
 	///	
