@@ -8,18 +8,16 @@
 # modified and modularized by Emmanuel GUREGHIAN <gureghia@boston.bertin.fr>
 
 
-# General textclass parameters
-# Description          "book (AMS)"
 Columns                 1
 Sides                   2
 PageStyle               Headers
-MaxCounter              Counter_Chapter
+
 
 ClassOptions
 	FontSize   8|9|10|11|12
 End  
 
-# Standard style definition
+
 Style Standard
 	Margin                Static
 	LatexType             Paragraph
@@ -32,49 +30,6 @@ Style Standard
 End
 
 
-
-############### Sections.
-
-Input stdsections.inc
-
-# Redefine some of the section styles.
-Style Section
-	Align                 Center
-	AlignPossible         Block, Center, Left
-
-	# standard font definition
-	Font
-	  Series              Medium
-	  Shape               Smallcaps
-	  Size                Large
-	EndFont
-End
-
-# Subsection-numbered style definition
-Style Subsection
-	# standard font definition
-	Font
-	  Series              Bold
-	  Size                Normal
-	EndFont
-End
-
-# Subsubsection-numbered style definition
-Style Subsubsection
-	# standard font definition
-	Font
-	  Shape               Italic
-	  Size                Normal
-	EndFont
-End
-
-# then define the unumbered sections, based on the numbered ones.
-Input stdstarsections.inc
-
-
-# Perharp's we should put this at the end of the file so it appears at the end
-# of the list box ??
-
 Preamble
 	\numberwithin{section}{chapter}
 	\theoremstyle{plain}    
@@ -83,23 +38,75 @@ Preamble
 	\numberwithin{figure}{section} %% Comment out for sequentially-numbered
 EndPreamble
 
+
+Input stdsections.inc
+Input numreport.inc
+
+
+Style Section
+	Align                 Center
+	AlignPossible         Block, Center, Left
+	Font
+	  Series              Medium
+	  Shape               Smallcaps
+	  Size                Large
+	EndFont
+End
+
+
+Style Subsection
+	Font
+	  Series              Bold
+	  Size                Normal
+	EndFont
+End
+
+
+Style Subsubsection
+	Font
+	  Shape               Italic
+	  Size                Normal
+	EndFont
+End
+
+
+Input stdstarsections.inc
+
+
 Input lyxmacros.inc
 NoStyle Address
+
+
 Input amsdefs.inc
 
- 
+
 Input stdlayouts.inc
-NoStyle Verse    # Although mathematicians tend to be poets at times, 
-	               # we don't need this.
-NoStyle Abstract  # there are no abstract in a book.
+NoStyle Verse
+NoStyle Abstract
+
 
 Input stdlists.inc
 Input stdfloats.inc
 Input stdcounters.inc
 
-# End-of Chapter exercises  I need a way to do this.
 
-# Chapter Exercises style definition
+# Chapter is _not_ prepended
+Style Section
+	LabelString          "\arabic{section}"
+	LabelStringAppendix  "\arabic{section}"
+End
+
+
+# Paragraph doesn't have numbered labels
+Style Paragraph
+	LabelString          ""
+	LabelStringAppendix  ""
+	Font
+	EndFont
+End
+
+
+# End-of Chapter exercises  I need a way to do this.
 Style Chapter_Exercises
 	Margin                First_Dynamic
 	LatexType             Item_Environment
@@ -114,24 +121,13 @@ Style Chapter_Exercises
 	ParSep                0.3
 	Align                 Block
 	AlignPossible         Block, Left
-	LabelType             Counter_EnumI
-
-	# standard font definition
-
-	# label font definition
+	LabelType             Counter
 	LabelFont
 	  Shape               Up
 	  Series              Bold
 	EndFont
-
 	Preamble
 	  \newenvironment{lyxxcb}{\begin{xcb}{Exercises}\begin{enumerate}}
 	                     {\end{enumerate}\end{xcb}}
 	EndPreamble
-
 End
-
-
-### Finally a few obsolete definitions for compatibility
-Input obsolete.inc
-

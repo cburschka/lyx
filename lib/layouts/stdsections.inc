@@ -7,7 +7,6 @@
 # commands that are useful for article-like document classes, but not
 # for letters.
 
-
 Style Part
 	Margin                Dynamic
 	LatexType             Command
@@ -21,9 +20,6 @@ Style Part
 	ParSep                0.8
 	Align                 Center         
 	Alignpossible         Center
-	LabelType             Counter
-	LabelCounter          part
-	LabelString           "Part \arabic{part}"
 	Font 
 	  Series              Bold
 	  Size                Huge
@@ -43,10 +39,6 @@ Style Chapter
 	ParSep                0.8
 	Align                 Block
 	AlignPossible         Block, Left
-	LabelType             Counter
-	LabelCounter          chapter
-	LabelString           "\arabic{chapter}"
-	LabelStringAppendix   "Appendix \Alph{chapter}"
 	OptionalArgs          1
 	Font 
 	  Series              Bold
@@ -68,10 +60,6 @@ Style Section
 	ParSep                0.7
 	Align                 Block
 	AlignPossible         Block, Left
-	LabelType             Counter
-	LabelCounter          section
-	LabelString           "\arabic{chapter}.\arabic{section}"
-	LabelStringAppendix   "\Alph{chapter}.\arabic{section}"
 	OptionalArgs          1
 	Font 
 	  Series              Bold
@@ -86,8 +74,6 @@ Style Subsection
 	TopSep                0.9
 	BottomSep             0.5
 	ParSep                0.5
-	LabelCounter          subsection
-	LabelString           "@Section@.\arabic{subsection}
 	Font 
 	  Series              Bold
 	  Size                Large
@@ -100,8 +86,6 @@ Style Subsubsection
 	LatexName             subsubsection
 	TopSep                0.7
 	BottomSep             0.4
-	LabelCounter          subsubsection
-	LabelString           "@Subsection@.\arabic{subsubsection}
 	Font 
 	  Series              Bold
 	  Size                Normal
@@ -114,8 +98,6 @@ Style Paragraph
 	LatexName             paragraph
 	TopSep                0.4
 	BottomSep             0
-	LabelCounter          paragraph
-	LabelString           "@Subsubsection@.\arabic{paragraph}
 End
 
 
@@ -124,7 +106,4 @@ Style Subparagraph
 	LatexName             subparagraph
 	NextNoIndent          0
 	LeftMargin            MM
-	LabelSep              xxx
-	LabelCounter          subparagraph
-	LabelString           "@Paragraph@.\arabic{subparagraph}
 End

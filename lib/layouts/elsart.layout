@@ -21,68 +21,66 @@
 #       rather than subsection. The Elsevier doc file allows for 
 #       numbered sections, as does the class file.
 
-# General textclass parameters
-Columns         1
-Sides           2
-PageStyle       headings
-MaxCounter      Counter_Section
+
+Columns                 1
+Sides                   2
+PageStyle               headings
 
 
 ClassOptions
-#  FontSize     "default"       # controlled by class
+#  FontSize             "default"       # controlled by class
 End
 
 # elsart does not use the plain old \maketitle
 TitleLatexType Environment
 TitleLatexName frontmatter
 
+Counter
+	Name                  summ
+End
 
-DefaultFont
-	Family        Roman
-	Series        Medium
-	Shape         Up
-	Size          Normal
-	Color         None
-EndFont
+
+Counter
+	Name                  case
+End
 
 
 Style Standard
-	LatexName     dummy
-	LatexType     Paragraph
-	Margin        Static
-	ParIndent     MM
-	ParSkip       0.4
-	ParSep        0.4
-	TopSep        1.0
-	BottomSep     1.0
-	Align         Block
-	AlignPossible Block, Left, Right, Center
-	LabelType     No_Label
+	LatexName             dummy
+	LatexType             Paragraph
+	Margin                Static
+	ParIndent             MM
+	ParSkip               0.4
+	ParSep                0.4
+	TopSep                1.0
+	BottomSep             1.0
+	Align                 Block
+	AlignPossible         Block, Left, Right, Center
+	LabelType             No_Label
+End                     
+                        
+                        
+Style Keywords          
+	LatexName             keyword
+	LatexType             Environment
+	Margin                Static
+	ParIndent             MM
+	InTitle               1
+	ParSkip               0.4
+	ParSep                0.4
+	TopSep                1.0
+	BottomSep             1.0
+	Align                 Block
+	AlignPossible         Block, Left, Right, Center
+	LabelType             No_Label
+	Font                  
+	  Color               blue
+	EndFont
 End
 
 
-Style Keywords
-	LatexName     keyword
-	LatexType     Environment
-	Margin        Static
-	ParIndent     MM
-	InTitle       1
-	ParSkip       0.4
-	ParSep        0.4
-	TopSep        1.0
-	BottomSep     1.0
-	Align         Block
-	AlignPossible Block, Left, Right, Center
-	LabelType     No_Label
-Font
-	  Color       blue
-EndFont
-End
-
-
-# Load standard defs, as most of the
-# Elsevier stuff seems the same.
 Input stdsections.inc
+Input numarticle.inc
 Input stdstarsections.inc
 Input stdlists.inc
 Input stdstruct.inc
@@ -200,7 +198,6 @@ Style Thanks
 End
 
 
-# new Abstract style definition
 Style Abstract 
 	Margin                Static
 	LatexType             Environment
@@ -219,11 +216,9 @@ Style Abstract
 	LabelType             Centered_Top_Environment
 	LabelString           Abstract
 	LabelBottomSep        0.5
-
 	Font 
 	  Size                Small
 	EndFont
-
 	LabelFont 
 	  Series              Bold
 	  Size                Large
@@ -231,13 +226,9 @@ Style Abstract
 End 
 
 
-# Theorm environments have been copied over from
-# the amsmaths.inc file. It could not be inputfiled
-# as it does some stuff which is incompatible with
-# the Elsevier stlye, that is it redefines
-# the theorem* environments in the preamble.
-
-
+# Theorem environments have been copied over from the amsmaths.inc file. It
+# could not be input as it does some stuff which is incompatible with the
+# Elsevier stlye: it redefines the theorem* environments in the preamble.
 
 # The environments defined are :
 # - Theorem
@@ -258,6 +249,10 @@ End
 # - Acknowledgement
 # - Case
 
+Counter
+	Name                  theorem
+End
+
 
 Style Theorem
 	Margin                First_Dynamic
@@ -273,19 +268,18 @@ Style Theorem
 	ParSep                0.3
 	Align                 Block
 	AlignPossible         Block, Left
-	LabelType             Static
-	LabelString           "Theorem #."
-
+	LabelType             Counter
+	LabelCounter          theorem  
+	LabelString           "Theorem \arabic{theorem}"
 	Font
 	  Shape               Italic
 	  Size                Normal
 	EndFont
-
 	LabelFont
 	  Shape               Up
 	  Series              Bold
 	EndFont
-End
+End  
 
 
 # Proof style declaration - from email by Stacy Prowell (sprowell@cs.utk.edu)
@@ -305,14 +299,11 @@ Style Proof
 	Align                 Block
 	AlignPossible         Block, Left
 	LabelType             Static
-	#  make the label all caps, like it is in the output.
 	LabelString           "PROOF."
-
 	Font
 	  Shape               Up
 	  Size                Normal
 	EndFont
-
 	LabelFont
 	  Series              Bold
 	EndFont
@@ -322,183 +313,122 @@ End
 Style Lemma
 	CopyStyle             Theorem
 	LatexName             lem
-	LabelString           "Lemma #."
-
-#  Preamble
-#    \theoremstyle{plain}    
-#    \newtheorem{lem}[thm]{Lemma} %%Delete [thm] to re-start numbering
-#  EndPreamble
+	LabelString           "Lemma \arabic{theorem}"
 End
 
 
 Style Corollary
 	CopyStyle             Theorem
 	LatexName             cor
-	LabelString           "Corollary #."
-
-#  Preamble
-#    \theoremstyle{plain}    
-#    \newtheorem{cor}[thm]{Corollary} %%Delete [thm] to re-start numbering
-#  EndPreamble
+	LabelString           "Corollary \arabic{theorem}"
 End  
 
 
 Style Proposition
 	CopyStyle             Theorem
 	LatexName             prop
-	LabelString           "Proposition #."
-
-#  Preamble
-#    \theoremstyle{plain}    
-#    \newtheorem{prop}[thm]{Proposition} %%Delete [thm] to re-start numbering
-#  EndPreamble
+	LabelString           "Proposition \arabic{theorem}"
 End  
 
 
 Style Criterion
 	CopyStyle             Theorem
 	LatexName             crit
-	LabelString           "Criterion #."
-
-#  Preamble
-#    \theoremstyle{plain}    
-#    \newtheorem{crit}[thm]{Criterion} %%Delete [thm] to re-start numbering
-#  EndPreamble
+	LabelString           "Criterion \arabic{theorem}"
 End  
 
 
 Style Algorithm
 	CopyStyle             Theorem
 	LatexName             alg
-	LabelString           "Algorithm #."
-
-#  Preamble
-#    \theoremstyle{plain}    
-#    \newtheorem{alg}[thm]{Algorithm} %%Delete [thm] to re-start numbering
-#  EndPreamble
+	LabelString           "Algorithm \arabic{theorem}"
 End  
 
 
 Style Definition
 	CopyStyle             Theorem
 	LatexName             defn
-	LabelString           "Definition #."
-	
+	LabelString           "Definition \arabic{theorem}"
 	Font
 	  Shape               Up
 	EndFont
-
 	LabelFont
 	  Shape               Up
 	  Series              Bold
 	EndFont
- 
-#  Preamble
-#   \theoremstyle{definition}
-#   \newtheorem{defn}[thm]{Definition}
-#  EndPreamble
 End  
 
 
 Style Conjecture
 	CopyStyle             Theorem
 	LatexName             conj
-	LabelString           "Conjecture #."
-
-#  Preamble
-#    \theoremstyle{plain}    
-#    \newtheorem{conj}[thm]{Conjecture} %%Delete [thm] to re-start numbering
-#  EndPreamble
+	LabelString           "Conjecture \arabic{theorem}"
 End
 
 
 Style Example
 	CopyStyle             Theorem
 	LatexName             exmp
-	LabelString           "Example #."
-
-#  Preamble
-#   \theoremstyle{definition}
-#    \newtheorem{exmp}[thm]{Example}
-#  EndPreamble
+	LabelString           "Example \arabic{theorem}"
 End  
 
 
 Style Problem
 	CopyStyle             Theorem
 	LatexName             prob
-	LabelString           "Problem #."
-
-#  Preamble
-#   \theoremstyle{definition}
-#    \newtheorem{prob}[thm]{Problem}
-#  EndPreamble
+	LabelString           "Problem \arabic{theorem}"
 End  
 
 
 Style Remark
 	CopyStyle             Theorem
 	LatexName             rem
-	LabelString           "Remark #."
-
+	LabelString           "Remark \arabic{theorem}"
 End  
 
 
 Style Note
 	CopyStyle             Theorem
 	LatexName             note
-	LabelString           "Note #."
-
+	LabelString           "Note \arabic{theorem}"
 End  
 
 
 Style Claim
 	CopyStyle             Theorem
 	LatexName             claim
-	LabelString           "Claim #."
-
+	LabelString           "Claim \arabic{theorem}"
 End  
 
 
 Style Summary
 	CopyStyle             Theorem
 	LatexName             summ
-	LabelString           "Summary #."
-
+	LabelCounter          summ
+	LabelString           "Summary \arabic{summ}"
 End  
 
 
 Style Case
 	CopyStyle             Theorem
 	LatexName             case
-	LabelString           "Case #."
-
+	LabelCounter          case
+	LabelString           "Case \arabic{case}"
 End  
 
 
-#Style Acknowledgement
-#  CopyStyle            Theorem
-#  LatexName            ack
-#  LabelString          "Acknowledgement #."
-#
-#End  
-
-# Acknowledgement style definition
-# This is not taken from the AMS defs,
-# so as to match the output of the
+# This is not taken from the AMS defs, so as to match the output of the
 # style file.
-
 Style Acknowledgement
 	Margin                Static
 	LatexType             environment
 	LatexName             ack
 	Labeltype             Top_Environment
 	LabelBottomsep        1
-	LabelString           "Acknowledgement #."
+	LabelString           "Acknowledgement \arabic{theorem}"
 	parsep                0.3
-
 	LabelFont
-		Size                  large
-		Series                Bold
+	  Size                large
+	  Series              Bold
 	EndFont
 End

@@ -5,24 +5,21 @@
 # Transposed by Pascal André <andre@via.ecp.fr>
 # Heavily modifed and enhanced by serveral developers.
 
-# Input general definitions
 Input stdclass.inc
+Input numarticle.inc
 
-# There are no chapters in an article.
-NoStyle Chapter
-NoStyle Chapter*
-
-MaxCounter              Counter_Section
 SecNumDepth             3
 TocDepth                3
 
-# Change a bit Part and Part*
+NoStyle Chapter
+NoStyle Chapter*
+
+
 Style Part
 	Align                 Left
 	AlignPossible         Left
 	TopSep                2
 	BottomSep             1.5
-
 	Font
 	  Size                Larger
 	EndFont
@@ -34,26 +31,8 @@ Style Part*
 	AlignPossible         Left
 	TopSep                2
 	BottomSep             1.5
-
 	Font
 	  Size                Larger
 	EndFont
 End
 
-
-Style Section
-	LabelString           "\arabic{section}"
-	LabelStringAppendix   "\Alph{section}"
-End
-
-
-Style Subsection
-	LabelString           "@Section@.\arabic{subsection}"
-	LabelStringAppendix   "@Section@.\arabic{subsection}"
-End
-
-
-Style Subsubsection
-	LabelString           "@Subsection@.\arabic{subsubsection}"
-	LabelStringAppendix   "@Subsection@.\arabic{subsubsection}"
-End

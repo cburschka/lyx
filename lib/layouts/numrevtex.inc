@@ -1,18 +1,12 @@
 # Author : André Pönitz
 # This include files contains label definitions for a article-like numbering.
 
-Style Part
-	LabelType             Counter
-	LabelCounter          part
-	LabelString           "Part \Roman{part}"
-End
-
 	
 Style Section
 	LabelType             Counter
 	LabelCounter          section
-	LabelString           "\arabic{section}"
-	LabelStringAppendix   "\Alph{section}"
+	LabelString           "\Roman{section}."
+	LabelStringAppendix   "    Appendix \Alph{section}:"
 	TocLevel              1
 End
 
@@ -20,8 +14,8 @@ End
 Style Subsection
 	LabelType             Counter
 	LabelCounter          subsection
-	LabelString           "@Section@.\arabic{subsection}"
-	LabelStringAppendix   "@Section@.\arabic{subsection}"
+	LabelString           "   \Alph{subsection}."
+	LabelStringAppendix   "   \arabic{subsection}."
 	TocLevel              2
 End
 
@@ -29,17 +23,16 @@ End
 Style Subsubsection
 	LabelType             Counter
 	LabelCounter          subsubsection
-	LabelString           "@Subsection@.\arabic{subsubsection}"
-	LabelStringAppendix   "@Subsection@.\arabic{subsubsection}"
+	LabelString           "   \arabic{subsubsection}."
+	LabelStringAppendix   "   \alph{subsubsection}."
 	TocLevel              3
 End
 
 
 Style Paragraph
+	LabelType             Counter
+	LabelCounter          paragraph
+	LabelString           "   \alph{paragraph}."
+	LabelStringAppendix   "   \alph{paragraph}."
 	TocLevel              4
-End
-
-
-Style Subparagraph
-	TocLevel              5
 End

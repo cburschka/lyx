@@ -14,30 +14,6 @@
 # the author information area.  There is a LaTeX 2.09 IEEEtran.sty available
 # also but LyX doesn't support 2.09 stuff so don't get that one.
 
-
-# Input general definitions
-
-Columns                 1
-Sides                   1
-MaxCounter              Counter_Section
-SecNumDepth             3
-TocDepth                3
-
-
-ClassOptions
-	FontSize              9|10|11|12
-End  
-
-
-DefaultFont
-	Family                Roman
-	Series                Medium
-	Shape                 Up
-	Size                  Normal
-	Color                 None
-EndFont
-
-
 Style Standard
 	Margin                Static
 	LatexType             Paragraph
@@ -50,8 +26,12 @@ Style Standard
 End
 
 
-Input stdlists.inc
 
+##
+## stdlists
+##
+
+Input stdlists.inc
 
 # First cut at theorem environment support.
 # What other theorem-like environments are needed?
@@ -63,6 +43,7 @@ Input stdlists.inc
 # Tell me:  rae@lyx.org
 
 
+# Theorem-numbered style *Template* declaration
 Style TheoremTemplate
 	Margin                First_Dynamic
 	LatexType             Environment
@@ -72,8 +53,6 @@ Style TheoremTemplate
 	Align                 Block
 	AlignPossible         Block, Left
 	LabelType             Static
-
-	# label font definition
 	LabelFont
 	  Shape               Italic
 	EndFont
@@ -92,7 +71,6 @@ Style Theorem
 	CopyStyle             TheoremTemplate
 	LatexName             thm
 	LabelString           "Theorem #:"
-
 	Preamble
 	  \newtheorem{thm}{Theorem}
 	EndPreamble
@@ -103,7 +81,6 @@ Style Lemma
 	CopyStyle             TheoremTemplate
 	LatexName             lemma
 	LabelString           "Lemma #:"
-
 	Preamble
 	  \newtheorem{lemma}{Lemma}
 	EndPreamble
@@ -114,7 +91,6 @@ Style Corollary
 	CopyStyle             TheoremTemplate
 	LatexName             cor
 	LabelString           "Corollary #:"
-
 	Preamble
 	  \newtheorem{cor}{Corollary}
 	EndPreamble
@@ -125,7 +101,6 @@ Style Proposition
 	CopyStyle             TheoremTemplate
 	LatexName             prop
 	LabelString           "Proposition #:"
-
 	Preamble
 	  \newtheorem{prop}{Proposition}
 	EndPreamble
@@ -136,7 +111,6 @@ Style Conjecture
 	CopyStyle             TheoremTemplate
 	LatexName             conject
 	LabelString           "Conjecture #:"
-
 	Preamble
 	  \newtheorem{conject}{Conjecture}
 	EndPreamble
@@ -147,7 +121,6 @@ Style Criterion
 	CopyStyle             TheoremTemplate
 	LatexName             criter
 	LabelString           "Criterion #:"
-
 	Preamble
 	  \newtheorem{criter}{Criterion}
 	EndPreamble
@@ -158,7 +131,6 @@ Style Fact
 	CopyStyle             TheoremTemplate
 	LatexName             fact
 	LabelString           "Fact #:"
-
 	Preamble
 	  \newtheorem{fact}{Fact}
 	EndPreamble
@@ -169,7 +141,6 @@ Style Axiom
 	CopyStyle             TheoremTemplate
 	LatexName             axi
 	LabelString           "Axiom #:"
-
 	Preamble
 	  \newtheorem{axi}{Axiom}
 	EndPreamble
@@ -180,7 +151,6 @@ Style Definition
 	CopyStyle             TheoremTemplate
 	LatexName             definitn
 	LabelString           "Definition #:"
-
 	Preamble
 	  \newtheorem{definitn}{Definition}
 	EndPreamble
@@ -191,7 +161,6 @@ Style Example
 	CopyStyle             TheoremTemplate
 	LatexName             example
 	LabelString           "Example #:"
-
 	Preamble
 	  \newtheorem{example}{Example}
 	EndPreamble
@@ -202,7 +171,6 @@ Style Condition
 	CopyStyle             TheoremTemplate
 	LatexName             condition
 	LabelString           "Condition #:"
-
 	Preamble
 	  \newtheorem{condition}{Condition}
 	EndPreamble
@@ -213,7 +181,6 @@ Style Problem
 	CopyStyle             TheoremTemplate
 	LatexName             problem
 	LabelString           "Problem #:"
-
 	Preamble
 	  \newtheorem{problem}{Problem}
 	EndPreamble
@@ -224,7 +191,6 @@ Style Exercise
 	CopyStyle             TheoremTemplate
 	LatexName             exacise
 	LabelString           "Exercise #:"
-
 	Preamble
 	  \newtheorem{exacise}{Exercise}
 	EndPreamble
@@ -235,7 +201,6 @@ Style Remark
 	CopyStyle             TheoremTemplate
 	LatexName             remrk
 	LabelString           "Remark #:"
-
 	Preamble
 	  \newtheorem{remrk}{Remark}
 	EndPreamble
@@ -246,7 +211,6 @@ Style Claim
 	CopyStyle             TheoremTemplate
 	LatexName             claim
 	LabelString           "Claim #:"
-
 	Preamble
 	  \newtheorem{claim}{Claim}
 	EndPreamble
@@ -257,7 +221,6 @@ Style Note
 	CopyStyle             TheoremTemplate
 	LatexName             note
 	LabelString           "Note #:"
-
 	Preamble
 	  \newtheorem{note}{Note}
 	EndPreamble
@@ -268,7 +231,6 @@ Style Notation
 	CopyStyle             TheoremTemplate
 	LatexName             notation
 	LabelString           "Notation #:"
-
 	Preamble
 	  \newtheorem{notation}{Notation}
 	EndPreamble
@@ -279,7 +241,6 @@ Style Case
 	CopyStyle             TheoremTemplate
 	LatexName             case
 	LabelString           "Case #:"
-
 	Preamble
 	  \newtheorem{case}{Case}
 	EndPreamble
@@ -288,9 +249,13 @@ End
 NoStyle TheoremTemplate
 
 
+
+##
+## stdsections and stdstarsections
+##
+
 Input stdsections.inc
 Input stdstarsections.inc
-
 
 NoStyle                 Part
 NoStyle                 Part*
@@ -303,7 +268,6 @@ NoStyle                 Subparagraph*
 Style Section
 	Align                 Center
 	AlignPossible         Block, Center, Left
-
 	Font
 	   Shape              Smallcaps
 	   Size               Normal
@@ -330,7 +294,6 @@ End
 Style Section*
 	Align                 Center
 	AlignPossible         Block, Center, Left
-
 	Font
 	   Shape              Smallcaps
 	   Size               Normal
@@ -354,9 +317,12 @@ Style Subsubsection*
 End
 
 
+
+##
+## stdstruct
+##
 Input stdtitle.inc
 Input stdstruct.inc
-
 
 Style Abstract
 	Margin                First_Dynamic
@@ -367,12 +333,10 @@ Style Abstract
 	LabelType             Static
 	LabelString           "Abstract---"
 #  LabelBottomSep        0.0
-
 	Font 
 	  Series              Bold
 	  Size                Small
 	EndFont
-
 	LabelFont
 	  Shape               Italic
 	  Series              Medium
@@ -437,25 +401,9 @@ End
 
 
 Style Appendices
-	Margin                Static
-	LatexType             Command
-	InTitle               0
+	CopyStyle             Appendix
 	LatexName             appendices
-	ParSkip               0.4
-	BottomSep             1.5
-	ParSep                1.5
-	Align                 Center
-	AlignPossible         Block, Left, Right, Center
-	LabelType             Static
 	LabelString           "Appendices"
-	TextFont
-	  Shape               Up
-	  Size                Small
-	EndFont
-	LabelFont
-	  Shape               Smallcaps
-	  Size                Normal
-	EndFont
 End
 
 
@@ -469,6 +417,10 @@ Style Biography
 	EndFont
 End
 
+
+##
+##  stdlayouts
+##
 
 Input stdlayouts.inc
 
@@ -511,9 +463,24 @@ Style MarkBoth
 End
 
 
+##
 ## Others
+##
 
+Input numarticle.inc
 Input stdfloats.inc
 Input stdcounters.inc
 Input lyxmacros.inc
-Input obsolete.inc
+
+
+Columns                 1
+Sides                   1
+SecNumDepth             3
+TocDepth                3
+
+
+ClassOptions
+	FontSize              9|10|11|12
+End  
+
+
