@@ -1,10 +1,10 @@
+// -*- C++ -*-
 #include <config.h>
 
 #include <boost/assert.hpp>
 #include <boost/crc.hpp>
-#include <boost/format.hpp>
+// #include <boost/format.hpp> // mult def symbols problem (_1,_2 etc)
 #include <boost/function/function0.hpp>
-#include <boost/iterator/indirect_iterator.hpp>
 #include <boost/regex.hpp>
 #include <boost/scoped_array.hpp>
 #include <boost/scoped_ptr.hpp>

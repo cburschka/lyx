@@ -1,3 +1,9 @@
+2004-08-30  Lars Gullik Bjonnes  <larsbj@gullik.net>
+
+	* pch.h: do not use include boost/format.hpp, multiple symbols
+		will result (gcc bug)
+
+
 2004-08-23  José Matos  <jamatos@lyx.org>
 
 	* bufferparams.C (readToken): fix reading of the author field.
@@ -57,7 +63,7 @@
 
 	* lyxlex.C (getString): fix comment, buffer::readBody is now
 	buffer:readDocument.
-	
+
 	* tex-strings.C (string_papersize): Default -> default,
 	Custom -> custom, for consistency with other options.
 

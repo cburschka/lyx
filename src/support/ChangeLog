@@ -1,3 +1,8 @@
+2004-08-30  Lars Gullik Bjonnes  <larsbj@gullik.net>
+
+	* pch.h: do not use include boost/format.hpp, multiple symbols
+	will result (gcc bug)
+
 2004-08-15  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
 	* pch.h: new file
