@@ -2950,7 +2950,7 @@ void LyXParagraph::SimpleDocBookOneTablePar(string & file, string & extra,
 {
 	if (!table) return;
 	lyxerr[Debug::LATEX] << "SimpleDocbookOneTablePar... " << this << endl;
-	int column;
+	int column = 0;
 	LyXFont font1, font2;
 	char c;
 	Inset * inset;

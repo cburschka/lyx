@@ -1,5 +1,7 @@
 2000-02-03  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
+	* src/paragraph.C (SimpleDocBookOneTablePar): initialize column to 0
+
 	* src/lyxrc.C (output): added case RC_DATE_INSERT_FORMAT. Jug
 	forgot this when applying the patch. Please heed the warnings.
 
