@@ -58,15 +58,17 @@ bool operator<(MathCursorPos const &, MathCursorPos const &);
 class MathCursor {
 public:
 	/// short of anything else reasonable
-	typedef MathInset::size_type    size_type;
+	typedef MathInset::size_type       size_type;
 	/// type for cursor positions within a cell
-	typedef MathInset::pos_type     pos_type;
+	typedef MathInset::pos_type        pos_type;
 	/// type for cell indices
-	typedef MathInset::idx_type     idx_type;
+	typedef MathInset::idx_type        idx_type;
 	/// type for row numbers
-	typedef MathInset::row_type     row_type;
+	typedef MathInset::row_type        row_type;
 	/// type for column numbers
-	typedef MathInset::col_type     col_type;
+	typedef MathInset::col_type        col_type;
+	/// how to store a cursor
+	typedef std::vector<MathCursorPos> cursor_type;
 
 	///
 	explicit MathCursor(InsetFormulaBase *, bool left);
@@ -229,9 +231,9 @@ public:
 	MathCursorPos normalAnchor() const;
 
 	/// path of positions the cursor had to go if it were leving each inset
-	std::vector<MathCursorPos> Cursor_;
+	cursor_type Cursor_;
 	/// path of positions the anchor had to go if it were leving each inset
-	std::vector<MathCursorPos> Anchor_;
+	cursor_type Anchor_;
 
 	/// reference to the last item of the path
 	MathCursorPos & cursor();
@@ -261,6 +263,8 @@ private:
 	bool goUp();
 	/// moves position somehow down
 	bool goDown();
+	/// moves position somehow down
+	bool bruteUpDown(int ylow, int yhigh);
 
 	///
 	string macroName() const;

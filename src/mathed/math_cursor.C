@@ -1167,18 +1167,8 @@ bool MathCursor::goUp()
 	}
 
 	// if not, apply brute force.
-	int x0;
-	int y0;
-	getPos(x0, y0);
-	std::vector<MathCursorPos> save = Cursor_;
-	y0 -= xarray().ascent();
-	for (int y = y0 - 4; y > formula()->upperY(); y -= 4) {
-		setPos(x0, y);
-		if (save != Cursor_ && xarray().yo() < y0)
-			return true;	
-	}
-	Cursor_ = save;
-	return false;
+	return
+		bruteUpDown(formula()->upperY() + 24, xarray().yo() - 4 - xarray().ascent());
 }
 
 
@@ -1198,19 +1188,42 @@ bool MathCursor::goDown()
 		return true;
 	}
 
-	// does the inset know
-
 	// if not, apply brute force.
+	return
+		bruteUpDown(xarray().yo() + 4 + xarray().descent(), formula()->lowerY());
+}
+
+
+bool MathCursor::bruteUpDown(int ylow, int yhigh)
+{
+	//lyxerr << "looking at range: " << ylow << " " << yhigh << "\n";
 	int x0;
 	int y0;
 	getPos(x0, y0);
 	std::vector<MathCursorPos> save = Cursor_;
-	y0 += xarray().descent();
-	for (int y = y0 + 4; y < formula()->lowerY(); y += 4) {
+	std::vector<MathCursorPos> best;
+	double best_dist = 1e10; // large enough
+	bool found  = false;
+	for (int y = ylow; y < yhigh; y += 4) {
 		setPos(x0, y);
-		if (save != Cursor_ && xarray().yo() > y0)
-			return true;	
+		int x1;
+		int y1;
+		getPos(x1, y1);
+		if (save != Cursor_ && y1 > ylow && y1 < yhigh) {
+			found = true;
+			double d = (x0 - x1) * (x0 - x1) + (y0 - y1) * (y0 - y1);
+			if (d < best_dist) {
+				best_dist = d;
+				best = Cursor_;
+			}	
+		}
 	}
+
+	if (found) {
+		Cursor_ = best;
+		return true;
+	}
+
 	Cursor_ = save;
 	return false;
 }
