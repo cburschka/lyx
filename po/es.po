@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: lyx-1.0.0\n"
-"POT-Creation-Date: 2002-03-30 01:53+0100\n"
+"POT-Creation-Date: 2002-04-06 12:18+0200\n"
 "PO-Revision-Date: 2001-02-02 05:24GMT\n"
 "Last-Translator: Germán Poo Caamaño <gpoo@ubiobio.cl>\n"
 "Language-Team: es <es@li.org>\n"
@@ -86,7 +86,7 @@ msgid "Unknown token: "
 msgstr "Acción desconocida"
 
 #. future format
-#: src/buffer.C:1589 src/buffer.C:1609 src/frontends/xforms/FormGraphics.C:524
+#: src/buffer.C:1589 src/buffer.C:1609 src/frontends/xforms/FormGraphics.C:537
 msgid "Warning!"
 msgstr "¡Atención!"
 
@@ -344,7 +344,7 @@ msgstr ", Profundidad: "
 msgid ", Spacing: "
 msgstr ", Espaciado:"
 
-#: src/bufferview_funcs.C:182 src/ext_l10n.h:652
+#: src/bufferview_funcs.C:182 src/ext_l10n.h:653
 #: src/frontends/qt2/QDocument.C:111
 msgid "Single"
 msgstr "Sencillo"
@@ -353,7 +353,7 @@ msgstr "Sencillo"
 msgid "Onehalf"
 msgstr "Una cara"
 
-#: src/bufferview_funcs.C:189 src/ext_l10n.h:654
+#: src/bufferview_funcs.C:189 src/ext_l10n.h:655
 #: src/frontends/qt2/QDocument.C:113 src/frontends/xforms/form_tabular.C:492
 #: src/frontends/xforms/form_tabular.C:494
 #: src/frontends/xforms/form_tabular.C:508
@@ -378,20 +378,20 @@ msgstr "Como párrafos indentados|p"
 msgid "Formatting document..."
 msgstr "Dando formato al documento..."
 
-#: src/BufferView_pimpl.C:1235
+#: src/BufferView_pimpl.C:1236
 msgid "Saved bookmark"
 msgstr ""
 
-#: src/BufferView_pimpl.C:1267
+#: src/BufferView_pimpl.C:1268
 msgid "Moved to bookmark"
 msgstr ""
 
-#: src/BufferView_pimpl.C:1494
+#: src/BufferView_pimpl.C:1495
 #, fuzzy
 msgid "Select LyX document to insert"
 msgstr "Selecione el documento a insertar"
 
-#: src/BufferView_pimpl.C:1496 src/frontends/controllers/ControlBibtex.C:68
+#: src/BufferView_pimpl.C:1497 src/frontends/controllers/ControlBibtex.C:68
 #: src/frontends/controllers/ControlExternal.C:166
 #: src/frontends/controllers/ControlGraphics.C:98
 #: src/frontends/controllers/ControlInclude.C:71 src/lyx_cb.C:113
@@ -400,95 +400,95 @@ msgstr "Selecione el documento a insertar"
 msgid "Documents|#o#O"
 msgstr "Documentos|D"
 
-#: src/BufferView_pimpl.C:1498 src/lyxfunc.C:1833 src/lyxfunc.C:1910
+#: src/BufferView_pimpl.C:1499 src/lyxfunc.C:1833 src/lyxfunc.C:1910
 #, fuzzy
 msgid "Examples|#E#e"
 msgstr "Ejemplos"
 
-#: src/BufferView_pimpl.C:1503 src/frontends/controllers/ControlInclude.C:67
+#: src/BufferView_pimpl.C:1504 src/frontends/controllers/ControlInclude.C:67
 msgid "*.lyx| LyX Documents (*.lyx)"
 msgstr ""
 
 #. Cancel: Do nothing
-#: src/BufferView_pimpl.C:1512 src/lyxfunc.C:1717 src/lyxfunc.C:1744
+#: src/BufferView_pimpl.C:1513 src/lyxfunc.C:1717 src/lyxfunc.C:1744
 #: src/lyxfunc.C:1847 src/lyxfunc.C:1927 src/lyxfunc.C:1955
 msgid "Canceled."
 msgstr "Cancelado."
 
-#: src/BufferView_pimpl.C:1524
+#: src/BufferView_pimpl.C:1525
 msgid "Inserting document"
 msgstr "Insertando documento"
 
-#: src/BufferView_pimpl.C:1530 src/ext_l10n.h:635
+#: src/BufferView_pimpl.C:1531 src/ext_l10n.h:636
 #: src/frontends/xforms/FormDocument.C:320 src/lyxfunc.C:1765
 #: src/lyxfunc.C:1875
 msgid "Document"
 msgstr "Documento"
 
-#: src/BufferView_pimpl.C:1531
+#: src/BufferView_pimpl.C:1532
 msgid "inserted."
 msgstr "insertado."
 
-#: src/BufferView_pimpl.C:1535
+#: src/BufferView_pimpl.C:1536
 msgid "Could not insert document"
 msgstr "No se pudo insertar el documento"
 
-#: src/BufferView_pimpl.C:1709 src/insets/insettext.C:1377
+#: src/BufferView_pimpl.C:1710 src/insets/insettext.C:1377
 msgid "Layout "
 msgstr "Formato "
 
-#: src/BufferView_pimpl.C:1710 src/insets/insettext.C:1377
+#: src/BufferView_pimpl.C:1711 src/insets/insettext.C:1377
 msgid " not known"
 msgstr " desconocido"
 
-#: src/BufferView_pimpl.C:1893 src/insets/inseterror.C:55
+#: src/BufferView_pimpl.C:1894 src/insets/inseterror.C:55
 #: src/insets/inseterror.C:77 src/lyxfunc.C:1857
 msgid "Error"
 msgstr "Error"
 
-#: src/BufferView_pimpl.C:1894
+#: src/BufferView_pimpl.C:1895
 msgid "Couldn't find this label"
 msgstr "No se pudo encontrar esta etiqueta"
 
-#: src/BufferView_pimpl.C:1895
+#: src/BufferView_pimpl.C:1896
 msgid "in current document."
 msgstr "en el documento actual."
 
-#: src/BufferView_pimpl.C:2391
+#: src/BufferView_pimpl.C:2392
 msgid "Mark removed"
 msgstr "Marca borrada"
 
-#: src/BufferView_pimpl.C:2398
+#: src/BufferView_pimpl.C:2399
 msgid "Mark set"
 msgstr "Marca colocada"
 
-#: src/BufferView_pimpl.C:2529
+#: src/BufferView_pimpl.C:2530
 msgid "Mark off"
 msgstr "Marca desactivada"
 
-#: src/BufferView_pimpl.C:2542
+#: src/BufferView_pimpl.C:2543
 msgid "Mark on"
 msgstr "marca activada"
 
-#: src/BufferView_pimpl.C:2716 src/insets/insettext.C:1430
+#: src/BufferView_pimpl.C:2717 src/insets/insettext.C:1430
 msgid "Unknown spacing argument: "
 msgstr ""
 
-#: src/BufferView_pimpl.C:3077
+#: src/BufferView_pimpl.C:3078
 msgid "Word `"
 msgstr ""
 
-#: src/BufferView_pimpl.C:3078
+#: src/BufferView_pimpl.C:3079
 #, fuzzy
 msgid "' indexed."
 msgstr "insertado."
 
-#: src/BufferView_pimpl.C:3233
+#: src/BufferView_pimpl.C:3234
 #, fuzzy
 msgid "Unknown function!"
 msgstr "Acción desconocida"
 
-#: src/BufferView_pimpl.C:3496 src/BufferView_pimpl.C:3499
+#: src/BufferView_pimpl.C:3497 src/BufferView_pimpl.C:3500
 #, fuzzy
 msgid "No more insets"
 msgstr "No hay más notas"
@@ -1570,7 +1570,7 @@ msgstr "Affil"
 msgid "Affiliation"
 msgstr "Affiliation"
 
-#: src/FloatList.C:45 src/ext_l10n.h:199
+#: src/FloatList.C:47 src/ext_l10n.h:199
 #, fuzzy
 msgid "Algorithm"
 msgstr "Lista de Algoritmos"
@@ -1761,7 +1761,7 @@ msgstr ""
 msgid "CopNum"
 msgstr ""
 
-#: src/ext_l10n.h:245 src/ext_l10n.h:532
+#: src/ext_l10n.h:245 src/ext_l10n.h:533
 msgid "Copyright"
 msgstr ""
 
@@ -2182,7 +2182,7 @@ msgstr ""
 msgid "PACS"
 msgstr ""
 
-#: src/ext_l10n.h:349 src/ext_l10n.h:918
+#: src/ext_l10n.h:349 src/ext_l10n.h:919
 msgid "Paragraph"
 msgstr ""
 
@@ -2292,7 +2292,7 @@ msgstr "Comillas"
 msgid "Received"
 msgstr ""
 
-#: src/ext_l10n.h:376 src/ext_l10n.h:1099 src/ext_l10n.h:1107
+#: src/ext_l10n.h:376 src/ext_l10n.h:1100 src/ext_l10n.h:1108
 #: src/frontends/xforms/FormRef.C:33
 msgid "Reference"
 msgstr ""
@@ -2586,7 +2586,7 @@ msgstr ""
 msgid "TheoremTemplate"
 msgstr ""
 
-#: src/ext_l10n.h:448 src/ext_l10n.h:1173 src/frontends/qt2/QThesaurus.C:28
+#: src/ext_l10n.h:448 src/ext_l10n.h:1174 src/frontends/qt2/QThesaurus.C:28
 msgid "Thesaurus"
 msgstr ""
 
@@ -2671,7 +2671,7 @@ msgstr ""
 msgid "Uppertitleback"
 msgstr ""
 
-#: src/ext_l10n.h:469 src/ext_l10n.h:1191 src/ext_l10n.h:1194
+#: src/ext_l10n.h:469 src/ext_l10n.h:1192 src/ext_l10n.h:1195
 #: src/frontends/qt2/QURL.C:25
 msgid "URL"
 msgstr ""
@@ -2738,222 +2738,227 @@ msgid "Bahasa"
 msgstr ""
 
 #: src/ext_l10n.h:485
+#, fuzzy
+msgid "Basque"
+msgstr "azul"
+
+#: src/ext_l10n.h:486
 msgid "Portuguese (Brazil)"
 msgstr ""
 
-#: src/ext_l10n.h:486
+#: src/ext_l10n.h:487
 msgid "Breton"
 msgstr "Bretón"
 
-#: src/ext_l10n.h:487
+#: src/ext_l10n.h:488
 msgid "British"
 msgstr "Inglés británico"
 
-#: src/ext_l10n.h:488
+#: src/ext_l10n.h:489
 #, fuzzy
 msgid "Bulgarian"
 msgstr "Húngaro"
 
-#: src/ext_l10n.h:489
+#: src/ext_l10n.h:490
 msgid "Canadian"
 msgstr "Inglés canadiense"
 
-#: src/ext_l10n.h:490
+#: src/ext_l10n.h:491
 msgid "French Canadian"
 msgstr "Francés canadiense"
 
-#: src/ext_l10n.h:491
+#: src/ext_l10n.h:492
 msgid "Catalan"
 msgstr "Catalán"
 
-#: src/ext_l10n.h:492
+#: src/ext_l10n.h:493
 msgid "Croatian"
 msgstr "Croata"
 
-#: src/ext_l10n.h:493
+#: src/ext_l10n.h:494
 msgid "Czech"
 msgstr "Checoslovaco"
 
-#: src/ext_l10n.h:494
+#: src/ext_l10n.h:495
 msgid "Danish"
 msgstr "Danés"
 
-#: src/ext_l10n.h:495
+#: src/ext_l10n.h:496
 msgid "Dutch"
 msgstr ""
 
-#: src/ext_l10n.h:496 src/language.C:40
+#: src/ext_l10n.h:497 src/language.C:40
 msgid "English"
 msgstr "Inglés"
 
-#: src/ext_l10n.h:497
+#: src/ext_l10n.h:498
 msgid "Esperanto"
 msgstr "Esperanto"
 
-#: src/ext_l10n.h:498
+#: src/ext_l10n.h:499
 msgid "Estonian"
 msgstr "Estonio"
 
-#: src/ext_l10n.h:499
+#: src/ext_l10n.h:500
 msgid "Finnish"
 msgstr "Finlandés"
 
-#: src/ext_l10n.h:500
+#: src/ext_l10n.h:501
 msgid "French"
 msgstr "Francés"
 
-#: src/ext_l10n.h:501
+#: src/ext_l10n.h:502
 msgid "French (GUTenberg)"
 msgstr "Francés (GUTenberg)"
 
-#: src/ext_l10n.h:502
+#: src/ext_l10n.h:503
 msgid "Galician"
 msgstr "Galicio"
 
-#: src/ext_l10n.h:503
+#: src/ext_l10n.h:504
 msgid "German"
 msgstr "Alemán"
 
-#: src/ext_l10n.h:504
+#: src/ext_l10n.h:505
 msgid "German (new spelling)"
 msgstr "Alemán (nuevo dialecto)"
 
-#: src/ext_l10n.h:505 src/frontends/xforms/FormMathsPanel.C:103
+#: src/ext_l10n.h:506 src/frontends/xforms/FormMathsPanel.C:103
 #: src/frontends/xforms/form_maths_panel.C:35
 msgid "Greek"
 msgstr "Griego"
 
-#: src/ext_l10n.h:506
+#: src/ext_l10n.h:507
 msgid "Hebrew"
 msgstr "Hebreo"
 
-#: src/ext_l10n.h:507
+#: src/ext_l10n.h:508
 msgid "Irish"
 msgstr ""
 
-#: src/ext_l10n.h:508
+#: src/ext_l10n.h:509
 msgid "Italian"
 msgstr "Italiano"
 
-#: src/ext_l10n.h:509
+#: src/ext_l10n.h:510
 msgid "Lsorbian"
 msgstr ""
 
-#: src/ext_l10n.h:510
+#: src/ext_l10n.h:511
 msgid "Magyar"
 msgstr ""
 
-#: src/ext_l10n.h:511
+#: src/ext_l10n.h:512
 msgid "Norsk"
 msgstr "Noruego"
 
-#: src/ext_l10n.h:512
+#: src/ext_l10n.h:513
 msgid "Polish"
 msgstr "Polaco"
 
-#: src/ext_l10n.h:513
+#: src/ext_l10n.h:514
 #, fuzzy
 msgid "Portugese"
 msgstr "Portugués"
 
-#: src/ext_l10n.h:514
+#: src/ext_l10n.h:515
 msgid "Romanian"
 msgstr "Rumano"
 
-#: src/ext_l10n.h:515
+#: src/ext_l10n.h:516
 msgid "Russian"
 msgstr "Ruso"
 
-#: src/ext_l10n.h:516
+#: src/ext_l10n.h:517
 msgid "Scottish"
 msgstr "Escocés"
 
-#: src/ext_l10n.h:517
+#: src/ext_l10n.h:518
 #, fuzzy
 msgid "Serbian"
 msgstr "Alemán"
 
-#: src/ext_l10n.h:518
+#: src/ext_l10n.h:519
 #, fuzzy
 msgid "Serbo-Croatian"
 msgstr "Croata"
 
-#: src/ext_l10n.h:519
+#: src/ext_l10n.h:520
 msgid "Spanish"
 msgstr "Español"
 
-#: src/ext_l10n.h:520
+#: src/ext_l10n.h:521
 msgid "Slovak"
 msgstr "Eslovaco"
 
-#: src/ext_l10n.h:521
+#: src/ext_l10n.h:522
 msgid "Slovene"
 msgstr "Eslovenio"
 
-#: src/ext_l10n.h:522
+#: src/ext_l10n.h:523
 msgid "Swedish"
 msgstr "Sueco"
 
-#: src/ext_l10n.h:523
+#: src/ext_l10n.h:524
 msgid "Thai"
 msgstr ""
 
-#: src/ext_l10n.h:524
+#: src/ext_l10n.h:525
 msgid "Turkish"
 msgstr "Turco"
 
-#: src/ext_l10n.h:525
+#: src/ext_l10n.h:526
 msgid "Ukrainian"
 msgstr "Ucraniano"
 
-#: src/ext_l10n.h:526
+#: src/ext_l10n.h:527
 msgid "Usorbian"
 msgstr ""
 
-#: src/ext_l10n.h:527
+#: src/ext_l10n.h:528
 msgid "Welsh"
 msgstr ""
 
-#: src/ext_l10n.h:528 src/frontends/qt2/QAbout.C:32
+#: src/ext_l10n.h:529 src/frontends/qt2/QAbout.C:32
 #: src/frontends/xforms/FormAboutlyx.C:28
 msgid "About LyX"
 msgstr ""
 
-#: src/ext_l10n.h:529
+#: src/ext_l10n.h:530
 #, fuzzy
 msgid "Version"
 msgstr "Versión...|V"
 
-#: src/ext_l10n.h:530
+#: src/ext_l10n.h:531
 #, fuzzy
 msgid "Version goes here"
 msgstr "Control de Versiones"
 
-#: src/ext_l10n.h:531 src/frontends/xforms/FormAboutlyx.C:65
+#: src/ext_l10n.h:532 src/frontends/xforms/FormAboutlyx.C:65
 msgid "Credits"
 msgstr "Títulos de crédito"
 
-#: src/ext_l10n.h:533 src/ext_l10n.h:544 src/ext_l10n.h:598 src/ext_l10n.h:765
-#: src/ext_l10n.h:774 src/ext_l10n.h:792 src/ext_l10n.h:797 src/ext_l10n.h:873
-#: src/ext_l10n.h:892 src/ext_l10n.h:903 src/ext_l10n.h:917
-#: src/ext_l10n.h:1068 src/ext_l10n.h:1117 src/ext_l10n.h:1127
-#: src/ext_l10n.h:1129 src/ext_l10n.h:1141 src/ext_l10n.h:1171
-#: src/ext_l10n.h:1183 src/ext_l10n.h:1188 src/ext_l10n.h:1198
-#: src/ext_l10n.h:1202 src/frontends/qt2/QParagraphDialog.C:49
+#: src/ext_l10n.h:534 src/ext_l10n.h:545 src/ext_l10n.h:599 src/ext_l10n.h:766
+#: src/ext_l10n.h:775 src/ext_l10n.h:793 src/ext_l10n.h:798 src/ext_l10n.h:874
+#: src/ext_l10n.h:893 src/ext_l10n.h:904 src/ext_l10n.h:918
+#: src/ext_l10n.h:1069 src/ext_l10n.h:1118 src/ext_l10n.h:1128
+#: src/ext_l10n.h:1130 src/ext_l10n.h:1142 src/ext_l10n.h:1172
+#: src/ext_l10n.h:1184 src/ext_l10n.h:1189 src/ext_l10n.h:1199
+#: src/ext_l10n.h:1203 src/frontends/qt2/QParagraphDialog.C:49
 msgid "&Close"
 msgstr "&Cerrar"
 
-#: src/ext_l10n.h:534
+#: src/ext_l10n.h:535
 #, fuzzy
 msgid "LyX: Enter text"
 msgstr "LyX: Índice"
 
-#: src/ext_l10n.h:535
+#: src/ext_l10n.h:536
 msgid "&Dummy"
 msgstr ""
 
-#: src/ext_l10n.h:536 src/ext_l10n.h:568 src/ext_l10n.h:601 src/ext_l10n.h:760
-#: src/ext_l10n.h:773 src/ext_l10n.h:898 src/frontends/qt2/QSpellchecker.C:114
+#: src/ext_l10n.h:537 src/ext_l10n.h:569 src/ext_l10n.h:602 src/ext_l10n.h:761
+#: src/ext_l10n.h:774 src/ext_l10n.h:899 src/frontends/qt2/QSpellchecker.C:114
 #: src/frontends/xforms/form_bibitem.C:35
 #: src/frontends/xforms/form_bibtex.C:35
 #: src/frontends/xforms/form_citation.C:173
@@ -2972,429 +2977,429 @@ msgstr ""
 msgid "OK"
 msgstr "Aceptar"
 
-#: src/ext_l10n.h:537 src/ext_l10n.h:1061 src/frontends/qt2/Alert_pimpl.C:45
+#: src/ext_l10n.h:538 src/ext_l10n.h:1062 src/frontends/qt2/Alert_pimpl.C:45
 #: src/frontends/qt2/QParagraphDialog.C:49
 msgid "&Cancel"
 msgstr "&Cancelar"
 
-#: src/ext_l10n.h:538 src/ext_l10n.h:895 src/frontends/qt2/QIndex.C:23
+#: src/ext_l10n.h:539 src/ext_l10n.h:896 src/frontends/qt2/QIndex.C:23
 #: src/frontends/xforms/FormIndex.C:24 src/insets/insetindex.C:59
 msgid "Index"
 msgstr "Índice"
 
-#: src/ext_l10n.h:539
+#: src/ext_l10n.h:540
 #, fuzzy
 msgid "&Key"
 msgstr "Clave"
 
-#: src/ext_l10n.h:540
+#: src/ext_l10n.h:541
 #, fuzzy
 msgid "The citation key"
 msgstr "Insertar cita"
 
-#: src/ext_l10n.h:541
+#: src/ext_l10n.h:542
 #, fuzzy
 msgid "&Label"
 msgstr "Etiqueta:|#L"
 
-#: src/ext_l10n.h:542
+#: src/ext_l10n.h:543
 #, fuzzy
 msgid "The label as it appears in the document"
 msgstr "El nombre del formato que aparecerá en los menúes."
 
-#: src/ext_l10n.h:543 src/ext_l10n.h:596 src/ext_l10n.h:790 src/ext_l10n.h:795
-#: src/ext_l10n.h:871 src/ext_l10n.h:891 src/ext_l10n.h:915
-#: src/ext_l10n.h:1060 src/ext_l10n.h:1066 src/ext_l10n.h:1116
-#: src/ext_l10n.h:1156 src/ext_l10n.h:1197
+#: src/ext_l10n.h:544 src/ext_l10n.h:597 src/ext_l10n.h:791 src/ext_l10n.h:796
+#: src/ext_l10n.h:872 src/ext_l10n.h:892 src/ext_l10n.h:916
+#: src/ext_l10n.h:1061 src/ext_l10n.h:1067 src/ext_l10n.h:1117
+#: src/ext_l10n.h:1157 src/ext_l10n.h:1198
 msgid "&OK"
 msgstr "&OK"
 
-#: src/ext_l10n.h:545
+#: src/ext_l10n.h:546
 #, fuzzy
 msgid "Bibtex"
 msgstr "BibTeX"
 
-#: src/ext_l10n.h:546
+#: src/ext_l10n.h:547
 #, fuzzy
 msgid "Databases"
 msgstr "Base datos:"
 
-#: src/ext_l10n.h:547
+#: src/ext_l10n.h:548
 #, fuzzy
 msgid "BibTeX database to use"
 msgstr "Base datos:"
 
-#: src/ext_l10n.h:548 src/ext_l10n.h:624 src/ext_l10n.h:626
-#: src/ext_l10n.h:1165
+#: src/ext_l10n.h:549 src/ext_l10n.h:625 src/ext_l10n.h:627
+#: src/ext_l10n.h:1166
 msgid "New Item"
 msgstr ""
 
-#: src/ext_l10n.h:549
+#: src/ext_l10n.h:550
 #, fuzzy
 msgid "Available BibTeX databases"
 msgstr "Base datos:"
 
-#: src/ext_l10n.h:550
+#: src/ext_l10n.h:551
 #, fuzzy
 msgid "&Add ..."
 msgstr "&Agregar"
 
-#: src/ext_l10n.h:551
+#: src/ext_l10n.h:552
 #, fuzzy
 msgid "Add a BibTeX database file"
 msgstr "Base datos:"
 
-#: src/ext_l10n.h:552
+#: src/ext_l10n.h:553
 #, fuzzy
 msgid "&Delete"
 msgstr "Borrar|#D"
 
-#: src/ext_l10n.h:553
+#: src/ext_l10n.h:554
 msgid "Remove the selected database"
 msgstr ""
 
-#: src/ext_l10n.h:554
+#: src/ext_l10n.h:555
 #, fuzzy
 msgid "&Style"
 msgstr "Estilo:  "
 
-#: src/ext_l10n.h:555 src/ext_l10n.h:561
+#: src/ext_l10n.h:556 src/ext_l10n.h:562
 #, fuzzy
 msgid "The BibTeX style"
 msgstr "Alternar estilo TeX"
 
-#: src/ext_l10n.h:556 src/ext_l10n.h:642 src/frontends/qt2/QDocument.C:126
+#: src/ext_l10n.h:557 src/ext_l10n.h:643 src/frontends/qt2/QDocument.C:126
 #, fuzzy
 msgid "plain"
 msgstr "Espaciado"
 
-#: src/ext_l10n.h:557
+#: src/ext_l10n.h:558
 #, fuzzy
 msgid "unsrt"
 msgstr "&Insertar"
 
-#: src/ext_l10n.h:558
+#: src/ext_l10n.h:559
 msgid "alpha"
 msgstr ""
 
-#: src/ext_l10n.h:559
+#: src/ext_l10n.h:560
 msgid "abbrv"
 msgstr ""
 
-#: src/ext_l10n.h:560 src/frontends/qt2/QBibtex.C:114
+#: src/ext_l10n.h:561 src/frontends/qt2/QBibtex.C:114
 #: src/frontends/qt2/QBibtexDialog.C:77
 #, fuzzy
 msgid "Other ..."
 msgstr "otro..."
 
-#: src/ext_l10n.h:562
+#: src/ext_l10n.h:563
 msgid "FIXME !"
 msgstr ""
 
-#: src/ext_l10n.h:563
+#: src/ext_l10n.h:564
 msgid "The name of the style to use"
 msgstr ""
 
-#: src/ext_l10n.h:564
+#: src/ext_l10n.h:565
 msgid "&Browse"
 msgstr "&Examinar"
 
-#: src/ext_l10n.h:565
+#: src/ext_l10n.h:566
 #, fuzzy
 msgid "Choose a style file"
 msgstr "Seleccionar modelo"
 
-#: src/ext_l10n.h:566
+#: src/ext_l10n.h:567
 #, fuzzy
 msgid "Add bibliography to &TOC"
 msgstr "Elemento de bibliografía"
 
-#: src/ext_l10n.h:567
+#: src/ext_l10n.h:568
 #, fuzzy
 msgid "Add bibliography to the table of contents"
 msgstr "Ver Indice General"
 
 #. /
-#: src/LyXAction.C:157 src/ext_l10n.h:569 src/ext_l10n.h:603
-#: src/ext_l10n.h:762 src/ext_l10n.h:899
+#: src/LyXAction.C:157 src/ext_l10n.h:570 src/ext_l10n.h:604
+#: src/ext_l10n.h:763 src/ext_l10n.h:900
 #: src/frontends/controllers/ButtonController.h:73 src/lyxfunc.C:1050
 msgid "Cancel"
 msgstr "Cancelar"
 
-#: src/ext_l10n.h:570 src/frontends/qt2/QCharacter.C:31
+#: src/ext_l10n.h:571 src/frontends/qt2/QCharacter.C:31
 #, fuzzy
 msgid "Character"
 msgstr "Juego de caracteres:|#H"
 
-#: src/ext_l10n.h:571
+#: src/ext_l10n.h:572
 #, fuzzy
 msgid "&Family:"
 msgstr "Familia:|#F"
 
-#: src/ext_l10n.h:572
+#: src/ext_l10n.h:573
 #, fuzzy
 msgid "Font family"
 msgstr "Familia:|#F"
 
-#: src/ext_l10n.h:573
+#: src/ext_l10n.h:574
 #, fuzzy
 msgid "&Series:"
 msgstr "Serie:|#S"
 
-#: src/ext_l10n.h:574 src/ext_l10n.h:581
+#: src/ext_l10n.h:575 src/ext_l10n.h:582
 #, fuzzy
 msgid "Font series"
 msgstr "Tamaño del tipo:|#O"
 
-#: src/ext_l10n.h:575 src/ext_l10n.h:703
+#: src/ext_l10n.h:576 src/ext_l10n.h:704
 #, fuzzy
 msgid "&Language:"
 msgstr "Idioma"
 
-#: src/ext_l10n.h:576 src/ext_l10n.h:584 src/ext_l10n.h:702
+#: src/ext_l10n.h:577 src/ext_l10n.h:585 src/ext_l10n.h:703
 #: src/frontends/xforms/FormDocument.C:324
 #: src/frontends/xforms/FormPreferences.C:258
 msgid "Language"
 msgstr "Idioma"
 
-#: src/ext_l10n.h:577 src/ext_l10n.h:580
+#: src/ext_l10n.h:578 src/ext_l10n.h:581
 #, fuzzy
 msgid "Font shape"
 msgstr "Tamaño del tipo:|#O"
 
-#: src/ext_l10n.h:578 src/ext_l10n.h:583
+#: src/ext_l10n.h:579 src/ext_l10n.h:584
 msgid "Font color"
 msgstr ""
 
-#: src/ext_l10n.h:579
+#: src/ext_l10n.h:580
 #, fuzzy
 msgid "S&hape:"
 msgstr "Forma:|#R"
 
-#: src/ext_l10n.h:582
+#: src/ext_l10n.h:583
 #, fuzzy
 msgid "&Color:"
 msgstr "Colores"
 
-#: src/ext_l10n.h:585
+#: src/ext_l10n.h:586
 #, fuzzy
 msgid "&Toggle all"
 msgstr "Alternar negritas"
 
-#: src/ext_l10n.h:586
+#: src/ext_l10n.h:587
 #, fuzzy
 msgid "toggle font on all of the above"
 msgstr "Alternar todos estos|#T"
 
-#: src/ext_l10n.h:587
+#: src/ext_l10n.h:588
 #, fuzzy
 msgid "Never toggled"
 msgstr "Estos nunca se alternan"
 
-#: src/ext_l10n.h:588 src/ext_l10n.h:816
+#: src/ext_l10n.h:589 src/ext_l10n.h:817
 #, fuzzy
 msgid "Si&ze:"
 msgstr "Tamaño:|#T"
 
-#: src/ext_l10n.h:589
+#: src/ext_l10n.h:590
 #, fuzzy
 msgid "Font size"
 msgstr "Tamaño del tipo:|#O"
 
-#: src/ext_l10n.h:590
+#: src/ext_l10n.h:591
 #, fuzzy
 msgid "Always toggled"
 msgstr "Estos siempre se alternan"
 
-#: src/ext_l10n.h:591 src/ext_l10n.h:593
+#: src/ext_l10n.h:592 src/ext_l10n.h:594
 msgid "Other font settings"
 msgstr ""
 
-#: src/ext_l10n.h:592
+#: src/ext_l10n.h:593
 #, fuzzy
 msgid "&Misc:"
 msgstr "Otros"
 
-#: src/ext_l10n.h:594
+#: src/ext_l10n.h:595
 #, fuzzy
 msgid "Auto apply"
 msgstr "&Aplicar"
 
-#: src/ext_l10n.h:595
+#: src/ext_l10n.h:596
 msgid "Apply each change automatically"
 msgstr ""
 
-#: src/ext_l10n.h:597 src/ext_l10n.h:602 src/ext_l10n.h:761 src/ext_l10n.h:791
-#: src/ext_l10n.h:796 src/ext_l10n.h:872 src/ext_l10n.h:916
-#: src/ext_l10n.h:1059 src/ext_l10n.h:1067
+#: src/ext_l10n.h:598 src/ext_l10n.h:603 src/ext_l10n.h:762 src/ext_l10n.h:792
+#: src/ext_l10n.h:797 src/ext_l10n.h:873 src/ext_l10n.h:917
+#: src/ext_l10n.h:1060 src/ext_l10n.h:1068
 msgid "&Apply"
 msgstr "&Aplicar"
 
-#: src/ext_l10n.h:599 src/frontends/qt2/QCitation.C:45
+#: src/ext_l10n.h:600 src/frontends/qt2/QCitation.C:45
 #: src/frontends/xforms/FormCitation.C:111
 msgid "Citation"
 msgstr "Cita"
 
-#: src/ext_l10n.h:600 src/ext_l10n.h:759 src/ext_l10n.h:794 src/ext_l10n.h:870
-#: src/ext_l10n.h:914 src/ext_l10n.h:1058
+#: src/ext_l10n.h:601 src/ext_l10n.h:760 src/ext_l10n.h:795 src/ext_l10n.h:871
+#: src/ext_l10n.h:915 src/ext_l10n.h:1059
 msgid "&Restore"
 msgstr "&Restaurar"
 
-#: src/ext_l10n.h:604
+#: src/ext_l10n.h:605
 msgid "Text after"
 msgstr "Texto después"
 
-#: src/ext_l10n.h:605 src/frontends/xforms/form_citation.C:116
+#: src/ext_l10n.h:606 src/frontends/xforms/form_citation.C:116
 #, fuzzy
 msgid "Citation style"
 msgstr "Cita"
 
-#: src/ext_l10n.h:606
+#: src/ext_l10n.h:607
 #, fuzzy
 msgid "Natbib citation style to use"
 msgstr "Cita"
 
-#: src/ext_l10n.h:607
+#: src/ext_l10n.h:608
 #, fuzzy
 msgid "Text before"
 msgstr "Texto siguiente|#T"
 
-#: src/ext_l10n.h:608 src/frontends/xforms/form_citation.C:73 src/lyxvc.C:122
+#: src/ext_l10n.h:609 src/frontends/xforms/form_citation.C:73 src/lyxvc.C:122
 msgid "Info"
 msgstr "Información"
 
-#: src/ext_l10n.h:609
+#: src/ext_l10n.h:610
 #, fuzzy
 msgid "Citation entry"
 msgstr "Cita"
 
-#: src/ext_l10n.h:610 src/frontends/qt2/QSearch.C:31
+#: src/ext_l10n.h:611 src/frontends/qt2/QSearch.C:31
 #: src/frontends/xforms/form_citation.C:78
 msgid "Search"
 msgstr "Búsqueda"
 
-#: src/ext_l10n.h:611
+#: src/ext_l10n.h:612
 msgid "Search the available citations"
 msgstr ""
 
-#: src/ext_l10n.h:612
+#: src/ext_l10n.h:613
 #, fuzzy
 msgid "Regular E&xpression"
 msgstr "Usar expresión regular"
 
-#: src/ext_l10n.h:613
+#: src/ext_l10n.h:614
 #, fuzzy
 msgid "Interpret search entry as a regular expression"
 msgstr " Insertar cita: Ingrese palabra(s) clave o expresión regular "
 
-#: src/ext_l10n.h:614
+#: src/ext_l10n.h:615
 msgid "&Previous"
 msgstr ""
 
-#: src/ext_l10n.h:615
+#: src/ext_l10n.h:616
 #, fuzzy
 msgid "&Case sensitive"
 msgstr "Mayús/Minús|#M"
 
-#: src/ext_l10n.h:616
+#: src/ext_l10n.h:617
 msgid "Make the search case-sensitive"
 msgstr ""
 
-#: src/ext_l10n.h:617
+#: src/ext_l10n.h:618
 #, fuzzy
 msgid "&Next"
 msgstr "texto"
 
-#: src/ext_l10n.h:618
+#: src/ext_l10n.h:619
 #, fuzzy
 msgid "Add the selected citation"
 msgstr "_Insertar cita"
 
-#: src/ext_l10n.h:619
+#: src/ext_l10n.h:620
 msgid "Remove the selected citation"
 msgstr ""
 
-#: src/ext_l10n.h:620
+#: src/ext_l10n.h:621
 #, fuzzy
 msgid "Move the selected citation up"
 msgstr " Insertar cita: Seleccionar cita "
 
-#: src/ext_l10n.h:621
+#: src/ext_l10n.h:622
 msgid "Move the selected citation down"
 msgstr ""
 
-#: src/ext_l10n.h:622
+#: src/ext_l10n.h:623
 #, fuzzy
 msgid "Available"
 msgstr "Claves disponibles"
 
-#: src/ext_l10n.h:623
+#: src/ext_l10n.h:624
 #, fuzzy
 msgid "Selected"
 msgstr "Selecionar"
 
-#: src/ext_l10n.h:625
+#: src/ext_l10n.h:626
 #, fuzzy
 msgid "Available citation keys"
 msgstr "Claves disponibles"
 
-#: src/ext_l10n.h:627
+#: src/ext_l10n.h:628
 #, fuzzy
 msgid "Citations currently selected"
 msgstr "Claves seleccionas actualmente"
 
-#: src/ext_l10n.h:628
+#: src/ext_l10n.h:629
 #, fuzzy
 msgid "Text to place after citation"
 msgstr "Texto a ubicar después de la cita"
 
-#: src/ext_l10n.h:629
+#: src/ext_l10n.h:630
 msgid "&Full author list"
 msgstr ""
 
-#: src/ext_l10n.h:630
+#: src/ext_l10n.h:631
 msgid "List all authors"
 msgstr ""
 
-#: src/ext_l10n.h:631
+#: src/ext_l10n.h:632
 msgid "Force &upper case"
 msgstr ""
 
-#: src/ext_l10n.h:632
+#: src/ext_l10n.h:633
 msgid "Force upper case in citation"
 msgstr ""
 
-#: src/ext_l10n.h:633
+#: src/ext_l10n.h:634
 msgid "Text to place before citation"
 msgstr ""
 
-#: src/ext_l10n.h:634 src/frontends/xforms/FormDocument.C:57
+#: src/ext_l10n.h:635 src/frontends/xforms/FormDocument.C:57
 msgid "Document Layout"
 msgstr "Formato del documento"
 
-#: src/ext_l10n.h:636
+#: src/ext_l10n.h:637
 #, fuzzy
 msgid "&Fonts:"
 msgstr "Tipo: "
 
-#: src/ext_l10n.h:637
+#: src/ext_l10n.h:638
 #, fuzzy
 msgid "&Pagestyle:"
 msgstr "Estilo de página:|#P"
 
-#: src/ext_l10n.h:638
+#: src/ext_l10n.h:639
 #, fuzzy
 msgid "Defa&ult Skip:"
 msgstr "Salto por defecto:|#S"
 
-#: src/ext_l10n.h:639
+#: src/ext_l10n.h:640
 #, fuzzy
 msgid "F&ont Size:"
 msgstr "Tamaño del tipo:|#O"
 
 #. the document language page
-#: src/ext_l10n.h:640 src/ext_l10n.h:656 src/ext_l10n.h:705 src/ext_l10n.h:736
-#: src/ext_l10n.h:855 src/frontends/qt2/QDocument.C:116
+#: src/ext_l10n.h:641 src/ext_l10n.h:657 src/ext_l10n.h:706 src/ext_l10n.h:737
+#: src/ext_l10n.h:856 src/frontends/qt2/QDocument.C:116
 #: src/frontends/qt2/QDocument.C:124 src/frontends/qt2/QDocument.C:152
 #: src/frontends/qt2/QDocument.C:196 src/frontends/qt2/QDocument.C:575
 #: src/frontends/qt2/QDocument.C:579
@@ -3402,1432 +3407,1436 @@ msgstr "Tamaño del tipo:|#O"
 msgid "default"
 msgstr "Normal"
 
-#: src/ext_l10n.h:641 src/frontends/qt2/QDocument.C:125
+#: src/ext_l10n.h:642 src/frontends/qt2/QDocument.C:125
 #, fuzzy
 msgid "empty"
 msgstr "Profundidad"
 
-#: src/ext_l10n.h:643 src/frontends/qt2/QDocument.C:127
+#: src/ext_l10n.h:644 src/frontends/qt2/QDocument.C:127
 #, fuzzy
 msgid "headings"
 msgstr "Manipulación de la GUI"
 
-#: src/ext_l10n.h:644 src/frontends/qt2/QDocument.C:128
+#: src/ext_l10n.h:645 src/frontends/qt2/QDocument.C:128
 msgid "fancy"
 msgstr ""
 
-#: src/ext_l10n.h:645
+#: src/ext_l10n.h:646
 #, fuzzy
 msgid "Spacin&g:"
 msgstr ", Espaciado:"
 
-#: src/ext_l10n.h:646
+#: src/ext_l10n.h:647
 #, fuzzy
 msgid "E&xtra Options:"
 msgstr "Opciones Extras"
 
-#: src/ext_l10n.h:647
+#: src/ext_l10n.h:648
 #, fuzzy
 msgid "&Class:"
 msgstr "Clase:|#C"
 
-#: src/ext_l10n.h:648
+#: src/ext_l10n.h:649
 #, fuzzy
 msgid "smallskip"
 msgstr "Muy pequeña"
 
-#: src/ext_l10n.h:649
+#: src/ext_l10n.h:650
 #, fuzzy
 msgid "medskip"
 msgstr "Medio"
 
-#: src/ext_l10n.h:650
+#: src/ext_l10n.h:651
 #, fuzzy
 msgid "bigskip"
 msgstr "Grande"
 
-#: src/ext_l10n.h:651
+#: src/ext_l10n.h:652
 #, fuzzy
 msgid "length"
 msgstr "Logitud"
 
-#: src/ext_l10n.h:653 src/frontends/qt2/QDocument.C:112
+#: src/ext_l10n.h:654 src/frontends/qt2/QDocument.C:112
 #, fuzzy
 msgid "OneHalf"
 msgstr "Una cara"
 
-#: src/ext_l10n.h:655 src/frontends/qt2/QDocument.C:114
+#: src/ext_l10n.h:656 src/frontends/qt2/QDocument.C:114
 #, fuzzy
 msgid "Other"
 msgstr "Otro ("
 
-#: src/ext_l10n.h:657 src/frontends/qt2/QDocument.C:117
+#: src/ext_l10n.h:658 src/frontends/qt2/QDocument.C:117
 msgid "10"
 msgstr ""
 
-#: src/ext_l10n.h:658 src/frontends/qt2/QDocument.C:118
+#: src/ext_l10n.h:659 src/frontends/qt2/QDocument.C:118
 #, fuzzy
 msgid "11"
 msgstr "1|#1"
 
-#: src/ext_l10n.h:659 src/frontends/qt2/QDocument.C:119
+#: src/ext_l10n.h:660 src/frontends/qt2/QDocument.C:119
 msgid "12"
 msgstr ""
 
-#: src/ext_l10n.h:660 src/frontends/xforms/form_document.C:260
+#: src/ext_l10n.h:661 src/frontends/xforms/form_document.C:260
 msgid "Sides"
 msgstr "Lados"
 
-#: src/ext_l10n.h:661
+#: src/ext_l10n.h:662
 #, fuzzy
 msgid "O&ne"
 msgstr "Activado"
 
-#: src/ext_l10n.h:662
+#: src/ext_l10n.h:663
 #, fuzzy
 msgid "&Two"
 msgstr "&Alto"
 
-#: src/ext_l10n.h:663 src/frontends/xforms/form_tabular_create.C:45
+#: src/ext_l10n.h:664 src/frontends/xforms/form_tabular_create.C:45
 msgid "Columns"
 msgstr "Columnas"
 
-#: src/ext_l10n.h:664
+#: src/ext_l10n.h:665
 #, fuzzy
 msgid "On&e"
 msgstr "Activado"
 
-#: src/ext_l10n.h:665
+#: src/ext_l10n.h:666
 #, fuzzy
 msgid "T&wo"
 msgstr "A"
 
-#: src/ext_l10n.h:666 src/frontends/xforms/form_document.C:254
+#: src/ext_l10n.h:667 src/frontends/xforms/form_document.C:254
 msgid "Separation"
 msgstr "Separación"
 
-#: src/ext_l10n.h:667
+#: src/ext_l10n.h:668
 #, fuzzy
 msgid "&Indent"
 msgstr "Indentar"
 
-#: src/ext_l10n.h:668
+#: src/ext_l10n.h:669
 #, fuzzy
 msgid "S&kip"
 msgstr "Saltar|#l"
 
-#: src/ext_l10n.h:669 src/frontends/xforms/FormDocument.C:322
+#: src/ext_l10n.h:670 src/frontends/xforms/FormDocument.C:322
 msgid "Paper"
 msgstr "Papel"
 
-#: src/ext_l10n.h:670
+#: src/ext_l10n.h:671
 #, fuzzy
 msgid "&Papersize:"
 msgstr "tamaño del papel"
 
-#: src/ext_l10n.h:671 src/frontends/qt2/QDocument.C:72 src/lyxfont.C:573
+#: src/ext_l10n.h:672 src/frontends/qt2/QDocument.C:72 src/lyxfont.C:573
 msgid "Default"
 msgstr "Normal"
 
-#: src/ext_l10n.h:672 src/ext_l10n.h:1009 src/ext_l10n.h:1018
+#: src/ext_l10n.h:673 src/ext_l10n.h:1010 src/ext_l10n.h:1019
 #: src/frontends/qt2/QDocument.C:73
 #, fuzzy
 msgid "Custom"
 msgstr "Cortar"
 
-#: src/ext_l10n.h:673 src/frontends/qt2/QDocument.C:74
+#: src/ext_l10n.h:674 src/frontends/qt2/QDocument.C:74
 msgid "USletter"
 msgstr ""
 
-#: src/ext_l10n.h:674 src/frontends/qt2/QDocument.C:75
+#: src/ext_l10n.h:675 src/frontends/qt2/QDocument.C:75
 msgid "USlegal"
 msgstr ""
 
-#: src/ext_l10n.h:675 src/frontends/qt2/QDocument.C:76
+#: src/ext_l10n.h:676 src/frontends/qt2/QDocument.C:76
 msgid "USexecutive"
 msgstr ""
 
-#: src/ext_l10n.h:676 src/frontends/qt2/QDocument.C:77
+#: src/ext_l10n.h:677 src/frontends/qt2/QDocument.C:77
 msgid "A3"
 msgstr ""
 
-#: src/ext_l10n.h:677 src/frontends/qt2/QDocument.C:79
+#: src/ext_l10n.h:678 src/frontends/qt2/QDocument.C:79
 msgid "A5"
 msgstr ""
 
-#: src/ext_l10n.h:678 src/frontends/qt2/QDocument.C:80
+#: src/ext_l10n.h:679 src/frontends/qt2/QDocument.C:80
 msgid "B3"
 msgstr ""
 
-#: src/ext_l10n.h:679 src/frontends/qt2/QDocument.C:81
+#: src/ext_l10n.h:680 src/frontends/qt2/QDocument.C:81
 msgid "B4"
 msgstr ""
 
-#: src/ext_l10n.h:680 src/frontends/qt2/QDocument.C:82
+#: src/ext_l10n.h:681 src/frontends/qt2/QDocument.C:82
 msgid "B5"
 msgstr ""
 
-#: src/ext_l10n.h:681
+#: src/ext_l10n.h:682
 #, fuzzy
 msgid "&Special:"
 msgstr "Especial"
 
-#: src/ext_l10n.h:682 src/ext_l10n.h:1003 src/ext_l10n.h:1012
-#: src/ext_l10n.h:1046 src/frontends/qt2/QDocument.C:84
+#: src/ext_l10n.h:683 src/ext_l10n.h:1004 src/ext_l10n.h:1013
+#: src/ext_l10n.h:1047 src/frontends/qt2/QDocument.C:84
 msgid "None"
 msgstr "Listo"
 
-#: src/ext_l10n.h:683 src/frontends/qt2/QDocument.C:85
+#: src/ext_l10n.h:684 src/frontends/qt2/QDocument.C:85
 msgid "A4 small Margins (only portrait)"
 msgstr ""
 
-#: src/ext_l10n.h:684 src/frontends/qt2/QDocument.C:86
+#: src/ext_l10n.h:685 src/frontends/qt2/QDocument.C:86
 msgid "A4 very small Margins (only portrait)"
 msgstr ""
 
-#: src/ext_l10n.h:685 src/frontends/qt2/QDocument.C:87
+#: src/ext_l10n.h:686 src/frontends/qt2/QDocument.C:87
 msgid "A4 very wide margins (only portrait)"
 msgstr ""
 
-#: src/ext_l10n.h:686
+#: src/ext_l10n.h:687
 #, fuzzy
 msgid "&Use Geometry Package"
 msgstr "Usar paquete Geometry|#U"
 
-#: src/ext_l10n.h:687 src/frontends/xforms/form_document.C:123
+#: src/ext_l10n.h:688 src/frontends/xforms/form_document.C:123
 msgid "Orientation"
 msgstr "Orientación"
 
-#: src/ext_l10n.h:688
+#: src/ext_l10n.h:689
 #, fuzzy
 msgid "P&ortrait"
 msgstr "Retrato|#R"
 
-#: src/ext_l10n.h:689
+#: src/ext_l10n.h:690
 #, fuzzy
 msgid "&Landscape"
 msgstr "apaisado"
 
-#: src/ext_l10n.h:690 src/frontends/xforms/form_document.C:143
+#: src/ext_l10n.h:691 src/frontends/xforms/form_document.C:143
 msgid "Margins"
 msgstr "Márgenes"
 
-#: src/ext_l10n.h:691
+#: src/ext_l10n.h:692
 #, fuzzy
 msgid "&Right:"
 msgstr "Derecha"
 
-#: src/ext_l10n.h:692
+#: src/ext_l10n.h:693
 #, fuzzy
 msgid "&Bottom:"
 msgstr "&Fondo"
 
-#: src/ext_l10n.h:693
+#: src/ext_l10n.h:694
 #, fuzzy
 msgid "L&eft:"
 msgstr "Izquierda"
 
-#: src/ext_l10n.h:694
+#: src/ext_l10n.h:695
 #, fuzzy
 msgid "&Top:"
 msgstr "&Alto"
 
-#: src/ext_l10n.h:695
+#: src/ext_l10n.h:696
 msgid "Custom Papersize"
 msgstr "Tamaño personalizado"
 
-#: src/ext_l10n.h:696 src/ext_l10n.h:905
+#: src/ext_l10n.h:697 src/ext_l10n.h:906
 #, fuzzy
 msgid "&Width:"
 msgstr "Anchura"
 
-#: src/ext_l10n.h:697
+#: src/ext_l10n.h:698
 #, fuzzy
 msgid "&Height:"
 msgstr "Altura"
 
-#: src/ext_l10n.h:698
+#: src/ext_l10n.h:699
 msgid "Foot/Head Margins"
 msgstr "Margen cabecera/pié"
 
-#: src/ext_l10n.h:699
+#: src/ext_l10n.h:700
 #, fuzzy
 msgid "&Footskip:"
 msgstr "Dist. notas a pie:|#e"
 
-#: src/ext_l10n.h:700
+#: src/ext_l10n.h:701
 #, fuzzy
 msgid "Hea&dsep:"
 msgstr "Separación:|#S"
 
-#: src/ext_l10n.h:701
+#: src/ext_l10n.h:702
 #, fuzzy
 msgid "Headhe&ight:"
 msgstr "Altura cabecera:|#c"
 
-#: src/ext_l10n.h:704
+#: src/ext_l10n.h:705
 #, fuzzy
 msgid "Enco&ding:"
 msgstr "Codificación"
 
-#: src/ext_l10n.h:706 src/frontends/qt2/QDocument.C:153
+#: src/ext_l10n.h:707 src/frontends/qt2/QDocument.C:153
 #, fuzzy
 msgid "auto"
 msgstr " hasta "
 
-#: src/ext_l10n.h:707 src/frontends/qt2/QDocument.C:154
+#: src/ext_l10n.h:708 src/frontends/qt2/QDocument.C:154
 #, fuzzy
 msgid "latin1"
 msgstr "tiny"
 
-#: src/ext_l10n.h:708 src/frontends/qt2/QDocument.C:155
+#: src/ext_l10n.h:709 src/frontends/qt2/QDocument.C:155
 #, fuzzy
 msgid "latin2"
 msgstr "tiny"
 
-#: src/ext_l10n.h:709 src/frontends/qt2/QDocument.C:156
+#: src/ext_l10n.h:710 src/frontends/qt2/QDocument.C:156
 #, fuzzy
 msgid "latin3"
 msgstr "tiny"
 
-#: src/ext_l10n.h:710 src/frontends/qt2/QDocument.C:157
+#: src/ext_l10n.h:711 src/frontends/qt2/QDocument.C:157
 #, fuzzy
 msgid "latin4"
 msgstr "tiny"
 
-#: src/ext_l10n.h:711 src/frontends/qt2/QDocument.C:158
+#: src/ext_l10n.h:712 src/frontends/qt2/QDocument.C:158
 #, fuzzy
 msgid "latin5"
 msgstr "tiny"
 
-#: src/ext_l10n.h:712 src/frontends/qt2/QDocument.C:159
+#: src/ext_l10n.h:713 src/frontends/qt2/QDocument.C:159
 #, fuzzy
 msgid "latin9"
 msgstr "tiny"
 
-#: src/ext_l10n.h:713 src/frontends/qt2/QDocument.C:160
+#: src/ext_l10n.h:714 src/frontends/qt2/QDocument.C:160
 msgid "koi8-r"
 msgstr ""
 
-#: src/ext_l10n.h:714 src/frontends/qt2/QDocument.C:161
+#: src/ext_l10n.h:715 src/frontends/qt2/QDocument.C:161
 msgid "koi8-u"
 msgstr ""
 
-#: src/ext_l10n.h:715 src/frontends/qt2/QDocument.C:162
+#: src/ext_l10n.h:716 src/frontends/qt2/QDocument.C:162
 msgid "cp866"
 msgstr ""
 
-#: src/ext_l10n.h:716 src/frontends/qt2/QDocument.C:163
+#: src/ext_l10n.h:717 src/frontends/qt2/QDocument.C:163
 msgid "cp1251"
 msgstr ""
 
-#: src/ext_l10n.h:717 src/frontends/qt2/QDocument.C:164
+#: src/ext_l10n.h:718 src/frontends/qt2/QDocument.C:164
 msgid "iso88595"
 msgstr ""
 
-#: src/ext_l10n.h:718
+#: src/ext_l10n.h:719
 #, fuzzy
 msgid "Quote Style"
 msgstr "Estilo de comillas"
 
-#: src/ext_l10n.h:719
+#: src/ext_l10n.h:720
 #, fuzzy
 msgid "&Type:"
 msgstr "Tipo:"
 
-#: src/ext_l10n.h:720 src/frontends/qt2/QDocument.C:171
+#: src/ext_l10n.h:721 src/frontends/qt2/QDocument.C:171
 #, fuzzy
 msgid "``text''"
 msgstr "texto"
 
-#: src/ext_l10n.h:721 src/frontends/qt2/QDocument.C:172
+#: src/ext_l10n.h:722 src/frontends/qt2/QDocument.C:172
 #, fuzzy
 msgid "''text''"
 msgstr "texto"
 
-#: src/ext_l10n.h:722 src/frontends/qt2/QDocument.C:173
+#: src/ext_l10n.h:723 src/frontends/qt2/QDocument.C:173
 #, fuzzy
 msgid ",,text``"
 msgstr "texto"
 
-#: src/ext_l10n.h:723 src/frontends/qt2/QDocument.C:174
+#: src/ext_l10n.h:724 src/frontends/qt2/QDocument.C:174
 #, fuzzy
 msgid ",,text''"
 msgstr "texto"
 
-#: src/ext_l10n.h:724
+#: src/ext_l10n.h:725
 #, fuzzy
 msgid "Â«textÂ»"
 msgstr "texto"
 
-#: src/ext_l10n.h:725
+#: src/ext_l10n.h:726
 #, fuzzy
 msgid "Â»textÂ«"
 msgstr "texto"
 
-#: src/ext_l10n.h:726
+#: src/ext_l10n.h:727
 #, fuzzy
 msgid "&Single"
 msgstr "Sencillo"
 
-#: src/ext_l10n.h:727
+#: src/ext_l10n.h:728
 #, fuzzy
 msgid "&Double"
 msgstr "Dos caras"
 
-#: src/ext_l10n.h:728 src/ext_l10n.h:851
+#: src/ext_l10n.h:729 src/ext_l10n.h:852
 #: src/frontends/xforms/FormDocument.C:326
 msgid "Extra"
 msgstr "Extra"
 
-#: src/ext_l10n.h:729
+#: src/ext_l10n.h:730
 #, fuzzy
 msgid "F&loat Placement:"
 msgstr "Posición de flotantes:|#L"
 
-#: src/ext_l10n.h:730
+#: src/ext_l10n.h:731
 #, fuzzy
 msgid "S&ection number depth:"
 msgstr "Profundidad de sección"
 
-#: src/ext_l10n.h:731
+#: src/ext_l10n.h:732
 #, fuzzy
 msgid "&Table of contents depth:"
 msgstr "Profundidad del índice"
 
-#: src/ext_l10n.h:732
+#: src/ext_l10n.h:733
 #, fuzzy
 msgid "P&S Driver:"
 msgstr "Driver PS:|#S"
 
-#: src/ext_l10n.h:733
+#: src/ext_l10n.h:734
 #, fuzzy
 msgid "Use A&MS Math"
 msgstr "Usar viñetas tipo AMS|#M"
 
-#: src/ext_l10n.h:734 src/frontends/xforms/FormDocument.C:328
+#: src/ext_l10n.h:735 src/frontends/xforms/FormDocument.C:328
 msgid "Bullets"
 msgstr "Viñetas"
 
-#: src/ext_l10n.h:735
+#: src/ext_l10n.h:736
 #, fuzzy
 msgid "Si&ze"
 msgstr "Tamaño|#T"
 
-#: src/ext_l10n.h:737 src/frontends/qt2/QDocument.C:197
+#: src/ext_l10n.h:738 src/frontends/qt2/QDocument.C:197
 #: src/frontends/xforms/form_preferences.C:149
 msgid "tiny"
 msgstr "tiny"
 
-#: src/ext_l10n.h:738 src/frontends/qt2/QDocument.C:198
+#: src/ext_l10n.h:739 src/frontends/qt2/QDocument.C:198
 msgid "script"
 msgstr "script"
 
-#: src/ext_l10n.h:739 src/frontends/qt2/QDocument.C:199
+#: src/ext_l10n.h:740 src/frontends/qt2/QDocument.C:199
 msgid "footnote"
 msgstr "footnote"
 
-#: src/ext_l10n.h:740 src/frontends/qt2/QDocument.C:200
+#: src/ext_l10n.h:741 src/frontends/qt2/QDocument.C:200
 #: src/frontends/xforms/form_preferences.C:158
 msgid "small"
 msgstr "small"
 
-#: src/ext_l10n.h:741 src/frontends/qt2/QDocument.C:201
+#: src/ext_l10n.h:742 src/frontends/qt2/QDocument.C:201
 #: src/frontends/xforms/form_preferences.C:161
 msgid "normal"
 msgstr "normal"
 
-#: src/ext_l10n.h:742 src/frontends/qt2/QDocument.C:202
+#: src/ext_l10n.h:743 src/frontends/qt2/QDocument.C:202
 #: src/frontends/xforms/form_preferences.C:164
 msgid "large"
 msgstr "large"
 
-#: src/ext_l10n.h:743 src/frontends/controllers/character.C:106
+#: src/ext_l10n.h:744 src/frontends/controllers/character.C:106
 #: src/frontends/qt2/QDocument.C:203 src/lyxfont.C:56
 msgid "Large"
 msgstr "Grande"
 
-#: src/ext_l10n.h:744 src/frontends/qt2/QDocument.C:204
+#: src/ext_l10n.h:745 src/frontends/qt2/QDocument.C:204
 msgid "LARGE"
 msgstr ""
 
-#: src/ext_l10n.h:745 src/frontends/qt2/QDocument.C:205
+#: src/ext_l10n.h:746 src/frontends/qt2/QDocument.C:205
 #: src/frontends/xforms/form_preferences.C:173
 msgid "huge"
 msgstr "enorme"
 
-#: src/ext_l10n.h:746 src/frontends/controllers/character.C:112
+#: src/ext_l10n.h:747 src/frontends/controllers/character.C:112
 #: src/frontends/qt2/QDocument.C:206 src/lyxfont.C:57
 msgid "Huge"
 msgstr "Enorme"
 
-#: src/ext_l10n.h:747 src/frontends/xforms/form_document.C:614
+#: src/ext_l10n.h:748 src/frontends/xforms/form_document.C:614
 msgid "Bullet Depth"
 msgstr "Nivel de viñeta"
 
-#: src/ext_l10n.h:748
+#: src/ext_l10n.h:749
 msgid "&1"
 msgstr ""
 
-#: src/ext_l10n.h:749
+#: src/ext_l10n.h:750
 msgid "&2"
 msgstr ""
 
-#: src/ext_l10n.h:750
+#: src/ext_l10n.h:751
 msgid "&3"
 msgstr ""
 
-#: src/ext_l10n.h:751
+#: src/ext_l10n.h:752
 msgid "&4"
 msgstr ""
 
-#: src/ext_l10n.h:752
+#: src/ext_l10n.h:753
 #, fuzzy
 msgid "&Standard"
 msgstr "Estándar|#S"
 
-#: src/ext_l10n.h:753
+#: src/ext_l10n.h:754
 #, fuzzy
 msgid "&Maths"
 msgstr "Rutas"
 
-#: src/ext_l10n.h:754
+#: src/ext_l10n.h:755
 #, fuzzy
 msgid "&Ding 1"
 msgstr "Ding 1|#D"
 
-#: src/ext_l10n.h:755
+#: src/ext_l10n.h:756
 #, fuzzy
 msgid "D&ing 2"
 msgstr "Ding 2|#i"
 
-#: src/ext_l10n.h:756
+#: src/ext_l10n.h:757
 #, fuzzy
 msgid "Di&ng 3"
 msgstr "Ding 3|#n"
 
-#: src/ext_l10n.h:757
+#: src/ext_l10n.h:758
 #, fuzzy
 msgid "Din&g 4"
 msgstr "Ding 4|#g"
 
-#: src/ext_l10n.h:758
+#: src/ext_l10n.h:759
 #, fuzzy
 msgid "&LaTeX"
 msgstr "LaTeX"
 
-#: src/ext_l10n.h:763 src/frontends/qt2/QError.C:23
+#: src/ext_l10n.h:764 src/frontends/qt2/QError.C:23
 #: src/frontends/xforms/FormError.C:24
 msgid "LaTeX Error"
 msgstr "Error de LaTeX"
 
-#: src/ext_l10n.h:764 src/ext_l10n.h:778
+#: src/ext_l10n.h:765 src/ext_l10n.h:779
 #, fuzzy
 msgid "LaTeX error messages"
 msgstr "Error de LaTeX"
 
-#: src/ext_l10n.h:766
+#: src/ext_l10n.h:767
 #, fuzzy
 msgid "ERT inset display"
 msgstr "[no mostrado]"
 
-#: src/ext_l10n.h:767
+#: src/ext_l10n.h:768
 msgid "&Inline"
 msgstr ""
 
-#: src/ext_l10n.h:768
+#: src/ext_l10n.h:769
 msgid "Show ERT inline"
 msgstr ""
 
-#: src/ext_l10n.h:769
+#: src/ext_l10n.h:770
 #, fuzzy
 msgid "&Collapsed"
 msgstr "&Cerrar"
 
-#: src/ext_l10n.h:770
+#: src/ext_l10n.h:771
 msgid "Show ERT button only"
 msgstr ""
 
-#: src/ext_l10n.h:771
+#: src/ext_l10n.h:772
 #, fuzzy
 msgid "&Open"
 msgstr "Abrir"
 
-#: src/ext_l10n.h:772
+#: src/ext_l10n.h:773
 #, fuzzy
 msgid "Show ERT contents"
 msgstr "Indice General %i"
 
-#: src/ext_l10n.h:775
+#: src/ext_l10n.h:776
 #, fuzzy
 msgid "External Material"
 msgstr "Material externo...|x"
 
-#: src/ext_l10n.h:776
+#: src/ext_l10n.h:777
 #, fuzzy
 msgid "&Template"
 msgstr "Plantillas"
 
-#: src/ext_l10n.h:777
+#: src/ext_l10n.h:778
 #, fuzzy
 msgid "Available templates"
 msgstr "Claves disponibles"
 
-#: src/ext_l10n.h:779
+#: src/ext_l10n.h:780
 #, fuzzy
 msgid "&Edit file"
 msgstr "Editar archivo|#E"
 
-#: src/ext_l10n.h:780
+#: src/ext_l10n.h:781
 #, fuzzy
 msgid "Edit the file externally"
 msgstr "Insertar inset externo"
 
-#: src/ext_l10n.h:781
+#: src/ext_l10n.h:782
 #, fuzzy
 msgid "&View file"
 msgstr "nuevo-archivo"
 
-#: src/ext_l10n.h:782
+#: src/ext_l10n.h:783
 #, fuzzy
 msgid "View the file"
 msgstr "Ver Lista de Tablas"
 
-#: src/ext_l10n.h:783 src/ext_l10n.h:901 src/ext_l10n.h:1101
-#: src/ext_l10n.h:1187 src/ext_l10n.h:1200
+#: src/ext_l10n.h:784 src/ext_l10n.h:902 src/ext_l10n.h:1102
+#: src/ext_l10n.h:1188 src/ext_l10n.h:1201
 msgid "&Update"
 msgstr "&Actualizar"
 
-#: src/ext_l10n.h:784
+#: src/ext_l10n.h:785
 msgid "Update the material"
 msgstr ""
 
-#: src/ext_l10n.h:785 src/ext_l10n.h:1073
+#: src/ext_l10n.h:786 src/ext_l10n.h:1074
 msgid "&File"
 msgstr "&Archivo"
 
-#: src/ext_l10n.h:786
+#: src/ext_l10n.h:787
 #, fuzzy
 msgid "Filename"
 msgstr "Archivo:|#F"
 
-#: src/ext_l10n.h:787 src/ext_l10n.h:808 src/ext_l10n.h:889
-#: src/ext_l10n.h:1077
+#: src/ext_l10n.h:788 src/ext_l10n.h:809 src/ext_l10n.h:890
+#: src/ext_l10n.h:1078
 #, fuzzy
 msgid "&Browse ..."
 msgstr "Examinar..."
 
-#: src/ext_l10n.h:788
+#: src/ext_l10n.h:789
 #, fuzzy
 msgid "&Parameters"
 msgstr "Parámetros|#P"
 
-#: src/ext_l10n.h:789
+#: src/ext_l10n.h:790
 #, fuzzy
 msgid "Parameters"
 msgstr "Parámetros|#P"
 
-#: src/ext_l10n.h:793 src/ext_l10n.h:804 src/ext_l10n.h:1158
+#: src/ext_l10n.h:794 src/ext_l10n.h:805 src/ext_l10n.h:1159
 #, fuzzy
 msgid "Form1"
 msgstr "Desde"
 
-#: src/ext_l10n.h:798 src/frontends/xforms/form_float.C:29
+#: src/ext_l10n.h:799 src/frontends/xforms/form_float.C:29
 #, fuzzy
 msgid "Placement"
 msgstr "Posición de flotantes:|#L"
 
-#: src/ext_l10n.h:799
+#: src/ext_l10n.h:800
 #, fuzzy
 msgid "Bottom of the page"
 msgstr "% de pág."
 
-#: src/ext_l10n.h:800
+#: src/ext_l10n.h:801
 #, fuzzy
 msgid "Top of the page"
 msgstr "% de pág."
 
-#: src/ext_l10n.h:801
+#: src/ext_l10n.h:802
 #, fuzzy
 msgid "Page of floats"
 msgstr "Columnas"
 
-#: src/ext_l10n.h:802
+#: src/ext_l10n.h:803
 msgid "Here, if possible"
 msgstr ""
 
-#: src/ext_l10n.h:803
+#: src/ext_l10n.h:804
 msgid "Here, definitely"
 msgstr ""
 
 #. add the different tabfolders
-#: src/ext_l10n.h:805 src/frontends/xforms/FormGraphics.C:184
+#: src/ext_l10n.h:806 src/frontends/xforms/FormGraphics.C:184
 #, fuzzy
 msgid "File"
 msgstr "&Archivo"
 
-#: src/ext_l10n.h:806
+#: src/ext_l10n.h:807
 #, fuzzy
 msgid "&File:"
 msgstr "&Archivo"
 
-#: src/ext_l10n.h:807 src/ext_l10n.h:888
+#: src/ext_l10n.h:808 src/ext_l10n.h:889
 #, fuzzy
 msgid "File name to include"
 msgstr "Selecione el documento a insertar"
 
-#: src/ext_l10n.h:809 src/ext_l10n.h:890
+#: src/ext_l10n.h:810 src/ext_l10n.h:891
 #, fuzzy
 msgid "Select a file"
 msgstr "Seleccionar archivo de salida"
 
-#: src/ext_l10n.h:810
+#: src/ext_l10n.h:811
 #, fuzzy
 msgid "Screen Options"
 msgstr "Tipos en pantalla"
 
-#: src/ext_l10n.h:811 src/ext_l10n.h:827
+#: src/ext_l10n.h:812 src/ext_l10n.h:828
 #: src/frontends/xforms/form_minipage.C:28
 msgid "Width"
 msgstr "Anchura"
 
-#: src/ext_l10n.h:812
+#: src/ext_l10n.h:813
 #, fuzzy
 msgid "Monochrome"
 msgstr "en monocromo|#M"
 
-#: src/ext_l10n.h:813
+#: src/ext_l10n.h:814
 #, fuzzy
 msgid "Grayscale"
 msgstr "en grises|#G"
 
-#: src/ext_l10n.h:814
+#: src/ext_l10n.h:815
 #, fuzzy
 msgid "Color"
 msgstr "Colores"
 
-#: src/ext_l10n.h:815
+#: src/ext_l10n.h:816
 #, fuzzy
 msgid "Do not display"
 msgstr "No mostrar|#D"
 
-#: src/ext_l10n.h:817
+#: src/ext_l10n.h:818
 msgid "S&how:"
 msgstr ""
 
-#: src/ext_l10n.h:818 src/ext_l10n.h:828
+#: src/ext_l10n.h:819 src/ext_l10n.h:829
 msgid "Height"
 msgstr "Altura"
 
-#: src/ext_l10n.h:819
+#: src/ext_l10n.h:820
 #, fuzzy
 msgid "&Draft mode"
 msgstr "Modo de fórmulas"
 
-#: src/ext_l10n.h:820
+#: src/ext_l10n.h:821
 #, fuzzy
 msgid "draft mode"
 msgstr "Modo de fórmulas"
 
-#: src/ext_l10n.h:821 src/frontends/xforms/form_preferences.C:180
+#: src/ext_l10n.h:822 src/frontends/xforms/form_preferences.C:180
 #, fuzzy
 msgid "Size"
 msgstr "Tamaño|#T"
 
-#: src/ext_l10n.h:822
+#: src/ext_l10n.h:823
 #, fuzzy
 msgid "&Scale"
 msgstr "Bastante pequeña"
 
-#: src/ext_l10n.h:823
+#: src/ext_l10n.h:824
 #, fuzzy
 msgid "&Default"
 msgstr "Normal"
 
-#: src/ext_l10n.h:824
+#: src/ext_l10n.h:825
 #, fuzzy
 msgid "&Custom"
 msgstr "Cortar"
 
-#: src/ext_l10n.h:825 src/frontends/xforms/form_graphics.C:227
+#: src/ext_l10n.h:826 src/frontends/xforms/form_graphics.C:227
 #: src/frontends/xforms/form_graphics.C:444
 #, no-c-format
 msgid "%"
 msgstr ""
 
-#: src/ext_l10n.h:826
+#: src/ext_l10n.h:827
 msgid "Keep aspect&ratio"
 msgstr ""
 
-#: src/ext_l10n.h:829
+#: src/ext_l10n.h:830
 #, fuzzy
 msgid "EPS Options"
 msgstr "Opciones"
 
-#: src/ext_l10n.h:830
+#: src/ext_l10n.h:831
 msgid "Bounding box"
 msgstr ""
 
-#: src/ext_l10n.h:831
+#: src/ext_l10n.h:832
 #, fuzzy
 msgid "Left &bottom:"
 msgstr "Izquierda"
 
-#: src/ext_l10n.h:832
+#: src/ext_l10n.h:833
 #, fuzzy
 msgid "Right &top:"
 msgstr "Derecha"
 
-#: src/ext_l10n.h:833
+#: src/ext_l10n.h:834
 msgid "Y"
 msgstr ""
 
-#: src/ext_l10n.h:834
+#: src/ext_l10n.h:835
 msgid "X"
 msgstr ""
 
-#: src/ext_l10n.h:835 src/ext_l10n.h:838 src/ext_l10n.h:841 src/ext_l10n.h:844
+#: src/ext_l10n.h:836 src/ext_l10n.h:839 src/ext_l10n.h:842 src/ext_l10n.h:845
 #: src/frontends/qt2/lengthcombo.C:21
 msgid "pt"
 msgstr ""
 
-#: src/ext_l10n.h:836 src/ext_l10n.h:839 src/ext_l10n.h:842 src/ext_l10n.h:845
+#: src/ext_l10n.h:837 src/ext_l10n.h:840 src/ext_l10n.h:843 src/ext_l10n.h:846
 #: src/frontends/qt2/lengthcombo.C:19
 msgid "cm"
 msgstr "cm"
 
-#: src/ext_l10n.h:837 src/ext_l10n.h:840 src/ext_l10n.h:843 src/ext_l10n.h:846
+#: src/ext_l10n.h:838 src/ext_l10n.h:841 src/ext_l10n.h:844 src/ext_l10n.h:847
 #: src/frontends/qt2/lengthcombo.C:20
 #, fuzzy
 msgid "in"
 msgstr "tiny"
 
-#: src/ext_l10n.h:847
+#: src/ext_l10n.h:848
 msgid "&Get"
 msgstr ""
 
-#: src/ext_l10n.h:848
+#: src/ext_l10n.h:849
 msgid "Get bounding box from file"
 msgstr ""
 
-#: src/ext_l10n.h:849
+#: src/ext_l10n.h:850
 msgid "&Clip to bounding box"
 msgstr ""
 
-#: src/ext_l10n.h:850
+#: src/ext_l10n.h:851
 msgid "clip to bounding box"
 msgstr ""
 
-#: src/ext_l10n.h:852
+#: src/ext_l10n.h:853
 msgid "Rotation"
 msgstr "Rotación"
 
-#: src/ext_l10n.h:853
+#: src/ext_l10n.h:854
 #, fuzzy
 msgid "&Angle:"
 msgstr "Ángulo|#L"
 
-#: src/ext_l10n.h:854
+#: src/ext_l10n.h:855
 msgid "&Origin:"
 msgstr ""
 
-#: src/ext_l10n.h:856
+#: src/ext_l10n.h:857
 msgid "leftTop"
 msgstr ""
 
-#: src/ext_l10n.h:857
+#: src/ext_l10n.h:858
 #, fuzzy
 msgid "leftBottom"
 msgstr "&Fondo"
 
-#: src/ext_l10n.h:858
+#: src/ext_l10n.h:859
 #, fuzzy
 msgid "leftBaseline"
 msgstr "línea de tabla"
 
-#: src/ext_l10n.h:859
+#: src/ext_l10n.h:860
 #, fuzzy
 msgid "center"
 msgstr "Centro"
 
-#: src/ext_l10n.h:860
+#: src/ext_l10n.h:861
 msgid "centerTop"
 msgstr ""
 
-#: src/ext_l10n.h:861
+#: src/ext_l10n.h:862
 #, fuzzy
 msgid "centerBottom"
 msgstr "Arriba | Centrado | Abajo"
 
-#: src/ext_l10n.h:862
+#: src/ext_l10n.h:863
 msgid "centerBaseline"
 msgstr ""
 
-#: src/ext_l10n.h:863
+#: src/ext_l10n.h:864
 #, fuzzy
 msgid "rightTop"
 msgstr "Altura"
 
-#: src/ext_l10n.h:864
+#: src/ext_l10n.h:865
 #, fuzzy
 msgid "rightBottom"
 msgstr "derecha del botón"
 
-#: src/ext_l10n.h:865
+#: src/ext_l10n.h:866
 #, fuzzy
 msgid "rightBaseline"
 msgstr "línea de tabla"
 
-#: src/ext_l10n.h:866
+#: src/ext_l10n.h:867
 #, fuzzy
 msgid "referencePoint"
 msgstr "Preferencias"
 
-#: src/ext_l10n.h:867
+#: src/ext_l10n.h:868
 #, fuzzy
 msgid "LaTeX options"
 msgstr "opciones extras"
 
-#: src/ext_l10n.h:868
+#: src/ext_l10n.h:869
 #, fuzzy
 msgid "Su&bfigure"
 msgstr "Subfigura|#b"
 
-#: src/ext_l10n.h:869
+#: src/ext_l10n.h:870
 msgid "The sub-caption for the figure"
 msgstr ""
 
-#: src/ext_l10n.h:874
+#: src/ext_l10n.h:875
 #, fuzzy
 msgid "Include File"
 msgstr "Incluir archivo|a"
 
-#: src/ext_l10n.h:875
+#: src/ext_l10n.h:876
 #, fuzzy
 msgid "Include type"
 msgstr "Incluir archivo|a"
 
-#: src/ext_l10n.h:876
+#: src/ext_l10n.h:877
 #, fuzzy
 msgid "&Include"
 msgstr "Incluir"
 
-#: src/ext_l10n.h:877 src/ext_l10n.h:879 src/ext_l10n.h:881 src/ext_l10n.h:884
-#: src/ext_l10n.h:886
+#: src/ext_l10n.h:878 src/ext_l10n.h:880 src/ext_l10n.h:882 src/ext_l10n.h:885
+#: src/ext_l10n.h:887
 msgid "FIXME"
 msgstr ""
 
-#: src/ext_l10n.h:878
+#: src/ext_l10n.h:879
 #, fuzzy
 msgid "I&nput"
 msgstr "Entrada"
 
-#: src/ext_l10n.h:880
+#: src/ext_l10n.h:881
 #, fuzzy
 msgid "&Verbatim"
 msgstr "Literal|#T"
 
-#: src/ext_l10n.h:882
+#: src/ext_l10n.h:883
 msgid "Options"
 msgstr "Opciones"
 
-#: src/ext_l10n.h:883
+#: src/ext_l10n.h:884
 #, fuzzy
 msgid "&Don't typeset"
 msgstr "No tipografíe|#N"
 
-#: src/ext_l10n.h:885
+#: src/ext_l10n.h:886
 #, fuzzy
 msgid "Visible &Space"
 msgstr "Espacio visible|#s"
 
-#: src/ext_l10n.h:887
+#: src/ext_l10n.h:888
 #, fuzzy
 msgid "&Filename:"
 msgstr "Archivo:|#F"
 
-#: src/ext_l10n.h:893
+#: src/ext_l10n.h:894
 #, fuzzy
 msgid "&Load"
 msgstr "Cargar|#C"
 
-#: src/ext_l10n.h:894
+#: src/ext_l10n.h:895
 #, fuzzy
 msgid "Load the file"
 msgstr "Ultimos archivos"
 
-#: src/ext_l10n.h:896 src/ext_l10n.h:1174
+#: src/ext_l10n.h:897 src/ext_l10n.h:1175
 #, fuzzy
 msgid "&Keyword"
 msgstr "Clave"
 
-#: src/ext_l10n.h:897 src/ext_l10n.h:1029 src/ext_l10n.h:1175
+#: src/ext_l10n.h:898 src/ext_l10n.h:1030 src/ext_l10n.h:1176
 msgid "Index entry"
 msgstr "Ingresar índice"
 
-#: src/ext_l10n.h:900 src/frontends/qt2/QLog.C:33
+#: src/ext_l10n.h:901 src/frontends/qt2/QLog.C:33
 msgid "Log"
 msgstr ""
 
-#: src/ext_l10n.h:902 src/ext_l10n.h:1201
+#: src/ext_l10n.h:903 src/ext_l10n.h:1202
 msgid "Update the display"
 msgstr ""
 
-#: src/ext_l10n.h:904
+#: src/ext_l10n.h:905
 #, fuzzy
 msgid "Minipage settings"
 msgstr "línea de minipágina"
 
-#: src/ext_l10n.h:906 src/ext_l10n.h:1055
+#: src/ext_l10n.h:907 src/ext_l10n.h:1056
 #, fuzzy
 msgid "Top"
 msgstr "&Alto"
 
-#: src/ext_l10n.h:907 src/ext_l10n.h:1056
+#: src/ext_l10n.h:908 src/ext_l10n.h:1057
 #, fuzzy
 msgid "Middle"
 msgstr "&Medio"
 
-#: src/ext_l10n.h:908 src/ext_l10n.h:1057
+#: src/ext_l10n.h:909 src/ext_l10n.h:1058
 #, fuzzy
 msgid "Bottom"
 msgstr "&Fondo"
 
-#: src/ext_l10n.h:909
+#: src/ext_l10n.h:910
 #, fuzzy
 msgid "Vertical alignment"
 msgstr "Alin. Vertical|#V"
 
-#: src/ext_l10n.h:910
+#: src/ext_l10n.h:911
 #, fuzzy
 msgid "A&lignment:"
 msgstr "Alineación"
 
-#: src/ext_l10n.h:911
+#: src/ext_l10n.h:912
 msgid "Units of width value"
 msgstr ""
 
-#: src/ext_l10n.h:912
+#: src/ext_l10n.h:913
 #, fuzzy
 msgid "Width value"
 msgstr "Anchura"
 
-#: src/ext_l10n.h:913
+#: src/ext_l10n.h:914
 msgid "&Units:"
 msgstr ""
 
-#: src/ext_l10n.h:919
+#: src/ext_l10n.h:920
 msgid "&Alignment and Spacing"
 msgstr ""
 
-#: src/ext_l10n.h:920
+#: src/ext_l10n.h:921
 #, fuzzy
 msgid "Alignment:"
 msgstr "Alineación"
 
-#: src/ext_l10n.h:921
+#: src/ext_l10n.h:922
 #, fuzzy
 msgid "Justified"
 msgstr "Personalización|C"
 
-#: src/ext_l10n.h:922
+#: src/ext_l10n.h:923
 msgid "Left"
 msgstr "Izquierda"
 
-#: src/ext_l10n.h:923
+#: src/ext_l10n.h:924
 msgid "Right"
 msgstr "Derecha"
 
-#: src/ext_l10n.h:924
+#: src/ext_l10n.h:925
 #, fuzzy
 msgid "Centered"
 msgstr "Centro"
 
-#: src/ext_l10n.h:925
+#: src/ext_l10n.h:926
 #, fuzzy
 msgid "No indentation"
 msgstr "Orientación"
 
-#: src/ext_l10n.h:926
+#: src/ext_l10n.h:927
 #, fuzzy
 msgid "Spacing"
 msgstr "Espaciado|#d"
 
-#: src/ext_l10n.h:927 src/ext_l10n.h:938 src/ext_l10n.h:949 src/ext_l10n.h:960
-#: src/ext_l10n.h:971 src/ext_l10n.h:982 src/ext_l10n.h:1035
+#: src/ext_l10n.h:928 src/ext_l10n.h:939 src/ext_l10n.h:950 src/ext_l10n.h:961
+#: src/ext_l10n.h:972 src/ext_l10n.h:983 src/ext_l10n.h:1036
 msgid "Centimetres"
 msgstr "Centrímetros"
 
-#: src/ext_l10n.h:928 src/ext_l10n.h:939 src/ext_l10n.h:950 src/ext_l10n.h:961
-#: src/ext_l10n.h:972 src/ext_l10n.h:983 src/ext_l10n.h:1036
+#: src/ext_l10n.h:929 src/ext_l10n.h:940 src/ext_l10n.h:951 src/ext_l10n.h:962
+#: src/ext_l10n.h:973 src/ext_l10n.h:984 src/ext_l10n.h:1037
 msgid "Inches"
 msgstr "Pulgadas"
 
-#: src/ext_l10n.h:929 src/ext_l10n.h:940 src/ext_l10n.h:951 src/ext_l10n.h:962
-#: src/ext_l10n.h:973 src/ext_l10n.h:984 src/ext_l10n.h:1037
+#: src/ext_l10n.h:930 src/ext_l10n.h:941 src/ext_l10n.h:952 src/ext_l10n.h:963
+#: src/ext_l10n.h:974 src/ext_l10n.h:985 src/ext_l10n.h:1038
 #, fuzzy
 msgid "Points"
 msgstr "Imprimir"
 
-#: src/ext_l10n.h:930 src/ext_l10n.h:941 src/ext_l10n.h:952 src/ext_l10n.h:963
-#: src/ext_l10n.h:974 src/ext_l10n.h:985 src/ext_l10n.h:1038
+#: src/ext_l10n.h:931 src/ext_l10n.h:942 src/ext_l10n.h:953 src/ext_l10n.h:964
+#: src/ext_l10n.h:975 src/ext_l10n.h:986 src/ext_l10n.h:1039
 msgid "Millimetres"
 msgstr "Milímetros"
 
-#: src/ext_l10n.h:931 src/ext_l10n.h:942 src/ext_l10n.h:953 src/ext_l10n.h:964
-#: src/ext_l10n.h:975 src/ext_l10n.h:986 src/ext_l10n.h:1039
-msgid "Picas"
-msgstr "Picas"
-
 #: src/ext_l10n.h:932 src/ext_l10n.h:943 src/ext_l10n.h:954 src/ext_l10n.h:965
 #: src/ext_l10n.h:976 src/ext_l10n.h:987 src/ext_l10n.h:1040
-#, fuzzy
-msgid "ex Units"
-msgstr "ex unidades"
+msgid "Picas"
+msgstr "Picas"
 
 #: src/ext_l10n.h:933 src/ext_l10n.h:944 src/ext_l10n.h:955 src/ext_l10n.h:966
 #: src/ext_l10n.h:977 src/ext_l10n.h:988 src/ext_l10n.h:1041
 #, fuzzy
-msgid "em Units"
-msgstr "em unidades"
+msgid "ex Units"
+msgstr "ex unidades"
 
 #: src/ext_l10n.h:934 src/ext_l10n.h:945 src/ext_l10n.h:956 src/ext_l10n.h:967
 #: src/ext_l10n.h:978 src/ext_l10n.h:989 src/ext_l10n.h:1042
 #, fuzzy
-msgid "Scaled Points"
-msgstr "Puntos escalados (1/65536 pt)"
+msgid "em Units"
+msgstr "em unidades"
 
 #: src/ext_l10n.h:935 src/ext_l10n.h:946 src/ext_l10n.h:957 src/ext_l10n.h:968
 #: src/ext_l10n.h:979 src/ext_l10n.h:990 src/ext_l10n.h:1043
 #, fuzzy
-msgid "Big/PS Points"
-msgstr "Puntos PS/Grandes (1/72 pulgada)"
+msgid "Scaled Points"
+msgstr "Puntos escalados (1/65536 pt)"
 
 #: src/ext_l10n.h:936 src/ext_l10n.h:947 src/ext_l10n.h:958 src/ext_l10n.h:969
 #: src/ext_l10n.h:980 src/ext_l10n.h:991 src/ext_l10n.h:1044
 #, fuzzy
-msgid "Didot Points"
-msgstr "Imprimir"
+msgid "Big/PS Points"
+msgstr "Puntos PS/Grandes (1/72 pulgada)"
 
 #: src/ext_l10n.h:937 src/ext_l10n.h:948 src/ext_l10n.h:959 src/ext_l10n.h:970
 #: src/ext_l10n.h:981 src/ext_l10n.h:992 src/ext_l10n.h:1045
 #, fuzzy
+msgid "Didot Points"
+msgstr "Imprimir"
+
+#: src/ext_l10n.h:938 src/ext_l10n.h:949 src/ext_l10n.h:960 src/ext_l10n.h:971
+#: src/ext_l10n.h:982 src/ext_l10n.h:993 src/ext_l10n.h:1046
+#, fuzzy
 msgid "Cicero Points"
 msgstr "Imprimir"
 
-#: src/ext_l10n.h:993 src/ext_l10n.h:995
+#: src/ext_l10n.h:994 src/ext_l10n.h:996
 msgid "Units:"
 msgstr ""
 
-#: src/ext_l10n.h:994 src/ext_l10n.h:996
+#: src/ext_l10n.h:995 src/ext_l10n.h:997
 msgid "Unit of Size, Stretch and Slink"
 msgstr ""
 
-#: src/ext_l10n.h:997
+#: src/ext_l10n.h:998
 #, fuzzy
 msgid "Value:"
 msgstr "Valor"
 
-#: src/ext_l10n.h:998
+#: src/ext_l10n.h:999
 #, fuzzy
 msgid "Amount of spacing"
 msgstr "Espaciado"
 
-#: src/ext_l10n.h:999
+#: src/ext_l10n.h:1000
 #, fuzzy
 msgid "Stretch:"
 msgstr "Francés"
 
-#: src/ext_l10n.h:1000 src/ext_l10n.h:1002
-msgid "Margin by with paragraph is allowed to increase"
+#: src/ext_l10n.h:1001
+msgid "Margin by which paragraph is allowed to increase"
 msgstr ""
 
-#: src/ext_l10n.h:1001
+#: src/ext_l10n.h:1002
 msgid "Shrink:"
 msgstr ""
 
-#: src/ext_l10n.h:1004 src/ext_l10n.h:1013
+#: src/ext_l10n.h:1003
+msgid "Margin by which paragraph is allowed to decrease"
+msgstr ""
+
+#: src/ext_l10n.h:1005 src/ext_l10n.h:1014
 #, fuzzy
 msgid "DefSkip"
 msgstr "Salto por defecto:|#S"
 
-#: src/ext_l10n.h:1005 src/ext_l10n.h:1014
+#: src/ext_l10n.h:1006 src/ext_l10n.h:1015
 #, fuzzy
 msgid "SmallSkip"
 msgstr "Muy pequeña"
 
-#: src/ext_l10n.h:1006 src/ext_l10n.h:1015
+#: src/ext_l10n.h:1007 src/ext_l10n.h:1016
 #, fuzzy
 msgid "MedSkip"
 msgstr "Medio"
 
-#: src/ext_l10n.h:1007 src/ext_l10n.h:1016
+#: src/ext_l10n.h:1008 src/ext_l10n.h:1017
 #, fuzzy
 msgid "BigSkip"
 msgstr "Grande"
 
-#: src/ext_l10n.h:1008 src/ext_l10n.h:1017
+#: src/ext_l10n.h:1009 src/ext_l10n.h:1018
 msgid "VFill"
 msgstr "VFill"
 
-#: src/ext_l10n.h:1010
+#: src/ext_l10n.h:1011
 #, fuzzy
 msgid "Above:"
 msgstr "Encima:|#E"
 
-#: src/ext_l10n.h:1011
+#: src/ext_l10n.h:1012
 #, fuzzy
 msgid "Below:"
 msgstr "Debajo:|#j"
 
-#: src/ext_l10n.h:1019
+#: src/ext_l10n.h:1020
 #, fuzzy
 msgid "Keep space at the top of the page"
 msgstr "Mantener espacio al inicio de página"
 
-#: src/ext_l10n.h:1020
+#: src/ext_l10n.h:1021
 #, fuzzy
 msgid "Keep space at top of the page"
 msgstr "Mantener espacio al inicio de página"
 
-#: src/ext_l10n.h:1021
+#: src/ext_l10n.h:1022
 #, fuzzy
 msgid "Keep space at the bottom of the page"
 msgstr "Mantener espacio al fin de página"
 
-#: src/ext_l10n.h:1022
+#: src/ext_l10n.h:1023
 #, fuzzy
 msgid "List environment"
 msgstr "Alineación|#A"
 
-#: src/ext_l10n.h:1023
+#: src/ext_l10n.h:1024
 #, fuzzy
 msgid "Label width:"
 msgstr "Etiquetar con"
 
-#: src/ext_l10n.h:1024
+#: src/ext_l10n.h:1025
 #, fuzzy
 msgid "Label width in list environment"
 msgstr "Cambiar profundidad de entorno|e"
 
-#: src/ext_l10n.h:1025
+#: src/ext_l10n.h:1026
 #, fuzzy
 msgid "&Lines and Page breaks"
 msgstr "Salto de página"
 
-#: src/ext_l10n.h:1026
+#: src/ext_l10n.h:1027
 msgid "Page break"
 msgstr "Salto de página"
 
-#: src/ext_l10n.h:1027 src/ext_l10n.h:1031
+#: src/ext_l10n.h:1028 src/ext_l10n.h:1032
 #, fuzzy
 msgid "above paragraph"
 msgstr "Retroceder un párrafo"
 
-#: src/ext_l10n.h:1028 src/ext_l10n.h:1032
+#: src/ext_l10n.h:1029 src/ext_l10n.h:1033
 #, fuzzy
 msgid "below paragraph"
 msgstr "Retroceder un párrafo"
 
-#: src/ext_l10n.h:1030
+#: src/ext_l10n.h:1031
 #, fuzzy
 msgid "Line"
 msgstr "Líneas"
 
-#: src/ext_l10n.h:1033
+#: src/ext_l10n.h:1034
 #, fuzzy
 msgid "&Extra options"
 msgstr "Opciones Extras"
 
-#: src/ext_l10n.h:1034
+#: src/ext_l10n.h:1035
 #, fuzzy
 msgid "Unit:"
 msgstr "Tipo: "
 
-#: src/ext_l10n.h:1047 src/frontends/qt2/QMinipage.C:33
+#: src/ext_l10n.h:1048 src/frontends/qt2/QMinipage.C:33
 msgid "Minipage"
 msgstr "Minipágina"
 
-#: src/ext_l10n.h:1048
+#: src/ext_l10n.h:1049
 #, fuzzy
 msgid "Wrap text around floats"
 msgstr "Ajustar texto alrededor de flotantes (floatfit)"
 
-#: src/ext_l10n.h:1049
+#: src/ext_l10n.h:1050
 #, fuzzy
 msgid "Indent whole paragraph"
 msgstr "Párrafo indentado"
 
-#: src/ext_l10n.h:1050
+#: src/ext_l10n.h:1051
 #, fuzzy
 msgid "Width:"
 msgstr "Anchura"
 
-#: src/ext_l10n.h:1051
+#: src/ext_l10n.h:1052
 #, fuzzy
 msgid "Minipage options"
 msgstr "línea de minipágina"
 
-#: src/ext_l10n.h:1052
+#: src/ext_l10n.h:1053
 #, fuzzy
 msgid "Start new minipage"
 msgstr "&Comenzar nueva minipágina"
 
-#: src/ext_l10n.h:1053
+#: src/ext_l10n.h:1054
 #, fuzzy
 msgid "HFill between minipage paragraphs"
 msgstr "&HFill entre párrafos de minipáginas"
 
-#: src/ext_l10n.h:1054
+#: src/ext_l10n.h:1055
 #, fuzzy
 msgid "Vertical Alignment:"
 msgstr "Alin. Vertical|#V"
 
-#: src/ext_l10n.h:1062
+#: src/ext_l10n.h:1063
 #, fuzzy
 msgid "LaTeX pre-amble"
 msgstr "Preámbulo LaTeX"
 
-#: src/ext_l10n.h:1063
+#: src/ext_l10n.h:1064
 #, fuzzy
 msgid "The LaTeX pre-amble"
 msgstr "Preámbulo LaTeX"
 
-#: src/ext_l10n.h:1064
+#: src/ext_l10n.h:1065
 msgid "&Edit ..."
 msgstr ""
 
-#: src/ext_l10n.h:1065
+#: src/ext_l10n.h:1066
 msgid "Edit the pre-amble in an external editor"
 msgstr ""
 
-#: src/LyXAction.C:138 src/LyXAction.C:145 src/ext_l10n.h:1069
+#: src/LyXAction.C:138 src/LyXAction.C:145 src/ext_l10n.h:1070
 #: src/frontends/qt2/QPrint.C:35 src/frontends/xforms/FormPrint.C:35
 #: src/frontends/xforms/form_print.C:133
 msgid "Print"
 msgstr "Imprimir"
 
-#: src/ext_l10n.h:1070
+#: src/ext_l10n.h:1071
 #, fuzzy
 msgid "Print Destination"
 msgstr "Orientación"
 
-#: src/ext_l10n.h:1071
+#: src/ext_l10n.h:1072
 #, fuzzy
 msgid "P&rinter"
 msgstr "Impresora"
 
-#: src/ext_l10n.h:1072
+#: src/ext_l10n.h:1073
 msgid "Send output to the printer"
 msgstr ""
 
-#: src/ext_l10n.h:1074 src/ext_l10n.h:1076
+#: src/ext_l10n.h:1075 src/ext_l10n.h:1077
 #, fuzzy
 msgid "Send output to a file"
 msgstr "Seleccionar archivo de salida"
 
-#: src/ext_l10n.h:1075
+#: src/ext_l10n.h:1076
 msgid "Send output to the given printer"
 msgstr ""
 
-#: src/ext_l10n.h:1078
+#: src/ext_l10n.h:1079
 msgid "Pages"
 msgstr "Páginas"
 
-#: src/ext_l10n.h:1079
+#: src/ext_l10n.h:1080
 #, fuzzy
 msgid "&All"
 msgstr "&Aplicar"
 
-#: src/ext_l10n.h:1080
+#: src/ext_l10n.h:1081
 #, fuzzy
 msgid "Print all pages"
 msgstr "Imprimir todas las páginas"
 
-#: src/ext_l10n.h:1081
+#: src/ext_l10n.h:1082
 #, fuzzy
 msgid "&Odd"
 msgstr "&Agregar"
 
-#: src/ext_l10n.h:1082
+#: src/ext_l10n.h:1083
 #, fuzzy
 msgid "Print odd pages only"
 msgstr "Imprimir sólo las páginas impares"
 
-#: src/ext_l10n.h:1083
+#: src/ext_l10n.h:1084
 #, fuzzy
 msgid "&Even"
 msgstr "&Sólo páginas impares"
 
-#: src/ext_l10n.h:1084
+#: src/ext_l10n.h:1085
 #, fuzzy
 msgid "Print even pages only"
 msgstr "Imprimir sólo las páginas pares"
 
-#: src/ext_l10n.h:1085
+#: src/ext_l10n.h:1086
 #, fuzzy
 msgid "&Last page:"
 msgstr "Idioma"
 
-#: src/ext_l10n.h:1086
+#: src/ext_l10n.h:1087
 #, fuzzy
 msgid "Page number to print to"
 msgstr "Imposible imprimir"
 
-#: src/ext_l10n.h:1087
+#: src/ext_l10n.h:1088
 #, fuzzy
 msgid "Re&verse order"
 msgstr "&Orden inverso"
 
-#: src/ext_l10n.h:1088
+#: src/ext_l10n.h:1089
 #, fuzzy
 msgid "Print in reverse order"
 msgstr "Imprimir en orden inverso (última página primero)"
 
-#: src/ext_l10n.h:1089
+#: src/ext_l10n.h:1090
 #, fuzzy
 msgid "Page number to print from"
 msgstr "Imposible imprimir"
 
-#: src/ext_l10n.h:1090
+#: src/ext_l10n.h:1091
 #, fuzzy
 msgid "Ran&ge"
 msgstr "Página"
 
-#: src/ext_l10n.h:1091
+#: src/ext_l10n.h:1092
 #, fuzzy
 msgid "Set a range of pages to print"
 msgstr "Número de copias a imprimir"
 
-#: src/ext_l10n.h:1092
+#: src/ext_l10n.h:1093
 #, fuzzy
 msgid "&Starting range:"
 msgstr "&Comenzar nueva minipágina"
 
-#: src/ext_l10n.h:1093 src/frontends/xforms/form_print.C:139
+#: src/ext_l10n.h:1094 src/frontends/xforms/form_print.C:139
 msgid "Copies"
 msgstr "Copias"
 
-#: src/ext_l10n.h:1094
+#: src/ext_l10n.h:1095
 #, fuzzy
 msgid "Number of copies"
 msgstr "Número de copias a imprimir"
 
-#: src/ext_l10n.h:1095
+#: src/ext_l10n.h:1096
 #, fuzzy
 msgid "&Collate"
 msgstr "latex"
 
-#: src/ext_l10n.h:1096
+#: src/ext_l10n.h:1097
 #, fuzzy
 msgid "Collate copies"
 msgstr "Copias"
 
-#: src/ext_l10n.h:1097
+#: src/ext_l10n.h:1098
 msgid "&Print"
 msgstr "&Imprimir"
 
-#: src/LyXAction.C:130 src/ext_l10n.h:1098 src/ext_l10n.h:1157
+#: src/LyXAction.C:130 src/ext_l10n.h:1099 src/ext_l10n.h:1158
 #: src/frontends/controllers/ButtonController.h:74
 #: src/frontends/xforms/form_maths_deco.C:32
 #: src/frontends/xforms/form_maths_space.C:73
@@ -4835,362 +4844,362 @@ msgstr "&Imprimir"
 msgid "Close"
 msgstr "Cerrar"
 
-#: src/ext_l10n.h:1100 src/ext_l10n.h:1185
+#: src/ext_l10n.h:1101 src/ext_l10n.h:1186
 #, fuzzy
 msgid "&Type"
 msgstr "Tipo"
 
-#: src/ext_l10n.h:1102
+#: src/ext_l10n.h:1103
 #, fuzzy
 msgid "Update the reference list"
 msgstr "Editar preferencias"
 
-#: src/ext_l10n.h:1103
+#: src/ext_l10n.h:1104
 msgid "Sort"
 msgstr "Ordenar"
 
-#: src/ext_l10n.h:1104
+#: src/ext_l10n.h:1105
 #, fuzzy
 msgid "Sort references in alphabetical order"
 msgstr "¿Ordenar referencias en orden alfabético?"
 
-#: src/ext_l10n.h:1105 src/frontends/qt2/QRef.C:103
+#: src/ext_l10n.h:1106 src/frontends/qt2/QRef.C:103
 #, fuzzy
 msgid "&Goto"
 msgstr "&Fondo"
 
-#: src/ext_l10n.h:1106
+#: src/ext_l10n.h:1107
 #, fuzzy
 msgid "Move the document cursor to reference"
 msgstr "Es posible que el documento esté truncado"
 
-#: src/ext_l10n.h:1108
+#: src/ext_l10n.h:1109
 #, fuzzy
 msgid "Page number"
 msgstr "Número de página"
 
-#: src/ext_l10n.h:1109
+#: src/ext_l10n.h:1110
 msgid "Ref on page xxx"
 msgstr "Red en página xxx"
 
-#: src/ext_l10n.h:1110
+#: src/ext_l10n.h:1111
 #, fuzzy
 msgid "On page xxx"
 msgstr "en página xxx"
 
-#: src/ext_l10n.h:1111
+#: src/ext_l10n.h:1112
 #, fuzzy
 msgid "Pretty reference"
 msgstr "Preferencias"
 
-#: src/ext_l10n.h:1112
+#: src/ext_l10n.h:1113
 #, fuzzy
 msgid "Reference as it appears in output"
 msgstr "El nombre del formato que aparecerá en los menúes."
 
-#: src/ext_l10n.h:1113
+#: src/ext_l10n.h:1114
 #, fuzzy
 msgid "&Reference:"
 msgstr "Referencia :"
 
-#: src/ext_l10n.h:1114
+#: src/ext_l10n.h:1115
 #, fuzzy
 msgid "&Name:"
 msgstr "Nombre:"
 
-#: src/ext_l10n.h:1115
+#: src/ext_l10n.h:1116
 #, fuzzy
 msgid "Available references"
 msgstr "Referencias disponibles"
 
-#: src/ext_l10n.h:1118
+#: src/ext_l10n.h:1119
 #, fuzzy
 msgid "Search and replace"
 msgstr "Buscar y Reemplazar"
 
-#: src/ext_l10n.h:1119
+#: src/ext_l10n.h:1120
 #, fuzzy
 msgid "&Find:"
 msgstr "Buscar|#B"
 
-#: src/ext_l10n.h:1120
+#: src/ext_l10n.h:1121
 #, fuzzy
 msgid "Replace &with:"
 msgstr "Reemplazar con|#R"
 
-#: src/ext_l10n.h:1121
+#: src/ext_l10n.h:1122
 #, fuzzy
 msgid "Case &sensitive"
 msgstr "Mayús/Minús|#M"
 
-#: src/ext_l10n.h:1122
+#: src/ext_l10n.h:1123
 msgid "Match whole words onl&y"
 msgstr ""
 
-#: src/ext_l10n.h:1123
+#: src/ext_l10n.h:1124
 msgid "Find &Next"
 msgstr ""
 
-#: src/ext_l10n.h:1124 src/ext_l10n.h:1132 src/ext_l10n.h:1181
+#: src/ext_l10n.h:1125 src/ext_l10n.h:1133 src/ext_l10n.h:1182
 #, fuzzy
 msgid "&Replace"
 msgstr "Reemplazar"
 
-#: src/ext_l10n.h:1125
+#: src/ext_l10n.h:1126
 #, fuzzy
 msgid "Replace &All "
 msgstr "Reemp. todos|#R#r"
 
-#: src/ext_l10n.h:1126
+#: src/ext_l10n.h:1127
 msgid "Search &backwards"
 msgstr ""
 
-#: src/ext_l10n.h:1128
+#: src/ext_l10n.h:1129
 #, fuzzy
 msgid "File: "
 msgstr "Archivo `"
 
-#: src/ext_l10n.h:1130 src/frontends/qt2/QSpellchecker.C:27
+#: src/ext_l10n.h:1131 src/frontends/qt2/QSpellchecker.C:27
 #, fuzzy
 msgid "Spellchecker"
 msgstr "Corrector ortográfico"
 
-#: src/ext_l10n.h:1131
+#: src/ext_l10n.h:1132
 #, fuzzy
 msgid "Suggestions:"
 msgstr "Funciones"
 
-#: src/ext_l10n.h:1133
+#: src/ext_l10n.h:1134
 #, fuzzy
 msgid "Replace word with current choice"
 msgstr "¿Reemplazar con el documento actual?"
 
-#: src/ext_l10n.h:1134
+#: src/ext_l10n.h:1135
 msgid "&Add"
 msgstr "&Agregar"
 
-#: src/ext_l10n.h:1135
+#: src/ext_l10n.h:1136
 #, fuzzy
 msgid "Add the word to your personal dictionary"
 msgstr "Insertar en diccionario personal|#p"
 
-#: src/ext_l10n.h:1136
+#: src/ext_l10n.h:1137
 #, fuzzy
 msgid "&Ignore"
 msgstr "Ignorar"
 
-#: src/ext_l10n.h:1137
+#: src/ext_l10n.h:1138
 #, fuzzy
 msgid "Ignore this word"
 msgstr "Ignorar palabra|#g"
 
-#: src/ext_l10n.h:1138
+#: src/ext_l10n.h:1139
 #, fuzzy
 msgid "&Accept"
 msgstr "Accepted"
 
-#: src/ext_l10n.h:1139
+#: src/ext_l10n.h:1140
 #, fuzzy
 msgid "Accept word for this session"
 msgstr "Aceptar la palabra por esta sesión|#A"
 
-#: src/ext_l10n.h:1140
+#: src/ext_l10n.h:1141
 #, fuzzy
 msgid "&Options..."
 msgstr "Opciones"
 
-#: src/ext_l10n.h:1142
+#: src/ext_l10n.h:1143
 #, fuzzy
 msgid "How far spellchecking has got"
 msgstr "Comenzar verificación de ortografía|#C"
 
-#: src/ext_l10n.h:1143 src/frontends/xforms/form_spellchecker.C:37
+#: src/ext_l10n.h:1144 src/frontends/xforms/form_spellchecker.C:37
 #, fuzzy
 msgid "Suggestions"
 msgstr "Funciones"
 
-#: src/ext_l10n.h:1144
+#: src/ext_l10n.h:1145
 #, fuzzy
 msgid "Replacement:"
 msgstr "Posición de flotantes:|#L"
 
-#: src/ext_l10n.h:1145
+#: src/ext_l10n.h:1146
 #, fuzzy
 msgid "Current word"
 msgstr "Centro"
 
-#: src/ext_l10n.h:1146
+#: src/ext_l10n.h:1147
 #, fuzzy
 msgid "Unknown:"
 msgstr "desconocido"
 
-#: src/ext_l10n.h:1147
+#: src/ext_l10n.h:1148
 #, fuzzy
 msgid "Replace with selected word"
 msgstr "¿Reemplazar con el documento actual?"
 
-#: src/ext_l10n.h:1148
+#: src/ext_l10n.h:1149
 msgid "&Start..."
 msgstr ""
 
-#: src/ext_l10n.h:1149
+#: src/ext_l10n.h:1150
 #, fuzzy
 msgid "Start spellcheck"
 msgstr "Comenzar verificación de ortografía|#C"
 
-#: src/ext_l10n.h:1150 src/frontends/qt2/QTabularCreate.C:28
+#: src/ext_l10n.h:1151 src/frontends/qt2/QTabularCreate.C:28
 #, fuzzy
 msgid "Insert table"
 msgstr "Insertar tabla"
 
-#: src/ext_l10n.h:1151
+#: src/ext_l10n.h:1152
 #, fuzzy
 msgid "&Rows:"
 msgstr "Filas"
 
-#: src/ext_l10n.h:1152
+#: src/ext_l10n.h:1153
 #, fuzzy
 msgid "Number of rows"
 msgstr "Número de copias a imprimir"
 
-#: src/ext_l10n.h:1153
+#: src/ext_l10n.h:1154
 #, fuzzy
 msgid "&Columns:"
 msgstr "Columnas"
 
-#: src/ext_l10n.h:1154
+#: src/ext_l10n.h:1155
 #, fuzzy
 msgid "Number of columns"
 msgstr "Porcentaje de la columna"
 
-#: src/ext_l10n.h:1155
+#: src/ext_l10n.h:1156
 msgid "Resize this to the correct table dimensions"
 msgstr ""
 
-#: src/ext_l10n.h:1159
+#: src/ext_l10n.h:1160
 #, fuzzy
 msgid "LaTeX classes"
 msgstr "Archivo de registro de LaTeX"
 
-#: src/ext_l10n.h:1160
+#: src/ext_l10n.h:1161
 #, fuzzy
 msgid "LaTeX styles"
 msgstr "TeX|X"
 
-#: src/ext_l10n.h:1161
+#: src/ext_l10n.h:1162
 #, fuzzy
 msgid "BibTeX styles"
 msgstr "TeX|X"
 
-#: src/ext_l10n.h:1162
+#: src/ext_l10n.h:1163
 #, fuzzy
 msgid "Selected classes or styles"
 msgstr "Claves seleccionadas"
 
-#: src/ext_l10n.h:1163
+#: src/ext_l10n.h:1164
 msgid "Show &path"
 msgstr ""
 
-#: src/ext_l10n.h:1164
+#: src/ext_l10n.h:1165
 msgid "Toggles view of the file list"
 msgstr ""
 
-#: src/ext_l10n.h:1166
+#: src/ext_l10n.h:1167
 #, fuzzy
 msgid "Installed files"
 msgstr "Incluir archivo|a"
 
-#: src/ext_l10n.h:1167
+#: src/ext_l10n.h:1168
 #, fuzzy
 msgid "&Rescan"
 msgstr "Releer|#R#r"
 
-#: src/ext_l10n.h:1168
+#: src/ext_l10n.h:1169
 #, fuzzy
 msgid "Built new file list"
 msgstr "Archivo resultante es vacío"
 
-#: src/ext_l10n.h:1169
+#: src/ext_l10n.h:1170
 #, fuzzy
 msgid "&View"
 msgstr "Ver"
 
-#: src/ext_l10n.h:1170
+#: src/ext_l10n.h:1171
 msgid ""
 "Show contents of marked file. Only possible when files are shown with path"
 msgstr ""
 
-#: src/ext_l10n.h:1172
+#: src/ext_l10n.h:1173
 msgid "Close this dialog"
 msgstr ""
 
-#: src/ext_l10n.h:1176
+#: src/ext_l10n.h:1177
 #, fuzzy
 msgid "Entry"
 msgstr "Insertar etiqueta:"
 
-#: src/ext_l10n.h:1177
+#: src/ext_l10n.h:1178
 #, fuzzy
 msgid "Thesaurus entries"
 msgstr "Formato de tabla"
 
-#: src/ext_l10n.h:1178
+#: src/ext_l10n.h:1179
 #, fuzzy
 msgid "Select a related word"
 msgstr "Seleccionar archivo de salida"
 
-#: src/ext_l10n.h:1179
+#: src/ext_l10n.h:1180
 #, fuzzy
 msgid "&Selection"
 msgstr "selección"
 
-#: src/ext_l10n.h:1180
+#: src/ext_l10n.h:1181
 #, fuzzy
 msgid "The selected entry"
 msgstr "Claves seleccionadas"
 
-#: src/ext_l10n.h:1182
+#: src/ext_l10n.h:1183
 msgid "Replace the entry with the selection"
 msgstr ""
 
-#: src/ext_l10n.h:1184
+#: src/ext_l10n.h:1185
 #, fuzzy
 msgid "Table Of Contents"
 msgstr "Índice General"
 
-#: src/ext_l10n.h:1186
+#: src/ext_l10n.h:1187
 msgid "Contents list"
 msgstr ""
 
-#: src/ext_l10n.h:1189
+#: src/ext_l10n.h:1190
 #, fuzzy
 msgid "Insert URL"
 msgstr "Insertar etiqueta"
 
-#: src/ext_l10n.h:1190
+#: src/ext_l10n.h:1191
 #, fuzzy
 msgid "&URL"
 msgstr " URL "
 
-#: src/ext_l10n.h:1192
+#: src/ext_l10n.h:1193
 #, fuzzy
 msgid "&Name"
 msgstr "Nombre"
 
-#: src/ext_l10n.h:1193
+#: src/ext_l10n.h:1194
 msgid "Name associated with the URL"
 msgstr "Nombre asociado con la URL"
 
-#: src/ext_l10n.h:1195
+#: src/ext_l10n.h:1196
 #, fuzzy
 msgid "&Generate hyperlink"
 msgstr "Generar hiperlink"
 
-#: src/ext_l10n.h:1196
+#: src/ext_l10n.h:1197
 msgid "Output as a hyperlink ?"
 msgstr "¿Salida como hiperlink?"
 
-#: src/ext_l10n.h:1199
+#: src/ext_l10n.h:1200
 #, fuzzy
 msgid "Version control log"
 msgstr "Control de versiones|v"
@@ -5203,9 +5212,24 @@ msgstr "Control de versiones|v"
 msgid "Table"
 msgstr "Formato Tabular|T"
 
-#: src/FloatList.C:38
+#: src/FloatList.C:34
+#, fuzzy
+msgid "List of Tables"
+msgstr "Lista de Tablas"
+
+#: src/FloatList.C:39
 msgid "Figure"
 msgstr "Figura"
+
+#: src/FloatList.C:40
+#, fuzzy
+msgid "List of Figures"
+msgstr "Lista de Tablas"
+
+#: src/FloatList.C:48
+#, fuzzy
+msgid "List of Algorithms"
+msgstr "Lista de Algoritmos"
 
 #: src/FontLoader.C:295
 msgid "Loading font into X-Server..."
@@ -5239,7 +5263,7 @@ msgstr "Base datos:"
 #: src/frontends/controllers/character.C:132
 #: src/frontends/controllers/character.C:152
 #: src/frontends/controllers/character.C:183
-#: src/frontends/xforms/FormCharacter.C:210
+#: src/frontends/xforms/FormCharacter.C:211
 msgid "No change"
 msgstr "(Sin cambios)"
 
@@ -5958,7 +5982,7 @@ msgstr "Limpiar|#e"
 msgid "Done"
 msgstr "Listo"
 
-#: src/frontends/xforms/FeedbackController.C:92
+#: src/frontends/xforms/FeedbackController.C:117
 #, fuzzy
 msgid "WARNING! "
 msgstr "¡Atención!"
@@ -6984,15 +7008,15 @@ msgstr ""
 msgid "Extras"
 msgstr "Extra"
 
-#: src/frontends/xforms/FormGraphics.C:525
+#: src/frontends/xforms/FormGraphics.C:538
 msgid "The units text%, page%, col% and line% are not allowed here."
 msgstr ""
 
-#: src/frontends/xforms/FormGraphics.C:526
+#: src/frontends/xforms/FormGraphics.C:539
 msgid "Cannot use the values from LaTeX size!"
 msgstr ""
 
-#: src/frontends/xforms/FormGraphics.C:673
+#: src/frontends/xforms/FormGraphics.C:685
 #: src/frontends/xforms/FormMinipage.C:111
 msgid "Invalid Length!"
 msgstr ""
@@ -8860,16 +8884,11 @@ msgstr "flotante:"
 msgid "Opened Float Inset"
 msgstr "Inset flotante abierto"
 
-#: src/MenuBackend.C:380 src/insets/insetfloatlist.C:38
-#, fuzzy
-msgid " List"
-msgstr "lista"
-
 #: src/insets/insetfloatlist.C:41
 msgid "ERROR: Nonexistent float type!"
 msgstr ""
 
-#: src/insets/insetfloatlist.C:108 src/insets/insetfloatlist.C:112
+#: src/insets/insetfloatlist.C:112
 #, fuzzy
 msgid "List of "
 msgstr "Lista de Tablas"
@@ -8928,21 +8947,12 @@ msgstr "(Sin cambios)"
 msgid "Loaded but not displaying"
 msgstr ""
 
-#: src/insets/insetgraphics.C:701
-msgid "empty figure path"
-msgstr "ruta de la figura está vacía"
-
-#: src/insets/insetgraphics.C:713
-#, fuzzy
-msgid " not found"
-msgstr "¡No se encontró juego de caracteres!"
-
 #. No graphics in ascii output. Possible to use gifscii to convert
 #. images to ascii approximation.
 #. 1. Convert file to ascii using gifscii
 #. 2. Read ascii output file and add it to the output stream.
 #. at least we send the filename
-#: src/insets/insetgraphics.C:753
+#: src/insets/insetgraphics.C:712
 #, fuzzy
 msgid "Graphic file:"
 msgstr "Archivo gráfico|#F"
@@ -8964,7 +8974,7 @@ msgstr "Entrada literal"
 msgid "Idx"
 msgstr "Índice"
 
-#: src/insets/insetlabel.C:47 src/mathed/formula.C:440
+#: src/insets/insetlabel.C:47 src/mathed/formula.C:438
 msgid "Enter label:"
 msgstr "Insertar etiqueta:"
 
@@ -9892,7 +9902,7 @@ msgstr "¡Error! El archivo indicado es ilegible: "
 msgid "Error! Cannot open specified file: "
 msgstr "¡Error! No se puede abrir archivo especificado:"
 
-#: src/lyx_cb.C:473 src/mathed/formula.C:439
+#: src/lyx_cb.C:473 src/mathed/formula.C:437
 msgid "Enter new label to insert:"
 msgstr "Introduzca la etiqueta a insertar:"
 
@@ -10013,7 +10023,7 @@ msgstr "Acción desconocida"
 msgid "Saving document"
 msgstr "Guardando documento"
 
-#: src/lyxfunc.C:1236 src/mathed/formulabase.C:936
+#: src/lyxfunc.C:1236 src/mathed/formulabase.C:924
 msgid "Missing argument"
 msgstr "No se encuentra argumento"
 
@@ -10158,7 +10168,8 @@ msgid "If you have problems, try starting LyX with an absolute path."
 msgstr "Si tiene problemas, prueba a ejecutar LyX con un camino absoluto."
 
 #: src/lyx_main.C:362
-msgid "LYX_DIR_11x environment variable no good."
+#, fuzzy
+msgid "LYX_DIR_12x environment variable no good."
 msgstr "Variable de entorno LYX_DIR_11x no vale."
 
 #: src/lyx_main.C:364
@@ -10174,7 +10185,8 @@ msgid "Try the '-sysdir' command line parameter or "
 msgstr "Use el parámetro de la línea de comandos -sysdir o "
 
 #: src/lyx_main.C:374
-msgid "set the environment variable LYX_DIR_11x to the LyX system directory "
+#, fuzzy
+msgid "set the environment variable LYX_DIR_12x to the LyX system directory "
 msgstr ""
 "asigne la variable de entorno LYX_DIR_11x al directorio del sistema de LyX "
 
@@ -10783,19 +10795,19 @@ msgstr "¿Aún quiere hacerlo?"
 msgid " (read only)"
 msgstr " (sólo lectura)"
 
-#: src/mathed/formulabase.C:154 src/mathed/formulabase.C:910
+#: src/mathed/formulabase.C:151 src/mathed/formulabase.C:898
 msgid "Math editor mode"
 msgstr "Modo de edición de fórmulas"
 
-#: src/mathed/formulabase.C:656
+#: src/mathed/formulabase.C:641
 msgid "Invalid action in math mode!"
 msgstr "¡Acción inválida en modo fórmulas!"
 
-#: src/mathed/formula.C:407 src/mathed/formula.C:420
+#: src/mathed/formula.C:405 src/mathed/formula.C:418
 msgid "No number"
 msgstr "Sin número"
 
-#: src/mathed/formula.C:407 src/mathed/formula.C:420
+#: src/mathed/formula.C:405 src/mathed/formula.C:418
 msgid "Number"
 msgstr "Número"
 
@@ -10816,9 +10828,8 @@ msgid "Ascii text as paragraphs"
 msgstr "Texto ascii como párrafos"
 
 #: src/MenuBackend.C:404
-#, fuzzy
-msgid "Wide "
-msgstr "Anchura"
+msgid " (wide)"
+msgstr ""
 
 #: src/MenuBackend.C:505
 msgid "Quit|Q"
@@ -10881,7 +10892,7 @@ msgstr "Llamada a createDirectory con nombre no válido"
 msgid "Error! Couldn't create directory:"
 msgstr "¡Error! No se pudo crear directorio:"
 
-#: src/support/filetools.C:1341
+#: src/support/filetools.C:1342
 msgid "Could not delete auto-save file!"
 msgstr "¡No se pudo eliminar archivo de auto-guardado!"
 
@@ -10951,3 +10962,18 @@ msgstr "Saltos página (abajo)"
 #, fuzzy
 msgid "Space below"
 msgstr "&Espaciado posterior"
+
+#, fuzzy
+#~ msgid " List"
+#~ msgstr "lista"
+
+#~ msgid "empty figure path"
+#~ msgstr "ruta de la figura está vacía"
+
+#, fuzzy
+#~ msgid " not found"
+#~ msgstr "¡No se encontró juego de caracteres!"
+
+#, fuzzy
+#~ msgid "Wide "
+#~ msgstr "Anchura"
