@@ -399,15 +399,12 @@ void MathCursor::insert(char c, MathTextCodes t)
 	if (t != LM_TC_VAR)
 		lastcode_ = t;
 
-	if (imacro_ && !(MathIsAlphaFont(t) || t == LM_TC_VAR))
+	if (imacro_ && t != LM_TC_TEX)
 		macroModeClose();
 
 	if (imacro_) {
-		if (MathIsAlphaFont(t) || t == LM_TC_VAR) {
-			// was MacroModeinsert(c);
-			imacro_->setName(imacro_->name() + c);
-			return;
-		}
+		imacro_->setName(imacro_->name() + c);
+		return;
 	}
 
 	array().insert(pos(), new MathCharInset(c, t));

@@ -160,6 +160,7 @@ void InsetFormula::metrics() const
 	par_->metrics(display() ? LM_ST_DISPLAY : LM_ST_TEXT);
 }
 
+
 vector<string> const InsetFormula::getLabelList() const
 {
 	return par_->getLabelList();

@@ -16,12 +16,6 @@ using std::endl;
 using std::max;
 
 
-bool MathIsAlphaFont(MathTextCodes x)
-{
-	return LM_TC_VAR <= x && x <= LM_TC_TEXTRM;
-}
-
-
 ///
 class Matrix {
 public:
@@ -457,35 +451,43 @@ math_deco_struct math_deco_table[] = {
 
 struct math_deco_compare {
 	/// for use by sort and lower_bound
-	inline
-	int operator()(math_deco_struct const & a,
-		       math_deco_struct const & b) const {
+	int operator()(math_deco_struct const & a, math_deco_struct const & b) const
+	{
 		return a.code < b.code;
 	}
 };
 
 
 int const math_deco_table_size =
-sizeof(math_deco_table) /sizeof(math_deco_struct);
+	sizeof(math_deco_table) / sizeof(math_deco_struct);
 
 
-class init_deco_table {
-public:
+// sort the table on startup
+struct init_deco_table {
 	init_deco_table() {
-		if (!init) {
-			sort(math_deco_table,
+			std::sort(math_deco_table,
 			     math_deco_table + math_deco_table_size,
 			     math_deco_compare());
-			init_deco_table::init = true;
-		}
 	}
-private:
-	static bool init;
 };
 
+static init_deco_table dummy;
 
-bool init_deco_table::init = false;
-static init_deco_table idt;
+
+math_deco_struct const * search_deco(int code)
+{
+	static const math_deco_struct search_elem = { code, 0, 0 };
+	
+	math_deco_struct const * res =
+		lower_bound(math_deco_table,
+			    math_deco_table + math_deco_table_size,
+			    search_elem, math_deco_compare());
+	if (res != math_deco_table + math_deco_table_size &&
+	    res->code == code)
+		return res;
+	return 0;
+}
+
 
 } // namespace anon
 
@@ -529,8 +531,6 @@ int mathed_char_descent(MathTextCodes type, MathStyles size, unsigned char c)
 	return lyxfont::descent(c, font);
 }
 
-
-
 int mathed_char_width(MathTextCodes type, MathStyles size, unsigned char c)
 {
 	LyXFont const font = WhichFont(type, size);
@@ -560,30 +560,11 @@ int mathed_string_height(MathTextCodes type, MathStyles size, string const & s,
 	return asc + des;
 }
 
-
 int mathed_string_width(MathTextCodes type, MathStyles size, string const & s)
 {
 	return lyxfont::width(s, WhichFont(type, size));
 }
 
-
-namespace {
-
-math_deco_struct const * search_deco(int code)
-{
-	math_deco_struct search_elem = { code, 0, 0 };
-	
-	math_deco_struct const * res =
-		lower_bound(math_deco_table,
-			    math_deco_table + math_deco_table_size,
-			    search_elem, math_deco_compare());
-	if (res != math_deco_table + math_deco_table_size &&
-	    res->code == code)
-		return res;
-	return 0;
-}
-
-}
 
 void mathed_draw_deco(Painter & pain, int x, int y, int w, int h,
 	latexkeys const * l)
@@ -673,6 +654,7 @@ bool isBinaryOp(char c)
 {
 	return true; 
 }
+
 
 // In a near future maybe we use a better fonts renderer
 void drawStr(Painter & pain, MathTextCodes type, MathStyles siz,

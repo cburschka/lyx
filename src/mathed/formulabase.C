@@ -177,7 +177,9 @@ void InsetFormulaBase::edit(BufferView * bv, int x, int /*y*/, unsigned int)
 		lyxerr[Debug::MATHED] << "Cannot lock inset!!!" << endl;
 
 	metrics();
-	//bv->updateInset(this, false);
+	// if that is removed, we won't get the magenta box when entering an
+	// inset for the first time
+	bv->updateInset(this, false);
 	if (x == 0)
 		mathcursor->first();
 	else

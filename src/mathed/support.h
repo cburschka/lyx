@@ -32,8 +32,6 @@ int mathed_string_width(MathTextCodes type, MathStyles size, string const & s);
 int mathed_string_ascent(MathTextCodes type, MathStyles size, string const & s);
 int mathed_string_descent(MathTextCodes type, MathStyles size, string const & s);
 
-bool MathIsAlphaFont(MathTextCodes x);
-
 void drawStr(Painter & pain, MathTextCodes type, MathStyles siz,
 	int x, int y, string const & s);
 void drawChar(Painter & pain, MathTextCodes type, MathStyles siz,
