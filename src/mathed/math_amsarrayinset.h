@@ -33,7 +33,8 @@ public:
 	void write(WriteStream & os) const;
 	///
 	void normalize(NormalStream &) const;
-
+	///
+	void validate(LaTeXFeatures & features) const;
 private:
 	///
 	char const * name_left() const;

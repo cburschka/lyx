@@ -23,6 +23,8 @@ public:
 	void normalize(NormalStream &) const;
 	///
 	void maplize(MapleStream &) const;
+	///
+	void validate(LaTeXFeatures & features) const;
 };
 
 #endif

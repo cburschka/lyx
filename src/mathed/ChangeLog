@@ -1,3 +1,9 @@
+2005-03-30  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* math_amsarrayinset.[Ch] (validate): new, require amsmath
+	* math_substackinset.[Ch] (validate): ditto
+	* math_arrayinset.[Ch] (validate): ditto (in the case of subarray)
+
 2005-03-02  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* math_parser.C (parse1): Don't parse "\|" following a "\left" or

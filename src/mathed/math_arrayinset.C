@@ -1,5 +1,6 @@
 #include <config.h>
 
+#include "LaTeXFeatures.h"
 #include "math_arrayinset.h"
 #include "math_parser.h"
 #include "math_mathmlstream.h"
@@ -109,4 +110,12 @@ void MathArrayInset::maplize(MapleStream & os) const
 	os << "array(";
 	MathGridInset::maplize(os);
 	os << ')';
+}
+
+
+void MathArrayInset::validate(LaTeXFeatures & features) const
+{
+	if (name_ == "subarray")
+		features.require("amsmath");
+	MathGridInset::validate(features);
 }

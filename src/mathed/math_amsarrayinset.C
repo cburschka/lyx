@@ -1,5 +1,6 @@
 #include <config.h>
 
+#include "LaTeXFeatures.h"
 #include "math_amsarrayinset.h"
 #include "math_mathmlstream.h"
 #include "math_metricsinfo.h"
@@ -89,4 +90,11 @@ void MathAMSArrayInset::normalize(NormalStream & os) const
 	os << '[' << name_ << ' ';
 	MathGridInset::normalize(os);
 	os << ']';
+}
+
+
+void MathAMSArrayInset::validate(LaTeXFeatures & features) const
+{
+	features.require("amsmath");
+	MathGridInset::validate(features);
 }
