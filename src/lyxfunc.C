@@ -1590,12 +1590,7 @@ string const LyXFunc::Dispatch(int ac,
 		owner->view()->update(owner->view()->text, BufferView::UPDATE);
 		owner->view()->cursorPrevious(text);
 		owner->view()->text->FinishUndo();
-#if 0
-		if (text->inset_owner)
-		    owner->view()->updateInset(text->inset_owner, false);
-		else
-#endif
-		    moveCursorUpdate(text, false);
+		moveCursorUpdate(text, false);
 		owner->showState();
 		break;
 		
@@ -1605,12 +1600,7 @@ string const LyXFunc::Dispatch(int ac,
 		owner->view()->update(owner->view()->text, BufferView::UPDATE);
 		owner->view()->cursorNext(text);
 		owner->view()->text->FinishUndo();
-#if 0
-		if (text->inset_owner)
-		    owner->view()->updateInset(text->inset_owner, false);
-		else
-#endif
-		    moveCursorUpdate(text, false);
+		moveCursorUpdate(text, false);
 		owner->showState();
 		break;
 		
@@ -1656,10 +1646,6 @@ string const LyXFunc::Dispatch(int ac,
 		else
 			text->CursorRightOneWord(owner->view());
 		owner->view()->text->FinishUndo();
-#if 0
-		if (text->inset_owner)
-		    owner->view()->updateInset(text->inset_owner, true);
-#endif
 		moveCursorUpdate(text, false);
 		owner->showState();
 		break;
@@ -1673,10 +1659,6 @@ string const LyXFunc::Dispatch(int ac,
 		else
 			text->CursorLeftOneWord(owner->view());
 		owner->view()->text->FinishUndo();
-#if 0
-		if (text->inset_owner)
-		    owner->view()->updateInset(text->inset_owner, true);
-#endif
 		moveCursorUpdate(text, false);
 		owner->showState();
 		break;
@@ -1769,13 +1751,7 @@ string const LyXFunc::Dispatch(int ac,
 		owner->view()->update(text, BufferView::SELECT|BufferView::FITCUR);
 		owner->view()->cursorPrevious(text);
 		owner->view()->text->FinishUndo();
-#if 0
-		if (text->inset_owner) {
-		    text->SetSelection(owner->view());
-		    owner->view()->updateInset(text->inset_owner, false);
-		} else
-#endif
-		    moveCursorUpdate(text, true);
+		moveCursorUpdate(text, true);
 		owner->showState();
 		break;
 		
@@ -1783,12 +1759,7 @@ string const LyXFunc::Dispatch(int ac,
 		owner->view()->update(text, BufferView::SELECT|BufferView::FITCUR);
 		owner->view()->cursorNext(text);
 		owner->view()->text->FinishUndo();
-#if 0
-		if (text->inset_owner)
-		    owner->view()->updateInset(text->inset_owner, false);
-		else
-#endif
-		    moveCursorUpdate(text, true);
+		moveCursorUpdate(text, true);
 		owner->showState();
 		break;
 		
@@ -1796,13 +1767,7 @@ string const LyXFunc::Dispatch(int ac,
 		owner->view()->update(text, BufferView::SELECT|BufferView::FITCUR);
 		text->CursorHome(owner->view());
 		owner->view()->text->FinishUndo();
-#if 0
-		if (text->inset_owner) {
-		    text->SetSelection(owner->view());
-		    owner->view()->updateInset(text->inset_owner, false);
-		} else
-#endif
-		    moveCursorUpdate(text, true);
+		moveCursorUpdate(text, true);
 		owner->showState();
 		break;
 		
@@ -1810,13 +1775,7 @@ string const LyXFunc::Dispatch(int ac,
 		owner->view()->update(text, BufferView::SELECT|BufferView::FITCUR);
 		text->CursorEnd(owner->view());
 		owner->view()->text->FinishUndo();
-#if 0
-		if (text->inset_owner) {
-		    text->SetSelection(owner->view());
-		    owner->view()->updateInset(text->inset_owner, false);
-		} else
-#endif
-		    moveCursorUpdate(text, true);
+		moveCursorUpdate(text, true);
 		owner->showState();
 		break;
 		
@@ -1827,13 +1786,7 @@ string const LyXFunc::Dispatch(int ac,
 		else
 			text->CursorRightOneWord(owner->view());
 		owner->view()->text->FinishUndo();
-#if 0
-		if (text->inset_owner) {
-		    text->SetSelection(owner->view());
-		    owner->view()->updateInset(text->inset_owner, false);
-		} else
-#endif
-		    moveCursorUpdate(text, true);
+		moveCursorUpdate(text, true);
 		owner->showState();
 		break;
 		
@@ -1844,13 +1797,7 @@ string const LyXFunc::Dispatch(int ac,
 		else
 			text->CursorLeftOneWord(owner->view());
 		owner->view()->text->FinishUndo();
-#if 0
-		if (text->inset_owner) {
-		    text->SetSelection(owner->view());
-		    owner->view()->updateInset(text->inset_owner, false);
-		} else
-#endif
-		    moveCursorUpdate(text, true);
+		moveCursorUpdate(text, true);
 		owner->showState();
 		break;
 		
@@ -1912,10 +1859,6 @@ string const LyXFunc::Dispatch(int ac,
 			setMessage(N_("Mark set"));
 		}
 		text->sel_cursor = text->cursor;
-#if 0
-		if (text->inset_owner)
-		    owner->view()->updateInset(text->inset_owner, true);
-#endif
 		break;
 		
 	case LFUN_DELETE:
@@ -1987,10 +1930,6 @@ string const LyXFunc::Dispatch(int ac,
 	case LFUN_DELETE_WORD_FORWARD:
 		owner->view()->update(text, BufferView::SELECT|BufferView::FITCUR);
 		text->DeleteWordForward(owner->view());
-#if 0
-		if (text->inset_owner)
-		    owner->view()->updateInset(text->inset_owner, true);
-#endif
 		owner->view()->update(text, BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 		moveCursorUpdate(text, false);
 		owner->showState();
@@ -2000,10 +1939,6 @@ string const LyXFunc::Dispatch(int ac,
 	case LFUN_DELETE_WORD_BACKWARD:
 		owner->view()->update(text, BufferView::SELECT|BufferView::FITCUR);
 		text->DeleteWordBackward(owner->view());
-#if 0
-		if (text->inset_owner)
-		    owner->view()->updateInset(text->inset_owner, true);
-#endif
 		owner->view()->update(text, BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 		moveCursorUpdate(text, false);
 		owner->showState();
@@ -2013,10 +1948,6 @@ string const LyXFunc::Dispatch(int ac,
 	case LFUN_DELETE_LINE_FORWARD:
 		owner->view()->update(text, BufferView::SELECT|BufferView::FITCUR);
 		text->DeleteLineForward(owner->view());
-#if 0
-		if (text->inset_owner)
-		    owner->view()->updateInset(text->inset_owner, true);
-#endif
 		owner->view()->update(text, BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 		moveCursorUpdate(text, false);
 		break;
@@ -2027,10 +1958,6 @@ string const LyXFunc::Dispatch(int ac,
 		owner->view()->update(text, BufferView::SELECT|BufferView::FITCUR);
 		text->sel_cursor = text->cursor;
 		setMessage(N_("Mark off"));
-#if 0
-		if (text->inset_owner)
-		    owner->view()->updateInset(text->inset_owner, true);
-#endif
 		break;
 
 		/* -------> Set mark on. */
@@ -2039,10 +1966,6 @@ string const LyXFunc::Dispatch(int ac,
 		text->mark_set = 1;
 		owner->view()->update(text, BufferView::SELECT|BufferView::FITCUR);
 		text->sel_cursor = text->cursor;
-#if 0
-		if (text->inset_owner)
-		    owner->view()->updateInset(text->inset_owner, true);
-#endif
 		setMessage(N_("Mark on"));
 		break;
 		
@@ -3064,17 +2987,9 @@ string const LyXFunc::Dispatch(int ac,
 				if (greek_kb_flag) {
 					if (!math_insert_greek(owner->view(),
 							       argument[i]))
-#if 0
-						owner->getIntl()->getTrans()->TranslateAndInsert(argument[i], owner->view()->text);
-#else
 						owner->getIntl()->getTrans().TranslateAndInsert(argument[i], owner->view()->text);
-#endif
 				} else
-#if 0
-					owner->getIntl()->getTrans()->TranslateAndInsert(argument[i], owner->view()->text);
-#else
 					owner->getIntl()->getTrans().TranslateAndInsert(argument[i], owner->view()->text);
-#endif
 			}
 
 			owner->view()->update(owner->view()->text,

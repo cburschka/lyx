@@ -1,5 +1,7 @@
 2001-02-14  Juergen Vigna  <jug@sad.it>
 
+	* lyxfunc.C: removed #if 0 unused code
+
 	* lyxfunc.C (Dispatch): make LFUN_QUOTE work for InsetText.
 
 	* BufferView_pimpl.C (update): set updatestatus of inset if needed.
