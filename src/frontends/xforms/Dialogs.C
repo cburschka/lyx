@@ -127,7 +127,7 @@ FormMathsBitmap * createFormBitmap(Dialog & parent, string const & title,
 
 char const * const dialognames[] = {
 "aboutlyx", "bibitem", "bibtex", "box", "branch", "changes", "character",
-"citation", "document", "error", "errorlist" , "ert", "external", "file",
+"citation", "document", "errorlist" , "ert", "external", "file",
 "findreplace", "float", "graphics", "include", "index", "label", "log",
 "mathpanel", "mathaccents", "matharrows", "mathoperators", "mathrelations",
 "mathgreek", "mathmisc", "mathdots", "mathbigoperators", "mathamsmisc",
@@ -191,14 +191,14 @@ Dialogs::DialogPtr Dialogs::build(string const & name)
 		dialog->setController(new ControlBranch(*dialog));
 		dialog->setView(new FormBranch(*dialog));
 		dialog->bc().bp(new OkApplyCancelReadOnlyPolicy);
-	} else if (name == "character") {
-		dialog->setController(new ControlCharacter(*dialog));
-		dialog->setView(new FormCharacter(*dialog));
-		dialog->bc().bp(new OkApplyCancelReadOnlyPolicy);
 	} else if (name == "changes") {
 		dialog->setController(new ControlChanges(*dialog));
 		dialog->setView(new FormChanges(*dialog));
 		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
+	} else if (name == "character") {
+		dialog->setController(new ControlCharacter(*dialog));
+		dialog->setView(new FormCharacter(*dialog));
+		dialog->bc().bp(new OkApplyCancelReadOnlyPolicy);
 	} else if (name == "citation") {
 		dialog->setController(new ControlCitation(*dialog));
 		dialog->setView(new FormCitation(*dialog));

@@ -100,7 +100,7 @@ namespace {
 
 char const * const dialognames[] = {
 "aboutlyx", "bibitem", "bibtex", "box", "branch", "changes", "character",
-"citation", "document", "error", "errorlist", "ert", "external", "file",
+"citation", "document", "errorlist", "ert", "external", "file",
 "findreplace", "float", "graphics", "include", "index", "label", "log",
 "mathpanel", "mathdelimiter", "mathmatrix", "note", "paragraph", "preamble",
 "prefs", "print", "ref", "sendto", "spellchecker","tabular", "tabularcreate",

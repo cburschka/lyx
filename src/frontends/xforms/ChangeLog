@@ -1,8 +1,12 @@
 2004-05-04  Angus Leeming  <leeming@lyx.org>
 
+	* Dialogs.C: Remove "error" dialog identifier.
+
+2004-05-04  Angus Leeming  <leeming@lyx.org>
+
 	This is a resurrection of John Levon's June 2002 code.
 
-	* xscreen.C (expose): do the 'right thing' and ouput an XEvent
+	* xscreen.C (expose): do the 'right thing' and output an XEvent
 	request to expose the work area.
 
 	* XWorkArea.C (updateGeometry, paint): split the old redraw function
