@@ -17,6 +17,9 @@
 #include "math_parser.h"
 #include "math_mathmlstream.h"
 #include "math_streamstr.h"
+
+#include "debug.h"
+
 #include "support/std_ostream.h"
 
 using std::auto_ptr;
@@ -107,11 +110,12 @@ void MathDecorationInset::metrics(MetricsInfo & mi, Dimension & dim) const
 
 void MathDecorationInset::draw(PainterInfo & pi, int x, int y) const
 {
+	lyxerr << "MathDecorationInset::draw: x: " << x << std::endl;
 	cell(0).draw(pi, x + 1, y);
 	if (wide())
 		mathed_draw_deco(pi, x + 1, y + dy_, cell(0).width(), dh_, key_->name);
 	else
-		mathed_draw_deco(pi, x + 1 + (pi.width - dw_) / 2,
+		mathed_draw_deco(pi, x + 1 + (cell(0).width() - dw_) / 2,
 			y + dy_, dw_, dh_, key_->name);
 	drawMarkers(pi, x, y);
 }

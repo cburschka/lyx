@@ -34,20 +34,20 @@ auto_ptr<InsetBase> MathDotsInset::clone() const
 
 void MathDotsInset::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	mathed_char_dim(mi.base.font, 'M', dim_);
+	mathed_char_dim(mi.base.font, 'M', dim);
 	dh_ = 0;
 	if (key_->name == "cdots" || key_->name == "dotsb"
 			|| key_->name == "dotsm" || key_->name == "dotsi")
-		dh_ = dim_.asc / 2;
+		dh_ = dim.asc / 2;
 	else if (key_->name == "dotsc")
-		dh_ = dim_.asc / 4;
+		dh_ = dim.asc / 4;
 	else if (key_->name == "vdots") {
-		dim_.wid = (dim_.wid / 2) + 1;
-		dh_ = dim_.asc;
+		dim.wid = (dim.wid / 2) + 1;
+		dh_ = dim.asc;
 	}
 	else if (key_->name == "ddots")
-		dh_ = dim_.asc;
-	dim = dim_;
+		dh_ = dim.asc;
+	dim_ = dim;
 }
 
 
@@ -61,6 +61,7 @@ void MathDotsInset::draw(PainterInfo & pain, int x, int y) const
 		--y;
 	mathed_draw_deco(pain, x + 2, y - dh_, dim_.width() - 2, dim_.ascent(),
 		key_->name);
+	setPosCache(pain, x, y);
 }
 
 
