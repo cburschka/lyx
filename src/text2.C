@@ -883,18 +883,9 @@ void LyXText::cursorTop()
 
 void LyXText::cursorBottom()
 {
-#warning FIXME
-	// This is how it should be:
-#ifndef NO_STD_LIST
-	ParagraphList::iterator lastpit = boost::prior(ownerParagraphs().end());
-#else
-	ParagraphList::iterator lastpit = ownerParagraphs().begin();
-	ParagraphList::iterator end = ownerParagraphs().end();
-	while (boost::next(lastpit) != end)
-		++lastpit;
-#endif
-	int pos = lastpit->size();
-	setCursor(lastpit, pos);
+	ParagraphList::iterator lastpit =
+		boost::prior(ownerParagraphs().end());
+	setCursor(lastpit, lastpit->size());
 }
 
 

@@ -79,7 +79,6 @@ lyx_SOURCES = \
 	MenuBackend.h \
 	paragraph_funcs.C \
 	paragraph_funcs.h \
-	ParagraphList.C \
 	ParagraphList.h \
 	ParagraphParameters.C \
 	ParagraphParameters.h \

@@ -1,5 +1,21 @@
 2003-05-29  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
+	* trans_mgr.C: remove one case of current_view
+
+	* text2.C (cursorBottom): delete NO_STD_LIST stuff
+
+	* paragraph_funcs.h: remove paragraph.h include
+
+	* paragraph.h: delete NO_STD_LIST stuff
+
+	* paragraph.C (Paragraph): delete NO_STD_LIST stuff
+
+	* buffer.h: remove paragraph.h include
+
+	* ParagraphList.C: delete file
+
+	* Makefile.am (lyx_SOURCES): remove ParagraphList.C
+
 	* toc.C (getTocList): adjust
 
 	* paragraph_pimpl.C (validate): adjust

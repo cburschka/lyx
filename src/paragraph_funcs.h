@@ -13,7 +13,6 @@
 #define PARAGRAPH_FUNCS_H
 
 #include "ParagraphList.h"
-#include "paragraph.h"
 #include "support/types.h"
 
 class Buffer;

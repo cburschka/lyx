@@ -20,7 +20,6 @@
 #include "bufferparams.h"
 #include "texrow.h"
 #include "ParagraphList.h"
-#include "paragraph.h"
 #include "author.h"
 #include "iterators.h"
 

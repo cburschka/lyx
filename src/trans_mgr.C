@@ -17,7 +17,6 @@ using std::pair;
 
 extern string const DoAccent(string const &, tex_accent);
 extern string const DoAccent(char, tex_accent);
-extern BufferView * current_view;
 
 
 // TransFSMData

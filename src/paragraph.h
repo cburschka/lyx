@@ -34,20 +34,9 @@ class ParagraphParameters;
 class TexRow;
 class ParagraphList;
 
-// Define this if you want to try out the new storage container for
-// paragraphs. (Lgb)
-// This is non working and far from finished.
-//#define NO_STD_LIST 1
-
 /// A Paragraph holds all text, attributes and insets in a text paragraph
 class Paragraph  {
 public:
-#ifdef NO_STD_LIST
-	// Remove this whan ParagraphList transition is over. (Lgb)
-	friend class ParagraphList;
-	friend class ParagraphList::iterator;
-	friend class ParagraphList::const_iterator;
-#endif
 	///
 	enum META_KIND {
 		/// Note that this is 1 right now to avoid
@@ -182,10 +171,11 @@ public:
 	/// mark whole par as erased
 	void markErased();
 
-	/// Paragraphs can contain "manual labels", for example, Description environment.
-	/// The text for this user-editable label is stored in the paragraph alongside
-	/// the text of the rest of the paragraph (the body). This function returns
-	/// the starting position of the body of the text in the paragraph.
+	/// Paragraphs can contain "manual labels", for example, Description
+	/// environment. The text for this user-editable label is stored in
+	/// the paragraph alongside the text of the rest of the paragraph
+	/// (the body). This function returns the starting position of the
+	/// body of the text in the paragraph.
 	int beginningOfBody() const;
 
 	///
@@ -304,18 +294,12 @@ public:
 	///
 	InsetList insetlist;
 	///
-	//Counters & counters();
-	///
 	void owningBuffer(Buffer const & b) {
 		buffer_.reset(&b);
 	}
 private:
 	///
 	LyXLayout_ptr layout_;
-#ifdef NO_STD_LIST
-	Paragraph * next_par_;
-	Paragraph * prev_par_;
-#endif
 	///
 	boost::optional<Buffer const *> buffer_;
 

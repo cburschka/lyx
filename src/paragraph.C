@@ -70,10 +70,6 @@ Inset * minibuffer_inset;
 Paragraph::Paragraph()
 	: pimpl_(new Paragraph::Pimpl(this))
 {
-#ifdef NO_STD_LIST
-	next_par_ = 0;
-	prev_par_ = 0;
-#endif
 	enumdepth = 0;
 	itemdepth = 0;
 	params().clear();
@@ -85,10 +81,6 @@ Paragraph::Paragraph(Paragraph const & lp)
 {
 	enumdepth = 0;
 	itemdepth = 0;
-#ifdef NO_STD_LIST
-	next_par_ = 0;
-	prev_par_ = 0;
-#endif
 	// this is because of the dummy layout of the paragraphs that
 	// follow footnotes
 	layout_ = lp.layout();

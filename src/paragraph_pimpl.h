@@ -1,7 +1,7 @@
 // -*- C++ -*-
 /**
  * \file paragraph_pimpl.h
- * Copyright 1995-2002 the LyX Team
+ * Copyright 1995-2003 the LyX Team
  * Read the file COPYING
  */
 
