@@ -1,3 +1,7 @@
+2003-02-21  Angus Leeming  <leeming@lyx.org>
+
+	* FileDialog.C (FileDialog): no need for LyXView *.
+
 2003-02-14  John Levon  <levon@movementarian.org>
 
 	* FileDialog.C: remove spurious allow/prohibitInput()

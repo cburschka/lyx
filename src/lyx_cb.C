@@ -104,8 +104,7 @@ bool WriteAs(BufferView * bv, Buffer * buffer, string const & filename)
 
 	if (filename.empty()) {
 
-		FileDialog fileDlg(bv->owner(),
-				   _("Choose a filename to save document as"),
+		FileDialog fileDlg(_("Choose a filename to save document as"),
 			LFUN_WRITEAS,
 			make_pair(string(_("Documents|#o#O")),
 				  string(lyxrc.document_path)),
@@ -420,7 +419,7 @@ string getContentsOfAsciiFile(BufferView * bv, string const & f, bool asParagrap
 	string fname = f;
 
 	if (fname.empty()) {
-		FileDialog fileDlg(bv->owner(), _("Select file to insert"),
+		FileDialog fileDlg(_("Select file to insert"),
 			(asParagraph) ? LFUN_FILE_INSERT_ASCII_PARA : LFUN_FILE_INSERT_ASCII);
 
 		FileDialog::Result result = fileDlg.open(bv->owner()->buffer()->filePath());

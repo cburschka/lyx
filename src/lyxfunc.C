@@ -1644,7 +1644,7 @@ void LyXFunc::menuNew(string const & name, bool fromTemplate)
 	// The template stuff
 	string templname;
 	if (fromTemplate) {
-		FileDialog fileDlg(owner, _("Select template file"),
+		FileDialog fileDlg(_("Select template file"),
 			LFUN_SELECT_FILE_SYNC,
 			make_pair(string(_("Documents|#o#O")),
 				  string(lyxrc.document_path)),
@@ -1683,7 +1683,7 @@ void LyXFunc::open(string const & fname)
 	string filename;
 
 	if (fname.empty()) {
-		FileDialog fileDlg(owner, _("Select document to open"),
+		FileDialog fileDlg(_("Select document to open"),
 			LFUN_FILE_OPEN,
 			make_pair(string(_("Documents|#o#O")),
 				  string(lyxrc.document_path)),
@@ -1788,7 +1788,7 @@ void LyXFunc::doImport(string const & argument)
 			+ _(" file to import");;
 #endif
 
-		FileDialog fileDlg(owner, text,
+		FileDialog fileDlg(text,
 			LFUN_IMPORT,
 			make_pair(string(_("Documents|#o#O")),
 				  string(lyxrc.document_path)),

@@ -18,8 +18,6 @@
 #include <utility> // pair
 #include <vector> // pair
 
-class LyXView;
-
 /** Launch a file dialog and return the chosen file.
     filename: a suggested filename.
     title: the title of the dialog.
@@ -27,7 +25,7 @@ class LyXView;
     dir1 = (name, dir), dir2 = (name, dir): extra buttons on the dialog.
 */
 string const
-browseFile(LyXView * lv, string const & filename,
+browseFile(string const & filename,
 	   string const & title,
 	   string const & pattern,
 	   bool save = false,
@@ -44,7 +42,7 @@ browseFile(LyXView * lv, string const & filename,
    intended to be useful for insets which encapsulate files/
 */
 string const
-browseRelFile(LyXView * lv, string const & filename,
+browseRelFile(string const & filename,
 	      string const & refpath,
 	      string const & title,
 	      string const & pattern,
@@ -61,7 +59,7 @@ browseRelFile(LyXView * lv, string const & filename,
     dir1 = (name, dir), dir2 = (name, dir): extra buttons on the dialog.
 */
 string const
-browseDir(LyXView * lv, string const & pathname,
+browseDir(string const & pathname,
 	   string const & title,
 	   std::pair<string,string> const & dir1 =
 	   std::make_pair(string(), string()),

@@ -34,9 +34,9 @@ struct FileDialog::Private {
 };
 
 
-FileDialog::FileDialog(LyXView * lv, string const & t,
+FileDialog::FileDialog(string const & t,
 		       kb_action s, Button b1, Button b2)
-	: private_(new FileDialog::Private), lv_(lv), title_(t), success_(s)
+	: private_(new FileDialog::Private), title_(t), success_(s)
 {
 	private_->b1 = b1;
 	private_->b2 = b2;

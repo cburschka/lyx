@@ -1,3 +1,11 @@
+2003-02-21  Angus Leeming  <leeming@lyx.org>
+
+	* FileFialog.C (c-tor): no longer receives a LyXView &, nor passes
+	it to the Provate c-tor.
+	* FormFiledialog.[Ch] (c-tor): no longer receives a LyXView &.
+	Dialogs::redrawGUI is a static member, so can reference it without
+	a specific instance.
+
 2003-02-17  John Levon  <levon@movementarian.org>
 
 	* FormSpellchecker.h:

@@ -52,7 +52,7 @@ class FD_filedialog;
 class FileDialog::Private : public boost::signals::trackable {
 public:
 	///
-	Private(Dialogs &);
+	Private();
 	///
 	~Private();
 

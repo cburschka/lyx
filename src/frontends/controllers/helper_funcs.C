@@ -26,7 +26,7 @@ using std::vector;
 using std::make_pair;
 
 
-string const browseFile(LyXView * lv, string const & filename,
+string const browseFile(string const & filename,
 			string const & title,
 			string const & pattern,
 			bool save,
@@ -37,7 +37,7 @@ string const browseFile(LyXView * lv, string const & filename,
 	if (!filename.empty())
 		lastPath = OnlyPath(filename);
 
-	FileDialog fileDlg(lv, title, LFUN_SELECT_FILE_SYNC, dir1, dir2);
+	FileDialog fileDlg(title, LFUN_SELECT_FILE_SYNC, dir1, dir2);
 
 	FileDialog::Result result;
 
@@ -66,7 +66,7 @@ string const browseFile(LyXView * lv, string const & filename,
 }
 
 
-string const browseRelFile(LyXView * lv, string const & filename,
+string const browseRelFile(string const & filename,
 			string const & refpath,
 			string const & title,
 			string const & pattern,
@@ -76,7 +76,7 @@ string const browseRelFile(LyXView * lv, string const & filename,
 {
 	string const fname = MakeAbsPath(filename, refpath);
 
-	string const outname = browseFile(lv, fname, title, pattern, save,
+	string const outname = browseFile(fname, title, pattern, save,
 					  dir1, dir2);
 	string const reloutname = MakeRelPath(outname, refpath);
 	if (prefixIs(reloutname, "../"))
@@ -86,7 +86,7 @@ string const browseRelFile(LyXView * lv, string const & filename,
 }
 
 
-string const browseDir(LyXView * lv, string const & pathname,
+string const browseDir(string const & pathname,
 			string const & title,
 			pair<string,string> const & dir1,
 			pair<string,string> const & dir2)
@@ -95,7 +95,7 @@ string const browseDir(LyXView * lv, string const & pathname,
 	if (!pathname.empty())
 		lastPath = OnlyPath(pathname);
 
-	FileDialog fileDlg(lv, title, LFUN_SELECT_FILE_SYNC, dir1, dir2);
+	FileDialog fileDlg(title, LFUN_SELECT_FILE_SYNC, dir1, dir2);
 
 	FileDialog::Result result;
 

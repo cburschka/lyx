@@ -76,7 +76,7 @@ string const ControlPrint::Browse(string const & in_name)
 	string const pattern = "*.ps";
 
 	// Show the file browser dialog
-	return browseRelFile(&lv_, in_name, buffer()->filePath(),
+	return browseRelFile(in_name, buffer()->filePath(),
 			     title, pattern, true);
 }
 

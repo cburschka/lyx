@@ -1,5 +1,12 @@
 2003-02-21  Angus Leeming  <leeming@lyx.org>
 
+	* BufferView_pimpl.C (MenuInsertLyXFile):
+	* lyx_cb.C (WriteAs, getContentsOfAsciiFile):
+	* lyxfunc.C (menuNew, open, doImport):
+	no longer pass a LyXView & to fileDlg.
+
+2003-02-21  Angus Leeming  <leeming@lyx.org>
+
 	* BufferView_pimpl.C: replace insetbib.h with insetbibtex.h.
 	* LyXAction.C: change, BIBKEY to BIBITEM.
 	* buffer.C: replace insetbib.h with insetbibitem.h and insetbibtex.h.

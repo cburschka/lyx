@@ -1,3 +1,16 @@
+2003-02-21  Angus Leeming  <leeming@lyx.org>
+
+	* ControlBibtex.C (Browse):
+	* ControlExternal.C (Browse):
+	* ControlGraphics.C (Browse):
+	* ControlInclude.C (Browse):
+	* ControlPrefs.C (browsebind, browseUI, browsekbmap, browsedict,
+	browse, browsedir):
+	* ControlPrint.C (Browse):
+	don't pass a LyXView & to browseFile et al.
+	* helper_funcs.[Ch] (browseFile, browseRelFile, browseDir): 
+	don't pass a LyXView & to fileDlg.
+
 2003-02-17  John Levon  <levon@movementarian.org>
 
 	* ControlDialog.tmpl: build dialog before calling setParams

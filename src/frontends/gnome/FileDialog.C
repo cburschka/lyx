@@ -72,10 +72,10 @@ void FileDialog::Private::button_clicked(bool canceled)
 
 // FileDialog
 
-FileDialog::FileDialog(LyXView * lv, string const & title, kb_action a,
+FileDialog::FileDialog(string const & title, kb_action a,
 		Button /*b1*/, Button /*b2*/)
 	: private_(new Private(title))
-	, lv_(lv), title_(title), success_(a)
+	, title_(title), success_(a)
 {
 		private_->set_modal(LFUN_SELECT_FILE_SYNC == a);
 }

@@ -20,8 +20,6 @@
 
 #include "LString.h"
 
-class LyXView;
-
 /**
  * \class FileDialog
  * \brief GUI-I definition of file dialog interface
@@ -42,9 +40,9 @@ public:
 	typedef std::pair<FileDialog::ResultType, string> Result;
 
 	/**
-	 * Constructs a file dialog attached to LyXView \param lv, with
-	 * title \param title. If \param a is \const LFUN_SELECT_FILE_SYNC
-	 * then a value will be returned immediately upon performing a open(),
+	 * Constructs a file dialog with title \param title.
+	 * If \param a is \const LFUN_SELECT_FILE_SYNC then a value
+	 * will be returned immediately upon performing a open(),
 	 * otherwise a callback Dispatch() will be invoked with the filename as
 	 * argument, of action \param a.
 	 *
@@ -52,7 +50,7 @@ public:
 	 * additional directories in the navigation (an empty
 	 * directory is interpreted as getcwd())
 	 */
-	FileDialog(LyXView * lv, string const & title,
+	FileDialog(string const & title,
 		   kb_action a = LFUN_SELECT_FILE_SYNC,
 		   Button b1 = Button(string(), string()),
 		   Button b2 = Button(string(), string()));
@@ -104,9 +102,6 @@ public:
 	Private * private_;
 
 private:
-	/// our LyXView
-	LyXView * lv_;
-
 	/// the dialog title
 	string title_;
 
