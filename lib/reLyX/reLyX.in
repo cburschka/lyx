@@ -14,11 +14,13 @@ $^W = 1; # same as 'perl -w'
 use vars qw($lyxdir $lyxname);
 
 my (@maybe_dir);
-my $mainscript = "reLyXmain.pl";
+my $mainscript;
 my $relyxdir;
 
 # Do this in a BEGIN block so it's done before the 'use lib' below
 BEGIN{
+# Variables may not be assigned before the BEGIN block
+$mainscript = "reLyXmain.pl";
 # This points to LyX library dir, e.g. /usr/local/share/lyx
 $lyxdir = "@LYX_DIR@";
 # This is just "." if you compiled from the source directory
