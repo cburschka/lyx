@@ -285,7 +285,8 @@ void updateWidgetsFromLength(FL_OBJECT * input, FL_OBJECT * choice,
 		ostringstream buffer;
 		buffer << len.value();
 		fl_set_input(input, buffer.str().c_str());
-		fl_set_choice_text(choice, stringFromUnit(len.unit()));
+		fl_set_choice_text(choice, 
+		    subst(stringFromUnit(len.unit()),"%","%%").c_str());
 	}
 }
 #endif
