@@ -109,7 +109,6 @@ void FormSpellchecker::updateState(State state)
 
 		double const wordcount = controller().getCount();
 
-		// set slider 'finished' status
 		fl_set_slider_bounds(dialog_->slider_progress, 0.0, wordcount);
 		fl_set_slider_value(dialog_->slider_progress, wordcount);
 		fl_set_object_label(dialog_->slider_progress, "100 %");

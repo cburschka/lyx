@@ -1,3 +1,7 @@
+2002-11-21  Angus Leeming  <leeming@lyx.org>
+
+	* scripts/lyxpreview2bitmap.sh: Don't use "if [ $? -ne 0 ]; then..."
+
 2002-11-20  John Levon  <levon@movementarian.org>
 
 	* images/math/: implement missing math icons

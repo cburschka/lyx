@@ -1,3 +1,8 @@
+2002-11-21  Angus Leeming  <leeming@lyx.org>
+
+	* GraphicsConverter.C (build_script, move_file):
+	Don't use "if [ $? -ne 0 ]; then..."
+
 2002-11-04  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* PreviewLoader.C (IncrementedFileName): STRCONV

@@ -36,26 +36,28 @@ EOF
 #===============
 # Initial checks
 if [ ! -f $1 ]; then
-    echo "Input file does not exist. Cannot continue"
-    exit 1
+	echo "Input file does not exist. Cannot continue"
+	exit 1
 fi
 
 DIRNAME=`dirname $1`
 BASENAME=`basename $1 .fd`
 
 if [ $1 = ${BASENAME} ]; then
-    echo "Input file is not a .fd file. Cannot continue"
-    exit 1
+	echo "Input file is not a .fd file. Cannot continue"
+	exit 1
 fi
 
 #===================================
 # Create the initial .c and .h files
 FDESIGN=fdesign
 FDFILE=${BASENAME}.fd
-if (cd ${DIRNAME} && ${FDESIGN} -convert ${FDFILE}); then : ; else
-    echo "\"${FDESIGN} -convert ${FDFILE}\" failed. Please investigate."
-    exit 1
-fi
+
+(cd ${DIRNAME} && ${FDESIGN} -convert ${FDFILE}) ||
+{
+	echo "\"${FDESIGN} -convert ${FDFILE}}\" failed. Please investigate."
+	exit 1
+}
 
 #==================================
 # Modify the .h file for use by LyX
@@ -87,8 +89,8 @@ rm -f ${EXTERN_FUNCS}
 
 # Patch the .h file if a patch exists
 if [ -f "${HPATCH}" ] ; then
-    echo "Patching ${HOUT} with ${HPATCH}"
-    patch -s ${HOUT} < ${HPATCH}
+	echo "Patching ${HOUT} with ${HPATCH}"
+	patch -s ${HOUT} < ${HPATCH}
 fi
 
 # Clean up, to leave the finished .h file. We can be a little tricky here
@@ -99,14 +101,13 @@ fi
 rm -f ${HIN}
 MOVE_H_FILE=1
 if [ -r ${BASENAME}.h ]; then
-    if cmp -s ${HOUT} ${BASENAME}.h; then
-	MOVE_H_FILE=0
-    fi
+	cmp -s ${HOUT} ${BASENAME}.h && MOVE_H_FILE=0
 fi
+
 if [ ${MOVE_H_FILE} -eq 1 ]; then
-    mv ${HOUT} ${BASENAME}.h
+	mv ${HOUT} ${BASENAME}.h
 else
-    rm -f ${HOUT}
+	rm -f ${HOUT}
 fi
 
 #==================================
@@ -124,16 +125,15 @@ echo "#include <config.h>" >> ${COUT}
 echo "#include \"forms_gettext.h\"" >> ${COUT}
 echo "#include \"gettext.h\"" >> ${COUT}
 
-if grep bmtable ${CIN} > /dev/null; then
-    echo "#include \"bmtable.h\"" >> ${COUT}
-fi
+grep bmtable ${CIN} > /dev/null &&
+	echo "#include \"bmtable.h\"" >> ${COUT}
 
 sed -f ${FDFIXC} < ${CIN} >> ${COUT}
 
 # Patch the .C file if a patch exists
 if [ -f "${CPATCH}" ] ; then
-    echo "Patching ${COUT} with ${CPATCH}"
-    patch -s ${COUT} < ${CPATCH}
+	echo "Patching ${COUT} with ${CPATCH}"
+	patch -s ${COUT} < ${CPATCH}
 fi
 
 # Clean up, to leave the finished .C file

@@ -1,5 +1,7 @@
 2002-11-21  Angus Leeming  <leeming@lyx.org>
 
+	* forms/fdfix.sh: Don't use "if [ $? -ne 0 ]; then..."
+
 	* FormSpellchecker.C (updateState): new method, replacing Black Magic.
 	Should also resolve Darren Freeman's redraw of the status bar problem.
 

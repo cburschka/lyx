@@ -53,11 +53,11 @@
 
 # Three helper functions.
 FIND_IT () {
-	which ${EXECUTABLE} > /dev/null
-	if [ $? -ne 0 ]; then
+	which ${EXECUTABLE} > /dev/null ||
+	{
 		echo "Unable to find \"${EXECUTABLE}\". Please install."
 		exit 1
-	fi
+	}
 }
 
 BAIL_OUT () {
@@ -110,33 +110,33 @@ METRICSFILE=${BASE}.metrics
 
 # LaTeX -> DVI.
 cd ${DIR}
-latex ${TEXFILE}
-if [ $? -ne 0 ]; then
+latex ${TEXFILE} ||
+{
 	echo "Failed: latex ${TEXFILE}"
 	BAIL_OUT
-fi
+}
 
 # Parse ${LOGFILE} to obtain bounding box info to output to
 # ${METRICSFILE}.
 # This extracts lines starting "Preview: Tightpage" and
 # "Preview: Snippet".
-grep -E 'Preview: [ST]' ${LOGFILE} > ${METRICSFILE}
-if [ $? -ne 0 ]; then
+grep -E 'Preview: [ST]' ${LOGFILE} > ${METRICSFILE} ||
+{
 	echo "Failed: grep -E 'Preview: [ST]' ${LOGFILE}"
 	REQUIRED_VERSION
 	BAIL_OUT
-fi
+}
 
 # Parse ${LOGFILE} to obtain ${RESOLUTION} for the gs process to follow.
 # 1. Extract font size from a line like "Preview: Fontsize 20.74pt"
 # Use grep for speed and because it gives an error if the line is
 # not found.
-LINE=`grep 'Preview: Fontsize' ${LOGFILE}`
-if [ $? -ne 0 ]; then
+LINE=`grep 'Preview: Fontsize' ${LOGFILE}` ||
+{
 	echo "Failed: grep 'Preview: Fontsize' ${LOGFILE}"
 	REQUIRED_VERSION
 	BAIL_OUT
-fi
+}
 # The sed script strips out everything that won't form a decimal number
 # from the line. It bails out after the first match has been made in
 # case there are multiple lines "Preview: Fontsize". (There shouldn't
@@ -148,11 +148,11 @@ LATEXFONT=`echo "${LINE}" | sed 's/[^0-9\.]//g; 1q'`
 # "Preview: Magnification 2074"
 # If no such line found, default to MAGNIFICATION=1000.
 LINE=`grep 'Preview: Magnification' ${LOGFILE}`
-if [ $? -ne 0 ]; then
-	MAGNIFICATION=1000
-else
+if LINE=`grep 'Preview: Magnification' ${LOGFILE}`; then
 	# Strip out everything that won't form an /integer/.
 	MAGNIFICATION=`echo "${LINE}" | sed 's/[^0-9]//g; 1q'`
+else
+	MAGNIFICATION=1000
 fi
 
 # 3. Compute resolution.
@@ -162,11 +162,11 @@ RESOLUTION=`echo "scale=2; \
 	| bc`
 
 # DVI -> PostScript
-dvips -o ${PSFILE} ${DVIFILE}
-if [ $? -ne 0 ]; then
+dvips -o ${PSFILE} ${DVIFILE} ||
+{
 	echo "Failed: dvips -o ${PSFILE} ${DVIFILE}"
 	BAIL_OUT
-fi
+}
 
 # PostScript -> Bitmap files
 # Older versions of gs have problems with a large degree of
@@ -184,12 +184,11 @@ fi
 gs -q -dNOPAUSE -dBATCH -dSAFER \
 	-sDEVICE=${GSDEVICE} -sOutputFile=${BASE}%d.${GSSUFFIX} \
 	-dGraphicsAlphaBit=${ALPHA} -dTextAlphaBits=${ALPHA} \
-	-r${RESOLUTION} ${PSFILE}
-
-if [ $? -ne 0 ]; then
+	-r${RESOLUTION} ${PSFILE} ||
+{
 	echo "Failed: gs ${PSFILE}"
 	BAIL_OUT
-fi
+}
 
 # All has been successful, so remove everything except the bitmap files
 # and the metrics file.
@@ -200,11 +199,7 @@ rm -f ${FILES} texput.log
 # The bitmap files can have large amounts of whitespace to the left and
 # right. This can be cropped if so desired.
 CROP=1
-
-which pnmcrop > /dev/null
-if [ $? -ne 0 ]; then
-	CROP=0
-fi
+which pnmcrop > /dev/null || CROP=0
 
 # There's no point cropping the image if using PNG images. If you want to
 # crop, use PPM.
@@ -212,8 +207,8 @@ fi
 if [ ${CROP} -eq 1 -a "${GSDEVICE}" = "pnmraw" ]; then
 	for FILE in ${BASE}*.${GSSUFFIX}
 	do
-		pnmcrop -left ${FILE} | pnmcrop -right > ${BASE}.tmp
-		if [ $? -eq 0 ]; then
+		if pnmcrop -left ${FILE} 2> /dev/null |\
+		   pnmcrop -right  2> /dev/null > ${BASE}.tmp; then
 			mv ${BASE}.tmp ${FILE}
 		else
 			rm -f ${BASE}.tmp
@@ -221,3 +216,5 @@ if [ ${CROP} -eq 1 -a "${GSDEVICE}" = "pnmraw" ]; then
 	done
 	rm -f ${BASE}.tmp
 fi
+
+echo "Previews generated!"

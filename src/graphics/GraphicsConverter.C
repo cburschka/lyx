@@ -242,14 +242,14 @@ string const move_file(string const & from_file, string const & to_file)
 	ostringstream command;
 	command << "fromfile=" << from_file << "\n"
 		<< "tofile="   << to_file << "\n\n"
-		<< "'mv' -f ${fromfile} ${tofile}\n"
-		<< "if [ $? -ne 0 ]; then\n"
-		<< "\t'cp' -f ${fromfile} ${tofile}\n"
-		<< "\tif [ $? -ne 0 ]; then\n"
+		<< "'mv' -f ${fromfile} ${tofile} ||\n"
+		<< "{\n"
+		<< "\t'cp' -f ${fromfile} ${tofile} ||\n"
+		<< "\t{\n"
 		<< "\t\texit 1\n"
-		<< "\tfi\n"
+		<< "\t}\n"
 		<< "\t'rm' -f ${fromfile}\n"
-		<< "fi\n";
+		<< "}\n";
 
 	return STRCONV(command.str());
 }
@@ -320,14 +320,14 @@ bool build_script(string const & from_file,
 		command = LibScriptSearch(command);
 
 		// Store in the shell script
-		script << "\n" << command << "\n\n";
+		script << "\n" << command << " ||\n";
 
 		// Test that this was successful. If not, remove
 		// ${outfile} and exit the shell script
-		script << "if [ $? -ne 0 ]; then\n"
+		script << "{\n"
 		       << "\t'rm' -f ${outfile}\n"
 		       << "\texit 1\n"
-		       << "fi\n\n";
+		       << "}\n\n";
 
 		// Test that the outfile exists.
 		// ImageMagick's convert will often create ${outfile}.0,
