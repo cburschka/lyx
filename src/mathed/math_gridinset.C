@@ -403,7 +403,7 @@ bool MathGridInset::idxLeft(idx_type & idx, pos_type & pos) const
 bool MathGridInset::idxRight(idx_type & idx, pos_type & pos) const
 {
 	// leave matrix if on the right hand edge
-	if (col(idx) == ncols() - 1)
+	if (col(idx) + 1 == ncols())
 		return false;
 	idx++;
 	pos = 0;
@@ -490,30 +490,26 @@ void MathGridInset::idxDelete(idx_type & idx, bool & popit, bool & deleteit)
 	popit    = false;
 	deleteit = false;
 
-	// delete entire sequence of ncols() empty cells if possible
-	if (idx <= index(nrows() - 1, 0))	{
-		bool deleterow = true;
-		for (idx_type i = idx; i < idx + ncols(); ++i)
-			if (cell(i).size()) {
-				deleterow = false;
-				break;
-			}
+	// nothing to do if we are in the last row of the inset
+	if (row(idx) + 1 == nrows())
+		return;
 
-		if (deleterow) {
-			// move cells if necessary
-			for (idx_type i = index(row(idx), 0); i < idx; ++i)
-				cell(i).swap(cell(i + ncols()));
-			
-			delRow(row(idx));
-
-			if (idx >= nargs())
-				idx = nargs() - 1;
+	// try to delete entire sequence of ncols() empty cells if possible
+	for (idx_type i = idx; i < idx + ncols(); ++i)
+		if (cell(i).size())
 			return;
-		}
-	}
+
+	// move cells if necessary
+	for (idx_type i = index(row(idx), 0); i < idx; ++i)
+		cell(i).swap(cell(i + ncols()));
+		
+	delRow(row(idx));
+
+	if (idx >= nargs())
+		idx = nargs() - 1;
 
 	// undo effect of Ctrl-Tab (i.e. pull next cell)
-	//if (idx != nargs() - 1) 
+	//if (idx + 1 != nargs()) 
 	//	cell(idx).swap(cell(idx + 1));
 }
 

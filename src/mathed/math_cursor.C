@@ -952,7 +952,7 @@ void MathCursor::normalize() const
 		       << idx() << " " << par()->nargs() << "\n";
 		dump("error 2");
 	}
- 	it->idx()    = min(idx(), par()->nargs() - 1);
+ 	it->idx() = min(idx(), par()->nargs() - 1);
 
 	if (pos() > size()) {
 		lyxerr << "this should not really happen - 2: "
@@ -1058,7 +1058,7 @@ void MathCursor::idxPrev()
 
 void MathCursor::splitCell()
 {
-	if (idx() == par()->nargs() - 1) 
+	if (idx() + 1 == par()->nargs()) 
 		return;
 	MathArray ar = array();
 	ar.erase(0, pos());
