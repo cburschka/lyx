@@ -1,3 +1,8 @@
+2002-03-06  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* insetexternal.C (doSubstitution): check whether we are using a
+	temp dir for defining $$FPath
+
 2002-03-07  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* insettabular.C:

@@ -145,7 +145,7 @@ extern int tex_code_break_column;
 
 
 Buffer::Buffer(string const & file, bool ronly)
-	: paragraph(0), lyx_clean(true), bak_clean(true),
+	: paragraph(0), niceFile(true), lyx_clean(true), bak_clean(true),
 	  unnamed(false), dep_clean(0), read_only(ronly),
 	  filename_(file), users(0)
 {
@@ -2037,16 +2037,16 @@ void Buffer::makeLaTeXFile(string const & fname,
 {
 	lyxerr[Debug::LATEX] << "makeLaTeXFile..." << endl;
 	
-	niceFile = nice; // this will be used by Insetincludes.
-
-	tex_code_break_column = lyxrc.ascii_linelen;
-
 	ofstream ofs(fname.c_str());
 	if (!ofs) {
 		Alert::err_alert(_("Error: Cannot open file: "), fname);
 		return;
 	}
 	
+	niceFile = nice; // this will be used by Insetincludes.
+
+	tex_code_break_column = lyxrc.ascii_linelen;
+
 	// validate the buffer.
 	lyxerr[Debug::LATEX] << "  Validating buffer..." << endl;
 	LaTeXFeatures features(params);
@@ -2084,9 +2084,11 @@ void Buffer::makeLaTeXFile(string const & fname,
 			texrow.newline();
 		}
 		if (!original_path.empty()) {
+			string inputpath = os::external_path(original_path);
+			subst(inputpath, "~", "\\string~");
 			ofs << "\\makeatletter\n"
 			    << "\\def\\input@path{{"
-			    << os::external_path(original_path) << "/}}\n"
+			    << inputpath << "/}}\n"
 			    << "\\makeatother\n";
 			texrow.newline();
 			texrow.newline();
@@ -2519,6 +2521,9 @@ void Buffer::makeLaTeXFile(string const & fname,
 	
 	lyxerr[Debug::INFO] << "Finished making latex file." << endl;
 	lyxerr[Debug::INFO] << "Row count was " << texrow.rows()-1 << "." << endl;
+
+	// we want this to be true outside previews (for insetexternal)
+	niceFile = true;
 }
 
 
@@ -2802,6 +2807,9 @@ void Buffer::makeLinuxDocFile(string const & fname, bool nice, bool body_only)
 
 	ofs.close();
 	// How to check for successful close
+
+	// we want this to be true outside previews (for insetexternal)
+	niceFile = true;
 }
 
 
@@ -3362,6 +3370,9 @@ void Buffer::makeDocBookFile(string const & fname, bool nice, bool only_body)
 
 	ofs.close();
 	// How to check for successful close
+
+	// we want this to be true outside previews (for insetexternal)
+	niceFile = true;
 }
 
 

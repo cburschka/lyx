@@ -1,3 +1,14 @@
+2002-03-07  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* buffer.C (Buffer): initialize niceFile to true
+	(makeLaTeXFile): 
+	(makeLinuxDocFile): 
+	(makeDocBookFile): make sure niceFile is true on exit
+
+2002-03-06  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* buffer.C (makeLaTeXFile): escape ~ in \input@path
+
 2002-03-07  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* LyXSendto.C: remove.
@@ -11,6 +22,7 @@
 	* undo_funcs.C (textHandleUndo): fix problems when the paragraph
 	got moved away with the DEPM and also set the inset_owner always
 	right which before could have been omitted.
+
 2002-03-07  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* buffer.C (parseSingleLyXformat2Token): use default layout is the
