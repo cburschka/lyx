@@ -206,6 +206,8 @@ ostream & operator<<(ostream & os, Token const & t)
 {
 	if (t.cs().size())
 		os << '\\' << t.cs();
+	else if (t.cat() == catLetter)
+		os << t.character();
 	else
 		os << '[' << t.character() << ',' << t.cat() << ']';
 	return os;
@@ -1078,10 +1080,11 @@ void Parser::parse1(MathGridInset & grid, unsigned flags,
 			}
 
 			else {
-				//lyxerr << "unknow math inset begin '" << name << "'\n";
+				dump();
+				lyxerr << "found unknown math environment '" << name << "'\n";
 				// create generic environment inset
 				cell->push_back(MathAtom(new MathEnvInset(name)));
-				parse2(cell->back(), FLAG_END, mode, false);
+				parse(cell->back().nucleus()->cell(0), FLAG_ITEM, mode);
 			}
 		}
 
