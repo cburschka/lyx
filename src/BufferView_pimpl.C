@@ -486,7 +486,7 @@ void BufferView::Pimpl::scroll(int lines)
 	// Restrict to a valid value
 	new_top_y = std::min(t->height - 4 * line_height, new_top_y);
 	new_top_y = std::max(0, new_top_y);
-	
+
 	scrollDocView(new_top_y);
 
 	// Update the scrollbar.

@@ -462,7 +462,7 @@ public:
 	bool checkAndActivateInset(bool front);
 
 private:
-	
+
 	/// prohibit this as long as there are back pointers...
 	LyXText(LyXText const &);
 

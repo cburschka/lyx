@@ -1,5 +1,10 @@
 2003-11-21  Alfredo Braunstein  <abraunst@lyx.org>
 
+	* text3.C (dispatch): make possible to extend a word/row selection
+	with the mouse
+
+2003-11-21  Alfredo Braunstein  <abraunst@lyx.org>
+
 	* lyxtext.h: x0_,y0_ -> xo_,yo_ 
 	* text2.C (cursorUp, cursorDown): adjust + some cursorRow use
 	* text3.C (checkInsetHit): fix coordinates using absolute xo_,yo_

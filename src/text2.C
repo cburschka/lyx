@@ -1563,7 +1563,7 @@ void LyXText::setCursorFromCoordinates(int x, int y)
 	deleteEmptyParagraphMechanism(old_cursor);
 }
 
-//gets LyXText coordinates
+//x,y are coordinates relative to this LyXText
 void LyXText::setCursorFromCoordinates(LyXCursor & cur, int x, int y)
 {
 	// Get the row first.

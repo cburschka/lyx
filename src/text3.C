@@ -1203,6 +1203,7 @@ DispatchResult LyXText::dispatch(FuncRequest const & cmd)
 		if (!bv->buffer())
 			break;
 		if (cmd.button() == mouse_button::button1) {
+			selection_possible = true;
 			cursorHome();
 			selection.cursor = cursor;
 			cursorEnd();
@@ -1215,6 +1216,7 @@ DispatchResult LyXText::dispatch(FuncRequest const & cmd)
 		if (!bv->buffer())
 			break;
 		if (cmd.button() == mouse_button::button1) {
+			selection_possible = true;
 			selectWord(lyx::WHOLE_WORD_STRICT);
 			bv->haveSelection(selection.set());
 		}
