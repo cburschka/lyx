@@ -77,7 +77,7 @@ char const * LyXShapeNames[6] =
 char const * LyXSizeNames[14] = 
 { "tiny", "scriptsize", "footnotesize", "small", "normal", "large",
   "larger", "largest", "huge", "giant", 
-  "increase-error", "decrease-error", "default", "error" };
+  "increase", "decrease", "default", "error" };
 
 char const * LyXMiscNames[5] = 
 { "off", "on", "toggle", "default", "error" };
