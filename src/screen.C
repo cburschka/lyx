@@ -188,7 +188,9 @@ void LyXScreen::ShowCursor()
 {
 	if (!cursor_visible) {
 		Cursor_Shape shape = BAR_SHAPE;
-		if (text->real_current_font.isVisibleRightToLeft()
+		if (text->real_current_font.language() !=
+		    text->parameters->language_info
+		    || text->real_current_font.isVisibleRightToLeft()
 		    != text->parameters->language_info->RightToLeft)
 			shape = (text->real_current_font.isVisibleRightToLeft())
 				? REVERSED_L_SHAPE : L_SHAPE;

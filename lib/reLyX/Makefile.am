@@ -10,6 +10,7 @@ EXTRA_DIST = BUGS BasicLyX.pm CHANGES CleanTeX.pm LastLyX.pm MANIFEST \
 	reLyXmain.pl syntax.default test.ltx test.lyx reLyX.man \
 	RelyxFigure.pm Verbatim.pm \
 	$(LYXDISTDIRS)
+DESTDIR =
 
 LIBINSTFILES = *.pm *.pl README BUGS CHANGES reLyX.pod syntax.default Text/*.pm
 

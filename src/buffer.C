@@ -74,6 +74,7 @@ using std::setw;
 #include "insets/insetspecialchar.h"
 #include "insets/figinset.h"
 #include "insets/insettext.h"
+#include "insets/insetnumber.h"
 #include "insets/insetert.h"
 #include "insets/insetgraphics.h"
 #include "insets/insetfoot.h"
@@ -807,6 +808,13 @@ bool Buffer::parseSingleLyXformat2Token(LyXLex & lex, LyXParagraph *& par,
 			++pos;
 		} else if (tmptok == "Text") {
 			inset = new InsetText(this);
+			inset->Read(lex);
+			par->InsertChar(pos, LyXParagraph::META_INSET);
+			par->InsertInset(pos, inset);
+			par->SetFont(pos, font);
+			++pos;
+		} else if (tmptok == "Number") {
+			inset = new InsetNumber(this);
 			inset->Read(lex);
 			par->InsertChar(pos, LyXParagraph::META_INSET);
 			par->InsertInset(pos, inset);

@@ -299,9 +299,8 @@ public:
 	  decide, wether it is selected text or not. This is a strange
 	  solution but faster.
 	 */
-	void GetVisibleRow(int offset, 
-			   Row * row_ptr, long y);
-					   
+	void GetVisibleRow(int offset, Row * row_ptr, long y);
+
 	/* footnotes: */
 	///
 	void ToggleFootnote();
@@ -614,6 +613,9 @@ private:
 
 	///
 	mutable LyXParagraph::size_type bidi_start;
+
+	///
+	mutable bool bidi_same_direction;
 
 	///
 	void ComputeBidiTables(Row *row) const;

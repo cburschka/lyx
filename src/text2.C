@@ -540,13 +540,13 @@ void LyXText::SetLayout(LyXTextClass::size_type layout)
    
 	// we have to reset the selection, because the
 	// geometry could have changed */ 
-	SetCursor(sel_start_cursor.par, sel_start_cursor.pos);
+	SetCursor(sel_start_cursor.par, sel_start_cursor.pos, false);
 	sel_cursor = cursor;
-	SetCursor(sel_end_cursor.par, sel_end_cursor.pos);
+	SetCursor(sel_end_cursor.par, sel_end_cursor.pos, false);
 	UpdateCounters(cursor.row);
 	ClearSelection();
 	SetSelection();
-	SetCursor(tmpcursor.par, tmpcursor.pos);
+	SetCursor(tmpcursor.par, tmpcursor.pos, true);
 }
 
 
@@ -3107,16 +3107,25 @@ void LyXText::SetCursorIntern(LyXParagraph * par,
 					x -= SingleWidth(row->par, main_body-1);
 			}
       
-			x += SingleWidth(row->par, pos);
 			if (HfillExpansion(row, pos)) {
+				x += SingleWidth(row->par, pos);
 				if (pos >= main_body)
 					x += fill_hfill;
 				else 
 					x += fill_label_hfill;
 			}
-			else if (pos >= main_body && row->par->IsSeparator(pos)) {
-				x+= fill_separator;
-			}
+			else if (row->par->IsSeparator(pos)) {
+				if (pos != last ||
+				    !row->next ||
+				    row->next->par != row->par ||
+				    row->par->getParDirection() ==
+				    row->par->getLetterDirection(last)) {
+					x += SingleWidth(row->par, pos);
+					if (pos >= main_body)
+						x += fill_separator;
+				}
+			} else
+				x += SingleWidth(row->par, pos);
 		}
 	}
    

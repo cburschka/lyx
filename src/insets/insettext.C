@@ -493,7 +493,7 @@ InsetText::LocalDispatch(BufferView * bv,
 	cutSelection();
 	actpos = selection_start;
 	par->InsertChar(actpos,arg[0]);
-	par->SetFont(actpos,real_current_font);
+	SetCharFont(actpos,current_font);
 	++actpos;
 	selection_start = selection_end = actpos;
 	UpdateLocal(bv, true);
@@ -665,7 +665,7 @@ InsetText::LocalDispatch(BufferView * bv,
 	    bv->text->cursor.par->ParFromPos(bv->text->cursor.pos)->previous,
 	    bv->text->cursor.par->ParFromPos(bv->text->cursor.pos)->next);
 	par->InsertChar(actpos,LyXParagraph::META_NEWLINE);
-	par->SetFont(actpos,real_current_font);
+	SetCharFont(actpos,current_font);
 	UpdateLocal(bv, true);
 	++actpos;
 	selection_start = selection_end = actpos;
@@ -1308,9 +1308,10 @@ void InsetText::UpdateLocal(BufferView *bv, bool flag)
     if (flag) {
 	computeTextRows(bv->painter(), xpos);
 	computeBaselines(top_baseline);
-	resetPos(bv);
     }
     bv->updateInset(this, flag);
+    if (flag)
+	resetPos(bv);
     ShowInsetCursor(bv);
 }
 

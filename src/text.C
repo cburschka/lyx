@@ -247,7 +247,7 @@ LyXParagraph::size_type LyXText::RowLast(Row const * row) const
 
 void LyXText::ComputeBidiTables(Row * row) const
 {
-
+	bidi_same_direction = true;
 	if (!lyxrc.rtl_support) {
 		bidi_start = -1;
 		return;
@@ -336,6 +336,7 @@ void LyXText::ComputeBidiTablesFromTo(Row * row,
 				++lpos;
 			}
 			direction = static_cast<LyXDirection>(-direction);
+			bidi_same_direction = false;
 		}
 	}
 
@@ -2855,7 +2856,10 @@ void LyXText::PrepareToPrint(Row * row, float & x,
 		    && !row->par->table
 		    && last != vis2log(last)
 		    && row->par->IsLineSeparator(last)) {
-			if (!(main_body > 0 && main_body-1 == last))
+			if ((main_body = 0 || main_body-1 != last) &&
+			    (!row->next || row->next->par != row->par ||
+			     row->par->getLetterDirection(last) ==
+			     LYX_DIR_RIGHT_TO_LEFT))
 				x -= fill_separator+SingleWidth(row->par,last);
 		} else if (main_body > 0 &&
 			   (main_body-1 > last || 
@@ -3342,8 +3346,8 @@ void LyXText::Backspace()
 		    && !(cursor.par->Next() 
 			 && cursor.par->footnoteflag == LyXParagraph::NO_FOOTNOTE
 			 && cursor.par->Next()->footnoteflag == LyXParagraph::OPEN_FOOTNOTE)) {
-			// This is an empty paragraph and we delete it just by moving the curosr one step
-			// left and let the DeleteEmptyParagraphMechanism handle the actual deleteion
+			// This is an empty paragraph and we delete it just by moving the cursor one step
+			// left and let the DeleteEmptyParagraphMechanism handle the actual deletion
 			// of the paragraph.
 			
 			if (cursor.par->previous) {
@@ -3385,17 +3389,12 @@ void LyXText::Backspace()
 		// not a good idea since it triggers the auto-delete
 		// mechanism. So we do a CursorLeftIntern()-lite,
 		// without the dreaded mechanism. (JMarc)
-		if (cursor.pos > 0) {
-			SetCursorIntern(cursor.par, cursor.pos - 1);
-		}
-		else if (cursor.par->Previous()) { 
+		if (cursor.par->Previous()) { 
 			// steps into the above paragraph.
 			SetCursorIntern(cursor.par->Previous(), 
 					cursor.par->Previous()->Last());
 		}
 
-
-#warning See comment on top of text.C
 		/* Pasting is not allowed, if the paragraphs have different
 		   layout. I think it is a real bug of all other
 		   word processors to allow it. It confuses the user.
@@ -3458,22 +3457,14 @@ void LyXText::Backspace()
 		// not a good idea since it triggers the auto-delete
 		// mechanism. So we do a CursorLeftIntern()-lite,
 		// without the dreaded mechanism. (JMarc)
-		if (cursor.pos > 0) {
-			SetCursorIntern(cursor.par, cursor.pos - 1);
-		}
-		else if (cursor.par->Previous()) { 
-			// steps into the above paragraph.
-			SetCursorIntern(cursor.par->Previous(), 
-					cursor.par->Previous()->Last());
-		}
-//		CursorLeftIntern();
+		SetCursorIntern(cursor.par, cursor.pos - 1);
 		
 		// some insets are undeletable here
 		if (cursor.par->GetChar(cursor.pos) == LyXParagraph::META_INSET) {
 			if (!cursor.par->GetInset(cursor.pos)->Deletable())
 				return; 
 			// force complete redo when erasing display insets
-			// this is a cruel mathod but save..... Matthias 
+			// this is a cruel method but safe..... Matthias 
 			if (cursor.par->GetInset(cursor.pos)->display()){
 				cursor.par->Erase(cursor.pos);
 				RedoParagraph();
@@ -3666,14 +3657,15 @@ void LyXText::Backspace()
 }
 
 
-void LyXText::GetVisibleRow(int offset, 
-			    Row * row_ptr, long y)
+void LyXText::GetVisibleRow(int offset, Row * row_ptr, long y)
 {
 	/* returns a printed row */
 	Painter & pain = owner_->painter();
 	
 	LyXDirection direction = row_ptr->par->getParDirection();
-	LyXParagraph::size_type vpos, pos, pos_end;
+	LyXParagraph::size_type last = RowLast(row_ptr);
+
+	LyXParagraph::size_type vpos, pos;
 	float x, tmpx;
 	int y_top, y_bottom;
 	float fill_separator, fill_hfill, fill_label_hfill;
@@ -3692,49 +3684,143 @@ void LyXText::GetVisibleRow(int offset,
 	pain.fillRectangle(0, offset, paperwidth, row_ptr->height);
 	
 	if (selection) {
-		/* selection code */ 
-		if (sel_start_cursor.row == row_ptr &&
-		    sel_end_cursor.row == row_ptr) {
-		        if (sel_start_cursor.x < sel_end_cursor.x)
-				pain.fillRectangle(sel_start_cursor.x, offset,
-						   sel_end_cursor.x - sel_start_cursor.x,
-						   row_ptr->height,
-						   LColor::selection);
-			else
-				pain.fillRectangle(sel_end_cursor.x, offset,
-						   sel_start_cursor.x - sel_end_cursor.x,
-						   row_ptr->height,
-						   LColor::selection);
-		} else if (sel_start_cursor.row == row_ptr) {
-			if (direction == LYX_DIR_LEFT_TO_RIGHT)
-				pain.fillRectangle(sel_start_cursor.x, offset,
-						   paperwidth - sel_start_cursor.x,
-						   row_ptr->height,
-						   LColor::selection);
-			else
+		/* selection code */
+		if (bidi_same_direction) {
+			if (sel_start_cursor.row == row_ptr &&
+			    sel_end_cursor.row == row_ptr) {
+				if (sel_start_cursor.x < sel_end_cursor.x)
+					pain.fillRectangle(sel_start_cursor.x, offset,
+							   sel_end_cursor.x - sel_start_cursor.x,
+							   row_ptr->height,
+							   LColor::selection);
+				else
+					pain.fillRectangle(sel_end_cursor.x, offset,
+							   sel_start_cursor.x - sel_end_cursor.x,
+							   row_ptr->height,
+							   LColor::selection);
+			} else if (sel_start_cursor.row == row_ptr) {
+				if (direction == LYX_DIR_LEFT_TO_RIGHT)
+					pain.fillRectangle(sel_start_cursor.x, offset,
+							   paperwidth - sel_start_cursor.x,
+							   row_ptr->height,
+							   LColor::selection);
+				else
+					pain.fillRectangle(0, offset,
+							   sel_start_cursor.x,
+							   row_ptr->height,
+							   LColor::selection);
+			} else if (sel_end_cursor.row == row_ptr) {
+				if (direction == LYX_DIR_LEFT_TO_RIGHT)
+					pain.fillRectangle(0, offset,
+							   sel_end_cursor.x,
+							   row_ptr->height,
+							   LColor::selection);
+				else
+					pain.fillRectangle(sel_end_cursor.x, offset,
+							   paperwidth - sel_end_cursor.x,
+							   row_ptr->height,
+							   LColor::selection);
+			} else if (y > sel_start_cursor.y && y < sel_end_cursor.y) {
 				pain.fillRectangle(0, offset,
-						   sel_start_cursor.x,
-						   row_ptr->height,
+						   paperwidth, row_ptr->height,
 						   LColor::selection);
-		} else if (sel_end_cursor.row == row_ptr) {
-			if (direction == LYX_DIR_LEFT_TO_RIGHT)
-				pain.fillRectangle(0, offset,
-						   sel_end_cursor.x,
-						   row_ptr->height,
-						   LColor::selection);
-			else
-				pain.fillRectangle(sel_end_cursor.x, offset,
-						   paperwidth - sel_end_cursor.x,
-						   row_ptr->height,
-						   LColor::selection);
-			
-		} else if (y > sel_start_cursor.y && y < sel_end_cursor.y) {
+			}
+		} else if ( sel_start_cursor.row != row_ptr &&
+			    sel_end_cursor.row != row_ptr &&
+			    y > sel_start_cursor.y && y < sel_end_cursor.y) {
 			pain.fillRectangle(0, offset,
 					   paperwidth, row_ptr->height,
 					   LColor::selection);
+		} else if (sel_start_cursor.row == row_ptr ||
+			   sel_end_cursor.row == row_ptr) {
+			float tmpx = x;
+			int cell = 0;
+			if (row_ptr->par->table) {
+				cell = NumberOfCell(row_ptr->par, row_ptr->pos);
+				tmpx += row_ptr->par->table->GetBeginningOfTextInCell(cell);
+			}
+			if ( (sel_start_cursor.row != row_ptr &&
+			      direction == LYX_DIR_LEFT_TO_RIGHT) ||
+			     (sel_end_cursor.row != row_ptr &&
+			      direction == LYX_DIR_RIGHT_TO_LEFT))
+				pain.fillRectangle(0, offset,
+						   tmpx, row_ptr->height,
+						   LColor::selection);
+			if (row_ptr->par->table) {
+				float x_old = x;
+				for (vpos = row_ptr->pos; vpos <= last; ++vpos)  {
+					pos = vis2log(vpos);
+					float old_tmpx = tmpx;
+					if (row_ptr->par->IsNewline(pos)) {
+						tmpx = x_old + row_ptr->par->table->WidthOfColumn(cell);
+						x_old = tmpx;
+						++cell;
+						tmpx += row_ptr->par->table->GetBeginningOfTextInCell(cell);
+					} else {
+						tmpx += SingleWidth(row_ptr->par, pos);
+					}
+					if ( (sel_start_cursor.row != row_ptr ||
+					      sel_start_cursor.pos <= pos) &&
+					     (sel_end_cursor.row != row_ptr ||
+					      pos < sel_end_cursor.pos) )
+						pain.fillRectangle(old_tmpx, offset,
+								   tmpx - old_tmpx + 1,
+								   row_ptr->height,
+								   LColor::selection);
+				}
+			} else {
+				LyXParagraph::size_type main_body =
+					BeginningOfMainBody(row_ptr->par);
+
+				for (vpos = row_ptr->pos; vpos <= last; ++vpos)  {
+					pos = vis2log(vpos);
+					float old_tmpx = tmpx;
+					if (main_body > 0 && pos == main_body-1) {
+						tmpx += fill_label_hfill +
+							GetFont(row_ptr->par, -2).stringWidth(
+											      textclasslist.Style(parameters->textclass, row_ptr->par->GetLayout()).labelsep);
+						if (row_ptr->par->IsLineSeparator(main_body-1))
+							tmpx -= SingleWidth(row_ptr->par, main_body-1);
+					}
+					if (HfillExpansion(row_ptr, pos)) {
+						tmpx += SingleWidth(row_ptr->par, pos);
+						if (pos >= main_body)
+							tmpx += fill_hfill;
+						else 
+							tmpx += fill_label_hfill;
+					}
+					else if (row_ptr->par->IsSeparator(pos)) {
+						if (pos != last || !row_ptr->next || 
+						    row_ptr->next->par != row_ptr->par ||
+						    direction == row_ptr->par->getLetterDirection(last)) {
+							tmpx += SingleWidth(row_ptr->par, pos);
+							if (pos >= main_body)
+								tmpx += fill_separator;
+						}
+					} else
+						tmpx += SingleWidth(row_ptr->par, pos);
+
+					if ( (sel_start_cursor.row != row_ptr ||
+					      sel_start_cursor.pos <= pos) &&
+					     (sel_end_cursor.row != row_ptr ||
+					      pos < sel_end_cursor.pos) )
+						pain.fillRectangle(old_tmpx, offset,
+								   tmpx - old_tmpx + 1,
+								   row_ptr->height,
+							   LColor::selection);
+				}
+			}
+			if ( (sel_start_cursor.row != row_ptr &&
+			      direction == LYX_DIR_RIGHT_TO_LEFT) ||
+			     (sel_end_cursor.row != row_ptr &&
+			      direction == LYX_DIR_LEFT_TO_RIGHT) )
+				pain.fillRectangle(tmpx, offset,
+						   paperwidth - tmpx,
+						   row_ptr->height,
+						   LColor::selection);
 		}
 	}
-	
+
 	if (row_ptr->par->appendix){
 		pain.line(1, offset,
 			  1, offset + row_ptr->height,
@@ -4033,7 +4119,7 @@ void LyXText::GetVisibleRow(int offset,
 	
 	/* is it a last row? */
 	par = row_ptr->par->LastPhysicalPar();
-	if (row_ptr->par->ParFromPos(RowLast(row_ptr) + 1) == par
+	if (row_ptr->par->ParFromPos(last + 1) == par
 	    && (!row_ptr->next || row_ptr->next->par != row_ptr->par)) {     
 		
 		/* think about the margins */ 
@@ -4108,7 +4194,7 @@ void LyXText::GetVisibleRow(int offset,
 		int endlabel = row_ptr->par->GetEndLabel();
 		if (endlabel == END_LABEL_BOX ||
 		    endlabel == END_LABEL_FILLED_BOX) {
-			LyXFont font = GetFont(row_ptr->par, RowLast(row_ptr));
+			LyXFont font = GetFont(row_ptr->par, last);
 			int size = int(0.75*font.maxAscent());
 			int y = (offset + row_ptr->baseline) - size;
 			int x = (direction == LYX_DIR_LEFT_TO_RIGHT)
@@ -4140,7 +4226,6 @@ void LyXText::GetVisibleRow(int offset,
 	}
 	
 	/* draw the text in the pixmap */  
-	pos_end = RowLast(row_ptr);
 	
 	vpos = row_ptr->pos;
 	/* table stuff -- begin*/
@@ -4150,7 +4235,7 @@ void LyXText::GetVisibleRow(int offset,
 		float x_old = x;
 		x += row_ptr->par->table->GetBeginningOfTextInCell(cell);
 		
-		while (vpos <= pos_end)  {
+		while (vpos <= last)  {
 			pos = vis2log(vpos);
 			if (row_ptr->par->IsNewline(pos)) {
 				
@@ -4305,11 +4390,11 @@ void LyXText::GetVisibleRow(int offset,
 		LyXParagraph::size_type main_body = 
 			BeginningOfMainBody(row_ptr->par);
 		if (main_body > 0 &&
-		    (main_body-1 > pos_end || 
+		    (main_body-1 > last || 
 		     !row_ptr->par->IsLineSeparator(main_body-1)))
 			main_body = 0;
 		
-		while (vpos <= pos_end)  {
+		while (vpos <= last)  {
 			pos = vis2log(vpos);
 			if (main_body > 0 && pos == main_body-1) {
 				x += fill_label_hfill
@@ -4353,10 +4438,16 @@ void LyXText::GetVisibleRow(int offset,
 				x += 2;
 				++vpos;
 			} else if (row_ptr->par->IsSeparator(pos)) {
-				tmpx = x;
-				x+= SingleWidth(row_ptr->par, pos);
-				if (pos >= main_body)
-					x+= fill_separator;
+				if (pos != last || !row_ptr->next || 
+				    row_ptr->next->par != row_ptr->par ||
+				    direction == row_ptr->par->getLetterDirection(last)) {
+#if 0
+					tmpx = x;
+#endif
+					x += SingleWidth(row_ptr->par, pos);
+					if (pos >= main_body)
+						x += fill_separator;
+				}
 #warning Think about this
 #if 0
 				/* -------> Only draw protected spaces when
@@ -4471,17 +4562,24 @@ int LyXText::GetColumnNearX(Row * row, int & x) const
 					tmpx -= SingleWidth(row->par, main_body-1);
 			}
 	     
-			tmpx += SingleWidth(row->par, c);
 			if (HfillExpansion(row, c)) {
+				x += SingleWidth(row->par, c);
 				if (c >= main_body)
 					tmpx += fill_hfill;
 				else
 					tmpx += fill_label_hfill;
 			}
-			else if (c >= main_body
-				 && row->par->IsSeparator(c)) {
-				tmpx+= fill_separator;  
-			}
+			else if (row->par->IsSeparator(c)) {
+				if (c != last ||
+				    !row->next ||
+				    row->next->par != row->par ||
+				    direction == row->par->getLetterDirection(last)) {
+					tmpx += SingleWidth(row->par, c);
+					if (c >= main_body)
+						tmpx+= fill_separator;
+				}
+			} else
+				tmpx += SingleWidth(row->par, c);
 			++vc;
 		}
 

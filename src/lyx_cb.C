@@ -2160,7 +2160,7 @@ void LangCB(string const & l)
 
 void StyleReset()
 {
-	LyXFont font(LyXFont::ALL_INHERIT);
+	LyXFont font(LyXFont::ALL_INHERIT, ignore_language);
 	ToggleAndShow(current_view, font);
 }
 
@@ -2697,11 +2697,9 @@ extern "C" void DocumentApplyCB(FL_OBJECT *, long)
    
 	if (!current_view->available())
 		return;
-	if (lyxrc.rtl_support) {
-		current_view->text->SetCursor(current_view->text->cursor.par,
-					      current_view->text->cursor.pos);
-		current_view->setState();
-	}
+	current_view->text->SetCursor(current_view->text->cursor.par,
+				      current_view->text->cursor.pos);
+	current_view->setState();
 
 	LyXTextClassList::ClassList::size_type new_class =
 		fl_get_choice(fd_form_document->choice_class) - 1;

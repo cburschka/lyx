@@ -42,6 +42,7 @@
 #include "insets/insetinclude.h"
 #include "insets/insetbib.h"
 #include "insets/insettext.h"
+#include "insets/insetnumber.h"
 #include "insets/insetert.h"
 #include "insets/insetgraphics.h"
 #include "insets/insetfoot.h"
@@ -567,24 +568,33 @@ string LyXFunc::Dispatch(int ac,
 				setMessage(N_("Text mode"));
 				LyXDirection direction = owner->view()->text->
 					cursor.par->getParDirection();
-				if ((action == -1) ||
-				    ((action == LFUN_RIGHT) &&
-				     (direction == LYX_DIR_LEFT_TO_RIGHT))) {
+				switch(action) {
+				case LFUN_UNKNOWN_ACTION:
+				case LFUN_BREAKPARAGRAPH:
+				case LFUN_BREAKLINE:
 					owner->view()->text->CursorRight();
-					moveCursorUpdate(false);
-					owner->getMiniBuffer()->
-						Set(CurrentState());
-				}
-				if ((action == LFUN_LEFT) &&
-				    (direction == LYX_DIR_RIGHT_TO_LEFT)) {
-					owner->view()->text->CursorRight();
-					moveCursorUpdate(false);
-					owner->getMiniBuffer()->
-						Set(CurrentState());
-				}
-				if ((action == LFUN_LEFT) ||
-				    (action == LFUN_RIGHT))
+					owner->view()->setState();
+					owner->getMiniBuffer()->Set(CurrentState());
+					break;
+				case LFUN_RIGHT:
+					if (direction == LYX_DIR_LEFT_TO_RIGHT) {
+						owner->view()->text->CursorRight();
+						moveCursorUpdate(false);
+						owner->getMiniBuffer()->
+							Set(CurrentState());
+					}
 					return string();
+				case LFUN_LEFT: 
+					if (direction == LYX_DIR_RIGHT_TO_LEFT) {
+						owner->view()->text->CursorRight();
+						moveCursorUpdate(false);
+						owner->getMiniBuffer()->
+							Set(CurrentState());
+					}
+					return string();
+				default:
+					break;
+				}
 			}
 		}
 	}
@@ -881,6 +891,7 @@ string LyXFunc::Dispatch(int ac,
 		
 	case LFUN_PASTE:
 		owner->view()->paste();
+		owner->view()->setState();
 		break;
 		
 	case LFUN_PASTESELECTION:
@@ -905,6 +916,7 @@ string LyXFunc::Dispatch(int ac,
 		
 	case LFUN_LAYOUT_PASTE:
 		owner->view()->pasteEnvironment();
+		owner->view()->setState();
 		break;
 		
 	case LFUN_GOTOERROR:
@@ -1138,6 +1150,7 @@ string LyXFunc::Dispatch(int ac,
 				       text->cursor.par->
 				       GetLayout() + 1);
 			owner->view()->update(1);
+			owner->view()->setState();
 		}
 	}
 	break;
@@ -1947,6 +1960,13 @@ string LyXFunc::Dispatch(int ac,
 		new_inset->Edit(owner->view(), 0, 0, 0);
 	}
 	break;
+	case LFUN_INSET_NUMBER:
+	{
+		InsetNumber * new_inset = new InsetNumber(owner->buffer());
+		owner->view()->insertInset(new_inset);
+		new_inset->Edit(owner->view(), 0, 0, 0);
+	}
+	break;
 	case LFUN_INSET_ERT:
 	{
 		InsetERT * new_inset = new InsetERT(owner->buffer());
@@ -2545,28 +2565,13 @@ string LyXFunc::Dispatch(int ac,
 			owner->view()->beforeChange();
 			
 			if (isdigit(argument[0]) &&
-			    (lyxrc.auto_mathmode == "true" ||
-			     (lyxrc.auto_mathmode == "rtl" &&
+			    (lyxrc.number_inset == "true" ||
+			     (lyxrc.number_inset == "rtl" &&
 			      owner->view()->text->real_current_font.isVisibleRightToLeft() 
 			      ))) {
-				UpdatableInset * tmpinset = new InsetFormula;
-				LyXCursor & cursor = owner->view()->text->cursor;
-				if (cursor.pos > 0 &&
-				    cursor.par->GetChar(cursor.pos - 1) == '-' &&
-				    (cursor.pos == 1 || 
-				     cursor.par->IsSeparator(cursor.pos - 2) ||
-				     cursor.par->IsNewline(cursor.pos - 2) )
-				    ) {
-					owner->view()->text->Backspace();
-					owner->view()->open_new_inset(tmpinset);
-					tmpinset->LocalDispatch(owner->view(),
-								LFUN_UNKNOWN_ACTION,
-								"-");
-				} else {
-					owner->view()->open_new_inset(tmpinset);
-				}
-				tmpinset->LocalDispatch(owner->view(),
-							LFUN_UNKNOWN_ACTION,
+				UpdatableInset * tmpinset = new InsetNumber(owner->buffer());
+				owner->view()->open_new_inset(tmpinset);
+				tmpinset->LocalDispatch(owner->view(), action,
 							argument);
 				return string();
 			}

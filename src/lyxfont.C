@@ -663,7 +663,7 @@ int LyXFont::latexWriteStartChanges(ostream & os, LyXFont const & base,
 	int count = 0;
 	bool env = false;
 
-	if (language() != prev.language()) {
+	if (language() != base.language() && language() != prev.language()) {
 		if (isRightToLeft() != prev.isRightToLeft()) {
 			if (isRightToLeft()) {
 				os << "\\R{";
@@ -755,7 +755,7 @@ int LyXFont::latexWriteEndChanges(ostream & os, LyXFont const & base,
 	int count = 0;
 	bool env = false;
 
-	if (language() != next.language()) {
+	if (language() != base.language() && language() != next.language()) {
 		os << "}";
 		++count;
 		env = true; // Size change need not bother about closing env.

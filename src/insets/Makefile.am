@@ -44,6 +44,8 @@ libinsets_la_SOURCES = \
 	insetlof.h \
 	insetlot.C \
 	insetlot.h \
+	insetnumber.C \
+	insetnumber.h \
 	insetparent.C \
 	insetparent.h \
 	insetquotes.C \

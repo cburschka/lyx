@@ -537,13 +537,15 @@ private:
 		size_type pos;
 		///
 		Inset * inset;
+		///
+		InsetTable(size_type p, Inset * i) { pos = p; inset = i;}
 	};
 	///
 	typedef list<FontTable> FontList;
 	///
 	FontList fontlist;
 	///
-	typedef list<InsetTable> InsetList;
+	typedef vector<InsetTable> InsetList;
 	///
 	InsetList insetlist;
 	///
@@ -578,4 +580,11 @@ private:
 	///
 	static unsigned int paragraph_id;
 };
+
+inline bool operator<(LyXParagraph::InsetTable const & a, 
+		      LyXParagraph::InsetTable const & b)
+{
+        return a.pos < b.pos;
+}
+
 #endif

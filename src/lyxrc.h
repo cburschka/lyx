@@ -222,7 +222,7 @@ public:
 	///
 	bool rtl_support;
 	///
-	string auto_mathmode;
+	string number_inset;
 	///
 	bool show_banner;
 	/// Do we have to use a GUI?

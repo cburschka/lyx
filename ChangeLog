@@ -1,3 +1,61 @@
+2000-04-03  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/text.C (Backspace): some additional cleanups (we already
+	know whether cursor.pos is 0 or not).
+
+	* lib/reLyX/Makefile.am (DESTDIR): add an empty value (since
+	automake does not provide one).
+
+	* src/bmtable.h: replace C++ comments with C comments.
+
+2000-04-02  Dekel Tsur <dekel@math.tau.ac.il>
+
+	* src/screen.C (ShowCursor): Change the shape of the cursor if
+	the current language is not equal to the language of the document.
+	(If the cursor change its shape unexpectedly, then you've found a bug)
+
+	* src/insets/insettext.C (LocalDispatch, UpdateLocal) Fixed some
+	bugs [I hope...]
+
+	* src/insets/insetnumber.[Ch]: New files.
+
+	* src/LyXAction.C (init)
+	* src/lyxfunc.C (dispatch): Add command number-inset-insert
+
+	* lyxrc.example
+	* src/lyxrc.C: Renamed command \auto_mathmode to \number_inset
+
+	* src/lyxparagraph.h
+	* src/paragraph.C: Changed insetlist to Vector<InsetTable>.
+	(the vector is kept sorted).
+
+	* src/text.C (GetVisibleRow): Draw selection correctly when there
+	is both LTR and RTL text.
+
+	* src/paragraph.C (Clone): Use the assignment operator for cloning,
+	which is much faster.
+
+	* src/text.C (GetVisibleRow and other): Do not draw the last space 
+	in a row if the direction of the last letter is not equal to the
+	direction of the paragraph.
+
+	* src/lyxfont.C (latexWriteStartChanges):
+	Check that font language is not equal to basefont language.
+	(latexWriteEndChanges): ditto
+
+	* src/lyx_cb.C (StyleReset): Don't change the language while using
+	the font-default command.
+
+	* src/paragraph.C (GetFirstFontSettings): Handle correctly an
+	empty paragraph before a footnote.
+
+	* src/insets/insetcommand.C (draw): Increase x correctly.
+
+	* src/screen.C (ShowCursor): Change cursor shape if
+ 	current language != document language.
+
+	* src/lyxfunc.C (dispatch): Added calls to owner->view()->setState()
+
 2000-03-31  Juergen Vigna  <jug@sad.it>
 
 	* src/paragraph.C (GetInset): commented out text[pos] = ' '

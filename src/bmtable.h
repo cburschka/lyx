@@ -23,11 +23,11 @@ extern "C"
 {
 #endif
 
-///
+/**/
 #define FL_BMTABLE 1500
-/// A flat bitmap table
+/* A flat bitmap table */
 #define FL_BMTABLE_FLAT 0
-/// A grided bitmap table
+/* A grided bitmap table */
 #define FL_BMTABLE_GRID 1
 
 
@@ -40,25 +40,25 @@ extern "C"
 #define FL_BMTABLE_BOXTYPE	FL_UP_BOX
 
 
-///
+/**/
 FL_OBJECT *fl_create_bmtable(int, FL_Coord, FL_Coord, 
 			     FL_Coord, FL_Coord, char const *);
-///
+/**/
 FL_OBJECT *fl_add_bmtable(int, FL_Coord, FL_Coord, 
 			  FL_Coord, FL_Coord, char const *);
 
 /** Same as fl_get_button_numb() */
 int fl_get_bmtable_numb(FL_OBJECT *ob);
-///
+/**/
 void fl_set_bmtable(FL_OBJECT *, int pushed, int pos);
 
 /** Number of columns and rows, and the background bitmap */
 void fl_set_bmtable_data(FL_OBJECT *, int, int, int, int , unsigned char const *);
-///
+/**/
 void fl_set_bmtable_pixmap_data(FL_OBJECT *, int, int, char **);
-///
+/**/
 void fl_set_bmtable_file(FL_OBJECT *, int, int, char const *);
-///
+/**/
 void fl_set_bmtable_pixmap_file(FL_OBJECT *, int, int, char const *);
 
 /** Adjust bitmap origin (ox, oy) and cell dimensions (dx, dy) incrementally */
@@ -66,7 +66,7 @@ void fl_set_bmtable_adjust(FL_OBJECT *, int ox, int oy, int dx, int dy);
 
 /** The number of items is by default nc x nr, but you can change it */
 void fl_set_bmtable_maxitems(FL_OBJECT *, int);
-///
+/**/
 int fl_get_bmtable_maxitems(FL_OBJECT *); 
 
 /** Returns the index of the selected item or -1 if none was selected */

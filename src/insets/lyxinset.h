@@ -89,7 +89,9 @@ public:
 		///
 		MARGIN_CODE,
 		///
-		SPECIALCHAR_CODE
+		SPECIALCHAR_CODE,
+		///
+		NUMBER_CODE
 	};
 
 	enum EDITABLE {

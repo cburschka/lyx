@@ -37,7 +37,6 @@
 using std::endl;
 using std::fstream;
 using std::ios;
-using std::greater;
 
 int tex_code_break_column = 72;  // needs non-zero initialization. set later.
 // this is a bad idea, but how can LyXParagraph find its buffer to get
@@ -425,14 +424,11 @@ void LyXParagraph::CutIntoMinibuffer(LyXParagraph::size_type pos)
 			// the inset, not just a clone. Otherwise
 			// the inset would be deleted when calling Erase(pos)
 			// find the entry
-			for (InsetList::iterator it = insetlist.begin();
-			     it != insetlist.end(); ++it) {
-				if ((*it).pos == pos) {
-					(*it).inset = 0;
-					break;
-				}
-					
-			}
+			InsetList::iterator it = lower_bound(insetlist.begin(),
+							     insetlist.end(),
+							     InsetTable(pos,0));
+			if (it != insetlist.end() && (*it).pos == pos)
+				(*it).inset = 0;
 		} else {
 			minibuffer_inset = 0;
 			minibuffer_char = ' ';
@@ -526,13 +522,12 @@ void LyXParagraph::Erase(LyXParagraph::size_type pos)
 		// if it is an inset, delete the inset entry 
 		if (text[pos] == LyXParagraph::META_INSET) {
 			// find the entry
-			for (InsetList::iterator it = insetlist.begin();
-			     it != insetlist.end(); ++it) {
-				if ((*it).pos == pos) {
-					delete (*it).inset;
-					insetlist.erase(it);
-					break;
-				}
+			InsetList::iterator it = lower_bound(insetlist.begin(),
+							     insetlist.end(),
+							     InsetTable(pos,0));
+			if (it != insetlist.end() && (*it).pos == pos) {
+				delete (*it).inset;
+				insetlist.erase(it);
 			}
 		}
 		text.erase(text.begin() + pos);
@@ -560,11 +555,11 @@ void LyXParagraph::Erase(LyXParagraph::size_type pos)
 		}
 
 		// Update the inset table.
-		for (InsetList::iterator it = insetlist.begin();
-		     it != insetlist.end(); ++it) {
-			if ((*it).pos > pos)
-				(*it).pos--;
-		}
+		for (InsetList::iterator it = upper_bound(insetlist.begin(),
+							  insetlist.end(),
+							  InsetTable(pos,0));
+		     it != insetlist.end(); ++it)
+			--(*it).pos;
 	} else {
 		lyxerr << "ERROR (LyXParagraph::Erase): "
 			"can't erase non-existant char." << endl;
@@ -597,11 +592,11 @@ void LyXParagraph::InsertChar(LyXParagraph::size_type pos, char c)
 	}
    
 	// Update the inset table.
-	for (InsetList::iterator it = insetlist.begin();
-	     it != insetlist.end(); ++it) {
-		if ((*it).pos >= pos)
-			(*it).pos++;
-	}
+	for (InsetList::iterator it = lower_bound(insetlist.begin(),
+						  insetlist.end(),
+						  InsetTable(pos,0));
+	     it != insetlist.end(); ++it)
+		++(*it).pos;
 }
 
 
@@ -628,10 +623,14 @@ void LyXParagraph::InsertInset(LyXParagraph::size_type pos,
 
 	if (inset) {
 		// Add a new entry in the inset table.
-		InsetList::iterator it =
-			insetlist.insert(insetlist.begin(), InsetTable());
-		(*it).inset = inset;
-		(*it).pos = pos;
+		InsetList::iterator it = lower_bound(insetlist.begin(),
+						     insetlist.end(),
+						     InsetTable(pos,0));
+		if (it != insetlist.end() && (*it).pos == pos)
+			lyxerr << "ERROR (LyXParagraph::InsertInset): "
+				"there is an inset in position: " << pos << endl;
+		else
+			insetlist.insert(it,InsetTable(pos,inset));
 	}
 }
 
@@ -651,12 +650,12 @@ Inset * LyXParagraph::GetInset(LyXParagraph::size_type pos)
 		return 0;
 	}
 	// Find the inset.
-	for (InsetList::iterator it = insetlist.begin();
-	     it != insetlist.end(); ++it) {
-		if ((*it).pos == pos) {
-			return (*it).inset;
-		}
-	}
+	InsetList::iterator it = lower_bound(insetlist.begin(),
+					     insetlist.end(),
+					     InsetTable(pos,0));
+	if (it != insetlist.end() && (*it).pos == pos)
+		return (*it).inset;
+
 	lyxerr << "ERROR (LyXParagraph::GetInset): "
 		"Inset does not exist: " << pos << endl;
 	// text[pos] = ' '; // WHY!!! does this set the pos to ' '????
@@ -683,12 +682,12 @@ Inset const * LyXParagraph::GetInset(LyXParagraph::size_type pos) const
 		return 0;
 	}
 	// Find the inset.
-	for (InsetList::const_iterator cit = insetlist.begin();
-	     cit != insetlist.end(); ++cit) {
-		if ((*cit).pos == pos) {
-			return (*cit).inset;
-		}
-	}
+	InsetList::const_iterator cit = lower_bound(insetlist.begin(),
+						    insetlist.end(),
+						    InsetTable(pos,0));
+	if (cit != insetlist.end() && (*cit).pos == pos)
+		return (*cit).inset;
+
 	lyxerr << "ERROR (LyXParagraph::GetInset): "
 		"Inset does not exist: " << pos << endl;
 	//text[pos] = ' '; // WHY!!! does this set the pos to ' '????
@@ -756,7 +755,8 @@ LyXFont LyXParagraph::GetFirstFontSettings() const
 			if (0 >= (*cit).pos && 0 <= (*cit).pos_end)
 				return (*cit).font;
 #endif
-	}
+	} else if (next && next->footnoteflag != LyXParagraph::NO_FOOTNOTE) 
+		return NextAfterFootnote()->GetFirstFontSettings();
 	return LyXFont(LyXFont::ALL_INHERIT);
 }
 
@@ -1478,27 +1478,12 @@ LyXParagraph * LyXParagraph::Clone() const
     
 	// copy everything behind the break-position to the new paragraph
 
-	// IMO this is not correct. Here we should not use the Minibuffer to
-	// copy stuff, as the Minibuffer is global and we could be in a
-	// situation where we copy a paragraph inside a paragraph (this now
-	// is possible think of Text-Insets!). So I'm changing this so that
-	// then inside the Text-Inset I can use par->Clone() to copy the
-	// paragraph data from one inset to the other!
-#if 0
-	for (size_type i = 0; i < size(); ++i) {
-		CopyIntoMinibuffer(i);
-		result->InsertFromMinibuffer(i);
-	}
-#else
-	for(size_type i = 0; i < size(); ++i) {
-	    result->InsertChar(i, GetChar(i));
-	    result->SetFont(i, GetFontSettings(i));
-	    if ((GetChar(i) == LyXParagraph::META_INSET) && GetInset(i)) {
-		result->InsertInset(i, GetInset(i)->Clone());
-	    }
-	}
-#endif
-	result->text.resize(result->text.size());
+	result->text = text;
+	result->fontlist = fontlist;
+	result->insetlist = insetlist;
+	for (InsetList::iterator it = result->insetlist.begin();
+	     it != result->insetlist.end(); ++it)
+		(*it).inset = (*it).inset->Clone();
 	return result;
 }
 
@@ -1891,37 +1876,29 @@ LyXParagraph const * LyXParagraph::DepthHook(int deth) const
 
 int LyXParagraph::AutoDeleteInsets()
 {
-	vector<size_type> tmpvec;
-	int i = 0;
-	for (InsetList::iterator it = insetlist.begin();
-	     it != insetlist.end(); ++it) {
-		if ((*it).inset && (*it).inset->AutoDelete()) {
-			tmpvec.push_back((*it).pos);
+	int count = 0;
+	unsigned int i = 0;
+	while (i < insetlist.size()) {
+		if (insetlist[i].inset && insetlist[i].inset->AutoDelete()) {
+			Erase(insetlist[i].pos); 
+			// Erase() calls to insetlist.erase(&insetlist[i])
+			// so i shouldn't be increased.
+			++count;
+		} else
 			++i;
-		}
 	}
-	sort(tmpvec.begin(), tmpvec.end(), greater<size_type>());
-	for (vector<size_type>::const_iterator cit = tmpvec.begin();
-	     cit != tmpvec.end(); ++cit) {
-		Erase((*cit));
-	}
-	return i;
+	return count;
 }
 
 
 Inset * LyXParagraph::ReturnNextInsetPointer(LyXParagraph::size_type & pos)
 {
-	InsetList::iterator it2 = insetlist.end();
-	for (InsetList::iterator it = insetlist.begin();
-	     it != insetlist.end(); ++it) {
-		if ((*it).pos >= pos) {
-			if (it2 == insetlist.end() || (*it).pos < (*it2).pos)
-				it2 = it;
-		}
-	}
-	if (it2 != insetlist.end()) {
-		pos = (*it2).pos;
-		return (*it2).inset;
+	InsetList::iterator it = lower_bound(insetlist.begin(),
+					     insetlist.end(),
+					     InsetTable(pos,0));
+	if (it != insetlist.end()) {
+		pos = (*it).pos;
+		return (*it).inset;
 	}
 	return 0;
 }
@@ -3097,14 +3074,21 @@ void LyXParagraph::SimpleTeXSpecialChars(ostream & os, TexRow & texrow,
 			    && running_font.isRightToLeft()) {
 				os << "\\L{";
 				close = true;
+			} else if (inset->LyxCode() == Inset::NUMBER_CODE
+				   && running_font.isRightToLeft()) {
+				os << "{\\beginL ";
+				close = true;
 			}
 
 			int tmp = inset->Latex(os, style.isCommand(),
 					       style.free_spacing);
 
 			if (close)
-				os << "}";
-			
+				if (inset->LyxCode() == Inset::NUMBER_CODE)
+					os << "\\endL}";
+				else
+					os << "}";
+
 			if (tmp) {
 				column = 0;
 			} else {

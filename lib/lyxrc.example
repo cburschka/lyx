@@ -631,12 +631,12 @@
 # Arabic). Default is false.
 #\rtl true
 
-# If auto_mathmode is set to "true", each time a digit key is pressed,
-# LyX will automatically enter into math-mode.
-# If auto_mathmode is set to "rtl", the above behavior will take place
-# only when editing right-to-left text.
-# Default is false.
-#\auto_mathmode true
+# If number_inset is set to "true", each time a digit key is pressed,
+# LyX will automatically open a new number inset.
+# If number_inset is set to "rtl", the above behavior will take place
+# only when the cursor is on right-to-left text.
+# Default is rtl.
+#\number_inset true
 
 # The latex command for loading the language package.
 # Default is \usepackage{babel}.
@@ -670,7 +670,7 @@
 #\kbmap_secondary hebrew
 #\latex_command elatex
 #\font_encoding default
-#\auto_mathmode rtl
+#\number_inset rtl
 
 # You also need to bind a key for switching between Hebrew and English.
 # For example,
@@ -694,7 +694,7 @@
 #\kbmap true
 #\kbmap_primary null
 #\kbmap_secondary arabic
-#\auto_mathmode false
+#\number_inset false
 
 # You also need to bind a key for switching between Arabic and English.
 # For example,

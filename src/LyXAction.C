@@ -291,6 +291,8 @@ void LyXAction::init()
 		{ LFUN_META_FAKE, "meta-prefix", "", NoBuffer },
 		{ LFUN_INSERT_NOTE, "note-insert", "", Noop },
 		{ LFUN_GOTONOTE, "note-next", "", ReadOnly },
+		{ LFUN_INSET_NUMBER , "number-inset-insert",
+		  N_("Insert a new Number Inset"), Noop },
 		{ LFUN_OPENSTUFF, "open-stuff", "", ReadOnly },
 		{ LFUN_DOWN_PARAGRAPH, "paragraph-down",
 		  N_("Go one paragraph down"), ReadOnly },
