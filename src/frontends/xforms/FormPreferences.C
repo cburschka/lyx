@@ -2999,8 +2999,7 @@ void FormPreferences::browse(FL_OBJECT * inpt,
 
 	// Show the file browser dialog
 	string const new_filename =
-		browseRelFile(lv_, filename, lv_->buffer()->filePath(),
-			      title, pattern, dir1, dir2);
+		browseFile(lv_, filename, title, pattern, dir1, dir2);
 
 	// Save the filename to the dialog
 	if (new_filename != filename && !new_filename.empty()) {
