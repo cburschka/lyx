@@ -4,7 +4,7 @@
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
- * \author Angus Leeming 
+ * \author Angus Leeming
  *
  * Full author contact details are available in file CREDITS
  *
@@ -90,7 +90,7 @@ private:
 	string snippet_;
 	///
 	boost::weak_ptr<BufferView> view_;
-	
+
 	/// We don't own this. Cached for efficiency reasons.
 	mutable PreviewImage const * pimage_;
 	///

@@ -5,7 +5,7 @@
  * Licence details can be found in the file COPYING.
  *
  * \author unknown
- * \author John Levon 
+ * \author John Levon
  *
  * Full author contact details are available in file CREDITS
  */
@@ -20,9 +20,9 @@
 #include "LString.h"
 
 #include "font_metrics.h"
- 
+
 #include <X11/Xlib.h>
- 
+
 class LyXFont;
 
 namespace xfont_metrics {
@@ -34,5 +34,5 @@ namespace xfont_metrics {
 	///
 	void XSetFont(Display * display, GC gc, LyXFont const & f);
 } // namespace xfont_metrics
- 
+
 #endif // FONT_METRICS_H

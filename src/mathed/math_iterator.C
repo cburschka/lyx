@@ -1,5 +1,5 @@
 #ifdef __GNUG__
-#pragma implementation 
+#pragma implementation
 #endif
 
 #include <config.h>

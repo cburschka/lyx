@@ -43,7 +43,7 @@ public:
 		       string const & name = string())
 			: cparams(cp), flag(f),
 			  masterFilename_(name) {}
- 
+
 		InsetCommandParams cparams;
 		Flags flag;
 		string masterFilename_;

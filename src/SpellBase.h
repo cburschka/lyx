@@ -53,8 +53,8 @@ public:
 
 	/// return the next near miss after a MISSED result
 	virtual string const nextMiss() = 0;
- 
-	/// give an error message on messy exit 
+
+	/// give an error message on messy exit
 	virtual string const error() = 0;
 
 };

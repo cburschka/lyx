@@ -15,7 +15,7 @@ class LyXKeySym;
 
 namespace LyXKeySymFactory {
 	/**
-	 * Make a LyXKeySym. Used because we want to 
+	 * Make a LyXKeySym. Used because we want to
 	 * generate a toolkit-specific instance.
 	 */
 	LyXKeySym * create();

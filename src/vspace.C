@@ -485,7 +485,7 @@ int VSpace::inPixels(BufferView const * bv) const
 		retval = bv->buffer()->params.getDefSkip().inPixels(bv);
 		break;
 
-	// This is how the skips are normally defined by LateX. 
+	// This is how the skips are normally defined by LateX.
 	// But there should be some way to change this per document.
 	case SMALLSKIP:
 		retval = default_height / 4;

@@ -5,7 +5,7 @@
  *
  * \author Alejandro Aguilar Sierra
  * \author John Levon
- * \author Angus Leeming 
+ * \author Angus Leeming
  *
  * Full author contact details are available in file CREDITS
  */
@@ -18,7 +18,7 @@
 #endif
 
 #include "debug.h"
- 
+
 #include "xformsBC.h"
 #include "ControlInclude.h"
 #include "FormInclude.h"

@@ -17,12 +17,12 @@
 #endif
 
 #include "LColor.h"
- 
+
 #include "ui/QPrefsDialogBase.h"
 
 #include <map>
 #include <vector>
- 
+
 class QPrefs;
 class QListViewItem;
 class QPrefAsciiModule;
@@ -46,7 +46,7 @@ public:
 	friend class QPrefs;
 
 	QPrefsDialog(QPrefs *);
- 
+
 	~QPrefsDialog();
 
 	void updateConverters();
@@ -62,14 +62,14 @@ public slots:
 	void new_format();
 	void modify_format();
 	void remove_format();
- 
+
 	void switch_converter(int);
 	void new_converter();
 	void modify_converter();
 	void remove_converter();
- 
+
 	void change_color();
- 
+
 	void select_ui();
 	void select_bind();
 	void select_keymap1();
@@ -84,17 +84,17 @@ public slots:
 	void select_roman(const QString&);
 	void select_sans(const QString&);
 	void select_typewriter(const QString&);
- 
+
 protected:
 	void closeEvent(QCloseEvent * e);
- 
+
 private:
 	typedef std::map<QListViewItem *, QWidget *> PaneMap;
 
 	PaneMap pane_map_;
 
 	std::vector<LColor::color> colors_;
- 
+
 	QPrefAsciiModule * asciiModule;
 	QPrefDateModule * dateModule;
 	QPrefKeyboardModule * keyboardModule;

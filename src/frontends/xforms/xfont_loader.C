@@ -125,7 +125,7 @@ string const symbolPattern(LyXFont::FONT_FAMILY family)
 
 	default:
 		return string();
-	}	
+	}
 }
 
 string const fontName(string const & family, string const & foundry)
@@ -148,7 +148,7 @@ bool addFontPath()
 		lyxerr << "Adding " << dir << " to the font path.\n";
 		string const command = "xset fp+ " + dir;
 		Systemcall s;
-		if (!s.startscript(Systemcall::Wait, command)) 
+		if (!s.startscript(Systemcall::Wait, command))
 			return true;
 		lyxerr << "Unable to add font path.\n";
 	}
@@ -179,7 +179,7 @@ void xfont_loader::getFontinfo(LyXFont::FONT_FAMILY family,
 			first_time = false;
 			if (addFontPath()) {
 				delete fontinfo[family][series][shape];
-				fontinfo[family][series][shape] = new FontInfo(pat);	
+				fontinfo[family][series][shape] = new FontInfo(pat);
 			}
 		}
 		return;

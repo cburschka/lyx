@@ -4,7 +4,7 @@
  * Licence details can be found in the file COPYING.
  *
  * \author unknown
- * \author John Levon 
+ * \author John Levon
  *
  * Full author contact details are available in file CREDITS
  */
@@ -44,9 +44,9 @@ XID getFontID(LyXFont const & f)
 
 } // namespace anon
 
- 
+
 namespace font_metrics {
- 
+
 int maxAscent(LyXFont const & f)
 {
 	return getXFontstruct(f)->ascent;
@@ -65,7 +65,7 @@ int ascent(char c, LyXFont const & f)
 	unsigned int uc = static_cast<unsigned char>(c);
 	if (finfo->per_char
 	    && uc >= finfo->min_char_or_byte2
-	    && uc <= finfo->max_char_or_byte2+256*finfo->max_byte1) 
+	    && uc <= finfo->max_char_or_byte2+256*finfo->max_byte1)
 		return finfo->per_char[uc - finfo->min_char_or_byte2].ascent;
 	else
 		return finfo->ascent;
@@ -78,7 +78,7 @@ int descent(char c, LyXFont const & f)
 	unsigned int uc = static_cast<unsigned char>(c);
 	if (finfo->per_char
 	    && uc >= finfo->min_char_or_byte2
-	    && uc <= finfo->max_char_or_byte2+256*finfo->max_byte1) 
+	    && uc <= finfo->max_char_or_byte2+256*finfo->max_byte1)
 		return finfo->per_char[uc - finfo->min_char_or_byte2].descent;
 	else
 		return finfo->descent;
@@ -91,7 +91,7 @@ int lbearing(char c, LyXFont const & f)
 	unsigned int uc = static_cast<unsigned char>(c);
 	if (finfo->per_char
 	    && uc >= finfo->min_char_or_byte2
-	    && uc <= finfo->max_char_or_byte2+256*finfo->max_byte1) 
+	    && uc <= finfo->max_char_or_byte2+256*finfo->max_byte1)
 		return finfo->per_char[uc - finfo->min_char_or_byte2].lbearing;
 	else
 		return 0;
@@ -104,7 +104,7 @@ int rbearing(char c, LyXFont const & f)
 	unsigned int uc = static_cast<unsigned char>(c);
 	if (finfo->per_char
 	    && uc >= finfo->min_char_or_byte2
-	    && uc <= finfo->max_char_or_byte2+256*finfo->max_byte1) 
+	    && uc <= finfo->max_char_or_byte2+256*finfo->max_byte1)
 		return finfo->per_char[uc - finfo->min_char_or_byte2].rbearing;
 	else
 		return width(c, f);
@@ -131,7 +131,7 @@ int width(char const * s, size_t n, LyXFont const & f)
 			Uchar c = encoding->ucs(s[i]);
 			xs[i].byte1 = c >> 8;
 			xs[i].byte2 = c & 0xff;
-                }
+		}
 		int result = xfont_metrics::width(xs.get(), n, font);
 		return result;
 	}
@@ -168,8 +168,8 @@ int signedWidth(string const & s, LyXFont const & f)
 
 
 void rectText(string const & str, LyXFont const & font,
-	int & width, 
-	int & ascent, 
+	int & width,
+	int & ascent,
 	int & descent)
 {
 	static int const d = 2;
@@ -181,26 +181,26 @@ void rectText(string const & str, LyXFont const & font,
 
 
 void buttonText(string const & str, LyXFont const & font,
-	int & width, 
-	int & ascent, 
+	int & width,
+	int & ascent,
 	int & descent)
 {
 	static int const d = 3;
-	
+
 	width = font_metrics::width(str, font) + d * 2 + 2;
 	ascent = font_metrics::maxAscent(font) + d;
 	descent = font_metrics::maxDescent(font) + d;
 }
 
 } // namespace font_metrics
- 
+
 namespace xfont_metrics {
- 
+
 int width(XChar2b const * s, int n, LyXFont const & f)
 {
 	if (!lyxrc.use_gui)
 		return n;
-	
+
 	if (f.realShape() != LyXFont::SMALLCAPS_SHAPE) {
 		return ::XTextWidth16(getXFontstruct(f), s, n);
 	} else {
@@ -225,7 +225,7 @@ int width(XChar2b const * s, int n, LyXFont const & f)
 		return result;
 	}
 }
- 
+
 
 int XTextWidth(LyXFont const & f, char const * str, int count)
 {
@@ -240,9 +240,9 @@ int XTextWidth16(LyXFont const & f, XChar2b const * str, int count)
 
 
 /// hmm, not a metric !
-void XSetFont(Display * display, GC gc, LyXFont const & f) 
+void XSetFont(Display * display, GC gc, LyXFont const & f)
 {
 	::XSetFont(display, gc, getFontID(f));
 }
- 
+
 } // namespace xfont_metrics

@@ -76,7 +76,7 @@ void LyXVC::buffer(Buffer * buf)
 void LyXVC::registrer()
 {
 	string const filename = owner_->fileName();
- 
+
 	// there must be a file to save
 	if (!IsFileReadable(filename)) {
 		Alert::alert(_("File not saved"),

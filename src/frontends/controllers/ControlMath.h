@@ -42,7 +42,7 @@ public:
 	void addDaughter(void * key, ViewBase * v, ButtonControllerBase * bc);
 	///
 	void showDaughter(void *);
-	
+
 private:
 	///
 	virtual void apply();
@@ -134,5 +134,5 @@ extern int const nr_latex_ams_ops;
  * math symbol.
  */
 string const find_xpm(string const & name);
- 
+
 #endif /* CONTROL_MATH_H */

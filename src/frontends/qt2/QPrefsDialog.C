@@ -137,7 +137,7 @@ QPrefsDialog::QPrefsDialog(QPrefs * form)
 	pane_map_[i] = keyboardModule;
 
 	// output
- 
+
 	i = new QListViewItem(out, _("Ascii"));
 	pane_map_[i] = asciiModule;
 	i = new QListViewItem(out, i, _("Date format"));
@@ -153,13 +153,13 @@ QPrefsDialog::QPrefsDialog(QPrefs * form)
 	pane_map_[i] = convertersModule;
 	i = new QListViewItem(prefsLV, i, _("File formats"));
 	pane_map_[i] = fileformatsModule;
- 
+
 	prefsLV->setMinimumSize(prefsLV->sizeHint());
 
 	// Qt sucks
 	resize(minimumSize());
 
-	// FIXME: put in controller 
+	// FIXME: put in controller
 	for (int i = 0; i < LColor::ignore; ++i) {
 		LColor::color lc = static_cast<LColor::color>(i);
 		if (lc == LColor::none
@@ -183,23 +183,23 @@ QPrefsDialog::QPrefsDialog(QPrefs * form)
 
 	QFontDatabase fontdb;
 	QStringList families(fontdb.families());
-	 
+
 	connect(screenfontsModule->screenRomanCO, SIGNAL(activated(const QString&)), this, SLOT(select_roman(const QString&)));
 	connect(screenfontsModule->screenSansCO, SIGNAL(activated(const QString&)), this, SLOT(select_sans(const QString&)));
 	connect(screenfontsModule->screenTypewriterCO, SIGNAL(activated(const QString&)), this, SLOT(select_typewriter(const QString&)));
- 
+
 	for (QStringList::Iterator it = families.begin(); it != families.end(); ++it) {
-		screenfontsModule->screenRomanCO->insertItem(*it); 
-		screenfontsModule->screenSansCO->insertItem(*it); 
-		screenfontsModule->screenTypewriterCO->insertItem(*it); 
-        }
- 
+		screenfontsModule->screenRomanCO->insertItem(*it);
+		screenfontsModule->screenSansCO->insertItem(*it);
+		screenfontsModule->screenTypewriterCO->insertItem(*it);
+	}
+
 	connect(uiModule->uiFilePB, SIGNAL(clicked()), this, SLOT(select_ui()));
 	connect(uiModule->bindFilePB, SIGNAL(clicked()), this, SLOT(select_bind()));
- 
+
 	connect(keyboardModule->firstKeymapPB, SIGNAL(clicked()), this, SLOT(select_keymap1()));
 	connect(keyboardModule->secondKeymapPB, SIGNAL(clicked()), this, SLOT(select_keymap2()));
- 
+
 	connect(spellcheckerModule->persDictionaryPB, SIGNAL(clicked()), this, SLOT(select_dict()));
 
 	connect(pathsModule->templateDirPB, SIGNAL(clicked()), this, SLOT(select_templatedir()));
@@ -207,10 +207,10 @@ QPrefsDialog::QPrefsDialog(QPrefs * form)
 	connect(pathsModule->backupDirPB, SIGNAL(clicked()), this, SLOT(select_backupdir()));
 	connect(pathsModule->workingDirPB, SIGNAL(clicked()), this, SLOT(select_workingdir()));
 	connect(pathsModule->lyxserverDirPB, SIGNAL(clicked()), this, SLOT(select_lyxpipe()));
- 
+
 	connect(colorsModule->colorChangePB, SIGNAL(clicked()), this, SLOT(change_color()));
 	connect(colorsModule->lyxObjectsLB, SIGNAL(selected(int)), this, SLOT(change_color()));
- 
+
 	connect(fileformatsModule->formatNewPB, SIGNAL(clicked()), this, SLOT(new_format()));
 	connect(fileformatsModule->formatRemovePB, SIGNAL(clicked()), this, SLOT(remove_format()));
 	connect(fileformatsModule->formatModifyPB, SIGNAL(clicked()), this, SLOT(modify_format()));
@@ -220,10 +220,10 @@ QPrefsDialog::QPrefsDialog(QPrefs * form)
 	connect(convertersModule->converterRemovePB, SIGNAL(clicked()), this, SLOT(remove_converter()));
 	connect(convertersModule->converterModifyPB, SIGNAL(clicked()), this, SLOT(modify_converter()));
 	connect(convertersModule->convertersLB, SIGNAL(highlighted(int)), this, SLOT(switch_converter(int)));
- 
+
 	// Qt really sucks. This is as ugly as it looks, but the alternative
 	// means having to derive every module == bloat
- 
+
 	connect(convertersModule->converterNewPB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
 	connect(convertersModule->converterRemovePB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
 	connect(convertersModule->converterModifyPB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
@@ -333,31 +333,31 @@ void QPrefsDialog::change_adaptor()
 
 
 void QPrefsDialog::updateConverters()
-{ 
+{
 	QPrefConvertersModule * convertmod(convertersModule);
- 
+
 	convertmod->converterFromCO->clear();
 	convertmod->converterToCO->clear();
- 
+
 	Formats::const_iterator cit = form_->formats_.begin();
 	Formats::const_iterator end = form_->formats_.end();
 	for (; cit != end; ++cit) {
 		convertmod->converterFromCO->insertItem(cit->prettyname().c_str());
 		convertmod->converterToCO->insertItem(cit->prettyname().c_str());
 	}
- 
-	convertmod->convertersLB->clear(); 
+
+	convertmod->convertersLB->clear();
 
 	Converters::const_iterator ccit = form_->converters_.begin();
 	Converters::const_iterator cend = form_->converters_.end();
 	for (; ccit != cend; ++ccit) {
 		string const name(ccit->From->prettyname() + " -> " +
-			ccit->To->prettyname()); 
+			ccit->To->prettyname());
 		convertmod->convertersLB->insertItem(name.c_str());
 	}
 }
 
- 
+
 void QPrefsDialog::switch_converter(int nr)
 {
 	Converter const & c(form_->converters_.get(nr));
@@ -367,31 +367,31 @@ void QPrefsDialog::switch_converter(int nr)
 	convertersModule->converterFlagED->setText(c.flags.c_str());
 }
 
- 
+
 // FIXME: user must
 // specify unique from/to or it doesn't appear. This is really bad UI
 void QPrefsDialog::new_converter()
-{ 
-	Format const & from(form_->formats_.get(convertersModule->converterFromCO->currentItem())); 
-	Format const & to(form_->formats_.get(convertersModule->converterToCO->currentItem())); 
- 
+{
+	Format const & from(form_->formats_.get(convertersModule->converterFromCO->currentItem()));
+	Format const & to(form_->formats_.get(convertersModule->converterToCO->currentItem()));
+
 	Converter const * old = form_->converters_.getConverter(from.name(), to.name());
 	form_->converters_.add(from.name(), to.name(), "", "");
 	if (!old) {
 		form_->converters_.updateLast(form_->formats_);
 	}
 	updateConverters();
-	convertersModule->convertersLB->setCurrentItem(convertersModule->convertersLB->count() - 1); 
+	convertersModule->convertersLB->setCurrentItem(convertersModule->convertersLB->count() - 1);
 }
 
 
 void QPrefsDialog::modify_converter()
 {
-	Format const & from(form_->formats_.get(convertersModule->converterFromCO->currentItem())); 
-	Format const & to(form_->formats_.get(convertersModule->converterToCO->currentItem())); 
+	Format const & from(form_->formats_.get(convertersModule->converterFromCO->currentItem()));
+	Format const & to(form_->formats_.get(convertersModule->converterToCO->currentItem()));
 	string flags(convertersModule->converterFlagED->text().latin1());
 	string name(convertersModule->converterED->text().latin1());
- 
+
 	Converter const * old = form_->converters_.getConverter(from.name(), to.name());
 	form_->converters_.add(from.name(), to.name(), name, flags);
 	if (!old) {
@@ -403,19 +403,19 @@ void QPrefsDialog::modify_converter()
 
 void QPrefsDialog::remove_converter()
 {
-	Format const & from(form_->formats_.get(convertersModule->converterFromCO->currentItem())); 
-	Format const & to(form_->formats_.get(convertersModule->converterToCO->currentItem())); 
+	Format const & from(form_->formats_.get(convertersModule->converterFromCO->currentItem()));
+	Format const & to(form_->formats_.get(convertersModule->converterToCO->currentItem()));
 	form_->converters_.erase(from.name(), to.name());
 	updateConverters();
 }
 
- 
+
 void QPrefsDialog::updateFormats()
 {
 	QPrefFileformatsModule * formatmod(fileformatsModule);
 
 	formatmod->formatsLB->clear();
- 
+
 	Formats::const_iterator cit = form_->formats_.begin();
 	Formats::const_iterator end = form_->formats_.end();
 	for (; cit != end; ++cit) {
@@ -436,11 +436,11 @@ void QPrefsDialog::switch_format(int nr)
 		!form_->converters_.formatIsUsed(f.name()));
 }
 
- 
+
 void QPrefsDialog::new_format()
 {
 	form_->formats_.add(_("New"));
-	form_->formats_.sort(); 
+	form_->formats_.sort();
 	updateFormats();
 	fileformatsModule->formatsLB->setCurrentItem(form_->formats_.getNumber(_("New")));
 	updateConverters();
@@ -453,21 +453,21 @@ void QPrefsDialog::modify_format()
 	string const oldpretty(oldformat.prettyname());
 	string const name(fileformatsModule->formatED->text().latin1());
 	form_->formats_.erase(oldformat.name());
- 
-        string const prettyname = fileformatsModule->guiNameED->text().latin1();
-        string const extension = fileformatsModule->extensionED->text().latin1();
-        string const shortcut = fileformatsModule->shortcutED->text().latin1();
-        string const viewer = fileformatsModule->viewerED->text().latin1();
- 
-        form_->formats_.add(name, extension, prettyname, shortcut);
+
+	string const prettyname = fileformatsModule->guiNameED->text().latin1();
+	string const extension = fileformatsModule->extensionED->text().latin1();
+	string const shortcut = fileformatsModule->shortcutED->text().latin1();
+	string const viewer = fileformatsModule->viewerED->text().latin1();
+
+	form_->formats_.add(name, extension, prettyname, shortcut);
 	form_->formats_.sort();
-        form_->formats_.setViewer(name, viewer);
+	form_->formats_.setViewer(name, viewer);
 
 	fileformatsModule->formatsLB->setUpdatesEnabled(false);
-	updateFormats(); 
+	updateFormats();
 	fileformatsModule->formatsLB->setUpdatesEnabled(true);
 	fileformatsModule->formatsLB->update();
- 
+
 	updateConverters();
 }
 
@@ -514,7 +514,7 @@ void QPrefsDialog::select_bind()
 		uiModule->bindFileED->setText(file.c_str());
 }
 
- 
+
 void QPrefsDialog::select_keymap1()
 {
 	string file(form_->controller().browsekbmap(keyboardModule->firstKeymapED->text().latin1()));
@@ -522,7 +522,7 @@ void QPrefsDialog::select_keymap1()
 		keyboardModule->firstKeymapED->setText(file.c_str());
 }
 
- 
+
 void QPrefsDialog::select_keymap2()
 {
 	string file(form_->controller().browsekbmap(keyboardModule->secondKeymapED->text().latin1()));
@@ -538,7 +538,7 @@ void QPrefsDialog::select_dict()
 		spellcheckerModule->persDictionaryED->setText(file.c_str());
 }
 
- 
+
 void QPrefsDialog::select_templatedir()
 {
 	string file(form_->controller().browse(pathsModule->templateDirED->text().latin1(), _("Select a document templates directory")));
@@ -546,7 +546,7 @@ void QPrefsDialog::select_templatedir()
 		pathsModule->templateDirED->setText(file.c_str());
 }
 
- 
+
 void QPrefsDialog::select_tempdir()
 {
 	string file(form_->controller().browse(pathsModule->tempDirED->text().latin1(), _("Select a temporary directory")));
@@ -554,7 +554,7 @@ void QPrefsDialog::select_tempdir()
 		pathsModule->tempDirED->setText(file.c_str());
 }
 
- 
+
 void QPrefsDialog::select_backupdir()
 {
 	string file(form_->controller().browse(pathsModule->backupDirED->text().latin1(), _("Select a backups directory")));
@@ -562,7 +562,7 @@ void QPrefsDialog::select_backupdir()
 		pathsModule->backupDirED->setText(file.c_str());
 }
 
- 
+
 void QPrefsDialog::select_workingdir()
 {
 	string file(form_->controller().browse(pathsModule->workingDirED->text().latin1(), _("Selection a documents directory")));
@@ -570,7 +570,7 @@ void QPrefsDialog::select_workingdir()
 		pathsModule->workingDirED->setText(file.c_str());
 }
 
- 
+
 void QPrefsDialog::select_lyxpipe()
 {
 	string file(form_->controller().browse(pathsModule->lyxserverDirED->text().latin1(), _("Give a filename for the LyX server pipe")));

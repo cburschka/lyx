@@ -4,7 +4,7 @@
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
- *  \author Angus Leeming 
+ *  \author Angus Leeming
  *
  * Full author contact details are available in file CREDITS
  */
@@ -26,7 +26,7 @@
 
 struct flimage_;
 typedef flimage_ FL_IMAGE;
- 
+
 namespace grfx {
 
 class xformsImage : public Image
@@ -54,7 +54,7 @@ public:
 	unsigned int getHeight() const;
 
 	virtual bool isDrawable() const;
- 
+
 	/** Load the image file into memory.
 	 *  The process is asynchronous, so this method starts the loading.
 	 *  When finished, the Image::finishedLoading signal is emitted.

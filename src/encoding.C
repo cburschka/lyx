@@ -254,12 +254,12 @@ bool Encodings::IsComposeChar_hebrew(unsigned char c)
 
 
 // Special Arabic letters are ones that do not get connected from left
-// they are hamza, alef_madda, alef_hamza, waw_hamza, alef_hamza_under, 
+// they are hamza, alef_madda, alef_hamza, waw_hamza, alef_hamza_under,
 // alef, tah_marbota, dal, thal, rah, zai, wow, alef_maksoura
 
 bool Encodings::is_arabic_special(unsigned char c)
 {
-	return 	(c >= 0xc1 && c <= 0xc5) ||
+	return	(c >= 0xc1 && c <= 0xc5) ||
 		 c == 0xc7 || c  == 0xc9  ||
 		 c == 0xcf || c  == 0xe8  ||
 		(c >= 0xd0 && c <= 0xd2) ||

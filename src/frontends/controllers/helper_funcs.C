@@ -45,7 +45,7 @@ string const browseFile(LyXView * lv, string const & filename,
 	FileDialog::Result result;
 
 	while (true) {
-		if (save) 
+		if (save)
 			result = fileDlg.save(lastPath, pattern,
 				OnlyFilename(filename));
 		else
@@ -73,7 +73,7 @@ string const browseRelFile(LyXView * lv, string const & filename,
 			string const & refpath,
 			string const & title,
 			string const & pattern,
-		        bool save,
+			bool save,
 			pair<string,string> const & dir1,
 			pair<string,string> const & dir2)
 {

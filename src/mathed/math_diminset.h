@@ -21,7 +21,7 @@ public:
 	int descent() const { return dim_.descent(); }
 	/// read width
 	int width() const { return dim_.width(); }
-	/// 
+	///
 	Dimension dimensions() const { return dim_; }
 	///
 	void metricsT(TextMetricsInfo const &) const;

@@ -232,10 +232,10 @@ void QPrefs::apply()
 	QPrefScreenFontsModule * fontmod(dialog_->screenfontsModule);
 
 	LyXRC const oldrc(rc);
- 
+
 	boost::tie(rc.roman_font_name, rc.roman_font_foundry)
 		= parseFontName(fontmod->screenRomanCO->currentText().latin1());
-	boost::tie(rc.sans_font_name, rc.sans_font_foundry) = 
+	boost::tie(rc.sans_font_name, rc.sans_font_foundry) =
 		parseFontName(fontmod->screenSansCO->currentText().latin1());
 	boost::tie(rc.typewriter_font_name, rc.typewriter_font_foundry) =
 		parseFontName(fontmod->screenTypewriterCO->currentText().latin1());
@@ -475,7 +475,7 @@ void QPrefs::update_contents()
 	dialog_->select_roman(fontmod->screenRomanCO->currentText());
 	dialog_->select_sans(fontmod->screenSansCO->currentText());
 	dialog_->select_typewriter(fontmod->screenTypewriterCO->currentText());
- 
+
 	fontmod->screenZoomSB->setValue(rc.zoom);
 	fontmod->screenDpiSB->setValue(int(rc.dpi));
 	fontmod->screenTinyED->setText(tostr(rc.font_sizes[LyXFont::SIZE_TINY]).c_str());

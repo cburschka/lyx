@@ -5,7 +5,7 @@
  * Licence details can be found in the file COPYING.
  *
  * \author unknown
- * \author John Levon 
+ * \author John Levon
  *
  * Full author contact details are available in file CREDITS
  */
@@ -23,22 +23,22 @@ class LyXFont;
  *
  * The geometry is the standard typographical geometry,
  * as follows :
- *                                                                
+ *
  * --------------+------------------<maxAscent
  *               |          |
  *               <-------> (right bearing)
  *               <-> (left bearing)
  * char ascent>___          |
- *               ^   oooo   |  oooo              
- *   origin>____ |  oo  oo  | oo  oo             
- *              \|  oo  oo  | oo  oo             
- * --------------+---ooooo--|--oooo-<baseline  
- *               |      oo  |                 
- * char          |  oo  oo  |                
- * descent>______|   oooo   |                
+ *               ^   oooo   |  oooo
+ *   origin>____ |  oo  oo  | oo  oo
+ *              \|  oo  oo  | oo  oo
+ * --------------+---ooooo--|--oooo-<baseline
+ *               |      oo  |
+ * char          |  oo  oo  |
+ * descent>______|   oooo   |
  *               <-  width ->
  * --------------+----------+-------<maxDescent
- *  
+ *
  */
 namespace font_metrics {
 	/// return the maximum ascent of the font
@@ -66,21 +66,21 @@ namespace font_metrics {
 	}
 	/// FIXME ??
 	int signedWidth(string const & s, LyXFont const & f);
-	/** 
+	/**
 	 * fill in width,ascent,descent with the values for the
 	 * given string in the font.
 	 */
 	void rectText(string const & str, LyXFont const & font,
-		int & width, 
-		int & ascent, 
+		int & width,
+		int & ascent,
 		int & descent);
-	/** 
+	/**
 	 * fill in width,ascent,descent with the values for the
 	 * given string in the font for a button.
 	 */
 	void buttonText(string const & str, LyXFont const & font,
-		int & width, 
-		int & ascent, 
+		int & width,
+		int & ascent,
 		int & descent);
 }
 

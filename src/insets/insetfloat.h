@@ -54,8 +54,8 @@ public:
 	///
 	bool insetAllowed(Inset::Code) const;
 	/** returns true if, when outputing LaTeX, font changes should
-            be closed before generating this inset. This is needed for
-            insets that may contain several paragraphs */
+	    be closed before generating this inset. This is needed for
+	    insets that may contain several paragraphs */
 	bool noFontChange() const { return true; }
 	///
 	string const & type() const;

@@ -19,7 +19,7 @@
 #include "LString.h"
 
 #include <boost/signals/trackable.hpp>
- 
+
 class LyXFunc;
 class LyXServer;
 

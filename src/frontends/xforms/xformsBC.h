@@ -5,7 +5,7 @@
  * Licence details can be found in the file COPYING.
  *
  * \author Allan Rae
- * \author Angus Leeming 
+ * \author Angus Leeming
  * \author Baruch Even
  *
  * Full author contact details are available in file CREDITS

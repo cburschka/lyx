@@ -3,9 +3,9 @@
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
- * \author Baruch Even 
- * \author Angus Leeming 
- * \author Herbert Voss 
+ * \author Baruch Even
+ * \author Angus Leeming
+ * \author Herbert Voss
  *
  * Full author contact details are available in file CREDITS
  */
@@ -58,4 +58,3 @@ Image::getScaledDimensions(Params const & params) const
 }
 
 } // namespace grfx
-

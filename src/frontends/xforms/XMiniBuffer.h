@@ -6,7 +6,7 @@
  *
  * \author Lars
  * \author Asger and Juergen
- * \author John Levon 
+ * \author John Levon
  *
  * Full author contact details are available in file CREDITS
  */
@@ -36,7 +36,7 @@ public:
 
 	///
 	~XMiniBuffer();
-	
+
 	/// create drop down
 	void dd_init();
 

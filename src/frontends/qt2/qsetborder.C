@@ -31,7 +31,7 @@ QSetBorder::QSetBorder(QWidget * parent, char const * name, WFlags fl)
 	setMinimumSize(w,h);
 	setMaximumSize(w,h);
 }
- 
+
 
 void QSetBorder::paintEvent(QPaintEvent * e)
 {
@@ -46,9 +46,9 @@ void QSetBorder::init()
 	QPainter paint;
 	paint.begin(&buffer);
 	paint.setPen(Qt::black);
-	
+
 	// FIXME: wow, readable !! :)
- 
+
 	paint.drawLine(m + l , m, m + l, m + l);
 	paint.drawLine(w - (m + l), m, w - (m + l), m + l);
 
@@ -64,7 +64,7 @@ void QSetBorder::init()
 	paint.end();
 }
 
- 
+
 void QSetBorder::mousePressEvent(QMouseEvent * e)
 {
 	if (e->y() > e->x()) {
@@ -117,7 +117,7 @@ void QSetBorder::drawLeft(bool draw)
 		col = QColor("grey");
 	drawLine(col, m + l, m + l + 2, m + l, h - m - l - 1);
 }
- 
+
 
 void QSetBorder::drawRight(bool draw)
 {
@@ -127,7 +127,7 @@ void QSetBorder::drawRight(bool draw)
 	drawLine(col, h - m - l + 1, m + l + 2, h - m - l + 1, h - m - l - 1);
 }
 
- 
+
 void QSetBorder::drawTop(bool draw)
 {
 	QColor col(draw ? Qt::black : Qt::white);
@@ -186,14 +186,14 @@ void QSetBorder::setRight(bool border)
 	right_.set = border;
 	drawRight(border);
 }
- 
+
 
 void QSetBorder::setTop(bool border)
 {
 	top_.set = border;
 	drawTop(border);
 }
- 
+
 
 void QSetBorder::setBottom(bool border)
 {

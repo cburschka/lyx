@@ -3,16 +3,16 @@
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
- * \author John Levon 
+ * \author John Levon
  *
  * Full author contact details are available in file CREDITS
  */
 
 #ifndef WORKAREAFACTORY_H
 #define WORKAREAFACTORY_H
- 
+
 class WorkArea;
- 
+
 namespace WorkAreaFactory {
 	/**
 	 * Make a work area. Used because we want to generate

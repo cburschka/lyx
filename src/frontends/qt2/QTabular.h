@@ -32,10 +32,10 @@ public:
 	friend class QTabularDialog;
 
 	QTabular();
- 
+
 protected:
 	virtual bool isValid();
- 
+
 private:
 	/// We can't use this ...
 	virtual void apply() {}

@@ -128,7 +128,7 @@ public:
 	size_type size() const;
 	///
 	bool script(bool);
-	/// 
+	///
 	bool interpret(char);
 	/// interpret name a name of a macro
 	void macroModeClose();
@@ -230,7 +230,7 @@ public:
 	void dump(char const * str) const;
 	/// moves on
 	void setSelection(MathIterator const & where, size_type n);
-	/// grab selection marked by anchor and current cursor 
+	/// grab selection marked by anchor and current cursor
 	string grabSelection() const;
 	/// guess what
 	string grabAndEraseSelection();

@@ -9,7 +9,7 @@
  */
 
 #include <config.h>
- 
+
 #include "frontends/LyXKeySymFactory.h"
 
 #include "XLyXKeySym.h"
@@ -19,6 +19,6 @@ namespace LyXKeySymFactory {
 LyXKeySym * create()
 {
 	return new XLyXKeySym();
-} 
- 
+}
+
 }

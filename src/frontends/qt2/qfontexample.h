@@ -16,14 +16,14 @@ class QFontExample : public QWidget {
 public:
 	QFontExample(QWidget * parent, const char * name)
 		: QWidget(parent, name) {}
- 
+
 	void set(QFont const & font, QString const & text);
- 
+
 	virtual QSize sizeHint() const;
- 
+
 protected:
 	virtual void paintEvent(QPaintEvent * p);
- 
+
 private:
 	QFont font_;
 	QString text_;

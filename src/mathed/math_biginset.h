@@ -1,6 +1,6 @@
 // -*- C++ -*-
 
-/** 
+/**
  *  \file math_biginset.h
  *
  *  This file is part of LyX, the document processor.

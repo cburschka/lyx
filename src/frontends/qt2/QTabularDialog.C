@@ -17,7 +17,7 @@
 #endif
 
 #include "ControlTabular.h"
- 
+
 #include "QTabular.h"
 #include "QTabularDialog.h"
 #include "tabular.h"
@@ -60,25 +60,25 @@ void QTabularDialog::columnAppend_clicked()
 	form_->controller().set(LyXTabular::APPEND_COLUMN);
 }
 
- 
+
 void QTabularDialog::rowAppend_clicked()
 {
 	form_->controller().set(LyXTabular::APPEND_ROW);
 }
 
- 
+
 void QTabularDialog::columnDelete_clicked()
 {
 	form_->controller().set(LyXTabular::DELETE_COLUMN);
 }
 
- 
+
 void QTabularDialog::rowDelete_clicked()
 {
 	form_->controller().set(LyXTabular::DELETE_ROW);
 }
 
- 
+
 void QTabularDialog::borderSet_clicked()
 {
 	form_->controller().set(LyXTabular::SET_ALL_LINES);
@@ -92,7 +92,7 @@ void QTabularDialog::borderUnset_clicked()
 	form_->update_borders();
 	form_->changed();
 }
- 
+
 
 void QTabularDialog::leftBorder_changed()
 {
@@ -146,8 +146,8 @@ void QTabularDialog::specialAlignment_changed()
 
 void QTabularDialog::width_changed()
 {
-	string const width = 
-		LyXLength(widthED->text().toDouble(), 
+	string const width =
+		LyXLength(widthED->text().toDouble(),
 			widthUnit->currentLengthItem()).asString();
 	if (form_->controller().isMulticolumnCell())
 		form_->controller().set(LyXTabular::SET_MPWIDTH, width);

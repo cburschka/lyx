@@ -96,10 +96,10 @@ public:
 
 	///
 	virtual bool searchForward(BufferView *, string const &,
-	                           bool = true, bool = false);
+				   bool = true, bool = false);
 	///
 	virtual bool searchBackward(BufferView *, string const &,
-	                            bool = true, bool = false);
+				    bool = true, bool = false);
 	///
 	virtual bool isTextInset() const { return true; }
 	///
@@ -118,7 +118,7 @@ private:
 	void operator=(const InsetFormulaBase &);
 	/// common base for handling accents
 	void handleAccent(BufferView * bv, string const & arg, string const & name);
-	/// lfun handler 
+	/// lfun handler
 	RESULT lfunMousePress(FuncRequest const &);
 	///
 	RESULT lfunMouseRelease(FuncRequest const &);

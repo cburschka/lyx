@@ -44,7 +44,7 @@ public:
 	/// return the next near miss after a MISSED result
 	virtual string const nextMiss();
 
-	/// give an error message on messy exit 
+	/// give an error message on messy exit
 	virtual string const error();
 
 private:

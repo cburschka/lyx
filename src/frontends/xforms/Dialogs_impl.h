@@ -3,7 +3,7 @@
  * \file xforms/Dialogs_impl.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
- * \author Angus Leeming 
+ * \author Angus Leeming
  *
  * Full author contact details are available in file CREDITS
  */
@@ -268,21 +268,21 @@ WrapDialog;
 struct Dialogs::Impl {
 	Impl(LyXView & lv, Dialogs & d);
 
-        AboutlyxDialog      aboutlyx;
+	AboutlyxDialog      aboutlyx;
 	BibitemDialog       bibitem;
-        BibtexDialog        bibtex;
-        CharacterDialog     character;
+	BibtexDialog        bibtex;
+	CharacterDialog     character;
 	CitationDialog      citation;
 	DocumentDialog      document;
-        ErrorDialog         error;
+	ErrorDialog         error;
 	ERTDialog           ert;
-        ExternalDialog      external;
+	ExternalDialog      external;
 	FileDialog          file;
-        FloatDialog         floats;
+	FloatDialog         floats;
 	ForksDialog         forks;
-        GraphicsDialog      graphics;
+	GraphicsDialog      graphics;
 	IncludeDialog       include;
-        IndexDialog         index;
+	IndexDialog         index;
 	LogFileDialog       logfile;
 	MathPanelDialog     mathpanel;
 	MinipageDialog      minipage;

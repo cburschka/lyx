@@ -107,7 +107,7 @@ ButtonPolicy::SMInput FormTexinfo::input(FL_OBJECT * ob, long ob_value) {
 
 		// reset the browser so that the following single-click callback doesn't do anything
 		fl_deselect_browser(dialog_->browser);
-		
+
 	} else if (ob == dialog_->button_rescan) {
 		// build new *Files.lst
 		controller().rescanStyles();

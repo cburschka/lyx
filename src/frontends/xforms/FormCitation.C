@@ -81,7 +81,7 @@ void updateStyle(FD_citation * dialog, string command)
 	bool const noStyles = cit == styles.end();
 	int const index = 1 + ( noStyles ? 0 : int(cit - styles.begin()) );
 	fl_set_choice(dialog->choice_style, index);
-	
+
 	// Disable if there are no styles, otherwise use cs member settings.
 	fl_set_button(dialog->check_full_author_list, !noStyles && cs.full);
 	fl_set_button(dialog->check_force_uppercase, !noStyles && cs.forceUCase);

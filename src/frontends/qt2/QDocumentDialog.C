@@ -72,7 +72,7 @@ QDocumentDialog::QDocumentDialog(QDocument * form)
 	moduleLB->insertItem(_("Bibliography"), BIBLIOGRAPHY);
 	moduleLB->insertItem(_("Preamble"), PREAMBLE);
 	moduleLB->setCurrentItem(LAYOUT);
-	moduleLB->setMinimumSize(moduleLB->sizeHint()); 
+	moduleLB->setMinimumSize(moduleLB->sizeHint());
 
 	layoutModule = new ClassModuleBase(this);
 	paperModule = new PaperModuleBase(this);
@@ -95,7 +95,7 @@ QDocumentDialog::QDocumentDialog(QDocument * form)
 	moduleStack->addWidget(preambleModule, PREAMBLE);
 
 	moduleStack->raiseWidget(LAYOUT);
-	
+
 
 	// take care of title
 	QFont f = titleL->font();
@@ -103,15 +103,15 @@ QDocumentDialog::QDocumentDialog(QDocument * form)
 	titleL->setFont(f);
 	setTitle(LAYOUT);
 
-	// preamble 
+	// preamble
 	connect(preambleModule->preambleMLE, SIGNAL(textChanged()),
 		 this , SLOT(change_adaptor()));
-	// biblio 
+	// biblio
 	connect(biblioModule->natbibCB, SIGNAL(toggled(bool)),
 		 this , SLOT(change_adaptor()));
 	connect(biblioModule->citeStyleCO, SIGNAL(activated(int)),
 		 this , SLOT(change_adaptor()));
-	// language & quote 
+	// language & quote
 	connect(langModule->singleQuoteRB, SIGNAL(toggled(bool)),
 		 this , SLOT(change_adaptor()));
 	connect(langModule->doubleQuoteRB, SIGNAL(toggled(bool)),
@@ -120,14 +120,14 @@ QDocumentDialog::QDocumentDialog(QDocument * form)
 		 this , SLOT(change_adaptor()));
 	connect(langModule->quoteStyleCO, SIGNAL(activated(int)),
 		 this , SLOT(change_adaptor()));
-	// numbering 
+	// numbering
 	connect(numberingModule->sectionnrDepthSB,
 		 SIGNAL(valueChanged(int)),
 		 this , SLOT(change_adaptor()));
 	connect(numberingModule->tocDepthSB,
 		 SIGNAL(valueChanged(int)),
 		 this , SLOT(change_adaptor()));
-	// packages 
+	// packages
 	connect(packagesModule->lspacingCO, SIGNAL(activated(int)),
 		 this , SLOT(change_adaptor()));
 	connect(packagesModule->lspacingCO, SIGNAL(activated(int)),
@@ -141,7 +141,7 @@ QDocumentDialog::QDocumentDialog(QDocument * form)
 		 this , SLOT(change_adaptor()));
 	connect(packagesModule->psdriverCO, SIGNAL(activated(int)),
 		 this , SLOT(change_adaptor()));
-	// layout 
+	// layout
 	connect(layoutModule->classCO, SIGNAL(activated(int)),
 		 this , SLOT(change_adaptor()));
 	connect(layoutModule->optionsLE,
@@ -175,7 +175,7 @@ QDocumentDialog::QDocumentDialog(QDocument * form)
 	connect(layoutModule->skipRB, SIGNAL(toggled(bool)),
 		 this , SLOT(enableSkip(bool)));
 
-	// margins 
+	// margins
 	connect(marginsModule->marginCO, SIGNAL(activated(int)),
 		 this , SLOT(setCustomMargins(int)));
 
@@ -210,7 +210,7 @@ QDocumentDialog::QDocumentDialog(QDocument * form)
 	connect(marginsModule->footskipUnit, SIGNAL(activated(int)),
 		 this , SLOT(change_adaptor()));
 
-	// paper 
+	// paper
 	connect(paperModule->papersizeCO, SIGNAL(activated(int)),
 		 this , SLOT(setMargins(int)));
 	connect(paperModule->papersizeCO, SIGNAL(activated(int)),
@@ -237,7 +237,7 @@ QDocumentDialog::QDocumentDialog(QDocument * form)
 	connect(paperModule->facingPagesCB, SIGNAL(toggled(bool)),
 		 this , SLOT(change_adaptor()));
 
-	// bullets 
+	// bullets
 	connect(bulletsModule->bullet1LE, SIGNAL(textChanged(const QString&)),
 		 this , SLOT(change_adaptor()));
 	connect(bulletsModule->bulletsize1CO, SIGNAL(activated(int)),
@@ -353,7 +353,7 @@ void QDocumentDialog::setMargins(int papersize)
 		_("Very wide Margins "), 0 };
 	char const * normal[] = {
 		_("Default"), _("Custom"), 0 };
- 
+
 	int olditem = marginsModule->marginCO->currentItem();
 	marginsModule->marginCO->clear();
 	marginsModule->marginCO->insertStrList(normal);

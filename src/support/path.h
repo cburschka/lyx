@@ -30,7 +30,7 @@
  *
  * if (blah) {
  *	Path p("/tmp/blah");
- * 	...
+ *	...
  * }
  *
  * At the end of p's scope the cwd is reset to its previous value.

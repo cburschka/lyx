@@ -25,7 +25,7 @@ MathInset * MathDotsInset::clone() const
 void MathDotsInset::metrics(MathMetricsInfo & mi) const
 {
 	mathed_char_dim(mi.base.font, 'M', dim_);
-	if (key_->name == "ldots" || key_->name == "dotsm") 
+	if (key_->name == "ldots" || key_->name == "dotsm")
 		dh_ = 0;
 	else if (key_->name == "cdots" || key_->name == "dotsb"
 			|| key_->name == "dotsm" || key_->name == "dotsi")

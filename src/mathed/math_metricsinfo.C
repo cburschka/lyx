@@ -1,6 +1,5 @@
-
 #ifdef __GNUG__
-#pragma implementation 
+#pragma implementation
 #endif
 
 #include <config.h>
@@ -104,15 +103,15 @@ MathStyleChanger::MathStyleChanger(MathMetricsBase & mb, MathStyles style)
 	:	MathChanger<MathMetricsBase>(mb)
 {
 	static const int diff[4][4]  = { { 0, 0, -3, -5 },
-	                                 { 0, 0, -3, -5 },
-	                                 { 3, 3,  0, -2 },
-	                                 { 5, 5,  2,  0 } };
+					 { 0, 0, -3, -5 },
+					 { 3, 3,  0, -2 },
+					 { 5, 5,  2,  0 } };
 	save_ = mb;
 	int t = diff[mb.style][style];
-	if (t > 0) 
+	if (t > 0)
 		while (t--)
 			mb.font.incSize();
-	else 
+	else
 		while (t++)
 			mb.font.decSize();
 	mb.style = style;
@@ -128,7 +127,7 @@ MathStyleChanger::~MathStyleChanger()
 MathFontSetChanger::MathFontSetChanger(MathMetricsBase & mb, char const * name)
 	:	MathChanger<MathMetricsBase>(mb)
 {
-	save_ = mb;	
+	save_ = mb;
 	mb.fontname = name;
 	augmentFont(mb.font, name);
 }
@@ -142,7 +141,7 @@ MathFontSetChanger::~MathFontSetChanger()
 MathWidthChanger::MathWidthChanger(MathMetricsBase & mb, int w)
 	:	MathChanger<MathMetricsBase>(mb)
 {
-	save_ = mb;	
+	save_ = mb;
 	mb.restrictwidth = true;
 	mb.textwidth     = w;
 }
@@ -152,4 +151,3 @@ MathWidthChanger::~MathWidthChanger()
 {
 	orig_ = save_;
 }
-

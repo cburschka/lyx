@@ -1,7 +1,5 @@
-
-
 #ifdef __GNUG__
-#pragma implementation 
+#pragma implementation
 #endif
 
 #include <config.h>
@@ -81,37 +79,37 @@ void MathExIntInset::maplize(MapleStream & os) const
 
 void MathExIntInset::maximize(MaximaStream & os) const
 {
-	if ( symbol_ == "int" ) 
+	if ( symbol_ == "int" )
 		os << "integrate(";
-	else 
+	else
 		os << symbol_ << '(';
-	
+
 	if (cell(0).size())
 		os << cell(0) << ',';
 	else
 		os << '1' << ',';
 	if (hasScripts())
 		os << cell(1) << ',' << cell(2) << ',' << cell(3) << ')';
-	else 
+	else
 		os << cell(1) << ')';
 }
 
 void MathExIntInset::mathematicize(MathematicaStream & os) const
 {
-	if ( symbol_ == "int" ) 
+	if ( symbol_ == "int" )
 		os << "Integrate[";
-	else if (symbol_ == "sum") 
+	else if (symbol_ == "sum")
 		os << "Sum[";
-	else 
+	else
 		os << symbol_ << '[';
-	
+
 	if (cell(0).size())
 		os << cell(0) << ',';
 	else
 		os << '1' << ',';
 	if (hasScripts())
 		os << '{' << cell(1) << ',' << cell(2) << ',' << cell(3) << "}]";
-	else 
+	else
 		os << cell(1) << ']';
 }
 

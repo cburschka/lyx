@@ -37,7 +37,7 @@ void GERT::build()
 
 	// Make sure everything is in the correct state.
 	bc().refresh();
-	
+
 	// Manage the read-only aware widgets.
 	bc().addReadOnly(open());
 	bc().addReadOnly(inlined());
@@ -75,7 +75,7 @@ void GERT::apply()
 		controller().params().status = InsetERT::Open;
 	else if (collapsed()->get_active())
 		controller().params().status = InsetERT::Collapsed;
-	else 
+	else
 		controller().params().status = InsetERT::Inlined;
 
 }
@@ -99,19 +99,19 @@ void GERT::update()
 
 }
 
-Gtk::Button * GERT::close_btn() const 
+Gtk::Button * GERT::close_btn() const
 {
-        return getWidget<Gtk::Button>("r_close_btn");
+	return getWidget<Gtk::Button>("r_close_btn");
 }
-Gtk::RadioButton * GERT::open() const 
+Gtk::RadioButton * GERT::open() const
 {
-        return getWidget<Gtk::RadioButton>("r_open");
+	return getWidget<Gtk::RadioButton>("r_open");
 }
-Gtk::RadioButton * GERT::collapsed() const 
+Gtk::RadioButton * GERT::collapsed() const
 {
-        return getWidget<Gtk::RadioButton>("r_collapsed");
+	return getWidget<Gtk::RadioButton>("r_collapsed");
 }
-Gtk::RadioButton * GERT::inlined() const 
+Gtk::RadioButton * GERT::inlined() const
 {
-        return getWidget<Gtk::RadioButton>("r_inlined");
+	return getWidget<Gtk::RadioButton>("r_inlined");
 }

@@ -58,8 +58,8 @@ public:
 	string const & type() const;
 	///
 	LyXLength const & pageWidth() const;
-        ///
-        void pageWidth(LyXLength const &);
+	///
+	void pageWidth(LyXLength const &);
 	///
 	void placement(string const & p);
 	///

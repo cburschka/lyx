@@ -30,7 +30,7 @@ class MathMacroTemplate;
 
 
 /** This class contains the data for a macro
- *  \author Alejandro Aguilar Sierra 
+ *  \author Alejandro Aguilar Sierra
  *
  * Full author contact details are available in file CREDITS
     \version November 1996

@@ -1,6 +1,5 @@
-
 #ifdef __GNUG__
-#pragma implementation 
+#pragma implementation
 #endif
 
 #include <config.h>
@@ -46,4 +45,3 @@ void MathErtInset::infoize(std::ostream & os) const
 {
 	os << "Box: Ert";
 }
-

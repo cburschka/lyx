@@ -187,7 +187,7 @@ PreambleDialog;
 
 typedef GUI<ControlPrefs, QPrefs, OkApplyCancelPolicy, Qt2BC>
 PrefsDialog;
- 
+
 typedef GUI<ControlPrint, QPrint, OkApplyCancelPolicy, Qt2BC>
 PrintDialog;
 
@@ -208,7 +208,7 @@ TabularCreateDialog;
 
 typedef GUI<ControlTabular, QTabular, OkApplyCancelReadOnlyPolicy, Qt2BC>
 TabularDialog;
- 
+
 typedef GUI<ControlTexinfo, QTexinfo, OkCancelPolicy, Qt2BC>
 TexinfoDialog;
 

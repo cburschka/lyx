@@ -64,24 +64,24 @@ void GPreamble::connect_signals()
 		signal_changed().connect(SigC::slot(*this, &GPreamble::InputChanged));
 }
 
-void GPreamble::disconnect_signals() 
+void GPreamble::disconnect_signals()
 {
 	slot_preamble_.disconnect();
 }
 
-Gtk::Button * GPreamble::ok_btn() const 
+Gtk::Button * GPreamble::ok_btn() const
 {
-        return getWidget<Gtk::Button>("r_ok_btn");
+	return getWidget<Gtk::Button>("r_ok_btn");
 }
-Gtk::Button * GPreamble::apply_btn() const 
+Gtk::Button * GPreamble::apply_btn() const
 {
-        return getWidget<Gtk::Button>("r_apply_btn");
+	return getWidget<Gtk::Button>("r_apply_btn");
 }
-Gtk::Button * GPreamble::cancel_btn() const 
+Gtk::Button * GPreamble::cancel_btn() const
 {
-        return getWidget<Gtk::Button>("r_cancel_btn");
+	return getWidget<Gtk::Button>("r_cancel_btn");
 }
-Gtk::TextView * GPreamble::preamble() const 
+Gtk::TextView * GPreamble::preamble() const
 {
-        return getWidget<Gtk::TextView>("r_preamble");
+	return getWidget<Gtk::TextView>("r_preamble");
 }

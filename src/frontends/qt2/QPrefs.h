@@ -17,12 +17,12 @@
 #endif
 
 #include "converter.h"
- 
+
 #include "Qt2Base.h"
 #include "ControlPrefs.h"
 
 #include <vector>
- 
+
 class QPrefsDialog;
 
 class QPrefs
@@ -33,11 +33,11 @@ public:
 	friend class QPrefsDialog;
 
 	QPrefs();
- 
+
 private:
 	/// Apply changes
 	virtual void apply();
- 
+
 	/// update (do we need this?)
 	virtual void update_contents();
 

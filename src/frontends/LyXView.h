@@ -4,8 +4,8 @@
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
- * \author Lars Gullik Bjønnes 
- * \author John Levon 
+ * \author Lars Gullik Bjønnes
+ * \author John Levon
  *
  * Full author contact details are available in file CREDITS
  */
@@ -122,7 +122,7 @@ public:
 
 	/// focus the command buffer (minibuffer)
 	boost::signal0<void> focus_command_buffer;
- 
+
 	/// view state string changed
 	boost::signal0<void> view_state_changed;
 
@@ -137,7 +137,7 @@ public:
 
 	/// dispatch to current BufferView
 	void dispatch(FuncRequest const & req);
- 
+
 protected:
 	/// view of a buffer. Eventually there will be several.
 	boost::shared_ptr<BufferView> bufferview_;

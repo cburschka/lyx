@@ -120,7 +120,7 @@ string const symbolPattern(LyXFont::FONT_FAMILY family)
 
 	default:
 		return string();
-	}	
+	}
 }
 
 bool addFontPath()
@@ -136,7 +136,7 @@ bool addFontPath()
 		lyxerr << "Adding " << dir << " to the font path.\n";
 		string const command = "xset fp+ " + dir;
 		Systemcall s;
-		if (!s.startscript(Systemcall::Wait, command)) 
+		if (!s.startscript(Systemcall::Wait, command))
 			return true;
 		lyxerr << "Unable to add font path.\n";
 	}
@@ -152,7 +152,7 @@ bool isAvailable(QFont const & font, LyXFont const & f) {
 	if (tmp.empty())
 		return false;
 	else
-		return token(tmp, '-', 2) == 
+		return token(tmp, '-', 2) ==
 			token(font.rawName().latin1(), '-', 2);
 #endif
 }
@@ -174,7 +174,7 @@ qfont_loader::font_info::font_info(LyXFont const & f)
 				font.setRawName(pat.c_str());
 			}
 		}
-	} else 
+	} else
 		switch (f.family()) {
 		case LyXFont::ROMAN_FAMILY:
 			font.setFamily(makeFontName(lyxrc.roman_font_name,

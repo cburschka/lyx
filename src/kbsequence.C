@@ -53,7 +53,7 @@ string::size_type kb_sequence::parse(string const & s)
 	string::size_type i = 0;
 	key_modifier::state mod = key_modifier::none;
 	key_modifier::state nmod = key_modifier::none;
- 
+
 	while (i < s.length()) {
 		if (s[i] == ' ')
 			++i;
@@ -103,7 +103,7 @@ string::size_type kb_sequence::parse(string const & s)
 
 			LyXKeySymPtr key(LyXKeySymFactory::create());
 			key->init(tbuf);
-			
+
 			if ( ! key->isOK() ) {
 				return j;
 			}
@@ -132,7 +132,7 @@ string const kb_sequence::print() const
 	//	return buf;
 
 	KeySequence::size_type i, length = sequence.size();
-	
+
 	for (i = 0; i < length; ++i) {
 		buf += kb_keymap::printKeysym(sequence[i], modifiers[i].first);
 

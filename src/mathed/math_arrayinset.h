@@ -8,7 +8,7 @@
 #pragma interface
 #endif
 
-/** 
+/**
  * Inset for things like \begin{array}...\end{array}
  *
  * \author André Pönitz

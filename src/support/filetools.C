@@ -215,7 +215,7 @@ vector<string> const DirList(string const & dir, string const & ext)
 	if (!ext.empty() && ext[0] != '.')
 		extension += '.';
 	extension += ext;
-	
+
 	vector<string> dirlist;
 	DIR * dirp = ::opendir(dir.c_str());
 	if (!dirp) {

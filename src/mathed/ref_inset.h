@@ -7,7 +7,7 @@
 
 #include "command_inset.h"
 
-// for \ref 
+// for \ref
 class RefInset : public CommandInset {
 public:
 	///

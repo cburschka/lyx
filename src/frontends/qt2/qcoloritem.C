@@ -10,22 +10,22 @@
 
 #include "qcoloritem.h"
 
-#include <qfont.h> 
+#include <qfont.h>
 #include <qfontmetrics.h>
 #include <qpainter.h>
- 
+
 QColorItem::QColorItem(QColor c, QString const & t)
 	: color_(c), text_(t)
 {
 	QFont font;
 	QFontMetrics metrics(font);
- 
+
 	ascent_ = metrics.ascent();
 	width_ = 40 + metrics.width(t);
 	height_ = metrics.ascent() + metrics.descent() + 6;
 }
 
- 
+
 void QColorItem::paint(QPainter * p)
 {
 	p->fillRect(2, 2, 35, height_, color_);

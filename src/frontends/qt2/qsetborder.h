@@ -52,12 +52,12 @@ public slots:
 protected:
 	void mousePressEvent(QMouseEvent * e);
 	void paintEvent(QPaintEvent * e);
-	
+
 private:
 	void init();
 
 	void drawLine(QColor const & col, int x, int y, int x2, int y2);
- 
+
 	void drawLeft(bool);
 	void drawRight(bool);
 	void drawTop(bool);
@@ -81,5 +81,5 @@ private:
 
 	QPixmap buffer;
 };
- 
+
 #endif // QSETBORDER_H

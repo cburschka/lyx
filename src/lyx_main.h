@@ -64,7 +64,7 @@ private:
 	void readEncodingsFile(string const & name);
 	/// parsing of non-gui LyX options. Returns true if gui
 	bool easyParse(int & argc, char * argv[]);
- 
+
 	/// has this user started lyx for the first time?
 	bool first_start;
 	/// the parsed command line batch command if any

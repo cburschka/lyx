@@ -3,7 +3,7 @@
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
- * \author Michael Koziarski 
+ * \author Michael Koziarski
  *
  * Full author contact details are available in file CREDITS
  */
@@ -77,15 +77,15 @@ void GLog::update()
 }
 
 
-Gtk::Button * GLog::refresh_btn() const 
+Gtk::Button * GLog::refresh_btn() const
 {
-        return getWidget<Gtk::Button>("r_refresh_btn");
+	return getWidget<Gtk::Button>("r_refresh_btn");
 }
-Gtk::Button * GLog::close_btn() const 
+Gtk::Button * GLog::close_btn() const
 {
-        return getWidget<Gtk::Button>("r_close_btn");
+	return getWidget<Gtk::Button>("r_close_btn");
 }
-Gtk::TextView * GLog::log_text() const 
+Gtk::TextView * GLog::log_text() const
 {
-        return getWidget<Gtk::TextView>("r_log_text");
+	return getWidget<Gtk::TextView>("r_log_text");
 }

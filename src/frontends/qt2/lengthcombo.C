@@ -57,4 +57,3 @@ void LengthCombo::setEnabled(bool b)
 {
 	QComboBox::setEnabled(b);
 }
-

@@ -35,7 +35,7 @@ public:
 	~GTabularCreate();
 
 	void apply();
-	
+
 private:
 	/// Build the dialog
 	void build();

@@ -65,7 +65,7 @@ void InsetList::iterator::setInset(Inset * inset)
 }
 
 
-InsetList::~InsetList() 
+InsetList::~InsetList()
 {
 	// If we begin storing a shared_ptr in the List
 	// this code can be removed. (Lgb)
@@ -156,7 +156,7 @@ Inset * InsetList::release(pos_type pos)
 	return 0;
 }
 
-	
+
 Inset * InsetList::get(pos_type pos) const
 {
 	InsetTable search_elem(pos, 0);
@@ -231,9 +231,9 @@ bool operator==(InsetList::iterator const & i1,
 		InsetList::iterator const & i2)
 {
 	return i1.it == i2.it;
-	
+
 }
-	
+
 
 bool operator!=(InsetList::iterator const & i1,
 		InsetList::iterator const & i2)

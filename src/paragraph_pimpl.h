@@ -57,7 +57,7 @@ struct Paragraph::Pimpl {
 				  BufferParams const & bparams) const;
 	///
 	Inset * inset_owner;
-	
+
 	/** A font entry covers a range of positions. Notice that the
 	    entries in the list are inserted in random order.
 	    I don't think it's worth the effort to implement a more effective

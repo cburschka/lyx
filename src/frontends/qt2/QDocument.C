@@ -106,7 +106,7 @@ void QDocument::build_dialog()
 	}
 
 	// paper
-	char const * sizes[] = { 
+	char const * sizes[] = {
 		_("Default") , _("Custom") , _("US letter") , _("US legal")
 		   , _("US executive") , _("A3") , _("A4") , _("A5")
 		   , _("B3") , _("B4") , _("B5"), 0 };
@@ -208,7 +208,7 @@ void QDocument::apply()
 	params.user_defined_bullets[1].setText(dialog_->bulletsModule->bullet2LE->text().latin1());
 	params.user_defined_bullets[2].setText(dialog_->bulletsModule->bullet3LE->text().latin1());
 	params.user_defined_bullets[3].setText(dialog_->bulletsModule->bullet4LE->text().latin1());
-	
+
 	params.user_defined_bullets[0].setSize(dialog_->bulletsModule->bulletsize1CO->currentItem()-1);
 	params.user_defined_bullets[1].setSize(dialog_->bulletsModule->bulletsize2CO->currentItem()-1);
 	params.user_defined_bullets[2].setSize(dialog_->bulletsModule->bulletsize3CO->currentItem()-1);
@@ -336,7 +336,7 @@ void QDocument::apply()
 	params.paperpackage = char(margin);
 
 	MarginsModuleBase const * m(dialog_->marginsModule);
- 
+
 	params.leftmargin =
 		LyXLength(m->innerLE->text().toDouble(),
 			  m->innerUnit->currentLengthItem()
@@ -439,7 +439,7 @@ void QDocument::update_contents()
 	dialog_->bulletsModule->bullet3LE->setText(s);
 	s = params.user_defined_bullets[3].getText().c_str();
 	dialog_->bulletsModule->bullet4LE->setText(s);
-	
+
 	dialog_->bulletsModule->bulletsize1CO->setCurrentItem(
 		params.user_defined_bullets[0].getSize() + 1);
 	dialog_->bulletsModule->bulletsize2CO->setCurrentItem(
@@ -448,9 +448,9 @@ void QDocument::update_contents()
 		params.user_defined_bullets[2].getSize() + 1);
 	dialog_->bulletsModule->bulletsize4CO->setCurrentItem(
 		params.user_defined_bullets[3].getSize() + 1);
-	
+
 	// packages
-	char const * enc[] = { 
+	char const * enc[] = {
 		"default" , "auto" , "latin1" , "latin2" , "latin3" ,
 		"latin4" , "latin5" , "latin9" , "koi8-r" , "koi8-u" ,
 		"cp866" , "cp1251" , "iso88595" , "pt154" };
@@ -478,7 +478,7 @@ void QDocument::update_contents()
 		case Spacing::Onehalf: nitem = 1; break;
 		case Spacing::Default: case Spacing::Single: nitem = 0; break;
 	}
- 
+
 	dialog_->packagesModule->lspacingCO->setCurrentItem(nitem);
 	if (params.spacing.getSpace() == Spacing::Other) {
 		dialog_->packagesModule->lspacingLE->setText(
@@ -578,9 +578,9 @@ void QDocument::update_contents()
 		tostr(LyXLength(params.paperheight).value()).c_str());
 
 	// margins
- 
+
 	MarginsModuleBase * m(dialog_->marginsModule);
- 
+
 	int item = params.paperpackage;
 	if (params.use_geometry) {
 		item = 1;

@@ -337,13 +337,13 @@ MathInset::result_type MathNestInset::dispatch
 			return
 				dispatch(
 					FuncRequest(bv, LFUN_PASTE, bv->getClipboard()), idx, pos);
-			
+
 		case LFUN_MOUSE_PRESS:
 			if (cmd.button() == mouse_button::button2)
 				return dispatch(FuncRequest(bv, LFUN_PASTESELECTION), idx, pos);
 			return UNDISPATCHED;
 
-		default:	
+		default:
 			return MathInset::dispatch(cmd, idx, pos);
 	}
 	return UNDISPATCHED;

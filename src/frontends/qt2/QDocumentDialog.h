@@ -43,7 +43,7 @@ public:
 
 	void updateFontsize(string const &, string const &);
 	void updatePagestyle(string const &, string const &);
- 
+
 public slots:
 	void setTitle(int);
 	void change_adaptor();
@@ -58,10 +58,10 @@ protected slots:
 	void setSkip(int);
 	void enableSkip(bool);
 	void classChanged();
- 
+
 protected:
 	void closeEvent(QCloseEvent * e);
- 
+
 private:
 	enum Module {
 		LAYOUT,

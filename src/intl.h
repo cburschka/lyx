@@ -8,7 +8,7 @@
  * \author John Levon <moz@compsoc.man.ac.uk>
  */
 
- 
+
 #ifndef INTL_H
 #define INTL_H
 

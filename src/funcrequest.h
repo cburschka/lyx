@@ -15,7 +15,7 @@
 
 class BufferView;
 
-/** 
+/**
  * This class encapsulates a LyX action and its argument
  * in order to pass it around easily.
  */

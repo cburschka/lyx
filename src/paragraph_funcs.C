@@ -85,7 +85,7 @@ void breakParagraph(BufferParams const & bparams,
 
 	if (pos)
 		return;
- 
+
 	tmp->params().lineTop(par->params().lineTop());
 	tmp->params().pagebreakTop(par->params().pagebreakTop());
 	tmp->params().spaceTop(par->params().spaceTop());

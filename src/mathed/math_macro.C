@@ -85,7 +85,7 @@ void MathMacro::metrics(MathMetricsInfo & mi) const
 	if (editing()) {
 		expand();
 		dim_ = expanded_.metrics(mi_);
-		metricsMarkers2(2); 
+		metricsMarkers2(2);
 
 		dim_.w +=  mathed_string_width(font_, name()) + 10;
 

@@ -226,7 +226,7 @@ void Dialogs::showTabular(InsetTabular * it)
 
 void Dialogs::updateTabular(InsetTabular * it)
 {
-	pimpl_->tabular.controller().updateInset(it); 
+	pimpl_->tabular.controller().updateInset(it);
 }
 
 

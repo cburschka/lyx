@@ -27,7 +27,7 @@ public:
 	/// moves cursor up or down
 	bool idxUpDown(idx_type &, pos_type & pos, bool up, int targetx) const;
 protected:
-	/// row corresponding to given position 
+	/// row corresponding to given position
 	idx_type pos2row(pos_type pos) const;
 	/// cached metrics
 	mutable MathGridInset cache_;

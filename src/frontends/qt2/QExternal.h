@@ -28,7 +28,7 @@ public:
 	friend class QExternalDialog;
 
 	QExternal();
- 
+
 private:
 	/// Apply changes
 	virtual void apply();

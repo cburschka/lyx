@@ -45,5 +45,3 @@ void MathLefteqnInset::infoize(std::ostream & os) const
 {
 	os << "Lefteqn ";
 }
-
-

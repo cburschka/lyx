@@ -3,7 +3,7 @@
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
- * \author Angus Leeming 
+ * \author Angus Leeming
  *
  * Full author contact details are available in file CREDITS
  */
@@ -69,7 +69,7 @@ void Tooltips::init(FL_OBJECT * ob, string const & tip)
 	lyx::Assert(ob && ob->form);
 
 	// Store the tooltip string
-  	string const str = formatted(trim(tip), 400);
+	string const str = formatted(trim(tip), 400);
 	tooltipsMap[ob] = str;
 
 	// Set the tooltip

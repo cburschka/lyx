@@ -44,7 +44,7 @@ private:
 	void saveDocDefault();
 	/// reset to default params
 	void useClassDefaults();
- 
+
 	/// FIXME
 	std::vector<string> lang_;
 };

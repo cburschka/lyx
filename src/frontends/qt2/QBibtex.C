@@ -92,14 +92,14 @@ void QBibtex::update_contents()
 
 
 	dialog_->styleCB->clear();
- 
+
 	int item_nr(-1);
- 
+
 	vector<string> const str = getVectorFromString(
 		controller().getBibStyles(), "\n");
 	for (vector<string>::const_iterator it = str.begin();
 		it != str.end(); ++it) {
-		string item(ChangeExtension(*it, "")); 
+		string item(ChangeExtension(*it, ""));
 		if (item == bibstyle)
 			item_nr = int(it - str.begin());
 		dialog_->styleCB->insertItem(item.c_str());

@@ -223,10 +223,10 @@ ButtonPolicy::SMInput FormMathsPanel::input(FL_OBJECT * ob, long)
 	} else if (ob == dialog_->button_sub) {
 		controller().dispatchFunc(LFUN_SUBSCRIPT);
 
-//  	} else if (ob == dialog_->???) {
-//  		controller().dispatchFunc(LFUN_SUBSCRIPT);
-//  		controller().dispatchFunc(LFUN_LEFT);
-//  		controller().dispatchFunc(LFUN_SUPERSCRIPT);
+//	} else if (ob == dialog_->???) {
+//		controller().dispatchFunc(LFUN_SUBSCRIPT);
+//		controller().dispatchFunc(LFUN_LEFT);
+//		controller().dispatchFunc(LFUN_SUPERSCRIPT);
 
 	} else if (ob == dialog_->button_equation) {
 		controller().dispatchFunc(LFUN_MATH_DISPLAY);

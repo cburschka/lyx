@@ -124,7 +124,7 @@ public:
 	RowInfo & rowinfo(row_type row);
 	///
 	const CellInfo & cellinfo(idx_type idx) const { return cellinfo_[idx]; }
-	/// 
+	///
 	CellInfo & cellinfo(idx_type idx) { return cellinfo_[idx]; }
 	/// identifies GridInset
 	MathGridInset * asGridInset() { return this; }

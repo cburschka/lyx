@@ -11,13 +11,13 @@
 #define LYX_PSPELL_H
 
 #include <map>
- 
+
 #include "SpellBase.h"
 
 class PspellManager;
 class PspellStringEmulation;
 class PspellCanHaveError;
-class PspellConfig; 
+class PspellConfig;
 
 class BufferParams;
 
@@ -55,7 +55,7 @@ public:
 	/// return the next near miss after a MISSED result
 	virtual string const nextMiss();
 
-	/// give an error message on messy exit 
+	/// give an error message on messy exit
 	virtual string const error();
 
 private:
@@ -66,12 +66,12 @@ private:
 		PspellManager * manager;
 		PspellConfig * config;
 	};
- 
+
 	typedef std::map<string, struct Manager> Managers;
 
 	/// the managers
 	Managers managers_;
- 
+
 	/// FIXME
 	PspellStringEmulation * els;
 	/// FIXME

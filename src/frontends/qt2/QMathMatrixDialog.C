@@ -85,7 +85,7 @@ void QMathMatrixDialog::slotOK()
 	ostringstream os;
 	os << nx << ' ' << ny << ' ' << c << ' ' << sh;
 	form_->insertMatrix(os.str().c_str());
-	
+
 	// close the dialog
 	close();
 }

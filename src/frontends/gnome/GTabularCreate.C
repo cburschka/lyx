@@ -33,13 +33,13 @@ GTabularCreate::~GTabularCreate()
 void GTabularCreate::build()
 {
 	// Connect the buttons.
-	ok_btn()->signal_clicked().connect(SigC::slot(*this, 
-	                                 &GTabularCreate::OKClicked));
-	cancel_btn()->signal_clicked().connect(SigC::slot(*this, 
-	                                 &GTabularCreate::CancelClicked));
-	apply_btn()->signal_clicked().connect(SigC::slot(*this, 
-                                     &GTabularCreate::ApplyClicked));
-	
+	ok_btn()->signal_clicked().connect(SigC::slot(*this,
+					 &GTabularCreate::OKClicked));
+	cancel_btn()->signal_clicked().connect(SigC::slot(*this,
+					 &GTabularCreate::CancelClicked));
+	apply_btn()->signal_clicked().connect(SigC::slot(*this,
+				     &GTabularCreate::ApplyClicked));
+
 	// Manage the buttons state
 	bc().setOK(ok_btn());
 	bc().setCancel(cancel_btn());
@@ -65,29 +65,28 @@ void GTabularCreate::update()
 
 bool GTabularCreate::validate() const
 {
-	return ( rows()->get_value_as_int() > 0 ) && 
+	return ( rows()->get_value_as_int() > 0 ) &&
 	       ( cols()->get_value_as_int() > 0 );
 }
 
 
-Gtk::Button * GTabularCreate::ok_btn() const 
+Gtk::Button * GTabularCreate::ok_btn() const
 {
-        return getWidget<Gtk::Button>("r_ok_btn");
+	return getWidget<Gtk::Button>("r_ok_btn");
 }
-Gtk::Button * GTabularCreate::apply_btn() const 
+Gtk::Button * GTabularCreate::apply_btn() const
 {
-        return getWidget<Gtk::Button>("r_apply_btn");
+	return getWidget<Gtk::Button>("r_apply_btn");
 }
-Gtk::Button * GTabularCreate::cancel_btn() const 
+Gtk::Button * GTabularCreate::cancel_btn() const
 {
-        return getWidget<Gtk::Button>("r_cancel_btn");
+	return getWidget<Gtk::Button>("r_cancel_btn");
 }
-Gtk::SpinButton * GTabularCreate::rows() const 
+Gtk::SpinButton * GTabularCreate::rows() const
 {
-        return getWidget<Gtk::SpinButton>("r_rows");
+	return getWidget<Gtk::SpinButton>("r_rows");
 }
-Gtk::SpinButton * GTabularCreate::cols() const 
+Gtk::SpinButton * GTabularCreate::cols() const
 {
-        return getWidget<Gtk::SpinButton>("r_cols");
+	return getWidget<Gtk::SpinButton>("r_cols");
 }
-

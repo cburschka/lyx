@@ -1,6 +1,6 @@
 // -*- C++ -*-
 
-/** 
+/**
  *  \file command_inset.h
  *
  *  This file is part of LyX, the document processor.

@@ -8,7 +8,7 @@
 #pragma interface
 #endif
 
-/** 
+/**
  * Inset for things like [pbvV]matrix, psmatrix etc
  *
  * \author André Pönitz

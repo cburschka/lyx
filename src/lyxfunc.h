@@ -37,7 +37,7 @@ public:
 
 	/// Dispatch via a string argument
 	void dispatch(string const & s, bool verbose = false);
- 
+
 	/// Dispatch via a pseudo action, also displaying shortcut/command name
 	void dispatch(int ac, bool verbose = false);
 

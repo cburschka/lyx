@@ -24,7 +24,7 @@ string const getcwd();
 /// change to a directory, 0 is returned on success.
 int chdir(string const & name);
 /**
- * rename a file, returns false if it fails. 
+ * rename a file, returns false if it fails.
  * It can handle renames across partitions.
  */
 bool rename(string const & from, string const & to);
@@ -65,5 +65,5 @@ inline bool float_equal(float var, float number, float error)
 }
 
 } // namespace lyx
- 
+
 #endif /* LYX_LIB_H */

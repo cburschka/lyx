@@ -3,7 +3,7 @@
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
- * \author Martin Vermeer  
+ * \author Martin Vermeer
  *
  * Full author contact details are available in file CREDITS
  */
@@ -68,13 +68,13 @@ void InsetOptArg::write(Buffer const * buf, ostream & os) const
 	InsetCollapsable::write(buf, os);
 }
 
- 
+
 int InsetOptArg::latex(Buffer const *, ostream &, bool, bool) const
 {
 	return 0;
 }
 
- 
+
 int InsetOptArg::latexOptional(Buffer const * buf, ostream & os,
 				bool, bool fp) const
 {

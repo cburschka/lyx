@@ -125,4 +125,3 @@ bool ButtonControllerBase::checkWidgets()
 	// return valid status after checking ALL widgets
 	return valid;
 }
-

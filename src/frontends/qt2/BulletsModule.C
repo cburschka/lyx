@@ -30,7 +30,7 @@ BulletsModule::BulletsModule(QWidget * parent,  char const * name, WFlags fl)
 	: BulletsModuleBase(parent, name, fl), le_(bullet1LE)
 {
 	QPopupMenu * pm = new QPopupMenu(this);
-	
+
 	QPopupMenu * pm1 = new QPopupMenu(pm);
 	QPopupMenu * pm2 = new QPopupMenu(pm);
 	QPopupMenu * pm3 = new QPopupMenu(pm);
@@ -68,7 +68,7 @@ BulletsModule::BulletsModule(QWidget * parent,  char const * name, WFlags fl)
 	string bmfile;
 	bmfile = LibFileSearch("images", "standard", "xpm");
 	standard_->insertItem(QPixmap(bmfile.c_str()));
-	
+
 	bmfile = LibFileSearch("images", "amssymb", "xpm");
 	maths_->insertItem(QPixmap(bmfile.c_str()));
 
@@ -89,31 +89,31 @@ BulletsModule::BulletsModule(QWidget * parent,  char const * name, WFlags fl)
 
 	connect(maths_, SIGNAL(selected(int, int)),
 		this, SLOT(maths(int, int)));
-	
+
 	connect(ding1_, SIGNAL(selected(int, int)),
 		this, SLOT(ding1(int, int)));
-	
+
 	connect(ding2_, SIGNAL(selected(int, int)),
 		this, SLOT(ding2(int, int)));
-	
+
 	connect(ding3_, SIGNAL(selected(int, int)),
 		this, SLOT(ding3(int, int)));
-	
+
 	connect(ding4_, SIGNAL(selected(int, int)),
 		this, SLOT(ding4(int, int)));
-	
+
 	connect(setbullet1TB, SIGNAL(pressed()),
 		this, SLOT(setlevel1()));
-	
+
 	connect(setbullet2TB, SIGNAL(pressed()),
 		this, SLOT(setlevel2()));
-	
+
 	connect(setbullet3TB, SIGNAL(pressed()),
 		this, SLOT(setlevel3()));
-	
+
 	connect(setbullet4TB, SIGNAL(pressed()),
 		this, SLOT(setlevel4()));
-	
+
 }
 
 
@@ -170,4 +170,3 @@ void BulletsModule::setlevel4()
 {
 	le_ = bullet4LE;
 }
-

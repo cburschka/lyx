@@ -52,8 +52,8 @@ protected slots:
 	void setlevel3();
 	///
 	void setlevel4();
-	
-	
+
+
 private:
 	QLineEdit * le_;
 

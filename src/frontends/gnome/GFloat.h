@@ -1,11 +1,10 @@
-
 // -*- C++ -*-
 /**
  * \file GFloat.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
- * \author Michael Koziarski 
+ * \author Michael Koziarski
  *
  * Full author contact details are available in file CREDITS
  */
@@ -39,14 +38,14 @@ public:
 
 	void apply();
 	void update();
-	
+
 private:
 	/// Build the dialog
 	void build();
 
 	/// Returns true if the dialog input is in a valid state.
 	bool validate() const;
-	
+
 	///
 	void connect_signals();
 	///

@@ -58,7 +58,7 @@ public:
 	///
 	typedef size_type idx_type;
 	typedef size_type pos_type;
-	
+
 public:
 	///
 	MathArray();

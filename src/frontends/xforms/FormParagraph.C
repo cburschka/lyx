@@ -43,7 +43,7 @@ using std::bind2nd;
 using std::remove_if;
 
 
-namespace 
+namespace
 {
 
 string defaultUnit("cm");
@@ -410,7 +410,7 @@ ButtonPolicy::SMInput FormParagraph::input(FL_OBJECT * ob, long)
 	// disable 'keep' when no space is choosen
 	if (ob == dialog_->choice_space_above) {
 		bool const custom_length =
-			fl_get_choice(dialog_->choice_space_above) == 7;	
+			fl_get_choice(dialog_->choice_space_above) == 7;
 		setEnabled(dialog_->input_space_above, custom_length);
 		setEnabled(dialog_->choice_unit_space_above, custom_length);
 
@@ -420,7 +420,7 @@ ButtonPolicy::SMInput FormParagraph::input(FL_OBJECT * ob, long)
 
 	} else if (ob == dialog_->choice_space_below) {
 		bool const custom_length =
-			fl_get_choice(dialog_->choice_space_below) == 7;	
+			fl_get_choice(dialog_->choice_space_below) == 7;
 		setEnabled(dialog_->input_space_below, custom_length);
 		setEnabled(dialog_->choice_unit_space_below, custom_length);
 

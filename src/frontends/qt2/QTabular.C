@@ -31,7 +31,7 @@
 #include <qcheckbox.h>
 #include "lengthcombo.h"
 #include "qsetborder.h"
- 
+
 typedef Qt2CB<ControlTabular, Qt2DB<QTabularDialog> > base_class;
 
 QTabular::QTabular()
@@ -90,7 +90,7 @@ void QTabular::update_borders()
 {
 	LyXTabular * tabular(controller().tabular());
 	int cell(controller().inset()->getActCell());
- 
+
 	if (!controller().isMulticolumnCell()) {
 		dialog_->borders->setLeftEnabled(true);
 		dialog_->borders->setRightEnabled(true);
@@ -134,7 +134,7 @@ void QTabular::update_contents()
 
 	int const row(tabular->row_of_cell(cell));
 	int const col(tabular->column_of_cell(cell));
- 
+
 	dialog_->tabularRowED->setText(tostr(row + 1).c_str());
 	dialog_->tabularColumnED->setText(tostr(col + 1).c_str());
 
@@ -151,7 +151,7 @@ void QTabular::update_contents()
 
 	LyXLength pwidth;
 	string special;
-	
+
 	if (multicol) {
 		special = tabular->GetAlignSpecial(cell, LyXTabular::SET_SPECIAL_MULTI);
 		pwidth = tabular->GetMColumnPWidth(cell);
@@ -159,7 +159,7 @@ void QTabular::update_contents()
 		special = tabular->GetAlignSpecial(cell, LyXTabular::SET_SPECIAL_COLUMN);
 		pwidth = tabular->GetColumnPWidth(cell);
 	}
-	
+
 	dialog_->specialAlignmentED->setText(special.c_str());
 
 	bool const isReadonly = bc().bp().isReadOnly();
@@ -246,7 +246,7 @@ void QTabular::update_contents()
 		dialog_->newpageCB->setChecked(false);
 		return;
 	}
- 
+
 	LyXTabular::ltType ltt;
 	bool use_empty;
 	bool row_set = tabular->GetRowOfLTHead(row, ltt);
@@ -350,7 +350,7 @@ void QTabular::closeGUI()
 		str2 = tabular->GetAlignSpecial(cell, LyXTabular::SET_SPECIAL_MULTI);
 	else
 		str2 = tabular->GetAlignSpecial(cell, LyXTabular::SET_SPECIAL_COLUMN);
- 
+
 	if (str1 != str2) {
 		if (controller().isMulticolumnCell())
 			controller().set(LyXTabular::SET_SPECIAL_MULTI, str1);

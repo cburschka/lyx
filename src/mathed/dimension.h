@@ -1,6 +1,6 @@
 // -*- C++ -*-
 
-/** 
+/**
  *  \file dimension.h
  *
  *  This file is part of LyX, the document processor.
@@ -45,7 +45,7 @@ public:
 	/// get width
 	int width() const { return w; }
 
-public:	
+public:
 	/// width
 	int w;
 	/// ascent

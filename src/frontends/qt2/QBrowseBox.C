@@ -48,7 +48,7 @@ QBrowseBox::QBrowseBox(int rows, int cols, QWidget* parent, const char* name, WF
 	// setMouseTracking must be called after setFocusPolicy
 	viewport()->setMouseTracking(true);
 	inloop=false;
-	
+
 }
 
 
@@ -168,13 +168,13 @@ int QBrowseBox::exec(int x,int y)
 	repaint();
 	qApp->enter_loop();
 	inloop = true;
-	
+
 	if (activecell_.x()!=-1 && activecell_.y()!=-1 )
 		return coordsToIndex( activecell_.x(),activecell_.y());
 	else
 		return -1;
 }
-		
+
 void QBrowseBox::keyPressEvent(QKeyEvent * e)
 {
 	switch(e->key()) {
@@ -271,7 +271,7 @@ void QBrowseBox::contentsMouseMoveEvent(QMouseEvent * e)
 {
 	int x = e->pos().x();
 	int y = e->pos().y();
-	
+
 	int cellx;
 	int celly;
 

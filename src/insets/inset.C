@@ -295,7 +295,7 @@ Inset::RESULT UpdatableInset::localDispatch(FuncRequest const & ev)
 {
 	if (ev.action == LFUN_MOUSE_RELEASE)
 		return (editable() == IS_EDITABLE) ? DISPATCHED : UNDISPATCHED;
-		
+
 	if (!ev.argument.empty() && ev.action == LFUN_SCROLL_INSET) {
 		if (ev.argument.find('.') != ev.argument.npos) {
 			float const xx = static_cast<float>(strToDbl(ev.argument));

@@ -98,7 +98,7 @@ public:
 
 	/// writes \\, name(), and args in braces and '\\lyxlock' if necessary
 	void write(WriteStream & os) const;
-	/// writes [, name(), and args in [] 
+	/// writes [, name(), and args in []
 	void normalize(NormalStream & os) const;
 
 	/// local dispatcher

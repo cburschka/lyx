@@ -50,7 +50,7 @@ private:
 	virtual void build();
 	/// Filter the inputs
 	virtual ButtonPolicy::SMInput input(FL_OBJECT *, long);
- 
+
 	///
 	virtual int checkLongtableOptions(FL_OBJECT *, string &);
 
@@ -65,7 +65,7 @@ private:
 
 	///
 	bool closing_;
- 
+
 	///
 	int actCell_;
 };

@@ -90,7 +90,7 @@ void GUrl::apply()
 void GUrl::update()
 {
 	disconnect_signals();
-	
+
 	url()->set_text(controller().params().getContents());
 	name()->set_text(controller().params().getOptions());
 
@@ -105,33 +105,31 @@ bool GUrl::validate() const
 	return !url()->get_text().empty() && !name()->get_text().empty();
 }
 
-Gtk::Button * GUrl::restore_btn() const 
+Gtk::Button * GUrl::restore_btn() const
 {
-        return getWidget<Gtk::Button>("r_restore_btn");
+	return getWidget<Gtk::Button>("r_restore_btn");
 }
-Gtk::Button * GUrl::ok_btn() const 
+Gtk::Button * GUrl::ok_btn() const
 {
-        return getWidget<Gtk::Button>("r_ok_btn");
+	return getWidget<Gtk::Button>("r_ok_btn");
 }
-Gtk::Button * GUrl::apply_btn() const 
+Gtk::Button * GUrl::apply_btn() const
 {
-        return getWidget<Gtk::Button>("r_apply_btn");
+	return getWidget<Gtk::Button>("r_apply_btn");
 }
-Gtk::Button * GUrl::cancel_btn() const 
+Gtk::Button * GUrl::cancel_btn() const
 {
-        return getWidget<Gtk::Button>("r_cancel_btn");
+	return getWidget<Gtk::Button>("r_cancel_btn");
 }
-Gtk::Entry * GUrl::url() const 
+Gtk::Entry * GUrl::url() const
 {
-        return getWidget<Gtk::Entry>("r_url");
+	return getWidget<Gtk::Entry>("r_url");
 }
-Gtk::Entry * GUrl::name() const 
+Gtk::Entry * GUrl::name() const
 {
-        return getWidget<Gtk::Entry>("r_name");
+	return getWidget<Gtk::Entry>("r_name");
 }
-Gtk::CheckButton * GUrl::html_cb() const 
+Gtk::CheckButton * GUrl::html_cb() const
 {
-        return getWidget<Gtk::CheckButton>("r_html_cb");
+	return getWidget<Gtk::CheckButton>("r_html_cb");
 }
-
-

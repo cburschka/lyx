@@ -197,7 +197,7 @@ public:
 	virtual void edit(BufferView *, bool front = true);
 	///
 	virtual EDITABLE editable() const;
-	/// 
+	///
 	virtual RESULT localDispatch(FuncRequest const & cmd);
 	///
 	virtual bool isTextInset() const { return false; }
@@ -350,8 +350,8 @@ public:
 	// paragraphs with "Standard" layout?
 	virtual bool forceDefaultParagraphs(Inset const *) const;
 	/** returns true if, when outputing LaTeX, font changes should
-            be closed before generating this inset. This is needed for
-            insets that may contain several paragraphs */
+	    be closed before generating this inset. This is needed for
+	    insets that may contain several paragraphs */
 	virtual bool noFontChange() const { return false; }
 	//
 	virtual void getDrawFont(LyXFont &) const {}

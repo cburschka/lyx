@@ -32,7 +32,7 @@ struct Toolbar::Pimpl {
 public:
 	/// called when user selects a layout from combox
 	static void layoutSelectedCB(int, void *, Combox *);
- 
+
 	/// create an empty toolbar
 	Pimpl(LyXView * o, int x, int y);
 
@@ -61,12 +61,12 @@ public:
 		toolbarItem();
 
 		~toolbarItem();
- 
+
 		toolbarItem & operator=(toolbarItem const & ti);
- 
+
 		/// deallocate icon
 		void kill_icon();
- 
+
 		/// lyx action number
 		int action;
 		/// icon for this item
@@ -74,7 +74,7 @@ public:
 	};
 
 	typedef std::vector<toolbarItem> ToolbarList;
- 
+
 	/// The list containing all the buttons
 	ToolbarList toollist_;
 	/// owning view
@@ -88,5 +88,5 @@ public:
 	/// y position of end of toolbar
 	int ypos;
 };
- 
+
 #endif // TOOLBAR_PIMPL_H

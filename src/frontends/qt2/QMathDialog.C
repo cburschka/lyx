@@ -19,7 +19,7 @@
 #include "debug.h"
 
 #include "ControlMath.h"
- 
+
 #include "QMathDialog.h"
 #include "QMath.h"
 

@@ -1,6 +1,5 @@
-
 #ifdef __GNUG__
-#pragma implementation 
+#pragma implementation
 #endif
 
 #include <config.h>
@@ -18,7 +17,7 @@ using std::strlen;
 
 namespace {
 
-	bool isAlpha(char c) 
+	bool isAlpha(char c)
 	{
 		return ('a' <= c && c <= 'z') || ('A' <= c && c <= 'Z');
 	}
@@ -367,4 +366,3 @@ NormalStream & operator<<(NormalStream & ns, int i)
 
 
 //////////////////////////////////////////////////////////////////////
-

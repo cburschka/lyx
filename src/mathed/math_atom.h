@@ -7,7 +7,7 @@
 #pragma interface
 #endif
 
-/** 
+/**
  * Wrapper for MathInset * with copy-semantics
  *
  * \author André Pönitz

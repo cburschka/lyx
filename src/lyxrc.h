@@ -360,7 +360,7 @@ enum LyXRCTags {
 	bool preview_hashed_labels;
 	///
 	float preview_scale_factor;
-	
+
 private:
 	/// Is a bind file already (or currently) read?
 	bool hasBindFile;

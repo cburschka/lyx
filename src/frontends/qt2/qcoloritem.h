@@ -10,7 +10,7 @@
 
 #include <qlistbox.h>
 #include <qcolor.h>
- 
+
 class QColorItem : public QListBoxItem {
 
 public:
@@ -19,11 +19,11 @@ public:
 	QColor color() {
 		return color_;
 	}
- 
+
 	void color(QColor c) {
 		color_ = c;
 	}
- 
+
 	virtual int height(const QListBox *) const {
 		return height_;
 	}
@@ -31,17 +31,17 @@ public:
 	virtual int width(const QListBox *) const {
 		return width_;
 	}
- 
+
 protected:
 	virtual void paint(QPainter * p);
- 
+
 private:
 	int ascent_;
- 
+
 	int height_;
 
 	int width_;
- 
+
 	QColor color_;
 
 	QString text_;

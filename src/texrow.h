@@ -54,7 +54,7 @@ public:
 	/// an individual id/pos <=> row mapping
 	class RowItem {
 	public:
-		RowItem(int id, int pos, int row) 
+		RowItem(int id, int pos, int row)
 			: id_(id), pos_(pos), rownumber_(row)
 		{}
 
@@ -62,7 +62,7 @@ public:
 		int id() const {
 			return id_;
 		}
- 
+
 		/// set paragraph position
 		void pos(int p) {
 			pos_ = p;
@@ -98,5 +98,5 @@ private:
 	/// Last position
 	int lastpos;
 };
- 
+
 #endif // TEXROW_H

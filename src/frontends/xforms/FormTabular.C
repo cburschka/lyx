@@ -16,11 +16,11 @@
 
 #include <vector>
 #include <algorithm>
- 
+
 #include "ControlTabular.h"
 #include "xformsBC.h"
 #include "insets/insettabular.h"
- 
+
 #include "FormTabular.h"
 #include "forms/form_tabular.h"
 #include "debug.h"
@@ -133,10 +133,10 @@ void FormTabular::update()
 {
 	if (closing_)
 		return;
- 
+
 	LyXTabular * tabular = controller().tabular();
 	InsetTabular * inset = controller().inset();
- 
+
 	int align;
 	char buf[12];
 	LyXLength pwidth;
@@ -473,7 +473,7 @@ ButtonPolicy::SMInput FormTabular::input(FL_OBJECT * ob, long)
 
 	InsetTabular * inset(controller().inset());
 	LyXTabular * tabular(controller().tabular());
- 
+
 	int cell = inset->getActCell();
 
 	// ugly hack to auto-apply the stuff that hasn't been
@@ -506,9 +506,9 @@ ButtonPolicy::SMInput FormTabular::input(FL_OBJECT * ob, long)
 		str2 = tabular->GetAlignSpecial(cell, LyXTabular::SET_SPECIAL_MULTI);
 		if (str1 != str2)
 			input(cell_options_->input_special_multialign, 0);
- 
+
 		closing_ = false;
-		controller().OKButton(); 
+		controller().OKButton();
 		return ButtonPolicy::SMI_VALID;
 	}
 
@@ -517,14 +517,14 @@ ButtonPolicy::SMInput FormTabular::input(FL_OBJECT * ob, long)
 		postWarning(_("Wrong Cursor position, updated window"));
 		return ButtonPolicy::SMI_VALID;
 	}
- 
+
 	// No point in processing directives that you can't do anything with
 	// anyhow, so exit now if the buffer is read-only.
 	if (bc().bp().isReadOnly()) {
 		update();
 		return ButtonPolicy::SMI_VALID;
 	}
- 
+
 	if ((ob == column_options_->input_column_width) ||
 	    (ob == column_options_->choice_value_column_width)) {
 		string const str =
@@ -667,7 +667,7 @@ ButtonPolicy::SMInput FormTabular::input(FL_OBJECT * ob, long)
 
 	return ButtonPolicy::SMI_VALID;
 }
- 
+
 
 int FormTabular::checkLongtableOptions(FL_OBJECT * ob, string & special)
 {

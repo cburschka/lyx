@@ -1,5 +1,5 @@
 /**********************************************************************
-** $Id: qgridview.h,v 1.1 2002/10/09 08:59:02 leuven Exp $
+** $Id: qgridview.h,v 1.2 2002/12/01 22:59:19 larsbj Exp $
 **
 ** Definition of QGridView class
 **
@@ -65,7 +65,7 @@ public:
     virtual void setCellWidth( int );
     int cellHeight() const;
     virtual void setCellHeight( int );
-    
+
     QRect cellRect() const;
     QRect cellGeometry( int row, int column );
     QSize gridSize() const;
@@ -102,28 +102,28 @@ private:	// Disabled copy constructor and operator=
 #endif
 };
 
-inline int QGridView::cellWidth() const 
+inline int QGridView::cellWidth() const
 { return cellw; }
 
-inline int QGridView::cellHeight() const 
+inline int QGridView::cellHeight() const
 { return cellh; }
 
-inline int QGridView::rowAt( int y ) const 
+inline int QGridView::rowAt( int y ) const
 { return y / cellh; }
 
-inline int QGridView::columnAt( int x ) const 
+inline int QGridView::columnAt( int x ) const
 { return x / cellw; }
 
-inline int QGridView::numRows() const 
+inline int QGridView::numRows() const
 { return nrows; }
 
-inline int QGridView::numCols() const 
+inline int QGridView::numCols() const
 {return ncols; }
 
 inline QRect QGridView::cellRect() const
 { return QRect( 0, 0, cellw, cellh ); }
 
-inline QSize QGridView::gridSize() const 
+inline QSize QGridView::gridSize() const
 { return QSize( ncols * cellw, nrows * cellh ); }
 
 

@@ -29,11 +29,11 @@ public:
 
 protected slots:
 	virtual void change_adaptor();
-	
+
 	virtual void close_clicked();
 	virtual void columnAppend_clicked();
 	virtual void rowAppend_clicked();
-	virtual void columnDelete_clicked(); 
+	virtual void columnDelete_clicked();
 	virtual void rowDelete_clicked();
 	virtual void borderSet_clicked();
 	virtual void borderUnset_clicked();
@@ -67,7 +67,7 @@ protected slots:
 
 protected:
 	virtual void closeEvent(QCloseEvent * e);
- 
+
 private:
 	QTabular * form_;
 };

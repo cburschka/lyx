@@ -12,4 +12,3 @@
 
 
 #include "gnome_helpers.h"
-

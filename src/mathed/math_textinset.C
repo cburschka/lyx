@@ -1,6 +1,5 @@
-
 #ifdef __GNUG__
-#pragma implementation 
+#pragma implementation
 #endif
 
 #include "math_textinset.h"
@@ -21,7 +20,7 @@ MathInset * MathTextInset::clone() const
 
 MathInset::idx_type MathTextInset::pos2row(pos_type pos) const
 {
-	for (pos_type r = 0, n = cache_.nargs(); r < n; ++r) 
+	for (pos_type r = 0, n = cache_.nargs(); r < n; ++r)
 		if (pos >= cache_.cellinfo_[r].begin_ && pos <= cache_.cellinfo_[r].end_)
 			return r;
 	lyxerr << "illegal row for pos " << pos << "\n";
@@ -32,7 +31,7 @@ MathInset::idx_type MathTextInset::pos2row(pos_type pos) const
 void MathTextInset::getPos(idx_type, pos_type pos, int & x, int & y) const
 {
 	idx_type const i = pos2row(pos);
-	pos_type const p = pos - cache_.cellinfo_[i].begin_; 
+	pos_type const p = pos - cache_.cellinfo_[i].begin_;
 	cache_.getPos(i, p, x, y);
 }
 
@@ -101,7 +100,7 @@ void MathTextInset::metrics(MathMetricsInfo & mi) const
 			// This is a regular char. Go on if we either don't care for
 			// the width limit or have not reached that limit.
 			curr += cell(0)[i]->width();
-			if (!mi.base.restrictwidth || curr + safe <= mi.base.textwidth) 
+			if (!mi.base.restrictwidth || curr + safe <= mi.base.textwidth)
 				continue;
 		}
 
@@ -164,5 +163,5 @@ void MathTextInset::draw(MathPainterInfo & pi, int x, int y) const
 void MathTextInset::drawSelection(MathPainterInfo & pi,
 		idx_type idx1, pos_type pos1, idx_type idx2, pos_type pos2) const
 {
-	cache_.drawSelection(pi, idx1, pos1, idx2, pos2);	
+	cache_.drawSelection(pi, idx1, pos1, idx2, pos2);
 }

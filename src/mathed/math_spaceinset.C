@@ -28,8 +28,8 @@ MathSpaceInset::MathSpaceInset(int sp)
 MathSpaceInset::MathSpaceInset(string const & name)
 	: space_(1)
 {
-	for (int i = 0; i < nSpace; ++i) 
-		if (latex_mathspace[i] == name) 
+	for (int i = 0; i < nSpace; ++i)
+		if (latex_mathspace[i] == name)
 			space_ = i;
 }
 

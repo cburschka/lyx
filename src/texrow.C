@@ -23,7 +23,7 @@ using std::for_each;
 using std::endl;
 
 namespace {
- 
+
 /// function object returning true when row number is found
 class same_rownumber {
 public:
@@ -31,7 +31,7 @@ public:
 	bool operator()(TexRow::RowList::value_type const & vt) const {
 		return vt.rownumber() == row_;
 	}
- 
+
 private:
 	int row_;
 };
@@ -48,7 +48,7 @@ public:
 		if (vt.id() != id_ || vt.pos() >= pos_)
 			return;
 		vt.pos(vt.pos() + 1);
- 
+
 		lyxerr[Debug::INFO]
 			<< "TeXRow::increasePos: ideally this "
 			"should never happen..." << endl;
@@ -66,10 +66,10 @@ private:
 	int id_;
 	int pos_;
 };
- 
-} // namespace anon 
 
- 
+} // namespace anon
+
+
 void TexRow::reset()
 {
 	rowlist.clear();
@@ -97,9 +97,9 @@ void TexRow::newline()
 bool TexRow::getIdFromRow(int row, int & id, int & pos) const
 {
 	RowList::const_iterator cit =
-		find_if(rowlist.begin(), rowlist.end(), 
+		find_if(rowlist.begin(), rowlist.end(),
 			same_rownumber(row));
- 
+
 	if (cit != rowlist.end()) {
 		id = cit->id();
 		pos = cit->pos();

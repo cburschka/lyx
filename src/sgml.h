@@ -9,12 +9,12 @@
 
 #ifndef SGML_H
 #define SGML_H
- 
+
 #include "LString.h"
- 
+
 #include <algorithm>
 #include <iosfwd>
- 
+
 namespace sgml {
 
 /**

@@ -5,7 +5,7 @@
  *
  * \author Alejandro Aguilar Sierra
  * \author John Levon
- * \author Angus Leeming 
+ * \author Angus Leeming
  *
  * Full author contact details are available in file CREDITS
  */
@@ -76,7 +76,7 @@ void FormMathsBitmap::addBitmap(int nt, int nx, int ny, int bw, int bh,
 		h_ = max(y_ + wy + ww_, h_);
 	}
 }
- 
+
 
 void FormMathsBitmap::build()
 {
@@ -118,12 +118,12 @@ void FormMathsBitmap::build()
 
 	fdui->form->fdui = fdui;
 
-  	dialog_.reset(fdui);
+	dialog_.reset(fdui);
 	bc().setCancel(dialog_->button_close);
 }
 
 
-			
+
 FL_OBJECT * FormMathsBitmap::buildBitmap(BitmapStore const & bmstore)
 {
 	// Add a bitmap to a button panel: one bitmap per panel.

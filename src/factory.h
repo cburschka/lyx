@@ -19,4 +19,3 @@ class FuncRequest;
 Inset * createInset(FuncRequest const & cmd);
 
 #endif
-

@@ -1,6 +1,5 @@
-
 #ifdef __GNUG__
-#pragma implementation 
+#pragma implementation
 #endif
 
 #include "math_parboxinset.h"
@@ -67,4 +66,3 @@ void MathParboxInset::infoize(std::ostream & os) const
 {
 	os << "Box: Parbox " << tex_width_;
 }
-

@@ -40,7 +40,7 @@ int InsetButton::ascent(BufferView * bv, LyXFont const &) const
 	int descent;
 	string const s = getScreenLabel(bv->buffer());
 
-        if (editable()) {
+	if (editable()) {
 		font_metrics::buttonText(s, font, width, ascent, descent);
 	} else {
 		font_metrics::rectText(s, font, width, ascent, descent);
@@ -62,7 +62,7 @@ int InsetButton::descent(BufferView * bv, LyXFont const &) const
 	int descent;
 	string const s = getScreenLabel(bv->buffer());
 
-        if (editable()) {
+	if (editable()) {
 		font_metrics::buttonText(s, font, width, ascent, descent);
 	} else {
 		font_metrics::rectText(s, font, width, ascent, descent);
@@ -84,7 +84,7 @@ int InsetButton::width(BufferView * bv, LyXFont const &) const
 	int descent;
 	string const s = getScreenLabel(bv->buffer());
 
-        if (editable()) {
+	if (editable()) {
 		font_metrics::buttonText(s, font, width, ascent, descent);
 	} else {
 		font_metrics::rectText(s, font, width, ascent, descent);

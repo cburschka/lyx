@@ -131,5 +131,5 @@ private:
 
 /// singleton instance
 extern LyXAction lyxaction;
- 
+
 #endif // LYXACTION_H

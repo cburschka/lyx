@@ -46,12 +46,12 @@ void GErrorDialog::update()
 	textarea()->get_buffer()->set_text(controller().params());
 }
 
-Gtk::Button * GErrorDialog::button_close() const 
+Gtk::Button * GErrorDialog::button_close() const
 {
-        return getWidget<Gtk::Button>("r_button_close");
+	return getWidget<Gtk::Button>("r_button_close");
 }
 
-Gtk::TextView * GErrorDialog::textarea() const 
+Gtk::TextView * GErrorDialog::textarea() const
 {
-        return getWidget<Gtk::TextView>("r_textarea");
+	return getWidget<Gtk::TextView>("r_textarea");
 }

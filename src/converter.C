@@ -690,7 +690,7 @@ bool Converters::convert(Buffer const * buffer,
 						<< " to " << real_outfile
 						<< endl;
 			}
-			
+
 			if (!conv.parselog.empty()) {
 				string const logfile =  infile2 + ".log";
 				string const script = LibScriptSearch(conv.parselog);

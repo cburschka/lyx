@@ -19,7 +19,7 @@
 #include "BufferView.h"
 #include "buffer.h"
 #include "lyxrc.h"
-#include "insets/insettabular.h" 
+#include "insets/insettabular.h"
 
 #include <boost/bind.hpp>
 
@@ -52,11 +52,11 @@ void ControlTabular::updateInset(InsetTabular * inset)
 		view().build();
 		dialog_built_ = true;
 	}
- 
+
 	update();
 }
 
- 
+
 void ControlTabular::show(InsetTabular * inset)
 {
 	inset_ = inset;
@@ -87,7 +87,7 @@ void ControlTabular::update()
 	view().update();
 
 	// The widgets may not be valid, so refresh the button controller
-	// FIXME: needed ? 
+	// FIXME: needed ?
 	bc().refresh();
 }
 
@@ -127,8 +127,8 @@ void ControlTabular::connectInset(InsetTabular * inset)
 	}
 	connect();
 }
- 
- 
+
+
 InsetTabular * ControlTabular::inset() const
 {
 	lyx::Assert(inset_);
@@ -142,14 +142,14 @@ LyXTabular * ControlTabular::tabular() const
 	return inset_->tabular.get();
 }
 
- 
+
 void ControlTabular::set(LyXTabular::Feature f, string const & arg)
 {
 	lyx::Assert(inset_);
 	inset_->tabularFeatures(lv_.view().get(), f, arg);
 }
 
- 
+
 bool ControlTabular::metric() const
 {
 	return lyxrc.default_papersize > BufferParams::PAPER_EXECUTIVEPAPER;

@@ -76,7 +76,7 @@ string const parseBibTeX(string data, string const & findkey);
 
 /** Returns an iterator to the first key that meets the search
     criterion, or end() if unsuccessful.
-    
+
     User supplies :
     the InfoMap of bibkeys info,
     the vector of keys to be searched,
@@ -111,7 +111,7 @@ struct CitationStyle {
 CitationStyle const getCitationStyle(string const & command);
 
 /** Returns the LaTeX citation command
-    
+
 User supplies :
 The CiteStyle enum,
 a flag forcing the full author list,
@@ -125,11 +125,11 @@ std::vector<CiteStyle> const getCiteStyles(bool usingNatbib);
 /**
    "Translates" the available Citation Styles into strings for this key.
    The returned string is displayed by the GUI.
-   
-   
+
+
    [XX] is used in place of the actual reference
    Eg, the vector will contain: [XX], Jones et al. [XX], ...
-   
+
    User supplies :
    the key,
    the InfoMap of bibkeys info,
@@ -143,10 +143,10 @@ getNumericalStrings(string const & key,
 /**
    "Translates" the available Citation Styles into strings for this key.
    The returned string is displayed by the GUI.
-   
+
    Eg, the vector will contain:
    Jones et al. (1990), (Jones et al. 1990), Jones et al. 1990, ...
-   
+
    User supplies :
    the key,
    the InfoMap of bibkeys info,

@@ -4,7 +4,7 @@
  * Licence details can be found in the file COPYING.
  *
  * \author Allan Rae
- * \author Angus Leeming 
+ * \author Angus Leeming
  *
  * Full author contact details are available in file CREDITS
  */
@@ -153,7 +153,7 @@ void FormPrint::update()
 	// hmmm... maybe a bit weird but maybe not
 	// we might just be remembering the last time this was printed.
 	all_pages_.set(pp.all_pages);
-	
+
 	string const from = ( pp.from_page ? tostr(pp.from_page) : string() );
 	string const to   = ( pp.to_page   ? tostr(pp.to_page)   : string() );
 	fl_set_input(dialog_->input_from_page, from.c_str());

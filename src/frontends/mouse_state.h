@@ -6,7 +6,7 @@
  * GUII representation of mouse presses and
  * mouse button states
  *
- * \author John Levon 
+ * \author John Levon
  *
  * Full author contact details are available in file CREDITS
  */
@@ -30,7 +30,7 @@ inline void operator|=(state & s1, state s2)
 {
 	s1 = static_cast<state>(s1 | s2);
 }
- 
+
 } // namespace mouse_button
 
 #endif // MOUSE_STATE_H

@@ -6,7 +6,7 @@
  *
  * \author Alejandro Aguilar Sierra
  * \author John Levon
- * \author Angus Leeming 
+ * \author Angus Leeming
  *
  * Full author contact details are available in file CREDITS
  */
@@ -22,7 +22,7 @@
 #include <boost/shared_ptr.hpp>
 #include <vector>
 
-struct BitmapStore 
+struct BitmapStore
 {
 	BitmapStore(int nt_in, int nx_in, int ny_in, int bw_in, int bh_in,
 		    unsigned char const * data_in, bool vert_in)
@@ -40,7 +40,7 @@ struct BitmapStore
 };
 
 
-struct FD_maths_bitmap 
+struct FD_maths_bitmap
 {
 	~FD_maths_bitmap();
 	FL_FORM * form;

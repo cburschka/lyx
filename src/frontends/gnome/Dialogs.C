@@ -40,7 +40,7 @@ bool Dialogs::tooltipsEnabled()
 Dialogs::Dialogs(LyXView * lv)
 {
 
-	add(new GUI<ControlError,GErrorDialog, 
+	add(new GUI<ControlError,GErrorDialog,
 	    OkCancelPolicy, gnomeBC>(*lv, *this));
 	add(new GUI<ControlERT, GERT,
 	    NoRepeatedApplyReadOnlyPolicy, gnomeBC>(*lv, *this));

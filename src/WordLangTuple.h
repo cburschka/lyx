@@ -8,9 +8,9 @@
 
 #ifndef WORD_LANG_TUPLE_H
 #define WORD_LANG_TUPLE_H
- 
-#include "LString.h" 
- 
+
+#include "LString.h"
+
 /**
  * A word and its given language code ("en_US").
  * This is used for spellchecking.
@@ -18,11 +18,11 @@
 class WordLangTuple {
 public:
 	WordLangTuple() {}
- 
+
 	WordLangTuple(string const & w, string const & c)
 		: word_(w), code_(c)
 	{}
- 
+
 	/// return the word
 	string const & word() const {
 		return word_;
@@ -39,5 +39,5 @@ private:
 	/// language code of word
 	string code_;
 };
- 
+
 #endif // WORD_LANG_TUPLE_H

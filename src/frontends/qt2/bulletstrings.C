@@ -1,5 +1,3 @@
-
-
 #include "bulletstrings.h"
 
 char const * bullets_standard[36] = {

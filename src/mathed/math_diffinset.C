@@ -1,5 +1,5 @@
 #ifdef __GNUG__
-#pragma implementation 
+#pragma implementation
 #endif
 
 #include "math_diffinset.h"

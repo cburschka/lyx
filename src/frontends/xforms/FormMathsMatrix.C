@@ -98,7 +98,7 @@ void FormMathsMatrix::apply()
 	controller().dispatchFunc(LFUN_INSERT_MATRIX, STRCONV(os.str()));
 }
 
-			      
+
 void FormMathsMatrix::update()
 {
 	bc().valid();

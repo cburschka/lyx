@@ -33,7 +33,7 @@ GnomeBase::~GnomeBase()
 {}
 
 
-void GnomeBase::loadXML() 
+void GnomeBase::loadXML()
 {
 #ifdef WITH_WARNINGS
 #warning Change this before declaring it production code! (be 20010325)
@@ -75,22 +75,22 @@ void GnomeBase::OKClicked()
 	OKButton();
 }
 
-void GnomeBase::CancelClicked() 
-{ 
+void GnomeBase::CancelClicked()
+{
 	lyxerr[Debug::GUI] << "GnomeBase::CancelClicked()\n";
-	CancelButton(); 
+	CancelButton();
 }
 
-void GnomeBase::ApplyClicked() 
-{ 
+void GnomeBase::ApplyClicked()
+{
 	lyxerr[Debug::GUI] << "GnomeBase::ApplyClicked()\n";
-	ApplyButton(); 
+	ApplyButton();
 }
 
-void GnomeBase::RestoreClicked() 
-{ 
+void GnomeBase::RestoreClicked()
+{
 	lyxerr[Debug::GUI] << "GnomeBase::RestoreClicked()\n";
-	RestoreButton(); 
+	RestoreButton();
 }
 
 void GnomeBase::InputChanged()

@@ -6,7 +6,7 @@
  * Licence details can be found in the file COPYING.
  *
  * \author Allan Rae
- * \author Angus Leeming 
+ * \author Angus Leeming
  *
  * Full author contact details are available in file CREDITS
  */
@@ -28,7 +28,7 @@
 #include <utility> // pair
 
 class ControlPrefs;
- 
+
 class Combox;
 class Dialogs;
 class LyXView;
@@ -72,7 +72,7 @@ private:
 	virtual void build();
 	/// control which feedback message is output
 	string const getFeedback(FL_OBJECT *);
- 
+
 	/// Converters tabfolder
 	boost::scoped_ptr<FD_preferences_inner_tab> converters_tab_;
 	/// reLyX and other import/input stuff

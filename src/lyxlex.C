@@ -167,7 +167,7 @@ string const LyXLex::getLongString(string const & endtoken)
 
 		// We do a case independent comparison, like search_kw
 		// does.
-		if (compare_ascii_no_case(token, endtoken) == 0)	
+		if (compare_ascii_no_case(token, endtoken) == 0)
 			break;
 
 		string tmpstr = getString();
@@ -185,10 +185,10 @@ string const LyXLex::getLongString(string const & endtoken)
 		if (prefix.length() && prefixIs(tmpstr, prefix)) {
 			tmpstr.erase(0, prefix.length() - 1);
 		}
- 
+
 		str += ltrim(tmpstr, "\t") + '\n';
 	}
- 
+
 	if (!isOK()) {
 		printError("Long string not ended by `" + endtoken + '\'');
 	}

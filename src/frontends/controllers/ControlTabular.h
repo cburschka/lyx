@@ -31,7 +31,7 @@ public:
 
 	/// get the inset
 	InsetTabular * inset() const;
- 
+
 	/// get the contained tabular
 	LyXTabular * tabular() const;
 
@@ -40,16 +40,16 @@ public:
 
 	/// slot launching dialog to an existing inset.
 	void showInset(InsetTabular *);
- 
+
 	/// update inset
 	void updateInset(InsetTabular *);
- 
+
 	/// return true if units should default to metric
 	bool metric() const;
-	
+
 	/// return true if actual cell is multicolumn
 	bool isMulticolumnCell() const;
- 
+
 private:
 
 	/// we can't do this ...
@@ -72,7 +72,7 @@ private:
 	InsetTabular * inset_;
 	/// inset::hide connection.
 	boost::signals::connection ih_;
- 
+
 	/// is the dialog built ?
 	bool dialog_built_;
 };

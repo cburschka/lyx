@@ -1,6 +1,6 @@
 // -*- C++ -*-
 
-/** 
+/**
  *  \file formula.h
  *
  *  This file is part of LyX, the document processor.
@@ -24,7 +24,7 @@
 
 #include <boost/scoped_ptr.hpp>
 
-/// The main LyX math inset 
+/// The main LyX math inset
 class InsetFormula : public InsetFormulaBase {
 public:
 	///
