@@ -95,6 +95,7 @@ enum LyXRCTags {
 	RC_LASTFILES,
 	RC_AUTOREGIONDELETE,
 	RC_BIND,
+	RC_OVERRIDE_X_DEADKEYS,
 	RC_SERVERPIPE,
 	RC_INPUT,
 	RC_BINDFILE,
@@ -213,6 +214,7 @@ keyword_item lyxrcTags[] = {
         { "\\literate_extension", RC_LITERATE_EXTENSION },
 	{ "\\make_backup", RC_MAKE_BACKUP },
 	{ "\\num_lastfiles", RC_NUMLASTFILES },
+	{ "\\override_x_deadkeys", RC_OVERRIDE_X_DEADKEYS },
 	{ "\\pdf_mode", RC_PDF_MODE },
 	{ "\\pdf_to_ps_command", RC_PDF_TO_PS_COMMAND },
 	{ "\\pdflatex_command", RC_PDFLATEX_COMMAND },
@@ -344,6 +346,7 @@ void LyXRC::setDefaults() {
 	popup_font_name = "-*-helvetica-medium-r";
 	font_norm = "iso8859-1";
 	font_norm_menu = "";
+	override_x_deadkeys = true;
 	autosave = 300;
 	auto_region_delete = true;
 	ascii_linelen = 75;
@@ -383,9 +386,6 @@ void LyXRC::setDefaults() {
 	docbook_to_dvi_command="none";
 	docbook_to_html_command="none";
 	docbook_to_pdf_command="none";
-
-	//
-	defaultKeyBindings();
 }
 
 
@@ -885,6 +885,11 @@ int LyXRC::read(string const & filename)
 			}
 			break;
 		}
+		case RC_OVERRIDE_X_DEADKEYS:
+			if (lexrc.next())
+				override_x_deadkeys = lexrc.GetBool();
+			break;
+
 		case RC_SERVERPIPE:
 			if (lexrc.next())
 				lyxpipes = ExpandPath(lexrc.GetString());
@@ -1194,6 +1199,9 @@ void LyXRC::output(ostream & os) const
 		os << " " << font_sizes[LyXFont::SIZE_HUGE];
 		os << " " << font_sizes[LyXFont::SIZE_HUGER];
 		os << "\n";
+	case RC_OVERRIDE_X_DEADKEYS:
+		os << "\\override_x_deadkeys " 
+		   << override_x_deadkeys << "\n";
 	case RC_AUTOREGIONDELETE:
 		os << "\\auto_region_delete " << tostr(auto_region_delete)
 		   << "\n";
@@ -1376,75 +1384,6 @@ void LyXRC::output(ostream & os) const
 	os.flush();
 }
 
-
-/// define the default key bindings for LyX.
-void LyXRC::defaultKeyBindings()
-{
-	bindings["Right"] =   LFUN_RIGHT;
-	bindings["Left"] =    LFUN_LEFT;
-	bindings["Up"] =      LFUN_UP;
-	bindings["Down"] =    LFUN_DOWN;
-	
-	bindings["Tab"] =  LFUN_TAB;
-	
-	bindings["Home"] =    LFUN_HOME;
-	bindings["End"] =     LFUN_END;
-	bindings["Prior"] =   LFUN_PRIOR;
-	bindings["Next"] =    LFUN_NEXT;
-	
-	bindings["Return"] =  LFUN_BREAKPARAGRAPH;
-	bindings["~C-~S-~M-nobreakspace"] = LFUN_PROTECTEDSPACE;
-	
-	bindings["Delete"] =  LFUN_DELETE;
-	bindings["BackSpace"] =    LFUN_BACKSPACE;
-	// bindKeyings for transparent handling of deadkeys
-	// The keysyms are gotten from XFree86 X11R6
-	bindings["~C-~S-~M-dead_acute"] =           LFUN_ACUTE;
-	bindings["~C-~S-~M-dead_breve"] =           LFUN_BREVE;
-	bindings["~C-~S-~M-dead_caron"] =           LFUN_CARON;
-	bindings["~C-~S-~M-dead_cedilla"] =         LFUN_CEDILLA;
-	bindings["~C-~S-~M-dead_abovering"] =          LFUN_CIRCLE;
-	bindings["~C-~S-~M-dead_circumflex"] =      LFUN_CIRCUMFLEX;
-	bindings["~C-~S-~M-dead_abovedot"] =             LFUN_DOT;
-	bindings["~C-~S-~M-dead_grave"] =           LFUN_GRAVE;
-	bindings["~C-~S-~M-dead_doubleacute"] =     LFUN_HUNG_UMLAUT;
-	bindings["~C-~S-~M-dead_macron"] =          LFUN_MACRON;
-	// nothing with this name
-	// bindings["~C-~S-~M-dead_special_caron"] =   LFUN_SPECIAL_CARON;
-	bindings["~C-~S-~M-dead_tilde"] =           LFUN_TILDE;
-	bindings["~C-~S-~M-dead_diaeresis"] =       LFUN_UMLAUT;
-	// nothing with this name either...
-	//bindings["~C-~S-~M-dead_underbar"] =        LFUN_UNDERBAR;
-	bindings["~C-~S-~M-dead_belowdot"] =        LFUN_UNDERDOT;
-	bindings["~C-~S-~M-dead_tie"] =             LFUN_TIE;
-	bindings["~C-~S-~M-dead_ogonek"] =           LFUN_OGONEK;
-	
-	// bindings to utilize the use of the numeric keypad
-	// e.g. Num Lock set
-	bindings["KP_0"] =        LFUN_SELFINSERT;
-	bindings["KP_Decimal"] =  LFUN_SELFINSERT;
-	bindings["KP_Enter"] =    LFUN_SELFINSERT;
-	bindings["KP_1"] =        LFUN_SELFINSERT;
-	bindings["KP_2"] =        LFUN_SELFINSERT;
-	bindings["KP_3"] =        LFUN_SELFINSERT;
-	bindings["KP_4"] =        LFUN_SELFINSERT;
-	bindings["KP_5"] =        LFUN_SELFINSERT;
-	bindings["KP_6"] =        LFUN_SELFINSERT;
-	bindings["KP_Add"] =      LFUN_SELFINSERT;
-	bindings["KP_7"] =        LFUN_SELFINSERT;
-	bindings["KP_8"] =        LFUN_SELFINSERT;
-	bindings["KP_9"] =        LFUN_SELFINSERT;
-	bindings["KP_Divide"] =   LFUN_SELFINSERT;
-	bindings["KP_Multiply"] = LFUN_SELFINSERT;
-	bindings["KP_Subtract"] = LFUN_SELFINSERT;
-	
-	/* Most self-insert keys are handled in the 'default:' section of
-	 * WorkAreaKeyPress - so we don't have to define them all.
-	 * However keys explicit decleared as self-insert are
-	 * handled seperatly (LFUN_SELFINSERT.) Lgb. */
-	
-        bindings["C-Tab"] =  LFUN_TABINSERT;  // ale970515
-}
 
 // The global instance
 LyXRC lyxrc;

@@ -16,8 +16,6 @@
 #pragma interface
 #endif
 
-#include <map>
-
 #include "ToolbarDefaults.h"
 #include "bufferparams.h"
 
@@ -146,6 +144,8 @@ public:
 	bool use_scalable_fonts;
 	/// DPI of monitor
 	float dpi;
+	/// Whether lyx should handle deadkeys by itself
+	bool override_x_deadkeys;
 	///
 	string fontenc;
 	///
@@ -236,13 +236,6 @@ public:
 	string docbook_to_html_command;
 	///
 	string docbook_to_pdf_command;
-	///
-	typedef std::map<string, int> Bindings;
-	///
-	Bindings bindings;
-private:
-	///
-	void defaultKeyBindings();
 };
 
 extern LyXRC lyxrc;

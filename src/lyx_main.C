@@ -69,13 +69,8 @@ LyX::LyX(int * argc, char * argv[])
 
 	// Global bindings (this must be done as early as possible.) (Lgb)
 	toplevel_keymap = new kb_keymap;
+	defaultKeyBindings(toplevel_keymap);
 	
-	// Fill the toplevel_keymap with some defaults
-	for (LyXRC::Bindings::const_iterator cit = lyxrc.bindings.begin();
-	     cit != lyxrc.bindings.end(); ++cit) {
-		toplevel_keymap->bind((*cit).first.c_str(), (*cit).second);
-	}
-
 	// Make the GUI object, and let it take care of the
 	// command line arguments that concerns it.
 	lyxerr[Debug::INIT] << "Initializing LyXGUI..." << endl;
@@ -379,6 +374,12 @@ void LyX::init(int */*argc*/, char **argv, bool gui)
 	if (!lyxrc.hasBindFile)
 		lyxrc.ReadBindFile();
 
+
+	// Bind the X dead keys to the corresponding LyX functions if
+	// necessary. 
+	if (lyxrc.override_x_deadkeys)
+		deadKeyBindings(toplevel_keymap);
+
 	if (lyxerr.debugging(Debug::LYXRC)) {
 		lyxrc.print();
 	}
@@ -401,6 +402,81 @@ void LyX::init(int */*argc*/, char **argv, bool gui)
 	// first, so move it for now.
 	// lyxserver = new LyXServer;
 }
+
+// These are the default bindings known to LyX
+void LyX::defaultKeyBindings(kb_keymap  * kbmap)
+{
+	kbmap->bind("Right", LFUN_RIGHT);
+	kbmap->bind("Left", LFUN_LEFT);
+	kbmap->bind("Up", LFUN_UP);
+	kbmap->bind("Down", LFUN_DOWN);
+	
+	kbmap->bind("Tab", LFUN_TAB);
+	
+	kbmap->bind("Home", LFUN_HOME);
+	kbmap->bind("End", LFUN_END);
+	kbmap->bind("Prior", LFUN_PRIOR);
+	kbmap->bind("Next", LFUN_NEXT);
+	
+	kbmap->bind("Return", LFUN_BREAKPARAGRAPH);
+	kbmap->bind("~C-~S-~M-nobreakspace", LFUN_PROTECTEDSPACE);
+	
+	kbmap->bind("Delete", LFUN_DELETE);
+	kbmap->bind("BackSpace", LFUN_BACKSPACE);
+	
+	// kbmap->bindings to enable the use of the numeric keypad
+	// e.g. Num Lock set
+	kbmap->bind("KP_0", LFUN_SELFINSERT);
+	kbmap->bind("KP_Decimal", LFUN_SELFINSERT);
+	kbmap->bind("KP_Enter", LFUN_SELFINSERT);
+	kbmap->bind("KP_1", LFUN_SELFINSERT);
+	kbmap->bind("KP_2", LFUN_SELFINSERT);
+	kbmap->bind("KP_3", LFUN_SELFINSERT);
+	kbmap->bind("KP_4", LFUN_SELFINSERT);
+	kbmap->bind("KP_5", LFUN_SELFINSERT);
+	kbmap->bind("KP_6", LFUN_SELFINSERT);
+	kbmap->bind("KP_Add", LFUN_SELFINSERT);
+	kbmap->bind("KP_7", LFUN_SELFINSERT);
+	kbmap->bind("KP_8", LFUN_SELFINSERT);
+	kbmap->bind("KP_9", LFUN_SELFINSERT);
+	kbmap->bind("KP_Divide", LFUN_SELFINSERT);
+	kbmap->bind("KP_Multiply", LFUN_SELFINSERT);
+	kbmap->bind("KP_Subtract", LFUN_SELFINSERT);
+	
+	/* Most self-insert keys are handled in the 'default:' section of
+	 * WorkAreaKeyPress - so we don't have to define them all.
+	 * However keys explicit decleared as self-insert are
+	 * handled seperatly (LFUN_SELFINSERT.) Lgb. */
+	
+        kbmap->bind("C-Tab", LFUN_TABINSERT);  // ale970515
+}
+
+// LyX can optionally take over the handling of deadkeys
+void LyX::deadKeyBindings(kb_keymap * kbmap)
+{
+	// bindKeyings for transparent handling of deadkeys
+	// The keysyms are gotten from XFree86 X11R6
+	kbmap->bind("~C-~S-~M-dead_acute", LFUN_ACUTE);
+	kbmap->bind("~C-~S-~M-dead_breve", LFUN_BREVE);
+	kbmap->bind("~C-~S-~M-dead_caron", LFUN_CARON);
+	kbmap->bind("~C-~S-~M-dead_cedilla", LFUN_CEDILLA);
+	kbmap->bind("~C-~S-~M-dead_abovering", LFUN_CIRCLE);
+	kbmap->bind("~C-~S-~M-dead_circumflex", LFUN_CIRCUMFLEX);
+	kbmap->bind("~C-~S-~M-dead_abovedot", LFUN_DOT);
+	kbmap->bind("~C-~S-~M-dead_grave", LFUN_GRAVE);
+	kbmap->bind("~C-~S-~M-dead_doubleacute", LFUN_HUNG_UMLAUT);
+	kbmap->bind("~C-~S-~M-dead_macron", LFUN_MACRON);
+	// nothing with this name
+	// kbmap->bind("~C-~S-~M-dead_special_caron", LFUN_SPECIAL_CARON);
+	kbmap->bind("~C-~S-~M-dead_tilde", LFUN_TILDE);
+	kbmap->bind("~C-~S-~M-dead_diaeresis", LFUN_UMLAUT);
+	// nothing with this name either...
+	//kbmap->bind("~C-~S-~M-dead_underbar", LFUN_UNDERBAR);
+	kbmap->bind("~C-~S-~M-dead_belowdot", LFUN_UNDERDOT);
+	kbmap->bind("~C-~S-~M-dead_tie", LFUN_TIE);
+	kbmap->bind("~C-~S-~M-dead_ogonek", LFUN_OGONEK);
+}
+
 
 
 // This one is not allowed to use anything on the main form, since that

@@ -23,7 +23,7 @@ class LyXGUI;
 class LyXRC;
 class LastFiles;
 class Buffer;
-
+class kb_keymap;
 
 extern string system_lyxdir;
 extern string user_lyxdir;
@@ -75,6 +75,10 @@ private:
 	void runtime();
 	///
 	void init(int * argc, char * argv[], bool);
+	///
+	void defaultKeyBindings(kb_keymap * kbmap);
+	///
+	void deadKeyBindings(kb_keymap * kbmap);
 	///
 	void queryUserLyXDir();
 	///

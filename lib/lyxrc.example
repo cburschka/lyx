@@ -51,6 +51,13 @@
 # to this instead:
 #\bind_file mine_is_best
 
+# By default, LyX takes over the handling of the dead keys (or accent
+# keys) that may be defined for your keyboard. While this allows you
+# to enter characters that would not be normally available, some
+# people dislike the different behaviour. You can use raw dead keys by
+# just uncommenting the next line
+#\override_x_deadkeys false
+
 # Tip: Use "lyx -dbg 4" to survey how LyX interprets your keybindings.
 
 

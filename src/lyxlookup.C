@@ -23,6 +23,7 @@
 #include <clocale>
 
 #include "debug.h"
+#include "lyxrc.h"
 
 using std::endl;
 
@@ -79,63 +80,69 @@ bool isDeadEvent(XEvent * event,
 	XLookupString(&event->xkey, buffer_return,
 		      bytes_buffer, keysym_return,
 		      0);
+
+	// somehow it is necessary to do the lookup. Why? (JMarc)
+	if (!lyxrc.override_x_deadkeys)
+		return false;
+
 	// Can this be done safely in any other way?
 	// This is all the dead keys I know of in X11R6.1
-	if (false
+	switch (*keysym_return) {
 #ifdef XK_dead_grave
-	    || *keysym_return == XK_dead_grave
+	case XK_dead_grave:
 #endif
 #ifdef XK_dead_acute
-	    || *keysym_return == XK_dead_acute
+	case XK_dead_acute:
 #endif
 #ifdef XK_dead_circumflex
-	    || *keysym_return == XK_dead_circumflex
+	case XK_dead_circumflex:
 #endif
 #ifdef XK_dead_tilde
-	    || *keysym_return == XK_dead_tilde
+	case XK_dead_tilde:
 #endif
 #ifdef XK_dead_macron
-	    || *keysym_return == XK_dead_macron
+	case XK_dead_macron:
 #endif
 #ifdef XK_dead_breve
-	    || *keysym_return == XK_dead_breve
+	case XK_dead_breve:
 #endif
 #ifdef XK_dead_abovedot
-	    || *keysym_return == XK_dead_abovedot
+	case XK_dead_abovedot:
 #endif
 #ifdef XK_dead_diaeresis
-	    || *keysym_return == XK_dead_diaeresis
+	case XK_dead_diaeresis:
 #endif
 #ifdef XK_dead_abovering
-	    || *keysym_return == XK_dead_abovering
+	case XK_dead_abovering:
 #endif
 #ifdef XK_dead_doubleacute
-	    || *keysym_return == XK_dead_doubleacute
+	case XK_dead_doubleacute:
 #endif
 #ifdef XK_dead_caron
-	    || *keysym_return == XK_dead_caron
+	case XK_dead_caron:
 #endif
 #ifdef XK_dead_cedilla
-	    || *keysym_return == XK_dead_cedilla
+	case XK_dead_cedilla:
 #endif
 #ifdef XK_dead_ogonek
-	    || *keysym_return == XK_dead_ogonek
+	case XK_dead_ogonek:
 #endif
 #ifdef XK_dead_iota
-	    || *keysym_return == XK_dead_iota
+	case XK_dead_iota:
 #endif
 #ifdef XK_dead_voiced_sound
-	    || *keysym_return == XK_dead_voiced_sound
+	case XK_dead_voiced_sound:
 #endif
 #ifdef XK_dead_semivoiced_sound
-	    || *keysym_return == XK_dead_semivoiced_sound
+	case XK_dead_semivoiced_sound:
 #endif
 #ifdef XK_dead_belowdot
-	    || *keysym_return == XK_dead_belowdot
+	case XK_dead_belowdot:
 #endif
-	    )
 		return true;
-	return false;
+	default:
+		return false;
+	}
 }
 
 
@@ -147,7 +154,9 @@ int LyXLookupString(XEvent * event,
 	int result = 0;
 	if (xic) {
 		if (isDeadEvent(event, buffer_return, bytes_buffer,
-				 keysym_return)) {
+				keysym_return)) {
+			lyxerr[Debug::KEY]  
+				<< "LyXLookupString: found DeadEvent" << endl;
 			return 0;
 		}
 		if (XFilterEvent (event, None)) {

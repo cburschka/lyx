@@ -1,3 +1,20 @@
+2000-05-10  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/lyxlookup.C (isDeadEvent): use a switch statement instead of
+	a chain of "if". Return false when deadkeys are not handled.
+	
+	* src/lyx_main.C (LyX): adapted the code for default bindings.
+
+	* src/kbmap.C (defaultKeyBindings): new method. Performs the default
+	bindings for basic functionality (except deadkeys).
+	(deadKeyBindings): new method. Performs the bindings of deadkeys.
+
+	* src/lyxrc.C (defaultKeyBindings): moved to lyx_main.C 
+	several methods: handle override_x_deadkeys.
+
+	* src/lyxrc.h: remove the "bindings" map, which did not make much
+	sense anyway. New variable override_x_deadkeys, defaulting to "true".
+	
 2000-05-09  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/lyxfont.C (stateText): use a saner method to determine
