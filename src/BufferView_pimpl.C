@@ -970,16 +970,19 @@ void BufferView::Pimpl::update()
 	{
 		LyXText::text_status st = bv_->text->status();
 		screen_->update(bv_->text, bv_);
+		bool fitc = false;
 		while(bv_->text->status() == LyXText::CHANGED_IN_DRAW) {
 			if (bv_->text->fullRebreak(bv_)) {
 				st = LyXText::NEED_MORE_REFRESH;
 				bv_->text->setCursor(bv_, bv_->text->cursor.par(),
 									 bv_->text->cursor.pos());
-				fitCursor();
+				fitc = true;
 			}
 			bv_->text->status(bv_, st);
 			screen_->update(bv_->text, bv_);
 		}
+		if (fitc)
+			fitCursor();
 	}
 }
 

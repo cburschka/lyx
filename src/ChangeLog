@@ -1,3 +1,13 @@
+2001-08-03  Juergen Vigna  <jug@sad.it>
+
+	* BufferView_pimpl.C (update): do the fitCursor only at the end!
+
+	* screen.C (drawFromTo): don't call fitcursor here and do the loop
+	only if status not is already CHANGED_IN_DRAW (second level).
+
+	* text.C (draw): don't set the need_break_row when inside an
+	InsetText LyXText.
+
 2001-08-02  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* buffer.C (parseSingleLyXformat2Token): handle more latex
