@@ -1185,7 +1185,7 @@ bool FormPreferences::Converters::Input()
 string const FormPreferences::Converters::GetFrom() const
 {
 	int const i = fl_get_choice(dialog_->choice_from);
-	if (i > 0)
+	if (i > 0 && i <= local_formats.size())
 		return local_formats.Get(i-1).name();
 	else {
 		lyxerr << "FormPreferences::Converters::GetFrom: No choice!"
@@ -1198,7 +1198,7 @@ string const FormPreferences::Converters::GetFrom() const
 string const FormPreferences::Converters::GetTo() const
 {
 	int const i = fl_get_choice(dialog_->choice_to);
-	if (i > 0)
+	if (i > 0 && i <= local_formats.size())
 		return local_formats.Get(i-1).name();
 	else {
 		lyxerr << "FormPreferences::Converters::GetTo: No choice!"
