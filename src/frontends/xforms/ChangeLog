@@ -38,6 +38,12 @@
 
 2003-02-11  Angus Leeming  <leeming@lyx.org>
 
+	* FormRef.C:
+	* forms/form_ref.fd: tweaks to ensure that the Ok, Apply buttons
+	behave as expected.
+
+2003-02-11  Angus Leeming  <leeming@lyx.org>
+
 	* xforms_helpers.[Ch] (fl_getmcolor): new function; a wrapper for the
 	xforms routine that accepts unsigned ints.
 
