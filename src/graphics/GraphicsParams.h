@@ -26,7 +26,8 @@ namespace graphics {
 /** Parse a string of the form "200pt 500pt 300mm 5in" into a
  *  usable bounding box.
  */
-struct BoundingBox {
+class BoundingBox {
+public:
 	///
 	BoundingBox();
 	///
@@ -47,8 +48,9 @@ bool operator!=(BoundingBox const &, BoundingBox const &);
 std::ostream & operator<<(std::ostream &, BoundingBox const &);
 
 
-struct Params
+class Params
 {
+public:
 	Params();
 
 	DisplayType display;

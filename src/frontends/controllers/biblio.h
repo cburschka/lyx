@@ -103,7 +103,8 @@ searchKeys(InfoMap const & map,
 	   bool caseSensitive=false);
 
 
-struct CitationStyle {
+class CitationStyle {
+public:
 	///
 	CitationStyle(CiteStyle s = CITE, bool f = false, bool force = false)
 		: style(s), full(f), forceUCase(force) {}

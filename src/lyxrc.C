@@ -1162,7 +1162,8 @@ void LyXRC::print() const
 }
 
 
-struct SameMover {
+class SameMover {
+public:
 	typedef std::pair<std::string, SpecialisedMover> Data;
 
 	SameMover(Data const & comparison)

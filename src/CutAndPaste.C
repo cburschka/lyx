@@ -66,7 +66,8 @@ typedef limited_stack<pair<ParagraphList, textclass_type> > CutStack;
 
 CutStack theCuts(10);
 
-struct resetOwnerAndChanges : public std::unary_function<Paragraph, void> {
+class resetOwnerAndChanges : public std::unary_function<Paragraph, void> {
+public:
 	void operator()(Paragraph & p) const {
 		p.cleanChanges();
 		p.setInsetOwner(0);

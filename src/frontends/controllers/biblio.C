@@ -269,8 +269,9 @@ string const getYear(InfoMap const & map, string const & key)
 namespace {
 
 // A functor for use with std::sort, leading to case insensitive sorting
-struct compareNoCase: public std::binary_function<string, string, bool>
+class compareNoCase: public std::binary_function<string, string, bool>
 {
+public:
 	bool operator()(string const & s1, string const & s2) const {
 		return compare_ascii_no_case(s1, s2) < 0;
 	}
@@ -384,8 +385,9 @@ string const escape_special_chars(string const & expr)
 
 // A functor for use with std::find_if, used to ascertain whether a
 // data entry matches the required regex_
-struct RegexMatch : public std::unary_function<string, bool>
+class RegexMatch : public std::unary_function<string, bool>
 {
+public:
 	// re and icase are used to construct an instance of boost::RegEx.
 	// if icase is true, then matching is insensitive to case
 	RegexMatch(InfoMap const & m, string const & re, bool icase)

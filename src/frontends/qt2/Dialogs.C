@@ -115,7 +115,8 @@ char const * const dialognames[] = {
 char const * const * const end_dialognames =
 	dialognames + (sizeof(dialognames) / sizeof(char *));
 
-struct cmpCStr {
+class cmpCStr {
+public:
 	cmpCStr(char const * name) : name_(name) {}
 	bool operator()(char const * other) {
 		return strcmp(other, name_) == 0;

@@ -26,7 +26,8 @@
 class LyXLayout;
 
 
-struct Paragraph::Pimpl {
+class Paragraph::Pimpl {
+public:
 	///
 	Pimpl(Paragraph * owner);
 	/// "Copy constructor"
@@ -90,7 +91,8 @@ struct Paragraph::Pimpl {
 	    and font_i covers the chars in positions pos_{i-1}+1,...,pos_i
 	    (font_1 covers the chars 0,...,pos_1) (Dekel)
 	*/
-	struct FontTable  {
+	class FontTable  {
+	public:
 		///
 		FontTable(lyx::pos_type p, LyXFont const & f)
 			: pos_(p), font_(f)
@@ -133,11 +135,11 @@ struct Paragraph::Pimpl {
 #endif
 	};
 	///
-	friend struct matchFT;
+	friend class matchFT;
 	///
-	struct matchFT {
+	class matchFT {
+	public:
 		/// used by lower_bound and upper_bound
-		inline
 		int operator()(FontTable const & a, FontTable const & b) const {
 			return a.pos() < b.pos();
 		}

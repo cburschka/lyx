@@ -23,7 +23,8 @@ class FloatList;
 
 
 ///
-struct CharStyle {
+class CharStyle {
+public:
 	std::string name;
 	std::string latextype;
 	std::string latexname;

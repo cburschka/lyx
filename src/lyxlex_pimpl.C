@@ -39,8 +39,9 @@ using std::ostream;
 
 namespace {
 
-struct compare_tags
+class compare_tags
 	: public std::binary_function<keyword_item, keyword_item, bool> {
+public:
 	// used by lower_bound, sort and sorted
 	bool operator()(keyword_item const & a, keyword_item const & b) const
 	{

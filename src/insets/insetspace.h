@@ -18,7 +18,7 @@
 
 #include "inset.h"
 
-struct LaTeXFeatures;
+class LaTeXFeatures;
 
 ///  Used to insert different kinds of spaces
 class InsetSpace : public InsetOld {

@@ -22,7 +22,8 @@
  *
  * Negative values are allowed.
  */
-struct Box {
+class Box {
+public:
 	int x1;
 	int x2;
 	int y1;

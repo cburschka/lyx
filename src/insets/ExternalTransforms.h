@@ -327,8 +327,9 @@ typedef boost::function<TransformCommand::ptr_type(RotationData)>
 	RotationCommandFactory;
 
 
-struct TransformStore
+class TransformStore
 {
+public:
 	TransformStore() {}
 
 	/** Stores \c factory and a reminder of what \c data this \c factory

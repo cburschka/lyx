@@ -92,7 +92,8 @@ private:
 
 
 /// Store info on a currently executing, forked process.
-struct InProgress {
+class InProgress {
+public:
 	///
 	InProgress() : pid(0) {}
 	///
@@ -122,7 +123,8 @@ typedef InProgressProcesses::value_type InProgressProcess;
 namespace lyx {
 namespace graphics {
 
-struct PreviewLoader::Impl : public boost::signals::trackable {
+class PreviewLoader::Impl : public boost::signals::trackable {
+public:
 	///
 	Impl(PreviewLoader & p, Buffer const & b);
 	/// Stop any InProgress items still executing.
@@ -253,7 +255,8 @@ Buffer const & PreviewLoader::buffer() const
 
 namespace {
 
-struct IncrementedFileName {
+class IncrementedFileName {
+public:
 	IncrementedFileName(string const & to_format,
 			    string const & filename_base)
 		: to_format_(to_format), base_(filename_base), counter_(1)
@@ -407,7 +410,8 @@ void PreviewLoader::Impl::add(string const & latex_snippet)
 
 namespace {
 
-struct EraseSnippet {
+class EraseSnippet {
+public:
 	EraseSnippet(string const & s) : snippet_(s) {}
 	void operator()(InProgressProcess & process)
 	{

@@ -44,12 +44,13 @@ The idea is to store the contents of 'interesting' paragraphs in some
 structure ('Undo') _before_ it is changed in some edit operation.
 Obviously, the stored ranged should be as small as possible. However, it
 there is a lower limit: The StableDocIterator pointing stored in the undo
-struct must be valid after the changes, too, as it will used as a pointer
+class must be valid after the changes, too, as it will used as a pointer
 where to insert the stored bits when performining undo.
 
 */
 
-struct Undo {
+class Undo {
+public:
 	/// This is used to combine consecutive undo recordings of the same kind.
 	enum undo_kind {
 		/**

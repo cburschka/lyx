@@ -17,7 +17,8 @@
 #include "lyxlength.h"
 
 
-struct InsetWrapParams {
+class InsetWrapParams {
+public:
 	///
 	void write(std::ostream &) const;
 	///

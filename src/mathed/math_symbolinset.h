@@ -14,7 +14,7 @@
 
 #include "math_inset.h"
 
-struct latexkeys;
+class latexkeys;
 
 
 /** "normal" symbols that don't take limits and don't grow in displayed

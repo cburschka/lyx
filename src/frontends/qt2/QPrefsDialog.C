@@ -485,7 +485,8 @@ void QPrefsDialog::updateCopiers()
 
 namespace {
 
-struct SamePrettyName {
+class SamePrettyName {
+public:
 	SamePrettyName(string const & n) : pretty_name_(n) {}
 
 	bool operator()(::Format const & fmt) const {

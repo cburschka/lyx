@@ -23,16 +23,17 @@
 
 
 /** No two InsetExternalParams variables can have the same temporary file.
- *  This struct has copy-semantics but the copy constructor
+ *  This class has copy-semantics but the copy constructor
  *  and assignment operator simply call the default constructor.
- *  Use of this struct enables us to use the compiler-generated
+ *  Use of this class enables us to use the compiler-generated
  *  copy constructor and assignment operator for the
- *  InsetExternalParams struct.
+ *  InsetExternalParams class.
  */
 namespace lyx {
 namespace external {
 
-struct TempName {
+class TempName {
+public:
 	TempName();
 	TempName(TempName const &);
 	~TempName();
@@ -61,7 +62,8 @@ Translator<DisplayType, std::string> const & displayTranslator();
 
 
 /// hold parameters settable from the GUI
-struct InsetExternalParams {
+class InsetExternalParams {
+public:
 	InsetExternalParams();
 
 	void write(Buffer const &, std::ostream &) const;

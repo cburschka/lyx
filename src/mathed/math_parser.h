@@ -23,7 +23,8 @@ class LyXLex;
 
 
 ///
-struct latexkeys {
+class latexkeys {
+public:
 	/// name of the macro or primitive
 	std::string name;
 	/// name of a inset that handles that macro

@@ -17,7 +17,8 @@
 #include "toc.h"
 
 
-struct InsetFloatParams {
+class InsetFloatParams {
+public:
 	///
 	InsetFloatParams() : wide(false), sideways(false) {}
 	///

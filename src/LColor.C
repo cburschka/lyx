@@ -42,9 +42,11 @@ struct ColorEntry {
 
 }
 
-struct LColor::Pimpl {
+class LColor::Pimpl {
+public:
 	///
-	struct information {
+	class information {
+	public:
 		/// the name as it appears in the GUI
 		string guiname;
 		/// the name used in LaTeX

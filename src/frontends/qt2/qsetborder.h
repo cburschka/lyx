@@ -63,7 +63,8 @@ private:
 	void drawTop(bool);
 	void drawBottom(bool);
 
-	struct Border {
+	class Border {
+	public:
 		Border() : set(true), enabled(true) {}
 		bool set;
 		bool enabled;

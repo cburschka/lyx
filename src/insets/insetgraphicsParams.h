@@ -27,9 +27,10 @@ namespace graphics {
 }
 
 
-/// This struct holds all the parameters needed by insetGraphics.
-struct InsetGraphicsParams
+/// This class holds all the parameters needed by insetGraphics.
+class InsetGraphicsParams
 {
+public:
 	/// Image filename.
 	lyx::support::FileName filename;
 	/// Scaling the Screen inside Lyx

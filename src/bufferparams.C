@@ -278,8 +278,9 @@ SpaceTranslator const & spacetranslator()
 }
 
 
-struct BufferParams::Impl
+class BufferParams::Impl
 {
+public:
 	Impl();
 
 	AuthorList authorlist;

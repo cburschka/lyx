@@ -45,7 +45,8 @@ public:
 };
 
 
-struct ExportedFile {
+class ExportedFile {
+public:
 	ExportedFile(std::string const &, std::string const &);
 	/// absolute name of the source file
 	std::string sourceName;

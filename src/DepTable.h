@@ -46,7 +46,8 @@ public:
 	void remove_file(std::string const &);
 private:
 	///
-	struct dep_info {
+	class dep_info {
+	public:
 		/// Previously calculated CRC value
 		unsigned long crc_prev;
 		/// Current CRC value - only re-computed if mtime has changed.

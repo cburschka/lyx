@@ -27,7 +27,8 @@ using std::string;
 namespace lyx {
 namespace support {
 
-struct FileMonitor::Impl : public boost::signals::trackable {
+class FileMonitor::Impl : public boost::signals::trackable {
+public:
 
 	///
 	Impl(string const & file_with_path, int interval);

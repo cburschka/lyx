@@ -34,7 +34,8 @@ namespace graphics {
  */
 typedef std::map<string, Cache::ItemPtr> CacheType;
 
-struct Cache::Impl {
+class Cache::Impl {
+public:
 	///
 	CacheType cache;
 };

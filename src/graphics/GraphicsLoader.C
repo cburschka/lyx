@@ -27,6 +27,7 @@ namespace lyx {
 namespace graphics {
 
 struct Loader::Impl : boost::signals::trackable {
+public:
 	///
 	Impl();
 	///

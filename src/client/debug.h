@@ -16,10 +16,11 @@
 #include "support/debugstream.h"
 
 /** Ideally this should have been a namespace, but since we try to be
-    compilable on older C++ compilators too, we use a struct instead.
+    compilable on older C++ compilators too, we use a class instead.
     This is all the different debug levels that we have.
 */
-struct lyx_debug_trait {
+class lyx_debug_trait {
+public:
 	///
 	enum type {
 		///

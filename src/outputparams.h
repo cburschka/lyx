@@ -21,7 +21,8 @@
 class ExportData;
 
 
-struct OutputParams {
+class OutputParams {
+public:
 	//
 	enum FLAVOR {
 		LATEX,

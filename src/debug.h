@@ -19,7 +19,8 @@
  *  compilable on older C++ compilators too, we use a struct instead.
  *  This is all the different debug levels that we have.
  */
-struct lyx_debug_trait {
+class lyx_debug_trait {
+public:
 	///
 	enum type {
 		///

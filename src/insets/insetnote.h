@@ -15,7 +15,8 @@
 #include "insetcollapsable.h"
 
 
-struct InsetNoteParams {
+class InsetNoteParams {
+public:
 	enum Type {
 		Note,
 		Comment,

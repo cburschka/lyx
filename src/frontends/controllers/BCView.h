@@ -35,7 +35,8 @@ class ButtonPolicy;
  *  make a logical whole. E.g., an input and a choice widget that together
  *  are used to set a LyXLength can be interrogated together.
  */
-struct CheckedWidget {
+class CheckedWidget {
+public:
 	///
 	virtual ~CheckedWidget();
 

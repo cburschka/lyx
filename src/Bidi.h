@@ -24,7 +24,8 @@ class LyXFont;
 
 
 /// bidi stuff
-struct  Bidi {
+class Bidi {
+public:
 	///
 	bool isBoundary(Buffer const &, Paragraph const & par,
 			lyx::pos_type pos) const;

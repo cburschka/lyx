@@ -29,7 +29,8 @@ namespace lyx {
 namespace toc {
 
 ///
-struct TocItem {
+class TocItem {
+public:
 	TocItem(int par_id, int d, std::string const & s)
 		: id_(par_id), depth(d), str(s) {}
 	///

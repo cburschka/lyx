@@ -56,7 +56,8 @@ public:
 
 private:
 	/// hold info about a particular font
-	struct font_info {
+	class font_info {
+	public:
 		font_info(LyXFont const & f);
 
 		/// the font instance

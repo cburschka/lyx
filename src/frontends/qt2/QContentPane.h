@@ -27,7 +27,8 @@
 class QWorkArea;
 
 /// for emulating triple click
-struct double_click {
+class double_click {
+public:
 	int x;
 	int y;
 	Qt::ButtonState state;
@@ -53,10 +54,11 @@ struct double_click {
  *  of the work area. In this way, we'll be able to continue scrolling
  *  (and selecting) the text.
  *
- *  This struct stores all the parameters needed to make this happen.
+ *  This class stores all the parameters needed to make this happen.
  */
-struct SyntheticMouseEvent
+class SyntheticMouseEvent
 {
+public:
 	SyntheticMouseEvent();
 
 	FuncRequest cmd;

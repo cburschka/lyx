@@ -35,7 +35,8 @@ struct Keyexc {
 typedef std::list<Keyexc> KmodException;
 
 ///
-struct KmodInfo {
+class KmodInfo {
+public:
 	///
 	std::string data;
 	///

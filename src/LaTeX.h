@@ -28,7 +28,8 @@ class DepTable;
 class TeXErrors {
 private:
 	///
-	struct Error {
+	class Error {
+	public:
 		///
 		Error () : error_in_line(0) {}
 		///

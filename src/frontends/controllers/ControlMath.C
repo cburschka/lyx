@@ -293,7 +293,8 @@ bool operator<(XPMmap const & lhs, XPMmap const & rhs)
 }
 
 
-struct CompareKey : public std::unary_function<XPMmap, bool> {
+class CompareKey : public std::unary_function<XPMmap, bool> {
+public:
 	CompareKey(string const & name) : name_(name) {}
 	bool operator()(XPMmap const & other) const {
 		return other.key == name_;

@@ -19,7 +19,7 @@
 
 class Buffer;
 class Dimension;
-struct LaTeXFeatures;
+class LaTeXFeatures;
 class RenderMonitoredPreview;
 
 

@@ -15,7 +15,7 @@
 
 #include "insetcommand.h"
 
-struct LaTeXFeatures;
+class LaTeXFeatures;
 
 /** Used to insert index labels
   */

@@ -37,7 +37,8 @@ enum Styles {
 //
 // This is the part common to MetricsInfo and PainterInfo
 //
-struct MetricsBase {
+class MetricsBase {
+public:
 	///
 	MetricsBase();
 	///
@@ -60,7 +61,8 @@ struct MetricsBase {
 // This contains a MetricsBase and information that's only relevant during
 // the first phase of the two-phase draw
 //
-struct MetricsInfo {
+class MetricsInfo {
+public:
 	///
 	MetricsInfo();
 	///
@@ -75,7 +77,8 @@ struct MetricsInfo {
 // This contains a MetricsBase and information that's only relevant during
 // the second phase of the two-phase draw
 //
-struct PainterInfo {
+class PainterInfo {
+public:
 	///
 	PainterInfo(BufferView * bv, Painter & pain);
 	///
@@ -89,11 +92,11 @@ struct PainterInfo {
 	bool ltr_pos;
 };
 
-struct TextMetricsInfo {};
+class TextMetricsInfo {};
 
-
-struct ViewMetricsInfo
+class ViewMetricsInfo
 {
+public:
 	ViewMetricsInfo(lyx::pit_type p1, lyx::pit_type p2,
 			int y1, int y2) : p1(p1), p2(p2), y1(y1), y2(y2) {}
 	lyx::pit_type p1;
@@ -107,7 +110,8 @@ struct ViewMetricsInfo
 // The original state gets restored when the Changer is destructed.
 
 template <class Struct, class Temp = Struct>
-struct Changer {
+class Changer {
+public:
 	///
 	Changer(Struct & orig) : orig_(orig) {}
 protected:
@@ -120,7 +124,8 @@ protected:
 
 
 // temporarily change some aspect of a font
-struct FontChanger : public Changer<LyXFont> {
+class FontChanger : public Changer<LyXFont> {
+public:
 	///
 	FontChanger(LyXFont & orig, char const * font);
 	///
@@ -129,7 +134,8 @@ struct FontChanger : public Changer<LyXFont> {
 
 
 // temporarily change a full font
-struct FontSetChanger : public Changer<MetricsBase> {
+class FontSetChanger : public Changer<MetricsBase> {
+public:
 	///
 	FontSetChanger(MetricsBase & mb, char const * font);
 	///
@@ -138,7 +144,8 @@ struct FontSetChanger : public Changer<MetricsBase> {
 
 
 // temporarily change the style
-struct StyleChanger : public Changer<MetricsBase> {
+class StyleChanger : public Changer<MetricsBase> {
+public:
 	///
 	StyleChanger(MetricsBase & mb, Styles style);
 	///
@@ -147,21 +154,24 @@ struct StyleChanger : public Changer<MetricsBase> {
 
 
 // temporarily change the style to script style
-struct ScriptChanger : public StyleChanger {
+class ScriptChanger : public StyleChanger {
+public:
 	///
 	ScriptChanger(MetricsBase & mb);
 };
 
 
 // temporarily change the style suitable for use in fractions
-struct FracChanger : public StyleChanger {
+class FracChanger : public StyleChanger {
+public:
 	///
 	FracChanger(MetricsBase & mb);
 };
 
 
 // temporarily change the style suitable for use in tabulars and arrays
-struct ArrayChanger : public StyleChanger {
+class ArrayChanger : public StyleChanger {
+public:
 	///
 	ArrayChanger(MetricsBase & mb);
 };
@@ -169,7 +179,8 @@ struct ArrayChanger : public StyleChanger {
 
 
 // temporarily change the shape of a font
-struct ShapeChanger : public Changer<LyXFont, LyXFont::FONT_SHAPE> {
+class ShapeChanger : public Changer<LyXFont, LyXFont::FONT_SHAPE> {
+public:
 	///
 	ShapeChanger(LyXFont & font, LyXFont::FONT_SHAPE shape);
 	///
@@ -178,8 +189,9 @@ struct ShapeChanger : public Changer<LyXFont, LyXFont::FONT_SHAPE> {
 
 
 // temporarily change the available text width
-struct WidthChanger : public Changer<MetricsBase>
+class WidthChanger : public Changer<MetricsBase>
 {
+public:
 	///
 	WidthChanger(MetricsBase & mb, int width);
 	///
@@ -188,7 +200,8 @@ struct WidthChanger : public Changer<MetricsBase>
 
 
 // temporarily change the used color
-struct ColorChanger : public Changer<LyXFont, std::string> {
+class ColorChanger : public Changer<LyXFont, std::string> {
+public:
 	///
 	ColorChanger(LyXFont & font, std::string const & color);
 	///

@@ -42,7 +42,8 @@ private:
 	int bfs_init(int, bool clear_visited = true);
 
 	///
-	struct Vertex {
+	class Vertex {
+	public:
 		std::vector<int> in_vertices;
 		std::vector<int> out_vertices;
 		std::vector<int> out_edges;

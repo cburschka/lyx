@@ -21,7 +21,7 @@
 
 class Buffer;
 class BufferParams;
-struct Language;
+class Language;
 
 /** The packages and commands that a buffer needs. This class
  *  contains a list<string>.  Each of the LaTeX packages that a buffer needs

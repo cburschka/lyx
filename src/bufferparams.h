@@ -34,7 +34,7 @@ class LatexFeatures;
 class Spacing;
 class TexRow;
 class VSpace;
-struct Language;
+class Language;
 
 
 namespace lyx {
@@ -232,7 +232,8 @@ private:
 	 *  drag in other header files.
 	 */
 	class Impl;
-	struct MemoryTraits {
+	class MemoryTraits {
+	public:
 		static Impl * clone(Impl const *);
 		static void destroy(Impl *);
 	};

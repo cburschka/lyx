@@ -37,7 +37,8 @@ Previews & Previews::get()
 }
 
 
-struct Previews::Impl {
+class Previews::Impl {
+public:
 	///
 	typedef boost::shared_ptr<PreviewLoader> PreviewLoaderPtr;
 	///

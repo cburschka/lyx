@@ -46,7 +46,8 @@ using std::endl;
 using std::string;
 
 
-struct FileDialog::Private {
+class FileDialog::Private {
+public:
 	Button b1;
 	Button b2;
 };

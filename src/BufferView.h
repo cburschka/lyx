@@ -174,9 +174,9 @@ public:
 
 private:
 	///
-	struct Pimpl;
+	class Pimpl;
 	///
-	friend struct BufferView::Pimpl;
+	friend class BufferView::Pimpl;
 	///
 	Pimpl * pimpl_;
 };

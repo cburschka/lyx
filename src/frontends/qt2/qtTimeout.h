@@ -22,7 +22,7 @@
  * This class executes the callback when the timeout expires
  * using Qt mechanisms
  */
-struct qtTimeout : QObject, public Timeout::Impl {
+class qtTimeout : QObject, public Timeout::Impl {
 public:
 	///
 	qtTimeout(Timeout & owner_);

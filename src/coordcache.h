@@ -20,7 +20,8 @@ class Paragraph;
 void lyxbreaker(void const * data, const char * hint, int size);
 void lyxaborter(int x, int y);
 
-struct Point {
+class Point {
+public:
 	Point()
 		: x_(0), y_(0)
 	{}

@@ -401,9 +401,9 @@ private:
 	/// end of label
 	lyx::pos_type begin_of_body_;
 
-	struct Pimpl;
+	class Pimpl;
 	///
-	friend struct Paragraph::Pimpl;
+	friend class Paragraph::Pimpl;
 	///
 	Pimpl * pimpl_;
 

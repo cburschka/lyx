@@ -20,7 +20,8 @@
 class Buffer;
 
 /// A class to hold an error item
-struct ErrorItem {
+class ErrorItem {
+public:
 	std::string error;
 	std::string description;
 	int par_id;

@@ -18,7 +18,8 @@
 class BranchList;
 
 
-struct InsetBranchParams {
+class InsetBranchParams {
+public:
 	explicit InsetBranchParams(std::string const & b = std::string())
 		: branch(b) {}
 	///

@@ -27,7 +27,8 @@ using std::string;
 namespace lyx {
 namespace graphics {
 
-struct PreviewImage::Impl : public boost::signals::trackable {
+class PreviewImage::Impl : public boost::signals::trackable {
+public:
 	///
 	Impl(PreviewImage & p, PreviewLoader & l,
 	     string const & s, string const & f, double af);

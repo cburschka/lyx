@@ -31,7 +31,8 @@ namespace {
 
 typedef InsetList::InsetTable Table;
 
-struct InsetTablePosLess : public std::binary_function<Table, Table, bool> {
+class InsetTablePosLess : public std::binary_function<Table, Table, bool> {
+public:
 	bool operator()(Table const & t1, Table const & t2) const
 	{
 		return t1.pos < t2.pos;

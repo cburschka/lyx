@@ -31,7 +31,8 @@
 
 namespace {
 
-struct InsetName {
+class InsetName {
+public:
 	InsetName(std::string const & n, InsetBase::Code c)
 		: name(n), code(c) {}
 	std::string name;

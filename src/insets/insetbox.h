@@ -18,7 +18,8 @@
 #include "lyxlength.h"
 
 
-struct InsetBoxParams {
+class InsetBoxParams {
+public:
 	///
 	InsetBoxParams(std::string const &);
 	///

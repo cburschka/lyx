@@ -98,8 +98,9 @@ protected:
  *  copied .fig file will require a transformation of the picture file
  *  reference if it is to be found by XFig.
  */
-struct SpecialisedMover : public Mover
+class SpecialisedMover : public Mover
 {
+public:
 	SpecialisedMover() {}
 
 	/** @c command should be of the form

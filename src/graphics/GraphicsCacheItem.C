@@ -46,7 +46,8 @@ using std::string;
 namespace lyx {
 namespace graphics {
 
-struct CacheItem::Impl : public boost::signals::trackable {
+class CacheItem::Impl : public boost::signals::trackable {
+public:
 
 	///
 	Impl(string const & file);

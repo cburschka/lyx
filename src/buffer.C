@@ -143,8 +143,9 @@ int const LYX_FORMAT = 239;
 
 typedef std::map<string, bool> DepClean;
 
-struct Buffer::Impl
+class Buffer::Impl
 {
+public:
 	Impl(Buffer & parent, string const & file, bool readonly);
 
 	limited_stack<Undo> undostack;
@@ -1458,7 +1459,9 @@ bool Buffer::isUnnamed() const
 }
 
 
+#ifdef WITH_WARNINGS
 #warning this function should be moved to buffer_pimpl.C
+#endif
 void Buffer::markDirty()
 {
 	if (pimpl_->lyx_clean) {

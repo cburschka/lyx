@@ -24,13 +24,14 @@ class Buffer;
 class InsetList {
 public:
 	///
-	struct InsetTable {
+	class InsetTable {
+	public:
+		///
+		InsetTable(lyx::pos_type p, InsetBase * i) : pos(p), inset(i) {}
 		///
 		lyx::pos_type pos;
 		///
 		InsetBase * inset;
-		///
-		InsetTable(lyx::pos_type p, InsetBase * i) : pos(p), inset(i) {}
 	};
 	///
 	typedef std::vector<InsetTable> List;

@@ -50,7 +50,8 @@ using std::string;
 namespace lyx {
 namespace graphics {
 
-struct Converter::Impl : public boost::signals::trackable {
+class Converter::Impl : public boost::signals::trackable {
+public:
 	///
 	Impl(string const &, string const &, string const &, string const &);
 

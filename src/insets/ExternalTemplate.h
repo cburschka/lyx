@@ -22,7 +22,8 @@ class LyXLex;
 namespace lyx {
 namespace external {
 
-struct Template {
+class Template {
+public:
 	/// We have to have default commands for safety reasons!
 	Template();
 	///
@@ -30,7 +31,8 @@ struct Template {
 	///
 	void dumpFormats(std::ostream &) const;
 
-	struct Option {
+	class Option {
+	public:
 		Option(std::string const & name_, std::string const & opt_)
 			: name(name_), option(opt_) {}
 		std::string name;
@@ -55,7 +57,8 @@ struct Template {
 	std::vector<TransformID> transformIds;
 
 	/// This is the information needed to support a specific output format
-	struct Format {
+	class Format {
+	public:
 		Format();
 		///
 		void readFormat(LyXLex &);

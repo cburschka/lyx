@@ -15,7 +15,8 @@
 
 #include "math_data.h"
 
-struct ReplaceData {
+class ReplaceData {
+public:
 	///
 	MathArray from;
 	///

@@ -87,14 +87,16 @@ WriteStream & operator<<(WriteStream &, unsigned int);
 //  MathML
 //
 
-struct MTag {
+class MTag {
+public:
 	///
 	MTag(char const * const tag) : tag_(tag) {}
 	///
 	char const * const tag_;
 };
 
-struct ETag {
+class ETag {
+public:
 	///
 	ETag(char const * const tag) : tag_(tag) {}
 	///

@@ -222,7 +222,7 @@ private:
 	///
 	void addColor(LColor::color c, std::string const & lyxname) const;
 	///
-	struct Pimpl;
+	class Pimpl;
 	///
 	boost::scoped_ptr<Pimpl> pimpl_;
 };

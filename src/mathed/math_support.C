@@ -335,7 +335,8 @@ named_deco_struct deco_table[] = {
 std::map<string, deco_struct> deco_list;
 
 // sort the table on startup
-struct init_deco_table {
+class init_deco_table {
+public:
 	init_deco_table() {
 		unsigned const n = sizeof(deco_table) / sizeof(deco_table[0]);
 		for (named_deco_struct * p = deco_table; p != deco_table + n; ++p) {

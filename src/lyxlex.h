@@ -143,7 +143,7 @@ public:
 	LyXLex & operator>>(bool &);
 
 private:
-	struct Pimpl;
+	class Pimpl;
 	///
 	Pimpl * pimpl_;
 };
@@ -155,7 +155,8 @@ private:
     exceptions.
     @author Lgb
 */
-struct pushpophelper {
+class pushpophelper {
+public:
 	///
 	pushpophelper(LyXLex & lexrc, keyword_item * i, int s) : lex(lexrc) {
 		lex.pushTable(i, s);

@@ -69,9 +69,10 @@ LyXTextClassList::operator[](textclass_type textclass) const
 
 
 // used when sorting the textclass list.
-struct less_textclass_avail_desc
+class less_textclass_avail_desc
 	: public std::binary_function<LyXTextClass, LyXTextClass, int>
 {
+public:
 	int operator()(LyXTextClass const & tc1,
 		       LyXTextClass const & tc2) const
 	{

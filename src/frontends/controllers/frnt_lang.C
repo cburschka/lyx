@@ -27,10 +27,11 @@ namespace frontend {
 
 namespace {
 
-struct Sorter
+class Sorter
 	: public std::binary_function<LanguagePair,
 				      LanguagePair, bool>
 {
+public:
 	bool operator()(LanguagePair const & lhs,
 			LanguagePair const & rhs) const {
 		return lhs.first < rhs.first;

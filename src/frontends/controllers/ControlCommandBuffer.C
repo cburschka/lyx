@@ -38,7 +38,8 @@ namespace frontend {
 
 namespace {
 
-struct prefix_p {
+class prefix_p {
+public:
 	string p;
 	prefix_p(string const & s)
 		: p(s) {}

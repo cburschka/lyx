@@ -29,7 +29,7 @@ using std::string;
 // understand those weak symbols (seen on HP-UX, tru64, AIX and
 // others). Thus we force an explicit instanciation of this particular
 // template (JMarc)
-template class boost::detail::crc_table_t<32, 0x04C11DB7, true>;
+template struct boost::detail::crc_table_t<32, 0x04C11DB7, true>;
 
 // Various implementations of lyx::sum(), depending on what methods
 // are available. Order is faster to slowest.

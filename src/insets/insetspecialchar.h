@@ -17,7 +17,7 @@
 
 #include "inset.h"
 
-struct LaTeXFeatures;
+class LaTeXFeatures;
 
 ///  Used to insert special chars
 class InsetSpecialChar : public InsetOld {

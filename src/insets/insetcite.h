@@ -50,7 +50,8 @@ private:
 	/// This function does the donkey work of creating the pretty label
 	std::string const generateLabel(Buffer const &) const;
 
-	struct Cache {
+	class Cache {
+	public:
 		///
 		Cache() : engine(lyx::biblio::ENGINE_BASIC) {}
 		///

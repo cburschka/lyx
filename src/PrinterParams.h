@@ -15,14 +15,15 @@
 #include "lyxrc.h"
 
 /**
-  This struct contains (or should contain) all the parameters required for
-  printing a buffer.  Some work still needs to be done on this struct and
+  This class contains (or should contain) all the parameters required for
+  printing a buffer.  Some work still needs to be done on this class and
   printing handling in general to make it nice and full-featured.
   The main things I'd like to add now is the ability to print a read-only
   document with different orientation, papersize or single/duplex state
   than the document's settings. ARRae 20000423
 */
-struct PrinterParams {
+class PrinterParams {
+public:
 	///
 	enum Target {
 		///

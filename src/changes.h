@@ -21,7 +21,8 @@
 #include <iosfwd>
 
 
-struct Change {
+class Change {
+public:
 	/// the type of change
 	enum Type {
 		UNCHANGED, // no change
@@ -95,7 +96,8 @@ public:
 		lyx::time_type curtime, Change const & old, Change const & change);
 
 private:
-	struct Range {
+	class Range {
+	public:
 		Range(lyx::pos_type s, lyx::pos_type e)
 			: start(s), end(e) {}
 
@@ -121,7 +123,8 @@ private:
 	friend bool operator==(Range const & r1, Range const & r2);
 	friend bool operator!=(Range const & r1, Range const & r2);
 
-	struct ChangeRange {
+	class ChangeRange {
+	public:
 		ChangeRange(lyx::pos_type s, lyx::pos_type e, Change c)
 			: range(Range(s, e)), change(c) {}
 		Range range;

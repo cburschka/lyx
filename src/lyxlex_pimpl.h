@@ -22,7 +22,8 @@
 #include <vector>
 
 ///
-struct LyXLex::Pimpl : boost::noncopyable {
+class LyXLex::Pimpl : boost::noncopyable {
+public:
 	///
 	Pimpl(keyword_item * tab, int num);
 	///
@@ -80,7 +81,8 @@ private:
 	///
 	void verifyTable();
 	///
-	struct pushed_table {
+	class pushed_table {
+	public:
 		///
 		pushed_table()
 			: table_elem(0), table_siz(0) {}

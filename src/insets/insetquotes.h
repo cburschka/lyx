@@ -18,7 +18,7 @@
 class BufferParams;
 class Language;
 
-struct LaTeXFeatures;
+class LaTeXFeatures;
 
 
 /** Quotes.

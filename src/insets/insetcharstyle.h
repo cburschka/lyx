@@ -17,7 +17,8 @@
 #include "lyxtextclass.h"
 
 
-struct InsetCharStyleParams {
+class InsetCharStyleParams {
+public:
 	///
 	void write(std::ostream & os) const;
 	///

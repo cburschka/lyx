@@ -15,8 +15,9 @@
 #include <string>
 
 
-struct ColInfo
+class ColInfo
 {
+public:
 	ColInfo() : align('c'), rightline(0), leftline(false) {}
 	char   align;      // column alignment
 	std::string width;      // column width
@@ -26,16 +27,18 @@ struct ColInfo
 };
 
 
-struct RowInfo
+class RowInfo
 {
+public:
 	RowInfo() : topline(false), bottomline(false) {}
 	bool topline;     // horizontal line above
 	int  bottomline;  // horizontal line below
 };
 
 
-struct CellInfo
+class CellInfo
 {
+public:
 	CellInfo()
 		: multi(0), leftline(false), rightline(false),
 	   topline(false), bottomline(false)

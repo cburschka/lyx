@@ -45,7 +45,8 @@ class ViewMetricsInfo;
 
 
 ///
-struct BufferView::Pimpl : public boost::signals::trackable {
+class BufferView::Pimpl : public boost::signals::trackable {
+public:
 	///
 	Pimpl(BufferView & bv, LyXView * owner, int width, int height);
 	///
@@ -151,7 +152,8 @@ private:
 	///
 	bool using_xterm_cursor;
 	///
-	struct Position {
+	class Position {
+	public:
 		/// Filename
 		std::string filename;
 		/// Cursor paragraph Id

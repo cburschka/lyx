@@ -23,7 +23,8 @@ class MathGridInset : public MathNestInset {
 public:
 
 	/// additional per-cell information
-	struct CellInfo {
+	class CellInfo {
+	public:
 		///
 		CellInfo();
 		/// a dummy cell before a multicolumn cell
@@ -40,7 +41,8 @@ public:
 	};
 
 	/// additional per-row information
-	struct RowInfo {
+	class RowInfo {
+	public:
 		///
 		RowInfo();
 		///
@@ -60,7 +62,8 @@ public:
 	};
 
 	// additional per-row information
-	struct ColInfo {
+	class ColInfo {
+	public:
 		///
 		ColInfo();
 		/// currently possible: 'l', 'c', 'r'

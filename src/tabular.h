@@ -157,7 +157,8 @@ public:
 		BOX_MINIPAGE = 2
 	};
 
-	struct ltType {
+	class ltType {
+	public:
 		// constructor
 		ltType();
 		// we have this header type (is set in the getLT... functions)
@@ -397,7 +398,8 @@ public:
 	///
 //private:
 	///
-	struct cellstruct {
+	class cellstruct {
+	public:
 		///
 		cellstruct(BufferParams const &);
 		///
@@ -442,7 +444,8 @@ public:
 	typedef std::vector<cell_vector> cell_vvector;
 
 	///
-	struct rowstruct {
+	class rowstruct {
+	public:
 		///
 		rowstruct();
 		///
@@ -469,7 +472,8 @@ public:
 	typedef std::vector<rowstruct> row_vector;
 
 	///
-	struct columnstruct {
+	class columnstruct {
+		public:
 		///
 		columnstruct();
 		///
