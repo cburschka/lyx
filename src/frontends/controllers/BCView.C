@@ -36,7 +36,7 @@ void BCView::addCheckedWidget(CheckedWidget * ptr)
 }
 
 
-bool BCView::checkWidgets()
+bool BCView::checkWidgets() const
 {
 	bool valid = true;
 

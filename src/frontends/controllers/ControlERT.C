@@ -20,9 +20,10 @@ ControlERT::ControlERT(Dialog & parent)
 {}
 
 
-void ControlERT::initialiseParams(string const & data)
+bool ControlERT::initialiseParams(string const & data)
 {
 	InsetERTMailer::string2params(data, status_);
+	return true;
 }
 
 

@@ -36,7 +36,7 @@ public:
 	ControlInclude(Dialog &);
 
 	///
-	virtual void initialiseParams(string const & data);
+	virtual bool initialiseParams(string const & data);
 	/// clean-up on hide.
 	virtual void clearParams();
 	/// clean-up on hide.
@@ -45,7 +45,7 @@ public:
 	virtual bool isBufferDependent() const { return true; }
 
 	///
-	InsetInclude::Params const & params() const 
+	InsetInclude::Params const & params() const
 		{ return inset_->params(); }
 	///
 	void setParams(InsetInclude::Params const &);

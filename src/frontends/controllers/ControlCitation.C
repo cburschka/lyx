@@ -27,7 +27,7 @@ ControlCitation::ControlCitation(Dialog & d)
 {}
 
 
-void ControlCitation::initialiseParams(string const & data)
+bool ControlCitation::initialiseParams(string const & data)
 {
 	ControlCommand::initialiseParams(data);
 
@@ -49,6 +49,8 @@ void ControlCitation::initialiseParams(string const & data)
 		    (!usingNatbib() && citeStyles_.size() != 1))
 			citeStyles_ = biblio::getCiteStyles(usingNatbib());
 	}
+
+	return true;
 }
 
 

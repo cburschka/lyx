@@ -28,13 +28,14 @@ ControlExternal::ControlExternal(Dialog & parent)
 {}
 
 
-void ControlExternal::initialiseParams(string const & data)
+bool ControlExternal::initialiseParams(string const & data)
 {
 	inset_.reset(new InsetExternal);
 	InsetExternal::Params params;
 	InsetExternalMailer::string2params(data, params);
 	inset_->setFromParams(params);
 	inset_->setView(kernel().bufferview());
+	return true;
 }
 
 

@@ -21,7 +21,7 @@ public:
 	///
 	ControlError(Dialog &);
 	///
-	virtual void initialiseParams(string const &);
+	virtual bool initialiseParams(string const & data);
 	///
 	virtual void clearParams();
 	///

@@ -23,11 +23,11 @@ ControlTabular::ControlTabular(Dialog & parent)
 {}
 
 
-void ControlTabular::initialiseParams(string const & data)
+bool ControlTabular::initialiseParams(string const & data)
 {
 	Buffer * buffer = kernel().buffer();
 	if (!buffer)
-		return;
+		return false;
 
 	InsetTabular tmp(*buffer);
 	int cell = InsetTabularMailer::string2params(data, tmp);
@@ -35,6 +35,7 @@ void ControlTabular::initialiseParams(string const & data)
 		params_.reset(new LyXTabular(*tmp.tabular.get()));
 		active_cell_ = cell;
 	}
+	return true;
 }
 
 

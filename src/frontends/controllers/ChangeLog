@@ -1,3 +1,18 @@
+2003-03-13  Angus Leeming  <angus@localhost.localdomain>
+
+	* ButtonController.h: 
+
+2003-03-13  Angus Leeming  <leeming@lyx.org>
+
+	* Dialog.h (initialiseParams): return a bool to indicate successful
+	translation of the string.
+
+	* Dialog.h:
+	* Kernel.h
+	* ControlAbout.h: a serious attempt at documenting the code.
+
+	* ButtonController.[Ch] (readWrite): it wasn't used, so remove it.
+
 2003-03-13  Angus Leeming  <leeming@lyx.org>
 
 	* ControlParagraph.[Ch]: rewrite to use the Dialog-based scheme and

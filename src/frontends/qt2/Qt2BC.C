@@ -25,13 +25,13 @@ Qt2BC::Qt2BC(ButtonController const & parent,
 {}
 
 
-void Qt2BC::setButtonEnabled(QButton * obj, bool enabled)
+void Qt2BC::setButtonEnabled(QButton * obj, bool enabled) const
 {
 	obj->setEnabled(enabled);
 }
 
 
-void Qt2BC::setWidgetEnabled(QWidget * obj, bool enabled)
+void Qt2BC::setWidgetEnabled(QWidget * obj, bool enabled) const
 {
 	// yuck, rtti, but the user comes first
 	if (obj->inherits("QLineEdit")) {
@@ -47,7 +47,7 @@ void Qt2BC::setWidgetEnabled(QWidget * obj, bool enabled)
 }
 
 
-void Qt2BC::setButtonLabel(QButton * obj, string const & label)
+void Qt2BC::setButtonLabel(QButton * obj, string const & label) const
 {
 	obj->setText(toqstr(label));
 }

@@ -18,7 +18,7 @@ ControlError::ControlError(Dialog & parent)
 {}
 
 
-void ControlError::initialiseParams(string const & data)
+bool ControlError::initialiseParams(string const & data)
 {
 	params_ = data;
 }

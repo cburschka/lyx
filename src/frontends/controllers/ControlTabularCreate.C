@@ -20,9 +20,10 @@ ControlTabularCreate::ControlTabularCreate(Dialog & parent)
 {}
 
 
-void ControlTabularCreate::initialiseParams(string const &)
+bool ControlTabularCreate::initialiseParams(string const &)
 {
 	params_.first = params_.second = 5;
+	return true;
 }
 
 

@@ -47,11 +47,12 @@ ControlGraphics::ControlGraphics(Dialog & parent)
 {}
 
 
-void ControlGraphics::initialiseParams(string const & data)
+bool ControlGraphics::initialiseParams(string const & data)
 {
 	InsetGraphicsParams params;
 	InsetGraphicsMailer::string2params(data, params);
 	params_.reset(new InsetGraphicsParams(params));
+	return true;
 }
 
 

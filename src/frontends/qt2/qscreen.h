@@ -70,7 +70,7 @@ private:
 	/// the mini-pixmap used for backing store for the blinking cursor
 	boost::scoped_ptr<QPixmap> nocursor_pixmap_;
 
-	//{@ the cursor pixmap position/size
+	//@{ the cursor pixmap position/size
 	int cursor_x_;
 	int cursor_y_;
 	int cursor_w_;

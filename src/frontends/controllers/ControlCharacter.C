@@ -26,7 +26,7 @@ ControlCharacter::ControlCharacter(Dialog & parent)
 {}
 
 
-void ControlCharacter::initialiseParams(string const &)
+bool ControlCharacter::initialiseParams(string const &)
 {
 	// Do this the first time only.
 	if (!font_.get())
@@ -41,6 +41,8 @@ void ControlCharacter::initialiseParams(string const &)
 	    getColor()    != LColor::ignore ||
 	    font_->language() != ignore_language)
 		dialog().bc().valid();
+
+	return true;
 }
 
 

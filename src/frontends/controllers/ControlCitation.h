@@ -24,7 +24,7 @@ public:
 	ControlCitation(Dialog &);
 
 	///
-	virtual void initialiseParams(string const & data);
+	virtual bool initialiseParams(string const & data);
 	/// clean-up on hide.
 	virtual void clearParams();
 

@@ -26,7 +26,7 @@ ControlParagraph::ControlParagraph(Dialog & parent)
 {}
 
 
-void ControlParagraph::initialiseParams(string const & data)
+bool ControlParagraph::initialiseParams(string const & data)
 {
 	istringstream is(data);
 	LyXLex lex(0,0);
@@ -37,7 +37,7 @@ void ControlParagraph::initialiseParams(string const & data)
 	// action == 1: update dialog, accept changes
 	// action == 2: update dialog, do not accept changes
 	int action = 0;
-	
+
 	if (lex.isOK()) {
 		lex.next();
 		string const token = lex.getString();
@@ -50,7 +50,7 @@ void ControlParagraph::initialiseParams(string const & data)
 			action = accept ? 1 : 2;
 		} else {
 			// Unrecognised token
-			lyx::Assert(0);
+			return false;
 		}
 	}
 
@@ -79,9 +79,9 @@ void ControlParagraph::initialiseParams(string const & data)
 			Int = lex.getInteger();
 		} else {
 			// Unrecognised token
-			break;
+			return false;
 		}
-		    
+
 		++nset;
 
 		if (token == "\\alignpossible") {
@@ -92,13 +92,15 @@ void ControlParagraph::initialiseParams(string const & data)
 			ininset_ = Int;
 		}
 	}
-	lyx::Assert(nset == 3);
+	if (nset != 3)
+		return false;
 
 	// If "update", then set the activation status of the button controller
 	if (action > 0) {
 		bool const accept = action == 1;
 		dialog().bc().valid(accept);
 	}
+	return true;
 }
 
 

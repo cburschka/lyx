@@ -49,7 +49,7 @@ void FormForks::build() {
 	bcview().setOK(dialog_->button_ok);
 	bcview().setApply(dialog_->button_apply);
 	bcview().setCancel(dialog_->button_close);
-	bc().invalid();
+	bc().valid(false);
 
 	// Set up the tooltip mechanism
 	string str = _("All currently running child processes forked by LyX.");

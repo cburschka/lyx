@@ -24,19 +24,19 @@ xformsBC::xformsBC(ButtonController const & parent,
 {}
 
 
-void xformsBC::setButtonEnabled(FL_OBJECT * obj, bool enabled)
+void xformsBC::setButtonEnabled(FL_OBJECT * obj, bool enabled) const
 {
 	setEnabled(obj, enabled);
 }
 
 
-void xformsBC::setWidgetEnabled(FL_OBJECT * obj, bool enabled)
+void xformsBC::setWidgetEnabled(FL_OBJECT * obj, bool enabled) const
 {
 	setEnabled(obj, enabled);
 }
 
 
-void xformsBC::setButtonLabel(FL_OBJECT * obj, string const & label)
+void xformsBC::setButtonLabel(FL_OBJECT * obj, string const & label) const
 {
 	fl_set_object_label(obj, label.c_str());
 }

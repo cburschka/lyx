@@ -31,11 +31,12 @@ ControlInclude::ControlInclude(Dialog & parent)
 {}
 
 
-void ControlInclude::initialiseParams(string const & data)
+bool ControlInclude::initialiseParams(string const & data)
 {
 	InsetInclude::Params params;
 	InsetIncludeMailer::string2params(data, params);
 	inset_.reset(new InsetInclude(params));
+	return true;
 }
 
 

@@ -1,3 +1,15 @@
+/**
+ * \file Kernel.h
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
+ *
+ * \author Angus Leeming
+ *
+ * Full author contact details are available in file CREDITS
+ */
+
+#include <config.h>
+
 #include "Kernel.h"
 
 #include "buffer.h"
@@ -59,6 +71,7 @@ Kernel::DocTypes Kernel::docType() const
 
 	return DOCBOOK;
 }
+
 
 BufferView * Kernel::bufferview()
 {

@@ -23,9 +23,10 @@ ControlCommand::ControlCommand(Dialog & dialog, string const & lfun_name)
 {}
 
 
-void ControlCommand::initialiseParams(string const & data)
+bool ControlCommand::initialiseParams(string const & data)
 {
 	InsetCommandMailer::string2params(data, params_);
+	return true;
 }
 
 

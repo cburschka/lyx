@@ -21,11 +21,12 @@ ControlWrap::ControlWrap(Dialog & parent)
 {}
 
 
-void ControlWrap::initialiseParams(string const & data)
+bool ControlWrap::initialiseParams(string const & data)
 {
 	InsetWrapParams params;
 	InsetWrapMailer::string2params(data, params);
 	params_.reset(new InsetWrapParams(params));
+	return true;
 }
 
 

@@ -19,64 +19,73 @@
 #include <boost/scoped_ptr.hpp>
 
 
-/** Controls the activation of the OK, Apply and Cancel buttons.
+class BCView;
+
+
+/** \class ButtonController controls the activation of the OK, Apply and
+ *  Cancel buttons.
  *
- * Actually supports 4 buttons in all and it's up to the user to decide on
+ * It actually supports 4 buttons in all and it's up to the user to decide on
  * the activation policy and which buttons correspond to which output of the
  * state machine.
- * Author: Allan Rae <rae@lyx.org>.
- * This class stripped of xforms-specific code by
- * Angus Leeming <leeming@lyx.org>
  */
-class BCView;
 
 class ButtonController : boost::noncopyable {
 public:
-	///
-	~ButtonController();
-
-	///
+	//@{
+	/** Methods to set and get the GUI view (containing the actual
+	 *   button widgets.
+	 *  \param ptr is owned by the ButtonController.
+	 */
+	void view(BCView * ptr);
 	BCView & view() const;
-	///
-	void view(BCView *);
+	//@}
 
-	///
+	//@{
+	/** Methods to set and get the ButtonPolicy.
+	 *  \param ptr is owned by the ButtonController.
+	 */
+	void bp(ButtonPolicy * ptr);
 	ButtonPolicy & bp() const;
-	///
-	void bp(ButtonPolicy *);
+	//@}
 
 	///
-	void input(ButtonPolicy::SMInput);
-	///
-	void ok();
-	///
-	void apply();
-	///
-	void cancel();
-	///
-	void restore();
-	///
-	void hide();
+	void input(ButtonPolicy::SMInput) const;
 
-	///
-	void refresh();
-	///
-	void refreshReadOnly();
+	//@{
+	/// Tell the BC that a particular button has been pressed.
+	void ok() const;
+	void apply() const;
+	void cancel() const;
+	void restore() const;
+	//@}
 
-	/// Passthrough function -- returns its input value
-	bool readOnly(bool = true);
-	///
-	void readWrite();
+	/// Tell the BC that the dialog is being hidden
+	void hide() const;
 
-	///
-	void valid(bool = true);
-	///
-	void invalid();
+	/**Refresh the activation state of the Ok, Apply, Close and
+	 * Restore buttons.
+	 */
+	void refresh() const;
+
+	/** Refresh the activation state of all the widgets under the control
+	 *  of the BC to reflect the read-only status of the underlying buffer.
+	 */
+	void refreshReadOnly() const;
+	//@}
+
+	/** Passthrough function -- returns its input value
+	 *  Tell the BC about the read-only status of the underlying buffer.
+	 */
+	bool readOnly(bool = true) const;
+
+	/** \param validity Tell the BC that the data is, or is not, valid.
+	 *  Sets the activation state of the buttons immediately.
+	 */
+	void valid(bool = true) const;
 
 private:
-	///
 	boost::scoped_ptr<ButtonPolicy> bp_;
-	///
 	boost::scoped_ptr<BCView> view_;
 };
 

@@ -29,7 +29,7 @@ GuiBC<Button, Widget>::GuiBC(ButtonController const & parent,
 
 
 template <class Button, class Widget>
-void GuiBC<Button, Widget>::refresh()
+void GuiBC<Button, Widget>::refresh() const
 {
 	lyxerr[Debug::GUI] << "Calling BC refresh()" << std::endl;
 
@@ -61,7 +61,7 @@ void GuiBC<Button, Widget>::refresh()
 
 
 template <class Button, class Widget>
-void GuiBC<Button, Widget>::refreshReadOnly()
+void GuiBC<Button, Widget>::refreshReadOnly() const
 {
 	if (read_only_.empty()) return;
 

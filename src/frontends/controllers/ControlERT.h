@@ -27,7 +27,7 @@ public:
 	///
 	void setStatus(InsetERT::ERTStatus status) { status_ = status; }
 	///
-	virtual void initialiseParams(string const & data);
+	virtual bool initialiseParams(string const & data);
 	/// clean-up on hide.
 	virtual void clearParams();
 	/// clean-up on hide.

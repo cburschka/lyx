@@ -22,7 +22,7 @@ public:
 	///
 	ControlChanges(Dialog &);
 	///
-	virtual void initialiseParams(string const &) {}
+	virtual bool initialiseParams(string const &) { return true; }
 	///
 	virtual void clearParams() {}
 	///

@@ -22,7 +22,7 @@ public:
 	///
 	ControlTabularCreate(Dialog &);
 	///
-	virtual void initialiseParams(string const &);
+	virtual bool initialiseParams(string const & data);
 	/// clean-up on hide.
 	virtual void clearParams();
 	///

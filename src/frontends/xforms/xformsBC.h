@@ -27,13 +27,13 @@ public:
 
 private:
 	/// Updates the button sensitivity (enabled/disabled)
-	void setButtonEnabled(FL_OBJECT *, bool enabled);
+	void setButtonEnabled(FL_OBJECT *, bool enabled) const;
 
 	/// Updates the widget sensitivity (enabled/disabled)
-	void setWidgetEnabled(FL_OBJECT *, bool enabled);
+	void setWidgetEnabled(FL_OBJECT *, bool enabled) const;
 
 	/// Set the label on the button
-	void setButtonLabel(FL_OBJECT *, string const & label);
+	void setButtonLabel(FL_OBJECT *, string const & label) const;
 };
 
 #endif // XFORMSBC_H

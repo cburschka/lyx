@@ -34,13 +34,13 @@ public:
 	      string const & = _("Cancel"), string const & = _("Close"));
 private:
 	/// Updates the button sensitivity (enabled/disabled)
-	void setButtonEnabled(QButton *, bool enabled);
+	void setButtonEnabled(QButton *, bool enabled) const;
 
 	/// Updates the widget sensitivity (enabled/disabled)
-	void setWidgetEnabled(QWidget *, bool enabled);
+	void setWidgetEnabled(QWidget *, bool enabled) const;
 
 	/// Set the label on the button
-	void setButtonLabel(QButton *, string const & label);
+	void setButtonLabel(QButton *, string const & label) const;
 };
 
 #endif // QT2BC_H

@@ -20,11 +20,12 @@ ControlMinipage::ControlMinipage(Dialog & parent)
 {}
 
 
-void ControlMinipage::initialiseParams(string const & data)
+bool ControlMinipage::initialiseParams(string const & data)
 {
 	InsetMinipage::Params params;
 	InsetMinipageMailer::string2params(data, params);
 	params_.reset(new InsetMinipage::Params(params));
+	return true;
 }
 
 

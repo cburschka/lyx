@@ -15,6 +15,7 @@
 
 #include "ButtonController.h"
 #include "BCView.h"
+#include "debug.h"
 #include "support/LAssert.h"
 
 
@@ -67,7 +68,13 @@ void Dialog::show(string const & data)
 	if (controller().isBufferDependent() && !kernel().isBufferAvailable())
 		return;
 
-	controller().initialiseParams(data);
+	if (!controller().initialiseParams(data)) {
+		lyxerr << "Dialog \"" << name_
+		       << "\" failed to translate the data "
+			"string passed to show()" << std::endl;
+		return;
+	}
+
 	bc().readOnly(kernel().isBufferReadonly());
 	view().show();
 
@@ -81,7 +88,12 @@ void Dialog::update(string const & data)
 	if (controller().isBufferDependent() && !kernel().isBufferAvailable())
 		return;
 
-	controller().initialiseParams(data);
+	if (!controller().initialiseParams(data)) {
+		lyxerr << "Dialog \"" << name_
+		       << "\" failed to translate the data "
+			"string passed to update()" << std::endl;
+		return;
+	}
 
 	bc().readOnly(kernel().isBufferReadonly());
 	view().update();

@@ -81,11 +81,7 @@ void QDialogView::changed()
 {
 	if (updating_)
 		return;
-
-	if (isValid())
-		bc().valid();
-	else
-		bc().invalid();
+	bc().valid(isValid());
 }
 
 

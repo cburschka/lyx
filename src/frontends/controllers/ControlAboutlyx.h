@@ -16,31 +16,28 @@
 #include "Dialog.h"
 #include <iosfwd>
 
-/** A controller for the About LyX dialogs.
+/** \class ControlAboutlyx is a controller for the "About LyX" dialogs.
  */
 class ControlAboutlyx : public Dialog::Controller {
 public:
-	///
-	ControlAboutlyx(Dialog &);
-	///
-	virtual void initialiseParams(string const &) {}
-	///
-	virtual void clearParams() {}
-	///
-	virtual void dispatchParams() {}
-	///
-	virtual bool isBufferDependent() const { return false; }
+	ControlAboutlyx(Dialog & parent);
 
-	///
+	//@{
+	/// Instantiate Dialog::Controller methods.
+	virtual bool initialiseParams(string const &) { return true; }
+	virtual void clearParams() {}
+	virtual void dispatchParams() {}
+	virtual bool isBufferDependent() const { return false; }
+	//@}
+
+	//@{
+	/// Provide the View with specific pieces of information.
 	void getCredits(std::ostream &) const;
-	///
 	string const getCopyright() const;
-	///
 	string const getLicense() const;
-	///
 	string const getDisclaimer() const;
-	///
 	string const getVersion() const;
+	//@}
 };
 
 #endif // CONTROLABOUTLYX_H

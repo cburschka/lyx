@@ -20,11 +20,12 @@ ControlFloat::ControlFloat(Dialog & parent)
 {}
 
 
-void ControlFloat::initialiseParams(string const & data)
+bool ControlFloat::initialiseParams(string const & data)
 {
 	InsetFloatParams params;
 	InsetFloatMailer::string2params(data, params);
 	params_.reset(new InsetFloatParams(params));
+	return true;
 }
 
 
