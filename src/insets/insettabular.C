@@ -796,7 +796,8 @@ bool InsetTabular::insetButtonRelease(BufferView * bv,
 {
 	bool ret = false;
 	if (the_locking_inset)
-		ret = the_locking_inset->insetButtonRelease(bv, x, y, button);
+		ret = the_locking_inset->insetButtonRelease(bv, x - inset_x,
+													y - inset_y, button);
 	if (button == 3 && !ret) {
 		bv->owner()->getDialogs()->showTabular(this);
 		return true;

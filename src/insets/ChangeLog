@@ -1,5 +1,11 @@
 2002-01-08  Juergen Vigna  <jug@sad.it>
 
+	* insettabular.C (insetButtonRelease): now this should work too
+	correctly.
+
+	* insetminipage.C (getMaxWidth): fixed for minipage inside insets and
+	if the width is a percentage.
+
 	* inset.h: added isChar() function and implemented this for
 	insetspecialchar insetquotes and insetlatexaccent.
 	added forceDefaultParagraphs() and implemented it for insettabular.

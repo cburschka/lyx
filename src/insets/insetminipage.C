@@ -327,13 +327,29 @@ bool InsetMinipage::showInsetDialog(BufferView * bv) const
 int InsetMinipage::getMaxWidth(BufferView * bv, UpdatableInset const * inset)
 	const
 {
+	if (owner() &&
+		(static_cast<UpdatableInset*>(owner())->getMaxWidth(bv, inset) < 0))
+	{
+		return -1;
+	}
 	if (!width_.empty()) {
-		int ww1 = VSpace(width_).inPixels(bv);
-		int ww2 = InsetCollapsable::getMaxWidth(bv, inset);
-		if (ww2 > 0 && ww2 < ww1) {
-			return ww2;
+		LyXLength len(width_);
+		switch(len.unit()) {
+		case LyXLength::PW: // Always % of workarea
+		case LyXLength::PE:
+		case LyXLength::PP:
+		case LyXLength::PL:
+			return (InsetCollapsable::getMaxWidth(bv, inset) * (int)len.value()) / 100;
+		default: 
+		{
+			int ww1 = VSpace(width_).inPixels(bv);
+			int ww2 = InsetCollapsable::getMaxWidth(bv, inset);
+			if (ww2 > 0 && ww2 < ww1) {
+				return ww2;
+			}
+			return ww1;
 		}
-		return ww1;
+		}
 	}
 	// this should not happen!
 	return InsetCollapsable::getMaxWidth(bv, inset);
