@@ -19,7 +19,7 @@ case $autoversion in
 	rm -f lib/reLyX/configure.ac
 	EXTRA_ACINCLUDE_FILES="lyxinclude213.m4"
 	;;
-    *2.5[2346])
+    *2.5[23467])
 	rm -f acconfig.h
 	rm -f configure.in
 	cp config/configure.ac .
