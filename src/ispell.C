@@ -63,7 +63,7 @@ private:
 
 int LaunchIspell::start()
 {
-	command_ = "ispell";
+	command_ = lyxrc.isp_command;
 	return runNonBlocking();
 }
 
