@@ -669,7 +669,7 @@ void MathCursor::interpret(string const & s)
 			case LM_TK_SYM: {
 				MathTextCodes code = static_cast<MathTextCodes>(l->id);
 				if (code < 255)
-					insert(l->id, MathIsBOPS(code) ? LM_TC_BOPS : LM_TC_SYMB);
+					insert(l->id, l->bin != LMB_NONE ? LM_TC_BOPS : LM_TC_SYMB);
 				else
 					p = new MathFuncInset(l->name);
 				break;
@@ -733,7 +733,9 @@ void MathCursor::macroModeOpen()
 {
 	if (!imacro_) {
 		imacro_ = new MathFuncInset("");
-		insert(imacro_);
+		array().insert(cursor().pos_, imacro_);
+		array().next(cursor().pos_);
+		//insert(imacro_);
 	} else
 		lyxerr << "Math Warning: Already in macro mode" << endl;
 }

@@ -9,7 +9,6 @@
 #include "math_parser.h"
 #include "Painter.h"
 #include "debug.h"
-#include "math_utils.h"
 
 using std::sort;
 using std::lower_bound;
@@ -26,12 +25,6 @@ bool MathIsInset(MathTextCodes x)
 bool MathIsAlphaFont(MathTextCodes x)
 {
 	return LM_TC_VAR <= x && x <= LM_TC_TEXTRM;
-}
-
-
-bool MathIsBOPS(MathTextCodes x)
-{
-	return MathLookupBOP(x) != LMB_NONE;
 }
 
 

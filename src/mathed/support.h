@@ -29,7 +29,6 @@ int mathed_string_width(MathTextCodes type, MathStyles size, string const & s);
 
 bool MathIsInset(MathTextCodes x);
 bool MathIsAlphaFont(MathTextCodes x);
-bool MathIsBOPS(MathTextCodes x);
 bool MathIsSymbol(MathTextCodes x);
 bool MathIsRelOp(unsigned char c, MathTextCodes f);
 

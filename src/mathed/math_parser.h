@@ -25,6 +25,7 @@
 
 #include "LString.h"
 
+#include "math_defs.h"
 #include "symbol_def.h"
 
 class MathArray;
@@ -107,6 +108,8 @@ struct latexkeys {
 	short token;
 	///
 	unsigned int id;
+	///
+	MathBinaryTypes bin;
 };
 
 

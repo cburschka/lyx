@@ -639,8 +639,7 @@ void mathed_parse(MathArray & array, unsigned flags)
 		
 		case LM_TK_SYM:
 			if (yylval.l->id < 256) {
-				MathTextCodes c = static_cast<MathTextCodes>(yylval.l->id);
-				MathTextCodes tc = MathIsBOPS(c) ? LM_TC_BOPS : LM_TC_SYMB;
+				MathTextCodes tc = yylval.l->bin == LMB_NONE ? LM_TC_SYMB : LM_TC_BOPS;
 				array.push_back(yylval.l->id, tc);
 			} else 
 				array.push_back(new MathFuncInset(yylval.l->name));

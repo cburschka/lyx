@@ -100,6 +100,8 @@ public:
 	///
 	void plainErase();
 	///
+	void plainInsert(MathInset * p);
+	///
 	void delLine();
 	/// This is in pixels from (maybe?) the top of inset
 	void setPos(int, int);

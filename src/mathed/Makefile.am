@@ -62,8 +62,6 @@ libmathed_la_SOURCES = \
 	math_spaceinset.h \
 	math_sqrtinset.C \
 	math_sqrtinset.h \
-	math_utils.C \
-	math_utils.h \
 	support.C \
 	support.h \
 	symbol_def.h
