@@ -58,12 +58,20 @@
 #
 # Menue Absatztyp
 #
-\bind "M-a 1"			"layout Chapter" 
+\bind "M-a 0"			"layout Part"
+\bind "M-a 1"			"layout Chapter"
 \bind "M-a 2"			"layout Section" 
 \bind "M-a 3"			"layout Subsection"  
 \bind "M-a 4"			"layout Subsubsection"    
 \bind "M-a 5"			"layout Paragraph"        
 \bind "M-a 6"			"layout Subparagraph"
+\bind "M-a ~S-asterisk ~S-0"	"layout Part*"
+\bind "M-a ~S-asterisk ~S-1"	"layout Chapter*"
+\bind "M-a ~S-asterisk ~S-2"	"layout Section*"
+\bind "M-a ~S-asterisk ~S-3"	"layout Subsection*"
+\bind "M-a ~S-asterisk ~S-4"	"layout Subsubsection*"
+\bind "M-a ~S-asterisk ~S-5"	"layout Paragraph*"
+\bind "M-a ~S-asterisk ~S-6"	"layout Subparagraph*"
 \bind "M-a a"			"layout Abstract"
 \bind "M-a S-A"			"layout Author"
 \bind "M-a M-a"			"layout Address"
@@ -90,13 +98,15 @@
 \bind "M-a t"			"layout Title"
 \bind "M-a x"			"layout LaTeX"
 \bind "M-a space"		"drop-layouts-choice"
-\bind "M-a S-at"		"layout Section*"	# M-a S-2
-\bind "M-a S-dollar"		"layout Subsubsection*"	# M-a S-4
-\bind "M-a S-numbersign"	"layout Subsection*"	# M-a S-3
 \bind "M-a v"			"layout Verse"
 
 \bind "M-a Left"		"depth-decrement"
 \bind "M-a Right"		"depth-increment"
+
+# Veraltete Tastenbelegung; für rückwärtige Kompatibilität beibehalten
+\bind "M-a S-at"		"layout Section*"	# M-a S-2
+\bind "M-a S-dollar"		"layout Subsubsection*"	# M-a S-4
+\bind "M-a S-numbersign"	"layout Subsection*"	# M-a S-3
 
 
 #
