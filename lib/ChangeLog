@@ -1,3 +1,9 @@
+2004-05-19  Angus Leeming  <leeming@lyx.org>
+
+	* scripts/lyxpreview2bitmap.py (find_exe):
+	* scripts/legacy_lyxpreview2ppm.py (find_exe): append ".exe" to the
+	program name on Win32.
+
 2004-05-18  Angus Leeming  <leeming@lyx.org>
 
 	* legacy_lyxpreview2ppm.py: search for "gswin32" also when looking

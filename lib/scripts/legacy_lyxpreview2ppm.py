@@ -36,7 +36,11 @@ def error(message):
 def find_exe(candidates, path):
     for prog in candidates:
         for directory in path:
-            full_path = os.path.join(directory, prog)
+            if os.name == "nt":
+                full_path = os.path.join(directory, prog + ".exe")
+            else:
+                full_path = os.path.join(directory, prog)
+
             if os.access(full_path, os.X_OK):
                 return full_path
 
