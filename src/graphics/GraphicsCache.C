@@ -19,6 +19,8 @@
 
 #include "support/filetools.h"
 
+#include <map>
+
 namespace support = lyx::support;
 
 using std::string;

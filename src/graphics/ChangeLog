@@ -1,3 +1,8 @@
+2004-11-20  Lars Gullik Bjonnes  <larsbj@gullik.net>
+
+	* GraphicsCache.C: include <map> to fix compilation with boost
+	1.32.0 
+
 2004-11-09  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* GraphicsCacheItem.C:
