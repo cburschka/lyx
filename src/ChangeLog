@@ -1,3 +1,12 @@
+2004-06-27  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* tex-strings.C: add "none" to string_paperpackages[], fixes
+	off-by-one-error in the paperpackage selection.
+	
+	* lyxlex.[Ch]:
+	* tex-strings.[Ch]: char const * string[n] 
+	-> char const * const string[]
+
 2004-06-10  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* lyxfunc.C (getStatus): if lyx_gui::getStatus disables the

@@ -231,7 +231,7 @@ void LyXLex::pushToken(string const & pt)
 }
 
 
-int LyXLex::findToken(char const * str[])
+int LyXLex::findToken(char const * const str[])
 {
 	if (!next()) {
 		pimpl_->printError("file ended while scanning string token");

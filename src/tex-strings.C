@@ -16,38 +16,38 @@
 
 // this file should perhaps be split into even smaller parts
 
-char const * string_paragraph_separation[3] = {
+char const * const string_paragraph_separation[] = {
 	"indent", "skip", ""
 };
 
 
-char const * string_quotes_language[7] = {
+char const * const string_quotes_language[] = {
 	"english", "swedish", "german", "polish", "french", "danish", ""
 };
 
 
-char const * string_papersize[12] = {
+char const * const string_papersize[] = {
 	"Default", "Custom", "letterpaper", "executivepaper", "legalpaper",
 	"a3paper", "a4paper", "a5paper", "b3paper", "b4paper", "b5paper", ""
 };
 
 
-char const * string_paperpackages[4] = {
-	"a4", "a4wide", "widemarginsa4", ""
+char const * const string_paperpackages[] = {
+	"none", "a4", "a4wide", "widemarginsa4", ""
 };
 
 
-char const * string_orientation[3] = {
+char const * const string_orientation[] = {
 	"portrait", "landscape", ""
 };
 
 
-char const * string_footnotekinds[8] = {
+char const * const string_footnotekinds[] = {
 	"footnote", "margin", "fig", "tab", "alg", "wide-fig", "wide-tab", ""
 };
 
 
-char const * string_align[5] = {
+char const * const string_align[] = {
 	"block", "left", "right", "center", ""
 };
 
@@ -56,9 +56,9 @@ char const * string_align[5] = {
 // used all over. As it happens, that meant that these strings were included
 // 27 times in the object file. (Asger)
 
-char const * tex_graphics[] = {"default", "dvips", "dvitops", "emtex",
+char const * const tex_graphics[] = {"default", "dvips", "dvitops", "emtex",
 		      "ln", "oztex", "textures", "none", ""};
 
 
-char const * tex_fonts[] = {"default", "ae", "pslatex", "times", "palatino",
+char const * const tex_fonts[] = {"default", "ae", "pslatex", "times", "palatino",
 			    "helvet", "avant", "newcent", "bookman", ""};

@@ -557,7 +557,7 @@ void BufferParams::writeFile(ostream & os) const
 		cite_engine_str = "jurabib";
 		break;
 	}
-	
+
 	os << "\\papersize " << string_papersize[papersize2]
 	   << "\n\\paperpackage " << string_paperpackages[paperpackage]
 	   << "\n\\use_geometry " << use_geometry
