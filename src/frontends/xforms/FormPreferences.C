@@ -345,7 +345,7 @@ void FormPreferences::feedback(FL_OBJECT * ob)
 	str = formatted(str, dialog_->text_warning->w-10,
 			FL_SMALL_SIZE, FL_NORMAL_STYLE);
 
-	fl_set_object_label(dialog_->text_warning, str.c_str());
+	fl_set_object_label(dialog_->text_warning, _(str.c_str()));
 	fl_set_object_lsize(dialog_->text_warning, FL_SMALL_SIZE);
 }
 
@@ -739,13 +739,13 @@ void FormPreferences::Colors::LoadBrowserLyX()
 	xformColorDB.clear();
 	XformColor xcol;
 
-	xcol.name = N_("GUI background");
+	xcol.name = _("GUI background");
 	xcol.colorID = FL_COL1;
 	fl_getmcolor(FL_COL1, &xcol.r, &xcol.g, &xcol.b);
 
 	xformColorDB.push_back(xcol);
 
-	xcol.name = N_("GUI text");
+	xcol.name = _("GUI text");
 	xcol.colorID = FL_BLACK;
 	fl_getmcolor(FL_BLACK, &xcol.r, &xcol.g, &xcol.b);
 
@@ -754,13 +754,13 @@ void FormPreferences::Colors::LoadBrowserLyX()
 
 	xformColorDB.push_back(xcol);
 
-	xcol.name = N_("GUI selection");
+	xcol.name = _("GUI selection");
 	xcol.colorID = FL_YELLOW;
 	fl_getmcolor(FL_YELLOW, &xcol.r, &xcol.g, &xcol.b);
 
 	xformColorDB.push_back(xcol);
 
-	xcol.name = N_("GUI pointer");
+	xcol.name = _("GUI pointer");
 	xcol.colorID = GUI_COLOR_CURSOR;
 	fl_getmcolor(GUI_COLOR_CURSOR, &xcol.r, &xcol.g, &xcol.b);
 
@@ -1575,11 +1575,11 @@ bool FormPreferences::Interface::input(FL_OBJECT const * const ob)
 {
 	if (ob == dialog_->button_bind_file_browse) {
 		string dir  = system_lyxdir + string("bind");
-		string name = N_("Sys Bind");
+		string name = _("Sys Bind");
 		pair<string,string> dir1(name, dir);
 
 		dir = user_lyxdir + string("bind");
-		name = N_("User Bind");
+		name = _("User Bind");
 		pair<string,string> dir2(name, dir);
 
 		parent_.browse(dialog_->input_bind_file,
@@ -1587,11 +1587,11 @@ bool FormPreferences::Interface::input(FL_OBJECT const * const ob)
 		
 	} else if (ob == dialog_->button_ui_file_browse) {
 		string dir  = system_lyxdir + string("ui");
-		string name = N_("Sys UI");
+		string name = _("Sys UI");
 		pair<string,string> dir1(name, dir);
 
 		dir = user_lyxdir + string("ui");
-		name = N_("User UI");
+		name = _("User UI");
 		pair<string,string> dir2(name, dir);
 
 		parent_.browse(dialog_->input_ui_file,
@@ -3009,7 +3009,7 @@ void FormPreferences::printWarning(string const & warning)
 	str = formatted(str, dialog_->text_warning->w-10,
 			 FL_SMALL_SIZE, FL_NORMAL_STYLE);
 
-	fl_set_object_label(dialog_->text_warning, str.c_str());
+	fl_set_object_label(dialog_->text_warning, _(str.c_str()));
 	fl_set_object_lsize(dialog_->text_warning, FL_SMALL_SIZE);
 }
 

@@ -102,6 +102,7 @@ FD_form_screen_fonts * FormPreferences::build_screen_fonts()
   fdui->input_typewriter = obj = fl_add_input(FL_NORMAL_INPUT, 210, 65, 200, 30, _("Typewriter"));
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
+  // xgettext:no-c-format
   fdui->counter_zoom = obj = fl_add_counter(FL_NORMAL_COUNTER, 310, 130, 100, 30, idex(_("Zoom %|#Z")));
     fl_set_button_shortcut(obj, scex(_("Zoom %|#Z")), 1);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);

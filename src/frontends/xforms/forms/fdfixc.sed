@@ -41,15 +41,19 @@ s/#include \"forms\.h\"/#include FORMS_H_LOCATION/
 #  replace the string with scex(_(string))
 /shortcut/ s/".*[|].*"/scex(_(&))/
 
-
 #  For all lines containing "fl_add" and a string containing |, replace
 #  the string with idex(_(string))
 /fl_add/ s/".*[|].*"/idex(_(&))/
 
-# For all lines containing "fl_add" and a string containing |, add the
-# shortcut command after the end of this line
+#  For all lines containing "fl_add" and a string containing |, add the
+#  shortcut command after the end of this line
 /fl_add/ s/idex(\(.*\)").*$/&\
     fl_set_button_shortcut(obj,scex(\1")),1);/
+
+#  gettext will get confused if the string contains a "%" unless the line is
+#  preceeded immediately by //xgettext:no-c-format
+/_(".*[%].*")/i\
+  // xgettext:no-c-format
 
 # We use new/delete not malloc/free so change to suit.
 s/\(\(FD_[^ ]*\) \*fdui =\).*sizeof(\*fdui))/\1 new \2/

@@ -49,6 +49,7 @@ FD_form_graphics * FormGraphics::build_graphics()
     fl_set_object_lalign(obj, FL_ALIGN_CENTER);
 
   fdui->radio_button_group_width = fl_bgn_group();
+  // xgettext:no-c-format
   fdui->radio_width_percent_page = obj = fl_add_checkbutton(FL_RADIO_BUTTON, 20, 140, 80, 30, _("% of Page"));
     fl_set_object_callback(obj, C_FormBaseInputCB, CHECKINPUT);
   fdui->radio_width_default = obj = fl_add_checkbutton(FL_RADIO_BUTTON, 20, 80, 80, 30, _("Default"));
@@ -58,12 +59,14 @@ FD_form_graphics * FormGraphics::build_graphics()
     fl_set_object_callback(obj, C_FormBaseInputCB, CHECKINPUT);
   fdui->radio_width_inch = obj = fl_add_checkbutton(FL_RADIO_BUTTON, 20, 120, 80, 30, _("Inch"));
     fl_set_object_callback(obj, C_FormBaseInputCB, CHECKINPUT);
+  // xgettext:no-c-format
   fdui->radio_width_percent_column = obj = fl_add_checkbutton(FL_RADIO_BUTTON, 20, 160, 96, 30, _("% of Column"));
     fl_set_object_callback(obj, C_FormBaseInputCB, CHECKINPUT);
   fl_end_group();
 
 
   fdui->radio_button_group_height = fl_bgn_group();
+  // xgettext:no-c-format
   fdui->radio_height_percent_page = obj = fl_add_checkbutton(FL_RADIO_BUTTON, 140, 140, 96, 30, _("% of Page"));
     fl_set_object_callback(obj, C_FormBaseInputCB, CHECKINPUT);
   fdui->radio_height_inch = obj = fl_add_checkbutton(FL_RADIO_BUTTON, 140, 120, 96, 30, _("Inch"));

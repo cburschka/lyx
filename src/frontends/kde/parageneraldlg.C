@@ -7,6 +7,7 @@
 
  *********************************************************************/
 
+#include <config.h>
 #include "parageneraldlg.h"
 
 #include <gettext.h>
@@ -27,8 +28,8 @@ ParaGeneralDialog::ParaGeneralDialog
 
 	// FIXME: free punctuation to whoever can make the value
 	// boxes not be overly large
-	spacetab->addTabPage(abovepage, _("Spacing Above"));
-	spacetab->addTabPage(belowpage, _("Spacing Below"));
+	spacetab->addTabPage(abovepage, _("&Spacing Above"));
+	spacetab->addTabPage(belowpage, _("Spacing &Below"));
 
 	connect(abovepage->spaceabove, SIGNAL(highlighted(int)), this, SLOT(spaceaboveHighlighted(int)));
 	connect(belowpage->spacebelow, SIGNAL(highlighted(int)), this, SLOT(spacebelowHighlighted(int)));

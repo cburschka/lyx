@@ -1663,6 +1663,7 @@ string const LyXRC::getDescription(LyXRCTags tag)
 		break;
 		
 	case RC_SCREEN_ZOOM:
+		//xgettext:no-c-format
 		str = N_("The zoom percentage for screen fonts. A setting of 100% will make the fonts roughly the same size as on paper.");
 		break;
 		
@@ -1708,7 +1709,7 @@ string const LyXRC::getDescription(LyXRCTags tag)
 		break;
 		
 	case RC_TEMPDIRPATH:
-		str = N_("LyX will place it's temporary directories in this path. They will be deleted when you quit LyX.");
+		str = N_("LyX will place its temporary directories in this path. They will be deleted when you quit LyX.");
 		break;
 		
 	case RC_USETEMPDIR:
@@ -1866,6 +1867,7 @@ string const LyXRC::getDescription(LyXRCTags tag)
 		break;
 		
 	case RC_DATE_INSERT_FORMAT:
+		//xgettext:no-c-format
 		str = N_("This accepts the normal strftime formats; see man strftime for full details. E.g.\"%A, %e. %B %Y\".");
 		break;
 		

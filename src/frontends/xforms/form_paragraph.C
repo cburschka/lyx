@@ -163,6 +163,7 @@ FD_form_paragraph_extra * FormParagraph::build_paragraph_extra()
     fl_set_button_shortcut(obj, scex(_("Length|#L")), 1);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
+  // xgettext:no-c-format
   fdui->input_pextra_widthp = obj = fl_add_input(FL_INT_INPUT, 240, 70, 90, 30, idex(_("or %|#o")));
     fl_set_button_shortcut(obj, scex(_("or %|#o")), 1);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);

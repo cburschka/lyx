@@ -13,6 +13,7 @@
  *                                                                         *
  ***************************************************************************/
 
+#include <config.h>
 #include "urldlg.h"
 
 UrlDialog::UrlDialog(FormUrl *form, QWidget *parent, const char *name, bool, WFlags)

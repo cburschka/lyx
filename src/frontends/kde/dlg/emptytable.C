@@ -21,7 +21,7 @@
 
 const unsigned int cellsize = 20;
 
-EmptyTable::EmptyTable(QWidget * parent = 0, const char * name = 0)
+EmptyTable::EmptyTable(QWidget * parent, const char * name)
 	: QTableView(parent,name)
 {
 	setNumCols(5);

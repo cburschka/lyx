@@ -22,7 +22,7 @@ PushButton {
 		Default {true}
 		AutoDefault {false}
 		IsMenuButton {false}
-		Text {OK}
+		Text {&OK}
 		AutoRepeat {false}
 		AutoResize {false}
 		Rect {73 555 69 55}
@@ -74,7 +74,7 @@ PushButton {
 		Default {false}
 		AutoDefault {false}
 		IsMenuButton {false}
-		Text {Apply}
+		Text {&Apply}
 		AutoRepeat {false}
 		AutoResize {false}
 		Rect {215 555 68 55}
@@ -103,7 +103,7 @@ PushButton {
 		Default {false}
 		AutoDefault {false}
 		IsMenuButton {false}
-		Text {Restore}
+		Text {&Restore}
 		AutoRepeat {false}
 		AutoResize {false}
 		Rect {357 555 68 55}
@@ -132,7 +132,7 @@ PushButton {
 		Default {false}
 		AutoDefault {false}
 		IsMenuButton {false}
-		Text {Cancel}
+		Text {&Cancel}
 		AutoRepeat {false}
 		AutoResize {false}
 		Rect {498 555 69 55}

@@ -306,9 +306,8 @@ notify us.
     will be solved if you use --with-included-gettext when configuring
     LyX.
 
-  o It is possible to compile lyx with Digital Unix cxx compiler
-    version 6.1 (and presumably compaq C++ 6.2 on both Tru64 unix and
-    linux/alpha, when this will be available), provided one uses
+  o It is possible to compile lyx with Tru64 Unix cxx compiler
+    version 6.2, provided one uses
 	CXX=cxx
 	CXXFLAGS='-ptr /tmp/lyx_cxx_repository -std strict_ansi -g -O'
 
@@ -316,16 +315,14 @@ notify us.
     repository, due to the tricks used by automake for dependencies. Ask
     Jean-Marc.Lasgouttes@inria.fr for a workaround.
 
-  o On Digital Unix with cxx, you may have a compilation error in
+  o On Tru64 Unix, you may have to compile with
+    --with-included-string to work around a Tru64 linker limitation
+    (the STL string template creates names which may be too long).
+
+  o On Tru64 Unix with cxx, you may have a compilation error in
     lyx_main.C if you have GNU gettext installed. This is due to a bug
     in gettext. To solve this, you can either (1) configure with
     --with-included-gettext or (2) add -D__STDC__ to cxx flags.
-
-  o The configure script seems to hang while it is checking the LaTeX setup.
-    We think that this is not a real problem, but rather a symptom of the 
-    fact that the ec-fonts are being rendered.  This process can take quite 
-    some time, so the remedy is simply to have patience. (The fonts need to 
-    be rendered at some point to be usable anyways.)
 
   o According to John Collins <collins@phys.psu.edu>, on SunOS 4.1.3 you may 
     find two sets of X libraries, and they are of course incompatible :-)

@@ -13,6 +13,7 @@
  *                                                                         *
  ***************************************************************************/
 
+#include <config.h>
 #include "refdlg.h"
 
 RefDialog::RefDialog(FormRef *form, QWidget *parent, const char *name, bool, WFlags)

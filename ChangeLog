@@ -1,3 +1,50 @@
+2000-12-06  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* INSTALL: update PROBLEMS section.
+
+	* src/lyxlookup.h: remove condition on xforms version, since we
+	should not include it if not appropriate.
+
+2000-12-05  John Levon  <moz@compsoc.man.ac.uk>
+
+	* src/LColor.C: "latex text" -> "latex inset" (from
+	Angus Leeming)
+
+	* src/lyxrc.C: "it's" -> "its" (from Angus Leeming)
+
+	* src/frontends/kde/FormTabularCreate.C:
+	* src/frontends/kde/citationdlg.C:
+	* src/frontends/kde/copyrightdlg.C:
+	* src/frontends/kde/paradlg.C:
+	* src/frontends/kde/paraextradlg.C:
+	* src/frontends/kde/parageneraldlg.C:
+	* src/frontends/kde/printdlg.C:
+	* src/frontends/kde/refdlg.C:
+	* src/frontends/kde/tabcreatedlg.C:
+	* src/frontends/kde/tocdlg.C:
+	* src/frontends/kde/urldlg.C: add necessary headers
+	(from Angus Leeming)
+
+	* src/frontends/kde/dlg/emptytable.C:
+	* src/frontends/kde/dlg/tabstack.C: ctors shouldn't have
+	default parameters (from Angus Leeming)
+		
+	* src/frontends/kde/dlg/moc/.cvsignore:
+	* src/frontends/kde/dlg/.cvsignore:
+	* src/frontends/kde/moc/.cvsignore: fix the library name
+	(from Angus Leeming)
+
+	* src/frontends/kde/paradlg.C:
+	* src/frontends/kde/parageneraldlg.C:
+	* src/frontends/kde/dlg/para.dlg:
+	* src/frontends/kde/dlg/paradlgdata.C: added accelerators
+
+	* src/frontends/kde/dlg/README: clarified qtarch version
+
+	* src/frontends/kde/dlg/Makefile.am: removed the
+	dlg rules as they created spontaneous rebuilds
+	(not a good idea as it requires qtarch)
+
 2000-12-05  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* config/lyxinclude.m4 (LYX_PATH_XFORMS): display also the

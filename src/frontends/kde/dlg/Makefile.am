@@ -37,29 +37,6 @@ libkdedlg_la_SOURCES = \
 	tabstack.h \
 	$(GENSOURCES)
 
-# dialog file dependencies
-
-copyrightdlgdata.C copyrightdlgdata.h: dialogs/copyright.dlg
-	$(QTARCH) -g $<
-indexdlgdata.C indexdlgdata.h: dialogs/index.dlg
-	$(QTARCH) -g $<
-printdlgdata.C printdlgdata.h: dialogs/print.dlg
-	$(QTARCH) -g $<
-paradlgdata.C paradlgdata.h: dialogs/para.dlg
-	$(QTARCH) -g $<
-parageneraldlgdata.C parageneraldlgdata.h: dialogs/parageneral.dlg
-	$(QTARCH) -g $<
-paraabovedlgdata.C paraabovedlgdata.h: dialogs/paraabove.dlg
-	$(QTARCH) -g $<
-parabelowdlgdata.C parabelowdlgdata.h: dialogs/parabelow.dlg
-	$(QTARCH) -g $<
-paraextradlgdata.C paraextradlgdata.h: dialogs/paraextra.dlg
-	$(QTARCH) -g $<
-tabcreatedlgdata.C tabcreatedlgdata.h: dialogs/tabcreate.dlg
-	$(QTARCH) -g $<
-
-dlgdata: $(GENSOURCES)
-
 moc/copyrightdlgdata_moc.C: copyrightdlgdata.C copyrightdlgdata.h
 moc/emptytable_moc.C: emptytable.C emptytable.h
 moc/indexdlgdata_moc.C: indexdlgdata.C indexdlgdata.h

@@ -4,6 +4,7 @@
  * John Levon, <moz@compsoc.man.ac.uk>
  */
 
+#include <config.h>
 #include "tabcreatedlg.h"
 #include "support/lstrings.h"
 

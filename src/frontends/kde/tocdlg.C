@@ -13,6 +13,7 @@
  *                                                                         *
  ***************************************************************************/
 
+#include <config.h>
 #include "tocdlg.h"
 
 TocDialog::TocDialog(FormToc *form, QWidget *parent, const char *name, bool, WFlags)

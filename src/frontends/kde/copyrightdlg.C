@@ -7,6 +7,7 @@
 
  *********************************************************************/
 
+#include <config.h>
 #include "copyrightdlg.h"
 
 #define Inherited CopyrightDialogData

@@ -8,6 +8,7 @@
 
 #include "ButtonController.h"
 #include "support/LAssert.h"
+#include "gettext.h" // _()
 //#include "debug.h"
 
 
@@ -53,10 +54,10 @@ void ButtonController::refresh()
 	if (cancel_) {
 		if (bp_->buttonStatus(ButtonPolicy::CANCEL)) {
 			fl_set_object_label(cancel_,
-					    cancel_label);
+					    _(cancel_label));
 		} else {
 			fl_set_object_label(cancel_,
-					    close_label);
+					    _(close_label));
 		}
 	}
 	if (!read_only_.empty()) {

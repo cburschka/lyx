@@ -23,8 +23,6 @@
 #include "BufferView.h"
 #include "insets/insettabular.h"  
 
-using std::endl;
-
 FormTabularCreate::FormTabularCreate(LyXView *v, Dialogs *d)
 	: dialog_(0), lv_(v), d_(d), h_(0)
 {

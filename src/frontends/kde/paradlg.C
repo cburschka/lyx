@@ -13,6 +13,7 @@
  *                                                                         *
  ***************************************************************************/
 
+#include <config.h>
 #include "support/lstrings.h" 
 
 #include "paradlg.h"
@@ -30,8 +31,8 @@ ParaDialog::ParaDialog(FormParagraph *form, QWidget *parent, const char *name, b
 	generalpage = new ParaGeneralDialog(this, "generalpage");
 	extrapage = new ParaExtraDialog(this, "extrapage");
 	
-	tabstack->addTabPage(generalpage, _("General"));
-	tabstack->addTabPage(extrapage, _("Extra"));
+	tabstack->addTabPage(generalpage, _("&General"));
+	tabstack->addTabPage(extrapage, _("&Extra"));
 }
 
 ParaDialog::~ParaDialog()

@@ -7,6 +7,7 @@
 
  *********************************************************************/
 
+#include <config.h>
 #include "paraextradlg.h"
 
 #include <gettext.h>

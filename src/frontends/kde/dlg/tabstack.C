@@ -24,7 +24,7 @@
  * A tab bar and a widget stack for storing related pages.
  */
 
-TabStack::TabStack(QWidget * parent = 0, const char * name = 0)
+TabStack::TabStack(QWidget * parent, const char * name)
 	: QWidget(parent,name), tabs(0), stack(0)
 {
 	stack = new QWidgetStack(this, "stack");

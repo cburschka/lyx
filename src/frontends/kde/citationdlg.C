@@ -13,6 +13,7 @@
  *                                                                         *
  ***************************************************************************/
 
+#include <config.h>
 #include "citationdlg.h"
 
 CitationDialog::CitationDialog(FormCitation *form, QWidget *parent, const char *name, bool, WFlags)

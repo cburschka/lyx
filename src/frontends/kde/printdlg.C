@@ -4,6 +4,7 @@
  * John Levon, moz@compsoc.man.ac.uk
  */
 
+#include <config.h>
 #include "dlg/printdlgdata.h"
 #include "printdlg.h"
 #include "support/lstrings.h"
