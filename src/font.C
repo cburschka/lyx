@@ -5,8 +5,7 @@
 #include "font.h"
 #include "FontLoader.h"
 #include "lyxrc.h"
-
-extern LyXRC lyxrc;
+#include "encoding.h"
 
 // namespace {
 static inline
@@ -88,29 +87,24 @@ int lyxfont::rbearing(char c, LyXFont const & f)
 }
 
 
-int lyxfont::width(char c, LyXFont const & f)
-{
-	if (f.realShape() != LyXFont::SMALLCAPS_SHAPE) {
-		return lyxrc.use_gui ? ::XTextWidth(getXFontstruct(f), &c, 1)
-			: 1;
-	} else {
-		LyXFont smallfont(f);
-		smallfont.decSize().decSize().setShape(LyXFont::UP_SHAPE);
-		if (islower(static_cast<unsigned char>(c))) {
-			c = toupper(c);
-			return ::XTextWidth(getXFontstruct(smallfont), &c, 1);
-		} else {
-			return ::XTextWidth(getXFontstruct(f), &c, 1);
-		}
-	}
-}
-
-
 int lyxfont::width(char const * s, int n, LyXFont const & f)
 {
 	if (!lyxrc.use_gui)
 		return n;
-	
+
+	if (lyxrc.font_norm_type == LyXRC::ISO_10646_1) {
+		XChar2b * xs = new XChar2b[n];
+		Encoding const * enc = f.language()->encoding();
+		for (int i = 0; i < n; ++i) {
+			Uchar c = enc->ucs(s[i]);
+			xs[i].byte1 = c >> 8;
+			xs[i].byte2 = c & 0xff;
+                }
+		int result = width(xs, n, f);
+		delete[] xs;
+		return result;
+	}
+
 	if (f.realShape() != LyXFont::SMALLCAPS_SHAPE) {
 		return ::XTextWidth(getXFontstruct(f), s, n);
 	} else {
@@ -144,9 +138,40 @@ int lyxfont::signedWidth(string const & s, LyXFont const & f)
 }
 
 
+int lyxfont::width(XChar2b const * s, int n, LyXFont const & f)
+{
+	if (!lyxrc.use_gui)
+		return n;
+	
+	if (f.realShape() != LyXFont::SMALLCAPS_SHAPE) {
+		return ::XTextWidth16(getXFontstruct(f), s, n);
+	} else {
+		// emulate smallcaps since X doesn't support this
+		unsigned int result = 0;
+		static XChar2b c = {0, 0};
+		LyXFont smallfont(f);
+		smallfont.decSize().decSize().setShape(LyXFont::UP_SHAPE);
+		for (int i = 0; i < n; ++i) {
+			if (s[i].byte1 == 0 && islower(s[i].byte2)) {
+				c.byte2 = toupper(s[i].byte2);
+				result += ::XTextWidth16(getXFontstruct(smallfont), &c, 1);
+			} else {
+				result += ::XTextWidth16(getXFontstruct(f), &s[i], 1);
+			}
+		}
+		return result;
+	}
+}
+
 int lyxfont::XTextWidth(LyXFont const & f, char * str, int count)
 {
 	return ::XTextWidth(getXFontstruct(f), str, count);
+}
+
+
+int lyxfont::XTextWidth16(LyXFont const & f, XChar2b * str, int count)
+{
+	return ::XTextWidth16(getXFontstruct(f), str, count);
 }
 
 

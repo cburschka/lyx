@@ -109,6 +109,13 @@ bool IsPrintable(unsigned char c) {
 }
 
 
+///
+inline
+bool IsPrintableNonspace(unsigned char c) {
+	return (c > ' ');
+}
+
+
 /// Word is not IsSeparator or IsKomma or IsHfill or IsFloat or IsInset. 
 inline
 bool IsWordChar(unsigned char c) {

@@ -125,7 +125,7 @@ private:
 	///
 	string filename;
 	///
-	string include_label;
+	mutable string include_label;
 };
 
 

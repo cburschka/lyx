@@ -53,7 +53,7 @@ BufferParams::BufferParams()
 	language = "default";
 	language_info = default_language;
 	fonts = "default";
-	inputenc = "latin1";
+	inputenc = "auto";
 	graphicsDriver = "default";
 	sides = LyXTextClass::OneSide;
 	columns = 1;

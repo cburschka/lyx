@@ -104,7 +104,8 @@ lyx_SOURCES = \
 	credits_form.h \
 	debug.C \
 	debug.h \
-	direction.h \
+	encoding.C \
+	encoding.h \
 	figure.h \
 	filedlg.C \
 	filedlg.h \

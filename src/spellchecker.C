@@ -50,6 +50,7 @@
 #include "lyx_gui_misc.h"
 #include "debug.h"
 #include "support/lstrings.h"
+#include "encoding.h"
 
 using std::reverse;
 using std::endl;
@@ -327,13 +328,17 @@ void create_ispell_pipe(BufferParams const & params, string const & lang)
 			argv[argc++] = tmp;
 		}
 		if (lyxrc.isp_use_input_encoding &&
-        	    params.inputenc != "default") {
+		    params.inputenc != "default") {
+			string enc = (params.inputenc == "auto")
+				? params.language_info->encoding()->LatexName()
+				: params.inputenc;
+			string::size_type n = enc.length();
 			tmp = new char[3];
 			string("-T").copy(tmp, 2); tmp[2] = '\0';
 			argv[argc++] = tmp; // Input encoding
-			tmp = new char[params.inputenc.length() + 1];
-			params.inputenc.copy(tmp, params.inputenc.length());
-			tmp[params.inputenc.length()] = '\0';
+			tmp = new char[n + 1];
+			enc.copy(tmp, n);
+			tmp[n] = '\0';
 			argv[argc++] = tmp;
 		}
 

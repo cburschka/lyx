@@ -78,25 +78,20 @@ extern BufferList bufferlist;
 
 FL_CMD_OPT cmdopt[] =
 {
-	{"-width", "*.width", XrmoptionSepArg, "690"},
-	{"-height", "*.height", XrmoptionSepArg, "510"},
-	{"-xpos", "*.xpos", XrmoptionSepArg, "-1"},
-	{"-ypos", "*.ypos", XrmoptionSepArg, "-1"}
+	{"-geometry", "*.geometry", XrmoptionSepArg, "690x510"}
 };
 
-static int width;
-static int height;
-static int xpos;
-static int ypos;
+static int width  = 690;
+static int height = 510;
+static int xpos   = -1;
+static int ypos   = -1;
+static char geometry[40];
 bool	   cursor_follows_scrollbar;
 
 
 FL_resource res[] =
 {
-	{"width", "widthClass", FL_INT, &width, "690", 0},
-	{"height", "heightClass", FL_INT, &height, "510", 0},
-	{"xpos", "xposClass", FL_INT, &xpos, "-1", 0},
-	{"ypos", "yposClass", FL_INT, &ypos, "-1", 0}
+	{"geometry", "geometryClass", FL_STRING, geometry, "690x510", 40}
 };
 
 
@@ -129,6 +124,8 @@ LyXGUI::LyXGUI(LyX * owner, int * argc, char * argv[], bool GUI)
 	static const int num_res = sizeof(res)/sizeof(FL_resource);
 	fl_initialize(argc, argv, "LyX", cmdopt, num_res);
 	fl_get_app_resources(res, num_res);
+
+        XParseGeometry(geometry, &xpos, &ypos, (unsigned int *) &width, (unsigned int *) &height);
 
 	Display * display = fl_get_display();
 	if (!display) {
@@ -416,7 +413,7 @@ void LyXGUI::create_forms()
 	}
 
 	fl_addto_choice(fd_form_document->choice_inputenc,
-			"default|latin1|latin2|latin5"
+			"default|auto|latin1|latin2|latin5"
 			"|koi8-r|koi8-u|cp866|cp1251|iso88595");
 
         for (n = 0; tex_graphics[n][0]; ++n) {

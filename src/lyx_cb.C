@@ -2785,6 +2785,7 @@ extern "C" void ScreenApplyCB(FL_OBJECT *, long)
 	lyxrc.sans_font_name = fl_get_input(fd_form_screen->input_sans);
 	lyxrc.typewriter_font_name = fl_get_input(fd_form_screen->input_typewriter);
 	lyxrc.font_norm = fl_get_input(fd_form_screen->input_font_norm);
+	lyxrc.set_font_norm_type();
 	lyxrc.zoom = atoi(fl_get_input(fd_form_screen->intinput_size));
 	fontloader.update();
 

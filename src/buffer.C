@@ -88,6 +88,7 @@
 #include "language.h"
 #include "lyx_gui_misc.h"	// WarnReadonly()
 #include "frontends/Dialogs.h"
+#include "encoding.h"
 
 using std::ostream;
 using std::ofstream;
@@ -99,6 +100,7 @@ using std::endl;
 using std::pair;
 using std::vector;
 using std::max;
+using std::set;
 
 // all these externs should eventually be removed.
 extern BufferList bufferlist;
@@ -1678,7 +1680,7 @@ void Buffer::makeLaTeXFile(string const & fname,
 		
 		// language should be a parameter to \documentclass
 		bool use_babel = false;
-		if (params.language_info->RightToLeft()) // This seems necessary
+		if (params.language_info->lang() == "hebrew") // This seems necessary
 			features.UsedLanguages.insert(default_language);
 		if (params.language != "default" ||
 		    !features.UsedLanguages.empty() ) {
@@ -1717,12 +1719,32 @@ void Buffer::makeLaTeXFile(string const & fname,
 			    << "]{fontenc}\n";
 			texrow.newline();
 		}
-		if (params.inputenc != "default") {
+
+		if (params.inputenc == "auto") {
+			string doc_encoding =
+				params.language_info->encoding()->LatexName();
+
+			// Create a list with all the input encodings used 
+			// in the document
+			set<string> encodings;
+			for (LaTeXFeatures::LanguageList::const_iterator it =
+				     features.UsedLanguages.begin();
+			     it != features.UsedLanguages.end(); ++it)
+				if ((*it)->encoding()->LatexName() != doc_encoding)
+					encodings.insert((*it)->encoding()->LatexName());
+
+			ofs << "\\usepackage[";
+			for (set<string>::const_iterator it = encodings.begin();
+			     it != encodings.end(); ++it)
+				ofs << *it << ",";
+			ofs << doc_encoding << "]{inputenc}\n";
+			texrow.newline();
+		} else if (params.inputenc != "default") {
 			ofs << "\\usepackage[" << params.inputenc
 			    << "]{inputenc}\n";
 			texrow.newline();
 		}
-		
+
 		// At the very beginning the text parameters.
 		if (params.paperpackage != BufferParams::PACKAGE_NONE) {
 			switch (params.paperpackage) {

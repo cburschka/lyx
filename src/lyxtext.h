@@ -44,13 +44,6 @@ public:
 		NEED_VERY_LITTLE_REFRESH
 	};
 
-	enum Letter_Form {
-		FORM_ISOLATED,
-		FORM_INITIAL,
-		FORM_MEDIAL,
-		FORM_FINAL
-	};
-
 	/// Constructor
 	LyXText(BufferView *);
 	LyXText(InsetText *);
@@ -675,9 +668,6 @@ private:
 
 	///
 	mutable bool bidi_same_direction;
-
-	///
-	unsigned char TransformChar(unsigned char c, Letter_Form form) const;
 
 	///
 	unsigned char TransformChar(unsigned char c, LyXParagraph * par,

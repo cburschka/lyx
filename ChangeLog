@@ -1,3 +1,53 @@
+2000-07-04  edscott  <edscott@imp.mx>
+
+	* src/lyxrc.C, src/lyxrc.h, src/BufferView_pimpl.C,
+	lib/lyxrc.example: added option \wheel_jump
+
+2000-07-04   R. Lahaye  <lahaye@postech.ac.kr>
+
+	* src/lyx_gui.C src/lyx_main.C: add support for -geometry, and
+	remove support for -width,-height,-xpos and -ypos.
+
+2000-07-01  Dekel Tsur  <dekel@math.tau.ac.il>
+
+	* src/encoding.[Ch]: New files.
+
+	* src/painter.C (text(int,int,XChar2b const *,...)): New method.
+	(text): Call to the underline() method only when needed.
+
+	* src/font.C (XTextWidth16,width(XChar2b const *,...)): New methods.
+
+	* src/buffer.C (makeLaTeXFile): Compute automatically the input
+	  encoding(s) for the document.
+
+	* src/bufferparams.C (BufferParams): Changed default value of
+	inputenc to "auto".
+
+	* src/language.C (newLang): Removed.
+	(items[]): Added encoding information for all defined languages.
+
+	* src/lyx_gui.C (create_forms): Added "auto" option to the input
+	encoding choice button.
+
+	* src/lyxrc.h (font_norm_type): New member variable.
+	(set_font_norm_type): New method.
+
+	* src/paragraph.C (TeXOnePar): Put "\inputencoding{}" between
+	paragraphs with different encodings.                          
+
+	* src/text.C (is_arabic, is_nikud, TransformChar): Moved to encoding.C
+	(TransformChar): Changed to work correctly with Arabic points.
+	(draw): Added support for drawing Arabic points.
+	(draw): Removed code for drawing underbars (this is done by
+	the Painter!)
+
+	* src/support/textutils.h (IsPrintableNonspace): New function.
+
+	* src/BufferView_pimpl.h: Added "using SigC::Object".
+	* src/LyXView.h: ditto.
+
+	* src/insets/insetinclude.h (include_label): Changed to mutable.
+
 2000-07-04  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/mathed/math_iter.h: remove empty destructor

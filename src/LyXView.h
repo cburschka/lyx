@@ -29,13 +29,17 @@ class Menus;
 class BufferView;
 class Dialogs;
 
+#ifdef SIGC_CXX_NAMESPACES
+using SigC::Object;
+#endif
+
 
 /**
   This class is the form containing the view of the buffer. The actual buffer
   view is supposed (at least IMHO) to be another class, that shows its output
   in one or more LyXView's.
  */
-class LyXView : public SigC::Object {
+class LyXView : public Object {
 public:
 	/// constructor
 	LyXView(int w, int h);

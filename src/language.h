@@ -5,14 +5,16 @@
 #include <map>
 #include "LString.h"
 
+class Encoding;
+
 ///
 class Language {
 public:
 	///
 	Language() : RightToLeft_(false) {}
 	///
-	Language(string const & l, string const & d, bool rtl)
-		: lang_(l), display_(d), RightToLeft_(rtl) {}
+	Language(string const & l, string const & d, bool rtl, Encoding const * e)
+		: lang_(l), display_(d), RightToLeft_(rtl) , encoding_(e) {}
 	///
 	string const & lang() const {
 		return lang_;
@@ -25,6 +27,10 @@ public:
 	bool RightToLeft() const {
 		return RightToLeft_;
 	}
+	///
+	Encoding const * encoding() const {
+		return encoding_;
+	}
 private:
 	///
 	string lang_;
@@ -32,14 +38,17 @@ private:
 	string display_;
 	///
 	bool RightToLeft_;
+	///
+	Encoding const * encoding_;
 };
 
 #if 0
 bool operator==(Language const & l1, Language const & l2) 
 {
 	return l1.lang == l2.lang
-		&& l1.display == l2.display
-		&& l1.RightToLeft == l2.RightToLeft;
+		&& l1.display_ == l2.display_
+		&& l1.RightToLeft_ == l2.RightToLeft_
+		&& l1.encoding_ == l2.encoding_;
 }
 
 

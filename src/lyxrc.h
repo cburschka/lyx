@@ -140,6 +140,8 @@ public:
 	string backupdir_path;
 	/// Zoom factor for screen fonts
 	unsigned int zoom;
+	/// parameter for button_4 and button_5 (scrollwheel)
+	unsigned int wheel_jump;
 	/// Screen font sizes in points for each font size
 	float font_sizes[10];
 	/// Allow the use of scalable fonts? Default is yes.
@@ -162,6 +164,14 @@ public:
 	string popup_font_name;
 	///
 	string font_norm;
+	enum FontEncoding {
+		ISO_10646_1,
+		ISO_8859_6_8,
+		OTHER_ENCODING
+	};
+	FontEncoding font_norm_type;
+	///
+	void set_font_norm_type();
 	///
 	string font_norm_menu;
 	///

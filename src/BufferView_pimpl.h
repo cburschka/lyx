@@ -16,7 +16,11 @@ class LyXView;
 class WorkArea;
 class LyXScreen;
 
-struct BufferView::Pimpl : public SigC::Object {
+#ifdef SIGC_CXX_NAMESPACES
+using SigC::Object;
+#endif
+
+struct BufferView::Pimpl : public Object {
 	Pimpl(BufferView * i, LyXView * o,
 	      int xpos, int ypos, int width, int height);
 	///

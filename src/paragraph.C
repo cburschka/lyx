@@ -36,6 +36,7 @@
 #include "texrow.h"
 #include "support/lyxmanip.h"
 #include "BufferView.h"
+#include "encoding.h"
 
 using std::ostream;
 using std::endl;
@@ -2092,11 +2093,20 @@ LyXParagraph * LyXParagraph::TeXOnePar(Buffer const * buf,
 
 	Language const * language = getParLanguage(bparams);
 	Language const * doc_language = bparams.language_info;
-	if (language != doc_language &&
-	    (!previous || previous->getParLanguage(bparams) != language)) {
+	Language const * previous_language = previous
+		? previous->getParLanguage(bparams) : doc_language;
+	if (language != doc_language && language != previous_language) {
 		os << subst(lyxrc.language_command_begin, "$$lang",
 			    language->lang())
 		   << endl;
+		texrow.newline();
+	}
+
+	if (bparams.inputenc == "auto" &&
+	    language->encoding() != previous_language->encoding()) {
+		os << "\\inputencoding{"
+		   << language->encoding()->LatexName()
+		   << "}" << endl;
 		texrow.newline();
 	}
 	
@@ -3315,7 +3325,10 @@ void LyXParagraph::SimpleTeXSpecialChars(Buffer const * buf,
 			case '°': case '±': case '²': case '³':  
 			case '×': case '÷': case '¹': case 'ª':
 			case 'º': case '¬': case 'µ':
-				if (bparams.inputenc == "latin1") {
+				if (bparams.inputenc == "latin1" ||
+				    (bparams.inputenc == "auto" &&
+				     font.language()->encoding()->LatexName()
+				     == "latin1")) {
 					os << "\\ensuremath{"
 					   << c
 					   << '}';

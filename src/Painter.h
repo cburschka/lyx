@@ -96,7 +96,10 @@ public:
 	
 	/// Draw a char at position x, y (y is the baseline)
 	PainterBase & text(int x, int y, char c, LyXFont const & f);
-	
+
+	/// Draw a wide string at position x, y
+	PainterBase & text(int x, int y, XChar2b const * str, int l,
+		   LyXFont const & f);	
 private:
 	/// Check the font, and if set, draw an underline
 	void underline(LyXFont const & f, int x, int y, int width);

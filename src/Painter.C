@@ -30,6 +30,8 @@
 #include "WorkArea.h"
 #include "font.h"
 #include "ColorHandler.h"
+#include "lyxrc.h"
+#include "encoding.h"
 
 using std::endl;
 using std::max;
@@ -270,6 +272,19 @@ PainterBase & Painter::text(int x, int y, char c, LyXFont const & f)
 PainterBase & Painter::text(int x, int y, char const * s, int ls,
 			LyXFont const & f)
 {
+	if (lyxrc.font_norm_type == LyXRC::ISO_10646_1) {
+		XChar2b * xs = new XChar2b[ls];
+		Encoding const * enc = f.language()->encoding();
+		for (int i = 0; i < ls; ++i) {
+			Uchar c = enc->ucs(s[i]);
+			xs[i].byte1 = c >> 8;
+			xs[i].byte2 = c & 0xff;
+                }
+		text(x , y, xs, ls, f);
+		delete[] xs;
+		return *this;
+	}
+
 	if (lyxerr.debugging()) {
 		if (!Lgb_bug_find_hack)
 			lyxerr << "text not called from "
@@ -303,21 +318,58 @@ PainterBase & Painter::text(int x, int y, char const * s, int ls,
 			}
 		}
 	}
-	underline(f, x, y, lyxfont::width(s, ls, f));
+	if (f.underbar() == LyXFont::ON && f.latex() != LyXFont::ON)
+		underline(f, x, y, lyxfont::width(s, ls, f));
+	return *this;
+}
+
+
+PainterBase & Painter::text(int x, int y, XChar2b const * s, int ls,
+			LyXFont const & f)
+{
+	if (lyxerr.debugging()) {
+		if (!Lgb_bug_find_hack)
+			lyxerr << "text not called from "
+				"workarea::workhandler\n";
+		lyxerr << "Painter drawable: " << owner.getPixmap() << endl;
+	}
+	GC gc = lyxColorHandler->getGCForeground(f.realColor());
+	if (f.realShape() != LyXFont::SMALLCAPS_SHAPE) {
+		lyxfont::XSetFont(display, gc, f);
+		XDrawString16(display, owner.getPixmap(), gc, x, y, s, ls);
+	} else {
+		LyXFont smallfont(f);
+		smallfont.decSize().decSize().setShape(LyXFont::UP_SHAPE);
+		static XChar2b c = {0, 0};
+		int tmpx = x;
+		for(int i = 0; i < ls; ++i) {
+			if (s[i].byte1 == 0 && islower(s[i].byte2)) {
+				c.byte2 = toupper(s[i].byte2);
+				lyxfont::XSetFont(display, gc, smallfont);
+				XDrawString16(display, owner.getPixmap(),
+					    gc, tmpx, y, &c, 1);
+				tmpx += lyxfont::XTextWidth16(smallfont, &c, 1);
+			} else {
+				lyxfont::XSetFont(display, gc, f);
+				XDrawString16(display, owner.getPixmap(),
+					    gc, tmpx, y, &s[i], 1);
+				tmpx += lyxfont::XTextWidth16(f, const_cast<XChar2b *>(&s[i]), 1);
+			}
+		}
+	}
+	if (f.underbar() == LyXFont::ON && f.latex() != LyXFont::ON)
+		underline(f, x, y, lyxfont::width(s, ls, f));
 	return *this;
 }
 
 
 void Painter::underline(LyXFont const & f, int x, int y, int width)
 {
-	// What about underbars?
-	if (f.underbar() == LyXFont::ON && f.latex() != LyXFont::ON) {
-		int below = max(lyxfont::maxDescent(f) / 2, 2);
-		int height = max((lyxfont::maxDescent(f) / 4) - 1, 1);
-		if (height < 2)
-			line(x, y + below, x + width, y + below, f.color());
-		else
-			fillRectangle(x, y + below, width, below + height,
-				      f.color());
-	}
+	int below = max(lyxfont::maxDescent(f) / 2, 2);
+	int height = max((lyxfont::maxDescent(f) / 4) - 1, 1);
+	if (height < 2)
+		line(x, y + below, x + width, y + below, f.color());
+	else
+		fillRectangle(x, y + below, width, below + height,
+			      f.color());
 }

@@ -32,7 +32,9 @@ struct lyxfont {
 	int rbearing(char c, LyXFont const & f);
 
 	static
-	int width(char c, LyXFont const & f);
+	int width(char c, LyXFont const & f) {
+		return width(&c, 1, f);
+	}
 
 	static
 	int width(char const * s, int n, LyXFont const & f);
@@ -53,6 +55,12 @@ struct lyxfont {
 
 	static
 	int XTextWidth(LyXFont const & f, char * str, int count);
+
+	static
+	int width(XChar2b const * s, int n, LyXFont const & f);
+
+	static
+	int XTextWidth16(LyXFont const & f, XChar2b * str, int count);
 
 	static
 	void XSetFont(Display * display, GC gc, LyXFont const & f);
