@@ -154,8 +154,6 @@ public:
 	///
 	int getMaxWidth(BufferView *, UpdatableInset const *) const;
 	///
-	Buffer * bufferOwner() const { return const_cast<Buffer *>(buffer); }
-	///
 	LyXText * getLyXText(BufferView const *,
 			     bool const recursive = false) const;
 	///
