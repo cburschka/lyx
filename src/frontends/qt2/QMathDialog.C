@@ -32,7 +32,7 @@ using std::endl;
 class QScrollViewSingle : public QScrollView {
 public:
 	QScrollViewSingle(QWidget * p)
-		: QScrollView(p) {
+		: QScrollView(p), w_(0) {
 		setResizePolicy(Manual);
 		setHScrollBarMode(AlwaysOff);
 		setVScrollBarMode(AlwaysOn);
@@ -70,6 +70,8 @@ namespace {
 		latex_ams_misc
 	};
 	int const nr_panels = sizeof(panels)/sizeof(panels[0]);
+
+bool panel_initialised[nr_panels];
 }
  
  
@@ -83,11 +85,27 @@ QMathDialog::QMathDialog(QMath * form)
 		functionsLB->insertItem(function_names[i]);
 	}
  
-	for (int i = 0; i < nr_panels; ++i) {
-		addPanel(panels[i]);
+	for (int i = 0; i < nr_panels; ++i) { 
+		QScrollViewSingle * view = new QScrollViewSingle(symbolsWS);
+		symbolsWS->addWidget(view, i);
 	}
+
+	// aboutToShow() only fires when != 0 in Qt 2 !
 	symbolsWS->raiseWidget(0);
-	symbolsWS->resize(symbolsWS->sizeHint());
+	addPanel(0);
+	panel_initialised[0] = true;
+ 
+	connect(symbolsWS, SIGNAL(aboutToShow(int)), this, SLOT(showingPanel(int)));
+}
+
+
+void QMathDialog::showingPanel(int num)
+{
+	if (panel_initialised[num])
+		return;
+
+	addPanel(num);
+	panel_initialised[num] = true;
 }
 
  
@@ -104,15 +122,11 @@ IconPalette * QMathDialog::makePanel(QWidget * parent, char const ** entries)
 }
 
  
-void QMathDialog::addPanel(char const ** entries)
+void QMathDialog::addPanel(int num)
 {
-	static int id = 0;
- 
-	QScrollViewSingle * view = new QScrollViewSingle(symbolsWS);
- 
-	IconPalette * p = makePanel(view->viewport(), entries);
+	QScrollViewSingle * view = static_cast<QScrollViewSingle*>(symbolsWS->visibleWidget());
+	IconPalette * p = makePanel(view->viewport(), panels[num]);
 	view->setChild(p);
-	symbolsWS->addWidget(view, id++);
 }
 
  

@@ -37,6 +37,9 @@ public slots:
 	virtual void subscriptClicked();
 	virtual void superscriptClicked();
 	void symbol_clicked(string str);
+
+	/// about to show a symbol panel
+	void showingPanel(int);
  
 protected:
 	//needed ? virtual void closeEvent(QCloseEvent * e);
@@ -46,7 +49,7 @@ private:
 	IconPalette * makePanel(QWidget * parent, char const ** entries);
 
 	/// add a symbol panel
-	void addPanel(char const ** entries);
+	void addPanel(int num);
  
 	/// owning form
 	QMath * form_;
