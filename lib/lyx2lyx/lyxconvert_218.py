@@ -320,9 +320,13 @@ def remove_oldertinset(lines):
 	i = i+1
 
 def is_ert_paragraph(lines, i):
+    if not check_token(lines[i], "\\layout Standard"):
+        return 0
+
     i = find_nonempty_line(lines, i+1)
     if not check_token(lines[i], "\\begin_inset ERT"):
 	return 0
+
     j = find_end_of_inset(lines, i)
     k = find_nonempty_line(lines, j+1)
     return check_token(lines[k], "\\layout")
@@ -333,7 +337,7 @@ def combine_ert(lines):
 	i = find_token(lines, "\\begin_inset ERT", i)
 	if i == -1:
 	    break
-	j = find_token_backwards(lines,"\\layout", i-1)
+	j = get_paragraph(lines, i)
 	count = 0
 	text = []
 	while is_ert_paragraph(lines, j):
