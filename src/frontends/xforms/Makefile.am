@@ -194,6 +194,8 @@ libxforms_la_SOURCES = \
 #	GUI_runtime.C \
 #	GUI_applymenu.C
 
+libxforms_la_LIBADD = @LYX_LIBS@ @FRONTEND_LDFLAGS@ @FRONTEND_LIBS@
+
 # for convenience only
 updatesrc:
 	$(MAKE) -C forms updatesrc

@@ -631,6 +631,8 @@ bool InsetCollapsable::searchForward(BufferView * bv, string const & str,
 	first_after_edit = false;
 	return found;
 }
+
+
 bool InsetCollapsable::searchBackward(BufferView * bv, string const & str,
                                       bool const & cs, bool const & mw)
 {
@@ -642,9 +644,10 @@ bool InsetCollapsable::searchBackward(BufferView * bv, string const & str,
 }
 
 
-string const InsetCollapsable::selectNextWord(BufferView * bv, float & value) const
+string const InsetCollapsable::selectNextWord(BufferView * bv,
+					      float & value) const
 {
-	string str = inset.selectNextWord(bv, value);
+	string const str = inset.selectNextWord(bv, value);
 	if (first_after_edit && str.empty())
 		close(bv);
 	first_after_edit = false;

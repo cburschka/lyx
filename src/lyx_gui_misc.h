@@ -23,7 +23,8 @@
 #include <utility>  /* needed for pair<> definition */
 
 /// Prevents LyX from being killed when the close box is pressed in a popup.
-extern "C" int CancelCloseBoxCB(FL_FORM *, void *);
+extern "C"
+int CancelCloseBoxCB(FL_FORM *, void *);
 
 /** Redraw the form (on receipt of a Signal indicating, for example,
     that the xform colors have been re-mapped). */

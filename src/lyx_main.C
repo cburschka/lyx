@@ -185,7 +185,52 @@ LyX::~LyX()
 }
 
 
-extern "C" void error_handler(int err_sig);
+extern "C" {
+	
+static
+void error_handler(int err_sig)
+{
+	switch (err_sig) {
+	case SIGHUP:
+		lyxerr << "\nlyx: SIGHUP signal caught" << endl;
+		break;
+	case SIGINT:
+		// no comments
+		break;
+	case SIGFPE:
+		lyxerr << "\nlyx: SIGFPE signal caught" << endl;
+		break;
+	case SIGSEGV:
+		lyxerr << "\nlyx: SIGSEGV signal caught" << endl;
+		lyxerr <<
+			"Sorry, you have found a bug in LyX."
+			" If possible, please read 'Known bugs'\n"
+			"under the Help menu and then send us "
+			"a full bug report. Thanks!" << endl;
+		break;
+	case SIGTERM:
+		// no comments
+		break;
+	}
+   
+	// Deinstall the signal handlers
+	signal(SIGHUP, SIG_DFL);
+	signal(SIGINT, SIG_DFL);
+	signal(SIGFPE, SIG_DFL);
+	signal(SIGSEGV, SIG_DFL);
+	signal(SIGTERM, SIG_DFL);
+
+	bufferlist.emergencyWriteAll();
+
+	lyxerr << "Bye." << endl;
+	if (err_sig!= SIGHUP && 
+	   (!GetEnv("LYXDEBUG").empty() || err_sig == SIGSEGV))
+		lyx::abort();
+	exit(0);
+}
+
+}
+
 
 void LyX::init(bool gui)
 {
@@ -839,44 +884,3 @@ bool LyX::easyParse(int * argc, char * argv[])
 }
 
 
-extern "C"
-void error_handler(int err_sig)
-{
-	switch (err_sig) {
-	case SIGHUP:
-		lyxerr << "\nlyx: SIGHUP signal caught" << endl;
-		break;
-	case SIGINT:
-		// no comments
-		break;
-	case SIGFPE:
-		lyxerr << "\nlyx: SIGFPE signal caught" << endl;
-		break;
-	case SIGSEGV:
-		lyxerr << "\nlyx: SIGSEGV signal caught" << endl;
-		lyxerr <<
-			"Sorry, you have found a bug in LyX."
-			" If possible, please read 'Known bugs'\n"
-			"under the Help menu and then send us "
-			"a full bug report. Thanks!" << endl;
-		break;
-	case SIGTERM:
-		// no comments
-		break;
-	}
-   
-	// Deinstall the signal handlers
-	signal(SIGHUP, SIG_DFL);
-	signal(SIGINT, SIG_DFL);
-	signal(SIGFPE, SIG_DFL);
-	signal(SIGSEGV, SIG_DFL);
-	signal(SIGTERM, SIG_DFL);
-
-	bufferlist.emergencyWriteAll();
-
-	lyxerr << "Bye." << endl;
-	if (err_sig!= SIGHUP && 
-	   (!GetEnv("LYXDEBUG").empty() || err_sig == SIGSEGV))
-		lyx::abort();
-	exit(0);
-}

@@ -29,7 +29,7 @@ FormFloat::FormFloat(ControlFloat & c)
 {}
 
 
-#warning Needs to be implemented. (Lgb)
+// FIX: Needs to be implemented. (Lgb)
 // A way to set to float default is missing.
 // A way to set "force[!]" is missing.
 // Also there are two groups of buttons [Here] and [top,bottom,page,here],

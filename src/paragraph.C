@@ -1606,9 +1606,9 @@ bool Paragraph::simpleTeXOnePar(Buffer const * buf,
 		}
 #else
 #ifdef WITH_WARNINGS
-#warning For now we ALWAYS have to close the foreign font settings if they are
-#warning there as we start another \selectlanguage with the next paragraph if
-#warning we are in need of this. This should be fixed sometime (Jug)
+//#warning For now we ALWAYS have to close the foreign font settings if they are
+//#warning there as we start another \selectlanguage with the next paragraph if
+//#warning we are in need of this. This should be fixed sometime (Jug)
 #endif
 		running_font.latexWriteEndChanges(os, basefont,  basefont);
 #endif

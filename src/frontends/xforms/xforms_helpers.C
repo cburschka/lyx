@@ -38,9 +38,8 @@ void setEnabled(FL_OBJECT * ob, bool enable)
 // Take a string and add breaks so that it fits into a desired label width, w
 string formatted(string const & sin, int w, int size, int style)
 {
-#ifdef WITH_WARNINGS
-#warning Why cant this be done by a one pass algo? (Lgb)
-#endif
+	// FIX: Q: Why cant this be done by a one pass algo? (Lgb)
+
 	string sout;
 	if (sin.empty()) return sout;
 

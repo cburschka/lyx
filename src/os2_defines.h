@@ -16,7 +16,10 @@
 #if defined (__cplusplus)
 #include <cctype>
 #include <cstdlib>
-extern "C" inline int readlink(const char *, char *, size_t) {return -1;}
+
+extern "C"
+inline int readlink(const char *, char *, size_t) {return -1;}
+
 #else
 #include <ctype.h>
 #include <stdlib.h>

@@ -43,9 +43,28 @@ using std::endl;
 
 // These are C wrappers around static members of Combox, used as
 // callbacks for xforms.
-extern "C" void C_Combox_input_cb(FL_OBJECT *ob, long);
-extern "C" void C_Combox_combo_cb(FL_OBJECT *ob, long data) ;
-extern "C" int C_Combox_peek_event(FL_FORM * form, void *xev);
+extern "C" {
+	
+	static
+	void C_Combox_input_cb(FL_OBJECT * ob, long data)
+	{
+		Combox::input_cb(ob, data);
+	}
+	
+	static
+	void C_Combox_combo_cb(FL_OBJECT * ob, long data) 
+	{
+		Combox::combo_cb(ob, data);
+	}
+	
+	static
+	int C_Combox_peek_event(FL_FORM * form, void *xev)
+	{
+		return Combox::peek_event(form, xev);
+	}
+
+}
+
 
 Combox::Combox(combox_type t)
 	: type(t), tabfolder1(0), tabfolder2(0)
@@ -364,12 +383,6 @@ void Combox::input_cb(FL_OBJECT * ob, long)
 }
 
 
-extern "C" void C_Combox_input_cb(FL_OBJECT * ob, long data)
-{
-  Combox::input_cb(ob, data);
-}
-
-
 void Combox::combo_cb(FL_OBJECT * ob, long data)
 {
 	Combox * combo = static_cast<Combox*>(ob->u_vdata);
@@ -402,11 +415,6 @@ void Combox::combo_cb(FL_OBJECT * ob, long data)
 		combo->hide();
 		break;
 	}
-}
-
-extern "C" void C_Combox_combo_cb(FL_OBJECT * ob, long data) 
-{
-	Combox::combo_cb(ob, data);
 }
 
 
@@ -473,11 +481,6 @@ int Combox::peek_event(FL_FORM * form, void * xev)
 		return 1;
 	}
 	return 0;  
-}
-	
-extern "C" int C_Combox_peek_event(FL_FORM * form, void *xev)
-{
-	return Combox::peek_event(form, xev);
 }
 
 

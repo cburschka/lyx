@@ -221,7 +221,7 @@ void Trans::AddDeadkey(tex_accent accent, string const & keys)
 }
 
 
-int Trans::Load(LyXLex & lex)
+int Trans::Load(LyXLex & lex) 
 {
 	bool error = false;
 
@@ -253,7 +253,7 @@ int Trans::Load(LyXLex & lex)
 				return -1;
 
 #if 1
-#warning This code should be removed...
+//#warning This code should be removed...
 			// But we need to fix up all the kmap files first
 			// so that this field is not present anymore.
 			if (lex.next(true)) {

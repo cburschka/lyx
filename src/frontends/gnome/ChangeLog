@@ -1,3 +1,8 @@
+2001-09-09  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* Makefile.am (libgnome_la_LIBADD): depend on the gui libs.
+	(libgnome_la_SOURCES): sort
+
 2001-08-27  John Levon  <moz@compsoc.man.ac.uk>
 
 	* GUIRunTime.C: initApplication() should take a int & argc, add debug

@@ -423,8 +423,7 @@ void InsetText::draw(BufferView * bv, LyXFont const & f,
 		inset_y = cy(bv) + drawTextYOffset;
 	}
 	if (!cleared && (need_update == CURSOR)
-		&& !getLyXText(bv)->selection.set())
-	{
+	    && !getLyXText(bv)->selection.set()) {
 		drawFrame(pain, cleared);
 		x += last_width; // was width(bv, f);
 		need_update = NONE;
@@ -470,9 +469,9 @@ void InsetText::draw(BufferView * bv, LyXFont const & f,
 		bv->screen()->update(lt, bv, y_offset, int(x));
 	} else {
 		locked = false;
-		if (need_update & SELECTION)
+		if (need_update & SELECTION) {
 			bv->screen()->toggleToggle(lt, bv, y_offset, int(x));
-		else if (need_update & CURSOR) {
+		} else if (need_update & CURSOR) {
 			bv->screen()->toggleSelection(lt, bv, true, y_offset,int(x));
 			lt->clearSelection();
 			lt->selection.cursor = lt->cursor;
@@ -484,15 +483,20 @@ void InsetText::draw(BufferView * bv, LyXFont const & f,
 	lt->refresh_y = 0;
 	lt->status(bv, LyXText::UNCHANGED);
 	if ((need_update != CURSOR_PAR) &&
-		((drawFrame_ == ALWAYS) || ((drawFrame_ == LOCKED) && locked)))
+	    ((drawFrame_ == ALWAYS) || ((drawFrame_ == LOCKED) && locked))) {
 		drawFrame(pain, cleared);
-	else if (need_update & CLEAR_FRAME)
+	} else if (need_update & CLEAR_FRAME) {
 		clearFrame(pain, cleared);
+	}
+	
 	x += last_width /* was width(bv, f) */ - TEXT_TO_INSET_OFFSET;
+	
 	if (bv->text->status() == LyXText::CHANGED_IN_DRAW) {
 		need_update |= FULL;
-	} else if (need_update != INIT)
+	} else if (need_update != INIT) {
 		need_update = NONE;
+	}
+	
 	if (clear)
 		lt = 0;
 }
@@ -506,7 +510,8 @@ void InsetText::drawFrame(Painter & pain, bool cleared) const
 		frame_y = top_baseline - insetAscent + ttoD2;
 		frame_w = last_width - TEXT_TO_INSET_OFFSET;
 		frame_h = insetAscent + insetDescent - TEXT_TO_INSET_OFFSET;
-		pain.rectangle(frame_x, frame_y, frame_w, frame_h,
+		pain.rectangle(frame_x, frame_y,
+			       frame_w, frame_h,
 		               frame_color);
 		frame_is_visible = true;
 	}

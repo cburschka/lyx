@@ -79,6 +79,28 @@ long const SIX_MONTH_SEC = 6L * 30L * 24L * 60L * 60L;
 //static
 long const ONE_HOUR_SEC = 60L * 60L;
 
+extern "C" {
+	
+	static
+	int C_LyXFileDlg_CancelCB(FL_FORM *fl, void *xev)
+	{
+		return FileDialog::Private::CancelCB(fl, xev);
+	}
+	
+	static
+	void C_LyXFileDlg_DoubleClickCB(FL_OBJECT * ob, long data)
+	{
+		FileDialog::Private::DoubleClickCB(ob, data);
+	}
+
+	static
+	void C_LyXFileDlg_FileDlgCB(FL_OBJECT * ob, long data)
+	{
+		FileDialog::Private::FileDlgCB(ob, data);
+	}
+
+}
+
 } // namespace anon
 
 
@@ -545,12 +567,6 @@ void FileDialog::Private::FileDlgCB(FL_OBJECT *, long lArgument)
 }
 
 
-extern "C" void C_LyXFileDlg_FileDlgCB(FL_OBJECT * ob, long data)
-{
-	FileDialog::Private::FileDlgCB(ob, data);
-}
-
-
 // Handle callback from list
 void FileDialog::Private::HandleListHit()
 {
@@ -570,12 +586,6 @@ void FileDialog::Private::DoubleClickCB(FL_OBJECT *, long)
 	if (pCurrentDlg->HandleDoubleClick())
 		// Simulate click on OK button
 		pCurrentDlg->Force(false);
-}
-
-
-extern "C" void C_LyXFileDlg_DoubleClickCB(FL_OBJECT * ob, long data)
-{
-	FileDialog::Private::DoubleClickCB(ob, data);
 }
 
 
@@ -675,12 +685,6 @@ int FileDialog::Private::CancelCB(FL_FORM *, void *)
 	// Simulate a click on the cancel button
 	pCurrentDlg->Force(true);
   	return FL_IGNORE;
-}
-
-
-extern "C" int C_LyXFileDlg_CancelCB(FL_FORM *fl, void *xev)
-{
-	return FileDialog::Private::CancelCB(fl, xev);
 }
 
 

@@ -129,7 +129,7 @@ inline
 void l_getline(istream & is, string & str)
 {
 #ifdef WITH_WARNINGS
-#warning old l_getline
+//#warning old l_getline
 #endif
     getline(is, str);
     while(str.empty())

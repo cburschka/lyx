@@ -1,3 +1,22 @@
+2001-09-09  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* paragraph.h: make the optional constructor arg required instead.
+	some modifications to other files because of this.
+
+	* minibuffer.C (C_MiniBuffer_peek_event): make it static
+
+	* lyxserver.C (C_LyXComm_callback): make it static
+
+	* lyx_main.C (error_handler): make it static
+
+	* lyx_gui.C (LyX_XErrHandler): make it static
+
+	* XFormsView.C (C_XFormsView_atCloseMainFormCB): make it static
+
+	* WorkArea.C: make the extern "C" methods static.
+
+	* Makefile.am (lyx_LDADD): simplify
+
 2001-09-02  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* commandtags.h: removed redundant LFUNs, LFUN_HELP_COPYRIGHT,

@@ -3239,6 +3239,8 @@ void BufferView::Pimpl::specialChar(InsetSpecialChar::Kind kind)
 		InsetSpecialChar * new_inset = 
 			new InsetSpecialChar(kind);
 		insertInset(new_inset);
+		// Ok, what happens here if we are unable to insert
+		// the inset? Leak it?
 	}
 }
 

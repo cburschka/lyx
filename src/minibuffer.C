@@ -233,13 +233,17 @@ int MiniBuffer::peek_event(FL_OBJECT * ob, int event, int key)
 }
 
 
-extern "C"
-int C_MiniBuffer_peek_event(FL_OBJECT * ob, int event, 
-			    FL_Coord, FL_Coord,
-			    int key, void * /*xev*/)
-{
-	MiniBuffer * mini = static_cast<MiniBuffer*>(ob->u_vdata);
-	return mini->peek_event(ob, event, key);
+extern "C" {
+	
+	static
+	int C_MiniBuffer_peek_event(FL_OBJECT * ob, int event, 
+				    FL_Coord, FL_Coord,
+				    int key, void * /*xev*/)
+	{
+		MiniBuffer * mini = static_cast<MiniBuffer*>(ob->u_vdata);
+		return mini->peek_event(ob, event, key);
+	}
+	
 }
 
 

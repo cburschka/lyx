@@ -240,7 +240,7 @@ void FormParagraph::apply()
    
     labelwidthstring = fl_get_input(dialog_->input_labelwidth);
     noindent = fl_get_button(dialog_->check_noindent);
-    Spacing::Space linespacing;
+    Spacing::Space linespacing = Spacing::Default;
     string other_linespacing;
     switch (fl_get_choice(dialog_->choice_linespacing)) {
         case 1: linespacing = Spacing::Default; break;

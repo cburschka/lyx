@@ -40,11 +40,15 @@ extern FD_form_sendto * fd_form_sendto;
 
 extern void HideFiguresPopups();
 
+
 // Prevents LyX from being killed when the close box is pressed in a popup.
-extern "C" int CancelCloseBoxCB(FL_FORM *, void *)
+extern "C"
+int CancelCloseBoxCB(FL_FORM *, void *)
 {
 	return FL_CANCEL;
 }
+
+
 // Redraw the form (on receipt of a Signal indicating, for example,
 // that the xform colors have been re-mapped).
 void RedrawAllBufferRelatedDialogs()

@@ -2281,6 +2281,7 @@ string const LyXText::selectNextWord(BufferView * bview,
 			return str;
 		}
 #warning Dekel please have a look on this one RTL? (Jug)
+#warning DEKEL!
 		// we have to go on checking so move cusor to the right
 		if (cursor.pos() == cursor.par()->size()) {
 			if (!cursor.par()->next())

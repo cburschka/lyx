@@ -41,7 +41,8 @@ void Figure()
 
 
 /* callbacks for form form_figure */
-extern "C"
+extern "C" {
+	
 void FigureApplyCB(FL_OBJECT *, long)
 {
 	if (!current_view->available())
@@ -103,16 +104,17 @@ void FigureApplyCB(FL_OBJECT *, long)
 }
 
 
-extern "C"
 void FigureCancelCB(FL_OBJECT *, long)
 {
 	fl_hide_form(fd_form_figure->form_figure);
 }
 
 
-extern "C"
 void FigureOKCB(FL_OBJECT * ob, long data)
 {
 	FigureApplyCB(ob, data);
 	FigureCancelCB(ob, data);
 }
+
+}
+

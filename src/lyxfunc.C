@@ -1195,7 +1195,7 @@ string const LyXFunc::dispatch(int ac,
 		break;
 #else
 #ifdef WITH_WARNINGS
-#warning Find another implementation here (or another lyxfunc)!
+//#warning Find another implementation here (or another lyxfunc)!
 #endif
 #endif
 	case LFUN_HELP_ABOUTLYX:

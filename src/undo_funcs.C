@@ -296,7 +296,7 @@ Undo * createUndo(BufferView * bv, Undo::undo_kind kind,
   
 		while (tmppar != end && tmppar->next()) {
 			tmppar = tmppar->next();
-			tmppar2->next(new Paragraph(*tmppar));
+			tmppar2->next(new Paragraph(*tmppar, false));
 			tmppar2->next()->id(tmppar->id());
 			// a memory optimization: Just store the layout
 			// information when only edit

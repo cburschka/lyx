@@ -3,17 +3,15 @@ SUBDIRS = mathed insets graphics support frontends
 DISTCLEANFILES= *.orig *.rej *~ *.bak core libintl.h config.h
 MAINTAINERCLEANFILES = $(srcdir)/Makefile.in $(srcdir)/config.h.in
 bin_PROGRAMS = lyx
-## libfrontends is given twice on the link line because it needs stuff
-## from FRONTEND_GUILIB and inversely. If you do not like it, feel
-## free to provide another solution... Maybe signals would solve that
-## magically, but I do not understand them much (JMarc)
+
 lyx_DEPENDENCIES = mathed/libmathed.la insets/libinsets.la \
 	graphics/libgraphics.la \
 	frontends/libfrontends.la \
 	support/libsupport.la \
 	@INCLUDED_SIGC@
-lyx_LDADD = $(lyx_DEPENDENCIES) @INTLLIBS@ $(LYX_LIBS) $(SIGC_LIBS) \
-	$(PSPELL_LIBS) @FRONTEND_LDFLAGS@ @FRONTEND_LIBS@ @AIKSAURUS_LIBS@
+lyx_LDADD = $(lyx_DEPENDENCIES) @INTLLIBS@ $(SIGC_LIBS) \
+	$(PSPELL_LIBS) @AIKSAURUS_LIBS@
+
 #lyx_LDFLAGS=-Wl,-O1
 EXTRA_DIST = config.h.in stamp-h.in cheaders ext_l10n.h
 ETAGS_ARGS = --lang=c++

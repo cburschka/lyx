@@ -1,3 +1,20 @@
+2001-09-09  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* combox.C (C_Combox_input_cb): make it static
+	(C_Combox_combo_cb): make it static
+	(C_Combox_peek_event): make it static
+
+	* Toolbar_pimpl.C (C_Toolbar_BubbleTimerCB): make it static
+	(C_Toolbar_BubblePost): make it static
+	(C_Toolbar_ToolbarCB): make it static
+
+	* Timeout_pimpl.C (C_intern_timeout_cb): make it static
+
+	* Menubar_pimpl.C (C_Menubar_Pimpl_MenuCallback): make it static
+
+	* Makefile.am (libxforms_la_LIBADD): add this and depend on the
+	gui libs
+
 2001-09-07  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* FormBaseDeprecated.[Ch]: use the same allow_resize methodology as has

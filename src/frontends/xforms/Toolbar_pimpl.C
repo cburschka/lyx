@@ -106,7 +106,9 @@ void BubbleTimerCB(FL_OBJECT *, long data)
 }
 
 
-extern "C" void C_Toolbar_BubbleTimerCB(FL_OBJECT * ob, long data)
+extern "C"
+static
+void C_Toolbar_BubbleTimerCB(FL_OBJECT * ob, long data)
 {
 	BubbleTimerCB(ob, data);
 }
@@ -114,8 +116,8 @@ extern "C" void C_Toolbar_BubbleTimerCB(FL_OBJECT * ob, long data)
 
 // post_handler for bubble-help (Matthias)
 int BubblePost(FL_OBJECT *ob, int event,
-			FL_Coord /*mx*/, FL_Coord /*my*/,
-			int /*key*/, void * /*xev*/)
+	       FL_Coord /*mx*/, FL_Coord /*my*/,
+	       int /*key*/, void * /*xev*/)
 {
 	FL_OBJECT * bubble_timer = reinterpret_cast<FL_OBJECT *>(ob->u_cdata);
 	
@@ -134,9 +136,11 @@ int BubblePost(FL_OBJECT *ob, int event,
 }
 
 
-extern "C" int C_Toolbar_BubblePost(FL_OBJECT * ob, int event,
-				    FL_Coord /*mx*/, FL_Coord /*my*/, 
-				    int key, void * xev)
+extern "C"
+static
+int C_Toolbar_BubblePost(FL_OBJECT * ob, int event,
+			 FL_Coord /*mx*/, FL_Coord /*my*/, 
+			 int key, void * xev)
 {
 	return BubblePost(ob, event, 0, 0, key, xev);
 }
@@ -292,16 +296,17 @@ void ToolbarCB(FL_OBJECT * ob, long ac)
 				   << res << endl;
 }
 
-} // namespace anon
 
-
-extern "C" void C_Toolbar_ToolbarCB(FL_OBJECT * ob, long data)
-{
-	ToolbarCB(ob, data);
+extern "C" {
+	
+	static
+	void C_Toolbar_ToolbarCB(FL_OBJECT * ob, long data)
+	{
+		ToolbarCB(ob, data);
+	}
+	
 }
 
-
-namespace {
 
 void setPixmap(FL_OBJECT * obj, int action, int buttonwidth, int height) {
 	string name, arg, xpm_name;

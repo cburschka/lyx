@@ -7,8 +7,6 @@ ETAGS_ARGS = --lang=c++
 BOOST_INCLUDES = -I$(top_srcdir)/boost
 INCLUDES = -I${srcdir}/../ $(SIGC_CFLAGS) $(BOOST_INCLUDES)
 
-
-
 libmathed_la_SOURCES = \
 	array.C \
 	array.h \

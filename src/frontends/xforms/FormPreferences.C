@@ -3005,12 +3005,19 @@ void FormPreferences::browse(FL_OBJECT * inpt,
 
 
 // C function wrapper, required by xforms.
-extern "C" int C_FormPreferencesFeedbackCB(FL_OBJECT * ob, int event,
-					   FL_Coord mx, FL_Coord my,
-					   int key, void * xev)
-{
-	return FormPreferences::FeedbackCB(ob, event, mx, my, key, xev);
+extern "C" {
+	
+	static
+	int C_FormPreferencesFeedbackCB(FL_OBJECT * ob, int event,
+					FL_Coord mx, FL_Coord my,
+					int key, void * xev)
+	{
+		return FormPreferences::FeedbackCB(ob, event,
+						   mx, my, key, xev);
+	}
+	
 }
+
 
 int FormPreferences::FeedbackCB(FL_OBJECT * ob, int event,
 				FL_Coord, FL_Coord, int, void *)

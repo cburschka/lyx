@@ -37,12 +37,15 @@ public:
 	string pszLsEntry;
 };
 
-extern "C" void C_LyXFileDlg_FileDlgCB(FL_OBJECT * ob, long data);
-extern "C" void C_LyXFileDlg_DoubleClickCB(FL_OBJECT * ob, long data);
-extern "C" int C_LyXFileDlg_CancelCB(FL_FORM *fl, void *xev);
 
-class FileDialog::Private : public SigC::Object
-{
+//extern "C" {
+//	void C_LyXFileDlg_FileDlgCB(FL_OBJECT * ob, long data);
+//	void C_LyXFileDlg_DoubleClickCB(FL_OBJECT * ob, long data);
+//	int C_LyXFileDlg_CancelCB(FL_FORM *fl, void *xev);
+//}
+
+
+class FileDialog::Private : public SigC::Object {
 public:
 	///
 	Private();

@@ -44,15 +44,18 @@ void waitForX()
 
 
 extern "C" {
-// Just a bunch of C wrappers around static members of WorkArea
+	// Just a bunch of C wrappers around static members of WorkArea
+	static
 	void C_WorkArea_scroll_cb(FL_OBJECT * ob, long buf)
         {
 		WorkArea::scroll_cb(ob, buf);
         }
 
+	
+	static
 	int C_WorkArea_work_area_handler(FL_OBJECT * ob, int event,
-                                           FL_Coord, FL_Coord, 
-                                           int key, void * xev)
+					 FL_Coord, FL_Coord, 
+					 int key, void * xev)
         {
 		return WorkArea::work_area_handler(ob, event,
 						   0, 0, key, xev);
@@ -485,18 +488,23 @@ namespace {
 string clipboard_selection;
 bool clipboard_read = false;
 
-extern "C"
-int request_clipboard_cb(FL_OBJECT * /*ob*/, long /*type*/,
-			void const * data, long size) 
-{
-	clipboard_selection.erase();
+extern "C" {
+	
+	static
+	int request_clipboard_cb(FL_OBJECT * /*ob*/, long /*type*/,
+				 void const * data, long size) 
+	{
+		clipboard_selection.erase();
+		
+		if (size > 0)
+			clipboard_selection.reserve(size);
+		for (int i = 0; i < size; ++i)
+			clipboard_selection +=
+				static_cast<char const *>(data)[i];
+		clipboard_read = true;
+		return 0;
+	}
 
-	if (size > 0)
-		clipboard_selection.reserve(size);
-	for (int i = 0; i < size; ++i)
-		clipboard_selection += static_cast<char const *>(data)[i];
-	clipboard_read = true;
-	return 0;
 }
 
 } // namespace anon

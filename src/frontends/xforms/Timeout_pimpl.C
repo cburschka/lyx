@@ -22,11 +22,15 @@ using std::endl;
 
 namespace {
 
-extern "C" 
-void C_intern_timeout_cb(int, void * data)
-{
-	Timeout * to = static_cast<Timeout *>(data);
-	to->emit();
+extern "C" {
+	
+	static
+	void C_intern_timeout_cb(int, void * data)
+	{
+		Timeout * to = static_cast<Timeout *>(data);
+		to->emit();
+	}
+
 }
 
 } // namespace anon

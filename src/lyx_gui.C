@@ -75,7 +75,9 @@ FL_resource res[] =
 };
 
 
-extern "C"
+extern "C" {
+	
+static
 int LyX_XErrHandler(Display * display, XErrorEvent * xeev)
 {
 	// emergency save
@@ -89,6 +91,8 @@ int LyX_XErrHandler(Display * display, XErrorEvent * xeev)
 	// By doing an abort we get a nice backtrace. (hopefully)
 	lyx::abort();
 	return 0; // Solaris CC wants us to return something
+}
+	
 }
 
 

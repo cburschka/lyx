@@ -1,6 +1,8 @@
 AUTOMAKE_OPTIONS = foreign 1.4
 DISTCLEANFILES= *.orig *.rej *~ *.bak core
 MAINTAINERCLEANFILES = $(srcdir)/Makefile.in
+ETAGS_ARGS = --lang=c++
+
 noinst_LTLIBRARIES = libgnome.la
 BOOST_INCLUDES = -I$(top_srcdir)/boost
 INCLUDES = ${FRONTEND_INCLUDES} -I${top_srcdir}/src/ \
@@ -9,7 +11,7 @@ INCLUDES = ${FRONTEND_INCLUDES} -I${top_srcdir}/src/ \
 	-I${top_srcdir}/src/frontends/controllers \
 	${SIGC_CFLAGS} $(BOOST_INCLUDES)
 
-libgnome_la_OBJADD = \
+libgnome_la_LIBADD = \
 	../xforms/xforms_helpers.lo \
 	../xforms/Toolbar_pimpl.lo \
 	../xforms/combox.lo \
@@ -19,7 +21,9 @@ libgnome_la_OBJADD = \
 	../xforms/FormMathsDelim.lo \
 	../xforms/FormMathsMatrix.lo \
 	../xforms/FormMathsPanel.lo \
-	../xforms/FormMathsSpace.lo 
+	../xforms/FormMathsSpace.lo \
+	@LYX_LIBS@ @FRONTEND_LDFLAGS@ @FRONTEND_LIBS@
+
 #	../xforms/FileDialog.lo \
 #	../xforms/FormFiledialog.lo \
 #	../xforms/form_filedialog.lo 
@@ -61,32 +65,32 @@ libgnome_la_OBJADD = \
 #	../xforms/RadioButtonGroup.lo \
 
 LIBS= 
-LDFLAGS= $(libgnome_la_OBJADD)
+#LDFLAGS= $(libgnome_la_OBJADD)
 LYXDATADIRS = 
-#ETAGS_ARGS = --lang=c++
+
 libgnome_la_SOURCES = \
-	gnomeBC.C \
-	gnomeBC.h \
-	gnome_helpers.C \
-	gnome_helpers.h \
-	mainapp.C \
-	mainapp.h \
-	support.c \
-	support.h \
-	pixbutton.h \
 	Dialogs.C \
-	GnomeBase.C \
-	GnomeBase.h \
-	GUIRunTime.C \
 	FileDialog.C \
-	FormTabularCreate.C \
-	FormTabularCreate.h \
 	FormError.C \
 	FormError.h \
+	FormTabularCreate.C \
+	FormTabularCreate.h \
 	FormUrl.C \
 	FormUrl.h \
+	gnome_helpers.C \
+	gnome_helpers.h \
+	GnomeBase.C \
+	GnomeBase.h \
+	gnomeBC.C \
+	gnomeBC.h \
+	GUIRunTime.C \
+	pixbutton.h \
+	mainapp.C \
+	mainapp.h \
 	Menubar_pimpl.C \
 	Menubar_pimpl.h \
+	support.c \
+	support.h \
 	Timeout_pimpl.C \
 	Timeout_pimpl.h
 
@@ -98,7 +102,6 @@ libgnome_la_SOURCES = \
 #	GUI_defaults.C \
 #	GUI_initialize.C \
 #	GUI_postlyxrc.C \
-#	GUI_runtime.C \
 #	GUI_applymenu.C
 
 # just copied from old lyx repository

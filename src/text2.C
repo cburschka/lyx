@@ -2202,8 +2202,8 @@ void LyXText::setCursorIntern(BufferView * bview, Paragraph * par,
 			// and open and lock the inset (bla bla bla)
 			// stuff I don't know... so can you have a look?
 			// (Lgb)
-			// I moved the lyxerr stuff in here so we can see if this
-			// is actually really needed and where!
+			// I moved the lyxerr stuff in here so we can see if
+			// this is actually really needed and where!
 			// (Jug)
 			it->getLyXText(bview)->setCursorIntern(bview, par, pos, setfont,
 			                                       boundary);

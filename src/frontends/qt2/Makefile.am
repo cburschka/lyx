@@ -15,7 +15,7 @@ include Makefile.dialogs
 
 libqt2_la_DEPENDENCIES = ui/libqt2ui.la moc/libqt2moc.la ui/moc/libqt2uimoc.la
  
-libqt2_la_OBJADD = \
+libqt2_la_LIBADD = \
 	ui/libqt2ui.la \
 	moc/libqt2moc.la \
 	ui/moc/libqt2uimoc.la \
@@ -56,10 +56,11 @@ libqt2_la_OBJADD = \
 	../xforms/form_url.lo \
 	../xforms/input_validators.lo \
 	../xforms/xformsBC.lo \
-	../xforms/xforms_helpers.lo
+	../xforms/xforms_helpers.lo \
+	@LYX_LIBS@ @FRONTEND_LDFLAGS@ @FRONTEND_LIBS@
 
 LIBS=
-LDFLAGS= $(libqt2_la_OBJADD)
+#LDFLAGS= $(libqt2_la_OBJADD)
 ETAGS_ARGS = --lang=c++
 
 libqt2_la_SOURCES = \

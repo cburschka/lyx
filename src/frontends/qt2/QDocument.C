@@ -56,8 +56,6 @@ QDocument::QDocument(LyXView *, Dialogs *)
 
 void QDocument::build_dialog()
 {
-	int n;
-
 	// the tabbed folder
 	//dialog_.reset(new QDocumentDialog());
 
@@ -119,7 +117,7 @@ void QDocument::build_dialog()
 	dialog->docFontSizeCO->insertItem( _( "10" ) );
 	dialog->docFontSizeCO->insertItem( _( "11" ) );
 	dialog->docFontSizeCO->insertItem( _( "12" ) );
-	for (n=0; tex_fonts[n][0]; ++n) {
+	for (int n=0; tex_fonts[n][0]; ++n) {
 		dialog->docFontsCO->insertItem( tex_fonts[n] );
 	}
 
@@ -182,7 +180,7 @@ void QDocument::build_dialog()
 	dialog->tocDepthSB->setRange( -1, 5 );
 	dialog->secNumDepthSB->setSteps( 1, 1 );
 	dialog->tocDepthSB->setRange( 1, 1 );
-	for (n=0; tex_graphics[n][0]; ++n) {
+	for (int n=0; tex_graphics[n][0]; ++n) {
 		dialog->postscriptDriverCO->insertItem( tex_graphics[n] );
 	}
 

@@ -36,7 +36,6 @@
 
 #include <config.h>
 
-//#include <cstring>
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <unistd.h>
@@ -81,14 +80,24 @@ int mkfifo(char const * __path, mode_t __mode) {
 
 extern LyXAction lyxaction;
 
-// C wrapper
-extern "C" void C_LyXComm_callback(int fd, void *v);
+
+extern "C" {
+	
+	// C wrapper
+	static
+	void C_LyXComm_callback(int fd, void *v)
+	{
+		LyXComm::callback(fd, v);
+	}
+
+}
 
 
 // LyXComm class
- 
- // Open pipes
-void LyXComm::openConnection() {
+
+// Open pipes
+void LyXComm::openConnection()
+{
 	lyxerr[Debug::LYXSERVER] << "LyXComm: Opening connection" << endl;
        
 	// If we are up, that's an error
@@ -113,10 +122,11 @@ void LyXComm::openConnection() {
 	// The current emx implementation of access() won't work with pipes.
 	rc = DosCreateNPipe(tmp.c_str(), &fd, NP_ACCESS_INBOUND,
 		NP_NOWAIT|0x01, 0600, 0600, 0);
-	if (rc == ERROR_PIPE_BUSY) {
+	if (rc == ERROR_PIPE_BUSY)
 #else
-	if (::access(tmp.c_str(), F_OK) == 0) {
+	if (::access(tmp.c_str(), F_OK) == 0)
 #endif
+	{
 		lyxerr << "LyXComm: Pipe " << tmp << " already exists.\n"
 		       << "If no other LyX program is active, please delete"
 			" the pipe by hand and try again." << endl;
@@ -161,13 +171,14 @@ void LyXComm::openConnection() {
 	tmp = pipename + ".out";
        
 #ifndef __EMX__       
-	if (::access(tmp.c_str(), F_OK) == 0) {
+	if (::access(tmp.c_str(), F_OK) == 0)
 #else
 	rc = DosCreateNPipe(tmp.c_str(), &fd, NP_ACCESS_DUPLEX,
 		NP_NOWAIT|0x01, 0600, 0600, 0);
 
-	if (rc == ERROR_PIPE_BUSY) {
+	if (rc == ERROR_PIPE_BUSY)
 #endif
+	{
 		lyxerr << "LyXComm: Pipe " << tmp << " already exists.\n"
 		       << "If no other LyX program is active, please delete"
 			" the pipe by hand and try again." << endl;
@@ -216,14 +227,16 @@ void LyXComm::openConnection() {
 		lyxerr << "LyXComm: Could not set flags on pipe " << tmp
 		       << '\n' << strerror(errno) << endl;
 		return;
-	};
+	}
 	// We made it!
 	ready = true;
 	lyxerr[Debug::LYXSERVER] << "LyXComm: Connection established" << endl;
 }
- 
+
+	
 /// Close pipes
-void LyXComm::closeConnection() {
+void LyXComm::closeConnection()
+{
 #ifdef __EMX__
 	APIRET rc;
 	int errnum;
@@ -287,7 +300,8 @@ void LyXComm::closeConnection() {
 	}
 	ready = false;
 }
- 
+
+
 // Receives messages and sends then to client
 void LyXComm::callback(int fd, void *v)
 {
@@ -353,13 +367,9 @@ void LyXComm::callback(int fd, void *v)
 	errno= 0;
 }
 
-extern "C" void C_LyXComm_callback(int fd, void *v)
-{
-	LyXComm::callback(fd, v);
-}
 
- 
-void LyXComm::send(string const & msg) {
+void LyXComm::send(string const & msg)
+{
 	if (msg.empty()) {
 		lyxerr << "LyXComm: Request to send empty string. Ignoring."
 		       << endl;

@@ -201,7 +201,7 @@ ${srcdir}/POTFILES.in: $(POTFILE_IN_DEPS)
 	     grep -l "_(\".*\")" `find src -name \*.[hHC] -print` |\
 	     grep -v frontends/kde |\
 	     sed -e '/xforms.forms/d' | \
-	     sort -f -d | uniq ) > $@-t \
+	     sort -f -n | uniq ) > $@-t \
 	&& echo "src/ext_l10n.h" >> $@-t \
 	&& mv $@-t $@
 

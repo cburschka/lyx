@@ -70,9 +70,16 @@ int string_width(string const & str)
 } // namespace anon
 
 
-//Defined later, used in makeMenubar().
-extern "C"
-void C_Menubar_Pimpl_MenuCallback(FL_OBJECT * ob, long button);
+extern "C" {
+
+	//Defined later, used in makeMenubar().
+	static
+	void C_Menubar_Pimpl_MenuCallback(FL_OBJECT * ob, long button)
+	{
+		Menubar::Pimpl::MenuCallback(ob, button);
+	}
+	
+}
 
 
 Menubar::Pimpl::Pimpl(LyXView * view, MenuBackend const & mb) 
@@ -520,13 +527,6 @@ int Menubar::Pimpl::create_submenu(Window win, LyXView * view,
 		}
 	}
 	return menu;
-}
-
-
-extern "C"
-void C_Menubar_Pimpl_MenuCallback(FL_OBJECT * ob, long button)
-{
-	Menubar::Pimpl::MenuCallback(ob, button);
 }
 
 

@@ -112,9 +112,7 @@ MathArrayInset * matrixpar(int & idx)
 
 InsetFormulaBase::InsetFormulaBase()
 {
-#ifdef WITH_WARNINGS
-#warning This is needed as long the math parser is not re-entrant
-#endif
+	// This is needed as long the math parser is not re-entrant
 	MathMacroTable::builtinMacros();
 	//lyxerr << "sizeof MathInset: " << sizeof(MathInset) << "\n";
 }

@@ -177,7 +177,9 @@ void kill_gs(int pid, int sig)
 }
 
 
-extern "C"
+extern "C" {
+	
+static
 int GhostscriptMsg(XEvent * ev, void *)
 {
 	// bin all events not of interest
@@ -313,6 +315,8 @@ int GhostscriptMsg(XEvent * ev, void *)
 	return FL_PREEMPT;
 }
 
+}
+
 
 void AllocColors(int num)
 // allocate color cube numxnumxnum, if possible
@@ -387,6 +391,7 @@ void AllocGrays(int num)
 	}
 	gs_color = true;
 }
+
 
 void InitFigures()
 {

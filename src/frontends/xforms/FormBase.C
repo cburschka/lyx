@@ -21,14 +21,12 @@
 #include "xformsBC.h"
 #include "support/LAssert.h"
 
-// Callback function invoked by xforms when the dialog is closed by the
-// window manager
-extern "C" int C_FormBaseWMHideCB(FL_FORM * form, void *);
+extern "C" {
+	// Callback function invoked by xforms when the dialog is closed by the
+	// window manager
+	static int C_FormBaseWMHideCB(FL_FORM * form, void *);
 
-// To trigger an input event when pasting in an xforms input object
-// using the middle mouse button.
-extern "C" int C_CutandPastePH(FL_OBJECT *, int, FL_Coord, FL_Coord,
-			       int, void *);
+}
 
 
 FormBase::FormBase(ControlButtons & c, string const & t, bool allowResize)
@@ -123,56 +121,60 @@ FormBase * GetForm(FL_OBJECT * ob)
 } // namespace anon
 
 
-extern "C"
-int C_FormBaseWMHideCB(FL_FORM * form, void *)
-{
-	// Close the dialog cleanly, even if the WM is used to do so.
-	lyx::Assert(form && form->u_vdata);
-	FormBase * pre = static_cast<FormBase *>(form->u_vdata);
-	pre->CancelButton();
-	return FL_CANCEL;
-}
-
-
-extern "C" void C_FormBaseApplyCB(FL_OBJECT * ob, long)
-{
-	GetForm(ob)->ApplyButton();
-}
-
-
-extern "C" void C_FormBaseOKCB(FL_OBJECT * ob, long)
-{
-	GetForm(ob)->OKButton();
-}
-
-
-extern "C" void C_FormBaseCancelCB(FL_OBJECT * ob, long)
-{
-	FormBase * form = GetForm(ob);
-	form->CancelButton();
-}
-
-
-extern "C" void C_FormBaseRestoreCB(FL_OBJECT * ob, long)
-{
-	GetForm(ob)->RestoreButton();
-}
-
-
-extern "C" void C_FormBaseInputCB(FL_OBJECT * ob, long d)
-{
-	GetForm(ob)->InputCB(ob, d);
-}
-
-
-// To trigger an input event when pasting in an xforms input object
-// using the middle mouse button.
-extern "C" int C_CutandPastePH(FL_OBJECT * ob, int event,
-			       FL_Coord, FL_Coord, int key, void *)
-{
-	if ((event == FL_PUSH) && (key == 2) && (ob->objclass == FL_INPUT)) {
-		C_FormBaseInputCB(ob, 0);
+extern "C" {
+	
+	static
+	int C_FormBaseWMHideCB(FL_FORM * form, void *)
+	{
+		// Close the dialog cleanly, even if the WM is used to do so.
+		lyx::Assert(form && form->u_vdata);
+		FormBase * pre = static_cast<FormBase *>(form->u_vdata);
+		pre->CancelButton();
+		return FL_CANCEL;
 	}
 
-	return 0;
+
+	void C_FormBaseApplyCB(FL_OBJECT * ob, long)
+	{
+		GetForm(ob)->ApplyButton();
+	}
+
+
+	void C_FormBaseOKCB(FL_OBJECT * ob, long)
+	{
+		GetForm(ob)->OKButton();
+	}
+
+
+	void C_FormBaseCancelCB(FL_OBJECT * ob, long)
+	{
+		FormBase * form = GetForm(ob);
+		form->CancelButton();
+	}
+
+
+	void C_FormBaseRestoreCB(FL_OBJECT * ob, long)
+	{
+		GetForm(ob)->RestoreButton();
+	}
+
+
+	void C_FormBaseInputCB(FL_OBJECT * ob, long d)
+	{
+		GetForm(ob)->InputCB(ob, d);
+	}
+
+
+	// To trigger an input event when pasting in an xforms input object
+	// using the middle mouse button.
+	int C_CutandPastePH(FL_OBJECT * ob, int event,
+			    FL_Coord, FL_Coord, int key, void *)
+	{
+		if ((event == FL_PUSH) && (key == 2)
+		    && (ob->objclass == FL_INPUT)) {
+			C_FormBaseInputCB(ob, 0);
+		}
+		return 0;
+	}
+
 }

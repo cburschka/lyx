@@ -166,13 +166,13 @@ bool CutAndPaste::copySelection(Paragraph * startpar, Paragraph * endpar,
 		// copy more than one paragraph
 		// clone the paragraphs within the selection
 		Paragraph * tmppar = startpar;
-		buf = new Paragraph(*tmppar);
+		buf = new Paragraph(*tmppar, false);
 		Paragraph * tmppar2 = buf;
 		
 		while (tmppar != endpar
 		       && tmppar->next()) {
 			tmppar = tmppar->next();
-			tmppar2->next(new Paragraph(*tmppar));
+			tmppar2->next(new Paragraph(*tmppar, false));
 			tmppar2->next()->previous(tmppar2);
 			tmppar2 = tmppar2->next();
 		}
@@ -209,7 +209,7 @@ bool CutAndPaste::pasteSelection(Paragraph ** par, Paragraph ** endpar,
 	// There are two cases: cutbuffer only one paragraph or many
 	if (!buf->next()) {
 		// only within a paragraph
-		Paragraph * tmpbuf = new Paragraph(*buf);
+		Paragraph * tmpbuf = new Paragraph(*buf, false);
 		
 		// Some provisions should be done here for checking
 		// if we are inserting at the beginning of a
@@ -239,12 +239,12 @@ bool CutAndPaste::pasteSelection(Paragraph ** par, Paragraph ** endpar,
 		
 		// make a copy of the simple cut_buffer
 		Paragraph * tmpbuf = buf;
-		Paragraph * simple_cut_clone = new Paragraph(*tmpbuf);
+		Paragraph * simple_cut_clone = new Paragraph(*tmpbuf, false);
 		Paragraph * tmpbuf2 = simple_cut_clone;
 		
 		while (tmpbuf->next()) {
 			tmpbuf = tmpbuf->next();
-			tmpbuf2->next(new Paragraph(*tmpbuf));
+			tmpbuf2->next(new Paragraph(*tmpbuf, false));
 			tmpbuf2->next()->previous(tmpbuf2);
 			tmpbuf2 = tmpbuf2->next();
 		}

@@ -15,9 +15,6 @@
 #pragma implementation
 #endif
 
-//#include <sys/time.h>
-//#include <unistd.h>
-
 #include "XFormsView.h"
 #if FL_REVISION < 89 || (FL_REVISION == 89 && FL_FIXLEVEL < 5)
 #include "lyxlookup.h"
@@ -42,7 +39,15 @@ extern void QuitLyX();
 // This is very temporary
 BufferView * current_view;
 
-extern "C" int C_XFormsView_atCloseMainFormCB(FL_FORM *, void *);
+extern "C" {
+	
+static
+int C_XFormsView_atCloseMainFormCB(FL_FORM * form, void * p)
+{
+	return XFormsView::atCloseMainFormCB(form, p);
+}
+	
+}
 
 
 XFormsView::XFormsView(int width, int height)
@@ -84,14 +89,6 @@ int XFormsView::atCloseMainFormCB(FL_FORM *, void *)
 {
 	QuitLyX();
 	return FL_IGNORE;
-}
-
-
-// Wrapper for the above
-extern "C"
-int C_XFormsView_atCloseMainFormCB(FL_FORM * form, void * p)
-{
-	return XFormsView::atCloseMainFormCB(form, p);
 }
 
 

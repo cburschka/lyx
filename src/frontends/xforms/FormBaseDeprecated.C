@@ -26,29 +26,38 @@
 
 using SigC::slot;
 
-extern "C" int C_FormBaseDeprecatedWMHideCB(FL_FORM * ob, void * d)
-{
-	return FormBaseDeprecated::WMHideCB(ob, d);
-}
-extern "C" void C_FormBaseDeprecatedApplyCB(FL_OBJECT * ob, long d)
-{
-	FormBaseDeprecated::ApplyCB(ob, d);
-}
-extern "C" void C_FormBaseDeprecatedOKCB(FL_OBJECT * ob, long d)
-{
-	FormBaseDeprecated::OKCB(ob, d);
-}
-extern "C" void C_FormBaseDeprecatedCancelCB(FL_OBJECT * ob, long d)
-{
-	FormBaseDeprecated::CancelCB(ob, d);
-}
-extern "C" void C_FormBaseDeprecatedInputCB(FL_OBJECT * ob, long d)
-{
-	FormBaseDeprecated::InputCB(ob, d);
-}
-extern "C" void C_FormBaseDeprecatedRestoreCB(FL_OBJECT * ob, long d)
-{
-	FormBaseDeprecated::RestoreCB(ob, d);
+extern "C" {
+	
+	static
+	int C_FormBaseDeprecatedWMHideCB(FL_FORM * ob, void * d)
+	{
+		return FormBaseDeprecated::WMHideCB(ob, d);
+	}
+
+	void C_FormBaseDeprecatedApplyCB(FL_OBJECT * ob, long d)
+	{
+		FormBaseDeprecated::ApplyCB(ob, d);
+	}
+
+	void C_FormBaseDeprecatedOKCB(FL_OBJECT * ob, long d)
+	{
+		FormBaseDeprecated::OKCB(ob, d);
+	}
+
+	void C_FormBaseDeprecatedCancelCB(FL_OBJECT * ob, long d)
+	{
+		FormBaseDeprecated::CancelCB(ob, d);
+	}
+
+	void C_FormBaseDeprecatedInputCB(FL_OBJECT * ob, long d)
+	{
+		FormBaseDeprecated::InputCB(ob, d);
+	}
+
+	void C_FormBaseDeprecatedRestoreCB(FL_OBJECT * ob, long d)
+	{
+		FormBaseDeprecated::RestoreCB(ob, d);
+	}
 }
 
 

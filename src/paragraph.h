@@ -94,7 +94,7 @@ public:
 	explicit
 	Paragraph(Paragraph * par);
 	///
-	Paragraph(Paragraph const &, bool same_ids = false);
+	Paragraph(Paragraph const &, bool same_ids);
 	/// the destructor removes the new paragraph from the list
 	~Paragraph();
 
@@ -400,6 +400,8 @@ public:
 	inset_iterator InsetIterator(size_type pos);
 
 private:
+	/// if anything uses this we don't want it to.
+	Paragraph(Paragraph const &);
 	///
 	Paragraph * next_;
 	///
