@@ -22,14 +22,7 @@
 #include "LyXView.h"
 #include "buffer.h"
 #include "lyxfunc.h"
-
-#include "gettext.h"
-#include "Dialogs.h"
-#include "FormIndex.h"
-#include "LyXView.h"
-#include "buffer.h"
 #include "form_index.h"
-#include "lyxfunc.h"
 
 #include <gtk--/label.h>
 #include <gtk--/box.h>
