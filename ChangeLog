@@ -1,3 +1,7 @@
+2001-02-01  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* src/lyx_cb.C (QuitLyX): Do not save files when running with no gui.
+
 2001-02-01  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/version.h (LYX_VERSION): reset version to 1.1.6cvs
