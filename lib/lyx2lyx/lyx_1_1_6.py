@@ -274,14 +274,14 @@ def update_language(header):
     return
 
 
-def convert(header, body, opt):
-    update_tabular(body, opt)
-    update_language(header)
-    opt.format = 217
+def convert(file):
+    update_tabular(file.body, file)
+    update_language(file.header)
+    file.format = 217
 
 
-def revert(header, body, opt):
-    opt.error("The convertion to an older format (%s) is not implemented." % opt.format)
+def revert(file):
+    file.error("The convertion to an older format (%s) is not implemented." % file.format)
 
 
 if __name__ == "__main__":

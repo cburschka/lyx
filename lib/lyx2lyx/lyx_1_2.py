@@ -540,23 +540,23 @@ def change_preamble(lines):
 		      "\use_numerical_citations 0"]
 
 
-def convert(header, body, opt):
-    change_preamble(header)
-    change_listof(body)
-    fix_oldfloatinset(body)
-    update_tabular(body)
-    remove_pextra(body)
-    remove_oldfloat(body, opt)
-    remove_figinset(body)
-    remove_oldertinset(body)
-    remove_oldert(body)
-    combine_ert(body)
-    change_infoinset(body)
-    opt.format = 220
+def convert(file):
+    change_preamble(file.header)
+    change_listof(file.body)
+    fix_oldfloatinset(file.body)
+    update_tabular(file.body)
+    remove_pextra(file.body)
+    remove_oldfloat(file.body, opt)
+    remove_figinset(file.body)
+    remove_oldertinset(file.body)
+    remove_oldert(file.body)
+    combine_ert(file.body)
+    change_infoinset(file.body)
+    file.format = 220
 
 
-def revert(header, body, opt):
-    opt.error("The convertion to an older format (%s) is not implemented." % opt.format)
+def revert(file):
+    file.error("The convertion to an older format (%s) is not implemented." % file.format)
 
 
 if __name__ == "__main__":

@@ -177,14 +177,14 @@ def add_end_document(lines):
         lines.append('\\the_end')
 
 
-def header_update(lines, opt):
+def header_update(lines, file):
     i = 0
     l = len(lines)
     while i < l:
         if check_token(lines[i], '\\begin_preamble'):
             i = find_token(lines, '\\end_preamble', i)
             if i == -1:
-                opt.error('Unfinished preamble')
+                file.error('Unfinished preamble')
             i = i + 1
             continue
 
@@ -236,26 +236,26 @@ def header_update(lines, opt):
         i = i + 1
 
 
-def convert(header,body, opt):
-    header_update(header, opt)
-    add_end_document(body)
-    remove_cursor(body)
-    final_dot(body)
-    update_inset_label(body)
-    update_latexdel(body)
-    update_space_units(body)
-    update_inset_accent(body)
-    space_before_layout(body)
-    formula_inset_space_eat(body)
-    update_tabular(body)
-    update_vfill(body)
-    remove_empty_insets(body)
-    remove_formula_latex(body)
-    opt.format = 215
+def convert(file):
+    header_update(file.header, file)
+    add_end_document(file.body)
+    remove_cursor(file.body)
+    final_dot(file.body)
+    update_inset_label(file.body)
+    update_latexdel(file.body)
+    update_space_units(file.body)
+    update_inset_accent(file.body)
+    space_before_layout(file.body)
+    formula_inset_space_eat(file.body)
+    update_tabular(file.body)
+    update_vfill(file.body)
+    remove_empty_insets(file.body)
+    remove_formula_latex(file.body)
+    file.format = 215
 
 
-def revert(header, body, opt):
-    opt.error("The convertion to an older format (%s) is not implemented." % opt.format)
+def revert(file):
+    file.error("The convertion to an older format (%s) is not implemented." % file.format)
 
 
 if __name__ == "__main__":

@@ -1,4 +1,19 @@
+2004-08-15  José Matos  <jamatos@lyx.org>
+
+	* LyX.py: new file that gathers all the knowleadge of the LyX file
+	format. This can be used as library.
+
+	* parser_tools.py: moved all the functions that are not related
+	with the parser to LyX.py.
+
+	* lyx2lyx: is just a client of the LyX.py library.
+
+	* lyx_.py (convert, revert): renamed previous opt to file.  Change
+	the arguments since now file contains both the header and the
+	body.
+
 2004-08-14  José Matos  <jamatos@lyx.org>
+
 	* lyx_1_4.py:
 	* parser_tools.py: up the format to 236.
 
@@ -52,10 +67,12 @@
 	* lyx2lyx: up the format to 233.
 
 2004-04-19  José Matos   <jamatos@lyx.orrg>
+
 	* parser_tools.py (chain): fix the detection of the last format for
 	revertions.
 
 2004-04-19  Martin Vermeer  <martin.vermeer@hut.fi>
+
 	* lyx_1_4.py (convert_frameless_box): Replace instead of adding
 	new code.
 .

@@ -113,13 +113,13 @@ def table_update(lines):
     return lines[:2] + col_info + lines[2:]
 
 
-def convert(header, body, opt):
-    update_tabular(body, opt)
-    opt.format = 218
+def convert(file):
+    update_tabular(file.body, file)
+    file.format = 218
 
 
-def revert(header, body, opt):
-    opt.error("The convertion to an older format (%s) is not implemented." % opt.format)
+def revert(file):
+    file.error("The convertion to an older format (%s) is not implemented." % file.format)
 
 
 if __name__ == "__main__":

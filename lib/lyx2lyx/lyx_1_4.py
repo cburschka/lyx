@@ -1447,171 +1447,171 @@ def remove_begin_body(body, opt):
 ##
 # Convertion hub
 #
-def convert(header, body, opt):
-    if opt.format < 223:
-        insert_tracking_changes(header)
-        add_end_header(header)
-        remove_color_default(body)
-	convert_spaces(body)
-	convert_bibtex(body)
-	remove_insetparent(body)
-	opt.format = 223
-    if opt.end == opt.format: return
+def convert(file):
+    if file.format < 223:
+        insert_tracking_changes(file.header)
+        add_end_header(file.header)
+        remove_color_default(file.body)
+	convert_spaces(file.body)
+	convert_bibtex(file.body)
+	remove_insetparent(file.body)
+	file.format = 223
+    if file.end_format == file.format: return
 
-    if opt.format < 224:
-	convert_external(body)
-	convert_comment(body)
-	opt.format = 224
-    if opt.end == opt.format: return
+    if file.format < 224:
+	convert_external(file.body)
+	convert_comment(file.body)
+	file.format = 224
+    if file.end_format == file.format: return
 
-    if opt.format < 225:
-	add_end_layout(body)
-	layout2begin_layout(body)
-	convert_end_document(body)
-	convert_table_valignment_middle(body)
-	convert_breaks(body)
-	opt.format = 225
-    if opt.end == opt.format: return
+    if file.format < 225:
+	add_end_layout(file.body)
+	layout2begin_layout(file.body)
+	convert_end_document(file.body)
+	convert_table_valignment_middle(file.body)
+	convert_breaks(file.body)
+	file.format = 225
+    if file.end_format == file.format: return
 
-    if opt.format < 226:
-	convert_note(body)
-	opt.format = 226
-    if opt.end == opt.format: return
+    if file.format < 226:
+	convert_note(file.body)
+	file.format = 226
+    if file.end_format == file.format: return
 
-    if opt.format < 227:
-	convert_box(body)
-	opt.format = 227
-    if opt.end == opt.format: return
+    if file.format < 227:
+	convert_box(file.body)
+	file.format = 227
+    if file.end_format == file.format: return
 
-    if opt.format < 228:
-	convert_collapsable(body, opt)
-	convert_ert(body, opt)
-	opt.format = 228
-    if opt.end == opt.format: return
+    if file.format < 228:
+	convert_collapsable(file.body, file)
+	convert_ert(file.body, file)
+	file.format = 228
+    if file.end_format == file.format: return
 
-    if opt.format < 229:
-	convert_minipage(body)
-	opt.format = 229
-    if opt.end == opt.format: return
+    if file.format < 229:
+	convert_minipage(file.body)
+	file.format = 229
+    if file.end_format == file.format: return
 
-    if opt.format < 230:
-        convert_jurabib(header, opt)
-	opt.format = 230
-    if opt.end == opt.format: return
+    if file.format < 230:
+        convert_jurabib(file.header, file)
+	file.format = 230
+    if file.end_format == file.format: return
 
-    if opt.format < 231:
-        convert_float(body, opt)
-	opt.format = 231
-    if opt.end == opt.format: return
+    if file.format < 231:
+        convert_float(file.body, file)
+	file.format = 231
+    if file.end_format == file.format: return
 
-    if opt.format < 232:
-        convert_bibtopic(header, opt)
-	opt.format = 232
-    if opt.end == opt.format: return
+    if file.format < 232:
+        convert_bibtopic(file.header, file)
+	file.format = 232
+    if file.end_format == file.format: return
 
-    if opt.format < 233:
-        convert_graphics(body, opt)
-        convert_names(body, opt)
-	opt.format = 233
-    if opt.end == opt.format: return
+    if file.format < 233:
+        convert_graphics(file.body, file)
+        convert_names(file.body, file)
+	file.format = 233
+    if file.end_format == file.format: return
 
-    if opt.format < 234:
-        convert_cite_engine(header, opt)
-	opt.format = 234
-    if opt.end == opt.format: return
+    if file.format < 234:
+        convert_cite_engine(file.header, file)
+	file.format = 234
+    if file.end_format == file.format: return
 
-    if opt.format < 235:
-        convert_paperpackage(header, opt)
-	opt.format = 235
-    if opt.end == opt.format: return
+    if file.format < 235:
+        convert_paperpackage(file.header, file)
+	file.format = 235
+    if file.end_format == file.format: return
 
-    if opt.format < 236:
-        convert_bullets(header, opt)
-        add_begin_header(header, opt)
-        add_begin_body(body, opt)
-        opt.format = 236
+    if file.format < 236:
+        convert_bullets(file.header, file)
+        add_begin_header(file.header, file)
+        add_begin_body(file.body, file)
+        file.format = 236
 
-def revert(header, body, opt):
-    if opt.format > 235:
-        remove_begin_body(body, opt)
-        remove_begin_header(header, opt)
-        revert_bullets(header, opt)
-        opt.format = 235
-    if opt.end == opt.format: return
+def revert(file):
+    if file.format > 235:
+        remove_begin_body(file.body, file)
+        remove_begin_header(file.header, file)
+        revert_bullets(file.header, file)
+        file.format = 235
+    if file.end_format == file.format: return
 
-    if opt.format > 234:
-        revert_paperpackage(header, opt)
-	opt.format = 234
-    if opt.end == opt.format: return
+    if file.format > 234:
+        revert_paperpackage(file.header, file)
+	file.format = 234
+    if file.end_format == file.format: return
 
-    if opt.format > 233:
-        revert_cite_engine(header, opt)
-	opt.format = 233
-    if opt.end == opt.format: return
+    if file.format > 233:
+        revert_cite_engine(file.header, file)
+	file.format = 233
+    if file.end_format == file.format: return
 
-    if opt.format > 232:
-        revert_names(body, opt)
-	opt.format = 232
-    if opt.end == opt.format: return
+    if file.format > 232:
+        revert_names(file.body, file)
+	file.format = 232
+    if file.end_format == file.format: return
 
-    if opt.format > 231:
-        revert_bibtopic(header, opt)
-	opt.format = 231
-    if opt.end == opt.format: return
+    if file.format > 231:
+        revert_bibtopic(file.header, file)
+	file.format = 231
+    if file.end_format == file.format: return
 
-    if opt.format > 230:
-        revert_float(body, opt)
-	opt.format = 230
-    if opt.end == opt.format: return
+    if file.format > 230:
+        revert_float(file.body, file)
+	file.format = 230
+    if file.end_format == file.format: return
 
-    if opt.format > 229:
-        revert_jurabib(header, opt)
-	opt.format = 229
-    if opt.end == opt.format: return
+    if file.format > 229:
+        revert_jurabib(file.header, file)
+	file.format = 229
+    if file.end_format == file.format: return
 
-    if opt.format > 228:
-	opt.format = 228
-    if opt.end == opt.format: return
+    if file.format > 228:
+	file.format = 228
+    if file.end_format == file.format: return
 
-    if opt.format > 227:
-	revert_collapsable(body, opt)
-	revert_ert(body, opt)
-	opt.format = 227
-    if opt.end == opt.format: return
+    if file.format > 227:
+	revert_collapsable(file.body, file)
+	revert_ert(file.body, file)
+	file.format = 227
+    if file.end_format == file.format: return
 
-    if opt.format > 226:
-	revert_box(body)
-	revert_external_2(body)
-	opt.format = 226
-    if opt.end == opt.format: return
+    if file.format > 226:
+	revert_box(file.body)
+	revert_external_2(file.body)
+	file.format = 226
+    if file.end_format == file.format: return
 
-    if opt.format > 225:
-	revert_note(body)
-	opt.format = 225
-    if opt.end == opt.format: return
+    if file.format > 225:
+	revert_note(file.body)
+	file.format = 225
+    if file.end_format == file.format: return
 
-    if opt.format > 224:
-	rm_end_layout(body)
-	begin_layout2layout(body)
-	revert_end_document(body)
-	revert_valignment_middle(body)
-	convert_vspace(header, body, opt)
-	convert_frameless_box(body, opt)
-    if opt.end == opt.format: return
+    if file.format > 224:
+	rm_end_layout(file.body)
+	begin_layout2layout(file.body)
+	revert_end_document(file.body)
+	revert_valignment_middle(file.body)
+	convert_vspace(file.header, file.body, file)
+	convert_frameless_box(file.body, file)
+    if file.end_format == file.format: return
 
-    if opt.format > 223:
-	revert_external_2(body)
-	revert_comment(body)
-	opt.format = 223
-    if opt.end == opt.format: return
+    if file.format > 223:
+	revert_external_2(file.body)
+	revert_comment(file.body)
+	file.format = 223
+    if file.end_format == file.format: return
 
-    if opt.format > 221:
-	rm_end_header(header)
-	revert_spaces(body)
-	revert_bibtex(body)
-	rm_tracking_changes(header)
-	rm_body_changes(body)
-	opt.format = 221
+    if file.format > 221:
+	rm_end_header(file.header)
+	revert_spaces(file.body)
+	revert_bibtex(file.body)
+	rm_tracking_changes(file.header)
+	rm_file.body_changes(file.body)
+	file.format = 221
 
 
 if __name__ == "__main__":

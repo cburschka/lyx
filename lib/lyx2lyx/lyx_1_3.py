@@ -90,14 +90,14 @@ def change_tabular(lines):
         i = i+1
 
 
-def convert(header, body, opt):
-    change_insetgraphics(body)
-    change_tabular(body)
-    opt.format = 221
+def convert(file):
+    change_insetgraphics(file.body)
+    change_tabular(file.body)
+    file.format = 221
 
 
-def revert(header, body, opt):
-    opt.error("The convertion to an older format (%s) is not implemented." % opt.format)
+def revert(file):
+    file.error("The convertion to an older format (%s) is not implemented." % file.format)
 
 
 if __name__ == "__main__":

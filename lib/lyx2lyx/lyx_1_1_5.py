@@ -147,20 +147,20 @@ def remove_space_in_units(lines):
             i = i + 1
 
 
-def convert(header, body, opt):
-    first_layout(body)
-    remove_vcid(header)
-    remove_cursor(body)
-    update_toc(body)
-    replace_protected_separator(body)
-    merge_formula_inset(body)
-    update_tabular(body)
-    remove_space_in_units(header)
-    opt.format = 216
+def convert(file):
+    first_layout(file.body)
+    remove_vcid(file.header)
+    remove_cursor(file.body)
+    update_toc(file.body)
+    replace_protected_separator(file.body)
+    merge_formula_inset(file.body)
+    update_tabular(file.body)
+    remove_space_in_units(file.header)
+    file.format = 216
 
 
-def revert(header, body, opt):
-    opt.error("The convertion to an older format (%s) is not implemented." % opt.format)
+def revert(file):
+    file.error("The convertion to an older format (%s) is not implemented." % file.format)
 
 if __name__ == "__main__":
     pass
