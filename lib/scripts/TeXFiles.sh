@@ -95,18 +95,18 @@ for TEXMFLSR in "$@"; do		# go through the dirs
   echo "Dir: <$TEXMFLSR>"
 case "$1" in				# list all files with suffix bst
     "cls")
-	find $TEXMFLSR -name *.cls >> $CLS_STYLEFILE
+	find $TEXMFLSR -follow -name *.cls >> $CLS_STYLEFILE
     ;;
     "sty")
-	find $TEXMFLSR -name *.sty >> $STY_STYLEFILE
+	find $TEXMFLSR -follow -name *.sty >> $STY_STYLEFILE
     ;;
     "bst")
-	find $TEXMFLSR -name *.bst >> $BST_STYLEFILE
+	find $TEXMFLSR -follow -name *.bst >> $BST_STYLEFILE
     ;;
     *) 
-	find $TEXMFLSR -name *.cls >> $CLS_STYLEFILE
-	find $TEXMFLSR -name *.sty >> $STY_STYLEFILE
-	find $TEXMFLSR -name *.bst >> $BST_STYLEFILE
+	find $TEXMFLSR -follow -name *.cls >> $CLS_STYLEFILE
+	find $TEXMFLSR -follow -name *.sty >> $STY_STYLEFILE
+	find $TEXMFLSR -follow -name *.bst >> $BST_STYLEFILE
     ;;
 esac
 

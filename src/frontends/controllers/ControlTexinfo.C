@@ -92,7 +92,7 @@ ControlTexinfo::getContents(texFileSuffix type, bool withFullPath) const
 		filename = clsFilename;
 		break;
 	case sty:
-		filename = clsFilename;
+		filename = styFilename;
 		break;
 	}
 
