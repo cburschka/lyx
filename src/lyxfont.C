@@ -63,9 +63,10 @@ char const * GUIMiscNames[5] =
 //
 // Strings used to read and write .lyx format files
 //
-char const * LyXFamilyNames[12] = 
-{ "roman", "sans", "typewriter", "symbol", "symbol2", "symbol3", 
-	"symbolex", "fraktur", "mathscr", "mathbb", "default", "error" };
+char const * LyXFamilyNames[11] = 
+{ "roman", "sans", "typewriter", "symbol",
+  "cmsy", "cmm", "cmex", "msa", "msb",
+  "default", "error" };
 
 char const * LyXSeriesNames[4] = 
 { "medium", "bold", "default", "error" };
