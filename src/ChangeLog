@@ -1,3 +1,9 @@
+2002-06-21  John Levon  <moz@compsoc.man.ac.uk>
+
+	* text.C: fix bug 488. Not ideal, but getting
+	  getWord() to work properly for the insets that
+	  matter is more difficult ...
+ 
 2002-06-20  John Levon  <moz@compsoc.man.ac.uk>
 
 	* BufferView_pimpl.C:
