@@ -57,7 +57,7 @@ MathGridInset::MathGridInset(col_type m, row_type n)
 }
 
 
-MathGridInset::MathGridInset(int m, int n, char v, string const & h)
+MathGridInset::MathGridInset(col_type m, row_type n, char v, string const & h)
 	: MathNestInset(m * n), rowinfo_(n), colinfo_(m), v_align_(v)
 {
 	setDefaults();

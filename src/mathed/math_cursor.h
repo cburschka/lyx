@@ -178,6 +178,8 @@ public:
 	void splitCell();
 	/// Splits line and insert new row of cell 
 	void breakLine();
+	/// read contents of line into an array
+	void readLine(MathArray & ar) const;
 	///
 	MathTextCodes getLastCode() const;
 	///
@@ -190,6 +192,8 @@ public:
 	char valign() const;
 	///
 	char halign() const;
+	///
+	col_type ncols() const;
 	///
 	col_type col() const;
 	///

@@ -207,15 +207,9 @@ namespace {
 	}
 
 
-	MathArray pipeThroughExtern(string const & arg, MathArray const & ar)
+	MathArray pipeThroughExtern(string const & lang, string const & extra,
+		MathArray const & ar)
 	{
-		string lang;
-		string extra;
-		istringstream iss(arg.c_str());
-		iss >> lang >> extra;
-		if (extra.empty())
-			extra = "noextra";	
-
 		if (lang == "octave")
 			return pipeThroughOctave(extra, ar);
 
@@ -507,27 +501,44 @@ InsetFormula::localDispatch(BufferView * bv, kb_action action,
 }
 
 
+bool needEqnArray(string const & extra)
+{
+	return extra == "dsolve";
+}
+
+
 void InsetFormula::handleExtern(const string & arg)
 {
 	// where are we?
 	if (!mathcursor)
 		return; 
 
+	string lang;
+	string extra;
+	istringstream iss(arg.c_str());
+	iss >> lang >> extra;
+	if (extra.empty())
+		extra = "noextra";	
+
 	bool selected = mathcursor->selection();
 
 	MathArray ar;
-	if (selected) {
+	if (needEqnArray(extra)) {
+		mathcursor->last();
+		mathcursor->readLine(ar);
+		mathcursor->breakLine();
+	} else if (selected) {
 		mathcursor->selGet(ar);
 		//lyxerr << "use selection: " << ar << "\n";
 	} else {
-		mathcursor->end();
+		mathcursor->last();
 		mathcursor->stripFromLastEqualSign();
 		ar = mathcursor->cursor().cell();
 		mathcursor->insert(MathAtom(new MathCharInset('=', LM_TC_VAR)));
 		//lyxerr << "use whole cell: " << ar << "\n";
 	}
 
-	mathcursor->insert(pipeThroughExtern(arg, ar));
+	mathcursor->insert(pipeThroughExtern(lang, extra, ar));
 }
 
 

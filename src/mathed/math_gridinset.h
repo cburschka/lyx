@@ -62,7 +62,7 @@ public:
 	/// Note: columns first!
 	MathGridInset(col_type m, row_type n);
 	///
-	MathGridInset(int m, int n, char valign, string const & halign);
+	MathGridInset(col_type m, row_type n, char valign, string const & halign);
 	///
 	void metrics(MathMetricsInfo const & st) const;
 	///

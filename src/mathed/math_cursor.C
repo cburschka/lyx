@@ -31,6 +31,7 @@
 #include "math_support.h"
 #include "formulabase.h"
 #include "math_cursor.h"
+#include "math_casesinset.h"
 #include "math_factory.h"
 #include "math_arrayinset.h"
 #include "math_braceinset.h"
@@ -1114,6 +1115,14 @@ void MathCursor::breakLine()
 }
 
 
+void MathCursor::readLine(MathArray & ar) const
+{
+	idx_type base = row() * par()->ncols();
+	for (idx_type off = 0; off < par()->ncols(); ++off)
+		ar.push_back(par()->cell(base + off));
+}
+
+
 char MathCursor::valign() const
 {
 	idx_type idx;
@@ -1277,7 +1286,16 @@ void MathCursor::interpret(string const & s)
 	//owner_->getIntl()->getTrans().TranslateAndInsert(s[0], lt);	
 	//lyxerr << "trans: '" << s[0] << "'  int: " << int(s[0]) << endl;
 
-	if (s.size() > 7 && s.substr(0, 7) == "matrix ") {
+	if (s.size() >= 5 && s.substr(0, 5) == "cases") {
+		unsigned int n = 1;
+		istringstream is(s.substr(6).c_str());
+		is >> n;
+		n = std::max(1u, n);
+		niceInsert(MathAtom(new MathCasesInset(n)));
+		return;
+	}
+
+	if (s.size() >= 6 && s.substr(0, 6) == "matrix") {
 		unsigned int m = 1;
 		unsigned int n = 1;
 		string v_align;

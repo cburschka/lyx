@@ -56,6 +56,7 @@ point to write some macros:
 #include "math_inset.h"
 #include "math_arrayinset.h"
 #include "math_braceinset.h"
+#include "math_casesinset.h"
 #include "math_charinset.h"
 #include "math_deliminset.h"
 #include "math_factory.h"
@@ -667,6 +668,7 @@ bool Parser::parse_normal(MathAtom & matrix)
 	}
 
 	lyxerr[Debug::MATHED] << "1: unknown math environment: " << name << "\n";
+	lyxerr << "1: unknown math environment: " << name << "\n";
 	return false;
 }
 
@@ -862,8 +864,11 @@ void Parser::parse_into(MathArray & array, unsigned flags, MathTextCodes code)
 			} else if (name == "split") {
 				array.push_back(MathAtom(new MathSplitInset(1)));
 				parse_lines(array.back(), false, false);
+			} else if (name == "cases") {
+				array.push_back(MathAtom(new MathCasesInset));
+				parse_lines(array.back(), false, false);
 			} else 
-				lyxerr[Debug::MATHED] << "unknow math inset begin '" << name << "'\n";	
+				lyxerr << "unknow math inset begin '" << name << "'\n";	
 		}
 	
 		else if (t.cs() == "kern") {
