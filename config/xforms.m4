@@ -131,7 +131,7 @@ AC_SEARCH_LIBS(flimage_dup, flimage,
   fi])
 
 if test $lyx_use_jpeg_image_loader = yes ; then
-  lyx_flags="$lyx_flags xforms-image-loader"
+  lyx_flags="$lyx_flags jpeg-image-loader"
   AC_DEFINE(USE_JPEG_IMAGE_LOADER, 1,
 	    [Define if you want to be able to load jpeg images natively])
 fi

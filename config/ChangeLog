@@ -1,3 +1,8 @@
+2004-05-05  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* xforms.m4 (LYX_CHECK_XFORMS_IMAGE_LOADER): rename
+	xforms-image-loader flag to jpeg-image-loader
+
 2004-03-01  Zvezdan Petkovic  <zvezdan@cs.wm.edu>
 
 	* qt.m4 (QT_DO_IT_ALL): if the variables MOC or UIC are set, honor
@@ -29,7 +34,11 @@
 
 2003-07-27  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
-	* configure.ac,configure.in,lyxinclude213.m4,relyx_configure.ac,relyx_configure.in: delete file
+	* configure.ac:
+	* configure.in:
+	* lyxinclude213.m4:
+	* relyx_configure.ac:
+	* relyx_configure.in: delete
 
 2003-07-25  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
