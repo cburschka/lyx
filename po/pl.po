@@ -1,8 +1,9 @@
-# Polskie teksty dla LyXa (2001).
+# Polskie teksty dla LyX-a (2001).
 # Polish messages for LyX (2001).
 # Copyright (C) 2000 Free Software Foundation, Inc.
 # Pawe³ Dziekoñski <p.dziekonski@mml.ch.pwr.wroc.pl>
 # Podziêkowania dla grupy pl.comp.dtp.tex.gust
+# oraz Tomasza £uczaka <tlu@technodat.com.pl>
 # Pre-translation has bean done using PePeSza v0.9
 # get your own copy of PePeSza from http://www.ids.pl/~pkollegu/pepesza.html
 #
@@ -10,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx-1.1.6fix1\n"
 "POT-Creation-Date: 2001-01-31 19:21+0100\n"
-"PO-Revision-Date: 2001-03-06\n"
+"PO-Revision-Date: 2001-03-07\n"
 "Last-Translator: Pawe³ Dziekoñski <p.dziekonski@mml.ch.pwr.wroc.pl>\n"
 "Language-Team: Polish <pl@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -183,7 +184,7 @@ msgstr "Za³adowaæ ten zamiast?"
 
 #: src/bufferlist.C:380
 msgid "Autosave file is newer."
-msgstr "Plik zapisany zutomatycznie jest nowszy."
+msgstr "Plik zapisany automatycznie jest nowszy."
 
 #: src/bufferlist.C:382
 msgid "Load that one instead?"
@@ -5134,7 +5135,7 @@ msgstr "Opcje programu konwersji"
 
 #: src/frontends/xforms/FormPreferences.C:1014
 msgid "Remove the current converter from the list of available converters. Note: you must then \"Apply\" the change."
-msgstr "Usuwa bierz±cy konwerter z listy. Uwaga: nale¿y wykonaæ \"Zastosuj\" aby zmiany mia³y miejsce."
+msgstr "Usuwa bie¿±cy konwerter z listy. Uwaga: nale¿y wykonaæ \"Zastosuj\" aby zmiany mia³y miejsce."
 
 #: src/frontends/xforms/FormPreferences.C:1016
 #: src/frontends/xforms/FormPreferences.C:1288
@@ -5143,11 +5144,11 @@ msgstr "Dodaj"
 
 #: src/frontends/xforms/FormPreferences.C:1017
 msgid "Add the current converter to the list of available converters. Note: you must then \"Apply\" the change."
-msgstr "Dodaje bierz±cy konwerter do listy konwerterów. Uwaga: nale¿y wykonaæ \"Zastosuj\" aby zmiany mia³y miejsce."
+msgstr "Dodaje bie¿±cy konwerter do listy konwerterów. Uwaga: nale¿y wykonaæ \"Zastosuj\" aby zmiany mia³y miejsce."
 
 #: src/frontends/xforms/FormPreferences.C:1019
 msgid "Modify the contents of the current converter. Note: you must then \"Apply\" the change."
-msgstr "Zmienia konfiguracjê bierz±cego konwertera. Uwaga: nale¿y wykonaæ \"Zastosuj\" aby zmiany mia³y miejsce."
+msgstr "Zmienia konfiguracjê bie¿±cego konwertera. Uwaga: nale¿y wykonaæ \"Zastosuj\" aby zmiany mia³y miejsce."
 
 #: src/frontends/xforms/FormPreferences.C:1274
 msgid "All the currently defined formats known to LyX."
@@ -5175,15 +5176,15 @@ msgstr "Polecenie uruchamiaj±ce przegl±darkê obs³uguj±c± dany format."
 
 #: src/frontends/xforms/FormPreferences.C:1286
 msgid "Remove the current format from the list of available formats. Note: you must then \"Apply\" the change."
-msgstr "Usuwa bierz±cy format z listy. Uwaga: nale¿y wykonaæ \"Zastosuj\" aby zmiany mia³y miejsce."
+msgstr "Usuwa bie¿±cy format z listy. Uwaga: nale¿y wykonaæ \"Zastosuj\" aby zmiany mia³y miejsce."
 
 #: src/frontends/xforms/FormPreferences.C:1289
 msgid "Add the current format to the list of available formats. Note: you must then \"Apply\" the change."
-msgstr "Dodaje bierz±cy format do listy formatów. Uwaga: nale¿y wykonaæ \"Zastosuj\" aby zmiany mia³y miejsce."
+msgstr "Dodaje bie¿±cy format do listy formatów. Uwaga: nale¿y wykonaæ \"Zastosuj\" aby zmiany mia³y miejsce."
 
 #: src/frontends/xforms/FormPreferences.C:1291
 msgid "Modify the contents of the current format. Note: you must then \"Apply\" the change."
-msgstr "Zmienia konfiguracjê bierz±cego formatu. Uwaga: nale¿y wykonaæ \"Zastosuj\" aby zmiany mia³y miejsce."
+msgstr "Zmienia konfiguracjê bie¿±cego formatu. Uwaga: nale¿y wykonaæ \"Zastosuj\" aby zmiany mia³y miejsce."
 
 #: src/frontends/xforms/FormPreferences.C:1407
 msgid "Cannot remove a Format used by a Converter. Remove the converter first."
@@ -8049,7 +8050,7 @@ msgstr "* Brak otwartych dokumentów *"
 
 #: src/print_form.C:21
 msgid "File Type"
-msgstr "Typ pkiku"
+msgstr "Typ pliku"
 
 #: src/print_form.C:25
 msgid "Command:|#C"
@@ -8283,5 +8284,5 @@ msgstr "Nie mo¿na wstawiaæ notki marginesowej w Minipage!"
 
 #: src/text.C:3993
 msgid "Float would include float!"
-msgstr "Wstawka móg³aby zawieraæ inn± wstawkê!"
+msgstr "Wstawka mog³aby zawieraæ inn± wstawkê!"
 
