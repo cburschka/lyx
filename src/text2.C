@@ -389,7 +389,7 @@ LyXText::setLayout(LyXCursor & cur, LyXCursor & sstart_cur,
 		++endpit;
 	}
 
-	setUndo(bv(), Undo::EDIT, &*sstart_cur.par(), &*undoendpit);
+	setUndo(bv(), Undo::EDIT, sstart_cur.par(), undoendpit);
 
 	// ok we have a selection. This is always between sstart_cur
 	// and sel_end cursor
@@ -463,7 +463,7 @@ bool LyXText::changeDepth(bv_funcs::DEPTH_CHANGE type, bool test_only)
 	ParagraphList::iterator pastend = boost::next(end);
 
 	if (!test_only)
-		setUndo(bv(), Undo::EDIT, &(*start), &(*pastend));
+		setUndo(bv(), Undo::EDIT, start, pastend);
 
 	bool changed = false;
 
@@ -566,7 +566,7 @@ void LyXText::setFont(LyXFont const & font, bool toggleall)
 	// and sel_end cursor
 
 	setUndo(bv(), Undo::EDIT,
-		&*selection.start.par(), &*boost::next(selection.end.par()));
+		selection.start.par(), boost::next(selection.end.par()));
 	freezeUndo();
 	cursor = selection.start;
 	while (cursor.par() != selection.end.par() ||
@@ -968,7 +968,7 @@ void LyXText::setParagraph(bool line_top, bool line_bottom,
 		++endpit;
 	}
 
-	setUndo(bv(), Undo::EDIT, &*selection.start.par(), &*undoendpit);
+	setUndo(bv(), Undo::EDIT, selection.start.par(), undoendpit);
 
 
 	ParagraphList::iterator tmppit = selection.end.par();
@@ -1255,8 +1255,8 @@ void LyXText::insertInset(Inset * inset)
 {
 	if (!cursor.par()->insetAllowed(inset->lyxCode()))
 		return;
-	setUndo(bv(), Undo::FINISH, &*cursor.par(),
-		&*boost::next(cursor.par()));
+	setUndo(bv(), Undo::FINISH, cursor.par(),
+		boost::next(cursor.par()));
 	freezeUndo();
 	cursor.par()->insertInset(cursor.pos(), inset);
 	// Just to rebreak and refresh correctly.
@@ -1308,7 +1308,7 @@ void LyXText::cutSelection(bool doclear, bool realcut)
 		++endpit;
 	}
 
-	setUndo(bv(), Undo::DELETE, &*selection.start.par(), &*undoendpit);
+	setUndo(bv(), Undo::DELETE, selection.start.par(), undoendpit);
 
 
 	endpit = selection.end.par();
@@ -1381,7 +1381,7 @@ void LyXText::pasteSelection()
 		return;
 
 	setUndo(bv(), Undo::INSERT,
-		&*cursor.par(), &*boost::next(cursor.par()));
+		cursor.par(), boost::next(cursor.par()));
 
 	Paragraph * endpar;
 	ParagraphList::iterator actpit = cursor.par();
@@ -2236,7 +2236,7 @@ bool LyXText::deleteEmptyParagraphMechanism(LyXCursor const & old_cursor)
 				++endpit;
 			}
 
-			setUndo(bv(), Undo::DELETE, &*old_cursor.par(), &*endpit);
+			setUndo(bv(), Undo::DELETE, old_cursor.par(), endpit);
 			cursor = tmpcursor;
 
 			// delete old row
@@ -2267,7 +2267,7 @@ bool LyXText::deleteEmptyParagraphMechanism(LyXCursor const & old_cursor)
 				++endpit;
 			}
 
-			setUndo(bv(), Undo::DELETE, &*old_cursor.par(), &*endpit);
+			setUndo(bv(), Undo::DELETE, old_cursor.par(), endpit);
 			cursor = tmpcursor;
 
 			// delete old row

@@ -86,7 +86,7 @@ namespace {
 
 MathInset::mode_type asMode(MathInset::mode_type oldmode, string const & str)
 {
-	lyxerr << "handling mode: '" << str << "'\n";
+	//lyxerr << "handling mode: '" << str << "'\n";
 	if (str == "mathmode")
 		return MathInset::MATH_MODE;
 	if (str == "textmode" || str == "forcetext")

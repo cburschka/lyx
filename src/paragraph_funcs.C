@@ -151,8 +151,8 @@ void breakParagraphConservative(BufferParams const & bparams,
 							new Paragraph);
 	tmp->makeSameLayout(*par);
 
-	// When can pos > Last()?
-	// I guess pos == Last() is possible.
+	// When can pos > size()?
+	// I guess pos == size() is possible.
 	if (par->size() > pos) {
 		// copy everything behind the break-position to the new
 		// paragraph
@@ -292,7 +292,8 @@ TeXDeeper(Buffer const * buf,
 	lyxerr[Debug::LATEX] << "TeXDeeper...     " << &*pit << endl;
 	ParagraphList::iterator par = pit;
 
-	while (par != paragraphs.end()&& par->params().depth() == pit->params().depth()) {
+	while (par != paragraphs.end() &&
+		     par->params().depth() == pit->params().depth()) {
 		if (par->layout()->isEnvironment()) {
 			par = TeXEnvironment(buf, paragraphs, par,
 						  os, texrow);
@@ -477,7 +478,9 @@ TeXOnePar(Buffer const * buf,
 		}
 
 		if (pit->params().lineTop()) {
-			os << "\\lyxline{\\" << pit->getFont(bparams, 0, outerFont(pit, paragraphs)).latexSize() << '}'
+			os << "\\lyxline{\\"
+			   << pit->getFont(bparams, 0, outerFont(pit, paragraphs)).latexSize()
+			   << '}'
 			   << "\\vspace{-1\\parskip}";
 			further_blank_line = true;
 		}

@@ -12,6 +12,7 @@
 #define UNDO_FUNCS_H
 
 #include "undo.h"
+#include "ParagraphList.h"
 
 class BufferView;
 class Paragraph;
@@ -29,10 +30,10 @@ extern void freezeUndo();
 extern void unFreezeUndo();
 /// FIXME
 extern void setUndo(BufferView *, Undo::undo_kind kind,
-		    Paragraph const * first, Paragraph const * behind);
+		    ParagraphList::iterator first, ParagraphList::iterator behind);
 /// FIXME
 extern void setRedo(BufferView *, Undo::undo_kind kind,
-		    Paragraph const * first, Paragraph const * behind);
+		    ParagraphList::iterator first, ParagraphList::iterator behind);
 /// FIXME
 extern void setCursorParUndo(BufferView *);
 

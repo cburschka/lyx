@@ -335,6 +335,9 @@ private:
 	friend struct Paragraph::Pimpl;
 	///
 	Pimpl * pimpl_;
+
+	/// unimplemented
+	void operator=(Paragraph const &);
 };
 
 
