@@ -1309,7 +1309,34 @@ void MathCursor::interpret(string const & s)
 void MathCursor::interpret(char c)
 {
 	//lyxerr << "interpret 2: '" << c << "'\n";
+	if (c == '^' || c == '_') {
+		macroModeClose();
+		const bool up = (c == '^');
+		selCut();
+		if (hasPrevAtom() && prevAtom()->asScriptInset()) {
+			prevAtom()->asScriptInset()->ensure(up);
+			pushRight(prevAtom());
+			idx() = up;
+			pos() = size();
+		} else if (hasNextAtom() && nextAtom()->asScriptInset()) {
+			nextAtom()->asScriptInset()->ensure(up);
+			pushLeft(nextAtom());
+			idx() = up;
+			pos() = 0;
+		} else {
+			plainInsert(MathAtom(new MathScriptInset(up)));
+			prevAtom()->asScriptInset()->ensure(up);
+			pushRight(prevAtom());
+			idx() = up;
+			pos() = 0;
+		}
+		selPaste();
+		dump("1");
+		return;
+	}
 
+
+	// handle macroMode
 	if (inMacroMode()) {
 		string name = macroName();
 
@@ -1342,32 +1369,6 @@ void MathCursor::interpret(char c)
 		}
 
 		macroModeClose();
-		return;
-	}
-
-	// no macro mode
-	if (c == '^' || c == '_') {
-		const bool up = (c == '^');
-		selCut();
-		if (hasPrevAtom() && prevAtom()->asScriptInset()) {
-			prevAtom()->asScriptInset()->ensure(up);
-			pushRight(prevAtom());
-			idx() = up;
-			pos() = size();
-		} else if (hasNextAtom() && nextAtom()->asScriptInset()) {
-			nextAtom()->asScriptInset()->ensure(up);
-			pushLeft(nextAtom());
-			idx() = up;
-			pos() = 0;
-		} else {
-			plainInsert(MathAtom(new MathScriptInset(up)));
-			prevAtom()->asScriptInset()->ensure(up);
-			pushRight(prevAtom());
-			idx() = up;
-			pos() = 0;
-		}
-		selPaste();
-		dump("1");
 		return;
 	}
 
