@@ -92,14 +92,15 @@ def get_paragraph(lines, i):
 def find_end_of_inset(lines, i):
     count = 1
     i = i+1
-    while count > 0:
+    while 1:
 	i = find_tokens(lines, ["\\end_inset", "\\begin_inset"], i)
 	if check_token(lines[i], "\\begin_inset"):
 	    count = count+1
 	else:
 	    count = count-1
+	if count == 0:
+	    return i
 	i = i+1
-    return i
 
 def is_nonempty_line(line):
     return line != " "*len(line)

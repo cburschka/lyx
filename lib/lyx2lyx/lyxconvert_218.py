@@ -228,7 +228,7 @@ def remove_oldert(lines):
 			# as similar as posible to the lyx format
 			new2 = [""]
 		    new2.append(line)
-		else:
+		elif not check_token(line, "\\latex"):
 		    tmp.append(line)
 
 	    if is_empty(tmp):
@@ -268,27 +268,19 @@ def remove_oldert(lines):
 	lines[i:j+1] = new
 	i = i+1
 
-def convert_ertinset(lines):
+def remove_oldertinset(lines):
     i = 0
     while 1:
 	i = find_token(lines, "\\begin_inset ERT", i)
 	if i == -1:
 	    break
-	j = find_token(lines, "collapsed", i+1)
-	if string.split(lines[j])[1] == "true":
-	    status = "Collapsed"
-	else:
-	    status = "Open"
-	lines[j] = "status " + status
-
-	# Remove font commands
 	j = find_end_of_inset(lines, i)
-	new = []
-	for line in lines[i:j]:
-	    if not font_rexp.match(line) and not check_token(line, "\\latex"):
-		new.append(line)
-	lines[i:j] = new
-
+	k = find_token(lines, "\\layout", i+1)
+	l = get_paragraph(lines, i)
+	if lines[k] == lines[l]: # same layout
+	    k = k+1
+	new = lines[k:j]
+	lines[i:j+1] = new
 	i = i+1
 
 def is_ert_paragraph(lines, i):
@@ -409,7 +401,7 @@ def convert(header, body):
 	language = "english"
 
     change_preamble(header)
-    convert_ertinset(body)
+    remove_oldertinset(body)
     remove_oldert(body)
     combine_ert(body)
     remove_oldminipage(body)
