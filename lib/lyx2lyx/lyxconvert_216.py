@@ -111,7 +111,7 @@ def update_tabular(lines):
                     del lines[i]
                     end = end -1
 
-                if lines[i] == '\\newline':
+                if string.find(lines[i],'\\newline') != -1:
                     del lines[i]
                 l = l + 1
 
