@@ -1,5 +1,10 @@
 2002-06-26  Angus Leeming  <leeming@lyx.org>
 
+	* insetgraphics.h: use boost::scoped_ptr in preference to
+	std::auto_ptr.
+
+2002-06-26  Angus Leeming  <leeming@lyx.org>
+
 	* insetgraphics.C: moved the image loading stuff into a new class
 	grfx::Loader. Simplifies this file enormously.
 

@@ -153,6 +153,10 @@ Loader::Loader(string const & file, GParams const & params)
 }
 
 
+Loader::~Loader()
+{}
+
+
 void Loader::reset(string const & file, DisplayType type)
 {
 	pimpl_->unsetOldFile();

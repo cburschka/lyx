@@ -28,7 +28,7 @@
 #include "LString.h"
 
 #include <boost/signals/signal0.hpp>
-#include <memory>
+#include <boost/scoped_ptr.hpp>
 
 namespace grfx {
 
@@ -45,6 +45,9 @@ public:
 	Loader(string const & file_with_path, DisplayType = ColorDisplay);
 	/// The image is transformed before display.
 	Loader(string const & file_with_path, GParams const &);
+
+	/// Define an empty d-tor out-of-line to keep boost::scoped_ptr happy.
+	~Loader();
 
 	/// The file can be changed, or the display params, or both.
 	void reset(string const & file_with_path, DisplayType = ColorDisplay);
@@ -76,7 +79,7 @@ private:
 	/// Use the Pimpl idiom to hide the internals.
 	class Impl;
 	/// The pointer never changes although *pimpl_'s contents may.
-	std::auto_ptr<Impl> const pimpl_;
+	boost::scoped_ptr<Impl> const pimpl_;
 };
 
 } // namespace grfx

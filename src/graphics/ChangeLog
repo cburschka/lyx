@@ -1,5 +1,11 @@
 2002-06-26  Angus Leeming  <leeming@lyx.org>
 
+	* GraphicsLoader.[Ch]: use boost::scoped_ptr in preference to
+	std::auto_ptr. Define an empty Loader d-tor out-of-line to ensure it
+	compiles.
+
+2002-06-26  Angus Leeming  <leeming@lyx.org>
+
 	* GraphicsTypes.h: add "Ready" to the ImageStatus enum.
 	move the DisplayType enum out of grfx::GParams to here.
 

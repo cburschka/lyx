@@ -25,8 +25,7 @@
 // We need a signal here to hide an active dialog when we are deleted.
 #include <boost/signals/signal0.hpp>
 #include <boost/signals/trackable.hpp>
-
-#include <memory> // auto_ptr
+#include <boost/scoped_ptr.hpp>
 
 class Dialogs;
 class LaTeXFeatures;
@@ -128,11 +127,8 @@ private:
 	/// The cached variables
 	class Cache;
 	friend class Cache;
-	/** Can change the contents of the cache, but not the pointer.
-	 *  Use std::auto_ptr not boost::scoped_ptr so we do not have to define
-	 *  Cache in advance.
-	 */
-	std::auto_ptr<Cache> const cache_;
+	/// The pointer never changes although *cache_'s contents may.
+	boost::scoped_ptr<Cache> const cache_;
 };
 
 #endif
