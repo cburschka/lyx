@@ -581,19 +581,16 @@ string const createLyXTmpDir(string const & deflt)
 {
 	if (!deflt.empty() && deflt != "/tmp") {
 		if (mkdir(deflt, 0777)) {
+#ifdef __EMX__
+			Path p(user_lyxdir());
+#endif
 			if (IsDirWriteable(deflt)) {
 				// deflt could not be created because it
 				// did exist already, so let's create our own
 				// dir inside deflt.
-#ifdef __EMX__
-				Path p(user_lyxdir());
-#endif
 				return createTmpDir(deflt, "lyx_tmpdir");
 			} else {
 				// some other error occured.
-#ifdef __EMX__
-				Path p(user_lyxdir());
-#endif
 				return createTmpDir("/tmp", "lyx_tmpdir");
 			}
 		} else
