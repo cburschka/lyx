@@ -571,8 +571,8 @@ void MathCursor::delLine()
 		par()->asGridInset()->delRow(hullRow());
 	}
 
-	if (idx() > par()->nargs())
-		idx() = par()->nargs();
+	if (idx() >= par()->nargs())
+		idx() = par()->nargs() - 1;
 
 	if (pos() > size())
 		pos() = size();
