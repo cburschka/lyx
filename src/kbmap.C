@@ -52,6 +52,10 @@ char kb_keymap::getiso(unsigned int c)
 	case 0x00000200:
 		// latin 4 byte 3 = 3
 	case 0x00000300:
+		// cyrillic KOI8 & Co
+	case 0x00000600:
+		// greek
+	case 0x00000700:
 		// latin 8 byte 3 = 18 (0x12)
 	case 0x00001200:
 		// latin 9 byte 3 = 19 (0x13)
