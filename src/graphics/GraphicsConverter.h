@@ -44,18 +44,20 @@ public:
 	~Converter();
 
 	/// We are explicit about when we begin the conversion process.
-	void startConversion();
+	void startConversion() const;
 
-	/** At the end of the conversion process inform the outside world
-	 *  by emitting a signal.
+	/** Connect and you'll be informed when the conversion process has
+	 *  finished.
+	 *  If the conversion is succesful, then the slot is passed \c true.
 	 */
-	typedef boost::signal1<void, bool> SignalType;
+	typedef boost::signal1<void, bool>::slot_type slot_type;
 	///
-	SignalType finishedConversion;
-	
-	/** If the convsion is succesful (finishedConversion returns \c true),
-	 *  this returns the name of the resulting file.
-	 *  If conversion fails, however, it returns an empty string.
+	boost::signals::connection connect(slot_type const &) const;
+
+	/** If the conversion is succesful, this returns the name of the
+	 *  resulting file.
+	 *  If conversion fails or has not been completed, however, it
+	 *  returns an empty string.
 	 */
 	string const & convertedFile() const;
 
@@ -66,7 +68,7 @@ private:
 	/// The pointer never changes although *pimpl_'s contents may.
 	boost::scoped_ptr<Impl> const pimpl_;
 };
- 
+
 } // namespace grfx
 
 #endif // GRAPHICSCONVERTER_H

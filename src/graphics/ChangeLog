@@ -1,3 +1,40 @@
+2002-07-17  Angus Leeming  <leeming@lyx.org>
+
+	Be true to the Pimpl idiom, moving all signals into the respective
+	Impl classes and defining methods to connect them to an outside slot.
+	Const-ify all visible class methods as they act only on a const pimpl_.
+
+	* GraphicsCache.[Ch] (add, remove): const-ify.
+
+	* GraphicsCacheItem.[Ch] (startLoading): const-ify.
+	(statusChanged): move the signal into the Impl class.
+	(connect): new method, enabling a listener to connect to this signal.
+
+	* GraphicsConverter.[Ch]: (startConversion): const-ify.
+	(finishedConversion): move the signal into the Impl class.
+	(connect): new method, enabling a listener to connect to this signal.
+	
+	* GraphicsLoader.[Ch] (reset, startLoading): const-ify.
+	(statusChanged): move the signal into the Impl class.
+	(connect): new method, enabling a listener to connect to this signal.
+
+	* PreviewLoader.[Ch] (add, remove, startLoading): const-ify.
+	(imageReady): move the signal into the Impl class.
+	(connect): new method, enabling a listener to connect to this signal.
+	(emitSignal): new method, enabling PreviewImage to tell the outside
+	world that the file has been loaded into memory.
+
+	* Previews.[Ch] (loader, removeLoader, generateBufferPreviews):
+	const-ify.
+
+	* GraphicsCache.C:
+	* GraphicsCacheItem.C:
+	* GraphicsConverter.[Ch]:
+	* GraphicsImage.h:
+	* GraphicsImageXPM.C:
+	* GraphicsLoader.C:
+	* PreviewLoader.[Ch]: whitespace clean-up.
+
 2002-07-16  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* PreviewLoader.C (setConverter): remove unused variable

@@ -57,7 +57,7 @@ public:
 	string const & filename() const;
 
 	/// It's in the cache. Now start the loading process.
-	void startLoading();
+	void startLoading() const;
 
 	/** Get the image associated with filename_.
 	 *  If the image is not yet loaded, returns 0.
@@ -69,8 +69,12 @@ public:
 	/// How far have we got in loading the image?
 	ImageStatus status() const;
 
-	/// This signal is emitted when the image loading status changes.
-	boost::signal0<void> statusChanged;
+	/** Connect and you'll be informed when the loading status of the image
+	 *  changes.
+	 */
+	typedef boost::signal0<void>::slot_type slot_type;
+	///
+	boost::signals::connection connect(slot_type const &) const;
 
 private:
 	/// Use the Pimpl idiom to hide the internals.

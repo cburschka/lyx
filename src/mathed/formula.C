@@ -500,7 +500,7 @@ void InsetFormula::PreviewImpl::generatePreview(grfx::PreviewLoader & ploader)
 	// grfx::PreviewLoader signal that'll inform us when the preview image
 	// is ready for loading.
 	if (!connection_.connected()) {
-		connection_ = ploader.imageReady.connect(
+		connection_ = ploader.connect(
 			boost::bind(&PreviewImpl::previewReady, this, _1));
 	}
 

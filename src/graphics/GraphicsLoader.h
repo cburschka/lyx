@@ -52,11 +52,12 @@ public:
 	~Loader();
 
 	/// The file can be changed, or the display params, or both.
-	void reset(string const & file_with_path, DisplayType = ColorDisplay);
+	void reset(string const & file_with_path,
+		   DisplayType = ColorDisplay) const;
 	///
-	void reset(string const & file_with_path, Params const &);
+	void reset(string const & file_with_path, Params const &) const;
 	///
-	void reset(Params const &);
+	void reset(Params const &) const;
 
 	/// Returns the absolute path of the loaded (loading?) file.
 	string const & filename() const;
@@ -64,18 +65,22 @@ public:
 	bool empty() const { return filename().empty(); }
 
 	/// We are explicit about when we begin the loading process.
-	void startLoading();
+	void startLoading() const;
 
 	/** starting loading of the image is conditional upon the
 	 *  inset being visible or not.
 	 */
-	void startLoading(Inset const &, BufferView const &);
+	void startLoading(Inset const &, BufferView const &) const;
 
 	/// How far have we got in loading the image?
 	ImageStatus status() const;
 
-	/// This signal is emitted when the image loading status changes.
-	boost::signal0<void> statusChanged;
+	/** Connect and you'll be informed when the loading status of the image
+	 *  changes.
+	 */
+	typedef boost::signal0<void>::slot_type slot_type;
+	///
+	boost::signals::connection connect(slot_type const &) const;
 
 	/** The loaded image with Pixmap set.
 	 *  If the Pixmap is not yet set (see status() for why...), returns 0.

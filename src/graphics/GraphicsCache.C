@@ -37,7 +37,7 @@ struct Cache::Impl {
 	CacheType cache;
 };
 
-	
+
 Cache & Cache::get()
 {
 	// Now return the cache
@@ -61,7 +61,7 @@ std::vector<string> Cache::loadableFormats() const
 }
 
 
-void Cache::add(string const & file)
+void Cache::add(string const & file) const
 {
 	if (!AbsolutePath(file)) {
 		lyxerr << "Cache::add(" << file << "):\n"
@@ -82,7 +82,7 @@ void Cache::add(string const & file)
 }
 
 
-void Cache::remove(string const & file)
+void Cache::remove(string const & file) const
 {
 	CacheType::iterator it = pimpl_->cache.find(file);
 	if (it == pimpl_->cache.end())

@@ -109,8 +109,7 @@ PreviewImage::Impl::Impl(PreviewImage & p, PreviewLoader & l,
 	: parent_(p), ploader_(l), iloader_(bf),
 	  snippet_(s), ascent_frac_(af)
 {
-	iloader_.statusChanged.connect(
-		boost::bind(&Impl::statusChanged, this));
+	iloader_.connect(boost::bind(&Impl::statusChanged, this));
 }
 
 
@@ -151,7 +150,7 @@ void PreviewImage::Impl::statusChanged()
 
 	case Ready:
 		lyx::unlink(iloader_.filename());
-		ploader_.imageReady(parent_);
+		ploader_.emitSignal(parent_);
 		break;
 	}
 }

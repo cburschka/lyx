@@ -30,7 +30,7 @@ namespace grfx {
 
 struct Loader::Impl : boost::signals::trackable {
 	///
-	Impl(Loader &, Params const &);
+	Impl(Params const &);
 	///
 	~Impl();
 	///
@@ -51,17 +51,17 @@ struct Loader::Impl : boost::signals::trackable {
 	Cache::ItemPtr cached_item_;
 	/// We modify a local copy of the image once it is loaded.
 	Image::ImagePtr image_;
+	/// This signal is emitted when the image loading status changes.
+	boost::signal0<void> signal_;
 
 private:
 	///
 	void statusChanged();
 	///
 	void checkedLoading();
-	
+
 	///
 	Params params_;
-	///
-	Loader & parent_;
 
 	///
 	Timeout timer;
@@ -75,19 +75,19 @@ private:
 
 
 Loader::Loader()
-	: pimpl_(new Impl(*this, Params()))
+	: pimpl_(new Impl(Params()))
 {}
 
 
 Loader::Loader(string const & file, DisplayType type)
-	: pimpl_(new Impl(*this, Params()))
+	: pimpl_(new Impl(Params()))
 {
 	reset(file, type);
 }
 
 
 Loader::Loader(string const & file, Params const & params)
-	: pimpl_(new Impl(*this, params))
+	: pimpl_(new Impl(params))
 {
 	reset(file, params);
 }
@@ -97,7 +97,7 @@ Loader::~Loader()
 {}
 
 
-void Loader::reset(string const & file, DisplayType type)
+void Loader::reset(string const & file, DisplayType type) const
 {
 	Params params;
 	params.display = type;
@@ -108,7 +108,7 @@ void Loader::reset(string const & file, DisplayType type)
 }
 
 
-void Loader::reset(string const & file, Params const & params)
+void Loader::reset(string const & file, Params const & params) const
 {
 	pimpl_->resetParams(params);
 	pimpl_->resetFile(file);
@@ -116,14 +116,14 @@ void Loader::reset(string const & file, Params const & params)
 }
 
 
-void Loader::reset(Params const & params)
+void Loader::reset(Params const & params) const
 {
 	pimpl_->resetParams(params);
 	pimpl_->createPixmap();
 }
 
 
-void Loader::startLoading()
+void Loader::startLoading() const
 {
 	if (pimpl_->status_ != WaitingToLoad || !pimpl_->cached_item_.get())
 		return;
@@ -131,7 +131,7 @@ void Loader::startLoading()
 }
 
 
-void Loader::startLoading(Inset const & inset, BufferView const & bv)
+void Loader::startLoading(Inset const & inset, BufferView const & bv) const
 {
 	if (pimpl_->status_ != WaitingToLoad || !pimpl_->cached_item_.get())
 		return;
@@ -153,14 +153,20 @@ ImageStatus Loader::status() const
 }
 
 
+boost::signals::connection Loader::connect(slot_type const & slot) const
+{
+	return pimpl_->signal_.connect(slot);
+}
+
+
 Image const * Loader::image() const
 {
 	return pimpl_->image_.get();
 }
 
 
-Loader::Impl::Impl(Loader & parent, Params const & params)
-	: status_(WaitingToLoad), params_(params), parent_(parent),
+Loader::Impl::Impl(Params const & params)
+	: status_(WaitingToLoad), params_(params),
 	  timer(2000, Timeout::ONETIME), view(0)
 {
 	timer.timeout.connect(boost::bind(&Impl::checkedLoading, this));
@@ -188,7 +194,7 @@ void Loader::Impl::resetFile(string const & file)
 
 	status_ = cached_item_.get() ? cached_item_->status() : WaitingToLoad;
 	image_.reset();
-	
+
 	if (cached_item_.get() || file.empty())
 		return;
 
@@ -200,8 +206,7 @@ void Loader::Impl::resetFile(string const & file)
 	cached_item_ = gc.item(file);
 	status_ = cached_item_->status();
 
-	cached_item_->statusChanged.connect(
-		boost::bind(&Impl::statusChanged, this));
+	cached_item_->connect(boost::bind(&Impl::statusChanged, this));
 }
 
 
@@ -220,7 +225,7 @@ void Loader::Impl::statusChanged()
 {
 	status_ = cached_item_.get() ? cached_item_->status() : WaitingToLoad;
 	createPixmap();
-	parent_.statusChanged();
+	signal_();
 }
 
 
@@ -276,7 +281,7 @@ struct FindVisibleInset {
 			return false;
 		return isInsetVisible(*inset_ptr, vps_);
 	}
-	
+
 private:
 	std::list<VisibleParagraph> const & vps_;
 };

@@ -14,9 +14,9 @@
 #pragma implementation
 #endif
 
-#include "graphics/GraphicsCacheItem.h"
-#include "graphics/GraphicsImage.h"
-#include "graphics/GraphicsConverter.h"
+#include "GraphicsCacheItem.h"
+#include "GraphicsImage.h"
+#include "GraphicsConverter.h"
 
 #include "debug.h"
 
@@ -25,7 +25,6 @@
 
 #include <boost/shared_ptr.hpp>
 #include <boost/bind.hpp>
-#include <boost/signals/connection.hpp>
 #include <boost/signals/trackable.hpp>
 
 using std::endl;
@@ -35,7 +34,7 @@ namespace grfx {
 struct CacheItem::Impl : public boost::signals::trackable {
 
 	///
-	Impl(CacheItem &, string const & file);
+	Impl(string const & file);
 
 	/** Start the image conversion process, checking first that it is
 	 *  necessary. If it is necessary, then a conversion task is started.
@@ -70,15 +69,13 @@ struct CacheItem::Impl : public boost::signals::trackable {
 	void imageLoaded(bool);
 
 	/** Sets the status of the loading process. Also notifies
-	 *  listeners that the status has chacnged.
+	 *  listeners that the status has changed.
 	 */
 	void setStatus(ImageStatus new_status);
 
-	///
-	CacheItem & parent_;
-
 	/// The filename we refer too.
-	string filename_;
+	string const filename_;
+
 	/// Is the file compressed?
 	bool zipped_;
 	/// If so, store the uncompressed file in this temporary file.
@@ -95,6 +92,9 @@ struct CacheItem::Impl : public boost::signals::trackable {
 	///
 	ImageStatus status_;
 
+	/// This signal is emitted when the image loading status changes.
+	boost::signal0<void> statusChanged;
+
 	/// The connection to the signal Image::finishedLoading
 	boost::signals::connection cl_;
 
@@ -107,10 +107,10 @@ struct CacheItem::Impl : public boost::signals::trackable {
 
 
 CacheItem::CacheItem(string const & file)
-	: pimpl_(new Impl(*this, file))
+	: pimpl_(new Impl(file))
 {}
 
-		 
+
 CacheItem::~CacheItem()
 {}
 
@@ -121,7 +121,7 @@ string const & CacheItem::filename() const
 }
 
 
-void CacheItem::startLoading()
+void CacheItem::startLoading() const
 {
 	if (pimpl_->status_ != WaitingToLoad)
 		return;
@@ -142,13 +142,19 @@ ImageStatus CacheItem::status() const
 }
 
 
+boost::signals::connection CacheItem::connect(slot_type const & slot) const
+{
+	return pimpl_->statusChanged.connect(slot);
+}
+
+
 //------------------------------
 // Implementation details follow
 //------------------------------
 
 
-CacheItem::Impl::Impl(CacheItem & p, string const & file)
-	: parent_(p), filename_(file), zipped_(false),
+CacheItem::Impl::Impl(string const & file)
+	: filename_(file), zipped_(false),
 	  remove_loaded_file_(false), status_(WaitingToLoad)
 {}
 
@@ -159,7 +165,7 @@ void CacheItem::Impl::setStatus(ImageStatus new_status)
 		return;
 
 	status_ = new_status;
-	parent_.statusChanged();
+	statusChanged();
 }
 
 
@@ -172,7 +178,7 @@ void CacheItem::Impl::imageConverted(bool success)
 		converter_->convertedFile() : string();
 	converter_.reset();
 	cc_.disconnect();
-	
+
 	success = !file_to_load_.empty() && IsFileReadable(file_to_load_);
 	lyxerr[Debug::GRAPHICS] << "Unable to find converted file!" << endl;
 
@@ -224,8 +230,10 @@ void CacheItem::Impl::imageLoaded(bool success)
 		return;
 	}
 
+	// Inform the outside world.
 	setStatus(Loaded);
 }
+
 
 } // namespace grfx
 
@@ -270,7 +278,7 @@ void CacheItem::Impl::convertToDisplayFormat()
 	setStatus(Converting);
 	// Make a local copy in case we unzip it
 	string const filename = zippedFile(filename_) ?
-		unzipFile(filename_) : filename_; 
+		unzipFile(filename_) : filename_;
 	string const displayed_filename = MakeDisplayPath(filename_);
 	lyxerr[Debug::GRAPHICS] << "[GrahicsCacheItem::convertToDisplayFormat]\n"
 		<< "\tAttempting to convert image file: " << filename
@@ -288,12 +296,12 @@ void CacheItem::Impl::convertToDisplayFormat()
 	// Some old ps-files make problems, so we do not need direct
 	// loading of an ps-file
 	if (from == "ps") {
-		lyxerr[Debug::GRAPHICS] 
-		<< "\n\tThe file contains PostScript format data.\n" 
+		lyxerr[Debug::GRAPHICS]
+		<< "\n\tThe file contains PostScript format data.\n"
 		<< "\tchanging it to eps-format to get it converted to xpm\n";
 		from = "eps";
 	} else
-		lyxerr[Debug::GRAPHICS] 
+		lyxerr[Debug::GRAPHICS]
 			<< "\n\tThe file contains " << from << " format data." << endl;
 	string const to = findTargetFormat(from);
 
@@ -321,8 +329,7 @@ void CacheItem::Impl::convertToDisplayFormat()
 	// the graphics converter so that we can load the modified file
 	// on completion of the conversion process.
 	converter_.reset(new Converter(filename, to_file_base, from, to));
-	converter_->finishedConversion.connect(
-		boost::bind(&Impl::imageConverted, this, _1));
+	converter_->connect(boost::bind(&Impl::imageConverted, this, _1));
 	converter_->startConversion();
 }
 

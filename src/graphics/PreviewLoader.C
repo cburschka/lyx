@@ -99,7 +99,7 @@ struct InProgress {
 	InProgress(string const & filename_base,
 		   PendingSnippets const & pending,
 		   string const & to_format);
-	/// Remove any files left lying around and kill the forked process. 
+	/// Remove any files left lying around and kill the forked process.
 	void stop() const;
 
 	///
@@ -134,6 +134,9 @@ struct PreviewLoader::Impl : public boost::signals::trackable {
 	void remove(string const & latex_snippet);
 	///
 	void startLoading();
+
+	/// Emit this signal when an image is ready for display.
+	boost::signal1<void, PreviewImage const &> imageReady;
 
 private:
 	/// Called by the Forkedcall process that generated the bitmap files.
@@ -171,7 +174,7 @@ private:
 	double font_scaling_factor_;
 
 	/// We don't own this
-	static Converter const * pconverter_;	
+	static Converter const * pconverter_;
 };
 
 
@@ -201,21 +204,33 @@ PreviewLoader::Status PreviewLoader::status(string const & latex_snippet) const
 }
 
 
-void PreviewLoader::add(string const & latex_snippet)
+void PreviewLoader::add(string const & latex_snippet) const
 {
 	pimpl_->add(latex_snippet);
 }
 
 
-void PreviewLoader::remove(string const & latex_snippet)
+void PreviewLoader::remove(string const & latex_snippet) const
 {
 	pimpl_->remove(latex_snippet);
 }
 
 
-void PreviewLoader::startLoading()
+void PreviewLoader::startLoading() const
 {
 	pimpl_->startLoading();
+}
+
+
+boost::signals::connection PreviewLoader::connect(slot_type const & slot) const
+{
+	return pimpl_->imageReady.connect(slot);
+}
+
+
+void PreviewLoader::emitSignal(PreviewImage const & pimage) const
+{
+	pimpl_->imageReady(pimage);
 }
 
 } // namespace grfx
@@ -250,7 +265,7 @@ private:
 	int counter_;
 };
 
-	
+
 InProgress::InProgress(string const & filename_base,
 		       PendingSnippets const & pending,
 		       string const & to_format)
@@ -282,7 +297,7 @@ void InProgress::stop() const
 			lyx::unlink(vit->second);
 	}
 }
- 
+
 } // namespace anon
 
 
@@ -526,7 +541,7 @@ void PreviewLoader::Impl::finishedGenerating(string const & command,
 	std::list<PreviewImagePtr>::const_iterator nit  = newimages.begin();
 	std::list<PreviewImagePtr>::const_iterator nend = newimages.end();
 	for (; nit != nend; ++nit) {
-		parent_.imageReady(*nit->get());
+		imageReady(*nit->get());
 	}
 }
 
@@ -628,7 +643,7 @@ Converter const * setConverter()
 			"defined."
 		       << endl;
 	}
-	
+
 	return 0;
 }
 
@@ -653,7 +668,7 @@ double setFontScalingFactor(Buffer & buffer)
 
 	lyxerr[Debug::GRAPHICS] << "text class is " << textclass << '\n'
 				<< "class file is " << classfile << endl;
-	
+
 	ifstream ifs(classfile.c_str());
 	if (!ifs.good()) {
 		lyxerr[Debug::GRAPHICS] << "Unable to open class file!" << endl;
@@ -673,7 +688,7 @@ double setFontScalingFactor(Buffer & buffer)
 		// str contains just the options of \ExecuteOptions
 		string const tmp = split(str, '{');
 		split(tmp, str, '}');
-		
+
 		int count = 0;
 		string tok = token(str, ',', count++);
 		while (!isValidLength(tok) && !tok.empty())

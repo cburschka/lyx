@@ -36,8 +36,7 @@ namespace grfx {
 
 struct Converter::Impl : public boost::signals::trackable {
 	///
-	Impl(Converter &,
-	     string const &, string const &, string const &, string const &);
+	Impl(string const &, string const &, string const &, string const &);
 
 	///
 	void startConversion();
@@ -49,6 +48,13 @@ struct Converter::Impl : public boost::signals::trackable {
 	 */
 	void converted(string const & cmd, pid_t pid, int retval);
 
+	/** At the end of the conversion process inform the outside world
+	 *  by emitting a signal.
+	 */
+	typedef boost::signal1<void, bool> SignalType;
+	///
+	SignalType finishedConversion;
+
 	///
 	string script_command_;
 	///
@@ -56,29 +62,10 @@ struct Converter::Impl : public boost::signals::trackable {
 	///
 	string to_file_;
 	///
-	Converter & parent_;
-	///
 	bool valid_process_;
 	///
 	bool finished_;
 };
-
-
-Converter::Converter(string const & from_file,   string const & to_file_base,
-		     string const & from_format, string const & to_format)
-	: pimpl_(new Impl(*this,
-			  from_file, to_file_base, from_format, to_format))
-{}
-
-
-Converter::~Converter()
-{}
- 
-
-void Converter::startConversion()
-{
-	pimpl_->startConversion();
-}
 
 
 bool Converter::isReachable(string const & from_format_name,
@@ -88,12 +75,34 @@ bool Converter::isReachable(string const & from_format_name,
 }
 
 
+Converter::Converter(string const & from_file,   string const & to_file_base,
+		     string const & from_format, string const & to_format)
+	: pimpl_(new Impl(from_file, to_file_base, from_format, to_format))
+{}
+
+
+Converter::~Converter()
+{}
+
+
+void Converter::startConversion() const
+{
+	pimpl_->startConversion();
+}
+
+
+boost::signals::connection Converter::connect(slot_type const & slot) const
+{
+	return pimpl_->finishedConversion.connect(slot);
+}
+
+
 string const & Converter::convertedFile() const
 {
 	static string const empty;
 	return pimpl_->finished_ ? pimpl_->to_file_ : empty;
 }
- 
+
 } // namespace grfx
 
 //------------------------------
@@ -114,10 +123,9 @@ bool build_script(string const & from_file, string const & to_file_base,
 
 namespace grfx {
 
-Converter::Impl::Impl(Converter & p,
-		      string const & from_file,   string const & to_file_base,
+Converter::Impl::Impl(string const & from_file,   string const & to_file_base,
 		      string const & from_format, string const & to_format)
-	: parent_(p), valid_process_(false), finished_(false)
+	: valid_process_(false), finished_(false)
 {
 	lyxerr[Debug::GRAPHICS] << "Converter c-tor:\n"
 		<< "\tfrom_file:      " << from_file
@@ -136,7 +144,7 @@ Converter::Impl::Impl(Converter & p,
 
 	lyxerr[Debug::GRAPHICS] << "\tConversion script:"
 				<< "\n--------------------------------------\n"
-				<< script.str().c_str() 
+				<< script.str().c_str()
 				<< "\n--------------------------------------\n";
 
 	// Output the script to file.
@@ -174,7 +182,7 @@ void Converter::Impl::startConversion()
 		converted(string(), 0, 1);
 		return;
 	}
-		
+
 	// Initiate the conversion
 	Forkedcall::SignalTypePtr convert_ptr;
 	convert_ptr.reset(new Forkedcall::SignalType);
@@ -205,9 +213,9 @@ void Converter::Impl::converted(string const & /* cmd */,
 	if (retval > 0) {
 		lyx::unlink(to_file_);
 		to_file_.erase();
-		parent_.finishedConversion(false);
+		finishedConversion(false);
 	} else {
-		parent_.finishedConversion(true);
+		finishedConversion(true);
 	}
 }
 
@@ -278,6 +286,7 @@ bool build_script(string const & from_file,
 
 	EdgePath::const_iterator it  = edgepath.begin();
 	EdgePath::const_iterator end = edgepath.end();
+
 	for (; it != end; ++it) {
 		::Converter const & conv = converters.get(*it);
 
@@ -333,5 +342,5 @@ bool build_script(string const & from_file,
 
 	return true;
 }
- 
+
 } // namespace anon

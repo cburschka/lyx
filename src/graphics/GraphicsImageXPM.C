@@ -27,7 +27,7 @@
 #include <boost/tuple/tuple.hpp>
 
 #include FORMS_H_LOCATION
- 
+
 #ifndef CXX_GLOBAL_CSTD
 using std::cos;
 using std::sin;
@@ -100,7 +100,7 @@ bool ImageXPM::isDrawable() const
 	return pixmap_;
 }
 
- 
+
 Pixmap ImageXPM::getPixmap() const
 {
 	if (!pixmap_status_ == PIXMAP_SUCCESS)
@@ -594,7 +594,7 @@ string const convertTo7chars(string const & input)
 		format.erase(5, 1);
 		format.erase(7, 1);
 		break;
-	case 9: // 
+	case 9: //
 		format.erase(7);
 		break;
 	case 4: // #rgb

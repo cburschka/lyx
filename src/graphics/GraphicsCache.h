@@ -45,10 +45,10 @@ public:
 	std::vector<string> loadableFormats() const;
 
 	/// Add a graphics file to the cache.
-	void add(string const & file);
+	void add(string const & file) const;
 
 	/// Remove a file from the cache.
-	void remove(string const & file);
+	void remove(string const & file) const;
 
 	/// Returns \c true if the file is in the cache.
 	bool inCache(string const & file) const;

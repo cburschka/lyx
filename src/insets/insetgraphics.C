@@ -172,8 +172,7 @@ private:
 InsetGraphics::Cache::Cache(InsetGraphics & p)
 	: old_ascent(0), parent_(p)
 {
-  	loader.statusChanged.connect(
-		boost::bind(&InsetGraphics::statusChanged, &parent_));
+  	loader.connect(boost::bind(&InsetGraphics::statusChanged, &parent_));
 }
 
 

@@ -71,7 +71,7 @@ public:
 
 	/// is the image drawable ?
 	virtual bool isDrawable() const = 0;
- 
+
 	/** At the end of the loading process inform the outside world
 	 *  by emitting a signal.
 	 */

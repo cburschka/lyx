@@ -2,6 +2,9 @@
 
 	* math_parboxinset.C: add using std::vector directive.
 
+	* formula.C (PreviewImpl's generate): bind to the PreviewLoader through
+	a method rather than to the signal directly.
+
 2002-07-16  Angus Leeming  <leeming@lyx.org>
 
 	* formula.C (ascent, descent, draw): remove the extra pixels

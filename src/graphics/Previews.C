@@ -58,7 +58,7 @@ Previews::~Previews()
 {}
 
 
-PreviewLoader & Previews::loader(Buffer const * buffer)
+PreviewLoader & Previews::loader(Buffer const * buffer) const
 {
 	lyx::Assert(buffer);
 
@@ -74,7 +74,7 @@ PreviewLoader & Previews::loader(Buffer const * buffer)
 }
 
 
-void Previews::removeLoader(Buffer const * buffer)
+void Previews::removeLoader(Buffer const * buffer) const
 {
 	if (!buffer)
 		return;
@@ -86,7 +86,7 @@ void Previews::removeLoader(Buffer const * buffer)
 }
 
 
-void Previews::generateBufferPreviews(Buffer const & buffer)
+void Previews::generateBufferPreviews(Buffer const & buffer) const
 {
 	PreviewLoader & ploader = loader(&buffer);
 

@@ -59,20 +59,30 @@ public:
 
 	/// How far have we got in loading the image?
 	Status status(string const & latex_snippet) const;
-	
+
 	/// Add a snippet of LaTeX to the queue for processing.
-	void add(string const & latex_snippet);
+	void add(string const & latex_snippet) const;
 
 	/// Remove this snippet of LaTeX from the PreviewLoader.
-	void remove(string const & latex_snippet);
-	
+	void remove(string const & latex_snippet) const;
+
 	/** We have accumulated several latex snippets with status "InQueue".
 	 *  Initiate their transformation into bitmap images.
 	 */
-	void startLoading();
+	void startLoading() const;
 
-	/// Emit this signal when an image is ready for display.
-	boost::signal1<void, PreviewImage const &> imageReady;
+	/** Connect and you'll be informed when the bitmap image file
+	 *  has been created and is ready for loading through
+	 *  grfx::PreviewImage::image().
+	 */
+	typedef boost::signal1<void, PreviewImage const &>::slot_type slot_type;
+	///
+	boost::signals::connection connect(slot_type const &) const;
+
+	/** When PreviewImage has finished loading the image file into memory,
+	 *  it tells the PreviewLoader to tell the outside world
+	 */
+	void emitSignal(PreviewImage const &) const;
 
 private:
 	/// Use the Pimpl idiom to hide the internals.
