@@ -10,9 +10,10 @@
 	and the users settings.
 
 	* src/lyx_main.C:
-	* src/lyxrc.[Ch]: commented out noncopyable so I can keep a system_lyxrc.
-	I'll rewrite this later, after 1.1.6 probably, to keep a single LyXRC but
-	two instances of a LyXRCStruct.
+	* src/lyxrc.[Ch]: commented out noncopyable so I can keep a
+	system_lyxrc. 
+	I'll rewrite this later, after 1.1.6 probably, to keep a single
+	LyXRC but two instances of a LyXRCStruct.
 
 2000-10-10  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
@@ -161,9 +162,6 @@
 	* src/frontends/xforms/forms/form_paragraph.fd: now derived from
 	FormBase.
 	
-	* src/frontends/xforms/FormToc.h (updateOrHide): override default
-	behaviour. Calls update() only.
-
 2000-10-06  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* lib/bind/cua.bind: fix a bit.
