@@ -204,7 +204,7 @@ void LyXRC::setDefaults() {
 	menu_font_name = "-*-helvetica-bold-r";
 	popup_font_name = "-*-helvetica-medium-r";
 	font_norm = "iso8859-1";
-	font_norm_type = OTHER_ENCODING;
+	font_norm_type = ISO_8859_1;
 	font_norm_menu = "";
 	override_x_deadkeys = true;
 	autosave = 300;
