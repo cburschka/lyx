@@ -281,13 +281,11 @@ bool MathHullInset::display() const
 }
 
 
-vector<string> MathHullInset::getLabelList() const
+void MathHullInset::getLabelList(std::vector<string> & labels) const
 {
-	vector<string> res;
 	for (row_type row = 0; row < nrows(); ++row)
 		if (!label_[row].empty() && nonum_[row] != 1)
-			res.push_back(label_[row]);
-	return res;
+			labels.push_back(label_[row]);
 }
 
 

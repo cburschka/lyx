@@ -176,7 +176,7 @@ public:
 	///
 	idx_type index(row_type r, col_type c) const;
 	///
-	std::vector<idx_type> idxBetween(idx_type from, idx_type to) const;
+	bool idxBetween(idx_type idx, idx_type from, idx_type to) const;
 	///
 	virtual int defaultColSpace(col_type) { return 0; }
 	///

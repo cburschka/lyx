@@ -249,7 +249,9 @@ void InsetFormula::draw(BufferView * bv, LyXFont const & font,
 
 vector<string> const InsetFormula::getLabelList() const
 {
-	return par()->getLabelList();
+	vector<string> res;
+	par()->getLabelList(res);
+	return res;
 }
 
 

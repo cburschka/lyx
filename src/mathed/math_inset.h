@@ -161,7 +161,7 @@ public:
 	virtual void idxGlue(idx_type) {}
 	// returns list of cell indices that are "between" from and to for
 	// selection purposes
-	virtual std::vector<idx_type> idxBetween(idx_type from, idx_type to) const;
+	virtual bool idxBetween(idx_type idx, idx_type from, idx_type to) const;
 
 	/// the number of nested cells this inset owns
 	virtual idx_type nargs() const;
@@ -239,7 +239,7 @@ public:
 	virtual void edit(BufferView *, int, int, mouse_button::state) {}
 
 	/// request "external features"
-	virtual void validate(LaTeXFeatures & features) const;
+	virtual void validate(LaTeXFeatures &) const {}
 	/// char char code if possible
 	virtual void handleFont(string const &) {}
 	/// is this inset equal to a given other inset?
@@ -282,7 +282,8 @@ public:
 	virtual int dispatch(string const & cmd, idx_type idx, pos_type pos);
 
 	/// LyXInset stuff
-	virtual std::vector<string> getLabelList() const;
+	/// write labels into a list
+	virtual void getLabelList(std::vector<string> &) const {}
 	/// LyXInset stuff
 	virtual bool numberedType() const { return false; }
 	/// hull type

@@ -810,18 +810,15 @@ MathGridInset::RowInfo & MathGridInset::rowinfo(row_type row)
 }
 
 
-vector<MathInset::idx_type>
-	MathGridInset::idxBetween(idx_type from, idx_type to) const
+bool MathGridInset::idxBetween(idx_type idx, idx_type from, idx_type to) const
 {
-	row_type r1 = min(row(from), row(to));
-	row_type r2 = max(row(from), row(to));
-	col_type c1 = min(col(from), col(to));
-	col_type c2 = max(col(from), col(to));
-	vector<idx_type> res;
-	for (row_type i = r1; i <= r2; ++i)
-		for (col_type j = c1; j <= c2; ++j)
-			res.push_back(index(i, j));
-	return res;
+	row_type const ri = row(idx);
+	row_type const r1 = min(row(from), row(to));
+	row_type const r2 = max(row(from), row(to));
+	col_type const ci = col(idx);
+	col_type const c1 = min(col(from), col(to));
+	col_type const c2 = max(col(from), col(to));
+	return r1 <= ri && ri <= r2 && c1 <= ci && ci <= c2;
 }
 
 

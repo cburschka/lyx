@@ -198,17 +198,9 @@ void MathInset::dump() const
 }
 
 
-void MathInset::validate(LaTeXFeatures &) const
-{}
-
-
-vector<MathInset::idx_type>
-	MathInset::idxBetween(idx_type from, idx_type to) const
+bool MathInset::idxBetween(idx_type idx, idx_type from, idx_type to) const
 {
-	vector<idx_type> res;
-	for (idx_type i = from; i <= to; ++i)
-		res.push_back(i);
-	return res;
+	return from <= idx && idx <= to;
 }
 
 
@@ -303,12 +295,6 @@ int MathInset::docbook(std::ostream &, bool) const
 int MathInset::dispatch(string const &, idx_type, pos_type) 
 {
 	return 0; // undispatched
-}
-
-
-std::vector<string> MathInset::getLabelList() const
-{
-	return std::vector<string>();
 }
 
 
