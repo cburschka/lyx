@@ -547,7 +547,6 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	case LFUN_GETNAME:
 	case LFUN_NOTIFY:
 	case LFUN_GOTOFILEROW:
-	case LFUN_GOTO_PARAGRAPH:
 	case LFUN_DIALOG_SHOW_NEXT_INSET:
 	case LFUN_DIALOG_HIDE:
 	case LFUN_DIALOG_DISCONNECT_INSET:
@@ -1094,32 +1093,6 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			}
 
 			view()->setCursorFromRow(row);
-
-			view()->center();
-			// see BufferView_pimpl::center()
-			view()->updateScrollbar();
-			break;
-		}
-
-		case LFUN_GOTO_PARAGRAPH: {
-			istringstream is(argument);
-			int id;
-			is >> id;
-			ParIterator par = owner->buffer()->getParFromID(id);
-			if (par == owner->buffer()->par_iterator_end()) {
-				lyxerr[Debug::INFO] << "No matching paragraph found! ["
-								<< id << ']' << endl;
-				break;
-			} else {
-				lyxerr[Debug::INFO] << "Paragraph " << par->id()
-								<< " found." << endl;
-			}
-
-			// Set the cursor
-			view()->setCursor(par, 0);
-
-			view()->switchKeyMap();
-			owner->view_state_changed();
 
 			view()->center();
 			// see BufferView_pimpl::center()

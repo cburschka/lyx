@@ -1,3 +1,13 @@
+2005-02-09  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* BufferView_pimpl.C (dispatch): handle LFUN_GOTO_PARAGRAPH here,
+	but use update() to get correct screen display; use convert
+	instead of istringstream. 
+	(getStatus): handle LFUN_GOTO_PARAGRAPH 
+
+	* lyxfunc.C (dispatch, getStatus): do not handle
+	LFUN_GOTO_PARAGRAPH here.
+
 2005-02-08  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
 	* text3.C (dispatch): size() -> depth()

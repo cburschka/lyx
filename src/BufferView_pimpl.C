@@ -965,6 +965,7 @@ FuncStatus BufferView::Pimpl::getStatus(FuncRequest const & cmd)
 	case LFUN_INSERT_LABEL:
 	case LFUN_BOOKMARK_SAVE:
 	case LFUN_REF_GOTO:
+	case LFUN_GOTO_PARAGRAPH:
 	case LFUN_WORD_FIND:
 	case LFUN_WORD_REPLACE:
 	case LFUN_MARK_OFF:
@@ -1085,6 +1086,26 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & cmd)
 
 		if (!label.empty())
 			bv_->gotoLabel(label);
+		break;
+	}
+
+	case LFUN_GOTO_PARAGRAPH: {
+		int const id = convert<int>(cmd.argument);
+		ParIterator par = buffer_->getParFromID(id);
+		if (par == buffer_->par_iterator_end()) {
+			lyxerr[Debug::INFO] << "No matching paragraph found! ["
+					    << id << ']' << endl;
+			break;
+		} else {
+			lyxerr[Debug::INFO] << "Paragraph " << par->id()
+					    << " found." << endl;
+		}
+
+		// Set the cursor
+		bv_->setCursor(par, 0);
+
+		update();
+		switchKeyMap();
 		break;
 	}
 
