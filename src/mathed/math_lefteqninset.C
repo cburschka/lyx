@@ -18,7 +18,7 @@ MathInset * MathLefteqnInset::clone() const
 }
 
 
-void MathLefteqnInset::metrics(MathMetricsInfo const & mi) const
+void MathLefteqnInset::metrics(MathMetricsInfo & mi) const
 {
 	MathNestInset::metrics(mi);
 	ascent_  = xcell(0).ascent() + 2;
@@ -27,7 +27,7 @@ void MathLefteqnInset::metrics(MathMetricsInfo const & mi) const
 }
 
 
-void MathLefteqnInset::draw(Painter & pain, int x, int y) const
+void MathLefteqnInset::draw(MathPainterInfo & pain, int x, int y) const
 {
 	xcell(0).draw(pain, x + 2, y);
 	//mathed_draw_framebox(pain, x, y, this);

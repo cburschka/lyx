@@ -2,7 +2,7 @@
 #ifndef MATH_SPECIALCHARINSET_H
 #define MATH_SPECIALCHARINSET_H
 
-#include "math_inset.h"
+#include "math_diminset.h"
 
 #ifdef __GNUG__
 #pragma interface
@@ -13,31 +13,23 @@
     \author André Pönitz
  */
 
-class MathSpecialCharInset : public MathInset {
+class MathSpecialCharInset : public MathDimInset {
 public:
 	///
 	explicit MathSpecialCharInset(char c);
 	///
 	MathInset * clone() const;
 	///
-	void metrics(MathMetricsInfo const & st) const;
+	void metrics(MathMetricsInfo & st) const;
 	///
-	void draw(Painter &, int x, int y) const;
+	void draw(MathPainterInfo &, int x, int y) const;
 	///
 	void write(WriteStream & os) const;
 	///
 	void normalize(NormalStream &) const;
-	///
-	int ascent() const;
-	///
-	int descent() const;
-	///
-	int width() const;
 
 private:
 	/// the character
 	char char_;
-	///
-	mutable LyXFont font_;
 };
 #endif

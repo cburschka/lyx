@@ -8,21 +8,18 @@
 #include "math_mathmlstream.h"
 #include "math_streamstr.h"
 #include "LColor.h"
-#include "frontends/Painter.h"
 #include "math_support.h"
 #include "math_parser.h"
 #include "LaTeXFeatures.h"
 #include "debug.h"
 
-#include <cctype>
-
 
 MathStringInset::MathStringInset()
-	: str_(), code_(LM_TC_MIN)
+	: str_()
 {}
 
-MathStringInset::MathStringInset(string const & s, MathTextCodes t)
-	: str_(s), code_(t)
+MathStringInset::MathStringInset(string const & s)
+	: str_(s)
 {}
 
 
@@ -32,42 +29,16 @@ MathInset * MathStringInset::clone() const
 }
 
 
-int MathStringInset::ascent() const
+void MathStringInset::metrics(MathMetricsInfo & mi) const
 {
-	return mathed_string_ascent(font_, str_);
+	mathed_string_dim(mi.base.font, str_, ascent_, descent_, width_);
 }
 
 
-int MathStringInset::descent() const
-{
-	return mathed_string_descent(font_, str_);
-}
-
-
-int MathStringInset::width() const
-{
-	return mathed_string_width(font_, str_);
-}
-
-
-void MathStringInset::validate(LaTeXFeatures & features) const
-{
-	//lyxerr << "stringinset amssymb" << endl;
-	if (code_ == LM_TC_MSA || code_ == LM_TC_MSB)
-		features.require("amssymb");
-}
-
-
-void MathStringInset::metrics(MathMetricsInfo const & mi) const
-{
-	whichFont(font_, code_, mi);
-}
-
-
-void MathStringInset::draw(Painter & pain, int x, int y) const
+void MathStringInset::draw(MathPainterInfo & pi, int x, int y) const
 {
 	//lyxerr << "drawing '" << str_ << "' code: " << code_ << endl;
-	drawStr(pain, font_, x, y, str_);
+	drawStr(pi, pi.base.font, x, y, str_);
 }
 
 
@@ -79,7 +50,7 @@ void MathStringInset::normalize(NormalStream & os) const
 
 void MathStringInset::maplize(MapleStream & os) const
 {
-	if (code_ != LM_TC_VAR || str_.size() <= 1) {
+	if (/*code_ != LM_TC_VAR || */ str_.size() <= 1) {
 		os << ' ' << str_ << ' ';
 		return;
 	}
@@ -93,7 +64,7 @@ void MathStringInset::maplize(MapleStream & os) const
 
 void MathStringInset::octavize(OctaveStream & os) const
 {
-	if (code_ != LM_TC_VAR || str_.size() <= 1) {
+	if (/*code_ != LM_TC_VAR ||*/ str_.size() <= 1) {
 		os << ' ' << str_ << ' ';
 		return;
 	}
@@ -107,6 +78,7 @@ void MathStringInset::octavize(OctaveStream & os) const
 
 void MathStringInset::mathmlize(MathMLStream & os) const
 {
+/*
 	if (code_ == LM_TC_VAR)
 		os << "<mi> " << str_ << " </mi>";
 	else if (code_ == LM_TC_CONST)
@@ -114,14 +86,12 @@ void MathStringInset::mathmlize(MathMLStream & os) const
 	else if (code_ == LM_TC_RM || code_ == LM_TC_TEXTRM)
 		os << "<mtext> " << str_ <<  " </mtext>";
 	else
+*/
 		os << str_;
 }
 
 
 void MathStringInset::write(WriteStream & os) const
 {
-	if (math_font_name(code_))
-		os << '\\' << math_font_name(code_) << '{' << str_ << '}';
-	else
-		os << str_;
+	os << str_;
 }

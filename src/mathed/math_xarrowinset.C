@@ -22,10 +22,10 @@ MathInset * MathXArrowInset::clone() const
 }
 
 
-void MathXArrowInset::metrics(MathMetricsInfo const & st) const
+void MathXArrowInset::metrics(MathMetricsInfo & mi) const
 {
-	MathMetricsInfo mi = st;
-	smallerStyleScript(mi);
+	//MathMetricsInfo mi = st;
+	//smallerStyleScript(mi);
 	xcell(0).metrics(mi);
 	width_   = xcell(0).width() + 10;
 	ascent_  = xcell(0).height() + 10;
@@ -33,7 +33,7 @@ void MathXArrowInset::metrics(MathMetricsInfo const & st) const
 }
 
 
-void MathXArrowInset::draw(Painter & pain, int x, int y) const
+void MathXArrowInset::draw(MathPainterInfo & pain, int x, int y) const
 {
 	xcell(0).draw(pain, x + 5, y - 10);
 	mathed_draw_deco(pain, x + 1, y - 7, width_ - 2, 5, name_);

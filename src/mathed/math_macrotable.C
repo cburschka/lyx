@@ -108,26 +108,26 @@ void MathMacroTable::builtinMacros()
 	define("\\def\\Longleftrightarrow{\\Leftarrow\\kern-8mu\\Rightarrow}");
 	define("\\def\\doteq{\\stackrel{\\cdot}{\\=}}");
 
-	if (math_font_available(LM_TC_CMSY)) {
+	//if (math_font_available(LM_TC_CMSY)) {
 		define("\\def\\longrightarrow{\\lyxbar\\kern-6mu\\rightarrow}");
 		define("\\def\\longleftarrow{\\leftarrow\\kern-6mu\\lyxbar}");
 		define("\\def\\mapsto{\\mapstochar\\kern-4mu\\rightarrow}");
 		define("\\def\\longmapsto{\\mapstochar\\kern-3mu\\lyxbar\\kern-6mu\\rightarrow}");
-	}
+	//}
 
-	if (math_font_available(LM_TC_CMR) && math_font_available(LM_TC_CMSY)) {
+	//if (math_font_available(LM_TC_CMR) && math_font_available(LM_TC_CMSY)) {
 		define("\\def\\Longrightarrow{\\lyxeq\\kern-5mu\\Rightarrow}");
 		define("\\def\\Longleftarrow{\\Leftarrow\\kern-5mu\\lyxeq}");
 		define("\\def\\models{\\vert\\kern-3mu\\lyxeq}");
-	}
+	//}
 
-	if (math_font_available(LM_TC_CMM)) {
+	//if (math_font_available(LM_TC_CMM)) {
 		define("\\def\\hookrightarrow{\\lhook\\kern-8mu\\rightarrow}");
 		define("\\def\\hookleftarrow{\\leftarrow\\kern-8mu\\rhook}");
 		define("\\def\\bowtie{\\triangleright\\kern-2mu\\triangleleft}");
-	}
+	//}
 
-	if (math_font_available(LM_TC_MSA)) {
+	//if (math_font_available(LM_TC_MSA)) {
 		//amsfonts.sty
 
 		define("\\def\\dashrightarrow{\\lyxdabar\\lyxdabar\\lyxright}");
@@ -145,11 +145,11 @@ void MathMacroTable::builtinMacros()
 		define("\\def\\doublecap{\\Cap}");
 		define("\\def\\llless{\\lll}");
 		define("\\def\\gggtr{\\ggg}");
-	}
+	//}
 
-	if (math_font_available(LM_TC_MSB)) {
+	//if (math_font_available(LM_TC_MSB)) {
 		define("\\def\\Join{\\ltimes\\kern-12mu\\rtimes}");
-	}
+	//}
 
 	//
 	define("\\def\\mathcircumflex{\\mbox{\\^{}}}\n"   "{\\hat{}}");

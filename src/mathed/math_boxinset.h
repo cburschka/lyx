@@ -30,7 +30,7 @@ public:
 	///
 	void normalize(NormalStream &) const;
 	///
-	void draw(Painter &, int x, int y) const;
+	void draw(MathPainterInfo &, int x, int y) const;
 
 private:
 	///

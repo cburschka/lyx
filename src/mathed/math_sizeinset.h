@@ -3,7 +3,6 @@
 #define MATHSIZEINSET_H
 
 #include "math_nestinset.h"
-#include "math_defs.h"
 
 #ifdef __GNUG__
 #pragma interface
@@ -22,9 +21,9 @@ public:
 	///
 	MathInset * clone() const;
 	///
-	void metrics(MathMetricsInfo const & st) const;
+	void metrics(MathMetricsInfo & st) const;
 	///
-	void draw(Painter &, int x, int y) const;
+	void draw(MathPainterInfo &, int x, int y) const;
 	///
 	bool needsBraces() const { return false; }
 

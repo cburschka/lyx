@@ -58,17 +58,16 @@ libmathed_la_SOURCES = \
 	math_exintinset.h \
 	math_factory.C \
 	math_factory.h \
+	math_fontinset.C \
+	math_fontinset.h \
 	math_fracinset.C \
 	math_fracinset.h \
 	math_fracbase.C \
 	math_fracbase.h \
-	math_funcinset.C \
-	math_funcinset.h \
 	math_funcliminset.C \
 	math_funcliminset.h \
 	math_gridinset.C \
 	math_gridinset.h \
-	math_hash.C \
 	math_hullinset.C \
 	math_hullinset.h \
 	math_inset.C \

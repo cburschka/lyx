@@ -41,6 +41,7 @@
 #include "math_charinset.h"
 #include "math_cursor.h"
 #include "math_factory.h"
+#include "math_fontinset.h"
 #include "math_hullinset.h"
 #include "math_iterator.h"
 #include "math_macrotable.h"
@@ -68,6 +69,7 @@ int first_x;
 int first_y;
 
 
+
 bool openNewInset(BufferView * bv, UpdatableInset * new_inset)
 {
 	if (!bv->insertInset(new_inset)) {
@@ -91,6 +93,7 @@ InsetFormulaBase::InsetFormulaBase()
 	//lyxerr << "sizeof MathInset: " << sizeof(MathInset) << "\n";
 	//lyxerr << "sizeof(MathMetricsInfo): " << sizeof(MathMetricsInfo) << "\n";
 	//lyxerr << "sizeof(MathCharInset): " << sizeof(MathCharInset) << "\n";
+	//lyxerr << "sizeof(LyXFont): " << sizeof(LyXFont) << "\n";
 }
 
 
@@ -116,6 +119,21 @@ void InsetFormulaBase::mutateToText()
 }
 
 
+void InsetFormulaBase::handleFont
+	(BufferView * bv, string const & arg, string const & font)
+{
+	bv->lockedInsetStoreUndo(Undo::EDIT);
+	bool sel = mathcursor->selection();
+	if (sel)
+		updateLocal(bv, true);
+	mathcursor->handleNest(new MathFontInset(font));
+  for (string::const_iterator it = arg.begin(); it != arg.end(); ++it)
+    mathcursor->insert(*it);
+	if (!sel)
+		updateLocal(bv, false);
+}
+
+
 // Check if uses AMS macros
 void InsetFormulaBase::validate(LaTeXFeatures &) const
 {}
@@ -132,7 +150,12 @@ void InsetFormulaBase::metrics(BufferView * bv) const
 {
 	if (bv)
 		view_ = bv;
-	MathMetricsInfo mi(view_, font_, display() ? LM_ST_DISPLAY : LM_ST_TEXT);
+	MathMetricsInfo mi;
+	mi.view       = view_;
+	mi.base.style = display() ? LM_ST_DISPLAY : LM_ST_TEXT;
+	mi.base.font  = font_;
+	mi.base.font.setColor(LColor::math);
+	//whichFont(mi.font, LM_TC_MIN, mi);
 	par()->metrics(mi);
 }
 
@@ -167,20 +190,6 @@ void InsetFormulaBase::edit(BufferView * bv, bool front)
 	mathcursor = new MathCursor(this, front);
 	metrics(bv);
 	bv->updateInset(this, false);
-}
-
-
-void InsetFormulaBase::handleFont
-	(BufferView * bv, string const & arg, MathTextCodes t)
-{
-	if (mathcursor->selection()) {
-		bv->lockedInsetStoreUndo(Undo::EDIT);
-		updateLocal(bv, true);
-	}
-	mathcursor->handleFont(t);
-	for (string::const_iterator it = arg.begin(); it != arg.end(); ++it)
-		mathcursor->insert(*it);
-	updateLocal(bv, false);
 }
 
 
@@ -564,27 +573,27 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 		break;
 
 	//  Math fonts
-	case LFUN_GREEK_TOGGLE: handleFont(bv, arg, LM_TC_GREEK); break;
-	case LFUN_BOLD:         handleFont(bv, arg, LM_TC_BF); break;
-	case LFUN_SANS:         handleFont(bv, arg, LM_TC_SF); break;
-	case LFUN_EMPH:         handleFont(bv, arg, LM_TC_CAL); break;
-	case LFUN_ROMAN:        handleFont(bv, arg, LM_TC_RM); break;
-	case LFUN_CODE:         handleFont(bv, arg, LM_TC_TT); break;
-	case LFUN_FRAK:         handleFont(bv, arg, LM_TC_EUFRAK); break;
-	case LFUN_ITAL:         handleFont(bv, arg, LM_TC_IT); break;
-	case LFUN_NOUN:         handleFont(bv, arg, LM_TC_BB); break;
-	case LFUN_DEFAULT:      handleFont(bv, arg, LM_TC_VAR); break;
-	case LFUN_FREE:         handleFont(bv, arg, LM_TC_TEXTRM); break;
+	case LFUN_GREEK_TOGGLE: handleFont(bv, arg, "lyxgreek"); break;
+	case LFUN_BOLD:         handleFont(bv, arg, "textbf"); break;
+	case LFUN_SANS:         handleFont(bv, arg, "textsf"); break;
+	case LFUN_EMPH:         handleFont(bv, arg, "mathcal"); break;
+	case LFUN_ROMAN:        handleFont(bv, arg, "mathrm"); break;
+	case LFUN_CODE:         handleFont(bv, arg, "texttt"); break;
+	case LFUN_FRAK:         handleFont(bv, arg, "mathfrak"); break;
+	case LFUN_ITAL:         handleFont(bv, arg, "mathit"); break;
+	case LFUN_NOUN:         handleFont(bv, arg, "mathbb"); break;
+	case LFUN_DEFAULT:      handleFont(bv, arg, "textnormal"); break;
+	case LFUN_FREE:         handleFont(bv, arg, "textrm"); break;
 
 	case LFUN_GREEK:
-		handleFont(bv, arg, LM_TC_GREEK1);
+		handleFont(bv, arg, "lyxgreek1");
 		if (arg.size())
 			mathcursor->interpret(arg);
 		break;
 
 	case LFUN_MATH_MODE:
 #if 1
-		handleFont(bv, arg, LM_TC_TEXTRM);
+		handleFont(bv, arg, "textrm");
 #endif
 
 #if 0
@@ -724,6 +733,10 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 			result = UNDISPATCHED;
 		break;
 
+	case LFUN_INSET_TOGGLE:
+		mathcursor->insetToggle();
+		break;
+
 	default:
 		result = UNDISPATCHED;
 	}
@@ -748,10 +761,12 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 }
 
 
-void InsetFormulaBase::revealCodes(BufferView * /*bv*/) const
+void InsetFormulaBase::revealCodes(BufferView * bv) const
 {
 	if (!mathcursor)
 		return;
+	bv->owner()->message(mathcursor->info());
+
 #if 0
 	// write something to the minibuffer
 	// translate to latex
@@ -899,8 +914,9 @@ void mathDispatchCreation(BufferView * bv, string const & arg, bool display)
 			// formula otherwise
 			if (sel.find("\\newcommand") == string::npos &&
 				  sel.find("\\def") == string::npos)
+			{
 				f = new InsetFormula(sel);
-			else {
+			} else {
 				string name;
 				if (!mathed_parse_macro(name, sel))
 					return;

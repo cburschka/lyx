@@ -32,7 +32,7 @@ void MathXArray::touch() const
 }
 
 
-void MathXArray::metrics(MathMetricsInfo const & mi) const
+void MathXArray::metrics(MathMetricsInfo & mi) const
 {
 	//if (clean_)
 	//	return;
@@ -42,9 +42,7 @@ void MathXArray::metrics(MathMetricsInfo const & mi) const
 	drawn_  = false;
 
 	if (data_.empty()) {
-		LyXFont font;
-		whichFont(font, LM_TC_VAR, mi);
-		mathed_char_dim(font, 'I', ascent_, descent_, width_);
+		mathed_char_dim(mi.base.font, 'I', ascent_, descent_, width_);
 		return;
 	}
 
@@ -73,7 +71,7 @@ void MathXArray::metrics(MathMetricsInfo const & mi) const
 }
 
 
-void MathXArray::draw(Painter & pain, int x, int y) const
+void MathXArray::draw(MathPainterInfo & pi, int x, int y) const
 {
 	//if (drawn_ && x == xo_ && y == yo_)
 	//	return;
@@ -86,17 +84,17 @@ void MathXArray::draw(Painter & pain, int x, int y) const
 
 	if (y + descent_ <= 0)                   // don't draw above the workarea
 		return;
-	if (y - ascent_ >= pain.paperHeight())   // don't draw below the workarea
+	if (y - ascent_ >= pi.pain.paperHeight())   // don't draw below the workarea
 		return;
 	if (x + width_ <= 0)                     // don't draw left of workarea
 		return;
-	if (x >= pain.paperWidth())              // don't draw right of workarea
+	if (x >= pi.pain.paperWidth())              // don't draw right of workarea
 		return;
 
 	const_iterator it = begin(), et = end();
 
 	if (it == et) {
-		pain.rectangle(x, y - ascent_, width_, height(), LColor::mathline);
+		pi.pain.rectangle(x, y - ascent_, width_, height(), LColor::mathline);
 		return;
 	}
 
@@ -104,11 +102,11 @@ void MathXArray::draw(Painter & pain, int x, int y) const
 		MathInset const * p = it->nucleus();
 		MathScriptInset const * q = (it + 1 == et) ? 0 : asScript(it);
 		if (q) {
-			q->draw(p, pain, x, y);
+			q->draw(p, pi, x, y);
 			x += q->width2(p);
 			++it;
 		} else {
-			p->draw(pain, x, y);
+			p->draw(pi, x, y);
 			x += p->width();
 		}
 	}

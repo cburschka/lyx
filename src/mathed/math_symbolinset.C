@@ -34,110 +34,68 @@ MathInset * MathSymbolInset::clone() const
 }
 
 
-MathTextCodes MathSymbolInset::code() const
-{
-	switch (sym_->token) {
-	case LM_TK_CMR:
-		return LM_TC_CMR;
-	case LM_TK_CMSY:
-		return LM_TC_CMSY;
-	case LM_TK_CMM:
-		return LM_TC_CMM;
-	case LM_TK_CMEX:
-		return LM_TC_CMEX;
-	case LM_TK_MSA:
-		return LM_TC_MSA;
-	case LM_TK_MSB:
-		return LM_TC_MSB;
-	default:
-		return LM_TC_SYMB;
-	}
-}
-
-
-MathTextCodes MathSymbolInset::code2() const
-{
-	if (sym_->token == LM_TK_CMEX)
-		return LM_TC_BOLDSYMB;
-	else
-		return LM_TC_SYMB;
-}
-
-
 string MathSymbolInset::name() const
 {
 	return sym_->name;
 }
 
 
-void MathSymbolInset::metrics(MathMetricsInfo const & mi) const
+void MathSymbolInset::metrics(MathMetricsInfo & mi) const
 {
-	LyXFont font;
-	mi_ = mi;
-	MathTextCodes c = code();
-	if (sym_->latex_font_id > 0 && math_font_available(c)) {
-		whichFont(font, c, mi_);
-		mathed_char_dim(font, char(sym_->latex_font_id), ascent_, descent_, width_);
-		if (c == LM_TC_CMEX) {
-			h_ = 4 * descent_ / 5;
-			ascent_  += h_;
-			descent_ -= h_;
-		}
-	} else {
-		if (sym_->id > 0 && sym_->id < 255 && math_font_available(LM_TC_SYMB)) {
-			whichFont(font, code2(), mi_);
-			mathed_char_dim(font, char(sym_->id), ascent_, descent_, width_);
-		} else {
-			whichFont(font, LM_TC_TEX, mi_);
-			mathed_string_dim(font, sym_->name, ascent_, descent_, width_);
-		}
+	//lyxerr << "metrics: symbol: '" << sym_->name
+	//	<< "' in font: '" << sym_->inset
+	//	<< "' drawn as: '" << sym_->draw
+	//	<< "'\n";
+	MathFontSetChanger dummy(mi.base, sym_->inset.c_str());
+	mathed_string_dim(mi.base.font, sym_->draw, ascent_, descent_, width_);
+	if (sym_->inset == "cmex") {
+		h_ = 4 * descent_ / 5;
+		ascent_  += h_;
+		descent_ -= h_;
 	}
 	if (isRelOp())
 		width_ += 6;
+	scriptable_ = (mi.base.style == LM_ST_DISPLAY && sym_->inset == "cmex");
 }
 
 
-void MathSymbolInset::draw(Painter & pain, int x, int y) const
+void MathSymbolInset::draw(MathPainterInfo & pi, int x, int y) const
 {
+	//lyxerr << "metrics: symbol: '" << sym_->name
+	//	<< "' in font: '" << sym_->inset
+	//	<< "' drawn as: '" << sym_->draw
+	//	<< "'\n";
 	if (isRelOp())
 		x += 3;
-	MathTextCodes Code = code();
-	LyXFont font;
-	if (sym_->latex_font_id > 0 && math_font_available(Code)) {
-		whichFont(font, Code, mi_);
-		drawChar(pain, font, x, y - h_, char(sym_->latex_font_id));
-	} else if (sym_->id > 0 && sym_->id < 255 && math_font_available(LM_TC_SYMB)){
-		whichFont(font, code2(), mi_);
-		drawChar(pain, font, x, y, char(sym_->id));
-	} else {
-		whichFont(font, LM_TC_TEX, mi_);
-		drawStr(pain, font, x, y, sym_->name);
-	}
+	MathFontSetChanger dummy(pi.base, sym_->inset.c_str());
+	drawStr(pi, pi.base.font, x, y - h_, sym_->draw);
 }
 
 
 bool MathSymbolInset::isRelOp() const
 {
-	return sym_->type == "mathrel";
+	return sym_->extra == "mathrel";
 }
 
 
 bool MathSymbolInset::isScriptable() const
 {
-	return mi_.style == LM_ST_DISPLAY && sym_->token == LM_TK_CMEX;
+	return scriptable_;
 }
 
 
 bool MathSymbolInset::takesLimits() const
 {
-	return sym_->token == LM_TK_CMEX;
+	return sym_->inset == "cmex" || sym_->inset == "lyxboldsymb";
 }
+
 
 void MathSymbolInset::validate(LaTeXFeatures & features) const
 {
-	if (sym_->token == LM_TK_MSA || sym_->token == LM_TK_MSB)
+	if (sym_->inset == "msa" || sym_->inset == "msb")
 		features.require("amssymb");
 }
+
 
 void MathSymbolInset::normalize(NormalStream & os) const
 {
@@ -171,7 +129,7 @@ bool MathSymbolInset::match(MathInset * p) const
 
 void MathSymbolInset::mathmlize(MathMLStream & os) const
 {
-	char const * type = MathMLtype(sym_->type);
+	char const * type = MathMLtype(sym_->extra);
 	os << '<' << type << "> ";
 	if (sym_->xmlname == "x") // unknown so far
 		os << name();

@@ -40,11 +40,9 @@ double MathBigInset::increase() const
 }
 
 
-void MathBigInset::metrics(MathMetricsInfo const & mi) const
+void MathBigInset::metrics(MathMetricsInfo & mi) const
 {
-	LyXFont font;
-	whichFont(font, LM_TC_VAR, mi);
-	double h = mathed_char_ascent(font, 'I');
+	double h = mathed_char_ascent(mi.base.font, 'I');
 	double f = increase();
 	width_   = 6;
 	ascent_  = int(h + f * h);
@@ -52,9 +50,9 @@ void MathBigInset::metrics(MathMetricsInfo const & mi) const
 }
 
 
-void MathBigInset::draw(Painter & pain, int x, int y) const
+void MathBigInset::draw(MathPainterInfo & pi, int x, int y) const
 {
-	mathed_draw_deco(pain, x + 1, y - ascent_, 4, height(), delim_);
+	mathed_draw_deco(pi, x + 1, y - ascent_, 4, height(), delim_);
 }
 
 

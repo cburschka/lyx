@@ -34,10 +34,9 @@ int MathBinomInset::dw() const
 }
 
 
-void MathBinomInset::metrics(MathMetricsInfo const & st) const
+void MathBinomInset::metrics(MathMetricsInfo & mi) const
 {
-	MathMetricsInfo mi = st;
-	smallerStyleFrac(mi);
+	MathScriptChanger(mi.base);
 	xcell(0).metrics(mi);
 	xcell(1).metrics(mi);
 	ascent_  = xcell(0).height() + 4 + 5;
@@ -46,13 +45,14 @@ void MathBinomInset::metrics(MathMetricsInfo const & st) const
 }
 
 
-void MathBinomInset::draw(Painter & pain, int x, int y) const
+void MathBinomInset::draw(MathPainterInfo & pi, int x, int y) const
 {
 	int m = x + width() / 2;
-	xcell(0).draw(pain, m - xcell(0).width() / 2, y - xcell(0).descent() - 3 - 5);
-	xcell(1).draw(pain, m - xcell(1).width() / 2, y + xcell(1).ascent()  + 3 - 5);
-	mathed_draw_deco(pain, x, y - ascent_, dw(), height(), "(");
-	mathed_draw_deco(pain, x + width() - dw(), y - ascent_,	dw(), height(), ")");
+	MathScriptChanger(pi.base);
+	xcell(0).draw(pi, m - xcell(0).width() / 2, y - xcell(0).descent() - 3 - 5);
+	xcell(1).draw(pi, m - xcell(1).width() / 2, y + xcell(1).ascent()  + 3 - 5);
+	mathed_draw_deco(pi, x, y - ascent_, dw(), height(), "(");
+	mathed_draw_deco(pi, x + width() - dw(), y - ascent_,	dw(), height(), ")");
 }
 
 

@@ -216,7 +216,7 @@ LyXLength MathGridInset::vcrskip(row_type row) const
 }
 
 
-void MathGridInset::metrics(MathMetricsInfo const & mi) const
+void MathGridInset::metrics(MathMetricsInfo & mi) const
 {
 	// let the cells adjust themselves
 	MathNestInset::metrics(mi);
@@ -355,7 +355,7 @@ void MathGridInset::metrics(MathMetricsInfo const & mi) const
 }
 
 
-void MathGridInset::draw(Painter & pain, int x, int y) const
+void MathGridInset::draw(MathPainterInfo & pain, int x, int y) const
 {
 	for (idx_type idx = 0; idx < nargs(); ++idx)
 		xcell(idx).draw(pain, x + cellXOffset(idx), y + cellYOffset(idx));
@@ -364,14 +364,14 @@ void MathGridInset::draw(Painter & pain, int x, int y) const
 		for (int i = 0; i < rowinfo_[row].lines_; ++i) {
 			int yy = y + rowinfo_[row].offset_ - rowinfo_[row].ascent_
 				- i * hlinesep() - hlinesep()/2 - rowsep()/2;
-			pain.line(x + 1, yy, x + width_ - 1, yy);
+			pain.pain.line(x + 1, yy, x + width_ - 1, yy);
 		}
 
 	for (col_type col = 0; col <= ncols(); ++col)
 		for (int i = 0; i < colinfo_[col].lines_; ++i) {
 			int xx = x + colinfo_[col].offset_
 				- i * vlinesep() - vlinesep()/2 - colsep()/2;
-			pain.line(xx, y - ascent_ + 1, xx, y + descent_ - 1);
+			pain.pain.line(xx, y - ascent_ + 1, xx, y + descent_ - 1);
 		}
 }
 

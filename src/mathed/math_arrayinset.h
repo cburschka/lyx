@@ -23,7 +23,7 @@ public:
 	///
 	MathInset * clone() const;
 	///
-	void metrics(MathMetricsInfo const & st) const;
+	void metrics(MathMetricsInfo & st) const;
 	///
 	MathArrayInset * asArrayInset() { return this; }
 

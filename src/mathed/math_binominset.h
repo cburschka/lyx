@@ -22,9 +22,9 @@ public:
 	///
 	void normalize(NormalStream &) const;
 	///
-	void metrics(MathMetricsInfo const & st) const;
+	void metrics(MathMetricsInfo & st) const;
 	///
-	void draw(Painter &, int x, int y) const;
+	void draw(MathPainterInfo &, int x, int y) const;
 private:
 	///
 	int dw() const;

@@ -22,21 +22,21 @@ MathInset * MathSizeInset::clone() const
 }
 
 
-void MathSizeInset::draw(Painter & pain, int x, int y) const
+void MathSizeInset::metrics(MathMetricsInfo & mi) const
 {
-	xcell(0).draw(pain, x + 1, y);
-	mathed_draw_framebox(pain, x, y, this);
-}
-
-
-void MathSizeInset::metrics(MathMetricsInfo const & mi) const
-{
-	MathMetricsInfo m = mi;
-	m.style = MathStyles(key_->id);
-	xcell(0).metrics(m);
+	//MathStyleChanger dummy(mi.base, MathStyles(key_->id));
+	xcell(0).metrics(mi);
 	ascent_   = xcell(0).ascent_ + 1;
 	descent_  = xcell(0).descent_ + 1;
 	width_    = xcell(0).width_ + 2;
+}
+
+
+void MathSizeInset::draw(MathPainterInfo & pi, int x, int y) const
+{
+	//MathStyleChanger dummy(pi.base, MathStyles(key_->id));
+	xcell(0).draw(pi, x + 1, y);
+	mathed_draw_framebox(pi, x, y, this);
 }
 
 

@@ -52,221 +52,6 @@ void Matrix::transform(double & x, double & y)
 }
 
 
-namespace {
-
-LyXFont * MathFonts = 0;
-bool font_available[LM_FONT_END];
-bool font_available_initialized[LM_FONT_END];
-
-enum MathFont {
-	FONT_IT,
-	FONT_SYMBOL,
-	FONT_SYMBOLI,
-	FONT_BF,
-	FONT_TT,
-	FONT_RM,
-	FONT_SF,
-	FONT_CMR,
-	FONT_CMSY,
-	FONT_CMM,
-	FONT_CMEX,
-	FONT_MSA,
-	FONT_MSB,
-	FONT_EUFRAK,
-	FONT_FAKEBB,
-	FONT_FAKECAL,
-	FONT_FAKEFRAK,
-	FONT_NUM
-};
-
-void mathed_init_fonts()
-{
-	MathFonts = new LyXFont[FONT_NUM];
-
-	MathFonts[FONT_IT].setShape(LyXFont::ITALIC_SHAPE);
-
-	MathFonts[FONT_SYMBOL].setFamily(LyXFont::SYMBOL_FAMILY);
-
-	MathFonts[FONT_SYMBOLI].setFamily(LyXFont::SYMBOL_FAMILY);
-	MathFonts[FONT_SYMBOLI].setShape(LyXFont::ITALIC_SHAPE);
-
-	MathFonts[FONT_BF].setSeries(LyXFont::BOLD_SERIES);
-
-	MathFonts[FONT_TT].setFamily(LyXFont::TYPEWRITER_FAMILY);
-	MathFonts[FONT_RM].setFamily(LyXFont::ROMAN_FAMILY);
-	MathFonts[FONT_SF].setFamily(LyXFont::SANS_FAMILY);
-
-	MathFonts[FONT_CMR].setFamily(LyXFont::CMR_FAMILY);
-	MathFonts[FONT_CMSY].setFamily(LyXFont::CMSY_FAMILY);
-	MathFonts[FONT_CMM].setFamily(LyXFont::CMM_FAMILY);
-	MathFonts[FONT_CMEX].setFamily(LyXFont::CMEX_FAMILY);
-	MathFonts[FONT_MSA].setFamily(LyXFont::MSA_FAMILY);
-	MathFonts[FONT_MSB].setFamily(LyXFont::MSB_FAMILY);
-	MathFonts[FONT_EUFRAK].setFamily(LyXFont::EUFRAK_FAMILY);
-
-	MathFonts[FONT_FAKEBB].setFamily(LyXFont::TYPEWRITER_FAMILY);
-	MathFonts[FONT_FAKEBB].setSeries(LyXFont::BOLD_SERIES);
-
-	MathFonts[FONT_FAKECAL].setFamily(LyXFont::SANS_FAMILY);
-	MathFonts[FONT_FAKECAL].setShape(LyXFont::ITALIC_SHAPE);
-
-	MathFonts[FONT_FAKEFRAK].setFamily(LyXFont::SANS_FAMILY);
-	MathFonts[FONT_FAKEFRAK].setSeries(LyXFont::BOLD_SERIES);
-
-	for (int i = 0; i < LM_FONT_END; ++i)
-		font_available_initialized[i] = false;
-}
-
-
-LyXFont const & whichFontBaseIntern(MathTextCodes type)
-{
-	if (!MathFonts)
-		mathed_init_fonts();
-
-	switch (type) {
-	case LM_TC_SYMB:
-	case LM_TC_BOLDSYMB:
-		return MathFonts[FONT_SYMBOLI];
-
-	case LM_TC_VAR:
-	case LM_TC_IT:
-		return MathFonts[FONT_IT];
-
-	case LM_TC_BF:
-		return MathFonts[FONT_BF];
-
-	case LM_TC_BB:
-		return MathFonts[FONT_MSB];
-
-	case LM_TC_CAL:
-		return MathFonts[FONT_CMSY];
-
-	case LM_TC_TT:
-		return MathFonts[FONT_TT];
-
-	case LM_TC_BOX:
-	case LM_TC_TEXTRM:
-	case LM_TC_CONST:
-	case LM_TC_TEX:
-	case LM_TC_RM:
-		return MathFonts[FONT_RM];
-
-	case LM_TC_SF:
-		return MathFonts[FONT_SF];
-
-	case LM_TC_CMR:
-		return MathFonts[FONT_CMR];
-
-	case LM_TC_CMSY:
-		return MathFonts[FONT_CMSY];
-
-	case LM_TC_CMM:
-		return MathFonts[FONT_CMM];
-
-	case LM_TC_CMEX:
-		return MathFonts[FONT_CMEX];
-
-	case LM_TC_MSA:
-		return MathFonts[FONT_MSA];
-
-	case LM_TC_MSB:
-		return MathFonts[FONT_MSB];
-
-	case LM_TC_EUFRAK:
-		return MathFonts[FONT_EUFRAK];
-
-	default:
-		break;
-	}
-	return MathFonts[1];
-}
-
-
-LyXFont const & whichFontBase(MathTextCodes type)
-{
-	if (!MathFonts)
-		mathed_init_fonts();
-
-	switch (type) {
-	case LM_TC_BB:
-		if (math_font_available(LM_TC_MSB))
-			return MathFonts[FONT_MSB];
-		else
-			return MathFonts[FONT_FAKEBB];
-
-	case LM_TC_CAL:
-		if (math_font_available(LM_TC_CMSY))
-			return MathFonts[FONT_CMSY];
-		else
-			return MathFonts[FONT_FAKECAL];
-
-	case LM_TC_EUFRAK:
-		if (math_font_available(LM_TC_EUFRAK))
-			return MathFonts[FONT_EUFRAK];
-		else
-			return MathFonts[FONT_FAKEFRAK];
-
-	default:
-		break;
-	}
-	return whichFontBaseIntern(type);
-}
-
-} // namespace
-
-
-void whichFont(LyXFont & f, MathTextCodes type, MathMetricsInfo const & size)
-{
-	f = whichFontBase(type);
-	// use actual size
-	f.setSize(size.font.size());
-
-	switch (size.style) {
-	case LM_ST_DISPLAY:
-		if (type == LM_TC_BOLDSYMB || type == LM_TC_CMEX) {
-			f.incSize();
-			f.incSize();
-		}
-		break;
-
-	case LM_ST_TEXT:
-		break;
-
-	case LM_ST_SCRIPT:
-		f.decSize();
-		f.decSize();
-		break;
-
-	case LM_ST_SCRIPTSCRIPT:
-		f.decSize();
-		f.decSize();
-		f.decSize();
-		break;
-
-	default:
-		lyxerr << "Math Error: wrong font size: " << size.style << endl;
-		break;
-	}
-
-	if (type != LM_TC_TEXTRM && type != LM_TC_BOX)
-		f.setColor(LColor::math);
-
-	if (type == LM_TC_TEX)
-		f.setColor(LColor::latex);
-}
-
-
-bool math_font_available(MathTextCodes type)
-{
-	if (!font_available_initialized[type]) {
-		font_available_initialized[type] = true;
-		font_available[type] = fontloader.available(whichFontBaseIntern(type));
-		if (!font_available[type])
-			lyxerr[Debug::FONT] << "Math font " << type << " not available.\n";
-	}
-	return font_available[type];
-}
-
 
 namespace {
 
@@ -423,6 +208,13 @@ double const hlinesmall[] = {
 };
 
 
+double const ring[] = {
+	2, 5,
+	0.5, 0.8,  0.8, 0.5,  0.5, 0.2,  0.2, 0.5,  0.5, 0.8,
+	0
+};
+
+
 double const vert[] = {
 	1, 0.5, 0.05,  0.5, 0.95,
 	0
@@ -432,13 +224,6 @@ double const vert[] = {
 double const  Vert[] = {
 	1, 0.3, 0.05,  0.3, 0.95,
 	1, 0.7, 0.05,  0.7, 0.95,
-	0
-};
-
-
-double const ring[] = {
-	2, 5,
-	0.5, 0.8,  0.8, 0.5,  0.5, 0.2,  0.2, 0.5,  0.5, 0.8,
 	0
 };
 
@@ -463,21 +248,21 @@ struct named_deco_struct {
 
 named_deco_struct deco_table[] = {
 	// Decorations
-	{"widehat",        angle,      3 },
-	{"widetilde",      tilde,      0 },
-	{"underbar",       hline,      0 },
-	{"underline",      hline,      0 },
-	{"overline",       hline,      0 },
-	{"underbrace",     brace,      1 },
-	{"overbrace",      brace,      3 },
-	{"overleftarrow",  arrow,      1 },
-	{"overrightarrow", arrow,      3 },
-	{"overleftrightarrow", udarrow, 1 },
-	{"xleftarrow",     arrow,      1 },
-	{"xrightarrow",    arrow,      3 },
-	{"underleftarrow", arrow,      1 },
-	{"underrightarrow", arrow,     3 },
-	{"underleftrightarrow",udarrow, 1 },
+	{"widehat",             angle,    3 },
+	{"widetilde",           tilde,    0 },
+	{"underbar",            hline,    0 },
+	{"underline",           hline,    0 },
+	{"overline",            hline,    0 },
+	{"underbrace",          brace,    1 },
+	{"overbrace",           brace,    3 },
+	{"overleftarrow",       arrow,    1 },
+	{"overrightarrow",      arrow,    3 },
+	{"overleftrightarrow",  udarrow,  1 },
+	{"xleftarrow",          arrow,    1 },
+	{"xrightarrow",         arrow,    3 },
+	{"underleftarrow",      arrow,    1 },
+	{"underrightarrow",     arrow,    3 },
+	{"underleftrightarrow", udarrow,  1 },
 
 	// Delimiters
 	{"(",              parenth,    0 },
@@ -625,11 +410,11 @@ int mathed_string_descent(LyXFont const & font, string const & s)
 
 
 
-void mathed_draw_deco(Painter & pain, int x, int y, int w, int h,
+void mathed_draw_deco(MathPainterInfo & pain, int x, int y, int w, int h,
 	const string & name)
 {
 	if (name == ".") {
-		pain.line(x + w/2, y, x + w/2, y + h,
+		pain.pain.line(x + w/2, y, x + w/2, y + h,
 			  LColor::mathcursor, Painter::line_onoffdash);
 		return;
 	}
@@ -669,7 +454,7 @@ void mathed_draw_deco(Painter & pain, int x, int y, int w, int h,
 			else
 				mt.transform(xx, yy);
 			mt.transform(x2, y2);
-			pain.line(x + int(xx), y + int(yy), x + int(x2), y + int(y2),
+			pain.pain.line(x + int(xx), y + int(yy), x + int(x2), y + int(y2),
 					LColor::math);
 		}	else {
 			int xp[32];
@@ -687,53 +472,47 @@ void mathed_draw_deco(Painter & pain, int x, int y, int w, int h,
 				yp[j] = y + int(yy);
 				//  lyxerr << "P[" << j " " << xx << " " << yy << " " << x << " " << y << "]";
 			}
-			pain.lines(xp, yp, n, LColor::math);
+			pain.pain.lines(xp, yp, n, LColor::math);
 		}
 	}
 }
 
 
-void mathed_draw_framebox(Painter & pain, int x, int y, MathInset const * p)
+void mathed_draw_framebox(MathPainterInfo & pain, int x, int y, MathInset const * p)
 {
 	if (mathcursor && mathcursor->isInside(p))
-		pain.rectangle(x, y - p->ascent(), p->width(), p->height(),
+		pain.pain.rectangle(x, y - p->ascent(), p->width(), p->height(),
 			LColor::mathframe);
 }
 
 
 // In the future maybe we use a better fonts renderer
-void drawStr(Painter & pain, LyXFont const & font,
+void drawStr(MathPainterInfo & pain, LyXFont const & font,
 	int x, int y, string const & str)
 {
-	pain.text(x, y, str, font);
+	pain.pain.text(x, y, str, font);
 }
 
 
-void drawChar(Painter & pain, LyXFont const & font, int x, int y, char c)
+void drawStrRed(MathPainterInfo & pi, int x, int y, string const & str)
 {
-	pain.text(x, y, c, font);
+	LyXFont f = pi.base.font;
+	f.setColor(LColor::latex);
+	pi.pain.text(x, y, str, f);
 }
 
 
-// decrease math size for super- and subscripts
-void smallerStyleScript(MathMetricsInfo & st)
+void drawStrBlack(MathPainterInfo & pi, int x, int y, string const & str)
 {
-	switch (st.style) {
-		case LM_ST_DISPLAY:
-		case LM_ST_TEXT:    st.style = LM_ST_SCRIPT; break;
-		default:            st.style = LM_ST_SCRIPTSCRIPT;
-	}
+	LyXFont f = pi.base.font;
+	f.setColor(LColor::black);
+	pi.pain.text(x, y, str, f);
 }
 
 
-// decrease math size for fractions
-void smallerStyleFrac(MathMetricsInfo & st)
+void drawChar(MathPainterInfo & pi, LyXFont const & font, int x, int y, char c)
 {
-	switch (st.style) {
-		case LM_ST_DISPLAY: st.style = LM_ST_TEXT; break;
-		case LM_ST_TEXT:    st.style = LM_ST_SCRIPT; break;
-		default:            st.style = LM_ST_SCRIPTSCRIPT;
-	}
+	pi.pain.text(x, y, c, font);
 }
 
 
@@ -743,25 +522,6 @@ void math_font_max_dim(LyXFont const & font, int & asc, int & des)
 	des = font_metrics::maxDescent(font);
 }
 
-
-char const * math_font_name(MathTextCodes code)
-{
-	static char const * theFontNames[] = {
-		"mathrm",
-		"mathcal",
-		"mathfrak",
-		"mathbf",
-		"mathbb",
-		"mathsf",
-		"mathtt",
-		"mathit",
-		"textrm"
-	};
-
-	if (code >= LM_TC_RM && code <= LM_TC_TEXTRM)
-		return theFontNames[code - LM_TC_RM];
-	return 0;
-}
 
 string convertDelimToLatexName(string const & name)
 {
@@ -780,4 +540,121 @@ string convertDelimToLatexName(string const & name)
 	if (name == "|")
 		return name;
 	return "\\" + name + " ";
+}
+
+
+
+
+struct fontinfo {
+	string cmd_;
+	LyXFont::FONT_FAMILY family_;
+	LyXFont::FONT_SERIES series_;
+	LyXFont::FONT_SHAPE  shape_;
+	LColor::color        color_;
+};
+
+
+LyXFont::FONT_FAMILY const def_family = LyXFont::INHERIT_FAMILY;
+LyXFont::FONT_SERIES const def_series = LyXFont::INHERIT_SERIES;
+LyXFont::FONT_SHAPE  const def_shape  = LyXFont::INHERIT_SHAPE; 
+
+
+
+fontinfo fontinfos[] = {
+	{"cmex",   LyXFont::CMEX_FAMILY, def_series, def_shape, LColor::math},
+	{"cmm",    LyXFont::CMM_FAMILY, def_series, def_shape, LColor::math},
+	{"cmr",    LyXFont::CMR_FAMILY, def_series, def_shape, LColor::math},
+	{"cmsy",   LyXFont::CMSY_FAMILY, def_series, def_shape, LColor::math},
+	{"eufrak", LyXFont::EUFRAK_FAMILY, def_series, def_shape, LColor::math},
+	{"mathbf", def_family, LyXFont::BOLD_SERIES, def_shape, LColor::math},
+	{"mathcal",LyXFont::CMSY_FAMILY, def_series, def_shape, LColor::math},
+	{"mathnormal", def_family,def_series, def_shape, LColor::math},
+	{"mathrm", LyXFont::ROMAN_FAMILY, def_series, def_shape, LColor::math},
+	{"mathsf", LyXFont::SANS_FAMILY, def_series, def_shape, LColor::math},
+	{"msa",    LyXFont::MSA_FAMILY, def_series, def_shape, LColor::math},
+	{"msb",    LyXFont::MSB_FAMILY, def_series, def_shape, LColor::math},
+	{"textbf", def_family, LyXFont::BOLD_SERIES, def_shape, LColor::black},
+	{"textit", def_family, def_series, LyXFont::ITALIC_SHAPE, LColor::black},
+	{"textmd", def_family, LyXFont::MEDIUM_SERIES, def_shape, LColor::black},
+	{"textnormal", def_family, def_series, def_shape, LColor::black},
+	{"textrm", LyXFont::ROMAN_FAMILY, def_series, def_shape, LColor::black},
+	{"textsc", def_family, def_series, LyXFont::SMALLCAPS_SHAPE, LColor::black},
+	{"textsf", LyXFont::SANS_FAMILY, def_series, def_shape, LColor::black},
+	{"textsl", def_family, def_series, LyXFont::SLANTED_SHAPE, LColor::black},
+	{"texttt", LyXFont::TYPEWRITER_FAMILY, def_series, def_shape, LColor::black},
+	{"textup", def_family, def_series, LyXFont::UP_SHAPE, LColor::black},
+
+	{"lyxtex", def_family, def_series, def_shape, LColor::latex},
+	{"lyxsymbol", LyXFont::SYMBOL_FAMILY, def_series, def_shape, LColor::math},
+	{"lyxitsymbol", LyXFont::SYMBOL_FAMILY, def_series, LyXFont::ITALIC_SHAPE, LColor::math},
+};
+
+
+fontinfo * searchFont(string const & name)
+{
+	int const n = sizeof(fontinfos) / sizeof(fontinfo);
+	//lyxerr << "searching font '" << name << "'\n"; 
+	for (int i = 0; i < n; ++i)
+		if (fontinfos[i].cmd_ == name) {
+			//lyxerr << "found '" << i << "'\n"; 
+			return fontinfos + i;
+		}
+	return searchFont("mathnormal");
+}
+
+
+void augmentFont(LyXFont & font, string const & name)
+{
+	static bool initialized = false;
+	
+	if (!initialized) {
+		initialized = true;
+
+		LyXFont f1;
+		augmentFont(f1, "msb");
+		if (!fontloader.available(f1)) {
+			lyxerr << "faking msb\n";
+			fontinfo * info = searchFont("msb");
+			info->family_ = LyXFont::TYPEWRITER_FAMILY;
+			info->series_ = LyXFont::BOLD_SERIES;
+		}
+
+		LyXFont f2;
+		augmentFont(f2, "msex");
+		if (!fontloader.available(f2)) {
+			lyxerr << "faking msex\n";
+			fontinfo * info = searchFont("msex");
+			info->family_ = LyXFont::SANS_FAMILY;
+			info->series_ = LyXFont::BOLD_SERIES;
+			info->shape_  = LyXFont::ITALIC_SHAPE;
+		}
+
+		//{"fakebb", LyXFont::TYPEWRITER_FAMILY, LyXFont::BOLD_SERIES,
+		//	LyXFont::UP_SHAPE, LColor::math},
+		//{"fakecal", LyXFont::SANS_FAMILY, LyXFont::MEDIUM_SERIES,
+		//	LyXFont::ITALIC_SHAPE, LColor::math},
+		//{"fakefrak", LyXFont::SANS_FAMILY, LyXFont::BOLD_SERIES,
+		//	LyXFont::ITALIC_SHAPE, LColor::math}
+
+	}
+
+
+	fontinfo * info = searchFont(name);
+	if (info->family_ != def_family)
+		font.setFamily(info->family_);
+
+	if (info->series_ != def_series)
+		font.setSeries(info->series_);
+
+	if (info->shape_ != def_shape)
+		font.setShape(info->shape_);
+
+	if (info->color_ != LColor::none)
+		font.setColor(info->color_);
+}
+
+
+bool math_font_available(string const & /*name*/)
+{
+	return true;
 }

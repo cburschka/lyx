@@ -2,7 +2,7 @@
 #ifndef MATH_STRINGINSET_H
 #define MATH_STRINGINSET_H
 
-#include "math_inset.h"
+#include "math_diminset.h"
 
 #ifdef __GNUG__
 #pragma interface
@@ -12,30 +12,22 @@
     \author André Pönitz
  */
 
-class MathStringInset : public MathInset {
+class MathStringInset : public MathDimInset {
 public:
 	///
 	MathStringInset();
 	///
-	MathStringInset(string const & s, MathTextCodes t = LM_TC_TEXTRM);
+	explicit MathStringInset(string const & s);
 	///
 	MathInset * clone() const;
 	///
-	void metrics(MathMetricsInfo const & st) const;
+	void metrics(MathMetricsInfo & st) const;
 	///
-	void draw(Painter &, int x, int y) const;
-	///
-	int ascent() const;
-	///
-	int descent() const;
-	///
-	int width() const;
+	void draw(MathPainterInfo &, int x, int y) const;
 	///
 	string str() const { return str_; }
 	///
 	MathStringInset * asStringInset() { return this; }
-	/// request "external features"
-	void validate(LaTeXFeatures & features) const;
 
 	///
 	void normalize(NormalStream &) const;
@@ -51,9 +43,5 @@ public:
 public:
 	/// the string
 	string str_;
-	/// the font to be used on screen
-	MathTextCodes code_;
-	///
-	mutable LyXFont font_;
 };
 #endif

@@ -65,12 +65,12 @@ MathInset * MathArrayInset::clone() const
 }
 
 
-void MathArrayInset::metrics(MathMetricsInfo const & st) const
+void MathArrayInset::metrics(MathMetricsInfo & mi) const
 {
-	MathMetricsInfo mi = st;
-	if (mi.style == LM_ST_DISPLAY)
-		mi.style = LM_ST_TEXT;
-	MathGridInset::metrics(mi);
+	MathMetricsInfo m = mi;
+	if (m.base.style == LM_ST_DISPLAY)
+		m.base.style = LM_ST_TEXT;
+	MathGridInset::metrics(m);
 }
 
 

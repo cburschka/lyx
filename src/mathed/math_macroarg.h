@@ -14,15 +14,15 @@
 class MathMacroArgument : public MathNestInset {
 public:
 	///
-	explicit MathMacroArgument(int, MathTextCodes = LM_TC_MIN);
+	explicit MathMacroArgument(int);
 	///
 	MathInset * clone() const;
 	///
 	bool isActive() const { return false; }
 	///
-	void metrics(MathMetricsInfo const & st) const;
+	void metrics(MathMetricsInfo & st) const;
 	///
-	void draw(Painter &, int x, int y) const;
+	void draw(MathPainterInfo &, int x, int y) const;
 	///
 	void substitute(MathMacro const & macro);
 
@@ -38,10 +38,6 @@ private:
 	char str_[3];
 	///
 	bool expanded_;
-	///
-	mutable LyXFont font_;
-	///
-	MathTextCodes code_;
 };
 
 #endif

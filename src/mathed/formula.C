@@ -353,19 +353,23 @@ void InsetFormula::draw(BufferView * bv, LyXFont const & font,
 	int w = par_->width();
 	int h = par_->height();
 	int a = par_->ascent();
-	Painter & pain = bv->painter();
+
+	MathPainterInfo pi(bv->painter());
+	pi.base.font  = font;
+	pi.base.font.setColor(LColor::math);
+	pi.base.style = display() ? LM_ST_DISPLAY : LM_ST_TEXT;
 
 	if (lcolor.getX11Name(LColor::mathbg)!=lcolor.getX11Name(LColor::background))
-		pain.fillRectangle(x, y - a, w, h, LColor::mathbg);
+		pi.pain.fillRectangle(x, y - a, w, h, LColor::mathbg);
 
 	if (mathcursor &&
 			const_cast<InsetFormulaBase const *>(mathcursor->formula()) == this)
 	{
-		mathcursor->drawSelection(pain);
-		pain.rectangle(x, y - a, w, h, LColor::mathframe);
+		mathcursor->drawSelection(pi);
+		pi.pain.rectangle(x, y - a, w, h, LColor::mathframe);
 	}
 
-	par_->draw(pain, x, y);
+	par_->draw(pi, x, y);
 
 	// preview stuff
 #if 0
@@ -556,7 +560,7 @@ void InsetFormula::handleExtern(const string & arg)
 		mathcursor->last();
 		mathcursor->stripFromLastEqualSign();
 		ar = mathcursor->cursor().cell();
-		mathcursor->insert(MathAtom(new MathCharInset('=', LM_TC_VAR)));
+		mathcursor->insert('=');
 		//lyxerr << "use whole cell: " << ar << "\n";
 	}
 

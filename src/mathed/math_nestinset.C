@@ -9,7 +9,7 @@
 
 
 MathNestInset::MathNestInset(idx_type nargs)
-	: MathDimInset(), cells_(nargs)
+	: MathDimInset(), cells_(nargs), lock_(false)
 {}
 
 
@@ -181,4 +181,22 @@ bool MathNestInset::contains(MathArray const & ar)
 bool MathNestInset::editing() const
 {
 	return mathcursor && mathcursor->isInside(this);
+}
+
+
+bool MathNestInset::lock() const
+{
+	return lock_;
+}
+
+
+void MathNestInset::lock(bool l)
+{
+	lock_ = l;
+}
+
+
+bool MathNestInset::isActive() const
+{
+	return !lock_ && nargs() > 0;
 }

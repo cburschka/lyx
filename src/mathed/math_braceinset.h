@@ -22,19 +22,17 @@ public:
 	///
 	MathBraceInset * asBraceInset() { return this; }
 	///
-	void draw(Painter &, int x, int y) const;
+	void draw(MathPainterInfo &, int x, int y) const;
 	///
 	void write(WriteStream & os) const;
 	/// write normalized content
 	void normalize(NormalStream &) const;
 	///
-	void metrics(MathMetricsInfo const & st) const;
+	void metrics(MathMetricsInfo & st) const;
 
 private:
 	/// width of brace character
 	mutable int wid_;
-	///
-	mutable LyXFont font_;
 };
 
 #endif

@@ -34,7 +34,7 @@ MathInset * MathRootInset::clone() const
 }
 
 
-void MathRootInset::metrics(MathMetricsInfo const & mi) const
+void MathRootInset::metrics(MathMetricsInfo & mi) const
 {
 	MathNestInset::metrics(mi);
 	ascent_  = max(xcell(0).ascent()  + 5, xcell(1).ascent())  + 2;
@@ -43,7 +43,7 @@ void MathRootInset::metrics(MathMetricsInfo const & mi) const
 }
 
 
-void MathRootInset::draw(Painter & pain, int x, int y) const
+void MathRootInset::draw(MathPainterInfo & pain, int x, int y) const
 {
 	int const w = xcell(0).width();
 	// the "exponent"
@@ -59,7 +59,7 @@ void MathRootInset::draw(Painter & pain, int x, int y) const
 	xp[2] = x + w;        yp[2] = y + d;
 	xp[3] = x + w - 2;    yp[3] = y + (d - a)/2 + 2;
 	xp[4] = x;            yp[4] = y + (d - a)/2 + 2;
-	pain.lines(xp, yp, 5, LColor::math);
+	pain.pain.lines(xp, yp, 5, LColor::math);
 }
 
 

@@ -30,102 +30,17 @@ class MathAtom;
 class MathArray;
 class LyXLex;
 
-///
-enum MathTokenEnum
-{
-	///
-	LM_TK_SYM = 256,
-	///
-	LM_TK_BOX,
-	///
-	LM_TK_CHOOSE,
-	///
-	LM_TK_BINOM,
-	///
-	LM_TK_ATOP,
-	///
-	LM_TK_OVER,
-	///
-	LM_TK_FRAC,
-	///
-	LM_TK_SQRT,
-	///
-	LM_TK_ROOT,
-	///
-	LM_TK_LEFTEQN,
-	///
-	LM_TK_BEGIN,
-	///
-	LM_TK_END,
-	/// mathcal, mathrm...
-	LM_TK_OLDFONT,
-	/// cal,...
-	LM_TK_FONT,
-	///
-	LM_TK_LEFT,
-	///
-	LM_TK_RIGHT,
-	///
-	LM_TK_DECORATION,
-	///
-	LM_TK_FUNC,
-	///
-	LM_TK_FUNCLIM,
-	///
-	LM_TK_CMR,
-	///
-	LM_TK_CMSY,
-	///
-	LM_TK_CMM,
-	///
-	LM_TK_CMEX,
-	///
-	LM_TK_MSA,
-	///
-	LM_TK_MSB,
-	///
-	LM_TK_LABEL,
-	///
-	LM_TK_NONUM,
-	///
-	LM_TK_SPACE,
-	///
-	LM_TK_DOTS,
-	///
-	LM_TK_LIMIT,
-	///
-	LM_TK_PROTECT,
-	///
-	LM_TK_STY,
-	///
-	LM_TK_SPECIAL,
-	///
-	LM_TK_ARGUMENT,
-	///
-	LM_TK_NEWCOMMAND,
-	///
-	LM_TK_MATH,
-	///
-	LM_TK_NOT,
-	///
-	LM_TK_UNDERSET,
-	///
-	LM_TK_STACK
-};
-
 
 ///
 struct latexkeys {
 	/// name of the macro or primitive
 	string name;
-	/// one of the categories above
-	MathTokenEnum token;
-	/// an id within a category if needed (only for spaces?)
-	unsigned int id;
-	/// which font to use (optional)
-	unsigned int latex_font_id;
-	/// operator/...
-	string type;
+	/// name of a inset that handles that macro
+	string inset;
+	/// position of the ting in a font
+	string draw;
+	/// operator/..., fontname e
+	string extra;
 	/// how is this called as XML entity?
 	string xmlname;
 };

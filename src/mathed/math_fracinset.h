@@ -18,9 +18,9 @@ public:
 	///
 	MathInset * clone() const;
 	///
-	void metrics(MathMetricsInfo const & mi) const;
+	void metrics(MathMetricsInfo & mi) const;
 	///
-	void draw(Painter &, int x, int y) const;
+	void draw(MathPainterInfo &, int x, int y) const;
 	///
 	void metricsT(TextMetricsInfo const & mi) const;
 	///

@@ -32,7 +32,7 @@ MathInset * MathKernInset::clone() const
 }
 
 
-void MathKernInset::metrics(MathMetricsInfo const & /*mi*/) const
+void MathKernInset::metrics(MathMetricsInfo & /*mi*/) const
 {
 #ifdef WITH_WARNINGS
 #warning fix this once the interface to LyXLength has improved
@@ -46,7 +46,7 @@ void MathKernInset::metrics(MathMetricsInfo const & /*mi*/) const
 }
 
 
-void MathKernInset::draw(Painter &, int, int) const
+void MathKernInset::draw(MathPainterInfo &, int, int) const
 {}
 
 

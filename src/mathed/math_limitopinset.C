@@ -31,13 +31,13 @@ void MathLimitOpInset::normalize(NormalStream &) const
 }
 
 
-void MathLimitOpInset::metrics(MathMetricsInfo const &) const
+void MathLimitOpInset::metrics(MathMetricsInfo &) const
 {
 	lyxerr << "should not happen\n";
 }
 
 
-void MathLimitOpInset::draw(Painter &, int, int) const
+void MathLimitOpInset::draw(MathPainterInfo &, int, int) const
 {
 	lyxerr << "should not happen\n";
 }

@@ -25,18 +25,18 @@ public:
 	///
 	void normalize(NormalStream & os) const;
 	///
-	void metrics(MathMetricsInfo const & st) const;
+	void metrics(MathMetricsInfo & st) const;
 	///
-	void draw(Painter &, int x, int y) const;
+	void draw(MathPainterInfo &, int x, int y) const;
 	///
 	void metricsT(TextMetricsInfo const & st) const;
 	///
 	void drawT(TextPainter &, int x, int y) const;
 
 	///
-	void metrics(MathInset const * nuc, MathMetricsInfo const & st) const;
+	void metrics(MathInset const * nuc, MathMetricsInfo & st) const;
 	///
-	void draw(MathInset const * nuc, Painter &, int x, int y) const;
+	void draw(MathInset const * nuc, MathPainterInfo &, int x, int y) const;
 	///
 	void metricsT(MathInset const * nuc, TextMetricsInfo const & st) const;
 	///

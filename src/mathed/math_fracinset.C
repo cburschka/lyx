@@ -29,25 +29,25 @@ MathFracInset * MathFracInset::asFracInset()
 }
 
 
-void MathFracInset::metrics(MathMetricsInfo const & mi) const
+void MathFracInset::metrics(MathMetricsInfo & mi) const
 {
-	MathMetricsInfo m = mi;
-	smallerStyleFrac(m);
-	xcell(0).metrics(m);
-	xcell(1).metrics(m);
+	MathFracChanger dummy(mi.base);
+	xcell(0).metrics(mi);
+	xcell(1).metrics(mi);
 	width_   = max(xcell(0).width(), xcell(1).width()) + 2;
 	ascent_  = xcell(0).height() + 2 + 5;
 	descent_ = xcell(1).height() + 2 - 5;
 }
 
 
-void MathFracInset::draw(Painter & pain, int x, int y) const
+void MathFracInset::draw(MathPainterInfo & pi, int x, int y) const
 {
 	int m = x + width() / 2;
-	xcell(0).draw(pain, m - xcell(0).width() / 2, y - xcell(0).descent() - 2 - 5);
-	xcell(1).draw(pain, m - xcell(1).width() / 2, y + xcell(1).ascent()  + 2 - 5);
+	MathFracChanger dummy(pi.base);
+	xcell(0).draw(pi, m - xcell(0).width() / 2, y - xcell(0).descent() - 2 - 5);
+	xcell(1).draw(pi, m - xcell(1).width() / 2, y + xcell(1).ascent()  + 2 - 5);
 	if (!atop_)
-		pain.line(x, y - 5, x + width(), y - 5, LColor::math);
+		pi.pain.line(x, y - 5, x + width(), y - 5, LColor::math);
 }
 
 

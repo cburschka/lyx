@@ -19,8 +19,7 @@ MathInset * MathFuncLimInset::clone() const
 
 bool MathFuncLimInset::isScriptable() const
 {
-	//return mi_.style == LM_ST_DISPLAY;
-	return true;
+	return scriptable_;
 }
 
 
@@ -36,14 +35,14 @@ void MathFuncLimInset::normalize(NormalStream & os) const
 }
 
 
-void MathFuncLimInset::metrics(MathMetricsInfo const & mi) const
+void MathFuncLimInset::metrics(MathMetricsInfo & mi) const
 {
-	whichFont(font_, LM_TC_TEXTRM, mi);
-	mathed_string_dim(font_, name_, ascent_, descent_, width_);
+	scriptable_ =  (mi.base.style == LM_ST_DISPLAY);
+	mathed_string_dim(mi.base.font, name_, ascent_, descent_, width_);
 }
 
 
-void MathFuncLimInset::draw(Painter & pain, int x, int y) const
+void MathFuncLimInset::draw(MathPainterInfo & pi, int x, int y) const
 {
-	drawStr(pain, font_, x, y, name_);
+	drawStrBlack(pi, x, y, name_);
 }

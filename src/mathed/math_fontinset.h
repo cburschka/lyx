@@ -1,8 +1,10 @@
 // -*- C++ -*-
-#ifndef MATH_CHARINSET_H
-#define MATH_CHARINSET_H
+#ifndef MATH_FONTINSET_H
+#define MATH_FONTINSET_H
 
-#include "math_diminset.h"
+#include "math_nestinset.h"
+#include "LString.h"
+#include "lyxfont.h"
 
 #ifdef __GNUG__
 #pragma interface
@@ -12,10 +14,10 @@
     \author André Pönitz
  */
 
-class MathCharInset : public MathDimInset {
+class MathFontInset : public MathNestInset {
 public:
 	///
-	explicit MathCharInset(char c);
+	explicit MathFontInset(string const & name);
 	///
 	MathInset * clone() const;
 	///
@@ -30,19 +32,15 @@ public:
 	void write(WriteStream & os) const;
 	///
 	void normalize(NormalStream &) const;
-	/// identifies Charinsets
-	MathCharInset const * asCharInset() const { return this; }
+	/// identifies Fontinsets
+	MathFontInset const * asFontInset() const { return this; }
 	///
-	char getChar() const { return char_; }
+	void validate(LaTeXFeatures & features) const;
 	///
-	bool isRelOp() const;
-	///
-	bool match(MathInset *) const;
-	/// identifies complicated things that need braces if used as arg
-	bool needsBraces() const { return false; }
+	void infoize(std::ostream & os) const;
 
 private:
-	/// the character
-	char char_;
+	/// the font to be used on screen
+	string name_;
 };
 #endif

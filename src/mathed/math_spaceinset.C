@@ -26,7 +26,7 @@ MathInset * MathSpaceInset::clone() const
 }
 
 
-void MathSpaceInset::metrics(MathMetricsInfo const &) const
+void MathSpaceInset::metrics(MathMetricsInfo &) const
 {
 	switch (space_) {
 		case 0: width_ = 6; break;
@@ -43,7 +43,7 @@ void MathSpaceInset::metrics(MathMetricsInfo const &) const
 }
 
 
-void MathSpaceInset::draw(Painter & pain, int x, int y) const
+void MathSpaceInset::draw(MathPainterInfo & pain, int x, int y) const
 {
 
 // Sadly, HP-UX CC can't handle that kind of initialization.
@@ -59,7 +59,7 @@ void MathSpaceInset::draw(Painter & pain, int x, int y) const
 	xp[2] = x + width_ - 2;  yp[2] = y;
 	xp[3] = x + width_ - 2;  yp[3] = y - 3;
 
-	pain.lines(xp, yp, 4, space_ ? LColor::latex : LColor::math);
+	pain.pain.lines(xp, yp, 4, space_ ? LColor::latex : LColor::math);
 }
 
 

@@ -28,7 +28,6 @@
 #include "support/lstrings.h"
 #include "support/LAssert.h"
 #include "debug.h"
-#include "frontends/Painter.h"
 #include "LaTeXFeatures.h"
 
 
@@ -73,9 +72,9 @@ void MathMacro::expand() const
 }
 
 
-void MathMacro::metrics(MathMetricsInfo const & mi) const
+void MathMacro::metrics(MathMetricsInfo & mi) const
 {
-	whichFont(font_, LM_TC_TEX, mi);
+	augmentFont(font_, "lyxtex");
 	mi_ = mi;
 
 	if (defining()) {
@@ -116,12 +115,12 @@ void MathMacro::metrics(MathMetricsInfo const & mi) const
 }
 
 
-void MathMacro::draw(Painter & pain, int x, int y) const
+void MathMacro::draw(MathPainterInfo & pain, int x, int y) const
 {
 	metrics(mi_);
 
 	LyXFont texfont;
-	whichFont(texfont, LM_TC_TEX, mi_);
+	augmentFont(texfont, "lyxtex");
 
 	if (defining()) {
 		drawStr(pain, texfont, x, y, name());

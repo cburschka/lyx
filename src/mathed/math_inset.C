@@ -190,13 +190,13 @@ vector<MathInset::idx_type>
 }
 
 
-void MathInset::metrics(MathMetricsInfo const &) const
+void MathInset::metrics(MathMetricsInfo &) const
 {
 	lyxerr << "MathInset::metrics() called directly!\n";
 }
 
 
-void MathInset::draw(Painter &, int, int) const
+void MathInset::draw(MathPainterInfo &, int, int) const
 {
 	lyxerr << "MathInset::draw() called directly!\n";
 }

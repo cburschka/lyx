@@ -5,17 +5,13 @@
 #endif
 
 #include "math_unknowninset.h"
-#include "frontends/Painter.h"
 #include "math_support.h"
 #include "math_mathmlstream.h"
 #include "math_streamstr.h"
 
 
-extern LyXFont WhichFont(short type, int size);
-
-
-MathUnknownInset::MathUnknownInset(string const & nm)
-	: name_(nm)
+MathUnknownInset::MathUnknownInset(string const & nm, bool final, bool black)
+	: name_(nm), final_(final), black_(black)
 {}
 
 
@@ -31,9 +27,9 @@ string const & MathUnknownInset::name() const
 }
 
 
-void MathUnknownInset::setName(string const & n)
+string & MathUnknownInset::name()
 {
-	name_ = n;
+	return name_;
 }
 
 
@@ -56,16 +52,30 @@ void MathUnknownInset::normalize(NormalStream & os) const
 }
 
 
-void MathUnknownInset::metrics(MathMetricsInfo const & mi) const
+void MathUnknownInset::metrics(MathMetricsInfo & mi) const
 {
-	whichFont(font_, LM_TC_TEX, mi);
-	mathed_string_dim(font_, name_, ascent_, descent_, width_);
+	mathed_string_dim(mi.base.font, name_, ascent_, descent_, width_);
 }
 
 
-void MathUnknownInset::draw(Painter & pain, int x, int y) const
+void MathUnknownInset::draw(MathPainterInfo & pi, int x, int y) const
 {
-	drawStr(pain, font_, x, y, name_);
+	if (black_)
+		drawStrBlack(pi, x, y, name_);
+	else
+		drawStrRed(pi, x, y, name_);
+}
+
+
+void MathUnknownInset::finalize()
+{
+	final_ = true;
+}
+
+
+bool MathUnknownInset::final() const
+{
+	return final_;
 }
 
 

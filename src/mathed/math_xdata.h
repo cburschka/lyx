@@ -12,7 +12,7 @@
 #pragma interface
 #endif
 
-class Painter;
+class MathPainterInfo;
 class TextPainter;
 
 
@@ -30,9 +30,9 @@ public:
 	/// constructor
 	MathXArray();
 	/// rebuild cached metrics information
-	void metrics(MathMetricsInfo const & st) const;
+	void metrics(MathMetricsInfo & st) const;
 	/// redraw cell using cache metrics information
-	void draw(Painter & pain, int x, int y) const;
+	void draw(MathPainterInfo & pain, int x, int y) const;
 	/// rebuild cached metrics information
 	void metricsT(TextMetricsInfo const & st) const;
 	/// redraw cell using cache metrics information

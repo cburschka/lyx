@@ -4,7 +4,6 @@
 
 #include "math_macroarg.h"
 #include "math_macro.h"
-#include "math_defs.h"
 #include "math_mathmlstream.h"
 #include "math_support.h"
 #include "debug.h"
@@ -13,8 +12,8 @@
 using std::endl;
 
 
-MathMacroArgument::MathMacroArgument(int n, MathTextCodes code)
-	: MathNestInset(1), number_(n), expanded_(false), code_(code)
+MathMacroArgument::MathMacroArgument(int n)
+	: MathNestInset(1), number_(n), expanded_(false)
 {
 	if (n < 1 || n > 9) {
 		lyxerr << "MathMacroArgument::MathMacroArgument: wrong Argument id: "
@@ -34,32 +33,29 @@ MathInset * MathMacroArgument::clone() const
 
 void MathMacroArgument::write(WriteStream & os) const
 {
-	if (code_ == LM_TC_MIN)
-		os << str_;
-	else
-		os << '\\' << math_font_name(code_) << '{' << str_ << '}';
+	os << str_;
 }
 
 
-void MathMacroArgument::metrics(MathMetricsInfo const & mi) const
+void MathMacroArgument::metrics(MathMetricsInfo & mi) const
 {
-	whichFont(font_, LM_TC_TEX, mi);
 	if (expanded_) {
 		xcell(0).metrics(mi);
 		width_   = xcell(0).width();
 		ascent_  = xcell(0).ascent();
 		descent_ = xcell(0).descent();
-	} else
-		mathed_string_dim(font_, str_, ascent_, descent_, width_);
+	} else {
+		mathed_string_dim(mi.base.font, str_, ascent_, descent_, width_);
+	}
 }
 
 
-void MathMacroArgument::draw(Painter & pain, int x, int y) const
+void MathMacroArgument::draw(MathPainterInfo & pi, int x, int y) const
 {
 	if (expanded_)
-		xcell(0).draw(pain, x, y);
+		xcell(0).draw(pi, x, y);
 	else
-		drawStr(pain, font_, x, y, str_);
+		drawStrRed(pi, x, y, str_);
 }
 
 
@@ -72,8 +68,5 @@ void MathMacroArgument::normalize(NormalStream & os) const
 void MathMacroArgument::substitute(MathMacro const & m)
 {
 	cell(0) = m.cell(number_ - 1);
-	if (code_ != LM_TC_MIN)
-		for (MathArray::iterator it = cell(0).begin(); it != cell(0).end(); ++it)
-			it->nucleus()->handleFont(code_);
 	expanded_ = true;
 }

@@ -20,9 +20,9 @@ public:
 	///
 	MathInset * clone() const;
 	///
-	void metrics(MathMetricsInfo const & st) const;
+	void metrics(MathMetricsInfo & st) const;
 	///
-	void draw(Painter &, int x, int y) const;
+	void draw(MathPainterInfo &, int x, int y) const;
 	///
 	bool isRelOp() const;
 	/// do we take scripts?
@@ -55,15 +55,10 @@ public:
 
 private:
 	///
-	MathTextCodes code() const;
-	///
-	MathTextCodes code2() const;
-
-	///
 	latexkeys const * sym_;
 	///
 	mutable int h_;
 	///
-	mutable MathMetricsInfo mi_;
+	mutable bool scriptable_;
 };
 #endif

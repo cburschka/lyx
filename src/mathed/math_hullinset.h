@@ -27,9 +27,9 @@ public:
 	///
 	MathInset * clone() const;
 	///
-	void metrics(MathMetricsInfo const & st) const;
+	void metrics(MathMetricsInfo & st) const;
 	///
-	void draw(Painter &, int x, int y) const;
+	void draw(MathPainterInfo &, int x, int y) const;
 	///
 	void metricsT(TextMetricsInfo const & st) const;
 	///
@@ -86,6 +86,8 @@ public:
 	void mathmlize(MathMLStream &) const;
 	///
 	void normalize(NormalStream &) const;
+	///
+	void infoize(std::ostream & os) const;
 
 private:
 	///

@@ -167,7 +167,7 @@ MathInsetTypes InsetFormulaMacro::getType() const
 void InsetFormulaMacro::draw(BufferView * bv, LyXFont const & f,
 			     int y, float & xx, bool /*cleared*/) const
 {
-	Painter & pain = bv->painter();
+	MathPainterInfo pain = MathPainterInfo(bv->painter());
 	LyXFont font(f);
 
 	// label
@@ -179,14 +179,14 @@ void InsetFormulaMacro::draw(BufferView * bv, LyXFont const & f,
 	int const h = ascent(bv, font) + descent(bv, font) - 2;
 
 	// LColor::mathbg used to be "AntiqueWhite" but is "linen" now, too
-	pain.fillRectangle(x, a, w, h, LColor::mathmacrobg);
-	pain.rectangle(x, a, w, h, LColor::mathframe);
+	pain.pain.fillRectangle(x, a, w, h, LColor::mathmacrobg);
+	pain.pain.rectangle(x, a, w, h, LColor::mathframe);
 
 	if (mathcursor &&
 			const_cast<InsetFormulaBase const *>(mathcursor->formula()) == this)
 		mathcursor->drawSelection(pain);
 
-	pain.text(x + 2, y, prefix(), font);
+	pain.pain.text(x + 2, y, prefix(), font);
 
 	// formula
 	par()->draw(pain, x + font_metrics::width(prefix(), f) + 5, y);

@@ -33,9 +33,9 @@ public:
 	///
 	string const & name() const;
 	///
-	void draw(Painter &, int x, int y) const;
+	void draw(MathPainterInfo &, int x, int y) const;
 	///
-	void metrics(MathMetricsInfo const & st) const;
+	void metrics(MathMetricsInfo & st) const;
 	/// identifies macro templates
 	MathMacroTemplate * asMacroTemplate() { return this; }
 private:

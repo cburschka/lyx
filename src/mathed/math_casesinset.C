@@ -8,7 +8,6 @@
 #include "math_parser.h"
 #include "math_mathmlstream.h"
 #include "math_support.h"
-#include "frontends/Painter.h"
 
 
 MathCasesInset::MathCasesInset(row_type n)
@@ -22,14 +21,14 @@ MathInset * MathCasesInset::clone() const
 }
 
 
-void MathCasesInset::metrics(MathMetricsInfo const & mi) const
+void MathCasesInset::metrics(MathMetricsInfo & mi) const
 {
 	MathGridInset::metrics(mi);
 	width_ += 8;
 }
 
 
-void MathCasesInset::draw(Painter & pain, int x, int y) const
+void MathCasesInset::draw(MathPainterInfo & pain, int x, int y) const
 {
 	mathed_draw_deco(pain, x + 1, y - ascent(), 6, height(), "{");
 	MathGridInset::draw(pain, x + 8, y);

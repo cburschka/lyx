@@ -48,6 +48,7 @@
 #include "math_spaceinset.h"
 #include "math_specialcharinset.h"
 #include "math_support.h"
+#include "math_unknowninset.h"
 
 #include <algorithm>
 #include <cctype>
@@ -185,8 +186,7 @@ Selection theSelection;
 
 
 MathCursor::MathCursor(InsetFormulaBase * formula, bool left)
-	:	formula_(formula), lastcode_(LM_TC_MIN),
-		autocorrect_(false), selection_(false)
+	:	formula_(formula), autocorrect_(false), selection_(false)
 {
 	left ? first() : last();
 }
@@ -306,11 +306,9 @@ bool MathCursor::left(bool sel)
 	autocorrect_ = false;
 	if (inMacroMode()) {
 		macroModeClose();
-		lastcode_ = LM_TC_MIN;
 		return true;
 	}
 	selHandle(sel);
-	lastcode_ = LM_TC_MIN;
 
 	if (hasPrevAtom() && openable(prevAtom(), sel)) {
 		pushRight(prevAtom());
@@ -327,11 +325,9 @@ bool MathCursor::right(bool sel)
 	autocorrect_ = false;
 	if (inMacroMode()) {
 		macroModeClose();
-		lastcode_ = LM_TC_MIN;
 		return true;
 	}
 	selHandle(sel);
-	lastcode_ = LM_TC_MIN;
 
 	if (hasNextAtom() && openable(nextAtom(), sel)) {
 		pushLeft(nextAtom());
@@ -395,7 +391,6 @@ void MathCursor::home(bool sel)
 	autocorrect_ = false;
 	selHandle(sel);
 	macroModeClose();
-	lastcode_ = LM_TC_MIN;
 	if (!par()->idxHome(idx(), pos()))
 		popLeft();
 	dump("home 2");
@@ -408,7 +403,6 @@ void MathCursor::end(bool sel)
 	autocorrect_ = false;
 	selHandle(sel);
 	macroModeClose();
-	lastcode_ = LM_TC_MIN;
 	if (!par()->idxEnd(idx(), pos()))
 		popRight();
 	dump("end 2");
@@ -424,7 +418,7 @@ void MathCursor::plainErase()
 void MathCursor::markInsert()
 {
 	//lyxerr << "inserting mark\n";
-	array().insert(pos(), MathAtom(new MathCharInset(0, lastcode_)));
+	array().insert(pos(), MathAtom(new MathCharInset(0)));
 }
 
 
@@ -442,17 +436,11 @@ void MathCursor::plainInsert(MathAtom const & t)
 }
 
 
-void MathCursor::insert(char c, MathTextCodes t)
-{
-	//lyxerr << "inserting '" << c << "'\n";
-	selClearOrDel();
-	plainInsert(MathAtom(new MathCharInset(c, t)));
-}
-
-
 void MathCursor::insert(char c)
 {
-	insert(c, lastcode_);
+	//lyxerr << "inserting '" << c << "'\n";
+	selClearOrDel();	
+	plainInsert(MathAtom(new MathCharInset(c)));
 }
 
 
@@ -631,35 +619,21 @@ bool MathCursor::toggleLimits()
 
 void MathCursor::macroModeClose()
 {
-	MathInset::difference_type const t = macroNamePos();
-	if (t == -1)
+	MathUnknownInset * p = inMacroMode();
+	if (!p)
 		return;
-	string s = macroName();
-	array().erase(t, pos());
-	pos() = t;
+	p->finalize();
+	string s = p->name();
+	--pos();
+	array().erase(pos());
 	if (s != "\\")
 		interpret(s);
 }
 
 
-MathInset::difference_type MathCursor::macroNamePos() const
-{
-	for (MathInset::difference_type i = pos() - 1; i >= 0; --i) {
-		MathAtom & p = array().at(i);
-		if (p->code() == LM_TC_TEX && p->getChar() == '\\')
-			return i;
-	}
-	return -1;
-}
-
-
 string MathCursor::macroName() const
 {
-	string s;
-	MathInset::difference_type i = macroNamePos();
-	for (; i >= 0 && i < int(pos()); ++i)
-		s += array().at(i)->getChar();
-	return s;
+	return inMacroMode() ? inMacroMode()->name() : "";
 }
 
 
@@ -757,7 +731,7 @@ void MathCursor::selGet(MathArray & ar)
 
 
 
-void MathCursor::drawSelection(Painter & pain) const
+void MathCursor::drawSelection(MathPainterInfo & pain) const
 {
 	if (!selection_)
 		return;
@@ -772,7 +746,7 @@ void MathCursor::drawSelection(Painter & pain) const
 		int y1 = c.yo() - c.ascent();
 		int x2 = c.xo() + c.pos2x(i2.pos_);
 		int y2 = c.yo() + c.descent();
-		pain.fillRectangle(x1, y1, x2 - x1, y2 - y1, LColor::selection);
+		pain.pain.fillRectangle(x1, y1, x2 - x1, y2 - y1, LColor::selection);
 	} else {
 		vector<MathInset::idx_type> indices
 			= i1.par_->idxBetween(i1.idx_, i2.idx_);
@@ -782,7 +756,7 @@ void MathCursor::drawSelection(Painter & pain) const
 			int y1 = c.yo() - c.ascent();
 			int x2 = c.xo() + c.width();
 			int y2 = c.yo() + c.descent();
-			pain.fillRectangle(x1, y1, x2 - x1, y2 - y1, LColor::selection);
+			pain.pain.fillRectangle(x1, y1, x2 - x1, y2 - y1, LColor::selection);
 		}
 	}
 
@@ -797,23 +771,6 @@ void MathCursor::drawSelection(Painter & pain) const
 		pain.line(x, y1, x, y2, LColor::math);
 	}
 #endif
-}
-
-
-void MathCursor::handleFont(MathTextCodes t)
-{
-	macroModeClose();
-	if (selection_) {
-		MathCursorPos i1;
-		MathCursorPos i2;
-		getSelection(i1, i2);
-		if (i1.idx_ == i2.idx_) {
-			MathArray & ar = i1.cell();
-			for (MathInset::pos_type pos = i1.pos_; pos != i2.pos_; ++pos)
-				ar.at(pos)->handleFont(t);
-		}
-	} else
-		lastcode_ = (lastcode_ == t) ? LM_TC_VAR : t;
 }
 
 
@@ -883,9 +840,12 @@ MathCursor::pos_type & MathCursor::pos()
 }
 
 
-bool MathCursor::inMacroMode() const
+MathUnknownInset * MathCursor::inMacroMode() const
 {
-	return macroNamePos() != -1;
+	if (pos() == 0)
+		return 0;
+	MathUnknownInset * p = prevAtom()->asUnknownInset();
+	return (p && !p->final()) ? p : 0;
 }
 
 
@@ -1397,12 +1357,6 @@ bool MathCursor::interpret(string const & s)
 		return true;
 	}
 
-	latexkeys const * l = in_word_set(name);
-	if (l && (l->token == LM_TK_FONT || l->token == LM_TK_OLDFONT)) {
-		lastcode_ = static_cast<MathTextCodes>(l->id);
-		return true;
-	}
-
 	// prevent entering of recursive macros
 	if (formula()->lyxCode() == Inset::MATHMACRO_CODE
 		&& formula()->getInsetName() == name)
@@ -1461,7 +1415,7 @@ bool MathCursor::interpret(char c)
 		int n = c - '0';
 		MathMacroTemplate * p = formula()->par()->asMacroTemplate();
 		if (p && 1 <= n && n <= p->numargs())
-			insert(MathAtom(new MathMacroArgument(c - '0', lastcode_)));
+			insert(MathAtom(new MathMacroArgument(c - '0')));
 		else {
 			insert(MathAtom(new MathSpecialCharInset('#')));
 			interpret(c); // try again
@@ -1474,15 +1428,14 @@ bool MathCursor::interpret(char c)
 		string name = macroName();
 		//lyxerr << "interpret name: '" << name << "'\n";
 
-		// extend macro name if possible
-		if (isalpha(c)) {
-			insert(c, LM_TC_TEX);
+		if (name.empty() && c == '\\') {
+			backspace();
+			interpret("\\backslash");
 			return true;
 		}
 
-		// leave macro mode if explicitly requested
-		if (c == ' ') {
-			macroModeClose();
+		if (isalpha(c)) {
+			inMacroMode()->name() += c;
 			return true;
 		}
 
@@ -1517,13 +1470,19 @@ bool MathCursor::interpret(char c)
 
 	selClearOrDel();
 
-	if (lastcode_ == LM_TC_TEXTRM || par()->asBoxInset()) {
+	if (/*lastcode_ == LM_TC_TEXTRM ||*/ par()->asBoxInset()) {
 		// suppress direct insertion of two spaces in a row
 		// the still allows typing  '<space>a<space>' and deleting the 'a', but
 		// it is better than nothing...
 		if (c == ' ' && hasPrevAtom() && prevAtom()->getChar() == ' ')
 			return true;
-		insert(c, LM_TC_TEXTRM);
+		insert(c); // LM_TC_TEXTRM;
+		return true;
+	}
+
+	if (c == '\\') {
+		lyxerr << "starting with macro\n";
+		insert(MathAtom(new MathUnknownInset("\\", false)));
 		return true;
 	}
 
@@ -1539,13 +1498,13 @@ bool MathCursor::interpret(char c)
 	}
 
 	if (c == '#') {
-		insert(c, LM_TC_TEX);
+		insert(c); // LM_TC_TEX;
 		return true;
 	}
 
 /*
 	if (c == '{' || c == '}', c)) {
-		insert(c, LM_TC_TEX);
+		insert(c); // LM_TC_TEX;
 		return true;
 	}
 */
@@ -1561,10 +1520,10 @@ bool MathCursor::interpret(char c)
 
 	if (c == '$' || c == '%') {
 		insert(MathAtom(new MathSpecialCharInset(c)));
-		lastcode_ = LM_TC_VAR;
 		return true;
 	}
 
+/*
 	if (isalpha(c) && lastcode_ == LM_TC_GREEK) {
 		insert(c, LM_TC_VAR);
 		return true;
@@ -1581,15 +1540,15 @@ bool MathCursor::interpret(char c)
 		//bv->owner()->message(_("TeX mode"));
 		return true;
 	}
+*/
 
 	// try auto-correction
 	if (autocorrect_ && hasPrevAtom() && math_autocorrect(prevAtom(), c))
 		return true;
 
 	// no special circumstances, so insert the character without any fuss
-	insert(c, lastcode_ == LM_TC_MIN ? MathCharInset::nativeCode(c) : lastcode_);
-	lastcode_ = LM_TC_MIN;
-	autocorrect_ = true;
+	insert(c);
+	autocorrect_ = true;  
 	return true;
 }
 
@@ -1637,10 +1596,23 @@ void MathCursor::setSelection(cursor_type const & where, size_type n)
 }
 
 
+void MathCursor::insetToggle()
+{
+	if (hasNextAtom())
+		nextAtom()->lock(!nextAtom()->lock());
+}
+
+
 string MathCursor::info() const
 {
 	ostringstream os;
-	if (pos() > 0)
-		prevAtom()->infoize(os);
+	os << "Math editor mode ";
+	for (int i = 0, n = Cursor_.size(); i < n; ++i) {
+		Cursor_[i].par_->infoize(os);
+		os << "  ";
+	}
+	//if (pos() > 0) 
+	//	prevAtom()->infoize(os);
+	os << "                ";
 	return os.str().c_str(); // .c_str() needed for lyxstring
 }

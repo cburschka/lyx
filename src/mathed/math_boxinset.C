@@ -41,7 +41,7 @@ void MathBoxInset::rebreak()
 }
 
 
-void MathBoxInset::draw(Painter & pain, int x, int y) const
+void MathBoxInset::draw(MathPainterInfo & pain, int x, int y) const
 {
 	MathGridInset::draw(pain, x, y);
 	mathed_draw_framebox(pain, x, y, this);

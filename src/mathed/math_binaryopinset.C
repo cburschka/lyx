@@ -5,7 +5,7 @@
 #endif
 
 #include "math_binaryopinset.h"
-#include "frontends/Painter.h"
+#include "MathPainterInfo.h"
 #include "support/LOstream.h"
 #include "math_support.h"
 #include "math_mathmlstream.h"
@@ -31,7 +31,7 @@ int MathBinaryOpInset::opwidth() const
 }
 
 
-void MathBinaryOpInset::metrics(MathMetricsInfo const & mi) const
+void MathBinaryOpInset::metrics(MathMetricsInfo & mi) const
 {
 	mi_ = mi;
 	xcell(0).metrics(mi);
@@ -42,7 +42,7 @@ void MathBinaryOpInset::metrics(MathMetricsInfo const & mi) const
 }
 
 
-void MathBinaryOpInset::draw(Painter & pain, int x, int y) const
+void MathBinaryOpInset::draw(MathPainterInfo & pain, int x, int y) const
 {
 	xcell(0).draw(pain, x, y);
 	drawChar(pain, LM_TC_CONST, mi_, x + xcell(0).width() , y, op_);

@@ -38,16 +38,15 @@ void MathFuncInset::setName(string const & n)
 }
 
 
-void MathFuncInset::metrics(MathMetricsInfo const & mi) const
+void MathFuncInset::metrics(MathMetricsInfo & mi) const
 {
-	whichFont(font_, LM_TC_TEXTRM, mi);
-	mathed_string_dim(font_, name_, ascent_, descent_, width_);
+	mathed_string_dim(mi.font_, name_, ascent_, descent_, width_);
 }
 
 
 void MathFuncInset::draw(Painter & pain, int x, int y) const
 {
-	drawStr(pain, font_, x, y, name_);
+	drawStr(pain, mi.font_, x, y, name_);
 }
 
 

@@ -18,33 +18,17 @@ MathInset * MathSpecialCharInset::clone() const
 }
 
 
-int MathSpecialCharInset::ascent() const
+void MathSpecialCharInset::metrics(MathMetricsInfo & mi) const
 {
-	return mathed_char_ascent(font_, char_);
+	MathShapeChanger dummy(mi.base.font, LyXFont::ITALIC_SHAPE);
+	mathed_char_dim(mi.base.font, char_, ascent_, descent_, width_);
 }
 
 
-int MathSpecialCharInset::descent() const
+void MathSpecialCharInset::draw(MathPainterInfo & pi, int x, int y) const
 {
-	return mathed_char_descent(font_, char_);
-}
-
-
-int MathSpecialCharInset::width() const
-{
-	return mathed_char_width(font_, char_);
-}
-
-
-void MathSpecialCharInset::metrics(MathMetricsInfo const & mi) const
-{
-	whichFont(font_, LM_TC_CONST, mi);
-}
-
-
-void MathSpecialCharInset::draw(Painter & pain, int x, int y) const
-{
-	drawChar(pain, font_, x, y, char_);
+	MathShapeChanger dummy(pi.base.font, LyXFont::ITALIC_SHAPE);
+	pi.draw(x, y, char_);
 }
 
 

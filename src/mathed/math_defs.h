@@ -25,61 +25,6 @@
 #endif
 
 
-///
-enum MathTextCodes  {
-	///
-	LM_TC_MIN = 0,
-	/// internal code for variables
-	LM_TC_VAR,
-	/// internal code for stuff in wrapped in mbox etc
-	LM_TC_BOX,
-	///
-	LM_TC_CONST,
-	///
-	LM_TC_RM,
-	///
-	LM_TC_CAL,
-	///
-	LM_TC_EUFRAK,
-	///
-	LM_TC_BF,
-	//
-	LM_TC_BB,
-	///
-	LM_TC_SF,
-	///
-	LM_TC_TT,
-	///
-	LM_TC_IT,
-	///
-	LM_TC_TEXTRM,
-	/// math mode TeX characters ",;:{}"
-	LM_TC_TEX,
-	/// internal code when typing greek
-	LM_TC_GREEK,
-	/// internal code when typing a single greek character
-	LM_TC_GREEK1,
-	/// internal code for symbols
-	LM_TC_SYMB,
-	/// internal code for symbols that get bigger in displayed math
-	LM_TC_BOLDSYMB,
-	///
-	LM_TC_CMR,
-	///
-	LM_TC_CMSY,
-	///
-	LM_TC_CMM,
-	///
-	LM_TC_CMEX,
-	///
-	LM_TC_MSA,
-	///
-	LM_TC_MSB,
-	///
-	LM_FONT_END
-};
-
-
 /// Types of lyx-math insets
 enum MathInsetTypes  {
 	///
@@ -104,13 +49,9 @@ enum MathInsetTypes  {
 	LM_OT_MATRIX,
 
 	/// A LaTeX macro
-	LM_OT_UNDEF,
-	///
-	LM_OT_FUNCLIM,
-	///
 	LM_OT_MACRO,
 	///
-	LM_OT_MAX
+	LM_OT_NONE
 };
 
 #endif

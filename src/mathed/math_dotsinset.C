@@ -21,11 +21,9 @@ MathInset * MathDotsInset::clone() const
 }
 
 
-void MathDotsInset::metrics(MathMetricsInfo const & mi) const
+void MathDotsInset::metrics(MathMetricsInfo & mi) const
 {
-	LyXFont font;
-	whichFont(font, LM_TC_VAR, mi);
-	mathed_char_dim(font, 'M', ascent_, descent_, width_);
+	mathed_char_dim(mi.base.font, 'M', ascent_, descent_, width_);
 	if (name_ == "ldots" || name_ == "dotsm") 
 		dh_ = 0;
 	else if (name_ == "cdots" || name_ == "dotsb"
@@ -40,7 +38,7 @@ void MathDotsInset::metrics(MathMetricsInfo const & mi) const
 }
 
 
-void MathDotsInset::draw(Painter & pain, int x, int y) const
+void MathDotsInset::draw(MathPainterInfo & pain, int x, int y) const
 {
 	mathed_draw_deco(pain, x + 2, y - dh_, width_ - 2, ascent_, name_);
 	if (name_ == "vdots" || name_ == "ddots")

@@ -28,33 +28,27 @@ using std::isalpha;
 #endif
 
 
-bool isBinaryOp(char c, MathTextCodes type)
-{
-	return type < LM_TC_SYMB && strchr("+-<>=/*", c);
+namespace {
+
+	bool isBinaryOp(char c)
+	{
+		return strchr("+-<>=/*", c);
+	}
+
+
+	bool slanted(char c)
+	{
+		//if (strchr("0123456789;:!|[]().,?+/-*<>=", c)
+		return isalpha(c);
+	}
+
 }
 
 
 MathCharInset::MathCharInset(char c)
-	: char_(c), code_(nativeCode(c))
-{
-//lyxerr << "creating char '" << char_ << "' with code " << int(code_) << endl;
-}
+	: char_(c)
+{}
 
-
-MathCharInset::MathCharInset(char c, MathTextCodes t)
-	: char_(c), code_((t == LM_TC_MIN) ? nativeCode(c) : t)
-{
-//lyxerr << "creating char '" << char_ << "' with code " << int(code_) << endl;
-}
-
-
-MathTextCodes MathCharInset::nativeCode(char c)
-{
-	if (isalpha(c))
-		return LM_TC_VAR;
-	//if (strchr("0123456789;:!|[]().,?+/-*<>=", c)
-	return LM_TC_CONST;
-}
 
 
 MathInset * MathCharInset::clone() const
@@ -63,21 +57,41 @@ MathInset * MathCharInset::clone() const
 }
 
 
-void MathCharInset::metrics(MathMetricsInfo const & mi) const
+void MathCharInset::metrics(MathMetricsInfo & mi) const
 {
+#if 1
+	if (slanted(char_) && !mi.base.fontinset) {
+		MathShapeChanger dummy(mi.base.font, LyXFont::ITALIC_SHAPE);
+		mathed_char_dim(mi.base.font, char_, ascent_, descent_, width_);
+	} else {
+		mathed_char_dim(mi.base.font, char_, ascent_, descent_, width_);
+	}
+	if (isBinaryOp(char_))
+		width_ += 2 * font_metrics::width(' ', mi.base.font);
+#else
 	whichFont(font_, code_, mi);
 	mathed_char_dim(font_, char_, ascent_, descent_, width_);
 	if (isBinaryOp(char_, code_))
 		width_ += 2 * font_metrics::width(' ', font_);
+#endif
 }
 
 
-void MathCharInset::draw(Painter & pain, int x, int y) const
+void MathCharInset::draw(MathPainterInfo & pi, int x, int y) const
 {
-	//lyxerr << "drawing '" << char_ << "' code: " << code_ << endl;
-	if (isBinaryOp(char_, code_))
-		x += font_metrics::width(' ', font_);
+	//lyxerr << "drawing '" << char_ << "' code: " << pi.code << endl;
+	if (isBinaryOp(char_))
+		x += font_metrics::width(' ', pi.base.font);
+#if 1
+	if (slanted(char_) && !pi.base.fontinset) {
+		MathShapeChanger dummy(pi.base.font, LyXFont::ITALIC_SHAPE);
+		pi.draw(x, y, char_);
+	} else {
+		pi.draw(x, y, char_);
+	}
+#else
 	drawChar(pain, font_, x, y, char_);
+#endif
 }
 
 
@@ -96,31 +110,9 @@ void MathCharInset::drawT(TextPainter & pain, int x, int y) const
 }
 
 
-void MathCharInset::writeHeader(ostream & os) const
-{
-	if (math_font_name(code_))
-		os << '\\' << math_font_name(code_) << '{';
-}
-
-
-void MathCharInset::writeTrailer(ostream & os) const
-{
-	if (math_font_name(code_))
-		os << '}';
-}
-
-
-void MathCharInset::writeRaw(ostream & os) const
-{
-	os << char_;
-}
-
-
 void MathCharInset::write(WriteStream & os) const
 {
-	writeHeader(os.os());
-	writeRaw(os.os());
-	writeTrailer(os.os());
+	os << char_;
 }
 
 
@@ -136,23 +128,8 @@ bool MathCharInset::isRelOp() const
 }
 
 
-void MathCharInset::handleFont(MathTextCodes t)
-{
-	code_ = (code_ == t) ? LM_TC_VAR : t;
-}
-
-
-void MathCharInset::validate(LaTeXFeatures & features) const
-{
-	// Make sure amssymb is put in preamble if Blackboard Bold or
-	// Fraktur used:
-	if ((code_ == LM_TC_BB) || (code_ == LM_TC_EUFRAK))
-		features.require("amssymb");
-}
-
-
 bool MathCharInset::match(MathInset * p) const
 {
 	MathCharInset const * q = p->asCharInset();
-	return q && char_ == q->char_ && code_ == q->code_;
+	return q && char_ == q->char_;
 }

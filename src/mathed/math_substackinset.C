@@ -20,12 +20,14 @@ MathInset * MathSubstackInset::clone() const
 }
 
 
-void MathSubstackInset::metrics(MathMetricsInfo const & st) const
+void MathSubstackInset::metrics(MathMetricsInfo & mi) const
 {
-	MathMetricsInfo mi = st;
-	if (mi.style == LM_ST_DISPLAY)
-		mi.style = LM_ST_TEXT;
-	MathGridInset::metrics(mi);
+	if (mi.base.style == LM_ST_DISPLAY) {
+		MathStyleChanger dummy(mi.base, LM_ST_TEXT);
+		MathGridInset::metrics(mi);
+	} else {
+		MathGridInset::metrics(mi);
+	}
 }
 
 

@@ -24,23 +24,24 @@ MathInset * MathBraceInset::clone() const
 }
 
 
-void MathBraceInset::metrics(MathMetricsInfo const & mi) const
+void MathBraceInset::metrics(MathMetricsInfo & mi) const
 {
 	xcell(0).metrics(mi);
 	int a, d;
-	whichFont(font_, LM_TC_TEX, mi);
-	mathed_char_dim(font_, '{', a, d, wid_);
+	mathed_char_dim(mi.base.font, '{', a, d, wid_);
 	ascent_  = max(xcell(0).ascent(), a);
 	descent_ = max(xcell(0).descent(), a);
 	width_   = xcell(0).width() + 2 * wid_;
 }
 
 
-void MathBraceInset::draw(Painter & pain, int x, int y) const
+void MathBraceInset::draw(MathPainterInfo & pi, int x, int y) const
 {
-	drawChar(pain, font_, x, y, '{');
-	xcell(0).draw(pain, x + wid_, y);
-	drawChar(pain, font_, x + width_ - wid_, y, '}');
+	LyXFont font = pi.base.font;
+	font.setColor(LColor::latex);
+	drawChar(pi, font, x, y, '{');
+	xcell(0).draw(pi, x + wid_, y);
+	drawChar(pi, font, x + width_ - wid_, y, '}');
 }
 
 

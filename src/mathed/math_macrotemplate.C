@@ -47,7 +47,7 @@ string const & MathMacroTemplate::name() const
 }
 
 
-void MathMacroTemplate::metrics(MathMetricsInfo const & mi) const
+void MathMacroTemplate::metrics(MathMetricsInfo & mi) const
 {
 	xcell(0).metrics(mi);
 	xcell(1).metrics(mi);
@@ -57,14 +57,14 @@ void MathMacroTemplate::metrics(MathMetricsInfo const & mi) const
 }
 
 
-void MathMacroTemplate::draw(Painter & pain, int x, int y) const
+void MathMacroTemplate::draw(MathPainterInfo & pain, int x, int y) const
 {
 	int const w0 = xcell(0).width();
 	int const w1 = xcell(1).width();
 	xcell(0).draw(pain, x + 2, y + 1);
-	pain.rectangle(x, y - ascent() + 1, w0 + 4, height(), LColor::blue);
+	pain.pain.rectangle(x, y - ascent() + 1, w0 + 4, height(), LColor::blue);
 	xcell(1).draw(pain, x + 8 + w0, y + 1);
-	pain.rectangle(x + w0 + 6 , y - ascent() + 1, w1 + 4, height(), LColor::blue);
+	pain.pain.rectangle(x + w0 + 6 , y - ascent() + 1, w1 + 4, height(), LColor::blue);
 }
 
 

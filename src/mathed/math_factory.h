@@ -8,6 +8,5 @@ class MathInset;
 class latexkeys;
 
 MathAtom createMathInset(string const &);
-MathAtom createMathInset(latexkeys const *);
 
 #endif

@@ -20,24 +20,24 @@ MathInset * MathStackrelInset::clone() const
 }
 
 
-void MathStackrelInset::metrics(MathMetricsInfo const & mi) const
+void MathStackrelInset::metrics(MathMetricsInfo & mi) const
 {
-	MathMetricsInfo m = mi;
-	smallerStyleFrac(m);
-	xcell(0).metrics(m);
 	xcell(1).metrics(mi);
+	MathFracChanger dummy(mi.base);
+	xcell(0).metrics(mi);
 	width_   = max(xcell(0).width(), xcell(1).width()) + 4;
 	ascent_  = xcell(1).ascent() + xcell(0).height() + 4;
 	descent_ = xcell(1).descent();
 }
 
 
-void MathStackrelInset::draw(Painter & pain, int x, int y) const
+void MathStackrelInset::draw(MathPainterInfo & pi, int x, int y) const
 {
 	int m  = x + width() / 2;
 	int yo = y - xcell(1).ascent() - xcell(0).descent() - 1;
-	xcell(0).draw(pain, m - xcell(0).width() / 2, yo);
-	xcell(1).draw(pain, m - xcell(1).width() / 2, y);
+	xcell(1).draw(pi, m - xcell(1).width() / 2, y);
+	MathFracChanger dummy(pi.base);
+	xcell(0).draw(pi, m - xcell(0).width() / 2, yo);
 }
 
 

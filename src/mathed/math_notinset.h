@@ -17,11 +17,13 @@ public:
 	///
 	void normalize(NormalStream & ns) const;
 	///
-	void metrics(MathMetricsInfo const & mi) const;
+	void metrics(MathMetricsInfo & mi) const;
 	///
-	void draw(Painter &, int x, int y) const;
+	void draw(MathPainterInfo &, int x, int y) const;
 private:
 	///
 	mutable LyXFont font_;
+	///
+	mutable char char_;
 };
 #endif

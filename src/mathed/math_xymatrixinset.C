@@ -32,11 +32,11 @@ int MathXYMatrixInset::rowsep() const
 }
 
 
-void MathXYMatrixInset::metrics(MathMetricsInfo const & st) const
+void MathXYMatrixInset::metrics(MathMetricsInfo & st) const
 {
 	MathMetricsInfo mi = st;
-	if (mi.style == LM_ST_DISPLAY)
-		mi.style = LM_ST_TEXT;
+	if (mi.base.style == LM_ST_DISPLAY)
+		mi.base.style = LM_ST_TEXT;
 	MathGridInset::metrics(mi);
 }
 

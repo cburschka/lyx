@@ -10,13 +10,13 @@
 #include "math_diffinset.h"
 #include "math_exfuncinset.h"
 #include "math_exintinset.h"
-#include "math_funcinset.h"
 #include "math_fracinset.h"
 #include "math_matrixinset.h"
 #include "math_mathmlstream.h"
 #include "math_scriptinset.h"
 #include "math_stringinset.h"
 #include "math_symbolinset.h"
+#include "math_unknowninset.h"
 #include "Lsstream.h"
 #include "debug.h"
 
@@ -121,16 +121,10 @@ MathScriptInset const * asScript(MathArray::const_iterator it)
 // returns sequence of char with same code starting at it up to end
 // it might be less, though...
 MathArray::const_iterator charSequence(MathArray::const_iterator it,
-	MathArray::const_iterator end, string & s, MathTextCodes & c)
+	MathArray::const_iterator end, string & s)
 {
-	MathCharInset const * p = (*it)->asCharInset();
-	c = p->code();
-	for (; it != end; ++it) {
-		p = (*it)->asCharInset();
-		if (!p || p->code() != c)
-			break;
-		s += p->getChar();
-	}
+	for (; it != end && (*it)->asCharInset(); ++it)
+		s += (*it)->getChar();
 	return it;
 }
 
@@ -146,7 +140,7 @@ void extractStrings(MathArray & ar)
 		// create proper string inset
 		MathStringInset * p = new MathStringInset;
 		MathArray::const_iterator
-			jt = charSequence(it, ar.end(), p->str_, p->code_);
+			jt = charSequence(it, ar.end(), p->str_);
 
 		// clean up
 		(*it).reset(p);
@@ -208,8 +202,7 @@ bool extractString(MathInset * p, string & str)
 bool extractNumber(MathArray const & ar, int & i)
 {
 	string s;
-	MathTextCodes c;
-	charSequence(ar.begin(), ar.end(), s, c);
+	charSequence(ar.begin(), ar.end(), s);
 	istringstream is(s.c_str());
 	is >> i;
 	return is;
@@ -219,8 +212,7 @@ bool extractNumber(MathArray const & ar, int & i)
 bool extractNumber(MathArray const & ar, double & i)
 {
 	string s;
-	MathTextCodes c;
-	charSequence(ar.begin(), ar.end(), s, c);
+	charSequence(ar.begin(), ar.end(), s);
 	istringstream is(s.c_str());
 	is >> i;
 	return is;
@@ -407,9 +399,9 @@ void extractFunctions(MathArray & ar)
 
 		string name;
 		// is it a function?
-		if ((*it)->asFuncInset()) {
+		if ((*it)->asUnknownInset()) {
 			// it certainly is if it is well known...
-			name = (*it)->asFuncInset()->name();
+			name = (*it)->asUnknownInset()->name();
 		} else {
 			// is this a user defined function?
 			// it it probably not, if it doesn't have a name.

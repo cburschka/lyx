@@ -19,13 +19,14 @@
 #pragma interface
 #endif
 
-#include <iosfwd>
 #include "insets/inset.h"
 #include "frontends/mouse_state.h"
 #include "lyxfont.h"
 
 // only for getType():
 #include "math_defs.h"
+
+#include <iosfwd>
 
 class Buffer;
 class BufferView;
@@ -134,7 +135,7 @@ protected:
 	///
 	void metrics(BufferView * bv = 0) const;
 	///
-	void handleFont(BufferView * bv, string const & arg, MathTextCodes t);
+	void handleFont(BufferView * bv, string const & arg, string const & font);
 
 	///
 	mutable int xo_;

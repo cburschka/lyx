@@ -28,9 +28,9 @@
 #pragma interface
 #endif
 
+#include "LString.h"
 #include "frontends/mouse_state.h"
 #include "math_xdata.h"
-#include "math_defs.h"
 
 /**
 
@@ -53,6 +53,7 @@ class MathBraceInset;
 class MathBoxInset;
 class MathCharInset;
 class MathDelimInset;
+class MathFontInset;
 class MathFuncInset;
 class MathGridInset;
 class MathFracInset;
@@ -107,9 +108,9 @@ public:
 	virtual void substitute(MathMacro const & macro);
 	/// compute the size of the object, sets ascend_, descend_ and width_
 	// updates the (xo,yo)-caches of all contained cells
-	virtual void metrics(MathMetricsInfo const & st) const;
+	virtual void metrics(MathMetricsInfo & st) const;
 	/// draw the object
-	virtual void draw(Painter &, int x, int y) const;
+	virtual void draw(MathPainterInfo &, int x, int y) const;
 	/// the ascent of the inset above the baseline
 	/// compute the size of the object for text based drawing
 	virtual void metricsT(TextMetricsInfo const & st) const;
@@ -192,6 +193,7 @@ public:
 	virtual MathCharInset const    * asCharInset() const    { return 0; }
 	virtual MathDelimInset         * asDelimInset()         { return 0; }
 	virtual MathDelimInset const   * asDelimInset() const   { return 0; }
+	virtual MathFontInset const    * asFontInset() const    { return 0; }
 	virtual MathFuncInset          * asFuncInset()          { return 0; }
 	virtual MathFracInset          * asFracInset()          { return 0; }
 	virtual MathGridInset          * asGridInset()          { return 0; }
@@ -205,6 +207,7 @@ public:
 	virtual MathSpaceInset         * asSpaceInset()         { return 0; }
 	virtual MathStringInset        * asStringInset()        { return 0; }
 	virtual MathSymbolInset const  * asSymbolInset() const  { return 0; }
+	virtual MathUnknownInset       * asUnknownInset()       { return 0; }
 	virtual MathUnknownInset const * asUnknownInset() const { return 0; }
 	virtual MathXYMatrixInset const* asXYMatrixInset() const{ return 0; }
 
@@ -217,8 +220,6 @@ public:
 
 	/// return the content as char if the inset is able to do so
 	virtual char getChar() const { return 0; }
-	/// return the content's char code if it has one
-	virtual MathTextCodes code() const { return LM_TC_MIN; }
 	/// identifies things that can get \limits or \nolimits
 	virtual bool takesLimits() const { return false; }
 	/// identifies complicated things that need braces if used as arg
@@ -230,13 +231,17 @@ public:
 	/// request "external features"
 	virtual void validate(LaTeXFeatures & features) const;
 	/// char char code if possible
-	virtual void handleFont(MathTextCodes) {}
+	virtual void handleFont(string const &) {}
 	/// is this inset equal to a given other inset?
 	virtual bool match(MathInset *) const { return false; }
 	/// replace things by other things
 	virtual void replace(ReplaceData &) {}
 	/// do we contain a given subsequence?
 	virtual bool contains(MathArray const &) { return false; }
+	/// access to the lock (only nest array have one)
+	virtual bool lock() const { return false; }
+	/// access to the lock (only nest array have one)
+	virtual void lock(bool) {}
 
 	/// write LaTeX and Lyx code
 	virtual void write(WriteStream & os) const;

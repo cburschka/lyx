@@ -20,7 +20,7 @@ MathInset * MathSqrtInset::clone() const
 }
 
 
-void MathSqrtInset::metrics(MathMetricsInfo const & mi) const
+void MathSqrtInset::metrics(MathMetricsInfo & mi) const
 {
 	xcell(0).metrics(mi);
 	ascent_  = xcell(0).ascent()  + 4;
@@ -29,7 +29,7 @@ void MathSqrtInset::metrics(MathMetricsInfo const & mi) const
 }
 
 
-void MathSqrtInset::draw(Painter & pain, int x, int y) const
+void MathSqrtInset::draw(MathPainterInfo & pain, int x, int y) const
 {
 	xcell(0).draw(pain, x + 10, y);
 	int const a = ascent_;
@@ -40,7 +40,7 @@ void MathSqrtInset::draw(Painter & pain, int x, int y) const
 	xp[1] = x + 8;      yp[1] = y - a + 1;
 	xp[2] = x + 5;      yp[2] = y + d - 1;
 	xp[3] = x;          yp[3] = y + (d - a)/2;
-	pain.lines(xp, yp, 4, LColor::math);
+	pain.pain.lines(xp, yp, 4, LColor::math);
 }
 
 

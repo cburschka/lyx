@@ -74,7 +74,7 @@ bool MathDecorationInset::wide() const
 }
 
 
-void MathDecorationInset::metrics(MathMetricsInfo const & mi) const
+void MathDecorationInset::metrics(MathMetricsInfo & mi) const
 {
 	xcell(0).metrics(mi);
 	width_   = xcell(0).width();
@@ -94,7 +94,7 @@ void MathDecorationInset::metrics(MathMetricsInfo const & mi) const
 }
 
 
-void MathDecorationInset::draw(Painter & pain, int x, int y) const
+void MathDecorationInset::draw(MathPainterInfo & pain, int x, int y) const
 {
 	xcell(0).draw(pain, x, y);
 	if (wide())

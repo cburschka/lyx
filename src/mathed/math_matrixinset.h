@@ -19,7 +19,7 @@ public:
 	///
 	MathInset * clone() const;
 	///
-	void metrics(MathMetricsInfo const &) const {}
+	void metrics(MathMetricsInfo &) const {}
 	/// identifies MatrixInsets
 	MathMatrixInset const * asMatrixInset() const { return this; }
 

@@ -21,13 +21,13 @@
 #pragma interface
 #endif
 
-#include "math_defs.h"
 #include "math_inset.h"
 #include "math_pos.h"
 #include "LString.h"
 
 class InsetFormulaBase;
-class Painter;
+class MathPainterInfo;
+class MathUnknownInset;
 class Selection;
 
 /**
@@ -127,7 +127,7 @@ public:
 	/// interpret name a name of a macro
 	void macroModeClose();
 	/// are we currently typing the name of a macro?
-	bool inMacroMode() const;
+	MathUnknownInset * inMacroMode() const;
 	/// are we currently typing '#1' or '#2' or...?
 	bool inMacroArgMode() const;
 
@@ -153,9 +153,7 @@ public:
 	///
 	void selGet(MathArray & ar);
 	///
-	void drawSelection(Painter & pain) const;
-	///
-	void handleFont(MathTextCodes t);
+	void drawSelection(MathPainterInfo & pain) const;
 	///
 	void handleDelim(string const & l, string const & r);
 	///
@@ -167,13 +165,11 @@ public:
 	/// read contents of line into an array
 	void readLine(MathArray & ar) const;
 	/// remove this as soon as LyXFunc::getStatus is "localized"
-	MathTextCodes getLastCode() const { return lastcode_; }
+	string getLastCode() const { return "mathnormal"; }
 	///
 	void pullArg(bool goright);
 	///
 	bool isInside(MathInset const *) const;
-	///
-	MathTextCodes nextCode() const;
 	///
 	char valign() const;
 	///
@@ -244,6 +240,8 @@ public:
 	void setSelection(cursor_type const & where, size_type n);
 	///
 	void insert(char);
+	/// lock/unlock inset
+	void insetToggle();
 
 	/// hack for reveal codes
 	void markInsert();
@@ -270,8 +268,6 @@ private:
 	string macroName() const;
 	///
 	MathInset::difference_type macroNamePos() const;
-	///
-	void insert(char, MathTextCodes t);
 	/// can we enter the inset?
 	bool openable(MathAtom const &, bool selection) const;
 	/// write access to cursor cell position
@@ -285,12 +281,15 @@ private:
 	mutable cursor_type Anchor_;
 	/// pointer to enclsing LyX inset
 	InsetFormulaBase * formula_;
+	// Selection stuff
 	/// text code of last char entered
-	MathTextCodes lastcode_;
+	//MathTextCodes lastcode_;
 	/// do we allow autocorrection
 	bool autocorrect_;
 	/// do we currently select
 	bool selection_;
+	/// are we entering a macro name?
+	bool macromode_;
 };
 
 extern MathCursor * mathcursor;

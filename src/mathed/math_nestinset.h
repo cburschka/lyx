@@ -49,6 +49,10 @@ public:
 
 	/// number of cells currently governed by us
 	idx_type nargs() const;
+	/// access to the lock
+	bool lock() const;
+	/// access to the lock
+	void lock(bool);
 
 	/// direct access to the cell
 	MathArray & cell(idx_type);
@@ -60,7 +64,7 @@ public:
 	MathXArray const & xcell(idx_type) const;
 
 	/// can we move into this cell (see macroarg.h)
-	bool isActive() const { return nargs() > 0; }
+	bool isActive() const;
 	/// request "external features"
 	void validate(LaTeXFeatures & features) const;
 
@@ -81,6 +85,8 @@ protected:
 	typedef std::vector<MathXArray> cells_type;
 	/// thusly:
 	cells_type cells_;
+	/// if the inset is locked, it can't be enter with the cursor
+	bool lock_;
 };
 
 #endif

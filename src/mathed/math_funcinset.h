@@ -3,7 +3,6 @@
 #define MATH_FUNCINSET_H
 
 #include "math_diminset.h"
-#include "math_defs.h"
 
 #ifdef __GNUG__
 #pragma interface
@@ -19,7 +18,7 @@ public:
 	///
 	MathInset * clone() const;
 	///
-	void metrics(MathMetricsInfo const & st) const;
+	void metrics(MathMetricsInfo & st) const;
 	///
 	void draw(Painter &, int x, int y) const;
 	///

@@ -56,22 +56,22 @@ char const * MathAMSArrayInset::name_right() const
 }
 
 
-void MathAMSArrayInset::metrics(MathMetricsInfo const & st) const
+void MathAMSArrayInset::metrics(MathMetricsInfo & mi) const
 {
-	MathMetricsInfo mi = st;
-	if (mi.style == LM_ST_DISPLAY)
-		mi.style = LM_ST_TEXT;
-	MathGridInset::metrics(mi);
+	MathMetricsInfo m = mi;
+	if (m.base.style == LM_ST_DISPLAY)
+		m.base.style = LM_ST_TEXT;
+	MathGridInset::metrics(m);
 	width_ += 12;
 }
 
 
-void MathAMSArrayInset::draw(Painter & pain, int x, int y) const
+void MathAMSArrayInset::draw(MathPainterInfo & pi, int x, int y) const
 {
-	MathGridInset::draw(pain, x + 6, y);
+	MathGridInset::draw(pi, x + 6, y);
 	int yy = y - ascent_;
-	mathed_draw_deco(pain, x + 1, yy, 5, height(), name_left());
-	mathed_draw_deco(pain, x + width_ - 6, yy, 5, height(), name_right());
+	mathed_draw_deco(pi, x + 1, yy, 5, height(), name_left());
+	mathed_draw_deco(pi, x + width_ - 6, yy, 5, height(), name_right());
 }
 
 

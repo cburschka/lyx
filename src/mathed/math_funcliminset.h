@@ -18,9 +18,9 @@ public:
 	///
 	void normalize(NormalStream &) const;
 	///
-	void metrics(MathMetricsInfo const & st) const;
+	void metrics(MathMetricsInfo & st) const;
 	///
-	void draw(Painter &, int x, int y) const;
+	void draw(MathPainterInfo &, int x, int y) const;
 	///
 	bool isScriptable() const;
 
@@ -28,6 +28,6 @@ private:
 	///
 	string const name_;
 	///
-	mutable LyXFont font_;
+	mutable bool scriptable_;
 };
 #endif

@@ -51,13 +51,11 @@ int MathDelimInset::dw() const
 }
 
 
-void MathDelimInset::metrics(MathMetricsInfo const & mi) const
+void MathDelimInset::metrics(MathMetricsInfo & mi) const
 {
 	xcell(0).metrics(mi);
 	int a, d, w;
-	LyXFont font;
-	whichFont(font, LM_TC_VAR, mi);
-	mathed_char_dim(font, 'I', a, d, w);
+	mathed_char_dim(mi.base.font, 'I', a, d, w);
 	int h0   = (a + d) / 2;
 	int a0   = max(xcell(0).ascent(), a)   - h0;
 	int d0   = max(xcell(0).descent(), d)  + h0;
@@ -67,13 +65,13 @@ void MathDelimInset::metrics(MathMetricsInfo const & mi) const
 }
 
 
-void MathDelimInset::draw(Painter & pain, int x, int y) const
+void MathDelimInset::draw(MathPainterInfo & pi, int x, int y) const
 {
 	int const w = dw();
 	int const b = y - ascent_;
-	xcell(0).draw(pain, x + w + 4, y);
-	mathed_draw_deco(pain, x + 4, b, w, height(), left_);
-	mathed_draw_deco(pain, x + width() - w - 4, b, w, height(), right_);
+	xcell(0).draw(pi, x + w + 4, y);
+	mathed_draw_deco(pi, x + 4, b, w, height(), left_);
+	mathed_draw_deco(pi, x + width() - w - 4, b, w, height(), right_);
 }
 
 

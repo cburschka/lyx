@@ -57,7 +57,6 @@ point to write some macros:
 #include "math_charinset.h"
 #include "math_deliminset.h"
 #include "math_factory.h"
-#include "math_funcinset.h"
 #include "math_kerninset.h"
 #include "math_macro.h"
 #include "math_macrotable.h"
@@ -102,9 +101,9 @@ bool stared(string const & s)
 }
 
 
-void add(MathArray & ar, char c, MathTextCodes code)
+void add(MathArray & ar, char c)
 {
-	ar.push_back(MathAtom(new MathCharInset(c, code)));
+	ar.push_back(MathAtom(new MathCharInset(c)));
 }
 
 
@@ -253,7 +252,7 @@ public:
 	///
 	bool parse_normal(MathAtom &);
 	///
-	void parse_into(MathArray & array, unsigned flags, MathTextCodes = LM_TC_MIN);
+	void parse_into(MathArray & array, unsigned flags);
 	///
 	int lineno() const { return lineno_; }
 	///
@@ -261,9 +260,9 @@ public:
 
 private:
 	///
-	void parse_into1(MathArray & array, unsigned flags, MathTextCodes);
-	///
-	string getArg(char lf, char rf);
+	void parse_into1(MathArray & array, unsigned flags);
+	/// get arg delimited by 'left' and 'right'
+	string getArg(char left, char right);
 	///
 	char getChar();
 	///
@@ -731,9 +730,7 @@ bool Parser::parse_lines2(MathAtom & t, bool braced)
 	return true;
 }
 
-
-
-
+ 
 bool Parser::parse_macro(string & name)
 {
 	int nargs = 0;
@@ -812,7 +809,7 @@ bool Parser::parse_macro(string & name)
 	MathMacroTable::create(name, nargs, ar1, ar2);
 	return true;
 }
-
+ 
 
 bool Parser::parse_normal(MathAtom & matrix)
 {
@@ -930,9 +927,9 @@ bool Parser::parse_normal(MathAtom & matrix)
 }
 
 
-void Parser::parse_into(MathArray & array, unsigned flags, MathTextCodes code)
+void Parser::parse_into(MathArray & array, unsigned flags)
 {
-	parse_into1(array, flags, code);
+	parse_into1(array, flags);
 	// remove 'unnecessary' braces:
 	if (array.size() == 1 && array.back()->asBraceInset()) {
 		lyxerr << "extra braces removed\n";
@@ -941,7 +938,7 @@ void Parser::parse_into(MathArray & array, unsigned flags, MathTextCodes code)
 }
 
 
-void Parser::parse_into1(MathArray & array, unsigned flags, MathTextCodes code)
+void Parser::parse_into1(MathArray & array, unsigned flags)
 {
 	bool panic  = false;
 	int  limits = 0;
@@ -1001,14 +998,14 @@ void Parser::parse_into1(MathArray & array, unsigned flags, MathTextCodes code)
 		}
 
 		else if (t.cat() == catLetter)
-			add(array, t.character(), code);
+			add(array, t.character());
 
-		else if (t.cat() == catSpace && code == LM_TC_TEXTRM)
-			add(array, t.character(), code);
+		else if (t.cat() == catSpace) //&& code == LM_TC_TEXTRM
+			add(array, t.character());
 
 		else if (t.cat() == catParameter) {
 			Token const & n	= getToken();
-			array.push_back(MathAtom(new MathMacroArgument(n.character()-'0', code)));
+			array.push_back(MathAtom(new MathMacroArgument(n.character()-'0')));
 		}
 
 		else if (t.cat() == catBegin) {
@@ -1044,7 +1041,7 @@ void Parser::parse_into1(MathArray & array, unsigned flags, MathTextCodes code)
 			lyxerr << "found tab unexpectedly, array: '" << array << "'\n";
 			dump();
 			//lyxerr << "found tab unexpectedly\n";
-			add(array, '&', LM_TC_TEX);
+			add(array, '&'); //, LM_TC_TEX;
 		}
 
 		else if (t.cat() == catSuper || t.cat() == catSub) {
@@ -1066,7 +1063,7 @@ void Parser::parse_into1(MathArray & array, unsigned flags, MathTextCodes code)
 			return;
 
 		else if (t.cat() == catOther)
-			add(array, t.character(), code);
+			add(array, t.character());
 
 		//
 		// control sequences
@@ -1171,14 +1168,6 @@ void Parser::parse_into1(MathArray & array, unsigned flags, MathTextCodes code)
 			array.push_back(MathAtom(new MathKernInset(s)));
 		}
 
-/*
-		else if (t.cs() == "lyxkern") {
-			MathAtom p = createMathInset(t.cs());
-			parse_into(p->cell(0), flags, code);
-			array.push_back(p);
-		}
-*/
-
 		else if (t.cs() == "label") {
 			curr_label_ = getArg('{', '}');
 		}
@@ -1186,7 +1175,7 @@ void Parser::parse_into1(MathArray & array, unsigned flags, MathTextCodes code)
 		else if (t.cs() == "choose" || t.cs() == "over" || t.cs() == "atop") {
 			MathAtom p = createMathInset(t.cs());
 			array.swap(p->cell(0));
-			parse_into(p->cell(1), flags, code);
+			parse_into(p->cell(1), flags);
 			array.push_back(p);
 			return;
 		}
@@ -1245,36 +1234,39 @@ void Parser::parse_into1(MathArray & array, unsigned flags, MathTextCodes code)
 		else if (t.cs().size()) {
 			latexkeys const * l = in_word_set(t.cs());
 			if (l) {
-				if (l->token == LM_TK_FONT) {
-					//lyxerr << "starting font\n";
+				if (l->inset == "font") {
+					lyxerr << "starting font " << t.cs() << "\n";
 					//CatCode catSpaceSave = theCatcode[' '];
 					//if (l->id == LM_TC_TEXTRM) {
 					//	// temporarily change catcode
 					//	theCatcode[' '] = catLetter;
 					//}
 
-					MathArray ar;
-					parse_into(ar, FLAG_ITEM, static_cast<MathTextCodes>(l->id));
-					array.push_back(ar);
+					MathAtom p = createMathInset(t.cs());
+					parse_into(p->cell(0), FLAG_ITEM);
+					array.push_back(p);
 
 					// undo catcode changes
-					////theCatcode[' '] = catSpaceSave;
+					//theCatcode[' '] = catSpaceSave;
 					//lyxerr << "ending font\n";
 				}
 
-				else if (l->token == LM_TK_OLDFONT) {
-					code = static_cast<MathTextCodes>(l->id);
+				else if (l->inset == "oldfont") {
+					MathAtom p = createMathInset(t.cs());
+					parse_into(p->cell(0), flags);
+					array.push_back(p);
+					return;
 				}
 
-				else if (l->token == LM_TK_BOX) {
+				else if (l->inset == "box") {
 					MathAtom p = createMathInset(t.cs());
-					parse_into(p->cell(0), FLAG_ITEM | FLAG_BOX, LM_TC_BOX);
+					parse_into(p->cell(0), FLAG_ITEM | FLAG_BOX);
 					array.push_back(p);
 				}
 
-				else if (l->token == LM_TK_STY) {
+				else if (l->inset == "style") {
 					MathAtom p = createMathInset(t.cs());
-					parse_into(p->cell(0), flags, code);
+					parse_into(p->cell(0), flags);
 					array.push_back(p);
 					return;
 				}

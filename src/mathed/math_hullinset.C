@@ -57,6 +57,7 @@ namespace {
 
 	MathInsetTypes typecode(string const & s)
 	{
+		if (s == "none")      return LM_OT_NONE;
 		if (s == "equation")  return LM_OT_EQUATION;
 		if (s == "display")   return LM_OT_EQUATION;
 		if (s == "eqnarray")  return LM_OT_EQNARRAY;
@@ -156,24 +157,24 @@ int MathHullInset::defaultColSpace(col_type col)
 }
 
 
-void MathHullInset::metrics(MathMetricsInfo const & mi) const
+void MathHullInset::metrics(MathMetricsInfo & mi) const
 {
-	mi_ = mi;
-	mi_.style = (getType() == LM_OT_SIMPLE) ? LM_ST_TEXT : LM_ST_DISPLAY;
-
 	// let the cells adjust themselves
-	MathGridInset::metrics(mi_);
+	MathGridInset::metrics(mi);
 
 	if (display()) {
 		ascent_  += 12;
 		descent_ += 12;
 	}
 
+	mi_ = mi;
+	mi_.base.style = (getType() == LM_OT_SIMPLE) ? LM_ST_TEXT : LM_ST_DISPLAY;
+
 	if (numberedType()) {
-		whichFont(mi_.font, LM_TC_BF, mi_);
+		//augmentFont(mi_.base.font, "mathbf");
 		int l = 0;
 		for (row_type row = 0; row < nrows(); ++row)
-			l = max(l, mathed_string_width(mi_.font, nicelabel(row)));
+			l = max(l, mathed_string_width(mi_.base.font, nicelabel(row)));
 
 		if (l)
 			width_ += 30 + l;
@@ -182,21 +183,21 @@ void MathHullInset::metrics(MathMetricsInfo const & mi) const
 	// make it at least as high as the current font
 	int asc = 0;
 	int des = 0;
-	math_font_max_dim(mi_.font, asc, des);
+	math_font_max_dim(mi_.base.font, asc, des);
 	ascent_  = max(ascent_,  asc);
 	descent_ = max(descent_, des);
 }
 
 
-void MathHullInset::draw(Painter & pain, int x, int y) const
+void MathHullInset::draw(MathPainterInfo & pi, int x, int y) const
 {
-	MathGridInset::draw(pain, x, y);
+	MathGridInset::draw(pi, x, y);
 
 	if (numberedType()) {
 		int const xx = x + colinfo_.back().offset_ + colinfo_.back().width_ + 20;
 		for (row_type row = 0; row < nrows(); ++row) {
 			int const yy = y + rowinfo_[row].offset_;
-			drawStr(pain, mi_.font, xx, yy, nicelabel(row));
+			drawStrBlack(pi, xx, yy, nicelabel(row));
 		}
 	}
 }
@@ -371,6 +372,9 @@ void MathHullInset::header_write(WriteStream & os) const
 			os << "\\begin{gather}\n";
 			break;
 
+		case LM_OT_NONE:
+			break;
+
 		default:
 			os << "\\begin{unknown" << star(n) << "}";
 	}
@@ -419,6 +423,10 @@ void MathHullInset::footer_write(WriteStream & os) const
 
 		case LM_OT_GATHER:
 			os << "\n\\end{gather}\n";
+			break;
+
+		case LM_OT_NONE:
+			os << "\n";
 			break;
 
 		default:
@@ -736,6 +744,11 @@ void MathHullInset::mathmlize(MathMLStream & os) const
 	MathGridInset::mathmlize(os);
 }
 
+
+void MathHullInset::infoize(std::ostream & os) const
+{
+	os << normalName(getType());
+}
 
 void MathHullInset::check() const
 {

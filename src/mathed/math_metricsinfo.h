@@ -2,8 +2,10 @@
 #define MATH_METRICSINFO_H
 
 #include "lyxfont.h"
+#include "math_defs.h"
 
 class BufferView;
+class Painter;
 class MathNestInset;
 
 
@@ -20,26 +22,27 @@ enum MathStyles {
 };
 
 
-struct MathMetricsInfo {
+struct MathMetricsBase {
 	///
-	MathMetricsInfo()
-		: view(0), font(), style(LM_ST_TEXT),
-		  inset(0), idx(0),
-		  fullredraw(false)
-	{}
-	///
-	MathMetricsInfo(BufferView * v, LyXFont const & f, MathStyles s)
-		: view(v), font(f), style(s),
-		  inset(0), idx(0),
-		  fullredraw(false)
-	{}
+	MathMetricsBase();
 
-	///
-	BufferView * view;
 	///
 	LyXFont font;
 	///
 	MathStyles style;
+	///
+	bool fontinset;
+};
+
+
+struct MathMetricsInfo {
+	///
+	MathMetricsInfo();
+
+	///
+	MathMetricsBase base;
+	///
+	BufferView * view;
 	/// used to pass some info down
 	MathNestInset const * inset;
 	///
@@ -49,10 +52,84 @@ struct MathMetricsInfo {
 };
 
 
-struct TextMetricsInfo {
+struct MathPainterInfo {
 	///
-	TextMetricsInfo()
-		{}
+	MathPainterInfo(Painter & p);
+	///
+	void draw(int x, int y, char c);
+
+	///
+	MathMetricsBase base;
+	///
+	Painter & pain;
 };
+
+
+struct TextMetricsInfo {};
+
+
+// Generic base for temporarily changing things.
+// The original state gets restored when the Changer is destructed
+template <class Struct, class Temp = Struct>
+struct MathChanger {
+	///
+	MathChanger(Struct & orig) : orig_(orig) {}
+protected:
+	///
+	Struct & orig_;
+	///
+	Temp save_;
+};
+
+
+
+struct MathScriptChanger : public MathChanger<MathMetricsBase> {
+	///
+	MathScriptChanger(MathMetricsBase & orig);
+	///
+	~MathScriptChanger();
+};
+
+
+struct MathFracChanger : public MathChanger<MathMetricsBase> {
+	///
+	MathFracChanger(MathMetricsBase & orig);
+	///
+	~MathFracChanger();
+};
+
+
+
+struct MathFontChanger : public MathChanger<LyXFont> {
+	///
+	MathFontChanger(LyXFont & orig, char const * font);
+	///
+	~MathFontChanger();
+};
+
+
+struct MathFontSetChanger : public MathChanger<MathMetricsBase> {
+	///
+	MathFontSetChanger(MathMetricsBase & mb, char const * font);
+	///
+	~MathFontSetChanger();
+};
+
+
+struct MathStyleChanger : public MathChanger<MathMetricsBase> {
+	///
+	MathStyleChanger(MathMetricsBase & mb, MathStyles shape);
+	///
+	~MathStyleChanger();
+};
+
+
+struct MathShapeChanger : public MathChanger<LyXFont, LyXFont::FONT_SHAPE> {
+	///
+	MathShapeChanger(LyXFont & font, LyXFont::FONT_SHAPE shape);
+	///
+	~MathShapeChanger();
+};
+
 
 #endif

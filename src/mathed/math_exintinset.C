@@ -49,13 +49,13 @@ void MathExIntInset::normalize(NormalStream & os) const
 }
 
 
-void MathExIntInset::metrics(MathMetricsInfo const &) const
+void MathExIntInset::metrics(MathMetricsInfo &) const
 {
 	lyxerr << "should not happen" << endl;
 }
 
 
-void MathExIntInset::draw(Painter &, int, int) const
+void MathExIntInset::draw(MathPainterInfo &, int, int) const
 {
 	lyxerr << "should not happen" << endl;
 }
