@@ -112,25 +112,15 @@ LyXFunc::LyXFunc(LyXView * o)
 }
 
 
-inline
-LyXText * LyXFunc::TEXT(bool flag = true) const
+void LyXFunc::moveCursorUpdate()
 {
-	if (flag)
-		return view()->text;
-	return view()->getLyXText();
-}
-
-
-inline
-void LyXFunc::moveCursorUpdate(bool flag, bool selecting)
-{
-	if (selecting || TEXT(flag)->selection.mark()) {
-		TEXT(flag)->setSelection();
-		if (!TEXT(flag)->isInInset())
+	LyXText * lt = view()->text;
+	if (lt->selection.mark()) {
+		lt->setSelection();
+		if (!lt->isInInset())
 		    view()->repaint();
 	}
-	view()->update(TEXT(flag), BufferView::SELECT);
-
+	view()->update(lt, BufferView::SELECT);
 	view()->switchKeyMap();
 }
 
@@ -144,13 +134,13 @@ void LyXFunc::handleKeyFunc(kb_action action)
 	}
 
 	owner->getIntl().getTransManager()
-		.deadkey(c, get_accent(action).accent, TEXT(false));
+		.deadkey(c, get_accent(action).accent, view()->getLyXText());
 	// Need to clear, in case the minibuffer calls these
 	// actions
 	keyseq.clear();
 	// copied verbatim from do_accent_char
-	view()->update(TEXT(false), BufferView::SELECT);
-	TEXT(false)->selection.cursor = TEXT(false)->cursor;
+	view()->update(view()->getLyXText(), BufferView::SELECT);
+	view()->getLyXText()->selection.cursor = view()->getLyXText()->cursor;
 }
 
 
@@ -360,22 +350,22 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 		break;
 
 	case LFUN_DEPTH_MIN:
-		disable = !changeDepth(view(), TEXT(false), DEC_DEPTH, true);
+		disable = !changeDepth(view(), view()->getLyXText(), DEC_DEPTH, true);
 		break;
 
 	case LFUN_DEPTH_PLUS:
-		disable = !changeDepth(view(), TEXT(false), INC_DEPTH, true);
+		disable = !changeDepth(view(), view()->getLyXText(), INC_DEPTH, true);
 		break;
 
 	case LFUN_LAYOUT:
 	case LFUN_LAYOUT_PARAGRAPH: {
-		InsetOld * inset = TEXT(false)->cursor.par()->inInset();
+		InsetOld * inset = view()->getLyXText()->cursor.par()->inInset();
 		disable = inset && inset->forceDefaultParagraphs(inset);
 		break;
 	}
 
 	case LFUN_INSET_OPTARG:
-		disable = (TEXT(false)->cursor.par()->layout()->optionalargs == 0);
+		disable = (view()->getLyXText()->cursor.par()->layout()->optionalargs == 0);
 		break;
 
 	case LFUN_TABULAR_FEATURE:
@@ -705,7 +695,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 		flag.setOnOff(buf->isReadonly());
 		break;
 	case LFUN_APPENDIX:
-		flag.setOnOff(TEXT(false)->cursor.par()->params().startOfAppendix());
+		flag.setOnOff(view()->getLyXText()->cursor.par()->params().startOfAppendix());
 		break;
 	case LFUN_SWITCHBUFFER:
 		// toggle on the current buffer, but do not toggle off
@@ -722,7 +712,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 
 	// the font related toggles
 	if (!mathcursor) {
-		LyXFont const & font = TEXT(false)->real_current_font;
+		LyXFont const & font = view()->getLyXText()->real_current_font;
 		switch (ev.action) {
 		case LFUN_EMPH:
 			flag.setOnOff(font.emph() == LyXFont::ON);
@@ -863,8 +853,8 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 
 	if (view()->available() && view()->theLockingInset()) {
 		InsetOld::RESULT result;
-		if ((action > 1) || ((action == LFUN_UNKNOWN_ACTION) &&
-				     (!keyseq.deleted())))
+		if (action > 1 || (action == LFUN_UNKNOWN_ACTION &&
+				     !keyseq.deleted()))
 		{
 			UpdatableInset * inset = view()->theLockingInset();
 #if 1
@@ -910,45 +900,45 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 				// FINISHED means that the cursor should be
 				// one position after the inset.
 			} else if (result == FINISHED_RIGHT) {
-				TEXT()->cursorRight(view());
-				moveCursorUpdate(true, false);
+				view()->text->cursorRight(view());
+				moveCursorUpdate();
 				owner->clearMessage();
 				goto exit_with_message;
 			} else if (result == FINISHED_UP) {
-				RowList::iterator const irow = TEXT()->cursorIRow();
-				if (irow != TEXT()->rows().begin()) {
+				RowList::iterator const irow = view()->text->cursorIRow();
+				if (irow != view()->text->rows().begin()) {
 #if 1
-					TEXT()->setCursorFromCoordinates(
-						TEXT()->cursor.ix() + inset_x,
-						TEXT()->cursor.iy() -
+					view()->text->setCursorFromCoordinates(
+						view()->text->cursor.ix() + inset_x,
+						view()->text->cursor.iy() -
 						irow->baseline() - 1);
-					TEXT()->cursor.x_fix(TEXT()->cursor.x());
+					view()->text->cursor.x_fix(view()->text->cursor.x());
 #else
-					TEXT()->cursorUp(view());
+					view()->text->cursorUp(view());
 #endif
-					moveCursorUpdate(true, false);
+					moveCursorUpdate();
 				} else {
-					view()->update(TEXT(), BufferView::SELECT);
+					view()->update(view()->text, BufferView::SELECT);
 				}
 				owner->clearMessage();
 				goto exit_with_message;
 			} else if (result == FINISHED_DOWN) {
-				RowList::iterator const irow = TEXT()->cursorIRow();
-				if (boost::next(irow) != TEXT()->rows().end()) {
+				RowList::iterator const irow = view()->text->cursorIRow();
+				if (boost::next(irow) != view()->text->rows().end()) {
 #if 1
-					TEXT()->setCursorFromCoordinates(
-						TEXT()->cursor.ix() + inset_x,
-						TEXT()->cursor.iy() -
+					view()->text->setCursorFromCoordinates(
+						view()->text->cursor.ix() + inset_x,
+						view()->text->cursor.iy() -
 						irow->baseline() +
 						irow->height() + 1);
-					TEXT()->cursor.x_fix(TEXT()->cursor.x());
+					view()->text->cursor.x_fix(view()->text->cursor.x());
 #else
-					TEXT()->cursorDown(view());
+					view()->text->cursorDown(view());
 #endif
 				} else {
-					TEXT()->cursorRight(view());
+					view()->text->cursorRight(view());
 				}
-				moveCursorUpdate(true, false);
+				moveCursorUpdate();
 				owner->clearMessage();
 				goto exit_with_message;
 			}
@@ -959,30 +949,30 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 				case LFUN_UNKNOWN_ACTION:
 				case LFUN_BREAKPARAGRAPH:
 				case LFUN_BREAKLINE:
-					TEXT()->cursorRight(view());
+					view()->text->cursorRight(view());
 					view()->switchKeyMap();
 					owner->view_state_changed();
 					break;
 				case LFUN_RIGHT:
-					if (!TEXT()->cursor.par()->isRightToLeftPar(owner->buffer()->params)) {
-						TEXT()->cursorRight(view());
-						moveCursorUpdate(true, false);
+					if (!view()->text->cursor.par()->isRightToLeftPar(owner->buffer()->params)) {
+						view()->text->cursorRight(view());
+						moveCursorUpdate();
 						owner->view_state_changed();
 					}
 					goto exit_with_message;
 				case LFUN_LEFT:
-					if (TEXT()->cursor.par()->isRightToLeftPar(owner->buffer()->params)) {
-						TEXT()->cursorRight(view());
-						moveCursorUpdate(true, false);
+					if (view()->text->cursor.par()->isRightToLeftPar(owner->buffer()->params)) {
+						view()->text->cursorRight(view());
+						moveCursorUpdate();
 						owner->view_state_changed();
 					}
 					goto exit_with_message;
 				case LFUN_DOWN:
-					if (boost::next(TEXT()->cursorRow()) != TEXT()->rows().end())
-						TEXT()->cursorDown(view());
+					if (boost::next(view()->text->cursorRow()) != view()->text->rows().end())
+						view()->text->cursorDown(view());
 					else
-						TEXT()->cursorRight(view());
-					moveCursorUpdate(true, false);
+						view()->text->cursorRight(view());
+					moveCursorUpdate();
 					owner->view_state_changed();
 					goto exit_with_message;
 				default:
@@ -994,35 +984,31 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 
 	switch (action) {
 
-	case LFUN_ESCAPE:
-	{
-		if (!view()->available()) break;
+	case LFUN_ESCAPE: {
+		if (!view()->available())
+			break;
 		// this function should be used always [asierra060396]
-		UpdatableInset * tli =
-			view()->theLockingInset();
+		UpdatableInset * tli = view()->theLockingInset();
 		if (tli) {
 			UpdatableInset * lock = tli->getLockingInset();
 
 			if (tli == lock) {
 				view()->unlockInset(tli);
-				TEXT()->cursorRight(view());
-				moveCursorUpdate(true, false);
+				view()->text->cursorRight(view());
+				moveCursorUpdate();
 				owner->view_state_changed();
 			} else {
-				tli->unlockInsetInInset(view(),
-							lock,
-							true);
+				tli->unlockInsetInInset(view(), lock, true);
 			}
 			finishUndo();
 			// Tell the paragraph dialog that we changed paragraph
 			dispatch(FuncRequest(LFUN_PARAGRAPH_UPDATE));
 		}
+		break;
 	}
-	break;
 
-		// --- Misc -------------------------------------------
-	case LFUN_WORDFINDFORWARD  :
-	case LFUN_WORDFINDBACKWARD : {
+	case LFUN_WORDFINDFORWARD:
+	case LFUN_WORDFINDBACKWARD: {
 		static string last_search;
 		string searched_string;
 
@@ -1033,27 +1019,23 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 			searched_string = last_search;
 		}
 		bool fw = (action == LFUN_WORDFINDFORWARD);
-		if (!searched_string.empty()) {
+		if (!searched_string.empty())
 			lyx::find::find(view(), searched_string, fw);
-		}
+		break;
 	}
-	break;
 
 	case LFUN_PREFIX:
-	{
-		if (view()->available() && !view()->theLockingInset()) {
-			view()->update(TEXT(), BufferView::SELECT);
-		}
+		if (view()->available() && !view()->theLockingInset())
+			view()->update(view()->text, BufferView::SELECT);
 		owner->message(keyseq.printOptions());
-	}
-	break;
+		break;
 
 	// --- Misc -------------------------------------------
 	case LFUN_EXEC_COMMAND:
 		owner->focus_command_buffer();
 		break;
 
-	case LFUN_CANCEL:                   // RVDK_PATCH_5
+	case LFUN_CANCEL:
 		keyseq.reset();
 		meta_fake_bit = key_modifier::none;
 		if (view()->available())
@@ -1062,20 +1044,17 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 		setMessage(N_("Cancel"));
 		break;
 
-	case LFUN_META_FAKE:                                 // RVDK_PATCH_5
-	{
+	case LFUN_META_FAKE:
 		meta_fake_bit = key_modifier::alt;
 		setMessage(keyseq.print());
-	}
-	break;
+		break;
 
 	case LFUN_READ_ONLY_TOGGLE:
-		if (owner->buffer()->lyxvc.inUse()) {
+		if (owner->buffer()->lyxvc.inUse())
 			owner->buffer()->lyxvc.toggleReadOnly();
-		} else {
+		else
 			owner->buffer()->setReadonly(
 				!owner->buffer()->isReadonly());
-		}
 		break;
 
 	case LFUN_CENTER: // this is center and redraw.
@@ -1180,12 +1159,12 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 		break;
 
 	case LFUN_DEPTH_MIN:
-		changeDepth(view(), TEXT(false), DEC_DEPTH, false);
+		changeDepth(view(), view()->getLyXText(), DEC_DEPTH, false);
 		owner->view_state_changed();
 		break;
 
 	case LFUN_DEPTH_PLUS:
-		changeDepth(view(), TEXT(false), INC_DEPTH, false);
+		changeDepth(view(), view()->getLyXText(), INC_DEPTH, false);
 		owner->view_state_changed();
 		break;
 
@@ -1979,3 +1958,10 @@ BufferView * LyXFunc::view() const
 	Assert(owner);
 	return owner->view().get();
 }
+
+
+bool LyXFunc::wasMetaKey() const
+{
+	return (meta_fake_bit != key_modifier::none);
+}
+

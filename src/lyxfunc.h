@@ -83,7 +83,7 @@ private:
 	///
 	key_modifier::state meta_fake_bit;
 	///
-	void moveCursorUpdate(bool flag = true, bool selecting = false);
+	void moveCursorUpdate();
 	///
 	void setupLocalKeymap();
 	/// Error status, only Dispatch can change this flag
@@ -113,21 +113,6 @@ private:
 
 	///
 	void closeBuffer();
-	///
-	//  This return or directly text (default) of getLyXText()
-	///
-	LyXText * TEXT(bool) const;
-	///
 };
-
-
-/*--------------------  inlines  --------------------------*/
-
-inline
-bool LyXFunc::wasMetaKey() const
-{
-	return (meta_fake_bit != key_modifier::none);
-}
-
 
 #endif

@@ -684,10 +684,6 @@ InsetOld::RESULT LyXText::dispatch(FuncRequest const & cmd)
 		bv->update(this, BufferView::UPDATE);
 		cursorPrevious();
 		finishChange(bv, false);
-		// was:
-		// finishUndo();
-		// moveCursorUpdate(bv, false, false);
-		// owner_->view_state_changed();
 		break;
 
 	case LFUN_NEXT:

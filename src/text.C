@@ -64,7 +64,7 @@ extern int const CHANGEBAR_MARGIN = 10;
 /// left margin
 extern int const LEFT_MARGIN = PAPER_MARGIN + CHANGEBAR_MARGIN;
 
-extern int bibitemMaxWidth(BufferView *, LyXFont const &);
+int bibitemMaxWidth(BufferView *, LyXFont const &);
 
 
 BufferView * LyXText::bv()
@@ -311,7 +311,7 @@ int LyXText::singleWidth(ParagraphList::iterator pit,
 				return 3;
 			}
 #if 0
-#warning inset->update FIXME
+#warning enabling this fixes the 'insets of width 0 on load' problem
 			// this IS needed otherwise on initialitation we don't get the fill
 			// of the row right (ONLY on initialization if we read a file!)
 			// should be changed! (Jug 20011204)
