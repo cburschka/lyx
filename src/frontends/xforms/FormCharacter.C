@@ -22,6 +22,7 @@
 #include "gettext.h"
 #include "combox.h"
 #include "helper_funcs.h"
+#include "xforms_helpers.h"
 #include "frnt_lang.h"
 
 #include "support/lstrings.h"
@@ -142,21 +143,6 @@ void FormCharacter::apply()
 	bool const toggleall = fl_get_button(dialog_->check_toggle_all);
 	controller().setToggleAll(toggleall);
 }
-
-
-namespace {
-
-template<class A>
-typename vector<A>::size_type findPos(vector<A> const & vec, A const & val)
-{
-	typename vector<A>::const_iterator it =
-		find(vec.begin(), vec.end(), val);
-	if (it == vec.end())
-		return 0;
-	return it - vec.begin();
-}
-
-} // namespace anon
 
 
 void FormCharacter::update()

@@ -1758,21 +1758,6 @@ bool FormPreferences::Language::input(FL_OBJECT const * const ob)
 }
 
 
-namespace {
-
-template<class A>
-typename vector<A>::size_type findPos(vector<A> const & vec, A const & val)
-{
-	typename vector<A>::const_iterator it =
-		std::find(vec.begin(), vec.end(), val);
-	if (it == vec.end())
-		return 0;
-	return it - vec.begin();
-}
-
-} // namespace anon
-
-
 void FormPreferences::Language::update()
 {
 	fl_set_button(dialog_->check_use_kbmap,

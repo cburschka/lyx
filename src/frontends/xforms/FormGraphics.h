@@ -19,6 +19,7 @@
 
 #include "FormBase.h"
 #include "RadioButtonGroup.h"
+#include <vector>
 
 class ControlGraphics;
 struct FD_form_graphics;
@@ -74,6 +75,9 @@ private:
 	boost::scoped_ptr<FD_form_bbox> bbox_;
 	///
 	boost::scoped_ptr<FD_form_special> special_;
+
+	/// Store the LaTeX names for the rotation origins.
+	std::vector<string> origins_;
 };
 
 #endif  // FORMGRAPHICS_H

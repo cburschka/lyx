@@ -20,6 +20,7 @@
 #include "Alert.h"
 
 #include "xforms_helpers.h"
+#include "helper_funcs.h"
 #include "input_validators.h"
 #include "debug.h" // for lyxerr
 #include "support/lstrings.h"  // for strToDbl & tostr
@@ -28,6 +29,7 @@
 #include "lyxrc.h" // for lyxrc.display_graphics
 
 using std::endl;
+using std::vector;
 
 namespace {
 
@@ -94,12 +96,15 @@ void FormGraphics::build()
 	setPrehandler(file_->input_subcaption);
 	setPrehandler(file_->input_rotate_angle);
 
-	string const choice_origin =
-		"center|"					// c
-		"leftTop|leftBottom|leftBaseline|"		// lt lb lB
-		"centerTop|centerBottom|centerBaseline|"	// ct cb cB
-		"rightTop|rightBottom|rightBaseline";	// rt rb rB
-	fl_addto_choice(file_->choice_origin, choice_origin.c_str());
+	using namespace frnt;
+	vector<RotationOriginPair> origindata = getRotationOriginData();
+
+	// Store the identifiers for later
+	origins_ = getSecond(origindata);
+	
+	string const choice =
+		" " + getStringFromVector(getFirst(origindata), " | ") +" ";
+	fl_addto_choice(file_->choice_origin, choice.c_str());
 
 	bc().addReadOnly(file_->button_browse);
 	bc().addReadOnly(file_->check_subcaption);
@@ -211,10 +216,12 @@ void FormGraphics::apply()
 			igp.rotateAngle -= 360.0;
 		}
 	}
-	if (fl_get_choice(file_->choice_origin) > 0)
-		igp.rotateOrigin = fl_get_choice_text(file_->choice_origin);
+	int const pos = fl_get_choice(file_->choice_origin);
+	if (pos > 0)
+		igp.rotateOrigin = origins_[pos-1];
 	else
 		igp.rotateOrigin = string();
+
 	igp.draft = fl_get_button(file_->check_draft);
 	igp.noUnzip = fl_get_button(file_->check_nounzip);
 
@@ -296,7 +303,6 @@ void FormGraphics::apply()
 }
 
 
-
 void FormGraphics::update() {
 	// Update dialog with details from inset
 	InsetGraphicsParams & igp = controller().params();
@@ -312,8 +318,11 @@ void FormGraphics::update() {
 		     tostr(igp.rotateAngle).c_str());
 	if (igp.rotateOrigin.empty())
 		fl_set_choice(file_->choice_origin,1);
-	else
-		fl_set_choice_text(file_->choice_origin,igp.rotateOrigin.c_str());
+	else {
+		int pos = int(findPos(origins_, igp.rotateOrigin));
+		fl_set_choice(file_->choice_origin, pos+1);
+	}
+
 	setEnabled(file_->input_rotate_angle,
 		   fl_get_button(file_->check_rotate));
 	setEnabled(file_->choice_origin,

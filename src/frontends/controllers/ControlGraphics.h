@@ -21,6 +21,8 @@
 #endif
 
 #include "ControlInset.h"
+#include <utility>
+#include <vector>
 
 class InsetGraphics;
 class InsetGraphicsParams;
@@ -42,6 +44,7 @@ public:
 	bool bbChanged;
 	/// test if file exist
 	bool isFilenameValid(string const & fname) const;
+
 private:
 	/// Dispatch the changed parameters to the kernel.
 	virtual void applyParamsToInset();
@@ -52,5 +55,12 @@ private:
 	/// get the parameters from the inset passed to showInset.
 	virtual InsetGraphicsParams const getParams(InsetGraphics const &);
 };
+
+namespace frnt {
+	/// The (tranlated) GUI string and it's LaTeX equivalent.
+	typedef std::pair<string, string> RotationOriginPair;
+	///
+	std::vector<RotationOriginPair> getRotationOriginData();
+} // namespace frnt
 
 #endif // CONTROLGRAPHICS_H

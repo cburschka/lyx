@@ -1090,21 +1090,6 @@ void FormDocument::class_update(BufferParams const & params)
 }
 
 
-namespace {
-
-template<class A>
-typename vector<A>::size_type findPos(vector<A> const & vec, A const & val)
-{
-	typename vector<A>::const_iterator it =
-		std::find(vec.begin(), vec.end(), val);
-	if (it == vec.end())
-		return 0;
-	return it - vec.begin();
-}
-
-} // namespace anon
-
-
 void FormDocument::language_update(BufferParams const & params)
 {
 	if (!language_.get())

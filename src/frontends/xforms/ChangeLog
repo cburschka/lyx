@@ -2,6 +2,21 @@
 
 	* FormCharacter.C:
 	* FormDocument.C:
+	* FormPreferences.C (findPos): remove this template to xforms_helpers.h.
+
+	* xforms_helpers.h (findPos): new template.
+
+	* FormGraphics.h: store a vector<string> origins_ of the  LaTeX names
+	for the rotation origins.
+
+	* FormGraphics.C: internationalise the rotation origin strings in the
+	choice using the same approach as used for the language names in the
+	Character, Document, Preferences dialogs.
+
+2002-04-30  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* FormCharacter.C:
+	* FormDocument.C:
 	* FormPreferences.C: use the bool flag to getLanguageData as
 	appropriate. No longer translate the strings as this is done in
 	getLanguageData.

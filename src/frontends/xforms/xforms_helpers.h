@@ -19,6 +19,7 @@
 #include "Color.h"
 #include "LString.h"
 
+#include <algorithm>
 #include <vector>
 
 class LyXLength;
@@ -81,6 +82,20 @@ void updateWidgetsFromLength(FL_OBJECT * input, FL_OBJECT * choice,
 			     LyXLength const & len,
 			     string const & default_unit);
 
+
+/** Return the position of val in the vector if found.
+    If not found, return 0.
+ */
+template<class A>
+typename std::vector<A>::size_type
+findPos(std::vector<A> const & vec, A const & val)
+{
+	typename std::vector<A>::const_iterator it =
+		std::find(vec.begin(), vec.end(), val);
+	if (it == vec.end())
+		return 0;
+	return std::distance(vec.begin(), it);
+}
 
 /// Called from Preferences when the cursor color is changed.
 void setCursorColor(int color);

@@ -48,9 +48,9 @@
 using std::pair;
 using std::make_pair;
 using std::ifstream;
+using std::vector;
 
 namespace {
-using std::vector;
 
 // FIXME: currently we need the second '|' to prevent mis-interpretation!
 // All supported graphic formats with their file-extension and the
@@ -181,3 +181,41 @@ bool ControlGraphics::isFilenameValid(string const & fname) const
 	string const name = MakeAbsPath(fname, lv_.buffer()->filePath());
 	return IsFileReadable(name);
 }
+
+
+namespace frnt {
+
+namespace {
+
+char const * const rorigin_latex_strs[] = {
+	"center", "leftTop", "leftBottom", "leftBaseline",
+	"centerTop", "centerBottom", "centerBaseline",
+	"rightTop", "rightBottom", "rightBaseline" };
+
+char const * const rorigin_gui_strs[] = {
+	N_("center"),
+	N_("left top"),   N_("left bottom"),   N_("left baseline"),
+	N_("center top"), N_("center bottom"), N_("center baseline"),
+	N_("right top"),  N_("right bottom"),  N_("right baseline") };
+
+size_t rorigin_size = sizeof(rorigin_latex_strs) / sizeof(char *);
+
+} // namespace anon
+
+vector<RotationOriginPair> getRotationOriginData()
+{
+	static vector<RotationOriginPair> data;
+	if (!data.empty())
+		return data;
+
+	data.resize(rorigin_size);
+	for (lyx::size_type i = 0; i < rorigin_size; ++i) {
+		data[i] = std::make_pair(_(rorigin_gui_strs[i]),
+					 rorigin_latex_strs[i]);
+	}
+
+	return data;
+}
+
+} // namespace frnt
+
