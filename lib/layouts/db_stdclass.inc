@@ -28,62 +28,7 @@ Style Standard
 	LabelType             No_Label
 End
 
-
-CharStyle Filename
-	LatexType             Command
-	LatexName             filename
-	Font
-	  Family              Typewriter
-	EndFont
-	LabelFont
-	  Family              Roman
-	  Color               blue
-	EndFont
-End
-
-CharStyle Firstname
-	LatexType             Command
-	LatexName             firstname
-	LabelFont
-	  Shape               Up
-	  Color               blue
-	EndFont
-End
-
-CharStyle Surname
-	LatexType             Command
-	LatexName             surname
-	LabelFont
-	  Shape               Up
-	  Color               blue
-	EndFont
-End
-
-CharStyle Literal
-	LatexType             Command
-	LatexName             literal
-	Font
-	  Family              Typewriter
-	EndFont
-	LabelFont
-	  Family              Roman
-	  Color               blue
-	EndFont
-End
-
-CharStyle Email
-        LatexType             Command
-        LatexName             email
-        Font
-          Family              Typewriter
-        EndFont
-        LabelFont
-          Family              Roman
-          Color               blue
-        EndFont
-End
-
-
+Input db_stdcharstyles.inc
 Input db_stdlists.inc
 Input db_stdsections.inc
 Input db_stdstarsections.inc
