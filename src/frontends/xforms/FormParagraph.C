@@ -279,7 +279,7 @@ void FormParagraph::apply()
 
 
     // Actually apply these settings
-    lv_->view()->update(lv_->view()->text, 
+    lv_->view()->update(text, 
 			BufferView::SELECT | BufferView::FITCUR | BufferView::CHANGE);
     lv_->buffer()->markDirty();
     setMinibuffer(lv_, _("Paragraph layout set"));

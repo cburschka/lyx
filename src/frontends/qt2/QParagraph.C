@@ -56,14 +56,7 @@ void QParagraph::update(bool switched)
 		dialog_->setReadOnly(readonly);
 	}
 
-	LyXText * text = 0;
-
-	if (lv_->view()->theLockingInset())
-		text = lv_->view()->theLockingInset()->getLyXText(lv_->view());
-
-	if (!text)
-		text = lv_->view()->text;
-
+	LyXText * text(lv_->view()->getLyXText());
 	Paragraph * par = text->cursor.par();
 
 	int align = par->getAlign();
@@ -142,11 +135,12 @@ void QParagraph::apply()
 	lyxerr[Debug::GUI] << "Setting above space \"" << LyXGlueLength(spaceabove.length().asString()).asString() << "\"" << endl;
 	lyxerr[Debug::GUI] << "Setting below space \"" << LyXGlueLength(spacebelow.length().asString()).asString() << "\"" << endl;
 
-	lv_->view()->text->setParagraph(lv_->view(),
-		dialog_->getLineAbove(), dialog_->getLineBelow(),
-		dialog_->getPagebreakAbove(), dialog_->getPagebreakBelow(),
-		spaceabove, spacebelow, Spacing(), dialog_->getAlign(),
-		dialog_->getLabelWidth(), dialog_->getNoIndent());
+	LyXText * text(lv_->view()->getLyXText());
+	text->setParagraph(lv_->view(),
+			   dialog_->getLineAbove(), dialog_->getLineBelow(),
+			   dialog_->getPagebreakAbove(), dialog_->getPagebreakBelow(),
+			   spaceabove, spacebelow, Spacing(), dialog_->getAlign(),
+			   dialog_->getLabelWidth(), dialog_->getNoIndent());
 
 	// extra stuff
 
@@ -162,7 +156,7 @@ void QParagraph::apply()
 	lyxerr[Debug::GUI] << "Setting extrawidth \"" << width << "\"" << endl;
 	lyxerr[Debug::GUI] << "Setting percent extrawidth \"" << widthp << "\"" << endl;
 
-	lv_->view()->update(lv_->view()->text,
+	lv_->view()->update(text,
 			    BufferView::SELECT |
 			    BufferView::FITCUR |
 			    BufferView::CHANGE);

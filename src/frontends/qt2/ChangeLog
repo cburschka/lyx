@@ -1,3 +1,8 @@
+2001-12-05  Allan Rae  <rae@lyx.org>
+
+	* QParagraph.C (apply): 
+	(update): Use the right LyXText -- extending John's fix
+
 2001-12-01  Maks Orlovich  <mo002j@mail.rochester.edu>
 
 	* moc/Makefile.am:
