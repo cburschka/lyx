@@ -109,7 +109,7 @@ void LCursor::push(UpdatableInset * inset)
 void LCursor::pop(int depth)
 {
 	lyxerr << "LCursor::pop() to " << depth << endl;
-	while (data.size() > 1 && depth < data_.size()) {
+	while (data_.size() > 1 && depth < data_.size()) {
 		lyxerr <<   "LCursor::pop a level " << endl;
 		data_.pop_back();
 	}
