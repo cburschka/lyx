@@ -29,7 +29,7 @@
 	
 	* src/insets/insettext.C (LocalDispatch): Update selection cursor
  	when moving cursor to the right.
-	(moveRightIntern): Call to CursorRight with 2 argument eqaul to false.
+	(moveRightIntern): Call to CursorRight with 2 argument equal to false.
 	(moveLeftIntern): Ditto.
 
 2001-02-07  John Levon  <moz@compsoc.man.ac.uk>

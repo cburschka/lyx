@@ -1,3 +1,27 @@
+2001-02-16  Allan Rae  <rae@lyx.org>
+
+	* Makefile.in.in: grep -E isn't necessary anymore and the awk is
+	superfluous to the generation of POTFILES.in
+
+2001-01-14  Allan Rae  <rae@lyx.org>
+
+	* Makefile.in.in (POTFILES.in): Removed dependency on
+	$(top_srcdir)/src/ext_l10n.h because we need the Makefile to be
+	regenerated _before_ ext_l10n.h is regenerated in order for
+	changes to the ext_l10n.h rule to take effect.
+	($(top_srcdir)/src/ext_l10n.h): moved so Makefile rule has precedence.
+	Rewrote to use sed exclusively instead of awkward awk scripts.  Fixed
+	several bugs in the process.  We now only translate stuff that
+	should be translated.
+
+2001-01-13  Allan Rae  <rae@lyx.org>
+
+	* Makefile.in.in (POTFILE_IN_DEPS): remove the GNU make specific :=
+
+2001-02-14  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* da.po: update from Claus Hindsgaul
+
 2001-02-09  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* de.po: update from Pit

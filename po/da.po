@@ -5,14 +5,14 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: lyx 1.0.2\n"
-"POT-Creation-Date: 2001-01-31 17:06+0100\n"
-"PO-Revision-Date: 2001-01-28 03:22+01:00\n"
-"Last-Translator: Claus Hindsgaul <claus_h@image.dk>\n"
-"Language-Team: Danish <dansk@klid.dk>\n"
+"POT-Creation-Date: 2001-01-31 19:21+0100\n"
+"PO-Revision-Date: 2001-02-14 11:35GMT\n"
+"Last-Translator: Claus Hindsgaul <claush@et.dtu.dk>\n"
+"Language-Team: danish <dansk@klid.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=iso-8859-1\n"
+"Content-Type: text/plain; charset=ISO-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 0.7.1\n"
+"X-Generator: KBabel 0.8\n"
 
 #: src/buffer.C:506
 msgid "Textclass error"
@@ -536,7 +536,7 @@ msgstr "Rulletekster"
 #: src/insets/insetinclude.C:52 src/lyx.C:47 src/lyx.C:105
 #: src/mathed/math_forms.C:109 src/print_form.C:28 src/sp_form.C:38
 msgid "OK"
-msgstr "OK"
+msgstr "O.k."
 
 #: src/credits_form.C:24
 msgid "Matthias"
@@ -2824,7 +2824,6 @@ msgid "Turkish"
 msgstr "Tyrkisk"
 
 #: src/ext_l10n.h:544
-#, fuzzy
 msgid "Ukrainian"
 msgstr "Ukrainsk"
 
@@ -3356,7 +3355,7 @@ msgstr "&Fjern"
 #: src/frontends/kde/dlg/paradlgdata.C:39 src/frontends/kde/refdlg.C:86
 #: src/frontends/kde/urldlg.C:52
 msgid "&OK"
-msgstr "&OK"
+msgstr "&O.k."
 
 #: src/frontends/kde/FormCitation.C:166 src/frontends/kde/FormRef.C:203
 #: src/frontends/kde/citationdlg.C:87 src/frontends/kde/dlg/indexdlgdata.C:85
@@ -4496,7 +4495,7 @@ msgstr "Opdatér|#O"
 
 #: src/frontends/xforms/form_graphics.C:141
 msgid "Ok"
-msgstr "Ok"
+msgstr "O.k."
 
 #: src/frontends/xforms/FormGraphics.C:36
 #: src/frontends/xforms/FormGraphics.C:359
@@ -5173,10 +5172,8 @@ msgid "LyX objects that can be assigned a color."
 msgstr "LyX-objekter, de kan få tilknyttet en farve."
 
 #: src/frontends/xforms/FormPreferences.C:536
-msgid ""
-"Modify the LyX object's color. Note: you must then \"Apply\" the change."
-msgstr ""
-"Ændr farven på LyX-objekt. Bemærk: du skal trykke \"Anvend\" for at gemme."
+msgid "Modify the LyX object's color. Note: you must then \"Apply\" the change."
+msgstr "Ændr farven på LyX-objekt. Bemærk: du skal trykke \"Anvend\" for at gemme."
 
 #: src/frontends/xforms/FormPreferences.C:544
 msgid "Find a new color."
@@ -6239,7 +6236,7 @@ msgstr "Disse valg alternerer"
 
 #: src/layout_forms.C:90 src/lyx_gui_misc.C:425
 msgid "OK|#O"
-msgstr "OK|#O"
+msgstr "O.k.|#O"
 
 #: src/LColor.C:52
 msgid "none"
@@ -7481,8 +7478,7 @@ msgstr " Ingen ændring %l| Medium | Fed %l| Nulstil "
 
 #: src/lyx_gui.C:319
 msgid " No change %l| Upright | Italic | Slanted | Small Caps %l| Reset "
-msgstr ""
-" Ingen ændring %l| Stående | Kursiv | Skråtstillet | Kapitæler %l| Nulstil "
+msgstr " Ingen ændring %l| Stående | Kursiv | Skråtstillet | Kapitæler %l| Nulstil "
 
 #: src/lyx_gui.C:322
 msgid ""
@@ -7570,19 +7566,16 @@ msgid "System directory set to: "
 msgstr "Systemkatalog sat til: "
 
 #: src/lyx_main.C:321
-#, fuzzy
 msgid "LyX Warning! Couldn't determine system directory. "
-msgstr "LyX-advarsel! Kunne ikke bestemme systemkataloget."
+msgstr "LyX-advarsel! Kunne ikke bestemme systemkataloget. "
 
 #: src/lyx_main.C:322
-#, fuzzy
 msgid "Try the '-sysdir' command line parameter or "
-msgstr "Prøv '-sysdir' kommandolinieparametren eller"
+msgstr "Prøv '-sysdir' kommandolinieparametren eller "
 
 #: src/lyx_main.C:323
-#, fuzzy
 msgid "set the environment variable LYX_DIR_11x to the LyX system directory "
-msgstr "sæt skal-variablen LYX_DIR_11x til LyX-systemkataloget"
+msgstr "sæt skal-variablen LYX_DIR_11x til LyX-systemkataloget "
 
 #: src/lyx_main.C:325
 msgid "containing the file `chkconfig.ltx'."
@@ -7733,8 +7726,7 @@ msgstr ""
 msgid ""
 "The default printer to print on. If none is specified, LyX will use the "
 "environment variable PRINTER."
-msgstr ""
-"Standardprinteren. Hvis ingen angives, vil LyX bruge miljøvariablenPRINTER."
+msgstr "Standardprinteren. Hvis ingen angives, vil LyX bruge miljøvariablenPRINTER."
 
 #: src/lyxrc.C:1610
 msgid "Your favorite print program, e.g. \"dvips\", \"dvilj4\"."
@@ -7750,8 +7742,7 @@ msgstr "Her angives, om kun ulige sider skal udskrives."
 
 #: src/lyxrc.C:1622
 msgid "The option for specifying a comma-separated list of pages to print."
-msgstr ""
-"Her kan indsættes en kommasepareret liste af sider, der skal udskrives."
+msgstr "Her kan indsættes en kommasepareret liste af sider, der skal udskrives."
 
 #: src/lyxrc.C:1626
 msgid "The option for specifying the number of copies to print."
@@ -7759,8 +7750,7 @@ msgstr "Her angives antallet af kopier, der skal udskrives."
 
 #: src/lyxrc.C:1630
 msgid "The option for specifying whether the copies should be collated."
-msgstr ""
-"Denne indstilling angiver, om flere kopier af hver side skal udskrives samlet"
+msgstr "Denne indstilling angiver, om flere kopier af hver side skal udskrives samlet"
 
 #: src/lyxrc.C:1634
 msgid "The option to reverse the order of the pages printed."
@@ -7792,8 +7782,7 @@ msgstr "Få LyX til at give navnet på målprinteren til din udskriftkommando."
 
 #: src/lyxrc.C:1658
 msgid "Option to pass to the print program to print to a file."
-msgstr ""
-"Tilvalg, der skal gives til udskriftprogrammet for at skrive til en fil."
+msgstr "Tilvalg, der skal gives til udskriftprogrammet for at skrive til en fil."
 
 #: src/lyxrc.C:1662
 msgid "Extension of printer program output file. Usually \".ps\"."
@@ -7843,13 +7832,11 @@ msgstr ""
 
 #: src/lyxrc.C:1687
 msgid "The font sizes used for calculating the scaling of the screen fonts."
-msgstr ""
-"Skriftstørrelserne, der benyttes ved beregning af skærmskrifternes størrelse."
+msgstr "Skriftstørrelserne, der benyttes ved beregning af skærmskrifternes størrelse."
 
 #: src/lyxrc.C:1693
 msgid "The screen fonts used to display the text while editing."
-msgstr ""
-"Skrifttyper, der benyttes til at vise tekst på skærmen under redigering."
+msgstr "Skrifttyper, der benyttes til at vise tekst på skærmen under redigering."
 
 #: src/lyxrc.C:1697
 msgid "The font for menus (and groups titles in popups)."
@@ -7868,10 +7855,8 @@ msgid "The encoding for the menu/popups fonts."
 msgstr "Tegnsættet for menu/dialog-tekst."
 
 #: src/lyxrc.C:1716
-msgid ""
-"The time interval between auto-saves (in seconds). 0 means no auto-save."
-msgstr ""
-"Tidsintervallet mellem automatisk gemning (i sekunder). 0 betyder aldrig."
+msgid "The time interval between auto-saves (in seconds). 0 means no auto-save."
+msgstr "Tidsintervallet mellem automatisk gemning (i sekunder). 0 betyder aldrig."
 
 #: src/lyxrc.C:1720
 msgid "The default path for your documents."
@@ -8007,8 +7992,7 @@ msgid ""
 msgstr "Angiv et alternativt sprog. Normalt anvendes dokumentets sprog."
 
 #: src/lyxrc.C:1821
-msgid ""
-"Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
+msgid "Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
 msgstr "Angiv en alternativ personlig ordliste. F.eks. \".ispell_danish\"."
 
 #: src/lyxrc.C:1826
@@ -8072,8 +8056,7 @@ msgstr ""
 "samme katalog, som den originale fil."
 
 #: src/lyxrc.C:1858
-msgid ""
-"Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
+msgid "Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
 msgstr ""
 "Vælg for at aktivere understøttelse af højre-til-venstre-sprog (f.eks. "
 "hebraisk og arabisk)."
@@ -8099,8 +8082,7 @@ msgid ""
 msgstr "Vælg, hvis der kræves en sprogskiftekommando i starten af dokumentet."
 
 #: src/lyxrc.C:1874
-msgid ""
-"Select if a language switching command is needed at the end of the document."
+msgid "Select if a language switching command is needed at the end of the document."
 msgstr "Angiv, om der kræves en sprogskiftekommando ved dokumentets slutning."
 
 #: src/lyxrc.C:1878
@@ -8148,8 +8130,7 @@ msgstr "Nye dokumenter vil oprettes med dette standardsprog."
 
 #: src/lyxrc.C:1916
 msgid "Maximum number of words in the initialization string for a new label"
-msgstr ""
-"Maksimalt antal ord i initialisationsstrengen for et nyt referencemærke"
+msgstr "Maksimalt antal ord i initialisationsstrengen for et nyt referencemærke"
 
 #: src/LyXSendto.C:40
 msgid "Send Document to Command"
@@ -8272,7 +8253,7 @@ msgstr "Venstre|#V"
 
 #: src/mathed/math_forms.C:127
 msgid "OK  "
-msgstr "OK  "
+msgstr "O.k.  "
 
 #: src/mathed/math_forms.C:140
 msgid "Columns "
@@ -8288,7 +8269,7 @@ msgstr "Vandret justering|#V"
 
 #: src/mathed/math_forms.C:195
 msgid "OK "
-msgstr "OK "
+msgstr "O.k. "
 
 #: src/mathed/math_forms.C:206
 msgid "Thin|#T"
@@ -8613,8 +8594,7 @@ msgstr ""
 
 #: src/text.C:2002
 msgid "You cannot type two spaces this way.  Please read the Tutorial."
-msgstr ""
-"Du kan ikke indtaste to mellemrum på denne måde. Læs venligst Tutorial."
+msgstr "Du kan ikke indtaste to mellemrum på denne måde. Læs venligst Tutorial."
 
 #: src/text.C:3458 src/text.C:3464
 msgid "Page Break (top)"
