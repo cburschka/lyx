@@ -9,7 +9,8 @@
 #
 # --------
 # ejour2 made originally by Martin Vermeer based on article.layout.
-# Modified for LyX 12 by Jean-Marc Lasgouttes and MV.
+# Modified for LyX 1.2 by Jean-Marc Lasgouttes and MV.
+# Minor change for LyX 1.3.3 by Cengiz Gunay.
 #
 # Adapted for new svjour LaTeX2e classes published by Springer in 1999;
 # work done by MV in 2000.
@@ -39,6 +40,8 @@ Input numarticle.inc
 Input stdstarsections.inc
 Input stdlayouts.inc
 Input stdlists.inc
+Input stdfloats.inc
+Input stdcounters.inc
 
 NoStyle Part
 NoStyle Part*
