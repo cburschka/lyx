@@ -335,46 +335,8 @@ notify us.
     then you need to upgrade the version of the xforms library you have
     installed.
 
-  o It is possible to compile lyx with Tru64 Unix cxx compiler
-    version 6.2, provided one uses
-	CXX='cxx -std strict_ansi'
-	CXXFLAGS='-ptr /tmp/lyx_cxx_repository -g'
-	CC=cc
-
-    Note that this will not work when compiling directly from the cvs
-    repository, due to the tricks used by automake for dependencies. Ask
-    Jean-Marc.Lasgouttes@inria.fr for a workaround.
-
-    Or rather, it may well work if you are using automake 1.5 and autoconf 2.5
-    or greater, but you'll have to patch automake's depcomp first. (Depcomp
-    is a little shell script to automagically work out file dependencies
-    and it's broken for automake 1.5 and Tru64 :-(). The patch is to be found
-    in config/depcomp.diff.
-    Angus 22 March, 2002.
-
-  o On Tru64 Unix, you may have to compile with
-    --with-included-string to work around a Tru64 linker limitation
-    (the STL string template creates names which may be too long). We
-    also had reports that it helps with gcc 2.95.2 on solaris 2.6.
-
-    Using Tru64 Unix 4.0e, the std::string is fine.
-    Angus 22 March, 2002.
-
-  o On Tru64 Unix with cxx, you may have a compilation error in
-    lyx_main.C if you have GNU gettext installed. This is due to a bug
-    in gettext. To solve this, you can either (1) configure with
-    --with-included-gettext or (2) add -D__STDC__ to cxx flags.
-
-  o On Tru64 Unix 4.0e, the STL library routine std::count is broken
-    (/usr/include/cxx/algorithm.cc, line 289 on my machine).
-    It calculates "n" but does not return it! The fix is to add "return n;" to
-    the end of the (4-line long) routine.
-    Angus 22 March, 2002.
-
-  o On Tru64 Unix 4.0e, compilation of support/lyxsum.C dies horribly. The
-    work-around is to use the old version, 1.18, of this routine. Ask
-    Angus Leeming <leeming@lyx.org> for details.
-    Angus 22 March, 2002.
+  o On solaris 2.6, you may have to compile with --with-included-string
+    if compiling with gcc 2.95.2.
 
   o According to David Sundqvist <David_Sundqvist@vd.volvo.se>, some
     changes are needed to compile with aCC on HP-UX 10.20. These are the
@@ -385,6 +347,36 @@ notify us.
                              # which currently break.
 
     LIBS = -lforms -lXpm  -lSM -lICE -lc -lm -lX11 -lCsup # must link with Csup
-    LDFLAGS = -L/opt/aCC/lib # perhaps not needed. 
+    LDFLAGS = -L/opt/aCC/lib # perhaps not needed.
 
+  o LyX can be compiled on Tru64 Unix with either GNU's gcc or the default
+    Compaq cxx compiler.
 
+    There are no Alpha-specific problems with gcc.
+
+    The following notes all refer to compilation with the Compaq cxx compiler.
+
+    LyX cannot be compiled on Tru64 Unix 4.0d or 4.0e with the default cxx
+    compiler. You should upgrade to at least cxx V6.2, to be found at
+    ftp::/ftp.compaq.com/pub/products/C-CXX/tru64/cxx/CXX622V40.tar. Users
+    running Tru64 Unix 4.0f and greater should have no real problems compiling
+    LyX.
+
+    cxx V6.2 will compile LyX out of the box.
+    cxx V6.3-020 is also known to work, although there is a bug in
+    /usr/include/cxx/deque. See Angus Leeming <leeming@lyx.org> for the
+    patch.
+    At the time of writing, cxx V6.5-026 is the latest cxx compiler. It is
+    /not/ recommended. Not only do the bugs in the system header files still
+    exist, but the compiler itself appears to be both buggy and extremely
+    bloated (trebles the size of the stripped LyX binary).
+
+    In order to compile LyX with the cxx compiler, you should run configure
+    with the following flags:
+	CXX='cxx -std strict_ansi'
+	CXXFLAGS='-nopure_cname -nocleanup -ptr /tmp/lyx_cxx_repository -O2'
+	CC='cc -std1'
+    The -nopure_cname flag is needed for compilers V6.3 and above because
+    LyX makes use of functions like popen, pclose that are defined in the
+    c version of <stdio.h> but are not formally part of any c/c++ standard.
+    They are not, therefore, included in the <cstdio> header file.
