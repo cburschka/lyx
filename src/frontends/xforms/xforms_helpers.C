@@ -171,7 +171,7 @@ bool XformsColor::write(string const & filename)
 	   << "###          LyX, The Document Processor\n"
 	   << "###\n"
 	   << "###          Copyright 1995 Matthias Ettrich\n"
-	   << "###          Copyright 1995-2000 The LyX Team.\n"
+	   << "###          Copyright 1995-2001 The LyX Team.\n"
 	   << "###\n"
 	   << "### ========================================================\n"
 	   << "\n"

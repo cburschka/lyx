@@ -5,9 +5,9 @@
  *	    LyX, The Document Processor
  * 	 
  *	    Copyright 1995 Matthias Ettrich
- *	    Copyright 1995-2000 The LyX Team
+ *	    Copyright 1995-2001 The LyX Team
  *
- *	    This file Copyright 1999-2000
+ *	    This file Copyright 1999-2001
  *	    Allan Rae
  *======================================================
  */

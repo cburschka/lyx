@@ -4,7 +4,7 @@
  * 
  *           LyX, The Document Processor
  * 	 
- *           Copyright 1995-2000 the LyX Team.
+ *           Copyright 1995-2001 the LyX Team.
  *
  * ====================================================== */
 

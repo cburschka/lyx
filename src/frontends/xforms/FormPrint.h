@@ -6,7 +6,7 @@
  *	    Copyright 1995 Matthias Ettrich
  *          Copyright 1995-2001 The LyX Team.
  *
- *	    This file copyright 1999-2000
+ *	    This file copyright 1999-2001
  *	    Allan Rae
  *======================================================
  *

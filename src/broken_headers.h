@@ -5,7 +5,7 @@
 *           LyX, The Document Processor
 *        
 *           Copyright 1995 Matthias Ettrich
-*           Copyright 1995-2000 The LyX Team
+*           Copyright 1995-2001 The LyX Team
 *
 * ====================================================== 
  A few prototypes missing from Sun and SCO 3.2v4 header files */

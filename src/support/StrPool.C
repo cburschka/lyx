@@ -4,7 +4,7 @@
  * 
  *           LyX, The Document Processor
  * 	 
- *	     Copyright 2000 Jean-Marc Lasgouttes
+ *	     Copyright 2000-2001 Jean-Marc Lasgouttes
  *
  * ======================================================*/
 
