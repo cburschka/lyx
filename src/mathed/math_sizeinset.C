@@ -37,7 +37,7 @@ void MathSizeInset::draw(MathPainterInfo & pi, int x, int y) const
 {
 	//MathStyleChanger dummy(pi.base, MathStyles(key_->id));
 	xcell(0).draw(pi, x + 1, y);
-	mathed_draw_framebox(pi, x, y, this);
+	drawMarkers2(pi, x, y);
 }
 
 

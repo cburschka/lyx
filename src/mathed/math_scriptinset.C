@@ -463,5 +463,5 @@ void MathScriptInset::octavize2(MathInset const * nuc, OctaveStream & os) const
 void MathScriptInset::infoize(std::ostream & os) const
 {
 	if (limits_)
-		os << (limits_ == 1 ? "Displayed limits " : "Inlined limits ");
+		os << (limits_ == 1 ? "Displayed limits" : "Inlined limits");
 }

@@ -136,6 +136,6 @@ void MathParboxInset::write(WriteStream & os) const
 
 void MathParboxInset::infoize(std::ostream & os) const
 {
-	os << "Box: Parbox " << tex_width_ << ' ';
+	os << "Box: Parbox " << tex_width_;
 }
 

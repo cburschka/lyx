@@ -54,3 +54,9 @@ void MathBoxInset::draw(MathPainterInfo & pi, int x, int y) const
 	MathGridInset::draw(pi, x, y);
 	mathed_draw_framebox(pi, x, y, this);
 }
+
+
+void MathBoxInset::infoize(std::ostream & os) const
+{
+	os << "Box: " << name_;
+}

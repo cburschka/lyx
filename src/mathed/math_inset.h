@@ -49,7 +49,6 @@ inclusion in the "real LyX insets" FormulaInset and FormulaMacroInset.
 
 class MathArrayInset;
 class MathAMSArrayInset;
-class MathBraceInset;
 class MathBoxInset;
 class MathCharInset;
 class MathDelimInset;
@@ -195,7 +194,6 @@ public:
 	/// identifies certain types of insets
 	virtual MathAMSArrayInset      * asAMSArrayInset()      { return 0; }
 	virtual MathArrayInset         * asArrayInset()         { return 0; }
-	virtual MathBraceInset         * asBraceInset()         { return 0; }
 	virtual MathBoxInset           * asBoxInset()           { return 0; }
 	virtual MathBoxInset const     * asBoxInset() const     { return 0; }
 	virtual MathCharInset const    * asCharInset() const    { return 0; }
@@ -228,6 +226,8 @@ public:
 	virtual bool isActive() const { return nargs() > 0; }
 	/// is the a relational operator (used for splitting equations)
 	virtual bool isRelOp() const { return false; }
+	/// will this get written as a single block in {..}
+	virtual bool extraBraces() const { return false; }
 
 	/// return the content as char if the inset is able to do so
 	virtual char getChar() const { return 0; }

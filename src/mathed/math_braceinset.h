@@ -18,8 +18,8 @@ public:
 	MathBraceInset();
 	///
 	MathInset * clone() const;
-	///
-	MathBraceInset * asBraceInset() { return this; }
+	/// we write extra braces in any case...
+	bool extraBraces() const { return true; }
 	///
 	void draw(MathPainterInfo &, int x, int y) const;
 	///

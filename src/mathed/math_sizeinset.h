@@ -20,6 +20,8 @@ public:
 	explicit MathSizeInset(latexkeys const * l);
 	///
 	MathInset * clone() const;
+	/// we write extra braces in any case...
+	bool extraBraces() const { return true; }
 	///
 	void metrics(MathMetricsInfo & st) const;
 	///

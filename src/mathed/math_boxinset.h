@@ -33,6 +33,8 @@ public:
 	void write(WriteStream & os) const;
 	///
 	void normalize(NormalStream & ns) const;
+	///
+	void infoize(std::ostream & os) const;
 
 private:
 	///

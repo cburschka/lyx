@@ -727,7 +727,7 @@ void MathCursor::getPos(int & x, int & y)
 	if (array().empty())
 		x += 2;
 	y = xarray().yo();
-	lyxerr << "getPos: " << x << " " << y << "\n";
+	//lyxerr << "getPos: " << x << " " << y << "\n";
 }
 
 

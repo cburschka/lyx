@@ -711,12 +711,14 @@ void Parser::parse_into1(MathGridInset & grid, unsigned flags,
 		else if (t.cat() == catBegin) {
 			MathArray ar;
 			parse_into(ar, FLAG_BRACE_LAST, mathmode);
-			// reduce multiple nesting levels to a single one
+			// do not create a BraceInset if they were written by LyX
 			// this helps to keep the annoyance of  "a choose b"  to a minimum
-			if (ar.size() && ar.front()->asBraceInset())
-				ar = ar.front()->asBraceInset()->cell(0);
-			cell->push_back(MathAtom(new MathBraceInset));
-			cell->back()->cell(0).swap(ar);
+			if (ar.size() == 1 && ar[0]->extraBraces()) {
+				cell->push_back(ar);
+			} else {
+				cell->push_back(MathAtom(new MathBraceInset));
+				cell->back()->cell(0).swap(ar);
+			}
 		}
 
 		else if (t.cat() == catEnd) {
