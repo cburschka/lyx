@@ -99,6 +99,7 @@ Menuset
 	Item "Math Panel|l" "math-panel"
 	Submenu "Math|M" "edit_math"
 	Separator
+	#Item "Read Only" "buffer-toggle-read-only"
 	Item "Spellchecker...|S" "spellchecker"
 	Item "Check TeX|h" "buffer-chktex"
 	Item "Remove All Error Boxes|E" "error-remove-all"

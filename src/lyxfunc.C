@@ -521,6 +521,10 @@ LyXFunc::func_status LyXFunc::getStatus(int ac,
 			if (font.latex() == LyXFont::ON)
 				box = LyXFunc::ToggleOn;
 			break;
+		case LFUN_READ_ONLY_TOGGLE:
+			if (buf->isReadonly())
+				box = LyXFunc::ToggleOn;
+			break;
 		default:
 			box = LyXFunc::OK;
 			break;

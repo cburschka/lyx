@@ -1925,8 +1925,11 @@ LyXParagraph * LyXText::FirstParagraph() const
 // sets the selection over the number of characters of string, no check!!
 void LyXText::SetSelectionOverString(BufferView * bview, string const & str)
 {
+	if (str.empty())
+		return;
+	
 	selection.cursor = cursor;
-	for (int i = 0; str[i]; ++i)
+	for (string::size_type i = 0; i < str.length(); ++i)
 		CursorRight(bview);
 	SetSelection(bview);
 }

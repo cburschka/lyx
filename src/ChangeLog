@@ -1,3 +1,10 @@
+2001-06-13  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* lyxfunc.C (getStatus): support LFUN_READ_ONLY_TOGGLE
+
+	* text2.C (SetSelectionOverString): do not test str[i]==0 for end
+	of string
+
 2001-06-13  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* buffer.C (parseSingleLyXformat2Token): fix compatability reading

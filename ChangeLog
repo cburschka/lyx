@@ -1,3 +1,8 @@
+2001-06-13  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/lyxfunc.C (getStatus): handle LFUN_READ_ONLY_TOGGLE so that
+	it can be used as a menu entry
+
 2001-06-11  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* autogen.sh: remove kde stuff
