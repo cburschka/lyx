@@ -168,12 +168,12 @@ namespace {
  */
 void read_syntaxfile(string const & file_name)
 {
-	if (!IsFileReadable(file_name)) {
+	ifstream is(file_name.c_str());
+	if (!is.good()) {
 		cerr << "Could not open syntax file \"" << file_name
 		     << "\" for reading." << endl;
 		exit(2);
 	}
-	ifstream is(file_name.c_str());
 	// We can use our TeX parser, since the syntax of the layout file is
 	// modeled after TeX.
 	// Unknown tokens are just silently ignored, this helps us to skip some
@@ -363,14 +363,16 @@ void tex2lyx(std::istream &is, std::ostream &os)
 
 bool tex2lyx(string const &infilename, string const &outfilename)
 {
-	if (!(IsFileReadable(infilename) && fs::is_writable(outfilename))) {
+	ifstream is(infilename.c_str());
+	if (!is.good()) {
+		cerr << "Could not open file \"" << infilename
+		     << "\" for reading." << endl;
 		return false;
 	}
 	if (!overwrite_files && IsFileReadable(outfilename)) {
 		cerr << "Not overwriting existing file " << outfilename << "\n";
 		return false;
 	}
-	ifstream is(infilename.c_str());
 	ofstream os(outfilename.c_str());
 #ifdef FILEDEBUG
 	cerr << "File: " << infilename << "\n";
@@ -405,7 +407,8 @@ int main(int argc, char * argv[])
 	if (!syntaxfile.empty())
 		read_syntaxfile(syntaxfile);
 
-	if (!IsFileReadable(argv[1])) {
+	ifstream is(argv[1]);
+	if (!is.good()) {
 		cerr << "Could not open input file \"" << argv[1]
 		     << "\" for reading." << endl;
 		return 2;
@@ -416,7 +419,6 @@ int main(int argc, char * argv[])
 	else
 		masterFilePath = lyx::support::getcwd();
 
-	ifstream is(argv[1]);
 	tex2lyx(is, cout);
 
 	return 0;

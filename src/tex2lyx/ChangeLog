@@ -1,3 +1,9 @@
+2005-03-27  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* tex2lyx.C (read_syntaxfile): Don't use racy test with IsFileReadable
+	* tex2lyx.C (tex2lyx): ditto, and don't use fs::is_writable (it
+	returns false if the file does not exist on solaris)
+
 2005-03-18  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* text.C (parse_text): Fix \start_of_appendix output
