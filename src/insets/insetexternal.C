@@ -109,9 +109,43 @@ InsetExternalParams::InsetExternalParams()
 {}
 
 
+namespace {
+
+template <typename T>
+void clearIfNotFound(T & data, external::TransformID value,
+		     vector<external::TransformID> const & ids)
+{
+	typedef vector<external::TransformID>::const_iterator
+		const_iterator;
+
+	const_iterator it  = ids.begin();
+	const_iterator end = ids.end();
+	it = std::find(it, end, value);
+	if (it == end)
+		data = T();
+}
+
+} // namespace anon
+
+
 void InsetExternalParams::settemplate(string const & name)
 {
 	templatename_ = name;
+
+	external::TemplateManager const & etm =
+		external::TemplateManager::get();
+	external::Template const * const et = etm.getTemplateByName(name);
+	if (!et)
+		// Be safe. Don't lose data.
+		return;
+
+	// Ascertain which transforms the template supports.
+	// Empty all those that it doesn't.
+	vector<external::TransformID> const & ids = et->transformIds;
+	clearIfNotFound(clipdata,     external::Clip,   ids);
+	clearIfNotFound(extradata,    external::Extra,  ids);
+	clearIfNotFound(resizedata,   external::Resize, ids);
+	clearIfNotFound(rotationdata, external::Rotate, ids);
 }
 
 
@@ -132,6 +166,45 @@ void InsetExternalParams::write(Buffer const & buffer, ostream & os) const
 
 	if (lyxscale != defaultLyxScale)
 		os << "\tlyxscale " << tostr(lyxscale) << '\n';
+
+	if (!clipdata.bbox.empty())
+		os << "\tboundingBox " << clipdata.bbox << '\n';
+	if (clipdata.clip)
+		os << "\tclip\n";
+
+	external::ExtraData::const_iterator it  = extradata.begin();
+	external::ExtraData::const_iterator end = extradata.end();
+	for (; it != end; ++it) {
+		if (!it->second.empty())
+			os << "\textra " << it->first << " \""
+			   << it->second << "\"\n";
+	}
+
+	if (!rotationdata.no_rotation()) {
+		os << "\trotateAngle " << rotationdata.angle() << '\n';
+		if (rotationdata.origin() != external::RotationData::DEFAULT)
+			os << "\trotateOrigin "
+			   << rotationdata.originString() << '\n';
+	}
+
+	if (!resizedata.no_resize()) {
+		using support::float_equal;
+
+		if (!float_equal(resizedata.scale, 0.0, 0.05)) {
+			if (!float_equal(resizedata.scale, 100.0, 0.05))
+				os << "\tscale "
+				   << resizedata.scale << '\n';
+		} else {
+			if (!resizedata.width.zero())
+				os << "\twidth "
+				   << resizedata.width.asString() << '\n';
+			if (!resizedata.height.zero())
+				os << "\theight "
+				   << resizedata.height.asString() << '\n';
+		}
+		if (resizedata.keepAspectRatio)
+			os << "\tkeepAspectRatio\n";
+	}
 }
 
 
@@ -142,15 +215,33 @@ bool InsetExternalParams::read(Buffer const & buffer, LyXLex & lex)
 		EX_FILENAME,
 		EX_DISPLAY,
 		EX_LYXSCALE,
+		EX_BOUNDINGBOX,
+		EX_CLIP,
+		EX_EXTRA,
+		EX_HEIGHT,
+		EX_KEEPASPECTRATIO,
+		EX_ROTATEANGLE,
+		EX_ROTATEORIGIN,
+		EX_SCALE,
+		EX_WIDTH,
 		EX_END
 	};
 
 	keyword_item external_tags[] = {
 		{ "\\end_inset",     EX_END },
+		{ "boundingBox",     EX_BOUNDINGBOX },
+		{ "clip",            EX_CLIP },
 		{ "display",         EX_DISPLAY},
+		{ "extra",           EX_EXTRA },
 		{ "filename",        EX_FILENAME},
+		{ "height",          EX_HEIGHT },
+		{ "keepAspectRatio", EX_KEEPASPECTRATIO },
 		{ "lyxscale",        EX_LYXSCALE},
-		{ "template",        EX_TEMPLATE }
+		{ "rotateAngle",     EX_ROTATEANGLE },
+		{ "rotateOrigin",    EX_ROTATEORIGIN },
+		{ "scale",           EX_SCALE },
+		{ "template",        EX_TEMPLATE },
+		{ "width",           EX_WIDTH }
 	};
 
 	pushpophelper pph(lex, external_tags, EX_END);
@@ -182,6 +273,58 @@ bool InsetExternalParams::read(Buffer const & buffer, LyXLex & lex)
 		case EX_LYXSCALE:
 			lex.next();
 			lyxscale = lex.getInteger();
+			break;
+
+		case EX_BOUNDINGBOX:
+			lex.next();
+			clipdata.bbox.xl = lex.getInteger();
+			lex.next();
+			clipdata.bbox.yb = lex.getInteger();
+			lex.next();
+			clipdata.bbox.xr = lex.getInteger();
+			lex.next();
+			clipdata.bbox.yt = lex.getInteger();
+			break;
+
+		case EX_CLIP:
+			clipdata.clip = true;
+			break;
+
+		case EX_EXTRA: {
+			lex.next();
+			string const name = lex.getString();
+			lex.next();
+			extradata.set(name, lex.getString());
+			break;
+		}
+
+		case EX_HEIGHT:
+			lex.next();
+			resizedata.height = LyXLength(lex.getString());
+			break;
+
+		case EX_KEEPASPECTRATIO:
+			resizedata.keepAspectRatio = true;
+			break;
+
+		case EX_ROTATEANGLE:
+			lex.next();
+			rotationdata.angle(lex.getFloat());
+			break;
+
+		case EX_ROTATEORIGIN:
+			lex.next();
+			rotationdata.origin(lex.getString());
+			break;
+
+		case EX_SCALE:
+			lex.next();
+			resizedata.scale = lex.getFloat();
+			break;
+
+		case EX_WIDTH:
+			lex.next();
+			resizedata.width = LyXLength(lex.getString());
 			break;
 
 		case EX_END:
@@ -313,6 +456,9 @@ lyx::graphics::Params get_grfx_params(InsetExternalParams const & eparams)
 
 	gparams.filename = eparams.filename.absFilename();
 	gparams.scale = eparams.lyxscale;
+	if (eparams.clipdata.clip)
+		gparams.bb = eparams.clipdata.bbox;
+	gparams.angle = eparams.rotationdata.angle();
 
 	gparams.display = eparams.display;
 	if (gparams.display == lyx::graphics::DefaultDisplay)

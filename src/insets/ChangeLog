@@ -1,5 +1,21 @@
 2003-10-07  Angus Leeming  <leeming@lyx.org>
 
+	* ExternalTransforms.[Ch]: new files, detailing transforms that can
+	be applied to InsetExternal.
+
+	* Makefile.am: add these new files.
+
+	* ExternalTemplate.[Ch]: add a list of available transforms to
+	class Template and a list of factory functions for transformer classes
+	that can act on this data to class Format.
+
+	* insetexternal.[Ch]: add transform data to InsetExternal::Params.
+
+	* ExternalSupport.C: Add code to replace transform placeholders
+	with appropriate output.
+
+2003-10-07  Angus Leeming  <leeming@lyx.org>
+
 	* ExternalSupport.[Ch]: new files, moving the private member functions
 	and namespace anon functions out of insetexternal.C to here, so making
 	it easier to understand what is going on in insetexternal itself.

@@ -28,6 +28,8 @@ protected slots:
 	virtual void editClicked();
 	virtual void browseClicked();
 	virtual void templateChanged();
+	virtual void formatChanged(const QString&);
+	virtual void extraChanged(const QString&);
 protected:
 	virtual void closeEvent(QCloseEvent * e);
 private:

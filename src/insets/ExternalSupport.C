@@ -12,12 +12,13 @@
 #include <config.h>
 
 #include "ExternalSupport.h"
+#include "ExternalTemplate.h"
+#include "ExternalTransforms.h"
 #include "insetexternal.h"
 
 #include "buffer.h"
 #include "converter.h"
 #include "debug.h"
-#include "ExternalTemplate.h"
 
 #include "support/filetools.h"
 #include "support/forkedcall.h"
@@ -35,6 +36,7 @@ using std::endl;
 
 using std::ostream;
 using std::string;
+using std::vector;
 
 
 namespace lyx {
@@ -197,6 +199,13 @@ void updateExternal(InsetExternalParams const & params,
 	// return success
 }
 
+
+string const substituteCommands(InsetExternalParams const & params,
+				string const & input, string const & format);
+
+string const substituteOptions(InsetExternalParams const & params,
+			       string const & input, string const & format);
+
 } // namespace anon
 
 
@@ -229,8 +238,10 @@ int writeExternal(InsetExternalParams const & params,
 					     buffer.temppath());
 	}
 	
-	string const str = doSubstitution(params, buffer, cit->second.product,
-					  from_file);
+	string str = doSubstitution(params, buffer, cit->second.product,
+				    from_file);
+	str = substituteCommands(params, str, format);
+	str = substituteOptions(params, str, format);
 	os << str;
 	return int(lyx::count(str.begin(), str.end(),'\n') + 1);
 }
@@ -244,6 +255,159 @@ string const doSubstitution(InsetExternalParams const & params,
 	string const filename = params.filename.outputFilename(buffer_path);
 	return doSubstitution(params, buffer, s, filename);
 }
+
+namespace {
+
+// Empty template, specialised below.
+template <typename TransformType>
+string const substituteIt(string const &,
+			  TransformID,
+			  string const &,
+			  Template::Format const &,
+			  InsetExternalParams const &);
+
+
+template <>
+string const substituteIt<TransformCommand>(string const & input,
+					    TransformID id,
+					    string const & /* formatname */,
+					    Template::Format const & format,
+					    InsetExternalParams const & params)
+{
+	typedef std::map<TransformID, TransformStore> Transformers;
+	Transformers::const_iterator it = format.command_transformers.find(id);
+	if (it == format.command_transformers.end())
+		return input;
+
+	TransformStore const & store = it->second;
+
+	TransformCommand::ptr_type ptr;
+	if (id == Rotate)
+		ptr = store.getCommandTransformer(params.rotationdata);
+	else if (id == Resize)
+		ptr = store.getCommandTransformer(params.resizedata);
+
+	if (!ptr.get())
+		return input;
+
+	string result =
+		support::subst(input, ptr->front_placeholder(), ptr->front());
+	return support::subst(result, ptr->back_placeholder(),  ptr->back());
+}
+
+
+template <>
+string const substituteIt<TransformOption>(string const & input,
+					   TransformID id,
+					   string const & fname,
+					   Template::Format const & format,
+					   InsetExternalParams const & params)
+{
+	typedef std::map<TransformID, TransformStore> Transformers;
+	Transformers::const_iterator it = format.option_transformers.find(id);
+	if (it == format.option_transformers.end())
+		return input;
+
+	TransformStore const & store = it->second;
+
+	TransformOption::ptr_type ptr;
+	switch (id) {
+	case Clip:
+		ptr = store.getOptionTransformer(params.clipdata);
+		break;
+	case Extra:
+		ptr = store.getOptionTransformer(params.extradata.get(fname));
+		break;
+	case Rotate:
+		ptr = store.getOptionTransformer(params.rotationdata);
+		break;
+	case Resize:
+		ptr = store.getOptionTransformer(params.resizedata);
+		break;
+	}
+
+	if (!ptr.get())
+		return input;
+
+	return support::subst(input, ptr->placeholder(), ptr->option());
+}
+
+
+template <typename TransformerType>
+string const transformIt(InsetExternalParams const & params,
+			 string const & s, string const & formatname)
+{
+	Template const * const et = getTemplatePtr(params);
+	if (!et || et->transformIds.empty())
+		return s;
+
+	Template::Formats::const_iterator fit = et->formats.find(formatname);
+	if (fit == et->formats.end())
+		return s;
+
+	string result = s;
+	Template::Format const & format =  fit->second;
+
+	typedef vector<TransformID> TransformsIDs;
+	TransformsIDs::const_iterator it  = et->transformIds.begin();
+	TransformsIDs::const_iterator end = et->transformIds.end();
+	for (; it != end; ++it) {
+		result = substituteIt<TransformerType>(result, *it, formatname,
+						       format, params);
+	}
+	return result;
+}
+
+
+string const substituteCommands(InsetExternalParams const & params,
+				string const & input, string const & format)
+{
+	return transformIt<TransformCommand>(params, input, format);
+}
+
+
+string const substituteOption(InsetExternalParams const & params,
+			      string const & input, string const & format)
+{
+	string opt = transformIt<TransformOption>(params, input, format);
+
+	if (format == "LaTeX" || format == "PDFLaTeX")
+		return sanitizeLatexOption(opt);
+	if (format == "DocBook")
+		return sanitizeDocBookOption(opt);
+	if (format == "LinuxDoc")
+		return sanitizeLinuxDocOption(opt);
+	return opt;
+}
+
+
+string const substituteOptions(InsetExternalParams const & params,
+			       string const & input, string const & format)
+{
+	string output = input;
+
+	Template const * const et = getTemplatePtr(params);
+	if (!et || et->transformIds.empty())
+		return output;
+
+	Template::Formats::const_iterator fit = et->formats.find(format);
+	if (fit == et->formats.end() || fit->second.options.empty())
+		return output;
+
+	typedef vector<Template::Option> Options;
+	Options const & options = fit->second.options;
+	Options::const_iterator it  = options.begin();
+	Options::const_iterator end = options.end();
+	for (; it != end; ++it) {
+		string const opt = substituteOption(params, it->option, format);
+		string const placeholder = "$$" + it->name;
+		output = support::subst(output, placeholder, opt);
+	}
+
+	return output;
+ }
+
+} // namespace anon
 
 } // namespace external
 } // namespace lyx

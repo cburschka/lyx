@@ -10,10 +10,10 @@
 
 #include <config.h>
 
-
 #include "qt_helpers.h"
 #include "ControlExternal.h"
 
+#include <qcombobox.h>
 #include <qpushbutton.h>
 #include <qfiledialog.h>
 #include <qtextview.h>
@@ -83,6 +83,21 @@ void QExternalDialog::browseClicked()
 
 void QExternalDialog::templateChanged()
 {
-	externalTV->setText(toqstr(form_->helpText()));
+	form_->updateTemplate();
 	form_->changed();
 }
+
+
+void QExternalDialog::formatChanged(const QString& format)
+{
+	extraED->setText(form_->extra_[fromqstr(format)]);
+}
+
+
+void QExternalDialog::extraChanged(const QString& text)
+{
+	std::string const format = fromqstr(extraFormatCB->currentText());
+	form_->extra_[format] = text;
+	form_->changed();
+}
+

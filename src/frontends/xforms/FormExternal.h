@@ -16,6 +16,7 @@
 
 
 #include "FormDialogView.h"
+#include <map>
 
 
 class ControlExternal;
@@ -42,6 +43,8 @@ private:
 
 	///
 	void updateComboChange();
+
+	std::map<std::string, std::string> extra_;
 };
 
 #endif // FORMEXTERNAL_H

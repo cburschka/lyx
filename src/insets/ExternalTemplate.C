@@ -4,6 +4,7 @@
  * Licence details can be found in the file COPYING.
  *
  * \author Asger Alstrup Nielsen
+ * \author Angus Leeming
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -19,6 +20,7 @@
 #include "support/lstrings.h"
 #include "support/path.h"
 #include "support/path_defines.h"
+#include "support/translator.h"
 
 #include <boost/assert.hpp>
 
@@ -36,6 +38,14 @@ using std::vector;
 
 namespace lyx {
 namespace external {
+
+namespace {
+
+typedef Translator<TransformID, string> TransformIDTranslator;
+TransformIDTranslator const & transformIDTranslator();
+
+} // namespace anon
+
 
 // We have to have dummy default commands for security reasons!
 Template::Template()
@@ -93,6 +103,15 @@ public:
 		    << "\tFileFilter " << et.fileRegExp << '\n'
 		    << "\tEditCommand " << et.editCommand << '\n'
 		    << "\tAutomaticProduction " << et.automaticProduction << '\n';
+
+		typedef vector<TransformID> IDs;
+		IDs::const_iterator it  = et.transformIds.begin();
+		IDs::const_iterator end = et.transformIds.end();
+		for (; it != end; ++it) {
+			ost << "\tTransform "
+			    << transformIDTranslator().find(*it) << '\n';
+		}
+
 		et.dumpFormats(ost);
 		ost << "TemplateEnd" << endl;
 
@@ -108,7 +127,7 @@ public:
 
 	dumpFormat(ostream & o) : ost(o) {}
 
-	void operator()(value_type const & vt) const{
+	void operator()(value_type const & vt) const {
 		Template::Format const & ft = vt.second;
 		ost << "\tFormat " << vt.first << '\n'
 		    << "\t\tProduct " << ft.product << '\n'
@@ -116,10 +135,21 @@ public:
 		    << "\t\tUpdateResult " << ft.updateResult << '\n'
 		    << "\t\tRequirement " << ft.requirement << '\n';
 
-		vector<string>::const_iterator it  = ft.preambleNames.begin();
-		vector<string>::const_iterator end = ft.preambleNames.end();
-		for (; it != end; ++it) {
-			ost << "\t\tPreamble " << *it << '\n';
+		typedef vector<Template::Option> Options;
+		Options::const_iterator oit  = ft.options.begin();
+		Options::const_iterator oend = ft.options.end();
+		for (; oit != oend; ++oit) {
+			ost << "\t\tOption "
+			    << oit->name
+			    << ": "
+			    << oit->option
+			    << '\n';
+		}
+
+		vector<string>::const_iterator pit  = ft.preambleNames.begin();
+		vector<string>::const_iterator pend = ft.preambleNames.end();
+		for (; pit != pend; ++pit) {
+			ost << "\t\tPreamble " << *pit << '\n';
 		}
 
 		ost << "\tFormatEnd\n";
@@ -244,6 +274,23 @@ void TemplateManager::readTemplates(string const & path)
 }
 
 
+namespace {
+
+void add(vector<TransformID> & ids, string const & name)
+{
+	TransformID id = transformIDTranslator().find(name);
+	if (int(id) == -1) {
+		lyxerr << "external::Template::readTemplate\n"
+		       << "Transform " << name << " is not recognized"
+		       << std::endl;
+	} else {
+		ids.push_back(id);
+	}
+}
+
+} // namespace anon
+
+
 void Template::readTemplate(LyXLex & lex)
 {
 	enum TemplateOptionTags {
@@ -253,6 +300,7 @@ void Template::readTemplate(LyXLex & lex)
 		TO_FILTER,
 		TO_EDITCMD,
 		TO_AUTOMATIC,
+		TO_TRANSFORM,
 		TO_FORMAT,
 		TO_END
 	};
@@ -265,7 +313,8 @@ void Template::readTemplate(LyXLex & lex)
 		{ "guiname", TO_GUINAME },
 		{ "helptext", TO_HELPTEXT },
 		{ "inputformat", TO_INPUTFORMAT },
-		{ "templateend", TO_END }
+		{ "templateend", TO_END },
+		{ "transform", TO_TRANSFORM }
 	};
 
 	pushpophelper pph(lex, templateoptiontags, TO_END);
@@ -301,6 +350,11 @@ void Template::readTemplate(LyXLex & lex)
 			automaticProduction = lex.getBool();
 			break;
 
+		case TO_TRANSFORM:
+			lex.next(true);
+			add(transformIds, lex.getString());
+			break;
+
 		case TO_FORMAT:
 			lex.next(true);
 			formats[lex.getString()].readFormat(lex);
@@ -319,6 +373,87 @@ void Template::readTemplate(LyXLex & lex)
 }
 
 
+namespace {
+
+void transform_not_found(std::ostream & os, string const & transform)
+{
+	os << "external::Format::readFormat. Transformation \""
+	   << transform << "\" is unrecognized." << std::endl;
+}
+
+
+void transform_class_not_found(std::ostream & os, string const & tclass)
+{
+	os << "external::Format::readFormat. Transformation class \""
+	   << tclass << "\" is unrecognized." << std::endl;
+}
+
+
+void setCommandFactory(Template::Format & format, string const & transform,
+		       string const & transformer_class)
+{
+	bool class_found = false;
+	if (transform == "Resize" && transformer_class == "ResizeLatexCommand") {
+		class_found = true;
+		ResizeCommandFactory factory = ResizeLatexCommand::factory;
+		format.command_transformers[Resize] =
+			TransformStore(Resize, factory);
+
+	} else if (transform == "Rotate" &&
+		   transformer_class == "RotationLatexCommand") {
+		class_found = true;
+		RotationCommandFactory factory = RotationLatexCommand::factory;
+		format.command_transformers[Rotate] =
+			TransformStore(Rotate, factory);
+
+	} else
+		transform_not_found(lyxerr, transform);
+
+	if (!class_found)
+		transform_class_not_found(lyxerr, transformer_class);
+}
+
+
+void setOptionFactory(Template::Format & format, string const & transform,
+		string const & transformer_class)
+{
+	bool class_found = false;
+	if (transform == "Clip" && transformer_class == "ClipLatexOption") {
+		class_found = true;
+		ClipOptionFactory factory = ClipLatexOption::factory;
+		format.option_transformers[Clip] =
+				TransformStore(Clip, factory);
+
+	} else if (transform == "Extra" && transformer_class == "ExtraOption") {
+		class_found = true;
+		ExtraOptionFactory factory = ExtraOption::factory;
+		format.option_transformers[Extra] =
+			TransformStore(Extra, factory);
+
+	} else if (transform == "Resize" &&
+		   transformer_class == "ResizeLatexOption") {
+		class_found = true;
+		ResizeOptionFactory factory = ResizeLatexOption::factory;
+		format.option_transformers[Resize] =
+			TransformStore(Resize, factory);
+
+	} else if (transform == "Rotate" &&
+		   transformer_class == "RotationLatexOption") {
+		class_found = true;
+		RotationOptionFactory factory = RotationLatexOption::factory;
+		format.option_transformers[Rotate] =
+			TransformStore(Rotate, factory);
+
+	} else
+		transform_not_found(lyxerr, transform);
+
+	if (!class_found)
+		transform_class_not_found(lyxerr, transformer_class);
+}
+
+} // namespace anon
+
+
 void Template::Format::readFormat(LyXLex & lex)
 {
 	enum FormatTags {
@@ -326,15 +461,21 @@ void Template::Format::readFormat(LyXLex & lex)
 		FO_UPDATEFORMAT,
 		FO_UPDATERESULT,
 		FO_REQUIREMENT,
+		FO_OPTION,
 		FO_PREAMBLE,
+		FO_TRANSFORMCOMMAND,
+		FO_TRANSFORMOPTION,
 		FO_END
 	};
 
 	keyword_item formattags[] = {
 		{ "formatend", FO_END },
+		{ "option", FO_OPTION },
 		{ "preamble", FO_PREAMBLE },
 		{ "product", FO_PRODUCT },
 		{ "requirement", FO_REQUIREMENT },
+		{ "transformcommand", FO_TRANSFORMCOMMAND },
+		{ "transformoption", FO_TRANSFORMOPTION },
 		{ "updateformat", FO_UPDATEFORMAT },
 		{ "updateresult", FO_UPDATERESULT }
 	};
@@ -368,11 +509,57 @@ void Template::Format::readFormat(LyXLex & lex)
 			preambleNames.push_back(lex.getString());
 			break;
 
+		case FO_TRANSFORMCOMMAND: {
+			lex.next(true);
+			string const name = lex.getString();
+			lex.next(true);
+			setCommandFactory(*this, name, lex.getString());
+			break;
+		}
+
+		case FO_TRANSFORMOPTION: {
+			lex.next(true);
+			string const name = lex.getString();
+			lex.next(true);
+			setOptionFactory(*this, name, lex.getString());
+			break;
+		}
+
+		case FO_OPTION: {
+			lex.next(true);
+			string const name = lex.getString();
+			lex.next(true);
+			string const opt = lex.getString();
+			options.push_back(Option(name, opt));
+			break;
+		}
+
 		case FO_END:
 			return;
 		}
 	}
 }
+
+namespace {
+
+TransformIDTranslator const initIDTranslator()
+{
+	TransformIDTranslator translator(TransformID(-1), "");
+	translator.addPair(Rotate, "Rotate");
+	translator.addPair(Resize, "Resize");
+	translator.addPair(Clip,   "Clip");
+	translator.addPair(Extra,  "Extra");
+	return translator;
+}
+
+
+TransformIDTranslator const & transformIDTranslator()
+{
+	static TransformIDTranslator const translator = initIDTranslator();
+	return translator;
+}
+
+} // namespace anon
 
 } // namespace external
 } // namespace lyx

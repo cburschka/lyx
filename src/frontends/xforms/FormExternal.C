@@ -31,6 +31,7 @@
 
 using lyx::support::getStringFromVector;
 using lyx::support::strToInt;
+using lyx::support::trim;
 
 using std::string;
 
@@ -73,6 +74,11 @@ void FormExternal::apply()
 		params.display = lyx::graphics::DefaultDisplay;
 	}
 
+	std::map<string, string>::const_iterator it  = extra_.begin();
+	std::map<string, string>::const_iterator end = extra_.end();
+	for (; it != end; ++it)
+		params.extradata.set(it->first, trim(it->second));
+
 	controller().setParams(params);
 }
 
@@ -90,12 +96,15 @@ void FormExternal::build()
 	// Disable for read-only documents.
 	bcview().addReadOnly(dialog_->input_filename);
 	bcview().addReadOnly(dialog_->button_browse);
+	bcview().addReadOnly(dialog_->input_extra);
 
 	// Trigger an input event for cut&paste with middle mouse button.
 	setPrehandler(dialog_->input_filename);
 
 	// Activate ok/apply immediately upon input.
 	fl_set_input_return(dialog_->input_filename, FL_RETURN_CHANGED);
+	fl_set_input_return(dialog_->input_lyxscale, FL_RETURN_CHANGED);
+	fl_set_input_return(dialog_->input_extra,    FL_RETURN_CHANGED);
 	fl_set_input_return(dialog_->input_lyxscale, FL_RETURN_CHANGED);
 
 	fl_set_input_filter(dialog_->input_lyxscale, fl_unsigned_int_filter);
@@ -174,6 +183,17 @@ ButtonPolicy::SMInput FormExternal::input(FL_OBJECT * ob, long)
 	} else if (ob == dialog_->button_edit) {
 		controller().editExternal();
 		result = ButtonPolicy::SMI_NOOP;
+
+	} else if (ob == dialog_->input_extra) {
+		string const format =
+			fl_get_choice_text(dialog_->choice_extra_format);
+		extra_[format] = getString(dialog_->input_extra);
+
+	} else if (ob == dialog_->choice_extra_format) {
+		string const format =
+			fl_get_choice_text(dialog_->choice_extra_format);
+		fl_set_input(dialog_->input_extra, extra_[format].c_str());
+		result = ButtonPolicy::SMI_NOOP;
 	}
 
 	return result;
@@ -182,8 +202,10 @@ ButtonPolicy::SMInput FormExternal::input(FL_OBJECT * ob, long)
 
 void FormExternal::updateComboChange()
 {
+	namespace external = lyx::external;
+
 	int const choice = fl_get_choice(dialog_->choice_template) - 1;
-	lyx::external::Template templ = controller().getTemplate(choice);
+	external::Template templ = controller().getTemplate(choice);
 
 	// Update the help text
 	string const txt = formatted(templ.helpText,
@@ -191,4 +213,35 @@ void FormExternal::updateComboChange()
 	fl_clear_browser(dialog_->browser_helptext);
 	fl_addto_browser(dialog_->browser_helptext, txt.c_str());
 	fl_set_browser_topline(dialog_->browser_helptext, 0);
+
+	// Ascertain whether the template has any formats supporting
+	// the 'Extra' option
+	FL_OBJECT * const ob_input  = dialog_->input_extra;
+	FL_OBJECT * const ob_choice = dialog_->choice_extra_format;
+	extra_.clear();
+	fl_set_input(ob_input, "");
+	fl_clear_choice(ob_choice);
+
+	external::Template::Formats::const_iterator it  = templ.formats.begin();
+	external::Template::Formats::const_iterator end = templ.formats.end();
+	for (; it != end; ++it) {
+		if (it->second.option_transformers.find(external::Extra) ==
+		    it->second.option_transformers.end())
+			continue;
+		string const format = it->first;
+		string const opt = controller().params().extradata.get(format);
+		fl_addto_choice(ob_choice, format.c_str());
+		extra_[format] = opt;
+	}
+
+	bool const enabled = fl_get_choice_maxitems(ob_choice) > 0;
+
+	setEnabled(ob_input,  enabled && !kernel().isBufferReadonly());
+	setEnabled(ob_choice, enabled);
+
+	if (enabled) {
+		fl_set_choice(ob_choice, 1);
+		string const format = fl_get_choice_text(ob_choice);
+		fl_set_input(ob_input, extra_[format].c_str());
+	}
 }

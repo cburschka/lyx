@@ -14,6 +14,7 @@
 
 
 #include "QDialogView.h"
+#include <map>
 
 
 class ControlExternal;
@@ -38,6 +39,11 @@ private:
 
 	/// get the right helptext
 	std::string const helpText() const;
+
+	/// Helper function called when the template is changed.
+	void updateTemplate();
+
+	std::map<std::string, QString> extra_;
 };
 
 #endif // QEXTERNAL_H

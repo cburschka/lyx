@@ -31,6 +31,7 @@
 #include "Qt2BC.h"
 
 using lyx::support::strToInt;
+using lyx::support::trim;
 
 using std::string;
 
@@ -53,6 +54,7 @@ void QExternal::build_dialog()
 	bcview().addReadOnly(dialog_->externalCO);
 	bcview().addReadOnly(dialog_->fileED);
 	bcview().addReadOnly(dialog_->browsePB);
+	bcview().addReadOnly(dialog_->extraED);
 
 	std::vector<string> templates(controller().getTemplates());
 
@@ -73,7 +75,7 @@ void QExternal::update_contents()
 
 	dialog_->externalCO->setCurrentItem(controller()
 					    .getTemplateNumber(params.templatename()));
-	dialog_->externalTV->setText(toqstr(helpText()));
+	updateTemplate();
 
 	int item = 0;
 	switch (params.display) {
@@ -92,6 +94,47 @@ void QExternal::update_contents()
 	dialog_->displayscale->setText(toqstr(tostr(params.lyxscale)));
 
 	isValid();
+}
+
+
+void QExternal::updateTemplate()
+{
+	namespace external = lyx::external;
+
+	dialog_->externalTV->setText(toqstr(helpText()));
+
+	// Ascertain whether the template has any formats supporting
+	// the 'Extra' option
+	QLineEdit * const input = dialog_->extraED;
+	QComboBox * const combo = dialog_->extraFormatCB;
+
+	extra_.clear();
+	input->clear();
+	combo->clear();
+
+	external::Template templ =
+		controller().getTemplate(dialog_->externalCO->currentItem());
+	external::Template::Formats::const_iterator it  = templ.formats.begin();
+	external::Template::Formats::const_iterator end = templ.formats.end();
+	for (; it != end; ++it) {
+		if (it->second.option_transformers.find(external::Extra) ==
+		    it->second.option_transformers.end())
+			continue;
+		string const format = it->first;
+		string const opt = controller().params().extradata.get(format);
+		combo->insertItem(toqstr(format));
+		extra_[format] = toqstr(opt);
+	}
+
+	bool const enabled = combo->count()  > 0;
+
+	input->setEnabled(enabled && !kernel().isBufferReadonly());
+	combo->setEnabled(enabled);
+
+	if (enabled) {
+		combo->setCurrentItem(0);
+		input->setText(extra_[fromqstr(combo->currentText())]);
+	}
 }
 
 
@@ -125,6 +168,11 @@ void QExternal::apply()
 		params.display = lyx::graphics::NoDisplay;
 
 	params.lyxscale = strToInt(fromqstr(dialog_->displayscale->text()));
+
+	std::map<string, QString>::const_iterator it  = extra_.begin();
+	std::map<string, QString>::const_iterator end = extra_.end();
+	for (; it != end; ++it)
+		params.extradata.set(it->first, trim(fromqstr(it->second)));
 
 	controller().setParams(params);
 }

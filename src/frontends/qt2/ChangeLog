@@ -1,5 +1,12 @@
 2003-10-07  Angus Leeming  <leeming@lyx.org>
 
+	* ui/QExternalDialogBase.ui:
+	* QExternal.[Ch]:
+	* QExternalDialog.[Ch]: allow the user to alter the extradata
+	field of InsetExternal::Params.
+
+2003-10-07  Angus Leeming  <leeming@lyx.org>
+
 	* QExternal.C: InsetExternal::Params -> InsetExternalParams.
 
 2003-10-06  Michael Schmitt  <michael.schmitt@teststep.org>

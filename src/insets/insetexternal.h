@@ -13,6 +13,7 @@
 #define INSET_EXTERNAL_H
 
 #include "inset.h"
+#include "ExternalTransforms.h"
 
 #include "graphics/GraphicsTypes.h"
 
@@ -66,6 +67,11 @@ struct InsetExternalParams {
 	lyx::graphics::DisplayType display;
 	/// The scale of the displayed graphic (if shown).
 	unsigned int lyxscale;
+
+	lyx::external::ClipData     clipdata;
+	lyx::external::ExtraData    extradata;
+	lyx::external::ResizeData   resizedata;
+	lyx::external::RotationData rotationdata;
 
 private:
 	lyx::external::TempName tempname_;

@@ -1,3 +1,13 @@
+2003-10-07  Angus Leeming  <leeming@lyx.org>
+
+	* FormExternal.[Ch]:
+	* forms/form_external.fd: allow the user to alter the extradata
+	field of InsetExternal::Params.
+
+2003-10-07  Angus Leeming  <leeming@lyx.org>
+
+	* FormExternal.C: InsetExternal::Params -> InsetExternalParams.
+
 2003-10-07  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* Dialogs.C:

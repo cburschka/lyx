@@ -5,12 +5,15 @@
  * Licence details can be found in the file COPYING.
  *
  * \author Asger Alstrup Nielsen
+ * \author Angus Leeming
  *
  * Full author contact details are available in file CREDITS.
  */
 
 #ifndef EXTERNALTEMPLATE_H
 #define EXTERNALTEMPLATE_H
+
+#include "ExternalTransforms.h"
 
 #include <boost/utility.hpp>
 
@@ -32,6 +35,13 @@ struct Template {
 	///
 	void dumpFormats(std::ostream &) const;
 
+	struct Option {
+		Option(std::string const & name_, std::string const & opt_)
+			: name(name_), option(opt_) {}
+		std::string name;
+		std::string option;
+	};
+
 	/// What is the name of this template in the LyX format?
 	std::string lyxName;
 	/// What will the button in the GUI say?
@@ -48,6 +58,8 @@ struct Template {
 	std::string editCommand;
 	/// Should we do automatic production of the output?
 	bool automaticProduction;
+	/// A collection of transforms that we can use to transform the data.
+	std::vector<TransformID> transformIds;
 
 	/// This is the information needed to support a specific output format
 	struct Format {
@@ -65,6 +77,12 @@ struct Template {
 		std::string requirement;
 		/// A collection of preamble snippets identified by name.
 		std::vector<std::string> preambleNames;
+		/// A list of options to the basic command.
+		std::vector<Option> options;
+
+		/// The factory functions for each supported transformation.
+		std::map<TransformID, TransformStore> command_transformers;
+		std::map<TransformID, TransformStore> option_transformers;
 	};
 	///
 	typedef std::map<std::string, Format> Formats;
@@ -72,6 +90,7 @@ struct Template {
 	Formats formats;
 };
 
+#include "ExternalTransforms.h"
 
 /**
  *  A singleton class that manages the external inset templates

@@ -1,5 +1,29 @@
 LyX file-format changes
 -----------------------
+2003-10-07  Angus Leeming  <leeming@lyx.org>
+
+	* Add transformations to InsetExternal
+
+	boundingBox 0 0 20 20           the dimensions of the B.B..
+	                                Output if the B.B. is not empty.
+	clip                            clip the image to the B.B.
+	                                Output if true.
+	extra LaTeX "draft"             'extra' data passed to the primary
+	                                command for this output format.
+	                                (Possible formats LaTeX, PDFLaTeX,
+	                                 LinuxDoc, DocBook, Ascii.)
+	                                The string can contain spaces and so
+	                                is wrapped in "...".
+	rotateAngle 30                  Rotation of the data.
+	                                Output for non-zero rotation only.
+	rotateOrigin bottomleft         Rotation origin.
+	                                Output for non-zero rotation and
+	                                non-default origin (center) only.
+	scale 50                        
+	width 2cm                       Output only if the image is resized.
+	height 2cm
+	keepAspectRatio
+	
 2003-10-07  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* Added box inset. File format:
