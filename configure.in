@@ -63,14 +63,8 @@ AC_EXEEXT
 
 ### check which frontend we want to use
 LYX_USE_FRONTEND
-dnl The code below is not in a macro, because this would cause big
-dnl problems with the AC_REQUIRE contained in KDE_DO_IT_ALL.
-case "$lyx_use_frontend" in
-  gnome)
-    GNOME_INIT
-    GNOME_COMPILE_WARNINGS
-    GNOME_X_CHECKS
-esac
+
+#old gnome stuff removed by Michael Koziarski 25-05-2002
 
 ### Check for a C++ compiler
 LYX_PROG_CXX
@@ -199,27 +193,16 @@ case "$lyx_use_frontend" in
   gnome)
     LYX_PATH_XPM
     LYX_PATH_XFORMS
-    AM_PATH_GTKMM(1.2.1,,
-	AC_MSG_ERROR(Cannot find GTK--: Please install Version 1.2.1+))
-    AM_PATH_GNOMEMM
 
-dnl ******************************
-dnl LibGlade checking
-dnl ******************************
-dnl Ensure gnome-config is available...
-	AC_PATH_PROG(GNOME_CONFIG, gnome-config, no)
-	AC_MSG_CHECKING(for Glade libraries)
-	if $GNOME_CONFIG --libs libglade > /dev/null 2>&1; then
-	AC_MSG_RESULT(found)
-	else
-	    AC_MSG_ERROR(Did not find libGlade installed)
-	fi
+    PKG_CHECK_MODULES(GNOME_FRONTEND, gtkmm-2.0 libglademm-2.0)
+    AC_SUBST(GNOME_FRONTEND_CFLAGS)
+    AC_SUBST(GNOME_FRONTEND_LIBS)
 
     FRONTEND="xforms gnome"
     FRONTEND_GUILIB="gnome/*.lo"
-    FRONTEND_LDFLAGS="\$(GNOMEMM_LIBDIR)"
-    FRONTEND_INCLUDES="-I\${srcdir}/gnome -I\${srcdir}/xforms \$(GNOMEMM_INCLUDEDIR) \$(GTKMM_CFLAGS) `gnome-config --cflags libglade gnomeui`"
-    FRONTEND_LIBS="@XPM_LIB@ @XFORMS_LIB@ \$(GNOMEMM_LIBS) \$(GTKMM_LIBS) `gnome-config --libs libglade gnomeui`";;
+    FRONTEND_LDFLAGS="${GNOME_FRONTEND_LIBS}"
+    FRONTEND_INCLUDES="-I\${srcdir}/gnome -I\${srcdir}/xforms ${GNOME_FRONTEND_CFLAGS} "
+    FRONTEND_LIBS="@XPM_LIB@ @XFORMS_LIB@ ${GNOME_FRONTEND_LIBS}";;
   qt2)
 	LYX_PATH_XPM
 	LYX_PATH_XFORMS
