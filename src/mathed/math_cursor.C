@@ -1339,7 +1339,7 @@ string MathCursor::grabSelection() const
 	string data;
 	for (row_type row = r1; row <= r2; ++row) {
 		if (row > r1)
-			data += "\\n";
+			data += "\\\\";
 		for (col_type col = c1; col <= c2; ++col) {
 			if (col > c1)
 				data += "&";

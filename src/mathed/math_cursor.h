@@ -227,6 +227,8 @@ public:
 	void dump(char const * str) const;
 	/// moves on
 	void setSelection(MathIterator const & where, size_type n);
+	/// grab selection marked by anchor and current cursor 
+	string grabSelection() const;
 	///
 	void insert(char c);
 	///
@@ -238,10 +240,6 @@ public:
 	void markInsert();
 	void markErase();
 	//void handleExtern(string const & arg);
-
-	///
-	friend class Selection;
-
 
 private:
 	/// injects content of a cell into parent
@@ -265,8 +263,6 @@ private:
 	/// are we in a nucleus of a script inset?
 	bool inNucleus() const;
 
-	/// grab selection marked by anchor and current cursor 
-	string grabSelection() const;
 	/// erase the selected part and re-sets the cursor
 	void eraseSelection();
 	/// guess what

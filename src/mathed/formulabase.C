@@ -935,6 +935,11 @@ bool InsetFormulaBase::display() const
 }
 
 
+string InsetFormulaBase::selectionAsString() const
+{
+	return mathcursor ? mathcursor->grabSelection() : string(); 
+}
+
 /////////////////////////////////////////////////////////////////////
 
 

@@ -110,6 +110,8 @@ public:
 	virtual EDITABLE editable() const { return HIGHLY_EDITABLE; }
 	///
 	bool display() const;
+	// return the selection as string
+	string selectionAsString() const;
 
 private:
 	/// unimplemented
