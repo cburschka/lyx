@@ -1,4 +1,4 @@
-/*
+ /*
 *  File:        formula.C
 *  Purpose:     Implementation of formula inset
 *  Author:      Alejandro Aguilar Sierra <asierra@servidor.unam.mx>
@@ -1158,7 +1158,7 @@ void mathDispatchInsertMath(BufferView * bv, string const & arg)
 			InsetFormula * f = new InsetFormula(arg);
 			openNewInset(bv, f);
 		} else {
-			return mathDispatchMathDisplay(bv, arg);
+			return mathDispatchMathMode(bv, arg);
 		}
 	}
 }
