@@ -30,12 +30,16 @@ public:
 	///
 	void numargs(int);
 	///
+	string const & name() const;
+	///
 	void draw(Painter &, int x, int y) const;
 	///
 	void metrics(MathStyles st) const;
 private:
 	///
 	int numargs_;
+	///
+	string name_;
 };
 
 #endif

@@ -15,14 +15,25 @@ extern LyXFont WhichFont(short type, int size);
 
 
 MathFuncInset::MathFuncInset(string const & nm)
-{
-	name_ = nm;
-}
+	: name_(nm)
+{}
 
 
 MathInset * MathFuncInset::clone() const
 {
 	return new MathFuncInset(*this);
+}
+
+
+string const & MathFuncInset::name() const
+{
+	return name_;
+}
+
+
+void MathFuncInset::setName(string const & n)
+{
+	name_ = n;
 }
 
 

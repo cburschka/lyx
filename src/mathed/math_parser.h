@@ -47,8 +47,6 @@ enum MathTokenEnum
 	///
 	LM_TK_FRAC,
 	///
-	LM_TK_CHOOSE,
-	///
 	LM_TK_SQRT,
 	///
 	LM_TK_BEGIN,

@@ -21,7 +21,6 @@
 
 #include "mathed/support.h"
 #include "math_defs.h"
-#include "LString.h"
 
 class MathInset;
 class MathMacro;
@@ -104,9 +103,6 @@ public:
 	MathInset const * nextInset(int pos) const;
 	///
 	unsigned char getChar(int pos) const;
-	/// read subsequent chars of the same kind.
-	// pos is afterwards one behind the last char belonging to the string
-	string getString(int & pos) const;
 	///
 	MathTextCodes getCode(int pos) const;
 	///

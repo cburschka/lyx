@@ -26,26 +26,14 @@
 int MathInset::workwidth;
 
 
-MathInset::MathInset(string const & name)
-	: name_(name), size_(LM_ST_DISPLAY), code_(LM_TC_MIN), xo_(0), yo_(0)
+MathInset::MathInset()
+	: size_(LM_ST_DISPLAY), code_(LM_TC_MIN), xo_(0), yo_(0)
 {}
 
 
 int MathInset::height() const
 {
 	return ascent() + descent();
-}
-
-
-string const & MathInset::name() const
-{
-	return name_;
-}
-
-
-void MathInset::setName(string const & n)
-{
-	name_ = n;
 }
 
 
@@ -248,7 +236,7 @@ void MathInset::userSetSize(MathStyles sz)
 
 void MathInset::writeNormal(std::ostream & os) const
 {
-	os << "[" << name_ << "] ";
+	os << "[unknown] ";
 }
 
 

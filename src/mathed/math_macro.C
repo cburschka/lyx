@@ -33,7 +33,7 @@
 using std::endl;
 
 MathMacro::MathMacro(MathMacroTemplate const & t)
-	: MathNestInset(t.numargs(), t.name()), tmplate_(&t)
+	: MathNestInset(t.numargs()), tmplate_(&t)
 {}
 
 
@@ -48,6 +48,10 @@ MathInset * MathMacro::clone() const
 	return new MathMacro(*this);
 }
 
+string const & MathMacro::name() const
+{
+	return tmplate_->name();
+}
 
 void MathMacro::metrics(MathStyles st) const
 {
@@ -59,7 +63,7 @@ void MathMacro::metrics(MathStyles st) const
 		ascent_  = expanded_.ascent()  + 2;
 		descent_ = expanded_.descent() + 2;
 
-		width_ +=  mathed_string_width(LM_TC_TEXTRM, size_, name_) + 10;
+		width_ +=  mathed_string_width(LM_TC_TEXTRM, size_, name()) + 10;
 
 		int lasc;
 		int ldes;
@@ -97,9 +101,9 @@ void MathMacro::draw(Painter & pain, int x, int y) const
 	if (mathcursor && mathcursor->isInside(this)) {
 
 		int h = y - ascent() + 2 + expanded_.ascent();
-		drawStr(pain, LM_TC_TEXTRM, size(), x + 3, h, name_);
+		drawStr(pain, LM_TC_TEXTRM, size(), x + 3, h, name());
 
-		int const w = mathed_string_width(LM_TC_TEXTRM, size(), name_);
+		int const w = mathed_string_width(LM_TC_TEXTRM, size(), name());
 		expanded_.draw(pain, x + w + 12, h);
 		h += expanded_.descent();
 
@@ -132,7 +136,7 @@ void MathMacro::dump(std::ostream & os) const
 {
 	MathMacroTable::dump();
 	os << "\n macro: '" << this << "'\n";
-	os << " name: '" << name_ << "'\n";
+	os << " name: '" << name() << "'\n";
 	os << " template: '" << tmplate_ << "'\n";
 	os << " template: '" << *tmplate_ << "'\n";
 	os << endl;
@@ -140,7 +144,7 @@ void MathMacro::dump(std::ostream & os) const
 
 void MathMacro::write(std::ostream & os, bool fragile) const
 {
-	os << '\\' << name_;
+	os << '\\' << name();
 	for (int i = 0; i < nargs(); ++i) {
 		os << '{';
 		cell(i).write(os, fragile);
@@ -153,7 +157,7 @@ void MathMacro::write(std::ostream & os, bool fragile) const
 
 void MathMacro::writeNormal(std::ostream & os) const
 {
-	os << "[macro " << name_ << " ";
+	os << "[macro " << name() << " ";
 	for (int i = 0; i < nargs(); ++i) {
 		cell(i).writeNormal(os);
 		os << ' ';
@@ -188,7 +192,7 @@ bool MathMacro::idxRight(int &, int &) const
 
 void MathMacro::validate(LaTeXFeatures & features) const
 {
-	if (name_ == "binom")
+	if (name() == "binom")
 		features.binom = true;
 	//MathInset::validate(features);
 }

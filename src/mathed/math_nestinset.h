@@ -16,7 +16,7 @@ class LaTeXFeatures;
 class MathNestInset : public MathDimInset {
 public: 
 	///
-	explicit MathNestInset(int na = 0, string const & nm = string());
+	explicit MathNestInset(int ncells);
 
 	///
 	void metrics(MathStyles st) const;

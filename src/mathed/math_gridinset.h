@@ -52,7 +52,7 @@ class MathGridInset : public MathNestInset {
 
 public: 
 	///
-	MathGridInset(int m, int n, string const & nm);
+	MathGridInset(int m, int n);
 	///
 	void write(std::ostream &, bool fragile) const;
 	///

@@ -1,4 +1,13 @@
 
+2001-08-08  André Pönitz  <poenitz@gmx.net>
+
+	*	math_fracbase.[Ch]:
+	* math_fracinset.[Ch]: new hierarchy
+
+	*	math_stackrelbase.[Ch]: native \stackrel support
+
+	* math_inset.[Ch]: removal of the name_ member
+
 2001-08-06  André Pönitz  <poenitz@gmx.net>
 
 	* formulamacro.C: fix nasty bug due to missing copy constructor

@@ -8,12 +8,10 @@
 
 MathSizeInset::MathSizeInset(MathStyles st)
 	: MathNestInset(1), style_(st)
-{
-	name_ = verbose();
-}
+{}
 
 
-char const * MathSizeInset::verbose() const
+char const * MathSizeInset::name() const
 {
 	switch (style_) {
 		case LM_ST_DISPLAY:

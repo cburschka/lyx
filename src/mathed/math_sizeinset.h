@@ -30,7 +30,7 @@ public:
 
 private:
 	///
-	char const * verbose() const;
+	char const * name() const;
 	/// 
 	MathStyles style_;
 };

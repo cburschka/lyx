@@ -26,5 +26,12 @@ public:
 	void write(std::ostream &, bool fragile) const;
 	///
 	void writeNormal(std::ostream &) const;
+	///
+	string const & name() const;
+	///
+	void setName(string const & n);
+private:
+	///
+	string name_;
 };
 #endif

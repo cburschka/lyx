@@ -29,8 +29,8 @@ MathGridInset::ColInfo::ColInfo()
 {}
 
 
-MathGridInset::MathGridInset(int m, int n, string const & nm)
-	: MathNestInset(m * n, nm), rowinfo_(n), colinfo_(m), v_align_('c')
+MathGridInset::MathGridInset(int m, int n)
+	: MathNestInset(m * n), rowinfo_(n), colinfo_(m), v_align_('c')
 {
 	if (m <= 0)
 		lyxerr << "positve number of columns expected\n";

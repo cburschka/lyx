@@ -67,11 +67,14 @@ public:
 
 private:
 	///
+	void operator=(MathMacro const &);
+	///
+	string const & name() const;
+
+	///
 	MathMacroTemplate const * const tmplate_;
 	///
 	mutable MathXArray expanded_;
-	///
-	void operator=(MathMacro const &);
 };
 
 

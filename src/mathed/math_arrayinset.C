@@ -7,7 +7,7 @@
 
 
 MathArrayInset::MathArrayInset(int m, int n)
-	: MathGridInset(m, n, "array")
+	: MathGridInset(m, n)
 {}
 
 

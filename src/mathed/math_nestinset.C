@@ -6,11 +6,9 @@
 #include "debug.h"
 
 
-MathNestInset::MathNestInset(int nargs, string const & name)
+MathNestInset::MathNestInset(int nargs)
 	: MathDimInset(), cells_(nargs)
-{
-	name_ = name;
-}
+{}
 
 
 int MathNestInset::nargs() const

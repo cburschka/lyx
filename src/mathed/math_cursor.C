@@ -47,6 +47,7 @@
 #include "math_rootinset.h"
 #include "math_spaceinset.h"
 #include "math_sqrtinset.h"
+#include "math_stackrelinset.h"
 #include "support/lstrings.h"
 #include "math_scriptinset.h"
 #include "math_parser.h"
@@ -686,11 +687,11 @@ void MathCursor::interpret(string const & s)
 				break;
 
 			case LM_TK_STACK:
-				p = new MathFracInset("stackrel");
+				p = new MathStackrelInset;
 				break;
 
 			case LM_TK_FRAC:
-				p = new MathFracInset("frac");
+				p = new MathFracInset;
 				break;
 
 			case LM_TK_SQRT:

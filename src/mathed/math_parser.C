@@ -45,6 +45,7 @@
 #include "math_sizeinset.h"
 #include "math_spaceinset.h"
 #include "math_sqrtinset.h"
+#include "math_stackrelinset.h"
 #include "math_symbolinset.h"
 #include "debug.h"
 #include "mathed/support.h"
@@ -386,14 +387,12 @@ MathInset * lastScriptInset(MathArray & array, bool up, bool down, int limits)
 static bool   curr_num;
 static string curr_label;
 
-void mathed_parse_lines(MathInset * inset, int col,
-			bool numbered, bool outmost)
+void mathed_parse_lines(MathGridInset * p, int col, bool numbered, bool outmost)
 {
 	// save global variables
 	bool   const saved_num   = curr_num;
 	string const saved_label = curr_label;
 
-	MathGridInset * p = static_cast<MathGridInset *>(inset);
 	for (int row = 0; true; ++row) {
 		// reset global variables
 		curr_num   = numbered;
@@ -456,41 +455,41 @@ MathMatrixInset * mathed_parse_normal()
 
 			MathInsetTypes typ = latex_mathenv[i].typ;
 			p = new MathMatrixInset(typ);
-			MathMatrixInset * m = static_cast<MathMatrixInset *>(p);
+
 			switch (typ) {
 
 				case LM_OT_SIMPLE: {
 					curr_num   = latex_mathenv[i].numbered;
 					curr_label.erase();
-					mathed_parse_into(m->cell(0), 0);
-					m->numbered(0, curr_num);
-					m->label(0, curr_label);
+					mathed_parse_into(p->cell(0), 0);
+					p->numbered(0, curr_num);
+					p->label(0, curr_label);
 					break;
 				}
 
 				case LM_OT_EQUATION: {
 					curr_num   = latex_mathenv[i].numbered;
 					curr_label.erase();
-					mathed_parse_into(m->cell(0), FLAG_END);
-					m->numbered(0, curr_num);
-					m->label(0, curr_label);
+					mathed_parse_into(p->cell(0), FLAG_END);
+					p->numbered(0, curr_num);
+					p->label(0, curr_label);
 					break;
 				}
 
 				case LM_OT_EQNARRAY: {
-					mathed_parse_lines(m, 3, latex_mathenv[i].numbered, true);
+					mathed_parse_lines(p, 3, latex_mathenv[i].numbered, true);
 					break;
 				}
 
 				case LM_OT_ALIGN: {
-					m->halign(lexArg('{'));
-					mathed_parse_lines(m, 2, latex_mathenv[i].numbered, true);
+					p->halign(lexArg('{'));
+					mathed_parse_lines(p, 2, latex_mathenv[i].numbered, true);
 					break;
 				}
 
 				case LM_OT_ALIGNAT: {
-					m->halign(lexArg('{'));
-					mathed_parse_lines(m, 2, latex_mathenv[i].numbered, true);
+					p->halign(lexArg('{'));
+					mathed_parse_lines(p, 2, latex_mathenv[i].numbered, true);
 					break;
 				}
 
@@ -498,8 +497,6 @@ MathMatrixInset * mathed_parse_normal()
 					lyxerr[Debug::MATHED]
 						<< "1: unknown math environment: " << typ << "\n";
 			}
-
-			p->setName(latex_mathenv[i].basename);
 
 			break;
 		}
@@ -510,15 +507,6 @@ MathMatrixInset * mathed_parse_normal()
 	}
 
 	return p;
-}
-
-
-void handle_frac(MathArray & array, string const & name)
-{
-	MathFracInset * p = new MathFracInset(name);
-	mathed_parse_into(p->cell(0), FLAG_ITEM);
-	mathed_parse_into(p->cell(1), FLAG_ITEM);
-	array.push_back(p);
 }
 
 
@@ -686,17 +674,23 @@ void mathed_parse_into(MathArray & array, unsigned flags)
 			array.push_back(new MathDotsInset(yylval.l));
 			break;
 		
-		case LM_TK_CHOOSE:
-			handle_frac(array, "atop");	
-			break;
-
 		case LM_TK_STACK:
-			handle_frac(array, "stackrel");	
+		{
+			MathStackrelInset * p = new MathStackrelInset;
+			mathed_parse_into(p->cell(0), FLAG_ITEM);
+			mathed_parse_into(p->cell(1), FLAG_ITEM);
+			array.push_back(p);
 			break;
+		}
 
 		case LM_TK_FRAC:
-			handle_frac(array, "frac");	
+		{
+			MathFracInset * p = new MathFracInset;
+			mathed_parse_into(p->cell(0), FLAG_ITEM);
+			mathed_parse_into(p->cell(1), FLAG_ITEM);
+			array.push_back(p);
 			break;
+		}
 
 		case LM_TK_SQRT:
 		{

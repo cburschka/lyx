@@ -1,6 +1,6 @@
 // -*- C++ -*-
-#ifndef MATH_FRACINSET_H
-#define MATH_FRACINSET_H
+#ifndef MATH_STACKRELINSET_H
+#define MATH_STACKRELINSET_H
 
 #include "math_fracbase.h"
 
@@ -8,13 +8,13 @@
 #pragma interface
 #endif
 
-/** Fraction like objects (frac, binom)
-    \author Alejandro Aguilar Sierra
+/** Stackrel objects 
+    \author André Pönitz
  */
-class MathFracInset : public MathFracbaseInset {
+class MathStackrelInset : public MathFracbaseInset {
 public:
 	///
-	MathFracInset();
+	MathStackrelInset();
 	///
 	MathInset * clone() const;
 	///

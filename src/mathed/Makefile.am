@@ -39,6 +39,8 @@ libmathed_la_SOURCES = \
 	math_dotsinset.h \
 	math_fracinset.C \
 	math_fracinset.h \
+	math_fracbase.C \
+	math_fracbase.h \
 	math_funcinset.C \
 	math_funcinset.h \
 	math_funcliminset.C \
@@ -72,6 +74,8 @@ libmathed_la_SOURCES = \
 	math_spaceinset.h \
 	math_sqrtinset.C \
 	math_sqrtinset.h \
+	math_stackrelinset.C \
+	math_stackrelinset.h \
 	math_symbolinset.C \
 	math_symbolinset.h \
 	support.C \

@@ -8,12 +8,12 @@
 
 
 MathMacroTemplate::MathMacroTemplate()
-	: MathNestInset(1), numargs_(0)
+	: MathNestInset(1), numargs_(0), name_()
 {}
 
 
 MathMacroTemplate::MathMacroTemplate(string const & nm, int numargs)
-	: MathNestInset(1, nm), numargs_(numargs)
+	: MathNestInset(1), numargs_(numargs), name_(nm)
 {}
 
 
@@ -33,6 +33,12 @@ int MathMacroTemplate::numargs() const
 void MathMacroTemplate::numargs(int numargs)
 {
 	numargs_ = numargs;
+}
+
+
+string const & MathMacroTemplate::name() const
+{
+	return name_;
 }
 
 

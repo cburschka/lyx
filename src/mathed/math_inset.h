@@ -28,7 +28,6 @@
 #pragma interface
 #endif
 
-#include "LString.h"
 #include "symbol_def.h"
 #include "xarray.h"
 
@@ -44,7 +43,7 @@ class LaTeXFeatures;
 class MathInset {
 public: 
 	///
-	explicit MathInset(string const & nm = string());
+	MathInset();
 
 	/// the virtual base destructor
 	virtual ~MathInset() {}
@@ -69,10 +68,6 @@ public:
 	virtual int width() const { return 2; }
 	///
 	virtual int height() const;
-	///
-	virtual string const & name() const;
-	///
-	virtual void setName(string const & n);
 	///
 	virtual MathStyles size() const;
 
@@ -205,8 +200,6 @@ public:
 	virtual void code(MathTextCodes t);
 
 protected:
-	/// usually the LaTeX name of the thingy
-	string name_;
 	/// _sets_ style
 	void size(MathStyles s) const;
 	/// the used font size

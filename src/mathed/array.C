@@ -87,24 +87,6 @@ unsigned char MathArray::getChar(int pos) const
 }
 
 
-/*
-string MathArray::getString(int & pos) const
-{
-	string s;
-	if (isInset(pos))
-		return s;
-
-	MathTextCodes const fcode = getCode(pos);
-	do {
-		s += getChar(pos);
-		++pos;
-	} while (pos < size() && !isInset(pos) && getCode(pos) == fcode);
-
-	return s;
-}
-*/
-
-
 MathTextCodes MathArray::getCode(int pos) const
 {
 	return pos < size() ? (bf_[pos]->code()) : LM_TC_MIN;
