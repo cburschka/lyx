@@ -110,6 +110,14 @@ MathTextCodes MathArray::GetCode(int pos) const
 	return pos < size() ? MathTextCodes(bf_[pos]) : LM_TC_MIN;
 }
 
+void MathArray::setCode(int pos, MathTextCodes t)
+{
+	if (pos > size() || isInset(pos))
+		return;
+	bf_[pos] = t;
+	bf_[pos + 2] = t;
+}
+
 void MathArray::insert(int pos, MathInset * p)
 {
 	bf_.insert(bf_.begin() + pos, 2 + sizeof(p), LM_TC_INSET);

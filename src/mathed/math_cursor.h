@@ -116,7 +116,7 @@ public:
 	///
 	void setLastCode(MathTextCodes t);
 	///
-	void toggleLastCode(MathTextCodes t);
+	void handleFont(MathTextCodes t);
 	///
 	MathTextCodes getLastCode() const;
 	///

@@ -1,3 +1,11 @@
+2001-04-27 André Pönitz  <poenitz@htwm.de>
+
+	* math_parser.C: fix bug where equations did not get their labels
+
+	* formulabase.C: new feature: changing font on selection
+
+	* several files: subsequent changes
+
 2001-06-29  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* formulabase.C (localDispatch): use .c_str() on istringstream
@@ -77,6 +85,20 @@
 2001-06-24  The LyX Project  <Asger>
 
 	* math_cursor.C: Renamed stack to path.
+
+2001-06-24  The LyX Project  <André>
+
+	* *.[Ch]:
+	  Makefile.am: The Big Patch
+	  (rewrite of MathArray, MathCursor, MathMatrixInset, MathBigopInset;
+     new MathScriptInset for up/down stuff;
+	   delete MathIter/MatXIter, MathParInset, MathRowSt
+     Changes to the inset inheritance tree, reunification of abstract math
+     inset base classes;
+     label/numbering handling back to life;
+     major changes to the parser(s);
+     new base class FormulaBase for the two math LyXInsets;
+	   general cleanup and cosmetic changes)
 
 2001-06-19  Angus Leeming  <a.leeming@ic.ac.uk>
 

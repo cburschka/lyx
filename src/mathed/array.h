@@ -110,6 +110,8 @@ public:
 	///
 	MathTextCodes GetCode(int pos) const;
 	///
+	void setCode(int pos, MathTextCodes t);
+	///
 	bool isInset(int pos) const;
 	///
 	void Write(std::ostream &, bool) const;

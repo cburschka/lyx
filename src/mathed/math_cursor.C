@@ -915,12 +915,22 @@ void MathCursor::doAccent(MathInset * p)
 }
 
 
-void MathCursor::toggleLastCode(MathTextCodes t)
+void MathCursor::handleFont(MathTextCodes t)
 {
-	if (lastcode == t)
-		lastcode = LM_TC_VAR;
-	else
-		lastcode = t;
+	if (selection)	{
+		int const p1 = std::min(cursor_, anchor_);
+		int const p2 = std::max(cursor_, anchor_);
+		for (int pos = p1; pos != p2; array().next(pos))
+			if (!array().isInset(pos)) { 
+				MathTextCodes c = array().GetCode(pos) == t ? LM_TC_VAR : t;
+				array().setCode(pos, c);
+			}
+	} else {
+		if (lastcode == t)
+			lastcode = LM_TC_VAR;
+		else
+			lastcode = t;
+	}
 }
 
 

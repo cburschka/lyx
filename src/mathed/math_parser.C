@@ -109,10 +109,9 @@ union {
 
 
 string yytext;
-
 int yylineno;
 istream * yyis;
-bool yy_mtextmode = false;
+MathTextCodes yyvarcode;
 
 
 
@@ -234,8 +233,8 @@ int yylex()
 		char c;
 		yyis->get(c);
 		
-		if (yy_mtextmode && c == ' ') {
-			yylval.i= ' ';
+		if (yyvarcode == LM_TC_TEXTRM && c == ' ') {
+			yylval.i = ' ';
 			return LM_TK_ALPHA;
 		} else if (lexcode[c] == LexNewLine) {
 			++yylineno; 
@@ -419,6 +418,10 @@ static string curr_label;
 
 void mathed_parse_lines(MathInset * inset, int col, bool numbered, bool outmost)
 {
+	// save global variables
+	bool   saved_num   = curr_num;
+	string saved_label = curr_label;
+
 	MathGridInset * p = static_cast<MathGridInset *>(inset);
 	for (int row = 0; true; ++row) {
 		// reset global variables
@@ -444,6 +447,10 @@ void mathed_parse_lines(MathInset * inset, int col, bool numbered, bool outmost)
 
 		p->appendRow();
 	}
+
+	// restore global variables
+	curr_num   = saved_num;
+	curr_label = saved_label;
 }
 
 
@@ -536,7 +543,7 @@ void mathed_parse(MathArray & array, unsigned flags)
 	int  tprev = 0;
 	bool panic = false;
 	static int plevel = -1;
-	MathTextCodes varcode = LM_TC_VAR;
+	yyvarcode = LM_TC_VAR;
 	
 	int brace = 0;
 	int acc_brace = 0;
@@ -560,7 +567,7 @@ void mathed_parse(MathArray & array, unsigned flags)
 		switch (t) {
 			
 		case LM_TK_ALPHA:
-			do_insert(array, yylval.i, varcode);
+			do_insert(array, yylval.i, yyvarcode);
 			break;
 
 		case LM_TK_ARGUMENT:
@@ -604,8 +611,7 @@ void mathed_parse(MathArray & array, unsigned flags)
 				break;
 			}
 			if (flags & FLAG_BRACE_FONT) {
-				varcode = LM_TC_VAR;
-				yy_mtextmode = false;
+				yyvarcode = LM_TC_VAR;
 				flags &= ~FLAG_BRACE_FONT;
 				break;
 			}
@@ -777,7 +783,7 @@ void mathed_parse(MathArray & array, unsigned flags)
 			break;
 		
 		case LM_TK_FONT:
-			yy_mtextmode = (yylval.l->id == LM_TC_TEXTRM);
+			yyvarcode = static_cast<MathTextCodes>(yylval.l->id);
 			flags |= (FLAG_BRACE | FLAG_BRACE_FONT);
 			break;
 

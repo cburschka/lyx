@@ -68,6 +68,13 @@ string nicelabel(string const & label)
 	return label.empty() ? string("(#)") : "(" + label + ")";
 }
 
+void handleFont(BufferView * bv, MathTextCodes t) 
+{
+	if (mathcursor->Selection())
+		bv->lockedInsetStoreUndo(Undo::EDIT);
+	mathcursor->handleFont(t);
+}
+
 } // namespaces
 
 
@@ -431,6 +438,7 @@ void InsetFormulaBase::insetKeyPress(XKeyEvent *)
 }
 
 
+
 UpdatableInset::RESULT
 InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 			    string const & arg)
@@ -619,24 +627,27 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 		break;
 
 		//  Math fonts
-	case LFUN_BOLD:  mathcursor->toggleLastCode(LM_TC_BF); break;
-	case LFUN_SANS:  mathcursor->toggleLastCode(LM_TC_SF); break;
-	case LFUN_EMPH:  mathcursor->toggleLastCode(LM_TC_CAL); break;
-	case LFUN_ROMAN: mathcursor->toggleLastCode(LM_TC_RM); break;
-	case LFUN_CODE:  mathcursor->toggleLastCode(LM_TC_TT); break;
-	case LFUN_DEFAULT:  mathcursor->setLastCode(LM_TC_VAR); break;
+	case LFUN_BOLD:    handleFont(bv, LM_TC_BF); break;
+	case LFUN_SANS:    handleFont(bv, LM_TC_SF); break;
+	case LFUN_EMPH:    handleFont(bv, LM_TC_CAL); break;
+	case LFUN_ROMAN:   handleFont(bv, LM_TC_RM); break;
+	case LFUN_CODE:    handleFont(bv, LM_TC_TT); break;
+	case LFUN_DEFAULT: handleFont(bv, LM_TC_VAR); break;
+
+	case LFUN_MATH_MODE:
+		handleFont(bv, LM_TC_TEXTRM);
+		//bv->owner()->message(_("math text mode toggled"));
+		break;
 
 #ifndef NO_LATEX
-#ifdef WITH_WARNINGS
-#warning This needs a fix.
-		// Can we use the ERT inset here? (Lgb)
-#endif
 	case LFUN_TEX:
-		// varcode = LM_TC_TEX;
-		mathcursor->setLastCode(LM_TC_TEX);
-		bv->owner()->message(_("TeX mode"));
+		if (!mathcursor->Selection()) {
+			mathcursor->handleFont(LM_TC_TEX);
+			//bv->owner()->message(_("TeX mode toggled"));
+		}
 		break;
 #endif
+
 	case LFUN_MATH_LIMITS:
 		bv->lockedInsetStoreUndo(Undo::INSERT);
 		if (mathcursor->toggleLimits())
@@ -728,16 +739,6 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 		mathcursor->insert(new MathSpaceInset(1));
 		space_on = true;
 		updateLocal(bv);
-		break;
-
-		// Invalid actions under math mode
-	case LFUN_MATH_MODE:
-		if (mathcursor->getLastCode() != LM_TC_TEXTRM) {
-			bv->owner()->message(_("math text mode"));
-			varcode = LM_TC_TEXTRM;
-		} else 
-			varcode = LM_TC_VAR;
-		mathcursor->setLastCode(varcode);
 		break;
 
 	case LFUN_UNDO:
