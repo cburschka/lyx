@@ -1,3 +1,9 @@
+2002-07-08  Angus Leeming  <leeming@lyx.org>
+
+	* PreviewLoader.C: Add "delayed" and "showlabels" options to the
+	invocation of preview.sty.
+	Perform something of an internal clean-up.
+
 2002-07-06  Angus Leeming  <leeming@lyx.org>
 
 	* PreviewLoader.C: ensure that the metrics data is used by the

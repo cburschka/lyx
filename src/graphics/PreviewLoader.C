@@ -41,7 +41,9 @@
 #include <map>
 
 using std::endl;
+using std::find;
 using std::find_if;
+using std::make_pair;
 using std::setfill;
 using std::setw;
 using std::sort;
@@ -78,8 +80,29 @@ string const unique_filename(string const bufferpath)
 {
 	static int theCounter = 0;
 	string const filename = tostr(theCounter++) + "lyxpreview";
-	return AddName(bufferpath, filename);ostringstream os;
+	return AddName(bufferpath, filename);
 }
+
+
+/// Store info on a currently executing, forked process.
+struct InProgress {
+	///
+	InProgress() : pid(0) {}
+	///
+	InProgress(string const & f, vector<StrPair> const & s)
+		: pid(0), metrics_file(f), snippets(s)
+	{}
+	/// Remove any files left lying around and kill the forked process. 
+	void stop() const;
+
+	///
+	pid_t pid;
+	///
+	string metrics_file;
+	/// Each item in the vector is a pair<snippet, image file name>.
+	vector<StrPair> snippets;
+};
+
 
 } // namespace anon
 
@@ -89,7 +112,7 @@ namespace grfx {
 struct PreviewLoader::Impl : public boost::signals::trackable {
 	///
 	Impl(PreviewLoader & p, Buffer const & b);
-	///
+	/// Stop any InProgress items still executing.
 	~Impl();
 	///
 	PreviewImage const * preview(string const & latex_snippet) const;
@@ -102,23 +125,18 @@ struct PreviewLoader::Impl : public boost::signals::trackable {
 	///
 	void startLoading();
 
-	///
-	typedef pair<string, string> StrPair;
-	///
-	typedef map<string, string> PendingMap;
-
 private:
+	///
+	static bool haveConverter();
+	/// We don't own this
+	static Converter const * pconverter_;
+
 	/// Called by the Forkedcall process that generated the bitmap files.
 	void finishedGenerating(string const &, pid_t, int);
 	///
 	void dumpPreamble(ostream &) const;
 	///
 	void dumpData(ostream &, vector<StrPair> const &) const;
-
-	///
-	static void setConverter();
-	/// We don't own this
-	static Converter const * pconverter_;
 
 	/** cache_ allows easy retrieval of already-generated images
 	 *  using the LaTeX snippet as the identifier.
@@ -129,52 +147,31 @@ private:
 	///
 	Cache cache_;
 
-	/** pending_ stores the LaTeX snippet and the name of the generated
-	 *  bitmap image file in anticipation of them being sent to the
-	 *  converter.
+	/** pending_ stores the LaTeX snippets in anticipation of them being
+	 *  sent to the converter.
 	 */
-	PendingMap pending_;
+	vector<string> pending_;
 
-	/// Store info on a currently executing, forked process.
-	struct InProgress {
-		///
-		InProgress() {}
-		///
-		InProgress(string const & f, PendingMap const & m)
-			: pid(0), metrics_file(f), snippets(m.begin(), m.end())
-		{
-			sort(snippets.begin(), snippets.end(), CompSecond());
-		}
-
-		///
-		pid_t pid;
-		///
-		string metrics_file;
-
-		/** Store the info in the PendingMap as a vector.
-		    Ensures that the data is output in the order
-		    file001, file002 etc, as we expect, which is /not/ what
-		    happens when we iterate through the map.
-		 */
-		vector<StrPair> snippets;
-	};
-	
-	/// Store all forked processes so that we can proceed thereafter.
+	/** in_progress_ stores all forked processes so that we can proceed
+	 *  thereafter.
+	    The map uses the conversion commands as its identifiers.
+	 */
 	typedef map<string, InProgress> InProgressMap;
 	///
 	InProgressMap in_progress_;
 
-	///
-	string filename_base_;
 	///
 	PreviewLoader & parent_;
 	///
 	Buffer const & buffer_;
 };
 
+
 Converter const * PreviewLoader::Impl::pconverter_;
 
 
+// The public interface, defined in PreviewLoader.h
+// ================================================
 PreviewLoader::PreviewLoader(Buffer const & b)
 	: pimpl_(new Impl(*this, b))
 {}
@@ -213,11 +210,39 @@ void PreviewLoader::startLoading()
 	pimpl_->startLoading();
 }
 
+} // namespace grfx
 
-void PreviewLoader::Impl::setConverter()
+
+// The details of the Impl
+// =======================
+
+namespace {
+
+void InProgress::stop() const
+{
+	if (pid)
+		ForkedcallsController::get().kill(pid, 0);
+
+	if (!metrics_file.empty())
+		lyx::unlink(metrics_file);
+
+	vector<StrPair>::const_iterator vit  = snippets.begin();
+	vector<StrPair>::const_iterator vend = snippets.end();
+	for (; vit != vend; ++vit) {
+		if (!vit->second.empty())
+			lyx::unlink(vit->second);
+	}
+}
+ 
+} // namespace anon
+
+
+namespace grfx {
+
+bool PreviewLoader::Impl::haveConverter()
 {
 	if (pconverter_)
-		return;
+		return true;
 
 	string const from = "lyxpreview";
 
@@ -236,22 +261,35 @@ void PreviewLoader::Impl::setConverter()
 	}
 
 	if (pconverter_)
-		return;
+		return true;
 
 	static bool first = true;
-	if (!first)
-		return;
-
-	first = false;
-	lyxerr << "PreviewLoader::startLoading()\n"
-	       << "No converter from \"lyxpreview\" format has been defined." 
-	       << endl;
+	if (first) {
+		first = false;
+		lyxerr << "PreviewLoader::startLoading()\n"
+		       << "No converter from \"lyxpreview\" format has been "
+			"defined."
+		       << endl;
+	}
+	
+	return false;
 }
 
 
 PreviewLoader::Impl::Impl(PreviewLoader & p, Buffer const & b)
-	: filename_base_(unique_filename(b.tmppath)), parent_(p), buffer_(b)
+	: parent_(p), buffer_(b)
 {}
+
+
+PreviewLoader::Impl::~Impl()
+{
+	InProgressMap::iterator ipit  = in_progress_.begin();
+	InProgressMap::iterator ipend = in_progress_.end();
+
+	for (; ipit != ipend; ++ipit) {
+		ipit->second.stop();
+	}
+}
 
 
 PreviewImage const *
@@ -262,38 +300,19 @@ PreviewLoader::Impl::preview(string const & latex_snippet) const
 }
 
 
-PreviewLoader::Impl::~Impl()
-{
-	InProgressMap::const_iterator ipit  = in_progress_.begin();
-	InProgressMap::const_iterator ipend = in_progress_.end();
-
-	for (; ipit != ipend; ++ipit) {
-		pid_t pid = ipit->second.pid;
-		if (pid)
-			ForkedcallsController::get().kill(pid, 0);
-
-		lyx::unlink(ipit->second.metrics_file);
-
-		vector<StrPair> const & snippets = ipit->second.snippets;
-		vector<StrPair>::const_iterator vit  = snippets.begin();
-		vector<StrPair>::const_iterator vend = snippets.end();
-		for (; vit != vend; ++vit) {
-			lyx::unlink(vit->second);
-		}
-	}
-}
-
-
 PreviewLoader::Status
 PreviewLoader::Impl::status(string const & latex_snippet) const
 {
 	Cache::const_iterator cit = cache_.find(latex_snippet);
 	if (cit != cache_.end())
-		return PreviewLoader::Ready;
+		return Ready;
 
-	PendingMap::const_iterator pit = pending_.find(latex_snippet);
-	if (pit != pending_.end())
-		return PreviewLoader::InQueue;
+	vector<string>::const_iterator vit  = pending_.begin();
+	vector<string>::const_iterator vend = pending_.end();
+	vit = find(vit, vend, latex_snippet);
+
+	if (vit != vend)
+		return InQueue;
 
 	InProgressMap::const_iterator ipit  = in_progress_.begin();
 	InProgressMap::const_iterator ipend = in_progress_.end();
@@ -303,39 +322,25 @@ PreviewLoader::Impl::status(string const & latex_snippet) const
 		vector<StrPair>::const_iterator vit  = snippets.begin();
 		vector<StrPair>::const_iterator vend = snippets.end();
 		vit = find_if(vit, vend, FindFirst(latex_snippet));
-		
+
 		if (vit != vend)
-			return PreviewLoader::Processing;
+			return Processing;
 	}
 
-	return PreviewLoader::NotFound;
+	return NotFound;
 }
 
 
 void PreviewLoader::Impl::add(string const & latex_snippet)
 {
-	if (!pconverter_) {
-		setConverter();
-		if (!pconverter_)
-			return;
-	}
-
-	Cache::const_iterator cit = cache_.find(latex_snippet);
-	if (cit != cache_.end())
+	if (!haveConverter())
 		return;
 
-	PendingMap::const_iterator pit = pending_.find(latex_snippet);
-	if (pit != pending_.end())
+	if (status(latex_snippet) != NotFound)
 		return;
 
-	int const snippet_counter = int(pending_.size()) + 1;
-	ostringstream os;
-	os << filename_base_
-	   << setfill('0') << setw(3) << snippet_counter
-	   << "." << pconverter_->to;
-	string const image_filename = os.str().c_str();
-
-	pending_[latex_snippet] = image_filename;
+	pending_.push_back(latex_snippet);
+	sort(pending_.begin(), pending_.end());
 }
 
 
@@ -345,9 +350,12 @@ void PreviewLoader::Impl::remove(string const & latex_snippet)
 	if (cit != cache_.end())
 		cache_.erase(cit);
 
-	PendingMap::iterator pit = pending_.find(latex_snippet);
-	if (pit != pending_.end())
-		pending_.erase(pit);
+	vector<string>::iterator vit  = pending_.begin();
+	vector<string>::iterator vend = pending_.end();
+	vit = find(vit, vend, latex_snippet);
+
+	if (vit != vend)
+		pending_.erase(vit, vit+1);
 
 	InProgressMap::iterator ipit  = in_progress_.begin();
 	InProgressMap::iterator ipend = in_progress_.end();
@@ -360,7 +368,7 @@ void PreviewLoader::Impl::remove(string const & latex_snippet)
 		vector<StrPair>::iterator vit  = snippets.begin();
 		vector<StrPair>::iterator vend = snippets.end();
 		vit = find_if(vit, vend, FindFirst(latex_snippet));
-		
+
 		if (vit != vend)
 			snippets.erase(vit, vit+1);
 
@@ -375,21 +383,40 @@ void PreviewLoader::Impl::startLoading()
 	if (pending_.empty())
 		return;
 
-	if (!pconverter_) {
-		setConverter();
-		if (!pconverter_)
-			return;
-	}
+	if (!haveConverter())
+		return;
 
 	lyxerr[Debug::GRAPHICS] << "PreviewLoader::startLoading()" << endl;
 
+	// As used by the LaTeX file and by the resulting image files
+	string const filename_base(unique_filename(buffer_.tmppath));
+
 	// Create an InProgress instance to place in the map of all
 	// such processes if it starts correctly.
-	string const metrics_file = filename_base_ + ".metrics";
-	InProgress inprogress(metrics_file, pending_);
+	vector<StrPair> snippets(pending_.size());
+	vector<StrPair>::iterator sit = snippets.begin();
+	vector<string>::const_iterator pit  = pending_.begin();
+	vector<string>::const_iterator pend = pending_.end();
+
+	int counter = 1; // file numbers start at 1
+	for (; pit != pend; ++pit, ++sit, ++counter) {
+		ostringstream os;
+		os << filename_base
+		   << setfill('0') << setw(3) << counter
+		   << "." << pconverter_->to;
+		string const file = os.str().c_str();
+
+		*sit = make_pair(*pit, file);
+	}
+
+	string const metrics_file = filename_base + ".metrics";
+	InProgress inprogress(metrics_file, snippets);
+
+	// clear pending_, so we're ready to start afresh.
+	pending_.clear();
 
 	// Output the LaTeX file.
-	string const latexfile = filename_base_ + ".tex";
+	string const latexfile = filename_base + ".tex";
 
 	ofstream of(latexfile.c_str());
 	dumpPreamble(of);
@@ -397,11 +424,6 @@ void PreviewLoader::Impl::startLoading()
 	dumpData(of, inprogress.snippets);
 	of << "\n\\end{document}\n";
 	of.close();
-
-	// Reset the filename and clear pending_, so we're ready to
-	// start afresh.
-	pending_.clear();
-	filename_base_ = unique_filename(buffer_.tmppath);
 
 	// The conversion command.
 	ostringstream cs;
@@ -426,7 +448,7 @@ void PreviewLoader::Impl::startLoading()
 					<< command << endl;
 		return;
 	}
-	
+
 	// Store the generation process in a list of all such processes
 	inprogress.pid = call.pid();
 	in_progress_[command] = inprogress;
@@ -451,12 +473,9 @@ void PreviewLoader::Impl::finishedGenerating(string const & command,
 		return;
 	}
 
-	// Reset the pid to 0 as the process has finished.
-	git->second.pid = 0;
-
 	// Read the metrics file, if it exists
 	PreviewMetrics metrics_file(git->second.metrics_file);
-	
+
 	// Add these newly generated bitmap files to the cache and
 	// start loading them into LyX.
 	vector<StrPair>::const_iterator it  = git->second.snippets.begin();
@@ -476,9 +495,10 @@ void PreviewLoader::Impl::finishedGenerating(string const & command,
 		// We /must/ first add to the cache and then start the
 		// image loading process.
 		// If not, then outside functions can be called before by the
-		// image loader before the PreviewImage is properly constucted.
+		// image loader before the PreviewImage/map is properly
+		// constucted.
 		// This can lead to all sorts of horribleness if such a
-		// function attempts to access its internals.
+		// function attempts to access the cache's internals.
 		string const & file = it->second;
 		double af = metrics_file.ascent_fraction(metrics_counter++);
 		PreviewImagePtr ptr(new PreviewImage(parent_, snip, file, af));
@@ -488,6 +508,7 @@ void PreviewLoader::Impl::finishedGenerating(string const & command,
 		ptr->startLoading();
 	}
 
+	// Remove the item from the list of still-executing processes.
 	in_progress_.erase(git);
 }
 
@@ -512,7 +533,7 @@ void PreviewLoader::Impl::dumpPreamble(ostream & os) const
 	// Use the preview style file to ensure that each snippet appears on a
 	// fresh page.
 	os << "\n"
-	   << "\\usepackage[active,dvips,tightpage]{preview}\n"
+	   << "\\usepackage[active,delayed,dvips,tightpage,showlabels]{preview}\n"
 	   << "\n";
 
 	// This piece of PostScript magic ensures that the foreground and
@@ -522,7 +543,7 @@ void PreviewLoader::Impl::dumpPreamble(ostream & os) const
 
 	string bg = lyx_gui::hexname(LColor::background);
 	if (bg.empty()) bg = "ffffff";
-	
+
 	os << "\\AtBeginDocument{\\AtBeginDvi{%\n"
 	   << "\\special{!userdict begin/bop-hook{//bop-hook exec\n"
 	   << "<" << fg << bg << ">{255 div}forall setrgbcolor\n"
@@ -530,7 +551,7 @@ void PreviewLoader::Impl::dumpPreamble(ostream & os) const
 }
 
 
-void PreviewLoader::Impl::dumpData(ostream & os, 
+void PreviewLoader::Impl::dumpData(ostream & os,
 				   vector<StrPair> const & vec) const
 {
 	if (vec.empty())
@@ -541,7 +562,7 @@ void PreviewLoader::Impl::dumpData(ostream & os,
 
 	for (; it != end; ++it) {
 		os << "\\begin{preview}\n"
-		   << it->first 
+		   << it->first
 		   << "\n\\end{preview}\n\n";
 	}
 }
