@@ -1158,6 +1158,12 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			// appendix in '\par\appendix\par\chapter{' would
 			// start too late.
 			context.check_layout(os);
+			// FIXME: This is a hack to prevent paragraph
+			// deletion if it is empty. Handle this better!
+			handle_comment(os,
+				"%dummy comment inserted by tex2lyx to "
+				"ensure that this paragraph is not empty",
+				context);
 			// Both measures above may generate an additional
 			// empty paragraph, but that does not hurt, because
 			// whitespace does not matter here.

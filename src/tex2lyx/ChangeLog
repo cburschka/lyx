@@ -1,3 +1,7 @@
+2005-03-31  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* text.C (parse_text): Really fix \start_of_appendix output
+
 2005-03-27  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* tex2lyx.C (read_syntaxfile): Don't use racy test with IsFileReadable
