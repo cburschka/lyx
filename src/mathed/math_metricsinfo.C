@@ -49,7 +49,6 @@ MathStyles smallerScriptStyle(MathStyles st)
 	return LM_ST_DISPLAY;
 }
 
-
 MathScriptChanger::MathScriptChanger(MathMetricsBase & mb)
 	: MathStyleChanger(mb, smallerScriptStyle(mb.style))
 {}
@@ -72,7 +71,6 @@ MathStyles smallerFracStyle(MathStyles st)
 	return LM_ST_DISPLAY;
 }
 
-
 MathFracChanger::MathFracChanger(MathMetricsBase & mb)
 	: MathStyleChanger(mb, smallerFracStyle(mb.style))
 {}
@@ -90,7 +88,6 @@ MathShapeChanger::~MathShapeChanger()
 {
 	orig_.setShape(save_);
 }
-
 
 
 
@@ -112,12 +109,10 @@ MathStyleChanger::MathStyleChanger(MathMetricsBase & mb, MathStyles style)
 	mb.style = style;
 }
 
-
 MathStyleChanger::~MathStyleChanger()
 {
 	orig_ = save_;
 }
-
 
 
 

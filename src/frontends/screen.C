@@ -16,6 +16,7 @@
 
 #include "screen.h"
 #include "lyxtext.h"
+#include "lyxrc.h"
 #include "lyxrow.h"
 #include "BufferView.h"
 #include "buffer.h"
@@ -80,6 +81,9 @@ SplashScreen const & SplashScreen::get()
 SplashScreen::SplashScreen()
 	: text_(lyx_version ? lyx_version : "unknown")
 {
+	if (!lyxrc.show_banner)
+		return;
+
 	string const file = LibFileSearch("images", "banner", "xpm");
 	if (file.empty())
 		return;
