@@ -11,7 +11,8 @@
 #define LM_Xi 0x58
 #define LM_Pi 0x50
 #define LM_Sigma 0x53
-#define LM_Upsilon 0x55
+//#define LM_Upsilon 0x55
+#define LM_Upsilon 0xa1
 #define LM_Phi 0x46
 #define LM_Psi 0x59
 #define LM_Omega 0x57
@@ -106,6 +107,9 @@
 #define LM_rfloor 0xfb
 #define LM_mid 0x7c
 
+#define LM_angle 0xd0
+#define LM_vee 0xda
+
 //#define LM_backslash '\\'
   
 // Symbols that don't exist in X11 symbol font
@@ -124,11 +128,11 @@ enum Math_Symbols_enum {
   LM_vdash,  LM_dashv,  LM_bowtie,
   LM_mp,  LM_bigtriangleup,  LM_ominus,  LM_uplus,  LM_bigtriangledown,
   LM_sqcap,  LM_triangleright,  LM_sqcup,  LM_triangleleft,  LM_odot,  LM_star,
-  LM_vee,  LM_amalg,  LM_bigcirc,  LM_setminus,  LM_dagger,  LM_circ,  LM_wr,
+  LM_amalg,  LM_bigcirc,  LM_setminus,  LM_dagger,  LM_circ,  LM_wr,
   LM_ddagger,
   LM_oint,  LM_coprod,  LM_bigsqcup,  LM_bigotimes,  LM_bigodot,  LM_bigoplus,
   LM_bigcap,  LM_bigcup,  LM_biguplus,  LM_bigvee,  LM_bigwedge,
-  LM_ell,  LM_imath,  LM_jmath,  LM_hbar,  LM_angle,  LM_top,  LM_Vert,  LM_flat,
+  LM_ell,  LM_imath,  LM_jmath,  LM_hbar, LM_top,  LM_Vert,  LM_flat,
   LM_natural,  LM_triangle,
   LM_widehat, LM_widetilde, LM_underline, LM_overline, LM_underbrace, 
   LM_overbrace, LM_overleftarrow, LM_overightarrow, 

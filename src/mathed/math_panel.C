@@ -54,6 +54,18 @@ int delim_code[] = {
    LM_langle,  LM_rangle, '|', LM_Vert, '.', 0
 };
 
+// indexes to get the left and right versions of each delimiter
+// Contributed by Pablo De Napoli (pdenapo@dm.uba.ar)
+int delim_lversion[] = { 0,0,2,2,4,5,
+                         6,6,8,8,10,11,
+                         12,12,14,15,16,17,
+                         18,18,20,21,22,23 };
+
+int delim_rversion[] = { 1,1,3,3,4,5,
+                        7,7,9,9,10,11,
+                        13,13,14,15,16,17,
+                        19,19,20,21,22,23 };
+
 
 static char const * deco_code[] = {
    "widehat", "widetilde", "overbrace", "overleftarrow", "overrightarrow", 
@@ -146,16 +158,18 @@ void delim_cb(FL_OBJECT *, long data)
     case 2: 
       {
 	  int i = fl_get_bmtable(fd_delim->menu);
+	  int button = fl_get_bmtable_numb(fd_delim->menu);
+	  bool both = (button==FL_MIDDLE_MOUSE);
+	  
 	  if (i>= 0) {
-#if FL_REVISION > 85
-	      if (side || (fl_get_bmtable_numb(fd_delim->menu)!= FL_LEFT_MOUSE)) 
-#else
-	      if (side || (fl_get_bmtable_numb(fd_delim->menu)!= 1))
-	
-#endif
-		right = i;
-	      else
-		left = i;
+
+	      if (side || (button== FL_RIGHT_MOUSE)) {
+		  right = i;
+	      } else {
+		  left = i;
+		  if (both)
+		    right = delim_rversion[i];
+	      }	  
 	  }
 	  p1 = fl_get_pixmap_pixmap(fd_delim->pix, &p1, &p2);
 	  fl_draw_bmtable_item(fd_delim->menu, left, p1, 0, 0);
