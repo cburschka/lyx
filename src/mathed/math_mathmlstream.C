@@ -1,4 +1,3 @@
-
 #include "math_inset.h"
 #include "math_mathmlstream.h"
 #include "math_extern.h"
@@ -184,12 +183,12 @@ NormalStream & NormalStream::operator<<(char c)
 
 WriteStream::WriteStream
 		(Buffer const * buffer_, std::ostream & os_, bool fragile_)
-	: buffer(buffer_), os(os_), fragile(fragile_)
+	: buffer(buffer_), os(os_), fragile(fragile_), line_(0)
 {}
 
 
 WriteStream::WriteStream(std::ostream & os_)
-	: buffer(0), os(os_), fragile(false)
+	: buffer(0), os(os_), fragile(false), line_(0)
 {}
 
 
@@ -213,6 +212,10 @@ WriteStream & WriteStream::operator<<(MathArray const & ar)
 WriteStream & WriteStream::operator<<(char const * s)
 {
 	os << s;
+	for ( ; *s ; ++s) {
+		if (*s == '\n')
+			++line_;
+	}
 	return *this;		
 }
 
@@ -220,7 +223,7 @@ WriteStream & WriteStream::operator<<(char const * s)
 WriteStream & WriteStream::operator<<(char c)
 {
 	os << c;
+	if (c == '\n')
+		++line_;
 	return *this;		
 }
-
-

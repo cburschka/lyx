@@ -287,7 +287,7 @@ int InsetFormula::latex(Buffer const * buf, ostream & os, bool fragil, bool)
 {
 	WriteStream wi(buf, os, fragil);
 	par_->write(wi);
-	return 1;
+	return wi.line_;
 }
 
 
@@ -295,7 +295,7 @@ int InsetFormula::ascii(Buffer const * buf, ostream & os, int) const
 {
 	WriteStream wi(buf, os, false);
 	par_->write(wi);
-	return 1;
+	return wi.line_;
 }
 
 

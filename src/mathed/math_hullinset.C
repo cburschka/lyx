@@ -269,7 +269,7 @@ void MathHullInset::validate(LaTeXFeatures & features) const
 }
 
 
-void MathHullInset::header_write(std::ostream & os) const
+void MathHullInset::header_write(WriteStream & os) const
 {
 	bool n = numberedType();
 
@@ -321,7 +321,7 @@ void MathHullInset::header_write(std::ostream & os) const
 }
 
 
-void MathHullInset::footer_write(std::ostream & os) const
+void MathHullInset::footer_write(WriteStream & os) const
 {
 	bool n = numberedType();
 
@@ -642,7 +642,7 @@ void MathHullInset::mutate(MathInsetTypes newtype)
 
 void MathHullInset::write(WriteStream & os) const
 {
-  header_write(os.os);
+  header_write(os);
 
 	bool n = numberedType();
 
@@ -658,7 +658,7 @@ void MathHullInset::write(WriteStream & os) const
 		os << eolString(row).c_str();
 	}
 
-  footer_write(os.os);
+  footer_write(os);
 }
 
 

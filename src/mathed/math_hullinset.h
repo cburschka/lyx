@@ -87,9 +87,9 @@ private:
 	///
 	void validate1(LaTeXFeatures & features);
 	///
-	void header_write(std::ostream &) const;
+	void header_write(WriteStream &) const;
 	///
-	void footer_write(std::ostream &) const;
+	void footer_write(WriteStream &) const;
 	///
 	void glueall();
 	///

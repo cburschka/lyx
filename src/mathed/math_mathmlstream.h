@@ -124,6 +124,8 @@ struct WriteStream {
 	bool fragile;
 	/// are we at the beginning of an MathArray?
 	bool firstitem;
+	///
+	int line_;
 };
 
 
