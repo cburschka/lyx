@@ -1,3 +1,9 @@
+2002-03-04  Juergen Vigna  <jug@sad.it>
+
+	* tabular.C (calculate_width_of_column_NMC): fixed to use also the
+	last column of multicolumn cells.
+	(SetWidthOfMulticolCell): recalculate NMC and real columns.
+
 2002-03-04  Jose Abilio Oliveira Matos  <jamatos@novalis.fc.up.pt>
 
 	* exporter.C (Export): for linuxdoc and docbook the buffer is a nice

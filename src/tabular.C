@@ -644,7 +644,9 @@ bool LyXTabular::SetWidthOfMulticolCell(int cell, int new_width)
 	if (old_val != cell_info[row][column2].width_of_cell) {
 		// in this case we have to recalculate all multicolumn cells which
 		// have this column as one of theirs but not as last one
+		calculate_width_of_column_NMC(i);
 		recalculateMulticolumnsOfColumn(i);
+		calculate_width_of_column(i);
 	}
 	return true;
 }
@@ -955,16 +957,21 @@ bool LyXTabular::calculate_width_of_column(int column)
 
 
 //
-// calculate the with of the column without regarding REAL MultiColumn
-// cells. This means MultiColumn-cells spanning more than 1 column.
+// Calculate the columns regarding ONLY the normal cells and if this
+// column is inside a multicolumn cell then use it only if its the last
+// column of this multicolumn cell as this gives an added with to the
+// column, all the rest should be adapted!
 //
 bool LyXTabular::calculate_width_of_column_NMC(int column)
 {
 	int const old_column_width = column_info[column].width_of_column;
 	int max = 0;
 	for (int i = 0; i < rows_; ++i) {
-		if (!IsMultiColumn(GetCellNumber(i, column), true) &&
-			(cell_info[i][column].width_of_cell > max)) {
+		int cell = GetCellNumber(i, column);
+		bool ismulti = IsMultiColumn(cell, true);
+		if ((!ismulti || (column == right_column_of_cell(cell))) &&
+			(cell_info[i][column].width_of_cell > max))
+		{
 			max = cell_info[i][column].width_of_cell;
 		}
 	}
