@@ -51,8 +51,13 @@ public:
 	void remove_files_with_extension(string const &);
 private:
 	///
-	typedef std::map<string,
-		std::pair<unsigned long, unsigned long> > DepList;
+	struct dep_info {
+		unsigned long first;
+		unsigned long second;
+		long mtime;
+	};
+	///
+	typedef std::map<string, dep_info> DepList;
 	///
 	DepList deplist;
 };

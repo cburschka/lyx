@@ -18,11 +18,17 @@
 #endif
 
 #include "DepTable.h"
+#include "debug.h"
+
 #include "support/lyxlib.h"
 #include "support/filetools.h"
 #include "support/lstrings.h"
+
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <unistd.h>
+
 #include <fstream>
-#include "debug.h"
 
 using std::make_pair;
 using std::ofstream;
@@ -37,11 +43,23 @@ void DepTable::insert(string const & fi,
 	// not quite sure if this is the correct place for MakeAbsPath
 	string f = MakeAbsPath(fi);
 	if (deplist.find(f) == deplist.end()) {
+		long mtime = 0;
 		if (upd) {
 			one = two;
 			two = lyx::sum(f);
+			struct stat f_info;
+			stat(fi.c_str(), &f_info);
+			mtime = f_info.st_mtime;
 		}
+		dep_info di;
+		di.first = one;
+		di.second = two;
+		di.mtime = mtime;
+#if 0		
 		deplist[f] = make_pair(one, two);
+#else
+		deplist[f] = di;
+#endif
 	}
 }
 		
@@ -52,8 +70,26 @@ void DepTable::update()
 	    itr != deplist.end();
 	    ++itr) {
 		unsigned long const one = itr->second.second;
-		unsigned long const two = lyx::sum(itr->first);
+		unsigned long two = one;
+		long mtime = itr->second.mtime;
+		struct stat f_info;
+		stat(itr->first.c_str(), &f_info);
+
+		if (mtime != f_info.st_mtime) {
+			two = lyx::sum(itr->first);
+			mtime = f_info.st_mtime;
+		}
+		
+#if 0
 		itr->second = make_pair(one, two);
+#else
+		dep_info di;
+		di.first = one;
+		di.second = two;
+		di.mtime = mtime;
+		
+		itr->second = di;
+#endif
 		if (lyxerr.debugging(Debug::DEPEND)) {
 			lyxerr << "Update dep: " << itr->first << " "
 			       << one << " " << two;
@@ -134,11 +170,13 @@ void DepTable::write(string const & f) const
 			lyxerr << "Write dep: "
 			       << cit->first << " "
 			       << cit->second.first << " "
-			       << cit->second.second << endl;
+			       << cit->second.second << " "
+			       << cit->second.mtime << endl;
 		}
 		ofs << cit->first << " "
 		    << cit->second.first << " "
-		    << cit->second.second << endl;
+		    << cit->second.second << " "
+		    << cit->second.mtime << endl;
 	}
 }
 
@@ -149,13 +187,24 @@ void DepTable::read(string const & f)
 	string nome;
 	unsigned long one = 0;
 	unsigned long two = 0;
-	while(ifs >> nome >> one >> two) {
+	unsigned long mtime = 0;
+	
+	while(ifs >> nome >> one >> two >> mtime) {
 		if (lyxerr.debugging(Debug::DEPEND)) {
 			lyxerr << "Read dep: "
 			       << nome << " "
 			       << one << " "
-			       << two << endl;
+			       << two << " "
+			       << mtime << endl;
 		}
+		dep_info di;
+		di.first = one;
+		di.second = two;
+		di.mtime = mtime;
+#if 0		
 		deplist[nome] = make_pair(one, two);
+#else
+		deplist[nome] = di;
+#endif
 	}
 }
