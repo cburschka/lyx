@@ -9,13 +9,13 @@ Unit of measure: FL_COORD_PIXEL
 =============== FORM ===============
 Name: form_citation
 Width: 435
-Height: 665
-Number of Objects: 15
+Height: 565
+Number of Objects: 13
 
 --------------------
 class: FL_BOX
 type: UP_BOX
-box: 0 0 435 665
+box: 0 0 435 565
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -157,45 +157,9 @@ callback:
 argument: 
 
 --------------------
-class: FL_CHOICE
-type: NORMAL_CHOICE
-box: 160 470 130 30
-boxtype: FL_DOWN_BOX
-colors: FL_COL1 FL_BLACK
-alignment: FL_ALIGN_LEFT
-style: FL_NORMAL_STYLE
-size: FL_DEFAULT_SIZE
-lcol: FL_BLACK
-label: Citation style|#s
-shortcut: 
-resize: FL_RESIZE_NONE
-gravity: FL_SouthWest FL_SouthEast
-name: style
-callback: 
-argument: 
-
---------------------
 class: FL_INPUT
 type: NORMAL_INPUT
-box: 100 520 250 30
-boxtype: FL_DOWN_BOX
-colors: FL_COL1 FL_MCOL
-alignment: FL_ALIGN_LEFT
-style: FL_NORMAL_STYLE
-size: FL_DEFAULT_SIZE
-lcol: FL_BLACK
-label: Text before|#T
-shortcut: 
-resize: FL_RESIZE_NONE
-gravity: FL_SouthWest FL_SouthEast
-name: textBefore
-callback: 
-argument: 
-
---------------------
-class: FL_INPUT
-type: NORMAL_INPUT
-box: 100 570 250 30
+box: 100 470 250 30
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_LEFT
@@ -207,13 +171,13 @@ shortcut:
 resize: FL_RESIZE_NONE
 gravity: FL_SouthWest FL_SouthEast
 name: textAftr
-callback: 
-argument: 
+callback: C_FormBaseInputCB
+argument: 0
 
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 10 630 90 30
+box: 10 525 90 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -231,7 +195,7 @@ argument: 0
 --------------------
 class: FL_BUTTON
 type: RETURN_BUTTON
-box: 130 630 90 30
+box: 130 525 90 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -249,7 +213,7 @@ argument: 0
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 230 630 90 30
+box: 230 525 90 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -267,7 +231,7 @@ argument: 0
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 330 630 90 30
+box: 330 525 90 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER

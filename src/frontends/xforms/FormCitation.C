@@ -83,6 +83,8 @@ void FormCitation::build()
 	minw_ = form()->w;
 	minh_ = form()->h;
 
+	fl_set_input_return(dialog_->textAftr, FL_RETURN_CHANGED);
+
         // Manage the ok, apply, restore and cancel/close buttons
 	bc_.setOK(dialog_->button_ok);
 	bc_.setApply(dialog_->button_apply);
@@ -94,7 +96,6 @@ void FormCitation::build()
 	bc_.addReadOnly(dialog_->delBtn);
 	bc_.addReadOnly(dialog_->upBtn);
 	bc_.addReadOnly(dialog_->downBtn);
-	bc_.addReadOnly(dialog_->textBefore);
 	bc_.addReadOnly(dialog_->textAftr);
 }
 
@@ -222,7 +223,6 @@ void FormCitation::setCiteButtons( State status ) const
 
 void FormCitation::setSize( int hbrsr, bool bibPresent ) const
 {
-	bool const natbib = false; // will eventually be input
 	hbrsr = max( hbrsr, 175 ); // limit max size of cite/bib brsrs
 
 	// dh1, dh2, dh3 are the vertical separation between elements.
@@ -230,22 +230,18 @@ void FormCitation::setSize( int hbrsr, bool bibPresent ) const
 	// so they are not changed by dynamic resizing
 	static int const dh1 = 30; // top of form to top of cite/bib brsrs;
 	                           // bottom of cite/bib brsrs to top of info;
-	                           // bottom of info to top next element;
-	                           // bottom of style to top textBefore;
+	                           // bottom of info to top text;
 	                           // bottom of text to top ok/cancel buttons.
-	static int const dh2 = 10; // bottom of textBefore to top textAftr;
-	                           // bottom of ok/cancel buttons to bottom form
+	static int const dh2 = 10; // bottom of ok/cancel buttons to bottom form
 	static int const dh3 = 5;  // spacing between add/delete/... buttons.
 
 	int const wbrsr  = dialog_->citeBrsr->w;
 	static int const hinfo  = dialog_->infoBrsr->h;
-	static int const hstyle = dialog_->style->h;
 	static int const htext  = dialog_->textAftr->h;
 	static int const hok    = dialog_->button_ok->h;
 
 	int hform = dh1 + hbrsr + dh1;
 	if (bibPresent ) hform += hinfo + dh1;
-	if (natbib ) hform += hstyle + dh1 + htext + dh2;
 	hform += htext + dh1 + hok + dh2;
 
 	if (hform != minh_) {
@@ -283,20 +279,6 @@ void FormCitation::setSize( int hbrsr, bool bibPresent ) const
 	} else
 		fl_hide_object( dialog_->infoBrsr );
 
-	if (natbib) {
-		x = dialog_->style->x;
-		fl_set_object_position( dialog_->style, x, y );
-		fl_show_object( dialog_->style );
-		x = dialog_->textBefore->x;
-		y += hstyle + dh1;
-		fl_set_object_position( dialog_->textBefore, x, y );
-		fl_show_object( dialog_->textBefore );
-		y += htext + dh2;
-	} else {
-		fl_hide_object( dialog_->style );
-		fl_hide_object( dialog_->textBefore );
-	}
-
 	x = dialog_->textAftr->x;
 	fl_set_object_position( dialog_->textAftr, x, y );
 
@@ -315,7 +297,7 @@ void FormCitation::setSize( int hbrsr, bool bibPresent ) const
 #ifdef WITH_WARNINGS
 #warning convert this to use the buttoncontroller
 #endif
-bool FormCitation::input( FL_OBJECT *, long data )
+bool FormCitation::input( FL_OBJECT * ob, long data )
 {
 	bool activate = false;
 	State cb = static_cast<State>( data );
@@ -463,6 +445,10 @@ bool FormCitation::input( FL_OBJECT *, long data )
 	default:
 		break;
 	}
+
+	// Fix (23 May 2001) to activate buttons when text is entered. Angus
+	if (ob == dialog_->textAftr) activate = true;
+
 	return activate;
 }
 

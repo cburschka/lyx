@@ -1,3 +1,15 @@
+2001-05-23  Angus Leeming <a.leeming@ic.ac.uk>
+
+	* src/frontends/xforms/FormCitation.C:
+	* src/frontends/xforms/forms/form_citation.fd:
+	tweaks to activate Ok,Apply buttons when text is entered.
+	Removed natbib cruft as it's now in a branch and was deactivated
+	anyway. 
+
+2001-05-22  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* lib/ui/default.ui: fix Insert>File>Ascii entries.
+
 2001-05-22  Peter Suetterlin  <P.Suetterlin@astro.uu.nl>
 
 	* lib/templates/aa.lyx: rename from aapaper.lyx

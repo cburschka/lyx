@@ -25,8 +25,6 @@ struct FD_form_citation {
 	FL_OBJECT *upBtn;
 	FL_OBJECT *downBtn;
 	FL_OBJECT *infoBrsr;
-	FL_OBJECT *style;
-	FL_OBJECT *textBefore;
 	FL_OBJECT *textAftr;
 	FL_OBJECT *button_restore;
 	FL_OBJECT *button_ok;
