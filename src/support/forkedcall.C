@@ -254,8 +254,12 @@ pid_t Forkedcall::generateChild()
 	pid_t cpid = ::fork();
 	if (cpid == 0) { // child
 		execvp(syscmd, argv);
-		// If something goes wrong, we end up here:
-		lyxerr << "execvp failed: "
+		// If something goes wrong, we end up here
+		string args;
+		int i = 0;
+		while (argv[i] != 0)
+			args += string(" ") + argv[i++];
+		lyxerr << "execvp of \"" << syscmd << args << "\" failed: "
 		       << strerror(errno) << endl;
 	}
 #else
