@@ -634,13 +634,14 @@ bool MathCursor::toggleLimits()
 
 void MathCursor::macroModeClose()
 {
+	MathInset::difference_type const t = macroNamePos();
+	if (t == -1)
+		return;
 	string s = macroName();
-	if (s.size()) {
-		size_type old = pos();
-		pos() -= s.size();
-		array().erase(pos(), old);
+	array().erase(t, pos());
+	pos() = t;
+	if (s != "\\")
 		interpret(s);
-	}
 }
 
 
@@ -1462,18 +1463,10 @@ bool MathCursor::interpret(char c)
 			return true;
 		}
 
-		if (name == "\\") {
-			insert(c, LM_TC_TEX);
-			macroModeClose();
-			return true;
-		}
-
 		macroModeClose();
 
-		if (c == '\\')
-			insert(c, LM_TC_TEX);
-		else if (c != ' ')
-			insert(c, lastcode_);
+		if (c != ' ')
+			interpret(c);
 
 		return true;
 	}
