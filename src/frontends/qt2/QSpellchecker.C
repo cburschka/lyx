@@ -52,6 +52,13 @@ void QSpellchecker::update_contents()
 	dialog_->replaceCO->clear();
 	dialog_->suggestionsLB->clear();
 	dialog_->spellcheckPR->setProgress(0);
+	dialog_->spellcheckPB->setEnabled(true);
+	dialog_->wordED->setEnabled(false);
+	dialog_->replaceCO->setEnabled(false);
+	dialog_->replacePB->setEnabled(false);
+	dialog_->ignorePB->setEnabled(false);
+	dialog_->replacePB_3->setEnabled(false);
+	dialog_->addPB->setEnabled(false);
 }
 
 
@@ -81,8 +88,14 @@ void QSpellchecker::replace()
 
 void QSpellchecker::spellcheck()
 {
-	controller().check();
 	dialog_->spellcheckPB->setEnabled(false);
+	dialog_->wordED->setEnabled(true);
+	dialog_->replaceCO->setEnabled(true);
+	dialog_->replacePB->setEnabled(true);
+	dialog_->ignorePB->setEnabled(true);
+	dialog_->replacePB_3->setEnabled(true);
+	dialog_->addPB->setEnabled(true);
+	controller().check();
 }
 
 
