@@ -240,7 +240,8 @@ int InsetFloat::latex(Buffer const * buf,
 	if (!floatPlacement_.empty()
 	    && floatPlacement_ != def_placement) {
 		placement = floatPlacement_;
-	} else if (!buf_placement.empty()
+	} else if (floatPlacement_.empty() 
+		   && !buf_placement.empty()
 		   && buf_placement != def_placement) {
 		placement = buf_placement;
 	}
