@@ -13,6 +13,8 @@
 #define LYX_LIB_H
 
 #include <ctime>
+#include <unistd.h>
+
 #include "LString.h"
 #include "gettext.h"
 #include "support/filetools.h"
@@ -44,4 +46,22 @@ inline string getUserName()
 		userName = _("unknown");
 	return userName;
 }
+
+// This should have been a namespace
+struct lyx {
+	static char * getcwd(char * buffer, size_t size) {
+#ifndef __EMX__
+		return ::getcwd(buffer, size);
+#else
+		return ::_getcwd2(buffer, size);
+#endif
+	};
+	static chdir(const char * name) {
+#ifndef __EMX__
+		return ::chdir(name);
+#else
+		return ::_chdir2(name);
+#endif
+	};
+};
 #endif

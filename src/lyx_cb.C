@@ -601,8 +601,9 @@ bool RunScript(Buffer *buffer, bool wait,
 				if (sh.empty())
 					sh = "cmd.exe";
 			}
-                        sh = lowercase(sh);
-                        if (sh.contains("cmd.exe") || sh.contains("4os2.exe"))
+                        sh = lowercase(sh);
+                        if (contains(sh, "cmd.exe")
+			    || contains(sh, "4os2.exe"))
                                 cmd = "start /min/n " + cmd;
                         else
                                 cmd += " &";
@@ -1076,13 +1077,14 @@ Buffer * NewLyxFile(string const & filename)
 {
 	// Split argument by :
 	string name;
-	string tmpname=split(filename, name, ':');
+	string tmpname = split(filename, name, ':');
 #ifdef __EMX__ // Fix me! lyx_cb.C may not be low level enough to allow this.
-	if (name.length() == 1 && isalpha((unsigned char) name[0]) &&
-	    (tmpname.prefixIs("/") || tmpname.prefixIs("\\"))) {
+	if (name.length() == 1
+	    && isalpha(static_cast<unsigned char>(name[0]))
+	    && (prefixIs(tmpname, "/") || prefixIs(tmpname, "\\"))) {
 		name += ':';
-		name += tmpname.token(':');
-		tmpname = split(tmpname, ':');
+		name += token(tmpname, ':', 0);
+		tmpname = split(tmpname, ':');
 	}
 #endif
 	lyxerr.debug() << "Arg is " << filename

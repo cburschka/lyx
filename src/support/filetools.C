@@ -28,6 +28,7 @@
 #include "support/path.h"        // I know it's OS/2 specific (SMiyata)
 #include "gettext.h"
 #include "LAssert.h"
+#include "lyxlib.h"
 
 // Which part of this is still necessary? (JMarc).
 #if HAVE_DIRENT_H
@@ -330,15 +331,7 @@ bool PutEnv(string const & envstr)
 
 bool PutEnvPath(string const & envstr)
 {
-        string pathlist = envstr;
-#ifdef WITH_WARNINGS
-#warning Verify that this is correct.
-#endif
-#ifdef __EMX__
-        pathlist = subst(pathlist, ':', ';');
-        pathlist = subst(pathlist, '/', '\\');
-#endif
-        return PutEnv(pathlist);
+        return PutEnv(envstr);
 }
 
 
@@ -386,14 +379,11 @@ string CreateTmpDir (string const & tempdir, string const & mask)
 static
 int DestroyTmpDir (string const & tmpdir, bool Allfiles)
 {
-	if ((Allfiles) && (DeleteAllFilesInDir (tmpdir))) return -1;
-	if (rmdir(tmpdir.c_str())) { 
 #ifdef __EMX__
-		if (errno == EBUSY) {
-			chdir(user_lyxdir.c_str()); // They are in the same drive.
-			if (!rmdir(tmpdir.c_str())) return 0;
-		}
+	Path p(user_lyxdir);
 #endif
+	if (Allfiles && DeleteAllFilesInDir(tmpdir)) return -1;
+	if (rmdir(tmpdir.c_str())) { 
 		WriteFSAlert(_("Error! Couldn't delete temporary directory:"), 
 			     tmpdir);
 		return -1;
@@ -421,23 +411,17 @@ string CreateLyXTmpDir (string const & deflt)
 	if ((!deflt.empty()) && (deflt  != "/tmp")) {
 		if (mkdir (deflt.c_str(), 0777)) {
 #ifdef __EMX__
-                        PathPush(user_lyxdir);
+                        Path p(user_lyxdir);
 #endif
 			t = CreateTmpDir (deflt.c_str(), "lyx_tmp");
-#ifdef __EMX__
-                        PathPop();
-#endif
                         return t;
 		} else
                         return deflt;
 	} else {
 #ifdef __EMX__
-		PathPush(user_lyxdir);
+		Path p(user_lyxdir);
 #endif
 		t = CreateTmpDir ("/tmp", "lyx_tmp");
-#ifdef __EMX__
-		PathPop();
-#endif
 		return t;
 	}
 }
@@ -473,15 +457,15 @@ string GetCWD ()
 {
   	int n = 256;	// Assume path is less than 256 chars
 	char * err;
-  	char * tbuf = new char [n];
+  	char * tbuf = new char[n];
 	string result;
   	
   	// Safe. Hopefully all getcwds behave this way!
-  	while (((err = getcwd (tbuf, n)) == 0) && (errno == ERANGE)) {
+  	while (((err = lyx::getcwd (tbuf, n)) == 0) && (errno == ERANGE)) {
 		// Buffer too small, double the buffersize and try again
     		delete[] tbuf;
-    		n = 2*n;
-    		tbuf = new char [n];
+    		n = 2 * n;
+    		tbuf = new char[n];
   	}
 
 	if (err) result = tbuf;
@@ -498,7 +482,7 @@ string OnlyPath(string const & Filename)
 
 	// Find last / or start of filename
 	string::size_type j = Filename.rfind('/');
-	if (j==string::npos)
+	if (j == string::npos)
 		return "./";
 	return Filename.substr(0, j + 1);
 }
@@ -512,7 +496,7 @@ string MakeAbsPath(string const & RelPath, string const & BasePath)
 	// checks for already absolute path
 	if (AbsolutePath(RelPath))
 #ifdef __EMX__
-		if(RelPath[0]!='/' || RelPath[0]!='\\')
+		if(RelPath[0]!='/' && RelPath[0]!='\\')
 #endif
 		return RelPath;
 
@@ -534,7 +518,7 @@ string MakeAbsPath(string const & RelPath, string const & BasePath)
 		TempBase = GetCWD();
 #ifdef __EMX__
 	if (AbsolutePath(TempRel))
-		return TempBase[0] + TempRel;
+		return TempBase.substr(0, 2) + TempRel;
 #endif
 
 	// Handle /./ at the end of the path
@@ -554,13 +538,13 @@ string MakeAbsPath(string const & RelPath, string const & BasePath)
 			// Remove one level of TempBase
 			int i = TempBase.length()-2;
 #ifndef __EMX__
-			if (i<0) i=0;
-			while (i>0 && TempBase[i] != '/') --i;
-			if (i>0)
+			if (i < 0) i = 0;
+			while (i > 0 && TempBase[i] != '/') --i;
+			if (i > 0)
 #else
-				if (i<2) i=2;
-			while (i>2 && TempBase[i] != '/') --i;
-			if (i>2)
+			if (i < 2) i = 2;
+			while (i > 2 && TempBase[i] != '/') --i;
+			if (i > 2)
 #endif
 				TempBase.erase(i, string::npos);
 			else
@@ -619,7 +603,7 @@ bool AbsolutePath(string const & path)
 #ifndef __EMX__
 	return (!path.empty() && path[0] == '/');
 #else
-	return (!path.empty() && path[0]=='/' || (isalpha((unsigned char) path[0]) && path[1]==':'));
+	return (!path.empty() && (path[0]=='/' || (isalpha((unsigned char) path[0]) && path.length()>1 && path[1]==':')));
 #endif
 }
 

@@ -139,8 +139,8 @@ void LyXComm::openConnection() {
 	rc = DosConnectNPipe(fd);
 	if (rc != NO_ERROR && rc != ERROR_PIPE_NOT_CONNECTED) {
 		errnum = TranslateOS2Error(rc);
-		lyxerr <<"LyXComm: Could not create pipe " + tmp);
-		lyxerr <<strerror(errnum);
+		lyxerr <<"LyXComm: Could not create pipe " << tmp
+		       << strerror(errnum) << endl;
 		return;
 	};
 	// Imported handles can be used both with OS/2 APIs and emx
@@ -386,8 +386,8 @@ void LyXComm::send(string const & msg) {
 	rc = DosResetBuffer(outfd);	// To avoid synchronization problems.
 	if (rc != NO_ERROR) {
 		errnum = TranslateOS2Error(rc);
-		lyxerr <<"LyXComm: Message could not be flushed: " +msg);
-		lyxerr <<strerror(errnum));
+		lyxerr << "LyXComm: Message could not be flushed: " << msg
+		       << '\n' << strerror(errnum) << endl;
 	}
 #endif
 }

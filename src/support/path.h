@@ -7,6 +7,7 @@
 #include "gettext.h"
 #include "support/filetools.h"
 #include "lyx_gui_misc.h"
+#include "lyxlib.h"
 
 class Path {
 public:
@@ -16,7 +17,7 @@ public:
 	{
 		if (!path.empty()) { 
 			pushedDir_ = GetCWD();
-			if (pushedDir_.empty() || chdir(path.c_str())) {
+			if (pushedDir_.empty() || lyx::chdir(path.c_str())) {
 				WriteFSAlert(_("Error: Could not change to directory: "), 
 					     path);
 			}
@@ -37,7 +38,7 @@ public:
 				     pushedDir_);
 			return 0;
 		}
-		if (chdir(pushedDir_.c_str())) {
+		if (lyx::chdir(pushedDir_.c_str())) {
 			WriteFSAlert(
 				_("Error: Could not change to directory: "), 
 				pushedDir_);
