@@ -102,6 +102,11 @@
 #include "FormTexinfo.h"
 #include "forms/form_texinfo.h"
 
+#ifdef HAVE_LIBAIKSAURUS
+#include "FormThesaurus.h"
+#include "forms/form_thesaurus.h"
+#endif
+ 
 #include "FormToc.h"
 #include "forms/form_toc.h"
 
@@ -490,7 +495,7 @@ extern "C" {
 	}
 
 
-	void gui_ShowThesaurus(string const & /*s*/, LyXView & , Dialogs &)
+	void gui_ShowThesaurus(string const & s, LyXView & lv, Dialogs & d)
 	{
 #ifdef HAVE_LIBAIKSAURUS
 		static GUI<ControlThesaurus, FormThesaurus,
