@@ -1,5 +1,7 @@
 2001-08-13  Juergen Vigna  <jug@sad.it>
 
+	* insetert.C (InsetERT): init status_ also in the 3rd constructor.
+
 	* insettabular.C (tabularFeatures): fixed fix where deleting the
 	last row didn't get the right actcell!
 

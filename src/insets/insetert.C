@@ -67,6 +67,10 @@ Inset * InsetERT::clone(Buffer const &, bool same_id) const
 InsetERT::InsetERT(string const & contents, bool collapsed)
 	: InsetCollapsable(collapsed)
 {
+	if (collapsed)
+		status_ = Collapsed;
+	else
+		status_ = Open;
 #ifndef INHERIT_LANG
 	LyXFont font(LyXFont::ALL_INHERIT, latex_language);
 #else 
