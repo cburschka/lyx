@@ -160,26 +160,21 @@ bool QLImage::setPixmap(Params const & params)
 
 	lyxerr[Debug::GRAPHICS] << "setPixmap()" << endl;
 
+	// FIXME: it's a fake kind of grayscale !
+ 
+	switch (params.display) {
+		case GrayscaleDisplay:
+		case MonochromeDisplay: {
+			QImage i(xformed_pixmap_.convertToImage());
+			xformed_pixmap_.convertFromImage(i, QPixmap::Mono);
+			break;
+		}
+ 
+		default:
+			break;
+	}
 // FIXME
 #if 0
-	int color_key;
-	switch (params.display) {
-	case MonochromeDisplay:
-		color_key = FL_IMAGE_MONO;
-		break;
-	case GrayscaleDisplay:
-		color_key = FL_IMAGE_GRAY;
-		break;
-	case ColorDisplay:
-	default: // NoDisplay cannot happen!
-		color_key = FL_IMAGE_RGB;
-		break;
-	}
-
-	if (color_key != FL_IMAGE_RGB) {
-		flimage_convert(image_, color_key, 0);
-	}
-
 	unsigned int fill = packedcolor(LColor::graphicsbg);
 	if (fill != image_->fill_color) {
 		// the background color has changed.
@@ -217,8 +212,8 @@ void QLImage::clip(Params const & params)
 		return;
 
 	int const xoffset_l = params.bb.xl;
-	int const yoffset_t = ( pixmap_.height() > params.bb.yt ?
-				pixmap_.height() - params.bb.yt : 0 );
+	int const yoffset_t = (pixmap_.height() > params.bb.yt ?
+				pixmap_.height() - params.bb.yt : 0);
 
 	xformed_pixmap_.resize(new_width, new_height);
 	QPainter p;
