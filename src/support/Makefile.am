@@ -30,7 +30,6 @@ libsupport_la_SOURCES = \
 	copy.C \
 	filetools.C \
 	filetools.h \
-	fmt.C \
 	forkedcall.C \
 	forkedcall.h \
 	forkedcontr.C \
