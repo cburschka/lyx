@@ -234,7 +234,7 @@ void InsetFormula::draw(PainterInfo & pi, int x, int y) const
 			//p.pain.rectangle(x, y - a, w, h, LColor::mathframe);
 		}
 
-		par_->draw(p, x, y);
+		par_->draw(p, x + offset_, y);
 	}
 
 	xo_ = x;
@@ -287,6 +287,14 @@ void InsetFormula::metrics(MetricsInfo & m, Dimension & dim) const
 		dim.asc += 1;
 		dim.des += 1;
 	}
+
+	if (display()) {
+		offset_ = (m.base.textwidth - dim.wid) / 2;
+		dim.wid = m.base.textwidth;
+	} else {
+		offset_ = 0;
+	}
+
 	dim_ = dim;
 }
 

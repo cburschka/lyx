@@ -78,6 +78,8 @@ private:
 
 	/// contents
 	MathAtom par_;
+	/// x offset for drawing displayed formula
+	mutable int offset_;
 
 	/// Use the Pimpl idiom to hide the internals of the previewer.
 	class PreviewImpl;
