@@ -34,6 +34,7 @@ QPrintDialog::QPrintDialog(QPrint * f)
 		form_, SLOT(slotClose()));
 }
 
+ 
 void QPrintDialog::change_adaptor()
 {
 	form_->changed();

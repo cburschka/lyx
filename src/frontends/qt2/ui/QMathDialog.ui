@@ -13,7 +13,7 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>356</width>
+            <width>348</width>
             <height>357</height>
         </rect>
     </property>
@@ -406,6 +406,12 @@
                                     <item>
                                         <property>
                                             <name>text</name>
+                                            <string>Dots</string>
+                                        </property>
+                                    </item>
+                                    <item>
+                                        <property>
+                                            <name>text</name>
                                             <string>Miscellaneous</string>
                                         </property>
                                     </item>
@@ -506,8 +512,8 @@
                             <property stdset="1">
                                 <name>minimumSize</name>
                                 <size>
-                                    <width>200</width>
-                                    <height>100</height>
+                                    <width>0</width>
+                                    <height>0</height>
                                 </size>
                             </property>
                             <property stdset="1">

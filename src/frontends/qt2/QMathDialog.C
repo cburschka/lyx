@@ -9,6 +9,7 @@
 #include <config.h>
 
 #include "support/filetools.h"
+#include "debug.h"
  
 #include "QMathDialog.h"
 #include "QMath.h"
@@ -20,6 +21,8 @@
 #include <qcombobox.h>
 #include <qlistbox.h>
 #include <qpixmap.h>
+#include <qscrollview.h>
+#include <qlayout.h>
  
 QMathDialog::QMathDialog(QMath * form)
 	: QMathDialogBase(0, 0, false, 0),
@@ -36,6 +39,7 @@ QMathDialog::QMathDialog(QMath * form)
 	addPanel("relations", latex_brel);
 	addPanel("greek", latex_greek);
 	addPanel("arrows", latex_arrow);
+	addPanel("dots", latex_dots);
 	addPanel("misc", latex_misc);
 	addPanel("amsoperators", latex_ams_ops);
 	addPanel("amsrelations", latex_ams_rel);
@@ -50,13 +54,19 @@ void QMathDialog::addPanel(string const & name, char const ** entries)
 {
 	static int id = 0;
  
-	IconPalette * p = new IconPalette(this, name.c_str());
+	QScrollView * view = new QScrollView(symbolsWS);
+	view->setHScrollBarMode(QScrollView::AlwaysOff);
+	view->setVScrollBarMode(QScrollView::AlwaysOn);
+ 
+	IconPalette * p = new IconPalette(view->viewport(), name.c_str());
+	view->addChild(p);
 	for (int i = 0; *entries[i]; ++i) {
 		string xpm_name = LibFileSearch("images/math/", entries[i], "xpm");
 		p->add(QPixmap(xpm_name.c_str()), entries[i], string("\\") + entries[i]);
 	}
 	connect(p, SIGNAL(button_clicked(string)), this, SLOT(symbol_clicked(string)));
-	symbolsWS->addWidget(p, id++);
+ 
+	symbolsWS->addWidget(view, id++);
 }
 
  
@@ -122,9 +132,11 @@ void QMathDialog::styleClicked()
  
 void QMathDialog::subscriptClicked()
 {
+	form_->subscript();
 }
 
  
 void QMathDialog::superscriptClicked()
 {
+	form_->superscript();
 }

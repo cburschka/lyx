@@ -53,10 +53,22 @@ void QMath::build_dialog()
 }
 
  
+// needless to say, this can't last for long
+extern BufferView * current_view;
+
+void QMath::subscript()
+{
+	current_view->owner()->dispatch(FuncRequest(LFUN_SUBSCRIPT));
+}
+
+
+void QMath::superscript()
+{
+	current_view->owner()->dispatch(FuncRequest(LFUN_SUPERSCRIPT));
+}
+
+
 void QMath::insert_symbol(string const & name)
 {
-	// needless to say, this can't last for long
-	extern BufferView * current_view;
-
 	current_view->owner()->dispatch(FuncRequest(LFUN_INSERT_MATH, '\\' + name));
 }

@@ -30,7 +30,7 @@ class QTempListBox : public QListBox {
 public:
 	QTempListBox()
 		: QListBox(0, 0,
-		WType_Popup | WDestructiveClose) {
+		WType_Modal | WType_Popup | WDestructiveClose) {
 		setHScrollBarMode(AlwaysOff);
 	}
  

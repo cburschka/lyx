@@ -34,6 +34,12 @@ public:
 	/// insert a math symbol into the doc
 	void insert_symbol(string const & name);
  
+	/// add a subscript
+	void subscript();
+
+	/// add a superscript
+	void superscript();
+ 
 private:
 	/// Apply changes
 	virtual void apply() {};

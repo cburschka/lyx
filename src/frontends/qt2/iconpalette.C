@@ -21,9 +21,7 @@ IconPalette::IconPalette(QWidget * parent, char const * name)
 	QVBoxLayout * top = new QVBoxLayout(this);
 	QHBoxLayout * row = new QHBoxLayout(top);
 	layout_ = new QGridLayout(row);
-	//row->addLayout(layout_);
 	row->addStretch(0);
-	//top->addLayout(row);
 	top->addStretch(0);
 }
 
@@ -31,14 +29,15 @@ IconPalette::IconPalette(QWidget * parent, char const * name)
 void IconPalette::add(QPixmap const & pixmap, string name, string tooltip)
 {
 	QPushButton * p = new QPushButton(this);
-	p->setFixedSize(35, 35);
+	p->setFixedSize(40, 40);
 	p->setPixmap(pixmap);
 	QToolTip::add(p, tooltip.c_str());
 	layout_->addWidget(p, crow_, ccol_);
-	if (++ccol_ == 6) {
+	if (++ccol_ == 5) {
 		ccol_ = 0;
 		++crow_;
 	}
+	resize(5 * 40, crow_ * 40);
 	button_map_[p] = name;
 	connect(p, SIGNAL(clicked()), this, SLOT(clicked())); 
 }
