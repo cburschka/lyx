@@ -578,6 +578,7 @@ void InsetTabular::edit(BufferView * bv, bool front)
 		lyxerr[Debug::INSETTEXT] << "InsetTabular::Cannot lock inset" << endl;
 		return;
 	}
+	finishUndo();
 	locked = true;
 	the_locking_inset = 0;
 	inset_x = 0;
@@ -588,7 +589,7 @@ void InsetTabular::edit(BufferView * bv, bool front)
 		actcell = tabular->GetNumberOfCells() - 1;
 	clearSelection();
 	resetPos(bv);
-	finishUndo();
+	bv->fitCursor();
 }
 
 
@@ -1276,7 +1277,10 @@ InsetTabular::localDispatch(BufferView * bv, kb_action action,
 	}
 	if (result < FINISHED) {
 		if (!the_locking_inset) {
-//			showInsetCursor(bv);
+			if (bv->fitCursor())
+				updateLocal(bv, FULL, false);
+			if (locked)
+				showInsetCursor(bv);
 		}
 	} else
 		bv->unlockInset(this);
@@ -1454,14 +1458,18 @@ void InsetTabular::hideInsetCursor(BufferView * bv)
 void InsetTabular::fitInsetCursor(BufferView * bv) const
 {
 	if (the_locking_inset) {
+		int old_first_y = bv->text->first_y;
 		the_locking_inset->fitInsetCursor(bv);
+		if (old_first_y != bv->text->first_y)
+			need_update = FULL;
 		return;
 	}
 	LyXFont font;
 
 	int const asc = lyxfont::maxAscent(font);
 	int const desc = lyxfont::maxDescent(font);
-	bv->fitLockedInsetCursor(cursor_.x(), cursor_.y(), asc, desc);
+	if (bv->fitLockedInsetCursor(cursor_.x(), cursor_.y(), asc, desc))
+		need_update = FULL;
 }
 
 

@@ -922,6 +922,8 @@ string const LyXFunc::dispatch(kb_action action, string argument)
 					TEXT()->cursorUp(owner->view());
 					moveCursorUpdate(true, false);
 					owner->showState();
+				} else {
+					owner->view()->update(TEXT(), BufferView::SELECT|BufferView::FITCUR);
 				}
 				goto exit_with_message;
 			} else if (result == UpdatableInset::FINISHED_DOWN) {

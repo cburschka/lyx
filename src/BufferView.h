@@ -64,7 +64,7 @@ public:
 	///
 	void redraw();
 	///
-	void fitCursor();
+	bool fitCursor();
 	///
 	void update();
 	//
@@ -169,7 +169,7 @@ public:
 	///
 	void hideLockedInsetCursor();
 	///
-	void fitLockedInsetCursor(int x, int y, int asc, int desc);
+	bool fitLockedInsetCursor(int x, int y, int asc, int desc);
 	///
 	int unlockInset(UpdatableInset * inset);
 	///

@@ -618,16 +618,17 @@ void InsetText::updateLocal(BufferView * bv, int what, bool mark_dirty) const
 	}
 	lt->fullRebreak(bv);
 	setUpdateStatus(bv, what);
-	bool flag = (((need_update != CURSOR) && (need_update != NONE)) ||
-		     (lt->status() != LyXText::UNCHANGED) || lt->selection.set());
+	bool flag = mark_dirty ||
+		(((need_update != CURSOR) && (need_update != NONE)) ||
+		 (lt->status() != LyXText::UNCHANGED) || lt->selection.set());
 	if (!lt->selection.set())
 		lt->selection.cursor = lt->cursor;
 	if (clear)
 		lt = 0;
+	if (locked && (need_update & CURSOR) && bv->fitCursor())
+		need_update |= FULL;
 	if (flag)
 		bv->updateInset(const_cast<InsetText *>(this), mark_dirty);
-	else
-		bv->fitCursor();
 
 	if (need_update == CURSOR)
 		need_update = NONE;
@@ -681,7 +682,6 @@ void InsetText::edit(BufferView * bv, int x, int y, unsigned int button)
 		font.setLanguage(bv->getParentLanguage(this));
 		setFont(bv, font, false);
 	}
-//	showInsetCursor(bv);
 	if (clear)
 		lt = 0;
 
@@ -689,6 +689,7 @@ void InsetText::edit(BufferView * bv, int x, int y, unsigned int button)
 	if (drawFrame_ == LOCKED)
 		code = CURSOR|DRAW_FRAME;
 	updateLocal(bv, code, false);
+	showInsetCursor(bv);
 
 	// Tell the paragraph dialog that we've entered an insettext.
 	bv->owner()->getDialogs()->updateParagraph();
@@ -733,13 +734,13 @@ void InsetText::edit(BufferView * bv, bool front)
 		font.setLanguage(bv->getParentLanguage(this));
 		setFont(bv, font, false);
 	}
-//	showInsetCursor(bv);
 	if (clear)
 		lt = 0;
 	int code = CURSOR;
 	if (drawFrame_ == LOCKED)
 		code = CURSOR|DRAW_FRAME;
 	updateLocal(bv, code, false);
+	showInsetCursor(bv);
 }
 
 
@@ -918,7 +919,7 @@ bool InsetText::updateInsetInInset(BufferView * bv, Inset * inset)
 
 void InsetText::insetButtonPress(BufferView * bv, int x, int y, int button)
 {
-	no_selection = false;
+	no_selection = true;
 
 	// use this to check mouse motion for selection!
 	mouse_x = x;
@@ -953,8 +954,8 @@ void InsetText::insetButtonPress(BufferView * bv, int x, int y, int button)
 		the_locking_inset->insetUnlock(bv);
 		the_locking_inset = 0;
 	}
-	if (inset)
-		no_selection = true;
+	if (!inset)
+		no_selection = false;
 
 	if (bv->theLockingInset()) {
 		if (isHighlyEditableInset(inset)) {
@@ -1057,13 +1058,15 @@ bool InsetText::insetButtonRelease(BufferView * bv, int x, int y, int button)
 
 void InsetText::insetMotionNotify(BufferView * bv, int x, int y, int state)
 {
-	if (no_selection || ((mouse_x == x) && (mouse_y == y)))
-		return;
 	if (the_locking_inset) {
 		the_locking_inset->insetMotionNotify(bv, x - inset_x,
 						     y - inset_y,state);
 		return;
 	}
+
+	if (no_selection || ((mouse_x == x) && (mouse_y == y)))
+		return;
+
 	bool clear = false;
 	if (!lt) {
 		lt = getLyXText(bv);
@@ -1147,6 +1150,7 @@ InsetText::localDispatch(BufferView * bv,
 #ifdef WITH_WARNINGS
 #warning I changed this to always return Dispatched maybe it is wrong (20011001 Jug)
 #endif
+			updateLocal(bv, CURSOR, false);
 			return result;
 		}
 	}
@@ -1322,7 +1326,7 @@ InsetText::localDispatch(BufferView * bv,
 			break;
 		}
 		lt->breakParagraph(bv, 0);
-		updwhat = FULL;
+		updwhat = CURSOR | FULL;
 		updflag = true;
 		break;
 	case LFUN_BREAKPARAGRAPHKEEPLAYOUT:
@@ -1331,7 +1335,7 @@ InsetText::localDispatch(BufferView * bv,
 			break;
 		}
 		lt->breakParagraph(bv, 1);
-		updwhat = FULL;
+		updwhat = CURSOR | FULL;
 		updflag = true;
 		break;
 
@@ -1343,7 +1347,7 @@ InsetText::localDispatch(BufferView * bv,
 		setUndo(bv, Undo::INSERT,
 			lt->cursor.par(), lt->cursor.par()->next());
 		lt->insertChar(bv, Paragraph::META_NEWLINE);
-		updwhat = CURSOR_PAR;
+		updwhat = CURSOR | CURSOR_PAR;
 		updflag = true;
 	}
 	break;
@@ -1454,6 +1458,9 @@ InsetText::localDispatch(BufferView * bv,
 
 	if (result >= FINISHED)
 		bv->unlockInset(this);
+
+	if (result == DISPATCHED_NOUPDATE && (need_update & FULL))
+		result = DISPATCHED;
 	return result;
 }
 
@@ -1771,7 +1778,8 @@ void InsetText::fitInsetCursor(BufferView * bv) const
 	int const asc = lyxfont::maxAscent(font);
 	int const desc = lyxfont::maxDescent(font);
 
-	bv->fitLockedInsetCursor(cx(bv), cy(bv), asc, desc);
+	if (bv->fitLockedInsetCursor(cx(bv), cy(bv), asc, desc))
+		need_update |= FULL;
 }
 
 

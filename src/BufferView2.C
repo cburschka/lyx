@@ -587,13 +587,16 @@ void BufferView::hideLockedInsetCursor()
 }
 
 
-void BufferView::fitLockedInsetCursor(int x, int y, int asc, int desc)
+bool BufferView::fitLockedInsetCursor(int x, int y, int asc, int desc)
 {
 	if (theLockingInset() && available()) {
 		y += text->cursor.y() + theLockingInset()->insetInInsetY();
-		if (pimpl_->screen_->fitManualCursor(text, this, x, y, asc, desc))
+		if (pimpl_->screen_->fitManualCursor(text, this, x, y, asc, desc)) {
 			updateScrollbar();
+			return true;
+		}
 	}
+	return false;
 }
 
 

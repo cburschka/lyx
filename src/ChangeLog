@@ -1,5 +1,15 @@
 2002-03-29  Juergen Vigna  <jug@sad.it>
 
+	* lyxfunc.C (dispatch): add a missing fitCursor call.
+
+	* BufferView2.C (fitLockedInsetCursor): the inset needs to know if
+	it was scrolled by a cursor move, so return the bool status.
+
+	* BufferView.C (fitCursor): return the bool flag also to the outside
+	world as this is needed.
+
+	* screen.C (toggleToggle): don't subtract the offset if it's positive.
+
 	* BufferView_pimpl.C (workAreaButtonPress): just lock the inset don't
 	call the edit() as it is not needed (and wrong) IMO.
 	(workAreaButtonPress): set the screen_first variable before evt.

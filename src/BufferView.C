@@ -83,9 +83,9 @@ void BufferView::redraw()
 }
 
 
-void BufferView::fitCursor()
+bool BufferView::fitCursor()
 {
-	pimpl_->fitCursor();
+	return pimpl_->fitCursor();
 }
 
 

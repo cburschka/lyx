@@ -522,10 +522,11 @@ void LyXScreen::toggleToggle(LyXText * text, BufferView * bv,
 		- text->toggle_end_cursor.row()->baseline()
 		+ text->toggle_end_cursor.row()->height();
 
+	int const offset = y_offset < 0 ? y_offset : 0;
 	int const bottom = min(max(bottom_tmp, text->first_y),
-		     static_cast<int>(text->first_y + owner.height()))-y_offset;
+		     static_cast<int>(text->first_y + owner.height()))-offset;
 	int const top = min(max(top_tmp, text->first_y),
-		  static_cast<int>(text->first_y + owner.height()))-y_offset;
+		  static_cast<int>(text->first_y + owner.height()))-offset;
 	
 	drawFromTo(text, bv, top - text->first_y,
 		   bottom - text->first_y, y_offset,

@@ -1,8 +1,14 @@
 2002-03-29  Juergen Vigna  <jug@sad.it>
 
+	* insettext.C (updateLocal): fixes to fitCursor calls when locking/
+	unlocking inset.
+
+	* insettabular.C (edit): call fitCursor().
+
 	* insettext.C (insetButtonPress): change behaviour of no_selection
 	to the one in the BufferView selection_possible and fix the spurious
 	selection bug with it.
+	(localDispatch): revoke selection on BREAK... functions.
 
 2002-03-28  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
