@@ -57,7 +57,9 @@ CutAndPaste::availableSelections(Buffer const & buffer)
 	CutStack::const_iterator cit = cuts.begin();
 	CutStack::const_iterator end = cuts.end();
 	for (; cit != end; ++cit) {
-		ParagraphList const & pars = cit->first;
+		// we do not use cit-> here because gcc 2.9x does not
+		// like it (JMarc)
+		ParagraphList const & pars = (*cit).first;
 		string asciiSel;
 		ParagraphList::const_iterator pit = pars.begin();
 		ParagraphList::const_iterator pend = pars.end();

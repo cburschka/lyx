@@ -1,3 +1,8 @@
+2003-06-19  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* CutAndPaste.C (availableSelections): small compilation fix for
+	ancient (gcc 2.9x) compilers
+
 2003-06-18  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* text3.C (cursorNext): add tmp var
