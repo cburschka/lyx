@@ -139,23 +139,39 @@ MathCursor::~MathCursor()
 	delete imacro_;
 }
 
-void MathCursor::push(MathInset * par, bool first)
+void MathCursor::pushLeft(MathInset * par)
 {
 	MathCursorPos p;
 	p.par_ = par;
-	if (first)
-		par->idxFirst(p.idx_, p.pos_);
-	else
-		par->idxLast(p.idx_, p.pos_);
+	par->idxFirst(p.idx_, p.pos_);
 	Cursor_.push_back(p);
 }
 
 
-bool MathCursor::pop()
+void MathCursor::pushRight(MathInset * par)
+{
+	plainLeft();
+	MathCursorPos p;
+	p.par_ = par;
+	par->idxLast(p.idx_, p.pos_);
+	Cursor_.push_back(p);
+}
+
+
+bool MathCursor::popLeft()
 {
 	if (Cursor_.size() <= 1)
 		return false;
 	Cursor_.pop_back();
+	return true;
+}
+
+bool MathCursor::popRight()
+{
+	if (Cursor_.size() <= 1)
+		return false;
+	Cursor_.pop_back();
+	plainRight();
 	return true;
 }
 
@@ -258,8 +274,7 @@ bool MathCursor::left(bool sel)
 
 	MathInset * p = prevInset();
 	if (openable(p, sel, false)) {
-		plainLeft();
-		push(p, false);
+		pushRight(p);
 		return true;
 	} 
 	if (pos()) {
@@ -268,7 +283,7 @@ bool MathCursor::left(bool sel)
 	}
 	if (par()->idxLeft(idx(), pos()))
 		return true;
-	if (pop())
+	if (popLeft())
 		return true;
 	return false;
 }
@@ -286,20 +301,17 @@ bool MathCursor::right(bool sel)
 
 	MathInset * p = nextInset();
 	if (openable(p, sel, false)) {
-		push(p, true);
+		pushLeft(p);
 		return true;
 	}
 	if (pos() != array().size()) {
 		plainRight();
 		return true;
 	}
-	if (par()->idxRight(idx(), pos())) {
+	if (par()->idxRight(idx(), pos()))
 		return true;
-	}
-	if (pop()) {
-		plainRight();
+	if (popRight())
 		return true;
-	}
 	return false;
 }
 
@@ -307,14 +319,14 @@ bool MathCursor::right(bool sel)
 void MathCursor::first()
 {
 	Cursor_.clear();
-	push(outerPar(), true);
+	pushLeft(outerPar());
 }
 
 
 void MathCursor::last()
 {
-	Cursor_.clear();
-	push(outerPar(), false);
+	first();
+	end();
 }
 
 
@@ -354,11 +366,10 @@ void MathCursor::setPos(int x, int y)
 		MathInset * n = nextInset();
 		MathInset * p = prevInset();
 		if (openable(n, selection_, true) && n->covers(x, y))
-			push(n, true);
-		else if (openable(p, selection_, true) && p->covers(x, y)) {
-			plainLeft();
-			push(p, false);
-		} else 
+			pushLeft(n);
+		else if (openable(p, selection_, true) && p->covers(x, y))
+			pushRight(p);
+		else 
 			break;
 	}
 	dump("setPos 2");
@@ -371,7 +382,7 @@ void MathCursor::home()
 	macroModeClose();
 	clearLastCode();
 	if (!par()->idxHome(idx(), pos())) 
-		pop();
+		popLeft();
 	dump("home 2");
 }
 
@@ -381,10 +392,8 @@ void MathCursor::end()
 	dump("end 1");
 	macroModeClose();
 	clearLastCode();
-	if (!par()->idxEnd(idx(), pos())) {
-		pop();
-		++pos();
-	}
+	if (!par()->idxEnd(idx(), pos()))
+		popRight();
 	dump("end 2");
 }
 
@@ -485,7 +494,7 @@ void MathCursor::erase()
 		bool popit;
 		bool removeit;
 		par()->idxDelete(idx(), popit, removeit);
-		if (popit && pop() && removeit)
+		if (popit && popLeft() && removeit)
 			plainErase();
 		return;
 	}
@@ -523,7 +532,7 @@ bool MathCursor::up(bool sel)
 			pos() = xarray().x2pos(x);
 			return true;
 		}
-		if (pop()) 
+		if (popLeft()) 
 			return true;
 		return false;
 	}
@@ -533,7 +542,7 @@ bool MathCursor::up(bool sel)
 	if (p) {
 		int idxx, poss;
 		if (p->idxFirstUp(idxx, poss)) {
-			push(p, true);
+			pushLeft(p);
 			idx() = idxx;
 			pos() = poss;
 			dump("up 3");
@@ -545,8 +554,7 @@ bool MathCursor::up(bool sel)
 	if (p) {
 		int idxx, poss;
 		if (p->idxLastUp(idxx, poss)) {
-			plainLeft();
-			push(p, false);
+			pushRight(p);
 			idx() = idxx;
 			pos() = poss;
 			dump("up 4");
@@ -559,7 +567,7 @@ bool MathCursor::up(bool sel)
 		pos() = xarray().x2pos(x);
 		return true;
 	}
-	if (pop())
+	if (popLeft())
 		return true;
 	return false;
 }
@@ -577,7 +585,7 @@ bool MathCursor::down(bool sel)
 			pos() = xarray().x2pos(x);
 			return true;
 		}
-		if (pop()) 
+		if (popLeft()) 
 			return true;
 		return false;
 	}
@@ -588,7 +596,7 @@ bool MathCursor::down(bool sel)
 		int idxx = 0;
 		int poss = 0;
 		if (p->idxFirstDown(idxx, poss)) {
-			push(p, true);
+			pushLeft(p);
 			idx() = idxx;
 			pos() = poss;
 			dump("Down 3");
@@ -601,8 +609,7 @@ bool MathCursor::down(bool sel)
 		int idxx = 0;
 		int poss = 0;
 		if (p->idxLastDown(idxx, poss)) {
-			plainLeft();
-			push(p, false);
+			pushRight(p);
 			idx() = idxx;
 			pos() = poss;
 			dump("Down 4");
@@ -615,7 +622,7 @@ bool MathCursor::down(bool sel)
 		pos() = xarray().x2pos(x);
 		return true;
 	}
-	if (pop())
+	if (popLeft())
 		return true;
 	return false;
 }
@@ -662,8 +669,7 @@ void MathCursor::interpret(string const & s)
 			}
 			insert(p);
 		}
-		plainLeft();
-		push(p, true);
+		pushRight(p);
 		if (up)
 			p->up(true);
 		else
@@ -925,7 +931,7 @@ void MathCursor::handleAccent(string const & name)
 		p->cell(0) = theSelection.glue();
 	}
 	insert(p);
-	push(p, true);
+	pushRight(p);
 }
 
 
@@ -937,8 +943,7 @@ void MathCursor::handleDelim(int l, int r)
 		p->cell(0) = theSelection.glue();
 	}
 	insert(p);
-	plainLeft();
-	push(p, true);
+	pushRight(p);
 }
 
 
@@ -1044,7 +1049,7 @@ void MathCursor::pullArg(bool goright)
 	// pullArg
 	dump("pullarg");
 	MathArray a = array();
-	if (pop()) {
+	if (popLeft()) {
 		plainErase();
 		array().insert(pos(), a);
 		if (goright) 
@@ -1066,13 +1071,23 @@ void MathCursor::normalize() const
 #endif
 	MathCursor * it = const_cast<MathCursor *>(this);
 
-	if (idx() < 0 || idx() > par()->nargs() - 1)
-		lyxerr << "this should not really happen - 1\n";
+	if (idx() < 0)
+		lyxerr << "this should not really happen - 1: " << idx() << "\n";
+ 	if (idx() >= par()->nargs()) {
+		lyxerr << "this should not really happen - 2: "
+		       << idx() << " " << par()->nargs() << "\n";
+		dump("error 2");
+	}
 	it->idx()    = max(idx(), 0);
  	it->idx()    = min(idx(), par()->nargs() - 1);
 
-	if (pos() < 0 || pos() > array().size())
-		lyxerr << "this should not really happen - 2\n";
+	if (pos() < 0)
+		lyxerr << "this should not really happen - 3: " << pos() << "\n";
+	if (pos() > array().size()) {
+		lyxerr << "this should not really happen - 4: "
+		       << pos() << " " << array().size() << "\n";
+		dump("error 4");
+	}
 	it->pos() = max(pos(), 0);
 	it->pos() = min(pos(), array().size());
 }

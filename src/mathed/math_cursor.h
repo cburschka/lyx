@@ -198,21 +198,14 @@ public:
 	/// Make sure cursor position is valid
 	void normalize() const;
 	
-	/// Enter a new MathInset from the front or the back
-	void push(MathInset * par, bool first);
-	/// Leave current MathInset
-	bool pop();
-
-//private:
-	///
-	InsetFormulaBase * const formula_;
-	///
-	MathTextCodes lastcode_;
-	///
-	MathFuncInset * imacro_;
-	// Selection stuff
-	/// do we currently select
-	bool selection_;
+	/// enter a MathInset from the front
+	void pushLeft(MathInset * par);
+	/// enter a MathInset from the back
+	void pushRight(MathInset * par);
+	/// leave current MathInset to the left
+	bool popLeft();
+	/// leave current MathInset to the left
+	bool popRight();
 
 	///
 	MathArray & array() const;
@@ -272,6 +265,16 @@ private:
 	int & pos();
 	///
 	int & idx();
+
+	///
+	InsetFormulaBase * const formula_;
+	///
+	MathTextCodes lastcode_;
+	///
+	MathFuncInset * imacro_;
+	// Selection stuff
+	/// do we currently select
+	bool selection_;
 };
 
 extern MathCursor * mathcursor;

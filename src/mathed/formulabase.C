@@ -830,8 +830,8 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 					mathcursor->insert(c, LM_TC_TEXTRM);
 				else if (was_macro)
 					mathcursor->macroModeClose();
-				else if (mathcursor->pop())
-					mathcursor->plainRight();
+				else if (mathcursor->popRight())
+					;
 				else {
 					// this would not work if the inset is in an table!
 					//bv->text->cursorRight(bv, true);
