@@ -1,3 +1,8 @@
+2001-01-29  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* BufferView_pimpl.h: change type of Position::par_pos to
+	LyXParagraph::size_type. 
+
 2001-01-29  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* BufferView_pimpl.C (savePosition, restorePosition): Write
@@ -7,7 +12,7 @@
 
 	* buffer.C (makeDocBookFile): adds support for document language.
 	A silly restriction on the name of LatexCommand types where removed.
-	Added support for CDATA sections, allows to chars unsecaped, used
+	Added support for CDATA sections, allows to chars unescaped, used
 	among others in code, to avoid escape < and >.
 	
 2001-01-27  Dekel Tsur  <dekelts@tau.ac.il>

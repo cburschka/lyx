@@ -153,11 +153,11 @@ private:
                 /// Cursor paragraph Id
                 int par_id;
                 /// Cursor position
-                int par_pos;
+                LyXParagraph::size_type par_pos;
 		///
 		Position() : par_id(0), par_pos(0) {}
 		///
-		Position(string const & f, int id, int pos)
+		Position(string const & f, int id, LyXParagraph::size_type pos)
                         : filename(f), par_id(id), par_pos(pos) {}
 	};
 	std::vector<Position> saved_positions;
