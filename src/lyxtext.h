@@ -626,6 +626,9 @@ public:
 
 	/// return true if this is owned by an inset.
 	bool isInInset() const;
+
+	///
+	void adjustCursor(int row, int offset);
 };
 
 /// return the default height of a row in pixels, considering font zoom

@@ -130,45 +130,9 @@ private:
 	RowList::iterator irow_;
 };
 
-/// these three dictate the others
-inline
-bool operator==(LyXCursor const & a, LyXCursor const & b)
-{
-	return (a.par() == b.par())
-		&& (a.pos() == b.pos())
-		&& a.boundary() == b.boundary();
-}
-
-inline
-bool operator!=(LyXCursor const & a, LyXCursor const & b)
-{
-	return !(a == b);
-}
-
-/// only compares y() and pos(). Can this be done in another way?
-inline
-bool operator<(LyXCursor const & a, LyXCursor const & b)
-{
-	return (a.y() < b.y() && a.pos() < b.pos());
-}
-
-inline
-bool operator>(LyXCursor const & a, LyXCursor const & b)
-{
-	return b < a;
-}
-
-inline
-bool operator>=(LyXCursor const & a, LyXCursor const & b)
-{
-	return !(a < b);
-}
-
-
-inline
-bool operator<=(LyXCursor const & a, LyXCursor const & b)
-{
-	return !(a > b);
-}
+/// 
+bool operator==(LyXCursor const & a, LyXCursor const & b);
+///
+bool operator!=(LyXCursor const & a, LyXCursor const & b);
 
 #endif // LYXCURSOR_H

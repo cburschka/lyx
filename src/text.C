@@ -2363,8 +2363,6 @@ void LyXText::changeCase(LyXText::TextCase action)
 		setCursor(to.par(), to.pos() + 1);
 	}
 
-	lyx::Assert(from <= to);
-
 	setUndo(bv(), Undo::FINISH, from.par(), to.par());
 
 	pos_type pos = from.pos();

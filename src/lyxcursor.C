@@ -133,3 +133,18 @@ RowList::iterator LyXCursor::irow() const
 {
 	return irow_;
 }
+
+
+bool operator==(LyXCursor const & a, LyXCursor const & b)
+{
+	return a.par() == b.par()
+	    && a.pos() == b.pos()
+	    && a.boundary() == b.boundary();
+}
+
+
+bool operator!=(LyXCursor const & a, LyXCursor const & b)
+{
+	return !(a == b);
+}
+
