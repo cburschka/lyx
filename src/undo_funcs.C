@@ -321,18 +321,11 @@ bool createUndo(BufferView * bv, Undo::undo_kind kind,
 	}
 
 	// create a new Undo
-	Paragraph * undopar;
+	Paragraph * undopar = 0; // nothing to replace yet (undo of delete maybe)
 
 	Paragraph * start = first;
-	Paragraph * end = 0;
+	Paragraph * end = &*boost::prior(itbehind);
 
-	if (behind)
-		end = const_cast<Paragraph*>(behind->previous());
-	else {
-		end = start;
-		while (end->next())
-			end = end->next();
-	}
 	if (start && end && (start != end->next()) &&
 	    ((before_number != behind_number) ||
 		 ((before_number < 0) && (behind_number < 0))))
@@ -361,11 +354,10 @@ bool createUndo(BufferView * bv, Undo::undo_kind kind,
 			tmppar2 = tmppar2->next();
 		}
 		tmppar2->next(0);
-	} else
-		undopar = 0; // nothing to replace (undo of delete maybe)
+	}
 
 	int cursor_par = undoCursor(bv).par()->id();
-	int cursor_pos =  undoCursor(bv).pos();
+	int cursor_pos = undoCursor(bv).pos();
 
 	u.reset(new Undo(kind, inset_id,
 		before_number, behind_number,
