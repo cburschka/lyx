@@ -1,15 +1,17 @@
 #% Do not delete the line below; configure depends on this
 #  \DeclareLaTeXClass{memoir}
-# Memoir textclass definition file (poor man's version).
+# Memoir textclass definition file
 # Author: Jürgen Spitzmüller <spitzmueller@gmx.de>
+# Improvements by: Bennett Helm <bennett.helm@fandm.edu>
 # feel free to contribute missing features!
 
-Input stdclass.inc
-Input numreport.inc
 
-
-Sides                  2
-PageStyle              Headings
+Columns            1
+Sides                 2
+SecNumDepth   2
+TocDepth           2
+DefaultStyle       Standard
+PageStyle           Headings
 
 
 ClassOptions
@@ -19,14 +21,24 @@ ClassOptions
 End
 
 
-Style Bibliography
-	TopSep               4
-	LabelString          Bibliography
-	LabelFont
-	  Series             Bold
-	  Size               Huge
-	EndFont
+Style Standard
+	Margin                Static
+	LatexType             Paragraph
+	LatexName             dummy
+	ParIndent             MM
+	ParSkip               0.4
+	Align                 Block
+	AlignPossible         Block, Left, Right, Center
+	LabelType             No_Label
 End
+
+
+Input stdlists.inc
+Input stdcounters.inc
+Input stdfloats.inc
+Input numreport.inc
+Input stdsections.inc
+Input stdstarsections.inc
 
 
 Style Chapterprecis
@@ -84,4 +96,32 @@ Style Poemtitle*
 	CopyStyle             Poemtitle
 	LatexName             poemtitle*
 	OptionalArgs          0
+End
+
+
+Input stdtitle.inc
+Input stdstruct.inc
+
+
+Style Bibliography
+	TopSep               4
+	LabelString          Bibliography
+	LabelFont
+	  Series             Bold
+	  Size               Huge
+	EndFont
+End
+
+
+Input lyxmacros.inc
+Input stdlayouts.inc
+
+Style Legend
+	LatexType           Command
+	LatexName           legend
+	NeedProtect         1
+	NextNoIndent        1
+	ParSkip              0.4
+	Align                   Center
+	AlignPossible      Center
 End
