@@ -1,3 +1,6 @@
+2002-05-24  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* math_autocorrect.C: include vector and add a using statement.
 
 2002-05-23  André Pönitz <poenitz@gmx.net>
 
@@ -10,7 +13,7 @@
 
 	* formula.C:
 	* formulabase.C: LyXView moved into frontends/
- 
+
 2002-05-23  John Levon  <moz@compsoc.man.ac.uk>
 
 	* formula.C:
@@ -34,7 +37,7 @@
 	* math_unknowninset.C:
 	* math_xdata.C:
 	* math_xyarrowinset.C: move Painter to frontends/
- 
+
 2002-05-22  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* math_exintinset.C: use more specific smart_ptr header.

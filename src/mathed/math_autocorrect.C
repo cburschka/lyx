@@ -10,12 +10,13 @@
 
 #include <iostream>
 #include <fstream>
+#include <vector>
 
 using std::ifstream;
 using std::istream;
 using std::ostream;
 using std::endl;
-
+using std::vector;
 
 namespace {
 
@@ -30,11 +31,11 @@ public:
 	///
 	void write(ostream & os) const;
 private:
-	///	
+	///
 	MathAtom from1_;
-	///	
+	///
 	char from2_;
-	///	
+	///
 	MathAtom to_;
 };
 
@@ -98,17 +99,17 @@ ostream & operator<<(ostream & os, Correction & corr)
 
 class Corrections {
 public:
-	///	
+	///
 	typedef vector<Correction>::const_iterator const_iterator;
-	///	
+	///
 	Corrections() {}
-	///	
+	///
 	void insert(const Correction & corr) { data_.push_back(corr); }
 	///
 	bool correct(MathAtom & at, char c) const;
 private:
-	///	
-	vector<Correction> data_;	
+	///
+	vector<Correction> data_;
 };
 
 
