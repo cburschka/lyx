@@ -57,6 +57,11 @@ QLyXKeySym
 
 	- getISOEncoded - get this to work (*)
 	 
+
+QMathsPanel
+
+	- implement me (*)
+ 
 QPreferences
 
 	- implement me (*)
@@ -65,14 +70,6 @@ QSendTo
 
 	- implement me
  
-QShowInfo
-
-	- dunno about this one
- 
 QTabular
 
 	- implement me (need MVC) (*)
- 
-QtView
-
-	- decide what to do about prohibit/allowInput 

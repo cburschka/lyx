@@ -141,15 +141,16 @@ void QtView::show(int x, int y, string const & title)
 }
 
 
+// it's not at all clear that these are actually
+// needed anywhere in the source. Something to
+// check on a rainy day.
 void QtView::prohibitInput() const
 {
-	// FIXME
-	//setFocusPolicy(QWidget::NoFocus);
+	setFocusPolicy(QWidget::NoFocus);
 }
 
 
 void QtView::allowInput() const
 {
-	// FIXME
-	//setFocusPolicy(QWidget::strongFocus);
+	setFocusPolicy(QWidget::strongFocus);
 }
