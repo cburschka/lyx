@@ -2169,7 +2169,7 @@ string const LyXRC::getDescription(LyXRCTags tag)
 		break;
 
 	case RC_INDEX_COMMAND:
-		str = _("Define the options of makeindex (cf. man makeindex) or select an alternative compiler (e.g. xindy).");
+		str = _("Define the options of makeindex (cf. man makeindex) or select an alternative compiler. E.g., using xindy/make-rules, the command string would be \"makeindex.sh -m $$lang\".");
 		break;
 
 	case RC_CURSOR_FOLLOWS_SCROLLBAR:
