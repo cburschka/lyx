@@ -207,7 +207,7 @@ void Bullet::generateText() const
 }
 
 
-string const Bullet::bulletSize(short int s)
+string const Bullet::bulletSize(int s)
 {
 	// use a parameter rather than hard code `size' in here
 	// in case some future function may want to retrieve
@@ -223,7 +223,7 @@ string const Bullet::bulletSize(short int s)
 }
 
 
-string const Bullet::bulletEntry(short int f, short int c)
+string const Bullet::bulletEntry(int f, int c)
 {
 	// Despite how this may at first appear the static local variables
 	// are only initialized once..

@@ -1370,7 +1370,7 @@ void Buffer::insertStringAsLines(Paragraph *& par, Paragraph::size_type & pos,
 				++pos;
 				space_inserted = true;
 			} else {
-				const Paragraph::value_type nb = 8 - pos % 8;
+				const Paragraph::size_type nb = 8 - pos % 8;
 				for (Paragraph::size_type a = 0; 
 				     a < nb ; ++a) {
 					par->insertChar(pos, ' ', font);
@@ -1747,7 +1747,7 @@ string const Buffer::asciiParagraph(Paragraph const * par,
 	Paragraph::depth_type depth = 0;
 	int ltype = 0;
 	Paragraph::depth_type ltype_depth = 0;
-	unsigned int currlinelen = 0;
+	string::size_type currlinelen = 0;
 	bool ref_printed = false;
 
 	int noparbreak = 0;

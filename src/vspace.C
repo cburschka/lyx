@@ -52,7 +52,7 @@ int unit_index;
 
 
 inline
-void lyx_advance(string & data, unsigned int n)
+void lyx_advance(string & data, string::size_type n)
 {
 	data.erase(0, n);
 }
@@ -467,7 +467,7 @@ VSpace::VSpace (string const & data)
 	float   value;
 	string input  = strip(data);
 
-	int length = input.length();
+	string::size_type const length = input.length();
 
 	if (length > 1 && input[length-1] == '*') {
 		kp = true;
@@ -597,7 +597,7 @@ int VSpace::inPixels(int default_height, int default_skip, int default_width) co
 		// can't display negative anyway
 		result = 0.0;
 		value = len.value();
-		short val_sign = value < 0.0 ? -1 : 1;
+		int val_sign = value < 0.0 ? -1 : 1;
 		
 		switch (len.unit()) {
 		case LyXLength::SP:

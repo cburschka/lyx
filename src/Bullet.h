@@ -78,9 +78,9 @@ private:
 	///
 	void generateText() const;
 	///
-	static string const bulletSize(short int);
+	static string const bulletSize(int);
 	///
-	static string const bulletEntry(short int, short int);
+	static string const bulletEntry(int, int);
 	
 	///
 	int font;

@@ -64,7 +64,7 @@ struct LyXLex::Pimpl : boost::noncopyable {
 	///
 	char buff[LEX_MAX_BUFF];
 	///
-	short status;
+	int status;
 	///
 	int lineno;
 	///

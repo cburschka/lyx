@@ -806,6 +806,9 @@ void BufferView::Pimpl::workAreaButtonRelease(int x, int y,
 		return;
 	}
 
+#ifdef WITH_WARNINGS
+#warning variable c is set but never used. What is it good for?? (JMarc)
+#endif
 	// check whether we want to open a float
 	if (bv_->text) {
 		bool hit = false;

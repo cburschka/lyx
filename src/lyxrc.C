@@ -714,7 +714,8 @@ int LyXRC::read(string const & filename)
 			readBindFileIfNeeded();
 
 			// !!!chb, dynamic key binding...
-			int action, res = 0;
+			int action = 0;
+			string::size_type res = 0;
 			string seq, cmd;
 			
 			if (lexrc.next()) {

@@ -26,7 +26,7 @@ public:
 	/** Bind a key-sequence to an action.
 	    Returns 0 on success. Otherwise, position in string where
 	    error occured. */
-	int bind(string const & seq, int action);
+	string::size_type bind(string const & seq, int action);
 
 	///
 	void print(string & buf) const;

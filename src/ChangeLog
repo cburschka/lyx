@@ -1,5 +1,27 @@
 2001-10-01  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
+	* lyxrc.C (read): 
+	* vspace.C (inPixels): 
+	(lyx_advance): 
+	* kbmap.C (bind): 
+	* buffer.C (insertStringAsLines): 
+	(asciiParagraph): fix types to be large enough
+
+	* lyxlex_pimpl.h: change member status from short to int
+
+	* layout.h: fix type of endlabeltype
+
+	* kbmap.C (bind): 
+	* kbsequence.C (parse): change return type to string::size_type
+
+	* LaTeX.C (updateBibtexDependencies): comment out unneeded
+	variable
+
+	* Bullet.C (bulletSize): 
+	(bulletEntry): do not use short ints as parameters
+
+	* BufferView2.C (insertLyXFile): change a char to an int.
+
 	* WorkArea.C (WorkArea): remove unneeded floats in computation
 
 2001-10-01  Dekel Tsur  <dekelts@tau.ac.il>

@@ -93,7 +93,7 @@ int kb_sequence::addkey(unsigned int key,
                 Prefixes are S-, C-, M- for shift, control, meta
 \* ---F------------------------------------------------------------------- */
 
-int kb_sequence::parse(string const & s)
+string::size_type kb_sequence::parse(string const & s)
 {
 	if (s.empty()) return 1;
 

@@ -302,7 +302,7 @@ public:
 	char labeltype; // add approp. type
 
 	///
-	char endlabeltype;
+	LYX_END_LABEL_TYPES endlabeltype;
 
 	///
 	LYX_MARGIN_TYPE margintype;
