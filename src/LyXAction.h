@@ -13,10 +13,14 @@
 #ifndef LYXACTION_H
 #define LYXACTION_H
 
+#include "lfuns.h"
+
+#include "LString.h"
+#include <boost/utility.hpp>
 #include <map>
 
-#include "funcrequest.h"
-#include <boost/utility.hpp>
+
+class FuncRequest;
 
 /**
  * This class is a container for LyX actions. It also

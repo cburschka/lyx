@@ -18,7 +18,7 @@
 #ifndef LYXRC_H
 #define LYXRC_H
 
-#include "paper.h" 
+#include "paper.h"
 #include "graphics/GraphicsTypes.h"
 
 // #include <boost/utility.hpp>

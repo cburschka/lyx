@@ -11,12 +11,13 @@
 #include <config.h>
 
 #include "ControlErrorList.h"
-#include "support/lstrings.h" // tostr
-#include "errorlist.h"
 #include "buffer.h"
 #include "BufferView.h"
-#include "lyxtext.h"
 #include "debug.h"
+#include "errorlist.h"
+#include "iterators.h"
+#include "lyxtext.h"
+#include "support/lstrings.h" // tostr
 
 
 using std::endl;

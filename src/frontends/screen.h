@@ -13,8 +13,6 @@
 #ifndef SCREEN_H
 #define SCREEN_H
 
-#include "RowList.h"
-
 class LyXText;
 class LyXCursor;
 class WorkArea;

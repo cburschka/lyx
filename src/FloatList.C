@@ -11,6 +11,7 @@
 #include <config.h>
 
 #include "FloatList.h"
+#include "Floating.h"
 #include "gettext.h"
 
 // This class is now mostly finished, except one thing, it is a global

@@ -19,6 +19,7 @@
 #include "debug.h"
 #include "dimension.h"
 #include "funcrequest.h"
+#include "FuncStatus.h"
 #include "gettext.h"
 #include "language.h"
 #include "LaTeXFeatures.h"

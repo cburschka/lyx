@@ -25,6 +25,7 @@
 #include "intl.h"
 #include "lyxrc.h"
 #include "encoding.h"
+#include "funcrequest.h"
 #include "frontends/LyXView.h"
 #include "frontends/Painter.h"
 #include "frontends/font_metrics.h"

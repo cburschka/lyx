@@ -15,13 +15,13 @@
 #ifndef LYXFUNC_H
 #define LYXFUNC_H
 
-#include "FuncStatus.h"
 #include "kbsequence.h"
 #include "lfuns.h"
 #include "LString.h"
 
 #include <boost/signals/trackable.hpp>
 
+class FuncStatus;
 class LyXView;
 class LyXText;
 class FuncRequest;

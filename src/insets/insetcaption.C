@@ -15,6 +15,7 @@
 #include "frontends/font_metrics.h"
 #include "BufferView.h"
 #include "buffer.h"
+#include "Floating.h"
 #include "FloatList.h"
 #include "insets/insetfloat.h"
 #include "insets/insetwrap.h"

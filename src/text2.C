@@ -37,6 +37,7 @@
 #include "frontends/font_metrics.h"
 #include "debug.h"
 #include "lyxrc.h"
+#include "Floating.h"
 #include "FloatList.h"
 #include "language.h"
 #include "ParagraphParameters.h"

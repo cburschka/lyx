@@ -1,5 +1,10 @@
 2003-09-04  Angus Leeming  <leeming@lyx.org>
 
+	* filetools.h:
+	* filename.C:  move #include "os.h" out of the header file.
+
+2003-09-04  Angus Leeming  <leeming@lyx.org>
+
 	* path.C (ctor, dtor): move out of line.
 
 2003-09-03  Angus Leeming  <leeming@lyx.org>

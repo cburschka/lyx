@@ -17,6 +17,7 @@
 #include "lyxtextclasslist.h"
 #include "debug.h"
 #include "gettext.h"
+#include "iterators.h"
 #include "language.h"
 #include "encoding.h"
 #include "lyxrc.h"

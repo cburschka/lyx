@@ -20,22 +20,21 @@
 #include "bufferparams.h"
 #include "texrow.h"
 #include "ParagraphList.h"
-#include "author.h"
-#include "iterators.h"
 #include "errorlist.h"
 
 #include <boost/scoped_ptr.hpp>
 #include <boost/signals/signal0.hpp>
 #include <boost/signals/signal1.hpp>
 
+class AuthorList;
 class LyXRC;
-class TeXErrors;
 class LaTeXFeatures;
 class LatexRunParams;
 class Language;
+class Messages;
 class ParIterator;
 class ParConstIterator;
-class Messages;
+class TeXErrors;
 
 
 /** The buffer object.

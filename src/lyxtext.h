@@ -15,7 +15,6 @@
 #define LYXTEXT_H
 
 #include "lyxfont.h"
-#include "lyxcursor.h"
 #include "layout.h"
 #include "LColor.h"
 #include "insets/inset.h"
@@ -27,6 +26,7 @@ class Buffer;
 class BufferParams;
 class BufferView;
 class InsetText;
+class LyXCursor;
 class Paragraph;
 class Row;
 class Spacing;

@@ -1,3 +1,10 @@
+2003-09-04  Angus Leeming  <angus@localhost.localdomain>
+
+	* Alert_pimpl.h: move out #include "debug.h".
+	* LyXView.h: move out #include "types.h".
+	* WorkArea.h: move out #include "funcrequest.h".
+	* screen.h: move out #include "RowList.h".
+
 2003-09-02  John Levon  <levon@movementarian.org>
 
 	* screen.C: remove cursor.i[xy]()

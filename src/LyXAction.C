@@ -16,6 +16,7 @@
 #include "LyXAction.h"
 
 #include "debug.h"
+#include "funcrequest.h"
 #include "gettext.h"
 #include "support/lstrings.h"
 

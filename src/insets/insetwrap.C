@@ -17,6 +17,7 @@
 #include "BufferView.h"
 #include "debug.h"
 #include "funcrequest.h"
+#include "Floating.h"
 #include "FloatList.h"
 #include "gettext.h"
 #include "LaTeXFeatures.h"

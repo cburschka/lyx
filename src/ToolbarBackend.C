@@ -12,6 +12,7 @@
 #include <config.h>
 
 #include "ToolbarBackend.h"
+#include "funcrequest.h"
 #include "LyXAction.h"
 #include "lyxlex.h"
 #include "debug.h"

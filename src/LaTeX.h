@@ -16,12 +16,13 @@
 
 #include "latexrunparams.h"
 #include "LString.h"
-#include "DepTable.h"
 #include <vector>
 #include <set>
 
 #include <boost/utility.hpp>
 #include <boost/signals/signal1.hpp>
+
+class DepTable;
 
 ///
 class TeXErrors {

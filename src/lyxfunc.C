@@ -26,6 +26,8 @@
 #include "buffer.h"
 #include "buffer_funcs.h"
 #include "BufferView.h"
+#include "funcrequest.h"
+#include "iterators.h"
 #include "lyxserver.h"
 #include "intl.h"
 #include "lyx_main.h"

@@ -20,8 +20,6 @@
 #include "Spacing.h"
 #include "Bullet.h"
 #include "lyxtextclass.h"
-#include "LaTeXFeatures.h"
-#include "texrow.h"
 #include "author.h"
 #include "paper.h"
 #include "BranchList.h"

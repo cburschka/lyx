@@ -12,9 +12,11 @@
 #include <config.h>
 
 #include "filename.h"
-#include "support/filetools.h"
-#include "lstrings.h"
+
 #include "LAssert.h"
+#include "filetools.h"
+#include "lstrings.h"
+#include "os.h"
 
 
 namespace lyx {

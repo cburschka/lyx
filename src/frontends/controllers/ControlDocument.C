@@ -20,6 +20,7 @@
 #include "buffer.h"
 #include "buffer_funcs.h"
 #include "errorlist.h"
+#include "iterators.h"
 #include "language.h"
 #include "lyx_main.h"
 #include "lyxtextclass.h"

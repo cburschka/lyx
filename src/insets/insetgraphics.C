@@ -78,8 +78,9 @@ TODO
 #include "support/filetools.h"
 #include "support/lyxalgo.h" // lyx::count
 #include "support/lyxlib.h" // float_equal
-#include "support/tostr.h"
+#include "support/os.h"
 #include "support/systemcall.h"
+#include "support/tostr.h"
 
 #include <boost/bind.hpp>
 #include <boost/tuple/tuple.hpp>

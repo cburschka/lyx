@@ -1,5 +1,7 @@
 2003-09-04  Angus Leeming  <leeming@lyx.org>
 
+	* insetgraphics.C: #include "support/os.h"
+
 	* insetfoot.h: move #include "LaTeXFeatures.h" out of the header file.
 	* insettabular.h: move #include "FuncStatus.h" out of the header file.
 	* insettoc.[Ch]: move #include "metricsinfo.h" out of the header file.

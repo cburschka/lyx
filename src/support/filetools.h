@@ -15,7 +15,6 @@
 #include <vector>
 #include <utility>
 #include "LString.h"
-#include "os.h"
 
 
 namespace lyx {

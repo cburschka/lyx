@@ -9,8 +9,6 @@
  * Full author contact details are available in file CREDITS.
  */
 
-#include "debug.h"
-
 // GUI-specific implementations
 
 int prompt_pimpl(string const & title, string const & question,

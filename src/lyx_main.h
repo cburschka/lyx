@@ -15,7 +15,6 @@
 #define LYX_MAIN_H
 
 #include "LString.h"
-#include "errorlist.h"
 
 #include <boost/scoped_ptr.hpp>
 #include <boost/utility.hpp>
@@ -23,6 +22,7 @@
 #include <csignal>
 
 
+class ErrorItem;
 class LyXRC;
 class LastFiles;
 class Buffer;

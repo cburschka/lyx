@@ -21,6 +21,7 @@
 #include "funcrequest.h"
 #include "gettext.h"
 #include "language.h"
+#include "LaTeXFeatures.h"
 #include "lyxfont.h"
 #include "lyxlex.h"
 #include "lyxtext.h"

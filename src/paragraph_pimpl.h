@@ -18,7 +18,6 @@
 #include "paragraph.h"
 #include "ParagraphParameters.h"
 #include "changes.h"
-#include "counters.h"
 
 #include <boost/scoped_ptr.hpp>
 

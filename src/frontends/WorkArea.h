@@ -15,7 +15,6 @@
 
 #include "frontends/key_state.h"
 #include "frontends/LyXKeySym.h"
-#include "funcrequest.h"
 
 #include <boost/signals/signal0.hpp>
 #include <boost/signals/signal1.hpp>
@@ -25,6 +24,7 @@
 #include <utility>
 
 class Painter;
+class FuncRequest;
 
 /**
  * The work area class represents the widget that provides the

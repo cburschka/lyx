@@ -15,6 +15,7 @@
 
 #ifdef ENABLE_ASSERTIONS
 #include "lyx_main.h"
+#include "errorlist.h"
 
 namespace lyx {
 namespace support {

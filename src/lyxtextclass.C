@@ -18,6 +18,7 @@
 #include "debug.h"
 #include "lyxlex.h"
 #include "counters.h"
+#include "Floating.h"
 #include "FloatList.h"
 
 #include "support/lstrings.h"

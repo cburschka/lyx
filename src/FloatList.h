@@ -15,7 +15,8 @@
 #include <map>
 
 #include "LString.h"
-#include "Floating.h"
+
+class Floating;
 
 ///
 class FloatList {

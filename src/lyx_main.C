@@ -17,34 +17,35 @@
 
 #include "lyx_main.h"
 
-#include "support/filetools.h"
-#include "support/lyxlib.h"
-#include "support/FileInfo.h"
-#include "support/path.h"
-#include "support/path_defines.h"
-#include "debug.h"
-#include "gettext.h"
-#include "lyxlex.h"
-
-#include "graphics/GraphicsTypes.h"
-
-#include "bufferlist.h"
 #include "buffer.h"
 #include "buffer_funcs.h"
-#include "lyxserver.h"
+#include "bufferlist.h"
+#include "converter.h"
+#include "debug.h"
+#include "encoding.h"
+#include "format.h"
+#include "gettext.h"
 #include "kbmap.h"
-#include "lyxfunc.h"
-#include "ToolbarBackend.h"
-#include "MenuBackend.h"
 #include "language.h"
 #include "lastfiles.h"
-#include "encoding.h"
-#include "converter.h"
-#include "format.h"
+#include "lyxfunc.h"
+#include "lyxlex.h"
 #include "lyxtextclasslist.h"
+#include "lyxserver.h"
+#include "MenuBackend.h"
+#include "ToolbarBackend.h"
 
 #include "frontends/Alert.h"
 #include "frontends/lyx_gui.h"
+
+#include "graphics/GraphicsTypes.h"
+
+#include "support/FileInfo.h"
+#include "support/filetools.h"
+#include "support/lyxlib.h"
+#include "support/os.h"
+#include "support/path.h"
+#include "support/path_defines.h"
 
 #include <boost/function.hpp>
 #include <boost/bind.hpp>

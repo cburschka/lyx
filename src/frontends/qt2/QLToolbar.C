@@ -16,6 +16,7 @@
 #include "debug.h"
 #include "gettext.h"
 #include "lyxfunc.h"
+#include "funcrequest.h"
 #include "FuncStatus.h"
 #include "BufferView.h"
 #include "buffer.h"

@@ -25,6 +25,7 @@
 #include "debug.h"
 #include "gettext.h"
 #include "errorlist.h"
+#include "funcrequest.h"
 #include "iterators.h"
 #include "language.h"
 #include "lyxcursor.h"

@@ -29,6 +29,7 @@
 #include "format.h"
 #include "exporter.h"
 #include "importer.h"
+#include "Floating.h"
 #include "FloatList.h"
 #include "toc.h"
 #include "CutAndPaste.h"

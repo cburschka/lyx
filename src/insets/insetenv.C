@@ -11,14 +11,14 @@
 #include <config.h>
 
 #include "insetenv.h"
+#include "bufferparams.h"
+#include "debug.h"
 #include "gettext.h"
+#include "lyxlayout.h"
 #include "lyxtextclass.h"
 #include "paragraph_funcs.h"
-#include "lyxlayout.h"
-#include "bufferparams.h"
+#include "texrow.h"
 #include "support/LOstream.h"
-#include "debug.h"
-
 
 using std::ostream;
 using std::endl;

@@ -1,3 +1,15 @@
+2003-09-04  Angus Leeming  <leeming@lyx.org>
+
+	* FloatList.h: move out #include "Floating.h".
+	* LaTeX.h: move out #include "DepTable.h".
+	* LyXAction.h: move out #include "funcrequest.h".
+	* buffer.h: move out #include "author.h", "iterators.h".
+	* bufferparams.h: move out #include "LaTeXFeatures.h", "texrow.h".
+	* lyx_main.h: move out #include "errorlist.h".
+	* lyxfunc.h: move out #include "FuncStatus.h".
+	* lyxtext: move out #include "lyxcursor.h".
+	* paragraph_pimpl.h: move out #include "counters.h".
+	 
 2003-09-03  Angus Leeming  <leeming@lyx.org>
 
 	* LaTeXFeatures.[Ch]: replace the externalPreambles string with a

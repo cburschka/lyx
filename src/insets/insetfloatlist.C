@@ -11,16 +11,18 @@
 #include <config.h>
 
 #include "insetfloatlist.h"
+
+#include "buffer.h"
+#include "BufferView.h"
+#include "debug.h"
+#include "Floating.h"
 #include "FloatList.h"
-#include "metricsinfo.h"
+#include "funcrequest.h"
+#include "gettext.h"
 #include "LaTeXFeatures.h"
 #include "lyxlex.h"
-#include "BufferView.h"
-#include "funcrequest.h"
-#include "buffer.h"
+#include "metricsinfo.h"
 #include "toc.h"
-#include "gettext.h"
-#include "debug.h"
 #include "Lsstream.h"
 
 #include "support/lstrings.h"

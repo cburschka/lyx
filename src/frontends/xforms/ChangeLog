@@ -1,3 +1,7 @@
+2003-09-04  Angus Leeming  <angus@localhost.localdomain>
+
+	* Alert_pimpl.C:  move #include "debug.h" out of the header file.
+
 2003-08-17  Martin Vermeer  <martin.vermeer@hut.fi>	
 
 	* FormDocument.C: fix crash on doc settings for non-branched doc

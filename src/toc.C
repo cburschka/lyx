@@ -13,6 +13,7 @@
 
 #include "toc.h"
 #include "buffer.h"
+#include "funcrequest.h"
 #include "LyXAction.h"
 #include "paragraph.h"
 #include "debug.h"

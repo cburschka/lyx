@@ -10,12 +10,13 @@
 
 #include <config.h>
 
-
 #include "Alert.h"
 #include "Alert_pimpl.h"
 #include "forms_gettext.h"
 #include "gettext.h"
 #include "xforms_helpers.h"
+
+#include "debug.h"
 
 #include <algorithm>
 #include <boost/tuple/tuple.hpp>

@@ -42,6 +42,7 @@
 #include "support/lyxlib.h"
 #include "support/path.h"
 #include "support/path_defines.h"
+#include "support/os.h"
 #include "support/systemcall.h"
 
 #include <fstream>

@@ -16,6 +16,7 @@
 #include "lfuns.h"
 #include "qt_helpers.h"
 #include "lcolorcache.h"
+#include "funcrequest.h"
 
 #include <qapplication.h>
 #include <qevent.h>

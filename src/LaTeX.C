@@ -18,6 +18,7 @@
 #include "bufferlist.h"
 #include "gettext.h"
 #include "debug.h"
+#include "DepTable.h"
 #include "support/filetools.h"
 #include "support/FileInfo.h"
 #include "support/tostr.h"
