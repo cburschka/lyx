@@ -22,6 +22,12 @@ char const * function_names[] = {
 
 int const nr_function_names = sizeof(function_names) / sizeof(char const *) - 1;
 
+char const * latex_dots[] = {
+	"ldots", "cdots", "vdots", "ddots", ""
+};
+
+int const nr_latex_dots = sizeof(latex_dots) / sizeof(char const *) - 1;
+
 char const * latex_arrow[] = {
 	"downarrow", "leftarrow", "Downarrow", "Leftarrow",
 	"hookleftarrow", "rightarrow", "uparrow", "Rightarrow", "Uparrow",
@@ -61,12 +67,6 @@ char const * latex_brel[] = {
 };
 
 int const nr_latex_brel = sizeof(latex_brel) / sizeof(char const *);
-
-char const * latex_dots[] = {
-	"ldots", "cdots", "vdots", "ddots"
-};
-
-int const nr_latex_dots = sizeof(latex_dots) / sizeof(char const *);
 
 char const * latex_greek[] = {
 	"Gamma", "Delta", "Theta", "Lambda", "Xi", "Pi",
