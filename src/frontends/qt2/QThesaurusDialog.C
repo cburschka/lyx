@@ -80,6 +80,12 @@ void QThesaurusDialog::updateLists()
 	ControlThesaurus & control(form_->controller());
 	string const entry(entryED->text().latin1());
 
+	nounsLB->clear();
+	verbsLB->clear();
+	adjectivesLB->clear();
+	adverbsLB->clear();
+	otherLB->clear();
+ 
 	std::vector<string> matches;
 
 	matches = control.getNouns(entry);
