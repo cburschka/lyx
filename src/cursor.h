@@ -416,6 +416,8 @@ public:
 	void releaseMathCursor();
 	/// are we in mathed?
 	bool inMathed() const;
+	/// are we in texted?
+	bool inTexted() const;
 
 	/// display a message
 	void message(std::string const & msg) const;

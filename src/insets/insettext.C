@@ -307,7 +307,7 @@ void InsetText::edit(LCursor & cur, int x, int y)
 	text_.edit(cur, x, y);
 	//sanitizeEmptyText(cur.bv());
 	//updateLocal(cur);
-	//cur.bv().updateParagraphDialog();
+	//dispatch(cur, FuncRequest(LFUN_PARAGRAPH_UPDATE));
 }
 
 

@@ -1046,7 +1046,7 @@ void MathGridInset::splitCell(LCursor & cur)
 DispatchResult
 MathGridInset::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 {
-	lyxerr << "*** MathGridInset: request: " << cmd << endl;
+	//lyxerr << "*** MathGridInset: request: " << cmd << endl;
 	switch (cmd.action) {
 
 		case LFUN_MOUSE_RELEASE:
@@ -1054,7 +1054,7 @@ MathGridInset::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 			//	GridInsetMailer(*this).showDialog();
 			//	return DispatchResult(true, true);
 			//}
-			return DispatchResult(false);
+			return MathNestInset::priv_dispatch(cur, cmd);
 
 		case LFUN_INSET_DIALOG_UPDATE:
 			GridInsetMailer(*this).updateDialog(&cur.bv());
@@ -1070,8 +1070,8 @@ MathGridInset::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 			//}
 			if (nrows() > 1)
 				delRow(cur.row());
-			if (cur.idx() >= nargs())
-				cur.idx() = nargs() - 1;
+			if (cur.idx() > cur.lastidx())
+				cur.idx() = cur.lastidx();
 			if (cur.pos() > cur.lastpos())
 				cur.pos() = cur.lastpos();
 			return DispatchResult(true, FINISHED);

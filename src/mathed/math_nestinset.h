@@ -41,7 +41,9 @@ public:
 	/// get cursor position
 	void getCursorPos(CursorSlice const & cur, int & x, int & y) const;
 	///
-	void edit(LCursor & cur, int, int);
+	void edit(LCursor & cur, bool left);
+	///
+	void edit(LCursor & cur, int x, int y);
 
 	/// order of movement through the cells when pressing the left key
 	bool idxLeft(LCursor &) const;
@@ -96,6 +98,7 @@ public:
 	void write(WriteStream & os) const;
 	/// writes [, name(), and args in []
 	void normalize(NormalStream & os) const;
+
 protected:
 	///
 	DispatchResult priv_dispatch(LCursor & cur, FuncRequest const & cmd);
@@ -105,6 +108,16 @@ protected:
 	///
 	void handleFont2(LCursor & cur, std::string const & arg);
 
+
+private:
+	/// lfun handler
+	DispatchResult lfunMousePress(LCursor &, FuncRequest const &);
+	///
+	DispatchResult lfunMouseRelease(LCursor &, FuncRequest const &);
+	///
+	DispatchResult lfunMouseMotion(LCursor &, FuncRequest const &);
+
+protected:
 	/// we store the cells in a vector
 	typedef std::vector<MathArray> cells_type;
 	/// thusly:

@@ -253,6 +253,8 @@ void LCursor::getDim(int & asc, int & des) const
 {
 	BOOST_ASSERT(!cursor_.empty());
 	if (inMathed()) {
+		BOOST_ASSERT(inset());
+		BOOST_ASSERT(inset()->asMathInset());
 		//inset()->asMathInset()->getCursorDim(asc, des);
 		asc = 10;
 		des = 10;
@@ -269,10 +271,14 @@ void LCursor::getPos(int & x, int & y) const
 	BOOST_ASSERT(!cursor_.empty());
 	x = 0;
 	y = 0;
-	if (cursor_.size() <= 1) {
+	if (cursor_.size() == 1) {
 		x = bv_->text()->cursorX(cursor_.front());
 		y = bv_->text()->cursorY(cursor_.front());
 	} else {
+		if (!inset()) {
+			lyxerr << "#### LCursor::getPos: " << *this << endl;
+			BOOST_ASSERT(inset());
+		}
 		inset()->getCursorPos(cursor_.back(), x, y);
 		// getCursorPos gives _screen_ coordinates. We need to add
 		// top_y to get document coordinates. This is hidden in cached_y_.
@@ -467,14 +473,14 @@ LyXText * LCursor::text() const
 
 Paragraph & LCursor::paragraph()
 {
-	BOOST_ASSERT(!inMathed());
+	BOOST_ASSERT(inTexted());
 	return current_ ? current().paragraph() : *bv_->text()->getPar(par());
 }
 
 
 Paragraph const & LCursor::paragraph() const
 {
-	BOOST_ASSERT(!inMathed());
+	BOOST_ASSERT(inTexted());
 	return current_ ? current().paragraph() : *bv_->text()->getPar(par());
 }
 
@@ -1205,9 +1211,11 @@ int LCursor::targetX() const
 
 MathHullInset * LCursor::formula() const
 {
-	for (int i = cursor_.size() - 1; i >= 1; --i)
-		if (cursor_[i].inset()->lyxCode() == InsetBase::MATH_CODE)
-			return static_cast<MathHullInset *>(cursor_[i].inset());
+	for (int i = cursor_.size() - 1; i >= 1; --i) {
+		MathInset * inset = cursor_[i].inset()->asMathInset();
+		if (inset && inset->asHullInset())
+			return static_cast<MathHullInset *>(inset);
+	}
 	return 0;
 }
 
@@ -1791,6 +1799,12 @@ void LCursor::releaseMathCursor()
 bool LCursor::inMathed() const
 {
 	return formula();
+}
+
+
+bool LCursor::inTexted() const
+{
+	return !formula();
 }
 
 

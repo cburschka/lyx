@@ -146,9 +146,9 @@ public:
 	void addPreview(lyx::graphics::PreviewLoader &) const;
 
 	///
-	void edit(LCursor & cur, bool);
+	void edit(LCursor & cur, bool left);
 	///
-	void edit(LCursor & cur, int, int);
+	void edit(LCursor & cur, int x, int y);
 
 	///
 	int numParagraphs() const { return 1; }

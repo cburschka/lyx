@@ -46,6 +46,17 @@ using std::string;
 using std::istringstream;
 
 
+namespace {
+
+// local global
+int first_x;
+int first_y;
+
+} // namespace anon
+
+
+
+
 MathNestInset::MathNestInset(idx_type nargs)
 	: cells_(nargs), lock_(false)
 {}
@@ -377,9 +388,17 @@ MathNestInset::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 		return dispatch(cur, FuncRequest(LFUN_PASTE, cur.bv().getClipboard())); 
 
 	case LFUN_MOUSE_PRESS:
-		if (cmd.button() == mouse_button::button2)
-			return priv_dispatch(cur, FuncRequest(LFUN_PASTESELECTION));
-		return DispatchResult(false);
+		//lyxerr << "Mouse single press" << endl;
+		return lfunMousePress(cur, cmd);
+	case LFUN_MOUSE_MOTION:
+		//lyxerr << "Mouse motion" << endl;
+		return lfunMouseMotion(cur, cmd);
+	case LFUN_MOUSE_RELEASE:
+		//lyxerr << "Mouse single release" << endl;
+		return lfunMouseRelease(cur, cmd);
+	case LFUN_MOUSE_DOUBLE:
+		//lyxerr << "Mouse double" << endl;
+		return dispatch(cur, FuncRequest(LFUN_WORDSEL));
 
 	case LFUN_RIGHTSEL:
 		cur.selection() = true; // fall through...
@@ -507,18 +526,6 @@ MathNestInset::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 	bool remove_inset = false;
 
 	switch (cmd.action) {
-		case LFUN_MOUSE_PRESS:
-			//lyxerr << "Mouse single press" << endl;
-			return lfunMousePress(cur, cmd);
-		case LFUN_MOUSE_MOTION:
-			//lyxerr << "Mouse motion" << endl;
-			return lfunMouseMotion(cur, cmd);
-		case LFUN_MOUSE_RELEASE:
-			//lyxerr << "Mouse single release" << endl;
-			return lfunMouseRelease(cur, cmd);
-		case LFUN_MOUSE_DOUBLE:
-			//lyxerr << "Mouse double" << endl;
-			return dispatch(cur, FuncRequest(LFUN_WORDSEL));
 		default:
 			break;
 	}
@@ -794,10 +801,20 @@ MathNestInset::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 }
 
 
+void MathNestInset::edit(LCursor & cur, bool left)
+{
+	lyxerr << "XXX Called MathNestInset::edit" << endl;
+	cur.push(this);
+	cur.idx() = left ? 0 : cur.lastidx();
+	cur.pos() = left ? 0 : cur.lastpos();
+	cur.resetAnchor();
+}
+
+
 void MathNestInset::edit(LCursor & cur, int x, int y)
 {
-	lyxerr << "Called MathNestInset::edit with '" << x << ' ' << y << "'" << endl;
-	cur.push(this);
+	lyxerr << "XXX Called MathNestInset::edit with '"	
+		<< x << ' ' << y << "'" << endl;
 	int idx_min = 0;
 	int dist_min = 1000000;
 	for (idx_type i = 0; i < nargs(); ++i) {
@@ -818,4 +835,83 @@ void MathNestInset::edit(LCursor & cur, int x, int y)
 			if (ar[i]->covers(x, y))
 				ar[i].nucleus()->edit(cur, x, y);
 	}
+}
+
+
+DispatchResult
+MathNestInset::lfunMouseRelease(LCursor & cur, FuncRequest const & cmd)
+{
+	//lyxerr << "lfunMouseRelease: buttons: " << cmd.button() << endl;
+
+	if (cmd.button() == mouse_button::button1) {
+		// try to dispatch to enclosed insets first
+		//cur.bv().stuffClipboard(cur.grabSelection());
+		return DispatchResult(true, true);
+	}
+
+	if (cmd.button() == mouse_button::button2) {
+		MathArray ar;
+		asArray(cur.bv().getClipboard(), ar);
+		cur.selClear();
+		cur.setScreenPos(cmd.x, cmd.y);
+		cur.insert(ar);
+		cur.bv().update();
+		return DispatchResult(true, true);
+	}
+
+	if (cmd.button() == mouse_button::button3) {
+		// try to dispatch to enclosed insets first
+		cur.bv().owner()->getDialogs().show("mathpanel");
+		return DispatchResult(true, true);
+	}
+
+	return DispatchResult(false);
+}
+
+
+DispatchResult
+MathNestInset::lfunMousePress(LCursor & cur, FuncRequest const & cmd)
+{
+	lyxerr << "lfunMousePress: buttons: " << cmd.button() << endl;
+	if (cmd.button() == mouse_button::button1) {
+		first_x = cmd.x;
+		first_y = cmd.y;
+		cur.selClear();
+		//cur.setScreenPos(cmd.x + xo_, cmd.y + yo_);
+		lyxerr << "lfunMousePress: setting cursor to: " << cur << endl;
+		cur.bv().cursor() = cur;
+		return DispatchResult(true, true);
+	}
+
+	if (cmd.button() == mouse_button::button2) {
+		return priv_dispatch(cur, FuncRequest(LFUN_PASTESELECTION));
+	}
+
+	if (cmd.button() == mouse_button::button3) {
+		return DispatchResult(true, true);
+	}
+
+	return DispatchResult(true, true);
+}
+
+
+DispatchResult
+MathNestInset::lfunMouseMotion(LCursor & cur, FuncRequest const & cmd)
+{
+	// only select with button 1
+	if (cmd.button() != mouse_button::button1)
+		return DispatchResult(true, true);
+
+	if (abs(cmd.x - first_x) < 2 && abs(cmd.y - first_y) < 2)
+		return DispatchResult(true, true);
+
+	first_x = cmd.x;
+	first_y = cmd.y;
+
+	if (!cur.selection())
+		cur.selBegin();
+
+	cur.setScreenPos(cmd.x + xo_, cmd.y + yo_);
+	cur.bv().update();
+	return DispatchResult(true, true);
 }

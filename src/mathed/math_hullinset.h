@@ -191,21 +191,12 @@ public:
 	///
 	bool display() const;
 	///
-	void edit(LCursor & cur, bool left);
-	///
 	Code lyxCode() const;
 
 private:
 	/// common base for handling accents
 	void handleAccent(BufferView & bv, std::string const & arg,
 		std::string const & name);
-
-	/// lfun handler
-	DispatchResult lfunMousePress(LCursor &, FuncRequest const &);
-	///
-	DispatchResult lfunMouseRelease(LCursor &, FuncRequest const &);
-	///
-	DispatchResult lfunMouseMotion(LCursor &, FuncRequest const &);
 
 protected:
 
