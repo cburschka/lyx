@@ -255,7 +255,7 @@ int InsetFloat::latex(Buffer const * buf,
 	// In this case, we do not case if the current output line is empty.
 	os << "\n\\end{" << tmptype << "}\n";
 
-	return i + 2;
+	return i + 4;
 }
 
 

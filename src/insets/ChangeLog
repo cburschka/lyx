@@ -1,3 +1,7 @@
+2002-05-09  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* insetfloat.C (latex): Return correct value.
+
 2002-05-04  Herbert Voss  <voss@perce.de>
 
 	* InsetgraphicsParams.C (read): fix bug with WH
@@ -5,7 +9,7 @@
 2002-05-05  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* insetfloat.C (latex): More sensible latex output
- 	(fix the problem with endfloat).
+	(fix the problem with endfloat).
 
 2002-05-02  José Matos  <jamatos@fep.up.pt>
 
@@ -66,7 +70,7 @@
 	* insettext.C (draw): call a fullRebreak on the row where we had a
 	change and reset the cursor and selection-cursors.
 
-	* insettabular.C (insetUnlock): 
+	* insettabular.C (insetUnlock):
 	(insetButtonPress): call an update before setting the_locking_inset = 0
 	as otherwise we don't repaint!
 	(update): reset the cursor position when we changed dimensions as
@@ -97,7 +101,7 @@
 
 2002-04-16  Juergen Vigna  <jug@sad.it>
 
-	* insettabular.C (insetButtonPress): 
+	* insettabular.C (insetButtonPress):
 	(insetUnlock): call a redraw on unlocking the cell inset.
 
 	* insettext.C (insetButtonPress): same as below.
@@ -173,7 +177,7 @@
 
 2002-04-04  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
-	* insetfloatlist.C (getScreenLabel): 
+	* insetfloatlist.C (getScreenLabel):
 	(latex): use Floating::listName
 	(validate): new method
 
