@@ -29,6 +29,7 @@
 #include "ParagraphParameters.h"
 #include "undo_funcs.h"
 #include "WordLangTuple.h"
+#include "funcrequest.h"
 
 #include "insets/insetbib.h"
 #include "insets/insettext.h"
@@ -3946,4 +3947,50 @@ Row * LyXText::getRowNearY(int & y) const
 int LyXText::getDepth() const
 {
 	return cursor.par()->getDepth();
+}
+
+
+Inset::RESULT LyXText::lfunAppendix(FuncRequest const & cmd)
+{
+	BufferView * bv = cmd.view();
+	// what is this good for?
+	if (!bv->available())
+		return Inset::UNDISPATCHED;
+
+	Paragraph * par = cursor.par();
+	bool start = !par->params().startOfAppendix();
+
+	// ensure that we have only one start_of_appendix in this document
+	Paragraph * tmp = ownerParagraph();
+	for (; tmp; tmp = tmp->next()) {
+		tmp->params().startOfAppendix(false);
+	}
+
+	par->params().startOfAppendix(start);
+
+	// we can set the refreshing parameters now
+	status(cmd.view(), LyXText::NEED_MORE_REFRESH);
+	refresh_y = 0;
+	refresh_row = 0; // not needed for full update
+	updateCounters(cmd.view());
+	setCursor(cmd.view(), cursor.par(), cursor.pos());
+	bv->update(this,
+				 BufferView::SELECT
+				 | BufferView::FITCUR
+				 | BufferView::CHANGE);
+	return Inset::DISPATCHED;
+}
+
+
+Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
+{
+	switch (cmd.action) {
+		case LFUN_APPENDIX:
+			return lfunAppendix(cmd);
+
+		default:
+			return Inset::UNDISPATCHED;
+	}
+	// shut up compiler
+	return Inset::UNDISPATCHED;
 }

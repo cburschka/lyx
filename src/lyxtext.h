@@ -131,8 +131,7 @@ public:
 	  paragraphs */
 	void decDepth(BufferView *);
 
-	/** Get the depth at current cursor position
-	 */
+	/// get the depth at current cursor position
 	int getDepth() const;
 
 	/** set font over selection and make a total rebreak of those
@@ -170,7 +169,7 @@ public:
 	///
 	void insertInset(BufferView *, Inset * inset);
 
-	/** Completes the insertion with a full rebreak. */
+	/// Completes the insertion with a full rebreak
 	void fullRebreak(BufferView *);
 
 	///
@@ -190,6 +189,9 @@ public:
 	text_status status() const;
 	///
 	void status(BufferView *, text_status) const;
+
+	///
+	Inset::RESULT dispatch(FuncRequest const & cmd);
 
 private:
 	/** wether the screen needs a refresh,
@@ -444,8 +446,6 @@ public:
 	///
 	void checkParagraph(BufferView *, Paragraph * par, lyx::pos_type pos);
 	///
-	void toggleAppendix(BufferView *);
-	///
 	int workWidth(BufferView *) const;
 	///
 	int workWidth(BufferView *, Inset * inset) const;
@@ -622,6 +622,8 @@ public:
 private:
 	///
 	void setCounter(Buffer const *, Paragraph * par) const;
+	///
+	Inset::RESULT lfunAppendix(FuncRequest const & cmd);
 
 	/*
 	 * some low level functions

@@ -143,16 +143,17 @@ boost::signals::connection lostcon;
 } // anon namespace
 
 
-BufferView::Pimpl::Pimpl(BufferView * b, LyXView * o,
+BufferView::Pimpl::Pimpl(BufferView * bv, LyXView * owner,
 	     int xpos, int ypos, int width, int height)
-	: bv_(b), owner_(o), buffer_(0), cursor_timeout(400),
+	: bv_(bv), owner_(owner), buffer_(0), cursor_timeout(400),
 	  using_xterm_cursor(false)
 {
 	workarea_.reset(WorkAreaFactory::create(xpos, ypos, width, height));
 	screen_.reset(LyXScreenFactory::create(workarea()));
 
 	// Setup the signals
-	doccon = workarea().scrollDocView.connect(boost::bind(&BufferView::Pimpl::scrollDocView, this, _1));
+	doccon = workarea().scrollDocView
+		.connect(boost::bind(&BufferView::Pimpl::scrollDocView, this, _1));
 	resizecon = workarea().workAreaResize
 		.connect(boost::bind(&BufferView::Pimpl::workAreaResize, this));
 	bpresscon = workarea().workAreaButtonPress
@@ -172,7 +173,8 @@ BufferView::Pimpl::Pimpl(BufferView * b, LyXView * o,
 	lostcon = workarea().selectionLost
 		.connect(boost::bind(&BufferView::Pimpl::selectionLost, this));
 
-	timecon = cursor_timeout.timeout.connect(boost::bind(&BufferView::Pimpl::cursorToggle, this));
+	timecon = cursor_timeout.timeout
+		.connect(boost::bind(&BufferView::Pimpl::cursorToggle, this));
 	cursor_timeout.start();
 	saved_positions.resize(saved_positions_num);
 }
@@ -214,12 +216,12 @@ void BufferView::Pimpl::buffer(Buffer * b)
 		bv_->text = 0;
 	}
 
-	// Set current buffer
+	// set current buffer
 	buffer_ = b;
 
 	if (bufferlist.getState() == BufferList::CLOSING) return;
 
-	// If we are closing the buffer, use the first buffer as current
+	// if we are closing the buffer, use the first buffer as current
 	if (!buffer_) {
 		buffer_ = bufferlist.first();
 	}
@@ -234,7 +236,8 @@ void BufferView::Pimpl::buffer(Buffer * b)
 		}
 
 		// FIXME: needed when ?
-		bv_->text->first_y = screen().topCursorVisible(bv_->text->cursor, bv_->text->first_y);
+		bv_->text->first_y =
+			screen().topCursorVisible(bv_->text->cursor, bv_->text->first_y);
 
 		// Similarly, buffer-dependent dialogs should be updated or
 		// hidden. This should go here because some dialogs (eg ToC)
@@ -1499,19 +1502,6 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev)
 	LyXTextClass const & tclass = buffer_->params.getLyXTextClass();
 
 	switch (ev.action) {
-		// --- Misc -------------------------------------------
-	case LFUN_APPENDIX:
-	{
-		if (available()) {
-			LyXText * lt = bv_->getLyXText();
-			lt->toggleAppendix(bv_);
-			update(lt,
-			       BufferView::SELECT
-			       | BufferView::FITCUR
-			       | BufferView::CHANGE);
-		}
-	}
-	break;
 
 	case LFUN_TOC_INSERT:
 	{
@@ -1524,7 +1514,7 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev)
 	}
 
 	case LFUN_SCROLL_INSET:
-		// this is not handled here as this funktion is only aktive
+		// this is not handled here as this function is only active
 		// if we have a locking_inset and that one is (or contains)
 		// a tabular-inset
 		break;
@@ -3162,7 +3152,9 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev)
 		break;
 
 	default:
-		return false;
+		FuncRequest cmd = ev;
+		cmd.setView(bv_);
+		return bv_->getLyXText()->dispatch(cmd);
 	} // end of switch
 
 	return true;

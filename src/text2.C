@@ -2370,28 +2370,6 @@ bool LyXText::deleteEmptyParagraphMechanism(BufferView * bview,
 }
 
 
-void LyXText::toggleAppendix(BufferView * bview)
-{
-	Paragraph * par = cursor.par();
-	bool start = !par->params().startOfAppendix();
-
-	// ensure that we have only one start_of_appendix in this document
-	Paragraph * tmp = ownerParagraph();
-	for (; tmp; tmp = tmp->next()) {
-		tmp->params().startOfAppendix(false);
-	}
-
-	par->params().startOfAppendix(start);
-
-	// we can set the refreshing parameters now
-	status(bview, LyXText::NEED_MORE_REFRESH);
-	refresh_y = 0;
-	refresh_row = 0; // not needed for full update
-	updateCounters(bview);
-	setCursor(bview, cursor.par(), cursor.pos());
-}
-
-
 Paragraph * LyXText::ownerParagraph() const
 {
 	if (inset_owner) {
