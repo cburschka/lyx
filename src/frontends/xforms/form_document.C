@@ -91,21 +91,38 @@ FD_form_doc_paper * FormDocument::build_doc_paper()
   fdui->form = fl_bgn_form(FL_NO_BOX, 440, 345);
   fdui->form->u_vdata = this;
   obj = fl_add_box(FL_FLAT_BOX, 0, 0, 440, 345, "");
+  obj = fl_add_labelframe(FL_ENGRAVED_FRAME, 10, 15, 225, 120, _("Papersize"));
   {
-    char const * const dummy = N_("Special (A4 portrait only):|#S");
-    fdui->choice_paperpackage = obj = fl_add_choice(FL_NORMAL_CHOICE, 230, 180, 185, 30, idex(_(dummy)));
+    char const * const dummy = N_("Papersize:|#P");
+    fdui->choice_papersize = obj = fl_add_choice(FL_NORMAL_CHOICE, 110, 25, 115, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_boxtype(obj, FL_FRAME_BOX);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-    fl_set_object_lalign(obj, FL_ALIGN_TOP);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, INPUT);
-  obj = fl_add_frame(FL_ENGRAVED_FRAME, 440, 360, 10, 10, "");
-    fl_set_object_color(obj, FL_COL1, FL_COL1);
-  obj = fl_add_frame(FL_ENGRAVED_FRAME, 440, 350, 10, 10, "");
-    fl_set_object_color(obj, FL_COL1, FL_COL1);
+  {
+    char const * const dummy = N_("Width:|#W");
+    fdui->input_custom_width = obj = fl_add_input(FL_NORMAL_INPUT, 110, 60, 55, 30, idex(_(dummy)));
+    fl_set_button_shortcut(obj, scex(_(dummy)), 1);
+  }
+    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, INPUT);
+  fdui->choice_custom_width_units = obj = fl_add_choice(FL_NORMAL_CHOICE, 170, 60, 55, 30, "");
+    fl_set_object_boxtype(obj, FL_FRAME_BOX);
+    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
+  {
+    char const * const dummy = N_("Height:|#H");
+    fdui->input_custom_height = obj = fl_add_input(FL_NORMAL_INPUT, 110, 95, 55, 30, idex(_(dummy)));
+    fl_set_button_shortcut(obj, scex(_(dummy)), 1);
+  }
+    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, INPUT);
+  fdui->choice_custom_height_units = obj = fl_add_choice(FL_NORMAL_CHOICE, 170, 95, 55, 30, "");
+    fl_set_object_boxtype(obj, FL_FRAME_BOX);
+    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
+  obj = fl_add_labelframe(FL_ENGRAVED_FRAME, 245, 15, 180, 120, _("Orientation"));
 
-  fdui->greoup_radio_orientation = fl_bgn_group();
+  fdui->group_radio_orientation = fl_bgn_group();
   {
     char const * const dummy = N_("Portrait|#o");
     fdui->radio_portrait = obj = fl_add_checkbutton(FL_RADIO_BUTTON, 255, 40, 120, 30, idex(_(dummy)));
@@ -122,92 +139,94 @@ FD_form_doc_paper * FormDocument::build_doc_paper()
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, INPUT);
   fl_end_group();
 
-  {
-    char const * const dummy = N_("Papersize:|#P");
-    fdui->choice_papersize2 = obj = fl_add_choice(FL_NORMAL_CHOICE, 110, 25, 115, 30, idex(_(dummy)));
-    fl_set_button_shortcut(obj, scex(_(dummy)), 1);
-  }
-    fl_set_object_boxtype(obj, FL_FRAME_BOX);
-    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, INPUT);
+  obj = fl_add_labelframe(FL_ENGRAVED_FRAME, 10, 150, 415, 185, _("Margins"));
   {
     char const * const dummy = N_("Custom Margins/Sizes|#M");
-    fdui->push_use_geometry = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 20, 155, 30, 30, idex(_(dummy)));
+    fdui->check_use_geometry = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 20, 155, 30, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_lalign(obj, FL_ALIGN_RIGHT);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, INPUT);
   {
-    char const * const dummy = N_("Width:|#W");
-    fdui->input_custom_width = obj = fl_add_input(FL_NORMAL_INPUT, 135, 60, 90, 30, idex(_(dummy)));
+    char const * const dummy = N_("Special (A4 portrait only):|#S");
+    fdui->choice_paperpackage = obj = fl_add_choice(FL_NORMAL_CHOICE, 230, 180, 185, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
+    fl_set_object_boxtype(obj, FL_FRAME_BOX);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, INPUT);
-  {
-    char const * const dummy = N_("Height:|#H");
-    fdui->input_custom_height = obj = fl_add_input(FL_NORMAL_INPUT, 135, 95, 90, 30, idex(_(dummy)));
-    fl_set_button_shortcut(obj, scex(_(dummy)), 1);
-  }
-    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+    fl_set_object_lalign(obj, FL_ALIGN_TOP);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, INPUT);
   {
     char const * const dummy = N_("Top:|#T");
-    fdui->input_top_margin = obj = fl_add_input(FL_NORMAL_INPUT, 100, 190, 90, 30, idex(_(dummy)));
+    fdui->input_top_margin = obj = fl_add_input(FL_NORMAL_INPUT, 80, 190, 55, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, INPUT);
+  fdui->choice_top_margin_units = obj = fl_add_choice(FL_NORMAL_CHOICE, 140, 190, 55, 30, "");
+    fl_set_object_boxtype(obj, FL_FRAME_BOX);
+    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
   {
     char const * const dummy = N_("Bottom:|#B");
-    fdui->input_bottom_margin = obj = fl_add_input(FL_NORMAL_INPUT, 100, 225, 90, 30, idex(_(dummy)));
+    fdui->input_bottom_margin = obj = fl_add_input(FL_NORMAL_INPUT, 80, 225, 55, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, INPUT);
+  fdui->choice_bottom_margin_units = obj = fl_add_choice(FL_NORMAL_CHOICE, 140, 225, 55, 30, "");
+    fl_set_object_boxtype(obj, FL_FRAME_BOX);
+    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
   {
     char const * const dummy = N_("Left:|#e");
-    fdui->input_left_margin = obj = fl_add_input(FL_NORMAL_INPUT, 100, 260, 90, 30, idex(_(dummy)));
+    fdui->input_left_margin = obj = fl_add_input(FL_NORMAL_INPUT, 80, 260, 55, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, INPUT);
+  fdui->choice_left_margin_units = obj = fl_add_choice(FL_NORMAL_CHOICE, 140, 260, 55, 30, "");
+    fl_set_object_boxtype(obj, FL_FRAME_BOX);
+    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
   {
     char const * const dummy = N_("Right:|#R");
-    fdui->input_right_margin = obj = fl_add_input(FL_NORMAL_INPUT, 100, 295, 90, 30, idex(_(dummy)));
+    fdui->input_right_margin = obj = fl_add_input(FL_NORMAL_INPUT, 80, 295, 55, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, INPUT);
+  fdui->choice_right_margin_units = obj = fl_add_choice(FL_NORMAL_CHOICE, 140, 295, 55, 30, "");
+    fl_set_object_boxtype(obj, FL_FRAME_BOX);
+    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
   {
     char const * const dummy = N_("Headheight:|#i");
-    fdui->input_head_height = obj = fl_add_input(FL_NORMAL_INPUT, 340, 225, 75, 30, idex(_(dummy)));
+    fdui->input_head_height = obj = fl_add_input(FL_NORMAL_INPUT, 300, 225, 55, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, INPUT);
+  fdui->choice_head_height_units = obj = fl_add_choice(FL_NORMAL_CHOICE, 360, 225, 55, 30, "");
+    fl_set_object_boxtype(obj, FL_FRAME_BOX);
+    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
   {
     char const * const dummy = N_("Headsep:|#d");
-    fdui->input_head_sep = obj = fl_add_input(FL_NORMAL_INPUT, 340, 260, 75, 30, idex(_(dummy)));
+    fdui->input_head_sep = obj = fl_add_input(FL_NORMAL_INPUT, 300, 260, 55, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, INPUT);
+  fdui->choice_head_sep_units = obj = fl_add_choice(FL_NORMAL_CHOICE, 360, 260, 55, 30, "");
+    fl_set_object_boxtype(obj, FL_FRAME_BOX);
+    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
   {
     char const * const dummy = N_("Footskip:|#F");
-    fdui->input_foot_skip = obj = fl_add_input(FL_NORMAL_INPUT, 340, 295, 75, 30, idex(_(dummy)));
+    fdui->input_foot_skip = obj = fl_add_input(FL_NORMAL_INPUT, 300, 295, 55, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, INPUT);
-  fdui->text_warning = obj = fl_add_text(FL_NORMAL_TEXT, 10, 360, 420, 20, "");
-    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-    fl_set_object_lalign(obj, FL_ALIGN_LEFT|FL_ALIGN_INSIDE);
-    fl_set_object_lstyle(obj, FL_BOLD_STYLE);
-  obj = fl_add_labelframe(FL_ENGRAVED_FRAME, 245, 15, 180, 120, _("Orientation"));
-  obj = fl_add_labelframe(FL_ENGRAVED_FRAME, 10, 15, 225, 120, _("Papersize"));
-  obj = fl_add_labelframe(FL_ENGRAVED_FRAME, 10, 145, 415, 185, _("Margins"));
+  fdui->choice_foot_skip_units = obj = fl_add_choice(FL_NORMAL_CHOICE, 360, 295, 55, 30, "");
+    fl_set_object_boxtype(obj, FL_FRAME_BOX);
+    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
   fl_end_form();
 
   fdui->form->fdui = fdui;

@@ -22,6 +22,13 @@ std::vector<string> const getVectorFromChoice(FL_OBJECT *);
 /// Given an fl_browser, create a vector of its entries
 std::vector<string> const getVectorFromBrowser(FL_OBJECT *);
 
+/// Given input and choice widgets, create a string such as "1cm"
+string getLengthFromWidgets(FL_OBJECT * input, FL_OBJECT * choice);
+
+/// Given a string such as "1cm", set the input and choice widgets.
+void updateWidgetsFromLengthString(FL_OBJECT * input, FL_OBJECT * choice,
+				   string const & str);
+
 /// struct holding xform-specific colors
 struct XformsColor : public NamedColor {
 	int colorID;

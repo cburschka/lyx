@@ -1,3 +1,14 @@
+2001-10-09  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* xforms_helpers.[Ch] (getLengthFromWidgets): new function.
+	Given input and choice widgets, create a string such as "1cm".
+	(updateWidgetsFromLengthString): new function.
+	Given a string such as "1cm", set the input and choice widgets.
+
+	* FormDocument.C:
+	* forms/form_document.fd: improve the GUI of the paper tab using these
+	new helper functions.
+
 2001-10-07  Adrien Rebollo  <adrien.rebollo@gmx.fr>
 
 	* FormDocument.C (build): support latin4

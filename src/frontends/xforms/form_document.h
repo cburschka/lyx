@@ -40,22 +40,30 @@ struct FD_form_doc_paper {
 	~FD_form_doc_paper();
 
 	FL_FORM *form;
-	FL_OBJECT *choice_paperpackage;
-	FL_OBJECT *greoup_radio_orientation;
+	FL_OBJECT *choice_papersize;
+	FL_OBJECT *input_custom_width;
+	FL_OBJECT *choice_custom_width_units;
+	FL_OBJECT *input_custom_height;
+	FL_OBJECT *choice_custom_height_units;
+	FL_OBJECT *group_radio_orientation;
 	FL_OBJECT *radio_portrait;
 	FL_OBJECT *radio_landscape;
-	FL_OBJECT *choice_papersize2;
-	FL_OBJECT *push_use_geometry;
-	FL_OBJECT *input_custom_width;
-	FL_OBJECT *input_custom_height;
+	FL_OBJECT *check_use_geometry;
+	FL_OBJECT *choice_paperpackage;
 	FL_OBJECT *input_top_margin;
+	FL_OBJECT *choice_top_margin_units;
 	FL_OBJECT *input_bottom_margin;
+	FL_OBJECT *choice_bottom_margin_units;
 	FL_OBJECT *input_left_margin;
+	FL_OBJECT *choice_left_margin_units;
 	FL_OBJECT *input_right_margin;
+	FL_OBJECT *choice_right_margin_units;
 	FL_OBJECT *input_head_height;
+	FL_OBJECT *choice_head_height_units;
 	FL_OBJECT *input_head_sep;
+	FL_OBJECT *choice_head_sep_units;
 	FL_OBJECT *input_foot_skip;
-	FL_OBJECT *text_warning;
+	FL_OBJECT *choice_foot_skip_units;
 };
 struct FD_form_doc_class {
 	~FD_form_doc_class();

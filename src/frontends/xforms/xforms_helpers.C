@@ -18,6 +18,7 @@
 #include "support/filetools.h"
 #include "support/lstrings.h" // frontStrip, strip
 #include "gettext.h"
+#include "support/LAssert.h"
 
 using std::ofstream;
 using std::pair;
@@ -68,6 +69,66 @@ vector<string> const getVectorFromBrowser(FL_OBJECT * ob)
 }
 
 
+string getLengthFromWidgets(FL_OBJECT * input, FL_OBJECT * choice)
+{
+	// Paranoia check
+	lyx::Assert(input  && input->objclass  == FL_INPUT &&
+		    choice && choice->objclass == FL_CHOICE);
+
+	string length;
+
+	string len = strip(frontStrip(fl_get_input(input)));
+	if (len.empty())
+		len = "0";
+
+	string const units = strip(frontStrip(fl_get_choice_text(choice)));
+
+	return len + units;
+}
+	
+
+void updateWidgetsFromLengthString(FL_OBJECT * input, FL_OBJECT * choice,
+				   string const & str)
+{
+	// Paranoia check
+	lyx::Assert(input  && input->objclass  == FL_INPUT &&
+		    choice && choice->objclass == FL_CHOICE);
+
+	// The unit is presumed to begin at the first char a-z
+	string const tmp = lowercase(strip(frontStrip(str)));
+
+	string::const_iterator p = tmp.begin();
+	for (; p != tmp.end(); ++p) {
+		if (*p >= 'a' && *p <= 'z')
+			break;
+	}
+
+	string len = "0";
+	int unitpos = 1; // xforms has Fortran-style indexing
+
+	if (p == tmp.end()) {
+		if (isStrDbl(tmp))
+			len = tmp;
+
+	} else {
+		string tmplen = string(tmp.begin(), p);
+		if (isStrDbl(tmplen))
+			len = tmplen;
+		string unit = string(p+1, tmp.end());
+
+		for(int i = 0; i < fl_get_choice_maxitems(choice); ++i) {
+			string const text = fl_get_choice_item_text(choice,i+1);
+			if (unit == lowercase(strip(frontStrip(text)))) {
+				unitpos = i+1;
+				break;
+			}
+		}
+	}
+	
+	fl_set_input(input,   len.c_str());
+	fl_set_choice(choice, unitpos);
+}
+ 
 // Take a string and add breaks so that it fits into a desired label width, w
 string formatted(string const & sin, int w, int size, int style)
 {
