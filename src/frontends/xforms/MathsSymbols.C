@@ -20,7 +20,7 @@
 #include "support/lstrings.h"
 #include "debug.h"
 #include "MathsSymbols.h"
-#include "FormMathsPanel.h"
+#include "GUIRunTime.h"
 
 using std::max;
 using std::endl;
@@ -29,7 +29,6 @@ using std::ostream;
 #ifndef CXX_GLOBAL_CSTD
 using std::strstr;
 #endif
-
 
 /* Latex code for those bitmaps */
 
@@ -385,7 +384,7 @@ static char const ** pixmapFromBitmapData(char const * s, int wx, int hx)
 		}
 		int ww = w / dw;
 		int hh = h / dh;
-		XImage * xima = XCreateImage(fl_get_display(), 0, 1, XYBitmap, 0,
+		XImage * xima = XCreateImage(GUIRunTime::x11Display(), 0, 1, XYBitmap, 0,
 					     const_cast<char*>(reinterpret_cast<char const *>(bdata)), w, h, 8, 0);
 		xima->byte_order = LSBFirst;
 		xima->bitmap_bit_order = LSBFirst;
@@ -394,7 +393,7 @@ static char const ** pixmapFromBitmapData(char const * s, int wx, int hx)
 		if (ww > wx) ww = wx;
 		if (hh > hx) hh = hx;
 		XImage * sbima = XSubImage(xima, x, y, ww, hh);
-		XpmCreateDataFromImage(fl_get_display(), const_cast<char***>(&data), sbima, sbima, 0);
+		XpmCreateDataFromImage(GUIRunTime::x11Display(), const_cast<char***>(&data), sbima, sbima, 0);
 
 		// Dirty hack to get blue symbols quickly
 		char * sx = const_cast<char*>(strstr(data[2], "FFFFFFFF"));

@@ -1,3 +1,11 @@
+2002-03-27  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* MathsSymbols.[Ch]: remove #include "bmtable.h" & "FormMathsPanel.h".
+	Move enum MathsCallbackValues from FormMathsPanel.h to MathsSymbols.h.
+	The MathsSymbols are now xforms-independent.
+
+	* FormMathsPanel.h: #include MathsSymbols.h for the enum.
+
 2002-03-26  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* FormPreferences.C (browse): don't use BrowseRelPath here you noodle!
