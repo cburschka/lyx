@@ -1,3 +1,8 @@
+2002-05-24  Juergen Vigna  <jug@sad.it>
+
+	* undo_funcs.C (textHandleUndo): fix the cursor selection after
+	setting the undo_cursor.
+
 2002-05-21  Juergen Vigna  <jug@sad.it>
 
 	* buffer.C (insertErtContents): fix to insert ert asis if it is
