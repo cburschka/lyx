@@ -288,6 +288,65 @@ ${FRONTEND_INFO}\
 
 AC_SUBST(VERSION_INFO)
 
+## Some config.h stuff
+
+AH_VERBATIM([HAVE_STRCHR],
+[
+#ifndef HAVE_STRCHR
+# define strchr(a,b)    index(a,b)
+#endif
+])
+
+AH_VERBATIM([HAVE_MEMMOVE],
+[
+#ifndef HAVE_MEMMOVE
+# define memmove(a,b,c) bcopy(b,a,c)
+#endif
+])
+
+AH_VERBATIM([HAVE_STRERROR],
+[
+#ifndef HAVE_STRERROR
+#if defined(__cplusplus)
+extern "C"
+#endif
+char * strerror(int n);
+#endif
+])
+
+AH_VERBATIM([BROKEN_HEADERS],
+[
+#ifdef BROKEN_HEADERS
+#include "broken_headers.h"
+#endif
+])
+
+AH_VERBATIM([HAVE_MKSTEMP],
+[
+#ifdef HAVE_MKSTEMP
+#ifndef HAVE_DECL_MKSTEMP
+#if defined(__cplusplus)
+extern "C"
+#endif
+int mkstemp(char*);
+#endif
+#endif
+])
+
+AH_VERBATIM([__EMX__],
+[
+#ifdef __EMX__
+#include "support/os2_defines.h"
+#endif
+])
+
+AH_VERBATIM([__CYGWIN__],
+[
+#if defined(__CYGWIN__) || defined(__CYGWIN32__)
+#include "support/nt_defines.h"
+#endif
+])
+
 ### Finish the work.
 AC_CONFIG_SUBDIRS(lib lib/reLyX)
 AC_CONFIG_FILES([Makefile \
