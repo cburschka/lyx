@@ -150,7 +150,7 @@ bool IsDirWriteable (string const & path)
 {
 	lyxerr[Debug::FILES] << "IsDirWriteable: " << path << endl;
  
-        string const tmpfl(lyx::tempName(path, "lyxwritetest"));
+	string const tmpfl(lyx::tempName(path, "lyxwritetest"));
 
 	if (tmpfl.empty())
 		return false;
@@ -273,14 +273,12 @@ string const FileSearch(string const & path, string const & name,
 string const LibFileSearch(string const & dir, string const & name, 
 			   string const & ext)
 {
-        string fullname = FileSearch(AddPath(user_lyxdir, dir),
-				     name, ext); 
+	string fullname = FileSearch(AddPath(user_lyxdir, dir), name, ext); 
 	if (!fullname.empty())
 		return fullname;
 	
 	if (!build_lyxdir.empty()) 
-		fullname = FileSearch(AddPath(build_lyxdir, dir), 
-				      name, ext);
+		fullname = FileSearch(AddPath(build_lyxdir, dir), name, ext);
 	if (!fullname.empty())
 		return fullname;
 	
@@ -295,8 +293,8 @@ i18nLibFileSearch(string const & dir, string const & name,
 	// this comment is from intl/dcigettext.c. We try to mimick this
 	// behaviour here.  
 	/* The highest priority value is the `LANGUAGE' environment
-           variable. But we don't use the value if the currently
-           selected locale is the C locale. This is a GNU extension. */
+	   variable. But we don't use the value if the currently
+	   selected locale is the C locale. This is a GNU extension. */
 
 	string const lc_all = GetEnv("LC_ALL");
 	string lang = GetEnv("LANGUAGE");
@@ -324,33 +322,33 @@ i18nLibFileSearch(string const & dir, string const & name,
 
 string const GetEnv(string const & envname)
 {
-        // f.ex. what about error checking?
-        char const * const ch = getenv(envname.c_str());
-        string const envstr = !ch ? "" : ch;
-        return envstr;
+	// f.ex. what about error checking?
+	char const * const ch = getenv(envname.c_str());
+	string const envstr = !ch ? "" : ch;
+	return envstr;
 }
 
 
 string const GetEnvPath(string const & name)
 {
 #ifndef __EMX__
-        string const pathlist = subst(GetEnv(name), ':', ';');
+	string const pathlist = subst(GetEnv(name), ':', ';');
 #else
-        string const pathlist = os::slashify_path(GetEnv(name));
+	string const pathlist = os::slashify_path(GetEnv(name));
 #endif
-        return strip(pathlist, ';');
+	return strip(pathlist, ';');
 }
 
 
 bool PutEnv(string const & envstr)
 {
 	// CHECK Look at and fix this.
-        // f.ex. what about error checking?
+	// f.ex. what about error checking?
 
 #if HAVE_PUTENV
-        // this leaks, but what can we do about it?
-        //   Is doing a getenv() and a free() of the older value 
-        //   a good idea? (JMarc)
+	// this leaks, but what can we do about it?
+	//   Is doing a getenv() and a free() of the older value 
+	//   a good idea? (JMarc)
 	// Actually we don't have to leak...calling putenv like this
 	// should be enough: ... and this is obviously not enough if putenv
 	// does not make a copy of the string. It is also not very wise to
@@ -371,21 +369,21 @@ bool PutEnv(string const & envstr)
 	//int retval = lyx::putenv(envstr.c_str());
 #else
 #ifdef HAVE_SETENV 
-        string varname;
-        string const str = envstr.split(varname,'=');
-        int const retval = ::setenv(varname.c_str(), str.c_str(), true);
+	string varname;
+	string const str = envstr.split(varname,'=');
+	int const retval = ::setenv(varname.c_str(), str.c_str(), true);
 #else
 	// No environment setting function. Can this happen?
 	int const retval = 1; //return an error condition.
 #endif
 #endif
-        return retval == 0;
+	return retval == 0;
 }
 
 
 bool PutEnvPath(string const & envstr)
 {
-        return PutEnv(envstr);
+	return PutEnv(envstr);
 }
 
 
@@ -471,7 +469,9 @@ int DestroyTmpDir(string const & tmpdir, bool Allfiles)
 #ifdef __EMX__
 	Path p(user_lyxdir);
 #endif
-	if (Allfiles && DeleteAllFilesInDir(tmpdir)) return -1;
+	if (Allfiles && DeleteAllFilesInDir(tmpdir)) {
+		return -1;
+	}
 	if (lyx::rmdir(tmpdir)) { 
 		WriteFSAlert(_("Error! Couldn't delete temporary directory:"), 
 			     tmpdir);
@@ -511,25 +511,23 @@ string const CreateLyXTmpDir(string const & deflt)
 	if ((!deflt.empty()) && (deflt  != "/tmp")) {
 		if (lyx::mkdir(deflt, 0777)) {
 #ifdef __EMX__
-                        Path p(user_lyxdir);
+		Path p(user_lyxdir);
 #endif
-			string const t(CreateTmpDir(deflt, "lyx_tmpdir"));
-                        return t;
+			return CreateTmpDir(deflt, "lyx_tmpdir");
 		} else
-                        return deflt;
+			return deflt;
 	} else {
 #ifdef __EMX__
 		Path p(user_lyxdir);
 #endif
-		string const t(CreateTmpDir("/tmp", "lyx_tmpdir"));
-		return t;
+		return CreateTmpDir("/tmp", "lyx_tmpdir");
 	}
 }
 
 
 int DestroyLyXTmpDir(string const & tmpdir)
 {
-       return DestroyTmpDir (tmpdir, false); // Why false?
+	return DestroyTmpDir (tmpdir, false); // Why false?
 }
 
 
@@ -691,13 +689,15 @@ string const ExpandPath(string const & path)
 
 	if (Temp == ".") {
 		return lyx::getcwd() /*GetCWD()*/ + '/' + RTemp;
-	} else if (Temp == "~") {
+	}
+	if (Temp == "~") {
 		return GetEnvPath("HOME") + '/' + RTemp;
-	} else if (Temp == "..") {
+	}
+	if (Temp == "..") {
 		return MakeAbsPath(copy);
-	} else
-		// Don't know how to handle this
-		return copy;
+	}
+	// Don't know how to handle this
+	return copy;
 }
 
 
@@ -874,14 +874,16 @@ string const MakeRelPath(string const & abspath, string const & basepath)
 	string::size_type j = i;
 	while (j < baselen) {
 		if (basepath[j] == '/') {
-			if (j + 1 == baselen) break;
+			if (j + 1 == baselen)
+				break;
 			buf += "../";
 		}
 		++j;
 	}
 
 	// Append relative stuff from common directory to abspath
-	if (abspath[i] == '/') ++i;
+	if (abspath[i] == '/')
+		++i;
 	for (; i < abslen; ++i)
 		buf += abspath[i];
 	// Remove trailing /
@@ -921,8 +923,7 @@ string const AddPath(string const & path, string const & path_2)
  Strips path off if no_path == true.
  If no extension on oldname, just appends.
  */
-string const
-ChangeExtension(string const & oldname, string const & extension)
+string const ChangeExtension(string const & oldname, string const & extension)
 {
 	string::size_type const last_slash = oldname.rfind('/');
 	string::size_type last_dot = oldname.rfind('.');
@@ -1044,8 +1045,7 @@ cmdret const do_popen(string const & cmd)
 } // namespace anon
 
 
-string const
-findtexfile(string const & fil, string const & /*format*/)
+string const findtexfile(string const & fil, string const & /*format*/)
 {
 	/* There is no problem to extend this function too use other
 	   methods to look for files. It could be setup to look
@@ -1081,13 +1081,13 @@ findtexfile(string const & fil, string const & /*format*/)
 	// tfm - TFMFONTS, TEXFONTS
 	// This means that to use kpsewhich in the best possible way we
 	// should help it by setting additional path in the approp. envir.var.
-        string const kpsecmd = "kpsewhich " + fil;
+	string const kpsecmd = "kpsewhich " + fil;
 
-        cmdret const c = do_popen(kpsecmd);
-	
-        lyxerr[Debug::LATEX] << "kpse status = " << c.first << "\n"
-			     << "kpse result = `" << strip(c.second, '\n') 
-			     << "'" << endl;
+	cmdret const c = do_popen(kpsecmd);
+
+	lyxerr[Debug::LATEX] << "kpse status = " << c.first << "\n"
+		 << "kpse result = `" << strip(c.second, '\n') 
+		 << "'" << endl;
 	if (c.first != -1) 
 		return os::internal_path(strip(strip(c.second, '\n'), '\r'));
 	else
