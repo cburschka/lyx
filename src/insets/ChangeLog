@@ -1,5 +1,12 @@
 2003-03-07  Angus Leeming  <leeming@lyx.org>
 
+	* insetbibitem.C (localDispatch):
+	* insetbibtex.C (localDispatch):
+	* insetlabel.C (localDispatch):
+	rewrite as a switch.
+
+2003-03-07  Angus Leeming  <leeming@lyx.org>
+
 	* insetgraphics.[Ch]: define a new class InsetGraphicsMailer and use
 	it to communicate with the frontend dialogs.
 

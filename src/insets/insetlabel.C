@@ -54,36 +54,31 @@ void InsetLabel::edit(BufferView *, int, int, mouse_button::state)
 
 dispatch_result InsetLabel::localDispatch(FuncRequest const & cmd)
 {
-	if (cmd.action != LFUN_INSET_MODIFY)
-		return UNDISPATCHED;
+	Inset::RESULT result = UNDISPATCHED;
 
-	InsetCommandParams p;
-	InsetCommandMailer::string2params(cmd.argument, p);
-	if (p.getCmdName().empty())
-		return UNDISPATCHED;
+	switch (cmd.action) {
+	case LFUN_INSET_MODIFY: {
+		InsetCommandParams p;
+		InsetCommandMailer::string2params(cmd.argument, p);
+		if (p.getCmdName().empty())
+			return UNDISPATCHED;
 
-	bool clean = true;
-	if (view() && p.getContents() != params().getContents()) {
-		clean = view()->ChangeRefsIfUnique(params().getContents(),
-						   p.getContents());
+		bool clean = true;
+		if (view() && p.getContents() != params().getContents()) {
+			clean = view()->ChangeRefsIfUnique(params().getContents(),
+							   p.getContents());
+		}
+
+		setParams(p);
+		cmd.view()->updateInset(this, !clean);
+		result = DISPATCHED;
+	}
+	break;
+	default:
+		result = InsetCommand::localDispatch(cmd);
 	}
 
-	setParams(p);
-	if (view())
-		view()->updateInset(this, !clean);
-
-	return DISPATCHED;
-// 	if (result.first) {
-// 		string new_contents = trim(result.second);
-// 		if (!new_contents.empty() &&
-// 		    getContents() != new_contents) {
-// 			bv->buffer()->markDirty();
-// 			bool flag = bv->ChangeRefsIfUnique(getContents(),
-// 							   new_contents);
-// 			setContents(new_contents);
-// 			bv->updateInset(this, !flag);
-// 		}
-// 	}
+	return result;
 }
 
 

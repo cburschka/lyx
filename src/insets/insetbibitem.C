@@ -51,24 +51,30 @@ Inset * InsetBibitem::clone(Buffer const &, bool) const
 
 dispatch_result InsetBibitem::localDispatch(FuncRequest const & cmd)
 {
-	if (cmd.action != LFUN_INSET_MODIFY)
-		return UNDISPATCHED;
+	Inset::RESULT result = UNDISPATCHED;
 
-	InsetCommandParams p;
-	InsetCommandMailer::string2params(cmd.argument, p);
-	if (p.getCmdName().empty())
-		return UNDISPATCHED;
+	switch (cmd.action) {
+	case LFUN_INSET_MODIFY: {
+		InsetCommandParams p;
+		InsetCommandMailer::string2params(cmd.argument, p);
+		if (p.getCmdName().empty())
+			break;
 
-	if (view() && p.getContents() != params().getContents()) {
-		view()->ChangeCitationsIfUnique(params().getContents(),
-						p.getContents());
+		if (view() && p.getContents() != params().getContents()) {
+			view()->ChangeCitationsIfUnique(params().getContents(),
+							p.getContents());
+		}
+
+		setParams(p);
+		cmd.view()->updateInset(this, true);
+		result = DISPATCHED;
+	}
+	break;
+	default:
+		result = InsetCommand::localDispatch(cmd);
 	}
 
-	setParams(p);
-	if (view())
-		view()->updateInset(this, true);
-
-	return DISPATCHED;
+	return result;
 }
 
 
