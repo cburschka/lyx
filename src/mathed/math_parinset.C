@@ -21,9 +21,10 @@ using std::endl;
 extern int number_of_newlines;
 
 
-MathedRowSt * MathParInset::getRowSt() const
+MathedRowContainer & MathParInset::getRowSt()
 {
-	return 0;
+	static MathedRowContainer dummy;
+	return dummy;
 }
 
 
@@ -270,7 +271,7 @@ void MathParInset::Write(ostream & os, bool fragile)
 	latexkeys const * l;
 	MathedIter data(&array);
 	// hack
-	MathedRowSt const * crow = getRowSt();   
+	MathedRowContainer::iterator crow = getRowSt().begin();   
 	data.Reset();
 	
 	if (!Permit(LMPF_FIXED_SIZE)) { 
@@ -348,7 +349,7 @@ void MathParInset::Write(ostream & os, bool fragile)
 							   << crow->getLabel()
 							   << "} ";
 						}
-						crow = crow->getNext();
+						++crow;
 					}
 					if (fragile)
 						os << "\\protect";

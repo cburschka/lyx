@@ -186,7 +186,7 @@ void MathedXIter::SetData(MathParInset * pp)
 	x_ = y_ = 0;
 	array = &p_->GetData();
 	ncols = p_->GetColumns();
-	crow_ = p_->getRowSt();
+	crow_ = p_->getRowSt().data_;
 	if (p_->Permit(LMPF_ALLOW_CR))
 		flags |= MthIF_CR;
 	if (p_->Permit(LMPF_ALLOW_TAB))
@@ -272,7 +272,7 @@ void MathedXIter::GoBegin()
 	x_ = y_ = 0;   
 	sw_ = sx_ = 0;
 	if (p_) {
-		crow_ = p_->getRowSt();
+		crow_ = p_->getRowSt().data_;
 		if (crow_) {
 			x_ = crow_->getTab(0);
 			y_ = crow_->getBaseline();
@@ -447,7 +447,7 @@ void MathedXIter::ipop()
 	x_ = stck.x;
 	y_ = stck.y;
 	if (p_) {
-		crow_ = p_->getRowSt();
+		crow_ = p_->getRowSt().data_;
 		if (crow_)
 			for (int i = 0; i < row; ++i)
 				crow_ = crow_->getNext();

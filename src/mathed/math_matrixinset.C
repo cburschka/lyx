@@ -53,7 +53,7 @@ MathMatrixInset::MathMatrixInset(MathMatrixInset const & mt)
 				row_ = r;
 			else
 				ro->setNext(r);
-			mrow = mrow->getNext();
+			mrow = mrow->next_;
 			ro = r;
 			++nr_;
 		}
@@ -67,7 +67,7 @@ MathMatrixInset::~MathMatrixInset()
 {
 	MathedRowSt * r = row_.data_;
 	while (r) {
-		MathedRowSt * q = r->getNext();
+		MathedRowSt * q = r->next_;
 		delete r;
 		r = q;
 	}
@@ -184,7 +184,7 @@ void MathMatrixInset::Metrics()
 		ascent = h - hl;
 		break;
 	default:
-		ascent = (row_.data_->getNext()) ? h / 2 : h - hl;
+		ascent = (row_.begin().is_last()) ? h / 2 : h - hl;
 		break;
 	}
 	descent = h - ascent + 2;

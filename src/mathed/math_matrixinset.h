@@ -45,9 +45,9 @@ public:
 	virtual bool isMatrix() const;
 	
 	/// Use this to manage the extra information independently of paragraph
-	MathedRowSt * getRowSt() const;
+	MathedRowContainer & getRowSt();
 	///
-	void setRowSt(MathedRowSt * r);
+	void setRowSt(MathedRowContainer & r);
 private:
 	///  Number of columns & rows
 	int nc_;
@@ -87,14 +87,14 @@ bool MathMatrixInset::isMatrix() const
 	
 
 inline
-MathedRowSt * MathMatrixInset::getRowSt() const
+MathedRowContainer & MathMatrixInset::getRowSt()
 {
-	return row_.data_;
+	return row_;
 }
 
 
 inline
-void MathMatrixInset::setRowSt(MathedRowSt * r)
+void MathMatrixInset::setRowSt(MathedRowContainer & r)
 {
 	row_ = r;
 }

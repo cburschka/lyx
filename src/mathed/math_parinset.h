@@ -67,9 +67,9 @@ public:
 	///
 	virtual void SetStyle(short);
 	///
-	virtual MathedRowSt * getRowSt() const;
+	virtual MathedRowContainer & getRowSt();
 	///
-	virtual void setRowSt(MathedRowSt *);
+	virtual void setRowSt(MathedRowContainer &);
 	///
 	virtual bool Permit(short f) const;
 	///
@@ -150,7 +150,7 @@ int MathParInset::getMaxArgumentIdx() const
 
 
 inline
-void MathParInset::setRowSt(MathedRowSt *)
+void MathParInset::setRowSt(MathedRowContainer &)
 {}
 
 

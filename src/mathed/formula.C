@@ -393,7 +393,7 @@ void InsetFormula::draw(BufferView * bv, LyXFont const & f,
 		} else {
 			MathMatrixInset * mt =
 				static_cast<MathMatrixInset*>(par);
-			MathedRowSt const * crow = mt->getRowSt();
+			MathedRowContainer::iterator crow = mt->getRowSt().begin();
 			while (crow) {
 				int const y = baseline + crow->getBaseline();
 				if (crow->isNumbered()) {
@@ -404,7 +404,7 @@ void InsetFormula::draw(BufferView * bv, LyXFont const & f,
 						str = "(#)";
 					pain.text(int(x + 20), y, str, wfont);
 				}
-				crow = crow->getNext();
+				++crow;
 			}
 		}
 	}
@@ -557,11 +557,11 @@ vector<string> const InsetFormula::getLabelList() const
 
 	if (is_multi_numbered(par->GetType())) {
 		MathMatrixInset * mt = static_cast<MathMatrixInset*>(par);
-		MathedRowSt const * crow = mt->getRowSt();
+		MathedRowContainer::iterator crow = mt->getRowSt().begin();
 		while (crow) {
 			if (!crow->getLabel().empty())
 				label_list.push_back(crow->getLabel());
-			crow = crow->getNext();
+			++crow;
 		}
 	} else if (!label_.empty())
 		label_list.push_back(label_);

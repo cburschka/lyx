@@ -424,7 +424,7 @@ void mathed_parse(MathedArray & array, unsigned flags = 0,
 	int acc_brace = 0;
 	int acc_braces[8];
 	MathParInset * mt = (mtx) ? *mtx : 0;
-	MathedRowSt * crow = (mt) ? mt->getRowSt() : 0;
+	MathedRowSt * crow = (mt) ? mt->getRowSt().data_ : 0;
 	
 	++plevel;
 	MathedIter data(&array);
@@ -869,7 +869,7 @@ void mathed_parse(MathedArray & array, unsigned flags = 0,
 					}
 					mt->SetStyle(size);
 					mt->SetType(mathed_env);
-					crow = mt->getRowSt();
+					crow = mt->getRowSt().data_;
 				}
 				
 				lyxerr[Debug::MATHED] << "MATH BEGIN[" << mathed_env << "]" << endl;
