@@ -18,6 +18,9 @@
 #ifndef CONTROLINSET_H
 #define CONTROLINSET_H
 
+#include "LyXView.h"
+#include "support/LAssert.h"
+
 #include "ControlConnections.h"
 
 class Inset;
@@ -92,11 +95,6 @@ private:
 	*/
 	Params * params_;
 };
-
-
-#include "LyXView.h"
-#include "support/LAssert.h"
-
 
 
 template <class Inset, class Params>
