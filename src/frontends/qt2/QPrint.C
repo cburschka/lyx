@@ -22,7 +22,7 @@
 #include "gettext.h"
 
 #include "QPrint.h"
-#include "QPrintDialog.h"
+#include "QLPrintDialog.h"
 #include "Qt2BC.h"
 
 #include <qlineedit.h>
@@ -31,10 +31,8 @@
 #include <qspinbox.h>
 #include <qpushbutton.h>
 
-// FIXME FIXME QPrintDialog is getting destructed twice !!!!
 
-
-typedef Qt2CB<ControlPrint, Qt2DB<QPrintDialog> > base_class;
+typedef Qt2CB<ControlPrint, Qt2DB<QLPrintDialog> > base_class;
 
 
 QPrint::QPrint()
@@ -45,7 +43,7 @@ QPrint::QPrint()
 
 void QPrint::build_dialog()
 {
-	dialog_.reset(new QPrintDialog(this));
+	dialog_.reset(new QLPrintDialog(this));
 
 	bc().setOK(dialog_->printPB);
 	bc().setCancel(dialog_->closePB);

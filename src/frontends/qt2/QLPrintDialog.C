@@ -1,5 +1,5 @@
 /**
- * \file QPrintDialog.C
+ * \file QLPrintDialog.C
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -20,7 +20,7 @@
 #include "support/lstrings.h"
 
 #include "QPrint.h"
-#include "QPrintDialog.h"
+#include "QLPrintDialog.h"
 
 #include <qfiledialog.h>
 #include <qcheckbox.h>
@@ -31,7 +31,7 @@
 #include <qspinbox.h>
 
 
-QPrintDialog::QPrintDialog(QPrint * f)
+QLPrintDialog::QLPrintDialog(QPrint * f)
 	: QPrintDialogBase(0, 0, false, 0),
 	form_(f)
 {
@@ -42,13 +42,13 @@ QPrintDialog::QPrintDialog(QPrint * f)
 }
 
 
-void QPrintDialog::change_adaptor()
+void QLPrintDialog::change_adaptor()
 {
 	form_->changed();
 }
 
 
-void QPrintDialog::browseClicked()
+void QLPrintDialog::browseClicked()
 {
 	QString file =
 		QFileDialog::getOpenFileName(QString::null,
@@ -62,7 +62,7 @@ void QPrintDialog::browseClicked()
 }
 
 
-void QPrintDialog::fileChanged()
+void QLPrintDialog::fileChanged()
 {
 	if (!fileED->text().isEmpty())
 		fileRB->setChecked(true);
@@ -70,21 +70,21 @@ void QPrintDialog::fileChanged()
 }
 
 
-void QPrintDialog::copiesChanged(int i)
+void QLPrintDialog::copiesChanged(int i)
 {
 	collateCB->setEnabled(i != 1);
 	form_->changed();
 }
 
 
-void QPrintDialog::printerChanged()
+void QLPrintDialog::printerChanged()
 {
 	printerRB->setChecked(true);
 	form_->changed();
 }
 
 
-void QPrintDialog::pagerangeChanged()
+void QLPrintDialog::pagerangeChanged()
 {
 	int const from = strToUnsignedInt(fromED->text().latin1());
 	int const to = strToUnsignedInt(toED->text().latin1());

@@ -73,8 +73,8 @@ DIALOGSOURCES = \
 	QParagraph.C QParagraphDialog.C \
 	QPreamble.h QPreambleDialog.h \
 	QPreamble.C QPreambleDialog.C \
-	QPrint.h QPrintDialog.h \
-	QPrint.C QPrintDialog.C \
+	QPrint.h QLPrintDialog.h \
+	QPrint.C QLPrintDialog.C \
 	QRef.h QRefDialog.h \
 	QRef.C QRefDialog.C \
 	QSearch.h QSearchDialog.h \
@@ -121,7 +121,7 @@ MOCDIALOGS = \
 	QMinipageDialog_moc.C \
 	QParagraphDialog_moc.C \
 	QPreambleDialog_moc.C \
-	QPrintDialog_moc.C \
+	QLPrintDialog_moc.C \
 	QRefDialog_moc.C \
 	QSearchDialog_moc.C \
 	QSendtoDialog_moc.C \

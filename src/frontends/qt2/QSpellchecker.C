@@ -50,6 +50,7 @@ void QSpellchecker::update_contents()
 	dialog_->wordED->setText("");
 	dialog_->replaceCO->clear();
 	dialog_->suggestionsLB->clear();
+	dialog_->spellcheckPR->setProgress(0.0);
 }
 
 

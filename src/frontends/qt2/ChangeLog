@@ -1,5 +1,18 @@
 2002-10-30  John Levon  <levon@movementarian.org>
 
+	* QPrintDialog.[hC]: move to ...
+
+	* QLPrintDialog.[hC]: ... here to prevent name clash
+
+	* QPrint.h:
+	* QPrint.C:
+	* Dialogs_impl.h: 
+	* Makefile.dialogs: from above
+ 
+	* QSpellchecker.C: reset progress
+ 
+2002-10-30  John Levon  <levon@movementarian.org>
+
 	* QGraphics.C:
 	* ui/QGraphicsDialog.ui: some fixes from Herbert
  

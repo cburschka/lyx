@@ -91,7 +91,7 @@
 #include "QPreambleDialog.h"
 //#include "QPreferences.h"
 #include "QPrint.h"
-#include "QPrintDialog.h"
+#include "QLPrintDialog.h"
 #include "QRef.h"
 #include "QRefDialog.h"
 #include "QSearch.h"

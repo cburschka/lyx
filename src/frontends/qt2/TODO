@@ -4,10 +4,6 @@ is incomplete.
 
 Those with asterisks are what I perceive as being "big jobs"
 
-lyx_gui (qt)
-
-	- move out lyxserver
- 
 QDocument
 
 	- finalize bullets 
@@ -18,7 +14,7 @@ QDocument
 
 qfont_loader
 
-	- use lyxrc, check for failure
+	- use lyxrc
  
 QForks
 
@@ -41,10 +37,6 @@ QLyXKeySym
 
 	- getISOEncoded - get this to work (*)
 
-QMathDialog
-
-	- finish
- 
 QPreferences
 
 	- implement me (*)

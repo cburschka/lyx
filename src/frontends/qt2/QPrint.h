@@ -20,15 +20,15 @@
 #include "Qt2Base.h"
 
 class ControlPrint;
-class QPrintDialog;
+class QLPrintDialog;
 
 ///
 class QPrint
-	: public Qt2CB<ControlPrint, Qt2DB<QPrintDialog> >
+	: public Qt2CB<ControlPrint, Qt2DB<QLPrintDialog> >
 {
 public:
 	///
-	friend class QPrintDialog;
+	friend class QLPrintDialog;
 	///
 	QPrint();
 private:
