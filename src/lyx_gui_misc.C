@@ -24,7 +24,6 @@
 #include "lyx.h"
 #include "lyx_cb.h"
 #include "lyx_main.h"
-#include "mathed/math_forms.h"
 #include "minibuffer.h"
 #include "print_form.h"
 #include "sp_form.h"
@@ -43,11 +42,6 @@ extern FD_form_figure * fd_form_figure;
 extern FD_form_sendto * fd_form_sendto;
 extern FD_form_spell_check * fd_form_spell_check;
 extern FD_form_spell_options * fd_form_spell_options;
-extern FD_panel  * fd_panel;
-extern FD_delim  * fd_delim;
-extern FD_deco   * fd_deco;
-extern FD_space  * fd_space;
-extern FD_matrix * fd_matrix;
 
 extern void HideFiguresPopups();
 
@@ -60,12 +54,6 @@ extern "C" int CancelCloseBoxCB(FL_FORM *, void *)
 // that the xform colors have been re-mapped).
 void RedrawAllBufferRelatedDialogs()
 {
-	if (fd_deco && fd_deco->deco->visible) {
-		fl_redraw_form(fd_deco->deco);
-	}
-	if (fd_delim && fd_delim->delim->visible) {
-		fl_redraw_form(fd_delim->delim);
-	}
 	if (fd_form_figure->form_figure->visible) {
 		fl_redraw_form(fd_form_figure->form_figure);
 	}
@@ -79,15 +67,6 @@ void RedrawAllBufferRelatedDialogs()
 	if (fd_form_spell_options &&
 	    fd_form_spell_options->form_spell_options->visible) {
 		fl_redraw_form(fd_form_spell_options->form_spell_options);
-	}
-	if (fd_matrix && fd_matrix->matrix->visible) {
-		fl_redraw_form(fd_matrix->matrix);
-	}
-	if (fd_panel && fd_panel->panel->visible) {
-		fl_redraw_form(fd_panel->panel);
-	}
-	if (fd_space && fd_space->space->visible) {
-		fl_redraw_form(fd_space->space);
 	}
 }
 
@@ -112,31 +91,6 @@ void CloseAllBufferRelatedDialogs()
 			fl_trigger_object(fd_form_spell_check->done);
 		}
 	}
-	if (fd_panel) {
-		if (fd_panel->panel->visible) {
-			fl_hide_form(fd_panel->panel);
-		}
-	}
-	if (fd_delim) {
-		if (fd_delim->delim->visible) {
-			fl_hide_form(fd_delim->delim);
-		}
-	}
-	if (fd_deco) {
-		if (fd_deco->deco->visible) {
-			fl_hide_form(fd_deco->deco);
-		}
-	}
-	if (fd_space) {
-		if (fd_space->space->visible) {
-			fl_hide_form(fd_space->space);
-		}
-	}
-	if (fd_matrix) {
-		if (fd_matrix->matrix->visible) {
-			fl_hide_form(fd_matrix->matrix);
-		}
-	}
 	HideFiguresPopups();
 }
 
@@ -144,36 +98,6 @@ void CloseAllBufferRelatedDialogs()
 // Again the Signal/Slot mechanism is tailor made for this task.
 void updateAllVisibleBufferRelatedDialogs(bool)
 {
-	if (current_view->buffer() &&  current_view->buffer()->isReadonly()) {
-		// a little crude perhaps but it works. ARRae
-		// The math popups should be closed only if we switch
-		// to a readonly buffer
-		if (fd_panel) {
-			if (fd_panel->panel->visible) {
-				fl_hide_form(fd_panel->panel);
-			}
-		}
-		if (fd_delim) {
-			if (fd_delim->delim->visible) {
-				fl_hide_form(fd_delim->delim);
-			}
-		}
-		if (fd_deco) {
-			if (fd_deco->deco->visible) {
-				fl_hide_form(fd_deco->deco);
-			}
-		}
-		if (fd_space) {
-			if (fd_space->space->visible) {
-				fl_hide_form(fd_space->space);
-			}
-		}
-		if (fd_matrix) {
-			if (fd_matrix->matrix->visible) {
-				fl_hide_form(fd_matrix->matrix);
-			}
-		}
-	}
 	HideFiguresPopups();
 }
 

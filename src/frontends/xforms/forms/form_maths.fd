@@ -8,7 +8,7 @@ Unit of measure: FL_COORD_PIXEL
 SnapGrid: 2
 
 =============== FORM ===============
-Name: panel
+Name: form_panel
 Width: 290
 Height: 172
 Number of Objects: 16
@@ -45,9 +45,9 @@ label: Close
 shortcut: ^M
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: 
-callback: button_cb
-argument: 100
+name: button_close
+callback: C_FormBaseCancelCB
+argument:
 
 --------------------
 class: FL_BROWSER
@@ -63,8 +63,8 @@ label: Functions
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: func_browse
-callback: button_cb
+name: browser_functions
+callback: C_FormMathsButtonCB
 argument: MM_FUNC
   h_pref: FL_OFF
 
@@ -82,8 +82,8 @@ label: Greek
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: greek
-callback: button_cb
+name: button_greek
+callback: C_FormMathsButtonCB
 argument: MM_GREEK
 
 --------------------
@@ -100,8 +100,8 @@ label: ­ Û
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: arrow
-callback: button_cb
+name: button_arrow
+callback: C_FormMathsButtonCB
 argument: MM_ARROW
 
 --------------------
@@ -118,8 +118,8 @@ label: ± ´
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: boperator
-callback: button_cb
+name: button_boperator
+callback: C_FormMathsButtonCB
 argument: MM_BOP
 
 --------------------
@@ -136,8 +136,8 @@ label: £ @
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: brelats
-callback: button_cb
+name: button_brelats
+callback: C_FormMathsButtonCB
 argument: MM_BRELATS
 
 --------------------
@@ -154,8 +154,8 @@ label: S  ò
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: varsize
-callback: button_cb
+name: button_varsize
+callback: C_FormMathsButtonCB
 argument: MM_VARSIZE
 
 --------------------
@@ -172,8 +172,8 @@ label: Misc
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: misc
-callback: button_cb
+name: button_misc
+callback: C_FormMathsButtonCB
 argument: MM_MISC
 
 --------------------
@@ -190,8 +190,8 @@ label:
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: equation
-callback: button_cb
+name: button_equation
+callback: C_FormMathsButtonCB
 argument: MM_EQU
 
 --------------------
@@ -208,8 +208,8 @@ label:
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: sqrt
-callback: button_cb
+name: button_sqrt
+callback: C_FormMathsButtonCB
 argument: MM_SQRT
 
 --------------------
@@ -226,8 +226,8 @@ label:
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: frac
-callback: button_cb
+name: button_frac
+callback: C_FormMathsButtonCB
 argument: MM_FRAC
 
 --------------------
@@ -244,8 +244,8 @@ label:
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: delim
-callback: button_cb
+name: button_delim
+callback: C_FormMathsButtonCB
 argument: MM_DELIM
 
 --------------------
@@ -262,8 +262,8 @@ label:
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: matrix
-callback: button_cb
+name: button_matrix
+callback: C_FormMathsButtonCB
 argument: MM_MATRIX
 
 --------------------
@@ -280,8 +280,8 @@ label:
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: deco
-callback: button_cb
+name: button_deco
+callback: C_FormMathsButtonCB
 argument: MM_DECO
 
 --------------------
@@ -298,12 +298,12 @@ label:
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: space
-callback: button_cb
+name: button_space
+callback: C_FormMathsButtonCB
 argument: MM_SPACE
 
 =============== FORM ===============
-Name: delim
+Name: form_delim
 Width: 250
 Height: 260
 Number of Objects: 10
@@ -340,8 +340,8 @@ label:
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: menu
-callback: delim_cb
+name: bmtable_delim
+callback: C_FormMathsDelimCB
 argument: 2
 
 --------------------
@@ -376,8 +376,8 @@ label: Right|#R
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: right
-callback: delim_cb
+name: radio_right
+callback: C_FormMathsDelimCB
 argument: 4
 
 --------------------
@@ -394,8 +394,8 @@ label: Left|#L
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: left
-callback: delim_cb
+name: radio_left
+callback: C_FormMathsDelimCB
 argument: 3
 
 --------------------
@@ -430,8 +430,8 @@ label: Cancel|^[
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: 
-callback: delim_cb
+name: button_delim_close
+callback: C_FormMathsDelimCB
 argument: MM_CLOSE
 
 --------------------
@@ -448,8 +448,8 @@ label:
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: pix
-callback: delim_cb
+name: button_delim_pix
+callback: C_FormMathsDelimCB
 argument: MM_APPLY
 
 --------------------
@@ -466,8 +466,8 @@ label: Apply|#A
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: 
-callback: delim_cb
+name: button_delim_apply
+callback: C_FormMathsDelimCB
 argument: MM_APPLY
 
 --------------------
@@ -484,12 +484,12 @@ label: OK
 shortcut: ^M
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: 
-callback: delim_cb
+name: button_delim_ok
+callback: C_FormMathsDelimCB
 argument: MM_OK
 
 =============== FORM ===============
-Name: matrix
+Name: form_matrix
 Width: 280
 Height: 170
 Number of Objects: 8
@@ -526,8 +526,8 @@ label: OK
 shortcut: ^M
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: 
-callback: matrix_cb
+name: button_matrix_ok
+callback: C_FormMathsMatrixCB
 argument: MM_OK
 
 --------------------
@@ -544,8 +544,8 @@ label: Cancel|^[
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: 
-callback: matrix_cb
+name: button_matrix_close
+callback: C_FormMathsMatrixCB
 argument: MM_CLOSE
 
 --------------------
@@ -562,8 +562,8 @@ label: Rows
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: rows
-callback: matrix_cb
+name: slider_matrix_rows
+callback: C_FormMathsMatrixCB
 argument: -1
 	bounds: 1 20
 	precision: 0
@@ -583,8 +583,8 @@ label: Columns
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: columns
-callback: matrix_cb
+name: slider_matrix_columns
+callback: C_FormMathsMatrixCB
 argument: 2
 	bounds: 1 20
 	precision: 0
@@ -604,8 +604,8 @@ label: Vertical align|#V
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: valign
-callback: matrix_cb
+name: choice_matrix_valign
+callback: C_FormMathsMatrixCB
 argument: -1
 
 --------------------
@@ -622,8 +622,8 @@ label: Horizontal align|#H
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: halign
-callback: matrix_cb
+name: input_matrix_halign
+callback: C_FormMathsMatrixCB
 argument: 2
 
 --------------------
@@ -640,12 +640,12 @@ label: Apply|#A
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: 
-callback: matrix_cb
+name: button_matrix_apply
+callback: C_FormMathsMatrixCB
 argument: MM_APPLY
 
 =============== FORM ===============
-Name: deco
+Name: form_deco
 Width: 160
 Height: 150
 Number of Objects: 3
@@ -682,8 +682,8 @@ label:
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: menu
-callback: deco_cb
+name: bmtable_deco
+callback: C_FormMathsDecoCB
 argument: MM_APPLY
 
 --------------------
@@ -700,12 +700,12 @@ label: Close
 shortcut: ^M
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: 
-callback: deco_cb
+name: button_deco_close
+callback: C_FormMathsDecoCB
 argument: MM_CLOSE
 
 =============== FORM ===============
-Name: space
+Name: form_space
 Width: 280
 Height: 150
 Number of Objects: 12
@@ -742,8 +742,8 @@ label: OK
 shortcut: ^M
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: 
-callback: space_cb
+name: button_space_menu
+callback: C_FormMathsSpaceCB
 argument: MM_OK
 
 --------------------
@@ -760,8 +760,8 @@ label: Cancel|^[
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: 
-callback: space_cb
+name: button_space_cancel
+callback: C_FormMathsSpaceCB
 argument: MM_CLOSE
 
 --------------------
@@ -778,8 +778,8 @@ label: Apply|#A
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: 
-callback: space_cb
+name: button_space_apply
+callback: C_FormMathsSpaceCB
 argument: MM_APPLY
 
 --------------------
@@ -814,8 +814,8 @@ label: Thin|#T
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: 
-callback: space_cb
+name: radio_space_thin
+callback: C_FormMathsSpaceCB
 argument: 1
 
 --------------------
@@ -832,8 +832,8 @@ label: Medium|#M
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: 
-callback: space_cb
+name: radio_space_medium
+callback: C_FormMathsSpaceCB
 argument: 2
 
 --------------------
@@ -850,8 +850,8 @@ label: Thick|#H
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: 
-callback: space_cb
+name: radio_space_thick
+callback: C_FormMathsSpaceCB
 argument: 3
 
 --------------------
@@ -868,8 +868,8 @@ label: Negative|#N
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: 
-callback: space_cb
+name: radio_space_negative
+callback: C_FormMathsSpaceCB
 argument: 0
 
 --------------------
@@ -886,8 +886,8 @@ label: Quadratin|#Q
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: 
-callback: space_cb
+name: radio_space_quadratin
+callback: C_FormMathsSpaceCB
 argument: 4
 
 --------------------
@@ -904,8 +904,8 @@ label: 2Quadratin|#2
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: 
-callback: space_cb
+name: radio_space_twoquadratin
+callback: C_FormMathsSpaceCB
 argument: 5
 
 --------------------

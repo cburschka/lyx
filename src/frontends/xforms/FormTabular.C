@@ -26,6 +26,7 @@
 #include "buffer.h"
 #include "xforms_helpers.h"
 
+using SigC::slot;
 
 FormTabular::FormTabular(LyXView * lv, Dialogs * d)
 	: FormInset(lv, d, _("Tabular Layout")),

@@ -27,6 +27,7 @@
 using Liason::printBuffer;
 using Liason::getPrinterParams;
 using std::make_pair;
+using SigC::slot;
 
 FormPrint::FormPrint(LyXView * lv, Dialogs * d)
 	: FormBaseBD(lv, d, _("Print")),

@@ -1,102 +1,56 @@
 // -*- C++ -*-
-/* International support for LyX
-
-
- */
+/* International support for LyX */
 #ifndef INTL_H
 #define INTL_H
-
-#include FORMS_H_LOCATION
 
 #ifdef __GNUG__
 #pragma interface
 #endif
 
-#include <boost/smart_ptr.hpp>
-#include <sigc++/signal_system.h>
 #include "LString.h"
-#include "form1.h"
 #include "trans_mgr.h"
 
-class LyXText;
-class Combox;
 
-/// default character set
-#define DEFCHSET "iso8859-1"
-
-
-/** The gui part and the non gui part should be split into two different
-  classes. Probably should the gui class just have a pointer to the non
-  gui class.
-  */
-class Intl : public SigC::Object {
+class Intl {
 public:
-	///
-	Intl();
-	///
-	~Intl();
+	/// which keymap is currently used ?
+	enum Keymap {
+		PRIMARY,
+		SECONDARY
+	};
 	
-	/// show key mapping dialog
-	void MenuKeymap(); 
-	///
+	Intl();
+	
+	/// {en/dis}able the keymap
 	void KeyMapOn(bool on);
-	///
+
+	/// set the primary language keymap
 	void KeyMapPrim();
-	///
+
+	/// set the secondary language keymap
 	void KeyMapSec();
 
 	/// turn on/off key mappings, status in keymapon
 	void ToggleKeyMap();
-
-	///
-	int SetPrimary(string const &);
-
-	///
-	int SetSecondary(string const &);
 
 	/// initialize key mapper
 	void InitKeyMapper(bool on);
 
 	// Get the Translation Manager
 	TransManager & getTrans();
-	///
-	bool keymapon;
-	///
-	bool primarykeymap;
-	///
-	char * chsetcode;
-	///
-	static void DispatchCallback(FL_OBJECT *, long);
+
+	/// using primary or secondary keymap ?
+	Keymap keymap;
+
 private:
-	/** Redraw the form (on receipt of a Signal indicating, for example,
-	    that the xform colors have been re-mapped).
-	*/
-	void redraw();
-	///
-	void update();
-	///
-	static void LCombo(int i, void *, Combox *); // callback
-	///
-	void Keymap(long code);
-	///
-	int curkeymap;
-	///
-	int otherkeymap;
-	
-	///
-	FD_KeyMap * fd_form_keymap;
-	///
-	boost::scoped_ptr<Combox> Language;
-	///
-	boost::scoped_ptr<Combox> Language2;
-	///
+	/// is key mapping enabled ?
+	bool keymapon;
+	/// the primary language keymap
 	string & prim_lang;
-	///
+	/// the secondary language keymap
 	string & sec_lang;
-	///
+	/// the translation manager
 	TransManager trans;
-	/// Redraw connection.
-	SigC::Connection r_;
 };
 
 
@@ -106,4 +60,4 @@ TransManager & Intl::getTrans()
 	return trans;
 }
 
-#endif
+#endif /* INTL_H */

@@ -19,6 +19,8 @@
 #include "lyxrc.h"
 #include "buffer.h"
 
+using SigC::slot;
+
 FormLog::FormLog(LyXView * lv, Dialogs * d)
 	: FormBrowser(lv, d, _("LaTeX Log"))
 {

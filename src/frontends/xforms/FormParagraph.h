@@ -14,14 +14,14 @@
 #define FORM_PARAGRAPH_H
 
 #include <boost/smart_ptr.hpp>
-#include "FormBaseDeprecated.h"
-#include "xformsBC.h"
-#if 1
-#include "lyxparagraph.h"
-#endif
 
 #ifdef __GNUG_
 #pragma interface
+#endif
+
+#include "FormBaseDeprecated.h"
+#if 1
+#include "lyxparagraph.h"
 #endif
 
 struct FD_form_tabbed_paragraph;

@@ -26,7 +26,7 @@
 #include "combox.h"
 
 using Liason::setMinibuffer;
-
+using SigC::slot;
 
 FormCharacter::FormCharacter(LyXView * lv, Dialogs * d)
 	: FormBaseBD(lv, d, _("Character Layout"))

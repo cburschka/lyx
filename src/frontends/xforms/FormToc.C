@@ -28,6 +28,7 @@
 #include "support/lstrings.h"
 
 using std::vector;
+using SigC::slot;
 
 // The current code uses the apply() for handling the Update button and the
 // type-of-table selection and cancel() for the close button.  This is a little

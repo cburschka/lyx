@@ -13,12 +13,11 @@
 
 #include <boost/smart_ptr.hpp>
 
-#include "FormInset.h"
-#include "xformsBC.h"
-
 #ifdef __GNUG__
 #pragma interface
 #endif
+
+#include "FormInset.h"
 
 struct FD_form_bibtex;
 

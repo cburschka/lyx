@@ -16,7 +16,6 @@
 #endif
 
 #include "FormBaseDeprecated.h"
-#include "xformsBC.h"
 
 struct FD_form_credits;
 

@@ -5,7 +5,7 @@ noinst_LTLIBRARIES = libmathed.la
 LIBS=
 ETAGS_ARGS = --lang=c++
 BOOST_INCLUDES = -I$(top_srcdir)/boost
-INCLUDES = -I${top_srcdir}/images -I${srcdir}/../ $(SIGC_CFLAGS) $(BOOST_INCLUDES)
+INCLUDES = -I${srcdir}/../ $(SIGC_CFLAGS) $(BOOST_INCLUDES)
 
 libmathed_la_SOURCES = \
 	array.C \
@@ -31,8 +31,6 @@ libmathed_la_SOURCES = \
 	math_deliminset.h \
 	math_dotsinset.C \
 	math_dotsinset.h \
-	math_forms.C \
-	math_forms.h \
 	math_fracinset.C \
 	math_fracinset.h \
 	math_funcinset.C \
@@ -52,8 +50,6 @@ libmathed_la_SOURCES = \
 	math_macrotable.h \
 	math_matrixinset.C \
 	math_matrixinset.h \
-	math_panel.C \
-	math_panel.h \
 	math_parinset.C \
 	math_parinset.h \
 	math_parser.C \
@@ -64,7 +60,6 @@ libmathed_la_SOURCES = \
 	math_rowst.h \
 	math_spaceinset.C \
 	math_spaceinset.h \
-	math_symbols.C \
 	math_utils.C \
 	math_utils.h \
 	math_xiter.C \

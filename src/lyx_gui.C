@@ -19,7 +19,6 @@
 #include "lyx_gui.h"
 #include FORMS_H_LOCATION
 #include "support/filetools.h"
-#include "combox.h"
 #include "lyx.h"
 #include "form1.h"
 #include "print_form.h"

@@ -37,6 +37,10 @@ s/#include \"forms\.h\"/#include FORMS_H_LOCATION/
 #  replace the string with _(string)
 /fl_/ s/".[^|]*"/_(&)/
 
+# For all lines containing "bmtable", replace "fl_add_button" by
+# "fl_add_bmtable"
+/bmtable/ s/fl_add_button/fl_add_bmtable/
+
 #  For all lines containing "shortcut" and a string containing |, 
 #  replace the string with scex(_(string))
 /shortcut/ s/".*[|].*"/scex(_(&))/

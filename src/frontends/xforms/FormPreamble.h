@@ -11,12 +11,12 @@
 #define FORMPREAMBLE_H
 
 #include <boost/smart_ptr.hpp>
-#include "FormBaseDeprecated.h"
-#include "xformsBC.h"
 
 #ifdef __GNUG__
 #pragma interface
 #endif
+
+#include "FormBaseDeprecated.h"
 
 struct FD_form_preamble;
 

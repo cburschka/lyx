@@ -19,6 +19,7 @@ SHELL = /bin/sh
 
 SRCS := form_bibitem.fd \
 	form_bibtex.fd \
+	form_browser.fd \
 	form_character.fd \
 	form_citation.fd \
 	form_copyright.fd \
@@ -30,7 +31,7 @@ SRCS := form_bibitem.fd \
 	form_graphics.fd \
 	form_include.fd \
 	form_index.fd \
-	form_browser.fd \
+	form_maths.fd \
 	form_paragraph.fd \
 	form_preamble.fd \
 	form_preferences.fd \

@@ -19,7 +19,6 @@
 #endif
 
 #include "FormInset.h"
-#include "xformsBC.h"
 
 struct FD_form_ref;
 

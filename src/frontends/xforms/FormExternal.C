@@ -32,6 +32,7 @@
 using std::pair;
 using std::make_pair;
 using std::endl;
+using SigC::slot;
 
 FormExternal::FormExternal(LyXView * lv, Dialogs * d)
 	: FormBaseBD(lv, d, _("Edit external file")),

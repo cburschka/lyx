@@ -30,6 +30,7 @@
 
 using std::make_pair;
 using std::pair;
+using SigC::slot;
 
 FormInclude::FormInclude(LyXView * lv, Dialogs * d)
 	: FormBaseBD(lv, d, _("Include file")),

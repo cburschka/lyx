@@ -94,8 +94,6 @@ using std::make_pair;
 using std::endl;
 using std::find_if;
 
-extern void math_insert_symbol(BufferView *, string const &);
-extern bool math_insert_greek(BufferView *, char);
 extern BufferList bufferlist;
 extern LyXServer * lyxserver;
 extern int greek_kb_flag;
@@ -1314,10 +1312,8 @@ string const LyXFunc::Dispatch(int ac,
 	break;
 
 	case LFUN_MATH_PANEL:
-	{
-		show_symbols_form(this);
-	}
-	break;
+		owner->getDialogs()->showMathPanel();
+		break;
 	
 	case LFUN_CITATION_CREATE:
 	{

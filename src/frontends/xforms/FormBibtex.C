@@ -25,6 +25,7 @@
 #include "debug.h"
 
 using std::endl;
+using SigC::slot;
 
 FormBibtex::FormBibtex(LyXView * lv, Dialogs * d)
 	: FormCommand(lv, d, _("BibTeX Database"))

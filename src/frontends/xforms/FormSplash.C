@@ -23,7 +23,8 @@
 #include "support/filetools.h"
 #include "lyxrc.h"
 
- 
+using SigC::slot;
+
 extern "C" int C_FormSplashCloseCB(FL_FORM * forms, void *)
 {
 	Assert(forms);

@@ -16,10 +16,8 @@
 #pragma interface
 #endif
 
-#include "FormBaseDeprecated.h"
-#include "xformsBC.h"
-
 #include "DialogBase.h"
+#include "xformsBC.h"
  
 struct FD_form_splash;
 class Dialogs; 

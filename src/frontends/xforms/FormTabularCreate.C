@@ -27,6 +27,8 @@
 #include "insets/insettabular.h"
 #include "support/lstrings.h"
 
+using SigC::slot;
+
 FormTabularCreate::FormTabularCreate(LyXView * lv, Dialogs * d)
 	: FormBaseBD(lv, d, _("Insert Tabular"))
 {

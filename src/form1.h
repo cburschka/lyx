@@ -10,25 +10,6 @@ extern "C" void GraphicsCB(FL_OBJECT *, long);
 
 /**** Forms and Objects ****/
 typedef struct {
-	FL_FORM *KeyMap;
-	void *vdata;
-	char *cdata;
-	long  ldata;
-	FL_OBJECT *AcceptChset;
-	FL_OBJECT *ChsetErr;
-	FL_OBJECT *KeymapErr;
-	FL_OBJECT *Charset;
-	FL_OBJECT *Accept;
-	FL_OBJECT *OtherKeymap;
-	FL_OBJECT *OtherKeymap2;
-	FL_OBJECT *KeyMapOn;
-	FL_OBJECT *KeyOnBtn;
-	FL_OBJECT *KeyOffBtn;
-	FL_OBJECT *KeyOnBtn2;
-} FD_KeyMap;
-
-extern FD_KeyMap * create_form_KeyMap(void);
-typedef struct {
 	FL_FORM *Figure;
 	void *vdata;
 	char *cdata;
@@ -67,17 +48,5 @@ typedef struct {
 } FD_Figure;
 
 extern FD_Figure * create_form_Figure(void);
-typedef struct {
-	FL_FORM *form_search;
-	void *vdata;
-	char *cdata;
-	long  ldata;
-	FL_OBJECT *input_search;
-	FL_OBJECT *input_replace;
-	FL_OBJECT *replace_button;
-	FL_OBJECT *btnCaseSensitive;
-	FL_OBJECT *btnMatchWord;
-	FL_OBJECT *replaceall_button;
-} FD_form_search;
 
 #endif /* FD_KeyMap_h_ */

@@ -1308,3 +1308,40 @@ int mathed_write(MathParInset * p, ostream & os,
 	}
 	return number_of_newlines;
 }
+
+ 
+/* FIXME: math-greek-toggle seems to work OK, but math-greek doesn't turn
+ * on greek mode */
+bool math_insert_greek(BufferView * bv, char c)
+{
+	if (bv->available() &&
+	    (('A' <= c && c <= 'Z') ||
+	     ('a'<= c && c<= 'z')))   {
+		string tmp;
+		tmp = c;
+		if (!bv->theLockingInset() || bv->theLockingInset()->IsTextInset()) {
+			int greek_kb_flag_save = greek_kb_flag;
+			InsetFormula * new_inset = new InsetFormula();
+			bv->beforeChange(bv->text);
+			if (!bv->insertInset(new_inset)) {
+				delete new_inset;
+				return false;
+			}
+//	 Update(1);//BUG
+			new_inset->Edit(bv, 0, 0, 0);
+			new_inset->LocalDispatch(bv, LFUN_SELFINSERT, tmp);
+			if (greek_kb_flag_save < 2) {
+				bv->unlockInset(new_inset); // bv->theLockingInset());
+				bv->text->CursorRight(bv, true);
+			}
+		} else
+			if (bv->theLockingInset()->LyxCode() == Inset::MATH_CODE ||
+			    bv->theLockingInset()->LyxCode() == Inset::MATHMACRO_CODE)
+				static_cast<InsetFormula*>(bv->theLockingInset())->LocalDispatch(bv, LFUN_SELFINSERT, tmp);
+			else
+				lyxerr << "Math error: attempt to write on a wrong "
+					"class of inset." << endl;
+		return true;
+	}
+	return false;
+}

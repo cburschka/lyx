@@ -30,6 +30,7 @@
 #endif
 
 using Liason::setMinibuffer;
+using SigC::slot;
 
 FormParagraph::FormParagraph(LyXView * lv, Dialogs * d)
 	: FormBaseBD(lv, d, _("Paragraph Layout"))

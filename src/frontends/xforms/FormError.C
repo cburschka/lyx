@@ -21,6 +21,7 @@
 #include "insets/inseterror.h"
 #include "support/LAssert.h"
 
+using SigC::slot;
 
 FormError::FormError(LyXView * lv, Dialogs * d)
 	: FormInset( lv, d, _("LaTeX Error")),

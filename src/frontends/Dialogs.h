@@ -124,6 +124,8 @@ public:
 	SigC::Signal0<void> showVCLogFile;
 	/// show the LaTeX log or build file
 	SigC::Signal0<void> showLogFile;
+ 	/// display the top-level maths panel
+ 	SigC::Signal0<void> showMathPanel;
 	///
 	SigC::Signal0<void> showPreamble;
 	///

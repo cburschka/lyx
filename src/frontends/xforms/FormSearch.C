@@ -24,7 +24,7 @@
 #include "debug.h"
 
 using Liason::setMinibuffer;
-
+using SigC::slot;
 
 FormSearch::FormSearch(LyXView * lv, Dialogs * d)
 	: FormBaseBD(lv, d, _("LyX: Find and Replace"))

@@ -20,7 +20,6 @@
 
 #include "FormInset.h"
 #include "buffer.h"
-#include "xformsBC.h"
 
 struct FD_form_toc;
 

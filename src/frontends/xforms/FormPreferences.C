@@ -52,6 +52,7 @@ using std::make_pair;
 using std::max;
 using std::min;
 using std::vector;
+using SigC::slot;
 
 extern string system_lyxdir;
 extern string user_lyxdir;

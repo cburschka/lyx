@@ -41,8 +41,7 @@
 #include "xforms_helpers.h" 
 
 using Liason::setMinibuffer;
-
-#define USE_CLASS_COMBO 1
+using SigC::slot;
 
 FormDocument::FormDocument(LyXView * lv, Dialogs * d)
 	: FormBaseBD(lv, d, _("Document Layout")), fbullet(0)
@@ -132,7 +131,6 @@ void FormDocument::build()
     class_.reset(build_doc_class());
 
     FL_OBJECT * obj;
-#ifdef USE_CLASS_COMBO
     // The language is a combo-box and has to be inserted manually
     obj = class_->choice_doc_class;
     fl_deactivate_object(obj);
@@ -148,14 +146,7 @@ void FormDocument::build()
     {
 	combo_doc_class->addto((*cit).description());
     }
-#else
-    fl_clear_choice(class_->choice_doc_class);
-    for (LyXTextClassList::const_iterator cit = textclasslist.begin();
-	 cit != textclasslist.end(); ++cit)
-    {
-	fl_addto_choice(class_->choice_doc_class,(*cit).description().c_str());
-    }
-#endif
+
     fl_addto_choice(class_->choice_doc_spacing,
 		    _(" Single | OneHalf | Double | Other "));
     fl_addto_choice(class_->choice_doc_fontsize, "default|10|11|12");
@@ -172,9 +163,7 @@ void FormDocument::build()
 
     bc().addReadOnly (class_->radio_doc_indent);
     bc().addReadOnly (class_->radio_doc_skip);
-#ifndef USE_CLASS_COMBO
-    bc().addReadOnly (class_->choice_doc_class);
-#endif
+
     bc().addReadOnly (class_->choice_doc_pagestyle);
     bc().addReadOnly (class_->choice_doc_fonts);
     bc().addReadOnly (class_->choice_doc_fontsize);
@@ -390,11 +379,7 @@ bool FormDocument::class_apply()
 	params.fontsize = fl_get_choice_text(class_->choice_doc_fontsize);
 	params.pagestyle = fl_get_choice_text(class_->choice_doc_pagestyle);
 
-#ifdef USE_CLASS_COMBO   
 	unsigned int const new_class = combo_doc_class->get() - 1;
-#else
-	unsigned int const new_class = fl_get_choice(class_->choice_doc_class) - 1;
-#endif
 	
 	if (params.textclass != new_class) {
 		// try to load new_class
@@ -424,12 +409,7 @@ bool FormDocument::class_apply()
 			WriteAlert(_("Conversion Errors!"),
 				   _("Errors loading new document class."),
 				   _("Reverting to original document class."));
-#ifdef USE_CLASS_COMBO
 			combo_doc_class->select(int(params.textclass) + 1);
-#else
-			fl_set_choice(class_->choice_doc_class,
-				      params.textclass + 1);
-#endif
 		}
 	}
 	BufferParams::PARSEP tmpsep = params.paragraph_separation;
@@ -622,13 +602,8 @@ void FormDocument::class_update(BufferParams const & params)
 
     LyXTextClass const & tclass = textclasslist.TextClass(params.textclass);
 
-#ifdef USE_CLASS_COMBO
     combo_doc_class->select_text(
 	textclasslist.DescOfClass(params.textclass));
-#else	
-    fl_set_choice_text(class_->choice_doc_class, 
-		       textclasslist.DescOfClass(params.textclass).c_str());
-#endif
     fl_set_choice_text(class_->choice_doc_fonts, params.fonts.c_str());
     fl_clear_choice(class_->choice_doc_fontsize);
     fl_addto_choice(class_->choice_doc_fontsize, "default");
@@ -1057,13 +1032,7 @@ void FormDocument::CheckChoiceClass(FL_OBJECT * ob, long)
 
     ProhibitInput(lv_->view());
 
-#ifdef USE_CLASS_COMBO
     unsigned int tc = combo_doc_class->get() - 1;
-    string tct = combo_doc_class->getline();
-#else
-    int tc = fl_get_choice(ob) - 1;
-    string tct = fl_get_choice_text(ob);
-#endif
     if (textclasslist.Load(tc)) {
 	    // we use a copy of the bufferparams because we do not
 	    // want to modify them yet. 
@@ -1081,12 +1050,7 @@ void FormDocument::CheckChoiceClass(FL_OBJECT * ob, long)
 	WriteAlert(_("Conversion Errors!"),
 		   _("Unable to switch to new document class."),
 		   _("Reverting to original document class."));
-#ifdef USE_CLASS_COMBO
 	combo_doc_class->select(int(lv_->buffer()->params.textclass) + 1);
-#else
-	fl_set_choice(class_->choice_doc_class, 
-		      lv_->buffer()->params.textclass + 1);
-#endif
     }
     AllowInput(lv_->view());
 }

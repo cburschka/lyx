@@ -1,3 +1,33 @@
+2001-03-16  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* Form_various.h: cleaned up #includes and forward declarations.
+
+	* Form_various.C: added "using SigC::slot" declaration.
+
+	* FormMaths.[Ch]: moved to boost::scoped_ptrs.
+
+	* FormDocument.C (CheckChoiceClass): removed string tct as the
+	compiler warned that it was defined but never used.
+	removed USE_CLASS_COMBO.
+
+2001-03-13  John Levon  <moz@compsoc.man.ac.uk>
+
+	* Dialogs.C:
+	* FormMaths.h:
+	* FormMaths.C:
+	* MathsSymbols.h:
+	* MathsSymbols.C:
+	* Makefile.am:
+	* Toolbar_pimpl.C:
+	* form_*.C:
+	* forms/makefile:
+	* forms/form_maths.fd:
+	* forms/fdfixc.sed:
+	* forms/fdfix.sh: add maths panel
+
+	* bmtable.h:
+	* bmtable.c: moved from src/
+
 2001-03-16  Lars Gullik Bjønnes  <larsbj@trylle.birdstep.com>
 
 	* FormParagraph.h: NO_PEXTRA
@@ -118,11 +148,21 @@
 
 	* Dialogs.C: Use the controlled Citation dialog.
 
+2001-03-15  John Levon  <moz@compsoc.man.ac.uk>
+
+	* Makefile.am:
+	* combox.h:
+	* combox.C: moved from src/
+
 2001-03-09  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* forms/fdfix.sh:
 	* forms/form_filedialog.C.patch: I hate having to make these patches,
 	but on reflection I think it's probably better than hacking fdfix.sh.
+
+2001-03-14  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* forms/fdfix.sh: test whether bmtable.h is needed before #including it.
 
 2001-03-13  John Levon  <moz@compsoc.man.ac.uk>
 

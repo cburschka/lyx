@@ -22,7 +22,6 @@
 #endif
 
 #include "FormInset.h"
-#include "xformsBC.h"
 
 class InsetTabular;
 struct FD_form_tabular;

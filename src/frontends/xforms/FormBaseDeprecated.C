@@ -24,6 +24,8 @@
 #include "xformsBC.h"
 //#include "debug.h"
 
+using SigC::slot;
+
 extern "C" int C_FormBaseDeprecatedWMHideCB(FL_FORM * ob, void * d)
 {
 	return FormBaseDeprecated::WMHideCB(ob, d);

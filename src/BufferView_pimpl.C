@@ -57,8 +57,6 @@
 #include "insets/insetcaption.h"
 #include "mathed/formulamacro.h"
 extern LyXTextClass::size_type current_layout;
-extern void math_insert_symbol(BufferView *, string const &);
-extern bool math_insert_greek(BufferView *, char);
 extern int greek_kb_flag;
 
 using std::vector;
@@ -67,6 +65,7 @@ using std::pair;
 using std::endl;
 using std::make_pair;
 using std::min;
+using SigC::slot;
 
 /* the selection possible is needed, that only motion events are 
  * used, where the bottom press event was on the drawing area too */
@@ -75,6 +74,7 @@ bool selection_possible = false;
 extern BufferList bufferlist;
 extern char ascii_type;
 
+extern bool math_insert_greek(BufferView *, char);
 extern void sigchldhandler(pid_t pid, int * status);
 extern int bibitemMaxWidth(BufferView *, LyXFont const &);
 
@@ -1265,10 +1265,10 @@ void BufferView::Pimpl::setState()
 	LyXText * text = bv_->getLyXText();
 	if (text->real_current_font.isRightToLeft() &&
 	    text->real_current_font.latex() != LyXFont::ON) {
-		if (owner_->getIntl()->primarykeymap)
+		if (owner_->getIntl()->keymap == Intl::PRIMARY)
 			owner_->getIntl()->KeyMapSec();
 	} else {
-		if (!owner_->getIntl()->primarykeymap)
+		if (owner_->getIntl()->keymap == Intl::SECONDARY)
 			owner_->getIntl()->KeyMapPrim();
 	}
 }
@@ -2746,7 +2746,12 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 	       
 	case LFUN_INSERT_MATH:
 	{
-		math_insert_symbol(bv_, argument);
+		if (!available())
+			break;
+ 
+		InsetFormula * f = new InsetFormula(true);
+		bv_->open_new_inset(f);
+		f->LocalDispatch(bv_, LFUN_INSERT_MATH, argument);
 	}
 	break;
 	
@@ -3018,8 +3023,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 			for (string::size_type i = 0;
 			     i < argument.length(); ++i) {
 				if (greek_kb_flag) {
-					if (!math_insert_greek(bv_,
-							       argument[i]))
+					if (!math_insert_greek(bv_, argument[i]))
 						owner_->getIntl()->getTrans().TranslateAndInsert(argument[i], TEXT(bv_));
 				} else
 					owner_->getIntl()->getTrans().TranslateAndInsert(argument[i], TEXT(bv_));

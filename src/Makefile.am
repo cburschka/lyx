@@ -85,8 +85,6 @@ lyx_SOURCES = \
 	Variables.h \
 	WorkArea.C \
 	WorkArea.h \
-	bmtable.c \
-	bmtable.h \
 	broken_headers.h \
 	buffer.C \
 	buffer.h \
@@ -98,8 +96,6 @@ lyx_SOURCES = \
 	bufferview_funcs.h \
 	chset.C \
 	chset.h \
-	combox.C \
-	combox.h \
 	commandtags.h \
 	config.h.in \
 	converter.C \

@@ -16,6 +16,8 @@
 #include "FormCopyright.h"
 #include "xforms_helpers.h"
 
+using SigC::slot;
+
 FormCopyright::FormCopyright( LyXView * lv, Dialogs * d	)
 	: FormBaseBI(lv, d, _("Copyright and Warranty"))
 {

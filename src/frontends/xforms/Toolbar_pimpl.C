@@ -26,6 +26,7 @@
 #include "BufferView.h"
 #include "buffer.h"
 #include "LyXAction.h"
+#include "MathsSymbols.h" 
 #include "support/filetools.h"
 #include "support/lstrings.h" 
 #include "gettext.h"
@@ -33,6 +34,7 @@
 using std::endl;
 
 extern char const ** get_pixmap_from_symbol(char const * arg, int, int);
+ 
 extern LyXAction lyxaction;
 
 // some constants

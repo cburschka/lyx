@@ -2,6 +2,7 @@
 #include <config.h>
 #include "lyx_gui_misc.h"
 #include "gettext.h"
+#include "bmtable.h"
 
 /* Form definition file generated with fdesign. */
 

@@ -111,7 +111,7 @@ GraphicsCacheItem::loadXPMImage()
 		image_.reset(imageLoader.getImage());
 		imageStatus_ = GraphicsCacheItem::Loaded;
 	} else {
-		lyxerr << "Fail." << endl;
+		lyxerr << "Loading " << tempfile << "Failed" << endl;
 		imageStatus_ = GraphicsCacheItem::ErrorReading;
 	}
 

@@ -404,7 +404,7 @@ FileDialog::Private::Private()
 	fl_hide_object(pFileDlgForm->User1);
 	fl_hide_object(pFileDlgForm->User2);
 
-	r_ = Dialogs::redrawGUI.connect(slot(this, &FileDialog::Private::redraw));
+	r_ = Dialogs::redrawGUI.connect(SigC::slot(this, &FileDialog::Private::redraw));
 }
 
 

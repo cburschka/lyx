@@ -24,9 +24,7 @@
 
 #include "LString.h"
 #include "RadioButtonGroup.h"
-#include "ButtonPolicies.h"
 #include "FormInset.h"
-#include "xformsBC.h"
 
 // Forward declarations for classes we use only as pointers.
 class InsetGraphics;

@@ -31,6 +31,7 @@ using std::find;
 using std::max;
 using std::sort;
 using std::vector;
+using SigC::slot;
 
 bool saved_position;
 

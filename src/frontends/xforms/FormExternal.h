@@ -18,7 +18,6 @@
 
 #include "FormBaseDeprecated.h"
 #include "insets/insetexternal.h"
-#include "xformsBC.h"
 
 struct FD_form_external;
 

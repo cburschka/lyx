@@ -3,7 +3,7 @@ DISTCLEANFILES= *.orig *.rej *~ *.bak core
 MAINTAINERCLEANFILES = $(srcdir)/Makefile.in
 noinst_LTLIBRARIES = libxforms.la
 BOOST_INCLUDES = -I$(top_srcdir)/boost
-INCLUDES = -I${top_srcdir}/src/ \
+INCLUDES = -I${top_srcdir}/images -I${top_srcdir}/src/ \
 	-I${top_srcdir}/src/frontends/ \
 	-I${top_srcdir}/src/frontends/controllers \
 	${SIGC_CFLAGS} $(BOOST_INCLUDES)
@@ -15,6 +15,10 @@ ETAGS_ARGS = --lang=c++
 libxforms_la_SOURCES = \
 	Color.C \
 	Color.h \
+	bmtable.c \
+	bmtable.h \
+	combox.C \
+	combox.h \
 	Dialogs.C \
 	FileDialog.C \
 	FormFiledialog.h \
@@ -82,6 +86,10 @@ libxforms_la_SOURCES = \
 	FormInset.h \
 	FormLog.C \
 	FormLog.h \
+	FormMaths.C \
+	FormMaths.h \
+	form_maths.C \
+	form_maths.h \
 	FormParagraph.C \
 	FormParagraph.h \
 	form_paragraph.C \
@@ -130,6 +138,8 @@ libxforms_la_SOURCES = \
 	FormVCLog.h \
 	input_validators.h \
 	input_validators.C \
+	MathsSymbols.h \
+	MathsSymbols.C \
 	Menubar_pimpl.C \
 	Menubar_pimpl.h \
 	RadioButtonGroup.C \

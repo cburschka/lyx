@@ -27,7 +27,6 @@
 #include "FormBaseDeprecated.h"
 #include "Color.h" // NamedColor
 #include "xforms_helpers.h" // XformColor
-#include "xformsBC.h"
 
 class Combox;
 class Dialogs;

@@ -24,6 +24,7 @@
 #include "xforms_helpers.h"
 
 using Liason::setMinibuffer;
+using SigC::slot;
 
 FormPreamble::FormPreamble(LyXView * lv, Dialogs * d)
 	: FormBaseBD(lv, d, _("LaTeX preamble"))

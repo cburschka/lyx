@@ -24,6 +24,8 @@
 #include "LyXView.h"
 #include "BufferView.h"
 
+using SigC::slot;
+
 ControlBibitem::ControlBibitem(LyXView & lv, Dialogs & d)
 	: ControlCommand(lv, d)
 {

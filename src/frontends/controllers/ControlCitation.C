@@ -34,7 +34,8 @@ using std::min;
 using std::pair;
 using std::vector;
 using std::sort;
-	
+using SigC::slot;
+
 ControlCitation::ControlCitation(LyXView & lv, Dialogs & d)
 	: ControlCommand(lv, d, LFUN_CITATION_INSERT)
 {
@@ -124,6 +125,29 @@ string const ControlCitation::getBibkeyInfo(string const & key)
 	return result;
 }
 
+
+string const getStringFromVector(vector<string> const & vec, char delim)
+{
+	string str;
+	for (vector<string>::size_type i=0; i<vec.size(); ++i) {
+		if (i > 0) str += tostr(delim);
+		str += vec[i];
+	}
+	return str;
+}
+
+vector<string> const getVectorFromString(string const & str, char delim)
+{
+	vector<string> vec;
+	string keys(str);
+	string tmp;
+	keys = frontStrip(split(keys, tmp, delim));
+	while (!tmp.empty()) {
+		vec.push_back(tmp);
+		keys = frontStrip(split(keys, tmp, delim));
+	}
+	return vec;
+}
 
 vector<string>::const_iterator
 searchKeys(ControlCitation const & controller,
@@ -236,29 +260,6 @@ regexSearch(ControlCitation const & controller,
 	}
 
 	return keys.end();
-}
-
-string const getStringFromVector(vector<string> const & vec, char delim)
-{
-	string str;
-	for (vector<string>::size_type i=0; i<vec.size(); ++i) {
-		if (i > 0) str += tostr(delim) + " ";
-		str += vec[i];
-	}
-	return str;
-}
-
-vector<string> const getVectorFromString(string const & str, char delim)
-{
-	vector<string> vec;
-	string keys(str);
-	string tmp;
-	keys = frontStrip(split(keys, tmp, delim));
-	while (!tmp.empty()) {
-		vec.push_back(tmp);
-		keys = frontStrip(split(keys, tmp, delim));
-	}
-	return vec;
 }
 
 string const parseBibTeX(string data, string const & findkey)

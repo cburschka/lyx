@@ -25,10 +25,7 @@
 
 #include "FormBaseDeprecated.h"
 #include "RadioButtonGroup.h"
-#include "xformsBC.h"
 
-class LyXView;
-class Dialogs;
 struct FD_form_print;
 
 /** This class provides an XForms implementation of the FormPrint Dialog.

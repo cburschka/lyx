@@ -22,10 +22,7 @@
 #endif
 
 #include "FormBaseDeprecated.h"
-#include "xformsBC.h"
 
-class LyXView;
-class Dialogs;
 struct FD_form_tabular_create;
 
 /** This class provides an XForms implementation of the FormTabularCreate

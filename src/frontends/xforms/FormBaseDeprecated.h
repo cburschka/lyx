@@ -12,19 +12,20 @@
 #ifndef FORMBASEDEPRECATED_H
 #define FORMBASEDEPRECATED_H
 
-#include "DialogBase.h"
-#include "LString.h"
 #include FORMS_H_LOCATION
 #include <sigc++/signal_system.h>
-
-class Buffer;
-class Dialogs;
-class LyXView;
-class xformsBC;
 
 #ifdef __GNUG__
 #pragma interface
 #endif
+
+#include "DialogBase.h"
+#include "LString.h"
+#include "xformsBC.h"
+
+class Buffer;
+class Dialogs;
+class LyXView;
 
 /** This class is an XForms GUI base class.
     It is meant to be used solely as the parent class to FormBaseBI
@@ -33,6 +34,8 @@ class xformsBC;
     See FormBase.[Ch] for the way to go!
     @author Angus Leeming
  */
+
+extern "C" int C_FormBaseDeprecatedWMHideCB(FL_FORM *, void *);
 
 class FormBaseDeprecated : public DialogBase {
 public:

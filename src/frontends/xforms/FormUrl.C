@@ -24,6 +24,8 @@
 #include "form_url.h"
 #include "lyxfunc.h"
 
+using SigC::slot;
+
 FormUrl::FormUrl(LyXView * lv, Dialogs * d)
 	: FormCommand(lv, d, _("Url"))
 {

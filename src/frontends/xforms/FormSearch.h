@@ -16,11 +16,8 @@
 #endif
 
 #include "FormBaseDeprecated.h"
-#include "xformsBC.h"
 
 struct FD_form_search;
-class LyXView;
-class Dialogs;
 
 /** This class provides an XForms implementation of the FormSearch Dialog.
  */

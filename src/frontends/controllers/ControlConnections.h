@@ -164,7 +164,7 @@ void ControlConnectInset<Inset>::connectInset(Inset * inset)
 	if (inset) {
 		inset_ = inset;
 		ih_ = inset->hideDialog.connect(
-			slot(this, &ControlConnectInset::hide));
+			SigC::slot(this, &ControlConnectInset::hide));
 	}
 	connect();
 }

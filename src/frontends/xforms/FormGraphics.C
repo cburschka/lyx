@@ -31,6 +31,7 @@
 
 using std::endl;
 using std::make_pair;
+using SigC::slot;
 
 FormGraphics::FormGraphics(LyXView * lv, Dialogs * d)
 	: FormInset(lv, d, _("Graphics")),

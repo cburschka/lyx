@@ -21,6 +21,8 @@
 #include "xforms_helpers.h"
 #include "support/filetools.h"
 
+using SigC::slot;
+
 FormCredits::FormCredits( LyXView * lv, Dialogs * d )
   : FormBaseBI(lv, d, _("Credits"))
 {

@@ -1,3 +1,12 @@
+2001-03-16  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* ControlBibitem.C:
+	* ControlCitation.C: added "using SigC::slot" declaration.
+
+	* ControlCitation.C (getStringFromVector): re-apply Dekel's recent fix
+	to FormCitation.C prior to the merger: "Do not put space between
+	multiple keys".
+
 2001-03-15  Lars Gullik Bjønnes  <larsbj@trylle.birdstep.com>
 
 	* several files: remove CXX_WORKING_NAMESPACES

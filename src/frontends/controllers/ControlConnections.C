@@ -23,6 +23,8 @@
 #include "ViewBase.h"
 #include "insets/lyxinset.h"
 
+using SigC::slot;
+
 ControlConnectBase::ControlConnectBase(LyXView & lv, Dialogs & d)
 	: ControlBase(lv),
 	  d_(d), h_(0), r_(0)

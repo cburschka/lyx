@@ -11,15 +11,12 @@
 
 #include <boost/smart_ptr.hpp>
 
-#include "FormBaseDeprecated.h"
-#include "xformsBC.h"
-
 #ifdef __GNUG__
 #pragma interface
 #endif
 
-class LyXView;
-class Dialogs;
+#include "FormBaseDeprecated.h"
+
 struct FD_form_browser;
 
 /**

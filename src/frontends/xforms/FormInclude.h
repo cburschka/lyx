@@ -17,7 +17,6 @@
 #endif
 
 #include "FormBaseDeprecated.h"
-#include "xformsBC.h"
 #include "insets/insetinclude.h"
 
 struct FD_form_include;

@@ -17,11 +17,12 @@
 #pragma implementation
 #endif
 
-
 #include "Dialogs.h"
 #include "LyXView.h"
 #include "FormInset.h"
 #include "xformsBC.h"
+
+using SigC::slot;
 
 FormInset::FormInset(LyXView * lv, Dialogs * d, string const & t)
 	: FormBaseBD(lv, d, t), ih_(0)

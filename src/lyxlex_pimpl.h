@@ -5,6 +5,7 @@
 
 #include <fstream>
 #include <stack>
+#include <boost/utility.hpp>
 
 #include "lyxlex.h"
 

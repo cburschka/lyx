@@ -25,6 +25,8 @@
 #include "form_index.h"
 #include "lyxfunc.h"
 
+using SigC::slot;
+
 FormIndex::FormIndex(LyXView * lv, Dialogs * d)
 	: FormCommand(lv, d, _("Index"))
 {

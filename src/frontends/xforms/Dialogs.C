@@ -35,6 +35,7 @@
 #include "FormInclude.h"
 #include "FormIndex.h"
 #include "FormLog.h"
+#include "FormMaths.h"
 #include "FormParagraph.h"
 #include "FormPreamble.h"
 #include "FormPreferences.h"
@@ -70,6 +71,7 @@ Dialogs::Dialogs(LyXView * lv)
 	add(new FormInclude(lv, this));
 	add(new FormIndex(lv, this));
 	add(new FormLog(lv, this));
+ 	add(new FormMaths(lv, this));
 	add(new FormParagraph(lv, this));
 	add(new FormPreamble(lv, this));
 	add(new FormPreferences(lv, this));
