@@ -1,5 +1,9 @@
 2000-12-31  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
+	* src/version.h: set to pre3
+
+2000-12-31  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
 	* src/Makefile.am (lyx_SOURCES): added Floating.C
 
 	* src/Floating.h: moved all the inlines to Floating.C
