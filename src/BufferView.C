@@ -230,3 +230,9 @@ bool BufferView::dispatch(FuncRequest const & ev)
 {
 	return pimpl_->dispatch(ev);
 }
+
+
+int BufferView::scroll(long time)
+{
+	return pimpl_->scroll(time);
+}

@@ -170,6 +170,8 @@ public:
 	void toggleToggle();
 	///
 	void center();
+	///
+	int scroll(long time);
 
 	/// Scroll the view by a number of pixels
 	void scrollDocView(int);
