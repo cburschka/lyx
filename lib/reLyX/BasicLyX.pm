@@ -164,6 +164,7 @@ my %TextTokenTransTable = (
     '\textgreater'     => ">",
     '\textless'        => "<",
     '\textbar'         => "|",
+    '\textasciitilde'  => "~",
 );
 
 # LyX translations of some plain LaTeX text (TeX parser won't recognize it
@@ -576,7 +577,7 @@ sub basic_lyx {
 	    # This is to handle cases where _ is used, say, in a filename.
 	    # When _ is used in math mode, it'll be copied by the math mode
 	    # copying subs. Here we handle cases where it's used in non-math.
-	    # Examples are filenames for & citation labels.
+	    # Examples are filenames for \include & citation labels.
 	    # (It's illegal to use it in regular LaTeX text.)
 	    if ($name eq "_") {
 	       print OUTFILE $eaten->exact_print;
@@ -909,13 +910,17 @@ sub basic_lyx {
 
 	    # Environments lyx translates to floats
 	    } elsif (exists $FloatEnvTransTable{$env}) {
+		# this really only matters if it's at the very
+		# beginning of the doc.
+		&CheckForNewParagraph;
+
 		$tok = $fileobject->eatOptionalArgument;
 		if ($tok && defined ($dummy = $tok->print) && $dummy) {
 		    print "\nIgnoring float placement '$dummy'" if $debug_on;
 		}
 	        my $command = $FloatEnvTransTable{$env};
 
-		# Open the footnote
+		# Open the table/figure
 		print OUTFILE "$command";
 
 	    # table

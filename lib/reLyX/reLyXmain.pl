@@ -8,7 +8,7 @@
 #
 # This code usually gets called by the reLyX wrapper executable
 #
-# $Id: reLyXmain.pl,v 1.1 1999/09/27 18:44:35 larsbj Exp $
+# $Id: reLyXmain.pl,v 1.2 2000/03/29 23:02:36 karger Exp $
 #
 
 require 5.002; # Perl 5.001 doesn't work. Perl 4 REALLY doesn't work.
@@ -63,7 +63,7 @@ BEGIN{$Success = 0}
 #
 
 # Print welcome message including version info
-my $version_info = '$Date: 1999/09/27 18:44:35 $'; # RCS puts checkin date here
+my $version_info = '$Date: 2000/03/29 23:02:36 $'; # RCS puts checkin date here
 $version_info =~ s&.*?(\d+/\d+/\d+).*&$1&; # take out just the date info
 warn "reLyX, the LaTeX to LyX translator. Revision date $version_info\n\n";
 

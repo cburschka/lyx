@@ -42,11 +42,6 @@ Even if it complains, it may get the sizes right.
 and extra set of (red) braces, but those braces won't show up in the dvi file
 or printed output.
 
-- CleanTeX adds {} around arguments if they're not there already. It breaks
-on a_b_c or a_\foo{bar}. Unfortunately, examples like that are pretty hard
-to parse, so all we can do is ask you to write clearer LaTeX (or contribute
-your coding skills to the reLyX project!). Sorry.
-
 - reLyX translates {\bf foo} to \textbf{foo}. However, it also does that in
 math mode. Write \mathbf{foo} explicitly in the LyX file instead.
 
@@ -54,8 +49,10 @@ math mode. Write \mathbf{foo} explicitly in the LyX file instead.
 a reference to "Dr." in the LyX file, with an extra "foo}" printed as
 regular text
 
-- \end in a \newcommand, for example, will really confuse reLyX. Put the
-\newcommand in the preamble to avoid this problem.
+- \end or \begin in a \newcommand, for example, will really confuse reLyX, 
+because they're not being used for their regular purpose of starting or
+ending an environment. Put the \newcommand in the preamble to avoid this
+problem.
 
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 Changes in translation caused by features not (yet) in LyX:

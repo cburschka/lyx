@@ -48,7 +48,7 @@ sub parse_epsfsize {
 	my @dummy = &convert_length($EpsfXsize) || return 0;
     } elsif ($command eq '\\epsfysize') {
         $EpsfYsize = $length;
-	my @dummy = &convert_length($EpsfXsize) || return 0;
+	my @dummy = &convert_length($EpsfYsize) || return 0;
     }
 
     return 1;

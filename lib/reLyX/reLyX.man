@@ -1,9 +1,9 @@
 .rn '' }`
-''' $RCSfile: reLyX.man,v $$Revision: 1.1 $$Date: 1999/09/27 18:44:34 $
+''' $RCSfile: reLyX.man,v $$Revision: 1.2 $$Date: 2000/03/29 23:02:36 $
 '''
 ''' $Log: reLyX.man,v $
-''' Revision 1.1  1999/09/27 18:44:34  larsbj
-''' Initial revision
+''' Revision 1.2  2000/03/29 23:02:36  karger
+''' Very minor changes (sorry kayvan!)
 '''
 '''
 .de Sh
@@ -96,7 +96,7 @@
 .nr % 0
 .rr F
 .\}
-.TH RELYX 1 "Version 2.9.2.1" "2/May/99" "User Contributed Perl Documentation"
+.TH RELYX 1 "Version 2.9.2.2 2.9.2.2" "11/Aug/99" "User Contributed Perl Documentation"
 .UC
 .if n .hy 0
 .if n .na
@@ -296,7 +296,7 @@ untranslatable will be highlighted in red (TeX mode). In theory, LyX will be
 able to read in the file, and to create printed documents from it, because all
 that untranslated red stuff will be passed directly back to LaTeX, which LyX 
 uses as a backend. Unfortunately, reality doesn't always reflect theory. If
-\fBreLyX\fR crashes, or LyX cannot read the generated LyX file, see the \f(CWBUGS\fR entry elsewhere in this documentor the \fI\s-1BUGS\s0\fR file.
+\fBreLyX\fR crashes, or LyX cannot read the generated LyX file, see the \f(CWBUGS\fR entry elsewhere in this document or the \fI\s-1BUGS\s0\fR file.
 .Ip "\(bu" 4
 Change things that are highlighted in red (TeX mode) by hand in LyX.
 .Sp

@@ -170,6 +170,8 @@ sub clean_tex {
 
 	   # Tokens taking arguments, like '^'
 	   # ADD '{' if there isn't one before the argument!
+	   # TODO can we check whether the command is \label, \include
+	   # and not add the braces in that case?
 	   if (/^BegArgsToken$/) {
 	       $printstr = $outstr;
 

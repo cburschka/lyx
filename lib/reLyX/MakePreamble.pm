@@ -136,6 +136,7 @@ sub translate_preamble {
     # whoami is needed on Win32, because getlong/getpwuid aren't implemented
     # I'd rather use internal Perl functions when possible, though
     $nm = (eval {getlogin || getpwuid($<)}) || `whoami`;
+    chomp($nm); # whomai returns "foo\n"
     $dt = localtime;
     $LyX_Preamble .= "\#This file was created by <$nm> $dt\n";
     $LyX_Preamble .= "\#LyX 1.0 (C) 1995-1999 Matthias Ettrich " .
