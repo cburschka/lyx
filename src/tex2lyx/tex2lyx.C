@@ -158,7 +158,7 @@ char const * known_math_envs[] = { "equation", "equation*",
 "eqnarray", "eqnarray*", "align", "align*", 0};
 
 char const * known_latex_commands[] = { "ref", "cite", "label", "index",
-"printindex", "pageref", 0 };
+"printindex", "pageref", "url", 0 };
 
 // LaTeX names for quotes
 char const * known_quotes[] = { "glqq", "grqq", "quotedblbase",
@@ -229,7 +229,7 @@ string const trim(string const & a, char const * p = " \t\n\r")
 
 void split(string const & s, vector<string> & result, char delim = ',')
 {
-	//cerr << "split 1\n";
+	//cerr << "split 1: '" << s << "'\n";
 	istringstream is(s);
 	string t;
 	while (getline(is, t, delim))
@@ -257,7 +257,7 @@ map<string, string> split_map(string const & s)
 string join(vector<string> const & input, char const * delim)
 {
 	ostringstream os;
-	for (size_t i = 0; i != input.size(); ++i) {
+	for (size_t i = 0; i < input.size(); ++i) {
 		if (i)
 			os << delim;
 		os << input[i];
@@ -472,6 +472,7 @@ void handle_tabular(Parser & p, ostream & os, mode_type mode)
 	vector<RowInfo> rowinfo(lines.size());
 	
 	// split into rows
+	//cerr << "// split into rows\n";
 	for (size_t row = 0; row < rowinfo.size(); ++row) {
 
 		// init row
@@ -485,11 +486,12 @@ void handle_tabular(Parser & p, ostream & os, mode_type mode)
 
 		// handle horizontal line fragments
 		if (dummy.size() != 3) {
-			//cerr << "unexpected dummy size: " << dummy.size()
-			//	<< " content: " << lines[row] << "\n";
+			if (dummy.size() != 1)
+				cerr << "unexpected dummy size: " << dummy.size()
+					<< " content: " << lines[row] << "\n";
 			dummy.resize(3);
 		}
-		lines[row] = dummy[1];
+		lines.at(row) = dummy.at(1);
 
 		//cerr << "line: " << row << " above 0: " << dummy[0] << "\n";
 		//cerr << "line: " << row << " below 2: " << dummy[2] <<  "\n";
@@ -497,7 +499,7 @@ void handle_tabular(Parser & p, ostream & os, mode_type mode)
 
 		for (int i = 0; i <= 2; i += 2) {	
 			//cerr << "   reading from line string '" << dummy[i] << "'\n";
-			Parser p1(dummy[i]);
+			Parser p1(dummy.at(i));
 			while (p1.good()) {
 				Token t = p1.getToken();
 				//cerr << "read token: " << t << "\n";
@@ -505,24 +507,25 @@ void handle_tabular(Parser & p, ostream & os, mode_type mode)
 					if (i == 0) {
 						rowinfo[row].topline = true;
 						for (size_t c = 0; c < colinfo.size(); ++c)
-							cellinfos[c].topline = true;
+							cellinfos.at(c).topline = true;
 					} else {
 						rowinfo[row].bottomline = true;
 						for (size_t c = 0; c < colinfo.size(); ++c)
-							cellinfos[c].bottomline = true;
+							cellinfos.at(c).bottomline = true;
 					}
 				} else if (t.cs() == "cline") {
 					string arg = p1.verbatimItem();
 					//cerr << "read cline arg: '" << arg << "'\n";
 					vector<string> t;
 					split(arg, t, '-');
-					size_t from = string2int(t[0]);
-					size_t to = string2int(t[1]);
+					t.resize(2);
+					size_t from = string2int(t.at(0));
+					size_t to = string2int(t.at(1));
 					for (size_t col = from; col < to; ++col) {
 						if (i == 0) 
-							cellinfos[col].topline = true;
+							cellinfos.at(col).topline = true;
 						else	
-							cellinfos[col].bottomline = true;
+							cellinfos.at(col).bottomline = true;
 					}
 				} else {
 					cerr << "unexpected line token: " << t << endl;
@@ -533,12 +536,12 @@ void handle_tabular(Parser & p, ostream & os, mode_type mode)
 		// split into cells
 		vector<string> cells;
 		split(lines[row], cells, TAB);
-		for (size_t col = 0, cell = 0; cell < cells.size(); ++col, ++cell) {
-			//cerr << "cell content: " << cells[col] << "\n";
-			Parser p(cells[cell]);
+		for (size_t col = 0, cell = 0; cell < cells.size() && col < colinfo.size(); ++col, ++cell) {
+			//cerr << "cell content: " << cells.at(cell) << "\n";
+			Parser p(cells.at(cell));
 			p.skipSpaces();	
 			//cerr << "handling cell: " << p.nextToken().cs() << " '" <<
-			//cells[cell] << "'\n";
+			//cells.at(cell) << "'\n";
 			if (p.nextToken().cs() == "multicolumn") {
 				// how many cells?
 				p.getToken();
@@ -547,7 +550,7 @@ void handle_tabular(Parser & p, ostream & os, mode_type mode)
 				// special cell properties alignment	
 				vector<ColInfo> t;
 				bool leftline = handle_colalign(p, t);
-				CellInfo & ci = cellinfos[col];
+				CellInfo & ci = cellinfos.at(col);
 				ci.multi     = 1;
 				ci.align     = t.front().align;
 				ci.content   = parse(p, FLAG_ITEM, mode, false);
@@ -555,46 +558,50 @@ void handle_tabular(Parser & p, ostream & os, mode_type mode)
 				ci.rightline = t.front().rightline;
 
 				// add dummy cells for multicol
-				for (size_t i = 0; i < ncells - 1; ++i) {
+				for (size_t i = 0; i < ncells - 1 && col < colinfo.size(); ++i) {
 					++col;
-					cellinfos[col].multi = 2;
-					cellinfos[col].align = "center";
+					cellinfos.at(col).multi = 2;
+					cellinfos.at(col).align = "center";
 				}
 			} else {
-				cellinfos[col].content = parse(p, FLAG_ITEM, mode, false);
+				cellinfos.at(col).content = parse(p, FLAG_ITEM, mode, false);
 			}
 		}
 
 		cellinfo.push_back(cellinfos);
 
+		//cerr << "//  handle almost empty last row what we have\n";
 		// handle almost empty last row
-		if (row && lines[row].empty() && row + 1 == rowinfo.size()) {
+		if (row && lines.at(row).empty() && row + 1 == rowinfo.size()) {
 			//cerr << "remove empty last line\n";
-			if (rowinfo[row].topline);
-				rowinfo[row - 1].bottomline = true;
+			if (rowinfo.at(row).topline);
+				rowinfo.at(row - 1).bottomline = true;
 			for (size_t c = 0; c < colinfo.size(); ++c)
-				if (cellinfo[row][c].topline)
-					cellinfo[row - 1][c].bottomline = true;
+				if (cellinfo.at(row).at(c).topline)
+					cellinfo.at(row - 1).at(c).bottomline = true;
 			rowinfo.pop_back();
 		}
 
 	}
 
+	//cerr << "// output what we have\n";
 	// output what we have
 	os << "<lyxtabular version=\"3\" rows=\"" << rowinfo.size()
 		 << "\" columns=\"" << colinfo.size() << "\">\n"
 		 << "<features>\n";
 
+	//cerr << "// after header\n";
 	for (size_t col = 0; col < colinfo.size(); ++col) {
-		os << "<column alignment=\"" << colinfo[col].align << "\"";
-		if (colinfo[col].rightline)
+		os << "<column alignment=\"" << colinfo.at(col).align << "\"";
+		if (colinfo.at(col).rightline)
 			os << " rightline=\"true\"";
 		if (col == 0 && leftline)
 			os << " leftline=\"true\"";
 		os << " valignment=\"top\"";
-		os << " width=\"" << colinfo[col].width << "\"";
+		os << " width=\"" << colinfo.at(col).width << "\"";
 		os << ">\n";
 	}
+	//cerr << "// after cols\n";
 
 	for (size_t row = 0; row < rowinfo.size(); ++row) {
 		os << "<row";
@@ -629,7 +636,6 @@ void handle_tabular(Parser & p, ostream & os, mode_type mode)
 		os << "</row>\n";
 	}
 			
-
 	os << "</lyxtabular>\n";
 	end_inset(os);
 }
@@ -922,6 +928,10 @@ bool outer)
 					end_inset(os);
 			}
 
+			else if (mode == TABLE_MODE) {
+				os << '$';
+			}
+
 			else if (flags & FLAG_SIMPLE) {
 				// this is the end of the formula
 				return;
@@ -1088,7 +1098,7 @@ bool outer)
 			end_inset(os);
 		}
 
-		else if (t.cs() == "[") {
+		else if (t.cs() == "[" && mode == TEXT_MODE) {
 			begin_inset(os, "Formula");
 			os << " \\[";
 			parse(p, os, FLAG_EQUATION, MATH_MODE, outer);
@@ -1131,6 +1141,10 @@ bool outer)
 					 << "\\layout Standard\n";
 				parse(p, os, FLAG_END, mode, outer);
 				end_inset(os);
+			} else if (name == "lyxlist") {
+				p.verbatimItem(); // swallow next arg
+				parse(p, os, FLAG_END, mode, outer);
+				os << "\n\\layout Bibliography\n\n";
 			} else if (name == "thebibliography") {
 				p.verbatimItem(); // swallow next arg
 				parse(p, os, FLAG_END, mode, outer);
@@ -1239,6 +1253,13 @@ bool outer)
 				os << "\\includegraphics ";
 			}
 		}
+		
+		else if (t.cs() == "footnote") {
+			begin_inset(os, "Foot\n");
+			os << "collapsed true\n\n\\layout Standard\n\n";
+			parse(p, os, FLAG_ITEM, mode, false);
+			end_inset(os);
+		}
 
 		else if (t.cs() == "makeindex" || t.cs() == "maketitle")
 			; // swallow this
@@ -1251,6 +1272,9 @@ bool outer)
 
 		else if (t.cs() == "cline" && mode == TABLE_MODE)
 			hlines += "\\cline{" + p.verbatimItem() + '}';
+
+		else if (t.cs() == "tiny" && mode == TEXT_MODE)
+			os << "\n\\size tiny\n";
 
 		else if (t.cs() == "scriptsize" && mode == TEXT_MODE)
 			os << "\n\\size scriptsize\n";
@@ -1364,27 +1388,40 @@ bool outer)
 			end_inset(os);
 		}
 
-		else if (t.cs() == "LyX") {
+		else if (t.cs() == "LyX" && mode == TEXT_MODE) {
 			p.verbatimItem(); // eat {}
 			os << "LyX";
 		}
 
-		else if (t.cs() == "TeX") {
+		else if (t.cs() == "TeX" && mode == TEXT_MODE) {
 			p.verbatimItem(); // eat {}
 			os << "TeX";
 		}
 
-		else if (t.cs() == "LaTeX") {
+		else if (t.cs() == "LaTeX" && mode == TEXT_MODE) {
 			p.verbatimItem(); // eat {}
 			os << "LaTeX";
 		}
 
-		else if (t.cs() == "LaTeXe") {
+		else if (t.cs() == "LaTeXe" && mode == TEXT_MODE) {
 			p.verbatimItem(); // eat {}
 			os << "LaTeXe";
 		}
 
-		else if (t.cs() == "textasciitilde")
+		else if (t.cs() == "lyxarrow" && mode == TEXT_MODE) {
+			p.verbatimItem();
+			os << "\\SpecialChar \\menuseparator\n";
+		}
+
+		else if (t.cs() == "ldots" && mode == TEXT_MODE) {
+			p.verbatimItem();
+			os << "\\SpecialChar \\ldots{}\n";
+		}
+
+		else if (t.cs() == "@" && mode == TEXT_MODE)
+			os << "\\SpecialChar \\@";
+
+		else if (t.cs() == "textasciitilde" && mode == TEXT_MODE)
 			os << '~';
 
 		else if (t.cs() == "_" && mode == TEXT_MODE)
@@ -1392,6 +1429,9 @@ bool outer)
 
 		else if (t.cs() == "&" && mode == TEXT_MODE)
 			os << '&';
+
+		else if (t.cs() == "#" && mode == TEXT_MODE)
+			os << "#";
 
 		else if (t.cs() == "\"") {
 			string const name = p.verbatimItem();
