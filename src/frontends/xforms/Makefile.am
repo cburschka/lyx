@@ -32,6 +32,10 @@ libxforms_la_SOURCES = \
 	FormBrowser.h \
 	form_browser.C \
 	form_browser.h \
+	FormCharacter.C \
+	FormCharacter.h \
+	form_character.C \
+	form_character.h \
 	FormCitation.C \
 	FormCitation.h \
 	form_citation.C \

@@ -1,3 +1,12 @@
+2001-02-23  Edwin Leuven <leuven@fee.uva.nl>
+
+	* layout_forms.[Ch]: removed
+	* lyx_cb.[Ch]: out character
+	* lyx_gui.C: out character
+	* lyx_gui_misc.C: out character
+	* bufferview_funcs.C: : out character,
+	added toggleall as parameter in ToggleAndShow
+                   
 2001-02-26  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* lyxfunc.C (getStatus): Fix the LFUN_EXPORT case.

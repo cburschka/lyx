@@ -1596,9 +1596,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		break;
 		
 	case LFUN_FREE:
-		Free(bv_);
-		setState();
-		owner_->showState();
+		owner_->getDialogs()->setUserFreeFont();
 		break;
 		
 	case LFUN_TEX:

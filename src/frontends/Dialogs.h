@@ -116,6 +116,10 @@ public:
 	Signal0<void> showLayoutDocument;
 	///
 	Signal0<void> showLayoutParagraph;
+	///
+	Signal0<void> showLayoutCharacter;
+	///
+	Signal0<void> setUserFreeFont;
 	/// show the version control log
 	Signal0<void> showVCLogFile;
 	/// show the LaTeX log or build file

@@ -1,19 +1,20 @@
+// File modified by fdfix.sh for use by lyx (with xforms >= 0.88) and gettext
 /** Header file generated with fdesign **/
 
 #ifndef FD_form_character_h_
 #define FD_form_character_h_
 
 /** Callbacks, globals and object handlers **/
-extern "C" void CharacterApplyCB(FL_OBJECT *, long);
-extern "C" void CharacterCloseCB(FL_OBJECT *, long);
+extern  "C" void C_FormBaseInputCB(FL_OBJECT *, long);
+extern  "C" void C_FormBaseApplyCB(FL_OBJECT *, long);
+extern  "C" void C_FormBaseCancelCB(FL_OBJECT *, long);
 
 
 /**** Forms and Objects ****/
-typedef struct {
-	FL_FORM *form_character;
-	void *vdata;
-	char *cdata;
-	long  ldata;
+struct FD_form_character {
+	~FD_form_character();
+
+	FL_FORM *form;
 	FL_OBJECT *choice_family;
 	FL_OBJECT *choice_series;
 	FL_OBJECT *choice_shape;
@@ -24,8 +25,6 @@ typedef struct {
 	FL_OBJECT *choice_color;
 	FL_OBJECT *check_toggle_all;
 	FL_OBJECT *choice_language;
-} FD_form_character;
-
-extern FD_form_character * create_form_form_character(void);
+};
 
 #endif /* FD_form_character_h_ */

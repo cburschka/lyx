@@ -25,9 +25,7 @@
 #include "buffer.h"
 #include "support/lstrings.h"
 #include "lyx_cb.h"
-#include "layout_forms.h"
 
-extern FD_form_character * fd_form_character;
 
 #ifndef NEW_INSETS
 void Foot(BufferView * bv)
@@ -147,12 +145,6 @@ void changeDepth(BufferView * bv, LyXText * text, int decInc)
 }
 
 
-void Free(BufferView * bv)
-{
-	ToggleAndShow(bv, UserFreeFont(bv->buffer()->params));
-}
-
-
 // How should this actually work? Should it prohibit input in all BufferViews,
 // or just in the current one? If "just the current one", then it should be
 // placed in BufferView. If "all BufferViews" then LyXGUI (I think) should
@@ -177,11 +169,6 @@ void ProhibitInput(BufferView * bv)
 	XDefineCursor(fl_get_display(), bv->owner()->getForm()->window, 
 		      cursor);
 
-	if (fd_form_character->form_character->visible)
-		XDefineCursor(fl_get_display(),
-			      fd_form_character->form_character->window,
-			      cursor);
-
 	XFlush(fl_get_display());
 	fl_deactivate_all_forms();
 }
@@ -192,10 +179,6 @@ void AllowInput(BufferView * bv)
 	/* reset the cursor from the watch for all forms and the canvas */
    
 	XUndefineCursor(fl_get_display(), bv->owner()->getForm()->window);
-
-	if (fd_form_character->form_character->visible)
-		XUndefineCursor(fl_get_display(),
-				fd_form_character->form_character->window);
 
 	XFlush(fl_get_display());
 	fl_activate_all_forms();
@@ -303,7 +286,7 @@ string const CurrentState(BufferView * bv)
 /* -------> Does the actual toggle job of the XxxCB() calls above.
  * Also shows the current font state.
  */
-void ToggleAndShow(BufferView * bv, LyXFont const & font)
+void ToggleAndShow(BufferView * bv, LyXFont const & font, bool toggleall=true)
 {
 	if (bv->available()) { 
 		LyXText * text = bv->getLyXText();

@@ -15,6 +15,7 @@
 #include "FormBibitem.h"
 #include "FormBibtex.h"
 #include "FormCitation.h"
+#include "FormCharacter.h"
 #include "FormCopyright.h"
 #include "FormDocument.h"
 #include "FormError.h"
@@ -53,6 +54,7 @@ Dialogs::Dialogs(LyXView * lv)
 {
 	dialogs_.push_back(new FormBibitem(lv, this));
 	dialogs_.push_back(new FormBibtex(lv, this));
+	dialogs_.push_back(new FormCharacter(lv, this));
 	dialogs_.push_back(new FormCitation(lv, this));
 	dialogs_.push_back(new FormCopyright(lv, this));
 	dialogs_.push_back(new FormDocument(lv, this));

@@ -64,8 +64,8 @@ shortcut:
 resize: FL_RESIZE_X
 gravity: FL_NorthWest FL_NorthEast
 name: choice_family
-callback: 
-argument: 
+callback: C_FormBaseInputCB
+argument: 0
 
 --------------------
 class: FL_CHOICE
@@ -82,8 +82,8 @@ shortcut:
 resize: FL_RESIZE_X
 gravity: FL_NorthWest FL_NorthEast
 name: choice_series
-callback: 
-argument: 
+callback: C_FormBaseInputCB
+argument: 0
 
 --------------------
 class: FL_CHOICE
@@ -100,8 +100,8 @@ shortcut:
 resize: FL_RESIZE_X
 gravity: FL_NorthWest FL_NorthEast
 name: choice_shape
-callback: 
-argument: 
+callback: C_FormBaseInputCB
+argument: 0
 
 --------------------
 class: FL_CHOICE
@@ -118,8 +118,8 @@ shortcut:
 resize: FL_RESIZE_X
 gravity: FL_NorthWest FL_NorthEast
 name: choice_size
-callback: 
-argument: 
+callback: C_FormBaseInputCB
+argument: 0
 
 --------------------
 class: FL_CHOICE
@@ -136,8 +136,8 @@ shortcut:
 resize: FL_RESIZE_X
 gravity: FL_NorthWest FL_NorthEast
 name: choice_bar
-callback: 
-argument: 
+callback: C_FormBaseInputCB
+argument: 0
 
 --------------------
 class: FL_BUTTON
@@ -154,7 +154,7 @@ shortcut:
 resize: FL_RESIZE_NONE
 gravity: FL_SouthEast FL_SouthEast
 name: button_apply
-callback: CharacterApplyCB
+callback: C_FormBaseApplyCB
 argument: 0
 
 --------------------
@@ -167,12 +167,12 @@ alignment: FL_ALIGN_CENTER
 style: FL_NORMAL_STYLE
 size: FL_NORMAL_SIZE
 lcol: FL_BLACK
-label: Close
+label: Cancel|#N
 shortcut: ^M
 resize: FL_RESIZE_NONE
 gravity: FL_SouthEast FL_SouthEast
 name: button_close
-callback: CharacterCloseCB
+callback: C_FormBaseCancelCB
 argument: 0
 
 --------------------
@@ -190,8 +190,8 @@ shortcut:
 resize: FL_RESIZE_X
 gravity: FL_NorthWest FL_NorthEast
 name: choice_color
-callback: 
-argument: 
+callback: C_FormBaseInputCB
+argument: 0
 
 --------------------
 class: FL_CHECKBUTTON
@@ -208,8 +208,8 @@ shortcut:
 resize: FL_RESIZE_X
 gravity: FL_NorthWest FL_NorthEast
 name: check_toggle_all
-callback: 
-argument: 
+callback: C_FormBaseInputCB
+argument: 0
 
 --------------------
 class: FL_CHOICE
@@ -226,8 +226,8 @@ shortcut:
 resize: FL_RESIZE_X
 gravity: FL_NorthWest FL_NorthEast
 name: choice_language
-callback: 
-argument: 
+callback: C_FormBaseInputCB
+argument: 0
 
 --------------------
 class: FL_LABELFRAME
@@ -265,4 +265,5 @@ name:
 callback: 
 argument: 
 
+==============================
 create_the_forms

@@ -151,7 +151,8 @@ void MathMacro::GetXY(int & x, int & y) const
 bool MathMacro::Permit(short f) const
 {
 	return (nargs_ > 0) ?
-		tmplate_->getMacroPar(idx_)->Permit(f) : MathParInset::Permit(f);
+		tmplate_->getMacroPar(idx_)->Permit(f) :
+		MathParInset::Permit(f);
 }
 
 

@@ -16,14 +16,13 @@
 #pragma implementation
 #endif
 
-#include <fcntl.h>
+//#include <fcntl.h>
 #include "lyx_gui.h"
 #include FORMS_H_LOCATION
 #include "support/filetools.h"
 #include "combox.h"
 #include "lyx.h"
 #include "form1.h"
-#include "layout_forms.h"
 #include "print_form.h"
 #include "tex-strings.h"
 #include "lyx_main.h"
@@ -47,11 +46,8 @@
 
 using std::endl;
 
-FD_form_character * fd_form_character;
 FD_form_sendto * fd_form_sendto;
 FD_form_figure * fd_form_figure;
-Combox * combo_language;
-Combox * combo_language2;
 
 extern LyXServer * lyxserver;
 extern bool finished;	// flag, that we are quitting the program
@@ -277,53 +273,6 @@ void LyXGUI::create_forms()
 	//
 	// Create forms
 	//
-
-	// the character form
-	fd_form_character = create_form_form_character();
-	fl_set_form_atclose(fd_form_character->form_character,
-			    CancelCloseBoxCB, 0);
-	fl_addto_choice(fd_form_character->choice_family, 
-			_(" No change %l| Roman | Sans Serif | Typewriter %l| Reset "));
-	fl_addto_choice(fd_form_character->choice_series, 
-			_(" No change %l| Medium | Bold %l| Reset "));
-	fl_addto_choice(fd_form_character->choice_shape,
-			_(" No change %l| Upright | Italic | Slanted | Small Caps "
-			"%l| Reset "));
-	fl_addto_choice(fd_form_character->choice_size, 
-			_(" No change %l| Tiny | Smallest | Smaller | Small "
-			"| Normal | Large | Larger | Largest | Huge | Huger "
-			"%l| Increase | Decrease | Reset "));
-	fl_addto_choice(fd_form_character->choice_bar, 
-			_(" No change %l| Emph | Underbar | Noun | LaTeX mode %l| Reset "));
-	fl_addto_choice(fd_form_character->choice_color, 
-			_(" No change %l| No color | Black | White | Red | Green "
-			"| Blue | Cyan | Magenta | Yellow %l| Reset "));
-	// Appears to need initialising to avoid seg fault when dialog is
-	// launched. Over-written by combo_language2, below
-	fl_addto_choice(fd_form_character->choice_language,
-			_(" English %l| German | French "));
-	fl_set_form_minsize(fd_form_character->form_character,
-			    fd_form_character->form_character->w,
-			    fd_form_character->form_character->h);
-	lyxerr[Debug::INIT] << "Initializing form_character::combox..." << endl;
-	fl_addto_form(fd_form_character->form_character);
-	combo_language2 = new Combox(FL_COMBOX_DROPLIST);
-	FL_OBJECT * ob = fd_form_character->choice_language;
-	combo_language2->add(ob->x, ob->y, ob->w, ob->h, 250);
-	combo_language2->shortcut("#L", 1);
-	fl_end_form();
-	lyxerr[Debug::INIT] << "Initializing form_character...done" << endl;
-
-	// build up the combox entries
-	combo_language2->addline(_("No change"));
-	combo_language2->addline(_("Reset"));
-	for (Languages::const_iterator cit = languages.begin();
-	    cit != languages.end(); ++cit) {
-#ifdef DO_USE_DEFAULT_LANGUAGE
-	    if ((*cit).second.lang() != "default")
-#endif
-		combo_language2->addto((*cit).second.lang());
-	}
 
 	// the sendto form
 	fd_form_sendto = create_form_form_sendto();

@@ -89,7 +89,7 @@ void Combox::remove()
 	}
 	
 	lyxerr.debug() << "Label: " << label << endl;
-	if (label && label!= button) {
+	if (label && label != button) {
 		fl_delete_object(label);
 		fl_free_object(label); 
 	}

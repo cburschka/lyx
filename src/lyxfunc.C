@@ -957,9 +957,7 @@ string const LyXFunc::Dispatch(int ac,
 		break;
 		
 	case LFUN_FREE:
-		Free(owner->view());
-		owner->view()->setState();
-		owner->showState();
+		owner->getDialogs()->setUserFreeFont();
 		break;
 		
 	case LFUN_TEX:
@@ -1159,7 +1157,7 @@ string const LyXFunc::Dispatch(int ac,
 		break;
 		
 	case LFUN_LAYOUT_CHARACTER:
-		MenuLayoutCharacter();
+		owner->getDialogs()->showLayoutCharacter();
 		break;
 
 	case LFUN_LAYOUT_TABULAR:

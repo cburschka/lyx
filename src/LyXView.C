@@ -25,7 +25,6 @@
 #include "minibuffer.h"
 #include "lyxfunc.h"
 #include "debug.h"
-#include "layout_forms.h"
 #include "intl.h"
 #include "lyxrc.h"
 #include "support/filetools.h"        // OnlyFilename()

@@ -22,7 +22,6 @@
 #include "credits_form.h"
 #include "form1.h"
 #include "gettext.h"
-#include "layout_forms.h"
 #include "lyx.h"
 #include "lyx_cb.h"
 #include "lyx_main.h"
@@ -41,7 +40,6 @@ using std::endl;
 
 extern BufferView * current_view;
 
-extern FD_form_character * fd_form_character;
 extern FD_form_credits * fd_form_credits;
 extern FD_form_figure * fd_form_figure;
 extern FD_form_sendto * fd_form_sendto;
@@ -69,9 +67,6 @@ void RedrawAllBufferRelatedDialogs()
 	}
 	if (fd_delim && fd_delim->delim->visible) {
 		fl_redraw_form(fd_delim->delim);
-	}
-	if (fd_form_character->form_character->visible) {
-		fl_redraw_form(fd_form_character->form_character);
 	}
 	if (fd_form_credits && fd_form_credits->form_credits->visible) {
 		fl_redraw_form(fd_form_credits->form_credits);
@@ -111,9 +106,6 @@ void CloseAllBufferRelatedDialogs()
 	// have been created otherwise hiding one could cause a crash
 	// need the visible check otherwise XForms prints a warning
 	// if hiding an invisible form
-	if (fd_form_character->form_character->visible) {
-		fl_hide_form(fd_form_character->form_character);
-	}
 	if (fd_form_figure->form_figure->visible) {
 		fl_hide_form(fd_form_figure->form_figure);
 	}
@@ -159,9 +151,6 @@ void updateAllVisibleBufferRelatedDialogs(bool)
 {
 	if (current_view->buffer() &&  current_view->buffer()->isReadonly()) {
 		// a little crude perhaps but it works. ARRae
-		if (fd_form_character->form_character->visible) {
-			fl_hide_form(fd_form_character->form_character);
-		}
 #ifndef ALWAYS_CLOSE_MATH_PANELS
 		// The math popups should be closed only if we switch
 		// to a readonly buffer

@@ -16,7 +16,6 @@
 
 #include FORMS_H_LOCATION
 #include "lyx.h"
-#include "layout_forms.h"
 #include "lyx_main.h"
 #include "lyx_cb.h"
 #include "insets/insetlabel.h"
@@ -49,11 +48,8 @@ using std::vector;
 using std::sort;
 using std::equal;
 
-extern Combox * combo_language;
-extern Combox * combo_language2;
 extern BufferList bufferlist;
 extern void show_symbols_form();
-extern FD_form_character * fd_form_character;
 extern FD_form_figure * fd_form_figure;
 
 extern BufferView * current_view; // called too many times in this file...
@@ -69,10 +65,6 @@ extern bool finished; // all cleanup done just let it run through now.
 char ascii_type; /* for selection notify callbacks */
 
 bool scrolling = false;
-
-// This is used to make the dreaded font toggle problem hopefully go
-// away. Definitely not the best solution, but I think it sorta works.
-bool toggleall = true;
 
 /* 
    This is the inset locking stuff needed for mathed --------------------
@@ -575,26 +567,6 @@ void LayoutsCB(int sel, void *, Combox *)
 }
 
 
-void MenuLayoutCharacter()
-{
-	static int ow = -1, oh;
-
-	if (fd_form_character->form_character->visible) {
-		fl_raise_form(fd_form_character->form_character);
-	} else {
-		fl_show_form(fd_form_character->form_character,
-			     FL_PLACE_MOUSE | FL_FREE_SIZE, FL_TRANSIENT,
-			     _("Character Style"));
-		if (ow < 0) {
-			ow = fd_form_character->form_character->w;
-			oh = fd_form_character->form_character->h;
-		}
-		fl_set_form_minsize(fd_form_character->form_character, ow, oh);
-	}
-}
-
-
-
 void MenuLayoutSave(BufferView * bv)
 {
 	if (!bv->available())
@@ -605,132 +577,6 @@ void MenuLayoutSave(BufferView * bv)
 			_("as default for new documents?")))
 		bv->buffer()->saveParamsAsDefaults();
 }
-
-
-// This is both GUI and LyXFont dependent. Don't know where to put it. (Asger)
-// Well, it's mostly GUI dependent, so I guess it will stay here. (Asger)
-LyXFont const UserFreeFont(BufferParams const & params)
-{
-	LyXFont font(LyXFont::ALL_IGNORE);
-
-	int pos = fl_get_choice(fd_form_character->choice_family);
-	switch (pos) {
-	case 1: font.setFamily(LyXFont::IGNORE_FAMILY); break;
-	case 2: font.setFamily(LyXFont::ROMAN_FAMILY); break;
-	case 3: font.setFamily(LyXFont::SANS_FAMILY); break;
-	case 4: font.setFamily(LyXFont::TYPEWRITER_FAMILY); break;
-	case 5: font.setFamily(LyXFont::INHERIT_FAMILY); break;
-	}
-
-	pos = fl_get_choice(fd_form_character->choice_series);
-	switch (pos) {
-	case 1: font.setSeries(LyXFont::IGNORE_SERIES); break;
-	case 2: font.setSeries(LyXFont::MEDIUM_SERIES); break;
-	case 3: font.setSeries(LyXFont::BOLD_SERIES); break;
-	case 4: font.setSeries(LyXFont::INHERIT_SERIES); break;
-	}
-
-	pos = fl_get_choice(fd_form_character->choice_shape);
-	switch (pos) {
-	case 1: font.setShape(LyXFont::IGNORE_SHAPE); break;
-	case 2: font.setShape(LyXFont::UP_SHAPE); break;
-	case 3: font.setShape(LyXFont::ITALIC_SHAPE); break;
-	case 4: font.setShape(LyXFont::SLANTED_SHAPE); break;
-	case 5: font.setShape(LyXFont::SMALLCAPS_SHAPE); break;
-	case 6: font.setShape(LyXFont::INHERIT_SHAPE); break;
-	}
-
-	pos = fl_get_choice(fd_form_character->choice_size);
-	switch (pos) {
-	case 1: font.setSize(LyXFont::IGNORE_SIZE); break;
-	case 2: font.setSize(LyXFont::SIZE_TINY); break;
-	case 3: font.setSize(LyXFont::SIZE_SCRIPT); break;
-	case 4: font.setSize(LyXFont::SIZE_FOOTNOTE); break;
-	case 5: font.setSize(LyXFont::SIZE_SMALL); break;
-	case 6: font.setSize(LyXFont::SIZE_NORMAL); break;
-	case 7: font.setSize(LyXFont::SIZE_LARGE); break;
-	case 8: font.setSize(LyXFont::SIZE_LARGER); break;
-	case 9: font.setSize(LyXFont::SIZE_LARGEST); break;
-	case 10: font.setSize(LyXFont::SIZE_HUGE); break;
-	case 11: font.setSize(LyXFont::SIZE_HUGER); break;
-	case 12: font.setSize(LyXFont::INCREASE_SIZE); break;
-	case 13: font.setSize(LyXFont::DECREASE_SIZE); break;
-	case 14: font.setSize(LyXFont::INHERIT_SIZE); break;
-	}
-
-	pos = fl_get_choice(fd_form_character->choice_bar);
-	switch (pos) {
-	case 1: font.setEmph(LyXFont::IGNORE);
-		font.setUnderbar(LyXFont::IGNORE);
-		font.setNoun(LyXFont::IGNORE);
-		font.setLatex(LyXFont::IGNORE);
-		break;
-	case 2: font.setEmph(LyXFont::TOGGLE); break;
-	case 3: font.setUnderbar(LyXFont::TOGGLE); break;
-	case 4: font.setNoun(LyXFont::TOGGLE); break;
-	case 5: font.setLatex(LyXFont::TOGGLE); break;
-	case 6: font.setEmph(LyXFont::INHERIT);
-		font.setUnderbar(LyXFont::INHERIT);
-		font.setNoun(LyXFont::INHERIT);
-		font.setLatex(LyXFont::INHERIT);
-		break;
-	}
-
-	pos = fl_get_choice(fd_form_character->choice_color);
-	switch (pos) {
-	case 1: font.setColor(LColor::ignore); break;
-	case 2: font.setColor(LColor::none); break;
-	case 3: font.setColor(LColor::black); break;
-	case 4: font.setColor(LColor::white); break;
-	case 5: font.setColor(LColor::red); break;
-	case 6: font.setColor(LColor::green); break;
-	case 7: font.setColor(LColor::blue); break;
-	case 8: font.setColor(LColor::cyan); break;
-	case 9: font.setColor(LColor::magenta); break;
-	case 10: font.setColor(LColor::yellow); break;
-	case 11: font.setColor(LColor::inherit); break;
-	}
-
-	int const choice = combo_language2->get();
-	if (choice == 1)
-		font.setLanguage(ignore_language);
-	else if (choice == 2)
-		font.setLanguage(params.language);
-	else
-		font.setLanguage(languages.getLanguage(combo_language2->getline()));
-
-	return font; 
-}
-
-
-/* callbacks for form form_character */
-
-extern "C"
-void CharacterApplyCB(FL_OBJECT *, long)
-{
-	// we set toggleall locally here, since it should be true for
-	// all other uses of ToggleAndShow() (JMarc)
-	toggleall = fl_get_button(fd_form_character->check_toggle_all);
-	ToggleAndShow(current_view, UserFreeFont(current_view->buffer()->params));
-	current_view->setState();
-	toggleall = true;
-}
-
-
-extern "C"
-void CharacterCloseCB(FL_OBJECT *, long)
-{
-	fl_hide_form(fd_form_character->form_character);
-}
-
-
-extern "C"
-void CharacterOKCB(FL_OBJECT * ob, long data)
-{
-	CharacterApplyCB(ob, data);
-	CharacterCloseCB(ob, data);
-}
-
 
 
 void Figure()

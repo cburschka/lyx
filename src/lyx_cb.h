@@ -19,8 +19,6 @@ extern bool toggleall;
 ///
 extern bool BindFileSet;
 ///
-extern LyXFont const UserFreeFont(BufferParams const & params);
-///
 void ShowMessage(Buffer const * buf,
 		 string const & msg1,
 		 string const & msg2 = string(),
@@ -47,8 +45,6 @@ void LayoutsCB(int sel, void *, Combox *);
 void MenuLayoutCharacter();
 ///
 void MenuLayoutSave(BufferView * bv);
-///
-LyXFont const UserFreeFont(BufferParams const & params);
 ///
 void Figure();
 ///

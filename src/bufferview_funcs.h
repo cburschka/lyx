@@ -53,8 +53,6 @@ extern void Tex(BufferView *);
 ///
 extern void changeDepth(BufferView *, LyXText *, int);
 ///
-extern void Free(BufferView *);
-///
 extern void ProhibitInput(BufferView *);
 ///
 extern void AllowInput(BufferView *);
@@ -73,5 +71,5 @@ extern void FontSize(BufferView *, string const &);
 /// Returns the current font and depth as a message. 
 extern string const CurrentState(BufferView *);
 ///
-extern void ToggleAndShow(BufferView *, LyXFont const &);
+extern void ToggleAndShow(BufferView *, LyXFont const &, bool toggleall=true);
 #endif

@@ -136,8 +136,6 @@ lyx_SOURCES = \
 	lastfiles.h \
 	layout.C \
 	layout.h \
-	layout_forms.C \
-	layout_forms.h \
 	lyx.C \
 	lyx.h \
 	lyx_cb.C \

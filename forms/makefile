@@ -18,15 +18,15 @@ SHELL = /bin/sh
 FDESIGN = fdesign
 
 SRCS = bibforms.fd credits_form.fd form1.fd include_form.fd \
-	log_form.fd layout_forms.fd lyx.fd math_forms.fd \
+	log_form.fd lyx.fd math_forms.fd \
 	print_form.fd sp_form.fd
 
 OBJS = bibforms.c credits_form.c form1.c include_form.c \
-	log_form.c layout_forms.c lyx.c math_forms.c \
+	log_form.c lyx.c math_forms.c \
 	print_form.c sp_form.c
 
 COBJS = bibforms.C credits_form.C form1.C include_form.C \
-	log_form.C layout_forms.C lyx.C math_forms.C \
+	log_form.C lyx.C math_forms.C \
 	print_form.C sp_form.C
 
 all:

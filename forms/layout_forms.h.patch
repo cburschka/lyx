@@ -1,6 +1,0 @@
-7,8c7,8
-< extern void CharacterApplyCB(FL_OBJECT *, long);
-< extern void CharacterCloseCB(FL_OBJECT *, long);
----
-> extern "C" void CharacterApplyCB(FL_OBJECT *, long);
-> extern "C" void CharacterCloseCB(FL_OBJECT *, long);
