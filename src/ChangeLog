@@ -5,6 +5,10 @@
 
 2003-03-26  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
+	* Makefile.am (lyx_SOURCES): add RowList.[Ch]
+
+	* RowList.[Ch]: new files
+
 	* ParagraphList.C (erase): handle the case where it == begin
 	correctly.
 
