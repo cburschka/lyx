@@ -1,3 +1,12 @@
+2005-03-17  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* insettabular.C: handle some more character attributes in 
+	M. Vermeers method (when multiple cells in tables are selected); 
+	disable some more senseless lfuns when multiple cells are selected 
+	(prevent crashes);
+	Move to end of cell instead of beginning when coming from the cell
+	behind.
+
 2005-03-12  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* insettabular.C: make applying character attributes 

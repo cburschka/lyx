@@ -724,14 +724,23 @@ void InsetTabular::doDispatch(LCursor & cur, FuncRequest & cmd)
 		cell(cur.idx())->dispatch(cur, cmd);
 		break;
 
-        case LFUN_EMPH:
-        case LFUN_BOLD:
-        case LFUN_ROMAN:
-        case LFUN_NOUN:
-        case LFUN_ITAL:
-        case LFUN_FRAK:
-        case LFUN_CODE:
-        case LFUN_SANS:
+	case LFUN_EMPH:
+	case LFUN_BOLD:
+	case LFUN_ROMAN:
+	case LFUN_NOUN:
+	case LFUN_ITAL:
+	case LFUN_FRAK:
+	case LFUN_CODE:
+	case LFUN_SANS:
+	case LFUN_FREEFONT_APPLY:
+	case LFUN_FREEFONT_UPDATE:
+	case LFUN_FONT_SIZE:
+	case LFUN_UNDERLINE:
+	case LFUN_LANGUAGE:
+	case LFUN_CAPITALIZE_WORD:
+	case LFUN_UPCASE_WORD:
+	case LFUN_LOWCASE_WORD:
+	case LFUN_TRANSPOSE_CHARS:
 		if (tablemode(cur)) {
 			row_type rs, re;
 			col_type cs, ce;
@@ -952,6 +961,10 @@ bool InsetTabular::getStatus(LCursor & cur, FuncRequest const & cmd,
 	case LFUN_INSET_WIDE_FLOAT:
 	case LFUN_INSET_FOOTNOTE:
 	case LFUN_INSET_MARGINAL:
+	case LFUN_INSERT_MATH:
+	case LFUN_MATH_MODE:
+	case LFUN_MATH_MUTATE:
+	case LFUN_MATH_DISPLAY:
 	case LFUN_INSERT_NOTE:
 	case LFUN_INSET_OPTARG:
 	case LFUN_INSERT_BOX:
@@ -1231,8 +1244,8 @@ void InsetTabular::movePrevCell(LCursor & cur)
 			return;
 		--cur.idx();
 	}
-	cur.pit() = 0;
-	cur.pos() = 0;
+	cur.pit() = cur.lastpit();
+	cur.pos() = cur.lastpos();
 	resetPos(cur);
 }
 
