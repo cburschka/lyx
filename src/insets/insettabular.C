@@ -1197,6 +1197,8 @@ bool InsetTabular::moveNextCell(BufferView * bv, CursorSlice & cur)
 			return false;
 		++cur.idx_;
 	}
+	cur.par_ = 0;
+	cur.pos_ = 0;
 	lyxerr << "InsetTabular::moveNextCell 2 cur: " << cur << endl;
 	resetPos(bv);
 	return true;
@@ -1222,6 +1224,8 @@ bool InsetTabular::movePrevCell(BufferView * bv, CursorSlice & cur)
 			return false;
 		--cur.idx_;
 	}
+	cur.par_ = 0;
+	cur.pos_ = 0;
 	resetPos(bv);
 	return true;
 }
