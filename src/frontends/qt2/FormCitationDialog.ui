@@ -11,8 +11,8 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>391</width>
-            <height>601</height>
+            <width>369</width>
+            <height>497</height>
         </rect>
     </property>
     <property stdset="1">
@@ -648,12 +648,6 @@
 </images>
 <connections>
     <connection>
-        <sender>bibLB</sender>
-        <signal>selected(int)</signal>
-        <receiver>FormCitationDialog</receiver>
-        <slot>slotBibSelected(int)</slot>
-    </connection>
-    <connection>
         <sender>addPB</sender>
         <signal>clicked()</signal>
         <receiver>FormCitationDialog</receiver>
@@ -682,12 +676,6 @@
         <signal>clicked()</signal>
         <receiver>FormCitationDialog</receiver>
         <slot>slotRestoreClicked()</slot>
-    </connection>
-    <connection>
-        <sender>citeLB</sender>
-        <signal>selected(int)</signal>
-        <receiver>FormCitationDialog</receiver>
-        <slot>slotCiteSelected(int)</slot>
     </connection>
     <connection>
         <sender>searchTypePB</sender>
@@ -724,6 +712,18 @@
         <signal>returnPressed()</signal>
         <receiver>FormCitationDialog</receiver>
         <slot>slotTextAfterReturn()</slot>
+    </connection>
+    <connection>
+        <sender>bibLB</sender>
+        <signal>highlighted(int)</signal>
+        <receiver>FormCitationDialog</receiver>
+        <slot>slotBibSelected(int)</slot>
+    </connection>
+    <connection>
+        <sender>citeLB</sender>
+        <signal>highlighted(int)</signal>
+        <receiver>FormCitationDialog</receiver>
+        <slot>slotCiteSelected(int)</slot>
     </connection>
     <slot access="protected">slotTextAfterReturn()</slot>
     <slot access="protected">slotAddClicked()</slot>
