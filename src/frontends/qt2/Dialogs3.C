@@ -188,7 +188,7 @@ Dialog * Dialogs::build(string const & name)
 	} else if (name == "tabularcreate") {
 		dialog->setController(new ControlTabularCreate(*dialog));
 		dialog->setView(new QTabularCreate(*dialog));
-		dialog->bc().bp(new OkApplyCancelReadOnlyPolicy);
+		dialog->bc().bp(new IgnorantPolicy);
 	} else if (name == "toc") {
 		dialog->setController(new ControlToc(*dialog));
 		dialog->setView(new QToc(*dialog));
