@@ -196,7 +196,7 @@ void MathHullInset::metrics(MathMetricsInfo & mi) const
 	int asc = 0;
 	int des = 0;
 	math_font_max_dim(mi.base.font, asc, des);
-	dim_.a = max(dim_.a,  asc);
+	dim_.a = max(dim_.a, asc);
 	dim_.d = max(dim_.d, des);
 
 	// for markers
