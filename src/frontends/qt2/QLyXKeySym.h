@@ -58,18 +58,10 @@ public:
 	virtual bool operator==(LyXKeySym const & k) const;
 
 private:
-	/// return true if bogon (see source)
-	bool is_qt_bogon() const;
-
-	/// return the fixed bogon (see source)
-	char debogonify() const;
- 
 	/// the Qt sym value
 	int key_;
 	/// the event string value 
 	QString text_;
-	/// hack-o-rama
-	int ascii_; 
 };
 
 #endif // QLYXKEYSYM_H
