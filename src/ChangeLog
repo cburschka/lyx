@@ -1,3 +1,10 @@
+2003-06-10  Angus Leeming  <leeming@lyx.org>
+
+	* lfuns.h:
+	* LyXAction.C (init): new LFUN_EXTERNAL_EDIT.
+
+	* lyxfunc.C (dispatch): invoke it.
+
 2003-06-11  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* main.C: protect <ios> with HAVE_IOS

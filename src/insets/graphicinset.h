@@ -51,8 +51,6 @@ public:
 
 	/// Is the stored checksum different to that of the graphics loader?
 	bool hasFileChanged() const;
-	/// Set the cached store.
-	void view(BufferView *) const;
 	/// An accessor function to the cached store.
 	BufferView * view() const;
 

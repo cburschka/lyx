@@ -4,6 +4,17 @@
 
 2003-06-10  Angus Leeming  <leeming@lyx.org>
 
+	* graphicinset.[Ch] (view): removed the publicly accessible function to set
+	the cache.
+
+	* insetexternal.[Ch]: move tempname_ into the Params struct.
+	(Params d-tor): new function, to clean-up this temp file.
+	(localDispatch): dispatch LFUN_EXTERNAL_EDIT.
+	(cache): removed.
+	(editExternal, doSubstitution): move out of class.
+
+2003-06-10  Angus Leeming  <leeming@lyx.org>
+
 	* graphicinset.[Ch] (params): removed.
 	* graphicinset.h (operator=): declared private but not defined.
 	(statusMessage): made private.

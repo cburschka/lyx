@@ -44,6 +44,7 @@
 #include "ParagraphParameters.h"
 
 #include "insets/insetcommand.h"
+#include "insets/insetexternal.h"
 #include "insets/insettabular.h"
 
 #include "mathed/formulamacro.h"
@@ -1587,6 +1588,12 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 	case LFUN_TOOLTIPS_TOGGLE:
 		owner->getDialogs().toggleTooltips();
 		break;
+
+	case LFUN_EXTERNAL_EDIT: {
+		InsetExternal()
+			.localDispatch(FuncRequest(view(), action, argument));
+		break;
+	}
 
 	default:
 		// Then if it was none of the above

@@ -54,13 +54,31 @@ grfx::DisplayType const defaultDisplayType = grfx::NoDisplay;
 
 unsigned int defaultLyxScale = 100;
 
+/// Substitute meta-variables in string s, makeing use of params and buffer.
+string const doSubstitution(InsetExternal::Params const & params,
+			    Buffer const * buffer, string const & s);
+
+/// Invoke the external editor.
+void editExternal(InsetExternal::Params const & params, Buffer const * buffer);
+
 } // namespace anon
 
 
 InsetExternal::Params::Params()
 	: display(defaultDisplayType),
 	  lyxscale(defaultLyxScale)
-{}
+{
+	tempname = lyx::tempName(string(), "lyxext");
+	lyx::unlink(tempname);
+	// must have an extension for the converter code to work correctly.
+	tempname += ".tmp";
+}
+
+
+InsetExternal::Params::~Params()
+{
+	lyx::unlink(tempname);
+}
 
 
 InsetExternal::InsetExternal()
@@ -90,8 +108,6 @@ Inset * InsetExternal::clone() const
 
 InsetExternal::~InsetExternal()
 {
-	if (!tempname_.empty())
-		lyx::unlink(tempname_);
 	InsetExternalMailer(*this).hideDialog();
 }
 
@@ -114,7 +130,18 @@ dispatch_result InsetExternal::localDispatch(FuncRequest const & cmd)
 {
 	switch (cmd.action) {
 
+	case LFUN_EXTERNAL_EDIT: {
+		lyx::Assert(cmd.view());
+
+		InsetExternal::Params p;
+		InsetExternalMailer::string2params(cmd.argument, p);
+		editExternal(p, cmd.view()->buffer());
+		return DISPATCHED_NOUPDATE;
+	}
+	
 	case LFUN_INSET_MODIFY: {
+		lyx::Assert(cmd.view());
+
 		InsetExternal::Params p;
 		InsetExternalMailer::string2params(cmd.argument, p);
 		setParams(p, cmd.view()->buffer()->filePath());
@@ -134,12 +161,6 @@ dispatch_result InsetExternal::localDispatch(FuncRequest const & cmd)
 	default:
 		return UNDISPATCHED;
 	}
-}
-
-
-void InsetExternal::cache(BufferView * bv) const
-{
-	renderer_->view(bv);
 }
 
 
@@ -193,14 +214,14 @@ void InsetExternal::setParams(Params const & p, string const & filepath)
 	// Update the display using the new parameters.
 	if (params_.filename.empty() || !filepath.empty())
 		renderer_->update(get_grfx_params(params_, filepath));	
-	string const msg = doSubstitution(0, params_.templ.guiName);
+	string const msg = doSubstitution(params_, 0, params_.templ.guiName);
 	renderer_->setNoDisplayMessage(msg);
 }
 
 
 string const InsetExternal::editMessage() const
 {
-	return doSubstitution(0, params_.templ.guiName);
+	return doSubstitution(params_, 0, params_.templ.guiName);
 }
 
 
@@ -311,7 +332,7 @@ void InsetExternal::read(Buffer const * buffer, LyXLex & lex)
 	// Update the display using the new parameters.
 	if (buffer)
 		renderer_->update(get_grfx_params(params_, buffer->filePath()));
-	string const msg = doSubstitution(0, params_.templ.guiName);
+	string const msg = doSubstitution(params_, 0, params_.templ.guiName);
 	renderer_->setNoDisplayMessage(msg);
 }
 
@@ -331,7 +352,7 @@ int InsetExternal::write(string const & format,
 	}
 
 	updateExternal(format, buf, external_in_tmpdir);
-	string const str = doSubstitution(buf, cit->second.product);
+	string const str = doSubstitution(params_, buf, cit->second.product);
 	os << str;
 	return int(lyx::count(str.begin(), str.end(),'\n') + 1);
 }
@@ -397,56 +418,6 @@ void InsetExternal::validate(LaTeXFeatures & features) const
 }
 
 
-string const InsetExternal::doSubstitution(Buffer const * buffer,
-					   string const & s) const
-{
-	string result;
-	string const basename = ChangeExtension(params_.filename, string());
-	string filepath;
-	bool external_in_tmpdir = false;
-	if (buffer && !buffer->tmppath.empty() && !buffer->niceFile) {
-		filepath = buffer->filePath();
-		if (lyxrc.use_tempdir)
-			external_in_tmpdir = true;
-	}
-	if (tempname_.empty()) {
-		string const path = external_in_tmpdir ? buffer->tmppath : string();
-		tempname_ = lyx::tempName(path, "lyxext");
-		lyx::unlink(tempname_);
-		// must have an extension for the converter code to work correctly.
-		tempname_ += ".tmp";
-	}
-	result = subst(s, "$$FName", params_.filename);
-	result = subst(result, "$$Basename", basename);
-	result = subst(result, "$$FPath", filepath);
-	result = subst(result, "$$Tempname", tempname_);
-	result = subst(result, "$$Sysdir", system_lyxdir);
-
-	// Handle the $$Contents(filename) syntax
-	if (contains(result, "$$Contents(\"")) {
-
-		string::size_type const pos = result.find("$$Contents(\"");
-		string::size_type const end = result.find("\")", pos);
-		string const file = result.substr(pos + 12, end - (pos + 12));
-		string contents;
-		if (buffer) {
-			Path p(buffer->filePath());
-			if (!IsFileReadable(file))
-				Path p(buffer->tmppath);
-			if (IsFileReadable(file))
-				contents = GetFileContents(file);
-		} else {
-			contents = GetFileContents(file);
-		}
-		result = subst(result,
-			       ("$$Contents(\"" + file + "\")").c_str(),
-			       contents);
-	}
-
-	return result;
-}
-
-
 void InsetExternal::updateExternal(string const & format,
 				   Buffer const * buf,
 				   bool external_in_tmpdir) const
@@ -499,7 +470,8 @@ void InsetExternal::updateExternal(string const & format,
 			return;
 	}
 
-	string const to_file = doSubstitution(buf, outputFormat.updateResult);
+	string const to_file = doSubstitution(params_, buf,
+					      outputFormat.updateResult);
 
 	FileInfo fi(from_file);
 	string abs_to_file = to_file;
@@ -517,18 +489,57 @@ void InsetExternal::updateExternal(string const & format,
 }
 
 
-void InsetExternal::editExternal() const
-{
-	ExternalTemplate const & et = params_.templ;
-	if (et.editCommand.empty())
-		return;
+namespace {
 
-	BufferView const * bv = renderer_->view();
-	Buffer const * buffer = bv ? bv->buffer() : 0;
+/// Substitute meta-variables in this string
+string const doSubstitution(InsetExternal::Params const & params,
+			    Buffer const * buffer, string const & s)
+{
+	string result;
+	string const basename = ChangeExtension(params.filename, string());
+	string filepath;
+
+	result = subst(s, "$$FName", params.filename);
+	result = subst(result, "$$Basename", basename);
+	result = subst(result, "$$FPath", filepath);
+	result = subst(result, "$$Tempname", params.tempname);
+	result = subst(result, "$$Sysdir", system_lyxdir);
+
+	// Handle the $$Contents(filename) syntax
+	if (contains(result, "$$Contents(\"")) {
+
+		string::size_type const pos = result.find("$$Contents(\"");
+		string::size_type const end = result.find("\")", pos);
+		string const file = result.substr(pos + 12, end - (pos + 12));
+		string contents;
+		if (buffer) {
+			Path p(buffer->filePath());
+			if (!IsFileReadable(file))
+				Path p(buffer->tmppath);
+			if (IsFileReadable(file))
+				contents = GetFileContents(file);
+		} else {
+			contents = GetFileContents(file);
+		}
+		result = subst(result,
+			       ("$$Contents(\"" + file + "\")").c_str(),
+			       contents);
+	}
+
+	return result;
+}
+
+
+void editExternal(InsetExternal::Params const & params, Buffer const * buffer)
+{
 	if (!buffer)
 		return;
 
-	string const command = doSubstitution(buffer, et.editCommand);
+	ExternalTemplate const & et = params.templ;
+	if (et.editCommand.empty())
+		return;
+
+	string const command = doSubstitution(params, buffer, et.editCommand);
 
 	Path p(buffer->filePath());
 	Forkedcall call;
@@ -539,6 +550,7 @@ void InsetExternal::editExternal() const
 	call.startscript(Forkedcall::DontWait, command);
 }
 
+} // namespace anon
 
 string const InsetExternalMailer::name_("external");
 

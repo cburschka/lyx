@@ -1,3 +1,8 @@
+2003-06-10  Angus Leeming  <leeming@lyx.org>
+
+	* ControlExternal.C (editExternal): invokes new LFUN_EXTERNAL_EDIT rather
+	than generate a new inset itself.
+
 2003-06-06  John Levon  <levon@movementarian.org>
 
 	* ControlDocument.C: make sure a language change

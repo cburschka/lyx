@@ -60,13 +60,6 @@ bool GraphicInset::hasFileChanged() const
 }
 
 
-void GraphicInset::view(BufferView * bv) const
-{
-	if (bv)
-		view_ = bv->owner()->view();
-}
-
-
 BufferView * GraphicInset::view() const
 {
 	return view_.lock().get();
@@ -184,8 +177,8 @@ void GraphicInset::metrics(MetricsInfo & mi, Dimension & dim) const
 
 void GraphicInset::draw(PainterInfo & pi, int x, int y) const
 {
-	// Cache the BufferView.
-	view(pi.base.bv);
+	if (pi.base.bv)
+		view_ = pi.base.bv->owner()->view();
 
 #if 0
 	// Comment this out and see if anything goes wrong.

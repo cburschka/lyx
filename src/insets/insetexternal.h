@@ -29,8 +29,11 @@ public:
 	/// hold parameters settable from the GUI
 	struct Params {
 		Params();
+		~Params();
 		/// the filename
 		string filename;
+		/// The name of the tempfile used for manipulations.
+		string tempname;
 		/// the current template used
 		ExternalTemplate templ;
 		/// how the inset is displayed by LyX
@@ -46,10 +49,6 @@ public:
 	virtual ~InsetExternal();
 	///
 	virtual dispatch_result localDispatch(FuncRequest const & cmd);
-	/** Would not be needed if editExternal were dispatched properly from
-	 *  the frontends rather than being invoked directly.
-	 */
-	virtual void cache(BufferView *) const;
 	///
 	void metrics(MetricsInfo &, Dimension &) const;
 	///
@@ -97,9 +96,6 @@ public:
 	void updateExternal(string const &, Buffer const *,
 			    bool external_in_tmpdir) const;
 
-	/// edit file of this template
-	void editExternal() const;
-
 	/// return a copy of our current params
 	Params const & params() const;
 
@@ -117,14 +113,8 @@ private:
 	int write(string const & format, Buffer const *, std::ostream &,
 		  bool external_in_tmpdir = false) const;
 
-	/// Substitute meta-variables in this string
-	string const doSubstitution(Buffer const *, string const & s) const;
-
 	/// the current params
 	Params params_;
-
-	/// A temp filename
-	mutable string tempname_;
 
 	/// The thing that actually draws the image on LyX's screen.
 	boost::scoped_ptr<GraphicInset> const renderer_;

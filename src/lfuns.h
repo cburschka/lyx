@@ -335,6 +335,7 @@ enum kb_action {
 	// 255
 	LFUN_PARAGRAPH_APPLY,
 	LFUN_PARAGRAPH_UPDATE,
+	LFUN_EXTERNAL_EDIT,
 
 	LFUN_LASTACTION                  // end of the table
 };

@@ -70,10 +70,8 @@ void ControlExternal::editExternal()
 	lyx::Assert(params_.get());
 
 	dialog().view().apply();
-	InsetExternal inset;
-	inset.setParams(*params_, kernel().buffer()->filePath());
-	inset.cache(kernel().bufferview());
-	inset.editExternal();
+	string const lfun = InsetExternalMailer::params2string(params());
+	kernel().dispatch(FuncRequest(LFUN_EXTERNAL_EDIT, lfun));
 }
 
 
