@@ -15,6 +15,7 @@
 
 #include "FormDialogView.h"
 #include "ControlTexinfo.h"
+#include <map>
 
 struct FD_texinfo;
 
@@ -36,6 +37,10 @@ private:
 	void updateStyles(ControlTexinfo::texFileSuffix);
 	///
 	ControlTexinfo::texFileSuffix activeStyle;
+
+	///
+	typedef std::vector<string> ContentsType;
+	std::map<ControlTexinfo::texFileSuffix, ContentsType> texdata_;
 };
 
 #endif // FORMTEXINFO_H

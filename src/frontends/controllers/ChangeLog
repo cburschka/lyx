@@ -1,3 +1,15 @@
+2003-06-20  Angus Leeming  <leeming@lyx.org>
+
+	* tex_helpers.[Ch] (getTexFileList): changed to
+	void getTexFileList(string const & file, vector<string> & contents);
+
+	* ControlBibtex.[Ch] (getBibFiles, getBibStyles): now passed a
+	vector<string> to fill rather than returning a string.
+
+	* ControlTexinfo.[Ch] (rescanStyles, runTexhash): removed. No need
+	for an extra layer of indirection.
+	(getContents): moved out of class to getTexFileList.
+
 2003-06-19  Angus Leeming  <leeming@lyx.org>
 
 	* ControlTexinfo.[Ch]: rewritten to use the Dialog-based scheme.

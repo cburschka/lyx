@@ -13,6 +13,9 @@
 
 
 #include "LString.h"
+#include <utility>
+#include <vector>
+
 
 // build filelists of all availabe bst/cls/sty-files. done through
 // kpsewhich and an external script, saved in *Files.lst
@@ -21,8 +24,10 @@ void rescanTexStyles();
 /// rebuild the textree
 void texhash();
 
-/// return one of the three texfiles
-string const getTexFileList(string const & filename, bool withFullPath);
+/** Fill \c contents from one of the three texfiles.
+ *  Each entry in the file list is returned as a name_with_path
+ */
+void getTexFileList(string const & filename, std::vector<string> & contents);
 
 /// get the options of stylefile
 string const getListOfOptions(string const & classname, string const & type);

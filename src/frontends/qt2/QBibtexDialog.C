@@ -71,7 +71,7 @@ void QBibtexDialog::browsePressed()
 		bool present = false;
 		unsigned int pres = 0;
 
-		for (unsigned int i = 0; i != styleCB->count(); i++) {
+		for (int i = 0; i != styleCB->count(); ++i) {
 			if (fromqstr(styleCB->text(i)) == filen) {
 				present = true;
 				pres = i;

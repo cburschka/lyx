@@ -14,6 +14,7 @@
 
 
 #include "Dialog.h"
+#include "tex_helpers.h"
 
 /** A controller for Texinfo dialogs. */
 
@@ -34,18 +35,19 @@ public:
 	/// the file extensions
 	enum texFileSuffix {cls, sty, bst};
 	/// show contents af a file
-	void viewFile(string const filename) const;
+	void viewFile(string const & filename) const;
 	/// show all classoptions
 	string const getClassOptions(string const & filename) const;
-	/// build new cls bst sty - lists
-	void rescanStyles() const;
-	/// build new bst sty cls lists
-	void runTexhash() const;
-	/// read filecontents
-	string const getContents(texFileSuffix type, bool withPath) const;
 private:
 	///
 	virtual void apply() {}
 };
+
+
+/** Fill \c contents from one of the three texfiles.
+ *  Each entry in the file list is returned as a pair<name_with_path, name_only>
+ */
+void getTexFileList(ControlTexinfo::texFileSuffix type,
+		    std::vector<string> & contents);
 
 #endif // CONTROLTEXINFO_H

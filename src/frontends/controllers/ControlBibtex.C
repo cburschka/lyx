@@ -21,7 +21,10 @@
 #include "tex_helpers.h"
 #include "gettext.h"
 
+#include "support/filetools.h"
+
 using std::pair;
+using std::vector;
 
 
 ControlBibtex::ControlBibtex(Dialog & d)
@@ -40,27 +43,39 @@ string const ControlBibtex::Browse(string const & in_name,
 }
 
 
-string const ControlBibtex::getBibStyles() const
+void ControlBibtex::getBibStyles(vector<string> & data) const
 {
-	string list = getTexFileList("bstFiles.lst", false);
+	data.clear();
+
+	getTexFileList("bstFiles.lst", data);
 	// test, if we have a valid list, otherwise run rescan
-	if (list.empty()) {
+	if (data.empty()) {
 		rescanBibStyles();
-		list = getTexFileList("bstFiles.lst", false);
+		getTexFileList("bstFiles.lst", data);
 	}
-	return list;
+	vector<string>::iterator it  = data.begin();
+	vector<string>::iterator end = data.end();
+	for (; it != end; ++it) {
+		*it = OnlyFilename(*it);
+	}
 }
 
 
-string const ControlBibtex::getBibFiles() const
+void ControlBibtex::getBibFiles(vector<string> & data) const
 {
-	string list = getTexFileList("bibFiles.lst", false);
+	data.clear();
+
+	getTexFileList("bibFiles.lst", data);
 	// test, if we have a valid list, otherwise run rescan
-	if (list.empty()) {
+	if (data.empty()) {
 		rescanBibStyles();
-		list = getTexFileList("bibFiles.lst", false);
+		getTexFileList("bibFiles.lst", data);
 	}
-	return list;
+	vector<string>::iterator it  = data.begin();
+	vector<string>::iterator end = data.end();
+	for (; it != end; ++it) {
+		*it = OnlyFilename(*it);
+	}
 }
 
 

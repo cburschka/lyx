@@ -22,7 +22,7 @@
 #include <qpushbutton.h>
 #include <qcombobox.h>
 
-#include <vector>
+using std::vector;
 
 
 QTexinfoDialog::QTexinfoDialog(QTexinfo * form)
@@ -50,7 +50,7 @@ void QTexinfoDialog::closeEvent(QCloseEvent * e)
 void QTexinfoDialog::rescanClicked()
 {
 	// build new *Files.lst
-	form_->controller().rescanStyles();
+	rescanTexStyles();
 	form_->updateStyles();
 	enableViewPB();
 }
@@ -58,27 +58,9 @@ void QTexinfoDialog::rescanClicked()
 
 void QTexinfoDialog::viewClicked()
 {
-	int const fitem = fileList->currentItem();
-
-	string sel;
-	switch (whatStyle->currentItem()) {
-	case 0:
-		sel = form_->cls_[fitem];
-		break;
-	case 1:
-		sel = form_->sty_[fitem];
-		break;
-	case 2:
-		sel = form_->bst_[fitem];
-		break;
-	default:
-		break;
-	}
-
-	// a valid entry?
-	if (!sel.empty()) {
-		form_->controller().viewFile(sel);
-	}
+	vector<string>::size_type const fitem = fileList->currentItem();
+	vector<string> const & data = form_->texdata_[form_->activeStyle];
+	form_->controller().viewFile(data[fitem]);
 }
 
 

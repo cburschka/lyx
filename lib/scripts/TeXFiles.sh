@@ -72,7 +72,7 @@ for type in $types ; do
   rm -f $outfile
   touch $outfile
 
-  dirs=`kpsewhich --show-path=$kpsetype 2>/dev/null | tr "$SEP" " " | sed -e 's%///%/%' -e 's%//%/%g' -e 's%!!%%g'`
+  dirs=`kpsewhich --show-path=$kpsetype 2>/dev/null | tr "$SEP" " " | sed -e 's%/\{2,\}%/%g' -e 's%!!%%g'`
 
   for dir in $dirs ; do
     find $dir -follow -name "*.$type" >>$outfile 2>/dev/null

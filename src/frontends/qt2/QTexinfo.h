@@ -16,6 +16,7 @@
 #include "QDialogView.h"
 #include "ControlTexinfo.h"
 
+#include <map>
 #include <vector>
 
 class QTexinfoDialog;
@@ -44,11 +45,8 @@ private:
 	///
 	ControlTexinfo::texFileSuffix activeStyle;
 	///
-	std::vector<string> cls_;
-	///
-	std::vector<string> sty_;
-	///
-	std::vector<string> bst_;
+	typedef std::vector<string> ContentsType;
+	std::map<ControlTexinfo::texFileSuffix, ContentsType> texdata_;
 };
 
 #endif // QTEXINFO_H

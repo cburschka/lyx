@@ -1,3 +1,10 @@
+2003-06-20  Angus Leeming  <leeming@lyx.org>
+
+	* FormBibtex.C (input, update): changes due to changed controller
+	interface.
+
+	* FormTexinfo.[Ch]: clean-up handling of TeX file databases.
+
 2003-06-19  Alfredo Braunstein  <abraunst@libero.it>
 
 	* lyx_gui.C (start): call ::loadLyXFile instead 

@@ -175,7 +175,9 @@ MakeRelPath(string const & abspath, string const & basepath);
 /// Strip filename from path name
 string const OnlyPath(string const & fname);
 
-/// Normalize a path. Constracts path/../path
+/** Normalize a path. Constracts path/../path
+ *  Also converts paths like /foo//bar ==> /foo/bar
+ */
 string const NormalizePath(string const & path);
 
 /// Strips path from filename

@@ -37,6 +37,7 @@
 
 #include "Lsstream.h"
 
+#include <boost/cregex.hpp>
 #include <cctype>
 #include <cstdlib>
 #include <cstdio>
@@ -676,6 +677,7 @@ string const ExpandPath(string const & path)
 // Normalize a path
 // Constracts path/../path
 // Can't handle "../../" or "/../" (Asger)
+// Also converts paths like /foo//bar ==> /foo/bar
 string const NormalizePath(string const & path)
 {
 	string TempBase;
@@ -687,6 +689,10 @@ string const NormalizePath(string const & path)
 	else
 		// Make implicit current directory explicit
 		RTemp = "./" +path;
+
+	// Normalise paths like /foo//bar ==> /foo/bar
+	boost::RegEx regex("/{2,}");
+	RTemp = regex.Merge(RTemp, "/");
 
 	while (!RTemp.empty()) {
 		// Split by next /

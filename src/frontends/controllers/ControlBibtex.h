@@ -15,6 +15,7 @@
 
 
 #include "ControlCommand.h"
+#include <vector>
 
 
 /** A controller for Bibtex dialogs.
@@ -27,9 +28,9 @@ public:
 	/// Browse for a file
 	string const Browse(string const &, string const &, string const &);
 	/// get the list of bst files
-	string const getBibStyles() const;
+	void getBibStyles(std::vector<string> & data) const;
 	/// get the list of bib files
-	string const getBibFiles() const;
+	void getBibFiles(std::vector<string> & data) const;
 	/// build filelists of all availabe bib/bst/cls/sty-files. done through
 	/// kpsewhich and an external script, saved in *Files.lst
 	void rescanBibStyles() const;

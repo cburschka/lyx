@@ -142,9 +142,10 @@ ButtonPolicy::SMInput FormBibtex::input(FL_OBJECT * ob, long ob_value)
 	} else if (ob == dialog_->button_rescan) {
 		fl_clear_browser(dialog_->browser_styles);
 		controller().rescanBibStyles();
-		string const str =
-			controller().getBibStyles();
-		fl_add_browser_line(dialog_->browser_styles, str.c_str());
+		vector<string> styles;
+		controller().getBibStyles(styles);
+		fl_add_browser_line(dialog_->browser_styles,
+				    getStringFromVector(styles, "\n").c_str());
 	}
 
 	// with an empty database nothing makes sense ...
@@ -175,9 +176,12 @@ void FormBibtex::update()
 	}
 	fl_set_input(dialog_->input_style, bibstyle.c_str());
 
+	vector<string> styles;
+	controller().getBibStyles(styles);
+
 	fl_clear_browser(dialog_->browser_styles);
-	string const str = controller().getBibStyles();
-	fl_add_browser_line(dialog_->browser_styles, str.c_str());
+	fl_add_browser_line(dialog_->browser_styles,
+			    getStringFromVector(styles, "\n").c_str());
 }
 
 namespace {

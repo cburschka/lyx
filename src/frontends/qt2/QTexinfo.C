@@ -18,6 +18,7 @@
 #include "qt_helpers.h"
 #include "helper_funcs.h"
 
+#include "support/filetools.h"
 #include "support/lstrings.h"
 
 #include <qlistbox.h>
@@ -48,28 +49,17 @@ void QTexinfo::build_dialog()
 
 void QTexinfo::updateStyles(ControlTexinfo::texFileSuffix whichStyle)
 {
-	string const fstr =  controller().getContents(whichStyle, true);
-
-	switch (whichStyle) {
-	    case ControlTexinfo::bst:
-		bst_ = getVectorFromString(fstr, "\n");
-		break;
-	    case ControlTexinfo::cls:
-		cls_ = getVectorFromString(fstr, "\n");
-		break;
-	    case ControlTexinfo::sty:
-		sty_ = getVectorFromString(fstr, "\n");
-		break;
-	}
-
-	dialog_->fileList->clear();
+	ContentsType & data = texdata_[whichStyle];
+	getTexFileList(whichStyle, data);
 
 	bool const withFullPath = dialog_->path->isChecked();
-	string const str =  controller().getContents(whichStyle, withFullPath);
-	vector<string> flist = getVectorFromString(str, "\n");
-	for (vector<string>::const_iterator fitem = flist.begin();
-		fitem != flist.end(); ++fitem) {
-		dialog_->fileList->insertItem(toqstr((*fitem)));
+
+	dialog_->fileList->clear();
+	ContentsType::const_iterator it  = data.begin();
+	ContentsType::const_iterator end = data.end();
+	for (; it != end; ++it) {
+		string const line = withFullPath ? *it : OnlyFilename(*it);
+		dialog_->fileList->insertItem(toqstr(line));
 	}
 
 	activeStyle = whichStyle;

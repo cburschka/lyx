@@ -74,8 +74,8 @@ void QBibtex::update_contents()
 
 	dialog_->add_->bibLB->clear();
 
-	vector<string> const bib_str = getVectorFromString(
-		controller().getBibFiles(), "\n");
+	vector<string> bib_str;
+	controller().getBibFiles(bib_str);
 	for (vector<string>::const_iterator it = bib_str.begin();
 		it != bib_str.end(); ++it) {
 		string bibItem(ChangeExtension(*it, ""));
@@ -102,8 +102,8 @@ void QBibtex::update_contents()
 
 	int item_nr(-1);
 
-	vector<string> const str = getVectorFromString(
-		controller().getBibStyles(), "\n");
+	vector<string> str;
+	controller().getBibStyles(str);
 	for (vector<string>::const_iterator it = str.begin();
 		it != str.end(); ++it) {
 		string item(ChangeExtension(*it, ""));

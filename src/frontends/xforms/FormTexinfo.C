@@ -10,8 +10,6 @@
  */
 
 #include <config.h>
-#include <fstream>
-
 
 #include "xformsBC.h"
 #include "FormTexinfo.h"
@@ -21,10 +19,9 @@
 #include "xforms_helpers.h"
 #include "support/LAssert.h"
 #include "support/lstrings.h"
+#include "support/filetools.h"
 
 #include "lyx_forms.h"
-
-using std::vector;
 
 typedef FormController<ControlTexinfo, FormView<FD_texinfo> > base_class;
 
@@ -76,40 +73,26 @@ ButtonPolicy::SMInput FormTexinfo::input(FL_OBJECT * ob, long ob_value) {
 	if (ob == dialog_->button_texhash) {
 		// makes only sense if the rights are set well for
 		// users (/var/lib/texmf/ls-R)
-		controller().runTexhash();
+		texhash();
 		// texhash requires a rescan and an update of the styles
-		controller().rescanStyles();
+		rescanTexStyles();
 		updateStyles(activeStyle);
 
 
 	} else if (ob == dialog_->browser && ob_value == 2) {
 		// double click in browser: view selected file
-		string selection = getString(dialog_->browser);
-		if (!fl_get_button(dialog_->check_fullpath)) {
-			// contents in browser has filenames without path
-			// reconstruct path from controller getContents
-			string const files = controller().getContents(activeStyle, true);
-			vector<string> const vec = getVectorFromString(files, "\n");
+		ContentsType::size_type const sel = fl_get_browser(ob);
+		ContentsType const & data = texdata_[activeStyle];
+		if (sel >= 1 && sel <= data.size())
+			controller().viewFile(data[sel-1]);
 
-			// find line in files vector
-			vector<string>::const_iterator it = vec.begin();
-			for (; it != vec.end(); ++it) {
-				if ((*it).find(selection) != string::npos) {
-					selection = *it;
-					break;
-				}
-			}
-		}
-		if (!selection.empty()) {
-			controller().viewFile(selection);
-		}
-
-		// reset the browser so that the following single-click callback doesn't do anything
+		// reset the browser so that the following single-click
+		// callback doesn't do anything
 		fl_deselect_browser(dialog_->browser);
 
 	} else if (ob == dialog_->button_rescan) {
 		// build new *Files.lst
-		controller().rescanStyles();
+		rescanTexStyles();
 		updateStyles(activeStyle);
 
 	} else if (ob == dialog_->check_fullpath) {
@@ -135,13 +118,18 @@ ButtonPolicy::SMInput FormTexinfo::input(FL_OBJECT * ob, long ob_value) {
 
 void FormTexinfo::updateStyles(ControlTexinfo::texFileSuffix whichStyle)
 {
-	fl_clear_browser(dialog_->browser);
+	ContentsType & data = texdata_[whichStyle];
+	getTexFileList(whichStyle, data);
 
 	bool const withFullPath = fl_get_button(dialog_->check_fullpath);
 
-	string const str =
-		controller().getContents(whichStyle, withFullPath);
-	fl_add_browser_line(dialog_->browser, str.c_str());
+	fl_clear_browser(dialog_->browser);
+	ContentsType::const_iterator it  = data.begin();
+	ContentsType::const_iterator end = data.end();
+	for (; it != end; ++it) {
+		string const line = withFullPath ? *it : OnlyFilename(*it);
+		fl_add_browser_line(dialog_->browser, line.c_str());
+	}
 
 	activeStyle = whichStyle;
 }

@@ -10,7 +10,6 @@
 
 #include <config.h>
 
-
 #include "tex_helpers.h"
 
 #include "debug.h"
@@ -22,6 +21,7 @@
 #include "support/path.h"
 #include "support/lyxalgo.h"
 
+#include <boost/cregex.hpp>
 #include <vector>
 #include <fstream>
 #include <algorithm>
@@ -33,18 +33,6 @@ using std::unique;
 
 extern string user_lyxdir; // home of *Files.lst
 
-namespace {
-
-vector<string> listWithoutPath(vector<string> & dbase)
-{
-	vector<string>::iterator it = dbase.begin();
-	vector<string>::iterator end = dbase.end();
-	for (; it != end; ++it)
-		*it = OnlyFilename(*it);
-	return dbase;
-}
-
-} // namespace anon
 
 // build filelists of all availabe bst/cls/sty-files. done through
 // kpsewhich and an external script, saved in *Files.lst
@@ -69,26 +57,24 @@ void texhash()
 }
 
 
-string const getTexFileList(string const & filename, bool withFullPath)
+void getTexFileList(string const & filename, std::vector<string> & list)
 {
+	list.clear();
 	string const file = LibFileSearch("", filename);
 	if (file.empty())
-		return string();
+		return;
 
-	vector<string> dbase =
-		getVectorFromString(GetFileContents(file), "\n");
+	list = getVectorFromString(GetFileContents(file), "\n");
 
-	if (withFullPath) {
-		lyx::eliminate_duplicates(dbase);
-		string const str_out =
-			getStringFromVector(dbase, "\n");
-		return str_out;
+	// Normalise paths like /foo//bar ==> /foo/bar
+	boost::RegEx regex("/{2,}");
+	std::vector<string>::iterator it  = list.begin();
+	std::vector<string>::iterator end = list.end();
+	for (; it != end; ++it) {
+		*it = regex.Merge(*it, "/");
 	}
-	vector<string> dbaseWP = listWithoutPath(dbase);
-	lyx::eliminate_duplicates(dbaseWP);
-	string const str_out =
-		getStringFromVector(dbaseWP, "\n");
-	return str_out;
+
+	lyx::eliminate_duplicates(list);
 }
 
 
