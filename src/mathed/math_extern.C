@@ -248,10 +248,8 @@ void replaceNested(
 			continue;
 
 		// replace the original stuff by the new inset
-		ar.erase(it + 1, jt + 1);
-
-		// create a proper inset as replacement
 		ar[i] = replaceArg(MathArray(it + 1, jt));
+		ar.erase(it + 1, jt + 1);
 	}
 }
 
