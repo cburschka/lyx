@@ -26,14 +26,25 @@ void addCheckedLineEdit(BCView & bcview,
 
 namespace {
 
+void setWarningColor(QWidget * widget)
+{
+	// Qt 2.3 does not have
+	// widget->setPaletteForegroundColor(QColor(255, 0, 0));
+	// So copy the appropriate parts of the function here:
+	QPalette pal = widget->palette();
+	pal.setColor(QPalette::Active,
+		     QColorGroup::Foreground,
+		     QColor(255, 0, 0));
+	widget->setPalette(pal);
+}
+
+	
 void setWidget(bool valid, QLineEdit * input, QLabel * label)
 {
-	QColor const red(255, 0, 0);
-
 	if (valid)
 		input->unsetPalette();
 	else
-		input->setPaletteForegroundColor(red);
+		setWarningColor(input);
 	
 	if (!label)
 		return;
@@ -41,7 +52,7 @@ void setWidget(bool valid, QLineEdit * input, QLabel * label)
 	if (valid)
 		label->unsetPalette();
 	else
-		label->setPaletteForegroundColor(red);
+		setWarningColor(label);
 }
 
 } // namespace anon

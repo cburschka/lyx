@@ -1,3 +1,9 @@
+2003-12-09  Angus Leeming  <leeming@lyx.org>
+
+	* checkedwidgets.C (setWarningColor): new function that should
+	work also with Qt 2.3.x.
+	(setWidget): call setWarningColor, not setPaletteForegroundColor.
+
 2003-12-08  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* QExternal.C: add using directive
