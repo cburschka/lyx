@@ -55,8 +55,12 @@ void FormToc::update()
 }
 
 
-ButtonPolicy::SMInput FormToc::input(FL_OBJECT *, long)
+ButtonPolicy::SMInput FormToc::input(FL_OBJECT * ob, long)
 {
+	if (ob != dialog_->choice_toc_type) {
+		updateType();
+	}
+ 
 	updateContents();
 
 	unsigned int const choice = fl_get_browser( dialog_->browser_toc );
@@ -74,6 +78,7 @@ void FormToc::updateType()
 	// Update the choice list from scratch
 	fl_clear_choice(dialog_->choice_toc_type);
 	string const choice = getStringFromVector(controller().getTypes(), "|");
+	lyxerr << "choice " << choice << endl; 
 	fl_addto_choice(dialog_->choice_toc_type, choice.c_str());
 
 	// And select the correct one
@@ -95,8 +100,16 @@ void FormToc::updateType()
 
 void FormToc::updateContents()
 {
-	string const type =
-		frontStrip(strip(fl_get_choice_text(dialog_->choice_toc_type)));
+	char const * tmp = fl_get_choice_text(dialog_->choice_toc_type);
+ 
+	if (!tmp) {
+		fl_clear_browser(dialog_->browser_toc);
+		fl_add_browser_line(dialog_->browser_toc,
+				    _("*** No Lists ***"));
+		return;
+	}
+ 
+	string const type = frontStrip(strip(tmp));
 
 	Buffer::SingleList const contents = controller().getContents(type);
 

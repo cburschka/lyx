@@ -1,3 +1,7 @@
+2001-12-13  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* undo_funcs.C (textHandleUndo): undo undo leak fix below, as per
+	Juergen's request
 
 2001-12-13  André Pönitz <poenitz@gmx.net>
 

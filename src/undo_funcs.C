@@ -130,9 +130,9 @@ bool textHandleUndo(BufferView * bv, Undo * undo)
 				// the text informations. 
 				if (undo->kind == Undo::EDIT) {
 					tmppar2->setContentsFromPar(tmppar);
+					tmppar->clearContents();
 					tmppar2 = tmppar2->next();
 				}
-				delete tmppar;
 			}
 		}
     
@@ -141,20 +141,8 @@ bool textHandleUndo(BufferView * bv, Undo * undo)
 			if (before)
 				before->next(tmppar3);
 			else
-#warning Juergen, why is this needed?? (JMarc)
-// since tmppar3 is not yet inserted in the document, I do not see why
-// the getParFromID which is done by the function below makes sense.
-// OTOH, since you wrote the method just for this instance, I guess you
-// have something in mind
-#if 1
 				bv->text->ownerParagraph(tmppar3->id(),
 							 tmppar3);
-#else
-// in this case, since getParFromID is not called, the program does
-// not crash on trying to access buffer()->paragraph, which does not
-// exist anymore if we undid the first par f the document. (JMarc)
-				bv->text->ownerParagraph(tmppar3);
-#endif
 
 			tmppar3->previous(before);
 		} else {
