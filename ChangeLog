@@ -1,3 +1,10 @@
+2000-08-15  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/WorkArea.C (work_area_handler): more work to get te
+	FL_KEYBOARD to work with xforms 0.88 too, please test.
+
+	* src/BufferView_pimpl.C (workAreaKeyPress): add XForms 0.88 guard.
+
 2000-08-15  Dekel Tsur  <dekel@math.tau.ac.il>
 
 	* src/frontends/ButtonPolicies.C: make gcc happy when compiling with

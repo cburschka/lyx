@@ -21,6 +21,7 @@
 #include "BufferView.h"
 #include "LyXView.h"
 #include "lyxfunc.h"
+#include "lyxlookup.h"
 
 using std::endl;
 
@@ -319,15 +320,17 @@ int WorkArea::work_area_handler(FL_OBJECT * ob, int event,
 	case FL_KEYBOARD:
 	{
 		lyxerr[Debug::KEY] << "Workarea event: KEYBOARD";
-		if (static_cast<XEvent*>(ev)->type == KeyPress)
-			lyxerr << "KeyPress" << endl;
-		else
-			lyxerr << "KeyRelease" << endl;
 		
 		KeySym keysym = 0;
-		char s_r[10];
+		char dummy[1];
 		XKeyEvent * xke = reinterpret_cast<XKeyEvent *>(ev);
-		XLookupString(xke, s_r, 10, &keysym, 0);
+#if FL_REVISION < 89
+		// XForms < 0.89 does not have compose support
+		// so we are using our own compose support
+		LyXLookupString(ev, dummy, 1, &keysym);
+#else
+		XLookupString(xke, dummy, 1, &keysym, 0);
+#endif
 		if (lyxerr.debugging(Debug::KEY)) {
 			char const * tmp = XKeysymToString(key);
 			char const * tmp2 = XKeysymToString(keysym);
@@ -340,20 +343,35 @@ int WorkArea::work_area_handler(FL_OBJECT * ob, int event,
 			       << keysym << "]" << endl;
 		}
 
+#if FL_REVISION < 89
+		if (keysym == NoSymbol) {
+			lyxerr[Debug::KEY]
+				<< "Empty kdb action (probably composing)"
+				<< endl;
+			break;
+		}
+		KeySym ret_key = keysym;
+#else
 		if (!key) break;
-		
 		KeySym ret_key = (keysym ? keysym : key);
+#endif	
 		unsigned int ret_state = xke->state;
 		
 		static Time last_time_pressed = 0;
 		static unsigned int last_key_pressed = 0;
 		static unsigned int last_state_pressed = 0;
-		if (xke->time - last_time_pressed < 50 // should perhaps be tunable
+		//lyxerr << "Workarea Diff: " << xke->time - last_time_pressed
+		//       << endl;
+		if (xke->time - last_time_pressed < 40 // should perhaps be tunable
 		    && xke->state == last_state_pressed
 		    && xke->keycode == last_key_pressed) {
 			lyxerr[Debug::KEY]
 				<< "Workarea: Purging X events." << endl;
-			XSync(fl_get_display(), 1);
+			//lyxerr << "Workarea Events: "
+			//       << XEventsQueued(fl_get_display(), QueuedAlready)
+			//       << endl;
+			if (XEventsQueued(fl_get_display(), QueuedAlready) > 0)
+				XSync(fl_get_display(), 1);
 			// This purge make f.ex. scrolling stop immidiatly when
 			// releasing the PageDown button. The question is if
 			// this purging of XEvents can cause any harm...

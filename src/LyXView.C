@@ -211,7 +211,8 @@ int LyXView::atCloseMainFormCB(FL_FORM *, void *)
 
 
 // Wrapper for the above
-extern "C" int C_LyXView_atCloseMainFormCB(FL_FORM * form, void * p)
+extern "C"
+int C_LyXView_atCloseMainFormCB(FL_FORM * form, void * p)
 {
 	return LyXView::atCloseMainFormCB(form, p);
 }
@@ -319,7 +320,7 @@ void LyXView::create_form_form_main(int width, int height)
 }
 
 
-#if FL_REVISION < 89
+#if 0
 extern "C"
 int C_LyXView_KeyPressMask_raw_callback(FL_FORM * fl, void * xev);
 #endif
@@ -341,7 +342,7 @@ void LyXView::init()
 		autosave_timeout.start();
 	}
 
-#if FL_REVISION < 89
+#if 0
 	// Install the raw callback for keyboard events 
 	fl_register_raw_callback(form_,
 				 KeyPressMask,
@@ -400,7 +401,7 @@ void LyXView::UpdateDocumentClassChoice()
 }
 
 
-#if FL_REVISION < 89
+#if 0
 // This is necessary, since FL_FREE-Objects doesn't get all keypress events
 // as FL_KEYBOARD events :-(   Matthias 280596
 int LyXView::KeyPressMask_raw_callback(FL_FORM * fl, void * xev)

@@ -49,13 +49,13 @@ public:
 	/// Same again but for xtl buffers.  Still looking for better idea.
 	bool Dispatch(int action, auto_mem_buffer &);
 
- #if FL_REVISION < 89
+#if 0
 	/// A keyboard event is processed to execute a lyx action. 
  	int processKeyEvent(XEvent * ev);
- #else
+#else
 	///
 	int processKeySym(KeySym k, unsigned int state);
- #endif
+#endif
 	///
 	func_status getStatus(int ac) const;
 	

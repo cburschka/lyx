@@ -316,7 +316,7 @@ int LyXFunc::processKeySym(KeySym keysym, unsigned int state)
 } 
 
 
-#if FL_REVISION < 89
+#if 0
 int LyXFunc::processKeyEvent(XEvent * ev)
 {
 	char s_r[10];
