@@ -26,7 +26,8 @@
 using std::min;
 using std::max;
 using std::endl;
- 
+
+
 LyXScreen::LyXScreen()
 	: force_clear_(true), cursor_visible_(false)
 {
@@ -296,18 +297,42 @@ void LyXScreen::greyOut()
 		workarea().workHeight(),
 		LColor::bottomarea);
 
-/* FIXME: pending GUIIzation / cleanup of graphics cache
-We should be using :
-
-	static GImage splash(LibFileSearch(...)); 
-	workarea().getPainter().image(splash);
-
-or similar.
-*/
+// FIXME: pending GUIIzation / cleanup of graphics cache.
+//        We should be using something like this.
 #if 0
+	static bool first = true;
+	if (first) {
+		first = false;
+
+		splash_file_ = (lyxrc.show_banner) ?
+			LibFileSearch("images", "banner", "xpm") : string();
+		if (splash_file_) {
+			grfx::GCache & gc = grfx::GCache::get();
+			gc.add(splash_file_);
+			gc.startLoading(splash_file_);
+		}
+	}
+
 	// Add a splash screen to the centre of the work area
-	string const splash_file = LibFileSearch("images", "banner", "xpm");
-#endif 
+	grfx::GCache & gc = grfx::GCache::get();
+	grfx::ImagePtr const splash = gc.image(splash_file_);
+	if (splash.get()) {
+		int const w = splash->getWidth();
+		int const h = splash->getHeight();
+
+		int const x = 0.5 * (workarea().workWidth() - w);
+		int const y = 0.5 * (workarea().workHeight() - h);
+
+		workarea().getPainter().image(x, y, w, h, splash->getPixmap());
+	}
+#endif
+// Alternatively, we should compile this into the code.
+// I think that that is better here (so that the pixmap is displayed on
+// start-up).
+// Would need a new method
+//	virtual Pixmap splashPixmap() = 0;
+// or some such.
+// Angus 21 June 2002
 }
 
 
