@@ -177,6 +177,8 @@ void QCitation::update_contents()
 	fillStyles();
 
 	updateStyle();
+
+	bc().valid(isValid());
 }
 
 
@@ -212,4 +214,10 @@ void QCitation::setCiteButtons(State status) const
 	dialog_->delPB->setEnabled(activate);
 	dialog_->upPB->setEnabled(activate_up);
 	dialog_->downPB->setEnabled(activate_down);
+}
+
+
+bool QCitation::isValid()
+{
+	return dialog_->citeLB->count() > 0;
 }

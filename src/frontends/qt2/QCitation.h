@@ -31,6 +31,8 @@ public:
 	friend class QCitationDialog;
 	///
 	QCitation();
+protected:
+	virtual bool isValid();
 private:
 	///
 	enum State {
