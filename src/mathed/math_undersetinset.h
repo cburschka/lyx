@@ -19,14 +19,17 @@
 class MathUndersetInset : public MathFracbaseInset {
 public:
 	///
-	MathUndersetInset();
-	///
-	virtual std::auto_ptr<InsetBase> clone() const;
+	std::auto_ptr<InsetBase> clone() const;
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
-
+	///
+	bool idxFirst(idx_type & idx, pos_type & pos) const;
+	///
+	bool idxLast(idx_type & idx, pos_type & pos) const;
+	///
+	bool idxUpDown(idx_type & idx, pos_type & pos, bool up, int targetx) const;
 	///
 	void write(WriteStream & os) const;
 	///

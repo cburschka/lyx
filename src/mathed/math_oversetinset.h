@@ -19,13 +19,15 @@
 class MathOversetInset : public MathFracbaseInset {
 public:
 	///
-	MathOversetInset();
-	///
-	virtual std::auto_ptr<InsetBase> clone() const;
+	std::auto_ptr<InsetBase> clone() const;
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
+	///
+	bool idxFirst(idx_type & idx, pos_type & pos) const;
+	///
+	bool idxLast(idx_type & idx, pos_type & pos) const;
 
 	///
 	void write(WriteStream & os) const;

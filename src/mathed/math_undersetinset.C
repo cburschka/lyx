@@ -19,10 +19,6 @@ using std::max;
 using std::auto_ptr;
 
 
-MathUndersetInset::MathUndersetInset()
-{}
-
-
 auto_ptr<InsetBase> MathUndersetInset::clone() const
 {
 	return auto_ptr<InsetBase>(new MathUndersetInset(*this));
@@ -48,6 +44,34 @@ void MathUndersetInset::draw(PainterInfo & pi, int x, int y) const
 	cell(1).draw(pi, m - cell(1).width() / 2, y);
 	FracChanger dummy(pi.base);
 	cell(0).draw(pi, m - cell(0).width() / 2, yo);
+}
+
+
+bool MathUndersetInset::idxFirst(idx_type & i, pos_type & pos) const
+{
+	i = 1;
+	pos = 0;
+	return true;
+}
+
+
+bool MathUndersetInset::idxLast(idx_type & i, pos_type & pos) const
+{
+	i = 1;
+	pos = cell(i).size();
+	return true;
+}
+
+
+bool MathUndersetInset::idxUpDown(idx_type & idx, pos_type & pos, bool up,
+	int targetx) const
+{
+	idx_type target = up; // up ? 1 : 0, since upper cell has idx 1
+	if (idx == target)
+		return false;
+	idx = target;
+	pos = cell(idx).x2pos(targetx);
+	return true;
 }
 
 

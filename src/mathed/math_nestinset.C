@@ -101,22 +101,22 @@ bool MathNestInset::idxLeft(idx_type & idx, pos_type & pos) const
 }
 
 
-bool MathNestInset::idxFirst(idx_type & i, pos_type & pos) const
+bool MathNestInset::idxFirst(idx_type & idx, pos_type & pos) const
 {
 	if (nargs() == 0)
 		return false;
-	i = 0;
+	idx = 0;
 	pos = 0;
 	return true;
 }
 
 
-bool MathNestInset::idxLast(idx_type & i, pos_type & pos) const
+bool MathNestInset::idxLast(idx_type & idx, pos_type & pos) const
 {
 	if (nargs() == 0)
 		return false;
-	i = nargs() - 1;
-	pos = cell(i).size();
+	idx = nargs() - 1;
+	pos = cell(idx).size();
 	return true;
 }
 

@@ -19,10 +19,6 @@ using std::max;
 using std::auto_ptr;
 
 
-MathOversetInset::MathOversetInset()
-{}
-
-
 auto_ptr<InsetBase> MathOversetInset::clone() const
 {
 	return auto_ptr<InsetBase>(new MathOversetInset(*this));
@@ -48,6 +44,22 @@ void MathOversetInset::draw(PainterInfo & pi, int x, int y) const
 	cell(1).draw(pi, m - cell(1).width() / 2, y);
 	FracChanger dummy(pi.base);
 	cell(0).draw(pi, m - cell(0).width() / 2, yo);
+}
+
+
+bool MathOversetInset::idxFirst(idx_type & i, pos_type & pos) const
+{
+	i = 1;
+	pos = 0;
+	return true;
+}
+
+
+bool MathOversetInset::idxLast(idx_type & i, pos_type & pos) const
+{
+	i = 1;
+	pos = cell(i).size();
+	return true;
 }
 
 
