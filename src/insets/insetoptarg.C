@@ -1,12 +1,10 @@
-/* This file is part of
- * ======================================================
+/**
+ * \file insetoptarg.C
+ * Copyright 2002 the LyX Team
+ * Read the file COPYING
  *
- *           LyX, The Document Processor
- *
- *	    Copyright 1995 Matthias Ettrich
- *          Copyright 1995-2001 The LyX Team.
- *
- * ====================================================== */
+ * \author Martin Vermeer  <martin.vermeer@hut.fi>
+ */
 
 #include <config.h>
 
@@ -19,7 +17,7 @@
 #include "insetoptarg.h"
 #include "support/LOstream.h"
 #include "frontends/Alert.h"
-#include "support/lstrings.h" //frontStrip, strip
+#include "support/lstrings.h" // frontStrip, strip
 #include "lyxtext.h"
 #include "buffer.h"
 #include "gettext.h"
@@ -30,37 +28,37 @@ using std::ostream;
 using std::vector;
 using std::pair;
 
-/* OptArg. Used to insert a short version of sectioning header etc.
- *  automatically, or other optional LaTeX arguments */
-
-
 InsetOptArg::InsetOptArg(BufferParams const & ins)
 	: InsetCollapsable(ins, true)
 {
-    LyXFont font(LyXFont::ALL_SANE);
+	LyXFont font(LyXFont::ALL_SANE);
 	font.setColor(LColor::collapsable);
 	setLabelFont(font);
 	setLabel(_("opt"));
 }
 
+
 InsetOptArg::InsetOptArg(InsetOptArg const & in, bool same_id)
-		    : InsetCollapsable(in, same_id)
+	: InsetCollapsable(in, same_id)
 {
-    LyXFont font(LyXFont::ALL_SANE);
+	LyXFont font(LyXFont::ALL_SANE);
 	font.setColor(LColor::collapsable);
 	setLabelFont(font);
 	setLabel(_("opt"));
 }
+
 
 Inset * InsetOptArg::clone(Buffer const &, bool same_id) const
 {
-		    return new InsetOptArg(*this, same_id);
+	return new InsetOptArg(*this, same_id);
 }
+
 
 string const InsetOptArg::editMessage() const
 {
 	return _("Opened Optional Argument Inset");
 }
+
 
 void InsetOptArg::write(Buffer const * buf, ostream & os) const
 {
@@ -68,11 +66,13 @@ void InsetOptArg::write(Buffer const * buf, ostream & os) const
 	InsetCollapsable::write(buf, os);
 }
 
+ 
 int InsetOptArg::latex(Buffer const *, ostream &, bool, bool) const
 {
 	return 0;
 }
 
+ 
 int InsetOptArg::latexOptional(Buffer const * buf, ostream & os,
 				bool, bool fp) const
 {
@@ -81,4 +81,3 @@ int InsetOptArg::latexOptional(Buffer const * buf, ostream & os,
 	os << ']';
 	return i + 2;
 }
-
