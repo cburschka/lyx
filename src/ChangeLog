@@ -1,6 +1,17 @@
 2004-03-30  Angus Leeming  <leeming@lyx.org>
 
 	* lfuns.h:
+	* LyXAction.C: new lfuns LFUN_LANGUAGE_BUFFER, LFUN_TEXTCLASS_APPLY,
+	LFUN_TEXTCLASS_LOAD, LFUN_SAVE_AS_DEFAULT, LFUN_BUFFERPARAMS_APPLY.
+
+	* lyxfunc.C (getStatus, dispatch): define the actions for these
+	lfuns. Little more than a cut and pste job from ControlDocument.C
+
+	* lyxtextclass.[Ch] (loaded): accessor for the private bool loaded_.
+
+2004-03-30  Angus Leeming  <leeming@lyx.org>
+
+	* lfuns.h:
 	* LyXAction.C (init): new lfuns, LFUN_KEYMAP_TOGGLE,
 	LFUN_NEXT_INSET_TOGGLE, LFUN_ALL_INSETS_TOGGLE.
 

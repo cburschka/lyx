@@ -28,9 +28,11 @@
 #include "bufferparams.h"
 #include "BufferView.h"
 #include "cursor.h"
+#include "CutAndPaste.h"
 #include "debug.h"
 #include "dispatchresult.h"
 #include "encoding.h"
+#include "errorlist.h"
 #include "exporter.h"
 #include "format.h"
 #include "funcrequest.h"
@@ -39,13 +41,16 @@
 #include "insetiterator.h"
 #include "intl.h"
 #include "kbmap.h"
+#include "language.h"
 #include "LColor.h"
 #include "lyx_cb.h"
 #include "LyXAction.h"
 #include "lyxfind.h"
+#include "lyxlex.h"
 #include "lyxrc.h"
 #include "lyxrow.h"
 #include "lyxserver.h"
+#include "lyxtextclasslist.h"
 #include "lyxvc.h"
 #include "paragraph.h"
 #include "pariterator.h"
@@ -496,6 +501,12 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	case LFUN_FILE_INSERT_ASCII:
 	case LFUN_FILE_INSERT_ASCII_PARA:
 	case LFUN_ALL_INSETS_TOGGLE:
+	case LFUN_LANGUAGE_BUFFER:
+	case LFUN_TEXTCLASS_APPLY:
+	case LFUN_TEXTCLASS_LOAD:
+	case LFUN_SAVE_AS_DEFAULT:
+	case LFUN_BUFFERPARAMS_APPLY:
+
 		// these are handled in our dispatch()
 		break;
 
@@ -507,7 +518,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 		flag.enabled(false);
 
 	// Can we use a readonly buffer?
-	if (buf && buf->isReadonly() 
+	if (buf && buf->isReadonly()
 	    && !lyxaction.funcHasFlag(cmd.action, LyXAction::ReadOnly)
 	    && !lyxaction.funcHasFlag(cmd.action, LyXAction::NoBuffer)) {
 		setStatusMessage(N_("Document is read-only"));
@@ -817,7 +828,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd, bool verbose)
 						Systemcall::DontWait,
 						command + QuoteName(dviname));
 				}
-		
+
 			} else {
 				// case 1: print to a file
 				command += lyxrc.print_to_file
@@ -1268,6 +1279,94 @@ void LyXFunc::dispatch(FuncRequest const & cmd, bool verbose)
 						cur.pop();
 				}
 			}
+			break;
+		}
+
+		case LFUN_LANGUAGE_BUFFER: {
+			Buffer & buffer = *owner->buffer();
+			Language const * oldL = buffer.params().language;
+			Language const * newL = languages.getLanguage(argument);
+			if (!newL || oldL == newL)
+				break;
+
+			if (oldL->RightToLeft() == newL->RightToLeft()
+			    && !buffer.isMultiLingual())
+				buffer.changeLanguage(oldL, newL);
+			else
+				buffer.updateDocLang(newL);
+			break;
+		}
+
+		case LFUN_BUFFERPARAMS_APPLY: {
+			istringstream ss(argument);
+			LyXLex lex(0,0);
+			lex.setStream(ss);
+			int const unknown_tokens =
+				owner->buffer()->readHeader(lex);
+
+			if (unknown_tokens != 0) {
+				lyxerr << "Warning in LFUN_BUFFERPARAMS_APPLY!\n"
+				       << unknown_tokens << " unknown token"
+				       << (unknown_tokens == 1 ? "" : "s")
+				       << endl;
+			}
+			break;
+		}
+
+		case LFUN_TEXTCLASS_APPLY: {
+			Buffer * buffer = owner->buffer();
+
+			lyx::textclass_type const old_class =
+				buffer->params().textclass;
+
+			dispatch(FuncRequest(LFUN_TEXTCLASS_LOAD, argument));
+
+			std::pair<bool, lyx::textclass_type> const tc_pair =
+				textclasslist.NumberOfClass(argument);
+
+			if (!tc_pair.first)
+				break;
+
+			lyx::textclass_type const new_class = tc_pair.second;
+			if (old_class == new_class)
+				// nothing to do
+				break;
+
+			owner->message(
+				_("Converting document to new document class..."));
+
+			ErrorList el;
+			lyx::cap::SwitchLayoutsBetweenClasses(
+				old_class, new_class,
+				buffer->paragraphs(), el);
+
+			bufferErrors(*buffer, el);
+			view()->showErrorList(_("Class switch"));
+			break;
+		}
+
+		case LFUN_TEXTCLASS_LOAD: {
+			std::pair<bool, lyx::textclass_type> const tc_pair =
+				textclasslist.NumberOfClass(argument);
+
+			if (!tc_pair.first) {
+				lyxerr << "Document class \"" << argument
+				       << "\" does not exist."
+				       << std::endl;
+				break;
+			}
+
+			lyx::textclass_type const tc = tc_pair.second;
+
+			bool const success = textclasslist[tc].load();
+			if (success)
+				break;
+
+			string s = bformat(_("The document could not be converted\n"
+					     "into the document class %1$s."),
+					   textclasslist[tc].name());
+			Alert::error(_("Could not change class"), s);
+
 			break;
 		}
 

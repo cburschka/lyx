@@ -84,6 +84,8 @@ public:
 
 	/// Sees to that the textclass structure has been loaded
 	bool load() const;
+	/// Has this layout file been loaded yet?
+	bool loaded() const { return loaded_; }
 
 	/// the list of floats defined in the document class
 	FloatList & floats();
@@ -235,7 +237,7 @@ private:
 	boost::shared_ptr<Counters> ctrs_;
 
 	/// Has this layout file been loaded yet?
-	mutable bool loaded;
+	mutable bool loaded_;
 
 	/// Is the TeX class available?
 	bool texClassAvail_;

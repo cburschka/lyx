@@ -40,8 +40,6 @@ public:
 	///
 	void saveAsDefault();
 	///
-	void classApply();
-	///
 	bool loadTextclass(lyx::textclass_type tc) const;
 private:
 	/// apply settings

@@ -1,5 +1,10 @@
 2004-03-30  Angus Leeming  <leeming@lyx.org>
 
+	* ControlDocument.[Ch]: move all of the 'apply' code into the core
+	and access it by dispatching the appropriate lfuns.
+
+2004-03-30  Angus Leeming  <leeming@lyx.org>
+
 	* ControlDocument.C (apply): replace the loop over paragraphs
 	invoking insetsOpenCloseBranch with
 	LFUN_ALL_INSETS_TOGGLE, "toggle branch".

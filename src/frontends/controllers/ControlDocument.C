@@ -15,31 +15,17 @@
 
 #include "BranchList.h"
 #include "buffer.h"
-#include "buffer_funcs.h"
 #include "bufferparams.h"
-#include "BufferView.h"
-#include "CutAndPaste.h"
-#include "errorlist.h"
 #include "funcrequest.h"
-#include "gettext.h"
 #include "language.h"
 #include "LColor.h"
 #include "lyxtextclasslist.h"
-#include "lfuns.h"
-#include "paragraph.h"
-#include "ParagraphList_fwd.h"
 
-#include "frontends/Alert.h"
 #include "frontends/LyXView.h"
 
-#include "support/filetools.h"
-#include "support/path_defines.h"
+#include "support/std_sstream.h"
 
-using lyx::support::AddName;
-using lyx::support::AddPath;
-using lyx::support::bformat;
-using lyx::support::user_lyxdir;
-
+using std::ostringstream;
 using std::string;
 
 
@@ -50,6 +36,16 @@ ControlDocument::ControlDocument(LyXView & lv, Dialogs & d)
 
 ControlDocument::~ControlDocument()
 {}
+
+
+void ControlDocument::setParams()
+{
+	if (!bp_.get())
+		bp_.reset(new BufferParams);
+
+	/// Set the buffer parameters
+	*bp_ = buffer()->params();
+}
 
 
 BufferParams & ControlDocument::params()
@@ -65,6 +61,19 @@ LyXTextClass ControlDocument::textClass()
 }
 
 
+namespace {
+
+void dispatch_params(LyXView & lv, BufferParams const & bp, kb_action lfun)
+{
+ 	ostringstream ss;
+ 	bp.writeFile(ss);
+ 	ss << "\\end_header\n";
+ 	lv.dispatch(FuncRequest(lfun, ss.str()));
+}
+
+} // namespace anon
+
+
 void ControlDocument::apply()
 {
 	if (!bufferIsAvailable())
@@ -72,22 +81,26 @@ void ControlDocument::apply()
 
 	view().apply();
 
-	// this must come first so that a language change
-	// is correctly noticed
+	// This must come first so that a language change is correctly noticed
 	setLanguage();
 
-	classApply();
+	// Set the document class.
+ 	lyx::textclass_type const old_class = buffer()->params().textclass;
+ 	lyx::textclass_type const new_class = bp_->textclass;
 
-	buffer()->params() = *bp_;
+ 	if (new_class != old_class) {
+ 		string const name = textclasslist[new_class].name();
+		lv_.dispatch(FuncRequest(LFUN_TEXTCLASS_APPLY, name));
+	}
 
-	lv_.view()->redoCurrentBuffer();
+	// Apply the BufferParams.
+ 	dispatch_params(lv_, params(), LFUN_BUFFERPARAMS_APPLY);
 
-	buffer()->markDirty();
-
-	lv_.message(_("Document settings applied"));
-
-	// branches
+	// Generate the colours requested by each new branch.
 	BranchList & branchlist = params().branchlist();
+	if (branchlist.empty())
+		return;
+
 	BranchList::const_iterator it = branchlist.begin();
 	BranchList::const_iterator const end = branchlist.end();
 	for (; it != end; ++it) {
@@ -107,93 +120,29 @@ void ControlDocument::apply()
 }
 
 
-void ControlDocument::setParams()
-{
-	if (!bp_.get())
-		bp_.reset(new BufferParams);
-
-	/// Set the buffer parameters
-	*bp_ = buffer()->params();
-}
-
-
 void ControlDocument::setLanguage()
 {
-	Language const * oldL = buffer()->params().language;
-	Language const * newL = bp_->language;
+	Language const * const newL = bp_->language;
+	if (buffer()->params().language == newL)
+ 		return;
 
-	if (oldL != newL) {
-
-		if (oldL->RightToLeft() == newL->RightToLeft()
-		    && !lv_.buffer()->isMultiLingual())
-			lv_.buffer()->changeLanguage(oldL, newL);
-		else
-		    lv_.buffer()->updateDocLang(newL);
-	}
-}
-
-
-void ControlDocument::classApply()
-{
-	BufferParams & params = buffer()->params();
-	lyx::textclass_type const old_class = params.textclass;
-	lyx::textclass_type const new_class = bp_->textclass;
-
-	// exit if nothing changes or if unable to load the new class
-	if (new_class == old_class || !loadTextclass(new_class))
-		return;
-
-	// successfully loaded
-	buffer()->params() = *bp_;
-
-	lv_.message(_("Converting document to new document class..."));
-
-	ErrorList el;
-	lyx::cap::SwitchLayoutsBetweenClasses(old_class, new_class,
-						 lv_.buffer()->paragraphs(),
-						 el);
-	bufferErrors(*buffer(), el);
-	bufferview()->showErrorList(_("Class switch"));
+ 	string const lang_name = newL->lang();
+ 	lv_.dispatch(FuncRequest(LFUN_LANGUAGE_BUFFER, lang_name));
 }
 
 
 bool ControlDocument::loadTextclass(lyx::textclass_type tc) const
 {
-	bool const success = textclasslist[tc].load();
-	if (success)
-		return success;
+	string const name = textclasslist[tc].name();
+	lv_.dispatch(FuncRequest(LFUN_TEXTCLASS_LOAD, name));
 
-	string s = bformat(_("The document could not be converted\n"
-			"into the document class %1$s."),
-			textclasslist[tc].name());
-	Alert::error(_("Could not change class"), s);
-
+	// Report back whether we were able to change the class.
+	bool const success = textclasslist[tc].loaded();
 	return success;
 }
 
 
 void ControlDocument::saveAsDefault()
 {
-// Can somebody justify this ? I think it should be removed - jbl
-#if 0
-	if (!Alert::askQuestion(_("Do you want to save the current settings"),
-				_("for the document layout as default?"),
-				_("(they will be valid for any new document)")))
-		return;
-#endif
-
-	lv_.buffer()->params().preamble = bp_->preamble;
-
-	string const fname = AddName(AddPath(user_lyxdir(), "templates/"),
-				     "defaults.lyx");
-	Buffer defaults(fname);
-	defaults.params() = params();
-
-	// add an empty paragraph. Is this enough?
-	Paragraph par;
-	par.layout(params().getLyXTextClass().defaultLayout());
-	defaults.paragraphs().push_back(par);
-
-	defaults.writeFile(defaults.fileName());
-
+ 	dispatch_params(lv_, params(), LFUN_SAVE_AS_DEFAULT);
 }

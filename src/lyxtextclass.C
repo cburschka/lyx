@@ -72,7 +72,7 @@ LyXTextClass::LyXTextClass(string const & fn, string const & cln,
 	provides_ = nothing;
 	titletype_ = TITLE_COMMAND_AFTER;
 	titlename_ = "maketitle";
-	loaded = false;
+	loaded_ = false;
 }
 
 
@@ -840,7 +840,7 @@ bool LyXTextClass::delete_layout(string const & name)
 // Load textclass info if not loaded yet
 bool LyXTextClass::load() const
 {
-	if (loaded)
+	if (loaded_)
 		return true;
 
 	// Read style-file
@@ -852,10 +852,10 @@ bool LyXTextClass::load() const
 		       << "'\n(Check `" << name_
 		       << "')\nCheck your installation and "
 			"try Options/Reconfigure..." << endl;
-		loaded = false;
+		loaded_ = false;
 	}
-	loaded = true;
-	return loaded;
+	loaded_ = true;
+	return loaded_;
 }
 
 

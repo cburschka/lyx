@@ -329,6 +329,11 @@ void LyXAction::init()
 		{ LFUN_WORD_FIND, "word-find", Noop },
 		{ LFUN_WORD_REPLACE, "word-replace", Noop },
 		{ LFUN_KEYMAP_TOGGLE, "keymap-toggle", Noop },
+		{ LFUN_LANGUAGE_BUFFER, "buffer-language", Noop },
+		{ LFUN_TEXTCLASS_APPLY, "textclass-apply", Noop },
+		{ LFUN_TEXTCLASS_LOAD, "textclass-load", Noop },
+		{ LFUN_SAVE_AS_DEFAULT, "buffer-save-as-default", Noop },
+		{ LFUN_BUFFERPARAMS_APPLY, "buffer-params-apply", Noop },
 		{ LFUN_NOACTION, "", Noop }
 	};
 
