@@ -1,5 +1,19 @@
 2001-03-01  Lars Gullik Bjønnes  <larsbj@trylle.birdstep.com>
 
+	* math_macrotemplate.C (update): use MathMacro::getArg, and
+	receive a const reference.
+	(getMacroPar): add an Assert
+
+	* math_macrotemplate.h: make MathMacro a friend, make update take
+	a const reference.
+
+	* math_macro.[hC]: get rid of getRowSt, remove MacroArgumentBase
+	and store a MathMacroArgument in the vector
+	* math_macro.C: changes because of the above.
+	(getArg): new method
+
+	* math_parser.C (mathed_parse): plug potential leak
+
 	* math_iter.h: add comment on virtual destructor
 
 	* math_iter.C (Delete): make c const

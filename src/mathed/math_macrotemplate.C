@@ -23,6 +23,10 @@ MathMacroTemplate::MathMacroTemplate(string const & nm, int na):
 		for (int i = 0; i < nargs_; ++i) {
 			args_.push_back(MathMacroArgument(i + 1));
 		}
+		//for (int i = 0; i < nargs_; ++i) {
+		//	MathMacroArgument * ma = new MathMacroArgument(i + 1);
+		//	args_.push_back(boost::shared_ptr<MathMacroArgument>(ma));
+		//}
 	} else {
 		tcode_ = LM_TC_INSET;
 		// Here is  nargs != args_.size()
@@ -86,7 +90,6 @@ void MathMacroTemplate::draw(Painter & pain, int x, int y)
 	MathParInset::draw(pain, x, y);
 	xo(x2);
 	yo(y2);
-
 	for (int i = 0; i < nargs_; ++i) {
 		args_[i].setExpand(expnd);
 	}
@@ -107,24 +110,17 @@ void MathMacroTemplate::Metrics()
 		}
 	}
 	MathParInset::Metrics();
-    
 	for (int i = 0; i < nargs_; ++i) {
 		args_[i].setExpand(expnd);
 	}
 }
 
 
-void MathMacroTemplate::update(MathMacro * macro)
+void MathMacroTemplate::update(MathMacro const & macro)
 {
-	Assert(macro);
-	int const idx = macro->getArgumentIdx();
 	for (int i = 0; i < nargs_; ++i) {
-			macro->setArgumentIdx(i);
-			args_[i].setData(macro->GetData());
-			MathedRowSt * row = macro->getRowSt();
-			args_[i].setRowSt(row);
-	}	
-	macro->setArgumentIdx(idx);
+		args_[i] = macro.getArg(i);
+	}
 }
 
 
@@ -139,7 +135,8 @@ void MathMacroTemplate::WriteDef(ostream & os, bool fragile)
 
 	for (int i = 0; i < nargs_; ++i) {
 		args_[i].setExpand(false);
-	}	 
+	}
+
 	Write(os, fragile);
 	os << "}\n";
 }
@@ -153,10 +150,12 @@ void MathMacroTemplate::GetMacroXY(int i, int & x, int & y) const
 
 MathParInset * MathMacroTemplate::getMacroPar(int i) const
 {
-	if (i >= 0 && i < nargs_) 
-		return const_cast<MathParInset *>
+	if (i >= 0 && i < nargs_) {
+		MathParInset * p = const_cast<MathParInset *>
 		        (static_cast<MathParInset const *>(&args_[i]));
-	else 
+		Assert(p);
+		return p;
+	} else 
 		return 0;
 }
 

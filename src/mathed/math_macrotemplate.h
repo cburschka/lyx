@@ -5,6 +5,7 @@
 #include <vector>
 
 #include <boost/utility.hpp>
+//#include <boost/smart_ptr.hpp>
 
 #include "math_parinset.h"
 #include "math_macroarg.h"
@@ -20,6 +21,8 @@ class MathMacro;
  */
 class MathMacroTemplate : public MathParInset, public noncopyable {
 public:
+	friend class MathMacro;
+	
 	/// A template constructor needs all the data
 	explicit
 	MathMacroTemplate(string const &, int na);
@@ -45,13 +48,14 @@ public:
 	void setEditMode(bool);
 	
 	/// Replace the appropriate arguments with a specific macro's data
-	void update(MathMacro * m);
+	void update(MathMacro const & m);
 private:
 	/// Are we in edit mode or not?
 	bool edit_;
 	///
 	MathedTextCodes tcode_;
 	///
+	//std::vector<boost::shared_ptr<MathMacroArgument> > args_;
 	std::vector<MathMacroArgument> args_;
 	///
 	int nargs_;

@@ -763,16 +763,13 @@ void mathed_parse(MathedArray & array, unsigned flags = 0,
 		
 		case LM_TK_PMOD:
 		case LM_TK_FUNC:
-		{
-#warning This must leak. (Lgb)
-			// if (accent) this must leak... (Lgb)
-			MathedInset * bg = new MathFuncInset(yylval.l->name); 
 			if (accent) {
 				data.insert(t, LM_TC_CONST);
-			} else
+			} else {
+				MathedInset * bg = new MathFuncInset(yylval.l->name); 
 				data.insertInset(bg, LM_TC_INSET);
+			}
 			break;
-		}
 		
 		case LM_TK_FUNCLIM:
 			data.insertInset(new MathFuncInset(yylval.l->name, LM_OT_FUNCLIM),

@@ -25,6 +25,7 @@
 #include <boost/smart_ptr.hpp>
 
 #include "math_parinset.h"
+#include "math_macroarg.h"
 
 class MathMacroTemplate;
 
@@ -63,32 +64,24 @@ public:
 	///
 	MathedArray const & GetData() const;
 	///
-	MathedRowSt * getRowSt() const;
-	///
 	void setData(MathedArray const &);
 	///
 	MathedTextCodes getTCode() const;
 	///
 	bool Permit(short) const;
+	///
+	MathMacroArgument const & getArg(int i) const;
+	//boost::shared_ptr<MathMacroArgument> getArg(int i);
 private:
 	///
 	boost::shared_ptr<MathMacroTemplate> tmplate_;
 	///
-	struct MacroArgumentBase {
-		///
-		MathedRowSt * row;
-		///
-		MathedArray array;
-		///
-		MacroArgumentBase()
-			:  row(0)
-			{}
-	};
-	std::vector<MacroArgumentBase> args_;
+	//std::vector<boost::shared_ptr<MathMacroArgument> > args_;
+	std::vector<MathMacroArgument> args_;
 	///
 	int idx_;
 	///
-	int nargs_;
+	//int nargs_;
 	///
 	MathedTextCodes tcode_;
 };
