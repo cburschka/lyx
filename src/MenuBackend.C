@@ -82,7 +82,7 @@ MenuItem::MenuItem(Kind kind, string const & label,
 
 
 MenuItem::MenuItem(Kind kind, string const & label, int action,
-		 bool optional = false);
+		 bool optional = false)
 	: kind_(kind), label_(label), action_(action), submenuname_(),
 	  optional_(optional)
 {}
@@ -90,6 +90,12 @@ MenuItem::MenuItem(Kind kind, string const & label, int action,
 
 MenuItem::~MenuItem()
 {}
+
+
+void MenuItem::submenu(Menu * menu)
+{
+	submenu_.reset(menu);
+}
 
 
 string const MenuItem::label() const
@@ -108,12 +114,6 @@ Menu & Menu::add(MenuItem const & i)
 {
 	items_.push_back(i);
 	return *this;
-}
-
-
-void Menu::submenu(Menu * menu)
-{
-	submenu_.reset(menu);
 }
 
 
