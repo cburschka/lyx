@@ -37,6 +37,10 @@ QCitation
 
 	- loop round searching not working perhaps ??
 
+QCommandBuffer
+
+	- finish off, use listview etc.
+ 
 QContentPane 
 
 	- triple click
@@ -61,7 +65,7 @@ QForks
  
 QGraphics
 	
-	- UI cleanups. Maybe not vital
+	- UI cleanups and fixes
  
 QInclude
 
@@ -74,7 +78,6 @@ qlkey
 QLImage
 
 	- get jpeg etc. to work
-	- get rotation etc. to work
 	- get mono/color to work
 	- get bgcolor and clipping to work 
 
@@ -88,11 +91,6 @@ QLyXKeySym
 	- isOK() - meaningful or not ?
 	- getISOEncoded - get this to work (*)
 	 
-QMiniBuffer
-
-	- implement as a QStatusBar and a separate QToolbar containing a QComboBox (*)
-	- make the necessary GUII API changes for this to work (*)
-
 QPreferences
 
 	- implement me (*)

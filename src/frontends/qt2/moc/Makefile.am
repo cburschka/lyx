@@ -22,6 +22,8 @@ nodist_libqt2moc_la_SOURCES = \
 	lengthcombo_moc.C \
 	qttableview_moc.C \
 	Toolbar_pimpl_moc.C \
+	QCommandBuffer_moc.C \
+	QCommandEdit_moc.C \
 	QContentPane_moc.C \
 	Qt2Base_moc.C \
 	QtView_moc.C \

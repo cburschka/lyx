@@ -18,7 +18,6 @@
 #include "lyx_cb.h"
 #include "support/filetools.h"
 #include "MenuBackend.h"
-#include "QMiniBuffer.h"
 #include "ToolbarDefaults.h"
 #include "lyxfunc.h"
 #include "bufferview_funcs.h"
@@ -29,15 +28,16 @@
 #include "frontends/Dialogs.h"
 #include "frontends/Timeout.h"
  
+#include <boost/bind.hpp>
+ 
 #include "QtView.h"
 #include "qfont_loader.h"
+#include "QCommandBuffer.h"
  
 #include <qapplication.h>
 #include <qpixmap.h>
 #include <qmenubar.h>
 #include <qstatusbar.h>
- 
-#include <boost/bind.hpp>
  
 using std::endl;
 
@@ -63,12 +63,19 @@ QtView::QtView(unsigned int width, unsigned int height)
 
 	statusBar()->setSizeGripEnabled(false);
  
-	minibuffer_.reset(new QMiniBuffer(this)); 
- 
 	bufferview_.reset(new BufferView(this, 0, 0, width, height));
 	::current_view = bufferview_.get();
 
 	view_state_changed.connect(boost::bind(&QtView::update_view_state, this));
+	connect(&idle_timer_, SIGNAL(timeout()), this, SLOT(update_view_state_qt()));
+ 
+	idle_timer_.start(3000); 
+ 
+	focus_command_buffer.connect(boost::bind(&QtView::focus_command_widget, this));
+ 
+	commandbuffer_ = new QCommandBuffer(this, *controlcommand_);
+ 
+	addToolBar(commandbuffer_, Bottom, true);
  
 	// FIXME: move 
 	// FIXME autosave_timeout_->timeout.connect(SigC::slot(this, &QtView::autoSave));
@@ -89,9 +96,27 @@ QtView::~QtView()
 }
 
 
+void QtView::message(string const & str)
+{
+	statusBar()->message(str.c_str()); 
+}
+
+ 
+void QtView::focus_command_widget()
+{
+	commandbuffer_->focus_command();
+}
+
+
+void QtView::update_view_state_qt()
+{
+	message(currentState(view()));
+}
+
+ 
 void QtView::update_view_state()
 {
-	statusBar()->message(currentState(view()).c_str()); 
+	message(currentState(view()));
 }
 
  

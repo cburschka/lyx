@@ -24,6 +24,8 @@
 #include "insets/insettext.h"
 #include "debug.h"
 
+#include <qapplication.h>
+ 
 using std::endl;
 using std::max;
 using std::min;
@@ -57,6 +59,15 @@ QScreen::~QScreen()
 void QScreen::showManualCursor(LyXText const * text, int x, int y,
 				 int asc, int desc, Cursor_Shape shape)
 {
+	if (!qApp->focusWidget())
+		return;
+ 
+	string const focusname(qApp->focusWidget()->name());
+ 
+	// Probably a hack
+	if (focusname != "content_pane")
+		return;
+
 	int const y1 = max(y - text->first_y - asc, 0);
 	int const y_tmp = min(y - text->first_y + desc, owner_.height());
 

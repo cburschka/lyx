@@ -29,6 +29,10 @@ libqt2_la_SOURCES = \
 	Timeout_pimpl.h \
 	Toolbar_pimpl.C \
 	Toolbar_pimpl.h \
+	QCommandBuffer.C \
+	QCommandBuffer.h \
+	QCommandEdit.C \
+	QCommandEdit.h \
 	QContentPane.C \
 	QContentPane.h \
 	QLImage.C \
@@ -37,8 +41,6 @@ libqt2_la_SOURCES = \
 	QLPainter.h \
 	QLyXKeySym.C \
 	QLyXKeySym.h \
-	QMiniBuffer.C \
-	QMiniBuffer.h \
 	Qt2Base.C \
 	Qt2Base.h \
 	Qt2BC.C	\

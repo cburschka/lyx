@@ -97,7 +97,7 @@ QLImage::QLImage()
 
 
 QLImage::QLImage(QLImage const & other)
-	: Image(other), pixmap_(other.pixmap_)
+	: Image(other), pixmap_(other.pixmap_), xformed_pixmap_(other.xformed_pixmap_)
 {
 }
 
@@ -115,13 +115,13 @@ Image * QLImage::clone() const
 
 unsigned int QLImage::getWidth() const
 {
-	return pixmap_.width();
+	return xformed_pixmap_.width();
 }
 
 
 unsigned int QLImage::getHeight() const
 {
-	return pixmap_.height();
+	return xformed_pixmap_.height();
 }
 
 
@@ -140,15 +140,23 @@ void QLImage::load(string const & filename)
 		finishedLoading(false);
 		return;
 	}
+	lyxerr[Debug::GRAPHICS] << "just Loaded." << endl; 
+	xformed_pixmap_ = pixmap_;
+	lyxerr[Debug::GRAPHICS] << "pixmap isNull " << pixmap_.isNull()
+		<< " xformed_pixmap_ isNull " << xformed_pixmap_.isNull() << endl;
 	finishedLoading(true); 
 }
 
 
 bool QLImage::setPixmap(Params const & params)
 {
+	lyxerr[Debug::GRAPHICS] << "pixmap isNull " << pixmap_.isNull()
+		<< " xformed_pixmap_ isNull " << xformed_pixmap_.isNull() << endl;
 	if (pixmap_.isNull() || params.display == NoDisplay)
 		return false;
 
+	lyxerr[Debug::GRAPHICS] << "setPixmap()" << endl;
+ 
 // FIXME
 #if 0  
 	int color_key;
@@ -179,14 +187,14 @@ bool QLImage::setPixmap(Params const & params)
 	}
 #endif 
 
-	xformed_pixmap_ = pixmap_;
 	return true;
 }
 
 
 void QLImage::clip(Params const & params)
 {
-	if (pixmap_.isNull())
+	lyxerr << "clip isNull " << pixmap_.isNull() << ", " <<xformed_pixmap_.isNull() << endl; 
+	if (xformed_pixmap_.isNull())
 		return;
 
 	if (params.bb.empty())
@@ -219,6 +227,7 @@ void QLImage::clip(Params const & params)
 
 void QLImage::rotate(Params const & params)
 {
+	lyxerr << "rotate isNull " << pixmap_.isNull() << ", " <<xformed_pixmap_.isNull() << endl; 
 	if (xformed_pixmap_.isNull())
 		return;
 
@@ -228,14 +237,17 @@ void QLImage::rotate(Params const & params)
 	// The angle passed to flimage_rotate is the angle in one-tenth of a
 	// degree units.
 
+	lyxerr[Debug::GRAPHICS] << "rotating image by " << params.angle << " degrees" << endl;
+ 
 	QWMatrix m;
-	m.rotate(params.angle / 10.0);
-	xformed_pixmap_.xForm(m);
+	m.rotate(params.angle);
+	xformed_pixmap_ = xformed_pixmap_.xForm(m);
 }
 
 
 void QLImage::scale(Params const & params)
 {
+	lyxerr << "scale isNull " << pixmap_.isNull() << ", " <<xformed_pixmap_.isNull() << endl; 
 	if (xformed_pixmap_.isNull())
 		return;
 
@@ -246,7 +258,12 @@ void QLImage::scale(Params const & params)
 	if (width == getWidth() && height == getHeight())
 		return;
 
-	xformed_pixmap_.resize(width, height);
+	lyxerr[Debug::GRAPHICS] << "resizing image to " << width << "(" <<
+		(double(width)/getWidth()) << ")," << height << "(" <<
+		(double(height)/getHeight()) << ")" << endl;
+	QWMatrix m;
+	m.scale(double(width) / getWidth(), double(height) / getHeight());
+	xformed_pixmap_ = xformed_pixmap_.xForm(m);
 }
 
 } // namespace grfx

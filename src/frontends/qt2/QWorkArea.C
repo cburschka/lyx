@@ -45,6 +45,8 @@ QWorkArea::QWorkArea(int, int, int, int)
 
 	(static_cast<QMainWindow*>(qApp->mainWidget()))->setCentralWidget(this);
  
+	setFocusProxy(content_);
+ 
 	content_->show();
 
 	content_->setBackgroundColor(lcolor.getX11Name(LColor::background).c_str());

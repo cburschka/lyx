@@ -1,3 +1,22 @@
+2002-07-20  John Levon  <moz@compsoc.man.ac.uk>
+
+	* QLImage.C: various fixes
+ 
+	* QWorkArea.C: set focus proxy 
+ 
+	* qscreen.C: don't show cursor when in command buffer
+ 
+	* Makefile.am:
+	* moc/Makefile.am:
+	* QMiniBuffer.h:
+	* QMiniBuffer.C: 
+	* QCommandBuffer.h:
+	* QCommandBuffer.C:
+	* QCommandEdit.h:
+	* QCommandEdit.C:
+	* QtView.h:
+	* QtView.C: Rudimentary command buffer
+
 2002-07-19  John Levon  <moz@compsoc.man.ac.uk>
 
 	* QWorkArea.C: remove unnecessary include
