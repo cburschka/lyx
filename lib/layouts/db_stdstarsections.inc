@@ -13,7 +13,7 @@ Style Part*
 	CopyStyle             Part
 	Margin                Static
 	LatexName             bridgehead
-	LatexType             Environment
+	LatexType             Paragraph
 	InnerTag	      "!-- --"
 	LabelType             No_Label
 	LatexParam	      renderas="part"
@@ -23,7 +23,7 @@ End
 Style Chapter*
 	CopyStyle             Chapter
 	Margin                Static
-	LatexType             Environment
+	LatexType             Paragraph
 	InnerTag	      "!-- --"
 	LatexName             bridgehead
 	LabelType             No_Label
@@ -36,7 +36,7 @@ Style Section*
 	CopyStyle             Section
 	Margin                Static
 	LatexName             bridgehead
-	LatexType             Environment
+	LatexType             Paragraph
 	InnerTag	      "!-- --"
 	LabelType             No_Label
 	OptionalArgs          0
@@ -48,7 +48,7 @@ Style Subsection*
 	CopyStyle             Subsection
 	Margin                Static
 	LatexName             bridgehead
-	LatexType             Environment
+	LatexType             Paragraph
 	InnerTag	      "!-- --"
 	LabelType             No_Label
 	OptionalArgs          0
@@ -60,7 +60,7 @@ Style Subsubsection*
 	CopyStyle             Subsubsection
 	Margin                Static
 	LatexName             bridgehead
-	LatexType             Environment
+	LatexType             Paragraph
 	InnerTag	      "!-- --"
 	LabelType             No_Label
 	OptionalArgs          0
@@ -72,7 +72,7 @@ Style Paragraph*
 	CopyStyle             Paragraph
 	Margin                Static
 	LatexName             bridgehead
-	LatexType             Environment
+	LatexType             Paragraph
 	InnerTag	      "!-- --"
 	LabelType             No_Label
 	OptionalArgs          0
@@ -84,7 +84,7 @@ Style Subparagraph*
 	CopyStyle             Subparagraph
 	Margin                Static
 	LatexName             bridgehead
-	LatexType             Environment
+	LatexType             Paragraph
 	InnerTag	      "!-- --"
 	LabelType             No_Label
 	OptionalArgs          0

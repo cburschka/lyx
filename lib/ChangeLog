@@ -1,3 +1,8 @@
+2004-10-24  José Matos  <jamatos@lyx.org>
+
+	* layouts/db_stdstarsections.inc: change all to type Paragraph,
+	they only look like sections but they don't act as such.
+
 2004-10-22  José Matos  <jamatos@lyx.org>
 
 	* layouts/db_stdstarsections.inc: add mixing quotes around !-- --
