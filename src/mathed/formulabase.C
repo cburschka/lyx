@@ -344,9 +344,15 @@ Inset::RESULT InsetFormulaBase::lfunMouseRelease(FuncRequest const & cmd)
 Inset::RESULT InsetFormulaBase::lfunMousePress(FuncRequest const & cmd)
 {
 	BufferView * bv = cmd.view();
-	releaseMathCursor(bv);
-	mathcursor = new MathCursor(this, cmd.x == 0);
 	//lyxerr << "lfunMousePress: buttons: " << cmd.button() << "\n";
+
+	if (!mathcursor || mathcursor->formula() != this) {
+		lyxerr << "re-create cursor\n";
+		releaseMathCursor(bv);
+		mathcursor = new MathCursor(this, cmd.x == 0);
+		metrics(bv);
+		mathcursor->setPos(cmd.x + xo_, cmd.y + yo_);
+	}
 
 	if (cmd.button() == mouse_button::button3) {
 		mathcursor->dispatch(cmd);
@@ -354,9 +360,6 @@ Inset::RESULT InsetFormulaBase::lfunMousePress(FuncRequest const & cmd)
 	}
 
 	if (cmd.button() == mouse_button::button1) {
-		// just set the cursor here
-		//lyxerr << "setting cursor\n";
-		metrics(bv);
 		first_x = cmd.x;
 		first_y = cmd.y;
 		mathcursor->selClear();
