@@ -5,12 +5,13 @@
 #endif
 
 #include "math_hullinset.h"
+#include "math_mathmlstream.h"
+#include "math_streamstr.h"
 #include "math_support.h"
 #include "debug.h"
 #include "Painter.h"
 #include "LaTeXFeatures.h"
-#include "math_mathmlstream.h"
-#include "math_streamstr.h"
+#include "support/LAssert.h"
 
 #include <vector>
 
@@ -191,6 +192,8 @@ void MathHullInset::draw(Painter & pain, int x, int y) const
 
 string MathHullInset::label(row_type row) const
 {
+	row_type n = nrows();
+	lyx::Assert(row < n);
 	return label_[row];
 }
 
@@ -684,6 +687,13 @@ void MathHullInset::normalize(NormalStream & os) const
 void MathHullInset::mathmlize(MathMLStream & os) const
 {
 	MathGridInset::mathmlize(os);
+}
+
+
+void MathHullInset::check() const
+{
+	lyx::Assert(nonum_.size() == nrows());
+	lyx::Assert(label_.size() == nrows());
 }
 
 

@@ -131,13 +131,13 @@ public:
 	void idxDeleteRange(idx_type, idx_type);
 			
 	///
-	void addRow(row_type);
+	virtual void addRow(row_type);
 	///
-	void delRow(row_type);
+	virtual void delRow(row_type);
 	///
-	void addCol(col_type);
+	virtual void addCol(col_type);
 	///
-	void delCol(col_type);
+	virtual void delCol(col_type);
 	///
 	virtual void appendRow();
 	///

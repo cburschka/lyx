@@ -47,9 +47,9 @@ public:
 	///
 	void validate(LaTeXFeatures & features) const;
 	/// identifies MatrixInsets
-	virtual MathHullInset const * asHullInset() const { return this; }
+	MathHullInset const * asHullInset() const { return this; }
 	/// identifies HullInset
-	virtual MathHullInset * asHullInset() { return this; }
+	MathHullInset * asHullInset() { return this; }
 
 	///
 	void addRow(row_type);
@@ -94,6 +94,8 @@ private:
 	void glueall();
 	///
 	string nicelabel(row_type row) const;
+	/// consistency check
+	void check() const;
 
 	///
 	MathInsetTypes objtype_;

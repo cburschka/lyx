@@ -179,14 +179,6 @@ public:
 	virtual int cellXOffset(idx_type) const { return 0; }
 	/// any additional y-offset when drawing a cell?
 	virtual int cellYOffset(idx_type) const { return 0; }
-	/// add a row after a given one
-	virtual void addRow(row_type) {}
-	/// delete a given row
-	virtual void delRow(row_type) {}
-	/// add a column after a given one
-	virtual void addCol(col_type) {}
-	/// delete a given row
-	virtual void delCol(col_type) {}
 
 	/// identifies certain types of insets
 	virtual MathArrayInset        * asArrayInset()        { return 0; }

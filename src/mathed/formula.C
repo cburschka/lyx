@@ -364,7 +364,7 @@ void InsetFormula::draw(BufferView * bv, LyXFont const & font,
 
 vector<string> const InsetFormula::getLabelList() const
 {
-	return mat()->getLabelList();
+	return hull()->getLabelList();
 }
 
 
@@ -388,9 +388,9 @@ InsetFormula::localDispatch(BufferView * bv, kb_action action,
 			//lyxerr << "toggling all numbers\n";
 			if (display()) {
 				bv->lockedInsetStoreUndo(Undo::INSERT);
-				bool old = mat()->numberedType();
+				bool old = hull()->numberedType();
 				for (MathInset::row_type row = 0; row < par_->nrows(); ++row)
-					mat()->numbered(row, !old);
+					hull()->numbered(row, !old);
 				bv->owner()->message(old ? _("No number") : _("Number"));
 				updateLocal(bv, true);
 			}
@@ -402,10 +402,10 @@ InsetFormula::localDispatch(BufferView * bv, kb_action action,
 			//lyxerr << "toggling line number\n";
 			if (display()) {
 				bv->lockedInsetStoreUndo(Undo::INSERT);
-				MathCursor::row_type row = mathcursor->row();
-				bool old = mat()->numbered(row);
+				MathCursor::row_type row = mathcursor->hullRow();
+				bool old = hull()->numbered(row);
 				bv->owner()->message(old ? _("No number") : _("Number"));
-				mat()->numbered(row, !old);
+				hull()->numbered(row, !old);
 				updateLocal(bv, true);
 			}
 			break;
@@ -415,8 +415,8 @@ InsetFormula::localDispatch(BufferView * bv, kb_action action,
 		{
 			bv->lockedInsetStoreUndo(Undo::INSERT);
 
-			MathCursor::row_type row = mathcursor->row();
-			string old_label = mat()->label(row);
+			MathCursor::row_type row = mathcursor->hullRow();
+			string old_label = hull()->label(row);
 			string new_label = arg;
 
 			if (new_label.empty()) {
@@ -425,8 +425,6 @@ InsetFormula::localDispatch(BufferView * bv, kb_action action,
 				pair<bool, string> const res = old_label.empty()
 					? Alert::askForText(_("Enter new label to insert:"), default_label)
 					: Alert::askForText(_("Enter label:"), old_label);
-				
-				lyxerr << "res: " << res.first << " - '" << res.second << "'\n";
 				if (!res.first)
 					break;
 				new_label = frontStrip(strip(res.second));
@@ -437,13 +435,13 @@ InsetFormula::localDispatch(BufferView * bv, kb_action action,
 
 			if (!new_label.empty()) {
 				lyxerr << "setting label to '" << new_label << "'\n";
-				mat()->numbered(row, true);
+				hull()->numbered(row, true);
 			}
 
 			if (!new_label.empty() && bv->ChangeRefsIfUnique(old_label, new_label))
 				bv->redraw();
 
-			mat()->label(row, new_label);
+			hull()->label(row, new_label);
 
 			updateLocal(bv, true);
 			break;
@@ -455,7 +453,7 @@ InsetFormula::localDispatch(BufferView * bv, kb_action action,
 			int x;
 			int y;
 			mathcursor->getPos(x, y);
-			mat()->mutate(arg);
+			hull()->mutate(arg);
 			mathcursor->setPos(x, y);
 			mathcursor->normalize();
 			updateLocal(bv, true);
@@ -477,10 +475,10 @@ InsetFormula::localDispatch(BufferView * bv, kb_action action,
 			int x = 0;
 			int y = 0;
 			mathcursor->getPos(x, y);
-			if (mat()->getType() == LM_OT_SIMPLE)
-				mat()->mutate(LM_OT_EQUATION);
+			if (hull()->getType() == LM_OT_SIMPLE)
+				hull()->mutate(LM_OT_EQUATION);
 			else
-				mat()->mutate(LM_OT_SIMPLE);
+				hull()->mutate(LM_OT_SIMPLE);
 			mathcursor->setPos(x, y);
 			mathcursor->normalize();
 			updateLocal(bv, true);
@@ -492,16 +490,6 @@ InsetFormula::localDispatch(BufferView * bv, kb_action action,
 			string const clip = bv->getClipboard();
   		if (!clip.empty())
 				mathed_parse_normal(par_, clip);
-			break;
-		}
-
-		case LFUN_MATH_COLUMN_INSERT:
-		{
-			if (mat()->getType() == LM_OT_ALIGN)
-				mat()->mutate(LM_OT_ALIGNAT);
-			mat()->addCol(mat()->ncols());
-			mathcursor->normalize();
-			updateLocal(bv, true);
 			break;
 		}
 
@@ -538,7 +526,7 @@ void InsetFormula::handleExtern(const string & arg)
 	MathArray ar;
 	if (needEqnArray(extra)) {
 		mathcursor->last();
-		mathcursor->readLine(ar);
+		//mathcursor->readLine(ar);
 		mathcursor->breakLine();
 	} else if (selected) {
 		mathcursor->selGet(ar);
@@ -557,18 +545,18 @@ void InsetFormula::handleExtern(const string & arg)
 
 bool InsetFormula::display() const
 {
-	return mat()->getType() != LM_OT_SIMPLE;
+	return hull()->getType() != LM_OT_SIMPLE;
 }
 
 
-MathHullInset const * InsetFormula::mat() const
+MathHullInset const * InsetFormula::hull() const
 {
 	lyx::Assert(par_->asHullInset());
 	return par_->asHullInset();
 }
 
 
-MathHullInset * InsetFormula::mat()
+MathHullInset * InsetFormula::hull()
 {
 	lyx::Assert(par_->asHullInset());
 	return par_->asHullInset();
@@ -616,5 +604,5 @@ int InsetFormula::width(BufferView * bv, LyXFont const & font) const
 
 MathInsetTypes InsetFormula::getType() const
 {
-	return mat()->getType();
+	return hull()->getType();
 }

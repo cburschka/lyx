@@ -521,8 +521,11 @@ void MathCursor::delLine()
 		return;
 	}
 
-	if (par()->nrows() > 1)
-		par()->delRow(row());
+	if (par()->nrows() > 1) {
+		// grid are the only things with more than one row...
+		lyx::Assert(par()->asGridInset());
+		par()->asGridInset()->delRow(hullRow());
+	}
 
 	if (idx() > par()->nargs())
 		idx() = par()->nargs();
@@ -929,15 +932,15 @@ MathCursor::size_type MathCursor::size() const
 }
 
 
-MathCursor::col_type MathCursor::col() const
+MathCursor::col_type MathCursor::hullCol() const
 {
-	return par()->col(idx());
+	return Cursor_[0].par_->nucleus()->asGridInset()->col(Cursor_[0].idx_);
 }
 
 
-MathCursor::row_type MathCursor::row() const
+MathCursor::row_type MathCursor::hullRow() const
 {
-	return par()->row(idx());
+	return Cursor_[0].par_->nucleus()->asGridInset()->row(Cursor_[0].idx_);
 }
 
 
@@ -1052,11 +1055,11 @@ void MathCursor::breakLine()
 		idx() = 0;
 		pos() = size();
 	} else {
-		p->addRow(row());
+		p->addRow(hullRow());
 
 		// split line
-		const row_type r = row();
-		for (col_type c = col() + 1; c < p->ncols(); ++c)
+		const row_type r = hullRow();
+		for (col_type c = hullCol() + 1; c < p->ncols(); ++c)
 			p->cell(p->index(r, c)).swap(p->cell(p->index(r + 1, c)));
 
 		// split cell
@@ -1066,12 +1069,12 @@ void MathCursor::breakLine()
 }
 
 
-void MathCursor::readLine(MathArray & ar) const
-{
-	idx_type base = row() * par()->ncols();
-	for (idx_type off = 0; off < par()->ncols(); ++off)
-		ar.push_back(par()->cell(base + off));
-}
+//void MathCursor::readLine(MathArray & ar) const
+//{
+//	idx_type base = row() * par()->ncols();
+//	for (idx_type off = 0; off < par()->ncols(); ++off)
+//		ar.push_back(par()->cell(base + off));
+//}
 
 
 char MathCursor::valign() const

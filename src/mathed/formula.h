@@ -82,10 +82,10 @@ private:
 	bool display() const;
 	/// available in AMS only?
 	bool ams() const;
-	/// Access
-	MathHullInset * mat();
-	/// Access
-	MathHullInset const * mat() const;
+	/// access to hull
+	MathHullInset * hull();
+	/// access to hull
+	MathHullInset const * hull() const;
 	///
 	void handleExtern(string const & arg);
 

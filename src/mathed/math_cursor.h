@@ -171,11 +171,9 @@ public:
 	///
 	char halign() const;
 	///
-	col_type ncols() const;
+	col_type hullCol() const;
 	///
-	col_type col() const;
-	///
-	row_type row() const;
+	row_type hullRow() const;
 
 	/// make sure cursor position is valid
 	void normalize() const;
