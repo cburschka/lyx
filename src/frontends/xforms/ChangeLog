@@ -1,3 +1,12 @@
+2004-01-02  Angus Leeming  <leeming@lyx.org>
+
+	* FormFiledialog.C (globMatch): prevent crash when using an invalid
+	glob.
+	(getRegex): renamed as glob2regex.
+
+	* FileDialog.C (open): remove the block of old code that splits the
+	filter into a description and a glob using '|' as the delimiter.
+
 2003-12-28  Angus Leeming  <leeming@lyx.org>
 
 	* xforms_helpers.C (read, write): output a diagnostic message if

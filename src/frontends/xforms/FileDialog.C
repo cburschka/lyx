@@ -65,14 +65,8 @@ FileDialog::Result const FileDialog::opendir(string const & path, string const &
 FileDialog::Result const FileDialog::open(string const & path, string const & mask, string const & suggested)
 {
 	string filter = mask;
-
-	if (mask.empty())
-		filter = _("*");
-	else {
-		rsplit(mask, filter, '|');
-		if (filter.empty())
-			filter = mask;
-	}
+	if (filter.empty())
+		filter = "*";
 
 	lyxerr[Debug::GUI] << "filedialog open  with path \"" << path << "\", mask \""
 		<< filter << "\", suggested \"" << suggested << '"' << endl;

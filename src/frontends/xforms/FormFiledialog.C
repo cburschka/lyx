@@ -200,7 +200,7 @@ int FileDialog::Private::minh_ = 0;
 
 namespace {
 
-boost::regex getRegex(string const & pat)
+boost::regex glob2regex(string const & pat)
 {
 	// We massage the pattern a bit so that the usual
 	// shell pattern we all are used to will work.
@@ -217,7 +217,8 @@ boost::regex getRegex(string const & pat)
 
 bool globMatch(string const & a, boost::regex const & reg)
 {
-	return boost::regex_match(a, reg);
+	// If the glob is invalid then match everything.
+	return reg.empty() ? true : boost::regex_match(a, reg);
 }
 
 } // namespace anon
@@ -251,9 +252,9 @@ void FileDialog::Private::Reread()
 	string line, Temp;
 	string mode;
 	string File = directory_;
-	if (File != "/") {
+	if (File != "/")
 		File = split(File, Temp, '/');
-	}
+
 	while (!File.empty() || !Temp.empty()) {
 		string dline = "@b" + line + Temp + '/';
 		fl_add_browser_line(file_dlg_form_->List, dline.c_str());
@@ -263,7 +264,7 @@ void FileDialog::Private::Reread()
 	}
 
 	// Parses all entries of the given subdirectory
-	boost::regex reg = getRegex(mask_);
+	boost::regex const mask_regex = glob2regex(mask_);
 
 	time_t curTime = time(0);
 	rewinddir(dir);
@@ -348,7 +349,7 @@ void FileDialog::Private::Reread()
 		    || fileInfo.isChar()
 		    || fileInfo.isBlock()
 		    || fileInfo.isFifo()) {
-			if (!globMatch(fname, reg))
+			if (!globMatch(fname, mask_regex))
 				continue;
 		} else if (!(isDir = fileInfo.isDir()))
 			continue;
@@ -417,7 +418,10 @@ void FileDialog::Private::SetDirectory(string const & path)
 // SetMask: sets dialog file mask
 void FileDialog::Private::SetMask(string const & newmask)
 {
-	mask_ = newmask;
+	mask_ = trim(newmask);
+	if (mask_.empty())
+		mask_ = "*";
+
 	fl_set_input(file_dlg_form_->PatBox, mask_.c_str());
 }
 
@@ -433,7 +437,7 @@ void FileDialog::Private::SetInfoLine(string const & line)
 FileDialog::Private::Private()
 {
 	directory_ = MakeAbsPath(string("."));
-	mask_ = '*';
+	mask_ = "*";
 
 	// Creates form if necessary.
 	if (!file_dlg_form_) {
