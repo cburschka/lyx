@@ -1,6 +1,6 @@
 What is LyX?
 
-	LyX is an advanced open-source "document processor". Unlike
+	LyX is an advanced, open-source "document processor". Unlike
 	standard word processors, LyX encourages writing based on the
 	structure of your documents, not their appearance. It lets you
 	concentrate on writing, leaving details of visual layout to the
@@ -17,7 +17,7 @@ What is LyX not?
 	Desktop Publishing program.  It's a more modern way of
 	creating documents that look much nicer, but without wasting
 	time with layout-fiddling.  For these reasons you might need
-	little time to get used to the differences.
+	a little time to get used to the differences.
 	If you are looking for a free Desktop Publishing program for
 	Unix, you will be disappointed.
 
@@ -33,7 +33,7 @@ What do I need to run LyX?
 	Python 1.5.2 or later to convert old LyX files
 	Perl5.002 or later to import LaTeX files into LyX.
 
-How does LyX version scheme work?
+How does the LyX version scheme work?
 
 	LyX uses a continuous numbering scheme in which odd or
 	even numbering is not significant. Instead a number '1.x.y'
@@ -43,7 +43,7 @@ How does LyX version scheme work?
 
 	   lyx-1.3.0.tar.gz       -- stable release
 	   lyx-1.3.5.tar.gz       -- fifth maintenance release of the
-	                             1.3.0 stable release
+	                             1.3 stable release
 	   lyx-1.4.0pre1.tar.gz   -- potentially unstable test release
 
 	The maintenance releases are designed primarily to fix bugs. The
@@ -59,9 +59,9 @@ How does LyX version scheme work?
 	one of:
 
 	   1.3.5cvs 	-- this is the stable branch on which maintenance
-			   release 1.3.5 will eventually be tagged
+			   release 1.3.5 will eventually be tagged.
 	   1.4.0cvs 	-- this is the main branch on which stable
-			   release 1.4.0 will eventually be tagged
+			   release 1.4.0 will eventually be tagged.
 
 What's new?
 
@@ -71,8 +71,8 @@ How do I install .tar.gz a binary distribution of LyX?
 
 	Unpack it and run it.  We recommend unpacking it in /usr/local,
 	but it should work anywhere.  In particular, you can try LyX
-	in a temporary directory before installing permanently by
-	typing "bin/lyx".
+	in a temporary directory 'my_bin' before installing permanently
+	by typing "my_bin/lyx".
 
 	You should read the notes regarding this particular build in
 	the file README.bin.
@@ -83,8 +83,8 @@ How do I upgrade from an earlier LyX version?
 
 What do I need to compile LyX from the source distribution?
 
-	* A good c++ compiler.  Development is being done mainly on
-	  gcc/g++, but some others work. As of LyX 1.3.0, you need at
+	* A good C++ compiler.  Development is being done mainly with
+	  gcc/g++, but some others work also. As of LyX 1.3.0, you need at
 	  least gcc 2.95.X (or egcs 1.1.x). Another compiler known to
 	  work is compaq cxx 6.1.
 
@@ -166,11 +166,11 @@ Internet resources of relevance to LyX
 	setting up and using LyX.
 	http://wiki.lyx.org/
 
-	Main LyX archive site:
+	The main LyX archive site:
 	ftp://ftp.lyx.org/pub/lyx/
 
 	The LyX Development page has information about the development
-	effort. LyX is now under CVS control, so you can get the very
+	effort. LyX is under CVS control, so you can get the very
 	latest sources from there at any time.
 	http://www.devel.lyx.org/
 	ftp://www.devel.lyx.org/pub/lyx/
@@ -180,14 +180,14 @@ How do I submit a bug report?
 	If possible, read the Introduction found under the Help menu in LyX.
 	You'll find detailed info on submitting bug reports there.
 
-	If you can't do that, send details to the LyX Developers mailing
+	If you can't do that, send details to the LyX Developers' mailing
 	list, or use the LyX bug tracker at http://bugzilla.lyx.org/.
 	Don't forget to mention which version you are having problems with!
 
 How can I participate in the development of LyX?
 
-	Any help with the development of LyX is greatly appreciated--
-	after all LyX wouldn't be what it is today without the help
+	Any help with the development of LyX is greatly appreciated ---
+	after all, LyX wouldn't be what it is today without the help
 	of volunteers. We need your help!
 
 	If you want to work on LyX, you should contact the developer's
@@ -198,11 +198,12 @@ How can I participate in the development of LyX?
 	If you don't know C++, there are many other ways to
 	contribute. Write documentation. Help to internationalize LyX
 	by translating documentation or menus/error messages, or by
-	writing a new keymap. Write a new textclass. Contribute money.
+	writing a new keymap. Write a new textclass. Find bugs (but
+	please read the list of known bugs first). Contribute money.
 	Or just offer feature suggestions (but please read the online
 	TODO list first).
 
-Thank you for trying LyX, and we appreciate your feedback in the mailing
+Thank you for trying LyX. We appreciate your feedback in the mailing
 lists.
 
 The LyX Team.
