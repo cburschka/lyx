@@ -1,5 +1,16 @@
 2004-05-04  Angus Leeming  <leeming@lyx.org>
 
+	This is a resurrection of John Levon's June 2002 code.
+
+	* xscreen.C (expose): do the 'right thing' and ouput an XEvent
+	request to expose the work area.
+
+	* XWorkArea.C (updateGeometry, paint): split the old redraw function
+	into two. Use the x, y data.
+	(work_area_handler): if an XEvent * is passed on FL_DRAW, then use it.
+
+2004-05-04  Angus Leeming  <leeming@lyx.org>
+
 	* XWorkArea.C (XWorkArea): revert the red color of the frame widget.
 	Instead, set it to LColor::background.
 

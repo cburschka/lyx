@@ -65,7 +65,10 @@ public:
 private:
 	/// generate the pixmap, and copy backing pixmap to it,
 	/// and send resize event if needed
-	void redraw(int, int);
+	void updateGeometry(int, int);
+
+	///
+	void paint(int x, int y, int w, int h);
 
 	/// GC used for copying to the screen
 	GC copy_gc;

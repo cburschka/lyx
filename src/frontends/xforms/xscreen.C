@@ -79,7 +79,7 @@ void XScreen::setCursorColor()
 
 void XScreen::showCursor(int x, int y, int h, Cursor_Shape shape)
 {
-	// Update the cursor color. (a little slow dooing it like this ??)
+	// Update the cursor color. (a little slow doing it like this ??)
 	setCursorColor();
 
 	cursor_x_ = x;
@@ -153,13 +153,21 @@ void XScreen::removeCursor()
 
 void XScreen::expose(int x, int y, int w, int h)
 {
-	lyxerr[Debug::GUI] << "expose " << w << 'x' << h
+	lyxerr[Debug::GUI] << "XScreen::expose " << w << 'x' << h
 		<< '+' << x << '+' << y << endl;
-	XCopyArea(fl_get_display(),
-		  owner_.getPixmap(),
-		  owner_.getWin(),
-		  gc_copy,
-		  x, y, w, h,
-		  x + owner_.xpos(),
-		  y + owner_.ypos());
+
+	XEvent ev;
+
+	ev.type = Expose;
+	ev.xexpose.window = owner_.getWin();
+	// Adjust the x,y data so that XWorkArea can handle XEvents
+	// received from here in identical fashion to those it receives
+	// direct from X11.
+	ev.xexpose.x = owner_.xpos() + x;
+	ev.xexpose.y = owner_.ypos() + y;
+	ev.xexpose.width = w;
+	ev.xexpose.height = h;
+	ev.xexpose.count = 0;
+
+	XSendEvent(fl_get_display(), owner_.getWin(), False, 0, &ev);
 }
