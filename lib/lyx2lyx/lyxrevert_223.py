@@ -34,14 +34,23 @@ def convert_bibtex(lines):
                                   "\\begin_inset LatexCommand \\BibTeX")
 
 def rm_tracking_changes(lines):
+    i = find_token(lines, "\\author", 0)
+    if i != -1:
+        del lines[i]
+
     i = find_token(lines, "\\tracking_changes", 0)
     if i == -1:
         return
     del lines[i]
 
-#FIXME
 def rm_body_changes(lines):
-    pass
+    i = 0
+    while 1:
+        i = find_token(lines, "\\change_", i)
+        if i == -1:
+            return
+
+        del lines[i]
 
 def convert(header, body):
     rm_end_header(header)
