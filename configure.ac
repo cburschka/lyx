@@ -389,6 +389,8 @@ AC_CONFIG_SUBDIRS(lib lib/reLyX)
 AC_CONFIG_FILES([Makefile \
        boost/Makefile \
        boost/libs/Makefile \
+       boost/libs/filesystem/Makefile \
+       boost/libs/filesystem/src/Makefile \
        boost/libs/regex/Makefile \
        boost/libs/regex/src/Makefile \
        boost/libs/signals/Makefile \

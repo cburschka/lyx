@@ -1,11 +1,15 @@
+2004-01-08  Lars Gullik Bjonnes  <larsbj@gullik.net>
+
+	* configure.ac (AC_CONFIG_FILES): add boost::filesystem Makefiles.
+
 2003-12-15  Ronald Florence <ron@18james.com>
 
 	* README.MacOSX: updated for 1.4.0cvs
-	
+
 2003-11-18  Angus Leeming  <leeming@lyx.org>
 
 	* autogen.sh: accept autoconf 2.58 as a supported version.
-	
+
 2003-10-24  André Pönitz  <poenitz@gmx.net>
 
 	* lyxfunc.C:
@@ -19,7 +23,7 @@
 	* INSTALL: remove a comment about --with-included-string
 
 	* configure.ac: remove the configure are
-	--with-included-string 
+	--with-included-string
 
 2003-09-21  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
