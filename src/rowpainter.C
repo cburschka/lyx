@@ -713,7 +713,6 @@ void RowPainter::paintFirst()
 
 	// draw a top line
 	if (parparams.lineTop()) {
-		LyXFont font(LyXFont::ALL_SANE);
 		int const asc = font_metrics::ascent('x', getFont(0));
 
 		y_top += asc;
@@ -840,7 +839,6 @@ void RowPainter::paintLast()
 
 	// draw a bottom line
 	if (parparams.lineBottom()) {
-		LyXFont font(LyXFont::ALL_SANE);
 		int const asc = font_metrics::ascent('x',
 			getFont(max(pos_type(0), pit_->size() - 1)));
 
