@@ -22,6 +22,7 @@
 #include "LString.h"
 #include "DepTable.h"
 #include <vector>
+#include <set>
 
 #include <boost/utility.hpp>
 
@@ -61,6 +62,26 @@ private:
 	Errors errors;
 };
 
+class Aux_Info {
+public:
+	///
+	Aux_Info() {}
+	///
+	string aux_file;
+	///
+	std::set<string> citations;
+	///
+	std::set<string> databases;
+	///
+	std::set<string> styles;
+	///
+	operator==(Aux_Info const & o) const {
+		return aux_file == o.aux_file &&
+			citations == o.citations &&
+			databases == o.databases &&
+			styles == o.styles;
+	}
+};
 
 ///
 class LaTeX : public noncopyable {
@@ -100,6 +121,8 @@ public:
 		///
 		TOO_MANY_ERRORS = 4096,
 		///
+		ERROR_RERUN = 8192,
+		///
 		ERRORS = TEX_ERROR + LATEX_ERROR,
 		///
 		WARNINGS = TEX_WARNING + LATEX_WARNING + PACKAGE_WARNING
@@ -138,15 +161,19 @@ protected:
 	bool runMakeIndex(string const &);
 
 	///
-	bool scanAux(DepTable &);
+	std::vector<Aux_Info> const scanAuxFiles(string const &);
+
 	///
-	std::vector<string> const
-	scanAuxFiles(string const &, DepTable &, bool);
+	Aux_Info const scanAuxFile(string const &);
+
 	///
-	bool scanAuxFile(string const &, DepTable &, bool);
+	void scanAuxFile(string const &, Aux_Info &);
 	
 	///
-	bool runBibTeX(DepTable &);
+	void updateBibtexDependencies(DepTable &, vector<Aux_Info> const &);
+
+	///
+	bool runBibTeX(vector<Aux_Info> const &);
 
 	///
 	void deleteFilesOnError() const;

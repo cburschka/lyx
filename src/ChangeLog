@@ -1,3 +1,9 @@
+2001-02-02  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* LaTeX.C (scanAuxFile): A rewrite of this method. It now returns
+	all the citation/databases/styles in the auxilary file. 
+	(run): Rerun latex if there was a babel language error.
+
 2001-02-01  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* text.C (Backspace): Preserve the font when changing newline char
