@@ -16,8 +16,15 @@
 #    postats.sh po_files > "pathToWebPages"/i18n.php3
 
 # modifiy this when you change version
+# Note that an empty lyx_branch variable (ie cvs HEAD)
+# will "do the right thing".
 lyx_version=1.3.6cvs
 lyx_branch=BRANCH_1_3_X
+
+
+# GNU sed and grep have real problems dealing with 8-bit characters
+# in UTF-8 encoded environments.
+unset LANG
 
 
 warning () {
@@ -103,6 +110,19 @@ run_msgfmt () {
 	}
 	unset input
 
+	# Does $translator contain 8-bit characters?
+	TAB='	'
+	echo $translator | grep "[^${TAB} -~]" >/dev/null && {
+		# If so, grab the encoding from the po file.
+		charset=`sed -n '/Content-Type/{s/.*charset=//;s/\\\\n" *$//p;q}' $pofile`
+		# Use recode to generate HTML character codes for the 8-bit
+		# characters.
+		translator=`echo $translator | recode "${charset}..h4"` || exit 1
+		# The ampersands in the $translator entries will mess things
+		# up unless we escape 'em.
+		translator=`echo $translator | sed 's/&/\\\&/g'`
+	}
+
 	# Run msgfmt on the pofile, filling $message with the raw info.
 	message=`$msgfmt --statistics -o $gmofile $pofile 2>&1 | grep "^[1-9]"` || {
 		warning "Unable to run msgfmt successfully on file $1"
@@ -159,6 +179,13 @@ EOF
 
 # The foot of the generated php file.
 dump_tail () {
+
+test "$lyx_branch" = "" && {
+	branch_tag=""
+} || {
+	branch_tag="?only_with_tag=$lyx_branch"
+}
+
 cat <<EOF
 <?
 \$lang = array(
@@ -242,7 +269,8 @@ while (list(\$foo,\$info) = each(\$podata)) {
 		\$style="style='background:#AA3333'";
 	}
 	print "<td \$style>" ;
-	print "<a href=\"http://www.lyx.org/cgi-bin/viewcvs.cgi/lyx-devel/po/" . \$info['langcode'] . ".po?only_with_tag=$lyx_branch\">" . \$lang[\$info['langcode']] . "</a></td>";
+
+	print "<a href=\"http://www.lyx.org/cgi-bin/viewcvs.cgi/lyx-devel/po/" . \$info['langcode'] . ".po$branch_tag\">" . \$lang[\$info['langcode']] . "</a></td>";
 
 	print "<td \$style align=\"right\">" . \$info['msg_tr'] . "</td>";
 
