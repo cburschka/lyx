@@ -1,5 +1,8 @@
 2002-04-11  Juergen Vigna  <jug@sad.it>
 
+	* buffer.C (parseSingleLyXformat2Token): reset font after read of
+	an old float_type as this was the case in the old code!
+
 	* paragraph.C (simpleTeXOnePar): fix closing of foreignlanguage tags.
 
 	* BufferView2.C (showLockedInsetCursor): use iy

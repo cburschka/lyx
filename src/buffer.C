@@ -625,6 +625,10 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 			return false; // no end read yet
 		}
 
+		// we have to reset the font as in the old format after a float
+		// the font was automatically reset!
+		font = LyXFont(LyXFont::ALL_INHERIT, params.language);
+
 		// Here we need to check for \end_deeper and handle that
 		// before we do the footnote parsing.
 		// This _is_ a hack! (Lgb)
