@@ -1,3 +1,8 @@
+2002-02-18  José Matos  <jamatos@fep.up.pt>
+
+	* buffer.C (simpleDocBookOnePar): if paragraph style is CDATA escapes
+	insets contents.
+
 2002-02-16  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* a lot of small ws changes

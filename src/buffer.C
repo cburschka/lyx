@@ -3408,8 +3408,13 @@ void Buffer::simpleDocBookOnePar(ostream & os,
 		if (par->isInset(i)) {
 			Inset * inset = par->getInset(i);
 			// don't print the inset in position 0 if desc_on == 3 (label)
-			if (i || desc_on != 3)
+			if ( i || desc_on != 3) {
+				if(style.latexparam() == "CDATA")
+					os << "]]>";
 				inset->docbook(this, os);
+				if(style.latexparam() == "CDATA")
+					os << "<![CDATA[";
+			}
 		} else {
 			char c = par->getChar(i);
 			string sgml_string;

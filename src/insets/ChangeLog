@@ -1,3 +1,8 @@
+2002-02-18  José Matos  <jamatos@fep.up.pt>
+
+	* insetinclude.C (validate): some code only applies to latex buffers,
+	it was made conditional.
+
 2002-02-12  Herbert Voss  <voss@lyx.org>
 
 	* insetgraphics.C: (prepareFile) do not check at this time

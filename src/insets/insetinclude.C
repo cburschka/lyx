@@ -388,14 +388,18 @@ void InsetInclude::validate(LaTeXFeatures & features) const
 
 	Buffer const * const b = bufferlist.getBuffer(getMasterFilename());
 
-	if (b && !b->tmppath.empty() && b->niceFile) {
-		incfile = subst(incfile, '/','@');
-		writefile = AddName(b->tmppath, incfile);
-	} else
+	if (!b->isSGML()) {
+		if (b && !b->tmppath.empty() && b->niceFile) {
+			incfile = subst(incfile, '/','@');
+			writefile = AddName(b->tmppath, incfile);
+		} else
+			writefile = getFileName();
+	} else {
 		writefile = getFileName();
 
-	if (IsLyXFilename(getFileName()))
-		writefile = ChangeExtension(writefile, ".sgml");
+		if (IsLyXFilename(getFileName()))
+			writefile = ChangeExtension(writefile, ".sgml");
+	}
 
 	features.includeFile(include_label, writefile);
 
