@@ -4,9 +4,11 @@
  * Licence details can be found in the file COPYING.
  *
  * \author Alfredo Braunstein (based on an idea from Angus Leeming)
- * 
+ *
  * Full author contact details are available in file CREDITS
  */
+
+#include <config.h>
 
 #include "forkedcallqueue.h"
 
@@ -44,7 +46,7 @@ void ForkedCallQueue::callNext()
 	Process pro = callQueue_.front();
 	callQueue_.pop();
 	// Bind our chain caller
-	pro.second->connect(boost::bind(&ForkedCallQueue::callback, 
+	pro.second->connect(boost::bind(&ForkedCallQueue::callback,
 					 this, _1, _2));
 	Forkedcall call;
 	// If we fail to fork the process, then emit the signal
@@ -67,7 +69,7 @@ void ForkedCallQueue::callback(pid_t, int)
 ForkedCallQueue::ForkedCallQueue() : running_(false)
 {}
 
-	
+
 void ForkedCallQueue::startCaller()
 {
 	lyxerr[Debug::GRAPHICS] << "ForkedCallQueue: waking up" << endl;
@@ -79,7 +81,7 @@ void ForkedCallQueue::startCaller()
 void ForkedCallQueue::stopCaller()
 {
 	running_ = false ;
-	lyxerr[Debug::GRAPHICS] << "ForkedCallQueue: I'm going to sleep" 
+	lyxerr[Debug::GRAPHICS] << "ForkedCallQueue: I'm going to sleep"
 				<< endl;
 }
 

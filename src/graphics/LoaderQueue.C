@@ -8,6 +8,8 @@
  * Full author contact details are available in file CREDITS
  */
 
+#include <config.h>
+
 #include "LoaderQueue.h"
 
 #include "debug.h"
