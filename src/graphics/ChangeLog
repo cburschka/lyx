@@ -1,3 +1,8 @@
+2003-02-26  Angus Leeming  <leeming@lyx.org>
+
+	* PreviewedInset.[Ch]: strip out the caching of the BufferView and
+	use the cache of the parent inset instead.
+
 2003-02-26  Alfredo Braunstein  <abraunst@libero.it>
 
 	* GraphicsLoader.[Ch],

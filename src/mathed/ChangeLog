@@ -1,3 +1,8 @@
+2003-02-26  Angus Leeming  <leeming@lyx.org>
+
+	* formula.C (draw): cache the BufferView* using cache not
+	PreviewImpl::setView
+
 2003-02-26  Alfredo Braunstein <abraunst@libero.it>
 
 	* formula.C (draw): strip also the other argument (the owner inset) in 

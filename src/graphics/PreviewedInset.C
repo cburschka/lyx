@@ -36,6 +36,12 @@ bool PreviewedInset::activated()
 }
 
 
+BufferView * PreviewedInset::view() const
+{
+	return inset_.view();
+}
+
+
 void PreviewedInset::generatePreview()
 {
 	if (!Previews::activated() || !previewWanted() ||
@@ -54,8 +60,6 @@ void PreviewedInset::addPreview(grfx::PreviewLoader & ploader)
 {
 	if (!Previews::activated() || !previewWanted())
 		return;
-
-	setView(ploader.buffer().getUser());
 
 	snippet_ = trim(latexString());
 	if (snippet_.empty())
@@ -108,14 +112,6 @@ bool PreviewedInset::previewReady() const
 	return pimage_->image();
 }
 
-
-void PreviewedInset::setView(BufferView * bv)
-{
-	if (!bv)
-		return;
-
-	view_ = bv->owner()->view();
-}
 
 void PreviewedInset::imageReady(grfx::PreviewImage const & pimage) const
 {

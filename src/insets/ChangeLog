@@ -1,3 +1,8 @@
+2003-02-26  Angus Leeming  <leeming@lyx.org>
+
+	* insetinclude.C (draw): cache the BufferView* using cache not
+	PreviewImpl::setView
+
 2003-02-26  Alfredo Braunstein <abraunst@libero.it>
 
 	* insetgraphics.C (draw)
