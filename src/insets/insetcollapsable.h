@@ -165,10 +165,10 @@ public:
 		return inset.selectNextWord(bv, value);
 	}
 	void selectSelectedWord(BufferView * bv) {
-		return inset.selectSelectedWord(bv);
+		inset.selectSelectedWord(bv);
 	}
 	void toggleSelection(BufferView * bv, bool kill_selection) {
-		return inset.toggleSelection(bv, kill_selection);
+		inset.toggleSelection(bv, kill_selection);
 	}
 
 protected:
