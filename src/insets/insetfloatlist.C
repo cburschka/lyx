@@ -16,7 +16,7 @@ string const InsetFloatList::getScreenLabel(Buffer const *) const
 {
 	string const guiName = floatList[float_type]->second.name();
 	if (!guiName.empty()) {
-		string const res = _("List of ") + guiName;
+		string const res = guiName + _(" List");
 		return res;
 	}
 	return _("ERROR nonexistant float type!");

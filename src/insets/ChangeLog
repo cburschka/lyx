@@ -6,6 +6,10 @@
 
 	* inset.h: added more FINISHED states for cursor right,up,down
 
+2001-08-16  John Levon  <moz@compsoc.man.ac.uk>
+
+	* insetfloatlist.C: use "FloatName List" 
+ 
 2001-08-14  Juergen Vigna  <jug@sad.it>
 
 	* insetert.C (edit): forgot to set status_ in edit calls!

@@ -21,6 +21,10 @@
  
 	* lyxfunc.C: remove unneeded assert, fix typo
  
+2001-08-16  John Levon  <moz@compsoc.man.ac.uk>
+
+	* MenuBackend.C: use "Floatname List"
+
 2001-08-14  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* buffer.C (parseSingleLyXformat2Token): Do not generate errors
