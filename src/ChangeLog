@@ -1,3 +1,8 @@
+2002-03-22  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* PrinterParams.h: #include "lyxrc.h" and remove that bloody irritating
+	#error.
+
 2002-03-21  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* WorkArea.C: remove 'Pending' debug message.

@@ -15,9 +15,7 @@
 #ifndef PRINTERPARAMS_H
 #define PRINTERPARAMS_H
 
-#ifndef LYXRC_H
-#error You must include lyxrc.h before PrinterParams.h
-#endif
+#include "lyxrc.h"
 
 #ifdef ENABLE_ASSERTIONS
 #include "support/LAssert.h"
