@@ -528,13 +528,12 @@ void  LyXText::incDepth()
 
 	redoParagraphs(selection.start, endpar);
 
-	// we have to reset the selection, because the
+	// we have to reset visual the selection because the
 	// geometry could have changed
 	setCursor(selection.start.par(), selection.start.pos());
 	selection.cursor = cursor;
 	setCursor(selection.end.par(), selection.end.pos());
 	updateCounters();
-	clearSelection();
 	setSelection();
 	setCursor(tmpcursor.par(), tmpcursor.pos());
 }
@@ -584,14 +583,12 @@ void  LyXText::decDepth()
 
 	redoParagraphs(selection.start, endpar);
 
-	// we have to reset the selection, because the
+	// we have to reset the visual selection because the
 	// geometry could have changed
-	setCursor(selection.start.par(),
-		  selection.start.pos());
+	setCursor(selection.start.par(), selection.start.pos());
 	selection.cursor = cursor;
 	setCursor(selection.end.par(), selection.end.pos());
 	updateCounters();
-	clearSelection();
 	setSelection();
 	setCursor(tmpcursor.par(), tmpcursor.pos());
 }
