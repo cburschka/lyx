@@ -295,15 +295,18 @@ void MathHullInset::header_write(WriteStream & os) const
 			break;
 
 		case LM_OT_ALIGNAT:
-			os << "\\begin{alignat" << star(n) << "}" << "{" << ncols()/2 << "}\n";
+			os << "\\begin{alignat" << star(n) << "}"
+			  << "{" << static_cast<unsigned int>(ncols()/2) << "}\n";
 			break;
 
 		case LM_OT_XALIGNAT:
-			os << "\\begin{xalignat" << star(n) << "}" << "{" << ncols()/2 << "}\n";
+			os << "\\begin{xalignat" << star(n) << "}"
+			   << "{" << static_cast<unsigned int>(ncols()/2) << "}\n";
 			break;
 
 		case LM_OT_XXALIGNAT:
-			os << "\\begin{xxalignat}" << "{" << ncols()/2 << "}\n";
+			os << "\\begin{xxalignat}" 
+			   << "{" << static_cast<unsigned int>(ncols()/2) << "}\n";
 			break;
 
 		case LM_OT_MULTLINE:
