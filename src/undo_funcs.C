@@ -289,8 +289,8 @@ bool createUndo(BufferView * bv, Undo::undo_kind kind,
 	ParagraphList::iterator itfirst, ParagraphList::iterator itbehind,
 	shared_ptr<Undo> & u)
 {
-	Paragraph * first = &*itfirst;
-	Paragraph * behind = &*itbehind;
+	Paragraph * const first = &*itfirst;
+	Paragraph * const behind = &*itbehind;
 	lyx::Assert(first);
 
 	int before_number = -1;
@@ -327,24 +327,22 @@ bool createUndo(BufferView * bv, Undo::undo_kind kind,
 	// Create a new Undo.
 	std::vector<Paragraph *> undo_pars;
 
-	Paragraph * start = first;
-	Paragraph * end = 0;
+	Paragraph const * end = 0;
 
 	if (behind)
-		end = const_cast<Paragraph*>(behind->previous());
+		end = behind->previous();
 	else {
-		end = start;
+		end = first;
 		while (end->next())
 			end = end->next();
 	}
-	if (start && end && (start != end->next()) &&
+
+	if (first && end && (first != end->next()) &&
 	    ((before_number != behind_number) ||
 		 ((before_number < 0) && (behind_number < 0))))
 	{
-		Paragraph * tmppar = start;
-		undo_pars.push_back(new Paragraph(*tmppar, true));
-
-		while (tmppar != end && tmppar->next()) {
+		undo_pars.push_back(new Paragraph(*first, true));
+		for (Paragraph * tmppar = first; tmppar != end && tmppar->next(); ) {
 			tmppar = tmppar->next();
 			undo_pars.push_back(new Paragraph(*tmppar, true));
 			size_t const n = undo_pars.size();
@@ -364,6 +362,8 @@ bool createUndo(BufferView * bv, Undo::undo_kind kind,
 	int cursor_par = undoCursor(bv).par()->id();
 	int cursor_pos = undoCursor(bv).pos();
 
+	//lyxerr << "createUndo: inset_id: " << inset_id << "  before_number: " 
+	//	<< before_number << "  behind_number: " << behind_number << "\n";
 	u.reset(new Undo(kind, inset_id,
 		before_number, behind_number,
 		cursor_par, cursor_pos, undo_pars));
