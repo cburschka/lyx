@@ -70,9 +70,9 @@ string const RCS::find_file(string const & file)
 }
 
 
-void RCS::retrive(string const & file)
+void RCS::retrieve(string const & file)
 {
-	lyxerr[Debug::LYXVC] << "LyXVC::RCS: retrive.\n\t" << file << endl;
+	lyxerr[Debug::LYXVC] << "LyXVC::RCS: retrieve.\n\t" << file << endl;
 	VCS::doVCCommand("co -q -r \""
 			 + file + "\"",
 			 string());

@@ -542,7 +542,7 @@ Buffer * BufferList::loadLyXFile(string const & filename, bool tolastfiles)
 				// How can we know _how_ to do the checkout?
 				// With the current VC support it has to be,
 				// a RCS file since CVS do not have special ,v files.
-				RCS::retrive(s);
+				RCS::retrieve(s);
 				return loadLyXFile(filename, tolastfiles);
 			}
 		}

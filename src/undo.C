@@ -42,5 +42,3 @@ Undo::~Undo()
 		delete tmppar;
 	}
 }
-
-

@@ -1,3 +1,36 @@
+2002-02-26  John Levon  <moz@compsoc.man.ac.uk>
+
+	* Makefile.am:
+	* lyxserver.C:
+	* os2_defines.h:
+	* os2_errortable.h:
+	* nt_defines.h: move .h into support/
+
+	* vms_defines.h: remove
+
+	* WorkArea.C: add space in debug output
+
+	* text2.C:
+	* paragraph.C:
+	* buffer.C: add WITH_WARNINGS
+
+	* vc-backend.h:
+	* vc-backend.C:
+	* bufferlist.C: s/retrive/retrieve/, add docs
+
+	* vspace.h:
+	* vspace.C:
+	* kbmap.h:
+	* lyxlength.h:
+	* lyxgluelength.h:
+	* length_common.h:
+	* chset.h:
+	* chset.C: add docs
+
+	* lyxgui.C: add ID to X error handler
+
+	* lyxtestclass.c: fix typo
+
 2002-02-26  Juergen Vigna  <jug@sad.it>
 
 	* tabular_funcs.C (write_attribute): changed so that some default

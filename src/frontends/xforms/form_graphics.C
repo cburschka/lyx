@@ -22,9 +22,9 @@ FD_form_graphics * FormGraphics::build_graphics()
   FL_OBJECT *obj;
   FD_form_graphics *fdui = new FD_form_graphics;
 
-  fdui->form = fl_bgn_form(FL_NO_BOX, 510, 360);
+  fdui->form = fl_bgn_form(FL_NO_BOX, 510, 345);
   fdui->form->u_vdata = this;
-  obj = fl_add_box(FL_FLAT_BOX, 0, 0, 510, 360, "");
+  obj = fl_add_box(FL_FLAT_BOX, 0, 0, 510, 345, "");
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
   fdui->tabFolder = obj = fl_add_tabfolder(FL_TOP_TABFOLDER, 5, 5, 500, 270, _("Tabbed folder"));
     fl_set_object_boxtype(obj, FL_FRAME_BOX);
@@ -32,7 +32,7 @@ FD_form_graphics * FormGraphics::build_graphics()
     fl_set_object_resize(obj, FL_RESIZE_ALL);
   {
     char const * const dummy = N_("Restore|#R");
-    fdui->button_restore = obj = fl_add_button(FL_NORMAL_BUTTON, 5, 310, 80, 30, idex(_(dummy)));
+    fdui->button_restore = obj = fl_add_button(FL_NORMAL_BUTTON, 5, 310, 100, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);

@@ -299,7 +299,9 @@ std::stack<ErtComp> ert_stack;
 ErtComp ert_comp;
 #endif
 
+#ifdef WITH_WARNINGS
 #warning And _why_ is this here? (Lgb)
+#endif
 int unknown_layouts;
 int unknown_tokens;
 

@@ -88,7 +88,7 @@ int LyX_XErrHandler(Display * display, XErrorEvent * xeev)
 	// Get the reason for the crash.
 	char etxt[513];
 	XGetErrorText(display, xeev->error_code, etxt, 512);
-	lyxerr << etxt << endl;
+	lyxerr << etxt << " id: " << xeev->resourceid << endl;
 	// By doing an abort we get a nice backtrace. (hopefully)
 	lyx::abort();
 	return 0; // Solaris CC wants us to return something

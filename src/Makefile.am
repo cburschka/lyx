@@ -187,9 +187,6 @@ lyx_SOURCES = \
 	main.C \
 	minibuffer.C \
 	minibuffer.h \
-	nt_defines.h \
-	os2_defines.h \
-	os2_errortable.h \
 	paragraph.C \
 	paragraph.h \
 	paragraph_pimpl.C \

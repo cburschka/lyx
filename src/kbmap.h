@@ -1,10 +1,12 @@
 // -*- C++ -*-
-/* ======================================================================= *\
-   File   : kbmap.h, kbmap.h,v 1.3 1996/12/10 04:35:57 larsbj Exp
-   Author : chb, 30.Oct.1995
-   Docu   : see kbmap.C
-   Purpose: class definitions for XKeyEvent keymap handling
-   \* ==================================================================== */
+/**
+ * \file kbmap.h
+ * Copyright 1995-2002 the LyX Team
+ * Read the file COPYING
+ *
+ * \author Lars Gullik Bjønnes <larsbj@lyx.org>
+ * \author John Levon <moz@compsoc.man.ac.uk>
+ */
 
 #ifndef KBMAP_H
 #define KBMAP_H
@@ -93,4 +95,4 @@ private:
 	Table table;
 };
 
-#endif
+#endif // KBMAP_H

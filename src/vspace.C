@@ -1,12 +1,10 @@
-/* This file is part of
- * ======================================================
+/**
+ * \file vspace.C
+ * Copyright 1995-2002 the LyX Team
+ * Read the file COPYING
  *
- *           LyX, The Document Processor
- * 	
- *           Copyright 1995 Matthias Ettrich
- *           Copyright 1995-2001 The LyX Team.
- *
- * ====================================================== */
+ * \author Matthias Ettrich
+ */
 
 #include <config.h>
 
@@ -21,6 +19,7 @@
 #include "lyxrc.h"
 #include "lyxtext.h"
 #include "BufferView.h"
+#include "support/LAssert.h"
 
 #include "support/lstrings.h"
 
@@ -29,29 +28,45 @@
 
 namespace {
 
-double           number[4] = { 0, 0, 0, 0 };
-LyXLength::UNIT unit[4]   = { LyXLength::UNIT_NONE,
-			      LyXLength::UNIT_NONE,
-			      LyXLength::UNIT_NONE,
-			      LyXLength::UNIT_NONE };
+/// used to return numeric values in parsing vspace
+double number[4] = { 0, 0, 0, 0 };
+/// used to return unit types in parsing vspace
+LyXLength::UNIT unit[4] = { LyXLength::UNIT_NONE,
+			    LyXLength::UNIT_NONE,
+			    LyXLength::UNIT_NONE,
+			    LyXLength::UNIT_NONE };
 
+/// the current position in the number array
 int number_index;
+/// the current position in the unit array
 int unit_index;
 
+/// skip n characters of input
 inline
 void lyx_advance(string & data, string::size_type n)
 {
 	data.erase(0, n);
 }
 
-
+/// return true when the input is at the end
 inline
 bool isEndOfData(string const & data)
 {
 	return frontStrip(data).empty();
 }
 
-
+/**
+ * nextToken -  return the next token in the input
+ * @param data input string
+ * @return a char representing the type of token returned
+ *
+ * The possible return values are : 
+ * 	+	stretch indicator for glue length
+ *	-	shrink indicator for glue length
+ *	n	a numeric value (stored in number array)
+ *	u	a unit type (stored in unit array)
+ *	E	parse error
+ */
 char nextToken(string & data)
 {
 	data = frontStrip(data);
@@ -125,6 +140,7 @@ char nextToken(string & data)
 }
 
 
+/// latex representation of a vspace
 struct LaTeXLength {
 	char const * pattern;
 	int  plus_val_index;
@@ -134,6 +150,7 @@ struct LaTeXLength {
 };
 
 
+/// the possible formats for a vspace string
 LaTeXLength table[] = {
 	{ "nu",       0, 0, 0, 0 },
 	{ "nu+nu",    2, 0, 2, 0 },
@@ -242,10 +259,10 @@ bool isValidGlueLength(string const & data, LyXGlueLength * result)
 
 bool isValidLength(string const & data, LyXLength * result)
 {
-	/// This is a trimmed down version of isValidGlueLength.
-	/// The parser may seem overkill for lengths without
-	/// glue, but since we already have it, using it is
-	/// easier than writing something from scratch.
+	// This is a trimmed down version of isValidGlueLength.
+	// The parser may seem overkill for lengths without
+	// glue, but since we already have it, using it is
+	// easier than writing something from scratch.
 	if (data.empty())
 		return true;
 
@@ -425,7 +442,8 @@ string const VSpace::asLatexCommand(BufferParams const & params) const
 	case LENGTH:    return keep_ ? "\\vspace*{" + len_.asLatexString() + '}'
 				: "\\vspace{" + len_.asLatexString() + '}';
 	}
-	return string();  // should never be reached
+	
+	lyx::Assert(0);
 }
 
 
@@ -464,14 +482,12 @@ int VSpace::inPixels(BufferView * bv) const
 		retval = 3 * default_height;
 		break;
 		
-	case LENGTH:
-	{
+	case LENGTH: {
 		int const default_width  = bv->workWidth();
 		retval = len_.len().inPixels(default_width, default_height);
 		break;
 	}
 		
 	}
-
 	return retval;
 }

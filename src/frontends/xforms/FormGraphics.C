@@ -143,6 +143,10 @@ void FormGraphics::build()
 	fl_set_input_return (bbox_->input_bb_x1, FL_RETURN_CHANGED);
 	fl_set_input_return (bbox_->input_bb_y1, FL_RETURN_CHANGED);
 
+	fl_set_input_filter(bbox_->input_bb_x0,  fl_unsigned_float_filter);
+	fl_set_input_filter(bbox_->input_bb_y0,  fl_unsigned_float_filter);
+	fl_set_input_filter(bbox_->input_bb_x1,  fl_unsigned_float_filter);
+
 	string const bb_units = "pt|cm|in";
 	fl_addto_choice(bbox_->choice_bb_units, bb_units.c_str());
 	bc().addReadOnly(bbox_->button_getBB);

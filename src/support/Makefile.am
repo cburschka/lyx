@@ -54,6 +54,9 @@ libsupport_la_SOURCES = \
 	lyxmanip.h \
 	$(LYXSTRING) lyxsum.C \
 	mkdir.C \
+	nt_defines.h \
+	os2_defines.h \
+	os2_errortable.h \
 	path.C \
 	path.h \
 	putenv.C \

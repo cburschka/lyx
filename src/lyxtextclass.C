@@ -57,7 +57,7 @@ bool LyXTextClass::do_readStyle(LyXLex & lexrc, LyXLayout & lay)
 {
 	lyxerr[Debug::TCLASS] << "Reading style " << lay.name() << endl;
 	if (!lay.Read(lexrc, *this)) {
-		// Reslove fonts
+		// Resolve fonts
 		lay.resfont = lay.font;
 #ifndef INHERIT_LANGUAGE
 		lay.resfont.realize(defaultfont());

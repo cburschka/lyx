@@ -320,18 +320,29 @@ searchKeys(InfoMap const & theMap,
 string const parseBibTeX(string data, string const & findkey)
 {
 	string keyvalue;
-	for (string::iterator it = data.begin(); it < data.end(); ++it) {
-		if ((*it) == '\n' || (*it) == '\t')
-			(*it)= ' ';
+	// at first we delete all characters right of '%' and
+	// replace tabs through a space and remove leading spaces
+	string data_;
+	int Entries = 0;
+	string dummy = token(data,'\n', Entries);
+	while (!dummy.empty()) {
+		dummy = subst(dummy, '\t', ' ');	// no tabs
+		dummy = frontStrip(dummy);	// no leading spaces
+		if (dummy.find('%') != string::npos) {
+		    if (dummy.find('%') > 0)
+			data_ += dummy.substr(0,data.find('%'));
+		}
+		else
+		    data_ += dummy;
+		dummy = token(data, '\n', ++Entries);
 	}
-	data = frontStrip(data);
-	
+	data = data_;
 	// now get only the important line of the bibtex entry.
 	// all entries are devided by ',' except the last one.	
 	data += ',';  // now we have same behaviour for all entries
 		      // because the last one is "blah ... }"
-	int Entries = 0;			
-	string dummy = token(data, ',', Entries);
+	Entries = 0;			
+	dummy = token(data, ',', Entries);
 	while (!contains(lowercase(dummy), findkey) && !dummy.empty())
 		dummy = token(data, ',', ++Entries);
 	if (dummy.empty())

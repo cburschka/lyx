@@ -10,13 +10,13 @@ SnapGrid: 5
 =============== FORM ===============
 Name: form_graphics
 Width: 510
-Height: 360
+Height: 345
 Number of Objects: 7
 
 --------------------
 class: FL_BOX
 type: FLAT_BOX
-box: 0 0 510 360
+box: 0 0 510 345
 boxtype: FL_FLAT_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -52,7 +52,7 @@ argument:
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 5 310 80 30
+box: 5 310 100 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER

@@ -96,15 +96,11 @@ int mkstemp(char*);
 #endif
 
 #ifdef __EMX__
-#include "os2_defines.h"
-#endif
-
-#ifdef VMS
-#include "vms_defines.h"
+#include "support/os2_defines.h"
 #endif
 
 #if defined(__CYGWIN__) || defined( __CYGWIN32__)
-#include "nt_defines.h"
+#include "support/nt_defines.h"
 #endif
 
 /* Some support for the boost library. */

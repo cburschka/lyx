@@ -1,13 +1,12 @@
 // -*- C++ -*-
-/* This file is part of
- * ======================================================
+/**
+ * \file lyxgluelength.h
+ * Copyright 1995-2002 the LyX Team
+ * Read the file COPYING
  *
- *           LyX, The Document Processor
- * 	
- *           Copyright 1995 Matthias Ettrich
- *           Copyright 1995-2001 The LyX Team.
- *
- * ====================================================== */
+ * \author Matthias Ettrich
+ */
+
 
 #ifndef LYX_GLUE_LENGTH_H
 #define LYX_GLUE_LENGTH_H
@@ -78,4 +77,4 @@ bool operator!=(LyXGlueLength const & l1, LyXGlueLength const & l2);
 ///
 bool isValidGlueLength(string const & data, LyXGlueLength * result);
 
-#endif
+#endif // LYXGLUELENGTH_H

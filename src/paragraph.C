@@ -1615,13 +1615,13 @@ bool Paragraph::simpleTeXOnePar(Buffer const * buf,
 		// Fully instantiated font
 		LyXFont font = getFont(bparams, i);
 
-		LyXFont const last_font = running_font;
+		LyXFont const & last_font = running_font;
 
 		// Spaces at end of font change are simulated to be
 		// outside font change, i.e. we write "\textXX{text} "
 		// rather than "\textXX{text }". (Asger)
 		if (open_font && c == ' ' && i <= size() - 2) {
-			LyXFont const next_font = getFont(bparams, i + 1);
+			LyXFont const & next_font = getFont(bparams, i + 1);
 			if (next_font != running_font
 			    && next_font != font) {
 				font = next_font;
@@ -1943,7 +1943,9 @@ Paragraph::getParLanguage(BufferParams const & bparams) const
 		return getFirstFontSettings().language();
 #else
 		Language const * lang = getFirstFontSettings().language();
+#ifdef WITH_WARNINGS
 #warning We should make this somewhat better, any ideas? (Jug)
+#endif
 		if (lang == inherit_language || lang == ignore_language)
 			lang = bparams.language;
 		return lang;

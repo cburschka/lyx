@@ -62,7 +62,7 @@
 #define INCL_DOSNMPIPES
 #define INCL_DOSERRORS
 #include <os2.h>
-#include "os2_errortable.h"
+#include "support/os2_errortable.h"
 #endif
 
 using std::endl;

@@ -2207,10 +2207,12 @@ void LyXText::setCursorIntern(BufferView * bview, Paragraph * par,
 		if (it != inset_owner) {
 			lyxerr << "InsetText   is " << it << endl;
 			lyxerr << "inset_owner is " << inset_owner << endl;
+#ifdef WITH_WARNINGS
 #warning I believe this code is wrong. (Lgb)
 #warning Jürgen, have a look at this. (Lgb)
 #warning Hmmm, I guess you are right but we
 #warning should verify when this is needed
+#endif
 			// Jürgen, would you like to have a look?
 			// I guess we need to move the outer cursor
 			// and open and lock the inset (bla bla bla)

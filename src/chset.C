@@ -23,9 +23,10 @@ bool CharacterSet::loadFile(string const & fname)
 {
 	map_.clear();
 	name_.erase();
-	
-	if (fname.empty() || fname == "ascii") 
-		return true;	// ascii 7-bit
+ 
+	// ascii 7-bit
+	if (fname.empty() || fname == "ascii")
+		return true;
 	
 	// open definition file
 	lyxerr[Debug::KBMAP]
