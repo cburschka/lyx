@@ -1953,6 +1953,7 @@ void FormPreferences::OutputsMisc::build()
 	fl_set_input_return(dialog_->input_tex_encoding, FL_RETURN_CHANGED);
 	fl_set_input_return(dialog_->input_ascii_roff,   FL_RETURN_CHANGED);
 	fl_set_input_return(dialog_->input_checktex,     FL_RETURN_CHANGED);
+	fl_set_input_return(dialog_->input_paperoption,  FL_RETURN_CHANGED);
 
 	fl_addto_choice(dialog_->choice_default_papersize,
 			_(" default | US letter | legal | executive | A3 | A4 | A5 | B5 "));
