@@ -323,6 +323,8 @@ void LyXAction::init()
 		{ LFUN_PARAGRAPH_UPDATE, "", Noop },
 		{ LFUN_EXTERNAL_EDIT, "external-edit", Noop },
 		{ LFUN_REPEAT, "repeat", NoBuffer },
+		{ LFUN_WORD_FIND, "word-find", Noop },
+		{ LFUN_WORD_REPLACE, "word-replace", Noop },
 		{ LFUN_NOACTION, "", Noop }
 	};
 

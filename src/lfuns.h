@@ -331,8 +331,11 @@ enum kb_action {
 	LFUN_FINISHED_UP,
 	LFUN_FINISHED_DOWN,
 	LFUN_INSERT_CHARSTYLE,
-	LFUN_LASTACTION                  // end of the table
+	LFUN_WORD_FIND,
 	// 255
+	LFUN_WORD_REPLACE,
+
+	LFUN_LASTACTION                  // end of the table
 };
 
 std::ostream & operator<<(std::ostream &, kb_action);
