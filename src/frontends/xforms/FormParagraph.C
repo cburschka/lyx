@@ -399,6 +399,7 @@ void FormParagraph::update()
 	break;
     case VSpace::LENGTH:
     {
+	    fl_set_choice (dialog_->choice_space_above, 7);
 	    setEnabled(dialog_->input_space_above, true);
 	    setEnabled(dialog_->choice_value_space_above, true);
 	    string const default_unit = "cm";
@@ -437,6 +438,7 @@ void FormParagraph::update()
 	break;
     case VSpace::LENGTH:
     {
+	    fl_set_choice (dialog_->choice_space_below, 7);
 	    setEnabled(dialog_->input_space_below, true);
 	    setEnabled(dialog_->choice_value_space_below, true);
 	    string const default_unit = "cm";
