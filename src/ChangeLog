@@ -8,6 +8,16 @@
 	* buffer.C: 
 	* vspace.C: remove dead header lyx_main.h
  
+2002-08-07  Angus Leeming  <leeming@lyx.org>
+
+	* Paragraph.[Ch]:
+	* paragraph_pimpl.h:
+	Forward declare class Counters in paragraph.h by moving the ctrs member
+	variable into Paragraph::Pimpl.
+	(counters): new method, returning a reference to pimpl_->ctrs.
+
+	* text2.C: ensuing changes.
+
 2002-08-07  John Levon  <levon@movementarian.org>
 
 	* BufferView_pimpl.C (resizeCurrentBuffer): update scrollbar
