@@ -1577,15 +1577,19 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 		break;
 	} // end of switch
 
-	view()->owner()->updateLayoutChoice();
-	view()->fitCursor();
-	
-	// If we executed a mutating lfun, mark the buffer as dirty
-	if (!lyxaction.funcHasFlag(ev.action, LyXAction::NoBuffer)
-	    && !lyxaction.funcHasFlag(ev.action, LyXAction::ReadOnly))
-		view()->buffer()->markDirty();
-	
 exit_with_message:
+
+	view()->owner()->updateLayoutChoice();
+
+	if (view()->available()) {
+		view()->fitCursor();
+	
+		// If we executed a mutating lfun, mark the buffer as dirty
+		if (!lyxaction.funcHasFlag(ev.action, LyXAction::NoBuffer)
+		    && !lyxaction.funcHasFlag(ev.action, LyXAction::ReadOnly))
+			view()->buffer()->markDirty();
+	}
+
 	sendDispatchMessage(getMessage(), ev, verbose);
 }
 

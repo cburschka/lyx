@@ -1,5 +1,9 @@
 2003-03-19  John Levon  <levon@movementarian.org>
 
+	* lyxfunc.C: only fitcursor/markDirty if available()
+
+2003-03-19  John Levon  <levon@movementarian.org>
+
 	* commandtags.h: rename to ...
 
 	* lfuns.h: ... this, and renumber / cleanup
