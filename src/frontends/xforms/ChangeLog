@@ -1,3 +1,8 @@
+2002-05-15  John Levon  <moz@compsoc.man.ac.uk>
+
+	* FormCharacter.C: avoid mis-treating Combox as FL_OBJECT
+	  (bug 406) (from Angus)
+ 
 2002-05-10  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* FormDocument.C (language_apply): Fix language changing.
