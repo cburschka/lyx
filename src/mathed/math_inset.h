@@ -114,25 +114,4 @@ private:
 	///
 	short size_;
 };
-
-
-inline
-short MathedInset::size() const
-{
-	return size_;
-}
-
-
-inline
-void MathedInset::size(short s)
-{
-	size_ = s;
-}
-
-
-inline
-void MathedInset::incSize()
-{
-	++size_;
-}
 #endif

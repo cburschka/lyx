@@ -1,5 +1,8 @@
 2001-03-01  Lars Gullik Bjønnes  <larsbj@trylle.birdstep.com>
 
+	* math_inset.C (size): move out of line
+	(incSize): ditto
+
 	* math_macroarg.h: remove default constructor
 
 	* math_macroarg.C: include Lsstream.h instead of debug.h

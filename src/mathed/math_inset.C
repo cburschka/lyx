@@ -148,3 +148,20 @@ void MathedInset::defaultWidth(int dw)
 	df_width = dw;
 }
 
+
+short MathedInset::size() const
+{
+	return size_;
+}
+
+
+void MathedInset::size(short s)
+{
+	size_ = s;
+}
+
+
+void MathedInset::incSize()
+{
+	++size_;
+}
