@@ -108,9 +108,6 @@ public:
 	void openLayoutDialog(BufferView *) const;
 	///
 	bool showInsetDialog(BufferView *) const;
-	///
-	FuncStatus getStatus(BufferView &, 
-		std::string const & argument, int cell) const;
 	/// Appends \c list with all labels found within this inset.
 	void getLabelList(Buffer const &, std::vector<std::string> & list) const;
 	/// number of cells

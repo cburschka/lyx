@@ -462,6 +462,7 @@ void InsetTabular::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 	case LFUN_RIGHTSEL:
 	case LFUN_RIGHT:
 		cell(cur.idx()).dispatch(cur, cmd);
+		cur.dispatched(); // override the cell's decision
 		if (sl == cur.top())
 			isRightToLeft(cur) ? movePrevCell(cur) : moveNextCell(cur);
 		if (sl == cur.top()) {
@@ -473,6 +474,7 @@ void InsetTabular::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 	case LFUN_LEFTSEL: 
 	case LFUN_LEFT:
 		cell(cur.idx()).dispatch(cur, cmd);
+		cur.dispatched(); // override the cell's decision
 		if (sl == cur.top())
 			isRightToLeft(cur) ? moveNextCell(cur) : movePrevCell(cur);
 		if (sl == cur.top()) {
@@ -484,6 +486,7 @@ void InsetTabular::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 	case LFUN_DOWNSEL:
 	case LFUN_DOWN:
 		cell(cur.idx()).dispatch(cur, cmd);
+		cur.dispatched(); // override the cell's decision
 		if (sl == cur.top())
 			if (tabular.row_of_cell(cur.idx()) != tabular.rows() - 1) {
 				cur.idx() = tabular.getCellBelow(cur.idx());
@@ -500,6 +503,7 @@ void InsetTabular::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 	case LFUN_UPSEL:
 	case LFUN_UP:
 		cell(cur.idx()).dispatch(cur, cmd);
+		cur.dispatched(); // override the cell's decision
 		if (sl == cur.top())
 			if (tabular.row_of_cell(cur.idx()) != 0) {
 				cur.idx() = tabular.getCellAbove(cur.idx());
@@ -571,19 +575,6 @@ void InsetTabular::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 			cur.undispatched();
 		break;
 	}
-
-	case LFUN_LANGUAGE:
-	case LFUN_EMPH:
-	case LFUN_BOLD:
-	case LFUN_NOUN:
-	case LFUN_CODE:
-	case LFUN_SANS:
-	case LFUN_ROMAN:
-	case LFUN_DEFAULT:
-	case LFUN_UNDERLINE:
-	case LFUN_FONT_SIZE:
-		lyxerr << "font changes not re-implemented for tables after LOCK" << endl;
-		break;
 
 	case LFUN_CUT:
 		if (copySelection(cur)) {
@@ -696,75 +687,185 @@ void InsetTabular::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 }
 
 
+// function sets an object as defined in func_status.h:
+// states OK, Unknown, Disabled, On, Off.
 bool InsetTabular::getStatus(LCursor & cur, FuncRequest const & cmd,
-	FuncStatus & flag) const
+	FuncStatus & status) const
 {
 	switch (cmd.action) {
-	case LFUN_TABULAR_FEATURE:
-#if 0
-		if (cur.inMathed()) {
-			// FIXME: check temporarily disabled
-			// valign code
-			char align = mathcursor::valign();
-			if (align == '\0') {
-				enable = false;
+	case LFUN_TABULAR_FEATURE: {
+		int actcell = cur.idx();
+		int action = LyXTabular::LAST_ACTION;	
+		int i = 0;
+		for (; tabularFeature[i].action != LyXTabular::LAST_ACTION; ++i) {
+			string const tmp = tabularFeature[i].feature;
+			if (tmp == cmd.argument.substr(0, tmp.length())) {
+				action = tabularFeature[i].action;
 				break;
 			}
-			if (cmd.argument.empty()) {
-				flag.clear();
-				break;
-			}
-			if (!contains("tcb", cmd.argument[0])) {
-				enable = false;
-				break;
-			}
-			flag.setOnOff(cmd.argument[0] == align);
-		} else {
-			enable = false;
+		}
+		if (action == LyXTabular::LAST_ACTION) {
+			status.clear();
+			status.unknown(true);
+			return true;
+		}
 
-			char const align = mathcursor::halign();
-			if (align == '\0') {
-				enable = false;
-				break;
-			}
-			if (cmd.argument.empty()) {
-				flag.clear();
-				break;
-			}
-			if (!contains("lcr", cmd.argument[0])) {
-				enable = false;
-				break;
-			}
-			flag.setOnOff(cmd.argument[0] == align);
+		string const argument
+			= ltrim(cmd.argument.substr(tabularFeature[i].feature.length()));
 
-			disable = !mathcursor::halign();
+		int sel_row_start = 0;
+		int sel_row_end = 0;
+		int dummy;
+		LyXTabular::ltType dummyltt;
+		bool flag = true;
+
+		getSelection(cur, sel_row_start, sel_row_end, dummy, dummy);
+
+		switch (action) {
+		case LyXTabular::SET_PWIDTH:
+		case LyXTabular::SET_MPWIDTH:
+		case LyXTabular::SET_SPECIAL_COLUMN:
+		case LyXTabular::SET_SPECIAL_MULTI:
+		case LyXTabular::APPEND_ROW:
+		case LyXTabular::APPEND_COLUMN:
+		case LyXTabular::DELETE_ROW:
+		case LyXTabular::DELETE_COLUMN:
+		case LyXTabular::SET_ALL_LINES:
+		case LyXTabular::UNSET_ALL_LINES:
+			status.clear();
+			return true;
+
+		case LyXTabular::MULTICOLUMN:
+			status.setOnOff(tabular.isMultiColumn(actcell));
+			break;
+
+		case LyXTabular::M_TOGGLE_LINE_TOP:
+			flag = false;
+		case LyXTabular::TOGGLE_LINE_TOP:
+			status.setOnOff(tabular.topLine(actcell, flag));
+			break;
+
+		case LyXTabular::M_TOGGLE_LINE_BOTTOM:
+			flag = false;
+		case LyXTabular::TOGGLE_LINE_BOTTOM:
+			status.setOnOff(tabular.bottomLine(actcell, flag));
+			break;
+
+		case LyXTabular::M_TOGGLE_LINE_LEFT:
+			flag = false;
+		case LyXTabular::TOGGLE_LINE_LEFT:
+			status.setOnOff(tabular.leftLine(actcell, flag));
+			break;
+
+		case LyXTabular::M_TOGGLE_LINE_RIGHT:
+			flag = false;
+		case LyXTabular::TOGGLE_LINE_RIGHT:
+			status.setOnOff(tabular.rightLine(actcell, flag));
+			break;
+
+		case LyXTabular::M_ALIGN_LEFT:
+			flag = false;
+		case LyXTabular::ALIGN_LEFT:
+			status.setOnOff(tabular.getAlignment(actcell, flag) == LYX_ALIGN_LEFT);
+			break;
+
+		case LyXTabular::M_ALIGN_RIGHT:
+			flag = false;
+		case LyXTabular::ALIGN_RIGHT:
+			status.setOnOff(tabular.getAlignment(actcell, flag) == LYX_ALIGN_RIGHT);
+			break;
+
+		case LyXTabular::M_ALIGN_CENTER:
+			flag = false;
+		case LyXTabular::ALIGN_CENTER:
+			status.setOnOff(tabular.getAlignment(actcell, flag) == LYX_ALIGN_CENTER);
+			break;
+
+		case LyXTabular::ALIGN_BLOCK:
+			status.enabled(!tabular.getPWidth(actcell).zero());
+			status.setOnOff(tabular.getAlignment(actcell, flag) == LYX_ALIGN_BLOCK);
+			break;
+
+		case LyXTabular::M_VALIGN_TOP:
+			flag = false;
+		case LyXTabular::VALIGN_TOP:
+			status.setOnOff(
+				tabular.getVAlignment(actcell, flag) == LyXTabular::LYX_VALIGN_TOP);
+			break;
+
+		case LyXTabular::M_VALIGN_BOTTOM:
+			flag = false;
+		case LyXTabular::VALIGN_BOTTOM:
+			status.setOnOff(
+				tabular.getVAlignment(actcell, flag) == LyXTabular::LYX_VALIGN_BOTTOM);
+			break;
+
+		case LyXTabular::M_VALIGN_MIDDLE:
+			flag = false;
+		case LyXTabular::VALIGN_MIDDLE:
+			status.setOnOff(
+				tabular.getVAlignment(actcell, flag) == LyXTabular::LYX_VALIGN_MIDDLE);
+			break;
+
+		case LyXTabular::SET_LONGTABULAR:
+			status.setOnOff(tabular.isLongTabular());
+			break;
+
+		case LyXTabular::UNSET_LONGTABULAR:
+			status.setOnOff(!tabular.isLongTabular());
+			break;
+
+		case LyXTabular::SET_ROTATE_TABULAR:
+			status.setOnOff(tabular.getRotateTabular());
+			break;
+
+		case LyXTabular::UNSET_ROTATE_TABULAR:
+			status.setOnOff(!tabular.getRotateTabular());
+			break;
+
+		case LyXTabular::SET_ROTATE_CELL:
+			status.setOnOff(tabular.getRotateCell(actcell));
+			break;
+
+		case LyXTabular::UNSET_ROTATE_CELL:
+			status.setOnOff(!tabular.getRotateCell(actcell));
+			break;
+
+		case LyXTabular::SET_USEBOX:
+			status.setOnOff(strToInt(argument) == tabular.getUsebox(actcell));
+			break;
+
+		case LyXTabular::SET_LTFIRSTHEAD:
+			status.setOnOff(tabular.getRowOfLTHead(sel_row_start, dummyltt));
+			break;
+
+		case LyXTabular::SET_LTHEAD:
+			status.setOnOff(tabular.getRowOfLTHead(sel_row_start, dummyltt));
+			break;
+
+		case LyXTabular::SET_LTFOOT:
+			status.setOnOff(tabular.getRowOfLTFoot(sel_row_start, dummyltt));
+			break;
+
+		case LyXTabular::SET_LTLASTFOOT:
+			status.setOnOff(tabular.getRowOfLTFoot(sel_row_start, dummyltt));
+			break;
+
+		case LyXTabular::SET_LTNEWPAGE:
+			status.setOnOff(tabular.getLTNewPage(sel_row_start));
+			break;
+
+		default:
+			status.clear();
+			status.enabled(false);
 			break;
 		}
-
-			FuncStatus ret;
-			//ret.disabled(true);
-			InsetTabular * tab = static_cast<InsetTabular *>
-				(cur.innerInsetOfType(InsetBase::TABULAR_CODE));
-			if (tab) {
-				ret = tab->getStatus(cmd.argument);
-				flag |= ret;
-				enable = true;
-			} else {
-				enable = false;
-			}
-		} else {
-			static InsetTabular inset(*buf, 1, 1);
-			enable = false;
-			FuncStatus ret = inset.getStatus(cmd.argument);
-			if (ret.onoff(true) || ret.onoff(false))
-				flag.setOnOff(false);
-		}
-#endif
 		return true;
+	}
 
 	default:
 		// we try to handle this event in the insets dispatch function.
-		return cell(cur.idx()).getStatus(cur, cmd, flag);
+		return cell(cur.idx()).getStatus(cur, cmd, status);
 	}
 }
 
@@ -911,8 +1012,9 @@ void InsetTabular::resetPos(LCursor & cur) const
 
 void InsetTabular::moveNextCell(LCursor & cur)
 {
-	lyxerr << "InsetTabular::moveNextCell 1 cur: " << cur << endl;
+	lyxerr << "InsetTabular::moveNextCell 1 cur: " << cur.top() << endl;
 	if (isRightToLeft(cur)) {
+		lyxerr << "InsetTabular::moveNextCell A cur: " << endl;
 		if (tabular.isFirstCellInRow(cur.idx())) {
 			int row = tabular.row_of_cell(cur.idx());
 			if (row == tabular.rows() - 1)
@@ -925,13 +1027,14 @@ void InsetTabular::moveNextCell(LCursor & cur)
 			--cur.idx();
 		}
 	} else {
+		lyxerr << "InsetTabular::moveNextCell B cur: " << endl;
 		if (tabular.isLastCell(cur.idx()))
 			return;
 		++cur.idx();
 	}
 	cur.par() = 0;
 	cur.pos() = 0;
-	lyxerr << "InsetTabular::moveNextCell 2 cur: " << cur << endl;
+	lyxerr << "InsetTabular::moveNextCell 2 cur: " << cur.top() << endl;
 	resetPos(cur);
 }
 
@@ -1347,187 +1450,6 @@ bool InsetTabular::showInsetDialog(BufferView * bv) const
 void InsetTabular::openLayoutDialog(BufferView * bv) const
 {
 	InsetTabularMailer(*this).showDialog(bv);
-}
-
-
-//
-// function returns an object as defined in func_status.h:
-// states OK, Unknown, Disabled, On, Off.
-//
-FuncStatus InsetTabular::getStatus(BufferView & bv,
-	string const & what, int actcell) const
-{
-	FuncStatus status;
-	int action = LyXTabular::LAST_ACTION;	
-	LCursor & cur = bv.cursor();
-
-	int i = 0;
-	for (; tabularFeature[i].action != LyXTabular::LAST_ACTION; ++i) {
-		string const tmp = tabularFeature[i].feature;
-		if (tmp == what.substr(0, tmp.length())) {
-			//if (!compare(tabularFeatures[i].feature.c_str(), what.c_str(),
-			//   tabularFeatures[i].feature.length()))
-			action = tabularFeature[i].action;
-			break;
-		}
-	}
-	if (action == LyXTabular::LAST_ACTION) {
-		status.clear();
-		status.unknown(true);
-		return status;
-	}
-
-	string const argument
-		= ltrim(what.substr(tabularFeature[i].feature.length()));
-
-	int sel_row_start = 0;
-	int sel_row_end = 0;
-	int dummy;
-	LyXTabular::ltType dummyltt;
-	bool flag = true;
-
-	getSelection(cur, sel_row_start, sel_row_end, dummy, dummy);
-
-	switch (action) {
-	case LyXTabular::SET_PWIDTH:
-	case LyXTabular::SET_MPWIDTH:
-	case LyXTabular::SET_SPECIAL_COLUMN:
-	case LyXTabular::SET_SPECIAL_MULTI:
-	case LyXTabular::APPEND_ROW:
-	case LyXTabular::APPEND_COLUMN:
-	case LyXTabular::DELETE_ROW:
-	case LyXTabular::DELETE_COLUMN:
-	case LyXTabular::SET_ALL_LINES:
-	case LyXTabular::UNSET_ALL_LINES:
-		status.clear();
-		return status;
-
-	case LyXTabular::MULTICOLUMN:
-		status.setOnOff(tabular.isMultiColumn(actcell));
-		break;
-
-	case LyXTabular::M_TOGGLE_LINE_TOP:
-		flag = false;
-	case LyXTabular::TOGGLE_LINE_TOP:
-		status.setOnOff(tabular.topLine(actcell, flag));
-		break;
-
-	case LyXTabular::M_TOGGLE_LINE_BOTTOM:
-		flag = false;
-	case LyXTabular::TOGGLE_LINE_BOTTOM:
-		status.setOnOff(tabular.bottomLine(actcell, flag));
-		break;
-
-	case LyXTabular::M_TOGGLE_LINE_LEFT:
-		flag = false;
-	case LyXTabular::TOGGLE_LINE_LEFT:
-		status.setOnOff(tabular.leftLine(actcell, flag));
-		break;
-
-	case LyXTabular::M_TOGGLE_LINE_RIGHT:
-		flag = false;
-	case LyXTabular::TOGGLE_LINE_RIGHT:
-		status.setOnOff(tabular.rightLine(actcell, flag));
-		break;
-
-	case LyXTabular::M_ALIGN_LEFT:
-		flag = false;
-	case LyXTabular::ALIGN_LEFT:
-		status.setOnOff(tabular.getAlignment(actcell, flag) == LYX_ALIGN_LEFT);
-		break;
-
-	case LyXTabular::M_ALIGN_RIGHT:
-		flag = false;
-	case LyXTabular::ALIGN_RIGHT:
-		status.setOnOff(tabular.getAlignment(actcell, flag) == LYX_ALIGN_RIGHT);
-		break;
-
-	case LyXTabular::M_ALIGN_CENTER:
-		flag = false;
-	case LyXTabular::ALIGN_CENTER:
-		status.setOnOff(tabular.getAlignment(actcell, flag) == LYX_ALIGN_CENTER);
-		break;
-
-	case LyXTabular::ALIGN_BLOCK:
-		status.enabled(!tabular.getPWidth(actcell).zero());
-		status.setOnOff(tabular.getAlignment(actcell, flag) == LYX_ALIGN_BLOCK);
-		break;
-
-	case LyXTabular::M_VALIGN_TOP:
-		flag = false;
-	case LyXTabular::VALIGN_TOP:
-		status.setOnOff(
-			tabular.getVAlignment(actcell, flag) == LyXTabular::LYX_VALIGN_TOP);
-		break;
-
-	case LyXTabular::M_VALIGN_BOTTOM:
-		flag = false;
-	case LyXTabular::VALIGN_BOTTOM:
-		status.setOnOff(
-			tabular.getVAlignment(actcell, flag) == LyXTabular::LYX_VALIGN_BOTTOM);
-		break;
-
-	case LyXTabular::M_VALIGN_MIDDLE:
-		flag = false;
-	case LyXTabular::VALIGN_MIDDLE:
-		status.setOnOff(
-			tabular.getVAlignment(actcell, flag) == LyXTabular::LYX_VALIGN_MIDDLE);
-		break;
-
-	case LyXTabular::SET_LONGTABULAR:
-		status.setOnOff(tabular.isLongTabular());
-		break;
-
-	case LyXTabular::UNSET_LONGTABULAR:
-		status.setOnOff(!tabular.isLongTabular());
-		break;
-
-	case LyXTabular::SET_ROTATE_TABULAR:
-		status.setOnOff(tabular.getRotateTabular());
-		break;
-
-	case LyXTabular::UNSET_ROTATE_TABULAR:
-		status.setOnOff(!tabular.getRotateTabular());
-		break;
-
-	case LyXTabular::SET_ROTATE_CELL:
-		status.setOnOff(tabular.getRotateCell(actcell));
-		break;
-
-	case LyXTabular::UNSET_ROTATE_CELL:
-		status.setOnOff(!tabular.getRotateCell(actcell));
-		break;
-
-	case LyXTabular::SET_USEBOX:
-		status.setOnOff(strToInt(argument) == tabular.getUsebox(actcell));
-		break;
-
-	case LyXTabular::SET_LTFIRSTHEAD:
-		status.setOnOff(tabular.getRowOfLTHead(sel_row_start, dummyltt));
-		break;
-
-	case LyXTabular::SET_LTHEAD:
-		status.setOnOff(tabular.getRowOfLTHead(sel_row_start, dummyltt));
-		break;
-
-	case LyXTabular::SET_LTFOOT:
-		status.setOnOff(tabular.getRowOfLTFoot(sel_row_start, dummyltt));
-		break;
-
-	case LyXTabular::SET_LTLASTFOOT:
-		status.setOnOff(tabular.getRowOfLTFoot(sel_row_start, dummyltt));
-		break;
-
-	case LyXTabular::SET_LTNEWPAGE:
-		status.setOnOff(tabular.getLTNewPage(sel_row_start));
-		break;
-
-	default:
-		status.clear();
-		status.enabled(false);
-		break;
-	}
-	return status;
 }
 
 
