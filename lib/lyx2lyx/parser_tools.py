@@ -33,6 +33,15 @@ def find_token(lines, token, start, end = 0):
 	    return i
     return -1
 
+def find_token2(lines, token, start, end = 0):
+    if end == 0:
+	end = len(lines)
+    for i in xrange(start, end):
+	x = string.split(lines[i])
+	if len(x) > 0 and x[0] == token:
+	    return i
+    return -1
+
 def find_tokens(lines, tokens, start, end = 0):
     if end == 0:
 	end = len(lines)
@@ -68,10 +77,18 @@ def find_tokens_backwards(lines, tokens, start):
     return -1
 
 def get_value(lines, token, start, end = 0):
-    i = find_token(lines, token, start, end)
+    i = find_token2(lines, token, start, end)
     if i == -1:
 	return ""
     return string.split(lines[i])[1]
+
+def del_token(lines, token, i, j):
+    k = find_token2(lines, token, i, j)
+    if k == -1:
+	return j
+    else:
+	del lines[k]
+	return j-1
 
 # Finds the paragraph that contains line i.
 def get_paragraph(lines, i):
@@ -132,7 +149,7 @@ def set_comment(lines, number):
     elif x < 220:
 	version = "1.1"
     else:
-	version = "1.2"
+	version = str((x-220)/10.0+1.2)
 
     lines[0] = "#LyX %s created this file. For more info see http://www.lyx.org/" % version
     if lines[1][0] == '#':
