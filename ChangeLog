@@ -1,5 +1,20 @@
 2000-08-08  Juergen Vigna  <jug@sad.it>
 
+	* src/lyx_cb.C (AutoSave): autosave for unnamed files enabled!
+
+	* src/bufferlist.C (close): 
+	* src/bufferlist.C (QwriteAll): remove Autosave-files for Unnamed()
+	documents if exiting without saving.
+
+	* src/buffer.C (save): use removeAutosaveFile()
+
+	* src/support/filetools.C (removeAutosaveFile): new function.
+
+	* src/lyx_cb.C (MenuWrite): returns a bool now.
+	(MenuWriteAs): check if file could really be saved and revert to the
+	old name if not.
+	(MenuWriteAs): removing old autosavefile if existant.
+
 	* src/frontends/xforms/FormRef.h: puting FD_form_ref declaration
 	before Goto toggle declaration, because of compiler warning.
 

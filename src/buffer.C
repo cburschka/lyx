@@ -1203,19 +1203,7 @@ bool Buffer::save() const
 	
 	if (writeFile(fileName(), false)) {
 		markLyxClean();
-
-		// now delete the autosavefile
-		string a = OnlyPath(fileName());
-		a += '#';
-		a += OnlyFilename(fileName());
-		a += '#';
-		FileInfo fileinfo(a);
-		if (fileinfo.exist()) {
-			if (::remove(a.c_str()) != 0) {
-				WriteFSAlert(_("Could not delete "
-					       "auto-save file!"), a);
-			}
-		}
+		removeAutosaveFile(fileName());
 	} else {
 		// Saving failed, so backup is not backup
 		if (lyxrc.make_backup) {

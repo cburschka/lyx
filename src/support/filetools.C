@@ -1089,3 +1089,17 @@ findtexfile(string const & fil, string const & /*format*/)
 			     << "'" << endl;
         return c.first != -1 ? strip(c.second, '\n') : string();
 }
+
+void removeAutosaveFile(string const & filename)
+{
+	string a = OnlyPath(filename);
+	a += '#';
+	a += OnlyFilename(filename);
+	a += '#';
+	FileInfo fileinfo(a);
+	if (fileinfo.exist()) {
+		if (::remove(a.c_str()) != 0) {
+			WriteFSAlert(_("Could not delete auto-save file!"), a);
+		}
+	}
+}

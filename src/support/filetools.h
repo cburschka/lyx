@@ -199,4 +199,7 @@ bool LyXReadLink(string const & file, string & Link);
 /* Uses kpsewhich to find tex files */
 string const findtexfile(string const & fil, string const & format);
 
+/* remove the autosave-file and give a Message if it can't be done */
+void removeAutosaveFile(string const & filename);
+
 #endif

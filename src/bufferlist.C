@@ -88,7 +88,7 @@ bool BufferList::empty() const
 }
 
 
-extern void MenuWrite(Buffer *);
+extern bool MenuWrite(Buffer *);
 extern bool MenuWriteAs(Buffer *);
 
 bool BufferList::QwriteAll()
@@ -112,11 +112,16 @@ bool BufferList::QwriteAll()
 					if ((*it)->isUnnamed())
 						reask = !MenuWriteAs((*it));
 					else {
-						MenuWrite((*it));
-						reask = false;
+						reask = !MenuWrite((*it));
 					}
 					break;
 				case 2: // No
+					// if we crash after this we could
+					// have no autosave file but I guess
+					// this is really inprobable (Jug)
+					if ((*it)->isUnnamed()) {
+						removeAutosaveFile((*it)->fileName());
+					}
 					askMoreConfirmation = true;
 					unsaved += MakeDisplayPath(fname, 50);
 					unsaved += "\n";
@@ -194,6 +199,9 @@ bool BufferList::close(Buffer * buf)
 				}
 				break;
 			case 2:
+				if (buf->isUnnamed()) {
+					removeAutosaveFile(buf->fileName());
+				}
 				reask = false;
 				break;
 			case 3: // Cancel

@@ -108,7 +108,7 @@ extern bool selection_possible;
 
 extern kb_keymap * toplevel_keymap;
 
-extern void MenuWrite(Buffer *);
+extern bool MenuWrite(Buffer *);
 extern bool MenuWriteAs(Buffer *);
 extern int  MenuRunLaTeX(Buffer *);
 extern int  MenuBuildProg(Buffer *);

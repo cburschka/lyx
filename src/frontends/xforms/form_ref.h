@@ -1,0 +1,27 @@
+/** Header file generated with fdesign on Mon Aug  7 17:11:47 2000.**/
+
+#ifndef FD_form_ref_h_
+#define FD_form_ref_h_
+
+/** Callbacks, globals and object handlers **/
+extern  "C" void C_FormCommandInputCB(FL_OBJECT *, long);
+extern  "C" void C_FormCommandOKCB(FL_OBJECT *, long);
+extern  "C" void C_FormCommandCancelCB(FL_OBJECT *, long);
+
+
+/**** Forms and Objects ****/
+struct FD_form_ref {
+
+	FL_FORM *form_ref;
+	FL_OBJECT *browser;
+	FL_OBJECT *update;
+	FL_OBJECT *sort;
+	FL_OBJECT *name;
+	FL_OBJECT *ref;
+	FL_OBJECT *type;
+	FL_OBJECT *go;
+	FL_OBJECT *ok;
+	FL_OBJECT *cancel;
+};
+
+#endif /* FD_form_ref_h_ */

@@ -157,7 +157,7 @@ void ToggleLockedInsetCursor(long x, long y, int asc, int desc);
 
 int RunLinuxDoc(BufferView *, int, string const &);
 int RunDocBook(int, string const &);
-void MenuWrite(Buffer * buf);
+bool MenuWrite(Buffer * buf);
 bool MenuWriteAs(Buffer * buffer);
 void MenuReload(Buffer * buf);
 void MenuLayoutSave();
@@ -187,7 +187,7 @@ void ShowMessage(Buffer * buf,
 //
 
 // should be moved to lyxfunc.C
-void MenuWrite(Buffer * buffer)
+bool MenuWrite(Buffer * buffer)
 {
 	XFlush(fl_display);
 	if (!buffer->save()) {
@@ -196,11 +196,13 @@ void MenuWrite(Buffer * buffer)
 		if (AskQuestion(_("Save failed. Rename and try again?"),
 				MakeDisplayPath(s, 50),
 				_("(If not, document is not saved.)"))) {
-			MenuWriteAs(buffer);
+			return MenuWriteAs(buffer);
 		}
+		return false;
 	} else {
 		lastfiles->newFile(buffer->fileName());
 	}
+	return true;
 }
 
 
@@ -280,13 +282,23 @@ bool MenuWriteAs(Buffer * buffer)
 	// Ok, change the name of the buffer
 	buffer->fileName(s);
 	buffer->markDirty();
+	bool unnamed = buffer->isUnnamed();
 	buffer->setUnnamed(false);
 	// And save
 	// Small bug: If the save fails, we have irreversible changed the name
 	// of the document.
-	MenuWrite(buffer);
+	// Hope this is fixed this way! (Jug)
+	if (!MenuWrite(buffer)) {
+	    buffer->fileName(oldname);
+	    buffer->setUnnamed(unnamed);
+	    ShowMessage(buffer, _("Document could not be saved!"),
+			_("Holding the old name."), MakeDisplayPath(oldname));
+	    return false;
+	}
+	// now remove the oldname autosave file if existant!
+	removeAutosaveFile(oldname);
 	return true;
-}    
+}
 
 
 int MenuRunLaTeX(Buffer * buffer)
@@ -978,8 +990,7 @@ void AutoSave(BufferView * bv)
 	if (!bv->available())
 		return;
 
-	if (bv->buffer()->isBakClean() ||
-	    bv->buffer()->isReadonly() || bv->buffer()->isUnnamed()) {
+	if (bv->buffer()->isBakClean() || bv->buffer()->isReadonly()) {
 		// We don't save now, but we'll try again later
 		bv->owner()->resetAutosaveTimer();
 		return;
