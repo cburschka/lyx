@@ -5,18 +5,19 @@ Internal Form Definition File
 
 Number of forms: 1
 Unit of measure: FL_COORD_PIXEL
+SnapGrid: 5
 
 =============== FORM ===============
 Name: form_external
-Width: 560
-Height: 310
+Width: 320
+Height: 355
 Number of Objects: 12
 
 --------------------
 class: FL_BOX
-type: UP_BOX
-box: 0 0 560 310
-boxtype: FL_UP_BOX
+type: FLAT_BOX
+box: 0 0 320 355
+boxtype: FL_FLAT_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
 style: FL_NORMAL_STYLE
@@ -33,7 +34,7 @@ argument:
 --------------------
 class: FL_CHOICE
 type: NORMAL_CHOICE
-box: 130 10 300 30
+box: 110 5 160 25
 boxtype: FL_FRAME_BOX
 colors: FL_COL1 FL_RIGHT_BCOL
 alignment: FL_ALIGN_LEFT
@@ -51,7 +52,7 @@ argument: 0
 --------------------
 class: FL_BROWSER
 type: NORMAL_BROWSER
-box: 130 50 300 130
+box: 5 35 310 125
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_YELLOW
 alignment: FL_ALIGN_TOP
@@ -69,10 +70,10 @@ argument:
 --------------------
 class: FL_INPUT
 type: NORMAL_INPUT
-box: 130 190 190 30
+box: 5 220 310 25
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_MCOL
-alignment: FL_ALIGN_LEFT
+alignment: FL_ALIGN_TOP_LEFT
 style: FL_NORMAL_STYLE
 size: FL_NORMAL_SIZE
 lcol: FL_BLACK
@@ -87,7 +88,7 @@ argument: 0
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 330 190 100 30
+box: 215 245 100 25
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -105,10 +106,10 @@ argument: 0
 --------------------
 class: FL_INPUT
 type: NORMAL_INPUT
-box: 130 230 300 30
+box: 5 290 310 25
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_MCOL
-alignment: FL_ALIGN_LEFT
+alignment: FL_ALIGN_TOP_LEFT
 style: FL_NORMAL_STYLE
 size: FL_NORMAL_SIZE
 lcol: FL_BLACK
@@ -123,7 +124,7 @@ argument: 0
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 435 50 110 30
+box: 5 165 100 25
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -132,8 +133,8 @@ size: FL_NORMAL_SIZE
 lcol: FL_BLACK
 label: Edit file|#E
 shortcut: 
-resize: FL_RESIZE_ALL
-gravity: FL_NorthEast FL_NorthEast
+resize: FL_RESIZE_NONE
+gravity: FL_SouthEast FL_SouthEast
 name: button_edit
 callback: C_FormBaseInputCB
 argument: 0
@@ -141,7 +142,7 @@ argument: 0
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 435 90 110 30
+box: 110 165 100 25
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -150,8 +151,8 @@ size: FL_NORMAL_SIZE
 lcol: FL_BLACK
 label: View result|#V
 shortcut: 
-resize: FL_RESIZE_ALL
-gravity: FL_NorthEast FL_NorthEast
+resize: FL_RESIZE_NONE
+gravity: FL_SouthEast FL_SouthEast
 name: button_view
 callback: C_FormBaseInputCB
 argument: 0
@@ -159,7 +160,7 @@ argument: 0
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 435 130 110 30
+box: 215 165 100 25
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -168,8 +169,8 @@ size: FL_NORMAL_SIZE
 lcol: FL_BLACK
 label: Update result|#U
 shortcut: 
-resize: FL_RESIZE_ALL
-gravity: FL_NorthEast FL_NorthEast
+resize: FL_RESIZE_NONE
+gravity: FL_SouthEast FL_SouthEast
 name: button_update
 callback: C_FormBaseInputCB
 argument: 0
@@ -177,7 +178,7 @@ argument: 0
 --------------------
 class: FL_BUTTON
 type: RETURN_BUTTON
-box: 255 270 90 30
+box: 35 325 90 25
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -195,7 +196,7 @@ argument: 0
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 355 270 90 30
+box: 130 325 90 25
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -213,7 +214,7 @@ argument: 0
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 455 270 90 30
+box: 225 325 90 25
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER

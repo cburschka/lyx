@@ -1,3 +1,7 @@
+2003-02-27 Rob Lahaye  <lahaye@snu.ac.kr>
+
+	* xformsImage.C: use lyx::float_equal() for comparing floats & doubles
+
 2003-02-21  Angus Leeming  <leeming@lyx.org>
 
 	* FormDialogView.[Ch]: new base class for the xforms dialogs,
@@ -6,7 +10,7 @@
 
 	* Dialogs_impl.h:
 	* Dialogs.C:
-	* Dilaogs2.C: strip out those dialogs that now use the new
+	* Dialogs2.C: strip out those dialogs that now use the new
 	Dialog class as the platform for an MCV split.
 
 	* Dialogs3.C: new file. Lazy instantiation of those dialogs that

@@ -296,7 +296,7 @@ void xformsImage::rotate(Params const & params)
 	if (!image_)
 		return ;
 
-	if (!params.angle)
+	if (lyx::float_equal(params.angle, 0.0, 0.1))
 		// No rotation is necessary.
 		return;
 
@@ -306,7 +306,7 @@ void xformsImage::rotate(Params const & params)
 	// Work around xforms bug when params.angle == 270
 	// the 'InternalError: bad special angle' error.
 	// This bug fix is not needed in xforms 1.0 and greater.
-	if (params.angle == 270) {
+	if (lyx::float_equal(params.angle, 270.0, 0.1)) {
 		flimage_rotate(image_,  900, FLIMAGE_SUBPIXEL);
 		flimage_rotate(image_, 1800, FLIMAGE_SUBPIXEL);
 	} else {
