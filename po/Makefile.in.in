@@ -395,7 +395,7 @@ xforms_l10n.pot: $(top_srcdir)/src/frontends/xforms/forms/*.fd
 				line=$$0;\
 				sub(/label: /,"",line);\
 				fna=FILENAME;\
-				sub("(\.\./)+", "", fna);\
+				sub("(\\.\\./)+", "", fna);\
 				printf("#: %s:%d\nmsgid \"%s\"\nmsgstr \"\"\n\n", fna, FNR, line);\
 			}\
 			skip=0; \
@@ -415,7 +415,7 @@ qt_l10n.pot: $(top_srcdir)/src/frontends/qt2/ui/*.ui
 			gsub(/\"/, "\\\"", line); \
 			if (length(line) > 0) {\
 				fna=FILENAME;\
-				sub("(\.\./)+", "", fna);\
+				sub("(\\.\\./)+", "", fna);\
 				printf("#: %s:%d\nmsgid \"%s\"\nmsgstr \"\"\n\n",\
 					fna, FNR, line); \
 			} \
@@ -429,7 +429,7 @@ layouts_l10n.pot: $(top_srcdir)/lib/layouts/*.layout $(top_srcdir)/lib/layouts/*
 			line=$$0; \
 			sub(/Style /, "", line); \
 			fna=FILENAME;\
-			sub("(\.\./)+", "", fna);\
+			sub("(\\.\\./)+", "", fna);\
 			printf("#: %s:%d\nmsgid \"%s\"\nmsgstr \"\"\n\n", \
 				fna, FNR, line); \
 		} \
@@ -437,7 +437,7 @@ layouts_l10n.pot: $(top_srcdir)/lib/layouts/*.layout $(top_srcdir)/lib/layouts/*
 			line=$$0; \
 			sub(/[[:space:]]*GuiName[[:space:]]*/, "", line); \
 			fna=FILENAME;\
-			sub("(\.\./)+", "", fna);\
+			sub("(\\.\\./)+", "", fna);\
 			printf("#: %s:%d\nmsgid \"%s\"\nmsgstr \"\"\n\n", \
 				fna, FNR, line); \
 		}' \
@@ -453,7 +453,7 @@ languages_l10n.pot: $(top_srcdir)/lib/languages
 			lang=substr($$0,RSTART,RLENGTH); \
 			gsub(/\"/, "", lang); \
 			fna=FILENAME;\
-			sub("(\.\./)+", "", fna);\
+			sub("(\\.\\./)+", "", fna);\
 			printf("#: %s:%d\nmsgid \"%s\"\nmsgstr \"\"\n\n", \
 			fna, FNR, lang); \
 		}' \
@@ -467,7 +467,7 @@ ui_l10n.pot: $(top_srcdir)/lib/ui/*.ui
 			sub(/[^"]*"/, "", line); \
 			sub(/".*/, "", line); \
 			fna=FILENAME;\
-			sub("(\.\./)+", "", fna);\
+			sub("(\\.\\./)+", "", fna);\
 			printf("#: %s:%d\nmsgid \"%s\"\nmsgstr \"\"\n\n", \
 				fna, FNR, line); \
 		} \
@@ -476,7 +476,7 @@ ui_l10n.pot: $(top_srcdir)/lib/ui/*.ui
 			sub(/[^"]*"/, "", line); \
 			sub(/".*/, "", line); \
 			fna=FILENAME;\
-			sub("(\.\./)+", "", fna);\
+			sub("(\\.\\./)+", "", fna);\
 			printf("#: %s:%d\nmsgid \"%s\"\nmsgstr \"\"\n\n", \
 				fna, FNR, line); \
 		} \
@@ -485,7 +485,7 @@ ui_l10n.pot: $(top_srcdir)/lib/ui/*.ui
 			sub(/[^"]*"/, "", line); \
 			sub(/".*/, "", line); \
 			fna=FILENAME;\
-			sub("(\.\./)+", "", fna);\
+			sub("(\\.\\./)+", "", fna);\
 			printf("#: %s:%d\nmsgid \"%s\"\nmsgstr \"\"\n\n", \
 				fna, FNR, line); \
 		}' \
