@@ -847,10 +847,7 @@ InsetTabular::localDispatch(BufferView * bv, kb_action action,
 		case LFUN_SHIFT_TAB:
 		case LFUN_TAB:
 			hideInsetCursor(bv);
-			if (the_locking_inset) {
-				unlockInsetInInset(bv, the_locking_inset);
-				the_locking_inset = 0;
-			}
+			unlockInsetInInset(bv, the_locking_inset);
 			if (action == LFUN_TAB)
 				moveNextCell(bv, old_locking_inset != 0);
 			else
@@ -962,10 +959,7 @@ InsetTabular::localDispatch(BufferView * bv, kb_action action,
 		break;
 	case LFUN_NEXT: {
 		int column = actcol;
-		if (the_locking_inset) {
-			unlockInsetInInset(bv, the_locking_inset);
-			the_locking_inset = 0;
-		}
+		unlockInsetInInset(bv, the_locking_inset);
 		if (bv->text->first + bv->painter().paperHeight() <
 		    (top_baseline + tabular->GetHeightOfTabular()))
 			{
@@ -981,10 +975,7 @@ InsetTabular::localDispatch(BufferView * bv, kb_action action,
 	}
 	case LFUN_PRIOR: {
 		int column = actcol;
-		if (the_locking_inset) {
-			unlockInsetInInset(bv, the_locking_inset);
-			the_locking_inset = 0;
-		}
+		unlockInsetInInset(bv, the_locking_inset);
 		if (top_baseline < 0) {
 			bv->scrollCB(bv->text->first - bv->painter().paperHeight());
 			updateLocal(bv, FULL, false);
@@ -1133,7 +1124,6 @@ InsetTabular::localDispatch(BufferView * bv, kb_action action,
 			if ((result == UNDISPATCHED) || (result >= FINISHED)) {
 				unlockInsetInInset(bv, the_locking_inset);
 				nodraw(false);
-				the_locking_inset = 0;
 				// we need to update if this was requested before
 				updateLocal(bv, NONE, false);
 				return UNDISPATCHED;
