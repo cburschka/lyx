@@ -65,25 +65,14 @@
 #include "support/LAssert.h"
 #include "support/lstrings.h"
 #include "support/filetools.h"
-#include "support/lyxfunctional.h"
 
 #include <boost/bind.hpp>
 #include <boost/signals/connection.hpp>
 
 #include <cstdio>
-#include <ctime>
 #include <unistd.h>
 #include <sys/wait.h>
-#include <clocale>
 
-
-#ifndef CXX_GLOBAL_CSTD
-using std::tm;
-using std::localtime;
-using std::time;
-using std::setlocale;
-using std::strftime;
-#endif
 
 using std::vector;
 using std::find_if;
@@ -94,15 +83,12 @@ using std::make_pair;
 using std::min;
 
 using lyx::pos_type;
-using lyx::textclass_type;
 
 /* the selection possible is needed, that only motion events are
  * used, where the bottom press event was on the drawing area too */
 bool selection_possible = false;
 
 extern BufferList bufferlist;
-extern char ascii_type;
-
 extern int bibitemMaxWidth(BufferView *, LyXFont const &);
 
 
@@ -892,7 +878,6 @@ Inset * BufferView::Pimpl::checkInsetHit(LyXText * text, int & x, int & y)
 	}
 
 	// look at previous position
-
 	if (cursor.pos() == 0) {
 		return 0;
 	}
@@ -1858,35 +1843,6 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev)
 		bv_->owner()->getDialogs().showThesaurus(arg);
 	}
 		break;
-
-	case LFUN_DATE_INSERT:  // jdblair: date-insert cmd
-	{
-		time_t now_time_t = time(NULL);
-		struct tm * now_tm = localtime(&now_time_t);
-		setlocale(LC_TIME, "");
-		string arg;
-		if (!ev.argument.empty())
-			arg = ev.argument;
-		else
-			arg = lyxrc.date_insert_format;
-		char datetmp[32];
-		int const datetmp_len =
-			::strftime(datetmp, 32, arg.c_str(), now_tm);
-
-		LyXText * lt = bv_->getLyXText();
-
-		for (int i = 0; i < datetmp_len; i++) {
-			lt->insertChar(bv_, datetmp[i]);
-			update(lt,
-			       BufferView::SELECT
-			       | BufferView::FITCUR
-			       | BufferView::CHANGE);
-		}
-
-		lt->selection.cursor = lt->cursor;
-		moveCursorUpdate(false);
-	}
-	break;
 
 	case LFUN_UNKNOWN_ACTION:
 		ev.errorMessage(N_("Unknown function!"));

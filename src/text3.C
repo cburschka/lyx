@@ -33,6 +33,9 @@
 #include "insets/insetcommand.h"
 #include "undo_funcs.h"
 
+#include <ctime>
+#include <clocale>
+
 using std::endl;
 
 extern string current_layout;
@@ -1043,6 +1046,28 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 					 pos).language()->lang() == "hebrew" ||
 			(!bv->insertInset(new InsetQuotes(c, bv->buffer()->params))))
 			bv->owner()->dispatch(FuncRequest(LFUN_SELFINSERT, "\""));
+		break;
+	}
+
+	case LFUN_DATE_INSERT:  { // jdblair: date-insert cmd
+		time_t now_time_t = time(NULL);
+		struct tm * now_tm = localtime(&now_time_t);
+		setlocale(LC_TIME, "");
+		string arg;
+		if (!cmd.argument.empty())
+			arg = cmd.argument;
+		else
+			arg = lyxrc.date_insert_format;
+		char datetmp[32];
+		int const datetmp_len =
+			::strftime(datetmp, 32, arg.c_str(), now_tm);
+
+		for (int i = 0; i < datetmp_len; i++) {
+			insertChar(bv, datetmp[i]);
+			update(bv, true);
+		}
+		selection.cursor = cursor;
+		bv->moveCursorUpdate(false);
 		break;
 	}
 
