@@ -17,12 +17,16 @@
 #include "Spacing.h"
 #include "Bullet.h"
 #include "lyxtextclass.h"
+#include "LaTeXFeatures.h"
+#include "texrow.h"
 
 #include "insets/insetquotes.h"
 
 #include <boost/array.hpp>
 
 class LyXLex;
+class LatexFeatures;
+class TexRow;
 struct Language;
 
 /** Buffer parameters.
@@ -106,6 +110,9 @@ public:
 
 	///
 	void writeFile(std::ostream &) const;
+
+	///
+	void writeLaTeX(std::ostream &, LaTeXFeatures &, TexRow &) const;
 
 	///
 	void setPaperStuff();

@@ -122,7 +122,7 @@ void LaTeXFeatures::includeFile(string const & key, string const & name)
 }
 
 
-bool LaTeXFeatures::hasLanguages()
+bool LaTeXFeatures::hasLanguages() const
 {
 	return !UsedLanguages.empty();
 }
@@ -142,7 +142,7 @@ string LaTeXFeatures::getLanguages() const
 }
 
 
-set<string> LaTeXFeatures::getEncodingSet(string const & doc_encoding)
+set<string> LaTeXFeatures::getEncodingSet(string const & doc_encoding) const
 {
 	set<string> encodings;
 	for (LanguageList::const_iterator it =

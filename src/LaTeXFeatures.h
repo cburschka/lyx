@@ -69,11 +69,11 @@ public:
 	///
 	void useLanguage(Language const *);
 	///
-	bool hasLanguages();
+	bool hasLanguages() const;
 	///
 	string getLanguages() const;
 	///
-	std::set<string> getEncodingSet(string const & doc_encoding);
+	std::set<string> getEncodingSet(string const & doc_encoding) const;
 	///
 	void useLayout(string const & lyt);
 	///

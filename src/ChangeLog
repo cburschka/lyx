@@ -1,5 +1,13 @@
 2003-02-15  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
+	* buffer.C (makeLaTeXFile): move the code that generates the
+	preamble... 
+
+	* bufferparams.C (writeLaTeX): ... in this new method
+
+	* LaTeXFeatures.C (getEncodingSet): make const
+	(getLanguages): make const
+
 	* MenuBackend.C (binding): returns the binding associated to this
 	action 
 	(add): sets the status of each item by calling getStatus. Adds
