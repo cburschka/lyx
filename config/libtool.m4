@@ -2737,44 +2737,44 @@ EOF
 #
 #     dll = open(filename, O_RDONLY|O_BINARY);
 #     if (dll < 1)
-#	return 1;
+#       return 1;
 #
 #     dll_name = filename;
 #
 #     for (i=0; filename[i]; i++)
-#	if (filename[i] == '/' || filename[i] == '\\'  || filename[i] == ':')
-#	    dll_name = filename + i +1;
+#       if (filename[i] == '/' || filename[i] == '\\'  || filename[i] == ':')
+#         dll_name = filename + i +1;
 #
 #     pe_header_offset = pe_get32 (dll, 0x3c);
 #     opthdr_ofs = pe_header_offset + 4 + 20;
 #     num_entries = pe_get32 (dll, opthdr_ofs + 92);
 #
 #     if (num_entries < 1) /* no exports */
-#	return 1;
+#       return 1;
 #
 #     export_rva = pe_get32 (dll, opthdr_ofs + 96);
 #     export_size = pe_get32 (dll, opthdr_ofs + 100);
 #     nsections = pe_get16 (dll, pe_header_offset + 4 +2);
 #     secptr = (pe_header_offset + 4 + 20 +
-#	      pe_get16 (dll, pe_header_offset + 4 + 16));
+#       pe_get16 (dll, pe_header_offset + 4 + 16));
 #
 #     expptr = 0;
 #     for (i = 0; i < nsections; i++)
 #     {
-#	char sname[8];
-#	unsigned long secptr1 = secptr + 40 * i;
-#	unsigned long vaddr = pe_get32 (dll, secptr1 + 12);
-#	unsigned long vsize = pe_get32 (dll, secptr1 + 16);
-#	unsigned long fptr = pe_get32 (dll, secptr1 + 20);
-#	lseek(dll, secptr1, SEEK_SET);
-#	read(dll, sname, 8);
-#	if (vaddr <= export_rva && vaddr+vsize > export_rva)
-#	{
-#	    expptr = fptr + (export_rva - vaddr);
-#	    if (export_rva + export_size > vaddr + vsize)
-#		export_size = vsize - (export_rva - vaddr);
-#	    break;
-#	}
+#       char sname[8];
+#       unsigned long secptr1 = secptr + 40 * i;
+#       unsigned long vaddr = pe_get32 (dll, secptr1 + 12);
+#       unsigned long vsize = pe_get32 (dll, secptr1 + 16);
+#       unsigned long fptr = pe_get32 (dll, secptr1 + 20);
+#       lseek(dll, secptr1, SEEK_SET);
+#       read(dll, sname, 8);
+#       if (vaddr <= export_rva && vaddr+vsize > export_rva)
+#       {
+#         expptr = fptr + (export_rva - vaddr);
+#         if (export_rva + export_size > vaddr + vsize)
+#           export_size = vsize - (export_rva - vaddr);
+#         break;
+#       }
 #     }
 #
 #     expdata = (unsigned char*)malloc(export_size);
@@ -2788,8 +2788,8 @@ EOF
 #     printf ("EXPORTS\n");
 #     for (i = 0; i<nexp; i++)
 #     {
-#	unsigned long name_rva = pe_as32 (erva+name_rvas+i*4);
-#	printf ("\t%s @ %ld ;\n", erva+name_rva, 1+ i);
+#       unsigned long name_rva = pe_as32 (erva+name_rvas+i*4);
+#       printf ("\t%s @ %ld ;\n", erva+name_rva, 1+ i);
 #     }
 #
 #     return 0;
