@@ -37,7 +37,14 @@ struct Context {
 	// If there has been an \begin_deeper, we'll need a matching
 	// \end_deeper
 	bool need_end_deeper;
-
+	// If we are in an itemize-like environment, we need an \item
+	// for each paragraph, otherwise this has to be a deeper
+	// paragraph.
+	bool has_item;
+	// we are handling a standard paragraph in an itemize-like
+	// environment
+	bool deeper_paragraph;
+	
 	// The textclass of the document. Could actually be a global variable
 	LyXTextClass const & textclass;
 	// The layout of the current paragraph

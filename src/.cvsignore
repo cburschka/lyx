@@ -1,11 +1,15 @@
 config.h
-version.C
+config.h.in
 lyx
+lyx-xforms
+lyx-qt
 Makefile
 Makefile.in
-config.h.in
 stamp-h
 stamp-h1
+version.C
+version.C-tmp
+stamp-version
 *.deps
 .libs
 a.out

@@ -1,3 +1,16 @@
+2003-08-07  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* text.C (parse_text): special handling for \item and \bibitem
+	macros
+
+	* context.C (begin_layout, end_layout, begin_deeper, end_deeper):
+	tiny helper functions
+	(check_layout): 
+	(check_end_deeper): add special handling for the case of a normal
+	paragraph inside a list-like environment.
+
+	* test-structure.tex: add more stuff there
+
 2003-08-05  Alfredo Braunstein  <abraunst@libero.it>
 
 	* context.h: compile fix

@@ -1,18 +1,21 @@
 \documentclass{article}
 
+\newenvironment{foo}{==[}{]==}
+
 \begin{document}
 
 This document contains all sorts of layouts we are supposed to
 support, along with weird nestings.
 
+At time you will see that I use subsubsections in weird places. The
+intent is just to make sure that I can include a macro-type layout
+everyzhere it makes sense.
 
 A normal paragraph
-
-Another one 
 \begin{equation} 
 x = \sin y 
 \end{equation} 
-with maths inside
+with maths inside it.
 
 \begin{quote}
 An environment...
@@ -55,7 +58,7 @@ Some centered stuff (does not work)
 \begin{quotation}
 An environment
 
-\section*{with a command inside it}
+\subsubsection*{with a command inside it}
 \end{quotation}
 
 \begin{quotation}
@@ -84,5 +87,34 @@ We can also nest enumerations
 \end{enumerate}
 \item Item2
 \end{enumerate}
+
+Let's see what happens when normal paragraphs are inserted in lists:
+
+\begin{itemize}
+\item the first item
+
+with some explanatory text under it
+
+and a second paragraph for good measure
+
+\subsubsection*{we can even have one as a subsubsection}
+
+\item the second item
+
+\item the third item
+
+\subsubsection*{and a sssection heading inside it (why not?)}
+\end{itemize}
+
+What else? Well, we have descriptions:
+\begin{description}
+\item[A] first item
+\item[B] second one
+\end{description}
+
+or even bibliography
+\begin{thebibliography}{9}
+\bibitem{FOO} Edward Bar. \emph{The Foo Book}. (1999)
+\end{thebibliography}
 
 \end{document}

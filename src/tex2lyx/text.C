@@ -440,9 +440,19 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				s = parse_text(p, FLAG_BRACK_LAST, outer, newcontext);
 			}
 			context.need_layout = true;
+			context.has_item = true;
 			context.check_layout(os);
 			if (s.size())
 				os << s << ' ';
+		}
+
+		else if (t.cs() == "bibitem") {
+			context.need_layout = true;
+			context.has_item = true;
+			context.check_layout(os);
+			os << "\\bibitem ";
+			os << p.getOpt();
+			os << '{' << p.verbatim_item() << '}' << "\n";
 		}
 
 		else if (t.cs() == "def") {
@@ -587,13 +597,6 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			os << "\n\\" << t.cs() << " on \n";
 			parse_text_snippet(p, os, FLAG_ITEM, outer, context);
 			os << "\n\\" << t.cs() << " default \n";
-		}
-
-		else if (t.cs() == "bibitem") {
-			context.check_layout(os);
-			os << "\\bibitem ";
-			os << p.getOpt();
-			os << '{' << p.verbatim_item() << '}' << "\n";
 		}
 
 		else if (is_known(t.cs(), known_latex_commands)) {
