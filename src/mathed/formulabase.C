@@ -155,22 +155,16 @@ string const InsetFormulaBase::editMessage() const
 }
 
 
-void InsetFormulaBase::edit(BufferView * bv, int x, int /*y*/, unsigned int)
+void InsetFormulaBase::edit(BufferView * bv, int x, int y, unsigned int
+button)
 {
+	lyxerr << "edit: " << x  << " " << y << " button: " << button << "\n";
 	if (!bv->lockInset(this))
 		lyxerr[Debug::MATHED] << "Cannot lock inset!!!" << endl;
 
-	//lyxerr << "edit: " << x  << " " << y << " button: " << button << "\n";
-	if (!mathcursor) {
+	if (!mathcursor)
 		mathcursor = new MathCursor(this, x == 0);
-		metrics(bv);
-		// handle ignored click
-		if (hack_x || hack_y) {
-			insetButtonPress(bv, hack_x, hack_y, hack_button);
-			hack_x = hack_y = 0;
-		}
-	} else
-		metrics(bv);
+	metrics(bv);
 	// if that is removed, we won't get the magenta box when entering an
 	// inset for the first time
 	bv->updateInset(this, false);
@@ -281,9 +275,9 @@ void InsetFormulaBase::updateLocal(BufferView * bv, bool dirty)
 bool InsetFormulaBase::insetButtonRelease(BufferView * bv,
 					  int /*x*/, int /*y*/, int /*button*/)
 {
+	//lyxerr << "insetButtonRelease: " << x << " " << y << "\n";
 	if (!mathcursor)
 		return false;
-	//lyxerr << "insetButtonRelease: " << x << " " << y << "\n";
 	hideInsetCursor(bv);
 	showInsetCursor(bv);
 	bv->updateInset(this, false);
@@ -294,26 +288,21 @@ bool InsetFormulaBase::insetButtonRelease(BufferView * bv,
 void InsetFormulaBase::insetButtonPress(BufferView * bv,
 					int x, int y, int button)
 {
-	// hack to cope with mouseclick that comes before the call to edit()
-	if (!mathcursor) {
-		hack_x = x;
-		hack_y = y;
-		hack_button = button;
-		return;
-	}
+	//lyxerr << "insetButtonPress: "
+	//	<< x << " " << y << " but: " << button << "\n";
 
-	lyxerr << "insetButtonPress: " << x + xo_ << " " << y + yo_
-		<< " but: " << button << "\n";
 	switch (button) {
 		default:
 		case 1:
-			// just click
+			// left click
+			if (!mathcursor) {
+				mathcursor = new MathCursor(this, x == 0);
+				metrics(bv);
+			} 
 			first_x = x;
 			first_y = y;
-			if (mathcursor) {
-				mathcursor->selClear();
-				mathcursor->setPos(x + xo_, y + yo_);
-			}
+			mathcursor->selClear();
+			mathcursor->setPos(x + xo_, y + yo_);
 			break;
 /*
 		case 2:

@@ -114,6 +114,8 @@ public:
 	virtual void mutateToText();
 	///
 	virtual void revealCodes(BufferView *) const;
+	///
+	virtual Inset::EDITABLE editable() const { return HIGHLY_EDITABLE; }
 
 
 private:
