@@ -249,8 +249,10 @@ bool LyXLayout::Read (LyXLex & lexrc, LyXTextClass const & tclass)
 			break;
 
 		case LT_OPTARGS:
-			optionalargs = lexrc.next() && lexrc.getInteger();
-			break;
+			if (lexrc.next()) { 
+				optionalargs = lexrc.getInteger();
+			}
+ 			break;
 
 		case LT_NEED_PROTECT:
 			needprotect = lexrc.next() && lexrc.getInteger();
