@@ -56,19 +56,25 @@ void QInclude::update_contents()
 
 	dialog_->filenameED->setText(params.cparams.getContents().c_str());
 
-	string const & cmdname = params.cparams.getCmdName();
-
 	dialog_->visiblespaceCB->setChecked(false);
 	dialog_->visiblespaceCB->setEnabled(false);
 
-	if (cmdname == "input")
-		dialog_->typeCO->setCurrentItem(0);
-	else if (!cmdname.empty()) {
-		dialog_->typeCO->setCurrentItem(2);
-		dialog_->visiblespaceCB->setChecked(cmdname == "verbatiminput*");
-		dialog_->visiblespaceCB->setEnabled(true);
-	} else {
-		dialog_->typeCO->setCurrentItem(1);
+	switch (params.flag) {
+		case InsetInclude::INPUT:
+			dialog_->typeCO->setCurrentItem(0);
+			break;
+
+		case InsetInclude::INCLUDE:
+			dialog_->typeCO->setCurrentItem(1);
+			break;
+
+		case InsetInclude::VERBAST:
+			dialog_->visiblespaceCB->setChecked(true);
+			/* fall through */
+		case InsetInclude::VERB:
+			dialog_->typeCO->setCurrentItem(2);
+			dialog_->visiblespaceCB->setEnabled(true);
+			break;
 	}
 }
 

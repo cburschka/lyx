@@ -314,6 +314,12 @@
         <sender>typeCO</sender>
         <signal>activated(int)</signal>
         <receiver>QIncludeDialogBase</receiver>
+        <slot>change_adaptor()</slot>
+    </connection>
+    <connection>
+        <sender>typeCO</sender>
+        <signal>activated(int)</signal>
+        <receiver>QIncludeDialogBase</receiver>
         <slot>typeChanged(int)</slot>
     </connection>
     <slot access="public">browseClicked()</slot>
