@@ -81,3 +81,7 @@ What's new
 
 - fix compilation on HP-UX 11.x
 
+- do not reset natbib style when adding a new entry to a citation (Qt only)
+
+- allow insertion of width strings like "2.5in" into tabular dialog (Qt only)
+
