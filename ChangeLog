@@ -1,3 +1,10 @@
+2000-10-13  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/support/lyxfunctional.h: version of class_fun for void
+	returns added, const versions of back_inseter_fun and compare_fun
+	added.
+	
+
 2000-10-13  Angus Leeming <a.leeming@ic.ac.uk>
 
 	* src/frontends/xforms/FormInset.C (showInset): fix typo.

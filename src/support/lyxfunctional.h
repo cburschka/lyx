@@ -19,10 +19,31 @@ private:
 };
 
 
+template<class C, class A>
+class void_class_fun_t {
+public:
+	class_fun_t(C & ct, void(C::*p)(A))
+		: c(ct), cmf(p) {}
+	void operator()(A & a) const {
+		return (c.*cmf)(a);
+	}
+private:
+	C & c;
+	void(C::*cmf)(A);
+};
+
+       
 template <class R, class C, class A> class_fun_t<R, C, A>
 class_fun(C & c, R(C::*f)(A))
 {
 	return class_fun_t<R, C, A>(c, f);
+}
+
+
+template <class C, class A> void_class_fun_t<C, A>
+class_fun(C & c, void(C::*f)(A))
+{
+	return void_class_fun_t<C, A>(c, f);
 }
 
 
@@ -60,10 +81,51 @@ public:
 
 
 template <class Cont, class Type, class MemRet>
+class const_back_insert_fun_iterator {
+protected:
+	Cont & container;
+	MemRet(Type::*pmf)() const;
+public:
+	const_back_insert_fun_iterator(Cont & x, MemRet(Type::*p)() const)
+		: container(x), pmf(p) {}
+
+	const_back_insert_fun_iterator &
+	operator=(Type const * val) {
+		container.push_back((val->*pmf)());
+		return *this;
+	}
+
+	const_back_insert_fun_iterator &
+	operator=(Type const & val) {
+		container.push_back((val.*pmf)());
+		return *this;
+	}
+
+	const_back_insert_fun_iterator & operator*() {
+		return *this;
+	}
+	const_back_insert_fun_iterator & operator++() { // prefix ++
+		return *this;
+	}
+	const_back_insert_fun_iterator & operator++(int) { // postfix ++
+		return *this;
+	}
+};
+
+
+template <class Cont, class Type, class MemRet>
 back_insert_fun_iterator<Cont, Type, MemRet>
 back_inserter_fun(Cont & cont, MemRet(Type::*p)())
 {
 	return back_insert_fun_iterator<Cont, Type, MemRet>(cont, p);
+}
+
+
+template <class Cont, class Type, class MemRet>
+back_insert_fun_iterator<Cont, Type, MemRet>
+back_inserter_fun(Cont & cont, MemRet(Type::*p)() const)
+{
+	return const_back_insert_fun_iterator<Cont, Type, MemRet>(cont, p);
 }
 
 
@@ -85,10 +147,35 @@ private:
 
 
 template <class R, class C, class A>
+class const_compare_memfun_t {
+public:
+	const_compare_memfun_t(R(C::*p)() const, A const & a)
+		: pmf(p), arg(a) {}
+	bool operator()(C const * c) {
+		return (c->*pmf)() == arg;
+	}
+	bool operator()(C const & c) {
+		return (c.*pmf)() == arg;
+	}
+private:
+	R(C::*pmf)() const;
+	A const & arg;
+};
+
+
+template <class R, class C, class A>
 compare_memfun_t<R, C, A>
 compare_memfun(R(C::*p)(), A const & a)
 {
 	return compare_memfun_t<R, C, A>(p, a);
+}
+
+
+template <class R, class C, class A>
+const_compare_memfun_t<R, C, A>
+compare_memfun(R(C::*p)() const, A const & a)
+{
+	return const_compare_memfun_t<R, C, A>(p, a);
 }
 
 	
