@@ -31,14 +31,12 @@ PSpell::PSpell(BufferParams const &, string const & lang)
 	: sc(0), els(0), spell_error_object(0), alive_(false)
 {
 	PspellConfig * config = new_pspell_config();
-	pspell_config_replace(config, "lang", lang.c_str());
+	pspell_config_replace(config, "language-tag", lang.c_str());
 	spell_error_object = new_pspell_manager(config);
 	if (pspell_error_number(spell_error_object) == 0) {
 		sc = to_pspell_manager(spell_error_object);
 		spell_error_object = 0;
 		alive_ = true;
-	} else {
-		lyxerr << pspell_error_message(spell_error_object) << endl;
 	}
 }
 
