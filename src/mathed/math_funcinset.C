@@ -36,18 +36,6 @@ void MathFuncInset::setName(string const & n)
 }
 
 
-void MathFuncInset::write(WriteStream & os) const
-{
-	os << "\\" << name_.c_str() << ' ';
-}
-
-
-void MathFuncInset::normalize(NormalStream & os) const
-{
-	os << "[func " << name_.c_str() << ']';
-}
-
-
 void MathFuncInset::metrics(MathMetricsInfo const & mi) const 
 {
 	mi_ = mi;
@@ -63,7 +51,7 @@ void MathFuncInset::draw(Painter & pain, int x, int y) const
 
 void MathFuncInset::maplize(MapleStream & os) const
 {
-	os << name_.c_str();
+	os << ' ' << name_.c_str();
 }
 
 
@@ -75,5 +63,17 @@ void MathFuncInset::mathmlize(MathMLStream & os) const
 
 void MathFuncInset::octavize(OctaveStream & os) const
 {
-	os << name_.c_str();
+	os << ' ' << name_.c_str();
+}
+
+
+void MathFuncInset::normalize(NormalStream & os) const
+{
+	os << "[func " << name_.c_str() << ']';
+}
+
+
+void MathFuncInset::write(WriteStream & os) const
+{
+	os << "\\" << name_.c_str() << ' ';
 }

@@ -59,15 +59,6 @@ void MathStringInset::draw(Painter & pain, int x, int y) const
 }
 
 
-void MathStringInset::write(WriteStream & os) const
-{
-	if (math_font_name(code_)) 
-		os << '\\' << math_font_name(code_) << '{' << str_.c_str() << '}';
-	else 
-		os << str_.c_str();
-}
-
-
 void MathStringInset::normalize(NormalStream & os) const
 {
 	os << "[string " << str_.c_str() << ' ' << "mathalpha" << "]";
@@ -77,7 +68,7 @@ void MathStringInset::normalize(NormalStream & os) const
 void MathStringInset::maplize(MapleStream & os) const
 {
 	if (code_ != LM_TC_VAR || str_.size() <= 1) {
-		os << str_.c_str();
+		os << ' ' << str_.c_str() << ' ';
 		return;
 	}	
 
@@ -91,7 +82,7 @@ void MathStringInset::maplize(MapleStream & os) const
 void MathStringInset::octavize(OctaveStream & os) const
 {
 	if (code_ != LM_TC_VAR || str_.size() <= 1) {
-		os << str_.c_str();
+		os << ' ' << str_.c_str() << ' ';
 		return;
 	}	
 
@@ -111,5 +102,14 @@ void MathStringInset::mathmlize(MathMLStream & os) const
 	else if (code_ == LM_TC_RM || code_ == LM_TC_TEXTRM)
 		os << "<mtext> " << str_.c_str() <<  " </mtext>";
 	else
+		os << str_.c_str();
+}
+
+
+void MathStringInset::write(WriteStream & os) const
+{
+	if (math_font_name(code_)) 
+		os << '\\' << math_font_name(code_) << '{' << str_.c_str() << '}';
+	else 
 		os << str_.c_str();
 }

@@ -293,6 +293,38 @@ void splitScripts(MathArray & ar)
 }
 
 
+//
+// extract exp(...)
+//
+
+void extractExps(MathArray & ar)
+{
+	lyxerr << "\nExps from: " << ar << "\n";
+
+	for (MathArray::size_type i = 0; i + 1 < ar.size(); ++i) {
+		MathArray::iterator it = ar.begin() + i;
+
+		// is this 'e'?
+		MathCharInset const * p = (*it)->asCharInset();
+		if (!p || p->getChar() != 'e')
+			continue;
+
+		// we need an exponent but no subscript
+		MathScriptInset * sup = (*(it + 1))->asScriptInset();
+		if (!sup || sup->hasDown())
+			continue;
+
+		// create a proper exp-inset as replacement
+		MathExFuncInset * func = new MathExFuncInset("exp");
+		func->cell(0) = sup->cell(1);
+
+		// clean up
+		(*it).reset(func);
+		ar.erase(it + 1);
+	}
+	lyxerr << "\nExps to: " << ar << "\n";
+}
+
 
 //
 // search deliminiters
@@ -669,6 +701,7 @@ void extractStructure(MathArray & ar)
 	extractIntegrals(ar);
 	extractSums(ar);
 	extractDiff(ar);
+	extractExps(ar);
 	extractStrings(ar);
 }
 
