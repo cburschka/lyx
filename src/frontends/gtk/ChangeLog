@@ -1,6 +1,8 @@
 2005-01-04  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* xftFontLoader.C: lyxrc.font_sizes is a string now.
+	
+	* lyx_gui.C: change getDVI() to int.
 
 2005-01-04  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
