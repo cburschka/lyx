@@ -193,7 +193,7 @@ void ControlSpellchecker::clearParams()
 	if (speller_->alive()) {
 		speller_->close();
 
-		message_ = _("Spellchecking completed!") + '\n';
+		message_ = string(_("Spellchecking completed!")) + '\n';
 
 #if USE_BOOST_FORMAT
 		if (count_ != 1) {
@@ -201,11 +201,11 @@ void ControlSpellchecker::clearParams()
 		fmter % count_;
 		message_ += fmter.str();
 		} else {
-			message_+= _("One word checked.");
+			message_ += _("One word checked.");
 		}
 #else
 		if (count_ != 1) {
-			message_ +=  tostr(count_) + " words checked";
+			message_ += tostr(count_) + " words checked";
 		} else {
 			message_ = _("One word checked.");
 		}
