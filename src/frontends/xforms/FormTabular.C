@@ -112,29 +112,52 @@ void FormTabular::build()
 	// Allow the base class to control messages
 	setMessageWidget(dialog_->text_warning);
 
+	// trigger an input event for cut&paste with middle mouse button.
 	setPrehandler(dialog_->input_tabular_column);
 	setPrehandler(dialog_->input_tabular_row);
 
+	// Create the contents of the unit choices; don't include the "%" terms.
+	vector<string> units_vec = getLatexUnits();
+	vector<string>::iterator ret =
+		remove_if(units_vec.begin(), units_vec.end(),
+			  bind2nd(contains_functor(), "%"));
+	units_vec.erase(ret, units_vec.end());
+	string const units = getStringFromVector(units_vec, "|");
+
+	// tabular options form
 	tabular_options_.reset(build_tabular_options(this));
+
+	// column options form
 	column_options_.reset(build_tabular_column(this));
-	cell_options_.reset(build_tabular_cell(this));
-	longtable_options_.reset(build_tabular_longtable(this));
 
 	fl_set_input_return(column_options_->input_column_width,
 			    FL_RETURN_END);
 	fl_set_input_return(column_options_->input_special_alignment,
 			    FL_RETURN_END);
 
+	// trigger an input event for cut&paste with middle mouse button.
 	setPrehandler(column_options_->input_column_width);
 	setPrehandler(column_options_->input_special_alignment);
+
+	fl_addto_choice(column_options_->choice_value_column_width,
+			units.c_str());
+
+	// cell options form
+	cell_options_.reset(build_tabular_cell(this));
 
 	fl_set_input_return(cell_options_->input_mcolumn_width,
 			    FL_RETURN_END);
 	fl_set_input_return(cell_options_->input_special_multialign,
 			    FL_RETURN_END);
 
+	// trigger an input event for cut&paste with middle mouse button.
 	setPrehandler(cell_options_->input_mcolumn_width);
 	setPrehandler(cell_options_->input_special_multialign);
+
+	fl_addto_choice(cell_options_->choice_value_mcolumn_width,
+			units.c_str());
+
+	longtable_options_.reset(build_tabular_longtable(this));
 
 	fl_addto_tabfolder(dialog_->tabfolder, _("Tabular"),
 			   tabular_options_->form);
@@ -147,21 +170,6 @@ void FormTabular::build()
 
 	// work-around xforms bug re update of folder->x, folder->y coords.
 	setPrehandler(dialog_->tabfolder);
-
-	// Create the contents of the unit choices
-	// Don't include the "%" terms...
-	vector<string> units_vec = getLatexUnits();
-	vector<string>::iterator ret =
-		remove_if(units_vec.begin(), units_vec.end(),
-			  bind2nd(contains_functor(), "%"));
-	units_vec.erase(ret, units_vec.end());
-
-	string units = getStringFromVector(units_vec, "|");
-
-	fl_addto_choice(column_options_->choice_value_column_width,
-			units.c_str());
-	fl_addto_choice(cell_options_->choice_value_mcolumn_width,
-			units.c_str());
 }
 
 
@@ -245,7 +253,7 @@ void FormTabular::update()
 
 		special = tabular->GetAlignSpecial(cell, LyXTabular::SET_SPECIAL_MULTI);
 		fl_set_input(cell_options_->input_special_multialign, special.c_str());
-		bool const metric = lyxrc.default_papersize > 3;
+		bool const metric = lyxrc.default_papersize > BufferParams::PAPER_EXECUTIVEPAPER;
 		string const default_unit = metric ? "cm" : "in";
 		updateWidgetsFromLength(cell_options_->input_mcolumn_width,
 					cell_options_->choice_value_mcolumn_width,
@@ -331,7 +339,7 @@ void FormTabular::update()
 	setEnabled(column_options_->input_special_alignment, !isReadonly);
 
 	pwidth = tabular->GetColumnPWidth(cell);
-	bool const metric = lyxrc.default_papersize > 3;
+	bool const metric = lyxrc.default_papersize > BufferParams::PAPER_EXECUTIVEPAPER;
 	string const default_unit = metric ? "cm" : "in";
 	updateWidgetsFromLength(column_options_->input_column_width,
 				column_options_->choice_value_column_width,
@@ -532,11 +540,11 @@ bool FormTabular::input(FL_OBJECT * ob, long)
 			str2 = llen.asString();
 		if (str1 != str2)
 			input(cell_options_->input_mcolumn_width, 0);
-		str1 = fl_get_input(column_options_->input_special_alignment);
+		str1 = getString(column_options_->input_special_alignment);
 		str2 = tabular->GetAlignSpecial(cell, LyXTabular::SET_SPECIAL_COLUMN);
 		if (str1 != str2)
 			input(column_options_->input_special_alignment, 0);
-		str1 = fl_get_input(cell_options_->input_special_multialign);
+		str1 = getString(cell_options_->input_special_multialign);
 		str2 = tabular->GetAlignSpecial(cell, LyXTabular::SET_SPECIAL_MULTI);
 		if (str1 != str2)
 			input(cell_options_->input_special_multialign, 0);
@@ -564,8 +572,7 @@ bool FormTabular::input(FL_OBJECT * ob, long)
 		inset_->tabularFeatures(lv_.view().get(), LyXTabular::SET_PWIDTH, str);
 
 		//check if the input is valid
-		string const input =
-			fl_get_input(column_options_->input_column_width);
+		string const input = getString(column_options_->input_column_width);
 		if (!input.empty() && !isValidLength(input) && !isStrDbl(input)) {
 			postWarning(_("Invalid Length (valid example: 10mm)"));
 			return false;
@@ -583,8 +590,7 @@ bool FormTabular::input(FL_OBJECT * ob, long)
 		inset_->tabularFeatures(lv_.view().get(), LyXTabular::SET_MPWIDTH, str);
 
 		//check if the input is valid
-		string const input =
-			fl_get_input(cell_options_->input_mcolumn_width);
+		string const input = getString(cell_options_->input_mcolumn_width);
 		if (!input.empty() && !isValidLength(input) && !isStrDbl(input)) {
 			postWarning(_("Invalid Length (valid example: 10mm)"));
 			return false;
@@ -665,10 +671,10 @@ bool FormTabular::input(FL_OBJECT * ob, long)
 	} else if (ob == longtable_options_->check_lt_newpage) {
 		num = LyXTabular::SET_LTNEWPAGE;
 	} else if (ob == column_options_->input_special_alignment) {
-		special = fl_get_input(column_options_->input_special_alignment);
+		special = getString(column_options_->input_special_alignment);
 		num = LyXTabular::SET_SPECIAL_COLUMN;
 	} else if (ob == cell_options_->input_special_multialign) {
-		special = fl_get_input(cell_options_->input_special_multialign);
+		special = getString(cell_options_->input_special_multialign);
 		num = LyXTabular::SET_SPECIAL_MULTI;
 	} else if (ob == cell_options_->check_border_top)
 		num = LyXTabular::M_TOGGLE_LINE_TOP;

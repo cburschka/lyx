@@ -1,3 +1,8 @@
+2002-10-24  Rob Lahaye  <lahaye@snu.ac.kr>
+
+	* FormTabular.C (build): rearrange lines tab by tab.
+	Use getString not fl_get_inout.
+
 2002-10-24  Angus Leeming  <leeming@lyx.org>
 
 	* FormRef.C (updateBrowser): invoke updateHighlight
