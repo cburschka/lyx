@@ -1096,6 +1096,7 @@ bool MathHullInset::getStatus(LCursor & cur, FuncRequest const & cmd,
 	case LFUN_MATH_MUTATE:
 	case LFUN_MATH_DISPLAY:
 		// we handle these
+		flag.enabled(true);
 		return true;
 	case LFUN_TABULAR_FEATURE: {
 		istringstream is(cmd.argument);
@@ -1111,12 +1112,6 @@ bool MathHullInset::getStatus(LCursor & cur, FuncRequest const & cmd,
 			flag.enabled(false);
 			return true;
 		}
-		if (nrows() <= 1
-		    && (s == "delete-row" || s == "swap-row")) {
-			flag.message(N_("Only one row"));
-			flag.enabled(false);
-			return true;
-		}
 		if (!colChangeOK()
 		    && (s == "append-column"
 			|| s == "delete-column"
@@ -1124,12 +1119,6 @@ bool MathHullInset::getStatus(LCursor & cur, FuncRequest const & cmd,
 			flag.message(bformat(
 				N_("Can't change number of columns in '%1$s'"),
 				type_));
-			flag.enabled(false);
-			return true;
-		}
-		if (ncols() <= 1
-		    && (s == "delete-column" || s == "swap-column")) {
-			flag.message(N_("Only one column"));
 			flag.enabled(false);
 			return true;
 		}

@@ -1,9 +1,24 @@
+2005-02-12  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* math_gridinset.C (halign): fix '|' to the right of the last column
+	* math_gridinset.[Ch]: remove unused leftline_ and rightline_
+	* math_gridinset.[Ch]: change type of lines_ to unsigned int to
+	prevent check for <= 0
+	* math_gridinset.C: add more facilities for adding/deleting
+	partition lines in matrix.
+	* math_gridinset.C (getStatus): implement missing LFUN_TABULAR_FEATURE
+	* math_parser.C (delEmptyLastRow): new
+	* math_parser.C (parse1): Store active environment and use it to
+	detect nonmatching \end{} and removing superflous rows with
+	delEmptyLastRow()
+	* math_hullinset.C (getStatus): remove now superflous tests
+
 2005-02-12  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* math_nestinset.C (doDispatch): normalize() cursor after moving up/down
 	(fixes assert and bug 1598).
 
-2005-02-09  Martin Vermeer  <martin.vermeer@hut.fi>
+2005-02-10  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* math_gridinset.[hC]: add facilities for drawing/deleting partition
 	lines in matrix.

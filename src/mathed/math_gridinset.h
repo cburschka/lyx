@@ -54,7 +54,7 @@ public:
 		/// cached offset
 		mutable int offset_;
 		/// how many hlines above this row?
-		int lines_;
+		unsigned int lines_;
 		/// parameter to the line break
 		LyXLength crskip_;
 		/// extra distance between lines
@@ -74,12 +74,8 @@ public:
 		mutable int width_;
 		/// cached offset
 		mutable int offset_;
-		/// do we need a line to the left?
-		bool leftline_;
-		/// do we need a line to the right?
-		bool rightline_;
 		/// how many lines to the left of this column?
-		int lines_;
+		unsigned int lines_;
 		/// additional amount to be skipped when drawing
 		int skip_;
 	};
@@ -159,21 +155,21 @@ public:
 	/// pulls cell after pressing erase
 	void idxGlue(idx_type idx);
 
-	///
+	/// add a row
 	virtual void addRow(row_type r);
-	///
+	/// delete a row
 	virtual void delRow(row_type r);
-	///
+	/// copy a row
 	virtual void copyRow(row_type r);
-	///
+	/// swap two rows
 	virtual void swapRow(row_type r);
-	///
+	/// add a column
 	virtual void addCol(col_type c);
-	///
+	/// delete a column
 	virtual void delCol(col_type c);
-	///
+	/// copy a column
 	virtual void copyCol(col_type c);
-	///
+	/// swap two columns
 	virtual void swapCol(col_type c);
 	///
 	virtual void appendRow();
@@ -229,9 +225,11 @@ protected:
 	void splitCell(LCursor & cur);
 
 public:
-	/// row info
+	/// row info.
+	/// rowinfo_[nrows()] is a dummy row used only for hlines.
 	std::vector<RowInfo> rowinfo_;
-	/// column info
+	/// column info.
+	/// colinfo_[ncols()] is a dummy column used only for vlines.
 	std::vector<ColInfo> colinfo_;
 	/// cell info
 	std::vector<CellInfo> cellinfo_;

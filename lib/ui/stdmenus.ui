@@ -159,14 +159,18 @@ Menuset
 		Item "Copy Row" "tabular-feature copy-row"
 		Item "Swap Rows" "tabular-feature swap-row"
 		Item "Add Line Above" "tabular-feature add-hline-above"
+		Item "Add Line Below" "tabular-feature add-hline-below"
 		Item "Delete Line Above" "tabular-feature delete-hline-above"
+		Item "Delete Line Below" "tabular-feature delete-hline-below"
 		Separator
 		Item "Add Column|C" "tabular-feature append-column"
 		Item "Delete Column|e" "tabular-feature delete-column"
 		Item "Copy Column" "tabular-feature copy-column"
 		Item "Swap Columns" "tabular-feature swap-column"
 		Item "Add Line to Left" "tabular-feature add-vline-left"
+		Item "Add Line to Right" "tabular-feature add-vline-right"
 		Item "Delete Line to Left" "tabular-feature delete-vline-left"
+		Item "Delete Line to Right" "tabular-feature delete-vline-right"
 	End
 
 	Menu "edit_math_limits"

@@ -22,13 +22,18 @@
 #include "cursor.h"
 #include "debug.h"
 #include "funcrequest.h"
+#include "gettext.h"
 #include "undo.h"
 
 #include "frontends/Painter.h"
 
 #include "insets/mailinset.h"
 
+#include "support/lstrings.h"
+
 #include <sstream>
+
+using lyx::support::bformat;
 
 using std::endl;
 using std::max;
@@ -124,7 +129,7 @@ int MathGridInset::RowInfo::skipPixels() const
 
 
 MathGridInset::ColInfo::ColInfo()
-	: align_('c'), leftline_(false), rightline_(false), lines_(0)
+	: align_('c'), lines_(0)
 {}
 
 
@@ -215,11 +220,12 @@ void MathGridInset::halign(string const & hh)
 {
 	col_type col = 0;
 	for (string::const_iterator it = hh.begin(); it != hh.end(); ++it) {
-		if (col >= ncols())
-			break;
 		char c = *it;
 		if (c == '|') {
 			colinfo_[col].lines_++;
+		} else if (col >= ncols()) {
+			// Only '|' is allowed in the last dummy column
+			break;
 		} else if (c == 'c' || c == 'l' || c == 'r') {
 			colinfo_[col].align_ = c;
 			++col;
@@ -477,7 +483,7 @@ void MathGridInset::draw(PainterInfo & pi, int x, int y) const
 		cell(idx).draw(pi, x + cellXOffset(idx), y + cellYOffset(idx));
 
 	for (row_type row = 0; row <= nrows(); ++row)
-		for (int i = 0; i < rowinfo_[row].lines_; ++i) {
+		for (unsigned int i = 0; i < rowinfo_[row].lines_; ++i) {
 			int yy = y + rowinfo_[row].offset_ - rowinfo_[row].ascent_
 				- i * hlinesep() - hlinesep()/2 - rowsep()/2;
 			pi.pain.line(x + 1, yy,
@@ -486,7 +492,7 @@ void MathGridInset::draw(PainterInfo & pi, int x, int y) const
 		}
 
 	for (col_type col = 0; col <= ncols(); ++col)
-		for (int i = 0; i < colinfo_[col].lines_; ++i) {
+		for (unsigned int i = 0; i < colinfo_[col].lines_; ++i) {
 			int xx = x + colinfo_[col].offset_
 				- i * vlinesep() - vlinesep()/2 - colsep()/2;
 			pi.pain.line(xx, y - dim_.ascent() + 1,
@@ -1081,11 +1087,11 @@ void MathGridInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 		else if (s == "valign-bottom")
 			valign('b');
 		else if (s == "align-left")
-			halign('l', col(cur.idx()));
+			halign('l', cur.col());
 		else if (s == "align-right")
-			halign('r', col(cur.idx()));
+			halign('r', cur.col());
 		else if (s == "align-center")
-			halign('c', col(cur.idx()));
+			halign('c', cur.col());
 		else if (s == "append-row")
 			for (int i = 0, n = extractInt(is); i < n; ++i)
 				addRow(cur.row());
@@ -1102,32 +1108,40 @@ void MathGridInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 			swapRow(cur.row());
 		else if (s == "add-hline-above")
 			rowinfo_[cur.row()].lines_++;
+		else if (s == "add-hline-below")
+			rowinfo_[cur.row()+1].lines_++;
 		else if (s == "delete-hline-above")
-			rowinfo_[cur.row()].lines_ = 0;
+			rowinfo_[cur.row()].lines_--;
+		else if (s == "delete-hline-below")
+			rowinfo_[cur.row()+1].lines_--;
 		else if (s == "append-column")
 			for (int i = 0, n = extractInt(is); i < n; ++i) {
-				row_type r = cur.row();
-				col_type c = col(cur.idx());
+				row_type const r = cur.row();
+				col_type const c = cur.col();
 				addCol(c);
 				cur.idx() = index(r, c);
 			}
 		else if (s == "delete-column")
 			for (int i = 0, n = extractInt(is); i < n; ++i) {
-				row_type r = cur.row();
-				col_type c = col(cur.idx());
+				row_type const r = cur.row();
+				col_type const c = cur.col();
 				delCol(col(cur.idx()));
 				cur.idx() = index(r, c);
 				if (cur.idx() > nargs())
 					cur.idx() -= ncols();
 			}
 		else if (s == "copy-column")
-			copyCol(col(cur.idx()));
+			copyCol(cur.col());
 		else if (s == "swap-column")
-			swapCol(col(cur.idx()));
+			swapCol(cur.col());
 		else if (s == "add-vline-left")
-			colinfo_[col(cur.idx())].lines_++;			
+			colinfo_[cur.col()].lines_++;			
+		else if (s == "add-vline-right")
+			colinfo_[cur.col()+1].lines_++;			
 		else if (s == "delete-vline-left")
-			colinfo_[col(cur.idx())].lines_ = 0;
+			colinfo_[cur.col()].lines_--;
+		else if (s == "delete-vline-right")
+			colinfo_[cur.col()+1].lines_--;
 		else {
 			cur.undispatched();
 			break;
@@ -1221,10 +1235,59 @@ void MathGridInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 bool MathGridInset::getStatus(LCursor & cur, FuncRequest const & cmd,
 		FuncStatus & flag) const
 {
-	bool ret = true;
 	switch (cmd.action) {
-	case LFUN_TABULAR_FEATURE:
+	case LFUN_TABULAR_FEATURE: {
+		istringstream is(cmd.argument);
+		string s;
+		is >> s;
+		if (nrows() <= 1 && (s == "delete-row" || s == "swap-row")) {
+			flag.enabled(false);
+			flag.message(N_("Only one row"));
+			return true;
+		}
+		if (ncols() <= 1 &&
+		    (s == "delete-column" || s == "swap-column")) {
+			flag.enabled(false);
+			flag.message(N_("Only one column"));
+			return true;
+		}
+		if ((rowinfo_[cur.row()].lines_ == 0 &&
+		     s == "delete-hline-above") ||
+		    (rowinfo_[cur.row() + 1].lines_ == 0 &&
+		     s == "delete-hline-below")) {
+			flag.enabled(false);
+			flag.message(N_("No hline to delete"));
+			return true;
+		}
+
+		if ((colinfo_[cur.col()].lines_ == 0 &&
+		     s == "delete-vline-left") ||
+		    (colinfo_[cur.col() + 1].lines_ == 0 &&
+		     s == "delete-vline-right")) {
+			flag.enabled(false);
+			flag.message(N_("No vline to delete"));
+			return true;
+		}
+		if (s == "valign-top" || s == "valign-middle" ||
+		    s == "valign-bottom" || s == "align-left" ||
+		    s == "align-right" || s == "align-center" ||
+		    s == "append-row" || s == "delete-row" ||
+		    s == "copy-row" || s == "swap-row" ||
+		    s == "add-hline-above" || s == "add-hline-below" ||
+		    s == "delete-hline-above" || s == "delete-hline-below" ||
+		    s == "append-column" || s == "delete-column" ||
+		    s == "copy-column" || s == "swap-column" ||
+		    s == "add-vline-left" || s == "add-vline-right" ||
+		    s == "delete-vline-left" || s == "delete-vline-right")
+			flag.enabled(true);
+		else {
+			flag.enabled(false);
+			flag.message(bformat(
+				N_("Unknown tabular feature '%1$s'"), s));
+		}
 #if 0
+		// FIXME: What did this code do?
+		// Please check wether it is still needed!
 		// should be more precise
 		if (v_align_ == '\0') {
 			flag.enable(true);
@@ -1234,17 +1297,16 @@ bool MathGridInset::getStatus(LCursor & cur, FuncRequest const & cmd,
 			flag.enable(false);
 			break;
 		}
-		if (!contains("tcb", cmd.argument[0])) {
+		if (!lyx::support::contains("tcb", cmd.argument[0])) {
 			flag.enable(false);
 			break;
 		}
 		flag.setOnOff(cmd.argument[0] == v_align_);
-#endif
 		flag.enabled(true);
-		break;
-	default:
-		ret = MathNestInset::getStatus(cur, cmd, flag);
-		break;
+#endif
+		return true;
 	}
-	return ret;
+	default:
+		return MathNestInset::getStatus(cur, cmd, flag);
+	}
 }

@@ -160,6 +160,30 @@ bool addCol(MathGridInset & grid, MathGridInset::col_type & cellcol)
 }
 
 
+/*!
+ * Check wether the last row is empty and remove it if yes.
+ * Otherwise the following code
+ * \verbatim
+\begin{array}{|c|c|}
+\hline
+1 & 2 \\ \hline
+3 & 4 \\ \hline
+\end{array}
+ * \endverbatim
+ * will result in a grid with 3 rows (+ the dummy row that is always present),
+ * because the last '\\' opens a new row.
+ */
+void delEmptyLastRow(MathGridInset & grid)
+{
+	MathGridInset::row_type const row = grid.nrows() - 1;
+	for (MathGridInset::col_type col = 0; col < grid.ncols(); ++col) {
+		if (!grid.cell(grid.index(row, col)).empty())
+			return;
+	}
+	grid.delRow(row + 1);
+}
+
+
 // These are TeX's catcodes
 enum CatCode {
 	catEscape,     // 0    backslash
@@ -317,6 +341,8 @@ private:
 	vector<Token> tokens_;
 	///
 	unsigned pos_;
+	/// Stack of active environments
+	vector<string> environments_;
 };
 
 
@@ -897,12 +923,24 @@ void Parser::parse1(MathGridInset & grid, unsigned flags,
 		else if (t.cs() == "end") {
 			if (flags & FLAG_END) {
 				// eat environment name
-				//string const name =
-				getArg('{', '}');
-				// FIXME: check that we ended the correct environment
-				return;
-			}
-			error("found 'end' unexpectedly");
+				string const name = getArg('{', '}');
+				if (environments_.empty())
+					error("'found \\end{" + name +
+					      "}' without matching '\\begin{" +
+					      name + "}'");
+				else if (name != environments_.back())
+					error("'\\end{" + name +
+					      "}' does not match '\\begin{" +
+					      environments_.back() + "}'");
+				else {
+					environments_.pop_back();
+					if (name == "array" ||
+					    name == "subarray")
+						delEmptyLastRow(grid);
+					return;
+				}
+			} else
+				error("found 'end' unexpectedly");
 		}
 
 		else if (t.cs() == ")") {
@@ -1028,6 +1066,7 @@ void Parser::parse1(MathGridInset & grid, unsigned flags,
 
 		else if (t.cs() == "begin") {
 			string const name = getArg('{', '}');
+			environments_.push_back(name);
 
 			if (name == "array" || name == "subarray") {
 				string const valign = parse_verbatim_option() + 'c';
