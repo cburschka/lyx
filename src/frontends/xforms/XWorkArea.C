@@ -368,11 +368,25 @@ int XWorkArea::work_area_handler(FL_OBJECT * ob, int event,
 			y_old = ev->xmotion.y;
 			scrollbar_value_old = fl_get_scrollbar_value(area->scrollbar);
 			lyxerr[Debug::WORKAREA] << "Workarea event: MOUSE" << endl;
-			area->dispatch(
-				FuncRequest(LFUN_MOUSE_MOTION,
-					    ev->xbutton.x - ob->x,
-					    ev->xbutton.y - ob->y,
-					    x_button_state(key)));
+
+			// It transpires that ev->xbutton.button == 0 when
+			// the mouse is dragged, so it cannot be used to
+			// initialise x_button_state and hence FuncRequest.
+
+			// The 'key' that is passed into the function does
+			// contain the necessary info, however.
+
+			// It is for this reason that x_button_state has
+			// been modified to work with key
+			// rather than ev->xbutton.button.
+
+			// Angus 15 Oct 2002.
+			FuncRequest cmd(LFUN_MOUSE_MOTION,
+					ev->xbutton.x - ob->x,
+					ev->xbutton.y - ob->y,
+					x_button_state(key));
+			area->dispatch(cmd);
+			
 		}
 		break;
 #if FL_VERSION < 1 && FL_REVISION < 89
