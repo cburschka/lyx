@@ -120,6 +120,13 @@ AC_CHECK_LIB(Aiksaurus, main,
 	[AC_DEFINE(HAVE_LIBAIKSAURUS,1,[Define this if you have the AikSaurus library])
 	 AIKSAURUS_LIBS="-lAiksaurus -lbz2"
 	],,"-lbz2")
+AC_CHECK_HEADER(Aiksaurus.h,[
+  ac_cv_header_aiksaurus_h=yes
+  lyx_cv_aiksaurus_h_location="<Aiksaurus.h>"])
+AC_CHECK_HEADER(Aiksaurus/Aiksaurus.h,[
+  ac_cv_header_aiksaurus_h=yes
+  lyx_cv_aiksaurus_h_location="<Aiksaurus/Aiksaurus.h>"])
+AC_DEFINE_UNQUOTED(AIKSAURUS_H_LOCATION,$lyx_cv_aiksaurus_h_location,[Location of Aiksaurus.h])
 fi
 AC_SUBST(AIKSAURUS_LIBS)
 
