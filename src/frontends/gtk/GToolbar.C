@@ -46,21 +46,6 @@ LyXTextClass const & getTextClass(LyXView const & lv)
 	return lv.buffer()->params().getLyXTextClass();
 }
 
-
-void comboClear(Gtk::Combo & combo)
-{
-	std::vector<Glib::ustring> strings;
-	strings.push_back("");
-	combo.set_popdown_strings(strings);
-}
-
-
-bool comboIsEmpty(Gtk::Combo & combo)
-{
-	std::vector<Glib::ustring> strings = combo.get_popdown_strings();
-	return (strings.empty() || (strings.size() == 1 && strings[0] == ""));
-}
-
 char const * gToolData = "tool_data";
 
 } // namespace anon
@@ -72,65 +57,89 @@ GLayoutBox::GLayoutBox(LyXView & owner,
 	: owner_(owner),
 	  internal_(false)
 {
-	combo_.set_value_in_list();
-	combo_.get_entry()->set_editable(false);
-	combo_.unset_flags(Gtk::CAN_FOCUS | Gtk::CAN_DEFAULT);
-	combo_.get_entry()->unset_flags(Gtk::CAN_FOCUS | Gtk::CAN_DEFAULT);
-	comboClear(combo_);
-
-	combo_.get_entry()->signal_changed().connect(
+	combo_.signal_changed().connect(
 		sigc::mem_fun(*this,&GLayoutBox::selected));
 
-	combo_.show();
+	model_ = Gtk::ListStore::create(cols_);
+	combo_.set_model(model_);
+	Gtk::CellRendererText * cell = Gtk::manage(new Gtk::CellRendererText);
+	combo_.pack_start(*cell, true);
+	combo_.add_attribute(*cell,"text",0);
+	combo_.set_wrap_width(2);
+	//Initially there's nothing in the liststore, so set the size
+	//to avoid it jumping too much when the user does something that
+	//causes the first update()
+	combo_.set_size_request(130,-1);
+
 
 	combo_.set_data(
 		gToolData,
 		reinterpret_cast<void*>(&const_cast<FuncRequest &>(func)));
 
+	combo_.show();
+
 	Gtk::ToolItem * toolitem = Gtk::manage(new Gtk::ToolItem);
 	toolitem->add(combo_);
-	toolbar.insert(*toolitem,-1);
+	toolbar.append(*toolitem);
 }
 
 void GLayoutBox::set(string const & layout)
 {
 	LyXTextClass const & tc = getTextClass(owner_);
+	string const target = tc[layout]->name();
 
 	internal_ = true;
-	combo_.get_entry()->set_text(tc[layout]->name());
+	Gtk::TreeModel::iterator it = model_->children().begin();
+	Gtk::TreeModel::iterator end = model_->children().end();
+	for (; it != end; ++it) {
+		if ((*it)[cols_.name] == target){
+			combo_.set_active(it);
+			internal_ = false;
+			return;
+		}
+	}
 	internal_ = false;
+
+	lyxerr << "ERROR (GLayoutBox::set): layout not found! name: "
+	       << target << std::endl;
 }
 
 
 void GLayoutBox::update()
 {
-	LyXTextClass const & tc = getTextClass(owner_);
+	clear();
 
-	std::vector<Glib::ustring> strings;
+	LyXTextClass const & tc = getTextClass(owner_);
 
 	LyXTextClass::const_iterator it = tc.begin();
 	LyXTextClass::const_iterator const end = tc.end();
-	for (; it != end; ++it)
-		if ((*it)->obsoleted_by().empty())
-			strings.push_back(
-				Glib::locale_to_utf8((*it)->name()));
+
 	internal_ = true;
-	combo_.set_popdown_strings(strings);
+	for (; it != end; ++it)
+		if ((*it)->obsoleted_by().empty()) {
+			Gtk::TreeModel::iterator iter = model_->append();
+			Gtk::TreeModel::Row row = *iter;
+			row[cols_.name] = Glib::locale_to_utf8((*it)->name());
+		}
 	internal_ = false;
+
+	//now that we've loaded something into the combobox, forget
+	//the initial fixed size and let GTK decide.
+	combo_.set_size_request(-1,-1);
 }
 
 
 void GLayoutBox::clear()
 {
 	internal_ = true;
-	comboClear(combo_);
+	model_->clear();
 	internal_ = false;
 }
 
 
 void GLayoutBox::open()
 {
-	combo_.get_list()->activate();
+	combo_.popup();
 }
 
 
@@ -145,7 +154,8 @@ void GLayoutBox::selected()
 	if (internal_)
 		return;
 
-	string layoutGuiName = combo_.get_entry()->get_text();
+	Glib::ustring layoutGuiName = (*(combo_.get_active()))[cols_.name];
+
 	// we get two signal, one of it is empty and useless
 	if (layoutGuiName.empty())
 		return;
@@ -208,7 +218,7 @@ void GToolbar::add(FuncRequest const & func, string const & tooltip)
 	case ToolbarBackend::SEPARATOR: {
 		Gtk::SeparatorToolItem * space =
 			Gtk::manage(new Gtk::SeparatorToolItem);
-		toolbar_.insert(*space,-1);
+		toolbar_.append(*space);
 		break;
 	}
 
@@ -241,7 +251,7 @@ void GToolbar::add(FuncRequest const & func, string const & tooltip)
 		tooltips_.set_tip(*toolbutton, tip, tip);
 		toolbutton->signal_clicked().connect(sigc::bind(sigc::mem_fun(*this,
 			&GToolbar::clicked), FuncRequest(func)));
-		toolbar_.insert(*toolbutton,-1);
+		toolbar_.append(*toolbutton);
 		break;
 	}
 

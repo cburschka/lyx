@@ -24,6 +24,17 @@ namespace frontend {
 
 class GView;
 
+class stringcolumns : public Gtk::TreeModel::ColumnRecord {
+public:
+	stringcolumns()
+	{
+		add(name);
+	}
+
+	Gtk::TreeModelColumn<Glib::ustring> name;
+};
+
+
 class GLayoutBox: public LayoutBox, public sigc::trackable {
 public:
 	GLayoutBox(LyXView &, Gtk::Toolbar &, FuncRequest const &);
@@ -42,7 +53,10 @@ private:
 	///
 	void selected();
 
-	Gtk::Combo combo_;
+	Gtk::ComboBox combo_;
+	Glib::RefPtr<Gtk::ListStore> model_;
+	stringcolumns cols_;
+
 	LyXView & owner_;
 	bool internal_;
 };
