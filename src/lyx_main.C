@@ -476,6 +476,7 @@ bool LyX::easyParse(int * argc, char * argv[])
 	bool gui = true;
 	for(int i = 1; i < *argc; ++i) {
 		string arg = argv[i];
+
 		// Check for -dbg int
 		if (arg == "-dbg") {
 			if (i + 1 < *argc) {
@@ -567,6 +568,11 @@ bool LyX::easyParse(int * argc, char * argv[])
 				lyxerr << _("Missing file type [eg latex, "
 					    "ps...] after ")
 				       << arg << _(" switch!") << endl;
+		}
+
+		else if((!arg.empty()) && (arg[0] == '-')) {
+			lyxerr << "Illegal option `" << arg << "'" <<endl;
+			exit(1);
 		}
 	}
 	return gui;

@@ -437,6 +437,9 @@ isp_result *ispell_check_word(char *word)
 	{
 		result->flag = ISP_MISSED;
 		result->str = buf;
+		// nb is leaked! where should it be freed? I have to
+		// admit I do not understand the intent of the code :(
+		// (JMarc) 
 		char * nb = new char[result->str.length() + 1];
 		result->str.copy(nb, result->str.length());
 		nb[result->str.length()]= '\0';

@@ -195,7 +195,7 @@ bool BufferList::write(Buffer * buf, bool makeBackup)
 				lyxerr << "LyX was not able to make "
 					"backupcopy. Beware." << endl;
 			}
-			delete[] times;
+			delete times;
 		}
 	}
 	

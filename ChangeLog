@@ -1,3 +1,14 @@
+2000-01-13  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/lyx_main.C (easyParse): output an error and exit if an
+	incorrect command line option has been given.
+
+	* src/spellchecker.C (ispell_check_word): document a memory leak.
+
+	* src/bufferlist.C (write): fix mismatched allocation/deletion,
+	where a "struct utimbuf" is allocated with "new" and deleted with
+	"delete[]". 
+
 2000-01-12  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* config/lyxinclude.m4 (LYX_FUNC_PUTENV_ARGTYPE): fix the macro,
