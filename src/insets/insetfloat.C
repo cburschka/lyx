@@ -23,6 +23,7 @@
 #include "gettext.h"
 #include "iterators.h"
 #include "LaTeXFeatures.h"
+#include "LColor.h"
 #include "lyxlex.h"
 #include "paragraph.h"
 

@@ -20,6 +20,7 @@
 #include "Floating.h"
 #include "FloatList.h"
 #include "gettext.h"
+#include "LColor.h"
 #include "metricsinfo.h"
 #include "paragraph.h"
 

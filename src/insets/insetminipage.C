@@ -17,6 +17,7 @@
 #include "debug.h"
 #include "funcrequest.h"
 #include "gettext.h"
+#include "LColor.h"
 #include "lyxlex.h"
 #include "metricsinfo.h"
 #include "paragraph.h"

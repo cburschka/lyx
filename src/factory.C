@@ -18,6 +18,7 @@
 #include "debug.h"
 #include "FloatList.h"
 #include "funcrequest.h"
+#include "LColor.h"
 #include "lyxlex.h"
 
 #include "insets/insetbibitem.h"

@@ -17,6 +17,7 @@
 #include "buffer.h"
 #include "BufferView.h"
 #include "debug.h"
+#include "LColor.h"
 #include "lyxlex.h"
 #include "funcrequest.h"
 #include "metricsinfo.h"
@@ -53,7 +54,7 @@ InsetCollapsable::InsetCollapsable(BufferParams const & bp, bool collapsed)
 
 InsetCollapsable::InsetCollapsable(InsetCollapsable const & in)
 	: UpdatableInset(in), collapsed_(in.collapsed_),
-	  framecolor(in.framecolor), labelfont(in.labelfont), inset(in.inset),
+	  labelfont(in.labelfont), inset(in.inset),
 	  button_dim(0, 0, 0, 0), label(in.label),
 #if 0
 	  autocollapse(in.autocollapse),

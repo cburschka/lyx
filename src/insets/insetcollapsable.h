@@ -18,7 +18,6 @@
 #include "insettext.h"
 
 #include "box.h"
-#include "LColor.h"
 #include "lyxfont.h"
 
 #include <boost/weak_ptr.hpp>
@@ -175,8 +174,6 @@ protected:
 
 	///
 	mutable bool collapsed_;
-	///
-	LColor::color framecolor;
 	///
 	LyXFont labelfont;
 public:

@@ -13,6 +13,7 @@
 #include "insetfootlike.h"
 
 #include "buffer.h"
+#include "LColor.h"
 #include "metricsinfo.h"
 #include "paragraph.h"
 
