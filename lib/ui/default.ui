@@ -279,7 +279,8 @@ Menuset
 	Item "Bold Style|B" "font-bold"
 #	Item "TeX Style|X" "tex-mode"
 	Separator
-	Item "Change Environment Depth|v" "depth-increment"
+	Item "Decrease Environment Depth|v" "depth-decrement"
+	Item "Increase Environment Depth|v" "depth-increment"
 	Item "Preamble|r" "layout-preamble"
 	Item "Start Appendix here|A" "appendix"
     End
@@ -376,6 +377,9 @@ End
 
 Toolbar
     Layouts
+    Icon "math-insert \ntrianglerighteq"
+	Icon "math-insert \varsupsetneqq"
+    Icon "math-insert \bigstar"
     Icon "file-open"
     Icon "buffer-write"
     Icon "buffer-print"
