@@ -16,9 +16,9 @@
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 import re
-from parser_tools import find_token, find_tokens, find_end_of_inset
+from parser_tools import find_token, find_tokens, find_end_of_inset, find_end_of
 from sys import stderr
-from string import replace, split
+from string import replace, split, find
 
 def add_end_layout(lines):
     i = find_token(lines, '\\layout', 0)
@@ -105,11 +105,133 @@ def end_document(lines):
         return
     lines[i] = "\\end_document"
 
+
+def convert_minipage(lines):
+    """ Convert minipages to the box inset.
+    We try to use the same order of arguments as lyx does.
+    """
+    pos = ["t","c","b"]
+    inner_pos = ["c","t","b","s"]
+
+    i = 0
+    while 1:
+        i = find_token(lines, "\\begin_inset Minipage", i)
+        if i == -1:
+            return
+
+        lines[i] = "\\begin_inset Frameless"
+        i = i + 1
+
+        # convert old to new position using the pos list
+        if lines[i][:8] == "position":
+            lines[i] = 'position "%s"' % pos[int(lines[i][9])]
+        else:
+            lines.insert(i, 'position "%s"' % pos[0])
+        i = i + 1
+
+        lines.insert(i, 'hor_pos "c"')
+        i = i + 1
+        lines.insert(i, 'has_inner_box 1')
+        i = i + 1
+
+        # convert the inner_position
+        if lines[i][:14] == "inner_position":
+            lines[i] = 'inner_pos "%s"' %  inner_pos[int(lines[i][15])]
+        else:
+            lines.insert('inner_pos "%s"' % inner_pos[0])
+        i = i + 1
+
+        # We need this since the new file format has a height and width
+        # in a different order.
+        if lines[i][:6] == "height":
+            height = lines[i][6:]
+            del lines[i]
+        else:
+            height = ' "0"'
+
+        if lines[i][:5] == "width":
+            width = lines[i][5:]
+            del lines[i]
+        else:
+            width = ' "0"'
+
+        lines.insert(i, 'use_parbox 0')
+        i = i + 1
+        lines.insert(i, 'width' + width)
+        i = i + 1
+        lines.insert(i, 'special "none"')
+        i = i + 1
+        lines.insert(i, 'height' + height)
+        i = i + 1
+        lines.insert(i, 'height_special "totalheight"')
+        i = i + 1
+
+##
+# Convert line and page breaks
+# Old:
+#\layout Standard
+#\line_top \line_bottom \pagebreak_top \pagebreak_bottom 
+#0
+#
+# New:
+#\begin_layout Standard
+#\newpage 
+#
+#\lyxline 
+#0
+#\lyxline 
+#
+#\newpage 
+#
+#\end_layout
+
+def convert_breaks(lines):    
+    i = 0
+    while 1:
+        i = find_token(lines, "\\begin_layout", i)
+        if i == -1:
+            return
+        i = i + 1
+        line_top = find(lines[i],"\\line_top")
+        line_bot = find(lines[i],"\\line_bottom")
+        pb_top = find(lines[i],"\\pagebreak_top")
+        pb_bot = find(lines[i],"\\pagebreak_bottom")
+
+        if line_top == -1 and line_bot == -1 and pb_bot == -1 and pb_top == -1:
+            continue
+
+        lines[i] = ""
+        i = i + 1
+
+        if pb_top != -1:
+            lines.insert(i, "\\newpage ")
+            i = i + 1
+
+        if line_top != -1:
+            lines.insert(i, "\\lyxline ")
+            i = i + 1
+
+        # Ensure that nested style are converted later.
+        k = find_end_of(lines, i, "\\begin_layout", "\\end_layout")
+
+        if k == -1:
+            return
+
+        if line_bot != -1:
+            lines.insert(k, "\\lyxline ")
+            k = k + 1
+
+        if pb_bot != -1:
+            lines.insert(k, "\\newpage ")
+            k = k + 1
+
 def convert(header, body):
     add_end_layout(body)
     layout2begin_layout(body)
     end_document(body)
     table_valignment_middle(body)
+    convert_minipage(body)
+    convert_breaks(body)
 
 if __name__ == "__main__":
     pass

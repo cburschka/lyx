@@ -1,0 +1,6 @@
+2003-10-27  José Matos  <jamatos@lyx.org>
+
+	* lyxconvert_223.py:
+	* lyxconvert_224.py (convert_minipage): move funtion to its right place.
+	(convert_breaks): convert line and page break, at bottom and top.
+	
