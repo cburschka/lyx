@@ -1,5 +1,8 @@
 2000-01-20  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
+	* src/support/lyxsum.C: move using std::ifstream inside
+	MODERN_STL_STREAMS
+
 	* src/support/Makefile.am (libsupport_la_SOURCES): added mkdir.C
 	and putenv.C
 

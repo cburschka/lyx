@@ -16,13 +16,13 @@
 #include <config.h>
 #ifdef MODERN_STL_STREAMS
 #include <fstream>
+using std::ifstream;
 #else
 #include <cstdio>
 #endif
 
 #include "support/lyxlib.h"
 
-using std::ifstream;
 
 /* Number of bytes to read at once.  */
 #define BUFLEN (1 << 16)

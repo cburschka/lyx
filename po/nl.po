@@ -12,8 +12,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: lyx-1.0.0\n"
-"POT-Creation-Date: 1999-12-13 23:06+0100\n"
-"PO-Revision-Date: 1999-12-01 00:22+01:00\n"
+"POT-Creation-Date: 2000-01-19 23:57+0100\n"
+"PO-Revision-Date: 2000-01-20 02:55+01:00\n"
 "Last-Translator: Ivo Timmermans <zarq@iname.com>\n"
 "Language-Team: Dutch <nl@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -21,17 +21,17 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #. sgml2lyx failed
-#: src/buffer.C:254 src/buffer.C:264 src/buffer.C:3685 src/bufferlist.C:520
-#: src/bufferlist.C:550 src/lyx_cb.C:537 src/lyx_cb.C:904 src/lyx_cb.C:940
-#: src/lyx_sendfax_main.C:262
+#: src/buffer.C:221 src/buffer.C:231 src/buffer.C:3561 src/bufferlist.C:516
+#: src/bufferlist.C:546 src/lyx_cb.C:467 src/lyx_cb.C:812 src/lyx_cb.C:845
+#: src/lyx_sendfax_main.C:262 src/menus.C:1665
 msgid "Error!"
 msgstr "Fout!"
 
-#: src/buffer.C:255
+#: src/buffer.C:222
 msgid "Specified file is unreadable: "
 msgstr ""
 
-#: src/buffer.C:265
+#: src/buffer.C:232
 #, fuzzy
 msgid "Cannot open specified file: "
 msgstr "Kan dit bestand niet openen:"
@@ -41,302 +41,303 @@ msgstr "Kan dit bestand niet openen:"
 #. or stop loading the file.
 #. I can substitute but I don't see how I can
 #. stop loading... ideas??  ARRae980418
-#: src/buffer.C:456
+#: src/buffer.C:409
 msgid "Textclass Loading Error!"
 msgstr "Fout tijdens laden van tekstklasse!"
 
-#: src/buffer.C:457
+#: src/buffer.C:410
 msgid "Can't load textclass "
 msgstr "Kan tekstklasse niet laden "
 
-#: src/buffer.C:459
+#: src/buffer.C:412
 msgid "-- substituting default"
 msgstr "-- vervangen door standaard"
 
-#: src/buffer.C:1079
+#: src/buffer.C:1040
 msgid "Warning: Ignoring Old Inset"
 msgstr "Waarschuwing: Oude Inzet genegeerd"
 
-#: src/buffer.C:1160
+#: src/buffer.C:1121
 #, c-format
 msgid "Warning: need lyxformat %.2f but found %.2f\n"
 msgstr "Waarschuwing: moet lyxformaat %.2f hebben, vond %.2f\n"
 
-#: src/buffer.C:1164
+#: src/buffer.C:1125
 #, c-format
 msgid "ERROR: need lyxformat %.2f but found %.2f\n"
 msgstr "FOUT: ik moet lyxformaat %.2f hebben, vond %.2f\n"
 
-#: src/buffer.C:1182
+#: src/buffer.C:1143
 msgid "Warning!"
 msgstr "Waarschuwing!"
 
-#: src/buffer.C:1183
+#: src/buffer.C:1144
 msgid "Reading of document is not complete"
 msgstr "Inlezen document niet voltooid"
 
-#: src/buffer.C:1184
+#: src/buffer.C:1145
 msgid "Maybe the document is truncated"
 msgstr "Wellicht is document afgekapt"
 
 #. "\\lyxformat" not found
-#: src/buffer.C:1190 src/buffer.C:1197 src/buffer.C:1200
+#: src/buffer.C:1151 src/buffer.C:1158 src/buffer.C:1161
 msgid "ERROR!"
 msgstr "FOUT!"
 
-#: src/buffer.C:1191
+#: src/buffer.C:1152
 msgid "Old LyX file format found. Use LyX 0.10.x to read this!"
 msgstr "Oud LyX-formaat gevonden. Lees dit met behulp van 0.10.x!"
 
-#: src/buffer.C:1197
+#: src/buffer.C:1158
 msgid "Not a LyX file!"
 msgstr "Geen LyX-bestand!"
 
-#: src/buffer.C:1200
+#: src/buffer.C:1161
 msgid "Unable to read file!"
 msgstr "Kan bestand niet lezen!"
 
-#: src/buffer.C:1216 src/buffer.C:1219
+#: src/buffer.C:1177 src/buffer.C:1180
 msgid "Error! Document is read-only: "
 msgstr "Fout! Document is tegen schrijven beveiligd:"
 
-#: src/buffer.C:1229 src/buffer.C:1232
+#: src/buffer.C:1190 src/buffer.C:1193
 msgid "Error! Cannot write file: "
 msgstr "Fout! Kan niet naar bestand schrijven:"
 
-#: src/buffer.C:1240 src/buffer.C:1243
+#: src/buffer.C:1201 src/buffer.C:1204
 #, fuzzy
 msgid "Error! Cannot open file: "
 msgstr "Fout! Kan niet naar bestand schrijven:"
 
-#: src/buffer.C:1291
+#: src/buffer.C:1250
 msgid "Error: Cannot write file:"
 msgstr "Fout: Kan niet naar bestand schrijven:"
 
-#: src/buffer.C:1397
+#: src/buffer.C:1356
 msgid "Error: Cannot open temporary file:"
 msgstr "Fout: Kan tijdelijk bestand niet openen:"
 
-#: src/buffer.C:1614
+#: src/buffer.C:1576
 #, fuzzy
 msgid "Error: Cannot open file: "
 msgstr "Fout: Kan niet naar bestand schrijven:"
 
-#: src/buffer.C:2187 src/buffer.C:2777 src/buffer.C:3604 src/buffer.C:3626
-#: src/paragraph.C:3577
+#: src/buffer.C:2133 src/buffer.C:2719 src/buffer.C:3480 src/buffer.C:3502
+#: src/paragraph.C:3588
 msgid "LYX_ERROR:"
 msgstr "LYX_FOUT:"
 
-#: src/buffer.C:2187 src/buffer.C:2777
+#: src/buffer.C:2133 src/buffer.C:2719
 msgid "Cannot write file"
 msgstr "Kan niet naar bestand schrijven"
 
-#: src/buffer.C:2259 src/buffer.C:2858
+#: src/buffer.C:2205 src/buffer.C:2798
 msgid "Error : Wrong depth for LatexType Command.\n"
 msgstr "Fout : Verkeerde diepte voor LatexType commando.\n"
 
 #. path to LaTeX file
-#: src/buffer.C:3238
+#: src/buffer.C:3158
 msgid "Running LaTeX..."
 msgstr "LaTeX draait..."
 
-#: src/buffer.C:3255
+#: src/buffer.C:3177
 msgid "LaTeX did not work!"
 msgstr "LaTeX werkte niet!"
 
-#: src/buffer.C:3256 src/buffer.C:3329 src/buffer.C:3402
+#: src/buffer.C:3178 src/buffer.C:3249 src/buffer.C:3320
 msgid "Missing log file:"
 msgstr "Logbestand ontbreekt:"
 
 #. no errors or any other things to think about so:
-#: src/buffer.C:3258 src/buffer.C:3267 src/buffer.C:3331 src/buffer.C:3340
-#: src/buffer.C:3404 src/buffer.C:3412 src/combox.C:465
+#: src/buffer.C:3180 src/buffer.C:3189 src/buffer.C:3251 src/buffer.C:3260
+#: src/buffer.C:3322 src/buffer.C:3330 src/combox.C:465
 msgid "Done"
 msgstr "Klaar"
 
 #. path to Literate file
-#: src/buffer.C:3308
+#: src/buffer.C:3226
 #, fuzzy
 msgid "Running Literate..."
 msgstr "LaTeX draait..."
 
-#: src/buffer.C:3328
+#: src/buffer.C:3248
 #, fuzzy
 msgid "Literate command did not work!"
 msgstr "LaTeX werkte niet!"
 
 #. path to Literate file
-#: src/buffer.C:3381
+#: src/buffer.C:3297
 msgid "Building Program..."
 msgstr ""
 
-#: src/buffer.C:3401
+#: src/buffer.C:3319
 #, fuzzy
 msgid "Build did not work!"
 msgstr "LaTeX werkte niet!"
 
 #. path to LaTeX file
-#: src/buffer.C:3452
+#: src/buffer.C:3366
 msgid "Running chktex..."
 msgstr "chktex draait..."
 
-#: src/buffer.C:3468
+#: src/buffer.C:3382
 msgid "chktex did not work!"
 msgstr "chktex werkte niet!"
 
-#: src/buffer.C:3469
+#: src/buffer.C:3383
 msgid "Could not run with file:"
 msgstr "Kon niet draaien met bestand:"
 
-#: src/buffer.C:3605 src/buffer.C:3627 src/paragraph.C:3578
+#: src/buffer.C:3481 src/buffer.C:3503 src/paragraph.C:3589
 msgid "Cannot open temporary file:"
 msgstr "Kan tijdelijk bestand niet openen:"
 
-#: src/buffer.C:3678
+#: src/buffer.C:3554
 msgid "Error! Can't open temporary file:"
 msgstr "Fout! Kan tijdelijk bestand niet openen:"
 
-#: src/buffer.C:3686
+#: src/buffer.C:3562
 msgid "Error executing *roff command on table"
 msgstr "Fout in het draaien van *roff-opdracht op tabel"
 
-#: src/buffer.C:3886 src/buffer.C:3938 src/lyx_cb.C:3627 src/lyx_cb.C:3705
-#: src/text.C:1847
+#: src/buffer.C:3730 src/lyx_cb.C:3196 src/text.C:1890
 msgid "Impossible Operation!"
 msgstr "Onmogelijke operatie!"
 
-#: src/buffer.C:3887 src/buffer.C:3939
+#: src/buffer.C:3731
 msgid "Cannot insert table/list in table."
 msgstr "Kan geen tabel/lijst invoegen in tabel."
 
-#: src/buffer.C:3888 src/buffer.C:3940 src/lyx_cb.C:3629 src/lyx_cb.C:3707
-#: src/text.C:1849 src/text.C:3888 src/text.C:3896 src/text.C:3911
-#: src/text.C:3928 src/text2.C:2102 src/text2.C:2112
+#: src/buffer.C:3732 src/lyx_cb.C:3198 src/text.C:1892 src/text.C:3948
+#: src/text.C:3956 src/text.C:3971 src/text.C:3988 src/text2.C:2165
+#: src/text2.C:2175
 msgid "Sorry."
 msgstr "Helaas."
 
-#: src/bufferlist.C:98 src/bufferlist.C:255 src/lyxvc.C:87 src/lyxvc.C:117
-#: src/lyxvc.C:143
+#: src/bufferlist.C:103 src/bufferlist.C:259 src/lyxvc.C:91 src/lyxvc.C:123
+#: src/lyxvc.C:153
 msgid "Changes in document:"
 msgstr "Veranderingen in document:"
 
-#: src/bufferlist.C:101 src/bufferlist.C:257
+#: src/bufferlist.C:106 src/bufferlist.C:261
 msgid "Save document?"
 msgstr "Document opslaan?"
 
-#: src/bufferlist.C:117
+#: src/bufferlist.C:123
 msgid "Some documents were not saved:"
 msgstr "Sommige documenten zijn niet opgeslagen:"
 
-#: src/bufferlist.C:118
+#: src/bufferlist.C:124
 msgid "Exit anyway?"
 msgstr "Toch beëindigen?"
 
-#: src/bufferlist.C:129
+#: src/bufferlist.C:139
 msgid "Saving document"
 msgstr "Document wordt opgeslagen"
 
-#: src/bufferlist.C:201
+#: src/bufferlist.C:205
 msgid "Document saved as"
 msgstr "Document opgeslagen als"
 
-#: src/bufferlist.C:212
+#: src/bufferlist.C:216
 msgid "Could not delete auto-save file!"
 msgstr "Kon dit auto-opslagbestand niet verwijderen!"
 
-#: src/bufferlist.C:222
+#: src/bufferlist.C:226
 msgid "Save failed!"
 msgstr "Opslaan is mislukt!"
 
-#: src/bufferlist.C:290
-msgid "No Documents Open!%t"
-msgstr "Geen documenten open!"
-
-#: src/bufferlist.C:368
+#: src/bufferlist.C:360
 msgid "lyx: Attempting to save document "
 msgstr "lyx: Tracht document op te slaan "
 
-#: src/bufferlist.C:371
+#: src/bufferlist.C:363
 msgid " as..."
 msgstr " als..."
 
-#: src/bufferlist.C:395
+#: src/bufferlist.C:389
 msgid "  Save seems successful. Phew."
 msgstr " Opslaan lijkt geslaagd (Pfoe!)."
 
-#: src/bufferlist.C:399
+#: src/bufferlist.C:393
 msgid "  Save failed! Trying..."
 msgstr " Opslaan is mislukt! Probeer..."
 
-#: src/bufferlist.C:402
+#: src/bufferlist.C:396
 msgid "  Save failed! Bummer. Document is lost."
 msgstr "  Opslaan is mislukt! Helaas. Document verloren."
 
-#: src/bufferlist.C:429
+#: src/bufferlist.C:425
 msgid "An emergency save of this document exists!"
 msgstr "Er bestaat een noodopslagversie van dit document!"
 
-#: src/bufferlist.C:431
+#: src/bufferlist.C:427
 msgid "Try to load that instead?"
 msgstr "Proberen die dan maar te laden?"
 
-#: src/bufferlist.C:453
+#: src/bufferlist.C:449
 msgid "Autosave file is newer."
 msgstr "Auto-opslagversie is nieuwer."
 
-#: src/bufferlist.C:455
+#: src/bufferlist.C:451
 msgid "Load that one instead?"
 msgstr "Die dan maar laden?"
 
-#: src/bufferlist.C:520
+#: src/bufferlist.C:516
 msgid "Unable to open template"
 msgstr "Kan sjabloon niet openen"
 
-#: src/bufferlist.C:551
+#: src/bufferlist.C:547
 msgid "Could not convert file"
 msgstr "Kon bestand niet converteren"
 
-#: src/bufferlist.C:564 src/lyxfunc.C:4675 src/lyxfunc.C:4814
-#: src/lyxfunc.C:4893
+#: src/bufferlist.C:560 src/lyxfunc.C:2477 src/lyxfunc.C:2616
+#: src/lyxfunc.C:2695
 msgid "Document is already open:"
 msgstr "Document is al geopend:"
 
-#: src/bufferlist.C:566
+#: src/bufferlist.C:562
 msgid "Do you want to reload that document?"
 msgstr "Wilt u dit document opnieuw openen?"
 
-#: src/bufferlist.C:582
+#: src/bufferlist.C:579
 msgid "File `"
 msgstr "Het bestand `"
 
-#: src/bufferlist.C:583
+#: src/bufferlist.C:580
 msgid "' is read-only."
 msgstr "' is tegen schrijven beveiligd."
 
-#: src/bufferlist.C:599
+#. Ask if the file should be checked out for
+#. viewing/editing, if so: load it.
+#: src/bufferlist.C:594
+#, fuzzy
+msgid "Do you want to retrive file under version control?"
+msgstr "Wilt u het document openen?"
+
+#: src/bufferlist.C:602
 msgid "Cannot open specified file:"
 msgstr "Kan dit bestand niet openen:"
 
-#: src/bufferlist.C:601
+#: src/bufferlist.C:604
 msgid "Create new document with this name?"
 msgstr "Nieuw document onder deze naam aanmaken?"
 
-#: src/BufferView.C:323
+#: src/BufferView.C:409
 msgid "Formatting document..."
 msgstr "Bezig met opmaken document..."
 
-#: src/BufferView.C:437 src/BufferView.C:441 src/BufferView.C:458
-#: src/BufferView.C:462
+#: src/BufferView.C:493 src/BufferView.C:497
 msgid "No more errors"
 msgstr "Geen verdere fouten"
 
-#: src/bullet_forms.C:46
+#: src/bullet_forms.C:45
 msgid "Size|#z"
 msgstr "Grootte|#o"
 
-#: src/bullet_forms.C:51 src/credits_form.C:19 src/credits_form.C:59
+#: src/bullet_forms.C:50 src/credits_form.C:19 src/credits_form.C:59
 #: src/form1.C:43 src/form1.C:117 src/form1.C:261 src/form1.C:284
-#: src/insets/insetbib.C:95 src/insets/insetbib.C:123
+#: src/insets/insetbib.C:89 src/insets/insetbib.C:117
 #: src/insets/insetinclude.C:47 src/insets/insetindex.C:56
 #: src/latexoptions.C:21 src/layout_forms.C:72 src/layout_forms.C:277
 #: src/layout_forms.C:413 src/layout_forms.C:477 src/layout_forms.C:697
@@ -345,7 +346,7 @@ msgstr "Grootte|#o"
 msgid "OK"
 msgstr "OK"
 
-#: src/bullet_forms.C:54 src/form1.C:114 src/form1.C:287 src/latexoptions.C:24
+#: src/bullet_forms.C:53 src/form1.C:114 src/form1.C:287 src/latexoptions.C:24
 #: src/layout_forms.C:68 src/layout_forms.C:236 src/layout_forms.C:281
 #: src/layout_forms.C:387 src/layout_forms.C:416 src/layout_forms.C:474
 #: src/layout_forms.C:701 src/lyx.C:50 src/lyx.C:99 src/lyx_sendfax.C:39
@@ -355,81 +356,81 @@ msgstr "OK"
 msgid "Apply|#A"
 msgstr "Toepassen|#a"
 
-#: src/bullet_forms.C:57 src/form1.C:120 src/form1.C:264 src/form1.C:290
-#: src/insets/insetbib.C:98 src/insets/insetbib.C:99 src/insets/insetbib.C:126
-#: src/insets/insetbib.C:127 src/insets/insetinclude.C:50
+#: src/bullet_forms.C:56 src/form1.C:120 src/form1.C:264 src/form1.C:290
+#: src/insets/insetbib.C:92 src/insets/insetbib.C:93 src/insets/insetbib.C:120
+#: src/insets/insetbib.C:121 src/insets/insetinclude.C:50
 #: src/insets/insetinclude.C:51 src/insets/insetindex.C:60
 #: src/insets/insetindex.C:61 src/latexoptions.C:27 src/layout_forms.C:64
 #: src/layout_forms.C:285 src/layout_forms.C:391 src/layout_forms.C:419
 #: src/layout_forms.C:471 src/layout_forms.C:705 src/lyx.C:53 src/lyx.C:103
-#: src/lyx_gui_misc.C:380 src/lyx_gui_misc.C:385 src/lyx_gui_misc.C:391
-#: src/lyx_gui_misc.C:400 src/lyx_sendfax.C:35 src/mathed/math_forms.C:102
+#: src/lyx_gui_misc.C:388 src/lyx_gui_misc.C:393 src/lyx_gui_misc.C:399
+#: src/lyx_gui_misc.C:408 src/lyx_sendfax.C:35 src/mathed/math_forms.C:102
 #: src/mathed/math_forms.C:132 src/mathed/math_forms.C:200 src/print_form.C:47
 #: src/print_form.C:120 src/sp_form.C:42
 msgid "Cancel|^["
 msgstr "Annuleren|^["
 
-#: src/bullet_forms.C:60
+#: src/bullet_forms.C:59
 msgid "LaTeX|#L"
 msgstr "LaTeX|#L"
 
-#: src/bullet_forms.C:68
+#: src/bullet_forms.C:67
 msgid "1|#1"
 msgstr "1|#1"
 
-#: src/bullet_forms.C:72
+#: src/bullet_forms.C:71
 msgid "2|#2"
 msgstr "2|#2"
 
-#: src/bullet_forms.C:75
+#: src/bullet_forms.C:74
 msgid "3|#3"
 msgstr "3|#3"
 
-#: src/bullet_forms.C:78
+#: src/bullet_forms.C:77
 msgid "4|#4"
 msgstr "4|#4"
 
-#: src/bullet_forms.C:83
+#: src/bullet_forms.C:82
 msgid "Bullet Depth"
 msgstr "Lijstdiepte"
 
-#: src/bullet_forms.C:88
+#: src/bullet_forms.C:87
 msgid "Standard|#S"
 msgstr "Standaard|#S"
 
-#: src/bullet_forms.C:93
+#: src/bullet_forms.C:92
 msgid "Maths|#M"
 msgstr "Wisk.|#M"
 
-#: src/bullet_forms.C:97
+#: src/bullet_forms.C:96
 msgid "Ding 2|#i"
 msgstr "Ding 2|#i"
 
-#: src/bullet_forms.C:101
+#: src/bullet_forms.C:100
 msgid "Ding 3|#n"
 msgstr "Ding 3|#n"
 
-#: src/bullet_forms.C:105
+#: src/bullet_forms.C:104
 msgid "Ding 4|#g"
 msgstr "Ding 4|#g"
 
-#: src/bullet_forms.C:109
+#: src/bullet_forms.C:108
 msgid "Ding 1|#D"
 msgstr "Ding 1|#D"
 
-#: src/bullet_forms_cb.C:29
+#: src/bullet_forms_cb.C:30
 msgid "Sorry, your libXpm is too old."
 msgstr "Helaas is Uw libXpm te oud."
 
-#: src/bullet_forms_cb.C:30
+#: src/bullet_forms_cb.C:31
 msgid "This feature requires xpm-4.7 (a.k.a 3.4g) or newer."
 msgstr "Deze eigenschap vereist xpm-4.7 (alias 3.4g) of nieuwer."
 
-#: src/bullet_forms_cb.C:31
+#: src/bullet_forms_cb.C:32
 msgid "Try running LyX in mono mode (lyx  -Mono)."
 msgstr "Probeer LyX te draaien in zwartwit (lyx -Mono)."
 
-#: src/bullet_forms_cb.C:36
+#: src/bullet_forms_cb.C:37
 msgid ""
 " default | tiny | script | footnote | small | normal | large | Large | LARGE "
 "| huge | Huge"
@@ -437,7 +438,7 @@ msgstr ""
 " default | heel klein | schrift | voetnoot | klein | normaal | groot | Groot "
 "| GROOT | enorm | Enorm"
 
-#: src/bullet_forms_cb.C:51
+#: src/bullet_forms_cb.C:52
 msgid "Itemize Bullet Selection"
 msgstr "Lijsttekens kiezen"
 
@@ -519,11 +520,11 @@ msgstr ""
 "the Free Software Foundation, Inc.,\n"
 "675 Mass Ave, Cambridge, MA 02139, USA."
 
-#: src/filedlg.C:182
+#: src/filedlg.C:181
 msgid "Warning! Couldn't open directory."
 msgstr "Waarschuwing! Kon map niet openen."
 
-#: src/FontLoader.C:217
+#: src/FontLoader.C:219
 msgid "Loading font into X-Server..."
 msgstr "Lettertype wordt in X-server geladen..."
 
@@ -608,9 +609,9 @@ msgstr "f Venster tonen|#F"
 msgid "Do Translations|#r"
 msgstr "r Schaal aanpassen|#r"
 
-#: src/form1.C:129 src/menus.C:175 src/menus.C:186 src/menus.C:295
-#: src/menus.C:296 src/menus.C:297 src/menus.C:370 src/menus.C:371
-#: src/menus.C:372 src/sp_form.C:58
+#: src/form1.C:129 src/menus.C:171 src/menus.C:182 src/menus.C:291
+#: src/menus.C:292 src/menus.C:293 src/menus.C:366 src/menus.C:367
+#: src/menus.C:368 src/sp_form.C:58
 msgid "Options"
 msgstr "Opties"
 
@@ -772,56 +773,56 @@ msgstr "m Heel woord|#M#m"
 msgid "Replace All|#A#a"
 msgstr "r Vervangen|#R#r"
 
-#: src/insets/figinset.C:1085
+#: src/insets/figinset.C:1110
 msgid "[render error]"
 msgstr "[tekenfout]"
 
-#: src/insets/figinset.C:1086
+#: src/insets/figinset.C:1111
 msgid "[rendering ... ]"
 msgstr "[tekenen ...]"
 
-#: src/insets/figinset.C:1088
+#: src/insets/figinset.C:1113
 msgid "[no file]"
 msgstr "[geen bestand]"
 
-#: src/insets/figinset.C:1089
+#: src/insets/figinset.C:1114
 msgid "[not displayed]"
 msgstr "[niet getoond]"
 
-#: src/insets/figinset.C:1090
+#: src/insets/figinset.C:1115
 msgid "[no ghostscript]"
 msgstr "[geen ghostscript]"
 
-#: src/insets/figinset.C:1092
+#: src/insets/figinset.C:1117
 msgid "[unknown error]"
 msgstr "[onbekende fout]"
 
-#: src/insets/figinset.C:1289
+#: src/insets/figinset.C:1314
 msgid "Figure"
 msgstr "Figuur"
 
-#: src/insets/figinset.C:1350 src/insets/figinset.C:1483
+#: src/insets/figinset.C:1376 src/insets/figinset.C:1509
 msgid "empty figure path"
 msgstr "leeg zoekpad voor figuren"
 
-#: src/insets/figinset.C:2137
+#: src/insets/figinset.C:2157
 msgid "Clipart"
 msgstr "Prentenboek"
 
-#: src/insets/figinset.C:2138 src/lyxfunc.C:4707 src/lyxfunc.C:4770
-#: src/lyxfunc.C:4993
+#: src/insets/figinset.C:2158 src/lyxfunc.C:2509 src/lyxfunc.C:2572
+#: src/lyxfunc.C:2795
 msgid "Document"
 msgstr "Document"
 
-#: src/insets/figinset.C:2144 src/insets/figinset.C:2147
+#: src/insets/figinset.C:2164 src/insets/figinset.C:2168
 msgid "EPS Figure"
 msgstr "EPS-figuur"
 
-#: src/insets/figinset.C:2161
+#: src/insets/figinset.C:2182
 msgid "Filename can't contain any of these characters:"
 msgstr "Bestandsnaam mag de volgende tekens niet bevatten:"
 
-#: src/insets/figinset.C:2162
+#: src/insets/figinset.C:2185
 #, no-c-format
 msgid "space, '#', '~', '$' or '%'."
 msgstr "spatie, '#', '~', '$' of '%'."
@@ -859,57 +860,57 @@ msgstr "HTML type|#H"
 msgid "HTML type|#H"
 msgstr "HTML type|#H"
 
-#: src/LyXAction.C:114 src/insets/form_url.C:31 src/insets/inseterror.C:167
+#: src/LyXAction.C:115 src/insets/form_url.C:31 src/insets/inseterror.C:167
 #: src/latexoptions.C:47 src/layout_forms.C:240 src/layout_forms.C:562
-#: src/layout_forms.C:790 src/lyx.C:125 src/lyx_sendfax.C:109 src/lyxvc.C:251
+#: src/layout_forms.C:790 src/lyx.C:125 src/lyx_sendfax.C:109 src/lyxvc.C:261
 #: src/mathed/math_forms.C:179
 msgid "Close"
 msgstr "Sluiten"
 
-#: src/insets/insetbib.C:88
+#: src/insets/insetbib.C:82
 msgid "Key:"
 msgstr "Sleutel:"
 
-#: src/insets/insetbib.C:102 src/insets/insetbib.C:103
+#: src/insets/insetbib.C:96 src/insets/insetbib.C:97
 msgid "Remark:|#R"
 msgstr "r Opmerking:|#R"
 
 #. InsetBibtex uses the same form, with different labels
-#: src/insets/insetbib.C:120 src/insets/insetbib.C:121
-#: src/insets/insetbib.C:274 src/insets/insetbib.C:275
+#: src/insets/insetbib.C:114 src/insets/insetbib.C:115
+#: src/insets/insetbib.C:269 src/insets/insetbib.C:270
 msgid "Key:|#K"
 msgstr "k Sleutel:|#K"
 
-#: src/insets/insetbib.C:130 src/insets/insetbib.C:131
-#: src/insets/insetbib.C:276 src/insets/insetbib.C:277
+#: src/insets/insetbib.C:124 src/insets/insetbib.C:125
+#: src/insets/insetbib.C:271 src/insets/insetbib.C:272
 msgid "Label:|#L"
 msgstr "l Label:|#l"
 
-#: src/insets/insetbib.C:179
+#: src/insets/insetbib.C:174
 msgid "Citation"
 msgstr "Aanhaling"
 
-#: src/insets/insetbib.C:285
+#: src/insets/insetbib.C:280
 msgid "Bibliography item"
 msgstr "Literatuurverwijzing"
 
-#: src/insets/insetbib.C:300
+#: src/insets/insetbib.C:295
 msgid "BibTeX Generated References"
 msgstr "Verwijzingen gegenereerd door BibTeX"
 
-#: src/insets/insetbib.C:415
+#: src/insets/insetbib.C:412
 msgid "Database:"
 msgstr "Database:"
 
-#: src/insets/insetbib.C:416
+#: src/insets/insetbib.C:413
 msgid "Style:  "
 msgstr "Stijl:  "
 
-#: src/insets/insetbib.C:424
+#: src/insets/insetbib.C:421
 msgid "BibTeX"
 msgstr "BibTeX"
 
-#: src/insets/inseterror.C:67 src/insets/inseterror.C:86 src/lyx_cb.C:4357
+#: src/insets/inseterror.C:67 src/insets/inseterror.C:86 src/lyx_cb.C:3724
 msgid "Error"
 msgstr "Fout"
 
@@ -955,9 +956,9 @@ msgid "Use include|#U"
 msgstr "u Gebruik Include|#"
 
 #. launches dialog
-#: src/insets/insetinclude.C:111 src/lyx_cb.C:386 src/lyxfunc.C:4655
-#: src/lyxfunc.C:4745 src/lyxfunc.C:4794 src/lyxfunc.C:4867 src/lyxfunc.C:4968
-#: src/menus.C:177 src/menus.C:309 src/menus.C:310 src/menus.C:311
+#: src/insets/insetinclude.C:111 src/lyx_cb.C:314 src/lyxfunc.C:2457
+#: src/lyxfunc.C:2547 src/lyxfunc.C:2596 src/lyxfunc.C:2669 src/lyxfunc.C:2770
+#: src/menus.C:173 src/menus.C:305 src/menus.C:306 src/menus.C:307
 msgid "Documents"
 msgstr "Documenten"
 
@@ -1038,7 +1039,7 @@ msgid "Ref: "
 msgstr "Ref: "
 
 #. /
-#: src/insets/insettoc.h:35 src/lyxfunc.C:889 src/lyxfunc.C:2972
+#: src/insets/insettoc.h:35 src/lyxfunc.C:770
 msgid "Table of Contents"
 msgstr "Inhoudsopgave"
 
@@ -1065,15 +1066,15 @@ msgstr "Fout geopend"
 msgid "Opened inset"
 msgstr "Inzet geopend"
 
-#: src/intl.C:292 src/intl.C:293
+#: src/intl.C:294 src/intl.C:295
 msgid "other..."
 msgstr "andere..."
 
-#: src/intl.C:360
+#: src/intl.C:365
 msgid "Key Mappings"
 msgstr "Toetsenkaarten"
 
-#: src/kbmap.C:298
+#: src/kbmap.C:245
 msgid "   options: "
 msgstr "   opties: "
 
@@ -1110,31 +1111,31 @@ msgstr "LaTeX-Log"
 msgid "Allow accents on ALL characters|#w"
 msgstr "w Sta accenten toe op ALLE tekens|#w"
 
-#: src/latexoptions.C:51 src/lyxvc.C:255 src/lyxvc.C:256
+#: src/latexoptions.C:51 src/lyxvc.C:265 src/lyxvc.C:266
 msgid "Update|#Uu"
 msgstr "u Bijwerken|#Uu"
 
-#: src/layout.C:1359
+#: src/layout.C:1400
 msgid "LyX wasn't able to find its layout descriptions!"
 msgstr "LyX kon zijn opmaakbeschrijvingen niet vinden!"
 
-#: src/layout.C:1360
+#: src/layout.C:1401
 msgid "Check that the file \"textclass.lst\""
 msgstr "Verzeker u ervan dat bestand \"textclass.lst\""
 
-#: src/layout.C:1361
+#: src/layout.C:1402
 msgid "is installed correctly. Sorry, has to exit :-("
 msgstr "correct is geïnstalleerd. Moet helaas ophouden :-("
 
-#: src/layout.C:1414
+#: src/layout.C:1464
 msgid "LyX wasn't able to find any layout description!"
 msgstr "LyX kon geen layout-beschrijving vinden!"
 
-#: src/layout.C:1415
+#: src/layout.C:1465
 msgid "Check the contents of  the file \"textclass.lst\""
 msgstr "Kontroleer inhoud bestand \"textclass.lst\""
 
-#: src/layout.C:1416
+#: src/layout.C:1466
 msgid "Sorry, has to exit :-("
 msgstr "Helaas, moet ophouden :-("
 
@@ -1346,7 +1347,7 @@ msgstr "k Houd|#K"
 msgid "Keep|#p"
 msgstr "p Houd|#p"
 
-#: src/layout_forms.C:383 src/lyx_gui_misc.C:401 src/lyx_sendfax.C:31
+#: src/layout_forms.C:383 src/lyx_gui_misc.C:409 src/lyx_sendfax.C:31
 msgid "OK|#O"
 msgstr "OK|#O"
 
@@ -1607,12 +1608,12 @@ msgstr "Document wordt opgeslagen"
 msgid "Building program"
 msgstr ""
 
-#: src/LyXAction.C:92
+#: src/LyXAction.C:91
 #, fuzzy
 msgid "Insert appendix"
 msgstr "Label invoegen"
 
-#: src/LyXAction.C:93
+#: src/LyXAction.C:92
 msgid "Describe command"
 msgstr "Opdracht beschrijven"
 
@@ -1624,417 +1625,417 @@ msgstr "Selecteren vorig teken"
 msgid "Insert bibtex"
 msgstr "Bibtex invoegen"
 
-#: src/LyXAction.C:105
+#: src/LyXAction.C:106
 msgid "Build program"
 msgstr ""
 
-#: src/LyXAction.C:106
+#: src/LyXAction.C:107
 msgid "Autosave"
 msgstr "Auto-opslaan"
 
-#: src/LyXAction.C:108
+#: src/LyXAction.C:109
 msgid "Go to beginning of document"
 msgstr "Naar begin van document"
 
-#: src/LyXAction.C:110
+#: src/LyXAction.C:111
 msgid "Select to beginning of document"
 msgstr "Selecteren tot begin document"
 
-#: src/LyXAction.C:113
+#: src/LyXAction.C:114
 msgid "Check TeX"
 msgstr "Controleren TeX"
 
-#: src/LyXAction.C:116
+#: src/LyXAction.C:117
 msgid "Go to end of document"
 msgstr "Naar einde van document"
 
-#: src/LyXAction.C:118
+#: src/LyXAction.C:119
 msgid "Select to end of document"
 msgstr "Selecteren tot einde document"
 
-#: src/LyXAction.C:119
+#: src/LyXAction.C:120
 #, fuzzy
 msgid "Export to"
 msgstr "|Exporteren%m%l"
 
-#: src/LyXAction.C:120
+#: src/LyXAction.C:121
 msgid "Fax"
 msgstr "Faxen"
 
-#: src/LyXAction.C:123
+#: src/LyXAction.C:124
 msgid "Import document"
 msgstr "Document importeren"
 
-#: src/LyXAction.C:126
+#: src/LyXAction.C:127
 msgid "New document"
 msgstr "Nieuw document"
 
-#: src/LyXAction.C:128
+#: src/LyXAction.C:129
 msgid "New document from template"
 msgstr "Nieuw document van sjabloon"
 
-#: src/LyXAction.C:129
+#: src/LyXAction.C:130
 msgid "Open"
 msgstr "Openen"
 
-#: src/LyXAction.C:131
+#: src/LyXAction.C:132
 msgid "Switch to previous document"
 msgstr "Naar vorig document"
 
-#: src/LyXAction.C:132 src/lyx_cb.C:1015 src/print_form.C:72
+#: src/LyXAction.C:133 src/lyx_cb.C:914 src/print_form.C:72
 msgid "Print"
 msgstr "Afdrukken"
 
-#: src/LyXAction.C:134
+#: src/LyXAction.C:135
 msgid "Revert to saved"
 msgstr "Terug naar opgeslagen versie"
 
-#: src/LyXAction.C:136
+#: src/LyXAction.C:137
 #, fuzzy
 msgid "Toggle read-only"
 msgstr "Vet aan/uit"
 
-#: src/LyXAction.C:137
+#: src/LyXAction.C:138
 msgid "Update DVI"
 msgstr "Bijwerken DVI"
 
-#: src/LyXAction.C:139
+#: src/LyXAction.C:141
 msgid "Update PostScript"
 msgstr "Bijwerken PostScript"
 
-#: src/LyXAction.C:140
+#: src/LyXAction.C:142
 msgid "View DVI"
 msgstr "Bekijken DVI"
 
-#: src/LyXAction.C:142
+#: src/LyXAction.C:144
 msgid "View PostScript"
 msgstr "Bekijken PostScript"
 
-#: src/LyXAction.C:143 src/lyx_sendfax_main.C:278
+#: src/LyXAction.C:145 src/lyx_sendfax_main.C:278
 msgid "Save"
 msgstr "s Opslaan"
 
-#: src/LyXAction.C:144
+#: src/LyXAction.C:146
 msgid "Save As"
 msgstr "a Opslaan als"
 
-#: src/LyXAction.C:145 src/lyxfunc.C:665 src/lyxfunc.C:2748
+#: src/LyXAction.C:148 src/lyxfunc.C:624
 msgid "Cancel"
 msgstr "Annuleren"
 
-#: src/LyXAction.C:146
+#: src/LyXAction.C:149
 msgid "Go one char back"
 msgstr "Een teken terug"
 
-#: src/LyXAction.C:147
+#: src/LyXAction.C:151
 msgid "Go one char forward"
 msgstr "Een teken vooruit"
 
-#: src/LyXAction.C:149
+#: src/LyXAction.C:154
 msgid "Insert citation"
 msgstr "Literatuurverwijzing invoegen"
 
-#: src/LyXAction.C:152
+#: src/LyXAction.C:157
 msgid "Execute command"
 msgstr "Opdracht uitvoeren"
 
-#: src/LyXAction.C:154 src/lyx_cb.C:2742 src/lyx_cb.C:2749
+#: src/LyXAction.C:159 src/lyx_cb.C:2431
 msgid "Copy"
 msgstr "Kopiëren"
 
-#: src/LyXAction.C:155 src/lyx_cb.C:2769
+#: src/LyXAction.C:160 src/lyx_cb.C:2443
 msgid "Cut"
 msgstr "Knippen"
 
-#: src/LyXAction.C:161
+#: src/LyXAction.C:166
 msgid "Decrement environment depth"
 msgstr "Verminderen omgevingsdiepte"
 
-#: src/LyXAction.C:163
+#: src/LyXAction.C:168
 msgid "Increment environment depth"
 msgstr "Vergroten omgevingsdiepte"
 
-#: src/LyXAction.C:165
+#: src/LyXAction.C:170
 msgid "Change environment depth"
 msgstr "Veranderen omgevingsdiepte"
 
 # was: punten (...) invoegen
-#: src/LyXAction.C:166
+#: src/LyXAction.C:171
 msgid "Insert ... dots"
 msgstr "Ellips invoegen"
 
-#: src/LyXAction.C:167
+#: src/LyXAction.C:172
 msgid "Go down"
 msgstr "Omlaag"
 
-#: src/LyXAction.C:169
+#: src/LyXAction.C:174
 msgid "Select next line"
 msgstr "Volgende regel selecteren"
 
-#: src/LyXAction.C:171
+#: src/LyXAction.C:176
 msgid "Choose Paragraph Environment"
 msgstr "Omgeving voor alinea kiezen"
 
-#: src/LyXAction.C:173
+#: src/LyXAction.C:178
 msgid "Insert end of sentence period"
 msgstr "Zinseinde-punt invoegen"
 
-#: src/LyXAction.C:174
+#: src/LyXAction.C:179
 msgid "Go to next error"
 msgstr "Naar volgende foutmelding"
 
-#: src/LyXAction.C:176
+#: src/LyXAction.C:181
 msgid "Remove all error boxes"
 msgstr "Alle foutmeldingen verwijderen"
 
-#: src/LyXAction.C:177 src/lyx_cb.C:2675
+#: src/LyXAction.C:182 src/lyx_cb.C:2383
 msgid "Insert Figure"
 msgstr "Figuur invoegen"
 
 # Ik beschouw dit &-teken als een slordigheid in de Engelse tekst..
-#: src/LyXAction.C:182 src/lyxfr0.C:97
+#: src/LyXAction.C:187 src/lyxfr0.C:97
 msgid "Find & Replace"
 msgstr "Zoeken en vervangen"
 
-#: src/LyXAction.C:183
+#: src/LyXAction.C:189
 msgid "Toggle bold"
 msgstr "Vet aan/uit"
 
-#: src/LyXAction.C:184
+#: src/LyXAction.C:190
 msgid "Toggle code style"
 msgstr "Codestijl aan/uit"
 
-#: src/LyXAction.C:185
+#: src/LyXAction.C:191
 msgid "Default font style"
 msgstr "Standaard lettertype"
 
-#: src/LyXAction.C:186
+#: src/LyXAction.C:193
 msgid "Toggle emphasize"
 msgstr "Nadruk aan/uit"
 
-#: src/LyXAction.C:187
+#: src/LyXAction.C:194
 msgid "Toggle user defined style"
 msgstr "Zelfgedefinieerde stijl aan/uit"
 
-#: src/LyXAction.C:188
+#: src/LyXAction.C:196
 msgid "Toggle noun style"
 msgstr "Eigennaamstijl aan/uit"
 
-#: src/LyXAction.C:189
+#: src/LyXAction.C:197
 msgid "Toggle roman font style"
 msgstr "Romeins lettertype aan/uit"
 
-#: src/LyXAction.C:190
+#: src/LyXAction.C:199
 msgid "Toggle sans font style"
 msgstr "Lettertype met/zonder schreef"
 
-#: src/LyXAction.C:191
+#: src/LyXAction.C:200
 msgid "Set font size"
 msgstr "Korpsgrootte instellen"
 
 # aangenomen dat dit klopt.. niet gecontroleerd.
-#: src/LyXAction.C:192
+#: src/LyXAction.C:201
 msgid "Show font state"
 msgstr "Toon lettertype"
 
-#: src/LyXAction.C:194
+#: src/LyXAction.C:204
 msgid "Toggle font underline"
 msgstr "Onderlijning aan/uit"
 
-#: src/LyXAction.C:195
+#: src/LyXAction.C:205
 msgid "Insert Footnote"
 msgstr "Voetnoot invoegen"
 
-#: src/LyXAction.C:196
+#: src/LyXAction.C:207
 msgid "Select next char"
 msgstr "Volgend teken selecteren"
 
-#: src/LyXAction.C:198
+#: src/LyXAction.C:210
 msgid "Insert horizontal fill"
 msgstr "Horizontale vulling invoegen"
 
 # (woord)afbreekpunt
-#: src/LyXAction.C:201
+#: src/LyXAction.C:213
 msgid "Insert hyphenation point"
 msgstr "Afbreekpunt invoegen"
 
-#: src/LyXAction.C:203
+#: src/LyXAction.C:215
 #, fuzzy
 msgid "Insert index item"
 msgstr "Kanttekening invoegen"
 
-#: src/LyXAction.C:205
+#: src/LyXAction.C:217
 #, fuzzy
 msgid "Insert last index item"
 msgstr "Kanttekening invoegen"
 
-#: src/LyXAction.C:206
+#: src/LyXAction.C:218
 #, fuzzy
 msgid "Insert index list"
 msgstr "Bibtex invoegen"
 
-#: src/LyXAction.C:207
+#: src/LyXAction.C:220
 msgid "Turn off keymap"
 msgstr "Toetsenkaart uitzetten"
 
-#: src/LyXAction.C:209
+#: src/LyXAction.C:223
 msgid "Use primary keymap"
 msgstr "Eerste toetsenkaart gebruiken"
 
-#: src/LyXAction.C:211
+#: src/LyXAction.C:225
 msgid "Use secondary keymap"
 msgstr "Tweede toetsenkaart gebruiken"
 
-#: src/LyXAction.C:212
+#: src/LyXAction.C:226
 msgid "Toggle keymap"
 msgstr "Toetsenkaart aan/uit zetten"
 
-#: src/LyXAction.C:213
+#: src/LyXAction.C:228
 msgid "Insert Label"
 msgstr "Label invoegen"
 
-#: src/LyXAction.C:214
+#: src/LyXAction.C:230
 #, fuzzy
 msgid "View LaTeX log"
 msgstr "LaTeX-Log"
 
-#: src/LyXAction.C:218
+#: src/LyXAction.C:235
 msgid "Copy paragraph environment type"
 msgstr "Kopiëren alinea-omgeving"
 
-#: src/LyXAction.C:224
+#: src/LyXAction.C:241
 msgid "Paste paragraph environment type"
 msgstr "Alinea-omgeving toepassen"
 
-#: src/LyXAction.C:230
+#: src/LyXAction.C:248
 msgid "Go to beginning of line"
 msgstr "Naar begin van regel"
 
-#: src/LyXAction.C:232
+#: src/LyXAction.C:250
 msgid "Select to beginning of line"
 msgstr "Selecteren tot begin regel"
 
-#: src/LyXAction.C:234
+#: src/LyXAction.C:252
 msgid "Go to end of line"
 msgstr "Naar einde van regel"
 
-#: src/LyXAction.C:236
+#: src/LyXAction.C:254
 msgid "Select to end of line"
 msgstr "Selecteren tot einde regel"
 
-#: src/LyXAction.C:238
+#: src/LyXAction.C:256
 #, fuzzy
 msgid "Insert list of algorithms"
 msgstr "Lijst van Algoritmen"
 
-#: src/LyXAction.C:240
+#: src/LyXAction.C:258
 #, fuzzy
 msgid "Insert list of figures"
 msgstr "Lijst van Figuren"
 
-#: src/LyXAction.C:242
+#: src/LyXAction.C:260
 #, fuzzy
 msgid "Insert list of tables"
 msgstr "Lijst van Tabellen"
 
-#: src/LyXAction.C:243
+#: src/LyXAction.C:261
 msgid "Exit"
 msgstr "Afsluiten"
 
-#: src/LyXAction.C:245
+#: src/LyXAction.C:263
 msgid "Insert Margin note"
 msgstr "Kanttekening invoegen"
 
-#: src/LyXAction.C:251
+#: src/LyXAction.C:269
 msgid "Math Greek"
 msgstr "Griekse symbolen"
 
-#: src/LyXAction.C:254
+#: src/LyXAction.C:272
 #, fuzzy
 msgid "Insert math symbol"
 msgstr "Label invoegen"
 
 # `mode' is eigenlijk een anglicisme
-#: src/LyXAction.C:259
+#: src/LyXAction.C:277
 msgid "Math mode"
 msgstr "Wiskundemodus"
 
-#: src/LyXAction.C:263 src/lyx_cb.C:2817
+#: src/LyXAction.C:281 src/lyx_cb.C:2475
 msgid "Melt"
 msgstr "Smelt"
 
-#: src/LyXAction.C:271
+#: src/LyXAction.C:289
 msgid "Go one paragraph down"
 msgstr "Een alinea omlaag"
 
-#: src/LyXAction.C:273
+#: src/LyXAction.C:291
 msgid "Select next paragraph"
 msgstr "Selecteer de volgende alinea"
 
-#: src/LyXAction.C:275
+#: src/LyXAction.C:293
 msgid "Go one paragraph up"
 msgstr "Een alinea omhoog"
 
-#: src/LyXAction.C:277
+#: src/LyXAction.C:295
 msgid "Select previous paragraph"
 msgstr "Selecteer de vorige alinea"
 
 # invoegen?
-#: src/LyXAction.C:279 src/lyx_cb.C:2779
+#: src/LyXAction.C:297 src/lyx_cb.C:2452
 msgid "Paste"
 msgstr "Plakken"
 
-#: src/LyXAction.C:284
+#: src/LyXAction.C:302
 msgid "Insert protected space"
 msgstr "Harde spatie invoegen"
 
-#: src/LyXAction.C:285
+#: src/LyXAction.C:303
 msgid "Insert quote"
 msgstr "Aanhalingsteken invoegen"
 
-#: src/LyXAction.C:287
+#: src/LyXAction.C:305
 msgid "Reconfigure"
 msgstr "Herconfigureren"
 
-#: src/LyXAction.C:288 src/lyx_cb.C:2349
+#: src/LyXAction.C:306 src/lyx_cb.C:2143
 msgid "Redo"
 msgstr "Alsnog uitvoeren"
 
-#: src/LyXAction.C:292
+#: src/LyXAction.C:310
 msgid "Insert cross reference"
 msgstr "Kruisverwijzing invoegen"
 
-#: src/LyXAction.C:314 src/lyx_cb.C:2687
+#: src/LyXAction.C:332 src/lyx_cb.C:2395
 msgid "Insert Table"
 msgstr "Tabel invoegen"
 
-#: src/LyXAction.C:315
+#: src/LyXAction.C:333
 msgid "Toggle TeX style"
 msgstr "TeX-stijl aan/uit"
 
-#: src/LyXAction.C:317
+#: src/LyXAction.C:335
 #, fuzzy
 msgid "Insert table of contents"
 msgstr "Inhoudsopgave"
 
-#: src/LyXAction.C:319
+#: src/LyXAction.C:337
 #, fuzzy
 msgid "View table of contents"
 msgstr "Inhoudsopgave"
 
-#: src/LyXAction.C:321
+#: src/LyXAction.C:339
 msgid "Toggle cursor does/doesn't follow the scrollbar"
 msgstr "Cursor volgt wel/niet de rolbalk"
 
-#: src/LyXAction.C:325 src/lyx_cb.C:2320
+#: src/LyXAction.C:343 src/lyx_cb.C:2123
 msgid "Undo"
 msgstr "Ongedaan maken"
 
-#: src/LyXAction.C:333
+#: src/LyXAction.C:351
 msgid "Register document under version control"
 msgstr ""
 
-#: src/LyXAction.C:555
+#: src/LyXAction.C:575
 msgid "No description available!"
 msgstr "Geen beschrijving beschikbaar!"
 
@@ -2090,456 +2091,469 @@ msgstr "Paginanummer invoegen|#P"
 msgid "Go to Reference|#G"
 msgstr "g Naar verwijzing|#G"
 
-#: src/lyx_cb.C:361
+#: src/lyx_cb.C:290
 msgid "Save failed. Rename and try again?"
 msgstr "Opslaan is mislukt. Opnieuw proberen onder andere naam?"
 
-#: src/lyx_cb.C:363
+#: src/lyx_cb.C:292
 msgid "(If not, document is not saved.)"
 msgstr "(anders is document niet opgeslagen.)"
 
-#: src/lyx_cb.C:387 src/lyxfunc.C:4656
+#: src/lyx_cb.C:315 src/lyxfunc.C:2458
 msgid "Templates"
 msgstr "Sjablonen"
 
-#: src/lyx_cb.C:392
+#: src/lyx_cb.C:320
 msgid "Enter Filename to Save Document as"
 msgstr "Geef bestandsnaam om document op te slaan:"
 
 #. Cancel: Do nothing
-#: src/lyx_cb.C:399 src/lyxfunc.C:4662 src/lyxfunc.C:4689 src/lyxfunc.C:4754
-#: src/lyxfunc.C:4803 src/lyxfunc.C:4828 src/lyxfunc.C:4838 src/lyxfunc.C:4883
-#: src/lyxfunc.C:4908 src/lyxfunc.C:4918 src/lyxfunc.C:4977
+#: src/lyx_cb.C:329 src/lyxfunc.C:2464 src/lyxfunc.C:2491 src/lyxfunc.C:2556
+#: src/lyxfunc.C:2605 src/lyxfunc.C:2630 src/lyxfunc.C:2640 src/lyxfunc.C:2685
+#: src/lyxfunc.C:2710 src/lyxfunc.C:2720 src/lyxfunc.C:2779
 msgid "Canceled."
 msgstr "Afgebroken."
 
-#: src/lyx_cb.C:410
+#: src/lyx_cb.C:340
 msgid "Same name as document already has:"
 msgstr "Dezelfde naam die het document al heeft:"
 
-#: src/lyx_cb.C:412
+#: src/lyx_cb.C:342
 msgid "Save anyway?"
 msgstr "Toch opslaan?"
 
-#: src/lyx_cb.C:418
+#: src/lyx_cb.C:348
 msgid "Another document with same name open!"
 msgstr "Een ander document met dezelfde naam open!"
 
-#: src/lyx_cb.C:420
+#: src/lyx_cb.C:350
 msgid "Replace with current document?"
 msgstr "Vervangen door huidig document?"
 
-#: src/lyx_cb.C:428
+#: src/lyx_cb.C:358
 msgid "Document renamed to '"
 msgstr "Document hernoemd tot: '"
 
-#: src/lyx_cb.C:430
+#: src/lyx_cb.C:360
 msgid "', but not saved..."
 msgstr "', maar niet opgeslagen..."
 
-#: src/lyx_cb.C:436
+#: src/lyx_cb.C:366
 msgid "Document already exists:"
 msgstr "Document bestaat al:"
 
-#: src/lyx_cb.C:438
+#: src/lyx_cb.C:368
 msgid "Replace file?"
 msgstr "Bestand vervangen?"
 
-#: src/lyx_cb.C:469 src/lyx_cb.C:499
+#: src/lyx_cb.C:399 src/lyx_cb.C:429
 msgid "One error detected"
 msgstr "Een fout gevonden"
 
-#: src/lyx_cb.C:470 src/lyx_cb.C:500
+#: src/lyx_cb.C:400 src/lyx_cb.C:430
 msgid "You should try to fix it."
 msgstr "Probeer die te corrigeren."
 
-#: src/lyx_cb.C:473 src/lyx_cb.C:503
+#: src/lyx_cb.C:403 src/lyx_cb.C:433
 msgid " errors detected."
 msgstr " fouten gevonden."
 
-#: src/lyx_cb.C:474 src/lyx_cb.C:504
+#: src/lyx_cb.C:404 src/lyx_cb.C:434
 msgid "You should try to fix them."
 msgstr "Probeer deze te corrigeren."
 
-#: src/lyx_cb.C:476
+#: src/lyx_cb.C:406
 msgid "There were errors during the LaTeX run."
 msgstr "LaTeX gaf foutmeldingen."
 
-#: src/lyx_cb.C:489
+#: src/lyx_cb.C:419
 #, fuzzy
 msgid "Wrong type of document"
 msgstr "Naar einde van document"
 
-#: src/lyx_cb.C:490
+#: src/lyx_cb.C:420
 msgid "The Build operation is not allowed in this document"
 msgstr ""
 
-#: src/lyx_cb.C:491 src/lyx_cb.C:506
+#: src/lyx_cb.C:421 src/lyx_cb.C:436
 #, fuzzy
 msgid "There were errors during the Build process."
 msgstr "LaTeX gaf foutmeldingen."
 
-#: src/lyx_cb.C:517
+#: src/lyx_cb.C:447
 #, fuzzy
 msgid "Chktex does not work with SGML derived documents."
 msgstr "Chktex werkt niet met LinuxDoc."
 
-#: src/lyx_cb.C:526
+#: src/lyx_cb.C:456
 msgid "No warnings found."
 msgstr "Geen waarschuwingen."
 
-#: src/lyx_cb.C:528
+#: src/lyx_cb.C:458
 msgid "One warning found."
 msgstr "Een waarschuwing gevonden."
 
-#: src/lyx_cb.C:529
+#: src/lyx_cb.C:459
 msgid "Use 'Edit->Go to Error' to find it."
 msgstr "Gebruik 'Wijzigen->Naar fout' om hem te vinden."
 
-#: src/lyx_cb.C:532
+#: src/lyx_cb.C:462
 msgid " warnings found."
 msgstr " waarschuwingen gevonden."
 
-#: src/lyx_cb.C:533
+#: src/lyx_cb.C:463
 msgid "Use 'Edit->Go to Error' to find them."
 msgstr "Gebruik 'Wijzigen->Naar fout' om ze te vinden."
 
-#: src/lyx_cb.C:535
+#: src/lyx_cb.C:465
 msgid "Chktex run successfully"
 msgstr "Chktex-run geslaagd"
 
-#: src/lyx_cb.C:537
+#: src/lyx_cb.C:467
 msgid "It seems chktex does not work."
 msgstr "Chktex lijkt niet te werken."
 
-#: src/lyx_cb.C:628 src/lyx_cb.C:631
+#: src/lyx_cb.C:553 src/lyx_cb.C:557
 msgid "Executing command:"
 msgstr "Opdracht uitvoeren:"
 
-#: src/lyx_cb.C:874 src/lyx_cb.C:914 src/lyx_cb.C:951 src/lyx_cb.C:982
-#: src/lyxfunc.C:4698
+#: src/lyx_cb.C:784 src/lyx_cb.C:822 src/lyx_cb.C:856 src/lyx_cb.C:884
+#: src/lyxfunc.C:2500
 msgid "File already exists:"
 msgstr "Bestand bestaat al:"
 
-#: src/lyx_cb.C:876 src/lyx_cb.C:916 src/lyx_cb.C:953 src/lyx_cb.C:984
+#: src/lyx_cb.C:786 src/lyx_cb.C:824 src/lyx_cb.C:858 src/lyx_cb.C:886
 msgid "Do you want to overwrite the file?"
 msgstr "Wilt u het bestand overschrijven?"
 
-#: src/lyx_cb.C:877 src/lyx_cb.C:917 src/lyx_cb.C:954 src/lyx_cb.C:985
+#: src/lyx_cb.C:787 src/lyx_cb.C:825 src/lyx_cb.C:859 src/lyx_cb.C:887
 msgid "Canceled"
 msgstr "Afgebroken"
 
-#: src/lyx_cb.C:882
+#: src/lyx_cb.C:793
 msgid "DocBook does not have a latex backend"
 msgstr ""
 
-#: src/lyx_cb.C:888
+#: src/lyx_cb.C:800
 msgid "Nice LaTeX file saved as"
 msgstr "Net LaTeX-bestand opgeslagen als"
 
-#: src/lyx_cb.C:904
+#: src/lyx_cb.C:812
 msgid "Document class must be linuxdoc."
 msgstr "Documentklasse moet linuxdoc zijn."
 
-#: src/lyx_cb.C:921
+#: src/lyx_cb.C:829
 msgid "Building LinuxDoc SGML file `"
 msgstr "Bouw LinuxDoc SGML bestand `"
 
-#: src/lyx_cb.C:926
+#: src/lyx_cb.C:834
 msgid "LinuxDoc SGML file save as"
 msgstr "LinuxDoc SGML bestand opslaan als"
 
-#: src/lyx_cb.C:941
+#: src/lyx_cb.C:846
 #, fuzzy
 msgid "Document class must be docbook."
 msgstr "Documentklasse moet linuxdoc zijn."
 
-#: src/lyx_cb.C:958
+#: src/lyx_cb.C:863
 #, fuzzy
 msgid "Building DocBook SGML file `"
 msgstr "Bouw LinuxDoc SGML bestand `"
 
-#: src/lyx_cb.C:963
+#: src/lyx_cb.C:868
 #, fuzzy
 msgid "DocBook SGML file save as"
 msgstr "LinuxDoc SGML bestand opslaan als"
 
-#: src/lyx_cb.C:991
+#: src/lyx_cb.C:893
 msgid "Ascii file saved as"
 msgstr "Ascii-bestand opgeslagen als"
 
-#: src/lyx_cb.C:1060
+#: src/lyx_cb.C:937
+msgid "Document exported as HTML to file `"
+msgstr ""
+
+#: src/lyx_cb.C:940
+#, fuzzy
+msgid "Unable to convert to HTML the file `"
+msgstr "Kan bestand niet lezen!"
+
+#: src/lyx_cb.C:997
+msgid "Unknown export type: "
+msgstr "Onbekend exporttype:"
+
+#: src/lyx_cb.C:1042
 msgid "Autosaving current document..."
 msgstr "Bezig met Auto-opslaan huidig document..."
 
-#: src/lyx_cb.C:1100
+#: src/lyx_cb.C:1082
 msgid "Autosave Failed!"
 msgstr "Auto-opslaan mislukte!"
 
-#: src/lyx_cb.C:1156
+#: src/lyx_cb.C:1138
 msgid "File to Insert"
 msgstr "Bestand voor invoegen"
 
-#: src/lyx_cb.C:1166
+#: src/lyx_cb.C:1148
 msgid "Error! Specified file is unreadable: "
 msgstr ""
 
-#: src/lyx_cb.C:1173
+#: src/lyx_cb.C:1155
 #, fuzzy
 msgid "Error! Cannot open specified file: "
 msgstr "Fout! Kan dat bestand niet openen:"
 
-#: src/lyx_cb.C:1220
+#: src/lyx_cb.C:1193
 msgid "Table Of Contents"
 msgstr "Inhoudsopgave"
 
-#: src/lyx_cb.C:1236 src/mathed/formula.C:1050
+#: src/lyx_cb.C:1209 src/mathed/formula.C:1041
 msgid "Enter new label to insert:"
 msgstr "Schijf nieuw label ter invoeging:"
 
-#: src/lyx_cb.C:1256
+#: src/lyx_cb.C:1233
 msgid "Insert Reference"
 msgstr "Verwijzing invoegen"
 
-#: src/lyx_cb.C:1291
+#: src/lyx_cb.C:1268
 msgid "Inserting Footnote..."
 msgstr "Voetnoot invoegen..."
 
 #. Import file
-#: src/lyx_cb.C:1361
+#: src/lyx_cb.C:1332
 msgid "Importing LinuxDoc SGML file `"
 msgstr "Inlezen LinuxDoc SGML-bestand `"
 
 #. TeX output asked
-#: src/lyx_cb.C:1369
+#: src/lyx_cb.C:1340
 msgid "Converting LinuxDoc SGML to TeX file..."
 msgstr "Omvormen LinuxDoc SGML tot TeX-bestand..."
 
 #. dvi output asked
-#: src/lyx_cb.C:1376
+#: src/lyx_cb.C:1347
 msgid "Converting LinuxDoc SGML to dvi file..."
 msgstr "Omvormen LinuxDoc SGML tot DVI-bestand..."
 
-#: src/lyx_cb.C:1429
+#: src/lyx_cb.C:1400
 #, fuzzy
 msgid "Converting DocBook SGML to dvi file..."
 msgstr "Omvormen LinuxDoc SGML tot DVI-bestand..."
 
-#: src/lyx_cb.C:1567
+#: src/lyx_cb.C:1515
 msgid "Character Style"
 msgstr "Tekenstijl"
 
-#: src/lyx_cb.C:1897
+#: src/lyx_cb.C:1721
 msgid "Paragraph Environment"
 msgstr "Alineaomgeving"
 
-#: src/lyx_cb.C:2152
+#: src/lyx_cb.C:1976
 msgid "Document Layout"
 msgstr "Opmaakblad document"
 
-#: src/lyx_cb.C:2191
+#: src/lyx_cb.C:2015
 msgid "Quotes"
 msgstr "Aanhalingstekens"
 
-#: src/lyx_cb.C:2238
+#: src/lyx_cb.C:2062
 msgid "LaTeX Preamble"
 msgstr "LaTeX preamble"
 
-#: src/lyx_cb.C:2255
+#: src/lyx_cb.C:2079
 msgid "Do you want to save the current settings"
 msgstr "Wilt U huidige instellingen opslaan"
 
-#: src/lyx_cb.C:2256
+#: src/lyx_cb.C:2080
 msgid "for Character, Document, Paper and Quotes"
 msgstr "voor teken, document, papier en aanhalingsteken"
 
-#: src/lyx_cb.C:2257
+#: src/lyx_cb.C:2081
 msgid "as default for new documents?"
 msgstr "als standaard voor nieuwe documenten?"
 
-#: src/lyx_cb.C:2275 src/lyx_cb.C:2295
+#: src/lyx_cb.C:2097 src/lyx_cb.C:2110
 msgid "Open/Close..."
 msgstr "Openen/Sluiten..."
 
-#: src/lyx_cb.C:2326 src/lyx_cb.C:2332
+#: src/lyx_cb.C:2128
 msgid "No further undo information"
 msgstr "Niets meer ongedaan te maken"
 
-#: src/lyx_cb.C:2344
+#: src/lyx_cb.C:2138
 msgid "Redo not yet supported in math mode"
 msgstr "Herhaal werkt nog niet in wiskunde mode"
 
-#: src/lyx_cb.C:2355 src/lyx_cb.C:2361
+#: src/lyx_cb.C:2148
 msgid "No further redo information"
 msgstr "Geen verdere Herhaal mogelijk"
 
-#: src/lyx_cb.C:2593 src/lyx_cb.C:2613
+#: src/lyx_cb.C:2337
 msgid "Font: "
 msgstr "Lettertype:"
 
-#: src/lyx_cb.C:2597 src/lyx_cb.C:2617
+#: src/lyx_cb.C:2341
 msgid ", Depth: "
 msgstr ", Diepte:"
 
-#: src/lyx_cb.C:2653
+#: src/lyx_cb.C:2367
 msgid "Inserting margin note..."
 msgstr "Kanttekening invoegen..."
 
-#: src/lyx_cb.C:2702 src/lyx_cb.C:2709
+#: src/lyx_cb.C:2408
 msgid "Paragraph environment type copied"
 msgstr "Alineaomgeving gekopieerd"
 
-#: src/lyx_cb.C:2721 src/lyx_cb.C:2725
+#: src/lyx_cb.C:2417
 msgid "Paragraph environment type set"
 msgstr "Alineaomgeving ingesteld"
 
-#: src/lyx_cb.C:2867
+#: src/lyx_cb.C:2510
 msgid "Changed environment depth (in possible range, maybe not)"
 msgstr "Omgevingsdiepte veranderd (indien mogelijk, of niet)"
 
-#: src/lyx_cb.C:3117
+#: src/lyx_cb.C:2747
 msgid "Paragraph layout set"
 msgstr "Alineaopmaak ingesteld"
 
-#: src/lyx_cb.C:3187
+#: src/lyx_cb.C:2817
 msgid "Should I set some parameters to"
 msgstr "Zal ik enige parameters instellen op"
 
-#: src/lyx_cb.C:3189
+#: src/lyx_cb.C:2819
 msgid "the defaults of this document class?"
 msgstr "de defaultwaarden voor deze documentklasse?"
 
 #. unable to load new style
-#: src/lyx_cb.C:3198 src/lyx_cb.C:3326 src/lyx_cb.C:3333
+#: src/lyx_cb.C:2828 src/lyx_cb.C:2946 src/lyx_cb.C:2953
 msgid "Conversion Errors!"
 msgstr "Omvormingsfouten!"
 
-#: src/lyx_cb.C:3199 src/lyx_cb.C:3334
+#: src/lyx_cb.C:2829 src/lyx_cb.C:2954
 msgid "Unable to switch to new document class."
 msgstr "Kan niet omvormen naar gekozen documentklasse."
 
-#: src/lyx_cb.C:3200 src/lyx_cb.C:3335
+#: src/lyx_cb.C:2830 src/lyx_cb.C:2955
 msgid "Reverting to original document class."
 msgstr "Terugkeer naar oorspronkelijke documentklasse."
 
-#: src/lyx_cb.C:3300
+#: src/lyx_cb.C:2930
 msgid "Converting document to new document class..."
 msgstr "Vorm document om tot nieuwe documentklasse..."
 
-#: src/lyx_cb.C:3321
+#: src/lyx_cb.C:2941
 msgid "One paragraph couldn't be converted"
 msgstr "Een alinea kon niet omgevormd worden"
 
-#: src/lyx_cb.C:3324
+#: src/lyx_cb.C:2944
 msgid " paragraphs couldn't be converted"
 msgstr " alinea's konden niet omgevormd worden"
 
-#: src/lyx_cb.C:3327
+#: src/lyx_cb.C:2947
 msgid "into chosen document class"
 msgstr "tot de gekozen documentklasse."
 
-#: src/lyx_cb.C:3413
+#: src/lyx_cb.C:3033
 msgid "Document layout set"
 msgstr "opmaakblad document ingesteld"
 
-#: src/lyx_cb.C:3465 src/lyx_cb.C:3469 src/lyx_cb.C:3499 src/lyx_cb.C:3503
+#: src/lyx_cb.C:3079 src/lyx_cb.C:3083
 msgid "No more notes"
 msgstr "Geen verdere notities"
 
-#: src/lyx_cb.C:3542
+#: src/lyx_cb.C:3112
 msgid "Quotes type set"
 msgstr "Type aanhalingstekens ingesteld"
 
-#: src/lyx_cb.C:3606
+#: src/lyx_cb.C:3176
 msgid "LaTeX preamble set"
 msgstr "LaTeX-preamble ingesteld"
 
-#: src/lyx_cb.C:3628 src/lyx_cb.C:3706
+#: src/lyx_cb.C:3197
 msgid "Cannot insert table in table."
 msgstr "Kan geen tabel invoegen in tabel"
 
-#: src/lyx_cb.C:3633 src/lyx_cb.C:3711
+#: src/lyx_cb.C:3202
 msgid "Inserting table..."
 msgstr "Tabel invoegen..."
 
-#: src/lyx_cb.C:3695 src/lyx_cb.C:3773
+#: src/lyx_cb.C:3264
 msgid "Table inserted"
 msgstr "Tabel ingevoegd"
 
-#: src/lyx_cb.C:3829 src/lyx_cb.C:3847
+#: src/lyx_cb.C:3320 src/lyx_cb.C:3338
 #, fuzzy
 msgid "ERROR!  Unable to print!"
 msgstr "Kan niet printen"
 
-#: src/lyx_cb.C:3830
+#: src/lyx_cb.C:3321
 msgid "Check 'range of pages'!"
 msgstr ""
 
-#: src/lyx_cb.C:3848
+#: src/lyx_cb.C:3339
 msgid "Check 'number of copies'!"
 msgstr ""
 
-#: src/lyx_cb.C:3957
+#: src/lyx_cb.C:3448
 msgid "Error:"
 msgstr "Fout:"
 
-#: src/lyx_cb.C:3958
+#: src/lyx_cb.C:3449
 msgid "Unable to print"
 msgstr "Kan niet printen"
 
-#: src/lyx_cb.C:3959
+#: src/lyx_cb.C:3450
 msgid "Check that your parameters are correct"
 msgstr "Controleer dat uw parameters correct zijn"
 
-#: src/lyx_cb.C:3981 src/lyx_cb.C:4050
+#: src/lyx_cb.C:3471
 msgid "Inserting figure..."
 msgstr "Figuur invoegen..."
 
-#: src/lyx_cb.C:3986 src/lyx_cb.C:4037 src/lyx_cb.C:4055 src/lyx_cb.C:4106
+#: src/lyx_cb.C:3476 src/lyx_cb.C:3527
 msgid "Figure inserted"
 msgstr "Figuur ingevoegd"
 
-#: src/lyx_cb.C:4136
+#: src/lyx_cb.C:3557
 msgid "Screen options set"
 msgstr "Schermopties ingesteld"
 
-#: src/lyx_cb.C:4166
+#: src/lyx_cb.C:3587
 msgid "LaTeX Options"
 msgstr "LaTeX-opties"
 
-#: src/lyx_cb.C:4175
+#: src/lyx_cb.C:3596
 msgid "Running configure..."
 msgstr "\"configure\" draait..."
 
-#: src/lyx_cb.C:4182
+#: src/lyx_cb.C:3603
 msgid "Reloading configuration..."
 msgstr "Herladen configuratiegegevens..."
 
-#: src/lyx_cb.C:4184
+#: src/lyx_cb.C:3605
 msgid "The system has been reconfigured."
 msgstr "Systeem opnieuw geconfigureerd."
 
-#: src/lyx_cb.C:4185
+#: src/lyx_cb.C:3606
 msgid "You need to restart LyX to make use of any"
 msgstr "U moet LyX herstarten, om de bijgewerkte"
 
-#: src/lyx_cb.C:4186
+#: src/lyx_cb.C:3607
 msgid "updated document class specifications."
 msgstr "documentklasseinstellingen te kunnen benutten."
 
-#: src/lyx_cb.C:4358
+#: src/lyx_cb.C:3725
 msgid "Couldn't find this label"
 msgstr "Kon dit label niet vinden"
 
-#: src/lyx_cb.C:4359
+#: src/lyx_cb.C:3726
 msgid "in current document."
 msgstr "in huidig document."
 
-#: src/lyx_cb.C:4391
+#: src/lyx_cb.C:3758
 msgid "*** No Document ***"
 msgstr "*** Geen document ***"
 
-#: src/lyx_cb.C:4556
+#: src/lyx_cb.C:3923
 msgid "*** No labels found in document ***"
 msgstr "*** Geen labels gevonden in document ***"
 
@@ -2745,8 +2759,8 @@ msgstr "Magenta"
 msgid "Yellow"
 msgstr "Geel"
 
-#: src/lyxfont.C:65 src/menus.C:173 src/menus.C:281 src/menus.C:282
-#: src/menus.C:283
+#: src/lyxfont.C:65 src/menus.C:169 src/menus.C:277 src/menus.C:278
+#: src/menus.C:279
 msgid "Math"
 msgstr "m Wiskunde"
 
@@ -2774,156 +2788,148 @@ msgstr "Latex "
 msgid "Default"
 msgstr "Standaard"
 
-#: src/lyxfr1.C:157 src/lyxfr1.C:213
+#: src/lyxfr1.C:149 src/lyxfr1.C:186
 #, fuzzy
 msgid "Sorry!"
 msgstr "Helaas."
 
-#: src/lyxfr1.C:157 src/lyxfr1.C:213
+#: src/lyxfr1.C:149 src/lyxfr1.C:186
 msgid "You cannot replace a single space, nor an empty character."
 msgstr ""
 
-#: src/lyxfr1.C:263 src/lyxfr1.C:328
+#: src/lyxfr1.C:217 src/lyxfr1.C:265
 #, fuzzy
 msgid "String not found!"
 msgstr "Tekencodering niet gevonden!"
 
-#: src/lyxfr1.C:266
+#: src/lyxfr1.C:221
 #, fuzzy
 msgid "1 string has been replaced."
 msgstr "Systeem opnieuw geconfigureerd."
 
-#: src/lyxfr1.C:269
+#: src/lyxfr1.C:224
 msgid " strings have been replaced."
 msgstr ""
 
-#: src/lyxfr1.C:324
+#: src/lyxfr1.C:261
 #, fuzzy
 msgid "Found."
 msgstr "geopend."
 
-#: src/lyxfunc.C:295
+#: src/lyxfunc.C:260
 msgid "Unknown sequence:"
 msgstr "Onbekende rij:"
 
-#: src/lyxfunc.C:338 src/lyxfunc.C:2521 src/lyxfunc.C:4605
+#: src/lyxfunc.C:303 src/lyxfunc.C:2407
 msgid "Unknown action"
 msgstr "Onbekende handeling"
 
 #. no
-#: src/lyxfunc.C:352
+#: src/lyxfunc.C:317
 msgid "Document is read-only"
 msgstr "Document is tegen schrijven beveiligd"
 
 # opdracht alleen toegestaan met document open zou mooier zijn.
 #. no
-#: src/lyxfunc.C:357
+#: src/lyxfunc.C:322
 msgid "Command not allowed without any document open"
 msgstr "Opdracht niet toegestaan zonder open document"
 
-#: src/lyxfunc.C:586 src/lyxfunc.C:2669
+#: src/lyxfunc.C:545
 msgid "Text mode"
 msgstr "Tekst mode"
 
-#: src/lyxfunc.C:837 src/lyxfunc.C:2920
-msgid "Document exported as HTML to file `"
-msgstr ""
-
-#: src/lyxfunc.C:840 src/lyxfunc.C:2923
-#, fuzzy
-msgid "Unable to convert to HTML the file `"
-msgstr "Kan bestand niet lezen!"
-
-#: src/lyxfunc.C:846 src/lyxfunc.C:2929
-msgid "Unknown export type: "
-msgstr "Onbekend exporttype:"
-
-#: src/lyxfunc.C:870 src/lyxfunc.C:2953
+#: src/lyxfunc.C:751
 msgid "Unknown import type: "
 msgstr "Onbekend importtype:"
 
-#: src/lyxfunc.C:1199 src/lyxfunc.C:3282
+#: src/lyxfunc.C:1079
 msgid "Layout "
 msgstr "l Opmaak "
 
-#: src/lyxfunc.C:1200 src/lyxfunc.C:3283
+#: src/lyxfunc.C:1080
 msgid " not known"
 msgstr " onbekend"
 
-#: src/lyxfunc.C:1342 src/lyxfunc.C:3425
+#: src/lyxfunc.C:1222
 msgid "No cross-reference to toggle"
 msgstr "Geen verwijzingen te veranderen"
 
-#: src/lyxfunc.C:1693 src/lyxfunc.C:3777
+#: src/lyxfunc.C:1573
 msgid "Mark removed"
 msgstr "Merkteken verwijderd"
 
-#: src/lyxfunc.C:1698 src/lyxfunc.C:3782
+#: src/lyxfunc.C:1578
 msgid "Mark set"
 msgstr "Merkteken geplaatst"
 
-#: src/lyxfunc.C:1801 src/lyxfunc.C:3885
+#: src/lyxfunc.C:1681
 msgid "Mark off"
 msgstr "Merkteken uitgeschakeld"
 
-#: src/lyxfunc.C:1811 src/lyxfunc.C:3895
+#: src/lyxfunc.C:1691
 msgid "Mark on"
 msgstr "Merkteken ingechakeld"
 
-#: src/lyxfunc.C:2112 src/lyxfunc.C:4196
+#: src/lyxfunc.C:1992
 msgid "Push-toolbar needs argument > 0"
 msgstr "\"Push-toolbar\" vereist argument > 0"
 
-#: src/lyxfunc.C:2130 src/lyxfunc.C:4214
+#: src/lyxfunc.C:2010
 msgid "Usage: toolbar-add-to <LyX command>"
 msgstr "Gebruik: toolbar-add-to <LyX-opdracht>"
 
-#: src/lyxfunc.C:2154 src/lyxfunc.C:4238 src/mathed/formula.C:874
+#: src/lyxfunc.C:2034 src/mathed/formula.C:864
 msgid "Math greek mode on"
 msgstr "Griekse symbolen aan"
 
-#: src/lyxfunc.C:2165 src/lyxfunc.C:4249 src/mathed/formula.C:885
+#: src/lyxfunc.C:2045 src/mathed/formula.C:875
 msgid "Math greek keyboard on"
 msgstr "Grieksie symbolen toetsenbord aan"
 
-#: src/lyxfunc.C:2167 src/lyxfunc.C:4251 src/mathed/formula.C:887
+#: src/lyxfunc.C:2047 src/mathed/formula.C:877
 msgid "Math greek keyboard off"
 msgstr "Griekse symbolen toetsenbord uit"
 
-#: src/lyxfunc.C:2202 src/lyxfunc.C:4286
+#: src/lyxfunc.C:2082
 msgid "Missing argument"
 msgstr "argument ontbreekt"
 
 #. / what appears in the minibuffer when opening
-#: src/lyxfunc.C:2218 src/lyxfunc.C:4302 src/mathed/formula.h:73
+#: src/lyxfunc.C:2098 src/mathed/formula.h:73
 msgid "Math editor mode"
 msgstr "Wiskunde editor modus"
 
-#: src/lyxfunc.C:2225 src/lyxfunc.C:4309
+#: src/lyxfunc.C:2105
 msgid "This is only allowed in math mode!"
 msgstr "Alleen toegestaan in wiskundige modus!"
 
-#: src/lyxfunc.C:2379 src/lyxfunc.C:4463
+#: src/lyxfunc.C:2259
 msgid "Opening child document "
 msgstr "Open subdocument "
 
-#: src/lyxfunc.C:2411 src/lyxfunc.C:4495
+#: src/lyxfunc.C:2291
 msgid "Unknown kind of footnote"
 msgstr "Onbekend soort voetnoot"
 
-#: src/lyxfunc.C:2480 src/lyxfunc.C:4564
+#: src/lyxfunc.C:2360
+#, fuzzy
+msgid "No document open"
+msgstr "* Geen document open *"
+
+#: src/lyxfunc.C:2366
 msgid "Document is read only"
 msgstr "Document is tegen schrijven beveiligd"
 
-#: src/lyxfunc.C:4657
+#: src/lyxfunc.C:2459
 msgid "Enter Filename for new document"
 msgstr "Geef bestandsnaam voor nieuw document"
 
-#: src/lyxfunc.C:4658
+#: src/lyxfunc.C:2460
 msgid "newfile"
 msgstr "nieuw"
 
-#: src/lyxfunc.C:4677 src/lyxfunc.C:4816 src/lyxfunc.C:4895
+#: src/lyxfunc.C:2479 src/lyxfunc.C:2618 src/lyxfunc.C:2697
 msgid ""
 "Do you want to close that document now?\n"
 "('No' will just switch to the open version)"
@@ -2931,105 +2937,105 @@ msgstr ""
 "Wilt u dat document nu sluiten?\n"
 "('Nee' verplaatst U alleen naar de open versie)"
 
-#: src/lyxfunc.C:4700
+#: src/lyxfunc.C:2502
 msgid "Do you want to open the document?"
 msgstr "Wilt u het document openen?"
 
 #. loads document
-#: src/lyxfunc.C:4702 src/lyxfunc.C:4765
+#: src/lyxfunc.C:2504 src/lyxfunc.C:2567
 msgid "Opening document"
 msgstr "Openen document"
 
-#: src/lyxfunc.C:4709 src/lyxfunc.C:4772
+#: src/lyxfunc.C:2511 src/lyxfunc.C:2574
 msgid "opened."
 msgstr "geopend."
 
-#: src/lyxfunc.C:4718
+#: src/lyxfunc.C:2520
 msgid "Choose template"
 msgstr "Kies sjabloon"
 
-#: src/lyxfunc.C:4746 src/lyxfunc.C:4795 src/lyxfunc.C:4868 src/lyxfunc.C:4969
+#: src/lyxfunc.C:2548 src/lyxfunc.C:2597 src/lyxfunc.C:2670 src/lyxfunc.C:2771
 msgid "Examples"
 msgstr "Voorbeelden"
 
-#: src/lyxfunc.C:4748
+#: src/lyxfunc.C:2550
 msgid "Select Document to Open"
 msgstr "Kies document ter opening"
 
-#: src/lyxfunc.C:4774
+#: src/lyxfunc.C:2576
 msgid "Could not open document"
 msgstr "Kon document niet openen"
 
-#: src/lyxfunc.C:4797
+#: src/lyxfunc.C:2599
 msgid "Select ASCII file to Import"
 msgstr "Kies een ASCII-bestand ter importering"
 
-#: src/lyxfunc.C:4835 src/lyxfunc.C:4915
+#: src/lyxfunc.C:2637 src/lyxfunc.C:2717
 msgid "A document by the name"
 msgstr "Een document onder de naam"
 
-#: src/lyxfunc.C:4837 src/lyxfunc.C:4917
+#: src/lyxfunc.C:2639 src/lyxfunc.C:2719
 msgid "already exists. Overwrite?"
 msgstr "bestaat al. Overschrijven?"
 
-#: src/lyxfunc.C:4843
+#: src/lyxfunc.C:2645
 msgid "Importing ASCII file"
 msgstr "Importeren ASCII-bestand"
 
-#: src/lyxfunc.C:4847
+#: src/lyxfunc.C:2649
 msgid "ASCII file "
 msgstr "ASCII-bestand "
 
-#: src/lyxfunc.C:4849 src/lyxfunc.C:4940
+#: src/lyxfunc.C:2651 src/lyxfunc.C:2742
 msgid "imported."
 msgstr "ingevoerd."
 
-#: src/lyxfunc.C:4872
+#: src/lyxfunc.C:2674
 msgid "Select Noweb file to Import"
 msgstr "Kies Noweb-bestand ter importering"
 
-#: src/lyxfunc.C:4875
+#: src/lyxfunc.C:2677
 msgid "Select LaTeX file to Import"
 msgstr "Kies LaTeX-bestand ter importering"
 
-#: src/lyxfunc.C:4925
+#: src/lyxfunc.C:2727
 msgid "Importing LaTeX file"
 msgstr "Importering LaTeX bestand"
 
-#: src/lyxfunc.C:4930
+#: src/lyxfunc.C:2732
 msgid "Importing Noweb file"
 msgstr "Importering Noweb bestand"
 
-#: src/lyxfunc.C:4938
+#: src/lyxfunc.C:2740
 msgid "Noweb file "
 msgstr "Noweb-bestand "
 
-#: src/lyxfunc.C:4938
+#: src/lyxfunc.C:2740
 msgid "LateX file "
 msgstr "LaTeX-bestand "
 
-#: src/lyxfunc.C:4943
+#: src/lyxfunc.C:2745
 msgid "Could not import Noweb file"
 msgstr "Kon Noweb-bestand niet importeren"
 
-#: src/lyxfunc.C:4944
+#: src/lyxfunc.C:2746
 msgid "Could not import LaTeX file"
 msgstr "Kon LaTeX-bestand niet importeren"
 
-#: src/lyxfunc.C:4971
+#: src/lyxfunc.C:2773
 msgid "Select Document to Insert"
 msgstr "Kies document ter invoeging"
 
 #. Inserts document
-#: src/lyxfunc.C:4989
+#: src/lyxfunc.C:2791
 msgid "Inserting document"
 msgstr "Document invoegen"
 
-#: src/lyxfunc.C:4995
+#: src/lyxfunc.C:2797
 msgid "inserted."
 msgstr "ingevoegd."
 
-#: src/lyxfunc.C:4997
+#: src/lyxfunc.C:2799
 msgid "Could not insert document"
 msgstr "Kon document niet invoegen"
 
@@ -3108,133 +3114,133 @@ msgstr " ``tekst'' | ''tekst'' | ,,tekst`` | ,,tekst'' | «tekst» | »tekst« "
 msgid "LyX Banner"
 msgstr "LyX-logo"
 
-#: src/lyx_gui_misc.C:349
+#: src/lyx_gui_misc.C:356
 msgid "Dismiss"
 msgstr "Gezien"
 
-#: src/lyx_gui_misc.C:366 src/lyx_gui_misc.C:378 src/lyx_gui_misc.C:383
-#: src/lyx_gui_misc.C:389
+#: src/lyx_gui_misc.C:373 src/lyx_gui_misc.C:386 src/lyx_gui_misc.C:391
+#: src/lyx_gui_misc.C:397
 msgid "Yes|Yy#y"
 msgstr "Ja|jJ#j"
 
-#: src/lyx_gui_misc.C:367 src/lyx_gui_misc.C:379 src/lyx_gui_misc.C:384
-#: src/lyx_gui_misc.C:390
+#: src/lyx_gui_misc.C:374 src/lyx_gui_misc.C:387 src/lyx_gui_misc.C:392
+#: src/lyx_gui_misc.C:398
 msgid "No|Nn#n"
 msgstr "Nee|Nn#n"
 
-#: src/lyx_gui_misc.C:402
+#: src/lyx_gui_misc.C:410
 msgid "Clear|#e"
 msgstr "Clear|#e"
 
-#: src/lyx_gui_misc.C:414
+#: src/lyx_gui_misc.C:423
 msgid "Any changes will be ignored"
 msgstr "Mogelijke veranderingen zullen genegeerd worden"
 
-#: src/lyx_gui_misc.C:415
+#: src/lyx_gui_misc.C:424
 msgid "The document is read-only:"
 msgstr "Document schrijfbeveiligd"
 
-#: src/lyx_main.C:177
+#: src/lyx_main.C:183
 msgid "Warning: could not determine path of binary."
 msgstr "Waarschuwing: kon programmapad niet bepalen."
 
-#: src/lyx_main.C:179
+#: src/lyx_main.C:185
 msgid "If you have problems, try starting LyX with an absolute path."
 msgstr "Als u problemen heeft, probeer dan LyX te starten als volledig pad."
 
-#: src/lyx_main.C:269
+#: src/lyx_main.C:275
 #, fuzzy
 msgid "LYX_DIR_11x environment variable no good."
 msgstr "LYX_DIR_10x omgevingsvariabele deugt niet."
 
-#: src/lyx_main.C:271
+#: src/lyx_main.C:277
 msgid "System directory set to: "
 msgstr "Systeemmap verwijst naar: "
 
-#: src/lyx_main.C:279
+#: src/lyx_main.C:285
 msgid "LyX Warning! Couldn't determine system directory."
 msgstr "LyX Waarschuwing! Kon systeemdirectory niet bepalen."
 
-#: src/lyx_main.C:280
+#: src/lyx_main.C:286
 msgid "Try the '-sysdir' command line parameter or"
 msgstr "Probeer de '-sysdir' commandoparameter, of"
 
-#: src/lyx_main.C:281
+#: src/lyx_main.C:287
 #, fuzzy
 msgid "set the environment variable LYX_DIR_11x to the LyX system directory"
 msgstr "zet de omgevingsvariablele LYX_DIR_10x gelijk aan de LyX systeemmap"
 
-#: src/lyx_main.C:283
+#: src/lyx_main.C:289
 msgid "containing the file `chkconfig.ltx'."
 msgstr "bevat het bestand `chkconfig.ltx'."
 
-#: src/lyx_main.C:285
+#: src/lyx_main.C:291
 msgid "Using built-in default "
 msgstr "Gebruik ingebouwde standaardwaarden "
 
-#: src/lyx_main.C:286
+#: src/lyx_main.C:292
 msgid " but expect problems."
 msgstr "maar verwacht problemen."
 
-#: src/lyx_main.C:289
+#: src/lyx_main.C:295
 msgid "Expect problems."
 msgstr "Verwacht problemen."
 
 #. Nope
-#: src/lyx_main.C:388
+#: src/lyx_main.C:394
 msgid "You don't have a personal LyX directory."
 msgstr "U heeft geen eigen LyX-map."
 
-#: src/lyx_main.C:389
+#: src/lyx_main.C:395
 msgid "It is needed to keep your own configuration."
 msgstr "Die heeft u nodig om uw eigen instellingen in te bewaren."
 
-#: src/lyx_main.C:390
+#: src/lyx_main.C:396
 msgid "Should I try to set it up for you (recommended)?"
 msgstr "Zal ik hem voor u aanmaken (aanbevolen)?"
 
-#: src/lyx_main.C:391
+#: src/lyx_main.C:397
 msgid "Running without personal LyX directory."
 msgstr "U heeft geen eigen LyX-directory."
 
 #. Tell the user what is going on
-#: src/lyx_main.C:398
+#: src/lyx_main.C:404
 msgid "LyX: Creating directory "
 msgstr "LyX: Maak map aan "
 
-#: src/lyx_main.C:399
+#: src/lyx_main.C:405
 msgid " and running configure..."
 msgstr " en draai \"configure\"..."
 
-#: src/lyx_main.C:405
+#: src/lyx_main.C:411
 msgid "Failed. Will use "
 msgstr "Mislukt. Zal "
 
-#: src/lyx_main.C:406
+#: src/lyx_main.C:412
 msgid " instead."
 msgstr "inplaats hiervan gebruiken."
 
-#: src/lyx_main.C:413
+#: src/lyx_main.C:419
 msgid "Done!"
 msgstr "Klaar!"
 
-#: src/lyx_main.C:427
+#: src/lyx_main.C:433
 msgid "LyX Warning!"
 msgstr "LyX waarschuwing!"
 
-#: src/lyx_main.C:428
+#: src/lyx_main.C:434
 msgid "Error while reading "
 msgstr "Fout tijdens lezen "
 
-#: src/lyx_main.C:429
+#: src/lyx_main.C:435
 msgid "Using built-in defaults."
 msgstr "Gebruik ingebouwde standaardwaarden."
 
-#: src/lyx_main.C:439
+#: src/lyx_main.C:445
 msgid "Setting debug level to "
 msgstr "Zet debugniveau op "
 
-#: src/lyx_main.C:450
+#: src/lyx_main.C:456
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
 "Command line switches (case sensitive):\n"
@@ -3254,33 +3260,33 @@ msgid ""
 "Check the LyX man page for more options."
 msgstr ""
 
-#: src/lyx_main.C:485
+#: src/lyx_main.C:492
 msgid "List of supported debug flags:"
 msgstr ""
 
-#: src/lyx_main.C:504
+#: src/lyx_main.C:511
 msgid "Missing directory for -sysdir switch!"
 msgstr "De -sysdir optie mist een directorynaam!"
 
-#: src/lyx_main.C:530
+#: src/lyx_main.C:537
 #, fuzzy
 msgid "Missing command string after  -x switch!"
 msgstr "De -dbg optie mist een getalwaarde!"
 
-#: src/lyx_main.C:556
+#: src/lyx_main.C:563
 #, fuzzy
 msgid "Unknown file type '"
 msgstr "Onbekend exporttype:"
 
-#: src/lyx_main.C:557
+#: src/lyx_main.C:564
 msgid "' after "
 msgstr ""
 
-#: src/lyx_main.C:558 src/lyx_main.C:563
+#: src/lyx_main.C:565 src/lyx_main.C:570
 msgid " switch!"
 msgstr ""
 
-#: src/lyx_main.C:561
+#: src/lyx_main.C:568
 msgid "Missing file type [eg latex, ps...] after "
 msgstr ""
 
@@ -3361,90 +3367,94 @@ msgstr "Telefoongids"
 msgid "Send Document to Command"
 msgstr "Zend document naar opdracht"
 
-#: src/lyxvc.C:89 src/lyxvc.C:119
+#: src/lyxvc.C:93 src/lyxvc.C:125
 msgid "Save document and proceed?"
 msgstr "Document opslaan en voortzetten?"
 
-#: src/lyxvc.C:101
+#: src/lyxvc.C:105
 msgid "LyX VC: Initial description"
 msgstr "LyX VC: Oorspronkelijke beschrijving"
 
-#: src/lyxvc.C:102
+#: src/lyxvc.C:106
 #, fuzzy
 msgid "(no initial description)"
 msgstr "LyX VC: Oorspronkelijke beschrijving"
 
-#: src/lyxvc.C:105
+#: src/lyxvc.C:110
 #, fuzzy
 msgid "Info"
 msgstr "Negeren"
 
-#: src/lyxvc.C:105
+#: src/lyxvc.C:111
 msgid "This document has NOT been registered."
 msgstr ""
 
-#: src/lyxvc.C:131
+#: src/lyxvc.C:137
 msgid "LyX VC: Log Message"
 msgstr "LyX VC: Logmededeling"
 
-#: src/lyxvc.C:145
+#: src/lyxvc.C:140
+msgid "(no log message)"
+msgstr ""
+
+#: src/lyxvc.C:155
 msgid "Ignore changes and proceed with check out?"
 msgstr "Veranderingen negeren en voortzetten met checkout?"
 
 #. Here we should check if the buffer is dirty. And if it is
 #. we should warn the user that reverting will discard all
 #. changes made since the last check in.
-#: src/lyxvc.C:160
+#: src/lyxvc.C:170
 msgid "When you revert, you will loose all changes made"
 msgstr "Als u terugkeert naar vorige versie, verliest u alle veranderingen"
 
-#: src/lyxvc.C:161
+#: src/lyxvc.C:171
 msgid "to the document since the last check in."
 msgstr "aan het document sinds laatste inboeking."
 
-#: src/lyxvc.C:162
+#: src/lyxvc.C:172
 msgid "Do you still want to do it?"
 msgstr "Wilt u dit alsnog doen?"
 
-#: src/lyxvc.C:265
+#: src/lyxvc.C:275
 #, fuzzy
 msgid "No VC History!"
 msgstr "RCS-gechiedenis bestaat niet!"
 
-#: src/lyxvc.C:272
+#: src/lyxvc.C:282
 #, fuzzy
 msgid "VC History"
 msgstr "RCS-geschiedenis"
 
-#: src/LyXView.C:379 src/minibuffer.C:218
+#: src/LyXView.C:410 src/minibuffer.C:218
 msgid " (Changed)"
 msgstr " (Veranderd)"
 
-#: src/LyXView.C:381
+#: src/LyXView.C:412
 msgid " (read only)"
 msgstr " (tegen schrijven beveiligd)"
 
-#: src/mathed/formula.C:902 src/mathed/formula.C:1193
+#: src/mathed/formula.C:892 src/mathed/formula.C:1188
 msgid "TeX mode"
 msgstr "TeX-modus"
 
-#: src/mathed/formula.C:917
+#: src/mathed/formula.C:907
 msgid "No number"
 msgstr "Geen getal"
 
-#: src/mathed/formula.C:920
+#: src/mathed/formula.C:910
 msgid "Number"
 msgstr "Getal"
 
-#: src/mathed/formula.C:1078
+#: src/mathed/formula.C:1073
 msgid "math text mode"
 msgstr "wiskunde-tekst modus"
 
-#: src/mathed/formula.C:1087
+#: src/mathed/formula.C:1082
 msgid "Invalid action in math mode!"
 msgstr "Ongeldige aktie in wiskunde modus!"
 
-#: src/mathed/formulamacro.C:145 src/mathed/formulamacro.C:169
+#: src/mathed/formulamacro.C:144 src/mathed/formulamacro.C:168
 msgid "Macro: "
 msgstr "Macro:"
 
@@ -3531,89 +3541,89 @@ msgstr "Quadratin|#q"
 msgid "2Quadratin|#2"
 msgstr "2Quadratin|#2"
 
-#: src/mathed/math_panel.C:110
+#: src/mathed/math_panel.C:109
 msgid "Delimiter"
 msgstr "Begrenzing"
 
-#: src/mathed/math_panel.C:114
+#: src/mathed/math_panel.C:113
 msgid "Decoration"
 msgstr "Dekoratie"
 
-#: src/mathed/math_panel.C:118
+#: src/mathed/math_panel.C:117
 msgid "Spacing"
 msgstr "Wit"
 
-#: src/mathed/math_panel.C:122
+#: src/mathed/math_panel.C:121
 msgid "Matrix"
 msgstr "Matrix"
 
-#: src/mathed/math_panel.C:312
+#: src/mathed/math_panel.C:311
 msgid "Top | Center | Bottom"
 msgstr " Boven | Midden | Onder"
 
-#: src/mathed/math_panel.C:364
+#: src/mathed/math_panel.C:363
 msgid "Math Panel"
 msgstr "Wiskundepaneel"
 
-#: src/menus.C:165 src/menus.C:184 src/menus.C:225 src/menus.C:226
-#: src/menus.C:227 src/menus.C:356 src/menus.C:357 src/menus.C:358
+#: src/menus.C:161 src/menus.C:180 src/menus.C:221 src/menus.C:222
+#: src/menus.C:223 src/menus.C:352 src/menus.C:353 src/menus.C:354
 msgid "File"
 msgstr "f Bestand"
 
-#: src/menus.C:167 src/menus.C:239 src/menus.C:240 src/menus.C:241
+#: src/menus.C:163 src/menus.C:235 src/menus.C:236 src/menus.C:237
 msgid "Edit"
 msgstr "Wijzigen"
 
-#: src/menus.C:169 src/menus.C:253 src/menus.C:254 src/menus.C:255
+#: src/menus.C:165 src/menus.C:249 src/menus.C:250 src/menus.C:251
 msgid "Layout"
 msgstr "l Opmaak"
 
-#: src/menus.C:171 src/menus.C:267 src/menus.C:268 src/menus.C:269
+#: src/menus.C:167 src/menus.C:263 src/menus.C:264 src/menus.C:265
 msgid "Insert"
 msgstr "Invoegen"
 
-#: src/menus.C:179 src/menus.C:188 src/menus.C:323 src/menus.C:324
-#: src/menus.C:325 src/menus.C:384 src/menus.C:385 src/menus.C:386
+#: src/menus.C:175 src/menus.C:184 src/menus.C:319 src/menus.C:320
+#: src/menus.C:321 src/menus.C:380 src/menus.C:381 src/menus.C:382
 msgid "Help"
 msgstr "Help"
 
-#: src/menus.C:229 src/menus.C:360
+#: src/menus.C:225 src/menus.C:356
 msgid "MB|#F"
 msgstr "MB|#F"
 
-#: src/menus.C:243
+#: src/menus.C:239
 msgid "MB|#E"
 msgstr "MB|#E"
 
-#: src/menus.C:257
+#: src/menus.C:253
 msgid "MB|#L"
 msgstr "MB|#L"
 
-#: src/menus.C:271
+#: src/menus.C:267
 msgid "MB|#I"
 msgstr "MB|#i"
 
-#: src/menus.C:285
+#: src/menus.C:281
 msgid "MB|#M"
 msgstr "MB|#M"
 
-#: src/menus.C:299 src/menus.C:374
+#: src/menus.C:295 src/menus.C:370
 msgid "MB|#O"
 msgstr "MB|#O"
 
-#: src/menus.C:313
+#: src/menus.C:309
 msgid "MB|#D"
 msgstr "MB|#D"
 
-#: src/menus.C:327 src/menus.C:388
+#: src/menus.C:323 src/menus.C:384
 msgid "MB|#H"
 msgstr "MB|#H"
 
-#: src/menus.C:430
+#: src/menus.C:426
 msgid "Screen Options"
 msgstr "Schermopties"
 
-#: src/menus.C:471
+#: src/menus.C:467
 msgid ""
 "Import%t|LaTeX...%x30|Ascii Text as Lines...%x31|Ascii Text as "
 "Paragraphs%x32|Noweb%x33"
@@ -3621,23 +3631,23 @@ msgstr ""
 "Importeren%t|LaTeX...%x30|Ascii Tekst als Regels...%x31|P Ascii Tekst als "
 "Alinea's%x32|Noweb%x33"
 
-#: src/menus.C:477 src/menus.C:716
+#: src/menus.C:473 src/menus.C:712
 msgid "FIM|Ll#l#L"
 msgstr "FIM|Ll#l#L"
 
-#: src/menus.C:478 src/menus.C:717
+#: src/menus.C:474 src/menus.C:713
 msgid "FIM|Aa#a#A"
 msgstr "FIM|Aa#a#A"
 
-#: src/menus.C:479 src/menus.C:718
+#: src/menus.C:475 src/menus.C:714
 msgid "FIM|Pp#p#P"
 msgstr "FIM|Pp#p#P"
 
-#: src/menus.C:480 src/menus.C:719
+#: src/menus.C:476 src/menus.C:715
 msgid "FIM|Nn#n#N"
 msgstr "FIM|Nn#n#N"
 
-#: src/menus.C:489
+#: src/menus.C:485
 #, fuzzy
 msgid ""
 "Export%t|as LaTeX...%x40|as DVI...%x41|as PostScript...%x42|as Ascii "
@@ -3646,7 +3656,7 @@ msgstr ""
 "Export%t|als Latex...%x40|als DVI...%x41|als Postscript...%x42|als "
 "Ascii-tekst %x43|m Eigen...%x44"
 
-#: src/menus.C:498
+#: src/menus.C:494
 msgid ""
 "Export%t|as LinuxDoc...%x40|as DVI...%x41|as PostScript...%x42|as Ascii "
 "Text...%x43"
@@ -3654,7 +3664,7 @@ msgstr ""
 "Export%t|als LinucDoc...%x40|als DVI...%x41|als Postscript...%x42|als "
 "Ascii-tekst...%x43"
 
-#: src/menus.C:505
+#: src/menus.C:501
 #, fuzzy
 msgid ""
 "Export%t|as DocBook...%x40|as DVI...%x41|as PostScript...%x42|as Ascii "
@@ -3663,32 +3673,32 @@ msgstr ""
 "Export%t|als LinucDoc...%x40|als DVI...%x41|als Postscript...%x42|als "
 "Ascii-tekst...%x43"
 
-#: src/menus.C:511
+#: src/menus.C:507
 msgid "FEX|Ll#l#L"
 msgstr "FEX|Ll#l#L"
 
-#: src/menus.C:512
+#: src/menus.C:508
 msgid "FEX|Dd#d#D"
 msgstr "FEX|Dd#d#D"
 
-#: src/menus.C:513
+#: src/menus.C:509
 msgid "FEX|Pp#p#P"
 msgstr "FEX|Pp#p#P"
 
-#: src/menus.C:514
+#: src/menus.C:510
 msgid "FEX|Tt#t#T"
 msgstr "FEX|tT#t#T"
 
-#: src/menus.C:516
+#: src/menus.C:512
 #, fuzzy
 msgid "FEX|Hh#h#H"
 msgstr "EMV|hH#h#H"
 
-#: src/menus.C:517
+#: src/menus.C:513
 msgid "FEX|mM#m#M"
 msgstr "FEX|mM#m#M"
 
-#: src/menus.C:521
+#: src/menus.C:517
 #, fuzzy
 msgid ""
 "New...|New from template...|Open...%l|Close|Save|Save As...|Revert to "
@@ -3699,91 +3709,91 @@ msgstr ""
 "als...|r Opgeslagen terughalen%l|d Bekijken DVI|i Bekijken Postscript|v "
 "Bijwerken DVI|u Bijwerken postscript%l|p Afdrukken...|Faxen..."
 
-#: src/menus.C:536 src/menus.C:736
+#: src/menus.C:532 src/menus.C:732
 msgid "FM|Nn#n#N"
 msgstr "FM|Nn#n#N"
 
-#: src/menus.C:537 src/menus.C:737
+#: src/menus.C:533 src/menus.C:733
 msgid "FM|tT#t#T"
 msgstr "FM|tT#t#T"
 
-#: src/menus.C:538 src/menus.C:738
+#: src/menus.C:534 src/menus.C:734
 msgid "FM|Oo#o#O"
 msgstr "FM|Oo#o#O"
 
-#: src/menus.C:539
+#: src/menus.C:535
 msgid "FM|Cc#c#C"
 msgstr "FM|cC#c#C"
 
-#: src/menus.C:540
+#: src/menus.C:536
 msgid "FM|Ss#s#S"
 msgstr "FM|Ss#s#S"
 
-#: src/menus.C:541
+#: src/menus.C:537
 msgid "FM|Aa#a#A"
 msgstr "FM|aA#a#A"
 
-#: src/menus.C:542
+#: src/menus.C:538
 msgid "FM|Rr#r#R"
 msgstr "FM|rR#r#R"
 
-#: src/menus.C:543
+#: src/menus.C:539
 msgid "FM|dD#d#D"
 msgstr "FM|dD#d#D"
 
-#: src/menus.C:544
+#: src/menus.C:540
 msgid "FM|wW#w#W"
 msgstr "FM|wW#w#W"
 
-#: src/menus.C:545
+#: src/menus.C:541
 msgid "FM|vV#v#V"
 msgstr "FM|vV#v#V"
 
-#: src/menus.C:546
+#: src/menus.C:542
 msgid "FM|Uu#u#U"
 msgstr "FM|uU#u#U"
 
-#: src/menus.C:547
+#: src/menus.C:543
 #, fuzzy
 msgid "FM|Bb#b#B"
 msgstr "LM|bB#b#B"
 
-#: src/menus.C:548
+#: src/menus.C:544
 msgid "FM|Pp#p#P"
 msgstr "FM|pP#p#P"
 
-#: src/menus.C:549
+#: src/menus.C:545
 msgid "FM|Ff#f#F"
 msgstr "FM|Ff#f#F"
 
-#: src/menus.C:595
+#: src/menus.C:591
 #, no-c-format
 msgid "|Import%m"
 msgstr "|Importeren%m"
 
-#: src/menus.C:597
+#: src/menus.C:593
 #, no-c-format
 msgid "|Export%m%l"
 msgstr "|Exporteren%m%l"
 
-#: src/menus.C:599
+#: src/menus.C:595
 #, no-c-format
 msgid "|Exit%l"
 msgstr "|x Beeindigen%l"
 
-#: src/menus.C:600 src/menus.C:739
+#: src/menus.C:596 src/menus.C:735
 msgid "FM|Ii#i#I"
 msgstr "FM|Ii#i#I"
 
-#: src/menus.C:601
+#: src/menus.C:597
 msgid "FM|Ee#e#E"
 msgstr "FM|Ee#e#E"
 
-#: src/menus.C:602 src/menus.C:740
+#: src/menus.C:598 src/menus.C:736
 msgid "FM|xX#x#X"
 msgstr "FM|xX#x#X"
 
-#: src/menus.C:710
+#: src/menus.C:706
 #, fuzzy
 msgid ""
 "Import%t|LaTeX...%x15|Ascii Text as Lines...%x16|Ascii Text as "
@@ -3792,12 +3802,12 @@ msgstr ""
 "Importeren%t|LaTeX...%x15|Ascii Tekst als Regels...%x16|P Ascii Tekst als "
 "Alinea's...%x17|Noweb...%x18"
 
-#: src/menus.C:730
+#: src/menus.C:726
 msgid "New...|New from template...|Open...%l|Import%m%l|Exit%l"
 msgstr ""
 "Nieuw...|t Nieuw van sjabloon...|Openen...%l|Importeren%m%l|x Beeindigen%l"
 
-#: src/menus.C:818 src/menus.C:1139
+#: src/menus.C:814
 msgid ""
 "Floats & Insets%t|Open/Close%x21|Melt%x22|Open All Footnotes/Margin "
 "Notes%x23|Close All Footnotes/Margin Notes%x24|Open All "
@@ -3808,265 +3818,265 @@ msgstr ""
 "sluiten%x24|f Alle figuren/tabellen openen%x25|t Alle figuren/tabellen "
 "sluiten%x26|r alle foutvensters verwijderen%x27\"\""
 
-#: src/menus.C:827 src/menus.C:1148
+#: src/menus.C:823
 msgid "EMF|Oo#o#O"
 msgstr "EMF|Oo#o#O"
 
-#: src/menus.C:828 src/menus.C:1149
+#: src/menus.C:824
 msgid "EMF|Mm#m#M"
 msgstr "EMF|mM#m#M"
 
-#: src/menus.C:829 src/menus.C:1150
+#: src/menus.C:825
 msgid "EMF|Aa#a#A"
 msgstr "EMF|aA#a#A"
 
-#: src/menus.C:830 src/menus.C:1151
+#: src/menus.C:826
 msgid "EMF|Cc#c#C"
 msgstr "EMF|cC#c#C"
 
-#: src/menus.C:831 src/menus.C:1152
+#: src/menus.C:827
 msgid "EMF|Ff#f#F"
 msgstr "EMF|fF#f#F"
 
-#: src/menus.C:832 src/menus.C:1153
+#: src/menus.C:828
 msgid "EMF|Tt#t#T"
 msgstr "EMF|tT#t#T"
 
-#: src/menus.C:833 src/menus.C:1154
+#: src/menus.C:829
 msgid "EMF|Rr#r#R"
 msgstr "EMF|rR#r#R"
 
-#: src/menus.C:841 src/menus.C:939 src/menus.C:1162 src/menus.C:1260
+#: src/menus.C:837 src/menus.C:935
 msgid "Table%t"
 msgstr "Tabel%t"
 
-#: src/menus.C:849 src/menus.C:1170
+#: src/menus.C:845
 msgid "|Multicolumn%B%x44%l"
 msgstr "|Meerkolom%B%x44%l"
 
-#: src/menus.C:851 src/menus.C:1172
+#: src/menus.C:847
 msgid "|Multicolumn%b%x44%l"
 msgstr "|Meerkolom%b%x44%l"
 
-#: src/menus.C:852 src/menus.C:1173
+#: src/menus.C:848
 msgid "EMT|Mm#m#M"
 msgstr "EMT|mM#m#M"
 
-#: src/menus.C:860 src/menus.C:1181
+#: src/menus.C:856
 msgid "|Line Top%B%x36"
 msgstr "|t Lijn boven%B%x36"
 
-#: src/menus.C:862 src/menus.C:1183
+#: src/menus.C:858
 msgid "|Line Top%b%x36"
 msgstr "|t Lijn boven%b%x36"
 
-#: src/menus.C:863 src/menus.C:1184
+#: src/menus.C:859
 msgid "EMT|Tt#t#T"
 msgstr "EMT|tT#t#T"
 
-#: src/menus.C:871 src/menus.C:1192
+#: src/menus.C:867
 msgid "|Line Bottom%B%x37"
 msgstr "|b Lijn onder%B%x37"
 
-#: src/menus.C:873 src/menus.C:1194
+#: src/menus.C:869
 msgid "|Line Bottom%b%x37"
 msgstr "|b Lijn onder%b%x37"
 
-#: src/menus.C:874 src/menus.C:1195
+#: src/menus.C:870
 msgid "EMT|Bb#b#B"
 msgstr "EMT|bB#b#B"
 
-#: src/menus.C:882 src/menus.C:1203
+#: src/menus.C:878
 msgid "|Line Left%B%x38"
 msgstr "|Lijn links%B%x38"
 
-#: src/menus.C:884 src/menus.C:1205
+#: src/menus.C:880
 msgid "|Line Left%b%x38"
 msgstr "|Lijn links%b%x38"
 
-#: src/menus.C:885 src/menus.C:1206
+#: src/menus.C:881
 msgid "EMT|Ll#l#L"
 msgstr "EMT|lL#l#L"
 
-#: src/menus.C:893 src/menus.C:1214
+#: src/menus.C:889
 msgid "|Line Right%B%x39%l"
 msgstr "|Lijn rechts%B%x39%l"
 
-#: src/menus.C:895 src/menus.C:1216
+#: src/menus.C:891
 msgid "|Line Right%b%x39%l"
 msgstr "|Lijn rechts%b%x39%l"
 
-#: src/menus.C:896 src/menus.C:1217
+#: src/menus.C:892
 msgid "EMT|Rr#r#R"
 msgstr "EMT|rR#r#R"
 
-#: src/menus.C:905 src/menus.C:1226
+#: src/menus.C:901
 msgid "|Align Left%R%x40"
 msgstr "|e Links uitlijnen%R%x40"
 
-#: src/menus.C:907 src/menus.C:1228
+#: src/menus.C:903
 msgid "|Align Left%r%x40"
 msgstr "|e Links uitlijnen%r%x40"
 
-#: src/menus.C:908 src/menus.C:1229
+#: src/menus.C:904
 msgid "EMT|eE#e#E"
 msgstr "EMT|eE#e#E"
 
-#: src/menus.C:911 src/menus.C:1232
+#: src/menus.C:907
 msgid "|Align Right%R%x41"
 msgstr "|i Rechts uitlijnen%R%x41"
 
-#: src/menus.C:913 src/menus.C:1234
+#: src/menus.C:909
 msgid "|Align Right%r%x41"
 msgstr "|i Rechts uitlijnen%r%x41"
 
-#: src/menus.C:914 src/menus.C:1235
+#: src/menus.C:910
 msgid "EMT|iI#i#I"
 msgstr "EMT|iI#i#I"
 
-#: src/menus.C:917 src/menus.C:1238
+#: src/menus.C:913
 msgid "|Align Center%R%x42%l"
 msgstr "|Centreren%R%x42%l"
 
-#: src/menus.C:919 src/menus.C:1240
+#: src/menus.C:915
 msgid "|Align Center%r%x42%l"
 msgstr "|Centreren%r%x42%l"
 
-#: src/menus.C:920 src/menus.C:1241
+#: src/menus.C:916
 msgid "EMT|Cc#c#C"
 msgstr "EMT|Cc#c#C"
 
-#: src/menus.C:923 src/menus.C:1244
+#: src/menus.C:919
 #, no-c-format
 msgid "|Append Row%x32"
 msgstr "|o Voeg rij toe%x32"
 
-#: src/menus.C:924 src/menus.C:1245
+#: src/menus.C:920
 msgid "EMT|oO#o#O"
 msgstr "EMT|oO#o#O"
 
-#: src/menus.C:926 src/menus.C:1247
+#: src/menus.C:922
 #, no-c-format
 msgid "|Append Column%x33%l"
 msgstr "|u Kolom toevoegen%x33%l"
 
-#: src/menus.C:927 src/menus.C:1248
+#: src/menus.C:923
 msgid "EMT|uU#u#U"
 msgstr "EMT|uU#u#U"
 
-#: src/menus.C:929 src/menus.C:1250
+#: src/menus.C:925
 #, no-c-format
 msgid "|Delete Row%x34"
 msgstr "|w Rij verwijderen%x34"
 
-#: src/menus.C:930 src/menus.C:1251
+#: src/menus.C:926
 msgid "EMT|wW#w#W"
 msgstr "EMT|wW#w#W"
 
-#: src/menus.C:932 src/menus.C:1253
+#: src/menus.C:928
 #, no-c-format
 msgid "|Delete Column%x35%l"
 msgstr "|n Kolom verwijderen%x35%l"
 
-#: src/menus.C:933 src/menus.C:1254
+#: src/menus.C:929
 msgid "EMT|nN#n#N"
 msgstr "EMT|nN#n#N"
 
-#: src/menus.C:935 src/menus.C:1256
+#: src/menus.C:931
 #, no-c-format
 msgid "|Delete Table%x43"
 msgstr "|d Tabel verwijderen%x43"
 
-#: src/menus.C:936 src/menus.C:1257
+#: src/menus.C:932
 msgid "EMT|Dd#d#D"
 msgstr "EMT|dD#d#D"
 
-#: src/menus.C:941 src/menus.C:1262
+#: src/menus.C:937
 #, no-c-format
 msgid "|Insert table%x31"
 msgstr "|Tabel invoegen%x31"
 
-#: src/menus.C:942 src/menus.C:1263
+#: src/menus.C:938
 msgid "EMT|Ii#i#I"
 msgstr "EMT|iI#i#I"
 
-#: src/menus.C:946 src/menus.C:1267
+#: src/menus.C:942
 msgid "Version Control%t"
 msgstr "Versieboekhouding%t"
 
-#: src/menus.C:949 src/menus.C:1270
+#: src/menus.C:945
 #, no-c-format
 msgid "|Register%d%x51"
 msgstr "|Registreren%d%x51"
 
 #. signifies that the file is not checked out
-#: src/menus.C:953 src/menus.C:1274
+#: src/menus.C:949
 #, no-c-format
 msgid "|Check In Changes%d%x52"
 msgstr "|i Veranderingen inboeken%d%x52"
 
-#: src/menus.C:955 src/menus.C:1276
+#: src/menus.C:951
 #, no-c-format
 msgid "|Check Out for Edit%x53"
 msgstr "|o Uitboeken voor wijzigen%x53"
 
 #. signifies that the file is checked out
-#: src/menus.C:959 src/menus.C:1280
+#: src/menus.C:955
 #, no-c-format
 msgid "|Check In Changes%x52"
 msgstr "|i Veranderingen inboeken%x52"
 
-#: src/menus.C:961 src/menus.C:1282
+#: src/menus.C:957
 #, no-c-format
 msgid "|Check Out for Edit%d%x53"
 msgstr "|o Uitboeken voor wijzigen%d%x53"
 
-#: src/menus.C:964 src/menus.C:1285
+#: src/menus.C:960
 #, no-c-format
 msgid "|Revert to last version%x54"
 msgstr "|l Vorige versie terughalen%x54"
 
-#: src/menus.C:966 src/menus.C:1287
+#: src/menus.C:962
 #, no-c-format
 msgid "|Undo last check in%x55"
 msgstr "|Laatste inboeking annuleren%x55"
 
-#: src/menus.C:968 src/menus.C:1289
+#: src/menus.C:964
 #, no-c-format
 msgid "|Show History%x56"
 msgstr "|Geschiedenis tonen%x56"
 
-#: src/menus.C:971 src/menus.C:1292
+#: src/menus.C:967
 #, no-c-format
 msgid "|Register%x51"
 msgstr "|Registreren%x51"
 
 #. the shortcuts are not good.
-#: src/menus.C:974 src/menus.C:1295
+#: src/menus.C:970
 msgid "EMV|Rr#r#R"
 msgstr "EMV|Rr#r#R"
 
-#: src/menus.C:975 src/menus.C:1296
+#: src/menus.C:971
 msgid "EMV|Ii#i#I"
 msgstr "EMV|iI#i#I"
 
-#: src/menus.C:976 src/menus.C:1297
+#: src/menus.C:972
 msgid "EMV|Oo#o#O"
 msgstr "EMV|oO#o#O"
 
-#: src/menus.C:977 src/menus.C:1298
+#: src/menus.C:973
 msgid "EMV|lL#l#l"
 msgstr "EMV|Ll#l#L"
 
-#: src/menus.C:978 src/menus.C:1299
+#: src/menus.C:974
 msgid "EMV|Uu#u#U"
 msgstr "EMV|uU#u#U"
 
-#: src/menus.C:979 src/menus.C:1300
+#: src/menus.C:975
 msgid "EMV|Hh#h#H"
 msgstr "EMV|hH#h#H"
 
-#: src/menus.C:982 src/menus.C:1303
+#: src/menus.C:978
 msgid ""
 "Undo|Redo %l|Cut|Copy|Paste%l|Find & Replace...|Go to Error|Go to "
 "Note|Floats & Insets%m|Table%m|Spellchecker....|Check TeX|Table of "
@@ -4079,75 +4089,75 @@ msgstr ""
 "Inhoud...%l|Versieboekhouding%m%l|w LaTeX log bekijken%l|l Plakken "
 "X-selektie als regels|g Plakken X-selektie als alinea's"
 
-#: src/menus.C:1001 src/menus.C:1322
+#: src/menus.C:997
 msgid "EM|Uu#u#U"
 msgstr "EM|uU#u#U"
 
-#: src/menus.C:1002 src/menus.C:1323
+#: src/menus.C:998
 msgid "EM|Rr#r#R"
 msgstr "EM|rR#r#R"
 
-#: src/menus.C:1003 src/menus.C:1324
+#: src/menus.C:999
 msgid "EM|Cc#c#C"
 msgstr "EM|cC#c#C"
 
-#: src/menus.C:1004 src/menus.C:1325
+#: src/menus.C:1000
 msgid "EM|oO#o#O"
 msgstr "EM|oO#o#O"
 
-#: src/menus.C:1005 src/menus.C:1326
+#: src/menus.C:1001
 msgid "EM|Pp#p#P"
 msgstr "EM|Pp#p#P"
 
-#: src/menus.C:1006 src/menus.C:1327
+#: src/menus.C:1002
 msgid "EM|Ff#f#F"
 msgstr "EM|fF#f#F"
 
-#: src/menus.C:1007 src/menus.C:1328
+#: src/menus.C:1003
 msgid "EM|Ee#e#E"
 msgstr "EM|eE#e#E"
 
-#: src/menus.C:1008 src/menus.C:1329
+#: src/menus.C:1004
 msgid "EM|Nn#n#N"
 msgstr "EM|nN#n#N"
 
-#: src/menus.C:1009 src/menus.C:1330
+#: src/menus.C:1005
 msgid "EM|Ii#i#I"
 msgstr "EM|iI#i#I"
 
-#: src/menus.C:1010 src/menus.C:1331
+#: src/menus.C:1006
 msgid "EM|Tt#t#T"
 msgstr "EM|tT#t#T"
 
-#: src/menus.C:1011 src/menus.C:1332
+#: src/menus.C:1007
 msgid "EM|Ss#s#S"
 msgstr "EM|sS#s#S"
 
-#: src/menus.C:1012 src/menus.C:1333
+#: src/menus.C:1008
 msgid "EM|hH#h#H"
 msgstr "EM|hH#h#H"
 
-#: src/menus.C:1013 src/menus.C:1334
+#: src/menus.C:1009
 msgid "EM|aA#a#A"
 msgstr "EM|aA#a#A"
 
-#: src/menus.C:1014 src/menus.C:1335
+#: src/menus.C:1010
 msgid "EM|Vv#v#V"
 msgstr "EM|Vv#v#V"
 
-#: src/menus.C:1015 src/menus.C:1336
+#: src/menus.C:1011
 msgid "EM|wW#w#W"
 msgstr "EM|wW#w#W"
 
-#: src/menus.C:1016 src/menus.C:1337
+#: src/menus.C:1012
 msgid "EM|Ll#l#L"
 msgstr "EM|lL#l#L"
 
-#: src/menus.C:1017 src/menus.C:1338
+#: src/menus.C:1013
 msgid "EM|gG#g#G"
 msgstr "EM|gG#g#G"
 
-#: src/menus.C:1464
+#: src/menus.C:1138
 msgid ""
 "Character...|Paragraph...|Document...|Paper...|Table...|Quotes...%l|Emphasize"
 " Style%b|Noun Style%b|Bold Style%b|TeX Style%b|Change Environment "
@@ -4158,71 +4168,71 @@ msgstr ""
 "TeX-stijl%b|Omgevingsdiepte veranderen|LaTeX-preambule...%l|Opmaakblad "
 "opslaan als default"
 
-#: src/menus.C:1477
+#: src/menus.C:1151
 msgid "LM|Cc#c#C"
 msgstr "LM|cC#c#C"
 
-#: src/menus.C:1478
+#: src/menus.C:1152
 msgid "LM|Pp#p#P"
 msgstr "LM|pP#p#P"
 
-#: src/menus.C:1479
+#: src/menus.C:1153
 msgid "LM|Dd#d#D"
 msgstr "LM|dD#d#D"
 
-#: src/menus.C:1480
+#: src/menus.C:1154
 msgid "LM|aA#a#A"
 msgstr "LM|aA#a#A"
 
-#: src/menus.C:1481
+#: src/menus.C:1155
 msgid "LM|eE#e#E"
 msgstr "LM|eE#e#E"
 
-#: src/menus.C:1482
+#: src/menus.C:1156
 msgid "LM|Qq#q#Q"
 msgstr "LM|qQ#q#Q"
 
-#: src/menus.C:1483
+#: src/menus.C:1157
 msgid "LM|mM#m#M"
 msgstr "LM|mM#m#M"
 
-#: src/menus.C:1484
+#: src/menus.C:1158
 msgid "LM|Nn#n#N"
 msgstr "LM|nN#n#N"
 
-#: src/menus.C:1485
+#: src/menus.C:1159
 msgid "LM|Bb#b#B"
 msgstr "LM|bB#b#B"
 
-#: src/menus.C:1486
+#: src/menus.C:1160
 msgid "LM|Tt#t#T"
 msgstr "LM|tT#t#T"
 
-#: src/menus.C:1487
+#: src/menus.C:1161
 msgid "LM|vV#v#V"
 msgstr "LM|vV#v#V"
 
-#: src/menus.C:1488
+#: src/menus.C:1162
 msgid "LM|Ll#l#L"
 msgstr "LM|Ll#l#L"
 
-#: src/menus.C:1489
+#: src/menus.C:1163
 msgid "LM|Ss#s#S"
 msgstr "LM|sS#s#S"
 
-#: src/menus.C:1563
+#: src/menus.C:1228
 msgid "Import ASCII file%t|As Lines%x41|As Paragraphs%x42"
 msgstr "ASCII-bestand inlezen%t|l Als regels%x41|p Als alinea's%x42"
 
-#: src/menus.C:1567
+#: src/menus.C:1232
 msgid "IMA|Ll#l#L"
 msgstr "IMA|lL#l#L"
 
-#: src/menus.C:1568
+#: src/menus.C:1233
 msgid "IMA|Pp#p#P"
 msgstr "IMA|pP#p#P"
 
-#: src/menus.C:1571
+#: src/menus.C:1236
 msgid ""
 "Lists & TOC%t|Table of Contents%x21|List of Figures%x22|List of "
 "Tables%x23|List of Algorithms%x24|Index List%x25|BibTeX Reference%x26"
@@ -4230,31 +4240,31 @@ msgstr ""
 "Lijsten & tabellen%t|c Inhoudsopgave%x21|f Figuren%x22|t "
 "Tabellen%x23|Algoritmes%x24|i Zakenregister%x25|BibTeX verwijzing%x26"
 
-#: src/menus.C:1579
+#: src/menus.C:1244
 msgid "IMT|Cc#c#C"
 msgstr "IMT|cC#c#C"
 
-#: src/menus.C:1580
+#: src/menus.C:1245
 msgid "IMT|Ff#f#F"
 msgstr "IMT|fF#f#F"
 
-#: src/menus.C:1581
+#: src/menus.C:1246
 msgid "IMT|Tt#t#T"
 msgstr "IMT|tT#t#T"
 
-#: src/menus.C:1582
+#: src/menus.C:1247
 msgid "IMT|Aa#a#A"
 msgstr "IMT|Aa#a#A"
 
-#: src/menus.C:1583
+#: src/menus.C:1248
 msgid "IMT|Ii#i#I"
 msgstr "IMT|iI#i#I"
 
-#: src/menus.C:1584
+#: src/menus.C:1249
 msgid "IMT|Bb#b#B"
 msgstr "IMT|Bb#b#B"
 
-#: src/menus.C:1587
+#: src/menus.C:1252
 msgid ""
 "Floats%t|Figure Float%x71|Table Float%x72|Wide Figure Float%x73|Wide Table "
 "Float%l%x74|Algorithm Float%x75"
@@ -4262,28 +4272,28 @@ msgstr ""
 "Zwevers%t|Figuur%x71|Tabel%x72|w Brede figuur%x73|i Brede "
 "tabel%l%x74|Algoritme%x75\""
 
-#: src/menus.C:1594
+#: src/menus.C:1259
 #, fuzzy
 msgid "IMF|gG#g#G"
 msgstr "IM|gG#g#G"
 
-#: src/menus.C:1595
+#: src/menus.C:1260
 msgid "IMF|Tt#t#T"
 msgstr "IMF|Tt#t#T"
 
-#: src/menus.C:1596
+#: src/menus.C:1261
 msgid "IMF|Ww#w#W"
 msgstr "IMF|wW#w#W"
 
-#: src/menus.C:1597
+#: src/menus.C:1262
 msgid "IMF|iI#i#I"
 msgstr "IMF|iI#i#I"
 
-#: src/menus.C:1598
+#: src/menus.C:1263
 msgid "IMF|Aa#a#A"
 msgstr "IMF|Aa#a#A"
 
-#: src/menus.C:1601
+#: src/menus.C:1266
 #, fuzzy
 msgid ""
 "Special Character%t|HFill%x31|Hyphenation Point%x32|Protected "
@@ -4294,40 +4304,40 @@ msgstr ""
 "spatie%x33|l Nieuwe regel%x34|i Ellips (...)%x35|e Punt eind zin%x36|q "
 "Aanhalingsteken (\")%x37"
 
-#: src/menus.C:1611
+#: src/menus.C:1276
 msgid "IMS|Hh#h#H"
 msgstr "IMS|hH#h#H"
 
-#: src/menus.C:1612
+#: src/menus.C:1277
 msgid "IMS|Pp#p#P"
 msgstr "IMS|pP#p#P"
 
-#: src/menus.C:1613
+#: src/menus.C:1278
 msgid "IMS|Bb#b#B"
 msgstr "IMS|bB#b#B"
 
-#: src/menus.C:1614
+#: src/menus.C:1279
 msgid "IMS|Ll#l#L"
 msgstr "IMS|lL#l#L"
 
-#: src/menus.C:1615
+#: src/menus.C:1280
 msgid "IMS|iI#i#I"
 msgstr "IMS|iI#i#I"
 
-#: src/menus.C:1616
+#: src/menus.C:1281
 msgid "IMS|Ee#e#E"
 msgstr "IMS|eE#e#E"
 
-#: src/menus.C:1617
+#: src/menus.C:1282
 msgid "IMS|Qq#q#Q"
 msgstr "IMS|qQ#q#Q"
 
-#: src/menus.C:1618
+#: src/menus.C:1283
 #, fuzzy
 msgid "IMS|Mm#m#M"
 msgstr "IM|mM#m#M"
 
-#: src/menus.C:1621
+#: src/menus.C:1286
 msgid ""
 "Figure...|Table...%l|Include File...|Import ASCII File%m|Insert LyX "
 "File...%l|Footnote|Margin Note|Floats%m%l|Lists & TOC%m%l|Special "
@@ -4341,79 +4351,79 @@ msgstr ""
 "teken%m%l|Notitie|Label...|Verwijzing...|Literatuurverwijzing|Registertrefwoo"
 "rd|Register laatste woord"
 
-#: src/menus.C:1642
+#: src/menus.C:1307
 msgid "IM|gG#g#G"
 msgstr "IM|gG#g#G"
 
-#: src/menus.C:1643
+#: src/menus.C:1308
 msgid "IM|bB#b#B"
 msgstr "IM|bB#b#B"
 
-#: src/menus.C:1644
+#: src/menus.C:1309
 msgid "IM|cC#c#C"
 msgstr "IM|cC#c#C"
 
-#: src/menus.C:1645
+#: src/menus.C:1310
 msgid "IM|Aa#a#A"
 msgstr "IM|aA#a#A"
 
-#: src/menus.C:1646
+#: src/menus.C:1311
 msgid "IM|Xx#x#X"
 msgstr "IM|xX#x#X"
 
-#: src/menus.C:1647
+#: src/menus.C:1312
 msgid "IM|Ff#f#F"
 msgstr "IM|fF#f#F"
 
-#: src/menus.C:1648
+#: src/menus.C:1313
 msgid "IM|Mm#m#M"
 msgstr "IM|mM#m#M"
 
-#: src/menus.C:1649
+#: src/menus.C:1314
 msgid "IM|oO#o#O"
 msgstr "IM|oO#o#O"
 
-#: src/menus.C:1650
+#: src/menus.C:1315
 msgid "IM|Tt#t#T"
 msgstr "IM|tT#t#T"
 
-#: src/menus.C:1651
+#: src/menus.C:1316
 msgid "IM|Ss#s#S"
 msgstr "IM|Ss#s#S"
 
-#: src/menus.C:1652
+#: src/menus.C:1317
 msgid "IM|Nn#n#N"
 msgstr "IM|Nn#n#N"
 
-#: src/menus.C:1653
+#: src/menus.C:1318
 msgid "IM|Ll#l#L"
 msgstr "IM|Ll#l#L"
 
-#: src/menus.C:1654
+#: src/menus.C:1319
 msgid "IM|rR#r#R"
 msgstr "IM|rR#r#R"
 
-#: src/menus.C:1655
+#: src/menus.C:1320
 msgid "IM|iI#i#I"
 msgstr "IM|iI#i#I"
 
-#: src/menus.C:1656
+#: src/menus.C:1321
 msgid "IM|dD#d#D"
 msgstr "IM|dD#d#D"
 
-#: src/menus.C:1657
+#: src/menus.C:1322
 msgid "IM|wW#w#W"
 msgstr "IM|wW#w#W"
 
-#: src/menus.C:1659
+#: src/menus.C:1324
 msgid "|URL..."
 msgstr "|URL..."
 
-#: src/menus.C:1660
+#: src/menus.C:1325
 msgid "IM|Uu#u#U"
 msgstr "IM|uU#u#U"
 
-#: src/menus.C:1766
+#: src/menus.C:1431
 msgid ""
 "Fraction|Square root|Exponent|Index|Sum|Integral%l|Math mode|Display%l|Math "
 "Panel..."
@@ -4421,70 +4431,74 @@ msgstr ""
 "f Breuk|s Vierkantswortel|Exponent|Onderindex|u Som|Integraal%l|m Wiskunde "
 "mode|d Formule ten toon%l|p Wiskundepaneel..."
 
-#: src/menus.C:1776
+#: src/menus.C:1441
 msgid "MM|Ff#f#F"
 msgstr "MM|fF#f#F"
 
-#: src/menus.C:1777
+#: src/menus.C:1442
 msgid "MM|Ss#s#S"
 msgstr "MM|sS#s#S"
 
-#: src/menus.C:1778
+#: src/menus.C:1443
 msgid "MM|Ee#e#E"
 msgstr "MM|Ee#e#E"
 
-#: src/menus.C:1779
+#: src/menus.C:1444
 msgid "MM|xX#x#X"
 msgstr "MM|xX#x#X"
 
-#: src/menus.C:1780
+#: src/menus.C:1445
 msgid "MM|uU#u#U"
 msgstr "MM|uU#u#U"
 
-#: src/menus.C:1781
+#: src/menus.C:1446
 msgid "MM|Ii#i#I"
 msgstr "MM|Ii#i#I"
 
-#: src/menus.C:1782
+#: src/menus.C:1447
 msgid "MM|Mm#m#M"
 msgstr "MM|mM#m#M"
 
-#: src/menus.C:1783
+#: src/menus.C:1448
 msgid "MM|Dd#d#D"
 msgstr "MM|dD#d#D"
 
-#: src/menus.C:1784
+#: src/menus.C:1449
 msgid "MM|Pp#p#P"
 msgstr "MM|pP#p#P"
 
-#: src/menus.C:1850
+#: src/menus.C:1515
 msgid ""
 "Screen Fonts...|Spellchecker Options...|Keyboard...|LaTeX...%l|Reconfigure"
 msgstr ""
 "f Schermlettertypes...|s Spellingsopties...|k Toetsenbord...|LaTeX...%l|r "
 "Herkonfiguratie"
 
-#: src/menus.C:1856
+#: src/menus.C:1521
 msgid "OM|Ff#f#F"
 msgstr "OM|fF#f#F"
 
-#: src/menus.C:1857
+#: src/menus.C:1522
 msgid "OM|Ss#s#S"
 msgstr "OM|sS#s#S"
 
-#: src/menus.C:1858
+#: src/menus.C:1523
 msgid "OM|Kk#k#K"
 msgstr "OM|kK#k#K"
 
-#: src/menus.C:1859
+#: src/menus.C:1524
 msgid "OM|Ll#l#L"
 msgstr "OM|Ll#l#L"
 
-#: src/menus.C:1860
+#: src/menus.C:1525
 msgid "OM|Rr#r#R"
 msgstr "OM|rR#r#R"
 
-#: src/menus.C:1929
+#: src/menus.C:1569
+msgid "No Documents Open!%t"
+msgstr "Geen documenten open!"
+
+#: src/menus.C:1603
 msgid ""
 "Introduction|Tutorial|User's Guide|Extended Features|Customization|Reference "
 "Manual|Known Bugs|LaTeX Configuration%l|Copyright and "
@@ -4494,68 +4508,73 @@ msgstr ""
 "Manual|Known bugs|LaTeX configuration%l|o Auteursrecht en "
 "garantie...|Erkentelijkheid...|Versie..."
 
-#: src/menus.C:1941
+#: src/menus.C:1615
 msgid "HM|Ii#I#i"
 msgstr "HM|Ii#I#i"
 
-#: src/menus.C:1942
+#: src/menus.C:1616
 msgid "HM|Tt#T#t"
 msgstr "HM|Tt#T#t"
 
-#: src/menus.C:1943
+#: src/menus.C:1617
 msgid "HM|Uu#U#u"
 msgstr "Hm|Uu#U#u"
 
-#: src/menus.C:1944
+#: src/menus.C:1618
 #, fuzzy
 msgid "HM|xX#x#X"
 msgstr "FM|xX#x#X"
 
-#: src/menus.C:1945
+#: src/menus.C:1619
 msgid "HM|Cc#C#c"
 msgstr "HM|Cc#C#c"
 
-#: src/menus.C:1946
+#: src/menus.C:1620
 msgid "HM|Rr#R#r"
 msgstr "HM|Rr#R#r"
 
-#: src/menus.C:1947
+#: src/menus.C:1621
 msgid "HM|Kk#K#k"
 msgstr "HM|Kk#K#k"
 
-#: src/menus.C:1948
+#: src/menus.C:1622
 msgid "HM|Ll#L#l"
 msgstr "HM|Ll#L#l"
 
-#: src/menus.C:1949
+#: src/menus.C:1623
 msgid "HM|oO#o#O"
 msgstr "HM|oO#o#O"
 
-#: src/menus.C:1950
+#: src/menus.C:1624
 msgid "HM|eE#e#E"
 msgstr "HM|Ee#e#E"
 
-#: src/menus.C:1951
+#: src/menus.C:1625
 msgid "HM|Vv#v#V"
 msgstr "HM|Vv#v#V"
 
-#: src/menus.C:1974
+#: src/menus.C:1648
 msgid "LyX Version "
 msgstr "LyX-versie"
 
-#: src/menus.C:1975
+#: src/menus.C:1649
 msgid " of "
 msgstr " van "
 
-#: src/menus.C:1976
+#: src/menus.C:1650
 msgid "Library directory: "
 msgstr "Bibliotheeksdirectory: "
 
-#: src/menus.C:1978
+#: src/menus.C:1652
 msgid "User directory: "
 msgstr "Gebruiker's directory: "
 
-#: src/menus.C:1990
+#: src/menus.C:1666
+#, fuzzy
+msgid "Could not find requested Documentation file"
+msgstr "Kon document niet invoegen"
+
+#: src/menus.C:1670
 msgid "Opening help file"
 msgstr "Openen helpbestand"
 
@@ -4584,29 +4603,29 @@ msgstr "Papierformaat"
 msgid "Paper layout set"
 msgstr "Papierformaat ingesteld"
 
-#: src/PaperLayout.C:269 src/ParagraphExtra.C:309 src/TableLayout.C:500
-#: src/TableLayout.C:686
+#: src/PaperLayout.C:269 src/ParagraphExtra.C:297 src/TableLayout.C:297
+#: src/TableLayout.C:469
 msgid "Warning: Invalid Length (valid example: 10mm)"
 msgstr "Waarschuwing: Ongeldige lengte (geldig voorbeeld: 10mm)"
 
-#: src/paragraph.C:1964
+#: src/paragraph.C:1968
 msgid "Senseless with this layout!"
 msgstr "Heeft geen zin met deze stijl!"
 
-#: src/ParagraphExtra.C:147
+#: src/ParagraphExtra.C:142
 #, fuzzy
 msgid "Document is read-only. No changes to layout permitted."
 msgstr "Document tegen schrijven beveiligd. Stijl mag niet veranderd worden."
 
-#: src/ParagraphExtra.C:166
+#: src/ParagraphExtra.C:161
 msgid "ParagraphExtra Layout"
 msgstr "Extra alinea opmaak"
 
-#: src/ParagraphExtra.C:213
+#: src/ParagraphExtra.C:201
 msgid "ParagraphExtra layout set"
 msgstr "Extra alinea opmaak ingesteld"
 
-#: src/ParagraphExtra.C:319
+#: src/ParagraphExtra.C:307
 msgid "Warning: Invalid percent value (0-100)"
 msgstr "Waarschuwing: Ongeldig percentage (0-100)"
 
@@ -4698,11 +4717,11 @@ msgstr "Ascii|#s"
 msgid "Spellchecker Options"
 msgstr "Spellingscontrole opties"
 
-#: src/spellchecker.C:548
+#: src/spellchecker.C:551
 msgid "Spellchecker"
 msgstr "Spellingscontrole"
 
-#: src/spellchecker.C:655
+#: src/spellchecker.C:658
 msgid ""
 "\n"
 "\n"
@@ -4719,19 +4738,19 @@ msgstr ""
 "van dit document. Controleer /usr/lib/ispell of kies een andere\n"
 "woordenlijst in het 'Spellingscontrole opties' menu."
 
-#: src/spellchecker.C:771
+#: src/spellchecker.C:774
 msgid " words checked."
 msgstr " woorden gecontroleerd."
 
-#: src/spellchecker.C:773
+#: src/spellchecker.C:776
 msgid " word checked."
 msgstr " woord gecontroleerd."
 
-#: src/spellchecker.C:775
+#: src/spellchecker.C:778
 msgid "Spellchecking completed!"
 msgstr "Controle compleet!"
 
-#: src/spellchecker.C:779
+#: src/spellchecker.C:782
 msgid ""
 "The ispell-process has died for some reason.\n"
 "Maybe it has been killed."
@@ -4821,52 +4840,43 @@ msgstr "100 %"
 msgid "Replace word|#R"
 msgstr "r Vervang woord|#R"
 
-#: src/support/filetools.C:178 src/support/filetools.C:187
-#: src/support/filetools.C:194
+#: src/support/filetools.C:174
 msgid "LyX Internal Error!"
 msgstr "interne LyX fout!"
 
-#: src/support/filetools.C:179
+#: src/support/filetools.C:175
 msgid "Could not test if directory is writeable"
 msgstr "Kon niet vaststellen of deze directory schrijfbaar is"
 
-#: src/support/filetools.C:188
-msgid "Cannot open directory test file"
-msgstr "Kan testbestand niet openen"
-
-#: src/support/filetools.C:195
-msgid "Created test file but cannot remove it?"
-msgstr "Proefbestand aangemaakt, maar kan het niet verwijderen?"
-
-#: src/support/filetools.C:360
+#: src/support/filetools.C:378
 msgid "Error! Cannot open directory:"
 msgstr "Fout! Kan map niet openen:"
 
-#: src/support/filetools.C:373
+#: src/support/filetools.C:391
 msgid "Error! Could not remove file:"
 msgstr "Fout! Kon bestand niet verwijderen:"
 
-#: src/support/filetools.C:387
+#: src/support/filetools.C:405
 msgid "Error! Couldn't create temporary directory:"
 msgstr "Fout: Kan tijdelijke map niet aanmaken:"
 
-#: src/support/filetools.C:403
+#: src/support/filetools.C:421
 msgid "Error! Couldn't delete temporary directory:"
 msgstr "Fout! Kon tijdelijke map niet verwijderen:"
 
-#: src/support/filetools.C:456
+#: src/support/filetools.C:474
 msgid "Internal error!"
 msgstr "Interne fout!"
 
-#: src/support/filetools.C:457
+#: src/support/filetools.C:475
 msgid "Call to createDirectory with invalid name"
 msgstr "Aanroep `createDirectory' met ongeldige naam"
 
-#: src/support/filetools.C:462
+#: src/support/filetools.C:480
 msgid "Error! Couldn't create directory:"
 msgstr "Fout! Kon map niet aanmaken:"
 
-#: src/support/lyxlib.h:46
+#: src/support/getUserName.C:13
 msgid "unknown"
 msgstr "onbekend"
 
@@ -4879,36 +4889,35 @@ msgstr "Fout: Kon niet naar deze directory gaan: "
 msgid "Error: Dir already popped: "
 msgstr "Document is al geopend:"
 
-#: src/TableLayout.C:416
+#: src/TableLayout.C:233
 msgid "Table Extra Form"
 msgstr "Tabel Extra Formulier"
 
-#: src/TableLayout.C:436
+#: src/TableLayout.C:253
 msgid "Table Layout"
 msgstr "Tabelformaat"
 
-#: src/TableLayout.C:460 src/TableLayout.C:479
+#: src/TableLayout.C:276
 msgid "Warning: Wrong Cursor position, updated window"
 msgstr "Waarschuwing: Cursor fout geplaatst, venster bijgewerkt"
 
-#: src/TableLayout.C:535
+#: src/TableLayout.C:332
 msgid "Confirm: press Delete-Button again"
 msgstr "Bevestig: druk opnieuw op de Delete-toets"
 
-#: src/text2.C:333
+#: src/text2.C:336
 msgid "Opened float"
 msgstr "Zwever geopend"
 
-#: src/text2.C:336
+#: src/text2.C:338
 msgid "Closed float"
 msgstr "Zwever gesloten"
 
-#: src/text2.C:374
+#: src/text2.C:375
 msgid "Nothing to do"
 msgstr "Niets te doen"
 
-#. Could only happen with user style
-#: src/text2.C:1049
+#: src/text2.C:1058
 msgid ""
 "No font change defined. Use Character under the Layout menu to define font "
 "change."
@@ -4916,64 +4925,58 @@ msgstr ""
 "Geen verandering lettertype gedefinieerd. Gebruik Teken onder het Stijl-menu "
 "om verandering lettertype te definieren."
 
-#: src/text.C:3886 src/text.C:3894 src/text.C:3911 src/text.C:3926
-#: src/text2.C:1784 src/text2.C:1794 src/text2.C:2001 src/text2.C:2011
-#: src/text2.C:2101 src/text2.C:2110
+#: src/text.C:3946 src/text.C:3954 src/text.C:3971 src/text.C:3986
+#: src/text2.C:1796 src/text2.C:1808 src/text2.C:2053 src/text2.C:2066
+#: src/text2.C:2163 src/text2.C:2173
 msgid "Impossible operation"
 msgstr "Onmogelijke operatie"
 
-#: src/text2.C:1784 src/text2.C:2001
+#: src/text2.C:1797 src/text2.C:2054
 msgid "Don't know what to do with half floats."
 msgstr "Weet niet wat te doen met halve zwevers."
 
-#: src/text2.C:1784 src/text2.C:1794 src/text2.C:2001 src/text2.C:2011
+#: src/text2.C:1798 src/text2.C:1810 src/text2.C:2056 src/text2.C:2068
 msgid "sorry."
 msgstr "Helaas."
 
-#: src/text2.C:1794 src/text2.C:2011
+#: src/text2.C:1809 src/text2.C:2067
 msgid "Don't know what to do with half tables."
 msgstr "Weet niet wat te doen met halve tabellen."
 
-#: src/text2.C:2102
+#: src/text2.C:2164
 msgid "Can't paste float into float!"
 msgstr "Kan geen zwever in een zwever plakken!"
 
-#: src/text2.C:2111
+#: src/text2.C:2174
 msgid "Table cell cannot include more than one paragraph!"
 msgstr "Een cel in een tabel kan slechts een alinea bevatten!"
 
-#: src/text.C:1848
+#: src/text.C:1891
 msgid "Multicolumns can only be horizontally."
 msgstr "Meerkolom werkt alleen in horizontale richting."
 
-#. the user inserted a space before a space. So we
-#. * will just make a CursorRight. BUT: The font of this
-#. * space should be set to current font. That is why
-#. * we need to rebreak perhaps. If there is a protected
-#. * blank at the end of a row we have to force
-#. * a rebreak.
-#: src/text.C:2240 src/text.C:2259
+#: src/text.C:2292 src/text.C:2320
 msgid "You cannot type two spaces this way.  Please read the Tutorial."
 msgstr ""
 
-#: src/text.C:2257
+#: src/text.C:2318
 msgid ""
 "You cannot insert a space at the beginning of a paragraph.  Please read the "
 "Tutorial."
 msgstr ""
 
-#: src/text.C:3887
+#: src/text.C:3947
 msgid "You can't insert a float in a float!"
 msgstr "Je kunt geen zwever in een zwever stoppen!"
 
-#: src/text.C:3895
+#: src/text.C:3955
 msgid "You can't insert a marginpar in a minipage!"
 msgstr "Je kunt geen kanttekening in een minipagina stoppen!"
 
-#: src/text.C:3911
+#: src/text.C:3971
 msgid "Cannot cut table."
 msgstr "Kan tabel niet splitsen."
 
-#: src/text.C:3927
+#: src/text.C:3987
 msgid "Float would include float!"
 msgstr "Hier zou een zwever een andere zwever bevatten!"
