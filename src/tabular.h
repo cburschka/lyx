@@ -177,14 +177,12 @@ public:
 	/// constructor
 	LyXTabular(BufferParams const &,
 		   InsetTabular *, int columns_arg, int rows_arg);
-	/// sort of copy constructir
+	/// sort of copy constructor
 	LyXTabular(BufferParams const &,
 		   InsetTabular *, LyXTabular const &);
 	///
 	explicit
 	LyXTabular(Buffer const *, InsetTabular *, LyXLex & lex);
-	///
-	LyXTabular & operator=(LyXTabular const &);
 	///
 	LyXTabular * clone(BufferParams const &, InsetTabular *);
 
@@ -519,6 +517,8 @@ private:
 		  int columns_arg, int rows_arg, LyXTabular const * lt = 0);
 	///
 	void Reinit(bool reset_widths = true);
+	///
+	LyXTabular & operator=(LyXTabular const &);
 	///
 	void set_row_column_number_info(bool oldformat = false);
 	/// Returns true if a complete update is necessary, otherwise false

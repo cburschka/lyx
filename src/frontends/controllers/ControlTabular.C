@@ -32,7 +32,7 @@ bool ControlTabular::initialiseParams(string const & data)
 	InsetTabular tmp(*buffer);
 	int cell = InsetTabularMailer::string2params(data, tmp);
 	if (cell != -1) {
-		params_.reset(new LyXTabular(*tmp.tabular.get()));
+		params_.reset(new LyXTabular(tmp.tabular));
 		active_cell_ = cell;
 	}
 	return true;

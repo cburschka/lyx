@@ -52,9 +52,6 @@
 #include "FuncStatus.h"
 #include "frontends/mouse_state.h"
 
-#include <boost/scoped_ptr.hpp>
-#include <boost/weak_ptr.hpp>
-
 class LyXLex;
 class Painter;
 class BufferView;
@@ -121,7 +118,7 @@ public:
 	    insets that may contain several paragraphs */
 	bool noFontChange() const { return true; }
 	///
-	bool display() const { return tabular->isLongTabular(); }
+	bool display() const { return tabular.isLongTabular(); }
 	///
 	RESULT localDispatch(FuncRequest const &);
 	///
@@ -219,7 +216,7 @@ public:
 	//
 	// Public structures and variables
 	///
-	boost::scoped_ptr<LyXTabular> tabular;
+	mutable LyXTabular tabular;
 
 	/// are some cells selected ?
 	bool hasSelection() const {
