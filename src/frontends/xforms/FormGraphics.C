@@ -32,7 +32,28 @@
 
 using std::endl;
 
-static double const tol = 1.0e-08;
+namespace {
+
+// Zero test for double precision numbers
+double const tol = 1.0e-08;
+
+// The maximum digits for the image scale
+int const SCALE_MAXDIGITS = 3;
+
+// The maximum digits for the image width
+int const WIDTH_MAXDIGITS = 3;
+
+// The maximum digits for the image height
+int const HEIGHT_MAXDIGITS = 3;
+
+// The max characters in the rotation angle (minus sign and 3 digits)
+int const ROTATE_MAXCHARS = 4;
+
+// The maximum characters in a filename.
+int const FILENAME_MAXCHARS = 1024;
+ 
+} // namespace anon
+
 
 typedef FormCB<ControlGraphics, FormDB<FD_form_graphics> > base_class;
 

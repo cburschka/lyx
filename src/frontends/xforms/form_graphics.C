@@ -47,7 +47,8 @@ FD_form_graphics * FormGraphics::build_graphics()
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
-  fdui->choice_width_units = obj = fl_add_choice(FL_NORMAL_CHOICE2, 180, 80, 65, 30, "");
+  fdui->choice_width_units = obj = fl_add_choice(FL_NORMAL_CHOICE, 180, 80, 65, 30, "");
+    fl_set_object_boxtype(obj, FL_FRAME_BOX);
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
   {
     char const * const dummy = N_("Height|#H");
@@ -56,7 +57,8 @@ FD_form_graphics * FormGraphics::build_graphics()
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
-  fdui->choice_height_units = obj = fl_add_choice(FL_NORMAL_CHOICE2, 180, 120, 65, 30, "");
+  fdui->choice_height_units = obj = fl_add_choice(FL_NORMAL_CHOICE, 180, 120, 65, 30, "");
+    fl_set_object_boxtype(obj, FL_FRAME_BOX);
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
   {
     char const * const dummy = N_("Scale|#S");
