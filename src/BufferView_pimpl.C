@@ -2928,23 +2928,17 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		break;
 
 	case LFUN_INSET_WIDE_FLOAT:
-	{
 		// check if the float type exist
 		if (floatList.typeExist(argument)) {
 			InsetFloat * new_inset =
 				new InsetFloat(buffer_->params, argument);
 			new_inset->wide(true);
-			if (insertInset(new_inset))
-				new_inset->edit(bv_);
-			else
-				delete new_inset;
+			insertAndEditInset(new_inset);
 		} else {
 			lyxerr << "Non-existent float type: "
 			       << argument << endl;
 		}
-
-	}
-	break;
+		break;
 
 #if 0
 	case LFUN_INSET_LIST:
@@ -3247,13 +3241,15 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 	break;
 
 	case LFUN_FLOAT_LIST:
-	{
-		// We should check the argument for validity. (Lgb)
-		Inset * inset = new InsetFloatList(argument);
-		if (!insertInset(inset, "Standard"))
-			delete inset;
-	}
-	break;
+		if (floatList.typeExist(argument)) {
+			Inset * inset = new InsetFloatList(argument);
+			if (!insertInset(inset, "Standard"))
+				delete inset;
+		} else {
+			lyxerr << "Non-existent float type: "
+			       << argument << endl;
+		}
+		break;
 
 	case LFUN_THESAURUS_ENTRY:
 	{

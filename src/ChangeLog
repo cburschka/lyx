@@ -1,3 +1,8 @@
+2002-04-28  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* BufferView_pimpl.C (Dispatch): Check that float type exists when 
+	inserting list of floats.
+
 2002-04-24  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* CutAndPaste.C (SwitchLayoutsBetweenClasses): when converting a

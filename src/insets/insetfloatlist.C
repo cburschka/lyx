@@ -34,11 +34,11 @@ InsetFloatList::InsetFloatList(string const & type)
 
 string const InsetFloatList::getScreenLabel(Buffer const *) const
 {
-	string const guiName = floatList[getCmdName()]->second.listName();
-	if (!guiName.empty()) {
-		return _(guiName);
-	}
-	return _("ERROR: Nonexistent float type!");
+	FloatList::const_iterator it = floatList[getCmdName()];
+	if (it != floatList.end())
+		return _(it->second.listName());
+	else
+		return _("ERROR: Nonexistent float type!");
 }
 
 
@@ -60,7 +60,9 @@ void InsetFloatList::read(Buffer const *, LyXLex & lex)
 
 	if (lex.eatLine()) {
 		setCmdName(lex.getString());
-		lyxerr << "FloatList::float_type: " << getCmdName() << endl;
+		lyxerr[Debug::INSETS] << "FloatList::float_type: " << getCmdName() << endl;
+		if (!floatList.typeExist(getCmdName()))
+			lex.printError("InsetFloatList: Unknown float type: `$$Token'");
 	} else
 		lex.printError("InsetFloatList: Parse error: `$$Token'");
 	while (lex.isOK()) {
