@@ -251,8 +251,9 @@ void InsetGraphicsParams::Write(Buffer const * buf, ostream & os) const
 	writeResize(os, "height", heightResize, heightSize);
 
 	writeOrigin(os, rotateOrigin);
-	if (lyx::float_equal(rotateAngle, 0.0, 0.001))
+	if (!lyx::float_equal(rotateAngle, 0.0, 0.001)) {
 		os << " rotateAngle " << rotateAngle << '\n';
+	}
 }
 
 

@@ -1,3 +1,8 @@
+2001-12-01  John Levon  <moz@compsoc.man.ac.uk>
+
+	* insetgraphics.C:
+	* insetgraphicsParams.C: fix inverted sense of float_equal
+
 2001-11-30  Juergen Vigna  <jug@sad.it>
 
 	* insettabular.C (InsetTabular): use the save_id flag to create also

@@ -28,10 +28,7 @@ Known BUGS:
        We should probably use what the user asks to use... but when he chooses
        by the file dialog we normally get an absolute path and this may not be 
        what the user meant.
-    * Bug in FileDlg class (src/filedlg.[hC]) when selecting a file and then
-        pressing ok, it counts as if no real selection done. Apparently
-        when choosing a file it doesn't update the select file input line.
-		
+
 	* If we are trying to create a file in a read-only directory and there
 		are graphics that need converting, the converting will fail because
 		it is done in-place, into the same directory as the original image.
@@ -168,6 +165,7 @@ using std::endl;
 
 
 // This function is a utility function
+// ... that should be with ChangeExtension ...
 inline
 string const RemoveExtension(string const & filename)
 {
@@ -534,7 +532,7 @@ InsetGraphics::createLatexOptions() const
 
 	// Make sure it's not very close to zero, a float can be effectively
 	// zero but not exactly zero.
-	if (lyx::float_equal(params.rotateAngle, 0, 0.001)) {
+	if (!lyx::float_equal(params.rotateAngle, 0, 0.001)) {
 		options << "angle="
 			<< params.rotateAngle << ',';
 	}
