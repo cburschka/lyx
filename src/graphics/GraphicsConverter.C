@@ -26,6 +26,9 @@
 
 #include <fstream>
 
+using std::endl;
+
+
 namespace {
 
 string const move_file(string const & from_file, string const & to_file)
