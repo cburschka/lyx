@@ -35,8 +35,8 @@ public:
 	virtual int workHeight() const { return work_area->h; }
 	///
 	virtual void redraw() const {
-		fl_redraw_object(work_area);
-		fl_redraw_object(scrollbar);
+		//fl_redraw_object(work_area);
+		//fl_redraw_object(scrollbar);
 	}
 	///
 	Window getWin() const { return work_area->form->window; }

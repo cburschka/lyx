@@ -52,7 +52,7 @@ protected:
 	virtual WorkArea & workarea() const { return owner_; }
  
 	/// Copies specified area of pixmap to screen
-	virtual void expose(int x, int y, int exp_width, int exp_height); 
+	virtual void expose(int x, int y, int w, int h); 
  
 private:
 	/// our owning widget

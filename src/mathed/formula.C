@@ -278,8 +278,10 @@ InsetFormula::localDispatch(BufferView * bv, kb_action action,
 				hull()->numbered(row, true);
 			}
 
+#warning FIXME: please check you really mean repaint() ... is it needed,
+#warning and if so, should it be update() instead ? 
 			if (!new_label.empty() && bv->ChangeRefsIfUnique(old_label, new_label))
-				bv->redraw();
+				bv->repaint();
 
 			hull()->label(row, new_label);
 

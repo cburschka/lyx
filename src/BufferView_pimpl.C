@@ -207,28 +207,22 @@ void BufferView::Pimpl::buffer(Buffer * b)
 	if (buffer_) {
 		lyxerr[Debug::INFO] << "Buffer addr: " << buffer_ << endl;
 		buffer_->addUser(bv_);
+ 
 		// If we don't have a text object for this, we make one
 		if (bv_->text == 0) {
 			resizeCurrentBuffer();
-		} else {
-			updateScreen();
-			updateScrollbar();
 		}
+
+		// FIXME: needed when ?
 		bv_->text->first_y = screen().topCursorVisible(bv_->text->cursor, bv_->text->first_y);
-		owner_->updateMenubar();
-		owner_->updateToolbar();
+ 
 		// Similarly, buffer-dependent dialogs should be updated or
 		// hidden. This should go here because some dialogs (eg ToC)
 		// require bv_->text.
 		owner_->getDialogs()->updateBufferDependent(true);
-		redraw();
 	} else {
 		lyxerr[Debug::INFO] << "  No Buffer!" << endl;
-		owner_->updateMenubar();
-		owner_->updateToolbar();
 		owner_->getDialogs()->hideBufferDependent();
-		updateScrollbar();
-		workarea().redraw();
 
 		// Also remove all remaining text's from the testcache.
 		// (there should not be any!) (if there is any it is a
@@ -237,17 +231,13 @@ void BufferView::Pimpl::buffer(Buffer * b)
 			textcache.show(lyxerr, "buffer delete all");
 		textcache.clear();
 	}
-	// should update layoutchoice even if we don't have a buffer.
+ 
+	repaint();
+	updateScrollbar();
+	owner_->updateMenubar();
+	owner_->updateToolbar();
 	owner_->updateLayoutChoice();
-
 	owner_->updateWindowTitle();
-}
-
-
-void BufferView::Pimpl::redraw()
-{
-	lyxerr[Debug::INFO] << "BufferView::redraw()" << endl;
-	workarea().redraw();
 }
 
 
@@ -356,10 +346,6 @@ int BufferView::Pimpl::resizeCurrentBuffer()
 
 	bv_->text->first_y = screen().topCursorVisible(bv_->text->cursor, bv_->text->first_y);
 
-	// this will scroll the screen such that the cursor becomes visible
-	updateScrollbar();
-	redraw();
-
 	setState();
 	owner_->allowInput();
 
@@ -370,7 +356,7 @@ int BufferView::Pimpl::resizeCurrentBuffer()
 }
 
 
-void BufferView::Pimpl::updateScreen()
+void BufferView::Pimpl::repaint()
 {
 	// Regenerate the screen.
 	screen().redraw(bv_->text, bv_);
@@ -910,6 +896,7 @@ void BufferView::Pimpl::workAreaResize()
 	// update from work area
 	work_area_width = workarea().workWidth();
 	work_area_height = workarea().workHeight();
+ 
 	if (buffer_ != 0) {
 		if (widthChange) {
 			// The visible LyXView need a resize
@@ -931,9 +918,6 @@ void BufferView::Pimpl::workAreaResize()
 			// to the start of the document on vertical
 			// resize
 			fitCursor();
-
-			// The main window size has changed, repaint most stuff
-			redraw();
 		} else {
 			screen().redraw(bv_->text, bv_);
 		}
@@ -1312,7 +1296,6 @@ void BufferView::Pimpl::center()
 		screen().draw(bv_->text, bv_, 0);
 	}
 	update(bv_->text, BufferView::SELECT|BufferView::FITCUR);
-	redraw();
 }
 
 

@@ -44,8 +44,6 @@ struct BufferView::Pimpl : public boost::signals::trackable {
 	LyXScreen & screen() const;
 	///
 	void buffer(Buffer *);
-	///
-	void redraw();
 	/// Return true if the cursor was fitted.
 	bool fitCursor();
 	///
@@ -56,8 +54,11 @@ struct BufferView::Pimpl : public boost::signals::trackable {
 	void update();
 	//
 	void update(LyXText *, BufferView::UpdateCodes);
-	/// Update pixmap of screen
-	void updateScreen();
+	/**
+	 * Repaint pixmap. Used for when we've made a visible
+	 * change but don't need the full update() logic
+	 */
+	void repaint();
 	///
 	void workAreaResize();
 	///

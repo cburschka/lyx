@@ -71,9 +71,9 @@ void BufferView::resize()
 }
 
 
-void BufferView::redraw()
+void BufferView::repaint()
 {
-	pimpl_->redraw();
+	pimpl_->repaint();
 }
 
 

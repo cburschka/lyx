@@ -796,7 +796,8 @@ bool Converters::scanLog(Buffer const * buffer, string const & command,
 		if ((result & LaTeX::ERRORS)) {
 			// Insert all errors as errors boxes
 			bv->insertErrors(terr);
-			bv->redraw();
+#warning repaint() or update() or nothing ?
+			bv->repaint();
 			bv->fitCursor();
 		}
 		bv->owner()->allowInput();
@@ -853,7 +854,8 @@ bool Converters::runLaTeX(Buffer const * buffer, string const & command)
 		if ((result & LaTeX::ERRORS)) {
 			// Insert all errors as errors boxes
 			bv->insertErrors(terr);
-			bv->redraw();
+#warning repaint() or update() or nothing ?
+			bv->repaint();
 			bv->fitCursor();
 		}
 	}

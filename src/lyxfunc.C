@@ -1197,7 +1197,8 @@ string const LyXFunc::dispatch(kb_action action, string argument)
 
 	case LFUN_REMOVEERRORS:
 		if (owner->view()->removeAutoInsets()) {
-			owner->view()->redraw();
+#warning repaint() or update() or nothing ?
+			owner->view()->repaint();
 			owner->view()->fitCursor();
 		}
 		break;
@@ -1634,7 +1635,7 @@ string const LyXFunc::dispatch(kb_action action, string argument)
 			gc.changeDisplay(true);
 		}
 
-		owner->view()->redraw();
+		owner->view()->repaint();
 		break;
 	}
 

@@ -46,9 +46,6 @@ public:
 	/// return the height of the work area in pixels
 	virtual int workHeight() const = 0;
   
-	/// FIXME: GUII
-	virtual void redraw() const = 0;
- 
 	/**
 	 * Update the scrollbar.
 	 * @param height the total document height in pixels

@@ -40,6 +40,8 @@ void ControlBibitem::applyParamsToInset()
 
 	// We need to do a redraw because the maximum
 	// InsetBibKey width could have changed
-	lv_.view()->redraw();
+#warning please check you mean repaint() not update(),
+#warning and whether the repaint() is needed at all
+	lv_.view()->repaint();
 	lv_.view()->fitCursor();
 }

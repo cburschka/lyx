@@ -29,6 +29,7 @@
 #include "insets/insettext.h"
 #include "ColorHandler.h"
 #include "language.h"
+#include "debug.h"
 
 using std::max;
 using std::min;
@@ -185,18 +186,15 @@ void XScreen::hideCursor()
 }
 
  
-void XScreen::expose(int x, int y, int exp_width, int exp_height)
+void XScreen::expose(int x, int y, int w, int h)
 {
-	// FIXME: here we should definitely NOT do this.
-	// we need to generate an expose event for the workarea
-	// and then copy from the pixmap to the screen. This
-	// is the Sane Way (tm) 
+	lyxerr[Debug::GUI] << "expose " << w << "x" << h
+		<< "+" << x << "+" << y << endl;
 	XCopyArea(fl_get_display(),
 		  owner_.getPixmap(),
 		  owner_.getWin(),
 		  gc_copy,
-		  x, y,
-		  exp_width, exp_height,
+		  x, y, w, h,
 		  x + owner_.xpos(),
 		  y + owner_.ypos());
 }

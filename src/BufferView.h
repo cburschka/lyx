@@ -59,8 +59,12 @@ public:
 	void buffer(Buffer * b);
 	///
 	void resize();
-	///
-	void redraw();
+	/**
+	 * Repaint the pixmap. Used for when we don't want
+	 * to go through the full update() logic, just a simple
+	 * repaint of the whole screen.
+	 */
+	void repaint();
 	///
 	bool fitCursor();
 	///

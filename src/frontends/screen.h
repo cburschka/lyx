@@ -144,8 +144,8 @@ public:
 	virtual bool forceClear() const { return force_clear_; }
 
 protected:
-	/// copies specified area of pixmap to screen
-	virtual void expose(int x, int y, int exp_width, int exp_height) = 0;
+	/// cause the display of the given area of the work area
+	virtual void expose(int x, int y, int w, int h) = 0;
 
 	/// get the work area
 	virtual WorkArea & workarea() const = 0;

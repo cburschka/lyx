@@ -1,5 +1,19 @@
 2002-06-21  John Levon  <moz@compsoc.man.ac.uk>
 
+	* buffer.C: 
+	* converter.C: 
+	* exporter.C:
+	* lyxfunc.C: 
+	* BufferView.h:
+	* BufferView.C: use repaint()
+
+	* BufferView_pimpl.h:
+	* BufferView_pimpl.C: s/updateScreen()/repaint()/
+	  as it's a clearer description. Remove superfluous
+	  redraws.
+ 
+2002-06-21  John Levon  <moz@compsoc.man.ac.uk>
+
 	* text.C: fix bug 488. Not ideal, but getting
 	  getWord() to work properly for the insets that
 	  matter is more difficult ...

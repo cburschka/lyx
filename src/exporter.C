@@ -39,7 +39,8 @@ bool Exporter::Export(Buffer * buffer, string const & format,
 	if (bv) {
 		// Remove all error insets
 		if (bv->removeAutoInsets()) {
-			bv->redraw();
+#warning repaint() or update() or nothing ? 
+			bv->repaint();
 			bv->fitCursor();
 		}
 	}

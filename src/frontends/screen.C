@@ -303,6 +303,8 @@ void LyXScreen::drawFromTo(LyXText * text, BufferView * bv,
 	int y1, int y2, int yo, int xo,
 	bool internal)
 {
+	lyxerr[Debug::GUI] << "screen: drawFromTo " << y1 << "-" << y2 << endl;
+ 
 	int y_text = text->first_y + y1;
   
 	// get the first needed row
