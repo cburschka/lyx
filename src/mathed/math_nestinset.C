@@ -332,7 +332,8 @@ MathInset::result_type MathNestInset::dispatch
 
 		case LFUN_PASTESELECTION:
 			return
-				dispatch(FuncRequest(bv, LFUN_PASTE, bv->getClipboard()), idx, pos);
+				dispatch(
+					FuncRequest(bv, LFUN_PASTE, bv->getClipboard()), idx, pos);
 			
 		case LFUN_MOUSE_PRESS:
 			if (cmd.button() == mouse_button::button2)

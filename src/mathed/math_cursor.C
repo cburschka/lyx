@@ -1483,25 +1483,10 @@ MathCursorPos MathCursor::normalAnchor() const
 
 MathInset::result_type MathCursor::dispatch(FuncRequest const & cmd)
 {
-	// try to dispatch to adajcent items if they are not editable
-	// actually, this should only happen for mouse clicks...
-	idx_type d1;
-	pos_type d2;
-	if (hasNextAtom() && !openable(nextAtom(), false)) {
-		MathInset::result_type res = nextAtom().nucleus()->dispatch(cmd, d1, d2);
-		if (res != MathInset::UNDISPATCHED)
-			return res;
-	}
-	if (hasPrevAtom() && !openable(prevAtom(), false)) {
-		MathInset::result_type res = prevAtom().nucleus()->dispatch(cmd, d1, d2);
-		if (res != MathInset::UNDISPATCHED)
-			return res;
-	}
-
 	for (int i = Cursor_.size() - 1; i >= 0; --i) {
 		MathCursorPos & pos = Cursor_[i];
-		MathInset::result_type const res
-			= pos.par_->dispatch(cmd, pos.idx_, pos.pos_);
+		MathInset::result_type
+			res = pos.par_->dispatch(cmd, pos.idx_, pos.pos_);
 		if (res != MathInset::UNDISPATCHED) {
 			if (res == MathInset::DISPATCHED_POP) {
 				Cursor_.shrink(i + 1);

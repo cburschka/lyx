@@ -66,6 +66,7 @@ void MathArray::insert(size_type pos, MathAtom const & t)
 
 void MathArray::insert(size_type pos, MathArray const & ar)
 {
+	lyx::Assert(pos <= size());
 	base_type::insert(begin() + pos, ar.begin(), ar.end());
 }
 
