@@ -434,15 +434,14 @@ void InsetTabular::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 		break;
 
 	case LFUN_MOUSE_MOTION:
-		if (cmd.button() != mouse_button::button1)
-			break;
-		// ignore motions deeper nested than the real anchor
-		if (bvcur.selection() && bvcur.anchor_.size() < cur.size())
-			break;
-		setPos(cur, cmd.x, cmd.y);
-		bvcur.setCursor(cur);
-		bvcur.selection() = true;
 		lyxerr << "# InsetTabular::MouseMotion\n" << bvcur << endl;
+		if (cmd.button() != mouse_button::button1) {
+			// only accept motions to places not deeper nested than the real anchor
+			if (bvcur.anchor_.hasPart(cur)) {
+				setPos(cur, cmd.x, cmd.y);
+				bvcur.setCursor(cur);
+			}
+		}
 		break;
 
 	case LFUN_MOUSE_RELEASE:
