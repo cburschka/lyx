@@ -20,7 +20,7 @@ class Dialogs;
 class LyXView;
 class CitationDialog;
 
-class FormCitation : public DialogBase, public noncopyable {
+class FormCitation : public DialogBase {
 public:
 	FormCitation(LyXView *, Dialogs *);
 

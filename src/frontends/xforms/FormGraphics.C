@@ -357,7 +357,8 @@ void FormGraphics::browse()
 	string const filename = fl_get_input(dialog_->input_filename);
 
 	string const title = N_("Graphics");
-	string const pattern = "*(ps|png)";
+	// we need the second '|' to prevent mis-interpretation 
+	string const pattern = "*.(ps|png)|";
 
   	// Does user clipart directory exist?
   	string clipdir = AddName (user_lyxdir, "clipart");
@@ -369,7 +370,7 @@ void FormGraphics::browse()
 	
 	// Show the file browser dialog
 	string const new_filename =
-		browseFile(filename, title, pattern, dir1,
+		browseFile(lv_, filename, title, pattern, dir1,
 			   make_pair(string(), string()));
 
 	// Save the filename to the dialog

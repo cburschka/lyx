@@ -8,7 +8,7 @@
  */
 #include <config.h>
 #include <algorithm>
-#include <iostream>
+#include <utility>
 
 #ifdef __GNUG__
 #pragma implementation
@@ -17,9 +17,9 @@
 #include "Dialogs.h"
 #include "FormInclude.h"
 #include "insets/insetinclude.h" 
-#include "filedlg.h"
-#include "support/filetools.C"
-#include "support/lstrings.h" 
+#include "frontends/FileDialog.h"
+#include "support/filetools.h"
+#include "support/lstrings.h"
 #include "LyXView.h"
 #include "buffer.h"
 #include "lyxrc.h" 
@@ -28,15 +28,13 @@
  
 #include "form_include.h"
 
-using std::cout;
+using std::make_pair;
+using std::pair;
 
 FormInclude::FormInclude(LyXView * lv, Dialogs * d)
 	: FormCommand(lv, d, _("Include file"), new OkCancelPolicy),
 	  dialog_(0)
 {
-	// let the dialog be shown
-	// These are permanent connections so we won't bother
-	// storing a copy because we won't be disconnecting.
 	d->showInclude.connect(slot(this, &FormInclude::showInset));
 	d->createInclude.connect(slot(this, &FormInclude::createInset));
 }
@@ -125,7 +123,7 @@ void FormInclude::apply()
 	//inset_->setNoLoad(fl_get_button(dialog_->flag1));
  
 	params.setContents(fl_get_input(dialog_->filename));
-	cout << params.getContents() << endl; 
+
 	if (fl_get_button(dialog_->flag2))
 		params.setCmdName("input");
 	else if (fl_get_button(dialog_->flag3))
@@ -156,19 +154,19 @@ bool FormInclude::input(FL_OBJECT *, long data)
 	switch (state) {
 		case BROWSE: {
 			// Should browsing too be disabled in RO-mode?
-			LyXFileDlg fileDlg;
+			FileDialog fileDlg(lv_, _("Select document to include"),
+				LFUN_SELECT_FILE_SYNC,
+				make_pair(string(_("Documents")), string(lyxrc.document_path)));
  
 			string ext;
 		    
-			fileDlg.SetButton(0, _("Documents"), lyxrc.document_path);
-
 			/* input TeX, verbatim, or LyX file ? */
 			if (fl_get_button(dialog_->flag2))
-				ext = "*.tex";
+				ext = _("*.tex| LaTeX Documents (*.tex)");
 			else if (fl_get_button(dialog_->flag4))
-				ext = "*";
+				ext = _("*| All files ");
 			else
-				ext = "*.lyx";
+				ext = _("*.lyx| LyX Documents (*.lyx)");
 	 
 			string mpath;
  
@@ -176,18 +174,16 @@ bool FormInclude::input(FL_OBJECT *, long data)
 			//if (inset_)
 			//	mpath = OnlyPath(inset_->getMasterFilename());
  
-			string const filename = fileDlg.Select(_("Select Child Document"),
-						mpath, ext, fl_get_input(dialog_->filename));
-			XFlush(fl_get_display());
+			FileDialog::Result result = fileDlg.Select(mpath, ext, fl_get_input(dialog_->filename));
 	 
 			// check selected filename
-			if (filename.empty())
+			if (result.second.empty())
 				break;
 	 
-			string const filename2 = MakeRelPath(filename, mpath);
+			string const filename2 = MakeRelPath(result.second, mpath);
 	 
 			if (prefixIs(filename2, ".."))
-				fl_set_input(dialog_->filename, filename.c_str());
+				fl_set_input(dialog_->filename, result.second.c_str());
 			else
 				fl_set_input(dialog_->filename, filename2.c_str());
  
@@ -203,8 +199,7 @@ bool FormInclude::input(FL_OBJECT *, long data)
 			break;
 	 
 		case INPUTINCLUDE:
-			cout << "inputinclude" << endl;
-			/* huh ? why doesn't this work ? */ 
+			/* FIXME: huh ? why doesn't this work ? */ 
 			setEnabled(dialog_->flag41, false);
 			fl_set_button(dialog_->flag41, 0);
 			break;

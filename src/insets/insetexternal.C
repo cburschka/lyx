@@ -16,13 +16,14 @@
 
 #include FORMS_H_LOCATION
 #include <cstdio>
+#include <utility> 
 
 #include "insetexternal.h"
 #include "ExternalTemplate.h"
 #include "lyx_gui_misc.h" // CancelCloseBoxCB
 #include "BufferView.h"
 #include "buffer.h"
-#include "filedlg.h"
+#include "frontends/FileDialog.h"
 #include "lyx_main.h"
 #include "LaTeXFeatures.h"
 #include "support/filetools.h"
@@ -36,7 +37,8 @@ using SigC::slot;
 #endif
 
 using std::endl;
-
+using std::pair;
+using std::make_pair; 
 
 InsetExternal::InsetExternal() 
 	: form_external(0)
@@ -128,7 +130,6 @@ void InsetExternal::browseCB(FL_OBJECT * ob, long)
 
 	static string current_path;
 	static int once = 0;
-	LyXFileDlg fileDlg;
 	
 	string p = inset->filename;
 	string buf = MakeAbsPath(holder->view->buffer()->fileName());
@@ -140,7 +141,11 @@ void InsetExternal::browseCB(FL_OBJECT * ob, long)
 		buf = OnlyPath(holder->view->buffer()->fileName());
 	}
        
-	fileDlg.SetButton(0, _("Document"), buf); 
+	FileDialog fileDlg(holder->view->owner(), _("Select external file"),
+		LFUN_SELECT_FILE_SYNC,
+		make_pair(string(_("Document")), string(buf)));
+	
+	// FIXME: should have "nice name" for file type e.g. "Xfig files"
 
 	/// Determine the template file extension
 	ExternalTemplate et = inset->getTemplate(inset->getCurrentTemplate());
@@ -149,18 +154,17 @@ void InsetExternal::browseCB(FL_OBJECT * ob, long)
 		regexp = "*";
 	}
 
+	regexp += "|";
+
 	bool error = false;
 	do {
-		if (once) {
-			p = fileDlg.Select(_("External inset file"),
-					   current_path,
-					   regexp, string());
-		} else {
-			p = fileDlg.Select(_("External inset file"), buf,
-					   regexp, string());
-		}
+		string const path = (once) ? current_path : buf;
+		FileDialog::Result result = fileDlg.Select(path, regexp);
 
-		if (p.empty()) return;
+		if (result.second.empty()) 
+			return;
+
+		string p = result.second;
 
 		buf = MakeRelPath(p, buf2);
 		current_path = OnlyPath(p);

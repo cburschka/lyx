@@ -249,7 +249,7 @@
 #\bind "M-f c"                  "buffer-close"
 #\bind "M-f n"                  "buffer-new"
 #\bind "M-f l"                  "file-last"                      # Not yet implemented.
-#\bind "M-f o"                  "buffer-open"
+#\bind "M-f o"                  "file-open"
 #\bind "M-f p"                  "buffer-print"
 #\bind "M-f q"                  "lyx-quit"
 #\bind "M-f r"                  "buffer-update dvi"

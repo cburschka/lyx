@@ -1,35 +1,37 @@
-// -*- C++ -*-
-/* This file is part of
- * ====================================================== 
- * 
- *           LyX, The Document Processor
- *        
- *           Copyright 1995 Matthias Ettrich
- *           Copyright 1995-2000 The LyX Team.
+/**
+ * \file FormFiledialog.h
+ * Copyright 2001 the LyX Team
+ * Read the file COPYING
  *
- * ====================================================== */
+ * \author unknown
+ * \author John Levon
+ */
 
-#ifndef FILEDLG_H
-#define FILEDLG_H
+#ifndef FORMFILEDIALOG_H
+#define FORMFILEDIALOG_H
 
 #ifdef __GNUG__
 #pragma interface
 #endif
+
+#include <config.h>
 
 #include <vector>
 #include <sigc++/signal_system.h>
 
 #include "LString.h"
 #include FORMS_H_LOCATION
-#include "form1.h"
+#include "form_filedialog.h"
+
+#include "frontends/FileDialog.h"
 
 #ifdef SIGC_CXX_NAMESPACES
 using SigC::Object;
 using SigC::Connection;
 #endif
 
-/// LyXDirEntry internal structure definition
-class LyXDirEntry {
+/// DirEntry internal structure definition
+class DirEntry {
 public:
 	///
 	string pszName;
@@ -39,25 +41,27 @@ public:
 	string pszLsEntry;
 };
 
+extern "C" void C_LyXFileDlg_FileDlgCB(FL_OBJECT * ob, long data);
+extern "C" void C_LyXFileDlg_DoubleClickCB(FL_OBJECT * ob, long data);
+extern "C" int C_LyXFileDlg_CancelCB(FL_FORM *fl, void *xev);
 
-/// FileDlg class definition
-class LyXFileDlg : public Object
+class FileDialog::Private : public Object
 {
 public:
 	///
-	LyXFileDlg();
+	Private();
 	///
-	~LyXFileDlg();
+	~Private();
 
 	/// sets file selector user button action
-	void SetButton(int iIndex, string const & pszName = string(), 
+	void SetButton(int iIndex, string const & pszName = string(),
 		       string const & pszPath = string());
 	/// gets last dialog directory
 	string const GetDirectory() const;
 	/// launches dialog and returns selected file
 	string const Select(string const & pszTitle = string(),
 		       string const & pszPath = string(),
-		       string const & pszMask = string(), 
+		       string const & pszMask = string(),
 		       string const & pszSuggested = string());
 	/// XForms objects callback (static)
 	static void FileDlgCB(FL_OBJECT *, long);
@@ -65,11 +69,12 @@ public:
 	static void DoubleClickCB(FL_OBJECT *, long);
 	/// Handle Cancel CB from WM close
 	static int CancelCB(FL_FORM *, void *);
+
 private:
 	/// data
-	static FD_FileDlg * pFileDlgForm;
+	static FD_form_filedialog * pFileDlgForm;
 	///
-	static LyXFileDlg * pCurrentDlg;
+	static FileDialog::Private * pCurrentDlg;
 	///
 	string pszUserPath1;
 	///
@@ -89,13 +94,16 @@ private:
 	///
 	string pszInfoLine;
 	///
-	typedef std::vector<LyXDirEntry> DirEntries;
+	typedef std::vector<DirEntry> DirEntries;
 	///
 	DirEntries direntries;
 	///
 	bool force_cancel;
 	///
 	bool force_ok;
+
+	/// build the dialog
+	FD_form_filedialog * build_filedialog();
 
 	/** Redraw the form (on receipt of a Signal indicating, for example,
 	    that the xform colors have been re-mapped).
@@ -123,4 +131,4 @@ private:
 	Connection r_;
 };
 
-#endif
+#endif // FORMFILEDIALOG_H

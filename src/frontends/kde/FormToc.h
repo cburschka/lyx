@@ -18,7 +18,7 @@
 class Dialogs;
 class TocDialog;
 
-class FormToc : public DialogBase, public noncopyable {
+class FormToc : public DialogBase {
 public:
 	FormToc(LyXView *, Dialogs *);
  

@@ -68,26 +68,6 @@ typedef struct {
 
 extern FD_Figure * create_form_Figure(void);
 typedef struct {
-	FL_FORM *FileDlg;
-	void *vdata;
-	char *cdata;
-	long  ldata;
-	FL_OBJECT *FileInfo;
-	FL_OBJECT *DirBox;
-	FL_OBJECT *PatBox;
-	FL_OBJECT *List;
-	FL_OBJECT *Filename;
-	FL_OBJECT *Rescan;
-	FL_OBJECT *Home;
-	FL_OBJECT *User1;
-	FL_OBJECT *User2;
-	FL_OBJECT *Ready;
-	FL_OBJECT *Cancel;
-	FL_OBJECT *timer;
-} FD_FileDlg;
-
-extern FD_FileDlg * create_form_FileDlg(void);
-typedef struct {
 	FL_FORM *form_search;
 	void *vdata;
 	char *cdata;

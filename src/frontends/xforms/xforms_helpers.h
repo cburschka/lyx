@@ -16,13 +16,15 @@ void setEnabled(FL_OBJECT *, bool enable);
 // Take a string and add breaks so that it fits into a desired label width, w
 string formatted(string const &label, int w, int size, int style);
 
+class LyXView;
+ 
 /** Launch a file dialog and return the chosen file.
     filename: a suggested filename.
     title: the title of the dialog.
     pattern: *.ps etc.
     dir1 = (name, dir), dir2 = (name, dir): extra buttons on the dialog.
 */
-string const browseFile(string const & filename,
+string const browseFile(LyXView *lv, string const & filename,
 			string const & title,
 			string const & pattern, 
 			std::pair<string,string> const & dir1,

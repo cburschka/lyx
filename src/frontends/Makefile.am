@@ -15,6 +15,7 @@ libfrontends_la_SOURCES=\
 	ButtonPolicies.h \
 	Dialogs.h \
 	DialogBase.h \
+	FileDialog.h \
 	GUIRunTime.h \
 	Liason.C \
 	Liason.h \

@@ -138,9 +138,6 @@ DocDialog::DocDialog(FormDocument * form, QWidget * parent, char const * name, b
 	geometry->margins->insertItem(_("A4 very wide margins"));
 	setSizeHint(geometry->margins);
 	
-#ifdef DO_USE_DEFAULT_LANGUAGE
-	language->language->insertItem(_("default"));
-#endif
 	for (Languages::const_iterator cit = languages.begin();
 		cit != languages.end(); ++cit)
 		language->language->insertItem((*cit).second.lang().c_str());

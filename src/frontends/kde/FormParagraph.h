@@ -17,7 +17,7 @@ class Dialogs;
 class LyXView;
 class ParaDialog;
 
-class FormParagraph : public DialogBase, public noncopyable {
+class FormParagraph : public DialogBase {
 public: 
 	FormParagraph(LyXView *, Dialogs *);
 

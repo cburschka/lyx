@@ -30,7 +30,7 @@
 #include "insets/insettext.h"
 /// added for Dispatch functions
 #include "lyx_cb.h"
-#include "filedlg.h"
+#include "frontends/FileDialog.h"
 #include "lyx_main.h"
 #include "FloatList.h"
 #include "support/filetools.h"
@@ -1424,7 +1424,6 @@ void BufferView::Pimpl::MenuInsertLyXFile(string const & filen)
 	if (filename.empty()) {
 		// Launch a file browser
 		string initpath = lyxrc.document_path;
-		LyXFileDlg fileDlg;
 
 		if (available()) {
 			string const trypath = owner_->buffer()->filepath;
@@ -1433,21 +1432,24 @@ void BufferView::Pimpl::MenuInsertLyXFile(string const & filen)
 				initpath = trypath;
 		}
 
-		// launches dialog
-		ProhibitInput(bv_);
-		fileDlg.SetButton(0, _("Documents"), lyxrc.document_path);
-		fileDlg.SetButton(1, _("Examples"), 
-				  AddPath(system_lyxdir, "examples"));
-		filename = fileDlg.Select(_("Select Document to Insert"),
-					  initpath, "*.lyx");
-		AllowInput(bv_);
+		FileDialog fileDlg(bv_->owner(), _("Select LyX document to insert"),
+			LFUN_FILE_INSERT,
+			make_pair(string(_("Documents")), string(lyxrc.document_path)),
+			make_pair(string(_("Examples")), string(AddPath(system_lyxdir, "examples"))));
+
+		FileDialog::Result result = fileDlg.Select(initpath, _("*.lyx| LyX Documents (*.lyx)"));
+ 
+		if (result.first == FileDialog::Later)
+			return;
+
+		filename = result.second;
 
 		// check selected filename
 		if (filename.empty()) {
 			owner_->getMiniBuffer()->Set(_("Canceled."));
 			return;
 		}
-	} 
+	}
 
 	// get absolute path of file and make sure the filename ends
 	// with .lyx
@@ -1618,12 +1620,13 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 	}
 	break;
 	
+	case LFUN_FILE_INSERT_ASCII_PARA:
+		InsertAsciiFile(bv_, argument, true);
+		break;
+
 	case LFUN_FILE_INSERT_ASCII:
-	{
-		bool asPara = (argument == "paragraph");
-		InsertAsciiFile(bv_, string(), asPara);
-	}
-	break;
+		InsertAsciiFile(bv_, argument, false);
+		break;
 		
 	case LFUN_LAYOUT:
 	{

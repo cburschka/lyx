@@ -263,7 +263,7 @@ void FormPrint::browse()
 
 	// Show the file browser dialog
 	string const new_filename =
-		browseFile(filename, title, pattern,
+		browseFile(lv_, filename, title, pattern,
 			   make_pair(string(), string()),
 			   make_pair(string(), string()));
 

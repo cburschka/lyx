@@ -5,7 +5,8 @@ BOOST_INCLUDES = -I$(top_srcdir)/boost
 INCLUDES = -I${top_srcdir}/src/ -I${top_srcdir}/src/frontends/ \
 	${SIGC_CFLAGS} ${FRONTEND_INCLUDES} ${BOOST_INCLUDES}
 
-libkdemoc_la_SOURCES = citationdlg_moc.C \
+libkdemoc_la_SOURCES = FileDialog_private_moc.C \
+		citationdlg_moc.C \
 		copyrightdlg_moc.C \
 		docdlg_moc.C \
 		indexdlg_moc.C \
@@ -24,6 +25,8 @@ DISTCLEANFILES = $(libkdemoc_la_SOURCES) *.orig *.rej *~ *.bak core
 LIBS=
 ETAGS_ARGS = --lang=c++
 
+FileDialog_private_moc.C: ../FileDialog_private.h
+	$(MOC) $< -o $@
 citationdlg_moc.C: ../citationdlg.h
 	$(MOC) $< -o $@
 copyrightdlg_moc.C: ../copyrightdlg.h

@@ -18,7 +18,7 @@ class Dialogs;
 class LyXView;
 class IndexDialog;
 
-class FormIndex : public DialogBase, public noncopyable {
+class FormIndex : public DialogBase {
 public: 
 	FormIndex(LyXView *, Dialogs *);
 

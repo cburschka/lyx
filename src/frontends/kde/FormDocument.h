@@ -22,7 +22,7 @@ class BufferParams;
 /**
  * \brief the LyXian side of the complex Document dialog
  */
-class FormDocument : public DialogBase, public noncopyable {
+class FormDocument : public DialogBase {
 public:
 	FormDocument(LyXView *, Dialogs *);
  

@@ -18,7 +18,7 @@ class Dialogs;
 class LyXView;
 class LogDialog;
 
-class FormLog : public DialogBase, public noncopyable {
+class FormLog : public DialogBase {
 public: 
 	FormLog(LyXView *, Dialogs *);
 

@@ -46,7 +46,7 @@ void ToolbarDefaults::add(int action)
 void ToolbarDefaults::init() 
 {
 	add(LAYOUTS);
-	add(LFUN_MENUOPEN);
+	add(LFUN_FILE_OPEN);
 	//add(LFUN_CLOSEBUFFER);
 	add(LFUN_MENUWRITE);
 	add(LFUN_MENUPRINT);

@@ -118,7 +118,7 @@ private:
 	void MenuNew(bool fromTemplate);
 
 	///
-	void MenuOpen();
+	void Open(string const &);
 
 	///
 	void doImport(string const &);

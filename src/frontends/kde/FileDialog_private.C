@@ -1,0 +1,39 @@
+/**
+ * \file FileDialog_private.C
+ * Copyright 2001 the LyX Team
+ * Read the file COPYING
+ *
+ * \author John Levon
+ */
+
+#include <config.h>
+
+#include "LString.h"
+ 
+#include <kapp.h> 
+#include <kfiledialog.h>
+ 
+#include "QtLyXView.h"
+#include "debug.h"
+ 
+#include "FileDialog_private.h"
+
+LyXKFileDialog::LyXKFileDialog(LyXView * lv, kb_action a, string const & p, string const & m, string const & t)
+	: KFileDialog(p.c_str(), m.c_str(), KApplication::getKApplication()->topWidget(), t.c_str(), a == LFUN_SELECT_FILE_SYNC, false),
+	lv_(lv), action_(a)
+{
+	setCaption(t.c_str());
+}
+
+
+void LyXKFileDialog::done(int what)
+{
+	lyxerr[Debug::GUI] << "Done FileDialog, value " << what << endl;
+ 
+	if (action_ == LFUN_SELECT_FILE_SYNC) {
+		QDialog::done(what);
+		return;
+	} else if (what == QDialog::Accepted)
+		lv_->getLyXFunc()->Dispatch(action_, selectedFile().data());
+	delete this;
+}

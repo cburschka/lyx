@@ -29,7 +29,7 @@
 
 #\bind "M-f n"			"buffer-new"		#Nouveau
 #\bind "M-f m"			"buffer-new-template"	#... Modèle
-#\bind "M-f o"			"buffer-open"		#Ouvrir
+#\bind "M-f o"			"file-open"		#Ouvrir
 #\bind "M-f f"			"buffer-close"		#Fermer
 #\bind "M-f e"			"buffer-write"		#Enregistrer
 #\bind "M-f s"			"buffer-write-as"	#Enregistrer Sous

@@ -91,7 +91,7 @@
 \bind "C-x C-b"                "menu-open documents"
 \bind "C-x C-c"                "lyx-quit"
 \bind "C-x C-d"                "buffer-new"
-\bind "C-x C-f"                "buffer-open"
+\bind "C-x C-f"                "file-open"
 \bind "C-x C-g"                "buffer-view ps"
 \bind "C-x C-p"                "buffer-view dvi"
 \bind "C-x C-q"                "buffer-toggle-read-only"
@@ -118,7 +118,7 @@
 #bind "F1"                     "help"                          # Not yet implemented!
 #bind "C-F1"                   "help-context"                  # Not yet implemented!
 #\bind "F2"                     "buffer-write"
-#\bind "F3"                     "buffer-open"
+#\bind "F3"                     "file-open"
 #bind "F4"                     "------"
 #bind "F5"                     "------"
 #bind "F6"                     "------"

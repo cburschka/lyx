@@ -18,7 +18,7 @@ class Dialogs;
 class LyXView;
 class RefDialog;
 
-class FormRef : public DialogBase, public noncopyable {
+class FormRef : public DialogBase {
 public: 
 	FormRef(LyXView *, Dialogs *);
 

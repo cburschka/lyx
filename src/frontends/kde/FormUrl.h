@@ -18,7 +18,7 @@ class Dialogs;
 class LyXView;
 class UrlDialog;
 
-class FormUrl : public DialogBase, public noncopyable {
+class FormUrl : public DialogBase {
 public: 
 	FormUrl(LyXView *, Dialogs *);
 

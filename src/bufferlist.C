@@ -113,7 +113,7 @@ bool BufferList::QwriteAll()
 						       _("Save document?"))) {
 				case 1: // Yes
 					if ((*it)->isUnnamed())
-						reask = !MenuWriteAs(current_view, (*it));
+						reask = !WriteAs(current_view, (*it));
 					else {
 						reask = !MenuWrite(current_view, (*it));
 					}
@@ -189,7 +189,7 @@ bool BufferList::close(Buffer * buf)
 					       _("Save document?"))){
 			case 1: // Yes
 				if (buf->isUnnamed())
-					reask = !MenuWriteAs(current_view, buf);
+					reask = !WriteAs(current_view, buf);
 				else if (buf->save()) {
 					lastfiles->newFile(buf->fileName());
 					reask = false;

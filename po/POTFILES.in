@@ -13,7 +13,6 @@ src/CutAndPaste.C
 src/debug.C
 src/exporter.C
 src/ext_l10n.h
-src/filedlg.C
 src/FontLoader.C
 src/form1.C
 src/frontends/gnome/FormCitation.C
@@ -43,6 +42,7 @@ src/frontends/kde/dlg/parageneraldlgdata.C
 src/frontends/kde/dlg/printdlgdata.C
 src/frontends/kde/dlg/tabcreatedlgdata.C
 src/frontends/kde/docdlg.C
+src/frontends/kde/FileDialog.C
 src/frontends/kde/FormCitation.C
 src/frontends/kde/FormCopyright.C
 src/frontends/kde/FormDocument.C
@@ -72,6 +72,7 @@ src/frontends/qt2/FormSearch.C
 src/frontends/qt2/FormTabularCreate.C
 src/frontends/qt2/paragraphdlgimpl.C
 src/frontends/qt2/tabularcreatedlgimpl.C
+src/frontends/xforms/FileDialog.C
 src/frontends/xforms/FormBase.h
 src/frontends/xforms/form_bibitem.C
 src/frontends/xforms/FormBibitem.C
@@ -88,6 +89,8 @@ src/frontends/xforms/form_document.C
 src/frontends/xforms/FormDocument.C
 src/frontends/xforms/form_error.C
 src/frontends/xforms/FormError.C
+src/frontends/xforms/form_filedialog.C
+src/frontends/xforms/FormFiledialog.C
 src/frontends/xforms/form_graphics.C
 src/frontends/xforms/FormGraphics.C
 src/frontends/xforms/form_include.C

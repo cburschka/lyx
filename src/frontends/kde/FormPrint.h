@@ -20,7 +20,7 @@ class PrintDialog;
 using SigC::Connection;
 #endif
 
-class FormPrint : public DialogBase, public noncopyable {
+class FormPrint : public DialogBase {
 public: 
 	FormPrint(LyXView *, Dialogs *);
 

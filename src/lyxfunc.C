@@ -14,6 +14,8 @@
 
 #include <time.h>
 #include <locale.h>
+#include <utility> 
+#include <algorithm> 
 
 #include <cstdlib>
 #include <cctype>
@@ -60,7 +62,6 @@
 #include "minibuffer.h"
 #include "vspace.h"
 #include "LyXView.h"
-#include "filedlg.h"
 #include "lyx_gui_misc.h"
 #include "support/filetools.h"
 #include "support/FileInfo.h"
@@ -76,6 +77,7 @@
 #include "layout.h"
 #include "WorkArea.h"
 #include "bufferview_funcs.h"
+#include "frontends/FileDialog.h"
 #include "frontends/Dialogs.h"
 #include "frontends/Toolbar.h"
 #include "frontends/Menubar.h"
@@ -88,6 +90,7 @@
 #include "lyxfind.h"
 
 using std::pair;
+using std::make_pair; 
 using std::endl;
 using std::find_if;
 
@@ -692,6 +695,8 @@ string const LyXFunc::Dispatch(int ac,
 		}
 	}
 
+	Assert(action != LFUN_SELECT_FILE_SYNC);
+
 	switch (action) {
 		// --- Misc -------------------------------------------
 	case LFUN_WORDFINDFORWARD  : 
@@ -793,10 +798,6 @@ string const LyXFunc::Dispatch(int ac,
 		MenuNew(true);
 		break;
 		
-	case LFUN_MENUOPEN:
-		MenuOpen();
-		break;
-		
 	case LFUN_CLOSEBUFFER:
 		CloseBuffer();
 		break;
@@ -807,19 +808,12 @@ string const LyXFunc::Dispatch(int ac,
 						    MakeDisplayPath(owner->buffer()->fileName()),
 						    "...");
 			MenuWrite(owner->view(), owner->buffer());
-			//owner->getMiniBuffer()-> {
-			//	Set(_("Document saved as"),
-			//	    MakeDisplayPath(owner->buffer()->fileName()));
-			//} else {
-			//owner->getMiniBuffer()->Set(_("Save failed!"));
-			//}
-		} else {
-			MenuWriteAs(owner->view(), owner->buffer());
-		}
+		} else
+			WriteAs(owner->view(), owner->buffer());
 		break;
 		
-	case LFUN_MENUWRITEAS:
-		MenuWriteAs(owner->view(), owner->buffer());
+	case LFUN_WRITEAS:
+		WriteAs(owner->view(), owner->buffer(), argument);
 		break;
 		
 	case LFUN_MENURELOAD:
@@ -1114,7 +1108,7 @@ string const LyXFunc::Dispatch(int ac,
 	break;
 			
 	case LFUN_FILE_OPEN:
-		owner->view()->buffer(bufferlist.loadLyXFile(argument));
+		Open(argument);
 		break;
 
 	case LFUN_LATEX_LOG:
@@ -1146,11 +1140,7 @@ string const LyXFunc::Dispatch(int ac,
 		break;
 		
 	case LFUN_LAYOUT_PARAGRAPH:
-#ifdef USE_OLD_PARAGRAPH_LAYOUT
-		MenuLayoutParagraph();
-#else
 		owner->getDialogs()->showLayoutParagraph();
-#endif
 		break;
 		
 	case LFUN_LAYOUT_CHARACTER:
@@ -1537,7 +1527,6 @@ void LyXFunc::setupLocalKeymap()
 void LyXFunc::MenuNew(bool fromTemplate)
 {
 	string initpath = lyxrc.document_path;
-	LyXFileDlg fileDlg;
 
 	if (owner->view()->available()) {
 		string const trypath = owner->buffer()->filepath;
@@ -1550,14 +1539,14 @@ void LyXFunc::MenuNew(bool fromTemplate)
 	string s;
 	
 	if (lyxrc.new_ask_filename) {
-		ProhibitInput(owner->view());
-		fileDlg.SetButton(0, _("Documents"), lyxrc.document_path);
-		fileDlg.SetButton(1, _("Templates"), lyxrc.template_path);
-		string fname = fileDlg.Select(_("Enter Filename for new document"), 
-				       initpath, "*.lyx", _("newfile"));
-		AllowInput(owner->view());
+		FileDialog fileDlg(owner, _("Enter filename for new document"),
+			LFUN_SELECT_FILE_SYNC,
+			make_pair(string(_("Documents")), string(lyxrc.document_path)),
+			make_pair(string(_("Templates")), string(lyxrc.template_path)));
+
+		FileDialog::Result result = fileDlg.Select(initpath, _("*.lyx|LyX Documents (*.lyx)"), _("newfile"));
 	
-		if (fname.empty()) {
+		if (result.second.empty()) {
 			owner->getMiniBuffer()->Set(_("Canceled."));
 			lyxerr.debug() << "New Document Cancelled." << endl;
 			return;
@@ -1565,7 +1554,7 @@ void LyXFunc::MenuNew(bool fromTemplate)
 	
 		// get absolute path of file and make sure the filename ends
 		// with .lyx
-		s = MakeAbsPath(fname);
+		s = MakeAbsPath(result.second);
 		if (!IsLyXFilename(s))
 			s += ".lyx";
 
@@ -1624,12 +1613,20 @@ void LyXFunc::MenuNew(bool fromTemplate)
 	// The template stuff
 	string templname;
 	if (fromTemplate) {
-		ProhibitInput(owner->view());
-		string const fname = fileDlg.Select(_("Choose template"),
-						    lyxrc.template_path,
-						    "*.lyx");
-		AllowInput(owner->view());
-		if (fname.empty()) return;
+		FileDialog fileDlg(owner, _("Select template file"),
+			LFUN_SELECT_FILE_SYNC,
+			make_pair(string(_("Documents")), string(lyxrc.document_path)),
+			make_pair(string(_("Templates")), string(lyxrc.template_path)));
+
+		FileDialog::Result result = fileDlg.Select(initpath, _("*.lyx|LyX Documents (*.lyx)"));
+	
+		if (result.first == FileDialog::Later)
+			return;
+
+		string const fname = result.second;
+
+		if (fname.empty()) 
+			return;
                 templname = fname;
 	}
   
@@ -1639,10 +1636,9 @@ void LyXFunc::MenuNew(bool fromTemplate)
 }
 
 
-void LyXFunc::MenuOpen()
+void LyXFunc::Open(string const & fname)
 {
 	string initpath = lyxrc.document_path;
-	LyXFileDlg fileDlg;
   
 	if (owner->view()->available()) {
 		string const trypath = owner->buffer()->filepath;
@@ -1651,20 +1647,28 @@ void LyXFunc::MenuOpen()
 			initpath = trypath;
 	}
 
-	// launches dialog
-	ProhibitInput(owner->view());
-	fileDlg.SetButton(0, _("Documents"), lyxrc.document_path);
-	fileDlg.SetButton(1, _("Examples"), 
-			  AddPath(system_lyxdir, "examples"));
-	string filename = fileDlg.Select(_("Select Document to Open"),
-					 initpath, "*.lyx");
-	AllowInput(owner->view());
+	string filename;
  
-	// check selected filename
-	if (filename.empty()) {
-		owner->getMiniBuffer()->Set(_("Canceled."));
-		return;
-	}
+	if (fname.empty()) {
+		FileDialog fileDlg(owner, _("Select document to open"),
+			LFUN_FILE_OPEN,
+			make_pair(string(_("Documents")), string(lyxrc.document_path)),
+			make_pair(string(_("Examples")), string(AddPath(system_lyxdir, "examples"))));
+
+		FileDialog::Result result = fileDlg.Select(initpath, "*.lyx|LyX Documents (*.lyx)");
+	
+		if (result.first == FileDialog::Later)
+			return;
+
+		filename = result.second;
+ 
+		// check selected filename
+		if (filename.empty()) {
+			owner->getMiniBuffer()->Set(_("Canceled."));
+			return;
+		}
+	} else
+		filename = fname;
 
 	// get absolute path of file and make sure the filename ends
 	// with .lyx
@@ -1698,7 +1702,6 @@ void LyXFunc::doImport(string const & argument)
 
 	if (filename.empty()) { // need user interaction
 		string initpath = lyxrc.document_path;
-		LyXFileDlg fileDlg;
 		
 		if (owner->view()->available()) {
 			string const trypath = owner->buffer()->filepath;
@@ -1707,16 +1710,23 @@ void LyXFunc::doImport(string const & argument)
 				initpath = trypath;
 		}
 
-		// launches dialog
-		ProhibitInput(owner->view());
-		fileDlg.SetButton(0, _("Documents"), lyxrc.document_path);
-		fileDlg.SetButton(1, _("Examples"), 
-					AddPath(system_lyxdir, "examples"));
 		string const text = _("Select ") + formats.PrettyName(format)
 			+ _(" file to import");
-		string const extension = "*." + formats.Extension(format);
-		filename = fileDlg.Select(text, initpath, extension);
-		AllowInput(owner->view());
+
+		FileDialog fileDlg(owner, text, 
+			LFUN_IMPORT,
+			make_pair(string(_("Documents")), string(lyxrc.document_path)),
+			make_pair(string(_("Examples")), string(AddPath(system_lyxdir, "examples"))));
+			
+		string const extension = "*." + formats.Extension(format) + "| " +
+			formats.PrettyName(format) + " (*." + formats.Extension(format) + ")";
+
+		FileDialog::Result result = fileDlg.Select(initpath, extension);
+
+		if (result.first == FileDialog::Later)
+			return;
+
+		filename = result.second;
  
 		// check selected filename
 		if (filename.empty()) 

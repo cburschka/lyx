@@ -1,4 +1,4 @@
-#! /bin/sh
+#! /bin/sh -x
 #
 # NOTE: This is NOT the same fdfix.sh as in ${top_srcdir}/forms
 #       It is a modified version to suit use for gui-indep.
@@ -72,6 +72,15 @@ echo "#include \"gettext.h\"" >> $COUT
 echo >> $COUT
 
 sed -f $FDFIXC_MOD < $CIN >> $COUT
+
+# hack for file dialog
+if [ "$CLASSNAME" = "FormFiledialog" ] ; then
+    ed $COUT >/dev/null 2>/dev/null << EOF
+/FormFiledialog::build_filedialog
+s/FormFiledialog/FileDialog::Private/
+wq
+EOF
+fi
 
 # Patch the .C file if a patch exists
 if [ -f "$COUT.patch" ] ; then

@@ -25,8 +25,8 @@ void ShowMessage(Buffer const * buf,
 		 string const & msg3 = string(), int delay = 6);
 ///
 bool MenuWrite(BufferView * bv, Buffer * buffer);
-///
-bool MenuWriteAs(BufferView * bv, Buffer * buffer);
+/// write the given file, or ask if no name given
+bool WriteAs(BufferView * bv, Buffer * buffer, const string & filename = string());
 ///
 int MenuRunChktex(Buffer * buffer);
 ///
@@ -39,8 +39,6 @@ Buffer * NewLyxFile(string const & filename);
 void InsertAsciiFile(BufferView * bv, string const & f, bool asParagraph);
 ///
 void MenuInsertLabel(BufferView * bv, string const & arg);
-///
-void LayoutsCB(int sel, void *, Combox *);
 ///
 void MenuLayoutCharacter();
 ///

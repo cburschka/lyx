@@ -28,7 +28,7 @@ Menuset
     Menu "file_nobuffer"
 	Item "New...|N" "buffer-new"
 	Item "New from Template...|T" "buffer-new-template"
-	Item "Open...|O" "buffer-open"
+	Item "Open...|O" "file-open"
 	Separator
 	Submenu "Import|I" "file_import"
 	Separator
@@ -40,7 +40,7 @@ Menuset
     Menu "file"
 	Item "New...|N" "buffer-new"
 	Item "New from Template...|T" "buffer-new-template"
-	Item "Open...|O" "buffer-open"
+	Item "Open...|O" "file-open"
 	Separator
 	Item "Close|C" "buffer-close"
 	Item "Save|S" "buffer-write"
@@ -219,8 +219,8 @@ Menuset
 
     Menu "insert_file"
 	Item "LyX Document...|X" "file-insert"
-	Item "Ascii as Lines...|L" "file-insert-ascii lines"
-	Item "Ascii as Paragraphs...|P" "file-insert-ascii paragraphs"
+	Item "Ascii as Lines...|L" "file-insert-ascii"
+	Item "Ascii as Paragraphs...|P" "file-insert-ascii-para"
     End
 
 #
@@ -335,7 +335,7 @@ End
 
 Toolbar
     Layouts
-    Icon "buffer-open"
+    Icon "file-open"
     Icon "buffer-write"
     Icon "buffer-print"
     Separator

@@ -15,7 +15,7 @@ class Dialogs;
 class LyXView; 
 class TabularCreateDialog;
 
-class FormTabularCreate : public DialogBase, public noncopyable {
+class FormTabularCreate : public DialogBase {
 public: 
 	FormTabularCreate(LyXView *, Dialogs *);
  

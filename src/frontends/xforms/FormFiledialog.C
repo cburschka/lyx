@@ -1,13 +1,11 @@
-// -*- C++ -*-
-/* This file is part of
- * ====================================================== 
- * 
- *           LyX, The Document Processor
- *        
- *           Copyright 1995 Matthias Ettrich
- *           Copyright 1995-2000 The LyX Team.
+/**
+ * \file FormFiledialog.C
+ * Copyright 2001 the LyX Team
+ * Read the file COPYING
  *
- * ====================================================== */
+ * \author unknown
+ * \author John Levon
+ */
 
 #include <config.h>
 
@@ -23,7 +21,7 @@ using std::map;
 using std::max;
 using std::sort;
 
-#include "lyx_gui_misc.h" // CancelCloseCB
+#include "lyx_gui_misc.h" // for WriteFSAlert
 #include "support/FileInfo.h"
 #include "support/lyxlib.h"
 #include "gettext.h"
@@ -61,6 +59,7 @@ using std::sort;
 # endif
 #endif
 
+// FIXME: should be autoconfiscated
 #ifdef BROKEN_HEADERS
 extern "C" int gettimeofday(struct timeval *, struct timezone *);
 #endif
@@ -70,7 +69,7 @@ extern "C" int gettimeofday(struct timeval *, struct timezone *);
 #endif
 
 #include "support/filetools.h"
-#include "filedlg.h"
+#include "FormFiledialog.h"
 
 #ifdef SIGC_CXX_NAMESPACES
 using SigC::slot;
@@ -103,7 +102,7 @@ private:
 };
 
 
-void UserCache::add(uid_t ID) const 
+void UserCache::add(uid_t ID) const
 {
 	string pszNewName;
 	struct passwd * pEntry;
@@ -135,7 +134,7 @@ private:
 };
 
 
-string const & GroupCache::find(gid_t ID) const 
+string const & GroupCache::find(gid_t ID) const
 {
 	Groups::const_iterator cit = groups.find(ID);
 	if (cit == groups.end()) {
@@ -146,7 +145,7 @@ string const & GroupCache::find(gid_t ID) const
 }
 
 
-void GroupCache::add(gid_t ID) const 
+void GroupCache::add(gid_t ID) const
 {
 	string pszNewName;
 	struct group * pEntry;
@@ -166,20 +165,14 @@ static UserCache lyxUserCache;
 static GroupCache lyxGroupCache;
 
 
-// some "C" wrappers around callbacks
-extern "C" void C_LyXFileDlg_FileDlgCB(FL_OBJECT *, long lArgument);
-extern "C" void C_LyXFileDlg_DoubleClickCB(FL_OBJECT *, long);
-extern "C" int C_LyXFileDlg_CancelCB(FL_FORM *, void *);
-
-
 // compares two LyXDirEntry objects content (used for sort)
 class comp_direntry {
 public:
-	int operator()(LyXDirEntry const & r1,
-		       LyXDirEntry const & r2) const ;
+	int operator()(DirEntry const & r1,
+		       DirEntry const & r2) const ;
 };
-	int comp_direntry::operator()(LyXDirEntry const & r1,
-		       LyXDirEntry const & r2) const {
+	int comp_direntry::operator()(DirEntry const & r1,
+		       DirEntry const & r2) const {
 		bool r1d = suffixIs(r1.pszName, '/');
 		bool r2d = suffixIs(r2.pszName, '/');
 		if (r1d && !r2d) return 1;
@@ -188,20 +181,20 @@ public:
 	}
 
 
-// *** LyXFileDlg class implementation
+// *** FileDialog::Private class implementation
 
 // static members
-FD_FileDlg * LyXFileDlg::pFileDlgForm = 0;
-LyXFileDlg * LyXFileDlg::pCurrentDlg = 0;
+FD_form_filedialog * FileDialog::Private::pFileDlgForm = 0;
+FileDialog::Private * FileDialog::Private::pCurrentDlg = 0;
 
 
 // Reread: updates dialog list to match class directory
-void LyXFileDlg::Reread()
+void FileDialog::Private::Reread()
 {
 	// Opens directory
 	DIR * pDirectory = ::opendir(pszDirectory.c_str());
 	if (!pDirectory) {
-		WriteFSAlert(_("Warning! Couldn't open directory."), 
+		WriteFSAlert(_("Warning! Couldn't open directory."),
 			     pszDirectory);
 		pszDirectory = lyx::getcwd();
 		pDirectory = ::opendir(pszDirectory.c_str());
@@ -240,7 +233,7 @@ void LyXFileDlg::Reread()
 		bool isLink = false, isDir = false;
 
 		// If the pattern doesn't start with a dot, skip hidden files
-		if (!pszMask.empty() && pszMask[0] != '.' && 
+		if (!pszMask.empty() && pszMask[0] != '.' &&
 		    pDirEntry->d_name[0] == '.')
                         continue;
 
@@ -314,7 +307,7 @@ void LyXFileDlg::Reread()
 		} else if (!(isDir = fileInfo.isDir()))
 			continue;
 
-		LyXDirEntry tmp;
+		DirEntry tmp;
 
 		// Note pszLsEntry is an string!
 		tmp.pszLsEntry = Buffer;
@@ -352,7 +345,7 @@ void LyXFileDlg::Reread()
 
 
 // SetDirectory: sets dialog current directory
-void LyXFileDlg::SetDirectory(string const & Path)
+void FileDialog::Private::SetDirectory(string const & Path)
 {
 	if (!pszDirectory.empty()) {
 		string TempPath = ExpandPath(Path); // Expand ~/
@@ -363,7 +356,7 @@ void LyXFileDlg::SetDirectory(string const & Path)
 
 
 // SetMask: sets dialog file mask
-void LyXFileDlg::SetMask(string const & NewMask)
+void FileDialog::Private::SetMask(string const & NewMask)
 {
 	pszMask = NewMask;
 	fl_set_input(pFileDlgForm->PatBox, pszMask.c_str());
@@ -371,21 +364,21 @@ void LyXFileDlg::SetMask(string const & NewMask)
 
 
 // SetInfoLine: sets dialog information line
-void LyXFileDlg::SetInfoLine(string const & Line)
+void FileDialog::Private::SetInfoLine(string const & Line)
 {
 	pszInfoLine = Line;
 	fl_set_object_label(pFileDlgForm->FileInfo, pszInfoLine.c_str());
 }
 
 
-LyXFileDlg::LyXFileDlg()
+FileDialog::Private::Private()
 {
 	pszDirectory = MakeAbsPath(string("."));
 	pszMask = '*';
 
-	// Creates form if necessary. 
+	// Creates form if necessary.
 	if (!pFileDlgForm) {
-		pFileDlgForm = create_form_FileDlg();
+		pFileDlgForm = build_filedialog();
 		// Set callbacks. This means that we don't need a patch file
 		fl_set_object_callback(pFileDlgForm->DirBox,
 				       C_LyXFileDlg_FileDlgCB, 0);
@@ -405,7 +398,7 @@ LyXFileDlg::LyXFileDlg()
 				       C_LyXFileDlg_FileDlgCB, 13);
 		
 		// Make sure pressing the close box doesn't crash LyX. (RvdK)
-		fl_set_form_atclose(pFileDlgForm->FileDlg, 
+		fl_set_form_atclose(pFileDlgForm->form,
 				    C_LyXFileDlg_CancelCB, 0);
 	   	// Register doubleclick callback
 		fl_set_browser_dblclick_callback(pFileDlgForm->List,
@@ -415,25 +408,25 @@ LyXFileDlg::LyXFileDlg()
 	fl_hide_object(pFileDlgForm->User1);
 	fl_hide_object(pFileDlgForm->User2);
 
-	r_ = Dialogs::redrawGUI.connect(slot(this, &LyXFileDlg::redraw));
+	r_ = Dialogs::redrawGUI.connect(slot(this, &FileDialog::Private::redraw));
 }
 
 
-LyXFileDlg::~LyXFileDlg()
+FileDialog::Private::~Private()
 {
 	r_.disconnect();
 }
 
 
-void LyXFileDlg::redraw()
+void FileDialog::Private::redraw()
 {
-	if (pFileDlgForm->FileDlg && pFileDlgForm->FileDlg->visible)
-		fl_redraw_form(pFileDlgForm->FileDlg);
+	if (pFileDlgForm->form && pFileDlgForm->form->visible)
+		fl_redraw_form(pFileDlgForm->form);
 }
 
 
 // SetButton: sets file selector user button action
-void LyXFileDlg::SetButton(int iIndex, string const & pszName, 
+void FileDialog::Private::SetButton(int iIndex, string const & pszName,
 			   string const & pszPath)
 {
 	FL_OBJECT * pObject;
@@ -459,7 +452,7 @@ void LyXFileDlg::SetButton(int iIndex, string const & pszName,
 
 
 // GetDirectory: gets last dialog directory
-string const LyXFileDlg::GetDirectory() const
+string const FileDialog::Private::GetDirectory() const
 {
 	if (!pszDirectory.empty())
 		return pszDirectory;
@@ -469,7 +462,7 @@ string const LyXFileDlg::GetDirectory() const
 
 
 // RunDialog: handle dialog during file selection
-bool LyXFileDlg::RunDialog()
+bool FileDialog::Private::RunDialog()
 {
 	force_cancel = false;
 	force_ok = false;
@@ -481,8 +474,8 @@ bool LyXFileDlg::RunDialog()
                 if (pObject == pFileDlgForm->Ready) {
 			if (HandleOK())
 				return true;
-		} else if (pObject == pFileDlgForm->Cancel 
-			   || force_cancel) 
+		} else if (pObject == pFileDlgForm->Cancel
+			   || force_cancel)
 			return false;
 		else if (force_ok)
 			return true;
@@ -491,7 +484,7 @@ bool LyXFileDlg::RunDialog()
 
 
 // XForms objects callback (static)
-void LyXFileDlg::FileDlgCB(FL_OBJECT *, long lArgument)
+void FileDialog::Private::FileDlgCB(FL_OBJECT *, long lArgument)
 {
 	if (!pCurrentDlg) return;
 
@@ -545,14 +538,14 @@ void LyXFileDlg::FileDlgCB(FL_OBJECT *, long lArgument)
 }
 
 
-extern "C" void C_LyXFileDlg_FileDlgCB(FL_OBJECT * ob, long data) 
+extern "C" void C_LyXFileDlg_FileDlgCB(FL_OBJECT * ob, long data)
 {
-	LyXFileDlg::FileDlgCB(ob, data);
+	FileDialog::Private::FileDlgCB(ob, data);
 }
 
 
 // Handle callback from list
-void LyXFileDlg::HandleListHit()
+void FileDialog::Private::HandleListHit()
 {
 	// set info line
 	int const iSelect = fl_get_browser(pFileDlgForm->List);
@@ -565,7 +558,7 @@ void LyXFileDlg::HandleListHit()
 
 
 // Callback for double click in list
-void LyXFileDlg::DoubleClickCB(FL_OBJECT *, long)
+void FileDialog::Private::DoubleClickCB(FL_OBJECT *, long)
 {
 	if (pCurrentDlg->HandleDoubleClick())
 		// Simulate click on OK button
@@ -575,12 +568,12 @@ void LyXFileDlg::DoubleClickCB(FL_OBJECT *, long)
 
 extern "C" void C_LyXFileDlg_DoubleClickCB(FL_OBJECT * ob, long data)
 {
-	LyXFileDlg::DoubleClickCB(ob, data);
+	FileDialog::Private::DoubleClickCB(ob, data);
 }
 
 
 // Handle double click from list
-bool LyXFileDlg::HandleDoubleClick()
+bool FileDialog::Private::HandleDoubleClick()
 {
 	string pszTemp;
 
@@ -631,7 +624,7 @@ bool LyXFileDlg::HandleDoubleClick()
 
 
 // Handle OK button call
-bool LyXFileDlg::HandleOK()
+bool FileDialog::Private::HandleOK()
 {
 	// mask was changed
 	string pszTemp = fl_get_input(pFileDlgForm->PatBox);
@@ -670,7 +663,7 @@ bool LyXFileDlg::HandleOK()
 
 
 // Handle Cancel CB from WM close
-int LyXFileDlg::CancelCB(FL_FORM *, void *)
+int FileDialog::Private::CancelCB(FL_FORM *, void *)
 {
 	// Simulate a click on the cancel button
 	pCurrentDlg->Force(true);
@@ -680,12 +673,12 @@ int LyXFileDlg::CancelCB(FL_FORM *, void *)
 
 extern "C" int C_LyXFileDlg_CancelCB(FL_FORM *fl, void *xev)
 {
-	return LyXFileDlg::CancelCB(fl, xev);
+	return FileDialog::Private::CancelCB(fl, xev);
 }
 
 
 // Simulates a click on OK/Cancel
-void LyXFileDlg::Force(bool cancel)
+void FileDialog::Private::Force(bool cancel)
 {
 	if (cancel) {
 		force_cancel = true;
@@ -700,7 +693,7 @@ void LyXFileDlg::Force(bool cancel)
 
 
 // Select: launches dialog and returns selected file
-string const LyXFileDlg::Select(string const & title, string const & path, 
+string const FileDialog::Private::Select(string const & title, string const & path,
 				string const & mask, string const & suggested)
 {
 	// handles new mask and path
@@ -719,7 +712,7 @@ string const LyXFileDlg::Select(string const & title, string const & path,
 	int sel = 0;
 	string const filename = OnlyFilename(suggested);
 	if (!filename.empty()) {
-		for (int i = 0; 
+		for (int i = 0;
 		     i < fl_get_browser_maxline(pFileDlgForm->List); ++i) {
 			string s =
 				fl_get_browser_line(pFileDlgForm->List, i + 1);
@@ -744,15 +737,15 @@ string const LyXFileDlg::Select(string const & title, string const & path,
 	fl_set_input(pFileDlgForm->Filename, suggested.c_str());
 	fl_set_button(pFileDlgForm->Cancel, 0);
 	fl_set_button(pFileDlgForm->Ready, 0);
-	fl_set_focus_object(pFileDlgForm->FileDlg, pFileDlgForm->Filename);
+	fl_set_focus_object(pFileDlgForm->form, pFileDlgForm->Filename);
 	fl_deactivate_all_forms();
-	fl_show_form(pFileDlgForm->FileDlg, 
-		     FL_PLACE_MOUSE | FL_FREE_SIZE, FL_TRANSIENT,
+	fl_show_form(pFileDlgForm->form,
+		     FL_PLACE_MOUSE | FL_FREE_SIZE, 0,
 		     title.c_str());
 
 	isOk = RunDialog();
 	
-	fl_hide_form(pFileDlgForm->FileDlg);
+	fl_hide_form(pFileDlgForm->form);
 	fl_activate_all_forms();
 	pCurrentDlg = 0;
 
@@ -762,7 +755,7 @@ string const LyXFileDlg::Select(string const & title, string const & path,
 	pszFileName = fl_get_input(pFileDlgForm->Filename);
 
 	if (!AbsolutePath(pszFileName)) {
-		pszFileName = AddName(fl_get_input(pFileDlgForm->DirBox), 
+		pszFileName = AddName(fl_get_input(pFileDlgForm->DirBox),
 				      pszFileName);
 	}
 	return pszFileName;

@@ -48,6 +48,9 @@ LDFLAGS= $(libkde_la_OBJADD)
 ETAGS_ARGS = --lang=c++
 libkde_la_SOURCES = \
 	Dialogs.C \
+	FileDialog.C \
+	FileDialog_private.C \
+	FileDialog_private.h \
 	GUIRunTime.C \
 	QtLyXView.h \
 	Timeout_pimpl.C \
@@ -103,6 +106,7 @@ libkde_la_SOURCES = \
 	urldlg.C \
 	urldlg.h
 
+moc/FileDialog_private_moc.C: FileDialog_private.C FileDialog_private.h
 moc/citationdlg_moc.C: citationdlg.C citationdlg.h
 moc/copyrightdlg_moc.C: copyrightdlg.C copyrightdlg.h
 moc/docdlg_moc.C: docdlg.C docdlg.h

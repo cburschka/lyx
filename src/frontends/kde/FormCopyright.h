@@ -15,7 +15,7 @@ class Dialogs;
 class LyXView;
 class CopyrightDialog;
 
-class FormCopyright : public DialogBase, public noncopyable {
+class FormCopyright : public DialogBase {
 public: 
 	FormCopyright(LyXView *, Dialogs *);
  

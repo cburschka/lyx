@@ -117,8 +117,6 @@ lyx_SOURCES = \
 	exporter.h \
 	ext_l10n.h \
 	figure.h \
-	filedlg.C \
-	filedlg.h \
 	font.C \
 	font.h \
 	form1.C \

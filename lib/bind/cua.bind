@@ -31,7 +31,7 @@
 
 \bind "C-n"			"buffer-new"
 \bind "C-S-N"			"buffer-new-template"
-\bind "C-o"			"buffer-open"
+\bind "C-o"			"file-open"
 \bind "C-r"			"buffer-reload"
 \bind "C-w"			"buffer-close"
 \bind "C-s"			"buffer-write"
@@ -77,7 +77,7 @@
 #bind "F1"			"help"			# Not yet implemented!
 #bind "C-F1"			"help-context"		# Not yet implemented!
 \bind "F2"			"buffer-write"
-\bind "F3"			"buffer-open"
+\bind "F3"			"file-open"
 \bind "C-F4"			"buffer-close"
 \bind "F5"			"screen-recenter"
 \bind "M-F4"			"lyx-quit"

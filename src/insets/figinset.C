@@ -33,6 +33,7 @@
 #include <list>
 #include <algorithm>
 #include <vector>
+#include <utility>
 
 #include <unistd.h>
 #include <csignal>
@@ -47,7 +48,7 @@
 #include "lyx.h"
 #include "lyx_main.h"
 #include "buffer.h"
-#include "filedlg.h"
+#include "frontends/FileDialog.h"
 #include "support/filetools.h"
 #include "LyXView.h" // just because of form_main
 #include "debug.h"
@@ -80,6 +81,8 @@ using std::flush;
 using std::endl;
 using std::ostringstream;
 using std::copy;
+using std::pair;
+using std::make_pair;
 
 extern BufferView * current_view;
 extern FL_OBJECT * figinset_canvas;
@@ -1931,7 +1934,6 @@ void InsetFig::BrowseFile()
 {
 	static string current_figure_path;
 	static int once = 0;
-	LyXFileDlg fileDlg;
 
 	if (lyxerr.debugging()) {
 		lyxerr << "Filename: "
@@ -1956,23 +1958,21 @@ void InsetFig::BrowseFile()
 		bufclip = AddName (system_lyxdir, "clipart");	
 
 
-	fileDlg.SetButton(0, _("Clipart"), bufclip); 
-	fileDlg.SetButton(1, _("Document"), buf); 
+	FileDialog fileDlg(current_view->owner(), _("Select an EPS figure"),
+		LFUN_SELECT_FILE_SYNC,
+		make_pair(string(_("Clip art")), string(bufclip)),
+		make_pair(string(_("Documents")), string(buf)));
 
 	bool error = false;
 	do {
-		ProhibitInput(current_view);
-		if (once) {
-			p = fileDlg.Select(_("EPS Figure"),
-					   current_figure_path,
-					   "*ps", string());
-		} else {
-			p = fileDlg.Select(_("EPS Figure"), buf,
-					   "*ps", string());
-		}
-		AllowInput(current_view);
+		string const path = (once) ? current_figure_path : buf;
 
-		if (p.empty()) return;
+		FileDialog::Result result = fileDlg.Select(path, _("*ps| PostScript documents"));
+
+		string const p = result.second;
+
+		if (p.empty())
+			return;
 
 		buf = MakeRelPath(p, buf2);
 		current_figure_path = OnlyPath(p);

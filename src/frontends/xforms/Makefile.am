@@ -17,6 +17,11 @@ libxforms_la_SOURCES = \
 	Color.C \
 	Color.h \
 	Dialogs.C \
+	FileDialog.C \
+	FormFiledialog.h \
+	FormFiledialog.C \
+	form_filedialog.C \
+	form_filedialog.h \
 	GUIRunTime.C \
 	FormBase.C \
 	FormBase.h \

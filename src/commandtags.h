@@ -16,15 +16,15 @@
     Please add new functions at the end of the enum, right
     before LFUN_LASTACTION.
  */
+
 enum kb_action {
 	LFUN_UNKNOWN_ACTION = -1,
 	LFUN_NOACTION = 0,
 	LFUN_PREFIX,
 	LFUN_CENTER,
 	LFUN_MENUNEW,
-	LFUN_MENUOPEN,
 	LFUN_MENUWRITE,
-	LFUN_MENUWRITEAS,
+	LFUN_WRITEAS,
 	LFUN_MENUPRINT,
 	LFUN_MENUSENDTO,
         LFUN_BUILDPROG,
@@ -177,6 +177,7 @@ enum kb_action {
 	LFUN_EXEC_COMMAND,
 	LFUN_FILE_INSERT,
 	LFUN_FILE_INSERT_ASCII,         // CFO-G 1997-11-19
+	LFUN_FILE_INSERT_ASCII_PARA,    // Levon 2001-02-14
 	LFUN_FILE_NEW,
 	LFUN_FILE_OPEN,  // 160
 	LFUN_UP_PARAGRAPH,              // Asger 1996-10-01
@@ -274,6 +275,7 @@ enum kb_action {
 	LFUN_BOOKMARK_SAVE,              // Dekel 20010127
 	LFUN_BOOKMARK_GOTO,              // Dekel 20010127
 	LFUN_CHILD_CREATE, 		// Levon 20010207
+	LFUN_SELECT_FILE_SYNC,		// Levon 20010214
 	LFUN_LASTACTION  /* this marks the end of the table */
 };
 

@@ -12,6 +12,7 @@
 
 #include <fstream>
 #include <algorithm>
+#include <utility> 
 #include <iostream>
 
 #include FORMS_H_LOCATION
@@ -24,7 +25,7 @@
 #include "minibuffer.h"
 #include "combox.h"
 #include "bufferlist.h"
-#include "filedlg.h"
+#include "frontends/FileDialog.h"
 #include "lyx_gui_misc.h"
 #include "LyXView.h"
 #include "lastfiles.h"
@@ -44,6 +45,7 @@ using std::cout;
 using std::ios;
 using std::istream_iterator;
 using std::pair;
+using std::make_pair;
 using std::vector;
 using std::sort;
 using std::equal;
@@ -146,103 +148,102 @@ void ShowMessage(Buffer const * buf,
 //
 // File menu
 //
-
 // should be moved to lyxfunc.C
 bool MenuWrite(BufferView * bv, Buffer * buffer)
 {
+	// FIXME: needed ?
 	XFlush(fl_get_display());
+ 
 	if (!buffer->save()) {
 		string const fname = buffer->fileName();
 		string const s = MakeAbsPath(fname);
 		if (AskQuestion(_("Save failed. Rename and try again?"),
 				MakeDisplayPath(s, 50),
 				_("(If not, document is not saved.)"))) {
-			return MenuWriteAs(bv, buffer);
+			return WriteAs(bv, buffer);
 		}
 		return false;
-	} else {
+	} else
 		lastfiles->newFile(buffer->fileName());
-	}
 	return true;
 }
 
 
+
 // should be moved to BufferView.C
 // Half of this func should be in LyXView, the rest in BufferView.
-bool MenuWriteAs(BufferView * bv, Buffer * buffer)
+bool WriteAs(BufferView * bv, Buffer * buffer, string const & filename)
 {
-	// Why do we require BufferView::text to be able to write a
-	// document? I see no point in that. (Lgb)
-	//if (!bv->text) return;
-
 	string fname = buffer->fileName();
 	string oldname = fname;
-	LyXFileDlg fileDlg;
 
-	ProhibitInput(bv);
-	fileDlg.SetButton(0, _("Documents"), lyxrc.document_path);
-	fileDlg.SetButton(1, _("Templates"), lyxrc.template_path);
+	if (filename.empty()) {
 
-	if (!IsLyXFilename(fname))
-		fname += ".lyx";
+		FileDialog fileDlg(bv->owner(), _("Choose a filename to save document as"),
+			LFUN_WRITEAS,
+			make_pair(string(_("Documents")), string(lyxrc.document_path)),
+			make_pair(string(_("Templates")), string(lyxrc.template_path)));
 
-	fname = fileDlg.Select(_("Enter Filename to Save Document as"), 
-			       OnlyPath(fname),
-			       "*.lyx", 
-			       OnlyFilename(fname));
+		if (!IsLyXFilename(fname))
+			fname += ".lyx";
 
-	AllowInput(bv);
+		FileDialog::Result result = fileDlg.Select(OnlyPath(fname), _("*.lyx|LyX Documents (*.lyx)"), OnlyFilename(fname));
 
-	if (fname.empty())
-		return false;
+		if (result.first == FileDialog::Later)
+			return false;
 
-	// Make sure the absolute filename ends with appropriate suffix
-	string s = MakeAbsPath(fname);
-	if (!IsLyXFilename(s))
-		s += ".lyx";
+		fname = result.second;
+
+		if (fname.empty())
+			return false;
+
+		// Make sure the absolute filename ends with appropriate suffix
+		fname = MakeAbsPath(fname);
+		if (!IsLyXFilename(fname))
+			fname += ".lyx";
+	} else
+		fname = filename;
+
 
 	// Same name as we have already?
-	if (!buffer->isUnnamed() && s == oldname) {
+	if (!buffer->isUnnamed() && fname == oldname) {
 		if (!AskQuestion(_("Same name as document already has:"),
-				 MakeDisplayPath(s, 50),
+				 MakeDisplayPath(fname, 50),
 				 _("Save anyway?")))
 			return false;
 		// Falls through to name change and save
 	} 
 	// No, but do we have another file with this name open?
-	else if (!buffer->isUnnamed() && bufferlist.exists(s)) {
+	else if (!buffer->isUnnamed() && bufferlist.exists(fname)) {
 		if (AskQuestion(_("Another document with same name open!"),
-				MakeDisplayPath(s, 50),
+				MakeDisplayPath(fname, 50),
 				_("Replace with current document?")))
 			{
-				bufferlist.close(bufferlist.getBuffer(s));
+				bufferlist.close(bufferlist.getBuffer(fname));
 
 				// Ok, change the name of the buffer, but don't save!
-				buffer->setFileName(s);
+				buffer->setFileName(fname);
 				buffer->markDirty();
 
 				ShowMessage(buffer, _("Document renamed to '"),
-						MakeDisplayPath(s), _("', but not saved..."));
-			}
+						MakeDisplayPath(fname), _("', but not saved..."));
+		}
 		return false;
 	} // Check whether the file exists
 	else {
-		FileInfo const myfile(s);
+		FileInfo const myfile(fname);
 		if (myfile.isOK() && !AskQuestion(_("Document already exists:"), 
-						  MakeDisplayPath(s, 50),
+						  MakeDisplayPath(fname, 50),
 						  _("Replace file?")))
 			return false;
 	}
 
 	// Ok, change the name of the buffer
-	buffer->setFileName(s);
+	buffer->setFileName(fname);
 	buffer->markDirty();
 	bool unnamed = buffer->isUnnamed();
 	buffer->setUnnamed(false);
-	// And save
-	// Small bug: If the save fails, we have irreversible changed the name
-	// of the document.
-	// Hope this is fixed this way! (Jug)
+
 	if (!MenuWrite(bv, buffer)) {
 	    buffer->setFileName(oldname);
 	    buffer->setUnnamed(unnamed);
@@ -418,17 +419,23 @@ Buffer * NewLyxFile(string const & filename)
 void InsertAsciiFile(BufferView * bv, string const & f, bool asParagraph)
 {
 	string fname = f;
-	LyXFileDlg fileDlg;
- 
-	if (!bv->available()) return;
+
+	if (!bv->available()) 
+		return;
      
 	if (fname.empty()) {
-		ProhibitInput(bv);
-		fname = fileDlg.Select(_("File to Insert"), 
-				       bv->owner()->buffer()->filepath,
-				       "*");
-  		AllowInput(bv);
-		if (fname.empty()) return;
+		FileDialog fileDlg(bv->owner(), _("Select file to insert"),
+			(asParagraph) ? LFUN_FILE_INSERT_ASCII_PARA : LFUN_FILE_INSERT_ASCII);
+ 
+		FileDialog::Result result = fileDlg.Select(bv->owner()->buffer()->filepath);
+
+		if (result.first == FileDialog::Later)
+			return;
+
+		fname = result.second;
+
+		if (fname.empty()) 
+			return;
 	}
 
 	FileInfo fi(fname);
@@ -554,16 +561,6 @@ void MenuInsertLabel(BufferView * bv, string const & arg)
 		bv->insertInset( inset );
 	}
 	AllowInput(bv);
-}
-
-
-// This is _only_ used in Toolbar_pimpl.C, move it there and get rid of
-// current_view. (Lgb)
-void LayoutsCB(int sel, void *, Combox *)
-{
-	string const tmp = tostr(sel);
-	current_view->owner()->getLyXFunc()->Dispatch(LFUN_LAYOUTNO,
-						      tmp);
 }
 
 

@@ -1,3 +1,15 @@
+2001-02-26  John Levon  <moz@compsoc.man.ac.uk>
+
+	* <various>: remove noncopyable (now inherited from DialogBase)
+
+	* Makefile.am:
+	* FileDialog.C:
+	* FileDialog_private.C:
+	* moc/Makefile.am:
+	* FileDialog_private.h: add File Dialog
+
+	* docdlg.C: remove DEFAULT_LANGUAGE stuff
+
 2001-02-26  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* FormRef.C (apply): Update bookmark #0 after inserting a reference.

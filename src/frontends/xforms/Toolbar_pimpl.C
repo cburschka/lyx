@@ -27,12 +27,11 @@
 #include "buffer.h"
 #include "LyXAction.h"
 #include "support/filetools.h"
+#include "support/lstrings.h" 
 #include "gettext.h"
 
 using std::endl;
 
-// this one is not "C" because combox callbacks are really C++ %-|
-extern void LayoutsCB(int, void *, Combox *);
 extern char const ** get_pixmap_from_symbol(char const * arg, int, int);
 extern LyXAction lyxaction;
 
@@ -115,7 +114,7 @@ extern "C" void C_Toolbar_BubbleTimerCB(FL_OBJECT * ob, long data)
 static
 int BubblePost(FL_OBJECT *ob, int event,
 			FL_Coord /*mx*/, FL_Coord /*my*/,
-			int /*key*/, void */*xev*/)
+			int /*key*/, void * /*xev*/)
 {
 	FL_OBJECT * bubble_timer = reinterpret_cast<FL_OBJECT *>(ob->u_cdata);
 	
@@ -142,6 +141,21 @@ extern "C" int C_Toolbar_BubblePost(FL_OBJECT * ob, int event,
 }
 #endif
 
+// this one is not "C" because combox callbacks are really C++ %-|
+void Toolbar::Pimpl::layoutSelectedCB(int sel, void * arg, Combox *)
+{
+	Toolbar::Pimpl * tb = reinterpret_cast<Toolbar::Pimpl *>(arg);
+
+	tb->layoutSelected(sel);
+}
+
+
+void Toolbar::Pimpl::layoutSelected(int sel)
+{
+	string const tmp = tostr(sel);
+	owner->getLyXFunc()->Dispatch(LFUN_LAYOUTNO, tmp);
+}
+ 
 
 void Toolbar::Pimpl::activate()
 {
@@ -361,7 +375,7 @@ void Toolbar::Pimpl::set(bool doingmain)
 			if (!combox)
 				combox = new Combox(FL_COMBOX_DROPLIST);
 			combox->add(xpos, ypos, 135, height, 400);
-			combox->setcallback(LayoutsCB);
+			combox->setcallback(layoutSelectedCB, this);
 			combox->resize(FL_RESIZE_ALL);
 			combox->gravity(NorthWestGravity, NorthWestGravity);
 			xpos += 135;

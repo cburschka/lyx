@@ -30,6 +30,8 @@
   */
 struct Toolbar::Pimpl {
 public:
+	/// called when user selects a layout from combox
+	static void layoutSelectedCB(int, void *, Combox *);
 	///
 	Pimpl(LyXView * o, int x, int y);
 
@@ -61,6 +63,7 @@ public:
 	/// update the state of the icons
 	void update();
 
+ 
 	/// select the right layout in the combox
 	void setLayout(int layout);
 	/// Populate the layout combox; re-do everything if force is true.
@@ -69,6 +72,8 @@ public:
 	void openLayoutList();
 	/// Erase the layout list
 	void clearLayoutList();
+	/// and the non-static version
+	void layoutSelected(int); 
 
 	///
 	struct toolbarItem
