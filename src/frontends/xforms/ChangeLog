@@ -1,10 +1,14 @@
+2003-07-18  Angus Leeming  <leeming@lyx.org>
+
+	* FormNote.C (build): add a tooltip.
+
 2003-07-18  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* FormDialogView.h (controller): ditto
 
 	* FormBase.h (controller): follow C++ rules more closely.
 
-2003-07-16  Angus Leeming  <angus@localhost.localdomain>
+2003-07-16  Angus Leeming  <leeming@lyx.org>
 
 	* FormDialogView.C (postMessage): remove preprocessor warning.
 

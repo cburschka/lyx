@@ -33,7 +33,7 @@ private:
 	/// Update dialog before showing it
 	virtual void update();
 	///
-	string const predefineds() { return "Note|Comment|Greyedout"; }
+	string const predefineds() const;
 };
 
 #endif // FORMNOTE_H

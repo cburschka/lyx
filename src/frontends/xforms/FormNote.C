@@ -15,7 +15,7 @@
 #include "ControlNote.h"
 #include "FormNote.h"
 #include "forms/form_note.h"
-#include "xforms_helpers.h" // formatted
+#include "Tooltips.h"
 #include "lyx_forms.h"
 #include "insets/insetnote.h"
 #include "debug.h"
@@ -27,11 +27,21 @@ FormNote::FormNote(Dialog & parent)
 {}
 
 
+string const FormNote::predefineds() const
+{
+	return _("Note|Comment|Greyedout");
+}
+
+
 void FormNote::build()
 {
 	dialog_.reset(build_note(this));
 
 	fl_addto_choice(dialog_->choice_type, predefineds().c_str());
+	string str = _("Note: LyX internal only\n"
+		       "Comment: Export to LaTeX but don't print\n"
+		       "Greyedout: Print as grey text");
+	tooltips().init(dialog_->choice_type, str);
 
 	bcview().setOK(dialog_->button_ok);
 	bcview().setApply(dialog_->button_apply);
