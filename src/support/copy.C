@@ -11,7 +11,7 @@ using std::ios;
 
 bool lyx::copy(string const & from, string const & to)
 {
-	ifstream ifs(from.c_str());
+	ifstream ifs(from.c_str(), ios::binary);
 	if (!ifs)
 		return false;
 	ofstream ofs(to.c_str(),
