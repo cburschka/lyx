@@ -49,10 +49,10 @@ if test -n "$ac_word"; then
 
   if test -n "[$]$2"; then
     ac_result=yes
+    ifelse($4,,,[$4])
   else
     ac_result=no
   fi
-  ifelse($4,,,[$4])
   MSG_RESULT($ac_result)
   test -n "[$]$2" && break
 fi
@@ -185,9 +185,18 @@ dnl
 # Search LaTeX2e
 SEARCH_PROG([for a LaTeX2e program],LATEX,latex latex2e,CHECKLATEX2E,dnl
   [lyx_check_config=no])
-if test x$lyx_check_config != x ; then
-SEARCH_PROG([for the pdflatex program],PDFLATEX,pdflatex,CHECKLATEX2E)
+latex_to_dvi=$LATEX
+test -z "$latex_to_dvi" && latex_to_dvi="none"
+
+# Search for pdflatex
+if test ${lyx_check_config} = no ; then
+  latex_to_pdf=none
+else
+  SEARCH_PROG([for the pdflatex program],latex_to_pdf,pdflatex)
 fi
+
+test $latex_to_dvi != "none" && latex_to_dvi="$latex_to_dvi \$\$i"
+test $latex_to_pdf != "none" && latex_to_pdf="$latex_to_pdf \$\$i"
 
 # Search for an installed reLyX or a ready-to-install one
 save_PATH=${PATH}
@@ -442,8 +451,8 @@ cat >lyxrc.defaults <<EOF
 \\Format program  ""	Program		""
 \\Format word	  doc	Word		W
 
-\\converter latex dvi "$LATEX \$\$i" "latex"
-\\converter latex pdf2 "$PDFLATEX \$\$i" "latex"
+\\converter latex dvi "$latex_to_dvi" "latex"
+\\converter latex pdf2 "$latex_to_pdf" "latex"
 \\converter latex html "$latex_to_html_command" "originaldir,needaux"
 \\converter literate latex "$literate_to_tex_command" ""
 \\converter dvi pdf3 "$dvi_to_pdf_command" ""

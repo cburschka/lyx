@@ -109,10 +109,7 @@ if test -n "$ac_word"; then
 
   if test -n "$LATEX"; then
     ac_result=yes
-  else
-    ac_result=no
-  fi
-  
+    
 ## Check whether this is really LaTeX2e
 rm -f chklatex.ltx
 cat >chklatex.ltx <<EOF
@@ -130,6 +127,9 @@ else
   ac_result="not useable"
 fi
 rm -f chklatex.ltx chklatex.log
+  else
+    ac_result=no
+  fi
   echo "$ac_t""$ac_result"
   test -n "$LATEX" && break
 fi
@@ -140,10 +140,16 @@ if test -z "$LATEX" ; then
     lyx_check_config=no
 fi
 
-if test x$lyx_check_config != x ; then
-echo $ac_n "checking for the pdflatex program""... $ac_c"
+latex_to_dvi=$LATEX
+test -z "$latex_to_dvi" && latex_to_dvi="none"
+
+# Search for pdflatex
+if test ${lyx_check_config} = no ; then
+  latex_to_pdf=none
+else
+  echo $ac_n "checking for the pdflatex program""... $ac_c"
 echo "$ac_t""(pdflatex)"
-PDFLATEX=
+latex_to_pdf=
 for ac_prog in pdflatex
 do
 # Extract the first word of "$ac_prog", so it can be a program name with args.
@@ -154,45 +160,31 @@ if test -n "$ac_word"; then
   for ac_dir in $PATH; do
     test -z "$ac_dir" && ac_dir=.
     if test -x $ac_dir/$ac_word; then
-      PDFLATEX="$ac_prog"
+      latex_to_pdf="$ac_prog"
       break
     fi
   done
   IFS="$ac_save_ifs"
 
-  if test -n "$PDFLATEX"; then
+  if test -n "$latex_to_pdf"; then
     ac_result=yes
+    
   else
     ac_result=no
   fi
-  
-## Check whether this is really LaTeX2e
-rm -f chklatex.ltx
-cat >chklatex.ltx <<EOF
-\\nonstopmode\\makeatletter
-\\ifx\\undefined\\documentclass\\else
-  \\message{ThisIsLaTeX2e}
-\\fi
-\\@@end
-EOF
-if eval ${LATEX} chklatex.ltx </dev/null 2>/dev/null \
-                       | grep 'ThisIsLaTeX2e' >/dev/null; then
-  :
-else
-  LATEX=
-  ac_result="not useable"
-fi
-rm -f chklatex.ltx chklatex.log
   echo "$ac_t""$ac_result"
-  test -n "$PDFLATEX" && break
+  test -n "$latex_to_pdf" && break
 fi
 done
 
-if test -z "$PDFLATEX" ; then
-  PDFLATEX=none
+if test -z "$latex_to_pdf" ; then
+  latex_to_pdf=none
 fi
 
 fi
+
+test $latex_to_dvi != "none" && latex_to_dvi="$latex_to_dvi \$\$i"
+test $latex_to_pdf != "none" && latex_to_pdf="$latex_to_pdf \$\$i"
 
 # Search for an installed reLyX or a ready-to-install one
 save_PATH=${PATH}
@@ -218,10 +210,10 @@ if test -n "$ac_word"; then
 
   if test -n "$tex_to_lyx_command"; then
     ac_result=yes
+    
   else
     ac_result=no
   fi
-  
   echo "$ac_t""$ac_result"
   test -n "$tex_to_lyx_command" && break
 fi
@@ -256,10 +248,10 @@ if test -n "$ac_word"; then
 
   if test -n "$literate_to_lyx_command"; then
     ac_result=yes
+    
   else
     ac_result=no
   fi
-  
   echo "$ac_t""$ac_result"
   test -n "$literate_to_lyx_command" && break
 fi
@@ -294,10 +286,10 @@ if test -n "$ac_word"; then
 
   if test -n "$literate_to_tex_command"; then
     ac_result=yes
+    
   else
     ac_result=no
   fi
-  
   echo "$ac_t""$ac_result"
   test -n "$literate_to_tex_command" && break
 fi
@@ -330,10 +322,10 @@ if test -n "$ac_word"; then
 
   if test -n "$html_to_latex_command"; then
     ac_result=yes
+    
   else
     ac_result=no
   fi
-  
   echo "$ac_t""$ac_result"
   test -n "$html_to_latex_command" && break
 fi
@@ -366,10 +358,10 @@ if test -n "$ac_word"; then
 
   if test -n "$word_to_latex_command"; then
     ac_result=yes
+    
   else
     ac_result=no
   fi
-  
   echo "$ac_t""$ac_result"
   test -n "$word_to_latex_command" && break
 fi
@@ -403,10 +395,10 @@ if test -n "$ac_word"; then
 
   if test -n "$image_command"; then
     ac_result=yes
+    
   else
     ac_result=no
   fi
-  
   echo "$ac_t""$ac_result"
   test -n "$image_command" && break
 fi
@@ -440,10 +432,10 @@ if test -n "$ac_word"; then
 
   if test -n "$GS"; then
     ac_result=yes
+    
   else
     ac_result=no
   fi
-  
   echo "$ac_t""$ac_result"
   test -n "$GS" && break
 fi
@@ -476,10 +468,10 @@ if test -n "$ac_word"; then
 
   if test -n "$GHOSTVIEW"; then
     ac_result=yes
+    
   else
     ac_result=no
   fi
-  
   echo "$ac_t""$ac_result"
   test -n "$GHOSTVIEW" && break
 fi
@@ -512,10 +504,10 @@ if test -n "$ac_word"; then
 
   if test -n "$PDF_VIEWER"; then
     ac_result=yes
+    
   else
     ac_result=no
   fi
-  
   echo "$ac_t""$ac_result"
   test -n "$PDF_VIEWER" && break
 fi
@@ -548,10 +540,10 @@ if test -n "$ac_word"; then
 
   if test -n "$DVI_VIEWER"; then
     ac_result=yes
+    
   else
     ac_result=no
   fi
-  
   echo "$ac_t""$ac_result"
   test -n "$DVI_VIEWER" && break
 fi
@@ -584,10 +576,10 @@ if test -n "$ac_word"; then
 
   if test -n "$HTML_VIEWER"; then
     ac_result=yes
+    
   else
     ac_result=no
   fi
-  
   echo "$ac_t""$ac_result"
   test -n "$HTML_VIEWER" && break
 fi
@@ -620,10 +612,10 @@ if test -n "$ac_word"; then
 
   if test -n "$ps_to_pdf_command"; then
     ac_result=yes
+    
   else
     ac_result=no
   fi
-  
   echo "$ac_t""$ac_result"
   test -n "$ps_to_pdf_command" && break
 fi
@@ -657,10 +649,10 @@ if test -n "$ac_word"; then
 
   if test -n "$dvi_to_ps_command"; then
     ac_result=yes
+    
   else
     ac_result=no
   fi
-  
   echo "$ac_t""$ac_result"
   test -n "$dvi_to_ps_command" && break
 fi
@@ -694,10 +686,10 @@ if test -n "$ac_word"; then
 
   if test -n "$dvi_to_pdf_command"; then
     ac_result=yes
+    
   else
     ac_result=no
   fi
-  
   echo "$ac_t""$ac_result"
   test -n "$dvi_to_pdf_command" && break
 fi
@@ -731,10 +723,10 @@ if test -n "$ac_word"; then
 
   if test -n "$ROFF"; then
     ac_result=yes
+    
   else
     ac_result=no
   fi
-  
   echo "$ac_t""$ac_result"
   test -n "$ROFF" && break
 fi
@@ -770,10 +762,10 @@ if test -n "$ac_word"; then
 
   if test -n "$CHKTEX"; then
     ac_result=yes
+    
   else
     ac_result=no
   fi
-  
   echo "$ac_t""$ac_result"
   test -n "$CHKTEX" && break
 fi
@@ -808,10 +800,10 @@ if test -n "$ac_word"; then
 
   if test -n "$SPELL"; then
     ac_result=yes
+    
   else
     ac_result=no
   fi
-  
   echo "$ac_t""$ac_result"
   test -n "$SPELL" && break
 fi
@@ -845,10 +837,10 @@ if test -n "$ac_word"; then
 
   if test -n "$fax_command"; then
     ac_result=yes
+    
   else
     ac_result=no
   fi
-  
   echo "$ac_t""$ac_result"
   test -n "$fax_command" && break
 fi
@@ -882,10 +874,10 @@ if test -n "$ac_word"; then
 
   if test -n "$LINUXDOC"; then
     ac_result=yes
+    
   else
     ac_result=no
   fi
-  
   echo "$ac_t""$ac_result"
   test -n "$LINUXDOC" && break
 fi
@@ -936,10 +928,10 @@ if test -n "$ac_word"; then
 
   if test -n "$DOCBOOK"; then
     ac_result=yes
+    
   else
     ac_result=no
   fi
-  
   echo "$ac_t""$ac_result"
   test -n "$DOCBOOK" && break
 fi
@@ -989,10 +981,10 @@ if test -n "$ac_word"; then
 
   if test -n "$LPR"; then
     ac_result=yes
+    
   else
     ac_result=no
   fi
-  
   echo "$ac_t""$ac_result"
   test -n "$LPR" && break
 fi
@@ -1031,10 +1023,10 @@ if test -n "$ac_word"; then
 
   if test -n "$TOHTML"; then
     ac_result=yes
+    
   else
     ac_result=no
   fi
-  
   echo "$ac_t""$ac_result"
   test -n "$TOHTML" && break
 fi
@@ -1073,10 +1065,10 @@ if test -n "$ac_word"; then
 
   if test -n "$TOEPS"; then
     ac_result=yes
+    
   else
     ac_result=no
   fi
-  
   echo "$ac_t""$ac_result"
   test -n "$TOEPS" && break
 fi
@@ -1112,10 +1104,10 @@ if test -n "$ac_word"; then
 
   if test -n "$TOPNG"; then
     ac_result=yes
+    
   else
     ac_result=no
   fi
-  
   echo "$ac_t""$ac_result"
   test -n "$TOPNG" && break
 fi
@@ -1151,10 +1143,10 @@ if test -n "$ac_word"; then
 
   if test -n "$EPSTOPDF"; then
     ac_result=yes
+    
   else
     ac_result=no
   fi
-  
   echo "$ac_t""$ac_result"
   test -n "$EPSTOPDF" && break
 fi
@@ -1273,8 +1265,8 @@ cat >lyxrc.defaults <<EOF
 \\Format program  ""	Program		""
 \\Format word	  doc	Word		W
 
-\\converter latex dvi "$LATEX \$\$i" "latex"
-\\converter latex pdf2 "$PDFLATEX \$\$i" "latex"
+\\converter latex dvi "$latex_to_dvi" "latex"
+\\converter latex pdf2 "$latex_to_pdf" "latex"
 \\converter latex html "$latex_to_html_command" "originaldir,needaux"
 \\converter literate latex "$literate_to_tex_command" ""
 \\converter dvi pdf3 "$dvi_to_pdf_command" ""
