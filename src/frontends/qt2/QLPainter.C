@@ -117,7 +117,7 @@ Painter & QLPainter::lines(int const * xp, int const * yp,
 	// FIXME ?
 
 	// Must use new as np is not known at compile time.
-	boost::scoped_array<QCOORD> points(new QCOORD [np * 2]);
+	boost::scoped_array<QCOORD> points(new QCOORD[np * 2]);
 
 	int j = 0;
  
@@ -158,7 +158,7 @@ Painter & QLPainter::fillPolygon(int const * xp, int const * yp,
 	// FIXME ?
  
 	// Must use new as np is not known at compile time.
-	boost::scoped_array<QCOORD> points(new QCOORD [np * 2]);
+	boost::scoped_array<QCOORD> points(new QCOORD[np * 2]);
 
 	int j = 0;
  

@@ -13,7 +13,7 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>314</width>
+            <width>310</width>
             <height>379</height>
         </rect>
     </property>
@@ -103,17 +103,6 @@
             <property>
                 <name>toolTip</name>
                 <string>Accept word for this session</string>
-            </property>
-        </widget>
-        <widget row="10"  column="0" >
-            <class>QPushButton</class>
-            <property stdset="1">
-                <name>name</name>
-                <cstring>optionsPB</cstring>
-            </property>
-            <property stdset="1">
-                <name>text</name>
-                <string>&amp;Options...</string>
             </property>
         </widget>
         <spacer row="10"  column="1" >
@@ -239,6 +228,13 @@
                 <cstring>replaceCO</cstring>
             </property>
             <property stdset="1">
+                <name>sizePolicy</name>
+                <sizepolicy>
+                    <hsizetype>3</hsizetype>
+                    <vsizetype>0</vsizetype>
+                </sizepolicy>
+            </property>
+            <property stdset="1">
                 <name>focusPolicy</name>
                 <enum>StrongFocus</enum>
             </property>
@@ -257,13 +253,6 @@
             <property stdset="1">
                 <name>duplicatesEnabled</name>
                 <bool>false</bool>
-            </property>
-            <property stdset="1">
-                <name>sizePolicy</name>
-                <sizepolicy>
-                    <hsizetype>3</hsizetype>
-                    <vsizetype>0</vsizetype>
-                </sizepolicy>
             </property>
             <property>
                 <name>toolTip</name>
@@ -325,12 +314,6 @@
         <slot>addClicked()</slot>
     </connection>
     <connection>
-        <sender>optionsPB</sender>
-        <signal>clicked()</signal>
-        <receiver>QSpellcheckerDialogBase</receiver>
-        <slot>optionsClicked()</slot>
-    </connection>
-    <connection>
         <sender>spellcheckPB</sender>
         <signal>clicked()</signal>
         <receiver>QSpellcheckerDialogBase</receiver>
@@ -354,7 +337,6 @@
     <tabstop>ignorePB</tabstop>
     <tabstop>replacePB_3</tabstop>
     <tabstop>addPB</tabstop>
-    <tabstop>optionsPB</tabstop>
     <tabstop>closePB</tabstop>
 </tabstops>
 </UI>

@@ -470,7 +470,7 @@ string const VSpace::asLatexCommand(BufferParams const & params) const
 
 
 
-int VSpace::inPixels(BufferView * bv) const
+int VSpace::inPixels(BufferView const * bv) const
 {
 	// Height of a normal line in pixels (zoom factor considered)
 	int const default_height = bv->text->defaultHeight(); // [pixels]

@@ -40,9 +40,6 @@ protected slots:
 	virtual void ignoreClicked() {
 		form_->ignore();
 	}
-	virtual void optionsClicked() {
-		form_->options();
-	}
 	virtual void suggestionChanged(const QString &);
 	virtual void replaceChanged(const QString &);
 

@@ -70,12 +70,6 @@ void QSpellchecker::replace()
 }
 
 
-void QSpellchecker::options()
-{
-	controller().options();
-}
-
-
 void QSpellchecker::spellcheck()
 {
 	controller().check();

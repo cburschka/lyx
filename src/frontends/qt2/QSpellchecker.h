@@ -35,7 +35,6 @@ private:
 	void add();
 	void ignore();
 	void replace();
-	void options();
 	void spellcheck();
 
 	/// Apply changes

@@ -1,3 +1,12 @@
+2002-08-06  John Levon  <levon@movementarian.org>
+
+	* ui/QSpellcheckerDialogBase.ui: 
+	* QSpellcheckerDialog.h:
+	* QSpellchecker.h:
+	* QSpellchecker.C: remove options()
+
+	* QtView.C: fix build
+ 
 2002-07-31  John Levon  <levon@movementarian.org>
 
 	* io_callback.h: make a more proper class

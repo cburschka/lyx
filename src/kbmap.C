@@ -78,7 +78,7 @@ int kb_keymap::lookup(LyXKeySymPtr key,
 		key_modifier::state check =
 			static_cast<key_modifier::state>(mod & ~mask);
  
-		if (*(cit->code) == *(key) && cit->mod.first == check) {
+		if (*(cit->code) == *key && cit->mod.first == check) {
 			// match found
 			if (cit->table.get()) {
 				// this is a prefix key - set new map
@@ -115,7 +115,8 @@ string const kb_keymap::print() const
 void kb_keymap::defkey(kb_sequence * seq, int action, unsigned int r)
 {
 	LyXKeySymPtr code = seq->sequence[r];
-	if ( ! code->isOK() ) return;
+	if (!code->isOK())
+		return;
 
 	key_modifier::state const mod1 = seq->modifiers[r].first;
 	key_modifier::state const mod2 = seq->modifiers[r].second;

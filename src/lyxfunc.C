@@ -215,11 +215,10 @@ void LyXFunc::processKeySym(LyXKeySymPtr keysym,
 	if ((action != LFUN_CANCEL) && (action != LFUN_META_FAKE)) {
 		// remove Caps Lock and Mod2 as a modifiers
 		action = keyseq.addkey(keysym, (state | meta_fake_bit));
-		if (lyxerr.debugging(Debug::KEY)) {
-			lyxerr << "action now set to ["
-			       << action << "]" << endl;
-		}
+		lyxerr[Debug::KEY] << "action now set to ["
+			<< action << "]" << endl;
 	}
+ 
 	// Dont remove this unless you know what you are doing.
 	meta_fake_bit = key_modifier::none;
 
@@ -248,11 +247,10 @@ void LyXFunc::processKeySym(LyXKeySymPtr keysym,
 		// the modifiers? (Lgb)
 		action = keyseq.addkey(keysym, key_modifier::none);
 
-		if (lyxerr.debugging(Debug::KEY)) {
-			lyxerr << "Removing modifiers...\n"
-			       << "Action now set to ["
-			       << action << "]" << endl;
-		}
+		lyxerr[Debug::KEY] << "Removing modifiers...\n"
+			<< "Action now set to ["
+			<< action << "]" << endl;
+ 
 		if (action == LFUN_UNKNOWN_ACTION) {
 			owner->message(_("Unknown function."));
 			return;
@@ -260,7 +258,6 @@ void LyXFunc::processKeySym(LyXKeySymPtr keysym,
 	}
 
 	if (action == LFUN_SELFINSERT) {
-		// This is very X dependent.
 		char c = keysym->getISOEncoded();
 		string argument;
 

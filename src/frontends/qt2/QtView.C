@@ -111,13 +111,13 @@ void QtView::focus_command_widget()
 
 void QtView::update_view_state_qt()
 {
-	statusBar()->message(currentState(view()).c_str());
+	statusBar()->message(currentState(view().get()).c_str());
 }
 
  
 void QtView::update_view_state()
 {
-	statusBar()->message(currentState(view()).c_str());
+	statusBar()->message(currentState(view().get()).c_str());
 }
 
  

@@ -16,6 +16,7 @@
 LengthCombo::LengthCombo(QWidget * parent, char * name)
 	: QComboBox(parent, name)
 {
+	// FIXME: check these should all be here, I think not
 	insertItem(_("cm"));
 	insertItem(_("in"));
 	insertItem(_("pt"));

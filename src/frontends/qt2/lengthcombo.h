@@ -38,4 +38,4 @@ signals:
 
 };
 
-#endif
+#endif // LENGTHCOMBO_H
