@@ -1,7 +1,8 @@
 2002-04-04  Angus Leeming  <a.leeming@ic.ac.uk>
 
-	* GraphicsParams.C (c-tor): ensure that the member variables are
-	initialised.
+	* GraphicsParams.C (BoundingBox c-tor): ensure that the member
+	variables are initialised. Clean-up parsing of the string (with thanks
+	to Herbert.)
 
 2002-03-26  Angus Leeming  <a.leeming@ic.ac.uk>
 

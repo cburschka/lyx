@@ -104,19 +104,22 @@ string const ControlGraphics::Browse(string const & in_name)
 
 string const ControlGraphics::readBB(string const & file)
 {
-// in a file it's an entry like %%BoundingBox:23 45 321 345
-// the first number can following without a space, so we have
-// to check a bit more.
-// on the other hand some plot programs write the bb at the
-// end of the file. Than we have in the header a
-//	%%BoundingBox: (atend)
-// In this case we must check until the end.
+	// in a file it's an entry like %%BoundingBox:23 45 321 345
+	// The first number can following without a space, so we have
+	// to be a little careful.
+	// On the other hand some plot programs write the bb at the
+	// end of the file. Than we have in the header:
+	// %%BoundingBox: (atend)
+	// In this case we must check the end.
 	string file_ = file;
 	if (zippedFile(file_))
 	    file_ = unzipFile(file_);
+
+	string const format = getExtFromContents(file_);
+	if (format != "eps" && format != "ps")
+		return string();
+
 	std::ifstream is(file_.c_str());
-	if (!contains(getExtFromContents(file_),"ps"))	// bb exists?
-	    return string();
 	while (is) {
 		string s;
 		is >> s;

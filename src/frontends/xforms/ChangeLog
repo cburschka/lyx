@@ -1,3 +1,13 @@
+2002-04-04  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* xformsGImage.C (clip): ensure that the clipped image has sensible
+	dimensions.
+
+2002-04-04  Herbert Voss  <voss@lyx.org>
+
+	* FormGraphics.C (updateBB):  new method to read the BBox when reading
+	a new file or changing an existing one.
+
 2002-04-03  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* FormCharacter.C (findPos): add a missing typename

@@ -114,25 +114,16 @@ BoundingBox::BoundingBox(string const & bb)
 	if (bb.empty())
 		return;
 
-	string tmp1;
-	string tmp2 = split(bb, tmp1, ' ');
-	if (!isValidLength(tmp1))
-		return;
+	std::istringstream is(bb.c_str());
+	string a, b, c, d;
+	is >> a >> b >> c >> d;
 
-	LyXLength const length_xl(tmp1);
-
-	tmp2 = split(tmp2, tmp1, ' ');
-	if (!isValidLength(tmp1))
-		return;
-
-	LyXLength const length_yb(tmp1);
-
-	tmp2 = split(tmp2, tmp1, ' ');
-	if (!isValidLength(tmp1) || !isValidLength(tmp2))
-		return;
-
-	LyXLength const length_xr(tmp1);
-	LyXLength const length_yt(tmp2);
+	// Don't need to check that the strings are valid LyXLength's
+	// because this is done in the LyXLength c-tor.
+	LyXLength const length_xl(a);
+	LyXLength const length_yb(b);
+	LyXLength const length_xr(c);
+	LyXLength const length_yt(d);
 
 	// inPixels returns the length in inches, scaled by
 	// lyxrc.dpi and lyxrc.zoom.
@@ -149,7 +140,7 @@ BoundingBox::BoundingBox(string const & bb)
 	unsigned int const yt_tmp =
 		uint(scaling_factor * length_yt.inPixels(1, 1));
 
-	if (xr <= xl || yt <= yb)
+	if (xr_tmp <= xl_tmp || yt_tmp <= yb_tmp)
 		return;
 
 	xl = xl_tmp;

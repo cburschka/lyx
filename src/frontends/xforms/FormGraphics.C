@@ -417,49 +417,67 @@ void FormGraphics::update() {
 	// the bb section
 	// set the bounding box values, if exists. First we need the whole
 	// path, because the controller knows nothing about the doc-dir
-	controller().bbChanged = false;
-	if (igp.bb.empty()) {
-		lyxerr[Debug::GRAPHICS] << "update:: no BoundingBox" << endl;
-		string const fileWithAbsPath =
-			MakeAbsPath(igp.filename, OnlyPath(igp.filename));
-		string const bb = controller().readBB(fileWithAbsPath);
-		if (!bb.empty()) {
-			// get the values from the file
-			// in this case we always have the point-unit
-			fl_set_input(bbox_->input_bb_x0, token(bb,' ',0).c_str());
-			fl_set_input(bbox_->input_bb_y0, token(bb,' ',1).c_str());
-			fl_set_input(bbox_->input_bb_x1, token(bb,' ',2).c_str());
-			fl_set_input(bbox_->input_bb_y1, token(bb,' ',3).c_str());
-		} else {		// no bb from file
-			fl_set_input(bbox_->input_bb_x0, bb.c_str());
-			fl_set_input(bbox_->input_bb_y0, bb.c_str());
-			fl_set_input(bbox_->input_bb_x1, bb.c_str());
-			fl_set_input(bbox_->input_bb_y1, bb.c_str());
-		}
-		fl_set_choice(bbox_->choice_bb_units, 1);	// "pt"
-	} else {				// get the values from the inset
-		lyxerr[Debug::GRAPHICS] << "update:: igp has BoundingBox" << endl;
-		controller().bbChanged = true;
-		LyXLength anyLength;
-		anyLength = LyXLength(token(igp.bb,' ',0));
-		updateWidgetsFromLength(bbox_->input_bb_x0,
-					bbox_->choice_bb_units,anyLength,"pt");
-		anyLength = LyXLength(token(igp.bb,' ',1));
-		updateWidgetsFromLength(bbox_->input_bb_y0,
-					bbox_->choice_bb_units,anyLength,"pt");
-		anyLength = LyXLength(token(igp.bb,' ',2));
-		updateWidgetsFromLength(bbox_->input_bb_x1,
-					bbox_->choice_bb_units,anyLength,"pt");
-		anyLength = LyXLength(token(igp.bb,' ',3));
-		updateWidgetsFromLength(bbox_->input_bb_y1,
-					bbox_->choice_bb_units,anyLength,"pt");
-	}
+	updateBB(igp.filename, igp.bb);
 	fl_set_button(bbox_->check_clip, igp.clip);
 
 	// the special section
 	fl_set_input(special_->input_special, igp.special.c_str());
 }
 
+
+void FormGraphics::updateBB(string const & filename, string const & bb_inset)
+{
+	// Update dialog with details from inset
+	// set the bounding box values, if exists. First we need the whole
+	// path, because the controller knows nothing about the doc-dir
+	controller().bbChanged = false;
+	if (bb_inset.empty()) {
+		lyxerr[Debug::GRAPHICS] << "update:: no BoundingBox" << endl;
+		string const fileWithAbsPath =
+			MakeAbsPath(filename, OnlyPath(filename));
+		string const bb = controller().readBB(fileWithAbsPath);
+		if (!bb.empty()) {
+			// get the values from the file
+			// in this case we always have the point-unit
+			fl_set_input(bbox_->input_bb_x0,
+				     token(bb,' ',0).c_str());
+			fl_set_input(bbox_->input_bb_y0,
+				     token(bb,' ',1).c_str());
+			fl_set_input(bbox_->input_bb_x1,
+				     token(bb,' ',2).c_str());
+			fl_set_input(bbox_->input_bb_y1,
+				     token(bb,' ',3).c_str());
+
+		} else {
+			// no bb from file
+			fl_set_input(bbox_->input_bb_x0, bb.c_str());
+			fl_set_input(bbox_->input_bb_y0, bb.c_str());
+			fl_set_input(bbox_->input_bb_x1, bb.c_str());
+			fl_set_input(bbox_->input_bb_y1, bb.c_str());
+		}
+		// "pt"
+		fl_set_choice(bbox_->choice_bb_units, 1);
+
+	} else {
+		// get the values from the inset
+		lyxerr[Debug::GRAPHICS] << "update:: igp has BoundingBox"
+					<< endl;
+		controller().bbChanged = true;
+		LyXLength anyLength;
+		anyLength = LyXLength(token(bb_inset,' ',0));
+		updateWidgetsFromLength(bbox_->input_bb_x0,
+					bbox_->choice_bb_units,anyLength,"pt");
+		anyLength = LyXLength(token(bb_inset,' ',1));
+		updateWidgetsFromLength(bbox_->input_bb_y0,
+					bbox_->choice_bb_units,anyLength,"pt");
+		anyLength = LyXLength(token(bb_inset,' ',2));
+		updateWidgetsFromLength(bbox_->input_bb_x1,
+					bbox_->choice_bb_units,anyLength,"pt");
+		anyLength = LyXLength(token(bb_inset,' ',3));
+		updateWidgetsFromLength(bbox_->input_bb_y1,
+					bbox_->choice_bb_units,anyLength,"pt");
+	}
+}
 
 namespace {
 
@@ -480,16 +498,12 @@ ButtonPolicy::SMInput FormGraphics::input(FL_OBJECT * ob, long)
 		// Get the filename from the dialog
 		string const in_name = getStringFromInput(file_->input_filename);
 		string const out_name = controller().Browse(in_name);
+		lyxerr[Debug::GRAPHICS] << "[FormGraphics]out_name: " << out_name << endl;
 		if (out_name != in_name && !out_name.empty()) {
 			fl_set_input(file_->input_filename, out_name.c_str());
 		}
-//  		if (!controller().isFilenameValid(out_name))
-//  			return ButtonPolicy::SMI_INVALID;
-
-//  	} else if (ob == file_->input_filename) {
-//  		string name = getStringFromInput(file_->input_filename);
-//  		if (!controller().isFilenameValid(name))
-//  			return ButtonPolicy::SMI_INVALID;
+		if (controller().isFilenameValid(out_name))
+  			updateBB(out_name, string());
 
 	} else if (ob == file_->check_subcaption) {
 		setEnabled(file_->input_subcaption,

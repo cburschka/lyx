@@ -46,6 +46,8 @@ private:
 	virtual void build();
 	/// Update dialog before/whilst showing it.
 	virtual void update();
+	/// Update the BoundingBox info.
+	void updateBB(string const & filename, string const & bb_inset); 
 	/// Filter the inputs on callback from xforms
 	virtual ButtonPolicy::SMInput input(FL_OBJECT *, long);
 
