@@ -1,5 +1,9 @@
 2003-10-13  Angus Leeming  <leeming@lyx.org>
 
+	* formula.C (editing_inset): pass a pointer rather than a reference. 
+
+2003-10-13  Angus Leeming  <leeming@lyx.org>
+
 	* formula.C: remove #include "PreviewImage.h".
 	(draw, metrics): some simplification of the editing_inset check.
 	Also make it compile with g++2.95.

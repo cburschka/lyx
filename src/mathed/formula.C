@@ -179,10 +179,11 @@ void InsetFormula::read(Buffer const &, LyXLex & lex)
 
 namespace {
 
-bool editing_inset(InsetFormula const & inset)
+bool editing_inset(InsetFormula const * inset)
 {
-	return (mathcursor &&
-		mathcursor->formula() == const_cast<InsetFormula *>(&inset));
+	return mathcursor &&
+		(const_cast<InsetFormulaBase const *>(mathcursor->formula()) ==
+		 inset);
 }
 
 } // namespace anon
@@ -193,7 +194,7 @@ void InsetFormula::draw(PainterInfo & pi, int x, int y) const
 	cache(pi.base.bv);
 
 	// The previews are drawn only when we're not editing the inset.
-	bool const use_preview = (!editing_inset(*this) &&
+	bool const use_preview = (!editing_inset(this) &&
 				  preview_->previewReady());
 
 	int const w = dim_.wid;
@@ -213,7 +214,7 @@ void InsetFormula::draw(PainterInfo & pi, int x, int y) const
 			    != lcolor.getX11Name(LColor::background))
 			p.pain.fillRectangle(x, y - a, w, h, LColor::mathbg);
 
-		if (editing_inset(*this)) {
+		if (editing_inset(this)) {
 			mathcursor->drawSelection(pi);
 			//p.pain.rectangle(x, y - a, w, h, LColor::mathframe);
 		}
@@ -256,7 +257,7 @@ bool InsetFormula::insetAllowed(InsetOld::Code code) const
 
 void InsetFormula::metrics(MetricsInfo & m, Dimension & dim) const
 {
-	bool const use_preview = (!editing_inset(*this) &&
+	bool const use_preview = (!editing_inset(this) &&
 				  preview_->previewReady());
 
 	if (use_preview) {
