@@ -162,7 +162,7 @@ InsetText & InsetText::operator=(InsetText const & it)
 void InsetText::init(InsetText const * ins, bool same_id)
 {
 	if (ins) {
-		setParagraphData(&*(ins->paragraphs.begin()), same_id);
+		setParagraphData(ins->paragraphs, same_id);
 		autoBreakRows = ins->autoBreakRows;
 		drawFrame_ = ins->drawFrame_;
 		frame_color = ins->frame_color;
@@ -545,9 +545,15 @@ void InsetText::setUpdateStatus(BufferView * bv, int what) const
 
 void InsetText::updateLocal(BufferView * bv, int what, bool mark_dirty)
 {
+#if 0
 	if (!autoBreakRows &&
 	    boost::next(paragraphs.begin()) != paragraphs.end())
 		collapseParagraphs(bv);
+#else
+	if (!autoBreakRows && paragraphs.size() > 1)
+		collapseParagraphs(bv);
+#endif
+
 	bool clear = false;
 	if (!lt) {
 		lt = getLyXText(bv);
@@ -1796,13 +1802,18 @@ Inset::RESULT
 InsetText::moveRightIntern(BufferView * bv, bool front,
 			   bool activate_inset, bool selecting)
 {
-	if (!cpar(bv)->next() && (cpos(bv) >= cpar(bv)->size()))
+	LyXText * text = getLyXText(bv);
+
+	ParagraphList::iterator c_par = cpar(bv);
+
+	if (boost::next(c_par) == paragraphs.end() &&
+	    (cpos(bv) >= c_par->size()))
 		return FINISHED_RIGHT;
 	if (activate_inset && checkAndActivateInset(bv, front))
 		return DISPATCHED;
-	getLyXText(bv)->cursorRight(bv);
+	text->cursorRight(bv);
 	if (!selecting)
-		getLyXText(bv)->clearSelection();
+		text->clearSelection();
 	return DISPATCHED_NOUPDATE;
 }
 
@@ -1811,11 +1822,13 @@ Inset::RESULT
 InsetText::moveLeftIntern(BufferView * bv, bool front,
 			  bool activate_inset, bool selecting)
 {
-	if (!cpar(bv)->previous() && (cpos(bv) <= 0))
+	LyXText * text = getLyXText(bv);
+
+	if (cpar(bv) == paragraphs.begin() && (cpos(bv) <= 0))
 		return FINISHED;
-	getLyXText(bv)->cursorLeft(bv);
+	text->cursorLeft(bv);
 	if (!selecting)
-		getLyXText(bv)->clearSelection();
+		text->clearSelection();
 	if (activate_inset && checkAndActivateInset(bv, front))
 		return DISPATCHED;
 	return DISPATCHED_NOUPDATE;
@@ -1938,7 +1951,7 @@ void InsetText::setFont(BufferView * bv, LyXFont const & font, bool toggleall,
 		clear = true;
 	}
 	if (lt->selection.set()) {
-		setUndo(bv, Undo::EDIT, &*lt->cursor.par(), lt->cursor.par()->next());
+		setUndo(bv, Undo::EDIT, &*lt->cursor.par(), &*boost::next(lt->cursor.par()));
 	}
 	if (selectall)
 		selectAll(bv);
@@ -2024,22 +2037,20 @@ int InsetText::getMaxWidth(BufferView * bv, UpdatableInset const * inset) const
 }
 
 
-void InsetText::setParagraphData(Paragraph * p, bool same_id)
+void InsetText::setParagraphData(ParagraphList const & plist, bool same_id)
 {
 	// we have to unlock any locked inset otherwise we're in troubles
 	the_locking_inset = 0;
 
 	paragraphs.clear();
-	paragraphs.set(new Paragraph(*p, same_id));
-	paragraphs.begin()->setInsetOwner(this);
-	Paragraph * np = &*(paragraphs.begin());
-	while (p->next()) {
-		p = p->next();
-		np->next(new Paragraph(*p, same_id));
-		np->next()->previous(np);
-		np = np->next();
-		np->setInsetOwner(this);
+	ParagraphList::iterator pit = plist.begin();
+	ParagraphList::iterator pend = plist.end();
+	for (; pit != pend; ++pit) {
+		Paragraph * new_par = new Paragraph(*pit, same_id);
+		new_par->setInsetOwner(this);
+		paragraphs.push_back(new_par);
 	}
+
 	reinitLyXText();
 	need_update = INIT;
 }
@@ -2150,9 +2161,9 @@ pos_type InsetText::cpos(BufferView * bv) const
 }
 
 
-Paragraph * InsetText::cpar(BufferView * bv) const
+ParagraphList::iterator InsetText::cpar(BufferView * bv) const
 {
-	return &*getLyXText(bv)->cursor.par();
+	return getLyXText(bv)->cursor.par();
 }
 
 
@@ -2703,9 +2714,13 @@ void InsetText::getDrawFont(LyXFont & font) const
 
 
 void InsetText::appendParagraphs(Buffer * buffer,
-				 Paragraph * newpar)
+				 ParagraphList & plist)
 {
+#warning FIXME Check if Changes stuff needs changing here. (Lgb)
+// And it probably does. You have to take a look at this John. (Lgb)
+#warning John, have a look here. (Lgb)
 	BufferParams const & bparams = buffer->params;
+#if 0
 	Paragraph * buf;
 	Paragraph * tmpbuf = newpar;
 	Paragraph * lastbuffer = buf = new Paragraph(*tmpbuf, false);
@@ -2720,6 +2735,7 @@ void InsetText::appendParagraphs(Buffer * buffer,
 		if (bparams.tracking_changes)
 			lastbuffer->cleanChanges();
 	}
+
 	lastbuffer = &*(paragraphs.begin());
 	while (lastbuffer->next())
 		lastbuffer = lastbuffer->next();
@@ -2736,6 +2752,19 @@ void InsetText::appendParagraphs(Buffer * buffer,
 	lastbuffer->next(buf);
 	buf->previous(lastbuffer);
 	mergeParagraph(buffer->params, paragraphs, lastbuffer);
+#else
+	ParagraphList::iterator pit = plist.begin();
+	ParagraphList::iterator ins = paragraphs.insert(paragraphs.end(),
+							new Paragraph(*pit, false));
+	++pit;
+	mergeParagraph(buffer->params, paragraphs, boost::prior(ins));
+
+	ParagraphList::iterator pend = plist.end();
+	for (; pit != pend; ++pit) {
+		paragraphs.push_back(new Paragraph(*pit, false));
+	}
+
+#endif
 
 	reinitLyXText();
 }

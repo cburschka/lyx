@@ -1,4 +1,9 @@
 
+2003-04-28 André Pönitz <poenitz@gmx.net>
+
+	* insettext.[Ch]: part of Lars' Paragraph * -> ParagraphList::iterator
+	  Changes
+
 2003-04-25 André Pönitz <poenitz@gmx.net>
 
 	* insetenv.C: derive from InsetText instead of InsetCollapsable

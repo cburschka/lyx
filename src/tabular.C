@@ -129,7 +129,7 @@ LyXTabular::LyXTabular(BufferParams const & bp,
 		for (int i = 0; i < rows_; ++i) {
 			for (int j = 0; j < columns_; ++j) {
 				cell_info[i][j].inset.id(lt.cell_info[i][j].inset.id());
-				cell_info[i][j].inset.setParagraphData(&*lt.cell_info[i][j].inset.paragraphs.begin(), true);
+				cell_info[i][j].inset.setParagraphData(lt.cell_info[i][j].inset.paragraphs, true);
 			}
 		}
 	}
@@ -1338,7 +1338,7 @@ void LyXTabular::SetMultiColumn(Buffer * buffer, int cell, int number)
 	for (int i = 1; i < number; ++i) {
 		cellinfo_of_cell(cell+i)->multicolumn = CELL_PART_OF_MULTICOLUMN;
 		cellinfo_of_cell(cell)->inset.appendParagraphs(buffer,
-			&*cellinfo_of_cell(cell+i)->inset.paragraphs.begin());
+			cellinfo_of_cell(cell+i)->inset.paragraphs);
 		cellinfo_of_cell(cell+i)->inset.clear(false);
 	}
 #else

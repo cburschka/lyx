@@ -161,7 +161,7 @@ public:
 	///
 	void writeParagraphData(Buffer const *, std::ostream &) const;
 	///
-	void setParagraphData(Paragraph *, bool same_id = false);
+	void setParagraphData(ParagraphList const &, bool same_id = false);
 	///
 	void setText(string const &, LyXFont const &);
 	///
@@ -243,7 +243,7 @@ public:
 	///
 	void getDrawFont(LyXFont &) const;
 	/// append text onto the existing text
-	void appendParagraphs(Buffer * bp, Paragraph *);
+	void appendParagraphs(Buffer * bp, ParagraphList &);
 
 	///
 	void addPreview(grfx::PreviewLoader &) const;
@@ -253,6 +253,9 @@ public:
 	///
 	mutable int need_update;
 
+	bool haveParagraphs() const {
+		return true;
+	}
 	///
 	ParagraphList paragraphs;
 protected:
@@ -335,7 +338,7 @@ private:
 	///
 	lyx::pos_type cpos(BufferView *) const;
 	///
-	Paragraph * cpar(BufferView *) const;
+	ParagraphList::iterator cpar(BufferView *) const;
 	///
 	bool cboundary(BufferView *) const;
 	///
@@ -365,7 +368,7 @@ private:
 	///
 	mutable int top_y;
 	///
-	Paragraph * inset_par;
+	ParagraphList::iterator inset_par;
 	///
 	lyx::pos_type inset_pos;
 	///
@@ -381,7 +384,7 @@ private:
 	///
 	UpdatableInset * the_locking_inset;
 	///
-	mutable Paragraph * old_par;
+	mutable ParagraphList::iterator old_par;
 	/// The cache.
 	mutable Cache cache;
 	///
