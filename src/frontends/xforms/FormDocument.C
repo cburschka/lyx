@@ -203,9 +203,15 @@ void FormDocument::build()
 			"default|empty|plain|headings|fancy");
 	fl_addto_choice(class_->choice_doc_skip,
 			_(" Smallskip | Medskip | Bigskip | Length "));
+	fl_addto_choice(class_->choice_default_skip_units,  units.c_str());
 	fl_set_input_return(class_->input_doc_extra, FL_RETURN_CHANGED);
 	fl_set_input_return(class_->input_doc_skip, FL_RETURN_CHANGED);
 	fl_set_input_return(class_->input_doc_spacing, FL_RETURN_CHANGED);
+
+	// Set input filters on doc skip to make it accept only
+	// unsigned numbers.
+	fl_set_input_filter(class_->input_doc_skip,
+			    fl_unsigned_float_filter);
 
 	bc().addReadOnly (class_->radio_doc_indent);
 	bc().addReadOnly (class_->radio_doc_skip);
@@ -397,6 +403,31 @@ bool FormDocument::input( FL_OBJECT * ob, long data )
 		break;
 	default:
 		break;
+	}
+
+	bool const length_input = fl_get_choice(class_->choice_doc_skip) == 4;
+	if (ob == class_->choice_doc_skip) {
+		setEnabled(class_->input_doc_skip, length_input);
+		setEnabled(class_->choice_default_skip_units, length_input);
+	}
+
+	if (ob == class_->choice_doc_spacing)
+		setEnabled(class_->input_doc_spacing,
+			   fl_get_choice(class_->choice_doc_spacing) == 4);
+
+	bool const skip_used = fl_get_button(class_->radio_doc_skip);
+	if (ob == class_->radio_doc_skip ||
+	    ob == class_->radio_doc_indent) {
+		setEnabled(class_->choice_doc_skip, skip_used);
+		setEnabled(class_->input_doc_skip, skip_used);
+		setEnabled(class_->choice_default_skip_units, skip_used);
+		// Default unit choice is cm if metric, inches if US paper.
+		int const paperchoice = fl_get_choice(paper_->choice_papersize);
+		bool const metric = paperchoice < 3 || paperchoice > 5;
+		int const default_unit = metric ? 8 : 9;
+		if (strip(fl_get_input(class_->input_doc_skip)).empty())
+			fl_set_choice(class_->choice_default_skip_units,
+				      default_unit);
 	}
 
 	if (ob == options_->check_use_natbib) {
@@ -644,11 +675,16 @@ bool FormDocument::class_apply()
 	    params.setDefSkip(VSpace(VSpace::BIGSKIP));
 	    break;
 	case 4:
-		params.setDefSkip
-			(VSpace(LyXGlueLength(fl_get_input(class_->input_doc_skip))));
+	{
+		string const length =
+			getLengthFromWidgets(class_->input_doc_skip,
+					     class_->choice_default_skip_units);
+
+		params.setDefSkip(VSpace(LyXGlueLength(length)));
 		break;
-		// DocumentDefskipCB assures that this never happens
+	}
 	default:
+		// DocumentDefskipCB assures that this never happens
 		params.setDefSkip(VSpace(VSpace::MEDSKIP));
 		break;
 	}
@@ -869,6 +905,11 @@ void FormDocument::class_update(BufferParams const & params)
 		fl_set_button(class_->radio_doc_indent, 1);
 	else
 		fl_set_button(class_->radio_doc_skip, 1);
+
+	bool const input_length = fl_get_choice(class_->choice_doc_skip) == 4;
+	setEnabled(class_->choice_default_skip_units, input_length);
+	setEnabled(class_->input_doc_skip, input_length);
+
 	switch (params.getDefSkip().kind()) {
 	case VSpace::SMALLSKIP: 
 		fl_set_choice (class_->choice_doc_skip, 1);
@@ -879,17 +920,26 @@ void FormDocument::class_update(BufferParams const & params)
 	case VSpace::BIGSKIP: 
 		fl_set_choice (class_->choice_doc_skip, 3);
 		break;
-	case VSpace::LENGTH: 
-		fl_set_choice (class_->choice_doc_skip, 4);
-		fl_set_input (class_->input_doc_skip,
-			      params.getDefSkip().asLyXCommand().c_str());
+	case VSpace::LENGTH:
+	{
+		int const paperchoice = params.papersize2 + 1;
+		bool const metric = paperchoice < 3 || paperchoice > 5;
+		string const default_unit = metric ? "cm" : "in";
+		string const length = params.getDefSkip().asLyXCommand();
+		updateWidgetsFromLengthString(class_->input_doc_skip,
+					      class_->choice_default_skip_units,
+					      length, default_unit);
 		break;
+	}
 	default:
 		fl_set_choice (class_->choice_doc_skip, 2);
 		break;
 	}
 	fl_set_button(class_->radio_doc_sides_one, 0);
 	fl_set_button(class_->radio_doc_sides_two, 0);
+	setEnabled(class_->choice_doc_skip,
+		   fl_get_button(class_->radio_doc_skip));
+
 	if (params.sides == LyXTextClass::TwoSides)
 		fl_set_button(class_->radio_doc_sides_two, 1);
 	else
@@ -901,6 +951,9 @@ void FormDocument::class_update(BufferParams const & params)
 	else
 		fl_set_button(class_->radio_doc_columns_one, 1);
 	fl_set_input(class_->input_doc_spacing, "");
+
+	setEnabled(class_->input_doc_spacing, input_length);
+
 	switch (params.spacing.getSpace()) {
 	case Spacing::Default: // nothing bad should happen with this
 	case Spacing::Single:
@@ -1097,7 +1150,7 @@ void FormDocument::checkReadOnly()
 }
 
 
-bool FormDocument::CheckDocumentInput(FL_OBJECT * ob, long)
+bool FormDocument::CheckDocumentInput(FL_OBJECT *, long)
 {
 	string str;
 	bool ok = true;
@@ -1106,20 +1159,6 @@ bool FormDocument::CheckDocumentInput(FL_OBJECT * ob, long)
 	// "Synchronize" the choice and the input field, so that it
 	// is impossible to commit senseless data.
 	input = fl_get_input (class_->input_doc_skip);
-	if (ob == class_->input_doc_skip) {
-		if (!*input) {
-			fl_set_choice (class_->choice_doc_skip, 2);
-		} else if (isValidGlueLength (input)) {
-			fl_set_choice (class_->choice_doc_skip, 4);
-		} else {
-			fl_set_choice(class_->choice_doc_skip, 4);
-			ok = false;
-		}
-	} else {
-		if (*input && !isValidGlueLength(input))
-			ok = false;
-	}
-
 	if ((fl_get_choice(class_->choice_doc_skip) == 4) && !*input)
 		ok = false;
 	else if (fl_get_choice(class_->choice_doc_skip) != 4)
@@ -1128,7 +1167,7 @@ bool FormDocument::CheckDocumentInput(FL_OBJECT * ob, long)
 	input = fl_get_input(class_->input_doc_spacing);
 	if ((fl_get_choice(class_->choice_doc_spacing) == 4) && !*input)
 		ok = false;
-	else  if (fl_get_choice(class_->choice_doc_spacing) != 4)
+	else if (fl_get_choice(class_->choice_doc_spacing) != 4)
 		fl_set_input (class_->input_doc_spacing, "");
 	return ok;
 }

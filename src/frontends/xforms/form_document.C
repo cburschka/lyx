@@ -250,13 +250,13 @@ FD_form_doc_class * FormDocument::build_doc_class()
   fdui->form = fl_bgn_form(FL_NO_BOX, 440, 345);
   fdui->form->u_vdata = this;
   obj = fl_add_box(FL_FLAT_BOX, 0, 0, 440, 345, "");
-  obj = fl_add_labelframe(FL_ENGRAVED_FRAME, 300, 200, 120, 80, _("Separation"));
+  obj = fl_add_labelframe(FL_ENGRAVED_FRAME, 20, 245, 400, 85, _("Separation"));
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_lstyle(obj, FL_BOLD_STYLE);
-  obj = fl_add_labelframe(FL_ENGRAVED_FRAME, 300, 110, 120, 70, _("Page cols"));
+  obj = fl_add_labelframe(FL_ENGRAVED_FRAME, 300, 110, 115, 80, _("Page cols"));
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_lstyle(obj, FL_BOLD_STYLE);
-  obj = fl_add_labelframe(FL_ENGRAVED_FRAME, 300, 20, 120, 70, _("Sides"));
+  obj = fl_add_labelframe(FL_ENGRAVED_FRAME, 300, 20, 120, 75, _("Sides"));
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_lstyle(obj, FL_BOLD_STYLE);
   {
@@ -293,7 +293,7 @@ FD_form_doc_class * FormDocument::build_doc_class()
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, INPUT);
   {
     char const * const dummy = N_("Spacing|#g");
-    fdui->choice_doc_spacing = obj = fl_add_choice(FL_NORMAL_CHOICE, 120, 240, 90, 30, idex(_(dummy)));
+    fdui->choice_doc_spacing = obj = fl_add_choice(FL_NORMAL_CHOICE, 120, 200, 160, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_boxtype(obj, FL_FRAME_BOX);
@@ -306,12 +306,12 @@ FD_form_doc_class * FormDocument::build_doc_class()
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, INPUT);
-  fdui->input_doc_skip = obj = fl_add_input(FL_NORMAL_INPUT, 220, 200, 60, 30, "");
+  fdui->input_doc_skip = obj = fl_add_input(FL_NORMAL_INPUT, 285, 290, 60, 30, "");
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, INPUT);
   {
     char const * const dummy = N_("Default Skip:|#u");
-    fdui->choice_doc_skip = obj = fl_add_choice(FL_NORMAL_CHOICE, 120, 200, 90, 30, idex(_(dummy)));
+    fdui->choice_doc_skip = obj = fl_add_choice(FL_NORMAL_CHOICE, 285, 255, 125, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_boxtype(obj, FL_FRAME_BOX);
@@ -357,14 +357,14 @@ FD_form_doc_class * FormDocument::build_doc_class()
   fdui->group_doc_sep = fl_bgn_group();
   {
     char const * const dummy = N_("Indent|#I");
-    fdui->radio_doc_indent = obj = fl_add_checkbutton(FL_RADIO_BUTTON, 300, 210, 110, 30, idex(_(dummy)));
+    fdui->radio_doc_indent = obj = fl_add_checkbutton(FL_RADIO_BUTTON, 50, 260, 110, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, INPUT);
   {
     char const * const dummy = N_("Skip|#K");
-    fdui->radio_doc_skip = obj = fl_add_checkbutton(FL_RADIO_BUTTON, 300, 240, 110, 30, idex(_(dummy)));
+    fdui->radio_doc_skip = obj = fl_add_checkbutton(FL_RADIO_BUTTON, 50, 290, 110, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
@@ -372,9 +372,12 @@ FD_form_doc_class * FormDocument::build_doc_class()
     fl_set_button(obj, 1);
   fl_end_group();
 
-  fdui->input_doc_spacing = obj = fl_add_input(FL_NORMAL_INPUT, 220, 240, 60, 30, "");
+  fdui->input_doc_spacing = obj = fl_add_input(FL_NORMAL_INPUT, 300, 200, 115, 30, "");
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, INPUT);
+  fdui->choice_default_skip_units = obj = fl_add_choice(FL_NORMAL_CHOICE, 350, 290, 60, 30, "");
+    fl_set_object_boxtype(obj, FL_FRAME_BOX);
+    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
   fl_end_form();
 
   fdui->form->fdui = fdui;

@@ -707,7 +707,7 @@ argument: 0
 Name: form_doc_class
 Width: 440
 Height: 345
-Number of Objects: 25
+Number of Objects: 26
 
 --------------------
 class: FL_BOX
@@ -730,7 +730,7 @@ argument:
 --------------------
 class: FL_LABELFRAME
 type: ENGRAVED_FRAME
-box: 300 200 120 80
+box: 20 245 400 85
 boxtype: FL_NO_BOX
 colors: FL_BLACK FL_COL1
 alignment: FL_ALIGN_TOP_LEFT
@@ -748,7 +748,7 @@ argument:
 --------------------
 class: FL_LABELFRAME
 type: ENGRAVED_FRAME
-box: 300 110 120 70
+box: 300 110 115 80
 boxtype: FL_NO_BOX
 colors: FL_BLACK FL_COL1
 alignment: FL_ALIGN_TOP_LEFT
@@ -766,7 +766,7 @@ argument:
 --------------------
 class: FL_LABELFRAME
 type: ENGRAVED_FRAME
-box: 300 20 120 70
+box: 300 20 120 75
 boxtype: FL_NO_BOX
 colors: FL_BLACK FL_COL1
 alignment: FL_ALIGN_TOP_LEFT
@@ -856,7 +856,7 @@ argument: INPUT
 --------------------
 class: FL_CHOICE
 type: NORMAL_CHOICE
-box: 120 240 90 30
+box: 120 200 160 30
 boxtype: FL_FRAME_BOX
 colors: FL_COL1 FL_BLACK
 alignment: FL_ALIGN_LEFT
@@ -892,7 +892,7 @@ argument: INPUT
 --------------------
 class: FL_INPUT
 type: NORMAL_INPUT
-box: 220 200 60 30
+box: 285 290 60 30
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_LEFT
@@ -910,7 +910,7 @@ argument: INPUT
 --------------------
 class: FL_CHOICE
 type: NORMAL_CHOICE
-box: 120 200 90 30
+box: 285 255 125 30
 boxtype: FL_FRAME_BOX
 colors: FL_COL1 FL_BLACK
 alignment: FL_ALIGN_LEFT
@@ -1090,7 +1090,7 @@ argument:
 --------------------
 class: FL_CHECKBUTTON
 type: RADIO_BUTTON
-box: 300 210 110 30
+box: 50 260 110 30
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_YELLOW
 alignment: FL_ALIGN_CENTER
@@ -1108,7 +1108,7 @@ argument: INPUT
 --------------------
 class: FL_CHECKBUTTON
 type: RADIO_BUTTON
-box: 300 240 110 30
+box: 50 290 110 30
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_YELLOW
 alignment: FL_ALIGN_CENTER
@@ -1145,7 +1145,7 @@ argument:
 --------------------
 class: FL_INPUT
 type: NORMAL_INPUT
-box: 220 240 60 30
+box: 300 200 115 30
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_LEFT
@@ -1159,6 +1159,24 @@ gravity: FL_NoGravity FL_NoGravity
 name: input_doc_spacing
 callback: C_FormBaseDeprecatedInputCB
 argument: INPUT
+
+--------------------
+class: FL_CHOICE
+type: NORMAL_CHOICE
+box: 350 290 60 30
+boxtype: FL_FRAME_BOX
+colors: FL_COL1 FL_BLACK
+alignment: FL_ALIGN_LEFT
+style: FL_NORMAL_STYLE
+size: FL_DEFAULT_SIZE
+lcol: FL_BLACK
+label:
+shortcut:
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: choice_default_skip_units
+callback: C_FormBaseDeprecatedInputCB
+argument: 0
 
 =============== FORM ===============
 Name: form_doc_language

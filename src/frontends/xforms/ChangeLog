@@ -1,3 +1,13 @@
+2001-10-19  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+       * forms/form_document.fd:
+         Class: add a value choice for Default Skip.
+         Some rearrangements (minor tweaks).
+       * FormDocument.C: Handle that choice, minor tweaks.
+       * forms/form_paragraph.fd: Add value choices
+       * FormParagraph.C: Handle that choices.
+       * FormMinipage.C/FormGraphics.C: Small tweaks.
+
 2001-10-15  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* FormDocument.C: fixed some bugs in the Paper tab.
