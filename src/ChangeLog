@@ -1,3 +1,7 @@
+2001-12-21  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* tabular_funcs.C: getline -> std::getline
+
 2001-12-21  Juergen Vigna  <jug@sad.it>
 
 	* undo_funcs.C (textHandleUndo): fixed a case where tmppar3 is
