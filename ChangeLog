@@ -1,3 +1,16 @@
+2000-05-15  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* lib/tex/hollywood.cls: better algorithm for page breaks (Garst)
+	* lib/tex/brodway.cls: ditto 
+
+	* lib/layouts/brodway.layout: change alignment of parenthical
+	layout (Garst)
+	
+2000-05-12  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* config/lyxinclude.m4 (LYX_PATH_XFORMS): make it clear that only
+	versions 0.88 and 0.89 are supported.
+
 2000-05-15  Juergen Vigna  <jug@sad.it>
 
 	* src/insets/insetcollapsable.C (draw): enhancements in drawing and

@@ -547,23 +547,18 @@ lyx_cv_xfversion=`(eval "$ac_cpp conftest.$ac_ext") 2>&5 | \
   sed -e 's/^"%%%"\(.*\)"%%%"/\1/' -e 's/ //g'`
 rm -f conftest*])
 case "$lyx_cv_xfversion" in 
-  "(unknown)"|0.82|0.83|0.84|0.85) 
-     LYX_ERROR(dnl
+  "(unknown)"|0.8[1-7]) 
+         LYX_ERROR(dnl
 Version $lyx_cv_xfversion of xforms is not compatible with LyX. 
-   This version of LyX works best with version 0.88[,] although it
-   supports also versions 0.81[,] 0.86 and 0.87.) ;;
-  0.81|0.86|0.87) 
-     LYX_WARNING(dnl
-While LyX is compatible with version $lyx_cv_xfversion of xforms[,] 
-   it is recommended that you upgrade to version 0.88.) ;;
-     0.88) ;;
-     0.89) LYX_WARNING(dnl
+   This version of LyX works best with versions 0.88 (recommended) and later.) ;;
+    0.88) ;;
+    0.89) LYX_WARNING(dnl
 LyX should work ok with version $lyx_cv_xfversion of xforms[,] but
 it is an unproven version and might still have some bugs. If you
 have problems[,] please use version 0.88 instead.) ;;
-          *) LYX_WARNING(dnl
+       *) LYX_WARNING(dnl
 Version $lyx_cv_xfversion of xforms might not be compatible with LyX[,] 
-   since it is newer than 0.88. You might have slight problems with it.);;
+ since it is newer than 0.88. You might have slight problems with it.);;
 esac
 fi])
 

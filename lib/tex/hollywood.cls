@@ -158,13 +158,15 @@
 {\unskip \end{list}}
 
 \newenvironment{interior}%
-{\begin{list}{}{%
+{\filbreak
+\begin{list}{}{%
 \leftmargin \rightmargin}
 \item[]INT. \ignorespaces}
 {\unskip \end{list}}
 
 \newenvironment{exterior}%
-{\begin{list}{}{%
+{filbreak
+\begin{list}{}{%
 \leftmargin \rightmargin}
 \item[]EXT. \ignorespaces}
 {\unskip \end{list}}
@@ -180,7 +182,8 @@
 {\unskip \end{list}}
 
 \newenvironment{narrative}%
-{\raggedright
+{\filbreak
+\raggedright
 \begin{list}{}{%
 \leftmargin \rightmargin
 \setlength{\parsep}{2mm}
@@ -189,7 +192,8 @@
 {\unskip \end{list}}
 
 \newenvironment{speaker}%
-{\begin{list}{}{%
+{\filbreak
+\begin{list}{}{%
 	\setlength{\leftmargin}{2.5in}
 \setlength{\partopsep}{4mm}
 \setlength{\parsep}{0mm}
@@ -206,7 +210,8 @@
 {\unskip)\end{list}}
 
 \newenvironment{fadeout}%
-{\begin{list}{}{%
+{\filbreak
+\begin{list}{}{%
 \leftmargin \rightmargin}
 \item[]FADE OUT: \ignorespaces}
 {\unskip \end{list}}

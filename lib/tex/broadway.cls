@@ -168,21 +168,22 @@
 \fi
 
 \newenvironment{atrise}%
-{\begin{list}{}{%
+{\filbreak
+\begin{list}{}{%
 \leftmargin \rightmargin}
 \item[]AT RISE:\ignorespaces}
 {\unskip \end{list}}
 
 \newenvironment{scene}%
-{
-%\stepcounter{scene}
+{\filbreak
+\stepcounter{scene}
 \begin{center}{}{%
 \center}
 \item[]SCENE \ignorespaces}
 {\unskip \end{center}}
 
 \newenvironment{act}%
-{
+{\filbreak
 \stepcounter{act}
 %\setcounter{scene}{0}
 \begin{center}{}{%
@@ -202,6 +203,7 @@
 
 \newenvironment{narrative}%
 {\raggedright
+\filbreak
 \fontshape{it}\selectfont{}
 \begin{list}{}{%
 	\setlength{\leftmargin}{0in}
@@ -212,7 +214,8 @@
 {\unskip \end{list}}
 
 \newenvironment{speaker}%
-{\begin{center}{}{%
+{\filbreak
+\begin{center}{}{%
 \center
 \setlength{\parsep}{0mm}
 \setlength{\topsep}{2mm}}

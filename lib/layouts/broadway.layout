@@ -146,8 +146,12 @@ Style Parenthetical
   Margin                Static
   LatexType             Environment
   LatexName             parenthetical
-  Align                 Center
-  AlignPossible         Center
+  LeftMargin            MMMMMMMMMMMMMMMMM
+  TopSep		0.0
+  BottomSep		0.0
+  ParSkip		0.0
+  Align                 Left
+  AlignPossible         Left
   LabelType		Static
   LabelString		(
   EndLabelType		Static
