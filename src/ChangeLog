@@ -1,3 +1,13 @@
+2003-06-13  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* text3.C (dispatch): do not modify clipboard when doing
+	LFUN_BACKSPACE, LFUN_BACKSPACE_SKIP, LFUN_DELETE or
+	LFUN_DELETE_SKIP on a selection
+
+2003-05-27  Juergen Spitzmueller  <j.spitzmueller@gmx.de>
+
+	* text3.C (doInsertInset): fix conversion from selected text to inset
+
 2003-06-06  José Matos  <jamatos@fep.up.pt>
 
 	* buffer.C (simpleDocBookOnePar): output meta::newline and

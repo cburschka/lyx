@@ -380,18 +380,18 @@ void doInsertInset(LyXText * lt, FuncRequest const & cmd,
 {
 	Inset * inset = createInset(cmd);
 	BufferView * bv = cmd.view();
-	
+
 	if (inset) {
 		bool gotsel = false;
 		if (lt->selection.set()) {
-			lt->cutSelection(bv, true, false);
+			bv->owner()->dispatch(FuncRequest(LFUN_CUT));
 			gotsel = true;
 		}
 		if (bv->insertInset(inset)) {
 			if (edit)
 				inset->edit(bv);
 			if (gotsel && pastesel)
-				bv->owner()->dispatch(FuncRequest(LFUN_PASTESELECTION));
+				bv->owner()->dispatch(FuncRequest(LFUN_PASTE));
 		}
 		else
 			delete inset;
@@ -736,7 +736,7 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 			bv->showCursor();
 		} else {
 			update(bv, false);
-			cutSelection(bv, true);
+			cutSelection(bv, true, false);
 			update(bv);
 		}
 		moveCursorUpdate(bv, false);
@@ -777,7 +777,7 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 			}
 		} else {
 			update(bv, false);
-			cutSelection(bv, true);
+			cutSelection(bv, true, false);
 		}
 		update(bv);
 		break;
@@ -795,7 +795,7 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 			}
 		} else {
 			update(bv, false);
-			cutSelection(bv, true);
+			cutSelection(bv, true, false);
 			update(bv);
 		}
 		bv->owner()->view_state_changed();
@@ -824,7 +824,7 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 			}
 		} else {
 			update(bv, false);
-			cutSelection(bv, true);
+			cutSelection(bv, true, false);
 		}
 		update(bv);
 		break;

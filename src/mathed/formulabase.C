@@ -1004,7 +1004,7 @@ void mathDispatchCreation(FuncRequest const & cmd, bool display)
 			f = new InsetFormula(sel);
 		else
 			f = new InsetFormulaMacro(sel);
-		bv->getLyXText()->cutSelection(bv);
+		bv->getLyXText()->cutSelection(bv, true, false);
 		openNewInset(bv, f);
 	}
 	cmd.message(N_("Math editor mode"));

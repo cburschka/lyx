@@ -1,3 +1,8 @@
+2003-06-13  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* formulabase.C (mathDispatchCreation): do not modify clipboard
+	when there is a selection
+
 2003-06-11  André Pönitz <poenitz@gmx.net>
 
 	* math_parser.C (parse1): make sure that all kinds of \refs are

@@ -41,6 +41,13 @@ What's new
 
 - output newline and hfill correctly in docbook [bug #1148]
 
+- when pressing delete or backspace over a selection, do not modify
+  the clipboard
+
+- when inserting a float or a note over a selection, make sure that
+  the insets and font changes in the selection are correctly kept
+  [note however that doing this now modifies the clipboard]
+
 - work around a Qt 3.1.2 bug with the environment combo box [bug #1136]
 
 - fix bug where browsing for files in graphics inset would always
