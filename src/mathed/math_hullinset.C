@@ -368,13 +368,12 @@ void MathHullInset::addPreview(lyx::graphics::PreviewLoader & ploader) const
 
 void MathHullInset::notifyCursorLeaves(LCursor & cur)
 {
-	if (RenderPreview::status() != LyXRC::PREVIEW_ON)
-		return;
-
-	Buffer const & buffer = cur.buffer();
-	string const snippet = latex_string(*this);
-	preview_->addPreview(snippet, buffer);
-	preview_->startLoading(buffer);
+	if (RenderPreview::status() == LyXRC::PREVIEW_ON) {
+		Buffer const & buffer = cur.buffer();
+		string const snippet = latex_string(*this);
+		preview_->addPreview(snippet, buffer);
+		preview_->startLoading(buffer);
+	}
 }
 
 
@@ -949,7 +948,10 @@ void MathHullInset::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 			pair<bool, string> const res = old_label.empty()
 				? Alert::askForText(_("Enter new label to insert:"), default_label)
 				: Alert::askForText(_("Enter label:"), old_label);
-			new_label = lyx::support::trim(res.second);
+			if (res.first)
+				new_label = lyx::support::trim(res.second);
+			else
+				new_label = old_label;
 		}
 
 		if (!new_label.empty())

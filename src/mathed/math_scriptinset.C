@@ -560,7 +560,7 @@ void MathScriptInset::notifyCursorLeaves(LCursor & cur)
 	lyxerr << "MathScriptInset::notifyCursorLeaves: 1 " << cur << endl;
 
 	// remove empty scripts if possible
-if (0) {
+if (1) {
 	if (nargs() > 2 && cur.idx() == 2 && cell(2).empty()) {
 		// must be a subscript...
 		removeScript(false);
