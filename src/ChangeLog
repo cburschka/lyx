@@ -3,8 +3,7 @@
 	* buffer.C (parseSingleLyXformat2Token): Fix reading of old format 
 	minipages: use col% instead of p%, and also use the current font.
 	(makeLaTeXFile): Fix use babel condition.
-	(parseSingleLyXformat2Token): Do not reset font when reading old
-	floats.
+	(parseSingleLyXformat2Token): Correct font when reading old floats.
 
 2002-04-28  Dekel Tsur  <dekelts@tau.ac.il>
 

@@ -655,14 +655,13 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 		nylex.setStream(istr);
 		inset->read(this, nylex);
 
-		// we have to reset the font as in the old format after a float
-		// the font was automatically reset!
-		//font = LyXFont(LyXFont::ALL_INHERIT, params.language);
-		// This is not true (Dekel).
-
 		par->insertInset(pos, inset, font);
 		++pos;
 		insertErtContents(par, pos);
+
+		// we have to reset the font as in the old format after a float
+		// the font was automatically reset!
+		font = LyXFont(LyXFont::ALL_INHERIT, params.language);
 #endif
 	} else if (token == "\\begin_deeper") {
 		++depth;
