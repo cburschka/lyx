@@ -203,7 +203,7 @@ Menuset
 	Item "Tabular Material...|b" "dialog-tabular-insert"
 	Submenu "Floats|a" "insert_floats"
 	Separator
-	Item "Include File|d" "buffer-child-insert"
+	Item "Include File...|d" "buffer-child-insert"
 	Submenu "Insert File|e" "insert_file"
 	Item "External Material...|x" "external-insert"
     End
