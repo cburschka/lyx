@@ -186,20 +186,28 @@ void InsetText::Read(Buffer const * buf, LyXLex & lex)
 }
 
 
-int InsetText::ascent(Painter &, LyXFont const &) const
+int InsetText::ascent(BufferView * bv, LyXFont const &) const
 {
+    long int y_temp = 0;
+    Row * row = TEXT(bv)->GetRowNearY(y_temp);
+    insetAscent = row->ascent_of_text() + TEXT_TO_INSET_OFFSET;
     return insetAscent;
 }
 
 
-int InsetText::descent(Painter &, LyXFont const &) const
+int InsetText::descent(BufferView * bv, LyXFont const &) const
 {
+    long int y_temp = 0;
+    Row * row = TEXT(bv)->GetRowNearY(y_temp);
+    insetDescent = TEXT(bv)->height - row->ascent_of_text() +
+	TEXT_TO_INSET_OFFSET;
     return insetDescent;
 }
 
 
-int InsetText::width(Painter &, LyXFont const &) const
+int InsetText::width(BufferView * bv, LyXFont const &) const
 {
+    insetWidth = TEXT(bv)->width + (2 * TEXT_TO_INSET_OFFSET);
     return insetWidth;
 }
 
@@ -211,9 +219,9 @@ int InsetText::textWidth(Painter & pain) const
 //	printf("WW1: %d\n",w);
 	return w;
     }
-#if 0
+#if 1
     if (owner()) {
-	w = w - top_x; // + owner()->x();
+	w = w - top_x + owner()->x();
 //	printf("WW2: %d\n",w);
 	return w; // - top_x + owner()->x();
     }
@@ -228,6 +236,9 @@ void InsetText::draw(BufferView * bv, LyXFont const & f,
 		     int baseline, float & x, bool cleared) const
 {
     Painter & pain = bv->painter();
+
+    xpos = x;
+    UpdatableInset::draw(bv, f, baseline, x, cleared);
 
     if (!cleared && ((need_update==FULL) || (top_x!=int(x)) ||
 		     (top_baseline!=baseline))) {
@@ -245,25 +256,25 @@ void InsetText::draw(BufferView * bv, LyXFont const & f,
 	cleared = true;
 	need_update = FULL;
     }
-
     if (!cleared && (need_update == NONE))
 	return;
 
-    xpos = x;
-    UpdatableInset::draw(bv, f, baseline, x, cleared);
- 
+    if (top_x != int(x)) {
+	need_update = INIT;
+    }
+
     top_baseline = baseline;
     top_x = int(x);
-    top_y = baseline - ascent(pain, f);
-    last_width = width(pain, f);
-    last_height = ascent(pain, f) + descent(pain, f);
+    top_y = baseline - ascent(bv, f);
+    last_width = width(bv, f);
+    last_height = ascent(bv, f) + descent(bv, f);
 
     if (the_locking_inset && (cpar(bv) == inset_par) && (cpos(bv) == inset_pos)) {
 	inset_x = cx(bv) - top_x + drawTextXOffset;
 	inset_y = cy(bv) + drawTextYOffset;
     }
     if (!cleared && (need_update == CURSOR)) {
-	x += width(pain, f);
+	x += width(bv, f);
 	need_update = NONE;
 	return;
     }
@@ -295,7 +306,8 @@ void InsetText::draw(BufferView * bv, LyXFont const & f,
 			   LColor::background);
     }
     x += insetWidth - TEXT_TO_INSET_OFFSET;
-    need_update = NONE;
+    if (need_update != INIT)
+	need_update = NONE;
 }
 
 
@@ -1063,10 +1075,12 @@ bool InsetText::checkAndActivateInset(BufferView * bv, bool behind)
 	int x, y;
 	Inset * inset =
 	    static_cast<UpdatableInset*>(cpar(bv)->GetInset(cpos(bv)));
+	if (!inset || inset->Editable() != Inset::HIGHLY_EDITABLE)
+	    return false;
 	LyXFont font = TEXT(bv)->GetFont(bv->buffer(), cpar(bv), cpos(bv));
 	if (behind) {
-	    x = inset->width(bv->painter(), font);
-	    y = inset->descent(bv->painter(), font);
+	    x = inset->width(bv, font);
+	    y = inset->descent(bv, font);
 	} else {
 	    x = y = 0;
 	}
@@ -1108,7 +1122,10 @@ bool InsetText::checkAndActivateInset(BufferView * bv, int x, int y,
 
 int InsetText::getMaxWidth(Painter & pain, UpdatableInset const * inset) const
 {
-    return UpdatableInset::getMaxWidth(pain, inset) - (2*TEXT_TO_INSET_OFFSET);
+    int w = UpdatableInset::getMaxWidth(pain, inset);
+    if (w < 0)
+	return w;
+    return  w - (2*TEXT_TO_INSET_OFFSET);
 }
 
 
@@ -1220,7 +1237,7 @@ LyXText * InsetText::getLyXText(BufferView * bv) const
 }
 
 
-void InsetText::deleteLyXText(BufferView * bv)
+void InsetText::deleteLyXText(BufferView * bv) const
 {
     cache.erase(bv);
     /// then remove all LyXText in text-insets

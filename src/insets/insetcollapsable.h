@@ -49,11 +49,11 @@ public:
     ///
     void Write(Buffer const *, std::ostream &) const;
     ///
-    int ascent(Painter &, LyXFont const &) const;
+    int ascent(BufferView *, LyXFont const &) const;
     ///
-    int descent(Painter &, LyXFont const &) const;
+    int descent(BufferView *, LyXFont const &) const;
     ///
-    int width(Painter &, LyXFont const & f) const;
+    int width(BufferView *, LyXFont const & f) const;
     ///
     void draw(BufferView *, const LyXFont &, int , float &, bool) const;
     ///

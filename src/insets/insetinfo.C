@@ -57,19 +57,19 @@ InsetInfo::~InsetInfo()
 }
 
 
-int InsetInfo::ascent(Painter &, LyXFont const & font) const
+int InsetInfo::ascent(BufferView *, LyXFont const & font) const
 {
 	return lyxfont::maxAscent(font) + 1;
 }
 
 
-int InsetInfo::descent(Painter &, LyXFont const & font) const
+int InsetInfo::descent(BufferView *, LyXFont const & font) const
 {
 	return lyxfont::maxDescent(font) + 1;
 }
 
 
-int InsetInfo::width(Painter &, LyXFont const & font) const
+int InsetInfo::width(BufferView *, LyXFont const & font) const
 {
 	return 6 + lyxfont::width(_("Note"), font);
 }
@@ -86,17 +86,17 @@ void InsetInfo::draw(BufferView * bv, LyXFont const & f,
 	
 	// Draw as "Note" in a yellow box
 	x += 1;
-	pain.fillRectangle(int(x), baseline - ascent(pain, font) + 1,
-			   width(pain, font) - 2,
-			   ascent(pain, font) + descent(pain, font) - 2,
+	pain.fillRectangle(int(x), baseline - ascent(bv, font) + 1,
+			   width(bv, font) - 2,
+			   ascent(bv, font) + descent(bv, font) - 2,
 			   LColor::notebg);
-	pain.rectangle(int(x), baseline - ascent(pain, font) + 1,
-		       width(pain, font) - 2,
-		       ascent(pain, font) + descent(pain, font) - 2,
+	pain.rectangle(int(x), baseline - ascent(bv, font) + 1,
+		       width(bv, font) - 2,
+		       ascent(bv, font) + descent(bv, font) - 2,
 		       LColor::noteframe);
 	
 	pain.text(int(x + 2), baseline, _("Note"), font);
-	x +=  width(pain, font) - 1;
+	x +=  width(bv, font) - 1;
 }
 
 

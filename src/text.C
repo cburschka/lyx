@@ -43,7 +43,7 @@ using std::endl;
 using std::pair;
 
 static const int LYX_PAPER_MARGIN = 20;
-extern int bibitemMaxWidth(Painter &, LyXFont const &);
+extern int bibitemMaxWidth(BufferView *, LyXFont const &);
 
 
 int LyXText::workWidth(BufferView * bview) const
@@ -181,7 +181,7 @@ int LyXText::SingleWidth(BufferView * bview, LyXParagraph * par,
 		Inset * tmpinset = par->GetInset(pos);
 		if (tmpinset) {
 			tmpinset->update(bview, font);
-			return tmpinset->width(bview->painter(), font);
+			return tmpinset->width(bview, font);
 		} else
 			return 0;
 
@@ -849,8 +849,7 @@ int LyXText::LeftMargin(BufferView * bview, Row const * row) const
 						  .defaultfont());
 		else if (layout.labeltype == LABEL_BIBLIO) {
 		       	// ale970405 Right width for bibitems
-			x += bibitemMaxWidth(bview->painter(),
-					     textclasslist
+			x += bibitemMaxWidth(bview,textclasslist
 					     .TextClass(bview->buffer()->params
 							.textclass)
 					     .defaultfont());
@@ -1401,9 +1400,9 @@ void LyXText::SetHeightOfRow(BufferView * bview, Row * row_ptr) const
 		   tmpinset = row_ptr->par()->GetInset(pos);
 		   if (tmpinset) {
 			   tmpinset->update(bview, tmpfont);
-			   asc = tmpinset->ascent(bview->painter(), tmpfont);
-			   desc = tmpinset->descent(bview->painter(), tmpfont);
-			   maxwidth += tmpinset->width(bview->painter(), tmpfont);
+			   asc = tmpinset->ascent(bview, tmpfont);
+			   desc = tmpinset->descent(bview, tmpfont);
+			   maxwidth += tmpinset->width(bview, tmpfont);
 			   maxasc = max(maxasc, asc);
 			   maxdesc = max(maxdesc, desc);
 		   }
@@ -3798,16 +3797,16 @@ void LyXText::GetVisibleRow(BufferView * bview, int y_offset, int x_offset,
 	} else if (clear_area) {
 		int w;
 		if (inset_owner)
-			w = inset_owner->width(bview->painter(), font);
+			w = inset_owner->width(bview, font);
 		else
 			w = ww;
 		pain.fillRectangle(x_offset, y_offset, w, row_ptr->height());
 	} else if (inset != 0) {
-		int h = row_ptr->baseline() - inset->ascent(pain, font);
+		int h = row_ptr->baseline() - inset->ascent(bview, font);
 		if (h > 0) {
 			int w;
 			if (inset_owner)
-				w = inset_owner->width(bview->painter(), font);
+				w = inset_owner->width(bview, font);
 			else
 				w = ww;
 			pain.fillRectangle(x_offset, y_offset, w, h);
@@ -4326,7 +4325,7 @@ void LyXText::GetVisibleRow(BufferView * bview, int y_offset, int x_offset,
 					+ lyxfont::width(layout.labelsep, font);
 			else
 				tmpx = x - lyxfont::width(layout.labelsep, font)
-					- row_ptr->par()->bibkey->width(bview->painter(), font);
+					- row_ptr->par()->bibkey->width(bview, font);
 			row_ptr->par()->bibkey->draw(bview, font,
 						   y_offset + row_ptr->baseline(), 
 						   tmpx, clear_area);

@@ -1016,19 +1016,19 @@ InsetFig::~InsetFig()
 }
 
 
-int InsetFig::ascent(Painter &, LyXFont const &) const
+int InsetFig::ascent(BufferView *, LyXFont const &) const
 {
 	return hgh + 3;
 }
 
 
-int InsetFig::descent(Painter &, LyXFont const &) const
+int InsetFig::descent(BufferView *, LyXFont const &) const
 {
 	return 1;
 }
 
 
-int InsetFig::width(Painter &, LyXFont const &) const
+int InsetFig::width(BufferView *, LyXFont const &) const
 {
 	return wid + 2;
 }
@@ -1085,7 +1085,7 @@ void InsetFig::draw(BufferView * bv, LyXFont const & f,
 		font.setSize(LyXFont::SIZE_TINY);
 		pain.text(int(x + 8), baseline - 4, msg, strlen(msg), font);
 	}
-	x += width(pain, font);    // ?
+	x += width(bv, font);    // ?
 }
 
 

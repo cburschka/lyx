@@ -83,11 +83,11 @@ public:
     ///
     void Write(Buffer const *, std::ostream &) const;
     ///
-    int ascent(Painter &, LyXFont const &) const;
+    int ascent(BufferView *, LyXFont const &) const;
     ///
-    int descent(Painter &, LyXFont const &) const;
+    int descent(BufferView *, LyXFont const &) const;
     ///
-    int width(Painter &, LyXFont const & f) const;
+    int width(BufferView *, LyXFont const & f) const;
     ///
     void draw(BufferView *, const LyXFont &, int , float &, bool) const;
     ///
@@ -173,7 +173,7 @@ private:
     ///
     void HideInsetCursor(BufferView *);
     ///
-    void setPos(Painter &, int x, int y) const;
+    void setPos(BufferView *, int x, int y) const;
     ///
     UpdatableInset::RESULT moveRight(BufferView *, bool lock=true);
     UpdatableInset::RESULT moveLeft(BufferView *, bool lock=true);
@@ -184,7 +184,7 @@ private:
     bool Delete();
     ///
     int getCellXPos(int cell) const;
-    void resetPos(Painter &) const;
+    void resetPos(BufferView *) const;
     ///
     void RemoveTabularRow();
     ///

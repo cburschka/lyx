@@ -45,7 +45,7 @@ extern BufferList bufferlist;
 extern char ascii_type;
 
 extern void sigchldhandler(pid_t pid, int * status);
-extern int bibitemMaxWidth(Painter &, LyXFont const &);
+extern int bibitemMaxWidth(BufferView *, LyXFont const &);
 
 
 static inline
@@ -861,10 +861,9 @@ void BufferView::Pimpl::workAreaButtonRelease(int x, int y,
 
 	// Maybe we want to edit a bibitem ale970302
 	if (bv_->text->cursor.par()->bibkey && x < 20 + 
-	    bibitemMaxWidth(bv_->painter(),
-			    textclasslist
-			    .TextClass(buffer_->
-				       params.textclass).defaultfont())) {
+	    bibitemMaxWidth(bv_, textclasslist.
+			    TextClass(buffer_->
+				      params.textclass).defaultfont())) {
 		bv_->text->cursor.par()->bibkey->Edit(bv_, 0, 0, 0);
 	}
 
@@ -904,16 +903,16 @@ Inset * BufferView::Pimpl::checkInsetHit(LyXText * text, int & x, int & y,
 		int start_x, end_x;
 
 		if (is_rtl) {
-			start_x = cursor.x() - tmpinset->width(bv_->painter(), font);
+			start_x = cursor.x() - tmpinset->width(bv_, font);
 			end_x = cursor.x();
 		} else {
 			start_x = cursor.x();
-			end_x = cursor.x() + tmpinset->width(bv_->painter(), font);
+			end_x = cursor.x() + tmpinset->width(bv_, font);
 		}
 
 		if (x > start_x && x < end_x
-		    && y_tmp > cursor.y() - tmpinset->ascent(bv_->painter(), font)
-		    && y_tmp < cursor.y() + tmpinset->descent(bv_->painter(), font)) {
+		    && y_tmp > cursor.y() - tmpinset->ascent(bv_, font)
+		    && y_tmp < cursor.y() + tmpinset->descent(bv_, font)) {
 #if 0
 			if (move_cursor && (tmpinset != bv_->the_locking_inset))
 #endif
@@ -936,15 +935,15 @@ Inset * BufferView::Pimpl::checkInsetHit(LyXText * text, int & x, int & y,
 		int start_x, end_x;
 
 		if (!is_rtl) {
-			start_x = cursor.x() - tmpinset->width(bv_->painter(), font);
+			start_x = cursor.x() - tmpinset->width(bv_, font);
 			end_x = cursor.x();
 		} else {
 			start_x = cursor.x();
-			end_x = cursor.x() + tmpinset->width(bv_->painter(), font);
+			end_x = cursor.x() + tmpinset->width(bv_, font);
 		}
 		if (x > start_x && x < end_x
-		    && y_tmp > cursor.y() - tmpinset->ascent(bv_->painter(), font)
-		    && y_tmp < cursor.y() + tmpinset->descent(bv_->painter(), font)) {
+		    && y_tmp > cursor.y() - tmpinset->ascent(bv_, font)
+		    && y_tmp < cursor.y() + tmpinset->descent(bv_, font)) {
 #if 0
 			if (move_cursor && (tmpinset != bv_->the_locking_inset))
 #endif

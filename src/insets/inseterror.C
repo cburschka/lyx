@@ -48,7 +48,7 @@ InsetError::~InsetError()
 }
 
 
-int InsetError::ascent(Painter &, LyXFont const & font) const
+int InsetError::ascent(BufferView *, LyXFont const & font) const
 {
 	LyXFont efont;
 	efont.setSize(font.size()).decSize();
@@ -56,7 +56,7 @@ int InsetError::ascent(Painter &, LyXFont const & font) const
 }
 
 
-int InsetError::descent(Painter &, LyXFont const & font) const
+int InsetError::descent(BufferView *, LyXFont const & font) const
 {
 	LyXFont efont;
 	efont.setSize(font.size()).decSize();
@@ -64,7 +64,7 @@ int InsetError::descent(Painter &, LyXFont const & font) const
 }
 
 
-int InsetError::width(Painter &, LyXFont const & font) const
+int InsetError::width(BufferView *, LyXFont const & font) const
 {
 	LyXFont efont;
 	efont.setSize(font.size()).decSize();
@@ -82,17 +82,17 @@ void InsetError::draw(BufferView * bv, LyXFont const & font,
    
 	// Draw as "Error" in a framed box
 	x += 1;
-	pain.fillRectangle(int(x), baseline - ascent(pain, font) + 1,
-			  width(pain, font) - 2,
-			  ascent(pain, font) + descent(pain, font) - 2,
+	pain.fillRectangle(int(x), baseline - ascent(bv, font) + 1,
+			  width(bv, font) - 2,
+			  ascent(bv, font) + descent(bv, font) - 2,
 			   LColor::insetbg);
-	pain.rectangle(int(x), baseline - ascent(pain, font) + 1,
-		       width(pain, font) - 2,
-		       ascent(pain, font) + descent(pain, font) - 2,
+	pain.rectangle(int(x), baseline - ascent(bv, font) + 1,
+		       width(bv, font) - 2,
+		       ascent(bv, font) + descent(bv, font) - 2,
 		       LColor::error);
 	pain.text(int(x + 2), baseline, _("Error"), efont);
 
-	x +=  width(pain, font) - 1;
+	x +=  width(bv, font) - 1;
 }
 
 

@@ -114,7 +114,7 @@ void InsetFormulaMacro::Read(Buffer const *, LyXLex & lex)
 }
 
 
-int InsetFormulaMacro::ascent(Painter & pain, LyXFont const & f) const
+int InsetFormulaMacro::ascent(BufferView * pain, LyXFont const & f) const
 {
     if (opened) {
 	tmacro->update();
@@ -124,7 +124,7 @@ int InsetFormulaMacro::ascent(Painter & pain, LyXFont const & f) const
 }
 
 
-int InsetFormulaMacro::descent(Painter & pain, LyXFont const & f) const
+int InsetFormulaMacro::descent(BufferView * pain, LyXFont const & f) const
 {
     if (opened) {
 	tmacro->update();
@@ -134,11 +134,11 @@ int InsetFormulaMacro::descent(Painter & pain, LyXFont const & f) const
 }
 
 
-int InsetFormulaMacro::width(Painter & pain, LyXFont const & f) const
+int InsetFormulaMacro::width(BufferView * bv, LyXFont const & f) const
 {
     if (opened) {
 	tmacro->update();
-	return InsetFormula::width(pain, f);
+	return InsetFormula::width(bv, f);
     }
     string ilabel(_("Macro: "));
     ilabel += name;
@@ -159,9 +159,9 @@ void InsetFormulaMacro::draw(BufferView * bv, LyXFont const & f,
 	} else {
 		font.setColor(LColor::math);
 		
-		int y = baseline - ascent(pain, font) + 1;
-		int w = width(pain, font) - 2;
-		int h = (ascent(pain, font) + descent(pain, font) - 2);
+		int y = baseline - ascent(bv, font) + 1;
+		int w = width(bv, font) - 2;
+		int h = (ascent(bv, font) + descent(bv, font) - 2);
 
 	
 		pain.fillRectangle(int(x), y, w, h, LColor::mathbg);
@@ -170,7 +170,7 @@ void InsetFormulaMacro::draw(BufferView * bv, LyXFont const & f,
 		string s(_("Macro: "));
 		s += name;
 		pain.text(int(x + 2), baseline, s, font);
-		x +=  width(pain, font) - 1;
+		x +=  width(bv, font) - 1;
 	}
 }
 

@@ -1398,8 +1398,9 @@ string LyXFunc::Dispatch(int ac,
 						    txt->cursor.par(),
 						    txt->cursor.pos());
 			tmpinset->Edit(owner->view(),
-				       tmpinset->x() + tmpinset->width(owner->view()->painter(),font),
-				       tmpinset->descent(owner->view()->painter(),font),
+				       tmpinset->x() +
+				       tmpinset->width(owner->view(),font),
+				       tmpinset->descent(owner->view(),font),
 				       0);
 			break;
 		}

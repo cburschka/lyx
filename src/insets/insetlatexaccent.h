@@ -35,11 +35,11 @@ public:
 	explicit
 	InsetLatexAccent(string const & string);
 	///
-	int ascent(Painter &, LyXFont const &) const;
+	int ascent(BufferView *, LyXFont const &) const;
 	///
-	int descent(Painter &, LyXFont const &) const;
+	int descent(BufferView *, LyXFont const &) const;
 	///
-	int width(Painter &, LyXFont const &) const;
+	int width(BufferView *, LyXFont const &) const;
 	///
 	void draw(BufferView *, LyXFont const &, int, float &, bool) const;
 	///
@@ -47,7 +47,7 @@ public:
 	///
 	int Rbearing(LyXFont const & font) const;
 	///
-	bool DisplayISO8859_9(Painter &, LyXFont const & font,
+	bool DisplayISO8859_9(BufferView *, LyXFont const & font,
 			      int baseline, float & x) const;
 	///
 	void Write(Buffer const *, std::ostream &) const;

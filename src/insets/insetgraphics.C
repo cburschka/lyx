@@ -111,21 +111,21 @@ InsetGraphics::InsetGraphics()
 {}
 
 
-int InsetGraphics::ascent(Painter &, LyXFont const &) const 
+int InsetGraphics::ascent(BufferView *, LyXFont const &) const 
 {
 	
 	return 100;
 }
 
 
-int InsetGraphics::descent(Painter &, LyXFont const &) const 
+int InsetGraphics::descent(BufferView *, LyXFont const &) const 
 {
 	// this is not true if viewport is used and clip is not.
 	return 1;
 }
 
 
-int InsetGraphics::width(Painter &, LyXFont const &) const 
+int InsetGraphics::width(BufferView *, LyXFont const &) const 
 {
 	if (bb.isSet()) {
 		return bb.urx - bb.llx;
@@ -141,9 +141,9 @@ void InsetGraphics::draw(BufferView * bv, LyXFont const & font,
 
 	// This will draw the graphics. As for now we only draw a
 	// placeholder rectangele.
-	pain.rectangle(int(x), baseline - ascent(pain, font),
-		       width(pain, font),
-		       ascent(pain, font) + descent(pain, font));
+	pain.rectangle(int(x), baseline - ascent(bv, font),
+		       width(bv, font),
+		       ascent(bv, font) + descent(bv, font));
 }
 
 

@@ -36,11 +36,11 @@ public:
 	///
 	~InsetError();
 	///
-	int ascent(Painter &, LyXFont const & font) const;
+	int ascent(BufferView *, LyXFont const & font) const;
 	///
-	int descent(Painter &, LyXFont const & font) const;
+	int descent(BufferView *, LyXFont const & font) const;
 	///
-	int width(Painter &, LyXFont const & font) const;
+	int width(BufferView *, LyXFont const & font) const;
 	///
 	void draw(BufferView *, LyXFont const &, int, float &, bool) const;
 	///

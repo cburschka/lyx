@@ -255,7 +255,7 @@ void InsetLatexAccent::checkContents()
 }
 
 
-int InsetLatexAccent::ascent(Painter &, LyXFont const & font) const
+int InsetLatexAccent::ascent(BufferView *, LyXFont const & font) const
 {
 	// This function is a bit too simplistix and is just a
 	// "try to make a fit for all accents" approach, to
@@ -275,7 +275,7 @@ int InsetLatexAccent::ascent(Painter &, LyXFont const & font) const
 }
 
 
-int InsetLatexAccent::descent(Painter &, LyXFont const & font) const
+int InsetLatexAccent::descent(BufferView *, LyXFont const & font) const
 {
 	int max;
 	if (candisp) {
@@ -291,7 +291,7 @@ int InsetLatexAccent::descent(Painter &, LyXFont const & font) const
 }
 
 
-int InsetLatexAccent::width(Painter &, LyXFont const & font) const
+int InsetLatexAccent::width(BufferView *, LyXFont const & font) const
 {
 	if (candisp)
 		return lyxfont::width(ic, font);
@@ -312,7 +312,7 @@ int InsetLatexAccent::Rbearing(LyXFont const & font) const
 }
 
 
-bool InsetLatexAccent::DisplayISO8859_9(Painter & pain, LyXFont const & font,
+bool InsetLatexAccent::DisplayISO8859_9(BufferView * bv, LyXFont const & font,
 					int baseline, 
 					float & x) const
 {
@@ -346,8 +346,8 @@ bool InsetLatexAccent::DisplayISO8859_9(Painter & pain, LyXFont const & font,
 	}
 	if (tmpic != ic) {
 		char ch = char(tmpic);
-		pain.text(int(x), baseline, ch, font);
-		x += width(pain, font);
+		bv->painter().text(int(x), baseline, ch, font);
+		x += width(bv, font);
 		return true;
 	}
 	else
@@ -361,7 +361,7 @@ void InsetLatexAccent::draw(BufferView * bv, LyXFont const & font,
 	Painter & pain = bv->painter();
 
 	if (lyxrc.font_norm == "iso8859-9")
-		if (DisplayISO8859_9(pain, font, baseline, x))	
+		if (DisplayISO8859_9(bv, font, baseline, x))	
 			return;
 	
 	/* draw it! */ 
@@ -370,9 +370,9 @@ void InsetLatexAccent::draw(BufferView * bv, LyXFont const & font,
 	// should also be considered.
 	
 	if (candisp) {
-		int asc = ascent(pain, font);
-		int desc = descent(pain, font);
-		int wid = width(pain, font);
+		int asc = ascent(bv, font);
+		int desc = descent(bv, font);
+		int wid = width(bv, font);
 		float x2 = x + (Rbearing(font) - Lbearing(font)) / 2.0;
 		float hg;
 		int y;
@@ -412,7 +412,7 @@ void InsetLatexAccent::draw(BufferView * bv, LyXFont const & font,
 			// closer to the top of the dot-less 'i' or 'j'.
 			char tmpic = ic; // store the ic when we
 			ic = 'x';        // calculates the ascent of
-			asc = ascent(pain, font); // the dot-less version (here: 'x')
+			asc = ascent(bv, font); // the dot-less version (here: 'x')
 			ic = tmpic;      // set the orig ic back
 			y = baseline - asc; // update to new y coord.
 		}
@@ -595,16 +595,16 @@ void InsetLatexAccent::draw(BufferView * bv, LyXFont const & font,
 		}
 	} else {
 		pain.fillRectangle(int(x + 1),
-				   baseline - ascent(pain, font) + 1,
-				   width(pain, font) - 2,
-				   ascent(pain, font)
-				   + descent(pain, font) - 2);
-		pain.rectangle(int(x + 1), baseline - ascent(pain, font) + 1,
-			       width(pain, font) - 2,
-			       ascent(pain, font) + descent(pain, font) - 2);
+				   baseline - ascent(bv, font) + 1,
+				   width(bv, font) - 2,
+				   ascent(bv, font)
+				   + descent(bv, font) - 2);
+		pain.rectangle(int(x + 1), baseline - ascent(bv, font) + 1,
+			       width(bv, font) - 2,
+			       ascent(bv, font) + descent(bv, font) - 2);
 		pain.text(int(x + 2), baseline, contents, font);
 	}
-	x +=  width(pain, font);
+	x +=  width(bv, font);
 }
 
 

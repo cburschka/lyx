@@ -1,3 +1,14 @@
+2000-07-05  Juergen Vigna  <jug@sad.it>
+
+	* src/insets/lyxinset.h: changed Painter & in ascent(), descent()
+	calls to BufferView *.
+
+	* src/insets/insettext.C (checkAndActivateInset): small fix non
+	HIGHLY_EDITABLE insets should not be entered by cursor-move-over!
+
+	* src/insets/insetcommand.C (Read): Fixed as insets should read till
+	their \end_inset token!
+
 2000-07-04  edscott  <edscott@imp.mx>
 
 	* src/lyxrc.C, src/lyxrc.h, src/BufferView_pimpl.C,

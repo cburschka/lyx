@@ -27,7 +27,7 @@ InsetButton::InsetButton()
 {
 }
 
-int InsetButton::ascent(Painter & pain, LyXFont const &) const
+int InsetButton::ascent(BufferView * bv, LyXFont const &) const
 {
 	LyXFont font(LyXFont::ALL_SANE);
 	font.decSize();
@@ -36,18 +36,18 @@ int InsetButton::ascent(Painter & pain, LyXFont const &) const
         string s = getScreenLabel();
 	
         if (Editable()) {
-		pain.buttonText(0, 0, s, font,
-				false, width, ascent, descent);
+		bv->painter().buttonText(0, 0, s, font,
+					 false, width, ascent, descent);
 	} else {
-		pain.rectText(0, 0, s, font,
-			      LColor::commandbg, LColor::commandframe,
-			      false, width, ascent, descent);
+		bv->painter().rectText(0, 0, s, font,
+				       LColor::commandbg, LColor::commandframe,
+				       false, width, ascent, descent);
 	}
 	return ascent;
 }
 
 
-int InsetButton::descent(Painter & pain, LyXFont const &) const
+int InsetButton::descent(BufferView * bv, LyXFont const &) const
 {
 	LyXFont font(LyXFont::ALL_SANE);
 	font.decSize();
@@ -56,18 +56,18 @@ int InsetButton::descent(Painter & pain, LyXFont const &) const
         string s = getScreenLabel();
 	
         if (Editable()) {
-		pain.buttonText(0, 0, s, font,
-				false, width, ascent, descent);
+		bv->painter().buttonText(0, 0, s, font,
+					 false, width, ascent, descent);
 	} else {
-		pain.rectText(0, 0, s, font,
-			      LColor::commandbg, LColor::commandframe,
-			      false, width, ascent, descent);
+		bv->painter().rectText(0, 0, s, font,
+				   LColor::commandbg, LColor::commandframe,
+				   false, width, ascent, descent);
 	}
 	return descent;
 }
 
 
-int InsetButton::width(Painter & pain, LyXFont const &) const
+int InsetButton::width(BufferView * bv, LyXFont const &) const
 {
 	LyXFont font(LyXFont::ALL_SANE);
 	font.decSize();
@@ -76,12 +76,12 @@ int InsetButton::width(Painter & pain, LyXFont const &) const
         string s = getScreenLabel();
 	
         if (Editable()) {
-		pain.buttonText(0, 0, s, font,
-				false, width, ascent, descent);
+		bv->painter().buttonText(0, 0, s, font,
+					 false, width, ascent, descent);
 	} else {
-		pain.rectText(0, 0, s, font,
-			      LColor::commandbg, LColor::commandframe,
-			      false, width, ascent, descent);
+		bv->painter().rectText(0, 0, s, font,
+				       LColor::commandbg, LColor::commandframe,
+				       false, width, ascent, descent);
 	}
 	return width + 4;
 }

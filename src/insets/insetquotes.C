@@ -159,19 +159,19 @@ string InsetQuotes::DispString() const
 }
 
 
-int InsetQuotes::ascent(Painter &, LyXFont const & font) const
+int InsetQuotes::ascent(BufferView *, LyXFont const & font) const
 {
 	return lyxfont::maxAscent(font);
 }
 
 
-int InsetQuotes::descent(Painter &, LyXFont const & font) const
+int InsetQuotes::descent(BufferView *, LyXFont const & font) const
 {
 	return lyxfont::maxDescent(font);
 }
 
 
-int InsetQuotes::width(Painter &, LyXFont const & font) const
+int InsetQuotes::width(BufferView *, LyXFont const & font) const
 {
 	string text = DispString();
 	int w = 0;
@@ -203,7 +203,7 @@ void InsetQuotes::draw(BufferView * bv, LyXFont const & font,
 	string text = DispString();
 
 	bv->painter().text(int(x), baseline, text, font);
-	x += width(bv->painter(), font);
+	x += width(bv, font);
 }
 
 

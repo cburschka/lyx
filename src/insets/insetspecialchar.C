@@ -28,19 +28,19 @@ InsetSpecialChar::InsetSpecialChar(Kind k)
 {}
 
 
-int InsetSpecialChar::ascent(Painter &, LyXFont const & font) const
+int InsetSpecialChar::ascent(BufferView *, LyXFont const & font) const
 {
 	return lyxfont::maxAscent(font);
 }
 
 
-int InsetSpecialChar::descent(Painter &, LyXFont const & font) const
+int InsetSpecialChar::descent(BufferView *, LyXFont const & font) const
 {
 	return lyxfont::maxDescent(font);
 }
 
 
-int InsetSpecialChar::width(Painter &, LyXFont const & font) const
+int InsetSpecialChar::width(BufferView *, LyXFont const & font) const
 {
 	switch (kind) {
 	case HYPHENATION:
@@ -83,21 +83,21 @@ void InsetSpecialChar::draw(BufferView * bv, LyXFont const & f,
 	{
 		font.setColor(LColor::special);
 		pain.text(int(x), baseline, "-", font);
-		x += width(pain, font);
+		x += width(bv, font);
 		break;
 	}
 	case END_OF_SENTENCE:
 	{
 		font.setColor(LColor::special);
 		pain.text(int(x), baseline, ".", font);
-		x += width(pain, font);
+		x += width(bv, font);
 		break;
 	}
 	case LDOTS:
 	{
 		font.setColor(LColor::special);
 		pain.text(int(x), baseline, ". . .", font);
-		x += width(pain, font);
+		x += width(bv, font);
 		break;
 	}
 	case MENU_SEPARATOR:
@@ -114,12 +114,12 @@ void InsetSpecialChar::draw(BufferView * bv, LyXFont const & f,
 		xp[3] = ox;	yp[3] = baseline;
 		
 		pain.lines(xp, yp, 4, LColor::special);
-		x += width(pain, font);
+		x += width(bv, font);
 		break;
 	}
 	case PROTECTED_SEPARATOR:
 	{
-		float w = width(pain, font);
+		float w = width(bv, font);
 		int h = lyxfont::ascent('x', font);
 		int xp[4], yp[4];
 		

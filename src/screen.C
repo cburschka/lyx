@@ -382,9 +382,9 @@ void LyXScreen::Update(LyXText * text, int y_offset, int x_offset)
 		long y = max(text->refresh_y - long(text->first), 0L);
 		int height;
 		if (text->inset_owner)
-			height = text->inset_owner->ascent(owner.owner()->painter(),
-							    text->real_current_font)
-				+ text->inset_owner->descent(owner.owner()->painter(),
+			height = text->inset_owner->ascent(owner.owner(),
+							   text->real_current_font)
+				+ text->inset_owner->descent(owner.owner(),
 							     text->real_current_font);
 		else
 			height = owner.height();

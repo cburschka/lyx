@@ -366,7 +366,7 @@ bool InsetBibtex::delDatabase(string const & db)
 
 
 // ale070405 This function maybe shouldn't be here. We'll fix this at 0.13.
-int bibitemMaxWidth(Painter & pain, LyXFont const & font)
+int bibitemMaxWidth(BufferView * bv, LyXFont const & font)
 {
 	int w = 0;
 	// Does look like a hack? It is! (but will change at 0.13)
@@ -374,7 +374,7 @@ int bibitemMaxWidth(Painter & pain, LyXFont const & font)
     
 	while (par) {
 		if (par->bibkey) {
-			int wx = par->bibkey->width(pain, font);
+			int wx = par->bibkey->width(bv, font);
 			if (wx > w) w = wx;
 		}
 		par = par->next;
@@ -384,7 +384,7 @@ int bibitemMaxWidth(Painter & pain, LyXFont const & font)
 
 
 // ale070405
-string bibitemWidest(Painter & pain)
+string bibitemWidest(BufferView * bv)
 {
 	int w = 0;
 	// Does look like a hack? It is! (but will change at 0.13)
@@ -394,7 +394,7 @@ string bibitemWidest(Painter & pain)
       
 	while (par) {
 		if (par->bibkey) {
-			int wx = par->bibkey->width(pain, font);
+			int wx = par->bibkey->width(bv, font);
 			if (wx > w) {
 				w = wx;
 				bkey = par->bibkey;

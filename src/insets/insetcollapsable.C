@@ -27,6 +27,7 @@
 class LyXText;
 
 using std::ostream;
+using std::endl;
 
 InsetCollapsable::InsetCollapsable()
 	: UpdatableInset()
@@ -79,9 +80,11 @@ void InsetCollapsable::Write(Buffer const * buf, ostream & os) const
 
 void InsetCollapsable::Read(Buffer const * buf, LyXLex & lex)
 {
+    string token;
+
     if (lex.IsOK()) {
 	lex.next();
-        string token = lex.GetString();
+        token = lex.GetString();
 	if (token == "collapsed") {
 	    lex.next();
 	    collapsed = lex.GetBool();
@@ -118,30 +121,30 @@ int InsetCollapsable::width_collapsed(Painter & pain, LyXFont const &) const
 }
 
 
-int InsetCollapsable::ascent(Painter & pain, LyXFont const & font) const
+int InsetCollapsable::ascent(BufferView * bv, LyXFont const & font) const
 {
     if (collapsed) 
-	return ascent_collapsed(pain, font);
+	return ascent_collapsed(bv->painter(), font);
     else 
-	return inset->ascent(pain, font) + TEXT_TO_TOP_OFFSET;
+	return inset->ascent(bv, font) + TEXT_TO_TOP_OFFSET;
 }
 
 
-int InsetCollapsable::descent(Painter & pain, LyXFont const & font) const
+int InsetCollapsable::descent(BufferView * bv, LyXFont const & font) const
 {
     if (collapsed) 
-	return descent_collapsed(pain, font);
+	return descent_collapsed(bv->painter(), font);
     else 
-	return inset->descent(pain, font) + TEXT_TO_BOTTOM_OFFSET;
+	return inset->descent(bv, font) + TEXT_TO_BOTTOM_OFFSET;
 }
 
 
-int InsetCollapsable::width(Painter & pain, LyXFont const & font) const
+int InsetCollapsable::width(BufferView * bv, LyXFont const & font) const
 {
     if (collapsed) 
 	return widthCollapsed;
 
-    return inset->width(pain, font) + widthCollapsed;
+    return inset->width(bv, font) + widthCollapsed;
 }
 
 
@@ -170,11 +173,12 @@ void InsetCollapsable::draw(BufferView * bv, LyXFont const & f,
     }
 
     if (!cleared && ((inset->need_update == InsetText::FULL) ||
+		     (inset->need_update == InsetText::INIT) ||
 		     (top_x!=int(x)) || (top_baseline!=baseline))) {
-	int w =  owner()? width(pain, f) : pain.paperWidth();
-	int h = ascent(pain,f) + descent(pain, f);
+	int w =  owner()? width(bv, f) : pain.paperWidth();
+	int h = ascent(bv,f) + descent(bv, f);
 	int tx = (needFullRow() && !owner())? 0:int(x);
-	int ty = baseline - ascent(pain,f);
+	int ty = baseline - ascent(bv,f);
 	
 	if (ty < 0)
 	    ty = 0;
@@ -285,24 +289,25 @@ int InsetCollapsable::getMaxWidth(Painter & pain,
 				  UpdatableInset const * inset) const
 {
     int w;
-    if (owner())
-        w = static_cast<UpdatableInset*>(owner())->getMaxWidth(pain,inset);
-    else
-	w = pain.paperWidth();
+    w = UpdatableInset::getMaxWidth(pain,inset);
 
-    if (w < 0)
+    if (w < 0) {
 	return w;
-
+    }
+    w -= widthCollapsed;
+    // should be at least 30 pixels !!!
+    if (w < 30)
+	w = 30;
     return w; // - top_x - widthCollapsed;
 }
 
-
+#if 0
 int InsetCollapsable::getMaxTextWidth(Painter & pain,
 				      UpdatableInset const * inset) const
 {
     return getMaxWidth(pain, inset) - widthCollapsed;
 }
-
+#endif
 
 void InsetCollapsable::update(BufferView * bv, LyXFont const & font,
 			      bool dodraw)
@@ -316,8 +321,8 @@ void InsetCollapsable::update(BufferView * bv, LyXFont const & font,
 		return;
 	}
     }
-    if (oldWidth != width(bv->painter(), font)) {
-	oldWidth = width(bv->painter(), font);
+    if (oldWidth != width(bv, font)) {
+	oldWidth = width(bv, font);
 	inset->deleteLyXText(bv);
 	need_update = FULL;
 	if (owner()) {

@@ -107,11 +107,23 @@ void InsetCommand::scanCommand(string const & cmd)
 // This function will not be necessary when lyx3
 void InsetCommand::Read(Buffer const *, LyXLex & lex)
 {    
+	string token;
+
 	if (lex.EatLine()) {
-		string t = lex.GetString();
-		scanCommand(t);
+		token = lex.GetString();
+		scanCommand(token);
 	} else
 		lex.printError("InsetCommand: Parse error: `$$Token'");
+	while (lex.IsOK()) {
+		lex.nextToken();
+		token = lex.GetString();
+		if (token == "\\end_inset")
+			break;
+	}
+	if (token != "\\end_inset") {
+		lex.printError("Missing \\end_inset at this point. "
+			       "Read: `$$Token'");
+	}
 }
 
 

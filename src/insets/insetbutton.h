@@ -27,11 +27,11 @@ public:
 	InsetButton();
 
 	///
-	int ascent(Painter &, LyXFont const &) const;
+	int ascent(BufferView *, LyXFont const &) const;
 	///
-	int descent(Painter &, LyXFont const &) const;
+	int descent(BufferView *, LyXFont const &) const;
 	///
-	int width(Painter &, LyXFont const &) const;
+	int width(BufferView *, LyXFont const &) const;
 	///
 	void draw(BufferView *, LyXFont const &, int, float &, bool) const;
 

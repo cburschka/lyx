@@ -383,19 +383,19 @@ void InsetFormula::Read(Buffer const *, LyXLex & lex)
 }
 
 
-int InsetFormula::ascent(Painter &, LyXFont const &) const
+int InsetFormula::ascent(BufferView *, LyXFont const &) const
 {
    return par->Ascent() + ((disp_flag) ? 8 : 1);
 }
 
 
-int InsetFormula::descent(Painter &, LyXFont const &) const
+int InsetFormula::descent(BufferView *, LyXFont const &) const
 {
    return par->Descent() + ((disp_flag) ? 8 : 1);
 }
 
 
-int InsetFormula::width(Painter &, LyXFont const & f) const
+int InsetFormula::width(BufferView *, LyXFont const & f) const
 {
     lfont_size = f.size();
     par->Metrics();
@@ -428,7 +428,7 @@ void InsetFormula::draw(BufferView * bv, LyXFont const & f,
 	} else {
 		par->draw(pain, int(x), baseline);
 	}
-	x += float(width(pain, font));
+	x += float(width(bv, font));
 	
 	if (par->GetType() == LM_OT_PARN || par->GetType() == LM_OT_MPARN) {
 		LyXFont wfont = WhichFont(LM_TC_BF, par->size);

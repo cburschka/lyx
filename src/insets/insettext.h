@@ -72,11 +72,11 @@ public:
     ///
     void Write(Buffer const *, std::ostream &) const;
     ///
-    int ascent(Painter &, LyXFont const &) const;
+    int ascent(BufferView *, LyXFont const &) const;
     ///
-    int descent(Painter &, LyXFont const &) const;
+    int descent(BufferView *, LyXFont const &) const;
     ///
-    int width(Painter &, LyXFont const & f) const;
+    int width(BufferView *, LyXFont const & f) const;
     ///
     int textWidth(Painter &) const;
     ///
@@ -153,7 +153,7 @@ public:
 //    LyXFont GetDrawFont(BufferView *, LyXParagraph *, int pos) const;
     ///
     LyXText * getLyXText(BufferView *) const;
-    void deleteLyXText(BufferView *);
+    void deleteLyXText(BufferView *) const;
 
     LyXParagraph * par;
     ///
@@ -214,9 +214,9 @@ private:
     ///
     mutable bool locked;
     ///
-    int insetAscent;
-    int insetDescent;
-    int insetWidth;
+    mutable int insetAscent;
+    mutable int insetDescent;
+    mutable int insetWidth;
     mutable int last_width;
     mutable int last_height;
     mutable int top_y;

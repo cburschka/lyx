@@ -119,11 +119,11 @@ public:
 	///
 	virtual ~Inset() {}
 	///
-	virtual int ascent(Painter &, LyXFont const &) const = 0;
+	virtual int ascent(BufferView *, LyXFont const &) const = 0;
 	///
-	virtual int descent(Painter &, LyXFont const &) const = 0;
+	virtual int descent(BufferView *, LyXFont const &) const = 0;
 	///
-	virtual int width(Painter &, LyXFont const &) const = 0;
+	virtual int width(BufferView *, LyXFont const &) const = 0;
 	///
 	virtual void draw(BufferView *, LyXFont const &,
 			  int baseline, float & x, bool cleared) const = 0;
