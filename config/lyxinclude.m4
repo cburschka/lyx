@@ -177,6 +177,15 @@ if test x$enable_warnings = xyes ; then
    there by the developpers to get attention])
 fi
 
+### We might want to disable debug
+AC_ARG_ENABLE(debug,
+  [  --enable-debug          enable debug information],,
+  [ if test $lyx_devel_version = yes -o $lyx_prerelease = yes && test $ac_cv_prog_gxx = yes ; then
+	enable_debug=yes;
+    else
+	enable_debug=no;
+    fi;])
+
 ### set up optimization
 AC_ARG_ENABLE(optimization,
   [  --enable-optimization[=value]   enable compiler optimisation],,
@@ -197,14 +206,17 @@ if test x$GXX = xyes; then
     CXXFLAGS="$ac_save_CXXFLAGS"
   else 
     case $gxx_version in
-      2.95.1)  CXXFLAGS="-g $lyx_opt -fpermissive -fno-rtti -fno-exceptions";;
-      2.95.2)  CXXFLAGS="-g $lyx_opt -fno-rtti -fno-exceptions";;
-      2.95.*)  CXXFLAGS="-g $lyx_opt -fno-exceptions";;
-      2.96*)  CXXFLAGS="-g $lyx_opt -fno-exceptions";;
-      3.0*)    CXXFLAGS="-g $lyx_opt";;
-      *2.91.*) CXXFLAGS="-g $lyx_opt -fno-rtti -fno-exceptions";;
-      *)       CXXFLAGS="-g $lyx_opt -fno-rtti -fno-exceptions";;
+      2.95.1)  CXXFLAGS="$lyx_opt -fpermissive -fno-rtti -fno-exceptions";;
+      2.95.2)  CXXFLAGS="$lyx_opt -fno-rtti -fno-exceptions";;
+      2.95.*)  CXXFLAGS="$lyx_opt -fno-exceptions";;
+      2.96*)  CXXFLAGS="$lyx_opt -fno-exceptions";;
+      3.0*)    CXXFLAGS="$lyx_opt";;
+      *2.91.*) CXXFLAGS="$lyx_opt -fno-rtti -fno-exceptions";;
+      *)       CXXFLAGS="$lyx_opt -fno-rtti -fno-exceptions";;
     esac
+    if test x$enable_debug = xyes ; then
+	CXXFLAGS="-g $CXXFLAGS"
+    fi
   fi
   if test x$enable_warnings = xyes ; then
     case $gxx_version in
