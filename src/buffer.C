@@ -2802,9 +2802,7 @@ void Buffer::SimpleLinuxDocOnePar(ostream & os, LyXParagraph * par,
 		if (c == LyXParagraph::META_INSET) {
 			inset = par->GetInset(i);
 			inset->Linuxdoc(this, os);
-		}
-
-		if (font2.latex() == LyXFont::ON) {
+		} else if (font2.latex() == LyXFont::ON) {
 			// "TeX"-Mode on == > SGML-Mode on.
 			if (c != '\0')
 				os << c; // see LaTeX-Generation...
