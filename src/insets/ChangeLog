@@ -1,5 +1,9 @@
 2003-03-10  Angus Leeming  <leeming@lyx.org>
 
+	* mailinset.C: warn the user if the BufferView has not been cached.
+
+2003-03-10  Angus Leeming  <leeming@lyx.org>
+
 	* inset.h, insetbase.h: move cache() and view() into InsetBase.
 
 	* insetcommand.h (inset):

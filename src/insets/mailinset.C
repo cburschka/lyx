@@ -14,6 +14,7 @@
 #include "mailinset.h"
 #include "inset.h"
 #include "BufferView.h"
+#include "debug.h"
 #include "frontends/LyXView.h"
 #include "frontends/Dialogs.h"
 #include "Lsstream.h"
@@ -22,8 +23,12 @@
 void MailInset::showDialog() const
 {
 	BufferView * bv = inset().view();
-	if (!bv)
+	if (!bv) {
+		lyxerr << "MailInset::showDialog:\n"
+		       << "The BufferView has not been cached!"
+		       << std::endl;
 		return;
+	}
 
 	bv->owner()->getDialogs().show(name(), inset2string(), &inset());
 }
@@ -32,8 +37,12 @@ void MailInset::showDialog() const
 void MailInset::updateDialog() const
 {
 	BufferView * bv = inset().view();
-	if (!bv)
+	if (!bv) {
+		lyxerr << "MailInset::showDialog:\n"
+		       << "The BufferView has not been cached!"
+		       << std::endl;
 		return;
+	}
 
 	bv->owner()->getDialogs().update(name(), inset2string());
 }
@@ -42,8 +51,12 @@ void MailInset::updateDialog() const
 void MailInset::hideDialog() const
 {
 	BufferView * bv = inset().view();
-	if (!bv)
+	if (!bv) {
+		lyxerr << "MailInset::showDialog:\n"
+		       << "The BufferView has not been cached!"
+		       << std::endl;
 		return;
+	}
 
 	InsetBase * cmp = bv->owner()->getDialogs().getOpenInset(name());
 	if (cmp == &inset())
