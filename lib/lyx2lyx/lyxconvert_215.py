@@ -94,7 +94,22 @@ def update_toc(lines):
         lines[i] = lines[i] + '{}'
         i = i + 1
 
+def remove_cursor(lines):
+    i = find_token(lines, '\\cursor', 0)
+    if i != -1:
+        del lines[i]
+
+def remove_vcid(lines):
+    i = find_token(lines, '\\lyxvcid', 0)
+    if i != -1:
+        del lines[i]
+    i = find_token(lines, '\\lyxrcsid', 0)
+    if i != -1:
+        del lines[i]
+
 def convert(header,body):
+    remove_vcid(header)
+    remove_cursor(body)
     update_toc(body)
     replace_protected_separator(body)
     merge_formula_inset(body)
