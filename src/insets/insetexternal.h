@@ -28,14 +28,9 @@ class InsetExternal : public Inset, public boost::signals::trackable {
 public:
 	/// hold parameters settable from the GUI
 	struct Params {
-// 		Params(string const & f = string(),
-// 		       string const & p = string(),
-// 		       ExternalTemplate const & t = ExternalTemplate())
-		Params() : display(grfx::NoDisplay), lyxscale(100) {}
+		Params();
 		/// the filename
 		string filename;
-		/// the parameters of the current choice
-		string parameters;
 		/// the current template used
 		ExternalTemplate templ;
 		/// how the inset is displayed by LyX
@@ -92,16 +87,8 @@ public:
 	///
 	virtual Inset * clone() const;
 
-	/// returns the text of the button
-	virtual string const getScreenLabel(Buffer const *) const;
-
-	// The following public members are used from the frontends code
-
 	/// Set the inset parameters.
 	virtual void setParams(Params const &, string const & filepath);
-
-	///
-	void updateExternal() const;
 
 	/** update the file represented by the template.
 	    If \param external_in_tmpdir == true, then the generated file is

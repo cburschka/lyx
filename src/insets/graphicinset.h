@@ -22,6 +22,7 @@
 #include <boost/signals/signal0.hpp>
 
 
+class BufferView;
 class MetricsInfo;
 class PainterInfo;
 

@@ -31,12 +31,13 @@
 #include "frontends/LyXView.h"
 #include "frontends/Dialogs.h"
 
+#include "support/FileInfo.h"
 #include "support/filetools.h"
+#include "support/forkedcall.h"
 #include "support/lstrings.h"
 #include "support/lyxalgo.h"
 #include "support/path.h"
-#include "support/forkedcall.h"
-#include "support/FileInfo.h"
+#include "support/tostr.h"
 
 #include <boost/bind.hpp>
 
@@ -45,6 +46,21 @@
 
 using std::ostream;
 using std::endl;
+
+
+namespace {
+
+grfx::DisplayType const defaultDisplayType = grfx::NoDisplay;
+
+unsigned int defaultLyxScale = 100;
+
+} // namespace anon
+
+
+InsetExternal::Params::Params()
+	: display(defaultDisplayType),
+	  lyxscale(defaultLyxScale)
+{}
 
 
 InsetExternal::InsetExternal()
@@ -76,8 +92,7 @@ InsetExternal::~InsetExternal()
 {
 	if (!tempname_.empty())
 		lyx::unlink(tempname_);
-	InsetExternalMailer mailer(*this);
-	mailer.hideDialog();
+	InsetExternalMailer(*this).hideDialog();
 }
 
 
@@ -171,7 +186,6 @@ grfx::Params get_grfx_params(InsetExternal::Params const & eparams,
 void InsetExternal::setParams(Params const & p, string const & filepath)
 {
 	params_.filename = p.filename;
-	params_.parameters = p.parameters;
 	params_.templ = p.templ;
 	params_.display = p.display;
 	params_.lyxscale = p.lyxscale;
@@ -192,75 +206,104 @@ string const InsetExternal::editMessage() const
 
 void InsetExternal::write(Buffer const *, ostream & os) const
 {
-	os << "External " << params_.templ.lyxName << ",\""
-	   << params_.filename << "\",\""
-	   << params_.parameters << "\","
-	   << params_.display << ','
-	   << params_.lyxscale << '\n';
+	os << "External\n"
+	   << "\ttemplate " << params_.templ.lyxName << '\n';
+
+	if (!params_.filename.empty())
+		os << "\tfilename " << params_.filename << '\n';
+
+	if (params_.display != defaultDisplayType)
+		os << "\tdisplay " << grfx::displayTranslator.find(params_.display)
+		   << '\n';
+
+	if (params_.lyxscale != defaultLyxScale)
+		os << "\tlyxscale " << tostr(params_.lyxscale) << '\n';
 }
 
 
 void InsetExternal::read(Buffer const * buffer, LyXLex & lex)
 {
-	string format;
-	string token;
+	enum ExternalTags {
+		EX_TEMPLATE = 1,
+		EX_FILENAME,
+		EX_DISPLAY,
+		EX_LYXSCALE,
+		EX_END
+	};
 
-	// Read inset data from lex and store in format
-	if (lex.eatLine()) {
-		format = lex.getString();
-	} else {
-		lex.printError("InsetExternal: Parse error: `$$Token'");
-	}
+	keyword_item external_tags[] = {
+		{ "\\end_inset", EX_END },
+		{ "display", EX_DISPLAY},
+		{ "filename", EX_FILENAME},
+		{ "lyxscale", EX_LYXSCALE},
+		{ "template", EX_TEMPLATE }
+	};
 
+	lex.pushTable(external_tags, EX_END);
+
+	bool found_end  = false;
+	bool read_error = false;
+
+	InsetExternal::Params params;
 	while (lex.isOK()) {
-		lex.nextToken();
-		token = lex.getString();
-		if (token == "\\end_inset")
+		switch (lex.lex()) {
+		case EX_TEMPLATE: {
+			lex.next();
+			string const name = lex.getString();
+			ExternalTemplateManager & etm =
+				ExternalTemplateManager::get();
+			params.templ = etm.getTemplateByName(name);
+			break;
+		}
+
+		case EX_FILENAME: {
+			lex.next();
+			string const name = lex.getString();
+			params.filename = name;
+			break;
+		}
+
+		case EX_DISPLAY: {
+			lex.next();
+			string const name = lex.getString();
+			params.display = grfx::displayTranslator.find(name);
+			break;
+		}
+
+		case EX_LYXSCALE: {
+			lex.next();
+			params.lyxscale = lex.getInteger();
+			break;
+		}
+
+		case EX_END:
+			found_end = true;
+			break;
+
+		default:
+			lex.printError("ExternalInset::read: "
+				       "Wrong tag: $$Token");
+			read_error = true;
+			break;
+		}
+
+		if (found_end || read_error)
 			break;
 	}
-	if (token != "\\end_inset") {
-		lex.printError("Missing \\end_inset at this point. "
-			       "Read: `$$Token'");
+
+	if (!found_end) {
+		lex.printError("ExternalInset::read: "
+			       "Missing \\end_inset.");
 	}
 
-	// Parse string format...
-	string::size_type const pos1 = format.find(',');
-	params_.templ = ExternalTemplateManager::get().getTemplateByName(format.substr(0, pos1));
-	string::size_type const file_start = pos1 + 2;
-	string::size_type const pos2 = format.find("\",\"", file_start);
-	string::size_type const file_size = pos2 - file_start;
-	params_.filename = format.substr(file_start, file_size);
+	lex.popTable();
 
-	string::size_type const params_start = pos2 + 3;
-	string::size_type const pos3 = format.find("\"", params_start);
-	string::size_type const params_size = pos3 == pos3 - params_start;
-	params_.parameters = format.substr(params_start, params_size);
-
-	params_.display = grfx::NoDisplay;
-	params_.lyxscale = 100;
-
-	string::size_type const display_start = pos3 + 2;
-	if (display_start < format.size()) {
-		string::size_type const pos4 = format.find(',', display_start);
-		string::size_type const display_size = pos4 - display_start;
-		string const display = format.substr(display_start, display_size);
-		if (isStrUnsignedInt(display)) {
-			unsigned int const tmp = strToUnsignedInt(display);
-			params_.display = static_cast<grfx::DisplayType>(tmp);
-		}
-
-		string::size_type const scale_start = pos4 + 1;
-		string::size_type const scale_size = format.size() - scale_start;
-		string const scale = format.substr(scale_start, scale_size);
-		if (isStrUnsignedInt(scale)) {
-			params_.lyxscale = strToUnsignedInt(scale);
-		}
-	}
+	// Replace the inset's store
+	params_ = params;
 
 	lyxerr[Debug::INFO] << "InsetExternal::Read: "
 	       << "template: '" << params_.templ.lyxName
 	       << "' filename: '" << params_.filename
-	       << "' params: '" << params_.parameters
 	       << "' display: '" << params_.display
 	       << "' scale: '" << params_.lyxscale
 	       << '\'' << endl;
@@ -354,16 +397,6 @@ void InsetExternal::validate(LaTeXFeatures & features) const
 }
 
 
-string const InsetExternal::getScreenLabel(Buffer const *) const
-{
-	ExternalTemplate const & et = params_.templ;
-	if (et.guiName.empty())
-		return _("External");
-	else
-		return doSubstitution(0, et.guiName);
-}
-
-
 string const InsetExternal::doSubstitution(Buffer const * buffer,
 					   string const & s) const
 {
@@ -385,7 +418,6 @@ string const InsetExternal::doSubstitution(Buffer const * buffer,
 	}
 	result = subst(s, "$$FName", params_.filename);
 	result = subst(result, "$$Basename", basename);
-	result = subst(result, "$$Parameters", params_.parameters);
 	result = subst(result, "$$FPath", filepath);
 	result = subst(result, "$$Tempname", tempname_);
 	result = subst(result, "$$Sysdir", system_lyxdir);
@@ -412,14 +444,6 @@ string const InsetExternal::doSubstitution(Buffer const * buffer,
 	}
 
 	return result;
-}
-
-
-void InsetExternal::updateExternal() const
-{
-	BufferView const * bv = graphic_->view();
-	Buffer const * buffer = bv ? bv->buffer() : 0;
-	updateExternal("LaTeX", buffer, false);
 }
 
 

@@ -2,6 +2,10 @@
 
 	* graphicinset.C (draw): add a comment for the #if 0 block.
 
+	* insetexternal.h: remove Params::parameters variable.
+	* insetexternal.C (read, write): rewrite to output new ExternalInset format
+	and read it back making full use of LyXLex.
+
 2003-06-04  André Pönitz  <poenitz@gmx.net>
 
 	* inset.[Ch]: change owner_ from Inset * to UpdatableInset *
