@@ -1,3 +1,8 @@
+2002-05-03  Herbert Voss  <voss@perce.de>
+
+	* filetools.C (getExtFromContents): only print the first 60 chars of
+	the scanned-string when debugging.
+
 2002-05-02  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* lyxstring.C: close to typo fix.

@@ -1045,7 +1045,9 @@ string const getExtFromContents(string const & filename)
 		}
 
 		getline(ifs, str);
-		lyxerr[Debug::GRAPHICS] << "Scanstring: " << str << endl;
+
+		lyxerr[Debug::GRAPHICS] << "Scanstring: " << str.substr(0,60)
+					<< endl;
 
 		string const stamp = str.substr(0,2);
 		if (firstLine && str.size() >= 2) {
