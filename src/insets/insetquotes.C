@@ -73,25 +73,25 @@ InsetQuotes::InsetQuotes(string const & str)
 }
 
 
-InsetQuotes::InsetQuotes(InsetQuotes::quote_language l,
-			 InsetQuotes::quote_side s,
-			 InsetQuotes::quote_times t)
-	: language(l), side(s), times(t)
+InsetQuotes::InsetQuotes(quote_language l,
+			 quote_side s,
+			 quote_times t)
+	: language_(l), side_(s), times_(t)
 {}
 
 
 InsetQuotes::InsetQuotes(char c, BufferParams const & params)
-	: language(params.quotes_language), times(params.quotes_times)
+	: language_(params.quotes_language), times_(params.quotes_times)
 {
 	// Decide whether left or right 
 	switch (c) {
 	case ' ': case '(': case '{': case '[': case '-': case ':':
 	case Paragraph::META_HFILL:
 	case Paragraph::META_NEWLINE: 
-		side = InsetQuotes::LeftQ;   // left quote 
+		side_ = LeftQ;   // left quote 
 		break;
 	default:
-		side = InsetQuotes::RightQ;  // right quote
+		side_ = RightQ;  // right quote
 	}
 }
 
@@ -109,47 +109,47 @@ void InsetQuotes::parseString(string const & s)
 	
 	for (i = 0; i < 6; ++i) {
 		if (str[0] == language_char[i]) {
-			language = InsetQuotes::quote_language(i);
+			language_ = quote_language(i);
 			break;
 		}
 	}
 	if (i >= 6) {
 		lyxerr << "ERROR (InsetQuotes::InsetQuotes):"
 			" bad language specification." << endl;
-		language = InsetQuotes::EnglishQ; 
+		language_ = EnglishQ; 
 	}
 
 	for (i = 0; i < 2; ++i) {
 		if (str[1] == side_char[i]) {
-			side = InsetQuotes::quote_side(i);
+			side_ = quote_side(i);
 			break;
 		}
 	}
 	if (i >= 2) {
 		lyxerr << "ERROR (InsetQuotes::InsetQuotes):"
 			" bad side specification." << endl;
-		side = InsetQuotes::LeftQ; 
+		side_ = LeftQ; 
 	}
 
 	for (i = 0; i < 2; ++i) {
 		if (str[2] == times_char[i]) {
-			times = InsetQuotes::quote_times(i);
+			times_ = quote_times(i);
 			break;
 		}
 	}
 	if (i >= 2) {
 		lyxerr << "ERROR (InsetQuotes::InsetQuotes):"
 			" bad times specification." << endl;
-		times = InsetQuotes::DoubleQ; 
+		times_ = DoubleQ; 
 	}
 }
 
 
-string const InsetQuotes::dispString() const
+string const InsetQuotes::dispString(Language const * doclang) const
 {
  	string disp;
-	disp += quote_char[quote_index[side][language]];
-	if (times == InsetQuotes::DoubleQ)
+	disp += quote_char[quote_index[side_][language_]];
+	if (times_ == DoubleQ)
 		disp += disp;
 
  	if (lyxrc.font_norm_type == LyXRC::ISO_8859_1
@@ -158,6 +158,14 @@ string const InsetQuotes::dispString() const
 			disp = '«';
 		else if (disp == ">>")
 			disp = '»';
+
+	// in french, spaces are added inside double quotes
+	if (times_ == DoubleQ && doclang->code() == "fr") {
+		if (side_ == LeftQ)
+			disp += " ";
+		else
+			disp = " " + disp;
+	}
 	
  	return disp;
 }
@@ -175,9 +183,9 @@ int InsetQuotes::descent(BufferView *, LyXFont const & font) const
 }
 
 
-int InsetQuotes::width(BufferView *, LyXFont const & font) const
+int InsetQuotes::width(BufferView * bv, LyXFont const & font) const
 {
-	string text = dispString();
+	string text = dispString(bv->buffer()->getLanguage());
 	int w = 0;
 
 	for (string::size_type i = 0; i < text.length(); ++i) {
@@ -207,7 +215,7 @@ LyXFont const InsetQuotes::convertFont(LyXFont const & f) const
 void InsetQuotes::draw(BufferView * bv, LyXFont const & font,
 		       int baseline, float & x, bool) const
 {
-	string text = dispString();
+	string text = dispString(bv->buffer()->getLanguage());
 
 	bv->painter().text(int(x), baseline, text, font);
 	x += width(bv, font);
@@ -217,9 +225,9 @@ void InsetQuotes::draw(BufferView * bv, LyXFont const & font,
 void InsetQuotes::write(Buffer const *, ostream & os) const
 {
 	string text;
-	text += language_char[language];
-	text += side_char[side];
-	text += times_char[times]; 
+	text += language_char[language_];
+	text += side_char[side_];
+	text += times_char[times_]; 
 	os << "Quotes " << text;
 }
 
@@ -241,27 +249,33 @@ extern bool use_babel;
 int InsetQuotes::latex(Buffer const * buf, ostream & os,
 		       bool /*fragile*/, bool) const
 {
-	string const doclang = buf->getLanguage()->lang();
-	int quoteind = quote_index[side][language];
+	string const doclang = buf->getLanguage()->babel();
+	int quoteind = quote_index[side_][language_];
 	string qstr;
 	
-	if (lyxrc.fontenc == "T1") {
-		qstr = latex_quote_t1[times][quoteind];
+	if (language_ == FrenchQ && times_ == DoubleQ) {
+		if (doclang == "frenchb") {
+			if (side_ == LeftQ) 
+				qstr = "\\og "; //the spaces are important here
+			else 
+				qstr = " \\fg "; //and here
+		} else if (doclang == "french") {
+			if (side_ == LeftQ) 
+				qstr = "<< "; //the spaces are important here
+			else 
+				qstr = " >>"; //and here
+		}			
+	} else if (lyxrc.fontenc == "T1") {
+		qstr = latex_quote_t1[times_][quoteind];
 #ifdef DO_USE_DEFAULT_LANGUAGE
 	} else if (doclang == "default") {
 #else
 	} else if (!use_babel) {
 #endif
-		qstr = latex_quote_ot1[times][quoteind];
-	} else if (language == InsetQuotes::FrenchQ 
-		 && times == InsetQuotes::DoubleQ
-		 && doclang == "frenchb") {
-		if (side == InsetQuotes::LeftQ) 
-			qstr = "\\og{}";
-		else 
-			qstr = " \\fg{}";
-	} else 
-		qstr = latex_quote_babel[times][quoteind];
+		qstr = latex_quote_ot1[times_][quoteind];
+	} else { 
+		qstr = latex_quote_babel[times_][quoteind];
+	}
 
 	// Always guard against unfortunate ligatures (!` ?`)
 	if (prefixIs(qstr, "`"))
@@ -288,13 +302,13 @@ int InsetQuotes::linuxdoc(Buffer const *, ostream & os) const
 
 int InsetQuotes::docBook(Buffer const *, ostream & os) const
 {
-	if (times == InsetQuotes::DoubleQ) {
-		if (side == InsetQuotes::LeftQ)
+	if (times_ == DoubleQ) {
+		if (side_ == LeftQ)
 			os << "&ldquo;";
 		else
 			os << "&rdquo;";
 	} else {
-		if (side == InsetQuotes::LeftQ)
+		if (side_ == LeftQ)
 			os << "&lsquo;";
 		else
 			os << "&rsquo;";
@@ -305,11 +319,11 @@ int InsetQuotes::docBook(Buffer const *, ostream & os) const
 
 void InsetQuotes::validate(LaTeXFeatures & features) const 
 {
-	char type = quote_char[quote_index[side][language]];
+	char type = quote_char[quote_index[side_][language_]];
 
 	if (features.bufferParams().language->lang() == "default" 
 	    && lyxrc.fontenc != "T1") {
-		if (times == InsetQuotes::SingleQ) 
+		if (times_ == SingleQ) 
 			switch (type) {
 			case ',': features.quotesinglbase = true; break;
 			case '<': features.guilsinglleft = true; break;
@@ -329,7 +343,7 @@ void InsetQuotes::validate(LaTeXFeatures & features) const
 
 Inset * InsetQuotes::clone(Buffer const &, bool) const
 {
-  return new InsetQuotes(language, side, times);
+  return new InsetQuotes(language_, side_, times_);
 }
 
 

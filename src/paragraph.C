@@ -707,52 +707,6 @@ Paragraph::getUChar(BufferParams const & bparams,
 }
 
 
-// return an string of the current word, and the end of the word in lastpos.
-string const Paragraph::getWord(Paragraph::size_type & lastpos) const
-{
-	lyx::Assert(lastpos >= 0);
-
-	// the current word is defined as starting at the first character
-	// from the immediate left of lastpospos which meets the definition
-	// of IsLetter(), continuing to the last character to the right
-	// of this meeting IsLetter.
-
-    	string theword;
-
-	// grab a word
-		
-	// move back until we have a letter
-
-	//there's no real reason to have firstpos & lastpos as
-	//separate variables as this is written, but maybe someon
-	// will want to return firstpos in the future.
-
-	//since someone might have typed a punctuation first
-	int firstpos = lastpos;
- 	
-	while ((firstpos >= 0) && !isLetter(firstpos))
-		--firstpos;
-
-	// now find the beginning by looking for a nonletter
-	
-	while ((firstpos>= 0) && isLetter(firstpos))
-		--firstpos;
-
-	// the above is now pointing to the preceeding non-letter
-	++firstpos;
-	lastpos = firstpos;
-
-	// so copy characters into theword  until we get a nonletter
-	// note that this can easily exceed lastpos, wich means
-	// that if used in the middle of a word, the whole word
-	// is included
-
-	while (isLetter(lastpos)) theword += getChar(lastpos++);
-	
-	return theword;
-}
-
-
 void Paragraph::setFont(Paragraph::size_type pos,
 			   LyXFont const & font)
 {

@@ -1,3 +1,21 @@
+2001-07-19  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* BufferView_pimpl.C (specialChar): new method. Obsoletes
+	menuSeparator(), endOfSentenceDot(), ldots() and
+	hyphenationPoint(), which are therefore removed.
+	(Dispatch): handle LFUN_HYPHENATION_BREAK.
+
+	* LyXAction.C (init): 
+	* commandtags.h: add LFUN_HYPHENATION_BREAK.
+
+	* paragraph.C (getWord): removed.
+
+	* BufferView_pimpl.C (Dispatch): use last word or selection for
+	LFUN_INDEX_INSERT_LAST and LFUN_INDEX_CREATE.
+
+	* lyx_main.C (queryUserLyXDir): do not ask before creating
+	user_dir, except if it has been named explicitely.
+
 2001-07-20  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* BufferView_pimpl.C (updateScrollbar): Fix crash when reading in

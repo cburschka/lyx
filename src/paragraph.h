@@ -260,8 +260,6 @@ public:
 	void setChar(size_type pos, value_type c);
 	///
 	void setFont(size_type pos, LyXFont const & font);
-	///
-        string const getWord(size_type &) const;
 	/// Returns the height of the highest font in range
 	LyXFont::FONT_SIZE highestFontInRange(size_type startpos,
 					      size_type endpos) const;

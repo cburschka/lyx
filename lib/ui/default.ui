@@ -45,7 +45,7 @@ Menuset
 	Item "Close|C" "buffer-close"
 	Item "Save|S" "buffer-write"
 	Item "Save As...|A" "buffer-write-as"
-	Item "Revert to Saved|d" "buffer-reload"
+	Item "Revert to Saved|R" "buffer-reload"
 	Submenu "Version Control|V" "file_vc"
 	Separator
 	Submenu "Import|I" "file_import"
@@ -217,6 +217,7 @@ Menuset
 	Item "Subscript|u" "command-sequence math-insert _;math-mode;"
 	Item "HFill|H" "hfill-insert"
 	Item "Hyphenation Point|P" "hyphenation-point-insert"
+	Item "Hyphenation break|k" "hyphenation-break-insert"
 	Item "Protected Blank|B" "protected-space-insert"
 	Item "Linebreak|L" "break-line"
 	Item "Ellipsis|i" "dots-insert"

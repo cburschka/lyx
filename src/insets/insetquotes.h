@@ -19,6 +19,7 @@
 #include "inset.h"
 
 class BufferParams;
+class Language;
 
 struct LaTeXFeatures;
 
@@ -102,11 +103,11 @@ public:
 	Inset::Code lyxCode() const;
 private:
 	///
-	quote_language language;
+	quote_language language_;
 	///
-	quote_side side;
+	quote_side side_;
 	///
-	quote_times times;
+	quote_times times_;
 
 	/** The parameters of the constructor are the language, the
 	    side and the multiplicity of the quote.
@@ -115,7 +116,7 @@ private:
 	///
 	void parseString(string const &);
 	///
-	string const dispString() const;
+	string const dispString(Language const *) const;
 };
 #endif
 

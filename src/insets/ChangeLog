@@ -1,3 +1,13 @@
+2001-07-19  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* insetspecialchar.[Ch]: add support for HYPHENATION_BREAK. some
+	reformatting
+
+	* insetquotes.C: general cleanup
+	(dispString): add spaces inside french double quotes.
+	(latex): ditto. Moreover, treat first the case where the frenchb
+	or french options have been given.
+
 2001-07-19  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* insetcite.[Ch] (latex, validate): new methods, required for natbib

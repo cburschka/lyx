@@ -1520,19 +1520,23 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 	}
 
 	case LFUN_HYPHENATION:
-		hyphenationPoint();
+		specialChar(InsetSpecialChar::HYPHENATION);
+		break;
+		
+	case LFUN_HYPHENATION_BREAK:
+		specialChar(InsetSpecialChar::HYPHENATION_BREAK);
 		break;
 		
 	case LFUN_LDOTS:
-		ldots();
+		specialChar(InsetSpecialChar::LDOTS);
 		break;
 		
 	case LFUN_END_OF_SENTENCE:
-		endOfSentenceDot();
+		specialChar(InsetSpecialChar::END_OF_SENTENCE);
 		break;
 
 	case LFUN_MENU_SEPARATOR:
-		menuSeparator();
+		specialChar(InsetSpecialChar::MENU_SEPARATOR);
 		break;
 		
 	case LFUN_HFILL:
@@ -3015,24 +3019,21 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		
 	case LFUN_INDEX_CREATE:
 	{
-		InsetCommandParams p( "index" );
+		InsetCommandParams p("index");
 		
 		if (argument.empty()) {
-			// Get the word immediately preceding the cursor
-			Paragraph::size_type curpos = 
-				bv_->getLyXText()->cursor.pos() - 1;
+			// Get word or selection
+			bv_->getLyXText()->selectWordWhenUnderCursor(bv_);
+			
+			string const curstring = 
+				bv_->getLyXText()->selectionAsString(buffer_);
 
-			string curstring;
-			if (curpos >= 0 )
-				curstring = bv_->getLyXText()
-					->cursor.par()->getWord(curpos);
-
-			p.setContents( curstring );
+			p.setContents(curstring);
 		} else {
-			p.setContents( argument );
+			p.setContents(argument);
 		}
 
-		owner_->getDialogs()->createIndex( p.getAsString() );
+		owner_->getDialogs()->createIndex(p.getAsString());
 	}
 	break;
 		    
@@ -3051,14 +3052,11 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		    
 	case LFUN_INDEX_INSERT_LAST:
 	{
-		// Get word immediately preceding the cursor
-		Paragraph::size_type curpos = 
-			bv_->getLyXText()->cursor.pos() - 1;
-	  	// Can't do that at the beginning of a paragraph
-	  	if (curpos < 0) break;
+		// Get word or selection
+		bv_->getLyXText()->selectWordWhenUnderCursor(bv_);
 
-		string const curstring(bv_->getLyXText()
-				       ->cursor.par()->getWord(curpos));
+		string const curstring = 
+			bv_->getLyXText()->selectionAsString(buffer_);
 
 		InsetCommandParams p("index", curstring);
 		InsetIndex * inset = new InsetIndex(p);
@@ -3252,6 +3250,12 @@ void BufferView::Pimpl::protectedBlank(LyXText * lt)
 		update(lt, BufferView::SELECT|BufferView::FITCUR);
 		InsetSpecialChar * new_inset =
 			new InsetSpecialChar(InsetSpecialChar::PROTECTED_SEPARATOR);
+#ifdef WITH_WARNINGS
+#warning Why is this code different from specialChar() below? (JMarc)
+// the code in specialChar is a generic version of what used to exist
+// for other special chars. I did not merge this case because of the
+// call to updateInset(), but what does it do?
+#endif
 		if (!insertInset(new_inset))
 			delete new_inset;
 		else
@@ -3259,8 +3263,7 @@ void BufferView::Pimpl::protectedBlank(LyXText * lt)
 	}
 }
 
-
-void BufferView::Pimpl::menuSeparator()
+void BufferView::Pimpl::specialChar(InsetSpecialChar::Kind kind)
 {
 	if (available()) {
 		LyXText * lt = bv_->getLyXText();
@@ -3268,43 +3271,7 @@ void BufferView::Pimpl::menuSeparator()
 		hideCursor();
 		update(lt, BufferView::SELECT|BufferView::FITCUR);
 		InsetSpecialChar * new_inset = 
-			new InsetSpecialChar(InsetSpecialChar::MENU_SEPARATOR);
-		insertInset(new_inset);
-	}
-}
-
-
-void BufferView::Pimpl::endOfSentenceDot()
-{
-	if (available()) {
-		hideCursor();
-		update(bv_->getLyXText(), BufferView::SELECT|BufferView::FITCUR);
-		InsetSpecialChar * new_inset = 
-			new InsetSpecialChar(InsetSpecialChar::END_OF_SENTENCE);
-		insertInset(new_inset);
-	}
-}
-
-
-void BufferView::Pimpl::ldots()
-{
-	if (available())  {
-		hideCursor();
-		update(bv_->getLyXText(), BufferView::SELECT|BufferView::FITCUR);
-		InsetSpecialChar * new_inset = 
-			new InsetSpecialChar(InsetSpecialChar::LDOTS);
-		insertInset(new_inset);
-	}
-}
-
-
-void BufferView::Pimpl::hyphenationPoint()
-{
-	if (available()) {
-		hideCursor();
-		update(bv_->getLyXText(), BufferView::SELECT|BufferView::FITCUR);
-		InsetSpecialChar * new_inset = 
-			new InsetSpecialChar(InsetSpecialChar::HYPHENATION);
+			new InsetSpecialChar(kind);
 		insertInset(new_inset);
 	}
 }

@@ -11,6 +11,7 @@
 #include "frontends/Timeout.h"
 #include "WorkArea.h"
 #include "paragraph.h"
+#include "insets/insetspecialchar.h"
 
 #ifdef __GNUG__
 #pragma interface
@@ -131,18 +132,12 @@ private:
 	bool open_new_inset(UpdatableInset * new_inset, bool behind = false);
 	///
 	void protectedBlank(LyXText * lt);
+	/// 
+	void specialChar(InsetSpecialChar::Kind);
 	///
 	void newline();
 	///
 	void hfill();
-	///
-	void menuSeparator();
-	///
-	void endOfSentenceDot();
-	///
-	void ldots();
-	///
-	void hyphenationPoint();
 	///
 	void insertNote();
 	///

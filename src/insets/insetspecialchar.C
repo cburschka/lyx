@@ -50,6 +50,10 @@ int InsetSpecialChar::width(BufferView *, LyXFont const & font) const
 			w -= 2; // to make it look shorter
 		return w;
 	}
+	case HYPHENATION_BREAK:
+	{
+		return lyxfont::width('|', font);
+	}
 	case END_OF_SENTENCE:
 	{
 		return lyxfont::width('.', font);
@@ -83,6 +87,13 @@ void InsetSpecialChar::draw(BufferView * bv, LyXFont const & f,
 	{
 		font.setColor(LColor::special);
 		pain.text(int(x), baseline, "-", font);
+		x += width(bv, font);
+		break;
+	}
+	case HYPHENATION_BREAK:
+	{
+		font.setColor(LColor::special);
+		pain.text(int(x), baseline, "|", font);
 		x += width(bv, font);
 		break;
 	}
@@ -148,10 +159,21 @@ void InsetSpecialChar::write(Buffer const *, ostream & os) const
 {
 	string command;
 	switch (kind) {
-	case HYPHENATION:	command = "\\-";	break;
-	case END_OF_SENTENCE:	command = "\\@.";	break;
-	case LDOTS:		command = "\\ldots{}";	break;
-	case MENU_SEPARATOR:    command = "\\menuseparator"; break;
+	case HYPHENATION:	
+		command = "\\-";	
+		break;
+	case HYPHENATION_BREAK: 
+		command = "\\textcompwordmark{}"; 
+		break;
+	case END_OF_SENTENCE:	
+		command = "\\@.";
+		break;
+	case LDOTS:
+		command = "\\ldots{}";	
+		break;
+	case MENU_SEPARATOR:
+		command = "\\menuseparator"; 
+		break;
 	case PROTECTED_SEPARATOR:
 		//command = "\\protected_separator";
 		command = "~";
@@ -169,6 +191,8 @@ void InsetSpecialChar::read(Buffer const *, LyXLex & lex)
 
 	if (command == "\\-")
 		kind = HYPHENATION;
+	else if (command == "\\textcompwordmark{}")
+		kind = HYPHENATION_BREAK;
 	else if (command == "\\@.")
 		kind = END_OF_SENTENCE;
 	else if (command == "\\ldots{}")
@@ -187,11 +211,24 @@ int InsetSpecialChar::latex(Buffer const *, ostream & os, bool /*fragile*/,
 			    bool free_space) const
 {
 	switch (kind) {
-	case HYPHENATION:	  os << "\\-";	break;
-	case END_OF_SENTENCE:	  os << "\\@.";	break;
-	case LDOTS:		  os << "\\ldots{}";	break;
-	case MENU_SEPARATOR:      os << "\\lyxarrow{}"; break;
-	case PROTECTED_SEPARATOR: os << (free_space ? " " : "~"); break;
+	case HYPHENATION:	  
+		os << "\\-";	
+		break;
+	case HYPHENATION_BREAK:
+		os << "\\textcompwordmark{}";
+		break;
+	case END_OF_SENTENCE:	  
+		os << "\\@.";	
+		break;
+	case LDOTS:		  
+		os << "\\ldots{}";	
+		break;
+	case MENU_SEPARATOR:      
+		os << "\\lyxarrow{}"; 
+		break;
+	case PROTECTED_SEPARATOR: 
+		os << (free_space ? " " : "~"); 
+		break;
 	}
 	return 0;
 }
@@ -200,11 +237,21 @@ int InsetSpecialChar::latex(Buffer const *, ostream & os, bool /*fragile*/,
 int InsetSpecialChar::ascii(Buffer const *, ostream & os, int) const
 {
 	switch (kind) {
-	case HYPHENATION:	                break;
-	case END_OF_SENTENCE:	  os << ".";	break;
-	case LDOTS:		  os << "...";	break;
-	case MENU_SEPARATOR:      os << "->";   break;
-	case PROTECTED_SEPARATOR: os << " ";   break;
+	case HYPHENATION:
+	case HYPHENATION_BREAK:
+		break;
+	case END_OF_SENTENCE:	  
+		os << ".";	
+		break;
+	case LDOTS:		  
+		os << "...";	
+		break;
+	case MENU_SEPARATOR:      
+		os << "->";   
+		break;
+	case PROTECTED_SEPARATOR: 
+		os << " ";
+		break;
 	}
 	return 0;
 }

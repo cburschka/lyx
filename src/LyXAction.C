@@ -232,6 +232,8 @@ void LyXAction::init()
 		{ LFUN_HTMLURL, "html-insert", "", Noop },
 		{ LFUN_HYPHENATION, "hyphenation-point-insert",
 		  N_("Insert hyphenation point"), Noop },
+		{ LFUN_HYPHENATION_BREAK, "hyphenation-break-insert",
+		  N_("Insert hyphenation break"), Noop },
 		{ LFUN_INDEX_CREATE, "index-insert",
 		  N_("Insert index item"), Noop },
 		{ LFUN_INDEX_INSERT_LAST, "index-insert-last",

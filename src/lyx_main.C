@@ -550,15 +550,13 @@ void LyX::queryUserLyXDir(bool explicit_userdir)
 		first_start = false;
 		return;
 	} else {
-		first_start = true;
+		first_start = !explicit_userdir;
 	}
 	
-	// Nope
-	// Different wording if the user specifically requested a directory
-	if (!AskQuestion( explicit_userdir
-			 ? _("You have specified an invalid LyX directory.")
-			 : _("You don't have a personal LyX directory.") ,
-
+	// If the user specified explicitely a directory, ask whether
+	// to create it (otherwise, always create it)
+	if (explicit_userdir &&
+	    !AskQuestion(_("You have specified an invalid LyX directory."),
 			 _("It is needed to keep your own configuration."),
 			 _("Should I try to set it up for you (recommended)?"))) {
 		lyxerr << _("Running without personal LyX directory.") << endl;
