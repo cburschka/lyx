@@ -1,3 +1,10 @@
+2000-10-27   Dekel Tsur  <dekelts@tau.ac.il>
+
+	* src/mathed/formulamacro.h (LyxCode) Return MATHMACRO_CODE instead
+	of MATH_CODE. This fixes a bug with math-macros in RTL text.
+
+	* src/text.C (PrepareToPrint): Show math-macros block aligned.
+
 2000-11-02  Juergen Vigna  <jug@sad.it>
 
 	* src/insets/insettext.C (LocalDispatch): return a DISPATCHED_NOUPDATE

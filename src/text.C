@@ -2227,7 +2227,8 @@ void LyXText::PrepareToPrint(BufferView * bview,
 	   if (row->par()->GetChar(row->pos()) == LyXParagraph::META_INSET
 	       && (inset=row->par()->GetInset(row->pos()))
 	       && (inset->display())) // || (inset->scroll() < 0)))
-	     align = LYX_ALIGN_CENTER;
+	     align = (inset->LyxCode() == Inset::MATHMACRO_CODE)
+		     ? LYX_ALIGN_BLOCK : LYX_ALIGN_CENTER;
 
 	   switch (align) {
 	    case LYX_ALIGN_BLOCK:

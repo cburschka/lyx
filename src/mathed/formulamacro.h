@@ -57,7 +57,8 @@ public:
 	int DocBook(Buffer const *, std::ostream &) const;
 	///
 	Inset * Clone(Buffer const &) const;
-
+	///
+	Inset::Code LyxCode() const { return Inset::MATHMACRO_CODE; }
 	/// what appears in the minibuffer when opening
 	string const EditMessage() const;
 	///

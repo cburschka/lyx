@@ -103,7 +103,9 @@ public:
 		///
 		THEOREM_CODE, // 30
 		///
-		CAPTION_CODE
+		CAPTION_CODE,
+		///
+		MATHMACRO_CODE
 	};
 
 	///
