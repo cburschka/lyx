@@ -1,3 +1,8 @@
+2004-09-09  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* qfont_loader.C (addFontPath): quote the name of the font dir in
+	case it contains a space
+
 2004-08-19  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* BulletsModule.C (setBullet): use toqstr() for a string passed to

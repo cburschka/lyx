@@ -1,3 +1,8 @@
+2004-09-10  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* filetools.C (LibScriptSearch): quote the path of the script, in
+	case it contains spaces
+
 2004-09-04  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
 	* tostr.C: reimplement using lexical_cast

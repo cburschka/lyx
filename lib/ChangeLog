@@ -1,3 +1,16 @@
+2004-09-07  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* configure.m4: instead of \input-ing the layout files directly in
+	latex, grep out the correct command from them; remove need for
+	\srcdir. This should fix the bug where latex configuration cannot
+	be done because LyX is installed in a directory which name
+	contains spaces.
+
+	* chkconfig.ltx: remove use of macro \srcdir 
+	(\TestDocClass): change to take two arguments
+	(\DeclareLaTeXClass, \DeclareLinuxDocClass, \DeclareDocBookClass):
+	do not exit after execution
+
 2004-09-13  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* languages: add nynorsk

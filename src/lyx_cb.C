@@ -62,6 +62,7 @@ using lyx::support::MakeDisplayPath;
 using lyx::support::OnlyFilename;
 using lyx::support::OnlyPath;
 using lyx::support::Path;
+using lyx::support::QuoteName;
 using lyx::support::removeAutosaveFile;
 using lyx::support::rename;
 using lyx::support::split;
@@ -446,7 +447,7 @@ void Reconfigure(BufferView * bv)
 	Path p(user_lyxdir());
 	Systemcall one;
 	one.startscript(Systemcall::Wait,
-			AddName(system_lyxdir(), "configure"));
+			QuoteName(AddName(system_lyxdir(), "configure")));
 	p.pop();
 	bv->owner()->message(_("Reloading configuration..."));
 	lyxrc.read(LibFileSearch(string(), "lyxrc.defaults"));

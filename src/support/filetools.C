@@ -372,7 +372,7 @@ string const LibScriptSearch(string const & command_in)
 	} else {
 		// Replace "$$s/some_script" with "$LYX_SCRIPT_PATH/some_script"
 		string::size_type const size_replace = size_script + 4;
-		command.replace(pos1, size_replace, script);
+		command.replace(pos1, size_replace, QuoteName(script));
 	}
 
 	return command;

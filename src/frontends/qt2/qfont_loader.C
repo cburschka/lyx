@@ -36,6 +36,7 @@
 using lyx::support::contains;
 using lyx::support::LibFileSearch;
 using lyx::support::OnlyPath;
+using lyx::support::QuoteName;
 using lyx::support::Systemcall;
 
 using std::endl;
@@ -63,7 +64,7 @@ void addFontPath()
 			return;
 		lyxerr[Debug::FONT] << "Adding " << dir
 				    << " to the font path." << endl;
-		string const command = "xset fp+ " + dir;
+		string const command = "xset fp+ " + QuoteName(dir);
 		Systemcall s;
 		if (!s.startscript(Systemcall::Wait, command))
 			return;
