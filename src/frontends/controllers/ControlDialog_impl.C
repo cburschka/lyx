@@ -1,4 +1,3 @@
-// -*- C++ -*-
 /*
  * \file ControlDialog_impl.C
  * Copyright 2002 the LyX Team
