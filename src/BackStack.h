@@ -12,6 +12,8 @@
 #define BACK_STACK_H
 
 #include <stack>
+using std::stack;
+
 #include "LString.h"
 
 // Created by Alejandro Aguilar Sierra, 970806

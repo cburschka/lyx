@@ -21,6 +21,9 @@
 #include "support/lyxlib.h"
 #include "support/filetools.h"
 #include <fstream>
+using std::make_pair;
+using std::ofstream;
+using std::ifstream;
 
 void DepTable::insert(string const & fi,
 		      bool upd,

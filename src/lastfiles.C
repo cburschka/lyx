@@ -16,7 +16,12 @@
 #endif
 
 #include <fstream>
+using std::ifstream;
+using std::ofstream;
+
 #include <algorithm>
+using std::find;
+
 #include "support/FileInfo.h"
 #include "lastfiles.h"
 #include "debug.h"

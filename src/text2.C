@@ -13,6 +13,7 @@
 #include <cctype>
 #include FORMS_H_LOCATION
 
+
 #ifdef __GNUG__
 #pragma implementation "lyxtext.h"
 #pragma implementation "undo.h"
@@ -32,6 +33,8 @@
 #include "lyx_gui_misc.h"
 #include "lyxtext.h"
 #include "gettext.h"
+
+using std::copy;
 
 extern MiniBuffer * minibuffer;
 

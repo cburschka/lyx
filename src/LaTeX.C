@@ -29,6 +29,8 @@
 #include "minibuffer.h"
 #include "gettext.h"
 
+using std::make_pair;
+
 // TODO: in no particular order
 // - get rid of the extern BufferList and the call to
 //   BufferList::updateIncludedTeXfiles, this should either

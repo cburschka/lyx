@@ -15,6 +15,8 @@
 #endif
 
 #include <algorithm>
+using std::make_pair;
+using std::sort;
 
 #include "definitions.h"
 #include "layout.h"

@@ -16,6 +16,8 @@
 
 #include "LString.h"
 #include <map>
+using std::map;
+using std::pair;
 
 #ifdef __GNUG__
 #pragma interface

@@ -1,5 +1,11 @@
 1999-11-08  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
+	* src/BackStack.h, src/DepTable.C, src/DepTable.h, src/LaTeX.C,
+	  src/LaTeX.h, src/lastfiles.C, src/lastfiles.h, src/layout.C,
+	  src/layout.h, src/text2.C: add 'using' directive to bring the
+	STL templates we need from the std:: namespace to the global one.
+	Needed by DEC cxx in strict ansi mode.
+
 	* src/support/LIstream.h,src/support/LOstream.h,
 	  src/support/lyxstring.h,src/table.h,
 	  src/lyxlookup.h: do not include <config.h> in header

@@ -17,6 +17,8 @@
 #endif
 
 #include <vector>
+using std::vector;
+using std::pair;
 
 #include "definitions.h"
 #include "lyxlex.h"

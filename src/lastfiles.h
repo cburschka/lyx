@@ -17,6 +17,8 @@
 #endif
 
 #include <deque>
+using std::deque;
+
 #include "LString.h"
 
 
