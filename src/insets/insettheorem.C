@@ -47,14 +47,14 @@ InsetTheorem::InsetTheorem()
 }
 
 
-void InsetTheorem::Write(Buffer const * buf, ostream & os) const 
+void InsetTheorem::write(Buffer const * buf, ostream & os) const 
 {
 	os << getInsetName() << "\n";
-	InsetCollapsable::Write(buf, os);
+	InsetCollapsable::write(buf, os);
 }
 
 
-Inset * InsetTheorem::Clone(Buffer const &) const
+Inset * InsetTheorem::clone(Buffer const &) const
 {
 	InsetTheorem * result = new InsetTheorem;
 	
@@ -63,30 +63,30 @@ Inset * InsetTheorem::Clone(Buffer const &) const
 }
 
 
-string const InsetTheorem::EditMessage() const
+string const InsetTheorem::editMessage() const
 {
 	return _("Opened Theorem Inset");
 }
 
 
-int InsetTheorem::Latex(Buffer const * buf,
+int InsetTheorem::latex(Buffer const * buf,
 			ostream & os, bool fragile, bool fp) const
 {
 	os << "\\begin{theorem}%\n";
 	
-	int i = inset.Latex(buf, os, fragile, fp);
+	int i = inset.latex(buf, os, fragile, fp);
 	os << "\\end{theorem}%\n";
 	
 	return i + 2;
 }
 
 
-bool InsetTheorem::InsertInsetAllowed(Inset * inset) const
+bool InsetTheorem::insertInsetAllowed(Inset * inset) const
 {
 	lyxerr << "InsetTheorem::InsertInsetAllowed" << endl;
 	
-	if ((inset->LyxCode() == Inset::FOOT_CODE) ||
-	    (inset->LyxCode() == Inset::MARGIN_CODE)) {
+	if ((inset->lyxCode() == Inset::FOOT_CODE) ||
+	    (inset->lyxCode() == Inset::MARGIN_CODE)) {
 		return false;
 	}
 	return true;

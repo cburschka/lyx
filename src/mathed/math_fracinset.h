@@ -16,7 +16,7 @@ public:
 	///
 	explicit MathFracInset(MathInsetTypes ot = LM_OT_FRAC);
 	///
-	virtual MathInset * Clone() const;
+	virtual MathInset * clone() const;
 	///
 	virtual void Write(std::ostream &, bool fragile) const;
 	///

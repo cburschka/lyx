@@ -28,31 +28,31 @@ public:
 	InsetFloatList(string const & type) 
 		: float_type(type) {}
 	///
-        Inset * Clone(Buffer const &) const {
+        Inset * clone(Buffer const &) const {
 		return new InsetFloatList(*this);
 	}
     	///
 	string const getScreenLabel() const;
 	///
-	void Edit(BufferView * bv, int, int, unsigned int);
+	void edit(BufferView * bv, int, int, unsigned int);
         ///
-	EDITABLE Editable() const { return IS_EDITABLE; }
+	EDITABLE editable() const { return IS_EDITABLE; }
 	///
 	bool display() const { return true; }
 	///
-	Inset::Code LyxCode() const;
+	Inset::Code lyxCode() const;
 	///
-	void Write(Buffer const *, std::ostream &) const;
+	void write(Buffer const *, std::ostream &) const;
 	///
-	void Read(Buffer const *, LyXLex &);
+	void read(Buffer const *, LyXLex &);
 	///
-	int Latex(Buffer const *, std::ostream &, bool, bool) const;
+	int latex(Buffer const *, std::ostream &, bool, bool) const;
 	///
-	int Linuxdoc(Buffer const *, std::ostream &) const { return 0; }
+	int linuxdoc(Buffer const *, std::ostream &) const { return 0; }
 	///
-	int DocBook(Buffer const *, std::ostream &) const { return 0; }
+	int docBook(Buffer const *, std::ostream &) const { return 0; }
 	///
-	int Ascii(Buffer const *, std::ostream &, int linelen) const;
+	int ascii(Buffer const *, std::ostream &, int linelen) const;
 private:
 	string float_type;
 };

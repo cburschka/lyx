@@ -18,7 +18,7 @@ public:
 	///
 	explicit MathSizeInset(MathStyles st);
 	///
-	MathInset * Clone() const;
+	virtual MathInset * clone() const;
 	///
 	void Metrics(MathStyles st);
 	///

@@ -136,7 +136,7 @@ void FormTabular::update()
 	string pwidth;
 	string special;
 
-	int cell = inset_->GetActCell();
+	int cell = inset_->getActCell();
 	actCell_ = cell;
 	int column = tabular->column_of_cell(cell)+1;
 	fl_set_object_label(dialog_->text_warning,"");
@@ -354,7 +354,7 @@ bool FormTabular::input(FL_OBJECT * ob, long)
     LyXTabular::Feature num = LyXTabular::LAST_ACTION;
     string special;;
 
-    int cell = inset_->GetActCell();
+    int cell = inset_->getActCell();
     if (actCell_ != cell) {
         update();
         fl_set_object_label(dialog_->text_warning,
@@ -376,7 +376,7 @@ bool FormTabular::input(FL_OBJECT * ob, long)
             fl_show_object(dialog_->text_warning);
             return false;
         }
-        inset_->TabularFeatures(lv_->view(), LyXTabular::SET_PWIDTH,str);
+        inset_->tabularFeatures(lv_->view(), LyXTabular::SET_PWIDTH,str);
         update(); // update for alignment
         return true;
     }
@@ -388,7 +388,7 @@ bool FormTabular::input(FL_OBJECT * ob, long)
             fl_show_object(dialog_->text_warning);
             return false;
         }
-        inset_->TabularFeatures(lv_->view(), LyXTabular::SET_MPWIDTH,str);
+        inset_->tabularFeatures(lv_->view(), LyXTabular::SET_MPWIDTH,str);
         update(); // update for alignment
         return true;
     }
@@ -519,7 +519,7 @@ bool FormTabular::input(FL_OBJECT * ob, long)
     else
         return false;
     
-    inset_->TabularFeatures(lv_->view(), num, special);
+    inset_->tabularFeatures(lv_->view(), num, special);
     update();
 
     return true;

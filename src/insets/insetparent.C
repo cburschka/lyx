@@ -43,7 +43,7 @@ string const InsetParent::getScreenLabel() const
 }
 
 
-void InsetParent::Edit(BufferView * bv, int, int, unsigned int)
+void InsetParent::edit(BufferView * bv, int, int, unsigned int)
 {    
 	bv->owner()->getLyXFunc()->
 		Dispatch(LFUN_CHILDOPEN, getContents());
@@ -51,10 +51,10 @@ void InsetParent::Edit(BufferView * bv, int, int, unsigned int)
 
 
 // LaTeX must just ignore this command
-int InsetParent::Latex(Buffer const * buf, ostream & os,
+int InsetParent::latex(Buffer const * buf, ostream & os,
 		       bool fragile, bool free_spc) const
 {
 	os << "%%#{lyx}";
-	InsetCommand::Latex(buf, os, fragile, free_spc);
+	InsetCommand::latex(buf, os, fragile, free_spc);
 	return 0;
 }

@@ -31,7 +31,7 @@ char const * MathSizeInset::verbose() const
 }
 
 
-MathInset * MathSizeInset::Clone() const
+MathInset * MathSizeInset::clone() const
 {
 	return new MathSizeInset(*this);
 }

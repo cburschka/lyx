@@ -85,9 +85,12 @@ string const TransDeadkeyState::normalkey(char c, string const & trans)
 		l = l->next;
 	}
 	if (l == 0) {
+#if 0
 		// Not an exception. Check if it allowed
 		if (countChar(deadkey_info_.allowed, c) > 0) {
+#endif
 			res = DoAccent(c, deadkey_info_.accent);
+#if 0
 		} else {
 			// Not allowed
 			if (deadkey_!= 0)
@@ -95,6 +98,7 @@ string const TransDeadkeyState::normalkey(char c, string const & trans)
 			res+= TOKEN_SEP;
 			res+= trans;
 		}
+#endif
 	}
 	currentState = init_state_;
 	return res;
@@ -157,12 +161,15 @@ TransCombinedState::TransCombinedState()
 string const TransCombinedState::normalkey(char c, string const & trans)
 {
 	string res;
-	
+
+#if 0
 	// Check if the key is allowed on the combination
 	if (countChar(comb_info_->data, c) > 0) {
+#endif
 		string const temp = DoAccent(c, deadkey2_info_.accent);
 		res = DoAccent(temp, deadkey_info_.accent);
 		currentState = init_state_;
+#if 0
 	} else {
 		// Not allowed. Output deadkey1 and check deadkey2 + c
 		if (deadkey_ != 0)
@@ -173,6 +180,7 @@ string const TransCombinedState::normalkey(char c, string const & trans)
 		// Call deadkey state and leave it to setup the FSM
 		res += deadkey_state_->normalkey(c, trans);
 	}
+#endif
 	return res;
 }
 
@@ -315,7 +323,7 @@ void TransManager::insert(string const & str, LyXText * text)
 	    !enc.first) {
 		// Could not find an encoding
 		InsetLatexAccent ins(str);
-		if (ins.CanDisplay()) {
+		if (ins.canDisplay()) {
 			text->insertInset(current_view, new InsetLatexAccent(ins));
 		} else {
 			insertVerbatim(str, text);
@@ -344,7 +352,9 @@ void TransManager::deadkey(char c, tex_accent accent, LyXText * t)
 	if (active_ == &default_ || c == 0) {
 		KmodInfo i;
 		i.accent = accent;
+#if 0
 		i.allowed = lyx_accent_table[accent].native;
+#endif
 		i.data.erase();
 		i.exception_list = 0;
 		

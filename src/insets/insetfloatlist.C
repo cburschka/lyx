@@ -23,19 +23,19 @@ string const InsetFloatList::getScreenLabel() const
 }
 
 
-Inset::Code InsetFloatList::LyxCode() const
+Inset::Code InsetFloatList::lyxCode() const
 {
 	return Inset::FLOAT_LIST_CODE;
 }
 
 
-void InsetFloatList::Write(Buffer const *, std::ostream & os) const
+void InsetFloatList::write(Buffer const *, std::ostream & os) const
 {
 	os << "FloatList " << float_type << "\n";
 }
 
 
-void InsetFloatList::Read(Buffer const *, LyXLex & lex) 
+void InsetFloatList::read(Buffer const *, LyXLex & lex) 
 {
 	string token;
 
@@ -57,7 +57,7 @@ void InsetFloatList::Read(Buffer const *, LyXLex & lex)
 }
 
 
-void InsetFloatList::Edit(BufferView *, int, int, unsigned int)
+void InsetFloatList::edit(BufferView *, int, int, unsigned int)
 {
 #ifdef WITH_WARNINGS
 #warning Implement me please.
@@ -68,7 +68,7 @@ void InsetFloatList::Edit(BufferView *, int, int, unsigned int)
 }
 
 
-int InsetFloatList::Latex(Buffer const *, std::ostream & os, bool, bool) const
+int InsetFloatList::latex(Buffer const *, std::ostream & os, bool, bool) const
 {
 	FloatList::const_iterator cit = floatList[float_type];
 
@@ -96,7 +96,7 @@ int InsetFloatList::Latex(Buffer const *, std::ostream & os, bool, bool) const
 }
 
 
-int InsetFloatList::Ascii(Buffer const * buffer, std::ostream & os, int) const
+int InsetFloatList::ascii(Buffer const * buffer, std::ostream & os, int) const
 {
 	os << getScreenLabel() << "\n\n";
 

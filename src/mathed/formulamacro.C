@@ -55,46 +55,46 @@ InsetFormulaMacro::InsetFormulaMacro(string nm, int na)
 }
 
 
-Inset * InsetFormulaMacro::Clone(Buffer const &) const
+Inset * InsetFormulaMacro::clone(Buffer const &) const
 {
 	return new InsetFormulaMacro(*this);
 }
 
 
-void InsetFormulaMacro::Write(Buffer const *, ostream & os) const
+void InsetFormulaMacro::write(Buffer const *, ostream & os) const
 {
 	os << "FormulaMacro ";
 	tmacro()->Write(os, false);
 }
 
 
-int InsetFormulaMacro::Latex(Buffer const *, ostream & os, bool fragile, 
+int InsetFormulaMacro::latex(Buffer const *, ostream & os, bool fragile, 
 			     bool /*free_spacing*/) const
 {
 	tmacro()->Write(os, fragile);
 	return 2;
 }
 
-int InsetFormulaMacro::Ascii(Buffer const *, ostream & os, int) const
+int InsetFormulaMacro::ascii(Buffer const *, ostream & os, int) const
 {
 	tmacro()->Write(os, false);
 	return 0;
 }
 
 
-int InsetFormulaMacro::Linuxdoc(Buffer const * buf, ostream & os) const
+int InsetFormulaMacro::linuxdoc(Buffer const * buf, ostream & os) const
 {
-	return Ascii(buf, os, 0);
+	return ascii(buf, os, 0);
 }
 
 
-int InsetFormulaMacro::DocBook(Buffer const * buf, ostream & os) const
+int InsetFormulaMacro::docBook(Buffer const * buf, ostream & os) const
 {
-	return Ascii(buf, os, 0);
+	return ascii(buf, os, 0);
 }
 
 
-void InsetFormulaMacro::Read(Buffer const *, LyXLex & lex)
+void InsetFormulaMacro::read(Buffer const *, LyXLex & lex)
 {
 	// Awful hack...
 	par_ = mathed_parse(lex);
@@ -164,7 +164,7 @@ void InsetFormulaMacro::draw(BufferView * bv, LyXFont const & f,
 
 
 UpdatableInset::RESULT
-InsetFormulaMacro::LocalDispatch(BufferView * bv,
+InsetFormulaMacro::localDispatch(BufferView * bv,
 				 kb_action action, string const & arg)
 {
 	RESULT result = DISPATCHED;
@@ -174,7 +174,7 @@ InsetFormulaMacro::LocalDispatch(BufferView * bv,
 			lyxerr << "inserting macro arg " << i << "\n";
 			if (i > 0 && i <= tmacro()->nargs()) {
 				mathcursor->insert(new MathMacroArgument(i));
-				UpdateLocal(bv);
+				updateLocal(bv);
 			} else {
 				lyxerr << "not in range 0.." << tmacro()->nargs() << "\n";
 			}
@@ -182,7 +182,7 @@ InsetFormulaMacro::LocalDispatch(BufferView * bv,
 		}
 		
 		default:
-			result = InsetFormulaBase::LocalDispatch(bv, action, arg);
+			result = InsetFormulaBase::localDispatch(bv, action, arg);
 	}
 	return result;
 }
@@ -194,7 +194,7 @@ MathMacroTemplate * InsetFormulaMacro::tmacro() const
 }
 
 
-Inset::Code InsetFormulaMacro::LyxCode() const
+Inset::Code InsetFormulaMacro::lyxCode() const
 {
 	return Inset::MATHMACRO_CODE;
 }

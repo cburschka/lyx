@@ -433,16 +433,16 @@ func_status::value_type LyXFunc::getStatus(int ac,
 		// Disable insertion of floats in a tabular.
 		disable = false;
 		if (owner->view()->theLockingInset()) {
-			disable = (owner->view()->theLockingInset()->LyxCode() == Inset::TABULAR_CODE) ||
-				owner->view()->theLockingInset()->GetFirstLockingInsetOfType(Inset::TABULAR_CODE);
+			disable = (owner->view()->theLockingInset()->lyxCode() == Inset::TABULAR_CODE) ||
+				owner->view()->theLockingInset()->getFirstLockingInsetOfType(Inset::TABULAR_CODE);
 		}
 		break;
 
 	case LFUN_LAYOUT_TABULAR:
 		disable = true;
 		if (owner->view()->theLockingInset()) {
-			disable = (owner->view()->theLockingInset()->LyxCode() != Inset::TABULAR_CODE) &&
-				!owner->view()->theLockingInset()->GetFirstLockingInsetOfType(Inset::TABULAR_CODE);
+			disable = (owner->view()->theLockingInset()->lyxCode() != Inset::TABULAR_CODE) &&
+				!owner->view()->theLockingInset()->getFirstLockingInsetOfType(Inset::TABULAR_CODE);
 		}
 		break;
 
@@ -450,14 +450,14 @@ func_status::value_type LyXFunc::getStatus(int ac,
 		disable = true;
 		if (owner->view()->theLockingInset()) {
 			func_status::value_type ret = func_status::Disabled;
-			if (owner->view()->theLockingInset()->LyxCode() == Inset::TABULAR_CODE) {
+			if (owner->view()->theLockingInset()->lyxCode() == Inset::TABULAR_CODE) {
 				ret = static_cast<InsetTabular *>
 					(owner->view()->theLockingInset())->
 					getStatus(argument);
-			} else if (owner->view()->theLockingInset()->GetFirstLockingInsetOfType(Inset::TABULAR_CODE)) {
+			} else if (owner->view()->theLockingInset()->getFirstLockingInsetOfType(Inset::TABULAR_CODE)) {
 				ret = static_cast<InsetTabular *>
 					(owner->view()->theLockingInset()->
-					 GetFirstLockingInsetOfType(Inset::TABULAR_CODE))->
+					 getFirstLockingInsetOfType(Inset::TABULAR_CODE))->
 					getStatus(argument);
 			}
 			flag |= ret;
@@ -493,8 +493,8 @@ func_status::value_type LyXFunc::getStatus(int ac,
 			isSavedPosition(strToUnsignedInt(argument));
 	case LFUN_MATH_VALIGN: {
 		Inset * tli = owner->view()->theLockingInset();
-		if (tli && (tli->LyxCode() == Inset::MATH_CODE 
-			    || tli->LyxCode() == Inset::MATHMACRO_CODE)) {
+		if (tli && (tli->lyxCode() == Inset::MATH_CODE 
+			    || tli->lyxCode() == Inset::MATHMACRO_CODE)) {
 			char align = mathcursor->valign();
 			if (align == '\0') {
 				disable = true;
@@ -518,8 +518,8 @@ func_status::value_type LyXFunc::getStatus(int ac,
 	}
 	case LFUN_MATH_HALIGN: {
 		Inset * tli = owner->view()->theLockingInset();
-		if (tli && (tli->LyxCode() == Inset::MATH_CODE 
-			    || tli->LyxCode() == Inset::MATHMACRO_CODE)) {
+		if (tli && (tli->lyxCode() == Inset::MATH_CODE 
+			    || tli->lyxCode() == Inset::MATHMACRO_CODE)) {
 			char align = mathcursor->halign();
 			if (align == '\0') {
 				disable = true;
@@ -543,7 +543,7 @@ func_status::value_type LyXFunc::getStatus(int ac,
 	}
 	case LFUN_MATH_MUTATE: {
 		Inset * tli = owner->view()->theLockingInset();
-		if (tli && (tli->LyxCode() == Inset::MATH_CODE)) {
+		if (tli && (tli->lyxCode() == Inset::MATH_CODE)) {
 			MathInsetTypes type = mathcursor->par()->GetType();
 			func_status::value_type box = func_status::ToggleOff;
 			if (argument == "inline") {
@@ -681,7 +681,7 @@ string const LyXFunc::Dispatch(int ac,
 				int sly;
 				UpdatableInset * inset = 
 					owner->view()->theLockingInset();
-				inset->GetCursorPos(owner->view(), slx, sly);
+				inset->getCursorPos(owner->view(), slx, sly);
 				owner->view()->unlockInset(inset);
 				owner->view()->menuUndo();
 				if (TEXT()->cursor.par()->
@@ -694,14 +694,14 @@ string const LyXFunc::Dispatch(int ac,
 					inset = 0;
 				}
 				if (inset)
-					inset->Edit(owner->view(),slx,sly,0);
+					inset->edit(owner->view(),slx,sly,0);
 				return string();
 			} else if (action == LFUN_REDO) {
 				int slx;
 				int sly;
 				UpdatableInset * inset = owner->view()->
 					theLockingInset();
-				inset->GetCursorPos(owner->view(), slx, sly);
+				inset->getCursorPos(owner->view(), slx, sly);
 				owner->view()->unlockInset(inset);
 				owner->view()->menuRedo();
 				inset = static_cast<UpdatableInset*>(
@@ -709,10 +709,10 @@ string const LyXFunc::Dispatch(int ac,
 					getInset(TEXT()->
 						 cursor.pos()));
 				if (inset)
-					inset->Edit(owner->view(),slx,sly,0); 
+					inset->edit(owner->view(),slx,sly,0); 
 				return string();
 			} else if (((result=owner->view()->theLockingInset()->
-				   LocalDispatch(owner->view(), action,
+				   localDispatch(owner->view(), action,
 						 argument)) ==
 				   UpdatableInset::DISPATCHED) ||
 				   (result == UpdatableInset::DISPATCHED_NOUPDATE))
@@ -768,7 +768,7 @@ string const LyXFunc::Dispatch(int ac,
 		UpdatableInset * tli =
 			owner->view()->theLockingInset();
 		if (tli) {
-			UpdatableInset * lock = tli->GetLockingInset();
+			UpdatableInset * lock = tli->getLockingInset();
 			
 			if (tli == lock) {
 				owner->view()->unlockInset(tli);
@@ -776,7 +776,7 @@ string const LyXFunc::Dispatch(int ac,
 				moveCursorUpdate(true, false);
 				owner->showState();
 			} else {
-				tli->UnlockInsetInInset(owner->view(),
+				tli->unlockInsetInInset(owner->view(),
 							lock,
 							true);
 			}
@@ -1195,15 +1195,15 @@ string const LyXFunc::Dispatch(int ac,
 
 	case LFUN_LAYOUT_TABULAR:
 	    if (owner->view()->theLockingInset()) {
-		if (owner->view()->theLockingInset()->LyxCode()==Inset::TABULAR_CODE) {
+		if (owner->view()->theLockingInset()->lyxCode()==Inset::TABULAR_CODE) {
 		    InsetTabular * inset = static_cast<InsetTabular *>
 			(owner->view()->theLockingInset());
-		    inset->OpenLayoutDialog(owner->view());
+		    inset->openLayoutDialog(owner->view());
 		} else if (owner->view()->theLockingInset()->
-			   GetFirstLockingInsetOfType(Inset::TABULAR_CODE)!=0) {
+			   getFirstLockingInsetOfType(Inset::TABULAR_CODE)!=0) {
 		    InsetTabular * inset = static_cast<InsetTabular *>(
-			owner->view()->theLockingInset()->GetFirstLockingInsetOfType(Inset::TABULAR_CODE));
-		    inset->OpenLayoutDialog(owner->view());
+			owner->view()->theLockingInset()->getFirstLockingInsetOfType(Inset::TABULAR_CODE));
+		    inset->openLayoutDialog(owner->view());
 		}
 	    }
 	    break;

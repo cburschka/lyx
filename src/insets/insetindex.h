@@ -27,15 +27,15 @@ public:
 	///
 	InsetIndex(InsetCommandParams const &);
 	///
-	Inset * Clone(Buffer const &) const {
+	virtual Inset * clone(Buffer const &) const {
 		return new InsetIndex(params());
 	}
 	///
 	string const getScreenLabel() const;
 	///
-	EDITABLE Editable() const { return IS_EDITABLE; }
+	EDITABLE editable() const { return IS_EDITABLE; }
 	///
-	void Edit(BufferView *, int, int, unsigned int);
+	void edit(BufferView *, int, int, unsigned int);
 };
 
 
@@ -44,19 +44,19 @@ public:
 	///
 	InsetPrintIndex(InsetCommandParams const &);
 	///
-	Inset * Clone(Buffer const &) const {
+	virtual Inset * clone(Buffer const &) const {
 		return new InsetPrintIndex(params());
 	}
 	/// Updates needed features for this inset.
-	void Validate(LaTeXFeatures & features) const;
+	void validate(LaTeXFeatures & features) const;
 	///
-	void Edit(BufferView *, int, int, unsigned int) {}
+	void edit(BufferView *, int, int, unsigned int) {}
 	///
-	EDITABLE Editable() const{ return NOT_EDITABLE; }
+	EDITABLE editable() const{ return NOT_EDITABLE; }
 	///
 	bool display() const { return true; }
 	///
-	Inset::Code LyxCode() const;
+	Inset::Code lyxCode() const;
 	///
 	string const getScreenLabel() const;
 };

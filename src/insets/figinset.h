@@ -33,52 +33,55 @@ public:
 	///
 	void draw(BufferView *, LyXFont const &, int, float &, bool) const;
 	///
-	void Write(Buffer const *, std::ostream &) const;
+	void write(Buffer const *, std::ostream &) const;
 	///
-	void Read(Buffer const *, LyXLex & lex);
+	void read(Buffer const *, LyXLex & lex);
 	///
-	int Latex(Buffer const *, std::ostream &, bool fragile, bool free_space) const;
+	int latex(Buffer const *, std::ostream &, bool fragile, bool free_space) const;
 	///
-	int Ascii(Buffer const *, std::ostream &, int linelen) const;
+	int ascii(Buffer const *, std::ostream &, int linelen) const;
 	///
-	int Linuxdoc(Buffer const *, std::ostream &) const;
+	int linuxdoc(Buffer const *, std::ostream &) const;
 	///
-	int DocBook(Buffer const *, std::ostream &) const;
+	int docBook(Buffer const *, std::ostream &) const;
 	/// Updates needed features for this inset.
-	void Validate(LaTeXFeatures & features) const;
+	void validate(LaTeXFeatures & features) const;
 
 	/// what appears in the minibuffer when opening
-	string const EditMessage() const;
+	string const editMessage() const;
 	
 	///
-	void Edit(BufferView *, int, int, unsigned int);
+	void edit(BufferView *, int, int, unsigned int);
 	///
-	EDITABLE Editable() const;
+	EDITABLE editable() const;
 	///
-	bool Deletable() const;
+	bool deletable() const;
 	///
-	Inset::Code LyxCode() const;
+	Inset::Code lyxCode() const;
 	///
-	Inset * Clone(Buffer const &) const;
+	Inset * clone(Buffer const &) const;
 	///
-	void CallbackFig(long arg);
+	void callbackFig(long arg);
 	///
-	void Preview(string const & p);
+	void preview(string const & p);
 	/// browse for file
-	void BrowseFile();
+	void browseFile();
 
 	/// form for user input
 	FD_Figure * form;
 	/// width and height in pixels on screen
-	int wid, hgh;
+	int wid;
+	int hgh;
 	/// width and height in postscript units (1/72 inch)
-	int pswid, pshgh;
+	int pswid;
+	int pshgh;
 	/// width of raw figure w/o rotation
 	int raw_wid;
 	/// heigt of raw figure w/o rotation
 	int raw_hgh;
 	/// x and y coordinate in ps units
-	int psx, psy;
+	int psx;
+	int psy;
 
 	/// .eps file name
 	string fname;
@@ -111,7 +114,8 @@ public:
 	HWTYPE thtype;
 
 	/// width and height
-	float xwid, xhgh;
+	float xwid;
+	float xhgh;
 
 	/// rotation angle
 	float angle;
@@ -141,15 +145,15 @@ private:
 	///
 	Buffer const * owner;
 	/// restore values on the form
-	void RestoreForm();
+	void restoreForm();
 	/// recompute screen params
-	void Recompute();
+	void recompute();
 	/// regenerate \includegraphics{} command
-	void Regenerate() const;
+	void regenerate() const;
 	/// regenerate \inlcudegraphics{} command in temporary buffer
-	void TempRegenerate();
+	void tempRegenerate();
 	/// get sizes from .eps file
-	void GetPSSizes();
+	void getPSSizes();
 	/// Redraw connection.
 	SigC::Connection r_;
 };

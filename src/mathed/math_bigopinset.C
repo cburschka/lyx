@@ -17,7 +17,7 @@ MathBigopInset::MathBigopInset(string const & name, int id)
 }
 
 
-MathInset * MathBigopInset::Clone() const
+MathInset * MathBigopInset::clone() const
 {
 	return new MathBigopInset(*this);
 }

@@ -69,7 +69,7 @@ char const * const latex_quote_babel[2][5] =
 
 InsetQuotes::InsetQuotes(string const & str)
 {
-	ParseString(str);
+	parseString(str);
 }
 
 
@@ -96,7 +96,7 @@ InsetQuotes::InsetQuotes(char c, BufferParams const & params)
 }
 
 
-void InsetQuotes::ParseString(string const & s)
+void InsetQuotes::parseString(string const & s)
 {
 	string str(s);
 	if (str.length() != 3) {
@@ -145,7 +145,7 @@ void InsetQuotes::ParseString(string const & s)
 }
 
 
-string const InsetQuotes::DispString() const
+string const InsetQuotes::dispString() const
 {
  	string disp;
 	disp += quote_char[quote_index[side][language]];
@@ -176,7 +176,7 @@ int InsetQuotes::descent(BufferView *, LyXFont const & font) const
 
 int InsetQuotes::width(BufferView *, LyXFont const & font) const
 {
-	string text = DispString();
+	string text = dispString();
 	int w = 0;
 
 	for (string::size_type i = 0; i < text.length(); ++i) {
@@ -192,7 +192,7 @@ int InsetQuotes::width(BufferView *, LyXFont const & font) const
 }
 
 
-LyXFont const InsetQuotes::ConvertFont(LyXFont const & f) const
+LyXFont const InsetQuotes::convertFont(LyXFont const & f) const
 {
 	LyXFont font(f);
 #ifndef NO_LATEX
@@ -206,14 +206,14 @@ LyXFont const InsetQuotes::ConvertFont(LyXFont const & f) const
 void InsetQuotes::draw(BufferView * bv, LyXFont const & font,
 		       int baseline, float & x, bool) const
 {
-	string text = DispString();
+	string text = dispString();
 
 	bv->painter().text(int(x), baseline, text, font);
 	x += width(bv, font);
 }
 
 
-void InsetQuotes::Write(Buffer const *, ostream & os) const
+void InsetQuotes::write(Buffer const *, ostream & os) const
 {
 	string text;
 	text += language_char[language];
@@ -223,10 +223,10 @@ void InsetQuotes::Write(Buffer const *, ostream & os) const
 }
 
 
-void InsetQuotes::Read(Buffer const *, LyXLex & lex)
+void InsetQuotes::read(Buffer const *, LyXLex & lex)
 {
 	lex.nextToken();
-	ParseString(lex.GetString());
+	parseString(lex.GetString());
 	lex.next();
 	string tmp(lex.GetString());
 	if (tmp != "\\end_inset")
@@ -237,10 +237,10 @@ void InsetQuotes::Read(Buffer const *, LyXLex & lex)
 
 extern bool use_babel;
 
-int InsetQuotes::Latex(Buffer const * buf, ostream & os,
+int InsetQuotes::latex(Buffer const * buf, ostream & os,
 		       bool /*fragile*/, bool) const
 {
-	string const doclang = buf->GetLanguage()->lang();
+	string const doclang = buf->getLanguage()->lang();
 	int quoteind = quote_index[side][language];
 	string qstr;
 	
@@ -271,21 +271,21 @@ int InsetQuotes::Latex(Buffer const * buf, ostream & os,
 }
 
 
-int InsetQuotes::Ascii(Buffer const *, ostream & os, int) const
+int InsetQuotes::ascii(Buffer const *, ostream & os, int) const
 {
 	os << "\"";
 	return 0;
 }
 
 
-int InsetQuotes::Linuxdoc(Buffer const *, ostream & os) const
+int InsetQuotes::linuxdoc(Buffer const *, ostream & os) const
 {
 	os << "\"";
 	return 0;
 }
 
 
-int InsetQuotes::DocBook(Buffer const *, ostream & os) const
+int InsetQuotes::docBook(Buffer const *, ostream & os) const
 {
 	if (times == InsetQuotes::DoubleQ) {
 		if (side == InsetQuotes::LeftQ)
@@ -302,7 +302,7 @@ int InsetQuotes::DocBook(Buffer const *, ostream & os) const
 }
 
 
-void InsetQuotes::Validate(LaTeXFeatures & features) const 
+void InsetQuotes::validate(LaTeXFeatures & features) const 
 {
 	char type = quote_char[quote_index[side][language]];
 
@@ -326,13 +326,13 @@ void InsetQuotes::Validate(LaTeXFeatures & features) const
 }
 
 
-Inset * InsetQuotes::Clone(Buffer const &) const
+Inset * InsetQuotes::clone(Buffer const &) const
 {
   return new InsetQuotes(language, side, times);
 }
 
 
-Inset::Code InsetQuotes::LyxCode() const
+Inset::Code InsetQuotes::lyxCode() const
 {
   return Inset::QUOTE_CODE;
 }

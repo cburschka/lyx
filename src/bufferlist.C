@@ -95,7 +95,7 @@ bool BufferList::empty() const
 }
 
 
-bool BufferList::QwriteAll()
+bool BufferList::qwriteAll()
 {
         bool askMoreConfirmation = false;
         string unsaved;

@@ -24,7 +24,7 @@ MathFuncInset::MathFuncInset(string const & nm, MathInsetTypes ot)
 }
 
 
-MathInset * MathFuncInset::Clone() const
+MathInset * MathFuncInset::clone() const
 {
 	return new MathFuncInset(*this);
 }

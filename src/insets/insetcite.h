@@ -24,19 +24,19 @@ public:
 	///
 	InsetCitation(InsetCommandParams const &);
 	///
-	Inset * Clone(Buffer const &) const {
+	Inset * clone(Buffer const &) const {
 		return new InsetCitation(params());
 	}
 	///
 	string const getScreenLabel() const;
 	///
-	EDITABLE Editable() const { return IS_EDITABLE; }
+	EDITABLE editable() const { return IS_EDITABLE; }
 	///
-	Inset::Code LyxCode() const { return Inset::CITE_CODE; }
+	Inset::Code lyxCode() const { return Inset::CITE_CODE; }
         ///
-	void Edit(BufferView *, int, int, unsigned int);
+	void edit(BufferView *, int, int, unsigned int);
 	///
-	int Ascii(Buffer const *, std::ostream &, int linelen) const;
+	int ascii(Buffer const *, std::ostream &, int linelen) const;
 };
 
 #endif // INSET_CITE_H

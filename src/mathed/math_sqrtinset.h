@@ -16,7 +16,7 @@ public:
 	///
 	MathSqrtInset();
 	///
-	MathInset * Clone() const;
+	MathInset * clone() const;
 	///
 	void draw(Painter &, int x, int baseline);
 	///

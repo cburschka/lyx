@@ -55,7 +55,7 @@ public:
 	/// Write normalized content
 	virtual void WriteNormal(std::ostream &) const;
 	/// Reproduces itself
-	virtual MathInset * Clone() const = 0;
+	virtual MathInset * clone() const = 0;
 	/// Appends itself with macro arguments substituted
 	virtual void substitute(MathArray & array, MathMacro const & macro) const;
 	/// Compute the size of the object

@@ -163,7 +163,7 @@ public:
 	///
 	LyXTabular & operator=(LyXTabular const &);
 	///
-	LyXTabular * Clone(InsetTabular *);
+	LyXTabular * clone(InsetTabular *);
 	
 	/// Returns true if there is a topline, returns false if not
 	bool TopLine(int cell, bool onlycolumn = false) const;

@@ -206,7 +206,7 @@ void LyXTabular::ReadOld(Buffer const * buf, istream & is,
 	    getTokenValue(line, "special", cell_info[i][j].align_special);
 	    l_getline(is, line);
 	    if (prefixIs(line, "\\begin_inset")) {
-		cell_info[i][j].inset.Read(buf, lex);
+		cell_info[i][j].inset.read(buf, lex);
 		l_getline(is, line);
 	    }
 	    if (line != "</Cell>") {

@@ -32,7 +32,7 @@ MathArray::MathArray(MathArray const & array)
 {
 	for (int pos = 0; pos < size(); next(pos)) 
 		if (isInset(pos)) 
-			replace(pos, GetInset(pos)->Clone());
+			replace(pos, GetInset(pos)->clone());
 }
 
 

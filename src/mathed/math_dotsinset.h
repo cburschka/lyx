@@ -15,7 +15,7 @@ public:
 	///
 	MathDotsInset(string const &, int);
 	///
-	MathInset *  Clone() const;
+	MathInset *  clone() const;
 	///
 	void draw(Painter &, int, int);
 	///

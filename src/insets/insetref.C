@@ -22,7 +22,7 @@ InsetRef::InsetRef(InsetCommandParams const & p, Buffer const & buf)
 	: InsetCommand(p), isLatex(buf.isLatex())
 {}
 
-void InsetRef::Edit(BufferView * bv, int, int, unsigned int button)
+void InsetRef::edit(BufferView * bv, int, int, unsigned int button)
 {
 	// Eventually trigger dialog with button 3 not 1
 	if (button == 3 )
@@ -52,7 +52,7 @@ string const InsetRef::getScreenLabel() const
 }
 
 
-int InsetRef::Latex(Buffer const *, ostream & os,
+int InsetRef::latex(Buffer const *, ostream & os,
 		    bool /*fragile*/, bool /*fs*/) const
 {
 	if (getOptions().empty())
@@ -65,14 +65,14 @@ int InsetRef::Latex(Buffer const *, ostream & os,
 }
 
 
-int InsetRef::Ascii(Buffer const *, ostream & os, int) const
+int InsetRef::ascii(Buffer const *, ostream & os, int) const
 {
 	os << "[" << getContents() << "]";
 	return 0;
 }
 
 
-int InsetRef::Linuxdoc(Buffer const *, ostream & os) const
+int InsetRef::linuxdoc(Buffer const *, ostream & os) const
 {
 	os << "<ref id=\"" << getContents()
 	   << "\" name=\"" << getOptions() << "\" >";
@@ -80,7 +80,7 @@ int InsetRef::Linuxdoc(Buffer const *, ostream & os) const
 }
 
 
-int InsetRef::DocBook(Buffer const *, ostream & os) const
+int InsetRef::docBook(Buffer const *, ostream & os) const
 {
 	if (getOptions().empty()) {
 		os << "<xref linkend=\"" << getContents() << "\"/>";
@@ -93,7 +93,7 @@ int InsetRef::DocBook(Buffer const *, ostream & os) const
 }
 
 
-void InsetRef::Validate(LaTeXFeatures & features) const
+void InsetRef::validate(LaTeXFeatures & features) const
 {
 	if (getCmdName() == "vref" || getCmdName() == "vpageref")
 		features.varioref = true;

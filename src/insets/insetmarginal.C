@@ -32,7 +32,7 @@ InsetMarginal::InsetMarginal()
 }
 
 
-Inset * InsetMarginal::Clone(Buffer const &) const
+Inset * InsetMarginal::clone(Buffer const &) const
 {
 	InsetMarginal * result = new InsetMarginal;
 	result->inset.init(&inset);
@@ -42,28 +42,28 @@ Inset * InsetMarginal::Clone(Buffer const &) const
 }
 
 
-string const InsetMarginal::EditMessage() const
+string const InsetMarginal::editMessage() const
 {
 	return _("Opened Marginal Note Inset");
 }
 
 
-int InsetMarginal::Latex(Buffer const * buf,
+int InsetMarginal::latex(Buffer const * buf,
 			 std::ostream & os, bool fragile, bool fp) const
 {
 	os << "\\marginpar{%\n";
 	
-	int const i = inset.Latex(buf, os, fragile, fp);
+	int const i = inset.latex(buf, os, fragile, fp);
 	os << "}%\n";
 	
 	return i + 2;
 }
 
 
-bool InsetMarginal::InsertInsetAllowed(Inset * in) const
+bool InsetMarginal::insertInsetAllowed(Inset * in) const
 {
-	if ((in->LyxCode() == Inset::FOOT_CODE) ||
-	    (in->LyxCode() == Inset::MARGIN_CODE)) {
+	if ((in->lyxCode() == Inset::FOOT_CODE) ||
+	    (in->lyxCode() == Inset::MARGIN_CODE)) {
 		return false;
 	}
 	return true;

@@ -25,12 +25,12 @@ MathAccentInset::~MathAccentInset()
 }
 
 
-MathInset * MathAccentInset::Clone() const
+MathInset * MathAccentInset::clone() const
 {   
 	MathAccentInset * p;
 	
 	if (inset) 
-		p = new MathAccentInset(inset->Clone(), code);
+		p = new MathAccentInset(inset->clone(), code);
 	else
 		p = new MathAccentInset(c, fn, code);
 	

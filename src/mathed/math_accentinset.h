@@ -16,7 +16,7 @@ public:
 	///
 	~MathAccentInset();
 	///
-	MathInset *  Clone() const;
+	MathInset *  clone() const;
 	///
 	void draw(Painter &, int, int);
 	///

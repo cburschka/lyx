@@ -300,19 +300,19 @@ void InsetGraphics::draw(BufferView * bv, LyXFont const & font,
 }
 
 
-void InsetGraphics::Edit(BufferView *bv, int, int, unsigned int)
+void InsetGraphics::edit(BufferView *bv, int, int, unsigned int)
 {
 	bv->owner()->getDialogs()->showGraphics(this);
 }
 
 
-Inset::EDITABLE InsetGraphics::Editable() const
+Inset::EDITABLE InsetGraphics::editable() const
 {
 	return IS_EDITABLE;
 }
 
 
-void InsetGraphics::Write(Buffer const * buf, ostream & os) const
+void InsetGraphics::write(Buffer const * buf, ostream & os) const
 {
 	os << "GRAPHICS FormatVersion 1\n";
 
@@ -320,7 +320,7 @@ void InsetGraphics::Write(Buffer const * buf, ostream & os) const
 }
 
 
-void InsetGraphics::Read(Buffer const * buf, LyXLex & lex)
+void InsetGraphics::read(Buffer const * buf, LyXLex & lex)
 {
 	bool finished = false;
 
@@ -462,8 +462,8 @@ InsetGraphics::prepareFile(Buffer const *buf) const
 }
 
 
-int InsetGraphics::Latex(Buffer const *buf, ostream & os,
-		bool /*fragile*/, bool/*fs*/) const
+int InsetGraphics::latex(Buffer const *buf, ostream & os,
+			 bool /*fragile*/, bool/*fs*/) const
 {
 	// MISSING: We have to decide how to do the order of the options
 	// that is dependent of order, like width, height, angle. Should
@@ -529,7 +529,7 @@ int InsetGraphics::Latex(Buffer const *buf, ostream & os,
 }
 
 
-int InsetGraphics::Ascii(Buffer const *, ostream &, int) const
+int InsetGraphics::ascii(Buffer const *, ostream &, int) const
 {
 	// No graphics in ascii output. Possible to use gifscii to convert
 	// images to ascii approximation.
@@ -541,7 +541,7 @@ int InsetGraphics::Ascii(Buffer const *, ostream &, int) const
 }
 
 
-int InsetGraphics::Linuxdoc(Buffer const *, ostream &) const
+int InsetGraphics::linuxdoc(Buffer const *, ostream &) const
 {
 	// No graphics in LinuxDoc output. Should check how/what to add.
 	return 0;
@@ -551,7 +551,7 @@ int InsetGraphics::Linuxdoc(Buffer const *, ostream &) const
 // For explanation on inserting graphics into DocBook checkout:
 // http://linuxdoc.org/LDP/LDP-Author-Guide/inserting-pictures.html
 // See also the docbook guide at http://www.docbook.org/
-int InsetGraphics::DocBook(Buffer const * buf, ostream & os) const
+int InsetGraphics::docBook(Buffer const * buf, ostream & os) const
 {
 	// Change the path to be relative to the main file.
 	string const buffer_dir = OnlyPath(buf->fileName());
@@ -565,7 +565,7 @@ int InsetGraphics::DocBook(Buffer const * buf, ostream & os) const
 }
 
 
-void InsetGraphics::Validate(LaTeXFeatures & features) const
+void InsetGraphics::validate(LaTeXFeatures & features) const
 {
 	// If we have no image, we should not require anything.
 	if (params.filename.empty())
@@ -621,7 +621,7 @@ InsetGraphicsParams InsetGraphics::getParams() const
 }
 
 
-Inset * InsetGraphics::Clone(Buffer const &) const
+Inset * InsetGraphics::clone(Buffer const &) const
 {
 #ifdef WITH_WARNINGS
 #warning use the copy constructor instead. (Lgb)

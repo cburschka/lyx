@@ -144,7 +144,7 @@ void InsetSpecialChar::draw(BufferView * bv, LyXFont const & f,
 
 
 // In lyxf3 this will be just LaTeX
-void InsetSpecialChar::Write(Buffer const *, ostream & os) const
+void InsetSpecialChar::write(Buffer const *, ostream & os) const
 {
 	string command;
 	switch (kind) {
@@ -162,7 +162,7 @@ void InsetSpecialChar::Write(Buffer const *, ostream & os) const
 
 
 // This function will not be necessary when lyx3
-void InsetSpecialChar::Read(Buffer const *, LyXLex & lex)
+void InsetSpecialChar::read(Buffer const *, LyXLex & lex)
 {    
 	lex.nextToken();
 	string const command = lex.GetString();
@@ -183,7 +183,7 @@ void InsetSpecialChar::Read(Buffer const *, LyXLex & lex)
 }
 
 
-int InsetSpecialChar::Latex(Buffer const *, ostream & os, bool /*fragile*/,
+int InsetSpecialChar::latex(Buffer const *, ostream & os, bool /*fragile*/,
 			    bool free_space) const
 {
 	switch (kind) {
@@ -196,7 +196,8 @@ int InsetSpecialChar::Latex(Buffer const *, ostream & os, bool /*fragile*/,
 	return 0;
 }
 
-int InsetSpecialChar::Ascii(Buffer const *, ostream & os, int) const
+
+int InsetSpecialChar::ascii(Buffer const *, ostream & os, int) const
 {
 	switch (kind) {
 	case HYPHENATION:	                break;
@@ -209,25 +210,25 @@ int InsetSpecialChar::Ascii(Buffer const *, ostream & os, int) const
 }
 
 
-int InsetSpecialChar::Linuxdoc(Buffer const * buf, ostream & os) const
+int InsetSpecialChar::linuxdoc(Buffer const * buf, ostream & os) const
 {
-	return Ascii(buf, os, 0);
+	return ascii(buf, os, 0);
 }
 
 
-int InsetSpecialChar::DocBook(Buffer const * buf, ostream & os) const
+int InsetSpecialChar::docBook(Buffer const * buf, ostream & os) const
 {
-	return Ascii(buf, os, 0);
+	return ascii(buf, os, 0);
 }
 
 
-Inset * InsetSpecialChar::Clone(Buffer const &) const
+Inset * InsetSpecialChar::clone(Buffer const &) const
 {
 	return new InsetSpecialChar(kind);
 }
 
 
-void InsetSpecialChar::Validate(LaTeXFeatures & features) const
+void InsetSpecialChar::validate(LaTeXFeatures & features) const
 {
 	if (kind == MENU_SEPARATOR) {
 		features.lyxarrow = true;

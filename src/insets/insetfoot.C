@@ -32,7 +32,7 @@ InsetFoot::InsetFoot()
 }
 
 
-Inset * InsetFoot::Clone(Buffer const &) const
+Inset * InsetFoot::clone(Buffer const &) const
 {
 	InsetFoot * result = new InsetFoot;
 	result->inset.init(&inset);
@@ -42,28 +42,28 @@ Inset * InsetFoot::Clone(Buffer const &) const
 }
 
 
-string const InsetFoot::EditMessage() const
+string const InsetFoot::editMessage() const
 {
 	return _("Opened Footnote Inset");
 }
 
 
-int InsetFoot::Latex(Buffer const * buf,
+int InsetFoot::latex(Buffer const * buf,
 		     std::ostream & os, bool fragile, bool fp) const
 {
 	os << "\\footnote{%\n";
 	
-	int const i = inset.Latex(buf, os, fragile, fp);
+	int const i = inset.latex(buf, os, fragile, fp);
 	os << "}\n";
 	
 	return i + 2;
 }
 
 
-bool InsetFoot::InsertInsetAllowed(Inset * in) const
+bool InsetFoot::insertInsetAllowed(Inset * in) const
 {
-	if ((in->LyxCode() == Inset::FOOT_CODE) ||
-	    (in->LyxCode() == Inset::MARGIN_CODE)) {
+	if ((in->lyxCode() == Inset::FOOT_CODE) ||
+	    (in->lyxCode() == Inset::MARGIN_CODE)) {
 		return false;
 	}
 	return true;

@@ -529,7 +529,7 @@ void BufferView::Pimpl::workAreaMotionNotify(int x, int y, unsigned int state)
 			? cursor.x() - width : cursor.x();
 		int start_x = inset_x + bv_->theLockingInset()->scroll();
 		bv_->theLockingInset()->
-			InsetMotionNotify(bv_,
+			insetMotionNotify(bv_,
 					  x - start_x,
 					  y - cursor.y() + bv_->text->first,
 					  state);
@@ -583,7 +583,7 @@ void BufferView::Pimpl::workAreaButtonPress(int xpos, int ypos,
 		   otherwise give the event to the inset */
 		if (inset_hit == bv_->theLockingInset()) {
 			bv_->theLockingInset()->
-				InsetButtonPress(bv_,
+				insetButtonPress(bv_,
 						 xpos, ypos,
 						 button);
 			return;
@@ -615,14 +615,14 @@ void BufferView::Pimpl::workAreaButtonPress(int xpos, int ypos,
 	
 	// Single left click in math inset?
 	if ((inset_hit != 0) &&
-	    (inset_hit->Editable()==Inset::HIGHLY_EDITABLE)) {
+	    (inset_hit->editable()==Inset::HIGHLY_EDITABLE)) {
 		// Highly editable inset, like math
 		UpdatableInset * inset = static_cast<UpdatableInset *>(inset_hit);
 		selection_possible = false;
 		owner_->updateLayoutChoice();
-		owner_->message(inset->EditMessage());
-		inset->InsetButtonPress(bv_, xpos, ypos, button);
-		inset->Edit(bv_, xpos, ypos, button);
+		owner_->message(inset->editMessage());
+		inset->insetButtonPress(bv_, xpos, ypos, button);
+		inset->edit(bv_, xpos, ypos, button);
 		return;
 	} 
 	
@@ -744,9 +744,9 @@ void BufferView::Pimpl::workAreaButtonRelease(int x, int y,
 
 		/* LyX does a kind of work-area grabbing for insets.
 		   Only a ButtonPress Event outside the inset will 
-		   force a InsetUnlock. */
+		   force a insetUnlock. */
 		bv_->theLockingInset()->
-			InsetButtonRelease(bv_, x, y, button);
+			insetButtonRelease(bv_, x, y, button);
 		return;
 	}
 	
@@ -778,19 +778,19 @@ void BufferView::Pimpl::workAreaButtonRelease(int x, int y,
 		// (Joacim)
 		// ...or maybe the SetCursorParUndo()
 		// below isn't necessary at all anylonger?
-		if (inset_hit->LyxCode() == Inset::REF_CODE) {
+		if (inset_hit->lyxCode() == Inset::REF_CODE) {
 			bv_->text->setCursorParUndo(buffer_);
 		}
 
-		owner_->message(inset_hit->EditMessage());
+		owner_->message(inset_hit->editMessage());
 
-		if (inset_hit->Editable()==Inset::HIGHLY_EDITABLE) {
+		if (inset_hit->editable()==Inset::HIGHLY_EDITABLE) {
 			// Highly editable inset, like math
 			UpdatableInset *inset = (UpdatableInset *)inset_hit;
-			inset->InsetButtonRelease(bv_, x, y, button);
+			inset->insetButtonRelease(bv_, x, y, button);
 		} else {
-			inset_hit->InsetButtonRelease(bv_, x, y, button);
-			inset_hit->Edit(bv_, x, y, button);
+			inset_hit->insetButtonRelease(bv_, x, y, button);
+			inset_hit->edit(bv_, x, y, button);
 		}
 		return;
 	}
@@ -819,7 +819,7 @@ void BufferView::Pimpl::workAreaButtonRelease(int x, int y,
 	    bibitemMaxWidth(bv_, textclasslist.
 			    TextClass(buffer_->
 				      params.textclass).defaultfont())) {
-		bv_->text->cursor.par()->bibkey->Edit(bv_, 0, 0, 0);
+		bv_->text->cursor.par()->bibkey->edit(bv_, 0, 0, 0);
 	}
 
 	return;
@@ -847,7 +847,7 @@ Inset * BufferView::Pimpl::checkInsetHit(LyXText * text, int & x, int & y,
 	if (cursor.pos() < cursor.par()->size()
 	    && cursor.par()->getChar(cursor.pos()) == Paragraph::META_INSET
 	    && cursor.par()->getInset(cursor.pos())
-	    && cursor.par()->getInset(cursor.pos())->Editable()) {
+	    && cursor.par()->getInset(cursor.pos())->editable()) {
 
 		// Check whether the inset really was hit
 		Inset * tmpinset = cursor.par()->getInset(cursor.pos());
@@ -873,7 +873,7 @@ Inset * BufferView::Pimpl::checkInsetHit(LyXText * text, int & x, int & y,
 	if ((cursor.pos() - 1 >= 0) &&
 	    (cursor.par()->getChar(cursor.pos()-1) == Paragraph::META_INSET) &&
 	    (cursor.par()->getInset(cursor.pos() - 1)) &&
-	    (cursor.par()->getInset(cursor.pos() - 1)->Editable())) {
+	    (cursor.par()->getInset(cursor.pos() - 1)->editable())) {
 		Inset * tmpinset = cursor.par()->getInset(cursor.pos()-1);
 		LyXFont font = text->getFont(buffer_, cursor.par(),
 						  cursor.pos()-1);
@@ -1008,7 +1008,7 @@ void BufferView::Pimpl::update(LyXText * text, BufferView::UpdateCodes f)
 	text->fullRebreak(bv_);
 
 	if (text->inset_owner) {
-	    text->inset_owner->SetUpdateStatus(bv_, InsetText::NONE);
+	    text->inset_owner->setUpdateStatus(bv_, InsetText::NONE);
 	    updateInset(text->inset_owner, true);
 	} else
 	    update();
@@ -1050,7 +1050,7 @@ void BufferView::Pimpl::cursorToggle()
 	if (!bv_->theLockingInset()) {
 		screen_->CursorToggle(bv_->text, bv_);
 	} else {
-		bv_->theLockingInset()->ToggleInsetCursor(bv_);
+		bv_->theLockingInset()->toggleInsetCursor(bv_);
 	}
 	
 	cursor_timeout.restart();
@@ -1202,8 +1202,8 @@ void BufferView::Pimpl::setState()
 void BufferView::Pimpl::insetSleep()
 {
 	if (bv_->theLockingInset() && !inset_slept) {
-		bv_->theLockingInset()->GetCursorPos(bv_, bv_->slx, bv_->sly);
-		bv_->theLockingInset()->InsetUnlock(bv_);
+		bv_->theLockingInset()->getCursorPos(bv_, bv_->slx, bv_->sly);
+		bv_->theLockingInset()->insetUnlock(bv_);
 		inset_slept = true;
 	}
 }
@@ -1212,7 +1212,7 @@ void BufferView::Pimpl::insetSleep()
 void BufferView::Pimpl::insetWakeup()
 {
 	if (bv_->theLockingInset() && inset_slept) {
-		bv_->theLockingInset()->Edit(bv_, bv_->slx, bv_->sly, 0);
+		bv_->theLockingInset()->edit(bv_, bv_->slx, bv_->sly, 0);
 		inset_slept = false;
 	}
 }
@@ -1222,7 +1222,7 @@ void BufferView::Pimpl::insetUnlock()
 {
 	if (bv_->theLockingInset()) {
 		if (!inset_slept)
-			bv_->theLockingInset()->InsetUnlock(bv_);
+			bv_->theLockingInset()->insetUnlock(bv_);
 		bv_->theLockingInset(0);
 		bv_->text->finishUndo();
 		inset_slept = false;
@@ -1354,7 +1354,7 @@ Inset * BufferView::Pimpl::getInsetByCode(Inset::Code code)
 		find_if(Buffer::inset_iterator(
 			cursor.par(), cursor.pos()),
 			buffer_->inset_iterator_end(),
-			lyx::compare_memfun(&Inset::LyxCode, code));
+			lyx::compare_memfun(&Inset::lyxCode, code));
 	return it != buffer_->inset_iterator_end() ? (*it) : 0;
 }
 
@@ -1425,6 +1425,9 @@ void BufferView::Pimpl::MenuInsertLyXFile(string const & filen)
 
 bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 {
+	lyxerr[Debug::ACTION] << "BufferView::Pimpl::Dispatch: action["
+			      << action <<"] arg[" << argument << "]" << endl;
+	
 	switch (action) {
 		// --- Misc -------------------------------------------
 	case LFUN_APPENDIX:
@@ -1465,7 +1468,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		} else {
 			// this is need because you don't use a inset->Edit()
 			updateInset(new_inset, true);
-			new_inset->Edit(bv_, 0, 0, 0);
+			new_inset->edit(bv_, 0, 0, 0);
 		}
 		break;
 	}
@@ -1805,9 +1808,9 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		    && lt->cursor.par()->getChar(lt->cursor.pos())
 		    == Paragraph::META_INSET
 		    && lt->cursor.par()->getInset(lt->cursor.pos())
-		    && lt->cursor.par()->getInset(lt->cursor.pos())->Editable() == Inset::HIGHLY_EDITABLE){
+		    && lt->cursor.par()->getInset(lt->cursor.pos())->editable() == Inset::HIGHLY_EDITABLE){
 			Inset * tmpinset = lt->cursor.par()->getInset(lt->cursor.pos());
-			owner_->getLyXFunc()->setMessage(tmpinset->EditMessage());
+			owner_->getLyXFunc()->setMessage(tmpinset->editMessage());
 			int y = 0;
 			if (is_rtl) {
 				LyXFont const font = 
@@ -1816,7 +1819,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 						    lt->cursor.pos());	
 				y = tmpinset->descent(bv_,font);
 			}
-			tmpinset->Edit(bv_, 0, y, 0);
+			tmpinset->edit(bv_, 0, y, 0);
 			break;
 		}
 		if (!is_rtl)
@@ -1844,17 +1847,17 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		    (lt->cursor.par()->getChar(lt->cursor.pos()) ==
 		     Paragraph::META_INSET) &&
 		    lt->cursor.par()->getInset(lt->cursor.pos()) &&
-		    (lt->cursor.par()->getInset(lt->cursor.pos())->Editable()
+		    (lt->cursor.par()->getInset(lt->cursor.pos())->editable()
 		     == Inset::HIGHLY_EDITABLE))
 		{
 			Inset * tmpinset = lt->cursor.par()->getInset(lt->cursor.pos());
-			owner_->getLyXFunc()->setMessage(tmpinset->EditMessage());
+			owner_->getLyXFunc()->setMessage(tmpinset->editMessage());
 			LyXFont const font = lt->getFont(buffer_,
 							 lt->cursor.par(),
 							 lt->cursor.pos());
 			int y = is_rtl ? 0 
 				: tmpinset->descent(bv_,font);
-			tmpinset->Edit(bv_,
+			tmpinset->edit(bv_,
 				       tmpinset->x() +
 				       tmpinset->width(bv_,font),
 				       y, 0);
@@ -2668,7 +2671,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 	{
 		InsetText * new_inset = new InsetText;
 		if (insertInset(new_inset))
-			new_inset->Edit(bv_, 0, 0, 0);
+			new_inset->edit(bv_, 0, 0, 0);
 		else
 			delete new_inset;
 	}
@@ -2678,7 +2681,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 	{
 		InsetERT * new_inset = new InsetERT;
 		if (insertInset(new_inset))
-			new_inset->Edit(bv_, 0, 0, 0);
+			new_inset->edit(bv_, 0, 0, 0);
 		else
 			delete new_inset;
 	}
@@ -2688,7 +2691,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 	{
 		InsetExternal * new_inset = new InsetExternal;
 		if (insertInset(new_inset))
-			new_inset->Edit(bv_, 0, 0, 0);
+			new_inset->edit(bv_, 0, 0, 0);
 		else
 			delete new_inset;
 	}
@@ -2698,7 +2701,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 	{
 		InsetFoot * new_inset = new InsetFoot;
 		if (insertInset(new_inset))
-			new_inset->Edit(bv_, 0, 0, 0);
+			new_inset->edit(bv_, 0, 0, 0);
 		else
 			delete new_inset;
 	}
@@ -2708,7 +2711,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 	{
 		InsetMarginal * new_inset = new InsetMarginal;
 		if (insertInset(new_inset))
-			new_inset->Edit(bv_, 0, 0, 0);
+			new_inset->edit(bv_, 0, 0, 0);
 		else
 			delete new_inset;
 	}
@@ -2718,7 +2721,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 	{
 		InsetMinipage * new_inset = new InsetMinipage;
 		if (insertInset(new_inset))
-			new_inset->Edit(bv_, 0, 0, 0);
+			new_inset->edit(bv_, 0, 0, 0);
 		else
 			delete new_inset;
 	}
@@ -2730,7 +2733,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		if (floatList.typeExist(argument)) {
 			InsetFloat * new_inset = new InsetFloat(argument);
 			if (insertInset(new_inset))
-				new_inset->Edit(bv_, 0, 0, 0);
+				new_inset->edit(bv_, 0, 0, 0);
 			else
 				delete new_inset;
 		} else {
@@ -2748,7 +2751,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 			InsetFloat * new_inset = new InsetFloat(argument);
 			new_inset->wide(true);
 			if (insertInset(new_inset))
-				new_inset->Edit(bv_, 0, 0, 0);
+				new_inset->edit(bv_, 0, 0, 0);
 			else
 				delete new_inset;
 		} else {
@@ -2763,7 +2766,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 	{
 		InsetList * new_inset = new InsetList;
 		if (insertInset(new_inset))
-			new_inset->Edit(bv_, 0, 0, 0);
+			new_inset->edit(bv_, 0, 0, 0);
 		else
 			delete new_inset;
 	}
@@ -2773,7 +2776,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 	{
 		InsetTheorem * new_inset = new InsetTheorem;
 		if (insertInset(new_inset))
-			new_inset->Edit(bv_, 0, 0, 0);
+			new_inset->edit(bv_, 0, 0, 0);
 		else
 			delete new_inset;
 	}
@@ -2784,14 +2787,14 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		// Do we have a locking inset...
 		if (bv_->theLockingInset()) {
 			lyxerr << "Locking inset code: "
-			       << static_cast<int>(bv_->theLockingInset()->LyxCode());
+			       << static_cast<int>(bv_->theLockingInset()->lyxCode());
 			InsetCaption * new_inset = new InsetCaption;
 			new_inset->setOwner(bv_->theLockingInset());
-			new_inset->SetAutoBreakRows(true);
-			new_inset->SetDrawFrame(0, InsetText::LOCKED);
-			new_inset->SetFrameColor(0, LColor::captionframe);
+			new_inset->setAutoBreakRows(true);
+			new_inset->setDrawFrame(0, InsetText::LOCKED);
+			new_inset->setFrameColor(0, LColor::captionframe);
 			if (insertInset(new_inset))
-				new_inset->Edit(bv_, 0, 0, 0);
+				new_inset->edit(bv_, 0, 0, 0);
 			else
 				delete new_inset;
 		}
@@ -2914,7 +2917,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		if (available()) { 
 			if (open_new_inset(new InsetFormula, false)) {
 				bv_->theLockingInset()
-					->LocalDispatch(bv_, action, argument);
+					->localDispatch(bv_, action, argument);
 			}
 		}
 	}	   
@@ -2927,7 +2930,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
  
 		InsetFormula * f = new InsetFormula(LM_OT_EQUATION);
 		open_new_inset(f);
-		f->LocalDispatch(bv_, LFUN_INSERT_MATH, argument);
+		f->localDispatch(bv_, LFUN_INSERT_MATH, argument);
 	}
 	break;
 	
@@ -2989,7 +2992,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		
 		if (insertInset(inset)) {
 			if (argument.empty())
-				inset->Edit(bv_, 0, 0, 0);
+				inset->edit(bv_, 0, 0, 0);
 		} else
 			delete inset;
 	}
@@ -3327,7 +3330,7 @@ void BufferView::Pimpl::insertNote()
 {
 	InsetInfo * new_inset = new InsetInfo();
 	insertInset(new_inset);
-	new_inset->Edit(bv_, 0, 0, 0);
+	new_inset->edit(bv_, 0, 0, 0);
 }
 
 
@@ -3344,9 +3347,9 @@ bool BufferView::Pimpl::open_new_inset(UpdatableInset * new_inset, bool behind)
 	}
 	if (behind) {
 		LyXFont & font = lt->real_current_font;
-		new_inset->Edit(bv_, new_inset->width(bv_, font), 0, 0);
+		new_inset->edit(bv_, new_inset->width(bv_, font), 0, 0);
 	} else
-		new_inset->Edit(bv_, 0, 0, 0);
+		new_inset->edit(bv_, 0, 0, 0);
 	return true;
 }
 
@@ -3356,8 +3359,8 @@ bool BufferView::Pimpl::insertInset(Inset * inset, string const & lout)
 	// if we are in a locking inset we should try to insert the
 	// inset there otherwise this is a illegal function now
 	if (bv_->theLockingInset()) {
-		if (bv_->theLockingInset()->InsertInsetAllowed(inset))
-		    return bv_->theLockingInset()->InsertInset(bv_, inset);
+		if (bv_->theLockingInset()->insertInsetAllowed(inset))
+		    return bv_->theLockingInset()->insertInset(bv_, inset);
 		return false;
 	}
 
@@ -3428,7 +3431,7 @@ void BufferView::Pimpl::updateInset(Inset * inset, bool mark_dirty)
 				updateScrollbar();
 				return;
 			}
-		} else if (bv_->theLockingInset()->UpdateInsetInInset(bv_, inset)) {
+		} else if (bv_->theLockingInset()->updateInsetInInset(bv_, inset)) {
 			if (bv_->text->updateInset(bv_,
 						   bv_->theLockingInset())) {
 				update();
@@ -3473,7 +3476,7 @@ void BufferView::Pimpl::gotoInset(vector<Inset::Code> const & codes,
 	if (same_content &&
 	    bv_->text->cursor.par()->getChar(bv_->text->cursor.pos()) == Paragraph::META_INSET) {
 		Inset const * inset = bv_->text->cursor.par()->getInset(bv_->text->cursor.pos());
-		if (find(codes.begin(), codes.end(), inset->LyxCode())
+		if (find(codes.begin(), codes.end(), inset->lyxCode())
 		    != codes.end())
 			contents =
 				static_cast<InsetCommand const *>(inset)->getContents();

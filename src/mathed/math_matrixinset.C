@@ -80,7 +80,7 @@ MathMatrixInset::MathMatrixInset()
 	: MathGridInset(1, 1, "formula", LM_OT_SIMPLE), nonum_(1), label_(1)
 {}
 
-MathInset * MathMatrixInset::Clone() const
+MathInset * MathMatrixInset::clone() const
 {
 	return new MathMatrixInset(*this);
 }

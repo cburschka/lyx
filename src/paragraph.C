@@ -126,7 +126,7 @@ Paragraph::Paragraph(Paragraph const & lp)
         // ale970302
 	if (lp.bibkey)
 		bibkey = static_cast<InsetBibKey *>
-			(lp.bibkey->Clone(*current_view->buffer()));
+			(lp.bibkey->clone(*current_view->buffer()));
 	else
 		bibkey = 0;
 	
@@ -135,7 +135,7 @@ Paragraph::Paragraph(Paragraph const & lp)
 	insetlist = lp.insetlist;
 	for (InsetList::iterator it = insetlist.begin();
 	     it != insetlist.end(); ++it)
-		it->inset = it->inset->Clone(*current_view->buffer());
+		it->inset = it->inset->clone(*current_view->buffer());
 }
 
 
@@ -236,7 +236,7 @@ void Paragraph::writeFile(Buffer const * buf, ostream & os,
 	
 	// bibitem  ale970302
 	if (bibkey)
-		bibkey->Write(buf, os);
+		bibkey->write(buf, os);
 	
 	LyXFont font1(LyXFont::ALL_INHERIT, bparams.language);
 	
@@ -261,14 +261,14 @@ void Paragraph::writeFile(Buffer const * buf, ostream & os,
 		{
 			Inset const * inset = getInset(i);
 			if (inset)
-				if (inset->DirectWrite()) {
+				if (inset->directWrite()) {
 					// international char, let it write
 					// code directly so it's shorter in
 					// the file
-					inset->Write(buf, os);
+					inset->write(buf, os);
 				} else {
 					os << "\n\\begin_inset ";
-					inset->Write(buf, os);
+					inset->write(buf, os);
 					os << "\n\\end_inset \n\n";
 					column = 0;
 				}
@@ -368,7 +368,7 @@ void Paragraph::validate(LaTeXFeatures & features) const
 	for (InsetList::const_iterator cit = insetlist.begin();
 	     cit != insetlist.end(); ++cit) {
 		if ((*cit).inset)
-			(*cit).inset->Validate(features);
+			(*cit).inset->validate(features);
 	}
 }
 
@@ -384,7 +384,7 @@ void Paragraph::copyIntoMinibuffer(Buffer const & buffer,
 	minibuffer_inset = 0;
 	if (minibuffer_char == Paragraph::META_INSET) {
 		if (getInset(pos)) {
-			minibuffer_inset = getInset(pos)->Clone(buffer);
+			minibuffer_inset = getInset(pos)->clone(buffer);
 		} else {
 			minibuffer_inset = 0;
 			minibuffer_char = ' ';
@@ -493,7 +493,7 @@ bool Paragraph::insertInsetAllowed(Inset * inset)
 	//lyxerr << "Paragraph::InsertInsetAllowed" << endl;
 	
 	if (pimpl_->inset_owner)
-		return pimpl_->inset_owner->InsertInsetAllowed(inset);
+		return pimpl_->inset_owner->insertInsetAllowed(inset);
 	return true;
 }
 
@@ -1190,7 +1190,7 @@ int Paragraph::autoDeleteInsets()
 	int count = 0;
 	InsetList::size_type index = 0;
 	while (index < insetlist.size()) {
-		if (insetlist[index].inset && insetlist[index].inset->AutoDelete()) {
+		if (insetlist[index].inset && insetlist[index].inset->autoDelete()) {
 			erase(insetlist[index].pos); 
 			// Erase() calls to insetlist.erase(&insetlist[index])
 			// so index shouldn't be increased.
@@ -1306,7 +1306,7 @@ Paragraph * Paragraph::TeXOnePar(Buffer const * buf,
 		break;
 	case LATEX_ITEM_ENVIRONMENT:
 	        if (bibkey) {
-			bibkey->Latex(buf, os, false, false);
+			bibkey->latex(buf, os, false, false);
 		} else
 			os << "\\item ";
 		break;
@@ -1896,9 +1896,9 @@ string const Paragraph::asString(Buffer const * buffer, bool label)
 		if (IsPrintable(c))
 			s += c;
 		else if (c == META_INSET &&
-			 getInset(i)->LyxCode() == Inset::MATH_CODE) {
+			 getInset(i)->lyxCode() == Inset::MATH_CODE) {
 			std::ostringstream ost;
-			getInset(i)->Ascii(buffer, ost);
+			getInset(i)->ascii(buffer, ost);
 			s += subst(ost.str().c_str(),'\n',' ');
 		}
 	}
@@ -1924,7 +1924,7 @@ string const Paragraph::asString(Buffer const * buffer,
 		if (IsPrintable(c))
 			ost << c;
 		else if (c == META_INSET) {
-			getInset(i)->Ascii(buffer, ost);
+			getInset(i)->ascii(buffer, ost);
 		}
 	}
 
@@ -1949,7 +1949,7 @@ void Paragraph::deleteInsetsLyXText(BufferView * bv)
 	for (InsetList::const_iterator cit = insetlist.begin();
 	     cit != insetlist.end(); ++cit) {
 		if ((*cit).inset) {
-			if ((*cit).inset->IsTextInset()) {
+			if ((*cit).inset->isTextInset()) {
 				static_cast<UpdatableInset *>
 					((*cit).inset)->deleteLyXText(bv, true);
 			}
@@ -1964,7 +1964,7 @@ void Paragraph::resizeInsetsLyXText(BufferView * bv)
 	for (InsetList::const_iterator cit = insetlist.begin();
 	     cit != insetlist.end(); ++cit) {
 		if ((*cit).inset) {
-			if ((*cit).inset->IsTextInset()) {
+			if ((*cit).inset->isTextInset()) {
 				static_cast<UpdatableInset *>
 					((*cit).inset)->resizeLyXText(bv, true);
 			}

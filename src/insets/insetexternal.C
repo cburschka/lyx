@@ -63,13 +63,13 @@ void InsetExternal::setFromParams(Params const & p)
 }      
 
 
-string const InsetExternal::EditMessage() const
+string const InsetExternal::editMessage() const
 {
 	return doSubstitution(0, params_.templ.guiName);
 }
 
 
-void InsetExternal::Edit(BufferView * bv,
+void InsetExternal::edit(BufferView * bv,
 			 int /*x*/, int /*y*/, unsigned int /*button*/)
 {
 	view_ = bv;
@@ -77,14 +77,14 @@ void InsetExternal::Edit(BufferView * bv,
 }
 
 
-void InsetExternal::Write(Buffer const *, std::ostream & os) const
+void InsetExternal::write(Buffer const *, std::ostream & os) const
 {
 	os << "External " << params_.templ.lyxName << ",\"" << params_.filename 
 	   << "\",\"" << params_.parameters << "\"\n";
 }
 
 
-void InsetExternal::Read(Buffer const *, LyXLex & lex)
+void InsetExternal::read(Buffer const *, LyXLex & lex)
 {
 	string format;
 	string token;
@@ -142,32 +142,32 @@ int InsetExternal::write(string const & format,
 }
 
 
-int InsetExternal::Latex(Buffer const * buf,
+int InsetExternal::latex(Buffer const * buf,
 			 std::ostream & os, bool, bool) const
 {
 	return write("LaTeX", buf, os);
 }
 
 
-int InsetExternal::Ascii(Buffer const * buf, std::ostream & os, int) const
+int InsetExternal::ascii(Buffer const * buf, std::ostream & os, int) const
 {
 	return write("Ascii", buf, os);
 }
 
 
-int InsetExternal::Linuxdoc(Buffer const * buf, std::ostream & os) const
+int InsetExternal::linuxdoc(Buffer const * buf, std::ostream & os) const
 {
 	return write("LinuxDoc", buf, os);
 }
 
 
-int InsetExternal::DocBook(Buffer const * buf, std::ostream & os) const
+int InsetExternal::docBook(Buffer const * buf, std::ostream & os) const
 {
 	return write("DocBook", buf, os);
 }
 
 
-void InsetExternal::Validate(LaTeXFeatures & features) const
+void InsetExternal::validate(LaTeXFeatures & features) const
 {
 	ExternalTemplate const & et = params_.templ;
 	ExternalTemplate::Formats::const_iterator cit =
@@ -185,7 +185,7 @@ void InsetExternal::Validate(LaTeXFeatures & features) const
 }
 
 
-Inset * InsetExternal::Clone(Buffer const &) const
+Inset * InsetExternal::clone(Buffer const &) const
 {
 	InsetExternal * inset = new InsetExternal();
 	inset->params_ = params_;

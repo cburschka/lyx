@@ -140,7 +140,7 @@ void InsetCommandParams::scanCommand(string const & cmd)
 
 
 // This function will not be necessary when lyx3
-void InsetCommandParams::Read(LyXLex & lex)
+void InsetCommandParams::read(LyXLex & lex)
 {    
 	string token;
 
@@ -162,7 +162,7 @@ void InsetCommandParams::Read(LyXLex & lex)
 }
 
 
-void InsetCommandParams::Write(ostream & os) const
+void InsetCommandParams::write(ostream & os) const
 {
 	os << "LatexCommand " << getCommand() << "\n";
 }
@@ -191,7 +191,7 @@ void InsetCommand::setParams(InsetCommandParams const & p )
 }
 
 
-int InsetCommand::Latex(Buffer const *, ostream & os,
+int InsetCommand::latex(Buffer const *, ostream & os,
 			bool /*fragile*/, bool/*fs*/) const
 {
 	os << getCommand();
@@ -199,19 +199,19 @@ int InsetCommand::Latex(Buffer const *, ostream & os,
 }
 
 
-int InsetCommand::Ascii(Buffer const *, ostream &, int) const
+int InsetCommand::ascii(Buffer const *, ostream &, int) const
 {
 	return 0;
 }
 
 
-int InsetCommand::Linuxdoc(Buffer const *, ostream &) const
+int InsetCommand::linuxdoc(Buffer const *, ostream &) const
 {
 	return 0;
 }
 
 
-int InsetCommand::DocBook(Buffer const *, ostream &) const
+int InsetCommand::docBook(Buffer const *, ostream &) const
 {
 	return 0;
 }

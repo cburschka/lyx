@@ -411,7 +411,7 @@ bool BufferView::lockInset(UpdatableInset * inset)
 		theLockingInset(inset);
 		return true;
 	} else if (inset) {
-	    return theLockingInset()->LockInsetInInset(this, inset);
+	    return theLockingInset()->lockInsetInInset(this, inset);
 	}
 	return false;
 }
@@ -425,12 +425,12 @@ void BufferView::showLockedInsetCursor(int x, int y, int asc, int desc)
 		    (cursor.par()->getChar(cursor.pos() - 1) ==
 		     Paragraph::META_INSET) &&
 		    (cursor.par()->getInset(cursor.pos() - 1) ==
-		     theLockingInset()->GetLockingInset()))
+		     theLockingInset()->getLockingInset()))
 			text->setCursor(this, cursor,
 					cursor.par(), cursor.pos() - 1);
 		LyXScreen::Cursor_Shape shape = LyXScreen::BAR_SHAPE;
 		LyXText * txt = getLyXText();
-		if (theLockingInset()->GetLockingInset()->LyxCode() ==
+		if (theLockingInset()->getLockingInset()->lyxCode() ==
 		    Inset::TEXT_CODE &&
 		    (txt->real_current_font.language() !=
 		     buffer()->params.language
@@ -439,7 +439,7 @@ void BufferView::showLockedInsetCursor(int x, int y, int asc, int desc)
 			shape = (txt->real_current_font.isVisibleRightToLeft())
 				? LyXScreen::REVERSED_L_SHAPE
 				: LyXScreen::L_SHAPE;
-		y += cursor.y() + theLockingInset()->InsetInInsetY();
+		y += cursor.y() + theLockingInset()->insetInInsetY();
 		pimpl_->screen_->ShowManualCursor(text, x, y, asc, desc,
 						  shape);
 	}
@@ -457,7 +457,7 @@ void BufferView::hideLockedInsetCursor()
 void BufferView::fitLockedInsetCursor(int x, int y, int asc, int desc)
 {
 	if (theLockingInset() && available()) {
-		y += text->cursor.y() + theLockingInset()->InsetInInsetY();
+		y += text->cursor.y() + theLockingInset()->insetInInsetY();
 		if (pimpl_->screen_->FitManualCursor(text, this, x, y, asc, desc))
 			updateScrollbar();
 	}
@@ -467,12 +467,12 @@ void BufferView::fitLockedInsetCursor(int x, int y, int asc, int desc)
 int BufferView::unlockInset(UpdatableInset * inset)
 {
 	if (inset && theLockingInset() == inset) {
-		inset->InsetUnlock(this);
+		inset->insetUnlock(this);
 		theLockingInset(0);
 		text->finishUndo();
 		return 0;
 	} else if (inset && theLockingInset() &&
-		   theLockingInset()->UnlockInsetInInset(this, inset)) {
+		   theLockingInset()->unlockInsetInInset(this, inset)) {
 		text->finishUndo();
 		return 0;
 	}
@@ -512,7 +512,7 @@ bool BufferView::ChangeInsets(Inset::Code code,
 		bool flag2 = false;
 		for (Paragraph::inset_iterator it = par->inset_iterator_begin();
 		     it != par->inset_iterator_end(); ++it) {
-			if ((*it)->LyxCode() == code) {
+			if ((*it)->lyxCode() == code) {
 				InsetCommand * inset = static_cast<InsetCommand *>(*it);
 				if (inset->getContents() == from) {
 					inset->setContents(to);

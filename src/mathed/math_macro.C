@@ -38,7 +38,7 @@ MathMacro::MathMacro(MathMacroTemplate const & t)
 {}
 
 
-MathInset * MathMacro::Clone() const
+MathInset * MathMacro::clone() const
 {
 	return new MathMacro(*this);
 }

@@ -15,7 +15,7 @@ public:
 	///
 	MathSpaceInset(int sp, MathInsetTypes ot = LM_OT_SPACE);
 	///
-	MathInset *  Clone() const;
+	MathInset *  clone() const;
 	///
 	void draw(Painter &, int, int);
 	///

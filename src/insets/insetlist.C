@@ -50,14 +50,14 @@ InsetList::InsetList()
 }
 
 
-void InsetList::Write(Buffer const * buf, ostream & os) const
+void InsetList::write(Buffer const * buf, ostream & os) const
 {
 	os << getInsetName() << "\n";
-	InsetCollapsable::Write(buf, os);
+	InsetCollapsable::write(buf, os);
 }
 
 
-Inset * InsetList::Clone(Buffer const &) const
+Inset * InsetList::clone(Buffer const &) const
 {
 	InsetList * result = new InsetList;
 	result->inset.init(&inset);
@@ -67,28 +67,28 @@ Inset * InsetList::Clone(Buffer const &) const
 }
 
 
-string const InsetList::EditMessage() const
+string const InsetList::editMessage() const
 {
 	return _("Opened List Inset");
 }
 
 
-int InsetList::Latex(Buffer const * buf,
+int InsetList::latex(Buffer const * buf,
 		     ostream & os, bool fragile, bool fp) const
 {
 	os << "\\footnote{%\n";
 	
-	int i = inset.Latex(buf, os, fragile, fp);
+	int i = inset.latex(buf, os, fragile, fp);
 	os << "}%\n";
 	
 	return i + 2;
 }
 
 
-bool InsetList::InsertInsetAllowed(Inset * in) const
+bool InsetList::insertInsetAllowed(Inset * in) const
 {
-	if ((in->LyxCode() == Inset::FOOT_CODE) ||
-	    (in->LyxCode() == Inset::MARGIN_CODE)) {
+	if ((in->lyxCode() == Inset::FOOT_CODE) ||
+	    (in->lyxCode() == Inset::MARGIN_CODE)) {
 		return false;
 	}
 	return true;

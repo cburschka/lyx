@@ -385,7 +385,7 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 		checkminipage = true;
 	} else if (token == "\\i") {
 		Inset * inset = new InsetLatexAccent;
-		inset->Read(this, lex);
+		inset->read(this, lex);
 		par->insertInset(pos, inset, font);
 		++pos;
 	} else if (token == "\\layout") {
@@ -565,7 +565,7 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 		istringstream istr(old_float.str());
 		LyXLex nylex(0, 0);
 		nylex.setStream(istr);
-		inset->Read(this, nylex);
+		inset->read(this, nylex);
 		par->insertInset(pos, inset, font);
 		++pos;
 	} else if (token == "\\begin_deeper") {
@@ -999,7 +999,7 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 			}
 		} else {
 			Inset * inset = new InsetSpecialChar;
-			inset->Read(this, lex);
+			inset->read(this, lex);
 			par->insertInset(pos, inset, font);
 		}
 		++pos;
@@ -1008,7 +1008,7 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 		++pos;
 	} else if (token == "\\LyXTable") {
 		Inset * inset = new InsetTabular(*this);
-		inset->Read(this, lex);
+		inset->read(this, lex);
 		par->insertInset(pos, inset, font);
 		++pos;
 		// because of OLD_TABULAR_READ where tabulars have been
@@ -1037,7 +1037,7 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 			InsetCommandParams p("bibitem", "dummy");
 			par->bibkey = new InsetBibKey(p);
 		}
-		par->bibkey->Read(this, lex);		        
+		par->bibkey->read(this, lex);		        
 	} else if (token == "\\backslash") {
 		par->insertChar(pos, '\\', font);
 		++pos;
@@ -1221,7 +1221,7 @@ void Buffer::readInset(LyXLex & lex, Paragraph *& par,
 	// test the different insets
 	if (tmptok == "LatexCommand") {
 		InsetCommandParams inscmd;
-		inscmd.Read(lex);
+		inscmd.read(lex);
 
 		string const cmdName = inscmd.getCmdName();
 		
@@ -1307,7 +1307,7 @@ void Buffer::readInset(LyXLex & lex, Paragraph *& par,
 			inset = new InsetFloatList;
 		}
 		
-		if (inset) inset->Read(this, lex);
+		if (inset) inset->read(this, lex);
 	}
 	
 	if (inset) {
@@ -1670,7 +1670,7 @@ string const Buffer::asciiParagraph(Paragraph const * par,
 		{
 			Inset const * inset = par->getInset(i);
 			if (inset) {
-				if (!inset->Ascii(this, buffer)) {
+				if (!inset->ascii(this, buffer)) {
 					string dummy;
 					string const s =
 						rsplit(buffer.str().c_str(),
@@ -2412,7 +2412,7 @@ void Buffer::makeLinuxDocFile(string const & fname, bool nice, bool body_only)
 		// treat <toc> as a special case for compatibility with old code
 		if (par->getChar(0) == Paragraph::META_INSET) {
 		        Inset * inset = par->getInset(0);
-			Inset::Code lyx_code = inset->LyxCode();
+			Inset::Code lyx_code = inset->lyxCode();
 			if (lyx_code == Inset::TOC_CODE){
 				string const temp = "toc";
 				sgmlOpenTag(ofs, depth, temp);
@@ -2445,7 +2445,7 @@ void Buffer::makeLinuxDocFile(string const & fname, bool nice, bool body_only)
 
 		case LATEX_COMMAND:
 			if (depth!= 0)
-				LinuxDocError(par, 0,
+				linuxDocError(par, 0,
 					      _("Error : Wrong depth for"
 						" LatexType Command.\n"));
 
@@ -2499,7 +2499,7 @@ void Buffer::makeLinuxDocFile(string const & fname, bool nice, bool body_only)
 			break;
 		}
 
-		SimpleLinuxDocOnePar(ofs, par, depth);
+		simpleLinuxDocOnePar(ofs, par, depth);
 
 		par = par->next();
 
@@ -2533,7 +2533,7 @@ void Buffer::makeLinuxDocFile(string const & fname, bool nice, bool body_only)
 }
 
 
-void Buffer::DocBookHandleCaption(ostream & os, string & inner_tag,
+void Buffer::docBookHandleCaption(ostream & os, string & inner_tag,
 				  Paragraph::depth_type depth, int desc_on,
 				  Paragraph * & par)
 {
@@ -2548,7 +2548,7 @@ void Buffer::DocBookHandleCaption(ostream & os, string & inner_tag,
 							 "Caption").second) {
 		sgmlOpenTag(os, depth + 1, inner_tag);
 		string extra_par;
-		SimpleDocBookOnePar(os, extra_par, tpar,
+		simpleDocBookOnePar(os, extra_par, tpar,
 				    desc_on, depth + 2);
 		sgmlCloseTag(os, depth+1, inner_tag);
 		if (!extra_par.empty())
@@ -2615,7 +2615,7 @@ void reset(PAR_TAG & p1, PAR_TAG const & p2)
 
 
 // Handle internal paragraph parsing -- layout already processed.
-void Buffer::SimpleLinuxDocOnePar(ostream & os,
+void Buffer::simpleLinuxDocOnePar(ostream & os,
 				  Paragraph * par, 
 				  Paragraph::depth_type /*depth*/)
 {
@@ -2759,7 +2759,7 @@ void Buffer::SimpleLinuxDocOnePar(ostream & os,
 
 		if (c == Paragraph::META_INSET) {
 			Inset * inset = par->getInset(i);
-			inset->Linuxdoc(this, os);
+			inset->linuxdoc(this, os);
 			font_old = font;
 			continue;
 		}
@@ -2812,7 +2812,7 @@ void Buffer::SimpleLinuxDocOnePar(ostream & os,
 
 
 // Print an error message.
-void Buffer::LinuxDocError(Paragraph * par, int pos,
+void Buffer::linuxDocError(Paragraph * par, int pos,
 			   string const & message) 
 {
 	// insert an error marker in text
@@ -2938,7 +2938,7 @@ void Buffer::makeDocBookFile(string const & fname, bool nice, bool only_body)
 
 		case LATEX_COMMAND:
 			if (depth != 0)
-				LinuxDocError(par, 0,
+				linuxDocError(par, 0,
 					      _("Error : Wrong depth for "
 						"LatexType Command.\n"));
 			
@@ -2972,7 +2972,7 @@ void Buffer::makeDocBookFile(string const & fname, bool nice, bool only_body)
 			// more WYSIWYM handling.
 			if (par->getChar(0) == Paragraph::META_INSET) {
 			        Inset * inset = par->getInset(0);
-				Inset::Code lyx_code = inset->LyxCode();
+				Inset::Code lyx_code = inset->lyxCode();
 				if (lyx_code == Inset::LABEL_CODE){
 					command_name += " id=\"";
 					command_name += (static_cast<InsetCommand *>(inset))->getContents();
@@ -3056,7 +3056,7 @@ void Buffer::makeDocBookFile(string const & fname, bool nice, bool only_body)
 		}
 
 		string extra_par;
-		SimpleDocBookOnePar(ofs, extra_par, par, desc_on,
+		simpleDocBookOnePar(ofs, extra_par, par, desc_on,
 				    depth + 1 + command_depth);
 		par = par->next();
 
@@ -3122,7 +3122,7 @@ void Buffer::makeDocBookFile(string const & fname, bool nice, bool only_body)
 }
 
 
-void Buffer::SimpleDocBookOnePar(ostream & os, string & extra,
+void Buffer::simpleDocBookOnePar(ostream & os, string & extra,
 				 Paragraph * par, int & desc_on,
 				 Paragraph::depth_type depth) const
 {
@@ -3158,7 +3158,7 @@ void Buffer::SimpleDocBookOnePar(ostream & os, string & extra,
 		if (c == Paragraph::META_INSET) {
 			Inset * inset = par->getInset(i);
 			std::ostringstream ost;
-			inset->DocBook(this, ost);
+			inset->docBook(this, ost);
 			string tmp_out = ost.str().c_str();
 
 			//
@@ -3360,7 +3360,7 @@ string const Buffer::getIncludeonlyList(char delim)
 	string lst;
 	for (inset_iterator it = inset_iterator_begin();
 	    it != inset_iterator_end(); ++it) {
-		if ((*it)->LyxCode() == Inset::INCLUDE_CODE) {
+		if ((*it)->lyxCode() == Inset::INCLUDE_CODE) {
 			InsetInclude * insetinc = 
 				static_cast<InsetInclude *>(*it);
 			if (insetinc->isIncludeOnly()) {
@@ -3429,7 +3429,7 @@ Buffer::Lists const Buffer::getLists() const
 				par->inset_iterator_end();
 			
 			for (; it != end; ++it) {
-				if ((*it)->LyxCode() == Inset::FLOAT_CODE) {
+				if ((*it)->lyxCode() == Inset::FLOAT_CODE) {
 					InsetFloat * il =
 						static_cast<InsetFloat*>(*it);
 					
@@ -3485,11 +3485,11 @@ vector<pair<string, string> > const Buffer::getBibkeyList()
 		for (inset_iterator it = inset_iterator_begin();
 			it != inset_iterator_end(); ++it) {
 			// Search for Bibtex or Include inset
-			if ((*it)->LyxCode() == Inset::BIBTEX_CODE) {
+			if ((*it)->lyxCode() == Inset::BIBTEX_CODE) {
 				vector<pair<string,string> > tmp =
 					static_cast<InsetBibtex*>(*it)->getKeys(this);
 				keys.insert(keys.end(), tmp.begin(), tmp.end());
-			} else if ((*it)->LyxCode() == Inset::INCLUDE_CODE) {
+			} else if ((*it)->lyxCode() == Inset::INCLUDE_CODE) {
 				vector<pair<string,string> > const tmp =
 					static_cast<InsetInclude*>(*it)->getKeys();
 				keys.insert(keys.end(), tmp.begin(), tmp.end());
@@ -3534,18 +3534,18 @@ void Buffer::markDepClean(string const & name)
 }
 
 
-bool Buffer::Dispatch(string const & command)
+bool Buffer::dispatch(string const & command)
 {
 	// Split command string into command and argument
 	string cmd;
 	string line = frontStrip(command);
 	string const arg = strip(frontStrip(split(line, cmd, ' ')));
 
-	return Dispatch(lyxaction.LookupFunc(cmd), arg);
+	return dispatch(lyxaction.LookupFunc(cmd), arg);
 }
 
 
-bool Buffer::Dispatch(int action, string const & argument)
+bool Buffer::dispatch(int action, string const & argument)
 {
 	bool dispatched = true;
 	switch (action) {
@@ -3577,7 +3577,7 @@ void Buffer::redraw()
 }
 
 
-void Buffer::ChangeLanguage(Language const * from, Language const * to)
+void Buffer::changeLanguage(Language const * from, Language const * to)
 {
 
 	Paragraph * par = paragraph;
@@ -3607,12 +3607,12 @@ Buffer::inset_iterator::inset_iterator(Paragraph * paragraph,
 	it = par->InsetIterator(pos);
 	if (it == par->inset_iterator_end()) {
 		par = par->next();
-		SetParagraph();
+		setParagraph();
 	}
 }
 
 
-void Buffer::inset_iterator::SetParagraph()
+void Buffer::inset_iterator::setParagraph()
 {
 	while (par) {
 		it = par->inset_iterator_begin();

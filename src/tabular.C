@@ -152,7 +152,7 @@ LyXTabular & LyXTabular::operator=(LyXTabular const & lt)
 }
 
 
-LyXTabular * LyXTabular::Clone(InsetTabular * inset)
+LyXTabular * LyXTabular::clone(InsetTabular * inset)
 {
 	LyXTabular * result = new LyXTabular(inset, *this);
 #if 0
@@ -187,7 +187,7 @@ void LyXTabular::Init(int rows_arg, int columns_arg, LyXTabular const * lt)
 	for (int i = 0; i < rows_; ++i) {
 		for (int j = 0; j < columns_; ++j) {
 			cell_info[i][j].inset.setOwner(owner_);
-			cell_info[i][j].inset.SetDrawFrame(0, InsetText::LOCKED);
+			cell_info[i][j].inset.setDrawFrame(0, InsetText::LOCKED);
 			cell_info[i][j].cellno = cellno++;
 		}
 		cell_info[i].back().right_line = true;
@@ -382,7 +382,7 @@ void LyXTabular::set_row_column_number_info(bool oldformat)
 				cell_info[row][column].right_line =
 					cell_info[row][column+cn-1].right_line;
 			}
-			cell_info[row][column].inset.SetAutoBreakRows(
+			cell_info[row][column].inset.setAutoBreakRows(
 				!GetPWidth(GetCellNumber(row, column)).empty());
 		}
 	}
@@ -668,7 +668,7 @@ bool LyXTabular::SetColumnPWidth(int cell, string const & width)
 	for (int i = 0; i < rows_; ++i) {
 		int c = GetCellNumber(i, j);
 		flag = !GetPWidth(c).empty(); // because of multicolumns!
-		GetCellInset(c)->SetAutoBreakRows(flag);
+		GetCellInset(c)->setAutoBreakRows(flag);
 	}
 	return true;
 }
@@ -680,7 +680,7 @@ bool LyXTabular::SetMColumnPWidth(int cell, string const & width)
 
 	cellinfo_of_cell(cell)->p_width = width;
 	if (IsMultiColumn(cell)) {
-		GetCellInset(cell)->SetAutoBreakRows(flag);
+		GetCellInset(cell)->setAutoBreakRows(flag);
 		return true;
 	}
 	return false;
@@ -1078,7 +1078,7 @@ void LyXTabular::Write(Buffer const * buf, ostream & os) const
 			   << write_attribute("special", cell_info[i][j].align_special)
 			   << ">\n";
 			os << "\\begin_inset ";
-			cell_info[i][j].inset.Write(buf, os);
+			cell_info[i][j].inset.write(buf, os);
 			os << "\n\\end_inset \n"
 			   << "</cell>\n";
 		}
@@ -1329,7 +1329,7 @@ void LyXTabular::ReadNew(Buffer const * buf, istream & is,
 			getTokenValue(line, "special", cell_info[i][j].align_special);
 			l_getline(is, line);
 			if (prefixIs(line, "\\begin_inset")) {
-				cell_info[i][j].inset.Read(buf, lex);
+				cell_info[i][j].inset.read(buf, lex);
 				l_getline(is, line);
 			}
 			if (!prefixIs(line, "</cell>")) {
@@ -1493,7 +1493,7 @@ void LyXTabular::OldFormatRead(LyXLex & lex, string const & fl)
 	int pos = 0;
 	Paragraph::depth_type depth = 0;
 	LyXFont font(LyXFont::ALL_INHERIT);
-	font.setLanguage(owner_->BufferOwner()->GetLanguage());
+	font.setLanguage(owner_->bufferOwner()->getLanguage());
 
 	while (lex.IsOK()) {
 		lex.nextToken();
@@ -1506,7 +1506,7 @@ void LyXTabular::OldFormatRead(LyXLex & lex, string const & fl)
 			lex.pushToken(token);
 			break;
 		}
-		if (owner_->BufferOwner()->parseSingleLyXformat2Token(lex, par,
+		if (owner_->bufferOwner()->parseSingleLyXformat2Token(lex, par,
 															  return_par,
 															  token, pos,
 															  depth, font)) {
@@ -1555,7 +1555,7 @@ void LyXTabular::OldFormatRead(LyXLex & lex, string const & fl)
 				par->insertChar(i, ' ');
 			}
 		}
-		par->copyIntoMinibuffer(*owner_->BufferOwner(), i);
+		par->copyIntoMinibuffer(*owner_->bufferOwner(), i);
 		inset->par->insertFromMinibuffer(inset->par->size());
 	}
 	delete par;
@@ -2168,7 +2168,7 @@ int LyXTabular::Latex(Buffer const * buf,
 
 			if (rtl)
 				os << "\\R{";
-			ret += inset->Latex(buf, os, fragile, fp);
+			ret += inset->latex(buf, os, fragile, fp);
 			if (rtl)
 				os << "}";
 
@@ -2297,7 +2297,7 @@ int LyXTabular::DocBook(Buffer const * buf, ostream & os) const
 			}
 		
 			os << ">";
-			ret += GetCellInset(cell)->DocBook(buf, os);
+			ret += GetCellInset(cell)->docBook(buf, os);
 			os << "</entry>";
 			++cell;
 		}
@@ -2425,7 +2425,7 @@ int LyXTabular::AsciiPrintCell(Buffer const * buf, ostream & os,
 							   vector<unsigned int> const & clen) const
 {
 	ostringstream sstr;
-	int ret = GetCellInset(cell)->Ascii(buf, sstr, 0);
+	int ret = GetCellInset(cell)->ascii(buf, sstr, 0);
 
 	if (LeftLine(cell))
 		os << "| ";
@@ -2484,7 +2484,7 @@ int LyXTabular::Ascii(Buffer const * buf, ostream & os) const
 			if (IsMultiColumn(cell, true))
 				continue;
 			ostringstream sstr;
-			GetCellInset(cell)->Ascii(buf, sstr, 0);
+			GetCellInset(cell)->ascii(buf, sstr, 0);
 			if (clen[j] < sstr.str().length())
 				clen[j] = sstr.str().length();
 		}
@@ -2496,7 +2496,7 @@ int LyXTabular::Ascii(Buffer const * buf, ostream & os) const
 			if (!IsMultiColumn(cell, true) || IsPartOfMultiColumn(i, j))
 				continue;
 			ostringstream sstr;
-			GetCellInset(cell)->Ascii(buf, sstr, 0);
+			GetCellInset(cell)->ascii(buf, sstr, 0);
 			int len = int(sstr.str().length());
 			int const n = cells_in_multicolumn(cell);
 			for (int k = j; (len > 0) && (k < (j + n - 1)); ++k)
@@ -2543,7 +2543,7 @@ void LyXTabular::Validate(LaTeXFeatures & features) const
 	for (int cell = 0; !features.array && (cell < numberofcells); ++cell) {
 		if (GetVAlignment(cell) != LYX_VALIGN_TOP)
 			features.array = true;
-		GetCellInset(cell)->Validate(features);
+		GetCellInset(cell)->validate(features);
 	}
 }
 

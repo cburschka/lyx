@@ -33,8 +33,8 @@ InsetFootlike::InsetFootlike()
 }
 
 
-void InsetFootlike::Write(Buffer const * buf, std::ostream & os) const 
+void InsetFootlike::write(Buffer const * buf, std::ostream & os) const 
 {
 	os << getInsetName() << "\n";
-	InsetCollapsable::Write(buf, os);
+	InsetCollapsable::write(buf, os);
 }

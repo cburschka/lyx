@@ -43,7 +43,7 @@ public:
 	///
 	void Metrics(MathStyles st);
 	///
-	MathInset * Clone() const;
+	MathInset * clone() const;
 	///
 	void Write(std::ostream &, bool fragile) const;
 	///

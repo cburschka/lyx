@@ -153,7 +153,7 @@ LyX::LyX(int * argc, char * argv[])
 			last_loaded = bufferlist.newFile("tmpfile", string());
 
 		// try to dispatch to last loaded buffer first
-		bool dispatched	= last_loaded->Dispatch(batch_command);
+		bool dispatched	= last_loaded->dispatch(batch_command);
 
 		// if this was successful, return. 
 		// Maybe we could do something more clever than aborting...
@@ -390,7 +390,7 @@ void LyX::init(bool gui)
 	// Read configuration files
 	//
 
-	ReadRcFile("lyxrc.defaults");
+	readRcFile("lyxrc.defaults");
 	system_lyxrc = lyxrc;
 	system_formats = formats;
 	system_converters = converters;
@@ -398,13 +398,13 @@ void LyX::init(bool gui)
 
 	// If there is a preferences file we read that instead
 	// of the old lyxrc file.
-	if (!ReadRcFile("preferences"))
-	    ReadRcFile("lyxrc");
+	if (!readRcFile("preferences"))
+	    readRcFile("lyxrc");
 
 	// Read encodings
-	ReadEncodingsFile("encodings");
+	readEncodingsFile("encodings");
 	// Read languages
-	ReadLanguagesFile("languages");
+	readLanguagesFile("languages");
 
 	// Load the layouts
 	lyxerr[Debug::INIT] << "Reading layouts..." << endl;
@@ -415,7 +415,7 @@ void LyX::init(bool gui)
 	lyxrc.readBindFileIfNeeded();
 
 	// Read menus
-	ReadUIFile(lyxrc.ui_file);
+	readUIFile(lyxrc.ui_file);
 
 	// Bind the X dead keys to the corresponding LyX functions if
 	// necessary. 
@@ -577,7 +577,7 @@ void LyX::queryUserLyXDir(bool explicit_userdir)
 
 
 // Read the rc file `name'
-bool LyX::ReadRcFile(string const & name)
+bool LyX::readRcFile(string const & name)
 {
 	lyxerr[Debug::INIT] << "About to read " << name << "..." << endl;
 	
@@ -599,7 +599,7 @@ bool LyX::ReadRcFile(string const & name)
 
 
 // Read the ui file `name'
-void LyX::ReadUIFile(string const & name)
+void LyX::readUIFile(string const & name)
 {
 	enum Uitags {
 		ui_menuset = 1,
@@ -655,7 +655,7 @@ void LyX::ReadUIFile(string const & name)
 
 
 // Read the languages file `name'
-void LyX::ReadLanguagesFile(string const & name)
+void LyX::readLanguagesFile(string const & name)
 {
 	lyxerr[Debug::INIT] << "About to read " << name << "..." << endl;
 
@@ -670,7 +670,7 @@ void LyX::ReadLanguagesFile(string const & name)
 
 
 // Read the encodings file `name'
-void LyX::ReadEncodingsFile(string const & name)
+void LyX::readEncodingsFile(string const & name)
 {
 	lyxerr[Debug::INIT] << "About to read " << name << "..." << endl;
 

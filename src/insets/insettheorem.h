@@ -26,19 +26,19 @@ public:
 	///
 	InsetTheorem();
 	///
-	void Write(Buffer const * buf, std::ostream & os) const;
+	void write(Buffer const * buf, std::ostream & os) const;
 	///
-	Inset * Clone(Buffer const &) const;
+	virtual Inset * clone(Buffer const &) const;
 	///
-	Inset::Code LyxCode() const { return Inset::THEOREM_CODE; }
+	Inset::Code lyxCode() const { return Inset::THEOREM_CODE; }
 	///
 	bool display() const { return true; }
 	///
-	int Latex(Buffer const *, std::ostream &, bool fragile, bool fp) const;
+	int latex(Buffer const *, std::ostream &, bool fragile, bool fp) const;
 	///
-	string const EditMessage() const;
+	string const editMessage() const;
 	///
-	bool InsertInsetAllowed(Inset * inset) const;
+	bool insertInsetAllowed(Inset * inset) const;
 };
 
 #endif

@@ -42,30 +42,30 @@ public:
 	///
 	void draw(BufferView *, LyXFont const &, int, float &, bool) const;
 	///
-	void Write(Buffer const *, std::ostream &) const;
+	void write(Buffer const *, std::ostream &) const;
 	///
-	void Read(Buffer const *, LyXLex & lex);
+	void read(Buffer const *, LyXLex & lex);
 	///
-	int Latex(Buffer const *, std::ostream &,
+	int latex(Buffer const *, std::ostream &,
 		  bool fragile, bool free_spc) const;
 	///
-	int Ascii(Buffer const *, std::ostream &, int linelen) const;
+	int ascii(Buffer const *, std::ostream &, int linelen) const;
 	///
-	int Linuxdoc(Buffer const *, std::ostream &) const;
+	int linuxdoc(Buffer const *, std::ostream &) const;
 	///
-	int DocBook(Buffer const *, std::ostream &) const;
+	int docBook(Buffer const *, std::ostream &) const;
 	///
-	Inset * Clone(Buffer const &) const;
+	Inset * clone(Buffer const &) const;
 	///
-	void Validate(LaTeXFeatures & features) const;
+	void validate(LaTeXFeatures & features) const;
 	///
-	Inset::Code LyxCode() const;
+	Inset::Code lyxCode() const;
 	///
-	virtual RESULT LocalDispatch(BufferView *, kb_action, string const &);
+	virtual RESULT localDispatch(BufferView *, kb_action, string const &);
 	///
 	std::vector<string> const getLabelList() const;
 	///
-	void HandleExtern(string const & arg, BufferView * bv);
+	void handleExtern(string const & arg, BufferView * bv);
 	///
 	MathMatrixInset * par() const;
 	///

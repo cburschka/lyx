@@ -96,7 +96,7 @@ public:
 	bool empty() const;
 
 	///
-        bool QwriteAll();
+        bool qwriteAll();
 
 	/// Close all open buffers.
 	void closeAll();

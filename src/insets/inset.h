@@ -140,61 +140,61 @@ public:
 	virtual void update(BufferView *, LyXFont const &, bool = false)
 		{}
 	///
-	virtual LyXFont const ConvertFont(LyXFont const & font) const;
+	virtual LyXFont const convertFont(LyXFont const & font) const;
 	/// what appears in the minibuffer when opening
-	virtual string const EditMessage() const;
+	virtual string const editMessage() const;
 	///
-	virtual void Edit(BufferView *, int x, int y, unsigned int button);
+	virtual void edit(BufferView *, int x, int y, unsigned int button);
 	///
-	virtual EDITABLE Editable() const;
+	virtual EDITABLE editable() const;
 	/// This is called when the user clicks inside an inset
-	virtual void InsetButtonPress(BufferView *, int, int, int) {}
+	virtual void insetButtonPress(BufferView *, int, int, int) {}
 	/// This is called when the user releases the button inside an inset
-	virtual void InsetButtonRelease(BufferView *, int, int, int) {}
+	virtual void insetButtonRelease(BufferView *, int, int, int) {}
 	/// This is caleld when the user moves the mouse inside an inset
-	virtual void InsetMotionNotify(BufferView *, int , int , int) {}
+	virtual void insetMotionNotify(BufferView *, int , int , int) {}
 	///
-	virtual bool IsTextInset() const { return false; }
+	virtual bool isTextInset() const { return false; }
 	///
 	virtual bool doClearArea() const { return true; }
 	///
-	virtual bool AutoDelete() const;
+	virtual bool autoDelete() const;
 	///
-	virtual void Write(Buffer const *, std::ostream &) const = 0;
+	virtual void write(Buffer const *, std::ostream &) const = 0;
 	///
-	virtual void Read(Buffer const *, LyXLex & lex) = 0;
+	virtual void read(Buffer const *, LyXLex & lex) = 0;
 	/** returns the number of rows (\n's) of generated tex code.
 	    fragile == true means, that the inset should take care about
 	    fragile commands by adding a \protect before.
 	    If the free_spc (freespacing) variable is set, then this inset
 	    is in a free-spacing paragraph.
 	*/
-	virtual int Latex(Buffer const *, std::ostream &, bool fragile,
+	virtual int latex(Buffer const *, std::ostream &, bool fragile,
 			  bool free_spc) const = 0;
 	///
-	virtual int Ascii(Buffer const *,
+	virtual int ascii(Buffer const *,
 			  std::ostream &, int linelen = 0) const = 0;
 	///
-	virtual int Linuxdoc(Buffer const *, std::ostream &) const = 0;
+	virtual int linuxdoc(Buffer const *, std::ostream &) const = 0;
 	///
-	virtual int DocBook(Buffer const *, std::ostream &) const = 0;
+	virtual int docBook(Buffer const *, std::ostream &) const = 0;
 	/// Updates needed features for this inset.
-	virtual void Validate(LaTeXFeatures & features) const;
+	virtual void validate(LaTeXFeatures & features) const;
 	///
-	virtual bool Deletable() const;
+	virtual bool deletable() const;
 	
 	/// returns LyX code associated with the inset. Used for TOC, ...)
-	virtual Inset::Code LyxCode() const { return NO_CODE; }
+	virtual Inset::Code lyxCode() const { return NO_CODE; }
 	
 	virtual std::vector<string> const getLabelList() const {
 		return std::vector<string>();
 	}
 
 	///
-	virtual Inset * Clone(Buffer const &) const = 0;
+	virtual Inset * clone(Buffer const &) const = 0;
 	
 	/// returns true to override begin and end inset in file
-	virtual bool DirectWrite() const;
+	virtual bool directWrite() const;
 
 	/// Returns true if the inset should be centered alone
 	virtual bool display() const { return false; }
@@ -205,7 +205,7 @@ public:
 	///
 	virtual bool needFullRow() const { return false; }
 	///
-	virtual bool InsertInsetAllowed(Inset *) const { return false; }
+	virtual bool insertInsetAllowed(Inset *) const { return false; }
 	///
 	void setInsetName(string const & s) { name = s; }
 	///
@@ -265,7 +265,7 @@ private:
  *
  * During the lock, all button and keyboard events will be modified
  * and send to the inset through the following inset-features. Note that
- * Inset::InsetUnlock will be called from inside UnlockInset. It is meant
+ * Inset::insetUnlock will be called from inside UnlockInset. It is meant
  * to contain the code for restoring the menus and things like this.
  * 
  * If a inset wishes any redraw and/or update it just has to call
@@ -307,69 +307,69 @@ public:
 	UpdatableInset() : cursor_visible_(false), block_drawing_(false) {}
 
 	///
-	virtual EDITABLE Editable() const;
+	virtual EDITABLE editable() const;
 	
 	/// may call ToggleLockedInsetCursor
-	virtual void ToggleInsetCursor(BufferView *);
+	virtual void toggleInsetCursor(BufferView *);
 	///
-	virtual void ShowInsetCursor(BufferView *, bool show = true);
+	virtual void showInsetCursor(BufferView *, bool show = true);
 	///
-	virtual void HideInsetCursor(BufferView *);
+	virtual void hideInsetCursor(BufferView *);
 	///
-	virtual void GetCursorPos(BufferView *, int &, int &) const {}
+	virtual void getCursorPos(BufferView *, int &, int &) const {}
 	///
-	virtual void InsetButtonPress(BufferView *, int x, int y, int button);
+	virtual void insetButtonPress(BufferView *, int x, int y, int button);
 	///
-	virtual void InsetButtonRelease(BufferView *,
+	virtual void insetButtonRelease(BufferView *,
 					int x, int y, int button);
 	///
-	virtual void InsetKeyPress(XKeyEvent * ev);
+	virtual void insetKeyPress(XKeyEvent * ev);
 	///
-	virtual void InsetMotionNotify(BufferView *, int x, int y, int state);
+	virtual void insetMotionNotify(BufferView *, int x, int y, int state);
 	///
-	virtual void InsetUnlock(BufferView *);
+	virtual void insetUnlock(BufferView *);
 	///
-	virtual void Edit(BufferView *, int x, int y, unsigned int button);
+	virtual void edit(BufferView *, int x, int y, unsigned int button);
 	///
 	virtual void draw(BufferView *, LyXFont const &,
 			  int baseline, float & x, bool cleared) const;
 	///
-	virtual void SetFont(BufferView *, LyXFont const &,
+	virtual void setFont(BufferView *, LyXFont const &,
                          bool toggleall = false, bool selectall = false);
 	///
-	virtual bool InsertInset(BufferView *, Inset *) { return false; }
+	virtual bool insertInset(BufferView *, Inset *) { return false; }
 	///
-	virtual bool InsertInsetAllowed(Inset *) const { return true; }
+	virtual bool insertInsetAllowed(Inset *) const { return true; }
 	///
-	virtual UpdatableInset * GetLockingInset() { return this; }
+	virtual UpdatableInset * getLockingInset() { return this; }
 	///
-	virtual UpdatableInset * GetFirstLockingInsetOfType(Inset::Code c)
-		{ return (c == LyxCode()) ? this : 0; }
+	virtual UpdatableInset * getFirstLockingInsetOfType(Inset::Code c)
+		{ return (c == lyxCode()) ? this : 0; }
 	///
-	virtual unsigned int InsetInInsetY() { return 0; }
+	virtual unsigned int insetInInsetY() { return 0; }
 	///
-	virtual bool UpdateInsetInInset(BufferView *, Inset *)
+	virtual bool updateInsetInInset(BufferView *, Inset *)
 		{ return false; }
 	///
-	virtual bool LockInsetInInset(BufferView *, UpdatableInset *)
+	virtual bool lockInsetInInset(BufferView *, UpdatableInset *)
 		{ return false; }
 	///
-	virtual bool UnlockInsetInInset(BufferView *, UpdatableInset *,
+	virtual bool unlockInsetInInset(BufferView *, UpdatableInset *,
 					bool /*lr*/ = false)
 		{ return false; }
 	///  An updatable inset could handle lyx editing commands
-	virtual RESULT LocalDispatch(BufferView *, kb_action, string const &);
+	virtual RESULT localDispatch(BufferView *, kb_action, string const &);
 	///
 	bool isCursorVisible() const { return cursor_visible_; }
 	///
 	virtual int getMaxWidth(BufferView * bv, UpdatableInset const *) const;
 	///
-	int scroll(bool recursive=true) const {
+	int scroll(bool recursive = true) const {
 		// We need this method to not clobber the real method in Inset
 		return Inset::scroll(recursive);
 	}
 	///
-	virtual bool ShowInsetDialog(BufferView *) const { return false; }
+	virtual bool showInsetDialog(BufferView *) const { return false; }
 	///
 	virtual void nodraw(bool b) {
 		block_drawing_ = b;

@@ -43,23 +43,23 @@ public:
 	///
 	~InsetMinipage();
 	///
-	void Write(Buffer const * buf, std::ostream & os) const;
+	void write(Buffer const * buf, std::ostream & os) const;
 	///
-	void Read(Buffer const * buf, LyXLex & lex);
+	void read(Buffer const * buf, LyXLex & lex);
 	///
-	Inset * Clone(Buffer const &) const;
+	virtual Inset * clone(Buffer const &) const;
 	///
 	int ascent(BufferView *, LyXFont const &) const;
 	///
 	int descent(BufferView *, LyXFont const &) const;
 	///
-	Inset::Code LyxCode() const { return Inset::MINIPAGE_CODE; }
+	Inset::Code lyxCode() const { return Inset::MINIPAGE_CODE; }
 	///
-	int Latex(Buffer const *, std::ostream &, bool fragile, bool fp) const;
+	int latex(Buffer const *, std::ostream &, bool fragile, bool fp) const;
 	///
-	string const EditMessage() const;
+	string const editMessage() const;
 	///
-	bool InsertInsetAllowed(Inset * inset) const;
+	bool insertInsetAllowed(Inset * inset) const;
 	///
 	Position pos() const;
 	///
@@ -79,13 +79,13 @@ public:
 	///
 	SigC::Signal0<void> hideDialog;
 	///
-	void InsetButtonRelease(BufferView * bv, int x, int y, int button);
+	void insetButtonRelease(BufferView * bv, int x, int y, int button);
 	///
 	int getMaxWidth(BufferView *, UpdatableInset const *) const;
 	///
 	bool needFullRow() const { return false; }
 	///
-	bool ShowInsetDialog(BufferView *) const;
+	bool showInsetDialog(BufferView *) const;
 private:
 	///
 	Position pos_;

@@ -26,9 +26,9 @@ public:
 	///
 	InsetCaption();
 	///
-	void Write(Buffer const * buf, std::ostream & os) const;
+	void write(Buffer const * buf, std::ostream & os) const;
 	///
-	void Read(Buffer const * buf, LyXLex & lex);
+	void read(Buffer const * buf, LyXLex & lex);
 	///
 	virtual
 	bool display() const;
@@ -37,24 +37,24 @@ public:
 	bool needFullRow() const;
 	///
 	virtual
-	Inset::Code LyxCode() const;
+	Inset::Code lyxCode() const;
 	///
 	virtual
-	string const EditMessage() const;
+	string const editMessage() const;
 	///
 	virtual
 	void draw(BufferView * bv, LyXFont const & f,
 			  int baseline, float & x, bool cleared) const;
 	///
 	virtual
-	int Latex(Buffer const * buf, std::ostream & os,
+	int latex(Buffer const * buf, std::ostream & os,
 			  bool fragile, bool free_spc) const;
 	///
 	virtual
-	int Ascii(Buffer const * buf, std::ostream & os, int linelen) const;
+	int ascii(Buffer const * buf, std::ostream & os, int linelen) const;
 	///
 	virtual
-	int DocBook(Buffer const * buf, std::ostream & os) const;
+	int docBook(Buffer const * buf, std::ostream & os) const;
 protected:
 private:
 };
@@ -75,7 +75,7 @@ bool InsetCaption::needFullRow() const
 
 
 inline
-Inset::Code InsetCaption::LyxCode() const 
+Inset::Code InsetCaption::lyxCode() const 
 {
 	return CAPTION_CODE;
 }

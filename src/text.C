@@ -2018,7 +2018,7 @@ void LyXText::prepareToPrint(BufferView * bview,
 	   if (row->par()->getChar(row->pos()) == Paragraph::META_INSET
 	       && (inset=row->par()->getInset(row->pos()))
 	       && (inset->display())) // || (inset->scroll() < 0)))
-	     align = (inset->LyxCode() == Inset::MATHMACRO_CODE)
+	     align = (inset->lyxCode() == Inset::MATHMACRO_CODE)
 		     ? LYX_ALIGN_BLOCK : LYX_ALIGN_CENTER;
 
 	   switch (align) {
@@ -2271,7 +2271,7 @@ string const LyXText::selectNextWord(BufferView * bview,
 	       && (cursor.par()->isLetter(cursor.pos())) 
 	           || (cursor.par()->getChar(cursor.pos()) == Paragraph::META_INSET
 		       && cursor.par()->getInset(cursor.pos()) != 0
-		       && cursor.par()->getInset(cursor.pos())->Latex(bview->buffer(), latex, false, false) == 0
+		       && cursor.par()->getInset(cursor.pos())->latex(bview->buffer(), latex, false, false) == 0
 		       && latex.str() == "\\-"
 			   ))
 		cursor.pos(cursor.pos() + 1);
@@ -2304,7 +2304,7 @@ void LyXText::selectSelectedWord(BufferView * bview)
 	       && (cursor.par()->isLetter(cursor.pos())
 	           || (cursor.par()->getChar(cursor.pos()) == Paragraph::META_INSET
 		       && cursor.par()->getInset(cursor.pos()) != 0
-		       && cursor.par()->getInset(cursor.pos())->Latex(bview->buffer(), latex, false, false) == 0
+		       && cursor.par()->getInset(cursor.pos())->latex(bview->buffer(), latex, false, false) == 0
 		       && latex.str() == "\\-"
 			   )))
 		cursor.pos(cursor.pos() + 1);
@@ -2649,7 +2649,7 @@ void LyXText::backspace(BufferView * bview)
 		
 		// some insets are undeletable here
 		if (cursor.par()->getChar(cursor.pos()) == Paragraph::META_INSET) {
-			if (!cursor.par()->getInset(cursor.pos())->Deletable())
+			if (!cursor.par()->getInset(cursor.pos())->deletable())
 				return; 
 			// force complete redo when erasing display insets
 			// this is a cruel method but safe..... Matthias 

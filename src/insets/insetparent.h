@@ -29,19 +29,19 @@ public:
 	///
 	InsetParent(InsetCommandParams const &, Buffer const &);
 	///
-	Inset * Clone(Buffer const & buffer) const {
+	virtual Inset * clone(Buffer const & buffer) const {
 		return new InsetParent(params(), buffer);
 	}
     	///
 	string const getScreenLabel() const;
         ///
-	EDITABLE Editable() const { return IS_EDITABLE; }
+	EDITABLE editable() const { return IS_EDITABLE; }
         ///
-        Inset::Code LyxCode() const { return Inset::PARENT_CODE; }
+        Inset::Code lyxCode() const { return Inset::PARENT_CODE; }
         ///
-	void Edit(BufferView *, int, int, unsigned int);
+	void edit(BufferView *, int, int, unsigned int);
 	/// 
-	int Latex(Buffer const *, std::ostream &,
+	int latex(Buffer const *, std::ostream &,
 		  bool fragile, bool free_spc) const;
         ///
         void setParent(string fn) { setContents(fn); }

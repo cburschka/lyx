@@ -98,8 +98,10 @@ struct tex_accent_struct {
 	tex_accent accent;
 	///
 	char const * cmd;
+#if 0
 	///
 	char const * native;
+#endif
 	///
 	char const * name;
 	///

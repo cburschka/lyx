@@ -16,7 +16,7 @@ public:
 	///
 	explicit MathMacroArgument(int);
 	///
-	MathInset * Clone() const;
+	MathInset * clone() const;
 	///
 	void Metrics(MathStyles st);
 	///

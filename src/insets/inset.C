@@ -28,45 +28,45 @@ using std::endl;
 
 // Insets default methods
 
-bool Inset::Deletable() const
+bool Inset::deletable() const
 {
 	return true;
 }
 
 
-bool Inset::DirectWrite() const
+bool Inset::directWrite() const
 {
 	return false;
 }
 
 
-Inset::EDITABLE Inset::Editable() const
+Inset::EDITABLE Inset::editable() const
 {
 	return NOT_EDITABLE;
 }
 
 
-void Inset::Validate(LaTeXFeatures &) const
+void Inset::validate(LaTeXFeatures &) const
 {}
 
 
-bool Inset::AutoDelete() const
+bool Inset::autoDelete() const
 {
 	return false;
 }
 
 
-void Inset::Edit(BufferView *, int, int, unsigned int)
+void Inset::edit(BufferView *, int, int, unsigned int)
 {}
 
 
-LyXFont const Inset::ConvertFont(LyXFont const & font) const
+LyXFont const Inset::convertFont(LyXFont const & font) const
 {
 	return LyXFont(font);
 }
 
 
-string const Inset::EditMessage() const 
+string const Inset::editMessage() const 
 {
 	return _("Opened inset");
 }
@@ -83,59 +83,59 @@ LyXText * Inset::getLyXText(BufferView const * bv, bool const) const
 
 // some stuff for inset locking
 
-void UpdatableInset::InsetButtonPress(BufferView *, int x, int y, int button)
+void UpdatableInset::insetButtonPress(BufferView *, int x, int y, int button)
 {
 	lyxerr[Debug::INFO] << "Inset Button Press x=" << x
 		       << ", y=" << y << ", button=" << button << endl;
 }
 
 
-void UpdatableInset::InsetButtonRelease(BufferView *, int x, int y, int button)
+void UpdatableInset::insetButtonRelease(BufferView *, int x, int y, int button)
 {
 	lyxerr[Debug::INFO] << "Inset Button Release x=" << x
 		       << ", y=" << y << ", button=" << button << endl;
 }
 
 
-void UpdatableInset::InsetKeyPress(XKeyEvent *)
+void UpdatableInset::insetKeyPress(XKeyEvent *)
 {
 	lyxerr[Debug::INFO] << "Inset Keypress" << endl;
 }
 
 
-void UpdatableInset::InsetMotionNotify(BufferView *, int x, int y, int state)
+void UpdatableInset::insetMotionNotify(BufferView *, int x, int y, int state)
 {
 	lyxerr[Debug::INFO] << "Inset Motion Notify x=" << x
 		       << ", y=" << y << ", state=" << state << endl;
 }
 
 
-void UpdatableInset::InsetUnlock(BufferView *)
+void UpdatableInset::insetUnlock(BufferView *)
 {
 	lyxerr[Debug::INFO] << "Inset Unlock" << endl;
 }
 
 
 // An updatable inset is highly editable by definition
-Inset::EDITABLE UpdatableInset::Editable() const
+Inset::EDITABLE UpdatableInset::editable() const
 {
 	return HIGHLY_EDITABLE;
 }
 
 
-void UpdatableInset::ToggleInsetCursor(BufferView *)
+void UpdatableInset::toggleInsetCursor(BufferView *)
 {}
 
 
-void UpdatableInset::ShowInsetCursor(BufferView *, bool)
+void UpdatableInset::showInsetCursor(BufferView *, bool)
 {}
 
 
-void UpdatableInset::HideInsetCursor(BufferView *)
+void UpdatableInset::hideInsetCursor(BufferView *)
 {}
 
 
-void UpdatableInset::Edit(BufferView *, int, int, unsigned int)
+void UpdatableInset::edit(BufferView *, int, int, unsigned int)
 {}
 
 
@@ -150,7 +150,7 @@ void UpdatableInset::draw(BufferView *, LyXFont const &,
 }
 
 
-void UpdatableInset::SetFont(BufferView *, LyXFont const &, bool, bool )
+void UpdatableInset::setFont(BufferView *, LyXFont const &, bool, bool )
 {}
 
 
@@ -212,7 +212,7 @@ void UpdatableInset::scroll(BufferView * bv, int offset) const
 
 ///  An updatable inset could handle lyx editing commands
 UpdatableInset::RESULT
-UpdatableInset::LocalDispatch(BufferView * bv, 
+UpdatableInset::localDispatch(BufferView * bv, 
 			      kb_action action, string const & arg) 
 {
 	if (!arg.empty() && (action==LFUN_SCROLL_INSET)) {

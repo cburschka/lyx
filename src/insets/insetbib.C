@@ -47,7 +47,7 @@ InsetBibKey::~InsetBibKey()
 }
 
 
-Inset * InsetBibKey::Clone(Buffer const &) const
+Inset * InsetBibKey::clone(Buffer const &) const
 {
 	InsetBibKey * b = new InsetBibKey(params());
 	b->setCounter(counter);
@@ -65,7 +65,7 @@ void InsetBibKey::setCounter(int c)
 // as a LyX 2.x command, and lyxlex is not enough smart to understand
 // real LaTeX commands. Yes, that could be fixed, but would be a waste 
 // of time cause LyX3 won't use lyxlex anyway.  (ale)
-void InsetBibKey::Write(Buffer const *, ostream & os) const
+void InsetBibKey::write(Buffer const *, ostream & os) const
 {
 	os << "\\bibitem ";
 	if (! getOptions().empty()) {
@@ -79,7 +79,7 @@ void InsetBibKey::Write(Buffer const *, ostream & os) const
 
 // This is necessary here because this is written without begin_inset
 // This should be changed!!! (Jug)
-void InsetBibKey::Read(Buffer const *, LyXLex & lex)
+void InsetBibKey::read(Buffer const *, LyXLex & lex)
 {    
 	string token;
 
@@ -108,7 +108,7 @@ string const InsetBibKey::getScreenLabel() const
 }
 
 
-void InsetBibKey::Edit(BufferView * bv, int, int, unsigned int)
+void InsetBibKey::edit(BufferView * bv, int, int, unsigned int)
 { 
 	bv->owner()->getDialogs()->showBibitem(this);
 }
@@ -130,7 +130,7 @@ string const InsetBibtex::getScreenLabel() const
 }
 
 
-int InsetBibtex::Latex(Buffer const * buffer, ostream & os,
+int InsetBibtex::latex(Buffer const * buffer, ostream & os,
 		       bool /*fragile*/, bool/*fs*/) const
 {
 	// If we generate in a temp dir, we might need to give an
@@ -212,7 +212,7 @@ vector<pair<string, string> > const InsetBibtex::getKeys(Buffer const * buffer) 
 }
 
 
-void InsetBibtex::Edit(BufferView * bv, int, int, unsigned int)
+void InsetBibtex::edit(BufferView * bv, int, int, unsigned int)
 {
 	bv->owner()->getDialogs()->showBibtex(this);
 }

@@ -29,21 +29,21 @@ using std::endl;
 InsetCaption::InsetCaption()
 	: InsetText()
 {
-	SetAutoBreakRows(true);
-	SetDrawFrame(0, InsetText::LOCKED);
-	SetFrameColor(0, LColor::captionframe);
+	setAutoBreakRows(true);
+	setDrawFrame(0, InsetText::LOCKED);
+	setFrameColor(0, LColor::captionframe);
 }
 
 
-void InsetCaption::Write(Buffer const * buf, ostream & os) const
+void InsetCaption::write(Buffer const * buf, ostream & os) const
 {
 	os << "Caption\n";
-	WriteParagraphData(buf, os);
+	writeParagraphData(buf, os);
 }
 
 
 
-void InsetCaption::Read(Buffer const * buf, LyXLex & lex)
+void InsetCaption::read(Buffer const * buf, LyXLex & lex)
 {
 #if 0
 	// We will enably this check again when the compability
@@ -54,11 +54,11 @@ void InsetCaption::Read(Buffer const * buf, LyXLex & lex)
 		       << endl;
 	}
 #endif
-	InsetText::Read(buf, lex);
+	InsetText::read(buf, lex);
 }
 
 
-string const InsetCaption::EditMessage() const 
+string const InsetCaption::editMessage() const 
 {
 	return _("Opened Caption Inset");
 }
@@ -96,7 +96,7 @@ void InsetCaption::draw(BufferView * bv, LyXFont const & f,
 }
 
 
-int InsetCaption::Latex(Buffer const * buf, ostream & os,
+int InsetCaption::latex(Buffer const * buf, ostream & os,
 			bool fragile, bool free_spc) const
 {
 	// This is a bit too simplistic to take advantage of
@@ -105,13 +105,13 @@ int InsetCaption::Latex(Buffer const * buf, ostream & os,
 	// \caption{...}, later we will make it take advantage
 	// of the one of the caption packages. (Lgb)
 	ostringstream ost;
-	int const l = InsetText::Latex(buf, ost, fragile, free_spc);
+	int const l = InsetText::latex(buf, ost, fragile, free_spc);
 	os << "\\caption{" << ost.str() << "}\n";
 	return l + 1;
 }
 
 
-int InsetCaption::Ascii(Buffer const * /*buf*/,
+int InsetCaption::ascii(Buffer const * /*buf*/,
 			ostream & /*os*/, int /*linelen*/) const
 {
 #ifdef WITH_WARNINGS
@@ -121,7 +121,7 @@ int InsetCaption::Ascii(Buffer const * /*buf*/,
 }
 
 
-int InsetCaption::DocBook(Buffer const * /*buf*/, ostream & /*os*/) const
+int InsetCaption::docBook(Buffer const * /*buf*/, ostream & /*os*/) const
 {
 #ifdef WITH_WARNINGS
 #warning Implement me!

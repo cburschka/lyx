@@ -23,7 +23,7 @@ public:
 	MathParInset(short st = LM_ST_TEXT, string const & nm = string(),
 		     short ot = LM_OT_MIN);
 	///
-	virtual MathedInset * Clone();
+	virtual MathedInset * clone();
 	///
 	virtual void substitute(MathMacro *);
 	/// Draw the object on a drawable

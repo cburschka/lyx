@@ -80,26 +80,26 @@ public:
 	///
 	void draw(BufferView *, LyXFont const &, int, float &, bool) const;
 	///
-	LyXFont const ConvertFont(LyXFont const & font) const;
+	LyXFont const convertFont(LyXFont const & font) const;
 	///
-	void Write(Buffer const *, std::ostream &) const;
+	void write(Buffer const *, std::ostream &) const;
 	///
-	void Read(Buffer const *, LyXLex & lex);
+	void read(Buffer const *, LyXLex & lex);
 	///
-	int Latex(Buffer const *, std::ostream &,
+	int latex(Buffer const *, std::ostream &,
 		  bool fragile, bool free_spc) const;
 	///
-	int Ascii(Buffer const *, std::ostream &, int linelen) const;
+	int ascii(Buffer const *, std::ostream &, int linelen) const;
 	///
-	int Linuxdoc(Buffer const *, std::ostream &) const;
+	int linuxdoc(Buffer const *, std::ostream &) const;
 	///
-	int DocBook(Buffer const *, std::ostream &) const;
+	int docBook(Buffer const *, std::ostream &) const;
 	///
-	void Validate(LaTeXFeatures &) const;
+	void validate(LaTeXFeatures &) const;
 	///
-	Inset * Clone(Buffer const &) const;
+	virtual Inset * clone(Buffer const &) const;
 	///
-	Inset::Code LyxCode() const;
+	Inset::Code lyxCode() const;
 private:
 	///
 	quote_language language;
@@ -113,9 +113,9 @@ private:
 	 */
 	InsetQuotes(quote_language l, quote_side s, quote_times t);
 	///
-	void ParseString(string const &);
+	void parseString(string const &);
 	///
-	string const DispString() const;
+	string const dispString() const;
 };
 #endif
 

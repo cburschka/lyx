@@ -40,11 +40,11 @@ public:
 	///
 	bool operator!=(InsetCommandParams const &) const;
 	///
-	void Read(LyXLex &);
+	void read(LyXLex &);
 	/// Parse the command
 	void scanCommand(string const &);
 	///
-	void Write(std::ostream &) const;
+	void write(std::ostream &) const;
 	/// Build the complete LaTeX command
 	string const getCommand() const;
 	///
@@ -82,24 +82,24 @@ public:
 	///
 	virtual ~InsetCommand() { hideDialog(); }
 	///
-	void Write(Buffer const *, std::ostream & os) const
-		{ p_.Write( os ); }
+	void write(Buffer const *, std::ostream & os) const
+		{ p_.write( os ); }
 	///
-	virtual void Read(Buffer const *, LyXLex & lex)
-		{ p_.Read( lex ); }
+	virtual void read(Buffer const *, LyXLex & lex)
+		{ p_.read( lex ); }
 	/// Can remove one InsetBibKey is modified
 	void scanCommand(string const & c) { p_.scanCommand( c ); };
 	/// 
-	virtual int Latex(Buffer const *, std::ostream &,
+	virtual int latex(Buffer const *, std::ostream &,
 			  bool fragile, bool free_spc) const;
 	///
-	int Ascii(Buffer const *, std::ostream &, int linelen) const;
+	int ascii(Buffer const *, std::ostream &, int linelen) const;
 	///
-	virtual int Linuxdoc(Buffer const *, std::ostream &) const;
+	virtual int linuxdoc(Buffer const *, std::ostream &) const;
 	///
-	virtual int DocBook(Buffer const *, std::ostream &) const;
+	virtual int docBook(Buffer const *, std::ostream &) const;
 	///
-	Inset::Code LyxCode() const { return Inset::NO_CODE; }
+	Inset::Code lyxCode() const { return Inset::NO_CODE; }
 	
 	/** Get the label that appears at screen.
 	  

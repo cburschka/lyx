@@ -261,11 +261,11 @@ void LyXText::setCharFont(BufferView * bv, Paragraph * par,
 	if (par->getChar(pos) == Paragraph::META_INSET) {
 		Inset * inset = par->getInset(pos);
 		if (inset) {
-			if (inset->Editable()==Inset::HIGHLY_EDITABLE) {
+			if (inset->editable()==Inset::HIGHLY_EDITABLE) {
 				UpdatableInset * uinset = static_cast<UpdatableInset *>(inset);
-				uinset->SetFont(bv, fnt, toggleall, true);
+				uinset->setFont(bv, fnt, toggleall, true);
 			}
-			font = inset->ConvertFont(font);
+			font = inset->convertFont(font);
 		}
 	}
 
@@ -307,7 +307,7 @@ void LyXText::setCharFont(Buffer const * buf, Paragraph * par,
 	LyXFont font(fnt);
 	// Let the insets convert their font
 	if (par->getChar(pos) == Paragraph::META_INSET) {
-		font = par->getInset(pos)->ConvertFont(font);
+		font = par->getInset(pos)->convertFont(font);
 	}
 
 	LyXLayout const & layout =
@@ -972,7 +972,7 @@ void LyXText::setSelection(BufferView * bview)
 		selection.set(false);
 
 	if (inset_owner && (selection.set() || lsel))
-		inset_owner->SetUpdateStatus(bview, InsetText::SELECTION);
+		inset_owner->setUpdateStatus(bview, InsetText::SELECTION);
 }
 
 
@@ -1087,7 +1087,7 @@ void LyXText::toggleFree(BufferView * bview,
 		selection.cursor = cursor;
 	}
 	if (inset_owner)
-		inset_owner->SetUpdateStatus(bview, InsetText::CURSOR_PAR);
+		inset_owner->setUpdateStatus(bview, InsetText::CURSOR_PAR);
 }
 
 
@@ -1545,7 +1545,7 @@ void LyXText::setCounter(Buffer const * buf, Paragraph * par) const
 		// the caption hack:
 		if (layout.labeltype == LABEL_SENSITIVE) {
 			bool isOK (par->InInset() && par->InInset()->owner() &&
-				   (par->InInset()->owner()->LyxCode() == Inset::FLOAT_CODE));
+				   (par->InInset()->owner()->lyxCode() == Inset::FLOAT_CODE));
 			
 			if (isOK) {
 				InsetFloat * tmp = static_cast<InsetFloat*>(par->InInset()->owner());
@@ -1623,7 +1623,7 @@ void LyXText::insertInset(BufferView * bview, Inset * inset)
 	// inset now after the Undo LyX tries to call inset->Edit(...) again
 	// and cannot do this as the cursor is behind the inset and GetInset
 	// does not return the inset!
-	if (inset->Editable() == Inset::HIGHLY_EDITABLE) {
+	if (inset->editable() == Inset::HIGHLY_EDITABLE) {
 		cursorLeft(bview, true);
 	}
 #endif
@@ -1958,7 +1958,7 @@ bool LyXText::gotoNextInset(BufferView * bview,
 	} while (res.par() && 
 		 !(res.par()->getChar(res.pos()) == Paragraph::META_INSET
 		   && (inset = res.par()->getInset(res.pos())) != 0
-		   && find(codes.begin(), codes.end(), inset->LyxCode())
+		   && find(codes.begin(), codes.end(), inset->lyxCode())
 		      != codes.end()
 		   && (contents.empty() ||
 		       static_cast<InsetCommand *>(res.par()->getInset(res.pos()))->getContents()

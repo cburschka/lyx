@@ -55,7 +55,7 @@ void FigureApplyCB(FL_OBJECT *, long)
 		InsetFig * new_inset = new InsetFig(100, 20, *buffer);
 		current_view->insertInset(new_inset);
 		current_view->owner()->message(_("Figure inserted"));
-		new_inset->Edit(current_view, 0, 0, 0);
+		new_inset->edit(current_view, 0, 0, 0);
 		return;
 	}
 	
@@ -93,7 +93,7 @@ void FigureApplyCB(FL_OBJECT *, long)
       
 	Inset * new_inset = new InsetFig(100, 100, *buffer);
 	current_view->insertInset(new_inset);
-	new_inset->Edit(current_view, 0, 0, 0);
+	new_inset->edit(current_view, 0, 0, 0);
 	current_view->update(current_view->text, BufferView::SELECT|BufferView::FITCUR);
 	current_view->owner()->message(_("Figure inserted"));
 	current_view->text->unFreezeUndo();

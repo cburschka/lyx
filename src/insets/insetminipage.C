@@ -80,18 +80,18 @@ InsetMinipage::~InsetMinipage()
 }
 
 
-void InsetMinipage::Write(Buffer const * buf, ostream & os) const 
+void InsetMinipage::write(Buffer const * buf, ostream & os) const 
 {
 	os << getInsetName() << "\n"
 	   << "position " << pos_ << "\n"
 	   << "inner_position " << inner_pos_ << "\n"
 	   << "height \"" << height_ << "\"\n"
 	   << "width \"" << width_ << "\"\n";
-	InsetCollapsable::Write(buf, os);
+	InsetCollapsable::write(buf, os);
 }
 
 
-void InsetMinipage::Read(Buffer const * buf, LyXLex & lex)
+void InsetMinipage::read(Buffer const * buf, LyXLex & lex)
 {
 	string token;
 
@@ -170,11 +170,11 @@ void InsetMinipage::Read(Buffer const * buf, LyXLex & lex)
 	}
 	if (!token.empty())
 		lex.pushToken(token);
-	InsetCollapsable::Read(buf, lex);
+	InsetCollapsable::read(buf, lex);
 }
 
 
-Inset * InsetMinipage::Clone(Buffer const &) const
+Inset * InsetMinipage::clone(Buffer const &) const
 {
 	InsetMinipage * result = new InsetMinipage;
 	result->inset.init(&inset);
@@ -236,13 +236,13 @@ int InsetMinipage::descent(BufferView * bv, LyXFont const & font) const
 }
 
 
-string const InsetMinipage::EditMessage() const
+string const InsetMinipage::editMessage() const
 {
 	return _("Opened Minipage Inset");
 }
 
 
-int InsetMinipage::Latex(Buffer const * buf,
+int InsetMinipage::latex(Buffer const * buf,
 			 ostream & os, bool fragile, bool fp) const
 {
 	string s_pos;
@@ -260,17 +260,17 @@ int InsetMinipage::Latex(Buffer const * buf,
 	os << "\\begin{minipage}[" << s_pos << "]{"
 	   << LyXLength(width_).asLatexString() << "}%\n";
 	
-	int i = inset.Latex(buf, os, fragile, fp);
+	int i = inset.latex(buf, os, fragile, fp);
 
 	os << "\\end{minipage}%\n";
 	return i + 2;
 }
 
 
-bool InsetMinipage::InsertInsetAllowed(Inset * in) const
+bool InsetMinipage::insertInsetAllowed(Inset * in) const
 {
-	if ((in->LyxCode() == Inset::FLOAT_CODE) ||
-	    (in->LyxCode() == Inset::MARGIN_CODE)) {
+	if ((in->lyxCode() == Inset::FLOAT_CODE) ||
+	    (in->lyxCode() == Inset::MARGIN_CODE)) {
 		return false;
 	}
 	return true;
@@ -325,22 +325,22 @@ void InsetMinipage::width(string const & ll)
 }
 
 
-bool InsetMinipage::ShowInsetDialog(BufferView * bv) const
+bool InsetMinipage::showInsetDialog(BufferView * bv) const
 {
-	if (!inset.ShowInsetDialog(bv))
+	if (!inset.showInsetDialog(bv))
 	bv->owner()->getDialogs()->showMinipage(const_cast<InsetMinipage *>(this));
 	return true;
 }
 
 
-void InsetMinipage::InsetButtonRelease(BufferView * bv, int x, int y,
+void InsetMinipage::insetButtonRelease(BufferView * bv, int x, int y,
 				       int button)
 {
 	if (button == 3) {
-	ShowInsetDialog(bv);
+	showInsetDialog(bv);
 	return;
 	}
-	InsetCollapsable::InsetButtonRelease(bv, x, y, button);
+	InsetCollapsable::insetButtonRelease(bv, x, y, button);
 }
 
 

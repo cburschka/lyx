@@ -23,7 +23,7 @@ MathScriptInset::MathScriptInset(bool up, bool down)
 {}
 
 
-MathInset * MathScriptInset::Clone() const
+MathInset * MathScriptInset::clone() const
 {   
 	return new MathScriptInset(*this);
 }

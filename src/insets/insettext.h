@@ -77,15 +77,15 @@ public:
 	///
 	~InsetText();
 	///
-	Inset * Clone(Buffer const &) const;
+	Inset * clone(Buffer const &) const;
 	///
 	InsetText & operator=(InsetText const & it);
 	///
 	void clear();
 	///
-	void Read(Buffer const *, LyXLex &);
+	void read(Buffer const *, LyXLex &);
 	///
-	void Write(Buffer const *, std::ostream &) const;
+	void write(Buffer const *, std::ostream &) const;
 	///
 	int ascent(BufferView *, LyXFont const &) const;
 	///
@@ -99,77 +99,80 @@ public:
 	///
 	void update(BufferView *, LyXFont const &, bool =false);
 	///
-	void SetUpdateStatus(BufferView *, int what) const;
+	void setUpdateStatus(BufferView *, int what) const;
 	///
-	string const EditMessage() const;
+	string const editMessage() const;
 	///
-	void Edit(BufferView *, int, int, unsigned int);
+	void edit(BufferView *, int, int, unsigned int);
 	///
-	bool IsTextInset() const { return true; }
+	bool isTextInset() const { return true; }
 	///
 	bool doClearArea() const;
 	///
-	void InsetUnlock(BufferView *);
+	void insetUnlock(BufferView *);
 	///
-	bool LockInsetInInset(BufferView *, UpdatableInset *);
+	bool lockInsetInInset(BufferView *, UpdatableInset *);
 	///
-	bool UnlockInsetInInset(BufferView *, UpdatableInset *, bool lr = false);
+	bool unlockInsetInInset(BufferView *,
+				UpdatableInset *, bool lr = false);
 	///
-	bool UpdateInsetInInset(BufferView *, Inset *);
+	bool updateInsetInInset(BufferView *, Inset *);
 	///
-	void InsetButtonRelease(BufferView *, int, int, int);
+	void insetButtonRelease(BufferView *, int, int, int);
 	///
-	void InsetButtonPress(BufferView *, int, int, int);
+	void insetButtonPress(BufferView *, int, int, int);
 	///
-	void InsetMotionNotify(BufferView *, int, int, int);
+	void insetMotionNotify(BufferView *, int, int, int);
 	///
-	void InsetKeyPress(XKeyEvent *);
+	void insetKeyPress(XKeyEvent *);
 	///
-	UpdatableInset::RESULT LocalDispatch(BufferView *, kb_action, string const &);
+	UpdatableInset::RESULT localDispatch(BufferView *,
+					     kb_action, string const &);
 	///
-	int Latex(Buffer const *, std::ostream &,
+	int latex(Buffer const *, std::ostream &,
 		  bool fragile, bool free_spc) const;
 	///
-	int Ascii(Buffer const *, std::ostream &, int linelen) const;
+	int ascii(Buffer const *, std::ostream &, int linelen) const;
 	///
-	int Linuxdoc(Buffer const *, std::ostream &) const { return 0; }
+	int linuxdoc(Buffer const *, std::ostream &) const { return 0; }
 	///
-	int DocBook(Buffer const *, std::ostream &) const ;
+	int docBook(Buffer const *, std::ostream &) const ;
 	///
-	void Validate(LaTeXFeatures & features) const;
+	void validate(LaTeXFeatures & features) const;
 	///
-	Inset::Code LyxCode() const { return Inset::TEXT_CODE; }
+	Inset::Code lyxCode() const { return Inset::TEXT_CODE; }
 	///
-	void GetCursorPos(BufferView *, int & x, int & y) const;
+	void getCursorPos(BufferView *, int & x, int & y) const;
 	///
-	unsigned int InsetInInsetY();
+	unsigned int insetInInsetY();
 	///
-	void ToggleInsetCursor(BufferView *);
+	void toggleInsetCursor(BufferView *);
 	///
-	bool InsertInset(BufferView *, Inset *);
+	bool insertInset(BufferView *, Inset *);
 	///
-	UpdatableInset * GetLockingInset();
+	UpdatableInset * getLockingInset();
 	///
-	UpdatableInset * GetFirstLockingInsetOfType(Inset::Code);
+	UpdatableInset * getFirstLockingInsetOfType(Inset::Code);
 	///
-	void SetFont(BufferView *, LyXFont const &, bool toggleall = false,
+	void setFont(BufferView *, LyXFont const &,
+		     bool toggleall = false,
 	             bool selectall = false);
 	///
 	int getMaxWidth(BufferView *, UpdatableInset const *) const;
 	///
 	void init(InsetText const * ins = 0);
 	///
-	void WriteParagraphData(Buffer const *, std::ostream &) const;
+	void writeParagraphData(Buffer const *, std::ostream &) const;
 	///
-	void SetParagraphData(Paragraph *);
+	void setParagraphData(Paragraph *);
 	///
-	void SetText(string const &);
+	void setText(string const &);
 	///
-	void SetAutoBreakRows(bool);
+	void setAutoBreakRows(bool);
 	///
-	void SetDrawFrame(BufferView *, DrawFrame);
+	void setDrawFrame(BufferView *, DrawFrame);
 	///
-	void SetFrameColor(BufferView *, LColor::color);
+	void setFrameColor(BufferView *, LColor::color);
 	///
 	LyXText * getLyXText(BufferView const *,
 			     bool const recursive = false) const;
@@ -178,7 +181,7 @@ public:
 	///
 	void resizeLyXText(BufferView *, bool force = false) const;
 	///
-	bool ShowInsetDialog(BufferView *) const;
+	bool showInsetDialog(BufferView *) const;
 	///
 	std::vector<string> const getLabelList() const;
 	///
@@ -204,7 +207,7 @@ public:
 
 protected:
 	///
-	void UpdateLocal(BufferView *, int what, bool mark_dirty);
+	void updateLocal(BufferView *, int what, bool mark_dirty);
 	///
 	mutable int drawTextXOffset;
 	///
@@ -222,16 +225,18 @@ private:
 	///
 	typedef Cache::value_type value_type;
 	///
-	int BeginningOfMainBody(Buffer const *, Paragraph * par) const;
+	int beginningOfMainBody(Buffer const *, Paragraph * par) const;
 	///
-	void ShowInsetCursor(BufferView *, bool show=true);
+	void showInsetCursor(BufferView *, bool show=true);
 	///
-	void HideInsetCursor(BufferView *);
+	void hideInsetCursor(BufferView *);
 	///
-	UpdatableInset::RESULT moveRight(BufferView *, bool activate_inset = true,
+	UpdatableInset::RESULT moveRight(BufferView *,
+					 bool activate_inset = true,
 					 bool selecting = false);
 	///
-	UpdatableInset::RESULT moveLeft(BufferView *, bool activate_inset = true,
+	UpdatableInset::RESULT moveLeft(BufferView *,
+					bool activate_inset = true,
 					bool selecting = false);
 	///
 	UpdatableInset::RESULT moveRightIntern(BufferView *, bool behind,
@@ -247,7 +252,7 @@ private:
 	///
 	UpdatableInset::RESULT moveDown(BufferView *);
 	///
-	void SetCharFont(Buffer const *, int pos, LyXFont const & font);
+	void setCharFont(Buffer const *, int pos, LyXFont const & font);
 	///
 	string const getText(int);
 	///
@@ -276,6 +281,7 @@ private:
 	}
 	///
 	void drawFrame(Painter &, bool cleared) const;
+	///
 	void clearFrame(Painter &, bool cleared) const;
 	///
 	void clearInset(Painter &, int baseline, bool & cleared) const;

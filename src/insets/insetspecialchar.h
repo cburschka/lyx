@@ -52,32 +52,32 @@ public:
 	///
 	void draw(BufferView *, LyXFont const &, int, float &, bool) const;
 	///
-	void Write(Buffer const *, std::ostream &) const;
+	void write(Buffer const *, std::ostream &) const;
 	/// Will not be used when lyxf3
-	void Read(Buffer const *, LyXLex & lex);
+	void read(Buffer const *, LyXLex & lex);
 	/// 
-	int Latex(Buffer const *, std::ostream &,
+	int latex(Buffer const *, std::ostream &,
 		  bool fragile, bool free_spc) const;
 	///
-	int Ascii(Buffer const *, std::ostream &, int linelen) const;
+	int ascii(Buffer const *, std::ostream &, int linelen) const;
 	///
-	int Linuxdoc(Buffer const *, std::ostream &) const;
+	int linuxdoc(Buffer const *, std::ostream &) const;
 	///
-	int DocBook(Buffer const *, std::ostream &) const;
+	int docBook(Buffer const *, std::ostream &) const;
 	///
-	Inset * Clone(Buffer const &) const;
+	virtual Inset * clone(Buffer const &) const;
 	///  
-	Inset::Code LyxCode() const
+	Inset::Code lyxCode() const
 	{
 		return Inset::SPECIALCHAR_CODE;
 	}
 	/// We don't need \begin_inset and \end_inset
-	bool DirectWrite() const 
+	bool directWrite() const 
 	{
 		return true;
 	};
 	///
-	void Validate(LaTeXFeatures &) const;
+	void validate(LaTeXFeatures &) const;
 private:
 	/// And which kind is this?
 	Kind kind;

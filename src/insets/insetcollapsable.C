@@ -39,9 +39,9 @@ InsetCollapsable::InsetCollapsable()
 	collapsed = false;
 	label = "Label";
 	autocollapse = true;
-	inset.SetAutoBreakRows(true);
-	inset.SetDrawFrame(0, InsetText::ALWAYS);
-	inset.SetFrameColor(0, LColor::collapsableframe);
+	inset.setAutoBreakRows(true);
+	inset.setDrawFrame(0, InsetText::ALWAYS);
+	inset.setFrameColor(0, LColor::collapsableframe);
 	button_length = button_top_y = button_bottom_y = 0;
 	setInsetName("Collapsable");
 	widthCollapsed = oldWidth = 0;
@@ -49,26 +49,26 @@ InsetCollapsable::InsetCollapsable()
 }
 
 
-bool InsetCollapsable::InsertInset(BufferView * bv, Inset * in)
+bool InsetCollapsable::insertInset(BufferView * bv, Inset * in)
 {
-	if (!InsertInsetAllowed(in)) {
+	if (!insertInsetAllowed(in)) {
 		lyxerr << "InsetCollapsable::InsertInset: "
 			"Unable to insert inset." << endl;
 		return false;
 	}
-	return inset.InsertInset(bv, in);
+	return inset.insertInset(bv, in);
 }
 
 
-void InsetCollapsable::Write(Buffer const * buf, ostream & os) const
+void InsetCollapsable::write(Buffer const * buf, ostream & os) const
 {
 	os << "collapsed " << tostr(collapsed) << "\n";
-	inset.WriteParagraphData(buf, os);
+	inset.writeParagraphData(buf, os);
 }
 
 
 
-void InsetCollapsable::Read(Buffer const * buf, LyXLex & lex)
+void InsetCollapsable::read(Buffer const * buf, LyXLex & lex)
 {
 	if (lex.IsOK()) {
 		lex.next();
@@ -81,7 +81,7 @@ void InsetCollapsable::Read(Buffer const * buf, LyXLex & lex)
 			       << endl;
 		}
 	}
-	inset.Read(buf, lex);
+	inset.read(buf, lex);
 }
 
 
@@ -191,7 +191,7 @@ void InsetCollapsable::draw(BufferView * bv, LyXFont const & f,
 #if 1
 		// we don't need anymore to clear here we just have to tell
 		// the underlying LyXText that it should do the RowClear!
-		inset.SetUpdateStatus(bv, InsetText::FULL);
+		inset.setUpdateStatus(bv, InsetText::FULL);
 		bv->text->status = LyXText::CHANGED_IN_DRAW;
 		return;
 #else
@@ -224,26 +224,26 @@ void InsetCollapsable::draw(BufferView * bv, LyXFont const & f,
 }
 
 
-void InsetCollapsable::Edit(BufferView * bv, int xp, int yp,
+void InsetCollapsable::edit(BufferView * bv, int xp, int yp,
 			    unsigned int button)
 {
-	UpdatableInset::Edit(bv, xp, yp, button);
+	UpdatableInset::edit(bv, xp, yp, button);
 
 	if (collapsed && autocollapse) {
 		collapsed = false;
 		if (!bv->lockInset(this))
 			return;
 		bv->updateInset(this, false);
-		inset.Edit(bv, 0, 0, button);
+		inset.edit(bv, 0, 0, button);
 	} else if (!collapsed) {
 		if (!bv->lockInset(this))
 			return;
-		inset.Edit(bv, xp, yp + (top_baseline - inset.y()), button);
+		inset.edit(bv, xp, yp + (top_baseline - inset.y()), button);
 	}
 }
 
 
-Inset::EDITABLE InsetCollapsable::Editable() const
+Inset::EDITABLE InsetCollapsable::editable() const
 {
 	if (collapsed)
 		return IS_EDITABLE;
@@ -251,36 +251,36 @@ Inset::EDITABLE InsetCollapsable::Editable() const
 }
 
 
-void InsetCollapsable::InsetUnlock(BufferView * bv)
+void InsetCollapsable::insetUnlock(BufferView * bv)
 {
 	if (autocollapse) {
 		collapsed = true;
 	}
-	inset.InsetUnlock(bv);
+	inset.insetUnlock(bv);
 	if (scroll())
 		scroll(bv, 0.0F);
 	bv->updateInset(this, false);
 }
 
 
-void InsetCollapsable::InsetButtonPress(BufferView * bv, int x, int y,
+void InsetCollapsable::insetButtonPress(BufferView * bv, int x, int y,
 					int button)
 {
 	if (!collapsed && (y > button_bottom_y)) {
-		inset.InsetButtonPress(bv, x, y + (top_baseline - inset.y()),
+		inset.insetButtonPress(bv, x, y + (top_baseline - inset.y()),
 				       button);
 	}
 }
 
 
-void InsetCollapsable::InsetButtonRelease(BufferView * bv,
+void InsetCollapsable::insetButtonRelease(BufferView * bv,
 					  int x, int y, int button)
 {
 	if ((x >= 0)  && (x < button_length) &&
 	    (y >= button_top_y) &&  (y <= button_bottom_y)) {
 		if (collapsed) {
 			collapsed = false;
-			inset.InsetButtonRelease(bv, 0, 0, button);
+			inset.insetButtonRelease(bv, 0, 0, button);
 			bv->updateInset(this, false);
 		} else {
 			collapsed = true;
@@ -288,32 +288,32 @@ void InsetCollapsable::InsetButtonRelease(BufferView * bv,
 			bv->updateInset(this, false);
 		}
 	} else if (!collapsed && (y > button_top_y)) {
-		inset.InsetButtonRelease(bv, x, y + (top_baseline-inset.y()),
+		inset.insetButtonRelease(bv, x, y + (top_baseline-inset.y()),
 					 button);
 	}
 }
 
 
-void InsetCollapsable::InsetMotionNotify(BufferView * bv,
+void InsetCollapsable::insetMotionNotify(BufferView * bv,
 					 int x, int y, int state)
 {
 	if (x > button_bottom_y) {
-		inset.InsetMotionNotify(bv, x, y + (top_baseline - inset.y()),
+		inset.insetMotionNotify(bv, x, y + (top_baseline - inset.y()),
 					state);
 	}
 }
 
 
-void InsetCollapsable::InsetKeyPress(XKeyEvent * xke)
+void InsetCollapsable::insetKeyPress(XKeyEvent * xke)
 {
-	inset.InsetKeyPress(xke);
+	inset.insetKeyPress(xke);
 }
 
 
-int InsetCollapsable::Latex(Buffer const * buf, ostream & os,
+int InsetCollapsable::latex(Buffer const * buf, ostream & os,
 			    bool fragile, bool free_spc) const
 {
-	return inset.Latex(buf, os, fragile, free_spc);
+	return inset.latex(buf, os, fragile, free_spc);
 }
 
 
@@ -364,88 +364,88 @@ void InsetCollapsable::update(BufferView * bv, LyXFont const & font,
 
 
 UpdatableInset::RESULT
-InsetCollapsable::LocalDispatch(BufferView * bv, kb_action action,
+InsetCollapsable::localDispatch(BufferView * bv, kb_action action,
 				string const & arg)
 {
-	UpdatableInset::RESULT result = inset.LocalDispatch(bv, action, arg);
+	UpdatableInset::RESULT result = inset.localDispatch(bv, action, arg);
 	if (result == FINISHED)
 		bv->unlockInset(this);
 	return result;
 }
 
 
-bool InsetCollapsable::LockInsetInInset(BufferView * bv, UpdatableInset * in)
+bool InsetCollapsable::lockInsetInInset(BufferView * bv, UpdatableInset * in)
 {
 	if (&inset == in)
 		return true;
-	return inset.LockInsetInInset(bv, in);
+	return inset.lockInsetInInset(bv, in);
 }
 
 
-bool InsetCollapsable::UnlockInsetInInset(BufferView * bv, UpdatableInset * in,
+bool InsetCollapsable::unlockInsetInInset(BufferView * bv, UpdatableInset * in,
 					  bool lr)
 {
 	if (&inset == in) {
 		bv->unlockInset(this);
 		return true;
 	}
-	return inset.UnlockInsetInInset(bv, in, lr);
+	return inset.unlockInsetInInset(bv, in, lr);
 }
 
 
-bool InsetCollapsable::UpdateInsetInInset(BufferView * bv, Inset *in)
+bool InsetCollapsable::updateInsetInInset(BufferView * bv, Inset *in)
 {
 	if (&inset == in)
 		return true;
-	return inset.UpdateInsetInInset(bv, in);
+	return inset.updateInsetInInset(bv, in);
 }
 
 
-unsigned int InsetCollapsable::InsetInInsetY()
+unsigned int InsetCollapsable::insetInInsetY()
 {
-	return inset.InsetInInsetY() - (top_baseline - inset.y());
+	return inset.insetInInsetY() - (top_baseline - inset.y());
 }
 
 
-void InsetCollapsable::Validate(LaTeXFeatures & features) const
+void InsetCollapsable::validate(LaTeXFeatures & features) const
 {
-	inset.Validate(features);
+	inset.validate(features);
 }
 
 
-void InsetCollapsable::GetCursorPos(BufferView * bv, int & x, int & y) const
+void InsetCollapsable::getCursorPos(BufferView * bv, int & x, int & y) const
 {
-	inset.GetCursorPos(bv, x , y);
+	inset.getCursorPos(bv, x , y);
 }
 
 
-void InsetCollapsable::ToggleInsetCursor(BufferView * bv)
+void InsetCollapsable::toggleInsetCursor(BufferView * bv)
 {
-	inset.ToggleInsetCursor(bv);
+	inset.toggleInsetCursor(bv);
 }
 
 
-UpdatableInset * InsetCollapsable::GetLockingInset()
+UpdatableInset * InsetCollapsable::getLockingInset()
 {
-	UpdatableInset * in = inset.GetLockingInset();
+	UpdatableInset * in = inset.getLockingInset();
 	if (&inset == in)
 		return this;
 	return in;
 }
 
 
-UpdatableInset * InsetCollapsable::GetFirstLockingInsetOfType(Inset::Code c)
+UpdatableInset * InsetCollapsable::getFirstLockingInsetOfType(Inset::Code c)
 {
-	if (c == LyxCode())
+	if (c == lyxCode())
 		return this;
-	return inset.GetFirstLockingInsetOfType(c);
+	return inset.getFirstLockingInsetOfType(c);
 }
 
 
-void InsetCollapsable::SetFont(BufferView * bv, LyXFont const & font,
+void InsetCollapsable::setFont(BufferView * bv, LyXFont const & font,
                                bool toggleall, bool selectall)
 {
-	inset.SetFont(bv, font, toggleall, selectall);
+	inset.setFont(bv, font, toggleall, selectall);
 }
 
 

@@ -19,7 +19,7 @@ MathMacroTemplate::MathMacroTemplate(string const & nm, int numargs) :
 {}
 
 
-MathInset * MathMacroTemplate::Clone() const
+MathInset * MathMacroTemplate::clone() const
 {
 	lyxerr << "cloning MacroTemplate!\n";
 	return new MathMacroTemplate(*this);

@@ -14,7 +14,7 @@ public:
 	///
 	MathArrayInset(int m, int n);
 	///
-	MathInset *  Clone() const;
+	virtual MathInset * clone() const;
 	///
 	void Write(std::ostream &, bool fragile) const;
 };

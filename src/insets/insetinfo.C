@@ -108,13 +108,13 @@ void InsetInfo::draw(BufferView * bv, LyXFont const &,
 }
 
 
-void InsetInfo::Write(Buffer const *, ostream & os) const
+void InsetInfo::write(Buffer const *, ostream & os) const
 {
 	os << "Info\n" << contents;
 }
 
 
-void InsetInfo::Read(Buffer const *, LyXLex & lex)
+void InsetInfo::read(Buffer const *, LyXLex & lex)
 {
 	string tmp = lex.GetString(); // should be "Info"
 	if (tmp != "Info")
@@ -141,38 +141,38 @@ void InsetInfo::Read(Buffer const *, LyXLex & lex)
 }
       
 
-int InsetInfo::Latex(Buffer const *, ostream &,
+int InsetInfo::latex(Buffer const *, ostream &,
 		     bool /*fragile*/, bool /*free_spc*/) const
 {
 	return 0;
 }
 
 
-int InsetInfo::Ascii(Buffer const *, ostream &, int) const
+int InsetInfo::ascii(Buffer const *, ostream &, int) const
 {
 	return 0;
 }
 
 
-int InsetInfo::Linuxdoc(Buffer const *, ostream &) const
+int InsetInfo::linuxdoc(Buffer const *, ostream &) const
 {
 	return 0;
 }
 
 
-int InsetInfo::DocBook(Buffer const *, ostream &) const
+int InsetInfo::docBook(Buffer const *, ostream &) const
 {
 	return 0;
 }
 
 
-Inset::EDITABLE InsetInfo::Editable() const
+Inset::EDITABLE InsetInfo::editable() const
 {
 	return IS_EDITABLE;
 }
 
 
-void InsetInfo::CloseInfoCB(FL_OBJECT * ob, long)
+void InsetInfo::closeInfoCB(FL_OBJECT * ob, long)
 {
 	InsetInfo * inset = static_cast<InsetInfo*>(ob->u_vdata);
 	string tmp = fl_get_input(inset->strobj);
@@ -193,17 +193,17 @@ void InsetInfo::CloseInfoCB(FL_OBJECT * ob, long)
 extern "C"
 void C_InsetInfo_CloseInfoCB(FL_OBJECT * ob, long data) 
 {
-  	InsetInfo::CloseInfoCB(ob, data);
+  	InsetInfo::closeInfoCB(ob, data);
 }
 
 
-string const InsetInfo::EditMessage() const 
+string const InsetInfo::editMessage() const 
 {
 	return _("Opened note");
 }
 
 
-void InsetInfo::Edit(BufferView *bv, int, int, unsigned int)
+void InsetInfo::edit(BufferView *bv, int, int, unsigned int)
 {
 	static int ow = -1;
 	static int oh;
@@ -243,13 +243,13 @@ void InsetInfo::Edit(BufferView *bv, int, int, unsigned int)
 }
 
 
-Inset * InsetInfo::Clone(Buffer const &) const
+Inset * InsetInfo::clone(Buffer const &) const
 {
 	return new InsetInfo(contents);
 }
 
 
-Inset::Code InsetInfo::LyxCode() const
+Inset::Code InsetInfo::lyxCode() const
 {
 	return Inset::IGNORE_CODE;
 }

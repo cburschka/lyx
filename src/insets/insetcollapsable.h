@@ -42,9 +42,9 @@ public:
 	///
 	InsetCollapsable();
 	///
-	void Read(Buffer const *, LyXLex &);
+	void read(Buffer const *, LyXLex &);
 	///
-	void Write(Buffer const *, std::ostream &) const;
+	void write(Buffer const *, std::ostream &) const;
 	///
 	int ascent(BufferView *, LyXFont const &) const;
 	///
@@ -56,60 +56,60 @@ public:
 	///
 	void update(BufferView *, LyXFont const &, bool =false); 
 	///
-	void Edit(BufferView *, int, int, unsigned int);
+	void edit(BufferView *, int, int, unsigned int);
 	///
-	EDITABLE Editable() const;
+	EDITABLE editable() const;
 	///
-	bool InsertInset(BufferView *, Inset * inset);
+	bool insertInset(BufferView *, Inset * inset);
 	///
-	bool IsTextInset() const { return true; }
+	bool isTextInset() const { return true; }
 	///
 	bool doClearArea() const;
 	///
-	void InsetUnlock(BufferView *);
+	void insetUnlock(BufferView *);
 	///
 	bool needFullRow() const { return !collapsed; }
 	///
-	bool LockInsetInInset(BufferView *, UpdatableInset *);
+	bool lockInsetInInset(BufferView *, UpdatableInset *);
 	///
-	bool UnlockInsetInInset(BufferView *, UpdatableInset *,
+	bool unlockInsetInInset(BufferView *, UpdatableInset *,
 				bool lr = false);
 	///
-	bool UpdateInsetInInset(BufferView *, Inset *);
+	bool updateInsetInInset(BufferView *, Inset *);
 	///
-	unsigned int InsetInInsetY();
+	unsigned int insetInInsetY();
 	///
-	void InsetButtonRelease(BufferView *, int, int, int);
+	void insetButtonRelease(BufferView *, int, int, int);
 	///
-	void InsetButtonPress(BufferView *, int, int, int);
+	void insetButtonPress(BufferView *, int, int, int);
 	///
-	void InsetMotionNotify(BufferView *, int, int, int);
+	void insetMotionNotify(BufferView *, int, int, int);
 	///
-	void InsetKeyPress(XKeyEvent *);
+	void insetKeyPress(XKeyEvent *);
 	///
-	UpdatableInset::RESULT LocalDispatch(BufferView *, kb_action,
+	UpdatableInset::RESULT localDispatch(BufferView *, kb_action,
 					     string const &);
 	///
-	int Latex(Buffer const *, std::ostream &,
+	int latex(Buffer const *, std::ostream &,
 		  bool fragile, bool free_spc) const;
 	///
-	int Ascii(Buffer const *, std::ostream &, int) const { return 0; }
+	int ascii(Buffer const *, std::ostream &, int) const { return 0; }
 	///
-	int Linuxdoc(Buffer const *, std::ostream &) const { return 0; }
+	int linuxdoc(Buffer const *, std::ostream &) const { return 0; }
 	///
-	int DocBook(Buffer const *, std::ostream &) const { return 0; }
+	int docBook(Buffer const *, std::ostream &) const { return 0; }
 	///
-	void Validate(LaTeXFeatures & features) const;
+	void validate(LaTeXFeatures & features) const;
 	///
-	void GetCursorPos(BufferView *, int & x, int & y) const;
+	void getCursorPos(BufferView *, int & x, int & y) const;
 	///
-	void ToggleInsetCursor(BufferView *);
+	void toggleInsetCursor(BufferView *);
 	///
-	UpdatableInset * GetLockingInset();
+	UpdatableInset * getLockingInset();
 	///
-	UpdatableInset * GetFirstLockingInsetOfType(Inset::Code);
+	UpdatableInset * getFirstLockingInsetOfType(Inset::Code);
 	///
-	void SetFont(BufferView *, LyXFont const &, bool toggleall = false,
+	void setFont(BufferView *, LyXFont const &, bool toggleall = false,
                  bool selectall = false);
 	///
 	void setLabel(string const & l) { label = l; }

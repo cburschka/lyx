@@ -41,31 +41,31 @@ public:
 	///
 	void draw(BufferView *, LyXFont const &, int, float &, bool) const;
 	///
-	void Write(Buffer const *, std::ostream &) const {}
+	void write(Buffer const *, std::ostream &) const {}
 	///
-	void Read(Buffer const *, LyXLex &) {}
+	void read(Buffer const *, LyXLex &) {}
 	///
-	int Latex(Buffer const *, std::ostream &, bool, bool) const { return 0; }
+	int latex(Buffer const *, std::ostream &, bool, bool) const { return 0; }
 	///
-	int Ascii(Buffer const *, std::ostream &, int) const { return 0; }
+	int ascii(Buffer const *, std::ostream &, int) const { return 0; }
 	///
-	int Linuxdoc(Buffer const *, std::ostream &) const { return 0; }
+	int linuxdoc(Buffer const *, std::ostream &) const { return 0; }
 	///
-	int DocBook(Buffer const *, std::ostream &) const { return 0; }
+	int docBook(Buffer const *, std::ostream &) const { return 0; }
 	///
-	bool AutoDelete() const { return true; }
+	bool autoDelete() const { return true; }
 	/// what appears in the minibuffer when opening
-	string const EditMessage() const;
+	string const editMessage() const;
 	///
-	void Edit(BufferView *, int, int, unsigned int);
+	void edit(BufferView *, int, int, unsigned int);
 	///
-	EDITABLE Editable() const { return IS_EDITABLE; }
+	EDITABLE editable() const { return IS_EDITABLE; }
 	///
-	Inset * Clone(Buffer const &) const { return new InsetError(contents); }
+	Inset * clone(Buffer const &) const { return new InsetError(contents); }
 	///
-	Inset::Code LyxCode() const { return Inset::ERROR_CODE; }
+	Inset::Code lyxCode() const { return Inset::ERROR_CODE; }
 	/// We don't want "begin" and "end inset" in lyx-file
-	bool DirectWrite() const { return true; };
+	bool directWrite() const { return true; };
 	///
 	string const & getContents() const { return contents; }
 	///

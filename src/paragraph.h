@@ -282,7 +282,7 @@ public:
 	Inset const * getInset(size_type pos) const;
 	/** important for cut and paste
 	    Temporary change from BufferParams to Buffer. Will revert when we
-	    get rid of the argument to Inset::Clone(Buffer const &) */
+	    get rid of the argument to Inset::clone(Buffer const &) */
 	void copyIntoMinibuffer(Buffer const &, size_type pos) const;
 	///
 	void cutIntoMinibuffer(BufferParams const &, size_type pos);

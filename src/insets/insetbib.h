@@ -33,23 +33,23 @@ public:
 	///
 	~InsetBibKey();
 	///
-	Inset * Clone(Buffer const &) const;
+	Inset * clone(Buffer const &) const;
 	/** Currently \bibitem is used as a LyX2.x command,
 	    so we need this method.
 	*/
-        void Write(Buffer const *, std::ostream &) const;
+        void write(Buffer const *, std::ostream &) const;
 	///
-	void Read(Buffer const *, LyXLex & lex);
+	void read(Buffer const *, LyXLex & lex);
 	///
 	virtual string const getScreenLabel() const;
         ///
-	void Edit(BufferView *, int x, int y, unsigned int button);
+	void edit(BufferView *, int x, int y, unsigned int button);
 	///
-	EDITABLE Editable() const {
+	EDITABLE editable() const {
 		return IS_EDITABLE;
 	}
 	/// A user can't neither insert nor delete this inset
-	bool Deletable() const {
+	bool deletable() const {
 		return false;
 	}
         ///
@@ -83,19 +83,19 @@ public:
 	///
 	~InsetBibtex();
 	///
-	Inset * Clone(Buffer const &) const {
+	Inset * clone(Buffer const &) const {
 		return new InsetBibtex(params());
 	}
 	///
 	string const getScreenLabel() const;
 	///
-	EDITABLE Editable() const { return IS_EDITABLE; }
+	EDITABLE editable() const { return IS_EDITABLE; }
 	///
-	Inset::Code LyxCode() const { return Inset::BIBTEX_CODE; }
+	Inset::Code lyxCode() const { return Inset::BIBTEX_CODE; }
 	///
-	void Edit(BufferView *, int x, int y, unsigned int button);
+	void edit(BufferView *, int x, int y, unsigned int button);
 	/// 
-	int Latex(Buffer const *, std::ostream &,
+	int latex(Buffer const *, std::ostream &,
 		  bool fragile, bool freespace) const;
 	///
 	std::vector<std::pair<string,string> > const getKeys(Buffer const *) const;

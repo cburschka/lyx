@@ -42,7 +42,7 @@ vector<string> const InsetLabel::getLabelList() const
 }
 
 
-void InsetLabel::Edit(BufferView * bv, int, int, unsigned int)
+void InsetLabel::edit(BufferView * bv, int, int, unsigned int)
 {
 	if (bv->buffer()->isReadonly()) {
 		WarnReadonly(bv->buffer()->fileName());
@@ -69,28 +69,28 @@ void InsetLabel::Edit(BufferView * bv, int, int, unsigned int)
 }
 
 
-int InsetLabel::Latex(Buffer const *, ostream & os,
+int InsetLabel::latex(Buffer const *, ostream & os,
 		      bool /*fragile*/, bool /*fs*/) const
 {
 	os << escape(getCommand());
 	return 0;
 }
 
-int InsetLabel::Ascii(Buffer const *, ostream & os, int) const
+int InsetLabel::ascii(Buffer const *, ostream & os, int) const
 {
 	os << "<" << getContents()  << ">";
 	return 0;
 }
 
 
-int InsetLabel::Linuxdoc(Buffer const *, ostream & os) const
+int InsetLabel::linuxdoc(Buffer const *, ostream & os) const
 {
 	os << "<label id=\"" << getContents() << "\" >";
 	return 0;
 }
 
 
-int InsetLabel::DocBook(Buffer const *, ostream & os) const
+int InsetLabel::docBook(Buffer const *, ostream & os) const
 {
 	os << "<anchor id=\"" << getContents() << "\" ></anchor>";
 	return 0;

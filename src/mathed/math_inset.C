@@ -180,7 +180,7 @@ void MathInset::setData(MathArray const & a, int idx)
 
 void MathInset::substitute(MathArray & array, MathMacro const & m) const
 {
-	MathInset * p = Clone();
+	MathInset * p = clone();
 	for (int i = 0; i < nargs(); ++i)
 		p->cell(i).substitute(m);
 	array.push_back(p);

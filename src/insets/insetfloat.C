@@ -112,7 +112,7 @@ InsetFloat::InsetFloat(string const & type)
 }
 
 
-void InsetFloat::Write(Buffer const * buf, ostream & os) const
+void InsetFloat::write(Buffer const * buf, ostream & os) const
 {
 	os << "Float " // getInsetName()
 	   << floatType_ << '\n';
@@ -129,11 +129,11 @@ void InsetFloat::Write(Buffer const * buf, ostream & os) const
 		os << "wide false\n";
 	}
 	
-	InsetCollapsable::Write(buf, os);
+	InsetCollapsable::write(buf, os);
 }
 
 
-void InsetFloat::Read(Buffer const * buf, LyXLex & lex)
+void InsetFloat::read(Buffer const * buf, LyXLex & lex)
 {
 	if (lex.IsOK()) {
 		lex.next();
@@ -159,18 +159,18 @@ void InsetFloat::Read(Buffer const * buf, LyXLex & lex)
 			       << endl;
 		}
 	}
-	InsetCollapsable::Read(buf, lex);
+	InsetCollapsable::read(buf, lex);
 }
 
 
-void InsetFloat::Validate(LaTeXFeatures & features) const
+void InsetFloat::validate(LaTeXFeatures & features) const
 {
 	features.usedFloats.insert(floatType_);
-	InsetCollapsable::Validate(features);
+	InsetCollapsable::validate(features);
 }
 
 
-Inset * InsetFloat::Clone(Buffer const &) const
+Inset * InsetFloat::clone(Buffer const &) const
 {
 	InsetFloat * result = new InsetFloat(floatType_);
 	result->inset.init(&inset);
@@ -180,13 +180,13 @@ Inset * InsetFloat::Clone(Buffer const &) const
 }
 
 
-string const InsetFloat::EditMessage() const
+string const InsetFloat::editMessage() const
 {
 	return _("Opened Float Inset");
 }
 
 
-int InsetFloat::Latex(Buffer const * buf,
+int InsetFloat::latex(Buffer const * buf,
 		      ostream & os, bool fragile, bool fp) const
 {
 	string const tmptype = (wide_ ? floatType_ + "*" : floatType_);
@@ -197,34 +197,34 @@ int InsetFloat::Latex(Buffer const * buf,
 		os << "[" << floatPlacement_ << "]";
 	os << "%\n";
     
-	int const i = inset.Latex(buf, os, fragile, fp);
+	int const i = inset.latex(buf, os, fragile, fp);
 	os << "\\end{" << tmptype << "}%\n";
 	
 	return i + 2;
 }
 
 
-int InsetFloat::DocBook(Buffer const * buf, ostream & os) const
+int InsetFloat::docBook(Buffer const * buf, ostream & os) const
 {
 	os << "<" << floatType_ << ">";
-	int const i = inset.DocBook(buf, os);
+	int const i = inset.docBook(buf, os);
 	os << "</" << floatType_ << ">";
 
 	return i;
 }
 
 
-bool InsetFloat::InsertInsetAllowed(Inset * in) const
+bool InsetFloat::insertInsetAllowed(Inset * in) const
 {
-	if ((in->LyxCode() == Inset::FOOT_CODE) ||
-	    (in->LyxCode() == Inset::MARGIN_CODE)) {
+	if ((in->lyxCode() == Inset::FOOT_CODE) ||
+	    (in->lyxCode() == Inset::MARGIN_CODE)) {
 		return false;
 	}
 	return true;
 }
 
 
-void InsetFloat::InsetButtonRelease(BufferView * bv, int x, int y, int button)
+void InsetFloat::insetButtonRelease(BufferView * bv, int x, int y, int button)
 {
 	if (x >= top_x
 	    && x < button_length
@@ -236,7 +236,7 @@ void InsetFloat::InsetButtonRelease(BufferView * bv, int x, int y, int button)
 		       << endl;
 		//bv->owner()->getDialogs()->showFloat(this);
 	} else {
-		InsetCollapsable::InsetButtonRelease(bv, x, y, button);
+		InsetCollapsable::insetButtonRelease(bv, x, y, button);
 	}
 }
 

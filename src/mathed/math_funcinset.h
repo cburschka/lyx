@@ -17,7 +17,7 @@ public:
 	///
 	explicit MathFuncInset(string const & nm, MathInsetTypes ot = LM_OT_FUNC);
 	///
-	MathInset * Clone() const;
+	virtual MathInset * clone() const;
 	///
 	void draw(Painter &, int, int);
 	///

@@ -63,15 +63,15 @@ extern bool finished; // all cleanup done just let it run through now.
 
    During the lock, all button and keyboard events will be modified
    and send to the inset through the following inset-features. Note that
-   Inset::InsetUnlock will be called from inside UnlockInset. It is meant
+   Inset::insetUnlock will be called from inside UnlockInset. It is meant
    to contain the code for restoring the menus and things like this.
 
    
-   virtual void InsetButtonPress(int x, int y, int button);
-   virtual void InsetButtonRelease(int x, int y, int button);
-   virtual void InsetKeyPress(XKeyEvent *ev);
-   virtual void InsetMotionNotify(int x, int y, int state);
-   virtual void InsetUnlock();
+   virtual void insetButtonPress(int x, int y, int button);
+   virtual void insetButtonRelease(int x, int y, int button);
+   virtual void insetKeyPress(XKeyEvent *ev);
+   virtual void insetMotionNotify(int x, int y, int state);
+   virtual void insetUnlock();
 
    If a inset wishes any redraw and/or update it just has to call
    UpdateInset(this).
@@ -280,7 +280,7 @@ void QuitLyX()
 	lyxerr[Debug::INFO] << "Running QuitLyX." << endl;
 
 	if (lyxrc.use_gui) {
-		if (!bufferlist.QwriteAll())
+		if (!bufferlist.qwriteAll())
 			return;
 
 		lastfiles->writeFile(lyxrc.lastfiles);

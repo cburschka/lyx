@@ -54,7 +54,7 @@ public:
 	///
 	MathGridInset(int m, int n, string const & nm, MathInsetTypes ot);
 	///
-	MathInset *  Clone() const = 0;
+	virtual MathInset * clone() const = 0;
 	///
 	void Write(std::ostream &, bool fragile) const;
 	///

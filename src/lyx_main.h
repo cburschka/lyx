@@ -71,13 +71,13 @@ private:
 	/** Search for and read the LyXRC file name, return
 	    true if successfull.
 	*/
-        bool ReadRcFile(string const & name);
+        bool readRcFile(string const & name);
 	/// Read the ui file `name'
-	void ReadUIFile(string const & name);
+	void readUIFile(string const & name);
 	/// Read the languages file `name'
-	void ReadLanguagesFile(string const & name);
+	void readLanguagesFile(string const & name);
 	/// Read the encodings file `name'
-	void ReadEncodingsFile(string const & name);
+	void readEncodingsFile(string const & name);
         ///
 	bool easyParse(int * argc, char * argv[]);
 };

@@ -16,7 +16,7 @@ MathDotsInset::MathDotsInset(string const & name, int id)
 {}
 
 
-MathInset * MathDotsInset::Clone() const
+MathInset * MathDotsInset::clone() const
 {
 	return new MathDotsInset(*this);
 }     

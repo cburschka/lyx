@@ -23,26 +23,28 @@ public:
 	///
 	InsetLabel(InsetCommandParams const &);
 	///
-	Inset * Clone(Buffer const &) const { return new InsetLabel(params()); }
+	virtual Inset * clone(Buffer const &) const {
+		return new InsetLabel(params());
+	}
 	///
 	string const getScreenLabel() const { return getContents(); }
 	///
-	EDITABLE Editable() const { return IS_EDITABLE; }
+	EDITABLE editable() const { return IS_EDITABLE; }
 	///
-	Inset::Code LyxCode() const { return Inset::LABEL_CODE; }
+	Inset::Code lyxCode() const { return Inset::LABEL_CODE; }
 	///
-	void Edit(BufferView *, int, int, unsigned int);
+	void edit(BufferView *, int, int, unsigned int);
 	///
 	std::vector<string> const getLabelList() const;
 	///
-	int Latex(Buffer const *, std::ostream &,
+	int latex(Buffer const *, std::ostream &,
 		  bool fragile, bool free_spc) const;
 	///
-	int Ascii(Buffer const *, std::ostream &, int linelen) const;
+	int ascii(Buffer const *, std::ostream &, int linelen) const;
 	///
-	int Linuxdoc(Buffer const *, std::ostream &) const;
+	int linuxdoc(Buffer const *, std::ostream &) const;
 	///
-	int DocBook(Buffer const *, std::ostream &) const;
+	int docBook(Buffer const *, std::ostream &) const;
 };
 
 #endif

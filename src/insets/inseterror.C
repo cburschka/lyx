@@ -79,13 +79,13 @@ void InsetError::draw(BufferView * bv, LyXFont const & font,
 }
 
 
-string const InsetError::EditMessage() const 
+string const InsetError::editMessage() const 
 {
 	return _("Opened error");
 }
 
 
-void InsetError::Edit(BufferView * bv, int, int, unsigned int)
+void InsetError::edit(BufferView * bv, int, int, unsigned int)
 {
 	bv->owner()->getDialogs()->showError( this );
 }

@@ -30,7 +30,7 @@ public:
 	///
 	InsetFootlike();
 	///
-	void Write(Buffer const * buf, std::ostream & os) const;
+	void write(Buffer const * buf, std::ostream & os) const;
 };
 
 #endif

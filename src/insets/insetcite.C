@@ -56,13 +56,13 @@ string const InsetCitation::getScreenLabel() const
 }
 
 
-void InsetCitation::Edit(BufferView * bv, int, int, unsigned int)
+void InsetCitation::edit(BufferView * bv, int, int, unsigned int)
 {
 	bv->owner()->getDialogs()->showCitation(this);
 }
 
 
-int InsetCitation::Ascii(Buffer const *, std::ostream & os, int) const
+int InsetCitation::ascii(Buffer const *, std::ostream & os, int) const
 {
         os << "[" << getContents() << "]";
         return 0;

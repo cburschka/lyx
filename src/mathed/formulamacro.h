@@ -45,24 +45,24 @@ public:
 	///
 	void draw(BufferView *,LyXFont const &, int, float &, bool) const;
 	///
-	void Read(Buffer const *, LyXLex & lex);
+	void read(Buffer const *, LyXLex & lex);
 	///
-	void Write(Buffer const *, std::ostream & os) const;
+	void write(Buffer const *, std::ostream & os) const;
 	///
-	int Ascii(Buffer const *, std::ostream &, int linelen) const;
+	int ascii(Buffer const *, std::ostream &, int linelen) const;
 	///
-	int Latex(Buffer const *, std::ostream & os, bool fragile,
+	int latex(Buffer const *, std::ostream & os, bool fragile,
 		  bool free_spc) const;
 	///
-	int Linuxdoc(Buffer const *, std::ostream & os) const;
+	int linuxdoc(Buffer const *, std::ostream & os) const;
 	///
-	int DocBook(Buffer const *, std::ostream &) const;
+	int docBook(Buffer const *, std::ostream &) const;
 	///
-	Inset * Clone(Buffer const &) const;
+	Inset * clone(Buffer const &) const;
 	///
-	Inset::Code LyxCode() const;
+	Inset::Code lyxCode() const;
 	///
-	RESULT LocalDispatch(BufferView *, kb_action, string const &);
+	RESULT localDispatch(BufferView *, kb_action, string const &);
 private:
 	/// prefix in inset
 	string prefix() const;

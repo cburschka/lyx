@@ -71,46 +71,46 @@ InsetFormula::InsetFormula(MathInsetTypes t)
 
 
 
-Inset * InsetFormula::Clone(Buffer const &) const
+Inset * InsetFormula::clone(Buffer const &) const
 {
 	return new InsetFormula(*this);
 }
 
 
-void InsetFormula::Write(Buffer const * buf, ostream & os) const
+void InsetFormula::write(Buffer const * buf, ostream & os) const
 {
 	os << "Formula ";
-	Latex(buf, os, false, false);
+	latex(buf, os, false, false);
 }
 
 
-int InsetFormula::Latex(Buffer const *, ostream & os, bool fragile, bool) const
+int InsetFormula::latex(Buffer const *, ostream & os, bool fragile, bool) const
 {
 	par()->Write(os, fragile);
 	return 1;
 }
 
 
-int InsetFormula::Ascii(Buffer const *, ostream & os, int) const
+int InsetFormula::ascii(Buffer const *, ostream & os, int) const
 {
 	par()->Write(os, false);
 	return 1;
 }
 
 
-int InsetFormula::Linuxdoc(Buffer const * buf, ostream & os) const
+int InsetFormula::linuxdoc(Buffer const * buf, ostream & os) const
 {
-	return Ascii(buf, os, 0);
+	return ascii(buf, os, 0);
 }
 
 
-int InsetFormula::DocBook(Buffer const * buf, ostream & os) const
+int InsetFormula::docBook(Buffer const * buf, ostream & os) const
 {
-	return Ascii(buf, os, 0);
+	return ascii(buf, os, 0);
 }
 
 
-void InsetFormula::Read(Buffer const *, LyXLex & lex)
+void InsetFormula::read(Buffer const *, LyXLex & lex)
 {
 	par_ = mathed_parse(lex);
 }
@@ -158,7 +158,7 @@ vector<string> const InsetFormula::getLabelList() const
 
 
 UpdatableInset::RESULT
-InsetFormula::LocalDispatch(BufferView * bv, kb_action action,
+InsetFormula::localDispatch(BufferView * bv, kb_action action,
 	 string const & arg)
 {
 	RESULT result = DISPATCHED;
@@ -168,14 +168,14 @@ InsetFormula::LocalDispatch(BufferView * bv, kb_action action,
 		case LFUN_BREAKLINE: 
 			bv->lockedInsetStoreUndo(Undo::INSERT);
 			par()->breakLine();
-			UpdateLocal(bv);
+			updateLocal(bv);
 			break;
 
 
 		case LFUN_DELETE_LINE_FORWARD:
 			bv->lockedInsetStoreUndo(Undo::DELETE);
 			mathcursor->DelLine();
-			UpdateLocal(bv);
+			updateLocal(bv);
 			break;
 
 		case LFUN_MATH_NUMBER:
@@ -187,7 +187,7 @@ InsetFormula::LocalDispatch(BufferView * bv, kb_action action,
 				for (int row = 0; row < par()->nrows(); ++row)
 					par()->numbered(row, !old);
 				bv->owner()->message(old ? _("No number") : _("Number"));
-				UpdateLocal(bv);
+				updateLocal(bv);
 			}
 			break;
 		}
@@ -201,7 +201,7 @@ InsetFormula::LocalDispatch(BufferView * bv, kb_action action,
 				bool old = par()->numbered(row);
 				bv->owner()->message(old ? _("No number") : _("Number"));
 				par()->numbered(row, !old);
-				UpdateLocal(bv);
+				updateLocal(bv);
 			}
 			break;
 		}
@@ -240,24 +240,24 @@ InsetFormula::LocalDispatch(BufferView * bv, kb_action action,
 
 			par()->label(row, new_label);
 
-			UpdateLocal(bv);
+			updateLocal(bv);
 			break;
 		}
 
 		case LFUN_MATH_EXTERN:
-			HandleExtern(arg, bv);
-			UpdateLocal(bv);
+			handleExtern(arg, bv);
+			updateLocal(bv);
 			break;
 
 		case LFUN_MATH_MUTATE:
 			par()->mutate(arg);
-			UpdateLocal(bv);
+			updateLocal(bv);
 			break;
 
 		case LFUN_TABINSERT:
 			lyxerr << "take index from cursor\n";
 			par()->splitCell(0);
-			UpdateLocal(bv);
+			updateLocal(bv);
 			break;
 
 		case LFUN_MATH_DISPLAY:
@@ -265,18 +265,18 @@ InsetFormula::LocalDispatch(BufferView * bv, kb_action action,
 				par()->mutate(LM_OT_EQUATION);
 			else
 				par()->mutate(LM_OT_SIMPLE);
-			UpdateLocal(bv);
+			updateLocal(bv);
 			break;
 
 		default:
-			result = InsetFormulaBase::LocalDispatch(bv, action, arg);
+			result = InsetFormulaBase::localDispatch(bv, action, arg);
 	}
 
 	return result;
 }
 
 
-void InsetFormula::HandleExtern(const string & arg, BufferView *)
+void InsetFormula::handleExtern(const string & arg, BufferView *)
 {
 	//string outfile = lyx::tempName("maple.out");
 	string outfile = "/tmp/lyx2" + arg + ".out";
@@ -303,13 +303,13 @@ MathMatrixInset * InsetFormula::par() const
 }
 
 
-Inset::Code InsetFormula::LyxCode() const
+Inset::Code InsetFormula::lyxCode() const
 {
 	return Inset::MATH_CODE;
 }
 
 
-void InsetFormula::Validate(LaTeXFeatures & features) const
+void InsetFormula::validate(LaTeXFeatures & features) const
 {
 	par()->Validate(features);
 }

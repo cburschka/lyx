@@ -16,7 +16,7 @@ MathSpaceInset::MathSpaceInset(int sp, MathInsetTypes ot)
 {}
 
 
-MathInset * MathSpaceInset::Clone() const
+MathInset * MathSpaceInset::clone() const
 {
 	return new MathSpaceInset(*this);
 }

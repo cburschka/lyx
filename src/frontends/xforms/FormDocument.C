@@ -543,7 +543,7 @@ bool FormDocument::language_apply()
     if (old_language != new_language
 	&& old_language->RightToLeft() == new_language->RightToLeft()
 	&& !lv_->buffer()->isMultiLingual())
-	lv_->buffer()->ChangeLanguage(old_language, new_language);
+	lv_->buffer()->changeLanguage(old_language, new_language);
     if (old_language != new_language) {
 	redo = true;
     }

@@ -17,7 +17,7 @@ MathDelimInset::MathDelimInset(int l, int r)
 {}
 
 
-MathInset * MathDelimInset::Clone() const
+MathInset * MathDelimInset::clone() const
 {   
 	return new MathDelimInset(*this);
 }

@@ -112,7 +112,7 @@ void InsetInclude::set(Params const & p)
 }
 
 
-Inset * InsetInclude::Clone(Buffer const & buffer) const
+Inset * InsetInclude::clone(Buffer const & buffer) const
 {
 	Params p(params_);
 	p.masterFilename_ = buffer.fileName();
@@ -121,21 +121,21 @@ Inset * InsetInclude::Clone(Buffer const & buffer) const
 }
 
 
-void InsetInclude::Edit(BufferView * bv, int, int, unsigned int)
+void InsetInclude::edit(BufferView * bv, int, int, unsigned int)
 {
 	bv->owner()->getDialogs()->showInclude(this);
 }
 
 
-void InsetInclude::Write(Buffer const *, ostream & os) const
+void InsetInclude::write(Buffer const *, ostream & os) const
 {
 	os << "Include " << params_.cparams.getCommand() << "\n";
 }
 
 
-void InsetInclude::Read(Buffer const *, LyXLex & lex)
+void InsetInclude::read(Buffer const *, LyXLex & lex)
 {
-	params_.cparams.Read(lex);
+	params_.cparams.read(lex);
    
 	if (params_.cparams.getCmdName() == "include")
 		params_.flag = INCLUDE;
@@ -215,7 +215,7 @@ bool InsetInclude::loadIfNeeded() const
 }
 
 
-int InsetInclude::Latex(Buffer const * buffer, ostream & os,
+int InsetInclude::latex(Buffer const * buffer, ostream & os,
 			bool /*fragile*/, bool /*fs*/) const
 {
 	string incfile(params_.cparams.getContents());
@@ -285,7 +285,7 @@ int InsetInclude::Latex(Buffer const * buffer, ostream & os,
 }
 
 
-int InsetInclude::Ascii(Buffer const *, std::ostream & os, int) const
+int InsetInclude::ascii(Buffer const *, std::ostream & os, int) const
 {
 	if (isVerbatim())
 		os << GetFileContents(getFileName());
@@ -293,7 +293,7 @@ int InsetInclude::Ascii(Buffer const *, std::ostream & os, int) const
 }
 
 
-int InsetInclude::Linuxdoc(Buffer const * buffer, ostream & os) const
+int InsetInclude::linuxdoc(Buffer const * buffer, ostream & os) const
 {
 	string incfile(params_.cparams.getContents());
 	
@@ -332,7 +332,7 @@ int InsetInclude::Linuxdoc(Buffer const * buffer, ostream & os) const
 }
 
 
-int InsetInclude::DocBook(Buffer const * buffer, ostream & os) const
+int InsetInclude::docBook(Buffer const * buffer, ostream & os) const
 {
 	string incfile(params_.cparams.getContents());
 
@@ -370,7 +370,7 @@ int InsetInclude::DocBook(Buffer const * buffer, ostream & os) const
 }
 
 
-void InsetInclude::Validate(LaTeXFeatures & features) const
+void InsetInclude::validate(LaTeXFeatures & features) const
 {
 
 	string incfile(params_.cparams.getContents());

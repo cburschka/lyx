@@ -40,30 +40,30 @@ public:
 	///
 	InsetRef(InsetCommandParams const &, Buffer const &);
 	///
-	Inset * Clone(Buffer const & buffer) const {
+	virtual Inset * clone(Buffer const & buffer) const {
 		return new InsetRef(params(), buffer);
 	}
 	///
 	string const getScreenLabel() const;
 	///
-	EDITABLE Editable() const { return IS_EDITABLE; }
+	EDITABLE editable() const { return IS_EDITABLE; }
 	///
-	Inset::Code LyxCode() const { return Inset::REF_CODE; }
+	Inset::Code lyxCode() const { return Inset::REF_CODE; }
 	///
-	void Edit(BufferView *, int, int, unsigned int);
+	void edit(BufferView *, int, int, unsigned int);
         ///
 	bool display() const { return false; }
 	///
-	int Latex(Buffer const *, std::ostream &,
+	int latex(Buffer const *, std::ostream &,
 		  bool fragile, bool free_spc) const;
 	///
-	int Ascii(Buffer const *, std::ostream &, int linelen) const;
+	int ascii(Buffer const *, std::ostream &, int linelen) const;
 	///
-	int Linuxdoc(Buffer const *, std::ostream &) const;
+	int linuxdoc(Buffer const *, std::ostream &) const;
 	///
-	int DocBook(Buffer const *, std::ostream &) const;
+	int docBook(Buffer const *, std::ostream &) const;
 	///
-	void Validate(LaTeXFeatures & features) const;
+	void validate(LaTeXFeatures & features) const;
 private:
 	///
 	bool isLatex;

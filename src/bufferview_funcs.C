@@ -255,7 +255,7 @@ void ToggleAndShow(BufferView * bv, LyXFont const & font, bool toggleall)
 {
 	if (bv->available()) { 
 		if (bv->theLockingInset()) {
-			bv->theLockingInset()->SetFont(bv, font, toggleall);
+			bv->theLockingInset()->setFont(bv, font, toggleall);
 			return;
 		}
 		LyXText * text = bv->getLyXText();

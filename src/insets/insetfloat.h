@@ -28,25 +28,25 @@ public:
 	///
 	InsetFloat(string const &);
 	///
-	void Write(Buffer const * buf, std::ostream & os) const;
+	void write(Buffer const * buf, std::ostream & os) const;
 	///
-	void Read(Buffer const * buf, LyXLex & lex);
+	void read(Buffer const * buf, LyXLex & lex);
 	///
-	void Validate(LaTeXFeatures & features) const;
+	void validate(LaTeXFeatures & features) const;
 	///
-	Inset * Clone(Buffer const &) const;
+	Inset * clone(Buffer const &) const;
 	///
-	Inset::Code LyxCode() const { return Inset::FLOAT_CODE; }
+	Inset::Code lyxCode() const { return Inset::FLOAT_CODE; }
 	///
-	int Latex(Buffer const *, std::ostream &, bool fragile, bool fp) const;
+	int latex(Buffer const *, std::ostream &, bool fragile, bool fp) const;
 	///
-	int DocBook(Buffer const *, std::ostream &) const;
+	int docBook(Buffer const *, std::ostream &) const;
 	///
-	string const EditMessage() const;
+	string const editMessage() const;
 	///
-	bool InsertInsetAllowed(Inset * inset) const;
+	bool insertInsetAllowed(Inset * inset) const;
 	///
-	void InsetButtonRelease(BufferView * bv, int x, int y, int button);
+	void insetButtonRelease(BufferView * bv, int x, int y, int button);
 	///
 	string const & type() const;
 	///

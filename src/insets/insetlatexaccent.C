@@ -300,19 +300,19 @@ int InsetLatexAccent::width(BufferView *, LyXFont const & font) const
 }
 
 
-int InsetLatexAccent::Lbearing(LyXFont const & font) const
+int InsetLatexAccent::lbearing(LyXFont const & font) const
 {
 	return lyxfont::lbearing(ic, font);
 }
 
 
-int InsetLatexAccent::Rbearing(LyXFont const & font) const
+int InsetLatexAccent::rbearing(LyXFont const & font) const
 {
 	return lyxfont::rbearing(ic, font);
 }
 
 
-bool InsetLatexAccent::DisplayISO8859_9(BufferView * bv, LyXFont const & font,
+bool InsetLatexAccent::displayISO8859_9(BufferView * bv, LyXFont const & font,
 					int baseline, 
 					float & x) const
 {
@@ -361,7 +361,7 @@ void InsetLatexAccent::draw(BufferView * bv, LyXFont const & font0,
 	Painter & pain = bv->painter();
 
 	if (lyxrc.font_norm_type == LyXRC::ISO_8859_9)
-		if (DisplayISO8859_9(bv, font0, baseline, x))	
+		if (displayISO8859_9(bv, font0, baseline, x))	
 			return;
 	
 	/* draw it! */ 
@@ -377,7 +377,7 @@ void InsetLatexAccent::draw(BufferView * bv, LyXFont const & font0,
 		int asc = ascent(bv, font);
 		int desc = descent(bv, font);
 		int wid = width(bv, font);
-		float x2 = x + (Rbearing(font) - Lbearing(font)) / 2.0;
+		float x2 = x + (rbearing(font) - lbearing(font)) / 2.0;
 		float hg;
 		int y;
 		if (plusasc) {
@@ -612,13 +612,13 @@ void InsetLatexAccent::draw(BufferView * bv, LyXFont const & font0,
 }
 
 
-void InsetLatexAccent::Write(Buffer const *, ostream & os) const
+void InsetLatexAccent::write(Buffer const *, ostream & os) const
 {
 	os << "\\i " << contents << "\n";
 }
 
 
-void InsetLatexAccent::Read(Buffer const *, LyXLex & lex)
+void InsetLatexAccent::read(Buffer const *, LyXLex & lex)
 {
 	lex.EatLine();
 	contents = lex.GetString();
@@ -626,7 +626,7 @@ void InsetLatexAccent::Read(Buffer const *, LyXLex & lex)
 }
 
 
-int InsetLatexAccent::Latex(Buffer const *, ostream & os,
+int InsetLatexAccent::latex(Buffer const *, ostream & os,
 			    bool /*fragile*/, bool/*fs*/) const
 {
 	os << contents;
@@ -634,46 +634,46 @@ int InsetLatexAccent::Latex(Buffer const *, ostream & os,
 }
 
 
-int InsetLatexAccent::Ascii(Buffer const *, ostream & os, int) const
+int InsetLatexAccent::ascii(Buffer const *, ostream & os, int) const
 {
 	os << contents;
 	return 0;
 }
 
 
-int InsetLatexAccent::Linuxdoc(Buffer const *, ostream & os) const
+int InsetLatexAccent::linuxdoc(Buffer const *, ostream & os) const
 {
 	os << contents;
 	return 0;
 }
 
 
-int InsetLatexAccent::DocBook(Buffer const *, ostream & os) const
+int InsetLatexAccent::docBook(Buffer const *, ostream & os) const
 {
 	os << contents;
 	return 0;
 }
 
 
-bool InsetLatexAccent::Deletable() const
+bool InsetLatexAccent::deletable() const
 {
 	return true;
 }
 
 
-bool InsetLatexAccent::DirectWrite() const
+bool InsetLatexAccent::directWrite() const
 {
 	return true;
 }
 
 
-Inset * InsetLatexAccent::Clone(Buffer const &) const
+Inset * InsetLatexAccent::clone(Buffer const &) const
 {
 	return new InsetLatexAccent(contents);
 }
 
 
-Inset::Code InsetLatexAccent::LyxCode() const
+Inset::Code InsetLatexAccent::lyxCode() const
 {
 	return Inset::ACCENT_CODE;
 }

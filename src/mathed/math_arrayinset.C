@@ -15,7 +15,7 @@ MathArrayInset::MathArrayInset(int m, int n)
 {}
 
 
-MathInset * MathArrayInset::Clone() const
+MathInset * MathArrayInset::clone() const
 {
 	return new MathArrayInset(*this);
 }

@@ -271,15 +271,15 @@ void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const * buf,
 			bool close = false;
 			int const len = os.tellp();
 			//ostream::pos_type const len = os.tellp();
-			if ((inset->LyxCode() == Inset::GRAPHICS_CODE
-			     || inset->LyxCode() == Inset::MATH_CODE
-			     || inset->LyxCode() == Inset::URL_CODE)
+			if ((inset->lyxCode() == Inset::GRAPHICS_CODE
+			     || inset->lyxCode() == Inset::MATH_CODE
+			     || inset->lyxCode() == Inset::URL_CODE)
 			    && running_font.isRightToLeft()) {
 				os << "\\L{";
 				close = true;
 			}
 
-			int tmp = inset->Latex(buf, os, moving_arg,
+			int tmp = inset->latex(buf, os, moving_arg,
 					       style.free_spacing);
 
 			if (close)

@@ -47,53 +47,53 @@ public:
 	///
 	virtual void draw(BufferView *,LyXFont const &, int, float &, bool) const = 0;
 	///
-	virtual void Write(Buffer const *, std::ostream &) const = 0;
+	virtual void write(Buffer const *, std::ostream &) const = 0;
 	///
-	virtual void Read(Buffer const *, LyXLex & lex) = 0;
+	virtual void read(Buffer const *, LyXLex & lex) = 0;
 	///
-	virtual int Latex(Buffer const *, std::ostream &,
+	virtual int latex(Buffer const *, std::ostream &,
 		  bool fragile, bool free_spc) const = 0;
 	///
-	virtual int Ascii(Buffer const *, std::ostream &, int linelen) const = 0;
+	virtual int ascii(Buffer const *, std::ostream &, int linelen) const = 0;
 	///
-	virtual int Linuxdoc(Buffer const *, std::ostream &) const = 0;
+	virtual int linuxdoc(Buffer const *, std::ostream &) const = 0;
 	///
-	virtual int DocBook(Buffer const *, std::ostream &) const = 0;
+	virtual int docBook(Buffer const *, std::ostream &) const = 0;
 	///
-	virtual void Validate(LaTeXFeatures &) const;
+	virtual void validate(LaTeXFeatures &) const;
 	///
-	virtual Inset * Clone(Buffer const &) const = 0;
+	virtual Inset * clone(Buffer const &) const = 0;
 	///
-	virtual Inset::Code LyxCode() const;
+	virtual Inset::Code lyxCode() const;
 	///
-	virtual LyXFont const ConvertFont(LyXFont const & f) const;
+	virtual LyXFont const convertFont(LyXFont const & f) const;
 	/// what appears in the minibuffer when opening
-	virtual string const EditMessage() const;
+	virtual string const editMessage() const;
 	///
-	virtual void Edit(BufferView *, int x, int y, unsigned int button);
+	virtual void edit(BufferView *, int x, int y, unsigned int button);
 	///
-	virtual void ToggleInsetCursor(BufferView *);
+	virtual void toggleInsetCursor(BufferView *);
 	///
-	virtual void ShowInsetCursor(BufferView *, bool show = true);
+	virtual void showInsetCursor(BufferView *, bool show = true);
 	///
-	virtual void HideInsetCursor(BufferView *);
+	virtual void hideInsetCursor(BufferView *);
 	///
-	virtual void GetCursorPos(BufferView *, int &, int &) const;
+	virtual void getCursorPos(BufferView *, int &, int &) const;
 	///
-	virtual void ToggleInsetSelection(BufferView * bv);
+	virtual void toggleInsetSelection(BufferView * bv);
 	///
-	virtual void InsetButtonPress(BufferView *, int x, int y, int button);
+	virtual void insetButtonPress(BufferView *, int x, int y, int button);
 	///
-	virtual void InsetButtonRelease(BufferView *, int x, int y, int button);
+	virtual void insetButtonRelease(BufferView *, int x, int y, int button);
 	///
-	virtual void InsetKeyPress(XKeyEvent * ev);
+	virtual void insetKeyPress(XKeyEvent * ev);
 	///
-	virtual void InsetMotionNotify(BufferView *, int x, int y, int state);
+	virtual void insetMotionNotify(BufferView *, int x, int y, int state);
 	///
-	virtual void InsetUnlock(BufferView *);
+	virtual void insetUnlock(BufferView *);
    
 	///  To allow transparent use of math editing functions
-	virtual RESULT LocalDispatch(BufferView *, kb_action, string const &);
+	virtual RESULT localDispatch(BufferView *, kb_action, string const &);
     
 	///
 	virtual std::vector<string> const getLabelList() const;
@@ -101,7 +101,7 @@ public:
 	MathInset * par() const;
 protected:
 	///
-	virtual void UpdateLocal(BufferView * bv);
+	virtual void updateLocal(BufferView * bv);
 
 	///
 	MathInset * par_;

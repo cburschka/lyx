@@ -25,7 +25,7 @@ public:
 	///
 	explicit MathMatrixInset(MathInsetTypes t);
 	///
-	MathInset *  Clone() const;
+	MathInset * clone() const;
 	///
 	void Write(std::ostream &, bool fragile) const;
 	///

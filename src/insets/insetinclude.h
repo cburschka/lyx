@@ -69,34 +69,35 @@ public:
 	void set(Params const & params);
 
 	///
-        Inset * Clone(Buffer const &) const;
+        virtual Inset * clone(Buffer const &) const;
 	///
-	Inset::Code LyxCode() const { return Inset::INCLUDE_CODE; }
+	Inset::Code lyxCode() const { return Inset::INCLUDE_CODE; }
 	/// This returns the list of labels on the child buffer
 	std::vector<string> const getLabelList() const;
 	/// This returns the list of bibkeys on the child buffer
 	std::vector< std::pair<string,string> > const getKeys() const;
 	///
-	void Edit(BufferView *, int x, int y, unsigned int button);
+	void edit(BufferView *, int x, int y, unsigned int button);
 	///
-	EDITABLE Editable() const
+	EDITABLE editable() const
 	{
 		return IS_EDITABLE;
 	}
         /// With lyx3 we won't overload these 3 methods
-        void Write(Buffer const *, std::ostream &) const;
+        void write(Buffer const *, std::ostream &) const;
         ///
-	void Read(Buffer const *, LyXLex &);
+	void read(Buffer const *, LyXLex &);
 	///
-	int Latex(Buffer const *, std::ostream &, bool fragile, bool free_spc) const;
+	int latex(Buffer const *, std::ostream &,
+		  bool fragile, bool free_spc) const;
 	///
-	int Ascii(Buffer const *, std::ostream &, int linelen) const;
+	int ascii(Buffer const *, std::ostream &, int linelen) const;
 	///
-	int Linuxdoc(Buffer const *, std::ostream &) const;
+	int linuxdoc(Buffer const *, std::ostream &) const;
 	///
-	int DocBook(Buffer const *, std::ostream &) const;
+	int docBook(Buffer const *, std::ostream &) const;
 	///
-	void Validate(LaTeXFeatures &) const;
+	void validate(LaTeXFeatures &) const;
 	
         /** Input inserts anything inside a paragraph.
 	    Display can give some visual feedback

@@ -72,7 +72,7 @@ void ControlExternal::editExternal()
 	// Create a local copy of the inset and initialise it with this
 	// params struct.
 	boost::scoped_ptr<InsetExternal> ie;
-	ie.reset(static_cast<InsetExternal *>(inset()->Clone(*lv_.buffer())));
+	ie.reset(static_cast<InsetExternal *>(inset()->clone(*lv_.buffer())));
 	ie->setFromParams(params());
 
 	ie->editExternal();
@@ -83,7 +83,7 @@ void ControlExternal::viewExternal()
 	view().apply();
 
 	boost::scoped_ptr<InsetExternal> ie;
-	ie.reset(static_cast<InsetExternal *>(inset()->Clone(*lv_.buffer())));
+	ie.reset(static_cast<InsetExternal *>(inset()->clone(*lv_.buffer())));
 	ie->setFromParams(params());
 
 	ie->viewExternal();
@@ -94,7 +94,7 @@ void ControlExternal::updateExternal()
 	view().apply();
 
 	boost::scoped_ptr<InsetExternal> ie;
-	ie.reset(static_cast<InsetExternal *>(inset()->Clone(*lv_.buffer())));
+	ie.reset(static_cast<InsetExternal *>(inset()->clone(*lv_.buffer())));
 	ie->setFromParams(params());
 
 	ie->updateExternal();

@@ -39,14 +39,14 @@ InsetERT::InsetERT() : InsetCollapsable()
 }
 
 
-void InsetERT::Write(Buffer const * buf, ostream & os) const 
+void InsetERT::write(Buffer const * buf, ostream & os) const 
 {
 	os << getInsetName() << "\n";
-	InsetCollapsable::Write(buf, os);
+	InsetCollapsable::write(buf, os);
 }
 
 
-Inset * InsetERT::Clone(Buffer const &) const
+Inset * InsetERT::clone(Buffer const &) const
 {
 	InsetERT * result = new InsetERT;
 	result->inset.init(&inset);
@@ -56,19 +56,19 @@ Inset * InsetERT::Clone(Buffer const &) const
 }
 
 
-string const InsetERT::EditMessage() const 
+string const InsetERT::editMessage() const 
 {
 	return _("Opened ERT Inset");
 }
 
 
-bool InsetERT::InsertInset(BufferView *, Inset *)
+bool InsetERT::insertInset(BufferView *, Inset *)
 {
 	return false;
 }
 
 
-void InsetERT::SetFont(BufferView *, LyXFont const &, bool, bool selectall)
+void InsetERT::setFont(BufferView *, LyXFont const &, bool, bool selectall)
 {
 	// if selectall is activated then the fontchange was an outside general
 	// fontchange and this messages is not needed
@@ -79,9 +79,9 @@ void InsetERT::SetFont(BufferView *, LyXFont const &, bool, bool selectall)
 }
 
 
-void InsetERT::Edit(BufferView * bv, int x, int y, unsigned int button)
+void InsetERT::edit(BufferView * bv, int x, int y, unsigned int button)
 {
-	InsetCollapsable::Edit(bv, x, y, button);
+	InsetCollapsable::edit(bv, x, y, button);
 #ifndef NO_LATEX
 	LyXFont font(LyXFont::ALL_SANE);
 	font.setLatex (LyXFont::ON);
@@ -89,7 +89,7 @@ void InsetERT::Edit(BufferView * bv, int x, int y, unsigned int button)
 }
 
 
-int InsetERT::Latex(Buffer const *, std::ostream & os, bool /*fragile*/,
+int InsetERT::latex(Buffer const *, std::ostream & os, bool /*fragile*/,
 		    bool /*free_spc*/) const
 {
 	Paragraph::size_type siz = inset.par->size();
@@ -100,20 +100,20 @@ int InsetERT::Latex(Buffer const *, std::ostream & os, bool /*fragile*/,
 }
 
 
-int InsetERT::Ascii(Buffer const *,
+int InsetERT::ascii(Buffer const *,
 		    std::ostream &, int /*linelen*/) const 
 {
 	return 0;
 }
 
 
-int InsetERT::Linuxdoc(Buffer const *, std::ostream &) const
+int InsetERT::linuxdoc(Buffer const *, std::ostream &) const
 {
 	return 0;
 }
 
 
-int InsetERT::DocBook(Buffer const *, std::ostream &) const
+int InsetERT::docBook(Buffer const *, std::ostream &) const
 {
 	return 0;
 }

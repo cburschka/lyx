@@ -1,3 +1,8 @@
+2001-06-28  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* Change a lot of method names to begin with a small char.
+	Changes to a lot of files because of this.
+
 2001-06-27  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* insetfloatlist.C (Write): std:: qualify ostream

@@ -1050,9 +1050,9 @@ void InsetFig::draw(BufferView * bv, LyXFont const & f,
 }
 
 
-void InsetFig::Write(Buffer const *, ostream & os) const
+void InsetFig::write(Buffer const *, ostream & os) const
 {
-	Regenerate();
+	regenerate();
 	os << "Figure size " << wid << " " << hgh << "\n";
 	if (!fname.empty()) {
 		string buf1 = OnlyPath(owner->fileName());
@@ -1069,7 +1069,7 @@ void InsetFig::Write(Buffer const *, ostream & os) const
 }
 
 
-void InsetFig::Read(Buffer const *, LyXLex & lex)
+void InsetFig::read(Buffer const *, LyXLex & lex)
 {
 	string buf;
 	bool finished = false;
@@ -1148,35 +1148,35 @@ void InsetFig::Read(Buffer const *, LyXLex & lex)
 			thtype = htype;
 		}
 	}
-	Regenerate();
-	Recompute();
+	regenerate();
+	recompute();
 }
 
 
-int InsetFig::Latex(Buffer const *, ostream & os,
+int InsetFig::latex(Buffer const *, ostream & os,
 		    bool /* fragile*/, bool /* fs*/) const
 {
-	Regenerate();
+	regenerate();
 	if (!cmd.empty()) os << cmd << " ";
 	return 0;
 }
 
 
-int InsetFig::Ascii(Buffer const *, ostream &, int) const
+int InsetFig::ascii(Buffer const *, ostream &, int) const
 {
 	return 0;
 }
 
 
-int InsetFig::Linuxdoc(Buffer const *, ostream &) const
+int InsetFig::linuxdoc(Buffer const *, ostream &) const
 {
 	return 0;
 }
 
 
-int InsetFig::DocBook(Buffer const *, ostream & os) const
+int InsetFig::docBook(Buffer const *, ostream & os) const
 {
-	string buf1 = OnlyPath(owner->fileName());
+	string const buf1 = OnlyPath(owner->fileName());
 	string figurename = MakeRelPath(fname, buf1);
 
 	if (suffixIs(figurename, ".eps"))
@@ -1187,35 +1187,35 @@ int InsetFig::DocBook(Buffer const *, ostream & os) const
 } 
 
 
-void InsetFig::Validate(LaTeXFeatures & features) const
+void InsetFig::validate(LaTeXFeatures & features) const
 {
 	features.graphics = true;
 	if (subfigure) features.subfigure = true;
 }
 
 
-Inset::EDITABLE InsetFig::Editable() const
+Inset::EDITABLE InsetFig::editable() const
 {
 	return IS_EDITABLE;
 }
 
 
-bool InsetFig::Deletable() const
+bool InsetFig::deletable() const
 {
 	return false;
 }
 
 
-string const InsetFig::EditMessage() const 
+string const InsetFig::editMessage() const 
 {
 	return _("Opened figure");
 }
 
 
-void InsetFig::Edit(BufferView * bv, int, int, unsigned int)
+void InsetFig::edit(BufferView * bv, int, int, unsigned int)
 {
 	lyxerr[Debug::INFO] << "Editing InsetFig." << endl;
-	Regenerate();
+	regenerate();
 
 	// We should have RO-versions of the form instead.
 	// The actual prevention of altering a readonly doc
@@ -1230,7 +1230,7 @@ void InsetFig::Edit(BufferView * bv, int, int, unsigned int)
 		fl_set_object_return(form->Width, FL_RETURN_ALWAYS);
 		fl_set_object_return(form->Height, FL_RETURN_ALWAYS);
 	}
-	RestoreForm();
+	restoreForm();
 	if (form->Figure->visible) {
 		fl_raise_form(form->Figure);
 	} else {
@@ -1241,7 +1241,7 @@ void InsetFig::Edit(BufferView * bv, int, int, unsigned int)
 }
 
 
-Inset * InsetFig::Clone(Buffer const & buffer) const
+Inset * InsetFig::clone(Buffer const & buffer) const
 {
 	InsetFig * tmp = new InsetFig(100, 100, buffer);
 
@@ -1284,12 +1284,12 @@ Inset * InsetFig::Clone(Buffer const & buffer) const
 	tmp->subcaption = subcaption;
 	tmp->changedfname = false;
 	tmp->owner = owner;
-	tmp->Regenerate();
+	tmp->regenerate();
 	return tmp;
 }
 
 
-Inset::Code InsetFig::LyxCode() const
+Inset::Code InsetFig::lyxCode() const
 {
 	return Inset::GRAPHICS_CODE;
 }
@@ -1323,11 +1323,13 @@ string const stringify(InsetFig::HWTYPE hw, float f, string suffix)
 } // namespace anon
 
 
-void InsetFig::Regenerate() const
+void InsetFig::regenerate() const
 {
 	string cmdbuf;
-	string resizeW, resizeH;
-	string rotate, recmd;
+	string resizeW;
+	string resizeH;
+	string rotate;
+	string recmd;
 
 	if (fname.empty()) {
 		cmd = "\\fbox{\\rule[-0.5in]{0pt}{1in}";
@@ -1380,11 +1382,13 @@ void InsetFig::Regenerate() const
 }
 
 
-void InsetFig::TempRegenerate()
+void InsetFig::tempRegenerate()
 {
 	string cmdbuf;
-	string resizeW, resizeH;
-	string rotate, recmd;
+	string resizeW;
+	string resizeH;
+	string rotate;
+	string recmd;
 	
 	char const * tfname = fl_get_input(form->EpsFile);
 	string tsubcap = fl_get_input(form->Subcaption);
@@ -1437,7 +1441,7 @@ void InsetFig::TempRegenerate()
 }
 
 
-void InsetFig::Recompute()
+void InsetFig::recompute()
 {
 	if (!lyxrc.use_gui)
 		return;
@@ -1445,7 +1449,7 @@ void InsetFig::Recompute()
 	bool changed = changedfname;
 	int newx, newy, nraw_x, nraw_y;
 
-	if (changed) GetPSSizes();
+	if (changed) getPSSizes();
 
 	float sin_a = sin(angle / DEG2PI);  /* rotation; H. Zeller 021296 */
 	float cos_a = cos(angle / DEG2PI);
@@ -1556,7 +1560,7 @@ void InsetFig::Recompute()
 }
 
 
-void InsetFig::GetPSSizes()
+void InsetFig::getPSSizes()
 {
 	/* get %%BoundingBox: from postscript file */
 	
@@ -1622,7 +1626,7 @@ void InsetFig::GetPSSizes()
 }
 
 
-void InsetFig::CallbackFig(long arg)
+void InsetFig::callbackFig(long arg)
 {
 	bool regen = false;
 	char const * p;
@@ -1725,12 +1729,12 @@ void InsetFig::CallbackFig(long arg)
 		regen = true;		/* regenerate command */
 		break;
 	case 0:				/* browse file */
-		BrowseFile();
+		browseFile();
 		regen = true;
 		break;
 	case 1:				/* preview */
 		p = fl_get_input(form->EpsFile);
-		Preview(p);
+		preview(p);
 		break;
 	case 7:				/* apply */
 	case 8:				/* ok (apply and close) */
@@ -1753,8 +1757,8 @@ void InsetFig::CallbackFig(long arg)
 			}
 			subcaption = fl_get_input(form->Subcaption);
 	
-			Regenerate();
-			Recompute();
+			regenerate();
+			recompute();
 			/* now update inset */
 			if (lyxerr.debugging()) {
 				lyxerr << "Update: ["
@@ -1792,7 +1796,7 @@ void InsetFig::CallbackFig(long arg)
 		break;
 	}
 
-	if (regen) TempRegenerate();
+	if (regen) tempRegenerate();
 }
 
 
@@ -1870,7 +1874,7 @@ void EnableFigurePanel(FD_Figure * const form)
 }
 
 
-void InsetFig::RestoreForm()
+void InsetFig::restoreForm()
 {
 	EnableFigurePanel(form);
 
@@ -1922,11 +1926,11 @@ void InsetFig::RestoreForm()
 	if (current_view->buffer()->isReadonly()) 
 	        DisableFigurePanel(form);
 
-	TempRegenerate();
+	tempRegenerate();
 }
 
 
-void InsetFig::Preview(string const & p)
+void InsetFig::preview(string const & p)
 {
 	string tfname = p;
 	if (GetExtension(tfname).empty())
@@ -1938,7 +1942,7 @@ void InsetFig::Preview(string const & p)
 }
 
 
-void InsetFig::BrowseFile()
+void InsetFig::browseFile()
 {
 	static string current_figure_path;
 	static int once;
@@ -2017,7 +2021,7 @@ void GraphicsCB(FL_OBJECT * obj, long arg)
 				lyxerr << "Calling back figure "
 				       << (*it) << endl;
 			}
-			(*it)->inset->CallbackFig(arg);
+			(*it)->inset->callbackFig(arg);
 			return;
 		}
 }
@@ -2033,6 +2037,6 @@ void HideFiguresPopups()
 				lyxerr << "Hiding figure " << (*it) << endl;
 			}
 			// hide and free the form
-			(*it)->inset->CallbackFig(9);
+			(*it)->inset->callbackFig(9);
 		}
 }

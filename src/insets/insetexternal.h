@@ -42,15 +42,15 @@ public:
 	///
 	virtual ~InsetExternal();
 	/// what appears in the minibuffer when opening
-	virtual string const EditMessage() const;
+	virtual string const editMessage() const;
 	///
-	virtual void Edit(BufferView *, int x, int y, unsigned int button);
+	virtual void edit(BufferView *, int x, int y, unsigned int button);
 	///
-	virtual EDITABLE Editable() const { return IS_EDITABLE; }
+	virtual EDITABLE editable() const { return IS_EDITABLE; }
 	///
-	virtual void Write(Buffer const *, std::ostream &) const;
+	virtual void write(Buffer const *, std::ostream &) const;
 	///
-	virtual void Read(Buffer const *, LyXLex & lex);
+	virtual void read(Buffer const *, LyXLex & lex);
 
 	/** returns the number of rows (\n's) of generated tex code.
 	 fragile == true means, that the inset should take care about
@@ -58,23 +58,23 @@ public:
 	 If the free_spc (freespacing) variable is set, then this inset
 	 is in a free-spacing paragraph.
 	 */
-	virtual int Latex(Buffer const *, std::ostream &, bool fragile,
+	virtual int latex(Buffer const *, std::ostream &, bool fragile,
 			  bool free_spc) const;
 	/// write ASCII output to the ostream
-	virtual int Ascii(Buffer const *, std::ostream &, int linelen) const;
+	virtual int ascii(Buffer const *, std::ostream &, int linelen) const;
 	/// write LinuxDoc output to the ostream
-	virtual int Linuxdoc(Buffer const *, std::ostream &) const;
+	virtual int linuxdoc(Buffer const *, std::ostream &) const;
 	/// write DocBook output to the ostream
-	virtual int DocBook(Buffer const *, std::ostream &) const;
+	virtual int docBook(Buffer const *, std::ostream &) const;
 
 	/// Updates needed features for this inset.
-	virtual void Validate(LaTeXFeatures & features) const;
+	virtual void validate(LaTeXFeatures & features) const;
 
 	/// returns LyX code associated with the inset. Used for TOC, ...)
-	virtual Inset::Code LyxCode() const { return EXTERNAL_CODE; }
+	virtual Inset::Code lyxCode() const { return EXTERNAL_CODE; }
  
 	///
-	virtual Inset * Clone(Buffer const &) const;
+	virtual Inset * clone(Buffer const &) const;
 
 	/// returns the text of the button
 	virtual string const getScreenLabel() const;

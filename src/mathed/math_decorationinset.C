@@ -27,7 +27,7 @@ bool MathDecorationInset::GetLimits() const
 }    
 
 
-MathInset * MathDecorationInset::Clone() const
+MathInset * MathDecorationInset::clone() const
 {   
 	return new MathDecorationInset(*this);
 }

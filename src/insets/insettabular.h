@@ -81,11 +81,11 @@ public:
 	///
 	~InsetTabular();
 	///
-	Inset * Clone(Buffer const &) const;
+	Inset * clone(Buffer const &) const;
 	///
-	void Read(Buffer const *, LyXLex &);
+	void read(Buffer const *, LyXLex &);
 	///
-	void Write(Buffer const *, std::ostream &) const;
+	void write(Buffer const *, std::ostream &) const;
 	///
 	int ascent(BufferView *, LyXFont const &) const;
 	///
@@ -97,75 +97,75 @@ public:
 	///
 	void update(BufferView *, LyXFont const &, bool = false);
 	///
-	string const EditMessage() const;
+	string const editMessage() const;
 	///
-	void Edit(BufferView *, int x, int y, unsigned int);
+	void edit(BufferView *, int x, int y, unsigned int);
 	///
 	bool doClearArea() const;
 	///
-	void InsetUnlock(BufferView *);
+	void insetUnlock(BufferView *);
 	///
-	void UpdateLocal(BufferView *, UpdateCodes, bool mark_dirty) const;
+	void updateLocal(BufferView *, UpdateCodes, bool mark_dirty) const;
 	///
-	bool LockInsetInInset(BufferView *, UpdatableInset *);
+	bool lockInsetInInset(BufferView *, UpdatableInset *);
 	///
-	bool UnlockInsetInInset(BufferView *, UpdatableInset *,
+	bool unlockInsetInInset(BufferView *, UpdatableInset *,
 				bool lr = false);
 	///
-	bool UpdateInsetInInset(BufferView *, Inset *);
+	bool updateInsetInInset(BufferView *, Inset *);
 	///
-	unsigned int InsetInInsetY();
+	unsigned int insetInInsetY();
 	///
-	UpdatableInset * GetLockingInset();
+	UpdatableInset * getLockingInset();
 	///
-	UpdatableInset * GetFirstLockingInsetOfType(Inset::Code);
+	UpdatableInset * getFirstLockingInsetOfType(Inset::Code);
 	///
-	bool InsertInset(BufferView *, Inset *);
+	bool insertInset(BufferView *, Inset *);
 	///
-	bool IsTextInset() const { return true; }
+	bool isTextInset() const { return true; }
 	///
 	bool display() const { return tabular->IsLongTabular(); }
 	///
-	void InsetButtonRelease(BufferView *, int, int, int);
+	void insetButtonRelease(BufferView *, int, int, int);
 	///
-	void InsetButtonPress(BufferView *, int, int, int);
+	void insetButtonPress(BufferView *, int, int, int);
 	///
-	void InsetMotionNotify(BufferView *, int, int, int);
+	void insetMotionNotify(BufferView *, int, int, int);
 	///
-	void InsetKeyPress(XKeyEvent *);
+	void insetKeyPress(XKeyEvent *);
 	///
-	UpdatableInset::RESULT LocalDispatch(BufferView *, kb_action,
+	UpdatableInset::RESULT localDispatch(BufferView *, kb_action,
 					     string const &);
 	///
-	int Latex(Buffer const *, std::ostream &, bool, bool) const;
+	int latex(Buffer const *, std::ostream &, bool, bool) const;
 	///
-	int Ascii(Buffer const *, std::ostream &, int linelen) const;
+	int ascii(Buffer const *, std::ostream &, int linelen) const;
 	///
-	int Linuxdoc(Buffer const *, std::ostream &) const;
+	int linuxdoc(Buffer const *, std::ostream &) const;
 	///
-	int DocBook(Buffer const *, std::ostream &) const;
+	int docBook(Buffer const *, std::ostream &) const;
 	///
-	void Validate(LaTeXFeatures & features) const;
+	void validate(LaTeXFeatures & features) const;
 	///
-	Inset::Code LyxCode() const { return Inset::TABULAR_CODE; }
+	Inset::Code lyxCode() const { return Inset::TABULAR_CODE; }
 	///
-	void GetCursorPos(BufferView *, int & x, int & y) const;
+	void getCursorPos(BufferView *, int & x, int & y) const;
 	///
-	void ToggleInsetCursor(BufferView *);
+	void toggleInsetCursor(BufferView *);
 	///
-	bool TabularFeatures(BufferView * bv, string const & what);
+	bool tabularFeatures(BufferView * bv, string const & what);
 	///
-	void TabularFeatures(BufferView * bv, LyXTabular::Feature feature,
+	void tabularFeatures(BufferView * bv, LyXTabular::Feature feature,
 			     string const & val = string());
 	///
-	int GetActCell() const { return actcell; }
+	int getActCell() const { return actcell; }
 	///
-	void SetFont(BufferView *, LyXFont const &, bool toggleall = false,
+	void setFont(BufferView *, LyXFont const &, bool toggleall = false,
 	             bool selectall = false);
 	///
 	int getMaxWidth(BufferView *, UpdatableInset const *) const;
 	///
-	Buffer * BufferOwner() const { return const_cast<Buffer *>(buffer); }
+	Buffer * bufferOwner() const { return const_cast<Buffer *>(buffer); }
 	///
 	LyXText * getLyXText(BufferView const *,
 			     bool const recursive = false) const;
@@ -174,9 +174,9 @@ public:
 	///
 	void resizeLyXText(BufferView *, bool force = false) const;
 	///
-	void OpenLayoutDialog(BufferView *) const;
+	void openLayoutDialog(BufferView *) const;
 	///
-	bool ShowInsetDialog(BufferView *) const;
+	bool showInsetDialog(BufferView *) const;
 	///
 	func_status::value_type getStatus(string const & argument) const;
 	///
@@ -188,9 +188,11 @@ public:
 	bool nodraw() const;
 	///
 	int scroll(bool recursive=true) const;
+	///
 	void scroll(BufferView *bv, float sx) const {
 		UpdatableInset::scroll(bv, sx);
 	}
+	///
 	void scroll(BufferView *bv, int offset) const {
 		UpdatableInset::scroll(bv, offset);
 	}
@@ -198,7 +200,6 @@ public:
 	//
 	// Public structures and variables
 	///
-	//LyXTabular * tabular;
 	boost::scoped_ptr<LyXTabular> tabular;
 	///
 	SigC::Signal0<void> hideDialog;
@@ -208,15 +209,15 @@ private:
 	bool calculate_dimensions_of_cells(BufferView *, LyXFont const &,
 					   bool = false) const;
 	///
-	void DrawCellLines(Painter &, int x, int baseline,
+	void drawCellLines(Painter &, int x, int baseline,
 			   int row, int cell) const;
 	///
-	void DrawCellSelection(Painter &, int x, int baseline,
+	void drawCellSelection(Painter &, int x, int baseline,
 			       int row, int column, int cell) const;
 	///
-	void ShowInsetCursor(BufferView *, bool show=true);
+	void showInsetCursor(BufferView *, bool show=true);
 	///
-	void HideInsetCursor(BufferView *);
+	void hideInsetCursor(BufferView *);
 	///
 	void setPos(BufferView *, int x, int y) const;
 	///
@@ -231,14 +232,14 @@ private:
 	bool moveNextCell(BufferView *, bool lock = false);
 	///
 	bool movePrevCell(BufferView *, bool lock = false);
-	///
+	/// Delete what?
 	bool Delete();
 	///
 	int getCellXPos(int cell) const;
 	///
 	void resetPos(BufferView *) const;
 	///
-	void RemoveTabularRow();
+	void removeTabularRow();
 	///
 	bool hasSelection() const {
 		return sel_cell_start != sel_cell_end;
@@ -248,16 +249,16 @@ private:
 	sel_cell_start = sel_cell_end = 0;
 	}
 	///
-	bool ActivateCellInset(BufferView *, int x = 0, int y = 0,
+	bool activateCellInset(BufferView *, int x = 0, int y = 0,
 			       int button = 0,
 			       bool behind = false);
 	///
-	bool ActivateCellInsetAbs(BufferView *, int x = 0, int y = 0,
+	bool activateCellInsetAbs(BufferView *, int x = 0, int y = 0,
 				  int button = 0);
 	///
-	bool InsetHit(BufferView * bv, int x, int y) const;
+	bool insetHit(BufferView * bv, int x, int y) const;
 	///
-	int GetMaxWidthOfCell(BufferView * bv, int cell) const;
+	int getMaxWidthOfCell(BufferView * bv, int cell) const;
 	///
 	bool hasPasteBuffer() const;
 	///

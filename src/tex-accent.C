@@ -51,25 +51,25 @@
 // I am not sure how some of the XWindows names coresponds to the TeX ones.
 
 tex_accent_struct lyx_accent_table[18] = {
-	{ static_cast<tex_accent>(0), "", "", "", static_cast<kb_action>(0)},
-	{TEX_ACUTE,      "\\'",  " AEIOUYaeiouySZszRLCNrlcn", "acute",   LFUN_ACUTE},
-	{TEX_GRAVE,      "\\`",  " aeiouAEIOU",           "grave",    LFUN_GRAVE},
-	{TEX_MACRON,     "\\=",  " EeAIOUaiou",           "macron",    LFUN_MACRON},
-	{TEX_TILDE,      "\\~",  " ANOanoIiUu",           "tilde",    LFUN_TILDE},
-	{TEX_UNDERBAR,   "\\b", " ",                     "underbar", LFUN_UNDERBAR},
-	{TEX_CEDILLA,    "\\c", " CcSsTtRLGrlgNKnk",     "cedilla",    LFUN_CEDILLA},
-	{TEX_UNDERDOT,   "\\d", " ",                     "underdot", LFUN_UNDERDOT},
-	{TEX_CIRCUMFLEX, "\\^",  " AEIOUaeiouHJhjCGScgs", "circumflex",  LFUN_CIRCUMFLEX},
-	{TEX_CIRCLE,     "\\r", " AaUu",                 "circle",  LFUN_CIRCLE},
-	{TEX_TIE,        "\\t", " ",                     "tie",    LFUN_TIE},
-	{TEX_BREVE,      "\\u", " AaGgUu",               "breve",    LFUN_BREVE},
-	{TEX_CARON,      "\\v", " LSTZlstzCEDNRcednr",   "caron",    LFUN_CARON},
+	{ static_cast<tex_accent>(0), "", /*"",*/ "", static_cast<kb_action>(0)},
+	{TEX_ACUTE,      "\\'",  /*" AEIOUYaeiouySZszRLCNrlcn",*/ "acute",   LFUN_ACUTE},
+	{TEX_GRAVE,      "\\`",  /*" aeiouAEIOU",*/           "grave",    LFUN_GRAVE},
+	{TEX_MACRON,     "\\=",  /*" EeAIOUaiou",*/           "macron",    LFUN_MACRON},
+	{TEX_TILDE,      "\\~",  /*" ANOanoIiUu",*/           "tilde",    LFUN_TILDE},
+	{TEX_UNDERBAR,   "\\b", /*" ",*/                     "underbar", LFUN_UNDERBAR},
+	{TEX_CEDILLA,    "\\c", /*" CcSsTtRLGrlgNKnk",*/     "cedilla",    LFUN_CEDILLA},
+	{TEX_UNDERDOT,   "\\d", /*" ",*/                     "underdot", LFUN_UNDERDOT},
+	{TEX_CIRCUMFLEX, "\\^",  /*" AEIOUaeiouHJhjCGScgs",*/ "circumflex",  LFUN_CIRCUMFLEX},
+	{TEX_CIRCLE,     "\\r", /*" AaUu",*/                 "circle",  LFUN_CIRCLE},
+	{TEX_TIE,        "\\t", /*" ",*/                     "tie",    LFUN_TIE},
+	{TEX_BREVE,      "\\u", /*" AaGgUu",*/               "breve",    LFUN_BREVE},
+	{TEX_CARON,      "\\v", /*" LSTZlstzCEDNRcednr",*/   "caron",    LFUN_CARON},
 //  {TEX_SPECIAL_CARON, "\\q", "", "ooo",  LFUN_SPECIAL_CARON},
-	{TEX_HUNGUML,    "\\H", " OUou",                 "hugarian_umlaut",    LFUN_HUNG_UMLAUT},
-	{TEX_UMLAUT,     "\\\"", " AEIOUaeiouy",          "umlaut",    LFUN_UMLAUT},
-	{TEX_DOT,        "\\.",  " ZzICGicgEe",           "dot",    LFUN_DOT},
-	{TEX_OGONEK,     "\\k",  " AaEe",                 "ogonek",    LFUN_OGONEK},
-	{ static_cast<tex_accent>(0), "", "", "", static_cast<kb_action>(0)}};
+	{TEX_HUNGUML,    "\\H", /*" OUou",*/                 "hugarian_umlaut",    LFUN_HUNG_UMLAUT},
+	{TEX_UMLAUT,     "\\\"", /*" AEIOUaeiouy",*/          "umlaut",    LFUN_UMLAUT},
+	{TEX_DOT,        "\\.",  /*" ZzICGicgEe",*/           "dot",    LFUN_DOT},
+	{TEX_OGONEK,     "\\k",  /*" AaEe",*/                 "ogonek",    LFUN_OGONEK},
+	{ static_cast<tex_accent>(0), "", /*"",*/ "", static_cast<kb_action>(0)}};
 
 
 tex_accent_struct get_accent(kb_action action)
@@ -80,7 +80,7 @@ tex_accent_struct get_accent(kb_action action)
 			return lyx_accent_table[i];
 		++i;
 	}
-	struct tex_accent_struct temp = { static_cast<tex_accent>(0), 0, 0,
+	struct tex_accent_struct temp = { static_cast<tex_accent>(0), 0,
 					  0, static_cast<kb_action>(0)};
 	return temp;
 }

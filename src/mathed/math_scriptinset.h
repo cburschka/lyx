@@ -19,7 +19,7 @@ public:
 	///
 	MathScriptInset(bool up, bool down);
 	///
-	MathInset * Clone() const;
+	MathInset * clone() const;
 	///
 	void Write(std::ostream &, bool fragile) const;
 	///

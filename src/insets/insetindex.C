@@ -22,7 +22,7 @@ string const InsetIndex::getScreenLabel() const
 }
 
 
-void InsetIndex::Edit(BufferView * bv, int, int, unsigned int)
+void InsetIndex::edit(BufferView * bv, int, int, unsigned int)
 {
 	bv->owner()->getDialogs()->showIndex( this );
 }
@@ -38,13 +38,13 @@ string const InsetPrintIndex::getScreenLabel() const
 }
 
 
-void InsetPrintIndex::Validate(LaTeXFeatures & features) const
+void InsetPrintIndex::validate(LaTeXFeatures & features) const
 {
 	features.makeidx = true;
 }
 
 
-Inset::Code InsetPrintIndex::LyxCode() const
+Inset::Code InsetPrintIndex::lyxCode() const
 {
  	return Inset::INDEX_CODE;
 }

@@ -75,10 +75,10 @@ public:
 	/** High-level interface to buffer functionality.
 	    This function parses a command string and executes it
 	*/
-	bool Dispatch(string const & command);
+	bool dispatch(string const & command);
 
 	/// Maybe we know the function already by number...
-	bool Dispatch(int ac, string const & argument);
+	bool dispatch(int ac, string const & argument);
 
 	/// 
 	void resizeInsets(BufferView *);
@@ -155,7 +155,7 @@ public:
 			     Paragraph * endpar, TexRow & texrow) const;
 
         ///
-	void SimpleDocBookOnePar(std::ostream &, string & extra,
+	void simpleDocBookOnePar(std::ostream &, string & extra,
 				 Paragraph * par, int & desc_on,
 				 Paragraph::depth_type depth) const ;
 
@@ -170,7 +170,7 @@ public:
 			     bool nice, bool only_body = false);
 
 	/// returns the main language for the buffer (document)
-	Language const * GetLanguage() const;
+	Language const * getLanguage() const;
 	///
 	bool isLyxClean() const;
 	///
@@ -274,7 +274,7 @@ public:
 	BufferView * getUser() const;
 
 	///
-	void ChangeLanguage(Language const * from, Language const * to);
+	void changeLanguage(Language const * from, Language const * to);
 	///
 	bool isMultiLingual();
 
@@ -311,7 +311,7 @@ public:
 	TexRow texrow;
 private:
         ///
-	void DocBookHandleCaption(std::ostream & os, string & inner_tag,
+	void docBookHandleCaption(std::ostream & os, string & inner_tag,
 				  Paragraph::depth_type depth, int desc_on,
 				  Paragraph * & par);
 	/// Open SGML/XML tag.
@@ -321,10 +321,10 @@ private:
         void sgmlCloseTag(std::ostream & os, Paragraph::depth_type depth,
 			  string const & latexname) const;
 	///
-	void LinuxDocError(Paragraph * par, int pos,
+	void linuxDocError(Paragraph * par, int pos,
 			   string const & message);
         ///
-	void SimpleLinuxDocOnePar(std::ostream & os, Paragraph * par, 
+	void simpleLinuxDocOnePar(std::ostream & os, Paragraph * par, 
 				  Paragraph::depth_type depth);
 
 	/// is save needed
@@ -371,7 +371,7 @@ public:
 		inset_iterator() : par(0) /*, it(0)*/ {}
 		//
 		inset_iterator(Paragraph * paragraph) : par(paragraph) {
-			SetParagraph();
+			setParagraph();
 		}
 		///
 		inset_iterator(Paragraph * paragraph,
@@ -382,7 +382,7 @@ public:
 				++it;
 				if (it == par->inset_iterator_end()) {
 					par = par->next();
-					SetParagraph();
+					setParagraph();
 				}
 			}
 			return *this;
@@ -394,7 +394,7 @@ public:
 				++it;
 				if (it == par->inset_iterator_end()) {
 					par = par->next();
-					SetParagraph();
+					setParagraph();
 				}
 			}
 			return tmp;
@@ -412,7 +412,7 @@ public:
 				inset_iterator const & iter2);
 	private:
 		///
-		void SetParagraph();
+		void setParagraph();
 		///
 		Paragraph * par;
 		///
@@ -445,7 +445,7 @@ void Buffer::delUser(BufferView *)
 	
 
 inline
-Language const * Buffer::GetLanguage() const
+Language const * Buffer::getLanguage() const
 {
 	return params.language;
 }
