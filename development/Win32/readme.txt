@@ -24,13 +24,13 @@ Development:
 To get a stack-trace for assertions in LyX, make a breakpoint
 in src/Boost.C.
 To see the output from LyX, add "2> c:\errors.txt" to the command
-line in  Project, Build properties, Debugging, Command arguments
+line in Project, Build properties, Debugging, Command arguments
 
 
 To run LyX, you need a bunch of generated files from configure.
 
-Run "fake.bat" to copy chkconfig.ltx, LaTeXConfig.lyx and lyxrc.defaults
-from this directory to their destination.
+Run "fake.bat" to copy chkconfig.ltx, lyxrc.defaults, packages.lst
+and textclass.lst from fakeconfig to their destination.
 
 At start-up, you might get an assertion about a unix path in
 boost::filesystem. You can safely ignore that.
