@@ -1757,9 +1757,6 @@ AC_DEFINE(BOOST_RE_AUTO_CONF)
 
 ### Finish the work.
 AC_OUTPUT([Makefile \
-       libs/Makefile \
-       libs/regex/Makefile \
-       libs/regex/src/Makefile \
 ],  [])
 
 
