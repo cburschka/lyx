@@ -253,8 +253,15 @@ string CurrentState(BufferView * bv)
 	if (bv->available()) { 
 		// I think we should only show changes from the default
 		// font. (Asger)
+		LyXText *text = 0;
+
+		if (bv->the_locking_inset)
+		    text = bv->the_locking_inset->getLyXText(bv);
+		if (!text)
+		    text = bv->text;
+
 		Buffer * buffer = bv->buffer();
-		LyXFont font = bv->text->real_current_font;
+		LyXFont font = text->real_current_font;
 		LyXFont const & defaultfont =
 			textclasslist
 			.TextClass(buffer->params.textclass)
@@ -262,14 +269,14 @@ string CurrentState(BufferView * bv)
 		font.reduce(defaultfont);
 		state = _("Font: ") + font.stateText(&buffer->params);
 		// The paragraph depth
-		int depth = bv->text->GetDepth();
+		int depth = text->GetDepth();
 		if (depth > 0) 
 			state += string(_(", Depth: ")) + tostr(depth);
 		// The paragraph spacing, but only if different from
 		// buffer spacing.
-		if (!bv->text->cursor.par()->spacing.isDefault()) {
+		if (!text->cursor.par()->spacing.isDefault()) {
 			Spacing::Space cur_space =
-				bv->text->cursor.par()->spacing.getSpace();
+				text->cursor.par()->spacing.getSpace();
 			state += _(", Spacing: ");
 			switch (cur_space) {
 			case Spacing::Single:
@@ -283,7 +290,7 @@ string CurrentState(BufferView * bv)
 				break;
 			case Spacing::Other:
 				state += _("Other (");
-				state += tostr(bv->text->cursor.par()->spacing.getValue());
+				state += tostr(text->cursor.par()->spacing.getValue());
 				state += ")";
 				break;
 			case Spacing::Default:

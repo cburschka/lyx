@@ -16,7 +16,11 @@
 #endif
 
 #include "GUIRunTime_pimpl.h"
+#include "debug.h"
+
 #include <kapp.h>
+
+#include FORMS_H_LOCATION
 
 using std::endl;
 

@@ -52,7 +52,7 @@ public:
   ///
   void set(string const &);
   /// Opens a top-level submenu given its name
-  void openByName(string const &) {}
+  void openByName(string const &);
   /// update the state of menuitems
   void update();
   

@@ -43,7 +43,7 @@ create_DiaInsertUrl (void)
   gtk_object_set_data (GTK_OBJECT (DiaInsertUrl), "DiaInsertUrl", DiaInsertUrl);
   gtk_container_set_border_width (GTK_CONTAINER (DiaInsertUrl), 2);
   GTK_WINDOW (DiaInsertUrl)->type = GTK_WINDOW_DIALOG;
-  gtk_window_set_policy (GTK_WINDOW (DiaInsertUrl), FALSE, FALSE, FALSE);
+  gtk_window_set_policy (GTK_WINDOW (DiaInsertUrl), TRUE, TRUE, FALSE);
 
   dialog_vbox1 = GNOME_DIALOG (DiaInsertUrl)->vbox;
   gtk_object_set_data (GTK_OBJECT (DiaInsertUrl), "dialog_vbox1", dialog_vbox1);
@@ -100,6 +100,7 @@ create_DiaInsertUrl (void)
   gtk_object_set_data_full (GTK_OBJECT (DiaInsertUrl), "combo_entry1", combo_entry1,
                             (GtkDestroyNotify) gtk_widget_unref);
   gtk_widget_show (combo_entry1);
+  GTK_WIDGET_SET_FLAGS (combo_entry1, GTK_CAN_DEFAULT);
 
   name = gnome_entry_new ("diainserturl_name");
   gtk_widget_ref (name);
@@ -151,7 +152,8 @@ create_DiaInsertUrl (void)
   gtk_widget_show (button_cancel);
   GTK_WIDGET_SET_FLAGS (button_cancel, GTK_CAN_DEFAULT);
 
-  gtk_widget_grab_default (button_ok);
+  gtk_widget_grab_focus (combo_entry1);
+  gtk_widget_grab_default (combo_entry1);
   gtk_window_add_accel_group (GTK_WINDOW (DiaInsertUrl), accel_group);
 
   return DiaInsertUrl;

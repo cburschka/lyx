@@ -85,8 +85,11 @@ void Menubar::Pimpl::set(string const & menu_name)
 void Menubar::Pimpl::callback(int action)
 {
   // Dispatch action OR record action to local variable (see connectWidgetToAction)
-  if (!ignore_action_) owner_->getLyXFunc()->Dispatch(action);
-  else action_ = action;
+  if (!ignore_action_) {
+      Pimpl::update();
+      owner_->getLyXFunc()->Dispatch(action);
+  } else
+      action_ = action;
 }
 
 void Menubar::Pimpl::composeUIInfo(string const & menu_name, vector<Gnome::UI::Info> & Menus)
@@ -148,7 +151,12 @@ void Menubar::Pimpl::composeUIInfo(string const & menu_name, vector<Gnome::UI::I
 	  else gitem = Gnome::UI::Item(label, cback, lyxaction.helpText(item.action()));
 	}
 
-	// DON'T KNOW HOW TO TOGGLE/UNTOGGLE IT (Marko)
+	// first handle optional entries.
+	if (item.optional() && (flag & LyXFunc::Disabled)) {
+	    lyxerr[Debug::GUI] 
+		<< "Skipping optional item " << item.label() << endl; 
+	    break;
+	}
   	if ((flag & LyXFunc::ToggleOn) || (flag & LyXFunc::ToggleOff))
   	  gitem = Gnome::UI::ToggleItem(label, cback, lyxaction.helpText(item.action()));
 	
@@ -235,7 +243,6 @@ void Menubar::Pimpl::update()
       if ( flag & (LyXFunc::Disabled | LyXFunc::Unknown) ) gtk_widget_set_sensitive(wa.widget_, false);
       else gtk_widget_set_sensitive(wa.widget_, true);
 
-      //don't know how to toggle/untoggle GtkCheckMenuItem
       if ( flag & LyXFunc::ToggleOn )
 	{
 	  ignore_action_=true;
@@ -250,4 +257,9 @@ void Menubar::Pimpl::update()
 	  ignore_action_=false;
 	}
     }
+}
+
+void Menubar::Pimpl::openByName(string const & name)
+{
+//    Pimpl::update();
 }

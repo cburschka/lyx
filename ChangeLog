@@ -1,3 +1,42 @@
+2000-08-17  Juergen Vigna  <jug@sad.it>
+
+	* src/frontends/gnome/Menubar_pimpl.C (openByName): put this function
+	in the implementation part.
+	(composeUIInfo): don't show optional menu-items.
+
+	* src/lyxfunc.C (getStatus): use insets LyXText if the_locking_inset.
+
+	* src/insets/insettext.C (UpdateLocal): call to LyXView::showState()
+
+	* src/bufferview_funcs.C (CurrentState): fixed to show also the
+	text-state when in a text-inset.
+
+	* src/frontends/kde/GUIRunTime_pimpl.C: include xforms for now.
+
+2000-08-17  Marko Vendelin <markov@ioc.ee>
+	* src/frontends/gnome/FormIndex.C
+	* src/frontends/gnome/FormIndex.h
+	* src/frontends/gnome/FormToc.C
+	* src/frontends/gnome/FormToc.h
+	* src/frontends/gnome/dialogs
+	* src/frontends/gnome/diatoc_callbacks.c
+	* src/frontends/gnome/diatoc_callbacks.h
+	* src/frontends/gnome/diainsertindex_callbacks.h
+	* src/frontends/gnome/diainsertindex_callbacks.c
+	* src/frontends/gnome/diainsertindex_interface.c
+	* src/frontends/gnome/diainsertindex_interface.h
+	* src/frontends/gnome/diatoc_interface.h
+	* src/frontends/gnome/diatoc_interface.c
+	* src/frontends/gnome/Makefile.am: Table of Contents and 
+	Insert Index dialogs implementation for Gnome frontend
+
+	* src/frontends/gnome/GUIRunTime_pimpl.C: fix some small bugs
+
+	* src/frontends/gnome/Menubar_pimpl.C: remove historical comments
+
+	* src/frontends/gnome/diainserturl_interface.c: make the dialog
+	resizable
+
 2000-08-17  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/frontends/xforms/GUIRunTime_pimpl.C: constructor and

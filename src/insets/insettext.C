@@ -423,6 +423,7 @@ void InsetText::UpdateLocal(BufferView * bv, UpdateCodes what, bool mark_dirty)
     if ((need_update != CURSOR) || (TEXT(bv)->status != LyXText::UNCHANGED) ||
 	TEXT(bv)->selection)
 	    bv->updateInset(this, mark_dirty);
+    bv->owner()->showState();
     if (old_par != cpar(bv)) {
 	    bv->owner()->setLayout(cpar(bv)->GetLayout());
 	    old_par = cpar(bv);

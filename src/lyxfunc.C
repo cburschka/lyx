@@ -620,7 +620,13 @@ LyXFunc::func_status LyXFunc::getStatus(int ac) const
 
 	if (buf) {
 		func_status box = LyXFunc::ToggleOff;
-		LyXFont font = owner->view()->text->real_current_font;
+		LyXFont font;
+		if (owner->view()->the_locking_inset &&
+		    owner->view()->the_locking_inset->getLyXText(owner->view()))
+		    font = owner->view()->the_locking_inset->
+			getLyXText(owner->view())->real_current_font;
+		else
+		    font = owner->view()->text->real_current_font;
 		switch (action) {
 		case LFUN_EMPH:
 			if (font.emph() == LyXFont::ON)

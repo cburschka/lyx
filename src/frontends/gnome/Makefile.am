@@ -40,6 +40,10 @@ libgnome_la_SOURCES = \
 	FormPrint.h \
 	FormUrl.C \
 	FormUrl.h \
+	FormIndex.C \
+	FormIndex.h \
+	FormToc.C \
+	FormToc.h \
 	Menubar_pimpl.C \
 	Menubar_pimpl.h \
 	mainapp.C \
@@ -53,7 +57,15 @@ libgnome_la_SOURCES = \
 	diainserturl_callbacks.c  \
 	diainserturl_interface.c  \
 	diainserturl_callbacks.h \
-	diainserturl_interface.h 
+	diainserturl_interface.h \
+	diainsertindex_callbacks.c  \
+	diainsertindex_interface.c  \
+	diainsertindex_callbacks.h \
+	diainsertindex_interface.h \
+	diatoc_callbacks.c  \
+	diatoc_interface.c  \
+	diatoc_callbacks.h \
+	diatoc_interface.h 
 
 # These still have to be added. Sooner or later. ARRae-20000411
 #	GUI_defaults.C \

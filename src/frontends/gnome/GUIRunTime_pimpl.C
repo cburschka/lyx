@@ -15,12 +15,16 @@
 #pragma implementation
 #endif
 
+#include FORMS_H_LOCATION
+
 #include "GUIRunTime_pimpl.h"
+#include "debug.h"
+
 #include <gnome--/main.h>
 
 using std::endl;
 
-extern bool finised;
+extern bool finished;
 
 void GUIRunTime::Pimpl::processEvents() 
 {
