@@ -1,5 +1,5 @@
 /**
- * \file xforms/Dialogs3.C
+ * \file xforms/Dialogs.C
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
