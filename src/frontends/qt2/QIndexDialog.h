@@ -25,6 +25,7 @@ public:
 	virtual void show();
 protected slots:
 	virtual void change_adaptor();
+	virtual void reject();
 protected:
 	virtual void closeEvent(QCloseEvent * e);
 private:

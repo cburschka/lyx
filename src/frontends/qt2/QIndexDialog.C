@@ -10,7 +10,6 @@
 
 #include <config.h>
 
-
 #include "qt_helpers.h"
 
 #include "QIndex.h"
@@ -57,6 +56,12 @@ void QIndexDialog::show()
 void QIndexDialog::change_adaptor()
 {
 	form_->changed();
+}
+
+
+void QIndexDialog::reject()
+{
+	form_->slotClose();
 }
 
 
