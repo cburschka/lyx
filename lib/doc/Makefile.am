@@ -2,7 +2,7 @@ include $(top_srcdir)/config/common.am
 
 DISTCLEANFILES += LyXConfig.lyx LaTeXConfig.lyx Makefile.depend
 
-EXTRA_DIST = Depend.pl Doc_toc.pl LaTeXConfig.lyx.in LyXConfig.lyx.in README.Documentation $(docfiles) $(toc_DATA)
+EXTRA_DIST = Depend.pl Doc_toc.pl LyXConfig.lyx.in README.Documentation $(docfiles) $(toc_DATA)
 
 docfiles = \
 	cs_TOC.lyx \
@@ -48,6 +48,7 @@ docfiles = \
 	it_TOC.lyx \
 	it_Tutorial.lyx \
 	it_UserGuide.lyx \
+	LaTeXConfig.lyx.in \
 	nl_Intro.lyx \
 	nl_TOC.lyx \
 	nl_Tutorial.lyx \
