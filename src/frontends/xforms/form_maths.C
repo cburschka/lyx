@@ -28,7 +28,7 @@ FD_form_panel * FormMaths::build_panel()
   obj = fl_add_box(FL_UP_BOX, 0, 0, 290, 172, "");
   fdui->button_close = obj = fl_add_button(FL_RETURN_BUTTON, 80, 14, 80, 30, _("Close "));
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-    fl_set_object_callback(obj, C_FormBaseCancelCB, 0);
+    fl_set_object_callback(obj, C_FormBaseDeprecatedCancelCB, 0);
   fdui->browser_functions = obj = fl_add_browser(FL_SELECT_BROWSER, 180, 40, 94, 110, _("Functions"));
     fl_set_object_lalign(obj, FL_ALIGN_TOP);
     fl_set_object_callback(obj, C_FormMathsButtonCB, MM_FUNC);

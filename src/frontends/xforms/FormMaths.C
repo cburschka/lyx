@@ -48,6 +48,9 @@
 using std::endl;
 using SigC::slot;
 
+static char h_align_str[80] = "c";
+static char v_align_c[] = "tcb";
+ 
 static int const delim_rversion[] = { 
 	1,1,3,3,4,5,7,7,9,9,10,11,
 	13,13,14,15,16,17,19,19,20,21,22,23 };
@@ -77,253 +80,70 @@ static int delim_values[] = {
 	LM_langle,  LM_rangle, '|', LM_Vert, '.', 0
 };
 
-extern "C" int C_FormMathsWMHideCB(FL_FORM * ob, void *)
+
+extern "C" int C_FormMathsWMHideCB(FL_FORM * form, void *)
 {
-	fl_hide_form(ob);
+	if (form && form->visible)
+		fl_hide_form(form);
 	return FL_CANCEL; 
 }
 
  
 extern "C" void C_FormMathsButtonCB(FL_OBJECT * ob, long data)
 {
-	FormMaths * form = static_cast<FormMaths*>(ob->form->u_vdata);
-	MathsCallbackValues val = static_cast<MathsCallbackValues>(data);
-
-	lyxerr[Debug::GUI] << "Maths button CB val " << val << endl;
-
-	switch (val) {
-		case MM_GREEK:
-		case MM_ARROW:
-		case MM_BOP:
-		case MM_BRELATS:
-		case MM_VARSIZE:
-		case MM_MISC:
-			form->openBitmapMenu(val);
-			break;
-
-		case MM_FRAC:
-			form->insertSymbol("frac");
-			break;
-		case MM_SQRT:
-			form->insertSymbol("sqrt");
-			break;
-
-		case MM_DELIM:
-		case MM_MATRIX:
-		case MM_DECO:
-		case MM_SPACE:
-			form->openSubDialog(val);
-			break;
-
-		case MM_EQU:
-			form->mathDisplay();
-			break;
-
-		case MM_FUNC:
-			form->insertFunction();
-			break;
-
-		case MM_MAX:
-		case MM_CLOSE:
-		case MM_APPLY:
-		case MM_OK:
-			Assert(false);
-			break;
-	}
+	Assert(ob && ob->form);
+	FormMaths * pre = static_cast<FormMaths *>(ob->form->u_vdata);
+	Assert(pre);
+	pre->ButtonCB(ob, data);
 }
 
 
 extern "C" void C_FormMathsDelimCB(FL_OBJECT * ob, long data)
 {
-	FormMaths * form = static_cast<FormMaths*>(ob->form->u_vdata);
-	MathsCallbackValues val = static_cast<MathsCallbackValues>(data);
-
-	lyxerr[Debug::GUI] << "Maths delim CB val " << val << endl;
-
-	int left = form->delim_->radio_left->u_ldata;
-	int right= form->delim_->radio_right->u_ldata;
-	int const side = (fl_get_button(form->delim_->radio_right) != 0);
-	std::ostringstream ost;
- 
-	ost << delim_values[left] << ' ' << delim_values[right];
- 
-	switch (val) {
-		case MM_OK:
-	      		form->insertDelim(ost.str().c_str());
-		case MM_CLOSE:
-			fl_hide_form(form->delim_->form);
-			break;
-
-		case MM_APPLY:
-			form->insertDelim(ost.str().c_str());
-			break;
-
-		/* the bmtable */
-		case 2: {
-			int const i = fl_get_bmtable(form->delim_->bmtable_delim);
-			int const button = fl_get_bmtable_numb(form->delim_->bmtable_delim);
-			bool const both = (button == FL_MIDDLE_MOUSE);
-	
-			if (i>= 0) {
-				if (side || (button == FL_RIGHT_MOUSE))
-					right = i;
-				else {
-					left = i;
-					if (both)
-						right = delim_rversion[i];
-				}
-			}
- 
-			Pixmap p1, p2;
- 
-			p1 = fl_get_pixmap_pixmap(form->delim_->button_delim_pix, &p1, &p2);
-			fl_draw_bmtable_item(form->delim_->bmtable_delim, left, p1, 0, 0);
-			fl_draw_bmtable_item(form->delim_->bmtable_delim, right, p1, 16, 0);
-			fl_redraw_object(form->delim_->button_delim_pix);
-	
-			form->delim_->radio_left->u_ldata = left;
-			form->delim_->radio_right->u_ldata = right;
-			} break;
- 
-		/* left/right - ignore */
-		case 3:
-		case 4:
-			break;
- 
-		default:
-			Assert(false);
-			break;
-	}
+	Assert(ob && ob->form);
+	FormMaths * pre = static_cast<FormMaths *>(ob->form->u_vdata);
+	Assert(pre);
+	pre->DelimCB(ob, data);
 }
 
 
-extern "C" int align_filter(FL_OBJECT * ob, char const *, char const * cur, int c)
-{
-	FormMaths * form = static_cast<FormMaths*>(ob->u_vdata);
- 
-	int n = int(fl_get_slider_value(form->matrix_->slider_matrix_columns)+0.5) - strlen(cur);
-	if (n < 0)
-		return FL_INVALID;
-
-	if (c == 'c' || c == 'l' || c == 'r') 
-		return FL_VALID;
- 
-	return FL_INVALID;
-}
- 
- 
-static char h_align_str[80] = "c";
-static char v_align_c[] = "tcb";
- 
 extern "C" void C_FormMathsMatrixCB(FL_OBJECT * ob, long data)
 {
- 
-	FormMaths * form = static_cast<FormMaths*>(ob->form->u_vdata);
-	MathsCallbackValues val = static_cast<MathsCallbackValues>(data);
-
-	lyxerr[Debug::GUI] << "Maths matrix CB val " << val << endl;
-
-	switch (val) {
-		case MM_OK:
-			form->insertMatrix();
-		case MM_CLOSE:
-			fl_hide_form(form->matrix_->form);
-			break;
-
-		case MM_APPLY:
-			form->insertMatrix();
-			break;
-
-		/* rows slider etc.: ignore */
-		case -1:
-			break;
- 
-		/* the "columns" slider */
-		case 2: {
-			int const nx = int(fl_get_slider_value(form->matrix_->slider_matrix_columns)+0.5);
-			for (int i = 0; i < nx; ++i) 
-				h_align_str[i] = 'c';
- 
-			h_align_str[nx] = '\0';
-
-			fl_set_input(form->matrix_->input_matrix_halign, h_align_str);
-			fl_redraw_object(form->matrix_->input_matrix_halign);
-			} break;
- 
-		default:
-			Assert(false);
-			break;
-	}
+	Assert(ob && ob->form);
+	FormMaths * pre = static_cast<FormMaths *>(ob->form->u_vdata);
+	Assert(pre);
+	pre->MatrixCB(ob, data);
 }
 
 
 extern "C" void C_FormMathsDecoCB(FL_OBJECT * ob, long data)
 {
-	FormMaths * form = static_cast<FormMaths*>(ob->form->u_vdata);
-	MathsCallbackValues val = static_cast<MathsCallbackValues>(data);
-
-	lyxerr[Debug::GUI] << "Maths deco CB val " << val << endl;
-
-	int const i = fl_get_bmtable(form->deco_->bmtable_deco);
- 
-	if (i >= nr_decoration_names)
-		return;
- 
-	string const deco_str = decoration_names[i];
- 
-	switch (val) {
-		case MM_OK:
-			form->insertSymbol(deco_str);
-		case MM_CLOSE:
-			fl_hide_form(form->deco_->form);
-			break;
-
-		case MM_APPLY:
-			form->insertSymbol(deco_str);
-			break;
-
-		default:
-			Assert(false);
-			break;
-	}
+	Assert(ob && ob->form);
+	FormMaths * pre = static_cast<FormMaths *>(ob->form->u_vdata);
+	Assert(pre);
+	pre->DecoCB(ob, data);
 }
 
 
 extern "C" void C_FormMathsSpaceCB(FL_OBJECT * ob, long data)
 {
-	extern char * latex_mathspace[];
-	static short sp = -1;
- 
-	if (data >= 0 && data < 6) {
-		sp = data;
-		return;
-	}
- 
-	FormMaths * form = static_cast<FormMaths*>(ob->form->u_vdata);
-	MathsCallbackValues val = static_cast<MathsCallbackValues>(data);
-
-	lyxerr[Debug::GUI] << "Maths space CB val " << val << endl;
-
-	switch (val) {
-		case MM_OK:
-			if (sp > 0)
-				form->insertSymbol(latex_mathspace[sp]);
-		case MM_CLOSE:
-			fl_hide_form(form->space_->form);
-			break;
-
-		case MM_APPLY:
-			if (sp > 0)
-				form->insertSymbol(latex_mathspace[sp]);
-			break;
-
-		default:
-			Assert(false);
-			break;
-	}
+	Assert(ob && ob->form);
+	FormMaths * pre = static_cast<FormMaths *>(ob->form->u_vdata);
+	Assert(pre);
+	pre->SpaceCB(ob, data);
 }
 
 
+extern "C" int C_FormMathsAlignFilter(FL_OBJECT * ob, char const *,
+				      char const * cur, int c)
+{
+	Assert(ob);
+	FormMaths * pre = static_cast<FormMaths *>(ob->u_vdata);
+	Assert(pre);
+	return pre->AlignFilter(cur, c);
+}
+
+	
 FormMaths::FormMaths(LyXView * lv, Dialogs * d)
 	: FormBaseBD(lv, d, _("Maths Symbols"))
 {
@@ -382,7 +202,8 @@ void FormMaths::build()
 	fl_set_choice(matrix_->choice_matrix_valign, 2);
 	fl_set_input(matrix_->input_matrix_halign, h_align_str);
 	matrix_->input_matrix_halign->u_vdata = this;
-	fl_set_input_filter(matrix_->input_matrix_halign, align_filter);
+	fl_set_input_filter(matrix_->input_matrix_halign,
+			    C_FormMathsAlignFilter);
 	
 	fl_set_bmtable_data(deco_->bmtable_deco, 3, 3, deco_width, deco_height, deco_bits);
 	fl_set_bmtable_maxitems(deco_->bmtable_deco, 8);
@@ -550,4 +371,237 @@ void FormMaths::insertFunction() const
 {
 	int const i = fl_get_browser(dialog_->browser_functions) - 1;
 	insertSymbol(function_names[i]);
+}
+
+
+void FormMaths::ButtonCB(FL_OBJECT *, long data)
+{
+	MathsCallbackValues val = static_cast<MathsCallbackValues>(data);
+
+	lyxerr[Debug::GUI] << "Maths button CB val " << long(val) << endl;
+
+	switch (val) {
+		case MM_GREEK:
+		case MM_ARROW:
+		case MM_BOP:
+		case MM_BRELATS:
+		case MM_VARSIZE:
+		case MM_MISC:
+			openBitmapMenu(val);
+			break;
+
+		case MM_FRAC:
+			insertSymbol("frac");
+			break;
+		case MM_SQRT:
+			insertSymbol("sqrt");
+			break;
+
+		case MM_DELIM:
+		case MM_MATRIX:
+		case MM_DECO:
+		case MM_SPACE:
+			openSubDialog(val);
+			break;
+
+		case MM_EQU:
+			mathDisplay();
+			break;
+
+		case MM_FUNC:
+			insertFunction();
+			break;
+
+		case MM_DOTS:
+			break;
+
+		case MM_MAX:
+		case MM_CLOSE:
+		case MM_APPLY:
+		case MM_OK:
+			Assert(false);
+			break;
+	}
+}
+
+
+void FormMaths::DelimCB(FL_OBJECT *, long data)
+{
+	MathsCallbackValues val = static_cast<MathsCallbackValues>(data);
+
+	lyxerr[Debug::GUI] << "Maths delim CB val " << long(val) << endl;
+
+	int left = int(delim_->radio_left->u_ldata);
+	int right= int(delim_->radio_right->u_ldata);
+	int const side = (fl_get_button(delim_->radio_right) != 0);
+	std::ostringstream ost;
+ 
+	ost << delim_values[left] << ' ' << delim_values[right];
+ 
+	switch (val) {
+		case MM_OK:
+	      		insertDelim(ost.str().c_str());
+		case MM_CLOSE:
+			fl_hide_form(delim_->form);
+			break;
+
+		case MM_APPLY:
+			insertDelim(ost.str().c_str());
+			break;
+
+		/* the bmtable */
+		case 2: {
+			int const i = fl_get_bmtable(delim_->bmtable_delim);
+			int const button = fl_get_bmtable_numb(delim_->bmtable_delim);
+			bool const both = (button == FL_MIDDLE_MOUSE);
+	
+			if (i>= 0) {
+				if (side || (button == FL_RIGHT_MOUSE))
+					right = i;
+				else {
+					left = i;
+					if (both)
+						right = delim_rversion[i];
+				}
+			}
+ 
+			Pixmap p1, p2;
+ 
+			p1 = fl_get_pixmap_pixmap(delim_->button_delim_pix, &p1, &p2);
+			fl_draw_bmtable_item(delim_->bmtable_delim, left, p1, 0, 0);
+			fl_draw_bmtable_item(delim_->bmtable_delim, right, p1, 16, 0);
+			fl_redraw_object(delim_->button_delim_pix);
+	
+			delim_->radio_left->u_ldata = left;
+			delim_->radio_right->u_ldata = right;
+			} break;
+ 
+		/* left/right - ignore */
+		case 3:
+		case 4:
+			break;
+ 
+		default:
+			Assert(false);
+			break;
+	}
+}
+
+
+int FormMaths::AlignFilter(char const * cur, int c)
+{
+	int n = int(fl_get_slider_value(matrix_->slider_matrix_columns)+0.5) -
+		int(strlen(cur));
+	if (n < 0)
+		return FL_INVALID;
+
+	if (c == 'c' || c == 'l' || c == 'r') 
+		return FL_VALID;
+ 
+	return FL_INVALID;
+}
+ 
+ 
+void FormMaths::MatrixCB(FL_OBJECT *, long data)
+{
+	MathsCallbackValues val = static_cast<MathsCallbackValues>(data);
+
+	lyxerr[Debug::GUI] << "Maths matrix CB val " << long(val) << endl;
+
+	switch (val) {
+		case MM_OK:
+			insertMatrix();
+		case MM_CLOSE:
+			fl_hide_form(matrix_->form);
+			break;
+
+		case MM_APPLY:
+			insertMatrix();
+			break;
+
+		/* rows slider etc.: ignore */
+		case -1:
+			break;
+ 
+		/* the "columns" slider */
+		case 2: {
+			int const nx = int(fl_get_slider_value(matrix_->slider_matrix_columns)+0.5);
+			for (int i = 0; i < nx; ++i) 
+				h_align_str[i] = 'c';
+ 
+			h_align_str[nx] = '\0';
+
+			fl_set_input(matrix_->input_matrix_halign, h_align_str);
+			fl_redraw_object(matrix_->input_matrix_halign);
+			} break;
+ 
+		default:
+			Assert(false);
+			break;
+	}
+}
+
+
+void FormMaths::DecoCB(FL_OBJECT *, long data)
+{
+	MathsCallbackValues val = static_cast<MathsCallbackValues>(data);
+
+	lyxerr[Debug::GUI] << "Maths deco CB val " << long(val) << endl;
+
+	int const i = fl_get_bmtable(deco_->bmtable_deco);
+ 
+	if (i >= nr_decoration_names)
+		return;
+ 
+	string const deco_str = decoration_names[i];
+ 
+	switch (val) {
+		case MM_OK:
+			insertSymbol(deco_str);
+		case MM_CLOSE:
+			fl_hide_form(deco_->form);
+			break;
+
+		case MM_APPLY:
+			insertSymbol(deco_str);
+			break;
+
+		default:
+			Assert(false);
+			break;
+	}
+}
+
+
+void FormMaths::SpaceCB(FL_OBJECT *, long data)
+{
+	extern char * latex_mathspace[];
+	static short sp = -1;
+ 
+	if (data >= 0 && data < 6) {
+		sp = short(data);
+		return;
+	}
+ 
+	MathsCallbackValues val = static_cast<MathsCallbackValues>(data);
+
+	lyxerr[Debug::GUI] << "Maths space CB val " << long(val) << endl;
+
+	switch (val) {
+		case MM_OK:
+			if (sp > 0)
+				insertSymbol(latex_mathspace[sp]);
+		case MM_CLOSE:
+			fl_hide_form(space_->form);
+			break;
+
+		case MM_APPLY:
+			if (sp > 0)
+				insertSymbol(latex_mathspace[sp]);
+			break;
+
+		default:
+			Assert(false);
+			break;
+	}
 }

@@ -170,7 +170,7 @@ void FormBaseDeprecated::InputCB(FL_OBJECT * ob, long data)
 	Assert(ob && ob->form);
 	FormBaseDeprecated * pre =
 		static_cast<FormBaseDeprecated*>(ob->form->u_vdata);
-	Assert(ob);
+	Assert(pre);
 	pre->bc().valid(pre->input(ob, data));
 }
 
@@ -180,7 +180,7 @@ void FormBaseDeprecated::RestoreCB(FL_OBJECT * ob, long)
 	Assert(ob && ob->form);
 	FormBaseDeprecated * pre =
 		static_cast<FormBaseDeprecated*>(ob->form->u_vdata);
-	Assert(ob);
+	Assert(pre);
 	pre->bc().undoAll();
 	pre->restore();
 }

@@ -5,7 +5,7 @@
 #define FD_form_panel_h_
 
 /** Callbacks, globals and object handlers **/
-extern  "C" void C_FormBaseCancelCB(FL_OBJECT *, long);
+extern  "C" void C_FormBaseDeprecatedCancelCB(FL_OBJECT *, long);
 extern  "C" void C_FormMathsButtonCB(FL_OBJECT *, long);
 
 extern  "C" void C_FormMathsDelimCB(FL_OBJECT *, long);

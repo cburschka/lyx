@@ -58,6 +58,19 @@ public:
 	///
 	/// input callback functions
 	void InputCB(FL_OBJECT *, long);
+	///
+	void ButtonCB(FL_OBJECT *, long);
+	///
+	void DelimCB(FL_OBJECT *, long);
+	///
+	void MatrixCB(FL_OBJECT *, long);
+	///
+	void DecoCB(FL_OBJECT *, long);
+	///
+	void SpaceCB(FL_OBJECT *, long);
+	///
+	int AlignFilter(char const *, int);
+
 
 	/// insert a matrix 
 	void insertMatrix() const;
@@ -80,21 +93,6 @@ public:
 	/// dispatch a function name insert
 	void insertFunction() const;
 
-	// Real GUI implementations
-	boost::scoped_ptr<FD_form_panel> dialog_;
-	boost::scoped_ptr<FD_form_delim> delim_;
-	boost::scoped_ptr<FD_form_matrix> matrix_;
-	boost::scoped_ptr<FD_form_deco> deco_;
-	boost::scoped_ptr<FD_form_space> space_;
-
-	// bit map menus
-	boost::scoped_ptr<BitmapMenu> greek_;
-	boost::scoped_ptr<BitmapMenu> boperator_;
-	boost::scoped_ptr<BitmapMenu> brelats_;
-	boost::scoped_ptr<BitmapMenu> arrow_;
-	boost::scoped_ptr<BitmapMenu> varsize_;
-	boost::scoped_ptr<BitmapMenu> misc_;
-
 private:
 	/// Pointer to the actual instantiation of the ButtonController.
 	virtual xformsBC & bc();
@@ -115,6 +113,21 @@ private:
 	FD_form_deco * build_deco();
 	FD_form_space * build_space();
 	
+	// Real GUI implementations
+	boost::scoped_ptr<FD_form_panel> dialog_;
+	boost::scoped_ptr<FD_form_delim> delim_;
+	boost::scoped_ptr<FD_form_matrix> matrix_;
+	boost::scoped_ptr<FD_form_deco> deco_;
+	boost::scoped_ptr<FD_form_space> space_;
+
+	// bit map menus
+	boost::scoped_ptr<BitmapMenu> greek_;
+	boost::scoped_ptr<BitmapMenu> boperator_;
+	boost::scoped_ptr<BitmapMenu> brelats_;
+	boost::scoped_ptr<BitmapMenu> arrow_;
+	boost::scoped_ptr<BitmapMenu> varsize_;
+	boost::scoped_ptr<BitmapMenu> misc_;
+
 	/// The ButtonController
 	ButtonController<OkCancelReadOnlyPolicy, xformsBC> bc_;
 };
