@@ -1,5 +1,9 @@
 2004-12-14  Angus Leeming  <leeming@lyx.org>
 
+	* main.C: (main): no longer pass pointers to os::init.
+
+2004-12-14  Angus Leeming  <leeming@lyx.org>
+
 	* BufferView_pimpl.C: remove unnecessary #include <sys/wait.h>.
 
 2004-12-14  Angus Leeming  <leeming@lyx.org>

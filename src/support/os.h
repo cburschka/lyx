@@ -15,7 +15,7 @@ public:
 	};
 
 	//
-	static void init(int * argc, char ** argv[]);
+	static void init(int argc, char * argv[]);
 
 	//
 	static string binpath() {return binpath_;}

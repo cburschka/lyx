@@ -1,4 +1,4 @@
-// os_win32.C copyright "Ruurd A. Reitsma" <R.A.Reitsma@wbmt.tudelft.nl>
+// os_win32.C copyright "Ruurd A. Reitsma" <rareitsma@yahoo.com>
 
 // Various OS specific functions
 #include <config.h>
@@ -21,11 +21,11 @@ unsigned long os::cp_ = 0;
 
 using std::endl;
 
-void os::init(int * /* argc */, char ** argv[]) {
+void os::init(int /* argc */, char * argv[]) {
 	static bool initialized = false;
 	if (initialized) return;
 	initialized = true;
-	string tmp = *argv[0];
+	string tmp = argv[0];
 	binname_ = OnlyFilename(tmp);
 	tmp = ExpandPath(tmp); // This expands ./ and ~/
 
@@ -33,7 +33,7 @@ void os::init(int * /* argc */, char ** argv[]) {
 		string binsearchpath = GetEnvPath("PATH");
 		// This will make "src/lyx" work always :-)
 		binsearchpath += ";.";
-		tmp = *argv[0];
+		tmp = argv[0];
 		tmp = FileOpenSearch(binsearchpath, tmp);
 	}
 

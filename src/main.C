@@ -16,7 +16,7 @@
 
 int main(int argc, char * argv[])
 {
-	os::init(&argc, &argv);
+	os::init(argc, argv);
 
 	// lyx_localedir is used by gettext_init() is we have
 	//   i18n support built-in

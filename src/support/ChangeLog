@@ -1,5 +1,10 @@
 2004-12-14  Angus Leeming  <leeming@lyx.org>
 
+	* os.h, os_{os2,unix,win32}.C (init): change interface to no longer
+	pass the addresses of the parameters received by main.
+
+2004-12-14  Angus Leeming  <leeming@lyx.org>
+
 	* copy.C (copy): open the ifstream with ios::binary.
 
 2004-12-14  Angus Leeming  <leeming@lyx.org>

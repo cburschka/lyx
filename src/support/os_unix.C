@@ -13,14 +13,15 @@ string os::tmpdir_ = string();
 os::shell_type os::_shell = os::UNIX;
 unsigned long os::cp_ = 0;
 
-void os::init(int * /*argc*/, char ** argv[]) /* :cp_(0), _shell(os::UNIX) */ {
+void os::init(int /*argc*/, char * argv[]) /* :cp_(0), _shell(os::UNIX) */
+{
 	static bool initialized = false;
 
 	if (initialized)
 		return;
 
 	initialized = true;
-	string tmp = *argv[0];
+	string tmp = argv[0];
 	binname_ = OnlyFilename(tmp);
 	tmp = ExpandPath(tmp); // This expands ./ and ~/
 	if (!os::is_absolute_path(tmp)) {

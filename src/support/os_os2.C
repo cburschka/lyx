@@ -18,40 +18,40 @@ string os::tmpdir_ = string();
 os::shell_type os::_shell = os::UNIX;
 unsigned long os::cp_ = 0;
 
-void os::init(int * argc, char ** argv[]) {
-	if (argc != 0 /* This is a hack! */) {
-		_wildcard(argc, argv);
-		PTIB ptib = new TIB[1];
-		PPIB ppib = new PIB[1];
-		APIRET rc = DosGetInfoBlocks(&ptib, &ppib);
-		if (rc != NO_ERROR)
-			exit(rc);
-		char* tmp = new char[256];
-		// This is the only reliable way to retrieve the executable name.
-		rc = DosQueryModuleName(ppib->pib_hmte, 256L, tmp);
-		if (rc != NO_ERROR)
-			exit(rc);
-		string p(tmp);
-		p = slashify_path(p);
-		binname_ = OnlyFilename(p);
-		binname_.erase(binname_.length()-4, string::npos);
-		binpath_ = OnlyPath(p);
+void os::init(int argc, char * argv[])
+{
+	_wildcard(&argc, &argv);
+	PTIB ptib = new TIB[1];
+	PPIB ppib = new PIB[1];
+	APIRET rc = DosGetInfoBlocks(&ptib, &ppib);
+	if (rc != NO_ERROR)
+		exit(rc);
+	char* tmp = new char[256];
+	// This is the only reliable way to retrieve the executable name.
+	rc = DosQueryModuleName(ppib->pib_hmte, 256L, tmp);
+	if (rc != NO_ERROR)
+		exit(rc);
+	string p(tmp);
+	p = slashify_path(p);
+	binname_ = OnlyFilename(p);
+	binname_.erase(binname_.length()-4, string::npos);
+	binpath_ = OnlyPath(p);
 
-		// OS/2 cmd.exe has another use for '&'
-		string sh = OnlyFilename(GetEnvPath("EMXSHELL"));
-		if (sh.empty()) {
-			// COMSPEC is set, unless user unsets
-			sh = OnlyFilename(GetEnvPath("COMSPEC"));
-			if (sh.empty())
-				sh = "cmd.exe";
-		}
-		sh = lowercase(sh);	// DosMapCase() is an overkill here
-		if (contains(sh, "cmd.exe")
-		    || contains(sh, "4os2.exe"))
-			_shell = os::CMD_EXE;
-		else
-			_shell = os::UNIX;
+	// OS/2 cmd.exe has another use for '&'
+	string sh = OnlyFilename(GetEnvPath("EMXSHELL"));
+	if (sh.empty()) {
+		// COMSPEC is set, unless user unsets
+		sh = OnlyFilename(GetEnvPath("COMSPEC"));
+		if (sh.empty())
+			sh = "cmd.exe";
 	}
+	sh = lowercase(sh);	// DosMapCase() is an overkill here
+	if (contains(sh, "cmd.exe")
+	    || contains(sh, "4os2.exe"))
+		_shell = os::CMD_EXE;
+	else
+		_shell = os::UNIX;
+
 	static bool initialized = false;
 	if (initialized) return;
 	initialized = true;
