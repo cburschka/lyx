@@ -113,6 +113,8 @@ public:
 	///
 	void plainInsert(MathInset * p);
 	///
+	void niceInsert(MathInset * p);
+	///
 	void delLine();
 	/// This is in pixels from (maybe?) the top of inset
 	void setPos(int, int);
@@ -163,10 +165,6 @@ public:
 	void selClear();
 	///
 	void drawSelection(Painter & pain) const;
-	///
-	void clearLastCode();
-	///
-	void setLastCode(MathTextCodes t);
 	///
 	void handleFont(MathTextCodes t);
 	///

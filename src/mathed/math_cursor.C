@@ -23,35 +23,25 @@
 #include <algorithm>
 #include <cctype>
 
+#include "support/lstrings.h"
 #include "debug.h"
 #include "LColor.h"
 #include "Painter.h"
-#include "mathed/support.h"
+#include "support.h"
 #include "formulabase.h"
 #include "math_cursor.h"
+#include "math_factory.h"
 #include "math_arrayinset.h"
-#include "math_bigopinset.h"
 #include "math_charinset.h"
-#include "math_symbolinset.h"
 #include "math_decorationinset.h"
 #include "math_deliminset.h"
-#include "math_dotsinset.h"
-#include "math_fracinset.h"
 #include "math_funcinset.h"
-#include "math_funcliminset.h"
-#include "math_gridinset.h"
 #include "math_macro.h"
-#include "math_macroarg.h"
 #include "math_macrotable.h"
-#include "math_macrotemplate.h"
 #include "math_matrixinset.h"
-#include "math_noglyphinset.h"
-#include "math_rootinset.h"
-#include "math_spaceinset.h"
-#include "math_sqrtinset.h"
-#include "math_stackrelinset.h"
-#include "support/lstrings.h"
+#include "math_scopeinset.h"
 #include "math_scriptinset.h"
+#include "math_spaceinset.h"
 #include "math_parser.h"
 
 using std::endl;
@@ -131,7 +121,7 @@ std::ostream & operator<<(std::ostream & os, MathCursorPos const & p)
 
 
 MathCursor::MathCursor(InsetFormulaBase * formula)
-	: formula_(formula), lastcode_(LM_TC_MIN), imacro_(0), selection_(false)
+	: formula_(formula), lastcode_(LM_TC_VAR), imacro_(0), selection_(false)
 {
 	first();
 }
@@ -141,6 +131,7 @@ MathCursor::~MathCursor()
 {
 	delete imacro_;
 }
+
 
 void MathCursor::pushLeft(MathInset * par)
 {
@@ -279,7 +270,7 @@ bool MathCursor::left(bool sel)
 		return true;
 	}
 	selHandle(sel);
-	clearLastCode();
+	lastcode_ = LM_TC_VAR;
 
 	MathInset * p = prevInset();
 	if (openable(p, sel, false)) {
@@ -299,7 +290,7 @@ bool MathCursor::right(bool sel)
 		return true;
 	}
 	selHandle(sel);
-	clearLastCode();
+	lastcode_ = LM_TC_VAR;
 
 	MathInset * p = nextInset();
 	if (openable(p, sel, false)) {
@@ -331,7 +322,7 @@ void MathCursor::setPos(int x, int y)
 	//lyxerr << "MathCursor::setPos x: " << x << " y: " << y << "\n";
 
 	macroModeClose();
-	lastcode_ = LM_TC_MIN;
+	lastcode_ = LM_TC_VAR;
 	first();
 
 	cursor().par_  = outerPar();
@@ -375,7 +366,7 @@ void MathCursor::home()
 {
 	dump("home 1");
 	macroModeClose();
-	clearLastCode();
+	lastcode_ = LM_TC_VAR;
 	if (!par()->idxHome(idx(), pos())) 
 		popLeft();
 	dump("home 2");
@@ -386,7 +377,7 @@ void MathCursor::end()
 {
 	dump("end 1");
 	macroModeClose();
-	clearLastCode();
+	lastcode_ = LM_TC_VAR;
 	if (!par()->idxEnd(idx(), pos()))
 		popRight();
 	dump("end 2");
@@ -405,14 +396,14 @@ void MathCursor::insert(char c, MathTextCodes t)
 	if (selection_)
 		selDel();
 
-	if (t != LM_TC_MIN)
+	if (t != LM_TC_VAR)
 		lastcode_ = t;
 
-	if (imacro_ && !(MathIsAlphaFont(t) || t == LM_TC_MIN))
+	if (imacro_ && !(MathIsAlphaFont(t) || t == LM_TC_VAR))
 		macroModeClose();
 
 	if (imacro_) {
-		if (MathIsAlphaFont(t) || t == LM_TC_MIN) {
+		if (MathIsAlphaFont(t) || t == LM_TC_VAR) {
 			// was MacroModeinsert(c);
 			imacro_->setName(imacro_->name() + c);
 			return;
@@ -437,6 +428,23 @@ void MathCursor::insert(MathInset * p)
 
 	array().insert(pos(), p);
 	posRight();
+}
+
+
+void MathCursor::niceInsert(MathInset * p) 
+{
+	if (!p) {
+		lyxerr << "should not happen\n";
+		return;
+	}
+	selCut();
+	insert(p);
+	if (p->nargs()) {
+		posLeft();
+		right();  // do not push for e.g. MathSymbolInset
+		selPaste();
+	}
+	p->metrics(p->size());
 }
 
 
@@ -609,141 +617,6 @@ void MathCursor::setSize(MathStyles size)
 }
 
 
-void MathCursor::interpret(string const & t)
-{
-	//lyxerr << "interpret: '" << s << "'\n";
-	//lyxerr << "in: " << in_word_set(s) << " \n";
-
-	if (t.empty())
-		return;
-
-	// temporary glue code
-	string s = t;
-	if (s[0] == '\\')
-		s = s.substr(1);
-
-	if (s[0] == '^' || s[0] == '_') {
-		bool const up = (s[0] == '^');
-		selCut();	
-		MathScriptInset * p = prevScriptInset();
-		if (!p) {
-			MathInset * b = prevInset();
-			if (b && b->isScriptable()) {
-				p = new MathScriptInset(up, !up, b->clone());
-				posLeft();
-				plainErase();
-			} else {
-				p = new MathScriptInset(up, !up);
-			}
-			insert(p);
-		}
-		pushRight(p);
-		if (up)
-			p->up(true);
-		else
-			p->down(true);
-		idx() = up ? 0 : 1;
-		pos() = 0;
-		selPaste();
-		return;
-	}
-
-	if (s[0] == '!' || s[0] == ','  || s[0] == ':' || s[0] == ';') {
-		int sp = (s[0] == ',') ? 1:((s[0] == ':') ? 2:((s[0] == ';') ? 3: 0));
-		insert(new MathSpaceInset(sp));
-		return;
-	}
-
-	MathInset * p = 0;
-	latexkeys const * l = in_word_set(s);
-
-	if (l == 0) {
-		if (s == "root") 
-			p = new MathRootInset;
-		else if (MathMacroTable::hasTemplate(s))
-			p = new MathMacro(MathMacroTable::provideTemplate(s));
-		else if (s.size() > 7 && s.substr(0, 7) == "matrix ") {
-			int m = 1;
-			int n = 1;
-			string v_align;
-			string h_align;
-			istringstream is(s.substr(7).c_str());
-			is >> m >> n >> v_align >> h_align;
-			m = std::max(1, m);
-			n = std::max(1, n);
-			v_align += 'c';
-			MathArrayInset * pp = new MathArrayInset(m, n);
-			pp->valign(v_align[0]);
-			pp->halign(h_align);
-			p = pp;
-		}
-		else
-			p = new MathFuncInset(s);
-	} else {
-		switch (l->token) {
-			case LM_TK_NOGLYPH:
-			case LM_TK_NOGLYPHB:
-				p = new MathNoglyphInset(l);
-				break;
-
-			case LM_TK_BIGSYM:
-				p = new MathBigopInset(l);
-				break;
-
-			case LM_TK_FUNCLIM:
-				p = new MathFuncLimInset(l);
-				break;
-
-			case LM_TK_SYM: 
-				p = new MathSymbolInset(l);
-				break;
-
-			case LM_TK_STACK:
-				p = new MathStackrelInset;
-				break;
-
-			case LM_TK_FRAC:
-				p = new MathFracInset;
-				break;
-
-			case LM_TK_SQRT:
-				p = new MathSqrtInset;
-				break;
-
-			case LM_TK_DECORATION:
-				p = new MathDecorationInset(l);
-				break;
-
-			case LM_TK_SPACE:
-				p = new MathSpaceInset(l->id);
-				break;
-
-			case LM_TK_DOTS:
-				p = new MathDotsInset(l);
-				break;
-
-			case LM_TK_MACRO:
-				p = new MathMacro(MathMacroTable::provideTemplate(s));
-				break;
-
-			default:
-				p = new MathFuncInset(l->name);
-				break;
-		}
-	}
-
-	if (p) {
-		selCut();
-		insert(p);
-		if (p->nargs()) {
-			posLeft();
-			right();  // do not push for e.g. MathSymbolInset
-			selPaste();
-		}
-		p->metrics(p->size());
-	}
-}
-
 
 void MathCursor::macroModeOpen()
 {
@@ -764,7 +637,7 @@ void MathCursor::macroModeClose()
 		posLeft();
 		plainErase();
 		imacro_ = 0;
-		interpret(name);
+		interpret("\\" + name);
 	}
 }
 
@@ -859,7 +732,6 @@ void MathCursor::drawSelection(Painter & pain) const
 		int y2 = c.yo() + c.descent();
 		pain.fillRectangle(x1, y1, x2 - x1, y2 - y1, LColor::selection);
 	} else {
-
 		std::vector<int> indices = i1.par_->idxBetween(i1.idx_, i2.idx_);
 		for (unsigned i = 0; i < indices.size(); ++i) {
 			MathXArray & c = i1.xcell(indices[i]);
@@ -875,13 +747,14 @@ void MathCursor::drawSelection(Painter & pain) const
 
 MathTextCodes MathCursor::nextCode() const
 {
-	//return (pos() == size()) ? LM_TC_MIN : nextInset()->code();
-	return LM_TC_MIN;
+	//return (pos() == size()) ? LM_TC_VAR : nextInset()->code();
+	return LM_TC_VAR;
 }
 
 
 void MathCursor::handleFont(MathTextCodes t)
 {
+	macroModeClose();
 	if (selection_) {
 		MathCursorPos i1;
 		MathCursorPos i2;
@@ -976,24 +849,6 @@ bool MathCursor::inMacroMode() const
 bool MathCursor::selection() const
 {
 	return selection_;
-}
-
-
-void MathCursor::clearLastCode()
-{
-	lastcode_ = LM_TC_MIN;
-}
-
-
-void MathCursor::setLastCode(MathTextCodes t)
-{
-	lastcode_ = t;
-}
-
-
-MathTextCodes MathCursor::getLastCode() const
-{
-	return lastcode_;
 }
 
 
@@ -1365,6 +1220,7 @@ MathArray & MathCursorPos::cell(int idx) const
 	return par_->cell(idx);
 }
 
+
 MathArray & MathCursorPos::cell() const
 {
 	return par_->cell(idx_);
@@ -1393,3 +1249,183 @@ MathCursorPos MathCursor::normalAnchor() const
 	}
 	return normal;
 }
+
+
+void MathCursor::interpret(string const & s)
+{
+	//lyxerr << "interpret: '" << s << "'\n";
+	//lyxerr << "in: " << in_word_set(s) << " \n";
+
+	if (s.empty())
+		return;
+
+	char c = s[0];
+
+	lyxerr << "char: '" << c << "'  int: " << int(c) << endl;
+	//owner_->getIntl()->getTrans().TranslateAndInsert(c, lt);	
+	//lyxerr << "trans: '" << c << "'  int: " << int(c) << endl;
+
+	latexkeys const * l = in_word_set(s.substr(1));
+	if (l) {
+		lastcode_ = LM_TC_VAR;
+		niceInsert(createMathInset(l));
+		return;
+	}
+
+	if (MathMacroTable::hasTemplate(s.substr(1))) {
+		niceInsert(new MathMacro(MathMacroTable::provideTemplate(s.substr(1))));
+		return;
+	}
+
+	if (s.size() > 8 && s.substr(0, 8) == "\\matrix ") {
+		int m = 1;
+		int n = 1;
+		string v_align;
+		string h_align;
+		istringstream is(s.substr(8).c_str());
+		is >> m >> n >> v_align >> h_align;
+		m = std::max(1, m);
+		n = std::max(1, n);
+		v_align += 'c';
+		MathArrayInset * pp = new MathArrayInset(m, n);
+		pp->valign(v_align[0]);
+		pp->halign(h_align);
+		niceInsert(pp);
+		return;
+	}
+
+	if (s.size() > 1)
+		return niceInsert(new MathFuncInset(s.substr(1)));
+
+
+	// we got just a single char now
+
+	if (c == '^' || c == '_') {
+		bool const up = (s[0] == '^');
+		selCut();	
+		MathScriptInset * p = prevScriptInset();
+		if (!p) {
+			MathInset * b = prevInset();
+			if (b && b->isScriptable()) {
+				p = new MathScriptInset(up, !up, b->clone());
+				posLeft();
+				plainErase();
+			} else 
+				p = new MathScriptInset(up, !up);
+			insert(p);
+		}
+		pushRight(p);
+		if (up)
+			p->up(true);
+		else
+			p->down(true);
+		idx() = up ? 0 : 1;
+		pos() = 0;
+		selPaste();
+		return;
+	}
+
+	if (c == '{') {
+		niceInsert(new MathScopeInset);
+		return;
+	}
+
+	if (isalpha(c) && (lastcode_ == LM_TC_GREEK || lastcode_ == LM_TC_GREEK1)) {
+		static char const greek[26] =
+			{'A', 'B', 'X',  0 , 'E',  0 ,  0 , 'H', 'I',  0 ,
+			 'K',  0 , 'M', 'N', 'O',  0 ,  0 , 'P',  0 , 'T',
+			 0,  0,   0,   0,   0 , 'Z' };
+			
+		MathTextCodes code = LM_TC_SYMB;
+		if ('A' <= c && c <= 'Z' && greek[c - 'A']) {
+			code = LM_TC_RM;
+			c = greek[c - 'A'];
+		}
+		insert(c, code);
+	
+#warning greek insert problem? look here!
+		//if (lastcode_ == LM_TC_GREEK1)
+			lastcode_ = LM_TC_VAR;
+		return;	
+	}
+
+	if (c == '_' && lastcode_ == LM_TC_TEX) {
+		lastcode_ = LM_TC_VAR;
+		insert(c, LM_TC_SPECIAL);
+		return;
+	}
+
+	if ('0' <= c && c <= '9' && (lastcode_ == LM_TC_TEX || imacro_)) {
+		macroModeOpen();
+		lastcode_ = LM_TC_VAR;
+		insert(c, lastcode_);
+		return;
+	}
+
+	if (('0' <= c && c <= '9') || strchr(";:!|[]().,?", c)) {
+		if (lastcode_ != LM_TC_TEXTRM)
+			lastcode_ = LM_TC_CONST;
+		insert(c, lastcode_);
+		return;
+	}
+
+	if (strchr("+/-*<>=", c)) {
+		if (lastcode_ != LM_TC_TEXTRM)
+			lastcode_ = LM_TC_BOP;
+		insert(c, lastcode_);
+		return;
+	}
+
+	if (strchr("#$%{|}", c)) {
+		if (lastcode_ != LM_TC_TEXTRM)
+			lastcode_ = LM_TC_SPECIAL;
+		insert(c, lastcode_);
+		return;
+	}
+
+	if (c == ' ') {
+		if (imacro_) {
+			lastcode_ = LM_TC_VAR;
+			macroModeClose();
+			return;
+		}
+
+		if (lastcode_ == LM_TC_TEXTRM) {
+			insert(c, LM_TC_TEXTRM);
+			return;
+		}
+
+		if (mathcursor->popRight())
+			return;
+
+#warning look here
+			// this would not work if the inset is in an table!
+			//bv->text->cursorRight(bv, true);
+			//result = FINISHED;
+		return;
+	}
+
+	if (c == '\'' || c == '@') {
+		insert(c, LM_TC_VAR);
+		return;
+	}
+
+	if (c == '\\') {
+		if (imacro_)
+			macroModeClose();
+		//bv->owner()->message(_("TeX mode"));
+		lastcode_ = LM_TC_TEX;
+		return;	
+	}
+
+	if (isalpha(c)) {
+		if (lastcode_ == LM_TC_TEX) {
+			macroModeOpen();
+			lastcode_ = LM_TC_VAR;
+		}
+		insert(c, lastcode_);
+		return;	
+	}
+
+}
+

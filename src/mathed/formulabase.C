@@ -344,6 +344,7 @@ void InsetFormulaBase::insetKeyPress(XKeyEvent *)
 }
 
 
+int greek_kb_flag = 0;
 
 UpdatableInset::RESULT
 InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
@@ -352,21 +353,16 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 	//lyxerr << "InsetFormulaBase::LocalDispatch: act: " << action
 	//	<< " arg: '" << arg << "' cursor: " << mathcursor << "\n";
 
-	static int greek_kb_flag = 0;
 
 	if (!mathcursor) 
 		return UNDISPATCHED;
 
-	MathTextCodes varcode = LM_TC_MIN;
-	bool was_macro = mathcursor->inMacroMode();
-	bool sel = false;
+	RESULT result      = DISPATCHED;
+	bool sel           = false;
+	bool was_macro     = mathcursor->inMacroMode();
 	bool was_selection = mathcursor->selection();
-	RESULT result = DISPATCHED;
 
 	hideInsetCursor(bv);
-
-	if (mathcursor->getLastCode() == LM_TC_TEX)
-		varcode = LM_TC_TEX;
 
 	mathcursor->normalize();
 
@@ -457,8 +453,7 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 		//      sprintf(dispatch_buffer, "%d %d",);
 		//      dispatch_result = dispatch_buffer;
 		//      break;
-	case LFUN_SETXY:
-	{
+	case LFUN_SETXY: {
 		lyxerr << "LFUN_SETXY broken!\n";
 		int x;
 		int y;
@@ -469,9 +464,8 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 		par()->getXY(x1, y1);
 		mathcursor->setPos(x1 + x, y1 + y);
 		updateLocal(bv, false);
+		break;
 	}
-	break;
-
 
 	case LFUN_PASTE:
 		if (was_macro)
@@ -499,42 +493,26 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 
 		// --- accented characters ------------------------------
 
-	case LFUN_UMLAUT:     handleAccent(bv, "ddot"); break;
-	case LFUN_CIRCUMFLEX: handleAccent(bv, "hat"); break;
-	case LFUN_GRAVE:      handleAccent(bv, "grave"); break;
-	case LFUN_ACUTE:      handleAccent(bv, "acute"); break;
-	case LFUN_TILDE:      handleAccent(bv, "tilde"); break;
-	case LFUN_MACRON:     handleAccent(bv, "bar"); break;
-	case LFUN_DOT:        handleAccent(bv, "dot"); break;
-	case LFUN_CARON:      handleAccent(bv, "check"); break;
-	case LFUN_BREVE:      handleAccent(bv, "breve"); break;
-	case LFUN_VECTOR:     handleAccent(bv, "vec"); break;
+	case LFUN_UMLAUT:       handleAccent(bv, "ddot"); break;
+	case LFUN_CIRCUMFLEX:   handleAccent(bv, "hat"); break;
+	case LFUN_GRAVE:        handleAccent(bv, "grave"); break;
+	case LFUN_ACUTE:        handleAccent(bv, "acute"); break;
+	case LFUN_TILDE:        handleAccent(bv, "tilde"); break;
+	case LFUN_MACRON:       handleAccent(bv, "bar"); break;
+	case LFUN_DOT:          handleAccent(bv, "dot"); break;
+	case LFUN_CARON:        handleAccent(bv, "check"); break;
+	case LFUN_BREVE:        handleAccent(bv, "breve"); break;
+	case LFUN_VECTOR:       handleAccent(bv, "vec"); break;
 
-		// Greek mode
-	case LFUN_GREEK:
-		if (!greek_kb_flag) {
-			greek_kb_flag = 1;
-			bv->owner()->message(_("Math greek mode on"));
-		} else
-			greek_kb_flag = 0;
-		break;
-
-		// Greek keyboard
-	case LFUN_GREEK_TOGGLE:
-		greek_kb_flag = greek_kb_flag ? 0 : 2;
-		if (greek_kb_flag)
-			bv->owner()->message(_("Math greek keyboard on"));
-		else
-			bv->owner()->message(_("Math greek keyboard off"));
-		break;
-
-		//  Math fonts
-	case LFUN_BOLD:    handleFont(bv, LM_TC_BF); break;
-	case LFUN_SANS:    handleFont(bv, LM_TC_SF); break;
-	case LFUN_EMPH:    handleFont(bv, LM_TC_CAL); break;
-	case LFUN_ROMAN:   handleFont(bv, LM_TC_RM); break;
-	case LFUN_CODE:    handleFont(bv, LM_TC_TT); break;
-	case LFUN_DEFAULT: handleFont(bv, LM_TC_VAR); break;
+	//  Math fonts
+	case LFUN_GREEK:        handleFont(bv, LM_TC_GREEK1); break;
+	case LFUN_GREEK_TOGGLE: handleFont(bv, LM_TC_GREEK); break;
+	case LFUN_BOLD:         handleFont(bv, LM_TC_BF); break;
+	case LFUN_SANS:         handleFont(bv, LM_TC_SF); break;
+	case LFUN_EMPH:         handleFont(bv, LM_TC_CAL); break;
+	case LFUN_ROMAN:        handleFont(bv, LM_TC_RM); break;
+	case LFUN_CODE:         handleFont(bv, LM_TC_TT); break;
+	case LFUN_DEFAULT:      handleFont(bv, LM_TC_VAR); break;
 
 	case LFUN_MATH_MODE:
 		handleFont(bv, LM_TC_TEXTRM);
@@ -560,14 +538,6 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 		if (!arg.empty()) {
 			bv->lockedInsetStoreUndo(Undo::INSERT);
 			mathcursor->interpret("matrix " + arg);
-			updateLocal(bv, true);
-		}
-		break;
-
-	case LFUN_INSERT_MATH:
-		if (!arg.empty()) {
-			bv->lockedInsetStoreUndo(Undo::INSERT);
-			mathcursor->interpret(arg);
 			updateLocal(bv, true);
 		}
 		break;
@@ -696,129 +666,23 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 		result = UNDISPATCHED;
 		break;
 
-	default:
-		if ((action == -1 || action == LFUN_SELFINSERT) && !arg.empty()) {
-			unsigned char c = arg[0];
-
-			lyxerr << "Action: " << action << endl;
-			
-			lyxerr << "char: '" << c << "'  int: " << int(c) << endl;
-			//owner_->getIntl()->getTrans().TranslateAndInsert(c, lt);	
-			//lyxerr << "trans: '" << c << "'  int: " << int(c) << endl;
+	case -1:
+	case LFUN_INSERT_MATH:
+	case LFUN_SELFINSERT:
+		if (!arg.empty()) {
 			bv->lockedInsetStoreUndo(Undo::INSERT);
-
-			if (c == 0) {      // Dead key, do nothing
-				//lyxerr << "deadkey" << endl;
-				break;
-			}
-
-			if (isalpha(c)) {
-				if (mathcursor->getLastCode() == LM_TC_TEX) {
-					mathcursor->macroModeOpen();
-					mathcursor->clearLastCode();
-					varcode = LM_TC_MIN;
-				} else if (!varcode) {		
-					MathTextCodes f = mathcursor->getLastCode() ?
-						mathcursor->getLastCode() :
-						mathcursor->nextCode();
-					varcode = MathIsAlphaFont(f) ?
-						static_cast<MathTextCodes>(f) :
-						LM_TC_VAR;
-				}
-				
-				//	     lyxerr << "Varcode << vardoce;
-				MathTextCodes char_code = varcode;
-				if (greek_kb_flag) {
-					char greek[26] =
-					{'A', 'B', 'X',  0 , 'E',  0 ,  0 , 'H', 'I',  0 ,
-					 'K',  0 , 'M', 'N', 'O',  0 ,  0 , 'P',  0 , 'T',
-					 0,  0,   0,   0,   0 , 'Z' };
-					
-					if ('A' <= c && c <= 'Z' && greek[c - 'A']) {
-						char_code = LM_TC_RM;
-						c = greek[c - 'A'];
-					} else
-						char_code = LM_TC_SYMB;
-				}
-				
-				mathcursor->insert(c, char_code);
-				
-				if (greek_kb_flag && char_code == LM_TC_RM)
-					mathcursor->setLastCode(LM_TC_VAR);
-				
-				varcode = LM_TC_MIN;
-				
-				if (greek_kb_flag < 2)
-					greek_kb_flag = 0;
-				
-			} else if (c == '{') {
-				mathcursor->insert(new MathScopeInset);
-				mathcursor->left();
-				mathcursor->clearLastCode();
-			} else if (strchr("!,:;", c) && (varcode == LM_TC_TEX||was_macro)) {
-				mathcursor->insert(c, LM_TC_TEX);
-				mathcursor->clearLastCode();
-			} else if (c == '_' && varcode == LM_TC_TEX) {
-				mathcursor->insert(c, LM_TC_SPECIAL);
-				mathcursor->clearLastCode();
-			} else if ('0' <= c && c <= '9' && (varcode == LM_TC_TEX||was_macro)) {
-				mathcursor->macroModeOpen();
-				mathcursor->clearLastCode();
-				mathcursor->insert(c, LM_TC_MIN);
-			} else if (('0' <= c && c <= '9') || strchr(";:!|[]().,?", c)) {
-				MathTextCodes code = mathcursor->getLastCode();
-				if (code != LM_TC_TEXTRM)
-					code = LM_TC_CONST;
-				mathcursor->insert(c, code);
-			} else if (strchr("+/-*<>=", c)) {
-				MathTextCodes code = mathcursor->getLastCode();
-				if (code != LM_TC_TEXTRM)
-					code = LM_TC_BOP;
-				mathcursor->insert(c, code);
-			} else if (strchr("#$%{|}", c)) {
-				MathTextCodes code = mathcursor->getLastCode();
-				if (code != LM_TC_TEXTRM)
-					code = LM_TC_SPECIAL;
-				mathcursor->insert(c, code);
-			} else if (c == '_' || c == '^') {
-				char s[2];
-				s[0] = c;
-				s[1] = 0;
-				mathcursor->interpret(s);
-			} else if (c == ' ') {
-				if (!varcode) {	
-					MathTextCodes f = (mathcursor->getLastCode()) ?
-						mathcursor->getLastCode() :
-						mathcursor->nextCode();
-					varcode = MathIsAlphaFont(f) ? f : LM_TC_VAR;
-				}
-				
-				if (varcode == LM_TC_TEXTRM)
-					mathcursor->insert(c, LM_TC_TEXTRM);
-				else if (was_macro)
-					mathcursor->macroModeClose();
-				else if (mathcursor->popRight())
-					;
-				else {
-					// this would not work if the inset is in an table!
-					//bv->text->cursorRight(bv, true);
-					result = FINISHED;
-				}
-			} else if (c == '\'' || c == '@') {
-				mathcursor->insert(c, LM_TC_VAR);
-			} else if (c == '\\') {
-				if (was_macro)
-					mathcursor->macroModeClose();
-				bv->owner()->message(_("TeX mode"));
-				mathcursor->setLastCode(LM_TC_TEX);
-			}
+			mathcursor->interpret(arg);
 			updateLocal(bv, true);
-		} else if (action == LFUN_MATH_PANEL) {
-			result = UNDISPATCHED;
-		} else {
-			lyxerr << "Closed by action " << action << endl;
-			result =  FINISHED;
 		}
+		break;
+
+	case LFUN_MATH_PANEL:
+		result = UNDISPATCHED;
+		break;
+
+	default:
+		lyxerr << "Closed by action " << action << endl;
+		result =  FINISHED;
 	}
 
 	mathcursor->normalize();

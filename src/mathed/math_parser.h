@@ -45,9 +45,15 @@ enum MathTokenEnum
 	///
 	LM_TK_SYM,
 	///
+	LM_TK_OVER,
+	///
+	LM_TK_CHOOSE,
+	///
 	LM_TK_FRAC,
 	///
 	LM_TK_SQRT,
+	///
+	LM_TK_ROOT,
 	///
 	LM_TK_BEGIN,
 	///
@@ -90,8 +96,6 @@ enum MathTokenEnum
 	LM_TK_PROTECT,
 	///
 	LM_TK_STY,
-	///
-	LM_TK_MACRO,
 	///
 	LM_TK_SPECIAL,
 	///

@@ -1,4 +1,12 @@
 
+2001-08-13  André Pönitz  <poenitz@gmx.net>
+
+	* math_factory.[Ch]: new files for the creation of math insets
+
+	* math_parser.C:
+		math_cursor.C:
+		math_hash.C: simplifications
+
 2001-08-10  André Pönitz  <poenitz@gmx.net>
 
 	*	math_scopeinset.[Ch]: new inset for {} blocks

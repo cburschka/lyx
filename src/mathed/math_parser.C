@@ -27,30 +27,21 @@
 #include "array.h"
 #include "math_inset.h"
 #include "math_arrayinset.h"
-#include "math_bigopinset.h"
 #include "math_charinset.h"
-#include "math_dotsinset.h"
-#include "math_decorationinset.h"
 #include "math_deliminset.h"
-#include "math_fracinset.h"
+#include "math_factory.h"
 #include "math_funcinset.h"
-#include "math_funcliminset.h"
 #include "math_macro.h"
 #include "math_macrotable.h"
 #include "math_macrotemplate.h"
 #include "math_matrixinset.h"
-#include "math_noglyphinset.h"
 #include "math_rootinset.h"
 #include "math_scopeinset.h"
 #include "math_sqrtinset.h"
 #include "math_scriptinset.h"
-#include "math_sizeinset.h"
-#include "math_spaceinset.h"
 #include "math_sqrtinset.h"
-#include "math_stackrelinset.h"
-#include "math_symbolinset.h"
 #include "debug.h"
-#include "mathed/support.h"
+#include "support.h"
 #include "lyxlex.h"
 #include "support/lstrings.h"
 
@@ -92,12 +83,9 @@ MathInset * lastScriptInset(MathArray & array, bool up, bool down, int limits)
 
 // These are lexical codes, not semantic
 enum lexcode_enum {
-	LexNone,
 	LexESC,
 	LexAlpha,
 	LexBOP,         // Binary operators or relations
-	LexOpen,
-	LexClose,
 	LexComment,
 	LexArgument,
 	LexSpace,
@@ -111,19 +99,18 @@ lexcode_enum lexcode[256];
 
 
 const unsigned char LM_TK_OPEN  = '{';
-const unsigned char LM_TK_CLOSE = '}';
 
 enum {
-	FLAG_BRACE      = 1 << 0,  //  A { needed              //}
-	FLAG_BRACE_LAST = 1 << 1,  //  // { Last } ends the parsing process
-	FLAG_RIGHT      = 1 << 2,  //  Next right ends the parsing process
-	FLAG_END        = 1 << 3,  //  Next end ends the parsing process
-	FLAG_BRACK_END  = 1 << 5,  //  // [ Next ] ends the parsing process
-	FLAG_AMPERSAND  = 1 << 6,  //  Next & ends the parsing process
-	FLAG_NEWLINE    = 1 << 7,  //  Next \\ ends the parsing process
-	FLAG_ITEM       = 1 << 8,  //  read a (possibly braced token)
+	FLAG_BRACE      = 1 << 0,  //  an opening brace needed
+	FLAG_BRACE_LAST = 1 << 1,  //  last closing brace ends the parsing process
+	FLAG_RIGHT      = 1 << 2,  //  next right ends the parsing process
+	FLAG_END        = 1 << 3,  //  next end ends the parsing process
+	FLAG_BRACK_END  = 1 << 4,  //  next closing bracket ends the parsing process
+	FLAG_AMPERSAND  = 1 << 5,  //  next & ends the parsing process
+	FLAG_NEWLINE    = 1 << 6,  //  next \\ ends the parsing process
+	FLAG_ITEM       = 1 << 7,  //  read a (possibly braced token)
+	FLAG_BLOCK      = 1 << 8,  //  next block ends the parsing process
 	FLAG_LEAVE      = 1 << 9,  //  marker for leaving the 
-	FLAG_OPTARG     = 1 << 10  //  reads an argument in []
 };
 
 
@@ -181,9 +168,10 @@ void lexInit()
 	lexcode['['] = lexcode[']'] = lexcode['^'] = lexcode['_'] = 
 		lexcode['&'] = LexSelf;  
 	
+	lexcode['{'] = LexSelf;
+	lexcode['}'] = LexSelf;
+
 	lexcode['\\'] = LexESC;
-	lexcode['{'] = LexOpen;
-	lexcode['}'] = LexClose;
 }
 
 
@@ -333,10 +321,6 @@ int Parser::yylex()
 			c = getuchar();
 			ival_ = c - '0';
 			return LM_TK_ARGUMENT; 
-		} else if (lexcode[c] == LexOpen) {
-			return LM_TK_OPEN;
-		} else if (lexcode[c] == LexClose) {
-			return LM_TK_CLOSE;
 		} else if (lexcode[c] == LexESC)   {
 			c = getuchar();
 			//lyxerr << "reading second byte: '" << c << "' code: " << lexcode[c] << endl;
@@ -364,21 +348,18 @@ int Parser::yylex()
 			
 				//lyxerr[Debug::MATHED] << "reading: text '" << sval_ << "'\n";
 				//lyxerr << "reading: text '" << sval_ << "'\n";
-				latexkeys const * l = in_word_set(sval_);
-				if (!l) 
+				lval_ = in_word_set(sval_);
+				if (!lval_) 
 					return LM_TK_UNDEF;
 
-				if (l->token == LM_TK_BEGIN || l->token == LM_TK_END) { 
+				if (lval_->token == LM_TK_BEGIN || lval_->token == LM_TK_END) { 
 					string name = lexArg('{');
 					int i = 0;
 					while (i < latex_mathenv_num && name != latex_mathenv[i].name)
 						 ++i;
 					ival_ = i;
-				} else if (l->token == LM_TK_SPACE) 
-					ival_ = l->id;
-				else
-					lval_ = l;
-				return l->token;
+				}
+				return lval_->token;
 			}
 		}
 	}
@@ -574,22 +555,32 @@ void Parser::parse_into(MathArray & array, unsigned flags)
 			if (t == LM_TK_OPEN) { 
 				// skip the brace and collect everything to the next matching
 				// closing brace
-				t = yylex();
 				flags |= FLAG_BRACE_LAST;
+				t = yylex();
 			} else {
 				// take only this single token
 				flags |= FLAG_LEAVE;
 			}
 		}
 
-		if ((flags & FLAG_BRACE) && t != LM_TK_OPEN) {
-			error("Expected {. Maybe you forgot to enclose an argument in {}");
-			panic = true;
-			break;
+		if (flags & FLAG_BRACE) {
+			if (t != LM_TK_OPEN) {
+				error("Expected {. Maybe you forgot to enclose an argument in {}");
+				panic = true;
+				break;
+			} else {
+				flags &= ~FLAG_BRACE;
+				t = yylex();
+				continue;
+			}
 		}
 
 		switch (t) {
 			
+		case LM_TK_MATH:
+		case LM_TK_END:
+			return;
+
 		case LM_TK_ALPHA:
 			if (!isspace(ival_) || yyvarcode == LM_TC_TEXTRM)
 				array.push_back(new MathCharInset(ival_, yyvarcode));
@@ -610,15 +601,15 @@ void Parser::parse_into(MathArray & array, unsigned flags)
 			array.push_back(new MathCharInset(ival_, LM_TC_CONST));
 			break;
 
-		case LM_TK_OPEN:
+		case '{':
+			//lyxerr << " creating ScopeInset\n";
 			array.push_back(new MathScopeInset);
 			parse_into(array.back()->cell(0), FLAG_BRACE_LAST);
 			break;
 
-		case LM_TK_CLOSE:
-			if (flags & FLAG_BRACE_LAST) {
+		case '}':
+			if (flags & FLAG_BRACE_LAST)
 				flags |= FLAG_LEAVE;
-			}
 			break;
 		
 		case '[':
@@ -671,57 +662,9 @@ void Parser::parse_into(MathArray & array, unsigned flags)
 		case LM_TK_PROTECT: 
 			break;
 
-		case LM_TK_NOGLYPH: 
-		case LM_TK_NOGLYPHB: 
-			limits = 0;
-			array.push_back(new MathNoglyphInset(lval_));
-			break;
-
-		case LM_TK_BIGSYM:  
-			limits = 0;
-			array.push_back(new MathBigopInset(lval_));
-			break;
-
-		case LM_TK_FUNCLIM:
-			limits = 0;
-			array.push_back(new MathFuncLimInset(lval_));
-			break;
-
-		case LM_TK_SYM:
-			limits = 0;
-			array.push_back(new MathSymbolInset(lval_));
-			break;
-
 		case LM_TK_BOP:
 			array.push_back(new MathCharInset(ival_, LM_TC_BOP));
 			break;
-
-		case LM_TK_SPACE:
-			if (ival_ >= 0) 
-				array.push_back(new MathSpaceInset(ival_));
-			break;
-
-		case LM_TK_DOTS:
-			array.push_back(new MathDotsInset(lval_));
-			break;
-		
-		case LM_TK_STACK:
-		{
-			MathStackrelInset * p = new MathStackrelInset;
-			parse_into(p->cell(0), FLAG_ITEM);
-			parse_into(p->cell(1), FLAG_ITEM);
-			array.push_back(p);
-			break;
-		}
-
-		case LM_TK_FRAC:
-		{
-			MathFracInset * p = new MathFracInset;
-			parse_into(p->cell(0), FLAG_ITEM);
-			parse_into(p->cell(1), FLAG_ITEM);
-			array.push_back(p);
-			break;
-		}
 
 		case LM_TK_SQRT:
 		{
@@ -782,20 +725,8 @@ void Parser::parse_into(MathArray & array, unsigned flags)
 			break; 
 		}
 
-		case LM_TK_DECORATION:
-		{  
-			MathDecorationInset * p = new MathDecorationInset(lval_);
-			parse_into(p->cell(0), FLAG_ITEM);
-			array.push_back(p);
-			break;
-		}
-			
 		case LM_TK_NONUM:
 			curr_num_ = false;
-			break;
-		
-		case LM_TK_FUNC:
-			array.push_back(new MathSymbolInset(lval_));
 			break;
 		
 		case LM_TK_UNDEF: 
@@ -809,10 +740,6 @@ void Parser::parse_into(MathArray & array, unsigned flags)
 				array.push_back(new MathFuncInset(sval_));
 			break;
 		
-		case LM_TK_MATH:
-		case LM_TK_END:
-			return;
-
 		case LM_TK_BEGIN:
 		{
 			int i = ival_;
@@ -836,18 +763,29 @@ void Parser::parse_into(MathArray & array, unsigned flags)
 			break;
 		}
 	
-		case LM_TK_MACRO:
-			array.push_back(MathMacroTable::cloneTemplate(lval_->name));
-			break;
-		
 		case LM_TK_LABEL:
 			curr_label_ = lexArg('{', true);
 			break;
+
+		case LM_TK_OVER:
+		{
+			MathArray ar;
+			parse_into(ar, FLAG_BLOCK);
+			break;
+		}
 		
 		default:
-			error("Unrecognized token");
-			lyxerr[Debug::MATHED] << "[" << t << " " << sval_ << "]" << endl;
-			break;
+			limits = 0;
+			MathInset * p = createMathInset(lval_);
+			if (p) {
+				for (int i = 0; i < p->nargs(); ++i)
+					parse_into(p->cell(i), FLAG_ITEM);
+				array.push_back(p);
+			} else {
+				error("Unrecognized token");
+				//lyxerr[Debug::MATHED] << "[" << t << " " << sval_ << "]\n";
+				lyxerr << "[" << t << " " << sval_ << "]\n";
+			}
 
 		} // end of big switch
 
@@ -857,7 +795,7 @@ void Parser::parse_into(MathArray & array, unsigned flags)
 		}
 
 		if (panic) {
-			lyxerr << " Math Panic, expect problems!" << endl;
+			lyxerr << " Math Panic, expect problems!\n";
 			//   Search for the end command. 
 			do {
 				t = yylex();
@@ -879,8 +817,9 @@ void parse_end(LyXLex & lex, int lineno)
 		lex.nextToken();
 		if (lex.getString() == "\\end_inset")
 			break;
-		lyxerr[Debug::MATHED] << "InsetFormula::Read: Garbage before \\end_inset,"
-			" or missing \\end_inset!" << endl;
+		//lyxerr[Debug::MATHED] << "InsetFormula::Read: Garbage before \\end_inset,"
+		lyxerr << "InsetFormula::Read: Garbage before \\end_inset,"
+			" or missing \\end_inset!\n";
 	}
 }
 
@@ -942,4 +881,3 @@ MathMatrixInset * mathed_parse_normal(LyXLex & lex)
 	parse_end(lex, parser.lineno());
 	return p;
 }
-
