@@ -1563,7 +1563,7 @@ void InsetTabular::resetPos(BufferView * bv) const
 #warning This should be fixed in the right manner (20011128 Jug)
 #endif
 	// fast hack to fix infinite repaintings!
-	if (in_reset_pos > 10)
+	if (in_reset_pos > 0)
 		return;
 
 	int cell = 0;
