@@ -11,27 +11,15 @@
 #include <windows.h>
 #include <io.h>
 #include <fcntl.h>
-
-#if defined(__CYGWIN__) || defined(__CYGWIN32__)
-#include <sys/cygwin.h>
-#include <cstdlib>
-
-#elif defined(_WIN32)
-# include <direct.h> // _getdrive
-#endif
+#include <direct.h> // _getdrive
 
 
-#if defined(__CYGWIN__) || defined(__CYGWIN32__)
-string const os::nulldev_ = "/dev/null";
-os::shell_type os::shell_ = os::UNIX;
-#else
 string const os::nulldev_ = "nul";
 os::shell_type os::shell_ = os::CMD_EXE;
-#endif
+
 
 void os::init(int /* argc */, char * argv[])
 {
-#ifdef _WIN32
 	/* Note from Angus, 17 Jan 2005:
 	 *
 	 * The code below is taken verbatim from Ruurd's original patch
@@ -106,20 +94,14 @@ void os::init(int /* argc */, char * argv[])
 		if ( hwndFound != NULL)
 			ShowWindow( hwndFound, SW_HIDE);
 	}
-#endif
 }
 
 
 string os::current_root()
 {
-#if defined(__CYGWIN__) || defined(__CYGWIN32__)
-	return string("/");
-
-#else
 	// _getdrive returns the current drive (1=A, 2=B, and so on).
 	char const drive = ::_getdrive() + 'A' - 1;
 	return string(1, drive) + ":/";
-#endif
 }
 
 
@@ -141,20 +123,7 @@ string::size_type os::common_path(string const &p1, string const &p2)
 
 string os::external_path(string const & p)
 {
-	string dos_path;
-
-#if defined(__CYGWIN__) || defined(__CYGWIN32__)
-	// Translate from cygwin path syntax to dos path syntax
-	if (is_absolute_path(p)) {
-		char dp[PATH_MAX+1];
-		cygwin_conv_to_full_win32_path(p.c_str(), dp);
-		dos_path = !dp ? string() : dp;
-	}
-
-	else return p;
-#else // regular Win32
-	dos_path = p;
-#endif
+	string dos_path = p;
 
 	// No backslashes in LaTeX files
 	dos_path = subst(dos_path,'\\','/');
@@ -169,14 +138,7 @@ string os::external_path(string const & p)
 
 string os::internal_path(string const & p)
 {
-#if defined(__CYGWIN__) || defined(__CYGWIN32__)
-	char posix_path[PATH_MAX+1];
-	posix_path[0] = '\0';
-	cygwin_conv_to_posix_path(p.c_str(), posix_path);
-	return posix_path;
-#else
 	return subst(p,"\\","/");
-#endif
 }
 
 
@@ -215,9 +177,5 @@ char const * os::popen_read_mode()
 //  PATH environment variable.
 char os::path_separator()
 {
-#if defined (_WIN32)
 	return ';';
-#else // Cygwin
-	return ':';
-#endif
 }
