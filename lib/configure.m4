@@ -37,7 +37,7 @@ do
 set dummy $ac_prog ; ac_word=$[2]
 if test -n "$ac_word"; then
   MSG_CHECKING([for \"$ac_word\"],[+])
-  IFS="${IFS= 	}"; ac_save_ifs="$IFS"; IFS=":"
+  IFS="${IFS=	}"; ac_save_ifs="$IFS"; IFS=":"
   for ac_dir in $PATH; do
     test -z "$ac_dir" && ac_dir=.
     if test -x [$ac_dir/$ac_word]; then
@@ -83,7 +83,7 @@ dnl
 dnl PROVIDE_DEFAULT_FILE(FILE, DEFAULT-VALUE)
 dnl
 define(PROVIDE_DEFAULT_FILE,[dnl
-# if $1 does not exist (because LaTeX did not run), 
+# if $1 does not exist (because LaTeX did not run),
 # then provide a standard version.
 if test ! -f $1 ; then
   cat >$1 <<EOF
@@ -107,8 +107,8 @@ for ac_option do
   case "$ac_option" in
     -help | --help | -h)
       cat << EOF
-Usage: configure [options] 
-Options: 
+Usage: configure [options]
+Options:
   --help                   show this help lines
   --keep-temps             keep temporary files (for debug. purposes)
   --without-latex-config   do not run LaTeX to determine configuration
@@ -121,7 +121,7 @@ EOF
       lyx_keep_temps=yes ;;
     --with-lyx-suffix*)
       lyx_suffix=`echo "$ac_option" | sed 's,--with-lyx-suffix=,,;s,^,-,'`
-  esac 
+  esac
 done
 
 
@@ -155,7 +155,7 @@ if test "${LC_CTYPE+set}"    = set; then LC_CTYPE=C;    export LC_CTYPE;    fi
 changequote([,])dnl
 ac_prog=[$]0
 changequote(,)dnl
-srcdir=`echo $ac_prog|sed 's%/[^/][^/]*$%%'` 
+srcdir=`echo $ac_prog|sed 's%/[^/][^/]*$%%'`
 srcdir=`echo "${srcdir}" | sed 's%\([^/]\)/*$%\1%'`
 test "x$srcdir" = "x$ac_prog" && srcdir=.
 if test ! -r ${srcdir}/chkconfig.ltx ; then
@@ -189,7 +189,7 @@ cat >chklatex.ltx <<EOF
 \\@@end
 EOF
 if eval ${LATEX} chklatex.ltx </dev/null 2>/dev/null \
-                       | grep 'ThisIsLaTeX2e' >/dev/null; then
+		       | grep 'ThisIsLaTeX2e' >/dev/null; then
   :
 else
   LATEX=
@@ -368,11 +368,11 @@ esac
 SEARCH_PROG([for a Image -> XPM converter], TOXPM, convert)
 if test "$TOXPM" = "convert"; then
 	gif_to_xpm="convert GIF:\$\$i XPM:\$\$o"
-	eps_to_xpm="convert EPS:\$\$i XPM:\$\$o" 
+	eps_to_xpm="convert EPS:\$\$i XPM:\$\$o"
 	jpg_to_xpm="convert JPG:\$\$i XPM:\$\$o"
 	png_to_xpm="convert PNG:\$\$i XPM:\$\$o"
-	ps_to_xpm="convert PS:\$\$i XPM:\$\$o" 
-	xbm_to_xpm="convert XBM:\$\$i XPM:\$\$o" 
+	ps_to_xpm="convert PS:\$\$i XPM:\$\$o"
+	xbm_to_xpm="convert XBM:\$\$i XPM:\$\$o"
 fi
 
 SEARCH_PROG([For an EPS -> PDF converter], EPSTOPDF, epstopdf)
@@ -396,15 +396,15 @@ ${docbook_cmd}
 \\input{${srcdir}/chkconfig.ltx}
 EOF
   ## Construct the list of classes to test for.
-  # build the list of available layout files and convert it to commands 
-  # for chkconfig.ltx 
-  for file in ./layouts/*.layout ${srcdir}/layouts/*.layout ; do 
+  # build the list of available layout files and convert it to commands
+  # for chkconfig.ltx
+  for file in ./layouts/*.layout ${srcdir}/layouts/*.layout ; do
     case $file in
       */\*.layout) ;;
       *) test -r "$file" && echo $file ;;
     esac
   done | sed -e 's%^.*layouts/\(.*\)\.layout$%\\TestDocClass{\1}%'\
-             > chklayouts.tex
+	     > chklayouts.tex
 changequote([,])dnl
   [eval] ${LATEX} wrap_chkconfig.ltx 2>/dev/null | grep '^\+'
   [eval] `cat chkconfig.vars | sed 's/-/_/g'`
@@ -413,13 +413,13 @@ fi
 
 # Do we have all the files we need? Useful if latex did not run
 changequote([,])dnl
-echo "creating textclass.lst" 
+echo "creating textclass.lst"
 PROVIDE_DEFAULT_FILE(textclass.lst,dnl
 [# This file declares layouts and their associated definition files
 # (include dir. relative to the place where this file is).
-# It contains only default values, since chkconfig.ltx could not be run 
+# It contains only default values, since chkconfig.ltx could not be run
 # for some reason. Run ./configure if you need to update it after a
-# configuration change.  
+# configuration change.
 article	article	article
 report	report	report
 book	book	book
@@ -456,7 +456,7 @@ cat >$outfile <<EOF
 \\Format bmp      bmp	BMP		""
 \\Format dvi	  dvi	DVI		D
 \\Format eps	  eps	EPS		""
-\\Format epsi     epsi  EPSI 		""
+\\Format epsi     epsi  EPSI		""
 \\Format fax	  ""	Fax		""
 \\Format fits     fits	FITS		""
 \\Format gif      gif	GIF		""
@@ -535,7 +535,7 @@ cat >$outfile <<EOF
 \\converter png  xpm "$png_to_xpm" ""
 \\converter ps  xpm "$ps_to_xpm" ""
 \\converter xbm  xpm "$xbm_to_xpm" ""
- 
+
 \\converter eps  pdf "$eps_to_pdf" ""
 \\converter epsi pdf "$eps_to_pdf" ""
 
@@ -583,13 +583,13 @@ rm -f xfonts/tmpfonts
 
 
 # Remove superfluous files if we are not writing in the main lib
-# directory 
+# directory
 for file in $outfile textclass.lst packages.lst \
-            doc/LaTeXConfig.lyx xfonts/fonts.dir ; do
+	    doc/LaTeXConfig.lyx xfonts/fonts.dir ; do
   # we rename the file first, so that we avoid comparing a file with itself
   mv $file $file.new
-  if test -r $srcdir/$file && diff $file.new $srcdir/$file >/dev/null 2>/dev/null ; 
-  then 
+  if test -r $srcdir/$file && diff $file.new $srcdir/$file >/dev/null 2>/dev/null ;
+  then
     echo "removing $file, which is identical to the system global version"
     rm -f $file.new
   else

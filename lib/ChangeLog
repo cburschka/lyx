@@ -1,5 +1,7 @@
 2002-04-06  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
+	* Makefile.am (LYXLIBDIRS): xfonts should not be named here
+
 	* bind/sv_menus.bind: change RightAddress to Right_Address
 	* bind/de_menus.bind: ditto
 	* bind/fi_menus.bind: ditto

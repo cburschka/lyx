@@ -32,7 +32,7 @@ pkgdata_DATA = lyxrc.example CREDITS chkconfig.ltx lyxrc.defaults \
 	       encodings languages symbols
 
 LYXLIBDIRS = bind clipart doc examples help images kbd layouts scripts \
-	     templates tex ui xfonts
+	     templates tex ui
 
 EXTRA_DIST = CREDITS chkconfig.ltx configure.cmd lyxrc.example \
 	external_templates $(LYXLIBDIRS) \
