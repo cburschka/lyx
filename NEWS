@@ -5,7 +5,7 @@ LyX 1.2.0 is the version where many of changes in the 1.1.x series
 really begin to pay off. It should prove to be a very solid base for
 further developments. As of this version, we use (yet another) new
 versioning scheme: next major version will be 1.3.0, and 1.2.x will
-be just incremental fixes (like the fix series used to be for 1.1.5
+be just incremental fixes (like the `fix' series used to be for 1.1.5
 and 1.1.6). 
 
 This version sees the introduction of the so-called `new' insets,
@@ -13,11 +13,12 @@ which can contain arbitrary text. As a consequence, many new features
 are now possible:
 
 - Floats, footnotes and margin notes are now real insets. The
-  positional parameters of figure, table and algorith, floats can be set
+  positional parameters of figure, table and algorithm floats can be set
   float-by-float
 
-- Most problems with the new table inset of 1.1.6 have been resolved
-  (memory consumption, spell-checking, search and replace...)
+- Most problems with the new table inset of 1.1.6 have been addressed
+  (memory consumption, file bloat, spell-checking, search and replace...). 
+  Better longtable header/footer support was implemented.
 
 - TeX mode has been superseded by the ERT inset, which is foldable, or
   can be shown inline
@@ -26,6 +27,9 @@ are now possible:
   appear in the output.
 
 - New minipage inset
+
+Note that another consequence of this change is that older LyX version
+will almost certainly fail to read files produced by LyX 1.2.0.
 
 
 Other more traditional insets have been improved too:
@@ -43,10 +47,20 @@ The math editor has been mostly rewritten. This begun as a general
 cleanup, but it turns out that many new features happened in this
 process, among which:
 
-- possibility to display arbitrary TeX symbols as long as the fonts are
-  made available to the X server
+- possibility to display all standard latex and amsmath symbols (and
+  also the \mathcal, \mathbb, and \mathfrak fonts)as long as the
+  relevant fonts have been made available to the X server
 
 - support for many amsmath features
+  Commands: xrightarrow, xleftarrow, substack, underset, dddot
+  over/under arrows (e.g. underleftarrow).
+  Environments: align, alignat, xalignat, xxalignat, multline, gather
+  split, gathered, aligned, cases, subarray, pmatrix, bmatrix, vmatrix, 
+  Vmatrix
+
+- Preliminary support for xymatrix
+
+- Support for horizontal and vertical lines in arrays.
 
 - Improvements to the parser
 
@@ -58,17 +72,22 @@ process, among which:
 
 - Enable size changes to arrays after creation (add/delete rows/columns)
 
-- Support for changing font on a selection
+- Support for changing font or displaystyle on a selection
+
+- GUI support provided for many more features
 
 
 Other changes include:
 
-- Most of the popups have been rewritten in the GUI-I framework, and
+- Support for windows with cygwin has been incorporated into the main
+  distribution.
+
+- Most of the dialogs have been rewritten in the GUI-I framework, and
   improved in the process
 
 - The kde frontend has been dropped in favor of a new qt2 frontend.
   Note that only the xforms front is really operational as of this
-  version and alternative fontends are expected for 1.3.0
+  version and alternative frontends are expected for 1.3.0
 
 - The citation dialog has a search facility, with support for regular
   expressions.

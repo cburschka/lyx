@@ -1,11 +1,3 @@
-Note for CVS checkouts
-----------------------
-
-If you have checked this out from CVS, you need to have
-automake, autoconf, and gettext installed.  Then,
-type "./autogen.sh" to build the needed configuration
-files and proceed as stated below.
-
 Compiling and installing LyX
 ============================
 
@@ -28,19 +20,42 @@ These four steps will compile, test and install LyX:
            if you want a smaller binary. 
 
 
+Note for CVS checkouts
+----------------------
+
+If you have checked this out from CVS, you need to have
+automake, autoconf, and gettext installed.  Then,
+type "./autogen.sh" to build the needed configuration
+files and proceed as stated below.
+
+You will also probably need GNU m4 (perhaps installed as gm4).
+ 
 Requirements
 ------------
 
-You will need to have both an Xforms library and Xpm library to compile 
-LyX.  It is imperative that you have the correct versions of these 
+First of all, you will also need a recent C++ compiler, where recent
+means that the compilers are close to C++ standard conforming.
+Compilers that are known to compile LyX are egcs 1.1.x, gcc 2.95.x and
+later, and Digital C++ version 6.1 and later. Please tell us your
+experience with other compilers. It is _not_ possible to compile LyX
+with gcc 2.7.x and 2.8.x, and this is not likely to change in the
+future.
+
+Note that, contrary to LyX 1.0.x, LyX 1.2.x makes great use of C++
+Standard Template Library (STL); this means that gcc users will have
+to install the relevant libstdc++ library to be able to compile this
+version.
+
+Both an Xforms and Xpm libraries should be installed to compile LyX.
+It is imperative that you have the correct versions of these
 libraries, and their associated header files.
 
-As of LyX version 1.1.5, you will need to have Xforms library and
-header version 0.88 or 0.89.  Version 0.88 is a stable release and the
-recommended version, but 0.89.6 seems to be work very well too.  On
-some systems, such as linux ELF, there are shared library versions of
-the Xforms library, which require an installation step to configure
-the system.
+As of LyX version 1.2.0, you will need to have Xforms library and
+header version 0.88 or 0.89. Version 0.89.6 is the one which works
+best, but the old stable 0.88.1 version is still supported. On some
+systems, such as linux ELF, there are shared library versions of the
+Xforms library, which require an installation step to configure the
+system.
 
 Xforms is available (free) only in binary format, source code is not
 available.  If it is not available for your machine, contact the Xforms
@@ -52,31 +67,13 @@ developers to request a version for your system.  You can get it from
     ftp://ftp.fu-berlin.de/unix/X11/gui/xforms
     ftp://ftp.cs.ruu.nl/pub/XFORMS/
 
-In addition, you must have libXpm version 4.7 (or newer; 4.8 rumoured
-to work).
+If you use a rpm-based linux distribution, such as RedHat or Mandrake,
+we recommend that you grab a version of xforms from
+  ftp://ftp.lyx.org/pub/lyx/contrib 
+as the rpm packages commonly found are compiled against glibc 2.0
+instead of 2.[12], and this causes occasional crashes.
 
-To use the thesaurus, you will need to install libAikSaurus, available
-from :
-
-    http://aiken.clan11.com/aiksaurus/ 
- 
-You will also probably need GNU m4 (perhaps installed as gm4).
- 
-libXpm can be found at:
-	    http://www.funet.fi/pub/Linux/sunsite/X11/libs/!INDEX.html
-	    (or similar locations at other sunsites like sunsite.unc.edu)
-
-You will also need a recent C++ compiler, where recent means that the
-compilers are close to C++ standard conforming.  Compilers that are
-known to compile LyX are egcs 1.1.x, gcc 2.95.x and later, and Digital
-C++ version 6.1 and later.  Please tell us your experience with other
-compilers.  It is _not_ possible to compile LyX with gcc 2.7.x and
-2.8.x, and this is not likely to change in the future.
-
-Note that, contrary to LyX 1.0.x, LyX 1.1.x makes great use of C++
-Standard Template Library (STL); this means that gcc users will have
-to install the relevant libstdc++ library to be able to compile this
-version.
+In addition, you must have libXpm version 4.7 or newer.
 
 If you make modifications to files in src/ (for example by applying a
 patch), you will need to have the GNU gettext package installed, due
@@ -88,7 +85,11 @@ from:
 LyX contains a hack to work around this, but you should not rely too
 much on it.
 
+To use the thesaurus, you will need to install libAikSaurus, available
+from :
 
+    http://aiken.clan11.com/aiksaurus/ 
+ 
 Finally, the two following programs should be available at
 configuration time:
 
@@ -99,9 +100,9 @@ configuration time:
     the machine on which LyX is built is not the one where it will
     run). 
 
-  o LaTeX2e should be correctly setup for the user you are logged
+  o LaTeX2e should be correctly setup for the user you are logged in
     as. Otherwise, LyX will not be able to run a number of tests. Note
-    that users can run these tests manually with Option->Configure.
+    that users can run these tests manually with Edit>Reconfigure.
 
 
 Creating the Makefile
@@ -205,7 +206,7 @@ desperate cases:
     the compilation of LyX.  Opposite is --disable-warnings.  By default,
     this flag is on for development versions only.
 
-  o --enable-assertions that make the compilier generater run-time
+  o --enable-assertions that make the compiler generate run-time
     code which checks that some variables have sane values. Opposite
     is --disable-assertions.  By default, this flag is on for
     development versions only. 
@@ -220,7 +221,7 @@ desperate cases:
     flag, please report it as a bug. 
 
   o --without-liberty suppresses the detection of the -liberty library
-    (see the section 'Problems').
+    (see the section `Problems').
 
 
 Compiling and installing LyX
@@ -234,7 +235,7 @@ Once you've got the Makefile created, you just have to type:
 All should be OK ;)
 
 Since the binaries with debug information tend to be huge (although
-this does not affect the run-time memory footprint), you maight want
+this does not affect the run-time memory footprint), you might want
 to strip the lyx binary. In this case replace "make install" with
 
   make install-strip
@@ -269,15 +270,9 @@ Preparing a binary distribution for the use of others
 ------------------------------------------------------
 
   o Compile LyX with the right compiler switches for your
-    architecture. In particular you might want to ensure that
-    libraries like xforms and xpm are statically linked. To this end,
-    you can use a command like
-
-                make LYX_LIBS='/foo/libforms.a /bar/libXpm.a'
-
-    Moreover, make sure you use the --without-latex-config switch
+    architecture. Make sure you use the --without-latex-config switch
     of configure, since others might not be interested by your
-   configuration :-) 
+    configuration :-) 
 
   o Create a file README.bin describing your distribution and
     referring to *you* if problems arise. As a model, you can use the 
@@ -373,20 +368,6 @@ notify us.
     Angus Leeming <leeming@lyx.org> for details.
     Angus 22 March, 2002.
 
-  o According to John Collins <collins@phys.psu.edu>, on SunOS 4.1.3 you may 
-    find two sets of X libraries, and they are of course incompatible :-)
-    One is the set provided as part of OpenWindows, and one is the standard
-    X distribution (e.g., X11R5).  If you encounter problems (or if, for
-    some obscure reasons configure cannot find your X libraries) you can
-    use the following options:
-
-     o --x-libraries=DIRECTORY that indicates where the X libraries reside.
-
-     o --x-includes=DIRECTORY that indicate where the X include files reside.
-
-    The standard X11R5 libraries should work when the OpenWindows ones
-    don't.
-
   o Some systems lack functions that LyX needs.  To fix this, configure
     tries to link against the -liberty library, if it is available. 
     If you experience problems with missing symbols at link time, you 
@@ -408,20 +389,4 @@ notify us.
     LIBS = -lforms -lXpm  -lSM -lICE -lc -lm -lX11 -lCsup # must link with Csup
     LDFLAGS = -L/opt/aCC/lib # perhaps not needed. 
 
-
-  o On Digital Unix with gcc, you can get warnings like
-
-warning, LyXFamilyNames not found in original or external symbol tables, value defaults to 0
-
-    These concern symbols beginning with an uppercase letter and seems
-    to be harmless. Similarly, the compilation can end with the
-    following warning:
-
-/bin/ld:
-Warning: Linking some objects which contain exception information sections
-        and some which do not. This may cause fatal runtime exception handling
-        problems (last obj encountered without exceptions was ../intl/libintl.a).
-
-
-    You can safely ignore it. 
 
