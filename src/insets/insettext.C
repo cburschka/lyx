@@ -313,37 +313,43 @@ void InsetText::draw(BufferView * bv, LyXFont const & f,
 	return;
     }
     x += TEXT_TO_INSET_OFFSET;
-    int y = 0;
-    Row * row = TEXT(bv)->GetRowNearY(y);
-    int y_offset = baseline - row->ascent_of_text();
-    int ph = pain.paperHeight();
-    y += y_offset;
-    while ((row != 0) && ((y+row->height()) <= 0)) {
-	y += row->height();
-	row = row->next();
-    }
-    y -= y_offset;
-    TEXT(bv)->first = y;
-    if (cleared || !locked || (need_update == FULL)) {
-	int first = y;
-	y = 0;
-	while ((row != 0) && (y < ph)) {
-	    TEXT(bv)->GetVisibleRow(bv, y+first+y_offset, int(x), row,
-				    y+first, cleared);
+    {
+	int y = 0;
+	Row * row = TEXT(bv)->GetRowNearY(y);
+	int y_offset = baseline - row->ascent_of_text();
+	int ph = pain.paperHeight();
+	int first = 0;
+	y = y_offset;
+	while ((row != 0) && ((y+row->height()) <= 0)) {
 	    y += row->height();
+	    first += row->height();
 	    row = row->next();
 	}
-    } else if (need_update == SELECTION) {
-	bv->screen()->ToggleToggle(TEXT(bv), y+y_offset, int(x));
-    } else {
-	locked = false;
-	if (need_update == CURSOR) {
-	    bv->screen()->ToggleSelection(TEXT(bv), true, y+y_offset, int(x));
-	    TEXT(bv)->ClearSelection();
-	    TEXT(bv)->sel_cursor = TEXT(bv)->cursor;
+	if (y_offset < 0)
+	    y_offset = y;
+	TEXT(bv)->first = first;
+	if (cleared || !locked || (need_update == FULL)) {
+	    int yf = y_offset;
+	    y = 0;
+	    while ((row != 0) && (yf < ph)) {
+		    TEXT(bv)->GetVisibleRow(bv, y+y_offset, int(x), row,
+					    y+first, cleared);
+		y += row->height();
+		yf += row->height();
+		row = row->next();
+	    }
+	} else if (need_update == SELECTION) {
+	    bv->screen()->ToggleToggle(TEXT(bv), y_offset, int(x));
+	} else {
+	    locked = false;
+	    if (need_update == CURSOR) {
+		bv->screen()->ToggleSelection(TEXT(bv), true, y_offset,int(x));
+		TEXT(bv)->ClearSelection();
+		TEXT(bv)->sel_cursor = TEXT(bv)->cursor;
+	    }
+	    bv->screen()->Update(TEXT(bv), y_offset, int(x));
+	    locked = true;
 	}
-	bv->screen()->Update(TEXT(bv), y, int(x));
-	locked = true;
     }
     TEXT(bv)->refresh_y = 0;
     TEXT(bv)->status = LyXText::UNCHANGED;
@@ -813,6 +819,7 @@ InsetText::LocalDispatch(BufferView * bv,
 	bv->text->FinishUndo();
 	result= moveLeft(bv);
 	TEXT(bv)->ClearSelection();
+	TEXT(bv)->sel_cursor = TEXT(bv)->cursor;
 	UpdateLocal(bv, CURSOR, false);
 	break;
     case LFUN_DOWNSEL:
@@ -825,6 +832,7 @@ InsetText::LocalDispatch(BufferView * bv,
 	bv->text->FinishUndo();
 	result = moveDown(bv);
 	TEXT(bv)->ClearSelection();
+	TEXT(bv)->sel_cursor = TEXT(bv)->cursor;
 	UpdateLocal(bv, CURSOR, false);
 	break;
     case LFUN_UPSEL:
@@ -837,15 +845,20 @@ InsetText::LocalDispatch(BufferView * bv,
 	bv->text->FinishUndo();
 	result = moveUp(bv);
 	TEXT(bv)->ClearSelection();
+	TEXT(bv)->sel_cursor = TEXT(bv)->cursor;
 	UpdateLocal(bv, CURSOR, false);
 	break;
     case LFUN_HOME:
 	bv->text->FinishUndo();
 	TEXT(bv)->CursorHome(bv);
+	TEXT(bv)->ClearSelection();
+	TEXT(bv)->sel_cursor = TEXT(bv)->cursor;
 	UpdateLocal(bv, CURSOR, false);
 	break;
     case LFUN_END:
 	TEXT(bv)->CursorEnd(bv);
+	TEXT(bv)->ClearSelection();
+	TEXT(bv)->sel_cursor = TEXT(bv)->cursor;
 	UpdateLocal(bv, CURSOR, false);
 	break;
     case LFUN_BACKSPACE:

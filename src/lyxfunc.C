@@ -3182,6 +3182,8 @@ void LyXFunc::MenuNew(bool fromTemplate)
 		fname = fileDlg.Select(_("Choose template"),
 				       lyxrc.template_path,
 				       "*.lyx");
+		if (fname.empty())
+			return;
                 templname = fname;
 		AllowInput(owner->view());
 	}

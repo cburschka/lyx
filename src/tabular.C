@@ -2425,11 +2425,11 @@ int LyXTabular::Ascii(Buffer const * buf, ostream & os) const
 		continue;
 	    ostringstream sstr;
 	    GetCellInset(cell)->Ascii(buf, sstr, 0);
-	    string::size_type len = sstr.str().length();
+	    int len = int(sstr.str().length());
 	    int const n = cells_in_multicolumn(cell);
 	    for (int k = j; (len > 0) && (k < (j + n - 1)); ++k)
 		len -= clen[k];
-	    if (len > clen[j + n - 1])
+	    if (len > int(clen[j + n - 1]))
 		clen[j + n - 1] = len;
 	}
     }

@@ -13,6 +13,7 @@
 #define LYX_LIB_H
 
 #include "LString.h"
+#include <sys/types.h>
 
 // Where can I put this?  I found the occurence of the same code
 // three/four times. Don't you think it better to use a macro definition

@@ -1203,6 +1203,8 @@ string const LyXText::selectionAsString(Buffer const * buffer) const
 
 void LyXText::ClearSelection() const
 {
+	if (selection)
+		status = LyXText::NEED_MORE_REFRESH;
 	selection = false;
 	mark_set = false;
 }

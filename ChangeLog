@@ -1,3 +1,27 @@
+2000-10-19  Juergen Vigna  <jug@sad.it>
+
+	* src/lyxfunc.C (MenuNew): small fix (form John)
+
+	* src/screen.C (Update): removed unneeded code.
+
+	* src/tabular.C (Ascii): refixed int != uint bug!
+
+	* src/support/lyxlib.h: added sys/types.h include for now permits
+	compiling, but I don't like this!
+
+2000-10-18  Juergen Vigna  <jug@sad.it>
+
+	* src/text2.C (ClearSelection): if we clear the selection we need
+	more refresh so set the status aprpriate
+
+	* src/insets/insettext.C (draw): hopefully finally fixed draw
+	problems!
+
+2000-10-12  Juergen Vigna  <jug@sad.it>
+
+	* src/insets/insettext.C (draw): another small fix and make a block
+	so that variables are localized.
+
 2000-10-18  Angus Leeming <a.leeming@ic.ac.uk>
        * src/support/lstrings.C (lowercase, uppercase):
        use explicit casts to remove compiler warnings.

@@ -66,7 +66,8 @@ public:
 	/// the current font
 	mutable LyXFont real_current_font;
 	/// first visible pixel-row is set from LyXScreen!!!
-	unsigned int first;
+	// unsigned is wrong here for text-insets!
+	int first;
 	///
 	BufferView * bv_owner;
 	///

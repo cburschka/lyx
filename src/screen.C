@@ -148,7 +148,7 @@ void LyXScreen::Draw(LyXText * text, unsigned int y)
 {
 	if (cursor_visible) HideCursor();
 
-	unsigned int old_first = text->first;
+	int old_first = text->first;
 	text->first = y;
 
 	// is any optimiziation possible?
@@ -221,7 +221,7 @@ bool LyXScreen::FitManualCursor(LyXText * text,
 {
 	int newtop = text->first;
   
-	if (y + desc - text->first >= owner.height())
+	if (y + desc - text->first >= (int)owner.height())
 		newtop = y - 3 * owner.height() / 4;  // the scroll region must be so big!!
 	else if (y - asc < (int)text->first
 		&& text->first > 0) {
@@ -242,10 +242,10 @@ bool LyXScreen::FitManualCursor(LyXText * text,
 void LyXScreen::ShowManualCursor(LyXText const * text, int x, int y,
 				 int asc, int desc, Cursor_Shape shape)
 {
-	unsigned int y1 = max(y - text->first - asc, 0U);
+	unsigned int y1 = max(y - text->first - asc, 0);
 	typedef unsigned int uint;
 	
-	unsigned int y2 = min(y - text->first + desc, owner.height());
+	unsigned int y2 = min(y - text->first + desc, (int)owner.height());
 
 	// Secure against very strange situations
 	y2 = max(y2, y1);
@@ -360,8 +360,9 @@ unsigned int LyXScreen::TopCursorVisible(LyXText const * text)
 		else
 			newtop = text->cursor.y()
 				- 3 * owner.height() / 4;   /* the scroll region must be so big!! */
-	} else if (text->cursor.y() - text->cursor.row()->baseline() < text->first
-		   && text->first > 0) {
+	} else if ((int)(text->cursor.y() - text->cursor.row()->baseline()) <
+		   text->first && text->first > 0)
+	{
 		if (text->cursor.row()->height() < owner.height()
 		    && text->cursor.row()->height() > owner.height() / 4)
 			newtop = text->cursor.y() - text->cursor.row()->baseline();
@@ -382,7 +383,7 @@ unsigned int LyXScreen::TopCursorVisible(LyXText const * text)
 bool LyXScreen::FitCursor(LyXText * text)
 {
 	// Is a change necessary?
-	unsigned int newtop = TopCursorVisible(text);
+	int newtop = TopCursorVisible(text);
 	bool result = (newtop != text->first);
 	if (result)
 		Draw(text, newtop);
@@ -396,19 +397,10 @@ void LyXScreen::Update(LyXText * text, int y_offset, int x_offset)
 	case LyXText::NEED_MORE_REFRESH:
 	{
 		int y = max(int(text->refresh_y - text->first), 0);
-		int height;
-		if (text->inset_owner)
-			height = text->inset_owner->ascent(owner.owner(),
-							   text->real_current_font)
-				+ text->inset_owner->descent(owner.owner(),
-							     text->real_current_font);
-		else
-			height = owner.height();
 		DrawFromTo(text, y, owner.height(), y_offset, x_offset);
 		text->refresh_y = 0;
 		text->status = LyXText::UNCHANGED;
-		expose(0, y,
-		       owner.workWidth(), owner.height() - y);
+		expose(0, y, owner.workWidth(), owner.height() - y);
 	}
 	break;
 	case LyXText::NEED_VERY_LITTLE_REFRESH:
@@ -435,13 +427,14 @@ void LyXScreen::ToggleSelection(LyXText * text,  bool kill_selection,
 	// only if there is a selection
 	if (!text->selection) return;
 
-	int bottom = min(max(text->sel_end_cursor.y()
+	int bottom = min(max((int)(text->sel_end_cursor.y()
 			      - text->sel_end_cursor.row()->baseline()
-			      + text->sel_end_cursor.row()->height(), text->first),
-			  text->first + owner.height());
-	int top = min(max(text->sel_start_cursor.y()
-			   - text->sel_start_cursor.row()->baseline(), text->first),
-		       text->first + owner.height());
+			      + text->sel_end_cursor.row()->height()), text->first),
+			  (int)(text->first + owner.height()));
+	int top = min(max((int)(text->sel_start_cursor.y() -
+			  text->sel_start_cursor.row()->baseline()),
+			  text->first),
+		      (int)(text->first + owner.height()));
 
 	if (kill_selection)
 		text->selection = 0;
@@ -467,8 +460,8 @@ void LyXScreen::ToggleToggle(LyXText * text, int y_offset, int x_offset)
 	
 	typedef unsigned int uint;
 	
-	bottom = min(max(uint(bottom), text->first), text->first + owner.height());
-	top = min(max(uint(top), text->first), text->first + owner.height());
+	bottom = min(max(bottom, text->first), (int)(text->first + owner.height()));
+	top = min(max(top, text->first), (int)(text->first + owner.height()));
 
 	DrawFromTo(text, top - text->first, bottom - text->first, y_offset,
 		   x_offset);
