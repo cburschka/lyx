@@ -1101,7 +1101,9 @@ InsetFormula::LocalDispatch(BufferView * bv, kb_action action,
 		break;
 
 		//------- dummy actions
+#ifdef WITH_WARNINGS
 #warning Is this needed here? Shouldnt the main dispatch handle this? (Lgb)
+#endif
 		//case LFUN_EXEC_COMMAND:
 		//bv->owner()->getMiniBuffer()->PrepareForCommand();
 		//break;
