@@ -5,6 +5,7 @@
  *
  * \author André Pönitz
  * \author Jean-Marc Lasgouttes
+ * \author Georg Baum
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -30,7 +31,6 @@ using std::ostringstream;
 using std::string;
 using std::vector;
 
-#include "mathed/math_gridinfo.h"
 
 // filled in preamble.C
 std::map<char, int> special_columns;
@@ -38,33 +38,104 @@ std::map<char, int> special_columns;
 
 namespace {
 
+struct ColInfo
+{
+	ColInfo() : align('c'), rightline(false), leftline(false) {}
+	/// column alignment
+	char align;
+	/// column width
+	string width;
+	/// special column alignment
+	string special;
+	/// how many lines on the right?
+	int rightline;
+	/// a line on the left?
+	bool leftline;
+};
+
+
+/// row type for longtables
+enum LTRowType
+{
+	/// normal row
+	LT_NORMAL,
+	/// part of head
+	LT_HEAD,
+	/// part of head on first page
+	LT_FIRSTHEAD,
+	/// part of foot
+	LT_FOOT,
+	/// part of foot on last page
+	LT_LASTFOOT
+};
+
+
+struct RowInfo
+{
+	RowInfo() : topline(false), bottomline(false), type(LT_NORMAL),
+	            newpage(false) {}
+	/// horizontal line above
+	bool topline;
+	/// horizontal line below
+	bool bottomline;
+	/// These are for longtabulars only
+	/// row type (head, foot, firsthead etc.)
+	LTRowType type;
+	/// row for a pagebreak
+	bool newpage;
+};
+
+
+struct CellInfo
+{
+	CellInfo() : multi(0), align('n'), leftline(false), rightline(false),
+	             topline(false), bottomline(false) {}
+	/// cell content
+	string content;
+	/// multicolumn flag
+	int multi;
+	/// cell alignment
+	char align;
+	/// do we have a line on the left?
+	bool leftline;
+	/// do we have a line on the right?
+	bool rightline;
+	/// do we have a line above?
+	bool topline;
+	/// do we have a line below?
+	bool bottomline;
+};
+
+
+/// translate a horizontal alignment (as stored in ColInfo and CellInfo) to LyX
+inline char const * verbose_align(char c)
+{
+	return c == 'c' ? "center" : c == 'r' ? "right" : c == 'l' ? "left" : "none";
+}
+
+
+// stripped down from tabluar.C. We use it currently only for bools and
+// strings
+string const write_attribute(string const & name, bool const & b)
+{
+	// we write only true attribute values so we remove a bit of the
+	// file format bloat for tabulars.
+	return b ? ' ' + name + "=\"true\"" : string();
+}
+
+
+string const write_attribute(string const & name, string const & s)
+{
+	return s.empty() ? string() : ' ' + name + "=\"" + s + '"';
+}
+
+
 int string2int(string const & s, int deflt = 0)
 {
 	istringstream is(s);
 	int i = deflt;
 	is >> i;
 	return i;
-}
-
-
-string read_hlines(Parser & p)
-{
-	ostringstream os;
-	p.skip_spaces();
-	while (p.good()) {
-		if (p.next_token().cs() == "hline") {
-			p.get_token();
-			os << "\\hline";
-		} else if (p.next_token().cs() == "cline") {
-			p.get_token();
-			os << "\\cline{" << p.verbatim_item() << "}";
-		} else
-			break;
-		p.skip_spaces();
-	};
-	//cerr << "read_hlines(), read: '" << os.str() << "'\n";
-	//cerr << "read_hlines(), next token: " << p.next_token() << "\n";
-	return os.str();
 }
 
 
@@ -78,9 +149,9 @@ string read_hlines(Parser & p)
 
  gets "translated" to:
 
-  1 TAB 2 TAB 3 LINE
-  \hline HLINE  TAB 5 LINE
-  5 TAB 7 LINE
+         HLINE 1 TAB 2               TAB 3 HLINE HLINE LINE
+  \hline HLINE \multicolumn{2}{c}{4} TAB 5 HLINE HLINE LINE
+         HLINE 6 TAB 7                     HLINE HLINE LINE
 */
 
 char const TAB   = '\001';
@@ -88,6 +159,7 @@ char const LINE  = '\002';
 char const HLINE = '\004';
 
 
+/// handle column specifications for tabulars and multicolumns
 void handle_colalign(Parser & p, vector<ColInfo> & colinfo)
 {
 	if (p.get_token().cat() != catBegin)
@@ -167,12 +239,59 @@ void handle_colalign(Parser & p, vector<ColInfo> & colinfo)
 }
 
 
-} // anonymous namespace
-
-
-void parse_table(Parser & p, ostream & os, unsigned flags)
+/*!
+ * Parse hlines and similar stuff.
+ * \returns wether the token \p t was parsed
+ */
+bool parse_hlines(Parser & p, Token const & t, string & hlines,
+                  bool is_long_tabular)
 {
+	BOOST_ASSERT(t.cat() == catEscape);
+
+	if (t.cs() == "hline")
+		hlines += "\\hline";
+
+	else if (t.cs() == "cline")
+		hlines += "\\cline{" + p.verbatim_item() + '}';
+
+	else if (is_long_tabular && t.cs() == "newpage")
+		hlines += "\\newpage";
+
+	else
+		return false;
+
+	return true;
+}
+
+
+/// Position in a row
+enum RowPosition {
+	/// At the very beginning, before the first token
+	ROW_START,
+	/// After the first token and before any column token
+	IN_HLINES_START,
+	/// After the first column token. Comments and whitespace are only
+	/// treated as tokens in this position
+	IN_COLUMNS,
+	/// After the first non-column token at the end
+	IN_HLINES_END
+};
+
+
+/*!
+ * Parse table structure.
+ * We parse tables in a two-pass process: This function extracts the table
+ * structure (rows, columns, hlines etc.), but does not change the cell
+ * content. The cell content is parsed in a second step in handle_tabular().
+ */
+void parse_table(Parser & p, ostream & os, bool is_long_tabular,
+                 RowPosition & pos, unsigned flags)
+{
+	// table structure commands such as \hline
 	string hlines;
+
+	// comments that occur at places where we can't handle them
+	string comments;
 
 	while (p.good()) {
 		Token const & t = p.get_token();
@@ -181,6 +300,126 @@ void parse_table(Parser & p, ostream & os, unsigned flags)
 		cerr << "t: " << t << " flags: " << flags << "\n";
 #endif
 
+		// comments and whitespace in hlines
+		switch (pos) {
+		case ROW_START:
+		case IN_HLINES_START:
+		case IN_HLINES_END:
+			if (t.cat() == catComment) {
+				if (t.cs().empty())
+					// line continuation
+					p.skip_spaces();
+				else
+					// We can't handle comments here,
+					// store them for later use
+					comments += t.asInput();
+				continue;
+			} else if (t.cat() == catSpace ||
+			           t.cat() == catNewline) {
+				// whitespace is irrelevant here, we
+				// need to recognize hline stuff
+				p.skip_spaces();
+				continue;
+			}
+			break;
+		case IN_COLUMNS:
+			break;
+		}
+
+		// We need to handle structure stuff first in order to
+		// determine wether we need to output a HLINE separator
+		// before the row or not.
+		if (t.cat() == catEscape) {
+			if (parse_hlines(p, t, hlines, is_long_tabular)) {
+				switch (pos) {
+				case ROW_START:
+					pos = IN_HLINES_START;
+					break;
+				case IN_COLUMNS:
+					pos = IN_HLINES_END;
+					break;
+				case IN_HLINES_START:
+				case IN_HLINES_END:
+					break;
+				}
+				continue;
+			}
+
+			else if (t.cs() == "tabularnewline" ||
+			         t.cs() == "\\" ||
+			         t.cs() == "cr") {
+				if (t.cs() == "cr")
+					cerr << "Warning: Converting TeX "
+					        "'\\cr' to LaTeX '\\\\'."
+					     << endl;
+				// stuff before the line break
+				os << comments << HLINE << hlines << HLINE
+				   << LINE;
+				//cerr << "hlines: " << hlines << endl;
+				hlines.erase();
+				comments.erase();
+				pos = ROW_START;
+				continue;
+			}
+
+			else if (is_long_tabular &&
+			         (t.cs() == "endhead" ||
+			          t.cs() == "endfirsthead" ||
+			          t.cs() == "endfoot" ||
+			          t.cs() == "endlastfoot")) {
+				hlines += t.asInput();
+				switch (pos) {
+				case IN_COLUMNS:
+				case IN_HLINES_END:
+					// these commands are implicit line
+					// breaks
+					os << comments << HLINE << hlines
+					   << HLINE << LINE;
+					hlines.erase();
+					comments.erase();
+					pos = ROW_START;
+					break;
+				case ROW_START:
+					pos = IN_HLINES_START;
+					break;
+				case IN_HLINES_START:
+					break;
+				}
+				continue;
+			}
+
+		}
+
+		// We need a HLINE separator if we either have no hline
+		// stuff at all and are just starting a row or if we just
+		// got the first non-hline token.
+		switch (pos) {
+		case ROW_START:
+			// no hline tokens exist, first token at row start
+		case IN_HLINES_START:
+			// hline tokens exist, first non-hline token at row
+			// start
+			os << hlines << HLINE << comments;
+			hlines.erase();
+			comments.erase();
+			pos = IN_COLUMNS;
+			break;
+		case IN_HLINES_END:
+			// Oops, there is still cell content after hline
+			// stuff. This does not work in LaTeX, so we ignore
+			// the hlines.
+			cerr << "Ignoring '" << hlines << "' in a cell"
+			     << endl;
+			os << comments;
+			hlines.erase();
+			comments.erase();
+			pos = IN_COLUMNS;
+			break;
+		case IN_COLUMNS:
+			break;
+		}
+
+		// If we come here we have normal cell content
 		//
 		// cat codes
 		//
@@ -215,7 +454,8 @@ void parse_table(Parser & p, ostream & os, unsigned flags)
 
 		else if (t.cat() == catBegin) {
 			os << '{';
-			parse_table(p, os, FLAG_BRACE_LAST);
+			parse_table(p, os, is_long_tabular, pos,
+			            FLAG_BRACE_LAST);
 			os << '}';
 		}
 
@@ -229,23 +469,6 @@ void parse_table(Parser & p, ostream & os, unsigned flags)
 			os << TAB;
 			p.skip_spaces();
 		}
-
-		else if (t.cs() == "tabularnewline" || t.cs() == "\\" ||
-		         t.cs() == "cr") {
-			if (t.cs() == "cr")
-				cerr << "Warning: Converting TeX '\\cr' to LaTeX '\\\\'."
-				     << endl;
-			// stuff before the line break
-			// and look ahead for stuff after the line break
-			os << HLINE << hlines << HLINE << LINE << read_hlines(p) << HLINE;
-			hlines.erase();
-		}
-
-		else if (t.cs() == "hline")
-			hlines += "\\hline";
-
-		else if (t.cs() == "cline")
-			hlines += "\\cline{" + p.verbatim_item() + '}';
 
 		else if (t.cat() == catComment)
 			os << t.asInput();
@@ -269,7 +492,8 @@ void parse_table(Parser & p, ostream & os, unsigned flags)
 			if (is_math_env(name)) {
 				parse_math(p, os, FLAG_END, MATH_MODE);
 			} else {
-				parse_table(p, os, FLAG_END);
+				parse_table(p, os, is_long_tabular, pos,
+				            FLAG_END);
 			}
 			os << "\\end{" << name << '}';
 			active_environments.pop_back();
@@ -290,6 +514,16 @@ void parse_table(Parser & p, ostream & os, unsigned flags)
 		else
 			os << t.asInput();
 	}
+
+	// We can have comments if the last line is incomplete
+	os << comments;
+
+	// We can have hline stuff if the last line is incomplete
+	if (!hlines.empty()) {
+		// this does not work in LaTeX, so we ignore it
+		cerr << "Ignoring '" << hlines << "' at end of tabular"
+		     << endl;
+	}
 }
 
 
@@ -309,27 +543,33 @@ void handle_hline_below(RowInfo & ri, vector<CellInfo> & ci)
 }
 
 
-void handle_tabular(Parser & p, ostream & os,
+} // anonymous namespace
+
+
+void handle_tabular(Parser & p, ostream & os, bool is_long_tabular,
 		    Context & context)
 {
 	string posopts = p.getOpt();
-	if (!posopts.empty())
-		cerr << "vertical tabular positioning '" << posopts << "' ignored\n";
+	if (!posopts.empty()) {
+		if (is_long_tabular)
+			cerr << "horizontal longtable";
+		else
+			cerr << "vertical tabular";
+		cerr << " positioning '" << posopts << "' ignored\n";
+	}
 
 	vector<ColInfo>            colinfo;
 
 	// handle column formatting
 	handle_colalign(p, colinfo);
 
-	// handle initial hlines
-
 	// first scan of cells
 	// use table mode to keep it minimal-invasive
 	// not exactly what's TeX doing...
 	vector<string> lines;
 	ostringstream ss;
-	ss << read_hlines(p) << HLINE; // handle initial hlines
-	parse_table(p, ss, FLAG_END);
+	RowPosition rowpos = ROW_START;
+	parse_table(p, ss, is_long_tabular, rowpos, FLAG_END);
 	split(ss.str(), lines, LINE);
 
 	vector< vector<CellInfo> > cellinfo(lines.size());
@@ -348,8 +588,10 @@ void handle_tabular(Parser & p, ostream & os,
 		split(lines[row], dummy, HLINE);
 
 		// handle horizontal line fragments
+		// we do only expect this for a last line without '\\'
 		if (dummy.size() != 3) {
-			if (dummy.size() != 1)
+			if ((dummy.size() != 1 && dummy.size() != 2) ||
+			    row != rowinfo.size() - 1)
 				cerr << "unexpected dummy size: " << dummy.size()
 					<< " content: " << lines[row] << "\n";
 			dummy.resize(3);
@@ -392,17 +634,17 @@ void handle_tabular(Parser & p, ostream & os,
 					if (from >= colinfo.size()) {
 						cerr << "cline starts at non "
 						        "existing column "
-						     << from << endl;
+						     << (from + 1) << endl;
 						from = colinfo.size() - 1;
 					}
-					size_t to = string2int(t[1]);
+					size_t to = string2int(t[1]) - 1;
 					if (to >= colinfo.size()) {
 						cerr << "cline ends at non "
 						        "existing column "
-						     << to << endl;
+						     << (to + 1) << endl;
 						to = colinfo.size() - 1;
 					}
-					for (size_t col = from; col < to; ++col) {
+					for (size_t col = from; col <= to; ++col) {
 						//cerr << "row: " << row << " col: " << col << " i: " << i << endl;
 						if (i == 0) {
 							rowinfo[row].topline = true;
@@ -412,6 +654,49 @@ void handle_tabular(Parser & p, ostream & os,
 							cellinfo[row][col].bottomline = true;
 						}
 					}
+				} else if (t.cs() == "endhead") {
+					if (i > 0)
+						rowinfo[row].type = LT_HEAD;
+					for (int r = row - 1; r >= 0; --r) {
+						if (rowinfo[r].type != LT_NORMAL)
+							break;
+						rowinfo[r].type = LT_HEAD;
+					}
+				} else if (t.cs() == "endfirsthead") {
+					if (i > 0)
+						rowinfo[row].type = LT_FIRSTHEAD;
+					for (int r = row - 1; r >= 0; --r) {
+						if (rowinfo[r].type != LT_NORMAL)
+							break;
+						rowinfo[r].type = LT_FIRSTHEAD;
+					}
+				} else if (t.cs() == "endfoot") {
+					if (i > 0)
+						rowinfo[row].type = LT_FOOT;
+					for (int r = row - 1; r >= 0; --r) {
+						if (rowinfo[r].type != LT_NORMAL)
+							break;
+						rowinfo[r].type = LT_FOOT;
+					}
+				} else if (t.cs() == "endlastfoot") {
+					if (i > 0)
+						rowinfo[row].type = LT_LASTFOOT;
+					for (int r = row - 1; r >= 0; --r) {
+						if (rowinfo[r].type != LT_NORMAL)
+							break;
+						rowinfo[r].type = LT_LASTFOOT;
+					}
+				} else if (t.cs() == "newpage") {
+					if (i == 0) {
+						if (row > 0)
+							rowinfo[row - 1].newpage = true;
+						else
+							cerr << "Ignoring "
+							        "'\\newpage' "
+							        "before rows."
+							     << endl;
+					} else
+						rowinfo[row].newpage = true;
 				} else {
 					cerr << "unexpected line token: " << t << endl;
 				}
@@ -498,33 +783,38 @@ void handle_tabular(Parser & p, ostream & os,
 	//cerr << "// output what we have\n";
 	// output what we have
 	os << "\n<lyxtabular version=\"3\" rows=\"" << rowinfo.size()
-		 << "\" columns=\"" << colinfo.size() << "\">\n"
-		 << "<features>\n";
+	   << "\" columns=\"" << colinfo.size() << "\">\n";
+	os << "<features"
+	   << write_attribute("islongtable", is_long_tabular)
+	   << ">\n";
 
 	//cerr << "// after header\n";
 	for (size_t col = 0; col < colinfo.size(); ++col) {
 		os << "<column alignment=\""
-		   << verbose_align(colinfo[col].align) << "\"";
-		os << " valignment=\"top\"";
-		if (colinfo[col].leftline)
-			os << " leftline=\"true\"";
-		if (colinfo[col].rightline)
-			os << " rightline=\"true\"";
-		if (!colinfo[col].width.empty())
-			os << " width=\"" << colinfo[col].width << "\"";
-		if (!colinfo[col].special.empty())
-			os << " special=\"" << colinfo[col].special << "\"";
-		os << ">\n";
+		   << verbose_align(colinfo[col].align) << "\""
+		   << " valignment=\"top\""
+		   << write_attribute("leftline", colinfo[col].leftline)
+		   << write_attribute("rightline", colinfo[col].rightline)
+		   << write_attribute("width", colinfo[col].width)
+		   << write_attribute("special", colinfo[col].special)
+		   << ">\n";
 	}
 	//cerr << "// after cols\n";
 
 	for (size_t row = 0; row < rowinfo.size(); ++row) {
-		os << "<row";
-		if (rowinfo[row].topline)
-			os << " topline=\"true\"";
-		if (rowinfo[row].bottomline)
-			os << " bottomline=\"true\"";
-		os << ">\n";
+		os << "<row"
+		   << write_attribute("topline", rowinfo[row].topline)
+		   << write_attribute("bottomline", rowinfo[row].bottomline)
+		   << write_attribute("endhead",
+		                      rowinfo[row].type == LT_HEAD)
+		   << write_attribute("endfirsthead",
+		                      rowinfo[row].type == LT_FIRSTHEAD)
+		   << write_attribute("endfoot",
+		                      rowinfo[row].type == LT_FOOT)
+		   << write_attribute("endlastfoot",
+		                      rowinfo[row].type == LT_LASTFOOT)
+		   << write_attribute("newpage", rowinfo[row].newpage)
+		   << ">\n";
 		for (size_t col = 0; col < colinfo.size(); ++col) {
 			CellInfo const & cell = cellinfo[row][col];
 			os << "<cell";
@@ -532,15 +822,11 @@ void handle_tabular(Parser & p, ostream & os,
 				os << " multicolumn=\"" << cell.multi << "\"";
 			os << " alignment=\"" << verbose_align(cell.align)
 			   << "\""
-			   << " valignment=\"top\"";
-			if (cell.topline)
-				os << " topline=\"true\"";
-			if (cell.bottomline)
-				os << " bottomline=\"true\"";
-			if (cell.leftline)
-				os << " leftline=\"true\"";
-			if (cell.rightline)
-				os << " rightline=\"true\"";
+			   << " valignment=\"top\""
+			   << write_attribute("topline", cell.topline)
+			   << write_attribute("bottomline", cell.bottomline)
+			   << write_attribute("leftline", cell.leftline)
+			   << write_attribute("rightline", cell.rightline);
 			//cerr << "\nrow: " << row << " col: " << col;
 			//if (cell.topline)
 			//	cerr << " topline=\"true\"";

@@ -651,10 +651,10 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 		end_inset(os);
 	}
 
-	else if (name == "tabular") {
+	else if (name == "tabular" || name == "longtable") {
 		parent_context.check_layout(os);
 		begin_inset(os, "Tabular ");
-		handle_tabular(p, os, parent_context);
+		handle_tabular(p, os, name == "longtable", parent_context);
 		end_inset(os);
 	}
 

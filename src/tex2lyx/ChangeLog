@@ -1,3 +1,17 @@
+2004-12-15  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* table.C (ColInfo, LTRowType, RowInfo, CellInfo, verbose_align):
+	new, extended from math_gridinfo.h and tabular.h
+	* table.C (write_attribute): new, from tabular.C
+	* table.C (read_hlines): remove
+	* table.C (parse_hlines): new
+	* table.C (RowPosition): new
+	* table.C (parse_table): handle comments in hlines
+	* table.C (parse_table, handle_tabular): add longtable support
+	* table.C (handle_tabular): fix "unexpected dummy size" error message
+	* table.C (handle_tabular): fix off by one error for clines
+	* text.C (parse_environment): add longtable support
+
 2004-12-14  Angus Leeming  <leeming@lyx.org>
 
 	* tex2lyx.C (main): no longer pass pointers to os::init.

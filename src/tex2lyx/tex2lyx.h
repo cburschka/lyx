@@ -47,7 +47,8 @@ void parse_math(Parser & p, std::ostream & os, unsigned flags, mode_type mode);
 
 
 /// in table.C
-void handle_tabular(Parser & p, std::ostream & os, Context & context);
+void handle_tabular(Parser & p, std::ostream & os, bool is_long_tabular,
+                    Context & context);
 
 
 /// in tex2lyx.C
