@@ -1,3 +1,23 @@
+2004-11-24  Alfredo Braunstein  <abraunst@lyx.org>
+
+	* BufferView.C:
+	* BufferView_pimpl.C:
+	* CutAndPaste.C:
+	* FontIterator.C:
+	* buffer.C:
+	* cursor.C:
+	* cursor_slice.[Ch]:
+	* dociterator.[Ch]:
+	* lyxfind.C:
+	* paragraph_funcs.C:
+	* pariterator.C:
+	* rowpainter.C:
+	* text.C:
+	* text2.C:
+	* text3.C:
+	* undo.C: par->pit renaming
+
+
 2004-11-23  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
 	* tabular.C (cellstruct): use initialization, store a shared_ptr
