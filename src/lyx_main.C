@@ -477,7 +477,8 @@ void LyX::init(bool gui)
 		lyxrc.print();
 
 	os::cygwin_path_fix(lyxrc.cygwin_path_fix);
-	prependEnvPath("PATH", lyxrc.path_prefix);
+	if (!lyxrc.path_prefix.empty())
+		prependEnvPath("PATH", lyxrc.path_prefix);
 
 	// Having reset the PATH we're now in a position to run configure
 	// if necessary.
