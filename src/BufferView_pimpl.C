@@ -776,7 +776,21 @@ void BufferView::Pimpl::workAreaButtonRelease(int x, int y,
 		// Inset like error, notes and figures
 		selection_possible = false;
 
+		// if we reach this point with a selection, it
+		// must mean we are currently selecting.
+		// But we don't want to open the inset
+		// because that is annoying for the user. 
+		// So just pretend we didn't hit it.
+		// this is OK because a "kosher" ButtonRelease
+		// will follow a ButtonPress that clears
+		// the selection.
+		// Note this also fixes selection drawing
+		// problems if we end up opening an inset
+		if (bv_->getLyXText()->selection.set())
+			return;
+ 
 		// CHECK fix this proper in 0.13
+		// well, maybe 13.0 !!!!!!!!!
 
 		// Following a ref shouldn't issue
 		// a push on the undo-stack
@@ -810,6 +824,7 @@ void BufferView::Pimpl::workAreaButtonRelease(int x, int y,
 
 #ifdef WITH_WARNINGS
 #warning variable c is set but never used. What is it good for?? (JMarc)
+#warning isnt this code dead ?? "open a float" ??? (jbl)
 #endif
 	// check whether we want to open a float
 	if (bv_->text) {

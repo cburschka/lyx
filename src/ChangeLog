@@ -1,3 +1,8 @@
+2001-12-01  John Levon  <moz@compsoc.man.ac.uk>
+
+	* BufferView_pimpl.C: refuse to open an inset when
+	there's a selection.
+
 2001-11-30  Juergen Vigna  <jug@sad.it>
 
 	* tabular.C (LyXTabular): add a same_id to set the same id's in the
