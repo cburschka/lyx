@@ -220,7 +220,7 @@ ButtonPolicy::SMInput FormRef::input(FL_OBJECT * ob, long)
 		if (ob == dialog_->button_update ||
 		    ob == dialog_->choice_buffer) {
 			string const name =
-				frontStrip(strip(fl_get_choice_text(dialog_->choice_buffer)));
+				controller().getBufferName(fl_get_choice(dialog_->choice_buffer) - 1);
 			refs_ = controller().getLabelList(name);
 		}
 

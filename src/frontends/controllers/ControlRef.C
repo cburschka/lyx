@@ -87,3 +87,8 @@ int ControlRef::getBufferNum() const
 		return 0;
 	return cit - buffers.begin();
 }
+
+string const ControlRef::getBufferName(int num) const
+{
+	return bufferlist.getFileNames()[num];
+}

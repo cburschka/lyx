@@ -38,7 +38,8 @@ public:
 	std::vector<string> const getBufferList() const;
 	///
 	int getBufferNum() const;
-
+	///
+	string const getBufferName(int num) const;
 private:
 	/** disconnect from the inset when the Apply button is pressed.
 	 Allows easy insertion of multiple references. */

@@ -1,3 +1,7 @@
+2002-02-06  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* lyxfunc.C (getStatus): fix status message for disabled commands. 
+
 2002-02-01  John Levon  <moz@compsoc.man.ac.uk>
 
 	* BufferView_pimpl.C: fix crash on close buffer 

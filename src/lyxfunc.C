@@ -357,6 +357,9 @@ FuncStatus LyXFunc::getStatus(kb_action action,
 		setStatusMessage(N_("Unknown action"));
 		return flag.unknown(true);
 	}
+
+	// the default error message if we disable the command
+	setStatusMessage(N_("Command disabled"));
 	
 	// Check whether we need a buffer
 	if (!lyxaction.funcHasFlag(action, LyXAction::NoBuffer)) {
