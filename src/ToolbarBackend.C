@@ -69,7 +69,7 @@ void ToolbarBackend::read(LyXLex & lex)
 
 	Toolbar tb;
 	tb.name = lex.getString();
-	
+
 	bool quit = false;
 
 	lex.pushTable(toolTags, TO_LAST - 1);

@@ -35,34 +35,36 @@ using std::endl;
 using std::pair;
 using std::make_pair;
 using std::for_each;
+using std::vector;
 
 using lyx::pos_type;
 using lyx::textclass_type;
 
-// Jürgen, note that this means that you cannot currently have a list
-// of selections cut/copied. So IMHO later we should have a
-// list/vector/deque that we could store
-// struct selection_item {
-//       ParagraphList copy_pars;
-//       LyXTextClassList::size_type textclass;
-// };
-// in and some method of choosing beween them (based on the first few chars
-// in the selection probably.) This would be a nice feature and quite
-// easy to implement. (Lgb)
-//
-// Sure but I just cleaned up this code for now with the same functionality
-// as before. I also want to add a XClipboard function so that we can copy
-// text from LyX to some other X-application in the form of ASCII or in the
-// form of LaTeX (or Docbook depending on the document-class!). Think how nice
-// it could be to select a math-inset do a "Copy to X-Clipboard as LaTeX" and
-// then do a middle mouse button click in the application you want and have
-// the whole formula there in LaTeX-Code. (Jug)
+
+typedef limited_stack<pair<ParagraphList, textclass_type> > CutStack;
 
 namespace {
 
-limited_stack<pair<ParagraphList, textclass_type> > cuts(10);
+CutStack cuts(10);
 
 } // namespace anon
+
+vector<string>
+CutAndPaste::availableSelections(Buffer const & buffer)
+{
+	vector<string> selList;
+
+	CutStack::const_iterator cit = cuts.begin();
+	CutStack::const_iterator end = cuts.end();
+	for (; cit != end; ++cit) {
+		ParagraphList const & pars = cit->first;
+		string asciiPar(pars.front().asString(&buffer, false), 0, 25);
+		selList.push_back(asciiPar);
+	}
+
+	return selList;
+}
+
 
 PitPosPair CutAndPaste::cutSelection(BufferParams const & params,
 				     ParagraphList & pars,
@@ -201,6 +203,7 @@ CutAndPaste::pasteSelection(Buffer const & buffer,
 {
 	return pasteSelection(buffer, pars, pit, pos, tc, 0, errorlist);
 }
+
 
 pair<PitPosPair, ParagraphList::iterator>
 CutAndPaste::pasteSelection(Buffer const & buffer,

@@ -418,7 +418,7 @@ public:
 	///
 	void copySelection();
 	///
-	void pasteSelection();
+	void pasteSelection(size_t sel_index = 0);
 
 	/** the DTP switches for paragraphs. LyX will store the top settings
 	 always in the first physical paragraph, the bottom settings in the

@@ -26,6 +26,7 @@ public:
 	typedef std::deque<T> container_type;
 	typedef typename container_type::value_type value_type;
 	typedef typename container_type::size_type size_type;
+	typedef typename container_type::const_iterator const_iterator;
 
 	/// limit is the maximum size of the stack
 	limited_stack(size_type limit = 100) {
@@ -70,6 +71,15 @@ public:
 	size_type size() const {
 		return c_.size();
 	}
+
+	const_iterator begin() const {
+		return c_.begin();
+	}
+
+	const_iterator end() const {
+		return c_.end();
+	}
+
 private:
 	/// Internal contents.
 	container_type c_;

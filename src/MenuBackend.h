@@ -62,7 +62,10 @@ public:
 		FloatListInsert,
 		/** This is the list of floats that we can
 		    insert. */
-		FloatInsert
+		FloatInsert,
+		/** This is the list of selections that can
+		    be pasted. */
+		PasteRecent
 	};
 	/// Create a Command type MenuItem
 	MenuItem(Kind kind,
@@ -183,9 +186,9 @@ public:
 	///
 	bool hasMenu(string const &) const;
 	///
-	Menu & getMenu (string const &);
+	Menu & getMenu(string const &);
 	///
-	Menu const & getMenu (string const &) const;
+	Menu const & getMenu(string const &) const;
 	///
 	Menu const & getMenubar() const;
 	///

@@ -1250,7 +1250,14 @@ Inset::RESULT InsetText::localDispatch(FuncRequest const & cmd)
 			}
 		}
 
-		lt->pasteSelection();
+		size_t sel_index = 0;
+		string const & arg = cmd.argument;
+		if (isStrUnsignedInt(arg)) {
+			size_t const paste_arg = strToUnsignedInt(arg);
+#warning FIXME Check if the arg is in the domain of available selections.
+			sel_index = paste_arg;
+		}
+		lt->pasteSelection(sel_index);
 		// bug 393
 		lt->clearSelection();
 		updwhat = CURSOR_PAR;

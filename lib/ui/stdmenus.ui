@@ -70,6 +70,7 @@ Menuset
 		Item "Cut" "cut"
 		Item "Copy" "copy"
 		Item "Paste" "paste"
+		Submenu "Paste Recent" "pasterecent"
 		Item "Find & Replace...|F" "find-replace"
 		Separator
 		Item "Text Style...|S" "layout-character"
@@ -95,6 +96,10 @@ Menuset
 # This is in the Table submenu instead for now.
 #	OptItem "Table Settings...|a" "inset-settings tabular"
 		OptItem "Table Settings...|a" "layout-tabular"
+	End
+
+	Menu "pasterecent"
+		PasteRecent
 	End
 
 # not much we can do to help here

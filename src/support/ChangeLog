@@ -1,3 +1,8 @@
+2003-06-17  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* limited_stack.h: make it have a const_iterator, add begin, and
+	end as interface.
+
 2003-06-10  Angus Leeming  <leeming@lyx.org>
 
 	* filetools.C (copyFileToDir): ensure that temp files have unique names.

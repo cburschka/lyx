@@ -15,6 +15,8 @@
 #include "support/types.h"
 #include "ParagraphList.h"
 
+#include <vector>
+
 class Paragraph;
 class BufferParams;
 class LyXTextClass;
@@ -22,6 +24,11 @@ class ErrorList;
 
 ///
 namespace CutAndPaste {
+
+///
+std::vector<string>
+CutAndPaste::availableSelections(Buffer const & buffer);
+
 ///
 PitPosPair cutSelection(BufferParams const & params,
 			ParagraphList & pars,

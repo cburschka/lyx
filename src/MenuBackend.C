@@ -27,6 +27,7 @@
 #include "importer.h"
 #include "FloatList.h"
 #include "toc.h"
+#include "CutAndPaste.h"
 #include "frontends/LyXView.h"
 #include "support/LAssert.h"
 #include "support/filetools.h"
@@ -65,6 +66,7 @@ MenuItem::MenuItem(Kind kind, string const & label,
 	case ImportFormats:
 	case FloatListInsert:
 	case FloatInsert:
+	case PasteRecent:
 		break;
 	case Command:
 		action_ = lyxaction.LookupFunc(command);
@@ -199,6 +201,7 @@ Menu & Menu::read(LyXLex & lex)
 		md_viewformats,
 		md_floatlistinsert,
 		md_floatinsert,
+		md_pasterecent,
 		md_last
 	};
 
@@ -213,6 +216,7 @@ Menu & Menu::read(LyXLex & lex)
 		{ "lastfiles", md_lastfiles },
 		{ "optitem", md_optitem },
 		{ "optsubmenu", md_optsubmenu },
+		{ "pasterecent", md_pasterecent },
 		{ "separator", md_separator },
 		{ "submenu", md_submenu },
 		{ "toc", md_toc },
@@ -281,6 +285,10 @@ Menu & Menu::read(LyXLex & lex)
 
 		case md_floatinsert:
 			add(MenuItem(MenuItem::FloatInsert));
+			break;
+
+		case md_pasterecent:
+			add(MenuItem(MenuItem::PasteRecent));
 			break;
 
 		case md_optsubmenu:
@@ -607,6 +615,22 @@ void expandToc(Menu & tomenu, LyXView const * view)
 }
 
 
+void expandPasteRecent(Menu & tomenu, LyXView const * view)
+{
+	vector<string> const selL =
+		CutAndPaste::availableSelections(*view->buffer());
+	
+	vector<string>::const_iterator cit = selL.begin();
+	vector<string>::const_iterator end = selL.end();
+	
+	for (unsigned int index = 0; cit != end; ++cit, ++index) {
+		int const action = lyxaction.getPseudoAction(LFUN_PASTE,
+							     tostr(index));
+		tomenu.add(MenuItem(MenuItem::Command, *cit, action));
+	}
+}
+
+
 } // namespace anon
 
 
@@ -637,6 +661,10 @@ void MenuBackend::expand(Menu const & frommenu, Menu & tomenu,
 
 		case MenuItem::FloatInsert:
 			expandFloatInsert(tomenu, view);
+			break;
+
+		case MenuItem::PasteRecent:
+			expandPasteRecent(tomenu, view);
 			break;
 
 		case MenuItem::Toc:

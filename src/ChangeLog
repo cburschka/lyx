@@ -1,3 +1,27 @@
+2003-06-17  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* text3.C (dispatch): handle arg to LFUN_PASTE, call
+	pasteSelection with index
+
+	* text2.C (pasteSelection): modify, call pasteSelection with index
+
+	* paragraph.C (asString): reimplement version with no interval to
+	call the one with interval.
+
+	* lyxtext.h: add index arg to pasteSelection
+
+	* MenuBackend.C (MenuItem): handle PasteRecent
+	(Menu::read::Menutags): add md_pasterecent
+	(read): handle it
+	(expandPasteRecent): new function
+	(expand): use it
+
+	* MenuBackend.h: add PasteRecent to MenuItem::Kind
+
+	* CutAndPaste.C: get rid of some stale comments. Add typdefe for
+	the limited stack
+	(availableSelections): new function
+
 2003-06-17  Angus Leeming  <leeming@lyx.org>
 
 	* lyxfunc.C (dispatch): s/showMathPanel/show("mathpanel")/
@@ -3019,7 +3043,7 @@
 	* lyxtext.h:
 	* text.C: implement accept/rejectChange()
 
-	* lyxtext.h: 
+	* lyxtext.h:
 	* text.C: paint changebars. Paint new/deleted text in the chosen
 	colours. Strike through deleted text.
 

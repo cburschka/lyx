@@ -1192,6 +1192,7 @@ bool Paragraph::isMultiLingual(BufferParams const & bparams)
 // Used for building the table of contents
 string const Paragraph::asString(Buffer const * buffer, bool label) const
 {
+#if 0
 	string s;
 	if (label && !params().labelString().empty())
 		s += params().labelString() + ' ';
@@ -1209,6 +1210,11 @@ string const Paragraph::asString(Buffer const * buffer, bool label) const
 	}
 
 	return s;
+#else
+	// This should really be done by the caller and not here.
+	string ret(asString(buffer, 0, size(), label));
+	return subst(ret, '\n', ' ');
+#endif
 }
 
 

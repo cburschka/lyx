@@ -27,6 +27,7 @@
 #include "box.h"
 #include "language.h"
 #include "support/tostr.h"
+#include "support/lstrings.h"
 #include "frontends/LyXView.h"
 #include "frontends/screen.h"
 #include "frontends/Dialogs.h"
@@ -1020,17 +1021,25 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 		update();
 		break;
 
-	case LFUN_PASTE:
+	case LFUN_PASTE: {
 		cmd.message(_("Paste"));
 		// clear the selection
 		bv->toggleSelection();
 		clearSelection();
 		update();
-		pasteSelection();
+		size_t sel_index = 0;
+		string const & arg = cmd.argument;
+		if (isStrUnsignedInt(arg)) {
+			size_t const paste_arg = strToUnsignedInt(arg);
+#warning FIXME Check if the arg is in the domain of available selections.
+			sel_index = paste_arg;
+		}
+		pasteSelection(sel_index);
 		clearSelection(); // bug 393
 		update();
 		bv->switchKeyMap();
 		break;
+	}
 
 	case LFUN_CUT:
 		update();

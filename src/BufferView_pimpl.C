@@ -861,7 +861,7 @@ void BufferView::Pimpl::trackChanges()
 
 	if (!tracking) {
 		ParIterator const end = buf->par_iterator_end();
-		for (ParIterator it = buf->par_iterator_begin(); it != end; ++it) 
+		for (ParIterator it = buf->par_iterator_begin(); it != end; ++it)
 			it->trackChanges();
 		buf->params.tracking_changes = true;
 

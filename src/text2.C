@@ -1394,7 +1394,7 @@ void LyXText::copySelection()
 }
 
 
-void LyXText::pasteSelection()
+void LyXText::pasteSelection(size_t sel_index)
 {
 	// this does not make sense, if there is nothing to paste
 	if (!CutAndPaste::checkPastePossible())
@@ -1412,7 +1412,7 @@ void LyXText::pasteSelection()
 					    ownerParagraphs(),
 					    cursor.par(), cursor.pos(),
 					    bv()->buffer()->params.textclass,
-					    el);
+					    sel_index, el);
 	bv()->setErrorList(el);
 	bv()->showErrorList(_("Paste"));
 
