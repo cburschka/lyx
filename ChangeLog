@@ -1,3 +1,9 @@
+2005-02-23  Angus Leeming  <leeming@lyx.org>
+
+	* autogen.sh: test for automake >= 1.5 and for gettext >= 0.12.
+
+	* INSTALL: document these requirements.
+
 2005-02-09  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* Makefile.am: remove hack for making bindist work with autoconf

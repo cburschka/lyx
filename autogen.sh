@@ -6,12 +6,59 @@ AUTOMAKE="automake -a -c --foreign"
 AUTOCONF="autoconf"
 ACINCLUDE_FILES="lyxinclude.m4 libtool.m4 xforms.m4 qt.m4 gtk--.m4 gnome--.m4 gnome.m4 aspell.m4 pspell.m4 cygwin.m4 pkg.m4"
 
-# Discover what version of autoconf we are using.
-autoversion=`$AUTOCONF --version | head -n 1`
+# Discover what version of gettext we are using.
+gettext_version=`gettext --version 2>/dev/null | head -n 1`
 
-echo "Using $autoversion"
+test "$gettext_version" != "" && {
+    echo "Using $gettext_version"
+} || {
+    echo "LyX requires getttext >= 0.12"
+    exit
+}
+
+case $gettext_version in
+    *' '0.1[2-4]*)
+	;;
+    *)
+	echo "This gettext version is not supported by LyX."
+	echo "LyX supports only gettext 0.1[2-4]."
+	exit
+	;;
+esac
+
+# Discover what version of automake we are using.
+automake_version=`$AUTOMAKE --version 2>/dev/null | head -n 1`
+
+test "$automake_version" != "" && {
+    echo "Using $automake_version"
+} || {
+    echo "LyX requires automake >= 1.5"
+    exit
+}
+
+case $automake_version in
+    *' '1.[5-7]*)
+	;;
+    *)
+    
+	echo "This automake version is not supported by LyX."
+        echo "LyX only supports automake 1.[5-7]."
+        exit
+        ;;
+esac
+							
+# Discover what version of autoconf we are using.
+autoversion=`$AUTOCONF --version 2>/dev/null | head -n 1`
+
+test "$autoversion" != "" && {
+    echo "Using $autoversion"
+} || {
+    echo "LyX requires autoconf >= 2.52"
+    exit
+}
+	    
 case $autoversion in
-    *2.5[2-9])
+    *' '2.5[2-9])
 	EXTRA_ACINCLUDE_FILES="lyxinclude25x.m4"
 	;;
     *)
