@@ -13,27 +13,25 @@
 #define INSETTEXT_H
 
 #include "updatableinset.h"
-#include "support/std_string.h"
 #include "LColor.h"
 #include "ParagraphList_fwd.h"
 #include "RowList_fwd.h"
-#include "dimension.h"
 #include "lyxtext.h"
 
 #include "support/types.h"
 
 #include "frontends/mouse_state.h"
 
-#include <boost/shared_ptr.hpp>
+#include "support/std_string.h"
 
-class Painter;
-class BufferView;
 class Buffer;
 class BufferParams;
+class BufferView;
+class Dimension;
 class LyXCursor;
-class LyXText;
-class Row;
+class Painter;
 class Paragraph;
+class Row;
 
 /**
  A text inset is like a TeX box to write full text

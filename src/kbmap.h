@@ -14,11 +14,11 @@
 #ifndef KBMAP_H
 #define KBMAP_H
 
-#include "support/std_string.h"
 #include "frontends/key_state.h"
 
 #include <boost/shared_ptr.hpp>
 
+#include "support/std_string.h"
 #include <vector>
 
 class kb_sequence;

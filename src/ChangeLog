@@ -1,7 +1,24 @@
 2003-09-07  Angus Leeming  <leeming@lyx.org>
 
+	* vspace.[Ch] (length): returns a const & to a LyXGlueLength.
+
 	* converter.h: forward declare LatexRunParams.
-	* encoding.h: remove #include "lyxrc.h"
+	* encoding.h: remove #include "lyxrc.h".
+	* lyxtext.h: remove #include "LColor.h".
+	* lyxtextclass.h: remove #include "support/types.h".
+	* trans.h: remove #include "tex-accent.h".
+	* trans_mgr.h: remove #include "tex-accent.h".
+	* insets/inset.h: remove #include "support/types.h", <vector>.
+	* insets/insetcollapsable.h: remove #include "LColor.h".
+	* insets/insetinclude.h: remove #include "dimension.h".
+	* insets/insetlatexaccent.h: remove #include "dimension.h".
+	* insets/insetoptarg.h:: remove #include "insettext.h".
+	* insets/insettext.h: remove #include "dimension.h", <boost/shared_ptr.hpp>
+
+	* insets/renderers.h: add #include "dimension.h".
+	* insets/updatableinset.h: add #include "support/types.h".
+
+	* many .C files: Associated changes.
 
 2003-09-06  Angus Leeming  <leeming@lyx.org>
 
@@ -14,7 +31,7 @@
 2003-09-06  Angus Leeming  <leeming@lyx.org>
 
 	* ParagraphParameters.h: forward declare ParameterStruct rather than
-	'including the its file.
+	including its header file.
 	(depth): moved out-of-line.
 
 2003-09-06  Angus Leeming  <leeming@lyx.org>

@@ -5,7 +5,7 @@
  *
  * \file ControlShowFile.h
  *
- * \author Herbert Voss
+ * \author Herbert Voﬂ
  *
  * Full author contact details are available in file CREDITS.
  */

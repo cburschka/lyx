@@ -25,6 +25,8 @@
 
 #include "insets/insetquotes.h"
 
+#include "support/types.h"
+
 #include <boost/array.hpp>
 
 #include "support/std_string.h"

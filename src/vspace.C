@@ -370,7 +370,7 @@ VSpace::vspace_kind VSpace::kind() const
 }
 
 
-LyXGlueLength VSpace::length() const
+LyXGlueLength const & VSpace::length() const
 {
 	return len_;
 }

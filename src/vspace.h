@@ -48,7 +48,7 @@ public:
 	/// return the type of vertical space
 	vspace_kind kind() const;
 	/// return the length of this space
-	LyXGlueLength length() const;
+	LyXGlueLength const & length() const;
 
 	// a flag that switches between \vspace and \vspace*
 	bool keep() const;

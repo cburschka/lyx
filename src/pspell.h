@@ -13,9 +13,9 @@
 #ifndef LYX_PSPELL_H
 #define LYX_PSPELL_H
 
-#include <map>
-
 #include "SpellBase.h"
+
+#include <map>
 
 class PspellManager;
 class PspellStringEmulation;

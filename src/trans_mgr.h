@@ -14,9 +14,8 @@
 #ifndef TRANS_MANAGER_H
 #define TRANS_MANAGER_H
 
-#include "tex-accent.h"
-#include "trans_decl.h"
 #include "chset.h"
+#include "trans_decl.h"
 #include "support/std_string.h"
 
 class LyXText;

@@ -5,7 +5,7 @@
  *
  * \author Angus Leeming
  * \author John Levon
- * \author Herbert Voss
+ * \author Herbert Voﬂ
  * \author Rob Lahaye
  *
  * Full author contact details are available in file CREDITS.

@@ -16,8 +16,9 @@
 #define PARAGRAPH_PIMPL_H
 
 #include "paragraph.h"
-#include "ParagraphParameters.h"
+
 #include "changes.h"
+#include "ParagraphParameters.h"
 
 #include <boost/scoped_ptr.hpp>
 

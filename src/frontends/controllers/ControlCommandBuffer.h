@@ -5,7 +5,7 @@
  * Licence details can be found in the file COPYING.
  *
  * \author Lars
- * \author Asger and Juergen
+ * \author Asger and Jürgen
  * \author John Levon
  *
  * Full author contact details are available in file CREDITS.

@@ -12,12 +12,11 @@
 #ifndef RENDERERS_H
 #define RENDERERS_H
 
-#include "dimension.h"
 #include "box.h"
+#include "dimension.h"
 
 #include "graphics/GraphicsLoader.h"
 #include "graphics/GraphicsParams.h"
-#include "graphics/GraphicsTypes.h"
 
 #include <boost/weak_ptr.hpp>
 #include <boost/signals/signal0.hpp>

@@ -13,12 +13,12 @@
 #define INSET_INCLUDE_H
 
 #include "insetcommand.h"
-#include "dimension.h"
 #include "renderers.h"
 #include <boost/scoped_ptr.hpp>
 
 
 class Buffer;
+class Dimension;
 struct LaTeXFeatures;
 
 // Created by AAS 970521

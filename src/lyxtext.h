@@ -14,28 +14,28 @@
 #ifndef LYXTEXT_H
 #define LYXTEXT_H
 
-#include "lyxfont.h"
-#include "layout.h"
-#include "LColor.h"
-#include "insets/inset.h"
-#include "RowList_fwd.h"
-#include "ParagraphList_fwd.h"
 #include "bufferview_funcs.h"
+#include "layout.h"
+#include "lyxfont.h"
+#include "ParagraphList_fwd.h"
+#include "RowList_fwd.h"
 #include "textcursor.h"
+
+#include "insets/inset.h"
 
 class Buffer;
 class BufferParams;
 class BufferView;
+class Dimension;
 class InsetText;
 class LyXCursor;
+class MetricsInfo;
 class Paragraph;
 class Row;
 class Spacing;
 class UpdatableInset;
 class VSpace;
 class WordLangTuple;
-class MetricsInfo;
-class Dimension;
 
 
 /**

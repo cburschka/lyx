@@ -13,9 +13,9 @@
 #ifndef TRANS_DECL_H
 #define TRANS_DECL_H
 
-#include "support/std_string.h"
 #include "tex-accent.h"
 
+#include "support/std_string.h"
 #include <list>
 
 

@@ -12,7 +12,7 @@
  * \author Jean-Marc Lasgouttes
  * \author Angus Leeming
  * \author John Levon
- * \author Herbert Voss
+ * \author Herbert Voﬂ
  *
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.

@@ -5,7 +5,7 @@
  *
  * \author John Levon
  * \author Edwin Leuven
- * \author Herbert Voss
+ * \author Herbert Voﬂ
  *
  * Full author contact details are available in file CREDITS.
  */

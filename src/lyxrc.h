@@ -21,7 +21,7 @@
 #include "paper.h"
 #include "graphics/GraphicsTypes.h"
 
-// #include <boost/utility.hpp>
+#include "support/std_string.h"
 
 /// This contains the runtime configuration of LyX
 class LyXRC //: public noncopyable {

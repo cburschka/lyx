@@ -17,17 +17,18 @@
 
 #include "kbsequence.h"
 #include "lfuns.h"
-#include "support/std_string.h"
 
 #include <boost/shared_ptr.hpp>
 #include <boost/signals/trackable.hpp>
 
+#include "support/std_string.h"
+
+class BufferView;
+class FuncRequest;
 class FuncStatus;
 class LyXKeySym;
-class LyXView;
 class LyXText;
-class FuncRequest;
-class BufferView;
+class LyXView;
 
 
 /** This class encapsulates all the LyX command operations.

@@ -15,25 +15,22 @@
 #ifndef INSETOLD_H
 #define INSETOLD_H
 
-#include "LColor.h"
 #include "insetbase.h"
 #include "dimension.h"
+#include "LColor.h"
 #include "ParagraphList_fwd.h"
-#include "support/types.h"
 
-#include <vector>
-
-class LyXFont;
 class Buffer;
-class Painter;
-class LatexRunParams;
-class LyXText;
-class LyXLex;
-class Paragraph;
-class LyXCursor;
 class FuncRequest;
-class WordLangTuple;
+class LatexRunParams;
+class LyXCursor;
+class LyXFont;
+class LyXLex;
+class LyXText;
+class Painter;
+class Paragraph;
 class UpdatableInset;
+class WordLangTuple;
 
 namespace lyx {
 namespace graphics {

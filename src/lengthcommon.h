@@ -15,8 +15,8 @@
 #ifndef LENGTH_COMMON_H
 #define LENGTH_COMMON_H
 
-#include "support/std_string.h"
 #include "lyxlength.h"
+#include "support/std_string.h"
 
 /// the number of units possible
 extern int const num_units;

@@ -15,8 +15,9 @@
 #ifndef INTL_H
 #define INTL_H
 
-#include "support/std_string.h"
 #include "trans_mgr.h"
+
+#include "support/std_string.h"
 
 
 /**

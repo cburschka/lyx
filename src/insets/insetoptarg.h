@@ -13,7 +13,6 @@
 #define INSETOPTARG_H
 
 
-#include "insettext.h"
 #include "insetcollapsable.h"
 
 

@@ -4,7 +4,7 @@
  * Licence details can be found in the file COPYING.
  *
  * \author Angus Leeming
- * \author Herbert Voss
+ * \author Herbert Voﬂ
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -25,10 +25,11 @@
 
 #include "insets/insetgraphics.h"
 
-#include "support/tostr.h"
-#include "support/filetools.h"
 #include "support/FileInfo.h"
+#include "support/filetools.h"
 #include "support/path_defines.h"
+#include "support/tostr.h"
+#include "support/types.h"
 
 using namespace lyx::support;
 

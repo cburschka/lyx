@@ -14,7 +14,9 @@
 
 #include "inset.h"
 #include "support/std_string.h"
-#include "dimension.h"
+
+class Dimension;
+
 
 /** Insertion of accents
 

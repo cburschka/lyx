@@ -22,6 +22,8 @@
 
 #include "inset.h"
 
+#include "support/types.h"
+
 
 /** Extracted from Matthias notes:
  *

@@ -11,13 +11,11 @@
 #define LYXTEXTCLASS_H
 
 #include "lyxlayout.h"
-#include "support/std_string.h"
 #include "lyxlayout_ptr_fwd.h"
-
-#include "support/types.h"
 
 #include <boost/shared_ptr.hpp>
 
+#include "support/std_string.h"
 #include <vector>
 
 class LyXLex;

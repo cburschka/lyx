@@ -14,11 +14,11 @@
 #ifndef TRANS_H
 #define TRANS_H
 
+#include "trans_decl.h"
+
+#include "support/std_string.h"
 #include <map>
 
-#include "tex-accent.h"
-#include "support/std_string.h"
-#include "trans_decl.h"
 
 class LyXLex;
 
