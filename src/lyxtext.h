@@ -59,7 +59,7 @@ public:
 	/// sets inset as owner
 	LyXText(BufferView *, InsetText *);
 
-	void init(BufferView *, bool reinit = false);
+	void init(BufferView *);
 	///
 	int height;
 	///

@@ -2005,7 +2005,7 @@ void InsetText::resizeLyXText(BufferView * bv, bool force) const
 		// no data, resize not neccessary!
 		// we have to do this as a fixed width may have changed!
 		saveLyXTextState();
-		text_.init(bv, true);
+		text_.init(bv);
 		restoreLyXTextState();
 		return;
 	}
@@ -2026,7 +2026,7 @@ void InsetText::resizeLyXText(BufferView * bv, bool force) const
 		 const_cast<ParagraphList&>(paragraphs).end(),
 		 boost::bind(&Paragraph::resizeInsetsLyXText, _1, bv));
 
-	text_.init(bv, true);
+	text_.init(bv);
 	restoreLyXTextState();
 
 	if (the_locking_inset) {
@@ -2058,7 +2058,7 @@ void InsetText::reinitLyXText() const
 		 const_cast<ParagraphList&>(paragraphs).end(),
 		 boost::bind(&Paragraph::resizeInsetsLyXText, _1, bv));
 
-	text_.init(bv, true);
+	text_.init(bv);
 	restoreLyXTextState();
 	if (the_locking_inset) {
 		inset_x = cix(bv) - top_x + drawTextXOffset;

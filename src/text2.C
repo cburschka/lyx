@@ -81,16 +81,14 @@ LyXText::LyXText(BufferView * bv, InsetText * inset)
 }
 
 
-void LyXText::init(BufferView * bview, bool reinit)
+void LyXText::init(BufferView * bview)
 {
 	bv_owner = bview;
-	if (reinit) {
-		rowlist_.clear();
-		need_break_row = rows().end();
-		width = height = 0;
-		clearPaint();
-	} else if (!rowlist_.empty())
-		return;
+
+	rowlist_.clear();
+	need_break_row = rows().end();
+	width = height = 0;
+	clearPaint();
 
 	anchor_row_ = rows().end();
 	anchor_row_offset_ = 0;
@@ -100,9 +98,9 @@ void LyXText::init(BufferView * bview, bool reinit)
 
 	current_font = getFont(bview->buffer(), pit, 0);
 
-	for (; pit != end; ++pit) {
+	for (; pit != end; ++pit)
 		insertParagraph(pit, rowlist_.end());
-	}
+
 	setCursorIntern(rowlist_.begin()->par(), 0);
 	selection.cursor = cursor;
 
@@ -728,7 +726,6 @@ void LyXText::redoParagraphs(LyXCursor const & cur,
 
 void LyXText::fullRebreak()
 {
-	rows().clear();
 	init(bv());
 	setCursorIntern(cursor.par(), cursor.pos());
 }
