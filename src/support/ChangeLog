@@ -1,3 +1,7 @@
+2002-02-13  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* textutils.h: remove IsLineSeparatorChar(char, Inset *)
+
 2002-02-10 Kayvan Sylvan <kayvan@sylvan.com>
 
 	* os_win32.C: Add "using std::endl" to fix compilation for GCC 3.X.

@@ -340,3 +340,9 @@ bool InsetSpecialChar::isSpace() const
 {
 	return kind_ == PROTECTED_SEPARATOR;
 }
+
+
+bool InsetSpecialChar::isLineSeparator() const
+{
+	return kind_ == HYPHENATION || kind_ == MENU_SEPARATOR;
+}

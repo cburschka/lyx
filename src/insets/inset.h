@@ -309,9 +309,12 @@ public:
 	virtual bool isChar() const { return false; }
 	// is this equivalent to a letter?
 	virtual bool isLetter() const { return false; }
-	// is this equivalent to a space?
+	// is this equivalent to a space (which is BTW different from
+	// a line separator)?
 	virtual bool isSpace() const { return false; }
-	// if this inset has paragraphs should they be outpu all as default
+	// should we break lines after this inset?
+	virtual bool isLineSeparator() const { return false; }
+	// if this inset has paragraphs should they be output all as default
 	// paragraphs with "Standard" layout?
 	virtual bool forceDefaultParagraphs(Inset const *) const;
 	// needed for widths which are % of something

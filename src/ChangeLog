@@ -1,3 +1,10 @@
+2002-02-13  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* text.C (nextBreakPoint): use Paragraph::isLineSeparator
+
+	* paragraph.C (isLineSeparator): call Inset::isLineSeparator if
+	there is an inset.
+
 2002-02-12  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* lyxfunc.C (getStatus): change the rules for LFUN_INSET_TOGGLE to

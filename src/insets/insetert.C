@@ -637,7 +637,7 @@ void InsetERT::status(BufferView * bv, ERTStatus const st) const
 			break;
 		}
 		if (bv)
-			bv->updateInset(const_cast<InsetText *>(&inset), false);
+			bv->updateInset(const_cast<InsetERT *>(this), false);
 	}
 }
 

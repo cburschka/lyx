@@ -1,3 +1,15 @@
+2002-02-13  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* insetspecialchar.C (isLineSeparator): line breaking is allowed
+	after HYPHENATION and MENU_SEPARATOR
+
+	* inset.h (isLineSeparator): new method, returns false by default.
+
+2002-02-12  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* insetert.C (status): do not update the text inset, but the ERT
+	inset. 
+
 2002-02-11  John Levon  <moz@compsoc.man.ac.uk>
 
 	* insetnote.C: use notebg for background

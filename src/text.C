@@ -986,7 +986,7 @@ LyXText::nextBreakPoint(BufferView * bview, Row const * row, int width) const
 					if (i == pos) {
 						if (pos < last-1) {
 							last_separator = i;
-							if (IsLineSeparatorChar(par->getChar(i+1)))
+							if (par->isLineSeparator(i+1))
 								++last_separator;
 						} else
 							last_separator = last; // to avoid extra rows
@@ -1007,7 +1007,7 @@ LyXText::nextBreakPoint(BufferView * bview, Row const * row, int width) const
 						last_separator = i - 1;
 				}
 			} else  {
-				if (IsLineSeparatorChar(c, in))
+				if (par->isLineSeparator(i))
 					last_separator = i;
 				x += singleWidth(bview, par, i, c);
 			}
