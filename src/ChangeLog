@@ -1,3 +1,8 @@
+2002-10-24  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* paragraph.C (TeXOnePar): Fix bug with language changes in nested
+	environment.
+
 2002-10-24  Angus Leeming  <leeming@lyx.org>
 
 	* lyxgluelength.h: no need to forward declare BufferParams

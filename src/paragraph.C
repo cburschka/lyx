@@ -1024,8 +1024,10 @@ Paragraph * Paragraph::TeXOnePar(Buffer const * buf,
 	if (language->babel() != previous_language->babel()
 	    // check if we already put language command in TeXEnvironment()
 	    && !(style->isEnvironment()
-		 && (!previous() || previous()->layout() != layout() ||
-			 previous()->params().depth() != params().depth())))
+		 && (!previous() ||
+		     (previous()->layout() != layout() &&
+		      previous()->getDepth() <= getDepth())
+		     || previous()->getDepth() < getDepth())))
 	{
 		if (!lyxrc.language_command_end.empty() &&
 		    previous_language->babel() != doc_language->babel())
