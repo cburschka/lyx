@@ -42,6 +42,7 @@ following hack as starting point to write some macros:
 #include "math_braceinset.h"
 #include "math_boxinset.h"
 #include "math_charinset.h"
+#include "math_commentinset.h"
 #include "math_deliminset.h"
 #include "math_envinset.h"
 #include "math_extern.h"
@@ -434,12 +435,14 @@ void Parser::tokenize(string const & buffer)
 				break;
 			}
 
+/*
 			case catComment: {
 				while (is.get(c) && catcode(c) != catNewline)
 					;
 				++lineno_;
 				break;
 			}
+*/
 
 			case catEscape: {
 				is.get(c);
@@ -563,7 +566,7 @@ void Parser::parse1(MathGridInset & grid, unsigned flags,
 
 #ifdef FILEDEBUG
 		lyxerr << "t: " << t << " flags: " << flags << "\n";
-		//cell->dump();
+		cell->dump();
 		lyxerr << "\n";
 #endif
 
@@ -723,6 +726,18 @@ void Parser::parse1(MathGridInset & grid, unsigned flags,
 
 		else if (t.cat() == catOther)
 			cell->push_back(MathAtom(new MathCharInset(t.character())));
+
+		else if (t.cat() == catComment) {
+			string s;
+			while (good()) {
+				Token const & t = getToken();
+				if (t.cat() == catNewline)
+					break;
+				s += t.asString();
+			}
+			cell->push_back(MathAtom(new MathCommentInset(s)));
+			skipSpaces();
+		}
 
 		//
 		// control sequences

@@ -684,8 +684,14 @@ MathInset::result_type MathHullInset::dispatch
 			}
 			return DISPATCHED; 
 
+		case LFUN_MATH_HALIGN:
+		case LFUN_MATH_VALIGN:
+			// we explicitly don't want the default behaviour here
+			return UNDISPATCHED;
+
 		default:
-			return UNDISPATCHED; 
+			return MathGridInset::dispatch(cmd, idx, pos);
+
 	}
 	return UNDISPATCHED;
 }

@@ -292,12 +292,6 @@ bool MathScriptInset::has(bool up) const
 }
 
 
-bool MathScriptInset::empty() const
-{
-	return !script_[0] && !script_[1] && cell(2).empty();
-}
-
-
 bool MathScriptInset::hasUp() const
 {
 	return script_[1];

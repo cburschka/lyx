@@ -35,6 +35,8 @@ libmathed_la_SOURCES = \
 	math_casesinset.h \
 	math_charinset.C \
 	math_charinset.h \
+	math_commentinset.C \
+	math_commentinset.h \
 	math_cursor.C \
 	math_cursor.h \
 	math_data.C \

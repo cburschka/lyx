@@ -33,7 +33,7 @@
 #include "math_autocorrect.h"
 #include "math_arrayinset.h"
 #include "math_braceinset.h"
-#include "math_casesinset.h"
+#include "math_commentinset.h"
 #include "math_charinset.h"
 #include "math_extern.h"
 #include "math_factory.h"
@@ -1151,15 +1151,6 @@ bool MathCursor::interpret(string const & s)
 	//owner_->getIntl()->getTransManager().TranslateAndInsert(s[0], lt);
 	//lyxerr << "trans: '" << s[0] << "'  int: " << int(s[0]) << endl;
 
-	if (s.size() >= 5 && s.substr(0, 5) == "cases") {
-		unsigned int n = 1;
-		istringstream is(s.substr(5).c_str());
-		is >> n;
-		n = max(1u, n);
-		niceInsert(MathAtom(new MathCasesInset(n)));
-		return true;
-	}
-
 	if (s.size() >= 6 && s.substr(0, 6) == "matrix") {
 		unsigned int m = 1;
 		unsigned int n = 1;
@@ -1384,7 +1375,7 @@ bool MathCursor::interpret(char c)
 	}
 
 	if (c == '%') {
-		insert(createMathInset("%"));
+		niceInsert(MathAtom(new MathCommentInset));
 		return true;
 	}
 

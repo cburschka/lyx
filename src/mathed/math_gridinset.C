@@ -961,6 +961,42 @@ MathInset::result_type MathGridInset::dispatch
 			return DISPATCHED_POP;
 		}
 
+		case LFUN_MATH_HALIGN:
+			halign((cmd.argument + "c")[0], col(idx));
+			return DISPATCHED_POP;
+
+		case LFUN_MATH_VALIGN:
+			valign((cmd.argument + "c")[0]);
+			return DISPATCHED_POP;
+
+		case LFUN_MATH_ROW_INSERT:
+			addRow(row(idx));
+			return DISPATCHED_POP;
+
+		case LFUN_MATH_ROW_DELETE:
+			delRow(row(idx));
+			if (idx > nargs())
+				idx -= ncols();
+			return DISPATCHED_POP;
+
+		case LFUN_MATH_COLUMN_INSERT: {
+			row_type r = row(idx);
+			col_type c = col(idx);
+			addFancyCol(c);
+			idx = index(r, c);
+			return DISPATCHED_POP;
+		}
+
+		case LFUN_MATH_COLUMN_DELETE: {
+			row_type r = row(idx);
+			col_type c = col(idx);
+			delFancyCol(col(idx));
+			idx = index(r, c);
+			if (idx > nargs())
+				idx -= ncols();
+			return DISPATCHED_POP;
+		}		
+
 		default:	
 			break;
 	}

@@ -11,7 +11,7 @@
 
 
 char const * latex_mathspace[] = {
-	"!", ",", ";", ":", "quad", "qquad", "lyxnegspace", "lyxposspace"
+	"!", ",", ":", ";", "quad", "qquad", "lyxnegspace", "lyxposspace"
 };
 
 
