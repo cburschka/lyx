@@ -407,7 +407,7 @@ bool saveParamsAsDefault(BufferParams const &params)
 	// add an empty paragraph. Is this enough?
 	defaults.paragraph = new Paragraph;
 
-	return defaults.writeFile(defaults.fileName(), false);
+	return defaults.writeFile(defaults.fileName());
 }
 
 } //namespace

@@ -278,7 +278,7 @@ void AutoSave(BufferView * bv)
 
 		string const tmp_ret = lyx::tempName(string(), "lyxauto");
 		if (!tmp_ret.empty()) {
-			bv->buffer()->writeFile(tmp_ret, 1);
+			bv->buffer()->writeFile(tmp_ret);
 			// assume successful write of tmp_ret
 			if (!lyx::rename(tmp_ret, fname)) {
 				failed = true;
@@ -293,7 +293,7 @@ void AutoSave(BufferView * bv)
 
 		if (failed) {
 			// failed to write/rename tmp_ret so try writing direct
-			if (!bv->buffer()->writeFile(fname, 1)) {
+			if (!bv->buffer()->writeFile(fname)) {
 				// It is dangerous to do this in the child,
 				// but safe in the parent, so...
 				if (pid == -1)

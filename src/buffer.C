@@ -1812,7 +1812,7 @@ bool Buffer::save() const
 		}
 	}
 
-	if (writeFile(fileName(), false)) {
+	if (writeFile(fileName())) {
 		markLyxClean();
 		removeAutosaveFile(fileName());
 	} else {
@@ -1826,46 +1826,19 @@ bool Buffer::save() const
 }
 
 
-// Returns false if unsuccesful
-bool Buffer::writeFile(string const & fname, bool flag) const
+bool Buffer::writeFile(string const & fname) const
 {
-	// if flag is false writeFile will not create any GUI
-	// warnings, only cerr.
-	// Needed for autosave in background or panic save (Matthias 120496)
-
 	if (read_only && (fname == fileName())) {
-		// Here we should come with a question if we should
-		// perform the write anyway.
-		if (flag)
-			lyxerr << _("Error! Document is read-only: ")
-			       << fname << endl;
-		else
-			Alert::alert(_("Error! Document is read-only: "),
-				   fname);
 		return false;
 	}
 
 	FileInfo finfo(fname);
 	if (finfo.exist() && !finfo.writable()) {
-		// Here we should come with a question if we should
-		// try to do the save anyway. (i.e. do a chmod first)
-		if (flag)
-			lyxerr << _("Error! Cannot write file: ")
-			       << fname << endl;
-		else
-			Alert::err_alert(_("Error! Cannot write file: "),
-				     fname);
 		return false;
 	}
 
 	ofstream ofs(fname.c_str());
 	if (!ofs) {
-		if (flag)
-			lyxerr << _("Error! Cannot open file: ")
-			       << fname << endl;
-		else
-			Alert::err_alert(_("Error! Cannot open file: "),
-				     fname);
 		return false;
 	}
 

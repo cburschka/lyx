@@ -148,7 +148,7 @@ public:
 	bool save() const;
 
 	/// Write file. Returns \c false if unsuccesful.
-	bool writeFile(string const &, bool) const;
+	bool writeFile(string const &) const;
 
 	///
 	void writeFileAscii(string const & , int);

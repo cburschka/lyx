@@ -122,7 +122,7 @@ void ControlSendto::apply()
 		if (!lv_.buffer()->tmppath.empty())
 			filename = AddName(lv_.buffer()->tmppath, filename);
 
-		lv_.buffer()->writeFile(filename, true);
+		lv_.buffer()->writeFile(filename);
 
 	} else {
 		Exporter::Export(lv_.buffer(), format_->name(), true, filename);

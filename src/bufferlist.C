@@ -315,7 +315,7 @@ void BufferList::emergencyWrite(Buffer * buf)
 		string s = buf->fileName();
 		s += ".emergency";
 		lyxerr << "  " << s << endl;
-		if (buf->writeFile(s, true)) {
+		if (buf->writeFile(s)) {
 			buf->markLyxClean();
 			lyxerr << _("  Save seems successful. Phew.") << endl;
 			return;
@@ -328,7 +328,7 @@ void BufferList::emergencyWrite(Buffer * buf)
 	string s = AddName(GetEnvPath("HOME"), buf->fileName());
 	s += ".emergency";
 	lyxerr << " " << s << endl;
-	if (buf->writeFile(s, true)) {
+	if (buf->writeFile(s)) {
 		buf->markLyxClean();
 		lyxerr << _("  Save seems successful. Phew.") << endl;
 		return;
@@ -342,7 +342,7 @@ void BufferList::emergencyWrite(Buffer * buf)
 	s = AddName(MakeAbsPath("/tmp/"), buf->fileName());
 	s += ".emergency";
 	lyxerr << " " << s << endl;
-	if (buf->writeFile(s, true)) {
+	if (buf->writeFile(s)) {
 		buf->markLyxClean();
 		lyxerr << _("  Save seems successful. Phew.") << endl;
 		return;
