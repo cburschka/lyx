@@ -59,6 +59,7 @@ void PreviewedInset::addPreview(graphics::PreviewLoader & ploader)
 		return;
 
 	snippet_ = support::trim(latexString(ploader.buffer()));
+	pimage_ = 0;
 	if (snippet_.empty())
 		return;
 

@@ -200,12 +200,6 @@ void InsetFormula::draw(PainterInfo & pi, int x, int y) const
 	bool const editing_inset = mathcursor && mathcursor->formula() == this;
 	bool const use_preview = !editing_inset && preview_->previewReady();
 
-	if (!editing_inset && bv) {
-		Buffer const * buffer_ptr = bv->buffer();
-		if (buffer_ptr)
-			preview_->generatePreview(*buffer_ptr);
-	}
-
 	int const w = dim_.wid;
 	int const d = dim_.des;
 	int const a = dim_.asc;

@@ -1,3 +1,8 @@
+2003-10-10  Angus Leeming  <leeming@lyx.org>
+
+	* formula.C (draw): don't try and generate the previews from draw.
+	insetUnlock is already doing a fine job...
+
 2003-10-09  Angus Leeming  <leeming@lyx.org>
 
 	* formula.C (metrics, draw): no longer need to pass a Buffer arg
