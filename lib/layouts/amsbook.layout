@@ -83,6 +83,8 @@ Preamble
   \numberwithin{figure}{section} %% Comment out for sequentially-numbered
 EndPreamble
 
+Input lyxmacros.inc
+NoStyle Address
 Input amsdefs.inc
 
  
@@ -129,7 +131,6 @@ Style Chapter_Exercises
 
 End
 
-Input lyxmacros.inc
 
 ### Finally a few obsolete definitions for compatibility
 Input obsolete.inc
