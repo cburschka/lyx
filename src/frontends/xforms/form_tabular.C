@@ -22,25 +22,25 @@ FD_form_tabular * FormTabular::build_tabular()
   FL_OBJECT *obj;
   FD_form_tabular *fdui = new FD_form_tabular;
 
-  fdui->form = fl_bgn_form(FL_NO_BOX, 510, 295);
+  fdui->form = fl_bgn_form(FL_NO_BOX, 510, 325);
   fdui->form->u_vdata = this;
-  obj = fl_add_box(FL_FLAT_BOX, 0, 0, 510, 295, "");
+  obj = fl_add_box(FL_FLAT_BOX, 0, 0, 510, 325, "");
   fdui->tabFolder = obj = fl_add_tabfolder(FL_TOP_TABFOLDER, 0, 0, 505, 250, _("Tabbed folder"));
     fl_set_object_resize(obj, FL_RESIZE_ALL);
   {
     char const * const dummy = N_("Close|^[");
-    fdui->button_close = obj = fl_add_button(FL_NORMAL_BUTTON, 415, 260, 90, 30, idex(_(dummy)));
+    fdui->button_close = obj = fl_add_button(FL_NORMAL_BUTTON, 415, 290, 90, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
-  fdui->input_tabular_column = obj = fl_add_input(FL_NORMAL_INPUT, 65, 260, 60, 30, "");
+  fdui->input_tabular_column = obj = fl_add_input(FL_NORMAL_INPUT, 65, 290, 60, 30, "");
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_lalign(obj, FL_ALIGN_TOP_LEFT);
-  fdui->input_tabular_row = obj = fl_add_input(FL_NORMAL_INPUT, 5, 260, 60, 30, "");
+  fdui->input_tabular_row = obj = fl_add_input(FL_NORMAL_INPUT, 5, 290, 60, 30, "");
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_lalign(obj, FL_ALIGN_TOP_LEFT);
-  fdui->text_warning = obj = fl_add_text(FL_NORMAL_TEXT, 125, 260, 290, 30, "");
+  fdui->text_warning = obj = fl_add_text(FL_NORMAL_TEXT, 5, 255, 500, 30, "");
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_lalign(obj, FL_ALIGN_LEFT|FL_ALIGN_INSIDE);
     fl_set_object_lstyle(obj, FL_BOLD_STYLE);
