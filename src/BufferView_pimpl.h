@@ -145,8 +145,6 @@ private:
 	///
 	void specialChar(InsetSpecialChar::Kind);
 	///
-	void newline();
-	///
 	void hfill();
 	///
 	void smartQuote();

@@ -3161,23 +3161,6 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev)
 }
 
 
-void BufferView::Pimpl::newline()
-{
-	if (available()) {
-		LyXText * lt = bv_->getLyXText();
-		hideCursor();
-		update(lt,
-		       BufferView::SELECT
-		       | BufferView::FITCUR);
-		lt->insertChar(bv_, Paragraph::META_NEWLINE);
-		update(lt,
-		       BufferView::SELECT
-		       | BufferView::FITCUR
-		       | BufferView::CHANGE);
-	}
-}
-
-
 void BufferView::Pimpl::hfill()
 {
 	if (available()) {
