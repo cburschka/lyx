@@ -1,3 +1,7 @@
+2002-10-07  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* lyx_main.C (queryUserLyXDir): re-run automatically the configure
+	script if it is newer than the lyxrc.defaults in user directory
 
 2002-10-07 André Pönitz <poenitz@gmx.net>
 

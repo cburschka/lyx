@@ -571,10 +571,22 @@ void LyX::deadKeyBindings(kb_keymap * kbmap)
 
 void LyX::queryUserLyXDir(bool explicit_userdir)
 {
+	string const configure_script = AddName(system_lyxdir, "configure");
+
 	// Does user directory exist?
 	FileInfo fileInfo(user_lyxdir);
 	if (fileInfo.isOK() && fileInfo.isDir()) {
 		first_start = false;
+		Path p(user_lyxdir);
+		FileInfo script(configure_script);
+		FileInfo defaults("lyxrc.defaults");
+		if (!defaults.isOK()
+		    || defaults.getModificationTime() < script.getModificationTime()) {
+			lyxerr << _("LyX: reconfiguring user directory")
+			       << endl;
+			::system(configure_script.c_str());
+			lyxerr << "LyX: " << _("Done!") << endl;
+		}
 		return;
 	}
 
@@ -605,7 +617,7 @@ void LyX::queryUserLyXDir(bool explicit_userdir)
 
 	// Run configure in user lyx directory
 	Path p(user_lyxdir);
-	::system(AddName(system_lyxdir, "configure").c_str());
+	::system(configure_script.c_str());
 	lyxerr << "LyX: " << _("Done!") << endl;
 }
 
