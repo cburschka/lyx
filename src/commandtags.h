@@ -237,10 +237,11 @@ enum kb_action {
 	LFUN_URL,                       // CFO-G 971121
 	LFUN_WORDFINDFORWARD,		// Etienne 980216
 	LFUN_WORDFINDBACKWARD,		// Etienne 980220
-	LFUN_APPENDIX, // ettrich 980505
+	LFUN_APPENDIX,                  // ettrich 980505
 	LFUN_IMPORT, 			// Asger 980724
 	LFUN_MENU_SEPARATOR,            // Asger 990220
-	LFUN_SEQUENCE,            // Andre' 991111
+	LFUN_SEQUENCE,                  // Andre' 991111
+	LFUN_SAVEPREFERENCES,           // Lgb 991127
 	LFUN_LASTACTION  /* this marks the end of the table */
 };
 

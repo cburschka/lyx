@@ -200,13 +200,11 @@ void BufferParams::readPreamble(LyXLex & lex)
 
 void BufferParams::readLanguage(LyXLex & lex)
 {
-	string tmptok;
-	string test;
-	int n = 0;
-	
 	if (!lex.next()) return;
 	
-	tmptok = lex.GetString();
+	string tmptok = lex.GetString();
+	string test;
+	int n = 0;
 	// check if tmptok is part of tex_babel in tex-defs.h
 	while (true) {
 		test = tex_babel[n++];

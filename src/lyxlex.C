@@ -56,7 +56,7 @@ void LyXLex::popTable()
 void LyXLex::printTable()
 {
 	lyxerr << "\nNumber of tags: " << no_items << endl;
-	for(int i= 0; i<no_items; i++)
+	for(int i= 0; i < no_items; ++i)
 		lyxerr << "table[" << i
 		       << "]:  tag: `" << table[i].tag
 		       << "'  code:" << table[i].code << endl;
@@ -64,7 +64,7 @@ void LyXLex::printTable()
 }
 
 
-void LyXLex::printError(string const & message)
+void LyXLex::printError(string const & message) const
 {
 	string tmpmsg = subst(message, "$$Token", GetString());
 	lyxerr << "LyX: " << tmpmsg << " [around line " << lineno
@@ -74,7 +74,7 @@ void LyXLex::printError(string const & message)
 
 bool LyXLex::setFile(string const & filename)
 {
-        if (file) 
+        if (file)
 		lyxerr << "Error in LyXLex::setFile: file already set." <<endl;
 	file = fopen(filename.c_str(), "r");
 	name = filename;
@@ -87,7 +87,8 @@ bool LyXLex::setFile(string const & filename)
 void LyXLex::setFile(FILE * f)
 {
         if (file) 
-		lyxerr << "Error in LyXLex::setFile: file already set." << endl;
+		lyxerr << "Error in LyXLex::setFile: file already set."
+		       << endl;
 	file = f;
 	owns_file = false;
 	lineno = 0; // this is bogus if the file already has been read from
@@ -104,9 +105,9 @@ int LyXLex::lex()
 }
 
 
-int LyXLex::GetInteger()
+int LyXLex::GetInteger() const
 {
-   if (buff[0]>' ')   
+   if (buff[0] > ' ')   
        return atoi(buff);
    else {
 	printError("Bad integer `$$Token'");
@@ -115,10 +116,10 @@ int LyXLex::GetInteger()
 }
 
 
-float LyXLex::GetFloat()
+float LyXLex::GetFloat() const
 {
-   if (buff[0]>' ')   
-       return (float)strtod(buff, (char**)0);
+   if (buff[0] > ' ')   
+       return atof(buff);
    else {
 	printError("Bad float `$$Token'");
 	return -1;
@@ -182,7 +183,7 @@ string LyXLex::getLongString(string const & endtoken)
 }
 
 
-bool LyXLex::GetBool()
+bool LyXLex::GetBool() const
 {
    if (compare(buff, "true") == 0)
 	return true;
@@ -194,7 +195,7 @@ bool LyXLex::GetBool()
 
 bool LyXLex::EatLine()
 {
-	int i= 0;
+	int i = 0;
 	int c = '\0'; // getc() returns an int
 
 	while (!feof(file) && c!= '\n' && i!= (LEX_MAX_BUFF-1)) {
@@ -222,10 +223,10 @@ bool LyXLex::EatLine()
 
 int LyXLex::search_kw(char const * const tag) const
 {
-	int m, k= 0 , l= 0, r= no_items;
+	int m, k = 0 , l = 0, r = no_items;
 
 	while (l < r) {
-		m = (l+r)/2;
+		m = (l + r) / 2;
 
 		if (lyxerr.debugging(Debug::PARSER)) {
 			lyxerr << "LyXLex::search_kw: elem " << m
@@ -239,19 +240,16 @@ int LyXLex::search_kw(char const * const tag) const
 		if (k == 0)
 			return table[m].code;
 		else
-			if (k<0) l = m+1; else r = m;
+			if (k < 0) l = m + 1; else r = m;
 	}
-	return -1;
+	return LEX_UNDEF;
 }
 
 
 bool LyXLex::next(bool esc)
 {
-
 	if (!esc) {
 		int c; // getc() returns an int
-		//int i;
-		
 		
 		status = 0;
 		while (!feof(file) && !status) { 
@@ -325,8 +323,6 @@ bool LyXLex::next(bool esc)
 		return false;
 	} else {
 		int c; // getc() returns an int
-		//int i;
-		
 		
 		status = 0;
 		while (!feof(file) && !status) { 
@@ -433,15 +429,12 @@ bool LyXLex::next(bool esc)
 
 bool LyXLex::nextToken()
 {
-	int c; // getc() returns an int
-	int i;
-        
         status = 0;
 	while (!feof(file) && !status) { 
-		c = getc(file);
+		int c = getc(file); // getc() returns an int
 	   
 		if (c >= ' ' && !feof(file))  {
-			i = 0;
+			int i = 0;
 			if (c == '\\') { // first char == '\\'
 				do {
 					buff[i++] = c;
@@ -500,7 +493,7 @@ int LyXLex::CheckToken(char const * str[], int print_error)
    int i = -1;
    
    if (compare(buff, "default")) {
-       for (i = 0; str[i][0] && compare(str[i], buff); i++);
+       for (i = 0; str[i][0] && compare(str[i], buff); ++i);
        if (!str[i][0]) {
            if (print_error)
                printError("Unknown argument `$$Token'");

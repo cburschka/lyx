@@ -174,7 +174,12 @@ public:
 
 	///
 	bool Read (LyXLex &, LyXTextClass const &);
-
+	void readAlign(LyXLex &);
+	void readAlignPossible(LyXLex &);
+	void readLabelType(LyXLex &);
+	void readMargin(LyXLex &);
+	void readLatexType(LyXLex &);
+	void readSpacing(LyXLex &);
 	string const & name() const { return name_; }
 	void name(string const & n) { name_ = n; }
 	string const & obsoleted_by() const { return obsoleted_by_; }
@@ -342,7 +347,9 @@ public:
 	
 	///
 	bool Read(string const & filename, bool merge = false);
-
+	void readOutputType(LyXLex &);
+	void readMaxCounter(LyXLex &);
+	void readClassOptions(LyXLex &);
 	///
 	bool hasLayout(string const & name) const;
 

@@ -224,10 +224,10 @@ extern "C" int handle_bitmaptable(FL_OBJECT *ob, int event, FL_Coord mx,
  * 
  * The user could change these later. See below.
  */ 
-void fl_set_bmtable_data(FL_OBJECT *ob, int nx, int ny, int bw, int bh, 
-			unsigned char * bdata)
+void fl_set_bmtable_data(FL_OBJECT * ob, int nx, int ny, int bw, int bh, 
+			unsigned char const * bdata)
 {
-   BMTABLE_SPEC *sp = (BMTABLE_SPEC *)ob->spec;
+   BMTABLE_SPEC * sp = (BMTABLE_SPEC *)ob->spec;
    if (sp) {
      sp->nx = nx;
      sp->ny = ny; 
@@ -244,10 +244,10 @@ void fl_set_bmtable_data(FL_OBJECT *ob, int nx, int ny, int bw, int bh,
 }
 
 
-void fl_set_bmtable_pixmap_data(FL_OBJECT *ob, int nx, int ny,
-			char **pdata)
+void fl_set_bmtable_pixmap_data(FL_OBJECT * ob, int nx, int ny,
+			char ** pdata)
 {
-	BMTABLE_SPEC *sp = (BMTABLE_SPEC *)ob->spec;
+	BMTABLE_SPEC * sp = (BMTABLE_SPEC *)ob->spec;
 	extern Colormap color_map;
 	if (sp) {
 		sp->nx = nx;

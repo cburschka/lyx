@@ -437,7 +437,7 @@ void BufferView::create_view(int xpos, int ypos, int width, int height)
 	fl_set_object_gravity(obj, NorthEastGravity, NorthEastGravity);
 	fl_set_object_callback(obj, C_BufferView_UpCB, 0);
 	obj->u_vdata = this;
-	fl_set_pixmapbutton_data(obj, up_xpm);
+	fl_set_pixmapbutton_data(obj, const_cast<char**>(up_xpm));
 
 #if FL_REVISION > 85
 	// Remove the blue feedback rectangle
@@ -473,7 +473,7 @@ void BufferView::create_view(int xpos, int ypos, int width, int height)
 	fl_set_object_gravity(obj, SouthEastGravity, SouthEastGravity);
 	fl_set_object_callback(obj, C_BufferView_DownCB, 0);
 	obj->u_vdata = this;
-	fl_set_pixmapbutton_data(obj, down_xpm);
+	fl_set_pixmapbutton_data(obj, const_cast<char**>(down_xpm));
 	fl_set_border_width(-bw);
 
 #if FL_REVISION >85

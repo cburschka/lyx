@@ -47,35 +47,48 @@ void LyXSetStyle()
 //  The order of the LayoutTags enum is no more important. [asierra300396]
 // Tags indexes.
 enum LayoutTags {
-	LT_ALIGN, LT_ALIGNPOSSIBLE, 
-	LT_BLOCK, LT_MARGIN,
-	LT_BOTTOMSEP, LT_CENTER, LT_CENTERED_TOP_ENVIRONMENT, LT_COLUMNS,
-	LT_COPYSTYLE, LT_OBSOLETEDBY,
-	LT_COMMAND, LT_COUNTER_CHAPTER, LT_COUNTER_ENUMI, LT_COUNTER_ENUMII,
-	LT_COUNTER_ENUMIII, LT_COUNTER_ENUMIV, LT_COUNTER_PARAGRAPH,
-	LT_COUNTER_SECTION, LT_COUNTER_SUBPARAGRAPH, LT_COUNTER_SUBSECTION,
-	LT_COUNTER_SUBSUBSECTION, LT_DEFAULTFONT, LT_DYNAMIC, LT_EMPTY,
-	LT_END, LT_ENVIRONMENT, LT_ENVIRONMENT_DEFAULT, 
-	LT_FANCYHDR, LT_FILL_BOTTOM, LT_FILL_TOP, LT_FIRST_COUNTER,
-	LT_FIRST_DYNAMIC, LT_FONT, LT_FREE_SPACING, LT_HEADINGS, LT_INPUT,
-	LT_ITEM_ENVIRONMENT, LT_ITEMSEP, LT_KEEPEMPTY,
-	LT_LABEL_BOTTOMSEP, LT_LABELFONT, LT_TEXTFONT,
-	LT_LABELINDENT, LT_LABELSEP, LT_LABELSTRING,
-	LT_LABELSTRING_APPENDIX, LT_LABELTYPE,
-	LT_LATEXNAME, LT_LATEXPARAM, LT_LATEXTYPE, LT_LAYOUT, LT_LEFT,
-	LT_LEFTMARGIN,
-	LT_LIST_ENVIRONMENT , LT_MANUAL, LT_MAXCOUNTER, 
-	LT_NEED_PROTECT, LT_NEWLINE,
-	LT_NEXTNOINDENT, LT_NO_LABEL, LT_NOSTYLE,
-	LT_PAGESTYLE, LT_PARAGRAPH,
-	LT_PARINDENT, LT_PARSEP, LT_PARSKIP, LT_PLAIN, LT_PREAMBLE, 
-	LT_PROVIDESAMSMATH, LT_PROVIDESMAKEIDX, LT_PROVIDESURL, LT_RIGHT,
-	LT_RIGHT_ADDRESS_BOX, LT_RIGHTMARGIN, LT_SENSITIVE, LT_SIDES,
-	LT_SPACING, LT_SPACING_SINGLE, LT_SPACING_ONEHALF,
-	LT_SPACING_DOUBLE, LT_OTHER,  LT_CLASSOPTIONS, LT_FONTSIZE,
-	LT_STATIC, LT_STYLE, LT_TOP_ENVIRONMENT, LT_TOPSEP, LT_BIBLIO,
-        LT_INTITLE, LT_SECNUMDEPTH, LT_TOCDEPTH,
-	LT_OUTPUTTYPE, LT_OTLATEX, LT_OTLINUXDOC, LT_OTDOCBOOK, LT_OTLITERATE
+	LT_ALIGN = 1, 
+	LT_ALIGNPOSSIBLE, 
+	LT_MARGIN, 
+	LT_BOTTOMSEP, 
+	LT_COPYSTYLE, 
+	LT_OBSOLETEDBY, 
+	//LT_EMPTY,
+	LT_END, 
+	//LT_ENVIRONMENT_DEFAULT, 
+	//LT_FANCYHDR,
+	LT_FILL_BOTTOM, 
+	LT_FILL_TOP, 
+	//LT_FIRST_COUNTER,
+	LT_FONT, 
+	LT_FREE_SPACING, 
+	//LT_HEADINGS,
+	LT_ITEMSEP, 
+	LT_KEEPEMPTY, 
+	LT_LABEL_BOTTOMSEP, 
+	LT_LABELFONT, 
+	LT_TEXTFONT,
+	LT_LABELINDENT, 
+	LT_LABELSEP, 
+	LT_LABELSTRING, 
+	LT_LABELSTRING_APPENDIX, 
+	LT_LABELTYPE, 
+	LT_LATEXNAME, 
+	LT_LATEXPARAM, 
+	LT_LATEXTYPE, 
+	LT_LEFTMARGIN, 
+	LT_NEED_PROTECT, 
+	LT_NEWLINE, 
+	LT_NEXTNOINDENT, 
+	LT_PARINDENT, 
+	LT_PARSEP, 
+	LT_PARSKIP, 
+	//LT_PLAIN,
+	LT_PREAMBLE, 
+	LT_RIGHTMARGIN, 
+	LT_SPACING, 
+	LT_TOPSEP, 
+        LT_INTITLE 
 };
 
 
@@ -83,45 +96,14 @@ enum LayoutTags {
 static keyword_item layoutTags[] = {
 	{ "align",			LT_ALIGN },
 	{ "alignpossible",		LT_ALIGNPOSSIBLE },
-	{ "bibliography",		LT_BIBLIO },
-	{ "block",			LT_BLOCK },
 	{ "bottomsep",			LT_BOTTOMSEP },
-	{ "center",			LT_CENTER },
-	{ "centered_top_environment",	LT_CENTERED_TOP_ENVIRONMENT },
-        { "classoptions",               LT_CLASSOPTIONS },
-	{ "columns",			LT_COLUMNS },
-	{ "command",			LT_COMMAND },
 	{ "copystyle",                  LT_COPYSTYLE },
-	{ "counter_chapter",		LT_COUNTER_CHAPTER },
-	{ "counter_enumi",		LT_COUNTER_ENUMI },
-	{ "counter_enumii",		LT_COUNTER_ENUMII },
-	{ "counter_enumiii",		LT_COUNTER_ENUMIII },
-	{ "counter_enumiv",		LT_COUNTER_ENUMIV },
-	{ "counter_paragraph",		LT_COUNTER_PARAGRAPH },
-	{ "counter_section",		LT_COUNTER_SECTION },
-	{ "counter_subparagraph",	LT_COUNTER_SUBPARAGRAPH },
-	{ "counter_subsection",		LT_COUNTER_SUBSECTION },
-	{ "counter_subsubsection",	LT_COUNTER_SUBSUBSECTION },
-	{ "defaultfont", 		LT_DEFAULTFONT },
-	{ "docbook",                    LT_OTDOCBOOK },
-	{ "double",                     LT_SPACING_DOUBLE },
-	{ "dynamic",			LT_DYNAMIC },
-	{ "empty",			LT_EMPTY },
 	{ "end",			LT_END },
-	{ "environment",		LT_ENVIRONMENT },
-	{ "environment_default",	LT_ENVIRONMENT_DEFAULT },
-	{ "fancyhdr",			LT_FANCYHDR },
 	{ "fill_bottom",		LT_FILL_BOTTOM },
 	{ "fill_top",			LT_FILL_TOP },
-	{ "first_counter",              LT_FIRST_COUNTER },
-	{ "first_dynamic",              LT_FIRST_DYNAMIC },
 	{ "font",                  	LT_FONT },
-	{ "fontsize",                  	LT_FONTSIZE },
 	{ "freespacing",	   	LT_FREE_SPACING },
-	{ "headings",              	LT_HEADINGS },
-	{ "input", 			LT_INPUT },
 	{ "intitle",                    LT_INTITLE },
-	{ "item_environment",     	LT_ITEM_ENVIRONMENT },
 	{ "itemsep",               	LT_ITEMSEP },
 	{ "keepempty",                  LT_KEEPEMPTY },
 	{ "labelbottomsep",             LT_LABEL_BOTTOMSEP },
@@ -131,51 +113,22 @@ static keyword_item layoutTags[] = {
 	{ "labelstring",           	LT_LABELSTRING },
 	{ "labelstringappendix",        LT_LABELSTRING_APPENDIX },
 	{ "labeltype",             	LT_LABELTYPE },
-	{ "latex",                      LT_OTLATEX },
 	{ "latexname",             	LT_LATEXNAME },
-	{ "latexparam",			LT_LATEXPARAM },    //arrae970411
+	{ "latexparam",			LT_LATEXPARAM },
 	{ "latextype",             	LT_LATEXTYPE },
-	{ "layout",                	LT_LAYOUT },
-	{ "left",                  	LT_LEFT },
 	{ "leftmargin",            	LT_LEFTMARGIN },
-	{ "linuxdoc",                   LT_OTLINUXDOC },
-	{ "list_environment",     	LT_LIST_ENVIRONMENT },
-	{ "literate",                   LT_OTLITERATE },
-	{ "manual",                	LT_MANUAL },
 	{ "margin",                	LT_MARGIN },
-	{ "maxcounter",            	LT_MAXCOUNTER },
 	{ "needprotect",                LT_NEED_PROTECT },
 	{ "newline",			LT_NEWLINE },
 	{ "nextnoindent",		LT_NEXTNOINDENT },
-	{ "no_label",			LT_NO_LABEL },
-	{ "nostyle",                    LT_NOSTYLE },
 	{ "obsoletedby",                LT_OBSOLETEDBY },
-	{ "onehalf",                    LT_SPACING_ONEHALF },
-	{ "other",                      LT_OTHER },
-	{ "outputtype",                 LT_OUTPUTTYPE },
-	{ "pagestyle",			LT_PAGESTYLE },
-	{ "paragraph",			LT_PARAGRAPH },
 	{ "parindent",			LT_PARINDENT },
 	{ "parsep",			LT_PARSEP },
 	{ "parskip",			LT_PARSKIP },
-	{ "plain",			LT_PLAIN },
 	{ "preamble",                   LT_PREAMBLE },
-	{ "providesamsmath",		LT_PROVIDESAMSMATH },
-	{ "providesmakeidx",		LT_PROVIDESMAKEIDX },
-	{ "providesurl",		LT_PROVIDESURL },
-	{ "right",			LT_RIGHT },
-	{ "right_address_box",		LT_RIGHT_ADDRESS_BOX },
 	{ "rightmargin",		LT_RIGHTMARGIN },
-	{ "secnumdepth",                LT_SECNUMDEPTH },
-	{ "sensitive",			LT_SENSITIVE },
-	{ "sides",			LT_SIDES },
-	{ "single",                     LT_SPACING_SINGLE },
 	{ "spacing",                    LT_SPACING },
-	{ "static",			LT_STATIC },
-	{ "style",			LT_STYLE },
 	{ "textfont",                   LT_TEXTFONT },
-	{ "tocdepth",                   LT_TOCDEPTH },
-	{ "top_environment",		LT_TOP_ENVIRONMENT },
 	{ "topsep",			LT_TOPSEP }
 };
 
@@ -218,19 +171,22 @@ bool LyXLayout::Read (LyXLex & lexrc, LyXTextClass const & tclass)
 {
 	bool error = false;
 	bool finished = false;
-	
+	lexrc.pushTable(layoutTags, LT_INTITLE);
 	// parse style section
 	while (!finished && lexrc.IsOK() && !error) {
-		switch(lexrc.lex()) {
+		int le = lexrc.lex();
+		// See comment in lyxrc.C.
+		switch(le) {
+		case LyXLex::LEX_FEOF:
+			continue; break;
 
-		case -2:
-			break;
-
-		case -1:		// parse error
-			lexrc.printError("Unknown tag `$$Token'");
+		case LyXLex::LEX_UNDEF:		// parse error
+			lexrc.printError("Unknown layout tag `$$Token'");
 			error = true;
-			break;
-
+			continue; break;
+		default: break;
+		}
+		switch(static_cast<LayoutTags>(le)) {
 		case LT_END:		// end of structure
 			finished = true;
 			break;
@@ -265,50 +221,11 @@ bool LyXLayout::Read (LyXLex & lexrc, LyXTextClass const & tclass)
 			break;
 
 		case LT_MARGIN:		// Margin style definition.
-		       
-			switch(lexrc.lex()) {
-			case LT_STATIC:
-				margintype = MARGIN_STATIC;
-				break;
-			case LT_MANUAL:
-				margintype = MARGIN_MANUAL;
-				break;
-			case LT_DYNAMIC:
-				margintype = MARGIN_DYNAMIC;
-				break;
-			case LT_FIRST_DYNAMIC:
-				margintype = MARGIN_FIRST_DYNAMIC;
-				break;
-			case LT_RIGHT_ADDRESS_BOX:
-				margintype = MARGIN_RIGHT_ADDRESS_BOX;
-				break;
-			default:
-				lexrc.printError("Unknown margin type `$$Token'");
-				break;
-			}
+			readMargin(lexrc);
 			break;
 
 		case LT_LATEXTYPE:	// Latex style definition.
-		        switch (lexrc.lex()) {
-			case LT_PARAGRAPH:
-				latextype= LATEX_PARAGRAPH;
-				break;
-			case LT_COMMAND:
-				latextype= LATEX_COMMAND;
-				break;
-			case LT_ENVIRONMENT:
-				latextype= LATEX_ENVIRONMENT;
-				break;
-			case LT_ITEM_ENVIRONMENT:
-				latextype= LATEX_ITEM_ENVIRONMENT;
-				break;
-			case LT_LIST_ENVIRONMENT:
-				latextype= LATEX_LIST_ENVIRONMENT;
-				break;
-			default:
-				lexrc.printError("Unknown latextype `$$Token'");
-				break;
-			}
+			readLatexType(lexrc);
 			break;
 
 		case LT_INTITLE:
@@ -358,63 +275,9 @@ bool LyXLayout::Read (LyXLex & lexrc, LyXTextClass const & tclass)
 			break;
 
 		case LT_LABELTYPE:
-		        switch (lexrc.lex()) {
-			case LT_NO_LABEL:
-				labeltype = LABEL_NO_LABEL;
-				break;
-			case LT_MANUAL:
-				labeltype = LABEL_MANUAL;
-				break;
-			case LT_TOP_ENVIRONMENT:
-				labeltype = LABEL_TOP_ENVIRONMENT;
-				break;
-			case LT_CENTERED_TOP_ENVIRONMENT:
-				labeltype = LABEL_CENTERED_TOP_ENVIRONMENT;
-				break;
-			case LT_STATIC:
-				labeltype = LABEL_STATIC;
-				break;
-			case LT_SENSITIVE:
-				labeltype = LABEL_SENSITIVE;
-				break;
-			case LT_COUNTER_CHAPTER:
-				labeltype = LABEL_COUNTER_CHAPTER;
-				break;
-			case LT_COUNTER_SECTION:
-				labeltype = LABEL_COUNTER_SECTION;
-				break;
-			case LT_COUNTER_SUBSECTION:
-				labeltype = LABEL_COUNTER_SUBSECTION;
-				break;
-			case LT_COUNTER_SUBSUBSECTION:
-				labeltype = LABEL_COUNTER_SUBSUBSECTION;
-				break;
-			case LT_COUNTER_PARAGRAPH:
-				labeltype = LABEL_COUNTER_PARAGRAPH;
-				break;
-			case LT_COUNTER_SUBPARAGRAPH:
-				labeltype = LABEL_COUNTER_SUBPARAGRAPH;
-				break;
-			case LT_COUNTER_ENUMI:
-				labeltype = LABEL_COUNTER_ENUMI;
-				break;
-			case LT_COUNTER_ENUMII:
-				labeltype = LABEL_COUNTER_ENUMII;
-				break;
-			case LT_COUNTER_ENUMIII:
-				labeltype = LABEL_COUNTER_ENUMIII;
-				break;
-			case LT_COUNTER_ENUMIV:
-				labeltype = LABEL_COUNTER_ENUMIV;
-				break;
-			case LT_BIBLIO:
-				labeltype = LABEL_BIBLIO;
-				break;
-			default:
-				lexrc.printError("Unknown labeltype `$$Token'");
-			}
+			readLabelType(lexrc);
 			break;
-
+			
 		case LT_LEFTMARGIN:	// left margin type
 		        if (lexrc.next())
 				leftmargin = lexrc.GetString();
@@ -487,55 +350,11 @@ bool LyXLayout::Read (LyXLex & lexrc, LyXTextClass const & tclass)
 			break;
 
 		case LT_ALIGN:		// paragraph align
-			switch (lexrc.lex()) {
-			case LT_BLOCK:
-				align = LYX_ALIGN_BLOCK;
-				break;
-			case LT_LEFT:
-				align = LYX_ALIGN_LEFT;
-				break;
-			case LT_RIGHT:
-				align = LYX_ALIGN_RIGHT;
-				break;
-			case LT_CENTER:
-				align = LYX_ALIGN_CENTER;
-				break;
-			case LT_LAYOUT:
-				align = LYX_ALIGN_LAYOUT;
-				break;
-			default:
-				lexrc.printError("Unknown alignment `$$Token'");
-			}
+			readAlign(lexrc);
 			break;
-
 		case LT_ALIGNPOSSIBLE:	// paragraph allowed align
-		{	alignpossible = LYX_ALIGN_NONE;
-		      
-		int lineno = lexrc.GetLineNo();
-		do {
-			switch (lexrc.lex()) {
-			case LT_BLOCK:
-				alignpossible |= LYX_ALIGN_BLOCK;
-				break;
-			case LT_LEFT:
-				alignpossible |= LYX_ALIGN_LEFT;
-				break;
-			case LT_RIGHT:
-				alignpossible |= LYX_ALIGN_RIGHT;
-				break;
-			case LT_CENTER:
-				alignpossible |= LYX_ALIGN_CENTER;
-				break;
-			case LT_LAYOUT:
-				alignpossible |= LYX_ALIGN_LAYOUT;
-				break;
-			default:
-				lexrc.printError("Unknown alignment `$$Token'");
-
-			}
-		} while (lineno == lexrc.GetLineNo());
-		break;
-		}
+			readAlignPossible(lexrc);
+			break;
 
 		case LT_LABELSTRING:	// label string definition
 			if (lexrc.next())
@@ -553,35 +372,330 @@ bool LyXLayout::Read (LyXLex & lexrc, LyXTextClass const & tclass)
 			break;
 
 		case LT_SPACING: // setspace.sty
-			switch(lexrc.lex()) {
-			case LT_SPACING_SINGLE:
-				spacing.set(Spacing::Single);
-				break;
-			case LT_SPACING_ONEHALF:
-				spacing.set(Spacing::Onehalf);
-				break;
-			case LT_SPACING_DOUBLE:
-				spacing.set(Spacing::Double);
-				break;
-			case LT_OTHER:
-				lexrc.next();
-				spacing.set(Spacing::Other, lexrc.GetFloat());
-				break;
-			default:
-				lexrc.printError("Unknown spacing `$$Token'");
-			}
-			break;
-		default:		/* context error */
-			lexrc.printError("Tag `$$Token' is not "
-					 "allowed in layout");
-			error = true;
+			readSpacing(lexrc);
 			break;
 		}
 	}
-
+	lexrc.popTable();
 	return error;
 }
 
+enum AlignTags {
+	AT_BLOCK = 1,
+	AT_LEFT,
+	AT_RIGHT,
+	AT_CENTER,
+	AT_LAYOUT
+};
+
+static keyword_item alignTags[] = {
+	{ "block",  AT_BLOCK },
+	{ "center", AT_CENTER },
+	{ "layout", AT_LAYOUT },
+	{ "left",   AT_LEFT },
+	{ "right",  AT_RIGHT }
+};
+
+
+void LyXLayout::readAlign(LyXLex & lexrc)
+{
+	pushpophelper pph(lexrc, alignTags, AT_LAYOUT);
+	int le = lexrc.lex();
+	switch (le) {
+	case LyXLex::LEX_UNDEF:
+		lexrc.printError("Unknown alignment `$$Token'");
+		return; break;
+	default: break;
+	};
+	switch(static_cast<AlignTags>(le)) {
+	case AT_BLOCK:
+		align = LYX_ALIGN_BLOCK;
+		break;
+	case AT_LEFT:
+		align = LYX_ALIGN_LEFT;
+		break;
+	case AT_RIGHT:
+		align = LYX_ALIGN_RIGHT;
+		break;
+	case AT_CENTER:
+		align = LYX_ALIGN_CENTER;
+		break;
+	case AT_LAYOUT:
+		align = LYX_ALIGN_LAYOUT;
+		break;
+	}
+}
+
+
+void LyXLayout::readAlignPossible(LyXLex & lexrc)
+{
+	lexrc.pushTable(alignTags, AT_LAYOUT);
+	alignpossible = LYX_ALIGN_NONE;
+	int lineno = lexrc.GetLineNo();
+	do {
+		int le = lexrc.lex();
+		switch (le) {
+		case LyXLex::LEX_UNDEF:
+			lexrc.printError("Unknown alignment `$$Token'");
+			continue; break;
+		default: break;
+		};
+		switch (static_cast<AlignTags>(le)) {
+		case AT_BLOCK:
+			alignpossible |= LYX_ALIGN_BLOCK;
+			break;
+		case AT_LEFT:
+			alignpossible |= LYX_ALIGN_LEFT;
+			break;
+		case AT_RIGHT:
+			alignpossible |= LYX_ALIGN_RIGHT;
+			break;
+		case AT_CENTER:
+			alignpossible |= LYX_ALIGN_CENTER;
+			break;
+		case AT_LAYOUT:
+			alignpossible |= LYX_ALIGN_LAYOUT;
+			break;
+		}
+	} while (lineno == lexrc.GetLineNo());
+	lexrc.popTable();
+}
+
+enum LabelTypeTags {
+	LA_NO_LABEL = 1,
+	LA_MANUAL,
+	LA_TOP_ENVIRONMENT,
+	LA_CENTERED_TOP_ENVIRONMENT,
+	LA_STATIC,
+	LA_SENSITIVE,
+	LA_COUNTER_CHAPTER,
+	LA_COUNTER_SECTION,
+	LA_COUNTER_SUBSECTION,
+	LA_COUNTER_SUBSUBSECTION,
+	LA_COUNTER_PARAGRAPH,
+	LA_COUNTER_SUBPARAGRAPH,
+	LA_COUNTER_ENUMI,
+	LA_COUNTER_ENUMII,
+	LA_COUNTER_ENUMIII,
+	LA_COUNTER_ENUMIV,
+	LA_BIBLIO
+};
+
+static keyword_item labelTypeTags[] = {
+	{ "bibliography",             LA_BIBLIO },
+	{ "centered_top_environment", LA_CENTERED_TOP_ENVIRONMENT },
+	{ "counter_chapter",	      LA_COUNTER_CHAPTER },
+	{ "counter_enumi",            LA_COUNTER_ENUMI },
+	{ "counter_enumii",           LA_COUNTER_ENUMII },
+	{ "counter_enumiii",          LA_COUNTER_ENUMIII },
+	{ "counter_enumiv",           LA_COUNTER_ENUMIV },
+	{ "counter_paragraph",        LA_COUNTER_PARAGRAPH },
+	{ "counter_section",          LA_COUNTER_SECTION },
+	{ "counter_subparagraph",     LA_COUNTER_SUBPARAGRAPH },
+	{ "counter_subsection",	      LA_COUNTER_SUBSECTION },
+	{ "counter_subsubsection",    LA_COUNTER_SUBSUBSECTION },
+	{ "manual",                   LA_MANUAL },
+	{ "no_label",                 LA_NO_LABEL },
+	{ "sensitive",                LA_SENSITIVE },
+	{ "static",                   LA_STATIC },
+	{ "top_environment",          LA_TOP_ENVIRONMENT }
+};
+
+void LyXLayout::readLabelType(LyXLex & lexrc)
+{
+	pushpophelper pph(lexrc, labelTypeTags, LA_BIBLIO);
+	int le = lexrc.lex();
+	switch (le) {
+	case LyXLex::LEX_UNDEF:
+		lexrc.printError("Unknown labeltype tag `$$Token'");
+		return; break;
+	default: break;
+	}
+	switch (static_cast<LabelTypeTags>(le)) {
+	case LA_NO_LABEL:
+		labeltype = LABEL_NO_LABEL;
+		break;
+	case LA_MANUAL:
+		labeltype = LABEL_MANUAL;
+		break;
+	case LA_TOP_ENVIRONMENT:
+		labeltype = LABEL_TOP_ENVIRONMENT;
+		break;
+	case LA_CENTERED_TOP_ENVIRONMENT:
+		labeltype = LABEL_CENTERED_TOP_ENVIRONMENT;
+		break;
+	case LA_STATIC:
+		labeltype = LABEL_STATIC;
+		break;
+	case LA_SENSITIVE:
+		labeltype = LABEL_SENSITIVE;
+		break;
+	case LA_COUNTER_CHAPTER:
+		labeltype = LABEL_COUNTER_CHAPTER;
+		break;
+	case LA_COUNTER_SECTION:
+		labeltype = LABEL_COUNTER_SECTION;
+		break;
+	case LA_COUNTER_SUBSECTION:
+		labeltype = LABEL_COUNTER_SUBSECTION;
+		break;
+	case LA_COUNTER_SUBSUBSECTION:
+		labeltype = LABEL_COUNTER_SUBSUBSECTION;
+		break;
+	case LA_COUNTER_PARAGRAPH:
+		labeltype = LABEL_COUNTER_PARAGRAPH;
+		break;
+	case LA_COUNTER_SUBPARAGRAPH:
+		labeltype = LABEL_COUNTER_SUBPARAGRAPH;
+		break;
+	case LA_COUNTER_ENUMI:
+		labeltype = LABEL_COUNTER_ENUMI;
+		break;
+	case LA_COUNTER_ENUMII:
+		labeltype = LABEL_COUNTER_ENUMII;
+		break;
+	case LA_COUNTER_ENUMIII:
+		labeltype = LABEL_COUNTER_ENUMIII;
+		break;
+	case LA_COUNTER_ENUMIV:
+		labeltype = LABEL_COUNTER_ENUMIV;
+		break;
+	case LA_BIBLIO:
+		labeltype = LABEL_BIBLIO;
+		break;
+	}
+}
+
+enum MarginTags {
+	MT_STATIC = 1,
+	MT_MANUAL,
+	MT_DYNAMIC,
+	MT_FIRST_DYNAMIC,
+	MT_RIGHT_ADDRESS_BOX
+};
+
+static keyword_item marginTags[] = {
+	{ "dynamic",           MT_DYNAMIC },
+	{ "first_dynamic",     MT_FIRST_DYNAMIC },
+	{ "manual",            MT_MANUAL },
+	{ "right_address_box", MT_RIGHT_ADDRESS_BOX },
+	{ "static",            MT_STATIC }
+};
+
+void LyXLayout::readMargin(LyXLex & lexrc)
+{
+	pushpophelper pph(lexrc, marginTags, MT_RIGHT_ADDRESS_BOX);
+	int le = lexrc.lex();
+	switch(le) {
+	case LyXLex::LEX_UNDEF:
+		lexrc.printError("Unknown margin type tag `$$Token'");
+		return; break;
+	default: break;
+	}
+	switch(static_cast<MarginTags>(le)) {
+	case MT_STATIC:
+		margintype = MARGIN_STATIC;
+		break;
+	case MT_MANUAL:
+		margintype = MARGIN_MANUAL;
+		break;
+	case MT_DYNAMIC:
+		margintype = MARGIN_DYNAMIC;
+		break;
+	case MT_FIRST_DYNAMIC:
+		margintype = MARGIN_FIRST_DYNAMIC;
+		break;
+	case MT_RIGHT_ADDRESS_BOX:
+		margintype = MARGIN_RIGHT_ADDRESS_BOX;
+		break;
+	}
+}
+
+enum LatexTypeTags {
+	LX_PARAGRAPH = 1,
+	LX_COMMAND,
+	LX_ENVIRONMENT,
+	LX_ITEM_ENVIRONMENT,
+	LX_LIST_ENVIRONMENT
+};
+
+static keyword_item latexTypeTags[] = {
+	{ "command",          LX_COMMAND },
+	{ "environment",      LX_ENVIRONMENT },
+	{ "item_environment", LX_ITEM_ENVIRONMENT },
+	{ "list_environment", LX_LIST_ENVIRONMENT },
+	{ "paragraph",        LX_PARAGRAPH }
+};
+
+void LyXLayout::readLatexType(LyXLex & lexrc)
+{
+	pushpophelper pph(lexrc, latexTypeTags, LX_LIST_ENVIRONMENT);
+	int le = lexrc.lex();
+	switch (le) {
+	case LyXLex::LEX_UNDEF:
+		lexrc.printError("Unknown latextype tag `$$Token'");
+		return; break;
+	default: break;
+	}
+	switch (static_cast<LatexTypeTags>(le)) {
+	case LX_PARAGRAPH:
+		latextype= LATEX_PARAGRAPH;
+		break;
+	case LX_COMMAND:
+		latextype= LATEX_COMMAND;
+		break;
+	case LX_ENVIRONMENT:
+		latextype= LATEX_ENVIRONMENT;
+		break;
+	case LX_ITEM_ENVIRONMENT:
+		latextype= LATEX_ITEM_ENVIRONMENT;
+		break;
+	case LX_LIST_ENVIRONMENT:
+		latextype= LATEX_LIST_ENVIRONMENT;
+		break;
+	}
+}
+
+enum SpacingTags {
+	ST_SPACING_SINGLE = 1,
+	ST_SPACING_ONEHALF,
+	ST_SPACING_DOUBLE,
+	ST_OTHER
+};
+
+static keyword_item spacingTags[] = {
+	{"double",  ST_SPACING_DOUBLE },
+	{"onehalf", ST_SPACING_ONEHALF },
+	{"other",   ST_OTHER },
+	{"single",  ST_SPACING_SINGLE }
+};
+
+void LyXLayout::readSpacing(LyXLex & lexrc)
+{
+	pushpophelper pph(lexrc, spacingTags, ST_OTHER);
+	int le = lexrc.lex();
+	switch(le) {
+	case LyXLex::LEX_UNDEF:
+		lexrc.printError("Unknown spacing token `$$Token'");
+		return; break;
+	default: break;
+	}
+	switch(static_cast<SpacingTags>(le)) {
+	case ST_SPACING_SINGLE:
+		spacing.set(Spacing::Single);
+		break;
+	case ST_SPACING_ONEHALF:
+		spacing.set(Spacing::Onehalf);
+		break;
+	case ST_SPACING_DOUBLE:
+		spacing.set(Spacing::Double);
+		break;
+	case ST_OTHER:
+		lexrc.next();
+		spacing.set(Spacing::Other, lexrc.GetFloat());
+		break;
+	}
+}
 
 /* ******************************************************************* */
 
@@ -620,6 +734,48 @@ bool LyXTextClass::do_readStyle(LyXLex & lexrc, LyXLayout & lay)
 }
 
 
+enum TextClassTags {
+	TC_OUTPUTTYPE = 1,
+	TC_INPUT,
+	TC_STYLE,
+	TC_NOSTYLE,
+	TC_COLUMNS,
+	TC_SIDES,
+	TC_PAGESTYLE,
+	TC_DEFAULTFONT,
+	TC_MAXCOUNTER,
+	TC_SECNUMDEPTH,
+	TC_TOCDEPTH,
+	TC_CLASSOPTIONS,
+	TC_PREAMBLE,
+	TC_PROVIDESAMSMATH,
+	TC_PROVIDESMAKEIDX,
+	TC_PROVIDESURL,
+	TC_LEFTMARGIN,
+	TC_RIGHTMARGIN
+};
+
+static keyword_item textClassTags[] = {
+	{ "classoptions",    TC_CLASSOPTIONS },
+	{ "columns",         TC_COLUMNS },
+	{ "defaultfont",     TC_DEFAULTFONT },
+	{ "input",           TC_INPUT },
+	{ "leftmargin",      TC_LEFTMARGIN },
+	{ "maxcounter",      TC_MAXCOUNTER },
+	{ "nostyle",         TC_NOSTYLE },
+	{ "outputtype",      TC_OUTPUTTYPE },
+	{ "pagestyle",       TC_PAGESTYLE },
+	{ "preamble",        TC_PREAMBLE },
+	{ "providesamsmath", TC_PROVIDESAMSMATH },
+	{ "providesmakeidx", TC_PROVIDESMAKEIDX },
+	{ "providesurl",     TC_PROVIDESURL },
+	{ "rightmargin",     TC_RIGHTMARGIN },
+	{ "secnumdepth",     TC_SECNUMDEPTH },
+	{ "sides",           TC_SIDES },
+	{ "style",           TC_STYLE },
+	{ "tocdepth",        TC_TOCDEPTH }
+};
+
 // Reads a textclass structure from file.
 bool LyXTextClass::Read(string const & filename, bool merge)
 {
@@ -632,7 +788,7 @@ bool LyXTextClass::Read(string const & filename, bool merge)
 				     << MakeDisplayPath(filename)
 				     << endl;
 	
-	LyXLex lexrc(layoutTags, sizeof(layoutTags)/sizeof(keyword_item));
+	LyXLex lexrc(textClassTags, TC_RIGHTMARGIN);
 	bool error = false;
 
         lexrc.setFile(filename);
@@ -640,36 +796,23 @@ bool LyXTextClass::Read(string const & filename, bool merge)
 
 	// parsing
 	while (lexrc.IsOK() && !error) {
-		switch(lexrc.lex()) {
-		case -2:
-			break;
+		int le = lexrc.lex();
+		switch(le) {
+		case LyXLex::LEX_FEOF:
+			continue; break;
 
-		case -1:                                 
-			lexrc.printError("Unknown tag `$$Token'");
+		case LyXLex::LEX_UNDEF:                                 
+			lexrc.printError("Unknown TextClass tag `$$Token'");
 			error = true;
-			break;
-
-		case LT_OUTPUTTYPE:   // output type definition
-		        switch(lexrc.lex()) {
-			case LT_OTLATEX:
-			        outputType_ = LATEX;
-				break;
-			case LT_OTLINUXDOC:
-			        outputType_ = LINUXDOC;
-				break;
-			case LT_OTDOCBOOK:
-			        outputType_ = DOCBOOK;
-				break;
-			case LT_OTLITERATE:
-			        outputType_ = LITERATE;
-				break;
-			default:
-			        lexrc.printError("Unknown output type `$$Token'");
-				break;
-			}
+			continue; break;
+		default: break;
+		}
+		switch(static_cast<TextClassTags>(le)) {
+		case TC_OUTPUTTYPE:   // output type definition
+			readOutputType(lexrc);
 			break;
 			
-		case LT_INPUT: // Include file
+		case TC_INPUT: // Include file
 		        if (lexrc.next()) {
 		        	string tmp = LibFileSearch("layouts",
 							    lexrc.GetString(), 
@@ -683,7 +826,7 @@ bool LyXTextClass::Read(string const & filename, bool merge)
 			}
 			break;
 
-		case LT_STYLE:
+		case TC_STYLE:
 			if (lexrc.next()) {
 				string name = subst(lexrc.GetString(),
 						    '_', ' ');
@@ -703,7 +846,7 @@ bool LyXTextClass::Read(string const & filename, bool merge)
 			}
 			break;
 
-		case LT_NOSTYLE:
+		case TC_NOSTYLE:
 			if (lexrc.next()) {
 				string style = subst(lexrc.GetString(),
 						     '_', ' ');
@@ -713,12 +856,12 @@ bool LyXTextClass::Read(string const & filename, bool merge)
 			}
 			break;
 
-		case LT_COLUMNS:
+		case TC_COLUMNS:
 			if (lexrc.next())
 				columns_ = lexrc.GetInteger();
 			break;
 			
-		case LT_SIDES:
+		case TC_SIDES:
 			if (lexrc.next()) {
 				switch(lexrc.GetInteger()) {
 				case 1: sides_ = OneSide; break;
@@ -733,12 +876,12 @@ bool LyXTextClass::Read(string const & filename, bool merge)
 			}
 			break;
 			
-		case LT_PAGESTYLE:
+		case TC_PAGESTYLE:
 		        lexrc.next();
 			pagestyle_ = strip(lexrc.GetString());
 			break;
 			
-		case LT_DEFAULTFONT:
+		case TC_DEFAULTFONT:
 			defaultfont_.lyxRead(lexrc);
 			if (!defaultfont_.resolved()) {
 				lexrc.printError("Warning: defaultfont should "
@@ -747,109 +890,52 @@ bool LyXTextClass::Read(string const & filename, bool merge)
 			}
 			break;
 
-		case LT_MAXCOUNTER:
-			switch (lexrc.lex()) {
-			case LT_COUNTER_CHAPTER:
-				maxcounter_ = LABEL_COUNTER_CHAPTER;
-				break;
-			case LT_COUNTER_SECTION:
-				maxcounter_ = LABEL_COUNTER_SECTION;
-				break;
-			case LT_COUNTER_SUBSECTION:
-				maxcounter_ = LABEL_COUNTER_SUBSECTION;
-				break;
-			case LT_COUNTER_SUBSUBSECTION:
-				maxcounter_ = LABEL_COUNTER_SUBSUBSECTION;
-				break;
-			case LT_COUNTER_PARAGRAPH:
-				maxcounter_ = LABEL_COUNTER_PARAGRAPH;
-				break;
-			case LT_COUNTER_SUBPARAGRAPH:
-				maxcounter_ = LABEL_COUNTER_SUBPARAGRAPH;
-				break;
-			case LT_COUNTER_ENUMI:
-				maxcounter_ = LABEL_COUNTER_ENUMI;
-				break;
-			case LT_COUNTER_ENUMII:
-				maxcounter_ = LABEL_COUNTER_ENUMII;
-				break;
-			case LT_COUNTER_ENUMIII:
-				maxcounter_ = LABEL_COUNTER_ENUMIII;
-				break;
-			case LT_COUNTER_ENUMIV:
-				maxcounter_ = LABEL_COUNTER_ENUMIV;
-				break;
-			}
+		case TC_MAXCOUNTER:
+			readMaxCounter(lexrc);
 			break;
 
-		case LT_SECNUMDEPTH:
+		case TC_SECNUMDEPTH:
 			lexrc.next();
 			secnumdepth_ = lexrc.GetInteger();
 			break;
 
-		case LT_TOCDEPTH:
+		case TC_TOCDEPTH:
 			lexrc.next();
 			tocdepth_ = lexrc.GetInteger();
 			break;
 
 			// First step to support options 
-	        case LT_CLASSOPTIONS:
-	        {
-	                bool getout = true;
-	                while (getout && lexrc.IsOK()) { 
-				switch (lexrc.lex()) {
-				case LT_FONTSIZE:
-					lexrc.next();
-					opt_fontsize_ = strip(lexrc.GetString());
-					break;
-				case LT_PAGESTYLE:
-					lexrc.next();
-					opt_pagestyle_ = strip(lexrc.GetString()); 
-					break;
-				case LT_OTHER:
-					lexrc.next();
-					options_ = lexrc.GetString();
-					break;
-				case LT_END: getout = false; break;
-				default:
-					lexrc.printError("Out of context tag `$$Token'");
-					break;
-				}
-			}
+	        case TC_CLASSOPTIONS:
+			readClassOptions(lexrc);
 		        break;
-		}
 
-		case LT_PREAMBLE:
+		case TC_PREAMBLE:
 			preamble_ = lexrc.getLongString("EndPreamble");
 			break;
 
-		case LT_PROVIDESAMSMATH:
+		case TC_PROVIDESAMSMATH:
 			if (lexrc.next() && lexrc.GetInteger())
 				provides_ |= amsmath;
 			break;
 
-		case LT_PROVIDESMAKEIDX:
+		case TC_PROVIDESMAKEIDX:
 			if (lexrc.next() && lexrc.GetInteger())
 				provides_ |= makeidx;
 			break;
 
-		case LT_PROVIDESURL:
+		case TC_PROVIDESURL:
 			if (lexrc.next() && lexrc.GetInteger())
 				provides_ = url;
 			break;
 
-		case LT_LEFTMARGIN:	// left margin type
+		case TC_LEFTMARGIN:	// left margin type
 		        if (lexrc.next())
 				leftmargin_ = lexrc.GetString();
 			break;			
 
-		case LT_RIGHTMARGIN:	// right margin type
+		case TC_RIGHTMARGIN:	// right margin type
 			if (lexrc.next())
 				rightmargin_ = lexrc.GetString();
-			break;
-
-		default:
-			lexrc.printError("Out of context tag `$$Token'");
 			break;
 		}
 	}	
@@ -864,6 +950,163 @@ bool LyXTextClass::Read(string const & filename, bool merge)
 				      << endl;
 
 	return error;
+}
+
+enum OutputTypeTags {
+	OT_OTLATEX = 1,
+	OT_OTLINUXDOC,
+	OT_OTDOCBOOK,
+	OT_OTLITERATE
+};
+
+static keyword_item outputTypeTags[] = {
+	{ "docbook", OT_OTDOCBOOK },
+	{ "latex", OT_OTLATEX },
+	{ "linuxdoc", OT_OTLINUXDOC },
+	{ "literate", OT_OTLITERATE }
+};
+
+void LyXTextClass::readOutputType(LyXLex & lexrc)
+{
+	pushpophelper pph(lexrc, outputTypeTags, OT_OTLITERATE);
+	int le = lexrc.lex();
+	switch(le) {
+	case LyXLex::LEX_UNDEF:
+		lexrc.printError("Unknown output type `$$Token'");
+		return; break;
+	default: break;
+	}
+	switch(static_cast<OutputTypeTags>(le)) {
+	case OT_OTLATEX:
+		outputType_ = LATEX;
+		break;
+	case OT_OTLINUXDOC:
+		outputType_ = LINUXDOC;
+		break;
+	case OT_OTDOCBOOK:
+		outputType_ = DOCBOOK;
+		break;
+	case OT_OTLITERATE:
+		outputType_ = LITERATE;
+		break;
+	}
+}
+
+enum MaxCounterTags {
+	MC_COUNTER_CHAPTER = 1,
+	MC_COUNTER_SECTION,
+	MC_COUNTER_SUBSECTION,
+	MC_COUNTER_SUBSUBSECTION,
+	MC_COUNTER_PARAGRAPH,
+	MC_COUNTER_SUBPARAGRAPH,
+	MC_COUNTER_ENUMI,
+	MC_COUNTER_ENUMII,
+	MC_COUNTER_ENUMIII,
+	MC_COUNTER_ENUMIV
+};
+
+static keyword_item maxCounterTags[] = {
+	{"counter_chapter", MC_COUNTER_CHAPTER },
+	{"counter_enumi", MC_COUNTER_ENUMI },
+	{"counter_enumii", MC_COUNTER_ENUMII },
+	{"counter_enumiii", MC_COUNTER_ENUMIII },
+	{"counter_enumiv", MC_COUNTER_ENUMIV },
+	{"counter_paragraph", MC_COUNTER_PARAGRAPH },
+	{"counter_section", MC_COUNTER_SECTION },
+	{"counter_subparagraph", MC_COUNTER_SUBPARAGRAPH },
+	{"counter_subsection", MC_COUNTER_SUBSECTION },
+	{"counter_subsubsection", MC_COUNTER_SUBSUBSECTION }
+};
+
+void LyXTextClass::readMaxCounter(LyXLex & lexrc)
+{
+	pushpophelper pph(lexrc, maxCounterTags, MC_COUNTER_ENUMIV);
+	int le = lexrc.lex();
+	switch(le) {
+	case LyXLex::LEX_UNDEF:
+		lexrc.printError("Unknown MaxCounter tag `$$Token'");
+		return; break;
+	default: break;
+	}
+	switch (static_cast<MaxCounterTags>(le)) {
+	case MC_COUNTER_CHAPTER:
+		maxcounter_ = LABEL_COUNTER_CHAPTER;
+		break;
+	case MC_COUNTER_SECTION:
+		maxcounter_ = LABEL_COUNTER_SECTION;
+		break;
+	case MC_COUNTER_SUBSECTION:
+		maxcounter_ = LABEL_COUNTER_SUBSECTION;
+		break;
+	case MC_COUNTER_SUBSUBSECTION:
+		maxcounter_ = LABEL_COUNTER_SUBSUBSECTION;
+		break;
+	case MC_COUNTER_PARAGRAPH:
+		maxcounter_ = LABEL_COUNTER_PARAGRAPH;
+		break;
+	case MC_COUNTER_SUBPARAGRAPH:
+		maxcounter_ = LABEL_COUNTER_SUBPARAGRAPH;
+		break;
+	case MC_COUNTER_ENUMI:
+		maxcounter_ = LABEL_COUNTER_ENUMI;
+		break;
+	case MC_COUNTER_ENUMII:
+		maxcounter_ = LABEL_COUNTER_ENUMII;
+		break;
+	case MC_COUNTER_ENUMIII:
+		maxcounter_ = LABEL_COUNTER_ENUMIII;
+		break;
+	case MC_COUNTER_ENUMIV:
+		maxcounter_ = LABEL_COUNTER_ENUMIV;
+		break;
+	}
+}
+
+enum ClassOptionsTags {
+	CO_FONTSIZE = 1,
+	CO_PAGESTYLE,
+	CO_OTHER,
+	CO_END
+};
+
+static keyword_item classOptionsTags[] = {
+	{"end", CO_END },
+	{"fontsize", CO_FONTSIZE },
+	{"other", CO_OTHER },
+	{"pagestyle", CO_PAGESTYLE }
+};
+
+void LyXTextClass::readClassOptions(LyXLex & lexrc)
+{
+	lexrc.pushTable(classOptionsTags, CO_END);
+	bool getout = false;
+	while (!getout && lexrc.IsOK()) {
+		int le = lexrc.lex();
+		switch (le) {
+		case LyXLex::LEX_UNDEF:
+			lexrc.printError("Unknown ClassOption tag `$$Token'");
+			continue; break;
+		default: break;
+		}
+		switch (static_cast<ClassOptionsTags>(le)) {
+		case CO_FONTSIZE:
+			lexrc.next();
+			opt_fontsize_ = strip(lexrc.GetString());
+			break;
+		case CO_PAGESTYLE:
+			lexrc.next();
+			opt_pagestyle_ = strip(lexrc.GetString()); 
+			break;
+		case CO_OTHER:
+			lexrc.next();
+			options_ = lexrc.GetString();
+			break;
+		case CO_END:
+			getout = true;
+			break;
+		}
+	}
+	lexrc.popTable();
 }
 
 
@@ -1099,7 +1342,7 @@ bool LyXTextClassList::Read ()
 	if (!lex.IsOK()) {
 		lyxerr << "LyXTextClassList::Read: unable to open "
 			"textclass file  `" << MakeDisplayPath(real_file, 1000)
-		       << "\'\nCheck your installation. LyX can't continue."
+		       << "'\nCheck your installation. LyX can't continue."
 		       << endl;
  		return false;
 	}

@@ -1,14 +1,14 @@
 // -*- C++ -*-
 /* This file is part of
  * ======================================================
-* 
-*           LyX, The Document Processor
-*	    Copyright (C) 1995 Matthias Ettrich
-*
-*           This file is Copyright (C) 1996-1998
-*           Lars Gullik Bjønnes
-*
-* ====================================================== */
+ * 
+ *           LyX, The Document Processor
+ *	    Copyright (C) 1995 Matthias Ettrich
+ *
+ *           This file is Copyright (C) 1996-1999
+ *           Lars Gullik Bjønnes
+ *
+ * ====================================================== */
 
 #ifndef TOOLBAR_H
 #define TOOLBAR_H
@@ -30,7 +30,7 @@
 class Toolbar {
 public:
 	///
-	Toolbar(Toolbar const &, LyXView *o, int x, int y);
+	Toolbar(Toolbar const &, LyXView * o, int x, int y);
 
 	///
 	Toolbar()
@@ -63,22 +63,22 @@ public:
 	};
 
 	///
-	Combox *combox;
+	Combox * combox;
 
 	///
-	void read(LyXLex&);
+	void read(LyXLex &);
 	/// sets up the default toolbar
 	void init();
 	/// (re)sets the toolbar
-	void set(bool doingmain= false);
+	void set(bool doingmain = false);
 
 	/** this is to be the entry point to the toolbar
 	  frame, where you can change the toolbar realtime. */
 	void edit();
 	/// add a new button to the toolbar.
-    	void add(int , bool doclean= true);
+    	void add(int , bool doclean = true);
 	/// name of func instead of kb_action
-	void add(string const & , bool doclean= true);
+	void add(string const & , bool doclean = true);
 	/// invokes the n'th icon in the toolbar
 	void push(int);
 	/// activates the toolbar
@@ -87,29 +87,29 @@ public:
         void deactivate();
 
 	///
-	static void ToolbarCB(FL_OBJECT*, long);
+	static void ToolbarCB(FL_OBJECT *, long);
 	///
 	static void BubbleTimerCB(FL_OBJECT *, long);
 	///
-	static int BubblePost(FL_OBJECT *ob, int event,
-			      FL_Coord mx, FL_Coord my, int key, void *xev);
+	static int BubblePost(FL_OBJECT * ob, int event,
+			      FL_Coord mx, FL_Coord my, int key, void * xev);
 
 private:
 	///
 	struct toolbarItem
 	{
 		///
-		toolbarItem *next;
+		toolbarItem * next;
 		///
 		int action;
 		///
 		string help;
 		///
-		FL_OBJECT *icon;
+		FL_OBJECT * icon;
 		///
 		bool IsBitmap;
 		///
-		char **pixmap;
+		char const ** pixmap;
 		///
 		toolbarItem(){
 			next = 0;
@@ -129,11 +129,11 @@ private:
 	};
 
 	/// a list containing all the buttons
-	toolbarItem *toollist;
+	toolbarItem * toollist;
 	///
-	LyXView *owner;
+	LyXView * owner;
 	///
-	FL_OBJECT *bubble_timer;
+	FL_OBJECT * bubble_timer;
 	/// Starting position
 	int sxpos, sypos;
 	///
@@ -152,7 +152,7 @@ private:
 	bool cleaned;
 
 	///
-	char **getPixmap(kb_action, string const & arg = string());
+	char const ** getPixmap(kb_action, string const & arg = string());
 	/// removes all toolbar buttons from the toolbar.
 	void clean();
 

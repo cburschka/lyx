@@ -714,8 +714,7 @@ static void runqueue()
 static void addwait(int psx, int psy, int pswid, int pshgh, figdata *data)
 {
 	// recompute the stuff and put in the queue
-	queue *p, *p2;
-	p = new queue;
+	queue * p = new queue;
 	p->ofsx = psx;
 	p->ofsy = psy;
 	p->rx = ((float)data->raw_wid*72)/pswid;
@@ -725,7 +724,7 @@ static void addwait(int psx, int psy, int pswid, int pshgh, figdata *data)
 	p->next = 0;
 
 	// now put into queue
-	p2 = gsqueue;
+	queue * p2 = gsqueue;
 	if (!gsqueue) gsqueue = p;
 	else {
 		while (p2->next) p2 = p2->next;
@@ -737,17 +736,15 @@ static void addwait(int psx, int psy, int pswid, int pshgh, figdata *data)
 }
 
 
-static figdata *getfigdata(int wid, int hgh, string const & fname, 
-			   int psx, int psy, int pswid, int pshgh, 
-			   int raw_wid, int raw_hgh, float angle, char flags)
+static figdata * getfigdata(int wid, int hgh, string const & fname, 
+			    int psx, int psy, int pswid, int pshgh, 
+			    int raw_wid, int raw_hgh, float angle, char flags)
 {
 	/* first search for an exact match with fname and width/height */
-	int i = 0;
-	figdata *p;
-	XWindowAttributes wa;
 
 	if (fname.empty()) return 0;
 
+	int i = 0;
 	while (i < bmpinsref) {
 		if (bitmaps[i]->wid == wid && bitmaps[i]->hgh == hgh &&
 		    bitmaps[i]->flags == flags && bitmaps[i]->fname == fname &&
@@ -762,12 +759,12 @@ static figdata *getfigdata(int wid, int hgh, string const & fname,
 	if (bmpinsref > bmparrsize) {
 		// allocate more space
 		bmparrsize += figallocchunk;
-		figdata **tmp = (figdata**) malloc(sizeof(figdata*)*bmparrsize);
+		figdata ** tmp = (figdata**) malloc(sizeof(figdata*)*bmparrsize);
 		memcpy(tmp, bitmaps, sizeof(figdata*)*(bmparrsize-figallocchunk));
 		free(bitmaps);
 		bitmaps = tmp;
 	}
-	p = new figdata;
+	figdata * p = new figdata;
 	bitmaps[bmpinsref-1] = p;
 	p->wid = wid;
 	p->hgh = hgh;
@@ -776,6 +773,7 @@ static figdata *getfigdata(int wid, int hgh, string const & fname,
 	p->angle = angle;
 	p->fname = fname;
 	p->flags = flags;
+	XWindowAttributes wa;
 	XGetWindowAttributes(fl_display, fl_get_canvas_id(
 		figinset_canvas), &wa);
 
@@ -815,34 +813,29 @@ static void getbitmap(figdata *p)
 
 static void makeupdatelist(figdata *p)
 {
-	int i;
-
-	for (i = 0; i < figinsref; ++i) if (figures[i]->data == p) {
-		if (lyxerr.debugging()) {
-			lyxerr << "Updating inset " << figures[i]->inset
-			       << endl;
+	for (int i = 0; i < figinsref; ++i)
+		if (figures[i]->data == p) {
+			if (lyxerr.debugging()) {
+				lyxerr << "Updating inset "
+				       << figures[i]->inset
+				       << endl;
+			}
+			//UpdateInset(figures[i]->inset);
+			// add inset figures[i]->inset into to_update list
+			PutInsetIntoInsetUpdateList(figures[i]->inset);
 		}
-		//UpdateInset(figures[i]->inset);
-		// add inset figures[i]->inset into to_update list
-		PutInsetIntoInsetUpdateList(figures[i]->inset);
-	}
 }
 
 
-void sigchldchecker(pid_t pid, int *status)
+void sigchldchecker(pid_t pid, int * status)
 {
-	int i;
-	figdata *p;
-
-	bool pid_handled = false;
-	
 	lyxerr.debug() << "Got pid = " << pid << endl;
-	pid_handled = false;
-	for (i = bmpinsref - 1; i >= 0; --i) {
+	bool pid_handled = false;
+	for (int i = bmpinsref - 1; i >= 0; --i) {
 		if (bitmaps[i]->reading && pid == bitmaps[i]->gspid) {
 			lyxerr.debug() << "Found pid in bitmaps" << endl;
 			// now read the file and remove it from disk
-			p = bitmaps[i];
+			figdata * p = bitmaps[i];
 			p->reading = false;
 			if (bitmaps[i]->gsdone) *status = 0;
 			if (*status == 0) {
@@ -877,7 +870,7 @@ void sigchldchecker(pid_t pid, int *status)
 	}
 	if (!pid_handled) {
 		lyxerr.debug() << "Checking pid in pidwait" << endl;
-		pidwait *p = pw, *prev = 0;
+		pidwait * p = pw, * prev = 0;
 		while (p) {
 			if (pid == p->pid) {
 				lyxerr.debug() << "Found pid in pidwait" << endl;
@@ -926,9 +919,8 @@ void sigchldchecker(pid_t pid, int *status)
 
 static void getbitmaps()
 {
-	int i;
 	bitmap_waiting = false;
-	for (i = 0; i < bmpinsref; ++i)
+	for (int i = 0; i < bmpinsref; ++i)
 		if (bitmaps[i]->gspid > 0 && !bitmaps[i]->reading)
 			getbitmap(bitmaps[i]);
 }
@@ -936,8 +928,6 @@ static void getbitmaps()
 
 static void RegisterFigure(InsetFig *fi)
 {
-	Figref *tmpfig;
-
 	if (figinsref == 0) InitFigures();
 	fi->form = 0;
 	++figinsref;
@@ -949,7 +939,7 @@ static void RegisterFigure(InsetFig *fi)
 		free(figures);
 		figures = tmp;
 	}
-	tmpfig = new Figref;
+	Figref * tmpfig = new Figref;
 	tmpfig->data = 0;
 	tmpfig->inset = fi;
 	figures[figinsref-1] = tmpfig;
@@ -962,7 +952,7 @@ static void RegisterFigure(InsetFig *fi)
 }
 
 
-int FindFigIndex(Figref *tmpfig)
+int FindFigIndex(Figref * tmpfig)
 {
 	int i = 0;
 	while (i < figinsref) {
@@ -973,10 +963,9 @@ int FindFigIndex(Figref *tmpfig)
 }
 
 
-static void UnregisterFigure(InsetFig *fi)
+static void UnregisterFigure(InsetFig * fi)
 {
-	Figref *tmpfig = fi->figure;
-	int i;
+	Figref * tmpfig = fi->figure;
 
 	if (tmpfig->data) freefigdata(tmpfig->data);
 	if (tmpfig->inset->form) {
@@ -993,7 +982,7 @@ static void UnregisterFigure(InsetFig *fi)
 		tmpfig->inset->form = 0;
 #endif
 	}
-	i = FindFigIndex(tmpfig);
+	int i = FindFigIndex(tmpfig);
 	--figinsref;
 	while (i < figinsref) {
 		figures[i] = figures[i+1];
@@ -1005,9 +994,9 @@ static void UnregisterFigure(InsetFig *fi)
 }
 
 
-static char* NextToken(FILE *myfile)
+static char * NextToken(FILE * myfile)
 {
-	char* token = 0;
+	char * token = 0;
 	char c;
 	int i = 0;
    
@@ -1024,7 +1013,7 @@ static char* NextToken(FILE *myfile)
 }
 
 
-InsetFig::InsetFig(int tmpx, int tmpy, Buffer *o)
+InsetFig::InsetFig(int tmpx, int tmpy, Buffer * o)
 	: owner(o)
 {
 	wid = tmpx;
@@ -1051,25 +1040,25 @@ InsetFig::~InsetFig()
 }
 
 
-int InsetFig::Ascent(LyXFont const&) const
+int InsetFig::Ascent(LyXFont const &) const
 {
 	return hgh + 3;
 }
 
 
-int InsetFig::Descent(LyXFont const&) const
+int InsetFig::Descent(LyXFont const &) const
 {
 	return 1;
 }
 
 
-int InsetFig::Width(LyXFont const&) const
+int InsetFig::Width(LyXFont const &) const
 {
 	return wid + 2;
 }
 
 
-void InsetFig::Draw(LyXFont font, LyXScreen &scr, int baseline, float &x)
+void InsetFig::Draw(LyXFont font, LyXScreen & scr, int baseline, float & x)
 {
 	if (bitmap_waiting) getbitmaps();
 
@@ -1119,7 +1108,7 @@ void InsetFig::Draw(LyXFont font, LyXScreen &scr, int baseline, float &x)
 }
 
 
-void InsetFig::Write(FILE *file)
+void InsetFig::Write(FILE * file)
 {
 	Regenerate();
 	fprintf(file, "Figure size %d %d\n", wid, hgh);
@@ -1138,7 +1127,7 @@ void InsetFig::Write(FILE *file)
 }
 
 
-void InsetFig::Read(LyXLex &lex)
+void InsetFig::Read(LyXLex & lex)
 {
 	string buf;
 	bool finished = false;
@@ -1222,7 +1211,7 @@ void InsetFig::Read(LyXLex &lex)
 }
 
 
-int InsetFig::Latex(FILE *file, signed char /* fragile*/ )
+int InsetFig::Latex(FILE * file, signed char /* fragile*/ )
 {
 	Regenerate();
 	if (!cmd.empty()) fprintf(file, "%s ", cmd.c_str());
@@ -1230,7 +1219,7 @@ int InsetFig::Latex(FILE *file, signed char /* fragile*/ )
 }
 
 
-int InsetFig::Latex(string &file, signed char /* fragile*/ )
+int InsetFig::Latex(string & file, signed char /* fragile*/ )
 {
 	Regenerate();
 	file += cmd + ' ';
@@ -1244,7 +1233,7 @@ int InsetFig::Linuxdoc(string &/*file*/)
 }
 
 
-int InsetFig::DocBook(string &file)
+int InsetFig::DocBook(string & file)
 {
 	string figurename= fname;
 
@@ -1256,7 +1245,7 @@ int InsetFig::DocBook(string &file)
 }
 
 
-void InsetFig::Validate(LaTeXFeatures &features) const
+void InsetFig::Validate(LaTeXFeatures & features) const
 {
 	features.graphics = true;
 	if (subfigure) features.subfigure = true;
@@ -1354,7 +1343,6 @@ Inset::Code InsetFig::LyxCode() const
 void InsetFig::Regenerate()
 {
 	string cmdbuf;
-	string gcmd;
 	string resizeW, resizeH;
 	string rotate, recmd;
 
@@ -1369,7 +1357,7 @@ void InsetFig::Regenerate()
 	string buf1 = OnlyPath(owner->getFileName());
 	string fname2 = MakeRelPath(fname, buf1);
 
-	gcmd = "\\includegraphics{" + fname2 + '}';
+	string gcmd = "\\includegraphics{" + fname2 + '}';
 	
 	switch (wtype) {
 	case DEF:
@@ -1479,20 +1467,15 @@ void InsetFig::Regenerate()
 
 void InsetFig::TempRegenerate()
 {
-	string gcmd;
 	string cmdbuf;
 	string resizeW, resizeH;
 	string rotate, recmd;
-	string tsubcap;
 	
-	char const *tfname; // *textra;
-	float tangle, txwid, txhgh;
-
-	tfname = fl_get_input(form->EpsFile);
-	tsubcap = fl_get_input(form->Subcaption);
-	tangle = atof(fl_get_input(form->Angle));
-	txwid = atof(fl_get_input(form->Width));
-	txhgh = atof(fl_get_input(form->Height));
+	char const * tfname = fl_get_input(form->EpsFile);
+	string tsubcap = fl_get_input(form->Subcaption);
+	float tangle = atof(fl_get_input(form->Angle));
+	float txwid = atof(fl_get_input(form->Width));
+	float txhgh = atof(fl_get_input(form->Height));
 
 	if (!tfname || !*tfname) {
 		//fl_set_object_label(form->cmd, "");
@@ -1506,7 +1489,7 @@ void InsetFig::TempRegenerate()
 	string buf1 = OnlyPath(owner->getFileName());
 	string fname2 = MakeRelPath(tfname, buf1);
 	// \includegraphics*[<llx,lly>][<urx,ury>]{file}
-	gcmd = "\\includegraphics{" + fname2 + '}';
+	string gcmd = "\\includegraphics{" + fname2 + '}';
 	
 	switch (twtype) {
 	case DEF:
@@ -1604,25 +1587,20 @@ void InsetFig::TempRegenerate()
 		cmdbuf = string("\\subfigure{") + tsubcap
 		  + string("}{") + cmdbuf + "}";
 	}
-
-	
-	//fl_set_object_label(form->cmd, cmdbuf.c_str());
-	//fl_redraw_object(form->cmd);
 }
 
 
 void InsetFig::Recompute()
 {
 	bool changed = changedfname;
-	int newx, newy, nraw_x, nraw_y, frame_wid, frame_hgh;
-	float sin_a, cos_a;
+	int newx, newy, nraw_x, nraw_y;
 
 	if (changed) GetPSSizes();
 
-	sin_a = sin (angle / DEG2PI);        /* rotation; H. Zeller 021296 */
-	cos_a = cos (angle / DEG2PI);
-	frame_wid = (int) ceil (fabs(cos_a * pswid) + fabs(sin_a * pshgh));
-	frame_hgh= (int) ceil (fabs(cos_a * pshgh) + fabs(sin_a * pswid));
+	float sin_a = sin (angle / DEG2PI);  /* rotation; H. Zeller 021296 */
+	float cos_a = cos (angle / DEG2PI);
+	int frame_wid = (int) ceil (fabs(cos_a * pswid) + fabs(sin_a * pshgh));
+	int frame_hgh= (int) ceil (fabs(cos_a * pshgh) + fabs(sin_a * pswid));
 
 	/* now recompute wid and hgh, and if that is changed, set changed */
 	/* this depends on chosen size of the picture and its bbox */
@@ -1702,7 +1680,7 @@ void InsetFig::Recompute()
 	subfigure = psubfigure;
 
 	if (changed) {
-		figdata *pf = figure->data;
+		figdata * pf = figure->data;
 
 		// get new data
 		if (!fname.empty() && (flags & 3) && !lyxrc->ps_command.empty()) {
@@ -1726,7 +1704,6 @@ void InsetFig::GetPSSizes()
 {
 #warning rewrite this method to use ifstream
 	/* get %%BoundingBox: from postscript file */
-	int lastchar, c;
 	char * p = 0;
 	
 	/* defaults to associated size
@@ -1749,9 +1726,9 @@ void InsetFig::GetPSSizes()
 	pswid = 595;
 	pshgh = 842;
 
-	lastchar = fgetc(f);
+	int lastchar = fgetc(f);
 	for (;;) {
-		c = fgetc(f);
+		int c = fgetc(f);
 		if (c == EOF) {
 			lyxerr.debug() << "End of (E)PS file reached and"
 				" no BoundingBox!" << endl;
@@ -1798,7 +1775,7 @@ void InsetFig::GetPSSizes()
 void InsetFig::CallbackFig(long arg)
 {
 	bool regen = false;
-	char const *p;
+	char const * p;
 
 	if (lyxerr.debugging()) {
 		printf("Figure callback, arg %ld\n", arg);
@@ -1907,8 +1884,7 @@ void InsetFig::CallbackFig(long arg)
 		break;
 	case 7:				/* apply */
 	case 8:				/* ok (apply and close) */
-		if(!current_view->buffer()->isReadonly())
-		{
+		if(!current_view->buffer()->isReadonly()) {
 			wtype = twtype;
 			htype = thtype;
 			xwid = atof(fl_get_input(form->Width));
@@ -1968,6 +1944,7 @@ void InsetFig::CallbackFig(long arg)
 	if (regen) TempRegenerate();
 }
 
+
 inline void DisableFigurePanel(FD_Figure * const form)
 {
         fl_deactivate_object(form->EpsFile);
@@ -2002,6 +1979,7 @@ inline void DisableFigurePanel(FD_Figure * const form)
 	fl_set_object_lcol (form->OkBtn, FL_INACTIVE);
 	fl_set_object_lcol (form->ApplyBtn, FL_INACTIVE);
 }
+
 
 inline void EnableFigurePanel(FD_Figure * const form)
 {
@@ -2038,10 +2016,10 @@ inline void EnableFigurePanel(FD_Figure * const form)
 	fl_set_object_lcol (form->ApplyBtn, FL_BLACK);
 }
 
+
 void InsetFig::RestoreForm()
 {
 	char buf[32];
-	int pflags;
 
 	EnableFigurePanel(form);
 
@@ -2070,7 +2048,7 @@ void InsetFig::RestoreForm()
 		fl_activate_object(form->Height);
 	}
 
-	pflags = flags & 3;
+	int pflags = flags & 3;
 	fl_set_button(form->Wysiwyg0, (pflags == 0));
 	fl_set_button(form->Wysiwyg1, (pflags == 1));
 	fl_set_button(form->Wysiwyg2, (pflags == 2));
@@ -2100,11 +2078,9 @@ void InsetFig::RestoreForm()
 }
 
 
-void InsetFig::Preview(char const *p)
+void InsetFig::Preview(char const * p)
 {
-	int pid;
-
- 	pid = fork();
+ 	int pid = fork();
 
   	if (pid == -1) {
   		lyxerr << "Cannot fork process!" << endl;
@@ -2129,7 +2105,6 @@ void InsetFig::Preview(char const *p)
 
 void InsetFig::BrowseFile()
 {
-	string buf, buf2, bufclip;
 	static string current_figure_path;
 	static int once = 0;
 	LyXFileDlg fileDlg;
@@ -2140,8 +2115,8 @@ void InsetFig::BrowseFile()
 	}
 	string p = fl_get_input(form->EpsFile);
 
-	buf = MakeAbsPath(owner->getFileName());
-	buf2 = OnlyPath(buf);
+	string buf = MakeAbsPath(owner->getFileName());
+	string buf2 = OnlyPath(buf);
 	if (!p.empty()) {
 		buf = MakeAbsPath(p, buf2);
 		buf = OnlyPath(buf);
@@ -2150,7 +2125,7 @@ void InsetFig::BrowseFile()
 	}
 	
 	// Does user clipart directory exist?
-	bufclip = AddName (user_lyxdir, "clipart");	
+	string bufclip = AddName (user_lyxdir, "clipart");	
 	FileInfo fileInfo(bufclip);
 	if (!(fileInfo.isOK() && fileInfo.isDir()))
 	  // No - bail out to system clipart directory
@@ -2191,7 +2166,7 @@ void InsetFig::BrowseFile()
 }
 
 
-void GraphicsCB(FL_OBJECT *obj, long arg)
+void GraphicsCB(FL_OBJECT * obj, long arg)
 {
 	/* obj->form contains the form */
 

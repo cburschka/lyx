@@ -95,7 +95,7 @@
 
 // this one is not "C" because combox callbacks are really C++ %-|
 extern void LayoutsCB(int, void*);
-extern char** get_pixmap_from_symbol(char const *arg, int, int);
+extern char const ** get_pixmap_from_symbol(char const * arg, int, int);
 extern LyXAction lyxaction;
 
 
@@ -139,23 +139,25 @@ Toolbar::Toolbar(Toolbar const &rct, LyXView *o, int x, int y)
 // timer-cb for bubble-help (Matthias)
 void Toolbar::BubbleTimerCB(FL_OBJECT *, long data)
 {
-	FL_OBJECT* ob = (FL_OBJECT*) data;
-	char* help = (char*) ob->u_vdata;
+	FL_OBJECT * ob = reinterpret_cast<FL_OBJECT*>(data);
+	char* help = static_cast<char*>(ob->u_vdata);
 	fl_show_oneliner(help, ob->form->x + ob->x,
 			 ob->form->y + ob->y + ob->h);
 }
 
-extern "C" void C_Toolbar_BubbleTimerCB(FL_OBJECT *ob, long data)
+
+extern "C" void C_Toolbar_BubbleTimerCB(FL_OBJECT * ob, long data)
 {
 	Toolbar::BubbleTimerCB(ob, data);
 }
+
 
 // post_handler for bubble-help (Matthias)
 int Toolbar::BubblePost(FL_OBJECT *ob, int event,
 	     FL_Coord /*mx*/, FL_Coord /*my*/, int /*key*/, void */*xev*/)
 {
-	string help = (char *)ob->u_vdata;
-	Toolbar *t = (Toolbar*)ob->u_ldata;
+	string help = static_cast<char *>(ob->u_vdata);
+	Toolbar * t = reinterpret_cast<Toolbar*>(ob->u_ldata);
 	
 	if(event == FL_ENTER && !help.empty()){
 		fl_set_object_callback(t->bubble_timer,
@@ -169,17 +171,19 @@ int Toolbar::BubblePost(FL_OBJECT *ob, int event,
 	return 0;
 }
 
-extern "C" int C_Toolbar_BubblePost(FL_OBJECT *ob, int event,
+
+extern "C" int C_Toolbar_BubblePost(FL_OBJECT * ob, int event,
 				   FL_Coord /*mx*/, FL_Coord /*my*/, 
-				   int key, void *xev)
+				   int key, void * xev)
 {
 	return Toolbar::BubblePost(ob, event, 0, 0, key, xev);
 }
 
+
 void Toolbar::activate()
 {
-	toolbarItem *item, *tmp= 0;
-	item = toollist;
+	toolbarItem * tmp= 0;
+	toolbarItem * item = toollist;
 	while(item){
 		tmp = item->next;
 		if (item->icon) {
@@ -192,8 +196,8 @@ void Toolbar::activate()
 
 void Toolbar::deactivate()
 {
-	toolbarItem *item, *tmp= 0;
-	item = toollist;
+	toolbarItem * tmp= 0;
+	toolbarItem * item = toollist;
 	while(item){
 		tmp = item->next;
 		if (item->icon) {
@@ -204,19 +208,21 @@ void Toolbar::deactivate()
 }
 
 
-void Toolbar::ToolbarCB(FL_OBJECT *ob, long ac)
+void Toolbar::ToolbarCB(FL_OBJECT * ob, long ac)
 {
-	Toolbar *t = (Toolbar*)ob->u_ldata;
+	Toolbar * t = reinterpret_cast<Toolbar*>(ob->u_ldata);
 	
 	string res = t->owner->getLyXFunc()->Dispatch(int(ac));
 	if(!res.empty())
 		lyxerr[Debug::TOOLBAR] << res << endl;
 }
 
-extern "C" void C_Toolbar_ToolbarCB(FL_OBJECT *ob, long data)
+
+extern "C" void C_Toolbar_ToolbarCB(FL_OBJECT * ob, long data)
 {
 	Toolbar::ToolbarCB(ob, data);
 }
+
 
 int Toolbar::get_toolbar_func(string const & func)
 {
@@ -271,9 +277,8 @@ void Toolbar::set(bool doingmain)
 	// we shouldn't set if we have not cleaned
 	if (!cleaned) return;
 	
-	toolbarItem *item;
-	FL_OBJECT *obj;
-	item = toollist;
+	FL_OBJECT * obj;
+	toolbarItem * item = toollist;
 	
 	if (!doingmain) {
 		fl_freeze_form(owner->getForm());
@@ -336,7 +341,7 @@ void Toolbar::set(bool doingmain)
 			  
 			  fl_set_object_posthandler(obj, C_Toolbar_BubblePost);
 
-			  fl_set_pixmapbutton_data(obj, item->pixmap);
+			  fl_set_pixmapbutton_data(obj, const_cast<char**>(item->pixmap));
 			  item = item->next;
 			  // we must remember to update the positions
 			  xpos += buttonwidth;
@@ -363,9 +368,9 @@ void Toolbar::set(bool doingmain)
 }
 
 
-char **Toolbar::getPixmap(kb_action action, string const & arg)
+char const **Toolbar::getPixmap(kb_action action, string const & arg)
 {
-	char **pixmap = unknown_xpm; //0
+	char const ** pixmap = unknown_xpm; //0
 	switch(action){
 	case LFUN_MENUOPEN:    pixmap = open_xpm; break;
 	case LFUN_CLOSEBUFFER: pixmap = close_xpm; break;
@@ -442,8 +447,8 @@ void Toolbar::add(int action, bool doclean)
 		// first «hide» the toolbar buttons. This is not a real hide
 		// actually it deletes and frees the button altogether.
 		lyxerr << "Toolbar::add: «hide» the toolbar buttons." << endl;
-		toolbarItem *item, *tmp= 0;
-		item = toollist;
+		toolbarItem * tmp= 0;
+		toolbarItem * item = toollist;
 
 		lightReset();
 		
@@ -466,10 +471,10 @@ void Toolbar::add(int action, bool doclean)
 	
 	// there exist some special actions not part of
 	// kb_action: SEPARATOR, LAYOUTS
-	char **pixmap = 0;
+	char const ** pixmap = 0;
 	string help;
 
-	toolbarItem *newItem,*tmp;
+	toolbarItem * newItem, * tmp;
 
 	if (lyxaction.isPseudoAction(action)) {
 		string arg;
@@ -524,8 +529,8 @@ void Toolbar::add(string const & func, bool doclean)
 
 void Toolbar::clean()
 {
-	toolbarItem *item, *tmp= 0;
-	item = toollist;
+	toolbarItem * tmp = 0;
+	toolbarItem * item = toollist;
 
 	reset();
 
@@ -556,8 +561,8 @@ void Toolbar::push(int nth)
 	
 	if (nth == 0) return;
 
-	int count= 0;
-	toolbarItem *tmp = toollist;
+	int count = 0;
+	toolbarItem * tmp = toollist;
 	while (tmp) {
 		count++;
 		if (count == nth) {
@@ -571,7 +576,7 @@ void Toolbar::push(int nth)
 }
 
 
-void Toolbar::read(LyXLex &lex)
+void Toolbar::read(LyXLex & lex)
 {
 	//consistency check
 	if (lex.GetString() != "\\begin_toolbar")

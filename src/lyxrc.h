@@ -25,9 +25,13 @@ public:
 	///
 	LyXRC();
 	///
-	int Read (string const & filename);
+	int read (string const & filename);
 	///
-        void Print();
+	void write(string const & filename) const;
+	///
+        void print() const;
+	///
+	void output(ostream & os) const;
 	/// Is a bind file already (or currently) read?
 	bool hasBindFile;
 	///

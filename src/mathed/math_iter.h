@@ -61,9 +61,9 @@ class MathedIter {
     ///
     void goPosAbs(int);
     ///
-    int Empty() { return array->last<= 1; }
+    int Empty() { return array->Last()<= 1; }
     ///
-    int OK() { return array && (pos < array->last); }
+    int OK() { return array && (pos < array->Last()); }
     ///
     int IsFirst() { return (pos == 0); }
     ///
@@ -268,48 +268,48 @@ class MathedXIter: public MathedIter {
 inline
 bool MathedIter::IsInset()
 {
-    return MathIsInset(array->bf[pos]);
+    return MathIsInset((*array)[pos]);
 }
  
 inline
 bool MathedIter::IsActive()
 {
-    return MathIsActive(array->bf[pos]);
+    return MathIsActive((*array)[pos]);
 }
 
 inline
 bool MathedIter::IsFont()
 {
-    return MathIsFont(array->bf[pos]);
+    return MathIsFont((*array)[pos]);
 }
 
 
 inline
 bool MathedIter::IsScript()
 {
-    return MathIsScript(array->bf[pos]);
+    return MathIsScript((*array)[pos]);
 }   
 
 inline
 bool MathedIter::IsTab()
 {
-    return (array->bf[pos] == LM_TC_TAB);
+    return ((*array)[pos] == LM_TC_TAB);
 }  
 
 
 inline
 bool MathedIter::IsCR()
 {
-    return (array->bf[pos] == LM_TC_CR);
+    return ((*array)[pos] == LM_TC_CR);
 }  
 
 
 inline
-MathedIter::MathedIter(LyxArrayBase *d): array(d)
+MathedIter::MathedIter(LyxArrayBase * d): array(d)
 {
     pos = 0;
     row = col = 0;
-    fcode = (array && IsFont()) ? array->bf[0]: 0;
+    fcode = (array && IsFont()) ? (*array)[0]: 0;
 }
      
 

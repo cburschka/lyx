@@ -42,11 +42,11 @@ using std::max;
 extern void SmallUpdate(signed char);
 extern void BeforeChange();
 extern void Update(signed char);
-extern int UnlockInset(UpdatableInset*);
+extern int UnlockInset(UpdatableInset *);
 extern short greek_kb_flag;
-extern MiniBuffer *minibuffer;
+extern MiniBuffer * minibuffer;
 
-extern BufferView *current_view;
+extern BufferView * current_view;
 
 /* Bitmaps */
 #include "greek.xbm"
@@ -58,7 +58,7 @@ extern BufferView *current_view;
 #include "dots.xbm"
 
 /* Latex code for those bitmaps */
-static char const *latex_greek[] =  {
+static char const * latex_greek[] =  {
    "Gamma", "Delta", "Theta", "Lambda", "Xi", "Pi",
    "Sigma", "Upsilon", "Phi", "Psi", "Omega",
    "alpha", "beta", "gamma", "delta", "epsilon", "varepsilon", "zeta",
@@ -67,7 +67,7 @@ static char const *latex_greek[] =  {
    "tau", "upsilon", "phi", "varphi", "chi", "psi", "omega", ""
 };
 
-static char const *latex_brel[] = {
+static char const * latex_brel[] = {
   "leq", "geq", "equiv", "models", 
   "prec", "succ", "sim", "perp", 
   "preceq", "succeq", "simeq", "mid", 
@@ -79,7 +79,7 @@ static char const *latex_brel[] = {
   "vdash", "dashv", "bowtie", ""
 };
 
-static char const* latex_arrow[] = {
+static char const * latex_arrow[] = {
   "downarrow", "leftarrow", "Downarrow", "Leftarrow", 
   "hookleftarrow", "rightarrow", "uparrow", "Rightarrow", "Uparrow",
   "hookrightarrow", "updownarrow", "Leftrightarrow", "leftharpoonup", 
@@ -90,7 +90,7 @@ static char const* latex_arrow[] = {
   "nwarrow", "nearrow", "swarrow", "searrow",  "",
 };
 
-char const* latex_varsz[] = {
+char const * latex_varsz[] = {
 "sum", "int", "oint", 
 "prod", "coprod", "bigsqcup", 
 "bigotimes", "bigodot", "bigoplus", 
@@ -98,7 +98,7 @@ char const* latex_varsz[] = {
 "bigvee", "bigwedge", ""
 };
 
-static char const* latex_bop[] = {   
+static char const * latex_bop[] = {   
   "pm", "cap", "diamond", "oplus", 
   "mp", "cup", "bigtriangleup", "ominus", 
   "times", "uplus", "bigtriangledown", "otimes", 
@@ -109,7 +109,7 @@ static char const* latex_bop[] = {
   "bullet", "wr", "ddagger", ""
 };
 
-static char const* latex_misc[] = {
+static char const * latex_misc[] = {
   "nabla", "partial", "infty", "prime", "ell", 
   "emptyset", "exists", "forall", "imath",  "jmath",
   "Re", "Im", "aleph", "wp", "hbar", 
@@ -118,7 +118,7 @@ static char const* latex_misc[] = {
   "diamondsuit", "heartsuit", "clubsuit", "spadesuit", "" 
 };
 
-static char const* latex_dots[] = { 
+static char const * latex_dots[] = { 
    "ldots", "cdots", "vdots", "ddots"
 };
 
@@ -132,15 +132,16 @@ static signed char Latin2Greek[] =  {
  5, 2, -1, 6, -1, 7, -1, 10, 4, 9, -1
 }; 
 
-extern char** mathed_get_pixmap_from_icon(int d);
+extern char const ** mathed_get_pixmap_from_icon(int d);
 extern "C" void math_cb(FL_OBJECT*, long);
-static char** pixmapFromBitmapData(char const *, int, int);
-void math_insert_symbol(char const* s);
+static char const ** pixmapFromBitmapData(char const *, int, int);
+void math_insert_symbol(char const * s);
 Bool math_insert_greek(char const c);
 
-BitmapMenu *BitmapMenu::active = 0;
+BitmapMenu * BitmapMenu::active = 0;
 
-BitmapMenu::BitmapMenu(int n,  FL_OBJECT* bt, BitmapMenu* prevx): nb(n)  {
+BitmapMenu::BitmapMenu(int n,  FL_OBJECT * bt, BitmapMenu * prevx): nb(n)
+{
    w = h = 0;
    form = 0;
    i = 0;
@@ -156,20 +157,26 @@ BitmapMenu::BitmapMenu(int n,  FL_OBJECT* bt, BitmapMenu* prevx): nb(n)  {
      prev->next = this;
 }
 
-BitmapMenu::~BitmapMenu() {
+
+BitmapMenu::~BitmapMenu()
+{
  if (next) delete next;
  if (form->visible) Hide();
  fl_free_form(form);  
  delete[] bitmap;
 }
 
-void BitmapMenu::Hide()  {
+
+void BitmapMenu::Hide()
+{
    fl_hide_form(form);
    fl_set_button(button, 0);
    active = 0;
 }
 
-void BitmapMenu::Show()  {
+
+void BitmapMenu::Show()
+{
    if (active)
      active->Hide();
    active = this;
@@ -179,15 +186,15 @@ void BitmapMenu::Show()  {
    fl_show_form(form, FL_PLACE_MOUSE, FL_NOBORDER, "");
 }
 
-FL_OBJECT*
-BitmapMenu::AddBitmap(int id, int nx, int ny, int bw, int bh, unsigned char* data, Bool vert)
+FL_OBJECT *
+BitmapMenu::AddBitmap(int id, int nx, int ny, int bw, int bh, unsigned char const * data, Bool vert)
 {
-   if (i>= nb)
+   if (i >= nb)
      return 0;
-   int wx= bw+ww/2, wy= bh+ww/2;
+   int wx = bw+ww/2, wy = bh+ww/2;
    wx += (wx % nx);
    wy += (wy % ny); 
-   FL_OBJECT *obj = fl_create_bmtable(1, x, y, wx, wy, "");   
+   FL_OBJECT * obj = fl_create_bmtable(1, x, y, wx, wy, "");   
    fl_set_object_callback(obj, math_cb, id);
    fl_set_object_lcol(obj, FL_BLUE);    
    fl_set_object_boxtype(obj, FL_UP_BOX);   
@@ -308,10 +315,10 @@ extern "C" void math_cb(FL_OBJECT* ob, long data)
      menu->Hide(); 
 }
 
-char** get_pixmap_from_symbol(char const *arg, int wx, int hx)
+char const ** get_pixmap_from_symbol(char const * arg, int wx, int hx)
 {
-   char** data= 0;   		    
-   latexkeys *l = in_word_set (arg, strlen(arg));
+   char const ** data = 0;   		    
+   latexkeys * l = in_word_set (arg, strlen(arg));
    if (!l) 
     return 0;
     
@@ -337,10 +344,10 @@ char** get_pixmap_from_symbol(char const *arg, int wx, int hx)
 Bool math_insert_greek(char const c)
 {
    int i;
-   char const *s= 0;
+   char const * s= 0;
    
-   if ('A'<= c && c<= 'Z') {
-      if ((i= Latin2Greek[c - 'A'])>= 0)
+   if ('A' <= c && c <= 'Z') {
+      if ((i = Latin2Greek[c - 'A']) >= 0)
 	s = latex_greek[i];
    }   
    if ('a'<= c && c<= 'z') {
@@ -430,15 +437,15 @@ void  create_symbol_menues(FD_panel * symb_form)
 }
 
 static
-char** pixmapFromBitmapData(char const *s, int wx, int hx)
+char const ** pixmapFromBitmapData(char const * s, int wx, int hx)
 {
-    int i, id;
-    char** data= 0;
+    int i;
+    char const ** data = 0;
     
-    id= -1;
+    int id = -1;
     
-    for (i= 0; i<6; i++) {
-	char const **latex_str = 0;
+    for (i = 0; i < 6; ++i) {
+	char const ** latex_str = 0;
 	switch (i) {
 	 case 0: latex_str = latex_greek; break;
 	 case 1: latex_str = latex_bop; break;
@@ -454,10 +461,10 @@ char** pixmapFromBitmapData(char const *s, int wx, int hx)
 		break;
 	    }
 	}
-	if (id>= 0) break;
+	if (id >= 0) break;
     }
-    if (i<6 && id>= 0) {
-	unsigned char *bdata = 0;
+    if (i < 6 && id >= 0) {
+	unsigned char const * bdata = 0;
 	int w = 0, h = 0, dw = 0, dh = 0;
 
 	lyxerr[Debug::MATHED] << "Imando " << i << ", " << id << endl;
@@ -523,21 +530,21 @@ char** pixmapFromBitmapData(char const *s, int wx, int hx)
 	}
 	int ww = w/dw, hh = h/dh, x, y;
    
-	XImage *xima = XCreateImage(fl_display, 0, 1, XYBitmap, 0, 
-				    reinterpret_cast<char*>(bdata), w, h, 8, 0);
+	XImage * xima = XCreateImage(fl_display, 0, 1, XYBitmap, 0, 
+				    const_cast<char*>(reinterpret_cast<char const *>(bdata)), w, h, 8, 0);
 	xima->byte_order = LSBFirst;
 	xima->bitmap_bit_order = LSBFirst;
 	x = (id % dw)*ww;
 	y = (id/dw)*hh;
-	if (ww>wx) ww = wx;
-	if (hh>hx) hh = hx;
-	XImage *sbima = XSubImage(xima, x, y, ww, hh);
-	XpmCreateDataFromImage(fl_display, &data, sbima, sbima, 0);
+	if (ww > wx) ww = wx;
+	if (hh > hx) hh = hx;
+	XImage * sbima = XSubImage(xima, x, y, ww, hh);
+	XpmCreateDataFromImage(fl_display, const_cast<char***>(&data), sbima, sbima, 0);
 	
 	// Dirty hack to get blue symbols quickly
-	char *sx = strstr(data[2], "FFFFFFFF");
+	char * sx = strstr(data[2], "FFFFFFFF");
 	if (sx) {
-	    for (int k= 0; k<8; k++) sx[k] = '0';
+	    for (int k = 0; k < 8; ++k) sx[k] = '0';
 	}
 
 //	XDestroyImage(xima);

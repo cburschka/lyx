@@ -379,14 +379,17 @@ bool LaTeX::runBibTeX(string const & file, DepTable & dep)
 	ifstream ifs(file.c_str());
 	string token;
 	bool using_bibtex = false;
+	LRegex reg1("\\\\bibdata{([^}]+)}");
+	LRegex reg2("\\\\bibstyle{([^}]+)}");
 	while (getline(ifs, token)) {
-		if (contains(token, "\\bibdata{")) {
+		if (reg1.exact_match(token)) {
 			using_bibtex = true;
-			string::size_type a = token.find("\\bibdata{") + 9;
-			string::size_type b = token.find_first_of("}", a);
-			string data = token.substr(a, b - a);
+			LRegex::SubMatches const & sub = reg1.exec(token);
+			string data = LSubstring(token, sub[1].first,
+						 sub[2].second);
 			// data is now all the bib files separated by ','
 			// get them one by one and pass them to the helper
+			string::size_type b;
 			do {
 				b = data.find_first_of(',', 0);
 				string l;
@@ -400,26 +403,26 @@ bool LaTeX::runBibTeX(string const & file, DepTable & dep)
 					findtexfile(
 						ChangeExtension(l, "bib", false),
 						"bib");
-				lyxerr << "data = `"
-				       << full_l << "'" << endl;
+				lyxerr[Debug::LATEX] << "Bibtex database: `"
+						     << full_l << "'" << endl;
 				if (!full_l.empty()) {
 					// add full_l to the dep file.
 					dep.insert(full_l, true);
 				}
 			} while (b != string::npos);
-		} else if (contains(token, "\\bibstyle{")) {
+		} else if (reg2.exact_match(token)) {
 			using_bibtex = true;
-			string::size_type a = token.find("\\bibstyle{") + 10;
-			string::size_type b = token.find_first_of("}", a);
-			string style = token.substr(a, b - a);
+			LRegex::SubMatches const & sub = reg2.exec(token);
+			string style = LSubstring(token, sub[1].first,
+						  sub[1].second);
 			// token is now the style file
 			// pass it to the helper
 			string full_l = 
 				findtexfile(
 					ChangeExtension(style, "bst", false),
 					"bst");
-			lyxerr << "style = `"
-			       << full_l << "'" << endl;
+			lyxerr[Debug::LATEX] << "Bibtex style: `"
+					     << full_l << "'" << endl;
 			if (!full_l.empty()) {
 				// add full_l to the dep file.
 				dep.insert(full_l, true);

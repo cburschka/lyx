@@ -65,8 +65,9 @@ protected:
    ~BitmapMenu();
    ///
    FL_OBJECT * AddBitmap(int id,
-			int nx, int ny, int bw, int bh,
-			unsigned char * data, Bool vert= True); // Why Bool?
+			 int nx, int ny, int bw, int bh,
+			 unsigned char const * data,
+			 Bool vert= True); // Why Bool?
    ///
    void Create();
    ///

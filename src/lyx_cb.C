@@ -3561,7 +3561,7 @@ void Reconfigure()
                           AddName(system_lyxdir, "configure"));
 	p.pop();
 	minibuffer->Set(_("Reloading configuration..."));
-	lyxrc->Read(LibFileSearch(string(), "lyxrc.defaults"));
+	lyxrc->read(LibFileSearch(string(), "lyxrc.defaults"));
 	WriteAlert(_("The system has been reconfigured."), 
 		   _("You need to restart LyX to make use of any"),
 		   _("updated document class specifications."));

@@ -232,7 +232,7 @@ FD_form_main * LyXView::create_form_form_main(int width, int height)
         unsigned int w, h;
         Pixmap lyx_p, lyx_mask;
         lyx_p = fl_create_from_pixmapdata(fl_root,
-					  lyx_xpm,
+					  const_cast<char**>(lyx_xpm),
 					  &w,
 					  &h,
 					  &lyx_mask,

@@ -59,7 +59,7 @@ MathParInset::Draw(int x, int y)
    bool limits = false;
     
    xo = x;  yo = y; 
-   if (!array || array->Empty()) {
+   if (!array || array->empty()) {
       mathed_set_font(LM_TC_VAR, 1);
        if (array) {
 	   MathedXIter data(this);
@@ -155,7 +155,7 @@ MathParInset::Metrics()
     width = df_width;
     descent = 0;
     if (!array) return;
-    if (array->Empty()) return;
+    if (array->empty()) return;
     
     ascent = 0;
     MathedXIter data(this);

@@ -1,3 +1,57 @@
+1999-12-01  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/support/filetools.C (ExpandPath): removed an over eager
+	Assert.
+	(ReplaceEnvironmentPath): ditto
+
+	* src/toolbar.C (BubbleTimerCB): use C++ style casts. This clearly
+	shows that we are doing something fishy in our code...
+	(BubblePost): ditto
+	(ToolbarCB): ditto
+
+	* src/lyxrc.C (read): use a double switch trick to get more help
+	from the compiler. (the same trick is used in layout.C)
+	(write): new function. opens a ofstream and pass that to output
+	(output): new function, takes a ostream and writes the lyxrc
+	elemts to it. uses a dummy switch to make sure no elements are
+	forgotten. 
+
+	* src/lyxlex.h: added a struct pushpophelper for use in functions
+	with more than one exit point.
+
+	* src/lyxlex.[Ch] (GetInteger): made it const
+	(GetFloat): ditto
+	(GetBool): ditto
+
+	* src/lyxfunc.C (Dispatch): added case for LFUN_SAVEPREFERENCES
+
+	* src/layout.[hC] : LayoutTags splitted into several enums, new
+	methods created, better error handling cleaner use of lyxlex. Read
+	the diff.
+
+	* src/bmtable.[Ch]: change some member prototypes because of the
+	image const changes. 
+
+	* commandtags.h, src/LyXAction.C (init): new function:
+	"preferences-save", saves the lyxrc entries into .lyx/preferences.
+	This file is not read automatically but you can add \input
+	preferences to your lyxrc if you want to. We need to discuss how
+	to handle this. 
+
+	* src/LaTeX.C (runBibTeX): use regex to match for the needed lines
+	in .aux, also remove .bib and .bst files from dependencies when
+	running bibtex.
+
+	* src/BufferView.C, src/LyXView.C: add const_cast several places
+	because of changes to images.
+
+	* lib/images/*: same change as for images/*
+	
+	* lib/lyxrc.example: Default for accept_compound is false not no.
+
+	* images/*: changed to be const, however I have som misgivings
+	about this change so it might be changed back.
+
 1999-11-26  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* lib/configure, po/POTFILES.in: regenerated

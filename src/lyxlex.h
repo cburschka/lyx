@@ -4,20 +4,20 @@
 //  texclass and others to come.   [asierra30/03/96]
 //
 //   (C) 1996 Lyx Team.
-#ifndef _LYXLEX_H
-#define _LYXLEX_H
+#ifndef LYXLEX_H
+#define LYXLEX_H
 
 #ifdef __GNUG__
 #pragma interface
 #endif
 
-#include <stdio.h>
+#include <cstdio>
 #include "LString.h"
 
 ///
 struct keyword_item {
 	///
-	char const* tag;
+	char const * tag;
 	///
 	short code;
 };
@@ -31,7 +31,7 @@ struct keyword_item {
 class LyXLex { 
 public:
 	///
-	LyXLex (keyword_item*, int);
+	LyXLex (keyword_item *, int);
 	///
 	~LyXLex() { if (file && owns_file) fclose(file); };
 
@@ -48,15 +48,15 @@ public:
 	};
 
 	/// file is open and end of file is not reached
-	bool IsOK();
+	bool IsOK() const;
 	/// return true if able to open file, else false
 	bool setFile(string const & filename);
 	/// if file is already read from, line numbers will be wrong.
 	// should be removed
-	void setFile(FILE *f);
+	void setFile(FILE * f);
 	///
 	// should be removed
-	FILE *getFile() { return file; }
+	FILE * getFile() { return file; }
 	/// Danger! Don't use it unless you know what you are doing.
 	void setLineNo(int l) { lineno = l; }
 	/// returns a lex code
@@ -73,32 +73,32 @@ public:
 	bool nextToken();
 	
 	/// 
-	int GetLineNo() { return lineno; }
+	int GetLineNo() const { return lineno; }
 	///
-	int GetInteger();
+	int GetInteger() const;
 	///
-	bool GetBool();
+	bool GetBool() const;
 	///
-	float GetFloat();
+	float GetFloat() const;
 	///
 	string GetString() const;
 	
 	/// get a long string, ended by the tag `endtag'
-	string getLongString(string const &endtoken);
+	string getLongString(string const & endtoken);
 	
 	///
 	bool EatLine();
 	///
-	int FindToken(char const* string[]);
+	int FindToken(char const * string[]);
 	///
-	int CheckToken(char const* string[], int print_error);
+	int CheckToken(char const * string[], int print_error);
 
 	///
-	char const *text() const { return &buff[0]; }
+	char const * text() const { return &buff[0]; }
 
 	/** Pushes a token list on a stack and replaces it with a new one.
 	 */
-	void pushTable(keyword_item*, int);
+	void pushTable(keyword_item *, int);
 
 	/** Pops a token list into void and replaces it with the one now
 	  on top of the stack.
@@ -109,7 +109,7 @@ public:
 	  and file name. If message contains the substring `$$Token',
 	  it is replaced with the value of GetString()
 	  */
-	void printError(string const & message);
+	void printError(string const & message) const;
 
 	/**
 	  Prints the current token table on cerr.
@@ -118,7 +118,7 @@ public:
 protected:
 	///
 	enum {
-	///
+		///
 		LEX_MAX_BUFF = 2048
 	};
 
@@ -130,15 +130,15 @@ protected:
 			table_elem= 0;
 		}
 		///
-		pushed_table *next;
+		pushed_table * next;
 		///
-		keyword_item *table_elem;
+		keyword_item * table_elem;
 		///
 		int table_siz;
 	};
 
 	///
-	FILE *file;
+	FILE * file;
         ///
         bool owns_file;
 	/// 
@@ -146,13 +146,13 @@ protected:
 	///
 	int lineno;
 	///
-	keyword_item *table;
+	keyword_item * table;
 	///
 	int no_items;
 	///
 	char buff[LEX_MAX_BUFF];
 	///
-	pushed_table *pushed;
+	pushed_table * pushed;
 	///
 	int search_kw(char const * const) const;
 	///
@@ -161,9 +161,22 @@ protected:
 
 
 inline
-bool LyXLex::IsOK()
+bool LyXLex::IsOK() const
 {
 	return (file && !feof(file));
 }
+
+// This is needed to ensure that the pop is done upon exit from methods
+// with more than one exit point or that can return as a response to
+// exceptions. (Lgb)
+struct pushpophelper {
+	pushpophelper(LyXLex & lexrc, keyword_item * i, int s) : lex(lexrc) {
+		lex.pushTable(i, s);
+	}
+	~pushpophelper() {
+		lex.popTable();
+	}
+	LyXLex & lex;
+};
 
 #endif

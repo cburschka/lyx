@@ -866,7 +866,7 @@ void MathedXIter::IMetrics(int pos2, int& width, int& ascent, int& descent)
   
     descent = ascent = width = 0;
     if (!array) return;
-    if (array->Empty()) return;
+    if (array->empty()) return;
 //    if  (pos2 > array->last) return;
     x1 = x; 
     while (pos<pos2) {

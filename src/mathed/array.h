@@ -39,15 +39,15 @@ public:
 	};
 
 	///
-	LyxArrayBase(int size= ARRAY_STEP);
+	LyxArrayBase(int size = ARRAY_STEP);
 	///
-	LyxArrayBase(const LyxArrayBase&);
+	LyxArrayBase(LyxArrayBase const &);
 	///
 	~LyxArrayBase();
    
 	
 	///
-	int Empty() { return (last == 0); }
+	int empty() const { return (last == 0); }
    
 	///
 	int Last() { return last; }
@@ -62,16 +62,16 @@ public:
 	void Remove(int pos, int dx);   
 
 	/// Merge dx elements from array a at pos. Changes the size if necessary.
-	void Merge(LyxArrayBase *a, int pos, int dx); 
+	void Merge(LyxArrayBase * a, int pos, int dx); 
 
 	/// Same as Merge but doesn't changes the size (dangerous)
-	void MergeF(LyxArrayBase *a, int pos, int dx); 
+	void MergeF(LyxArrayBase * a, int pos, int dx); 
 
 	/// Copy dx byts from an array at position pos
 	void Copy(void *, int pos, int dx); 
 
 	/// Constructs a new array with dx elements starting at pos 
-	LyxArrayBase* Extract(int pos, int dx); 
+	LyxArrayBase * Extract(int pos, int dx); 
 
 	/// Insert a character at position pos
 	void Insert(int pos, byte);
@@ -83,7 +83,7 @@ public:
 	byte operator[](const int);
 
 	/// Constructs a new array with dx elements starting at pos 
-	LyxArrayBase& operator= (const LyxArrayBase&); 
+	LyxArrayBase & operator= (LyxArrayBase const &); 
 
 protected:
 	///
@@ -92,7 +92,7 @@ protected:
 	bool Move(int p, int shift);
 
 	/// Buffer
-	byte *bf;
+	byte * bf;
 	/// Last position inserted.
 	int last;
 	/// Max size of the array.

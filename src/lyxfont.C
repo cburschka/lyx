@@ -553,7 +553,7 @@ LyXFont & LyXFont::lyxRead(LyXLex & lex)
 			error = true;
 		}
 	}
-	return *this;
+	return * this;
 }
 
 

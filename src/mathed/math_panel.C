@@ -268,7 +268,7 @@ extern "C" int align_filter(FL_OBJECT *, char const *, char const * cur, int c)
 }
 
 
-char ** mathed_get_pixmap_from_icon(int d)
+char const ** mathed_get_pixmap_from_icon(int d)
 {
    switch (d) {
     case MM_FRAC: return frac;
@@ -293,20 +293,20 @@ FD_panel * create_math_panel( )
 
    /* fill-in form initialization code */
    fl_set_button(fd_delim->left, 1);
-   fl_set_pixmap_data(fd_delim->pix, delim0);
+   fl_set_pixmap_data(fd_delim->pix, const_cast<char**>(delim0));
    fl_set_bmtable_data(fd_delim->menu, 6, 4, delim_width, delim_height,
 		       delim_bits);
    fl_set_bmtable_maxitems(fd_delim->menu, 23);
    
-   fl_set_pixmap_data(fd_panel->sqrt, sqrt);
-   fl_set_pixmap_data(fd_panel->frac, frac);
-   fl_set_pixmap_data(fd_panel->delim, delim);
-   fl_set_pixmap_data(fd_panel->deco, deco);
-   fl_set_pixmap_data(fd_panel->space, space_xpm);
-   fl_set_pixmap_data(fd_panel->matrix, matrix);
-   fl_set_pixmap_data(fd_panel->equation, equation);
+   fl_set_pixmap_data(fd_panel->sqrt, const_cast<char**>(sqrt));
+   fl_set_pixmap_data(fd_panel->frac, const_cast<char**>(frac));
+   fl_set_pixmap_data(fd_panel->delim, const_cast<char**>(delim));
+   fl_set_pixmap_data(fd_panel->deco, const_cast<char**>(deco));
+   fl_set_pixmap_data(fd_panel->space, const_cast<char**>(space_xpm));
+   fl_set_pixmap_data(fd_panel->matrix, const_cast<char**>(matrix));
+   fl_set_pixmap_data(fd_panel->equation, const_cast<char**>(equation));
 
-   for (int i= 0; i<32; i++) {
+   for (int i = 0; i < 32; ++i) {
        fl_add_browser_line(fd_panel->func_browse, func_code[i]);
    }
     

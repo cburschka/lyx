@@ -339,7 +339,7 @@ void LyX::init(int */*argc*/, char **argv)
 		lyxrc->ReadBindFile();
 
 	if (lyxerr.debugging(Debug::LYXRC)) {
-		lyxrc->Print();
+		lyxrc->print();
 	}
 
 	// Create temp directory	
@@ -414,7 +414,7 @@ void LyX::ReadRcFile(string const & name)
 	if (!lyxrc_path.empty()){
 	        lyxerr[Debug::INIT] << "Found " << name
 				    << " in " << lyxrc_path << endl;
-		if (lyxrc->Read(lyxrc_path) < 0) { 
+		if (lyxrc->read(lyxrc_path) < 0) { 
 		        WriteAlert(_("LyX Warning!"), 
 				   _("Error while reading ")+lyxrc_path+".",
 				   _("Using built-in defaults."));
@@ -425,13 +425,13 @@ void LyX::ReadRcFile(string const & name)
 
 
 // Set debugging level and report result to user
-void setDebuggingLevel(string const &dbgLevel)
+void setDebuggingLevel(string const & dbgLevel)
 {
 	lyxerr << _("Setting debug level to ") <<  dbgLevel << endl;
 	lyxerr.level(Debug::value(dbgLevel));
 	lyxerr[Debug::INFO] << "Debugging INFO #"  << Debug::INFO << endl;
 	lyxerr[Debug::INIT] << "Debugging INIT #"  << Debug::INIT << endl;
-	lyxerr[Debug::KEY] << "Debugging KEY #"  << Debug::KEY << endl;
+	lyxerr[Debug::KEY]  << "Debugging KEY #"  << Debug::KEY << endl;
 	lyxerr[Debug::TOOLBAR] << "Debugging TOOLBAR #"  << Debug::TOOLBAR << endl; 
 	lyxerr[Debug::PARSER] << "Debugging LEX and PARSER #" << Debug::PARSER << endl;
 	lyxerr[Debug::LYXRC] << "Debugging LYXRC #" << Debug::LYXRC << endl;

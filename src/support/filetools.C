@@ -616,7 +616,6 @@ bool AbsolutePath(string const & path)
 // Supports ./ and ~/. Later we can add support for ~logname/. (Asger)
 string ExpandPath(string const & path)
 {
-	Assert(!path.empty()); // We don't allow empty path. (Lgb)
 	// checks for already absolute path
 	string RTemp = ReplaceEnvironmentPath(path);
 	if (AbsolutePath(RTemp))
@@ -700,7 +699,6 @@ string CleanupPath(string const & path)
 
 string ReplaceEnvironmentPath(string const & path)
 {
-	Assert(!path.empty()); // We don't allow empty path. (Lgb)
 // 
 // CompareChar: Environmentvariables starts with this character
 // PathChar:    Next path component start with this character

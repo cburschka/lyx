@@ -138,11 +138,11 @@ extern void Reconfigure();
 extern int current_layout;
 extern int getISOCodeFromLaTeX(char *);
 
-extern int UnlockInset(UpdatableInset*);
+extern int UnlockInset(UpdatableInset *);
 
 extern void ShowLatexLog();
 
-extern void UpdateInset(Inset* inset, bool mark_dirty = true);
+extern void UpdateInset(Inset * inset, bool mark_dirty = true);
 
 /* === globals =========================================================== */
 
@@ -395,7 +395,7 @@ LyXFunc::func_status LyXFunc::getStatus(int ac) const
                   break;
         }
         if (disable)
-                flag = func_status(flag | LyXFunc::Disabled);
+                flag |= LyXFunc::Disabled;
 
 	func_status box = LyXFunc::ToggleOff;
 	//	LyXFont font = buf->text->real_current_font;
@@ -2441,6 +2441,13 @@ string LyXFunc::Dispatch(int ac,
 	}
 	break;
 
+	case LFUN_SAVEPREFERENCES:
+	{
+		Path p(user_lyxdir);
+		lyxrc->write("preferences");
+	}
+	break;
+	
 	case LFUN_UNKNOWN_ACTION:
 	{
 		if (owner->buffer()->isReadonly()) {

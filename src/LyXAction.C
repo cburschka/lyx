@@ -138,8 +138,6 @@ void LyXAction::init()
 		_("Export to"), ReadOnly);
 	newFunc(LFUN_FAX,"buffer-fax",
 		_("Fax"), ReadOnly);
-	//newFunc(LFUN_INSERTFLOAT,"float-insert",
-	//	"", Noop);
 	newFunc(LFUN_INSERTFOOTNOTE, "buffer-float-insert", "", Noop);
 	newFunc(LFUN_IMPORT,"buffer-import",
 		_("Import document"), NoBuffer);
@@ -153,8 +151,6 @@ void LyXAction::init()
 		_("Open"), NoBuffer);
 	newFunc(LFUN_PREVBUFFER,"buffer-previous",
 		_("Switch to previous document"), ReadOnly);
-        //newFunc(LFUN_SWITCHBUFFER,"buffer-switch",
-        //        _("Switch to an open document"), ReadOnly);
 	newFunc(LFUN_MENUPRINT,"buffer-print",
 		_("Print"), ReadOnly);
 	newFunc(LFUN_MENURELOAD,"buffer-reload",
@@ -348,8 +344,6 @@ void LyXAction::init()
 		"", Noop);
 	newFunc(LFUN_MATH_MODE,"math-mode",
 		_("Math mode"), Noop);
-	//newFunc(LFUN_MATH_PANEL,"math-panel",
-	//	_("Math panel"), Noop);
 	newFunc(LFUN_MATH_NONUMBER,"math-nonumber",
 		"", Noop);
 	newFunc(LFUN_MATH_NUMBER,"math-number",
@@ -379,8 +373,10 @@ void LyXAction::init()
 		 _("Select previous paragraph"), ReadOnly);
 	newFunc(LFUN_PARENTINSERT,"parent-insert",
 		"", Noop);
-	newFunc( LFUN_PASTE,"paste",
+	newFunc(LFUN_PASTE,"paste",
 		_("Paste") , Noop);
+	newFunc(LFUN_SAVEPREFERENCES, "preferences-save",
+		"Save Preferences", NoBuffer);
 	newFunc(LFUN_PASTESELECTION,"primary-selection-paste",
 		"", Noop);
 	newFunc(LFUN_PROTECTEDSPACE,"protected-space-insert",
