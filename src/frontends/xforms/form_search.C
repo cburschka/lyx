@@ -46,7 +46,7 @@ FD_form_search * FormSearch::build_search()
     fl_set_object_resize(obj, FL_RESIZE_X);
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
   {
-    char const * const dummy = N_(" >|#F^s");
+    char const * const dummy = N_("Forwards >|#F^s");
     fdui->findnext = obj = fl_add_button(FL_NORMAL_BUTTON, 200, 80, 90, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
@@ -54,7 +54,7 @@ FD_form_search * FormSearch::build_search()
     fl_set_object_gravity(obj, FL_SouthEast, FL_SouthEast);
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
   {
-    char const * const dummy = N_(" <|#B^r");
+    char const * const dummy = N_(" < Backwards|#B^r");
     fdui->findprev = obj = fl_add_button(FL_NORMAL_BUTTON, 110, 80, 90, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
