@@ -1,3 +1,11 @@
+2003-10-13  José Matos  <jamatos@lyx.org>
+
+	* lyx_gui.C (set_datasocket_callback, set_serversocket_callback,
+	remove_datasocket_callback, remove_serversocket_callback):
+	prefix those fucntions with lyx_gui:: to link correctly.
+
+	* lyx_gui.C (start): fix call to dispatch.
+
 2003-10-13  Angus Leeming  <leeming@lyx.org>
 
 	* lyx_gui.C (set_datasocket_callback, set_serversocket_callback,

@@ -21,9 +21,11 @@
 #include "support/path_defines.h"
 
 #include "debug.h"
+#include "funcrequest.h"
 #include "gettext.h"
 
 #include "LColor.h"
+#include "LyXAction.h"
 #include "lyx_main.h"
 #include "lyxrc.h"
 #include "lyxfont.h"
@@ -336,7 +338,7 @@ void lyx_gui::start(string const & batch, std::vector<string> const & files)
 
 	// handle the batch commands the user asked for
 	if (!batch.empty()) {
-		view.getLyXFunc().dispatch(batch);
+		view.getLyXFunc().dispatch(lyxaction.lookupFunc(batch));
 	}
 
 	// enter the event loop
@@ -435,19 +437,19 @@ void lyx_gui::remove_read_callback(int fd)
 }
 
 
-void set_datasocket_callback(LyXDataSocket * /* p */)
+void lyx_gui::set_datasocket_callback(LyXDataSocket * /* p */)
 {}
 
 
-void remove_datasocket_callback(LyXDataSocket * /* p */)
+void lyx_gui::remove_datasocket_callback(LyXDataSocket * /* p */)
 {}
 
 
-void set_serversocket_callback(LyXServerSocket * /* p */)
+void lyx_gui::set_serversocket_callback(LyXServerSocket * /* p */)
 {}
 
 
-void remove_serversocket_callback(LyXServerSocket * /* p */)
+void lyx_gui::remove_serversocket_callback(LyXServerSocket * /* p */)
 {}
 
 
