@@ -523,16 +523,26 @@ latexkeys const * Parser::read_delim()
 		case LM_TK_SYM:
 		case LM_TK_NOGLYPH:
 		case LM_TK_SPECIAL:
-		case LM_TK_BEGIN:
+		case LM_TK_BEGIN: {
 			l = lval_;
 			//lyxerr << "found key 1: '" << l << "'\n";
 			//lyxerr << "found key 1: '" << l->name << "'\n";
 			break;
-		case LM_TK_STR:
+		}
+		case ']':
+		case '[': {
+			string s;
+			s += ld;
+			l = in_word_set(s);
+			//lyxerr << "found key 2: '" << l->name << "'\n";
+			break;
+		}
+		case LM_TK_STR: {
 			string s;
 			s += ival_;
 			l = in_word_set(s);
 			//lyxerr << "found key 2: '" << l->name << "'\n";
+		}
 	}
 	return l;
 }
