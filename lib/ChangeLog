@@ -1,3 +1,13 @@
+2004-07-21  Angus Leeming  <leeming@lyx.org>
+
+	* scripts/lyxpreview2ppm.py: protect arguments of external
+	program calls correctly. Confirmed that this does not break
+	usage of the script by lyx on either *nix or win32 platforms.
+	Also confirmed that this allows the script to be used to
+	generate successfully on Win32 with an input file such as
+	"my dir/my file.tex". (MikTeX has no problem with spaces in
+	file names, so the script should work in such cases too.)
+
 2004-07-14  Angus Leeming  <leeming@lyx.org>
 
 	* scripts/lyxpreview2ppm.py: improve the commentary, both in
@@ -13,10 +23,6 @@
 	the python script has some hope of working on Win32 machines.
 
 	* configure.m4: adjust lyxpreview_to_bitmap_command.
-
-2004-05-05  Angus Leeming  <leeming@lyx.org>
-
-	* scripts/lyxpreview2bitmap.sh: enable the script to work on
 
 2004-05-19  Uwe Stöhr  <uwestoehr@web.de>
 

@@ -307,8 +307,8 @@ def mkstemp():
 
 def crop_files(pnmcrop, basename):
     t = pipes.Template()
-    t.append('%s -left' % pnmcrop, '--')
-    t.append('%s -right' % pnmcrop, '--')
+    t.append('"%s" -left' % pnmcrop, '--')
+    t.append('"%s" -right' % pnmcrop, '--')
 
     for file in glob.glob("%s*.ppm" % basename):
         tmp = mkstemp()
@@ -340,7 +340,7 @@ def main(argv):
     pnmcrop = find_exe(["pnmcrop"], path)
 
     # Compile the latex file.
-    latex_call = '%s %s' % (latex, latex_file)
+    latex_call = '"%s" "%s"' % (latex, latex_file)
 
     latex_status, latex_stdout = run_command(latex_call)
     if latex_status != None:
@@ -351,7 +351,7 @@ def main(argv):
     dvi_file = latex_file_re.sub(".dvi", latex_file)
     ps_file  = latex_file_re.sub(".ps",  latex_file)
 
-    dvips_call = '%s -o %s %s' % (dvips, ps_file, dvi_file)
+    dvips_call = '"%s" -o "%s" "%s"' % (dvips, ps_file, dvi_file)
 
     dvips_status, dvips_stdout = run_command(dvips_call)
     if dvips_status != None:
@@ -368,10 +368,10 @@ def main(argv):
         alpha = 2
 
     # Generate the bitmap images
-    gs_call = '%s -dNOPAUSE -dBATCH -dSAFER -sDEVICE=pnmraw ' \
-              '-sOutputFile=%s%%d.ppm ' \
+    gs_call = '"%s" -dNOPAUSE -dBATCH -dSAFER -sDEVICE=pnmraw ' \
+              '-sOutputFile="%s%%d.ppm" ' \
               '-dGraphicsAlphaBit=%d -dTextAlphaBits=%d ' \
-              '-r%f %s' \
+              '-r%f "%s"' \
               % (gs, latex_file_re.sub("", latex_file), \
                  alpha, alpha, resolution, ps_file)
 
