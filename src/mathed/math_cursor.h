@@ -149,8 +149,8 @@ public:
 	void selCut();
 	///
 	void selDel();
-	///
-	void selPaste();
+	/// pastes n-th element of cut buffer
+	void selPaste(int n);
 	///
 	void selHandle(bool);
 	///

@@ -86,6 +86,7 @@ namespace {
 
 MathInset::mode_type asMode(MathInset::mode_type oldmode, string const & str)
 {
+	lyxerr << "handling mode: '" << str << "'\n";
 	if (str == "mathmode")
 		return MathInset::MATH_MODE;
 	if (str == "textmode" || str == "forcetext")
@@ -601,6 +602,8 @@ void Parser::parse1(MathGridInset & grid, unsigned flags,
 		grid.asHullInset()->numbered(cellrow, numbered);
 
 	//dump();
+	//lyxerr << " flags: " << flags << "\n";
+	//lyxerr << " mode: " << mode  << "\n";
 	//lyxerr << "grid: " << grid << endl;
 
 	while (good()) {
@@ -608,23 +611,22 @@ void Parser::parse1(MathGridInset & grid, unsigned flags,
 
 #ifdef FILEDEBUG
 		lyxerr << "t: " << t << " flags: " << flags << "\n";
+		lyxerr << "mode: " << mode  << "\n";
 		cell->dump();
 		lyxerr << "\n";
 #endif
 
 		if (flags & FLAG_ITEM) {
-			skipSpaces();
 
-			flags &= ~FLAG_ITEM;
-			if (t.cat() == catBegin) {
+	  	if (t.cat() == catBegin) {
 				// skip the brace and collect everything to the next matching
 				// closing brace
-				flags |= FLAG_BRACE_LAST;
-				continue;
+				parse1(grid, FLAG_BRACE_LAST, mode, numbered);
+				return;
 			}
 
 			// handle only this single token, leave the loop if done
-			flags |= FLAG_LEAVE;
+			flags = FLAG_LEAVE;
 		}
 
 
@@ -842,9 +844,8 @@ void Parser::parse1(MathGridInset & grid, unsigned flags,
 			// is a version for display attached?
 			skipSpaces();
 			MathArray ar2;
-			if (nextToken().cat() == catBegin) {
+			if (nextToken().cat() == catBegin)
 				parse(ar2, FLAG_ITEM, MathInset::MATH_MODE);
-			}
 
 			cell->push_back(MathAtom(new MathMacroTemplate(name, nargs, ar1, ar2)));
 		}
@@ -1212,8 +1213,10 @@ void Parser::parse1(MathGridInset & grid, unsigned flags,
 				MathAtom at = createMathInset(t.cs());
 				MathInset::mode_type m = mode;
 				//if (m == MathInset::UNDECIDED_MODE)
+				lyxerr << "default creation: m1: " << m << "\n";
 				if (at->currentMode() != MathInset::UNDECIDED_MODE)
 					m = at->currentMode();
+				lyxerr << "default creation: m2: " << m << "\n";
 				MathInset::idx_type start = 0;
 				// this fails on \bigg[...\bigg]
 				//MathArray opt;

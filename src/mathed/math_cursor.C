@@ -21,6 +21,7 @@
 
 #include "support/lstrings.h"
 #include "support/LAssert.h"
+#include "support/limited_stack.h"
 #include "debug.h"
 #include "frontends/Painter.h"
 #include "math_cursor.h"
@@ -58,7 +59,7 @@ using std::isalpha;
 
 
 // matheds own cut buffer
-string theCutBuffer;
+limited_stack<string> theCutBuffer;
 
 
 MathCursor::MathCursor(InsetFormulaBase * formula, bool front)
@@ -544,10 +545,10 @@ void MathCursor::selCopy()
 {
 	dump("selCopy");
 	if (selection_) {
-		theCutBuffer = grabSelection();
+		theCutBuffer.push(grabSelection());
 		selection_ = false;
 	} else {
-		theCutBuffer.erase();
+		//theCutBuffer.erase();
 	}
 }
 
@@ -555,7 +556,7 @@ void MathCursor::selCopy()
 void MathCursor::selCut()
 {
 	dump("selCut");
-	theCutBuffer = grabAndEraseSelection();
+	theCutBuffer.push(grabAndEraseSelection());
 }
 
 
@@ -569,11 +570,12 @@ void MathCursor::selDel()
 }
 
 
-void MathCursor::selPaste()
+void MathCursor::selPaste(int n)
 {
 	dump("selPaste");
 	selClearOrDel();
-	paste(theCutBuffer);
+	if (n < theCutBuffer.size())
+		paste(theCutBuffer[n]);
 	//grabSelection();
 	selection_ = false;
 }
@@ -1239,18 +1241,8 @@ bool MathCursor::interpret(char c)
 		return pos() != size();
 	}
 
-	if (c == '#') {
-		insert(c);
-		return true;
-	}
-
-	if (c == '{' || c == '}') {
-		niceInsert(createMathInset(string(1, c)));
-		return true;
-	}
-
-	if (c == '$') {
-		insert(createMathInset("$"));
+	if (c == '{' || c == '}' || c == '#' || c == '&' || c == '$') {
+		createMathInset(string(1, c));
 		return true;
 	}
 
