@@ -31,12 +31,12 @@ AC_DEFUN(CHECK_WITH_PSPELL,
       pspell_lib_found="Setting to $pspell_use_lib"
     else
       pspell_libs="/usr/lib /usr/lib/pspell /usr/local/lib /usr/local/lib/pspell"
-      AC_FIND_FILE(libpspell.a,$pspell_libs,pspell_use_lib)
+      AC_FIND_FILE(libpspell.la libpspell.so libpspell.a,$pspell_libs,pspell_use_lib)
       pspell_lib_found="yes"
     fi
 
     if test "$pspell_use_include" = "NO" || \
-       test "$pspell_use_include" = "NO"; then
+       test "$pspell_use_lib" = "NO"; then
       if test "$USE_PSPELL" = "yes"; then
 	USE_PSPELL="not found"
       fi
