@@ -1,3 +1,9 @@
+2002-04-24  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* configure.in: small hack for compatibility with autoconf 2.52.
+	Basically, there is a weird interference with stdlib.h with g++
+	and _some_ functions (mkstemp, mktemp...)
+
 2002-04-22  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* configure.in (FRONTEND_GUILIB): add qt2/xforms/*.lo for qt2
