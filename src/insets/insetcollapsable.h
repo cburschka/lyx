@@ -110,6 +110,9 @@ protected:
 private:
     ///
     int widthOffset;
+    ///
+    mutable int topx;
+    mutable int topbaseline;
 };
 
 #endif

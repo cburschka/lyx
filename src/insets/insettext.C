@@ -221,25 +221,19 @@ void InsetText::draw(BufferView * bv, LyXFont const & f,
 
     if (!cleared && ((need_update==FULL) || (top_x!=int(x)) ||
 		     (top_baseline!=baseline))) {
-#if 0
-	    // && locked && ((need_update==FULL) || (top_x!=int(x)) ||
-	    //    (top_baseline!=baseline))) {
-	need_update = NONE;
-	top_x = int(x);
-	top_baseline = baseline;
-	locked = false;
-	bv->updateInset(const_cast<InsetText *>(this), false);
-	locked = true;
-	if (drawLockedFrame)
-		pain.rectangle(top_x, baseline - ascent(pain, f),
-			       width(pain, f), ascent(pain,f)+descent(pain, f),
-			       frame_color);
-	return;
-#else
-	pain.fillRectangle(top_x+drawTextXOffset, top_y, last_width,
-			   last_height);
+	int w =  insetWidth;
+	int h = insetAscent + insetDescent;
+	int ty = baseline - insetAscent;
+	
+	if (ty < 0)
+	    ty = 0;
+	if ((ty + h) > pain.paperHeight())
+	    h = pain.paperHeight();
+	if ((top_x + drawTextXOffset + w) > pain.paperWidth())
+	    w = pain.paperWidth();
+	pain.fillRectangle(top_x+drawTextXOffset, ty, w, h);
+	cleared = true;
 	need_update = FULL;
-#endif
     }
 
     if (!cleared && (need_update == NONE))
@@ -258,7 +252,7 @@ void InsetText::draw(BufferView * bv, LyXFont const & f,
 	inset_x = cx(bv) - top_x + drawTextXOffset;
 	inset_y = cy(bv) + drawTextYOffset;
     }
-    if (need_update == CURSOR) {
+    if (!cleared && (need_update == CURSOR)) {
 	x += width(pain, f);
 	need_update = NONE;
 	return;
@@ -337,11 +331,10 @@ void InsetText::Edit(BufferView * bv, int x, int y, unsigned int button)
     locked = true;
     the_locking_inset = 0;
     inset_pos = inset_x = inset_y = 0;
-#warning Fix cursor setting here!!! (Jug)
-    TEXT(bv)->SetCursor(bv, par, 0);
-//    setPos(bv->painter(), x, y);
+    TEXT(bv)->SetCursorFromCoordinates(bv, x-drawTextXOffset,
+				       y+TEXT(bv)->first-drawTextYOffset+
+				       insetAscent);
     checkAndActivateInset(bv, x, y, button);
-//    selection_start_cursor = selection_end_cursor = cursor;
     TEXT(bv)->sel_cursor = TEXT(bv)->cursor;
     bv->text->FinishUndo();
     UpdateLocal(bv, FULL, false);
@@ -435,7 +428,9 @@ void InsetText::InsetButtonPress(BufferView * bv, int x, int y, int button)
 	UpdateLocal(bv, FULL, false);
     }
     no_selection = false;
-    TEXT(bv)->SetCursorFromCoordinates(bv, x, y+TEXT(bv)->first);
+    TEXT(bv)->SetCursorFromCoordinates(bv, x-drawTextXOffset,
+				       y+TEXT(bv)->first-drawTextYOffset+
+				       insetAscent);
     if (the_locking_inset) {
 	UpdatableInset * inset = 0;
 	if (cpar(bv)->GetChar(cpos(bv)) == LyXParagraph::META_INSET)
@@ -698,7 +693,7 @@ InsetText::LocalDispatch(BufferView * bv,
 	if (!autoBreakRows)
 	    return DISPATCHED;
 	TEXT(bv)->BreakParagraph(bv, 0);
-	UpdateLocal(bv, CURSOR_PAR, true);
+	UpdateLocal(bv, FULL, true);
 	break;
     case LFUN_BREAKLINE:
 	if (!autoBreakRows)

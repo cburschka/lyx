@@ -48,8 +48,8 @@ Inset * InsetCollapsable::Clone() const
 
 void InsetCollapsable::Write(Buffer const * buf, ostream & os) const
 {
-	os << "collapsed " << tostr(!display()) << "\n";
-	WriteParagraphData(buf, os);
+    os << "collapsed " << tostr(!display()) << "\n";
+    WriteParagraphData(buf, os);
 }
 
 
@@ -141,18 +141,38 @@ void InsetCollapsable::draw(BufferView * bv, LyXFont const & f,
     button_length = width_collapsed(pain, labelfont) + 2;
     button_top_y = -ascent_collapsed(pain, f);
     button_bottom_y = descent_collapsed(pain, f);
-    top_x = int(x);
-    top_baseline = baseline;
     if (collapsed) {
 	draw_collapsed(pain, f, baseline, x);
 	return;
     }
 
-    draw_collapsed(pain, f, baseline, x);
-    x -= TEXT_TO_INSET_OFFSET;
+    if (!cleared && ((need_update==FULL) || (topx!=int(x)) ||
+		     (topbaseline!=baseline))) {
+	int w =  width(pain, f);
+	int h = ascent(pain,f) + descent(pain, f);
+	int tx = display()? 0:topx;
+	int ty = baseline - ascent(pain,f);
+	
+	if (ty < 0)
+	    ty = 0;
+	if ((ty + h) > pain.paperHeight())
+	    h = pain.paperHeight();
+	if ((topx + w) > pain.paperWidth())
+	    w = pain.paperWidth();
+	pain.fillRectangle(tx, ty-1, w, h+2);
+	cleared = true;
+    }
+
+    // not needed if collapsed
+    topx = int(x);
+    topbaseline = baseline;
 
     int w =  InsetText::width(pain, f) + (2 * TEXT_TO_INSET_OFFSET);
     int h = ascent(pain,f) + descent(pain, f);
+
+    draw_collapsed(pain, f, baseline, x);
+    x -= TEXT_TO_INSET_OFFSET;
+
     int save_x = static_cast<int>(x);
     x += TEXT_TO_INSET_OFFSET;
     InsetText::draw(bv, f, baseline, x, cleared);

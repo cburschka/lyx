@@ -162,6 +162,8 @@ protected:
     bool drawLockedFrame;
     ///
     LColor::color frame_color;
+    ///
+    mutable UpdateCodes need_update;
 
 private:
     ///
@@ -196,10 +198,10 @@ private:
     LyXParagraph * cpar(BufferView *) const;
     Row * crow(BufferView *) const;
 
-	/// This instead of a macro
-	LyXText * TEXT(BufferView * bv) const {
-		return getLyXText(bv);
-	}
+    /// This instead of a macro
+    LyXText * TEXT(BufferView * bv) const {
+	return getLyXText(bv);
+    }
 	
     /* Private structures and variables */
     ///
@@ -223,8 +225,6 @@ private:
     bool no_selection;
     ///
     mutable float xpos;
-    ///
-    mutable UpdateCodes need_update;
     ///
     UpdatableInset * the_locking_inset;
     ///

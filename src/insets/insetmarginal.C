@@ -26,37 +26,37 @@ using std::endl;
 
 InsetMarginal::InsetMarginal() : InsetCollapsable()
 {
-	setLabel(_("margin"));
-	LyXFont font(LyXFont::ALL_SANE);
-	font.decSize();
-	font.decSize();
-	font.setColor(LColor::footnote);
-	setLabelFont(font);
-	setAutoCollapse(false);
-	setInsetName("Marginal");
+    setLabel(_("margin"));
+    LyXFont font(LyXFont::ALL_SANE);
+    font.decSize();
+    font.decSize();
+    font.setColor(LColor::footnote);
+    setLabelFont(font);
+    setAutoCollapse(false);
+    setInsetName("Marginal");
 }
 
 
 void InsetMarginal::Write(Buffer const * buf, ostream & os) const
 {
-	os << getInsetName() << "\n";
-	InsetCollapsable::Write(buf, os);
+    os << getInsetName() << "\n";
+    InsetCollapsable::Write(buf, os);
 }
 
 
 Inset * InsetMarginal::Clone() const
 {
-	InsetMarginal * result = new InsetMarginal;
-	result->init(this);
-
-	result->collapsed = collapsed;
-	return result;
+    InsetMarginal * result = new InsetMarginal;
+    result->init(this);
+    
+    result->collapsed = collapsed;
+    return result;
 }
 
 
 char const * InsetMarginal::EditMessage() const
 {
-	return _("Opened Marginal Note Inset");
+    return _("Opened Marginal Note Inset");
 }
 
 

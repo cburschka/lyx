@@ -39,8 +39,8 @@ InsetFoot::InsetFoot() : InsetCollapsable()
 
 void InsetFoot::Write(Buffer const * buf, ostream & os) const 
 {
-	os << getInsetName() << "\n";
-	InsetCollapsable::Write(buf, os);
+    os << getInsetName() << "\n";
+    InsetCollapsable::Write(buf, os);
 }
 
 

@@ -3837,12 +3837,13 @@ void LyXText::GetVisibleRow(BufferView * bview, int y_offset, int x_offset,
 	ww = bview->workWidth();
 
 	bool clear_area = true;
+	Inset * inset = 0;
 
 	if ((last == row_ptr->pos()) &&
 	    (row_ptr->par()->GetChar(row_ptr->pos()) == LyXParagraph::META_INSET) &&
-	    (row_ptr->par()->GetInset(row_ptr->pos())))
+	    (inset=row_ptr->par()->GetInset(row_ptr->pos())))
 	{
-		clear_area = row_ptr->par()->GetInset(row_ptr->pos())->doClearArea();
+		clear_area = inset->doClearArea();
 	}
 	if (clear_area) {
 		int w;
@@ -3851,6 +3852,16 @@ void LyXText::GetVisibleRow(BufferView * bview, int y_offset, int x_offset,
 		else
 			w = ww;
 		pain.fillRectangle(x_offset, y_offset, w, row_ptr->height());
+	} else if (inset != 0) {
+		int h = row_ptr->baseline() - inset->ascent(pain, font);
+		if (h > 0) {
+			int w;
+			if (inset_owner)
+				w = inset_owner->width(bview->painter(), font);
+			else
+				w = ww;
+			pain.fillRectangle(x_offset, y_offset, w, h);
+		}
 	}
 	
 	if (selection) {

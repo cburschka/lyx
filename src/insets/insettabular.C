@@ -158,10 +158,25 @@ void InsetTabular::draw(BufferView * bv, LyXFont const & font, int baseline,
     float cx;
 
     UpdatableInset::draw(bv,font,baseline,x,cleared);
-    if ((need_update == INIT)|| (top_x != int(x)) || (top_baseline != baseline)) {
+    if (!cleared && ((need_update == INIT) || (need_update == FULL) ||
+		     (top_x != int(x)) || (top_baseline != baseline))) {
+#if 1
+	int h = ascent(pain, font) + descent(pain, font);
+	int tx = display()? 0:top_x;
+	int w =  tx? width(pain, font):pain.paperWidth();
+	int ty = baseline - ascent(pain, font);
+	
+	if (ty < 0)
+	    ty = 0;
+	if ((ty + h) > pain.paperHeight())
+	    h = pain.paperHeight();
+	if ((top_x + w) > pain.paperWidth())
+	    w = pain.paperWidth();
+	pain.fillRectangle(tx, ty, w, h);
 	need_update = FULL;
-	top_x = int(x);
-	top_baseline = baseline;
+	cleared = true;
+#else
+	need_update = FULL;
 	resetPos(pain);
 	if (locked) { // repaint this way as the background was not cleared
 		if (the_locking_inset)
@@ -171,10 +186,13 @@ void InsetTabular::draw(BufferView * bv, LyXFont const & font, int baseline,
 		locked = true;
 		return;
 	}
+#endif
     }
+    top_x = int(x);
+    top_baseline = baseline;
     bool dodraw;
     x += ADD_TO_TABULAR_WIDTH;
-    if (cleared || !locked || (need_update == FULL) || (need_update == CELL)) {
+    if (cleared || (need_update == FULL) || (need_update == CELL)) {
 	for(i=0;i<tabular->rows();++i) {
 	    nx = int(x);
 	    dodraw = ((baseline+tabular->GetDescentOfRow(i)) > 0) &&
