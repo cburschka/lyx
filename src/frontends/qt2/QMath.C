@@ -12,14 +12,14 @@
 
 
 #include "gettext.h"
-#include "ControlMath2.h"
+#include "ControlMath.h"
 #include "QMathDialog.h"
 #include "QMathMatrixDialog.h"
 #include "QDelimiterDialog.h"
 #include "QMath.h"
 
 
-typedef QController<ControlMath2, QView<QMathDialog> > math_base;
+typedef QController<ControlMath, QView<QMathDialog> > math_base;
 
 
 QMath::QMath(Dialog & parent)
@@ -33,7 +33,7 @@ void QMath::build_dialog()
 }
 
 
-typedef QController<ControlMath2, QView<QMathMatrixDialog> > matrix_base;
+typedef QController<ControlMath, QView<QMathMatrixDialog> > matrix_base;
 
 
 QMathMatrix::QMathMatrix(Dialog & parent)
@@ -47,7 +47,7 @@ void QMathMatrix::build_dialog()
 }
 
 
-typedef QController<ControlMath2, QView<QDelimiterDialog> > delimiter_base;
+typedef QController<ControlMath, QView<QDelimiterDialog> > delimiter_base;
 
 
 QMathDelimiter::QMathDelimiter(Dialog & parent)

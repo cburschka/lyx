@@ -14,7 +14,7 @@
 
 
 #include "FormMathsBitmap.h"
-#include "ControlMath2.h"
+#include "ControlMath.h"
 #include "xformsBC.h"
 
 #include "bmtable.h"
@@ -40,7 +40,7 @@ FD_maths_bitmap::~FD_maths_bitmap()
 }
 
 
-typedef FormController<ControlMath2, FormView<FD_maths_bitmap> > base_class;
+typedef FormController<ControlMath, FormView<FD_maths_bitmap> > base_class;
 
 
 FormMathsBitmap::FormMathsBitmap(Dialog & parent, string const & t, vector<string> const & l)

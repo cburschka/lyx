@@ -15,12 +15,12 @@
 
 #include "QDialogView.h"
 
-class ControlMath2;
+class ControlMath;
 class QMathDialog;
 class QMathMatrixDialog;
 class QDelimiterDialog;
 
-class QMath : public QController<ControlMath2, QView<QMathDialog> > {
+class QMath : public QController<ControlMath, QView<QMathDialog> > {
 public:
 	friend class QMathDialog;
 
@@ -34,7 +34,7 @@ private:
 };
 
 
-class QMathMatrix : public QController<ControlMath2, QView<QMathMatrixDialog> > {
+class QMathMatrix : public QController<ControlMath, QView<QMathMatrixDialog> > {
 public:
 	friend class QMathMatrixDialog;
 
@@ -48,7 +48,7 @@ private:
 };
 
 
-class QMathDelimiter : public QController<ControlMath2, QView<QDelimiterDialog> > {
+class QMathDelimiter : public QController<ControlMath, QView<QDelimiterDialog> > {
 public:
 	friend class QDelimiterDialog;
 

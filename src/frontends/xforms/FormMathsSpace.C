@@ -16,14 +16,14 @@
 
 #include "FormMathsSpace.h"
 #include "forms/form_maths_space.h"
-#include "ControlMath2.h"
+#include "ControlMath.h"
 #include "xformsBC.h"
 
 #include "lyx_forms.h"
 
 extern char * latex_mathspace[];
 
-typedef FormController<ControlMath2, FormView<FD_maths_space> > base_class;
+typedef FormController<ControlMath, FormView<FD_maths_space> > base_class;
 
 FormMathsSpace::FormMathsSpace(Dialog & parent)
 	: base_class(parent, _("Math Spacing"), false),

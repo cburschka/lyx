@@ -1,5 +1,20 @@
 2003-06-17  Angus Leeming  <leeming@lyx.org>
 
+	* Dialogs.C:
+	* Dialogs2.C
+	* FormMathsPanel.[Ch]:
+	* forms/form_maths_panel.fd: convert FormMathsPanel to the
+	new Dialog-based scheme.
+
+	* Dialogs.C:
+	* FormMathsBitmap.[Ch]:
+	* FormMathsDelim.[Ch]:
+	* FormMathsMatrix.[Ch]:
+	* FormMathsSpace.[Ch]:
+	* FormMathsStyle.[Ch]: s/ControlMath2/ControlMath/.
+
+2003-06-17  Angus Leeming  <leeming@lyx.org>
+
 	* FormMathsBitmap.[Ch]:
 	* FormMathsDelim.[Ch]:
 	* forms/form_maths_delim.fd:

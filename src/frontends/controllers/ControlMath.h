@@ -4,103 +4,48 @@
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
- * \author Alejandro Aguilar Sierra
- * \author John Levon
  * \author Angus Leeming
  *
  * Full author contact details are available in file CREDITS
+ *
+ * ControlMath2 is a controller class for the Math Panel dialog.
  */
 
-#ifndef CONTROL_MATH_H
-#define CONTROL_MATH_H
-
-#include "lfuns.h"
-#include "ControlDialog_impl.h"
-
-#include "ButtonController.h"
-
-#include "LString.h"
-#include <boost/shared_ptr.hpp>
-#include <map>
+#ifndef CONTROLMATH_H
+#define CONTROLMATH_H
 
 
-class GUIMathSub;
-class BCView;
+#include "Dialog.h"
+#include "lfuns.h" // for kb_action
 
 
-class ControlMath : public ControlDialogBD {
+class ControlMath : public Dialog::Controller {
 public:
-	///
-	ControlMath(LyXView &, Dialogs &);
+	ControlMath(Dialog &);
+
+	virtual bool initialiseParams(string const &) { return true; }
+	virtual void clearParams() {}
+	virtual void dispatchParams() {}
+	virtual bool isBufferDependent() const { return true; }
 
 	/// dispatch an LFUN
-	void dispatchFunc(kb_action act, string const & arg = string()) const;
-	/// dispatch a symbol insert
-	void insertSymbol(string const & sym, bool bs = true) const;
-
-	///
-	void addDaughter(void * key, ViewBase * v,
-			 BCView * bc, ButtonPolicy * bcpolicy);
-	///
-	void showDaughter(void *);
+	void dispatchFunc(kb_action action, string const & arg = string()) const;
+	/// Insert a math symbol into the doc.
+	void dispatchInsert(string const & name) const;
+	/// Insert a subscript.
+	void dispatchSubscript() const;
+	/// Insert a superscript.
+	void dispatchSuperscript() const;
+	/// Insert a cube root
+	void dispatchCubeRoot() const;
+	/// Insert a matrix
+	void dispatchMatrix(string const & str) const;
+	/// Insert a delimiter
+	void dispatchDelim(string const & str) const;
+	/// switch between display and inline
+	void dispatchToggleDisplay() const;
 	/// a request to launch dialog \param name.
 	void showDialog(string const & name) const;
-
-private:
-	///
-	virtual void apply();
-
-	///
-	typedef boost::shared_ptr<GUIMathSub> DaughterPtr;
-	///
-	typedef std::map<void *, DaughterPtr> Store;
-
-	/** The store of all daughter dialogs.
-	 *  The map uses the button on the main panel to identify them.
-	 */
-	Store daughters_;
-
-	/// A pointer to the currently active daughter dialog.
-	GUIMathSub * active_;
-};
-
-
-class ControlMathSub : public ControlDialogBD {
-public:
-	///
-	ControlMathSub(LyXView &, Dialogs &, ControlMath const & p);
-
-	/// dispatch an LFUN
-	void dispatchFunc(kb_action act, string const & arg = string()) const;
-	/// dispatch a symbol insert
-	void insertSymbol(string const & sym, bool bs = true) const;
-
-private:
-	///
-	virtual void apply();
-	///
-	ControlMath const & parent_;
-};
-
-
-class GUIMathSub {
-public:
-	///
-	GUIMathSub(LyXView & lv, Dialogs & d,
-		   ControlMath const & p,
-		   ViewBase * v,
-		   BCView * bcview,
-		   ButtonPolicy * bcpolicy);
-	///
-	ControlMathSub & controller() { return controller_; }
-
-private:
-	///
-	ControlMathSub controller_;
-	///
-	boost::scoped_ptr<ButtonController> bc_;
-	///
-	boost::scoped_ptr<ViewBase> view_;
 };
 
 
@@ -139,4 +84,4 @@ extern int const nr_latex_ams_ops;
  */
 string const find_xpm(string const & name);
 
-#endif /* CONTROL_MATH_H */
+#endif // NOT CONTROLMATH

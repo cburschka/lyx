@@ -13,6 +13,7 @@
 #include <config.h>
 
 #include "Dialogs.h"
+#include "Dialog.h"
 #include "controllers/GUI.h"
 #include "ButtonController.h"
 
@@ -26,10 +27,6 @@
 #include "ControlForks.h"
 #include "FormForks.h"
 #include "forms/form_forks.h"
-
-#include "ControlMath.h"
-#include "FormMathsPanel.h"
-#include "forms/form_maths_panel.h"
 
 #include "ControlPreamble.h"
 #include "FormPreamble.h"
@@ -65,9 +62,6 @@ DocumentDialog;
 typedef GUI<ControlForks, FormForks, OkApplyCancelPolicy, xformsBC>
 ForksDialog;
 
-typedef GUI<ControlMath, FormMathsPanel, OkCancelReadOnlyPolicy, xformsBC>
-MathPanelDialog;
-
 typedef GUI<ControlPreamble, FormPreamble, NoRepeatedApplyReadOnlyPolicy, xformsBC>
 PreambleDialog;
 
@@ -94,7 +88,6 @@ struct Dialogs::Impl {
 
 	DocumentDialog      document;
 	ForksDialog         forks;
-	MathPanelDialog     mathpanel;
 	PreambleDialog      preamble;
 	PreferencesDialog   preferences;
 	PrintDialog         print;
@@ -108,7 +101,6 @@ struct Dialogs::Impl {
 Dialogs::Impl::Impl(LyXView & lv, Dialogs & d)
 	: document(lv, d),
 	  forks(lv, d),
-	  mathpanel(lv, d),
 	  preamble(lv, d),
 	  preferences(lv, d),
 	  print(lv, d),
@@ -145,7 +137,8 @@ void Dialogs::showForks()
 
 void Dialogs::showMathPanel()
 {
-	pimpl_->mathpanel.controller().show();
+	static DialogPtr mathdialog(build("math"));
+	mathdialog->show(string());
 }
 
 

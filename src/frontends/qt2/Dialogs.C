@@ -26,7 +26,7 @@
 #include "ControlGraphics.h"
 #include "ControlInclude.h"
 #include "ControlLog.h"
-#include "ControlMath2.h"
+#include "ControlMath.h"
 #include "ControlMinipage.h"
 #include "ControlParagraph.h"
 #include "ControlRef.h"
@@ -196,15 +196,15 @@ Dialog * Dialogs::build(string const & name)
 		dialog->setView(new QLog(*dialog));
 		dialog->bc().bp(new OkCancelPolicy);
 	} else if (name == "math") {
-		dialog->setController(new ControlMath2(*dialog));
+		dialog->setController(new ControlMath(*dialog));
 		dialog->setView(new QMath(*dialog));
 		dialog->bc().bp(new IgnorantPolicy);
 	} else if (name == "mathdelimiter") {
-		dialog->setController(new ControlMath2(*dialog));
+		dialog->setController(new ControlMath(*dialog));
 		dialog->setView(new QMathDelimiter(*dialog));
 		dialog->bc().bp(new IgnorantPolicy);
 	} else if (name == "mathmatrix") {
-		dialog->setController(new ControlMath2(*dialog));
+		dialog->setController(new ControlMath(*dialog));
 		dialog->setView(new QMathMatrix(*dialog));
 		dialog->bc().bp(new IgnorantPolicy);
 	} else if (name == "minipage") {

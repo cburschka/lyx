@@ -18,14 +18,14 @@
 #include "FormDialogView.h"
 
 
-class ControlMath2;
+class ControlMath;
 struct FD_maths_space;
 
 /**
  * This class provides an XForms implementation of the maths space.
  */
 class FormMathsSpace
-	: public FormController<ControlMath2, FormView<FD_maths_space> > {
+	: public FormController<ControlMath, FormView<FD_maths_space> > {
 public:
 	///
 	FormMathsSpace(Dialog &);

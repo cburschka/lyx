@@ -33,10 +33,10 @@
 #include "super.xpm"
 
 
-typedef FormCB<ControlMath, FormDB<FD_maths_panel> > base_class;
+typedef FormController<ControlMath, FormView<FD_maths_panel> > base_class;
 
-FormMathsPanel::FormMathsPanel()
-	: base_class(_("Math Panel"))
+FormMathsPanel::FormMathsPanel(Dialog & parent)
+	: base_class(parent, _("Math Panel"))
 {}
 
 
@@ -109,28 +109,23 @@ ButtonPolicy::SMInput FormMathsPanel::input(FL_OBJECT * ob, long)
 		controller().showDialog("mathstyle");
 
 	} else if (ob == dialog_->button_super) {
-		controller().dispatchFunc(LFUN_SUPERSCRIPT);
+		controller().dispatchSuperscript();
 
 	} else if (ob == dialog_->button_sub) {
-		controller().dispatchFunc(LFUN_SUBSCRIPT);
-
-//	} else if (ob == dialog_->???) {
-//		controller().dispatchFunc(LFUN_SUBSCRIPT);
-//		controller().dispatchFunc(LFUN_LEFT);
-//		controller().dispatchFunc(LFUN_SUPERSCRIPT);
+		controller().dispatchSubscript();
 
 	} else if (ob == dialog_->button_equation) {
-		controller().dispatchFunc(LFUN_MATH_DISPLAY);
+		controller().dispatchToggleDisplay();
 
 	} else if (ob == dialog_->button_frac) {
-		controller().insertSymbol("frac");
+		controller().dispatchInsert("frac");
 
 	} else if (ob == dialog_->button_sqrt) {
-		controller().insertSymbol("sqrt");
+		controller().dispatchInsert("sqrt");
 
 	} else if (ob == dialog_->browser_funcs) {
 		int const i = fl_get_browser(dialog_->browser_funcs) - 1;
-		controller().insertSymbol(function_names[i]);
+		controller().dispatchInsert(function_names[i]);
 	}
 
 	return ButtonPolicy::SMI_VALID;

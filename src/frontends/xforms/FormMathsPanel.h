@@ -15,7 +15,8 @@
 #define FORM_MATHSPANEL_H
 
 
-#include "FormBase.h"
+#include "FormDialogView.h"
+
 
 class ControlMath;
 struct FD_maths_panel;
@@ -23,10 +24,11 @@ struct FD_maths_panel;
 /**
  * This class provides an XForms implementation of the maths panel.
  */
-class FormMathsPanel : public FormCB<ControlMath, FormDB<FD_maths_panel> > {
+class FormMathsPanel
+	: public FormController<ControlMath, FormView<FD_maths_panel> > {
 public:
 	///
-	FormMathsPanel();
+	FormMathsPanel(Dialog &);
 
 private:
 	/// Not needed.

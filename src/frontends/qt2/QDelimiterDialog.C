@@ -15,7 +15,7 @@
 #include "qt_helpers.h"
 #include "debug.h"
 
-#include "ControlMath2.h"
+#include "ControlMath.h"
 #include "QMath.h"
 #include "QDelimiterDialog.h"
 

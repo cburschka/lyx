@@ -18,14 +18,14 @@
 #include "FormDialogView.h"
 
 
-class ControlMath2;
+class ControlMath;
 struct FD_maths_matrix;
 
 /**
  * This class provides an XForms implementation of the maths matrix.
  */
 class FormMathsMatrix
-	: public FormController<ControlMath2, FormView<FD_maths_matrix> > {
+	: public FormController<ControlMath, FormView<FD_maths_matrix> > {
 public:
 	///
 	FormMathsMatrix(Dialog &);

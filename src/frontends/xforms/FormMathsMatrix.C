@@ -16,7 +16,7 @@
 
 #include "FormMathsMatrix.h"
 #include "forms/form_maths_matrix.h"
-#include "ControlMath2.h"
+#include "ControlMath.h"
 #include "xformsBC.h"
 #include "ButtonController.h"
 
@@ -54,7 +54,7 @@ extern "C" {
 }
 
 
-typedef FormController<ControlMath2, FormView<FD_maths_matrix> > base_class;
+typedef FormController<ControlMath, FormView<FD_maths_matrix> > base_class;
 
 FormMathsMatrix::FormMathsMatrix(Dialog & parent)
 	: base_class(parent, _("Math Matrix"), false)

@@ -50,10 +50,10 @@ struct FD_maths_bitmap
  * This class provides an XForms implementation of a maths bitmap form.
  */
 
-class ControlMath2;
+class ControlMath;
 
 class FormMathsBitmap
-	: public FormController<ControlMath2, FormView<FD_maths_bitmap> > {
+	: public FormController<ControlMath, FormView<FD_maths_bitmap> > {
 public:
 	///
 	FormMathsBitmap(Dialog &, string const &, std::vector<string> const &);

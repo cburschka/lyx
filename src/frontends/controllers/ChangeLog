@@ -1,5 +1,13 @@
 2003-06-17  Angus Leeming  <leeming@lyx.org>
 
+	* ControlMath.[Ch]:
+	* ControlMath2.[Ch]: rename ControlMath2 as ControlMath.
+	Move into ControlMath.[Ch]. Remove ControlMath2.[Ch].
+
+	* Makefile.am: remove ControlMath2.[Ch].
+
+2003-06-17  Angus Leeming  <leeming@lyx.org>
+
 	* ControlMath.[Ch] (showDialog):
 	* ControlMath2.[Ch] (showDialog, dispatchFunc): new member functions.
 

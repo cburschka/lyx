@@ -16,7 +16,7 @@
 
 #include "FormMathsDelim.h"
 #include "forms/form_maths_delim.h"
-#include "ControlMath2.h"
+#include "ControlMath.h"
 #include "xformsBC.h"
 #include "ButtonController.h"
 
@@ -49,7 +49,7 @@ static char const * delim_values[] = {
 using std::endl;
 
 
-typedef FormController<ControlMath2, FormView<FD_maths_delim> > base_class;
+typedef FormController<ControlMath, FormView<FD_maths_delim> > base_class;
 
 FormMathsDelim::FormMathsDelim(Dialog & parent)
 	: base_class(parent, _("Math Delimiters"), false)

@@ -1,5 +1,13 @@
 2003-06-17  Angus Leeming  <leeming@lyx.org>
 
+	* Dialogs.C:
+	* QDelimiterDialog.C:
+	* QMath.[Ch]:
+	* QMathDialog.C:
+	* QMathMatrixDialog.C: s/ControlMath2/ControlMath/.
+
+2003-06-17  Angus Leeming  <leeming@lyx.org>
+
 	* Dialogs.C (build): create "mathdelimiter" and "mathmatrix" dialogs.
 
 	* QMath.[Ch]: add QMathMatrix and QMathDelimiter classes.

@@ -3,8 +3,7 @@
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
- * \author Alejandro Aguilar Sierra
- * \author John Levon
+ * \author Angus Leeming
  *
  * Full author contact details are available in file CREDITS
  */
@@ -12,115 +11,72 @@
 #include <config.h>
 
 #include "ControlMath.h"
-#include "ViewBase.h"
-
-#include "BCView.h"
-
+#include "Kernel.h"
 #include "debug.h"
 #include "funcrequest.h"
-
-#include "frontends/LyXView.h"
 
 #include "support/lstrings.h"
 #include "support/filetools.h"
 
 
-ControlMath::ControlMath(LyXView & lv, Dialogs & d)
-	: ControlDialogBD(lv, d), active_(0)
+ControlMath::ControlMath(Dialog & dialog)
+	: Dialog::Controller(dialog)
 {}
-
-
-void ControlMath::apply()
-{
-	view().apply();
-}
 
 
 void ControlMath::dispatchFunc(kb_action action, string const & arg) const
 {
-	lv_.dispatch(FuncRequest(action, arg));
+	kernel().dispatch(FuncRequest(action, arg));
 }
 
 
-void ControlMath::insertSymbol(string const & sym, bool bs) const
+void ControlMath::dispatchInsert(string const & name) const
 {
-	if (bs)
-		lv_.dispatch(FuncRequest(LFUN_INSERT_MATH, '\\' + sym));
-	else
-		lv_.dispatch(FuncRequest(LFUN_INSERT_MATH, sym));
+	dispatchFunc(LFUN_INSERT_MATH, '\\' + name);
+}
+
+
+void ControlMath::dispatchSubscript() const
+{
+	dispatchFunc(LFUN_SUBSCRIPT);
+}
+
+
+void ControlMath::dispatchSuperscript() const
+{
+	dispatchFunc(LFUN_SUPERSCRIPT);
+}
+
+
+void ControlMath::dispatchCubeRoot() const
+{
+	dispatchFunc(LFUN_INSERT_MATH, "\\root");
+	dispatchFunc(LFUN_SELFINSERT, "3");
+	dispatchFunc(LFUN_RIGHT);
+}
+
+
+void ControlMath::dispatchMatrix(string const & str) const
+{
+	dispatchFunc(LFUN_INSERT_MATRIX, str);
+}
+
+
+void ControlMath::dispatchDelim(string const & str) const
+{
+	dispatchFunc(LFUN_MATH_DELIM, str);
+}
+
+
+void ControlMath::dispatchToggleDisplay() const
+{
+	dispatchFunc(LFUN_MATH_DISPLAY);
 }
 
 
 void ControlMath::showDialog(string const & name) const
 {
-	lv_.dispatch(FuncRequest(LFUN_DIALOG_SHOW, name));
-}
-
-
-void ControlMath::addDaughter(void * key, ViewBase * v,
-			      BCView * bcview, ButtonPolicy * bcpolicy)
-{
-	if (daughters_.find(key) != daughters_.end())
-		return;
-
-	daughters_[key] = DaughterPtr(new GUIMathSub(lv_, d_, *this,
-						     v, bcview, bcpolicy));
-}
-
-
-void ControlMath::showDaughter(void * key)
-{
-	Store::iterator it = daughters_.find(key);
-	GUIMathSub * const new_active =
-		(it == daughters_.end()) ? 0 : it->second.get();
-
-	if (active_ != new_active) {
-		if (active_ )
-			active_->controller().hide();
-		active_ = new_active;
-	}
-
-	if (active_)
-		active_->controller().show();
-}
-
-
-
-ControlMathSub::ControlMathSub(LyXView & lv, Dialogs & d, ControlMath const & p)
-	: ControlDialogBD(lv, d),
-	  parent_(p)
-{}
-
-
-void ControlMathSub::apply()
-{
-	view().apply();
-}
-
-
-void ControlMathSub::dispatchFunc(kb_action action, string const & arg) const
-{
-	parent_.dispatchFunc(action, arg);
-}
-
-
-void ControlMathSub::insertSymbol(string const & sym, bool bs) const
-{
-	parent_.insertSymbol(sym, bs);
-}
-
-
-GUIMathSub::GUIMathSub(LyXView & lv, Dialogs & d,
-		       ControlMath const & p,
-		       ViewBase * v,
-		       BCView * bcview,
-		       ButtonPolicy * bcpolicy)
-	: controller_(lv, d, p), view_(v)
-{
-	controller_.setView(*view_);
-	view_->setController(controller_);
-	controller_.bc().view(bcview);
-	controller_.bc().bp(bcpolicy);
+	dispatchFunc(LFUN_DIALOG_SHOW, name);
 }
 
 
@@ -210,7 +166,7 @@ char const * latex_misc[] = {
 	"angle", "top", "bot", "Vert", "neg",
 	"flat", "natural", "sharp", "surd", "triangle",
 	"diamondsuit", "heartsuit", "clubsuit", "spadesuit",
-	"textrm Å", "textrm Ø", "mathcircumflex", "_",
+	"textrm Ã…", "textrm Ã˜", "mathcircumflex", "_",
 	"mathrm T",
 	"mathbb N", "mathbb Z", "mathbb Q",
 	"mathbb R", "mathbb C", "mathbb H",
@@ -318,8 +274,8 @@ string const find_xpm(string const & name)
 #warning Use a static table for this (Lgb)
 	// And get O(log n) lookup (Lgb)
 
-	if (xpm_name == "textrm_Å") xpm_name = "textrm_A";
-	else if (xpm_name == "textrm_Ø") xpm_name = "textrm_0";
+	if (xpm_name == "textrm_Ã…") xpm_name = "textrm_A";
+	else if (xpm_name == "textrm_Ã˜") xpm_name = "textrm_0";
 	else if (xpm_name == "Bumpeq") xpm_name = "bumpeq2";
 	else if (xpm_name == "Cap") xpm_name = "cap2";
 	else if (xpm_name == "Cup") xpm_name = "cup2";
