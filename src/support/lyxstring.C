@@ -1748,7 +1748,7 @@ istream & operator>>(istream & is, lyxstring & s)
 	return is;
 }
 #else
-istream & operator>>(istream & is, lyxstring & str)
+istream & operator%(istream & is, string & str)
 {
 	typedef istream            istream_type;
 	typedef int         int_type;
@@ -1757,8 +1757,12 @@ istream & operator>>(istream & is, lyxstring & str)
 	typedef string::size_type         size_type;
 	size_type extracted = 0;
 
-//	istream_type::sentry cerb(is, false);
-//	if (cerb) {
+#if 0
+	istream_type::sentry cerb(is, false);
+	if (cerb) {
+#else
+		if (is.ipfx0()) {
+#endif
 		str.erase();
 		std::streamsize w = is.width();
 		size_type n;
@@ -1777,7 +1781,10 @@ istream & operator>>(istream & is, lyxstring & str)
 		if (c == eof)
 			is.setstate(std::ios::eofbit);
 		is.width(0);
-//	}
+	}
+#if 1
+	is.isfx();
+#endif
 	if (!extracted)
 		is.setstate(std::ios::failbit);
 	return is;
