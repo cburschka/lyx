@@ -182,7 +182,8 @@ void RCS::undoLast()
 {
 	lyxerr[Debug::LYXVC] << "LyXVC: undoLast" << endl;
 	doVCCommand("rcs -o" + version() + " \""
-		    + OnlyFilename(owner_->fileName()) + "\"", owner_->filepath);
+		    + OnlyFilename(owner_->fileName()) + "\"",
+		    owner_->filepath);
 }
 
 
@@ -282,7 +283,8 @@ void CVS::registrer(string const & msg)
 void CVS::checkIn(string const & msg)
 {
 	doVCCommand("cvs -q commit -m \"" + msg + "\" \""
-		    + OnlyFilename(owner_->fileName()) + "\"", owner_->filepath);
+		    + OnlyFilename(owner_->fileName()) + "\"",
+		    owner_->filepath);
 	owner_->getUser()->owner()->getLyXFunc()->Dispatch("buffer-reload");
 }
 
@@ -296,10 +298,15 @@ void CVS::checkOut()
 
 void CVS::revert()
 {
-	// not sure how to do this...
-	// rm file
-	// cvs update
-	lyxerr << "Sorry not implemented." << endl;
+	// Reverts to the version in CVS repository and
+	// gets the updated version from the repository.
+	string const fil = OnlyFilename(owner_->fileName());
+	
+	doVCCommand("rm -f \"" + fil + "\"; cvs update \"" + fil + "\"",
+		    owner_->filepath);
+	owner_->markLyxClean();
+	owner_->getUser()->owner()
+		->getLyXFunc()->Dispatch("buffer-reload");
 }
 
 
@@ -312,7 +319,9 @@ void CVS::undoLast()
 }
 
 
-void CVS::getLog(string const &)
+void CVS::getLog(string const & tmpf)
 {
-	lyxerr << "Sorry not implemented." << endl;
+	doVCCommand("cvs log \""
+		    + OnlyFilename(owner_->fileName()) + "\" > " + tmpf,
+		    owner_->filepath);
 }

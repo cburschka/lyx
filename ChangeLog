@@ -1,3 +1,8 @@
+2001-02-20  Lars Gullik Bjønnes  <larsbj@trylle.birdstep.com>
+
+        * src/vc-backend.C (revert): implement for CVS
+        (getLog): implement for CVS
+
 2001-06-07  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* lib/doc/LaTeXConfig.lyx.in: 
