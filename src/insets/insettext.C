@@ -51,6 +51,7 @@
 #include "support/lyxalgo.h" // lyx::count
 
 #include <boost/bind.hpp>
+#include <boost/current_function.hpp>
 
 using lyx::pos_type;
 
