@@ -546,8 +546,6 @@ void  LyXText::incDepth(BufferView * bview)
 	// and sel_end cursor
 	cursor = selection.start;
 
-	bool anything_changed = false;
-
 	while (true) {
 		// NOTE: you can't change the depth of a bibliography entry
 		if (cursor.par()->layout()->labeltype != LABEL_BIBLIO) {
@@ -557,23 +555,12 @@ void  LyXText::incDepth(BufferView * bview)
 				if (cursor.par()->getDepth()
 				    < prev->getMaxDepthAfter()) {
 					cursor.par()->params().depth(cursor.par()->getDepth() + 1);
-					anything_changed = true;
 				}
 			}
 		}
 		if (cursor.par() == selection.end.par())
 			break;
 		cursor.par(cursor.par()->next());
-	}
-
-	// if nothing changed set all depth to 0
-	if (!anything_changed) {
-		cursor = selection.start;
-		while (cursor.par() != selection.end.par()) {
-			cursor.par()->params().depth(0);
-			cursor.par(cursor.par()->next());
-		}
-		cursor.par()->params().depth(0);
 	}
 
 	redoParagraphs(bview, selection.start, endpar);
