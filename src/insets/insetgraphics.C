@@ -294,6 +294,18 @@ int InsetGraphics::width(BufferView *, LyXFont const & font) const
 void InsetGraphics::draw(BufferView * bv, LyXFont const & font,
 			 int baseline, float & x, bool) const
 {
+	// MakeAbsPath returns params().filename unchanged if it absolute
+	// already.
+	string const file_with_path =
+		MakeAbsPath(params().filename, bv->buffer()->filePath());
+
+	// A 'paste' operation creates a new inset with the correct filepath,
+	// but then the 'old' inset stored in the 'copy' operation is actually
+	// added to the buffer.
+	// Thus, we should ensure that the filepath is correct.
+	if (file_with_path != cache_->loader.filename())
+		cache_->update(file_with_path);
+
 	cache_->view = bv->owner()->view();
 	int oasc = cache_->old_ascent;
 
