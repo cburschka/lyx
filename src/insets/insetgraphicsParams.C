@@ -9,19 +9,19 @@
  *          This file Copyright 2000 Baruch Even
  * ================================================= */
 
+
 #ifdef __GNUG__
 #pragma implementation
 #endif
 
 #include <config.h>
+
 #include "insetgraphicsParams.h"
 
 #include "support/translator.h"
 #include "support/filetools.h"
 
-#ifdef ENABLE_ASSERTIONS
 #include "support/LAssert.h"
-#endif
 
 using std::endl;
 
@@ -120,9 +120,7 @@ void InsetGraphicsParams::init()
     rotateOrigin = DEFAULT;
     rotateAngle = 0;
 
-#ifdef ENABLE_ASSERTION
     testInvariant();
-#endif
 }
 
 void InsetGraphicsParams::copy(InsetGraphicsParams const & igp)
@@ -140,14 +138,11 @@ void InsetGraphicsParams::copy(InsetGraphicsParams const & igp)
     rotateOrigin = igp.rotateOrigin;
     rotateAngle = igp.rotateAngle;
 
-#ifdef ENABLE_ASSERTIONS
     testInvariant();
-#endif    
 }
 
 void InsetGraphicsParams::testInvariant() const
 {
-#ifdef ENABLE_ASSERTIONS
     // Filename might be empty (when the dialog is first created).
     // Assert(!filename.empty());
     
@@ -180,7 +175,6 @@ void InsetGraphicsParams::testInvariant() const
     Assert(rotateAngle <  360);
     Assert(rotateAngle > -360);
 
-#endif
 }
 
 bool operator==(InsetGraphicsParams const & left, 

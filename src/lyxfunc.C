@@ -946,8 +946,9 @@ string LyXFunc::Dispatch(int ac,
 		if (!owner->view()->insertInset(new_inset)) {
 			delete new_inset;
 		} else {
-		    // this is need because you don't use a inset->Edit()
-		    owner->view()->updateInset(new_inset, true);
+			// this is need because you don't use a inset->Edit()
+			owner->view()->updateInset(new_inset, true);
+			new_inset->Edit(owner->view(), 0, 0, 0);
 		}
 		break;
 	}

@@ -1,5 +1,6 @@
 // File modified by fdfix.sh for use by lyx (with xforms >= 0.88) and gettext
 #include <config.h>
+
 #include "lyx_gui_misc.h"
 #include "gettext.h"
 
@@ -102,4 +103,3 @@ FD_form_graphics * FormGraphics::build_graphics()
   return fdui;
 }
 /*---------------------------------------*/
-

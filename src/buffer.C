@@ -1039,8 +1039,8 @@ void Buffer::readInset(LyXLex & lex, LyXParagraph *& par,
 	} else if (tmptok == "GRAPHICS") {
 		Inset * inset = new InsetGraphics;
 		inset->Read(this, lex);
-		++pos;
 		par->InsertInset(pos, inset, font);
+		++pos;
 	} else if (tmptok == "LatexCommand") {
 		InsetCommandParams inscmd;
 		inscmd.Read(lex);

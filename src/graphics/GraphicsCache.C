@@ -17,6 +17,7 @@
 
 #include "GraphicsCache.h"
 
+#include "support/LAssert.h"
 
 GraphicsCache * GraphicsCache::singleton = 0;
 
@@ -26,6 +27,7 @@ GraphicsCache::getInstance()
 {
     if (! singleton) {
         singleton = new GraphicsCache;
+		Assert(singleton != 0);
     }
 
     return singleton;
@@ -34,7 +36,13 @@ GraphicsCache::getInstance()
 
 GraphicsCache::~GraphicsCache()
 {
-        delete singleton;
+	// Free the map.
+	//std::foreach(map.begin(), map.end(), ...);
+	// This is not really needed, it will only happen on program close and in
+	// any case the OS will release those resources (not doing it may have 
+	// a good effect on closing time).
+
+    delete singleton;
 }
 
 
@@ -46,8 +54,19 @@ GraphicsCache::addFile(string const & filename)
     if (it != cache.end()) {
         return (*it).second;
     }
-    // INCOMPLETE!
-    return 0;
+	
+	GraphicsCacheItem * cacheItem = new GraphicsCacheItem();
+	if (cacheItem == 0) {
+		return 0;
+	}
+
+	bool result = cacheItem->setFilename(filename);
+	if (!result) 
+		return 0;
+
+	cache[filename] = cacheItem;
+	
+    return cacheItem;
 }
 
 

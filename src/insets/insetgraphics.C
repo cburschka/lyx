@@ -42,11 +42,14 @@ Current PROBLEMS:
         we need to give latex quite a few translation commands and from the
         graphicx package docs it appears that it takes quite a bit of memory
         on the side of TeXing.
-
+	
+	* How do we handle the inline viewing? we may need to show the same image
+		in several formats (color, monochrome, grayscale) or even in different
+		sizes, not to mention rotations!
+		
 TODO Basics:
 
-    * Add support for more features so that it will be useable as a drop in
-      replacement to insetfig.
+    * Add support for more features so that it will be better than insetfig.
         * Keep aspect ratio radio button
 
     * Create the GraphicsCache and FormatTranslator
@@ -80,6 +83,9 @@ TODO Extended features:
     * If the dialog had no real change from previous time, do not mark document
         as changed.
     * Keep a tab on the image file, if it changes, update the lyx view.
+	* The image choosing dialog could show thumbnails of the image formats
+		it knows of, thus selection based on the image instead of based on
+		filename.
  */
 
 /* NOTES:
@@ -145,6 +151,7 @@ TODO Extended features:
  *          This means to add the image inside the LyX file, usefull when
  *          transferring the file around.
  */
+
  
 #ifdef __GNUG__
 #pragma implementation
@@ -178,8 +185,9 @@ using std::endl;
 InsetGraphics::InsetGraphics()
 #ifdef IG_OLDPARAMS    
       : use_bb(false), hiresbb(false), angle(0.0), origin(DEFAULT)
-      ,keepaspectratio(false), scale(0.0), clip(false), draft(false)          
+      ,keepaspectratio(false), scale(0.0), clip(false), draft(false) 
 #endif     
+	: cachehandle(0), bv_(0)
 {}
 
 InsetGraphics::~InsetGraphics()
@@ -190,27 +198,28 @@ InsetGraphics::~InsetGraphics()
 
 int InsetGraphics::ascent(BufferView *, LyXFont const &) const 
 {
-	
-	return 25;
+	if (cachehandle && 
+			cachehandle->getImageStatus() == GraphicsCacheItem::Loaded)
+		return cachehandle->getHeight();
+	else
+		return 50;
 }
 
 
 int InsetGraphics::descent(BufferView *, LyXFont const &) const 
 {
 	// this is not true if viewport is used and clip is not.
-	return 25;
+	return 0;
 }
 
 
 int InsetGraphics::width(BufferView *, LyXFont const &) const 
 {
-    // Need to replace this with data coming from GraphicsCache
-#ifdef IG_OLDPARAMS    
-	if (bb.isSet()) {
-		return bb.urx - bb.llx + 2;
-	}
-#endif    
-	return 50;
+	if (cachehandle && 
+			cachehandle->getImageStatus() == GraphicsCacheItem::Loaded)
+		return cachehandle->getWidth();
+	else
+		return 50;
 }
 
 
@@ -219,16 +228,30 @@ void InsetGraphics::draw(BufferView * bv, LyXFont const & font,
 {
 	Painter & paint = bv->painter();
 
+
 	// This will draw the graphics. As for now we only draw a
 	// placeholder rectangele.
-	paint.rectangle(int(x)+2, baseline - ascent(bv, font),
+	if (cachehandle && 
+			cachehandle->getImageStatus() == GraphicsCacheItem::Loaded) {
+
+		paint.pixmap(int(x)+2, baseline - ascent(bv, font),
+			    width(bv, font) - 4, 
+				ascent(bv,font) + descent(bv,font), 
+				cachehandle->getImage());
+	} else { 
+		paint.rectangle(int(x)+2, baseline - ascent(bv, font),
 		       width(bv, font) - 4,
 		       ascent(bv, font) + descent(bv, font));
+
+	}
+
+	x += width(bv, font);
 }
 
 
 void InsetGraphics::Edit(BufferView *bv, int, int, unsigned int)
 {
+	bv_ = bv;
     bv->owner()->getDialogs() -> showGraphics(this);
 }
 
@@ -241,7 +264,7 @@ Inset::EDITABLE InsetGraphics::Editable() const
 
 void InsetGraphics::Write(Buffer const * buf, ostream & os) const
 {
-	os << "Graphics FormatVersion 1" << endl;
+	os << "GRAPHICS FormatVersion 1" << endl;
 
     params.Write(buf, os);
 }
@@ -606,16 +629,30 @@ void InsetGraphics::Validate(LaTeXFeatures & features) const
 void InsetGraphics::updateInset()
 {
     // If file changed...
-	//graphicscache.addFile(params.filename);
-	//bb = graphicscache.getBB(params.filename);
-	//pixmap = graphicscache.getPixmap(params.filename);
+
+	GraphicsCache * gc = GraphicsCache::getInstance();
+	GraphicsCacheItem * temp = 0;
+
+	if (!params.filename.empty()) {
+		temp = gc->addFile(params.filename);
+		if (temp)
+			temp->imageDone.connect(slot(this, &InsetGraphics::imageDone));
+	}
+
+	delete cachehandle;
+	cachehandle = temp;
+	
+}
+
+void InsetGraphics::imageDone()
+{
+	if (bv_)
+		bv_->updateInset(this, false);
 }
 
 bool InsetGraphics::setParams(InsetGraphicsParams const & params)
 {
-    // TODO: Make it return true only when the data has been changed.
-    // for this to work we still need to implement operator == in 
-    // InsetGraphicsParams
+	// If nothing is changed, just return and say so.
     if (this->params == params)
         return false;
 

@@ -12,9 +12,12 @@
 #ifndef INSET_GRAPHICS_H
 #define INSET_GRAPHICS_H
 
+
 #ifdef __GNUG__
 #pragma interface
 #endif
+
+#include <config.h>
 
 #include "insets/lyxinset.h"
 #include "insets/insetgraphicsParams.h"
@@ -25,13 +28,19 @@
 #include "sigc++/signal_system.h"
 #ifdef SIGC_CXX_NAMESPACES
 using SigC::Signal0;
+using SigC::slot;
+using SigC::Object;
 #endif
 
 class Dialogs;
 class GraphicsCacheItem;
 
 ///
-class InsetGraphics : public Inset {
+#ifdef SIGC_CXX_NAMESPACES
+class InsetGraphics : public Inset, public SigC::Object {
+#else
+class InsetGraphics : public Inset, public Object {
+#endif
 public:
 	///
 	InsetGraphics();
@@ -94,9 +103,14 @@ private:
     /// Update the inset after parameter change.
     void updateInset();
 
+	/// Get notified when the inline image processing has finished.
+	void imageDone();
+
     /// The graphics cache handle.
     GraphicsCacheItem * cachehandle;
 
+	/// Holds the buffer view that we are associated with.
+	BufferView * bv_;
 
     InsetGraphicsParams params;
 

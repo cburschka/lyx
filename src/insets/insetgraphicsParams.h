@@ -17,6 +17,7 @@
 #endif
 
 #include <config.h>
+
 #include "LString.h"
 
 #include "buffer.h"

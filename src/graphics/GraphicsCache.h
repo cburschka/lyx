@@ -52,5 +52,10 @@ private:
     typedef std::map<string, GraphicsCacheItem *> CacheType;
     ///
     CacheType cache;
+
+	// We need this so that an Item can tell the cache that it should be
+	// deleted. (to call removeFile).
+	// It also helps removing a warning gcc emits.
+	friend GraphicsCacheItem;
 };
 #endif

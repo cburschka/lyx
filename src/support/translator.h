@@ -12,11 +12,12 @@
 #ifndef TRANSLATOR_H
 #define TRANSLATOR_H
 
-
 #include <vector>
 #include <utility>
 #include <algorithm>
 #include <functional>
+
+#include "support/LAssert.h"
 
 // Functors used in the template.
 template<typename T1, typename T2>
@@ -72,9 +73,7 @@ public:
 
     /// Find the mapping for the first argument
     T2 const & find(T1 const & first) const {
-#ifdef ENABLE_ASSERTIONS
         Assert( ! map.empty());
-#endif
 
         // For explanation see the next find() function.
         Map::const_iterator it =
@@ -91,9 +90,7 @@ public:
 
     /// Find the mapping for the second argument
     T1 const & find(T2 const & second) const {
-#ifdef ENABLE_ASSERTIONS
         Assert( ! map.empty());
-#endif
 
         // The idea is as follows:
         // find_if() will try to compare the data in the vector with the value.

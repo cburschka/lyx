@@ -592,6 +592,8 @@ void runqueue()
 								prop[i]);
 					if (strcmp(p, "GHOSTVIEW") == 0) {
 						err = false;
+						// We free it when we leave so we don't leak.
+						XFree(p);
 						break;
 					}
 					XFree(p);

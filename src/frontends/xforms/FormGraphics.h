@@ -19,6 +19,7 @@
 #define FORMGRAPHICS_H
 
 #include <config.h>
+
 #include "LString.h"
 #include "frontends/DialogBase.h"
 //#include "form_graphics.h"
@@ -154,5 +155,3 @@ private:
 };
 
 #endif
-
-

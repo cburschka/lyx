@@ -1,3 +1,18 @@
+2000-08-07  Baruch Even  <baruch.even@writeme.com>
+
+	* src/graphics/Renderer.h:
+	* src/graphics/Renderer.C: Added base class for rendering of different
+	image formats into Pixmaps.
+
+	* src/graphics/XPM_Renderer.h:
+	* src/graphics/XPM_Renderer.C: Taken from GraphicsCacheItem and placed
+	in a different class.
+
+	* src/graphics/GraphicsCacheItem.C: factored out the rendering in order to
+	easily add support for other formats.
+
+	* src/insets/figinset.C: plugged a leak of an X resource.
+
 2000-08-07  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/CutAndPaste.[Ch]: make all metods static. 
@@ -49,6 +64,24 @@
 	the radio_useparbox button.
 
 	* src/tabular.C (UseParbox): new function
+
+2000-08-06  Baruch Even  <baruch.even@writeme.com>
+
+	* src/graphics/GraphicsCache.h:
+	* src/graphics/GraphicsCache.C:
+	* src/graphics/GraphicsCacheItem.h:
+	* src/graphics/GraphicsCacheItem.C: Made them to actually do something
+	usefull.
+
+	* src/insets/insetgraphics.h:
+	* src/insets/insetgraphics.C: Added the use of the GraphicsCache and the
+	drawing of the inline image.
+
+	* src/buffer.C: Fixed a bug where a loaded InsetGraphics would be loaded 
+	into the wrong position.
+
+	* src/lyxfunc.C: When adding an InsetGraphics the edit dialog is now
+	launched.
 
 2000-08-05  Lars Gullik Bjønnes  <larsbj@lyx.org>
 

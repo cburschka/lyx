@@ -14,6 +14,7 @@
 #endif
 
 #include <config.h>
+
 #include "lyx_gui_misc.h"
 #include "gettext.h"
 #include FORMS_H_LOCATION
@@ -517,3 +518,4 @@ void FormGraphics::InputCB(FL_OBJECT * ob, long)
     FormGraphics * pre = static_cast<FormGraphics*>(ob->form->u_vdata);
 	pre->input();
 }
+
