@@ -1,3 +1,20 @@
+2000-02-03  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/lyxrc.C (output): added case RC_DATE_INSERT_FORMAT. Jug
+	forgot this when applying the patch. Please heed the warnings.
+
+	* src/BufferView.C (buffer): a fix for the buffer-reload problem
+	(aka. reformat problem)
+
+	* src/bufferlist.C (exists): made const, and use const_iterator
+	(isLoaded): new func.
+	(release): use std::find to find the correct buffer.
+
+	* src/bufferlist.h: made getState a const func.
+	made empty a const func.
+	made exists a const func.
+	new func: isLoaded
+
 2000-02-01  Juergen Vigna  <jug@sad.it>
 
 	* src/lyxfunc.C lyxrc.C: changed from insert-date to date-insert

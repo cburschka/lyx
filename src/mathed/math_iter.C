@@ -591,25 +591,25 @@ bool MathedXIter::Next()
 {  
 //    lyxerr << "Ne[" << pos << "]";
    if (!OK()) return false;
-   int w= 0;
+   int w = 0;
 //   lyxerr << "xt ";
    if (IsInset()) {
-      MathedInset* px = GetInset();
+      MathedInset * px = GetInset();
       w = px->Width();
       if (px->GetType() == LM_OT_SCRIPT) {
-	 if (w>sw) sw = w;
+	 if (w > sw) sw = w;
 	 w = 0;
       } else
-	sx = (px->GetLimits()) ? w: 0;
+	sx = (px->GetLimits()) ? w : 0;
    } else {  
       byte c = GetChar();
-      if (c>= ' ') {
+      if (c >= ' ') {
 //	  lyxerr << "WD[" << fcode << " " << size << " " << c << endl;
 	  w = mathed_char_width(fcode, size, c);
       } else
       if (c == LM_TC_TAB && p) {
 //	 w = p->GetTab(col+1);
-	  w = (crow) ? crow->getTab(col+1): 0;
+	  w = (crow) ? crow->getTab(col + 1) : 0;
 	 //lyxerr << "WW[" << w << "]";
       } else
       if (c == LM_TC_CR && p) {
@@ -627,9 +627,9 @@ bool MathedXIter::Next()
 //       lyxerr <<"LNX " << pos << endl;
 //       if (sw>0 && GetChar()!= LM_TC_UP && GetChar()!= LM_TC_DOWN) {
 //	   w = (sx>sw) ? 0: sw-sx;
-      if ((sw>0 || sx>0) && GetChar()!= LM_TC_UP && GetChar()!= LM_TC_DOWN) {
-	  if (sw>0)
-	    w = (sx>sw) ? 0: sw-sx;
+      if ((sw > 0 || sx > 0) && GetChar() != LM_TC_UP && GetChar() != LM_TC_DOWN) {
+	  if (sw > 0)
+	    w = (sx > sw) ? 0 : sw - sx;
 	  sx = sw = 0;
       }
       x += w;

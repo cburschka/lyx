@@ -14,6 +14,13 @@
 
 
 #include <config.h>
+
+// For 1.1.4 we disable the new code:
+#ifdef MODERN_STL_STREAMS
+#undef MODERN_STL_STREAMS
+// It seems that some systems have buggy istream::readsome(...)
+#endif
+
 #ifdef MODERN_STL_STREAMS
 #include <fstream>
 using std::ifstream;

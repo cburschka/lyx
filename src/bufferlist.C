@@ -4,9 +4,9 @@
  *           LyX, The Document Word Processor
  *
  *	    Copyright 1995 Matthias Ettrich
- *          Copyright 1995-1999 The LyX Team. 
+ *          Copyright 1995-2000 The LyX Team. 
  *
- *           This file is Copyright 1996-1999
+ *           This file is Copyright 1996-2000
  *           Lars Gullik Bjønnes
  *
  * ====================================================== 
@@ -19,6 +19,8 @@
 #include <config.h>
 
 #include <fstream>
+#include <algorithm>
+
 #include <sys/types.h>
 #include <utime.h>
 
@@ -44,21 +46,18 @@ extern int RunLinuxDoc(int, string const &);
 using std::ifstream;
 using std::ofstream;
 using std::ios;
-
+using std::find;
 //
 // Class BufferStorage
 //
 
 void BufferStorage::release(Buffer * buf)
 {
-	for(Container::iterator it = container.begin();
-	    it != container.end(); ++it) {
-		if ((*it) == buf) {
-			Buffer * tmpbuf = (*it);
-			container.erase(it);
-			delete tmpbuf;
-			break;
-		}
+	Container::iterator it = find(container.begin(), container.end(), buf);
+	if (it != container.end()) {
+		Buffer * tmp = (*it);
+		container.erase(it);
+		delete tmp;
 	}
 }
 
@@ -85,7 +84,7 @@ BufferList::BufferList()
 {}
 
 
-bool BufferList::empty()
+bool BufferList::empty() const
 {
 	return bstore.empty();
 }
@@ -476,14 +475,22 @@ Buffer * BufferList::readFile(string const & s, bool ronly)
 }
 
 
-bool BufferList::exists(string const & s)
+bool BufferList::exists(string const & s) const
 {
-	for (BufferStorage::iterator it = bstore.begin();
-	     it != bstore.end(); ++it) {
-		if ((*it)->fileName() == s)
+	for (BufferStorage::const_iterator cit = bstore.begin();
+	     cit != bstore.end(); ++cit) {
+		if ((*cit)->fileName() == s)
 			return true;
 	}
 	return false;
+}
+
+
+bool BufferList::isLoaded(Buffer const * b) const
+{
+	BufferStorage::const_iterator cit =
+		find(bstore.begin(), bstore.end(), b);
+	return cit != bstore.end();
 }
 
 

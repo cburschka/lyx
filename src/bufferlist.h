@@ -4,9 +4,9 @@
  * 
  *           LyX, The Document Processor 	 
  *           Copyright 1995 Matthias Ettrich
- *           Copyright 1995-1999 The LyX Team
+ *           Copyright 1995-2000 The LyX Team
  *
- *           This file is Copyright 1996
+ *           This file is Copyright 1996-2000
  *           Lars Gullik Bjønnes
  *
  * ====================================================== */
@@ -82,7 +82,7 @@ public:
 	};
 
 	/// returns the state of the bufferlist
-	list_state getState() { return state_; }
+	list_state getState() const { return state_; }
 	
 	/** loads a LyX file or...
 	    If the optional argument tolastfiles is false (default is
@@ -93,7 +93,7 @@ public:
 			     bool tolastfiles = true);
 	
 	///
-	bool empty();
+	bool empty() const;
 
 	/// Saves buffer. Returns false if unsuccesful.
 	bool write(Buffer *, bool makeBackup);
@@ -136,7 +136,10 @@ public:
 	Buffer * first();
 	
 	/// returns true if the buffer exists already
-	bool exists(string const &);
+	bool exists(string const &) const;
+
+	/// returns true if the buffer is loaded
+	bool isLoaded(Buffer const * b) const;
 
 	/// returns a pointer to the buffer with the given name.
 	Buffer * getBuffer(string const &);

@@ -1201,6 +1201,9 @@ void LyXRC::output(ostream & os) const
 		os << "\\escape_chars \"" << isp_esc_chars << "\"\n";
 	case RC_MAKE_BACKUP:
 		os << "\\make_backup " << tostr(make_backup) << "\n";
+	case RC_DATE_INSERT_FORMAT:
+		os << "\\date_insert_format \"" << date_insert_format
+		   << "\"\n"; 
 	}
 	os.flush();
 }

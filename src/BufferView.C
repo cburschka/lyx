@@ -211,10 +211,12 @@ void BufferView::buffer(Buffer * b)
 		insetSleep();
 		buffer_->delUser(this);
 		// Put the old text into the TextCache.
-		textcache.push_back(text);
+		if (bufferlist.isLoaded(buffer_))
+			textcache.push_back(text);
+		else
+			delete text;
 		if (lyxerr.debugging())
 			showTextCache("buffer");
-		// delete text;
 		text = 0;
 	}
 
