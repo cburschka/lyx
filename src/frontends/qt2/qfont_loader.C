@@ -43,6 +43,10 @@ using std::vector;
 using std::pair;
 using std::make_pair;
 
+#ifdef Q_WS_MAC
+#include <ApplicationServices/ApplicationServices.h>
+#endif
+
 namespace {
 
 void addFontPath()
@@ -63,6 +67,33 @@ void addFontPath()
 			return;
 		lyxerr << "Unable to add font path." << endl;
 	}
+#endif
+#ifdef Q_WS_MAC
+	CFBundleRef  myAppBundle = CFBundleGetMainBundle();
+	CFURLRef  myAppResourcesURL, FontsURL;
+	FSRef  fontDirRef;
+	FSSpec  fontDirSpec;
+	CFStringRef  filePath = CFStringCreateWithBytes(kCFAllocatorDefault,
+					(UInt8 *) "Fonts", strlen("Fonts"),  
+					kCFStringEncodingISOLatin1, false);
+
+	myAppResourcesURL = CFBundleCopyResourcesDirectoryURL(myAppBundle);
+	FontsURL = CFURLCreateCopyAppendingPathComponent(kCFAllocatorDefault, 
+			myAppResourcesURL, filePath, true);
+	if (lyxerr.debugging(Debug::FONT)) {
+		UInt8  buf[255];
+		if (CFURLGetFileSystemRepresentation(FontsURL, true, buf, 255))
+			lyxerr << "Adding Fonts directory: " << buf << endl;
+	}
+	CFURLGetFSRef (FontsURL, &fontDirRef);
+	OSStatus err = FSGetCatalogInfo (&fontDirRef, kFSCatInfoNone, 
+					 NULL, NULL, &fontDirSpec, NULL);
+	if (err) 
+		lyxerr << "FSGetCatalogInfo err = " << err << endl;
+	err = FMActivateFonts (&fontDirSpec, NULL, NULL, 
+			       kFMLocalActivationContext); 
+	if (err)
+		lyxerr << "FMActivateFonts err = " << err << endl;
 #endif
 }
 
@@ -355,6 +386,13 @@ bool qfont_loader::available(LyXFont const & f)
 {
 	if (!lyxrc.use_gui)
 		return false;
+#ifdef Q_WS_MAC
+	static bool need_bundle_fonts = true;
+	if (need_bundle_fonts) {
+		addFontPath();
+		need_bundle_fonts = false;
+	}
+#endif
 
 	static vector<bool> cache_set(LyXFont::NUM_FAMILIES, false);
 	static vector<bool> cache(LyXFont::NUM_FAMILIES, false);
