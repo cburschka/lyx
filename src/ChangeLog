@@ -1,5 +1,7 @@
 2002-01-14  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
+	* LyXAction.C (init): alloe error-next for readonly documents.
+
 	* BufferView2.C (ChangeRefsIfUnique): use standard version of
 	count.
 
