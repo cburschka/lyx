@@ -63,8 +63,9 @@ Template XFig
 	EditCommand "xfig $$FName"
 	AutomaticProduction true
 	Format LaTeX
-		Product "$$Contents(\"$$Basename.tex\")"
-		UpdateCommand "fig2dev $$Parameters -L latex $$FName $$Basename.tex"
+		Product "\\begin{picture}(0,0)\\includegraphics{$$Basename.eps}\\end{picture}\\input{$$Basename.pstex_t}"
+		UpdateCommand "python $$Sysdir/scripts/fig2pstex.py $$FName $$Parameters"
+		Requirement "graphics"	
 	FormatEnd
 	Format Ascii
 		Product "$$Contents(\"$$Basename.asc\")"
