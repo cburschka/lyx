@@ -135,6 +135,9 @@ void Inset::id(int id_arg)
 	id_ = id_arg;
 }
 
+void Inset::setFont(BufferView *, LyXFont const &, bool, bool )
+{}
+
 // some stuff for inset locking
 
 UpdatableInset::UpdatableInset()
@@ -220,10 +223,6 @@ void UpdatableInset::draw(BufferView *, LyXFont const &,
 	//    top_x = int(x);
 	//    top_baseline = baseline;
 }
-
-
-void UpdatableInset::setFont(BufferView *, LyXFont const &, bool, bool )
-{}
 
 
 void UpdatableInset::scroll(BufferView * bv, float s) const

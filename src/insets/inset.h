@@ -284,6 +284,9 @@ public:
 	/// check if the font of the char we want inserting is correct
 	/// and modify it if it is not.
 	virtual bool checkInsertChar(LyXFont &);
+	/// we need this here because collapsed insets are only EDITABLE
+	virtual void setFont(BufferView *, LyXFont const &,
+                         bool toggleall = false, bool selectall = false);
 protected:
 	///
 	mutable int top_x;
@@ -409,9 +412,6 @@ public:
 	virtual void draw(BufferView *, LyXFont const &,
 			  int baseline, float & x, bool cleared) const;
 	///
-	virtual void setFont(BufferView *, LyXFont const &,
-                         bool toggleall = false, bool selectall = false);
-	///
 	virtual bool insertInset(BufferView *, Inset *) { return false; }
 	///
 	virtual UpdatableInset * getLockingInset() const {
@@ -446,7 +446,7 @@ public:
 	///
 	virtual bool showInsetDialog(BufferView *) const { return false; }
 	///
-	virtual void nodraw(bool b) {
+	virtual void nodraw(bool b) const {
 		block_drawing_ = b;
 	}
 	///
@@ -490,6 +490,6 @@ private:
 	///
 	mutable bool cursor_visible_;
 	///
-	bool block_drawing_;
+	mutable bool block_drawing_;
 };
 #endif

@@ -64,7 +64,7 @@ int LyXReplace(BufferView * bv,
 	// start at top if replaceall
 	bool fw = forward;
 	if (replaceall) {
-		text->clearSelection(bv);
+		text->clearSelection();
 		if (text->inset_owner) {
 			bv->unlockInset(bv->theLockingInset());
 			text = bv->text;
@@ -84,7 +84,7 @@ int LyXReplace(BufferView * bv,
 		}
 	}
    
-	bool found;
+	bool found = false;
 	int replace_count = 0;
 	do {
 		bv->hideCursor();
@@ -128,6 +128,26 @@ bool LyXFind(BufferView * bv,
 			bv->theLockingInset()->searchBackward(bv, searchstr, casesens, matchwrd);
 		if (found)
 			result = SR_FOUND_NOUPDATE;
+		else {
+			text = bv->getLyXText();
+			Paragraph * par = text->cursor.par();
+			Paragraph::size_type pos = text->cursor.pos();
+			if (forward) {
+				if (pos < par->size() - 1)
+					++pos;
+				else {
+					pos = 0;
+					par = par->next();
+				}
+				if (par)
+					text->setCursor(bv, par, pos);
+			}
+			if (par) {
+				result = forward ? 
+					SearchForward(bv, text, searchstr, casesens, matchwrd) :
+					SearchBackward(bv, text, searchstr, casesens, matchwrd);
+			}
+		}
 	} else {
 		result = forward ? 
 			SearchForward(bv, text, searchstr, casesens, matchwrd) :
@@ -139,7 +159,7 @@ bool LyXFind(BufferView * bv,
 		// the actual text pointer could have changed!
 		bv->update(bv->getLyXText(), BufferView::SELECT|BufferView::FITCUR);
 		bv->toggleSelection();
-		bv->getLyXText()->clearSelection(bv);
+		bv->getLyXText()->clearSelection();
 		bv->getLyXText()->setSelectionOverString(bv, searchstr);
 		bv->toggleSelection(false);
 		bv->update(bv->getLyXText(), BufferView::SELECT|BufferView::FITCUR);
@@ -220,19 +240,23 @@ SearchResult SearchForward(BufferView * bv, LyXText * text, string const & str,
 		// test if we're inside an inset if yes unlock the inset
 		// and recall us with the outside LyXText!
 		bv->unlockInset((UpdatableInset *)text->inset_owner);
-		text = bv->getLyXText();
-		par = text->cursor.par();
-		pos = text->cursor.pos();
-		if (pos < par->size() - 1)
-			++pos;
-		else {
-			pos = 0;
-			par = par->next();
-		}
-		if (!par)
+		if (!bv->theLockingInset()) {
+			text = bv->getLyXText();
+			par = text->cursor.par();
+			pos = text->cursor.pos();
+			if (pos < par->size() - 1)
+				++pos;
+			else {
+				pos = 0;
+				par = par->next();
+			}
+			if (!par)
+				return SR_NOT_FOUND;
+			text->setCursor(bv, par, pos);
+			return SearchForward(bv, text, str, cs, mw);
+		} else {
 			return SR_NOT_FOUND;
-		text->setCursor(bv, par, pos);
-		return SearchForward(bv, text, str, cs, mw);
+		}
 	} else
 		return SR_NOT_FOUND;
 }
@@ -280,9 +304,10 @@ SearchResult SearchBackward(BufferView * bv, LyXText * text,
 		// test if we're inside an inset if yes unlock the inset
 		// and recall us with the outside LyXText!
 		bv->unlockInset((UpdatableInset *)text->inset_owner);
-		return SearchBackward(bv, bv->getLyXText(), str, cs, mw);
-	} else {
-		return SR_NOT_FOUND;
+		if (!bv->theLockingInset()) {
+			return SearchBackward(bv, bv->getLyXText(), str, cs, mw);
+		}
 	}
+	return SR_NOT_FOUND;
 }
 

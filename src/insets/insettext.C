@@ -117,6 +117,7 @@ InsetText::InsetText()
 {
 	par = new Paragraph;
 	init();
+	in_update = false;
 }
 
 
@@ -125,6 +126,7 @@ InsetText::InsetText(InsetText const & ins, bool same_id)
 {
 	par = 0;
 	init(&ins, same_id);
+	in_update = false;
 	autoBreakRows = ins.autoBreakRows;
 }
 
@@ -415,7 +417,7 @@ void InsetText::draw(BufferView * bv, LyXFont const & f,
 	} else if (!locked) {
 		if (need_update & CURSOR) {
 			bv->screen()->toggleSelection(lt, bv, true, y_offset,int(x));
-			lt->clearSelection(bv);
+			lt->clearSelection();
 			lt->selection.cursor = lt->cursor;
 		}
 		bv->screen()->update(lt, bv, y_offset, int(x));
@@ -425,7 +427,7 @@ void InsetText::draw(BufferView * bv, LyXFont const & f,
 			bv->screen()->toggleToggle(lt, bv, y_offset, int(x));
 		else if (need_update & CURSOR) {
 			bv->screen()->toggleSelection(lt, bv, true, y_offset,int(x));
-			lt->clearSelection(bv);
+			lt->clearSelection();
 			lt->selection.cursor = lt->cursor;
 		}
 		bv->screen()->update(lt, bv, y_offset, int(x));
@@ -477,11 +479,15 @@ void InsetText::clearFrame(Painter & pain, bool cleared) const
 
 void InsetText::update(BufferView * bv, LyXFont const & font, bool reinit)
 {
+	if (in_update)
+		return;
+	in_update = true;
 	if (reinit) {
 		need_update |= INIT;
 		resizeLyXText(bv);
 		if (owner())
 			owner()->update(bv, font, true);
+		in_update = false;
 		return;
 	}
 	if (the_locking_inset) {
@@ -502,6 +508,7 @@ void InsetText::update(BufferView * bv, LyXFont const & font, bool reinit)
 		need_update |= FULL;
 		if (clear)
 			lt = 0;
+		in_update = false;
 		return;
 	}
 	if ((need_update & CURSOR_PAR) && (lt->status() == LyXText::UNCHANGED) &&
@@ -513,6 +520,7 @@ void InsetText::update(BufferView * bv, LyXFont const & font, bool reinit)
 		need_update |= FULL;
 	if (clear)
 		lt = 0;
+	in_update = false;
 }
 
 
@@ -530,8 +538,11 @@ void InsetText::setUpdateStatus(BufferView * bv, int what) const
 		need_update |= CURSOR_PAR;
 
 	// this to not draw a selection when we redraw all of it!
-	if ((need_update & (INIT|FULL)) && (need_update & CURSOR))
-		lt->clearSelection(bv);
+	if (need_update & CURSOR) {
+		if (lt->selection.set())
+			need_update = FULL;
+		lt->clearSelection();
+	}
 	if (clear)
 		lt = 0;
 }
@@ -591,7 +602,7 @@ void InsetText::edit(BufferView * bv, int x, int y, unsigned int button)
 	if (!checkAndActivateInset(bv, x, tmp_y, button))
 		lt->setCursorFromCoordinates(bv, x - drawTextXOffset,
 		                            y + insetAscent);
-	lt->clearSelection(bv);
+	lt->clearSelection();
 	finishUndo();
 	showInsetCursor(bv);
 	updateLocal(bv, CURSOR, false);
@@ -636,7 +647,7 @@ void InsetText::edit(BufferView * bv, bool front)
 			p = p->next();
 		lt->setCursor(bv, p, p->size()-1);
 	}
-	lt->clearSelection(bv);
+	lt->clearSelection();
 	finishUndo();
 	showInsetCursor(bv);
 	updateLocal(bv, CURSOR, false);
@@ -674,7 +685,7 @@ void InsetText::insetUnlock(BufferView * bv)
 		clear = true;
 	}
 	if (lt->selection.set()) {
-		lt->clearSelection(bv);
+		lt->clearSelection();
 		code = FULL;
 	} else if (owner()) {
 		bv->owner()->setLayout(owner()->getLyXText(bv)
@@ -819,8 +830,9 @@ void InsetText::insetButtonPress(BufferView * bv, int x, int y, int button)
 		}
 		getLyXText(bv)->setCursorFromCoordinates(bv, x-drawTextXOffset,
 		                                         y + insetAscent);
+		getLyXText(bv)->clearSelection();
+		updateLocal(bv, FULL, false);
 		getLyXText(bv)->selection.cursor = getLyXText(bv)->cursor;
-		updateLocal(bv, CURSOR, false);
 		bv->owner()->setLayout(cpar(bv)->getLayout());
 		old_par = cpar(bv);
 		// Insert primary selection with middle mouse
@@ -975,7 +987,7 @@ InsetText::localDispatch(BufferView * bv,
 					lt->cutSelection(bv, false);
 				}
 			}
-			lt->clearSelection(bv);
+			lt->clearSelection();
 			for (string::size_type i = 0; i < arg.length(); ++i) {
 				if (greek_kb_flag) {
 					if (!math_insert_greek(bv, arg[i])) {
@@ -1484,9 +1496,11 @@ bool InsetText::insertInset(BufferView * bv, Inset * inset)
 		clear = true;
 	}
 	lt->insertInset(bv, inset);
+#if 0
 	if ((cpar(bv)->getChar(cpos(bv)) != Paragraph::META_INSET) ||
 		(cpar(bv)->getInset(cpos(bv)) != inset))
 		lt->cursorLeft(bv);
+#endif
 	bv->fitCursor(lt);
 	updateLocal(bv, CURSOR_PAR|CURSOR, true);
 	showInsetCursor(bv);
@@ -1570,7 +1584,7 @@ void InsetText::setFont(BufferView * bv, LyXFont const & font, bool toggleall,
 	lt->setFont(bv, font, toggleall);
 #endif
 	if (selectall)
-		lt->clearSelection(bv);
+		lt->clearSelection();
 	bv->fitCursor(lt);
 	if (selectall || lt->selection.set())
 		updateLocal(bv, FULL, true);
@@ -1784,7 +1798,7 @@ LyXText * InsetText::getLyXText(BufferView const * lbv,
 			lyx::Assert(it->second.text.get());
 			cached_text = it->second.text;
 			if (recursive && the_locking_inset) {
-				return the_locking_inset->getLyXText(bv);
+				return the_locking_inset->getLyXText(bv, true);
 			}
 			return cached_text.get();
 		} else if (it->second.remove) {
@@ -1948,7 +1962,7 @@ void InsetText::selectAll(BufferView * bv)
 
 void InsetText::clearSelection(BufferView * bv)
 {
-	getLyXText(bv)->clearSelection(bv);
+	getLyXText(bv)->clearSelection();
 }
 
 
@@ -2127,9 +2141,31 @@ void InsetText::toggleSelection(BufferView * bv, bool kill_selection)
 bool InsetText::searchForward(BufferView * bv, string const & str,
                               bool const & cs, bool const & mw)
 {
-	if (the_locking_inset)
+	if (the_locking_inset) {
 		if (the_locking_inset->searchForward(bv, str, cs, mw))
 			return true;
+		bool clear = false;
+		if (!lt) {
+			lt = getLyXText(bv);
+			clear = true;
+		}
+		Paragraph * lpar = lt->cursor.par();
+		Paragraph::size_type pos = lt->cursor.pos();
+		if (pos < lpar->size() - 1)
+			++pos;
+		else {
+			pos = 0;
+			lpar = lpar->next();
+		}
+		if (!lpar) {
+			if (clear)
+				lt = 0;
+			return false;
+		}
+		lt->setCursor(bv, lpar, pos);
+		if (clear)
+			lt = 0;
+	}
 	if (LyXFind(bv, str, true, true, cs , mw)) {
 		return true;
 	}

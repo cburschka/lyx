@@ -394,5 +394,7 @@ private:
 	mutable int frame_y;
 	mutable int frame_w;
 	mutable int frame_h;
+	///
+	bool in_update; /* as update is not reentrant! */
 };
 #endif

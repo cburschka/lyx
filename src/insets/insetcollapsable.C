@@ -37,11 +37,11 @@ using std::max;
 InsetCollapsable::InsetCollapsable(bool collapsed)
 	: UpdatableInset(), collapsed_(collapsed), 
 	  button_length(0), button_top_y(0), button_bottom_y(0),
-	  need_update(FULL), label("Label"),
+	  need_update(NONE), label("Label"),
 #if 0
 	autocollapse(false),
 #endif
-	  oldWidth(0)
+	  oldWidth(0), in_update(false)
 {
 	inset.setOwner(this);
 	inset.setAutoBreakRows(true);
@@ -55,11 +55,11 @@ InsetCollapsable::InsetCollapsable(InsetCollapsable const & in, bool same_id)
 	: UpdatableInset(in, same_id), collapsed_(in.collapsed_), 
 	  framecolor(in.framecolor), labelfont(in.labelfont),
 	  button_length(0), button_top_y(0), button_bottom_y(0),
-	  need_update(FULL), label(in.label),
+	  need_update(NONE), label(in.label),
 #if 0
 	  autocollapse(in.autocollapse),
 #endif
-	  oldWidth(0)
+	  oldWidth(0), in_update(false)
 {
 	inset.init(&(in.inset), same_id);
 	inset.setOwner(this);
@@ -177,6 +177,12 @@ void InsetCollapsable::draw_collapsed(Painter & pain,
 void InsetCollapsable::draw(BufferView * bv, LyXFont const & f, 
                             int baseline, float & x, bool cleared) const
 {
+	if (need_update != NONE) {
+		const_cast<InsetText *>(&inset)->update(bv, f, true);
+		bv->text->status(bv, LyXText::CHANGED_IN_DRAW);
+		need_update = NONE;
+		return;
+	}
 	if (nodraw())
 		return;
 
@@ -219,7 +225,6 @@ void InsetCollapsable::draw(BufferView * bv, LyXFont const & f,
 	inset.draw(bv, f, 
 			   bl + descent_collapsed() + inset.ascent(bv, f),
 			   x, cleared);
-	need_update = NONE;
 }
 
 
@@ -382,9 +387,16 @@ int InsetCollapsable::getMaxWidth(BufferView * bv,
 
 
 void InsetCollapsable::update(BufferView * bv, LyXFont const & font,
-			      bool reinit)
+                              bool reinit)
 {
+	if (in_update)
+		return;
+	in_update = true;
 	inset.update(bv, font, reinit);
+	if (reinit && owner()) {
+		owner()->update(bv, font, true);
+	}
+	in_update = false;
 }
 
 

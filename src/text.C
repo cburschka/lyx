@@ -1707,7 +1707,7 @@ void LyXText::breakParagraph(BufferView * bview, char keep_layout)
 // Just a macro to make some thing easier. 
 void LyXText::redoParagraph(BufferView * bview) const
 {
-	clearSelection(bview);
+	clearSelection();
 	redoParagraphs(bview, cursor, cursor.par()->next());
 	setCursorIntern(bview, cursor.par(), cursor.pos());
 }

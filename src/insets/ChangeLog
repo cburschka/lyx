@@ -1,9 +1,30 @@
+2001-08-01  Juergen Vigna  <jug@sad.it>
+
+	* insetcollapsable.C (update): added an in_update bool so we avoid
+	reentering.
+
+	* insettabular.C (update): added an in_update bool so we avoid
+	reentering.
+
+	* insettext.C (insetButtonPress): hopefully fixed setselection/clear
+	selection problem.
+	(update): added an in_update bool so we avoid reentering.
+
+	* insettabular.C (localDispatch): clear col/row selection when doing
+	something else inside an inset.
+
+	* insettext.C (getLyXText): fixed bug when requesting a recursive
+	insettext!
+
 2001-08-01  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* insetcite.C (latex): Paranoia check. Make sure that there is no
 	whitespace between the citation keys.
 
 2001-07-31  Juergen Vigna  <jug@sad.it>
+
+	* inset.h (nodraw): make the set function also const so that this
+	can be called from inside other const functions.
 
 	* insetcollapsable.h: removed inline variable and moved it over
 	to the only user InsetERT.

@@ -559,7 +559,11 @@ void BufferView::Pimpl::workAreaMotionNotify(int x, int y, unsigned int state)
 	bv_->text->setSelection(bv_);
 	screen_->toggleToggle(bv_->text, bv_);
 	fitCursor(bv_->text);
+#if 0
 	screen_->showCursor(bv_->text, bv_);
+#else
+	showCursor();
+#endif
 }
 
 
@@ -615,7 +619,7 @@ void BufferView::Pimpl::workAreaButtonPress(int xpos, int ypos,
 	
 	// Clear the selection
 	screen_->toggleSelection(bv_->text, bv_);
-	bv_->text->clearSelection(bv_);
+	bv_->text->clearSelection();
 	bv_->text->fullRebreak(bv_);
 	screen_->update(bv_->text, bv_);
 	updateScrollbar();
@@ -1126,7 +1130,7 @@ bool BufferView::Pimpl::available() const
 void BufferView::Pimpl::beforeChange(LyXText * text)
 {
 	toggleSelection();
-	text->clearSelection(bv_);
+	text->clearSelection();
 }
 
 
@@ -3373,7 +3377,7 @@ void BufferView::Pimpl::updateInset(Inset * inset, bool mark_dirty)
 			}
 		} else if (bv_->theLockingInset()->updateInsetInInset(bv_, inset)) {
 			if (bv_->text->updateInset(bv_,
-						   bv_->theLockingInset())) {
+			                           bv_->theLockingInset())) {
 				update();
 				if (mark_dirty){
 					buffer_->markDirty();

@@ -189,7 +189,7 @@ public:
 	///
 	std::vector<string> const getLabelList() const;
 	///
-	void nodraw(bool b) {
+	void nodraw(bool b) const {
 		UpdatableInset::nodraw(b);
 	}
 	bool nodraw() const;
@@ -242,6 +242,8 @@ private:
 	void showInsetCursor(BufferView *, bool show=true);
 	///
 	void hideInsetCursor(BufferView *);
+	///
+	void fitInsetCursor(BufferView *) const;
 	///
 	void setPos(BufferView *, int x, int y) const;
 	///
@@ -333,5 +335,7 @@ private:
 	mutable bool locked;
 	///
 	mutable UpdateCodes need_update;
+	///
+	bool in_update;
 };
 #endif

@@ -1,3 +1,15 @@
+2001-08-01  Juergen Vigna  <jug@sad.it>
+
+	* lyxfind.C (LyXFind): fixed
+	(SearchForward): ditto
+	(SearchBackward): ditto
+
+	* BufferView_pimpl.C (workAreaMotionNotify): hopefully fixed the
+	spurius drawing of the cursor in the main area.
+
+	* text2.C (status): small fix which could lead to a segfault!
+	(clearSelection): remove unneeded BufferView param.
+
 2001-08-01  André Pönitz <poenitz@gmx.net>
 
 	* lyxfunc.C: small change due to changed mathed interface

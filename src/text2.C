@@ -199,7 +199,7 @@ void LyXText::setCharFont(BufferView * bv, Paragraph * par,
 	if (par->getChar(pos) == Paragraph::META_INSET) {
 		Inset * inset = par->getInset(pos);
 		if (inset) {
-			if (inset->editable()==Inset::HIGHLY_EDITABLE) {
+			if (inset->editable()==Inset::IS_EDITABLE) {
 				UpdatableInset * uinset =
 					static_cast<UpdatableInset *>(inset);
 				uinset->setFont(bv, fnt, toggleall, true);
@@ -523,7 +523,7 @@ void LyXText::setLayout(BufferView * bview, LyXTextClass::size_type layout)
 	selection.cursor = cursor;
 	setCursor(bview, selection.end.par(), selection.end.pos(), false);
 	updateCounters(bview, cursor.row());
-	clearSelection(bview);
+	clearSelection();
 	setSelection(bview);
 	setCursor(bview, tmpcursor.par(), tmpcursor.pos(), true);
 }
@@ -604,7 +604,7 @@ void  LyXText::incDepth(BufferView * bview)
 	selection.cursor = cursor;
 	setCursor(bview, selection.end.par(), selection.end.pos());
 	updateCounters(bview, cursor.row());
-	clearSelection(bview);
+	clearSelection();
 	setSelection(bview);
 	setCursor(bview, tmpcursor.par(), tmpcursor.pos());
 }
@@ -661,7 +661,7 @@ void  LyXText::decDepth(BufferView * bview)
 	selection.cursor = cursor;
 	setCursor(bview, selection.end.par(), selection.end.pos());
 	updateCounters(bview, cursor.row());
-	clearSelection(bview);
+	clearSelection();
 	setSelection(bview);
 	setCursor(bview, tmpcursor.par(), tmpcursor.pos());
 }
@@ -723,7 +723,7 @@ void LyXText::setFont(BufferView * bview, LyXFont const & font, bool toggleall)
 	setCursor(bview, selection.start.par(), selection.start.pos());
 	selection.cursor = cursor;
 	setCursor(bview, selection.end.par(), selection.end.pos());
-	clearSelection(bview);
+	clearSelection();
 	setSelection(bview);
 	setCursor(bview, tmpcursor.par(), tmpcursor.pos(), true,
 		  tmpcursor.boundary());
@@ -976,7 +976,7 @@ string const LyXText::selectionAsString(Buffer const * buffer) const
 }
 
 
-void LyXText::clearSelection(BufferView * /*bview*/) const
+void LyXText::clearSelection() const
 {
 	selection.set(false);
 	selection.mark(false);
@@ -1048,7 +1048,7 @@ void LyXText::toggleFree(BufferView * bview,
 	// Implicit selections are cleared afterwards
 	//and cursor is set to the original position.
 	if (implicitSelection) {
-		clearSelection(bview);
+		clearSelection();
 		cursor = resetCursor;
 		setCursor(bview, cursor.par(), cursor.pos());
 		selection.cursor = cursor;
@@ -1083,7 +1083,7 @@ LyXText::getStringToIndex(BufferView * bview)
 	// Implicit selections are cleared afterwards
 	//and cursor is set to the original position.
 	if (implicitSelection) {
-		clearSelection(bview);
+		clearSelection();
 		cursor = resetCursor;
 		setCursor(bview, cursor.par(), cursor.pos());
 		selection.cursor = cursor;
@@ -1176,7 +1176,7 @@ void LyXText::setParagraph(BufferView * bview,
 	
 	redoParagraphs(bview, selection.start, endpar);
 	
-	clearSelection(bview);
+	clearSelection();
 	setCursor(bview, selection.start.par(), selection.start.pos());
 	selection.cursor = cursor;
 	setCursor(bview, selection.end.par(), selection.end.pos());
@@ -1705,7 +1705,7 @@ void LyXText::cutSelection(BufferView * bview, bool doclear)
 	cursor = selection.start;
 
 	// need a valid cursor. (Lgb)
-	clearSelection(bview);
+	clearSelection();
 
 	setCursor(bview, cursor.par(), cursor.pos());
 	selection.cursor = cursor;
@@ -1764,7 +1764,7 @@ void LyXText::pasteSelection(BufferView * bview)
 	redoParagraphs(bview, cursor, endpar);
 	
 	setCursor(bview, cursor.par(), cursor.pos());
-	clearSelection(bview);
+	clearSelection();
    
 	selection.cursor = cursor;
 	setCursor(bview, actpar, pos);
@@ -1834,7 +1834,7 @@ void LyXText::insertStringAsLines(BufferView * bview, string const & str)
 	setCursorParUndo(bview);
 	
 	// only to be sure, should not be neccessary
-	clearSelection(bview);
+	clearSelection();
 	
 	bview->buffer()->insertStringAsLines(par, pos, current_font, str);
 
@@ -2536,6 +2536,11 @@ void LyXText::status(BufferView * bview, LyXText::text_status st) const
 		status_ = st;
 		if (inset_owner && st != UNCHANGED) {
 			bview->text->status(bview, NEED_VERY_LITTLE_REFRESH);
+			if (!bview->text->refresh_row) {
+				bview->text->refresh_row = bview->text->cursor.row();
+				bview->text->refresh_y = bview->text->cursor.y() -
+					bview->text->cursor.row()->baseline();
+			}
 		}
 	}
 #endif

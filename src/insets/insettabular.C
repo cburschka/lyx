@@ -138,6 +138,7 @@ InsetTabular::InsetTabular(Buffer const & buf, int rows, int columns)
 	actrow = actcell = 0;
 	clearSelection();
 	need_update = INIT;
+	in_update = false;
 }
 
 
@@ -152,6 +153,7 @@ InsetTabular::InsetTabular(InsetTabular const & tab, Buffer const & buf,
 	actrow = actcell = 0;
 	sel_cell_start = sel_cell_end = 0;
 	need_update = INIT;
+	in_update = false;
 }
 
 
@@ -457,11 +459,15 @@ void InsetTabular::drawCellSelection(Painter & pain, int x, int baseline,
 
 void InsetTabular::update(BufferView * bv, LyXFont const & font, bool reinit)
 {
+	if (in_update)
+		return;
+	in_update = true;
 	if (reinit) {
 		need_update = INIT;
 		calculate_dimensions_of_cells(bv, font, true);
 		if (owner())
 			owner()->update(bv, font, true);
+		in_update = false;
 		return;
 	}
 	if (the_locking_inset)
@@ -485,6 +491,7 @@ void InsetTabular::update(BufferView * bv, LyXFont const & font, bool reinit)
 	default:
 		break;
 	}
+	in_update = false;
 }
 
 
@@ -793,9 +800,8 @@ void InsetTabular::insetKeyPress(XKeyEvent * xke)
 
 
 UpdatableInset::RESULT
-InsetTabular::localDispatch(BufferView * bv,
-			    kb_action action,
-			    string const & arg)
+InsetTabular::localDispatch(BufferView * bv, kb_action action,
+                            string const & arg)
 {
 	// We need to save the value of the_locking_inset as the call to 
 	// the_locking_inset->LocalDispatch might unlock it.
@@ -814,34 +820,33 @@ InsetTabular::localDispatch(BufferView * bv,
 	bool hs = hasSelection();
 
 	result = DISPATCHED;
-	// this one have priority over the locked InsetText!
-	switch (action) {
-	case LFUN_SHIFT_TAB:
-	case LFUN_TAB:
-	{
-		if (getFirstLockingInsetOfType(Inset::TABULAR_CODE) != this)
+	// this one have priority over the locked InsetText, if we're not already
+	// inside another tabular then that one get's priority!
+	if (getFirstLockingInsetOfType(Inset::TABULAR_CODE) == this) {
+		switch (action) {
+		case LFUN_SHIFT_TAB:
+		case LFUN_TAB:
+			hideInsetCursor(bv);
+			if (the_locking_inset) {
+				unlockInsetInInset(bv, the_locking_inset);
+				the_locking_inset = 0;
+			}
+			if (action == LFUN_TAB)
+				moveNextCell(bv, old_locking_inset != 0);
+			else
+				movePrevCell(bv, old_locking_inset != 0);
+			sel_cell_start = sel_cell_end = actcell;
+			if (hs)
+				updateLocal(bv, SELECTION, false);
+			if (!the_locking_inset) {
+				showInsetCursor(bv);
+				return DISPATCHED_NOUPDATE;
+			}
+			return result;
+		// this to avoid compiler warnings.
+		default:
 			break;
-		hideInsetCursor(bv);
-		if (the_locking_inset) {
-			unlockInsetInInset(bv, the_locking_inset);
-			the_locking_inset = 0;
 		}
-		if (action == LFUN_TAB)
-			moveNextCell(bv, old_locking_inset != 0);
-		else
-			movePrevCell(bv, old_locking_inset != 0);
-		sel_cell_start = sel_cell_end = actcell;
-		if (hs)
-			updateLocal(bv, SELECTION, false);
-		if (!the_locking_inset) {
-			showInsetCursor(bv);
-			return DISPATCHED_NOUPDATE;
-		}
-		return result;
-	}
-	// this to avoid compiler warnings.
-	default:
-		break;
 	}
 
 	if (the_locking_inset) {
@@ -860,7 +865,6 @@ InsetTabular::localDispatch(BufferView * bv,
 			updateLocal(bv, CELL, false);
 			the_locking_inset->toggleInsetCursor(bv);
 			return result;
-		} else if (result == FINISHED) {
 		}
 	}
 
@@ -1095,11 +1099,11 @@ InsetTabular::localDispatch(BufferView * bv,
 				// we need to update if this was requested before
 				updateLocal(bv, NONE, false);
 				return UNDISPATCHED;
+			} else if (hs) {
+				clearSelection();
 			}
 			nodraw(false);
-//			the_locking_inset->ToggleInsetCursor(bv);
 			updateLocal(bv, CELL, false);
-//			the_locking_inset->ToggleInsetCursor(bv);
 			return result;
 		}
 		break;
@@ -1247,8 +1251,20 @@ void InsetTabular::hideInsetCursor(BufferView * bv)
 		bv->hideLockedInsetCursor();
 		setCursorVisible(false);
 	}
-//    if (cursor_visible)
-//        ToggleInsetCursor(bv);
+}
+
+
+void InsetTabular::fitInsetCursor(BufferView * bv) const
+{
+	if (the_locking_inset) {
+		the_locking_inset->fitInsetCursor(bv);
+		return;
+	}
+	LyXFont font;
+	
+	int const asc = lyxfont::maxAscent(font);
+	int const desc = lyxfont::maxDescent(font);
+	bv->fitLockedInsetCursor(cursor_.x(), cursor_.y(), asc, desc);
 }
 
 
@@ -2471,12 +2487,13 @@ string const InsetTabular::selectNextWord(BufferView * bv, float & value) const
 		}
 		++actcell;
 	}
-	
+	nodraw(true);
 	// otherwise we have to lock the next inset and ask for it's selecttion
 	UpdatableInset * inset =
 		static_cast<UpdatableInset*>(tabular->GetCellInset(actcell));
 	inset->edit(bv, 0,  0, 0);
 	string const str(selectNextWordInt(bv, value));
+	nodraw(false);
 	if (!str.empty())
 		resetPos(bv);
 	return str;
@@ -2524,7 +2541,7 @@ void InsetTabular::toggleSelection(BufferView * bv, bool kill_selection)
 
 
 bool InsetTabular::searchForward(BufferView * bv, string const & str,
-                              bool const & cs, bool const & mw)
+                                 bool const & cs, bool const & mw)
 {
 	if (the_locking_inset) {
 		if (the_locking_inset->searchForward(bv, str, cs, mw))
@@ -2535,16 +2552,18 @@ bool InsetTabular::searchForward(BufferView * bv, string const & str,
 		}
 		++actcell;
 	}
-	nodraw(true);
 	// otherwise we have to lock the next inset and search there
 	UpdatableInset * inset =
 		static_cast<UpdatableInset*>(tabular->GetCellInset(actcell));
 	inset->edit(bv);
+#if 0
 	bool const res = searchForward(bv, str, cs, mw);
 	updateLocal(bv, NONE, false);
-	nodraw(false);
 	bv->updateInset(const_cast<InsetTabular *>(this), false);
 	return res;
+#else
+	return searchForward(bv, str, cs, mw);
+#endif
 }
 
 
@@ -2560,13 +2579,15 @@ bool InsetTabular::searchBackward(BufferView * bv, string const & str,
 		}
 		--actcell;
 	}
-	nodraw(true);
 	// otherwise we have to lock the next inset and search there
 	UpdatableInset * inset =
 		static_cast<UpdatableInset*>(tabular->GetCellInset(actcell));
 	inset->edit(bv, false);
+#if 0
 	bool const res = searchBackward(bv, str, cs, mw);
-	nodraw(false);
 	bv->updateInset(const_cast<InsetTabular *>(this), false);
 	return res;
+#else
+	return searchBackward(bv, str, cs, mw);
+#endif
 }

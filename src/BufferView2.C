@@ -265,7 +265,7 @@ void BufferView::copyEnvironment()
 		text->copyEnvironmentType();
 		// clear the selection, even if mark_set
 		toggleSelection();
-		text->clearSelection(this);
+		text->clearSelection();
 		update(text, BufferView::SELECT|BufferView::FITCUR);
 		owner()->message(_("Paragraph environment type copied"));
 	}
@@ -288,7 +288,7 @@ void BufferView::copy()
 		text->copySelection(this);
 		// clear the selection, even if mark_set
 		toggleSelection();
-		text->clearSelection(this);
+		text->clearSelection();
 		update(text, BufferView::SELECT|BufferView::FITCUR);
 		owner()->message(_("Copy"));
 	}
@@ -316,7 +316,7 @@ void BufferView::paste()
 	hideCursor();
 	// clear the selection
 	toggleSelection();
-	text->clearSelection(this);
+	text->clearSelection();
 	update(text, BufferView::SELECT|BufferView::FITCUR);
 	
 	// paste
@@ -325,7 +325,7 @@ void BufferView::paste()
 	
 	// clear the selection 
 	toggleSelection();
-	text->clearSelection(this);
+	text->clearSelection();
 	update(text, BufferView::SELECT|BufferView::FITCUR);
 }
 
@@ -361,7 +361,7 @@ void BufferView::endOfSpellCheck()
 	hideCursor();
 	beforeChange(text);
 	text->selectSelectedWord(this);
-	text->clearSelection(this);
+	text->clearSelection();
 	update(text, BufferView::SELECT|BufferView::FITCUR);
 }
 

@@ -237,6 +237,8 @@ private:
 #endif
 	///
 	mutable int oldWidth;
+	///
+	bool in_update;
 };
 
 #endif

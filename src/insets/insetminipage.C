@@ -263,7 +263,10 @@ InsetMinipage::Position InsetMinipage::pos() const
 
 void InsetMinipage::pos(InsetMinipage::Position p)
 {
-	pos_ = p;
+	if (pos_ != p) {
+		pos_ = p;
+		need_update = FULL;
+	}
 }
 
 
@@ -287,7 +290,10 @@ string const & InsetMinipage::height() const
 
 void InsetMinipage::height(string const & ll)
 {
-	height_ = ll;
+	if (height_ != ll) {
+		height_ = ll;
+		need_update = FULL;
+	}
 }
 
 
@@ -299,7 +305,10 @@ string const & InsetMinipage::width() const
 
 void InsetMinipage::width(string const & ll)
 {
-	width_ = ll;
+	if (ll != width_) {
+		width_ = ll;
+		need_update = FULL;
+	}
 }
 
 
