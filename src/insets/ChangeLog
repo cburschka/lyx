@@ -1,3 +1,8 @@
+2004-12-15  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* insettabular.C (tabularFeatures): re-enable SET_ALL_LINES and
+	UNSET_ALL_LINES (from Jürgen)
+
 2004-12-14  Angus Leeming  <leeming@lyx.org>
 
 	* Makefile.am (AM_CPPFLAGS): Remove trailing slash from -Ifoo/

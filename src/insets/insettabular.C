@@ -1458,12 +1458,10 @@ void InsetTabular::tabularFeatures(LCursor & cur,
 	case LyXTabular::SET_ALL_LINES:
 		setLines = true;
 	case LyXTabular::UNSET_ALL_LINES:
-#if 0
 		for (row_type i = sel_row_start; i <= sel_row_end; ++i)
 			for (col_type j = sel_col_start; j <= sel_col_end; ++j)
 				tabular.setAllLines(
 					tabular.getCellNumber(i,j), setLines);
-#endif
 		break;
 
 	case LyXTabular::SET_LONGTABULAR:
