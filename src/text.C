@@ -1631,7 +1631,7 @@ void LyXText::backspace(LCursor & cur)
 		    && (pars_[cpit].layout() == pars_[tmppit].layout()
 		        || pars_[tmppit].layout() == tclass.defaultLayout())
 		    && pars_[cpit].getAlign() == pars_[tmppit].getAlign()) {
-			mergeParagraph(bufparams, buf.paragraphs(), cpit);
+			mergeParagraph(bufparams, pars_, cpit);
 
 			if (cur.pos() != 0 && pars_[cpit].isSeparator(cur.pos() - 1))
 				--cur.pos();
