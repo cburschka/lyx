@@ -1,15 +1,12 @@
 /*
- *  File:        math_inset.C
- *  Purpose:     Implementation of insets for mathed
- *  Author:      Alejandro Aguilar Sierra <asierra@servidor.unam.mx> 
- *  Created:     January 1996
- *  Description: 
+ *  File:        math_atom.C
+ *  Purpose:     Wrapper for MathInset * 
+ *  Author:      André Pönitz
+ *  Created:     July 2001
  *
- *  Dependencies: Xlib, XForms
+ *  Copyright: 2001 The LyX team
  *
- *  Copyright: 1996, 1997 Alejandro Aguilar Sierra
- *
- *   Version: 0.8beta.
+ *   Version: 1.2.0
  *
  *   You are free to use and modify this code under the terms of
  *   the GNU General Public Licence version 2 or later.
@@ -23,6 +20,7 @@
 #include "math_inset.h"
 #include "support/LAssert.h"
 
+#include <utility>
 
 MathAtom::MathAtom()
 	: nucleus_(0)
@@ -35,46 +33,31 @@ MathAtom::MathAtom(MathInset * p)
 
 
 MathAtom::MathAtom(MathAtom const & p)
-{
-	copy(p);
-}
+	: nucleus_(p.nucleus_ ? p.nucleus_->clone() : 0)
+{}
 
 
 void MathAtom::operator=(MathAtom const & p)
 {
-	if (this == &p)
+	if (&p == this)
 		return;
-	done();
-	copy(p);
+	MathAtom tmp(p);
+	std::swap(tmp.nucleus_, nucleus_);
 }
 
 
 MathAtom::~MathAtom()
 {
-	done();
+	delete nucleus_;
 }
 
 
 void MathAtom::reset(MathInset * p)
 {
-	done();
-	nucleus_ = p;
-}
-
-
-
-void MathAtom::done()
-{
+	if (p == nucleus_)
+		return;
 	delete nucleus_;
-}
-
-
-void MathAtom::copy(MathAtom const & p)
-{
-	//cerr << "calling MathAtom::copy\n";
-	nucleus_   = p.nucleus_;
-	if (nucleus_)
-		nucleus_ = nucleus_->clone();
+	nucleus_ = p;
 }
 
 
