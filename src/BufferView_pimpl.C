@@ -111,7 +111,7 @@ BufferView::Pimpl::Pimpl(BufferView * bv, LyXView * owner,
 	resizecon = workarea().workAreaResize
 		.connect(boost::bind(&BufferView::Pimpl::workAreaResize, this));
 	dispatchcon = workarea().dispatch
-		.connect(boost::bind(&BufferView::Pimpl::dispatch, this, _1));
+		.connect(boost::bind(&BufferView::Pimpl::workAreaDispatch, this, _1));
 	kpresscon = workarea().workAreaKeyPress
 		.connect(boost::bind(&BufferView::Pimpl::workAreaKeyPress, this, _1, _2));
 	selectioncon = workarea().selectionRequested
@@ -914,6 +914,23 @@ void BufferView::Pimpl::trackChanges()
 }
 
 
+// Doesn't go through lyxfunc, so we need to update the
+// layout choice etc. ourselves
+bool BufferView::Pimpl::workAreaDispatch(FuncRequest const & ev_in)
+{
+	// e.g. Qt mouse press when no buffer
+	if (!available())
+		return false;
+
+	bool const res = dispatch(ev_in);
+
+	bv_->owner()->updateLayoutChoice();
+	bv_->fitCursor();
+
+	return res;
+}
+
+
 bool BufferView::Pimpl::dispatch(FuncRequest const & ev_in)
 {
 	// Make sure that the cached BufferView is correct.
@@ -927,10 +944,6 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev_in)
 		<< " y[" << ev.y << ']'
 		<< " button[" << ev.button() << ']'
 		<< endl;
-
-	// e.g. Qt mouse press when no buffer
-	if (!buffer_)
-		return false;
 
 	LyXTextClass const & tclass = buffer_->params.getLyXTextClass();
 
