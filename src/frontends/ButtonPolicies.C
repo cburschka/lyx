@@ -17,21 +17,16 @@
  */
 
 #include <config.h>
+
 #include "ButtonPolicies.h"
 #include "debug.h"
 
-// These shenanigans needed or DEC c++ complains that expression must
-// be an lvalue
-static const int sum_ = ( PreferencesPolicy::OKAY |
-			  PreferencesPolicy::APPLY |
-			  PreferencesPolicy::CANCEL |
-			  PreferencesPolicy::UNDO_ALL );
-static const PreferencesPolicy::State bogus_ = PreferencesPolicy::BOGUS;
 
-// Helper function
-inline void nextState(ButtonPolicy::State & state,
+/// Helper function
+static inline
+void nextState(ButtonPolicy::State & state,
 	       ButtonPolicy::SMInput in,
-	       ButtonPolicy::StateMachine s_m,
+	       ButtonPolicy::StateMachine const & s_m,
 	       char const * function_name = "nextState")
 {
 	ButtonPolicy::State tmp = s_m[state][in];
@@ -53,11 +48,9 @@ inline void nextState(ButtonPolicy::State & state,
 
 PreferencesPolicy::PreferencesPolicy()
 	: state_(INITIAL),
-	  outputs_(APPLIED+1,
-		   static_cast<int const &>( sum_ )),
-	  state_machine_(APPLIED+1,
-			 StateArray(SMI_TOTAL,
-				    static_cast<State const &>( bogus_ )))
+	  outputs_(APPLIED + 1, PreferencesPolicy::AllButtons),
+	  state_machine_(APPLIED + 1,
+			 StateArray(SMI_TOTAL, PreferencesPolicy::BOGUS))
 {
 	// Build the state output map
 	outputs_[INITIAL] = CLOSE;
@@ -128,11 +121,9 @@ void PreferencesPolicy::input(SMInput input)
 
 OkCancelPolicy::OkCancelPolicy()
 	: state_(INITIAL),
-	  outputs_(INVALID+1,
-		   static_cast<int const &>( sum_ )),
-	  state_machine_(INVALID+1, 
-			 StateArray(SMI_TOTAL,
-				    static_cast<State const &>( bogus_ )))
+	  outputs_(INVALID + 1, PreferencesPolicy::AllButtons),
+	  state_machine_(INVALID + 1,
+			 StateArray(SMI_TOTAL, PreferencesPolicy::BOGUS))
 {
 	// Build the state output map
 	outputs_[INITIAL] = CLOSE;
@@ -183,11 +174,9 @@ void OkCancelPolicy::input(SMInput input)
 
 OkCancelReadOnlyPolicy::OkCancelReadOnlyPolicy()
 	: state_(INITIAL),
-	  outputs_(RO_INVALID+1,
-		   static_cast<int const &>( sum_ )),
-	  state_machine_(RO_INVALID+1,
-			 StateArray(SMI_TOTAL,
-				    static_cast<State const &>( bogus_ )))
+	  outputs_(RO_INVALID + 1, PreferencesPolicy::AllButtons),
+	  state_machine_(RO_INVALID + 1,
+			 StateArray(SMI_TOTAL, PreferencesPolicy::BOGUS))
 {
 	// Build the state output map
 	outputs_[INITIAL] = CLOSE;
@@ -260,11 +249,9 @@ void OkCancelReadOnlyPolicy::input(SMInput input)
 
 NoRepeatedApplyReadOnlyPolicy::NoRepeatedApplyReadOnlyPolicy()
 	: state_(INITIAL),
-	  outputs_(RO_INVALID+1,
-		   static_cast<int const &>( sum_ )),
-	  state_machine_(RO_INVALID+1,
-			 StateArray(SMI_TOTAL,
-				    static_cast<State const &>( bogus_ )))
+	  outputs_(RO_INVALID + 1, PreferencesPolicy::AllButtons),
+	  state_machine_(RO_INVALID + 1,
+			 StateArray(SMI_TOTAL, PreferencesPolicy::BOGUS))
 {
 	// Build the state output map
 	outputs_[INITIAL] = CLOSE;
@@ -338,11 +325,9 @@ void NoRepeatedApplyReadOnlyPolicy::input(SMInput input)
 
 OkApplyCancelReadOnlyPolicy::OkApplyCancelReadOnlyPolicy()
 	: state_(INITIAL),
-	  outputs_(RO_APPLIED+1,
-		   static_cast<int const &>( sum_ )),
-	  state_machine_(RO_APPLIED+1,
-			 StateArray(SMI_TOTAL,
-				    static_cast<State const &>( bogus_ )))
+	  outputs_(RO_APPLIED + 1, PreferencesPolicy::AllButtons),
+	  state_machine_(RO_APPLIED + 1,
+			 StateArray(SMI_TOTAL, PreferencesPolicy::BOGUS))
 {
 	// Build the state output map
 	outputs_[INITIAL] = CLOSE;
@@ -430,11 +415,9 @@ void OkApplyCancelReadOnlyPolicy::input(SMInput input)
 
 OkApplyCancelPolicy::OkApplyCancelPolicy()
 	: state_(INITIAL),
-	  outputs_(APPLIED+1,
-		   static_cast<int const &>( sum_ )),
-	  state_machine_(APPLIED+1,
-			 StateArray(SMI_TOTAL,
-				    static_cast<State const &>( bogus_ )))
+	  outputs_(APPLIED + 1, PreferencesPolicy::AllButtons),
+	  state_machine_(APPLIED + 1,
+			 StateArray(SMI_TOTAL, PreferencesPolicy::BOGUS))
 {
 	// Build the state output map
 	outputs_[INITIAL] = CLOSE;
@@ -496,11 +479,9 @@ void OkApplyCancelPolicy::input(SMInput input)
 
 NoRepeatedApplyPolicy::NoRepeatedApplyPolicy()
 	: state_(INITIAL),
-	  outputs_(INVALID+1,
-		   static_cast<int const &>( sum_ )),
-	  state_machine_(INVALID+1,
-			 StateArray(SMI_TOTAL,
-				    static_cast<State const &>( bogus_ )))
+	  outputs_(INVALID + 1, PreferencesPolicy::AllButtons),
+	  state_machine_(INVALID + 1,
+			 StateArray(SMI_TOTAL, PreferencesPolicy::BOGUS))
 {
 	// Build the state output map
 	outputs_[INITIAL] = CLOSE;

@@ -1,3 +1,20 @@
+2000-08-31  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/frontends/ButtonPolicies.h: add a Button AllButtons.
+	make buttonStatus and isReadOnly be const methods. (also reflect
+	this in derived classes.)
+
+	* src/frontends/ButtonPolicies.C: remove sum_ and bogus_
+	(nextState): change to be static inline, pass the StateMachine as
+	a const reference
+	(PreferencesPolicy): remove casts
+	(OkCancelPolicy): remvoe casts
+	(OkCancelReadOnlyPolicy): remove casts
+	(NoRepeatedApplyReadOnlyPolicy): remove casts
+	(OkApplyCancelReadOnlyPolicy): remove casts
+	(OkApplyCancelPolicy): remove casts
+	(NoRepeatedApplyPolicy): remove casts
+
 2000-08-31  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* src/converter.C: added some using directives

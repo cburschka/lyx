@@ -62,40 +62,53 @@
 	button is actually a Save button -- its always reasonable to Save the
 	preferences if the dialog has changed since the last save.
  */
-class ButtonPolicy : public noncopyable
-{
+class ButtonPolicy : public noncopyable {
 public:
-	/**@name Constructors and Deconstructors */
-	//@{
 	///
 	virtual ~ButtonPolicy() {}
-	//@}
 
-	/**@name Enums */
-	//@{
 	/** The various possible state names.
 	    Not all state-machines have this many states.  However, we need
 	    to define them all here so we can share the code.
 	*/
 	enum State {
+		///
 		INITIAL = 0,
+		///
 		VALID,
+		///
 		INVALID,
+		///
 		APPLIED,
+		///
 		RO_INITIAL,
+		///
 		RO_VALID,
+		///
 		RO_INVALID,
+		///
 		RO_APPLIED,
+		///
 		BOGUS = 55
 	};
+	
 	/// The various button types.
 	enum Button {
+		///
 		CLOSE    = 0,  // Not a real button, but effectively !CANCEL
+		///
 		OKAY     = 1,
+		///
 		APPLY    = 2,
+		///
 		CANCEL   = 4,
+		///
 		UNDO_ALL = 8
 	};
+	///
+	static const Button AllButtons =
+	Button(OKAY | APPLY | CANCEL | UNDO_ALL);
+	
 	/** State machine inputs.
 	    All the policies so far have both CANCEL and HIDE always going to
 	    INITIAL. This won't necessarily be true for all [future] policies
@@ -105,57 +118,59 @@ public:
 	    HIDE are treated differently.
 	 */
 	enum SMInput {
+		///
 		SMI_VALID = 0,
+		///
 		SMI_INVALID,
+		///
 		SMI_OKAY,
+		///
 		SMI_APPLY,
+		///
 		SMI_CANCEL,
+		///
 		SMI_UNDO_ALL,
+		///
 		SMI_HIDE,
+		///
 		SMI_READ_ONLY,
+		///
 		SMI_READ_WRITE,
+		///
 		SMI_TOTAL	// not a real input
 	};
-	//@}
 
-	/**@name Access Functions */
-	//@{
 	/// Trigger a transition with this input.
 	virtual void input(SMInput) = 0;
 	/// Activation status of a button
-	virtual bool buttonStatus(Button) = 0;
+	virtual bool buttonStatus(Button) const = 0;
 	/// Are we in a read-only state?
-	virtual bool isReadOnly() = 0;
-	//@}
+	virtual bool isReadOnly() const = 0;
 
-	/**@name Typedefs */
-	//@{
 	/// Transition map of the state machine.
 	typedef std::vector<State> StateArray;
+	///
 	typedef std::vector<StateArray> StateMachine;
 	/// The state outputs are the status of the buttons.
 	typedef std::vector<int> StateOutputs;
-	//@}
 };
 
 
-//--------------------- Actual Policy Classes ----------------------------------
+//--------------------- Actual Policy Classes -----------------------------
 
 /** Ok and Cancel buttons for dialogs with read-only operation.
-    Note: This scheme supports the relabelling of Cancel to Close and vice versa.
+    Note: This scheme supports the relabelling of Cancel to Close and
+    vice versa.
     This is based on the value of the bool state of the Button::CANCEL.
     true == Cancel, false == Close
  */
-class OkCancelPolicy : public ButtonPolicy
-{
+class OkCancelPolicy : public ButtonPolicy {
 public:
 	///
 	OkCancelPolicy();
 	///
 	virtual ~OkCancelPolicy() {}
 	
-	/**@name Access Functions */
-	//@{
 	/// Trigger a transition with this input.
 	virtual void input(SMInput);
 	/** Activation status of a button.
@@ -165,22 +180,20 @@ public:
 	    the outputs_ variable.  Perhaps we can do something at compile
 	    time to check that all the states have corresponding outputs.
 	 */
-	virtual bool buttonStatus(Button button)
-		{ return button & outputs_[state_]; }
+	virtual bool buttonStatus(Button button) const {
+		return button & outputs_[state_];
+	}
 	/// Are we in a read-only state?
-	virtual bool isReadOnly()
-		{ return false; }
-	//@}
+	virtual bool isReadOnly() const {
+		return false;
+	}
 private:
-	/**@name Private Data Members */
-	//@{
 	/// Current state.
 	State state_;
 	/// Which buttons are active for a given state.
 	StateOutputs outputs_;
 	///
 	StateMachine state_machine_;
-	//@}
 };
 
 
@@ -193,40 +206,33 @@ private:
     This is based on the value of the bool state of the Button::CANCEL.
     true == Cancel, false == Close
  */
-class OkCancelReadOnlyPolicy : public ButtonPolicy
-{
+class OkCancelReadOnlyPolicy : public ButtonPolicy {
 public:
 	///
 	OkCancelReadOnlyPolicy();
 	///
 	virtual ~OkCancelReadOnlyPolicy() {}
 	
-	/**@name Access Functions */
-	//@{
 	/// Trigger a transition with this input.
 	virtual void input(SMInput);
 	/// Activation status of a button.
-	virtual bool buttonStatus(Button button)
-		{ return button & outputs_[state_]; }
+	virtual bool buttonStatus(Button button) const {
+		return button & outputs_[state_];
+	}
 	/// Are we in a read-only state?
-	virtual bool isReadOnly()
-		{
-			return RO_INITIAL == state_
-				|| RO_VALID == state_
-				|| RO_INVALID == state_
-				|| RO_APPLIED == state_;
-		}
-	//@}
+	virtual bool isReadOnly() const {
+		return RO_INITIAL == state_
+			|| RO_VALID == state_
+			|| RO_INVALID == state_
+			|| RO_APPLIED == state_;
+	}
 private:
-	/**@name Private Data Members */
-	//@{
 	/// Current state.
 	State state_;
 	/// Which buttons are active for a given state.
 	StateOutputs outputs_;
 	///
 	StateMachine state_machine_;
-	//@}
 };
 
 
@@ -251,32 +257,26 @@ public:
 	///
 	virtual ~NoRepeatedApplyReadOnlyPolicy() {}
 	
-	/**@name Access Functions */
-	//@{
 	/// Trigger a transition with this input.
 	virtual void input(SMInput);
 	/// Activation status of a button.
-	virtual bool buttonStatus(Button button)
-		{ return button & outputs_[state_]; }
+	virtual bool buttonStatus(Button button) const {
+		return button & outputs_[state_];
+	}
 	/// Are we in a read-only state?
-	virtual bool isReadOnly()
-		{
-			return RO_INITIAL == state_
-				|| RO_VALID == state_
-				|| RO_INVALID == state_
-				|| RO_APPLIED == state_;
-		}
-	//@}
+	virtual bool isReadOnly() const {
+		return RO_INITIAL == state_
+			|| RO_VALID == state_
+			|| RO_INVALID == state_
+			|| RO_APPLIED == state_;
+	}
 private:
-	/**@name Private Data Members */
-	//@{
 	/// Current state.
 	State state_;
 	/// Which buttons are active for a given state.
 	StateOutputs outputs_;
 	///
 	StateMachine state_machine_;
-	//@}
 };
 
 
@@ -291,40 +291,33 @@ private:
     This is based on the value of the bool state of the Button::CANCEL.
     true == Cancel, false == Close
  */
-class OkApplyCancelReadOnlyPolicy : public ButtonPolicy
-{
+class OkApplyCancelReadOnlyPolicy : public ButtonPolicy {
 public:
 	///
 	OkApplyCancelReadOnlyPolicy();
 	///
 	virtual ~OkApplyCancelReadOnlyPolicy() {}
 	
-	/**@name Access Functions */
-	//@{
 	/// Trigger a transition with this input.
 	virtual void input(SMInput);
 	/// Activation status of a button.
-	virtual bool buttonStatus(Button button)
-		{ return button & outputs_[state_]; }
+	virtual bool buttonStatus(Button button) const {
+		return button & outputs_[state_];
+	}
 	/// Are we in a read-only state?
-	virtual bool isReadOnly()
-		{
-			return RO_INITIAL == state_
-				|| RO_VALID == state_
-				|| RO_INVALID == state_
-				|| RO_APPLIED == state_;
-		}
-	//@}
+	virtual bool isReadOnly() const {
+		return RO_INITIAL == state_
+			|| RO_VALID == state_
+			|| RO_INVALID == state_
+			|| RO_APPLIED == state_;
+	}
 private:
-	/**@name Private Data Members */
-	//@{
 	/// Current state.
 	State state_;
 	/// Which buttons are active for a given state.
 	StateOutputs outputs_;
 	///
 	StateMachine state_machine_;
-	//@}
 };
 
 
@@ -333,35 +326,30 @@ private:
     This is based on the value of the bool state of the Button::CANCEL.
     true == Cancel, false == Close
  */
-class OkApplyCancelPolicy : public ButtonPolicy
-{
+class OkApplyCancelPolicy : public ButtonPolicy {
 public:
 	///
 	OkApplyCancelPolicy();
 	///
 	virtual ~OkApplyCancelPolicy() {}
 	
-	/**@name Access Functions */
-	//@{
 	/// Trigger a transition with this input.
 	virtual void input(SMInput);
 	/// Activation status of a button.
-	virtual bool buttonStatus(Button button)
-		{ return button & outputs_[state_]; }
+	virtual bool buttonStatus(Button button) const {
+		return button & outputs_[state_];
+	}
 	/// Are we in a read-only state?
-	virtual bool isReadOnly()
-		{ return false; }
-	//@}
+	virtual bool isReadOnly() const {
+		return false;
+	}
 private:
-	/**@name Private Data Members */
-	//@{
 	/// Current state.
 	State state_;
 	/// Which buttons are active for a given state.
 	StateOutputs outputs_;
 	///
 	StateMachine state_machine_;
-	//@}
 };
 
 
@@ -370,35 +358,30 @@ private:
     This is based on the value of the bool state of the Button::CANCEL.
     true == Cancel, false == Close
  */
-class NoRepeatedApplyPolicy : public ButtonPolicy
-{
+class NoRepeatedApplyPolicy : public ButtonPolicy {
 public:
 	///
 	NoRepeatedApplyPolicy();
 	///
 	virtual ~NoRepeatedApplyPolicy() {}
 	
-	/**@name Access Functions */
-	//@{
 	/// Trigger a transition with this input.
 	virtual void input(SMInput);
 	/// Activation status of a button.
-	virtual bool buttonStatus(Button button)
-		{ return button & outputs_[state_]; }
+	virtual bool buttonStatus(Button button) const {
+		return button & outputs_[state_];
+	}
 	/// Are we in a read-only state?
-	virtual bool isReadOnly()
-		{ return false; }
-	//@}
+	virtual bool isReadOnly() const {
+		return false;
+	}
 private:
-	/**@name Private Data Members */
-	//@{
 	/// Current state.
 	State state_;
 	/// Which buttons are active for a given state.
 	StateOutputs outputs_;
 	///
 	StateMachine state_machine_;
-	//@}
 };
 
 
@@ -408,35 +391,30 @@ private:
     This is based on the value of the bool state of the Button::CANCEL.
     true == Cancel, false == Close
  */
-class PreferencesPolicy : public ButtonPolicy
-{
+class PreferencesPolicy : public ButtonPolicy {
 public:
 	///
 	PreferencesPolicy();
 	///
 	virtual ~PreferencesPolicy() {}
 	
-	/**@name Access Functions */
-	//@{
 	/// Trigger a transition with this input.
 	virtual void input(SMInput);
 	/// Activation status of a button.
-	virtual bool buttonStatus(Button button)
-		{ return button & outputs_[state_]; }
+	virtual bool buttonStatus(Button button) const {
+		return button & outputs_[state_];
+	}
 	/// Are we in a read-only state?
-	virtual bool isReadOnly()
-		{ return false; }
-	//@}
+	virtual bool isReadOnly() const {
+		return false;
+	}
 private:
-	/**@name Private Data Members */
-	//@{
 	/// Current state.
 	State state_;
 	/// Which buttons are active for a given state.
 	StateOutputs outputs_;
 	///
 	StateMachine state_machine_;
-	//@}
 };
 
 #endif
