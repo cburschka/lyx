@@ -70,7 +70,9 @@ s/extern \(.*\) create_form_form_\(.*\)[(]void[)]/\1 build_\2(void *)/
 
 # All other lines are deleted:
 /^typedef struct/d
-/^	/{ /FL_OBJECT/!d; }
+/^	/{
+/FL_OBJECT/!d
+}
 
 
 # For all lines starting with FL_OBJECT...
@@ -80,7 +82,8 @@ s/extern \(.*\) create_form_form_\(.*\)[(]void[)]/\1 build_\2(void *)/
 s/\(FL_OBJECT \*\)/\1 /
 
 # 2. Append to the hold space and delete from the pattern space.
-H; d
+H
+d
 }
 
 
@@ -95,11 +98,16 @@ struct \1 : public FD_base {/
 # 2. The hold space contains the FL_OBJECT lines, preceded by a new line.
 #    To get rid of this new line, we exchange the contents of the hold and
 #    pattern spaces, remove the new line and then exchange back.
-x; s/^\n//; x
+x
+s/^\n//
+x
 
 # 3. Paste the contents of the hold space beneath the "struct FD_xxx" line.
 #    and empty the hold space
-G; h; s/.*//; x
+G
+h
+s/.*//
+x
 
 # 4. Close the struct and append an empty line.
 a\

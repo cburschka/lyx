@@ -23,7 +23,7 @@ s/[ 	]*$//
 
 
 # Remove '#include "forms.h"'. It is replace by a macro in fdfix.sh.
-/^#include \"forms\.h\"/d
+/^#include "forms\.h"/d
 
 
 # Pretty formatting; replace all leading whitespace with a tab

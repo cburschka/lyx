@@ -16,7 +16,8 @@
 
 # Initialise the hold space at the start of the function.
 / \* build_/ {
-h; d
+h
+d
 }
 
 
@@ -25,14 +26,16 @@ h; d
 
 # If it isn't the last line, append it to the hold space.
 /^}$/!{
-H; d
+H
+d
 }
 
 # If it is the last line, paste the contents of the hold space above it,
 # seach for the string "tmp_str" and, if found, add its declaration to the top
 # of the function.
 /^}$/ {
-x; G
+x
+G
 
 /tmp_str/s/\(	FL_OBJECT \*\)/	string tmp_str;\
 \1/
