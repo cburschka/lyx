@@ -527,7 +527,7 @@ AC_DEFUN([LYX_USE_FRONTENDS],
 [AC_MSG_CHECKING([what frontend should be used for the GUI])
 AC_ARG_WITH(frontend,
   [  --with-frontend=THIS    Use THIS frontend as main GUI:
-			    Possible values: xforms, qt],
+			    Possible values: xforms, qt, gtk(EXPERIMENTAL)],
   [FRONTENDS="$withval"], [FRONTENDS="xforms"])
 AC_MSG_RESULT($FRONTENDS)
 AC_SUBST(FRONTENDS)
