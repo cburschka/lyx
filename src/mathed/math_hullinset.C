@@ -37,7 +37,7 @@ namespace {
 
 	// returns position of first relation operator in the array
 	// used for "intelligent splitting"
-	int firstRelOp(MathArray const & ar)
+	MathArray::size_type firstRelOp(MathArray const & ar)
 	{
 		for (MathArray::const_iterator it = ar.begin(); it != ar.end(); ++it)
 			if ((*it)->isRelOp())

@@ -93,7 +93,7 @@ namespace {
 
 bool stared(string const & s)
 {
-	unsigned const n = s.size();
+	string::size_type const n = s.size();
 	return n && s[n - 1] == '*';
 }
 
@@ -504,7 +504,7 @@ bool Parser::parse_lines(MathAtom & t, bool numbered, bool outmost)
 		return false;
 	}
 
-	int const cols = p->ncols();
+	MathInset::col_type const cols = p->ncols();
 
 	// save global variables
 	bool   const saved_num   = curr_num_;
@@ -519,7 +519,7 @@ bool Parser::parse_lines(MathAtom & t, bool numbered, bool outmost)
 		curr_label_.erase();
 
 		// reading a row
-		for (int col = 0; col < cols; ++col) {
+		for (MathInset::col_type col = 0; col < cols; ++col) {
 			//lyxerr << "reading cell " << row << " " << col << "\n";
 			parse_into(p->cell(col + row * cols), FLAG_BLOCK);
 

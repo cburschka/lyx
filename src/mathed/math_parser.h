@@ -34,7 +34,7 @@ class LyXLex;
 enum MathTokenEnum
 {
 	///
-	LM_TK_SYM,
+	LM_TK_SYM = 256,
 	///
 	LM_TK_BOX,
 	///
