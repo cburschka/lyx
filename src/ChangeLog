@@ -1,3 +1,7 @@
+2003-11-04  Alfredo Braunstein  <abraunst@libero.it>
+
+	* text.C (cursorPar): deactivate the cursor cache
+
 2003-11-03  Alfredo Braunstein  <abraunst@libero.it>
 
 	* undo.C (performUndoOrRedo): fix cursor positioning with lockPath

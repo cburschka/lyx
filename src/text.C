@@ -1592,6 +1592,10 @@ void LyXText::backspace()
 
 ParagraphList::iterator LyXText::cursorPar() const
 {
+	return getPar(cursor.par());
+#warning have a look at this again later.
+	// We need some method to mark the cache as invalidated when
+	// the paragraph it points get removed, for this to work.
 	if (cursor.par() != cache_pos_) {
 		cache_pos_ = cursor.par();
 		cache_par_ = getPar(cache_pos_);
