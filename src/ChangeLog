@@ -1,3 +1,7 @@
+2001-03-14  Juergen Vigna  <jug@sad.it>
+
+	* tabular.C (l_getline): pay attention on \r\n (from Windows-files)
+
 2001-03-14  Lars Gullik Bjønnes  <larsbj@trylle.birdstep.com>
 
 	* buffer.C: add hack to fix compability reading of minipages.

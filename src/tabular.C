@@ -1226,7 +1226,7 @@ static inline
 void l_getline(istream & is, string & str)
 {
     getline(is, str);
-    while(str.empty())
+    while(str.empty() || ((str.length()==1) && (str[0] == '\r')))
 	getline(is, str);
 }
 
@@ -1325,20 +1325,20 @@ void LyXTabular::ReadNew(Buffer const * buf, istream & is,
 		cell_info[i][j].inset.Read(buf, lex);
 		l_getline(is, line);
 	    }
-	    if (line != "</cell>") {
+	    if (!prefixIs(line, "</cell>")) {
 		lyxerr << "Wrong tabular format (expected </cell> got" <<
 		    line << ")" << endl;
 		return;
 	    }
 	}
 	l_getline(is, line);
-	if (line != "</row>") {
+	if (!prefixIs(line, "</row>")) {
 	    lyxerr << "Wrong tabular format (expected </row> got" <<
 		line << ")" << endl;
 	    return;
 	}
     }
-    while (line != "</lyxtabular>") {
+    while (!prefixIs(line, "</lyxtabular>")) {
 	l_getline(is, line);
     }
     set_row_column_number_info();
