@@ -3,7 +3,6 @@
 #define MATH_BRACEINSET_H
 
 #include "math_nestinset.h"
-#include "math_metricsinfo.h"
 
 #ifdef __GNUG__
 #pragma interface

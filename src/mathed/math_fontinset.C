@@ -15,7 +15,6 @@
 
 
 
-
 MathFontInset::MathFontInset(string const & name)
 	: MathNestInset(1), name_(name)
 {

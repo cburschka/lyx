@@ -29,6 +29,8 @@ public:
 	void write(WriteStream & os) const;
 	///
 	void normalize(NormalStream &) const;
+	///
+	void infoize(std::ostream & os) const;
 
 private:
 	///
