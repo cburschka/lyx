@@ -13,7 +13,6 @@
 #include <map>
 #include <iostream>
 
-
 // getpid(), getppid()
 #include <sys/types.h>
 #include <unistd.h>
@@ -35,6 +34,8 @@
 // fcntl()
 #include <fcntl.h>
 
+// getenv()
+#include <cstdlib>
 
 using std::string;
 using std::vector;
@@ -75,8 +76,7 @@ bool prefixIs(string const & a, string const & pre)
 
 
 // Parts stolen from lyx::support::DirList()
-// Returns pathnames begining with dir and ending with
-// pathname separator (/ in unix)
+// Returns the absolute pathnames of all lyx local sockets
 vector<string> lyxSockets(string const & dir, string const & pid)
 {
 	vector<string> dirlist;
@@ -94,6 +94,7 @@ vector<string> lyxSockets(string const & dir, string const & pid)
 			string lyxsocket = dir + '/' + fil + "/lyxsocket";
 			struct stat status;
 			// not checking if it is a socket -- just if it exists
+			// and has reading permissions
 			if (!::stat(lyxsocket.c_str(), &status)) {
 				dirlist.push_back(lyxsocket);
 			}
@@ -124,7 +125,7 @@ int connect(string const & name)
 	addr.sun_path[len] = '\0';
 
 	if((fd = ::socket(PF_UNIX, SOCK_STREAM, 0))== -1) {
-		cerr << "lyxclient: Could not create socket: "
+		cerr << "lyxclient: Could not create socket descriptor: "
 		     << strerror(errno) << endl;
 		return -1;
 	}
@@ -415,7 +416,8 @@ int g(vector<char *> const & arg)
 	return 2;
 }
 
-char * serverAddress;
+// 0 if LYXSOCKET is not set in the environment
+char * serverAddress = getenv("LYXSOCKET");
 int a(vector<char *> const & arg)
 {
 	if(arg.size() < 1) {
@@ -423,6 +425,7 @@ int a(vector<char *> const & arg)
 		     << endl;
 		return -1;
 	}
+	// -a supercedes LYXSOCKET environment variable
 	serverAddress = arg[0];
 	return 1;
 }
@@ -457,25 +460,25 @@ using support::prefixIs;
 
 int main(int argc, char * argv[])
 {
-	CmdLineParser parser;
-	parser.helper["-h"] = cmdline::h;
-	parser.helper["-c"] = cmdline::c;
-	parser.helper["-g"] = cmdline::g;
-	parser.helper["-n"] = cmdline::n;
-	parser.helper["-a"] = cmdline::a;
-	parser.helper["-t"] = cmdline::t;
-	parser.helper["-p"] = cmdline::p;
+	CmdLineParser args;
+	args.helper["-h"] = cmdline::h;
+	args.helper["-c"] = cmdline::c;
+	args.helper["-g"] = cmdline::g;
+	args.helper["-n"] = cmdline::n;
+	args.helper["-a"] = cmdline::a;
+	args.helper["-t"] = cmdline::t;
+	args.helper["-p"] = cmdline::p;
 	// Command line failure conditions:
-	if((!parser.parse(argc, argv))
-	   || (parser.isset["-c"] && parser.isset["-g"])
-	   || (parser.isset["-a"] && parser.isset["-p"])) {
+	if((!args.parse(argc, argv))
+	   || (args.isset["-c"] && args.isset["-g"])
+	   || (args.isset["-a"] && args.isset["-p"])) {
 		cmdline::usage();
 		return 1;
 	}
 
 	LyXDataSocket * server;
 
-	if(parser.isset["-a"]) {
+	if(cmdline::serverAddress) {
 		server = new LyXDataSocket(cmdline::serverAddress);
 		if(!server->connected()) {
 			cerr << "lyxclient: " << "Could not connect to "
@@ -526,7 +529,7 @@ int main(int argc, char * argv[])
 		return 1;
 	}
 
-	if(parser.isset["-g"] || parser.isset["-c"]) {
+	if(args.isset["-g"] || args.isset["-c"]) {
 		server->writeln(cmdline::singleCommand);
 		iowatch.wait(2.0);
 		if(iowatch.isset(serverfd) && server->readln(answer)) {
