@@ -39,6 +39,8 @@ public:
 	FormMathsBitmap(LyXView *, Dialogs * d, FormMathsPanel const &,
 			std::vector<string> const &);
 	///
+	~FormMathsBitmap();
+	///
 	void addBitmap(int, int, int, int, int, unsigned char const *,
 		       bool = true);
 

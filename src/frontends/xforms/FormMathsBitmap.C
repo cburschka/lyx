@@ -48,6 +48,16 @@ FormMathsBitmap::FormMathsBitmap(LyXView * lv, Dialogs * d,
 }
 
 
+FormMathsBitmap::~FormMathsBitmap()
+{
+	if (!form())
+		return;
+
+	if (form()->visible) fl_hide_form(form());
+	fl_free_form(form());
+}
+
+
 FL_FORM * FormMathsBitmap::form() const
 {
 	return form_.get();
@@ -63,8 +73,7 @@ void FormMathsBitmap::build()
 	form_.reset(fl_bgn_form(FL_UP_BOX, w_, h_));
 	form_->u_vdata = this;
 
-	FL_OBJECT * obj = fl_add_box(FL_UP_BOX, 0, 0, w_, h_, "");
-	//fl_add_object(form_.get(), obj);
+	fl_add_box(FL_UP_BOX, 0, 0, w_, h_, "");
 
 	y_ = 0;
 	for (vector<bm_ptr>::const_iterator it = bitmaps_.begin();
@@ -78,16 +87,14 @@ void FormMathsBitmap::build()
 	}
  
 	char const * const label = N_("Close|^[");
-
 	x_ = (form_->w - 90) / 2;
 	y_ += 10;
-		
-	FL_OBJECT * button_cancel = obj =
+
+	FL_OBJECT * button_cancel =
 		fl_add_button(FL_NORMAL_BUTTON, x_, y_, 90, 30, idex(_(label)));
-	//fl_add_object(form_.get(), obj);
-	fl_set_button_shortcut(obj, scex(_(label)), 1);
-	fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-	fl_set_object_callback(obj, C_FormBaseDeprecatedCancelCB, 0);
+	fl_set_button_shortcut(button_cancel, scex(_(label)), 1);
+	fl_set_object_lsize(button_cancel, FL_NORMAL_SIZE);
+	fl_set_object_callback(button_cancel, C_FormBaseDeprecatedCancelCB, 0);
 
 	fl_end_form();
 
