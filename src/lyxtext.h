@@ -194,7 +194,7 @@ public:
 	///
 	mutable Row * refresh_row;
 	///
-	int refresh_pos;
+	Paragraph::size_type refresh_pos;
 
 	/// give and set the LyXText status
 	text_status status() const;
@@ -217,8 +217,8 @@ public:
 	/** returns the column near the specified x-coordinate of the row 
 	 x is set to the real beginning of this column
 	 */ 
-	int getColumnNearX(BufferView *, Row * row,
-			   int & x, bool & boundary) const;
+	Paragraph::size_type getColumnNearX(BufferView *, Row * row,
+					    int & x, bool & boundary) const;
 	
 	/** returns a pointer to a specified row. y is set to the beginning
 	 of the row

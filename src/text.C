@@ -9,8 +9,8 @@
  * ====================================================== */
 
 #include <config.h>
-#include <cstdlib>
-#include <cctype>
+//#include <cstdlib> //these two do not seem useful anymore (JMarc)
+//#include <cctype>
 #include <algorithm>
 
 #include "lyxtext.h"
@@ -595,20 +595,15 @@ void LyXText::draw(BufferView * bview, Row const * row,
 // exactly the label-width.
 int LyXText::leftMargin(BufferView * bview, Row const * row) const
 {
-	LyXLayout const & layout =
-		textclasslist.Style(bview->buffer()->params.textclass,
-				    row->par()->getLayout());
+	LyXTextClass const & tclass =
+		textclasslist.TextClass(bview->buffer()->params.textclass);
+	LyXLayout const & layout = tclass[row->par()->getLayout()];
 	
 	string parindent = layout.parindent; 
 
 	int x = LYX_PAPER_MARGIN;
 	
-	x += lyxfont::signedWidth(textclasslist
-				  .TextClass(bview->buffer()->params.textclass)
-				  .leftmargin(),
-				  textclasslist
-				  .TextClass(bview->buffer()->params.textclass)
-				  .defaultfont());
+	x += lyxfont::signedWidth(tclass.leftmargin(), tclass.defaultfont());
 
 	// this is the way, LyX handles the LaTeX-Environments.
 	// I have had this idea very late, so it seems to be a
@@ -620,9 +615,7 @@ int LyXText::leftMargin(BufferView * bview, Row const * row) const
 				Paragraph * newpar = row->par()
 					->depthHook(row->par()->getDepth());
 				if (newpar &&
-				    textclasslist.Style(bview->buffer()->params.textclass,
-							newpar->getLayout())
-				    .nextnoindent)
+				    tclass[newpar->getLayout()].nextnoindent)
 					parindent.erase();
 			}
 		}
@@ -636,9 +629,7 @@ int LyXText::leftMargin(BufferView * bview, Row const * row) const
 		
 		// check wether it is a sufficent paragraph 
 		if (newpar
-		    && textclasslist
-		        .Style(bview->buffer()->params.textclass, 
-			       newpar->getLayout()).isEnvironment()) {
+		    && tclass[newpar->getLayout()].isEnvironment()) {
 			Row dummyrow;
 			dummyrow.par(newpar);
 			dummyrow.pos(newpar->size());
@@ -655,9 +646,7 @@ int LyXText::leftMargin(BufferView * bview, Row const * row) const
 			if (newpar->params().noindent())
 				parindent.erase();
 			else
-				parindent = textclasslist
-					.Style(bview->buffer()->params.textclass, 
-					       newpar->getLayout()).parindent;
+				parindent = tclass[newpar->getLayout()].parindent;
 		}
 		
 	}
@@ -667,10 +656,7 @@ int LyXText::leftMargin(BufferView * bview, Row const * row) const
 	case MARGIN_DYNAMIC:
 		if (!layout.leftmargin.empty()) {
 			x += lyxfont::signedWidth(layout.leftmargin,
-						  textclasslist
-						  .TextClass(bview->buffer()->params.
-							     textclass)
-						  .defaultfont());
+						  tclass.defaultfont());
 		}
 		if (!row->par()->getLabelstring().empty()) {
 			x += lyxfont::signedWidth(layout.labelindent,
@@ -691,7 +677,7 @@ int LyXText::leftMargin(BufferView * bview, Row const * row) const
 		}
 		break;
 	case MARGIN_STATIC:
-		x += lyxfont::signedWidth(layout.leftmargin, textclasslist.TextClass(bview->buffer()->params.textclass).defaultfont()) * 4
+		x += lyxfont::signedWidth(layout.leftmargin, tclass.defaultfont()) * 4
 			/ (row->par()->getDepth() + 4);
 		break;
 	case MARGIN_FIRST_DYNAMIC:
@@ -743,15 +729,13 @@ int LyXText::leftMargin(BufferView * bview, Row const * row) const
 		}
 		
 		x += lyxfont::signedWidth(layout.leftmargin,
-					  textclasslist
-					  .TextClass(bview->buffer()->params.textclass)
-					  .defaultfont());
+					  tclass.defaultfont());
 		x += minfill;
 	}
 	break;
 	}
 	
-	int align; // wrong type
+	LyXAlignment align; // wrong type
 
 	if (row->par()->params().align() == LYX_ALIGN_LAYOUT)
 		align = layout.align;
@@ -772,16 +756,10 @@ int LyXText::leftMargin(BufferView * bview, Row const * row) const
 			bview->buffer()->params.paragraph_separation ==
 			BufferParams::PARSEP_INDENT))
 			x += lyxfont::signedWidth(parindent,
-						  textclasslist
-						  .TextClass(bview->buffer()->params
-							     .textclass)
-						  .defaultfont());
+						  tclass.defaultfont());
 		else if (layout.labeltype == LABEL_BIBLIO) {
 			// ale970405 Right width for bibitems
-			x += bibitemMaxWidth(bview,textclasslist
-					     .TextClass(bview->buffer()->params
-							.textclass)
-					     .defaultfont());
+			x += bibitemMaxWidth(bview, tclass.defaultfont());
 		}
 	}
 	return x;
@@ -790,17 +768,13 @@ int LyXText::leftMargin(BufferView * bview, Row const * row) const
 
 int LyXText::rightMargin(Buffer const * buf, Row const * row) const
 {
-	LyXLayout const & layout =
-		textclasslist.Style(buf->params.textclass,
-				    row->par()->getLayout());
-	
+	LyXTextClass const & tclass =
+		textclasslist.TextClass(buf->params.textclass);
+	LyXLayout const & layout = tclass[row->par()->getLayout()];
+		
 	int x = LYX_PAPER_MARGIN
-		+ lyxfont::signedWidth(textclasslist
-				       .TextClass(buf->params.textclass)
-				       .rightmargin(),
-				       textclasslist
-				       .TextClass(buf->params.textclass)
-				       .defaultfont());
+		+ lyxfont::signedWidth(tclass.rightmargin(),
+				       tclass.defaultfont());
 
 	// this is the way, LyX handles the LaTeX-Environments.
 	// I have had this idea very late, so it seems to be a
@@ -819,9 +793,7 @@ int LyXText::rightMargin(Buffer const * buf, Row const * row) const
 		
 		// check wether it is a sufficent paragraph
 		if (newpar
-		    && textclasslist.Style(buf->params.textclass,
-					   newpar->getLayout())
-		       .isEnvironment()) {
+		    && tclass[newpar->getLayout()].isEnvironment()) {
 			Row dummyrow;
 			dummyrow.par(newpar);
 			dummyrow.pos(0);
@@ -836,10 +808,8 @@ int LyXText::rightMargin(Buffer const * buf, Row const * row) const
 	}
 	
 	//lyxerr << "rightmargin: " << layout->rightmargin << endl;
-	x += lyxfont::signedWidth(layout.rightmargin, textclasslist
-				  .TextClass(buf->params.textclass)
-				  .defaultfont()) * 4 / (row->par()->getDepth()
-							 + 4);
+	x += lyxfont::signedWidth(layout.rightmargin, tclass.defaultfont())
+		* 4 / (row->par()->getDepth() + 4);
 	return x;
 }
 
@@ -881,7 +851,8 @@ LyXText::nextBreakPoint(BufferView * bview, Row const * row, int width) const
 	Paragraph::size_type const main_body =
 		beginningOfMainBody(bview->buffer(), par);
 	LyXLayout const & layout =
-		textclasslist.Style(bview->buffer()->params.textclass, par->getLayout());
+		textclasslist.Style(bview->buffer()->params.textclass,
+				    par->getLayout());
 	Paragraph::size_type i = pos;
 
 	if (layout.margintype == MARGIN_RIGHT_ADDRESS_BOX) {
@@ -1053,7 +1024,7 @@ int LyXText::labelFill(BufferView * bview, Row const * row) const
 		--last;
 	
 	int w = 0;
-	int i = row->pos();
+	Paragraph::size_type i = row->pos();
 	while (i <= last) {
 		w += singleWidth(bview, row->par(), i);
 		++i;
@@ -1102,7 +1073,8 @@ int LyXText::numberOfHfills(Buffer const * buf, Row const * row) const
 
 	first = max(first, beginningOfMainBody(buf, row->par()));
 	int n = 0;
-	for (int p = first; p <= last; ++p) { // last, because the end is ignored!
+	for (Paragraph::size_type p = first; p <= last; ++p) {
+	// last, because the end is ignored!
 		if (row->par()->isHfill(p)) {
 			++n;
 		}
@@ -1233,12 +1205,12 @@ void LyXText::setHeightOfRow(BufferView * bview, Row * row_ptr) const
 	int maxdesc = int(lyxfont::maxDescent(font) *
 	                  layout.spacing.getValue() *
 	                  spacing_val);
-	int const pos_end = rowLast(row_ptr);
+	Paragraph::size_type const pos_end = rowLast(row_ptr);
 	int labeladdon = 0;
 	int maxwidth = 0;
 
 	// Check if any insets are larger
-	for (int pos = row_ptr->pos(); pos <= pos_end; ++pos) {
+	for (Paragraph::size_type pos = row_ptr->pos(); pos <= pos_end; ++pos) {
 		if (row_ptr->par()->getChar(pos) == Paragraph::META_INSET) {
 			tmpfont = getFont(bview->buffer(), row_ptr->par(), pos);
 			tmpinset = row_ptr->par()->getInset(pos);
@@ -1506,10 +1478,10 @@ void LyXText::appendParagraph(BufferView * bview, Row * row) const
    
    // The last character position of a paragraph is an invariant so we can 
    // safely get it here. (Asger)
-   int const lastposition = row->par()->size();
+   Paragraph::size_type const lastposition = row->par()->size();
    do {
       // Get the next breakpoint
-      int z = nextBreakPoint(bview, row, workWidth(bview));
+      Paragraph::size_type z = nextBreakPoint(bview, row, workWidth(bview));
       
       Row * tmprow = row;
 
@@ -2505,14 +2477,14 @@ void LyXText::changeRegionCase(BufferView * bview,
 		if (!IsInsetChar(c) && !IsHfillChar(c)) {
 			switch (action) {
 			case text_lowercase:
-				c = tolower(c);
+				c = lowercase(c);
 				break;
 			case text_capitalization:
-				c = toupper(c);
+				c = uppercase(c);
 				action = text_lowercase;
 				break;
 			case text_uppercase:
-				c = toupper(c);
+				c = uppercase(c);
 				break;
 			}
 		}
@@ -3567,8 +3539,9 @@ int LyXText::defaultHeight() const
    
 /* returns the column near the specified x-coordinate of the row 
 * x is set to the real beginning of this column  */ 
-int LyXText::getColumnNearX(BufferView * bview, Row * row, int & x,
-			    bool & boundary) const
+Paragraph::size_type
+LyXText::getColumnNearX(BufferView * bview, Row * row, int & x,
+			bool & boundary) const
 {
 	float tmpx = 0.0;
 	float fill_separator;

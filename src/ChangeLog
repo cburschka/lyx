@@ -1,3 +1,21 @@
+2001-10-16  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* text2.C (setCursorFromCoordinates): use Paragraph::size_type
+
+	* lyxtext.h: change type of refresh_pos to Paragraph::size_type;
+	change return type of getColumnNearX.
+	
+
+	* text.C (changeRegionCase): use uppercase/lowercase instead of
+	toupper/tolower. 
+	(leftMargin): 
+	(rightMargin): simplify code by factoring out the uses of
+	textclasslist.
+	(labelFill): 
+	(numberOfHfills): 
+	(setHeightOfRow): 
+	(appendParagraph): use Paragraph::size_type
+
 2001-10-15  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* vspace.C (asLatexString): add a missing break

@@ -1760,16 +1760,16 @@ void LyXText::cutSelection(BufferView * bview, bool doclear, bool realcut)
 		int pos = selection.end.pos();
 		CutAndPaste::cutSelection(selection.start.par(), &endpar,
 		                          selection.start.pos(), pos,
-		                          bview->buffer()->params.textclass, doclear,
-		                          realcut);
+		                          bview->buffer()->params.textclass,
+					  doclear, realcut);
 		selection.end.pos(pos);
 	} else {
 		endpar = selection.end.par();
 		int pos = selection.end.pos();
 		CutAndPaste::cutSelection(selection.start.par(), &endpar,
 		                          selection.start.pos(), pos,
-		                          bview->buffer()->params.textclass, doclear,
-								  realcut);
+		                          bview->buffer()->params.textclass,
+					  doclear, realcut);
 		cursor.par(endpar);
 		selection.end.par(endpar);
 		selection.end.pos(pos);
@@ -2273,7 +2273,8 @@ void LyXText::setCursorFromCoordinates(BufferView * bview, LyXCursor & cur,
    
 	Row * row = getRowNearY(y);
 	bool bound = false;
-	int const column = getColumnNearX(bview, row, x, bound);
+	Paragraph::size_type const column = getColumnNearX(bview, row, x,
+							   bound);
    
 	cur.par(row->par());
 	cur.pos(row->pos() + column);
