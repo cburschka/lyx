@@ -16,9 +16,18 @@
  
 #include <qsocketnotifier.h>
 
+/**
+ * io_callback - a simple wrapper for asynchronous pipe notification
+ *
+ * This is used by the lyxserver to notice the pipe is ready to be
+ * read.
+ *
+ * FIXME: this code apparently will not work on Windows.
+ */
 class io_callback : public QObject {
 	Q_OBJECT 
 public:
+	/// connect a read ready notification for fd to the LyXComm
 	io_callback(int fd, LyXComm * comm)
 		: comm_(comm) {
 		QSocketNotifier * sn = new QSocketNotifier(fd,

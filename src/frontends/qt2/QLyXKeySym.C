@@ -15,17 +15,18 @@
 
 #include "QLyXKeySym.h"
 #include "qlkey.h"
+#include "debug.h"
  
 QLyXKeySym::QLyXKeySym()
-	: LyXKeySym(), key_(0), text_("")
+	: LyXKeySym(), key_(0), shift_(false)
 {
 }
  
  
-void QLyXKeySym::set(int key, QString const & text)
+void QLyXKeySym::set(int key, bool shift)
 {
 	key_ = key;
-	text_ = text;
+	shift_ = shift;
 }
  
 
@@ -50,16 +51,18 @@ bool QLyXKeySym::isModifier() const
  
 string QLyXKeySym::getSymbolName() const
 {
-	return qkey_to_string(key_);
+	return qkey_to_string(key_, shift_);
 }
 
  
 char QLyXKeySym::getISOEncoded() const
 {
-	if (!text_.length()) 
-		return 0;
-	// FIXME
-	return text_.latin1()[0];
+	/* Even though we could try to use QKeyEvent->text(),
+	 * it won't work, because it returns something other
+	 * than 'Z' for things like C-S-z. Do not ask me why,
+	 * just more Qt bullshit.	
+	 */
+	return qkey_to_char(key_, shift_);
 }
  
 

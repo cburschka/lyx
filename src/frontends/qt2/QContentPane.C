@@ -114,11 +114,8 @@ void QContentPane::mouseMoveEvent(QMouseEvent * e)
 
 void QContentPane::keyPressEvent(QKeyEvent * e)
 {
-	char const * tmp = e->text().latin1();
-	string const text = tmp ? tmp : "";
-	lyxerr[Debug::GUI] << "key text " << text << endl;
 	QLyXKeySym * sym = new QLyXKeySym();
-	sym->set(e->key(), e->text());
+	sym->set(e->key(), bool(e->state() & Qt::ShiftButton));
 	wa_->workAreaKeyPress(LyXKeySymPtr(sym), q_key_state(e->state()));
 }
 

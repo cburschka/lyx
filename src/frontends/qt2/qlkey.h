@@ -274,12 +274,12 @@ int string_to_qkey(string const & str)
 
  
 /**
- * q_to_lkey - convert Qt keypress into LyX
+ * qkey_t_string - convert Qt keypress into LyX
  *
  * Convert the Qt keypress into a string understandable
  * by the LyX core (same as XKeysymToString)
  */
-string const qkey_to_string(int lkey) 
+string const qkey_to_string(int lkey, bool shift) 
 {
 	switch (lkey) {
 	case Qt::Key_Escape: return "Escape";
@@ -359,32 +359,32 @@ string const qkey_to_string(int lkey)
 	case Qt::Key_Greater: return "greater";
 	case Qt::Key_Question: return "question";
 	case Qt::Key_At: return "at";
-	case Qt::Key_A: return "a";
-	case Qt::Key_B: return "b";
-	case Qt::Key_C: return "c";
-	case Qt::Key_D: return "d";
-	case Qt::Key_E: return "e";
-	case Qt::Key_F: return "f";
-	case Qt::Key_G: return "g";
-	case Qt::Key_H: return "h";
-	case Qt::Key_I: return "i";
-	case Qt::Key_J: return "j";
-	case Qt::Key_K: return "k";
-	case Qt::Key_L: return "l";
-	case Qt::Key_M: return "m";
-	case Qt::Key_N: return "n";
-	case Qt::Key_O: return "o";
-	case Qt::Key_P: return "p";
-	case Qt::Key_Q: return "q";
-	case Qt::Key_R: return "r";
-	case Qt::Key_S: return "s";
-	case Qt::Key_T: return "t";
-	case Qt::Key_U: return "u";
-	case Qt::Key_V: return "v";
-	case Qt::Key_W: return "w";
-	case Qt::Key_X: return "x";
-	case Qt::Key_Y: return "y";
-	case Qt::Key_Z: return "z";
+	case Qt::Key_A: return shift ? "A" : "a";
+	case Qt::Key_B: return shift ? "B" : "b";
+	case Qt::Key_C: return shift ? "C" : "c";
+	case Qt::Key_D: return shift ? "D" : "d";
+	case Qt::Key_E: return shift ? "E" : "e";
+	case Qt::Key_F: return shift ? "F" : "f";
+	case Qt::Key_G: return shift ? "G" : "g";
+	case Qt::Key_H: return shift ? "H" : "h";
+	case Qt::Key_I: return shift ? "I" : "i";
+	case Qt::Key_J: return shift ? "J" : "j";
+	case Qt::Key_K: return shift ? "K" : "k";
+	case Qt::Key_L: return shift ? "L" : "l";
+	case Qt::Key_M: return shift ? "M" : "m";
+	case Qt::Key_N: return shift ? "N" : "n";
+	case Qt::Key_O: return shift ? "O" : "o";
+	case Qt::Key_P: return shift ? "P" : "p";
+	case Qt::Key_Q: return shift ? "Q" : "q";
+	case Qt::Key_R: return shift ? "R" : "r";
+	case Qt::Key_S: return shift ? "S" : "s";
+	case Qt::Key_T: return shift ? "T" : "t";
+	case Qt::Key_U: return shift ? "U" : "u";
+	case Qt::Key_V: return shift ? "V" : "v";
+	case Qt::Key_W: return shift ? "W" : "w";
+	case Qt::Key_X: return shift ? "X" : "x";
+	case Qt::Key_Y: return shift ? "Y" : "y";
+	case Qt::Key_Z: return shift ? "Z" : "z";
 	case Qt::Key_BracketLeft: return "bracketleft";
 	case Qt::Key_Backslash: return "backslash";
 	case Qt::Key_BracketRight: return "bracketright";
@@ -522,5 +522,57 @@ string const qkey_to_string(int lkey)
 	case Qt::Key_unknown: return "unknown";
 	}
 } 
+
+/**
+ * qkey_to_char - convert keypress into char
+ *
+ * Convert the Qt keypress into a iso8859-1 char that
+ * represents it.
+ *
+ * FIXME: this is where all the encoding stuff
+ * sits, I suppose. I have shit all idea what
+ * to do. Help ! 
+ */
+char const qkey_to_char(int lkey, bool shift)
+{
+	// We are relying on Qt internals here, but it's
+	// not likely to change anyway.
+	if (lkey >= 0x1000) 
+		return 0;
+
+	switch (lkey) {
+	case Qt::Key_A: return shift ? 'A' : 'a';
+	case Qt::Key_B: return shift ? 'B' : 'b';
+	case Qt::Key_C: return shift ? 'C' : 'c';
+	case Qt::Key_D: return shift ? 'D' : 'd';
+	case Qt::Key_E: return shift ? 'E' : 'e';
+	case Qt::Key_F: return shift ? 'F' : 'f';
+	case Qt::Key_G: return shift ? 'G' : 'g';
+	case Qt::Key_H: return shift ? 'H' : 'h';
+	case Qt::Key_I: return shift ? 'I' : 'i';
+	case Qt::Key_J: return shift ? 'J' : 'j';
+	case Qt::Key_K: return shift ? 'K' : 'k';
+	case Qt::Key_L: return shift ? 'L' : 'l';
+	case Qt::Key_M: return shift ? 'M' : 'm';
+	case Qt::Key_N: return shift ? 'N' : 'n';
+	case Qt::Key_O: return shift ? 'O' : 'o';
+	case Qt::Key_P: return shift ? 'P' : 'p';
+	case Qt::Key_Q: return shift ? 'Q' : 'q';
+	case Qt::Key_R: return shift ? 'R' : 'r';
+	case Qt::Key_S: return shift ? 'S' : 's';
+	case Qt::Key_T: return shift ? 'T' : 't';
+	case Qt::Key_U: return shift ? 'U' : 'u';
+	case Qt::Key_V: return shift ? 'V' : 'v';
+	case Qt::Key_W: return shift ? 'W' : 'w';
+	case Qt::Key_X: return shift ? 'X' : 'x';
+	case Qt::Key_Y: return shift ? 'Y' : 'y';
+	case Qt::Key_Z: return shift ? 'Z' : 'z';
+	default:
+		return lkey;
+	}
+
+	// FIXME: CapsLock ignored.
+	// FIXME: all things like é are screwed too. I LOVE Qt. I REALLY DO.
+}
 
 #endif // QLKEY_H

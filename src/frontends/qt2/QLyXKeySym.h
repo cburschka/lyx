@@ -18,10 +18,10 @@
 #include "LString.h"
 #include "frontends/LyXKeySym.h"
 
-#include <qstring.h> 
- 
 /**
  * Qt-specific key press.
+ *
+ * This is some really sick stuff.
  */
 class QLyXKeySym : public LyXKeySym {
 public:
@@ -30,7 +30,7 @@ public:
 	virtual ~QLyXKeySym() {}
 
 	/// delayed constructor
-	void set(int key, QString const & text);
+	void set(int key, bool shift);
 
 	/// set from a LyX symbolic name
 	virtual void init(string const & symbolname);
@@ -56,13 +56,8 @@ public:
 private:
 	/// the Qt sym value
 	int key_;
- 
-	/**
-	 * The generated text from the symbol. This will only be
-	 * filled when the QLyXKeySym is used to pass a key press
-	 * event, not when stored in a kbsequence etc.
-	 */
-	QString text_;
+	/// shift held or not 
+	bool shift_;
 };
 
 #endif // QLYXKEYSYM_H

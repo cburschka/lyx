@@ -1,3 +1,10 @@
+2002-07-30  John Levon  <levon@movementarian.org>
+
+	* qlkey.h:
+	* QLyXKeySym.h:
+	* QLyXKeySym.C: do our own getISOEncoded() mapping
+	  because Qt can't handle it
+ 
 2002-07-29  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* several file: strip,frontStrip -> trim,ltrim,rtrim

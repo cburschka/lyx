@@ -65,7 +65,7 @@ private:
 	/// our owning widget
 	QWorkArea & owner_;
  
-	/// the mini-pixmap used for backing store for the blinking caret
+	/// the mini-pixmap used for backing store for the blinking cursor
 	boost::scoped_ptr<QPixmap> nocursor_pixmap_;
 
 	//{@ the cursor pixmap position/size
@@ -73,7 +73,7 @@ private:
 	int cursor_y_;
 	int cursor_w_;
 	int cursor_h_;
-	//@} 
+	//@}
 };
 
 #endif // QSCREEN_H
