@@ -27,6 +27,7 @@
 #include "buffer.h"
 #include "LyXAction.h"
 #include "support/filetools.h"
+#include "gettext.h"
 
 using std::endl;
 
@@ -208,9 +209,9 @@ void Toolbar::Pimpl::updateLayoutList(bool force)
 		for (LyXTextClass::const_iterator cit = tc.begin();
 		     cit != tc.end(); ++cit) {
 			if ((*cit).obsoleted_by().empty())
-				combox->addline((*cit).name().c_str());
+				combox->addline(_((*cit).name().c_str()));
 			else
-				combox->addline(("@N" + (*cit).name()).c_str());
+				combox->addline(("@N" + string(_((*cit).name().c_str()))).c_str());
 		}
 	}
 	// we need to do this.

@@ -35,7 +35,11 @@ echo "done."
 
 # Generate the ext_l10n.h
 echo -n "Generate the ext_l10n file..."
+rm -f src/ext_l10n.h
+# first the ui file(s)
 grep -i -E "submenu|item|optitem" < lib/ui/default.ui | cut -d '"' -f 2 | awk '{printf "_(\"%s\");\n", $0}' > src/ext_l10n.h
+# then the layout files
+cat lib/layouts/*.layout lib/layouts/*.inc | grep -i -E "[ ]*style .+$" | cut -d ' ' -f 2 | sort | uniq | awk '{printf "_(\"%s\");\n", $0}' >> src/ext_l10n.h
 echo "done."
 
 # Generate the Makefiles and configure files
