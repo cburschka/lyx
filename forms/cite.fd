@@ -24,9 +24,9 @@ size: FL_DEFAULT_SIZE
 lcol: FL_BLACK
 label: 
 shortcut: 
-resize: FL_RESIZE_ALL
+resize: FL_RESIZE_X
 gravity: FL_NoGravity FL_NoGravity
-name: 
+name: box
 callback: 
 argument: 
 
@@ -42,11 +42,11 @@ size: FL_DEFAULT_SIZE
 lcol: FL_BLACK
 label: Inset keys
 shortcut: 
-resize: FL_RESIZE_ALL
+resize: FL_RESIZE_X
 gravity: FL_NoGravity FL_NoGravity
-name: 
-callback: 
-argument: 
+name: citeBrsr
+callback: citation_cb
+argument: InsetCitation::CITEBRSR
 
 --------------------
 class: FL_BROWSER
@@ -60,11 +60,11 @@ size: FL_DEFAULT_SIZE
 lcol: FL_BLACK
 label: Bibliography keys
 shortcut: 
-resize: FL_RESIZE_ALL
+resize: FL_RESIZE_X
 gravity: FL_NoGravity FL_NoGravity
-name: 
-callback: 
-argument: 
+name: bibBrsr
+callback: citation_cb
+argument: InsetCitation::BIBBRSR
 
 --------------------
 class: FL_BUTTON
@@ -78,11 +78,11 @@ size: FL_DEFAULT_SIZE
 lcol: FL_BLACK
 label: @4->
 shortcut: 
-resize: FL_RESIZE_ALL
+resize: FL_RESIZE_NONE
 gravity: FL_NoGravity FL_NoGravity
-name: 
-callback: 
-argument: 
+name: addBtn
+callback: citation_cb
+argument: InsetCitation::ADD
 
 --------------------
 class: FL_BUTTON
@@ -96,11 +96,11 @@ size: FL_DEFAULT_SIZE
 lcol: FL_BLACK
 label: @9+
 shortcut: 
-resize: FL_RESIZE_ALL
+resize: FL_RESIZE_NONE
 gravity: FL_NoGravity FL_NoGravity
-name: 
-callback: 
-argument: 
+name: delBtn
+callback: citation_cb
+argument: InsetCitation::DELETE
 
 --------------------
 class: FL_BUTTON
@@ -114,11 +114,11 @@ size: FL_DEFAULT_SIZE
 lcol: FL_BLACK
 label: @8->
 shortcut: 
-resize: FL_RESIZE_ALL
+resize: FL_RESIZE_NONE
 gravity: FL_NoGravity FL_NoGravity
-name: 
-callback: 
-argument: 
+name: upBtn
+callback: citation_cb
+argument: InsetCitation::UP
 
 --------------------
 class: FL_BUTTON
@@ -132,11 +132,11 @@ size: FL_DEFAULT_SIZE
 lcol: FL_BLACK
 label: @2->
 shortcut: 
-resize: FL_RESIZE_ALL
+resize: FL_RESIZE_NONE
 gravity: FL_NoGravity FL_NoGravity
-name: 
-callback: 
-argument: 
+name: downBtn
+callback: citation_cb
+argument: InsetCitation::DOWN
 
 --------------------
 class: FL_BROWSER
@@ -150,9 +150,9 @@ size: FL_DEFAULT_SIZE
 lcol: FL_BLACK
 label: Info
 shortcut: 
-resize: FL_RESIZE_ALL
+resize: FL_RESIZE_X
 gravity: FL_NoGravity FL_NoGravity
-name: 
+name: infoBrsr
 callback: 
 argument: 
 
@@ -168,9 +168,9 @@ size: FL_DEFAULT_SIZE
 lcol: FL_BLACK
 label: Citation style
 shortcut: 
-resize: FL_RESIZE_ALL
+resize: FL_RESIZE_X
 gravity: FL_NoGravity FL_NoGravity
-name: 
+name: style
 callback: 
 argument: 
 
@@ -186,9 +186,9 @@ size: FL_DEFAULT_SIZE
 lcol: FL_BLACK
 label: Text before
 shortcut: 
-resize: FL_RESIZE_ALL
+resize: FL_RESIZE_X
 gravity: FL_NoGravity FL_NoGravity
-name: 
+name: textBefore
 callback: 
 argument: 
 
@@ -204,9 +204,9 @@ size: FL_DEFAULT_SIZE
 lcol: FL_BLACK
 label: Text after
 shortcut: 
-resize: FL_RESIZE_ALL
+resize: FL_RESIZE_X
 gravity: FL_NoGravity FL_NoGravity
-name: 
+name: textAftr
 callback: 
 argument: 
 
@@ -223,10 +223,10 @@ lcol: FL_BLACK
 label: OK
 shortcut: ^M
 resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
-name: 
-callback: 
-argument: 
+gravity: FL_SouthEast FL_SouthEast
+name: ok
+callback: citation_cb
+argument: InsetCitation::OK
 
 --------------------
 class: FL_BUTTON
@@ -239,12 +239,12 @@ style: FL_NORMAL_STYLE
 size: FL_DEFAULT_SIZE
 lcol: FL_BLACK
 label: Cancel
-shortcut: 
+shortcut: ^[
 resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
-name: 
-callback: 
-argument: 
+gravity: FL_SouthEast FL_SouthEast
+name: cancel
+callback: citation_cb
+argument: InsetCitation::CANCEL
 
 ==============================
 create_the_forms

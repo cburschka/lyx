@@ -43,71 +43,81 @@ extern "C" void citation_cb( FL_OBJECT *, long data )
 }
 
 
-FD_citation_form * create_form_citation_form(void)
+FD_citation_form *create_form_citation_form(void)
 {
-	FL_OBJECT * obj;
-	FD_citation_form * fdui = (FD_citation_form *) fl_calloc(1, sizeof(*fdui));
+  FL_OBJECT *obj;
+  FD_citation_form *fdui = (FD_citation_form *) fl_calloc(1, sizeof(*fdui));
 
-	// NOTE: dialog geometry is set in setSize(). 
-	// Initial size is simply non-zero.
-	fdui->form = fl_bgn_form(FL_NO_BOX, 10, 10);
-	fdui->box = obj = fl_add_box(FL_UP_BOX, 0, 0, 10, 10, "");
+  fdui->form = fl_bgn_form(FL_NO_BOX, 440, 790);
+  fdui->box = obj = fl_add_box(FL_UP_BOX,0,0,440,790,"");
+    fl_set_object_resize(obj, FL_RESIZE_X);
 
-	fdui->citeBrsr = obj =
-	  fl_add_browser(FL_HOLD_BROWSER, 0, 0, 10, 10, _("Citation keys"));
-	fl_set_object_lalign(obj, FL_ALIGN_TOP_LEFT);
-	fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-	fl_set_object_callback(obj, citation_cb, InsetCitation::CITEBRSR);
+  fdui->citeBrsr = obj =
+    fl_add_browser(FL_HOLD_BROWSER,20,40,170,370,_("Inset keys"));
+    fl_set_object_lalign(obj,FL_ALIGN_TOP_LEFT);
+    fl_set_object_resize(obj, FL_RESIZE_X);
+    fl_set_object_callback(obj,citation_cb,InsetCitation::CITEBRSR);
 
-	fdui->bibBrsr = obj =
-	  fl_add_browser(FL_HOLD_BROWSER, 0, 0, 10, 10, _("Bibliography keys"));
-	fl_set_object_lalign(obj, FL_ALIGN_TOP_LEFT);
-	fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-	fl_set_object_callback(obj, citation_cb, InsetCitation::BIBBRSR);
+  fdui->bibBrsr = obj =
+    fl_add_browser(FL_HOLD_BROWSER,250,40,170,370,_("Bibliography keys"));
+    fl_set_object_lalign(obj,FL_ALIGN_TOP_LEFT);
+    fl_set_object_resize(obj, FL_RESIZE_X);
+    fl_set_object_callback(obj,citation_cb,InsetCitation::BIBBRSR);
 
-	fdui->addBtn = obj =
-	  fl_add_button(FL_NORMAL_BUTTON, 0, 0, 10, 10, "@4->");
-	fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-	fl_set_object_callback(obj, citation_cb, InsetCitation::ADD);
+  fdui->addBtn = obj =
+    fl_add_button(FL_NORMAL_BUTTON,200,40,40,40,"@4->");
+    fl_set_object_resize(obj, FL_RESIZE_NONE);
+    fl_set_object_callback(obj,citation_cb,InsetCitation::ADD);
 
-	fdui->delBtn = obj =
-	  fl_add_button(FL_NORMAL_BUTTON, 0, 0, 10, 10, "@9+");
-	fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-	fl_set_object_callback(obj, citation_cb, InsetCitation::DELETE);
+  fdui->delBtn = obj =
+    fl_add_button(FL_NORMAL_BUTTON,200,90,40,40,"@9+");
+    fl_set_object_resize(obj, FL_RESIZE_NONE);
+    fl_set_object_callback(obj,citation_cb,InsetCitation::DELETE);
 
-	fdui->upBtn = obj =
-	  fl_add_button(FL_NORMAL_BUTTON, 0, 0, 10, 10, "@8->");
-	fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-	fl_set_object_callback(obj, citation_cb, InsetCitation::UP);
-	
-	fdui->downBtn = obj =
-	  fl_add_button(FL_NORMAL_BUTTON, 0, 0, 10, 10, "@2->");
-	fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-	fl_set_object_callback(obj, citation_cb, InsetCitation::DOWN);
+  fdui->upBtn = obj =
+    fl_add_button(FL_NORMAL_BUTTON,200,140,40,40,"@8->");
+    fl_set_object_resize(obj, FL_RESIZE_NONE);
+    fl_set_object_callback(obj,citation_cb,InsetCitation::UP);
 
-	fdui->infoBrsr = obj =
-	  fl_add_browser(FL_NORMAL_BROWSER, 0, 0, 10, 10, _("Info"));
-	  fl_set_object_lsize(obj, FL_NORMAL_SIZE) ;
-	  fl_set_object_lalign(obj, FL_ALIGN_TOP_LEFT);
+  fdui->downBtn = obj =
+    fl_add_button(FL_NORMAL_BUTTON,200,190,40,40,"@2->");
+    fl_set_object_resize(obj, FL_RESIZE_NONE);
+    fl_set_object_callback(obj,citation_cb,InsetCitation::DOWN);
 
-	fdui->textAftr = obj =
-	  fl_add_input(FL_NORMAL_INPUT, 0, 0, 10, 10, _("Text after"));
-	fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+  fdui->infoBrsr = obj =
+    fl_add_browser(FL_NORMAL_BROWSER,20,440,400,110,_("Info"));
+    fl_set_object_lalign(obj,FL_ALIGN_TOP_LEFT);
+    fl_set_object_resize(obj, FL_RESIZE_X);
 
-	fdui->ok = obj =
-	  fl_add_button(FL_RETURN_BUTTON, 0, 0, 10, 10, _("OK"));
-	fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-	fl_set_object_callback(obj, citation_cb, InsetCitation::OK);
+  /*
+  fdui->style = obj =
+    fl_add_choice(FL_NORMAL_CHOICE,160,570,130,30,_("Citation style"));
+    fl_set_object_boxtype(obj,FL_DOWN_BOX);
+    fl_set_object_resize(obj, FL_RESIZE_X);
 
-	fdui->cancel = obj =
-	  fl_add_button(FL_NORMAL_BUTTON, 0, 0, 10, 10, idex(_("Cancel|^[")));
-	fl_set_button_shortcut(obj, scex(_("Cancel|^[")), 1);
-	fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-	fl_set_object_callback(obj, citation_cb, InsetCitation::CANCEL);
+  fdui->textBefore = obj =
+    fl_add_input(FL_NORMAL_INPUT,100,620,250,30,_("Text before"));
+    fl_set_object_resize(obj, FL_RESIZE_X);
+  */
 
-	fl_end_form();
-  
-	return fdui;
+  fdui->textAftr = obj =
+    fl_add_input(FL_NORMAL_INPUT,100,660,250,30,_("Text after"));
+    fl_set_object_resize(obj, FL_RESIZE_X);
+
+  fdui->ok = obj =
+    fl_add_button(FL_RETURN_BUTTON,190,730,110,40,_("OK"));
+    fl_set_object_gravity(obj, FL_SouthEast, FL_SouthEast);
+    fl_set_object_callback(obj,citation_cb,InsetCitation::OK);
+
+  fdui->cancel = obj =
+    fl_add_button(FL_NORMAL_BUTTON,310,730,110,40,idex(_("Cancel|^[")));
+    fl_set_button_shortcut(obj, scex(_("Cancel|^[")), 1);
+    fl_set_object_gravity(obj, FL_SouthEast, FL_SouthEast);
+    fl_set_object_callback(obj,citation_cb,InsetCitation::CANCEL);
+
+  fl_end_form();
+
+  return fdui;
 }
 
 
@@ -372,6 +382,10 @@ void InsetCitation::setSize( FD_citation_form * form,
 
 	if( bibPresent ) formHeight += infoHeight + 30;
 	fl_set_form_size( form->form, 430, formHeight );
+
+	// No resizing is alowed in the y-direction
+	fl_set_form_minsize( form->form, 300, formHeight );
+	fl_set_form_maxsize( form->form, 1000, formHeight );
 
 	int ypos = 0;
 	fl_set_object_geometry( form->box,      0,   ypos, 430, formHeight );
