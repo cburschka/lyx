@@ -244,11 +244,17 @@ void GImageXPM::clip(GParams const & params)
 		return;
 
 	dimension * new_data = image_.initialisedData(new_width, new_height);
-	dimension const * old_data = image_.data();
-
 	dimension * it = new_data;
-	dimension const * start_row = old_data;
-	for (size_t row = params.bb.yb; row < params.bb.yt; ++row) {
+
+	// The image is stored in memory from upper-left to lower-right,
+	// so we loop from yt to yb.
+	dimension const * old_data = image_.data();
+	dimension const * start_row = old_data +
+		image_.width() * (image_.height() - params.bb.yt);
+
+	// the Bounding Box dimensions are never less than zero, so we can use
+	// "unsigned int row" here
+	for (dimension row = params.bb.yb; row < params.bb.yt; ++row) {
 		dimension const * begin = start_row + params.bb.xl;
 		dimension const * end   = start_row + params.bb.xr;
 		it = std::copy(begin, end, it);
