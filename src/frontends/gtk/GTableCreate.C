@@ -28,6 +28,7 @@ GTableCreate::GTableCreate(Dialog & parent)
 {
 }
 
+
 void GTableCreate::doBuild()
 {
 	string const gladeName = findGladeFile("tableCreate");
@@ -44,6 +45,7 @@ void GTableCreate::doBuild()
 	setCancel(cancel);
 	setApply(apply);
 }
+
 
 void GTableCreate::apply()
 {

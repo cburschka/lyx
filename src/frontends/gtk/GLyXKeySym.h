@@ -14,8 +14,7 @@
 
 #include "frontends/LyXKeySym.h"
 
-class GLyXKeySym : public LyXKeySym
-{
+class GLyXKeySym : public LyXKeySym {
 public:
 	GLyXKeySym();
 	GLyXKeySym(unsigned int keyval);

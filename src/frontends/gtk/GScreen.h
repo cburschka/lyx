@@ -37,16 +37,13 @@ public:
 	///
 	virtual void removeCursor();
 	///
-	virtual void showCursor(int x, int y, int h,
-				Cursor_Shape shape);
-
+	virtual void showCursor(int x, int y, int h, Cursor_Shape shape);
 protected:
 	/// get the work area
 	virtual WorkArea & workarea() const;
 
 	/// Copies specified area of pixmap to screen
 	virtual void expose(int x, int y, int w, int h);
-
 private:
 	/// our owning widget
 	GWorkArea & owner_;

@@ -12,9 +12,10 @@
 #ifndef GTKMMX_H
 #define GTKMMX_H
 
-#include <X11/Xlib.h>
 #include <gtkmm.h>
 #include <gdk/gdkx.h>
+
+#include <X11/Xlib.h>
 
 
 inline Display * getDisplay()

@@ -26,8 +26,7 @@ string const findGladeFile(string const & name)
 {
 	// First, search in the installation directories.
 
-	string filename =
-		lyx::support::LibFileSearch("glade", name, "glade");
+	string filename = lyx::support::LibFileSearch("glade", name, "glade");
 
 	if (!filename.empty())
 		return filename;

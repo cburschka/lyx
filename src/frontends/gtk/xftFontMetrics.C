@@ -9,9 +9,7 @@
  */
 
 #include <config.h>
-#include <gtkmm.h>
 
-#include <algorithm>
 #include "GtkmmX.h"
 #include "support/lstrings.h"
 #include "xftFontLoader.h"
@@ -21,7 +19,11 @@
 #include "language.h"
 #include "codeConvert.h"
 
+#include <gtkmm.h>
+
 #include <boost/scoped_array.hpp>
+
+#include <algorithm>
 
 using std::string;
 
@@ -133,7 +135,7 @@ int descent(char c, LyXFont const & f)
 
 
 int lbearing(wchar_t c,LyXFont const & f)
- {
+{
 	XftFont * font = getXftFont(f);
 	XGlyphInfo glyph;
 	XftTextExtents32(getDisplay(), font,
@@ -141,7 +143,7 @@ int lbearing(wchar_t c,LyXFont const & f)
 			 1,
 			 &glyph);
 	return XGlyphLbearing(glyph);
- }
+}
 
 
 int rbearing(wchar_t c,LyXFont const & f)
@@ -174,7 +176,7 @@ int width(wchar_t const * s, size_t n, LyXFont const & f)
 	XGlyphInfo glyph;
 	if (f.realShape() != LyXFont::SMALLCAPS_SHAPE){
 		XftTextExtents32(getDisplay(), font,
-				 const_cast<XftChar32*>(
+				 const_cast<XftChar32 *>(
 					 wcsToXftChar32StrFast(s)),
 				 n,
 				 &glyph);
@@ -211,7 +213,7 @@ int width(wchar_t c,LyXFont const & f)
 }
 
 
-int width(char const * s, size_t n,LyXFont const & f)
+int width(char const * s, size_t n, LyXFont const & f)
 {
 	boost::scoped_array<wchar_t> wcs(new wchar_t[n]);
 	size_t len;

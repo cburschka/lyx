@@ -43,6 +43,7 @@ public:
                 else
 			return doLoad(family, series, shape, size);
         }
+
 	bool isSpecial(LyXFont const & f)
 	{
 		switch (f.family()) {

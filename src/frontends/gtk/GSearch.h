@@ -21,28 +21,27 @@ class ControlSearch;
 
 /** This class provides a GTK+ implementation of the FormSearch Dialog.
  */
-class GSearch : public GViewCB<ControlSearch, GViewGladeB>
-{
+class GSearch : public GViewCB<ControlSearch, GViewGladeB> {
 public:
 	GSearch(Dialog & parent);
 private:
 	virtual void apply() {}
 	virtual void doBuild();
 	virtual void update() {}
-	
+
 	void onFindNext();
 	void onReplace();
 	void onReplaceAll();
-	void onFindEntryChanged();		
-	
+	void onFindEntryChanged();
+
 	Gtk::Button * findnextbutton;
 	Gtk::Button * replacebutton;
-	Gtk::Button * replaceallbutton;		
+	Gtk::Button * replaceallbutton;
 	Gtk::Entry * findentry;
 	Gtk::Entry * replaceentry;
 	Gtk::CheckButton * casecheck;
 	Gtk::CheckButton * matchwordcheck;
-	Gtk::CheckButton * backwardscheck;		
+	Gtk::CheckButton * backwardscheck;
 };
 
 } // namespace frontend

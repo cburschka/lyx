@@ -32,6 +32,7 @@ namespace
 
 enum enumDelimType {LEFT, RIGHT, SINGLE};
 
+
 int const delimType[] = {
 	//row 1
 	LEFT, RIGHT, LEFT, RIGHT, SINGLE, SINGLE, LEFT, RIGHT,LEFT, RIGHT,
@@ -41,10 +42,12 @@ int const delimType[] = {
 	SINGLE
 };
 
+
 int const delimRevert[] = {
 	1,0,3,2,4,5,7,6,9,8,10,11,
 	13,12,15,14,16,17,19,18,20,21,22
 };
+
 
 char const * delimValues[] = {
 	"(", ")", "lceil",  "rceil",  "uparrow",  "Uparrow",
@@ -59,6 +62,7 @@ int const delimTblCols = 12;
 
 int const delimMax = 23;
 
+
 GXpmBtnTbl::XbmData xbm =
 {
 	delim_bits,
@@ -67,15 +71,18 @@ GXpmBtnTbl::XbmData xbm =
 	{0, 0, 0, 65535}
 };
 
+
 inline int index(int row, int col)
 {
 	return row * delimTblCols + col;
 }
 
+
 inline int indexToRow(int index)
 {
 	return index / delimTblCols;
 }
+
 
 inline int indexToCol(int index)
 {
@@ -83,6 +90,7 @@ inline int indexToCol(int index)
 }
 
 }
+
 
 GMathDelim::GMathDelim(Dialog & parent) :
 	GViewCB<ControlMath, GViewGladeB>(parent, _("Math Delimiters")),

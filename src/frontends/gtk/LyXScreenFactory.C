@@ -10,11 +10,12 @@
 
 #include <config.h>
 
-#include <gtkmm.h>
-#include "frontends/LyXScreenFactory.h"
-
 #include "GWorkArea.h"
 #include "GScreen.h"
+
+#include "frontends/LyXScreenFactory.h"
+
+#include <gtkmm.h>
 
 
 namespace LyXScreenFactory {

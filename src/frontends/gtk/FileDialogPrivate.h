@@ -15,8 +15,7 @@
 #include <gtkmm.h>
 #include "frontends/FileDialog.h"
 
-class FileDialog::Private : public SigC::Object
-{
+class FileDialog::Private : public SigC::Object {
 public:
 	Private(std::string const & title,
 		kb_action action,

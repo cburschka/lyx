@@ -35,7 +35,7 @@ using std::string;
 
 namespace font_metrics {
 
-int width(wchar_t const *s, size_t n, LyXFont const & f);
+int width(wchar_t const * s, size_t n, LyXFont const & f);
 
 } // namespace font_metrics
 

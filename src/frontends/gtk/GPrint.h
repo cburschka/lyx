@@ -19,10 +19,9 @@ namespace frontend {
 
 class ControlPrint;
 
-class GPrint : public GViewCB<ControlPrint, GViewGladeB>
-{
+class GPrint : public GViewCB<ControlPrint, GViewGladeB> {
 public:
-	GPrint(Dialog & parent, std::string title = "Print Document");
+	GPrint(Dialog & parent, std::string const & title = "Print Document");
 private:
 	virtual void apply();
 	virtual void update();

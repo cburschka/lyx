@@ -22,8 +22,7 @@
 namespace lyx {
 namespace frontend {
 
-class GViewBase : public Dialog::View, public SigC::Object
-{
+class GViewBase : public Dialog::View, public SigC::Object {
 public:
 	GViewBase(Dialog &, std::string const &, bool allowResize);
 	virtual ~GViewBase();
@@ -53,9 +52,9 @@ private:
 	bool allowResize_;
 };
 
+
 template <class Dialog>
-class GViewDB : public GViewBase
-{
+class GViewDB : public GViewBase {
 protected:
 	GViewDB(Dialog &, std::string const &, bool allowResize);
 	virtual const Gtk::Window * window() const;
@@ -89,15 +88,14 @@ class GViewGladeB : public GViewBase
 {
 protected:
 	GViewGladeB(Dialog & parent, std::string const & t, bool allowResize);
-	virtual const Gtk::Window * window() const;
+	virtual Gtk::Window const * window() const;
 	virtual Gtk::Window * window();
 	Glib::RefPtr<Gnome::Glade::Xml> xml_;
 };
 
 
 template <class Controller, class Base>
-class GViewCB : public Base
-{
+class GViewCB : public Base {
 public:
 	Controller & controller();
 	Controller const & controller() const;

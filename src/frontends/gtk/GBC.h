@@ -21,8 +21,7 @@
 namespace lyx {
 namespace frontend {
 
-class GBC : public GuiBC<Gtk::Button, Gtk::Widget>
-{
+class GBC : public GuiBC<Gtk::Button, Gtk::Widget> {
 public:
 	GBC(ButtonController const & parent,
 	    std::string const & cancel = _("Cancel"),

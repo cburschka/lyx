@@ -9,22 +9,28 @@
  */
 
 #include <config.h>
-#include <gtkmm.h>
-#include <cmath>	// fabs()
 
-#include <X11/Xft/Xft.h>
 #include "xftFontLoader.h"
 #include "FontInfo.h"
 #include "gettext.h"
 #include "debug.h"
 #include "lyxrc.h"	// lyxrc.font_*
 #include "BufferView.h"
+#include "GtkmmX.h"
+
 #include "frontends/LyXView.h"
+#include "frontends/lyx_gui.h"
+
 #include "support/systemcall.h"
 #include "support/filetools.h"
-#include "GtkmmX.h"
+
+#include <gtkmm.h>
+
+#include <X11/Xft/Xft.h>
+
+#include <cmath>	// fabs()
 #include <vector>
-#include "frontends/lyx_gui.h"
+
 
 using std::endl;
 using std::string;
@@ -167,10 +173,10 @@ XftFont * xftFontLoader::doLoad(LyXFont::FONT_FAMILY family,
 			       LyXFont::FONT_SHAPE shape,
 			       LyXFont::FONT_SIZE size)
 {
-	XftPattern *fpat = getFontPattern(family, series, shape, size);
+	XftPattern * fpat = getFontPattern(family, series, shape, size);
 	XftResult result;
-	XftPattern *fpat2 = XftFontMatch(getDisplay(), getScreen(),
-					 fpat, &result);
+	XftPattern * fpat2 = XftFontMatch(getDisplay(), getScreen(),
+					  fpat, &result);
 	XftFont * font = XftFontOpenPattern(getDisplay(), fpat2);
 	fonts_[family][series][shape][size] = font;
 	return font;
@@ -193,11 +199,11 @@ bool xftFontLoader::available(LyXFont const & f)
 	string const ffamily = familyString(family);
 	if (isSpecial(f)) {
 		cache_set[family] = true;
-		XftPattern *fpat = XftPatternCreate();
+		XftPattern * fpat = XftPatternCreate();
 		XftPatternAddString(fpat, XFT_FAMILY, ffamily.c_str());
 		XftResult result;
-		XftPattern *fpat2 = XftFontMatch(getDisplay(), getScreen(),
-						 fpat, &result);
+		XftPattern * fpat2 = XftFontMatch(getDisplay(), getScreen(),
+						  fpat, &result);
 		XftPatternDestroy(fpat);
 		char * familyM;
 		XftPatternGetString(fpat2, XFT_FAMILY, 0, &familyM);

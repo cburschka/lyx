@@ -73,14 +73,14 @@ GLayoutBox::GLayoutBox(LyXView & owner,
 	: owner_(owner),
 	  internal_(false)
 {
- 	combo_.set_value_in_list();
- 	combo_.get_entry()->set_editable(false);
- 	combo_.unset_flags(Gtk::CAN_FOCUS | Gtk::CAN_DEFAULT);
- 	combo_.get_entry()->unset_flags(Gtk::CAN_FOCUS | Gtk::CAN_DEFAULT);
- 	comboClear(combo_);
+	combo_.set_value_in_list();
+	combo_.get_entry()->set_editable(false);
+	combo_.unset_flags(Gtk::CAN_FOCUS | Gtk::CAN_DEFAULT);
+	combo_.get_entry()->unset_flags(Gtk::CAN_FOCUS | Gtk::CAN_DEFAULT);
+	comboClear(combo_);
 
- 	combo_.get_entry()->signal_changed().connect(
- 		SigC::slot(*this,
+	combo_.get_entry()->signal_changed().connect(
+		SigC::slot(*this,
 			   &GLayoutBox::selected));
 
 	combo_.show();
@@ -109,7 +109,7 @@ void GLayoutBox::update()
 
 	LyXTextClass::const_iterator it = tc.begin();
 	LyXTextClass::const_iterator const end = tc.end();
- 	for (; it != end; ++it)
+	for (; it != end; ++it)
 		if ((*it)->obsoleted_by().empty())
 			strings.push_back(
 				Glib::locale_to_utf8((*it)->name()));
@@ -201,19 +201,19 @@ GToolbar::GToolbar(ToolbarBackend::Toolbar const & tbb, LyXView & owner)
 
 void GToolbar::add(FuncRequest const & func, string const & tooltip)
 {
- 	switch (func.action) {
- 	case ToolbarBackend::SEPARATOR:
+	switch (func.action) {
+	case ToolbarBackend::SEPARATOR:
 		toolbar_.tools().push_back(Gtk::Toolbar_Helpers::Space());
- 		break;
- 	case ToolbarBackend::MINIBUFFER:
- 		// Not supported yet.
- 		break;
- 	case ToolbarBackend::LAYOUTS:
- 	{
+		break;
+	case ToolbarBackend::MINIBUFFER:
+		// Not supported yet.
+		break;
+	case ToolbarBackend::LAYOUTS:
+	{
 		layout_.reset(new GLayoutBox(owner_, toolbar_, func));
- 		break;
- 	}
- 	default:
+		break;
+	}
+	default:
 		Glib::ustring xpmName =
 			Glib::locale_to_utf8(toolbarbackend.getIcon(func));
 		Glib::ustring tip = Glib::locale_to_utf8(tooltip);
@@ -279,7 +279,7 @@ void GToolbar::update()
 			continue;
 		default:
 			widget = it->get_content();
- 		}
+		}
 
 		FuncRequest const & func = *reinterpret_cast<FuncRequest *>(
 			widget->get_data(gToolData));

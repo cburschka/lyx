@@ -21,8 +21,7 @@ namespace frontend {
 
 class ControlMath;
 
-class GMathPanel : public GViewCB<ControlMath, GViewGladeB>
-{
+class GMathPanel : public GViewCB<ControlMath, GViewGladeB> {
 public:
 	GMathPanel(Dialog & parent);
 private:

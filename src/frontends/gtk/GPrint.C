@@ -26,7 +26,7 @@ using namespace lyx::support;
 namespace lyx {
 namespace frontend {
 
-GPrint::GPrint(Dialog & parent, string title)
+GPrint::GPrint(Dialog & parent, string const & title)
 	: GViewCB<ControlPrint, GViewGladeB>(parent, title, false)
 {
 }
@@ -144,7 +144,7 @@ void GPrint::doBuild()
 	xml_->get_widget("ToEntry", toEntry_);
 	xml_->get_widget("PrinterEntry", printerEntry_);
 	xml_->get_widget("FileEntry", fileEntry_);
-	
+
 	Gtk::Button * ok;
 	Gtk::Button * cancel;
 	Gtk::Button * apply;
@@ -152,11 +152,11 @@ void GPrint::doBuild()
 	xml_->get_widget("CancelButton", cancel);
 	setOK(ok);
 	setCancel(cancel);
-	
+
 	Gtk::Button * browse;
 	xml_->get_widget("Browse", browse);
 	browse->signal_clicked().connect(SigC::slot(*this, &GPrint::onBrowse));
-	
+
 	fileEntry_->signal_changed().connect(SigC::bind(SigC::slot(*this, &GPrint::onTargetEdit), fileEntry_));
 	printerEntry_->signal_changed().connect(SigC::bind(SigC::slot(*this, &GPrint::onTargetEdit), printerEntry_));
 	fromEntry_->signal_changed().connect(SigC::slot(*this, &GPrint::onFromToEdit));
@@ -166,7 +166,7 @@ void GPrint::doBuild()
 	all_->signal_toggled().connect(SigC::slot(*this, &GPrint::updateUI));
 	fromTo_->signal_toggled().connect(SigC::slot(*this, &GPrint::updateUI));
 	number_->signal_changed().connect(SigC::slot(*this, &GPrint::updateUI));
-	
+
 	controller().initialiseParams("");
 	update();
 	updateUI();

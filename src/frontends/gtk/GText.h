@@ -19,8 +19,7 @@ namespace frontend {
 
 class ControlCommand;
 
-class GText : public GViewCB<ControlCommand, GViewGladeB>
-{
+class GText : public GViewCB<ControlCommand, GViewGladeB> {
 public:
 	GText(Dialog & parent, std::string const & title, std::string const & label);
 private:

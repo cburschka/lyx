@@ -58,12 +58,12 @@ GView::GView()
 	// Lay them out correctly.
 	add(top_box_);
 
- 	Gtk::Box::BoxList & layout1 = top_box_.children();
+	Gtk::Box::BoxList & layout1 = top_box_.children();
 	add_el(layout1, *box_store_[0], true);
 	add_el(layout1, *box_store_[1], true);
 	add_el(layout1, *box_store_[2], true);
 
- 	Gtk::Box::BoxList & layout2 = box_store_[1]->children();
+	Gtk::Box::BoxList & layout2 = box_store_[1]->children();
 	add_el(layout2, *box_store_[3], true);
 	add_el(layout2, *box_store_[4], false);
 	add_el(layout2, *box_store_[5], true);

@@ -10,18 +10,16 @@
 
 #include <config.h>
 
-#include "frontends/LyXKeySymFactory.h"
-
 #include "GLyXKeySym.h"
+
+#include "frontends/LyXKeySymFactory.h"
 
 
 namespace LyXKeySymFactory {
-
 
 LyXKeySym * create()
 {
 	return new GLyXKeySym;
 }
-
 
 }

@@ -9,19 +9,21 @@
  */
 
 #include <config.h>
-#include <gtkmm.h>
-#include <cassert>
+
 #include "GXpmBtnTbl.h"
+
+#include <gtkmm.h>
+
+#include <cassert>
 
 
 void GXpmBtnTbl::GXpmBtn::setXpm(XpmData xpm)
 {
 	Glib::RefPtr<Gdk::Colormap> clrmap = get_colormap();
-	Gtk::Image * image;
 	pixmap_ = Gdk::Pixmap::create_from_xpm(clrmap,
 					       mask_,
 					       xpm);
-	image = SigC::manage(new Gtk::Image(pixmap_, mask_));
+	Gtk::Image * image = SigC::manage(new Gtk::Image(pixmap_, mask_));
 	image->show();
 	add(*image);
 }
@@ -32,8 +34,7 @@ void GXpmBtnTbl::GXpmBtn::setXpm(Glib::RefPtr<Gdk::Pixmap> pixmap,
 {
 	pixmap_ = pixmap;
 	mask_ = mask;
-	Gtk::Image * image;
-	image = SigC::manage(new Gtk::Image(pixmap_, mask_));
+	Gtk::Image * image = SigC::manage(new Gtk::Image(pixmap_, mask_));
 	image->show();
 	add(*image);
 }
@@ -48,7 +49,7 @@ GXpmBtnTbl::GXpmBtnTbl(int rows, int cols, XpmData xpms[]) :
 }
 
 
-GXpmBtnTbl::GXpmBtnTbl(int rows, int cols, const XbmData& xbm) :
+GXpmBtnTbl::GXpmBtnTbl(int rows, int cols, XbmData const & xbm) :
 	Gtk::Table(rows, cols, true), rows_(rows), cols_(cols),
 	xbm_(&xbm)
 {
@@ -68,11 +69,9 @@ void GXpmBtnTbl::construct()
 	btns_.reset(new GXpmBtn[rows_ * cols_]);
 	assert(btns_.get());
 
-	GXpmBtn * btn;
-	int row, col;
-	for (row = 0; row < rows_; ++row)
-		for (col = 0; col < cols_; ++col) {
-			btn = &btns_[index(row, col)];
+	for (int row = 0; row < rows_; ++row)
+		for (int col = 0; col < cols_; ++col) {
+			GXpmBtn * btn = &btns_[index(row, col)];
 			btn->setRow(row);
 			btn->setCol(col);
 			btn->signalClicked().connect(signalClicked_.slot());
@@ -84,22 +83,20 @@ void GXpmBtnTbl::construct()
 
 void GXpmBtnTbl::setBtnXpm(XpmData xpms[])
 {
-	int row, col;
-	for (row = 0; row < rows_; ++row)
-		for (col = 0; col < cols_; ++col)
+	for (int row = 0; row < rows_; ++row)
+		for (int col = 0; col < cols_; ++col)
 			btns_[index(row, col)].setXpm(xpms[index(row, col)]);
 }
 
 
-void GXpmBtnTbl::setBtnXpm(const XbmData& xbm)
+void GXpmBtnTbl::setBtnXpm(XbmData const & xbm)
 {
-	Glib::RefPtr<Gdk::Bitmap> mask;
-	Glib::RefPtr<Gdk::Pixmap> pixmap;
 	Glib::RefPtr<Gdk::Colormap> clrmap = get_colormap();
 	Gdk::Color fg(const_cast<GdkColor *>(&xbm.fg_));
 	clrmap->alloc_color(fg);
 	Glib::RefPtr<Gdk::Window> window = get_window();
-	pixmap = Gdk::Pixmap::create_from_data(
+
+	Glib::RefPtr<Gdk::Pixmap> pixmap = Gdk::Pixmap::create_from_data(
 		window,
 		reinterpret_cast<char const * const>(xbm.data_),
 		xbm.width_,
@@ -107,20 +104,22 @@ void GXpmBtnTbl::setBtnXpm(const XbmData& xbm)
 		window->get_depth(),
 		fg,
 		get_style()->get_bg(Gtk::STATE_NORMAL));
-	mask = Gdk::Bitmap::create(
+
+	Glib::RefPtr<Gdk::Bitmap> mask = Gdk::Bitmap::create(
 		window,
 		reinterpret_cast<char const * const>(xbm.data_),
 		xbm.width_,
 		xbm.height_);
-	Glib::RefPtr<Gdk::Bitmap> maskBtn;
-	Glib::RefPtr<Gdk::Pixmap> pixmapBtn;
+
+
+
 	Glib::RefPtr<Gdk::GC> gc = Gdk::GC::create(mask);
-	int row, col;
-	int btnWidth = xbm.width_ / cols_;
-	int btnHeight = xbm.height_ / rows_;
-	for (row = 0; row < rows_; ++row)
-		for (col = 0; col < cols_; ++col) {
-			pixmapBtn = Gdk::Pixmap::create(
+	int const btnWidth = xbm.width_ / cols_;
+	int const btnHeight = xbm.height_ / rows_;
+	for (int row = 0; row < rows_; ++row)
+		for (int col = 0; col < cols_; ++col) {
+				Glib::RefPtr<Gdk::Pixmap> pixmapBtn =
+					Gdk::Pixmap::create(
 				window,
 				btnWidth,
 				btnHeight,
@@ -133,7 +132,8 @@ void GXpmBtnTbl::setBtnXpm(const XbmData& xbm)
 						 0,
 						 btnWidth,
 						 btnHeight);
-			maskBtn = Gdk::Bitmap::create(
+				Glib::RefPtr<Gdk::Bitmap> maskBtn =
+					Gdk::Bitmap::create(
 				window,
 				reinterpret_cast<char const * const>(xbm.data_),
 				btnWidth,
@@ -160,16 +160,17 @@ void GXpmBtnTbl::on_realize()
 }
 
 
-void buttonSetXpm(Gtk::Button * btn, char const **xpm)
+void buttonSetXpm(Gtk::Button * btn, char const ** xpm)
 {
 	Glib::RefPtr<Gdk::Bitmap> mask;
-	Glib::RefPtr<Gdk::Pixmap> pixmap;
+
 	Glib::RefPtr<Gdk::Colormap> clrmap = btn->get_colormap();
-	Gtk::Image * image;
-	pixmap = Gdk::Pixmap::create_from_xpm(clrmap,
-					      mask,
-					      xpm);
-	image = SigC::manage(new Gtk::Image(pixmap, mask));
+
+	Glib::RefPtr<Gdk::Pixmap> pixmap =
+		Gdk::Pixmap::create_from_xpm(clrmap,
+					     mask,
+					     xpm);
+	Gtk::Image * image = SigC::manage(new Gtk::Image(pixmap, mask));
 	image->show();
 	btn->add(*image);
 }

@@ -23,6 +23,7 @@ using std::string;
 namespace lyx {
 namespace frontend {
 
+
 GUrl::GUrl(Dialog & parent)
 	: GViewCB<ControlCommand, GViewGladeB>(parent, _("URL"))
 {

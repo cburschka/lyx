@@ -58,6 +58,7 @@ char const * infoUp[][5] =
 	{0, 0, "mathstyle", "mathmatrix", 0}
 };
 
+
 GXpmBtnTbl::XpmData xpmUp[] =
 {
 	//row 1
@@ -65,6 +66,7 @@ GXpmBtnTbl::XpmData xpmUp[] =
 	//row 2
 	super_xpm, sub_xpm, style_xpm, matrix, equation
 };
+
 
 char const * infoDown[][3] =
 {
@@ -77,6 +79,7 @@ char const * infoDown[][3] =
 	//row 4
 	{"mathamsnegatedrelations", "mathamsoperators", "mathamsmisc"}
 };
+
 
 GXpmBtnTbl::XpmData xpmDown[] =
 {

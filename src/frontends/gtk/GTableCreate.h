@@ -19,16 +19,15 @@ namespace frontend {
 
 class ControlTableCreate;
 
-class GTableCreate : public GViewCB<ControlTabularCreate, GViewGladeB>
-{
+class GTableCreate : public GViewCB<ControlTabularCreate, GViewGladeB> {
 public:
 	GTableCreate(Dialog & parent);
 private:
 	virtual void apply();
 	virtual void doBuild();
 	virtual void update() {};
-	Gtk::SpinButton *rows_;
-	Gtk::SpinButton *columns_;
+	Gtk::SpinButton * rows_;
+	Gtk::SpinButton * columns_;
 };
 
 } // namespace frontend

@@ -19,8 +19,7 @@ namespace frontend {
 
 class ControlAboutlyx;
 
-class GAboutlyx : public GViewCB<ControlAboutlyx, GViewGladeB>
-{
+class GAboutlyx : public GViewCB<ControlAboutlyx, GViewGladeB> {
 public:
 	GAboutlyx(Dialog &);
 private:

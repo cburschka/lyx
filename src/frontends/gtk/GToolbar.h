@@ -13,10 +13,11 @@
 #ifndef GTOOLBAR_H
 #define GTOOLBAR_H
 
-#include <gtkmm.h>
 #include "frontends/Toolbars.h"
+
 #include <boost/scoped_ptr.hpp>
 
+#include <gtkmm.h>
 
 namespace lyx {
 namespace frontend {
@@ -37,7 +38,6 @@ public:
 	void open();
 	///
 	void setEnabled(bool);
-
 private:
 	///
 	void selected();
@@ -54,9 +54,8 @@ public:
 	void add(FuncRequest const & func, std::string const & tooltip);
 	void hide(bool);
 	void show(bool);
- 	void update();
+	void update();
 	LayoutBox * layout() const { return layout_.get(); }
-
 private:
 	void clicked(FuncRequest);
 

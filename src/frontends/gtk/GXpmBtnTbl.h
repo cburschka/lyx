@@ -15,20 +15,19 @@
 #include <boost/scoped_array.hpp>
 
 
-class GXpmBtnTbl : public Gtk::Table
-{
+class GXpmBtnTbl : public Gtk::Table {
 public:
 	typedef char const ** XpmData;
 	typedef SigC::Signal2<void, int, int> SigType;
-	struct XbmData
-	{
+
+	struct XbmData {
 		unsigned char const* data_;
 		int width_;
 		int height_;
 		GdkColor fg_;
 	};
-	class GXpmBtn : public Gtk::Button
-	{
+
+	class GXpmBtn : public Gtk::Button {
 	public:
 		GXpmBtn() : row_(-1), col_(-1)
 		{
@@ -46,8 +45,11 @@ public:
 		Glib::RefPtr<Gdk::Pixmap> getPixmap() { return pixmap_; }
 		Glib::RefPtr<Gdk::Bitmap> getMask() { return mask_; }
 		SigType signalClicked() { return signalClicked_; }
+
 		void onButtonClicked()
-			{ signalClicked_.emit(row_, col_); }
+		{
+			signalClicked_.emit(row_, col_);
+		}
 	private:
 		int row_;
 		int col_;
@@ -55,19 +57,24 @@ public:
 		Glib::RefPtr<Gdk::Bitmap> mask_;
 		SigType signalClicked_;
 	};
+
 	GXpmBtnTbl(int rows, int cols, XpmData xpms[]);
 	//GXpmBtnTbl(int rows, int cols, XpmData xpm);
-	GXpmBtnTbl(int rows, int cols, const XbmData& xbm);
+	GXpmBtnTbl(int rows, int cols, XbmData const & xbm);
 	~GXpmBtnTbl();
-	GXpmBtn* getBtn(int row, int col)
-		{ return &btns_[index(row, col)]; }
+
+	GXpmBtn * getBtn(int row, int col)
+	{
+		return &btns_[index(row, col)];
+	}
+
 	SigType signalClicked() { return signalClicked_; }
 private:
 	int index(int row, int col) { return row * cols_ + col; }
 	void on_realize();
 	void construct();
 	void setBtnXpm(XpmData xpms[]);
-	void setBtnXpm(const XbmData& xbm);
+	void setBtnXpm(XbmData const & xbm);
 
 	int rows_;
 	int cols_;
@@ -77,7 +84,7 @@ private:
 };
 
 
-void buttonSetXpm(Gtk::Button * btn, char const **xpm);
+void buttonSetXpm(Gtk::Button * btn, char const ** xpm);
 
 
 #endif

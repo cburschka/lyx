@@ -220,13 +220,14 @@ bool GMiniBuffer::onKeyPress(GdkEventKey * event)
 		break;
 	case GDK_Tab:
 	{
-		Glib::ustring new_input, input;
 		string new_input_locale;
-		input = entry_.get_text();
+		Glib::ustring input = entry_.get_text();
 		std::vector<string> comp =
 			controller_.completions(Glib::locale_from_utf8(input),
 						new_input_locale);
-		new_input = Glib::locale_to_utf8(new_input_locale);
+		Glib::ustring new_input =
+			Glib::locale_to_utf8(new_input_locale);
+		
 		if (comp.empty() && new_input == input) {
 			showInfo("[no match]");
 			break;

@@ -29,11 +29,13 @@ GText::GText(Dialog & parent, string const & title, string const & label)
 {
 }
 
+
 void GText::apply()
 {
 	string const contents = Glib::locale_from_utf8(entry_->get_text());
 	controller().params().setContents(contents);
 }
+
 
 void GText::update()
 {
@@ -41,6 +43,7 @@ void GText::update()
 		controller().params().getContents());
 	entry_->set_text(Glib::locale_to_utf8(contents));
 }
+
 
 void GText::doBuild()
 {
@@ -66,6 +69,7 @@ void GText::doBuild()
 	entry_->signal_changed().connect(
 		SigC::slot(*this, &GText::onEntryChanged));
 }
+
 
 void GText::onEntryChanged()
 {

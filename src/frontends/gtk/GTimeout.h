@@ -36,8 +36,6 @@ public:
 	void reset();
 	/// Is the timer running?
 	bool running() const;
-
-public:
 	/// The timeout signal, this gets called when the timeout passed.
 	bool timeoutEvent();
 private:

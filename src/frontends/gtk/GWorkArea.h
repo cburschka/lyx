@@ -26,13 +26,12 @@ class LyXView;
 namespace lyx {
 namespace frontend {
 
-class ColorCache
-{
+class ColorCache {
+public:
 	typedef std::map<LColor_color, Gdk::Color *> Map;
 	typedef Map::iterator MapIt;
 	typedef std::map<LColor_color, XftColor *> Map2;
 	typedef Map2::iterator MapIt2;
-public:
 	~ColorCache();
 	Gdk::Color * getColor(LColor_color);
 	XftColor * getXftColor(LColor_color);
@@ -46,10 +45,9 @@ private:
 
 extern ColorCache colorCache;
 
-class ColorHandler
-{
+class ColorHandler {
 public:
-	ColorHandler(GWorkArea& owner) : owner_(owner) {}
+	ColorHandler(GWorkArea & owner) : owner_(owner) {}
 	XftColor * getXftColor(LColor_color clr);
 	Gdk::Color * getGdkColor(LColor_color clr);
 private:
@@ -57,8 +55,7 @@ private:
 };
 
 
-class GWorkArea : public WorkArea, public SigC::Object
-{
+class GWorkArea : public WorkArea, public SigC::Object {
 public:
 	GWorkArea(LyXView & owner, int width, int height);
 	~GWorkArea();
@@ -98,7 +95,7 @@ private:
 	bool onButtonRelease(GdkEventButton * event);
 	bool onMotionNotify(GdkEventMotion * event);
 	bool onKeyPress(GdkEventKey * event);
-	void onClipboardGet(Gtk::SelectionData& selection_data, guint info);
+	void onClipboardGet(Gtk::SelectionData & selection_data, guint info);
 	void onClipboardClear();
 	Gtk::HBox hbox_;
 	Gtk::DrawingArea workArea_;

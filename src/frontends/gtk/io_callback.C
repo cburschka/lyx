@@ -17,7 +17,9 @@
 io_callback::io_callback(int fd, boost::function<void()> func)
 	: func_(func)
 {
-	conn_ = Glib::signal_io().connect(SigC::slot(*this, &io_callback::data_received), fd, Glib::IO_IN);
+	conn_ = Glib::signal_io().connect(
+		SigC::slot(*this, &io_callback::data_received),
+		fd, Glib::IO_IN);
 }
 
 

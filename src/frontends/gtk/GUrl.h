@@ -19,8 +19,7 @@ namespace frontend {
 
 class ControlCommand;
 
-class GUrl : public GViewCB<ControlCommand, GViewGladeB>
-{
+class GUrl : public GViewCB<ControlCommand, GViewGladeB> {
 public:
 	GUrl(Dialog & parent);
 private:

@@ -65,8 +65,7 @@ void GScreen::setCursorColor(Glib::RefPtr<Gdk::GC> gc)
 }
 
 
-void GScreen::showCursor(int x, int y,
-			 int h, Cursor_Shape shape)
+void GScreen::showCursor(int x, int y, int h, Cursor_Shape shape)
 {
 	// Update the cursor color.
 	setCursorColor(owner_.getGC());

@@ -24,8 +24,7 @@ namespace frontend {
 namespace
 {
 
-class LyxMenu : public Gtk::Menu
-{
+class LyxMenu : public Gtk::Menu {
 public:
 	LyxMenu() { menu_.reset(new ::Menu); }
 
@@ -50,9 +49,8 @@ Glib::ustring labelTrans(string const & label, string const & shortcut)
 
 void ClearMenu(Gtk::MenuShell * menu)
 {
-	Gtk::Menu_Helpers::MenuList::iterator m, end;
-	m = menu->items().begin();
-	end = menu->items().end();
+	Gtk::Menu_Helpers::MenuList::iterator m = menu->items().begin();
+	Gtk::Menu_Helpers::MenuList::iterator end = menu->items().end();
 	Gtk::Menu * subMenu;
 	for (; m != end; ++m) {
 		if ((subMenu = m->get_submenu()) != 0) {
@@ -67,7 +65,7 @@ void ClearMenu(Gtk::MenuShell * menu)
 }
 
 
-GMenubar::GMenubar(LyXView *lyxView, MenuBackend const & /*menuBackend*/) :
+GMenubar::GMenubar(LyXView * lyxView, MenuBackend const & /*menuBackend*/) :
 	view_(lyxView)
 {
 	GView * gview = static_cast<GView*>(lyxView);

@@ -14,6 +14,7 @@
 
 #include "frontends/LyXView.h"
 #include "bufferview_funcs.h"
+
 #include <map>
 
 namespace lyx {
@@ -21,8 +22,7 @@ namespace frontend {
 
 class GMiniBuffer;
 
-class GView : public LyXView, public Gtk::Window
-{
+class GView : public LyXView, public Gtk::Window {
 public:
 	enum Position {
 		Top,
