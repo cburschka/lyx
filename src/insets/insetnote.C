@@ -162,7 +162,7 @@ int InsetNote::latex(Buffer const * buf, ostream & os,
 		os << "%\n\\end{comment}\n";
 		i += 3;
 	} else if (pt == "Greyedout") {
-		os << "\\normalcolor%\n}";
+		os << "\\normalcolor%\n";
 		i += 2;
 	}
 	return i;
