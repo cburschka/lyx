@@ -1,3 +1,10 @@
+
+2001-03-10  André Pönitz  <poenitz@htwm.de>
+	* math_xiter.[Ch]:
+	  math_matrixinset.C: move adjustVerticalSt to the only place where
+      it is used. Fix a small bug where the cached row structure and the
+	    actual data get out of sync after the deletion of whole rows
+
 2001-03-09  André Pönitz  <poenitz@htwm.de>
 	* math_cursor.C: use std::vector<> in MathStackXIter
 		change selstk from a pointer to the "real thing"

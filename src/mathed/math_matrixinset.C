@@ -93,11 +93,27 @@ void MathMatrixInset::draw(Painter & pain, int x, int baseline)
 
 void MathMatrixInset::Metrics()
 {
-	if (row_.empty()) {
+	//if (row_.empty()) {
+#warning This leaks  row_.data but goes away soon
 		// lyxerr << " MIDA ";
 		MathedXIter it(this);
-		row_.data_ = it.adjustVerticalSt();
-	} 
+		it.GoBegin();
+		if (!it.crow_) {
+			it.crow_.st_ = new MathedRowSt(it.ncols + 1); // this leaks
+		}
+		MathedRowSt * mrow = it.crow_.st_;
+		while (it.OK()) {
+			if (it.IsCR()) {
+				if (it.col >= it.ncols)
+					it.ncols = it.col + 1; 
+				MathedRowSt * r = new MathedRowSt(it.ncols + 1); // this leaks
+				it.crow_.st_->next_ = r;
+				it.crow_.st_ = r;
+			}   
+			it.Next();	
+		}
+		row_.data_ = mrow;
+	//} 
 	
 	// Clean the arrays      
 	for (MathedRowContainer::iterator it = row_.begin(); it; ++it)

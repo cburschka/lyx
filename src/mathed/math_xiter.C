@@ -571,26 +571,6 @@ bool MathedXIter::setLabel(string const & label)
 }
 
 
-MathedRowSt * MathedXIter::adjustVerticalSt()
-{
-	GoBegin();
-	if (!crow_) {
-		crow_.st_ = new MathedRowSt(ncols + 1); // this leaks
-	}
-	MathedRowSt * mrow = crow_.st_;
-	while (OK()) {
-		if (IsCR()) {
-			if (col >= ncols)
-				ncols = col + 1; 
-			MathedRowSt * r = new MathedRowSt(ncols + 1); // this leaks
-			crow_.st_->next_ = r;
-			crow_.st_ = r;
-		}   
-		Next();	
-	}
-	return mrow;
-}
-
 
 string const & MathedXIter::getLabel() const
 {

@@ -7,6 +7,7 @@
 #include "math_rowst.h"
 
 class MathParInset;
+class MathMatrixInset;
 
 /**
    A graphic iterator (updates position.) Used for
@@ -76,8 +77,6 @@ public:
 	/// Delete every object from current position to pos2
 	void Clean(int pos2);
 	///
-	MathedRowSt * adjustVerticalSt();
-	///
 	virtual void ipush();
 	///
 	virtual void ipop();
@@ -86,7 +85,7 @@ public:
 		return crow_;
 	}
 	
-private:
+protected:
 	///
 	MathedRowContainer & container();
 	/// This function is not recursive, as MathPar::Metrics is
@@ -110,6 +109,6 @@ private:
 	/// 
 	MathedRowContainer::iterator crow_;
 	///
-	//friend class MathedCursor;
+	friend class MathMatrixInset;
 };
 #endif
