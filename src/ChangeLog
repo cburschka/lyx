@@ -1,7 +1,12 @@
+2004-11-07  Lars Gullik Bjonnes  <larsbj@gullik.net>
+
+	* buffer.C: remove unused using lyx::support::atoi
+	* paragraph_funcs.C: ditto
+
 2004-11-06  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
 	* bufferlist.C (exists): use bind and equal_to instead of
-	compare_memfun 
+	compare_memfun
 	(getBuffer): ditto
 	* lyxtextclasslist.C (NumberOfClass): ditto
 
@@ -28,7 +33,7 @@
 2004-11-04  André Pönitz  <poenitz@gmx.net>
 
 	* undo.h:
-	* undo.C (textUndoOrRedo): fix crash when creating undo information. 
+	* undo.C (textUndoOrRedo): fix crash when creating undo information.
 
 	* dociterator.C (asDocIterator): use hard assert again.
 

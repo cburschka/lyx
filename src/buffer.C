@@ -85,7 +85,6 @@ using lyx::pos_type;
 using lyx::par_type;
 
 using lyx::support::AddName;
-using lyx::support::atoi;
 using lyx::support::bformat;
 using lyx::support::ChangeExtension;
 using lyx::support::cmd_ret;

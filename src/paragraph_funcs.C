@@ -38,7 +38,6 @@ using lyx::pos_type;
 using lyx::par_type;
 
 using lyx::support::ascii_lowercase;
-using lyx::support::atoi;
 using lyx::support::bformat;
 using lyx::support::compare_ascii_no_case;
 using lyx::support::compare_no_case;
