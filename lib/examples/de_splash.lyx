@@ -1,6 +1,5 @@
-#This file was created by <pit> Sat Feb 27 21:04:08 1999
-#LyX 1.0 (C) 1995-1999 Matthias Ettrich and the LyX Team
-\lyxformat 2.15
+#LyX 1.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 218
 \textclass article
 \language german
 \inputencoding latin1
@@ -79,16 +78,14 @@ Mit LyX erstellte Texte sehen gut aus.
  Überzeugen Sie sich davon mit 
 \family sans 
 \bar under 
-D
+A
 \bar default 
-atei\SpecialChar \menuseparator
-DVI
-\protected_separator 
+nzeigen\SpecialChar \menuseparator
 
 \bar under 
-a
+D
 \bar default 
-nzeigen
+VI
 \family default 
 .
 \layout Enumerate
@@ -138,7 +135,12 @@ npassung
 
 Die Web-Seite von LyX ist auf 
 \family typewriter 
-www.lyx.org
+
+\begin_inset LatexCommand \url{http://www.lyx.org/}
+
+\end_inset 
+
+
 \family default 
 .
  Dort bekommen Sie aktuelle Informationen zu LyX, können Mailing-Listen
