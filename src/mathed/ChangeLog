@@ -1,3 +1,7 @@
+2001-09-02  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* support.C: added a using std::map directive.
+
 2001-08-17  André Pönitz  <poenitz@gmx.net>
 
 	* math_hash.C: Use std::map instead of faking it

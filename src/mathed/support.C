@@ -11,6 +11,7 @@
 #include "Painter.h"
 #include "debug.h"
 
+using std::map;
 using std::endl;
 using std::max;
 
@@ -518,7 +519,7 @@ named_deco_struct deco_table[] = {
 };
 
 
-std::map<string, deco_struct> deco_list;
+map<string, deco_struct> deco_list;
 
 // sort the table on startup
 struct init_deco_table {
