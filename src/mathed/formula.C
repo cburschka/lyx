@@ -127,14 +127,13 @@ void InsetFormula::draw(BufferView * bv, LyXFont const &,
 	MathInset::workwidth = bv->workWidth();
 	Painter & pain = bv->painter();
 
+	Metrics();
 	int w = par()->width();
 	int h = par()->height();
 	int a = par()->ascent();
 	pain.fillRectangle(int(x), y - a, w, h, LColor::mathbg);
 
 	if (mathcursor) {
-		Metrics();
-
 		if (mathcursor->formula() == this) {
 			if (mathcursor->Selection()) {
 				int xp[10];
