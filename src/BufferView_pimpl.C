@@ -3279,7 +3279,13 @@ void BufferView::Pimpl::smartQuote()
 		c = ' ';
 
 	hideCursor();
-	if (!insertInset(new InsetQuotes(c, bv_->buffer()->params)))
+
+	LyXLayout const & style = textclasslist.Style(
+		bv_->buffer()->params.textclass,
+		lt->cursor.par()->getLayout());
+	
+	if (style.pass_thru ||
+		(!insertInset(new InsetQuotes(c, bv_->buffer()->params))))
 		Dispatch(LFUN_SELFINSERT, "\"");
 }
 

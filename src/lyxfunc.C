@@ -94,6 +94,7 @@
 #include "TextCache.h"
 #include "lyxfind.h"
 #include "undo_funcs.h"
+#include "ParagraphParameters.h"
 #include "figureForm.h"
 
 using std::pair;
@@ -707,7 +708,7 @@ func_status::value_type LyXFunc::getStatus(int ac,
 	if (disable)
 	        flag |= func_status::Disabled;
 	
-	// the font related functions
+	// the font related functions (and a few others)
 	func_status::value_type box = func_status::ToggleOff;
 	LyXFont const & font =
 		TEXT(false)->real_current_font;
@@ -732,6 +733,10 @@ func_status::value_type LyXFunc::getStatus(int ac,
 #endif
 	case LFUN_READ_ONLY_TOGGLE:
 		if (buf->isReadonly())
+			box = func_status::ToggleOn;
+		break;
+	case LFUN_APPENDIX:
+		if (TEXT(false)->cursor.par()->params().startOfAppendix())
 			box = func_status::ToggleOn;
 		break;
 	default:
