@@ -223,7 +223,7 @@ public:
 	void selectSelectedWord(BufferView *);
 	///
 	void toggleSelection(BufferView *, bool kill_selection);
- 
+
 	/// mark as erased for change tracking
 	void markErased() { clear(true); };
 	/**
@@ -236,7 +236,7 @@ public:
 	void markNew(bool track_changes = false);
 	/// find next change
 	bool nextChange(BufferView *, lyx::pos_type & length);
- 
+
 	///
 	bool searchForward(BufferView *, string const &,
 			   bool = true, bool = false);
@@ -249,7 +249,7 @@ public:
 	void getDrawFont(LyXFont &) const;
 	/// append text onto the existing text
 	void appendParagraphs(BufferParams const & bp, Paragraph *);
- 
+
 	///
 	void addPreview(grfx::PreviewLoader &) const;
 
@@ -258,6 +258,8 @@ public:
 	///
 	mutable int need_update;
 
+	///
+	ParagraphList paragraphs;
 protected:
 	///
 	void updateLocal(BufferView *, int what, bool mark_dirty) const;
@@ -359,8 +361,6 @@ private:
 	void collapseParagraphs(BufferView *) const;
 
 	/* Private structures and variables */
-	///
-	ParagraphList paragraphs;
 	///
 	mutable bool locked;
 	///

@@ -2770,11 +2770,13 @@ vector<string> const LyXTabular::getLabelList() const
 
 LyXTabular::BoxType LyXTabular::UseParbox(int cell) const
 {
-	Paragraph * par = GetCellInset(cell)->paragraph();
+	ParagraphList const & parlist = GetCellInset(cell)->paragraphs;
+	ParagraphList::iterator cit = parlist.begin();
+	ParagraphList::iterator end = parlist.end();
 
-	for (; par; par = par->next()) {
-		for (int i = 0; i < par->size(); ++i) {
-			if (par->getChar(i) == Paragraph::META_NEWLINE)
+	for (; cit != end; ++cit) {
+		for (int i = 0; i < cit->size(); ++i) {
+			if (cit->getChar(i) == Paragraph::META_NEWLINE)
 				return BOX_PARBOX;
 		}
 	}
