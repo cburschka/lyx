@@ -1,3 +1,8 @@
+2001-08-31  Juergen Vigna  <jug@sad.it>
+
+	* src/lyx_gui.C (create_forms): fixed crash if banner-file was
+	not found.
+
 2001-07-25  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/version.h (LYX_VERSION): resetting version to 1.1.6cvs

@@ -399,7 +399,7 @@ void LyXGUI::create_forms()
 			main_placement = FL_PLACE_POSITION;
 	}
 	lyxViews->show(main_placement, FL_FULLBORDER, "LyX");
-	if (lyxrc.show_banner) {
+	if (fd_form_title && lyxrc.show_banner) {
 		fl_show_form(fd_form_title->form_title, 
 			     title_placement, FL_NOBORDER, 
 			     _("LyX Banner"));
