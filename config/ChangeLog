@@ -1,3 +1,8 @@
+2005-01-20  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* common.am (pch-file): new target, used recursively by target
+	$(PCH_FILE). This avoids bash-isms.
+
 2005-01-12  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* lyxinclude.m4: fix default win32 prefix

@@ -19,11 +19,12 @@ sinclude ./pch.h.gch.dep
 *.C *.cpp: $(PCH_FILE)
 
 $(PCH_FILE): $(PCH_SOURCE)
-	TMPCMD=` echo $(CXXCOMPILE) | sed -e s,\",\',` ; \
-	PATTERN=`echo $(PCH_FLAGS) | sed -e 's,\/,\\\/,'` ; \
-	$${TMPCMD/$$PATTERN} \
-	-x c++-header $(PCH_SOURCE) -MT $@ -MD -MP -MF "./$@.Tdep" \
-	&& mv "./$@.Tdep" "./$@.dep" || rm "./$@.Tdep"
+	$(MAKE) PCH_FLAGS= pch-file
+
+pch-file:
+	$(CXXCOMPILE) -x c++-header $(PCH_SOURCE) -MT $(PCH_FILE)  -MD -MP \
+        -MF "./$(PCH_FILE).Tdep" \
+	&& mv "./$(PCH_FILE).Tdep" "./$(PCH_FILE).dep" || rm "./$(PCH_FILE).Tdep"
 
 endif
 
