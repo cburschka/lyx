@@ -19,6 +19,8 @@
 #include "aspell_local.h"
 #include "WordLangTuple.h"
 
+using namespace lyx::support;
+
 using std::endl;
 
 ASpell::ASpell(BufferParams const &, string const & lang)
@@ -85,14 +87,14 @@ enum ASpell::Result ASpell::check(WordLangTuple const & word)
 	AspellSpeller * m = it->second.speller;
 
 	int word_ok = aspell_speller_check(m, word.word().c_str(), -1);
-	lyx::Assert(word_ok != -1);
+	Assert(word_ok != -1);
 
 	if (word_ok) {
 		res = OK;
 	} else {
 		AspellWordList const * sugs =
 			aspell_speller_suggest(m, word.word().c_str(), -1);
-		lyx::Assert(sugs != 0);
+		Assert(sugs != 0);
 		els = aspell_word_list_elements(sugs);
 		if (aspell_word_list_empty(sugs))
 			res = UNKNOWN;
