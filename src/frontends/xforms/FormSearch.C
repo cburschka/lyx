@@ -36,6 +36,13 @@ void FormSearch::build()
 }
 
 
+void FormSearch::update()
+{
+	fl_set_input_selected(dialog_->input_search, true);
+	fl_set_focus_object(dialog_->form, dialog_->input_search);
+}
+
+ 
 ButtonPolicy::SMInput FormSearch::input(FL_OBJECT * obj, long)
 {
 	if (obj == dialog_->button_findnext ||
