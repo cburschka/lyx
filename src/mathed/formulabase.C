@@ -812,13 +812,14 @@ dispatch_result InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 		split(body, trimmed, '\n');
 		lyxerr << "passing '" << trimmed << "' to the math parser\n";
 
-		MathAtom at;
-		if (!mathed_parse_normal(at, trimmed)) {
+		MathArray ar;
+		mathed_parse_cell(ar, trimmed);
+		if (ar.size() != 1) {
 			result = UNDISPATCHED;
 			break;
 		}
 
-		RefInset * tmp = at.nucleus()->asRefInset();
+		RefInset * tmp = ar[0].nucleus()->asRefInset();
 		if (!tmp) {
 			result = UNDISPATCHED;
 			break;
@@ -835,7 +836,7 @@ dispatch_result InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 
 			*inset = *tmp;
 		} else {
-			mathcursor->insert(at);
+			mathcursor->insert(ar);
 		}
 		updateLocal(bv, true);
 	}
