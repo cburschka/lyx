@@ -4,7 +4,7 @@
 		  Ronald Florence <ron@18james.com>
 
    LyX/Mac is built from the LyX source, the GPL-licensed Trolltech
-   Qt/Mac library, and a custom application bundle.  Qt-3.1.2 as
+   Qt/Mac library, and a custom application skeleton.  Qt-3.1.2 as
    patched here is fully functional with MacOS-10.2 and 10.3.
 
    You will need the MacOSX development tools.  The procedure
@@ -23,8 +23,8 @@
      ./configure -static   [for Panther, use "./configure -static -lresolv"]
      make 
 
-   2.  Download the LyX/Mac framework from
-       <ftp://ftp.lyx.org/pub/lyx/contrib/lyx-mac-1.3.4-framework.tar.gz>
+   2.  Download the LyX/Mac skeleton from
+       <ftp://ftp.lyx.org/pub/lyx/stable/lyx-mac-1.3.4-skeleton.tar.gz>
        and unpack it in /Applications
  
    3.  Using the same terminal session you used to build the Qt
@@ -40,7 +40,7 @@
 
    For information on configuring LyX/Mac, please see the howto at
    <http://www.18james.com/lyx_on_aqua.html>. The binary installation
-   of LyX/Mac installs additional LaTeX fonts and packages, and
+   of LyX/Mac-1.3.4 installs additional LaTeX fonts and packages, and
    provides additional functionality including inverse DVI search with
    some DVI-previewers.
 
