@@ -30,13 +30,13 @@ public:
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
-	void validate(LaTeXFeatures & features) const;
-	///
 	void normalize(NormalStream & os) const;
 	///
 	void infoize(std::ostream & os) const;
 	///
 	bool isScriptable() const;
+	///
+	void validate(LaTeXFeatures & features) const;
 
 private:
 	virtual std::auto_ptr<InsetBase> doClone() const;
@@ -46,7 +46,7 @@ private:
 	bool protect() const;
 	/// is it a wide decoration?
 	bool wide() const;
-	/// does this need the amsmath package?
+	/// does this need AMS
 	bool ams() const;
 
 	///

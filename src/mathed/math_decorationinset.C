@@ -11,7 +11,6 @@
 
 #include <config.h>
 
-#include "LaTeXFeatures.h"
 #include "math_decorationinset.h"
 #include "math_data.h"
 #include "math_support.h"
@@ -19,11 +18,10 @@
 #include "math_mathmlstream.h"
 #include "math_streamstr.h"
 
+#include "LaTeXFeatures.h"
 #include "debug.h"
 
 #include "support/std_ostream.h"
-
-using std::auto_ptr;
 
 
 MathDecorationInset::MathDecorationInset(latexkeys const * key)
@@ -33,9 +31,9 @@ MathDecorationInset::MathDecorationInset(latexkeys const * key)
 }
 
 
-auto_ptr<InsetBase> MathDecorationInset::doClone() const
+std::auto_ptr<InsetBase> MathDecorationInset::doClone() const
 {
-	return auto_ptr<InsetBase>(new MathDecorationInset(*this));
+	return std::auto_ptr<InsetBase>(new MathDecorationInset(*this));
 }
 
 
@@ -93,7 +91,9 @@ bool MathDecorationInset::wide() const
 
 bool MathDecorationInset::ams() const
 {
-	return	
+	return
+			key_->name == "overleftarrow" ||
+			key_->name == "overrightarrow" ||
 			key_->name == "overleftrightarrow" ||
 			key_->name == "underleftarrow" ||
 			key_->name == "underrightarrow" ||
@@ -133,13 +133,6 @@ void MathDecorationInset::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-void MathDecorationInset::validate(LaTeXFeatures & features) const
-{
-	if (ams())
-		features.require("amsmath");
-}
-
-
 void MathDecorationInset::write(WriteStream & os) const
 {
 	if (os.fragile() && protect())
@@ -157,4 +150,12 @@ void MathDecorationInset::normalize(NormalStream & os) const
 void MathDecorationInset::infoize(std::ostream & os) const
 {
 	os << "Deco: " << key_->name;
+}
+
+
+void MathDecorationInset::validate(LaTeXFeatures & features) const
+{
+	if (ams())
+		features.require("amsmath");
+	MathNestInset::validate(features);
 }
