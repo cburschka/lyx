@@ -85,34 +85,6 @@ public:
 	}
 	///
 	Pixmap getPixmap() const { return workareapixmap; }
-	///
-	//Signal2<long, int> up;
-	///
-	//Signal2<long, int> down;
-	///
-	//Signal1<double> scroll;
-	///
-	//Signal0 expose;
-	///
-	//Signal3<int, int, unsigned int> buttonPress;
-	///
-	//Signal3<int, int, unsigned int> buttonRelease;
-	///
-	//Signal3<int, int, unsigned int> motion;
-	///
-	//Signal0 focus;
-	///
-	//Signal0 unfocus;
-	///
-	//Signal0 enter;
-	///
-	//Signal0 leave;
-	///
-	//Signal3<int, int, unsigned int> doubleclick;
-	///
-	//Signal3<int, int, unsigned int> trippleclick;
-	///
-	//Signal2<Window, XEvent *> selection;
 	/// xforms callback
 	static int work_area_handler(FL_OBJECT *, int event,
 				     FL_Coord, FL_Coord,

@@ -38,7 +38,9 @@ public:
 		owner = 0;
 		sxpos = 0;
 		sypos = 0;
+#if FL_REVISION < 89
 		bubble_timer = 0;
+#endif
 		combox = 0;
 		reset();
 		init(); // set default toolbar.
@@ -88,11 +90,14 @@ public:
 
 	///
 	static void ToolbarCB(FL_OBJECT *, long);
+
+#if FL_REVISION < 89
 	///
 	static void BubbleTimerCB(FL_OBJECT *, long);
 	///
 	static int BubblePost(FL_OBJECT * ob, int event,
 			      FL_Coord mx, FL_Coord my, int key, void * xev);
+#endif
 
 private:
 	///
@@ -111,7 +116,7 @@ private:
 		///
 		char const ** pixmap;
 		///
-		toolbarItem(){
+		toolbarItem() {
 			next = 0;
 			action = LFUN_NOACTION;
 			icon = 0;
@@ -132,8 +137,10 @@ private:
 	toolbarItem * toollist;
 	///
 	LyXView * owner;
+#if FL_REVISION < 89
 	///
 	FL_OBJECT * bubble_timer;
+#endif
 	/// Starting position
 	int sxpos, sypos;
 	///

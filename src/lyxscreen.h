@@ -31,8 +31,6 @@ typedef unsigned short Dimension;
 
 class BufferView;
 
-#define NEW_WA 1
-
 /** The class LyXScreen is used for the main Textbody.
     Concretely, the screen is held in a pixmap.  This pixmap is kept up to
     date and used to optimize drawing on the screen.
@@ -42,9 +40,7 @@ class LyXScreen {
 public:
 	///
 	LyXScreen(BufferView *, Window window,
-#ifdef NEW_WA
 		  Pixmap p,
-#endif
 		  Dimension width, 
 		  Dimension height,
 		  Dimension offset_x,

@@ -93,6 +93,7 @@
 #include "layout_std.xpm"
 #include "build.xpm"
 
+
 // this one is not "C" because combox callbacks are really C++ %-|
 extern void LayoutsCB(int, void *);
 extern char const ** get_pixmap_from_symbol(char const * arg, int, int);
@@ -122,7 +123,9 @@ Toolbar::Toolbar(Toolbar const &rct, LyXView *o, int x, int y)
 	: owner(o), sxpos(x), sypos(y)
 {
 	combox = 0;
+#if FL_REVISION < 89
 	bubble_timer = 0;
+#endif
 	reset();
 
 	// extracts the toolbar struct form rct.
@@ -136,6 +139,7 @@ Toolbar::Toolbar(Toolbar const &rct, LyXView *o, int x, int y)
 }
 
 
+#if FL_REVISION < 89
 // timer-cb for bubble-help (Matthias)
 void Toolbar::BubbleTimerCB(FL_OBJECT *, long data)
 {
@@ -180,6 +184,7 @@ extern "C" int C_Toolbar_BubblePost(FL_OBJECT * ob, int event,
 {
 	return Toolbar::BubblePost(ob, event, 0, 0, key, xev);
 }
+#endif
 
 
 void Toolbar::activate()
@@ -212,7 +217,11 @@ void Toolbar::deactivate()
 
 void Toolbar::ToolbarCB(FL_OBJECT * ob, long ac)
 {
+#if FL_REVISION >= 89
+	Toolbar * t = static_cast<Toolbar*>(ob->u_vdata);
+#else
 	Toolbar * t = reinterpret_cast<Toolbar*>(ob->u_ldata);
+#endif
 	
 	string res = t->owner->getLyXFunc()->Dispatch(int(ac));
 	if(!res.empty())
@@ -287,10 +296,12 @@ void Toolbar::set(bool doingmain)
 		fl_addto_form(owner->getForm());
 	}
 
+#if FL_REVISION < 89
 	// add the time if it don't exist
 	if (bubble_timer == 0)
 		bubble_timer = fl_add_timer(FL_HIDDEN_TIMER,
 					    xpos, ypos, 0, 0, "Timer");
+#endif
 	
 	while(item != 0) {
 		switch(item->action){
@@ -328,6 +339,14 @@ void Toolbar::set(bool doingmain)
 			fl_set_pixmapbutton_focus_outline(obj, 0);
 
 			// set the bubble-help (Matthias)
+#if FL_REVISION >= 89
+			// Set the tooltip
+			fl_set_object_helper(obj, item->help.c_str());
+			// The toolbar that this object belongs too.
+			obj->u_vdata = this;
+			
+			
+#else
 #ifdef WITH_WARNINGS
 #warning This is dangerous!
 #endif
@@ -337,6 +356,7 @@ void Toolbar::set(bool doingmain)
 			obj->u_ldata = reinterpret_cast<long>(this);
 			  
 			fl_set_object_posthandler(obj, C_Toolbar_BubblePost);
+#endif
 
 			fl_set_pixmapbutton_data(obj, const_cast<char**>(item->pixmap));
 			item = item->next;
@@ -487,25 +507,21 @@ void Toolbar::add(int action, bool doclean)
 	// adds an item to the list
 	if (pixmap != 0
 	    || action == TOOL_SEPARATOR
-	    || action == TOOL_LAYOUTS)
-		{
-			newItem = new toolbarItem;
-			newItem->action = action;
-			newItem->pixmap = pixmap;
-			newItem->help = help;
-			// the new item is placed at the end of the list
-			tmp = toollist;
-			if (tmp != 0){
-				while(tmp->next != 0)
-					tmp = tmp->next;
+	    || action == TOOL_LAYOUTS) {
+		newItem = new toolbarItem;
+		newItem->action = action;
+		newItem->pixmap = pixmap;
+		newItem->help = help;
+		// the new item is placed at the end of the list
+		tmp = toollist;
+		if (tmp != 0){
+			while(tmp->next != 0)
+				tmp = tmp->next;
 				// here is tmp->next == 0
-				tmp->next = newItem;
-			} else
-				toollist = newItem;
-		}
-	//if (action == TOOL_LAYOUTS) {
-	//	combox = new Combox(FL_COMBOX_DROPLIST);
-	//}
+			tmp->next = newItem;
+		} else
+			toollist = newItem;
+	}
 }
 
 

@@ -46,12 +46,8 @@ void MiniBuffer::ExecutingCB(FL_OBJECT * ob, long)
 {
 	MiniBuffer * obj = static_cast<MiniBuffer*>(ob->u_vdata);
 	lyxerr.debug() << "Getting ready to execute: " << obj->cur_cmd << endl;
-#ifdef NEW_WA
 	obj->owner->view()->focus(true);
-#else
-	fl_set_focus_object(obj->owner->getForm(),
-			    obj->owner->view()->getWorkArea());
-#endif
+
 	if (obj->cur_cmd.empty()) { 
 		obj->Init();
 		return ; 
@@ -104,12 +100,7 @@ int MiniBuffer::peek_event(FL_OBJECT * ob, int event, FL_Coord, FL_Coord,
 		case 27:
 		case XK_Escape:
 			// Abort
-#ifdef NEW_WA
 			mini->owner->view()->focus(true);
-#else
-			fl_set_focus_object(mini->owner->getForm(),
-					    mini->owner->view()->getWorkArea());
-#endif
 			mini->Init();
 			return 1; 
 		case 13:

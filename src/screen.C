@@ -49,9 +49,7 @@ GC createGC()
 
 // Constructor
 LyXScreen::LyXScreen(BufferView * o, Window window,
-#ifdef NEW_WA
 		     Pixmap p,
-#endif
 		     Dimension width, 
 		     Dimension height,
 		     Dimension offset_x,
@@ -68,14 +66,8 @@ LyXScreen::LyXScreen(BufferView * o, Window window,
 	screen_refresh_y = -1;
 
 	/* create the foreground pixmap */
-#ifdef NEW_WA
 	foreground = p;
-#else
-	foreground = XCreatePixmap (fl_display,
-				    fl_root,
-				    _width, _height, 
-				    fl_get_visual_depth());
-#endif
+
 	cursor_pixmap = 0;
 	cursor_pixmap_x = 0;
 	cursor_pixmap_y = 0;
@@ -90,12 +82,7 @@ LyXScreen::LyXScreen(BufferView * o, Window window,
 
 
 // Destructor
-LyXScreen::~LyXScreen()
-{
-#ifndef NEW_WA
-	XFreePixmap(fl_display, foreground);
-#endif
-}
+LyXScreen::~LyXScreen() {}
 
 
 void LyXScreen::Redraw()

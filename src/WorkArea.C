@@ -22,9 +22,7 @@
 #include "support/lstrings.h"
 #include "BufferView.h"
 
-#ifdef NEW_WA
 FL_OBJECT * figinset_canvas;
-#endif
 
 static inline
 void waitForX()

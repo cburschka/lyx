@@ -1,3 +1,13 @@
+2000-02-15  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/toolbar.C (set): use fl_set_object_helper for the tooltop
+	(bubble tip), this removes our special handling of this.
+
+	* Remove all code that is unused now that we have the new
+	workarea. (Code that are not active when NEW_WA is defined.)
+
+	* Make the uses of XSync not conditionalized on define USE_XSYNC.
+	
 2000-02-15  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/lyxfunc.C (Dispatch): fix LFUN_LAYOUT when giving a

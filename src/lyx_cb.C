@@ -244,7 +244,8 @@ void AllowInput()
 	if (fd_form_character->form_character->visible)
 		XUndefineCursor(fl_display,
 				fd_form_character->form_character->window);
-#ifndef NEW_WA
+#if 0
+	// What to do about this? (Lgb)
 	if (current_view->getWorkArea()->belowmouse)
 		SetXtermCursor(current_view->owner()->getForm()->window);
 #endif

@@ -337,8 +337,6 @@ int LyXView::KeyPressMask_raw_callback(FL_FORM * fl, void * xev)
 	LyXView * view = static_cast<LyXView*>(fl->u_vdata);
 	int retval = 0;  // 0 means XForms should have a look at this event
 
-#define USE_XSYNC 1
-#ifdef USE_XSYNC
 	XKeyEvent * xke = static_cast<XKeyEvent*>(xev);
 	static Time last_time_pressed = 0;
 	static Time last_time_released = 0;
@@ -346,36 +344,23 @@ int LyXView::KeyPressMask_raw_callback(FL_FORM * fl, void * xev)
 	static unsigned int last_key_released = 0;
 	static unsigned int last_state_pressed = 0;
 	static unsigned int last_state_released = 0;
-#endif
+
 	// funny. Even though the raw_callback is registered with KeyPressMask,
 	// also KeyRelease-events are passed through:-(
 	// [It seems that XForms puts them in pairs... (JMarc)]
 	if (static_cast<XEvent*>(xev)->type == KeyPress
-#ifdef NEW_WA
 	    && view->bufferview->focus()
 	    && view->bufferview->active())
-#else
-	    && view->bufferview->getWorkArea()->focus
-	    && view->bufferview->getWorkArea()->active)
-#endif
 		{
-#ifdef USE_XSYNC
 		last_time_pressed = xke->time;
 		last_key_pressed = xke->keycode;
 		last_state_pressed = xke->state;
-#endif
 		retval = view->getLyXFunc()
 			->processKeyEvent(static_cast<XEvent*>(xev));
 	}
-#ifdef USE_XSYNC
 	else if (static_cast<XEvent*>(xev)->type == KeyRelease
-#ifdef NEW_WA
 		 && view->bufferview->focus()
 		 && view->bufferview->active())
-#else
-		   && view->bufferview->getWorkArea()->focus
-		   && view->bufferview->getWorkArea()->active)
-#endif
 {
 		last_time_released = xke->time;
 		last_key_released = xke->keycode;
@@ -396,7 +381,6 @@ int LyXView::KeyPressMask_raw_callback(FL_FORM * fl, void * xev)
 		// purging of XEvents can cause any harm...after some testing
 		// I can see no problems, but I'd like other reports too.
 	}
-#endif
 	return retval;
 }
 

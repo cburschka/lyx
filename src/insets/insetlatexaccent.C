@@ -514,24 +514,39 @@ void InsetLatexAccent::draw(Painter & pain, LyXFont const & font,
 		}
 		// now the rest - draw within (x, y, x+wid, y+hg)
 		switch (modtype) {
-		case ACUTE:     // acute
+		case ACUTE:     // acute 0xB4
  		{
+#if 0
 			pain.line(int(x2), int(y + hg),
 				  int(x2 + hg35), y + hg35);
+#else
+			pain.text(x2 - font.width(0xB4) / 2, baseline,
+				  char(0xB4), font);
+#endif
 			break;
 		}
-		case GRAVE:     // grave
+		case GRAVE:     // grave 0x60
 		{
+#if 0
 			pain.line(int(x2), int(y + hg),
 				  int(x2 - hg35), y + hg35);
+#else
+			pain.text(x2 - font.width(0x60) / 2, baseline,
+				  char(0x60), font);
+#endif
 			break;
 		}
 		case MACRON:     // macron
 		{
+#if 0
 			pain.line(int(x2 - wid * 0.4),
 				  int(y + hg),
 				  int(x2 + wid * 0.4),
 				  int(y + hg));
+#else
+			pain.text(x2 - font.width(0xAF) / 2, baseline,
+				  char(0xAF), font);
+#endif
 			break;
 		}
 		case TILDE:     // tilde
@@ -557,20 +572,26 @@ void InsetLatexAccent::draw(Painter & pain, LyXFont const & font,
 #else
 			pain.text(x2 - font.width('~') / 2,
 				  baseline - font.ascent('~'),
-				  "~", 1, font);
+				  '~', font);
 #endif
 			break;
 		}
-		case UNDERBAR:     // underbar
+		case UNDERBAR:     // underbar 0x5F
 		{
+#if 0
 			pain.line(int(x2 - wid * 0.4),
 				  y + hg / 2.0,
 				  int(x2 + wid * 0.4),
 				  y + hg / 2.0);
+#else
+			pain.text(x2 - font.width(0x5F) / 2, baseline,
+				  char(0x5F), font);
+#endif
 			break;
 		}
 		case CEDILLA:     // cedilla
 		{
+#if 0
 			int xp[4], yp[4];
 			
 			xp[0] = int(x2);
@@ -586,6 +607,11 @@ void InsetLatexAccent::draw(Painter & pain, LyXFont const & font,
 			yp[3] = y + int(hg);
 
 			pain.lines(xp, yp, 4);
+#else
+			pain.text(x2 - font.width(0xB8) / 2, baseline,
+				  char(0xB8), font);
+			
+#endif
 			break;
 		}
 		case UNDERDOT:     // underdot
@@ -606,9 +632,14 @@ void InsetLatexAccent::draw(Painter & pain, LyXFont const & font,
 
 		case CIRCLE:     // circle
 		{
+#if 0
 			pain.arc(int(x2 - (hg / 2.0)),
 				 y + (hg / 2.0), hg, hg , 0,
 				 360 * 64);
+#else
+			pain.text(x2 - font.width(0xB0) / 2, baseline,
+				  char(0xB0), font);
+#endif
 			break;
 		}
 		case TIE:     // tie
@@ -694,18 +725,23 @@ void InsetLatexAccent::draw(Painter & pain, LyXFont const & font,
 			}
 #else
 			pain.text(x2 - font.width('¨') / 2, baseline,
-				  "¨", 1, font);
+				  '¨', font);
 #endif
 			break;
 		}
 		case CIRCUMFLEX:    // circumflex
 		{
+#if 0
 			int xp[3], yp[3];
 			
 			xp[0] = int(x2 - hg35); yp[0] = y + int(hg);
 			xp[1] = int(x2);        yp[1] = int(y + hg35);
 			xp[2] = int(x2 + hg35); yp[2] = y + int(hg);
 			pain.lines(xp, yp, 3);
+#else
+			pain.text(x2 - font.width(0x5E) / 2, baseline,
+				  char(0x5E), font);
+#endif
 			break;
 		}
 		case OGONEK:    // ogonek

@@ -4,6 +4,8 @@ LIBS =
 ETAGS_ARGS = --c++
 INCLUDES = -I${srcdir}/../
 
+EXTRA_DIST = lyxstring.C lyxstring.h regex.c lyxregex.h
+
 if USE_LYXSTRING
 LYXSTRING = lyxstring.C lyxstring.h
 endif

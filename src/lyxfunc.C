@@ -663,19 +663,11 @@ string LyXFunc::Dispatch(int ac,
 	case LFUN_CENTER: // this is center and redraw.
 		owner->view()->beforeChange();
 		if (owner->view()->text->cursor.y >
-#ifdef NEW_WA
 		    owner->view()->getWorkArea()->height() / 2)
-#else
-		    owner->view()->getWorkArea()->h / 2)
-#endif
 			{
 			owner->view()->getScreen()->
 				Draw(owner->view()->text->cursor.y -
-#ifdef NEW_WA
 				     owner->view()->getWorkArea()->height() / 2
-#else
-				     owner->view()->getWorkArea()->h / 2
-#endif
 					);
 		} else { // <= 
 			owner->view()->getScreen()->
@@ -2017,19 +2009,11 @@ string LyXFunc::Dispatch(int ac,
 		// Recenter screen
 		owner->view()->beforeChange();
 		if (owner->view()->text->cursor.y >
-#ifdef NEW_WA
 		    owner->view()->getWorkArea()->height() / 2
-#else
-		    owner->view()->getWorkArea()->h / 2
-#endif
 			) {
 			owner->view()->getScreen()->
 				Draw(owner->view()->text->cursor.y -
-#ifdef NEW_WA
 				     owner->view()->getWorkArea()->height() / 2
-#else
-				     owner->view()->getWorkArea()->h / 2
-#endif
 					);
 		} else { // <= 
 			owner->view()->getScreen()->
