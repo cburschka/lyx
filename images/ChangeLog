@@ -1,6 +1,22 @@
 2002-04-17  Angus Leeming <a.leeming@ic.ac.uk>
 
 	* deco.xpm
+	* delim.xpm
+	* delim0.xpm
+	* equation.xpm
+	* frac.xpm
+	* matrix.xpm
+	* smallcaps.xpm
+	* space.xpm
+	* sqrt.xpm
+	* sub.xpm
+	* super.xpm:
+	fix broken colour in sub/super.xpm that I introduced last time around
+	and use the same 4 colours for all xpm files.
+
+2002-04-17  Angus Leeming <a.leeming@ic.ac.uk>
+
+	* deco.xpm
 	* smallcaps.xpm
 	* space.xpm
 	* sub.xpm
