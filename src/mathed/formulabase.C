@@ -83,7 +83,7 @@ bool openNewInset(BufferView * bv, UpdatableInset * new_inset)
 
 
 InsetFormulaBase::InsetFormulaBase()
-	: xo_(0), yo_(0)
+	: view_(0), xo_(0), yo_(0)
 {
 	// This is needed as long the math parser is not re-entrant
 	initMath();
