@@ -308,13 +308,15 @@ void InsetCollapsable::update(BufferView * bv, bool reinit)
 
 Inset::RESULT InsetCollapsable::localDispatch(FuncRequest const & cmd)
 {
-	//lyxerr << "InsetCollapsable::localDispatch: " << cmd.action << "\n";
+	lyxerr << "InsetCollapsable::localDispatch: "
+		<< cmd.action << " '" << cmd.argument << "'\n";
 	BufferView * bv = cmd.view();
 	switch (cmd.action) {
 		case LFUN_INSET_EDIT: {
 			if (!cmd.argument.empty()) {
 				UpdatableInset::localDispatch(cmd);
 				if (collapsed_) {
+					lyxerr << "branch collapsed_\n";
 					collapsed_ = false;
 					if (bv->lockInset(this)) {
 						inset.setUpdateStatus(InsetText::FULL);
@@ -324,6 +326,7 @@ Inset::RESULT InsetCollapsable::localDispatch(FuncRequest const & cmd)
 						first_after_edit = true;
 					}
 				} else {
+					lyxerr << "branch not collapsed_\n";
 					if (bv->lockInset(this))
 						inset.localDispatch(cmd);
 				}

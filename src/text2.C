@@ -692,6 +692,32 @@ void LyXText::fullRebreak()
 }
 
 
+void LyXText::rebuild()
+{
+	rowlist_.clear();
+	need_break_row = rows().end();
+	width = height = 0;
+
+	anchor_row_ = rows().end();
+	anchor_row_offset_ = 0;
+
+	ParagraphList::iterator pit = ownerParagraphs().begin();
+	ParagraphList::iterator end = ownerParagraphs().end();
+
+	//current_font = getFont(bview->buffer(), pit, 0);
+
+	for (; pit != end; ++pit)
+		insertParagraph(pit, rowlist_.end());
+
+	//setCursorIntern(rowlist_.begin()->par(), 0);
+	//selection.cursor = cursor;
+
+	//updateCounters();
+
+	//setCursorIntern(cursor.par(), cursor.pos());
+}
+
+
 void LyXText::partialRebreak()
 {
 	if (rows().empty()) {
@@ -1516,6 +1542,8 @@ void LyXText::setCursor(LyXCursor & cur, ParagraphList::iterator pit,
 	cur.par(pit);
 	cur.pos(pos);
 	cur.boundary(boundary);
+	if (rows().empty())
+		return;
 
 	// get the cursor y position in text
 	int y = 0;

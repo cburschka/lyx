@@ -277,6 +277,7 @@ void InsetText::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	BufferView * bv = mi.base.bv;
 	setViewCache(bv);
+	text_.rebuild();
 	dim.asc = text_.rows().begin()->ascent_of_text() + TEXT_TO_INSET_OFFSET;
 	dim.des = text_.height - dim.asc + TEXT_TO_INSET_OFFSET;
 	dim.wid = max(textWidth(bv), int(text_.width)) + 2 * TEXT_TO_INSET_OFFSET;
@@ -405,56 +406,6 @@ void InsetText::drawFrame(Painter & pain, int x) const
 void InsetText::update(BufferView * bv, bool reinit)
 {
 	setViewCache(bv);
-
-	if (in_update) {
-		if (reinit && owner()) {
-			reinitLyXText();
-			owner()->update(bv, true);
-		}
-		return;
-	}
-	in_update = true;
-
-	if (reinit || need_update == INIT) {
-		need_update = FULL;
-		// we should put this call where we set need_update to INIT!
-		reinitLyXText();
-		if (owner())
-			owner()->update(bv, true);
-		in_update = false;
-
-		int nw = getMaxWidth(bv, this);
-		if (nw > 0 && old_max_width != nw) {
-			need_update |= INIT;
-			old_max_width = nw;
-		}
-		return;
-	}
-
-	if (!autoBreakRows && paragraphs.size() > 1)
-		collapseParagraphs(bv);
-
-	if (the_locking_inset) {
-		inset_x = cix(bv) - top_x + drawTextXOffset;
-		inset_y = ciy() + drawTextYOffset;
-		the_locking_inset->update(bv, reinit);
-	}
-
-	if ((need_update & CURSOR_PAR) && !text_.needRefresh() &&
-		the_locking_inset) {
-		text_.updateInset(the_locking_inset);
-	}
-
-	if (text_.needRefresh())
-		need_update |= FULL;
-
-	in_update = false;
-
-	int nw = getMaxWidth(bv, this);
-	if (nw > 0 && old_max_width != nw) {
-		need_update |= INIT;
-		old_max_width = nw;
-	}
 }
 
 
@@ -476,6 +427,9 @@ void InsetText::setUpdateStatus(int what) const
 
 void InsetText::updateLocal(BufferView * bv, int what, bool mark_dirty)
 {
+	if (!bv)
+		return;
+
 	if (!autoBreakRows && paragraphs.size() > 1)
 		collapseParagraphs(bv);
 
@@ -555,7 +509,7 @@ void InsetText::lockInset(BufferView * bv)
 	inset_boundary = false;
 	inset_par = paragraphs.end();
 	old_par = paragraphs.end();
-	text_.setCursor(paragraphs.begin(), 0);
+	text_.setCursorIntern(paragraphs.begin(), 0);
 	text_.clearSelection();
 	finishUndo();
 	// If the inset is empty set the language of the current font to the
@@ -581,7 +535,7 @@ void InsetText::lockInset(BufferView * bv, UpdatableInset * inset)
 	inset_pos = cpos();
 	inset_par = cpar();
 	inset_boundary = cboundary();
-	updateLocal(bv, CURSOR, false);
+	//updateLocal(bv, CURSOR, false);
 }
 
 
@@ -597,30 +551,36 @@ bool InsetText::lockInsetInInset(BufferView * bv, UpdatableInset * inset)
 
 		int const id = inset->id();
 		for (; pit != pend; ++pit) {
-			InsetList::iterator it =
-				pit->insetlist.begin();
-			InsetList::iterator const end =
-				pit->insetlist.end();
+			InsetList::iterator it = pit->insetlist.begin();
+			InsetList::iterator const end = pit->insetlist.end();
 			for (; it != end; ++it) {
 				if (it->inset == inset) {
-					getLyXText(bv)->setCursorIntern(pit, it->pos);
+					lyxerr << "InsetText::lockInsetInInset: 1 a\n";
+					text_.setCursorIntern(pit, it->pos);
+					lyxerr << "InsetText::lockInsetInInset: 1 b\n";
+					lyxerr << "bv: " << bv << " inset: " << inset << "\n";
 					lockInset(bv, inset);
+					lyxerr << "InsetText::lockInsetInInset: 1 c" << endl;
 					return true;
 				}
 				if (it->inset->getInsetFromID(id)) {
-					getLyXText(bv)->setCursorIntern(pit, it->pos);
+					lyxerr << "InsetText::lockInsetInInset: 2\n";
+					text_.setCursorIntern(pit, it->pos);
 					it->inset->localDispatch(FuncRequest(bv, LFUN_INSET_EDIT));
 					return the_locking_inset->lockInsetInInset(bv, inset);
 				}
 			}
 		}
+		lyxerr << "InsetText::lockInsetInInset: 3\n";
 		return false;
 	}
 	if (inset == cpar()->getInset(cpos())) {
 		lyxerr[Debug::INSETS] << "OK" << endl;
 		lockInset(bv, inset);
 		return true;
-	} else if (the_locking_inset && (the_locking_inset == inset)) {
+	}
+
+	if (the_locking_inset && the_locking_inset == inset) {
 		if (cpar() == inset_par && cpos() == inset_pos) {
 			lyxerr[Debug::INSETS] << "OK" << endl;
 			inset_x = cix(bv) - top_x + drawTextXOffset;
@@ -884,7 +844,7 @@ Inset::RESULT InsetText::localDispatch(FuncRequest const & cmd)
 
 		if (cmd.argument.size()) {
 			if (cmd.argument == "left")
-				text_.setCursor(paragraphs.begin(), 0);
+				text_.setCursorIntern(paragraphs.begin(), 0);
 			else {
 				ParagraphList::iterator it = paragraphs.begin();
 				ParagraphList::iterator end = paragraphs.end();

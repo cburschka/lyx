@@ -259,6 +259,7 @@ void InsetTabular::read(Buffer const * buf, LyXLex & lex)
 void InsetTabular::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	if (mi.base.bv) {
+		calculate_dimensions_of_cells(mi.base.bv, true);
 		//lyxerr << "InsetTabular::metrics, bv: " << mi.base.bv << endl;
 		for (int i = 0; i < tabular.getNumberOfCells(); ++i) {
 			tabular.cellinfo_of_cell(i)->inset.text_.bv_owner = mi.base.bv;
@@ -411,42 +412,6 @@ void InsetTabular::drawCellSelection(Painter & pain, int x, int y,
 
 void InsetTabular::update(BufferView * bv, bool reinit)
 {
-	if (in_update) {
-		if (reinit) {
-			resetPos(bv);
-			if (owner())
-				owner()->update(bv, true);
-		}
-		return;
-	}
-	in_update = true;
-	if (reinit) {
-		need_update = INIT;
-		if (calculate_dimensions_of_cells(bv, true))
-			resetPos(bv);
-		if (owner())
-			owner()->update(bv, true);
-		in_update = false;
-		return;
-	}
-	if (the_locking_inset)
-		the_locking_inset->update(bv, reinit);
-	if (need_update < FULL && bv->text->needRefresh())
-		need_update = FULL;
-
-	switch (need_update) {
-	case INIT:
-	case FULL:
-	case CELL:
-		if (calculate_dimensions_of_cells(bv, false)) {
-			need_update = INIT;
-			resetPos(bv);
-		}
-		break;
-	default:
-		break;
-	}
-	in_update = false;
 }
 
 

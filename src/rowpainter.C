@@ -179,7 +179,7 @@ void RowPainter::paintInset(pos_type const pos)
 	Assert(inset);
 
 #warning inset->update FIXME
-	inset->update(perv(bv_), false);
+	//inset->update(perv(bv_), false);
 
 	PainterInfo pi(perv(bv_));
 	pi.base.font = getFont(pos);

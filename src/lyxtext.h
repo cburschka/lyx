@@ -163,6 +163,8 @@ public:
 	void partialRebreak();
 	/// a full rebreak of the whole text
 	void fullRebreak();
+	/// rebuild RowList cache
+	void rebuild();
 
 	///
 	RowList::iterator need_break_row;
