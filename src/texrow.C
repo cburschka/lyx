@@ -8,11 +8,10 @@
 
 #include <config.h>
 
-#include <algorithm>
-
 #include "texrow.h"
-#include "paragraph.h"
 #include "debug.h"
+
+#include <algorithm>
 
 using std::find_if;
 using std::for_each;
@@ -70,21 +69,21 @@ void TexRow::reset()
 {
 	rowlist.clear();
 	count = 0;
-	lastpar = 0;
+	lastid = -1;
 	lastpos = -1;
 }
 
 
-void TexRow::start(Paragraph * par, int pos)
+void TexRow::start(int id, int pos)
 {
-	lastpar = par;
+	lastid = id;
 	lastpos = pos;
 }
 
 
 void TexRow::newline()
 {
-	int const id = lastpar ? lastpar->id() : -1;
+	int const id = lastid;
 	RowList::value_type tmp(id, lastpos, ++count);
 	rowlist.push_back(tmp);
 }

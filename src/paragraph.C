@@ -979,7 +979,7 @@ bool Paragraph::simpleTeXOnePar(Buffer const * buf,
 
 	Change::Type running_change = Change::UNCHANGED;
 
-	texrow.start(this, 0);
+	texrow.start(id(), 0);
 
 	// if the paragraph is empty, the loop will not be entered at all
 	if (empty()) {

@@ -13,19 +13,20 @@
 
 #include <list>
 
-class Paragraph;
 
 /// Represents the correspondence between paragraphs and the generated LaTeX file
 class TexRow {
 public:
 	///
-	TexRow() : count(0), lastpar(0), lastpos(-1) {}
+	TexRow() : count(0), lastid(-1), lastpos(-1) {}
+
+	TexRow & operator+= (TexRow const &);
 
 	/// Clears structure
 	void reset();
 
 	/// Define what paragraph and position the next row will represent
-	void start(Paragraph * par, int pos);
+	void start(int id, int pos);
 
 	/// Insert node when line is completed
 	void newline();
@@ -41,8 +42,6 @@ public:
 	 * id is set to -1
 	 */
 	bool getIdFromRow(int row, int & id, int & pos) const;
-
-	TexRow & operator+= (TexRow const &);
 
 	/// Returns the number of rows contained
 	int rows() const { return count; }
@@ -90,7 +89,7 @@ private:
 	/// container of id/pos <=> row mapping
 	RowList rowlist;
 	/// Last paragraph
-	Paragraph * lastpar;
+	int lastid;
 	/// Last position
 	int lastpos;
 };

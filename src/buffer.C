@@ -1037,7 +1037,7 @@ void Buffer::makeLaTeXFile(ostream & os,
 	texrow.reset();
 	// The starting paragraph of the coming rows is the
 	// first paragraph of the document. (Asger)
-	texrow.start(&*paragraphs.begin(), 0);
+	texrow.start(paragraphs.begin()->id(), 0);
 
 	if (!only_body && nice) {
 		os << "%% " << lyx_docversion << " created this file.  "

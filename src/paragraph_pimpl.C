@@ -441,7 +441,7 @@ void Paragraph::Pimpl::simpleTeXBlanks(ostream & os, TexRow & texrow,
 		     || getChar(i - 1) == '!'))) {
 		os << '\n';
 		texrow.newline();
-		texrow.start(owner_, i + 1);
+		texrow.start(owner_->id(), i + 1);
 		column = 0;
 	} else if (style.free_spacing) {
 		os << '~';
@@ -540,7 +540,7 @@ void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const * buf,
 				os << "\\\\\n";
 			}
 			texrow.newline();
-			texrow.start(owner_, i + 1);
+			texrow.start(owner_->id(), i + 1);
 			column = 0;
 			break;
 		}
@@ -589,7 +589,7 @@ void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const * buf,
 			for (int j = 0; j < tmp; ++j) {
 				texrow.newline();
 			}
-			texrow.start(owner_, i + 1);
+			texrow.start(owner_->id(), i + 1);
 			column = 0;
 		} else {
 			column += int(os.tellp()) - len;
