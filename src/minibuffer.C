@@ -32,6 +32,7 @@
 #include "LyXAction.h"
 #include "BufferView.h"
 
+#include <cctype>
 
 using SigC::slot;
 using std::vector;

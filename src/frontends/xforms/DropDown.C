@@ -12,6 +12,7 @@
 #include "xforms_helpers.h"
 
 #include <iostream>
+#include <cctype>
  
 namespace {
 	
