@@ -36,6 +36,7 @@
 #include "buffer_funcs.h"
 #include "lyxfunc.h"
 #include "lyxserver.h"
+#include "lyxsocket.h"
 #include "BufferView.h"
 
 #include "GView.h"
@@ -54,6 +55,8 @@
 #include "xformsImage.h"
 #include "xforms_helpers.h"
 
+namespace os = lyx::support::os;
+
 using std::ostringstream;
 using std::string;
 
@@ -62,6 +65,7 @@ extern BufferList bufferlist;
 
 // FIXME: wrong place !
 LyXServer * lyxserver;
+LyXServerSocket * lyxsocket;
 
 bool lyx_gui::use_gui = true;
 
@@ -117,7 +121,7 @@ int LyX_XErrHandler(Display * display, XErrorEvent * xeev) {
 	}
 
 	// emergency cleanup
-	LyX::emergencyCleanup();
+	LyX::cref().emergencyCleanup();
 
 	// Get the reason for the crash.
 	char etxt[513];
@@ -326,6 +330,8 @@ void lyx_gui::start(string const & batch, std::vector<string> const & files)
 	// FIXME: some code below needs moving
 
 	lyxserver = new LyXServer(&view.getLyXFunc(), lyxrc.lyxpipes);
+	lyxsocket = new LyXServerSocket(&view.getLyXFunc(),
+			  os::slashify_path(os::getTmpDir() + "/lyxsocket"));
 
 	std::vector<string>::const_iterator cit = files.begin();
 	std::vector<string>::const_iterator end = files.end();
@@ -353,6 +359,7 @@ void lyx_gui::start(string const & batch, std::vector<string> const & files)
 	}
 
 	// FIXME: breaks emergencyCleanup
+	delete lyxsocket;
 	delete lyxserver;
 }
 
