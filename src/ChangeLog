@@ -1,3 +1,10 @@
+2003-03-09  John Levon  <levon@movementarian.org>
+
+	* lyxtext.h:
+	* text.C:
+	* text2.C: 3rd arg to nextBreakPoint was always the same.
+	  Use references.
+
 2003-03-08  John Levon  <levon@movementarian.org>
 
 	* lyxrow.C:

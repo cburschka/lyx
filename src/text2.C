@@ -1643,7 +1643,7 @@ void LyXText::checkParagraph(BufferView * bview, Paragraph * par,
 
 	// is there a break one row above
 	if (row->previous() && row->previous()->par() == row->par()) {
-		z = nextBreakPoint(bview, row->previous(), workWidth(*bview));
+		z = nextBreakPoint(*bview, *row->previous());
 		if (z >= row->pos()) {
 			// set the dimensions of the row above
 			y -= row->previous()->height();
