@@ -7,10 +7,7 @@
 #include "math_stringinset.h"
 #include "math_mathmlstream.h"
 #include "math_streamstr.h"
-#include "LColor.h"
 #include "math_support.h"
-#include "math_parser.h"
-#include "LaTeXFeatures.h"
 #include "debug.h"
 
 
@@ -27,7 +24,7 @@ MathInset * MathStringInset::clone() const
 
 void MathStringInset::metrics(MathMetricsInfo & mi) const
 {
-	mathed_string_dim(mi.base.font, str_, ascent_, descent_, width_);
+	mathed_string_dim(mi.base.font, str_, dim_);
 }
 
 

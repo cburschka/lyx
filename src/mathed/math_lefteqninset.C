@@ -20,10 +20,10 @@ MathInset * MathLefteqnInset::clone() const
 
 void MathLefteqnInset::metrics(MathMetricsInfo & mi) const
 {
-	MathNestInset::metrics(mi);
-	ascent_  = xcell(0).ascent() + 2;
-	descent_ = xcell(0).descent() + 2;
-	width_   = 4;
+	xcell(0).metrics(mi);
+	dim_.a = xcell(0).ascent() + 2;
+	dim_.d = xcell(0).descent() + 2;
+	dim_.w = 4;
 }
 
 

@@ -12,6 +12,7 @@
 #include "frontends/font_loader.h"
 #include "debug.h"
 #include "commandtags.h"
+#include "dimension.h"
 
 using std::map;
 using std::endl;
@@ -345,12 +346,11 @@ deco_struct const * search_deco(string const & name)
 } // namespace anon
 
 
-void mathed_char_dim(LyXFont const & font,
-	unsigned char c, int & asc, int & des, int & wid)
+void mathed_char_dim(LyXFont const & font, unsigned char c, Dimension & dim)
 {
-	des = font_metrics::descent(c, font);
-	asc = font_metrics::ascent(c, font);
-	wid = mathed_char_width(font, c);
+	dim.d = font_metrics::descent(c, font);
+	dim.a = font_metrics::ascent(c, font);
+	dim.w = mathed_char_width(font, c);
 }
 
 
@@ -375,12 +375,18 @@ int mathed_char_width(LyXFont const & font, unsigned char c)
 void mathed_string_dim(LyXFont const & font,
 	string const & s, int & asc, int & des, int & wid)
 {
-	asc = des = 0;
+}
+
+
+void mathed_string_dim(LyXFont const & font, string const & s, Dimension & dim)
+{
+	dim.a = 0;
+	dim.d = 0;
 	for (string::const_iterator it = s.begin(); it != s.end(); ++it) {
-		des = max(des, font_metrics::descent(*it, font));
-		asc = max(asc, font_metrics::ascent(*it, font));
+		dim.a = max(dim.a, font_metrics::ascent(*it, font));
+		dim.d = max(dim.d, font_metrics::descent(*it, font));
 	}
-	wid = font_metrics::width(s, font);
+	dim.w = font_metrics::width(s, font);
 }
 
 

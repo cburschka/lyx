@@ -62,15 +62,15 @@ void MathCharInset::metrics(MathMetricsInfo & mi) const
 #if 1
 	if (slanted(char_) && mi.base.fontname == "mathnormal") {
 		MathShapeChanger dummy(mi.base.font, LyXFont::ITALIC_SHAPE);
-		mathed_char_dim(mi.base.font, char_, ascent_, descent_, width_);
+		mathed_char_dim(mi.base.font, char_, dim_);
 	} else {
-		mathed_char_dim(mi.base.font, char_, ascent_, descent_, width_);
+		mathed_char_dim(mi.base.font, char_, dim_);
 	}
 	if (isBinaryOp(char_))
-		width_ += 2 * font_metrics::width(' ', mi.base.font);
+		dim_.w += 2 * font_metrics::width(' ', mi.base.font);
 #else
 	whichFont(font_, code_, mi);
-	mathed_char_dim(font_, char_, ascent_, descent_, width_);
+	mathed_char_dim(font_, char_, dim_);
 	if (isBinaryOp(char_, code_))
 		width_ += 2 * font_metrics::width(' ', font_);
 #endif
@@ -97,9 +97,9 @@ void MathCharInset::draw(MathPainterInfo & pi, int x, int y) const
 
 void MathCharInset::metricsT(TextMetricsInfo const &) const
 {
-	width_   = 1;
-	ascent_  = 1;
-	descent_ = 0;
+	dim_.w = 1;
+	dim_.a = 1;
+	dim_.d = 0;
 }
 
 

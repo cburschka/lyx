@@ -31,10 +31,8 @@ MathInset * MathFontInset::clone() const
 void MathFontInset::metrics(MathMetricsInfo & mi) const
 {
 	MathFontSetChanger dummy(mi.base, name_.c_str());
-	xcell(0).metrics(mi);
-	ascent_  = xcell(0).ascent();
-	descent_ = xcell(0).descent() + 1;
-	width_   = xcell(0).width()   + 2;
+	dim_ = xcell(0).metrics(mi);
+	metricsMarkers();
 }
 
 
@@ -50,10 +48,7 @@ void MathFontInset::draw(MathPainterInfo & pi, int x, int y) const
 
 void MathFontInset::metricsT(TextMetricsInfo const & mi) const
 {
-	xcell(0).metricsT(mi);
-	width_   = xcell(0).width();
-	ascent_  = xcell(0).ascent();
-	descent_ = xcell(0).descent();
+	dim_ = xcell(0).metricsT(mi);
 }
 
 

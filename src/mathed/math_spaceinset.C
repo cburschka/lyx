@@ -41,18 +41,18 @@ MathInset * MathSpaceInset::clone() const
 void MathSpaceInset::metrics(MathMetricsInfo &) const
 {
 	switch (space_) {
-		case 0: width_ = 6; break;
-		case 1: width_ = 6; break;
-		case 2: width_ = 8; break;
-		case 3: width_ = 10; break;
-		case 4: width_ = 20; break;
-		case 5: width_ = 40; break;
-		case 6: width_ = -2; break;
-		case 7: width_ =  2; break;
-		default: width_ = 6; break;
+		case 0: dim_.w = 6; break;
+		case 1: dim_.w = 6; break;
+		case 2: dim_.w = 8; break;
+		case 3: dim_.w = 10; break;
+		case 4: dim_.w = 20; break;
+		case 5: dim_.w = 40; break;
+		case 6: dim_.w = -2; break;
+		case 7: dim_.w =  2; break;
+		default: dim_.w = 6; break;
 	}
-	ascent_  = 4;
-	descent_ = 0;
+	dim_.a  = 4;
+	dim_.d = 0;
 }
 
 
@@ -67,10 +67,10 @@ void MathSpaceInset::draw(MathPainterInfo & pain, int x, int y) const
 	int xp[4];
 	int yp[4];
 
-	xp[0] = ++x;             yp[0] = y - 3;
-	xp[1] = x;	             yp[1] = y;
-	xp[2] = x + width_ - 2;  yp[2] = y;
-	xp[3] = x + width_ - 2;  yp[3] = y - 3;
+	xp[0] = ++x;              yp[0] = y - 3;
+	xp[1] = x;	              yp[1] = y;
+	xp[2] = x + width() - 2;  yp[2] = y;
+	xp[3] = x + width() - 2;  yp[3] = y - 3;
 
 	pain.pain.lines(xp, yp, 4, space_ ? LColor::latex : LColor::math);
 }

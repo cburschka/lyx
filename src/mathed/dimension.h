@@ -16,6 +16,8 @@ public:
 	int height() const { return a + d; }
 	/// get ascent
 	int ascent() const { return a; }
+	/// get descent
+	int descent() const { return d; }
 	/// get width
 	int width() const { return w; }
 

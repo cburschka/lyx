@@ -3,11 +3,9 @@
 #include "textpainter.h"
 
 
-void MathDimInset::dimensions(int & w, int & a, int & d) const
+void MathDimInset::dimensions(Dimension & dim) const
 {
-	w = width_;
-	a = ascent_;
-	d = descent_;
+	dim = dim_;
 }
 
 
@@ -15,9 +13,9 @@ void MathDimInset::metricsT(TextMetricsInfo const &) const
 {
 	std::ostringstream os;
 	os << *this;
-	width_   = int(os.str().size());
-	ascent_  =	1;
-	descent_ = 0;
+	dim_.w = int(os.str().size());
+	dim_.a = 1;
+	dim_.d = 0;
 }
 
 

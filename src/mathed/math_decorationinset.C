@@ -78,24 +78,19 @@ bool MathDecorationInset::wide() const
 void MathDecorationInset::metrics(MathMetricsInfo & mi) const
 {
 	xcell(0).metrics(mi);
-	width_   = xcell(0).width();
-	ascent_  = xcell(0).ascent();
-	descent_ = xcell(0).descent();
-
-	dh_ = 6; //mathed_char_height(LM_TC_VAR, mi, 'I', ascent_, descent_);
-	dw_ = 6; //mathed_char_width(LM_TC_VAR, mi, 'x');
+	dim_ = xcell(0).dim();
+	dh_  = 6; //mathed_char_height(LM_TC_VAR, mi, 'I', ascent_, descent_);
+	dw_  = 6; //mathed_char_width(LM_TC_VAR, mi, 'x');
 
 	if (upper()) {
-		dy_ = -ascent_ - dh_;
-		ascent_ += dh_ + 1;
+		dy_ = -dim_.a - dh_;
+		dim_.a += dh_ + 1;
 	} else {
-		dy_ = descent_ + 1;
-		descent_ += dh_ + 2;
+		dy_ = dim_.d + 1;
+		dim_.d += dh_ + 2;
 	}
 
-	// for the angular markers
-	descent_ += 2;
-	width_   += 2;
+	metricsMarkers();
 }
 
 
@@ -103,9 +98,9 @@ void MathDecorationInset::draw(MathPainterInfo & pi, int x, int y) const
 {
 	xcell(0).draw(pi, x + 1, y);
 	if (wide())
-		mathed_draw_deco(pi, x + 1, y + dy_, width_, dh_, name_);
+		mathed_draw_deco(pi, x + 1, y + dy_, width(), dh_, name_);
 	else
-		mathed_draw_deco(pi, x + 1 + (width_ - dw_) / 2, y + dy_, dw_, dh_, name_);
+		mathed_draw_deco(pi, x + 1 + (width() - dw_) / 2, y + dy_, dw_, dh_, name_);
 	drawMarkers(pi, x, y);
 }
 

@@ -47,17 +47,17 @@ void MathSymbolInset::metrics(MathMetricsInfo & mi) const
 	//	<< "' drawn as: '" << sym_->draw
 	//	<< "'\n";
 	MathFontSetChanger dummy(mi.base, sym_->inset.c_str());
-	mathed_string_dim(mi.base.font, sym_->draw, ascent_, descent_, width_);
-	// correct height for broken cmex font
+	mathed_string_dim(mi.base.font, sym_->draw, dim_);
+	// correct height for broken cmex and wasy font
 	if (sym_->inset == "cmex" || sym_->inset == "wasy") {
-		h_ = 4 * descent_ / 5;
-		ascent_  += h_;
-		descent_ -= h_;
+		h_ = 4 * dim_.d / 5;
+		dim_.a += h_;
+		dim_.d -= h_;
 	}
 	if (isRelOp())
-		width_ += 6;
+		dim_.w += 6;
 	// seperate things a bit
-	width_ += 2;
+	dim_.w += 2;
 
 	scriptable_ = false;
 	if (mi.base.style == LM_ST_DISPLAY)

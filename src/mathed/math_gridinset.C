@@ -314,17 +314,17 @@ void MathGridInset::metrics(MathMetricsInfo & mi) const
 	}
 
 
-	width_   =   colinfo_[ncols() - 1].offset_
+	dim_.w   =   colinfo_[ncols() - 1].offset_
 		       + colinfo_[ncols() - 1].width_
 		 + vlinesep() * colinfo_[ncols()].lines_
 		       + border();
 
-	ascent_  = - rowinfo_[0].offset_
+	dim_.a  = - rowinfo_[0].offset_
 		       + rowinfo_[0].ascent_
 		 + hlinesep() * rowinfo_[0].lines_
 		       + border();
 
-	descent_ =   rowinfo_[nrows() - 1].offset_
+	dim_.d =   rowinfo_[nrows() - 1].offset_
 		       + rowinfo_[nrows() - 1].descent_
 		 + hlinesep() * rowinfo_[nrows()].lines_
 		       + border();
@@ -392,14 +392,14 @@ void MathGridInset::draw(MathPainterInfo & pi, int x, int y) const
 		for (int i = 0; i < rowinfo_[row].lines_; ++i) {
 			int yy = y + rowinfo_[row].offset_ - rowinfo_[row].ascent_
 				- i * hlinesep() - hlinesep()/2 - rowsep()/2;
-			pi.pain.line(x + 1, yy, x + width_ - 1, yy);
+			pi.pain.line(x + 1, yy, x + width() - 1, yy);
 		}
 
 	for (col_type col = 0; col <= ncols(); ++col)
 		for (int i = 0; i < colinfo_[col].lines_; ++i) {
 			int xx = x + colinfo_[col].offset_
 				- i * vlinesep() - vlinesep()/2 - colsep()/2;
-			pi.pain.line(xx, y - ascent_ + 1, xx, y + descent_ - 1);
+			pi.pain.line(xx, y - ascent() + 1, xx, y + descent() - 1);
 		}
 }
 
@@ -476,17 +476,17 @@ void MathGridInset::metricsT(TextMetricsInfo const & mi) const
 	}
 
 
-	width_   =   colinfo_[ncols() - 1].offset_
+	dim_.w  =  colinfo_[ncols() - 1].offset_
 		       + colinfo_[ncols() - 1].width_
 		 //+ vlinesep() * colinfo_[ncols()].lines_
 		       + 2;
 
-	ascent_  = - rowinfo_[0].offset_
+	dim_.a  = -rowinfo_[0].offset_
 		       + rowinfo_[0].ascent_
 		 //+ hlinesep() * rowinfo_[0].lines_
 		       + 1;
 
-	descent_ =   rowinfo_[nrows() - 1].offset_
+	dim_.d  =  rowinfo_[nrows() - 1].offset_
 		       + rowinfo_[nrows() - 1].descent_
 		 //+ hlinesep() * rowinfo_[nrows()].lines_
 		       + 1;

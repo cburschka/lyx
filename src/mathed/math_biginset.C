@@ -42,17 +42,17 @@ double MathBigInset::increase() const
 
 void MathBigInset::metrics(MathMetricsInfo & mi) const
 {
-	double h = mathed_char_ascent(mi.base.font, 'I');
-	double f = increase();
-	width_   = 6;
-	ascent_  = int(h + f * h);
-	descent_ = int(f * h);
+	double const h = mathed_char_ascent(mi.base.font, 'I');
+	double const f = increase();
+	dim_.w = 6;
+	dim_.a = int(h + f * h);
+	dim_.d = int(f * h);
 }
 
 
 void MathBigInset::draw(MathPainterInfo & pi, int x, int y) const
 {
-	mathed_draw_deco(pi, x + 1, y - ascent_, 4, height(), delim_);
+	mathed_draw_deco(pi, x + 1, y - ascent(), 4, height(), delim_);
 }
 
 

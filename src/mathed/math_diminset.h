@@ -3,21 +3,22 @@
 #define MATH_DIMINSET_H
 
 #include "math_inset.h"
+#include "dimension.h"
 
 /// things that need the dimension cache
 
 class MathDimInset : public MathInset {
 public:
 	/// not sure whether the initialization is really necessary
-	MathDimInset() : width_(0), ascent_(0), descent_(0) {}
+	MathDimInset() {}
 	/// read ascent value (should be inline according to gprof)
-	int ascent() const { return ascent_; }
+	int ascent() const { return dim_.ascent(); }
 	/// read descent
-	int descent() const { return descent_; }
+	int descent() const { return dim_.descent(); }
 	/// read width
-	int width() const { return width_; }
+	int width() const { return dim_.width(); }
 	/// 
-	void dimensions(int & w, int & a, int & d) const;
+	void dimensions(Dimension & dim) const;
 	///
 	void metricsT(TextMetricsInfo const &) const;
 	///
@@ -25,10 +26,6 @@ public:
 
 protected:
 	///
-	mutable int width_;
-	///
-	mutable int ascent_;
-	///
-	mutable int descent_;
+	mutable Dimension dim_;
 };
 #endif

@@ -24,7 +24,7 @@ MathInset * MathNumberInset::clone() const
 
 void MathNumberInset::metrics(MathMetricsInfo & mi) const
 {
-	mathed_string_dim(mi.base.font, str_, ascent_, descent_, width_);
+	mathed_string_dim(mi.base.font, str_, dim_);
 }
 
 

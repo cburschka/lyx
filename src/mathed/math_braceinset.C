@@ -34,11 +34,12 @@ MathInset * MathBraceInset::clone() const
 void MathBraceInset::metrics(MathMetricsInfo & mi) const
 {
 	xcell(0).metrics(mi);
-	int a, d;
-	mathed_char_dim(mi.base.font, '{', a, d, wid_);
-	ascent_  = max(xcell(0).ascent(), a);
-	descent_ = max(xcell(0).descent(), a);
-	width_   = xcell(0).width() + 2 * wid_;
+	Dimension t;
+	mathed_char_dim(mi.base.font, '{', t);
+	wid_ = t.w;
+	dim_.a = max(xcell(0).ascent(), t.a);
+	dim_.d = max(xcell(0).descent(), t.a);
+	dim_.w = xcell(0).width() + 2 * wid_;
 }
 
 
@@ -48,7 +49,7 @@ void MathBraceInset::draw(MathPainterInfo & pi, int x, int y) const
 	font.setColor(LColor::latex);
 	drawChar(pi, font, x, y, '{');
 	xcell(0).draw(pi, x + wid_, y);
-	drawChar(pi, font, x + width_ - wid_, y, '}');
+	drawChar(pi, font, x + width() - wid_, y, '}');
 }
 
 

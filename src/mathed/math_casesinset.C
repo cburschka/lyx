@@ -25,7 +25,7 @@ MathInset * MathCasesInset::clone() const
 void MathCasesInset::metrics(MathMetricsInfo & mi) const
 {
 	MathGridInset::metrics(mi);
-	width_ += 8;
+	dim_.w += 8;
 }
 
 

@@ -39,14 +39,10 @@ void MathMacroArgument::write(WriteStream & os) const
 
 void MathMacroArgument::metrics(MathMetricsInfo & mi) const
 {
-	if (expanded_) {
-		xcell(0).metrics(mi);
-		width_   = xcell(0).width();
-		ascent_  = xcell(0).ascent();
-		descent_ = xcell(0).descent();
-	} else {
-		mathed_string_dim(mi.base.font, str_, ascent_, descent_, width_);
-	}
+	if (expanded_)
+		dim_ = xcell(0).metrics(mi);
+	else
+		mathed_string_dim(mi.base.font, str_, dim_);
 }
 
 

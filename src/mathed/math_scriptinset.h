@@ -42,7 +42,7 @@ public:
 	///
 	void drawT(MathInset const * nuc, TextPainter &, int x, int y) const;
 	/// helper
-	void dimensions2(MathInset const * nuc, int & w, int & a, int & d) const;
+	void dimensions2(MathInset const * nuc, Dimension & dim) const;
 	/// only the width
 	int width2(MathInset const * nuc) const;
 

@@ -34,9 +34,9 @@ void MathFracInset::metrics(MathMetricsInfo & mi) const
 	MathFracChanger dummy(mi.base);
 	xcell(0).metrics(mi);
 	xcell(1).metrics(mi);
-	width_   = max(xcell(0).width(), xcell(1).width()) + 2;
-	ascent_  = xcell(0).height() + 2 + 5;
-	descent_ = xcell(1).height() + 2 - 5;
+	dim_.w = max(xcell(0).width(), xcell(1).width()) + 2;
+	dim_.a = xcell(0).height() + 2 + 5;
+	dim_.d = xcell(1).height() + 2 - 5;
 }
 
 
@@ -55,9 +55,9 @@ void MathFracInset::metricsT(TextMetricsInfo const & mi) const
 {
 	xcell(0).metricsT(mi);
 	xcell(1).metricsT(mi);
-	width_   = max(xcell(0).width(), xcell(1).width());
-	ascent_  = xcell(0).height() + 1;
-	descent_ = xcell(1).height();
+	dim_.w = max(xcell(0).width(), xcell(1).width());
+	dim_.a = xcell(0).height() + 1;
+	dim_.d = xcell(1).height();
 }
 
 

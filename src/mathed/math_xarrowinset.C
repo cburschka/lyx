@@ -27,16 +27,16 @@ void MathXArrowInset::metrics(MathMetricsInfo & mi) const
 	//MathMetricsInfo mi = st;
 	//smallerStyleScript(mi);
 	xcell(0).metrics(mi);
-	width_   = xcell(0).width() + 10;
-	ascent_  = xcell(0).height() + 10;
-	descent_ = 0;
+	dim_.w = xcell(0).width() + 10;
+	dim_.a = xcell(0).height() + 10;
+	dim_.d = 0;
 }
 
 
 void MathXArrowInset::draw(MathPainterInfo & pain, int x, int y) const
 {
 	xcell(0).draw(pain, x + 5, y - 10);
-	mathed_draw_deco(pain, x + 1, y - 7, width_ - 2, 5, name_);
+	mathed_draw_deco(pain, x + 1, y - 7, width() - 2, 5, name_);
 }
 
 

@@ -37,9 +37,9 @@ MathInset * MathRootInset::clone() const
 void MathRootInset::metrics(MathMetricsInfo & mi) const
 {
 	MathNestInset::metrics(mi);
-	ascent_  = max(xcell(0).ascent()  + 5, xcell(1).ascent())  + 2;
-	descent_ = max(xcell(1).descent() + 5, xcell(0).descent()) + 2;
-	width_   = xcell(0).width() + xcell(1).width() + 10;
+	dim_.a = max(xcell(0).ascent()  + 5, xcell(1).ascent())  + 2;
+	dim_.d = max(xcell(1).descent() + 5, xcell(0).descent()) + 2;
+	dim_.w = xcell(0).width() + xcell(1).width() + 10;
 }
 
 
@@ -54,7 +54,7 @@ void MathRootInset::draw(MathPainterInfo & pain, int x, int y) const
 	int const d = descent();
 	int xp[5];
 	int yp[5];
-	xp[0] = x + width_;   yp[0] = y - a + 1;
+	xp[0] = x + width();  yp[0] = y - a + 1;
 	xp[1] = x + w + 4;    yp[1] = y - a + 1;
 	xp[2] = x + w;        yp[2] = y + d;
 	xp[3] = x + w - 2;    yp[3] = y + (d - a)/2 + 2;

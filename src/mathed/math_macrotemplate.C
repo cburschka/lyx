@@ -51,9 +51,9 @@ void MathMacroTemplate::metrics(MathMetricsInfo & mi) const
 {
 	xcell(0).metrics(mi);
 	xcell(1).metrics(mi);
-	width_   = xcell(0).width() + xcell(1).width() + 10;
-	ascent_  = std::max(xcell(0).ascent(),  xcell(1).ascent())  + 2;
-	descent_ = std::max(xcell(0).descent(), xcell(1).descent()) + 2;
+	dim_.w = xcell(0).width() + xcell(1).width() + 10;
+	dim_.a = std::max(xcell(0).ascent(),  xcell(1).ascent())  + 2;
+	dim_.d = std::max(xcell(0).descent(), xcell(1).descent()) + 2;
 }
 
 

@@ -36,8 +36,8 @@ void MathNotInset::metrics(MathMetricsInfo & mi) const
 		augmentFont(font_, "mathnormal");
 		char_ = '/';
 //	}
-	mathed_char_dim(font_, char_, ascent_, descent_, width_);
-	width_ = 0;
+	mathed_char_dim(font_, char_, dim_);
+	dim_.w = 0;
 }
 
 

@@ -25,10 +25,8 @@ MathInset * MathFboxInset::clone() const
 void MathFboxInset::metrics(MathMetricsInfo & mi) const
 {
 	MathFontSetChanger dummy(mi.base, "textnormal");
-	xcell(0).metrics(mi);
-	ascent_  = xcell(0).ascent()  + 5;
-	descent_ = xcell(0).descent() + 5;
-	width_   = xcell(0).width()   + 10;
+	dim_ = xcell(0).metrics(mi);
+	metricsMarkers2(5); // 5 pixels margin
 }
 
 

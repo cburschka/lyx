@@ -46,7 +46,7 @@ public:
 	/// constructor
 	MathXArray();
 	/// rebuild cached metrics information
-	void metrics(MathMetricsInfo & mi) const;
+	Dimension const & metrics(MathMetricsInfo & mi) const;
 	/// rebuild cached metrics information
 	void metricsExternal(MathMetricsInfo & mi,
 		std::vector<MathXArray::Row> &) const;
@@ -56,7 +56,7 @@ public:
 	void drawExternal(MathPainterInfo & pi, int x, int y,
 		std::vector<MathXArray::Row> const &) const;
 	/// rebuild cached metrics information
-	void metricsT(TextMetricsInfo const & mi) const;
+	Dimension const & metricsT(TextMetricsInfo const & mi) const;
 	/// redraw cell using cache metrics information
 	void drawT(TextPainter & pi, int x, int y) const;
 	/// mark cell for re-drawing
@@ -86,6 +86,8 @@ public:
 	int height() const { return dim_.a + dim_.d; }
 	/// width of this cell
 	int width() const { return dim_.w; }
+	/// dimensions of cell
+	Dimension const & dim() const	{ return dim_; }
 	/// bounding box of this cell
 	void boundingBox(int & xlow, int & xhigh, int & ylow, int & yhigh);
 	/// find best position to do things

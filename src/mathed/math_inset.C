@@ -68,11 +68,11 @@ MathInset::size_type MathInset::nargs() const
 }
 
 
-void MathInset::dimensions(int & w, int & a, int & d) const
+void MathInset::dimensions(Dimension & dim) const
 {
-	w = width();
-	a = ascent();
-	d = descent();
+	dim.w = width();
+	dim.a = ascent();
+	dim.d = descent();
 }
 
 

@@ -54,7 +54,7 @@ void MathUnknownInset::normalize(NormalStream & os) const
 
 void MathUnknownInset::metrics(MathMetricsInfo & mi) const
 {
-	mathed_string_dim(mi.base.font, name_, ascent_, descent_, width_);
+	mathed_string_dim(mi.base.font, name_, dim_);
 }
 
 

@@ -85,6 +85,7 @@ class BufferView;
 class UpdatableInset;
 class MathMacroTemplate;
 class MathPosFinder;
+class Dimension;
 
 
 class MathInset {
@@ -128,7 +129,7 @@ public:
 	/// total width
 	virtual int width() const { return 2; }
 	/// all in one batch
-	virtual void dimensions(int & w, int & a, int & d) const;
+	virtual void dimensions(Dimension & dim) const;
 	/// total height (== ascent + descent)
 	virtual int height() const;
 

@@ -90,21 +90,21 @@ int MathDelimInset::dw() const
 void MathDelimInset::metrics(MathMetricsInfo & mi) const
 {
 	xcell(0).metrics(mi);
-	int a, d, w;
-	mathed_char_dim(mi.base.font, 'I', a, d, w);
-	int h0   = (a + d) / 2;
-	int a0   = max(xcell(0).ascent(), a)   - h0;
-	int d0   = max(xcell(0).descent(), d)  + h0;
-	ascent_  = max(a0, d0) + h0;
-	descent_ = max(a0, d0) - h0;
-	width_   = xcell(0).width() + 2 * dw() + 8;
+	Dimension t;
+	mathed_char_dim(mi.base.font, 'I', t);
+	int h0 = (t.a + t.d) / 2;
+	int a0 = max(xcell(0).ascent(), t.a)   - h0;
+	int d0 = max(xcell(0).descent(), t.d)  + h0;
+	dim_.a = max(a0, d0) + h0;
+	dim_.d = max(a0, d0) - h0;
+	dim_.w = xcell(0).width() + 2 * dw() + 8;
 }
 
 
 void MathDelimInset::draw(MathPainterInfo & pi, int x, int y) const
 {
 	int const w = dw();
-	int const b = y - ascent_;
+	int const b = y - ascent();
 	xcell(0).draw(pi, x + w + 4, y);
 	mathed_draw_deco(pi, x + 4, b, w, height(), left_);
 	mathed_draw_deco(pi, x + width() - w - 4, b, w, height(), right_);

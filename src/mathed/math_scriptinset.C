@@ -127,12 +127,11 @@ int MathScriptInset::dxx(MathInset const * nuc) const
 }
 
 
-void MathScriptInset::dimensions2
-	(MathInset const * nuc, int & w, int & a, int & d) const
+void MathScriptInset::dimensions2(MathInset const * nuc, Dimension & dim) const
 {
-	a = dy1(nuc) + (hasUp() ? up().ascent() : 0);
-	d = dy0(nuc) + (hasDown() ? down().descent() : 0);
-	w = width2(nuc);
+	dim.a = dy1(nuc) + (hasUp() ? up().ascent() : 0);
+	dim.d = dy0(nuc) + (hasDown() ? down().descent() : 0);
+	dim.w = width2(nuc);
 }
 
 
@@ -186,7 +185,7 @@ void MathScriptInset::metrics(MathInset const * nuc, MathMetricsInfo & mi) const
 		nuc->metrics(mi);
 	MathNestInset::metrics(mi);
 	MathScriptChanger dummy(mi.base);
-	dimensions2(nuc, width_, ascent_, descent_);
+	dimensions2(nuc, dim_);
 }
 
 

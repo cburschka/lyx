@@ -25,9 +25,9 @@ void MathStackrelInset::metrics(MathMetricsInfo & mi) const
 	xcell(1).metrics(mi);
 	MathFracChanger dummy(mi.base);
 	xcell(0).metrics(mi);
-	width_   = max(xcell(0).width(), xcell(1).width()) + 4;
-	ascent_  = xcell(1).ascent() + xcell(0).height() + 4;
-	descent_ = xcell(1).descent();
+	dim_.w = max(xcell(0).width(), xcell(1).width()) + 4;
+	dim_.a = xcell(1).ascent() + xcell(0).height() + 4;
+	dim_.d = xcell(1).descent();
 }
 
 

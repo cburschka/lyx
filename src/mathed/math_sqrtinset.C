@@ -23,23 +23,23 @@ MathInset * MathSqrtInset::clone() const
 void MathSqrtInset::metrics(MathMetricsInfo & mi) const
 {
 	xcell(0).metrics(mi);
-	ascent_  = xcell(0).ascent()  + 4;
-	descent_ = xcell(0).descent() + 2;
-	width_   = xcell(0).width()   + 12;
+	dim_.a = xcell(0).ascent()  + 4;
+	dim_.d = xcell(0).descent() + 2;
+	dim_.w = xcell(0).width()   + 12;
 }
 
 
 void MathSqrtInset::draw(MathPainterInfo & pain, int x, int y) const
 {
 	xcell(0).draw(pain, x + 10, y);
-	int const a = ascent_;
-	int const d = descent_;
+	int const a = ascent();
+	int const d = descent();
 	int xp[4];
 	int yp[4];
-	xp[0] = x + width_; yp[0] = y - a + 1;
-	xp[1] = x + 8;      yp[1] = y - a + 1;
-	xp[2] = x + 5;      yp[2] = y + d - 1;
-	xp[3] = x;          yp[3] = y + (d - a)/2;
+	xp[0] = x + width(); yp[0] = y - a + 1;
+	xp[1] = x + 8;       yp[1] = y - a + 1;
+	xp[2] = x + 5;       yp[2] = y + d - 1;
+	xp[3] = x;           yp[3] = y + (d - a)/2;
 	pain.pain.lines(xp, yp, 4, LColor::math);
 }
 
@@ -47,9 +47,9 @@ void MathSqrtInset::draw(MathPainterInfo & pain, int x, int y) const
 void MathSqrtInset::metricsT(TextMetricsInfo const & mi) const
 {
 	xcell(0).metricsT(mi);
-	ascent_  = xcell(0).ascent()  + 1;
-	descent_ = xcell(0).descent();
-	width_   = xcell(0).width()   + 2;
+	dim_.a = xcell(0).ascent()  + 1;
+	dim_.d = xcell(0).descent();
+	dim_.w = xcell(0).width()   + 2;
 }
 
 

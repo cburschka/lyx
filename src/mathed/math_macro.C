@@ -78,30 +78,26 @@ void MathMacro::metrics(MathMetricsInfo & mi) const
 	mi_ = mi;
 
 	if (defining()) {
-		mathed_string_dim(font_, name(), ascent_, descent_, width_);
+		mathed_string_dim(font_, name(), dim_);
 		return;
 	}
 
 	if (editing()) {
 		expand();
-		expanded_.metrics(mi_);
-		width_   = expanded_.width()   + 4;
-		ascent_  = expanded_.ascent()  + 2;
-		descent_ = expanded_.descent() + 2;
+		dim_ = expanded_.metrics(mi_);
+		metricsMarkers2(2); 
 
-		width_ +=  mathed_string_width(font_, name()) + 10;
+		dim_.w +=  mathed_string_width(font_, name()) + 10;
 
-		int lasc;
-		int ldes;
-		int lwid;
-		mathed_string_dim(font_, "#1: ", lasc, ldes, lwid);
+		Dimension ldim;
+		mathed_string_dim(font_, "#1: ", ldim);
 
 		for (idx_type i = 0; i < nargs(); ++i) {
 			MathXArray const & c = xcell(i);
 			c.metrics(mi_);
-			width_    = max(width_, c.width() + lwid);
-			descent_ += max(c.ascent(),  lasc) + 5;
-			descent_ += max(c.descent(), ldes) + 5;
+			dim_.w  = max(dim_.w, c.width() + ldim.w);
+			dim_.d += max(c.ascent(),  ldim.a) + 5;
+			dim_.d += max(c.descent(), ldim.d) + 5;
 		}
 		return;
 	}
@@ -109,9 +105,7 @@ void MathMacro::metrics(MathMetricsInfo & mi) const
 	expand();
 	expanded_.data().substitute(*this);
 	expanded_.metrics(mi_);
-	width_   = expanded_.width();
-	ascent_  = expanded_.ascent();
-	descent_ = expanded_.descent();
+	dim_ = expanded_.dim();
 }
 
 
@@ -135,19 +129,17 @@ void MathMacro::draw(MathPainterInfo & pi, int x, int y) const
 		expanded_.draw(pi, x + w + 12, h);
 		h += expanded_.descent();
 
-		int lasc;
-		int ldes;
-		int lwid;
-		mathed_string_dim(font_, "#1: ", lasc, ldes, lwid);
+		Dimension ldim;
+		mathed_string_dim(font_, "#1: ", ldim);
 
 		for (idx_type i = 0; i < nargs(); ++i) {
 			MathXArray const & c = xcell(i);
-			h += max(c.ascent(), lasc) + 5;
-			c.draw(pi, x + lwid, h);
+			h += max(c.ascent(), ldim.a) + 5;
+			c.draw(pi, x + ldim.w, h);
 			char str[] = "#1:";
 			str[1] += static_cast<char>(i);
 			drawStr(pi, texfont, x + 3, h, str);
-			h += max(c.descent(), ldes) + 5;
+			h += max(c.descent(), ldim.d) + 5;
 		}
 		return;
 	}

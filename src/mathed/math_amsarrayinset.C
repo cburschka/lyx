@@ -62,16 +62,16 @@ void MathAMSArrayInset::metrics(MathMetricsInfo & mi) const
 	if (m.base.style == LM_ST_DISPLAY)
 		m.base.style = LM_ST_TEXT;
 	MathGridInset::metrics(m);
-	width_ += 12;
+	dim_.w += 12;
 }
 
 
 void MathAMSArrayInset::draw(MathPainterInfo & pi, int x, int y) const
 {
 	MathGridInset::draw(pi, x + 6, y);
-	int yy = y - ascent_;
+	int const yy = y - ascent();
 	mathed_draw_deco(pi, x + 1, yy, 5, height(), name_left());
-	mathed_draw_deco(pi, x + width_ - 6, yy, 5, height(), name_right());
+	mathed_draw_deco(pi, x + width() - 6, yy, 5, height(), name_right());
 }
 
 

@@ -11,9 +11,9 @@ class latexkeys;
 class MathMetricsInfo;
 class MathInset;
 class LyXFont;
+class Dimension;
 
-void mathed_char_dim(LyXFont const &, unsigned char c,
-	int & asc, int & des, int & wid);
+void mathed_char_dim(LyXFont const &, unsigned char c, Dimension & dim);
 int mathed_char_width(LyXFont const &, unsigned char c);
 int mathed_char_ascent(LyXFont const &, unsigned char c);
 int mathed_char_descent(LyXFont const &, unsigned char c);
@@ -23,9 +23,7 @@ void mathed_draw_deco(MathPainterInfo & pain, int x, int y, int w, int h,
 
 void mathed_draw_framebox(MathPainterInfo & pain, int x, int y, MathInset const *);
 
-void mathed_string_dim(LyXFont const &,
-	string const & s, int & asc, int & des, int & wid);
-
+void mathed_string_dim(LyXFont const & font, string const & s, Dimension & dim);
 int mathed_string_width(LyXFont const &, string const & s);
 int mathed_string_ascent(LyXFont const &, string const & s);
 int mathed_string_descent(LyXFont const &, string const & s);

@@ -44,10 +44,7 @@ void MathParboxInset::metrics(MathMetricsInfo & mi) const
 
 #if 1
 
-	xcell(0).metrics(mi);
-	width_ = xcell(0).width();
-	ascent_ = xcell(0).ascent();
-	descent_ = xcell(0).descent();
+	dim_ = xcell(0).metrics(mi);
 
 #else
 
@@ -106,9 +103,8 @@ void MathParboxInset::metrics(MathMetricsInfo & mi) const
 	rows_.push_back(row);
 
 	// what to report?
-	ascent_  = xcell(0).ascent();
-	descent_ = xcell(0).descent() + 1;
-	width_   = xcell(0).width()   + 2;
+	dim_  = xcell(0).dim();
+	metricsMarkers();
 #endif
 }
 

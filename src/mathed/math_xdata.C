@@ -31,7 +31,7 @@ void MathXArray::touch() const
 }
 
 
-void MathXArray::metrics(MathMetricsInfo & mi) const
+Dimension const & MathXArray::metrics(MathMetricsInfo & mi) const
 {
 	//if (clean_)
 	//	return;
@@ -41,27 +41,28 @@ void MathXArray::metrics(MathMetricsInfo & mi) const
 	drawn_  = false;
 
 	if (data_.empty()) {
-		mathed_char_dim(mi.base.font, 'I', dim_.a, dim_.d, dim_.w);
-		return;
+		mathed_char_dim(mi.base.font, 'I', dim_);
+		return dim_;;
 	}
 
 	dim_.clear();
 	for (const_iterator it = begin(); it != end(); ++it) {
 		MathInset const * p = it->nucleus();
 		MathScriptInset const * q = (it + 1 == end()) ? 0 : asScript(it);
-		int ww, aa, dd;
+		Dimension d;
 		if (q) {
 			q->metrics(p, mi);
-			q->dimensions2(p, ww, aa, dd);
+			q->dimensions2(p, d);
 			++it;
 		} else {
 			p->metrics(mi);
-			p->dimensions(ww, aa, dd);
+			p->dimensions(d);
 		}
-		dim_ += Dimension(ww, aa, dd);
+		dim_ += d;
 	}
 
 	//lyxerr << "MathXArray::metrics(): '" << dim_ << "\n";
+	return dim_;
 }
 
 
@@ -76,7 +77,7 @@ void MathXArray::metricsExternal(MathMetricsInfo & mi,
 	drawn_  = false;
 
 	if (data_.empty()) {
-		mathed_char_dim(mi.base.font, 'I', dim_.a, dim_.d, dim_.w);
+		mathed_char_dim(mi.base.font, 'I', dim_);
 		return;
 	}
 
@@ -84,19 +85,19 @@ void MathXArray::metricsExternal(MathMetricsInfo & mi,
 	for (const_iterator it = begin(); it != end(); ++it) {
 		MathInset const * p = it->nucleus();
 		MathScriptInset const * q = (it + 1 == end()) ? 0 : asScript(it);
-		int ww, aa, dd;
+		Dimension d;
 		if (q) {
 			q->metrics(p, mi);
-			q->dimensions2(p, ww, aa, dd);
+			q->dimensions2(p, d);
 			++it;
 			v.push_back(Row());
-			v.back().dim = Dimension(ww, aa, dd);
+			v.back().dim = d;
 			v.push_back(Row());
 		} else {
 			p->metrics(mi);
-			p->dimensions(ww, aa, dd);
+			p->dimensions(d);
 			v.push_back(Row());
-			v.back().dim = Dimension(ww, aa, dd);
+			v.back().dim = d;
 		}
 	}
 
@@ -170,7 +171,7 @@ void MathXArray::drawExternal(MathPainterInfo & pi, int x, int y,
 }
 
 
-void MathXArray::metricsT(TextMetricsInfo const & mi) const
+Dimension const & MathXArray::metricsT(TextMetricsInfo const & mi) const
 {
 	//if (clean_)
 	//	return;
@@ -178,17 +179,18 @@ void MathXArray::metricsT(TextMetricsInfo const & mi) const
 	for (const_iterator it = begin(); it != end(); ++it) {
 		MathInset const * p = it->nucleus();
 		MathScriptInset const * q = (it + 1 == end()) ? 0 : asScript(it);
-		int ww, aa, dd;
+		Dimension d;
 		if (q) {
 			q->metricsT(p, mi);
-			q->dimensions2(p, ww, aa, dd);
+			q->dimensions2(p, d);
 			++it;
 		} else {
 			p->metricsT(mi);
-			p->dimensions(ww, aa, dd);
+			p->dimensions(d);
 		}
-		dim_ += Dimension(ww, aa, dd);
+		dim_ += d;
 	}
+	return dim_;
 }
 
 

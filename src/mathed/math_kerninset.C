@@ -34,9 +34,9 @@ MathInset * MathKernInset::clone() const
 
 void MathKernInset::metrics(MathMetricsInfo & /*mi*/) const
 {
-	width_   = wid_.inBP();
-	ascent_  = 0;
-	descent_ = 0;
+	dim_.w = wid_.inBP();
+	dim_.a = 0;
+	dim_.d = 0;
 }
 
 

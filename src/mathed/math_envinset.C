@@ -23,10 +23,8 @@ MathInset * MathEnvInset::clone() const
 
 void MathEnvInset::metrics(MathMetricsInfo & mi) const
 {
-	xcell(0).metrics(mi);
-	ascent_  = xcell(0).ascent() + 1;
-	descent_ = xcell(0).descent() + 1;
-	width_   = xcell(0).width() + 2;
+	dim_ = xcell(0).metrics(mi);
+	metricsMarkers2();
 }
 
 
