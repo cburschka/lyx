@@ -1031,7 +1031,7 @@ int MathGridInset::border() const
 
 void MathGridInset::splitCell(LCursor & cur)
 {
-	if (cur.idx() + 1 == nargs())
+	if (cur.idx() == cur.lastidx())
 		return;
 	MathArray ar = cur.cell();
 	ar.erase(0, cur.pos());
@@ -1097,7 +1097,7 @@ void MathGridInset::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 			cur.idx() = cur.lastpos();
 
 			//mathcursor->normalize();
-			cur.dispatched(FINISHED);
+			cur.dispatched(FINISHED_LEFT);
 			return;
 		}
 
@@ -1156,7 +1156,7 @@ void MathGridInset::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 				cur.notdispatched();
 				return;
 			}
-			lyxerr << "returning DispatchResult(true, FINISHED)" << endl;
+			lyxerr << "returning FINISHED_LEFT" << endl;
 			return;
 		}
 

@@ -33,6 +33,7 @@ class Dimension;
 class InsetBase;
 class InsetOld_code;
 class FuncRequest;
+class FuncStatus;
 class LColor_color;
 class LCursor;
 class LyXTextClass;
@@ -129,7 +130,10 @@ public:
 	int dist(int x, int y) const;
 
 	/// try to handle that request
-	DispatchResult dispatch(LCursor & cur, FuncRequest const & cmd);
+	void dispatch(LCursor & cur, FuncRequest const & cmd);
+	/// do we want to handle this event?
+	bool getStatus(LCursor & cur, FuncRequest const & cmd, FuncStatus & status);
+
 	/// access to out BufferView. This should go...
 	BufferView * bv();
 	/// access to out BufferView. This should go...
@@ -194,13 +198,13 @@ public:
 	///
 	InsetBase * editXY(LCursor & cur, int x, int y);
 	///
-	void cursorUp(LCursor & cur, bool selecting = false);
+	void cursorUp(LCursor & cur);
 	///
-	void cursorDown(LCursor & cur, bool selecting = false);
+	void cursorDown(LCursor & cur);
 	///
-	bool cursorLeft(LCursor & cur, bool internal = true);
+	void cursorLeft(LCursor & cur);
 	///
-	bool cursorRight(LCursor & cur, bool internal = true);
+	void cursorRight(LCursor & cur);
 	///
 	void cursorLeftOneWord(LCursor & cur);
 	///
@@ -347,21 +351,6 @@ public:
 	std::string getPossibleLabel(LCursor & cur) const;
 	/// is this paragraph right-to-left?
 	bool isRTL(Paragraph const & par) const;
-
-	///
-	DispatchResult moveRight(LCursor & cur);
-	///
-	DispatchResult moveLeft(LCursor & cur);
-	///
-	DispatchResult moveRightIntern(LCursor & cur, bool front,
-		bool activate_inset, bool selecting);
-	///
-	DispatchResult moveLeftIntern(LCursor & cur, bool front,
-		bool activate_inset, bool selecting);
-	///
-	DispatchResult moveUp(LCursor & cur);
-	///
-	DispatchResult moveDown(LCursor & cur);
 	///
 	bool checkAndActivateInset(LCursor & cur, bool front);
 

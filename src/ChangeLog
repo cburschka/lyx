@@ -4,6 +4,19 @@
 
 2004-02-20  André Pönitz  <poenitz@gmx.net>
 
+	* dispatchresult.h: rename 'FINISHED' to 'FINISHED_LEFT'
+
+	* cursor.[Ch]: prepare for localized getStatus()
+
+	* lyxtext.h:
+	* tabular.C:
+	* text.C:
+	* text2.C:
+	* text3.C:  streamlines the LyXText cursor movement handlers a bit.
+
+
+2004-02-20  André Pönitz  <poenitz@gmx.net>
+
 	* lyxfunc.[Ch]: rename view_status_message() to viewStatusMessage()
 
 2004-02-16  Alfredo Braunstein  <abraunst@lyx.org>

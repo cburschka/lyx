@@ -877,7 +877,7 @@ void LyXText::breakParagraph(LCursor & cur, char keep_layout)
 	if (cur.pos() != 0 && cur.textRow().pos() == cur.pos()
 	    && !cpit->isNewline(cur.pos() - 1))
 	{
-		cursorLeft(cur, true);
+		cursorLeft(cur);
 	}
 
 	while (!next_par->empty() && next_par->isNewline(0))
@@ -1254,7 +1254,7 @@ void LyXText::deleteWordForward(LCursor & cur)
 {
 	BOOST_ASSERT(this == cur.text());
 	if (cur.lastpos() == 0)
-		cursorRight(cur, true);
+		cursorRight(cur);
 	else {
 		cur.resetAnchor();
 		cur.selection() = true;
@@ -1270,7 +1270,7 @@ void LyXText::deleteWordBackward(LCursor & cur)
 {
 	BOOST_ASSERT(this == cur.text());
 	if (cur.lastpos() == 0)
-		cursorLeft(cur, true);
+		cursorLeft(cur);
 	else {
 		cur.resetAnchor();
 		cur.selection() = true;
@@ -1287,7 +1287,7 @@ void LyXText::deleteLineForward(LCursor & cur)
 	BOOST_ASSERT(this == cur.text());
 	if (cur.lastpos() == 0) {
 		// Paragraph is empty, so we just go to the right
-		cursorRight(cur, true);
+		cursorRight(cur);
 	} else {
 		cur.resetAnchor();
 		cur.selection() = true; // to avoid deletion
@@ -1355,12 +1355,11 @@ void LyXText::changeCase(LCursor & cur, LyXText::TextCase action)
 void LyXText::Delete(LCursor & cur)
 {
 	BOOST_ASSERT(this == cur.text());
-	// this is a very simple implementation
-	// just move to the right
-	// if you had success make a backspace
-	size_t oldpar = cur.par();
-	if (cursorRight(cur, true)) {
-		recordUndo(cur, Undo::DELETE, oldpar);
+	// just move to the right, if we had success make a backspace
+	CursorSlice sl = cur.current();
+	cursorRight(cur);
+	if (sl == cur.current()) {
+		recordUndo(cur, Undo::DELETE, cur.par(), max(0, cur.par() - 1));
 		backspace(cur);
 	}
 }
@@ -1390,7 +1389,7 @@ void LyXText::backspace(LCursor & cur)
 			// handle the actual deletion of the paragraph.
 
 			if (cur.par() != 0) {
-				cursorLeft(cur, true);
+				cursorLeft(cur);
 				// the layout things can change the height of a row !
 				redoParagraph(cur);
 				return;

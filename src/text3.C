@@ -299,7 +299,7 @@ void LyXText::cursorPrevious(LCursor & cur)
 	if (cpar == cur.par() && cpos == cur.pos()) {
 		// we have a row which is taller than the workarea. The
 		// simplest solution is to move to the previous row instead.
-		cursorUp(cur, true);
+		cursorUp(cur);
 	}
 
 	bv()->updateScrollbar();
@@ -319,7 +319,7 @@ void LyXText::cursorNext(LCursor & cur)
 	if (cpar == cur.par() && cpos == cur.pos()) {
 		// we have a row which is taller than the workarea. The
 		// simplest solution is to move to the next row instead.
-		cursorDown(cur, true);
+		cursorDown(cur);
 	}
 
 	bv()->updateScrollbar();
@@ -373,12 +373,13 @@ bool LyXText::isRTL(Paragraph const & par) const
 }
 
 
-DispatchResult LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
+void LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 {
 	lyxerr[Debug::ACTION] << "LyXText::dispatch: cmd: " << cmd << endl;
 	//lyxerr << "*** LyXText::dispatch: cmd: " << cmd << endl;
 
 	BufferView * bv = &cur.bv();
+	CursorSlice sl = cur.current();
 
 	switch (cmd.action) {
 
@@ -461,38 +462,42 @@ DispatchResult LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 		finishChange(cur);
 		break;
 
+	case LFUN_RIGHT:
 	case LFUN_RIGHTSEL:
-		if (!cur.selection())
-			cur.resetAnchor();
+		cur.selHandle(cmd.action == LFUN_RIGHTSEL);
 		if (isRTL(cur.paragraph()))
-			cursorLeft(cur, true);
+			cursorLeft(cur);
 		else
-			cursorRight(cur, true);
-		finishChange(cur, true);
+			cursorRight(cur);
+		if (sl == cur.current())
+			cur.dispatched(FINISHED_RIGHT);
 		break;
 
+	case LFUN_LEFT:
 	case LFUN_LEFTSEL:
-		if (!cur.selection())
-			cur.resetAnchor();
+		cur.selHandle(cmd.action == LFUN_LEFTSEL);
 		if (isRTL(cur.paragraph()))
-			cursorRight(cur, true);
+			cursorRight(cur);
 		else
-			cursorLeft(cur, true);
-		finishChange(cur, true);
+			cursorLeft(cur);
+		if (sl == cur.current())
+			cur.dispatched(FINISHED_LEFT);
 		break;
 
+	case LFUN_UP:
 	case LFUN_UPSEL:
-		if (!cur.selection())
-			cur.resetAnchor();
-		cursorUp(cur, true);
-		finishChange(cur, true);
+		cur.selHandle(cmd.action == LFUN_UPSEL);
+		cursorUp(cur);
+		if (sl == cur.current())
+			cur.dispatched(FINISHED_UP);
 		break;
 
+	case LFUN_DOWN:
 	case LFUN_DOWNSEL:
-		if (!cur.selection())
-			cur.resetAnchor();
-		cursorDown(cur, true);
-		finishChange(cur, true);
+		cur.selHandle(cmd.action == LFUN_DOWNSEL);
+		cursorDown(cur);
+		if (sl == cur.current())
+			cur.dispatched(FINISHED_DOWN);
 		break;
 
 	case LFUN_UP_PARAGRAPHSEL:
@@ -563,22 +568,6 @@ DispatchResult LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 		break;
 	}
 
-	case LFUN_RIGHT:
-		finishChange(cur);
-		return moveRight(cur);
-
-	case LFUN_LEFT:
-		finishChange(cur);
-		return moveLeft(cur);
-
-	case LFUN_UP:
-		finishChange(cur);
-		return moveUp(cur);
-
-	case LFUN_DOWN:
-		finishChange(cur);
-		return moveDown(cur);
-
 	case LFUN_UP_PARAGRAPH:
 		if (!cur.mark())
 			cur.clearSelection();
@@ -598,8 +587,9 @@ DispatchResult LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 			cur.clearSelection();
 		finishChange(cur, false);
 		if (cur.par() == 0 && cur.textRow().pos() == 0)
-			return DispatchResult(false, FINISHED_UP);
-		cursorPrevious(cur);
+			cur.dispatched(FINISHED_UP);
+		else
+			cursorPrevious(cur);
 		break;
 
 	case LFUN_NEXT:
@@ -608,8 +598,9 @@ DispatchResult LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 		finishChange(cur, false);
 		if (cur.par() == cur.lastpar()
 			  && cur.textRow().endpos() == cur.lastpos())
-			return DispatchResult(false, FINISHED_DOWN);
-		cursorNext(cur);
+			cur.dispatched(FINISHED_DOWN);
+		else
+			cursorNext(cur);
 		break;
 
 	case LFUN_HOME:
@@ -653,8 +644,8 @@ DispatchResult LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 		// Reverse the effect of LFUN_BREAKPARAGRAPH_SKIP.
 		if (!cur.selection()) {
 			if (cur.pos() == cur.lastpos()) {
-				cursorRight(cur, true);
-				cursorLeft(cur, true);
+				cursorRight(cur);
+				cursorLeft(cur);
 			}
 			Delete(cur);
 			cur.resetAnchor();
@@ -800,9 +791,9 @@ DispatchResult LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 	case LFUN_INSET_TOGGLE:
 		cur.clearSelection();
 		if (!toggleInset(cur))
-			return DispatchResult(false);
-		cur.update();
-		bv->switchKeyMap();
+			cur.notdispatched();
+		else
+			bv->switchKeyMap();
 		break;
 
 	case LFUN_SPACE_INSERT:
@@ -880,21 +871,25 @@ DispatchResult LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 		break;
 
 	case LFUN_BEGINNINGBUFSEL:
-		if (in_inset_)
-			return DispatchResult(false);
-		if (!cur.selection())
-			cur.resetAnchor();
-		cursorTop(cur);
-		finishChange(cur, true);
+		if (in_inset_) {
+			cur.notdispatched();
+		} else {
+			if (!cur.selection())
+				cur.resetAnchor();
+			cursorTop(cur);
+			finishChange(cur, true);
+		}
 		break;
 
 	case LFUN_ENDBUFSEL:
-		if (in_inset_)
-			return DispatchResult(false);
-		if (!cur.selection())
-			cur.resetAnchor();
-		cursorBottom(cur);
-		finishChange(cur, true);
+		if (in_inset_) {
+			cur.notdispatched();
+		} else {
+			if (!cur.selection())
+				cur.resetAnchor();
+			cursorBottom(cur);
+			finishChange(cur, true);
+		}
 		break;
 
 	case LFUN_GETXY:
@@ -1110,9 +1105,9 @@ DispatchResult LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 		// FIXME: shouldn't be top-text-specific
 		if (!in_inset_ && cur.current() == old) {
 			if (cmd.y - bv->top_y() >= bv->workHeight())
-				cursorDown(cur, true);
+				cursorDown(cur);
 			else if (cmd.y - bv->top_y() < 0)
-				cursorUp(cur, true);
+				cursorUp(cur);
 		}
 
 		// don't set anchor_
@@ -1186,8 +1181,10 @@ DispatchResult LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 	case LFUN_MOUSE_RELEASE: {
 		// do nothing if we used the mouse wheel
 		if (cmd.button() == mouse_button::button4
-		 || cmd.button() == mouse_button::button5)
-			return DispatchResult(true, false);
+		 || cmd.button() == mouse_button::button5) {
+			cur.notdispatched();
+			break;
+		}
 
 		selection_possible = false;
 
@@ -1452,7 +1449,7 @@ DispatchResult LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 		lyxerr << "handle LFUN_FINISHED_LEFT" << endl;
 		cur.pop(cur.currentDepth());
 		if (isRTL(cur.paragraph()))
-			cursorLeft(cur, true);
+			cursorLeft(cur);
 		cur.bv().cursor() = cur;
 		break;
 
@@ -1460,21 +1457,21 @@ DispatchResult LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 		lyxerr << "handle LFUN_FINISHED_RIGHT" << endl;
 		cur.pop(cur.currentDepth());
 		if (!isRTL(cur.paragraph()))
-			cursorRight(cur, true);
+			cursorRight(cur);
 		cur.bv().cursor() = cur;
 		break;
 
 	case LFUN_FINISHED_UP:
 		lyxerr << "handle LFUN_FINISHED_UP" << endl;
 		cur.pop(cur.currentDepth());
-		cursorUp(cur, true);
+		cursorUp(cur);
 		cur.bv().cursor() = cur;
 		break;
 
 	case LFUN_FINISHED_DOWN:
 		lyxerr << "handle LFUN_FINISHED_DOWN" << endl;
 		cur.pop(cur.currentDepth());
-		cursorDown(cur, true);
+		cursorDown(cur);
 		cur.bv().cursor() = cur;
 		break;
 
@@ -1535,7 +1532,7 @@ DispatchResult LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 			breakParagraph(cur);
 
 			if (cur.lastpos() != 0) {
-				cursorLeft(cur, true);
+				cursorLeft(cur);
 				breakParagraph(cur);
 			}
 
@@ -1596,9 +1593,21 @@ DispatchResult LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 		break;
 	}
 
-	default:
-		return DispatchResult(false);
-	}
+	case LFUN_ESCAPE:
+		if (cur.selection())
+			cur.selection() = false;
+		else
+			cur.dispatched(FINISHED_LEFT);
+		break;
 
-	return DispatchResult(true, true);
+	default:
+		cur.notdispatched();
+		break;
+	}
+}
+
+
+bool LyXText::getStatus(LCursor &, FuncRequest const &, FuncStatus &)
+{
+	return false;
 }

@@ -878,7 +878,7 @@ void LyXText::insertInset(LCursor & cur, InsetBase * inset)
 	// and fails if the cursor is behind the inset and getInset
 	// does not return the inset!
 	if (isHighlyEditableInset(inset))
-		cursorLeft(cur, true);
+		cursorLeft(cur);
 	unFreezeUndo();
 }
 
@@ -1007,7 +1007,7 @@ void LyXText::setSelectionRange(LCursor & cur, lyx::pos_type length)
 		return;
 	cur.resetAnchor();
 	while (length--)
-		cursorRight(cur, true);
+		cursorRight(cur);
 	cur.setSelection();
 }
 
@@ -1344,6 +1344,8 @@ InsetBase * LyXText::editXY(LCursor & cur, int x, int y)
 
 bool LyXText::checkAndActivateInset(LCursor & cur, bool front)
 {
+	if (cur.selection())
+		return false;
 	if (cur.pos() == cur.lastpos())
 		return false;
 	InsetBase * inset = cur.nextInset();
@@ -1354,125 +1356,56 @@ bool LyXText::checkAndActivateInset(LCursor & cur, bool front)
 }
 
 
-DispatchResult LyXText::moveRight(LCursor & cur)
-{
-	if (isRTL(cur.paragraph()))
-		return moveLeftIntern(cur, false, true, false);
-	else
-		return moveRightIntern(cur, true, true, false);
-}
-
-
-DispatchResult LyXText::moveLeft(LCursor & cur)
-{
-	if (isRTL(cur.paragraph()))
-		return moveRightIntern(cur, true, true, false);
-	else
-		return moveLeftIntern(cur, false, true, false);
-}
-
-
-DispatchResult LyXText::moveRightIntern(LCursor & cur, 
-	bool front, bool activate_inset, bool selecting)
-{
-	if (cur.par() == cur.lastpar() && cur.pos() == cur.lastpos())
-		return DispatchResult(false, FINISHED_RIGHT);
-	if (activate_inset && checkAndActivateInset(cur, front))
-		return DispatchResult(true, true);
-	cursorRight(cur, true);
-	if (!selecting)
-		cur.clearSelection();
-	return DispatchResult(true);
-}
-
-
-DispatchResult LyXText::moveLeftIntern(LCursor & cur,
-	bool front, bool activate_inset, bool selecting)
-{
-	if (cur.par() == 0 && cur.pos() == 0)
-		return DispatchResult(false, FINISHED);
-	cursorLeft(cur, true);
-	if (!selecting)
-		cur.clearSelection();
-	if (activate_inset && checkAndActivateInset(cur, front))
-		return DispatchResult(true, true);
-	return DispatchResult(true);
-}
-
-
-DispatchResult LyXText::moveUp(LCursor & cur)
-{
-	if (cur.par() == 0 && cur.crow() == 0)
-		return DispatchResult(false, FINISHED_UP);
-	cursorUp(cur, false);
-	cur.clearSelection();
-	return DispatchResult(true);
-}
-
-
-DispatchResult LyXText::moveDown(LCursor & cur)
-{
-	if (cur.par() == cur.lastpar() && cur.textRow().endpos() == cur.lastpos())
-		return DispatchResult(false, FINISHED_DOWN);
-	cursorDown(cur, false);
-	cur.clearSelection();
-	return DispatchResult(true);
-}
-
-
-bool LyXText::cursorLeft(LCursor & cur, bool internal)
+void LyXText::cursorLeft(LCursor & cur)
 {
 	if (cur.pos() != 0) {
 		bool boundary = cur.boundary();
 		setCursor(cur, cur.par(), cur.pos() - 1, true, false);
-		if (!internal && !boundary &&
-		    bidi.isBoundary(*bv()->buffer(), cur.paragraph(), cur.pos() + 1))
-			setCursor(cur, cur.par(), cur.pos() + 1, true, true);
-		return true;
+		if (!checkAndActivateInset(cur, false)) {
+			if (false && !boundary &&
+					bidi.isBoundary(*bv()->buffer(), cur.paragraph(), cur.pos() + 1))
+				setCursor(cur, cur.par(), cur.pos() + 1, true, true);
+			return;
+		}
 	}
 
 	if (cur.par() != 0) {
 		// steps into the paragraph above
 		setCursor(cur, cur.par() - 1, getPar(cur.par() - 1)->size());
-		return true;
 	}
-
-	return false;
 }
 
 
-bool LyXText::cursorRight(LCursor & cur, bool internal)
+void LyXText::cursorRight(LCursor & cur)
 {
-	if (!internal && cur.boundary()) {
+	if (false && cur.boundary()) {
 		setCursor(cur, cur.par(), cur.pos(), true, false);
-		return true;
+		return;
 	}
 
 	if (cur.pos() != cur.lastpos()) {
-		setCursor(cur, cur.par(), cur.pos() + 1, true, false);
-		if (!internal && bidi.isBoundary(*bv()->buffer(), cur.paragraph(),
-						 cur.pos()))
-			setCursor(cur, cur.par(), cur.pos(), true, true);
-		return true;
+		if (!checkAndActivateInset(cur, true)) { 
+			setCursor(cur, cur.par(), cur.pos() + 1, true, false);
+			if (false && bidi.isBoundary(*bv()->buffer(), cur.paragraph(),
+							 cur.pos()))
+				setCursor(cur, cur.par(), cur.pos(), true, true);
+		}
+		return;
 	}
 
-	if (cur.par() != cur.lastpar()) {
+	if (cur.par() != cur.lastpar())
 		setCursor(cur, cur.par() + 1, 0);
-		return true;
-	}
-
-	return false;
 }
 
 
-void LyXText::cursorUp(LCursor & cur, bool selecting)
+void LyXText::cursorUp(LCursor & cur)
 {
 	Row const & row = cur.textRow();
 	int x = cur.x_target();
 	int y = cursorY(cur.current()) - row.baseline() - 1;
 	setCursorFromCoordinates(cur, x, y);
 
-	if (!selecting) {
+	if (!cur.selection()) {
 		InsetBase * inset_hit = checkInsetHit(cur.x_target(), y);
 		if (inset_hit && isHighlyEditableInset(inset_hit))
 			inset_hit->editXY(cur, cur.x_target(), y);
@@ -1480,14 +1413,14 @@ void LyXText::cursorUp(LCursor & cur, bool selecting)
 }
 
 
-void LyXText::cursorDown(LCursor & cur, bool selecting)
+void LyXText::cursorDown(LCursor & cur)
 {
 	Row const & row = cur.textRow();
 	int x = cur.x_target();
 	int y = cursorY(cur.current()) - row.baseline() + row.height() + 1;
 	setCursorFromCoordinates(cur, x, y);
 
-	if (!selecting) {
+	if (!cur.selection()) {
 		InsetBase * inset_hit = checkInsetHit(cur.x_target(), y);
 		if (inset_hit && isHighlyEditableInset(inset_hit))
 			inset_hit->editXY(cur, cur.x_target(), y);

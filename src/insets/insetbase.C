@@ -40,6 +40,12 @@ void InsetBase::priv_dispatch(LCursor & cur, FuncRequest const &)
 }
 
 
+bool InsetBase::getStatus(LCursor &, FuncRequest const &, FuncStatus &)
+{
+	return false;
+}
+
+
 void InsetBase::edit(LCursor &, bool)
 {
 	lyxerr << "InsetBase: edit left/right" << std::endl;

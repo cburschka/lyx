@@ -470,6 +470,7 @@ void InsetTabular::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 	case LFUN_RIGHTSEL:
 	case LFUN_RIGHT:
 		cell(cur.idx()).dispatch(cur, cmd);
+		cur.dispatched(NONE); // override the cell's result
 		if (sl == cur.current())
 			isRightToLeft(cur) ? movePrevCell(cur) : moveNextCell(cur);
 		if (sl == cur.current())
@@ -479,15 +480,17 @@ void InsetTabular::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 	case LFUN_LEFTSEL: 
 	case LFUN_LEFT:
 		cell(cur.idx()).dispatch(cur, cmd);
+		cur.dispatched(NONE); // override the cell's result
 		if (sl == cur.current())
 			isRightToLeft(cur) ? moveNextCell(cur) : movePrevCell(cur);
 		if (sl == cur.current())
-			cur.dispatched(FINISHED);
+			cur.dispatched(FINISHED_LEFT);
 		break;
 
 	case LFUN_DOWNSEL:
 	case LFUN_DOWN:
 		cell(cur.idx()).dispatch(cur, cmd);
+		cur.dispatched(NONE); // override the cell's result
 		if (sl == cur.current())
 			if (tabular.row_of_cell(cur.idx()) != tabular.rows() - 1) {
 				cur.idx() = tabular.getCellBelow(cur.idx());
@@ -502,6 +505,7 @@ void InsetTabular::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 	case LFUN_UPSEL:
 	case LFUN_UP:
 		cell(cur.idx()).dispatch(cur, cmd);
+		cur.dispatched(NONE); // override the cell's result
 		if (sl == cur.current())
 			if (tabular.row_of_cell(cur.idx()) != 0) {
 				cur.idx() = tabular.getCellAbove(cur.idx());

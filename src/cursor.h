@@ -22,6 +22,7 @@ class BufferView;
 class UpdatableInset;
 class MathAtom;
 class DispatchResult;
+class FuncStatus;
 class FuncRequest;
 class InsetTabular;
 class LyXText;
@@ -74,6 +75,9 @@ public:
 	explicit LCursor(BufferView & bv);
 	/// dispatch from innermost inset upwards
 	DispatchResult dispatch(FuncRequest const & cmd);
+	/// are we willing to handle this event?
+	bool getStatus(FuncRequest const & cmd, FuncStatus & flag);
+
 	/// add a new cursor slice
 	void push(InsetBase * inset);
 	/// add a new cursor slice, place cursor on left end

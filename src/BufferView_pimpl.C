@@ -981,15 +981,6 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & cmd)
 
 	switch (cmd.action) {
 
-	case LFUN_ESCAPE: {
-		if (bv_->cursor().depth() > 1) {
-			bv_->cursor().pop();
-			// Tell the paragraph dialog that we changed paragraph
-			dispatch(FuncRequest(LFUN_PARAGRAPH_UPDATE));
-		}
-		break;
-	}
-
 	case LFUN_UNDO:
 		if (available()) {
 			cur.message(_("Undo"));

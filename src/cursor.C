@@ -98,7 +98,7 @@ DispatchResult LCursor::dispatch(FuncRequest const & cmd0)
 				// the inset handled the event fully
 				current_ = cursor_.size() - 1;
 				return DispatchResult(true, true);
-			case FINISHED:
+			case FINISHED_LEFT:
 				// the inset handled the event partially
 				cmd = FuncRequest(LFUN_FINISHED_LEFT);
 				break;
@@ -122,6 +122,30 @@ DispatchResult LCursor::dispatch(FuncRequest const & cmd0)
 	//lyxerr << "   result: " << res.val() << endl;
 	current_ = cursor_.size() - 1;
 	return disp_;
+}
+
+
+bool LCursor::getStatus(FuncRequest const & cmd, FuncStatus & status)
+{
+	lyxerr << "\nLCursor::getStatus: cmd: " << cmd << endl << *this << endl;
+	BOOST_ASSERT(pos() <= lastpos());
+	BOOST_ASSERT(idx() <= lastidx());
+	BOOST_ASSERT(par() <= lastpar());
+	for (current_ = cursor_.size() - 1; current_ >= 1; --current_) {
+		// the inset's getStatus() will return 'true' if it made
+		// a definitive decision on whether it want to handle the
+		// request or not. The result of this decision is put into
+		// the 'status' parameter.
+		bool const res = inset()->getStatus(*this, cmd, status);
+		if (res) {
+			current_ = cursor_.size() - 1;
+			return true;
+		}
+	}
+	BOOST_ASSERT(current_ == 0);
+	bool const res = bv_->text()->getStatus(*this, cmd, status);
+	current_ = cursor_.size() - 1;
+	return res;
 }
 
 
@@ -1936,7 +1960,7 @@ void LCursor::replaceWord(string const & replacestring)
 
 	// Go back so that replacement string is also spellchecked
 	for (string::size_type i = 0; i < replacestring.length() + 1; ++i)
-		t->cursorLeft(*this, true);
+		t->cursorLeft(*this);
 }
 
 

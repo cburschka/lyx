@@ -1999,7 +1999,6 @@ int LyXTabular::TeXRow(ostream & os, int i, Buffer const & buf,
 {
 	int ret = 0;
 	int cell = getCellNumber(i, 0);
-	BufferParams const & bufferparams = buf.params();
 
 	ret += TeXTopHLine(os, i);
 	for (int j = 0; j < columns_; ++j) {

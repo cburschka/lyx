@@ -432,7 +432,7 @@ void MathNestInset::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 	case LFUN_LEFT:
 		cur.selHandle(cmd.action == LFUN_LEFTSEL);
 		if (!cur.left())
-			cur.dispatched(FINISHED);
+			cur.dispatched(FINISHED_LEFT);
 		break;
 
 	case LFUN_UPSEL:
@@ -466,7 +466,7 @@ void MathNestInset::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 	case LFUN_WORDLEFT:
 		cur.selHandle(cmd.action == LFUN_WORDLEFTSEL);
 		if (!cur.home())
-			cur.dispatched(FINISHED);
+			cur.dispatched(FINISHED_LEFT);
 		break;
 
 	case LFUN_WORDRIGHTSEL:
@@ -480,7 +480,7 @@ void MathNestInset::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 	case LFUN_HOME:
 		cur.selHandle(cmd.action == LFUN_HOMESEL);
 		if (!cur.home())
-			cur.dispatched(FINISHED_RIGHT);
+			cur.dispatched(FINISHED_LEFT);
 		break;
 
 	case LFUN_ENDSEL:
@@ -494,7 +494,7 @@ void MathNestInset::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 	case LFUN_PRIOR:
 	case LFUN_BEGINNINGBUFSEL:
 	case LFUN_BEGINNINGBUF:
-		cur.dispatched(FINISHED);
+		cur.dispatched(FINISHED_LEFT);
 		break;
 
 	case LFUN_NEXTSEL:
@@ -522,14 +522,14 @@ void MathNestInset::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 	case LFUN_DELETE:
 		//recordUndo(cur, Undo::ATOMIC);
 		cur.erase();
-		cur.dispatched(FINISHED);
+		cur.dispatched(FINISHED_LEFT);
 		break;
 
 	case LFUN_ESCAPE:
 		if (cur.selection()) 
 			cur.selClear();
 		else 
-			cur.dispatched(FINISHED);
+			cur.dispatched(FINISHED_LEFT);
 		break;
 
 	case LFUN_INSET_TOGGLE:

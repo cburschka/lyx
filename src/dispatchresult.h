@@ -14,25 +14,19 @@
 #define DISPATCH_RESULT_H
 
 /** Dispatch result codes
-	DISPATCHED          = the inset caught the action
-	DISPATCHED_NOUPDATE = the inset caught the action and no update
-			is needed to redraw the inset
-	FINISHED            = the inset must be unlocked as a result
-			of the action
+	NONE                = no special action required
+	FINISHED_LEFT       = the cursor leaves the inset to the LEFT
+	                      as consequence of this action
 	FINISHED_RIGHT      = FINISHED, but move the cursor RIGHT from
 			the inset.
 	FINISHED_UP         = FINISHED, but move the cursor UP from
 			the inset.
 	FINISHED_DOWN       = FINISHED, but move the cursor DOWN from
 			the inset.
-	FINISHED_POP       = FINISHED, but move the cursor out the inset
-                       (possibly more than one level)
-	UNDISPATCHED        = the action was not caught, it should be
-			dispatched by lower level insets
 */
 enum dispatch_result_t {
 	NONE = 0,
-	FINISHED,
+	FINISHED_LEFT,
 	FINISHED_RIGHT,
 	FINISHED_UP,
 	FINISHED_DOWN

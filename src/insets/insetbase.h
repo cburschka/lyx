@@ -21,6 +21,7 @@ class BufferView;
 class CursorSlice;
 class DispatchResult;
 class FuncRequest;
+class FuncStatus;
 class LaTeXFeatures;
 class LCursor;
 class LyXLex;
@@ -69,6 +70,9 @@ public:
 
 	// the real dispatcher
 	void dispatch(LCursor & cur, FuncRequest const & cmd);
+	/// do we want to handle this event?
+	virtual bool getStatus(LCursor & cur, FuncRequest const & cmd,
+		FuncStatus & status);
 
 	/// cursor enters
 	virtual void edit(LCursor & cur, bool left);
