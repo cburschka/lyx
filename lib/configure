@@ -1363,8 +1363,9 @@ cat >$outfile <<EOF
 \\converter xbm  eps "$xbm_to_eps" ""
 \\converter xwd  eps "$xwd_to_eps" ""
 
-\\converter tgif gif "tgif -print -gif \$\$i" ""
-\\converter tgif pdf "tgif -print -pdf \$\$i" ""
+\\converter tgif xpm "tgif -print -stdout -xpm \$\$i > \$\$o" ""
+\\converter tgif png "tgif -print -stdout -png \$\$i > \$\$o" ""
+\\converter tgif pdf "tgif -print -stdout -pdf \$\$i > \$\$o" ""
 
 \\converter gif  png "$gif_to_png" ""
 \\converter eps  png "$eps_to_png" ""
