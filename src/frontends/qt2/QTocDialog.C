@@ -26,6 +26,9 @@ QTocDialog::QTocDialog(QToc * form)
 	: QTocDialogBase(0, 0, false, 0),
 	form_(form)
 {
+	// disable sorting
+	tocLV->setSorting(-1);
+
 	connect(closePB, SIGNAL(clicked()),
 		form, SLOT(slotClose()));
 }

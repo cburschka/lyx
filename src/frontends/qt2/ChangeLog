@@ -1,5 +1,9 @@
 2003-02-02  John Levon  <levon@movementarian.org>
 
+	* QTocDialog.C: set no sorting (bug 856)
+
+2003-02-02  John Levon  <levon@movementarian.org>
+
 	* QPrefs.C: apply formats first (bug 854)
 	* QPrefsDialog.C: make sure a formats/converters item
 	  is always selected (bug 855)
