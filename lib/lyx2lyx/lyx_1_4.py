@@ -18,9 +18,12 @@
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 import re
+from os import access, F_OK
+import os.path
 from parser_tools import find_token, find_end_of_inset, get_next_paragraph, \
                          get_paragraph, get_value, del_token, is_nonempty_line,\
-			 find_tokens, find_end_of
+			 find_tokens, find_end_of, find_token2
+from sys import stdin
 from string import replace, split, find, strip, join
 
 ##
@@ -1115,6 +1118,46 @@ def revert_float(lines, opt):
         del_token(lines, 'sideways', i, j)
         i = i + 1
 
+def convert_graphics(lines, opt):
+    """ Add extension to filenames of insetgraphics if necessary.
+    """
+    if opt.input == stdin:
+	dir = ""
+    else:
+	dir = os.path.dirname(os.path.abspath(opt.input.name))
+    i = 0
+    while 1:
+        i = find_token(lines, "\\begin_inset Graphics", i)
+        if i == -1:
+            return
+
+	j = find_token2(lines, "filename", i)
+        if j == -1:
+            return
+        i = i + 1
+	filename = split(lines[j])[1]
+	absname = os.path.normpath(os.path.join(dir, filename))
+	if opt.input == stdin and not os.path.isabs(filename):
+	    # We don't know the directory and cannot check the file.
+	    # We could use a heuristic and take the current directory,
+	    # and we could try to find out if filename has an extension,
+	    # but that would be just guesses and could be wrong.
+	    opt.warning("""Warning: Can not determine wether file
+         %s
+         needs an extension when reading from standard input.
+         You may need to correct the file manually or run
+         lyx2lyx again with the .lyx file as commandline argument.""" % filename)
+	    continue
+	# This needs to be the same algorithm as in pre 233 insetgraphics
+	if access(absname, F_OK):
+	    continue
+	if access(absname + ".ps", F_OK):
+	    lines[j] = replace(lines[j], filename, filename + ".ps")
+	    continue
+	if access(absname + ".eps", F_OK):
+	    lines[j] = replace(lines[j], filename, filename + ".eps")
+
+
 ##
 # Convertion hub
 #
@@ -1177,8 +1220,17 @@ def convert(header, body, opt):
     if opt.format < 232:
         convert_bibtopic(header, opt)
 	opt.format = 232
+    if opt.end == opt.format: return
+
+    if opt.format < 233:
+        convert_graphics(body, opt)
+	opt.format = 233
 
 def revert(header, body, opt):
+    if opt.format > 232:
+	opt.format = 232
+    if opt.end == opt.format: return
+
     if opt.format > 231:
         revert_bibtopic(header, opt)
 	opt.format = 231

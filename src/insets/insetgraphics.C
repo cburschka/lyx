@@ -110,10 +110,6 @@ using std::ostringstream;
 
 namespace {
 
-///////////////////////////////////////////////////////////////////////////
-int const VersionNumber = 1;
-///////////////////////////////////////////////////////////////////////////
-
 // This function is a utility function
 // ... that should be with ChangeExtension ...
 inline
@@ -540,21 +536,12 @@ int InsetGraphics::latex(Buffer const & buf, ostream & os,
 	string const relative_file =
 		params().filename.relFilename(buf.filePath());
 
-	// A missing (e)ps-extension is no problem for LaTeX, so
-	// we have to test three different cases
-#ifdef WITH_WARNINGS
-#warning uh, but can our cache handle it ? no.
-#endif
 	string const file_ = params().filename.absFilename();
-	bool const file_exists =
-		!file_.empty() &&
-		(IsFileReadable(file_) ||		// original
-		 IsFileReadable(file_ + ".eps") ||	// original.eps
-		 IsFileReadable(file_ + ".ps"));	// original.ps
+	bool const file_exists = !file_.empty() && IsFileReadable(file_);
 	string const message = file_exists ?
 		string() : string("bb = 0 0 200 100, draft, type=eps");
 	// if !message.empty() than there was no existing file
-	// "filename(.(e)ps)" found. In this case LaTeX
+	// "filename" found. In this case LaTeX
 	// draws only a rectangle with the above bb and the
 	// not found filename in it.
 	lyxerr[Debug::GRAPHICS]
@@ -596,7 +583,8 @@ int InsetGraphics::latex(Buffer const & buf, ostream & os,
 		// Remove the extension so the LaTeX will use whatever
 		// is appropriate (when there are several versions in
 		// different formats)
-		if (!(IsFileReadable(file_ + ".eps") || IsFileReadable(file_ + ".ps")))
+		basename = RemoveExtension(basename);
+		if(params().filename.isZipped())
 			basename = RemoveExtension(basename);
 		// This works only if the filename contains no dots besides
 		// the just removed one. We can fool here by replacing all

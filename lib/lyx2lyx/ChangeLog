@@ -1,3 +1,9 @@
+2004-04-29  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* lyx_1_4.py (convert_graphics): new, convert graphics filenames
+	* lyx_1_4.py (revert, convert): handle format 233
+	* lyx2lyx: up the format to 233.
+
 2004-04-19  José Matos   <jamatos@lyx.orrg>
 	* parser_tools.py (chain): fix the detection of the last format for
 	revertions.
