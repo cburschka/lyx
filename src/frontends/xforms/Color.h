@@ -55,12 +55,13 @@ struct RGBColor {
 };
 
 struct NamedColor : public RGBColor {
-	std::string name;
+	std::string lyxname;
+	std::string guiname;
 	NamedColor() : RGBColor() {}
-	NamedColor(std::string const & n, RGBColor const & c)
-		: RGBColor(c), name(n) {}
+	NamedColor(std::string const & lyx, std::string const & gui,
+		   RGBColor const & c)
+		: RGBColor(c), lyxname(lyx), guiname(gui) {}
 	RGBColor const & color() const { return *this; }
-	std::string const & getname() const { return name; }
 };
 
 inline

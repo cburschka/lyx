@@ -14,7 +14,6 @@
 #define FORMPREFERENCES_H
 
 #include "FormBase.h"
-#include "xforms_helpers.h" // XformColor
 
 #include "lyx_forms.h"
 
@@ -23,11 +22,12 @@
 class ControlPrefs;
 
 class Dialogs;
+class FormColorpicker;
 class LyXRC;
 class LyXView;
 class NamedColor;
 class RGBColor;
-class FormColorpicker;
+class XformsColor;
 
 struct FD_preferences;
 struct FD_preferences_colors;
@@ -505,24 +505,6 @@ private:
 	ScreenFonts screen_fonts_;
 	///
 	SpellOptions spelloptions_;
-
-	/** A couple of helper structs to enable colors to be sorted by name
-	    and by color */
-	///
-	struct SortColorsByName {
-		///
-		int operator()(NamedColor const & a, NamedColor const & b) const
-			{ return (a.getname() < b.getname()); }
-	};
-	///
-	struct SortColorsByColor {
-		///
-		SortColorsByColor(RGBColor c) : col(c) {}
-		///
-		int operator()(RGBColor const &, RGBColor const &) const;
-		///
-		RGBColor col;
-	};
 };
 
 #endif // FORMPREFERENCES_H

@@ -16,6 +16,7 @@
 #include "ButtonController.h"
 
 #include "xformsBC.h"
+#include "xforms_helpers.h"
 
 #include "ControlDocument.h"
 #include "FormDocument.h"

@@ -176,12 +176,12 @@ WidthChanger::~WidthChanger()
 ColorChanger::ColorChanger(LyXFont & font, string const & color)
 	: Changer<LyXFont, string>(font)
 {
-	save_ = lcolor.getFromGUIName(color);
-	font.setColor(lcolor.getFromGUIName(color));
+	save_ = lcolor.getFromLyXName(color);
+	font.setColor(lcolor.getFromLyXName(color));
 }
 
 
 ColorChanger::~ColorChanger()
 {
-	orig_.setColor(lcolor.getFromGUIName(save_));
+	orig_.setColor(lcolor.getFromLyXName(save_));
 }

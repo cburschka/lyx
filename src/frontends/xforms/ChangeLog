@@ -1,3 +1,16 @@
+2003-12-15  Angus Leeming  <leeming@lyx.org>
+
+	* Color.h (NamedColor): store both the LyX and the GUI name.
+
+	* FormPreferences.h: Remove unused structs SortColorsByName,
+	SortColorsByColor. Remove unused #include "xforms_helpers.h".
+
+	* Dialogs2.C: add #include "xforms_helpers.h".
+
+	* FormPreferences.C: when manipulating the colors of the GUI use the
+	LyX name, rather than the translated GUI name, to identify the
+	associated LColor::color.
+
 2003-12-14  Angus Leeming  <leeming@lyx.org>
 
 	* FormBranch.C: use the List interface to BranchList, simplifying the

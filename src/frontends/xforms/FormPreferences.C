@@ -11,16 +11,17 @@
 #include <config.h>
 
 #include "FormPreferences.h"
-#include "ControlPrefs.h"
 #include "forms/form_preferences.h"
 
 #include "FormColorpicker.h"
 #include "forms_gettext.h"
 #include "input_validators.h"
 #include "xformsBC.h"
+#include "xforms_helpers.h"
 
-#include "controllers/helper_funcs.h" // getSecond
+#include "controllers/ControlPrefs.h"
 #include "controllers/frnt_lang.h"
+#include "controllers/helper_funcs.h" // getSecond
 
 #include "buffer.h"
 #include "converter.h"
@@ -460,7 +461,7 @@ void FormPreferences::Colors::apply()
 	// Now do the same for the LyX LColors...
 	for (vector<NamedColor>::const_iterator cit = lyxColorDB.begin();
 	     cit != lyxColorDB.end(); ++cit) {
-		LColor::color lc = lcolor.getFromGUIName(cit->getname());
+		LColor::color lc = lcolor.getFromLyXName(cit->lyxname);
 		if (lc == LColor::inherit) continue;
 
 		// Create a valid X11 name of the form "#rrggbb"
@@ -572,25 +573,29 @@ void FormPreferences::Colors::LoadBrowserLyX()
 	xformsColorDB.clear();
 	XformsColor xcol;
 
-	xcol.name = _("GUI background");
+	xcol.lyxname = "GUI background";
+	xcol.guiname = _("GUI background");
 	xcol.colorID = FL_COL1;
 	fl_getmcolor(FL_COL1, &xcol.r, &xcol.g, &xcol.b);
 
 	xformsColorDB.push_back(xcol);
 
-	xcol.name = _("GUI text");
+	xcol.lyxname = "GUI text";
+	xcol.guiname = _("GUI text");
 	xcol.colorID = FL_BLACK;
 	fl_getmcolor(FL_BLACK, &xcol.r, &xcol.g, &xcol.b);
 
 	xformsColorDB.push_back(xcol);
 
-	xcol.name = _("GUI selection");
+	xcol.lyxname = "GUI selection";
+	xcol.guiname = _("GUI selection");
 	xcol.colorID = FL_YELLOW;
 	fl_getmcolor(FL_YELLOW, &xcol.r, &xcol.g, &xcol.b);
 
 	xformsColorDB.push_back(xcol);
 
-	xcol.name = _("GUI pointer");
+	xcol.lyxname = "GUI pointer";
+	xcol.guiname = _("GUI pointer");
 	xcol.colorID = GUI_COLOR_CURSOR;
 	fl_getmcolor(GUI_COLOR_CURSOR, &xcol.r, &xcol.g, &xcol.b);
 
@@ -639,7 +644,7 @@ void FormPreferences::Colors::LoadBrowserLyX()
 		}
 
 		// Finally, push the color onto the database
-		NamedColor ncol(lcolor.getGUIName(lc), col);
+		NamedColor ncol(lcolor.getLyXName(lc), lcolor.getGUIName(lc), col);
 		lyxColorDB.push_back(ncol);
 	}
 
@@ -649,11 +654,11 @@ void FormPreferences::Colors::LoadBrowserLyX()
 	fl_clear_browser(colbr);
 	for (vector<XformsColor>::const_iterator cit = xformsColorDB.begin();
 	     cit != xformsColorDB.end(); ++cit) {
-		fl_addto_browser(colbr, cit->getname().c_str());
+		fl_addto_browser(colbr, cit->guiname.c_str());
 	}
 	for (vector<NamedColor>::const_iterator cit = lyxColorDB.begin();
 	     cit != lyxColorDB.end(); ++cit) {
-		fl_addto_browser(colbr, cit->getname().c_str());
+		fl_addto_browser(colbr, cit->guiname.c_str());
 	}
 
 	// just to be safe...
