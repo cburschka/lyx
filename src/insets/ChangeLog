@@ -1,7 +1,8 @@
 2001-09-21  Angus Leeming  <a.leeming@ic.ac.uk>
 
-	* insetgraphics.C (draw): remove the previous change. Right place is in
-	imageLoaderXPM.C.
+	* insetgraphics.C (draw): remove the previous change. Right place
+	is in imageLoaderXPM.C.
+	(draw): don't display the image if params.display == NONE.
 
 2001-09-18  Angus Leeming  <a.leeming@ic.ac.uk>
 

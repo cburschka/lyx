@@ -291,7 +291,8 @@ void InsetGraphics::draw(BufferView * bv, LyXFont const & font,
 		
 		// Get the image status, default to unknown error.
 		GraphicsCacheItem::ImageStatus status = GraphicsCacheItem::UnknownError;
-		if (cacheHandle.get())
+		if (params.display != InsetGraphicsParams::NONE &&
+		    cacheHandle.get())
 			status = cacheHandle->getImageStatus();
 		
 		// Check if the image is now ready.
