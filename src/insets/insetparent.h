@@ -1,12 +1,13 @@
 // -*- C++ -*-
-/* This file is part of*
- * ======================================================
+/**
+ * \file insetparent.h
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
  *
- *           LyX, The Document Processor
+ * \author Alejandro Aguilar Sierra
  *
- *           Copyright 1997-2001 LyX Team
- *
- * ====================================================== */
+ * Full author contact details are available in file CREDITS
+ */
 
 #ifndef INSET_PARENT_H
 #define INSET_PARENT_H

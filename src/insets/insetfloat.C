@@ -1,12 +1,13 @@
-/* This file is part of
- * ======================================================
+/**
+ * \file insetfloat.C
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
  *
- *           LyX, The Document Processor
+ * \author Jürgen Vigna
+ * \author Lars Gullik Bjønnes
  *
- *          Copyright 1998-2001 The LyX Team.
- *
- * ====================================================== */
-
+ * Full author contact details are available in file CREDITS
+ */
 #include <config.h>
 
 #ifdef __GNUG__

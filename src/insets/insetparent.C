@@ -1,11 +1,12 @@
-/* This file is part of*
- * ======================================================
+/**
+ * \file insetparent.C
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
  *
- *           LyX, The Document Processor
+ * \author Alejandro Aguilar Sierra
  *
- *           Copyright 1997-2001 The LyX Team.
- *
- * ====================================================== */
+ * Full author contact details are available in file CREDITS
+ */
 
 
 // Created by asierra 970813

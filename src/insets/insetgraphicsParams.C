@@ -1,14 +1,13 @@
-/* This file is part of
- * =================================================
- *
- *          LyX, The Document Processor
- *          Copyright 1995 Matthias Ettrich.
- *          Copyright 1995-2001 The LyX Team.
+/**
+ * \file insetgraphicsParams.C
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
  *
  * \author Baruch Even
  * \author Herbert Voss
  *
- * ================================================= */
+ * Full author contact details are available in file CREDITS
+ */
 
 #include <config.h>
 

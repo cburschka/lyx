@@ -1,15 +1,14 @@
 // -*- C++ -*-
-/* This file is part of
- * ======================================================
- *
- *           LyX, The Document Processor
- *
- *           Copyright 1995 Matthias Ettrich
- *           Copyright 1995-2001 the LyX Team.
+/**
+ * \file insetgraphics.h
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
  *
  * \author Baruch Even
- * \author Herbert Voss <voss@lyx.org>
- * ====================================================== */
+ * \author Herbert Voss
+ *
+ * Full author contact details are available in file CREDITS
+ */
 
 #ifndef INSET_GRAPHICS_H
 #define INSET_GRAPHICS_H

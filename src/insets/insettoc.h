@@ -1,13 +1,13 @@
 // -*- C++ -*-
-/* This file is part of*
- * ======================================================
+/**
+ * \file insettoc.h
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
  *
- *           LyX, The Document Word Processor
+ * \author Lars Gullik Bjønnes
  *
- *           Copyright 1995 Matthias Ettrich
- *           Copyright 1996-2001 The LyX Team.
- *
- * ====================================================== */
+ * Full author contact details are available in file CREDITS
+ */
 
 #ifndef INSET_TOC_H
 #define INSET_TOC_H

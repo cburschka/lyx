@@ -1,11 +1,13 @@
 // -*- C++ -*-
-/* This file is part of
- * =================================================
+/**
+ * \file gnome_helpers.h
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
  *
- *          LyX, The Document Processor
- *          Copyright 1995-2000 The LyX Team.
+ * \author unknown
  *
- * ================================================= */
+ * Full author contact details are available in file CREDITS
+ */
 
 #ifndef GNOME_HELPERS_H
 #define GNOME_HELPERS_H

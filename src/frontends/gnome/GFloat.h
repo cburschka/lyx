@@ -2,10 +2,12 @@
 // -*- C++ -*-
 /**
  * \file GFloat.h
- * Copyright 2001 The LyX Team.
- * See the file COPYING.
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
  *
- * \author Michael Koziarski <michael@koziarski.org>
+ * \author Michael Koziarski 
+ *
+ * Full author contact details are available in file CREDITS
  */
 
 #ifndef GFLOAT_H

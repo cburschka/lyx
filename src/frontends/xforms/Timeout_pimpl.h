@@ -1,7 +1,6 @@
 // -*- C++ -*-
 /**
  * \file xforms/Timeout_pimpl.h
- * Copyright 2001 LyX Team
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *

@@ -1,9 +1,11 @@
 /**
- * ile GAbout.C
- * Copyright 2001 The LyX Team.
- * See the file COPYING.
+ * \file GAbout.C
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
  *
- * \author Michael Koziarski <michael@koziarski.org>
+ * \author Michael Koziarski 
+ *
+ * Full author contact details are available in file CREDITS
  */
 
 #ifdef __GNUG__

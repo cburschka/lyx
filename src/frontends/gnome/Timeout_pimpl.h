@@ -1,10 +1,12 @@
 // -*- C++ -*-
 /**
  * \file gnome/Timeout_pimpl.h
- * Copyright 2001 LyX Team
- * Read COPYING
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
  *
  * \author Baruch Even
+ *
+ * Full author contact details are available in file CREDITS
  */
 #ifndef TIMEOUTPIMPL_H
 #define TIMEOUTPIMPL_H

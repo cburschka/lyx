@@ -1,14 +1,12 @@
 // -*- C++ -*-
-/* This file is part of
- * ======================================================
+/**
+ * \file gnomeBC.h
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
  *
- *           LyX, The Document Processor
+ * \author Baruch Even
  *
- *           Copyright 1995-2000 The LyX Team.
- *
- * ======================================================
- *
- * Author: Baruch Even  <baruch@lyx.org>
+ * Full author contact details are available in file CREDITS
  */
 
 #ifndef GNOMEBC_H

@@ -1,10 +1,12 @@
 // -*- C++ -*-
 /**
  * \file insetoptarg.h
- * Copyright 2002 the LyX Team
- * Read the file COPYING
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
  *
- * \author Martin Vermeer  <martin.vermeer@hut.fi>
+ * \author Martin Vermeer  
+ *
+ * Full author contact details are available in file CREDITS
  */
 
 #ifndef INSETOPTARG_H

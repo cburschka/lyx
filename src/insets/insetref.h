@@ -1,12 +1,13 @@
 // -*- C++ -*-
-/* This file is part of*
- * ======================================================
+/**
+ * \file insetref.h
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
  *
- *           LyX, The Document Processor
+ * \author José Matos
  *
- *	    Copyright 1997 LyX Team (this file was created this year)
- *
- * ====================================================== */
+ * Full author contact details are available in file CREDITS
+ */
 
 #ifndef INSET_REF_H
 #define INSET_REF_H

@@ -1,10 +1,12 @@
 /**
  * \file insetcite.C
- * Copyright 2001 the LyX Team
- * Read the file COPYING
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
  *
- * \author Angus Leeming, a.leeming@ic.ac.uk
- * \author Herbert Voss, voss@lyx.org 2002-03-17
+ * \author Angus Leeming
+ * \author Herbert Voss
+ *
+ * Full author contact details are available in file CREDITS
  */
 
 #include <config.h>

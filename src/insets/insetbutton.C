@@ -1,12 +1,14 @@
-/* This file is part of
- * ======================================================
+/**
+ * \file insetbutton.C
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
  *
- *           LyX, The Document Processor
+ * \author Asger Alstrup Nielsen
+ * \author Jürgen Vigna
+ * \author Lars Gullik Bjønnes
  *
- *	    Copyright 1995 Matthias Ettrich
- *          Copyright 2000-2001 The LyX Team.
- *
- * ====================================================== */
+ * Full author contact details are available in file CREDITS
+ */
 
 #include <config.h>
 

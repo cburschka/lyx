@@ -1,13 +1,13 @@
 // -*- C++ -*-
-/* This file is part of*
- * ======================================================
+/**
+ * \file insetindex.h
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
  *
- *           LyX, The Document Processor
+ * \author Lars Gullik Bjønnes
  *
- *	    Copyright 1995 Matthias Ettrich
- *          Copyright 1996-2001 the LyX Team.
- *
- * ====================================================== */
+ * Full author contact details are available in file CREDITS
+ */
 
 #ifndef INSET_INDEX_H
 #define INSET_INDEX_H

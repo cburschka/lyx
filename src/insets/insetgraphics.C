@@ -1,13 +1,13 @@
-/* This file is part of
- * ======================================================
- *
- *           LyX, The Document Processor
- *
- *           Copyright 1995-2002 the LyX Team.
+/**
+ * \file insetgraphics.C
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
  *
  * \author Baruch Even
- * \author Herbert Voss <voss@lyx.org>
- * ====================================================== */
+ * \author Herbert Voss
+ *
+ * Full author contact details are available in file CREDITS
+ */
 
 /*
 TODO

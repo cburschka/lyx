@@ -1,12 +1,12 @@
-/* This file is part of
- * ======================================================
+/**
+ * \file insetcommandparams.C
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
  *
- *           LyX, The Document Processor
+ * \author Angus Leeming
  *
- *          Copyright 2002-2002 The LyX Team.
- *
- * ====================================================== */
-
+ * Full author contact details are available in file CREDITS
+ */
 
 #ifdef __GNUG__
 #pragma implementation

@@ -1,12 +1,13 @@
 // -*- C++ -*-
-/* This file is part of*
- * ======================================================
+/**
+ * \file insetcommandparams.h
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
  *
- *           LyX, The Document Processor
+ * \author Angus Leeming
  *
- *           Copyright 2002-2001 The LyX Team.
- *
- * ====================================================== */
+ * Full author contact details are available in file CREDITS
+ */
 
 #ifndef INSETCOMMANDPARAMS_H
 #define INSETCOMMANDPARAMS_H
