@@ -1,12 +1,12 @@
 # Slovenski prevodi menujev za LyX.
 # Copyright (C) 2001, The LyX team.
 # Roman Maurer <roman.maurer@amis.net>, 2001.
-# $Id: sl.po,v 1.36.2.1 2001/01/11 19:21:40 larsbj Exp $
+# $Id: sl.po,v 1.36.2.2 2001/01/31 16:45:03 larsbj Exp $
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.1.5\n"
-"POT-Creation-Date: 2001-01-11 19:19+0100\n"
+"POT-Creation-Date: 2001-01-31 17:06+0100\n"
 "PO-Revision-Date: 2001-01-07 12:30+0200\n"
 "Last-Translator:  Roman Maurer <roman.maurer@amis.net>\n"
 "Language-Team: Slovenian <sl@li.org>\n"
@@ -111,28 +111,28 @@ msgstr "Napaka: Ni moè zapisati datoteke:"
 msgid "Error: Cannot open file: "
 msgstr "Napaka: Ni moè odpreti datoteke:"
 
-#: src/buffer.C:2224 src/buffer.C:2873
+#: src/buffer.C:2226 src/buffer.C:2875
 msgid "LYX_ERROR:"
 msgstr "NAPAKA_LYXA:"
 
-#: src/buffer.C:2224 src/buffer.C:2873
+#: src/buffer.C:2226 src/buffer.C:2875
 msgid "Cannot write file"
 msgstr "Ni moè zapisati datoteke"
 
-#: src/buffer.C:2311 src/buffer.C:2955
+#: src/buffer.C:2313 src/buffer.C:2957
 msgid "Error : Wrong depth for LatexType Command.\n"
 msgstr "Napaka: Napaèna globina za ukaz LatexType.\n"
 
 #. path to LaTeX file
-#: src/buffer.C:3264
+#: src/buffer.C:3266
 msgid "Running chktex..."
 msgstr "Izvaja se chktex..."
 
-#: src/buffer.C:3277
+#: src/buffer.C:3279
 msgid "chktex did not work!"
 msgstr "chktex ni deloval!"
 
-#: src/buffer.C:3278
+#: src/buffer.C:3280
 msgid "Could not run with file:"
 msgstr "Ni moè pognati z datoteko:"
 
@@ -265,15 +265,15 @@ msgstr "Prepisan tip okolja odstavka"
 msgid "Paragraph environment type set"
 msgstr "Nastavljen tip okolja odstavka"
 
-#: src/BufferView2.C:581 src/LyXAction.C:169 src/MenuBackend.C:425
+#: src/BufferView2.C:581 src/LyXAction.C:169 src/MenuBackend.C:432
 msgid "Copy"
 msgstr "Prepi¹i"
 
-#: src/BufferView2.C:592 src/LyXAction.C:170 src/MenuBackend.C:424
+#: src/BufferView2.C:592 src/LyXAction.C:170 src/MenuBackend.C:431
 msgid "Cut"
 msgstr "Izre¾i"
 
-#: src/BufferView2.C:601 src/LyXAction.C:346 src/MenuBackend.C:426
+#: src/BufferView2.C:601 src/LyXAction.C:346 src/MenuBackend.C:433
 msgid "Paste"
 msgstr "Prilepi"
 
@@ -397,7 +397,7 @@ msgstr "] se uporablja."
 msgid "Done"
 msgstr "Opravljeno"
 
-#: src/converter.C:165 src/converter.C:192
+#: src/converter.C:165 src/converter.C:195
 msgid "Can not view file"
 msgstr "Ni moè pogledati datoteke"
 
@@ -405,87 +405,87 @@ msgstr "Ni moè pogledati datoteke"
 msgid "No information for viewing "
 msgstr "Ni podatkov za ogled "
 
-#: src/converter.C:185 src/converter.C:612
+#: src/converter.C:188 src/converter.C:618
 msgid "Executing command:"
 msgstr "Izvajamo ukaz:"
 
-#: src/converter.C:193
+#: src/converter.C:196
 msgid "Error while executing"
 msgstr "Napaka med izvajanjem"
 
-#: src/converter.C:549 src/converter.C:639
+#: src/converter.C:552 src/converter.C:645
 msgid "Can not convert file"
 msgstr "Datoteke ni moè pretvoriti"
 
-#: src/converter.C:550
+#: src/converter.C:553
 msgid "No information for converting from "
 msgstr "Ni podatkov za pretvarjanje iz "
 
-#: src/CutAndPaste.C:448 src/CutAndPaste.C:451 src/converter.C:551
+#: src/CutAndPaste.C:448 src/CutAndPaste.C:451 src/converter.C:554
 msgid " to "
 msgstr " za "
 
-#: src/converter.C:636
+#: src/converter.C:642
 msgid "There were errors during the Build process."
 msgstr "Med gradnjo so nastale napake."
 
-#: src/converter.C:637 src/converter.C:782 src/converter.C:852
+#: src/converter.C:643 src/converter.C:788 src/converter.C:858
 msgid "You should try to fix them."
 msgstr "Morali bi jih poskusiti odpraviti."
 
-#: src/converter.C:662
+#: src/converter.C:668
 msgid "Error while trying to move directory:"
 msgstr "Napaka pri poskusu premaknitve imenika:"
 
-#: src/converter.C:697
+#: src/converter.C:703
 msgid "Error while trying to move file:"
 msgstr "Napaka pri poskusu premaknitve datoteke:"
 
-#: src/converter.C:698
+#: src/converter.C:704
 msgid "to "
 msgstr "za "
 
-#: src/converter.C:777 src/converter.C:847
+#: src/converter.C:783 src/converter.C:853
 msgid "One error detected"
 msgstr "Zaznana ena napaka"
 
-#: src/converter.C:778 src/converter.C:848
+#: src/converter.C:784 src/converter.C:854
 msgid "You should try to fix it."
 msgstr "Morali bi jo poskusiti odpraviti."
 
-#: src/converter.C:781 src/converter.C:851
+#: src/converter.C:787 src/converter.C:857
 msgid " errors detected."
 msgstr " zaznanih napak."
 
-#: src/converter.C:786
+#: src/converter.C:792
 msgid "There were errors during running of "
 msgstr "Nastale so napake med izvajanjem "
 
-#: src/converter.C:790 src/converter.C:857
+#: src/converter.C:796 src/converter.C:863
 msgid "The operation resulted in"
 msgstr "Rezultat operacije je"
 
-#: src/converter.C:791 src/converter.C:858
+#: src/converter.C:797 src/converter.C:864
 msgid "an empty file."
 msgstr "prazna datoteka."
 
-#: src/converter.C:792 src/converter.C:859
+#: src/converter.C:798 src/converter.C:865
 msgid "Resulting file is empty"
 msgstr "Rezultantna datoteka je prazna"
 
-#: src/converter.C:810
+#: src/converter.C:816
 msgid "Running LaTeX..."
 msgstr "LaTeX se izvaja..."
 
-#: src/converter.C:840
+#: src/converter.C:846
 msgid "LaTeX did not work!"
 msgstr "LaTeX ni deloval!"
 
-#: src/converter.C:841
+#: src/converter.C:847
 msgid "Missing log file:"
 msgstr "Manjka datoteka z dnevnikom:"
 
-#: src/converter.C:854
+#: src/converter.C:860
 msgid "There were errors during the LaTeX run."
 msgstr "Med izvajanjem LaTeXa so nastale napake."
 
@@ -512,7 +512,7 @@ msgstr "Zasluge"
 #: src/frontends/xforms/form_paragraph.C:330
 #: src/frontends/xforms/form_print.C:52 src/frontends/xforms/form_ref.C:71
 #: src/frontends/xforms/form_tabular_create.C:28
-#: src/frontends/xforms/form_url.C:64 src/insets/insetbib.C:60
+#: src/frontends/xforms/form_url.C:64 src/insets/insetbib.C:62
 #: src/insets/insetinclude.C:52 src/lyx.C:47 src/lyx.C:105
 #: src/mathed/math_forms.C:109 src/print_form.C:28 src/sp_form.C:38
 msgid "OK"
@@ -538,8 +538,8 @@ msgstr ""
 "\n"
 "zaradi spremembe razreda iz\n"
 
-#: src/CutAndPaste.C:476 src/insets/insettext.C:970 src/text.C:3952
-#: src/text.C:3960 src/text.C:3987 src/text2.C:2197 src/text2.C:2310
+#: src/CutAndPaste.C:476 src/insets/insettext.C:970 src/text.C:3957
+#: src/text.C:3965 src/text.C:3992 src/text2.C:2197 src/text2.C:2310
 msgid "Impossible operation"
 msgstr "Nemogoèa operacija"
 
@@ -548,8 +548,8 @@ msgid "Can't paste float into float!"
 msgstr "Ni moè prilepiti plovke v plovko!"
 
 #: src/CutAndPaste.C:478 src/insets/insetert.C:67
-#: src/insets/insettabular.C:1700 src/insets/insettext.C:972 src/text.C:3954
-#: src/text.C:3962 src/text.C:3989
+#: src/insets/insettabular.C:1700 src/insets/insettext.C:972 src/text.C:3959
+#: src/text.C:3967 src/text.C:3994
 msgid "Sorry."
 msgstr "®al."
 
@@ -657,12 +657,12 @@ msgstr "Dokument izvo¾en kot "
 msgid " to file `"
 msgstr " v datoteko ,"
 
-#: src/MenuBackend.C:436 src/MenuBackend.C:443 src/ext_l10n.h:1
+#: src/MenuBackend.C:443 src/MenuBackend.C:450 src/ext_l10n.h:1
 #: src/ext_l10n.h:4
 msgid "File|F"
 msgstr "Datoteka|D"
 
-#: src/MenuBackend.C:437 src/ext_l10n.h:2 src/ext_l10n.h:5
+#: src/MenuBackend.C:444 src/ext_l10n.h:2 src/ext_l10n.h:5
 msgid "Edit|E"
 msgstr "Uredi|U"
 
@@ -686,11 +686,11 @@ msgstr "Ogled|O"
 msgid "Navigate|N"
 msgstr "Navigacija|N"
 
-#: src/MenuBackend.C:439 src/ext_l10n.h:10
+#: src/MenuBackend.C:446 src/ext_l10n.h:10
 msgid "Documents|D"
 msgstr "Spisi|S"
 
-#: src/MenuBackend.C:406 src/ext_l10n.h:12 src/ext_l10n.h:17
+#: src/MenuBackend.C:413 src/ext_l10n.h:12 src/ext_l10n.h:17
 msgid "New...|N"
 msgstr "Nov...|N"
 
@@ -698,11 +698,11 @@ msgstr "Nov...|N"
 msgid "New from Template...|T"
 msgstr "Nov po vzorcu...|V"
 
-#: src/MenuBackend.C:407 src/ext_l10n.h:14 src/ext_l10n.h:19
+#: src/MenuBackend.C:414 src/ext_l10n.h:14 src/ext_l10n.h:19
 msgid "Open...|O"
 msgstr "Odpri...|O"
 
-#: src/MenuBackend.C:408 src/ext_l10n.h:15 src/ext_l10n.h:25
+#: src/MenuBackend.C:415 src/ext_l10n.h:15 src/ext_l10n.h:25
 msgid "Import|I"
 msgstr "Uvoz|U"
 
@@ -2795,7 +2795,8 @@ msgid "Turkish"
 msgstr "tur¹ko"
 
 #: src/ext_l10n.h:544
-msgid "Ukraninian"
+#, fuzzy
+msgid "Ukrainian"
 msgstr "ukrajinsko"
 
 #: src/ext_l10n.h:545
@@ -2903,7 +2904,7 @@ msgid "Apply|#A"
 msgstr "Uporabi|#U"
 
 #: src/form1.C:120 src/form1.C:264 src/frontends/xforms/form_graphics.C:150
-#: src/insets/insetbib.C:63 src/insets/insetbib.C:64
+#: src/insets/insetbib.C:65 src/insets/insetbib.C:66
 #: src/insets/insetinclude.C:55 src/insets/insetinclude.C:56
 #: src/layout_forms.C:98 src/lyx.C:53 src/lyx_gui_misc.C:404
 #: src/lyx_gui_misc.C:408 src/lyx_gui_misc.C:424 src/mathed/math_forms.C:100
@@ -3185,16 +3186,16 @@ msgid "Check that your parameters are correct"
 msgstr "Preverite, ali so va¹i parametri pravilni"
 
 #. goto button labels
-#: src/frontends/gnome/FormRef.C:48 src/frontends/xforms/FormRef.C:102
-#: src/frontends/xforms/FormRef.C:211 src/frontends/xforms/FormRef.C:234
+#: src/frontends/gnome/FormRef.C:48 src/frontends/xforms/FormRef.C:103
+#: src/frontends/xforms/FormRef.C:220 src/frontends/xforms/FormRef.C:243
 msgid "Goto reference"
 msgstr "Pojdi na sklic"
 
-#: src/frontends/gnome/FormRef.C:49 src/frontends/xforms/FormRef.C:203
+#: src/frontends/gnome/FormRef.C:49 src/frontends/xforms/FormRef.C:212
 msgid "Go back"
 msgstr "Vrni se"
 
-#: src/frontends/gnome/FormRef.C:91 src/frontends/xforms/FormRef.C:130
+#: src/frontends/gnome/FormRef.C:91 src/frontends/xforms/FormRef.C:141
 msgid "*** No labels found in document ***"
 msgstr "*** V spisu ni najdenih oznak ***"
 
@@ -5954,33 +5955,33 @@ msgid "EPS Figure"
 msgstr "Slika EPS"
 
 #. InsetBibtex uses the same form, with different labels
-#: src/insets/insetbib.C:57 src/insets/insetbib.C:58 src/insets/insetbib.C:193
-#: src/insets/insetbib.C:194
+#: src/insets/insetbib.C:59 src/insets/insetbib.C:60 src/insets/insetbib.C:208
+#: src/insets/insetbib.C:209
 msgid "Key:|#K"
 msgstr "Kljuè:|#K"
 
-#: src/insets/insetbib.C:67 src/insets/insetbib.C:68 src/insets/insetbib.C:195
-#: src/insets/insetbib.C:196
+#: src/insets/insetbib.C:69 src/insets/insetbib.C:70 src/insets/insetbib.C:210
+#: src/insets/insetbib.C:211
 msgid "Label:|#L"
 msgstr "Oznaka:|#z"
 
-#: src/insets/insetbib.C:204
+#: src/insets/insetbib.C:219
 msgid "Bibliography item"
 msgstr "Postavka literature"
 
-#: src/insets/insetbib.C:225
+#: src/insets/insetbib.C:240
 msgid "BibTeX Generated References"
 msgstr "Reference, generirane z BibTeXom"
 
-#: src/insets/insetbib.C:324
+#: src/insets/insetbib.C:339
 msgid "Database:"
 msgstr "Zbirka podatkov:"
 
-#: src/insets/insetbib.C:325
+#: src/insets/insetbib.C:340
 msgid "Style:  "
 msgstr "Slog:  "
 
-#: src/insets/insetbib.C:333
+#: src/insets/insetbib.C:348
 msgid "BibTeX"
 msgstr "BibTeX"
 
@@ -6135,7 +6136,7 @@ msgstr "Stv"
 msgid "Opened note"
 msgstr "Odprta zabele¾ka"
 
-#: src/insets/insetlabel.C:49 src/mathed/formula.C:1070
+#: src/insets/insetlabel.C:49 src/mathed/formula.C:1087
 #, fuzzy
 msgid "Enter label:"
 msgstr "Vstavi oznako"
@@ -6235,7 +6236,7 @@ msgstr "Polo¾aji tipk"
 msgid "   options: "
 msgstr "  izbire: "
 
-#: src/language.C:78
+#: src/language.C:81
 #, fuzzy
 msgid "Document wide language"
 msgstr "Nastavitev videza spisa"
@@ -7201,8 +7202,8 @@ msgstr "Napaka! Podana datoteka ni berljiva: "
 msgid "Error! Cannot open specified file: "
 msgstr "Napaka! Podane datoteke ni moè odpreti:"
 
-#: src/lyx_cb.C:585 src/lyx_cb.C:588 src/mathed/formula.C:1065
-#: src/mathed/formula.C:1068
+#: src/lyx_cb.C:585 src/lyx_cb.C:588 src/mathed/formula.C:1082
+#: src/mathed/formula.C:1085
 msgid "Enter new label to insert:"
 msgstr "Vnesite novo oznako za vstavitev:"
 
@@ -7618,20 +7619,20 @@ msgstr "vstavljen."
 msgid "Could not insert document"
 msgstr "Spisa ni moè vstaviti"
 
-#: src/lyx_gui.C:311
+#: src/lyx_gui.C:315
 msgid " No change %l| Roman | Sans Serif | Typewriter %l| Reset "
 msgstr " Brez spremembe %l| Pokonène | Brez serifov | Pisalni stroj %l| Reset "
 
-#: src/lyx_gui.C:313
+#: src/lyx_gui.C:317
 msgid " No change %l| Medium | Bold %l| Reset "
 msgstr " Brez spremembe %l| Navadne | Polkrepke %l| Reset "
 
-#: src/lyx_gui.C:315
+#: src/lyx_gui.C:319
 msgid " No change %l| Upright | Italic | Slanted | Small Caps %l| Reset "
 msgstr ""
 " Ni spremembe %l| Pokonène | Kurzivne | Nagnjene | Male velike %l| Reset "
 
-#: src/lyx_gui.C:318
+#: src/lyx_gui.C:322
 msgid ""
 " No change %l| Tiny | Smallest | Smaller | Small | Normal | Large | Larger | "
 "Largest | Huge | Huger %l| Increase | Decrease | Reset "
@@ -7639,12 +7640,12 @@ msgstr ""
 " Ni spremembe %l| Drobni | Najmanj¹i | Manj¹i | Mali | Obièajni | Veliki | "
 "Veèji | Najveèji | Ogromni | Ogromnej¹i %l| Poveèaj | Zmanj¹aj | Reset "
 
-#: src/lyx_gui.C:322
+#: src/lyx_gui.C:326
 msgid " No change %l| Emph | Underbar | Noun | LaTeX mode %l| Reset "
 msgstr ""
 " Ni spremembe %l| Poudarjeno | Podèrtano | Velike | Naèin LaTeX %l| Reset "
 
-#: src/lyx_gui.C:324
+#: src/lyx_gui.C:328
 msgid ""
 " No change %l| No color | Black | White | Red | Green | Blue | Cyan | "
 "Magenta | Yellow %l| Reset "
@@ -7652,22 +7653,22 @@ msgstr ""
 " Brez spremembe %l| Brezbarvno | Èrna | Bela | Rdeèa | Zelena | Modra | Cian "
 "| Violièna | Rumena %l| Reset "
 
-#: src/lyx_gui.C:329
+#: src/lyx_gui.C:333
 msgid " English %l| German | French "
 msgstr ""
 
 #. build up the combox entries
-#: src/lyx_gui.C:343
+#: src/lyx_gui.C:347
 #, fuzzy
 msgid "No change"
 msgstr " (Spremenjeno)"
 
-#: src/lyx_gui.C:344
+#: src/lyx_gui.C:348
 #, fuzzy
 msgid "Reset"
 msgstr "Ref: "
 
-#: src/lyx_gui.C:401
+#: src/lyx_gui.C:405
 msgid "LyX Banner"
 msgstr "Zaèetni logo LyXa"
 
@@ -7720,15 +7721,18 @@ msgid "System directory set to: "
 msgstr "Sistemski imenik nastavljen na: "
 
 #: src/lyx_main.C:321
-msgid "LyX Warning! Couldn't determine system directory."
+#, fuzzy
+msgid "LyX Warning! Couldn't determine system directory. "
 msgstr "Opozorilo LyXa! Sistemskega imenika ni moè ugotoviti."
 
 #: src/lyx_main.C:322
-msgid "Try the '-sysdir' command line parameter or"
+#, fuzzy
+msgid "Try the '-sysdir' command line parameter or "
 msgstr "Poskusite parameter ,-sysdir` v ukazni vrstici ali"
 
 #: src/lyx_main.C:323
-msgid "set the environment variable LYX_DIR_11x to the LyX system directory"
+#, fuzzy
+msgid "set the environment variable LYX_DIR_11x to the LyX system directory "
 msgstr "nastavite okoljsko spremenljivko LYX_DIR_11x na sistemski imenik LyXa,"
 
 #: src/lyx_main.C:325
@@ -8296,7 +8300,7 @@ msgstr " (Spremenjeno)"
 msgid " (read only)"
 msgstr " (le za branje)"
 
-#: src/mathed/formula.C:909 src/mathed/formula.C:1234
+#: src/mathed/formula.C:909 src/mathed/formula.C:1251
 msgid "TeX mode"
 msgstr "Naèin TeX"
 
@@ -8308,11 +8312,11 @@ msgstr "Brez ¹tevilke"
 msgid "Number"
 msgstr "©tevilka"
 
-#: src/mathed/formula.C:1105
+#: src/mathed/formula.C:1122
 msgid "math text mode"
 msgstr "matematièni besedilni naèin"
 
-#: src/mathed/formula.C:1114
+#: src/mathed/formula.C:1131
 msgid "Invalid action in math mode!"
 msgstr "Nepravilna operacija v matematiènem naèinu!"
 
@@ -8420,35 +8424,35 @@ msgstr "Zgoraj | Sredina | Spodaj"
 msgid "Math Panel"
 msgstr "Matematièna plo¹èa"
 
-#: src/MenuBackend.C:256
+#: src/MenuBackend.C:263
 #, fuzzy
 msgid "No Documents Open!"
 msgstr "Ni odprtih spisov!%t"
 
-#: src/MenuBackend.C:304
+#: src/MenuBackend.C:311
 #, fuzzy
 msgid "Ascii text as lines"
 msgstr "Izberi naslednji odstavek"
 
-#: src/MenuBackend.C:306
+#: src/MenuBackend.C:313
 #, fuzzy
 msgid "Ascii text as paragraphs"
 msgstr "Izberi naslednji odstavek"
 
-#: src/MenuBackend.C:409
+#: src/MenuBackend.C:416
 msgid "Quit|Q"
 msgstr ""
 
-#: src/MenuBackend.C:417
+#: src/MenuBackend.C:424
 #, fuzzy
 msgid "LaTeX...|L"
 msgstr "LaTeX|#L"
 
-#: src/MenuBackend.C:419
+#: src/MenuBackend.C:426
 msgid "LinuxDoc...|L"
 msgstr ""
 
-#: src/MenuBackend.C:427
+#: src/MenuBackend.C:434
 #, fuzzy
 msgid "Emphasize"
 msgstr "Poudari "
@@ -8641,7 +8645,7 @@ msgstr "Klic funkcije ,createDirectory` z napaènim imenom"
 msgid "Error! Couldn't create directory:"
 msgstr "Napaka! Imenika ni moè ustvariti:"
 
-#: src/support/filetools.C:1136
+#: src/support/filetools.C:1133
 msgid "Could not delete auto-save file!"
 msgstr "Samodejno shranjene datoteke ni moè zbrisati!"
 
@@ -8690,35 +8694,35 @@ msgstr "Ne vemo, kaj naj poènemo z delom plovke."
 msgid "sorry."
 msgstr "¾al."
 
-#: src/text.C:1995
+#: src/text.C:2000
 msgid ""
 "You cannot insert a space at the beginning of a paragraph.  Please read the "
 "Tutorial."
 msgstr ""
 "Presledka na zaèetek odstavka ni moè vstaviti.  Prosimo, preberite Uèbenik."
 
-#: src/text.C:1997
+#: src/text.C:2002
 msgid "You cannot type two spaces this way.  Please read the Tutorial."
 msgstr "Tako ni mogoèe vstaviti dveh presledkov.  Prosimo, preberite Uèbenik."
 
-#: src/text.C:3453 src/text.C:3459
+#: src/text.C:3458 src/text.C:3464
 #, fuzzy
 msgid "Page Break (top)"
 msgstr "Prelomi strani"
 
-#: src/text.C:3653 src/text.C:3659
+#: src/text.C:3658 src/text.C:3664
 msgid "Page Break (bottom)"
 msgstr ""
 
-#: src/text.C:3953
+#: src/text.C:3958
 msgid "You can't insert a float in a float!"
 msgstr "Plovke ni mogoèe vstaviti v plovko!"
 
-#: src/text.C:3961
+#: src/text.C:3966
 msgid "You can't insert a marginpar in a minipage!"
 msgstr "Opombe ob robu ni moè vstaviti v ministran!"
 
-#: src/text.C:3988
+#: src/text.C:3993
 msgid "Float would include float!"
 msgstr "Plovka bi zajemala plovko!"
 

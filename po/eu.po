@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: lyx-1.0.0\n"
-"POT-Creation-Date: 2001-01-11 19:19+0100\n"
+"POT-Creation-Date: 2001-01-31 17:06+0100\n"
 "PO-Revision-Date: 1999-04-30 12:19+02:00\n"
 "Last-Translator: Iñaki Larrañaga<blackzig@freemail.it>\n"
 "Language-Team: Euskara <eu@li.org>\n"
@@ -113,28 +113,28 @@ msgstr "Akatsa: itxategian ezin da idatzi:"
 msgid "Error: Cannot open file: "
 msgstr "Akatsa: itxategian ezin da ireki:"
 
-#: src/buffer.C:2224 src/buffer.C:2873
+#: src/buffer.C:2226 src/buffer.C:2875
 msgid "LYX_ERROR:"
 msgstr "LYX_AKATSA:"
 
-#: src/buffer.C:2224 src/buffer.C:2873
+#: src/buffer.C:2226 src/buffer.C:2875
 msgid "Cannot write file"
 msgstr "Fitxategian ezin idatzi"
 
-#: src/buffer.C:2311 src/buffer.C:2955
+#: src/buffer.C:2313 src/buffer.C:2957
 msgid "Error : Wrong depth for LatexType Command.\n"
 msgstr "Akatsa: LaTeXType aginduarentzat sakonera okerra.\n"
 
 #. path to LaTeX file
-#: src/buffer.C:3264
+#: src/buffer.C:3266
 msgid "Running chktex..."
 msgstr "chktex lantzen..."
 
-#: src/buffer.C:3277
+#: src/buffer.C:3279
 msgid "chktex did not work!"
 msgstr "chktex ez dabil!"
 
-#: src/buffer.C:3278
+#: src/buffer.C:3280
 msgid "Could not run with file:"
 msgstr "Fitxategiarekin ezin landu:"
 
@@ -267,15 +267,15 @@ msgstr "Parrafo Gune mota kopiatua"
 msgid "Paragraph environment type set"
 msgstr "Parrafo gune mota ezarria"
 
-#: src/BufferView2.C:581 src/LyXAction.C:169 src/MenuBackend.C:425
+#: src/BufferView2.C:581 src/LyXAction.C:169 src/MenuBackend.C:432
 msgid "Copy"
 msgstr "Kopiatu"
 
-#: src/BufferView2.C:592 src/LyXAction.C:170 src/MenuBackend.C:424
+#: src/BufferView2.C:592 src/LyXAction.C:170 src/MenuBackend.C:431
 msgid "Cut"
 msgstr "Ebaki"
 
-#: src/BufferView2.C:601 src/LyXAction.C:346 src/MenuBackend.C:426
+#: src/BufferView2.C:601 src/LyXAction.C:346 src/MenuBackend.C:433
 msgid "Paste"
 msgstr "Itsatsi"
 
@@ -401,7 +401,7 @@ msgstr " ordez."
 msgid "Done"
 msgstr "Eginda"
 
-#: src/converter.C:165 src/converter.C:192
+#: src/converter.C:165 src/converter.C:195
 #, fuzzy
 msgid "Can not view file"
 msgstr "Fitxategian ezin idatzi"
@@ -410,95 +410,95 @@ msgstr "Fitxategian ezin idatzi"
 msgid "No information for viewing "
 msgstr ""
 
-#: src/converter.C:185 src/converter.C:612
+#: src/converter.C:188 src/converter.C:618
 msgid "Executing command:"
 msgstr "Agindua Ereiten:"
 
-#: src/converter.C:193
+#: src/converter.C:196
 #, fuzzy
 msgid "Error while executing"
 msgstr "Irakurtzean Akatsa "
 
-#: src/converter.C:549 src/converter.C:639
+#: src/converter.C:552 src/converter.C:645
 #, fuzzy
 msgid "Can not convert file"
 msgstr "Fitxategian ezin idatzi"
 
-#: src/converter.C:550
+#: src/converter.C:553
 msgid "No information for converting from "
 msgstr ""
 
-#: src/CutAndPaste.C:448 src/CutAndPaste.C:451 src/converter.C:551
+#: src/CutAndPaste.C:448 src/CutAndPaste.C:451 src/converter.C:554
 #, fuzzy
 msgid " to "
 msgstr "-en "
 
-#: src/converter.C:636
+#: src/converter.C:642
 msgid "There were errors during the Build process."
 msgstr "Eraikitze lanean akatsak azaldu dira."
 
-#: src/converter.C:637 src/converter.C:782 src/converter.C:852
+#: src/converter.C:643 src/converter.C:788 src/converter.C:858
 msgid "You should try to fix them."
 msgstr "Horiek zuzentzen Saiatu."
 
-#: src/converter.C:662
+#: src/converter.C:668
 #, fuzzy
 msgid "Error while trying to move directory:"
 msgstr "Akatsa! Helbidea ezin ireki:"
 
-#: src/converter.C:697
+#: src/converter.C:703
 #, fuzzy
 msgid "Error while trying to move file:"
 msgstr "Akatsa! fitxategia ezin ezabatu:"
 
-#: src/converter.C:698
+#: src/converter.C:704
 #, fuzzy
 msgid "to "
 msgstr "-en "
 
-#: src/converter.C:777 src/converter.C:847
+#: src/converter.C:783 src/converter.C:853
 msgid "One error detected"
 msgstr "Akatsa atzeman da"
 
-#: src/converter.C:778 src/converter.C:848
+#: src/converter.C:784 src/converter.C:854
 msgid "You should try to fix it."
 msgstr "Hori zuzentzen Saiatu."
 
-#: src/converter.C:781 src/converter.C:851
+#: src/converter.C:787 src/converter.C:857
 msgid " errors detected."
 msgstr " Akatsak atzeman dira."
 
-#: src/converter.C:786
+#: src/converter.C:792
 #, fuzzy
 msgid "There were errors during running of "
 msgstr "LaTeX lantzean akatsak sortu dira."
 
-#: src/converter.C:790 src/converter.C:857
+#: src/converter.C:796 src/converter.C:863
 msgid "The operation resulted in"
 msgstr ""
 
-#: src/converter.C:791 src/converter.C:858
+#: src/converter.C:797 src/converter.C:864
 #, fuzzy
 msgid "an empty file."
 msgstr ": barneraketak kale egin du."
 
-#: src/converter.C:792 src/converter.C:859
+#: src/converter.C:798 src/converter.C:865
 msgid "Resulting file is empty"
 msgstr ""
 
-#: src/converter.C:810
+#: src/converter.C:816
 msgid "Running LaTeX..."
 msgstr "LaTeX lantzen..."
 
-#: src/converter.C:840
+#: src/converter.C:846
 msgid "LaTeX did not work!"
 msgstr "LaTeX ez dabil!"
 
-#: src/converter.C:841
+#: src/converter.C:847
 msgid "Missing log file:"
 msgstr "Erregistro fitxategia galduta:"
 
-#: src/converter.C:854
+#: src/converter.C:860
 msgid "There were errors during the LaTeX run."
 msgstr "LaTeX lantzean akatsak sortu dira."
 
@@ -525,7 +525,7 @@ msgstr "Kredituak"
 #: src/frontends/xforms/form_paragraph.C:330
 #: src/frontends/xforms/form_print.C:52 src/frontends/xforms/form_ref.C:71
 #: src/frontends/xforms/form_tabular_create.C:28
-#: src/frontends/xforms/form_url.C:64 src/insets/insetbib.C:60
+#: src/frontends/xforms/form_url.C:64 src/insets/insetbib.C:62
 #: src/insets/insetinclude.C:52 src/lyx.C:47 src/lyx.C:105
 #: src/mathed/math_forms.C:109 src/print_form.C:28 src/sp_form.C:38
 msgid "OK"
@@ -549,8 +549,8 @@ msgid ""
 "because of class conversion from\n"
 msgstr ""
 
-#: src/CutAndPaste.C:476 src/insets/insettext.C:970 src/text.C:3952
-#: src/text.C:3960 src/text.C:3987 src/text2.C:2197 src/text2.C:2310
+#: src/CutAndPaste.C:476 src/insets/insettext.C:970 src/text.C:3957
+#: src/text.C:3965 src/text.C:3992 src/text2.C:2197 src/text2.C:2310
 msgid "Impossible operation"
 msgstr "Ezinezko eragiketa"
 
@@ -559,8 +559,8 @@ msgid "Can't paste float into float!"
 msgstr "Mugikor bat beste mugikorrean ezin itsatsi!"
 
 #: src/CutAndPaste.C:478 src/insets/insetert.C:67
-#: src/insets/insettabular.C:1700 src/insets/insettext.C:972 src/text.C:3954
-#: src/text.C:3962 src/text.C:3989
+#: src/insets/insettabular.C:1700 src/insets/insettext.C:972 src/text.C:3959
+#: src/text.C:3967 src/text.C:3994
 msgid "Sorry."
 msgstr "Barkatu."
 
@@ -680,13 +680,13 @@ msgstr "Idazkia HTML eran gordea "
 msgid " to file `"
 msgstr "[fitxategirik ez dago]"
 
-#: src/MenuBackend.C:436 src/MenuBackend.C:443 src/ext_l10n.h:1
+#: src/MenuBackend.C:443 src/MenuBackend.C:450 src/ext_l10n.h:1
 #: src/ext_l10n.h:4
 #, fuzzy
 msgid "File|F"
 msgstr "Fitxategia|#F"
 
-#: src/MenuBackend.C:437 src/ext_l10n.h:2 src/ext_l10n.h:5
+#: src/MenuBackend.C:444 src/ext_l10n.h:2 src/ext_l10n.h:5
 #, fuzzy
 msgid "Edit|E"
 msgstr "Argitaratu"
@@ -716,12 +716,12 @@ msgstr "DVI Ikusi"
 msgid "Navigate|N"
 msgstr "Negatiboa|#N"
 
-#: src/MenuBackend.C:439 src/ext_l10n.h:10
+#: src/MenuBackend.C:446 src/ext_l10n.h:10
 #, fuzzy
 msgid "Documents|D"
 msgstr "Idazkiak"
 
-#: src/MenuBackend.C:406 src/ext_l10n.h:12 src/ext_l10n.h:17
+#: src/MenuBackend.C:413 src/ext_l10n.h:12 src/ext_l10n.h:17
 msgid "New...|N"
 msgstr ""
 
@@ -730,12 +730,12 @@ msgstr ""
 msgid "New from Template...|T"
 msgstr "Ereduan oinarritutako idazki berria"
 
-#: src/MenuBackend.C:407 src/ext_l10n.h:14 src/ext_l10n.h:19
+#: src/MenuBackend.C:414 src/ext_l10n.h:14 src/ext_l10n.h:19
 #, fuzzy
 msgid "Open...|O"
 msgstr "Beste...|#O"
 
-#: src/MenuBackend.C:408 src/ext_l10n.h:15 src/ext_l10n.h:25
+#: src/MenuBackend.C:415 src/ext_l10n.h:15 src/ext_l10n.h:25
 #, fuzzy
 msgid "Import|I"
 msgstr "Barneratzen"
@@ -3077,7 +3077,7 @@ msgstr "Turkera"
 
 #: src/ext_l10n.h:544
 #, fuzzy
-msgid "Ukraninian"
+msgid "Ukrainian"
 msgstr "Itzulketak egin|#r"
 
 #: src/ext_l10n.h:545
@@ -3185,7 +3185,7 @@ msgid "Apply|#A"
 msgstr "Eragin|#A"
 
 #: src/form1.C:120 src/form1.C:264 src/frontends/xforms/form_graphics.C:150
-#: src/insets/insetbib.C:63 src/insets/insetbib.C:64
+#: src/insets/insetbib.C:65 src/insets/insetbib.C:66
 #: src/insets/insetinclude.C:55 src/insets/insetinclude.C:56
 #: src/layout_forms.C:98 src/lyx.C:53 src/lyx_gui_misc.C:404
 #: src/lyx_gui_misc.C:408 src/lyx_gui_misc.C:424 src/mathed/math_forms.C:100
@@ -3491,18 +3491,18 @@ msgid "Check that your parameters are correct"
 msgstr "Zure parametroak zuzen daudela egiaztatu"
 
 #. goto button labels
-#: src/frontends/gnome/FormRef.C:48 src/frontends/xforms/FormRef.C:102
-#: src/frontends/xforms/FormRef.C:211 src/frontends/xforms/FormRef.C:234
+#: src/frontends/gnome/FormRef.C:48 src/frontends/xforms/FormRef.C:103
+#: src/frontends/xforms/FormRef.C:220 src/frontends/xforms/FormRef.C:243
 #, fuzzy
 msgid "Goto reference"
 msgstr "Erreferentzira Joan%m%l"
 
-#: src/frontends/gnome/FormRef.C:49 src/frontends/xforms/FormRef.C:203
+#: src/frontends/gnome/FormRef.C:49 src/frontends/xforms/FormRef.C:212
 #, fuzzy
 msgid "Go back"
 msgstr "beltza"
 
-#: src/frontends/gnome/FormRef.C:91 src/frontends/xforms/FormRef.C:130
+#: src/frontends/gnome/FormRef.C:91 src/frontends/xforms/FormRef.C:141
 msgid "*** No labels found in document ***"
 msgstr "*** Idazkiaren etiketarik ez dira aurkitu ***"
 
@@ -6401,33 +6401,33 @@ msgid "EPS Figure"
 msgstr "EPS Irudia"
 
 #. InsetBibtex uses the same form, with different labels
-#: src/insets/insetbib.C:57 src/insets/insetbib.C:58 src/insets/insetbib.C:193
-#: src/insets/insetbib.C:194
+#: src/insets/insetbib.C:59 src/insets/insetbib.C:60 src/insets/insetbib.C:208
+#: src/insets/insetbib.C:209
 msgid "Key:|#K"
 msgstr "Giltza:|#K"
 
-#: src/insets/insetbib.C:67 src/insets/insetbib.C:68 src/insets/insetbib.C:195
-#: src/insets/insetbib.C:196
+#: src/insets/insetbib.C:69 src/insets/insetbib.C:70 src/insets/insetbib.C:210
+#: src/insets/insetbib.C:211
 msgid "Label:|#L"
 msgstr "Etiketa:|#L"
 
-#: src/insets/insetbib.C:204
+#: src/insets/insetbib.C:219
 msgid "Bibliography item"
 msgstr "Bibliografi elementua"
 
-#: src/insets/insetbib.C:225
+#: src/insets/insetbib.C:240
 msgid "BibTeX Generated References"
 msgstr "BibTeX-ek Sortutako Erreferentziak"
 
-#: src/insets/insetbib.C:324
+#: src/insets/insetbib.C:339
 msgid "Database:"
 msgstr "Datu Basea:"
 
-#: src/insets/insetbib.C:325
+#: src/insets/insetbib.C:340
 msgid "Style:  "
 msgstr "Itxura:  "
 
-#: src/insets/insetbib.C:333
+#: src/insets/insetbib.C:348
 msgid "BibTeX"
 msgstr "BibTeX"
 
@@ -6578,7 +6578,7 @@ msgstr "Aurkibidea"
 msgid "Opened note"
 msgstr "Oharra irekita"
 
-#: src/insets/insetlabel.C:49 src/mathed/formula.C:1070
+#: src/insets/insetlabel.C:49 src/mathed/formula.C:1087
 msgid "Enter label:"
 msgstr "Etiketa sartu:"
 
@@ -6673,7 +6673,7 @@ msgstr "Tekla mapeaketa"
 msgid "   options: "
 msgstr "   aukerak: "
 
-#: src/language.C:78
+#: src/language.C:81
 #, fuzzy
 msgid "Document wide language"
 msgstr "Idazki itxura ezarria"
@@ -7611,8 +7611,8 @@ msgstr "Akatsa! Esandako fitxategia irakurkaitza da:"
 msgid "Error! Cannot open specified file: "
 msgstr "Akatsa! Esandako Fitxategia ezin ireki:"
 
-#: src/lyx_cb.C:585 src/lyx_cb.C:588 src/mathed/formula.C:1065
-#: src/mathed/formula.C:1068
+#: src/lyx_cb.C:585 src/lyx_cb.C:588 src/mathed/formula.C:1082
+#: src/mathed/formula.C:1085
 msgid "Enter new label to insert:"
 msgstr "Sartuko den etiketa idatzi:"
 
@@ -8027,20 +8027,20 @@ msgstr "sartuta."
 msgid "Could not insert document"
 msgstr "Idazkia ezin da sartu"
 
-#: src/lyx_gui.C:311
+#: src/lyx_gui.C:315
 msgid " No change %l| Roman | Sans Serif | Typewriter %l| Reset "
 msgstr " Aldaketabarik %l| Erromanoa | Sans Serif | Idazmakina %l| Ber-ezarri "
 
-#: src/lyx_gui.C:313
+#: src/lyx_gui.C:317
 msgid " No change %l| Medium | Bold %l| Reset "
 msgstr " Aldaketabarik %l| Erdia | Beltza %l| Ber-ezarri "
 
-#: src/lyx_gui.C:315
+#: src/lyx_gui.C:319
 msgid " No change %l| Upright | Italic | Slanted | Small Caps %l| Reset "
 msgstr ""
 " Aldaketabarik %l| Zuzen | Italiarra | Okertua | Versales %l| Ber-ezarri "
 
-#: src/lyx_gui.C:318
+#: src/lyx_gui.C:322
 msgid ""
 " No change %l| Tiny | Smallest | Smaller | Small | Normal | Large | Larger | "
 "Largest | Huge | Huger %l| Increase | Decrease | Reset "
@@ -8048,12 +8048,12 @@ msgstr ""
 " Aldaketabarik | Ttipia | Txikiena | Txikiago| Txikia | Normala | Handia | "
 "Handiago | Oso Handia | Izugarria %l| Handitu | Txikitu | Ber-ezarri "
 
-#: src/lyx_gui.C:322
+#: src/lyx_gui.C:326
 msgid " No change %l| Emph | Underbar | Noun | LaTeX mode %l| Reset "
 msgstr ""
 " Aldaketabarik %l| Enfasia | Azpimarratu | Izena | LaTeX era %l| Ber-ezarri"
 
-#: src/lyx_gui.C:324
+#: src/lyx_gui.C:328
 msgid ""
 " No change %l| No color | Black | White | Red | Green | Blue | Cyan | "
 "Magenta | Yellow %l| Reset "
@@ -8061,22 +8061,22 @@ msgstr ""
 " Aldakertabarik %l| Margobarik | Beltza | Zuria | Gorria | Orlegia | Urdina "
 "| Zian | Arrosa | Oria %l| Ber-ezarri "
 
-#: src/lyx_gui.C:329
+#: src/lyx_gui.C:333
 msgid " English %l| German | French "
 msgstr ""
 
 #. build up the combox entries
-#: src/lyx_gui.C:343
+#: src/lyx_gui.C:347
 #, fuzzy
 msgid "No change"
 msgstr " (Aldatua)"
 
-#: src/lyx_gui.C:344
+#: src/lyx_gui.C:348
 #, fuzzy
 msgid "Reset"
 msgstr "Erref"
 
-#: src/lyx_gui.C:401
+#: src/lyx_gui.C:405
 msgid "LyX Banner"
 msgstr "LyX-en Iragarria"
 
@@ -8129,15 +8129,18 @@ msgid "System directory set to: "
 msgstr "Sistemaren helbidea ezarria, nora: "
 
 #: src/lyx_main.C:321
-msgid "LyX Warning! Couldn't determine system directory."
+#, fuzzy
+msgid "LyX Warning! Couldn't determine system directory. "
 msgstr "LyX Oharra! Sistemako hebidea ezin zehaztu:"
 
 #: src/lyx_main.C:322
-msgid "Try the '-sysdir' command line parameter or"
+#, fuzzy
+msgid "Try the '-sysdir' command line parameter or "
 msgstr "Agindu lerroan '-sysdir' parametroarekin saiatu edo"
 
 #: src/lyx_main.C:323
-msgid "set the environment variable LYX_DIR_11x to the LyX system directory"
+#, fuzzy
+msgid "set the environment variable LYX_DIR_11x to the LyX system directory "
 msgstr "LYX_DIR_10x guneko aldagaia LyX sistemako helbidera ezarri"
 
 #: src/lyx_main.C:325
@@ -8700,7 +8703,7 @@ msgstr " (Aldatua)"
 msgid " (read only)"
 msgstr " (irakur era)"
 
-#: src/mathed/formula.C:909 src/mathed/formula.C:1234
+#: src/mathed/formula.C:909 src/mathed/formula.C:1251
 msgid "TeX mode"
 msgstr "TeX era"
 
@@ -8712,11 +8715,11 @@ msgstr "Zenbakirik gabe"
 msgid "Number"
 msgstr "Zenbakia"
 
-#: src/mathed/formula.C:1105
+#: src/mathed/formula.C:1122
 msgid "math text mode"
 msgstr "testuan matematikak era"
 
-#: src/mathed/formula.C:1114
+#: src/mathed/formula.C:1131
 msgid "Invalid action in math mode!"
 msgstr "Matematika eran ekimen baliakaitza!"
 
@@ -8824,35 +8827,35 @@ msgstr "Goratua | Erdiratua | Beheratua"
 msgid "Math Panel"
 msgstr "Matematika Arbela"
 
-#: src/MenuBackend.C:256
+#: src/MenuBackend.C:263
 #, fuzzy
 msgid "No Documents Open!"
 msgstr "Idazki Irekirik ez dago!%t"
 
-#: src/MenuBackend.C:304
+#: src/MenuBackend.C:311
 #, fuzzy
 msgid "Ascii text as lines"
 msgstr "Ondorengo parrafoa aukeratu"
 
-#: src/MenuBackend.C:306
+#: src/MenuBackend.C:313
 #, fuzzy
 msgid "Ascii text as paragraphs"
 msgstr "Ondorengo parrafoa aukeratu"
 
-#: src/MenuBackend.C:409
+#: src/MenuBackend.C:416
 msgid "Quit|Q"
 msgstr ""
 
-#: src/MenuBackend.C:417
+#: src/MenuBackend.C:424
 #, fuzzy
 msgid "LaTeX...|L"
 msgstr "LaTeX|#L"
 
-#: src/MenuBackend.C:419
+#: src/MenuBackend.C:426
 msgid "LinuxDoc...|L"
 msgstr ""
 
-#: src/MenuBackend.C:427
+#: src/MenuBackend.C:434
 #, fuzzy
 msgid "Emphasize"
 msgstr "Enfasia "
@@ -9045,7 +9048,7 @@ msgstr "createDirectory izen erabilkaitzarekin deitzen"
 msgid "Error! Couldn't create directory:"
 msgstr "Akatsa! Helbidea ezin sortu:"
 
-#: src/support/filetools.C:1136
+#: src/support/filetools.C:1133
 msgid "Could not delete auto-save file!"
 msgstr "Berekasa gordetako fitxategia ezin ezabatu!"
 
@@ -9093,34 +9096,34 @@ msgstr "Mugikor erdiekin ez dakit zer egin."
 msgid "sorry."
 msgstr "barkatu."
 
-#: src/text.C:1995
+#: src/text.C:2000
 msgid ""
 "You cannot insert a space at the beginning of a paragraph.  Please read the "
 "Tutorial."
 msgstr ""
 "Ezin duzu parrafo haseran hutsunerik idatzi. Tutoretza irakurri mesedez."
 
-#: src/text.C:1997
+#: src/text.C:2002
 msgid "You cannot type two spaces this way.  Please read the Tutorial."
 msgstr "Ezin duzu modu honetan bi hutsune idazti. Tutoretza irakurri mesedez."
 
-#: src/text.C:3453 src/text.C:3459
+#: src/text.C:3458 src/text.C:3464
 msgid "Page Break (top)"
 msgstr "Orri Jauzia (goikaldea)"
 
-#: src/text.C:3653 src/text.C:3659
+#: src/text.C:3658 src/text.C:3664
 msgid "Page Break (bottom)"
 msgstr "Orri Jauzia (azpikaldea)"
 
-#: src/text.C:3953
+#: src/text.C:3958
 msgid "You can't insert a float in a float!"
 msgstr "Ezin duzu mugikor bat beste mugikorrean sartu!"
 
-#: src/text.C:3961
+#: src/text.C:3966
 msgid "You can't insert a marginpar in a minipage!"
 msgstr "Ezin duzu Orritxo batean parrafo margena sartu!"
 
-#: src/text.C:3988
+#: src/text.C:3993
 #, fuzzy
 msgid "Float would include float!"
 msgstr "Mugikor batek mugikor bat dauka!"

@@ -36,7 +36,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: lyx 1.1.6\n"
-"POT-Creation-Date: 2001-01-11 19:19+0100\n"
+"POT-Creation-Date: 2001-01-31 17:06+0100\n"
 "PO-Revision-Date: 2000-12-22 22:08+02:00\n"
 "Last-Translator: Pauli Virtanen <pauli.virtanen@saunalahti.fi>\n"
 "Language-Team: Finnish <fi@li.org>\n"
@@ -142,28 +142,28 @@ msgstr "Virhe: Tiedostoon ei voi kirjoittaa:"
 msgid "Error: Cannot open file: "
 msgstr "Virhe: Tiedostoa ei voi avata:"
 
-#: src/buffer.C:2224 src/buffer.C:2873
+#: src/buffer.C:2226 src/buffer.C:2875
 msgid "LYX_ERROR:"
 msgstr "LYX_VIRHE:"
 
-#: src/buffer.C:2224 src/buffer.C:2873
+#: src/buffer.C:2226 src/buffer.C:2875
 msgid "Cannot write file"
 msgstr "Tiedostoon ei voi kirjoittaa"
 
-#: src/buffer.C:2311 src/buffer.C:2955
+#: src/buffer.C:2313 src/buffer.C:2957
 msgid "Error : Wrong depth for LatexType Command.\n"
 msgstr "Virhe : Väärä syvyys LatexType-komennoksi.\n"
 
 #. path to LaTeX file
-#: src/buffer.C:3264
+#: src/buffer.C:3266
 msgid "Running chktex..."
 msgstr "chktex on käynnissä..."
 
-#: src/buffer.C:3277
+#: src/buffer.C:3279
 msgid "chktex did not work!"
 msgstr "chktex ei toiminut!"
 
-#: src/buffer.C:3278
+#: src/buffer.C:3280
 msgid "Could not run with file:"
 msgstr "Ohjelma ei voinut käsitellä tiedostoa:"
 
@@ -296,15 +296,15 @@ msgstr "Kappaletyyli kopioitu"
 msgid "Paragraph environment type set"
 msgstr "Kappaletyyli asetettu"
 
-#: src/BufferView2.C:581 src/LyXAction.C:169 src/MenuBackend.C:425
+#: src/BufferView2.C:581 src/LyXAction.C:169 src/MenuBackend.C:432
 msgid "Copy"
 msgstr "Kopioi"
 
-#: src/BufferView2.C:592 src/LyXAction.C:170 src/MenuBackend.C:424
+#: src/BufferView2.C:592 src/LyXAction.C:170 src/MenuBackend.C:431
 msgid "Cut"
 msgstr "Leikkaa"
 
-#: src/BufferView2.C:601 src/LyXAction.C:346 src/MenuBackend.C:426
+#: src/BufferView2.C:601 src/LyXAction.C:346 src/MenuBackend.C:433
 msgid "Paste"
 msgstr "Liitä"
 
@@ -429,7 +429,7 @@ msgstr "] on käytössä sen sijaan."
 msgid "Done"
 msgstr "Valmis"
 
-#: src/converter.C:165 src/converter.C:192
+#: src/converter.C:165 src/converter.C:195
 msgid "Can not view file"
 msgstr "Tiedostoa ei voi katsella"
 
@@ -437,87 +437,87 @@ msgstr "Tiedostoa ei voi katsella"
 msgid "No information for viewing "
 msgstr "Ei katselutietoja"
 
-#: src/converter.C:185 src/converter.C:612
+#: src/converter.C:188 src/converter.C:618
 msgid "Executing command:"
 msgstr "Komento on käynnissä:"
 
-#: src/converter.C:193
+#: src/converter.C:196
 msgid "Error while executing"
 msgstr "Virhe käynnistettäessä"
 
-#: src/converter.C:549 src/converter.C:639
+#: src/converter.C:552 src/converter.C:645
 msgid "Can not convert file"
 msgstr "Ei voi muuntaa tiedostoa"
 
-#: src/converter.C:550
+#: src/converter.C:553
 msgid "No information for converting from "
 msgstr "Ei tietoja muunnokselle "
 
-#: src/CutAndPaste.C:448 src/CutAndPaste.C:451 src/converter.C:551
+#: src/CutAndPaste.C:448 src/CutAndPaste.C:451 src/converter.C:554
 msgid " to "
 msgstr " -> "
 
-#: src/converter.C:636
+#: src/converter.C:642
 msgid "There were errors during the Build process."
 msgstr "Build-prosessin aikana tapahtui virheitä."
 
-#: src/converter.C:637 src/converter.C:782 src/converter.C:852
+#: src/converter.C:643 src/converter.C:788 src/converter.C:858
 msgid "You should try to fix them."
 msgstr "Niiden korjaaminen olisi suositeltavaa."
 
-#: src/converter.C:662
+#: src/converter.C:668
 msgid "Error while trying to move directory:"
 msgstr "Virhe yrittäessä siirtää hakemistoa:"
 
-#: src/converter.C:697
+#: src/converter.C:703
 msgid "Error while trying to move file:"
 msgstr "Virhe yrittäessä siirtää tiedostoa:"
 
-#: src/converter.C:698
+#: src/converter.C:704
 msgid "to "
 msgstr "tiedostoksi "
 
-#: src/converter.C:777 src/converter.C:847
+#: src/converter.C:783 src/converter.C:853
 msgid "One error detected"
 msgstr "Löytyi yksi virhe"
 
-#: src/converter.C:778 src/converter.C:848
+#: src/converter.C:784 src/converter.C:854
 msgid "You should try to fix it."
 msgstr "Sen korjaaminen olisi suositeltavaa."
 
-#: src/converter.C:781 src/converter.C:851
+#: src/converter.C:787 src/converter.C:857
 msgid " errors detected."
 msgstr " virhettä löytyi."
 
-#: src/converter.C:786
+#: src/converter.C:792
 msgid "There were errors during running of "
 msgstr "Ohjelman ajon aikana tapahtui virheitä. Ohjelma oli "
 
-#: src/converter.C:790 src/converter.C:857
+#: src/converter.C:796 src/converter.C:863
 msgid "The operation resulted in"
 msgstr "Toiminto aiheutti"
 
-#: src/converter.C:791 src/converter.C:858
+#: src/converter.C:797 src/converter.C:864
 msgid "an empty file."
 msgstr "tyhjän tiedoston."
 
-#: src/converter.C:792 src/converter.C:859
+#: src/converter.C:798 src/converter.C:865
 msgid "Resulting file is empty"
 msgstr "Tulostiedosto on tyhjä"
 
-#: src/converter.C:810
+#: src/converter.C:816
 msgid "Running LaTeX..."
 msgstr "LaTeX on käynnissä..."
 
-#: src/converter.C:840
+#: src/converter.C:846
 msgid "LaTeX did not work!"
 msgstr "LaTeX ei toiminut!"
 
-#: src/converter.C:841
+#: src/converter.C:847
 msgid "Missing log file:"
 msgstr "Puuttuva lokitiedosto:"
 
-#: src/converter.C:854
+#: src/converter.C:860
 msgid "There were errors during the LaTeX run."
 msgstr "LaTeX-ajon aikana esiintyi virheitä."
 
@@ -544,7 +544,7 @@ msgstr "Kiitokset"
 #: src/frontends/xforms/form_paragraph.C:330
 #: src/frontends/xforms/form_print.C:52 src/frontends/xforms/form_ref.C:71
 #: src/frontends/xforms/form_tabular_create.C:28
-#: src/frontends/xforms/form_url.C:64 src/insets/insetbib.C:60
+#: src/frontends/xforms/form_url.C:64 src/insets/insetbib.C:62
 #: src/insets/insetinclude.C:52 src/lyx.C:47 src/lyx.C:105
 #: src/mathed/math_forms.C:109 src/print_form.C:28 src/sp_form.C:38
 msgid "OK"
@@ -571,8 +571,8 @@ msgstr ""
 "\n"
 "asiakirjaluokan muututtua\n"
 
-#: src/CutAndPaste.C:476 src/insets/insettext.C:970 src/text.C:3952
-#: src/text.C:3960 src/text.C:3987 src/text2.C:2197 src/text2.C:2310
+#: src/CutAndPaste.C:476 src/insets/insettext.C:970 src/text.C:3957
+#: src/text.C:3965 src/text.C:3992 src/text2.C:2197 src/text2.C:2310
 msgid "Impossible operation"
 msgstr "Mahdoton toiminto"
 
@@ -581,8 +581,8 @@ msgid "Can't paste float into float!"
 msgstr "Irrallisen osan sisään ei voi liittää toista irrallista osaa!"
 
 #: src/CutAndPaste.C:478 src/insets/insetert.C:67
-#: src/insets/insettabular.C:1700 src/insets/insettext.C:972 src/text.C:3954
-#: src/text.C:3962 src/text.C:3989
+#: src/insets/insettabular.C:1700 src/insets/insettext.C:972 src/text.C:3959
+#: src/text.C:3967 src/text.C:3994
 msgid "Sorry."
 msgstr "Valitettavasti."
 
@@ -690,12 +690,12 @@ msgstr "Asiakirja viety "
 msgid " to file `"
 msgstr " tiedostoon '"
 
-#: src/MenuBackend.C:436 src/MenuBackend.C:443 src/ext_l10n.h:1
+#: src/MenuBackend.C:443 src/MenuBackend.C:450 src/ext_l10n.h:1
 #: src/ext_l10n.h:4
 msgid "File|F"
 msgstr "Tiedosto|T"
 
-#: src/MenuBackend.C:437 src/ext_l10n.h:2 src/ext_l10n.h:5
+#: src/MenuBackend.C:444 src/ext_l10n.h:2 src/ext_l10n.h:5
 msgid "Edit|E"
 msgstr "Muokkaa|M"
 
@@ -719,11 +719,11 @@ msgstr "Näytä|N"
 msgid "Navigate|N"
 msgstr "Siirry|S"
 
-#: src/MenuBackend.C:439 src/ext_l10n.h:10
+#: src/MenuBackend.C:446 src/ext_l10n.h:10
 msgid "Documents|D"
 msgstr "Asiakirjat|A"
 
-#: src/MenuBackend.C:406 src/ext_l10n.h:12 src/ext_l10n.h:17
+#: src/MenuBackend.C:413 src/ext_l10n.h:12 src/ext_l10n.h:17
 msgid "New...|N"
 msgstr "Uusi...|U"
 
@@ -731,11 +731,11 @@ msgstr "Uusi...|U"
 msgid "New from Template...|T"
 msgstr "Uusi mallin mukaan...|m"
 
-#: src/MenuBackend.C:407 src/ext_l10n.h:14 src/ext_l10n.h:19
+#: src/MenuBackend.C:414 src/ext_l10n.h:14 src/ext_l10n.h:19
 msgid "Open...|O"
 msgstr "Avaa...|A"
 
-#: src/MenuBackend.C:408 src/ext_l10n.h:15 src/ext_l10n.h:25
+#: src/MenuBackend.C:415 src/ext_l10n.h:15 src/ext_l10n.h:25
 msgid "Import|I"
 msgstr "Tuo|o"
 
@@ -2834,7 +2834,8 @@ msgid "Turkish"
 msgstr "Turkki"
 
 #: src/ext_l10n.h:544
-msgid "Ukraninian"
+#, fuzzy
+msgid "Ukrainian"
 msgstr "Ukraina"
 
 #: src/ext_l10n.h:545
@@ -2942,7 +2943,7 @@ msgid "Apply|#A"
 msgstr "Toteuta|#T"
 
 #: src/form1.C:120 src/form1.C:264 src/frontends/xforms/form_graphics.C:150
-#: src/insets/insetbib.C:63 src/insets/insetbib.C:64
+#: src/insets/insetbib.C:65 src/insets/insetbib.C:66
 #: src/insets/insetinclude.C:55 src/insets/insetinclude.C:56
 #: src/layout_forms.C:98 src/lyx.C:53 src/lyx_gui_misc.C:404
 #: src/lyx_gui_misc.C:408 src/lyx_gui_misc.C:424 src/mathed/math_forms.C:100
@@ -3234,16 +3235,16 @@ msgid "Check that your parameters are correct"
 msgstr "Tarkasta, että asetustesi ovat oikein"
 
 #. goto button labels
-#: src/frontends/gnome/FormRef.C:48 src/frontends/xforms/FormRef.C:102
-#: src/frontends/xforms/FormRef.C:211 src/frontends/xforms/FormRef.C:234
+#: src/frontends/gnome/FormRef.C:48 src/frontends/xforms/FormRef.C:103
+#: src/frontends/xforms/FormRef.C:220 src/frontends/xforms/FormRef.C:243
 msgid "Goto reference"
 msgstr "Siirry viitteeseen"
 
-#: src/frontends/gnome/FormRef.C:49 src/frontends/xforms/FormRef.C:203
+#: src/frontends/gnome/FormRef.C:49 src/frontends/xforms/FormRef.C:212
 msgid "Go back"
 msgstr "Palaa"
 
-#: src/frontends/gnome/FormRef.C:91 src/frontends/xforms/FormRef.C:130
+#: src/frontends/gnome/FormRef.C:91 src/frontends/xforms/FormRef.C:141
 msgid "*** No labels found in document ***"
 msgstr "*** Asiakirjassa ei ole nimikkeitä ***"
 
@@ -5894,33 +5895,33 @@ msgid "EPS Figure"
 msgstr "EPS-kuva"
 
 #. InsetBibtex uses the same form, with different labels
-#: src/insets/insetbib.C:57 src/insets/insetbib.C:58 src/insets/insetbib.C:193
-#: src/insets/insetbib.C:194
+#: src/insets/insetbib.C:59 src/insets/insetbib.C:60 src/insets/insetbib.C:208
+#: src/insets/insetbib.C:209
 msgid "Key:|#K"
 msgstr "Avain:|#A"
 
-#: src/insets/insetbib.C:67 src/insets/insetbib.C:68 src/insets/insetbib.C:195
-#: src/insets/insetbib.C:196
+#: src/insets/insetbib.C:69 src/insets/insetbib.C:70 src/insets/insetbib.C:210
+#: src/insets/insetbib.C:211
 msgid "Label:|#L"
 msgstr "Nimike:|#N"
 
-#: src/insets/insetbib.C:204
+#: src/insets/insetbib.C:219
 msgid "Bibliography item"
 msgstr "Lähdeviite"
 
-#: src/insets/insetbib.C:225
+#: src/insets/insetbib.C:240
 msgid "BibTeX Generated References"
 msgstr "BibTeXin luomat lähdeviitteet"
 
-#: src/insets/insetbib.C:324
+#: src/insets/insetbib.C:339
 msgid "Database:"
 msgstr "Tietokanta:"
 
-#: src/insets/insetbib.C:325
+#: src/insets/insetbib.C:340
 msgid "Style:  "
 msgstr "Tyyli:  "
 
-#: src/insets/insetbib.C:333
+#: src/insets/insetbib.C:348
 msgid "BibTeX"
 msgstr "BibTeX"
 
@@ -6064,7 +6065,7 @@ msgstr "Hakusana"
 msgid "Opened note"
 msgstr "Muistiinpano avattiin"
 
-#: src/insets/insetlabel.C:49 src/mathed/formula.C:1070
+#: src/insets/insetlabel.C:49 src/mathed/formula.C:1087
 msgid "Enter label:"
 msgstr "Lisää nimike:"
 
@@ -6152,7 +6153,7 @@ msgstr "Näppäinkartat"
 msgid "   options: "
 msgstr "   optiot: "
 
-#: src/language.C:78
+#: src/language.C:81
 msgid "Document wide language"
 msgstr "Koko asiakirjan kieli"
 
@@ -7066,8 +7067,8 @@ msgstr "Virhe! Annettua tiedostoa ei voi lukea: "
 msgid "Error! Cannot open specified file: "
 msgstr "Virhe! Annettua tiedostoa ei voi avata:"
 
-#: src/lyx_cb.C:585 src/lyx_cb.C:588 src/mathed/formula.C:1065
-#: src/mathed/formula.C:1068
+#: src/lyx_cb.C:585 src/lyx_cb.C:588 src/mathed/formula.C:1082
+#: src/mathed/formula.C:1085
 msgid "Enter new label to insert:"
 msgstr "Kirjoita uusi nimiketeksti:"
 
@@ -7480,19 +7481,19 @@ msgstr "lisätty."
 msgid "Could not insert document"
 msgstr "Asiakirjaa ei voi lisätä"
 
-#: src/lyx_gui.C:311
+#: src/lyx_gui.C:315
 msgid " No change %l| Roman | Sans Serif | Typewriter %l| Reset "
 msgstr " Ei muutosta %l| Antiikva | Sans Serif | Kirjoituskone %l| Palauta "
 
-#: src/lyx_gui.C:313
+#: src/lyx_gui.C:317
 msgid " No change %l| Medium | Bold %l| Reset "
 msgstr " Ei muutosta %l| Keskivahva | Lihavoitu %l| Palauta "
 
-#: src/lyx_gui.C:315
+#: src/lyx_gui.C:319
 msgid " No change %l| Upright | Italic | Slanted | Small Caps %l| Reset "
 msgstr " Ei muutosta %l| Pysty | Kursiivi | Kalteva | Kapiteeli %l| Palauta "
 
-#: src/lyx_gui.C:318
+#: src/lyx_gui.C:322
 msgid ""
 " No change %l| Tiny | Smallest | Smaller | Small | Normal | Large | Larger | "
 "Largest | Huge | Huger %l| Increase | Decrease | Reset "
@@ -7501,12 +7502,12 @@ msgstr ""
 "Suuri | Suurempi | Suurin | Valtava | Valtavampi %l| Suurenna | Pienennä | "
 "Palauta"
 
-#: src/lyx_gui.C:322
+#: src/lyx_gui.C:326
 msgid " No change %l| Emph | Underbar | Noun | LaTeX mode %l| Reset "
 msgstr ""
 " Ei muutosta %l| Korostus | Alleviivaus | Nimityyli | LaTeX-tila %l| Palauta "
 
-#: src/lyx_gui.C:324
+#: src/lyx_gui.C:328
 msgid ""
 " No change %l| No color | Black | White | Red | Green | Blue | Cyan | "
 "Magenta | Yellow %l| Reset "
@@ -7514,20 +7515,20 @@ msgstr ""
 "Ei muutosta %l| Ei väriä | Musta | Valkoinen | Punainen | Vihreä | Sininen | "
 "Syaani | Violetti | Keltainen %l| Palauta"
 
-#: src/lyx_gui.C:329
+#: src/lyx_gui.C:333
 msgid " English %l| German | French "
 msgstr " Englanti %l| Saksa | Ranska "
 
 #. build up the combox entries
-#: src/lyx_gui.C:343
+#: src/lyx_gui.C:347
 msgid "No change"
 msgstr "Ei muutosta"
 
-#: src/lyx_gui.C:344
+#: src/lyx_gui.C:348
 msgid "Reset"
 msgstr "Palauta"
 
-#: src/lyx_gui.C:401
+#: src/lyx_gui.C:405
 msgid "LyX Banner"
 msgstr "LyX-avauskuva"
 
@@ -7580,15 +7581,18 @@ msgid "System directory set to: "
 msgstr "Järjestelmähakemisto: "
 
 #: src/lyx_main.C:321
-msgid "LyX Warning! Couldn't determine system directory."
+#, fuzzy
+msgid "LyX Warning! Couldn't determine system directory. "
 msgstr "LyX Varoitus! Järjestelmähakemistoa ei voitu määrittää."
 
 #: src/lyx_main.C:322
-msgid "Try the '-sysdir' command line parameter or"
+#, fuzzy
+msgid "Try the '-sysdir' command line parameter or "
 msgstr "Kokeile '-sysdir'-valitsinta tai"
 
 #: src/lyx_main.C:323
-msgid "set the environment variable LYX_DIR_11x to the LyX system directory"
+#, fuzzy
+msgid "set the environment variable LYX_DIR_11x to the LyX system directory "
 msgstr "aseta ympäristömuuttujaan LYX_DIR_11x LyX-järjestelmähakemisto"
 
 #: src/lyx_main.C:325
@@ -8236,7 +8240,7 @@ msgstr " (Muuttunut)"
 msgid " (read only)"
 msgstr " (kirjoitussuojattu)"
 
-#: src/mathed/formula.C:909 src/mathed/formula.C:1234
+#: src/mathed/formula.C:909 src/mathed/formula.C:1251
 msgid "TeX mode"
 msgstr "TeX-tila"
 
@@ -8248,11 +8252,11 @@ msgstr "Ei numeroa"
 msgid "Number"
 msgstr "Numero"
 
-#: src/mathed/formula.C:1105
+#: src/mathed/formula.C:1122
 msgid "math text mode"
 msgstr "matematiikka-tekstitila"
 
-#: src/mathed/formula.C:1114
+#: src/mathed/formula.C:1131
 msgid "Invalid action in math mode!"
 msgstr "Kelvoton toiminto matematiikkatilassa!"
 
@@ -8360,31 +8364,31 @@ msgstr " Ylä | Keski | Ala"
 msgid "Math Panel"
 msgstr "Matematiikkapaneeli"
 
-#: src/MenuBackend.C:256
+#: src/MenuBackend.C:263
 msgid "No Documents Open!"
 msgstr "Avoimia asiakirjoja ei ole!"
 
-#: src/MenuBackend.C:304
+#: src/MenuBackend.C:311
 msgid "Ascii text as lines"
 msgstr "Ascii-teksti riveinä"
 
-#: src/MenuBackend.C:306
+#: src/MenuBackend.C:313
 msgid "Ascii text as paragraphs"
 msgstr "Ascii-teksti kappaleina"
 
-#: src/MenuBackend.C:409
+#: src/MenuBackend.C:416
 msgid "Quit|Q"
 msgstr "Lopeta|e"
 
-#: src/MenuBackend.C:417
+#: src/MenuBackend.C:424
 msgid "LaTeX...|L"
 msgstr "LaTeX...|L"
 
-#: src/MenuBackend.C:419
+#: src/MenuBackend.C:426
 msgid "LinuxDoc...|L"
 msgstr "LinuxDoc...|L"
 
-#: src/MenuBackend.C:427
+#: src/MenuBackend.C:434
 msgid "Emphasize"
 msgstr "Korosta"
 
@@ -8575,7 +8579,7 @@ msgstr "'createDirectory'-kutsu epäkelvolla nimellä"
 msgid "Error! Couldn't create directory:"
 msgstr "Virhe! Hakemistoa ei voitu luoda:"
 
-#: src/support/filetools.C:1136
+#: src/support/filetools.C:1133
 msgid "Could not delete auto-save file!"
 msgstr "Automaattista tallennustiedostoa ei voi poistaa!"
 
@@ -8623,33 +8627,33 @@ msgstr "Puolinaisia irrallisia osia ei osata käsitellä."
 msgid "sorry."
 msgstr "Valitettavasti."
 
-#: src/text.C:1995
+#: src/text.C:2000
 msgid ""
 "You cannot insert a space at the beginning of a paragraph.  Please read the "
 "Tutorial."
 msgstr "Kappaleen alkuun ei voi laittaa välilyöntiä. Ks. Opastus."
 
-#: src/text.C:1997
+#: src/text.C:2002
 msgid "You cannot type two spaces this way.  Please read the Tutorial."
 msgstr "Kahta perättäistä välilyöntiä ei voi lisätä näin. Ks. Opastus."
 
-#: src/text.C:3453 src/text.C:3459
+#: src/text.C:3458 src/text.C:3464
 msgid "Page Break (top)"
 msgstr "Sivunvaihto (ylä)"
 
-#: src/text.C:3653 src/text.C:3659
+#: src/text.C:3658 src/text.C:3664
 msgid "Page Break (bottom)"
 msgstr "Sivunvaihto (ala)"
 
-#: src/text.C:3953
+#: src/text.C:3958
 msgid "You can't insert a float in a float!"
 msgstr "Irrallista osaa ei voi laittaa irrallisen sisään!"
 
-#: src/text.C:3961
+#: src/text.C:3966
 msgid "You can't insert a marginpar in a minipage!"
 msgstr "Marginpar:ia ei voi laittaa pienoissivun sisään!"
 
-#: src/text.C:3988
+#: src/text.C:3993
 msgid "Float would include float!"
 msgstr "Irrallinen osa sisältäisi toisen irrallisen osan!"
 

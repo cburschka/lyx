@@ -9,7 +9,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.0.0\n"
-"POT-Creation-Date: 2001-01-11 19:19+0100\n"
+"POT-Creation-Date: 2001-01-31 17:06+0100\n"
 "PO-Revision-Date: 2000-01-20 02:50+01:00\n"
 "Last-Translator: Lorint Hendschel <LorintHendschel@skynet.be>\n"
 "Language-Team: walon <linux-wa@chanae.alphanet.ch>\n"
@@ -118,28 +118,28 @@ msgstr "Aroke! Dji n' sai scrîre li fitchî"
 msgid "Error: Cannot open file: "
 msgstr "Aroke! Dji n' sai scrîre li fitchî"
 
-#: src/buffer.C:2224 src/buffer.C:2873
+#: src/buffer.C:2226 src/buffer.C:2875
 msgid "LYX_ERROR:"
 msgstr "LYX_ERROR:"
 
-#: src/buffer.C:2224 src/buffer.C:2873
+#: src/buffer.C:2226 src/buffer.C:2875
 msgid "Cannot write file"
 msgstr "Dji n' sai scrîre li fitchî"
 
-#: src/buffer.C:2311 src/buffer.C:2955
+#: src/buffer.C:2313 src/buffer.C:2957
 msgid "Error : Wrong depth for LatexType Command.\n"
 msgstr "Aroke : Måle parfondeu po li cmande LatexType\n"
 
 #. path to LaTeX file
-#: src/buffer.C:3264
+#: src/buffer.C:3266
 msgid "Running chktex..."
 msgstr "Dj' enonde chktex..."
 
-#: src/buffer.C:3277
+#: src/buffer.C:3279
 msgid "chktex did not work!"
 msgstr "chktex n' a nén stî"
 
-#: src/buffer.C:3278
+#: src/buffer.C:3280
 msgid "Could not run with file:"
 msgstr "Dji n' a nén parvinu a-z enonder ci fitchî ci:"
 
@@ -274,15 +274,15 @@ msgstr "Li sôrt d' inviron'miont pol hagnon est rcopieye"
 msgid "Paragraph environment type set"
 msgstr "Li sôrt d' inviron'mint pol hagnon est metuwe"
 
-#: src/BufferView2.C:581 src/LyXAction.C:169 src/MenuBackend.C:425
+#: src/BufferView2.C:581 src/LyXAction.C:169 src/MenuBackend.C:432
 msgid "Copy"
 msgstr "Copyî"
 
-#: src/BufferView2.C:592 src/LyXAction.C:170 src/MenuBackend.C:424
+#: src/BufferView2.C:592 src/LyXAction.C:170 src/MenuBackend.C:431
 msgid "Cut"
 msgstr "Côper"
 
-#: src/BufferView2.C:601 src/LyXAction.C:346 src/MenuBackend.C:426
+#: src/BufferView2.C:601 src/LyXAction.C:346 src/MenuBackend.C:433
 msgid "Paste"
 msgstr "Aclaper"
 
@@ -413,7 +413,7 @@ msgstr " el plaece."
 msgid "Done"
 msgstr "Fwait"
 
-#: src/converter.C:165 src/converter.C:192
+#: src/converter.C:165 src/converter.C:195
 #, fuzzy
 msgid "Can not view file"
 msgstr "Dji n' sai scrîre li fitchî"
@@ -422,96 +422,96 @@ msgstr "Dji n' sai scrîre li fitchî"
 msgid "No information for viewing "
 msgstr ""
 
-#: src/converter.C:185 src/converter.C:612
+#: src/converter.C:188 src/converter.C:618
 msgid "Executing command:"
 msgstr "Dj' enonde li cmande :"
 
-#: src/converter.C:193
+#: src/converter.C:196
 #, fuzzy
 msgid "Error while executing"
 msgstr "Dj' a aroké come dji sayîve do lere "
 
-#: src/converter.C:549 src/converter.C:639
+#: src/converter.C:552 src/converter.C:645
 #, fuzzy
 msgid "Can not convert file"
 msgstr "Dji n' sai scrîre li fitchî"
 
-#: src/converter.C:550
+#: src/converter.C:553
 msgid "No information for converting from "
 msgstr ""
 
-#: src/CutAndPaste.C:448 src/CutAndPaste.C:451 src/converter.C:551
+#: src/CutAndPaste.C:448 src/CutAndPaste.C:451 src/converter.C:554
 #, fuzzy
 msgid " to "
 msgstr " di "
 
-#: src/converter.C:636
+#: src/converter.C:642
 #, fuzzy
 msgid "There were errors during the Build process."
 msgstr "LaTeX a trové des måcules."
 
-#: src/converter.C:637 src/converter.C:782 src/converter.C:852
+#: src/converter.C:643 src/converter.C:788 src/converter.C:858
 msgid "You should try to fix them."
 msgstr "Sayîz delzès coridjî po cmincî"
 
-#: src/converter.C:662
+#: src/converter.C:668
 #, fuzzy
 msgid "Error while trying to move directory:"
 msgstr "Aroke! Dji n' sai drovi li ridant:"
 
-#: src/converter.C:697
+#: src/converter.C:703
 #, fuzzy
 msgid "Error while trying to move file:"
 msgstr "Aroke! Dji n' sai waester li fitchî:"
 
-#: src/converter.C:698
+#: src/converter.C:704
 #, fuzzy
 msgid "to "
 msgstr " di "
 
-#: src/converter.C:777 src/converter.C:847
+#: src/converter.C:783 src/converter.C:853
 msgid "One error detected"
 msgstr "Dj' a trové ene måcule"
 
-#: src/converter.C:778 src/converter.C:848
+#: src/converter.C:784 src/converter.C:854
 msgid "You should try to fix it."
 msgstr "Sayîz del coridjî."
 
-#: src/converter.C:781 src/converter.C:851
+#: src/converter.C:787 src/converter.C:857
 msgid " errors detected."
 msgstr " måcules di troveyes"
 
-#: src/converter.C:786
+#: src/converter.C:792
 #, fuzzy
 msgid "There were errors during running of "
 msgstr "LaTeX a trové des måcules."
 
-#: src/converter.C:790 src/converter.C:857
+#: src/converter.C:796 src/converter.C:863
 msgid "The operation resulted in"
 msgstr ""
 
-#: src/converter.C:791 src/converter.C:858
+#: src/converter.C:797 src/converter.C:864
 #, fuzzy
 msgid "an empty file."
 msgstr "e-st abagué."
 
-#: src/converter.C:792 src/converter.C:859
+#: src/converter.C:798 src/converter.C:865
 msgid "Resulting file is empty"
 msgstr ""
 
-#: src/converter.C:810
+#: src/converter.C:816
 msgid "Running LaTeX..."
 msgstr "Dj' enonde LaTeX..."
 
-#: src/converter.C:840
+#: src/converter.C:846
 msgid "LaTeX did not work!"
 msgstr "LaTeX n' a nén stî!"
 
-#: src/converter.C:841
+#: src/converter.C:847
 msgid "Missing log file:"
 msgstr "Li fitchî des messaedje manke :"
 
-#: src/converter.C:854
+#: src/converter.C:860
 msgid "There were errors during the LaTeX run."
 msgstr "LaTeX a trové des måcules."
 
@@ -538,7 +538,7 @@ msgstr "Gråces"
 #: src/frontends/xforms/form_paragraph.C:330
 #: src/frontends/xforms/form_print.C:52 src/frontends/xforms/form_ref.C:71
 #: src/frontends/xforms/form_tabular_create.C:28
-#: src/frontends/xforms/form_url.C:64 src/insets/insetbib.C:60
+#: src/frontends/xforms/form_url.C:64 src/insets/insetbib.C:62
 #: src/insets/insetinclude.C:52 src/lyx.C:47 src/lyx.C:105
 #: src/mathed/math_forms.C:109 src/print_form.C:28 src/sp_form.C:38
 msgid "OK"
@@ -562,8 +562,8 @@ msgid ""
 "because of class conversion from\n"
 msgstr ""
 
-#: src/CutAndPaste.C:476 src/insets/insettext.C:970 src/text.C:3952
-#: src/text.C:3960 src/text.C:3987 src/text2.C:2197 src/text2.C:2310
+#: src/CutAndPaste.C:476 src/insets/insettext.C:970 src/text.C:3957
+#: src/text.C:3965 src/text.C:3992 src/text2.C:2197 src/text2.C:2310
 msgid "Impossible operation"
 msgstr "Dji n' sai fé çoula"
 
@@ -572,8 +572,8 @@ msgid "Can't paste float into float!"
 msgstr "Nén moyén d' aclaper on flotant dins èn ôte flotant!"
 
 #: src/CutAndPaste.C:478 src/insets/insetert.C:67
-#: src/insets/insettabular.C:1700 src/insets/insettext.C:972 src/text.C:3954
-#: src/text.C:3962 src/text.C:3989
+#: src/insets/insettabular.C:1700 src/insets/insettext.C:972 src/text.C:3959
+#: src/text.C:3967 src/text.C:3994
 msgid "Sorry."
 msgstr "Dji rgrete."
 
@@ -692,13 +692,13 @@ msgstr "Documint rlomé ("
 msgid " to file `"
 msgstr "[nou fitchî]"
 
-#: src/MenuBackend.C:436 src/MenuBackend.C:443 src/ext_l10n.h:1
+#: src/MenuBackend.C:443 src/MenuBackend.C:450 src/ext_l10n.h:1
 #: src/ext_l10n.h:4
 #, fuzzy
 msgid "File|F"
 msgstr "Fitchî|#F"
 
-#: src/MenuBackend.C:437 src/ext_l10n.h:2 src/ext_l10n.h:5
+#: src/MenuBackend.C:444 src/ext_l10n.h:2 src/ext_l10n.h:5
 #, fuzzy
 msgid "Edit|E"
 msgstr "Candjî"
@@ -728,12 +728,12 @@ msgstr "Loukî è DVI"
 msgid "Navigate|N"
 msgstr "Negatif|#N"
 
-#: src/MenuBackend.C:439 src/ext_l10n.h:10
+#: src/MenuBackend.C:446 src/ext_l10n.h:10
 #, fuzzy
 msgid "Documents|D"
 msgstr "Documints"
 
-#: src/MenuBackend.C:406 src/ext_l10n.h:12 src/ext_l10n.h:17
+#: src/MenuBackend.C:413 src/ext_l10n.h:12 src/ext_l10n.h:17
 msgid "New...|N"
 msgstr ""
 
@@ -742,12 +742,12 @@ msgstr ""
 msgid "New from Template...|T"
 msgstr "Novea documint a pårti d' on modele"
 
-#: src/MenuBackend.C:407 src/ext_l10n.h:14 src/ext_l10n.h:19
+#: src/MenuBackend.C:414 src/ext_l10n.h:14 src/ext_l10n.h:19
 #, fuzzy
 msgid "Open...|O"
 msgstr "Ôte...|#Ô#O"
 
-#: src/MenuBackend.C:408 src/ext_l10n.h:15 src/ext_l10n.h:25
+#: src/MenuBackend.C:415 src/ext_l10n.h:15 src/ext_l10n.h:25
 #, fuzzy
 msgid "Import|I"
 msgstr "Abaguer%m"
@@ -3090,7 +3090,7 @@ msgstr ""
 
 #: src/ext_l10n.h:544
 #, fuzzy
-msgid "Ukraninian"
+msgid "Ukrainian"
 msgstr "Translater|#T"
 
 #: src/ext_l10n.h:545
@@ -3198,7 +3198,7 @@ msgid "Apply|#A"
 msgstr "Mete èn oûve"
 
 #: src/form1.C:120 src/form1.C:264 src/frontends/xforms/form_graphics.C:150
-#: src/insets/insetbib.C:63 src/insets/insetbib.C:64
+#: src/insets/insetbib.C:65 src/insets/insetbib.C:66
 #: src/insets/insetinclude.C:55 src/insets/insetinclude.C:56
 #: src/layout_forms.C:98 src/lyx.C:53 src/lyx_gui_misc.C:404
 #: src/lyx_gui_misc.C:408 src/lyx_gui_misc.C:424 src/mathed/math_forms.C:100
@@ -3504,18 +3504,18 @@ msgid "Check that your parameters are correct"
 msgstr "Waitîz si vos tchûzes sont djusses"
 
 #. goto button labels
-#: src/frontends/gnome/FormRef.C:48 src/frontends/xforms/FormRef.C:102
-#: src/frontends/xforms/FormRef.C:211 src/frontends/xforms/FormRef.C:234
+#: src/frontends/gnome/FormRef.C:48 src/frontends/xforms/FormRef.C:103
+#: src/frontends/xforms/FormRef.C:220 src/frontends/xforms/FormRef.C:243
 #, fuzzy
 msgid "Goto reference"
 msgstr "Potchî sol rahuca|#G"
 
-#: src/frontends/gnome/FormRef.C:49 src/frontends/xforms/FormRef.C:203
+#: src/frontends/gnome/FormRef.C:49 src/frontends/xforms/FormRef.C:212
 #, fuzzy
 msgid "Go back"
 msgstr "Noer"
 
-#: src/frontends/gnome/FormRef.C:91 src/frontends/xforms/FormRef.C:130
+#: src/frontends/gnome/FormRef.C:91 src/frontends/xforms/FormRef.C:141
 msgid "*** No labels found in document ***"
 msgstr "*** Pont d´ etiketes divins li documint drovu ***"
 
@@ -6419,33 +6419,33 @@ msgid "EPS Figure"
 msgstr "Imådje EPS"
 
 #. InsetBibtex uses the same form, with different labels
-#: src/insets/insetbib.C:57 src/insets/insetbib.C:58 src/insets/insetbib.C:193
-#: src/insets/insetbib.C:194
+#: src/insets/insetbib.C:59 src/insets/insetbib.C:60 src/insets/insetbib.C:208
+#: src/insets/insetbib.C:209
 msgid "Key:|#K"
 msgstr "Clé:|#C#k"
 
-#: src/insets/insetbib.C:67 src/insets/insetbib.C:68 src/insets/insetbib.C:195
-#: src/insets/insetbib.C:196
+#: src/insets/insetbib.C:69 src/insets/insetbib.C:70 src/insets/insetbib.C:210
+#: src/insets/insetbib.C:211
 msgid "Label:|#L"
 msgstr "Etikete:|#E#L"
 
-#: src/insets/insetbib.C:204
+#: src/insets/insetbib.C:219
 msgid "Bibliography item"
 msgstr "Intreye bibiografike"
 
-#: src/insets/insetbib.C:225
+#: src/insets/insetbib.C:240
 msgid "BibTeX Generated References"
 msgstr "Rahucas prodûts pa BibTex"
 
-#: src/insets/insetbib.C:324
+#: src/insets/insetbib.C:339
 msgid "Database:"
 msgstr "Båze di doneyes:"
 
-#: src/insets/insetbib.C:325
+#: src/insets/insetbib.C:340
 msgid "Style:  "
 msgstr "Stîle:  "
 
-#: src/insets/insetbib.C:333
+#: src/insets/insetbib.C:348
 msgid "BibTeX"
 msgstr "BibTeX"
 
@@ -6601,7 +6601,7 @@ msgstr "Index"
 msgid "Opened note"
 msgstr "inset drovu"
 
-#: src/insets/insetlabel.C:49 src/mathed/formula.C:1070
+#: src/insets/insetlabel.C:49 src/mathed/formula.C:1087
 #, fuzzy
 msgid "Enter label:"
 msgstr "Sititchî ene etikete"
@@ -6701,7 +6701,7 @@ msgstr "Mape des tapes"
 msgid "   options: "
 msgstr "   tchûzes: "
 
-#: src/language.C:78
+#: src/language.C:81
 #, fuzzy
 msgid "Document wide language"
 msgstr "L'adjinçmint do documint est metu"
@@ -7689,8 +7689,8 @@ msgstr ""
 msgid "Error! Cannot open specified file: "
 msgstr "Berwete! Dji n' sai drovi ci fitchî la:"
 
-#: src/lyx_cb.C:585 src/lyx_cb.C:588 src/mathed/formula.C:1065
-#: src/mathed/formula.C:1068
+#: src/lyx_cb.C:585 src/lyx_cb.C:588 src/mathed/formula.C:1082
+#: src/mathed/formula.C:1085
 msgid "Enter new label to insert:"
 msgstr "Tapez li novele etikete a stitchî"
 
@@ -8111,22 +8111,22 @@ msgstr "stitchî."
 msgid "Could not insert document"
 msgstr "Dji n' sai stitchî li documint"
 
-#: src/lyx_gui.C:311
+#: src/lyx_gui.C:315
 msgid " No change %l| Roman | Sans Serif | Typewriter %l| Reset "
 msgstr ""
 " Nou candjmint %l| Romane | Sans Serif | Machine a Scrîre %l| Rimete a zerô "
 
-#: src/lyx_gui.C:313
+#: src/lyx_gui.C:317
 msgid " No change %l| Medium | Bold %l| Reset "
 msgstr " Nou candjmint %l| Mwinres | Cråsses %l| Rimete a zerô"
 
-#: src/lyx_gui.C:315
+#: src/lyx_gui.C:319
 msgid " No change %l| Upright | Italic | Slanted | Small Caps %l| Reset "
 msgstr ""
 " Nou candjmint %l| Droetes | Clintcheyes(1) | Clintcheyes(2) | Pititès "
 "grandès letes %l| Rimete a zerô "
 
-#: src/lyx_gui.C:318
+#: src/lyx_gui.C:322
 msgid ""
 " No change %l| Tiny | Smallest | Smaller | Small | Normal | Large | Larger | "
 "Largest | Huge | Huger %l| Increase | Decrease | Reset "
@@ -8135,13 +8135,13 @@ msgstr ""
 "Grand(1) | Grand(2) | Grand(3) | Grand(4) | Grand(5) | <- Did pus -> | -> "
 "Diminuer <- | RAZ"
 
-#: src/lyx_gui.C:322
+#: src/lyx_gui.C:326
 msgid " No change %l| Emph | Underbar | Noun | LaTeX mode %l| Reset "
 msgstr ""
 " Nou candjmint %l| Clintcheyes | Sorligneyes | Pititès grandès letes | môde "
 "LaTeX %l | Rimete a zerô "
 
-#: src/lyx_gui.C:324
+#: src/lyx_gui.C:328
 msgid ""
 " No change %l| No color | Black | White | Red | Green | Blue | Cyan | "
 "Magenta | Yellow %l| Reset "
@@ -8149,22 +8149,22 @@ msgstr ""
 "Non candjmint %l| Sins coleur | Noer | Blanc | Rodje | Vert | Bleu | Cyan | "
 "Magenta | Djaene %l | Rimete a zerô"
 
-#: src/lyx_gui.C:329
+#: src/lyx_gui.C:333
 msgid " English %l| German | French "
 msgstr ""
 
 #. build up the combox entries
-#: src/lyx_gui.C:343
+#: src/lyx_gui.C:347
 #, fuzzy
 msgid "No change"
 msgstr "(Candjî)"
 
-#: src/lyx_gui.C:344
+#: src/lyx_gui.C:348
 #, fuzzy
 msgid "Reset"
 msgstr "Rah: "
 
-#: src/lyx_gui.C:401
+#: src/lyx_gui.C:405
 msgid "LyX Banner"
 msgstr "Åbarone da LyX"
 
@@ -8218,16 +8218,18 @@ msgid "System directory set to: "
 msgstr "Li ridant sistinme est chal: "
 
 #: src/lyx_main.C:321
-msgid "LyX Warning! Couldn't determine system directory."
+#, fuzzy
+msgid "LyX Warning! Couldn't determine system directory. "
 msgstr "Asteme, di-st i LyX: dji n' trove nén li ridant sistinme."
 
 #: src/lyx_main.C:322
-msgid "Try the '-sysdir' command line parameter or"
+#, fuzzy
+msgid "Try the '-sysdir' command line parameter or "
 msgstr "Al roye di cmande, sayîz li tchûze '-sysdir' ou"
 
 #: src/lyx_main.C:323
 #, fuzzy
-msgid "set the environment variable LYX_DIR_11x to the LyX system directory"
+msgid "set the environment variable LYX_DIR_11x to the LyX system directory "
 msgstr ""
 "metoz li variåve d' inviron'mint LYX_DIR_10x por leye miner å ridant sistinme"
 
@@ -8782,7 +8784,7 @@ msgstr "(Candjî)"
 msgid " (read only)"
 msgstr "(rén ki lere)"
 
-#: src/mathed/formula.C:909 src/mathed/formula.C:1234
+#: src/mathed/formula.C:909 src/mathed/formula.C:1251
 msgid "TeX mode"
 msgstr "môde TeX"
 
@@ -8794,11 +8796,11 @@ msgstr "Nou nombe"
 msgid "Number"
 msgstr "Nombe"
 
-#: src/mathed/formula.C:1105
+#: src/mathed/formula.C:1122
 msgid "math text mode"
 msgstr "Môde texe matematike"
 
-#: src/mathed/formula.C:1114
+#: src/mathed/formula.C:1131
 msgid "Invalid action in math mode!"
 msgstr "Vos n' poloz nén fé çoula cwand vos estoz è môde matematike"
 
@@ -8907,35 +8909,35 @@ msgstr "Dizeu | Mitan | Dizo"
 msgid "Math Panel"
 msgstr "Scriftôr matematike"
 
-#: src/MenuBackend.C:256
+#: src/MenuBackend.C:263
 #, fuzzy
 msgid "No Documents Open!"
 msgstr "I gn a nou documint di drovu!%t"
 
-#: src/MenuBackend.C:304
+#: src/MenuBackend.C:311
 #, fuzzy
 msgid "Ascii text as lines"
 msgstr "Tchwezi li hagnon shûvant"
 
-#: src/MenuBackend.C:306
+#: src/MenuBackend.C:313
 #, fuzzy
 msgid "Ascii text as paragraphs"
 msgstr "Tchwezi li hagnon shûvant"
 
-#: src/MenuBackend.C:409
+#: src/MenuBackend.C:416
 msgid "Quit|Q"
 msgstr ""
 
-#: src/MenuBackend.C:417
+#: src/MenuBackend.C:424
 #, fuzzy
 msgid "LaTeX...|L"
 msgstr "LaTeX|#L"
 
-#: src/MenuBackend.C:419
+#: src/MenuBackend.C:426
 msgid "LinuxDoc...|L"
 msgstr ""
 
-#: src/MenuBackend.C:427
+#: src/MenuBackend.C:434
 #, fuzzy
 msgid "Emphasize"
 msgstr "È valeur"
@@ -9128,7 +9130,7 @@ msgstr "createDirectory a stî hukî avou no no nén valåbe"
 msgid "Error! Couldn't create directory:"
 msgstr "Aroke! Dji n' a savu fé li ridant:"
 
-#: src/support/filetools.C:1136
+#: src/support/filetools.C:1133
 msgid "Could not delete auto-save file!"
 msgstr "Dji n' sai disfacer li copeye schapeye!"
 
@@ -9176,34 +9178,34 @@ msgstr "Dji n' sai cwè fé avou des dmeys flotants."
 msgid "sorry."
 msgstr "dji rgrete."
 
-#: src/text.C:1995
+#: src/text.C:2000
 msgid ""
 "You cannot insert a space at the beginning of a paragraph.  Please read the "
 "Tutorial."
 msgstr ""
 
-#: src/text.C:1997
+#: src/text.C:2002
 msgid "You cannot type two spaces this way.  Please read the Tutorial."
 msgstr ""
 
-#: src/text.C:3453 src/text.C:3459
+#: src/text.C:3458 src/text.C:3464
 #, fuzzy
 msgid "Page Break (top)"
 msgstr "Côper li pådje"
 
-#: src/text.C:3653 src/text.C:3659
+#: src/text.C:3658 src/text.C:3664
 msgid "Page Break (bottom)"
 msgstr ""
 
-#: src/text.C:3953
+#: src/text.C:3958
 msgid "You can't insert a float in a float!"
 msgstr "Vos n' sårîz stitchî on flotant dins èn ôte flotant !"
 
-#: src/text.C:3961
+#: src/text.C:3966
 msgid "You can't insert a marginpar in a minipage!"
 msgstr "Vos n' sårîz stitchî on [marginpar] dins ene minipådje"
 
-#: src/text.C:3988
+#: src/text.C:3993
 msgid "Float would include float!"
 msgstr "I gn åreut on flotant di stitchî dins èn ôte flotant !"
 

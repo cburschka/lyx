@@ -11,7 +11,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.0.0pre2\n"
-"POT-Creation-Date: 2001-01-11 19:19+0100\n"
+"POT-Creation-Date: 2001-01-31 17:06+0100\n"
 "PO-Revision-Date: 2000-01-20 02:57+01:00\n"
 "Last-Translator:  Francesc Burrull i Mestres <fburrull@mat.upc.es>\n"
 "Language-Team: Catalan <ca@li.org>\n"
@@ -118,28 +118,28 @@ msgstr "Error! Impossible escriure el fitxer"
 msgid "Error: Cannot open file: "
 msgstr "Error! Impossible obrir el fitxer: "
 
-#: src/buffer.C:2224 src/buffer.C:2873
+#: src/buffer.C:2226 src/buffer.C:2875
 msgid "LYX_ERROR:"
 msgstr "ERROR LYX:"
 
-#: src/buffer.C:2224 src/buffer.C:2873
+#: src/buffer.C:2226 src/buffer.C:2875
 msgid "Cannot write file"
 msgstr "Impossible escriure el fitxer"
 
-#: src/buffer.C:2311 src/buffer.C:2955
+#: src/buffer.C:2313 src/buffer.C:2957
 msgid "Error : Wrong depth for LatexType Command.\n"
 msgstr "Error : Profunditat errònia per la comanda LatexType\n"
 
 #. path to LaTeX file
-#: src/buffer.C:3264
+#: src/buffer.C:3266
 msgid "Running chktex..."
 msgstr "Executant chktex..."
 
-#: src/buffer.C:3277
+#: src/buffer.C:3279
 msgid "chktex did not work!"
 msgstr "chktex no ha funcionat!"
 
-#: src/buffer.C:3278
+#: src/buffer.C:3280
 msgid "Could not run with file:"
 msgstr "Impossible executar amb el fitxer:"
 
@@ -273,15 +273,15 @@ msgstr "S'ha copiat el tipus d'entorn de paràgraf"
 msgid "Paragraph environment type set"
 msgstr "Tipus d'entorn de paràgraf modificat"
 
-#: src/BufferView2.C:581 src/LyXAction.C:169 src/MenuBackend.C:425
+#: src/BufferView2.C:581 src/LyXAction.C:169 src/MenuBackend.C:432
 msgid "Copy"
 msgstr "Copiar"
 
-#: src/BufferView2.C:592 src/LyXAction.C:170 src/MenuBackend.C:424
+#: src/BufferView2.C:592 src/LyXAction.C:170 src/MenuBackend.C:431
 msgid "Cut"
 msgstr "Tallar"
 
-#: src/BufferView2.C:601 src/LyXAction.C:346 src/MenuBackend.C:426
+#: src/BufferView2.C:601 src/LyXAction.C:346 src/MenuBackend.C:433
 msgid "Paste"
 msgstr "Enganxar"
 
@@ -412,7 +412,7 @@ msgstr " enlloc."
 msgid "Done"
 msgstr "Fet"
 
-#: src/converter.C:165 src/converter.C:192
+#: src/converter.C:165 src/converter.C:195
 #, fuzzy
 msgid "Can not view file"
 msgstr "Impossible escriure el fitxer"
@@ -421,95 +421,95 @@ msgstr "Impossible escriure el fitxer"
 msgid "No information for viewing "
 msgstr ""
 
-#: src/converter.C:185 src/converter.C:612
+#: src/converter.C:188 src/converter.C:618
 msgid "Executing command:"
 msgstr "Executant la comanda:"
 
-#: src/converter.C:193
+#: src/converter.C:196
 #, fuzzy
 msgid "Error while executing"
 msgstr "Error llegint "
 
-#: src/converter.C:549 src/converter.C:639
+#: src/converter.C:552 src/converter.C:645
 #, fuzzy
 msgid "Can not convert file"
 msgstr "Impossible escriure el fitxer"
 
-#: src/converter.C:550
+#: src/converter.C:553
 msgid "No information for converting from "
 msgstr ""
 
-#: src/CutAndPaste.C:448 src/CutAndPaste.C:451 src/converter.C:551
+#: src/CutAndPaste.C:448 src/CutAndPaste.C:451 src/converter.C:554
 #, fuzzy
 msgid " to "
 msgstr " de "
 
-#: src/converter.C:636
+#: src/converter.C:642
 msgid "There were errors during the Build process."
 msgstr "LaTeX ha generat errors"
 
-#: src/converter.C:637 src/converter.C:782 src/converter.C:852
+#: src/converter.C:643 src/converter.C:788 src/converter.C:858
 msgid "You should try to fix them."
 msgstr "Els haurieu de corregir"
 
-#: src/converter.C:662
+#: src/converter.C:668
 #, fuzzy
 msgid "Error while trying to move directory:"
 msgstr "Error! Impossible obrir el directori:"
 
-#: src/converter.C:697
+#: src/converter.C:703
 #, fuzzy
 msgid "Error while trying to move file:"
 msgstr "Error! Impossible esborrar el fitxer:"
 
-#: src/converter.C:698
+#: src/converter.C:704
 #, fuzzy
 msgid "to "
 msgstr " de "
 
-#: src/converter.C:777 src/converter.C:847
+#: src/converter.C:783 src/converter.C:853
 msgid "One error detected"
 msgstr "Detectat un error"
 
-#: src/converter.C:778 src/converter.C:848
+#: src/converter.C:784 src/converter.C:854
 msgid "You should try to fix it."
 msgstr "L'haurieu de corregir"
 
-#: src/converter.C:781 src/converter.C:851
+#: src/converter.C:787 src/converter.C:857
 msgid " errors detected."
 msgstr " errors detectats"
 
-#: src/converter.C:786
+#: src/converter.C:792
 #, fuzzy
 msgid "There were errors during running of "
 msgstr "LaTeX ha generat errors"
 
-#: src/converter.C:790 src/converter.C:857
+#: src/converter.C:796 src/converter.C:863
 msgid "The operation resulted in"
 msgstr ""
 
-#: src/converter.C:791 src/converter.C:858
+#: src/converter.C:797 src/converter.C:864
 #, fuzzy
 msgid "an empty file."
 msgstr "importé"
 
-#: src/converter.C:792 src/converter.C:859
+#: src/converter.C:798 src/converter.C:865
 msgid "Resulting file is empty"
 msgstr ""
 
-#: src/converter.C:810
+#: src/converter.C:816
 msgid "Running LaTeX..."
 msgstr "Executant LaTeX..."
 
-#: src/converter.C:840
+#: src/converter.C:846
 msgid "LaTeX did not work!"
 msgstr "LaTeX no ha funcionat!"
 
-#: src/converter.C:841
+#: src/converter.C:847
 msgid "Missing log file:"
 msgstr "No s'ha trobat el fitxer de registre:"
 
-#: src/converter.C:854
+#: src/converter.C:860
 msgid "There were errors during the LaTeX run."
 msgstr "LaTeX ha generat errors"
 
@@ -536,7 +536,7 @@ msgstr "Crèdits"
 #: src/frontends/xforms/form_paragraph.C:330
 #: src/frontends/xforms/form_print.C:52 src/frontends/xforms/form_ref.C:71
 #: src/frontends/xforms/form_tabular_create.C:28
-#: src/frontends/xforms/form_url.C:64 src/insets/insetbib.C:60
+#: src/frontends/xforms/form_url.C:64 src/insets/insetbib.C:62
 #: src/insets/insetinclude.C:52 src/lyx.C:47 src/lyx.C:105
 #: src/mathed/math_forms.C:109 src/print_form.C:28 src/sp_form.C:38
 msgid "OK"
@@ -560,8 +560,8 @@ msgid ""
 "because of class conversion from\n"
 msgstr ""
 
-#: src/CutAndPaste.C:476 src/insets/insettext.C:970 src/text.C:3952
-#: src/text.C:3960 src/text.C:3987 src/text2.C:2197 src/text2.C:2310
+#: src/CutAndPaste.C:476 src/insets/insettext.C:970 src/text.C:3957
+#: src/text.C:3965 src/text.C:3992 src/text2.C:2197 src/text2.C:2310
 msgid "Impossible operation"
 msgstr "Operació Impossible"
 
@@ -570,8 +570,8 @@ msgid "Can't paste float into float!"
 msgstr "Impossible enganxar un flotant en un flotant!"
 
 #: src/CutAndPaste.C:478 src/insets/insetert.C:67
-#: src/insets/insettabular.C:1700 src/insets/insettext.C:972 src/text.C:3954
-#: src/text.C:3962 src/text.C:3989
+#: src/insets/insettabular.C:1700 src/insets/insettext.C:972 src/text.C:3959
+#: src/text.C:3967 src/text.C:3994
 msgid "Sorry."
 msgstr "Ho sento."
 
@@ -690,13 +690,13 @@ msgstr "Document renombrat com '"
 msgid " to file `"
 msgstr "[no hi ha fitxer]"
 
-#: src/MenuBackend.C:436 src/MenuBackend.C:443 src/ext_l10n.h:1
+#: src/MenuBackend.C:443 src/MenuBackend.C:450 src/ext_l10n.h:1
 #: src/ext_l10n.h:4
 #, fuzzy
 msgid "File|F"
 msgstr "Fitxer|#F"
 
-#: src/MenuBackend.C:437 src/ext_l10n.h:2 src/ext_l10n.h:5
+#: src/MenuBackend.C:444 src/ext_l10n.h:2 src/ext_l10n.h:5
 #, fuzzy
 msgid "Edit|E"
 msgstr "Edició"
@@ -726,12 +726,12 @@ msgstr "Visualitzar DVI"
 msgid "Navigate|N"
 msgstr "Negatiu"
 
-#: src/MenuBackend.C:439 src/ext_l10n.h:10
+#: src/MenuBackend.C:446 src/ext_l10n.h:10
 #, fuzzy
 msgid "Documents|D"
 msgstr "Documents"
 
-#: src/MenuBackend.C:406 src/ext_l10n.h:12 src/ext_l10n.h:17
+#: src/MenuBackend.C:413 src/ext_l10n.h:12 src/ext_l10n.h:17
 msgid "New...|N"
 msgstr ""
 
@@ -740,12 +740,12 @@ msgstr ""
 msgid "New from Template...|T"
 msgstr "Document nou basat en model"
 
-#: src/MenuBackend.C:407 src/ext_l10n.h:14 src/ext_l10n.h:19
+#: src/MenuBackend.C:414 src/ext_l10n.h:14 src/ext_l10n.h:19
 #, fuzzy
 msgid "Open...|O"
 msgstr "Altre...|#O"
 
-#: src/MenuBackend.C:408 src/ext_l10n.h:15 src/ext_l10n.h:25
+#: src/MenuBackend.C:415 src/ext_l10n.h:15 src/ext_l10n.h:25
 #, fuzzy
 msgid "Import|I"
 msgstr "Importar%m"
@@ -3081,7 +3081,7 @@ msgstr ""
 
 #: src/ext_l10n.h:544
 #, fuzzy
-msgid "Ukraninian"
+msgid "Ukrainian"
 msgstr "Traduir"
 
 #: src/ext_l10n.h:545
@@ -3189,7 +3189,7 @@ msgid "Apply|#A"
 msgstr "Aplica|#A"
 
 #: src/form1.C:120 src/form1.C:264 src/frontends/xforms/form_graphics.C:150
-#: src/insets/insetbib.C:63 src/insets/insetbib.C:64
+#: src/insets/insetbib.C:65 src/insets/insetbib.C:66
 #: src/insets/insetinclude.C:55 src/insets/insetinclude.C:56
 #: src/layout_forms.C:98 src/lyx.C:53 src/lyx_gui_misc.C:404
 #: src/lyx_gui_misc.C:408 src/lyx_gui_misc.C:424 src/mathed/math_forms.C:100
@@ -3494,18 +3494,18 @@ msgid "Check that your parameters are correct"
 msgstr "Verifiqueu que els paràmetres són correctes"
 
 #. goto button labels
-#: src/frontends/gnome/FormRef.C:48 src/frontends/xforms/FormRef.C:102
-#: src/frontends/xforms/FormRef.C:211 src/frontends/xforms/FormRef.C:234
+#: src/frontends/gnome/FormRef.C:48 src/frontends/xforms/FormRef.C:103
+#: src/frontends/xforms/FormRef.C:220 src/frontends/xforms/FormRef.C:243
 #, fuzzy
 msgid "Goto reference"
 msgstr "Anar a la Referència||#G"
 
-#: src/frontends/gnome/FormRef.C:49 src/frontends/xforms/FormRef.C:203
+#: src/frontends/gnome/FormRef.C:49 src/frontends/xforms/FormRef.C:212
 #, fuzzy
 msgid "Go back"
 msgstr "Negre"
 
-#: src/frontends/gnome/FormRef.C:91 src/frontends/xforms/FormRef.C:130
+#: src/frontends/gnome/FormRef.C:91 src/frontends/xforms/FormRef.C:141
 msgid "*** No labels found in document ***"
 msgstr "*** No s'han trobat etiquetes en el document ***"
 
@@ -6395,33 +6395,33 @@ msgid "EPS Figure"
 msgstr "Figura EPS"
 
 #. InsetBibtex uses the same form, with different labels
-#: src/insets/insetbib.C:57 src/insets/insetbib.C:58 src/insets/insetbib.C:193
-#: src/insets/insetbib.C:194
+#: src/insets/insetbib.C:59 src/insets/insetbib.C:60 src/insets/insetbib.C:208
+#: src/insets/insetbib.C:209
 msgid "Key:|#K"
 msgstr "Codi:|#K"
 
-#: src/insets/insetbib.C:67 src/insets/insetbib.C:68 src/insets/insetbib.C:195
-#: src/insets/insetbib.C:196
+#: src/insets/insetbib.C:69 src/insets/insetbib.C:70 src/insets/insetbib.C:210
+#: src/insets/insetbib.C:211
 msgid "Label:|#L"
 msgstr "Etiqueta:|#L"
 
-#: src/insets/insetbib.C:204
+#: src/insets/insetbib.C:219
 msgid "Bibliography item"
 msgstr "Entrada bibliogràfica"
 
-#: src/insets/insetbib.C:225
+#: src/insets/insetbib.C:240
 msgid "BibTeX Generated References"
 msgstr "Referències generades per BibTeX"
 
-#: src/insets/insetbib.C:324
+#: src/insets/insetbib.C:339
 msgid "Database:"
 msgstr "Base de dades:"
 
-#: src/insets/insetbib.C:325
+#: src/insets/insetbib.C:340
 msgid "Style:  "
 msgstr "Estil:  "
 
-#: src/insets/insetbib.C:333
+#: src/insets/insetbib.C:348
 msgid "BibTeX"
 msgstr "BibTeX"
 
@@ -6575,7 +6575,7 @@ msgstr "Idx"
 msgid "Opened note"
 msgstr "Nota oberta"
 
-#: src/insets/insetlabel.C:49 src/mathed/formula.C:1070
+#: src/insets/insetlabel.C:49 src/mathed/formula.C:1087
 #, fuzzy
 msgid "Enter label:"
 msgstr "Inserir etiqueta"
@@ -6675,7 +6675,7 @@ msgstr "Mapeig de tecles"
 msgid "   options: "
 msgstr "   opcions: "
 
-#: src/language.C:78
+#: src/language.C:81
 #, fuzzy
 msgid "Document wide language"
 msgstr "Possibles Formats de Document"
@@ -7640,8 +7640,8 @@ msgstr ""
 msgid "Error! Cannot open specified file: "
 msgstr "Error! Impossible obrir el fitxer especificat: "
 
-#: src/lyx_cb.C:585 src/lyx_cb.C:588 src/mathed/formula.C:1065
-#: src/mathed/formula.C:1068
+#: src/lyx_cb.C:585 src/lyx_cb.C:588 src/mathed/formula.C:1082
+#: src/mathed/formula.C:1085
 msgid "Enter new label to insert:"
 msgstr "Introduiu la nova etiqueta a inserir:"
 
@@ -8057,19 +8057,19 @@ msgstr "inséré"
 msgid "Could not insert document"
 msgstr "Impossible inserir el document"
 
-#: src/lyx_gui.C:311
+#: src/lyx_gui.C:315
 msgid " No change %l| Roman | Sans Serif | Typewriter %l| Reset "
 msgstr "Igual %l| Romana | Sans Serif | Màquina d'Escriure %l| Reiniciar "
 
-#: src/lyx_gui.C:313
+#: src/lyx_gui.C:317
 msgid " No change %l| Medium | Bold %l| Reset "
 msgstr "Igual %l| Mig | Negreta %l| Reiniciar"
 
-#: src/lyx_gui.C:315
+#: src/lyx_gui.C:319
 msgid " No change %l| Upright | Italic | Slanted | Small Caps %l| Reset "
 msgstr "Igual %l| Recta | Itàlica | Inclinada | Maj. petites %l| Reiniciar "
 
-#: src/lyx_gui.C:318
+#: src/lyx_gui.C:322
 msgid ""
 " No change %l| Tiny | Smallest | Smaller | Small | Normal | Large | Larger | "
 "Largest | Huge | Huger %l| Increase | Decrease | Reset "
@@ -8078,11 +8078,11 @@ msgstr ""
 "Gran (2) | Gran (3) | Gran (4) | Gran (5) | <- Augmentar -> | -> Disminuir "
 "<- | Reiniciar"
 
-#: src/lyx_gui.C:322
+#: src/lyx_gui.C:326
 msgid " No change %l| Emph | Underbar | Noun | LaTeX mode %l| Reset "
 msgstr "Igual %l| Itàlica | Subratllat | Noms | mode LaTeX %l | Reiniciar "
 
-#: src/lyx_gui.C:324
+#: src/lyx_gui.C:328
 msgid ""
 " No change %l| No color | Black | White | Red | Green | Blue | Cyan | "
 "Magenta | Yellow %l| Reset "
@@ -8090,22 +8090,22 @@ msgstr ""
 "Igual %l| Sense color | Negre | Blanc | Vermell | Verd | Blau | Cyan | "
 "Magenta | Groc %l | Reiniciar"
 
-#: src/lyx_gui.C:329
+#: src/lyx_gui.C:333
 msgid " English %l| German | French "
 msgstr ""
 
 #. build up the combox entries
-#: src/lyx_gui.C:343
+#: src/lyx_gui.C:347
 #, fuzzy
 msgid "No change"
 msgstr "(Modificat)"
 
-#: src/lyx_gui.C:344
+#: src/lyx_gui.C:348
 #, fuzzy
 msgid "Reset"
 msgstr "Ref: "
 
-#: src/lyx_gui.C:401
+#: src/lyx_gui.C:405
 msgid "LyX Banner"
 msgstr "Bandera de LyX"
 
@@ -8158,15 +8158,18 @@ msgid "System directory set to: "
 msgstr "El directori de sistema és: "
 
 #: src/lyx_main.C:321
-msgid "LyX Warning! Couldn't determine system directory."
+#, fuzzy
+msgid "LyX Warning! Couldn't determine system directory. "
 msgstr "Avís LyX: Impossible determinar el directori de sistema."
 
 #: src/lyx_main.C:322
-msgid "Try the '-sysdir' command line parameter or"
+#, fuzzy
+msgid "Try the '-sysdir' command line parameter or "
 msgstr "A la línia  de comandes, proveu d'utilitzar el paràmetre '-sysdir' o"
 
 #: src/lyx_main.C:323
-msgid "set the environment variable LYX_DIR_11x to the LyX system directory"
+#, fuzzy
+msgid "set the environment variable LYX_DIR_11x to the LyX system directory "
 msgstr "fixeu la variable d'entorn LYX_DIR_11x al directori del sistema LyX"
 
 #: src/lyx_main.C:325
@@ -8716,7 +8719,7 @@ msgstr "(Modificat)"
 msgid " (read only)"
 msgstr "(Només lectura)"
 
-#: src/mathed/formula.C:909 src/mathed/formula.C:1234
+#: src/mathed/formula.C:909 src/mathed/formula.C:1251
 msgid "TeX mode"
 msgstr "mode TeX"
 
@@ -8728,11 +8731,11 @@ msgstr "No número"
 msgid "Number"
 msgstr "Número"
 
-#: src/mathed/formula.C:1105
+#: src/mathed/formula.C:1122
 msgid "math text mode"
 msgstr "Mode text matemàtic"
 
-#: src/mathed/formula.C:1114
+#: src/mathed/formula.C:1131
 msgid "Invalid action in math mode!"
 msgstr "Acció invàlida en mode matemàtic!"
 
@@ -8840,35 +8843,35 @@ msgstr "Dalt | Centre | Baix"
 msgid "Math Panel"
 msgstr "Panell Matemàtic"
 
-#: src/MenuBackend.C:256
+#: src/MenuBackend.C:263
 #, fuzzy
 msgid "No Documents Open!"
 msgstr "No hi ha documents oberts!%t"
 
-#: src/MenuBackend.C:304
+#: src/MenuBackend.C:311
 #, fuzzy
 msgid "Ascii text as lines"
 msgstr "Seleccionar següent paràgraf"
 
-#: src/MenuBackend.C:306
+#: src/MenuBackend.C:313
 #, fuzzy
 msgid "Ascii text as paragraphs"
 msgstr "Seleccionar següent paràgraf"
 
-#: src/MenuBackend.C:409
+#: src/MenuBackend.C:416
 msgid "Quit|Q"
 msgstr ""
 
-#: src/MenuBackend.C:417
+#: src/MenuBackend.C:424
 #, fuzzy
 msgid "LaTeX...|L"
 msgstr "LaTeX|#L"
 
-#: src/MenuBackend.C:419
+#: src/MenuBackend.C:426
 msgid "LinuxDoc...|L"
 msgstr ""
 
-#: src/MenuBackend.C:427
+#: src/MenuBackend.C:434
 #, fuzzy
 msgid "Emphasize"
 msgstr "Èmfasi"
@@ -9059,7 +9062,7 @@ msgstr "crida a  createDirectory amb un nom invàlid"
 msgid "Error! Couldn't create directory:"
 msgstr "Error! Impossible crear el directori:"
 
-#: src/support/filetools.C:1136
+#: src/support/filetools.C:1133
 msgid "Could not delete auto-save file!"
 msgstr "Impossible esborrar el fitxer de auto-salvat!"
 
@@ -9106,34 +9109,34 @@ msgstr "No sé com tractar un mig flotant."
 msgid "sorry."
 msgstr "Ho sento"
 
-#: src/text.C:1995
+#: src/text.C:2000
 msgid ""
 "You cannot insert a space at the beginning of a paragraph.  Please read the "
 "Tutorial."
 msgstr ""
 
-#: src/text.C:1997
+#: src/text.C:2002
 msgid "You cannot type two spaces this way.  Please read the Tutorial."
 msgstr ""
 
-#: src/text.C:3453 src/text.C:3459
+#: src/text.C:3458 src/text.C:3464
 #, fuzzy
 msgid "Page Break (top)"
 msgstr "Salt de Pàgina"
 
-#: src/text.C:3653 src/text.C:3659
+#: src/text.C:3658 src/text.C:3664
 msgid "Page Break (bottom)"
 msgstr ""
 
-#: src/text.C:3953
+#: src/text.C:3958
 msgid "You can't insert a float in a float!"
 msgstr "Impossible inserir un flotant en un flotant!"
 
-#: src/text.C:3961
+#: src/text.C:3966
 msgid "You can't insert a marginpar in a minipage!"
 msgstr "Impossible inserir un flotant en un flotant!"
 
-#: src/text.C:3988
+#: src/text.C:3993
 msgid "Float would include float!"
 msgstr "Un flotant inclouria un flotant!"
 
