@@ -417,7 +417,7 @@ void handle_tabular(Parser & p, ostream & os,
 
 				// multicolumn cells are tricky: This
 				// \multicolumn{2}{|c|}{col1-2}&
-				// \multicolumn{2}{|c|}{col3-4}\\ 
+				// \multicolumn{2}{|c|}{col3-4} "\\"
 				// gives | col1-2 | col3-4 | and not
 				//       | col1-2 || col3-4 |
 				// So:

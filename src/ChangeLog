@@ -1,3 +1,12 @@
+2003-10-29  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* text3.C (dispatch): 
+	* lyxfunc.C (dispatch): 
+	* cursor.C (dispatch): 
+	* BufferView_pimpl.C (dispatch): explict DispatchResult ctor fallout.
+
+	* dispatchresult.h: make the dispatch_result_t ctor explicit
+
 2003-10-29  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* sgml.[Ch]:
@@ -17,7 +26,7 @@
 	removal. comment out call to update
 
 	* BufferView_pimpl.C (dispatch): dont implicit covert to bool
-	
+
 2003-10-29  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* text3.C:
@@ -27,7 +36,7 @@
 	* lyxfunc.C:
 	* cursor.C:
 	* BufferView_pimpl.C: dispatch_result -> DispatchResult changes.
-	(dispatch): 
+	(dispatch):
 
 	* dispatchresult.h: new file, DispatchResult broken out of
 	insets/insetbase.h

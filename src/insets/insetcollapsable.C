@@ -234,7 +234,7 @@ void InsetCollapsable::lfunMouseRelease(FuncRequest const & cmd)
 		bv->updateInset(this);
 		bv->buffer()->markDirty();
 	} else if (!collapsed_ && cmd.y > button_dim.y2) {
-		ret = inset.dispatch(adjustCommand(cmd)) == DISPATCHED;
+		ret = inset.dispatch(adjustCommand(cmd)) == DispatchResult(DISPATCHED);
 	}
 	if (cmd.button() == mouse_button::button3 && !ret)
 		showInsetDialog(bv);
@@ -307,14 +307,14 @@ InsetCollapsable::priv_dispatch(FuncRequest const & cmd,
 					if (bv->lockInset(this))
 						inset.dispatch(cmd);
 				}
-				return DISPATCHED;
+				return DispatchResult(DISPATCHED);
 			}
 
 #ifdef WITH_WARNINGS
 #warning Fix this properly in BufferView_pimpl::workAreaButtonRelease
 #endif
 			if (cmd.button() == mouse_button::button3)
-				return DISPATCHED;
+				return DispatchResult(DISPATCHED);
 
 			UpdatableInset::priv_dispatch(cmd, idx, pos);
 
@@ -324,13 +324,13 @@ InsetCollapsable::priv_dispatch(FuncRequest const & cmd,
 				// it was already collapsed!
 				first_after_edit = true;
 				if (!bv->lockInset(this))
-					return DISPATCHED;
+					return DispatchResult(DISPATCHED);
 				bv->updateInset(this);
 				bv->buffer()->markDirty();
 				inset.dispatch(cmd);
 			} else {
 				if (!bv->lockInset(this))
-					return DISPATCHED;
+					return DispatchResult(DISPATCHED);
 				if (cmd.y <= button_dim.y2) {
 					FuncRequest cmd1 = cmd;
 					cmd1.y = 0;
@@ -338,26 +338,26 @@ InsetCollapsable::priv_dispatch(FuncRequest const & cmd,
 				} else
 					inset.dispatch(adjustCommand(cmd));
 			}
-			return DISPATCHED;
+			return DispatchResult(DISPATCHED);
 		}
 
 		case LFUN_MOUSE_PRESS:
 			if (!collapsed_ && cmd.y > button_dim.y2)
 				inset.dispatch(adjustCommand(cmd));
-			return DISPATCHED;
+			return DispatchResult(DISPATCHED);
 
 		case LFUN_MOUSE_MOTION:
 			if (!collapsed_ && cmd.y > button_dim.y2)
 				inset.dispatch(adjustCommand(cmd));
-			return DISPATCHED;
+			return DispatchResult(DISPATCHED);
 
 		case LFUN_MOUSE_RELEASE:
 			lfunMouseRelease(cmd);
-			return DISPATCHED;
+			return DispatchResult(DISPATCHED);
 
 		default:
 			DispatchResult result = inset.dispatch(cmd);
-			if (result >= FINISHED)
+			if (result >= DispatchResult(FINISHED))
 				bv->unlockInset(this);
 			first_after_edit = false;
 			return result;

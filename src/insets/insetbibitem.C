@@ -67,17 +67,17 @@ InsetBibitem::priv_dispatch(FuncRequest const & cmd,
 
 	case LFUN_INSET_EDIT:
 		InsetCommandMailer("bibitem", *this).showDialog(cmd.view());
-		return DISPATCHED;
+		return DispatchResult(DISPATCHED);
 
 	case LFUN_INSET_MODIFY: {
 		InsetCommandParams p;
 		InsetCommandMailer::string2params(cmd.argument, p);
 		if (p.getCmdName().empty())
-			return DISPATCHED;
+			return DispatchResult(DISPATCHED);
 		setParams(p);
 		cmd.view()->updateInset(this);
 		cmd.view()->fitCursor();
-		return DISPATCHED;
+		return DispatchResult(DISPATCHED);
 	}
 
 	default:

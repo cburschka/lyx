@@ -120,24 +120,24 @@ InsetInclude::priv_dispatch(FuncRequest const & cmd, idx_type &, pos_type &)
 			set(p, *cmd.view()->buffer());
 			cmd.view()->updateInset(this);
 		}
-		return DISPATCHED;
+		return DispatchResult(DISPATCHED);
 	}
 
 	case LFUN_INSET_DIALOG_UPDATE:
 		InsetIncludeMailer(*this).updateDialog(cmd.view());
-		return DISPATCHED;
+		return DispatchResult(DISPATCHED);
 
 	case LFUN_MOUSE_RELEASE:
 		if (button_.box().contains(cmd.x, cmd.y))
 			InsetIncludeMailer(*this).showDialog(cmd.view());
-		return DISPATCHED;
+		return DispatchResult(DISPATCHED);
 
 	case LFUN_INSET_DIALOG_SHOW:
 		InsetIncludeMailer(*this).showDialog(cmd.view());
-		return DISPATCHED;
+		return DispatchResult(DISPATCHED);
 
 	default:
-		return UNDISPATCHED;
+		return DispatchResult(UNDISPATCHED);
 	}
 }
 

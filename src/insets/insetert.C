@@ -426,7 +426,7 @@ DispatchResult
 InsetERT::priv_dispatch(FuncRequest const & cmd,
 			idx_type & idx, pos_type & pos)
 {
-	DispatchResult result = UNDISPATCHED;
+	DispatchResult result = DispatchResult(UNDISPATCHED);
 	BufferView * bv = cmd.view();
 
 	if (inset.paragraphs.begin()->empty()) {
@@ -463,28 +463,28 @@ InsetERT::priv_dispatch(FuncRequest const & cmd,
 		 */
 		inset.getLyXText(cmd.view())->fullRebreak();
 		bv->updateInset(this);
-		result = DISPATCHED;
+		result = DispatchResult(DISPATCHED);
 	}
 	break;
 
 	case LFUN_MOUSE_PRESS:
 		lfunMousePress(cmd);
-		result = DISPATCHED;
+		result = DispatchResult(DISPATCHED);
 		break;
 
 	case LFUN_MOUSE_MOTION:
 		lfunMouseMotion(cmd);
-		result = DISPATCHED;
+		result = DispatchResult(DISPATCHED);
 		break;
 
 	case LFUN_MOUSE_RELEASE:
 		lfunMouseRelease(cmd);
-		result = DISPATCHED;
+		result = DispatchResult(DISPATCHED);
 		break;
 
 	case LFUN_LAYOUT:
 		bv->owner()->setLayout(inset.paragraphs.begin()->layout()->name());
-		result = DISPATCHED_NOUPDATE;
+		result = DispatchResult(DISPATCHED_NOUPDATE);
 		break;
 
 	default:

@@ -93,22 +93,22 @@ InsetCommand::priv_dispatch(FuncRequest const & cmd, idx_type &, pos_type &)
 		InsetCommandParams p;
 		InsetCommandMailer::string2params(cmd.argument, p);
 		if (p.getCmdName().empty())
-			return UNDISPATCHED;
+			return DispatchResult(UNDISPATCHED);
 
 		setParams(p);
 		cmd.view()->updateInset(this);
-		return DISPATCHED;
+		return DispatchResult(DISPATCHED);
 	}
 
 	case LFUN_INSET_DIALOG_UPDATE:
 		InsetCommandMailer(cmd.argument, *this).updateDialog(cmd.view());
-		return DISPATCHED;
+		return DispatchResult(DISPATCHED);
 
 	case LFUN_MOUSE_RELEASE:
 		return dispatch(FuncRequest(cmd.view(), LFUN_INSET_EDIT));
 
 	default:
-		return UNDISPATCHED;
+		return DispatchResult(UNDISPATCHED);
 	}
 
 }

@@ -1050,13 +1050,13 @@ DispatchResult MathGridInset::priv_dispatch(FuncRequest const & cmd,
 		case LFUN_MOUSE_RELEASE:
 			//if (cmd.button() == mouse_button::button3) {
 			//	GridInsetMailer(*this).showDialog();
-			//	return DISPATCHED;
+			//	return DispatchResult(DISPATCHED);
 			//}
-			return UNDISPATCHED;
+			return DispatchResult(UNDISPATCHED);
 
 		case LFUN_INSET_DIALOG_UPDATE:
 			GridInsetMailer(*this).updateDialog(cmd.view());
-			return UNDISPATCHED;
+			return DispatchResult(UNDISPATCHED);
 
 		// insert file functions
 		case LFUN_DELETE_LINE_FORWARD:
@@ -1072,12 +1072,12 @@ DispatchResult MathGridInset::priv_dispatch(FuncRequest const & cmd,
 				idx = nargs() - 1;
 			if (pos > cell(idx).size())
 				pos = cell(idx).size();
-			return FINISHED;
+			return DispatchResult(FINISHED);
 
 		case LFUN_CELL_SPLIT:
 			//recordUndo(bv, Undo::ATOMIC);
 			splitCell(idx, pos);
-			return FINISHED;
+			return DispatchResult(FINISHED);
 
 		case LFUN_BREAKLINE: {
 			//recordUndo(bv, Undo::INSERT);
@@ -1096,7 +1096,7 @@ DispatchResult MathGridInset::priv_dispatch(FuncRequest const & cmd,
 			pos = cell(idx).size();
 
 			//mathcursor->normalize();
-			return FINISHED;
+			return DispatchResult(FINISHED);
 		}
 
 		case LFUN_TABULAR_FEATURE: {
@@ -1151,9 +1151,9 @@ DispatchResult MathGridInset::priv_dispatch(FuncRequest const & cmd,
 			else if (s == "swap-column")
 				swapCol(col(idx));
 			else
-				return UNDISPATCHED;
-			lyxerr << "returning FINISHED" << endl;
-			return FINISHED;
+				return DispatchResult(UNDISPATCHED);
+			lyxerr << "returning DispatchResult(FINISHED)" << endl;
+			return DispatchResult(FINISHED);
 		}
 
 		case LFUN_PASTE: {
@@ -1184,7 +1184,7 @@ DispatchResult MathGridInset::priv_dispatch(FuncRequest const & cmd,
 					for (col_type c = 0; c < grid.ncols(); ++c)
 						cell(i).append(grid.cell(grid.index(r, c)));
 			}
-			return FINISHED;
+			return DispatchResult(FINISHED);
 		}
 
 		default:

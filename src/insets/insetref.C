@@ -58,7 +58,7 @@ InsetRef::priv_dispatch(FuncRequest const & cmd,
 				dispatch(FuncRequest(LFUN_REF_GOTO, getContents()));
 		else
 			InsetCommandMailer("ref", *this).showDialog(cmd.view());
-		return DISPATCHED;
+		return DispatchResult(DISPATCHED);
 
 	default:
 		return InsetCommand::priv_dispatch(cmd, idx, pos);

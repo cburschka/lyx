@@ -1765,8 +1765,8 @@ void Buffer::makeDocBookFile(string const & fname, bool nice, bool only_body)
 
 		// environment tag closing
 		for (; depth > par->params().depth(); --depth) {
-			if (!environment_inner[depth].empty()) 
-			sgml::closeEnvTags(ofs, false, environment_inner[depth], 
+			if (!environment_inner[depth].empty())
+			sgml::closeEnvTags(ofs, false, environment_inner[depth],
 					command_depth + depth);
 			sgml::closeTag(ofs, depth + command_depth, false, environment_stack[depth]);
 			environment_stack[depth].erase();
@@ -1776,7 +1776,7 @@ void Buffer::makeDocBookFile(string const & fname, bool nice, bool only_body)
 		if (depth == par->params().depth()
 		   && environment_stack[depth] != style->latexname()
 		   && !environment_stack[depth].empty()) {
-				sgml::closeEnvTags(ofs, false, environment_inner[depth], 
+				sgml::closeEnvTags(ofs, false, environment_inner[depth],
 					command_depth + depth);
 			sgml::closeTag(ofs, depth + command_depth, false, environment_stack[depth]);
 
@@ -1864,7 +1864,7 @@ void Buffer::makeDocBookFile(string const & fname, bool nice, bool only_body)
 				environment_inner[depth] = "!-- --";
 				sgml::openTag(ofs, depth + command_depth, false, environment_stack[depth]);
 			} else {
-					sgml::closeEnvTags(ofs, false, environment_inner[depth], 
+					sgml::closeEnvTags(ofs, false, environment_inner[depth],
 						command_depth + depth);
 			}
 
@@ -1930,7 +1930,7 @@ void Buffer::makeDocBookFile(string const & fname, bool nice, bool only_body)
 	// Close open tags
 	for (int d = depth; d >= 0; --d) {
 		if (!environment_stack[depth].empty()) {
-				sgml::closeEnvTags(ofs, false, environment_inner[depth], 
+				sgml::closeEnvTags(ofs, false, environment_inner[depth],
 					command_depth + depth);
 		}
 	}

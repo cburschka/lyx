@@ -113,7 +113,7 @@ DispatchResult
 UpdatableInset::priv_dispatch(FuncRequest const & ev, idx_type &, pos_type &)
 {
 	if (ev.action == LFUN_MOUSE_RELEASE)
-		return (editable() == IS_EDITABLE) ? DISPATCHED : UNDISPATCHED;
+		return (editable() == IS_EDITABLE) ? DispatchResult(DISPATCHED) : DispatchResult(UNDISPATCHED);
 
 	if (!ev.argument.empty() && ev.action == LFUN_SCROLL_INSET) {
 		if (ev.argument.find('.') != ev.argument.npos) {
@@ -125,9 +125,9 @@ UpdatableInset::priv_dispatch(FuncRequest const & ev, idx_type &, pos_type &)
 		}
 		ev.view()->updateInset(this);
 
-		return DISPATCHED;
+		return DispatchResult(DISPATCHED);
 	}
-	return UNDISPATCHED;
+	return DispatchResult(UNDISPATCHED);
 }
 
 

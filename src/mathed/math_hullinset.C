@@ -782,7 +782,7 @@ DispatchResult MathHullInset::priv_dispatch
 				mutate("eqnarray");
 				idx = 1;
 				pos = 0;
-				return FINISHED;
+				return DispatchResult(FINISHED);
 			}
 			return MathGridInset::priv_dispatch(cmd, idx, pos);
 
@@ -798,7 +798,7 @@ DispatchResult MathHullInset::priv_dispatch
 						numbered(row, !old);
 				//bv->owner()->message(old ? _("No number") : _("Number"));
 			}
-			return DISPATCHED;
+			return DispatchResult(DISPATCHED);
 
 		case LFUN_MATH_NONUMBER:
 			if (display()) {
@@ -808,7 +808,7 @@ DispatchResult MathHullInset::priv_dispatch
 				//bv->owner()->message(old ? _("No number") : _("Number"));
 				numbered(r, !old);
 			}
-			return DISPATCHED;
+			return DispatchResult(DISPATCHED);
 
 		case LFUN_INSERT_LABEL: {
 			row_type r = (type_ == "multline") ? nrows() - 1 : row(idx);
@@ -822,7 +822,7 @@ DispatchResult MathHullInset::priv_dispatch
 					? Alert::askForText(_("Enter new label to insert:"), default_label)
 					: Alert::askForText(_("Enter label:"), old_label);
 				if (!res.first)
-					return UNDISPATCHED;
+					return DispatchResult(UNDISPATCHED);
 				new_label = trim(res.second);
 			}
 
@@ -832,12 +832,12 @@ DispatchResult MathHullInset::priv_dispatch
 			if (!new_label.empty())
 				numbered(r, true);
 			label(r, new_label);
-			return DISPATCHED;
+			return DispatchResult(DISPATCHED);
 		}
 
 		case LFUN_MATH_EXTERN:
 			doExtern(cmd, idx, pos);
-			return FINISHED;
+			return DispatchResult(FINISHED);
 
 		case LFUN_MATH_MUTATE: {
 			lyxerr << "Hull: MUTATE: " << cmd.argument << endl;
@@ -849,14 +849,14 @@ DispatchResult MathHullInset::priv_dispatch
 				idx = nargs() - 1;
 			if (pos > cell(idx).size())
 				pos = cell(idx).size();
-			return FINISHED;
+			return DispatchResult(FINISHED);
 		}
 
 		case LFUN_MATH_DISPLAY: {
 			mutate(type_ == "simple" ? "equation" : "simple");
 			idx = 0;
 			pos = cell(idx).size();
-			return FINISHED;
+			return DispatchResult(FINISHED);
 		}
 
 		default:

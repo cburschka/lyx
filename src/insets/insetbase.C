@@ -33,5 +33,5 @@ InsetBase::dispatch(FuncRequest const & f)
 DispatchResult
 InsetBase::priv_dispatch(FuncRequest const &, idx_type &, pos_type &)
 {
-	return UNDISPATCHED;
+	return DispatchResult(UNDISPATCHED);
 }

@@ -62,18 +62,18 @@ RefInset::priv_dispatch(FuncRequest const & cmd,
 		if (cmd.getArg(0) == "ref") {
 			MathArray ar;
 			if (!createMathInset_fromDialogStr(cmd.argument, ar))
-				return UNDISPATCHED;
+				return DispatchResult(UNDISPATCHED);
 
 			*this = *ar[0].nucleus()->asRefInset();
 
-			return DISPATCHED;
+			return DispatchResult(DISPATCHED);
 		}
 		break;
 	case LFUN_MOUSE_RELEASE:
 		if (cmd.button() == mouse_button::button3) {
 			lyxerr << "trying to goto ref" << cell(0) << endl;
 			cmd.view()->dispatch(FuncRequest(LFUN_REF_GOTO, asString(cell(0))));
-			return DISPATCHED;
+			return DispatchResult(DISPATCHED);
 		}
 		if (cmd.button() == mouse_button::button1) {
 			// Eventually trigger dialog with button 3
@@ -81,18 +81,18 @@ RefInset::priv_dispatch(FuncRequest const & cmd,
 			string const data = createDialogStr("ref");
 			cmd.view()->owner()->getDialogs().
 				show("ref", data, this);
-			return DISPATCHED;
+			return DispatchResult(DISPATCHED);
 		}
 		break;
 	case LFUN_MOUSE_PRESS:
 	case LFUN_MOUSE_MOTION:
 		// eat other mouse commands
-		return DISPATCHED;
+		return DispatchResult(DISPATCHED);
 	default:
 		return CommandInset::priv_dispatch(cmd, idx, pos);
 	}
 	// not our business
-	return UNDISPATCHED;
+	return DispatchResult(UNDISPATCHED);
 }
 
 

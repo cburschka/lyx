@@ -68,14 +68,14 @@ InsetLabel::priv_dispatch(FuncRequest const & cmd,
 
 	case LFUN_INSET_EDIT:
 		InsetCommandMailer("label", *this).showDialog(bv);
-		return DISPATCHED;
+		return DispatchResult(DISPATCHED);
 		break;
 
 	case LFUN_INSET_MODIFY: {
 		InsetCommandParams p;
 		InsetCommandMailer::string2params(cmd.argument, p);
 		if (p.getCmdName().empty())
-			return UNDISPATCHED;
+			return DispatchResult(UNDISPATCHED);
 
 		bool clean = true;
 		if (bv && p.getContents() != params().getContents()) {
@@ -85,7 +85,7 @@ InsetLabel::priv_dispatch(FuncRequest const & cmd,
 
 		setParams(p);
 		bv->updateInset(this);
-		return DISPATCHED;
+		return DispatchResult(DISPATCHED);
 	}
 
 	default:

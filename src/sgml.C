@@ -125,7 +125,7 @@ unsigned int closeEnvTags(ostream & ofs, bool mixcont,
 		string item_name= "listitem";
 		lines += closeTag(ofs, total_depth, mixcont, item_name);
 		if (environment_inner_depth == "varlistentry")
-			lines += closeTag(ofs, total_depth, mixcont, 
+			lines += closeTag(ofs, total_depth, mixcont,
 				environment_inner_depth);
 	}
 	return lines;

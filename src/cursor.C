@@ -32,17 +32,17 @@ DispatchResult Cursor::dispatch(FuncRequest const & cmd)
 		DispatchResult res = data_[i].inset_->dispatch(cmd);
 		lyxerr << "   result: " << res.val() << endl;
 
-		if (res == DISPATCHED) {
+		if (res == DispatchResult(DISPATCHED)) {
 			//update();
-			return DISPATCHED;
+			return DispatchResult(DISPATCHED);
 		}
 
-		if (res == DISPATCHED_NOUPDATE)
-			return DISPATCHED;
+		if (res == DispatchResult(DISPATCHED_NOUPDATE))
+			return DispatchResult(DISPATCHED);
 
 		lyxerr << "# unhandled result: " << res.val() << endl;
 	}
-	return UNDISPATCHED;
+	return DispatchResult(UNDISPATCHED);
 }
 
 

@@ -1417,17 +1417,17 @@ DispatchResult MathCursor::dispatch(FuncRequest const & cmd)
 		case LFUN_MOUSE_RELEASE:
 		case LFUN_MOUSE_DOUBLE: {
 			CursorPos & pos = Cursor_.back();
-			DispatchResult res = UNDISPATCHED;
+			DispatchResult res = DispatchResult(UNDISPATCHED);
 			int x = 0, y = 0;
 			getPos(x, y);
 			if (x < cmd.x && hasPrevAtom()) {
 				res = prevAtom().nucleus()->dispatch(cmd, pos.idx_, pos.pos_);
-				if (res != UNDISPATCHED)
+				if (res != DispatchResult(UNDISPATCHED))
 					return res;
 			}
 			if (x > cmd.x && hasNextAtom()) {
 				res = nextAtom().nucleus()->dispatch(cmd, pos.idx_, pos.pos_);
-				if (res != UNDISPATCHED)
+				if (res != DispatchResult(UNDISPATCHED))
 					return res;
 			}
 		}
@@ -1438,15 +1438,15 @@ DispatchResult MathCursor::dispatch(FuncRequest const & cmd)
 	for (int i = Cursor_.size() - 1; i >= 0; --i) {
 		CursorPos & pos = Cursor_[i];
 		DispatchResult res = pos.inset_->dispatch(cmd, pos.idx_, pos.pos_);
-		if (res != UNDISPATCHED) {
-			if (res == FINISHED) {
+		if (res != DispatchResult(UNDISPATCHED)) {
+			if (res == DispatchResult(FINISHED)) {
 				Cursor_.shrink(i + 1);
 				selClear();
 			}
 			return res;
 		}
 	}
-	return UNDISPATCHED;
+	return DispatchResult(UNDISPATCHED);
 }
 
 

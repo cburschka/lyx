@@ -127,11 +127,11 @@ InsetFloatList::priv_dispatch(FuncRequest const & cmd,
 		case LFUN_MOUSE_RELEASE:
 			if (button().box().contains(cmd.x, cmd.y))
 				InsetCommandMailer("toc", *this).showDialog(cmd.view());
-			return DISPATCHED;
+			return DispatchResult(DISPATCHED);
 
 		case LFUN_INSET_DIALOG_SHOW:
 			InsetCommandMailer("toc", *this).showDialog(cmd.view());
-			return DISPATCHED;
+			return DispatchResult(DISPATCHED);
 
 		default:
 			return InsetCommand::priv_dispatch(cmd, idx, pos);

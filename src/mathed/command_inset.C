@@ -62,7 +62,7 @@ CommandInset::priv_dispatch(FuncRequest const & cmd,
 		default:
 			return MathNestInset::priv_dispatch(cmd, idx, pos);
 	}
-	return UNDISPATCHED;
+	return DispatchResult(UNDISPATCHED);
 }
 
 

@@ -1,3 +1,33 @@
+2003-10-29  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* updatableinset.C (priv_dispatch):
+	* insetwrap.C (priv_dispatch):
+	* inseturl.C (priv_dispatch):
+	* insettoc.C (priv_dispatch):
+	* insettext.C (lfunMouseRelease, priv_dispatch, moveRightIntern)
+	(moveLeftIntern, moveUp, moveDown):
+	* insettabular.C (lfunMouseRelease, priv_dispatch, moveRight)
+	(moveLeft, moveUp, moveDown):
+	* insetref.C (priv_dispatch):
+	* insetnote.C (priv_dispatch):
+	* insetminipage.C (priv_dispatch):
+	* insetlabel.C (priv_dispatch):
+	* insetindex.C (priv_dispatch):
+	* insetinclude.C (priv_dispatch):
+	* insetgraphics.C (priv_dispatch):
+	* insetfloatlist.C (priv_dispatch):
+	* insetfloat.C (priv_dispatch):
+	* insetexternal.C (priv_dispatch):
+	* insetert.C (priv_dispatch):
+	* insetcommand.C (priv_dispatch):
+	* insetcollapsable.C (lfunMouseRelease, priv_dispatch):
+	* insetcite.C (priv_dispatch):
+	* insetbranch.C (priv_dispatch):
+	* insetbox.C (priv_dispatch):
+	* insetbibtex.C (priv_dispatch):
+	* insetbibitem.C (priv_dispatch):
+	* insetbase.C (priv_dispatch): explict DispatchResult ctor fallout.
+
 2003-10-29  Martin Vermeer  <martin.vermeer@hut.fi>
 
     * insettext.C: small refactoring of docbook stuff

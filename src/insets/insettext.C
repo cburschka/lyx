@@ -547,7 +547,7 @@ bool InsetText::lfunMouseRelease(FuncRequest const & cmd)
 
 	no_selection = true;
 	if (the_locking_inset)
-		return the_locking_inset->dispatch(cmd1) >= DISPATCHED;
+		return the_locking_inset->dispatch(cmd1) >= DispatchResult(DISPATCHED);
 
 	int tmp_x = cmd.x;
 	int tmp_y = cmd.y + dim_.asc - bv->top_y();
@@ -557,7 +557,7 @@ bool InsetText::lfunMouseRelease(FuncRequest const & cmd)
 
 	// We still need to deal properly with the whole relative vs.
 	// absolute mouse co-ords thing in a realiable, sensible way
-	bool ret = inset->dispatch(cmd1) >= DISPATCHED;
+	bool ret = inset->dispatch(cmd1) >= DispatchResult(DISPATCHED);
 	updateLocal(bv, false);
 	return ret;
 }
@@ -601,7 +601,7 @@ InsetText::priv_dispatch(FuncRequest const & cmd,
 
 		if (!bv->lockInset(this)) {
 			lyxerr[Debug::INSETS] << "Cannot lock inset" << endl;
-			return DISPATCHED;
+			return DispatchResult(DISPATCHED);
 		}
 
 		locked = true;
@@ -649,19 +649,19 @@ InsetText::priv_dispatch(FuncRequest const & cmd,
 		updateLocal(bv, false);
 		// Tell the paragraph dialog that we've entered an insettext.
 		bv->dispatch(FuncRequest(LFUN_PARAGRAPH_UPDATE));
-		return DISPATCHED;
+		return DispatchResult(DISPATCHED);
 	}
 
 	case LFUN_MOUSE_PRESS:
 		lfunMousePress(cmd);
-		return DISPATCHED;
+		return DispatchResult(DISPATCHED);
 
 	case LFUN_MOUSE_MOTION:
 		lfunMouseMotion(cmd);
-		return DISPATCHED;
+		return DispatchResult(DISPATCHED);
 
 	case LFUN_MOUSE_RELEASE:
-		return lfunMouseRelease(cmd) ? DISPATCHED : UNDISPATCHED;
+		return lfunMouseRelease(cmd) ? DispatchResult(DISPATCHED) : DispatchResult(UNDISPATCHED);
 
 	default:
 		break;
@@ -671,43 +671,43 @@ InsetText::priv_dispatch(FuncRequest const & cmd,
 	no_selection = false;
 
 	DispatchResult result = UpdatableInset::priv_dispatch(cmd, idx, pos);
-	if (result != UNDISPATCHED)
-		return DISPATCHED;
+	if (result != DispatchResult(UNDISPATCHED))
+		return DispatchResult(DISPATCHED);
 
-	result = DISPATCHED;
+	result = DispatchResult(DISPATCHED);
 	if (cmd.action < 0 && cmd.argument.empty())
-		return FINISHED;
+		return DispatchResult(FINISHED);
 
 	if (the_locking_inset) {
 		result = the_locking_inset->dispatch(cmd);
-		if (result == DISPATCHED_NOUPDATE)
+		if (result == DispatchResult(DISPATCHED_NOUPDATE))
 			return result;
-		if (result == DISPATCHED) {
+		if (result == DispatchResult(DISPATCHED)) {
 			updateLocal(bv, false);
 			return result;
 		}
-		if (result >= FINISHED) {
+		if (result >= DispatchResult(FINISHED)) {
 			switch (result.val()) {
 			case FINISHED_RIGHT:
 				moveRightIntern(bv, false, false);
-				result = DISPATCHED;
+				result = DispatchResult(DISPATCHED);
 				break;
 			case FINISHED_UP:
 				result = moveUp(bv);
-				if (result >= FINISHED) {
+				if (result >= DispatchResult(FINISHED)) {
 					updateLocal(bv, false);
 					bv->unlockInset(this);
 				}
 				break;
 			case FINISHED_DOWN:
 				result = moveDown(bv);
-				if (result >= FINISHED) {
+				if (result >= DispatchResult(FINISHED)) {
 					updateLocal(bv, false);
 					bv->unlockInset(this);
 				}
 				break;
 			default:
-				result = DISPATCHED;
+				result = DispatchResult(DISPATCHED);
 				break;
 			}
 			the_locking_inset = 0;
@@ -749,7 +749,7 @@ InsetText::priv_dispatch(FuncRequest const & cmd,
 		}
 		text_.selection.cursor = text_.cursor;
 		updflag = true;
-		result = DISPATCHED_NOUPDATE;
+		result = DispatchResult(DISPATCHED_NOUPDATE);
 		break;
 
 	// cursor movements that need special handling
@@ -773,21 +773,21 @@ InsetText::priv_dispatch(FuncRequest const & cmd,
 
 	case LFUN_PRIOR:
 		if (crow() == text_.firstRow())
-			result = FINISHED_UP;
+			result = DispatchResult(FINISHED_UP);
 		else {
 			text_.cursorPrevious();
 			text_.clearSelection();
-			result = DISPATCHED_NOUPDATE;
+			result = DispatchResult(DISPATCHED_NOUPDATE);
 		}
 		break;
 
 	case LFUN_NEXT:
 		if (crow() == text_.lastRow())
-			result = FINISHED_DOWN;
+			result = DispatchResult(FINISHED_DOWN);
 		else {
 			text_.cursorNext();
 			text_.clearSelection();
-			result = DISPATCHED_NOUPDATE;
+			result = DispatchResult(DISPATCHED_NOUPDATE);
 		}
 		break;
 
@@ -832,7 +832,7 @@ InsetText::priv_dispatch(FuncRequest const & cmd,
 
 	case LFUN_BREAKPARAGRAPH:
 		if (!autoBreakRows_) {
-			result = DISPATCHED;
+			result = DispatchResult(DISPATCHED);
 		} else {
 			replaceSelection(bv->getLyXText());
 			text_.breakParagraph(paragraphs, 0);
@@ -842,7 +842,7 @@ InsetText::priv_dispatch(FuncRequest const & cmd,
 
 	case LFUN_BREAKPARAGRAPHKEEPLAYOUT:
 		if (!autoBreakRows_) {
-			result = DISPATCHED;
+			result = DispatchResult(DISPATCHED);
 		} else {
 			replaceSelection(bv->getLyXText());
 			text_.breakParagraph(paragraphs, 1);
@@ -852,7 +852,7 @@ InsetText::priv_dispatch(FuncRequest const & cmd,
 
 	case LFUN_BREAKLINE: {
 		if (!autoBreakRows_) {
-			result = DISPATCHED;
+			result = DispatchResult(DISPATCHED);
 		} else {
 			replaceSelection(bv->getLyXText());
 			text_.insertInset(new InsetNewline);
@@ -901,7 +901,7 @@ InsetText::priv_dispatch(FuncRequest const & cmd,
 
 	default:
 		if (!bv->dispatch(cmd))
-			result = UNDISPATCHED;
+			result = DispatchResult(UNDISPATCHED);
 		break;
 	}
 
@@ -916,11 +916,11 @@ InsetText::priv_dispatch(FuncRequest const & cmd,
 		setFont(bv, font, false);
 	}
 
-	if (result >= FINISHED)
+	if (result >= DispatchResult(FINISHED))
 		bv->unlockInset(this);
 
-	if (result == DISPATCHED_NOUPDATE)
-		result = DISPATCHED;
+	if (result == DispatchResult(DISPATCHED_NOUPDATE))
+		result = DispatchResult(DISPATCHED);
 	return result;
 }
 
@@ -1186,13 +1186,13 @@ InsetText::moveRightIntern(BufferView * bv, bool front,
 	ParagraphList::iterator c_par = cpar();
 
 	if (boost::next(c_par) == paragraphs.end() && cpos() >= c_par->size())
-		return FINISHED_RIGHT;
+		return DispatchResult(FINISHED_RIGHT);
 	if (activate_inset && checkAndActivateInset(bv, front))
-		return DISPATCHED;
+		return DispatchResult(DISPATCHED);
 	text_.cursorRight(bv);
 	if (!selecting)
 		text_.clearSelection();
-	return DISPATCHED_NOUPDATE;
+	return DispatchResult(DISPATCHED_NOUPDATE);
 }
 
 
@@ -1201,33 +1201,33 @@ InsetText::moveLeftIntern(BufferView * bv, bool front,
 			  bool activate_inset, bool selecting)
 {
 	if (cpar() == paragraphs.begin() && cpos() <= 0)
-		return FINISHED;
+		return DispatchResult(FINISHED);
 	text_.cursorLeft(bv);
 	if (!selecting)
 		text_.clearSelection();
 	if (activate_inset && checkAndActivateInset(bv, front))
-		return DISPATCHED;
-	return DISPATCHED_NOUPDATE;
+		return DispatchResult(DISPATCHED);
+	return DispatchResult(DISPATCHED_NOUPDATE);
 }
 
 
 DispatchResult InsetText::moveUp(BufferView * bv)
 {
 	if (crow() == text_.firstRow())
-		return FINISHED_UP;
+		return DispatchResult(FINISHED_UP);
 	text_.cursorUp(bv);
 	text_.clearSelection();
-	return DISPATCHED_NOUPDATE;
+	return DispatchResult(DISPATCHED_NOUPDATE);
 }
 
 
 DispatchResult InsetText::moveDown(BufferView * bv)
 {
 	if (crow() == text_.lastRow())
-		return FINISHED_DOWN;
+		return DispatchResult(FINISHED_DOWN);
 	text_.cursorDown(bv);
 	text_.clearSelection();
-	return DISPATCHED_NOUPDATE;
+	return DispatchResult(DISPATCHED_NOUPDATE);
 }
 
 

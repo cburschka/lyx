@@ -46,6 +46,7 @@ class DispatchResult {
 public:
 	DispatchResult()
 		: val_(UNDISPATCHED) {}
+	explicit
 	DispatchResult(dispatch_result_t val) : val_(val) {}
 	dispatch_result_t val() const { return val_; }
 private:

@@ -885,11 +885,11 @@ void LyXFunc::dispatch(FuncRequest const & func, bool verbose)
 	{
 		Cursor cursor;
 		buildCursor(cursor, *view());
-		if (cursor.dispatch(FuncRequest(func, view())) == DISPATCHED) {
+		if (cursor.dispatch(FuncRequest(func, view())) == DispatchResult(DISPATCHED)) {
 			lyxerr << "dispatched by Cursor::dispatch()\n";
 			goto exit_with_message;
 		}
-		lyxerr << "### NOT DISPATCHED BY Cursor::dispatch() ###\n";
+		lyxerr << "### NOT DispatchResult(DISPATCHED) BY Cursor::dispatch() ###\n";
 	}
 #endif
 
@@ -933,27 +933,27 @@ void LyXFunc::dispatch(FuncRequest const & func, bool verbose)
 
 			// Hand-over to inset's own dispatch:
 			result = inset->dispatch(FuncRequest(view(), action, argument));
-			if (result == DISPATCHED || result == DISPATCHED_NOUPDATE) {
+			if (result == DispatchResult(DISPATCHED) || result == DispatchResult(DISPATCHED_NOUPDATE)) {
 				goto exit_with_message;
 			}
 
-			// If UNDISPATCHED, just soldier on
-			if (result == FINISHED) {
+			// If DispatchResult(UNDISPATCHED), just soldier on
+			if (result == DispatchResult(FINISHED)) {
 				owner->clearMessage();
 				goto exit_with_message;
 				// We do not need special RTL handling here:
-				// FINISHED means that the cursor should be
+				// DispatchResult(FINISHED) means that the cursor should be
 				// one position after the inset.
 			}
 
-			if (result == FINISHED_RIGHT) {
+			if (result == DispatchResult(FINISHED_RIGHT)) {
 				view()->text->cursorRight(view());
 				moveCursorUpdate();
 				owner->clearMessage();
 				goto exit_with_message;
 			}
 
-			if (result == FINISHED_UP) {
+			if (result == DispatchResult(FINISHED_UP)) {
 				LyXText * text = view()->text;
 				ParagraphList::iterator pit = text->cursorPar();
 				Row const & row = *pit->getRow(text->cursor.pos());
@@ -975,7 +975,7 @@ void LyXFunc::dispatch(FuncRequest const & func, bool verbose)
 				goto exit_with_message;
 			}
 
-			if (result == FINISHED_DOWN) {
+			if (result == DispatchResult(FINISHED_DOWN)) {
 				LyXText * text = view()->text;
 				ParagraphList::iterator pit = text->cursorPar();
 				Row const & row = *pit->getRow(text->cursor.pos());
@@ -999,7 +999,7 @@ void LyXFunc::dispatch(FuncRequest const & func, bool verbose)
 			}
 
 #warning I am not sure this is still right, please have a look! (Jug 20020417)
-			// result == UNDISPATCHED
+			// result == DispatchResult()
 			//setMessage(N_("Text mode"));
 			switch (action) {
 			case LFUN_UNKNOWN_ACTION:
