@@ -50,8 +50,8 @@ void InsetERT::init()
 }
 
 
-InsetERT::InsetERT(bool collapsed)
-	: InsetCollapsable(collapsed)
+InsetERT::InsetERT(BufferParams const & bp, bool collapsed)
+	: InsetCollapsable(bp, collapsed)
 {
 	if (collapsed)
 		status_ = Collapsed;
@@ -74,8 +74,9 @@ Inset * InsetERT::clone(Buffer const &, bool same_id) const
 }
 
 
-InsetERT::InsetERT(Language const * l, string const & contents, bool collapsed)
-	: InsetCollapsable(collapsed)
+InsetERT::InsetERT(BufferParams const & bp,
+		   Language const * l, string const & contents, bool collapsed)
+	: InsetCollapsable(bp, collapsed)
 {
 	if (collapsed)
 		status_ = Collapsed;

@@ -135,11 +135,13 @@ InsetText::InnerCache::InnerCache(boost::shared_ptr<LyXText> t)
 }
 
 
-InsetText::InsetText()
+InsetText::InsetText(BufferParams const & bp)
 	: UpdatableInset(), lt(0), in_update(false), do_resize(0),
 	  do_reinit(false)
 {
 	par = new Paragraph;
+	par->layout(textclasslist[bp.textclass].defaultLayoutName());
+	
 	init();
 }
 
@@ -445,7 +447,7 @@ void InsetText::draw(BufferView * bv, LyXFont const & f,
 	}
 	if (y_offset < 0)
 		y_offset = y;
-	lt->first = first;
+	lt->first_y = first;
 	if (cleared || (need_update&(INIT|FULL))) {
 		int yf = y_offset;
 		y = 0;
@@ -897,7 +899,7 @@ void InsetText::insetButtonPress(BufferView * bv, int x, int y, int button)
 	mouse_y = y;
 
 	int tmp_x = x - drawTextXOffset;
-	int tmp_y = y + insetAscent - getLyXText(bv)->first;
+	int tmp_y = y + insetAscent - getLyXText(bv)->first_y;
 	Inset * inset = bv->checkInsetHit(getLyXText(bv), tmp_x, tmp_y);
 
 	hideInsetCursor(bv);
@@ -1002,7 +1004,7 @@ bool InsetText::insetButtonRelease(BufferView * bv, int x, int y, int button)
 		                                             button);
 	}
 	int tmp_x = x - drawTextXOffset;
-	int tmp_y = y + insetAscent - getLyXText(bv)->first;
+	int tmp_y = y + insetAscent - getLyXText(bv)->first_y;
 	Inset * inset = bv->checkInsetHit(getLyXText(bv), tmp_x, tmp_y);
 	bool ret = false;
 	if (inset) {
@@ -1324,7 +1326,7 @@ InsetText::localDispatch(BufferView * bv,
 			// Derive layout number from given argument (string)
 			// and current buffer's textclass (number). */    
 			textclass_type tclass = bv->buffer()->params.textclass;
-			string layout = lowercase(arg);
+			string layout = arg;
 			bool hasLayout = textclasslist[tclass].hasLayout(layout);
 
 			// If the entry is obsolete, use the new one instead.
@@ -1333,7 +1335,7 @@ InsetText::localDispatch(BufferView * bv,
 					textclasslist[tclass][layout].
 					obsoleted_by();
 				if (!obs.empty()) 
-					layout = lowercase(obs);
+					layout = obs;
 			}
 
 			// see if we found the layout number:
@@ -2251,7 +2253,7 @@ void InsetText::resizeLyXText(BufferView * bv, bool force) const
 	}
 
 	if (bv->screen()) {
-		t->first = bv->screen()->topCursorVisible(t);
+		t->first_y = bv->screen()->topCursorVisible(t);
 	}
 	if (!owner()) {
 		updateLocal(bv, FULL, false);
@@ -2291,7 +2293,7 @@ void InsetText::reinitLyXText() const
 			inset_y = cy(bv) + drawTextYOffset;
 		}
 		if (bv->screen()) {
-			t->first = bv->screen()->topCursorVisible(t);
+			t->first_y = bv->screen()->topCursorVisible(t);
 		}
 		if (!owner()) {
 			updateLocal(bv, FULL, false);

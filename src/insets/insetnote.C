@@ -41,8 +41,8 @@ void InsetNote::init()
 }
 
 
-InsetNote::InsetNote()
-	: InsetCollapsable()
+InsetNote::InsetNote(BufferParams const & bp)
+	: InsetCollapsable(bp)
 {
 	init();
 }
@@ -64,7 +64,7 @@ Inset * InsetNote::clone(Buffer const &, bool same_id) const
 // This constructor is used for reading old InsetInfo
 InsetNote::InsetNote(Buffer const * buf, string const & contents, 
 		     bool collapsed)
-	: InsetCollapsable(collapsed)
+	: InsetCollapsable(buf->params, collapsed)
 {
 	init();
 

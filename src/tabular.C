@@ -58,7 +58,8 @@ namespace {
 
 /// Define a few methods for the inner structs
 
-LyXTabular::cellstruct::cellstruct() 
+LyXTabular::cellstruct::cellstruct(BufferParams const & bg)
+	: inset(bg)
 {
 	cellno = 0;
 	width_of_cell = 0;
@@ -107,20 +108,22 @@ LyXTabular::lttype::lttype()
 
 
 /* konstruktor */
-LyXTabular::LyXTabular(InsetTabular * inset, int rows_arg, int columns_arg)
+LyXTabular::LyXTabular(BufferParams const & bp,
+		       InsetTabular * inset, int rows_arg, int columns_arg)
 {
 	owner_ = inset;
 	cur_cell = -1;
-	Init(rows_arg, columns_arg);
+	Init(bp, rows_arg, columns_arg);
 }
 
 
-LyXTabular::LyXTabular(InsetTabular * inset, LyXTabular const & lt,
+LyXTabular::LyXTabular(BufferParams const & bp,
+		       InsetTabular * inset, LyXTabular const & lt,
                        bool same_id)
 {
 	owner_ = inset;
 	cur_cell = -1;
-	Init(lt.rows_, lt.columns_, &lt);
+	Init(bp, lt.rows_, lt.columns_, &lt);
 	// we really should change again to have InsetText as a pointer
 	// and allocate it then we would not have to do this stuff all
 	// double!
@@ -174,9 +177,10 @@ LyXTabular & LyXTabular::operator=(LyXTabular const & lt)
 }
 
 
-LyXTabular * LyXTabular::clone(InsetTabular * inset, bool same_id)
+LyXTabular * LyXTabular::clone(BufferParams const & bp,
+			       InsetTabular * inset, bool same_id)
 {
-	LyXTabular * result = new LyXTabular(inset, *this, same_id);
+	LyXTabular * result = new LyXTabular(bp, inset, *this, same_id);
 #if 0
 	// don't know if this is good but I need to Clone also
 	// the text-insets here, this is for the Undo-facility!
@@ -192,13 +196,14 @@ LyXTabular * LyXTabular::clone(InsetTabular * inset, bool same_id)
 
 
 /* activates all lines and sets all widths to 0 */ 
-void LyXTabular::Init(int rows_arg, int columns_arg, LyXTabular const * lt)
+void LyXTabular::Init(BufferParams const & bp,
+		      int rows_arg, int columns_arg, LyXTabular const * lt)
 {
 	rows_ = rows_arg;
 	columns_ = columns_arg;
 	row_info = row_vector(rows_, rowstruct());
 	column_info = column_vector(columns_, columnstruct());
-	cell_info = cell_vvector(rows_, cell_vector(columns_, cellstruct()));
+	cell_info = cell_vvector(rows_, cell_vector(columns_, cellstruct(bp)));
 
 	if (lt) {
 		operator=(*lt);
@@ -232,7 +237,7 @@ void LyXTabular::Init(int rows_arg, int columns_arg, LyXTabular const * lt)
 }
 
 
-void LyXTabular::AppendRow(int cell)
+void LyXTabular::AppendRow(BufferParams const & bp, int cell)
 {
 	++rows_;
    
@@ -241,14 +246,14 @@ void LyXTabular::AppendRow(int cell)
 	row_vector::iterator rit = row_info.begin() + row;
 	row_info.insert(rit, rowstruct());
 	// now set the values of the row before
-	row_info[row] = row_info[row+1];
+	row_info[row] = row_info[row + 1];
 
 #if 0
 	cell_vvector::iterator cit = cell_info.begin() + row;
-	cell_info.insert(cit, vector<cellstruct>(columns_, cellstruct()));
+	cell_info.insert(cit, vector<cellstruct>(columns_, cellstruct(bp)));
 #else
 	cell_vvector c_info = cell_vvector(rows_, cell_vector(columns_,
-														  cellstruct()));
+							      cellstruct(bp)));
 
 	for (int i = 0; i <= row; ++i) {
 		for (int j = 0; j < columns_; ++j) {
@@ -281,17 +286,17 @@ void LyXTabular::DeleteRow(int row)
 }
 
 
-void LyXTabular::AppendColumn(int cell)
+void LyXTabular::AppendColumn(BufferParams const & bp, int cell)
 {
 	++columns_;
    
 	cell_vvector c_info = cell_vvector(rows_, cell_vector(columns_,
-														  cellstruct()));
+							      cellstruct(bp)));
 	int const column = column_of_cell(cell);
 	column_vector::iterator cit = column_info.begin() + column + 1;
 	column_info.insert(cit, columnstruct());
 	// set the column values of the column before
-	column_info[column+1] = column_info[column];
+	column_info[column + 1] = column_info[column];
 
 	for (int i = 0; i < rows_; ++i) {
 		for (int j = 0; j <= column; ++j) {
@@ -1084,7 +1089,7 @@ void LyXTabular::Read(Buffer const * buf, LyXLex & lex)
 	l_getline(is, line);
 	if (!prefixIs(line, "<lyxtabular ")
 		&& !prefixIs(line, "<LyXTabular ")) {
-		OldFormatRead(lex, line);
+		OldFormatRead(buf->params, lex, line);
 		return;
 	}
 
@@ -1110,7 +1115,7 @@ void LyXTabular::setHeaderFooterRows(int hr, int fhr, int fr, int lfr)
 				row_info[--fhr].endfirsthead = true;
 				row_info[fhr].endhead = false;
 			}
-		} else if (row_info[fhr-1].endhead) {
+		} else if (row_info[fhr - 1].endhead) {
 			endfirsthead.empty = true;
 		} else {
 			while((fhr > 0) && !row_info[--fhr].endhead) {
@@ -1130,7 +1135,7 @@ void LyXTabular::setHeaderFooterRows(int hr, int fhr, int fr, int lfr)
 				row_info[fr].endfoot = true;
 				row_info[fr].endfirsthead = false;
 			}
-		} else if (!row_info[fr-1].endhead && !row_info[fr-1].endfirsthead) {
+		} else if (!row_info[fr - 1].endhead && !row_info[fr - 1].endfirsthead) {
 			while((fr > 0) && !row_info[--fr].endhead &&
 				  !row_info[fr].endfirsthead)
 			{
@@ -1140,25 +1145,27 @@ void LyXTabular::setHeaderFooterRows(int hr, int fhr, int fr, int lfr)
 	}
 	// set lastfooter info
 	if (lfr && (lfr < rows_)) {
-		if (row_info[lfr].endhead && row_info[lfr-1].endhead) {
+		if (row_info[lfr].endhead && row_info[lfr - 1].endhead) {
 			while((lfr > 0) && !row_info[--lfr].endhead) {
 				row_info[lfr].endlastfoot = true;
 				row_info[lfr].endhead = false;
 			}
 		} else if (row_info[lfr].endfirsthead &&
-				   row_info[lfr-1].endfirsthead)
+				   row_info[lfr - 1].endfirsthead)
 		{
 			while((lfr > 0) && !row_info[--lfr].endfirsthead) {
 				row_info[lfr].endlastfoot = true;
 				row_info[lfr].endfirsthead = false;
 			}
-		} else if (row_info[lfr].endfoot && row_info[lfr-1].endfoot) {
+		} else if (row_info[lfr].endfoot
+			   && row_info[lfr - 1].endfoot) {
 			while((lfr > 0) && !row_info[--lfr].endfoot) {
 				row_info[lfr].endlastfoot = true;
 				row_info[lfr].endfoot = false;
 			}
-		} else if (!row_info[fr-1].endhead && !row_info[fr-1].endfirsthead &&
-				   !row_info[fr-1].endfoot)
+		} else if (!row_info[fr - 1].endhead
+			   && !row_info[fr - 1].endfirsthead &&
+				   !row_info[fr - 1].endfoot)
 		{
 			while((lfr > 0) &&
 				  !row_info[--lfr].endhead && !row_info[lfr].endfirsthead &&
@@ -1173,7 +1180,7 @@ void LyXTabular::setHeaderFooterRows(int hr, int fhr, int fr, int lfr)
 }
 
 void LyXTabular::ReadNew(Buffer const * buf, istream & is,
-						 LyXLex & lex, string const & l, int const version)
+			 LyXLex & lex, string const & l, int const version)
 {
 	string line(l);
 	int rows_arg;
@@ -1182,7 +1189,7 @@ void LyXTabular::ReadNew(Buffer const * buf, istream & is,
 	int columns_arg;
 	if (!getTokenValue(line, "columns", columns_arg))
 		return;
-	Init(rows_arg, columns_arg);
+	Init(buf->params, rows_arg, columns_arg);
 	l_getline(is, line);
 	if (!prefixIs(line, "<features")) {
 		lyxerr << "Wrong tabular format (expected <features ...> got" <<
@@ -1294,7 +1301,8 @@ void LyXTabular::ReadNew(Buffer const * buf, istream & is,
 }
 
 
-void LyXTabular::OldFormatRead(LyXLex & lex, string const & fl)
+void LyXTabular::OldFormatRead(BufferParams const & bp,
+			       LyXLex & lex, string const & fl)
 {
 	int version;
 	int i;
@@ -1332,7 +1340,7 @@ void LyXTabular::OldFormatRead(LyXLex & lex, string const & fl)
 			   >> rotate_arg >> a >> b >> c >> d;
 		} else
 			is >> rows_arg >> columns_arg;
-		Init(rows_arg, columns_arg);
+		Init(bp, rows_arg, columns_arg);
 		cont_row_info = vector<int>(rows_arg);
 		SetLongTabular(is_long_tabular_arg);
 		SetRotateTabular(rotate_arg);
@@ -1352,7 +1360,7 @@ void LyXTabular::OldFormatRead(LyXLex & lex, string const & fl)
 	} else {
 		is >> rows_arg >> columns_arg >> is_long_tabular_arg
 		   >> rotate_arg >> a >> b >> c >> d;
-		Init(rows_arg, columns_arg);
+		Init(bp, rows_arg, columns_arg);
 		cont_row_info = vector<int>(rows_arg);
 		SetLongTabular(is_long_tabular_arg);
 		SetRotateTabular(rotate_arg);

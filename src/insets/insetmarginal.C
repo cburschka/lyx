@@ -27,8 +27,8 @@
 using std::ostream;
 
 
-InsetMarginal::InsetMarginal()
-	: InsetFootlike()
+InsetMarginal::InsetMarginal(BufferParams const & bp)
+	: InsetFootlike(bp)
 {
 	setLabel(_("margin"));
 	setInsetName("Marginal");

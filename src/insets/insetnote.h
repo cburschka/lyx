@@ -24,7 +24,7 @@
 class InsetNote : public InsetCollapsable {
 public:
 	/// 
-	InsetNote();
+	InsetNote(BufferParams const &);
 	///
 	InsetNote(InsetNote const &, bool same_id = false);
 	///

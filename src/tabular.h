@@ -178,16 +178,19 @@ public:
 	
 	/* konstruktor */
 	///
-	LyXTabular(InsetTabular *, int columns_arg, int rows_arg);
+	LyXTabular(BufferParams const &,
+		   InsetTabular *, int columns_arg, int rows_arg);
 	///
-	LyXTabular(InsetTabular *, LyXTabular const &, bool same_id = false);
+	LyXTabular(BufferParams const &,
+		   InsetTabular *, LyXTabular const &, bool same_id = false);
 	///
 	explicit
 	LyXTabular(Buffer const *, InsetTabular *, LyXLex & lex);
 	///
 	LyXTabular & operator=(LyXTabular const &);
 	///
-	LyXTabular * clone(InsetTabular *, bool same_id = false);
+	LyXTabular * clone(BufferParams const &,
+			   InsetTabular *, bool same_id = false);
 	
 	/// Returns true if there is a topline, returns false if not
 	bool TopLine(int cell, bool onlycolumn = false) const;
@@ -266,11 +269,11 @@ public:
 	///
 	int GetBeginningOfTextInCell(int cell) const;
 	///
-	void AppendRow(int cell);
+	void AppendRow(BufferParams const &, int cell);
 	///
 	void DeleteRow(int row);
 	///
-	void AppendColumn(int cell);
+	void AppendColumn(BufferParams const &, int cell);
 	///
 	void DeleteColumn(int column);
 	///
@@ -290,7 +293,7 @@ public:
 	///
 	void Read(Buffer const *, LyXLex &);
 	///
-	void OldFormatRead(LyXLex &, string const &);
+	void OldFormatRead(BufferParams const &, LyXLex &, string const &);
 	///
 	int latex(Buffer const *, std::ostream &, bool, bool) const;
 	///
@@ -398,7 +401,7 @@ private:
 	///
 	struct cellstruct {
 		///
-		cellstruct();
+		cellstruct(BufferParams const &);
 		///
 		int cellno;
 		///
@@ -525,7 +528,8 @@ private:
 	InsetTabular * owner_;
 
 	///
-	void Init(int columns_arg, int rows_arg, LyXTabular const * lt = 0);
+	void Init(BufferParams const &,
+		  int columns_arg, int rows_arg, LyXTabular const * lt = 0);
 	///
 	void Reinit(bool reset_widths = true);
 	///

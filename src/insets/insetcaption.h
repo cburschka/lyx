@@ -24,7 +24,7 @@
 class InsetCaption : public InsetText {
 public:
 	///
-	InsetCaption();
+	InsetCaption(BufferParams const &);
 	///
 	void write(Buffer const * buf, std::ostream & os) const;
 	///

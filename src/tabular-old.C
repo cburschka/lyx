@@ -13,7 +13,9 @@
 #include <config.h>
 
 #include "tabular.h"
+#include "buffer.h"
 #include "debug.h"
+
 #include "support/lstrings.h"
 #include "support/textutils.h"
 
@@ -159,7 +161,7 @@ void LyXTabular::ReadOld(Buffer const * buf, istream & is,
 	return;
     if (!getTokenValue(line, "columns", columns_arg))
 	return;
-    Init(rows_arg, columns_arg);
+    Init(buf->params, rows_arg, columns_arg);
     l_getline(is, line);
     if (!prefixIs(line, "<Features ")) {
 	lyxerr << "Wrong tabular format (expected <Feture ...> got" <<

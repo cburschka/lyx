@@ -59,8 +59,8 @@ using std::endl;
 // have to output "" for minipages.
 // (Lgb)
 
-InsetMinipage::InsetMinipage()
-	: InsetCollapsable(), pos_(center),
+InsetMinipage::InsetMinipage(BufferParams const & bp)
+	: InsetCollapsable(bp), pos_(center),
 	  inner_pos_(inner_center), width_(100, LyXLength::PW)
 {
 	setLabel(_("minipage"));

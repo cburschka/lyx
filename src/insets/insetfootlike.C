@@ -24,8 +24,8 @@
 using std::ostream;
 
 
-InsetFootlike::InsetFootlike()
-	: InsetCollapsable()
+InsetFootlike::InsetFootlike(BufferParams const & bp)
+	: InsetCollapsable(bp)
 {
 	LyXFont font(LyXFont::ALL_SANE);
 	font.decSize();

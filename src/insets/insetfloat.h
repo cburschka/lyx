@@ -27,7 +27,7 @@ class Painter;
 class InsetFloat : public InsetCollapsable {
 public:
 	///
-	InsetFloat(string const &);
+	InsetFloat(BufferParams const &, string const &);
 	///
 	InsetFloat(InsetFloat const &, bool same_id = false);
 	///

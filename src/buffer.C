@@ -405,7 +405,8 @@ void Buffer::insertErtContents(Paragraph * par, int & pos, bool set_inactive)
 	if (!ert_comp.contents.empty()) {
 		lyxerr[Debug::INSETS] << "ERT contents:\n'"
 				      << ert_comp.contents << "'" << endl;
-		Inset * inset = new InsetERT(params.language, ert_comp.contents, true);
+		Inset * inset = new InsetERT(params, params.language,
+					     ert_comp.contents, true);
 		par->insertInset(pos++, inset, ert_comp.font);
 		ert_comp.contents.erase();
 	}
@@ -462,11 +463,14 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 		insertErtContents(par, pos);
 #endif
 		lex.eatLine();
-		string const layoutname = lowercase(lex.getString());
-		//lyxerr << "Looking for layout '"
-		// << layoutname << "'!" << endl;
-
-		//lyxerr << "Result: " << pp.first << "/" << pp.second << endl;
+		string const layoutname = lex.getString();
+		LyXTextClass const & tclass = textclasslist[params.textclass];
+		bool hasLayout = tclass.hasLayout(layoutname);
+		if (!hasLayout) {
+			lyxerr << "Layout '" << layoutname << "' does not"
+			       << " exist in textclass '" << tclass.name()
+			       << "'." << endl;
+		}
 		
 #ifndef NO_COMPABILITY
 		if (compare_no_case(layoutname, "latex") == 0) {
@@ -565,28 +569,28 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 		stringstream old_float;
 		
 		if (tmptok == "footnote") {
-			inset = new InsetFoot;
+			inset = new InsetFoot(params);
 			old_float << "collapsed true\n";
 		} else if (tmptok == "margin") {
-			inset = new InsetMarginal;
+			inset = new InsetMarginal(params);
 			old_float << "collapsed true\n";
 		} else if (tmptok == "fig") {
-			inset = new InsetFloat("figure");
+			inset = new InsetFloat(params, "figure");
 			old_float << "placement htbp\n"
 				  << "wide false\n"
 				  << "collapsed false\n";
 		} else if (tmptok == "tab") {
-			inset = new InsetFloat("table");
+			inset = new InsetFloat(params, "table");
 			old_float << "placement htbp\n"
 				  << "wide false\n"
 				  << "collapsed false\n";
 		} else if (tmptok == "alg") {
-			inset = new InsetFloat("algorithm");
+			inset = new InsetFloat(params, "algorithm");
 			old_float << "placement htbp\n"
 				  << "wide false\n"
 				  << "collapsed false\n";
 		} else if (tmptok == "wide-fig") {
-			inset = new InsetFloat("figure");
+			inset = new InsetFloat(params, "figure");
 			//InsetFloat * tmp = new InsetFloat("figure");
 			//tmp->wide(true);
 			//inset = tmp;
@@ -594,7 +598,7 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 				  << "wide true\n"
 				  << "collapsed false\n";
 		} else if (tmptok == "wide-tab") {
-			inset = new InsetFloat("table");
+			inset = new InsetFloat(params, "table");
 			//InsetFloat * tmp = new InsetFloat("table");
 			//tmp->wide(true);
 			//inset = tmp;
@@ -1249,7 +1253,7 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 				p->params().depth(parBeforeMinipage->params().depth());
 				parBeforeMinipage = p;
 			}
-			InsetMinipage * mini = new InsetMinipage;
+			InsetMinipage * mini = new InsetMinipage(params);
 			mini->pos(static_cast<InsetMinipage::Position>(par->params().pextraAlignment()));
 			mini->pageWidth(LyXLength(par->params().pextraWidth()));
 			if (!par->params().pextraWidthp().empty()) {
@@ -1330,7 +1334,7 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 		if (!first_par || (first_par == par))
 			first_par = p;
 
-		InsetMinipage * mini = new InsetMinipage;
+		InsetMinipage * mini = new InsetMinipage(params);
 		mini->pos(static_cast<InsetMinipage::Position>(minipar->params().pextraAlignment()));
 		mini->pageWidth(LyXLength(minipar->params().pextraWidth()));
 		if (!par->params().pextraWidthp().empty()) {
@@ -1496,26 +1500,26 @@ void Buffer::readInset(LyXLex & lex, Paragraph *& par,
 					      true);
 			alreadyread = true;
 		} else if (tmptok == "Note") {
-			inset = new InsetNote;
+			inset = new InsetNote(params);
 		} else if (tmptok == "Include") {
 			InsetCommandParams p("Include");
 			inset = new InsetInclude(p, *this);
 		} else if (tmptok == "ERT") {
-			inset = new InsetERT;
+			inset = new InsetERT(params);
 		} else if (tmptok == "Tabular") {
 			inset = new InsetTabular(*this);
 		} else if (tmptok == "Text") {
-			inset = new InsetText;
+			inset = new InsetText(params);
 		} else if (tmptok == "Foot") {
-			inset = new InsetFoot;
+			inset = new InsetFoot(params);
 		} else if (tmptok == "Marginal") {
-			inset = new InsetMarginal;
+			inset = new InsetMarginal(params);
 		} else if (tmptok == "Minipage") {
-			inset = new InsetMinipage;
+			inset = new InsetMinipage(params);
 		} else if (tmptok == "Float") {
 			lex.next();
 			string tmptok = lex.getString();
-			inset = new InsetFloat(tmptok);
+			inset = new InsetFloat(params, tmptok);
 #if 0
 		} else if (tmptok == "List") {
 			inset = new InsetList;
@@ -1523,7 +1527,7 @@ void Buffer::readInset(LyXLex & lex, Paragraph *& par,
 			inset = new InsetList;
 #endif
 		} else if (tmptok == "Caption") {
-			inset = new InsetCaption;
+			inset = new InsetCaption(params);
 		} else if (tmptok == "FloatList") {
 			inset = new InsetFloatList;
 		}
@@ -1792,26 +1796,26 @@ string const Buffer::asciiParagraph(Paragraph const * par,
 #endif
 		
 	// First write the layout
-	string const & tmp = lowercase(par->layout());
-	if (tmp == "itemize") {
+	string const & tmp = par->layout();
+	if (compare_no_case(tmp, "itemize") == 0) {
 		ltype = 1;
 		ltype_depth = depth + 1;
-	} else if (tmp == "enumerate") {
+	} else if (compare_no_case(tmp, "enumerate") == 0) {
 		ltype = 2;
 		ltype_depth = depth + 1;
-	} else if (contains(tmp, "ection")) {
+	} else if (contains(lowercase(tmp), "ection")) {
 		ltype = 3;
 		ltype_depth = depth + 1;
-	} else if (contains(tmp, "aragraph")) {
+	} else if (contains(lowercase(tmp), "aragraph")) {
 		ltype = 4;
 		ltype_depth = depth + 1;
-	} else if (tmp == "description") {
+	} else if (compare_no_case(tmp, "description") == 0) {
 		ltype = 5;
 		ltype_depth = depth + 1;
-	} else if (tmp == "abstract") {
+	} else if (compare_no_case(tmp, "abstract") == 0) {
 		ltype = 6;
 		ltype_depth = 0;
-	} else if (tmp == "bibliography") {
+	} else if (compare_no_case(tmp, "bibliography") == 0) {
 		ltype = 7;
 		ltype_depth = 0;
 	} else {

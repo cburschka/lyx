@@ -55,7 +55,7 @@ using lyx::pos_type;
 
 
 LyXText::LyXText(BufferView * bv)
-	: number_of_rows(0), height(0), width(0), first(0),
+	: number_of_rows(0), height(0), width(0), first_y(0),
 	  bv_owner(bv), inset_owner(0), the_locking_inset(0),
 	  need_break_row(0), refresh_y(0), refresh_row(0),
 	  status_(LyXText::UNCHANGED), firstrow(0), lastrow(0)
@@ -63,7 +63,7 @@ LyXText::LyXText(BufferView * bv)
 
 
 LyXText::LyXText(InsetText * inset)
-	:  number_of_rows(0),  height(0), width(0), first(0),
+	:  number_of_rows(0),  height(0), width(0), first_y(0),
 	   bv_owner(0), inset_owner(inset), the_locking_inset(0),
 	   need_break_row(0), refresh_y(0), refresh_row(0),
 	   status_(LyXText::UNCHANGED), firstrow(0), lastrow(0)
@@ -80,16 +80,20 @@ void LyXText::init(BufferView * bview, bool reinit)
 			delete firstrow;
 			firstrow = tmprow;
 		}
-		lastrow = refresh_row = need_break_row = 0;
+
+		lastrow = 0;
+		refresh_row = 0;
+		need_break_row = 0;
 		width = height = 0;
 		copylayouttype.erase();
-		number_of_rows = first = refresh_y = 0;
+		number_of_rows = first_y = refresh_y = 0;
 		status_ = LyXText::UNCHANGED;
 	} else if (firstrow)
 		return;
 
 	Paragraph * par = ownerParagraph();
 	current_font = getFont(bview->buffer(), par, 0);
+	
 	while (par) {
 		insertParagraph(bview, par, lastrow);
 		par = par->next();

@@ -28,7 +28,7 @@
 class InsetFootlike : public InsetCollapsable {
 public:
 	///
-	InsetFootlike();
+	InsetFootlike(BufferParams const &);
 	///
 	InsetFootlike(InsetFootlike const &, bool same_id = false);
 	///

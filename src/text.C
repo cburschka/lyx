@@ -3826,6 +3826,7 @@ Row * LyXText::getRow(Paragraph * par, pos_type pos, int & y) const
 
 Row * LyXText::getRowNearY(int & y) const
 {
+#if 1
 	// If possible we should optimize this method. (Lgb)
 	Row * tmprow = firstrow;
 	int tmpy = 0;
@@ -3836,7 +3837,53 @@ Row * LyXText::getRowNearY(int & y) const
 	}
 	
 	y = tmpy;   // return the real y
+
+	lyxerr << "returned y = " << y << endl;
+	
 	return tmprow;
+#else
+	// Search from the current cursor position.
+	
+	Row * tmprow = cursor.row();
+	int tmpy = cursor.y() - tmprow->baseline();
+
+	lyxerr << "cursor.y() = " << tmpy << endl;
+	lyxerr << "tmprow->height() = " << tmprow->height() << endl;
+	lyxerr << "tmprow->baseline() = " << tmprow->baseline() << endl;
+	lyxerr << "first = " << first << endl;
+	lyxerr << "y = " << y << endl;
+	
+	if (y < tmpy) {
+		lyxerr << "up" << endl;
+#if 0
+		while (tmprow && tmpy - tmprow->height() >= y) {
+			tmpy -= tmprow->height();
+			tmprow = tmprow->previous();
+		}
+#else
+		do {
+			tmpy -= tmprow->height();
+			tmprow = tmprow->previous();
+		} while (tmprow && tmpy - tmprow->height() >= y);
+#endif
+	} else if (y > tmpy) {
+		lyxerr << "down" << endl;
+		
+		while (tmprow->next() && tmpy + tmprow->height() <= y) {
+			tmpy += tmprow->height();
+			tmprow = tmprow->next();
+		}
+	} else {
+		lyxerr << "equal" << endl;
+	}
+	
+	y = tmpy; // return the real y
+
+	lyxerr << "returned y = " << y << endl;
+	
+	return tmprow;
+
+#endif
 }
 
 

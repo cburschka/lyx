@@ -30,6 +30,7 @@
 class Painter;
 class BufferView;
 class Buffer;
+class BufferParams;
 class LyXCursor;
 class LyXText;
 class LyXScreen;
@@ -73,7 +74,7 @@ public:
 		ALWAYS
 	};
 	///
-	InsetText();
+	InsetText(BufferParams const &);
 	///
 	explicit
 	InsetText(InsetText const &, bool same_id = false);

@@ -135,7 +135,7 @@ InsetTabular::InsetTabular(Buffer const & buf, int rows, int columns)
 		rows = 1;
 	if (columns <= 0)
 		columns = 1;
-	tabular.reset(new LyXTabular(this, rows, columns));
+	tabular.reset(new LyXTabular(buf.params, this, rows, columns));
 	// for now make it always display as display() inset
 	// just for test!!!
 	the_locking_inset = 0;
@@ -156,7 +156,8 @@ InsetTabular::InsetTabular(InsetTabular const & tab, Buffer const & buf,
 						   bool same_id)
 	: UpdatableInset(tab, same_id), buffer(&buf)
 {
-	tabular.reset(new LyXTabular(this, *(tab.tabular), same_id));
+	tabular.reset(new LyXTabular(buf.params,
+				     this, *(tab.tabular), same_id));
 	the_locking_inset = 0;
 	old_locking_inset = 0;
 	locked = false;
@@ -1037,10 +1038,10 @@ InsetTabular::localDispatch(BufferView * bv, kb_action action,
 		}
 		int column = actcol;
 		unlockInsetInInset(bv, the_locking_inset);
-		if (bv->text->first + bv->painter().paperHeight() <
+		if (bv->text->first_y + bv->painter().paperHeight() <
 		    (top_baseline + tabular->GetHeightOfTabular()))
 			{
-				bv->scrollCB(bv->text->first + bv->painter().paperHeight());
+				bv->scrollCB(bv->text->first_y + bv->painter().paperHeight());
 				code = FULL;
 				actcell = tabular->GetCellBelow(first_visible_cell) + column;
 			} else {
@@ -1059,7 +1060,7 @@ InsetTabular::localDispatch(BufferView * bv, kb_action action,
 		int column = actcol;
 		unlockInsetInInset(bv, the_locking_inset);
 		if (top_baseline < 0) {
-			bv->scrollCB(bv->text->first - bv->painter().paperHeight());
+			bv->scrollCB(bv->text->first_y - bv->painter().paperHeight());
 			code = FULL;
 			if (top_baseline > 0)
 				actcell = column;
@@ -1148,7 +1149,8 @@ InsetTabular::localDispatch(BufferView * bv, kb_action action,
 			}
 			maxCols = max(cols, maxCols);
 			delete paste_tabular;
-			paste_tabular = new LyXTabular(this, rows, maxCols);
+			paste_tabular = new LyXTabular(bv->buffer()->params,
+						       this, rows, maxCols);
 			string::size_type op = 0;
 			int cell = 0;
 			int cells = paste_tabular->GetNumberOfCells();
@@ -1869,13 +1871,13 @@ void InsetTabular::tabularFeatures(BufferView * bv,
 	case LyXTabular::APPEND_ROW:
 		// append the row into the tabular
 		unlockInsetInInset(bv, the_locking_inset);
-		tabular->AppendRow(actcell);
+		tabular->AppendRow(bv->buffer()->params, actcell);
 		updateLocal(bv, INIT, true);
 		break;
 	case LyXTabular::APPEND_COLUMN:
 		// append the column into the tabular
 		unlockInsetInInset(bv, the_locking_inset);
-		tabular->AppendColumn(actcell);
+		tabular->AppendColumn(bv->buffer()->params, actcell);
 		actcell = tabular->GetCellNumber(row, column);
 		updateLocal(bv, INIT, true);
 		break;
@@ -2426,7 +2428,8 @@ bool InsetTabular::copySelection(BufferView * bv)
 	int const rows = sel_row_end - sel_row_start + 1;
 
 	delete paste_tabular;
-	paste_tabular = new LyXTabular(this, *tabular); // rows, columns);
+	paste_tabular = new LyXTabular(bv->buffer()->params,
+				       this, *tabular); // rows, columns);
 	for (int i = 0; i < sel_row_start; ++i)
 		paste_tabular->DeleteRow(0);
 	while (paste_tabular->rows() > rows)

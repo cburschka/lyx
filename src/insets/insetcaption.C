@@ -27,8 +27,8 @@
 using std::ostream;
 using std::endl;
 
-InsetCaption::InsetCaption()
-	: InsetText()
+InsetCaption::InsetCaption(BufferParams const & bp)
+	: InsetText(bp)
 {
 	setAutoBreakRows(true);
 	setDrawFrame(0, InsetText::LOCKED);

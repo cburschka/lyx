@@ -24,7 +24,7 @@
 class InsetMarginal : public InsetFootlike {
 public:
 	///
-	InsetMarginal();
+	InsetMarginal(BufferParams const &);
 	///
 	InsetMarginal(InsetMarginal const &, bool same_id = false);
 	///

@@ -38,8 +38,8 @@ using std::max;
 class LyXText;
 
 
-InsetCollapsable::InsetCollapsable(bool collapsed)
-	: UpdatableInset(), collapsed_(collapsed), 
+InsetCollapsable::InsetCollapsable(BufferParams const & bp, bool collapsed)
+	: UpdatableInset(), collapsed_(collapsed), inset(bp),
 	  button_length(0), button_top_y(0), button_bottom_y(0),
 	  need_update(NONE), label("Label"),
 #if 0
@@ -56,8 +56,8 @@ InsetCollapsable::InsetCollapsable(bool collapsed)
 
 
 InsetCollapsable::InsetCollapsable(InsetCollapsable const & in, bool same_id)
-	: UpdatableInset(in, same_id), collapsed_(in.collapsed_), 
-	  framecolor(in.framecolor), labelfont(in.labelfont),
+	: UpdatableInset(in, same_id), collapsed_(in.collapsed_),
+	  framecolor(in.framecolor), labelfont(in.labelfont), inset(in.inset),
 	  button_length(0), button_top_y(0), button_bottom_y(0),
 	  need_update(NONE), label(in.label),
 #if 0

@@ -42,7 +42,7 @@ public:
 	///
 	static int const TEXT_TO_BOTTOM_OFFSET = 2;
 	/// inset is initially collapsed if bool = true
-	InsetCollapsable(bool = false);
+	InsetCollapsable(BufferParams const &, bool = false);
 	///
 	InsetCollapsable(InsetCollapsable const & in, bool same_id = false);
 	///

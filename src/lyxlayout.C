@@ -180,12 +180,12 @@ bool LyXLayout::Read (LyXLex & lexrc, LyXTextClass const & tclass)
 
 		case LT_COPYSTYLE:     // initialize with a known style
 		        if (lexrc.next()) {
-				string const style = lowercase(lexrc.getString());
+				string const style = lexrc.getString();
 			
 				if (tclass.hasLayout(style)) {
-					string const tmpname = lowercase(name_);
+					string const tmpname = name_;
 					this->operator=(tclass[style]);
-					name_ = lowercase(tmpname);
+					name_ = tmpname;
 				} else {
 					lyxerr << "Cannot copy unknown style `" << style << "'" << endl;
 					LyXTextClass::const_iterator it = tclass.begin();
@@ -203,7 +203,7 @@ bool LyXLayout::Read (LyXLex & lexrc, LyXTextClass const & tclass)
 
 		case LT_OBSOLETEDBY:     // replace with a known style
 		        if (lexrc.next()) {
-				string const style = lowercase(lexrc.getString());
+				string const style = lexrc.getString();
 				
 				if (tclass.hasLayout(style)) {
 					string const tmpname = name_;
@@ -736,21 +736,17 @@ void LyXLayout::readSpacing(LyXLex & lexrc)
 
 string const & LyXLayout::name() const
 {
-	static string name_t;
-	name_t = lowercase(name_);
-	return name_t;
+	return name_;
 }
 
 
 void LyXLayout::setName(string const & n)
 {
-	name_ = lowercase(n);
+	name_ = n;
 }
 
 
 string const & LyXLayout::obsoleted_by() const
 {
-	static string obsoleted_by_t;
-	obsoleted_by_t = lowercase(obsoleted_by_);
-	return obsoleted_by_t;
+	return obsoleted_by_;
 }

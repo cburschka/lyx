@@ -214,7 +214,7 @@ void BufferView::Pimpl::buffer(Buffer * b)
 			updateScreen();
 			updateScrollbar();
 		}
-		bv_->text->first = screen_->topCursorVisible(bv_->text);
+		bv_->text->first_y = screen_->topCursorVisible(bv_->text);
 		owner_->updateMenubar();
 		owner_->updateToolbar();
 		// Similarly, buffer-dependent dialogs should be updated or
@@ -368,7 +368,7 @@ int BufferView::Pimpl::resizeCurrentBuffer()
 		// remake the inset locking
 		bv_->theLockingInset(the_locking_inset);
 	}
-	bv_->text->first = screen_->topCursorVisible(bv_->text);
+	bv_->text->first_y = screen_->topCursorVisible(bv_->text);
 #if 0
 	buffer_->resizeInsets(bv_);
 #endif
@@ -408,7 +408,7 @@ void BufferView::Pimpl::updateScrollbar()
 
 	if (text_height <= work_height) {
 		workarea_.setScrollbarBounds(0.0, 0.0);
-		current_scrollbar_value = bv_->text->first;
+		current_scrollbar_value = bv_->text->first_y;
 		workarea_.setScrollbar(current_scrollbar_value, 1.0);
 		return;
 	}
@@ -430,9 +430,9 @@ void BufferView::Pimpl::updateScrollbar()
 		workarea_.setScrollbarIncrements(lineh);
 		old_lineh = lineh;
 	}
-	if (current_scrollbar_value != bv_->text->first
+	if (current_scrollbar_value != bv_->text->first_y
 	    || slider_size != old_slider_size) {
-		current_scrollbar_value = bv_->text->first;
+		current_scrollbar_value = bv_->text->first_y;
 		workarea_.setScrollbar(current_scrollbar_value, slider_size);
 		old_slider_size = slider_size;
 	}
@@ -462,8 +462,8 @@ void BufferView::Pimpl::scrollCB(double value)
 	LyXText * vbt = bv_->text;
  
 	int const height = vbt->defaultHeight();
-	int const first = static_cast<int>((bv_->text->first + height));
-	int const last = static_cast<int>((bv_->text->first + workarea_.height() - height));
+	int const first = static_cast<int>((bv_->text->first_y + height));
+	int const last = static_cast<int>((bv_->text->first_y + workarea_.height() - height));
 
 	if (vbt->cursor.y() < first)
 		vbt->setCursorFromCoordinates(bv_, 0, first);
@@ -558,7 +558,7 @@ void BufferView::Pimpl::workAreaMotionNotify(int x, int y, unsigned int state)
 		bv_->theLockingInset()->
 			insetMotionNotify(bv_,
 					  x - start_x,
-					  y - cursor.y() + bv_->text->first,
+					  y - cursor.y() + bv_->text->first_y,
 					  state);
 		return;
 	}
@@ -571,7 +571,7 @@ void BufferView::Pimpl::workAreaMotionNotify(int x, int y, unsigned int state)
  
 	screen_->hideCursor();
 
-	bv_->text->setCursorFromCoordinates(bv_, x, y + bv_->text->first);
+	bv_->text->setCursorFromCoordinates(bv_, x, y + bv_->text->first_y);
       
 	if (!bv_->text->selection.set())
 		update(bv_->text, BufferView::UPDATE); // Maybe an empty line was deleted
@@ -621,7 +621,7 @@ void BufferView::Pimpl::workAreaButtonPress(int xpos, int ypos,
 		selection_possible = true;
 	screen_->hideCursor();
 
-	int const screen_first = bv_->text->first;
+	int const screen_first = bv_->text->first_y;
 	
 	// Middle button press pastes if we have a selection
 	bool paste_internally = false;
@@ -941,7 +941,7 @@ Inset * BufferView::Pimpl::checkInsetHit(LyXText * text, int & x, int & y)
 	if (!screen_.get())
 		return 0;
   
-	int y_tmp = y + text->first;
+	int y_tmp = y + text->first_y;
  
 	LyXCursor cursor;
 	text->setCursorFromCoordinates(bv_, cursor, x, y_tmp);
@@ -1142,9 +1142,9 @@ void BufferView::Pimpl::cursorPrevious(LyXText * text)
 	if (!text->cursor.row()->previous())
 		return;
 	
-	int y = text->first;
+	int y = text->first_y;
 	if (text->inset_owner)
-		y += bv_->text->first;
+		y += bv_->text->first_y;
 	Row * cursorrow = text->cursor.row();
 	text->setCursorFromCoordinates(bv_, bv_->text->cursor.x_fix(), y);
 	finishUndo();
@@ -1168,7 +1168,7 @@ void BufferView::Pimpl::cursorNext(LyXText * text)
 	if (!text->cursor.row()->next())
 		return;
 	
-	int y = text->first + workarea_.height();
+	int y = text->first_y + workarea_.height();
 //	if (text->inset_owner)
 //		y += bv_->text->first;
 	text->getRowNearY(y);
@@ -2743,11 +2743,11 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 	break;
 	
 	case LFUN_INSET_TEXT:
-		insertAndEditInset(new InsetText);
+		insertAndEditInset(new InsetText(buffer_->params));
 		break;
 	
 	case LFUN_INSET_ERT:
-		insertAndEditInset(new InsetERT);
+		insertAndEditInset(new InsetERT(buffer_->params));
 		break;
 	
 	case LFUN_INSET_EXTERNAL:
@@ -2755,25 +2755,26 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		break;
 	
 	case LFUN_INSET_FOOTNOTE:
-		insertAndEditInset(new InsetFoot);
+		insertAndEditInset(new InsetFoot(buffer_->params));
 		break;
 
 	case LFUN_INSET_MARGINAL:
-		insertAndEditInset(new InsetMarginal);
+		insertAndEditInset(new InsetMarginal(buffer_->params));
 		break;
 
 	case LFUN_INSET_MINIPAGE:
-		insertAndEditInset(new InsetMinipage);
+		insertAndEditInset(new InsetMinipage(buffer_->params));
 		break;
 
 	case LFUN_INSERT_NOTE:
-		insertAndEditInset(new InsetNote);
+		insertAndEditInset(new InsetNote(buffer_->params));
 		break;
 
 	case LFUN_INSET_FLOAT:
 		// check if the float type exist
 		if (floatList.typeExist(argument)) {
-			insertAndEditInset(new InsetFloat(argument));
+			insertAndEditInset(new InsetFloat(buffer_->params,
+							  argument));
 		} else {
 			lyxerr << "Non-existent float type: "
 			       << argument << endl;
@@ -2784,7 +2785,8 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 	{
 		// check if the float type exist
 		if (floatList.typeExist(argument)) {
-			InsetFloat * new_inset = new InsetFloat(argument);
+			InsetFloat * new_inset =
+				new InsetFloat(buffer_->params, argument);
 			new_inset->wide(true);
 			if (insertInset(new_inset))
 				new_inset->edit(bv_);
@@ -2814,7 +2816,8 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		if (bv_->theLockingInset()) {
 			lyxerr << "Locking inset code: "
 			       << static_cast<int>(bv_->theLockingInset()->lyxCode());
-			InsetCaption * new_inset = new InsetCaption;
+			InsetCaption * new_inset =
+				new InsetCaption(buffer_->params);
 			new_inset->setOwner(bv_->theLockingInset());
 			new_inset->setAutoBreakRows(true);
 			new_inset->setDrawFrame(0, InsetText::LOCKED);

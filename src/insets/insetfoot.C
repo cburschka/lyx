@@ -27,8 +27,8 @@
 using std::ostream;
 
 
-InsetFoot::InsetFoot()
-	: InsetFootlike()
+InsetFoot::InsetFoot(BufferParams const & bp)
+	: InsetFootlike(bp)
 {
 	setLabel(_("foot"));
 	setInsetName("Foot");

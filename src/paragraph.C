@@ -859,6 +859,8 @@ void Paragraph::breakParagraph(BufferParams const & bparams,
 {
 	// create a new paragraph
 	Paragraph * tmp = new Paragraph(this);
+	tmp->layout(layout());
+	
 	// remember to set the inset_owner
 	tmp->setInsetOwner(inInset());
 	

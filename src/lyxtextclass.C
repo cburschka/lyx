@@ -172,14 +172,15 @@ bool LyXTextClass::Read(string const & filename, bool merge)
 
 		case TC_DEFAULTSTYLE:
 			if (lexrc.next()) {
-				string const name = subst(lowercase(lexrc.getString()), '_', ' ');
+				string const name = subst(lexrc.getString(),
+							  '_', ' ');
 				defaultlayout_ = name;
 			}
 			break;
 			
 		case TC_STYLE:
 			if (lexrc.next()) {
-				string const name = subst(lowercase(lexrc.getString()),
+				string const name = subst(lexrc.getString(),
 						    '_', ' ');
 				if (hasLayout(name)) {
 					LyXLayout & lay = operator[](name);
@@ -189,6 +190,13 @@ bool LyXTextClass::Read(string const & filename, bool merge)
 					lay.setName(name);
 					if (!(error = do_readStyle(lexrc, lay)))
 						layoutlist.push_back(lay);
+					if (defaultlayout_.empty()) {
+						// We do not have a default
+						// layout yet, so we choose
+						// the first layout we
+						// encounter.
+						defaultlayout_ = name;
+					}
 				}
 			}
 			else {
@@ -199,7 +207,7 @@ bool LyXTextClass::Read(string const & filename, bool merge)
 
 		case TC_NOSTYLE:
 			if (lexrc.next()) {
-				string const style = subst(lowercase(lexrc.getString()),
+				string const style = subst(lexrc.getString(),
 						     '_', ' ');
 				if (!delete_layout(style))
 					lyxerr << "Cannot delete style `" << style << "'" << endl;
@@ -487,7 +495,7 @@ string const & LyXTextClass::rightmargin() const
 
 bool LyXTextClass::hasLayout(string const & n) const
 {
-	string const name = (n.empty() ? defaultLayoutName() : lowercase(n));
+	string const name = (n.empty() ? defaultLayoutName() : n);
 	
 	return find_if(layoutlist.begin(), layoutlist.end(),
 		       lyx::compare_memfun(&LyXLayout::name, name))
@@ -500,7 +508,7 @@ LyXLayout const & LyXTextClass::operator[](string const & n) const
 	if (n.empty())
 		lyxerr << "Operator[] called with empty n" << endl;
 	
-	string const name = (n.empty() ? defaultLayoutName() : lowercase(n));
+	string const name = (n.empty() ? defaultLayoutName() : n);
 	
 	LayoutList::const_iterator cit =
 		find_if(layoutlist.begin(),
@@ -525,7 +533,7 @@ LyXLayout & LyXTextClass::operator[](string const & n)
 	if (n.empty())
 		lyxerr << "Operator[] called with empty n" << endl;
 
-	string const name = (n.empty() ? defaultLayoutName() : lowercase(n));
+	string const name = (n.empty() ? defaultLayoutName() : n);
 	
 	LayoutList::iterator it =
 		find_if(layoutlist.begin(),
@@ -545,10 +553,8 @@ LyXLayout & LyXTextClass::operator[](string const & n)
 }
 
 
-bool LyXTextClass::delete_layout(string const & n)
+bool LyXTextClass::delete_layout(string const & name)
 {
-	string const name = lowercase(n);
-
 	if (name == defaultLayoutName())
 		return false;
 	

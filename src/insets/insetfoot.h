@@ -27,7 +27,7 @@
 class InsetFoot : public InsetFootlike {
 public:
 	///
-	InsetFoot();
+	InsetFoot(BufferParams const &);
 	///
 	InsetFoot(InsetFoot const &, bool same_id = false);
 	///

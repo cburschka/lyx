@@ -99,8 +99,8 @@ using std::endl;
 //
 // Lgb
 
-InsetFloat::InsetFloat(string const & type)
-	: InsetCollapsable(), wide_(false)
+InsetFloat::InsetFloat(BufferParams const & bp, string const & type)
+	: InsetCollapsable(bp), wide_(false)
 {
 	string lab(_("float:"));
 	lab += type;

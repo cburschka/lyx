@@ -85,7 +85,7 @@ public:
 	mutable LyXFont real_current_font;
 	/// first visible pixel-row is set from LyXScreen!!!
 	// unsigned is wrong here for text-insets!
-	int first;
+	int first_y;
 	///
 	BufferView * bv_owner;
 	///
@@ -507,9 +507,10 @@ public:
 private:
 	///
 	mutable Row * firstrow;
+
 	///
 	mutable Row * lastrow;
-
+	
 	/** Copybuffer for copy environment type.
 	  Asger has learned that this should be a buffer-property instead
 	  Lgb has learned that 'char' is a lousy type for non-characters

@@ -41,13 +41,14 @@ public:
 		Inlined
 	};
 	///
-	InsetERT(bool collapsed=false);
+	InsetERT(BufferParams const &, bool collapsed = false);
 	///
 	InsetERT(InsetERT const &, bool same_id = false);
 	///
 	Inset * clone(Buffer const &, bool same_id = false) const;
 	///
-	InsetERT(Language const *, string const & contents, bool collapsed);
+	InsetERT(BufferParams const &,
+		 Language const *, string const & contents, bool collapsed);
 	///
 	~InsetERT();
 	///

@@ -39,7 +39,7 @@ public:
 		inner_stretch
 	};
 	///
-	InsetMinipage();
+	InsetMinipage(BufferParams const &);
 	///
 	InsetMinipage(InsetMinipage const &, bool same_id = false);
 	///
