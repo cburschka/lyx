@@ -193,7 +193,8 @@ InsetBase * LyXText::checkInsetHit(int x, int y)
 		       bv()->top_y() - yo_ + bv()->workHeight(),
 		       pit, end);
 
-	//lyxerr << "checkInsetHit: x: " << x << " y: " << y << endl;
+	lyxerr << "checkInsetHit: x: " << x << " y: " << y << endl;
+	lyxerr << "  pit: " << pit << " end: " << end << endl;
 	for ( ; pit != end; ++pit) {
 		InsetList::iterator iit = pars_[pit].insetlist.begin();
 		InsetList::iterator iend = pars_[pit].insetlist.end();

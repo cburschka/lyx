@@ -1149,6 +1149,7 @@ InsetBase * LyXText::editXY(LCursor & cur, int x, int y)
 
 	// try to descend into nested insets
 	InsetBase * inset = checkInsetHit(x, y);
+	lyxerr << "inset " << inset << " hit at x: " << x << " y: " << y << endl;
 	if (!inset)
 		return 0;
 
@@ -1342,7 +1343,8 @@ bool LyXText::deleteEmptyParagraphMechanism(LCursor & cur, LCursor const & old)
 #endif
 			// correct all cursor parts
 			fixCursorAfterDelete(cur.top(), old.top());
-			fixCursorAfterDelete(cur.anchor(), old.top());
+#warning DEPM, look here
+			//fixCursorAfterDelete(cur.anchor(), old.top());
 			return false;
 		}
 	}
@@ -1384,8 +1386,9 @@ bool LyXText::deleteEmptyParagraphMechanism(LCursor & cur, LCursor const & old)
 		// such events. Maybe even signal/slot?
 		if (cur.par() > old.par())
 			--cur.par();
-		if (cur.anchor().par() > old.par())
-			--cur.anchor().par();
+#warning DEPM, look here
+//		if (cur.anchor().par() > old.par())
+//			--cur.anchor().par();
 
 		if (selection_position_was_oldcursor_position) {
 			// correct selection
