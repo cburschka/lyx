@@ -36,7 +36,7 @@
 #include "math_braceinset.h"
 #include "math_charinset.h"
 #include "math_deliminset.h"
-#include "math_matrixinset.h"
+#include "math_hullinset.h"
 #include "math_scriptinset.h"
 #include "math_spaceinset.h"
 #include "math_specialcharinset.h"
@@ -1091,7 +1091,7 @@ void MathCursor::breakLine()
 	while (popRight())
 		;
 
-	MathMatrixInset * p = formula()->par()->asMatrixInset();
+	MathHullInset * p = formula()->par()->asMatrixInset();
 	if (!p)
 		return;
 
@@ -1105,8 +1105,8 @@ void MathCursor::breakLine()
 		// split line
 		const row_type r = row();
 		for (col_type c = col() + 1; c < p->ncols(); ++c) {
-			const MathMatrixInset::idx_type i1 = p->index(r, c);
-			const MathMatrixInset::idx_type i2 = p->index(r + 1, c);	
+			const MathHullInset::idx_type i1 = p->index(r, c);
+			const MathHullInset::idx_type i2 = p->index(r + 1, c);	
 			//lyxerr << "swapping cells " << i1 << " and " << i2 << "\n";
 			p->cell(i1).swap(p->cell(i2));
 		}

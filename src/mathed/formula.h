@@ -25,7 +25,7 @@
 #include "math_defs.h"
 #include "math_atom.h"
 
-class MathMatrixInset;
+class MathHullInset;
 
 ///
 class InsetFormula : public InsetFormulaBase {
@@ -87,8 +87,8 @@ public:
 	MathAtom par_;
 
 	/// Access
-	MathMatrixInset * mat();
+	MathHullInset * mat();
 	/// Access
-	MathMatrixInset const * mat() const;
+	MathHullInset const * mat() const;
 };
 #endif

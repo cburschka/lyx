@@ -43,7 +43,7 @@ class MathBoxInset;
 class MathCharInset;
 class MathGridInset;
 class MathNestInset;
-class MathMatrixInset;
+class MathHullInset;
 class MathScriptInset;
 class MathSpaceInset;
 class MathMacroTemplate;
@@ -169,9 +169,9 @@ public:
 	/// identifies ScriptInsets
 	virtual MathScriptInset * asScriptInset() { return 0; }
 	/// identifies MatrixInsets
-	virtual MathMatrixInset const * asMatrixInset() const { return 0; }
+	virtual MathHullInset const * asMatrixInset() const { return 0; }
 	/// identifies MatrixInsets
-	virtual MathMatrixInset * asMatrixInset() { return 0; }
+	virtual MathHullInset * asMatrixInset() { return 0; }
 	/// identifies SpaceInset
 	virtual MathSpaceInset * asSpaceInset() { return 0; }
 	/// identifies GridInset

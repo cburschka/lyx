@@ -26,7 +26,7 @@
 #include "LString.h"
 #include "math_defs.h"
 
-class MathMatrixInset;
+class MathHullInset;
 class MathMacroTemplate;
 class MathAtom;
 class MathArray;

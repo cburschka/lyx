@@ -29,7 +29,7 @@ class MathInset;
 class MathAtom;
 class MathArrayInset;
 class MathFuncInset;
-class MathMatrixInset;
+class MathHullInset;
 class MathScriptInset;
 class MathSpaceInset;
 class InsetFormulaBase;

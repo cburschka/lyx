@@ -25,7 +25,7 @@
 #include "math_macroarg.h"
 #include "math_macrotable.h"
 #include "math_macrotemplate.h"
-#include "math_matrixinset.h"
+#include "math_hullinset.h"
 #include "lyx_main.h"
 #include "BufferView.h"
 #include "gettext.h"

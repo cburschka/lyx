@@ -65,7 +65,7 @@ point to write some macros:
 #include "math_macro.h"
 #include "math_macrotable.h"
 #include "math_macrotemplate.h"
-#include "math_matrixinset.h"
+#include "math_hullinset.h"
 #include "math_rootinset.h"
 #include "math_sqrtinset.h"
 #include "math_scriptinset.h"
@@ -493,7 +493,7 @@ bool Parser::parse_lines(MathAtom & t, bool numbered, bool outmost)
 		}
 
 		if (outmost) {
-			MathMatrixInset * m = t->asMatrixInset();
+			MathHullInset * m = t->asMatrixInset();
 			if (!m) {
 				lyxerr << "error in Parser::parse_lines() 2\n";
 				return false;
@@ -570,7 +570,7 @@ bool Parser::parse_normal(MathAtom & matrix)
 	Token const & t = getToken();
 
 	if (t.cs() == "(") {
-		matrix = MathAtom(new MathMatrixInset(LM_OT_SIMPLE));
+		matrix = MathAtom(new MathHullInset(LM_OT_SIMPLE));
 		parse_into(matrix->cell(0), 0);
 		return true;
 	}
@@ -579,15 +579,15 @@ bool Parser::parse_normal(MathAtom & matrix)
 		Token const & n = getToken();
 		if (n.cat() == catMath) {
 			// TeX's $$...$$ syntax for displayed math
-			matrix = MathAtom(new MathMatrixInset(LM_OT_EQUATION));
-			MathMatrixInset * p = matrix->asMatrixInset();
+			matrix = MathAtom(new MathHullInset(LM_OT_EQUATION));
+			MathHullInset * p = matrix->asMatrixInset();
 			parse_into(p->cell(0), 0);
 			p->numbered(0, curr_num_);
 			p->label(0, curr_label_);
 		} else {
 			// simple $...$  stuff
 			putback();
-			matrix = MathAtom(new MathMatrixInset(LM_OT_SIMPLE));
+			matrix = MathAtom(new MathHullInset(LM_OT_SIMPLE));
 			parse_into(matrix->cell(0), 0);
 		}
 		return true;
@@ -603,8 +603,8 @@ bool Parser::parse_normal(MathAtom & matrix)
 	if (cs == "[") {
 		curr_num_ = 0;
 		curr_label_.erase();
-		matrix = MathAtom(new MathMatrixInset(LM_OT_EQUATION));
-		MathMatrixInset * p = matrix->asMatrixInset();
+		matrix = MathAtom(new MathHullInset(LM_OT_EQUATION));
+		MathHullInset * p = matrix->asMatrixInset();
 		parse_into(p->cell(0), 0);
 		p->numbered(0, curr_num_);
 		p->label(0, curr_label_);
@@ -621,8 +621,8 @@ bool Parser::parse_normal(MathAtom & matrix)
 	if (name == "equation" || name == "equation*" || name == "displaymath") {
 		curr_num_ = (name == "equation");
 		curr_label_.erase();
-		matrix = MathAtom(new MathMatrixInset(LM_OT_EQUATION));
-		MathMatrixInset * p = matrix->asMatrixInset();
+		matrix = MathAtom(new MathHullInset(LM_OT_EQUATION));
+		MathHullInset * p = matrix->asMatrixInset();
 		parse_into(p->cell(0), FLAG_END);
 		p->numbered(0, curr_num_);
 		p->label(0, curr_label_);
@@ -630,40 +630,40 @@ bool Parser::parse_normal(MathAtom & matrix)
 	}
 
 	if (name == "eqnarray" || name == "eqnarray*") {
-		matrix = MathAtom(new MathMatrixInset(LM_OT_EQNARRAY));
+		matrix = MathAtom(new MathHullInset(LM_OT_EQNARRAY));
 		return parse_lines(matrix, !stared(name), true);
 	}
 
 	if (name == "align" || name == "align*") {
-		matrix = MathAtom(new MathMatrixInset(LM_OT_ALIGN));
+		matrix = MathAtom(new MathHullInset(LM_OT_ALIGN));
 		return parse_lines(matrix, !stared(name), true);
 	}
 
 	if (name == "alignat" || name == "alignat*") {
 		int nc = 2 * atoi(getArg('{', '}').c_str());
-		matrix = MathAtom(new MathMatrixInset(LM_OT_ALIGNAT, nc));
+		matrix = MathAtom(new MathHullInset(LM_OT_ALIGNAT, nc));
 		return parse_lines(matrix, !stared(name), true);
 	}
 
 	if (name == "xalignat" || name == "xalignat*") {
 		int nc = 2 * atoi(getArg('{', '}').c_str());
-		matrix = MathAtom(new MathMatrixInset(LM_OT_XALIGNAT, nc));
+		matrix = MathAtom(new MathHullInset(LM_OT_XALIGNAT, nc));
 		return parse_lines(matrix, !stared(name), true);
 	}
 
 	if (name == "xxalignat") {
 		int nc = 2 * atoi(getArg('{', '}').c_str());
-		matrix = MathAtom(new MathMatrixInset(LM_OT_XXALIGNAT, nc));
+		matrix = MathAtom(new MathHullInset(LM_OT_XXALIGNAT, nc));
 		return parse_lines(matrix, !stared(name), true);
 	}
 
 	if (name == "multline" || name == "multline*") {
-		matrix = MathAtom(new MathMatrixInset(LM_OT_MULTLINE));
+		matrix = MathAtom(new MathHullInset(LM_OT_MULTLINE));
 		return parse_lines(matrix, !stared(name), true);
 	}
 
 	if (name == "gather" || name == "gather*") {
-		matrix = MathAtom(new MathMatrixInset(LM_OT_GATHER));
+		matrix = MathAtom(new MathHullInset(LM_OT_GATHER));
 		return parse_lines(matrix, !stared(name), true);
 	}
 

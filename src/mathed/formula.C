@@ -40,7 +40,7 @@
 #include "LyXView.h"
 #include "Painter.h"
 #include "lyxrc.h"
-#include "math_matrixinset.h"
+#include "math_hullinset.h"
 #include "math_support.h"
 #include "math_mathmlstream.h"
 
@@ -248,12 +248,12 @@ namespace {
 
 
 InsetFormula::InsetFormula()
-	: par_(MathAtom(new MathMatrixInset))
+	: par_(MathAtom(new MathHullInset))
 {}
 
 
 InsetFormula::InsetFormula(MathInsetTypes t)
-	: par_(MathAtom(new MathMatrixInset(t)))
+	: par_(MathAtom(new MathHullInset(t)))
 {}
 
 
@@ -267,7 +267,7 @@ InsetFormula::InsetFormula(string const & s)
 
 		if (!res) {
 			lyxerr << "cannot interpret '" << s << "' as math\n";
-			par_ = MathAtom(new MathMatrixInset(LM_OT_SIMPLE));
+			par_ = MathAtom(new MathHullInset(LM_OT_SIMPLE));
 		}
 	}
 	metrics();
@@ -537,14 +537,14 @@ bool InsetFormula::display() const
 }
 
 
-MathMatrixInset const * InsetFormula::mat() const
+MathHullInset const * InsetFormula::mat() const
 {
 	lyx::Assert(par_->asMatrixInset());
 	return par_->asMatrixInset();
 }
 
 
-MathMatrixInset * InsetFormula::mat()
+MathHullInset * InsetFormula::mat()
 {
 	lyx::Assert(par_->asMatrixInset());
 	return par_->asMatrixInset();
