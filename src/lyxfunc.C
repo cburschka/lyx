@@ -1646,7 +1646,7 @@ void LyXFunc::menuNew(string const & name, bool fromTemplate)
 
 		FileDialog::Result result =
 			fileDlg.open(lyxrc.template_path,
-				       _("*.lyx|LyX Documents (*.lyx)"));
+				       _("*.lyx| LyX Documents (*.lyx)"));
 
 		if (result.first == FileDialog::Later)
 			return;
@@ -1685,7 +1685,7 @@ void LyXFunc::open(string const & fname)
 
 		FileDialog::Result result =
 			fileDlg.open(initpath,
-				       "*.lyx|LyX Documents (*.lyx)");
+				       _("*.lyx| LyX Documents (*.lyx)"));
 
 		if (result.first == FileDialog::Later)
 			return;

@@ -129,7 +129,7 @@ void FormParagraph::build()
 	alignment_.init(dialog_->radio_align_block,  LYX_ALIGN_BLOCK);
 	alignment_.init(dialog_->radio_align_center, LYX_ALIGN_CENTER);
 
-	string const parspacing = _("None|Defskip|Smallskip|Medskip|Bigskip|VFill|Length");
+	string const parspacing = _("None|DefSkip|SmallSkip|MedSkip|BigSkip|VFill|Length");
 	fl_addto_choice(dialog_->choice_space_above, parspacing.c_str());
 	fl_addto_choice(dialog_->choice_space_below, parspacing.c_str());
 

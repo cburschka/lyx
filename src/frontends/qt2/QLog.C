@@ -62,9 +62,9 @@ void QLog::update_contents()
 	ifstream ifstr(logfile.second.c_str());
 	if (!ifstr) {
 		if (logfile.first == Buffer::buildlog)
-			dialog_->logTV->setText(qt_("No build log file found"));
+			dialog_->logTV->setText(qt_("No build log file found."));
 		else
-			dialog_->logTV->setText(qt_("No LaTeX log file found"));
+			dialog_->logTV->setText(qt_("No LaTeX log file found."));
 		return;
 	}
 

@@ -151,6 +151,7 @@ string QLyXKeySym::getSymbolName() const
 
 char QLyXKeySym::getISOEncoded(string const & encoding) const
 {
+	lyxerr[Debug::KEY] << "encoding is " << encoding << endl;
 	unsigned char const c = encode(encoding, text_);
 	lyxerr[Debug::KEY] << "ISOEncoded returning value " << int(c) << endl;
 	return c;

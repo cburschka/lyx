@@ -1408,7 +1408,7 @@ Inset::RESULT InsetText::localDispatch(FuncRequest const & ev)
 		if (!autoBreakRows) {
 
 			if (CutAndPaste::nrOfParagraphs() > 1) {
-				Alert::alert(_("Impossible operation"),
+				Alert::alert(_("Impossible operation!"),
 						   _("Cannot include more than one paragraph!"),
 						   _("Sorry."));
 				break;

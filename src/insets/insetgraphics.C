@@ -772,11 +772,11 @@ int InsetGraphics::ascii(Buffer const *, ostream & os, int) const
 	// at least we send the filename
 #if USE_BOOST_FORMAT
 	os << '<'
-	   << boost::format(_("Graphic file: %1$s")) % params().filename
+	   << boost::format(_("Graphics file: %1$s")) % params().filename
 	   << ">\n";
 #else
 	os << '<'
-	   << _("Graphic file: ") << params().filename
+	   << _("Graphics file: ") << params().filename
 	   << ">\n";
 #endif
 	return 0;

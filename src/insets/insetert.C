@@ -245,7 +245,7 @@ void InsetERT::setFont(BufferView *, LyXFont const &, bool, bool selectall)
 	// if selectall is activated then the fontchange was an outside general
 	// fontchange and this messages is not needed
 	if (!selectall)
-		Alert::alert(_("Impossible Operation!"),
+		Alert::alert(_("Impossible operation!"),
 			   _("Not permitted to change font-types inside ERT-insets!"),
 			   _("Sorry."));
 }

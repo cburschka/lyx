@@ -13,8 +13,8 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>368</width>
-            <height>256</height>
+            <width>449</width>
+            <height>368</height>
         </rect>
     </property>
     <property stdset="1">
@@ -62,15 +62,15 @@
                         <cstring>charGB</cstring>
                     </property>
                     <property stdset="1">
-                        <name>title</name>
-                        <string>Character</string>
-                    </property>
-                    <property stdset="1">
                         <name>sizePolicy</name>
                         <sizepolicy>
                             <hsizetype>5</hsizetype>
                             <vsizetype>5</vsizetype>
                         </sizepolicy>
+                    </property>
+                    <property stdset="1">
+                        <name>title</name>
+                        <string>Character</string>
                     </property>
                     <property>
                         <name>layoutMargin</name>
@@ -299,7 +299,7 @@
                             </property>
                             <property stdset="1">
                                 <name>title</name>
-                                <string>Never toggled</string>
+                                <string>Never Toggled</string>
                             </property>
                             <property>
                                 <name>layoutMargin</name>
@@ -353,7 +353,7 @@
                             </property>
                             <property stdset="1">
                                 <name>title</name>
-                                <string>Always toggled</string>
+                                <string>Always Toggled</string>
                             </property>
                             <property>
                                 <name>layoutMargin</name>

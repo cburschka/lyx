@@ -2087,7 +2087,7 @@ void InsetTabular::tabularFeatures(BufferView * bv,
 	case LyXTabular::MULTICOLUMN:
 	{
 		if (sel_row_start != sel_row_end) {
-			Alert::alert(_("Impossible Operation!"),
+			Alert::alert(_("Impossible operation!"),
 				   _("Multicolumns can only be horizontally."),
 				   _("Sorry."));
 			return;

@@ -42,7 +42,7 @@ using std::strlen;
 namespace {
 
 char const * GUIFamilyNames[LyXFont::NUM_FAMILIES + 2 /* default & error */] =
-{ N_("Roman"), N_("Sans serif"), N_("Typewriter"), N_("Symbol"),
+{ N_("Roman"), N_("Sans Serif"), N_("Typewriter"), N_("Symbol"),
   "cmr", "cmsy", "cmm", "cmex", "msa", "msb", "eufrak", "wasy",
   N_("Inherit"), N_("Ignore") };
 

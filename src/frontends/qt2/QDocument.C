@@ -128,9 +128,9 @@ void QDocument::build_dialog()
 	dialog_->layoutModule->fontsizeCO->insertItem(qt_("11"));
 	dialog_->layoutModule->fontsizeCO->insertItem(qt_("12"));
 
-	dialog_->layoutModule->skipCO->insertItem(qt_("Smallskip"));
-	dialog_->layoutModule->skipCO->insertItem(qt_("Medskip"));
-	dialog_->layoutModule->skipCO->insertItem(qt_("Bigskip"));
+	dialog_->layoutModule->skipCO->insertItem(qt_("SmallSkip"));
+	dialog_->layoutModule->skipCO->insertItem(qt_("MedSkip"));
+	dialog_->layoutModule->skipCO->insertItem(qt_("BigSkip"));
 	dialog_->layoutModule->skipCO->insertItem(qt_("Length"));
 
 	dialog_->layoutModule->pagestyleCO->insertItem(qt_("default"));

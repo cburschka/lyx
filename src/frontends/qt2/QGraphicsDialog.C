@@ -92,7 +92,7 @@ void QGraphicsDialog::browse_clicked()
 {
 	QString file = QFileDialog::getOpenFileName(
 		QString::null, qt_("Files (*)"),
-		this, 0, qt_("Select a graphic file"));
+		this, 0, qt_("Select graphics file"));
 	if (!file.isNull()) {
 		filename->setText(file);
 		form_->changed();

@@ -1,3 +1,10 @@
+2003-01-20  Michael Schmitt  <michael.schmitt@teststep.org>
+
+	* forms/*.fd: Missing colons (':') added to labels,
+        all labels (except "deg") start with a capital letter now
+	* formDocument.C:
+	* formParagraph.C: rename "Xxxskip" to "XxxSkip"
+
 2003-01-15  Angus Leeming  <leeming@lyx.org>
 
 	* forms/form_graphics.fd: s/Ok/OK/ consistent with all other dialogs.

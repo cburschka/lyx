@@ -93,9 +93,14 @@ LyX::LyX(int & argc, char * argv[])
 	// #include "graphics/GraphicsTypes.h" at the top -- Rob Lahaye.
 	grfx::setDisplayTranslator();
 
+	lyxerr << argc << endl;
+
 	if (want_gui) {
+		lyxerr <<  "parsinint" << endl;
 		lyx_gui::parse_init(argc, argv);
 	}
+
+	lyxerr << argc << endl;
 
 	// check for any spurious extra arguments
 	// other than documents

@@ -158,7 +158,7 @@ void FormDocument::build()
 	fl_addto_choice(class_->choice_doc_pagestyle,
 			"default|empty|plain|headings|fancy");
 	fl_addto_choice(class_->choice_doc_skip,
-			_(" Smallskip | Medskip | Bigskip | Length "));
+			_(" SmallSkip | MedSkip | BigSkip | Length "));
 	fl_addto_choice(class_->choice_doc_skip_units,  units.c_str());
 
 	// Set input filters on doc spacing to make it accept only
@@ -605,7 +605,7 @@ bool FormDocument::class_apply(BufferParams &params)
 	bool redo = false;
 
 	// If default skip is a "Length" but there's no text in the
-	// input field, reset the kind to "Medskip", which is the default.
+	// input field, reset the kind to "MedSkip", which is the default.
 	if (fl_get_choice(class_->choice_doc_skip) == 4 &&
 	    getString(class_->input_doc_skip).empty()) {
 		fl_set_choice(class_->choice_doc_skip, 2);

@@ -91,7 +91,7 @@ extern bool lyxX11EventFilter(XEvent * xev);
 class LQApplication : public QApplication
 {
 public:
-	LQApplication(int &argc, char **argv);
+	LQApplication(int & argc, char ** argv);
 	~LQApplication();
 #ifdef Q_WS_X11
 	bool x11EventFilter (XEvent * ev) { return lyxX11EventFilter(ev); }
@@ -99,8 +99,8 @@ public:
 };
 
 
-LQApplication::LQApplication(int &argc, char **argv)
-	: QApplication( argc, argv )
+LQApplication::LQApplication(int & argc, char ** argv)
+	: QApplication(argc, argv)
 {}
 
 

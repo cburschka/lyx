@@ -889,9 +889,9 @@ void BufferView::Pimpl::MenuInsertLyXFile(string const & filen)
 
 	ostringstream s1;
 #if USE_BOOST_FORMAT
-	s1 << boost::format(_("Inserting document %1$s ...")) % disp_fn;
+	s1 << boost::format(_("Inserting document %1$s...")) % disp_fn;
 #else
-	s1 << _("Inserting document ") << disp_fn << _(" ...");
+	s1 << _("Inserting document ") << disp_fn << _("...");
 #endif
 	owner_->message(STRCONV(s1.str()));
 	bool const res = bv_->insertLyXFile(filename);

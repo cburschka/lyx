@@ -300,8 +300,7 @@ bool BufferView::insertLyXFile(string const & filen)
 
 	ifstream ifs(fname.c_str());
 	if (!ifs) {
-		Alert::alert(_("Error!"),
-			   _("Cannot open specified file: "),
+		Alert::err_alert(_("Error! Cannot open specified file:"),
 			   MakeDisplayPath(fname, 50));
 		return false;
 	}

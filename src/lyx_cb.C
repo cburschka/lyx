@@ -117,7 +117,7 @@ bool WriteAs(BufferView * bv, Buffer * buffer, string const & filename)
 
 		FileDialog::Result result =
 			fileDlg.save(OnlyPath(fname),
-				       _("*.lyx|LyX Documents (*.lyx)"),
+				       _("*.lyx| LyX Documents (*.lyx)"),
 				       OnlyFilename(fname));
 
 		if (result.first == FileDialog::Later)
@@ -444,7 +444,7 @@ string getContentsOfAsciiFile(BufferView * bv, string const & f, bool asParagrap
 
 	ifstream ifs(fname.c_str());
 	if (!ifs) {
-		Alert::err_alert(_("Error! Cannot open specified file: "),
+		Alert::err_alert(_("Error! Cannot open specified file:"),
 			     MakeDisplayPath(fname, 50));
 		return string();
 	}

@@ -188,7 +188,7 @@ string const currentState(BufferView * bv)
 			state << _("Single");
 			break;
 		case Spacing::Onehalf:
-			state << _("Onehalf");
+			state << _("OneHalf");
 			break;
 		case Spacing::Double:
 			state << _("Double");

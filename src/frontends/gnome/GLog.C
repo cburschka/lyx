@@ -61,9 +61,9 @@ void GLog::update()
 	ifstream ifstr(logfile.second.c_str());
 	if (!ifstr) {
 		if (logfile.first == Buffer::buildlog)
-			log_text()->get_buffer()->set_text(_("No build log file found"));
+			log_text()->get_buffer()->set_text(_("No build log file found."));
 		else
-			log_text()->get_buffer()->set_text(_("No LaTeX log file found"));
+			log_text()->get_buffer()->set_text(_("No LaTeX log file found."));
 		return;
 	}
 

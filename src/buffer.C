@@ -641,12 +641,12 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 			Alert::alert(_("Textclass Loading Error!"),
 				   boost::io::str(boost::format(_("Can't load textclass %1$s")) %
 				   params.getLyXTextClass().name()),
-				   _("-- substituting default"));
+				   _("-- substituting default."));
 #else
 			Alert::alert(_("Textclass Loading Error!"),
 				     _("Can't load textclass ")
 				     + params.getLyXTextClass().name(),
-				     _("-- substituting default"));
+				     _("-- substituting default."));
 #endif
 			params.textclass = 0;
 		}
