@@ -1279,7 +1279,7 @@ void MathCursor::interpret(string const & s)
 
 	if (strchr("0123456789;:!|[]().,?+/-*<>=", c)) {
 		if (lastcode_ != LM_TC_TEXTRM)
-			lastcode_ = LM_TC_VAR;
+			lastcode_ = LM_TC_CONST;
 		insert(c, lastcode_);
 		return;
 	}
