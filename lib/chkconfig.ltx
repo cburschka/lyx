@@ -36,14 +36,12 @@
 % we do not want to stop on errors
 \nonstopmode\makeatletter
 % Have we been called from the configure script?
-\ifx\srcdir\undefined
- \message{%
+\@ifundefined{srcdir}
+ {\message{%
 **** WARNING: For proper results, you should not run this script directly.^^J%
 **** Please use the `configure' script.^^J}
- \newcommand\srcdir{.}
-\else
-  \def\input@path{{\srcdir/}}
-\fi
+  \newcommand\srcdir{.}}
+ {\def\input@path{{\srcdir/}}}
 
 %%% Some useful macros.
 %   Several commands are defined to test for packages:
@@ -61,12 +59,9 @@
 %   the variable chk_<name>.  
 %%%
 \newcommand{\prefix}{+} % the character used by grep to filter 'good' output
-\newcommand{\AddLayout}[3][=]{
-  \ifx=#1
-    \immediate\write\layouts{"#2"   "#2"   "#3"}
-  \else
-    \immediate\write\layouts{"#2"   "#1"   "#3"}
-  \fi}
+\newcommand{\AddLayout}[3][\default]{
+  \def\default{#2}
+  \immediate\write\layouts{"#2"   "#1"   "#3"}}
 \newcommand{\AddVariable}[2]{
   \immediate\write\sed{s!@chk_#1@!#2!g}
   \immediate\write\vars{chk_#1='#2'}}
@@ -75,14 +70,10 @@
 % Tests whether an item is present
 % Syntax: \TestItem{<file>}{<name>}{<type>}{<ext>}{<iftrue>}{<iffalse>}
 \newif\ifexists
-\newcommand{\TestItem}[6]{
-  \ifx=#1
-    \def\files{#2}
-    \message{^^J\prefix checking for #3 #2 [#2.#4]...}
-  \else
-    \def\files{#1}
-    \message{^^J\prefix checking for #3 #2 [#1]...}
-  \fi
+\newcommand{\TestItem}[6][\default]{
+  \def\default{#2}
+  \def\files{#1}
+  \message{^^J\prefix checking for #3 #2 [#1]...}
   \let\firstelement\relax
   \existstrue
   \@for\file:=\files\do{
@@ -102,8 +93,8 @@
     \AddVariable{#2}{no}
     #6
   \fi}
-\newcommand{\TestPackage}[2][=]{
-  \TestItem{#1}{#2}{package}{sty}{\AddPackage{#2}}{}}
+\newcommand{\TestPackage}[2][\default]{
+  \TestItem[#1]{#2}{package}{sty}{\AddPackage{#2}}{}}
 \newcommand{\TestDocClass}[1]{
    \def\layoutname{#1}  % remember the name of the layout file
    \@ifundefined{layout@#1}
@@ -114,12 +105,12 @@
       \global\@namedef{layout@#1}{}} 
      {} % we have already tried this one.
 }
-\newcommand{\DeclareLaTeXClass}[2][=]{
-  \TestItem{#1}{\layoutname}{document class}{cls}
+\newcommand{\DeclareLaTeXClass}[2][\default]{
+  \TestItem[#1]{\layoutname}{document class}{cls}
            {\AddLayout[\firstelement]{\layoutname}{#2}}{}
   \expandafter\endinput
 }
-\newcommand{\DeclareLinuxDocClass}[2][=]{
+\newcommand{\DeclareLinuxDocClass}[2][\default]{
   \message{^^J\prefix checking for linuxdoc class \layoutname... }
   \@ifundefined{haslinuxdoc}
     {\message{no^^J}}
@@ -130,7 +121,7 @@
 % Only for compatibility. Will be removed later.
 \let\DeclareSGMLClass=\DeclareDocBookClass
 
-\newcommand{\DeclareDocBookClass}[2][=]{
+\newcommand{\DeclareDocBookClass}[2][\default]{
   \message{^^J\prefix checking for docbook\space\space class \layoutname... }
   \@ifundefined{hasdocbook}
     {\message{no^^J}}
@@ -233,7 +224,7 @@
 
 % The test for the graphics package is slightly more involved...
 \newcommand\groption{dvips}
-\TestItem={graphics}{package}{sty}
+\TestItem{graphics}{package}{sty}
 %  Let's do some clever things to guess the default driver for the
 %  graphics package. The maintainer of the site might have declared it
 %  in the file 'graphics.cfg'. Let's hope there are no strange commands

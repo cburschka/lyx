@@ -1,5 +1,8 @@
 1999-12-06  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
+	* lib/chkconfig.ltx: some cleanup of the latex code. I am not sure
+	it is easier to understand, but it uses less TeX-only constructs now.
+
 	* acinclude.m4 (LYX_SEARCH_PROG): make it work when the PATH
 	elements contain spaces
 
