@@ -1,6 +1,7 @@
 AUTOMAKE_OPTIONS = foreign
 DISTCLEANFILES = *.orig *.rej *~ *.bak textclass.lst packages.lst \
 		lyxrc.defaults doc/LaTeXConfig.lyx
+bin_SCRIPTS = configure
 MAINTAINERCLEANFILES = Makefile.in
 SUBDIRS    = reLyX
 
@@ -10,7 +11,7 @@ EXTRA_DIST = CREDITS chkconfig.ltx configure.cmd lyxrc.example \
 
 CLIPART = clipart/*.eps
 LAYOUT = layouts/*.layout layouts/*.inc 
-DOC = doc/*.lyx doc/LaTeXConfig.lyx.in
+DOC = doc/*.lyx 
 KBD = kbd/*.kmap kbd/*.cdef
 TEMPL = templates/*.lyx
 BIND = bind/*.bind
@@ -18,9 +19,11 @@ EXAMPLES = examples/*.lyx
 TEXSUPPORT = tex/*.cls
 IMAGES = images/README images/*.xpm images/*.xbm
 
-pkgdata_DATA = lyxrc.example CREDITS chkconfig.ltx lyxrc.defaults textclass.lst packages.lst
+pkgdata_DATA = lyxrc.example CREDITS chkconfig.ltx lyxrc.defaults \
+               textclass.lst packages.lst
 
-LIBINSTFILES = $(LAYOUT) $(CLIPART) $(DOC) $(KBD) $(DOC) $(TEMPL) $(BIND) $(EXAMPLES) $(TEXSUPPORT) $(IMAGES)
+LIBINSTFILES = $(LAYOUT) $(CLIPART) $(DOC) $(KBD) $(DOC) $(TEMPL) $(BIND) \
+               $(EXAMPLES) $(TEXSUPPORT) $(IMAGES)
 
 libinstalldirs:
 	for dir in $(LYXDATADIRS) ; do \

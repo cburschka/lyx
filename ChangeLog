@@ -1,5 +1,13 @@
 1999-10-12  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
+	* lib/reLyX/Makefile.am: install noweb2lyx.
+
+	* lib/Makefile.am: do not install LaTeXConfig.lyx.in; install
+	configure. 
+
+	* lib/reLyX/configure.in: declare a config aux dir; set package
+	name to lyx (not sure what the best solution is); generate noweb2lyx.
+
 	* lib/layouts/egs.layout: fix the bibliography layout.
 
 1999-10-08  Jürgen Vigna <jug@sad.it>
