@@ -3483,13 +3483,13 @@ void LyXText::DeleteEmptyParagraphMechanism(LyXCursor const & old_cursor) const
 		    && old_cursor.par->IsLineSeparator(old_cursor.pos)
 		    && old_cursor.par->IsLineSeparator(old_cursor.pos - 1)) {
 			old_cursor.par->Erase(old_cursor.pos - 1);
-			status = LyXText::NEED_MORE_REFRESH;
 			RedoParagraphs(old_cursor, old_cursor.par->Next());
 			// correct cursor
 			if (old_cursor.par == cursor.par &&
 			    cursor.pos > old_cursor.pos) {
 				SetCursorIntern(cursor.par, cursor.pos - 1);
-			}
+			} else
+				SetCursorIntern(cursor.par, cursor.pos);
 			return;
 		}
 	}
