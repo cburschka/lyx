@@ -129,6 +129,13 @@ string const symbolFamily(LyXFont::FONT_FAMILY family)
 }
 
 
+bool isSymbolFamily(LyXFont::FONT_FAMILY family)
+{
+	return family >= LyXFont::SYMBOL_FAMILY &&
+		family <= LyXFont::WASY_FAMILY;
+}
+
+
 QFont const getSymbolFont(string const & family)
 {
 	lyxerr[Debug::FONT] << "Looking for font family "
@@ -168,7 +175,21 @@ QFont const getSymbolFont(string const & family)
 
 bool isAvailable(LyXFont const & f)
 {
-	string const tmp = symbolFamily(f.family());
+	static std::vector<bool> cache(LyXFont::NUM_FAMILIES, false);
+	static std::vector<bool> cache_initialized(LyXFont::NUM_FAMILIES, false);
+	static bool first_call = true;
+
+	LyXFont::FONT_FAMILY lyxfamily = f.family();
+	if (cache_initialized[lyxfamily])
+		return cache[lyxfamily];
+	cache_initialized[lyxfamily] = true;
+
+	if (first_call && isSymbolFamily(lyxfamily)) {
+		first_call = false;
+		addFontPath();
+	}
+
+	string const tmp = symbolFamily(lyxfamily);
 
 	if (tmp.empty())
 		return false;
@@ -190,6 +211,7 @@ bool isAvailable(LyXFont const & f)
 			lyxerr[Debug::FONT]
 				<< "found family "
 				<< fromqstr(*it) << endl;
+			cache[lyxfamily] = true;
 			return true;
 		}
 	}
@@ -239,7 +261,7 @@ QFont const & qfont_loader::get(LyXFont const & f)
 {
 	static bool first_call = true;
 
-	if (first_call) {
+	if (first_call && isSymbolFamily(f.family())) {
 		first_call = false;
 		addFontPath();
 	}

@@ -1,3 +1,8 @@
+2002-12-21  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* qfont_loader.C (isAvailable): Call to addFontPath().
+	Also, add a cache.
+
 2002-12-20  John Levon  <levon@movementarian.org>
 
 	* lyx_gui.C: fix exit to use std::exit, so we don't
