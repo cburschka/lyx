@@ -70,8 +70,12 @@ void QRefDialog::refHighlighted(const QString & sel)
 }
 
 
-void QRefDialog::refSelected(const QString &)
+void QRefDialog::refSelected(const QString & sel)
 {
+	if (form_->readOnly())
+		return;
+
+	referenceED->setText(sel);
 	// <enter> or double click, inserts ref and closes dialog
 	form_->slotOK();
 }
