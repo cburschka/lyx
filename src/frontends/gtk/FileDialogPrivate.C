@@ -94,7 +94,10 @@ FileDialog::Result const FileDialog::Private::showChooser(string const & path,
 	}
 
 	if (!path.empty())
-		fileChooser_.set_filename(path);
+		fileChooser_.set_current_folder(path);
+	if (!suggested.empty())
+		fileChooser_.set_current_name(suggested);		
+		
 	fileChooser_.set_default_response(Gtk::RESPONSE_OK);
 	Result result;
 	result.first = FileDialog::Chosen;

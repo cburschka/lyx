@@ -1,3 +1,8 @@
+2004-12-08  John Spray  <spray_john@users.sourceforge.net>
+
+	* FileDialogPrivate.C: use Gtk::FileChooser.set_current_name 
+		to make suggested filenames work when saving
+
 2004-12-07  John Spray  <spray_john@users.sourceforge.net>
 
 	* glade/: improve layouts, set spinbuttons to display 2 
