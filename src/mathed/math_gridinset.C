@@ -840,5 +840,5 @@ int MathGridInset::vlinesep() const
 
 int MathGridInset::border() const
 {
-	return 2;
+	return 1;
 }
