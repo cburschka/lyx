@@ -10,13 +10,12 @@
 
 #include <config.h>
 
-
 #include "Toolbar.h"
-#include "ToolbarBackend.h"
+
 #include "debug.h"
 #include "LyXAction.h"
+#include "ToolbarBackend.h"
 
-using std::endl;
 
 Toolbar::Toolbar()
 	: last_textclass_(-1)

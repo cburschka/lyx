@@ -12,24 +12,26 @@
 #include <config.h>
 
 #include "LyXView.h"
-#include "debug.h"
-#include "intl.h"
-#include "lyxrc.h"
-#include "lyxtext.h"
+#include "Dialogs.h"
+#include "Timeout.h"
+#include "Toolbar.h"
+#include "Menubar.h"
+
 #include "buffer.h"
-#include "MenuBackend.h"
-#include "gettext.h"
-#include "lyxfunc.h"
-#include "funcrequest.h"
-#include "lyx_cb.h"
 #include "BufferView.h"
 #include "bufferview_funcs.h"
+#include "debug.h"
+#include "funcrequest.h"
+#include "gettext.h"
+#include "intl.h"
+#include "lyx_cb.h"
+#include "lyxfunc.h"
+#include "lyxrc.h"
+#include "lyxtext.h"
+#include "MenuBackend.h"
 
-#include "Dialogs.h"
-#include "Toolbar.h"
-#include "Timeout.h"
-#include "Menubar.h"
 #include "controllers/ControlCommandBuffer.h"
+
 #include "mathed/math_cursor.h"
 
 #include "support/filetools.h" // OnlyFilename()
@@ -41,6 +43,7 @@
 
 using namespace lyx::support;
 using std::endl;
+
 
 string current_layout;
 

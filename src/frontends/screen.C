@@ -13,28 +13,27 @@
 #include <config.h>
 
 #include "screen.h"
+#include "font_metrics.h"
+#include "lyx_gui.h"
+#include "Painter.h"
+#include "WorkArea.h"
 
-#include "lyxtext.h"
-#include "lyxrc.h"
-#include "lyxrow.h"
 #include "BufferView.h"
 #include "buffer.h"
-#include "WorkArea.h"
-#include "Painter.h"
-#include "font_metrics.h"
-#include "language.h"
 #include "debug.h"
-#include "rowpainter.h"
-#include "insets/updatableinset.h"
-#include "lyx_gui.h"
-#include "metricsinfo.h"
-
-// Splash screen-specific stuff
+#include "language.h"
 #include "lyxfont.h"
+#include "lyxrc.h"
+#include "lyxrow.h"
+#include "lyxtext.h"
+#include "metricsinfo.h"
+#include "rowpainter.h"
 #include "version.h"
 
-#include "graphics/GraphicsLoader.h"
+#include "insets/updatableinset.h"
+
 #include "graphics/GraphicsImage.h"
+#include "graphics/GraphicsLoader.h"
 
 #include "support/filetools.h" // LibFileSearch
 
@@ -46,7 +45,7 @@ using namespace lyx::support;
 
 using std::min;
 using std::max;
-using std::endl;
+
 
 namespace {
 

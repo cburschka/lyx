@@ -27,7 +27,6 @@ libfrontends_la_SOURCES = \
 	Timeout.h \
 	Toolbar.C \
 	Toolbar.h \
-	WorkArea.C \
 	WorkArea.h \
 	WorkAreaFactory.h \
 	font_metrics.h \

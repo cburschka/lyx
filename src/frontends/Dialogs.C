@@ -13,7 +13,9 @@
 #include <config.h>
 
 #include "Dialogs.h"
+
 #include "controllers/Dialog.h"
+
 #include <boost/signals/signal2.hpp>
 #include <boost/bind.hpp>
 

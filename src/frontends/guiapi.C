@@ -14,6 +14,7 @@
 #include "guiapi.h"
 #include "Dialogs.h"
 
+
 extern "C" {
 
 void gui_show_dialog(Dialogs * d, char const * name, char const * data)

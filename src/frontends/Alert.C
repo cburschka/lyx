@@ -11,15 +11,15 @@
 #include <config.h>
 
 #include "Alert.h"
+#include "Alert_pimpl.h"
 
 #include "debug.h"
 #include "lyx_gui.h"
 
-#include "Alert_pimpl.h"
-
 using std::endl;
-using std::pair;
 using std::make_pair;
+using std::pair;
+
 
 int Alert::prompt(string const & title, string const & question,
            int default_button, int escape_button,

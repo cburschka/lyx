@@ -11,13 +11,13 @@
 
 #include <config.h>
 
-
 #include "Painter.h"
+#include "font_metrics.h"
 #include "lyxfont.h"
 #include "WorkArea.h"
-#include "frontends/font_metrics.h"
 
 using std::max;
+
 
 Painter & Painter::button(int x, int y, int w, int h)
 {

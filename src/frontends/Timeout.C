@@ -12,6 +12,7 @@
 #include <config.h>
 
 #include "Timeout.h"
+
 #include "support/LAssert.h"
 
 using namespace lyx::support;
