@@ -73,7 +73,6 @@ int MathArray::item_size(int pos) const
 {
 	return 2 + (isInset(pos) ? sizeof(MathInset*) : 1);
 }
-		
 
 
 void MathArray::substitute(MathMacro const & m)
@@ -114,10 +113,12 @@ MathInset * MathArray::prevInset(int pos) const
 	return nextInset(pos);
 }
 
+
 unsigned char MathArray::GetChar(int pos) const
 {
 	return pos < size() ? bf_[pos + 1] : '\0';
 }
+
 
 string MathArray::GetString(int & pos) const
 {
@@ -134,10 +135,12 @@ string MathArray::GetString(int & pos) const
 	return s;
 }
 
+
 MathTextCodes MathArray::GetCode(int pos) const
 {
 	return pos < size() ? MathTextCodes(bf_[pos]) : LM_TC_MIN;
 }
+
 
 void MathArray::setCode(int pos, MathTextCodes t)
 {
@@ -146,6 +149,7 @@ void MathArray::setCode(int pos, MathTextCodes t)
 	bf_[pos] = t;
 	bf_[pos + 2] = t;
 }
+
 
 void MathArray::insert(int pos, MathInset * p)
 {
@@ -158,6 +162,7 @@ void MathArray::replace(int pos, MathInset * p)
 {
 	memcpy(&bf_[pos + 1], &p, sizeof(p));
 }
+
 
 void MathArray::insert(int pos, unsigned char b, MathTextCodes t)
 {
@@ -180,10 +185,12 @@ void MathArray::push_back(MathInset * p)
 	insert(size(), p);
 }
 
+
 void MathArray::push_back(unsigned char b, MathTextCodes c)
 {
 	insert(size(), b, c);
 }
+
 
 void MathArray::push_back(MathArray const & array)
 {
@@ -191,9 +198,11 @@ void MathArray::push_back(MathArray const & array)
 }
 
 
-
 void MathArray::clear()
 {
+	for (int pos = 0; pos < size(); next(pos)) 
+		if (isInset(pos)) 
+			delete nextInset(pos);
 	bf_.clear();
 }
 
@@ -262,7 +271,6 @@ void MathArray::dump2(ostream & os) const
 		os << int(*it) << ' ';
 	os << endl;
 }
-
 
 
 void MathArray::dump(ostream & os) const
