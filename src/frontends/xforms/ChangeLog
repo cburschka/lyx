@@ -1,3 +1,8 @@
+2002-08-16  Angus Leeming  <leeming@lyx.org>
+
+	* Tooltips.C (c-tor): don't forget the "#ifdef crap xforms" code next
+	time, old boy.
+
 2002-08-16  Michael Schmitt <Michael.Schmitt@teststep.org>
 
 	* FormRef.C (update): Synchronise the buffer choice and the list of

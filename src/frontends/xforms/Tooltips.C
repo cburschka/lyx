@@ -109,14 +109,9 @@ static void C_TooltipTimerCB(FL_OBJECT * ob, long data)
 }
 
 
-Tooltips::Tooltips(Dialogs & d)
+Tooltips::Tooltips()
 	: tooltip_timer_(0)
 {
-	static bool first = true;
-	if (first) {
-		first = false;
-		d.toggleTooltips.connect(boost::bind(&Tooltips::toggleEnabled));
-	}
 	toggled.connect(boost::bind(&Tooltips::set, this));
 }
 
