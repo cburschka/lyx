@@ -323,7 +323,7 @@ bool createUndo(BufferView * bv, Undo::undo_kind kind,
 	// create a new Undo
 	Paragraph * undopar;
 
-	Paragraph * start = const_cast<Paragraph *>(first);
+	Paragraph * start = first;
 	Paragraph * end = 0;
 
 	if (behind)
@@ -421,7 +421,7 @@ bool textUndo(BufferView * bv)
 		if (first) {
 			shared_ptr<Undo> u;
 			if (createUndo(bv, undo->kind, first,
-				&*b->getParFromID(undo->number_of_behind_par), u))
+				b->getParFromID(undo->number_of_behind_par), u))
 				b->redostack.push(u);
 		}
 	}
@@ -481,7 +481,7 @@ void setUndo(BufferView * bv, Undo::undo_kind kind,
 {
 	if (!undo_frozen) {
 		shared_ptr<Undo> u;
-		if (createUndo(bv, kind, &*first, &*behind, u))
+		if (createUndo(bv, kind, first, behind, u))
 			bv->buffer()->undostack.push(u);
 		bv->buffer()->redostack.clear();
 	}
@@ -492,7 +492,7 @@ void setRedo(BufferView * bv, Undo::undo_kind kind,
 	     ParagraphList::iterator first, ParagraphList::iterator behind)
 {
 	shared_ptr<Undo> u;
-	if (createUndo(bv, kind, &*first, &*behind, u))
+	if (createUndo(bv, kind, first, behind, u))
 		bv->buffer()->redostack.push(u);
 }
 
