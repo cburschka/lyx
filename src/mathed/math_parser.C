@@ -138,7 +138,7 @@ lexcode_enum lexcode[256];
 #warning Replace with string
 #endif
 //char yytext[256];
-array<char, 256> yytext;
+boost::array<char, 256> yytext;
 int yylineno;
 istream * yyis;
 bool yy_mtextmode= false;

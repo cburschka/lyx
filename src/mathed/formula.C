@@ -26,7 +26,6 @@
 #include "math_cursor.h"
 #include "math_parser.h"
 #include "lyx_main.h"
-#include "minibuffer.h"
 #include "BufferView.h"
 #include "lyxtext.h"
 #include "gettext.h"
@@ -46,6 +45,7 @@
 #include "math_spaceinset.h"
 #include "math_deliminset.h"
 #include "mathed/support.h"
+#include "lyxfunc.h"
 
 using std::ostream;
 using std::istream;
@@ -846,7 +846,7 @@ InsetFormula::LocalDispatch(BufferView * bv, kb_action action,
 	case LFUN_GREEK:
 		if (!greek_kb_flag) {
 			greek_kb_flag = 1;
-			bv->owner()->getMiniBuffer()->Set(_("Math greek mode on"));
+			bv->owner()->getLyXFunc()->Dispatch(LFUN_MESSAGE, _("Math greek mode on"));
 		} else
 			greek_kb_flag = 0;
 		break;
@@ -855,9 +855,9 @@ InsetFormula::LocalDispatch(BufferView * bv, kb_action action,
 	case LFUN_GREEK_TOGGLE:
 		greek_kb_flag = (greek_kb_flag) ? 0 : 2;
 		if (greek_kb_flag)
-			bv->owner()->getMiniBuffer()->Set(_("Math greek keyboard on"));
+			bv->owner()->getLyXFunc()->Dispatch(LFUN_MESSAGE, _("Math greek keyboard on"));
 		else
-			bv->owner()->getMiniBuffer()->Set(_("Math greek keyboard off"));
+			bv->owner()->getLyXFunc()->Dispatch(LFUN_MESSAGE, _("Math greek keyboard off"));
 		break;
 
 		//  Math fonts
@@ -871,7 +871,7 @@ InsetFormula::LocalDispatch(BufferView * bv, kb_action action,
 	case LFUN_TEX:
 		// varcode = LM_TC_TEX;
 		mathcursor->setLastCode(LM_TC_TEX);
-		bv->owner()->getMiniBuffer()->Set(_("TeX mode"));
+		bv->owner()->getLyXFunc()->Dispatch(LFUN_MESSAGE, _("TeX mode"));
 		break;
 
 	case LFUN_MATH_NUMBER:
@@ -883,10 +883,10 @@ InsetFormula::LocalDispatch(BufferView * bv, kb_action action,
 				if (!label_.empty()) {
 					label_.erase();
 				}
-				bv->owner()->getMiniBuffer()->Set(_("No number"));
+				bv->owner()->getLyXFunc()->Dispatch(LFUN_MESSAGE, _("No number"));
 			} else {
 				++type;
-				bv->owner()->getMiniBuffer()->Set(_("Number"));
+				bv->owner()->getLyXFunc()->Dispatch(LFUN_MESSAGE, _("Number"));
 			}
 			par->SetType(type);
 			UpdateLocal(bv);
@@ -1085,7 +1085,8 @@ InsetFormula::LocalDispatch(BufferView * bv, kb_action action,
 		// Invalid actions under math mode
 	case LFUN_MATH_MODE:
 		if (mathcursor->getLastCode()!= LM_TC_TEXTRM) {
-			bv->owner()->getMiniBuffer()->Set(_("math text mode"));
+			bv->owner()->getLyXFunc()
+				->Dispatch(LFUN_MESSAGE, _("math text mode"));
 			varcode = LM_TC_TEXTRM;
 		} else {
 			varcode = LM_TC_VAR;
@@ -1094,13 +1095,16 @@ InsetFormula::LocalDispatch(BufferView * bv, kb_action action,
 		break;
 
 	case LFUN_UNDO:
-		bv->owner()->getMiniBuffer()->Set(_("Invalid action in math mode!"));
+		bv->owner()->getLyXFunc()
+			->Dispatch(LFUN_MESSAGE,
+				   _("Invalid action in math mode!"));
 		break;
 
 		//------- dummy actions
-	case LFUN_EXEC_COMMAND:
-		bv->owner()->getMiniBuffer()->PrepareForCommand();
-		break;
+#warning Is this needed here? Shouldnt the main dispatch handle this? (Lgb)
+		//case LFUN_EXEC_COMMAND:
+		//bv->owner()->getMiniBuffer()->PrepareForCommand();
+		//break;
 
 	default:
 		if ((action == -1  || action == LFUN_SELFINSERT)
@@ -1209,7 +1213,9 @@ InsetFormula::LocalDispatch(BufferView * bv, kb_action action,
 			} else if (c == '\\') {
 				if (was_macro)
 					mathcursor->MacroModeClose();
-				bv->owner()->getMiniBuffer()->Set(_("TeX mode"));
+				bv->owner()->getLyXFunc()
+					->Dispatch(LFUN_MESSAGE,
+						   _("TeX mode"));
 				mathcursor->setLastCode(LM_TC_TEX);
 			}
 			UpdateLocal(bv);

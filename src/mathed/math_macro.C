@@ -74,8 +74,8 @@ MathedInset * MathMacro::Clone()
 
 void MathMacro::Metrics()
 {
-	for (int i = 0; i < args_.size(); ++i) 
-    tmplate_->args_[i] = getArg(i);
+	for (unsigned int i = 0; i < args_.size(); ++i) 
+		tmplate_->args_[i] = getArg(i);
 	tmplate_->SetStyle(size());
 	tmplate_->Metrics();
 	width = tmplate_->Width();
@@ -96,7 +96,7 @@ void MathMacro::draw(Painter & pain, int x, int y)
 
 bool MathMacro::setArgumentIdx(int i)
 {
-	if (i >= 0 && i < args_.size()) {
+	if (i >= 0 && 0 < (args_.size() - i)) {
 		idx_ = i;
 		return true;
 	} else

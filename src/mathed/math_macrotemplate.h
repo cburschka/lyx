@@ -19,7 +19,7 @@ class MathMacro;
 /** This class contains the macro definition
     \author Alejandro Aguilar Sierra
  */
-class MathMacroTemplate : public MathParInset, public boost::noncopyable {
+class MathMacroTemplate : public MathParInset, boost::noncopyable {
 public:
 	friend class MathMacro;
 	

@@ -1,3 +1,12 @@
+2001-04-17  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* math_macrotemplate.h: inherit privately from noncopyable
+
+	* math_macro.C (Metrics): reindent, use unsigned int as loop var
+	(setArgumentIdx): change test to avoid unsigned warning
+
+	* formula.C (LocalDispatch): use LFUN_MESSAGE
+
 2001-04-16  Allan Rae  <rae@lyx.org>
 
 	* formula.C (Latex, getLabelList, LocalDispatch): 
