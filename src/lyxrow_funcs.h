@@ -22,8 +22,6 @@ bool isParEnd(Paragraph const & par, RowList::iterator rit);
 
 lyx::pos_type lastPos(Paragraph const & par, RowList::iterator rit);
 
-lyx::pos_type lastPrintablePos(Paragraph const & par, RowList::iterator rit);
-
 int numberOfSeparators(Paragraph const & par, RowList::iterator rit);
 
 int numberOfHfills(Paragraph const & par, RowList::iterator rit);

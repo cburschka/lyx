@@ -287,7 +287,7 @@ void LyXText::computeBidiTables(ParagraphList::iterator pit,
 	}
 
 	bidi_start = row->pos();
-	bidi_end = lastPrintablePos(*pit, row);
+	bidi_end = lastPos(*pit, row);
 
 	if (bidi_start > bidi_end) {
 		bidi_start = -1;
@@ -779,7 +779,7 @@ int LyXText::fill(ParagraphList::iterator pit,
 
 	int w;
 	// get the pure distance
-	pos_type const last = lastPrintablePos(*pit, row);
+	pos_type const last = lastPos(*pit, row);
 
 	LyXLayout_ptr const & layout = pit->layout();
 

@@ -1,3 +1,21 @@
+2003-09-04  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* text2.C (cursorEnd): simplify
+	(setCursor): adjust
+	(getColumnNearX): adjust
+
+	* text.C (computeBidiTables): adjust
+	(fill): adjust
+
+	* rowpainter.C (paintChars): adjust
+	(paintSelection): adjust
+	(paintChangeBar): adjust
+	(paintText): adjust
+
+	* lyxrow_funcs.C (lastPrintablePos): remove, all users now call
+	lastPos instead.
+	(numberOfSeparators): adjust
+
 2003-09-03  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* LyXAction.C:

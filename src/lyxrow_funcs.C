@@ -44,7 +44,7 @@ bool isParEnd(Paragraph const & par, RowList::iterator rit)
 	return boost::next(rit) == par.rows.end();
 }
 
-
+#if 1
 pos_type lastPos(Paragraph const & par, RowList::iterator rit)
 {
 	if (par.empty())
@@ -62,23 +62,17 @@ pos_type lastPos(Paragraph const & par, RowList::iterator rit)
 	}
 	return boost::next(rit)->pos() - 1;
 }
-
-
-pos_type lastPrintablePos(Paragraph const & par, RowList::iterator rit)
+#else
+pos_type lastPos(Paragraph const &, RowList::iterator rit)
 {
-	pos_type const last = lastPos(par, rit);
-
-	// if this row is an end of par, just act like lastPos()
-	if (isParEnd(par, rit))
-		return last;
-
-	return last;
+	return rit->end() - 1;
 }
+#endif
 
 
 int numberOfSeparators(Paragraph const & par, RowList::iterator rit)
 {
-	pos_type const last = lastPrintablePos(par, rit);
+	pos_type const last = lastPos(par, rit);
 	int n = 0;
 	pos_type p = max(rit->pos(), par.beginningOfBody());
 	for ( ; p < last; ++p)

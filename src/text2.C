@@ -672,16 +672,7 @@ void LyXText::cursorHome()
 
 void LyXText::cursorEnd()
 {
-	if (cursor.par()->empty())
-		return;
-
-	RowList::iterator rit = cursorRow();
-	ParagraphList::iterator pit = cursor.par();
-	pos_type pos = lastPos(*pit, rit);
-	/* cursor should be before a hard newline only */
-	if (!pit->isNewline(pos))
-		++pos;
-	setCursor(pit, pos);
+	setCursor(cursor.par(), cursorRow()->end() - 1);
 }
 
 
@@ -1358,7 +1349,7 @@ void LyXText::setCursor(LyXCursor & cur, ParagraphList::iterator pit,
 	// y is now the cursor baseline
 	cur.y(y);
 
-	pos_type last = lastPrintablePos(*pit, row);
+	pos_type last = lastPos(*pit, row);
 
 	// None of these should happen, but we're scaredy-cats
 	if (pos > pit->size()) {
@@ -1497,7 +1488,7 @@ pos_type LyXText::getColumnNearX(ParagraphList::iterator pit,
 	double fill_label_hfill = rit->fill_label_hfill();
 
 	pos_type vc = rit->pos();
-	pos_type last = lastPrintablePos(*pit, rit);
+	pos_type last = lastPos(*pit, rit);
 	pos_type c = 0;
 	LyXLayout_ptr const & layout = pit->layout();
 

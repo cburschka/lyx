@@ -257,7 +257,7 @@ void RowPainter::paintArabicComposeChar(pos_type & vpos)
 void RowPainter::paintChars(pos_type & vpos, bool hebrew, bool arabic)
 {
 	pos_type pos = text_.vis2log(vpos);
-	pos_type const last = lastPrintablePos(*pit_, row_);
+	pos_type const last = lastPos(*pit_, row_);
 	LyXFont orig_font = getFont(pos);
 
 	// first character
@@ -434,7 +434,7 @@ void RowPainter::paintSelection()
 			int(x_), row_->height(), LColor::selection);
 
 	pos_type const body_pos = pit_->beginningOfBody();
-	pos_type const last = lastPrintablePos(*pit_, row_);
+	pos_type const last = lastPos(*pit_, row_);
 	double tmpx = x_;
 
 	for (pos_type vpos = row_->pos(); vpos <= last; ++vpos)  {
@@ -486,7 +486,7 @@ void RowPainter::paintSelection()
 void RowPainter::paintChangeBar()
 {
 	pos_type const start = row_->pos();
-	pos_type const end = lastPrintablePos(*pit_, row_);
+	pos_type const end = lastPos(*pit_, row_);
 
 	if (!pit_->isChanged(start, end))
 		return;
@@ -896,7 +896,7 @@ void RowPainter::paintLast()
 
 void RowPainter::paintText()
 {
-	pos_type const last = lastPrintablePos(*pit_, row_);
+	pos_type const last = lastPos(*pit_, row_);
 	pos_type body_pos = pit_->beginningOfBody();
 	if (body_pos > 0 &&
 		(body_pos - 1 > last || !pit_->isLineSeparator(body_pos - 1))) {
