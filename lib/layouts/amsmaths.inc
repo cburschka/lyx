@@ -90,8 +90,8 @@ End
 Style Theorem*
 	CopyStyle             Theorem
 	LatexName             thm*
+	LabelType             Static
 	LabelString           "Theorem."
-	LabelCounter          ""
 	Preamble
 	  \theoremstyle{plain}    
 	  \newtheorem*{thm*}{Theorem} 
@@ -111,7 +111,7 @@ End
 
 
 Style Corollary*
-	CopyStyle             Theorem
+	CopyStyle             Theorem*
 	LatexName             cor*
 	LabelString           "Corollary."
 	Preamble
@@ -133,7 +133,7 @@ End
 
 
 Style Lemma*
-	CopyStyle             Theorem
+	CopyStyle             Theorem*
 	LatexName             lem*
 	LabelString           "Lemma."
 	Preamble
@@ -155,7 +155,7 @@ End
 
 
 Style Proposition*
-	CopyStyle             Theorem
+	CopyStyle             Theorem*
 	LatexName             prop*
 	LabelString           "Proposition."
 	Preamble
@@ -177,7 +177,7 @@ End
 
 
 Style Conjecture*
-	CopyStyle             Theorem
+	CopyStyle             Theorem*
 	LatexName             conjecture*
 	LabelString           "Conjecture."
 	Preamble
@@ -221,7 +221,7 @@ End
 
 
 Style Fact*
-	CopyStyle             Theorem
+	CopyStyle             Theorem*
 	LatexName             fact*
 	LabelString           "Fact."
 	Preamble
@@ -263,6 +263,7 @@ End
 Style Definition*
 	CopyStyle             Definition
 	LatexName             defn*
+	LabelType             Static
 	LabelString           "Definition."
 	Preamble
 	 \theoremstyle{definition}
@@ -382,8 +383,8 @@ End
 Style Remark*
 	CopyStyle             Remark
 	LatexName             rem*
+	LabelType             Static
 	LabelString           "Remark."
-	LabelCounter          ""
 	Preamble
 	  \theoremstyle{remark}
 	  \newtheorem*{rem*}{Remark}
