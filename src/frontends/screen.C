@@ -313,28 +313,15 @@ void LyXScreen::update(BufferView & bv, int yo, int xo)
 	workarea().getPainter().start();
 
 	switch (text->refreshStatus()) {
+	case LyXText::REFRESH_ROW:
 	case LyXText::REFRESH_AREA:
 	{
 		text->updateRowPositions();
 		int const y = max(int(text->refresh_y - text->top_y()), 0);
 		drawFromTo(text, &bv, y, vheight, yo, xo);
 		expose(0, y, vwidth, vheight - y);
+		break;
 	}
-	break;
-	case LyXText::REFRESH_ROW:
-	{
-		text->updateRowPositions();
-		// ok I will update the current cursor row
-		drawOneRow(text, &bv, text->refresh_row, text->refresh_y,
-			   yo, xo);
-		// this because if we had a major update the refresh_row could
-		// have been set to 0!
-		if (text->refresh_row != text->rows().end()) {
-			expose(0, text->refresh_y - text->top_y() + yo,
-				   vwidth, text->refresh_row->height());
-		}
-	}
-	break;
 	case LyXText::REFRESH_NONE:
 		// Nothing needs done
 		break;
@@ -491,20 +478,3 @@ void LyXScreen::drawFromTo(LyXText * text, BufferView * bv,
 	}
 }
 
-
-void LyXScreen::drawOneRow(LyXText * text, BufferView * bv,
-			   RowList::iterator row,
-	int y_text, int yo, int xo)
-{
-	int const y = y_text - text->top_y() + yo;
-
-	if (y + row->height() <= 0)
-		return;
-
-	if (y - row->height() > workarea().workHeight())
-		return;
-
-	hideCursor();
-
-	paintRows(*bv, *text, row, y, xo, y + text->top_y());
-}
