@@ -394,9 +394,17 @@ double const hline[] = {
 };
 
 
-double const hline2[] = {
+double const ddot[] = {
 	1, 0.2, 0.5,  0.3, 0.5,
 	1, 0.7, 0.5,  0.8, 0.5,
+	0
+};
+
+
+double const dddot[] = {
+	1, 0.1, 0.5,  0.2, 0.5,
+	1, 0.45, 0.5, 0.55, 0.5,
+	1, 0.8, 0.5,  0.9, 0.5,
 	0
 };
 
@@ -496,7 +504,8 @@ named_deco_struct deco_table[] = {
 	{"Updownarrow",    Udarrow,    0 },	
 	
 	// Accents
-	{"ddot",           hline2,     0 },
+	{"ddot",           ddot,       0 },
+	{"dddot",          dddot,      0 },
 	{"hat",            angle,      3 },
 	{"grave",          slash,      1 },
 	{"acute",          slash,      0 },

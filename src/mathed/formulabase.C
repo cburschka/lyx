@@ -47,6 +47,7 @@
 #include "math_pos.h"
 #include "math_spaceinset.h"
 #include "undo_funcs.h"
+#include "frontends/Dialogs.h"
 #include "intl.h"
 
 using std::endl;
@@ -328,6 +329,10 @@ void InsetFormulaBase::insetButtonPress(BufferView * bv,
 			}	
 			break;
 */
+		case 3:
+			// launch math panel for right mouse button
+			bv->owner()->getDialogs()->showMathPanel();
+			break;
 	}
 	bv->updateInset(this, false);
 }

@@ -64,6 +64,7 @@ key_type wordlist_array[] =
 	{"coth",  LM_TK_FUNC, 0},
 	{"csc",  LM_TK_FUNC, 0},
 	{"ddot",  LM_TK_DECORATION, 0},
+	{"dddot",  LM_TK_DECORATION, 0},
 	{"ddots",  LM_TK_DOTS, 0},
 	{"deg",  LM_TK_FUNC, 0},
 	{"det",  LM_TK_FUNCLIM, 0},

@@ -1,4 +1,8 @@
 
+2002-02-08  André Pönitz <poenitz@gmx.net>
+
+	* math_support.[Ch]: some support for \dddot
+
 2002-02-08  Otto Tronarp <otttr440@student.liu.se>
 
 	* math_decorationinset.C: 
@@ -10,6 +14,8 @@
 2002-02-08  Martin Vermeer <martin.vermeer@hut.fi>
 
 	* formulabase.C (localDispatch): fix umlaut handling
+	
+	* formulabase.C: pop up math panel on right mouse click
 
 2002-02-01  André Pönitz <poenitz@gmx.net>
 
