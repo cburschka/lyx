@@ -1,3 +1,8 @@
+2002-03-18  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* common.am (DISTCLEANFILES): don't be recursive by default.
+	(remove -r)
+
 2002-03-15  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* lyxinclude.m4 (LYX_PROG_CXX): also look at $CXX when searching

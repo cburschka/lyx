@@ -1,5 +1,8 @@
 2002-03-18  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
+	* WorkArea.C (C_WorkAreaEvent): return a value.
+	(event_cb): return 1 if we handled the event, 0 otherwise.
+
 	* lyx_gui.C (LyX_XErrHandler): don't abort on BadWindow
 
 2002-03-18  Juergen Vigna  <jug@sad.it>

@@ -70,9 +70,11 @@ extern "C" {
 
 	static
 	int C_WorkAreaEventCB(FL_FORM * form, void * xev) {
-		WorkArea * wa=static_cast<WorkArea*>(form->u_vdata);
- 		wa->event_cb(static_cast<XEvent*>(xev));
-		return 0;
+		WorkArea * wa = static_cast<WorkArea*>(form->u_vdata);
+ 		int ret = wa->event_cb(static_cast<XEvent*>(xev));
+		lyxerr << "Pending: " << XPending(fl_get_display()) << endl;
+		
+		return ret;
 	}
 }
 
@@ -564,18 +566,23 @@ extern "C" {
 
 } // namespace anon
 
-void WorkArea::event_cb(XEvent * xev)
+
+int WorkArea::event_cb(XEvent * xev)
 {
+	int ret = 0;
 	switch (xev->type) {
 		case SelectionRequest:
 			lyxerr[Debug::GUI] << "X requested selection." << endl;
 			selectionRequested.emit();
+			ret = 1;
 			break;
 		case SelectionClear:
 			lyxerr[Debug::GUI] << "Lost selection." << endl;
 			selectionLost.emit();
+			ret = 1;
 			break; 
 	}
+	return ret;
 }
 
 

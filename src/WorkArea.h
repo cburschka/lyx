@@ -132,7 +132,7 @@ public:
 	SigC::Signal0<void> selectionLost;
  
 	/// handles SelectionRequest X Event, to fill the clipboard
-	void event_cb(XEvent * xev);
+	int event_cb(XEvent * xev);
 private:
 	///
 	void createPixmap(int, int);
