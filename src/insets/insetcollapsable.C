@@ -37,7 +37,7 @@ using std::ostream;
 
 
 InsetCollapsable::InsetCollapsable(BufferParams const & bp, bool collapsed)
-	: UpdatableInset(), collapsed_(collapsed), inset(bp),
+	: UpdatableInset(), inset(bp), collapsed_(collapsed),
 	  button_dim(0, 0, 0, 0), label("Label"),
 #if 0
 	autocollapse(false),
@@ -53,9 +53,8 @@ InsetCollapsable::InsetCollapsable(BufferParams const & bp, bool collapsed)
 
 
 InsetCollapsable::InsetCollapsable(InsetCollapsable const & in)
-	: UpdatableInset(in), collapsed_(in.collapsed_),
-	  labelfont(in.labelfont), inset(in.inset),
-	  button_dim(0, 0, 0, 0), label(in.label),
+	: UpdatableInset(in), inset(in.inset), collapsed_(in.collapsed_),
+	  labelfont_(in.labelfont_), button_dim(0, 0, 0, 0), label(in.label),
 #if 0
 	  autocollapse(in.autocollapse),
 #endif
@@ -105,14 +104,14 @@ void InsetCollapsable::read(Buffer const & buf, LyXLex & lex)
 
 void InsetCollapsable::dimension_collapsed(Dimension & dim) const
 {
-	font_metrics::buttonText(label, labelfont, dim.wid, dim.asc, dim.des);
+	font_metrics::buttonText(label, labelfont_, dim.wid, dim.asc, dim.des);
 }
 
 
 int InsetCollapsable::height_collapsed() const
 {
 	Dimension dim;
-	font_metrics::buttonText(label, labelfont, dim.wid, dim.asc, dim.des);
+	font_metrics::buttonText(label, labelfont_, dim.wid, dim.asc, dim.des);
 	return dim.asc + dim.des;
 }
 
@@ -133,7 +132,7 @@ void InsetCollapsable::metrics(MetricsInfo & mi, Dimension & dim) const
 
 void InsetCollapsable::draw_collapsed(PainterInfo & pi, int x, int y) const
 {
-	pi.pain.buttonText(x, y, label, labelfont);
+	pi.pain.buttonText(x, y, label, labelfont_);
 }
 
 
@@ -496,6 +495,12 @@ void InsetCollapsable::close(BufferView * bv) const
 void InsetCollapsable::setLabel(string const & l) const
 {
 	label = l;
+}
+
+
+void InsetCollapsable::setCollapsed(bool c) const
+{
+	collapsed_ = c;
 }
 
 

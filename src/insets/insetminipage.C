@@ -203,9 +203,7 @@ void InsetMinipage::read(Buffer const & buf, LyXLex & lex)
 
 void InsetMinipage::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	if (collapsed_)
-		dimension_collapsed(dim);
-	else {
+	if (isOpen()) {
 		Dimension d;
 		MetricsInfo m = mi;
 		m.base.textwidth = params_.width.inPixels(mi.base.textwidth);
@@ -225,7 +223,9 @@ void InsetMinipage::metrics(MetricsInfo & mi, Dimension & dim) const
 			break;
 		}
 		dim.wid = d.wid;
-	}
+	} else
+		dimension_collapsed(dim);
+
 	dim_ = dim;
 }
 

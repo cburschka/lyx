@@ -57,11 +57,9 @@ public:
 	///
 	bool insertInset(BufferView *, InsetOld * inset);
 	///
-	virtual bool insetAllowed(InsetOld::Code code) const {
-		return inset.insetAllowed(code);
-	}
+	virtual bool insetAllowed(InsetOld::Code code) const;
 	///
-	bool isTextInset() const { return true; }
+	bool isTextInset() const;
 	///
 	void insetUnlock(BufferView *);
 	///
@@ -89,9 +87,8 @@ public:
 	/// Get the absolute document x,y of the cursor
 	virtual void getCursor(BufferView &, int &, int &) const;
 	///
-	void fitInsetCursor(BufferView * bv) const {
-		inset.fitInsetCursor(bv);
-	}
+	void fitInsetCursor(BufferView * bv) const;
+	///
 	UpdatableInset * getLockingInset() const;
 	///
 	UpdatableInset * getFirstLockingInsetOfType(InsetOld::Code);
@@ -101,10 +98,10 @@ public:
 	///
 	void setLabel(string const & l) const;
 	///
-	void setLabelFont(LyXFont & f) { labelfont = f; }
+	void setLabelFont(LyXFont & f);
 #if 0
 	///
-	void setAutoCollapse(bool f) { autocollapse = f; }
+	void setAutoCollapse(bool f);
 #endif
 	///
 	LyXText * getLyXText(BufferView const *, bool const recursive) const;
@@ -115,13 +112,9 @@ public:
 	///
 	int scroll(bool recursive=true) const;
 	///
-	void scroll(BufferView *bv, float sx) const {
-		UpdatableInset::scroll(bv, sx);
-	}
+	void scroll(BufferView *bv, float sx) const;
 	///
-	void scroll(BufferView *bv, int offset) const {
-		UpdatableInset::scroll(bv, offset);
-	}
+	void scroll(BufferView *bv, int offset) const;
 	///
 	InsetOld * getInsetFromID(int id) const;
 	///
@@ -129,20 +122,18 @@ public:
 	///
 	LyXCursor const & cursor(BufferView *) const;
 	///
-	bool isOpen() const { return !collapsed_; }
+	bool isOpen() const;
 	///
 	void open(BufferView *);
 	///
 	void close(BufferView *) const;
 	///
-	bool allowSpellcheck() const { return inset.allowSpellcheck(); }
+	bool allowSpellcheck() const;
 	///
 	WordLangTuple const
 	selectNextWordToSpellcheck(BufferView *, float &) const;
 	///
-	void selectSelectedWord(BufferView * bv) {
-		inset.selectSelectedWord(bv);
-	}
+	void selectSelectedWord(BufferView *);
 
 	void markErased();
 
@@ -171,26 +162,30 @@ protected:
 	void draw_collapsed(PainterInfo & pi, int x, int y) const;
 	///
 	int getMaxTextWidth(Painter & pain, UpdatableInset const *) const;
-
+	/// Should be non-const...
+	void setCollapsed(bool) const;
 	///
-	mutable bool collapsed_;
-	///
-	LyXFont labelfont;
-public:
-	///
-	mutable InsetText inset;
-protected:
-	///
-	mutable Box button_dim;
-	///
-	mutable int topx;
-	mutable int topbaseline;
+	Box const & buttonDim() const;
 
 private:
 	///
 	void lfunMouseRelease(FuncRequest const &);
 	///
 	FuncRequest adjustCommand(FuncRequest const &);
+
+public:
+	///
+	mutable InsetText inset;
+private:
+	///
+	mutable bool collapsed_;
+	///
+	LyXFont labelfont_;
+	///
+	mutable Box button_dim;
+	///
+	mutable int topx;
+	mutable int topbaseline;
 
 	///
 	mutable string label;
@@ -205,5 +200,81 @@ private:
 	///
 	mutable boost::weak_ptr<BufferView> view_;
 };
+
+
+inline
+bool InsetCollapsable::insetAllowed(InsetOld::Code code) const
+{
+	return inset.insetAllowed(code);
+}
+
+
+inline
+bool InsetCollapsable::isTextInset() const
+{
+	return true;
+}
+
+
+inline
+void InsetCollapsable::fitInsetCursor(BufferView * bv) const
+{
+	inset.fitInsetCursor(bv);
+}
+
+inline
+void InsetCollapsable::setLabelFont(LyXFont & f)
+{
+	labelfont_ = f;
+}
+
+#if 0
+inline
+void InsetCollapsable::setAutoCollapse(bool f)
+{
+	autocollapse = f;
+}
+#endif
+
+inline
+void InsetCollapsable::scroll(BufferView *bv, float sx) const
+{
+	UpdatableInset::scroll(bv, sx);
+}
+
+
+inline
+void InsetCollapsable::scroll(BufferView *bv, int offset) const
+{
+	UpdatableInset::scroll(bv, offset);
+}
+
+
+inline
+bool InsetCollapsable::isOpen() const
+{
+	return !collapsed_;
+}
+
+
+inline
+bool InsetCollapsable::allowSpellcheck() const
+{
+	return inset.allowSpellcheck();
+}
+
+
+inline
+void InsetCollapsable::selectSelectedWord(BufferView * bv)
+{
+	inset.selectSelectedWord(bv);
+}
+
+
+inline
+Box const & InsetCollapsable::buttonDim() const
+{
+	return button_dim;
+}
 
 #endif

@@ -63,7 +63,7 @@ InsetBase * InsetTheorem::clone() const
 #endif
 	InsetTheorem * result = new InsetTheorem;
 
-	result->collapsed_ = collapsed_;
+	result->setCollapsed(!isOpen());
 	return result;
 }
 

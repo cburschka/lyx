@@ -45,10 +45,13 @@ using std::ostream;
 void InsetERT::init()
 {
 	setButtonLabel();
-	labelfont = LyXFont(LyXFont::ALL_SANE);
-	labelfont.decSize();
-	labelfont.decSize();
-	labelfont.setColor(LColor::latex);
+
+	LyXFont font(LyXFont::ALL_SANE);
+	font.decSize();
+	font.decSize();
+	font.setColor(LColor::latex);
+	setLabelFont(font);
+
 	setInsetName("ERT");
 }
 
@@ -145,7 +148,7 @@ void InsetERT::read(Buffer const & buf, LyXLex & lex)
 		string const token = lex.getString();
 		if (token == "collapsed") {
 			lex.next();
-			collapsed_ = lex.getBool();
+			setCollapsed(lex.getBool());
 		} else {
 			// Take countermeasures
 			lex.pushToken(token);
@@ -170,11 +173,10 @@ void InsetERT::read(Buffer const & buf, LyXLex & lex)
 #endif
 
 	if (!token_found) {
-		if (collapsed_) {
-			status(0, Collapsed);
-		} else {
+		if (isOpen())
 			status(0, Open);
-		}
+		else
+			status(0, Collapsed);
 	}
 	setButtonLabel();
 }
@@ -259,11 +261,10 @@ void InsetERT::setFont(BufferView *, LyXFont const &, bool, bool selectall)
 void InsetERT::updateStatus(BufferView * bv, bool swap) const
 {
 	if (status_ != Inlined) {
-		if (collapsed_) {
-			status(bv, swap ? Open : Collapsed);
-		} else {
+		if (isOpen())
 			status(bv, swap ? Collapsed : Open);
-		}
+		else
+			status(bv, swap ? Open : Collapsed);
 	}
 }
 
@@ -302,10 +303,9 @@ bool InsetERT::lfunMouseRelease(FuncRequest const & cmd)
 		cmd1.y = ascent() + cmd.y - inset.ascent();
 
 		// inlined is special - the text appears above
-		// button_dim.y2
 		if (status_ == Inlined)
 			inset.localDispatch(cmd1);
-		else if (!collapsed_ && (cmd.y > button_dim.y2)) {
+		else if (isOpen() && (cmd.y > buttonDim().y2)) {
 			cmd1.y -= height_collapsed();
 			inset.localDispatch(cmd1);
 		}
@@ -590,11 +590,11 @@ void InsetERT::status(BufferView * bv, ERTStatus const st) const
 		case Inlined:
 			break;
 		case Open:
-			collapsed_ = false;
+			setCollapsed(false);
 			setButtonLabel();
 			break;
 		case Collapsed:
-			collapsed_ = true;
+			setCollapsed(true);
 			setButtonLabel();
 			if (bv)
 				bv->unlockInset(const_cast<InsetERT *>(this));
@@ -617,7 +617,7 @@ bool InsetERT::showInsetDialog(BufferView * bv) const
 
 void InsetERT::open(BufferView * bv)
 {
-	if (!collapsed_)
+	if (isOpen())
 		return;
 	status(bv, Open);
 }

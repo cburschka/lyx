@@ -116,7 +116,7 @@ void InsetNote::metrics(MetricsInfo & mi, Dimension & dim) const
 	// Contrary to Greyedout, these cannot be construed as part of the
 	// running text: make them stand on their own
 	if (params_.type == "Note" || params_.type == "Comment")
-		if (!collapsed_)
+		if (isOpen())
 			dim.wid = mi.base.textwidth;
 	dim_ = dim;
 }
