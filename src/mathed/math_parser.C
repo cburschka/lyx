@@ -233,8 +233,7 @@ int yylex()
 	
 	while (yyis->good()) {
 		unsigned char c = getuchar(yyis);
-		lyxerr << "reading byte: '" << c << "' code: " << lexcode[c] << endl;
-		lyxerr << "              code: " << lexcode['ü'] << endl;
+		//lyxerr << "reading byte: '" << c << "' code: " << lexcode[c] << endl;
 		
 		if (yyvarcode == LM_TC_TEXTRM && c == ' ') {
 			yylval.i = ' ';
@@ -831,12 +830,9 @@ void mathed_parse(MathArray & array, unsigned flags)
 		case LM_TK_UNDEF: 
 			if (MathMacroTable::hasTemplate(yytext)) {
 				MathMacro * m = MathMacroTable::cloneTemplate(yytext);
-				for (int i = 0; i < m->nargs(); ++i) {
+				for (int i = 0; i < m->nargs(); ++i) 
 					mathed_parse(m->cell(i), FLAG_BRACE_OPT | FLAG_BRACE_LAST);
-					lyxerr << "reading cell " << i << " '" << m->cell(i) << "'\n";
-				}
 				do_insert(array, m);
-				lyxerr << "macro: " << *m << "\n";
 				m->Metrics(LM_ST_TEXT);
 			} else
 				do_insert(array, new MathFuncInset(yytext, LM_OT_UNDEF));

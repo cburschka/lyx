@@ -57,10 +57,9 @@
 #include "insets/insetcaption.h"
 #include "insets/insetfloatlist.h"
 #include "insets/insetspecialchar.h"
-#include "mathed/formulamacro.h"
-#include "mathed/formula.h"
 #include "gettext.h"
 #include "ParagraphParameters.h"
+#include "mathed/formulabase.h"
 
 extern LyXTextClass::size_type current_layout;
 extern int greek_kb_flag;
@@ -84,6 +83,7 @@ extern char ascii_type;
 extern bool math_insert_greek(BufferView *, char);
 extern void sigchldhandler(pid_t pid, int * status);
 extern int bibitemMaxWidth(BufferView *, LyXFont const &);
+
 
 namespace {
 
@@ -2902,61 +2902,34 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		}
 		break;
 	
-	// --- insert characters ----------------------------------------
-	
-	case LFUN_MATH_DELIM:     
-	case LFUN_INSERT_MATRIX:
-	{ 	   
-		if (available()) { 
-			if (open_new_inset(new InsetFormula, false)) {
-				bv_->theLockingInset()
-					->localDispatch(bv_, action, argument);
-			}
-		}
-	}	   
-	break;
-	       
-	case LFUN_INSERT_MATH:
-	{
-		if (!available())
-			break;
- 
-		InsetFormula * f = new InsetFormula(LM_OT_EQUATION);
-		open_new_inset(f);
-		f->localDispatch(bv_, LFUN_INSERT_MATH, argument);
-	}
-	break;
-	
-	case LFUN_MATH_DISPLAY:
-	{	
-		if (available())
-			open_new_inset(new InsetFormula(LM_OT_EQUATION), false);
-		break;
-	}
-		    
 	case LFUN_MATH_MACRO:
-	{
-		if (available()) {
-			string s(argument);
-		        if (s.empty())
-				owner_->getLyXFunc()->setErrorMessage(N_("Missing argument"));
-		        else {
-				string const s1 = token(s, ' ', 1);
-				int const na = s1.empty() ? 0 : lyx::atoi(s1);
-				open_new_inset(new InsetFormulaMacro(token(s, ' ', 0), na), false);
-			}
-		}
-	}
-	break;
+		mathDispatchMathMacro(bv_, argument);
+		break;
 
-	case LFUN_MATH_MODE:   // Open or create a math inset
-	{		
-		if (available())
-			open_new_inset(new InsetFormula, false);
-		owner_->getLyXFunc()->setMessage(N_("Math editor mode"));
-	}
-	break;
-	  
+	case LFUN_MATH_DELIM:     
+		mathDispatchMathDelim(bv_, argument);
+		break;
+
+	case LFUN_INSERT_MATRIX:
+		mathDispatchInsertMatrix(bv_, argument);
+		break;
+
+	case LFUN_INSERT_MATH:
+		mathDispatchInsertMath(bv_, argument);
+		break;
+
+	case LFUN_MATH_IMPORT_SELECTION: // Imports LaTeX from the X selection
+		mathDispatchMathImportSelection(bv_, argument);
+		break;
+
+	case LFUN_MATH_DISPLAY:          // Open or create a displayed math inset
+		mathDispatchMathDisplay(bv_, argument);
+		break;
+
+	case LFUN_MATH_MODE:             // Open or create an inlined math inset 
+		mathDispatchMathMode(bv_, argument);
+		break;
+		
 	case LFUN_CITATION_INSERT:
 	{
 		InsetCommandParams p;

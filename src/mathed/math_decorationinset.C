@@ -30,27 +30,20 @@ MathInset * MathDecorationInset::clone() const
 
 void MathDecorationInset::Metrics(MathStyles st)
 {
-	int const h = 2 * mathed_char_height(LM_TC_VAR, size(), 'I',
-					     ascent_, descent_);  
 	xcell(0).Metrics(st);
 	width_   = xcell(0).width();
 	ascent_  = xcell(0).ascent();
 	descent_ = xcell(0).descent();
 
-	int w = width() + 4;
-
-	dh_ = w / 5;
-	if (dh_ > h)
-		dh_ = h;
+	dh_ = mathed_char_height(LM_TC_VAR, size(), 'I', ascent_, descent_);  
 
 	if (upper_) {
-		ascent_ += dh_ + 2;
+		ascent_ += dh_ + 1;
 		dy_ = -ascent_;
 	} else {
-		dy_ = descent_ + 2;
-		descent_ += dh_ + 4;
+		dy_ = descent_ + 1;
+		descent_ += dh_ + 2;
 	}
-	width_ = w;
 }
 
 void MathDecorationInset::draw(Painter & pain, int x, int y)

@@ -44,19 +44,20 @@ public:
 	int width(BufferView *, LyXFont const &) const;
 	///
 	void draw(BufferView *,LyXFont const &, int, float &, bool) const;
+
 	///
-	void read(Buffer const *, LyXLex & lex);
+	void read(LyXLex & lex);
 	///
-	void write(Buffer const *, std::ostream & os) const;
+	void write(std::ostream & os) const;
 	///
-	int ascii(Buffer const *, std::ostream &, int linelen) const;
+	int ascii(std::ostream &, int linelen) const;
 	///
-	int latex(Buffer const *, std::ostream & os, bool fragile,
-		  bool free_spc) const;
+	int latex(std::ostream & os, bool fragile, bool free_spc) const;
 	///
-	int linuxdoc(Buffer const *, std::ostream & os) const;
+	int linuxdoc(std::ostream & os) const;
 	///
-	int docBook(Buffer const *, std::ostream &) const;
+	int docBook(std::ostream &) const;
+
 	///
 	Inset * clone(Buffer const &) const;
 	///

@@ -112,5 +112,6 @@ int MathXArray::width(int pos) const
 std::ostream & operator<<(std::ostream & os, MathXArray const & ar)
 {
 	os << ar.data_;
+	return os;
 }
 

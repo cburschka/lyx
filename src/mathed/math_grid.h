@@ -110,11 +110,10 @@ public:
 	void delCol(int);
 	///
 	virtual void appendRow();
-
-protected:
 	///
 	int index(int row, int col) const;
 
+protected:
 	/// row info
 	std::vector<RowInfo> rowinfo_;
 	/// column info

@@ -31,8 +31,6 @@ public:
 	///
 	void Metrics(MathStyles st);
 	///
-	void breakLine();
-	///
 	void draw(Painter &, int, int);
 	///
 	string label(int row) const;
@@ -69,9 +67,6 @@ public:
 	///
 	void mutate(short);
 
-	/// Splits cells and shifts right part to the next cell
-	void splitCell(int idx);
-	
 private:
 	///
 	void Validate1(LaTeXFeatures & features);

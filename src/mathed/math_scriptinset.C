@@ -31,8 +31,10 @@ MathInset * MathScriptInset::clone() const
 
 void MathScriptInset::Metrics(MathStyles st)
 {
-	MathInset::Metrics(st);
-	size_    = st;
+	size_ = smallerStyleScript(st);
+	xcell(0).Metrics(size_);
+	xcell(1).Metrics(size_);
+
 	width_   = std::max(xcell(0).width(), xcell(1).width()) + 2; 
 	if (up())
 		ascent_  = std::max(ascent_, xcell(0).height() + 9);

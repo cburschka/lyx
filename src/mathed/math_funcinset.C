@@ -71,9 +71,3 @@ void MathFuncInset::Metrics(MathStyles st)
 		mathed_string_height(LM_TC_TEXTRM, size_, name_, ascent_, descent_);
 	}
 }
-
-
-bool MathFuncInset::GetLimits() const 
-{  
-	return lims_ && (size() == LM_ST_DISPLAY); 
-} 

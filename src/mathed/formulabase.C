@@ -23,11 +23,13 @@
 #endif
 
 #include "formula.h"
+#include "formulamacro.h"
 #include "commandtags.h"
 #include "math_cursor.h"
 #include "math_parser.h"
 #include "BufferView.h"
 #include "lyxtext.h"
+#include "lyxfunc.h"
 #include "gettext.h"
 #include "LaTeXFeatures.h"
 #include "debug.h"
@@ -65,7 +67,7 @@ void mathed_init_fonts();
 
 string nicelabel(string const & label)
 {
-	return label.empty() ? string("(#)") : "(" + label + ")";
+	return "(" + (label.empty() ? "#" : label) + ")";
 }
 
 void handleFont(BufferView * bv, MathTextCodes t) 
@@ -73,6 +75,20 @@ void handleFont(BufferView * bv, MathTextCodes t)
 	if (mathcursor->Selection())
 		bv->lockedInsetStoreUndo(Undo::EDIT);
 	mathcursor->handleFont(t);
+}
+
+bool openNewInset(BufferView * bv, UpdatableInset * new_inset)
+{
+	LyXText * lt = bv->getLyXText();
+	
+	bv->beforeChange(lt);
+	lt->finishUndo();
+	if (!bv->insertInset(new_inset)) {
+		delete new_inset;
+		return false;
+	}
+	new_inset->edit(bv, 0, 0, 0);
+	return true;
 }
 
 } // namespaces
@@ -222,30 +238,37 @@ InsetFormulaBase::~InsetFormulaBase()
 }
 
 
-void InsetFormulaBase::write(Buffer const * buf, ostream & os) const
+void InsetFormulaBase::read(Buffer const *, LyXLex & lex)
 {
-	os << "Formula ";
-	latex(buf, os, false, false);
+	read(lex);
 }
 
-
-int InsetFormulaBase::ascii(Buffer const *, ostream & os, int) const
+void InsetFormulaBase::write(Buffer const *, ostream & os) const
 {
-	par_->Write(os, false);
-	return 0;
+	write(os);
 }
 
-
-int InsetFormulaBase::linuxdoc(Buffer const * buf, ostream & os) const
+int InsetFormulaBase::latex(Buffer const *, ostream & os,
+	bool fragile, bool spacing) const
 {
-	return ascii(buf, os, 0);
+	return latex(os, fragile, spacing);
 }
 
-
-int InsetFormulaBase::docBook(Buffer const * buf, ostream & os) const
+int InsetFormulaBase::ascii(Buffer const *, ostream & os, int spacing) const
 {
-	return ascii(buf, os, 0);
+	return ascii(os, spacing);
 }
+
+int InsetFormulaBase::linuxdoc(Buffer const *, ostream & os) const
+{
+	return linuxdoc(os);
+}
+
+int InsetFormulaBase::docBook(Buffer const *, ostream & os) const
+{
+	return docBook(os);
+}
+
 
 
 // Check if uses AMS macros
@@ -387,8 +410,8 @@ void InsetFormulaBase::insetButtonRelease(BufferView * bv,
 			sel_flag = false;
 			sel_x = 0;
 			sel_y = 0;
-			bv->updateInset(this, false);
 		}
+		bv->updateInset(this, false);
 	}
 }
 
@@ -504,15 +527,14 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 		updateLocal(bv);
 		break;
 
-
 	case LFUN_HOME:
 		mathcursor->Home();
-		result = DISPATCHED_NOUPDATE;
+		updateLocal(bv);
 		break;
 
 	case LFUN_END:
 		mathcursor->End();
-		result = DISPATCHED_NOUPDATE;
+		updateLocal(bv);
 		break;
 
 	case LFUN_DELETE_LINE_FORWARD:
@@ -522,14 +544,18 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 		break;
 
 	case LFUN_TAB:
-		bv->lockedInsetStoreUndo(Undo::INSERT);
-		mathcursor->idxRight();
+		mathcursor->idxNext();
+		updateLocal(bv);
+		break;
+
+	case LFUN_SHIFT_TAB:
+		mathcursor->idxPrev();
 		updateLocal(bv);
 		break;
 
 	case LFUN_TABINSERT:
-		bv->lockedInsetStoreUndo(Undo::INSERT);
-		mathcursor->idxRight();
+		bv->lockedInsetStoreUndo(Undo::EDIT);
+		mathcursor->splitCell();
 		updateLocal(bv);
 		break;
 
@@ -563,9 +589,9 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 		int y1;
 		istringstream is(arg.c_str());
 		is >> x >> y;
-		lyxerr << "LFUN_SETXY: x: " << x << " y: " << y << "\n";
 		par_->GetXY(x1, y1);
 		mathcursor->SetPos(x1 + x, y1 + y);
+		updateLocal(bv);
 	}
 	break;
 
@@ -829,6 +855,9 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 	default:
 		if ((action == -1 || action == LFUN_SELFINSERT) && !arg.empty()) {
 			unsigned char c = arg[0];
+			lyxerr << "char: '" << c << "'  int: " << int(c) << endl;
+			//owner_->getIntl()->getTrans().TranslateAndInsert(c, lt);	
+			lyxerr << "trans: '" << c << "'  int: " << int(c) << endl;
 			bv->lockedInsetStoreUndo(Undo::INSERT);
 
 			if (c == ' ' && mathcursor->getAccent() == LM_hat) {
@@ -1042,5 +1071,94 @@ LyXFont const InsetFormulaBase::convertFont(LyXFont const & f) const
 MathInset * InsetFormulaBase::par() const
 {
 	return par_;
+}
+
+
+void mathDispatchCreation(BufferView * bv, string const & arg, bool display)
+{
+	if (bv->available()) {
+// Feature "Read math inset from selection" disabled.
+//		// use selection if available..
+//		string sel;
+//		if (action == LFUN_MATH_IMPORT_SELECTION)
+//			sel = "";
+//		else
+//			sel = bv->getLyXText()->selectionAsString(bv->buffer());
+
+			InsetFormula * f;
+//		if (sel.empty()) {
+				f = new InsetFormula;
+				openNewInset(bv, f);
+				// don't do that also for LFUN_MATH_MODE unless you want end up with
+				// always changing to mathrm when opening an inlined inset
+				// -- I really hate "LyXfunc overloading"...
+				if (display)
+					f->localDispatch(bv, LFUN_MATH_DISPLAY, string());
+				f->localDispatch(bv, LFUN_INSERT_MATH, arg);
+//		} else {
+//			f = new InsetFormula(sel);
+//			bv->getLyXText()->cutSelection(bv);
+//			openNewInset(bv, f);
+//		}
+	}
+	bv->owner()->getLyXFunc()->setMessage(N_("Math editor mode"));
+}
+
+void mathDispatchMathDisplay(BufferView * bv, string const & arg)
+{
+	mathDispatchCreation(bv, arg, true);
+}
+	
+void mathDispatchMathMode(BufferView * bv, string const & arg)
+{
+	mathDispatchCreation(bv, arg, false);
+}
+
+void mathDispatchMathImportSelection(BufferView * bv, string const & arg)
+{
+	mathDispatchCreation(bv, arg, true);
+}
+
+void mathDispatchMathMacro(BufferView * bv, string const & arg)
+{
+	if (bv->available()) {
+		string s(arg);
+		if (s.empty())
+			bv->owner()->getLyXFunc()->setErrorMessage(N_("Missing argument"));
+		else {
+			string const s1 = token(s, ' ', 1);
+			int const na = s1.empty() ? 0 : lyx::atoi(s1);
+			openNewInset(bv, new InsetFormulaMacro(token(s, ' ', 0), na));
+		}
+	}
+}
+
+void mathDispatchMathDelim(BufferView * bv, string const & arg)
+{ 	   
+	if (bv->available()) { 
+		if (openNewInset(bv, new InsetFormula))
+			bv->theLockingInset()->localDispatch(bv, LFUN_MATH_DELIM, arg);
+	}
+}	   
+
+
+void mathDispatchInsertMatrix(BufferView * bv, string const & arg)
+{ 	   
+	if (bv->available()) { 
+		if (openNewInset(bv, new InsetFormula))
+			bv->theLockingInset()->localDispatch(bv, LFUN_INSERT_MATRIX, arg);
+	}
+}	   
+
+void mathDispatchInsertMath(BufferView * bv, string const & arg)
+{
+	if (bv->available()) {
+		if (arg.size() && arg[0] == '\\') {
+			InsetFormula * f = new InsetFormula(arg);
+			openNewInset(bv, f);
+		} else {
+			return mathDispatchMathDisplay(bv, arg);
+		}
+	}
 }
 

@@ -11,7 +11,7 @@
 using std::ostream;
 
 MathBigopInset::MathBigopInset(string const & name, int id)
-	: MathScriptInset(true, false), lims_(-1), sym_(id)
+	: MathScriptInset(true, false), lims_(0), sym_(id)
 {
 	SetName(name);
 }

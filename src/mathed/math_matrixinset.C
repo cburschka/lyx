@@ -86,14 +86,15 @@ MathInset * MathMatrixInset::clone() const
 }
 
 
-void MathMatrixInset::Metrics(MathStyles st)
+void MathMatrixInset::Metrics(MathStyles /* st */)
 {
-	size_ = st;
+	size_ = (GetType() == LM_OT_SIMPLE) ? LM_ST_TEXT : LM_ST_DISPLAY;
+
 	//LyXFont wfont = WhichFont(LM_TC_BF, size());
 	//wfont.setLatex(LyXFont::OFF);
 
 	// let the cells adjust themselves
-	MathGridInset::Metrics(st);
+	MathGridInset::Metrics(size_);
 
 	if (display()) {
 		ascent_  += 12;
@@ -285,6 +286,8 @@ void MathMatrixInset::header_write(std::ostream & os) const
 			os << "\\begin{alignat" << star(n) << "}"
 			   << "{" << ncols()/2 << "}\n";
 			break;
+		default:
+			os << "\\begin{unknown" << star(n) << "}";
 	}
 }
 
@@ -316,6 +319,9 @@ void MathMatrixInset::footer_write(std::ostream & os) const
 		case LM_OT_ALIGNAT:
 			os << "\\end{alignat" << star(n) << "}\n";
 			break;
+
+		default:
+			os << "\\end{unknown" << star(n) << "}";
 	}
 }
 
@@ -377,24 +383,6 @@ void MathMatrixInset::delCol(int col)
 		default:
 			break;
 	}
-}
-
-void MathMatrixInset::breakLine() 
-{
-	if (GetType() == LM_OT_SIMPLE || GetType() == LM_OT_EQUATION) 
-		mutate(LM_OT_EQNARRAY);
-	addRow(nrows() - 1);
-}
-
-
-void MathMatrixInset::splitCell(int idx)
-{
-	if (idx == nargs() - 1) {
-		lyxerr << "can't split last cell\n";
-		return;
-	}
-
-	lyxerr << "unimplemented\n";
 }
 
 
@@ -487,17 +475,9 @@ void MathMatrixInset::mutate(short newtype)
 		case LM_OT_EQNARRAY:
 			switch (newtype) {
 				case LM_OT_SIMPLE:
-					glueall();
-					break;
-
 				case LM_OT_EQUATION:
-					if (nrows() == 1) {
-						MathGridInset::delCol(2);
-						MathGridInset::delCol(1);
-						SetType(LM_OT_EQUATION);
-						mutate(newtype);
-					} else 
-						lyxerr << "need to delete rows first\n";
+					glueall();
+					mutate(newtype);
 					break;
 
 				case LM_OT_ALIGN:
@@ -521,7 +501,7 @@ void MathMatrixInset::mutate(short newtype)
 				case LM_OT_EQNARRAY:
 					MathGridInset::addCol(1);
 					SetType(LM_OT_EQNARRAY);
-					halign("lrl");
+					halign("rcl");
 					mutate(newtype);
 					break;
 				

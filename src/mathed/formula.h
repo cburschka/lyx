@@ -21,6 +21,7 @@
 #pragma interface
 #endif
 
+#include "LString.h"
 #include "mathed/formulabase.h"
 #include "math_defs.h"
 
@@ -34,6 +35,8 @@ public:
 	///
 	explicit InsetFormula(MathInsetTypes);
 	///
+	explicit InsetFormula(string const &);
+	///
 	int ascent(BufferView *, LyXFont const &) const;
 	///
 	int descent(BufferView *, LyXFont const &) const;
@@ -41,19 +44,21 @@ public:
 	int width(BufferView *, LyXFont const &) const;
 	///
 	void draw(BufferView *, LyXFont const &, int, float &, bool) const;
+
 	///
-	void write(Buffer const *, std::ostream &) const;
+	void write(std::ostream &) const;
 	///
-	void read(Buffer const *, LyXLex & lex);
+	void read(LyXLex & lex);
 	///
-	int latex(Buffer const *, std::ostream &,
+	int latex(std::ostream &,
 		  bool fragile, bool free_spc) const;
 	///
-	int ascii(Buffer const *, std::ostream &, int linelen) const;
+	int ascii(std::ostream &, int linelen) const;
 	///
-	int linuxdoc(Buffer const *, std::ostream &) const;
+	int linuxdoc(std::ostream &) const;
 	///
-	int docBook(Buffer const *, std::ostream &) const;
+	int docBook(std::ostream &) const;
+
 	///
 	Inset * clone(Buffer const &) const;
 	///
@@ -72,5 +77,8 @@ public:
 	bool display() const;
 	///
 	bool ams() const;
+private:
+	/// Safe setting of contents
+	void par(MathInset *);
 };
 #endif

@@ -56,11 +56,17 @@ void MathMacro::Metrics(MathStyles st)
 
 		width_ +=  mathed_string_width(LM_TC_TEXTRM, size_, name_) + 10;
 
+		int lasc;
+		int ldes;
+		int lwid;
+		mathed_string_dim(LM_TC_TEXTRM, size_, "#1: ", lasc, ldes, lwid);
+
 		for (int i = 0; i < nargs(); ++i) {
 			MathXArray & c = xcell(i);
 			c.Metrics(st);
-			width_    = std::max(width_, c.width() + 30);
-			descent_ += c.height() + 10;
+			width_    = std::max(width_, c.width() + lwid);
+			descent_ += std::max(c.ascent(),  lasc) + 5;
+			descent_ += std::max(c.descent(), ldes) + 5;
 		}
 	} else {
 		expanded_ = tmplate_->xcell(0);
@@ -86,18 +92,23 @@ void MathMacro::draw(Painter & pain, int x, int y)
 		int h = y - ascent() + 2 + expanded_.ascent();
 		drawStr(pain, LM_TC_TEXTRM, size(), x + 3, h, name_);
 
-		int w = mathed_string_width(LM_TC_TEXTRM, size(), name_);
+		int const w = mathed_string_width(LM_TC_TEXTRM, size(), name_);
 		expanded_.draw(pain, x + w + 12, h);
 		h += expanded_.descent();
 
+		int lasc;
+		int ldes;
+		int lwid;
+		mathed_string_dim(LM_TC_TEXTRM, size_, "#1: ", lasc, ldes, lwid);
+
 		for (int i = 0; i < nargs(); ++i) {
 			MathXArray & c = xcell(i);
-			h += c.ascent() + 5;
-			c.draw(pain, x + 30, h);
+			h += std::max(c.ascent(), lasc) + 5;
+			c.draw(pain, x + lwid, h);
 			char str[] = "#1:";
 			str[1] += i;
 			drawStr(pain, LM_TC_TEX, size(), x + 3, h, str);
-			h += c.descent() + 5;
+			h += std::max(c.descent(), ldes) + 5;
 		}
 		col = LColor::red;
 	} else {

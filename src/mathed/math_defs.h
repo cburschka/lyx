@@ -37,6 +37,13 @@ enum MathStyles {
 	LM_ST_SCRIPTSCRIPT
 };
 
+// decrease math size for super- and subscripts
+MathStyles smallerStyleScript(MathStyles);
+
+// decrease math size for fractions
+MathStyles smallerStyleFrac(MathStyles st);
+
+
 
 /** The restrictions of a standard LaTeX math paragraph
   allows to get a small number of text codes (<30) */

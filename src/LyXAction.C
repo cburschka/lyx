@@ -289,6 +289,7 @@ void LyXAction::init()
 		{ LFUN_MATH_LIMITS, "math-limits", "", Noop },
 		{ LFUN_MATH_MACRO, "math-macro", "", Noop },
 		{ LFUN_MATH_MUTATE, "math-mutate", "", Noop },
+		{ LFUN_MATH_IMPORT_SELECTION, "math-import-selection", "", Noop },
 		{ LFUN_MATH_MACROARG, "math-macro-arg", "", Noop },
 		{ LFUN_INSERT_MATRIX, "math-matrix", "", Noop },
 		{ LFUN_MATH_MODE, "math-mode", N_("Math mode"), Noop },

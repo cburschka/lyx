@@ -20,6 +20,7 @@
 #endif
 
 #include <config.h>
+#include <cctype>
 
 #include "math_inset.h"
 #include "math_parser.h"
@@ -51,6 +52,7 @@
 using std::endl;
 using std::min;
 using std::max;
+using std::isalnum;
 
 
 namespace {
@@ -115,6 +117,8 @@ MathInset * MathCursor::parInset(int i) const
 
 void MathCursor::dump(char const * what) const
 {
+	return;
+
 	lyxerr << "MC: " << what
 		<< " cursor: " << cursor_
 		<< " anchor: " << anchor_
@@ -174,8 +178,8 @@ bool MathCursor::Left(bool sel)
 			result = array().next(anchor_);
 		}
 	} else {
-		MathInset * p = prevActiveInset();
-		if (p) {
+		MathInset * p = prevInset();
+		if (p && p->isActive()) {
 			// We have to move deeper into the previous inset
 			array().prev(cursor_);
 			push(p, false);
@@ -224,8 +228,8 @@ bool MathCursor::Right(bool sel)
 			result = array().next(cursor_);
 		}
 	} else {
-		MathInset * p = nextActiveInset();
-		if (p) {
+		MathInset * p = nextInset();
+		if (p && p->isActive()) {
 			push(p, true);
 			result = true;
 		} else {
@@ -270,7 +274,7 @@ void MathCursor::last()
 void MathCursor::SetPos(int x, int y)
 {
 	dump("SetPos 1");
-	lyxerr << "MathCursor::SetPos x: " << x << " y: " << y << "\n";
+	//lyxerr << "MathCursor::SetPos x: " << x << " y: " << y << "\n";
 
 	MacroModeClose();
 	lastcode = LM_TC_MIN;
@@ -281,6 +285,7 @@ void MathCursor::SetPos(int x, int y)
 	while (1) {
 		idx_    = -1;
 		cursor_ = -1;
+		//lyxerr << "found idx: " << idx_ << " cursor: " << cursor_  << "\n";
 		int distmin = 1 << 30; // large enough
 		for (int i = 0; i < par_->nargs(); ++i) {
 			MathXArray const & ar = par_->xcell(i);
@@ -298,11 +303,11 @@ void MathCursor::SetPos(int x, int y)
 			}
 		}
 		lyxerr << "found idx: " << idx_ << " cursor: " << cursor_  << "\n";
-		if (nextIsActive() && nextInset()->covers(x, y)) {
-			MathInset * p = nextActiveInset();
-			push(p, true);
-		} else if (prevIsActive() && prevInset()->covers(x, y)) {
-			MathInset * p = prevActiveInset();
+		MathInset * n = nextInset();
+		MathInset * p = prevInset();
+		if (n && (n->isActive() || n->isScriptInset()) && n->covers(x, y))
+			push(n, true);
+		else if (p && (p->isActive() || p->isScriptInset()) && p->covers(x, y)) {
 			array().prev(cursor_);
 			push(p, false);
 		} else 
@@ -661,10 +666,15 @@ void MathCursor::Interpret(string const & s)
 	}
 
 	if (p) {
+		bool oldsel = selection;
+		if (oldsel) 
+			SelCut();
 		insert(p);
 		if (p->nargs()) {
 			array().prev(cursor_);
 			push(p, true);
+			if (oldsel) 
+				SelPaste();
 		}
 		p->Metrics(p->size());
 	}
@@ -920,10 +930,11 @@ void MathCursor::handleFont(MathTextCodes t)
 	if (selection)	{
 		int const p1 = std::min(cursor_, anchor_);
 		int const p2 = std::max(cursor_, anchor_);
-		for (int pos = p1; pos != p2; array().next(pos))
-			if (!array().isInset(pos)) { 
-				MathTextCodes c = array().GetCode(pos) == t ? LM_TC_VAR : t;
-				array().setCode(pos, c);
+		MathArray & ar = array();
+		for (int pos = p1; pos != p2; ar.next(pos))
+			if (!ar.isInset(pos) && isalnum(ar.GetChar(pos))) { 
+				MathTextCodes c = ar.GetCode(pos) == t ? LM_TC_VAR : t;
+				ar.setCode(pos, c);
 			}
 	} else {
 		if (lastcode == t)
@@ -1004,7 +1015,7 @@ MathTextCodes MathCursor::getLastCode() const
 MathInset * MathCursor::enclosing(MathInsetTypes t, int & idx) const
 {
 	if (par_->GetType() == t) {
-		lyxerr << "enclosing par is current\n";
+		//lyxerr << "enclosing par is current\n";
 		idx = idx_;
 		return par_;
 	}
@@ -1094,28 +1105,11 @@ MathInset * MathCursor::prevInset() const
 	return array().GetInset(c);
 }
 
-MathInset * MathCursor::prevActiveInset() const
-{
-	if (cursor_ <= 0 || !array().isInset(cursor_ - 1))
-		return 0;
-	MathInset * inset = prevInset();
-	return inset->isActive() ? inset : 0;
-}
-
 
 MathInset * MathCursor::nextInset() const
 {
 	normalize();
 	return array().GetInset(cursor_);
-}
-
-
-MathInset * MathCursor::nextActiveInset() const
-{
-	if (!array().isInset(cursor_))
-		return 0;
-	MathInset * inset = nextInset();
-	return inset->isActive() ? inset : 0;
 }
 
 
@@ -1160,21 +1154,9 @@ bool MathCursor::nextIsInset() const
 }
 
 
-bool MathCursor::nextIsActive() const
-{
-	return nextIsInset() && nextInset()->isActive();
-}
-
-
 bool MathCursor::prevIsInset() const
 {
 	return cursor_ > 0 && MathIsInset(prevCode());
-}
-
-
-bool MathCursor::prevIsActive() const
-{
-	return prevIsInset() && prevInset()->isActive();
 }
 
 
@@ -1202,9 +1184,49 @@ void MathCursor::gotoX(int x)
 	cursor_ = xarray().x2pos(x);	
 }
 
-void MathCursor::idxRight()
+void MathCursor::idxNext()
 {
-	par_->idxRight(idx_, cursor_);
+	par_->idxNext(idx_, cursor_);
+}
+
+void MathCursor::idxPrev()
+{
+	par_->idxPrev(idx_, cursor_);
+}
+
+void MathCursor::splitCell()
+{
+	if (idx_ == par_->nargs() - 1) 
+		return;
+	MathArray ar = array();
+	ar.erase(0, cursor_);
+	array().erase(cursor_, array().size());
+	++idx_;
+	cursor_ = 0;
+	array().insert(0, ar);
+}
+
+void MathCursor::breakLine()
+{
+	MathMatrixInset * p = static_cast<MathMatrixInset *>(formula()->par());
+	if (p->GetType() == LM_OT_SIMPLE || p->GetType() == LM_OT_EQUATION)
+		p->mutate(LM_OT_EQNARRAY);
+	p->addRow(row());
+
+	// split line
+	const int r = row();
+	for (int c = col() + 1; c < p->ncols(); ++c) {
+		const int i1 = p->index(r, c);
+		const int i2 = p->index(r + 1, c);	
+		lyxerr << "swapping cells " << i1 << " and " << i2 << "\n";
+		p->cell(i1).swap(p->cell(i2));
+	}
+
+	// split cell
+	splitCell();
+	MathArray & halfcell = array();
+	idx_ += p->ncols() - 1;
+	halfcell.swap(array());
 }
 
 char MathCursor::valign() const

@@ -52,8 +52,6 @@ using std::vector;
 
 extern char const * latex_mathenv[];
 extern MathCursor * mathcursor;
-extern LyXFont WhichFont(short type, int size);
-
 
 
 // quite a hack i know. Should be done with return values...
@@ -70,6 +68,13 @@ InsetFormula::InsetFormula(MathInsetTypes t)
 {}
 
 
+InsetFormula::InsetFormula(string const & s)
+	: InsetFormulaBase(0)
+{
+	istringstream is(s.c_str());
+	par(mathed_parse(is));
+}
+
 
 Inset * InsetFormula::clone(Buffer const &) const
 {
@@ -77,42 +82,42 @@ Inset * InsetFormula::clone(Buffer const &) const
 }
 
 
-void InsetFormula::write(Buffer const * buf, ostream & os) const
+void InsetFormula::write(ostream & os) const
 {
 	os << "Formula ";
-	latex(buf, os, false, false);
+	latex(os, false, false);
 }
 
 
-int InsetFormula::latex(Buffer const *, ostream & os, bool fragile, bool) const
+int InsetFormula::latex(ostream & os, bool fragile, bool) const
 {
 	par()->Write(os, fragile);
 	return 1;
 }
 
 
-int InsetFormula::ascii(Buffer const *, ostream & os, int) const
+int InsetFormula::ascii(ostream & os, int) const
 {
 	par()->Write(os, false);
 	return 1;
 }
 
 
-int InsetFormula::linuxdoc(Buffer const * buf, ostream & os) const
+int InsetFormula::linuxdoc(ostream & os) const
 {
-	return ascii(buf, os, 0);
+	return ascii(os, 0);
 }
 
 
-int InsetFormula::docBook(Buffer const * buf, ostream & os) const
+int InsetFormula::docBook(ostream & os) const
 {
-	return ascii(buf, os, 0);
+	return ascii(os, 0);
 }
 
 
-void InsetFormula::read(Buffer const *, LyXLex & lex)
+void InsetFormula::read(LyXLex & lex)
 {
-	par_ = mathed_parse(lex);
+	par(mathed_parse(lex));
 }
 
 
@@ -167,7 +172,7 @@ InsetFormula::localDispatch(BufferView * bv, kb_action action,
 
 		case LFUN_BREAKLINE: 
 			bv->lockedInsetStoreUndo(Undo::INSERT);
-			par()->breakLine();
+			mathcursor->breakLine();
 			updateLocal(bv);
 			break;
 
@@ -245,24 +250,29 @@ InsetFormula::localDispatch(BufferView * bv, kb_action action,
 		}
 
 		case LFUN_MATH_EXTERN:
+			bv->lockedInsetStoreUndo(Undo::EDIT);
 			handleExtern(arg, bv);
 			updateLocal(bv);
 			break;
 
 		case LFUN_MATH_MUTATE:
+		{
+			bv->lockedInsetStoreUndo(Undo::EDIT);
+			int x;
+			int y;
+			mathcursor->GetPos(x, y);
 			par()->mutate(arg);
+			mathcursor->SetPos(x, y);
+			mathcursor->normalize();
 			updateLocal(bv);
 			break;
-
-		case LFUN_TABINSERT:
-			lyxerr << "take index from cursor\n";
-			par()->splitCell(0);
-			updateLocal(bv);
-			break;
+		}
 
 		case LFUN_MATH_DISPLAY:
-			if (par()->GetType() == LM_OT_SIMPLE)
+			if (par()->GetType() == LM_OT_SIMPLE) {
 				par()->mutate(LM_OT_EQUATION);
+				par()->numbered(0, false);
+			}
 			else
 				par()->mutate(LM_OT_SIMPLE);
 			updateLocal(bv);
@@ -288,7 +298,7 @@ void InsetFormula::handleExtern(const string & arg, BufferView *)
 	Systemcalls cmd(Systemcalls::System, script, 0);
 
 	ifstream is(outfile.c_str());
-	par_ = mathed_parse(is);
+	par(mathed_parse(is));
 }
 
 bool InsetFormula::display() const
@@ -300,6 +310,12 @@ bool InsetFormula::display() const
 MathMatrixInset * InsetFormula::par() const
 {
 	return static_cast<MathMatrixInset *>(par_);
+}
+
+void InsetFormula::par(MathInset * p)
+{ 
+	delete par_;
+	par_ = p ? p : new MathMatrixInset;
 }
 
 
@@ -332,13 +348,3 @@ int InsetFormula::width(BufferView *, LyXFont const &) const
 	par()->Metrics(LM_ST_TEXT);
 	return par()->width();
 }
-
-/*
-LyXFont const InsetFormula::ConvertFont(LyXFont const & f) const
-{
-	// We have already discussed what was here
-	LyXFont font(f);
-	font.setLatex(LyXFont::OFF);
-	return font;
-}
-*/

@@ -32,7 +32,7 @@ int MathInset::workwidth;
 
 MathInset::MathInset(string const & name, MathInsetTypes ot, int nargs)
 	: name_(name), objtype(ot), width_(0), ascent_(0), descent_(0),
-		size_(LM_ST_TEXT), cells_(nargs), xo_(0), yo_(0)
+		size_(LM_ST_DISPLAY), cells_(nargs), xo_(0), yo_(0)
 {}
 
 
@@ -202,7 +202,7 @@ void MathInset::draw(Painter & pain, int x, int y)
 }
 
 
-bool MathInset::idxRight(int & idx, int & pos) const
+bool MathInset::idxNext(int & idx, int & pos) const
 {
 	if (idx + 1 >= nargs())
 		return false;
@@ -212,7 +212,13 @@ bool MathInset::idxRight(int & idx, int & pos) const
 }
 
 
-bool MathInset::idxLeft(int & idx, int & pos) const
+bool MathInset::idxRight(int & idx, int & pos) const
+{
+	return idxNext(idx, pos);
+}
+
+
+bool MathInset::idxPrev(int & idx, int & pos) const
 {
 	if (idx == 0)
 		return false;
@@ -221,6 +227,11 @@ bool MathInset::idxLeft(int & idx, int & pos) const
 	return true;
 }
 
+
+bool MathInset::idxLeft(int & idx, int & pos) const
+{
+	return idxPrev(idx, pos);
+}
 
 bool MathInset::idxUp(int &, int &) const
 {

@@ -14,7 +14,7 @@
 class MathDecorationInset : public MathInset {
 public:
 	///
-	MathDecorationInset(int);
+	explicit MathDecorationInset(int);
 	///
 	MathInset * clone() const;
 	///

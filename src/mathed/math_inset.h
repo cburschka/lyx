@@ -95,6 +95,11 @@ public:
 	/// The right key
 	virtual bool idxRight(int & idx, int & pos) const;
 
+	/// Move one physical cell up
+	virtual bool idxNext(int & idx, int & pos) const;
+	/// Move one physical cell down
+	virtual bool idxPrev(int & idx, int & pos) const;
+
 	/// Target pos when we enter the inset from the left by pressing "Right"
 	virtual bool idxFirst(int & idx, int & pos) const;
 	/// Target pos when we enter the inset from the left by pressing "Up"

@@ -117,12 +117,18 @@ public:
 	void setLastCode(MathTextCodes t);
 	///
 	void handleFont(MathTextCodes t);
+	/// Splits cells and shifts right part to the next cell
+	void splitCell();
+	/// Splits line and insert new row of cell 
+	void breakLine();
 	///
 	MathTextCodes getLastCode() const;
 	///
 	int idx() const { return idx_; }
 	///
-	void idxRight();
+	void idxNext();
+	///
+	void idxPrev();
 	///
 	void pullArg();
 	///
@@ -213,11 +219,7 @@ private:
 	///
 	bool nextIsInset() const;
 	///
-	bool nextIsActive() const;
-	///
 	bool prevIsInset() const;
-	///
-	bool prevIsActive() const;
 	///
 	bool IsFont() const;
 	///
@@ -227,11 +229,7 @@ private:
 	///
 	MathInset * nextInset() const;
 	///
-	MathInset * nextActiveInset() const;
-	///
 	MathInset * prevInset() const;
-	///
-	MathInset * prevActiveInset() const;
 	///
 	MathScriptInset * nearbyScriptInset() const;
 

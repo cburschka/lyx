@@ -105,6 +105,21 @@ byte MathArray::GetChar(int pos) const
 	return pos < size() ? bf_[pos + 1] : '\0';
 }
 
+string MathArray::GetString(int & pos) const
+{
+	string s;
+	if (isInset(pos))
+		return s;
+
+	MathTextCodes const fcode = GetCode(pos);
+	do {
+		s += GetChar(pos);
+		next(pos);
+	} while (pos < size() && !isInset(pos) && GetCode(pos) == fcode);
+
+	return s;
+}
+
 MathTextCodes MathArray::GetCode(int pos) const
 {
 	return pos < size() ? MathTextCodes(bf_[pos]) : LM_TC_MIN;

@@ -588,3 +588,25 @@ void drawChar(Painter & pain, short type, int siz, int x, int y, char c)
 	s += c;
 	drawStr(pain, type, siz, x, y, s);
 }
+
+// decrease math size for super- and subscripts
+MathStyles smallerStyleScript(MathStyles st)
+{
+	switch (st) {
+		case LM_ST_DISPLAY:
+		case LM_ST_TEXT:    st = LM_ST_SCRIPT; break;
+		default:            st = LM_ST_SCRIPTSCRIPT;
+	}
+	return st;
+}
+
+// decrease math size for fractions
+MathStyles smallerStyleFrac(MathStyles st)
+{
+	switch (st) {
+		case LM_ST_DISPLAY: st = LM_ST_TEXT; break;
+		case LM_ST_TEXT:    st = LM_ST_SCRIPT; break;
+		default:            st = LM_ST_SCRIPTSCRIPT;
+	}
+	return st;
+}

@@ -21,6 +21,7 @@
 
 #include "mathed/support.h"
 #include "math_defs.h"
+#include "LString.h"
 
 class MathInset;
 class MathScriptInset;
@@ -107,6 +108,9 @@ public:
 	MathScriptInset * nextScriptInset(int pos) const;
 	///
 	byte GetChar(int pos) const;
+	/// read subsequent chars of the same kind.
+	// pos is afterwards one behind the last char belonging to the string
+	string GetString(int & pos) const;
 	///
 	MathTextCodes GetCode(int pos) const;
 	///

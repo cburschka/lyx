@@ -490,10 +490,15 @@ func_status::value_type LyXFunc::getStatus(int ac,
 	case LFUN_BOOKMARK_GOTO:
 		disable =  !owner->view()->
 			isSavedPosition(strToUnsignedInt(argument));
+
 	case LFUN_MATH_VALIGN: {
-		Inset * tli = owner->view()->theLockingInset();
-		if (tli && (tli->lyxCode() == Inset::MATH_CODE 
-			    || tli->lyxCode() == Inset::MATHMACRO_CODE)) {
+    // I think this test can be simplified (Andre')
+		// mathcursor is != 0  iff we are in math mode
+		//Inset * tli = owner->view()->theLockingInset();
+		//if (tli && (tli->lyxCode() == Inset::MATH_CODE 
+		//	    || tli->lyxCode() == Inset::MATHMACRO_CODE)) {
+		//
+		if (mathcursor) {
 			char align = mathcursor->valign();
 			if (align == '\0') {
 				disable = true;
@@ -516,9 +521,10 @@ func_status::value_type LyXFunc::getStatus(int ac,
 		break;
 	}
 	case LFUN_MATH_HALIGN: {
-		Inset * tli = owner->view()->theLockingInset();
-		if (tli && (tli->lyxCode() == Inset::MATH_CODE 
-			    || tli->lyxCode() == Inset::MATHMACRO_CODE)) {
+		//Inset * tli = owner->view()->theLockingInset();
+		//if (tli && (tli->lyxCode() == Inset::MATH_CODE 
+		//	    || tli->lyxCode() == Inset::MATHMACRO_CODE)) {
+		if (mathcursor) {
 			char align = mathcursor->halign();
 			if (align == '\0') {
 				disable = true;
@@ -566,6 +572,24 @@ func_status::value_type LyXFunc::getStatus(int ac,
 			disable = true;
 		break;
 	}
+
+	// we just need to be in math mode to enable that
+	case LFUN_MATH_SIZE: 
+	case LFUN_MATH_LIMITS: 
+	case LFUN_MATH_NONUMBER: 
+	case LFUN_MATH_NUMBER:
+		disable = !mathcursor;
+		break;
+
+	// we need to be math mode and a math array for that
+	// Hack: halign produces non-zero result iff we are in a math array
+	case LFUN_MATH_ROW_INSERT: 
+	case LFUN_MATH_ROW_DELETE: 
+	case LFUN_MATH_COLUMN_INSERT: 
+	case LFUN_MATH_COLUMN_DELETE: 
+		disable = !mathcursor || !mathcursor->halign();
+		break;
+
 	default:
 		break;
         }

@@ -1,13 +1,11 @@
 /*
- *  File:        formula.h
- *  Purpose:     Implementation of formula inset
- *  Author:      Alejandro Aguilar Sierra <asierra@servidor.unam.mx> 
- *  Created:     January 1996
- *  Description: Allows the edition of math paragraphs inside Lyx. 
+ *  File:        formulamacro.C
+ *  Purpose:     Implementation of the formula macro LyX inset
+ *  Author:      André Pönitz
+ *  Created:     March 2001
+ *  Description: Allows the edition of math macros inside Lyx. 
  *
- *  Copyright: 1996, 1997 Alejandro Aguilar Sierra
- *
- *  Version: 0.4, Lyx project.
+ *  Copyright: 2001  The LyX Project
  *
  *   You are free to use and modify this code under the terms of
  *   the GNU General Public Licence version 2 or later.
@@ -61,40 +59,40 @@ Inset * InsetFormulaMacro::clone(Buffer const &) const
 }
 
 
-void InsetFormulaMacro::write(Buffer const *, ostream & os) const
+void InsetFormulaMacro::write(ostream & os) const
 {
 	os << "FormulaMacro ";
 	tmacro()->Write(os, false);
 }
 
 
-int InsetFormulaMacro::latex(Buffer const *, ostream & os, bool fragile, 
+int InsetFormulaMacro::latex(ostream & os, bool fragile, 
 			     bool /*free_spacing*/) const
 {
 	tmacro()->Write(os, fragile);
 	return 2;
 }
 
-int InsetFormulaMacro::ascii(Buffer const *, ostream & os, int) const
+int InsetFormulaMacro::ascii(ostream & os, int) const
 {
 	tmacro()->Write(os, false);
 	return 0;
 }
 
 
-int InsetFormulaMacro::linuxdoc(Buffer const * buf, ostream & os) const
+int InsetFormulaMacro::linuxdoc(ostream & os) const
 {
-	return ascii(buf, os, 0);
+	return ascii(os, 0);
 }
 
 
-int InsetFormulaMacro::docBook(Buffer const * buf, ostream & os) const
+int InsetFormulaMacro::docBook(ostream & os) const
 {
-	return ascii(buf, os, 0);
+	return ascii(os, 0);
 }
 
 
-void InsetFormulaMacro::read(Buffer const *, LyXLex & lex)
+void InsetFormulaMacro::read(LyXLex & lex)
 {
 	// Awful hack...
 	par_ = mathed_parse(lex);
@@ -141,7 +139,8 @@ void InsetFormulaMacro::draw(BufferView * bv, LyXFont const & f,
 	int const w = width(bv, font) - 2;
 	int const h = ascent(bv, font) + descent(bv, font) - 2;
 
-	pain.fillRectangle(int(x), y , w, h, LColor::mathbg);
+	// LColor::mathbg used to be "AntiqueWhite" but is "linen" now, too
+	pain.fillRectangle(int(x), y , w, h, LColor::mathmacrobg);
 	pain.rectangle(int(x), y, w, h, LColor::mathframe);
 
 	if (mathcursor && mathcursor->formula() == this && mathcursor->Selection()) {
@@ -172,11 +171,11 @@ InsetFormulaMacro::localDispatch(BufferView * bv,
 		case LFUN_MATH_MACROARG: {
 			int const i = lyx::atoi(arg);
 			lyxerr << "inserting macro arg " << i << "\n";
-			if (i > 0 && i <= tmacro()->nargs()) {
+			if (i > 0 && i <= tmacro()->numargs()) {
 				mathcursor->insert(new MathMacroArgument(i));
 				updateLocal(bv);
 			} else {
-				lyxerr << "not in range 0.." << tmacro()->nargs() << "\n";
+				lyxerr << "not in range 0.." << tmacro()->numargs() << "\n";
 			}
 			break;
 		}
