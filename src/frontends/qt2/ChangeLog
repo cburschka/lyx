@@ -1,3 +1,8 @@
+2002-03-22  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* xforms/Makefile.am (libqt2xforms.la): it should depend on
+	libqt2xforms_la_OBJECTS not libqt2xforms_la_SOURCES!
+
 2002-03-21  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* most files: ws cleanup
