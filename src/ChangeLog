@@ -1,3 +1,8 @@
+2002-01-11  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* BufferView2.C (ChangeRefsIfUnique): use the HP version of std::count
+	as the other one is broken on my machine!
+
 2002-01-10  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* commandtags.h:

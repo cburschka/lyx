@@ -10,6 +10,7 @@
 #include "math_support.h"
 #include "lyxrc.h"
 
+
 MathKernInset::MathKernInset()
 {}
 

@@ -3,6 +3,7 @@
 #include "math_streamstr.h"
 #include "math_mathmlstream.h"
 #include "support/LOstream.h"
+#include "support/lstrings.h"
 
 #include <algorithm>
 
@@ -10,7 +11,7 @@
 WriteStream & operator<<(WriteStream & ws, string const & s)
 {
 	ws.os() << s;
-	ws.addlines(std::count(s.begin(), s.end(), '\n'));
+	ws.addlines(int(countChar(s, '\n')));
 	return ws;
 }
 

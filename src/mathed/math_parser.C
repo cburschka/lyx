@@ -213,13 +213,13 @@ string Token::asString() const
 	return cs_.size() ? cs_ : string(1, char_);
 }
 
-bool operator==(Token const & s, Token const & t)
-{
-	return s.character() == t.character()
-		&& s.cat() == t.cat() && s.cs() == t.cs(); 
-}
-
-// Angus' compiler says this is not needed
+// Angus' compiler says these are not needed
+//bool operator==(Token const & s, Token const & t)
+//{
+//	return s.character() == t.character()
+//		&& s.cat() == t.cat() && s.cs() == t.cs(); 
+//}
+//
 //bool operator!=(Token const & s, Token const & t)
 //{
 //	return !(s == t);

@@ -590,7 +590,10 @@ bool BufferView::ChangeRefsIfUnique(string const & from, string const & to)
 {
 	// Check if the label 'from' appears more than once
 	vector<string> labels = buffer()->getLabelList();
-	if (count(labels.begin(), labels.end(), from) > 1)
+	// count is broken on some systems, so use the HP version
+	int res;
+	count(labels.begin(), labels.end(), from, res);
+	if (res > 1)
 		return false;
 
 	return ChangeInsets(Inset::REF_CODE, from, to);

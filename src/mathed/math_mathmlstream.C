@@ -4,6 +4,7 @@
 #include "math_inset.h"
 #include "math_extern.h"
 #include "debug.h"
+#include "support/lstrings.h"
 
 #include <algorithm>
 
@@ -221,7 +222,7 @@ WriteStream & operator<<(WriteStream & ws, MathArray const & ar)
 WriteStream & operator<<(WriteStream & ws, char const * s)
 {
 	ws.os() << s;
-	ws.addlines(std::count(s, s + strlen(s), '\n'));
+	ws.addlines(int(countChar(s, '\n')));
 	return ws;
 }
 

@@ -5,8 +5,6 @@
 #include "math_mathmlstream.h"
 #include "math_streamstr.h"
 
-using std::ostream;
-
 
 MathExFuncInset::MathExFuncInset(string const & name)
 	: MathNestInset(1), name_(name)

@@ -1,3 +1,14 @@
+2002-01-11  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* math_exfuncinset.C: remove using std::ostream declaration.
+
+	* math_kerninset.C: whitespace change, consistent with other files.
+
+	* math_mathmlstream.C (operator<<):
+	* math_streamstr.C (operator<<): use countChar rather than std::count.
+
+	* math_parser.C (operator==): comment out. Not used.
+
 2002-01-10  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* formulabase.C (localDispatch): handle LFUN_FRAK and LFUN_ITAL.
