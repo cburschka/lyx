@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx-1.3.0\n"
 "POT-Creation-Date: 2003-01-23 22:14+0100\n"
-"PO-Revision-Date: 2003-01-27 15:40+0100\n"
+"PO-Revision-Date: 2003-01-28 19:26+0100\n"
 "Last-Translator: Alfredo Braunstein <abraunst@ictp.trieste.it>\n"
 "Language-Team: es <es@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -6113,9 +6113,8 @@ msgid "AuthorAddr"
 msgstr "DirecciónAutor"
 
 #: ../lib/layouts/aguplus.inc:148
-#, fuzzy
 msgid "SlugComment"
-msgstr "Commentarios"
+msgstr ""
 
 #: ../lib/layouts/aguplus.inc:171
 msgid "Plate"
@@ -9695,7 +9694,7 @@ msgstr "Base datos BibTeX"
 msgid ""
 "The database you want to cite from. Insert it without the default extension "
 "\".bib\". Use comma to separate databases."
-msgstr ""
+msgstr "La base de datos de donde se quiere extraer la cita. Tipear el nombre sin la extensión \".bib\". Separar con \",\" distintas bases de datos."
 
 #: src/frontends/xforms/FormBibtex.C:76
 msgid "Browse directory for BibTeX stylefiles"
@@ -9705,14 +9704,13 @@ msgstr "Buscar directorio para archivos de estilo de BibTeX"
 msgid ""
 "The BibTeX style to use (only one allowed). Insert it without the default "
 "extension \".bst\" and without path."
-msgstr ""
+msgstr "El estilo BibTex a usar (sólo uno permitido). Tipearlo sin la extensión \".bst\" y sin la ubicación completa."
 
 #: src/frontends/xforms/FormBibtex.C:83
 msgid "Select if the bibliography should appear in the Table of Contents"
 msgstr "Agregar bibliografía al índice general"
 
 #: src/frontends/xforms/FormBibtex.C:87
-#, fuzzy
 msgid "Choose a BibTeX style from the list."
 msgstr "Seleccionar archivo de estilo BibTeX de la lista."
 
@@ -9720,7 +9718,7 @@ msgstr "Seleccionar archivo de estilo BibTeX de la lista."
 msgid ""
 "Updates your TeX system for a new bibstyle list. Only the styles which are "
 "in directories where TeX finds them are listed!"
-msgstr ""
+msgstr "Actualizar la lista de estilos BibTeX del systema TeX. Sólo los estilos que están en directorios donde TeX pueda encontrarlos srán listados!"
 
 #: src/frontends/xforms/FormBibtex.C:106
 msgid "Select Database"
@@ -9780,49 +9778,48 @@ msgstr "Información soble el ítem seleccionado"
 msgid ""
 "Here you may select how the citation label should look inside the text "
 "(Natbib)."
-msgstr ""
+msgstr "Seleccionar como se verá la etiqueta de citación dentro del texto (Natbib)."
 
 #: src/frontends/xforms/FormCitation.C:196
 msgid ""
 "Activate if you want to print all authors in a reference with more than "
 "three authors, and not \"<First Author> et al.\" (Natbib)."
-msgstr ""
+msgstr "Activar para imprimir todos los autores en una referencia con más de tres autores, en vez de \"<Primer Author> et al.\" (Natbib)."
 
 #: src/frontends/xforms/FormCitation.C:199
 msgid ""
 "Activate if you want to print the first character of the author name as "
 "uppercase (\"Van Gogh\", not \"van Gogh\"). Useful at the beginning of "
 "sentences (Natbib)."
-msgstr ""
+msgstr "Activar para imprimir el primer caracter del autor en mayúscula (\"Van Gogh\" y no \"van Gogh\"). Útil al inicio de la frase. (Natbib)."
 
 #: src/frontends/xforms/FormCitation.C:202
 msgid ""
 "Optional text which appears before the citation reference, e.g. \"see <Ref>\""
-msgstr ""
+msgstr "Texto opcional que aparece antes de la referencia de citación, por ej. \"ver <Ref>\""
 
 #: src/frontends/xforms/FormCitation.C:205
 msgid ""
 "Optional text which appears after the citation reference, e.g. \"pp. 12\""
-msgstr ""
+msgstr "Texto opcional que aparece después de la referencia de citación, p. ej. \"pp. 12\""
 
 #: src/frontends/xforms/FormCitation.C:208
 msgid "Search your database (all fields will be searched)."
-msgstr ""
+msgstr "Buscar en su base de datos (en todos los campos)."
 
 #: src/frontends/xforms/FormCitation.C:211
 msgid ""
 "Activate if you want to have case sensitive search: \"bibtex\" finds \"bibtex"
 "\", but not \"BibTeX\"."
-msgstr ""
+msgstr "Activar para distinguir en la búsqueda entre mayúsculas y minúsculas: \"bibtex\" encuentra \"bibtex\" pero no \"BibTeX\"."
 
 #: src/frontends/xforms/FormCitation.C:214
 msgid "Activate if you want to enter Regular Expressions."
-msgstr ""
+msgstr "Activar para usar Expresiones Regulares."
 
 #: src/frontends/xforms/FormDocument.C:59
-#, fuzzy
 msgid "Document Layout"
-msgstr "Formato del documento|#D"
+msgstr "Formato del documento"
 
 #: src/frontends/xforms/FormDocument.C:141
 msgid " Single | OneHalf | Double | Custom "
@@ -9840,15 +9837,15 @@ msgstr ""
 
 #: src/frontends/xforms/FormDocument.C:228
 msgid " None | Small Margins | Very small Margins | Very wide Margins "
-msgstr ""
+msgstr " Ninguno | Márgenes angostos | Márgenes muy angostos | Márgenes muy amplios "
 
 #: src/frontends/xforms/FormDocument.C:278
 msgid " ``text'' | ''text'' | ,,text`` | ,,text'' | «text» | »text« "
-msgstr ""
+msgstr " ``texto'' | ''texto'' | ,,texto`` | ,,texto'' | «texto» | »texto« "
 
 #: src/frontends/xforms/FormDocument.C:303
 msgid " Author-year | Numerical "
-msgstr ""
+msgstr " Autor-año | Numérico "
 
 #: src/frontends/xforms/FormDocument.C:329
 msgid ""
@@ -10018,7 +10015,7 @@ msgstr ""
 
 #: src/frontends/xforms/FormGraphics.C:165
 msgid "Show image only as a rectangle of the original size."
-msgstr ""
+msgstr "Mostrar imagen sólo como un rectángulo del tamaño original."
 
 #. set up the tooltips for the bounding-box-section
 #: src/frontends/xforms/FormGraphics.C:198
@@ -10081,116 +10078,100 @@ msgstr ""
 
 #. add the different tabfolders
 #: src/frontends/xforms/FormGraphics.C:264
-#, fuzzy
 msgid "File"
-msgstr "&Archivo"
+msgstr "Archivo"
 
 #: src/frontends/xforms/FormGraphics.C:265
-#, fuzzy
 msgid "Bounding Box"
-msgstr "Relativos a la caja"
+msgstr "Caja externa"
 
 #: src/frontends/xforms/FormInclude.C:34
-#, fuzzy
 msgid "Include file"
 msgstr "Incluir Archivo"
 
 #: src/frontends/xforms/FormLog.C:25
-#, fuzzy
 msgid "LaTeX Log"
-msgstr "Archivo de registro de LaTeX|L"
+msgstr "Archivo de registro de LaTeX"
 
 #: src/frontends/xforms/FormLog.C:34
-#, fuzzy
 msgid "LyX: LaTeX Log"
-msgstr "Archivo de registro de LaTeX|L"
+msgstr "LyX: Archivo de registro de LaTeX"
 
 #: src/frontends/xforms/FormLog.C:35
 msgid "LyX: Literate Programming Build Log"
-msgstr ""
+msgstr "LyX: Archivo de registro de ejecución de Programación Literata."
 
 #: src/frontends/xforms/FormLog.C:44
 msgid "No Literate Programming build log file found."
-msgstr ""
+msgstr "Imposible encontrar archivo de registro de ejecución de Programación Literata."
 
 #: src/frontends/xforms/FormMathsDelim.C:57
-#, fuzzy
 msgid "Maths Delimiters"
-msgstr "Igualar delimitadores"
+msgstr "Delimitadores matemáticos"
 
 #: src/frontends/xforms/FormMathsMatrix.C:62
 msgid "Maths Matrix"
-msgstr ""
+msgstr "Matriz matemática"
 
 #: src/frontends/xforms/FormMathsMatrix.C:70
 msgid "Top | Center | Bottom"
-msgstr ""
+msgstr "Arriba | Centro | Abajo"
 
 #: src/frontends/xforms/FormMathsPanel.C:68
-#, fuzzy
 msgid "Maths Panel"
-msgstr "Panel de Fórmulas|F"
+msgstr "Panel de Fórmulas"
 
 #: src/frontends/xforms/FormMathsPanel.C:132
 msgid "Maths Decorations & Accents"
-msgstr ""
+msgstr "Decoraciones Matemáticas y Acentos"
 
 #: src/frontends/xforms/FormMathsPanel.C:144
 msgid "Binary Ops"
-msgstr ""
+msgstr "Operadores Binarios"
 
 #: src/frontends/xforms/FormMathsPanel.C:148
-#, fuzzy
 msgid "Bin Relations"
-msgstr "Relaciones"
+msgstr "Relaciones binarias"
 
 #: src/frontends/xforms/FormMathsPanel.C:169
-#, fuzzy
 msgid "Big Operators"
 msgstr "Operadores grandes"
 
 #: src/frontends/xforms/FormMathsPanel.C:173
-#, fuzzy
 msgid "AMS Misc"
-msgstr "Otros"
+msgstr "Miscelánea AMS"
 
 #: src/frontends/xforms/FormMathsPanel.C:178
-#, fuzzy
 msgid "AMS Arrows"
 msgstr "Flechas AMS"
 
 #: src/frontends/xforms/FormMathsPanel.C:183
-#, fuzzy
 msgid "AMS Relations"
 msgstr "Relaciones AMS"
 
 #: src/frontends/xforms/FormMathsPanel.C:188
-#, fuzzy
 msgid "AMS Negated Rel"
 msgstr "Relaciones AMS negadas"
 
 #: src/frontends/xforms/FormMathsPanel.C:193
-#, fuzzy
 msgid "AMS Operators"
 msgstr "Operadores AMS"
 
 #: src/frontends/xforms/FormMathsSpace.C:32
-#, fuzzy
 msgid "Maths Spacing"
-msgstr "Espaciado"
+msgstr "Espaciado de fórmula"
 
 #: src/frontends/xforms/FormMathsStyle.C:46
 msgid "Maths Styles & Fonts"
-msgstr ""
+msgstr "Estilos y tipografía de fórmulas"
 
 #: src/frontends/xforms/FormMinipage.C:30
-#, fuzzy
 msgid "Minipage Options"
 msgstr "Parámetros de mini-página"
 
 #: src/frontends/xforms/FormMinipage.C:114
 msgid "Invalid Length!"
-msgstr ""
+msgstr "Largo inválido!"
 
 #: src/frontends/xforms/FormParagraph.C:132
 msgid "None|DefSkip|SmallSkip|MedSkip|BigSkip|VFill|Length"
@@ -10203,119 +10184,111 @@ msgstr ""
 #. set up the tooltips
 #: src/frontends/xforms/FormParagraph.C:151
 msgid "Add a separator line above this paragraph."
-msgstr ""
+msgstr "Agregar una línea separatriz arriba de este párrafo."
 
 #: src/frontends/xforms/FormParagraph.C:153
 msgid "Enforce a page break above this paragraph."
-msgstr ""
+msgstr "Forzar un salto de página arriba de este párrafo."
 
 #: src/frontends/xforms/FormParagraph.C:155
 msgid "Add additional space above this paragraph."
-msgstr ""
+msgstr "Agregar espacio adicional attiba de este párrafo."
 
 #: src/frontends/xforms/FormParagraph.C:157
 msgid "Never suppress space (e.g. at top of page or new page)."
-msgstr ""
+msgstr "No eliminar nunca espacio (por ej. arriba de la página o una nueva página)."
 
 #: src/frontends/xforms/FormParagraph.C:160
 msgid "Add a separator line below this paragraph."
-msgstr ""
+msgstr "Agregar una línea separatriz abajo de este párrafo."
 
 #: src/frontends/xforms/FormParagraph.C:162
 msgid "Enforce a page break below this paragraph."
-msgstr ""
+msgstr "Forzar un salto de página abajo de este párrafo."
 
 #: src/frontends/xforms/FormParagraph.C:164
 msgid "Add additional space below this paragraph."
-msgstr ""
+msgstr "Agregar espacio adicional abajo de este párrafo."
 
 #: src/frontends/xforms/FormParagraph.C:166
 msgid "Never suppress space (e.g. at bottom of page or new page)."
-msgstr ""
+msgstr "No eliminar nunca espacio (por ej. arriba de la página o una nueva página).<"
 
 #: src/frontends/xforms/FormParagraph.C:297
 #: src/frontends/xforms/FormParagraph.C:304
 #: src/frontends/xforms/FormParagraph.C:311
 #: src/frontends/xforms/FormParagraph.C:318
-#, fuzzy
 msgid " (default)"
-msgstr "normal"
+msgstr " (normal)"
 
 #: src/frontends/xforms/FormPreamble.C:28
-#, fuzzy
 msgid "LaTeX preamble"
 msgstr "Preámbulo LaTeX"
 
 #: src/frontends/xforms/FormPreferences.C:186
 msgid "Look & Feel"
-msgstr ""
+msgstr "Aspecto y comodidad"
 
 #: src/frontends/xforms/FormPreferences.C:189
-#, fuzzy
 msgid "Lang Opts"
-msgstr "línea de minipágina"
+msgstr "Opciones de idioma"
 
 #: src/frontends/xforms/FormPreferences.C:192
-#, fuzzy
 msgid "Conversion"
-msgstr "Conversión de archivo"
+msgstr "Conversión"
 
 #: src/frontends/xforms/FormPreferences.C:195
-#, fuzzy
 msgid "Inputs"
-msgstr "Entrada"
+msgstr "Entradas"
 
 #: src/frontends/xforms/FormPreferences.C:218
-#, fuzzy
 msgid "Formats"
-msgstr "F&ormato:"
+msgstr "Formatos"
 
 #: src/frontends/xforms/FormPreferences.C:513
 msgid "LyX objects that can be assigned a color."
-msgstr ""
+msgstr "A los elementos de LyX puede asignarse un color."
 
 #: src/frontends/xforms/FormPreferences.C:516
 msgid ""
 "Modify the LyX object's color. Note: you must then \"Apply\" the change."
-msgstr ""
+msgstr "Modificar el color del elemento de lyX. Nota: debe sucesivamente pulsar el botón \"Aplicar\"."
 
 #: src/frontends/xforms/FormPreferences.C:524
 msgid "Find a new color."
-msgstr ""
+msgstr "Buscar un nuevo color."
 
 #: src/frontends/xforms/FormPreferences.C:527
 msgid "Toggle between RGB and HSV color spaces."
-msgstr ""
+msgstr "ALternar entre espacios de color RGB y HSV."
 
 #: src/frontends/xforms/FormPreferences.C:710
 msgid "GUI background"
-msgstr ""
+msgstr "Fondo de la GUI"
 
 #: src/frontends/xforms/FormPreferences.C:716
 msgid "GUI text"
-msgstr ""
+msgstr "Texto de la GUI"
 
 #: src/frontends/xforms/FormPreferences.C:722
-#, fuzzy
 msgid "GUI selection"
-msgstr "&Selección"
+msgstr "Selección en la GUI"
 
 #: src/frontends/xforms/FormPreferences.C:728
-#, fuzzy
 msgid "GUI pointer"
-msgstr "a impresora"
+msgstr "Puntero en la GUI"
 
 #: src/frontends/xforms/FormPreferences.C:963
 msgid "All the currently defined converters known to LyX."
-msgstr ""
+msgstr "Todos los conversores definidos actualmente en LyX."
 
 #: src/frontends/xforms/FormPreferences.C:966
 msgid "Convert \"from\" this format"
-msgstr ""
+msgstr "Convertir \"de\" este formato"
 
 #: src/frontends/xforms/FormPreferences.C:969
 msgid "Convert \"to\" this format"
-msgstr ""
+msgstr "COnvertir \"a\" este formato"
 
 #: src/frontends/xforms/FormPreferences.C:972
 msgid ""
@@ -10338,9 +10311,8 @@ msgstr ""
 
 #: src/frontends/xforms/FormPreferences.C:986
 #: src/frontends/xforms/FormPreferences.C:1258
-#, fuzzy
 msgid "Add"
-msgstr "&Agregar"
+msgstr "Agregar"
 
 #: src/frontends/xforms/FormPreferences.C:987
 msgid ""
@@ -10363,9 +10335,8 @@ msgid "The format identifier."
 msgstr ""
 
 #: src/frontends/xforms/FormPreferences.C:1241
-#, fuzzy
 msgid "The format name as it will appear in the menus."
-msgstr "La etiqueta tal como aparece en el documento"
+msgstr "El nombre del formato tal como aparecerá en los menúes."
 
 #: src/frontends/xforms/FormPreferences.C:1244
 msgid "The keyboard accelerator. Use a letter in the GUI name. Case sensitive."
@@ -10410,194 +10381,171 @@ msgid " default | US letter | US legal | US executive | A3 | A4 | A5 | B5 "
 msgstr ""
 
 #: src/frontends/xforms/FormPreferences.C:2190
-#, fuzzy
 msgid "Default path"
 msgstr "Ruta por defecto"
 
 #: src/frontends/xforms/FormPreferences.C:2195
-#, fuzzy
 msgid "Template path"
 msgstr "Ubicación de plantillas"
 
 #: src/frontends/xforms/FormPreferences.C:2200
-#, fuzzy
 msgid "Temporary dir"
-msgstr "Dir. temp"
+msgstr "Directorio temporario"
 
 #: src/frontends/xforms/FormPreferences.C:2205
-#, fuzzy
 msgid "Last files"
-msgstr "a archivo"
+msgstr "Últimos archivos"
 
 #: src/frontends/xforms/FormPreferences.C:2210
-#, fuzzy
 msgid "Backup path"
-msgstr "Ruta copias respaldo"
+msgstr "Ubicación copias respaldo"
 
 #: src/frontends/xforms/FormPreferences.C:2215
-#, fuzzy
 msgid "LyX server pipes"
-msgstr "LyX Server pipe|#S"
+msgstr "LyX Server pipes"
 
 #: src/frontends/xforms/FormPreferences.C:2673
 msgid "Fonts must be positive!"
-msgstr ""
+msgstr "Las tipografias deben ser positivas!"
 
 #: src/frontends/xforms/FormPreferences.C:2696
 msgid ""
 "Fonts must be input in the order tiny > script> footnote > small > normal > "
 "large > larger > largest > huge > huger."
-msgstr ""
+msgstr "Las tipografías deben ser especificadas en el orden  > script> footnote > small > normal > large > larger > largest > huge > huger."
 
 #: src/frontends/xforms/FormPreferences.C:2825
 msgid " ispell | aspell "
-msgstr ""
+msgstr " ispell | aspell "
 
 #. set up the tooltips for Destination
 #: src/frontends/xforms/FormPrint.C:77
 msgid "Select for printer output."
-msgstr ""
+msgstr "Seleccionar para imprimir en impresora."
 
 #: src/frontends/xforms/FormPrint.C:79
-#, fuzzy
 msgid "Enter printer command."
-msgstr "&Comandos de impresión"
+msgstr "Comando de impresión."
 
 #: src/frontends/xforms/FormPrint.C:81
-#, fuzzy
 msgid "Select for file output."
-msgstr "Seleccionar un archivo"
+msgstr "Seleccionar un archivo para la salida"
 
 #: src/frontends/xforms/FormPrint.C:83
 msgid "Enter file name as print destination."
-msgstr ""
+msgstr "Introducir un nombre de archivo como destino de la impresión."
 
 #: src/frontends/xforms/FormPrint.C:85
 msgid "Browse directories for file name."
-msgstr ""
+msgstr "Buscar en los directorios el nombre del archivo."
 
 #. set up the tooltips for Range
 #: src/frontends/xforms/FormPrint.C:89
-#, fuzzy
 msgid "Select for printing all pages."
-msgstr "Imprimir todas las páginas"
+msgstr "Seleccionar para imprimir todas las páginas"
 
 #: src/frontends/xforms/FormPrint.C:91
 msgid "Select for printing a specific page range."
-msgstr ""
+msgstr "Seleccionar para imprimir en un rango específico de páginas."
 
 #: src/frontends/xforms/FormPrint.C:93
-#, fuzzy
 msgid "First page."
-msgstr "Nombre"
+msgstr "Primera página."
 
 #: src/frontends/xforms/FormPrint.C:95
 msgid "Last page."
-msgstr ""
+msgstr "Última página."
 
 #: src/frontends/xforms/FormPrint.C:97
-#, fuzzy
 msgid "Print the odd numbered pages."
 msgstr "Imprimir sólo las páginas impares"
 
 #: src/frontends/xforms/FormPrint.C:99
-#, fuzzy
 msgid "Print the even numbered pages."
 msgstr "Imprimir sólo las páginas pares"
 
 #. set up the tooltips for Copies
 #: src/frontends/xforms/FormPrint.C:103
-#, fuzzy
 msgid "Number of copies to be printed."
 msgstr "Número de copias a imprimir"
 
 #: src/frontends/xforms/FormPrint.C:105
-#, fuzzy
 msgid "Sort the copies."
-msgstr "Copias encadenadas"
+msgstr "Copias ordenadas."
 
 #: src/frontends/xforms/FormPrint.C:108
 msgid "Reverse the order of the printed pages."
-msgstr ""
+msgstr "Invertir el orden de impresión."
 
 #. set up the tooltips
 #: src/frontends/xforms/FormRef.C:70
-#, fuzzy
 msgid "Select a document for references."
-msgstr "Mover el cursor a la referencia"
+msgstr "Seleccionar un documento para referencias."
 
 #: src/frontends/xforms/FormRef.C:72
-#, fuzzy
 msgid "Sort the references alphabetically."
-msgstr "Ordenar referencias en orden alfabético"
+msgstr "Ordenar referencias alfabéticamente."
 
 #: src/frontends/xforms/FormRef.C:74 src/frontends/xforms/FormRef.C:281
-#, fuzzy
 msgid "Go to selected reference."
-msgstr "Referencias con formato"
+msgstr "Ir a la referencia seleccionada."
 
 #: src/frontends/xforms/FormRef.C:76
-#, fuzzy
 msgid "Update the list of references."
-msgstr "Actualizar lista de referencias"
+msgstr "Actualizar lista de referencias."
 
 #: src/frontends/xforms/FormRef.C:78
-#, fuzzy
 msgid "Select format style of the reference."
-msgstr "Referencias con formato"
+msgstr "Elejir el estilo de la referencia."
 
 #: src/frontends/xforms/FormRef.C:182
 msgid "*** No labels found in document ***"
-msgstr ""
+msgstr "*** Ninguna etiqueta encontrada ***"
 
 #: src/frontends/xforms/FormRef.C:278
 msgid "Go back to original place."
-msgstr ""
+msgstr "Volver al lugar de partida."
 
 #: src/frontends/xforms/FormRef.C:280
-#, fuzzy
 msgid "Go to"
-msgstr "&Ir a"
+msgstr "Ir a"
 
 #: src/frontends/xforms/FormSearch.C:29
-#, fuzzy
 msgid "Find and Replace"
-msgstr "Buscar y Reemplazar...|B"
+msgstr "Buscar y Reemplazar"
 
 #. set up the tooltips
 #: src/frontends/xforms/FormSearch.C:46
 msgid "Enter the string you want to find."
-msgstr ""
+msgstr "Introducir el texto a buscar."
 
 #: src/frontends/xforms/FormSearch.C:48
 msgid "Enter the replacement string."
-msgstr ""
+msgstr "Introducir el texto de reemplazo."
 
 #: src/frontends/xforms/FormSearch.C:50
 msgid "Continue to next search result."
-msgstr ""
+msgstr "Continuar al próximo resultado de la búsqueda."
 
 #: src/frontends/xforms/FormSearch.C:52
 msgid "Replace search result by replacement string."
-msgstr ""
+msgstr "Reemplazar el resultado de la búsqueda con el texto de reemplazo."
 
 #: src/frontends/xforms/FormSearch.C:54
 msgid "Replace all by replacement string."
-msgstr ""
+msgstr "Reemplazar todo por el texto de reemplazo."
 
 #: src/frontends/xforms/FormSearch.C:56
-#, fuzzy
 msgid "Do case sensitive search."
-msgstr "&Mayús/&Minús"
+msgstr "Distinguir mayúsculas de minúsculas."
 
 #: src/frontends/xforms/FormSearch.C:58
 msgid "Search only matching words."
-msgstr ""
+msgstr "Buscar sólo palabras completas."
 
 #: src/frontends/xforms/FormSearch.C:60
-#, fuzzy
 msgid "Search backwards."
-msgstr "Buscar &hacia atrás"
+msgstr "Buscar hacia atrás."
 
 #. Set up the tooltip mechanism
 #: src/frontends/xforms/FormSendto.C:49
@@ -10612,99 +10560,87 @@ msgid ""
 msgstr ""
 
 #: src/frontends/xforms/FormShowFile.C:26
-#, fuzzy
 msgid "Show File"
-msgstr "Título corto"
+msgstr "Mostrar Archivo"
 
 #. set up the tooltips
 #: src/frontends/xforms/FormSpellchecker.C:60
 msgid "Type replacement for unknown word or select from suggestions."
-msgstr ""
+msgstr "Introducir un reemplazo para la palabra desconocida o seleccionarla de las sugerencias. "
 
 #: src/frontends/xforms/FormSpellchecker.C:63
 msgid "List of replacement suggestions from dictionary."
-msgstr ""
+msgstr "Lista de reemplazos sugeridos del diccionario."
 
 #: src/frontends/xforms/FormSpellchecker.C:67
 #: src/frontends/xforms/FormSpellchecker.C:148
-#, fuzzy
 msgid "Start the spellingchecker."
-msgstr "Comenzar verificación de ortografía"
+msgstr "Comenzar la verificación ortográfica."
 
 #: src/frontends/xforms/FormSpellchecker.C:69
 msgid "Replace unknown word."
-msgstr ""
+msgstr "Reemplazar la palabra desconocida."
 
 #: src/frontends/xforms/FormSpellchecker.C:71
-#, fuzzy
 msgid "Ignore unknown word."
-msgstr "&Ignorar palabra"
+msgstr "Ignorar la palabra desconocida."
 
 #: src/frontends/xforms/FormSpellchecker.C:73
-#, fuzzy
 msgid "Accept unknown word as known in this session."
-msgstr "&Aceptar la palabra por esta sesión"
+msgstr "Aceptar la palabra como correcta por esta sesión."
 
 #: src/frontends/xforms/FormSpellchecker.C:75
-#, fuzzy
 msgid "Add unknown word to personal dictionary."
-msgstr "Insertar en diccionario personal"
+msgstr "Insertar la palabra desconocida en diccionario personal."
 
 #: src/frontends/xforms/FormSpellchecker.C:77
 msgid "Shows word count and progress on spell check."
-msgstr ""
+msgstr "Mostrar el contador de palabras y el progreso durante la corrección."
 
 #: src/frontends/xforms/FormSpellchecker.C:140
-#, fuzzy
 msgid "Stop|#S"
-msgstr "Ordenar|#O"
+msgstr "Detener|#S"
 
 #: src/frontends/xforms/FormSpellchecker.C:147
-#, fuzzy
 msgid "Stop the spellingchecker."
-msgstr "Comenzar verificación de ortografía"
+msgstr "Detener la verificación de ortografía."
 
 #: src/frontends/xforms/FormTabular.C:43
-#, fuzzy
 msgid "Edit table settings"
-msgstr "Parámetros de tabla"
+msgstr "Editar los parámetros de tabla"
 
 #: src/frontends/xforms/FormTabular.C:116
-#, fuzzy
 msgid "Tabular"
-msgstr "Tabla|T"
+msgstr "Tabla"
 
 #: src/frontends/xforms/FormTabular.C:118
-#, fuzzy
 msgid "Column/Row"
-msgstr "Columna"
+msgstr "Columna/Fila"
 
 #: src/frontends/xforms/FormTabular.C:120
 msgid "Cell"
-msgstr ""
+msgstr "Celda"
 
 #: src/frontends/xforms/FormTabular.C:122
-#, fuzzy
 msgid "LongTable"
-msgstr "Tabla &larga"
+msgstr "Tabla larga"
 
 #: src/frontends/xforms/FormTabular.C:521
 msgid "Wrong Cursor position, updated window"
-msgstr ""
+msgstr "Posición errónea del cursor, ventana actualizada"
 
 #: src/frontends/xforms/FormTabular.C:542
 #: src/frontends/xforms/FormTabular.C:560
 msgid "Invalid Length (valid example: 10mm)"
-msgstr ""
+msgstr "Largo inválido (ejemplo válido: 10mm)"
 
 #: src/frontends/xforms/FormTabularCreate.C:32
-#, fuzzy
 msgid "Insert Tabular"
 msgstr "Insertar tabla"
 
 #: src/frontends/xforms/FormTexinfo.C:45
 msgid "LaTeX classes|LaTeX styles|BibTeX styles"
-msgstr ""
+msgstr "Clases de LaTeX|Estilos de LaTeX|Estilos de BibTeX"
 
 #. set up the tooltips
 #: src/frontends/xforms/FormTexinfo.C:51
@@ -10715,7 +10651,7 @@ msgstr ""
 
 #: src/frontends/xforms/FormTexinfo.C:55
 msgid "Show full path or only file name."
-msgstr ""
+msgstr "Mostrar ubicación completa o bien sólo nombre de archivo."
 
 #: src/frontends/xforms/FormTexinfo.C:58
 msgid "Runs the script \"TexFiles.sh\" to build new file lists."
@@ -10723,7 +10659,7 @@ msgstr ""
 
 #: src/frontends/xforms/FormTexinfo.C:61
 msgid "Double click to view contents of file."
-msgstr ""
+msgstr "Doble clic para ver el contenido del archivo."
 
 #: src/frontends/xforms/FormTexinfo.C:66
 msgid ""
@@ -10733,27 +10669,25 @@ msgid ""
 msgstr ""
 
 #: src/frontends/xforms/FormToc.C:36 src/insets/insettoc.C:33
-#, fuzzy
 msgid "Table of Contents"
 msgstr "Indice General|G"
 
 #: src/frontends/xforms/FormToc.C:103 src/frontends/xforms/FormToc.C:121
 msgid "*** No Lists ***"
-msgstr ""
+msgstr "*** Ninguna Lista ***"
 
 #: src/frontends/xforms/FormUrl.C:27
 msgid "Url"
-msgstr ""
+msgstr "Url"
 
 #: src/frontends/xforms/FormVCLog.C:27
-#, fuzzy
 msgid "Version Control Log"
-msgstr "Historia del control de versiones"
+msgstr "Registro del control de versiones"
 
 #. set up the tooltips
 #: src/frontends/xforms/FormWrap.C:69
 msgid "Enter width for the float."
-msgstr ""
+msgstr "Introducir ancho para el flotante."
 
 #: src/frontends/xforms/FormWrap.C:71
 msgid ""
@@ -10792,127 +10726,121 @@ msgid "[only completion]"
 msgstr ""
 
 #: src/frontends/xforms/combox.C:517
-#, fuzzy
 msgid "Done"
-msgstr "Ninguna"
+msgstr "Listo"
 
 #: src/frontends/xforms/input_validators.C:126
 msgid "ERROR! Unable to print!"
-msgstr ""
+msgstr "ERROR! Imposible imprimir!"
 
 #: src/frontends/xforms/input_validators.C:127
 msgid "Check `range of pages'!"
-msgstr ""
+msgstr "Controlar el 'rango de páginas'!"
 
 #: src/frontends/xforms/xforms_helpers.C:356
 #: src/frontends/xforms/xforms_helpers.C:380
 #: src/frontends/xforms/xforms_helpers.C:415
 #: src/frontends/xforms/xforms_helpers.C:461
 msgid "The absolute path is required."
-msgstr ""
+msgstr "Se requiere la ubicación absoluta."
 
 #: src/frontends/xforms/xforms_helpers.C:362
 #: src/frontends/xforms/xforms_helpers.C:386
 #: src/frontends/xforms/xforms_helpers.C:426
 #: src/frontends/xforms/xforms_helpers.C:472
 msgid "Directory does not exist."
-msgstr ""
+msgstr "El directorio no existe."
 
 #: src/frontends/xforms/xforms_helpers.C:367
 #: src/frontends/xforms/xforms_helpers.C:431
 msgid "Cannot write to this directory."
-msgstr ""
+msgstr "Imposible escribir en este directorio."
 
 #: src/frontends/xforms/xforms_helpers.C:391
 msgid "Cannot read this directory."
-msgstr ""
+msgstr "Imposible leer de este directorio."
 
 #: src/frontends/xforms/xforms_helpers.C:409
 #: src/frontends/xforms/xforms_helpers.C:455
 msgid "No file input."
-msgstr ""
+msgstr "Ningun archivo de entrada."
 
 #: src/frontends/xforms/xforms_helpers.C:437
 #: src/frontends/xforms/xforms_helpers.C:483
 msgid "A file is required, not a directory."
-msgstr ""
+msgstr "Se requiere un archivo, no un directorio."
 
 #: src/frontends/xforms/xforms_helpers.C:442
 msgid "Cannot write to this file."
-msgstr ""
+msgstr "Imposible escribir en este archivo."
 
 #: src/frontends/xforms/xforms_helpers.C:477
 msgid "Cannot read from this directory."
-msgstr ""
+msgstr "Imposible leer de este directorio."
 
 #: src/frontends/xforms/xforms_helpers.C:488
 msgid "File does not exist."
-msgstr ""
+msgstr "El archivo no existe."
 
 #: src/frontends/xforms/xforms_helpers.C:493
 msgid "Cannot read from this file."
-msgstr ""
+msgstr "Imposible leer de este archivo."
 
 #: src/importer.C:45
 #, c-format
 msgid "Importing %1$s..."
-msgstr ""
+msgstr "Importando %1$s..."
 
 #: src/importer.C:47
-#, fuzzy
 msgid "Importing "
-msgstr "Importar|I"
+msgstr "Importando "
 
 #: src/importer.C:68 src/importer.C:72
 msgid "Cannot import file"
-msgstr ""
+msgstr "Imposible importar archivo"
 
 #: src/importer.C:69
 #, c-format
 msgid "No information for importing from %1$s"
-msgstr ""
+msgstr "No hay información disponible para importar de %1$s"
 
 #: src/importer.C:73
 msgid "No information for importing from "
-msgstr ""
+msgstr "No hay información disponible para importar de "
 
 #. we are done
 #: src/importer.C:97
 msgid "imported."
-msgstr ""
+msgstr "importado."
 
 #: src/insets/inset.C:118
-#, fuzzy
 msgid "Opened inset"
-msgstr "Apertura"
+msgstr "Inset abierto"
 
 #: src/insets/insetbib.C:146
-#, fuzzy
 msgid "BibTeX Generated References"
-msgstr "Referencia BibTeX...|B"
+msgstr "Referencias BibTeX Generadas"
 
 #: src/insets/insetcaption.C:67
-#, fuzzy
 msgid "Opened Caption Inset"
-msgstr "DescripciónCentrada"
+msgstr "Abierto el inset de descripción"
 
 #: src/insets/insetcaption.C:87
-#, fuzzy
 msgid "Float"
-msgstr "Flotantes|a"
+msgstr "Flotante"
 
 #: src/insets/inseterror.C:85
 msgid "Opened error"
-msgstr ""
+msgstr "Abierto el error"
 
 #: src/insets/insetert.C:233
 msgid "Opened ERT Inset"
-msgstr ""
+msgstr "Abierto el inset ERT"
 
 #: src/insets/insetert.C:248 src/insets/insettabular.C:2090
 #: src/insets/insettext.C:1411
 msgid "Impossible operation!"
-msgstr ""
+msgstr "Operación imposible!"
 
 #: src/insets/insetert.C:249
 msgid "Not permitted to change font-types inside ERT-insets!"
@@ -10921,23 +10849,23 @@ msgstr ""
 #: src/insets/insetert.C:250 src/insets/insettabular.C:2092
 #: src/insets/insettext.C:1413
 msgid "Sorry."
-msgstr ""
+msgstr "Lo siento."
 
 #: src/insets/insetert.C:507 src/insets/insetert.C:518
 msgid "ERT"
-msgstr ""
+msgstr "ERT"
 
 #: src/insets/insetfloat.C:127
 msgid "float: "
-msgstr ""
+msgstr "flotante: "
 
 #: src/insets/insetfloat.C:224
 msgid "Opened Float Inset"
-msgstr ""
+msgstr "Inset de flotante abierto"
 
 #: src/insets/insetfloat.C:325
 msgid "float:"
-msgstr ""
+msgstr "flotante:"
 
 #: src/insets/insetfloatlist.C:54
 msgid "ERROR: Nonexistent float type!"
@@ -10949,14 +10877,12 @@ msgid "List of %1$s"
 msgstr ""
 
 #: src/insets/insetfloatlist.C:138
-#, fuzzy
 msgid "List of "
-msgstr "Lista"
+msgstr "Lista de"
 
 #: src/insets/insetfoot.C:39 src/insets/insetfoot.C:47
-#, fuzzy
 msgid "foot"
-msgstr "footnote"
+msgstr "nota al pie"
 
 #: src/insets/insetfoot.C:60
 msgid "Opened Footnote Inset"
@@ -10968,57 +10894,55 @@ msgstr ""
 
 #: src/insets/insetgraphics.C:228
 msgid "Loading..."
-msgstr ""
+msgstr "Cargando..."
 
 #: src/insets/insetgraphics.C:231
 msgid "Converting to loadable format..."
-msgstr ""
+msgstr "Convirtiendo a un formato legible..."
 
 #: src/insets/insetgraphics.C:234
 msgid "Loaded into memory. Must now generate pixmap."
-msgstr ""
+msgstr "Cargando en memoria. Debo generar los mapas de pixels."
 
 #: src/insets/insetgraphics.C:237
 msgid "Scaling etc..."
-msgstr ""
+msgstr "Cambiando escala, etc..."
 
 #: src/insets/insetgraphics.C:240
-#, fuzzy
 msgid "Ready to display"
-msgstr "Mostrar inset ERT"
+msgstr "Listo para mostrar"
 
 #: src/insets/insetgraphics.C:243
 msgid "No file found!"
-msgstr ""
+msgstr "Archivo no encontrado!"
 
 #: src/insets/insetgraphics.C:246
 msgid "Error converting to loadable format"
-msgstr ""
+msgstr "Error convirtiendo a un formato legible"
 
 #: src/insets/insetgraphics.C:249
 msgid "Error loading file into memory"
-msgstr ""
+msgstr "Error cargando archivo en memoria"
 
 #: src/insets/insetgraphics.C:252
 msgid "Error generating the pixmap"
-msgstr ""
+msgstr "Error generando mapa de pixels"
 
 #: src/insets/insetgraphics.C:255
 msgid "No image"
-msgstr ""
+msgstr "Ninguna imagen"
 
 #: src/insets/insetgraphics.C:640
-#, fuzzy
 msgid "Cannot copy file"
-msgstr "a archivo"
+msgstr "Imposible copiar archivo"
 
 #: src/insets/insetgraphics.C:641
 msgid "into tempdir"
-msgstr ""
+msgstr "en tempdir"
 
 #: src/insets/insetgraphics.C:678 src/insets/insetgraphics.C:682
 msgid "Cannot convert Image (not existing file?)"
-msgstr ""
+msgstr "Imposible convertir imagen (¿el archivo no existe?)"
 
 #: src/insets/insetgraphics.C:679
 #, c-format
@@ -11030,109 +10954,94 @@ msgid "No information for converting from "
 msgstr ""
 
 #: src/insets/insetgraphics.C:775
-#, fuzzy, c-format
+#, c-format
 msgid "Graphics file: %1$s"
-msgstr "&Gráficos"
+msgstr "Archivo gráfico: %1$s"
 
 #: src/insets/insetgraphics.C:779
-#, fuzzy
 msgid "Graphics file: "
-msgstr "&Gráficos"
+msgstr "Archivo gráfico: "
 
 #: src/insets/insetinclude.C:226
-#, fuzzy
 msgid "Verbatim Input"
-msgstr "Verbatim"
+msgstr ""
 
 #: src/insets/insetinclude.C:227
-#, fuzzy
 msgid "Verbatim Input*"
-msgstr "Verbatim"
+msgstr ""
 
 #: src/insets/insetindex.C:33
-#, fuzzy
 msgid "Idx"
 msgstr "Índice"
 
 #: src/insets/insetlabel.C:47 src/mathed/math_hullinset.C:799
-#, fuzzy
 msgid "Enter label:"
-msgstr "Etiqueta más larga"
+msgstr "Introducir etiqueta"
 
 #: src/insets/insetlist.C:42
-#, fuzzy
 msgid "list"
 msgstr "Lista"
 
 #: src/insets/insetlist.C:64
 msgid "Opened List Inset"
-msgstr ""
+msgstr "Inset de Lista abierto"
 
 #: src/insets/insetmarginal.C:34 src/insets/insetmarginal.C:42
-#, fuzzy
 msgid "margin"
-msgstr "Márgenes"
+msgstr "Margen"
 
 #: src/insets/insetmarginal.C:55
-#, fuzzy
 msgid "Opened Marginal Note Inset"
-msgstr "Insertar nota al margen|m"
+msgstr "Inset de nota al margen abierta"
 
 #: src/insets/insetminipage.C:68
-#, fuzzy
 msgid "minipage"
-msgstr "Minipágina|p"
+msgstr "Minipágina"
 
 #: src/insets/insetminipage.C:229
-#, fuzzy
 msgid "Opened Minipage Inset"
-msgstr "Parámetros de mini-página"
+msgstr "Inset de mini-página abierto"
 
 #: src/insets/insetnote.C:87
 msgid "Opened Note Inset"
-msgstr ""
+msgstr "Inset de nota abierto"
 
 #: src/insets/insetoptarg.C:39 src/insets/insetoptarg.C:49
-#, fuzzy
 msgid "opt"
-msgstr "Arriba|#A"
+msgstr ""
 
 #: src/insets/insetoptarg.C:61
 msgid "Opened Optional Argument Inset"
-msgstr ""
+msgstr "Inset de argumento opcional abierto"
 
 #: src/insets/insetparent.C:46
 #, c-format
 msgid "Parent: %s"
-msgstr ""
+msgstr "Padre: %s"
 
 #: src/insets/insetparent.C:48
-#, fuzzy
 msgid "Parent: "
-msgstr "Parte"
+msgstr "Padre: "
 
 #: src/insets/insetref.C:118 src/mathed/ref_inset.C:127
 msgid "Ref: "
-msgstr ""
+msgstr "Ref: "
 
 #: src/insets/insetref.C:119 src/mathed/ref_inset.C:128
-#, fuzzy
 msgid "Page Number"
-msgstr "Alternar numeración"
+msgstr "Número de página"
 
 #: src/insets/insetref.C:119 src/mathed/ref_inset.C:128
-#, fuzzy
 msgid "Page: "
-msgstr "Páginas"
+msgstr "Página:"
 
 #: src/insets/insetref.C:120 src/mathed/ref_inset.C:129
 msgid "Textual Page Number"
-msgstr ""
+msgstr "Número de página textual"
 
 #: src/insets/insetref.C:120 src/mathed/ref_inset.C:129
-#, fuzzy
 msgid "TextPage: "
-msgstr "Texto después:"
+msgstr ""
 
 #: src/insets/insetref.C:121 src/mathed/ref_inset.C:130
 msgid "Standard+Textual Page"
@@ -11167,14 +11076,12 @@ msgid "Cannot include more than one paragraph!"
 msgstr ""
 
 #: src/insets/insettext.C:1487 src/text3.C:1130
-#, fuzzy
 msgid "Layout "
-msgstr "Formato|F"
+msgstr "Estilo "
 
 #: src/insets/insettext.C:1487 src/text3.C:1131
-#, fuzzy
 msgid " not known"
-msgstr "Desconocido:"
+msgstr " desconocido:"
 
 #: src/insets/insettext.C:1540 src/text3.C:912
 msgid "Unknown spacing argument: "
@@ -11185,38 +11092,36 @@ msgid "Error: LatexType Command not allowed here.\n"
 msgstr ""
 
 #: src/insets/insettheorem.C:39
-#, fuzzy
 msgid "theorem"
-msgstr "Teorema"
+msgstr "teorema"
 
 #: src/insets/insettheorem.C:73
 msgid "Opened Theorem Inset"
-msgstr ""
+msgstr "Inset de teorema abierto"
 
 #: src/insets/insettoc.C:34
 msgid "Unknown toc list"
-msgstr ""
+msgstr "Lista de contenidos desconocida"
 
 #: src/insets/inseturl.C:49
 msgid "Url: "
-msgstr ""
+msgstr "Url: "
 
 #: src/insets/inseturl.C:51
 msgid "HtmlUrl: "
-msgstr ""
+msgstr "HtmlUrl: "
 
 #: src/insets/insetwrap.C:57
 msgid "wrap: "
-msgstr ""
+msgstr "wrap: "
 
 #: src/insets/insetwrap.C:144
 msgid "Opened Wrap Inset"
-msgstr ""
+msgstr "Inset de wrap abierto"
 
 #: src/kbsequence.C:157
-#, fuzzy
 msgid "   options: "
-msgstr "Opciones LaTeX:"
+msgstr "   opciones: "
 
 #: src/lengthcommon.C:34
 msgid "sp"
@@ -11231,9 +11136,8 @@ msgid "bp"
 msgstr ""
 
 #: src/lengthcommon.C:34
-#, fuzzy
 msgid "dd"
-msgstr "&Agregar"
+msgstr ""
 
 #: src/lengthcommon.C:34
 msgid "mm"
@@ -11248,14 +11152,12 @@ msgid "cm"
 msgstr ""
 
 #: src/lengthcommon.C:35
-#, fuzzy
 msgid "in"
-msgstr "diminuta"
+msgstr ""
 
 #: src/lengthcommon.C:35
-#, fuzzy
 msgid "ex"
-msgstr "texto"
+msgstr ""
 
 #: src/lengthcommon.C:35
 msgid "em"
@@ -11266,33 +11168,28 @@ msgid "mu"
 msgstr ""
 
 #: src/lengthcommon.C:36
-#, fuzzy
 msgid "text%"
-msgstr "textrm"
+msgstr "texto%"
 
 #: src/lengthcommon.C:36
 msgid "col%"
-msgstr ""
+msgstr "col%"
 
 #: src/lengthcommon.C:36
-#, fuzzy
 msgid "page%"
-msgstr "<página>"
+msgstr "page%"
 
 #: src/lengthcommon.C:36
-#, fuzzy
 msgid "line%"
-msgstr "&Compacto"
+msgstr "line%"
 
 #: src/lengthcommon.C:37
-#, fuzzy
 msgid "theight%"
-msgstr "&Altura"
+msgstr "theight%"
 
 #: src/lengthcommon.C:37
-#, fuzzy
 msgid "pheight%"
-msgstr "&Altura"
+msgstr "pheight%"
 
 #: src/lyx_cb.C:85
 msgid "Save failed. Rename and try again?"
@@ -11307,46 +11204,40 @@ msgid "Choose a filename to save document as"
 msgstr ""
 
 #: src/lyx_cb.C:112 src/lyxfunc.C:1644
-#, fuzzy
 msgid "Templates|#T#t"
 msgstr "Plantillas|#t"
 
 #: src/lyx_cb.C:140
-#, fuzzy
 msgid "Same name as document already has:"
-msgstr "&Guardar formato por defecto"
+msgstr "El mismo nombre que el documento ya tiene:"
 
 #: src/lyx_cb.C:142
 msgid "Save anyway?"
-msgstr ""
+msgstr "¿Guardar de todas maneras?"
 
 #: src/lyx_cb.C:148
 msgid "Another document with same name open!"
 msgstr ""
 
 #: src/lyx_cb.C:150
-#, fuzzy
 msgid "Replace with current document?"
-msgstr "Reemplazar palabra con la selección"
+msgstr "¿Reemplazar con el documento actual?"
 
 #: src/lyx_cb.C:158
-#, fuzzy
 msgid "Document renamed to '"
-msgstr "Plantillas de documento:"
+msgstr "Documento renombrado a '"
 
 #: src/lyx_cb.C:159
 msgid "', but not saved..."
-msgstr ""
+msgstr "', pero no fue gardado..."
 
 #: src/lyx_cb.C:165
-#, fuzzy
 msgid "Document already exists:"
-msgstr "&Clase de documento:"
+msgstr "El documento ya existe:"
 
 #: src/lyx_cb.C:167
-#, fuzzy
 msgid "Replace file?"
-msgstr "Reemp. &todos"
+msgstr "Reemplazar archivo?"
 
 #: src/lyx_cb.C:180
 msgid "Document could not be saved!"
@@ -11394,23 +11285,20 @@ msgid "Auto-saving %1$s"
 msgstr ""
 
 #: src/lyx_cb.C:275
-#, fuzzy
 msgid "Auto-saving "
-msgstr "Intervalo de auto-guardado"
+msgstr "Auto-guardado "
 
 #: src/lyx_cb.C:315
-#, fuzzy
 msgid "Autosave failed!"
-msgstr "Intervalo de auto-guardado"
+msgstr "¡El auto-guardado falló!"
 
 #: src/lyx_cb.C:341
 msgid "Autosaving current document..."
 msgstr ""
 
 #: src/lyx_cb.C:423
-#, fuzzy
 msgid "Select file to insert"
-msgstr "Seleccionar un archivo"
+msgstr "Seleccionar un archivo a insertar"
 
 #: src/lyx_cb.C:440
 msgid "Error! Specified file is unreadable: "
@@ -11421,9 +11309,8 @@ msgid "Enter new label to insert:"
 msgstr ""
 
 #: src/lyx_cb.C:529
-#, fuzzy
 msgid "Running configure..."
-msgstr "Reconfigurar|R"
+msgstr "Ejecutando configure..."
 
 #: src/lyx_cb.C:537
 msgid "Reloading configuration..."
@@ -11447,13 +11334,12 @@ msgid "Wrong command line option `%1$s'. Exiting."
 msgstr ""
 
 #: src/lyx_main.C:114
-#, fuzzy
 msgid "Wrong command line option `"
-msgstr "Opciones del comando"
+msgstr "Opciones del comando erróneas `"
 
 #: src/lyx_main.C:115
 msgid "'. Exiting."
-msgstr ""
+msgstr "'. Terminando."
 
 #: src/lyx_main.C:238
 msgid "Warning: could not determine path of binary."
@@ -11509,9 +11395,8 @@ msgid "LyX: reconfiguring user directory"
 msgstr ""
 
 #: src/lyx_main.C:602 src/lyx_main.C:650
-#, fuzzy
 msgid "Done!"
-msgstr "Ninguna"
+msgstr "Listo!"
 
 #: src/lyx_main.C:612
 msgid "You have specified an invalid LyX directory."
@@ -11535,13 +11420,12 @@ msgid "LyX: Creating directory %1$s and running configure..."
 msgstr ""
 
 #: src/lyx_main.C:627
-#, fuzzy
 msgid "LyX: Creating directory "
-msgstr "Directorio de &trabajo"
+msgstr "LyX: Creando directorio "
 
 #: src/lyx_main.C:628
 msgid " and running configure..."
-msgstr ""
+msgstr " y ejecutando configure..."
 
 #: src/lyx_main.C:636
 #, c-format
@@ -11558,7 +11442,7 @@ msgstr ""
 
 #: src/lyx_main.C:664 src/lyx_main.C:668
 msgid "LyX Warning!"
-msgstr ""
+msgstr "LyX: ¡Atención!"
 
 #: src/lyx_main.C:665
 #, c-format
@@ -11571,7 +11455,7 @@ msgstr ""
 
 #: src/lyx_main.C:669
 msgid "Error while reading "
-msgstr ""
+msgstr "Error leyendo "
 
 #: src/lyx_main.C:779
 msgid "List of supported debug flags:"
@@ -11634,42 +11518,37 @@ msgstr ""
 
 #: src/lyxfind.C:49
 msgid "Sorry!"
-msgstr ""
+msgstr "Lo siento!"
 
 #: src/lyxfind.C:49
 msgid "You cannot replace a single space, nor an empty character."
 msgstr ""
 
 #: src/lyxfont.C:45
-#, fuzzy
 msgid "Symbol"
-msgstr "Símbolos"
+msgstr "Símbolo"
 
 #: src/lyxfont.C:47 src/lyxfont.C:50 src/lyxfont.C:53 src/lyxfont.C:59
 #: src/lyxfont.C:62
-#, fuzzy
 msgid "Inherit"
-msgstr "&Insertar"
+msgstr "Heredar"
 
 #: src/lyxfont.C:47 src/lyxfont.C:50 src/lyxfont.C:54 src/lyxfont.C:59
 #: src/lyxfont.C:62
-#, fuzzy
 msgid "Ignore"
-msgstr "&Ignorar"
+msgstr "Ignorar"
 
 #: src/lyxfont.C:53
-#, fuzzy
 msgid "Smallcaps"
-msgstr "Muy pequeña:"
+msgstr "Pequeñas mayúsculas"
 
 #: src/lyxfont.C:62
 msgid "Off"
-msgstr ""
+msgstr "Desactivadas"
 
 #: src/lyxfont.C:62
-#, fuzzy
 msgid "Toggle"
-msgstr "Alternar &todo"
+msgstr "Alternar"
 
 #: src/lyxfont.C:531
 #, c-format
@@ -11714,7 +11593,7 @@ msgstr " Número %1$s"
 
 #: src/lyxfont.C:568
 msgid "  Number "
-msgstr " Número "
+msgstr "  Número "
 
 #: src/lyxfunc.C:242
 msgid "Unknown function."
@@ -12102,9 +11981,8 @@ msgid "Specify the paper command to DVI viewer (leave empty or use \"-paper\")"
 msgstr ""
 
 #: src/lyxrc.C:2016
-#, fuzzy
 msgid "Specify the default paper size."
-msgstr "Tamaño de papel por &defecto"
+msgstr "Especificar el tamaño de papel por defecto."
 
 #: src/lyxrc.C:2023
 msgid ""
@@ -12294,18 +12172,16 @@ msgid "Sorry, has to exit :-("
 msgstr ""
 
 #: src/lyxvc.C:82
-#, fuzzy
 msgid "File not saved"
-msgstr "Archivo"
+msgstr "El archivo no fue guardado"
 
 #: src/lyxvc.C:83
-#, fuzzy
 msgid "You must save the file"
-msgstr "Cargar el archivo"
+msgstr "Debe guardar el archivo"
 
 #: src/lyxvc.C:84
 msgid "before it can be registered."
-msgstr ""
+msgstr "antes de que pueda ser registrado."
 
 #: src/lyxvc.C:114 src/lyxvc.C:146
 msgid "Save document and proceed?"
@@ -12325,7 +12201,7 @@ msgstr ""
 
 #: src/lyxvc.C:157
 msgid "LyX VC: Log Message"
-msgstr ""
+msgstr "LyX CV: Registro de acciones"
 
 #: src/lyxvc.C:160
 msgid "(no log message)"
@@ -12348,15 +12224,15 @@ msgstr ""
 
 #: src/lyxvc.C:192
 msgid "Do you still want to do it?"
-msgstr ""
+msgstr "Quiere aún hacerlo?"
 
 #: src/mathed/formulabase.C:173 src/mathed/formulabase.C:1010
 msgid "Math editor mode"
-msgstr ""
+msgstr "Modo editor de fórmulas"
 
 #: src/mathed/formulabase.C:727
 msgid "Invalid action in math mode!"
-msgstr ""
+msgstr "Acción inválida en modo fórmula!"
 
 #: src/mathed/formulamacro.C:132
 #, c-format
@@ -12369,21 +12245,19 @@ msgstr ""
 
 #: src/support/filetools.C:448
 msgid "Error! Cannot open directory:"
-msgstr ""
+msgstr "Error! Imposible abrir directorio:"
 
 #: src/support/filetools.C:468
 msgid "Error! Could not remove file:"
-msgstr ""
+msgstr "Error! Imposible eliminar archivo:"
 
 #: src/support/filetools.C:492 src/support/filetools.C:528
-#, fuzzy
 msgid "Error! Couldn't create temporary directory:"
-msgstr "Usar directorio temporario"
+msgstr "Error! Imposible crear directorio temporario:"
 
 #: src/support/filetools.C:509
-#, fuzzy
 msgid "Error! Couldn't delete temporary directory:"
-msgstr "Usar directorio temporario"
+msgstr "Error! Imposible borrar directorio temporario:"
 
 #: src/support/filetools.C:574
 msgid "Internal error!"
@@ -12403,11 +12277,11 @@ msgstr ""
 
 #: src/tabular.C:1349
 msgid "Warning:"
-msgstr ""
+msgstr "Atención:"
 
 #: src/tabular.C:1350
 msgid "Tabular format < 5 is not supported anymore\n"
-msgstr ""
+msgstr "Formato de tabla < 5 dejó de ser soportado."
 
 #: src/tabular.C:1351
 msgid "Get an older version of LyX (< 1.1.x) for conversion!"
@@ -12421,32 +12295,28 @@ msgstr ""
 
 #: src/text.C:1926
 msgid "You cannot type two spaces this way. Please read the Tutorial."
-msgstr ""
+msgstr "No se puede introducir dos espacios de esa manera. Por favor lea el Tutorial."
 
 #: src/text.C:3284
 msgid " (vertical fill)"
-msgstr ""
+msgstr " (espacio vertical)"
 
 #: src/text.C:3367
-#, fuzzy
 msgid "Page Break (top)"
-msgstr "Salto de página"
+msgstr "Salto de página (arriba)"
 
 #. draw the additional space if needed:
 #: src/text.C:3372
-#, fuzzy
 msgid "Space above"
-msgstr "Borde encima"
+msgstr "Espacio encima"
 
 #: src/text.C:3531
-#, fuzzy
 msgid "Page Break (bottom)"
-msgstr "Salto de página|#p"
+msgstr "Salto de página (abajo)"
 
 #: src/text.C:3538
-#, fuzzy
 msgid "Space below"
-msgstr "Borde abajo"
+msgstr "Espacio debajo"
 
 #. Could only happen with user style
 #: src/text2.C:1012
@@ -12457,11 +12327,11 @@ msgstr ""
 
 #: src/text2.C:1051
 msgid "Nothing to index!"
-msgstr ""
+msgstr "Nada que indexar!"
 
 #: src/text2.C:1055
 msgid "Cannot index more than one paragraph!"
-msgstr ""
+msgstr "Imposible indexar más de un párrafo!"
 
 #: src/text2.C:1330
 #, c-format
@@ -12496,7 +12366,7 @@ msgstr "Marca posicionada"
 
 #: src/text3.C:1112
 msgid "LyX function 'layout' needs an argument."
-msgstr ""
+msgstr "La función de LyX 'layout' necesita un argumento."
 
 #~ msgid "Size:|#Z"
 #~ msgstr "Tamaño:|#T"
