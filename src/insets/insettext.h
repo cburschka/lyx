@@ -176,6 +176,8 @@ public:
     ///
     void resizeLyXText(BufferView *) const;
     ///
+    bool ShowInsetDialog(BufferView *) const;
+    ///
     LyXParagraph * par;
     ///
     mutable int need_update;

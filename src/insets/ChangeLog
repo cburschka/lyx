@@ -1,3 +1,13 @@
+2001-03-26  Juergen Vigna  <jug@sad.it>
+
+	* lyxinset.h: added ShowInsetDialog() function in UpdatableInset.
+
+	* insettext.C (ShowInsetDialog): implemented above function.
+
+	* insettabular.C (ShowInsetDialog): ditto
+
+	* insetminipage.C (ShowInsetDialog): ditto
+
 2001-03-23  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* insetinclude.[Ch]: rename InsetInclude::InsetIncludeParams as

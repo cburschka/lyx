@@ -364,6 +364,8 @@ public:
 	virtual int getMaxWidth(Painter & pain, UpdatableInset const *) const;
 	///
 	int scroll() const { return scx; }
+	///
+	virtual bool ShowInsetDialog(BufferView *) const { return false; }
 
 protected:
 	///

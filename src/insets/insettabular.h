@@ -169,6 +169,8 @@ public:
     ///
     void OpenLayoutDialog(BufferView *) const;
     ///
+    bool ShowInsetDialog(BufferView *) const;
+    ///
     LyXFunc::func_status getStatus(string const & argument) const;
 
     //

@@ -1434,6 +1434,14 @@ UpdatableInset * InsetText::GetFirstLockingInsetOfType(Inset::Code c)
 }
 
 
+bool InsetText::ShowInsetDialog(BufferView * bv) const
+{
+    if (the_locking_inset)
+	return the_locking_inset->ShowInsetDialog(bv);
+    return false;
+}
+
+
 void InsetText::SetFont(BufferView * bv, LyXFont const & font, bool toggleall)
 {
     if (TEXT(bv)->selection) {

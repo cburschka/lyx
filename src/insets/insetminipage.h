@@ -90,6 +90,8 @@ public:
 	int getMaxWidth(Painter &, UpdatableInset const *) const;
 	///
 	bool needFullRow() const { return false; }
+	///
+	bool ShowInsetDialog(BufferView *) const;
 private:
 	///
 	Position pos_;

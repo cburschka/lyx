@@ -339,22 +339,19 @@ void InsetMinipage::widthp(string const & ll)
 }
 
 
+bool InsetMinipage::ShowInsetDialog(BufferView * bv) const
+{
+    if (!inset->ShowInsetDialog(bv))
+	bv->owner()->getDialogs()->showMinipage(const_cast<InsetMinipage *>(this));
+    return true;
+}
+
+
 void InsetMinipage::InsetButtonRelease(BufferView * bv, int x, int y,
 				       int button)
 {
     if (button == 3) {
-#if 0
-// we have to check first if we have a locking inset and if this locking inset
-// has a popup menu with the 3rd button
-	if (the_locking_inset) {
-	    UpdatableInset * i;
-	    if ((i=the_locking_inset->GetFirstLockingInsetOfType(TABULAR_CODE))) {
-		i->InsetButtonRelease(bv, x, y, button);
-		return;
-	    }
-	}
-#endif
-	bv->owner()->getDialogs()->showMinipage(this);
+	ShowInsetDialog(bv);
 	return;
     }
     InsetCollapsable::InsetButtonRelease(bv, x, y, button);

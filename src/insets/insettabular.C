@@ -763,6 +763,9 @@ UpdatableInset::RESULT InsetTabular::LocalDispatch(BufferView * bv,
 	ShowInsetCursor(bv);
 	return result;
     }
+    // this to avoid compiler warnings.
+    default:
+	break;
     }
 
     if (the_locking_inset) {
@@ -1849,6 +1852,14 @@ LyXText * InsetTabular::getLyXText(BufferView const * bv, bool const recursive) 
     if (the_locking_inset)
 	return the_locking_inset->getLyXText(bv, recursive);
     return Inset::getLyXText(bv, recursive);
+}
+
+
+bool InsetTabular::ShowInsetDialog(BufferView * bv) const
+{
+    if (!the_locking_inset || !the_locking_inset->ShowInsetDialog(bv))
+	bv->owner()->getDialogs()->showTabular(const_cast<InsetTabular *>(this));
+    return true;
 }
 
 
