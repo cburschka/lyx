@@ -21,7 +21,7 @@
 typedef FormCB<ControlSpellchecker, FormDB<FD_form_spellchecker> > base_class;
 
 FormSpellchecker::FormSpellchecker(ControlSpellchecker & c)
-	: base_class(c, _("LyX: Spellchecker")), clickline_(-1)
+	: base_class(c, _("LyX: Spellchecker"), false), clickline_(-1)
 {}
 
 
