@@ -68,7 +68,7 @@ using SigC::slot;
 
 FormMathsPanel::FormMathsPanel(LyXView * lv, Dialogs * d)
 	: FormBaseBD(lv, d, _("Maths Panel"), false),
-	  active_(0), bc_("Close")
+	  active_(0), bc_(_("Close"))
 {
 	deco_.reset(  new FormMathsDeco(  lv, d, *this));
 	delim_.reset( new FormMathsDelim( lv, d, *this));
@@ -404,7 +404,7 @@ void FormMathsPanel::mathDisplay() const
 
 FormMathsSub::FormMathsSub(LyXView * lv, Dialogs * d, FormMathsPanel const & p,
 			   string const & t, bool allowResize)
-	: FormBaseBD(lv, d, t, allowResize), parent_(p), bc_("Close")
+	: FormBaseBD(lv, d, t, allowResize), parent_(p), bc_(_("Close"))
 {}
 
 
