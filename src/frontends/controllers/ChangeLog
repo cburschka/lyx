@@ -1,3 +1,10 @@
+2001-08-01  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* ControlInset.h: const and non-const forms of params().
+
+	* helper_funcs.C (getStringFromVector,getVectorFromString): remove
+	whitespace from either side of each item.
+
 2001-07-30  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* ControlFloat.h: add a != operator for FloatParams.

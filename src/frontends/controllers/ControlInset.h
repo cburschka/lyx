@@ -31,7 +31,9 @@ public:
 	///
 	ControlInset(LyXView &, Dialogs &);
 	/// Allow the View access to the local copy.
-	Params & params() const;
+	Params & params();
+	///
+	Params const & params() const;
 
 protected:
 	/// Slots connected in the daughter classes c-tor.
@@ -186,7 +188,15 @@ void ControlInset<Inset, Params>::apply()
 
 
 template <class Inset, class Params>
-Params & ControlInset<Inset, Params>::params() const
+Params & ControlInset<Inset, Params>::params()
+{
+	lyx::Assert(params_);
+	return *params_;
+}
+
+
+template <class Inset, class Params>
+Params  const & ControlInset<Inset, Params>::params() const
 {
 	lyx::Assert(params_);
 	return *params_;

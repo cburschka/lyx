@@ -23,6 +23,7 @@
 
 #include "frontends/FileDialog.h"
 #include "support/filetools.h" // OnlyPath, OnlyFilename
+#include "support/lstrings.h"
 #include "gettext.h" // _()
 #include "lyx_gui_misc.h" // WriteAlert
 
@@ -38,10 +39,11 @@ string const getStringFromVector(vector<string> const & vec,
 	int i = 0;
 	for (vector<string>::const_iterator it = vec.begin();
 	     it != vec.end(); ++it) {
-		if (it->empty()) continue;
+		string item = strip(frontStrip(*it));
+		if (item.empty()) continue;
 
 		if (i++ > 0) str += delim;
-		str += *it;
+		str += item;
 	}
 	return str;
 }
@@ -53,16 +55,17 @@ vector<string> const getVectorFromString(string const & str,
 	if (str.empty())
 		return vec;
 
-	string keys(str);
+	string keys(strip(str));
 
 	for(;;) {
 		string::size_type const idx = keys.find(delim);
 		if (idx == string::npos) {
+			string const key = frontStrip(keys);
 			vec.push_back(keys);
 			break;
 		}
 
-		string const key = keys.substr(0, idx);
+		string const key = strip(frontStrip(keys.substr(0, idx)));
 		if (!key.empty())
 			vec.push_back(key);
 
