@@ -1,3 +1,15 @@
+2003-05-02  Michael Schmitt  <michael.schmitt@teststep.org>
+ 
+	* chkconfig.ltx: add layout even if the TeX class is missing;
+	introduce a forth field in the textclass.lst file that 
+	keeps track whether the TeX class is available
+
+2003-05-03  John Levon  <levon@movementarian.org>
+
+	* ui/stdmenus.ui: Child Document not Child document
+
+	* bind/xemacs.bind: fix insert graphics binding
+
 2003-05-02 André Pönitz <poenitz@gmx.net>
 
 	* layouts/*: re-indent according to LyX style
