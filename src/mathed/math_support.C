@@ -372,20 +372,19 @@ int mathed_char_width(LyXFont const & font, unsigned char c)
 }
 
 
-void mathed_string_dim(LyXFont const & font,
-	string const & s, int & asc, int & des, int & wid)
-{
-}
-
-
 void mathed_string_dim(LyXFont const & font, string const & s, Dimension & dim)
 {
+#if 1
 	dim.a = 0;
 	dim.d = 0;
 	for (string::const_iterator it = s.begin(); it != s.end(); ++it) {
 		dim.a = max(dim.a, font_metrics::ascent(*it, font));
 		dim.d = max(dim.d, font_metrics::descent(*it, font));
 	}
+#else
+	dim.a = font_metrics::maxAscent(font);
+	dim.d = font_metrics::maxDescent(font);
+#endif
 	dim.w = font_metrics::width(s, font);
 }
 
@@ -394,25 +393,6 @@ int mathed_string_width(LyXFont const & font, string const & s)
 {
 	return font_metrics::width(s, font);
 }
-
-
-int mathed_string_ascent(LyXFont const & font, string const & s)
-{
-	int asc = 0;
-	for (string::const_iterator it = s.begin(); it != s.end(); ++it)
-		asc = max(asc, font_metrics::ascent(*it, font));
-	return asc;
-}
-
-
-int mathed_string_descent(LyXFont const & font, string const & s)
-{
-	int des = 0;
-	for (string::const_iterator it = s.begin(); it != s.end(); ++it)
-		des = max(des, font_metrics::descent(*it, font));
-	return des;
-}
-
 
 
 void mathed_draw_deco(MathPainterInfo & pi, int x, int y, int w, int h,
