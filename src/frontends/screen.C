@@ -169,8 +169,13 @@ bool LyXScreen::fitManualCursor(BufferView * bv, LyXText * text,
 	if (newtop != text->first_y) {
 		draw(text, bv, newtop);
 		text->first_y = newtop;
+		// Make the screen not scroll too fast when
+		// we have a selection.
+		if (text->selection.set())
+			usleep(200000);
 		return true;
 	}
+
 	return false;
 }
 
@@ -230,8 +235,14 @@ bool LyXScreen::fitCursor(LyXText * text, BufferView * bv)
 	// Is a change necessary?
 	int const newtop = topCursorVisible(text->cursor, text->first_y);
 	bool const result = (newtop != text->first_y);
-	if (result)
+	if (result) {
 		draw(text, bv, newtop);
+		// Make the screen not scroll too fast when
+		// we have a selection.
+		if (text->selection.set())
+			usleep(200000);
+	}
+
 	return result;
 }
 
