@@ -91,10 +91,7 @@ void LaTeXFeatures::useLayout(string const & layoutname)
 
 bool LaTeXFeatures::isRequired(string const & name) const
 {
-	FeaturesList::const_iterator i = find(features.begin(),
-					      features.end(),
-					      name);
-	return i != features.end();
+	return find(features.begin(), features.end(), name) != features.end();
 }
 
 
