@@ -70,7 +70,7 @@ bool QLyXKeySym::is_qt_bogon() const
  
 char QLyXKeySym::debogonify() const
 {
-	return 'a' + ascii_ - 1;
+	return 'A' + ascii_ - 1;
 }
 
 
