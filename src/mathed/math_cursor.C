@@ -709,7 +709,7 @@ void MathedCursor::setLabel(string const & label)
 void MathedCursor::setNumbered()
 {
 	// another ugly hack
-	MathedRowSt * crow = cursor->currentRow();
+	MathedRowContainer::iterator crow = cursor->currentRow();
 	if (crow)
 		crow->setNumbered(!crow->isNumbered());
 }

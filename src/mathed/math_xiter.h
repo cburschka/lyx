@@ -3,8 +3,8 @@
 #define MATH_XITER_H
 
 #include "math_iter.h"
+#include "math_rowst.h"
 
-class MathedRowSt;
 class MathParInset;
 
 /**
@@ -81,7 +81,7 @@ public:
 	///
 	virtual void ipop();
 	///
-	MathedRowSt * currentRow() {
+	MathedRowContainer::iterator currentRow() {
 		return crow_;
 	}
 	
@@ -105,7 +105,7 @@ private:
 	/// true= center, false= left align (default)
 	bool limits_;
 	/// 
-	MathedRowSt * crow_;
+	MathedRowContainer::iterator crow_;
 	
 	///
 	//friend class MathedCursor;

@@ -3,6 +3,7 @@
 #define MATH_ROWST_H
 
 #include <vector>
+#include "support/LAssert.h"
 
 /** The physical structure of a row and aditional information is stored here.
     It allows to manage the extra info independently of the paragraph data.  
@@ -86,21 +87,27 @@ struct MathedRowContainer {
 	///
 	struct iterator {
 		///
-		iterator(MathedRowContainer * m) : st_(m->data_) {}
+		iterator() : st_(0) {}
+		///
+		explicit iterator(MathedRowSt * st) : st_(st) {}
+		/// "better" conversion to bool
+		explicit iterator(MathedRowContainer * m) : st_(m->data_) {}
 		/// "better" conversion to bool
 		operator void *() const { return st_; }
 		///
-		MathedRowStruct & operator*() { return *st_; }
+		MathedRowStruct & operator*() { Assert(st_); return *st_; }
 		///
 		MathedRowStruct * operator->() { return st_; }
 		///
-		void operator++() { st_ = st_->next_; }
+		MathedRowStruct const * operator->() const { return st_; }
 		///
-		bool is_last() const { return st_->next_ == 0; }
+		void operator++() { Assert(st_); st_ = st_->next_; }
+		///
+		bool is_last() const { Assert(st_); return st_->next_ == 0; }
 		///
 		bool operator==(const iterator & it) const { return st_ == it.st_; }
 
-	private:
+	//private:
 		///
 		MathedRowSt * st_;
 	};
