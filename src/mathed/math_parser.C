@@ -395,7 +395,7 @@ void Parser::tokenize(string const & buffer)
 		init_done = true;
 	}
 
-	istringstream is(buffer, ios::in | ios::binary);
+	istringstream is(buffer.c_str(), ios::in | ios::binary);
 
 	char c;
 	while (is.get(c)) {
