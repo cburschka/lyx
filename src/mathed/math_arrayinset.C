@@ -40,9 +40,8 @@ MathArrayInset::MathArrayInset(string const & name, string const & str)
 {
 	vector< vector<string> > dat;
 	istringstream is(str.c_str());
-	while (is) {
-		string line;
-		getline(is, line);
+	string line;
+	while (getline(is, line)) {
 		istringstream ls(line.c_str());
 		typedef istream_iterator<string> iter;
 		vector<string> v = vector<string>(iter(ls), iter());
