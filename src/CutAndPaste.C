@@ -286,6 +286,8 @@ bool CutAndPaste::pasteSelection(Paragraph ** par, Paragraph ** endpar,
 					}
 				}
 			}
+			// set the inset owner of this paragraph
+			tmpbuf->setInsetOwner((*par)->inInset());
 			tmpbuf = tmpbuf->next();
 		}
 		

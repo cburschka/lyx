@@ -1,3 +1,8 @@
+2002-01-17  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* CutAndPaste.C (pasteSelection): when pasting multiple paragraph,
+	make sure to set their inset_owner to the right value (bug #171)
+
 2001-12-12  Ben Stanley  <bds02@uow.edu.au>
 
 	* DepTable.h 
