@@ -70,7 +70,9 @@ struct Debug {
 		///
 		WORKAREA   = (1 << 19),
 		///
-		INSETTEXT  = (1 << 20)
+		INSETTEXT  = (1 << 20),
+		///
+		GRAPHICS   = (1 << 21)
 	};
 	///
 	static type const ANY;

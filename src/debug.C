@@ -54,7 +54,8 @@ error_item errorTags[] = {
 	{ Debug::INSETS,    "insets",    N_("LyX Insets")},
 	{ Debug::FILES,     "files",     N_("Files used by LyX")},
 	{ Debug::WORKAREA,  "workarea",  N_("Workarea events")},
-	{ Debug::INSETTEXT, "insettext", N_("Insettext/tabular messanges")},
+	{ Debug::INSETTEXT, "insettext", N_("Insettext/tabular messages")},
+	{ Debug::GRAPHICS,  "graphics",  N_("Graphics conversion and loading")},
 	{ Debug::ANY,       "any",       N_("All debugging messages")}
 };
 
@@ -70,7 +71,7 @@ Debug::type const Debug::ANY = Debug::type(
 	Debug::MATHED | Debug::FONT | Debug::TCLASS | Debug::LYXVC |
 	Debug::LYXSERVER | Debug::ROFF | Debug::ACTION | Debug::LYXLEX |
 	Debug::DEPEND | Debug::INSETS | Debug::FILES | Debug::WORKAREA |
-	Debug::INSETTEXT);
+	Debug::INSETTEXT | Debug::GRAPHICS);
 
 
 Debug::type Debug::value(string const & val) 
