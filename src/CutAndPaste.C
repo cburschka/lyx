@@ -283,13 +283,13 @@ bool CutAndPaste::pasteSelection(Paragraph ** par, Paragraph ** endpar,
 		// temporary set *par as previous of tmpbuf as we might have to realize
 		// the font.
 		tmpbuf->previous(*par);
- 
+
 		// make sure there is no class difference
 		SwitchLayoutsBetweenClasses(textclass, tc, tmpbuf,
-		                            current_view->buffer()->params);
-		
+					    current_view->buffer()->params);
+
 		Paragraph::depth_type max_depth = (*par)->getMaxDepthAfter(current_view->buffer());
- 
+
 		while(tmpbuf) {
 			// if we have a negative jump so that the depth would go below
 			// 0 depth then we have to redo the delta to this new max depth
