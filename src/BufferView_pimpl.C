@@ -474,7 +474,7 @@ void BufferView::Pimpl::scrollDocView(int value)
 
 	bv_->cursor().reset();
 	LyXText * text = bv_->text();
-	CursorSlice & cur = bv_->cursor().cursor_.front();
+	CursorSlice & cur = bv_->cursor().front();
 	int y = text->cursorY(cur);
 	if (y < first)
 		text->setCursorFromCoordinates(bv_->cursor(), 0, first);
@@ -541,10 +541,10 @@ void BufferView::Pimpl::selectionRequested()
 	}
 
 	if (!xsel_cache_.set ||
-	    cur.cursor_.back() != xsel_cache_.cursor ||
+	    cur.back() != xsel_cache_.cursor ||
 	    cur.anchor_.back() != xsel_cache_.anchor)
 	{
-		xsel_cache_.cursor = cur.cursor_.back();
+		xsel_cache_.cursor = cur.back();
 		xsel_cache_.anchor = cur.anchor_.back();
 		xsel_cache_.set = cur.selection();
 		sel = cur.selectionAsString(false);
@@ -613,12 +613,8 @@ void BufferView::Pimpl::update()
 // Callback for cursor timer
 void BufferView::Pimpl::cursorToggle()
 {
-	if (!buffer_) {
-		cursor_timeout.restart();
-		return;
-	}
-
-	screen().toggleCursor(*bv_);
+	if (buffer_)
+		screen().toggleCursor(*bv_);
 	cursor_timeout.restart();
 }
 
@@ -720,7 +716,7 @@ void BufferView::Pimpl::center()
 
 	bv_->cursor().clearSelection();
 	int const half_height = workarea().workHeight() / 2;
-	int new_y = text->cursorY(bv_->cursor().cursor_.front()) - half_height;
+	int new_y = text->cursorY(bv_->cursor().front()) - half_height;
 	if (new_y < 0)
 		new_y = 0;
 
@@ -1108,6 +1104,7 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & cmd)
 	case LFUN_SETMARK:
 		cur.clearSelection();
 		if (cur.mark()) {
+			cur.mark() = false;
 			cur.message(N_("Mark removed"));
 		} else {
 			cur.mark() = true;

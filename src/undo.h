@@ -19,6 +19,8 @@
 #include "ParagraphList_fwd.h"
 #include "support/types.h"
 
+#include <string>
+
 class LCursor;
 class BufferView;
 
@@ -28,8 +30,7 @@ class BufferView;
  * contains complete paragraphs and sufficient information
  * to restore the state.
  */
-class Undo {
-public:
+struct Undo {
 	/// This is used to combine consecutive undo recordings of the same kind.
 	enum undo_kind {
 		/**
@@ -46,11 +47,6 @@ public:
 		ATOMIC
 	};
 
-	/// constructor
-	Undo(undo_kind kind, int text, int index,
-		int first_par, int end_par, int cursor_par, int cursor_pos);
-
-public:
 	/// which kind of operation are we recording for?
 	undo_kind kind;
 	/// hosting LyXText counted from buffer begin
@@ -65,8 +61,12 @@ public:
 	int cursor_par;
 	/// the position of the cursor in the hosting paragraph
 	int cursor_pos;
-	/// the contents of the paragraphs saved
+	/// the contents of the saved paragraphs (for texted)
 	ParagraphList pars;
+	/// the contents of the saved matharray (for mathed)
+	std::string array;
+	/// in mathed?
+	bool math;
 };
 
 
@@ -79,7 +79,7 @@ bool textRedo(BufferView &);
 /// makes sure the next operation will be stored
 void finishUndo();
 
-/// whilst undo is frozen, all actions do not get added to the undo stack
+/// whilst undo is frozen, no actions gets added to the undo stack
 void freezeUndo();
 
 /// track undos again
@@ -107,8 +107,5 @@ void recordUndoSelection(LCursor & cur, Undo::undo_kind kind = Undo::ATOMIC);
 
 /// convienience: prepare undo for the single paragraph containing the cursor
 void recordUndoFullDocument(LCursor & cur);
-
-/// are we avoiding tracking undos currently?
-extern bool undo_frozen;
 
 #endif // UNDO_FUNCS_H

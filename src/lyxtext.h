@@ -412,6 +412,13 @@ public:
 	/// our 'outermost' Font
 	LyXFont font_;
 
+	///
+	double fill_separator(Row const & row) const;
+	///
+	double fill_hfill(Row const & row) const;
+	///
+	double
+	fill_label_hfill(ParagraphList::iterator pit, Row const & row) const;
 
 private:
 	/// return past-the-last paragraph influenced by a layout

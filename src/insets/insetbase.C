@@ -35,8 +35,8 @@ void InsetBase::dispatch(LCursor & cur, FuncRequest const & cmd)
 
 void InsetBase::priv_dispatch(LCursor & cur, FuncRequest const &)
 {
-	cur.noupdate();
-	cur.notdispatched();
+	cur.noUpdate();
+	cur.undispatched();
 }
 
 

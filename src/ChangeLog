@@ -7,6 +7,22 @@
 	* BufferView_pimpl.C: rename textwidth -> maxwidth, 
 	prepareToPrint -> computeRowMetrics and remove textWidth accessor.
 
+2004-03-01  André Pönitz  <poenitz@gmx.net>
+
+	* dociterator.[Ch]: new class for the 'iterator part' of LCursor.
+
+	* cursor.[Ch]: adjust, additioally: remove the 'current_' machinery
+
+	* Makefile.am:
+	* BufferView.C:
+	* BufferView_pimpl.C:
+	* buffer.C:
+	* lyxfind.C:
+	* lyxfunc.C:
+	* text.C:
+	* text2.C:
+	* text3.C: adjust
+
 2004-03-01  Alfredo Braunstein  <abraunst@lyx.org>
 
 	* Bidi.[Ch] (computeTables): const correctness

@@ -213,7 +213,7 @@ bool operator>(CursorSlice const & p, CursorSlice const & q)
 std::ostream & operator<<(std::ostream & os, CursorSlice const & item)
 {
 	os
-//	   << "inset: " << item.inset_
+	   << "inset: " << item.inset_
 //	   << " text: " << item.text()
 	   << " idx: " << item.idx_
 	   << " par: " << item.par_

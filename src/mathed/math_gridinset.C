@@ -1113,7 +1113,7 @@ void MathGridInset::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 		else if (s == "swap-column")
 			swapCol(col(cur.idx()));
 		else {
-			cur.notdispatched();
+			cur.undispatched();
 			return;
 		}
 		lyxerr << "returning FINISHED_LEFT" << endl;

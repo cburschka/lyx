@@ -424,8 +424,15 @@ void BufferView::putSelectionAt(PosIterator const & cur,
 	if (length) {
 		text->setSelectionRange(cursor(), length);
 		cursor().setSelection();
-		if (backwards)
+		if (backwards) {
+#if 0
 			swap(cursor().cursor_, cursor().anchor_);
+#else
+			DocumentIterator it = cursor();
+			cursor().setCursor(cursor().anchor_, false);
+			cursor().anchor_ = it;
+#endif
+		}
 	}
 
 	fitCursor();

@@ -415,7 +415,7 @@ void InsetTabular::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 {
 	lyxerr << "# InsetTabular::dispatch: cmd: " << cmd << endl;
 	//lyxerr << "  cur:\n" << cur << endl;
-	CursorSlice sl = cur.current();
+	CursorSlice sl = cur.top();
 
 	switch (cmd.action) {
 
@@ -426,7 +426,7 @@ void InsetTabular::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 		cur.selection() = false;
 		setPos(cur, cmd.x, cmd.y);
 		cur.resetAnchor();
-		cur.bv().cursor() = cur;
+		cur.bv().cursor().setCursor(cur, false);
 		//if (cmd.button() == mouse_button::button2)
 		//	dispatch(cur, FuncRequest(LFUN_PASTESELECTION, "paragraph"));
 		//lyxerr << "# InsetTabular::MousePress\n" << cur.bv().cursor() << endl;
@@ -436,8 +436,7 @@ void InsetTabular::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 		if (cmd.button() != mouse_button::button1)
 			break;
 		setPos(cur, cmd.x, cmd.y);
-		cur.bv().cursor().cursor_ = cur.cursor_;
-		cur.bv().cursor().selection() = true;
+		cur.bv().cursor().setCursor(cur, true);
 		//lyxerr << "# InsetTabular::MouseMotion\n" << cur.bv().cursor() << endl;
 		break;
 
@@ -471,9 +470,9 @@ void InsetTabular::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 	case LFUN_RIGHT:
 		cell(cur.idx()).dispatch(cur, cmd);
 		cur.dispatched(NONE); // override the cell's result
-		if (sl == cur.current())
+		if (sl == cur.top())
 			isRightToLeft(cur) ? movePrevCell(cur) : moveNextCell(cur);
-		if (sl == cur.current())
+		if (sl == cur.top())
 			cur.dispatched(FINISHED_RIGHT);
 		break;
 
@@ -481,9 +480,9 @@ void InsetTabular::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 	case LFUN_LEFT:
 		cell(cur.idx()).dispatch(cur, cmd);
 		cur.dispatched(NONE); // override the cell's result
-		if (sl == cur.current())
+		if (sl == cur.top())
 			isRightToLeft(cur) ? moveNextCell(cur) : movePrevCell(cur);
-		if (sl == cur.current())
+		if (sl == cur.top())
 			cur.dispatched(FINISHED_LEFT);
 		break;
 
@@ -491,14 +490,14 @@ void InsetTabular::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 	case LFUN_DOWN:
 		cell(cur.idx()).dispatch(cur, cmd);
 		cur.dispatched(NONE); // override the cell's result
-		if (sl == cur.current())
+		if (sl == cur.top())
 			if (tabular.row_of_cell(cur.idx()) != tabular.rows() - 1) {
 				cur.idx() = tabular.getCellBelow(cur.idx());
 				cur.par() = 0;
 				cur.pos() = 0;
 				resetPos(cur);
 			}
-		if (sl == cur.current())
+		if (sl == cur.top())
 			cur.dispatched(FINISHED_DOWN);
 		break;
 
@@ -506,14 +505,14 @@ void InsetTabular::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 	case LFUN_UP:
 		cell(cur.idx()).dispatch(cur, cmd);
 		cur.dispatched(NONE); // override the cell's result
-		if (sl == cur.current())
+		if (sl == cur.top())
 			if (tabular.row_of_cell(cur.idx()) != 0) {
 				cur.idx() = tabular.getCellAbove(cur.idx());
 				cur.par() = cur.lastpar();
 				cur.pos() = cur.lastpos();
 				resetPos(cur);
 			}
-		if (sl == cur.current())
+		if (sl == cur.top())
 			cur.dispatched(FINISHED_UP);
 		break;
 
@@ -564,7 +563,7 @@ void InsetTabular::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 
 	case LFUN_TABULAR_FEATURE:
 		if (!tabularFeatures(cur, cmd.argument))
-			cur.notdispatched();
+			cur.undispatched();
 		break;
 
 	// insert file functions
@@ -572,7 +571,7 @@ void InsetTabular::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 	case LFUN_FILE_INSERT_ASCII: {
 		string tmpstr = getContentsOfAsciiFile(&cur.bv(), cmd.argument, false);
 		if (!tmpstr.empty() && !insertAsciiString(cur.bv(), tmpstr, false))
-			cur.notdispatched();
+			cur.undispatched();
 		break;
 	}
 

@@ -384,24 +384,20 @@ void MathNestInset::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 		break;
 
 	case LFUN_FINISHED_LEFT:
-		cur.pop(cur.currentDepth());
 		cur.bv().cursor() = cur;
 		break;
 
 	case LFUN_FINISHED_RIGHT:
-		cur.pop(cur.currentDepth());
 		++cur.pos();
 		cur.bv().cursor() = cur;
 		break;
 
 	case LFUN_FINISHED_UP:
-		cur.pop(cur.currentDepth());
 		//idxUpDown(cur, true);
 		cur.bv().cursor() = cur;
 		break;
 
 	case LFUN_FINISHED_DOWN:
-		cur.pop(cur.currentDepth());
 		//idxUpDown(cur, false);
 		cur.bv().cursor() = cur;
 		break;
@@ -554,7 +550,15 @@ void MathNestInset::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 		break;
 
 	case LFUN_INSET_TOGGLE:
-		cur.lockToggle();
+		//lockToggle();
+		if (cur.pos() != cur.lastpos()) {
+			// toggle previous inset ...
+			cur.nextAtom().nucleus()->lock(!cur.nextAtom()->lock());
+		} else if (cur.popLeft() && cur.pos() != cur.lastpos()) {
+			// ... or enclosing inset if we are in the last inset position
+			cur.nextAtom().nucleus()->lock(!cur.nextAtom()->lock());
+			++cur.pos();
+		}
 		break;
 
 	case LFUN_SELFINSERT:
@@ -780,7 +784,7 @@ void MathNestInset::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 			cur.insert(ar);
 			break;
 		}
-		cur.notdispatched();
+		cur.undispatched();
 		break;
 	}
 
@@ -790,7 +794,7 @@ void MathNestInset::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 	case LFUN_WORD_REPLACE:
 	case LFUN_WORD_FIND:
 		if (!searchForward(&cur.bv(), cmd.getArg(0), false, false))
-			cur.notdispatched();
+			cur.undispatched();
 		break;
 
 	cur.normalize();
@@ -876,7 +880,7 @@ void MathNestInset::lfunMouseRelease(LCursor & cur, FuncRequest const & cmd)
 		return;
 	}
 
-	cur.notdispatched();
+	cur.undispatched();
 }
 
 
@@ -914,9 +918,7 @@ void MathNestInset::lfunMouseMotion(LCursor & cur, FuncRequest const & cmd)
 		cur.selBegin();
 
 	//cur.setScreenPos(cmd.x + xo_, cmd.y + yo_);
-	cur.bv().cursor().cursor_ = cur.cursor_;
-	cur.bv().cursor().selection() = true;
-	return;
+	cur.bv().cursor().setCursor(cur, true);
 }
 
 

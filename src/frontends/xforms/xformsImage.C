@@ -470,7 +470,7 @@ unsigned int packedcolor(LColor::color col)
 	bool const success = getRGBColor(col, r, g, b);
 	if (!success)
 		// Set to black on failure
-		return FL_PACK(255,255,255);
+		return FL_PACK(255, 255, 255);
 
 	return FL_PACK(r, g, b);
 }

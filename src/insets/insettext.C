@@ -289,7 +289,7 @@ void InsetText::edit(LCursor & cur, bool left)
 	setViewCache(&cur.bv());
 	int const par = left ? 0 : paragraphs().size() - 1;
 	int const pos = left ? 0 : paragraphs().back().size();
-	text_.setCursor(cur.current(), par, pos);
+	text_.setCursor(cur.top(), par, pos);
 	cur.clearSelection();
 	finishUndo();
 	sanitizeEmptyText(cur.bv());

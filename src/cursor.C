@@ -57,23 +57,29 @@ limited_stack<string> theCutBuffer;
 
 
 LCursor::LCursor(BufferView & bv)
-	: cursor_(1), anchor_(1), bv_(&bv), current_(0),
-	  cached_y_(0), x_target_(-1),
-	  selection_(false), mark_(false)
+	: DocumentIterator(bv), anchor_(bv),
+	  cached_y_(0), x_target_(-1), selection_(false), mark_(false)
 {}
 
 
 void LCursor::reset()
 {
-	cursor_.clear();
+	clear();
+	push_back(CursorSlice());
 	anchor_.clear();
-	cursor_.push_back(CursorSlice());
 	anchor_.push_back(CursorSlice());
-	current_ = 0;
 	cached_y_ = 0;
 	clearTargetX();
 	selection_ = false;
 	mark_ = false;
+}
+
+
+void LCursor::setCursor(DocumentIterator const & cur, bool sel)
+{
+	// this (intentionally) does not touch the anchor
+	DocumentIterator::operator=(cur);
+	selection() = sel;
 }
 
 
@@ -84,9 +90,11 @@ DispatchResult LCursor::dispatch(FuncRequest const & cmd0)
 	BOOST_ASSERT(idx() <= lastidx());
 	BOOST_ASSERT(par() <= lastpar());
 	FuncRequest cmd = cmd0;
+	nopop_ = false;
+	DocumentIterator orig = *this;
 	disp_.update(true);
 	disp_.val(NONE);
-	for (current_ = cursor_.size() - 1; current_ >= 1; --current_) {
+	while (size() != 1) {
 		// the inset's dispatch() is supposed to reset the update and
 		// val flags if necessary 
 		inset()->dispatch(*this, cmd);
@@ -96,7 +104,6 @@ DispatchResult LCursor::dispatch(FuncRequest const & cmd0)
 		switch (disp_.val()) {
 			case NONE:
 				// the inset handled the event fully
-				current_ = cursor_.size() - 1;
 				return DispatchResult(true, true);
 			case FINISHED_LEFT:
 				// the inset handled the event partially
@@ -112,15 +119,15 @@ DispatchResult LCursor::dispatch(FuncRequest const & cmd0)
 				cmd = FuncRequest(LFUN_FINISHED_DOWN);
 				break;
 			default:
-				//lyxerr << "not handled on level " << current_
+				//lyxerr << "not handled on level " << depth()
 				//	<< " val: " << disp_.val() << endl;
 				break;
 		}
 	}
-	BOOST_ASSERT(current_ == 0);
-	bv_->text()->dispatch(*this, cmd);
+	bv().text()->dispatch(*this, cmd);
+	if (nopop_)
+		setCursor(orig, false);
 	//lyxerr << "   result: " << res.val() << endl;
-	current_ = cursor_.size() - 1;
 	return disp_;
 }
 
@@ -128,57 +135,60 @@ DispatchResult LCursor::dispatch(FuncRequest const & cmd0)
 bool LCursor::getStatus(FuncRequest const & cmd, FuncStatus & status)
 {
 	lyxerr << "\nLCursor::getStatus: cmd: " << cmd << endl << *this << endl;
+	DocumentIterator orig = *this;
 	BOOST_ASSERT(pos() <= lastpos());
 	BOOST_ASSERT(idx() <= lastidx());
 	BOOST_ASSERT(par() <= lastpar());
-	for (current_ = cursor_.size() - 1; current_ >= 1; --current_) {
+	for ( ; size() != 0; pop_back()) {
 		// the inset's getStatus() will return 'true' if it made
 		// a definitive decision on whether it want to handle the
 		// request or not. The result of this decision is put into
 		// the 'status' parameter.
 		bool const res = inset()->getStatus(*this, cmd, status);
 		if (res) {
-			current_ = cursor_.size() - 1;
+			setCursor(orig, false);
 			return true;
 		}
 	}
-	BOOST_ASSERT(current_ == 0);
-	bool const res = bv_->text()->getStatus(*this, cmd, status);
-	current_ = cursor_.size() - 1;
+	bool const res = bv().text()->getStatus(*this, cmd, status);
+	setCursor(orig, false);
 	return res;
 }
 
 
-void LCursor::push(InsetBase * inset)
+BufferView & LCursor::bv() const
 {
-	lyxerr << "LCursor::push()  inset: " << inset << endl;
-	cursor_.push_back(CursorSlice(inset));
-	anchor_.push_back(CursorSlice(inset));
-	++current_;
-	updatePos();
+	return DocumentIterator::bv();
 }
 
 
+/*
 void LCursor::pop(int depth)
 {
-	while (int(cursor_.size()) > depth + 1)
+	while (int(size()) > depth + 1)
 		pop();
 	lyxerr << "LCursor::pop() result: " << *this << endl;
 }
+*/
 
 
 void LCursor::pop()
 {
-	BOOST_ASSERT(cursor_.size() >= 1);
-	cursor_.pop_back();
+	BOOST_ASSERT(size() >= 1);
+	pop_back();
 	anchor_.pop_back();
-	current_ = cursor_.size() - 1;
+}
+
+
+void LCursor::push(InsetBase * p)
+{
+	push_back(CursorSlice(p));
 }
 
 
 void LCursor::pushLeft(InsetBase * p)
 {
-	BOOST_ASSERT(!cursor_.empty());
+	BOOST_ASSERT(!empty());
 	//lyxerr << "Entering inset " << t << " left" << endl;
 	push(p);
 	p->idxFirst(*this);
@@ -187,7 +197,7 @@ void LCursor::pushLeft(InsetBase * p)
 
 bool LCursor::popLeft()
 {
-	BOOST_ASSERT(!cursor_.empty());
+	BOOST_ASSERT(!empty());
 	//lyxerr << "Leaving inset to the left" << endl;
 	if (depth() <= 1) {
 		if (depth() == 1)
@@ -202,7 +212,7 @@ bool LCursor::popLeft()
 
 bool LCursor::popRight()
 {
-	BOOST_ASSERT(!cursor_.empty());
+	BOOST_ASSERT(!empty());
 	//lyxerr << "Leaving inset to the right" << endl;
 	if (depth() <= 1) {
 		if (depth() == 1)
@@ -216,28 +226,11 @@ bool LCursor::popRight()
 }
 
 
-CursorSlice & LCursor::current()
-{
-	BOOST_ASSERT(!cursor_.empty());
-	//lyxerr << "accessing cursor slice " << current_
-	//	<< ": " << cursor_[current_] << endl;
-	return cursor_[current_];
-}
-
-
-CursorSlice const & LCursor::current() const
-{
-	//lyxerr << "accessing cursor slice " << current_
-	//	<< ": " << cursor_[current_] << endl;
-	return cursor_[current_];
-}
-
-
 int LCursor::currentMode()
 {
-	BOOST_ASSERT(!cursor_.empty());
-	for (int i = cursor_.size() - 1; i >= 1; --i) {
-		int res = cursor_[i].inset()->currentMode();
+	BOOST_ASSERT(!empty());
+	for (int i = size() - 1; i >= 1; --i) {
+		int res = operator[](i).inset()->currentMode();
 		if (res != MathInset::UNDECIDED_MODE)
 			return res;
 	}
@@ -245,46 +238,18 @@ int LCursor::currentMode()
 }
 
 
-LyXText * LCursor::innerText() const
-{
-	BOOST_ASSERT(!cursor_.empty());
-	if (cursor_.size() > 1) {
-		// go up until first non-0 text is hit
-		// (innermost text is 0 in mathed)
-		for (int i = cursor_.size() - 1; i >= 1; --i)
-			if (cursor_[i].text())
-				return cursor_[i].text();
-	}
-	return bv_->text();
-}
-
-
-CursorSlice const & LCursor::innerTextSlice() const
-{
-	BOOST_ASSERT(!cursor_.empty());
-	if (cursor_.size() > 1) {
-		// go up until first non-0 text is hit
-		// (innermost text is 0 in mathed)
-		for (int i = cursor_.size() - 1; i >= 1; --i)
-			if (cursor_[i].text())
-				return cursor_[i];
-	}
-	return cursor_[0];
-}
-
-
 void LCursor::updatePos()
 {
-	BOOST_ASSERT(!cursor_.empty());
-	if (cursor_.size() > 1)
-		cached_y_ = bv_->top_y() + cursor_.back().inset()->yo();
-		//cached_y_ = cursor_.back().inset()->yo();
+	BOOST_ASSERT(!empty());
+	if (size() > 1)
+		cached_y_ = bv().top_y() + back().inset()->yo();
+		//cached_y_ = back().inset()->yo();
 }
 
 
 void LCursor::getDim(int & asc, int & des) const
 {
-	BOOST_ASSERT(!cursor_.empty());
+	BOOST_ASSERT(!empty());
 	if (inMathed()) {
 		BOOST_ASSERT(inset());
 		BOOST_ASSERT(inset()->asMathInset());
@@ -301,18 +266,18 @@ void LCursor::getDim(int & asc, int & des) const
 
 void LCursor::getPos(int & x, int & y) const
 {
-	BOOST_ASSERT(!cursor_.empty());
+	BOOST_ASSERT(!empty());
 	x = 0;
 	y = 0;
-	if (cursor_.size() == 1) {
-		x = bv_->text()->cursorX(cursor_.front());
-		y = bv_->text()->cursorY(cursor_.front());
+	if (size() == 1) {
+		x = bv().text()->cursorX(front());
+		y = bv().text()->cursorY(front());
 	} else {
 		if (!inset()) {
 			lyxerr << "#### LCursor::getPos: " << *this << endl;
 			BOOST_ASSERT(inset());
 		}
-		inset()->getCursorPos(cursor_.back(), x, y);
+		inset()->getCursorPos(back(), x, y);
 		// getCursorPos gives _screen_ coordinates. We need to add
 		// top_y to get document coordinates. This is hidden in cached_y_.
 		//y += cached_y_ - inset()->yo();
@@ -335,59 +300,11 @@ void LCursor::paste(string const & data)
 }
 
 
-InsetBase * LCursor::innerInsetOfType(int code) const
-{
-	for (int i = cursor_.size() - 1; i >= 1; --i)
-		if (cursor_[i].inset_->lyxCode() == code)
-			return cursor_[i].inset_;
-	return 0;
-}
-
-
-InsetTabular * LCursor::innerInsetTabular() const
-{
-	return static_cast<InsetTabular *>(innerInsetOfType(InsetBase::TABULAR_CODE));
-}
-
-
 void LCursor::resetAnchor()
 {
-	anchor_ = cursor_;
+	anchor_ = *this;
 }
 
-
-BufferView & LCursor::bv() const
-{
-	return *bv_;
-}
-
-
-MathAtom const & LCursor::prevAtom() const
-{
-	BOOST_ASSERT(pos() > 0);
-	return cell()[pos() - 1];
-}
-
-
-MathAtom & LCursor::prevAtom()
-{
-	BOOST_ASSERT(pos() > 0);
-	return cell()[pos() - 1];
-}
-
-
-MathAtom const & LCursor::nextAtom() const
-{
-	BOOST_ASSERT(pos() < lastpos());
-	return cell()[pos()];
-}
-
-
-MathAtom & LCursor::nextAtom()
-{
-	BOOST_ASSERT(pos() < lastpos());
-	return cell()[pos()];
-}
 
 
 bool LCursor::posLeft()
@@ -423,34 +340,34 @@ CursorSlice const & LCursor::anchor() const
 CursorSlice const & LCursor::selBegin() const
 {
 	if (!selection())
-		return cursor_.back();
-	return anchor() < cursor_.back() ? anchor() : cursor_.back();
+		return back();
+	return anchor() < back() ? anchor() : back();
 }
 
 
 CursorSlice & LCursor::selBegin()
 {
 	if (!selection())
-		return cursor_.back();
+		return back();
 	// can't use std::min as this returns a const ref
-	return anchor() < cursor_.back() ? anchor() : cursor_.back();
+	return anchor() < back() ? anchor() : back();
 }
 
 
 CursorSlice const & LCursor::selEnd() const
 {
 	if (!selection())
-		return cursor_.back();
-	return anchor() > cursor_.back() ? anchor() : cursor_.back();
+		return back();
+	return anchor() > back() ? anchor() : back();
 }
 
 
 CursorSlice & LCursor::selEnd()
 {
 	if (!selection())
-		return cursor_.back();
+		return back();
 	// can't use std::min as this returns a const ref
-	return anchor() > cursor_.back() ? anchor() : cursor_.back();
+	return anchor() > back() ? anchor() : back();
 }
 
 
@@ -463,10 +380,10 @@ void LCursor::setSelection()
 }
 
 
-void LCursor::setSelection(CursorBase const & where, size_t n)
+void LCursor::setSelection(DocumentIterator const & where, size_t n)
 {
 	selection() = true;
-	cursor_ = where;
+	setCursor(where, false);
 	anchor_ = where;
 	pos() += n;
 }
@@ -499,122 +416,11 @@ void LCursor::clearTargetX()
 }
 
 
-LyXText * LCursor::text() const
-{
-	return current_ ? current().text() : bv_->text();
-}
-
-
-Paragraph & LCursor::paragraph()
-{
-	BOOST_ASSERT(inTexted());
-	return current_ ? current().paragraph() : *bv_->text()->getPar(par());
-}
-
-
-Paragraph const & LCursor::paragraph() const
-{
-	BOOST_ASSERT(inTexted());
-	return current_ ? current().paragraph() : *bv_->text()->getPar(par());
-}
-
-
-Row & LCursor::textRow()
-{
-	return *paragraph().getRow(pos());
-}
-
-
-Row const & LCursor::textRow() const
-{
-	return *paragraph().getRow(pos());
-}
-
-
-LCursor::par_type LCursor::lastpar() const
-{
-	return inMathed() ? 0 : text()->paragraphs().size() - 1;
-}
-
-
-LCursor::pos_type LCursor::lastpos() const
-{
-	InsetBase * inset = current().inset();
-	return inset && inset->asMathInset() ? cell().size() : paragraph().size();
-}
-
-
-LCursor::row_type LCursor::crow() const
-{
-	return paragraph().row(pos());
-}
-
-
-LCursor::row_type LCursor::lastcrow() const
-{
-	return paragraph().rows.size();
-}
-
-
-LCursor::idx_type LCursor::lastidx() const
-{
-	return current_ ? current().lastidx() : 0;
-}
-
-
-size_t LCursor::nargs() const
-{
-	// assume 1x1 grid for 'plain text'
-	return current_ ? current().nargs() : 1;
-}
-
-
-size_t LCursor::ncols() const
-{
-	// assume 1x1 grid for 'plain text'
-	return current_ ? current().ncols() : 1;
-}
-
-
-size_t LCursor::nrows() const
-{
-	// assume 1x1 grid for 'plain text'
-	return current_ ? current().nrows() : 1;
-}
-
-
-LCursor::row_type LCursor::row() const
-{
-	BOOST_ASSERT(current_ > 0);
-	return current().row();
-}
-
-
-LCursor::col_type LCursor::col() const
-{
-	BOOST_ASSERT(current_ > 0);
-	return current().col();
-}
-
-
-MathArray const & LCursor::cell() const
-{
-	BOOST_ASSERT(current_ > 0);
-	return current().cell();
-}
-
-
-MathArray & LCursor::cell()
-{
-	BOOST_ASSERT(current_ > 0);
-	return current().cell();
-}
-
 
 void LCursor::info(std::ostream & os) const
 {
 	for (int i = 1, n = depth(); i < n; ++i) {
-		cursor_[i].inset()->infoize(os);
+		operator[](i).inset()->infoize(os);
 		os << "  ";
 	}
 	if (pos() != 0)
@@ -701,7 +507,7 @@ void LCursor::eraseSelection()
 				for (col_type col = c1; col <= c2; ++col)
 					p->cell(p->index(row, col)).clear();
 		}
-		current() = i1;
+		back() = i1;
 	} else {
 		lyxerr << "can't erase this selection 1" << endl;
 	}
@@ -786,76 +592,10 @@ void LCursor::selClearOrDel()
 
 std::ostream & operator<<(std::ostream & os, LCursor const & cur)
 {
-	for (size_t i = 0, n = cur.cursor_.size(); i != n; ++i)
-		os << " " << cur.cursor_[i] << " | " << cur.anchor_[i] << "\n";
-	os << " current: " << cur.current_ << endl;
+	for (size_t i = 0, n = cur.size(); i != n; ++i)
+		os << " " << cur.operator[](i) << " | " << cur.anchor_[i] << "\n";
 	os << " selection: " << cur.selection_ << endl;
 	return os;
-}
-
-
-
-
-//
-// CursorBase
-//
-
-
-void increment(CursorBase & it)
-{
-	CursorSlice & top = it.back();
-	MathArray & ar = top.asMathInset()->cell(top.idx_);
-
-	// move into the current inset if possible
-	// it is impossible for pos() == size()!
-	MathInset * n = 0;
-	if (top.pos() != top.lastpos())
-		n = (ar.begin() + top.pos_)->nucleus();
-	if (n && n->isActive()) {
-		it.push_back(CursorSlice(n));
-		return;
-	}
-
-	// otherwise move on one cell back if possible
-	if (top.pos() < top.lastpos()) {
-		// pos() == lastpos() is valid!
-		++top.pos_;
-		return;
-	}
-
-	// otherwise try to move on one cell if possible
-	while (top.idx() < top.lastidx()) {
-		++top.idx_;
-		if (top.asMathInset()->validCell(top.idx_)) {
-			top.pos_ = 0;
-			return;
-		}
-	}
-
-	// otherwise leave array, move on one back
-	// this might yield pos() == size(), but that's a ok.
-	it.pop_back();
-	// it certainly invalidates top
-	++it.back().pos_;
-}
-
-
-CursorBase ibegin(InsetBase * p)
-{
-	CursorBase it;
-	it.push_back(CursorSlice(p));
-	return it;
-}
-
-
-CursorBase iend(InsetBase * p)
-{
-	CursorBase it;
-	it.push_back(CursorSlice(p));
-	CursorSlice & cur = it.back();
-	cur.idx() = cur.lastidx();
-	cur.pos() = cur.lastpos();
-	return it;
 }
 
 
@@ -865,20 +605,17 @@ CursorBase iend(InsetBase * p)
 //
 // The part below is the non-integrated rest of the original math
 // cursor. This should be either generalized for texted or moved
-// back to the math insets.
+// back to mathed (in most cases to MathNestInset).
 //
 ///////////////////////////////////////////////////////////////////
 
-#include "mathed/math_braceinset.h"
 #include "mathed/math_charinset.h"
-#include "mathed/math_commentinset.h"
 #include "mathed/math_factory.h"
 #include "mathed/math_gridinset.h"
 #include "mathed/math_macroarg.h"
 #include "mathed/math_macrotemplate.h"
 #include "mathed/math_mathmlstream.h"
 #include "mathed/math_scriptinset.h"
-#include "mathed/math_spaceinset.h"
 #include "mathed/math_support.h"
 #include "mathed/math_unknowninset.h"
 
@@ -888,7 +625,7 @@ CursorBase iend(InsetBase * p)
 bool LCursor::isInside(InsetBase const * p)
 {
 	for (unsigned i = 0; i < depth(); ++i)
-		if (cursor_[i].inset() == p)
+		if (operator[](i).inset() == p)
 			return true;
 	return false;
 }
@@ -915,7 +652,8 @@ bool LCursor::openable(MathAtom const & t) const
 }
 
 
-bool positionable(CursorBase const & cursor, CursorBase const & anchor)
+bool positionable(DocumentIterator const & cursor,
+	DocumentIterator const & anchor)
 {
 	// avoid deeper nested insets when selecting
 	if (cursor.size() > anchor.size())
@@ -1127,10 +865,10 @@ bool LCursor::erase()
 bool LCursor::up()
 {
 	macroModeClose();
-	CursorBase save = cursor_;
+	DocumentIterator save = *this;
 	if (goUpDown(true))
 		return true;
-	cursor_ = save;
+	setCursor(save, false);
 	autocorrect() = false;
 	return selection();
 }
@@ -1139,10 +877,10 @@ bool LCursor::up()
 bool LCursor::down()
 {
 	macroModeClose();
-	CursorBase save = cursor_;
+	DocumentIterator save = *this;
 	if (goUpDown(false))
 		return true;
-	cursor_ = save;
+	setCursor(save, false);
 	autocorrect() = false;
 	return selection();
 }
@@ -1203,8 +941,8 @@ int LCursor::targetX() const
 
 MathHullInset * LCursor::formula() const
 {
-	for (int i = cursor_.size() - 1; i >= 1; --i) {
-		MathInset * inset = cursor_[i].inset()->asMathInset();
+	for (int i = size() - 1; i >= 1; --i) {
+		MathInset * inset = operator[](i).inset()->asMathInset();
 		if (inset && inset->asHullInset())
 			return static_cast<MathHullInset *>(inset);
 	}
@@ -1248,12 +986,12 @@ bool LCursor::inMacroArgMode() const
 MathGridInset * LCursor::enclosingGrid(idx_type & idx) const
 {
 	for (MathInset::difference_type i = depth() - 1; i >= 0; --i) {
-		MathInset * m = cursor_[i].inset()->asMathInset();
+		MathInset * m = operator[](i).inset()->asMathInset();
 		if (!m)
 			return 0;
 		MathGridInset * p = m->asGridInset();
 		if (p) {
-			idx = cursor_[i].idx_;
+			idx = operator[](i).idx_;
 			return p;
 		}
 	}
@@ -1279,8 +1017,8 @@ void LCursor::touch()
 {
 #warning look here
 #if 0
-	CursorBase::const_iterator it = cursor_.begin();
-	CursorBase::const_iterator et = cursor_.end();
+	DocumentIterator::const_iterator it = begin();
+	DocumentIterator::const_iterator et = end();
 	for ( ; it != et; ++it)
 		it->cell().touch();
 #endif
@@ -1416,11 +1154,11 @@ bool LCursor::goUpDown(bool up)
 
 bool LCursor::bruteFind(int x, int y, int xlow, int xhigh, int ylow, int yhigh)
 {
-	CursorBase best_cursor;
+	DocumentIterator best_cursor(bv());
 	double best_dist = 1e10;
 
-	CursorBase it = ibegin(formula());
-	CursorBase et = iend(formula());
+	DocumentIterator it = bufferBegin(bv());
+	DocumentIterator et = bufferEnd();
 	while (1) {
 		// avoid invalid nesting when selecting
 		if (!selection() || positionable(it, anchor_)) {
@@ -1441,11 +1179,11 @@ bool LCursor::bruteFind(int x, int y, int xlow, int xhigh, int ylow, int yhigh)
 
 		if (it == et)
 			break;
-		increment(it);
+		it.forwardPos();
 	}
 
 	if (best_dist < 1e10)
-		cursor_ = best_cursor;
+		setCursor(best_cursor, false);
 	return best_dist < 1e10;
 }
 
@@ -1454,9 +1192,9 @@ void LCursor::bruteFind2(int x, int y)
 {
 	double best_dist = 1e10;
 
-	CursorBase it = cursor_;
+	DocumentIterator it = *this;
 	it.back().pos() = 0;
-	CursorBase et = cursor_;
+	DocumentIterator et = *this;
 	et.back().pos() = et.back().asMathInset()->cell(et.back().idx_).size();
 	for (int i = 0; ; ++i) {
 		int xo, yo;
@@ -1468,24 +1206,11 @@ void LCursor::bruteFind2(int x, int y)
 		lyxerr << "i: " << i << " d: " << d << " best: " << best_dist << endl;
 		if (d <= best_dist) {
 			best_dist = d;
-			cursor_ = it;
+			setCursor(it, false);
 		}
 		if (it == et)
 			break;
-		increment(it);
-	}
-}
-
-
-void LCursor::lockToggle()
-{
-	if (pos() != lastpos()) {
-		// toggle previous inset ...
-		nextAtom().nucleus()->lock(!nextAtom()->lock());
-	} else if (popLeft() && pos() != lastpos()) {
-		// ... or enclosing inset if we are in the last inset position
-		nextAtom().nucleus()->lock(!nextAtom()->lock());
-		++pos();
+		it.forwardPos();
 	}
 }
 
@@ -1498,7 +1223,7 @@ CursorSlice LCursor::normalAnchor()
 	}
 	//lyx::BOOST_ASSERT(Anchor_.size() >= cursor.depth());
 	// use Anchor on the same level as Cursor
-	CursorSlice normal = anchor_[current_];
+	CursorSlice normal = anchor_[size() - 1];
 #if 0
 	if (depth() < anchor_.size() && !(normal < xx())) {
 		// anchor is behind cursor -> move anchor behind the inset
@@ -1519,7 +1244,7 @@ DispatchResult dispatch(LCursor & cur, FuncRequest const & cmd)
 	case LFUN_MOUSE_MOTION:
 	case LFUN_MOUSE_RELEASE:
 	case LFUN_MOUSE_DOUBLE: {
-		CursorSlice & pos = cursor_.back();
+		CursorSlice & pos = back();
 		int x = 0;
 		int y = 0;
 		getPos(x, y);
@@ -1573,48 +1298,6 @@ void LCursor::handleFont(string const & font)
 		plainErase();
 	}
 	insert(safe);
-}
-
-
-bool LCursor::inMathed() const
-{
-	return current_ && inset()->inMathed();
-}
-
-
-bool LCursor::inTexted() const
-{
-	return !inMathed();
-}
-
-
-InsetBase * LCursor::nextInset()
-{
-	if (pos() == lastpos())
-		return 0;
-	if (inMathed()) 
-		return nextAtom().nucleus();
-	return paragraph().isInset(pos()) ? paragraph().getInset(pos()) : 0;
-}
-
-
-InsetBase * LCursor::prevInset()
-{
-	if (pos() == 0)
-		return 0;
-	if (inMathed()) 
-		return prevAtom().nucleus();
-	return paragraph().isInset(pos() - 1) ? paragraph().getInset(pos() - 1) : 0;
-}
-
-
-InsetBase const * LCursor::prevInset() const
-{
-	if (pos() == 0)
-		return 0;
-	if (inMathed()) 
-		return prevAtom().nucleus();
-	return paragraph().isInset(pos() - 1) ? paragraph().getInset(pos() - 1) : 0;
 }
 
 
@@ -1705,7 +1388,7 @@ string LCursor::getPossibleLabel()
 }
 
 
-void LCursor::notdispatched()
+void LCursor::undispatched()
 {
 	disp_.dispatched(false);
 }
@@ -1717,7 +1400,13 @@ void LCursor::dispatched(dispatch_result_t res)
 }
 
 
-void LCursor::noupdate()
+void LCursor::noUpdate()
 {
 	disp_.update(false);
+}
+
+
+void LCursor::noPop()
+{
+	nopop_ = true;
 }

@@ -1168,10 +1168,10 @@ void LyXText::cursorLeftOneWord(LCursor & cur)
 void LyXText::selectWord(LCursor & cur, word_location loc)
 {
 	BOOST_ASSERT(this == cur.text());
-	CursorSlice from = cur.current();
-	CursorSlice to = cur.current();
+	CursorSlice from = cur.top();
+	CursorSlice to = cur.top();
 	getWord(from, to, loc);
-	if (cur.current() != from)
+	if (cur.top() != from)
 		setCursor(cur, from.par(), from.pos());
 	if (to == from)
 		return;
@@ -1340,9 +1340,9 @@ void LyXText::Delete(LCursor & cur)
 {
 	BOOST_ASSERT(this == cur.text());
 	// just move to the right, if we had success make a backspace
-	CursorSlice sl = cur.current();
+	CursorSlice sl = cur.top();
 	cursorRight(cur);
-	if (sl == cur.current()) {
+	if (sl == cur.top()) {
 		recordUndo(cur, Undo::DELETE, cur.par(), max(0, cur.par() - 1));
 		backspace(cur);
 	}
@@ -1820,8 +1820,8 @@ int LyXText::cursorX(CursorSlice const & cur) const
 	ParagraphList::iterator pit = getPar(cur);
 	if (pit->rows.empty())
 		return xo_;
+
 	Row const & row = *pit->getRow(cur.pos());
-	
 	
 	pos_type pos = cur.pos();
 	pos_type cursor_vpos = 0;
@@ -1894,7 +1894,7 @@ CursorSlice & LyXText::cursor()
 			<< "\nthis: " << this << endl;
 		BOOST_ASSERT(false);
 	}
-	return bv()->cursor().current();
+	return bv()->cursor().top();
 }
 
 
@@ -1906,7 +1906,7 @@ CursorSlice const & LyXText::cursor() const
 			<< "\nthis: " << this << endl;
 		BOOST_ASSERT(false);
 	}
-	return bv()->cursor().current();
+	return bv()->cursor().top();
 }
 
 

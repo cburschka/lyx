@@ -130,7 +130,6 @@ lyx_SOURCES = \
 	changes.h \
 	chset.C \
 	chset.h \
-	lfuns.h \
 	config.h.in \
 	converter.C \
 	converter.h \
@@ -144,6 +143,8 @@ lyx_SOURCES = \
 	debug.h \
 	dimension.C \
 	dimension.h \
+	dociterator.C \
+	dociterator.h \
 	dispatchresult.h \
 	encoding.C \
 	encoding.h \
@@ -178,6 +179,7 @@ lyx_SOURCES = \
 	layout.h \
 	lengthcommon.C \
 	lengthcommon.h \
+	lfuns.h \
 	lyx_cb.C \
 	lyx_cb.h \
 	lyx_main.C \

@@ -339,7 +339,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 		break;
 
 	case LFUN_LAYOUT_TABULAR:
-		disable = !cur.innerInsetTabular();
+		disable = !cur.innerInsetOfType(InsetBase::TABULAR_CODE);
 		break;
 
 	case LFUN_DEPTH_MIN:
@@ -405,7 +405,8 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 		if (tli) {
 			FuncStatus ret;
 			//ret.disabled(true);
-			InsetTabular * tab = cur.innerInsetTabular();
+			InsetTabular * tab = static_cast<InsetTabular *>
+				(cur.innerInsetOfType(InsetBase::TABULAR_CODE));
 			if (tab) {
 				ret = tab->getStatus(cmd.argument);
 				flag |= ret;

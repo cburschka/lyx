@@ -12,23 +12,17 @@
 #ifndef CURSOR_H
 #define CURSOR_H
 
-#include "cursor_slice.h"
 #include "dispatchresult.h"
+#include "dociterator.h"
 
 #include <iosfwd>
 #include <vector>
 
-class BufferView;
 class UpdatableInset;
-class MathAtom;
 class DispatchResult;
 class FuncStatus;
 class FuncRequest;
 class InsetTabular;
-class LyXText;
-class Paragraph;
-class Row;
-
 
 // these should go
 class MathHullInset;
@@ -36,40 +30,14 @@ class MathUnknownInset;
 class MathGridInset;
 
 
-// only needed for gcc 2.95, remove when support terminated
-template <typename A, typename B>
-bool ptr_cmp(A const * a, B const * b)
-{
-	return a == b;
-}
-
-
-// this is used for traversing math insets
-typedef std::vector<CursorSlice> CursorBase;
-/// move on one step
-void increment(CursorBase &);
-///
-CursorBase ibegin(InsetBase * p);
-///
-CursorBase iend(InsetBase * p);
-
-
 /**
  * The cursor class describes the position of a cursor within a document.
  */
 
-class LCursor {
+// The public inheritance should go in favour of a suitable data member
+// (or maybe private inheritance) at some point of time.
+class LCursor : public DocumentIterator {
 public:
-	/// type for cell number in inset
-	typedef CursorSlice::idx_type idx_type;
-	/// type for paragraph numbers positions within a cell
-	typedef CursorSlice::par_type par_type;
-	/// type for cursor positions within a cell
-	typedef CursorSlice::pos_type pos_type;
-	/// type for row indices
-	typedef CursorSlice::row_type row_type;
-	/// type for col indices
-	typedef CursorSlice::col_type col_type;
 
 	/// create the cursor of a BufferView
 	explicit LCursor(BufferView & bv);
@@ -88,16 +56,8 @@ public:
 	bool popLeft();
 	/// pop one slice off the cursor stack and go right
 	bool popRight();
-	/// restrict cursor nesting to given size
-	void pop(int depth);
-	/// access to current cursor slice
-	CursorSlice & current();
-	/// access to current cursor slice
-	CursorSlice const & current() const;
-	/// how many nested insets do we have?
-	size_t depth() const { return cursor_.size(); }
-	/// depth of current slice
-	int currentDepth() const { return current_; }
+	/// sets cursor part
+	void setCursor(DocumentIterator const & it, bool sel);
 
 	//
 	// selection
@@ -113,7 +73,7 @@ public:
 	///
 	void setSelection();
 	/// set selection at given position
-	void setSelection(CursorBase const & where, size_t n);
+	void setSelection(DocumentIterator const & where, size_t n);
 	///
 	void clearSelection();
 	/// access start of selection
@@ -154,70 +114,6 @@ public:
 	///
 	std::string currentState();
 
-	//
-	// access to the 'current' cursor slice
-	//
-	/// the containing inset
-	InsetBase * inset() const { return current().inset(); }
-	/// return the cell of the inset this cursor is in
-	idx_type idx() const { return current().idx(); }
-	/// return the cell of the inset this cursor is in
-	idx_type & idx() { return current().idx(); }
-	/// return the last possible cell in this inset
-	idx_type lastidx() const;
-	/// return the paragraph this cursor is in
-	par_type par() const { return current().par(); }
-	/// return the paragraph this cursor is in
-	par_type & par() { return current().par(); }
-	/// return the last possible paragraph in this inset
-	par_type lastpar() const;
-	/// return the position within the paragraph
-	pos_type pos() const { return current().pos(); }
-	/// return the position within the paragraph
-	pos_type & pos() { return current().pos(); }
-	/// return the last position within the paragraph
-	pos_type lastpos() const;
-	/// return the display row of the cursor with in the current par
-	row_type crow() const;
-	/// return the display row of the cursor with in the current par
-	row_type lastcrow() const;
-
-	/// return the number of embedded cells
-	size_t nargs() const;
-	/// return the number of embedded cells
-	size_t ncols() const;
-	/// return the number of embedded cells
-	size_t nrows() const;
-	/// return the grid row of the current cell
-	row_type row() const;
-	/// return the last row of the current grid
-	row_type lastrow() const { return nrows() - 1; }
-	/// return the grid column of the current cell
-	col_type col() const;
-	/// return the last column of the current grid
-	col_type lastcol() const { return ncols() - 1; }
-	/// the inset just behind the cursor
-	InsetBase * nextInset();
-	/// the inset just in front of the cursor
-	InsetBase * prevInset();
-	/// the inset just in front of the cursor
-	InsetBase const * prevInset() const;
-
-	//
-	// math-specific part
-	//
-	/// return the mathed cell this cursor is in
-	MathArray const & cell() const;
-	/// return the mathed cell this cursor is in
-	MathArray & cell();
-	/// the mathatom left of the cursor
-	MathAtom const & prevAtom() const;
-	/// the mathatom left of the cursor
-	MathAtom & prevAtom();
-	/// the mathatom right of the cursor
-	MathAtom const & nextAtom() const;
-	/// the mathatom right of the cursor
-	MathAtom & nextAtom();
 	/// auto-correct mode
 	bool autocorrect() const { return autocorrect_; }
 	/// auto-correct mode
@@ -226,31 +122,6 @@ public:
 	bool macromode() const { return macromode_; }
 	/// are we entering a macro name?
 	bool & macromode() { return macromode_; }
-
-	//
-	// text-specific part
-	/// see comment for boundary_ below
-	bool boundary() const { return current().boundary(); }
-	/// see comment for boundary_ below
-	bool & boundary() { return current().boundary(); }
-	/// the paragraph we're in
-	Paragraph & paragraph();
-	/// the paragraph we're in
-	Paragraph const & paragraph() const;
-	/// the row in the paragraph we're in
-	Row & textRow();
-	/// the row in the paragraph we're in
-	Row const & textRow() const;
-	///
-	LyXText * text() const;
-	///
-	InsetBase * innerInsetOfType(int code) const;
-	///
-	InsetTabular * innerInsetTabular() const;
-	///
-	LyXText * innerText() const;
-	///
-	CursorSlice const & innerTextSlice() const;
 	/// returns x,y position
 	void getPos(int & x, int & y) const;
 	/// returns cursor dimension
@@ -288,7 +159,7 @@ public:
 	void resetAnchor(); 
 	/// access to owning BufferView
 	BufferView & bv() const; 
-	/// get some interesting description of current position
+	/// get some interesting description of top position
 	void info(std::ostream & os) const;
 	/// are we in math mode (2), text mode (1) or unsure (0)?
 	int currentMode();
@@ -298,28 +169,26 @@ public:
 	void replaceWord(std::string const & replacestring);
 	/// update our view
 	void update();
-	///
+	/// set dispatch result
 	void dispatched(dispatch_result_t res);
-	void notdispatched();
-	void noupdate();
+	/// assume event was not (yet) dispatched
+	void undispatched();
+	/// don't call update() when done
+	void noUpdate();
+	/// don't pop cursor to the level where the LFUN was handled
+	void noPop();
 
 	/// output
 	friend std::ostream & operator<<(std::ostream & os, LCursor const & cur);
 public:
 //private:
-	/// mainly used as stack, but wee need random access
-	std::vector<CursorSlice> cursor_;
 	/// the anchor position
-	std::vector<CursorSlice> anchor_;
+	DocumentIterator anchor_;
 	
 	/// 
 	DispatchResult disp_;
 
 private:
-	///
-	BufferView * bv_;
-	/// current slice
-	int current_;
 	///
 	int cached_y_;
 	/**
@@ -339,6 +208,8 @@ private:
 	bool selection_;
 	// are we on the way to get one?
 	bool mark_;
+	///
+	bool nopop_;
 
 	//
 	// math specific stuff that could be promoted to "global" later
@@ -389,7 +260,7 @@ public:
 	void adjust(pos_type from, int diff);
 	///
 	MathHullInset * formula() const;
-	/// current offset in the current cell
+	/// current offset in the top cell
 	/// interpret name a name of a macro
 	void macroModeClose();
 	/// are we currently typing the name of a macro?
@@ -419,9 +290,6 @@ public:
 	/// returns the normalized anchor of the selection
 	CursorSlice normalAnchor();
 
-	/// lock/unlock inset
-	void lockToggle();
-
 	/// hack for reveal codes
 	void markInsert();
 	void markErase();
@@ -429,11 +297,6 @@ public:
 	void pullArg();
 	/// split font inset etc
 	void handleFont(std::string const & font);
-
-	/// are we in mathed?
-	bool inMathed() const;
-	/// are we in texted?
-	bool inTexted() const;
 
 	/// display a message
 	void message(std::string const & msg) const;

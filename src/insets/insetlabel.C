@@ -99,7 +99,7 @@ void InsetLabel::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 		InsetCommandParams p;
 		InsetCommandMailer::string2params("label", cmd.argument, p);
 		if (p.getCmdName().empty()) {
-			cur.notdispatched();
+			cur.undispatched();
 			break;
 		}
 		if (p.getContents() != params().getContents())

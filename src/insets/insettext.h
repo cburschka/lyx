@@ -22,7 +22,6 @@
 
 #include "frontends/mouse_state.h"
 
-
 class Buffer;
 class BufferParams;
 class BufferView;
@@ -33,10 +32,10 @@ class Painter;
 class Paragraph;
 class Row;
 
+
 /**
  A text inset is like a TeX box to write full text
  (including styles and other insets) in a given space.
- @author: Jürgen Vigna
  */
 class InsetText : public UpdatableInset {
 public:
@@ -174,7 +173,6 @@ private:
 	///
 	void clearInset(Painter &, int x, int y) const;
 
-	/* Private structures and variables */
 	///
 	bool autoBreakRows_;
 	///

@@ -262,7 +262,7 @@ void LyXText::gotoInset(LCursor & cur,
 
 	if (!gotoNextInset(cur, codes, contents)) {
 		if (cur.pos() || cur.par() != 0) {
-			CursorSlice tmp = cur.current();
+			CursorSlice tmp = cur.top();
 			cur.par() = 0;
 			cur.pos() = 0;
 			if (!gotoNextInset(cur, codes, contents)) {
@@ -376,7 +376,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 	//lyxerr << "*** LyXText::dispatch: cmd: " << cmd << endl;
 
 	BufferView * bv = &cur.bv();
-	CursorSlice sl = cur.current();
+	CursorSlice sl = cur.top();
 
 	switch (cmd.action) {
 
@@ -466,7 +466,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 			cursorLeft(cur);
 		else
 			cursorRight(cur);
-		if (sl == cur.current())
+		if (sl == cur.top())
 			cur.dispatched(FINISHED_RIGHT);
 		break;
 
@@ -477,7 +477,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 			cursorRight(cur);
 		else
 			cursorLeft(cur);
-		if (sl == cur.current())
+		if (sl == cur.top())
 			cur.dispatched(FINISHED_LEFT);
 		break;
 
@@ -485,7 +485,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 	case LFUN_UPSEL:
 		cur.selHandle(cmd.action == LFUN_UPSEL);
 		cursorUp(cur);
-		if (sl == cur.current())
+		if (sl == cur.top())
 			cur.dispatched(FINISHED_UP);
 		break;
 
@@ -493,7 +493,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 	case LFUN_DOWNSEL:
 		cur.selHandle(cmd.action == LFUN_DOWNSEL);
 		cursorDown(cur);
-		if (sl == cur.current())
+		if (sl == cur.top())
 			cur.dispatched(FINISHED_DOWN);
 		break;
 
@@ -788,7 +788,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 	case LFUN_INSET_TOGGLE:
 		cur.clearSelection();
 		if (!toggleInset(cur))
-			cur.notdispatched();
+			cur.undispatched();
 		else
 			bv->switchKeyMap();
 		break;
@@ -869,7 +869,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 
 	case LFUN_BEGINNINGBUFSEL:
 		if (in_inset_) {
-			cur.notdispatched();
+			cur.undispatched();
 		} else {
 			if (!cur.selection())
 				cur.resetAnchor();
@@ -880,7 +880,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 
 	case LFUN_ENDBUFSEL:
 		if (in_inset_) {
-			cur.notdispatched();
+			cur.undispatched();
 		} else {
 			if (!cur.selection())
 				cur.resetAnchor();
@@ -890,8 +890,8 @@ void LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 		break;
 
 	case LFUN_GETXY:
-		cur.message(tostr(cursorX(cur.current())) + ' '
-		          + tostr(cursorY(cur.current())));
+		cur.message(tostr(cursorX(cur.top())) + ' '
+		          + tostr(cursorY(cur.top())));
 		break;
 
 	case LFUN_SETXY: {
@@ -1095,12 +1095,12 @@ void LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 				"Dispatch: no selection possible\n";
 			break;
 		}
-		CursorSlice old = cur.current();
+		CursorSlice old = cur.top();
 		setCursorFromCoordinates(cur, cmd.x, cmd.y);
 
 		// This is to allow jumping over large insets
 		// FIXME: shouldn't be top-text-specific
-		if (!in_inset_ && cur.current() == old) {
+		if (!in_inset_ && cur.top() == old) {
 			if (cmd.y - bv->top_y() >= bv->workHeight())
 				cursorDown(cur);
 			else if (cmd.y - bv->top_y() < 0)
@@ -1108,8 +1108,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 		}
 
 		// don't set anchor_
-		bv->cursor().cursor_ = cur.cursor_;
-		bv->cursor().setSelection();
+		bv->cursor().setCursor(cur, false);
 		break;
 	}
 
@@ -1154,7 +1153,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 		setCursorFromCoordinates(cur, cmd.x, cmd.y);
 		cur.resetAnchor();
 		finishUndo();
-		cur.x_target() = cursorX(cur.current());
+		cur.x_target() = cursorX(cur.top());
 
 		// set cursor and anchor to this position
 		bv->cursor() = cur;
@@ -1179,7 +1178,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 		// do nothing if we used the mouse wheel
 		if (cmd.button() == mouse_button::button4
 		 || cmd.button() == mouse_button::button5) {
-			cur.notdispatched();
+			cur.undispatched();
 			break;
 		}
 
@@ -1444,7 +1443,6 @@ void LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 
 	case LFUN_FINISHED_LEFT:
 		lyxerr << "handle LFUN_FINISHED_LEFT" << endl;
-		cur.pop(cur.currentDepth());
 		if (isRTL(cur.paragraph()))
 			cursorLeft(cur);
 		cur.bv().cursor() = cur;
@@ -1452,7 +1450,6 @@ void LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 
 	case LFUN_FINISHED_RIGHT:
 		lyxerr << "handle LFUN_FINISHED_RIGHT" << endl;
-		cur.pop(cur.currentDepth());
 		if (!isRTL(cur.paragraph()))
 			cursorRight(cur);
 		cur.bv().cursor() = cur;
@@ -1460,14 +1457,12 @@ void LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 
 	case LFUN_FINISHED_UP:
 		lyxerr << "handle LFUN_FINISHED_UP" << endl;
-		cur.pop(cur.currentDepth());
 		cursorUp(cur);
 		cur.bv().cursor() = cur;
 		break;
 
 	case LFUN_FINISHED_DOWN:
 		lyxerr << "handle LFUN_FINISHED_DOWN" << endl;
-		cur.pop(cur.currentDepth());
 		cursorDown(cur);
 		cur.bv().cursor() = cur;
 		break;
@@ -1598,7 +1593,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 		break;
 
 	default:
-		cur.notdispatched();
+		cur.undispatched();
 		break;
 	}
 }

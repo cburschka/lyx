@@ -125,7 +125,7 @@ void InsetBranch::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 		if (cmd.button() != mouse_button::button3)
 			InsetCollapsable::priv_dispatch(cur, cmd);
 		else
-			cur.notdispatched();
+			cur.undispatched();
 		break;
 
 	case LFUN_INSET_DIALOG_UPDATE:

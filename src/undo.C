@@ -27,26 +27,14 @@
 using lyx::paroffset_type;
 
 
-/// The flag used by finishUndo().
-bool undo_finished;
+namespace {
 
 /// Whether actions are not added to the undo stacks.
 bool undo_frozen;
 
-Undo::Undo(undo_kind kind_, int text_, int index_,
-	   int first_par_, int end_par_, int cursor_par_, int cursor_pos_)
-	:
-		kind(kind_),
-		text(text_),
-		index(index_),
-		first_par(first_par_),
-		end_par(end_par_),
-		cursor_par(cursor_par_),
-		cursor_pos(cursor_pos_)
-{}
+/// The flag used by finishUndo().
+bool undo_finished;
 
-
-namespace {
 
 std::ostream & operator<<(std::ostream & os, Undo const & undo)
 {
@@ -97,6 +85,15 @@ void recordUndo(Undo::undo_kind kind,
 	LCursor & cur, paroffset_type first_par, paroffset_type last_par,
 	limited_stack<Undo> & stack)
 {
+#if 0
+	DocumentIterator it = bufferBegin(cur.bv());
+	DocumentIterator et = bufferEnd();
+	size_t count = 0;
+	for ( ; it != et; it.forwardPos(), ++count)
+		if (it.top() == cur.top())
+			lyxerr << "### found at " << count << std::endl;
+#endif
+
 	if (first_par > last_par) {
 		paroffset_type t = first_par;
 		first_par = last_par;
@@ -121,27 +118,39 @@ void recordUndo(Undo::undo_kind kind,
 		}
 	}
 
-	// make and push the Undo entry
-	int textnum;
-	LyXText * text = cur.text();
-	BOOST_ASSERT(text); // not in mathed (yet)
-	ParIterator pit = text2pit(buf, text, textnum);
-	stack.push(Undo(kind, textnum, pit.index(),
-		first_par, end_par, cur.par(), cur.pos()));
-	//lyxerr << "undo record: " << stack.top() << std::endl;
+	// push and fill the Undo entry
+	if (cur.inTexted()) {
+		stack.push(Undo());
+		LyXText * text = cur.text();
+		int textnum;
+		ParIterator pit = text2pit(buf, text, textnum);
+		Undo & undo = stack.top();
+		undo.kind = kind;
+		undo.text = textnum;
+		undo.index = pit.index();
+		undo.first_par = first_par;
+		undo.end_par = end_par;
+		undo.cursor_par = cur.par();
+		undo.cursor_pos = cur.pos();
+		undo.math = false;
+		//lyxerr << "undo record: " << stack.top() << std::endl;
 
-	// record the relevant paragraphs
-	ParagraphList & undo_pars = stack.top().pars;
+		// record the relevant paragraphs
+		ParagraphList & plist = text->paragraphs();
+		ParagraphList::iterator first = plist.begin();
+		advance(first, first_par);
+		ParagraphList::iterator last = plist.begin();
+		advance(last, last_par);
 
-	ParagraphList & plist = text->paragraphs();
-	ParagraphList::iterator first = plist.begin();
-	advance(first, first_par);
-	ParagraphList::iterator last = plist.begin();
-	advance(last, last_par);
-
-	for (ParagraphList::iterator it = first; it != last; ++it)
-		undo_pars.push_back(*it);
-	undo_pars.push_back(*last);
+		for (ParagraphList::iterator it = first; it != last; ++it)
+			undo.pars.push_back(*it);
+		undo.pars.push_back(*last);
+	} else {
+		BOOST_ASSERT(false); // not in mathed (yet)
+		stack.push(Undo());
+		Undo & undo = stack.top();
+		undo.math = false;
+	}
 
 	// and make sure that next time, we should be combining if possible
 	undo_finished = false;

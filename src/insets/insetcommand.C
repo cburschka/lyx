@@ -105,7 +105,7 @@ void InsetCommand::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 		InsetCommandParams p;
 		InsetCommandMailer::string2params(mailer_name_, cmd.argument, p);
 		if (p.getCmdName().empty()) {	
-			cur.notdispatched();
+			cur.undispatched();
 		} else {
 			setParams(p);
 			cur.bv().update();

@@ -151,16 +151,16 @@ struct Buffer::Impl
 	string temppath;
 	TexRow texrow;
 
-	/// need to regenerate .tex ?
+	/// need to regenerate .tex?
 	DepClean dep_clean;
 
-	/// is save needed
+	/// is save needed?
 	mutable bool lyx_clean;
 
-	/// is autosave needed
+	/// is autosave needed?
 	mutable bool bak_clean;
 
-	/// is this a unnamed file (New...)
+	/// is this a unnamed file (New...)?
 	bool unnamed;
 
 	/// buffer is r/o
@@ -174,13 +174,13 @@ struct Buffer::Impl
 
 	boost::scoped_ptr<Messages> messages;
 
-	/** set to true only when the file is fully loaded.
+	/** Set to true only when the file is fully loaded.
 	 *  Used to prevent the premature generation of previews
 	 *  and by the citation inset.
 	 */
 	bool file_fully_loaded;
 
-	/// our Text
+	/// our text
 	LyXText text;
 };
 
