@@ -61,7 +61,7 @@ std::string const tempName(std::string const & dir = std::string(),
  *
  * This will check if 'var' is approx. equal to 'number' with error of 1/1000
  */
-inline bool float_equal(float var, float number, float error)
+inline bool float_equal(double var, double number, double error)
 {
 	return (number - error <= var && var <= number + error);
 }

@@ -1,3 +1,12 @@
+2005-01-20  Angus Leeming  <leeming@lyx.org>
+
+	* math_spaceinset.C (validate):
+	latex_mathspace[space_] == "negmedspace" is unsafe because both
+	operands are of type "char const *". Performing comparison on
+	the address of the string literal therefore. Fix is to explicitly
+	convert one operand to a string.
+	With thanks to MSVC ;-)
+
 2005-01-19  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* math_symbolinset.C (validate): require wasysym as needed

@@ -1,3 +1,10 @@
+2005-01-20  Angus Leeming  <leeming@lyx.org>
+
+	* lyxlib.h (float_equal): promote parameters to double.
+
+	* path.C (Path): silence MSVC warning about block of code that
+	does nothing.
+
 2005-01-20  Asger Ottar Alstrup  <aalstrup@laerdal.dk>
 
 	* FileInfo.h, chdir.C, forkedcall.C, forkedcontr.C, getcwd.C,
