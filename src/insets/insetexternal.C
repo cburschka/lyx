@@ -47,7 +47,7 @@
 #include <cstdio>
 #include <utility>
 
-using namespace lyx::support;
+namespace support = lyx::support;
 
 using std::ostream;
 using std::endl;
@@ -80,8 +80,8 @@ InsetExternal::Params::Params()
 	: display(defaultDisplayType),
 	  lyxscale(defaultLyxScale)
 {
-	tempname = tempName(string(), "lyxext");
-	unlink(tempname);
+	tempname = support::tempName(string(), "lyxext");
+	support::unlink(tempname);
 	// must have an extension for the converter code to work correctly.
 	tempname += ".tmp";
 }
@@ -89,7 +89,7 @@ InsetExternal::Params::Params()
 
 InsetExternal::Params::~Params()
 {
-	unlink(tempname);
+	support::unlink(tempname);
 }
 
 
@@ -136,7 +136,7 @@ dispatch_result InsetExternal::localDispatch(FuncRequest const & cmd)
 	switch (cmd.action) {
 
 	case LFUN_EXTERNAL_EDIT: {
-		Assert(cmd.view());
+		support::Assert(cmd.view());
 
 		Buffer const & buffer = *cmd.view()->buffer();
 		InsetExternal::Params p;
@@ -146,7 +146,7 @@ dispatch_result InsetExternal::localDispatch(FuncRequest const & cmd)
 	}
 
 	case LFUN_INSET_MODIFY: {
-		Assert(cmd.view());
+		support::Assert(cmd.view());
 
 		Buffer const & buffer = *cmd.view()->buffer();
 		InsetExternal::Params p;
@@ -220,8 +220,8 @@ string const getScreenLabel(InsetExternal::Params const & params,
 {
 	ExternalTemplate const * const ptr = getTemplatePtr(params);
 	if (!ptr)
-		return bformat(_("External template %1$s is not installed"),
-			       params.templatename);
+		return support::bformat(_("External template %1$s is not installed"),
+					params.templatename);
 	return doSubstitution(params, buffer, ptr->guiName);
 }
 
@@ -500,7 +500,7 @@ void InsetExternal::updateExternal(string const & format,
 			return;
 
 		// Try and ascertain the file format from its contents.
-		from_format = getExtFromContents(from_file);
+		from_format = support::getExtFromContents(from_file);
 		if (from_format.empty())
 			return;
 	}
@@ -518,7 +518,7 @@ void InsetExternal::updateExternal(string const & format,
 
 	if (external_in_tmpdir && !from_file.empty()) {
 		// We are running stuff through LaTeX
-		from_file = copyFileToDir(buf.tmppath, from_file);
+		from_file = support::copyFileToDir(buf.tmppath, from_file);
 		if (from_file.empty())
 			return;
 	}
@@ -526,16 +526,17 @@ void InsetExternal::updateExternal(string const & format,
 	string const to_file = doSubstitution(params_, buf,
 					      outputFormat.updateResult);
 
-	FileInfo fi(from_file);
+	support::FileInfo fi(from_file);
 	string abs_to_file = to_file;
-	if (!AbsolutePath(to_file))
-		abs_to_file = MakeAbsPath(to_file, OnlyPath(from_file));
-	FileInfo fi2(abs_to_file);
+	if (!support::AbsolutePath(to_file))
+		abs_to_file = support::MakeAbsPath(to_file,
+						   support::OnlyPath(from_file));
+	support::FileInfo fi2(abs_to_file);
 	if (fi2.exist() && fi.exist() &&
 	    difftime(fi2.getModificationTime(),
 		     fi.getModificationTime()) >= 0) {
 	} else {
-		string const to_filebase = ChangeExtension(to_file, string());
+		string const to_filebase = support::ChangeExtension(to_file, string());
 		converters.convert(&buf, from_file, to_filebase,
 				   from_format, to_format);
 	}
@@ -551,34 +552,33 @@ string const doSubstitution(InsetExternal::Params const & params,
 	string result;
 	string const buffer_path = buffer.filePath();
 	string const filename = params.filename.outputFilename(buffer_path);
-	string const basename = ChangeExtension(filename, string());
-	string const filepath = OnlyPath(filename);
+	string const basename = support::ChangeExtension(filename, string());
+	string const filepath = support::OnlyPath(filename);
 
-	result = subst(s, "$$FName", filename);
-	result = subst(result, "$$Basename", basename);
-	result = subst(result, "$$FPath", filepath);
-	result = subst(result, "$$Tempname", params.tempname);
-	result = subst(result, "$$Sysdir", system_lyxdir());
+	result = support::subst(s, "$$FName", filename);
+	result = support::subst(result, "$$Basename", basename);
+	result = support::subst(result, "$$FPath", filepath);
+	result = support::subst(result, "$$Tempname", params.tempname);
+	result = support::subst(result, "$$Sysdir", support::system_lyxdir());
 
 	// Handle the $$Contents(filename) syntax
-	if (contains(result, "$$Contents(\"")) {
+	if (support::contains(result, "$$Contents(\"")) {
 
 		string::size_type const pos = result.find("$$Contents(\"");
 		string::size_type const end = result.find("\")", pos);
 		string const file = result.substr(pos + 12, end - (pos + 12));
 		string contents;
-		Path p(buffer.filePath());
-		if (!IsFileReadable(file)) {
-#warning Is this really working as intended?
-			Path p(buffer.tmppath);
-		}
 
-		if (IsFileReadable(file))
-			contents = GetFileContents(file);
+		string const filepath = support::IsFileReadable(file) ?
+			buffer.filePath() : buffer.tmppath;
+		support::Path p(filepath);
 
-		result = subst(result,
-			       ("$$Contents(\"" + file + "\")").c_str(),
-			       contents);
+		if (support::IsFileReadable(file))
+			contents = support::GetFileContents(file);
+
+		result = support::subst(result,
+					("$$Contents(\"" + file + "\")").c_str(),
+					contents);
 	}
 
 	return result;
@@ -597,13 +597,13 @@ void editExternal(InsetExternal::Params const & params, Buffer const & buffer)
 
 	string const command = doSubstitution(params, buffer, et.editCommand);
 
-	Path p(buffer.filePath());
-	Forkedcall call;
+	support::Path p(buffer.filePath());
+	support::Forkedcall call;
 	if (lyxerr.debugging()) {
 		lyxerr << "Executing '" << command << "' in '"
 		       << buffer.filePath() << '\'' << endl;
 	}
-	call.startscript(Forkedcall::DontWait, command);
+	call.startscript(support::Forkedcall::DontWait, command);
 }
 
 } // namespace anon
