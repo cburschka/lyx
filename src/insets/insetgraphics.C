@@ -532,7 +532,10 @@ string const stripExtensionIfPossible(string const & file, string const & to)
 string const InsetGraphics::prepareFile(Buffer const & buf,
 					OutputParams const & runparams) const
 {
-	// We assume that the file exists (the caller checks this)
+	// The following code depends on non-empty filenames
+	if (params().filename.empty())
+		return string();
+
 	string const orig_file = params().filename.absFilename();
 	string const rel_file = params().filename.relFilename(buf.filePath());
 
@@ -548,6 +551,12 @@ string const InsetGraphics::prepareFile(Buffer const & buf,
 	// The master buffer. This is useful when there are multiple levels
 	// of include files
 	Buffer const * m_buffer = buf.getMasterBuffer();
+
+	// Return the output name if the file does not exist.
+	// We are not going to change the extension or using the name of the
+	// temporary file, the code is already complicated enough.
+	if (!IsFileReadable(orig_file))
+		return params().filename.outputFilename(m_buffer->filePath());
 
 	// We place all temporary files in the master buffer's temp dir.
 	// This is possible because we use mangled file names.
@@ -731,15 +740,10 @@ int InsetGraphics::latex(Buffer const & buf, ostream & os,
 
 
 	string latex_str = before + '{';
-	if (file_exists)
-		// Convert the file if necessary.
-		// Remove the extension so the LaTeX will use whatever
-		// is appropriate (when there are several versions in
-		// different formats)
-		latex_str += prepareFile(buf, runparams);
-	else
-		latex_str += relative_file + " not found!";
-
+	// Convert the file if necessary.
+	// Remove the extension so LaTeX will use whatever is appropriate
+	// (when there are several versions in different formats)
+	latex_str += prepareFile(buf, runparams);
 	latex_str += '}' + after;
 	os << latex_str;
 

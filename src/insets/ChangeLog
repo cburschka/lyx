@@ -1,3 +1,9 @@
+2005-02-22  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* insetgraphics.C (prepareFile): handle non-existing files
+	* insetgraphics.C (latex): remove special handling of non-existing
+	files
+
 2005-02-22  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* insetcharstyle.C: add TEXT_TO_INSET_OFFSET and adjust metrics.
