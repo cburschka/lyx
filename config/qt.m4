@@ -1,8 +1,3 @@
-
-dnl Please leave this alone. I use this file in
-dnl oprofile.
-FATAL=1
-
 dnl find a binary in the path
 AC_DEFUN(QT_FIND_PATH,
 [
@@ -137,6 +132,10 @@ AC_DEFUN(QT_CHECK_COMPILE,
 dnl start here 
 AC_DEFUN(QT_DO_IT_ALL,
 [
+	dnl Please leave this alone. I use this file in
+	dnl oprofile.
+	FATAL=1
+
 	AC_ARG_WITH(qt-dir, [  --with-qt-dir           where the root of Qt is installed ],
 		[ qt_cv_dir=`eval echo "$withval"/` ])
 	 
