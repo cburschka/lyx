@@ -28,7 +28,7 @@ What's new
 
 - better support for entering cyrillic and greek alphabets
 
-- support selection via the numpad direction keys
+- support the numpad direction keys as equivalent to normal cursor keys
 
 - update template for IEEEtran; update hebrew article class
 
@@ -116,6 +116,8 @@ What's new
   Hentschel 
 
 - fix command line crash and give useful exit status on some errors
+
+- fix the detection of cygwin in Reconfigure when the shell is not bash
 
 - fix latex import when using --with-version-suffix configure flag
 
