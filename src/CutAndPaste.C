@@ -30,6 +30,9 @@
 
 using std::endl;
 using std::pair;
+using std::make_pair;
+using std::for_each;
+
 using lyx::pos_type;
 using lyx::textclass_type;
 
@@ -62,20 +65,20 @@ textclass_type textclass = 0;
 
 } // namespace anon
 
-PitPosPair CutAndPaste::cutSelection(ParagraphList & pars, 
-				     ParagraphList::iterator startpit, 
+PitPosPair CutAndPaste::cutSelection(ParagraphList & pars,
+				     ParagraphList::iterator startpit,
 				     ParagraphList::iterator endpit,
-				     int startpos, int endpos, 
+				     int startpos, int endpos,
 				     textclass_type tc, bool doclear)
 {
 	copySelection(startpit, endpit, startpos, endpos, tc);
-	return eraseSelection(pars, startpit, endpit, startpos, 
+	return eraseSelection(pars, startpit, endpit, startpos,
 			      endpos, doclear);
 }
 
 
-PitPosPair CutAndPaste::eraseSelection(ParagraphList & pars, 
-				       ParagraphList::iterator startpit, 
+PitPosPair CutAndPaste::eraseSelection(ParagraphList & pars,
+				       ParagraphList::iterator startpit,
 				       ParagraphList::iterator endpit,
 				       int startpos, int endpos, bool doclear)
 {
@@ -131,7 +134,7 @@ PitPosPair CutAndPaste::eraseSelection(ParagraphList & pars,
 	}
 
 	// paste the paragraphs again, if possible
-	if (all_erased && 
+	if (all_erased &&
 	    (startpit->hasSameLayout(*boost::next(startpit)) ||
 	     boost::next(startpit)->empty())) {
 #warning current_view used here.
@@ -148,7 +151,18 @@ PitPosPair CutAndPaste::eraseSelection(ParagraphList & pars,
 }
 
 
-bool CutAndPaste::copySelection(ParagraphList::iterator startpit, 
+namespace {
+
+struct resetOwnerAndChanges {
+	void operator()(Paragraph & p) {
+		p.cleanChanges();
+		p.setInsetOwner(0);
+	}
+};
+
+} // anon namespace
+
+bool CutAndPaste::copySelection(ParagraphList::iterator startpit,
 				ParagraphList::iterator endpit,
 				int start, int end, textclass_type tc)
 {
@@ -158,44 +172,33 @@ bool CutAndPaste::copySelection(ParagraphList::iterator startpit,
 	lyx::Assert(0 <= end && end <= endpit->size());
 	lyx::Assert(startpit != endpit || start <= end);
 
-	paragraphs.clear();
-
 	textclass = tc;
-	
-	// clone the paragraphs within the selection
-	ParagraphList::iterator tmppit = startpit;
+
+	// Clone the paragraphs within the selection.
 	ParagraphList::iterator postend = boost::next(endpit);
-	
-	for (; tmppit != postend; ++tmppit) {
-		paragraphs.push_back(new Paragraph(*tmppit, false));
-		Paragraph & newpar = paragraphs.back();
-		// reset change info (can these go to the par ctor?)
-		newpar.cleanChanges();
-		newpar.setInsetOwner(0);
-	}
+
+	paragraphs.assign(startpit, postend);
+	for_each(paragraphs.begin(), paragraphs.end(), resetOwnerAndChanges());
 
 	// Cut out the end of the last paragraph.
 	Paragraph & back = paragraphs.back();
-	for (pos_type tmppos = back.size() - 1; tmppos >= end; --tmppos)
-		back.erase(tmppos);
+	back.erase(end, back.size());
 
 	// Cut out the begin of the first paragraph
 	Paragraph & front = paragraphs.front();
-	for (pos_type tmppos = start; tmppos; --tmppos)
-		front.erase(0);
-	
+	front.erase(0, start);
+
 	return true;
 }
 
 
 pair<PitPosPair, ParagraphList::iterator>
-CutAndPaste::pasteSelection(ParagraphList & pars, 
+CutAndPaste::pasteSelection(ParagraphList & pars,
 			    ParagraphList::iterator pit, int pos,
 			    textclass_type tc)
 {
 	if (!checkPastePossible())
-		return pair<PitPosPair,ParagraphList::iterator> 
-			(PitPosPair(pit, pos), pit);
+		return make_pair(PitPosPair(pit, pos), pit);
 
 	lyx::Assert (pos <= pit->size());
 
@@ -209,8 +212,7 @@ CutAndPaste::pasteSelection(ParagraphList & pars,
 	}
 #else
 	// Later we want it done like this:
-	ParagraphList simple_cut_clone(paragraphs.begin(),
-				       paragraphs.end());
+	ParagraphList simple_cut_clone = paragraphs;
 #endif
 	// now remove all out of the buffer which is NOT allowed in the
 	// new environment and set also another font if that is required
@@ -280,7 +282,7 @@ CutAndPaste::pasteSelection(ParagraphList & pars,
 	// open the paragraph for inserting the buf
 	// if necessary
 	if (pit->size() > pos || !pit->next()) {
-		breakParagraphConservative(current_view->buffer()->params, 
+		breakParagraphConservative(current_view->buffer()->params,
 					   pars, &*pit, pos);
 		paste_the_end = true;
 	}
@@ -304,15 +306,15 @@ CutAndPaste::pasteSelection(ParagraphList & pars,
 	// maybe some pasting
 	if (boost::next(lastbuffer) != paragraphs.end() && paste_the_end) {
 		if (boost::next(lastbuffer)->hasSameLayout(*lastbuffer)) {
-			mergeParagraph(current_view->buffer()->params, pars, 
+			mergeParagraph(current_view->buffer()->params, pars,
 				       lastbuffer);
 		} else if (!boost::next(lastbuffer)->size()) {
 			boost::next(lastbuffer)->makeSameLayout(*lastbuffer);
-			mergeParagraph(current_view->buffer()->params, pars, 
+			mergeParagraph(current_view->buffer()->params, pars,
 				       lastbuffer);
 		} else if (!lastbuffer->size()) {
 			lastbuffer->makeSameLayout(*boost::next(lastbuffer));
-			mergeParagraph(current_view->buffer()->params, pars, 
+			mergeParagraph(current_view->buffer()->params, pars,
 				       lastbuffer);
 		} else
 			boost::next(lastbuffer)->stripLeadingSpaces();
@@ -320,8 +322,7 @@ CutAndPaste::pasteSelection(ParagraphList & pars,
 	// restore the simple cut buffer
 	paragraphs = simple_cut_clone;
 
-	return pair<PitPosPair,ParagraphList::iterator> (PitPosPair(pit, pos), 
-							 endpit);
+	return make_pair(PitPosPair(pit, pos), endpit);
 }
 
 

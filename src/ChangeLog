@@ -1,5 +1,9 @@
 2003-05-01  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
+	* CutAndPaste.C (resetOwnerAndChanges): new helper functor
+	(copySelection): clean up a bit.
+	(pasteSelection): use make_pair
+
 	* ParagraphList.C (ParagraphList): implement copy constructor
 	(operator=): implement, base on copy constructor.
 	(assign): new func
