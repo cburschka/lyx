@@ -47,8 +47,11 @@ void QVCLog::build_dialog()
 
 void QVCLog::update_contents()
 {
+#if USE_BOOST_FORMAT
 	dialog_->setCaption(boost::io::str(boost::format(_("Version control log for %1$s")) % controller().getBufferFileName()).c_str());
-
+#else
+	dialog_->setCaption(string(_("Version control log for ") + controller().getBufferFileName()).c_str());
+#endif
 	dialog_->vclogTV->setText("");
 
 	ostringstream ss;

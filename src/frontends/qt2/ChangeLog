@@ -1,7 +1,11 @@
+2002-11-25  Herbert Voss  <Herbert.Voss@alumni.TU-Berlin.DE>
+
+	* QVCLog.C (update_contents): fix USE_BOOST_FORMAT
+
 2002-11-24  John Levon  <levon@movementarian.org>
 
 	* QDocumentDialog.C: fix build
- 
+
 2002-11-21  Angus Leeming  <leeming@lyx.org>
 
 	* QDocumentDialog.C (classChanged): use ControlDocument::loadTextclass.
