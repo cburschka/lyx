@@ -30,6 +30,7 @@
 #include "QPrintDialog.h"
 #include "QRefDialog.h"
 #include "QSearchDialog.h"
+#include "QShowFileDialog.h"
 #include "QSpellcheckerDialog.h"
 #include "QTabularCreateDialog.h"
 #include "QTexinfoDialog.h"
@@ -56,6 +57,7 @@
 #include "QPrint.h"
 #include "QRef.h"
 #include "QSearch.h"
+#include "QShowFile.h"
 #include "QSpellchecker.h"
 #include "QTabularCreate.h"
 #include "QTexinfo.h"
@@ -71,11 +73,9 @@
 #include "Qt2BC.h"
 
 // xforms stuff
-#include "xforms/FormBrowser.h"
-#include "xforms/form_browser.h"
-#include "xforms/FormDocument.h"
+//#include "xforms/FormDocument.h"
 #include "xforms/FormMathsPanel.h"
-#include "xforms/FormParagraph.h"
+//#include "xforms/FormParagraph.h"
 #include "xforms/FormPreferences.h"
 #include "xforms/FormShowFile.h"
 #include "xforms/FormTabular.h"
@@ -107,6 +107,7 @@ Dialogs::Dialogs(LyXView * lv)
 	add(new GUIPrint<QPrint, Qt2BC>(*lv, *this));
 	add(new GUIRef<QRef, Qt2BC>(*lv, *this));
 	add(new GUISearch<QSearch, Qt2BC>(*lv, *this)); 
+	add(new GUIShowFile<QShowFile, Qt2BC>(*lv, *this));
 	add(new GUISpellchecker<QSpellchecker, Qt2BC>(*lv, *this));
 	add(new GUITabularCreate<QTabularCreate, Qt2BC>(*lv, *this));
 	add(new GUITexinfo<QTexinfo, Qt2BC>(*lv, *this));
@@ -115,13 +116,10 @@ Dialogs::Dialogs(LyXView * lv)
 	add(new GUIUrl<QURL, Qt2BC>(*lv, *this));
 	add(new GUIVCLog<QVCLog, Qt2BC>(*lv, *this));
 
-	// dialogs not yet converted
-	add(new GUIShowFile<FormShowFile, xformsBC>(*lv, *this));
-
 	// dialogs not yet MVCd
-	add(new FormDocument(lv, this));
+//	add(new FormDocument(lv, this));
  	add(new FormMathsPanel(lv, this));
-	add(new FormParagraph(lv, this));
+//	add(new FormParagraph(lv, this));
 	add(new FormPreferences(lv, this));
 	add(new FormTabular(lv, this));
  

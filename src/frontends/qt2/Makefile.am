@@ -24,7 +24,6 @@ libqt2_la_LIBADD = \
 	../xforms/DropDown.lo \
 	../xforms/FormBase.lo \
 	../xforms/FormBaseDeprecated.lo	\
-	../xforms/FormBrowser.lo \
 	../xforms/FormMathsBitmap.lo \
 	../xforms/FormMathsDeco.lo \
 	../xforms/FormMathsDelim.lo \
@@ -32,19 +31,14 @@ libqt2_la_LIBADD = \
 	../xforms/FormMathsPanel.lo \
 	../xforms/FormMathsStyle.lo \
 	../xforms/FormMathsSpace.lo \
-	../xforms/FormParagraph.lo \
 	../xforms/FormPreferences.lo \
-	../xforms/FormShowFile.lo \
 	../xforms/FormTabular.lo \
-	../xforms/FormDocument.lo \
 	../xforms/FormInset.lo \
 	../xforms/MathsSymbols.lo \
 	../xforms/Menubar_pimpl.lo \
 	../xforms/RadioButtonGroup.lo \
 	../xforms/Toolbar_pimpl.lo \
 	../xforms/bmtable.lo \
-	../xforms/form_browser.lo \
-	../xforms/form_document.lo \
 	../xforms/form_preferences.lo \
 	../xforms/form_tabular.lo \
 	../xforms/form_maths_deco.lo \
@@ -53,7 +47,6 @@ libqt2_la_LIBADD = \
 	../xforms/form_maths_panel.lo \
 	../xforms/form_maths_space.lo \
 	../xforms/form_maths_style.lo \
-	../xforms/form_paragraph.lo \
 	../xforms/input_validators.lo \
 	../xforms/xformsBC.lo \
 	../xforms/xforms_helpers.lo \

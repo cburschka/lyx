@@ -1,3 +1,15 @@
+2002-01-29  Edwin Leuven  <leuven@fee.uva.nl>
+
+	* Makefile.am:
+	* Dialogs.C:
+	* Makefile.dialogs:
+	* QShowFile.h:
+	* QShowFile.C:
+	* QShowFileDialog.h:
+	* QShowFileDialog.C:
+	* ui/QShowFileDialog.ui: add showfile dialog
+	* ui/QCitationDialog.ui: minor layout tweaks
+
 2002-01-25  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* Dialogs.C: removed now redundant #include "QParagraph.h".

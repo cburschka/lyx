@@ -19,6 +19,7 @@ DIALOGS = \
 	QPrint \
 	QRef \
 	QSearch \
+	QShowFile \
 	QSpellchecker \
 	QTabularCreate \
 	QTexinfo \
@@ -64,6 +65,8 @@ DIALOGSOURCES = \
 	QRef.C QRefDialog.C \
 	QSearch.h QSearchDialog.h \
 	QSearch.C QSearchDialog.C \
+	QShowFile.h QShowFileDialog.h \
+	QShowFile.C QShowFileDialog.C \
 	QSpellchecker.h QSpellcheckerDialog.h \
 	QSpellchecker.C QSpellcheckerDialog.C \
 	QTabularCreate.h QTabularCreateDialog.h \
@@ -98,6 +101,7 @@ MOCDIALOGS = \
 	QPrintDialog_moc.C \
 	QRefDialog_moc.C \
 	QSearchDialog_moc.C \
+	QShowFileDialog_moc.C \
 	QSpellcheckerDialog_moc.C \
 	QTabularCreateDialog_moc.C \
 	QTexinfoDialog_moc.C \
@@ -143,6 +147,8 @@ UIDIALOGS = \
 	QRefDialogBase.C \
 	QSearchDialogBase.h \
 	QSearchDialogBase.C \
+	QShowFileDialogBase.h \
+	QShowFileDialogBase.C \
 	QSpellcheckerDialogBase.h \
 	QSpellcheckerDialogBase.C \
 	QTabularCreateDialogBase.h \
@@ -177,6 +183,7 @@ UIMOCDIALOGS = \
 	QPrintDialogBase_moc.C \
 	QRefDialogBase_moc.C \
 	QSearchDialogBase_moc.C \
+	QShowFileDialogBase_moc.C \
 	QSpellcheckerDialogBase_moc.C \
 	QTabularCreateDialogBase_moc.C \
 	QTexinfoDialogBase_moc.C \
