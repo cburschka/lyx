@@ -10,21 +10,23 @@
 #ifndef FORMEXTERNAL_H
 #define FORMEXTERNAL_H
 
-#include "FormBase.h"
-#include "insets/insetexternal.h"
-
-#include "form_external.h"
+#include <boost/smart_ptr.hpp>
 
 #ifdef __GNUG__
 #pragma interface
 #endif
 
+#include "FormBaseDeprecated.h"
+#include "insets/insetexternal.h"
+#include "xformsBC.h"
+
+struct FD_form_external;
+
 /// The class for editing External insets via a dialog
 class FormExternal : public FormBaseBD {
 public:
+	///
 	FormExternal(LyXView *, Dialogs *);
-
-	~FormExternal();
 
 	/// Connect signals. Also perform any necessary initialisation.
 	virtual void connect();
@@ -92,8 +94,21 @@ private:
 	/// build the dialog
 	FD_form_external * build_external();
 
+	/// Pointer to the actual instantiation of the ButtonController.
+	virtual xformsBC & bc();
+
 	/// the dialog implementation
-	FD_form_external * dialog_;
+	boost::scoped_ptr<FD_form_external> dialog_;
+
+	/// The ButtonController
+	ButtonController<OkCancelReadOnlyPolicy, xformsBC> bc_;
 };
+
+
+inline
+xformsBC & FormExternal::bc()
+{
+	return bc_;
+}
 
 #endif // FORMEXTERNAL_H

@@ -1,3 +1,4 @@
+// -*- C++ -*-
 /**
  * \file FormPreamble.h
  * Copyright 2001 The LyX Team.
@@ -9,7 +10,13 @@
 #ifndef FORMPREAMBLE_H
 #define FORMPREAMBLE_H
 
-#include "FormBase.h"
+#include <boost/smart_ptr.hpp>
+#include "FormBaseDeprecated.h"
+#include "xformsBC.h"
+
+#ifdef __GNUG__
+#pragma interface
+#endif
 
 struct FD_form_preamble;
 
@@ -17,33 +24,37 @@ struct FD_form_preamble;
  */
 class FormPreamble : public FormBaseBD {
 public:
-   ///
-   FormPreamble(LyXView *, Dialogs *);
-   ///
-   ~FormPreamble();
-   
+	///
+	FormPreamble(LyXView *, Dialogs *);
 private:
-   /** Redraw the form (on receipt of a Signal indicating, for example,
-    *  that the xforms colours have been re-mapped). 
-    */
+	/// Pointer to the actual instantiation of the ButtonController.
+	virtual xformsBC & bc();
 
-   /// Filter the inputs
-   // virtual bool input(FL_OBJECT *, long);
+	/// Filter the inputs
+	// virtual bool input(FL_OBJECT *, long);
    
-   /// Build the popup
-   virtual void build();
-   /// Apply from popup
-   virtual void apply();
-   /// Update the popup.
-   virtual void update();
-   ///
-   virtual FL_FORM * form() const;
+	/// Build the popup
+	virtual void build();
+	/// Apply from popup
+	virtual void apply();
+	/// Update the popup.
+	virtual void update();
+	///
+	virtual FL_FORM * form() const;
    
-   /// Typedefinitions from the fdesign produced Header file
-   FD_form_preamble  * build_preamble();
+	/// Typedefinitions from the fdesign produced Header file
+	FD_form_preamble  * build_preamble();
    
-   /// Real GUI implementation.
-   FD_form_preamble  * dialog_;
+	/// Real GUI implementation.
+	boost::scoped_ptr<FD_form_preamble> dialog_;
+	/// The ButtonController
+	ButtonController<NoRepeatedApplyReadOnlyPolicy, xformsBC> bc_;
 };
 
+
+inline
+xformsBC & FormPreamble::bc()
+{
+  return bc_;
+}
 #endif

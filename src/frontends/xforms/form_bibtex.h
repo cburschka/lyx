@@ -5,9 +5,9 @@
 #define FD_form_bibtex_h_
 
 /** Callbacks, globals and object handlers **/
-extern  "C" void C_FormBaseInputCB(FL_OBJECT *, long);
-extern  "C" void C_FormBaseOKCB(FL_OBJECT *, long);
-extern  "C" void C_FormBaseCancelCB(FL_OBJECT *, long);
+extern  "C" void C_FormBaseDeprecatedInputCB(FL_OBJECT *, long);
+extern  "C" void C_FormBaseDeprecatedOKCB(FL_OBJECT *, long);
+extern  "C" void C_FormBaseDeprecatedCancelCB(FL_OBJECT *, long);
 
 
 /**** Forms and Objects ****/

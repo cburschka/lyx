@@ -34,7 +34,7 @@ FD_form_browser * FormBrowser::build_browser()
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_gravity(obj, FL_SouthEast, FL_SouthEast);
-    fl_set_object_callback(obj, C_FormBaseCancelCB, 0);
+    fl_set_object_callback(obj, C_FormBaseDeprecatedCancelCB, 0);
   {
     char const * const dummy = N_("Update|#Uu");
     fdui->button_update = obj = fl_add_button(FL_NORMAL_BUTTON, 270, 340, 90, 30, idex(_(dummy)));
@@ -42,7 +42,7 @@ FD_form_browser * FormBrowser::build_browser()
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_gravity(obj, FL_SouthEast, FL_SouthEast);
-    fl_set_object_callback(obj, C_FormBaseInputCB, 0);
+    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
   fl_end_form();
 
   fdui->form->fdui = fdui;

@@ -33,8 +33,8 @@ using std::endl;
 using std::make_pair;
 
 FormGraphics::FormGraphics(LyXView * lv, Dialogs * d)
-	: FormInset(lv, d, _("Graphics"), new NoRepeatedApplyReadOnlyPolicy),
-	  dialog_(0), inset_(0),
+	: FormInset(lv, d, _("Graphics")),
+	  inset_(0),
 	  // The buttons c-tor values are the number of buttons we use
 	  // This is only to reduce memory waste.
 	  widthButtons(5), heightButtons(4), displayButtons(4),
@@ -53,20 +53,12 @@ FormGraphics::~FormGraphics()
 	widthButtons.reset();
 	heightButtons.reset();
 	displayButtons.reset();
-	
-	// Free the form.
-	// delete dialog_;
 }
 
 
 void FormGraphics::build()
 {
-	dialog_ = build_graphics();
-	Assert(dialog_ != 0);
-	if (!dialog_) {
-		lyxerr << "ERROR: Failed to create the Graphics Inset dialog." << endl;
-		return ;
-	}
+	dialog_.reset(build_graphics());
 
 	// Workaround dumb xforms sizing bug
 	minw_ = form()->w;
@@ -136,29 +128,30 @@ void FormGraphics::build()
 	                                   InsetGraphicsParams::NONE);
 
         // Manage the ok, apply, restore and cancel/close buttons
-	bc_.setOK(dialog_->button_ok);
-	bc_.setApply(dialog_->button_apply);
-	bc_.setCancel(dialog_->button_cancel);
-	bc_.setUndoAll(dialog_->button_restore);
-	bc_.refresh();
+	bc().setOK(dialog_->button_ok);
+	bc().setApply(dialog_->button_apply);
+	bc().setCancel(dialog_->button_cancel);
+	bc().setUndoAll(dialog_->button_restore);
+	bc().refresh();
 
-	bc_.addReadOnly(dialog_->input_filename);
-	bc_.addReadOnly(dialog_->button_browse);
-	bc_.addReadOnly(dialog_->input_width);
-	bc_.addReadOnly(dialog_->input_height);
-	bc_.addReadOnly(dialog_->radio_button_group_width);
-	bc_.addReadOnly(dialog_->radio_button_group_height);
-	bc_.addReadOnly(dialog_->radio_button_group_display);
-	bc_.addReadOnly(dialog_->input_rotate_angle);
-	bc_.addReadOnly(dialog_->check_inline);
-	bc_.addReadOnly(dialog_->input_subcaption);
-	bc_.addReadOnly(dialog_->check_subcaption);
+	bc().addReadOnly(dialog_->input_filename);
+	bc().addReadOnly(dialog_->button_browse);
+	bc().addReadOnly(dialog_->input_width);
+	bc().addReadOnly(dialog_->input_height);
+	bc().addReadOnly(dialog_->radio_button_group_width);
+	bc().addReadOnly(dialog_->radio_button_group_height);
+	bc().addReadOnly(dialog_->radio_button_group_display);
+	bc().addReadOnly(dialog_->input_rotate_angle);
+	bc().addReadOnly(dialog_->check_inline);
+	bc().addReadOnly(dialog_->input_subcaption);
+	bc().addReadOnly(dialog_->check_subcaption);
 }
 
 
 FL_FORM * FormGraphics::form() const
 {
-	if (dialog_ ) return dialog_->form;
+	if (dialog_.get())
+		return dialog_->form;
 	return 0;
 }
 
@@ -266,7 +259,7 @@ void FormGraphics::update()
 	              igp.inlineFigure);
 
 	// update the dialog's read only / read-write status
-	bc_.readOnly(lv_->buffer()->isReadonly());
+	bc().readOnly(lv_->buffer()->isReadonly());
 
 	// Now make sure that the buttons are set correctly.
 	input(0, 0);

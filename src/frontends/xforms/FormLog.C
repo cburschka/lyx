@@ -32,13 +32,10 @@ FormLog::FormLog(LyXView * lv, Dialogs * d)
 	d->showLogFile.connect(slot(this, &FormLog::show));
 }
 
-FormLog::~FormLog()
-{
-}
 
 void FormLog::update()
 {
-	if (!dialog_ || !lv_->view()->available())
+	if (!dialog_.get() || !lv_->view()->available())
 		return;
  
 	std::pair<Buffer::LogType, string> const logfile

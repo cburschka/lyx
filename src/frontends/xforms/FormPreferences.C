@@ -62,10 +62,7 @@ static Formats    local_formats;
 static Converters local_converters;
 
 FormPreferences::FormPreferences(LyXView * lv, Dialogs * d)
-	: FormBaseBI(lv, d, _("Preferences"), new PreferencesPolicy),
-	  dialog_(0),
-	  converters_tab_(0), inputs_tab_(0), look_n_feel_tab_(0),
-	  outputs_tab_(0),  lang_opts_tab_(0),
+	: FormBaseBI(lv, d, _("Preferences")),
 	  warningPosted(false),
 	  colors_(*this), converters_(*this), inputs_misc_(*this),
 	  formats_(*this), interface_(*this), language_(*this), 
@@ -76,18 +73,6 @@ FormPreferences::FormPreferences(LyXView * lv, Dialogs * d)
 	// This is a permanent connection so we won't bother
 	// storing a copy because we won't be disconnecting.
 	d->showPreferences.connect(slot(this, &FormPreferences::show));
-}
-
-
-FormPreferences::~FormPreferences()
-{
-	delete converters_tab_;
-	delete inputs_tab_;
-	delete look_n_feel_tab_;
-	delete outputs_tab_;
-	delete lang_opts_tab_;
-
-	delete dialog_;
 }
 
 
@@ -143,14 +128,14 @@ void FormPreferences::redraw()
 
 FL_FORM * FormPreferences::form() const
 {
-	if (dialog_) return dialog_->form;
+	if (dialog_.get()) return dialog_->form;
 	return 0;
 }
 
 
 void FormPreferences::ok()
 {
-	FormBase::ok();
+	FormBaseDeprecated::ok();
 
 	if (colors_.modifiedXformsPrefs) {
 		string const filename =
@@ -171,31 +156,31 @@ void FormPreferences::hide()
 	    && outer_form->visible) {
 		fl_hide_form(outer_form);
 	}
-	FormBase::hide();
+	FormBaseDeprecated::hide();
 }
 
 
 void FormPreferences::build()
 {
-	dialog_ = build_preferences();
+	dialog_.reset(build_preferences());
 
 	// Manage the restore, save, apply and cancel/close buttons
-	bc_.setOK(dialog_->button_ok);
-	bc_.setApply(dialog_->button_apply);
-	bc_.setCancel(dialog_->button_cancel);
-	bc_.setUndoAll(dialog_->button_restore);
-	bc_.refresh();
+	bc().setOK(dialog_->button_ok);
+	bc().setApply(dialog_->button_apply);
+	bc().setCancel(dialog_->button_cancel);
+	bc().setUndoAll(dialog_->button_restore);
+	bc().refresh();
 
 	// Workaround dumb xforms sizing bug
 	minw_ = form()->w;
 	minh_ = form()->h;
 
 	// build the tab folders
-	converters_tab_ = build_outer_tab();
-	look_n_feel_tab_ = build_outer_tab();
-	inputs_tab_ = build_outer_tab();
-	outputs_tab_ = build_outer_tab();
-	lang_opts_tab_ = build_outer_tab();
+	converters_tab_.reset(build_outer_tab());
+	look_n_feel_tab_.reset(build_outer_tab());
+	inputs_tab_.reset(build_outer_tab());
+	outputs_tab_.reset(build_outer_tab());
+	lang_opts_tab_.reset(build_outer_tab());
 
 	// build actual tabfolder contents
 	// these will become nested tabfolders
@@ -339,8 +324,7 @@ void FormPreferences::feedback(FL_OBJECT * ob)
 		str = spellchecker_.feedback(ob);
 	}
 
-	str = formatted(_(str), dialog_->text_warning->w-10,
-			FL_SMALL_SIZE, FL_NORMAL_STYLE);
+	str = formatted(_(str), dialog_->text_warning->w-10, FL_SMALL_SIZE);
 
 	fl_set_object_label(dialog_->text_warning, str.c_str());
 	fl_set_object_lsize(dialog_->text_warning, FL_SMALL_SIZE);
@@ -379,7 +363,7 @@ bool FormPreferences::input(FL_OBJECT * ob, long)
 
 void FormPreferences::update()
 {
-	if (!dialog_) return;
+	if (!dialog_.get()) return;
     
 	// read lyxrc entries
 	colors_.update();
@@ -397,9 +381,14 @@ void FormPreferences::update()
 }
 
 
-FormPreferences::Colors::~Colors()
+FormPreferences::Colors::Colors(FormPreferences & p)
+	: parent_(p)
+{}
+
+
+FD_form_colors const * FormPreferences::Colors::dialog()
 {
-	delete dialog_;
+	return dialog_.get();
 }
 
 
@@ -478,7 +467,7 @@ void FormPreferences::Colors::apply()
 
 void FormPreferences::Colors::build()
 {
-	dialog_ = parent_.build_colors();
+	dialog_.reset(parent_.build_colors());
 
 	fl_set_object_color(dialog_->button_color,
 			    GUI_COLOR_CHOICE, GUI_COLOR_CHOICE);
@@ -944,9 +933,14 @@ string const FormPreferences::Colors::X11hexname(RGBColor const & col) const
 }
 
 
-FormPreferences::Converters::~Converters()
+FormPreferences::Converters::Converters(FormPreferences & p)
+	: parent_(p)
+{}
+
+
+FD_form_converters const * FormPreferences::Converters::dialog()
 {
-	delete dialog_;
+	return dialog_.get();
 }
 
 
@@ -960,7 +954,7 @@ void FormPreferences::Converters::apply() const
 
 void FormPreferences::Converters::build()
 {
-	dialog_ = parent_.build_converters();
+	dialog_.reset(parent_.build_converters());
 
 	fl_set_input_return(dialog_->input_converter, FL_RETURN_CHANGED);
 	fl_set_input_return(dialog_->input_flags, FL_RETURN_CHANGED);
@@ -1201,9 +1195,14 @@ void FormPreferences::Converters::UpdateChoices() const
 }
 
 
-FormPreferences::Formats::~Formats()
+FormPreferences::Formats::Formats( FormPreferences &  p )
+	: parent_(p)
+{}
+
+
+FD_form_formats const * FormPreferences::Formats::dialog()
 {
-	delete dialog_;
+	return dialog_.get();
 }
 
 
@@ -1215,7 +1214,7 @@ void FormPreferences::Formats::apply() const
 
 void FormPreferences::Formats::build()
 {
-	dialog_ = parent_.build_formats();
+	dialog_.reset(parent_.build_formats());
 
 	fl_set_input_return(dialog_->input_format, FL_RETURN_CHANGED);
 	fl_set_input_return(dialog_->input_viewer, FL_RETURN_CHANGED);
@@ -1421,9 +1420,14 @@ bool FormPreferences::Formats::Input()
 }
 
 
-FormPreferences::InputsMisc::~InputsMisc()
+FormPreferences::InputsMisc::InputsMisc( FormPreferences &  p )
+	: parent_(p)
+{}
+
+
+FD_form_inputs_misc const * FormPreferences::InputsMisc::dialog()
 {
-	delete dialog_;
+	return dialog_.get();
 }
 
 
@@ -1436,7 +1440,7 @@ void FormPreferences::InputsMisc::apply() const
 
 void FormPreferences::InputsMisc::build()
 {
-	dialog_ = parent_.build_inputs_misc();
+	dialog_.reset(parent_.build_inputs_misc());
 
 	fl_set_input_return(dialog_->input_date_format, FL_RETURN_CHANGED);
 
@@ -1464,9 +1468,14 @@ void FormPreferences::InputsMisc::update()
 }
 
 
-FormPreferences::Interface::~Interface()
+FormPreferences::Interface::Interface( FormPreferences &  p )
+	: parent_(p)
+{}
+
+
+FD_form_interface const * FormPreferences::Interface::dialog()
 {
-	delete dialog_;
+	return dialog_.get();
 }
 
 
@@ -1486,7 +1495,7 @@ void FormPreferences::Interface::apply() const
 
 void FormPreferences::Interface::build()
 {
-	dialog_ = parent_.build_interface();
+	dialog_.reset(parent_.build_interface());
 
 	fl_set_input_return(dialog_->input_popup_font, FL_RETURN_CHANGED);
 	fl_set_input_return(dialog_->input_menu_font, FL_RETURN_CHANGED);
@@ -1576,10 +1585,14 @@ void FormPreferences::Interface::update()
 }
 
 
-FormPreferences::Language::~Language()
+FormPreferences::Language::Language( FormPreferences &  p )
+	: parent_(p)
+{}
+
+
+FD_form_language const * FormPreferences::Language::dialog()
 {
-	delete combo_default_lang;
-	delete dialog_;
+	return dialog_.get();
 }
 
 
@@ -1628,7 +1641,7 @@ void FormPreferences::Language::apply()
 
 void FormPreferences::Language::build()
 {
-	dialog_ = parent_.build_language();
+	dialog_.reset(parent_.build_language());
 
 	fl_set_input_return(dialog_->input_package, FL_RETURN_CHANGED);
 	fl_set_input_return(dialog_->input_command_begin, FL_RETURN_CHANGED);
@@ -1640,7 +1653,7 @@ void FormPreferences::Language::build()
 
 	FL_OBJECT * obj = dialog_->choice_default_lang;
 	fl_deactivate_object(dialog_->choice_default_lang);
-	combo_default_lang = new Combox(FL_COMBOX_DROPLIST);
+	combo_default_lang.reset(new Combox(FL_COMBOX_DROPLIST));
 	combo_default_lang->add(obj->x, obj->y, obj->w, obj->h, 400,
 				parent_.lang_opts_tab_->tabfolder_outer,
 				parent_.dialog_->tabfolder_prefs);
@@ -1688,7 +1701,7 @@ FormPreferences::Language::feedback(FL_OBJECT const * const ob) const
 {
 	string str;
 
-	if (reinterpret_cast<Combox const *>(ob) == combo_default_lang)
+	if (reinterpret_cast<Combox const *>(ob) == combo_default_lang.get())
 		str = lyxrc.getDescription(LyXRC::RC_DEFAULT_LANGUAGE);
 	else if (ob == dialog_->check_use_kbmap)
 		str = lyxrc.getDescription(LyXRC::RC_KBMAP);
@@ -1800,13 +1813,18 @@ void FormPreferences::Language::ComboCB(int, void * v, Combox * combox)
     FormPreferences * pre = static_cast<FormPreferences*>(v);
     // This is safe, as nothing is done to the pointer, other than
     // to use its address in a block-if statement.
-    pre->bc_.valid(pre->input(reinterpret_cast<FL_OBJECT *>(combox), 0));
+    pre->bc().valid(pre->input(reinterpret_cast<FL_OBJECT *>(combox), 0));
 }
 
 
-FormPreferences::LnFmisc::~LnFmisc()
+FormPreferences::LnFmisc::LnFmisc( FormPreferences &  p )
+	: parent_(p)
+{}
+
+
+FD_form_lnf_misc const * FormPreferences::LnFmisc::dialog()
 {
-	delete dialog_;
+	return dialog_.get();
 }
 
 
@@ -1830,7 +1848,7 @@ void FormPreferences::LnFmisc::apply() const
 
 void FormPreferences::LnFmisc::build()
 {
-	dialog_ = parent_.build_lnf_misc();
+	dialog_.reset(parent_.build_lnf_misc());
 
 	fl_set_counter_step(dialog_->counter_autosave, 1, 10);
 	fl_set_counter_step(dialog_->counter_wm_jump, 1, 10);
@@ -1891,9 +1909,14 @@ void FormPreferences::LnFmisc::update()
 }
 
 
-FormPreferences::OutputsMisc::~OutputsMisc()
+FormPreferences::OutputsMisc::OutputsMisc( FormPreferences &  p )
+	: parent_(p)
+{}
+
+
+FD_form_outputs_misc const * FormPreferences::OutputsMisc::dialog()
 {
-	delete dialog_;
+	return dialog_.get();
 }
 
 
@@ -1914,7 +1937,7 @@ void FormPreferences::OutputsMisc::apply() const
 
 void FormPreferences::OutputsMisc::build()
 {
-	dialog_ = parent_.build_outputs_misc();
+	dialog_.reset(parent_.build_outputs_misc());
 
 	fl_set_counter_step(dialog_->counter_line_len, 1, 10);
 
@@ -1970,9 +1993,14 @@ void FormPreferences::OutputsMisc::update()
 }
 
 
-FormPreferences::Paths::~Paths()
+FormPreferences::Paths::Paths( FormPreferences &  p )
+	: parent_(p)
+{}
+
+
+FD_form_paths const * FormPreferences::Paths::dialog()
 {
-	delete dialog_;
+	return dialog_.get();
 }
 
 
@@ -2013,7 +2041,7 @@ void FormPreferences::Paths::apply()
 
 void FormPreferences::Paths::build()
 {
-	dialog_ = parent_.build_paths();
+	dialog_.reset(parent_.build_paths());
 
 	fl_set_input_return(dialog_->input_default_path, FL_RETURN_CHANGED);
 	fl_set_input_return(dialog_->input_template_path, FL_RETURN_CHANGED);
@@ -2228,9 +2256,14 @@ void FormPreferences::Paths::update()
 }
 
 
-FormPreferences::Printer::~Printer()
+FormPreferences::Printer::Printer(FormPreferences &  p)
+	: parent_(p)
+{}
+
+
+FD_form_printer const * FormPreferences::Printer::dialog()
 {
-	delete dialog_;
+	return dialog_.get();
 }
 
 
@@ -2310,7 +2343,7 @@ FormPreferences::Printer::feedback(FL_OBJECT const * const ob) const
 
 void FormPreferences::Printer::build()
 {
-	dialog_ = parent_.build_printer();
+	dialog_.reset(parent_.build_printer());
 
 	fl_set_input_return(dialog_->input_command, FL_RETURN_CHANGED);
 	fl_set_input_return(dialog_->input_page_range, FL_RETURN_CHANGED);
@@ -2393,9 +2426,14 @@ void FormPreferences::Printer::update()
 }
 
 
-FormPreferences::ScreenFonts::~ScreenFonts()
+FormPreferences::ScreenFonts::ScreenFonts( FormPreferences &  p )
+	: parent_(p)
+{}
+
+
+FD_form_screen_fonts const * FormPreferences::ScreenFonts::dialog()
 {
-	delete dialog_;
+	return dialog_.get();
 }
 
 
@@ -2517,7 +2555,7 @@ void FormPreferences::ScreenFonts::apply() const
 
 void FormPreferences::ScreenFonts::build()
 {
-	dialog_ = parent_.build_screen_fonts();
+	dialog_.reset(parent_.build_screen_fonts());
 
 	fl_set_counter_step(dialog_->counter_zoom, 1, 10);
 	fl_set_counter_step(dialog_->counter_dpi,  1, 10);
@@ -2695,9 +2733,15 @@ void FormPreferences::ScreenFonts::update()
 }
 
 
-FormPreferences::SpellChecker::~SpellChecker()
+
+FormPreferences::SpellChecker::SpellChecker( FormPreferences &  p )
+	: parent_(p)
+{}
+
+
+FD_form_spellchecker const * FormPreferences::SpellChecker::dialog()
 {
-	delete dialog_;
+	return dialog_.get();
 }
 
 
@@ -2761,7 +2805,7 @@ void FormPreferences::SpellChecker::apply()
 
 void FormPreferences::SpellChecker::build()
 {
-	dialog_ = parent_.build_spellchecker();
+	dialog_.reset(parent_.build_spellchecker());
 
 	fl_addto_choice(dialog_->choice_spell_command,
 			_(" none | ispell | aspell "));
@@ -2912,8 +2956,7 @@ void FormPreferences::printWarning(string const & warning)
 	warningPosted = true;
 
 	string str = _("WARNING!") + string(" ") + warning;
-	str = formatted(str, dialog_->text_warning->w-10,
-			 FL_SMALL_SIZE, FL_NORMAL_STYLE);
+	str = formatted(str, dialog_->text_warning->w-10, FL_SMALL_SIZE);
 
 	fl_set_object_label(dialog_->text_warning, str.c_str());
 	fl_set_object_lsize(dialog_->text_warning, FL_SMALL_SIZE);

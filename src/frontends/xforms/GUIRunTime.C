@@ -9,11 +9,12 @@
 
 #include <config.h>
 
+#include FORMS_H_LOCATION
+
 #ifdef __GNUG__
 #pragma implementation
 #endif
 
-#include FORMS_H_LOCATION
 #include "GUIRunTime.h"
 #include "debug.h"
 

@@ -12,11 +12,15 @@
 #ifndef FORMREF_H
 #define FORMREF_H
 
+#include <boost/smart_ptr.hpp>
+
 #ifdef __GNUG__
 #pragma interface
 #endif
 
 #include "FormInset.h"
+#include "xformsBC.h"
+
 struct FD_form_ref;
 
 /** This class provides an XForms implementation of the FormRef Dialog.
@@ -25,10 +29,9 @@ class FormRef : public FormCommand {
 public:
 	///
 	FormRef(LyXView *, Dialogs *);
-	///
-	~FormRef();
-	///
 private:
+	/// Pointer to the actual instantiation of the ButtonController.
+	virtual xformsBC & bc();
 	/// Disconnect signals. Also perform any necessary housekeeping.
 	virtual void disconnect();
 
@@ -54,7 +57,15 @@ private:
 	std::vector<string> refs;
 
 	/// Real GUI implementation.
-	FD_form_ref * dialog_;
+	boost::scoped_ptr<FD_form_ref> dialog_;
+	/// The ButtonController
+	ButtonController<NoRepeatedApplyPolicy, xformsBC> bc_;
 };
 
+
+inline
+xformsBC & FormRef::bc()
+{
+	return bc_;
+}
 #endif

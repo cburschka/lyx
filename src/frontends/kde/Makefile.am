@@ -3,7 +3,9 @@ MAINTAINERCLEANFILES = $(srcdir)/Makefile.in
 noinst_LTLIBRARIES = libkde.la
 BOOST_INCLUDES = -I$(top_srcdir)/boost
 SUBDIRS = dlg moc
-INCLUDES = -I${top_srcdir}/src/ -I${top_srcdir}/src/frontends/ \
+INCLUDES = -I${top_srcdir}/src/ \
+	-I${top_srcdir}/src/frontends/ \
+	-I${top_srcdir}/src/frontends/controllers \
 	${SIGC_CFLAGS} ${FRONTEND_INCLUDES} $(BOOST_INCLUDES) \
 	-I${top_srcdir}/src/frontends/xforms
 
@@ -15,11 +17,13 @@ libkde_la_OBJADD = \
 	moc/libkdemoc.la \
 	dlg/libkdedlg.la \
 	dlg/moc/libkdedlgmoc.la \
-        ../xforms/FormBase.lo \
+        ../xforms/FormBaseDeprecated.lo \
 	../xforms/FormBibitem.lo \
 	../xforms/form_bibitem.lo \
 	../xforms/FormBibtex.lo \
 	../xforms/form_bibtex.lo \
+        ../xforms/FormCredits.lo \
+        ../xforms/form_credits.lo \
         ../xforms/FormError.lo \
         ../xforms/form_error.lo \
         ../xforms/FormGraphics.lo \
@@ -35,9 +39,9 @@ libkde_la_OBJADD = \
 	../xforms/form_splash.lo \
         ../xforms/FormTabular.lo \
         ../xforms/form_tabular.lo \
-	../xforms/ButtonController.lo \
+	../xforms/xformsBC.lo \
 	../xforms/Color.lo \
-	../xforms/xform_helpers.lo \
+	../xforms/xforms_helpers.lo \
         ../xforms/input_validators.lo \
         ../xforms/RadioButtonGroup.lo \
         ../xforms/Toolbar_pimpl.lo \
@@ -55,6 +59,8 @@ libkde_la_SOURCES = \
 	QtLyXView.h \
 	Timeout_pimpl.C \
 	Timeout_pimpl.h \
+	kdeBC.C \
+	kdeBC.h \
 	FormCitation.C \
 	FormCitation.h \
 	FormCopyright.C \

@@ -11,13 +11,14 @@
 
 #include <config.h>
 
+#include FORMS_H_LOCATION
+#include XPM_H_LOCATION
+
 #ifdef __GNUG_
 #pragma implementation
 #endif
 
 #include "lyx_gui_misc.h"
-#include FORMS_H_LOCATION
-#include XPM_H_LOCATION
 
 #include "FormDocument.h"
 #include "form_document.h"
@@ -46,31 +47,12 @@ using Liason::setMinibuffer;
 #define USE_CLASS_COMBO 1
 
 FormDocument::FormDocument(LyXView * lv, Dialogs * d)
-	: FormBaseBD(lv, d, _("Document Layout"),
-		     new NoRepeatedApplyReadOnlyPolicy),
-	  dialog_(0), paper_(0), class_(0), language_(0), options_(0),
-	  bullets_(0), current_bullet_panel(0), current_bullet_depth(0),
-	  fbullet(0), combo_language(0), combo_doc_class(0)
+	: FormBaseBD(lv, d, _("Document Layout")), fbullet(0)
 {
     // let the popup be shown
     // This is a permanent connection so we won't bother
     // storing a copy because we won't be disconnecting.
     d->showLayoutDocument.connect(slot(this, &FormDocument::show));
-}
-
-
-FormDocument::~FormDocument()
-{
-#ifdef USE_CLASS_COMBO
-    delete combo_doc_class;
-#endif
-    delete class_;
-    delete paper_;
-    delete combo_language;
-    delete language_;
-    delete options_;
-    delete bullets_;
-    delete dialog_;
 }
 
 
@@ -89,7 +71,7 @@ void FormDocument::redraw()
 
 FL_FORM * FormDocument::form() const
 {
-    if (dialog_) return dialog_->form;
+    if (dialog_.get()) return dialog_->form;
     return 0;
 }
 
@@ -99,21 +81,21 @@ void FormDocument::build()
     int n;
 
     // the tabbed folder
-    dialog_ = build_tabbed_document();
+    dialog_.reset(build_tabbed_document());
 
     // Manage the restore, ok, apply, restore and cancel/close buttons
-    bc_.setOK(dialog_->button_ok);
-    bc_.setApply(dialog_->button_apply);
-    bc_.setCancel(dialog_->button_cancel);
-    bc_.setUndoAll(dialog_->button_restore);
-    bc_.refresh();
+    bc().setOK(dialog_->button_ok);
+    bc().setApply(dialog_->button_apply);
+    bc().setCancel(dialog_->button_cancel);
+    bc().setUndoAll(dialog_->button_restore);
+    bc().refresh();
 
     // Workaround dumb xforms sizing bug
     minw_ = form()->w;
     minh_ = form()->h;
 
     // the document paper form
-    paper_ = build_doc_paper();
+    paper_.reset(build_doc_paper());
     fl_addto_choice(paper_->choice_papersize2,
 		    _(" Default | Custom | USletter | USlegal "
 		      "| USexecutive | A3 | A4 | A5 | B3 | B4 | B5 "));
@@ -132,24 +114,24 @@ void FormDocument::build()
     fl_set_input_return(paper_->input_head_sep, FL_RETURN_CHANGED);
     fl_set_input_return(paper_->input_foot_skip, FL_RETURN_CHANGED);
 
-    bc_.addReadOnly (paper_->choice_paperpackage);
-    bc_.addReadOnly (paper_->greoup_radio_orientation);
-    bc_.addReadOnly (paper_->radio_portrait);
-    bc_.addReadOnly (paper_->radio_landscape);
-    bc_.addReadOnly (paper_->choice_papersize2);
-    bc_.addReadOnly (paper_->push_use_geometry);
-    bc_.addReadOnly (paper_->input_custom_width);
-    bc_.addReadOnly (paper_->input_custom_height);
-    bc_.addReadOnly (paper_->input_top_margin);
-    bc_.addReadOnly (paper_->input_bottom_margin);
-    bc_.addReadOnly (paper_->input_left_margin);
-    bc_.addReadOnly (paper_->input_right_margin);
-    bc_.addReadOnly (paper_->input_head_height);
-    bc_.addReadOnly (paper_->input_head_sep);
-    bc_.addReadOnly (paper_->input_foot_skip);
+    bc().addReadOnly (paper_->choice_paperpackage);
+    bc().addReadOnly (paper_->greoup_radio_orientation);
+    bc().addReadOnly (paper_->radio_portrait);
+    bc().addReadOnly (paper_->radio_landscape);
+    bc().addReadOnly (paper_->choice_papersize2);
+    bc().addReadOnly (paper_->push_use_geometry);
+    bc().addReadOnly (paper_->input_custom_width);
+    bc().addReadOnly (paper_->input_custom_height);
+    bc().addReadOnly (paper_->input_top_margin);
+    bc().addReadOnly (paper_->input_bottom_margin);
+    bc().addReadOnly (paper_->input_left_margin);
+    bc().addReadOnly (paper_->input_right_margin);
+    bc().addReadOnly (paper_->input_head_height);
+    bc().addReadOnly (paper_->input_head_sep);
+    bc().addReadOnly (paper_->input_foot_skip);
 
     // the document class form
-    class_ = build_doc_class();
+    class_.reset(build_doc_class());
 
     FL_OBJECT * obj;
 #ifdef USE_CLASS_COMBO
@@ -157,7 +139,7 @@ void FormDocument::build()
     obj = class_->choice_doc_class;
     fl_deactivate_object(obj);
     fl_addto_form(class_->form);
-    combo_doc_class = new Combox(FL_COMBOX_DROPLIST);
+    combo_doc_class.reset(new Combox(FL_COMBOX_DROPLIST));
     combo_doc_class->add(obj->x, obj->y, obj->w, obj->h, 400,
 	 		 dialog_->tabbed_folder);
     combo_doc_class->shortcut("#C",1);
@@ -190,26 +172,26 @@ void FormDocument::build()
     fl_set_input_return(class_->input_doc_skip, FL_RETURN_CHANGED);
     fl_set_input_return(class_->input_doc_spacing, FL_RETURN_CHANGED);
 
-    bc_.addReadOnly (class_->radio_doc_indent);
-    bc_.addReadOnly (class_->radio_doc_skip);
+    bc().addReadOnly (class_->radio_doc_indent);
+    bc().addReadOnly (class_->radio_doc_skip);
 #ifndef USE_CLASS_COMBO
-    bc_.addReadOnly (class_->choice_doc_class);
+    bc().addReadOnly (class_->choice_doc_class);
 #endif
-    bc_.addReadOnly (class_->choice_doc_pagestyle);
-    bc_.addReadOnly (class_->choice_doc_fonts);
-    bc_.addReadOnly (class_->choice_doc_fontsize);
-    bc_.addReadOnly (class_->radio_doc_sides_one);
-    bc_.addReadOnly (class_->radio_doc_sides_two);
-    bc_.addReadOnly (class_->radio_doc_columns_one);
-    bc_.addReadOnly (class_->radio_doc_columns_two);
-    bc_.addReadOnly (class_->input_doc_extra);
-    bc_.addReadOnly (class_->input_doc_skip);
-    bc_.addReadOnly (class_->choice_doc_skip);
-    bc_.addReadOnly (class_->choice_doc_spacing);
-    bc_.addReadOnly (class_->input_doc_spacing);
+    bc().addReadOnly (class_->choice_doc_pagestyle);
+    bc().addReadOnly (class_->choice_doc_fonts);
+    bc().addReadOnly (class_->choice_doc_fontsize);
+    bc().addReadOnly (class_->radio_doc_sides_one);
+    bc().addReadOnly (class_->radio_doc_sides_two);
+    bc().addReadOnly (class_->radio_doc_columns_one);
+    bc().addReadOnly (class_->radio_doc_columns_two);
+    bc().addReadOnly (class_->input_doc_extra);
+    bc().addReadOnly (class_->input_doc_skip);
+    bc().addReadOnly (class_->choice_doc_skip);
+    bc().addReadOnly (class_->choice_doc_spacing);
+    bc().addReadOnly (class_->input_doc_spacing);
 
     // the document language form
-    language_ = build_doc_language();
+    language_.reset(build_doc_language());
     fl_addto_choice(language_->choice_inputenc,
 		    "default|auto|latin1|latin2|latin5"
 		    "|koi8-r|koi8-u|cp866|cp1251|iso88595");
@@ -218,7 +200,7 @@ void FormDocument::build()
     obj = language_->choice_language;
     fl_deactivate_object(obj);
     fl_addto_form(language_->form);
-    combo_language = new Combox(FL_COMBOX_DROPLIST);
+    combo_language.reset(new Combox(FL_COMBOX_DROPLIST));
     combo_language->add(obj->x, obj->y, obj->w, obj->h, 400,
 			dialog_->tabbed_folder);
     combo_language->shortcut("#L",1);
@@ -234,10 +216,10 @@ void FormDocument::build()
 		    _(" ``text'' | ''text'' | ,,text`` | ,,text'' |"
 		      " «text» | »text« "));
 
-    bc_.addReadOnly (language_->choice_inputenc);
+    bc().addReadOnly (language_->choice_inputenc);
 
     // the document options form
-    options_ = build_doc_options();
+    options_.reset(build_doc_options());
     fl_set_input_return(options_->input_float_placement, FL_RETURN_CHANGED);
     fl_set_counter_bounds(options_->slider_secnumdepth,-2,5);
     fl_set_counter_bounds(options_->slider_tocdepth,-1,5);
@@ -249,14 +231,14 @@ void FormDocument::build()
 	fl_addto_choice(options_->choice_postscript_driver, tex_graphics[n]);
     }
 
-    bc_.addReadOnly (options_->slider_secnumdepth);
-    bc_.addReadOnly (options_->slider_tocdepth);
-    bc_.addReadOnly (options_->check_use_amsmath);
-    bc_.addReadOnly (options_->input_float_placement);
-    bc_.addReadOnly (options_->choice_postscript_driver);
+    bc().addReadOnly (options_->slider_secnumdepth);
+    bc().addReadOnly (options_->slider_tocdepth);
+    bc().addReadOnly (options_->check_use_amsmath);
+    bc().addReadOnly (options_->input_float_placement);
+    bc().addReadOnly (options_->choice_postscript_driver);
 
     // the document bullets form
-    bullets_ = build_doc_bullet();
+    bullets_.reset(build_doc_bullet());
     fl_addto_choice(bullets_->choice_bullet_size,
 		    _(" default | tiny | script | footnote | small |"
 		      " normal | large | Large | LARGE | huge | Huge"));
@@ -264,9 +246,9 @@ void FormDocument::build()
     fl_set_input_return(bullets_->input_bullet_latex, FL_RETURN_CHANGED);
     fl_set_input_maxchars(bullets_->input_bullet_latex, 80);
 
-    bc_.addReadOnly (bullets_->bmtable_bullet_panel);
-    bc_.addReadOnly (bullets_->choice_bullet_size);
-    bc_.addReadOnly (bullets_->input_bullet_latex);
+    bc().addReadOnly (bullets_->bmtable_bullet_panel);
+    bc().addReadOnly (bullets_->choice_bullet_size);
+    bc().addReadOnly (bullets_->input_bullet_latex);
 
     fl_addto_tabfolder(dialog_->tabbed_folder,_("Document"),
 		       class_->form);
@@ -290,7 +272,7 @@ void FormDocument::build()
 
 void FormDocument::apply()
 {
-    if (!lv_->view()->available() || !dialog_)
+    if (!lv_->view()->available() || !dialog_.get())
 	return;
 
     bool redo = class_apply();
@@ -321,7 +303,7 @@ void FormDocument::cancel()
 
 void FormDocument::update()
 {
-    if (!dialog_)
+    if (!dialog_.get())
         return;
 
     checkReadOnly();
@@ -389,9 +371,9 @@ bool FormDocument::input( FL_OBJECT * ob, long data )
 void FormDocument::ComboInputCB(int, void * v, Combox * combox)
 {
     FormDocument * pre = static_cast<FormDocument*>(v);
-    if (combox == pre->combo_doc_class)
+    if (combox == pre->combo_doc_class.get())
 	pre->CheckChoiceClass(0, 0);
-    pre->bc_.valid(pre->CheckDocumentInput(0,0));
+    pre->bc().valid(pre->CheckDocumentInput(0,0));
 }
 
 
@@ -637,7 +619,7 @@ void FormDocument::bullets_apply()
 
 void FormDocument::class_update(BufferParams const & params)
 {
-    if (!class_)
+    if (!class_.get())
         return;
 
     LyXTextClass const & tclass = textclasslist.TextClass(params.textclass);
@@ -732,7 +714,7 @@ void FormDocument::class_update(BufferParams const & params)
 
 void FormDocument::language_update(BufferParams const & params)
 {
-    if (!language_)
+    if (!language_.get())
         return;
 
     combo_language->select_text(params.language->lang());
@@ -749,7 +731,7 @@ void FormDocument::language_update(BufferParams const & params)
 
 void FormDocument::options_update(BufferParams const & params)
 {
-    if (!options_)
+    if (!options_.get())
         return;
 
     fl_set_choice_text(options_->choice_postscript_driver,
@@ -767,7 +749,7 @@ void FormDocument::options_update(BufferParams const & params)
 
 void FormDocument::paper_update(BufferParams const & params)
 {
-    if (!paper_)
+    if (!paper_.get())
         return;
 
     fl_set_choice(paper_->choice_papersize2, params.papersize2 + 1);
@@ -794,7 +776,7 @@ void FormDocument::paper_update(BufferParams const & params)
 
 void FormDocument::bullets_update(BufferParams const & params)
 {
-    if (!bullets_ || ((XpmVersion<4) || (XpmVersion==4 && XpmRevision<7)))
+    if (!bullets_.get() || ((XpmVersion<4) || (XpmVersion==4 && XpmRevision<7)))
         return;
 
     bool const isLinuxDoc = lv_->buffer()->isLinuxDoc();
@@ -812,7 +794,7 @@ void FormDocument::bullets_update(BufferParams const & params)
 
 void FormDocument::checkReadOnly()
 {
-    if (bc_.readOnly(lv_->buffer()->isReadonly())) {
+    if (bc().readOnly(lv_->buffer()->isReadonly())) {
 	combo_doc_class->deactivate();
 	combo_language->deactivate();
 	fl_set_object_label(dialog_->text_warning,
@@ -1114,7 +1096,7 @@ void FormDocument::CheckChoiceClass(FL_OBJECT * ob, long)
 
 void FormDocument::UpdateLayoutDocument(BufferParams const & params)
 {
-    if (!dialog_)
+    if (!dialog_.get())
         return;
 
     checkReadOnly();

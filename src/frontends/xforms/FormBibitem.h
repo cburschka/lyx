@@ -1,3 +1,4 @@
+// -*- C++ -*-
 /**
  * \file FormBibitem.h
  * Copyright 2001 the LyX Team
@@ -14,35 +15,35 @@
 #pragma interface
 #endif
 
-#include "FormInset.h"
-struct FD_form_bibitem;
+#include "FormBase.h"
 
 /**
  * For bibliography entry editing
  */
-class FormBibitem : public FormCommand {
+
+#include "form_bibitem.h"
+class ControlBibitem;
+
+class FormBibitem : public FormBase2<ControlBibitem, FD_form_bibitem> {
 public:
 	///
-	FormBibitem(LyXView *, Dialogs *);
-	///
-	~FormBibitem();
-private:
-	/// Connect signals etc. Set form's max size.
-	virtual void connect();
-	/// Build the dialog
-	virtual void build();
-	/// Update dialog before showing it
-	virtual void update();
-	/// input handler
-	virtual bool input(FL_OBJECT *,long);
-	/// Apply from dialog (modify or create inset)
+	FormBibitem(ControlBibitem &);
+
+	// Functions accessible to the Controller.
+
+	/// Set the Params variable for the Controller.
 	virtual void apply();
-	/// Pointer to the actual instantiation of the xforms form
-	virtual FL_FORM * form() const;
-	///
+	/// Build the dialog.
+	virtual void build();
+	/// Update dialog before/whilst showing it.
+	virtual void update();
+
+private:
+	/// Filter the inputs on callback from xforms
+	virtual ButtonPolicy::SMInput input(FL_OBJECT *, long);
+
+	/// Type definition from the fdesign produced header file.
 	FD_form_bibitem * build_bibitem();
-	/// Real GUI implementation.
-	FD_form_bibitem * dialog_;
 };
 
 #endif // FORMBIBITEM_H

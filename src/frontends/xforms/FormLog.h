@@ -9,7 +9,7 @@
 #ifndef FORMLOG_H
 #define FORMLOG_H
 
-#include "FormBase.h"
+#include "FormBaseDeprecated.h"
 #include "FormBrowser.h"
 
 #ifdef __GNUG__
@@ -25,9 +25,8 @@ class Dialogs;
  */
 class FormLog : public FormBrowser {
 public:
+	///
 	FormLog(LyXView *, Dialogs *);
-	~FormLog();
-
 private:
 	/// Update the dialog.
 	virtual void update();

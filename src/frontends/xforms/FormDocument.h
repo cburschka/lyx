@@ -13,8 +13,10 @@
 #ifndef FORM_DOCUMENT_H
 #define FORM_DOCUMENT_H
 
-#include "FormBase.h"
 #include <vector>
+#include <boost/smart_ptr.hpp>
+#include "FormBaseDeprecated.h"
+#include "xformsBC.h"
 
 #ifdef __GNUG_
 #pragma interface
@@ -41,10 +43,7 @@ public:
 	/// #FormDocument x(Communicator ..., Popups ...);#
 	FormDocument(LyXView *, Dialogs *);
 	///
-	~FormDocument();
-	///
 	static void ComboInputCB(int, void *, Combox *);
-
 private:
 	///
 	enum State {
@@ -79,6 +78,8 @@ private:
 		///
 		BULLETBMTABLE
 	};
+	/// Pointer to the actual instantiation of the ButtonController.
+	virtual xformsBC & bc();
 	/** Redraw the form (on receipt of a Signal indicating, for example,
 	    that the xforms colours have been re-mapped). */
 	virtual void redraw();
@@ -153,17 +154,17 @@ private:
 	FD_form_doc_bullet * build_doc_bullet();
 
 	/// Real GUI implementation.
-	FD_form_tabbed_document * dialog_;
+	boost::scoped_ptr<FD_form_tabbed_document> dialog_;
 	///
-	FD_form_doc_paper       * paper_;
+	boost::scoped_ptr<FD_form_doc_paper>       paper_;
 	///
-	FD_form_doc_class       * class_;
+	boost::scoped_ptr<FD_form_doc_class>       class_;
 	///
-	FD_form_doc_language    * language_;
+	boost::scoped_ptr<FD_form_doc_language>    language_;
 	///
-	FD_form_doc_options     * options_;
+	boost::scoped_ptr<FD_form_doc_options>     options_;
 	///
-	FD_form_doc_bullet      * bullets_;
+	boost::scoped_ptr<FD_form_doc_bullet>      bullets_;
 	///
 	int ActCell;
 	///
@@ -175,9 +176,18 @@ private:
 	///
 	FL_OBJECT * fbullet;
 	///
-	Combox * combo_language;
+	boost::scoped_ptr<Combox> combo_language;
 	///
-	Combox * combo_doc_class;
+	boost::scoped_ptr<Combox> combo_doc_class;
+	/// The ButtonController
+	ButtonController<NoRepeatedApplyReadOnlyPolicy, xformsBC> bc_;
 };
+
+
+inline
+xformsBC & FormDocument::bc()
+{
+	return bc_;
+}
 
 #endif

@@ -2,8 +2,12 @@ AUTOMAKE_OPTIONS = foreign 1.4
 MAINTAINERCLEANFILES = $(srcdir)/Makefile.in
 noinst_LTLIBRARIES = libkdemoc.la
 BOOST_INCLUDES = -I$(top_srcdir)/boost
-INCLUDES = -I${top_srcdir}/src/ -I${top_srcdir}/src/frontends/ \
-	${SIGC_CFLAGS} ${FRONTEND_INCLUDES} ${BOOST_INCLUDES}
+INCLUDES = -I${top_srcdir}/src/ \
+	-I${top_srcdir}/src/frontends/ \
+	-I${top_srcdir}/src/frontends/controllers \
+	${SIGC_CFLAGS} \
+	${FRONTEND_INCLUDES} \
+	$(BOOST_INCLUDES)
 
 libkdemoc_la_SOURCES = FileDialog_private_moc.C \
 		citationdlg_moc.C \

@@ -13,12 +13,13 @@
 #ifndef FORM_PARAGRAPH_H
 #define FORM_PARAGRAPH_H
 
-#include "FormBase.h"
+#include <boost/smart_ptr.hpp>
+#include "FormBaseDeprecated.h"
+#include "xformsBC.h"
 
 #ifdef __GNUG_
 #pragma interface
 #endif
-
 
 struct FD_form_tabbed_paragraph;
 struct FD_form_paragraph_general;
@@ -31,10 +32,9 @@ class FormParagraph : public FormBaseBD {
 public:
 	///
 	FormParagraph(LyXView *, Dialogs *);
-	///
-	~FormParagraph();
-
 private:
+	/// Pointer to the actual instantiation of the ButtonController.
+	virtual xformsBC & bc();
 	/** Redraw the form (on receipt of a Signal indicating, for example,
 	    that the xforms colours have been re-mapped). */
 	virtual void redraw();
@@ -67,11 +67,19 @@ private:
 	FD_form_paragraph_extra * build_paragraph_extra();
 
 	/// Real GUI implementation.
-	FD_form_tabbed_paragraph  * dialog_;
+	boost::scoped_ptr<FD_form_tabbed_paragraph> dialog_;
 	///
-	FD_form_paragraph_general * general_;
+	boost::scoped_ptr<FD_form_paragraph_general> general_;
 	///
-	FD_form_paragraph_extra   * extra_;
+	boost::scoped_ptr<FD_form_paragraph_extra> extra_;
+	/// The ButtonController
+	ButtonController<NoRepeatedApplyReadOnlyPolicy, xformsBC> bc_;
 };
 
+
+inline
+xformsBC & FormParagraph::bc()
+{
+	return bc_;
+}
 #endif

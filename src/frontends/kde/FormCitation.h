@@ -9,55 +9,56 @@
 #ifndef FORMCITATION_H
 #define FORMCITATION_H
 
-#include "DialogBase.h"
-#include "support/lstrings.h"
-#include "boost/utility.hpp"
-#include "insets/insetcommand.h"
-
 #include <vector>
+#include <boost/smart_ptr.hpp>
 
-class Dialogs;
-class LyXView;
+#ifdef __GNUG__
+#pragma interface
+#endif
+
+#include "ViewBase.h"
+#include "ButtonPolicies.h"
+
+class kdeBC;
+class QListBox;
+class ControlCitation;
 class CitationDialog;
 
-class FormCitation : public DialogBase {
+class FormCitation : public ViewBC<kdeBC> {
 public:
-	FormCitation(LyXView *, Dialogs *);
+	FormCitation(ControlCitation &);
 
-	~FormCitation();
+	/// Functions accessible to the Controller.
 
-	/// Apply changes
-	void apply();
-	/// close the connections
-	void close();
+	/// Set the Params variable for the Controller.
+	virtual void apply();
+	/// Set the Params variable for the Controller.
+	virtual void build();
+	/// Hide the dialog.
+	virtual void hide();
+	/// Update dialog before/whilst showing it.
+	virtual void update();
+	/// Create the dialog if necessary, update it and display it.
+	void show();
+
 	/// add a key
-	void add();
+	ButtonPolicy::SMInput add();
 	/// remove a key
-	void remove();
+	ButtonPolicy::SMInput remove();
 	/// move a key up
-	void up();
+	ButtonPolicy::SMInput up();
 	/// move a key down
-	void down();
+	ButtonPolicy::SMInput down();
 	/// a key has been highlighted
 	void highlight_key(char const * key);
 	/// a chosen key has been highlighted
 	void highlight_chosen(char const * key);
 	/// a key has been double-clicked
-	void select_key(char const * key);
+	ButtonPolicy::SMInput select_key(char const * key);
 
 private:
-	/// Create the dialog if necessary, update it and display it.
-	void show();
-	/// Hide the dialog.
-	void hide();
-	/// Update the dialog.
-	void update(bool switched = false);
-
-	/// create a Citation inset
-	void createCitation(string const &);
-	/// edit a Citation inset
-	void showCitation(InsetCommand * const);
-
+	/// The parent controller
+	ControlCitation & controller() const;
 	/// update add,remove,up,down
 	void updateButtons();
 	/// update the available keys list
@@ -66,33 +67,16 @@ private:
 	void updateChosenList();
 	/// select the currently chosen key
 	void selectChosen();
+	/// does the dirty work for highlight_key(), highlight_chosen()
+	void highlight(char const *, QListBox *, string &, string &);
+	/// does the dirty work for updateAvailableList(), updateChosenList()
+	void updateList(QListBox *, std::vector<string> const &);
 
 	/// Real GUI implementation.
-	CitationDialog * dialog_;
-
-	/// the LyXView we belong to
-	LyXView * lv_;
-
-	/** Which Dialogs do we belong to?
-	    Used so we can get at the signals we have to connect to.
-	*/
-	Dialogs * d_;
-	/// pointer to the inset if any
-	InsetCommand * inset_;
-	/// insets params
-	InsetCommandParams params;
-	/// is the inset we are reading from a readonly buffer ?
-	bool readonly;
-	
-	/// Hide connection.
-	Connection h_;
-	/// Update connection.
-	Connection u_;
-	/// Inset hide connection.
-	Connection ih_;
+	boost::scoped_ptr<CitationDialog> dialog_;
 
 	/// available citation keys
-	std::vector<std::pair<string, string> > keys;
+	std::vector<string> keys;
 	/// chosen citation keys
 	std::vector<string> chosenkeys;
 

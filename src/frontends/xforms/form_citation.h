@@ -25,6 +25,11 @@ struct FD_form_citation {
 	FL_OBJECT *button_up;
 	FL_OBJECT *button_down;
 	FL_OBJECT *browser_info;
+	FL_OBJECT *frame_search;
+	FL_OBJECT *input_search;
+	FL_OBJECT *button_search_type;
+	FL_OBJECT *button_previous;
+	FL_OBJECT *button_next;
 	FL_OBJECT *choice_style;
 	FL_OBJECT *input_before;
 	FL_OBJECT *input_after;

@@ -11,6 +11,10 @@
 
 #include <config.h> 
 
+#include <functional>
+#include <algorithm>
+#include <iterator>
+
 #ifdef __GNUG__
 #pragma implementation
 #endif 
@@ -19,9 +23,6 @@
 
 #include "debug.h" // for lyxerr
 
-#include <functional>
-#include <algorithm>
-#include <iterator>
 using std::find_if;
 using std::bind2nd;
 using std::endl;

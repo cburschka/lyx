@@ -21,11 +21,10 @@
 #include "Dialogs.h"
 #include "LyXView.h"
 #include "FormInset.h"
+#include "xformsBC.h"
 
-FormInset::FormInset(LyXView * lv, Dialogs * d, string const & t,
-		     ButtonPolicy * bp,
-		     char const * close, char const * cancel)
-	: FormBaseBD(lv, d, t, bp, close, cancel), ih_(0)
+FormInset::FormInset(LyXView * lv, Dialogs * d, string const & t)
+	: FormBaseBD(lv, d, t), ih_(0)
 {}
 
 
@@ -35,7 +34,7 @@ void FormInset::connect()
 		 connect(slot(this, &FormInset::updateSlot));
 	h_ = d_->hideBufferDependent.
 		 connect(slot(this, &FormInset::hide));
-	FormBase::connect();
+	FormBaseDeprecated::connect();
 }
 
 
@@ -55,10 +54,8 @@ void FormInset::updateSlot(bool switched)
 }
 
 
-FormCommand::FormCommand(LyXView * lv, Dialogs * d, string const & t,
-			 ButtonPolicy * bp,
-			 char const * close, char const * cancel)
-	: FormInset(lv, d, t, bp, close, cancel),
+FormCommand::FormCommand(LyXView * lv, Dialogs * d, string const & t)
+	: FormInset(lv, d, t),
 	  inset_(0)
 {}
 
@@ -95,6 +92,6 @@ void FormCommand::createInset(string const & arg)
 
 	params.setFromString(arg);
 	if ( !arg.empty() )
-		bc_.valid(); // so that the user can press Ok
+		bc().valid(); // so that the user can press Ok
 	show();
 }

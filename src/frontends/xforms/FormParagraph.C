@@ -31,22 +31,12 @@ using Liason::setMinibuffer;
 #endif
 
 FormParagraph::FormParagraph(LyXView * lv, Dialogs * d)
-	: FormBaseBD(lv, d, _("Paragraph Layout"),
-		     new NoRepeatedApplyReadOnlyPolicy),
-	dialog_(0), general_(0), extra_(0)
+	: FormBaseBD(lv, d, _("Paragraph Layout"))
 {
     // let the popup be shown
     // This is a permanent connection so we won't bother
     // storing a copy because we won't be disconnecting.
     d->showLayoutParagraph.connect(slot(this, &FormParagraph::show));
-}
-
-
-FormParagraph::~FormParagraph()
-{
-    delete general_;
-    delete extra_;
-    delete dialog_;
 }
 
 
@@ -65,7 +55,7 @@ void FormParagraph::redraw()
 
 FL_FORM * FormParagraph::form() const
 {
-    if (dialog_) return dialog_->form;
+    if (dialog_.get()) return dialog_->form;
     return 0;
 }
 
@@ -73,7 +63,7 @@ FL_FORM * FormParagraph::form() const
 void FormParagraph::build()
 {
     // the tabbed folder
-    dialog_ = build_tabbed_paragraph();
+    dialog_.reset(build_tabbed_paragraph());
 
     // Workaround dumb xforms sizing bug
     minw_ = form()->w;
@@ -87,7 +77,7 @@ void FormParagraph::build()
     bc_.refresh();
 
     // the general paragraph data form
-    general_ = build_paragraph_general();
+    general_.reset(build_paragraph_general());
 
     fl_addto_choice(general_->choice_space_above,
 		    _(" None | Defskip | Smallskip "
@@ -118,7 +108,7 @@ void FormParagraph::build()
     bc_.addReadOnly (general_->input_labelwidth);
 
     // the document class form
-    extra_ = build_paragraph_extra();
+    extra_.reset(build_paragraph_extra());
 
     fl_set_input_return(extra_->input_pextra_width, FL_RETURN_CHANGED);
     fl_set_input_return(extra_->input_pextra_widthp, FL_RETURN_CHANGED);
@@ -137,7 +127,7 @@ void FormParagraph::build()
 
 void FormParagraph::apply()
 {
-    if (!lv_->view()->available() || !dialog_)
+    if (!lv_->view()->available() || !dialog_.get())
 	return;
 
     general_apply();
@@ -152,7 +142,7 @@ void FormParagraph::apply()
 
 void FormParagraph::update()
 {
-    if (!dialog_)
+    if (!dialog_.get())
         return;
 
     general_update();
@@ -296,7 +286,7 @@ void FormParagraph::extra_apply()
 
 void FormParagraph::general_update()
 {
-    if (!general_)
+    if (!general_.get())
         return;
 
     Buffer * buf = lv_->view()->buffer();
@@ -468,7 +458,7 @@ void FormParagraph::general_update()
 
 void FormParagraph::extra_update()
 {
-    if (!lv_->view()->available() || !extra_)
+    if (!lv_->view()->available() || !extra_.get())
         return;
 
     LyXParagraph * par = lv_->view()->text->cursor.par();

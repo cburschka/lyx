@@ -45,7 +45,7 @@ shortcut:
 resize: FL_RESIZE_X
 gravity: FL_NoGravity FL_NoGravity
 name: input_key
-callback: C_FormBaseInputCB
+callback: C_FormBaseDeprecatedInputCB
 argument: 0
 
 --------------------
@@ -63,7 +63,7 @@ shortcut:
 resize: FL_RESIZE_NONE
 gravity: FL_SouthWest FL_SouthWest
 name: button_restore
-callback: C_FormBaseRestoreCB
+callback: C_FormBaseDeprecatedRestoreCB
 argument: 0
 
 --------------------
@@ -81,7 +81,7 @@ shortcut: ^M
 resize: FL_RESIZE_NONE
 gravity: FL_SouthEast FL_SouthEast
 name: button_ok
-callback: C_FormBaseOKCB
+callback: C_FormBaseDeprecatedOKCB
 argument: 0
 
 --------------------
@@ -99,7 +99,7 @@ shortcut:
 resize: FL_RESIZE_NONE
 gravity: FL_SouthEast FL_SouthEast
 name: button_apply
-callback: C_FormBaseApplyCB
+callback: C_FormBaseDeprecatedApplyCB
 argument: 0
 
 --------------------
@@ -117,7 +117,7 @@ shortcut:
 resize: FL_RESIZE_NONE
 gravity: FL_SouthEast FL_SouthEast
 name: button_cancel
-callback: C_FormBaseCancelCB
+callback: C_FormBaseDeprecatedCancelCB
 argument: 0
 
 ==============================

@@ -32,13 +32,10 @@ FormVCLog::FormVCLog(LyXView * lv, Dialogs * d)
 	d->showVCLogFile.connect(slot(this, &FormVCLog::show));
 }
 
-FormVCLog::~FormVCLog()
-{
-}
 
 void FormVCLog::update()
 {
-	if (!dialog_ || !lv_->view()->available())
+	if (!dialog_.get() || !lv_->view()->available())
 		return;
  
 	const string logfile = lv_->view()->buffer()->lyxvc.getLogFile();

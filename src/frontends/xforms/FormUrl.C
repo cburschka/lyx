@@ -17,7 +17,6 @@
 #pragma implementation
 #endif
 
-
 #include "Dialogs.h"
 #include "FormUrl.h"
 #include "LyXView.h"
@@ -26,8 +25,7 @@
 #include "lyxfunc.h"
 
 FormUrl::FormUrl(LyXView * lv, Dialogs * d)
-	: FormCommand(lv, d, _("Url"), new NoRepeatedApplyReadOnlyPolicy),
-	  dialog_(0)
+	: FormCommand(lv, d, _("Url"))
 {
 	// let the dialog be shown
 	// These are permanent connections so we won't bother
@@ -37,15 +35,9 @@ FormUrl::FormUrl(LyXView * lv, Dialogs * d)
 }
 
 
-FormUrl::~FormUrl()
-{
-	delete dialog_;
-}
-
-
 FL_FORM * FormUrl::form() const
 {
-	if (dialog_) return dialog_->form;
+	if (dialog_.get()) return dialog_->form;
 	return 0;
 }
 
@@ -59,7 +51,7 @@ void FormUrl::connect()
 
 void FormUrl::build()
 {
-	dialog_ = build_url();
+	dialog_.reset(build_url());
 
 	// Workaround dumb xforms sizing bug
 	minw_ = form()->w;
@@ -69,15 +61,15 @@ void FormUrl::build()
 	fl_set_input_return(dialog_->url,  FL_RETURN_CHANGED);
 
         // Manage the ok, apply, restore and cancel/close buttons
-	bc_.setOK(dialog_->button_ok);
-	bc_.setApply(dialog_->button_apply);
-	bc_.setCancel(dialog_->button_cancel);
-	bc_.setUndoAll(dialog_->button_restore);
-	bc_.refresh();
+	bc().setOK(dialog_->button_ok);
+	bc().setApply(dialog_->button_apply);
+	bc().setCancel(dialog_->button_cancel);
+	bc().setUndoAll(dialog_->button_restore);
+	bc().refresh();
 
-	bc_.addReadOnly(dialog_->name);
-	bc_.addReadOnly(dialog_->url);
-	bc_.addReadOnly(dialog_->radio_html);
+	bc().addReadOnly(dialog_->name);
+	bc().addReadOnly(dialog_->url);
+	bc().addReadOnly(dialog_->radio_html);
 }
 
 
@@ -91,7 +83,7 @@ void FormUrl::update()
 	else
 		fl_set_button(dialog_->radio_html, 1);
 
-	bc_.readOnly(lv_->buffer()->isReadonly());
+	bc().readOnly(lv_->buffer()->isReadonly());
 }
 
 

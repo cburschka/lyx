@@ -33,7 +33,7 @@ FD_form_url * FormUrl::build_url()
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_gravity(obj, FL_NorthWest, FL_NorthEast);
     fl_set_object_resize(obj, FL_RESIZE_X);
-    fl_set_object_callback(obj, C_FormBaseInputCB, 0);
+    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
   {
     char const * const dummy = N_("Name|#N");
     fdui->name = obj = fl_add_input(FL_NORMAL_INPUT, 70, 90, 440, 30, idex(_(dummy)));
@@ -42,7 +42,7 @@ FD_form_url * FormUrl::build_url()
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_gravity(obj, FL_NorthWest, FL_NorthEast);
     fl_set_object_resize(obj, FL_RESIZE_X);
-    fl_set_object_callback(obj, C_FormBaseInputCB, 0);
+    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
   {
     char const * const dummy = N_("HTML type|#H");
     fdui->radio_html = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 480, 10, 30, 30, idex(_(dummy)));
@@ -52,7 +52,7 @@ FD_form_url * FormUrl::build_url()
     fl_set_object_lalign(obj, FL_ALIGN_LEFT);
     fl_set_object_gravity(obj, FL_NorthWest, FL_NorthEast);
     fl_set_object_resize(obj, FL_RESIZE_X);
-    fl_set_object_callback(obj, C_FormBaseInputCB, 0);
+    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
   {
     char const * const dummy = N_("Cancel|^[");
     fdui->button_cancel = obj = fl_add_button(FL_NORMAL_BUTTON, 410, 130, 100, 30, idex(_(dummy)));
@@ -60,10 +60,10 @@ FD_form_url * FormUrl::build_url()
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_gravity(obj, FL_SouthEast, FL_SouthEast);
-    fl_set_object_callback(obj, C_FormBaseCancelCB, 0);
+    fl_set_object_callback(obj, C_FormBaseDeprecatedCancelCB, 0);
   fdui->button_ok = obj = fl_add_button(FL_RETURN_BUTTON, 190, 130, 100, 30, _("OK"));
     fl_set_object_gravity(obj, FL_SouthEast, FL_SouthEast);
-    fl_set_object_callback(obj, C_FormBaseOKCB, 0);
+    fl_set_object_callback(obj, C_FormBaseDeprecatedOKCB, 0);
   {
     char const * const dummy = N_("Apply|#A");
     fdui->button_apply = obj = fl_add_button(FL_NORMAL_BUTTON, 300, 130, 100, 30, idex(_(dummy)));
@@ -71,7 +71,7 @@ FD_form_url * FormUrl::build_url()
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_gravity(obj, FL_SouthEast, FL_SouthEast);
-    fl_set_object_callback(obj, C_FormBaseApplyCB, 0);
+    fl_set_object_callback(obj, C_FormBaseDeprecatedApplyCB, 0);
   {
     char const * const dummy = N_("Restore|#R");
     fdui->button_restore = obj = fl_add_button(FL_NORMAL_BUTTON, 10, 130, 100, 30, idex(_(dummy)));
@@ -79,7 +79,7 @@ FD_form_url * FormUrl::build_url()
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_gravity(obj, FL_SouthEast, FL_SouthEast);
-    fl_set_object_callback(obj, C_FormBaseRestoreCB, 0);
+    fl_set_object_callback(obj, C_FormBaseDeprecatedRestoreCB, 0);
   fl_end_form();
 
   fdui->form->fdui = fdui;

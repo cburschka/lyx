@@ -10,12 +10,14 @@
 #ifndef FORM_CHARACTER_H
 #define FORM_CHARACTER_H
 
-#include "FormBase.h"
+#include <boost/smart_ptr.hpp>
+
+#include "FormBaseDeprecated.h"
+#include "xformsBC.h"
 
 #ifdef __GNUG_
 #pragma interface
 #endif
-
 
 class LyXView;
 class Dialogs;
@@ -29,31 +31,42 @@ struct FD_form_character;
  */
 class FormCharacter : public FormBaseBD {
 public:
-   ///
-   FormCharacter(LyXView *, Dialogs *);
-   ///
-   ~FormCharacter();
-
+	///
+	FormCharacter(LyXView *, Dialogs *);
 private:
 	
-   /// Build the popup
-   virtual void build();
-   
-   /// Apply from popup
-   virtual void apply();
-   
-   /// Update the popup.
-   virtual void update();
-   
-   /// Pointer to the actual instantiation of the xforms form
-   virtual FL_FORM * form() const;
+	/// Pointer to the actual instantiation of the ButtonController.
+	virtual xformsBC & bc();
 
-   FD_form_character * build_character();
-	
-   /// Real GUI implementation.
-   FD_form_character * dialog_;
+	/// Build the popup
+	virtual void build();
    
-   Combox * combo_language2_;
+	/// Apply from popup
+	virtual void apply();
+   
+	/// Update the popup.
+	virtual void update();
+   
+	/// Pointer to the actual instantiation of the xform's form
+	virtual FL_FORM * form() const;
+
+	///
+	FD_form_character * build_character();
+	
+	/// Real GUI implementation.
+	boost::scoped_ptr<FD_form_character> dialog_;
+
+	///
+	boost::scoped_ptr<Combox> combo_language2_;
+
+	/// The ButtonController
+	ButtonController<NoRepeatedApplyReadOnlyPolicy, xformsBC> bc_;
 };
 
+
+inline
+xformsBC & FormCharacter::bc()
+{
+	return bc_;
+}
 #endif

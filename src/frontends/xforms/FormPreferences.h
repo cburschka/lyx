@@ -17,14 +17,17 @@
 #ifndef FORMPREFERENCES_H
 #define FORMPREFERENCES_H
 
+#include <utility> // pair
+#include <boost/smart_ptr.hpp>
+
 #ifdef __GNUG_
 #pragma interface
 #endif
 
-#include <utility> // pair
-#include "FormBase.h"
+#include "FormBaseDeprecated.h"
 #include "Color.h" // NamedColor
-#include "xforms_helpers.h" // XformsColor
+#include "xforms_helpers.h" // XformColor
+#include "xformsBC.h"
 
 class Combox;
 class Dialogs;
@@ -54,12 +57,12 @@ public:
 	/// #FormPreferences x(LyXFunc ..., Dialogs ...);#
 	FormPreferences(LyXView *, Dialogs *);
 	///
-	~FormPreferences();
-	///
 	static int FeedbackCB(FL_OBJECT *, int,
 			      FL_Coord, FL_Coord, int, void *);
 
 private:
+	/// Pointer to the actual instantiation of the ButtonController.
+	virtual xformsBC & bc();
 	/// Connect signals etc. Set form's max size.
 	virtual void connect();
 	/// Disconnect signals. Also perform any necessary housekeeping.
@@ -128,17 +131,17 @@ private:
 	FD_form_spellchecker * build_spellchecker();
 
 	/// Real GUI implementation.
-	FD_form_preferences * dialog_;
+	boost::scoped_ptr<FD_form_preferences> dialog_;
 	/// Converters tabfolder
-	FD_form_outer_tab * converters_tab_;
+	boost::scoped_ptr<FD_form_outer_tab> converters_tab_;
 	/// reLyX and other import/input stuff
-	FD_form_outer_tab * inputs_tab_;
+	boost::scoped_ptr<FD_form_outer_tab> inputs_tab_;
 	/// HCI configuration
-	FD_form_outer_tab * look_n_feel_tab_;
+	boost::scoped_ptr<FD_form_outer_tab> look_n_feel_tab_;
 	/// Outputs tabfolder
-	FD_form_outer_tab * outputs_tab_;
+	boost::scoped_ptr<FD_form_outer_tab> outputs_tab_;
 	/// Spellchecker, language stuff, etc
-	FD_form_outer_tab * lang_opts_tab_;
+	boost::scoped_ptr<FD_form_outer_tab> lang_opts_tab_;
 
 	/** Flag whether a warning has been posted to the text window.
 	    If so, don't redraw the window when the mouse leaves an object. */
@@ -156,11 +159,9 @@ private:
 			GUI_COLOR_CURSOR = FL_FREE_COL3
 		};
 		///
-		Colors( FormPreferences & p ) : parent_(p), dialog_(0) {}
+		Colors( FormPreferences & p );
 		///
-		~Colors();
-		///
-		FD_form_colors const * dialog() { return dialog_; }
+		FD_form_colors const * dialog();
 		///
 		void apply(); // not const as modifies modifiedXformsPrefs.
 		///
@@ -196,7 +197,7 @@ private:
 		///
 		FormPreferences & parent_;
 		///
-		FD_form_colors * dialog_;
+		boost::scoped_ptr<FD_form_colors> dialog_;
 
 		/// A vector of LyX LColor GUI name and associated RGB color.
 		std::vector<NamedColor> lyxColorDB;
@@ -210,11 +211,9 @@ private:
 	class Converters {
 	public:
 		///
-		Converters( FormPreferences & p ) : parent_(p), dialog_(0) {}
+		Converters( FormPreferences & p );
 		///
-		~Converters();
-		///
-		FD_form_converters const * dialog() { return dialog_; }
+		FD_form_converters const * dialog();
 		///
 		void apply() const;
 		///
@@ -247,7 +246,7 @@ private:
 		///
 		FormPreferences & parent_;
 		///
-		FD_form_converters * dialog_;
+		boost::scoped_ptr<FD_form_converters> dialog_;
 	};
 	///
 	friend class Converters;
@@ -256,11 +255,9 @@ private:
 	class Formats {
 	public:
 		///
-		Formats( FormPreferences &  p ) : parent_(p), dialog_(0) {}
+		Formats( FormPreferences &  p );
 		///
-		~Formats();
-		///
-		FD_form_formats const * dialog() { return dialog_; }
+		FD_form_formats const * dialog();
 		///
 		void apply() const;
 		///
@@ -287,7 +284,7 @@ private:
 		///
 		FormPreferences & parent_;
 		///
-		FD_form_formats * dialog_;
+		boost::scoped_ptr<FD_form_formats> dialog_;
 	};
 	///
 	friend class Formats;
@@ -296,11 +293,9 @@ private:
 	class InputsMisc {
 	public:
 		///
-		InputsMisc( FormPreferences &  p ) : parent_(p), dialog_(0) {}
+		InputsMisc( FormPreferences &  p );
 		///
-		~InputsMisc();
-		///
-		FD_form_inputs_misc const * dialog() { return dialog_; }
+		FD_form_inputs_misc const * dialog();
 		///
 		void apply() const;
 		///
@@ -314,7 +309,7 @@ private:
 		///
 		FormPreferences & parent_;
 		///
-		FD_form_inputs_misc * dialog_;
+		boost::scoped_ptr<FD_form_inputs_misc> dialog_;
 	};
 	///
 	friend class InputsMisc;
@@ -323,11 +318,9 @@ private:
 	class Interface {
 	public:
 		///
-		Interface( FormPreferences &  p ) : parent_(p), dialog_(0) {}
+		Interface( FormPreferences &  p );
 		///
-		~Interface();
-		///
-		FD_form_interface const * dialog() { return dialog_; }
+		FD_form_interface const * dialog();
 		///
 		void apply() const;
 		///
@@ -343,7 +336,7 @@ private:
 		///
 		FormPreferences & parent_;
 		///
-		FD_form_interface * dialog_;
+		boost::scoped_ptr<FD_form_interface> dialog_;
 	};
 	///
 	friend class Interface;
@@ -352,12 +345,9 @@ private:
 	class Language {
 	public:
 		///
-		Language( FormPreferences &  p )
-			: parent_(p), dialog_(0), combo_default_lang(0) {}
+		Language( FormPreferences &  p );
 		///
-		~Language();
-		///
-		FD_form_language const * dialog() { return dialog_; }
+		FD_form_language const * dialog();
 		///
 		void apply(); // not const because calls update()
 		///
@@ -375,9 +365,9 @@ private:
 		///
 		FormPreferences & parent_;
 		///
-		FD_form_language * dialog_;
+		boost::scoped_ptr<FD_form_language> dialog_;
 		///
-		Combox * combo_default_lang;
+		boost::scoped_ptr<Combox> combo_default_lang;
 	};
 	///
 	friend class Language;
@@ -386,11 +376,9 @@ private:
 	class LnFmisc {
 	public:
 		///
-		LnFmisc( FormPreferences &  p ) : parent_(p), dialog_(0) {}
+		LnFmisc( FormPreferences &  p );
 		///
-		~LnFmisc();
-		///
-		FD_form_lnf_misc const * dialog() { return dialog_; }
+		FD_form_lnf_misc const * dialog();
 		///
 		void apply() const;
 		///
@@ -404,7 +392,7 @@ private:
 		///
 		FormPreferences & parent_;
 		///
-		FD_form_lnf_misc * dialog_;
+		boost::scoped_ptr<FD_form_lnf_misc> dialog_;
 	};
 	///
 	friend class LnFmisc;
@@ -413,11 +401,9 @@ private:
 	class OutputsMisc {
 	public:
 		///
-		OutputsMisc( FormPreferences &  p ) : parent_(p), dialog_(0) {}
+		OutputsMisc( FormPreferences &  p );
 		///
-		~OutputsMisc();
-		///
-		FD_form_outputs_misc const * dialog() { return dialog_; }
+		FD_form_outputs_misc const * dialog();
 		///
 		void apply() const;
 		///
@@ -431,7 +417,7 @@ private:
 		///
 		FormPreferences & parent_;
 		///
-		FD_form_outputs_misc * dialog_;
+		boost::scoped_ptr<FD_form_outputs_misc> dialog_;
 	};
 	///
 	friend class OutputsMisc;
@@ -440,11 +426,9 @@ private:
 	class Paths {
 	public:
 		///
-		Paths( FormPreferences &  p ) : parent_(p), dialog_(0) {}
+		Paths( FormPreferences &  p );
 		///
-		~Paths();
-		///
-		FD_form_paths const * dialog() { return dialog_; }
+		FD_form_paths const * dialog();
 		///
 		void apply();
 		///
@@ -460,7 +444,7 @@ private:
 		///
 		FormPreferences & parent_;
 		///
-		FD_form_paths * dialog_;
+		boost::scoped_ptr<FD_form_paths> dialog_;
 	};
 	///
 	friend class Paths;
@@ -469,11 +453,9 @@ private:
 	class Printer {
 	public:
 		///
-		Printer( FormPreferences &  p ) : parent_(p), dialog_(0) {}
+		Printer( FormPreferences &  p );
 		///
-		~Printer();
-		///
-		FD_form_printer const * dialog() { return dialog_; }
+		FD_form_printer const * dialog();
 		///
 		void apply() const;
 		///
@@ -487,7 +469,7 @@ private:
 		///
 		FormPreferences & parent_;
 		///
-		FD_form_printer * dialog_;
+		boost::scoped_ptr<FD_form_printer> dialog_;
 	};
 	///
 	friend class Printer;
@@ -496,11 +478,9 @@ private:
 	class ScreenFonts {
 	public:
 		///
-		ScreenFonts( FormPreferences &  p ) : parent_(p), dialog_(0) {}
+		ScreenFonts( FormPreferences &  p );
 		///
-		~ScreenFonts();
-		///
-		FD_form_screen_fonts const * dialog() { return dialog_; }
+		FD_form_screen_fonts const * dialog();
 		///
 		void apply() const;
 		///
@@ -516,7 +496,7 @@ private:
 		///
 		FormPreferences & parent_;
 		///
-		FD_form_screen_fonts * dialog_;
+		boost::scoped_ptr<FD_form_screen_fonts> dialog_;
 	};
 	///
 	friend class ScreenFonts;
@@ -525,11 +505,9 @@ private:
 	class SpellChecker {
 	public:
 		///
-		SpellChecker( FormPreferences &  p ) : parent_(p), dialog_(0) {}
+		SpellChecker( FormPreferences &  p );
 		///
-		~SpellChecker();
-		///
-		FD_form_spellchecker const * dialog() { return dialog_; }
+		FD_form_spellchecker const * dialog();
 		///
 		void apply(); // not const because calls update()!
 		///
@@ -545,7 +523,7 @@ private:
 		///
 		FormPreferences & parent_;
 		///
-		FD_form_spellchecker * dialog_;
+		boost::scoped_ptr<FD_form_spellchecker> dialog_;
 	};
 	///
 	friend class SpellChecker;
@@ -595,7 +573,15 @@ private:
 		///
 		RGBColor col;
 	};
-
+	/// The ButtonController
+	ButtonController<PreferencesPolicy, xformsBC> bc_;
 };
+
+
+inline
+xformsBC & FormPreferences::bc()
+{
+	return bc_;
+}
 
 #endif

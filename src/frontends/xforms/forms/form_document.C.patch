@@ -20,7 +20,7 @@
 -    fl_set_pixmapbutton_file(obj, _("/nfs/sinco/source/lyx/lyx-devel/lib/images/psnfss2.xpm"));
 +  fl_set_border_width(-3);
 +  fdui->bmtable_bullet_panel = obj = fl_add_bmtable(1, 90, 105, 265, 180, "");
-+  fl_set_object_callback(obj, C_FormBaseInputCB, BULLETBMTABLE);
++  fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, BULLETBMTABLE);
 +  fl_set_object_lcol(obj, FL_BLUE);
 +  fl_set_object_boxtype(obj, FL_UP_BOX);
 +  fl_set_bmtable_pixmap_file(obj, 6, 6,

@@ -27,22 +27,15 @@
 using std::endl;
 
 FormBibtex::FormBibtex(LyXView * lv, Dialogs * d)
-	: FormCommand(lv, d, _("BibTeX Database"), new OkCancelReadOnlyPolicy),
-	  dialog_(0)
+	: FormCommand(lv, d, _("BibTeX Database"))
 {
 	d->showBibtex.connect(slot(this, &FormBibtex::showInset));
 }
 
 
-FormBibtex::~FormBibtex()
-{
-	delete dialog_;
-}
-
-
 FL_FORM * FormBibtex::form() const
 {
-	if (dialog_)
+	if (dialog_.get())
 		return dialog_->form;
 	return 0;
 }
@@ -57,7 +50,7 @@ void FormBibtex::connect()
 
 void FormBibtex::build()
 {
-	dialog_ = build_bibtex();
+	dialog_.reset(build_bibtex());
 
 	// Workaround dumb xforms sizing bug
 	minw_ = form()->w;
@@ -67,12 +60,12 @@ void FormBibtex::build()
 	fl_set_input_return(dialog_->style, FL_RETURN_CHANGED);
 
         // Manage the ok, apply, restore and cancel/close buttons
-	bc_.setOK(dialog_->button_ok);
-	bc_.setCancel(dialog_->button_cancel);
-	bc_.refresh();
+	bc().setOK(dialog_->button_ok);
+	bc().setCancel(dialog_->button_cancel);
+	bc().refresh();
 
-	bc_.addReadOnly(dialog_->database);
-	bc_.addReadOnly(dialog_->style);
+	bc().addReadOnly(dialog_->database);
+	bc().addReadOnly(dialog_->style);
 }
 
 
@@ -92,8 +85,8 @@ void FormBibtex::update()
 	fl_set_input(dialog_->style, params.getOptions().c_str());
 	// Surely, this should reset the buttons to their original state?
 	// It doesn't. Instead "Restore" becomes a "Close"
-	//bc_.refresh();
-	bc_.readOnly(lv_->buffer()->isReadonly());
+	//bc().refresh();
+	bc().readOnly(lv_->buffer()->isReadonly());
 }
 
 

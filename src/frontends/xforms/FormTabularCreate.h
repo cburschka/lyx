@@ -15,11 +15,14 @@
 #ifndef FORMTABULARCREATE_H
 #define FORMTABULARCREATE_H
 
-#include "FormBase.h"
+#include <boost/smart_ptr.hpp>
 
 #ifdef __GNUG__
 #pragma interface
 #endif
+
+#include "FormBaseDeprecated.h"
+#include "xformsBC.h"
 
 class LyXView;
 class Dialogs;
@@ -32,10 +35,10 @@ class FormTabularCreate : public FormBaseBD {
 public:
 	/// #FormTabularCreate x(LyXView ..., Dialogs ...);#
 	FormTabularCreate(LyXView *, Dialogs *);
-	///
-	~FormTabularCreate();
 
 private:
+	/// Pointer to the actual instantiation of the ButtonController.
+	virtual xformsBC & bc();
 	/// Connect signals etc.
 	virtual void connect();
 
@@ -52,7 +55,15 @@ private:
 	FD_form_tabular_create * build_tabular_create();
 	
 	/// Real GUI implementation.
-	FD_form_tabular_create * dialog_;
+	boost::scoped_ptr<FD_form_tabular_create> dialog_;
+	/// The ButtonController
+	ButtonController<OkApplyCancelReadOnlyPolicy, xformsBC> bc_;
 };
 
+
+inline
+xformsBC & FormTabularCreate::bc()
+{
+	return bc_;
+}
 #endif

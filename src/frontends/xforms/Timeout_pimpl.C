@@ -7,13 +7,13 @@
  * \author John Levon
  */
 
-#ifdef __GNUG__
-#pragma implementation
-#endif
-
 #include <config.h>
 
 #include FORMS_H_LOCATION
+
+#ifdef __GNUG__
+#pragma implementation
+#endif
 
 #include "Timeout_pimpl.h"
 #include "debug.h"

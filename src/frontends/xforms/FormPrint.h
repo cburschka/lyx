@@ -17,12 +17,15 @@
 #ifndef FORMPRINT_H
 #define FORMPRINT_H
 
-#include "FormBase.h"
-#include "RadioButtonGroup.h"
+#include <boost/smart_ptr.hpp>
 
 #ifdef __GNUG__
 #pragma interface
 #endif
+
+#include "FormBaseDeprecated.h"
+#include "RadioButtonGroup.h"
+#include "xformsBC.h"
 
 class LyXView;
 class Dialogs;
@@ -35,10 +38,10 @@ class FormPrint : public FormBaseBD {
 public:
 	/// #FormPrint x(LyXView ..., Dialogs ...);#
 	FormPrint(LyXView *, Dialogs *);
-	///
-	~FormPrint();
 
 private:
+	/// Pointer to the actual instantiation of the ButtonController.
+	virtual xformsBC & bc();
 	/// Update the dialog.
 	virtual void update();
 	/// Apply from dialog
@@ -56,13 +59,21 @@ private:
 	FD_form_print * build_print();
 	
 	/// Real GUI implementation.
-	FD_form_print * dialog_;
+	boost::scoped_ptr<FD_form_print> dialog_;
 	/// print target
 	RadioButtonGroup target_;
 	/// page order
 	RadioButtonGroup order_;
 	/// which pages
 	RadioButtonGroup which_;
+	/// The ButtonController
+	ButtonController<OkApplyCancelPolicy, xformsBC> bc_;
 };
 
+
+inline
+xformsBC & FormPrint::bc()
+{
+	return bc_;
+}
 #endif

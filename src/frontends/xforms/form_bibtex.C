@@ -31,24 +31,24 @@ FD_form_bibtex * FormBibtex::build_bibtex()
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-    fl_set_object_callback(obj, C_FormBaseInputCB, 0);
+    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
   fdui->button_ok = obj = fl_add_button(FL_RETURN_BUTTON, 20, 90, 90, 30, _("OK"));
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-    fl_set_object_callback(obj, C_FormBaseOKCB, 3);
+    fl_set_object_callback(obj, C_FormBaseDeprecatedOKCB, 3);
   {
     char const * const dummy = N_("Cancel|^[");
     fdui->button_cancel = obj = fl_add_button(FL_NORMAL_BUTTON, 120, 90, 90, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-    fl_set_object_callback(obj, C_FormBaseCancelCB, 2);
+    fl_set_object_callback(obj, C_FormBaseDeprecatedCancelCB, 2);
   {
     char const * const dummy = N_("Style:|#S");
     fdui->style = obj = fl_add_input(FL_NORMAL_INPUT, 80, 50, 130, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-    fl_set_object_callback(obj, C_FormBaseInputCB, 0);
+    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
   fl_end_form();
 
   fdui->form->fdui = fdui;

@@ -1,3 +1,48 @@
+2001-03-14  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* Merging changes from BRANCH_MVC back into HEAD.
+
+2001-03-12  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* Dialogs.C (c-tor): Changes associated with storing a vector of
+	boost::shared_ptrs.
+
+2001-03-08  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* Makefile.am: added ../xforms/FormCredits.lo and
+	../xforms/form_credits.lo
+	
+	* Dialogs.C: added FormCredits and removed ShowCredits.
+	
+2001-03-07  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* FormCitation.[Ch]: cull large chunks of code, making more use of
+	ControlCitation and associated helper funcs. Also use boost::scoped_ptr
+	for dialog_.
+	
+2001-03-05  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* FormCitation.[Ch]: use ButtonController::input() rather than
+	ButtonController::valid() to check state of input. The buttons are
+	now controlled correctly.
+
+2001-03-02  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* kdeBC.[Ch]: Changes associated with the changes to
+	controllers/ButtonController.[Ch]. Ie, the class is now derived from
+	ButtonControllerBase and the ButtonPolicy is accessed through a method
+	bp() rather than the instance bp_.
+
+2001-02-23  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* kdeBC.[Ch]: new files. A ButtonController for KDE.
+
+	* FormCitation.[Ch]:
+	* citationdlg.[Ch]: A KDE-specific implementation of the
+	Citation dialog, controlled by the GUI-I ControlCitation.
+
+	* Dialogs.C: Use the controlled Citation dialog.
+
 2001-03-15  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* FormParagraph.C: changes associated with Lars' creation of a

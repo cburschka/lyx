@@ -11,13 +11,13 @@
 
 #include <config.h>
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "frontends/Timeout.h"
 
 #include <sigc++/signal_system.h>
+
+#ifdef __GNUG__
+#pragma interface
+#endif
 
 /**
  * This class executes the callback when the timeout expires

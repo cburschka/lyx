@@ -10,14 +10,16 @@
  *======================================================*/
 
 #include <config.h>
+
+#include <algorithm> // max
+#include <cmath> // floor
+
 #include FORMS_H_LOCATION
 
 #ifdef __GNUG_
 #pragma implementation
 #endif
 
-#include <algorithm> // max
-#include <cmath> // floor
 #include "Color.h"
 
 using std::max;

@@ -45,7 +45,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_printer
-callback: C_FormBaseInputCB
+callback: C_FormBaseDeprecatedInputCB
 argument: 0
 
 --------------------
@@ -63,7 +63,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_file
-callback: C_FormBaseInputCB
+callback: C_FormBaseDeprecatedInputCB
 argument: 0
 
 --------------------
@@ -99,7 +99,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: radio_printer
-callback: C_FormBaseInputCB
+callback: C_FormBaseDeprecatedInputCB
 argument: 0
 
 --------------------
@@ -117,7 +117,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: radio_file
-callback: C_FormBaseInputCB
+callback: C_FormBaseDeprecatedInputCB
 argument: 0
 
 --------------------
@@ -153,7 +153,7 @@ shortcut: ^M
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: button_ok
-callback: C_FormBaseOKCB
+callback: C_FormBaseDeprecatedOKCB
 argument: 0
 
 --------------------
@@ -171,7 +171,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: button_apply
-callback: C_FormBaseApplyCB
+callback: C_FormBaseDeprecatedApplyCB
 argument: 0
 
 --------------------
@@ -189,7 +189,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: button_cancel
-callback: C_FormBaseCancelCB
+callback: C_FormBaseDeprecatedCancelCB
 argument: 0
 
 --------------------
@@ -225,7 +225,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: radio_all_pages
-callback: C_FormBaseInputCB
+callback: C_FormBaseDeprecatedInputCB
 argument: 0
 
 --------------------
@@ -243,7 +243,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: radio_odd_pages
-callback: C_FormBaseInputCB
+callback: C_FormBaseDeprecatedInputCB
 argument: 0
 
 --------------------
@@ -261,7 +261,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: radio_even_pages
-callback: C_FormBaseInputCB
+callback: C_FormBaseDeprecatedInputCB
 argument: 0
 
 --------------------
@@ -315,7 +315,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: radio_order_normal
-callback: C_FormBaseInputCB
+callback: C_FormBaseDeprecatedInputCB
 argument: 0
 
 --------------------
@@ -333,7 +333,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: radio_order_reverse
-callback: C_FormBaseInputCB
+callback: C_FormBaseDeprecatedInputCB
 argument: 0
 
 --------------------
@@ -369,7 +369,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_from_page
-callback: C_FormBaseInputCB
+callback: C_FormBaseDeprecatedInputCB
 argument: 0
 
 --------------------
@@ -387,7 +387,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_count
-callback: C_FormBaseInputCB
+callback: C_FormBaseDeprecatedInputCB
 argument: 0
 
 --------------------
@@ -405,7 +405,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: radio_collated
-callback: C_FormBaseInputCB
+callback: C_FormBaseDeprecatedInputCB
 argument: 0
 
 --------------------
@@ -423,7 +423,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_to_page
-callback: C_FormBaseInputCB
+callback: C_FormBaseDeprecatedInputCB
 argument: 0
 
 --------------------
@@ -513,7 +513,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: button_browse
-callback: C_FormBaseInputCB
+callback: C_FormBaseDeprecatedInputCB
 argument: 0
 
 ==============================

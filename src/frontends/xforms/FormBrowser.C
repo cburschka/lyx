@@ -24,39 +24,34 @@ using SigC::slot;
 #endif
 
 FormBrowser::FormBrowser(LyXView * lv, Dialogs * d, const string & name)
-	: FormBaseBD(lv, d, name, new OkCancelPolicy),
-	  dialog_(0)
-{
-}
+	: FormBaseBD(lv, d, name)
+{}
 
-FormBrowser::~FormBrowser()
-{
-	delete dialog_;
-}
 
 void FormBrowser::build()
 {
-	dialog_ = build_browser();
+	dialog_.reset(build_browser());
 
 	// Workaround dumb xforms sizing bug
 	minw_ = form()->w;
 	minh_ = form()->h;
 
 	// Manage the close button
-	bc_.setCancel(dialog_->button_close);
-	bc_.refresh();
+	bc().setCancel(dialog_->button_close);
+	bc().refresh();
 }
+
 
 FL_FORM * FormBrowser::form() const
 {
-	if (dialog_)
+	if (dialog_.get())
 		return dialog_->form;
 	return 0;
 }
 
 void FormBrowser::update()
-{
-}
+{}
+
 
 bool FormBrowser::input(FL_OBJECT *, long)
 {

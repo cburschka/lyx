@@ -10,14 +10,14 @@
 #ifndef FORMFILEDIALOG_H
 #define FORMFILEDIALOG_H
 
+#include <vector>
+#include <sigc++/signal_system.h>
+
 #ifdef __GNUG__
 #pragma interface
 #endif
 
 #include <config.h>
-
-#include <vector>
-#include <sigc++/signal_system.h>
 
 #include "LString.h"
 #include FORMS_H_LOCATION

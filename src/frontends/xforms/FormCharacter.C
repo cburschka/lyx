@@ -8,11 +8,11 @@
 
 #include <config.h>
 
+#include FORMS_H_LOCATION
+
 #ifdef __GNUG_
 #pragma implementation
 #endif
-
-#include FORMS_H_LOCATION
 
 #include "FormCharacter.h"
 #include "form_character.h"
@@ -31,9 +31,7 @@ using Liason::setMinibuffer;
 
 
 FormCharacter::FormCharacter(LyXView * lv, Dialogs * d)
-	: FormBaseBD(lv, d, _("Character Layout"),
-		     new NoRepeatedApplyReadOnlyPolicy),
-	dialog_(0), combo_language2_(0)
+	: FormBaseBD(lv, d, _("Character Layout"))
 {
    // let the popup be shown
    // This is a permanent connection so we won't bother
@@ -44,17 +42,9 @@ FormCharacter::FormCharacter(LyXView * lv, Dialogs * d)
 }
 
 
-FormCharacter::~FormCharacter()
-{
-	// This must be done before the deletion of the dialog.
-	delete combo_language2_;
-	delete dialog_;
-}
-
-
 FL_FORM * FormCharacter::form() const
 {
-   if (dialog_) 
+   if (dialog_.get()) 
      return dialog_->form;
    return 0;
 }
@@ -62,15 +52,15 @@ FL_FORM * FormCharacter::form() const
 
 void FormCharacter::build()
 {
-   dialog_ = build_character();
+   dialog_.reset(build_character());
    // Workaround dumb xforms sizing bug
    minw_ = form()->w;
    minh_ = form()->h;
    // Manage the ok, apply and cancel/close buttons
-   bc_.setApply(dialog_->button_apply);
-   bc_.setCancel(dialog_->button_close);
-   bc_.refresh();
-   bc_.addReadOnly (dialog_->check_toggle_all);
+   bc().setApply(dialog_->button_apply);
+   bc().setCancel(dialog_->button_close);
+   bc().refresh();
+   bc().addReadOnly (dialog_->check_toggle_all);
    
    fl_addto_choice(dialog_->choice_family,
 		   _(" No change %l| Roman | Sans Serif | Typewriter %l| Reset "));
@@ -94,7 +84,7 @@ void FormCharacter::build()
    // insert default language box manually
    fl_addto_form(dialog_->form);
    FL_OBJECT * ob = dialog_->choice_language;
-   combo_language2_ = new Combox(FL_COMBOX_DROPLIST);
+   combo_language2_.reset(new Combox(FL_COMBOX_DROPLIST));
    combo_language2_->add(ob->x, ob->y, ob->w, ob->h, 250);
    combo_language2_->shortcut("#L", 1);
    fl_end_form();
@@ -111,7 +101,7 @@ void FormCharacter::build()
 
 void FormCharacter::apply()
 {
-   if (!lv_->view()->available() || !dialog_)
+   if (!lv_->view()->available() || !dialog_.get())
      return;
    
    LyXFont font(LyXFont::ALL_IGNORE);
@@ -213,8 +203,8 @@ void FormCharacter::apply()
 
 void FormCharacter::update()
 {
-    if (!dialog_)
+    if (!dialog_.get())
         return;
    
-    bc_.readOnly(lv_->buffer()->isReadonly());
+    bc().readOnly(lv_->buffer()->isReadonly());
 }

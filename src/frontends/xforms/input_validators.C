@@ -4,7 +4,7 @@
  * be extended to include other generally useful xforms-specific tools.
  */
 
-#include "config.h"
+#include <config.h>
 #include FORMS_H_LOCATION
 #include "support/lstrings.h"
 #include "input_validators.h"

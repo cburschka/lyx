@@ -63,7 +63,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: button_browse
-callback: C_FormBaseInputCB
+callback: C_FormBaseDeprecatedInputCB
 argument: 0
 
 --------------------
@@ -99,7 +99,7 @@ shortcut: ^M
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: button_ok
-callback: C_FormBaseOKCB
+callback: C_FormBaseDeprecatedOKCB
 argument: 1
 
 --------------------
@@ -117,7 +117,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: button_cancel
-callback: C_FormBaseCancelCB
+callback: C_FormBaseDeprecatedCancelCB
 argument: 2
 
 --------------------
@@ -135,7 +135,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: button_load
-callback: C_FormBaseInputCB
+callback: C_FormBaseDeprecatedInputCB
 argument: 5
 
 --------------------
@@ -207,7 +207,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: check_verbatim
-callback: C_FormBaseInputCB
+callback: C_FormBaseDeprecatedInputCB
 argument: 10
 
 --------------------
@@ -225,7 +225,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: check_useinput
-callback: C_FormBaseInputCB
+callback: C_FormBaseDeprecatedInputCB
 argument: 11
 
 --------------------
@@ -243,7 +243,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: check_useinclude
-callback: C_FormBaseInputCB
+callback: C_FormBaseDeprecatedInputCB
 argument: 11
 
 --------------------

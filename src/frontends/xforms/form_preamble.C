@@ -32,7 +32,7 @@ FD_form_preamble * FormPreamble::build_preamble()
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_gravity(obj, FL_SouthEast, FL_SouthEast);
-    fl_set_object_callback(obj, C_FormBaseOKCB, 0);
+    fl_set_object_callback(obj, C_FormBaseDeprecatedOKCB, 0);
   {
     char const * const dummy = N_("Apply|#A");
     fdui->button_apply = obj = fl_add_button(FL_NORMAL_BUTTON, 160, 380, 100, 30, idex(_(dummy)));
@@ -40,7 +40,7 @@ FD_form_preamble * FormPreamble::build_preamble()
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_gravity(obj, FL_SouthEast, FL_SouthEast);
-    fl_set_object_callback(obj, C_FormBaseApplyCB, 0);
+    fl_set_object_callback(obj, C_FormBaseDeprecatedApplyCB, 0);
   {
     char const * const dummy = N_("Cancel|^[");
     fdui->button_cancel = obj = fl_add_button(FL_NORMAL_BUTTON, 270, 380, 100, 30, idex(_(dummy)));
@@ -48,11 +48,11 @@ FD_form_preamble * FormPreamble::build_preamble()
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_gravity(obj, FL_SouthEast, FL_SouthEast);
-    fl_set_object_callback(obj, C_FormBaseCancelCB, 0);
+    fl_set_object_callback(obj, C_FormBaseDeprecatedCancelCB, 0);
   fdui->input_preamble = obj = fl_add_input(FL_MULTILINE_INPUT, 10, 10, 360, 360, "");
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_gravity(obj, FL_NorthWest, FL_SouthEast);
-    fl_set_object_callback(obj, C_FormBaseInputCB, 0);
+    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
   fl_end_form();
 
   fdui->form->fdui = fdui;

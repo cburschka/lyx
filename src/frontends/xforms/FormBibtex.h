@@ -1,3 +1,4 @@
+// -*- C++ -*-
 /**
  * \file FormBibtex.h
  * Copyright 2001 the LyX Team
@@ -10,11 +11,15 @@
 #ifndef FORMBIBTEX_H
 #define FORMBIBTEX_H
 
+#include <boost/smart_ptr.hpp>
+
+#include "FormInset.h"
+#include "xformsBC.h"
+
 #ifdef __GNUG__
 #pragma interface
 #endif
 
-#include "FormInset.h"
 struct FD_form_bibtex;
 
 /**
@@ -24,9 +29,9 @@ class FormBibtex : public FormCommand {
 public:
 	///
 	FormBibtex(LyXView *, Dialogs *);
-	///
-	~FormBibtex();
 private:
+	/// Pointer to the actual instantiation of the ButtonController.
+	virtual xformsBC & bc();
 	/// Connect signals etc. Set form's max size.
 	virtual void connect();
 	/// Build the dialog
@@ -42,7 +47,15 @@ private:
 	///
 	FD_form_bibtex * build_bibtex();
 	/// Real GUI implementation.
-	FD_form_bibtex * dialog_;
+	boost::scoped_ptr<FD_form_bibtex> dialog_;
+	/// The ButtonController
+	ButtonController<OkCancelReadOnlyPolicy, xformsBC> bc_;
 };
 
+
+inline
+xformsBC & FormBibtex::bc()
+{
+  return bc_;
+}
 #endif // FORMBIBTEX_H

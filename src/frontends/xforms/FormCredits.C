@@ -22,7 +22,7 @@
 #include "support/filetools.h"
 
 FormCredits::FormCredits( LyXView * lv, Dialogs * d )
-  : FormBaseBI(lv, d, _("Credits"), new OkCancelPolicy), dialog_(0)
+  : FormBaseBI(lv, d, _("Credits"))
 {
    // let the dialog be shown
    // This is a permanent connection so we won't bother
@@ -31,16 +31,10 @@ FormCredits::FormCredits( LyXView * lv, Dialogs * d )
 }
 
 
-FormCredits::~FormCredits()
-{
-   delete dialog_;
-}
-
-
 FL_FORM * FormCredits::form() const
 {
-   if (dialog_ ) 
-     return dialog_->form;
+   if (dialog_.get()) 
+	   return dialog_->form;
    return 0;
 }
 
@@ -49,7 +43,7 @@ extern string system_lyxdir;
 
 void FormCredits::build()
 {
-   dialog_ = build_credits();
+   dialog_.reset(build_credits());
 
    // Workaround dumb xforms sizing bug
    minw_ = form()->w;

@@ -8,6 +8,10 @@
 
 #include <config.h>
 
+#ifdef __GNUG__
+#pragma implementation
+#endif
+
 #include "FormSearch.h"
 #include "form_search.h"
 #include "gettext.h"
@@ -25,8 +29,7 @@ using Liason::setMinibuffer;
 
 
 FormSearch::FormSearch(LyXView * lv, Dialogs * d)
-	: FormBaseBD(lv, d, _("LyX: Find and Replace"), new NoRepeatedApplyReadOnlyPolicy),
-	dialog_(0)
+	: FormBaseBD(lv, d, _("LyX: Find and Replace"))
 {
     // let the popup be shown
     // This is a permanent connection so we won't bother
@@ -38,22 +41,16 @@ FormSearch::FormSearch(LyXView * lv, Dialogs * d)
 }
 
 
-FormSearch::~FormSearch()
-{
-   delete dialog_;
-}
-
-
 FL_FORM * FormSearch::form() const
 {
-    if (dialog_) 
-     return dialog_->form;
+    if (dialog_.get()) 
+	    return dialog_->form;
     return 0;
 }
 
 void FormSearch::build()
 {
-   dialog_ = build_search();
+   dialog_.reset(build_search());
    // Workaround dumb xforms sizing bug
    minw_ = form()->w;
    minh_ = form()->h;
@@ -68,7 +65,7 @@ void FormSearch::build()
 
 void FormSearch::update()
 {
-   if (!dialog_)
+   if (!dialog_.get())
      return;
 
    bc_.readOnly(lv_->buffer()->isReadonly());

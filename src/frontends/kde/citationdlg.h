@@ -14,6 +14,7 @@
 
 // to connect apply() and hide()
 #include "FormCitation.h"
+#include "kdeBC.h"
 
 #include <qdialog.h> 
 #include <qlistbox.h>
@@ -68,34 +69,31 @@ private:
 
 private slots:
 	void apply_adaptor(void) {
-		form_->apply();
-		form_->close();
-		hide();
+		form_->OKButton();
 	}
 
 	void close_adaptor(void) {
-		form_->close();
-		hide();
+		form_->CancelButton();
 	}
 
 	void add_adaptor(void) {
-		form_->add();
+		form_->bc().valid(form_->add());
 	}
 
 	void up_adaptor(void) {
-		form_->up();
+		form_->bc().valid(form_->up());
 	}
 
 	void down_adaptor(void) {
-		form_->down();
+		form_->bc().valid(form_->down());
 	}
 
 	void remove_adaptor(void) {
-		form_->remove();
+		form_->bc().valid(form_->remove());
 	}
 
 	void select_key_adaptor(const char * key) {
-		form_->select_key(key);
+		form_->bc().valid(form_->select_key(key));
 	}
 
 	void highlight_key_adaptor(const char * key) {

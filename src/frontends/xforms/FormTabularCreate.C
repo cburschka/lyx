@@ -28,9 +28,7 @@
 #include "support/lstrings.h"
 
 FormTabularCreate::FormTabularCreate(LyXView * lv, Dialogs * d)
-	: FormBaseBD(lv, d, _("Insert Tabular"),
-		     new OkApplyCancelReadOnlyPolicy),
-	  dialog_(0)
+	: FormBaseBD(lv, d, _("Insert Tabular"))
 {
 	// let the dialog be shown
 	// This is a permanent connection so we won't bother
@@ -39,29 +37,24 @@ FormTabularCreate::FormTabularCreate(LyXView * lv, Dialogs * d)
 }
 
 
-FormTabularCreate::~FormTabularCreate()
-{
-	delete dialog_;
-}
-
-
 FL_FORM * FormTabularCreate::form() const
 {
-	if (dialog_) return dialog_->form;
+	if (dialog_.get())
+		return dialog_->form;
 	return 0;
 }
 
 
 void FormTabularCreate::connect()
 {
-	bc_.valid(true);
+	bc().valid(true);
 	FormBaseBD::connect();
 }
 
 
 void FormTabularCreate::build()
 {
-	dialog_ = build_tabular_create();
+	dialog_.reset(build_tabular_create());
 
 	// Workaround dumb xforms sizing bug
 	minw_ = form()->w;
@@ -75,10 +68,10 @@ void FormTabularCreate::build()
 	fl_set_slider_precision(dialog_->slider_columns, 0);
 
         // Manage the ok, apply and cancel/close buttons
-	bc_.setOK(dialog_->button_ok);
-	bc_.setApply(dialog_->button_apply);
-	bc_.setCancel(dialog_->button_cancel);
-	bc_.refresh();
+	bc().setOK(dialog_->button_ok);
+	bc().setApply(dialog_->button_apply);
+	bc().setCancel(dialog_->button_cancel);
+	bc().refresh();
 }
 
 
@@ -94,5 +87,5 @@ void FormTabularCreate::apply()
 
 void FormTabularCreate::update()
 {
-	bc_.readOnly(lv_->buffer()->isReadonly());
+	bc().readOnly(lv_->buffer()->isReadonly());
 }

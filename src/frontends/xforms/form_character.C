@@ -38,7 +38,7 @@ FD_form_character * FormCharacter::build_character()
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_gravity(obj, FL_NorthWest, FL_NorthEast);
     fl_set_object_resize(obj, FL_RESIZE_X);
-    fl_set_object_callback(obj, C_FormBaseInputCB, 0);
+    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
   {
     char const * const dummy = N_("Series:|#S");
     fdui->choice_series = obj = fl_add_choice(FL_NORMAL_CHOICE, 94, 55, 191, 30, idex(_(dummy)));
@@ -48,7 +48,7 @@ FD_form_character * FormCharacter::build_character()
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_gravity(obj, FL_NorthWest, FL_NorthEast);
     fl_set_object_resize(obj, FL_RESIZE_X);
-    fl_set_object_callback(obj, C_FormBaseInputCB, 0);
+    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
   {
     char const * const dummy = N_("Shape:|#H");
     fdui->choice_shape = obj = fl_add_choice(FL_NORMAL_CHOICE, 94, 95, 191, 30, idex(_(dummy)));
@@ -58,7 +58,7 @@ FD_form_character * FormCharacter::build_character()
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_gravity(obj, FL_NorthWest, FL_NorthEast);
     fl_set_object_resize(obj, FL_RESIZE_X);
-    fl_set_object_callback(obj, C_FormBaseInputCB, 0);
+    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
   {
     char const * const dummy = N_("Size:|#Z");
     fdui->choice_size = obj = fl_add_choice(FL_NORMAL_CHOICE, 95, 275, 191, 30, idex(_(dummy)));
@@ -68,7 +68,7 @@ FD_form_character * FormCharacter::build_character()
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_gravity(obj, FL_NorthWest, FL_NorthEast);
     fl_set_object_resize(obj, FL_RESIZE_X);
-    fl_set_object_callback(obj, C_FormBaseInputCB, 0);
+    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
   {
     char const * const dummy = N_("Misc:|#M");
     fdui->choice_bar = obj = fl_add_choice(FL_NORMAL_CHOICE, 95, 335, 190, 30, idex(_(dummy)));
@@ -78,7 +78,7 @@ FD_form_character * FormCharacter::build_character()
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_gravity(obj, FL_NorthWest, FL_NorthEast);
     fl_set_object_resize(obj, FL_RESIZE_X);
-    fl_set_object_callback(obj, C_FormBaseInputCB, 0);
+    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
   {
     char const * const dummy = N_("Apply|#A");
     fdui->button_apply = obj = fl_add_button(FL_NORMAL_BUTTON, 60, 375, 80, 30, idex(_(dummy)));
@@ -86,7 +86,7 @@ FD_form_character * FormCharacter::build_character()
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_gravity(obj, FL_SouthEast, FL_SouthEast);
-    fl_set_object_callback(obj, C_FormBaseApplyCB, 0);
+    fl_set_object_callback(obj, C_FormBaseDeprecatedApplyCB, 0);
   {
     char const * const dummy = N_("Cancel|#N");
     fdui->button_close = obj = fl_add_button(FL_RETURN_BUTTON, 175, 375, 80, 30, idex(_(dummy)));
@@ -94,7 +94,7 @@ FD_form_character * FormCharacter::build_character()
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_gravity(obj, FL_SouthEast, FL_SouthEast);
-    fl_set_object_callback(obj, C_FormBaseCancelCB, 0);
+    fl_set_object_callback(obj, C_FormBaseDeprecatedCancelCB, 0);
   {
     char const * const dummy = N_("Color:|#C");
     fdui->choice_color = obj = fl_add_choice(FL_NORMAL_CHOICE, 95, 135, 191, 30, idex(_(dummy)));
@@ -104,7 +104,7 @@ FD_form_character * FormCharacter::build_character()
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_gravity(obj, FL_NorthWest, FL_NorthEast);
     fl_set_object_resize(obj, FL_RESIZE_X);
-    fl_set_object_callback(obj, C_FormBaseInputCB, 0);
+    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
   {
     char const * const dummy = N_("Toggle on all these|#T");
     fdui->check_toggle_all = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 30, 215, 255, 25, idex(_(dummy)));
@@ -112,13 +112,13 @@ FD_form_character * FormCharacter::build_character()
   }
     fl_set_object_gravity(obj, FL_NorthWest, FL_NorthEast);
     fl_set_object_resize(obj, FL_RESIZE_X);
-    fl_set_object_callback(obj, C_FormBaseInputCB, 0);
+    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
   fdui->choice_language = obj = fl_add_choice(FL_DROPLIST_CHOICE, 95, 175, 190, 30, _("Language:"));
     fl_set_object_boxtype(obj, FL_FRAME_BOX);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_gravity(obj, FL_NorthWest, FL_NorthEast);
     fl_set_object_resize(obj, FL_RESIZE_X);
-    fl_set_object_callback(obj, C_FormBaseInputCB, 0);
+    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
   obj = fl_add_labelframe(FL_ENGRAVED_FRAME, 10, 265, 280, 45, _("These are never toggled"));
     fl_set_object_lstyle(obj, FL_BOLD_STYLE);
     fl_set_object_gravity(obj, FL_NorthWest, FL_NorthEast);

@@ -16,14 +16,17 @@
 #ifndef FORMGRAPHICS_H
 #define FORMGRAPHICS_H
 
-#include "LString.h"
-#include "RadioButtonGroup.h"
-#include "ButtonPolicies.h"
-#include "FormInset.h"
+#include <boost/smart_ptr.hpp>
 
 #ifdef __GNUG__
 #pragma interface
 #endif 
+
+#include "LString.h"
+#include "RadioButtonGroup.h"
+#include "ButtonPolicies.h"
+#include "FormInset.h"
+#include "xformsBC.h"
 
 // Forward declarations for classes we use only as pointers.
 class InsetGraphics;
@@ -72,6 +75,8 @@ private:
 		ADVANCEDINPUT
 	};
 
+	/// Pointer to the actual instantiation of the ButtonController.
+	virtual xformsBC & bc();
 	/// Build the dialog
 	virtual void build();
 	/// Filter the inputs
@@ -97,7 +102,7 @@ private:
 	FD_form_graphics * build_graphics();
 
 	/// Real GUI implementation.
-	FD_form_graphics * dialog_;
+	boost::scoped_ptr<FD_form_graphics> dialog_;
 	/** Which Inset do we belong to?
 	   Used to set and update data to/from the inset.
 	*/
@@ -110,6 +115,14 @@ private:
 	RadioButtonGroup displayButtons;
 	/// Last used figure path
 	string last_image_path;
+	/// The ButtonController
+	ButtonController<NoRepeatedApplyReadOnlyPolicy, xformsBC> bc_;
 };
 
+
+inline
+xformsBC & FormGraphics::bc()
+{
+	return bc_;
+}
 #endif 

@@ -32,7 +32,7 @@ FD_form_include * FormInclude::build_include()
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-    fl_set_object_callback(obj, C_FormBaseInputCB, 0);
+    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
   {
     char const * const dummy = N_("Don't typeset|#D");
     fdui->check_typeset = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 180, 70, 150, 30, idex(_(dummy)));
@@ -41,21 +41,21 @@ FD_form_include * FormInclude::build_include()
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
   fdui->button_ok = obj = fl_add_button(FL_RETURN_BUTTON, 120, 170, 100, 30, _("OK"));
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-    fl_set_object_callback(obj, C_FormBaseOKCB, 1);
+    fl_set_object_callback(obj, C_FormBaseDeprecatedOKCB, 1);
   {
     char const * const dummy = N_("Cancel|^[");
     fdui->button_cancel = obj = fl_add_button(FL_NORMAL_BUTTON, 230, 170, 100, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-    fl_set_object_callback(obj, C_FormBaseCancelCB, 2);
+    fl_set_object_callback(obj, C_FormBaseDeprecatedCancelCB, 2);
   {
     char const * const dummy = N_("Load|#L");
     fdui->button_load = obj = fl_add_button(FL_NORMAL_BUTTON, 230, 130, 100, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-    fl_set_object_callback(obj, C_FormBaseInputCB, 5);
+    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 5);
   {
     char const * const dummy = N_("File name:|#F");
     fdui->input_filename = obj = fl_add_input(FL_NORMAL_INPUT, 10, 30, 210, 30, idex(_(dummy)));
@@ -77,21 +77,21 @@ FD_form_include * FormInclude::build_include()
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-    fl_set_object_callback(obj, C_FormBaseInputCB, 10);
+    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 10);
   {
     char const * const dummy = N_("Use input|#i");
     fdui->check_useinput = obj = fl_add_checkbutton(FL_RADIO_BUTTON, 10, 100, 160, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-    fl_set_object_callback(obj, C_FormBaseInputCB, 11);
+    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 11);
   {
     char const * const dummy = N_("Use include|#U");
     fdui->check_useinclude = obj = fl_add_checkbutton(FL_RADIO_BUTTON, 10, 70, 160, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-    fl_set_object_callback(obj, C_FormBaseInputCB, 11);
+    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 11);
   fl_end_group();
 
   fl_end_form();

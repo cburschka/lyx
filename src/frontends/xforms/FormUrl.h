@@ -12,11 +12,15 @@
 #ifndef FORMURL_H
 #define FORMURL_H
 
+#include <boost/smart_ptr.hpp>
+
 #ifdef __GNUG__
 #pragma interface
 #endif
 
 #include "FormInset.h"
+#include "xformsBC.h"
+
 struct FD_form_url;
 
 /** This class provides an XForms implementation of the FormUrl Dialog.
@@ -25,9 +29,9 @@ class FormUrl : public FormCommand {
 public:
 	///
 	FormUrl(LyXView *, Dialogs *);
-	///
-	~FormUrl();
 private:
+	/// Pointer to the actual instantiation of the ButtonController.
+	virtual xformsBC & bc();
 	/// Connect signals etc. Set form's max size.
 	virtual void connect();
 	/// Build the dialog
@@ -41,7 +45,15 @@ private:
 	///
 	FD_form_url * build_url();
 	/// Real GUI implementation.
-	FD_form_url * dialog_;
+	boost::scoped_ptr<FD_form_url> dialog_;
+	/// The ButtonController
+	ButtonController<NoRepeatedApplyReadOnlyPolicy, xformsBC> bc_;
 };
 
+
+inline
+xformsBC & FormUrl::bc()
+{
+	return bc_;
+}
 #endif

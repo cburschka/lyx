@@ -14,17 +14,18 @@
 #ifndef TOOLBAR_PIMPL_H
 #define TOOLBAR_PIMPL_H
 
+#include <vector>
+#include FORMS_H_LOCATION
+
 #include "frontends/Toolbar.h"
+
+#include "commandtags.h"
+#include "combox.h"
+#include "ToolbarDefaults.h"
 
 #ifdef __GNUG__
 #pragma interface
 #endif
-
-#include <vector>
-#include FORMS_H_LOCATION
-#include "commandtags.h"
-#include "combox.h"
-#include "ToolbarDefaults.h"
 
 /** The LyX xforms toolbar class
   */

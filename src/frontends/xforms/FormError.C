@@ -23,8 +23,8 @@
 
 
 FormError::FormError(LyXView * lv, Dialogs * d)
-	: FormInset( lv, d, _("LaTeX Error"), new OkCancelPolicy),
-	  dialog_(0), inset_(0)
+	: FormInset( lv, d, _("LaTeX Error")),
+	  inset_(0)
 {
 	Assert(lv && d);
 	// let the dialog be shown
@@ -34,15 +34,9 @@ FormError::FormError(LyXView * lv, Dialogs * d)
 }
 
 
-FormError::~FormError()
-{
-	delete dialog_;
-}
-
-
 FL_FORM * FormError::form() const
 {
-	if (dialog_) return dialog_->form;
+	if (dialog_.get()) return dialog_->form;
 	return 0;
 }
 
@@ -78,13 +72,13 @@ void FormError::update()
 
 void FormError::build()
 {
-	dialog_ = build_error();
+	dialog_.reset(build_error());
 
 	// Workaround dumb xforms sizing bug
 	minw_ = form()->w;
 	minh_ = form()->h;
 	
         // Manage the cancel/close button
-	bc_.setCancel(dialog_->button_cancel);
-	bc_.refresh();
+	bc().setCancel(dialog_->button_cancel);
+	bc().refresh();
 }

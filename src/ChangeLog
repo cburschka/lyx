@@ -1,5 +1,11 @@
 2001-03-14  Angus Leeming  <a.leeming@ic.ac.uk>
 
+	* Merging changes from BRANCH_MVC back into HEAD.
+
+	* Makefile.am: added controllers/libcontrollers.la to lyx_DEPENDENCIES
+
+2001-03-14  Angus Leeming  <a.leeming@ic.ac.uk>
+
 	* lyxfunc.C (Dispatch): removed redundant break statement.
 	
 2001-03-14  Juergen Vigna  <jug@sad.it>

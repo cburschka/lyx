@@ -7,13 +7,14 @@
 *
 *======================================================*/
 
+#include <config.h>
+
+#include <algorithm>
+
 #ifdef __GNUG__
 #pragma implementation
 #endif
 
-#include <config.h>
-
-#include <algorithm>
 #include "support/lstrings.h"
 #include "support/LAssert.h"
 #include "debug.h"

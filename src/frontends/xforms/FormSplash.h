@@ -10,9 +10,14 @@
 #ifndef FORMSPLASH_H
 #define FORMSPLASH_H
 
+#include <boost/smart_ptr.hpp>
+
 #ifdef __GNUG__
 #pragma interface
 #endif
+
+#include "FormBaseDeprecated.h"
+#include "xformsBC.h"
 
 #include "DialogBase.h"
  
@@ -24,9 +29,8 @@ class LyXView;
  */
 class FormSplash : public DialogBase {
 public:
+	///
 	FormSplash(LyXView *, Dialogs *);
-
-	~FormSplash();
 
 	/// hide (and destroy) the dialog
 	void hide();
@@ -40,7 +44,7 @@ private:
 	FD_form_splash * build_splash();
 
 	/// Real GUI implementation.
-	FD_form_splash * dialog_;
+	boost::scoped_ptr<FD_form_splash> dialog_;
 	/// our container
 	Dialogs * d_; 
 	/// the show connection

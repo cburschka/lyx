@@ -32,22 +32,16 @@ using std::make_pair;
 using std::pair;
 
 FormInclude::FormInclude(LyXView * lv, Dialogs * d)
-	: FormBaseBD(lv, d, _("Include file"), new OkCancelPolicy),
-	  dialog_(0), ih_(0), inset_(0)
+	: FormBaseBD(lv, d, _("Include file")),
+	  ih_(0), inset_(0)
 {
 	d->showInclude.connect(slot(this, &FormInclude::showInclude));
 }
 
 
-FormInclude::~FormInclude()
-{
-	delete dialog_;
-}
-
-
 FL_FORM * FormInclude::form() const
 {
-	if (dialog_)
+	if (dialog_.get()) 
 		return dialog_->form;
 	return 0;
 }
@@ -59,7 +53,7 @@ void FormInclude::connect()
 		 connect(slot(this, &FormInclude::updateSlot));
 	h_ = d_->hideBufferDependent.
 		 connect(slot(this, &FormInclude::hide));
-	FormBase::connect();
+	FormBaseDeprecated::connect();
 }
 
 
@@ -82,7 +76,7 @@ void FormInclude::updateSlot(bool switched)
 
 void FormInclude::build()
 {
-	dialog_ = build_include();
+	dialog_.reset(build_include());
 
 	// Workaround dumb xforms sizing bug
 	minw_ = form()->w;
@@ -116,7 +110,7 @@ void FormInclude::showInclude(InsetInclude * inset)
 
 void FormInclude::update()
 {
-	bc_.readOnly(lv_->buffer()->isReadonly());
+	bc().readOnly(lv_->buffer()->isReadonly());
 
 	if (!inset_) {
 		fl_set_input(dialog_->input_filename, "");

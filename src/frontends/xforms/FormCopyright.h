@@ -17,11 +17,14 @@
 #ifndef FORMCOPYRIGHT_H
 #define FORMCOPYRIGHT_H
 
-#include "FormBase.h"
+#include <boost/smart_ptr.hpp>
 
 #ifdef __GNUG__
 #pragma interface
 #endif
+
+#include "FormBaseDeprecated.h"
+#include "xformsBC.h"
 
 struct FD_form_copyright;
 
@@ -31,10 +34,9 @@ class FormCopyright : public FormBaseBI {
 public:
 	/// #FormCopyright x(LyXFunc ..., Dialogs ...);#
 	FormCopyright(LyXView *, Dialogs *);
-	///
-	~FormCopyright();
-
 private:
+	/// Pointer to the actual instantiation of the ButtonController.
+	virtual xformsBC & bc();
 	/// Build the dialog
 	virtual void build();
 	/// Pointer to the actual instantiation of the xforms form
@@ -43,8 +45,16 @@ private:
 	FD_form_copyright * build_copyright();
 
 	/// Real GUI implementation.
-	FD_form_copyright * dialog_;
+	boost::scoped_ptr<FD_form_copyright> dialog_;
+	/// The ButtonController
+	ButtonController<OkCancelPolicy, xformsBC> bc_;
 };
 
+
+inline
+xformsBC & FormCopyright::bc()
+{
+	return bc_;
+}
 #endif
 

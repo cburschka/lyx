@@ -442,7 +442,7 @@ bool DocDialog::updateParams(BufferParams & params)
 			tmpskip = VSpace(length);
 			break;
 	}
-	
+
 	if (!(tmpskip == params.getDefSkip())) {
 		redo = true;
 		params.setDefSkip(tmpskip);

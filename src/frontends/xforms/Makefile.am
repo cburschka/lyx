@@ -5,6 +5,7 @@ noinst_LTLIBRARIES = libxforms.la
 BOOST_INCLUDES = -I$(top_srcdir)/boost
 INCLUDES = -I${top_srcdir}/src/ \
 	-I${top_srcdir}/src/frontends/ \
+	-I${top_srcdir}/src/frontends/controllers \
 	${SIGC_CFLAGS} $(BOOST_INCLUDES)
 LIBS=
 LDFLAGS=
@@ -12,8 +13,6 @@ LYXDATADIRS = forms
 ETAGS_ARGS = --lang=c++
 # Alphabetical order please.  It makes it easier to figure out what's missing. 
 libxforms_la_SOURCES = \
-	ButtonController.C \
-	ButtonController.h \
 	Color.C \
 	Color.h \
 	Dialogs.C \
@@ -25,6 +24,8 @@ libxforms_la_SOURCES = \
 	GUIRunTime.C \
 	FormBase.C \
 	FormBase.h \
+	FormBaseDeprecated.C \
+	FormBaseDeprecated.h \
 	FormBibitem.C \
 	FormBibitem.h \
 	form_bibitem.C \
@@ -138,7 +139,9 @@ libxforms_la_SOURCES = \
 	Toolbar_pimpl.C \
 	Toolbar_pimpl.h \
 	xforms_helpers.C \
-	xforms_helpers.h
+	xforms_helpers.h \
+	xformsBC.C \
+	xformsBC.h
 
 # These still have to be added. Sooner or later. ARRae-20000411
 #	GUI_defaults.C \

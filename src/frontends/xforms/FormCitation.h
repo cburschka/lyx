@@ -7,6 +7,8 @@
  *           Copyright 2000 The LyX Team.
  *
  * ======================================================
+ *
+ * Author: Angus Leeming <a.leeming@ic.ac.uk>
  */
 
 #ifndef FORMCITATION_H
@@ -16,39 +18,43 @@
 #pragma interface
 #endif
 
-#include "FormInset.h"
-struct FD_form_citation;
+#include "FormBase.h"
 
-/** This class provides an XForms implementation of the FormCitation Dialog.
+/** This class provides an XForms implementation of the Citation Dialog.
  */
-class FormCitation : public FormCommand {
+#include "form_citation.h"
+class ControlCitation;
+
+class FormCitation : public FormBase2<ControlCitation, FD_form_citation> {
 public:
 	///
-	FormCitation(LyXView *, Dialogs *);
-	///
-	~FormCitation();
+	FormCitation(ControlCitation &);
+
+	// Functions accessible to the Controller.
+
+	/// Set the Params variable for the Controller.
+	virtual void apply();
+	/// Build the dialog.
+	virtual void build();
+	/// Hide the dialog.
+	virtual void hide();
+	/// Update dialog before/whilst showing it.
+	virtual void update();
+
 private:
 	///
 	enum State {
+		///
 		ON,
 		///
 		OFF
 	};
-	/// Connect signals etc. Set form's max size.
-	virtual void connect();
-	/// Disconnect signals. Also perform any necessary housekeeping.
-	virtual void disconnect();
 
-	/// Build the dialog
-	virtual void build();
-	/// Filter the inputs
-	virtual bool input(FL_OBJECT *, long);
-	/// Update dialog before showing it
-	virtual void update();
-	/// Apply from dialog (modify or create inset)
-	virtual void apply();
-	/// Pointer to the actual instantiation of the xforms form
-	virtual FL_FORM * form() const;
+	/// Filter the inputs on callback from xforms
+	virtual ButtonPolicy::SMInput input(FL_OBJECT *, long);
+
+	/// Type definition from the fdesign produced header file.
+	FD_form_citation * build_citation();
 
 	///
 	void updateBrowser(FL_OBJECT *, std::vector<string> const &) const;
@@ -58,17 +64,11 @@ private:
 	void setCiteButtons(State) const;
 	///
 	void setSize(int, bool) const;
-	/// Type definition from the fdesign produced header file.
-	FD_form_citation * build_citation();
 
-	/// Real GUI implementation.
-	FD_form_citation * dialog_;
 	///
 	std::vector<string> citekeys;
 	///
 	std::vector<string> bibkeys;
-	///
-	std::vector<string> bibkeysInfo;
 };
 
-#endif
+#endif // FORMCITATION_H

@@ -14,6 +14,10 @@
 
 #include <config.h>
 
+#ifdef __GNUG__
+#pragma implementation
+#endif
+
 #include "FormTabular.h"
 #include "form_tabular.h"
 #include "LyXView.h"
@@ -24,9 +28,7 @@
 
 
 FormTabular::FormTabular(LyXView * lv, Dialogs * d)
-	: FormInset(lv, d, _("Tabular Layout"), new OkCancelReadOnlyPolicy),
-	  dialog_(0), tabular_options_(0), column_options_(0),
-	  cell_options_(0), longtable_options_(0),
+	: FormInset(lv, d, _("Tabular Layout")),
 	  inset_(0), actCell_(-1)
 {
 	// let the dialog be shown
@@ -34,16 +36,6 @@ FormTabular::FormTabular(LyXView * lv, Dialogs * d)
 	// storing a copy because we won't be disconnecting.
 	d->showTabular.connect(slot(this, &FormTabular::showInset));
 	d->updateTabular.connect(slot(this, &FormTabular::updateInset));
-}
-
-
-FormTabular::~FormTabular()
-{
-	delete dialog_;
-	delete tabular_options_;
-	delete column_options_;
-	delete cell_options_;
-	delete longtable_options_;
 }
 
 
@@ -62,7 +54,8 @@ void FormTabular::redraw()
 
 FL_FORM * FormTabular::form() const
 {
-	if (dialog_) return dialog_->form;
+	if (dialog_.get())
+		return dialog_->form;
 	return 0;
 }
 
@@ -106,11 +99,11 @@ void FormTabular::updateInset(InsetTabular * inset)
 
 void FormTabular::build()
 {
-	dialog_ = build_tabular();
-	tabular_options_ = build_tabular_options();
-	column_options_ = build_column_options();
-	cell_options_ = build_cell_options();
-	longtable_options_ = build_longtable_options();
+	dialog_.reset(build_tabular());
+	tabular_options_.reset(build_tabular_options());
+	column_options_.reset(build_column_options());
+	cell_options_.reset(build_cell_options());
+	longtable_options_.reset(build_longtable_options());
 
 	// Workaround dumb xforms sizing bug
 	minw_ = form()->w;

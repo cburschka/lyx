@@ -26,8 +26,7 @@
 #include "lyxfunc.h"
 
 FormIndex::FormIndex(LyXView * lv, Dialogs * d)
-	: FormCommand(lv, d, _("Index"), new NoRepeatedApplyPolicy),
-	  dialog_(0)
+	: FormCommand(lv, d, _("Index"))
 {
 	// let the dialog be shown
 	// These are permanent connections so we won't bother
@@ -37,15 +36,9 @@ FormIndex::FormIndex(LyXView * lv, Dialogs * d)
 }
 
 
-FormIndex::~FormIndex()
-{
-	delete dialog_;
-}
-
-
 FL_FORM * FormIndex::form() const
 {
-	if (dialog_) return dialog_->form;
+	if (dialog_.get()) return dialog_->form;
 	return 0;
 }
 
@@ -59,7 +52,7 @@ void FormIndex::connect()
 
 void FormIndex::build()
 {
-	dialog_ = build_index();
+	dialog_.reset(build_index());
 
 	// Workaround dumb xforms sizing bug
 	minw_ = form()->w;
@@ -68,13 +61,13 @@ void FormIndex::build()
 	fl_set_input_return(dialog_->input_key, FL_RETURN_CHANGED);
 
         // Manage the ok, apply, restore and cancel/close buttons
-	bc_.setOK(dialog_->button_ok);
-	bc_.setApply(dialog_->button_apply);
-	bc_.setCancel(dialog_->button_cancel);
-	bc_.setUndoAll(dialog_->button_restore);
-	bc_.refresh();
+	bc().setOK(dialog_->button_ok);
+	bc().setApply(dialog_->button_apply);
+	bc().setCancel(dialog_->button_cancel);
+	bc().setUndoAll(dialog_->button_restore);
+	bc().refresh();
 
-	bc_.addReadOnly(dialog_->input_key);
+	bc().addReadOnly(dialog_->input_key);
 }
 
 
@@ -83,8 +76,8 @@ void FormIndex::update()
 	fl_set_input(dialog_->input_key, params.getContents().c_str());
 	// Surely, this should reset the buttons to their original state?
 	// It doesn't. Instead "Restore" becomes a "Close"
-	//bc_.refresh();
-	bc_.readOnly(lv_->buffer()->isReadonly());
+	//bc().refresh();
+	bc().readOnly(lv_->buffer()->isReadonly());
 }
 
 

@@ -15,7 +15,14 @@
 #ifndef FORMTABULAR_H
 #define FORMTABULAR_H
 
+#include <boost/smart_ptr.hpp>
+
+#ifdef __GNUG__
+#pragma interface
+#endif
+
 #include "FormInset.h"
+#include "xformsBC.h"
 
 class InsetTabular;
 struct FD_form_tabular;
@@ -31,10 +38,10 @@ class FormTabular : public FormInset {
 public:
 	/// #FormTabular x(LyXFunc ..., Dialogs ...);#
 	FormTabular(LyXView *, Dialogs *);
-	///
-	~FormTabular();
 
 private:
+	/// Pointer to the actual instantiation of the ButtonController.
+	virtual xformsBC & bc();
 	/** Redraw the form (on receipt of a Signal indicating, for example,
 	    that the xforms colours have been re-mapped). */
 	virtual void redraw();
@@ -66,20 +73,28 @@ private:
 	FD_form_longtable_options * build_longtable_options();
 
 	/// Real GUI implementation.
-	FD_form_tabular * dialog_;
+	boost::scoped_ptr<FD_form_tabular> dialog_;
 	///
-	FD_form_tabular_options * tabular_options_;
+	boost::scoped_ptr<FD_form_tabular_options> tabular_options_;
 	///
-	FD_form_column_options * column_options_;
+	boost::scoped_ptr<FD_form_column_options> column_options_;
 	///
-	FD_form_cell_options * cell_options_;
+	boost::scoped_ptr<FD_form_cell_options> cell_options_;
 	///
-	FD_form_longtable_options * longtable_options_;
+	boost::scoped_ptr<FD_form_longtable_options> longtable_options_;
 
 	/// pointer to the inset passed through showInset
 	InsetTabular * inset_;
 	///
 	int actCell_;
+	/// The ButtonController
+	ButtonController<OkCancelReadOnlyPolicy, xformsBC> bc_;
 };
 
+
+inline
+xformsBC & FormTabular::bc()
+{
+	return bc_;
+}
 #endif

@@ -1,10 +1,121 @@
+2001-03-14  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* Merging changes from BRANCH_MVC back into HEAD.
+
+2001-03-12  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* Dialogs.C (c-tor): Changes associated with storing a vector of
+	boost::shared_ptrs.
+	Use MVC Bibitem popup.
+
+	* FormBase.h: add a new template class FormBase2, derived from FormBase
+	to make life creating MVC popups even easier ;-)
+
+	* FormBibitem.[Ch]:
+	* forms/form_bibitem.fd: moved over to the MVC way of doing things.
+	Proof that a simple popup should be easy to implement!
+
+	* FormCitation.[Ch]: now derived from FormBase2.
+
+	* FormToc.C: added using std::vector directive.
+
+2001-03-09  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* FormSearch.C: Add missing #pragma
+
+2001-03-09  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* FormCitation.C:
+	* forms/form_citation.fd: added the ability to Search, both Simply and
+	for Regular Expressions. Use the Search code in the controller() to do
+	the actual searching.
+
+2001-03-08  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* Makefile.am: added FormCredits.[Ch] and form_credits.[Ch]
+	* forms/makefile: added form_credits.fd
+	
+	* Dialogs.C: added FormCredits and removed ShowCredits.
+	
+	* FormCredits.[Ch]:
+	* forms/form_credits.fd:
+	* forms/form_search.fd: ported to the MVC way.
+	
+2001-03-07  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* xforms_helpers.h (formatted): now has default arguments for size and
+	style.
+
+	* FormCitation.[Ch]: moved code out of this class and into
+	ControlCitation and associated helper funcs.
+	
+2001-03-05  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* FormBase.[Ch]: (InputCB): use ButtonController::input() rather than
+	ButtonController::valid() to check state of input. The buttons are
+	now controlled correctly.
+
+	* Form*.[Ch]: use boost::scoped_ptr for the remaining few classes.
+
+2001-03-05  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* Form*.[Ch]: use boost::scoped_ptr for dialog_ et al.
+
+	* FormBase.[Ch]: rename title as title_.
+
+2001-03-02  John Levon  <moz@compsoc.man.ac.uk>
+
+	* FormBase.C (c-tor): initialise variables in correct order.
+
+	* FormCitation.C: add #include <algorithm>
+
+2001-03-02  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* xformsBC.[Ch]: Changes associated with the changes to
+	controllers/ButtonController.[Ch]. Ie, the class is now derived from
+	ButtonControllerBase and the ButtonPolicy is accessed through a method
+	bp() rather than the instance bp_.
+
+	* FormBaseDeprecated.[Ch]: no longer store a ButtonController, but
+	rather use a pure virtual method bc() to access the controller
+	instantiated by the daughter classes.
+
+	* F*.[Ch]: changes associated with the above.
+
+2001-02-27  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* FormBase.[Ch]: renamed as FormBaseDeprecated.[Ch]
+
+	* ViewXforms.[Ch]: renamed as FormBase.[Ch]
+
+2001-02-23  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* ButtonController.[Ch]: deleted. The class is split into two
+	(with identical functionality), the code being found in
+	../controllers/ButtonController.[Ch] and xformsBC.[Ch]
+
+	* xformsBC.[Ch]: new files. Xforms specific part of Allan's original
+	ButtonController class.
+
+	* FormBase.[Ch]: changes associated with the above split.
+
+	* ViewXforms.[Ch]: Base class for xforms dialogs derived from ViewBase
+	(../controllers/ViewBase.h). Ie, for Dialogs with GUI-I controllers
+	controlling all interaction to/from the LyX kernel.
+
+	* FormCitation.[Ch]:
+	* forms/form_citation.fd: An xforms-specific implementation of the
+	Citation dialog, controlled by the GUI-I ControlCitation.
+
+	* Dialogs.C: Use the controlled Citation dialog.
+
 2001-03-09  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* forms/fdfix.sh:
 	* forms/form_filedialog.C.patch: I hate having to make these patches,
 	but on reflection I think it's probably better than hacking fdfix.sh.
 
-22001-03-13  John Levon  <moz@compsoc.man.ac.uk>
+2001-03-13  John Levon  <moz@compsoc.man.ac.uk>
 
 	* FormGraphics.C: remove unnecessary hack
 

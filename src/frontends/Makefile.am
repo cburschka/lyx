@@ -4,15 +4,13 @@ MAINTAINERCLEANFILES = $(srcdir)/Makefile.in
 # xforms has to be fixed here as we still need object files in this directory
 # for the compilation of other frontends, so until that we have to let this
 # here.
-SUBDIRS = support xforms @FRONTEND@
+SUBDIRS = support xforms controllers @FRONTEND@
 ETAGS_ARGS = --lang=c++
 BOOST_INCLUDES = -I$(top_srcdir)/boost
 INCLUDES = ${FRONTEND_INCLUDES} -I${srcdir}/.. -I${srcdir}/xforms ${SIGC_CFLAGS} $(BOOST_INCLUDES)
 LIBS =
 noinst_LTLIBRARIES = libfrontends.la
 libfrontends_la_SOURCES=\
-	ButtonPolicies.C \
-	ButtonPolicies.h \
 	Dialogs.h \
 	DialogBase.h \
 	FileDialog.h \

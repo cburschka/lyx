@@ -1,3 +1,4 @@
+// -*- C++ -*-
 /**
  * \file FormInclude.h
  * Copyright 2001 the LyX Team
@@ -9,15 +10,16 @@
 #ifndef FORMINCLUDE_H
 #define FORMINCLUDE_H
 
+#include <boost/smart_ptr.hpp>
+
 #ifdef __GNUG__
 #pragma interface
 #endif
 
-#include "FormBase.h"
+#include "FormBaseDeprecated.h"
+#include "xformsBC.h"
 #include "insets/insetinclude.h"
 
-class InsetInclude;
- 
 struct FD_form_include;
 
 /** This class provides an XForms implementation of the FormInclude Dialog.
@@ -26,21 +28,21 @@ class FormInclude : public FormBaseBD {
 public:
 	///
 	FormInclude(LyXView *, Dialogs *);
-	///
-	~FormInclude();
 private:
 	///
 	enum State {
 		/// the browse button
-		BROWSE=0,
+		BROWSE = 0,
 		/// the load file button
-		LOAD=5,
+		LOAD = 5,
 		/// the verbatim radio choice
-		VERBATIM=10,
+		VERBATIM = 10,
 		/// the input and include radio choices
-		INPUTINCLUDE=11
+		INPUTINCLUDE = 11
 	};
  
+	/// Pointer to the actual instantiation of the ButtonController.
+	virtual xformsBC & bc();
 	/// Slot launching dialog to an existing inset
 	void showInclude(InsetInclude *);
 
@@ -67,8 +69,10 @@ private:
 	FD_form_include * build_include();
 
 	/// Real GUI implementation.
-	FD_form_include * dialog_;
- 
+	boost::scoped_ptr<FD_form_include> dialog_;
+	/// The ButtonController
+	ButtonController<OkCancelReadOnlyPolicy, xformsBC> bc_;
+
 	/// inset::hide connection.
 	Connection ih_;
  
@@ -78,4 +82,10 @@ private:
 	InsetInclude::InsetIncludeParams params;
 };
 
+
+inline
+xformsBC & FormInclude::bc()
+{
+  return bc_;
+}
 #endif

@@ -36,8 +36,8 @@ using Liason::getPrinterParams;
 using std::make_pair;
 
 FormPrint::FormPrint(LyXView * lv, Dialogs * d)
-	: FormBaseBD(lv, d, _("Print"), new OkApplyCancelPolicy),
-	  dialog_(0), target_(2), order_(2), which_(3)
+	: FormBaseBD(lv, d, _("Print")),
+	  target_(2), order_(2), which_(3)
 {
 	// let the dialog be shown
 	// This is a permanent connection so we won't bother
@@ -46,25 +46,19 @@ FormPrint::FormPrint(LyXView * lv, Dialogs * d)
 }
 
 
-FormPrint::~FormPrint()
-{
-	delete dialog_;
-}
-
-
 void FormPrint::build()
 {
-	dialog_ = build_print();
+	dialog_.reset(build_print());
 
 	// Workaround dumb xforms sizing bug
 	minw_ = form()->w;
 	minh_ = form()->h;
 
 	// Manage the ok, apply and cancel/close buttons
-	bc_.setOK(dialog_->button_ok);
-	bc_.setApply(dialog_->button_apply);
-	bc_.setCancel(dialog_->button_cancel);
-	bc_.refresh();
+	bc().setOK(dialog_->button_ok);
+	bc().setApply(dialog_->button_apply);
+	bc().setCancel(dialog_->button_cancel);
+	bc().refresh();
 
 	// allow controlling of input and ok/apply (de)activation
 	fl_set_input_return(dialog_->input_printer,
@@ -115,7 +109,8 @@ void FormPrint::build()
 
 FL_FORM * FormPrint::form() const
 {
-	if (dialog_) return dialog_->form;
+	if (dialog_.get())
+		return dialog_->form;
 	return 0;
 }
 
@@ -162,7 +157,7 @@ void FormPrint::apply()
 
 void FormPrint::update()
 {
-	if (dialog_
+	if (dialog_.get()
 	    && lv_->view()->available()) {
 		PrinterParams pp(getPrinterParams(lv_->buffer()));
 
@@ -196,7 +191,7 @@ void FormPrint::update()
 
 		fl_set_input(dialog_->input_count,
 			     tostr(pp.count_copies).c_str());
-		bc_.valid(true);
+		bc().valid(true);
 	}
 }
 

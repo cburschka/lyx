@@ -10,6 +10,10 @@
 
 #include FORMS_H_LOCATION
 
+#ifdef __GNUG__
+#pragma implementation
+#endif
+
 #include "form_preamble.h"
 #include "FormPreamble.h"
 #include "Dialogs.h"
@@ -24,8 +28,7 @@ using Liason::setMinibuffer;
 #endif
 
 FormPreamble::FormPreamble(LyXView * lv, Dialogs * d)
-	: FormBaseBD(lv, d, _("LaTeX preamble"), new NoRepeatedApplyReadOnlyPolicy),
-	dialog_(0)
+	: FormBaseBD(lv, d, _("LaTeX preamble"))
 {
     // let the popup be shown
     // This is a permanent connection so we won't bother
@@ -34,37 +37,33 @@ FormPreamble::FormPreamble(LyXView * lv, Dialogs * d)
 }
 
 
-FormPreamble::~FormPreamble()
-{
-   delete dialog_;
-}
-
-
 FL_FORM * FormPreamble::form() const
 {
-    if (dialog_) return dialog_->form;
+    if (dialog_.get()) return dialog_->form;
     return 0;
 }
 
+
 void FormPreamble::build()
 {
-   dialog_ = build_preamble();
+   dialog_.reset(build_preamble());
    // Workaround dumb xforms sizing bug
    minw_ = form()->w;
    minh_ = form()->h;
    
    fl_set_input_return(dialog_->input_preamble, FL_RETURN_CHANGED);
    // Manage the ok, apply and cancel/close buttons
-   bc_.setOK(dialog_->button_ok);
-   bc_.setApply(dialog_->button_apply);
-   bc_.setCancel(dialog_->button_cancel);
-   bc_.addReadOnly(dialog_->input_preamble);
-   bc_.refresh();
+   bc().setOK(dialog_->button_ok);
+   bc().setApply(dialog_->button_apply);
+   bc().setCancel(dialog_->button_cancel);
+   bc().addReadOnly(dialog_->input_preamble);
+   bc().refresh();
 }
+
 
 void FormPreamble::apply()
 {
-   if (!lv_->view()->available() || !dialog_)
+   if (!lv_->view()->available() || !dialog_.get())
      return;
    
    // is this needed?:
@@ -78,7 +77,7 @@ void FormPreamble::apply()
 
 void FormPreamble::update()
 {
-   if (!dialog_)
+   if (!dialog_.get())
      return;
 
    fl_set_input(dialog_->input_preamble,lv_->buffer()->params.preamble.c_str());
@@ -89,7 +88,7 @@ void FormPreamble::update()
    setEnabled(dialog_->button_apply,   enable);
    
    // need this?
-   // bc_.readOnly(lv_->buffer()->isReadonly());
+   // bc().readOnly(lv_->buffer()->isReadonly());
 }
 
 

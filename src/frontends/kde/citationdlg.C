@@ -171,6 +171,6 @@ CitationDialog::~CitationDialog()
 
 void CitationDialog::closeEvent(QCloseEvent * e)
 {
-	form_->close();
+	form_->CancelButton();
 	e->accept();
 }

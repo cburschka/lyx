@@ -12,7 +12,7 @@
 #ifndef FORMCOMMAND_H
 #define FORMCOMMAND_H
 
-#include "FormBase.h"
+#include "FormBaseDeprecated.h"
 #include "insets/insetcommand.h"
 
 #ifdef __GNUG__
@@ -25,10 +25,7 @@
 class FormInset : public FormBaseBD {
 protected:
 	/// Constructor
-	FormInset(LyXView *, Dialogs *, string const &,
-		  ButtonPolicy * bp,
-		  char const * close = N_("Close"),
-		  char const * cancel = N_("Cancel"));
+	FormInset(LyXView *, Dialogs *, string const &);
 
 	/// Connect signals. Also perform any necessary initialisation.
 	virtual void connect();
@@ -49,10 +46,7 @@ protected:
 class FormCommand : public FormInset {
 protected:
 	/// Constructor
-	FormCommand(LyXView *, Dialogs *, string const &,
-		    ButtonPolicy *,
-		    char const * close = N_("Close"),
-		    char const * cancel = N_("Cancel"));
+	FormCommand(LyXView *, Dialogs *, string const &);
 
 	/// Disconnect signals. Also perform any necessary housekeeping.
 	virtual void disconnect();

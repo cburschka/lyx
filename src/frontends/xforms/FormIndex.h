@@ -12,11 +12,14 @@
 #ifndef FORMINDEX_H
 #define FORMINDEX_H
 
+#include <boost/smart_ptr.hpp>
+#include "FormInset.h"
+#include "xformsBC.h"
+
 #ifdef __GNUG__
 #pragma interface
 #endif
 
-#include "FormInset.h"
 struct FD_form_index;
 
 /** This class provides an XForms implementation of the FormIndex Dialog.
@@ -25,9 +28,9 @@ class FormIndex : public FormCommand {
 public:
 	///
 	FormIndex(LyXView *, Dialogs *);
-	///
-	~FormIndex();
 private:
+	/// Pointer to the actual instantiation of the ButtonController.
+	virtual xformsBC & bc();
 	/// Connect signals etc. Set form's max size.
 	virtual void connect();
 	/// Build the dialog
@@ -41,7 +44,15 @@ private:
 	///
 	FD_form_index * build_index();
 	/// Real GUI implementation.
-	FD_form_index * dialog_;
+	boost::scoped_ptr<FD_form_index> dialog_;
+	/// The ButtonController
+	ButtonController<NoRepeatedApplyReadOnlyPolicy, xformsBC> bc_;
 };
 
+
+inline
+xformsBC & FormIndex::bc()
+{
+	return bc_;
+}
 #endif

@@ -9,7 +9,14 @@
 #ifndef FORMSEARCH_H
 #define FORMSEARCH_H
 
-#include "FormBase.h"
+#include <boost/smart_ptr.hpp>
+
+#ifdef __GNUG__
+#pragma interface
+#endif
+
+#include "FormBaseDeprecated.h"
+#include "xformsBC.h"
 
 struct FD_form_search;
 class LyXView;
@@ -19,40 +26,45 @@ class Dialogs;
  */
 class FormSearch : public FormBaseBD {
 public:
-   ///
-   FormSearch(LyXView *, Dialogs *);
-   ///
-   ~FormSearch();
+	///
+	FormSearch(LyXView *, Dialogs *);
    
 private:
-   /** Redraw the form (on receipt of a Signal indicating, for example,
-    *  that the xform colours have been re-mapped). 
-    */
+	/// Pointer to the actual instantiation of the ButtonController.
+	virtual xformsBC & bc();
 
-   /// Filter the inputs
-   virtual bool input(FL_OBJECT *, long);
+	/// Filter the inputs
+	virtual bool input(FL_OBJECT *, long);
    
-   /// Build the popup
-   virtual void build();
+	/// Build the popup
+	virtual void build();
 
-   /// Update the popup
-   virtual void update();
+	/// Update the popup
+	virtual void update();
 
-   /// Searches occurance of string
-   /// if argument=true forward search otherwise backward search
-   void Find(bool const = true);
-   /// if argument=false replace once otherwise replace all
-   /// Replaces occurance of string
-   void Replace(bool const = false);
+	/// Searches occurance of string
+	/// if argument=true forward search otherwise backward search
+	void Find(bool const = true);
+	/// if argument=false replace once otherwise replace all
+	/// Replaces occurance of string
+	void Replace(bool const = false);
    
-   ///
-   virtual FL_FORM * form() const;
+	///
+	virtual FL_FORM * form() const;
    
-   /// Typedefinitions from the fdesign produced Header file
-   FD_form_search  * build_search();
+	/// Typedefinitions from the fdesign produced Header file
+	FD_form_search  * build_search();
    
-   /// Real GUI implementation.
-   FD_form_search  * dialog_;
+	/// Real GUI implementation.
+	boost::scoped_ptr<FD_form_search> dialog_;
+	/// The ButtonController
+	ButtonController<NoRepeatedApplyReadOnlyPolicy, xformsBC> bc_;
 };
 
+
+inline
+xformsBC & FormSearch::bc()
+{
+	return bc_;
+}
 #endif

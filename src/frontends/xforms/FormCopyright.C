@@ -17,8 +17,7 @@
 #include "xforms_helpers.h"
 
 FormCopyright::FormCopyright( LyXView * lv, Dialogs * d	)
-	: FormBaseBI(lv, d, _("Copyright and Warranty"), new OkCancelPolicy),
-	  dialog_(0)
+	: FormBaseBI(lv, d, _("Copyright and Warranty"))
 {
 	// let the dialog be shown
 	// This is a permanent connection so we won't bother
@@ -27,22 +26,16 @@ FormCopyright::FormCopyright( LyXView * lv, Dialogs * d	)
 }
 
 
-FormCopyright::~FormCopyright()
-{
-	delete dialog_;
-}
-
-
 FL_FORM * FormCopyright::form() const
 {
-	if (dialog_ ) return dialog_->form;
+	if (dialog_.get()) return dialog_->form;
 	return 0;
 }
 
 
 void FormCopyright::build()
 {
-	dialog_ = build_copyright();
+	dialog_.reset(build_copyright());
 
 	// Workaround dumb xforms sizing bug
 	minw_ = form()->w;
@@ -64,6 +57,6 @@ void FormCopyright::build()
 	fl_set_object_label(dialog_->text_disclaimer, str.c_str());
 	
         // Manage the cancel/close button
-	bc_.setCancel(dialog_->button_cancel);
-	bc_.refresh();
+	bc().setCancel(dialog_->button_cancel);
+	bc().refresh();
 }

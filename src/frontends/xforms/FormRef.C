@@ -35,8 +35,8 @@ using std::vector;
 bool saved_position;
 
 FormRef::FormRef(LyXView * lv, Dialogs * d)
-	: FormCommand(lv, d, _("Reference"), new NoRepeatedApplyPolicy),
-	  at_ref(false), dialog_(0)
+	: FormCommand(lv, d, _("Reference")),
+	  at_ref(false)
 {
 	// let the dialog be shown
 	// These are permanent connections so we won't bother
@@ -46,15 +46,10 @@ FormRef::FormRef(LyXView * lv, Dialogs * d)
 }
 
 
-FormRef::~FormRef()
-{
-	delete dialog_;
-}
-
-
 FL_FORM * FormRef::form() const
 {
-	if (dialog_) return dialog_->form;
+	if (dialog_.get())
+		return dialog_->form;
 	return 0;
 }
 
@@ -68,7 +63,7 @@ void FormRef::disconnect()
 
 void FormRef::build()
 {
-	dialog_ = build_ref();
+	dialog_.reset(build_ref());
 
 	for (int i = 0; !InsetRef::types[i].latex_name.empty(); ++i)
 		fl_addto_choice(dialog_->type,
@@ -82,15 +77,15 @@ void FormRef::build()
 	fl_deactivate_object(dialog_->ref);
 
         // Manage the ok and cancel/close buttons
-	bc_.setOK(dialog_->button_ok);
-	bc_.setApply(dialog_->button_apply);
-	bc_.setCancel(dialog_->button_cancel);
-	bc_.setUndoAll(dialog_->button_restore);
-	bc_.refresh();
+	bc().setOK(dialog_->button_ok);
+	bc().setApply(dialog_->button_apply);
+	bc().setCancel(dialog_->button_cancel);
+	bc().setUndoAll(dialog_->button_restore);
+	bc().refresh();
 
 #warning I had to uncomment this so the buttons could be disabled in update() (dekel)
-	//bc_.addReadOnly(dialog_->type);
-	//bc_.addReadOnly(dialog_->name);
+	//bc().addReadOnly(dialog_->type);
+	//bc().addReadOnly(dialog_->name);
 }
 
 
@@ -121,7 +116,7 @@ void FormRef::update()
 	refs = lv_->buffer()->getLabelList();
 	updateBrowser(refs);
 
-	bc_.readOnly(lv_->buffer()->isReadonly());
+	bc().readOnly(lv_->buffer()->isReadonly());
 }
 
 

@@ -1,0 +1,112 @@
+2001-03-14  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* Merging changes from BRANCH_MVC back into HEAD.
+
+2001-03-12  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* Makefile.am: add ControlBibitem.[Ch].
+
+	* ControlBibitem.[Ch]: new files that together define the Controller
+	for a Bibitem popup.
+
+	* ControlCommand.h (c-tor): give  kb_action a default value of
+	LFUN_NOACTION.
+	
+	* ControlCommand.C (apply): do nothing if kb_action is LFUN_NOACTION.
+	
+	* ControlCitation.[Ch]: moved search functions out of class.
+	(bibkeysInfo): new method. Returns const reference to private data.
+	(searchKeys): added case-sensitive switch. Used only by simpleSearch
+	for now.
+
+2001-03-09  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* ControlCitation.[Ch]: added Search functions to the class,
+	(shamelessly lifted from Marco's gnome code). I think that these would
+	be better as helper functions outside the class, but this is a first
+	stab at it.
+
+2001-03-07  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* ControlCitation.[Ch]: (getBibkeyList): removed from class
+	ControlCitation.
+	(getBibkeys, getBibkeyInfo): added to class ControlCitation.
+	(getStringFromVector, getVectorFromString, parseBibTeX): new helper
+	funcs. parseBibTeX() is lifted staraight out of Marco's gnome
+	implementation of FormCitation.
+
+2001-03-05  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* ButtonPolicies.h: add SMI_NOOP to enum.
+
+	* ButtonPolicies.C (nextState): add if-statement for SMI_NOOP.
+
+	* ButtonController.C (input): add "optimising" if-statement. Actually,
+	things don't work correctly without it...
+
+2001-03-02  John Levon  <moz@compsoc.man.ac.uk>
+
+	* ViewBase.h: remove #pragma directive
+
+	* ControlConnection.[Ch] (ControlConnectBI c-tor): add explicit c-tor
+	to make g++ happy.
+
+2001-03-02  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* ButtonPolicies.[Ch]: moved from ../ButtonPolicies.[Ch]
+
+	* Makefile.am: added ButtonPolicies.[Ch]
+
+	* ButtonController.[Ch]: ButtonController is split into
+	ButtonControllerBase and a template ButtonController class. The base
+	class no longer stores a pointer to a ButtonPolicy, but instead
+	accesses the actual instantiation of the policy through a pure virtual
+	method bp(). This method and the ButtonPolicy itself are instantiated
+	in the templatised ButtonController class. This class is derived from
+	the GUI-specific GUIBC class, meaning that the frontends know
+	nothing about the actual policy decided upon by the controllers.
+
+	* ControlBase.[Ch]: No longer store the View or the ButtonController.
+	Instead the actual instantiations are accessed through pure virtual
+	methods view() and bc(). The daughter classes are responsible for the
+	actual View and ButtonController.
+
+	* ControlCitation.h: the templatised class GUICitation instantiates
+	the methods view() and bc(). It also stores the instances of the
+	View and ButtonController.
+	
+2001-02-23  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* ButtonControllerBase.[Ch]: renamed as ButtonController.[Ch]. Class
+	also changed to ButtonController.
+
+	* ControlBase.[Ch]:
+	* ControlConnections.[Ch]:
+	* ControlCommand.[Ch]:
+	* ControlCitation.[Ch]:
+	* ViewBase.h: Changes associated with this.
+
+2001-01-15  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* ButtonControllerBase.[Ch]: new files. Split Allan's original
+	xforms/ButtonController class into a GUI-I class (here) and an
+	xforms-specific derived class, to be found in xforms/xformsBC.[Ch].
+
+	* ControlBase.[Ch]: new files. ControlBase is an abstract base class
+	from which all Dialog Controllers should be derived. the Controllers
+	are GUI-independent, but are designed to control the behaviour of
+	GUI-specific implementaions of each dialog.
+
+	* ControlConnections.[Ch]: new files. Classes controlling the
+	connections of buffer-independent, buffer-dependent and Inset dialogs
+	with the LyX kernel.
+
+	* ControlCommand.[Ch]: new files. A controller for all dialogs for the
+	InsetCommand subset of insets.
+
+	* ControlCitation.[Ch]: new files. The test specialisation! A
+	controller for the Citation dialog.
+
+	* ViewBase.h: new file. ViewBase is an abstract base class from which
+	GUI-specific dialogs should be derived. The functionality that the GUIs
+	must now implement is much reduced.

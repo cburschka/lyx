@@ -13,17 +13,18 @@
 #ifndef RADIOBUTTONGROUP_H
 #define RADIOBUTTONGROUP_H
 
+#include <vector>
+#include <utility>
+
+#include FORMS_H_LOCATION
+
 #ifdef __GNUG__
 #pragma interface
 #endif 
 
-#include <vector>
-#include <utility>
-
 using std::vector;
 using std::pair;
 
-#include FORMS_H_LOCATION
 
 /** This class simplifies the work with a group of radio buttons,
  * the idea is that you register a bunch of radio buttons with the accompanying

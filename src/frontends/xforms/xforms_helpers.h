@@ -14,7 +14,8 @@
 void setEnabled(FL_OBJECT *, bool enable);
 
 // Take a string and add breaks so that it fits into a desired label width, w
-string formatted(string const &label, int w, int size, int style);
+string formatted(string const &label, int w,
+		 int=FL_NORMAL_SIZE, int=FL_NORMAL_STYLE);
 
 class LyXView;
  

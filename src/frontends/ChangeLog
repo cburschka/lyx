@@ -1,3 +1,21 @@
+2001-03-14  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* Merging changes from BRANCH_MVC back into HEAD.
+
+	* Makefile.am: added controllers to SUBDIRS.
+	removed ButtonPolicies.[Ch]. Now in controllers.
+
+	* DialogBase.h: commented out abstract method show().
+
+	* Dialogs.h: The dialogs are now stored as a 
+	std::vector<boost::shared_ptr<DialogBase> >.
+	Removed using directives.
+	(d-tor) removed.
+	(add): new helper method. Makes code in c-tor a little tidier.
+	(destroySplash): Moved out of xforms implementation.
+
+	* ButtonPolicies.[Ch]: moved to controllers/ButtonPolicies.[Ch]
+
 2001-03-09  John Levon  <moz@compsoc.man.ac.uk>
 
 	* Dialogs.h: add showExternal signal

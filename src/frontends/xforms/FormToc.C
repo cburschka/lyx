@@ -27,12 +27,14 @@
 #include "lyxfunc.h"
 #include "support/lstrings.h"
 
+using std::vector;
+
 // The current code uses the apply() for handling the Update button and the
 // type-of-table selection and cancel() for the close button.  This is a little
 // confusing to the button controller so I've made an IgnorantPolicy to cover
 // this situation since the dialog doesn't care about buttons. ARRae 20001013
 FormToc::FormToc(LyXView * lv, Dialogs * d)
-	: FormCommand(lv, d, _("Table of Contents"), new OkCancelPolicy),
+	: FormCommand(lv, d, _("Table of Contents")),
 	  dialog_(0)
 {
 	// let the dialog be shown
@@ -43,15 +45,10 @@ FormToc::FormToc(LyXView * lv, Dialogs * d)
 }
 
 
-FormToc::~FormToc()
-{
-	delete dialog_;
-}
-
-
 FL_FORM * FormToc::form() const
 {
-	if (dialog_ ) return dialog_->form;
+	if (dialog_.get())
+		return dialog_->form;
 	return 0;
 }
 
@@ -65,7 +62,7 @@ void FormToc::disconnect()
 
 void FormToc::build()
 {
-	dialog_ = build_toc();
+	dialog_.reset(build_toc());
 
 #if 0
 	fl_addto_choice(dialog_->choice_toc_type,
@@ -85,8 +82,8 @@ void FormToc::build()
 	minh_ = form()->h;
 
         // Manage the cancel/close button
-	bc_.setCancel(dialog_->button_cancel);
-	bc_.refresh();
+	bc().setCancel(dialog_->button_cancel);
+	bc().refresh();
 }
 
 

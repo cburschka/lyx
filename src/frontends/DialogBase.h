@@ -40,14 +40,14 @@ class DialogBase : public Object, public noncopyable
 public:
 	/**@name Constructors and Deconstructors */
 	//@{
-	///
+	/// Virtual base destructor
 	virtual ~DialogBase() {}
 	//@}
 
 	/**@name Signal Targets */
 	//@{
 	///
-	virtual void show() = 0;
+	//virtual void show() = 0;
 	///
 	virtual void hide() = 0;
 	///

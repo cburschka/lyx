@@ -38,25 +38,21 @@ extern "C" void C_FormSplashCB(FL_OBJECT * ob, long)
 	FormSplash * form = static_cast<FormSplash*>(ob->form->u_vdata);
 	form->hide();
 }
- 
+
  
 FormSplash::FormSplash(LyXView *, Dialogs * d)
-	: dialog_(0), d_(d)
+	: d_(d)
 {
 	c_ = d->showSplash.connect(slot(this, &FormSplash::show));
 }
 
 
-FormSplash::~FormSplash()
-{
-	c_.disconnect();
-	delete dialog_;
-}
-
-
 void FormSplash::show()
 {
-	if (!dialog_) {
+	if (!lyxrc.show_banner)
+		return;
+
+	if (!dialog_.get()) {
 		build();
 		fl_set_form_atclose(dialog_->form, C_FormSplashCloseCB, 0);
 	}
@@ -78,21 +74,20 @@ void FormSplash::show()
 
 void FormSplash::hide()
 {
+	c_.disconnect();
+	if (dialog_->form && dialog_->form->visible)
+		fl_hide_form(dialog_->form);
 	d_->destroySplash();
 }
 
  
 void FormSplash::build()
 {
-	if (!lyxrc.show_banner)
-		return;
- 
 	string banner_file = LibFileSearch("images", "banner", "xpm");
- 
 	if (banner_file.empty())
 		return;
  
-	dialog_ = build_splash();
+	dialog_.reset(build_splash());
 
 	// Workaround dumb xforms sizing bug
 	fl_set_form_minsize(dialog_->form, dialog_->form->w, dialog_->form->h);

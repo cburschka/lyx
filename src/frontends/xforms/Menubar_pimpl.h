@@ -14,17 +14,19 @@
 #ifndef MENUBAR_PIMPL_H
 #define MENUBAR_PIMPL_H
 
+#include <vector>
+#include <map>
+#include <boost/smart_ptr.hpp>
+#include FORMS_H_LOCATION
+
 #ifdef __GNUG__
 #pragma interface
 #endif
 
-#include <vector>
-#include <map>
-#include <boost/smart_ptr.hpp>
 #include "LString.h"
 #include "frontends/Menubar.h"
 #include "commandtags.h"
-#include FORMS_H_LOCATION
+
 class LyXView;
 class MenuBackend;
 class MenuItem;

@@ -24,6 +24,7 @@
 #include "LyXView.h"
 #include "buffer.h"
 #include "FormExternal.h"
+#include "form_external.h"
 #include "frontends/FileDialog.h"
 #include "LString.h"
 #include "support/filetools.h"
@@ -33,16 +34,10 @@ using std::make_pair;
 using std::endl;
 
 FormExternal::FormExternal(LyXView * lv, Dialogs * d)
-	: FormBaseBD(lv, d, _("Edit external file"), new OkCancelReadOnlyPolicy),
-	inset_(0), ih_(0), dialog_(0)
+	: FormBaseBD(lv, d, _("Edit external file")),
+	inset_(0), ih_(0)
 {
 	d->showExternal.connect(slot(this, &FormExternal::showInset));
-}
-
-
-FormExternal::~FormExternal()
-{
-	delete dialog_;
 }
 
 
@@ -78,7 +73,7 @@ extern "C" void ExternalUpdateCB(FL_OBJECT * ob, long data)
 
 FL_FORM * FormExternal::form() const
 {
-	if (dialog_)
+	if (dialog_.get())
 		return dialog_->form;
 	return 0;
 }
@@ -90,7 +85,7 @@ void FormExternal::connect()
 		 connect(slot(this, &FormExternal::updateSlot));
 	h_ = d_->hideBufferDependent.
 		 connect(slot(this, &FormExternal::hide));
-	FormBase::connect();
+	FormBaseDeprecated::connect();
 }
 
 
@@ -129,7 +124,7 @@ void FormExternal::showInset(InsetExternal * inset)
 
 void FormExternal::build()
 {
-	dialog_ = build_external();
+	dialog_.reset(build_external());
 
 	fl_addto_choice(dialog_->choice_template,
 			getTemplatesComboString().c_str());
