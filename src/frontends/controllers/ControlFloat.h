@@ -14,34 +14,17 @@
 
 
 #include "ControlInset.h"
-
-// needed to instatiate inset->hideDialog in ControlInset
 #include "insets/insetfloat.h"
 
-class InsetFloat;
-
-///
-struct FloatParams {
-	///
-	FloatParams();
-	///
-	FloatParams(InsetFloat const &);
-	///
-	string placement;
-	///
-	bool wide;
-};
-
-
 inline
-bool operator==(FloatParams const & p1, FloatParams const & p2)
+bool operator==(InsetFloatParams const & p1, InsetFloatParams const & p2)
 {
 	return p1.placement == p2.placement && p1.wide == p2.wide;
 }
 
 
 inline
-bool operator!=(FloatParams const & p1, FloatParams const & p2)
+bool operator!=(InsetFloatParams const & p1, InsetFloatParams const & p2)
 {
 	return !(p1 == p2);
 }
@@ -49,7 +32,7 @@ bool operator!=(FloatParams const & p1, FloatParams const & p2)
 
 /** A controller for Minipage dialogs.
  */
-class ControlFloat : public ControlInset<InsetFloat, FloatParams>  {
+class ControlFloat : public ControlInset<InsetFloat, InsetFloatParams>  {
 public:
 	///
 	ControlFloat(LyXView &, Dialogs &);
@@ -59,10 +42,10 @@ private:
 	///
 	virtual void applyParamsNoInset();
 	/// get the parameters from the string passed to createInset.
-	virtual FloatParams const getParams(string const &)
-		{ return FloatParams(); }
+	virtual InsetFloatParams const getParams(string const &)
+		{ return InsetFloatParams(); }
 	/// get the parameters from the inset passed to showInset.
-	virtual FloatParams const getParams(InsetFloat const &);
+	virtual InsetFloatParams const getParams(InsetFloat const &);
 };
 
 #endif

@@ -1,5 +1,10 @@
 2003-03-05  Angus Leeming  <leeming@lyx.org>
 
+	* insetfloat.[Ch]: move the params into a separate InsetFloatParams
+	struct.
+
+2003-03-05  Angus Leeming  <leeming@lyx.org>
+
 	* insetcommandparams.[Ch] (getAsString, setFromString): remove.
 
 	* insetinclude.[Ch]: define a new class InsetIncludeMailer and use

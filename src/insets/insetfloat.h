@@ -21,6 +21,18 @@
 
 class Painter;
 
+struct InsetFloatParams {
+	///
+	InsetFloatParams() : placement("htbp"), wide(false) {}
+	///
+	string type;
+	///
+	string placement;
+	///
+	bool wide;
+};
+
+
 /** The float inset
 
 */
@@ -70,13 +82,16 @@ public:
 	bool  showInsetDialog(BufferView *) const;
 	///
 	boost::signal0<void> hideDialog;
+	///
+	InsetFloatParams const & params() const { return params_; }
+	///
+	void writeParams(std::ostream & os) const;
+	///
+	void readParams(Buffer const * buf, LyXLex & lex);
+	
 private:
 	///
-	string floatType_;
-	///
-	string floatPlacement_;
-	///
-	bool wide_;
+	InsetFloatParams params_;
 };
 
 #endif

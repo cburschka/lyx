@@ -61,7 +61,7 @@ void QFloat::update_contents()
 	bool force = false;
 	bool here_definitely = false;
 
-	FloatParams const & params = controller().params();
+	InsetFloatParams const & params = controller().params();
 
 	string const & placement = params.placement;
 
@@ -107,7 +107,7 @@ void QFloat::update_contents()
 
 void QFloat::apply()
 {
-	FloatParams & params = controller().params();
+	InsetFloatParams & params = controller().params();
 
 	params.wide = dialog_->spanCB->isChecked();
 

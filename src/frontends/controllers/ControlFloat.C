@@ -17,7 +17,7 @@
 
 
 ControlFloat::ControlFloat(LyXView & lv, Dialogs & d)
-	: ControlInset<InsetFloat, FloatParams>(lv, d)
+	: ControlInset<InsetFloat, InsetFloatParams>(lv, d)
 {}
 
 
@@ -34,19 +34,7 @@ void ControlFloat::applyParamsNoInset()
 {}
 
 
-FloatParams const ControlFloat::getParams(InsetFloat const & inset)
+InsetFloatParams const ControlFloat::getParams(InsetFloat const & inset)
 {
-	return FloatParams(inset);
+	return inset.params();
 }
-
-
-FloatParams::FloatParams()
-	: placement("htbp"),
-	  wide(false)
-{}
-
-
-FloatParams::FloatParams(InsetFloat const & inset)
-	: placement(inset.placement()),
-	  wide(inset.wide())
-{}

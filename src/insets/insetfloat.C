@@ -119,7 +119,7 @@ string floatname(string const & type, BufferParams const & bp)
 
 
 InsetFloat::InsetFloat(BufferParams const & bp, string const & type)
-	: InsetCollapsable(bp), wide_(false)
+	: InsetCollapsable(bp)
 {
 	string lab(_("float: "));
 	lab += floatname(type, bp);
@@ -129,7 +129,7 @@ InsetFloat::InsetFloat(BufferParams const & bp, string const & type)
 	font.decSize();
 	font.setColor(LColor::collapsable);
 	setLabelFont(font);
-	floatType_ = type;
+	params_.type = type;
 	setInsetName(type);
 	LyXTextClass const & tclass = bp.getLyXTextClass();
 	if (tclass.hasLayout(caplayout))
@@ -138,8 +138,7 @@ InsetFloat::InsetFloat(BufferParams const & bp, string const & type)
 
 
 InsetFloat::InsetFloat(InsetFloat const & in, bool same_id)
-	: InsetCollapsable(in, same_id), floatType_(in.floatType_),
-	  floatPlacement_(in.floatPlacement_), wide_(in.wide_)
+	: InsetCollapsable(in, same_id), params_(in.params_)
 {}
 
 
@@ -149,32 +148,37 @@ InsetFloat::~InsetFloat()
 }
 
 
-void InsetFloat::write(Buffer const * buf, ostream & os) const
+void InsetFloat::writeParams(ostream & os) const
 {
 	os << "Float " // getInsetName()
-	   << floatType_ << '\n';
+	   << params_.type << '\n';
 
-	if (!floatPlacement_.empty()) {
-		os << "placement " << floatPlacement_ << "\n";
+	if (!params_.placement.empty()) {
+		os << "placement " << params_.placement << "\n";
 	}
-	if (wide_) {
+	if (params_.wide) {
 		os << "wide true\n";
 	} else {
 		os << "wide false\n";
 	}
+}
 
+
+void InsetFloat::write(Buffer const * buf, ostream & os) const
+{
+	writeParams(os);
 	InsetCollapsable::write(buf, os);
 }
 
 
-void InsetFloat::read(Buffer const * buf, LyXLex & lex)
+void InsetFloat::readParams(Buffer const * buf, LyXLex & lex)
 {
 	if (lex.isOK()) {
 		lex.next();
 		string token = lex.getString();
 		if (token == "placement") {
 			lex.next();
-			floatPlacement_ = lex.getString();
+			params_.placement = lex.getString();
 		} else {
 			// take countermeasures
 			lex.pushToken(token);
@@ -195,6 +199,12 @@ void InsetFloat::read(Buffer const * buf, LyXLex & lex)
 			lex.pushToken(token);
 		}
 	}
+}
+
+
+void InsetFloat::read(Buffer const * buf, LyXLex & lex)
+{
+	readParams(buf, lex);
 	InsetCollapsable::read(buf, lex);
 }
 
@@ -205,7 +215,7 @@ void InsetFloat::validate(LaTeXFeatures & features) const
 		features.require("float");
 	}
 
-	features.useFloat(floatType_);
+	features.useFloat(params_.type);
 	InsetCollapsable::validate(features);
 }
 
@@ -226,7 +236,7 @@ int InsetFloat::latex(Buffer const * buf,
 		      ostream & os, bool fragile, bool fp) const
 {
 	FloatList const & floats = buf->params.getLyXTextClass().floats();
-	string const tmptype = (wide_ ? floatType_ + "*" : floatType_);
+	string const tmptype = (params_.wide ? params_.type + "*" : params_.type);
 	// Figure out the float placement to use.
 	// From lowest to highest:
 	// - float default placement
@@ -234,11 +244,11 @@ int InsetFloat::latex(Buffer const * buf,
 	// - specific float placement
 	string placement;
 	string const buf_placement = buf->params.float_placement;
-	string const def_placement = floats.defaultPlacement(floatType_);
-	if (!floatPlacement_.empty()
-	    && floatPlacement_ != def_placement) {
-		placement = floatPlacement_;
-	} else if (floatPlacement_.empty()
+	string const def_placement = floats.defaultPlacement(params_.type);
+	if (!params_.placement.empty()
+	    && params_.placement != def_placement) {
+		placement = params_.placement;
+	} else if (params_.placement.empty()
 		   && !buf_placement.empty()
 		   && buf_placement != def_placement) {
 		placement = buf_placement;
@@ -266,9 +276,9 @@ int InsetFloat::latex(Buffer const * buf,
 
 int InsetFloat::docbook(Buffer const * buf, ostream & os, bool mixcont) const
 {
-	os << '<' << floatType_ << '>';
+	os << '<' << params_.type << '>';
 	int const i = inset.docbook(buf, os, mixcont);
-	os << "</" << floatType_ << '>';
+	os << "</" << params_.type << '>';
 
 	return i;
 }
@@ -297,7 +307,7 @@ bool InsetFloat::showInsetDialog(BufferView * bv) const
 
 string const & InsetFloat::type() const
 {
-	return floatType_;
+	return params_.type;
 }
 
 
@@ -305,24 +315,24 @@ void InsetFloat::placement(string const & p)
 {
 	// FIX: Here we should only allow the placement to be set
 	// if a valid value.
-	floatPlacement_ = p;
+	params_.placement = p;
 }
 
 
 string const & InsetFloat::placement() const
 {
-	return floatPlacement_;
+	return params_.placement;
 }
 
 
 void InsetFloat::wide(bool w, BufferParams const & bp)
 {
-	wide_ = w;
+	params_.wide = w;
 
 	string lab(_("float:"));
-	lab += floatname(floatType_, bp);
+	lab += floatname(params_.type, bp);
 
-	if (wide_)
+	if (params_.wide)
 		lab += '*';
 
 	setLabel(lab);
@@ -331,7 +341,7 @@ void InsetFloat::wide(bool w, BufferParams const & bp)
 
 bool InsetFloat::wide() const
 {
-	return wide_;
+	return params_.wide;
 }
 
 
