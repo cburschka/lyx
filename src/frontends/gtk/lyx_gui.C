@@ -369,10 +369,23 @@ void lyx_gui::exit()
 }
 
 
-FuncStatus lyx_gui::getStatus(FuncRequest const & /*ev*/)
+FuncStatus lyx_gui::getStatus(FuncRequest const & ev)
 {
-	// Nothing interesting to do here
-	return FuncStatus();
+	FuncStatus flag;
+	switch (ev.action) {
+	// Add this back if the gtk doc prefs dialog includes preamble - jcs
+	/*case LFUN_DIALOG_SHOW:
+		if (ev.argument == "preamble")
+			flag.unknown(true);
+		break;*/
+	case LFUN_TOOLTIPS_TOGGLE:
+		flag.unknown(true);
+		break;
+	default:
+		break;
+	}
+
+	return flag;
 }
 
 
