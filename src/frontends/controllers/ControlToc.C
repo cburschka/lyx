@@ -89,14 +89,13 @@ namespace toc
 
 string const getType(string const & cmdName)
 {
-	string type;
+	string type = cmdName;
 
-	// It would be nice to have a map to extract this info.
-	// Does one already exist, Lars?
-	if (cmdName == "tableofcontents" )
+	// special case
+	if (cmdName == "tableofcontents")
 		type = "TOC";
 
-	return cmdName;
+	return type;
 }
  
 } // namespace toc 

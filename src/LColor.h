@@ -131,10 +131,10 @@ public:
 		error,
 		/// EOL marker color
 		eolmarker,
+		/// Added space colour
+		added_space,
 		/// Appendix line color
 		appendixline,
-		/// VFill line color
-		vfillline,
 		/// Top and bottom line color
 		topline,
 		/// Table line color

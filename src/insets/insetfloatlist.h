@@ -16,20 +16,19 @@
 #pragma interface
 #endif
 
-#include "insetbutton.h"
+#include "insetcommand.h"
 
 /** Used to insert table of contents
  */
-class InsetFloatList : public InsetButton {
+class InsetFloatList : public InsetCommand {
 public:
 	///
-	InsetFloatList() {}
+	InsetFloatList();
 	///
-	InsetFloatList(string const & type) 
-		: float_type(type) {}
+	InsetFloatList(string const & type);
 	///
 	Inset * clone(Buffer const &, bool = false) const {
-		return new InsetFloatList(*this);
+		return new InsetFloatList(getCmdName());
 	}
 	///
 	string const getScreenLabel(Buffer const *) const;
@@ -55,8 +54,6 @@ public:
 	int docbook(Buffer const *, std::ostream &) const { return 0; }
 	///
 	int ascii(Buffer const *, std::ostream &, int linelen) const;
-private:
-	string float_type;
 };
 
 #endif

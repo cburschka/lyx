@@ -594,7 +594,7 @@ int VSpace::inPixels(int default_height, int default_skip, int default_width) co
 		// is the same as on paper.
 
 		// we don't care about sign of value, we
-		// can't display negative anyway
+		// display negative space with text too
 		result = 0.0;
 		value = len.value();
 		int val_sign = value < 0.0 ? -1 : 1;

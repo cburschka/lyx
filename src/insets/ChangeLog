@@ -1,8 +1,15 @@
+2001-11-04  John Levon  <moz@compsoc.man.ac.uk>
+
+	* insetfloatlist.h:
+	* insetfloatlist.C: derive from InsetCommand so gui can use it
+	  easily
+ 
 2001-11-26  André Pönitz <poenitz@gmx.net>
 	
 	* insettext.[Ch]:
-	*	insetert.C:
-	*	insetnote.C: reduce header dependencies, introduce type for positions
+	* insetert.C:
+	* insetnote.C: reduce header dependencies, introduce type for
+	positions 
 
 2001-11-23  John Levon  <moz@compsoc.man.ac.uk>
 

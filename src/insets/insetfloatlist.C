@@ -6,15 +6,31 @@
 
 #include "insetfloatlist.h"
 #include "FloatList.h"
+#include "frontends/Dialogs.h"
+#include "LyXView.h"
+#include "BufferView.h"
 #include "buffer.h"
 #include "gettext.h"
 #include "debug.h"
 
 using std::endl;
 
+InsetFloatList::InsetFloatList()
+	: InsetCommand(InsetCommandParams())
+{
+}
+
+ 
+InsetFloatList::InsetFloatList(string const & type)
+	: InsetCommand(InsetCommandParams())
+{
+	setCmdName(type);
+}
+
+
 string const InsetFloatList::getScreenLabel(Buffer const *) const 
 {
-	string const guiName = floatList[float_type]->second.name();
+	string const guiName = floatList[getCmdName()]->second.name();
 	if (!guiName.empty()) {
 		string const res = guiName + _(" List");
 		return res;
@@ -31,7 +47,7 @@ Inset::Code InsetFloatList::lyxCode() const
 
 void InsetFloatList::write(Buffer const *, std::ostream & os) const
 {
-	os << "FloatList " << float_type << "\n";
+	os << "FloatList " << getCmdName() << "\n";
 }
 
 
@@ -40,8 +56,8 @@ void InsetFloatList::read(Buffer const *, LyXLex & lex)
 	string token;
 
 	if (lex.eatLine()) {
-		float_type = lex.getString();
-		lyxerr << "FloatList::float_type: " << float_type << endl;
+		setCmdName(lex.getString());
+		lyxerr << "FloatList::float_type: " << getCmdName() << endl;
 	} else
 		lex.printError("InsetFloatList: Parse error: `$$Token'");
 	while (lex.isOK()) {
@@ -57,12 +73,9 @@ void InsetFloatList::read(Buffer const *, LyXLex & lex)
 }
 
 
-void InsetFloatList::edit(BufferView *, int, int, unsigned int)
+void InsetFloatList::edit(BufferView * bv, int, int, unsigned int)
 {
-	// FIX: Implement me please.
-#if 0
-	bv->owner()->getDialogs()->showFloatList(this);
-#endif
+	bv->owner()->getDialogs()->showTOC(this);
 }
 
 
@@ -74,9 +87,8 @@ void InsetFloatList::edit(BufferView * bv, bool)
 
 int InsetFloatList::latex(Buffer const *, std::ostream & os, bool, bool) const
 {
-	FloatList::const_iterator cit = floatList[float_type];
+	FloatList::const_iterator cit = floatList[getCmdName()];
 
-	
 	if (cit != floatList.end()) {
 		if (cit->second.builtin()) {
 			// Only two different types allowed here:
@@ -89,11 +101,11 @@ int InsetFloatList::latex(Buffer const *, std::ostream & os, bool, bool) const
 				os << "%% unknown builtin float\n";
 			}
 		} else {
-			os << "\\listof{" << float_type << "}{"
+			os << "\\listof{" << getCmdName() << "}{"
 			   << _("List of ") << cit->second.name() << "}\n";
 		}
 	} else {
-		os << "%%\\listof{" << float_type << "}{"
+		os << "%%\\listof{" << getCmdName() << "}{"
 		   << _("List of ") << cit->second.name() << "}\n";
 	}
 	return 1;
@@ -106,7 +118,7 @@ int InsetFloatList::ascii(Buffer const * buffer, std::ostream & os, int) const
 
 	Buffer::Lists const toc_list = buffer->getLists();
 	Buffer::Lists::const_iterator cit =
-		toc_list.find(float_type);
+		toc_list.find(getCmdName());
 	if (cit != toc_list.end()) {
 		Buffer::SingleList::const_iterator ccit = cit->second.begin();
 		Buffer::SingleList::const_iterator end = cit->second.end();

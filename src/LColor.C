@@ -85,7 +85,7 @@ LColor::LColor()
 	{ error, N_("LaTeX error"), "error", "Red", "error" },
 	{ eolmarker, N_("end-of-line marker"), "eolmarker", "Brown", "eolmarker" },
 	{ appendixline, N_("appendix line"), "appendixline", "Brown", "appendixline" },
-	{ vfillline, N_("vfill line"), "vfillline", "Brown", "vfillline" },
+	{ added_space, N_("added space markers"), "added_space", "Brown", "added_space" },
 	{ topline, N_("top/bottom line"), "topline", "Brown", "topline" },
 	{ tabularline, N_("tabular line"), "tabularline", "black",
 	     "tabularline" },

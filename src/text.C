@@ -3154,7 +3154,8 @@ void LyXText::paintFirstRow(DrawRowParams & p)
 	// draw a top pagebreak
 	if (parparams.pagebreakTop()) {
 		int const y = p.yo + y_top + 2*defaultHeight();
-		p.pain->line(0, y, p.width, y, LColor::pagebreak, Painter::line_onoffdash);
+		p.pain->line(p.xo, y, p.xo + p.width, y, 
+			LColor::pagebreak, Painter::line_onoffdash);
  
 		int w = 0;
 		int a = 0;
@@ -3175,18 +3176,43 @@ void LyXText::paintFirstRow(DrawRowParams & p)
 		int const y1 = p.yo + y_top + 3 * defaultHeight();
 		int const y2 = p.yo + 2 + y_top;
  
-		p.pain->line(0, y1, LYX_PAPER_MARGIN, y1, LColor::vfillline);
+		p.pain->line(0, y1, LYX_PAPER_MARGIN, y1, LColor::added_space);
 		
-		p.pain->line(0, y2, LYX_PAPER_MARGIN, y2, LColor::vfillline);
+		p.pain->line(0, y2, LYX_PAPER_MARGIN, y2, LColor::added_space);
 
 		int const x = LYX_PAPER_MARGIN / 2;
  
-		p.pain->line(x, y2, x, y1, LColor::vfillline);
+		p.pain->line(x, y2, x, y1, LColor::added_space);
 		
 		y_top += 3 * defaultHeight();
+	} else if (parparams.spaceTop().kind() == VSpace::LENGTH) {
+		string str(string(_("Space above")) + " ("
+			+ parparams.spaceTop().asLyXCommand()
+			+ ")");
+ 
+		int const space = int(parparams.spaceTop().inPixels(p.bv));
+		int const y = p.yo + y_top + space / 2;
+ 
+		p.pain->line(p.xo, y, p.xo + p.width, y, 
+			LColor::added_space, Painter::line_onoffdash);
+ 
+		int w = 0;
+		int a = 0;
+		int d = 0;
+ 
+		LyXFont pb_font;
+		pb_font.setColor(LColor::added_space).decSize();
+		lyxfont::rectText(str, pb_font, w, a, d);
+
+		// don't draw if it won't fit 
+		if (a + d + 4 < space) { 
+			p.pain->rectText(p.xo + (p.width - w)/2, y + d,
+				      str, pb_font,
+				      backgroundColor(),
+				      backgroundColor());
+		}
 	}
 	
-	// think about user added space
 	y_top += int(parparams.spaceTop().inPixels(p.bv));
 	
 	Buffer const * buffer = p.bv->buffer();
@@ -3350,7 +3376,7 @@ void LyXText::paintLastRow(DrawRowParams & p)
 		pb_font.setColor(LColor::pagebreak).decSize();
 		int const y = p.yo + y_bottom - 2 * defaultHeight();
  
-		p.pain->line(0, y, ww, y, LColor::pagebreak, Painter::line_onoffdash);
+		p.pain->line(p.xo, y, p.xo + p.width, y, LColor::pagebreak, Painter::line_onoffdash);
  
 		int w = 0;
 		int a = 0;
@@ -3370,11 +3396,37 @@ void LyXText::paintLastRow(DrawRowParams & p)
 		int const y = p.yo + y_bottom - 3 * defaultHeight();
 		int const y2 = p.yo + y_bottom - 2;
 		
-		p.pain->line(0, y, x2, y, LColor::vfillline);
-		p.pain->line(0, y2, x2, y2, LColor::vfillline);
-		p.pain->line(x, y, x, y2, LColor::vfillline);
+		p.pain->line(0, y, x2, y, LColor::added_space);
+		p.pain->line(0, y2, x2, y2, LColor::added_space);
+		p.pain->line(x, y, x, y2, LColor::added_space);
  
 		y_bottom -= 3 * defaultHeight();
+	} else if (parparams.spaceBottom().kind() == VSpace::LENGTH) {
+		string str(string(_("Space below")) + " ("
+			+ parparams.spaceBottom().asLyXCommand()
+			+ ")");
+ 
+		int const space = int(parparams.spaceBottom().inPixels(p.bv));
+		int const y = p.yo + y_bottom - space / 2;
+ 
+		p.pain->line(p.xo, y, p.xo + p.width, y,
+			LColor::added_space, Painter::line_onoffdash);
+ 
+		int w = 0;
+		int a = 0;
+		int d = 0;
+ 
+		LyXFont pb_font;
+		pb_font.setColor(LColor::added_space).decSize();
+		lyxfont::rectText(str, pb_font, w, a, d);
+
+		// don't draw if it won't fit 
+		if (a + d + 4 < space) { 
+			p.pain->rectText(p.xo + (p.width - w) / 2, y + d,
+				      str, pb_font,
+				      backgroundColor(),
+				      backgroundColor());
+		} 
 	}
 	
 	// think about user added space
@@ -3480,7 +3532,7 @@ void LyXText::paintRowText(DrawRowParams & p)
 			int const y1 = y0 - defaultHeight() / 2;
 
 			p.pain->line(int(p.x), y1, int(p.x), y0,
-				     LColor::vfillline);
+				     LColor::added_space);
 			
 			if (hfillExpansion(buffer, p.row, pos)) {
 				int const y2 = (y0 + y1) / 2;
@@ -3488,19 +3540,19 @@ void LyXText::paintRowText(DrawRowParams & p)
 				if (pos >= main_body) {
 					p.pain->line(int(p.x), y2,
 						  int(p.x + p.hfill), y2,
-						  LColor::vfillline,
+						  LColor::added_space,
 						  Painter::line_onoffdash);
 					p.x += p.hfill;
 				} else {
 					p.pain->line(int(p.x), y2,
 						  int(p.x + p.label_hfill), y2,
-						  LColor::vfillline,
+						  LColor::added_space,
 						  Painter::line_onoffdash);
 					p.x += p.label_hfill;
 				}
 				p.pain->line(int(p.x), y1,
 					     int(p.x), y0,
-					     LColor::vfillline);
+					     LColor::added_space);
 			}
 			p.x += 2;
 			++vpos;
@@ -3570,7 +3622,7 @@ void LyXText::getVisibleRow(BufferView * bv, int y_offset, int x_offset,
 	// paint text
 	paintRowText(p); 
 }
-
+ 
 
 int LyXText::defaultHeight() const
 {
