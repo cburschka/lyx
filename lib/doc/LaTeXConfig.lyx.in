@@ -1331,7 +1331,7 @@ Astrophysics and Space Science, Solar Physics
 
 \begin_layout Subsection
 
-Koma-Script
+KOMA-Script
 \begin_inset LatexCommand \label{sub:Koma-Script}
 
 \end_inset 
@@ -1341,7 +1341,11 @@ Koma-Script
 
 \begin_layout Description
 
-Found: scrartcl: @chk_scrartcl@, 
+Found: 
+\family sans 
+scrartcl
+\family default 
+: @chk_scrartcl@, 
 \family sans 
 scrreprt
 \family default 
@@ -1381,16 +1385,20 @@ book
 
 \begin_layout Subsection
 
-Koma-Script letter
+KOMA-Script letter
 \end_layout
 
 \begin_layout Standard
 
-Found: scrlettr: @chk_scrlettr@, 
+Found: 
 \family sans 
-scr
+scrlettr
 \family default 
-lttr2: @chk_scrlttr2@
+: @chk_scrlettr@, 
+\family sans 
+scrlttr2
+\family default 
+: @chk_scrlttr2@
 \end_layout
 
 \begin_layout Description
@@ -1537,6 +1545,31 @@ The LyX layout file for this document class is still insufficiently tested.
 \end_layout
 
 \end_deeper 
+\begin_layout Subsection
+
+memoir
+\end_layout
+
+\begin_layout Description
+
+Found: @chk_memoir@
+\end_layout
+
+\begin_layout Description
+
+CTAN: 
+\family typewriter 
+macros/latex/contrib/supported/memoir/
+\end_layout
+
+\begin_layout Description
+
+Notes: Memoir is a flexible class for typesetting general fiction, non-fiction
+ and mathematical works as books, reports, articles or manuscripts.
+ Documents can use 9, 10, 11, 12, 14 or 17pt as the normal font size.
+ Many methods are provided to let you create your own particular design.
+\end_layout
+
 \begin_layout Subsection
 
 mwcls (mwart, mwbk, mwrep)

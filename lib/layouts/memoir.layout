@@ -1,0 +1,87 @@
+#% Do not delete the line below; configure depends on this
+#  \DeclareLaTeXClass{memoir}
+# Memoir textclass definition file (poor man's version).
+# Author: Jürgen Spitzmüller <spitzmueller@gmx.de>
+# feel free to contribute missing features!
+
+Input stdclass.inc
+Input numreport.inc
+
+
+Sides                  2
+PageStyle              Headings
+
+
+ClassOptions
+	FontSize             9|10|11|12|14|17
+	PageStyle            empty|plain|headings|myheadings|ruled|Ruled|companion
+	Other                oldfontcommands
+End
+
+
+Style Bibliography
+	TopSep               4
+	LabelString          Bibliography
+	LabelFont
+	  Series             Bold
+	  Size               Huge
+	EndFont
+End
+
+
+Style Chapterprecis
+	Margin               Static
+	LatexType            Command
+	LatexName            chapterprecis
+	NeedProtect          1
+	NextNoIndent         1
+	LeftMargin           MM
+	LabelSep             xxx
+	ParSkip              0.4
+	TopSep               0.4
+	BottomSep            0
+	ParSep               0.4
+	Align                Block
+	AlignPossible        Block
+	Font
+	  Shape              Italic
+	  Size               Normal
+	EndFont
+End
+
+
+Style Epigraph
+	Margin                Right_Address_Box
+	LatexType             Command
+	LatexName             epigraph
+	ParSkip               0.4
+	BottomSep             1.5
+	ParSep                1.5
+	Align                 Left
+	AlignPossible         Left
+End
+
+
+Style Poemtitle
+	LatexType             Command
+	LatexName             poemtitle
+	NeedProtect           1
+	NextNoIndent          1
+	LabelSep              xxx
+	ParSkip               0.4
+	TopSep                0.4
+	ParSep                0.4
+	Align                 center
+	AlignPossible         center
+	OptionalArgs          1
+	Font
+	   Series             Bold
+	EndFont
+End
+
+
+Style Poemtitle*
+	CopyStyle             Poemtitle
+	LatexName             poemtitle*
+	OptionalArgs          0
+End
