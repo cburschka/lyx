@@ -16,6 +16,7 @@ Style Standard
 End
 
 Input stdlists.inc
+Input stdcounters.inc
 
 # Modify Description
 Style Description
