@@ -191,7 +191,8 @@ inline CatCode catcode(unsigned char c)
 
 
 enum {
-	FLAG_BRACE_LAST = 1 << 1,  //  last closing brace ends the parsing
+	FLAG_ALIGN      = 1 << 0,  //  next & or \\ ends the parsing process
+	FLAG_BRACE_LAST = 1 << 1,  //  next closing brace ends the parsing
 	FLAG_RIGHT      = 1 << 2,  //  next \\right ends the parsing process
 	FLAG_END        = 1 << 3,  //  next \\end ends the parsing process
 	FLAG_BRACK_LAST = 1 << 4,  //  next closing bracket ends the parsing
@@ -757,9 +758,10 @@ void Parser::parse1(MathGridInset & grid, unsigned flags,
 		else if (t.cat() == catAlign) {
 			//lyxerr << " column now " << (cellcol + 1)
 			//       << " max: " << grid.ncols() << endl;
+			if (flags & FLAG_ALIGN)
+				return;
 			if (addCol(grid, cellcol))
-				cell = &grid.cell(grid.index(cellrow,
-				                             cellcol));
+				cell = &grid.cell(grid.index(cellrow, cellcol));
 		}
 
 		else if (t.cat() == catSuper || t.cat() == catSub) {
@@ -917,6 +919,8 @@ void Parser::parse1(MathGridInset & grid, unsigned flags,
 		}
 
 		else if (t.cs() == "\\") {
+			if (flags & FLAG_ALIGN)
+				return;
 			if (addRow(grid, cellrow, getArg('[', ']'))) {
 				cellcol = 0;
 				if (grid.asHullInset())
@@ -1210,25 +1214,35 @@ void Parser::parse1(MathGridInset & grid, unsigned flags,
 			if (l) {
 				if (l->inset == "font") {
 					cell->push_back(createMathInset(t.cs()));
-					parse(cell->back().nucleus()->cell(0), FLAG_ITEM, asMode(mode, l->extra));
+					parse(cell->back().nucleus()->cell(0),
+						FLAG_ITEM, asMode(mode, l->extra));
 				}
 
 				else if (l->inset == "oldfont") {
 					cell->push_back(createMathInset(t.cs()));
-					parse(cell->back().nucleus()->cell(0), flags, asMode(mode, l->extra));
-					return;
+					parse(cell->back().nucleus()->cell(0),
+						flags | FLAG_ALIGN, asMode(mode, l->extra));
+					if (prevToken().cat() != catAlign &&
+					    prevToken().cs() != "\\")
+						return;
+					putback();
 				}
 
 				else if (l->inset == "style") {
 					cell->push_back(createMathInset(t.cs()));
-					parse(cell->back().nucleus()->cell(0), flags, mode);
-					return;
+					parse(cell->back().nucleus()->cell(0),
+						flags | FLAG_ALIGN, mode);
+					if (prevToken().cat() != catAlign &&
+					    prevToken().cs() != "\\")
+						return;
+					putback();
 				}
 
 				else {
 					MathAtom at = createMathInset(t.cs());
 					for (MathInset::idx_type i = 0; i < at->nargs(); ++i)
-						parse(at.nucleus()->cell(i), FLAG_ITEM, asMode(mode, l->extra));
+						parse(at.nucleus()->cell(i),
+							FLAG_ITEM, asMode(mode, l->extra));
 					cell->push_back(at);
 				}
 			}

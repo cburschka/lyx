@@ -1,3 +1,8 @@
+2005-01-09  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* math_parser.C (parse1): handle style commands that are not inside
+	a {} pair, fixes bug 1459 (from André)
+
 2005-01-03  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* math_decorationinset.C (ams, validate): new methods. Require
