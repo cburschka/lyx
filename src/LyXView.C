@@ -206,9 +206,9 @@ void LyXView::updateLayoutChoice()
 		toolbar->updateLayoutList(false);
 	}
 	
-	layout_type layout = bufferview->text->cursor.par()->getLayout();
+	layout_type layout = bufferview->getLyXText()->cursor.par()->getLayout();
 
-	if (layout != current_layout){
+	if (layout != current_layout) {
 		toolbar->setLayout(layout);
 		current_layout = layout;
 	}

@@ -456,10 +456,13 @@ int BufferView::unlockInset(UpdatableInset * inset)
 	if (inset && theLockingInset() == inset) {
 		inset->insetUnlock(this);
 		theLockingInset(0);
+		// make sure we update the combo !
+		owner()->setLayout(getLyXText()->cursor.par()->getLayout());
 		finishUndo();
 		return 0;
 	} else if (inset && theLockingInset() &&
 		   theLockingInset()->unlockInsetInInset(this, inset)) {
+		// owner inset has updated the layout combo 
 		finishUndo();
 		return 0;
 	}
@@ -488,7 +491,7 @@ void BufferView::updateInset(Inset * inset, bool mark_dirty)
 bool BufferView::ChangeInsets(Inset::Code code,
 			      string const & from, string const & to)
 {
-	bool flag = false;
+	bool need_update = false;
 	LyXCursor cursor = text->cursor;
 	LyXCursor tmpcursor = cursor;
 	cursor.par(tmpcursor.par());
@@ -498,20 +501,22 @@ bool BufferView::ChangeInsets(Inset::Code code,
 	for (ParIterator it = buffer()->par_iterator_begin();
 	     it != end; ++it) {
 		Paragraph * par = *it;
-		bool flag2 = false;
+		bool changed_inset = false;
 		for (Paragraph::inset_iterator it2 = par->inset_iterator_begin();
 		     it2 != par->inset_iterator_end(); ++it2) {
 			if ((*it2)->lyxCode() == code) {
 				InsetCommand * inset = static_cast<InsetCommand *>(*it2);
 				if (inset->getContents() == from) {
 					inset->setContents(to);
-					flag2 = true;
+					changed_inset = true;
 				}
 			}
 		}
-		if (flag2) {
-			flag = true;
-#warning Fix me
+		if (changed_inset) {
+			need_update = true;
+#ifdef WITH_WARNINGS
+#warning FIXME
+#endif
 			// The test it.size()==1 was needed to prevent crashes.
 			// How to set the cursor corretly when it.size()>1 ??
 			if (it.size() == 1) {
@@ -523,7 +528,7 @@ bool BufferView::ChangeInsets(Inset::Code code,
 		}
 	}
 	text->setCursorIntern(this, cursor.par(), cursor.pos());
-	return flag;
+	return need_update;
 }
 
 

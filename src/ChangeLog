@@ -1,5 +1,10 @@
 2001-12-05  John Levon  <moz@compsoc.man.ac.uk>
 
+	* LyXView.C:
+	* BufferView2.C: fix layout combo update on inset unlock
+
+2001-12-05  John Levon  <moz@compsoc.man.ac.uk>
+
 	* Makefile.am: don't compile unused files
 
 2001-12-05  John Levon  <moz@compsoc.man.ac.uk>
