@@ -22,6 +22,7 @@
 #include "Dialogs.h"
 #include "lyxfunc.h"
 #include "LyXView.h"
+#include "gettext.h"
 
 #include "insets/insetgraphics.h"
 

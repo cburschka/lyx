@@ -36,6 +36,8 @@
 #include "debug.h"
 #include "lyxfunc.h"
 #include "WorkArea.h"
+#include "gettext.h"
+#include "language.h"
 
 using std::ostream;
 using std::ifstream;

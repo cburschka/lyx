@@ -31,6 +31,7 @@
 #include "support/filetools.h"
 #include "lyxtext.h"
 #include "converter.h"
+#include "gettext.h"
 
 using std::ostream;
 using std::ofstream;

@@ -20,6 +20,8 @@
 #include "Liason.h"
 #include "LyXView.h"
 #include "bufferview_funcs.h" // ToggleAndShow
+#include "gettext.h"
+#include "language.h"
 
 using Liason::setMinibuffer;
 using SigC::slot;

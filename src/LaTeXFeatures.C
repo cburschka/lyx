@@ -24,6 +24,7 @@
 #include "layout.h"
 #include "support/filetools.h"
 #include "FloatList.h"
+#include "language.h"
 
 using std::endl;
 

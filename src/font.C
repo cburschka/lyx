@@ -20,6 +20,7 @@
 #include "FontLoader.h"
 #include "lyxrc.h"
 #include "encoding.h"
+#include "language.h"
 
 namespace {
 

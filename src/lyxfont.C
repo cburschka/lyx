@@ -19,6 +19,7 @@
 
 #include "gettext.h"
 #include "lyxfont.h"
+#include "language.h"
 #include "debug.h"
 #include "lyxrc.h"
 #include "lyxlex.h"

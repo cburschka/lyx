@@ -18,7 +18,9 @@
 #pragma implementation
 #endif
 
+#include "gettext.h"
 #include "character.h"
+#include "language.h"
 
 using std::vector;
 

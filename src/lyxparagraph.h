@@ -23,7 +23,6 @@
 #include <boost/array.hpp>
 
 #include "insets/lyxinset.h"
-#include "language.h"
 #include "ParagraphParameters.h"
 
 class BufferParams;
@@ -32,6 +31,7 @@ class TexRow;
 struct LaTeXFeatures;
 class InsetBibKey;
 class BufferView;
+class Language;
 
 // I dare you to enable this and help me find all the bugs that then show
 // up. (Lgb)

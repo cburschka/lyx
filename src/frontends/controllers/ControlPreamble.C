@@ -18,6 +18,7 @@
 #include "buffer.h"
 #include "lyxrc.h"
 #include "Liason.h"
+#include "gettext.h"
 
 
 ControlPreamble::ControlPreamble(LyXView & lv, Dialogs & d)

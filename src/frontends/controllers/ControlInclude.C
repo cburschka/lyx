@@ -20,6 +20,7 @@
 #include "Dialogs.h"
 #include "lyxfunc.h"
 #include "LyXView.h"
+#include "gettext.h"
 
 #include "helper_funcs.h"
 #include "lyxrc.h"

@@ -30,6 +30,7 @@
 #include "support/filetools.h"
 #include "frontends/FileDialog.h"
 #include "lyx_gui_misc.h" // WriteAlert
+#include "gettext.h"
 
 using std::make_pair;
 using std::vector;

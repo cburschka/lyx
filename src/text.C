@@ -34,6 +34,7 @@
 #include "encoding.h"
 #include "lyxscreen.h"
 #include "bufferview_funcs.h"
+#include "language.h"
 
 using std::max;
 using std::min;

@@ -29,6 +29,7 @@
 #include "support/lstrings.h"
 #include "support/path.h"
 #include "support/syscall.h"
+#include "gettext.h"
 
 using std::endl;
 

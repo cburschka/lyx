@@ -145,6 +145,7 @@ TODO Extended features:
 #include <algorithm> // For the std::max
 #include "support/lyxmanip.h"
 #include "debug.h"
+#include "gettext.h"
 
 extern string system_tempdir;
 

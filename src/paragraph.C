@@ -22,6 +22,7 @@
 #include "support/textutils.h"
 #include "lyxrc.h"
 #include "layout.h"
+#include "language.h"
 #include "tex-strings.h"
 #include "buffer.h"
 #include "bufferparams.h"
@@ -39,6 +40,7 @@
 #include "BufferView.h"
 #include "encoding.h"
 #include "ParameterStruct.h"
+#include "gettext.h"
 
 using std::ostream;
 using std::endl;

@@ -32,6 +32,7 @@
 #include "ColorHandler.h"
 #include "lyxrc.h"
 #include "encoding.h"
+#include "language.h"
 
 #include "frontends/support/LyXImage.h"
 

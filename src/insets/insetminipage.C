@@ -24,6 +24,7 @@
 #include "support/LOstream.h"
 #include "support/lstrings.h"
 #include "debug.h"
+#include "gettext.h"
 
 using std::ostream;
 using std::endl;

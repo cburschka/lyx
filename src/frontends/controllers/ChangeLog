@@ -1,3 +1,17 @@
+2001-04-05  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* ControlToc.C: 
+	* ControlSearch.C: 
+	* ControlPrint.C: 
+	* ControlPreamble.C: 
+	* ControlInclude.C: 
+	* ControlGraphics.C: 
+	* ControlExternal.C: 
+	* ControlCopyright.C: include gettext.h
+
+	* ControlCharacter.C: 
+	* character.C: include gettext.h and language.h
+
 2001-04-03  John Levon  <moz@compsoc.man.ac.uk>
 
 	* ButtonController.h:

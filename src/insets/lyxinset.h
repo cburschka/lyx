@@ -19,7 +19,6 @@
 
 #include <X11/Xlib.h>
 
-#include "gettext.h"
 #include "lyxfont.h"
 #include "lyxlex.h"
 #include "commandtags.h"

@@ -21,6 +21,7 @@
 #include "Painter.h"
 #include "commandtags.h"
 #include "support/lstrings.h"
+#include "gettext.h"
 
 using std::endl;
 

@@ -26,6 +26,7 @@
 #include "LyXView.h"
 #include "MenuBackend.h"
 #include "Menubar_pimpl.h"
+#include "gettext.h"
 
 using std::endl;
 using std::vector;

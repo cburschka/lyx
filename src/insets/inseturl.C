@@ -10,6 +10,7 @@
 #include "LyXView.h"
 #include "debug.h"
 #include "frontends/Dialogs.h"
+#include "gettext.h"
 
 using std::ostream;
 

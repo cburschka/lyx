@@ -19,24 +19,11 @@
 #include <iosfwd>
 
 #include "LString.h"
-#include "language.h"
 #include "LColor.h"
-
-// It might happen that locale.h defines ON and OFF. This is not good
-// for us, since we use these names below. But of course this is due
-// to some old compilers. Than is broken when it comes to C++ scoping.
-#include "gettext.h" // so that we are sure tht it won't be included
-// later. 
-#ifdef ON
-#undef ON
-#endif
-
-#ifdef OFF
-#undef OFF
-#endif
 
 class LyXLex;
 class BufferParams;
+class Language;
 
 ///
 class LyXFont {

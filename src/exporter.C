@@ -23,6 +23,7 @@
 #include "lyxrc.h"
 #include "converter.h"
 #include "lyx_gui_misc.h" //WriteAlert
+#include "gettext.h"
 
 using std::vector;
 using std::find;

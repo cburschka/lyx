@@ -17,6 +17,7 @@
 #include "Dialogs.h"
 #include "LyXView.h"
 #include "BufferView.h"
+#include "gettext.h"
 
 using SigC::slot;
 

@@ -20,6 +20,7 @@
 #include "support/lstrings.h" //frontStrip, strip
 #include "lyxtext.h"
 #include "buffer.h"
+#include "gettext.h"
 
 using std::ostream;
 using std::vector;

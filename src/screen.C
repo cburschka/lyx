@@ -25,6 +25,7 @@
 #include "font.h"
 #include "insets/insettext.h"
 #include "ColorHandler.h"
+#include "language.h"
 
 using std::max;
 using std::min;

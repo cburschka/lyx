@@ -21,6 +21,7 @@
 #include "FloatList.h"
 #include "insets/insetfloat.h"
 #include "debug.h"
+#include "gettext.h"
 
 using std::ostream;
 using std::endl;

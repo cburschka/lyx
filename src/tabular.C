@@ -32,6 +32,7 @@
 #include "support/lyxmanip.h"
 #include "insets/insettabular.h"
 #include "insets/insettext.h"
+#include "gettext.h"
 
 using std::ostream;
 using std::istream;

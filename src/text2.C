@@ -43,6 +43,7 @@
 #include "debug.h"
 #include "lyxrc.h"
 #include "FloatList.h"
+#include "language.h"
 
 using std::copy;
 using std::find;

@@ -21,6 +21,7 @@
 #include "BufferView.h"
 #include "Painter.h"
 #include "font.h"
+#include "language.h"
 
 using std::ostream;
 using std::endl;

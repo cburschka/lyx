@@ -27,6 +27,7 @@
 #include "Liason.h"
 #include "helper_funcs.h" // browseFile
 #include "lyx_gui_misc.h" // WriteAlert
+#include "gettext.h"
 
 using Liason::printBuffer;
 using Liason::getPrinterParams;

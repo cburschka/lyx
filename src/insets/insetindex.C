@@ -9,6 +9,7 @@
 #include "LyXView.h"
 #include "frontends/Dialogs.h"
 #include "LaTeXFeatures.h"
+#include "gettext.h"
 
 InsetIndex::InsetIndex(InsetCommandParams const & p)
 	: InsetCommand(p)

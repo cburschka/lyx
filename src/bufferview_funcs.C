@@ -25,7 +25,7 @@
 #include "buffer.h"
 #include "support/lstrings.h"
 #include "lyx_cb.h"
-
+#include "language.h"
 
 #ifndef NEW_INSETS
 void Foot(BufferView * bv)

@@ -1,3 +1,27 @@
+2001-04-05  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* exporter.C: 
+	* paragraph.C: 
+	* screen.C: 
+	* tabular.C: 
+	* CutAndPaste.C: include gettext.h
+
+	* lyxfont.h: remove old hack with ON and OFF.
+
+	* lyxparagraph.h: 
+	* lyxfont.h: do not include language.h...
+
+	* BufferView2.C: 
+	* LaTeXFeatures.C: 
+	* Painter.C: 
+	* bufferview_funcs.C: 
+	* font.C: 
+	* lyxfont.C: 
+	* text.C: 
+	* text2.C: 
+	* trans_mgr.C: 
+	* paragraph.C: ... but do it here instead
+
 2001-04-04  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* text2.C (SetLayout): split in NEW_INSETS and non NEW_INSETS version
@@ -5,7 +29,7 @@
 	* tabular.C: small reformat
 
 	* paragraph.C (GetFontSettings): split in NEW_INSETS and non
-	NEW_INSETS verison
+	NEW_INSETS version
 	(GetChar): ditto
 	(BreakParagraph): ditto
 	(SetOnlyLayout): ditto
@@ -35,7 +59,7 @@
 	* lyxrow.C (par): moved
 	(height): moved
 	(next): moved
-	* lyxrox.h: as inlines here
+	* lyxrow.h: as inlines here
 
 	* lyxfont.h (shape): moved from lyxfont.C
 	(emph): moved from lyxfont.C

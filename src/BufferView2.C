@@ -32,6 +32,7 @@
 #include "BufferView_pimpl.h"
 #include "insets/insetcommand.h" //ChangeRefs
 #include "support/lyxfunctional.h" //equal_1st_in_pair
+#include "language.h"
 
 extern BufferList bufferlist;
 

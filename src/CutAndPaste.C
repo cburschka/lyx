@@ -16,6 +16,7 @@
 #include "insets/inseterror.h"
 #include "lyx_gui_misc.h"
 #include "lyxcursor.h"
+#include "gettext.h"
 
 #ifdef __GNUG__
 #pragma implementation

@@ -1,3 +1,19 @@
+2001-04-05  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* lyxinset.h: do not include gettext.h...
+
+	* inset.C:
+	* insetcaption.C:
+	* insetexternal.C:
+	* insetgraphics.C:
+	* insetindex.C:
+	* insetlabel.C:
+	* insetlatexaccent.C:
+	* insetminipage.C:
+	* insetquotes.C:
+	* insettabular.C:
+	* inseturl.C: ... and do it here instead
+
 2001-04-05  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* insetcollapsable.[Ch] (getLabelList): add std:: on vector<string>
