@@ -1,3 +1,14 @@
+2002-03-14  Juergen Vigna  <jug@sad.it>
+
+	* text2.C (setCursor): just some testcode for #44 not ready yet.
+
+	* undo_funcs.C (textHandleUndo): set the next() and previous()
+	pointers of the paragraph to 0 before deleting otherwise we have
+	problems with the Paragraph::[destructor].
+
+	* text.C (breakParagraph): IMO we should ALWAYS force a real undo
+	on a paragraph insertion.
+
 2002-03-14  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* buffer.C (asciiParagraph): use += operator for char append to

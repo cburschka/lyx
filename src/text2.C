@@ -2048,14 +2048,25 @@ bool LyXText::setCursor(BufferView * bview, Paragraph * par,
 
 
 void LyXText::setCursor(BufferView * bview, LyXCursor & cur, Paragraph * par,
-			pos_type pos, bool boundary) const
+                        pos_type pos, bool boundary) const
 {
 	lyx::Assert(par);
 	lyx::Assert(bview);
-	
+
 	cur.par(par);
 	cur.pos(pos);
 	cur.boundary(boundary);
+
+#if 0
+	if (pos && par->getChar(pos) == Paragraph::META_INSET &&
+		par->getInset(pos)) {
+		Inset * ins = par->getInset(pos);
+		if (ins->needFullRow() || ins->display()) {
+			--pos;
+			boundary = true;
+		}
+	}
+#endif
 
 	// get the cursor y position in text
 	int y = 0;
@@ -2085,12 +2096,12 @@ void LyXText::setCursor(BufferView * bview, LyXCursor & cur, Paragraph * par,
 	}
 	
 	if (last < row->pos())
-                cursor_vpos = row->pos();
+		cursor_vpos = row->pos();
 	else if (pos > last && !boundary)
 		cursor_vpos = (row->par()->isRightToLeftPar(bview->buffer()->params))
 			? row->pos() : last + 1; 
 	else if (pos > row->pos() &&
-		 (pos > last || boundary))
+	         (pos > last || boundary))
 		/// Place cursor after char at (logical) position pos - 1
 		cursor_vpos = (bidi_level(pos - 1) % 2 == 0)
 			? log2vis(pos - 1) + 1 : log2vis(pos - 1);
@@ -2106,8 +2117,7 @@ void LyXText::setCursor(BufferView * bview, LyXCursor & cur, Paragraph * par,
 	     !row->par()->isLineSeparator(main_body-1)))
 		main_body = 0;
 	
-	for (pos_type vpos = row->pos();
-	     vpos < cursor_vpos; ++vpos) {
+	for (pos_type vpos = row->pos(); vpos < cursor_vpos; ++vpos) {
 		pos = vis2log(vpos);
 		if (main_body > 0 && pos == main_body - 1) {
 			x += fill_label_hfill +

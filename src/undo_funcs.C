@@ -23,7 +23,7 @@
 
 #include "iterators.h"
 
-//#define DELETE_UNUSED_PARAGRAPHS 1
+#define DELETE_UNUSED_PARAGRAPHS 1
 #ifdef DELETE_UNUSED_PARAGRAPHS
 #include <vector>
 #endif
@@ -275,17 +275,27 @@ bool textHandleUndo(BufferView * bv, Undo * undo)
 		// And here it's save enough to delete all removed paragraphs
 		vector<Paragraph *>::iterator pit = vvpar.begin();
 		if (pit != vvpar.end()) {
-			lyxerr << "DEL: ";
-			for(;pit != vvpar.end(); ++pit) {
-				lyxerr << *pit << " ";
-				delete (*pit);
-			}
-			lyxerr << endl << "PARS:";
+#if 0
+			lyxerr << endl << "PARS BEFORE:";
 			ParIterator end = bv->buffer()->par_iterator_end();
 			ParIterator it = bv->buffer()->par_iterator_begin();
 			for (; it != end; ++it)
-				lyxerr << *it << " ";
-			lyxerr << endl;
+				lyxerr << (*it)->previous() << "<- " << (*it) << " ->" << (*it)->next() << endl;
+			lyxerr << "DEL: ";
+#endif
+			for(;pit != vvpar.end(); ++pit) {
+//				lyxerr << *pit << " ";
+				(*pit)->previous(0);
+				(*pit)->next(0);
+				delete (*pit);
+			}
+#if 0
+			lyxerr << endl << "PARS AFTER:";
+			end = bv->buffer()->par_iterator_end();
+			it = bv->buffer()->par_iterator_begin();
+			for (; it != end; ++it)
+				lyxerr << (*it)->previous() << "<- " << (*it) << " ->" << (*it)->next() << endl;
+#endif
 		}
 #endif
 	}

@@ -1690,7 +1690,7 @@ void LyXText::breakParagraph(BufferView * bview, char keep_layout)
        && layout.labeltype!= LABEL_SENSITIVE)
 	   return;
    
-   setUndo(bview, Undo::INSERT,cursor.par(),cursor.par()->next()); 
+   setUndo(bview, Undo::FINISH, cursor.par(), cursor.par()->next()); 
 
    // Always break behind a space
    //
@@ -1781,8 +1781,7 @@ void LyXText::redoParagraph(BufferView * bview) const
  * same Paragraph one to the right and make a rebreak */
 void LyXText::insertChar(BufferView * bview, char c)
 {
-	setUndo(bview, Undo::INSERT,
-		cursor.par(), cursor.par()->next());
+	setUndo(bview, Undo::INSERT, cursor.par(), cursor.par()->next());
 
 	// When the free-spacing option is set for the current layout,
 	// disable the double-space checking
@@ -2545,8 +2544,7 @@ void LyXText::changeRegionCase(BufferView * bview,
 {
 	lyx::Assert(from <= to);
 	
-	setUndo(bview, Undo::FINISH,
-		from.par(), to.par()->next());
+	setUndo(bview, Undo::FINISH, from.par(), to.par()->next());
 
 	pos_type pos = from.pos();
 	Paragraph * par = from.par();
@@ -2588,8 +2586,7 @@ void LyXText::transposeChars(BufferView & bview)
 {
 	Paragraph * tmppar = cursor.par();
 
-	setUndo(&bview, Undo::FINISH,
-		tmppar, tmppar->next()); 
+	setUndo(&bview, Undo::FINISH, tmppar, tmppar->next()); 
 
 	pos_type tmppos = cursor.pos();
 
@@ -2646,7 +2643,7 @@ void LyXText::Delete(BufferView * bview)
 		// to make sure undo gets the right cursor position
 		cursor = old_cursor;
 		setUndo(bview, Undo::DELETE,
-			cursor.par(), cursor.par()->next()); 
+		        cursor.par(), cursor.par()->next());
 		cursor = tmpcursor;
 		backspace(bview);
 	}
