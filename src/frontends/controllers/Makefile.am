@@ -40,6 +40,8 @@ libcontrollers_la_SOURCES=\
 	ControlInset.h \
 	ControlLog.C \
 	ControlLog.h \
+	ControlRef.C \
+	ControlRef.h \
 	ControlUrl.C \
 	ControlUrl.h \
 	ControlVCLog.C \

@@ -47,9 +47,22 @@ class ControlConnectBase : public ControlBase
 {
 public:
 	///
+	enum DocTypes {
+		///
+		LATEX,
+		///
+		LITERATE,
+		///
+		LINUXDOC,
+		///
+		DOCBOOK
+	};
+	///
 	ControlConnectBase(LyXView &, Dialogs &);
 	/// The View may need to know if the buffer is read-only.
 	bool isReadonly() const;
+	/// 
+	DocTypes docType() const;
 
 protected:
 	/// True if the dialog depends on the buffer, else false.

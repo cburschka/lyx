@@ -7,12 +7,12 @@
  *
  * ======================================================
  *
- * \file ControlUrl.h
+ * \file ControlRef.h
  * \author Angus Leeming <a.leeming@ic.ac.uk>
  */
 
-#ifndef CONTROLURL_H
-#define CONTROLURL_H
+#ifndef CONTROLREF_H
+#define CONTROLREF_H
 
 #ifdef __GNUG__
 #pragma interface
@@ -20,17 +20,23 @@
 
 #include "ControlCommand.h"
 
-/** A controller for the Url Dialog.
+/** A controller for the Ref Dialog.
  */
-class ControlUrl : public ControlCommand 
-{
+class ControlRef : public ControlCommand {
 public:
 	///
-	ControlUrl(LyXView &, Dialogs &);
+	ControlRef(LyXView &, Dialogs &);
+
+	///
+	std::vector<string> const getLabelList() const;
+	///
+	void gotoRef(string const &) const;
+	///
+	void gotoBookmark() const;
 
 private:
 	/// not needed.
 	virtual void clearDaughterParams() {}
 };
 
-#endif // CONTROLURL_H
+#endif // CONTROLREF_H

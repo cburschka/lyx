@@ -1,65 +1,50 @@
-// -*- C++ -*-
 /* This file is part of
  * ====================================================== 
  *
  *           LyX, The Document Processor
  *
- *           Copyright 2000 The LyX Team.
+ *           Copyright 2000-2001 The LyX Team.
  *
  * ======================================================
+ * 
+ * \file FormRef.C
+ * \author Angus Leeming, a.leeming@ic.ac.uk 
  */
 
 #include <config.h>
-
 #include <algorithm>
-#include FORMS_H_LOCATION
 
 #ifdef __GNUG__
 #pragma implementation
 #endif
 
+#include "xformsBC.h"
+#include "ControlRef.h"
+#include "FormRef.h"
+#include "form_ref.h"
+#include "xforms_helpers.h"
+#include "insets/insetref.h"
+
+/*
 #include "Dialogs.h"
 #include "FormRef.h"
 #include "LyXView.h"
 #include "buffer.h"
 #include "form_ref.h"
 #include "lyxfunc.h"
-#include "insets/insetref.h"
-#include "xforms_helpers.h"
+*/
 
 using std::find;
 using std::max;
 using std::sort;
 using std::vector;
-using SigC::slot;
 
-bool saved_position;
+typedef FormCB<ControlRef, FormDB<FD_form_ref> > base_class;
 
-FormRef::FormRef(LyXView * lv, Dialogs * d)
-	: FormCommand(lv, d, _("Reference")),
-	  at_ref(false)
-{
-	// let the dialog be shown
-	// These are permanent connections so we won't bother
-	// storing a copy because we won't be disconnecting.
-	d->showRef.connect(slot(this, &FormRef::showInset));
-	d->createRef.connect(slot(this, &FormRef::createInset));
-}
-
-
-FL_FORM * FormRef::form() const
-{
-	if (dialog_.get())
-		return dialog_->form;
-	return 0;
-}
-
-
-void FormRef::disconnect()
-{
-	refs.clear();
-	FormCommand::disconnect();
-}
+FormRef::FormRef(ControlRef & c)
+	: base_class(c, _("Reference")),
+	  at_ref_(false)
+{}
 
 
 void FormRef::build()
@@ -79,41 +64,40 @@ void FormRef::build()
 	bc().setCancel(dialog_->button_cancel);
 	bc().setUndoAll(dialog_->button_restore);
 	bc().refresh();
-
-#warning I had to uncomment this so the buttons could be disabled in update() (dekel)
-	//bc().addReadOnly(dialog_->type);
-	//bc().addReadOnly(dialog_->name);
 }
 
 
 void FormRef::update()
 {
-	if (inset_) {
-		fl_set_input(dialog_->ref,  params.getContents().c_str());
-		fl_set_input(dialog_->name, params.getOptions().c_str());
-		fl_set_choice(dialog_->type, 
-			      InsetRef::getType(params.getCmdName()) + 1);
-	}
+	fl_set_input(dialog_->ref,
+		     controller().params().getContents().c_str());
+	fl_set_input(dialog_->name,
+		     controller().params().getOptions().c_str());
+	fl_set_choice(dialog_->type, 
+		      InsetRef::getType(controller().params().getCmdName()) + 1);
 
-	at_ref = false;
+	at_ref_ = false;
 	fl_set_object_label(dialog_->button_go, _("Goto reference"));
 
-	// Name is irrelevant to LaTeX/Literate documents, while
-	// type is irrelevant to LinuxDoc/DocBook.
-	if (lv_->buffer()->isLatex() || lv_->buffer()->isLatex()) {
+	// Name is irrelevant to LaTeX/Literate documents
+	if (controller().docType() == ControlRef::LATEX ||
+	    controller().docType() == ControlRef::LITERATE) {
 		setEnabled(dialog_->name, false);
-		setEnabled(dialog_->type, true);
 	} else {
-		fl_set_choice(dialog_->type, 1);
-
 		setEnabled(dialog_->name, true);
-		setEnabled(dialog_->type, false);
 	}
 
-	refs = lv_->buffer()->getLabelList();
-	updateBrowser(refs);
+	// type is irrelevant to LinuxDoc/DocBook.
+	if (controller().docType() == ControlRef::LINUXDOC ||
+	    controller().docType() == ControlRef::DOCBOOK) {
+		fl_set_choice(dialog_->type, 1);
+		setEnabled(dialog_->type, false);
+	} else {
+		setEnabled(dialog_->type, true);
+	}
 
-	bc().readOnly(lv_->buffer()->isReadonly());
+	refs_ = controller().getLabelList();
+	updateBrowser(refs_);
 }
 
 
@@ -126,7 +110,7 @@ void FormRef::updateBrowser(vector<string> const & akeys) const
 	fl_clear_browser(dialog_->browser);
 	for (vector<string>::const_iterator it = keys.begin();
 	     it != keys.end(); ++it)
-		fl_add_browser_line(dialog_->browser, (*it).c_str());
+		fl_add_browser_line(dialog_->browser, it->c_str());
 
 	if (keys.empty()) {
 		fl_add_browser_line(dialog_->browser,
@@ -145,9 +129,9 @@ void FormRef::updateBrowser(vector<string> const & akeys) const
 			find(keys.begin(), keys.end(), ref);
 		if (cit == keys.end()) {
 			cit = keys.begin();
-			fl_set_input(dialog_->ref, (*cit).c_str());
+			fl_set_input(dialog_->ref, cit->c_str());
 		} else if (ref.empty())
-			fl_set_input(dialog_->ref, (*cit).c_str());
+			fl_set_input(dialog_->ref, cit->c_str());
 
 		int const i = static_cast<int>(cit - keys.begin());
 		fl_set_browser_topline(dialog_->browser, max(i-5, 1));
@@ -158,101 +142,72 @@ void FormRef::updateBrowser(vector<string> const & akeys) const
 
 void FormRef::apply()
 {
-  	if (!lv_->view()->available())
-		return;
-
 	int const type = fl_get_choice(dialog_->type) - 1;
-	params.setCmdName(InsetRef::getName(type));
+	controller().params().setCmdName(InsetRef::getName(type));
 
-	params.setOptions(fl_get_input(dialog_->name));
-	params.setContents(fl_get_input(dialog_->ref));
-
-	if (inset_ != 0) {
-		// Only update if contents have changed
-		if (params != inset_->params()) {
-			inset_->setParams(params);
-			lv_->view()->updateInset(inset_, true);
-		}
-	} else {
-		lv_->getLyXFunc()->Dispatch(LFUN_REF_INSERT,
-					    params.getAsString());
-	}
+	controller().params().setOptions(fl_get_input(dialog_->name));
+	controller().params().setContents(fl_get_input(dialog_->ref));
 }
 
 
-bool FormRef::input(FL_OBJECT *, long data)
+ButtonPolicy::SMInput FormRef::input(FL_OBJECT * ob, long)
 {
-	bool activate(true);
-	switch (data) {
-	// goto reference / go back
-	case 1:
-	{
+	ButtonPolicy::SMInput activate(ButtonPolicy::SMI_VALID);
+
+	if (ob == dialog_->button_go) {
+		// goto reference / go back
+
 		// No change to data
-		activate = false;
-		
-		at_ref = !at_ref;
-		if (at_ref) {
-			lv_->getLyXFunc()->Dispatch(LFUN_BOOKMARK_SAVE, "0");
-			lv_->getLyXFunc()->
-				Dispatch(LFUN_REF_GOTO,
-					 fl_get_input(dialog_->ref));
+		activate = ButtonPolicy::SMI_NOOP;
+
+		at_ref_ = !at_ref_;
+		if (at_ref_) {
+			controller().gotoRef(fl_get_input(dialog_->ref));
 	  		fl_set_object_label(dialog_->button_go, _("Go back"));
 		} else {
-			lv_->getLyXFunc()->Dispatch(LFUN_BOOKMARK_GOTO, "0");
+			controller().gotoBookmark();
 			fl_set_object_label(dialog_->button_go,
 					    _("Goto reference"));
 		}
-	}
-	break;
 
-	// choose browser key
-	case 2:
-	{
+	} else if (ob == dialog_->browser) {
+
 		unsigned int sel = fl_get_browser(dialog_->browser);
-		if (sel < 1 || sel > refs.size()) break;
+		if (sel < 1 || sel > refs_.size())
+			return ButtonPolicy::SMI_NOOP;
 
-		if (!lv_->buffer()->isReadonly()) {
+		if (!controller().isReadonly()) {
 			string s = fl_get_browser_line(dialog_->browser, sel);
 			fl_set_input(dialog_->ref, s.c_str());
 		}
 
-		if (at_ref)
-			lv_->getLyXFunc()->Dispatch(LFUN_BOOKMARK_GOTO, "0");
-		at_ref = false;
+		if (at_ref_)
+			controller().gotoBookmark();
+		at_ref_ = false;
 		fl_set_object_label(dialog_->button_go, _("Goto reference"));
 
 		setEnabled(dialog_->type,      true);
 		setEnabled(dialog_->button_go, true);
 		fl_set_object_lcol(dialog_->ref, FL_BLACK);
-	}
-	break;
 
-	// update or sort
-	case 3:
-		refs = lv_->buffer()->getLabelList();
+	} else if (ob == dialog_->button_update || 
+		   ob == dialog_->sort) {
 
-		// fall through to...
-	case 4:
+		if (ob == dialog_->button_update)
+			refs_ = controller().getLabelList();
+
 		fl_freeze_form(form());
-		updateBrowser(refs);
+		updateBrowser(refs_);
 		fl_unfreeze_form(form());
-		break;
 
-	// changed reference type
-	case 5:
-	{
+	} else if (ob == dialog_->type) {
+
 		int const type = fl_get_choice(dialog_->type) - 1;
-		if (params.getCmdName() == InsetRef::getName(type) && inset_) {
-			activate = false;
+		if (controller().params().getCmdName() ==
+		    InsetRef::getName(type)) {
+			activate = ButtonPolicy::SMI_NOOP;
 		}
-	}
-	break;
-
-	default:
-		break;
 	}
 
 	return activate;
 }
-
-

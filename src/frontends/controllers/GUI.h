@@ -151,6 +151,20 @@ public:
 };
 
 
+/** Specialization for Ref dialog
+ */
+class ControlRef;
+
+template <class GUIview, class GUIbc>
+class GUIRef :
+	public GUI<ControlRef, GUIview, NoRepeatedApplyPolicy, GUIbc> {
+public:
+	///
+	GUIRef(LyXView & lv, Dialogs & d)
+		: GUI<ControlRef, GUIview, NoRepeatedApplyPolicy, GUIbc>(lv, d) {}
+};
+
+
 /** Specialization for Url dialog
  */
 class ControlUrl;

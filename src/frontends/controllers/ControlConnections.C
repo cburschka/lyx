@@ -58,6 +58,22 @@ bool ControlConnectBase::isReadonly() const
 }
 
 
+ControlConnectBase::DocTypes ControlConnectBase::docType() const
+{
+	if (!lv_.buffer())
+		return LATEX;
+
+	if (lv_.buffer()->isLatex())
+		return LATEX;
+	else if (lv_.buffer()->isLiterate())
+		return LITERATE;
+	else if (lv_.buffer()->isLinuxDoc())
+		return LINUXDOC;
+	/* else if (lv_.buffer()->isDocBook()) */
+		return DOCBOOK;
+}
+
+
 ControlConnectBI::ControlConnectBI(LyXView & lv, Dialogs & d)
         : ControlConnectBase(lv, d)
 {}

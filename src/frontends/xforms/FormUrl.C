@@ -1,5 +1,4 @@
-/* \file FormUrl.C
- * This file is part of
+/* This file is part of
  * ====================================================== 
  *
  *           LyX, The Document Processor
@@ -8,6 +7,7 @@
  *
  * ======================================================
  * 
+ * \file FormUrl.C
  * \author Angus Leeming, a.leeming@ic.ac.uk 
  */
 

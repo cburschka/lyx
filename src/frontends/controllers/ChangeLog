@@ -1,5 +1,15 @@
 2001-03-26  Angus Leeming  <a.leeming@ic.ac.uk>
 
+	* ControlConnections.[Ch]: (docType): new method; returns the type
+	of the buffer, LaTeX, Literate, LinuxDoc or DocBook.
+
+	* ControlRef.[Ch]: new files; controller for the Ref popup.
+
+	* GUI.h:
+	* Makefile.am: associated changes.
+
+2001-03-26  Angus Leeming  <a.leeming@ic.ac.uk>
+
 	* ControlCitation.C (getBibkeyInfo): get nasty and assert the info map
 	contains data.
 
@@ -51,7 +61,7 @@
 2001-03-22  Lars Gullik Bjønnes  <larsbj@trylle.birdstep.com>
 
 	* ControlCredits.C: remove using that is only used once, use
-	std::ios instead of std::iosbase, add som annoying comments.
+	std::ios instead of std::iosbase, add some annoying comments.
 
 2001-03-22  Angus Leeming  <a.leeming@ic.ac.uk>
 

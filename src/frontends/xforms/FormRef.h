@@ -1,70 +1,54 @@
-// -*- C++ -*-
 /* This file is part of
  * ====================================================== 
  *
  *           LyX, The Document Processor
  *
- *           Copyright 2000 The LyX Team.
+ *           Copyright 2000-2001 The LyX Team.
  *
  * ======================================================
+ *
+ * \file FormRef.h
+ * \author Angus Leeming, a.leeming@.ac.uk
  */
 
 #ifndef FORMREF_H
 #define FORMREF_H
 
-#include <boost/smart_ptr.hpp>
-
 #ifdef __GNUG__
 #pragma interface
 #endif
 
-#include "FormInset.h"
+#include "FormBase.h"
 
+class ControlRef;
 struct FD_form_ref;
 
 /** This class provides an XForms implementation of the FormRef Dialog.
  */
-class FormRef : public FormCommand {
+class FormRef : public FormCB<ControlRef, FormDB<FD_form_ref> > {
 public:
 	///
-	FormRef(LyXView *, Dialogs *);
-private:
-	/// Pointer to the actual instantiation of the ButtonController.
-	virtual xformsBC & bc();
-	/// Disconnect signals. Also perform any necessary housekeeping.
-	virtual void disconnect();
+	FormRef(ControlRef &);
 
+private:
+	/// Set the Params variable for the Controller.
+	virtual void apply();
 	/// Build the dialog
 	virtual void build();
-	/// Filter the input
-	virtual bool input(FL_OBJECT *, long);
+	/// Filter the inputs on callback from xforms
+	virtual ButtonPolicy::SMInput input(FL_OBJECT *, long);
 	/// Update dialog before showing it
 	virtual void update();
-	/// Not used but must be instantiated
-	virtual void apply();
-	/// Pointer to the actual instantiation of the xforms form
-	virtual FL_FORM * form() const;
 
 	///
 	void updateBrowser(std::vector<string> const &) const;
-	///
+	/// Type definition from the fdesign produced header file.
 	FD_form_ref * build_ref();
 
 	///
-	bool at_ref;
+	bool at_ref_;
 	/// 
-	std::vector<string> refs;
-
-	/// Real GUI implementation.
-	boost::scoped_ptr<FD_form_ref> dialog_;
-	/// The ButtonController
-	ButtonController<NoRepeatedApplyPolicy, xformsBC> bc_;
+	std::vector<string> refs_;
 };
 
-
-inline
-xformsBC & FormRef::bc()
-{
-	return bc_;
-}
-#endif
+#endif // FORMREF_H
