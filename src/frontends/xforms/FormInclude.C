@@ -90,8 +90,11 @@ void FormInclude::apply()
 {
 	controller().params().noload = fl_get_button(dialog_->check_typeset);
 
-	controller().params().cparams.
-		setContents(fl_get_input(dialog_->input_filename));
+	string const file = fl_get_input(dialog_->input_filename);
+	if (controller().fileExists(file))
+	    controller().params().cparams.setContents(file);
+	else
+	    controller().params().cparams.setContents("");
 
 	if (fl_get_button(dialog_->check_useinput))
 		controller().params().flag = InsetInclude::INPUT;
@@ -127,8 +130,9 @@ ButtonPolicy::SMInput FormInclude::input(FL_OBJECT * ob, long)
 
 	} else if (ob == dialog_->button_load) {
 		string const in_name = fl_get_input(dialog_->input_filename);
-		if (!strip(in_name).empty()) {
-			ApplyButton();
+		if (!strip(in_name).empty() && controller().fileExists(in_name)) {
+//			ApplyButton();
+			OKButton();
 			controller().load(strip(in_name));
 			action = ButtonPolicy::SMI_NOOP;
 		}

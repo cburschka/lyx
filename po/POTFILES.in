@@ -9,7 +9,6 @@ src/converter.C
 src/CutAndPaste.C
 src/debug.C
 src/exporter.C
-src/ext_l10n.h
 src/figure_form.C
 src/figureForm.C
 src/FontLoader.C
@@ -64,6 +63,7 @@ src/frontends/qt2/QRef.C
 src/frontends/qt2/QSearch.C
 src/frontends/qt2/QSpellchecker.C
 src/frontends/qt2/QTabularCreate.C
+src/frontends/qt2/QTexinfo.C
 src/frontends/qt2/QThesaurus.C
 src/frontends/qt2/QToc.C
 src/frontends/qt2/QURL.C

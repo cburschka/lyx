@@ -20,6 +20,7 @@
 #include "ControlInclude.h"
 #include "ControlInset.tmpl"
 #include "buffer.h"
+#include "Alert.h"
 #include "BufferView.h"
 #include "Dialogs.h"
 #include "LyXView.h"
@@ -80,3 +81,15 @@ void ControlInclude::load(string const & file)
 {
 	lv_.getLyXFunc()->dispatch(LFUN_CHILDOPEN, file);
 }
+
+
+bool const ControlInclude::fileExists(string const & file)
+{
+    string const fileWithAbsPath = MakeAbsPath(file, OnlyPath(params().masterFilename_)); 
+    if (IsFileReadable(fileWithAbsPath))
+	return true;
+    else
+	Alert::alert(_("File doesn't exists!"));
+    return false;
+}
+

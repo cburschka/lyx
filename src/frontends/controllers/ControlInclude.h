@@ -43,6 +43,9 @@ public:
 	/// load a file
 	void load(string const & file); 
 
+	/// test if file exist
+	bool const fileExists(string const & file); 
+
 private:
 	/// Dispatch the changed parameters to the kernel.
 	virtual void applyParamsToInset();
