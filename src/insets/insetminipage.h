@@ -88,6 +88,7 @@ public:
 	bool needFullRow() const { return false; }
 	///
 	bool showInsetDialog(BufferView *) const;
+
 private:
 	///
 	Position pos_;

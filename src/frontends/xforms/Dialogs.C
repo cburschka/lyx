@@ -26,6 +26,7 @@
 #include "ControlCharacter.h"
 #include "ControlCitation.h"
 #include "ControlError.h"
+#include "ControlERT.h"
 #include "ControlExternal.h"
 #include "ControlFloat.h"
 #include "ControlGraphics.h"
@@ -56,6 +57,7 @@
 #include "form_character.h"
 #include "form_citation.h"
 #include "form_error.h"
+#include "form_ert.h"
 #include "form_external.h"
 #include "form_float.h"
 #include "form_graphics.h"
@@ -79,6 +81,7 @@
 #include "FormCharacter.h"
 #include "FormCitation.h"
 #include "FormError.h"
+#include "FormERT.h"
 #include "FormExternal.h"
 #include "FormFloat.h"
 #include "FormGraphics.h"
@@ -118,6 +121,7 @@ Dialogs::Dialogs(LyXView * lv)
 	add(new GUICharacter<FormCharacter, xformsBC>(*lv, *this));
 	add(new GUICitation<FormCitation, xformsBC>(*lv, *this));
 	add(new GUIError<FormError, xformsBC>(*lv, *this));
+	add(new GUIERT<FormERT, xformsBC>(*lv, *this));
 	add(new GUIExternal<FormExternal, xformsBC>(*lv, *this));
 	add(new GUIGraphics<FormGraphics, xformsBC>(*lv, *this));
 	add(new GUIInclude<FormInclude, xformsBC>(*lv, *this));

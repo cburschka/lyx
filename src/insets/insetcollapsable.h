@@ -54,7 +54,7 @@ public:
 	///
 	int descent(BufferView *, LyXFont const &) const;
 	///
-	int width(BufferView *, LyXFont const & f) const;
+	int width(BufferView *, LyXFont const &) const;
 	///
 	void draw(BufferView *, const LyXFont &, int , float &, bool) const;
 	///

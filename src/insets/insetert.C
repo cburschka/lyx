@@ -23,6 +23,8 @@
 #include "BufferView.h"
 #include "LyXView.h"
 #include "lyxtext.h"
+#include "frontends/Dialogs.h"
+#include "debug.h"
 
 using std::ostream;
 
@@ -34,17 +36,23 @@ void InsetERT::init()
 	labelfont.decSize();
 	labelfont.setColor(LColor::latex);
 	setInsetName("ERT");
+		
 }
 
 
-InsetERT::InsetERT() : InsetCollapsable()
+InsetERT::InsetERT(bool collapsed)
+	: InsetCollapsable(collapsed)
 {
+	if (collapsed)
+		status_ = Collapsed;
+	else
+		status_ = Open;
 	init();
 }
 
 
 InsetERT::InsetERT(InsetERT const & in, bool same_id)
-	: InsetCollapsable(in, same_id)
+	: InsetCollapsable(in, same_id), status_(in.status_)
 {
 	init();
 }
@@ -74,17 +82,64 @@ InsetERT::InsetERT(string const & contents, bool collapsed)
 }
 
 
+InsetERT::~InsetERT()
+{
+	hideDialog();
+}
+
+
 void InsetERT::read(Buffer const * buf, LyXLex & lex)
 {
+	bool token_found = false;
+	if (lex.IsOK()) {
+		lex.next();
+		string const token = lex.GetString();
+		if (token == "status") {
+			lex.next();
+			string st;
+			if (lex.GetString() == "Inlined")
+				status_ = Inlined;
+			else if (lex.GetString() == "Collapsed")
+				status_ = Collapsed;
+			else // leave this as default!
+				status_ = Open;
+			token_found = true;
+		} else {
+			lyxerr << "InsetERT::Read: Missing 'status'-tag!"
+				   << endl;
+			// take countermeasures
+			lex.pushToken(token);
+		}
+	}
 	InsetCollapsable::read(buf, lex);
-
+	if (!token_found) {
+		if (collapsed_)
+			status_ = Collapsed;
+		else
+			status_ = Open;
+	}
 	setButtonLabel();
 }
 
 
 void InsetERT::write(Buffer const * buf, ostream & os) const 
 {
-	os << getInsetName() << "\n";
+	string st;
+
+	switch(status_) {
+	case Open: 
+		st = "Open";
+		break;
+	case Collapsed:
+		st = "Collapsed";
+		break;
+	case Inlined:
+		st = "Inlined";
+		break;
+	}
+
+	os << getInsetName() << "\n"
+	   << "status "<< st << "\n";
 	InsetCollapsable::write(buf, os);
 }
 
@@ -119,6 +174,14 @@ void InsetERT::edit(BufferView * bv, int x, int y, unsigned int button)
 }
 
 
+Inset::EDITABLE InsetERT::editable() const
+{
+	if (status_ == Collapsed)
+		return IS_EDITABLE;
+	return HIGHLY_EDITABLE;
+}
+
+
 void InsetERT::edit(BufferView * bv, bool front)
 {
 	InsetCollapsable::edit(bv, front);
@@ -126,30 +189,31 @@ void InsetERT::edit(BufferView * bv, bool front)
 }
 
 
-void InsetERT::insetButtonRelease(BufferView * bv,
-				  int x, int y, int button)
+void InsetERT::insetButtonRelease(BufferView * bv, int x, int y, int button)
 {
+	if (button == 3) {
+		showInsetDialog(bv);
+		return;
+	}
 	if ((x >= 0)  && (x < button_length) &&
 	    (y >= button_top_y) &&  (y <= button_bottom_y))
 	{
-		if (button == 2) {
-			inlined(bv, !inlined());
-			return;
-		}
+//		if (collapsed_) {
+//			setLabel(_("ERT"));
+//		} else {
+//			setLabel(get_new_label());
+//		}
 		if (collapsed_) {
-			setLabel(_("ERT"));
+			status(bv, Open);
+//			collapsed_ = false;
+//			inset.insetButtonRelease(bv, 0, 0, button);
+//			inset.setUpdateStatus(bv, InsetText::FULL);
+//			bv->updateInset(this, true);
 		} else {
-			setLabel(get_new_label());
-		}
-		if (collapsed_) {
-			collapsed_ = false;
-			inset.insetButtonRelease(bv, 0, 0, button);
-			inset.setUpdateStatus(bv, InsetText::FULL);
-			bv->updateInset(this, true);
-		} else {
-			collapsed_ = true;
-			bv->unlockInset(this);
-			bv->updateInset(this, true);
+			status(bv, Collapsed);
+//			collapsed_ = true;
+//			bv->unlockInset(this);
+//			bv->updateInset(this, true);
 		}
 	} else if (!collapsed_ && (y > button_bottom_y)) {
 		LyXFont font(LyXFont::ALL_SANE);
@@ -261,7 +325,7 @@ string const InsetERT::get_new_label() const
 
 void InsetERT::setButtonLabel() 
 {
-	if (collapsed_) {
+	if (status_ == Collapsed) {
 		setLabel(get_new_label());
 	} else {
 		setLabel(_("ERT"));
@@ -279,14 +343,32 @@ bool InsetERT::checkInsertChar(LyXFont & font)
 }
 
 
-void InsetERT::inlined(BufferView * bv, bool flag)
+int InsetERT::ascent(BufferView * bv, LyXFont const & font) const
 {
-	if (flag != inset.getAutoBreakRows())
-		return;
-	
-	inset.setAutoBreakRows(!flag);
-	bv->updateInset(this, true);
+	if (!inlined())
+		return InsetCollapsable::ascent(bv, font);
+
+	return inset.ascent(bv, font);
 }
+
+
+int InsetERT::descent(BufferView * bv, LyXFont const & font) const
+{
+	if (!inlined())
+		return InsetCollapsable::descent(bv, font);
+
+	return inset.descent(bv, font);
+}
+
+
+int InsetERT::width(BufferView * bv, LyXFont const & font) const
+{
+	if (!inlined())
+		return InsetCollapsable::width(bv, font);
+
+	return inset.width(bv, font);
+}
+
 
 void InsetERT::draw(BufferView * bv, LyXFont const & f, 
                     int baseline, float & x, bool cleared) const
@@ -344,5 +426,55 @@ void InsetERT::set_latex_font(BufferView * bv)
 
 	font.setFamily(LyXFont::TYPEWRITER_FAMILY);
 	font.setColor(LColor::latex);
-	inset.setFont(bv, font);
+	inset.getLyXText(bv)->setFont(bv, font, false);
+}
+
+
+void InsetERT::status(BufferView * bv, ERTStatus const st)
+{
+	if (st != status_) {
+		status_ = st;
+		switch(st) {
+		case Inlined:
+			inset.setAutoBreakRows(false);
+			break;
+		case Open:
+			inset.setAutoBreakRows(true);
+			collapsed_ = false;
+			need_update = FULL;
+			setButtonLabel();
+			break;
+		case Collapsed:
+			inset.setAutoBreakRows(true);
+			collapsed_ = true;
+			need_update = FULL;
+			setButtonLabel();
+			bv->unlockInset(this);
+			break;
+		}
+		bv->updateInset(this, true);
+	}
+}
+
+
+bool InsetERT::showInsetDialog(BufferView * bv) const
+{
+	bv->owner()->getDialogs()->showERT(const_cast<InsetERT *>(this));
+	return true;
+}
+
+
+void InsetERT::open(BufferView * bv)
+{
+	if (!collapsed_)
+		return;
+	status(bv, Open);
+}
+
+
+void InsetERT::close(BufferView * bv)
+{
+	if (collapsed_)
+		return;
+	status(bv, Collapsed);
 }

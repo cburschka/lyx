@@ -19,6 +19,7 @@
 #endif
 
 #include "insetcollapsable.h"
+#include <sigc++/signal_system.h>
 
 /** A collapsable text inset for LaTeX insertions.
   
@@ -28,13 +29,21 @@
 class InsetERT : public InsetCollapsable {
 public:
 	///
-	InsetERT();
+	enum ERTStatus {
+		Open,
+		Collapsed,
+		Inlined
+	};
+	///
+	InsetERT(bool collapsed=false);
 	///
 	InsetERT(InsetERT const &, bool same_id = false);
 	///
 	Inset * clone(Buffer const &, bool same_id = false) const;
 	///
 	InsetERT(string const & contents, bool collapsed);
+	///
+	~InsetERT();
 	///
 	Inset::Code lyxCode() const { return Inset::ERT_CODE; }
 	///
@@ -55,6 +64,10 @@ public:
 	///
 	void edit(BufferView * bv, bool front = true);
 	///
+	EDITABLE editable() const;
+	///
+	SigC::Signal0<void> hideDialog;
+	///
 	void insetButtonRelease(BufferView * bv, int x, int y, int button);
 	///
 	int latex(Buffer const *, std::ostream &, bool fragile,
@@ -74,15 +87,29 @@ public:
 	///
 	// this are needed here because of the label/inlined functionallity
 	///
-	bool needFullRow() const { return !collapsed_ && !inlined(); }
+	bool needFullRow() const { return status_ == Open; }
 	///
-	bool isOpen() const { return !collapsed_ || inlined(); }
+	bool isOpen() const { return status_ == Open || status_ == Inlined; }
 	///
-	bool inlined() const { return !inset.getAutoBreakRows(); }
+	void open(BufferView *);
 	///
-	void inlined(BufferView *, bool flag);
+	void close(BufferView *);
+	///
+	bool inlined() const { return status_ == Inlined; }
+	///
+	int ascent(BufferView *, LyXFont const &) const;
+	///
+	int descent(BufferView *, LyXFont const &) const;
+	///
+	int width(BufferView *, LyXFont const &) const;
 	///
 	void draw(BufferView *, const LyXFont &, int , float &, bool) const;
+	///
+	ERTStatus status() const { return status_; }
+	///
+	void status(BufferView *, ERTStatus const st);
+	///
+	bool showInsetDialog(BufferView *) const;
 
 private:
 	///
@@ -93,6 +120,9 @@ private:
 	void setButtonLabel();
 	///
 	void set_latex_font(BufferView *);
+
+	///
+	ERTStatus status_;
 };
 
 #endif

@@ -139,6 +139,20 @@ public:
 };
 
 
+/** Specialization for ERT dialog
+ */
+class ControlERT;
+
+template <class GUIview, class GUIbc>
+class GUIERT :
+	public GUI<ControlERT, GUIview, NoRepeatedApplyReadOnlyPolicy, GUIbc> {
+public:
+	///
+	GUIERT(LyXView & lv, Dialogs & d)
+		: GUI<ControlERT, GUIview, NoRepeatedApplyReadOnlyPolicy, GUIbc>(lv, d) {}
+};
+
+
 /** Specialization for External dialog
  */
 class ControlExternal;

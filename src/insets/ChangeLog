@@ -1,3 +1,33 @@
+2001-08-06  Juergen Vigna  <jug@sad.it>
+
+	* insetert.C (set_latex_font): use LyXText's setFont directly.
+
+	* insettext.C (drawFrame): fixed one time more the right position
+	and size of the frame!
+
+	* insetert.C (~InsetERT): hide the dialog.
+	(showInsetDialog): added implementation
+	(open): ditto
+	(close): ditto
+	(status): new function for the status of the ERT inset (3-state).
+	(write): output also the status of the inset for readback!
+	(read): readback the status if available otherwise use collapsed_.
+
+	* insettext.C (edit): small fix of setting the position, which could
+	have gone < 0.
+
+	* insetert.C (width): implement this function for inlined viewing.
+	Added minimum width of 10 pixels!
+
+	* insetminipage.C (InsetMinipage): just change the colors a bit so
+	that border/background is a bit more visible. We will remove this
+	anyway for 1.2.0!
+
+	* insettext.C (textWidth): add a 'bool fordraw' parameter and use this
+	function for getting the important widths for drawing in various
+	functions and in LyXText.
+	(draw): fixed up a bit (frame drawing/clearing)
+
 2001-08-03  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* inset.C (convertFont): delete method. not used. 

@@ -2959,52 +2959,47 @@ void LyXText::getVisibleRow(BufferView * bview, int y_offset, int x_offset,
 	if (cleared) {
 		clear_area = true;
 	} else if (clear_area) {
-#ifdef WITH_WARNINGS
-#warning Should be fixed with a lyxinset::clear_width(bv, font) function! (Jug)
-#warning Should we not fix this in the Painter, please have a look Lars! (Jug)
-#endif
 		int const y = y_offset < 0 ? 0 : y_offset;
 		int const h = y_offset < 0 ?
 			row_ptr->height() + y_offset : row_ptr->height();
 		int const w = inset_owner ?
-			inset_owner->width(bview, font) - 2 : ww;
+			inset_owner->textWidth(bview, true) : ww;
 		int const x = x_offset;
 		pain.fillRectangle(x, y, w, h, backgroundColor());
 	} else if (inset != 0) {
 		int h = row_ptr->baseline() - inset->ascent(bview, font);
 		// first clear the whole row above the inset!
 		if (h > 0) {
-#if 0
 			int const w = (inset_owner ?
-				 inset_owner->width(bview, font) : ww);
-#endif
-			pain.fillRectangle(x_offset, y_offset, ww, h,
+				 inset_owner->textWidth(bview, true) : ww);
+			pain.fillRectangle(x_offset, y_offset, w, h,
 			                   backgroundColor());
 		}
 		h += inset->ascent(bview, font) + inset->descent(bview, font);
 		// clear the space below the inset!
 		if ((row_ptr->height() - h) > 0) {
-#if 0
 			int const w = (inset_owner ?
-				 inset_owner->width(bview, font) : ww);
-#endif
+			               inset_owner->textWidth(bview, true) : ww);
 			pain.fillRectangle(x_offset, y_offset + h,
-			                   ww, row_ptr->height() - h,
+			                   w, row_ptr->height() - h,
 			                   backgroundColor());
 		}
 		// clear the space behind the inset, if needed
-		if (!inset_owner && !inset->display() && !inset->needFullRow())
-		{
-			int const w = inset->width(bview, font) + int(x);
-			pain.fillRectangle(w, y_offset, 
-					   ww - w, row_ptr->height(),
-					   backgroundColor());
+		if (!inset->display() && !inset->needFullRow()) {
+			int const w = (inset_owner ?
+			               inset_owner->textWidth(bview, true) : ww);
+			int const xp = int(x) + inset->width(bview, font);
+			if (w-xp > 0) {
+				pain.fillRectangle(xp, y_offset,
+				                   w-xp, row_ptr->height(),
+				                   backgroundColor());
+			}
 		}
 	}
 
 	if (selection.set()) {
 		int const w = (inset_owner ?
-			       inset_owner->width(bview, font) : ww);
+			       inset_owner->textWidth(bview, true) : ww);
 		// selection code
 		if (bidi_same_direction) {
 			if (selection.start.row() == row_ptr &&

@@ -38,6 +38,8 @@ libcontrollers_la_SOURCES=\
 	ControlDialogs.h \
 	ControlError.h \
 	ControlError.C \
+	ControlERT.h \
+	ControlERT.C \
 	ControlExternal.h \
 	ControlExternal.C \
 	ControlFloat.h \

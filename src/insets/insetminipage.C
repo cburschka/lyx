@@ -72,8 +72,12 @@ InsetMinipage::InsetMinipage()
 #if 0
 	setAutoCollapse(false);
 #endif
+#ifdef WITH_WARNINGS
+#warning Remove this color definitions before 1.2.0 final!
+#endif
 	// just for experimentation :)
-	setBackgroundColor(LColor::red);
+	setBackgroundColor(LColor::green);
+	inset.setFrameColor(0, LColor::blue);
 	setInsetName("Minipage");
 	width_ = "100%"; // set default to 100% of column_width
 }
