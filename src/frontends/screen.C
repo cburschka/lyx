@@ -270,6 +270,8 @@ void LyXScreen::redraw(BufferView & bv)
 	expose(0, 0, workarea().workWidth(), workarea().workHeight());
 
 	workarea().getPainter().end();
+
+	showCursor(bv);
 }
 
 
