@@ -141,10 +141,16 @@ fi
 CHECK_WITH_CYGWIN
 
 ### Check for X libraries
-# The real thing.
 AC_PATH_XTRA
-LIBS="$X_PRE_LIBS $LIBS $X_LIBS -lX11 $X_EXTRA_LIBS"
-CPPFLAGS="$CPPFLAGS $X_CFLAGS"
+case $have_x in
+  yes) LIBS="$X_PRE_LIBS $LIBS $X_LIBS -lX11 $X_EXTRA_LIBS"
+       CPPFLAGS="$CPPFLAGS $X_CFLAGS";;
+  no) LYX_ERROR(dnl
+[Cannot find X window libraries and/or headers. Check your installation.
+  If you use a Linux system, check that you have installed
+  the development tools.]);;
+  disable) ;;
+esac
 
 ### check which frontend we want to use
 
@@ -193,14 +199,6 @@ dnl	;;
   *)
     LYX_ERROR(Unknown frontend $lyx_use_frontend);;
 esac
-
-### Check for xforms and xpm (only if X has been found).
-if test "$have_x" = no ; then
-LYX_ERROR(dnl
-[Cannot find X window libraries and/or headers. Check your installation.
-   If you use a Linux system, check that you have installed
-   the development tools.])
-fi
 
 ### Setup GNU gettext
 dnl GNU gettext is written in C
