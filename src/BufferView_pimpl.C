@@ -640,7 +640,7 @@ void BufferView::Pimpl::restorePosition(unsigned int i)
 		if (b != 0) buffer(b);
 	}
 
-	Paragraph * par = buffer_->getParFromID(saved_positions[i].par_id);
+	Paragraph * par = &*buffer_->getParFromID(saved_positions[i].par_id);
 	if (!par)
 		return;
 

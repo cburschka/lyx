@@ -1,5 +1,13 @@
 
 2003-04-28 André Pönitz <poenitz@gmx.net>
+	
+	* undo_funcs.C:
+	* lyxfunc.C:
+	* buffer.[Ch]:
+	* BufferView_pimpl.C:
+	* BufferView.C: getParFromID related ParagraphList::iterator changes
+
+2003-04-28 André Pönitz <poenitz@gmx.net>
 
 	* tabular.[Ch]: part of Lars' Paragraph * -> ParagraphList::iterator
 	  Changes

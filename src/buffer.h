@@ -122,7 +122,7 @@ public:
 	void insertStringAsLines(ParagraphList::iterator &, lyx::pos_type &,
 				 LyXFont const &, string const &);
 	///
-	Paragraph * getParFromID(int id) const;
+	ParagraphList::iterator getParFromID(int id) const;
 
 public:
 	/** Save file.

@@ -2268,22 +2268,24 @@ Inset * Buffer::getInsetFromID(int id_arg) const
 }
 
 
-Paragraph * Buffer::getParFromID(int id) const
+ParagraphList::iterator Buffer::getParFromID(int id) const
 {
-	if (id < 0)
+#warning FIXME: const correctness! (Andre)
+	ParIterator it(const_cast<Buffer*>(this)->par_iterator_begin());
+	ParIterator end(const_cast<Buffer*>(this)->par_iterator_end());
+
+#warning FIXME, perhaps this func should return a ParIterator? (Lgb)
+	if (id < 0) {
+		// John says this is called with id == -1 from undo
+		lyxerr << "getParFromID(), id: " << id << endl;
 		return 0;
-
-	// why should we allow < 0 ??
-	//lyx::Assert(id >= 0);
-
-	ParConstIterator it(par_iterator_begin());
-	ParConstIterator end(par_iterator_end());
+	}
 
 	for (; it != end; ++it) {
 		// go on then, show me how to remove
 		// the cast
 		if ((*it)->id() == id) {
-			return const_cast<Paragraph*>(*it);
+			return *it;
 		}
 	}
 

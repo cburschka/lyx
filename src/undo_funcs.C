@@ -78,9 +78,9 @@ bool textHandleUndo(BufferView * bv, Undo & undo)
 	Buffer * b = bv->buffer();
 
 	Paragraph * before =
-		b->getParFromID(undo.number_of_before_par);
+		&*b->getParFromID(undo.number_of_before_par);
 	Paragraph * behind =
-		b->getParFromID(undo.number_of_behind_par);
+		&*b->getParFromID(undo.number_of_behind_par);
 	Paragraph * tmppar;
 	Paragraph * tmppar2;
 
@@ -169,7 +169,7 @@ bool textHandleUndo(BufferView * bv, Undo & undo)
 			before->next(undopar);
 		else {
 			int id = firstUndoParagraph(bv, undo.number_of_inset_id)->id();
-			Paragraph * op = bv->buffer()->getParFromID(id);
+			Paragraph * op = &*bv->buffer()->getParFromID(id);
 			if (op && op->inInset()) {
 				static_cast<InsetText*>(op->inInset())->paragraph(undopar);
 			} else {
@@ -182,7 +182,7 @@ bool textHandleUndo(BufferView * bv, Undo & undo)
 		// one is the first!
 		if (!before && behind) {
 			int id = firstUndoParagraph(bv, undo.number_of_inset_id)->id();
-			Paragraph * op = bv->buffer()->getParFromID(id);
+			Paragraph * op = &*bv->buffer()->getParFromID(id);
 			if (op && op->inInset()) {
 				static_cast<InsetText*>(op->inInset())->paragraph(behind);
 			} else {
@@ -219,7 +219,7 @@ bool textHandleUndo(BufferView * bv, Undo & undo)
 	if (behind)
 		endpar = behind->next();
 
-	tmppar = bv->buffer()->getParFromID(undo.number_of_cursor_par);
+	tmppar = &*bv->buffer()->getParFromID(undo.number_of_cursor_par);
 	UpdatableInset* it = 0;
 	if (undopar)
 		it = static_cast<UpdatableInset*>(undopar->inInset());
@@ -412,7 +412,7 @@ bool textUndo(BufferView * bv)
 	finishUndo();
 
 	if (!undo_frozen) {
-		Paragraph * first = b->getParFromID(undo->number_of_before_par);
+		Paragraph * first = &*b->getParFromID(undo->number_of_before_par);
 		if (first && first->next())
 			first = first->next();
 		else if (!first)
@@ -420,7 +420,7 @@ bool textUndo(BufferView * bv)
 		if (first) {
 			shared_ptr<Undo> u;
 			if (createUndo(bv, undo->kind, first,
-				b->getParFromID(undo->number_of_behind_par), u))
+				&*b->getParFromID(undo->number_of_behind_par), u))
 				b->redostack.push(u);
 		}
 	}
@@ -451,7 +451,7 @@ bool textRedo(BufferView * bv)
 	finishUndo();
 
 	if (!undo_frozen) {
-	Paragraph * first = bv->buffer()->getParFromID(undo->number_of_before_par);
+	Paragraph * first = &*bv->buffer()->getParFromID(undo->number_of_before_par);
 		if (first && first->next())
 			first = first->next();
 		else if (!first)
@@ -459,7 +459,7 @@ bool textRedo(BufferView * bv)
 		if (first) {
 			shared_ptr<Undo> u;
 			if (createUndo(bv, undo->kind, first,
-				bv->buffer()->getParFromID(undo->number_of_behind_par), u))
+				&*bv->buffer()->getParFromID(undo->number_of_behind_par), u))
 				bv->buffer()->undostack.push(u);
 		}
 	}

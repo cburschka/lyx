@@ -1385,7 +1385,7 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 
 		int id;
 		istr >> id;
-		Paragraph * par = owner->buffer()->getParFromID(id);
+		Paragraph * par = &*owner->buffer()->getParFromID(id);
 		if (par == 0) {
 			lyxerr[Debug::INFO] << "No matching paragraph found! ["
 					    << id << ']' << endl;

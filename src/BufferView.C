@@ -519,7 +519,7 @@ void BufferView::insertErrors(TeXErrors & terr)
 			texrowpar = &*text->ownerParagraphs().begin();
 			tmppos = 0;
 		} else {
-			texrowpar = buffer()->getParFromID(tmpid);
+			texrowpar = &*buffer()->getParFromID(tmpid);
 		}
 
 		if (texrowpar == 0)
@@ -550,7 +550,7 @@ void BufferView::setCursorFromRow(int row)
 		texrowpar = &*text->ownerParagraphs().begin();
 		tmppos = 0;
 	} else {
-		texrowpar = buffer()->getParFromID(tmpid);
+		texrowpar = &*buffer()->getParFromID(tmpid);
 	}
 	text->setCursor(texrowpar, tmppos);
 }
