@@ -741,7 +741,7 @@ LyXText::rowBreakPoint(BufferView & bv, Row const & row) const
 		x += singleWidth(&bv, par, i, c);
 
 		// add the auto-hfill from label end to the body
-		if (i == body_pos) {
+		if (body_pos && i == body_pos) {
 			x += font_metrics::width(layout->labelsep,
 				    getLabelFont(bv.buffer(), par));
 			if (par->isLineSeparator(i - 1))
@@ -751,11 +751,22 @@ LyXText::rowBreakPoint(BufferView & bv, Row const & row) const
 				x = left_margin;
 		}
 
+		Inset * in = par->isInset(i) ? par->getInset(i) : 0;
+		bool display = (in && (in->display() || in->needFullRow()));
+
+		// check whether a Display() inset is valid here.
+		// If not, change it to non-display. FIXME:
+		// we should not be modifying things at this
+		// point !
+		if (in && in->display() && (layout->isCommand() ||
+		    (layout->labeltype == LABEL_MANUAL && i < body_pos)))
+			in->display(false);
+
 		// break before a character that will fall off
 		// the right of the row
 		if (x >= width) {
-			// if no break before, break here.
-			if (point == last) {
+			// if no break before or this is a fullrow inset, break here.
+			if (point == last || display) {
 				if (pos < i)
 					point = i - 1;
 				else
@@ -764,44 +775,40 @@ LyXText::rowBreakPoint(BufferView & bv, Row const & row) const
 			break;
 		}
 
-		Inset * in = par->isInset(i) ? par->getInset(i) : 0;
-
 		if (!in || in->isChar()) {
 			// some insets are line separators too
 			if (par->isLineSeparator(i))
 				point = i;
 			continue;
-
 		}
 
-		// check wether a Display() inset is valid here.
-		// If not, change it to non-display. FIXME:
-		// we should not be modifying things at this
-		// point !
-		if (in->display() && (layout->isCommand() ||
-		    (layout->labeltype == LABEL_MANUAL && i < body_pos))) {
-			in->display(false);
-		} else if (in->display() || in->needFullRow()) {
-			// displayed insets start at a new row
-			if (i == pos) {
-				if (pos < last - 1) {
-					point = i;
-					if (par->isLineSeparator(i + 1))
-						++point;
-				} else {
-					// to avoid extra rows
-					point = last;
-				}
+		if (!display)
+			continue;
+			
+		// full row insets start at a new row
+		if (i == pos) {
+			if (pos < last - 1) {
+				point = i;
+				if (par->isLineSeparator(i + 1))
+					++point;
 			} else {
-				point = i - 1;
+				// to avoid extra rows
+				point = last;
 			}
-			break;
+		} else {
+			point = i - 1;
 		}
+		break;
 	}
 
-	// didn't find one, break at the point we reached the edge
-	if (point == last && x >= width)
+	if (point == last && x >= width) {
+		// didn't find one, break at the point we reached the edge
 		point = i;
+	} else if (i == last && x < width) {
+		// found one, but we fell off the end of the par, so prefer
+		// that.
+		point = last;
+	}
 
 	// manual labels cannot be broken in LaTeX
 	if (body_pos && point < body_pos)
