@@ -7,7 +7,8 @@ ETAGS_ARGS = --lang=c++
 BOOST_INCLUDES = -I$(top_srcdir)/boost
 INCLUDES = -I${srcdir}/../ $(BOOST_INCLUDES)
 
-EXTRA_DIST = lyxstring.C lyxstring.h regex.c lyxregex.h
+EXTRA_DIST = lyxstring.C lyxstring.h regex.c lyxregex.h \
+             os_unix.C os_win32.C os_os2.C
 
 if USE_LYXSTRING
 LYXSTRING = lyxstring.C lyxstring.h
