@@ -218,12 +218,17 @@ InsetText::~InsetText()
 
 void InsetText::clear()
 {
+	// This is a gross hack...
+	string old_layout = par->layout();
+	
 	while (par) {
 		Paragraph * tmp = par->next();
 		delete par;
 		par = tmp;
 	}
 	par = new Paragraph;
+	par->layout(old_layout);
+	
 	reinitLyXText();
 	need_update = INIT;
 }
@@ -231,7 +236,7 @@ void InsetText::clear()
 
 Inset * InsetText::clone(Buffer const &, bool same_id) const
 {
-	return  new InsetText(*this, same_id);
+	return new InsetText(*this, same_id);
 }
 
 
