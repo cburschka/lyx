@@ -31,15 +31,16 @@ MathInset * MathDecorationInset::clone() const
 void MathDecorationInset::Metrics(MathStyles st)
 {
 	xcell(0).Metrics(st);
+	size_    = st;
 	width_   = xcell(0).width();
 	ascent_  = xcell(0).ascent();
 	descent_ = xcell(0).descent();
 
-	dh_ = mathed_char_height(LM_TC_VAR, size(), 'I', ascent_, descent_);  
+	dh_ = 5; //mathed_char_height(LM_TC_VAR, size(), 'I', ascent_, descent_);  
 
 	if (upper_) {
+		dy_ = -ascent_ - dh_;
 		ascent_ += dh_ + 1;
-		dy_ = -ascent_;
 	} else {
 		dy_ = descent_ + 1;
 		descent_ += dh_ + 2;
