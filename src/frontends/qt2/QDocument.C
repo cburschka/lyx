@@ -79,6 +79,12 @@ void QDocument::build_dialog()
 			toqstr(lit->first));
 	}
 
+	char const * items[] = {"default", "auto", "latin1", "latin2",
+			     "latin3", "latin4", "latin5", "latin9",
+			     "koi8-r", "koi8-u", "cp866", "cp1251",
+			     "iso88595", "pt154", 0};
+	dialog_->langModule->encodingCO->insertStrList(items);
+
 	dialog_->langModule->quoteStyleCO->insertItem(qt_("``text''"));
 	dialog_->langModule->quoteStyleCO->insertItem(qt_("''text''"));
 	dialog_->langModule->quoteStyleCO->insertItem(qt_(",,text``"));
@@ -87,21 +93,6 @@ void QDocument::build_dialog()
 	dialog_->langModule->quoteStyleCO->insertItem(qt_("»text«"));
 
 	// packages
-	char const * items[] = {"default", "auto", "latin1", "latin2",
-			     "latin3", "latin4", "latin5", "latin9",
-			     "koi8-r", "koi8-u", "cp866", "cp1251",
-			     "iso88595", "pt154", 0};
-	dialog_->packagesModule->encodingCO->insertStrList(items);
-
-	dialog_->packagesModule->lspacingCO->insertItem(
-		qt_("Single"), Spacing::Single);
-	dialog_->packagesModule->lspacingCO->insertItem(
-		qt_("OneHalf"), Spacing::Onehalf);
-	dialog_->packagesModule->lspacingCO->insertItem(
-		qt_("Double"), Spacing::Double);
-	dialog_->packagesModule->lspacingCO->insertItem(
-		qt_("Custom"), Spacing::Other);
-
 	for (int n = 0; tex_graphics[n][0]; ++n) {
 		QString enc = tex_graphics[n];
 		dialog_->packagesModule->psdriverCO->insertItem(enc);
@@ -147,6 +138,15 @@ void QDocument::build_dialog()
 	dialog_->layoutModule->pagestyleCO->insertItem(qt_("plain"));
 	dialog_->layoutModule->pagestyleCO->insertItem(qt_("headings"));
 	dialog_->layoutModule->pagestyleCO->insertItem(qt_("fancy"));
+	
+	dialog_->layoutModule->lspacingCO->insertItem(
+		qt_("Single"), Spacing::Single);
+	dialog_->layoutModule->lspacingCO->insertItem(
+		qt_("OneHalf"), Spacing::Onehalf);
+	dialog_->layoutModule->lspacingCO->insertItem(
+		qt_("Double"), Spacing::Double);
+	dialog_->layoutModule->lspacingCO->insertItem(
+		qt_("Custom"), Spacing::Other);
 
 	// margins
 	dialog_->setMargins(0);
@@ -179,6 +179,8 @@ void QDocument::apply()
 	else
 		params.quotes_times = InsetQuotes::DoubleQ;
 
+	params.inputenc =
+		fromqstr(dialog_->langModule->encodingCO->currentText());
 
 	InsetQuotes::quote_language lga = InsetQuotes::EnglishQ;
 	switch (dialog_->langModule->quoteStyleCO->currentItem()) {
@@ -219,7 +221,26 @@ void QDocument::apply()
 	params.user_defined_bullets[3] = dialog_->bulletsModule->getBullet(3);
 
 	// packages
-	switch (dialog_->packagesModule->lspacingCO->currentItem()) {
+	params.graphicsDriver =
+		fromqstr(dialog_->packagesModule->psdriverCO->currentText());
+
+	params.use_amsmath =
+		dialog_->packagesModule->amsCB->isChecked();
+
+	// layout
+	params.textclass =
+		dialog_->layoutModule->classCO->currentItem();
+		
+	params.fonts =
+		fromqstr(dialog_->layoutModule->fontsCO->currentText());
+
+	params.fontsize =
+		fromqstr(dialog_->layoutModule->fontsizeCO->currentText());
+
+	params.pagestyle =
+		fromqstr(dialog_->layoutModule->pagestyleCO->currentText());
+		
+	switch (dialog_->layoutModule->lspacingCO->currentItem()) {
 	case 0:
 		params.spacing.set(Spacing::Single);
 		break;
@@ -231,35 +252,11 @@ void QDocument::apply()
 		break;
 	case 3:
 		params.spacing.set(Spacing::Other,
-				   dialog_->packagesModule->
+				   dialog_->layoutModule->
 				   lspacingLE->text().toFloat()
 				   );
 		break;
 	}
-
-	params.graphicsDriver =
-		fromqstr(dialog_->packagesModule->psdriverCO->currentText());
-
-	params.use_amsmath =
-		dialog_->packagesModule->amsCB->isChecked();
-
-	params.inputenc =
-		fromqstr(dialog_->packagesModule->encodingCO->currentText());
-
-	// layout
-	params.textclass =
-		dialog_->layoutModule->classCO->currentItem();
-
-	//bool succes = controller().classApply();
-
-	params.fonts =
-		fromqstr(dialog_->layoutModule->fontsCO->currentText());
-
-	params.fontsize =
-		fromqstr(dialog_->layoutModule->fontsizeCO->currentText());
-
-	params.pagestyle =
-		fromqstr(dialog_->layoutModule->pagestyleCO->currentText());
 
 	if (dialog_->layoutModule->indentRB->isChecked())
 		params.paragraph_separation = BufferParams::PARSEP_INDENT;
@@ -421,6 +418,15 @@ void QDocument::update_contents()
 
 	dialog_->langModule->quoteStyleCO->setCurrentItem(
 		params.quotes_language);
+		
+	char const * enc[] = {
+		"default" , "auto" , "latin1" , "latin2" , "latin3" ,
+		"latin4" , "latin5" , "latin9" , "koi8-r" , "koi8-u" ,
+		"cp866" , "cp1251" , "iso88595" , "pt154" };
+	for (size_t i = 0; i < sizeof(enc)/sizeof(char *); ++i) {
+		if (params.inputenc == enc[i])
+			dialog_->langModule->encodingCO->setCurrentItem(i);
+	}
 
 	// numbering
 	dialog_->numberingModule->tocDepthSB->setValue(
@@ -435,15 +441,6 @@ void QDocument::update_contents()
 	dialog_->bulletsModule->setBullet(3,params.user_defined_bullets[3]);
 
 	// packages
-	char const * enc[] = {
-		"default" , "auto" , "latin1" , "latin2" , "latin3" ,
-		"latin4" , "latin5" , "latin9" , "koi8-r" , "koi8-u" ,
-		"cp866" , "cp1251" , "iso88595" , "pt154" };
-	for (size_t i = 0; i < sizeof(enc)/sizeof(char *); ++i) {
-		if (params.inputenc == enc[i])
-			dialog_->packagesModule->encodingCO->setCurrentItem(i);
-	}
-
 	QString text = toqstr(params.graphicsDriver);
 	int nitem = dialog_->packagesModule->psdriverCO->count();
 	for (int n = 0; n < nitem ; ++n) {
@@ -464,12 +461,6 @@ void QDocument::update_contents()
 		case Spacing::Default: case Spacing::Single: nitem = 0; break;
 	}
 
-	dialog_->packagesModule->lspacingCO->setCurrentItem(nitem);
-	if (params.spacing.getSpace() == Spacing::Other) {
-		dialog_->packagesModule->lspacingLE->setText(
-			toqstr(tostr(params.spacing.getValue())));
-		dialog_->setLSpacing(3);
-	}
 
 	// layout
 	for (int n = 0; n<dialog_->layoutModule->classCO->count(); ++n) {
@@ -491,6 +482,13 @@ void QDocument::update_contents()
 			dialog_->layoutModule->fontsCO->setCurrentItem(n);
 			break;
 		}
+	}
+
+	dialog_->layoutModule->lspacingCO->setCurrentItem(nitem);
+	if (params.spacing.getSpace() == Spacing::Other) {
+		dialog_->layoutModule->lspacingLE->setText(
+			toqstr(tostr(params.spacing.getValue())));
+		dialog_->setLSpacing(3);
 	}
 
 	if (params.paragraph_separation

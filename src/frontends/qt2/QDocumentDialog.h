@@ -65,24 +65,24 @@ protected:
 private:
 	enum Module {
 		LAYOUT,
-		PACKAGES,
 		PAPER,
 		MARGINS,
 		LANGUAGE,
 		BULLETS,
 		NUMBERING,
 		BIBLIOGRAPHY,
+		PACKAGES,
 		PREAMBLE
 	};
 
 	ClassModuleBase * layoutModule;
-	PackagesModuleBase * packagesModule;
 	PaperModuleBase * paperModule;
 	MarginsModuleBase * marginsModule;
 	LanguageModuleBase * langModule;
 	BulletsModule * bulletsModule;
 	NumberingModuleBase * numberingModule;
 	BiblioModuleBase * biblioModule;
+	PackagesModuleBase * packagesModule;
 	PreambleModuleBase * preambleModule;
 
 	QDocument * form_;

@@ -64,13 +64,13 @@ QDocumentDialog::QDocumentDialog(QDocument * form)
 
 	moduleLB->clear();
 	moduleLB->insertItem(qt_("Layout"), LAYOUT);
-	moduleLB->insertItem(qt_("Packages"), PACKAGES);
 	moduleLB->insertItem(qt_("Paper"), PAPER);
 	moduleLB->insertItem(qt_("Margins"), MARGINS);
 	moduleLB->insertItem(qt_("Language"), LANGUAGE);
 	moduleLB->insertItem(qt_("Bullets"), BULLETS);
 	moduleLB->insertItem(qt_("Numbering"), NUMBERING);
 	moduleLB->insertItem(qt_("Bibliography"), BIBLIOGRAPHY);
+	moduleLB->insertItem(qt_("Packages"), PACKAGES);
 	moduleLB->insertItem(qt_("Preamble"), PREAMBLE);
 	moduleLB->setCurrentItem(LAYOUT);
 	moduleLB->setMinimumSize(moduleLB->sizeHint());
@@ -78,21 +78,21 @@ QDocumentDialog::QDocumentDialog(QDocument * form)
 	layoutModule = new ClassModuleBase(this);
 	paperModule = new PaperModuleBase(this);
 	marginsModule = new MarginsModuleBase(this);
-	packagesModule = new PackagesModuleBase(this);
 	langModule = new LanguageModuleBase(this);
 	bulletsModule = new BulletsModule(this);
 	numberingModule = new NumberingModuleBase(this);
 	biblioModule = new BiblioModuleBase(this);
+	packagesModule = new PackagesModuleBase(this);
 	preambleModule = new PreambleModuleBase(this);
 
 	moduleStack->addWidget(layoutModule, LAYOUT);
 	moduleStack->addWidget(paperModule, PAPER);
 	moduleStack->addWidget(marginsModule, MARGINS);
-	moduleStack->addWidget(packagesModule, PACKAGES);
 	moduleStack->addWidget(langModule, LANGUAGE);
 	moduleStack->addWidget(bulletsModule, BULLETS);
 	moduleStack->addWidget(numberingModule, NUMBERING);
 	moduleStack->addWidget(biblioModule, BIBLIOGRAPHY);
+	moduleStack->addWidget(packagesModule, PACKAGES);
 	moduleStack->addWidget(preambleModule, PREAMBLE);
 
 	moduleStack->raiseWidget(LAYOUT);
@@ -119,6 +119,8 @@ QDocumentDialog::QDocumentDialog(QDocument * form)
 		 this , SLOT(change_adaptor()));
 	connect(langModule->languageCO, SIGNAL(activated(int)),
 		 this , SLOT(change_adaptor()));
+	connect(langModule->encodingCO, SIGNAL(activated(int)),
+		 this , SLOT(change_adaptor()));
 	connect(langModule->quoteStyleCO, SIGNAL(activated(int)),
 		 this , SLOT(change_adaptor()));
 	// numbering
@@ -129,15 +131,6 @@ QDocumentDialog::QDocumentDialog(QDocument * form)
 		 SIGNAL(valueChanged(int)),
 		 this , SLOT(change_adaptor()));
 	// packages
-	connect(packagesModule->lspacingCO, SIGNAL(activated(int)),
-		 this , SLOT(change_adaptor()));
-	connect(packagesModule->lspacingCO, SIGNAL(activated(int)),
-		 this , SLOT(setLSpacing(int)));
-	connect(packagesModule->lspacingLE,
-		 SIGNAL(textChanged(const QString&)),
-		 this , SLOT(change_adaptor()));
-	connect(packagesModule->encodingCO, SIGNAL(activated(int)),
-		 this , SLOT(change_adaptor()));
 	connect(packagesModule->amsCB, SIGNAL(toggled(bool)),
 		 this , SLOT(change_adaptor()));
 	connect(packagesModule->psdriverCO, SIGNAL(activated(int)),
@@ -153,6 +146,13 @@ QDocumentDialog::QDocumentDialog(QDocument * form)
 	connect(layoutModule->fontsCO, SIGNAL(activated(int)),
 		 this , SLOT(change_adaptor()));
 	connect(layoutModule->fontsizeCO, SIGNAL(activated(int)),
+		 this , SLOT(change_adaptor()));
+	connect(layoutModule->lspacingCO, SIGNAL(activated(int)),
+		 this , SLOT(change_adaptor()));
+	connect(layoutModule->lspacingCO, SIGNAL(activated(int)),
+		 this , SLOT(setLSpacing(int)));
+	connect(layoutModule->lspacingLE,
+		 SIGNAL(textChanged(const QString&)),
 		 this , SLOT(change_adaptor()));
 	connect(layoutModule->floatPlacementLE,
 		 SIGNAL(textChanged(const QString&)),
@@ -257,9 +257,6 @@ void QDocumentDialog::setTitle(int item)
 	case LAYOUT:
 		titleL->setText(qt_("Document Style"));
 		break;
-	case PACKAGES:
-		titleL->setText(qt_("LaTeX Packages"));
-		break;
 	case PAPER:
 		titleL->setText(qt_("Papersize and Orientation"));
 		break;
@@ -277,6 +274,9 @@ void QDocumentDialog::setTitle(int item)
 		break;
 	case BIBLIOGRAPHY:
 		titleL->setText(qt_("Bibliography Settings"));
+		break;
+	case PACKAGES:
+		titleL->setText(qt_("LaTeX Packages and Options"));
 		break;
 	case PREAMBLE:
 		titleL->setText(qt_("LaTeX Preamble"));
@@ -312,7 +312,7 @@ void QDocumentDialog::closeEvent(QCloseEvent * e)
 
 void QDocumentDialog::setLSpacing(int item)
 {
-	packagesModule->lspacingLE->setEnabled(item == 3);
+	layoutModule->lspacingLE->setEnabled(item == 3);
 }
 
 

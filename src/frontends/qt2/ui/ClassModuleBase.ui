@@ -13,7 +13,7 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>317</width>
+            <width>313</width>
             <height>287</height>
         </rect>
     </property>
@@ -110,20 +110,6 @@
                 <cstring>pagestyleCO</cstring>
             </property>
         </widget>
-        <widget row="3"  column="1" >
-            <class>QComboBox</class>
-            <property stdset="1">
-                <name>name</name>
-                <cstring>fontsCO</cstring>
-            </property>
-            <property stdset="1">
-                <name>sizePolicy</name>
-                <sizepolicy>
-                    <hsizetype>3</hsizetype>
-                    <vsizetype>0</vsizetype>
-                </sizepolicy>
-            </property>
-        </widget>
         <widget row="3"  column="2" >
             <class>QComboBox</class>
             <property stdset="1">
@@ -131,48 +117,7 @@
                 <cstring>fontsizeCO</cstring>
             </property>
         </widget>
-        <widget row="3"  column="0" >
-            <class>QLabel</class>
-            <property stdset="1">
-                <name>name</name>
-                <cstring>fontsL</cstring>
-            </property>
-            <property stdset="1">
-                <name>text</name>
-                <string>&amp;Font &amp;&amp; size :</string>
-            </property>
-            <property>
-                <name>buddy</name>
-                <cstring>fontsCO</cstring>
-            </property>
-        </widget>
-        <widget row="4"  column="0" >
-            <class>QLabel</class>
-            <property stdset="1">
-                <name>name</name>
-                <cstring>floatPlacementL</cstring>
-            </property>
-            <property stdset="1">
-                <name>enabled</name>
-                <bool>true</bool>
-            </property>
-            <property stdset="1">
-                <name>text</name>
-                <string>Float &amp;placement:</string>
-            </property>
-            <property>
-                <name>buddy</name>
-                <cstring>floatPlacementLE</cstring>
-            </property>
-        </widget>
-        <widget row="4"  column="1" >
-            <class>QLineEdit</class>
-            <property stdset="1">
-                <name>name</name>
-                <cstring>floatPlacementLE</cstring>
-            </property>
-        </widget>
-        <widget row="5"  column="0"  rowspan="1"  colspan="3" >
+        <widget row="6"  column="0"  rowspan="1"  colspan="3" >
             <class>QButtonGroup</class>
             <property stdset="1">
                 <name>name</name>
@@ -254,6 +199,112 @@
                     </property>
                 </widget>
             </grid>
+        </widget>
+        <widget row="5"  column="0" >
+            <class>QLabel</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>floatPlacementL</cstring>
+            </property>
+            <property stdset="1">
+                <name>enabled</name>
+                <bool>true</bool>
+            </property>
+            <property stdset="1">
+                <name>text</name>
+                <string>Float &amp;placement:</string>
+            </property>
+            <property>
+                <name>buddy</name>
+                <cstring>floatPlacementLE</cstring>
+            </property>
+        </widget>
+        <widget row="5"  column="1" >
+            <class>QLineEdit</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>floatPlacementLE</cstring>
+            </property>
+        </widget>
+        <widget row="4"  column="2" >
+            <class>QLineEdit</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>lspacingLE</cstring>
+            </property>
+            <property stdset="1">
+                <name>enabled</name>
+                <bool>false</bool>
+            </property>
+            <property stdset="1">
+                <name>sizePolicy</name>
+                <sizepolicy>
+                    <hsizetype>1</hsizetype>
+                    <vsizetype>0</vsizetype>
+                </sizepolicy>
+            </property>
+        </widget>
+        <widget row="3"  column="0" >
+            <class>QLabel</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>fontsL</cstring>
+            </property>
+            <property stdset="1">
+                <name>text</name>
+                <string>&amp;Font &amp;&amp; size :</string>
+            </property>
+            <property>
+                <name>buddy</name>
+                <cstring>fontsCO</cstring>
+            </property>
+        </widget>
+        <widget row="4"  column="0" >
+            <class>QLabel</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>lspacingL</cstring>
+            </property>
+            <property stdset="1">
+                <name>text</name>
+                <string>&amp;Line spacing :</string>
+            </property>
+            <property>
+                <name>buddy</name>
+                <cstring>lspacingCO</cstring>
+            </property>
+        </widget>
+        <widget row="3"  column="1" >
+            <class>QComboBox</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>fontsCO</cstring>
+            </property>
+            <property stdset="1">
+                <name>sizePolicy</name>
+                <sizepolicy>
+                    <hsizetype>3</hsizetype>
+                    <vsizetype>0</vsizetype>
+                </sizepolicy>
+            </property>
+        </widget>
+        <widget row="4"  column="1" >
+            <class>QComboBox</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>lspacingCO</cstring>
+            </property>
+            <property stdset="1">
+                <name>sizePolicy</name>
+                <sizepolicy>
+                    <hsizetype>3</hsizetype>
+                    <vsizetype>0</vsizetype>
+                </sizepolicy>
+            </property>
+            <property stdset="1">
+                <name>duplicatesEnabled</name>
+                <bool>false</bool>
+            </property>
         </widget>
     </grid>
 </widget>

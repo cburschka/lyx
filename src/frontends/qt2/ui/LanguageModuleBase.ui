@@ -13,8 +13,8 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>286</width>
-            <height>170</height>
+            <width>282</width>
+            <height>190</height>
         </rect>
     </property>
     <property stdset="1">
@@ -30,36 +30,7 @@
             <name>spacing</name>
             <number>6</number>
         </property>
-        <widget row="0"  column="0" >
-            <class>QLabel</class>
-            <property stdset="1">
-                <name>name</name>
-                <cstring>languageL</cstring>
-            </property>
-            <property stdset="1">
-                <name>text</name>
-                <string>&amp;Language:</string>
-            </property>
-            <property>
-                <name>buddy</name>
-                <cstring>languageCO</cstring>
-            </property>
-        </widget>
-        <widget row="0"  column="1" >
-            <class>QComboBox</class>
-            <property stdset="1">
-                <name>name</name>
-                <cstring>languageCO</cstring>
-            </property>
-            <property stdset="1">
-                <name>sizePolicy</name>
-                <sizepolicy>
-                    <hsizetype>7</hsizetype>
-                    <vsizetype>0</vsizetype>
-                </sizepolicy>
-            </property>
-        </widget>
-        <widget row="1"  column="0"  rowspan="1"  colspan="2" >
+        <widget row="2"  column="0"  rowspan="1"  colspan="2" >
             <class>QButtonGroup</class>
             <property stdset="1">
                 <name>name</name>
@@ -155,6 +126,68 @@
                     </property>
                 </spacer>
             </grid>
+        </widget>
+        <widget row="0"  column="1" >
+            <class>QComboBox</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>languageCO</cstring>
+            </property>
+            <property stdset="1">
+                <name>sizePolicy</name>
+                <sizepolicy>
+                    <hsizetype>7</hsizetype>
+                    <vsizetype>0</vsizetype>
+                </sizepolicy>
+            </property>
+        </widget>
+        <widget row="0"  column="0" >
+            <class>QLabel</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>languageL</cstring>
+            </property>
+            <property stdset="1">
+                <name>text</name>
+                <string>&amp;Language:</string>
+            </property>
+            <property>
+                <name>buddy</name>
+                <cstring>languageCO</cstring>
+            </property>
+        </widget>
+        <widget row="1"  column="0" >
+            <class>QLabel</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>encodingL</cstring>
+            </property>
+            <property stdset="1">
+                <name>text</name>
+                <string>&amp;Encoding:</string>
+            </property>
+            <property>
+                <name>buddy</name>
+                <cstring>encodingCO</cstring>
+            </property>
+        </widget>
+        <widget row="1"  column="1" >
+            <class>QComboBox</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>encodingCO</cstring>
+            </property>
+            <property stdset="1">
+                <name>sizePolicy</name>
+                <sizepolicy>
+                    <hsizetype>7</hsizetype>
+                    <vsizetype>0</vsizetype>
+                </sizepolicy>
+            </property>
+            <property stdset="1">
+                <name>duplicatesEnabled</name>
+                <bool>false</bool>
+            </property>
         </widget>
     </grid>
 </widget>
