@@ -1,3 +1,9 @@
+2004-05-20  Angus Leeming  <leeming@lyx.org>
+
+	* debugstream.h: wrap the definition of debug_trait::DEBUG with
+	preprocessor guards that protect against a name clash with a
+	macro DEBUG. Such a macro is defined by the Qt library...
+
 2004-04-27  Angus Leeming  <leeming@lyx.org>
 
 	* path_defines.{h,C.in}: expose top_srcdir, renamed from

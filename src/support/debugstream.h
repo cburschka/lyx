@@ -16,6 +16,11 @@
 
 #include <boost/test/detail/nullstream.hpp>
 
+#ifdef DEBUG
+# define TEMPORARY_DEBUG_MACRO DEBUG
+# undef DEBUG
+#endif
+
 struct debug_trait {
 	enum type {
 		NONE   = 0,
@@ -34,6 +39,11 @@ struct debug_trait {
 		return (b <= a || (b == ANY && a > NONE));
 	}
 };
+
+#ifdef TEMPORARY_DEBUG_MACRO
+# define DEBUG TEMPORARY_DEBUG_MACRO
+# undef TEMPORARY_DEBUG_MACRO
+#endif
 
 
 template <class dtrait,
