@@ -176,10 +176,6 @@ public:
 	Token(const string & cs) : cs_(cs), char_(0), cat_(catIgnore) {}
 
 	///
-	bool operator==(Token const & t) const;
-	///
-	bool operator!=(Token const & t) const;
-	///
 	string const & cs() const { return cs_; }
 	///
 	CatCode cat() const { return cat_; }
@@ -202,14 +198,15 @@ string Token::asString() const
 	return cs_.size() ? cs_ : string(1, char_);
 }
 
-bool Token::operator==(Token const & t) const
+bool operator==(Token const & s, Token const & t)
 {
-	return char_ == t.char_ && cat_ == t.cat_ && cs_ == t.cs_; 
+	return s.character() == t.character()
+		&& s.cat() == t.cat() && s.cs() == t.cs(); 
 }
 
-bool Token::operator!=(Token const & t) const
+bool operator!=(Token const & s, Token const & t)
 {
-	return char_ != t.char_ && cat_ != t.cat_ && cs_ != t.cs_; 
+	return !(s == t);
 }
 
 ostream & operator<<(ostream & os, Token const & t)
