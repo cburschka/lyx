@@ -537,7 +537,7 @@ bool MathGridInset::idxFirst(idx_type & idx, pos_type & pos) const
 			idx = (nrows() - 1) * ncols();
 			break;
 		default: 
-			idx = (nrows() / 2) * ncols();
+			idx = ((nrows() - 1) / 2) * ncols();
 	}
 	pos = 0;
 	return true;
@@ -554,7 +554,7 @@ bool MathGridInset::idxLast(idx_type & idx, pos_type & pos) const
 			idx = nargs() - 1;
 			break;
 		default:
-			idx = (nrows() / 2 + 1) * ncols() - 1;
+			idx = ((nrows() - 1) / 2 + 1) * ncols() - 1;
 	}
 	pos = cell(idx).size();
 	return true;
