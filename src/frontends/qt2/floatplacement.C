@@ -146,6 +146,7 @@ void FloatPlacement::set(string const & placement)
 	ignoreCB->setChecked(force);
 	ignoreCB->setEnabled(top || bottom || page || here);
 	heredefinitelyCB->setChecked(here_definitely);
+	checkAllowed();
 }
 
 
@@ -163,6 +164,7 @@ void FloatPlacement::set(InsetFloatParams const & params)
 	sidewaysCB->setChecked(params.sideways);
 	sidewaysCB->setEnabled(params.type == "figure" 
 		|| params.type == "table");
+	checkAllowed();
 }
 
 
@@ -271,4 +273,5 @@ void FloatPlacement::checkAllowed()
 	ignoreCB->setEnabled(!sideways && !defaults && ignore);
 	herepossiblyCB->setEnabled(!sideways && !defaults && !span);
 	heredefinitelyCB->setEnabled(!sideways && !defaults && !span);
+	spanCB->setEnabled(!sideways);
 }
