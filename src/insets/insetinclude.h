@@ -78,7 +78,7 @@ public:
         ///
         void setFilename(string const & n) { setContents(n); }
         ///
-        string getMasterFilename() const { return master->getFileName(); }
+        string getMasterFilename() const { return master->fileName(); }
         ///
         string getFileName() const { 
 		return filename;

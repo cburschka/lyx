@@ -32,7 +32,7 @@ InsetParent::InsetParent(string const & fn, Buffer * owner)
 	: InsetCommand("lyxparent")
 {
 	if (owner)
-		setContents(MakeAbsPath(fn, OnlyPath(owner->getFileName())));
+		setContents(MakeAbsPath(fn, OnlyPath(owner->fileName())));
 	else
 		setContents(fn);
 }

@@ -61,8 +61,13 @@ extern "C" void bibitem_cb(FL_OBJECT *, long data)
 			inset->setOptions(fl_get_input(bibitem_form->label));
 			fl_hide_form(bibitem_form->bibitem_form);
 			// Does look like a hack? It is! (but will change at 0.13)
+#ifdef MOVE_TEXT
+			current_view->text->RedoParagraph();
+			current_view->update(1);
+#else
 			current_view->buffer()->text->RedoParagraph();
 			current_view->buffer()->update(1);
+#endif
 			break;
 		} // fall through to Cancel on RO-mode
         }

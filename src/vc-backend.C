@@ -131,7 +131,7 @@ void RCS::registrer(string const & msg)
 	string cmd = "ci -q -u -i -t-\"";
 	cmd += msg;
 	cmd += "\" \"";
-	cmd += OnlyFilename(owner_->getFileName());
+	cmd += OnlyFilename(owner_->fileName());
 	cmd += "\"";
 	doVCCommand(cmd);
 	owner_->getUser()->owner()->getLyXFunc()->Dispatch("buffer-reload");
@@ -141,7 +141,7 @@ void RCS::registrer(string const & msg)
 void RCS::checkIn(string const & msg)
 {
 	doVCCommand("ci -q -u -m\"" + msg + "\" \""
-		    + OnlyFilename(owner_->getFileName()) + "\"");
+		    + OnlyFilename(owner_->fileName()) + "\"");
 	owner_->getUser()->owner()->getLyXFunc()->Dispatch("buffer-reload");
 }
 
@@ -150,7 +150,7 @@ void RCS::checkOut()
 {
 	owner_->markLyxClean();
 	doVCCommand("co -q -l \""
-		    + OnlyFilename(owner_->getFileName()) + "\"");
+		    + OnlyFilename(owner_->fileName()) + "\"");
 	owner_->getUser()->owner()->getLyXFunc()->Dispatch("buffer-reload");
 }
 
@@ -158,7 +158,7 @@ void RCS::checkOut()
 void RCS::revert()
 {
 	doVCCommand("co -f -u" + version() + " \""
-		    + OnlyFilename(owner_->getFileName()) + "\"");
+		    + OnlyFilename(owner_->fileName()) + "\"");
 	// We ignore changes and just reload!
 	owner_->markLyxClean();
 	owner_->getUser()->owner()
@@ -170,14 +170,14 @@ void RCS::undoLast()
 {
 	lyxerr[Debug::LYXVC] << "LyXVC: undoLast" << endl;
 	doVCCommand("rcs -o" + version() + " \""
-		    + OnlyFilename(owner_->getFileName()) + "\"");
+		    + OnlyFilename(owner_->fileName()) + "\"");
 }
 
 
 void RCS::getLog(string const & tmpf)
 {
 	doVCCommand("rlog \""
-		    + OnlyFilename(owner_->getFileName()) + "\" > " + tmpf);
+		    + OnlyFilename(owner_->fileName()) + "\" > " + tmpf);
 }
 
 
@@ -263,7 +263,7 @@ void CVS::scanMaster()
 void CVS::registrer(string const & msg)
 {
 	doVCCommand("cvs -q add -m \"" + msg + "\" \""
-		    + OnlyFilename(owner_->getFileName()) + "\"");
+		    + OnlyFilename(owner_->fileName()) + "\"");
 	owner_->getUser()->owner()->getLyXFunc()->Dispatch("buffer-reload");
 }
 
@@ -271,7 +271,7 @@ void CVS::registrer(string const & msg)
 void CVS::checkIn(string const & msg)
 {
 	doVCCommand("cvs -q commit -m \"" + msg + "\" \""
-		    + OnlyFilename(owner_->getFileName()) + "\"");
+		    + OnlyFilename(owner_->fileName()) + "\"");
 	owner_->getUser()->owner()->getLyXFunc()->Dispatch("buffer-reload");
 }
 

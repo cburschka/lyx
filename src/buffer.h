@@ -34,6 +34,7 @@
 #include "lyxtext.h"
 #include "support/filetools.h"
 
+#define MOVE_TEXT 1
 
 class LyXRC;
 class TeXErrors;
@@ -79,15 +80,26 @@ public:
 	  */
 	bool saveParamsAsDefaults();
 
+	/** high-level interface to buffer functionality
+	  This function parses a command string and executes it
+	  */
+	void Dispatch(const string & command);
+
+	/// Maybe we know the function already by number...
+	void Dispatch(int ac, const string & argument);
+
 	/// should be changed to work for a list.
 	void resize()
 	{
 		if (users) {
 			users->resize();
-		} else if (text) {
+		}
+#ifndef MOVE_TEXT
+		else if (text) {
 			delete text;
 			text = 0;
 		}
+#endif
 	}
 
 	/// Update window titles of all users
@@ -106,9 +118,11 @@ public:
  	  Since we only can have one at the moment, we just reset it.
 	  */
 	void delUser(BufferView *){ users = 0; }
-
+	
+#ifndef MOVE_TEXT
 	///
 	void update(signed char f);
+#endif
 
 	///
 	void redraw() {
@@ -231,7 +245,7 @@ public:
 	}
 
 	///
-	string getFileName() const { return filename; }
+	string const & fileName() const { return filename; }
 
 	/// A transformed version of the file name, adequate for LaTeX  
 	string getLatexName() const {
@@ -239,7 +253,7 @@ public:
 	}
 
 	/// Change name of buffer. Updates "read-only" flag.
-	void setFileName(string const & newfile);
+	void fileName(string const & newfile);
 
 	/// Name of the document's parent
 	void setParentName(string const &);
@@ -329,13 +343,14 @@ public:
 	/** is a list of paragraphs.
 	 */
 	LyXParagraph * paragraph;
-	
+
+#ifndef MOVE_TEXT
 	/** This holds the mapping between buffer paragraphs and screen rows.
 	    Should be moved to BufferView. (Asger)
 	 */
 	LyXText * text;
-
-	///
+#endif
+	/// per view not per buffer?
 	UpdatableInset * the_locking_inset;
 
 	/// RCS object
@@ -350,7 +365,7 @@ public:
 	/** While writing as LaTeX, tells whether we are
 	    doing a 'nice' LaTeX file */
 	bool niceFile;
-protected:
+
 	///
         void InsetUnlock();
 	
@@ -377,7 +392,7 @@ private:
         ///
 	void DocBookHandleCaption(ostream & os, string & inner_tag,
 				  int const depth, int desc_on,
-				  LyXParagraph * &par);
+				  LyXParagraph * & par);
         ///
 	void DocBookHandleFootnote(ostream & os,
 				   LyXParagraph * & par, int const depth);
@@ -445,11 +460,6 @@ private:
 	  of the buffers in the list of users to do a updateLayoutChoice.
 	  */
 	BufferView * users;
-
-	///
-	friend class BufferList;
-	///
-        friend class BufferView;
 
 	/// Used when typesetting to place errorboxes.
 	TexRow texrow;

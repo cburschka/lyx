@@ -31,8 +31,6 @@ class Intl
 public:
 	///
 	Intl();
-	///
-	~Intl();
 	
 	/// show key mapping dialog
 	void MenuKeymap(); 
@@ -52,23 +50,18 @@ public:
 	///
 	int SetSecondary(string const &);
 
-	// insert correct stuff into paragraph
-	//void TranslateAndInsert(char c, LyXText *text);
-
 	/// initialize key mapper
 	void InitKeyMapper(bool on);
 
 	/// Get the Translation Manager
-	inline TransManager *getTrans();
+	inline TransManager * getTrans();
 	///
 	bool keymapon;
 	///
-	char *chsetcode;
+	char * chsetcode;
 	///
-	static void DispatchCallback(FL_OBJECT*, long);
+	static void DispatchCallback(FL_OBJECT *, long);
 private:
-	///
-	//int SelectCharset(char const *code);
 	///
 	void update();
 	///
@@ -85,21 +78,21 @@ private:
 	int otherkeymap;
 	
 	///
-	FD_KeyMap *fd_form_keymap;
+	FD_KeyMap * fd_form_keymap;
 	///
-	Combox *Language;
+	Combox * Language;
 	///
-	Combox *Language2;
+	Combox * Language2;
 	///
 	string & prim_lang;
 	///
 	string & sec_lang;
 	///
-	TransManager *trans;
+	TransManager * trans;
 };
 
 
-TransManager* Intl::getTrans()
+TransManager * Intl::getTrans()
 {
 	return trans;
 }

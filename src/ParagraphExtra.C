@@ -76,7 +76,11 @@ bool UpdateParagraphExtra()
     bool update = false;
     if (current_view->getScreen() && current_view->available()) {
         update = true;
+#ifdef MOVE_TEXT
+        LyXParagraph * par = current_view->text->cursor.par;
+#else
         LyXParagraph * par = current_view->buffer()->text->cursor.par;
+#endif
 
 	EnableParagraphExtra();
 
@@ -171,7 +175,11 @@ void ParagraphExtraApplyCB(FL_OBJECT *, long)
         FD_form_paragraph_extra const * fd = fd_form_paragraph_extra;
         char const * width = fl_get_input(fd->input_pextra_width);
         char const * widthp = fl_get_input(fd->input_pextra_widthp);
+#ifdef MOVE_TEXT
+        LyXText * text = current_view->text;
+#else
         LyXText * text = current_view->buffer()->text;
+#endif
         int type = LyXParagraph::PEXTRA_NONE;
 	LyXParagraph::MINIPAGE_ALIGNMENT alignment =
 		LyXParagraph::MINIPAGE_ALIGN_TOP;
@@ -197,7 +205,11 @@ void ParagraphExtraApplyCB(FL_OBJECT *, long)
         }
         text->SetParagraphExtraOpt(type, width, widthp, alignment, hfill,
                                    start_minipage);
+#ifdef MOVE_TEXT
+	current_view->update(1);
+#else
 	current_view->buffer()->update(1);
+#endif
 	minibuffer->Set(_("ParagraphExtra layout set"));
     }
     return;

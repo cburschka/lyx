@@ -36,9 +36,6 @@ TransFSMData::TransFSMData()
 char const TransState::TOKEN_SEP = 4;
 
 
-TransState::~TransState() {}
-
-
 // TransInitState
 TransInitState::TransInitState()
 {
@@ -49,7 +46,7 @@ TransInitState::TransInitState()
 string TransInitState::normalkey(char c, char * t)
 {
     string res;
-    if (t!= 0)
+    if (t != 0)
 	res = t;
     else
 	res = c;
@@ -188,12 +185,12 @@ string TransCombinedState::deadkey(char c, KmodInfo d)
     // Third key in a row. Output the first one and
     // reenter with shifted deadkeys
     string res;
-    if (deadkey_!= 0)
+    if (deadkey_ != 0)
 	res = deadkey_;
-    res+= TOKEN_SEP;
+    res += TOKEN_SEP;
     deadkey_ = deadkey2_;
     deadkey_info_ = deadkey2_info_;
-    res+= deadkey_state_->deadkey(c, d);
+    res += deadkey_state_->deadkey(c, d);
     return res;
 }
 
@@ -311,7 +308,7 @@ void TransManager::insert(string str, LyXText * text)
     // encoding (chset_->name()) matches the current font_norm
     // (lyrxc->font_norm
 
-    if (chset_.getName()!= lyxrc->font_norm || 
+    if (chset_.getName() != lyxrc->font_norm || 
 	chset_.encodeString(str) == false) {
 	// Could not find an encoding
 	InsetLatexAccent ins(str);
@@ -330,7 +327,7 @@ void TransManager::deadkey(char c, tex_accent accent, LyXText * t)
     KmodInfo i;
     string res;
     
-    if (c == 0 && active_!= default_) {
+    if (c == 0 && active_ != default_) {
 	// A deadkey was pressed that cannot be printed
 	// or a accent command was typed in the minibuffer
 	

@@ -18,6 +18,9 @@
 
 #include FORMS_H_LOCATION
 #include "BackStack.h"
+#include "lyxtext.h"
+
+#define MOVE_TEXT 1
 
 class LyXView;
 class Buffer;
@@ -29,6 +32,8 @@ class BufferView {
 public:
 	///
 	BufferView(LyXView *owner, int , int , int, int);
+	///
+	~BufferView();
 	///
 	Buffer * buffer() const { return buffer_; }
 	///
@@ -43,6 +48,10 @@ public:
 	void fitCursor();
 	///
 	void update();
+#ifdef MOVE_TEXT
+	///
+	void update(signed char f);
+#endif
 	///
 	void updateScrollbar();
 	///
@@ -69,6 +78,12 @@ public:
         void savePosition();
         ///
         void restorePosition();
+#ifdef MOVE_TEXT
+	/** This holds the mapping between buffer paragraphs and screen rows.
+	    This should be private...but not yet. (Lgb)
+	*/
+	LyXText * text;
+#endif
 private:
 	/// Update pixmap of screen
 	void updateScreen();

@@ -18,7 +18,7 @@ class Trans;
 class TransState {
 public:
 	///
-	virtual ~TransState();
+	virtual ~TransState() {}
 	///
 	virtual string normalkey(char, char *) = 0;
 	///
@@ -182,7 +182,6 @@ public:
 	inline string normalkey(char, char *);
 	///
 	void deadkey(char, tex_accent, LyXText *);
-    
 };
 
 

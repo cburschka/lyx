@@ -413,6 +413,6 @@ void WarnReadonly()
 {
 	WriteAlert(_("Any changes will be ignored"),
 		   _("The document is read-only:"),
-		   current_view->buffer()->getFileName());
+		   current_view->buffer()->fileName());
 }
 

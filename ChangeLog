@@ -1,3 +1,33 @@
+1999-12-10  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/buffer.h: removed the two friends from Buffer. Some changes
+	because of this. Buffer::getFileName and Buffer::setFileName
+	renamed to Buffer::fileName() and Buffer::fileName(...).
+
+1999-12-09  Lars Gullik Bjønnes <larsbj@lyx.org>
+
+	* buffer.[Ch], BufferView.[Ch] + other files: Moved Buffer::text
+	and Buffer::update(short) to BufferView. This move is currently
+	controlled by a define MOVE_TEXT, this will be removed when all
+	shows to be ok. This move paves the way for better separation
+	between buffer contents and buffer view. One side effect is that
+	the BufferView needs a rebreak when swiching buffers, if we want
+	to avoid this we can add a cache that holds pointers to LyXText's
+	that is not currently in use. 
+
+	* buffer.[Ch], lyx_main.C: small changes to the "-export" patch by
+	André Pönitz. 
+
+1999-11-18  André Pönitz <poenitz@mathematik.tu-chemnitz.de>
+
+	* buffer.[Ch]: Dispatch() - new dispatcher on the buffer level
+
+	* lyx_main.C: new command line option -x (or --execute) and
+	  -e (or --export). Now direct conversion from .lyx to .tex
+	  (.dvi, .ps, ...) is possible  ('lyx file.lyx --export latex')
+	  Unfortunately, X is still needed and the GUI pops up during the
+	  process...
+
 1999-12-07  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/Spacing.C: add a using directive to bring stream stuff into
@@ -400,7 +430,7 @@
 	* lib/reLyX/configure.in: make sure that the prefix is set
 	correctly in LYX_DIR.
 
-1999-11-18  Andre' Poenitz <poenitz@mathematik.tu-chemnitz.de>
+1999-11-18  André Pönitz <poenitz@mathematik.tu-chemnitz.de>
 
 	* src/commandtags.h: introduction of a new tag 'LFUN_SEQUENCE' to
 	be used by 'command-sequence' this allows to bind a key to a

@@ -48,11 +48,6 @@ Intl::Intl()
 }
 
 
-Intl::~Intl()
-{
-}
-
-
 int Intl::SetPrimary(string const & lang)
 {
 	if (lyxerr.debugging(Debug::KBMAP))
@@ -129,19 +124,17 @@ void Intl::ToggleKeyMap()
 
 void Intl::KeyMapPrim()
 {
-	int i;
-	string p;
-
 	fl_set_button(fd_form_keymap->KeyOffBtn, 0);
 	fl_set_button(fd_form_keymap->KeyOnBtn, 1);
 	fl_set_button(fd_form_keymap->KeyOnBtn2, 0);
 
 	/* read text from choice */
-	i = Language->get();
+	int i = Language->get();
 	
 	if (lyxerr.debugging(Debug::KBMAP))
 		lyxerr << "Table: " << tex_babel[i-1] << endl;
 
+	string p;
 	if (i == otherkeymap)
 		p = fl_get_input(fd_form_keymap->OtherKeymap);
 	else

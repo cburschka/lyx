@@ -78,14 +78,14 @@ void LyXVC::registrer()
 	// so... we use RCS as default, later this should perhaps be
 	// a lyxrc option.
 	if (!vcs) {
-		vcs = new RCS(owner_->getFileName());
+		vcs = new RCS(owner_->fileName());
 		vcs->owner(owner_);
 	}
 	
 	// If the document is changed, we might want to save it
 	if (!vcs->owner()->isLyxClean() && 
 	    AskQuestion(_("Changes in document:"),
-			MakeDisplayPath(vcs->owner()->getFileName(), 50),
+			MakeDisplayPath(vcs->owner()->fileName(), 50),
 			_("Save document and proceed?"))) {
 		vcs->owner()->getUser()->owner()
 			->getLyXFunc()->Dispatch(LFUN_MENUWRITE);
@@ -115,7 +115,7 @@ void LyXVC::checkIn()
 	// If the document is changed, we might want to save it
 	if (!vcs->owner()->isLyxClean() && 
 	    AskQuestion(_("Changes in document:"),
-			MakeDisplayPath(vcs->owner()->getFileName(), 50),
+			MakeDisplayPath(vcs->owner()->fileName(), 50),
 			_("Save document and proceed?"))) {
 		vcs->owner()->getUser()->owner()
 			->getLyXFunc()->Dispatch(LFUN_MENUWRITE);
@@ -141,7 +141,7 @@ void LyXVC::checkOut()
 	lyxerr[Debug::LYXVC] << "LyXVC: checkOut" << endl;
 	if (!vcs->owner()->isLyxClean() 
 	    && !AskQuestion(_("Changes in document:"),
-			   MakeDisplayPath(vcs->owner()->getFileName(), 50),
+			   MakeDisplayPath(vcs->owner()->fileName(), 50),
 			   _("Ignore changes and proceed with check out?"))) {
 		return;
 	}

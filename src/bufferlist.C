@@ -96,7 +96,7 @@ bool BufferList::QwriteAll()
 	    it != bstore.end(); ++it) {
 		if (!(*it)->isLyxClean()) {
 			switch(AskConfirmation(_("Changes in document:"),
-					       MakeDisplayPath((*it)->filename,
+					       MakeDisplayPath((*it)->fileName(),
 							       50),
 					       _("Save document?"))) {
 			case 1: // Yes
@@ -104,7 +104,7 @@ bool BufferList::QwriteAll()
 				break;
 			case 2: // No
 				askMoreConfirmation = true;
-				unsaved += MakeDisplayPath((*it)->filename, 50);
+				unsaved += MakeDisplayPath((*it)->fileName(), 50);
 				unsaved += "\n";
 				break;
 			case 3: // Cancel
@@ -127,14 +127,14 @@ bool BufferList::QwriteAll()
 bool BufferList::write(Buffer * buf, bool makeBackup)
 {
 	minibuffer->Set(_("Saving document"),
-			MakeDisplayPath(buf->filename), "...");
+			MakeDisplayPath(buf->fileName()), "...");
 
 	// We don't need autosaves in the immediate future. (Asger)
 	buf->resetAutosaveTimers();
 
 	// make a backup
 	if (makeBackup) {
-		string s = buf->filename + '~';
+		string s = buf->fileName() + '~';
 		// Rename is the wrong way of making a backup,
 		// this is the correct way.
 		/* truss cp fil fil2:
@@ -159,7 +159,7 @@ bool BufferList::write(Buffer * buf, bool makeBackup)
 		// Doing it this way, also makes the inodes stay the same.
 		// This is still not a very good solution, in particular we
 		// might loose the owner of the backup.
-		FileInfo finfo(buf->filename);
+		FileInfo finfo(buf->fileName());
 		if (finfo.exist()) {
 			mode_t fmode = finfo.getMode();
 
@@ -169,7 +169,7 @@ bool BufferList::write(Buffer * buf, bool makeBackup)
 			times->modtime = finfo.getModificationTime();
 			long blksize = finfo.getBlockSize();
 			lyxerr.debug() << "BlockSize: " << blksize << endl;
-			FilePtr fin(buf->filename, FilePtr::read);
+			FilePtr fin(buf->fileName(), FilePtr::read);
 			FilePtr fout(s, FilePtr::truncate);
 			if (fin() && fout()) {
 				char * cbuf = new char[blksize+1];
@@ -196,16 +196,16 @@ bool BufferList::write(Buffer * buf, bool makeBackup)
 		}
 	}
 	
-	if (buf->writeFile(buf->filename, false)) {
+	if (buf->writeFile(buf->fileName(), false)) {
 		buf->markLyxClean();
 
 		minibuffer->Set(_("Document saved as"),
-				MakeDisplayPath(buf->filename));
+				MakeDisplayPath(buf->fileName()));
 
 		// now delete the autosavefile
-		string a = OnlyPath(buf->filename);
+		string a = OnlyPath(buf->fileName());
 		a += '#';
-		a += OnlyFilename(buf->filename);
+		a += OnlyFilename(buf->fileName());
 		a += '#';
 		FileInfo fileinfo(a);
 		if (fileinfo.exist()) {
@@ -217,8 +217,8 @@ bool BufferList::write(Buffer * buf, bool makeBackup)
 	} else {
 		// Saving failed, so backup is not backup
 		if (makeBackup) {
-			string s = buf->filename + '~';
-			rename(s.c_str(), buf->filename.c_str());
+			string s = buf->fileName() + '~';
+			rename(s.c_str(), buf->fileName().c_str());
 		}
 		minibuffer->Set(_("Save failed!"));
 		return false;
@@ -254,11 +254,11 @@ bool BufferList::close(Buffer * buf)
 	if (buf->paragraph && !buf->isLyxClean() && !quitting) {
 		ProhibitInput();
                 switch(AskConfirmation(_("Changes in document:"),
-                              MakeDisplayPath(buf->filename, 50),
+                              MakeDisplayPath(buf->fileName(), 50),
                                       _("Save document?"))){
 		case 1: // Yes
 			if (write(buf)) {
-				lastfiles->newFile(buf->filename);
+				lastfiles->newFile(buf->fileName());
 			} else {
 				AllowInput();
 				return false;
@@ -284,7 +284,7 @@ void BufferList::makePup(int pup)
 	int ant = 0;
 	for(BufferStorage::iterator it = bstore.begin();
 	    it != bstore.end(); ++it) {
-		string relbuf = MakeDisplayPath((*it)->filename, 30);
+		string relbuf = MakeDisplayPath((*it)->fileName(), 30);
 		fl_addtopup(pup, relbuf.c_str());
 		++ant;
 	}
@@ -310,11 +310,19 @@ void BufferList::updateInset(Inset * inset, bool mark_dirty)
 {
 	for (BufferStorage::iterator it = bstore.begin();
 	     it != bstore.end(); ++it) {
+#ifdef MOVE_TEXT
+		if ((*it)->getUser() && (*it)->getUser()->text->UpdateInset(inset)) {
+			if (mark_dirty)
+				(*it)->markDirty();
+			break;
+		}
+#else
 		if ((*it)->text && (*it)->text->UpdateInset(inset)) {
 			if (mark_dirty)
 				(*it)->markDirty();
 			break;
 		}
+#endif
 	}
 }
 
@@ -340,7 +348,7 @@ void BufferList::updateIncludedTeXfiles(string const & mastertmpdir)
 		if (!(*it)->isDepClean(mastertmpdir)) {
 			string writefile = mastertmpdir;
 			writefile += '/';
-			writefile += ChangeExtension((*it)->getFileName(),
+			writefile += ChangeExtension((*it)->fileName(),
 						     ".tex", true);
 			(*it)->makeLaTeXFile(writefile, mastertmpdir,
 					     false, true);
@@ -360,7 +368,7 @@ void BufferList::emergencyWriteAll()
 			
 			lyxerr <<_("lyx: Attempting to save"
 				      " document ")
-			       << (*it)->filename
+			       << (*it)->fileName()
 			       << _(" as...") << endl;
 			
 			for (int i = 0; i < 3 && !madeit; ++i) {
@@ -371,13 +379,13 @@ void BufferList::emergencyWriteAll()
 				// 2) In HOME directory.
 				// 3) In "/tmp" directory.
 				if (i == 0) {
-					s = (*it)->filename;
+					s = (*it)->fileName();
 				} else if (i == 1) {
 					s = AddName(GetEnvPath("HOME"),
-						    (*it)->filename);
+						    (*it)->fileName());
 				} else { // MakeAbsPath to prepend the current drive letter on OS/2
 					s = AddName(MakeAbsPath("/tmp/"),
-						    (*it)->filename);
+						    (*it)->fileName());
 				}
 				s += ".emergency";
 				
@@ -473,7 +481,7 @@ bool BufferList::exists(string const & s)
 {
 	for (BufferStorage::iterator it = bstore.begin();
 	     it != bstore.end(); ++it) {
-		if ((*it)->filename == s)
+		if ((*it)->fileName() == s)
 			return true;
 	}
 	return false;
@@ -484,7 +492,7 @@ Buffer * BufferList::getBuffer(string const & s)
 {
 	for(BufferStorage::iterator it = bstore.begin();
 	    it != bstore.end(); ++it) {
-		if ((*it)->filename == s)
+		if ((*it)->fileName() == s)
 			return (*it);
 	}
 	return 0;
@@ -600,7 +608,7 @@ Buffer * BufferList::loadLyXFile(string const & filename, bool tolastfiles)
 	}
 
 	if (b && tolastfiles)
-		lastfiles->newFile(b->getFileName());
+		lastfiles->newFile(b->fileName());
 
 	return b;
 }

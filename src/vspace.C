@@ -492,7 +492,11 @@ string VSpace::asLatexCommand() const
 int VSpace::inPixels() const
 {
 	// Height of a normal line in pixels (zoom factor considered)
+#ifdef MOVE_TEXT
+	int height = current_view->text->DefaultHeight(); // [pixels]
+#else
 	int height = current_view->buffer()->text->DefaultHeight(); // [pixels]
+#endif
 
 	// Zoom factor specified by user in percent
 	float const zoom = lyxrc->zoom / 100.0; // [percent]

@@ -114,6 +114,16 @@ LyX::LyX(int * argc, char * argv[])
 		lyxerr.debug() << "Yes we loaded some files." << endl;
 		lyxGUI->regBuf(last_loaded);
 	}
+
+	// Execute batch commands if available
+	if (!batch_command.empty() && last_loaded) {
+		lyxerr << "About to handle -x '" << batch_command << "'" << endl;
+		//Buffer buffer("Script Buffer");
+		//buffer.Dispatch(batch_command);
+		last_loaded->Dispatch(batch_command);
+		lyxerr << "We are done!" << endl;
+		return; // Maybe we could do something more clever than aborting..
+	}
 	
 	// Let the ball begin...
 	lyxGUI->runTime();
@@ -473,30 +483,30 @@ bool LyX::easyParse(int * argc, char * argv[])
 		string arg = argv[i];
 		// Check for -dbg int
 		if (arg == "-dbg") {
-			if (i+1 < *argc) {
-				setDebuggingLevel(argv[i+1]);
+			if (i + 1 < *argc) {
+				setDebuggingLevel(argv[i + 1]);
 
 				// Now, remove these two arguments by shifting
 				// the following two places down.
 				(*argc) -= 2;
-				for (int j= i; j < (*argc); j++)
-					argv[j] = argv[j+2];
-				i--; // After shift, check this number again.
+				for (int j = i; j < (*argc); ++j)
+					argv[j] = argv[j + 2];
+				--i; // After shift, check this number again.
 			} else
 				lyxerr << _("Missing number for -dbg switch!")
 				       << endl;
 		} 
 		// Check for "-sysdir"
 		else if (arg == "-sysdir") {
-			if (i+1 < *argc) {
-				system_lyxdir = argv[i+1];
+			if (i + 1 < *argc) {
+				system_lyxdir = argv[i + 1];
 
 				// Now, remove these two arguments by shifting
 				// the following two places down.
 				(*argc) -= 2;
-				for (int j= i; j < (*argc); j++)
-					argv[j] = argv[j+2];
-				i--; // After shift, check this number again.
+				for (int j= i; j < (*argc); ++j)
+					argv[j] = argv[j + 2];
+				--i; // After shift, check this number again.
 			} else
 				lyxerr << _("Missing directory for -sysdir switch!")
 				       << endl;
@@ -508,6 +518,56 @@ bool LyX::easyParse(int * argc, char * argv[])
 		// Check for "-nw": No window
 		else if (arg == "-nw") {
 			gui = false;
+		}
+
+		// Check for "-x": Execute commands
+		else if (arg == "-x" || arg == "--execute") {
+			if (i + 1 < *argc) {
+				batch_command = string(argv[i + 1]);
+
+				// Now, remove these two arguments by shifting
+				// the following two places down.
+				(*argc) -= 2;
+				for (int j = i; j < (*argc); ++j)
+					argv[j] = argv[j + 2];
+				--i; // After shift, check this number again.
+
+			}
+			else
+				lyxerr << _("Missing command string after  -x switch!") << endl;
+
+			// Argh. Setting gui to false segfaults..
+			//gui = false;
+		}
+
+		else if (arg == "-e" || arg == "--export") {
+			if (i + 1 < *argc) {
+				string type(argv[i+1]);
+
+				(*argc) -= 2;
+				for (int j = i; j < (*argc); ++j)
+					argv[j] = argv[j + 2];
+				--i; // After shift, check this number again.
+
+				if (type == "tex")
+					type = "latex";
+				else if (type == "ps")
+					type = "postscript";
+				else if (type == "text" || type == "txt")
+					type = "ascii";
+
+				if (type == "latex" || type == "postscript"
+				    || type == "ascii" || type == "html") 
+					batch_command = "buffer-export " + type;
+				else
+					lyxerr << _("Unknown file type '")
+					       << type << _("' after ")
+					       << arg << _(" switch!") << endl;
+			}
+			else
+				lyxerr << _("Missing file type [eg latex, "
+					    "ps...] after ")
+				       << arg << _(" switch!") << endl;
 		}
 	}
 	return gui;

@@ -44,7 +44,7 @@ public:
 	/**@name Constructors and Deconstructors */
 	//@{
 	/// the only allowed constructor
-	LyX(int *argc, char *argv[]); // constructor
+	LyX(int * argc, char * argv[]); // constructor
 	// Always is useful a destructor
 	~LyX();
 	//@}
@@ -58,15 +58,17 @@ private:
 	/**@name Constructors and Deconstructors */
 	//@{
 	/// not allowed
-	LyX(const LyX &){;} // not allowed
+	LyX(const LyX &) {} // not allowed
 	/// not allowed
-	LyX(){;} // not allowed
+	LyX() {} // not allowed
 	//@}
 
 	/**@name Private variables */
 	//@{
 	/// does this user start lyx for the first time?
 	bool first_start;
+	///
+	string batch_command;
 	///
 	struct sigaction act_;
 	//@}

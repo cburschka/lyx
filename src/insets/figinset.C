@@ -1113,7 +1113,7 @@ void InsetFig::Write(ostream & os)
 	Regenerate();
 	os << "Figure size " << wid << " " << hgh << "\n";
 	if (!fname.empty()) {
-	  string buf1 = OnlyPath(owner->getFileName());
+	  string buf1 = OnlyPath(owner->fileName());
 	  string fname2 = MakeRelPath(fname, buf1);
 	  os << "file " << fname2 << "\n";
 	}
@@ -1145,7 +1145,7 @@ void InsetFig::Read(LyXLex & lex)
 		} else if (token == "file") {
 			if (lex.next()) {
 				buf = lex.GetString();
-				string buf1 = OnlyPath(owner->getFileName());
+				string buf1 = OnlyPath(owner->fileName());
 				fname = MakeAbsPath(buf, buf1);
 				changedfname = true;
 			}
@@ -1354,7 +1354,7 @@ void InsetFig::Regenerate()
 		return;
 	}
 
-	string buf1 = OnlyPath(owner->getFileName());
+	string buf1 = OnlyPath(owner->fileName());
 	string fname2 = MakeRelPath(fname, buf1);
 
 	string gcmd = "\\includegraphics{" + fname2 + '}';
@@ -1486,7 +1486,7 @@ void InsetFig::TempRegenerate()
 		return;
 	}
 
-	string buf1 = OnlyPath(owner->getFileName());
+	string buf1 = OnlyPath(owner->fileName());
 	string fname2 = MakeRelPath(tfname, buf1);
 	// \includegraphics*[<llx,lly>][<urx,ury>]{file}
 	string gcmd = "\\includegraphics{" + fname2 + '}';
@@ -1894,7 +1894,7 @@ void InsetFig::CallbackFig(long arg)
 			angle = atof(fl_get_input(form->Angle));
 			p = fl_get_input(form->EpsFile);
 			if (p && *p) {
-				string buf1 = OnlyPath(owner->getFileName());
+				string buf1 = OnlyPath(owner->fileName());
 				fname = MakeAbsPath(p, buf1);
 				changedfname = true;
 			} else {
@@ -1935,6 +1935,7 @@ void InsetFig::CallbackFig(long arg)
 		fl_hide_form(form->Figure);
 #if FL_REVISION == 89
 #warning Reactivate this free_form calls
+#warning Jug, is this still a problem?
 #else
 		fl_free_form(form->Figure);
 		free(form);
@@ -2067,7 +2068,7 @@ void InsetFig::RestoreForm()
 	sprintf(buf, "%g", angle);
 	fl_set_input(form->Angle, buf);
 	if (!fname.empty()){
-		string buf1 = OnlyPath(owner->getFileName());
+		string buf1 = OnlyPath(owner->fileName());
 		string fname2 = MakeRelPath(fname, buf1);
 		fl_set_input(form->EpsFile, fname2.c_str());
 	}
@@ -2093,7 +2094,7 @@ void InsetFig::Preview(char const * p)
   		return;		// parent process
   	}
 
-	string buf1 = OnlyPath(owner->getFileName());
+	string buf1 = OnlyPath(owner->fileName());
 	string buf2 = MakeAbsPath(p, buf1);
 	
 	lyxerr << "Error during rendering "
@@ -2113,17 +2114,17 @@ void InsetFig::BrowseFile()
 
 	if (lyxerr.debugging()) {
 		lyxerr << "Filename: "
-		       << owner->getFileName() << endl;
+		       << owner->fileName() << endl;
 	}
 	string p = fl_get_input(form->EpsFile);
 
-	string buf = MakeAbsPath(owner->getFileName());
+	string buf = MakeAbsPath(owner->fileName());
 	string buf2 = OnlyPath(buf);
 	if (!p.empty()) {
 		buf = MakeAbsPath(p, buf2);
 		buf = OnlyPath(buf);
 	} else {
-	  buf = OnlyPath(owner->getFileName().c_str());
+	  buf = OnlyPath(owner->fileName().c_str());
 	}
 	
 	// Does user clipart directory exist?

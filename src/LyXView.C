@@ -86,7 +86,11 @@ void LyXView::UpdateTimerCB(FL_OBJECT * ob, long)
 		return;
 
 	view->view()->getScreen()->HideCursor();
+#ifdef MOVE_TEXT
+	view->view()->update(-2);
+#else
 	view->buffer()->update(-2);
+#endif
 	/* This update can happen, even when the work area has lost
 	 * the focus. So suppress the cursor in that case */
 	updatetimer = 0;
@@ -310,8 +314,12 @@ void LyXView::updateLayoutChoice()
 	}
 	// we need to do this.
 	toolbar->combox->Redraw();
-	
+
+#ifdef MOVE_TEXT
+	char layout = bufferview->text->cursor.par->GetLayout();
+#else
 	char layout = buffer()->text->cursor.par->GetLayout();
+#endif
 
 	if (layout != current_layout){
 		toolbar->combox->select(layout + 1);
@@ -364,7 +372,7 @@ void LyXView::updateWindowTitle() {
 	string title = "LyX";
 
 	if (view()->available()) {
-		string cur_title = buffer()->getFileName();
+		string cur_title = buffer()->fileName();
 		if (!cur_title.empty()){
 			title += ": " + OnlyFilename(cur_title);
 			if (!buffer()->isLyxClean())

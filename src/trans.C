@@ -260,7 +260,7 @@ int Trans::Load(LyXLex & lex)
 		}
 		break;
 		case KMAP: {
-			char key_from;
+			unsigned char key_from;
 			char * string_to;
 
 			if (lyxerr.debugging(Debug::KBMAP))
@@ -276,7 +276,7 @@ int Trans::Load(LyXLex & lex)
 			if (lex.next(true)) {
 				char const * t = lex.text();
 				string_to = strcpy(new char[strlen(t)+1], t);
-				if (key_from == char(254))
+				if (key_from == 254)
 					lyxerr << "check two triggered"
 					       << endl;
 				keymap_[key_from] = string_to;
@@ -351,7 +351,7 @@ string Trans::process(char c, TransManager & k)
 	char * dt = dummy;
 	char * t = Match(c);
     
-	if ((t == 0 && (dt[0] = c)) || (t[0] != 0 && (dt = t)) ){
+	if ((t == 0 && (*dt = c)) || (t[0] != 0 && (dt = t)) ){
 		return k.normalkey(c, dt);
 	} else {
 		return k.deadkey(c, *kmod_list_[(tex_accent)t[1]]);

@@ -199,7 +199,7 @@ void MiniBuffer::Init()
 	else if (owner->view()->available()) {
 			string nicename = 
 				MakeDisplayPath(owner->buffer()->
-						getFileName());
+						fileName());
 			// Should we do this instead? (kindo like emacs)
 			// leaves more room for other information
 			text = "LyX: ";

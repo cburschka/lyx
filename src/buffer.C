@@ -43,6 +43,7 @@ using std::setw;
 #include "bufferlist.h"
 #include "lyx_main.h"
 #include "lyx_gui_misc.h"
+#include "LyXAction.h"
 #include "lyxrc.h"
 #include "lyxlex.h"
 #include "tex-strings.h"
@@ -103,6 +104,16 @@ extern void SmallUpdate(signed char);
 extern unsigned char GetCurrentTextClass();
 extern void BeforeChange();
 
+extern void MenuMakeLaTeX(Buffer *);
+extern void MenuMakeLinuxDoc(Buffer *);
+extern void MenuMakeDocBook(Buffer *);
+extern void MenuRunLaTeX(Buffer *);
+extern void MenuPrint(Buffer *);
+extern void MenuMakeAscii(Buffer *);
+extern void MenuSendto();
+extern LyXAction lyxaction;
+
+
 static const float LYX_FORMAT = 2.15;
 
 extern int tex_code_break_column;
@@ -116,7 +127,9 @@ Buffer::Buffer(string const & file, LyXRC * lyxrc, bool ronly)
 	filename = file;
 	filepath = OnlyPath(file);
 	paragraph = 0;
+#ifndef MOVE_TEXT
 	text = 0;
+#endif
 	the_locking_inset = 0;
 	lyx_clean = true;
 	bak_clean = true;
@@ -156,7 +169,9 @@ Buffer::~Buffer()
 		par = tmppar;
 	}
 	paragraph = 0;
+#ifndef MOVE_TEXT
 	delete text;
+#endif
 }
 
 
@@ -192,7 +207,7 @@ void Buffer::resetAutosaveTimers()
 }
 
 
-void Buffer::setFileName(string const & newfile)
+void Buffer::fileName(string const & newfile)
 {
 	filename = MakeAbsPath(newfile);
 	filepath = OnlyPath(filename);
@@ -200,17 +215,24 @@ void Buffer::setFileName(string const & newfile)
 	updateTitles();
 }
 
+
+// candidate for move to BufferView
 void Buffer::InsetUnlock()
 {
 	if (the_locking_inset) {
 		if (!inset_slept) the_locking_inset->InsetUnlock();
 		the_locking_inset = 0;
+#ifdef MOVE_TEXT
+		users->text->FinishUndo();
+#else
 		text->FinishUndo();
+#endif
 		inset_slept = false;
 	}
 }
 
 
+// candidate for move to BufferView
 // Inserts a file into current document
 bool Buffer::insertLyXFile(string const & filen)
 	//
@@ -251,6 +273,15 @@ bool Buffer::insertLyXFile(string const & filen)
 
 	bool res = true;
 
+#ifdef MOVE_TEXT
+	if (c == '#') {
+		lyxerr.debug() << "Will insert file with header" << endl;
+		res = readFile(lex, users->text->cursor.par);
+	} else {
+		lyxerr.debug() << "Will insert file without header" << endl;
+		res = readLyXformat2(lex, users->text->cursor.par);
+	}
+#else
 	if (c == '#') {
 		lyxerr.debug() << "Will insert file with header" << endl;
 		res = readFile(lex, text->cursor.par);
@@ -258,11 +289,14 @@ bool Buffer::insertLyXFile(string const & filen)
 		lyxerr.debug() << "Will insert file without header" << endl;
 		res = readLyXformat2(lex, text->cursor.par);
 	}
+#endif
 	resize();
 	return res;
 }
 
 
+// candidate for move to BufferView
+// (at least some parts in the beginning of the func)
 //
 // Uwe C. Schroeder
 // changed to be public and have one parameter
@@ -290,8 +324,13 @@ bool Buffer::readLyXformat2(LyXLex & lex, LyXParagraph * par)
 	if(!par) {
 		par = new LyXParagraph;
 	} else {
+#ifdef MOVE_TEXT
+		users->text->BreakParagraph();
+		return_par = users->text->FirstParagraph();
+#else
 		text->BreakParagraph();
 		return_par = text->FirstParagraph();
+#endif
 		pos = 0;
 		markDirty();
 		// We don't want to adopt the parameters from the
@@ -1401,22 +1440,24 @@ void Buffer::writeFileAscii(string const & filename, int linelen)
 					break;
 				}
 				if (ltype_depth > depth) {
-					for(j = ltype_depth-1; j>depth; j--)
+					for(j = ltype_depth - 1; j > depth; --j)
 						ofs << "  ";
 					currlinelen += (ltype_depth-depth)*2;
 				}
 				if (par->table) {
-					for(j = 0;j<cells;j++) {
+					for(j = 0; j < cells; ++j) {
 						ofs << '+';
-						for(h = 0; h < (clen[j]+1); h++)
+						for(h = 0; h < (clen[j] + 1);
+						    ++h)
 							ofs << '-';
 					}
 					ofs << "+\n";
-					for(j = 0; j<depth; j++)
+					for(j = 0; j < depth; ++j)
 						ofs << "  ";
-					currlinelen = depth*2;
+					currlinelen = depth * 2;
 					if (ltype_depth > depth) {
-						for(j = ltype_depth; j>depth; j--)
+						for(j = ltype_depth;
+						    j > depth; --j)
 							ofs << "  ";
 						currlinelen += (ltype_depth-depth)*2;
 					}
@@ -1451,32 +1492,34 @@ void Buffer::writeFileAscii(string const & filename, int linelen)
 						for(j = actpos; j < clen[cell-1];j++)
 							ofs << ' ';
 						ofs << " |\n";
-						for(j = 0; j<depth; j++)
+						for(j = 0; j < depth; ++j)
 							ofs << "  ";
 						currlinelen = depth*2;
 						if (ltype_depth > depth) {
-							for(j = ltype_depth; j>depth; j--)
+							for(j = ltype_depth; j > depth; --j)
 								ofs << "  ";
-							currlinelen += (ltype_depth-depth)*2;
+							currlinelen += (ltype_depth-depth) * 2;
 						}
-						for(j = 0;j<cells;j++) {
+						for(j = 0; j < cells; ++j) {
 							ofs << '+';
-							for(h = 0; h < (clen[j]+1); ++h)
+							for(h = 0; h < (clen[j] + 1); ++h)
 								ofs << '-';
 						}
 						ofs << "+\n";
-						for(j = 0; j<depth; j++)
+						for(j = 0; j < depth; ++j)
 							ofs << "  ";
-						currlinelen = depth*2;
+						currlinelen = depth * 2;
 						if (ltype_depth > depth) {
-							for(j = ltype_depth; j>depth; j--)
+							for(j = ltype_depth;
+							    j > depth; --j)
 								ofs << "  ";
 							currlinelen += (ltype_depth-depth)*2;
 						}
 						ofs << "| ";
 						cell = 1;
 					} else {
-						for(j = actpos; j<clen[cell-1]; j++)
+						for(j = actpos;
+						    j < clen[cell - 1]; ++j)
 							ofs << ' ';
 						ofs << " | ";
 						++cell;
@@ -1485,13 +1528,14 @@ void Buffer::writeFileAscii(string const & filename, int linelen)
 					currlinelen = actpos = 0;
 				} else {
 					ofs << "\n";
-					for(j = 0; j<depth; j++)
+					for(j = 0; j < depth; ++j)
 						ofs << "  ";
 					currlinelen = depth * 2;
 					if (ltype_depth > depth) {
-						for(j = ltype_depth; j>depth; j--)
+						for(j = ltype_depth;
+						    j > depth; --j)
 							ofs << "  ";
-						currlinelen += (ltype_depth-depth)*2;
+						currlinelen += (ltype_depth - depth) * 2;
 					}
 				}
 				break;
@@ -1529,15 +1573,15 @@ void Buffer::writeFileAscii(string const & filename, int linelen)
 			for(j = actpos; j < clen[cell - 1]; ++j)
 				ofs << ' ';
 			ofs << " |\n";
-			for(j = 0; j<depth; j++)
+			for(j = 0; j < depth; ++j)
 				ofs << "  ";
 			currlinelen = depth * 2;
 			if (ltype_depth > depth) {
 				for(j = ltype_depth; j > depth; --j)
 					ofs << "  ";
-				currlinelen += (ltype_depth-depth)*2;
+				currlinelen += (ltype_depth - depth) * 2;
 			}
-			for(j = 0;j<cells; ++j) {
+			for(j = 0; j < cells; ++j) {
 				ofs << '+';
 				for(h = 0; h < (clen[j] + 1); ++h)
 					ofs << '-';
@@ -1676,7 +1720,8 @@ void Buffer::makeLaTeXFile(string const & filename,
 				options += "onecolumn,";
 		}
 
-		if (!params.use_geometry && params.orientation == BufferParams::ORIENTATION_LANDSCAPE)
+		if (!params.use_geometry 
+		    && params.orientation == BufferParams::ORIENTATION_LANDSCAPE)
 			options += "landscape,";
 		
 		// language should be a parameter to \documentclass
@@ -3120,11 +3165,16 @@ void Buffer::SimpleDocBookOnePar(string & file, string & extra,
 }
 
 
+// candidate for move to BufferView
 bool Buffer::removeAutoInsets()
 {
 	LyXParagraph *par = paragraph;
 
+#ifdef MOVE_TEXT
+	LyXCursor cursor = users->text->cursor;
+#else
 	LyXCursor cursor = text->cursor;
+#endif
 	LyXCursor tmpcursor = cursor;
 	cursor.par = tmpcursor.par->ParFromPos(tmpcursor.pos);
 	cursor.pos = tmpcursor.par->PositionInParFromPos(tmpcursor.pos);
@@ -3134,11 +3184,19 @@ bool Buffer::removeAutoInsets()
 		if (par->AutoDeleteInsets()){
 			a = true;
 			if (par->footnoteflag != LyXParagraph::CLOSED_FOOTNOTE){
+#ifdef MOVE_TEXT
+				/* this is possible now, since SetCursor takes
+				   care about footnotes */
+				users->text->SetCursorIntern(par, 0);
+				users->text->RedoParagraphs(users->text->cursor, users->text->cursor.par->Next());
+				users->text->FullRebreak();
+#else
 				/* this is possible now, since SetCursor takes
 				   care about footnotes */
 				text->SetCursorIntern(par, 0);
 				text->RedoParagraphs(text->cursor, text->cursor.par->Next());
 				text->FullRebreak();
+#endif
 			}
 		}
 		par = par->next;
@@ -3146,7 +3204,11 @@ bool Buffer::removeAutoInsets()
 	/* avoid forbidden cursor positions caused by error removing */ 
 	if (cursor.pos > cursor.par->Last())
 		cursor.pos = cursor.par->Last();
+#ifdef MOVE_TEXT
+	users->text->SetCursorIntern(cursor.par, cursor.pos);
+#else
 	text->SetCursorIntern(cursor.par, cursor.pos);
+#endif
 
 	return a;
 }
@@ -3154,7 +3216,11 @@ bool Buffer::removeAutoInsets()
 
 int Buffer::runLaTeX()
 {
+#ifdef MOVE_TEXT
+	if (!users->text) return 0;
+#else
 	if (!text) return 0;
+#endif
 
 	ProhibitInput();
 
@@ -3217,7 +3283,11 @@ int Buffer::runLaTeX()
 
 int Buffer::runLiterate()
 {
+#ifdef MOVE_TEXT
+	if (!users->text) return 0;
+#else
 	if (!text) return 0;
+#endif
 
 	ProhibitInput();
 
@@ -3286,7 +3356,11 @@ int Buffer::runLiterate()
 
 int Buffer::buildProgram()
 {
+#ifdef MOVE_TEXT
+        if (!users->text) return 0;
+#else
         if (!text) return 0;
+#endif
  
         ProhibitInput();
  
@@ -3357,7 +3431,11 @@ int Buffer::buildProgram()
 // Other flags: -wall -v0 -x
 int Buffer::runChktex()
 {
+#ifdef MOVE_TEXT
+	if (!users->text) return 0;
+#else
 	if (!text) return 0;
+#endif
 
 	ProhibitInput();
 
@@ -3410,10 +3488,16 @@ int Buffer::runChktex()
 extern void AllFloats(char, char);
 
 
+// candidate for move to BufferView
 void Buffer::insertErrors(TeXErrors & terr)
 {
+#ifdef MOVE_TEXT
+	// Save the cursor position
+	LyXCursor cursor = users->text->cursor;
+#else
 	// Save the cursor position
 	LyXCursor cursor = text->cursor;
+#endif
 
 	// This is drastic, but it's the only fix, I could find. (Asger)
 	AllFloats(1, 0);
@@ -3433,29 +3517,47 @@ void Buffer::insertErrors(TeXErrors & terr)
 
 		texrow.getIdFromRow(errorrow, tmpid, tmppos);
 
-		LyXParagraph* texrowpar;
+		LyXParagraph * texrowpar = 0;
 
+#ifdef MOVE_TEXT
+		if (tmpid == -1) {
+			texrowpar = users->text->FirstParagraph();
+			tmppos = 0;
+		} else {
+			texrowpar = users->text->GetParFromID(tmpid);
+		}
+#else
 		if (tmpid == -1) {
 			texrowpar = text->FirstParagraph();
 			tmppos = 0;
 		} else {
 			texrowpar = text->GetParFromID(tmpid);
 		}
+#endif
 
 		if (texrowpar == 0)
 			continue;
 
 		InsetError * new_inset = new InsetError(msgtxt);
-
+#ifdef MOVE_TEXT
+		users->text->SetCursorIntern(texrowpar, tmppos);
+		users->text->InsertInset(new_inset);
+		users->text->FullRebreak();
+	}
+	// Restore the cursor position
+	users->text->SetCursorIntern(cursor.par, cursor.pos);
+#else
 		text->SetCursorIntern(texrowpar, tmppos);
 		text->InsertInset(new_inset);
 		text->FullRebreak();
 	}
 	// Restore the cursor position
 	text->SetCursorIntern(cursor.par, cursor.pos);
+#endif
 }
 
 
+// candidate for move to BufferView
 void Buffer::setCursorFromRow (int row)
 {
 	int tmpid = -1; 
@@ -3463,8 +3565,17 @@ void Buffer::setCursorFromRow (int row)
 
 	texrow.getIdFromRow(row, tmpid, tmppos);
 
-	LyXParagraph* texrowpar;
+	LyXParagraph * texrowpar;
 
+#ifdef MOVE_TEXT
+	if (tmpid == -1) {
+		texrowpar = users->text->FirstParagraph();
+		tmppos = 0;
+	} else {
+		texrowpar = users->text->GetParFromID(tmpid);
+	}
+	users->text->SetCursor(texrowpar, tmppos);
+#else
 	if (tmpid == -1) {
 		texrowpar = text->FirstParagraph();
 		tmppos = 0;
@@ -3472,6 +3583,7 @@ void Buffer::setCursorFromRow (int row)
 		texrowpar = text->GetParFromID(tmpid);
 	}
 	text->SetCursor(texrowpar, tmppos);
+#endif
 }
 
 
@@ -3622,17 +3734,19 @@ void Buffer::markDviDirty()
 }
 
 
+#ifndef MOVE_TEXT
+// candidate for move to BufferView
 void Buffer::update(signed char f)
 {
 	if (!users) return;
 	
 	users->owner()->updateLayoutChoice();
-
 	if (!text->selection && f > -3)
 		text->sel_cursor = text->cursor;
 	
 	FreeUpdateTimer();
 	text->FullRebreak();
+
 	users->update();
 
 	if (f != 3 && f != -3) {
@@ -3649,7 +3763,7 @@ void Buffer::update(signed char f)
 		}
 	}
 }
-
+#endif
 
 void Buffer::validate(LaTeXFeatures & features)
 {
@@ -3762,6 +3876,60 @@ void Buffer::setOldPaperStuff()
 }
 #endif
 
+#ifdef MOVE_TEXT
+// candidate for move to BufferView
+void Buffer::insertInset(Inset * inset, string const & lout,
+			 bool no_table)
+{
+	// check for table/list in tables
+	if (no_table && users->text->cursor.par->table){
+		WriteAlert(_("Impossible Operation!"),
+			   _("Cannot insert table/list in table."),
+			   _("Sorry."));
+		return;
+	}
+	// not quite sure if we want this...
+	users->text->SetCursorParUndo();
+	users->text->FreezeUndo();
+	
+	BeforeChange();
+	if (!lout.empty()) {
+		users->update(-2);
+		users->text->BreakParagraph();
+		users->update(-1);
+		
+		if (users->text->cursor.par->Last()) {
+			users->text->CursorLeft();
+			
+			users->text->BreakParagraph();
+			users->update(-1);
+		}
+
+		int lay = textclasslist.NumberOfLayout(params.textclass,
+						       lout).second;
+		if (lay == -1) // layout not found
+			// use default layout "Standard" (0)
+			lay = 0;
+		
+		users->text->SetLayout(lay);
+		
+		users->text->SetParagraph(0, 0,
+				   0, 0,
+				   VSpace(VSpace::NONE), VSpace(VSpace::NONE),
+				   LYX_ALIGN_LAYOUT, 
+				   string(),
+				   0);
+		users->update(-1);
+		
+		users->text->current_font.setLatex(LyXFont::OFF);
+	}
+	
+	users->text->InsertInset(inset);
+	users->update(-1);
+
+	users->text->UnFreezeUndo();	
+}
+#else
 void Buffer::insertInset(Inset * inset, string const & lout,
 			 bool no_table)
 {
@@ -3813,17 +3981,27 @@ void Buffer::insertInset(Inset * inset, string const & lout,
 
 	text->UnFreezeUndo();	
 }
-
+#endif
 
 // Open and lock an updatable inset
+// candidate for move to BufferView
 void Buffer::open_new_inset(UpdatableInset * new_inset)
 {
+#ifdef MOVE_TEXT
+	BeforeChange();
+	users->text->FinishUndo();
+	insertInset(new_inset);
+	users->text->CursorLeft();
+	users->update(1);
+    	new_inset->Edit(0, 0);
+#else
 	BeforeChange();
 	text->FinishUndo();
 	insertInset(new_inset);
 	text->CursorLeft();
 	update(1);
     	new_inset->Edit(0, 0);
+#endif
 }
 
 
@@ -3862,12 +4040,12 @@ string Buffer::getReferenceList(char delim)
 	/// if this is a child document and the parent is already loaded
 	/// Use the parent's list instead  [ale990407]
 	if (!params.parentname.empty() && bufferlist.exists(params.parentname)) {
-		Buffer *tmp = bufferlist.getBuffer(params.parentname);
+		Buffer * tmp = bufferlist.getBuffer(params.parentname);
 		if (tmp)
 		  return tmp->getReferenceList(delim);
 	}
 
-	LyXParagraph *par = paragraph;
+	LyXParagraph * par = paragraph;
 	LyXParagraph::size_type pos;
 	Inset * inset;
         string lst;
@@ -3894,7 +4072,7 @@ string Buffer::getBibkeyList(char delim)
 	/// if this is a child document and the parent is already loaded
 	/// Use the parent's list instead  [ale990412]
         if (!params.parentname.empty() && bufferlist.exists(params.parentname)) {
-		Buffer *tmp = bufferlist.getBuffer(params.parentname);
+		Buffer * tmp = bufferlist.getBuffer(params.parentname);
 		if (tmp)
 			return tmp->getBibkeyList(delim);
 	}
@@ -3942,6 +4120,7 @@ string Buffer::getBibkeyList(char delim)
 }
 
 
+// candidate for move to BufferView
 /* This is also a buffer property (ale) */
 // Not so sure about that. a goto Label function can not be buffer local, just
 // think how this will work in a multiwindo/buffer environment, all the
@@ -3958,11 +4137,19 @@ bool Buffer::gotoLabel(string const & label)
                 while ((inset = par->ReturnNextInsetPointer(pos))){     
                         for (int i = 0; i < inset->GetNumberOfLabels(); i++) {
 				if (label == inset->getLabel(i)) {
+#ifdef MOVE_TEXT
+					BeforeChange();
+					users->text->SetCursor(par, pos);
+					users->text->sel_cursor = users->text->cursor;
+					users->update(0);
+					return true;
+#else
 					BeforeChange();
 					text->SetCursor(par, pos);
 					text->sel_cursor = text->cursor;
 					update(0);
 					return true;
+#endif
 				}
 			}
                         pos++;
@@ -4003,4 +4190,105 @@ void Buffer::markDepClean(string const & name)
 			item->next = 0;;
 		}
 	}
+}
+
+void Buffer::Dispatch(const string & command)
+{
+	// Split command string into command and argument
+	string cmd, line = frontStrip(command);
+	string arg = strip(frontStrip(split(line, cmd, ' ')));
+
+	return Dispatch(lyxaction.LookupFunc(cmd.c_str()), arg.c_str());
+}
+
+void Buffer::Dispatch(int action, const string & argument)
+{
+	switch (action) {
+		case LFUN_EXPORT: {
+			// latex
+			if (argument == "latex") {
+				// make sure that this buffer is not linuxdoc
+				MenuMakeLaTeX(this);
+			}
+			// linuxdoc
+			else if (argument == "linuxdoc") {
+				// make sure that this buffer is not latex
+				MenuMakeLinuxDoc(this);
+			}
+			// docbook
+			else if (argument == "docbook") {
+				// make sure that this buffer is not latex or linuxdoc
+				MenuMakeDocBook(this);
+			}
+			// dvi
+			else if (argument == "dvi") {
+				// Run LaTeX as "Update dvi..." Bernhard.
+				// We want the dvi in the current directory. This
+				// is achieved by temporarily disabling use of
+				// temp directory. As a side-effect, we get
+				// *.log and *.aux files also. (Asger)
+				bool flag = lyxrc->use_tempdir;
+				lyxrc->use_tempdir = false;
+				MenuRunLaTeX(this);
+				lyxrc->use_tempdir = flag;
+			}
+			// postscript
+			else if (argument == "postscript") {
+				// Start Print-dialog. Not as good as dvi... Bernhard.
+				MenuPrint(this);
+				// Since the MenuPrint is a pop-up, we can't use
+				// the same trick as above. (Asger)
+				// MISSING: Move of ps-file :-|
+			}
+			// ascii
+			else if (argument == "ascii") {
+				MenuMakeAscii(this);
+			}
+			else if (argument == "custom") {
+				MenuSendto();
+				break;
+			}
+			// HTML
+			else if (argument == "html" && lyxrc->html_command != "none") {
+				// First, create LaTeX file
+				MenuMakeLaTeX(this);
+
+				// And now, run the converter
+				string file = fileName();
+				Path path(OnlyPath(file));
+				// the tex file name has to be correct for
+				// latex, but the html file name can be
+				// anything.
+				string result = ChangeExtension(file, ".html", false);
+				file = ChangeExtension(MakeLatexName(file), ".tex", false);
+				string tmp = lyxrc->html_command;
+				tmp = subst(tmp, "$$FName", file);
+				tmp = subst(tmp, "$$OutName", result);
+				Systemcalls one;
+				/*int res = */ one.startscript(Systemcalls::System, tmp);
+				//
+				// Hi, Asger. This time I plead guilty and I promise to clean it up
+				// 
+				// if (res == 0) {
+				//   setMessage(N_("Document exported as HTML to file `")
+				//       + MakeDisplayPath(result) +'\ '');
+				// } else {
+				//   setErrorMessage(N_("Unable to convert to HTML the file `")
+				//       + MakeDisplayPath(file) 
+				//       + '\'');
+				//  }
+			}
+			else {
+				//   setErrorMessage(N_("Unknown export type: ")
+				//          + argument);
+			}
+		}
+		break;
+
+		default:
+			lyxerr << "A truly unknown func!" << endl;
+		break;
+
+	} // end of switch
+
 }
