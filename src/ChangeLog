@@ -1,3 +1,8 @@
+2002-08-22  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* paragraph.h: remove the declaration of undefined counters class
+	function.
+
 2002-08-22  Martin Vermeer <martin.vermeer@hut.fi>
 
 	* text2.C (setCounter):  fixed enumeration mis-count as reported by 

@@ -292,7 +292,7 @@ public:
 	///
 	InsetList insetlist;
 	///
-	Counters & counters();
+	//Counters & counters();
 
 private:
 	///
