@@ -970,51 +970,10 @@ Paragraph * Paragraph::TeXOnePar(Buffer const * buf,
 	bool further_blank_line = false;
 	LyXLayout_ptr style;
 
-	// well we have to check if we are in an inset with unlimited
-	// lenght (all in one row) if that is true then we don't allow
-	// any special options in the paragraph and also we don't allow
-	// any environment other then "Standard" to be valid!
-	if ((in == 0) || !in->forceDefaultParagraphs(in)) {
+	if ((in == 0) || !in->forceDefaultParagraphs(in)) 
 		style = layout();
-
-		if (params().startOfAppendix()) {
-			os << "\\appendix\n";
-			texrow.newline();
-		}
-
-		if (!params().spacing().isDefault()
-			&& (!previous() || !previous()->hasSameLayout(this))) {
-			os << params().spacing().writeEnvirBegin() << '\n';
-			texrow.newline();
-		}
-
-		if (style->isCommand()) {
-			os << '\n';
-			texrow.newline();
-		}
-
-		if (params().pagebreakTop()) {
-			os << "\\newpage";
-			further_blank_line = true;
-		}
-		if (params().spaceTop().kind() != VSpace::NONE) {
-			os << params().spaceTop().asLatexCommand(bparams);
-			further_blank_line = true;
-		}
-
-		if (params().lineTop()) {
-			os << "\\lyxline{\\" << getFont(bparams, 0).latexSize() << '}'
-			   << "\\vspace{-1\\parskip}";
-			further_blank_line = true;
-		}
-
-		if (further_blank_line) {
-			os << '\n';
-			texrow.newline();
-		}
-	} else {
+	else 
 		style = bparams.getLyXTextClass().defaultLayout();
-	}
 
 	Language const * language = getParLanguage(bparams);
 	Language const * doc_language = bparams.language;
@@ -1055,6 +1014,48 @@ Paragraph * Paragraph::TeXOnePar(Buffer const * buf,
 		   << "}\n";
 		texrow.newline();
 	}
+
+	// well we have to check if we are in an inset with unlimited
+	// length (all in one row) if that is true then we don't allow
+	// any special options in the paragraph and also we don't allow
+	// any environment other then "Standard" to be valid!
+	if ((in == 0) || !in->forceDefaultParagraphs(in)) {
+		if (params().startOfAppendix()) {
+			os << "\\appendix\n";
+			texrow.newline();
+		}
+
+		if (!params().spacing().isDefault()
+			&& (!previous() || !previous()->hasSameLayout(this))) {
+			os << params().spacing().writeEnvirBegin() << '\n';
+			texrow.newline();
+		}
+
+		if (style->isCommand()) {
+			os << '\n';
+			texrow.newline();
+		}
+
+		if (params().pagebreakTop()) {
+			os << "\\newpage";
+			further_blank_line = true;
+		}
+		if (params().spaceTop().kind() != VSpace::NONE) {
+			os << params().spaceTop().asLatexCommand(bparams);
+			further_blank_line = true;
+		}
+
+		if (params().lineTop()) {
+			os << "\\lyxline{\\" << getFont(bparams, 0).latexSize() << '}'
+			   << "\\vspace{-1\\parskip}";
+			further_blank_line = true;
+		}
+
+		if (further_blank_line) {
+			os << '\n';
+			texrow.newline();
+		}
+	} 
 
 	switch (style->latextype) {
 	case LATEX_COMMAND:
@@ -1133,24 +1134,6 @@ Paragraph * Paragraph::TeXOnePar(Buffer const * buf,
 		}
 	}
 	
-	if (!next_ && language->babel() != doc_language->babel()) {
-		// Since \selectlanguage write the language to the aux
-		// file, we need to reset the language at the end of
-		// footnote or float.
-		
-		if (lyxrc.language_command_end.empty())
-			os << '\n'
-			   << subst(lyxrc.language_command_begin,
-				    "$$lang",
-				    doc_language->babel());
-		else
-			os << '\n'
-			   << subst(lyxrc.language_command_end,
-				    "$$lang",
-				    language->babel());
-		texrow.newline();
-	}
-	
 	if ((in == 0) || !in->forceDefaultParagraphs(in)) {
 		further_blank_line = false;
 		if (params().lineBottom()) {
@@ -1180,6 +1163,24 @@ Paragraph * Paragraph::TeXOnePar(Buffer const * buf,
 		}
 	}
 
+	if (!next_ && language->babel() != doc_language->babel()) {
+		// Since \selectlanguage write the language to the aux
+		// file, we need to reset the language at the end of
+		// footnote or float.
+		
+		if (lyxrc.language_command_end.empty())
+			os << '\n'
+			   << subst(lyxrc.language_command_begin,
+				    "$$lang",
+				    doc_language->babel());
+		else
+			os << '\n'
+			   << subst(lyxrc.language_command_end,
+				    "$$lang",
+				    language->babel());
+		texrow.newline();
+	}
+	
 	// we don't need it for the last paragraph!!!
 	// Note from JMarc: we will re-add a \n explicitely in
 	// TeXEnvironment, because it is needed in this case

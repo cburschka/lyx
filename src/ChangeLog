@@ -1,3 +1,9 @@
+2004-09-22  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* paragraph.C (TeXOnePar): Make sure font setting is the first
+	thing that gets output (and the last at the end). Should fix bug
+	1404. 
+
 2004-07-15  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* buffer.C (parseSingleLyXformat2Token): fix the off-by-one-error
