@@ -9,7 +9,7 @@ INCLUDES = -I$(top_srcdir)/src/ -I$(top_srcdir)/src/frontends/ \
 
 if USE_BASIC_IMAGE_LOADER
 else
-XFORMSGIMAGE = xformsGImage.C xformsGImage.h
+XFORMSIMAGE = xformsImage.C xformsImage.h
 endif
 
 nodist_libqt2xforms_la_SOURCES = \
@@ -19,7 +19,7 @@ nodist_libqt2xforms_la_SOURCES = \
 	DropDown.C \
 	Tooltips.h \
 	Tooltips.C \
-	$(XFORMSGIMAGE) \
+	$(XFORMSIMAGE) \
 	xforms_helpers.h \
 	xforms_helpers.C
 

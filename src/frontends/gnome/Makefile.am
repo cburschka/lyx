@@ -10,7 +10,7 @@ INCLUDES = $(FRONTEND_INCLUDES) -I$(top_srcdir)/src/ \
 
 if USE_BASIC_IMAGE_LOADER
 else
-XFORMSGIMAGE = ../xforms/xformsGImage.lo
+XFORMSIMAGE = ../xforms/xformsImage.lo
 endif
 
 # alphabetised
@@ -52,7 +52,7 @@ xforms_objects = \
 	../xforms/xformsBC.lo \
 	../xforms/XFormsView.lo \
 	../xforms/XPainter.lo \
-	../xforms/XWorkArea.lo $(XFORMSGIMAGE)
+	../xforms/XWorkArea.lo $(XFORMSIMAGE)
 
 libgnome.la: xforms.lo $(libgnome_la_OBJECTS) $(libgnome_la_DEPENDENCIES)
 
