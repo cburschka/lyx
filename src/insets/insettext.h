@@ -50,14 +50,6 @@ public:
 		///
 		NONE = 0,
 		///
-		CURSOR = 1,
-		///
-		DRAW_FRAME = 2,
-		///
-		SELECTION = 4,
-		///
-		CURSOR_PAR = 8,
-		///
 		FULL = 16,
 		///
 		INIT = 32
