@@ -1,3 +1,11 @@
+2005-01-04  Angus Leeming  <leeming@lyx.org>
+
+	* lyx_cb.C (Reconfigure):
+	* lyx_main.C (queryUserLyXDir):
+	to run the <system_lyxdir>/configure correctly on Windows, prefix
+	the path to the script with "sh " when generating the string that
+	is passed to system().
+
 2004-12-29  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* lyxlength.C (asLatexString): get rid of setprecision
@@ -13,7 +21,7 @@
 	* buffer.C (save): s/slashify_path/internal_path/.
 
 2004-12-14  Angus Leeming  <leeming@lyx.org>
- 
+
 	* LaTeX.C: (operator()): use os::nulldev() rather than "/dev/null".
 
 	* bufferlist.C (emergencyWrite):

@@ -530,9 +530,10 @@ void Reconfigure(BufferView * bv)
 
 	// Run configure in user lyx directory
 	Path p(user_lyxdir);
+	string const configure_script = AddName(system_lyxdir, "configure");
+	string const configure_command = "sh " + QuoteName(configure_script);
 	Systemcall one;
-	one.startscript(Systemcall::Wait,
-			AddName(system_lyxdir, "configure"));
+	one.startscript(Systemcall::Wait, configure_command);
 	p.pop();
 	bv->owner()->message(_("Reloading configuration..."));
 	lyxrc.read(LibFileSearch(string(), "lyxrc.defaults"));
