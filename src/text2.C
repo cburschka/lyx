@@ -2055,10 +2055,13 @@ void LyXText::cursorLeft(bool internal)
 
 void LyXText::cursorRight(bool internal)
 {
-	if (!internal && cursor.boundary() &&
-	    !cursor.par()->isNewline(cursor.pos()))
+	bool const at_end = (cursor.pos() == cursor.par()->size());
+	bool const at_newline = !at_end &&
+		cursor.par()->isNewline(cursor.pos());
+
+	if (!internal && cursor.boundary() && !at_newline)
 		setCursor(cursor.par(), cursor.pos(), true, false);
-	else if (cursor.pos() < cursor.par()->size()) {
+	else if (!at_end) {
 		setCursor(cursor.par(), cursor.pos() + 1, true, false);
 		if (!internal &&
 		    isBoundary(bv()->buffer(), &*cursor.par(), cursor.pos()))
