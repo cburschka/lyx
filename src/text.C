@@ -1177,307 +1177,314 @@ LColor::color LyXText::backgroundColor()
 void LyXText::setHeightOfRow(BufferView * bview, Row * row_ptr) const
 {
     /* get the maximum ascent and the maximum descent */
-   int asc = 0;
-   int desc = 0;
-   float layoutasc = 0;
-   float layoutdesc = 0;
-   float tmptop = 0;
-   LyXFont tmpfont;
-   Inset * tmpinset = 0;
+	int asc = 0;
+	int desc = 0;
+	float layoutasc = 0;
+	float layoutdesc = 0;
+	float tmptop = 0;
+	LyXFont tmpfont;
+	Inset * tmpinset = 0;
 
-   /* this must not happen before the currentrow for clear reasons.
-      so the trick is just to set the current row onto this row */
-   int unused_y;
-   getRow(row_ptr->par(), row_ptr->pos(), unused_y);
+	/* this must not happen before the currentrow for clear reasons.
+	   so the trick is just to set the current row onto this row */
+	int unused_y;
+	getRow(row_ptr->par(), row_ptr->pos(), unused_y);
 
-   /* ok , let us initialize the maxasc and maxdesc value. 
-    * This depends in LaTeX of the font of the last character
-    * in the paragraph. The hack below is necessary because
-    * of the possibility of open footnotes */
-
-   /* Correction: only the fontsize count. The other properties
-      are taken from the layoutfont. Nicer on the screen :) */
-   Paragraph * par = row_ptr->par();
-   Paragraph * firstpar = row_ptr->par();
+	/* ok , let us initialize the maxasc and maxdesc value. 
+	 * This depends in LaTeX of the font of the last character
+	 * in the paragraph. The hack below is necessary because
+	 * of the possibility of open footnotes */
+	
+	/* Correction: only the fontsize count. The other properties
+	   are taken from the layoutfont. Nicer on the screen :) */
+	Paragraph * par = row_ptr->par();
+	Paragraph * firstpar = row_ptr->par();
    
-   LyXLayout const & layout = textclasslist.Style(bview->buffer()->params.textclass,
-						  firstpar->getLayout());
+	LyXLayout const & layout = textclasslist.Style(bview->buffer()->params.textclass,
+	                                               firstpar->getLayout());
 
-   LyXFont font = getFont(bview->buffer(), par, par->size() - 1);
-   LyXFont::FONT_SIZE const size = font.size();
-   font = getFont(bview->buffer(), par, -1);
-   font.setSize(size);
+	LyXFont font = getFont(bview->buffer(), par, par->size() - 1);
+	LyXFont::FONT_SIZE const size = font.size();
+	font = getFont(bview->buffer(), par, -1);
+	font.setSize(size);
 
-   LyXFont labelfont = getFont(bview->buffer(), par, -2);
+	LyXFont labelfont = getFont(bview->buffer(), par, -2);
 
-   float spacing_val = 1.0;
-   if (!row_ptr->par()->params().spacing().isDefault()) {
-	   spacing_val = row_ptr->par()->params().spacing().getValue();
-   } else {
-	   spacing_val = bview->buffer()->params.spacing.getValue();
-   }
-   //lyxerr << "spacing_val = " << spacing_val << endl;
+	float spacing_val = 1.0;
+	if (!row_ptr->par()->params().spacing().isDefault()) {
+		spacing_val = row_ptr->par()->params().spacing().getValue();
+	} else {
+		spacing_val = bview->buffer()->params.spacing.getValue();
+	}
+	//lyxerr << "spacing_val = " << spacing_val << endl;
    
-   int maxasc = int(lyxfont::maxAscent(font) *
-		   layout.spacing.getValue() *
-		   spacing_val);
-   int maxdesc = int(lyxfont::maxDescent(font) *
-		    layout.spacing.getValue() *
-		    spacing_val);
-   int const pos_end = rowLast(row_ptr);
-   int labeladdon = 0;
-   int maxwidth = 0;
+	int maxasc = int(lyxfont::maxAscent(font) *
+	                 layout.spacing.getValue() *
+	                 spacing_val);
+	int maxdesc = int(lyxfont::maxDescent(font) *
+	                  layout.spacing.getValue() *
+	                  spacing_val);
+	int const pos_end = rowLast(row_ptr);
+	int labeladdon = 0;
+	int maxwidth = 0;
 
-   // Check if any insets are larger
-   for (int pos = row_ptr->pos(); pos <= pos_end; ++pos) {
-	   if (row_ptr->par()->getChar(pos) == Paragraph::META_INSET) {
-		   tmpfont = getFont(bview->buffer(), row_ptr->par(), pos);
-		   tmpinset = row_ptr->par()->getInset(pos);
-		   if (tmpinset) {
+	// Check if any insets are larger
+	for (int pos = row_ptr->pos(); pos <= pos_end; ++pos) {
+		if (row_ptr->par()->getChar(pos) == Paragraph::META_INSET) {
+			tmpfont = getFont(bview->buffer(), row_ptr->par(), pos);
+			tmpinset = row_ptr->par()->getInset(pos);
+			if (tmpinset) {
 #if 1 // this is needed for deep update on initialitation
-			   tmpinset->update(bview, tmpfont);
+				tmpinset->update(bview, tmpfont);
 #endif
-			   asc = tmpinset->ascent(bview, tmpfont);
-			   desc = tmpinset->descent(bview, tmpfont);
-			   maxwidth += tmpinset->width(bview, tmpfont);
-			   maxasc = max(maxasc, asc);
-			   maxdesc = max(maxdesc, desc);
-		   }
-	   } else {
-		   maxwidth += singleWidth(bview, row_ptr->par(), pos);
-	   }
-   }
-
-   // Check if any custom fonts are larger (Asger)
-   // This is not completely correct, but we can live with the small,
-   // cosmetic error for now.
-   LyXFont::FONT_SIZE const maxsize =
-	   row_ptr->par()->highestFontInRange(row_ptr->pos(),
-					      pos_end);
-   if (maxsize > font.size()) {
-	font.setSize(maxsize);
-
-	asc = lyxfont::maxAscent(font);
-	desc = lyxfont::maxDescent(font);
-	if (asc > maxasc) 
-		maxasc = asc;
-	if (desc > maxdesc)
-		maxdesc = desc;
-   }
-
-   // This is nicer with box insets:
-   ++maxasc;
-   ++maxdesc;
-
-   row_ptr->ascent_of_text(maxasc);
-   
-   // is it a top line?
-   if (!row_ptr->pos() && (row_ptr->par() == firstpar)) {
-      
-	   // some parksips VERY EASY IMPLEMENTATION
-      if (bview->buffer()->params.paragraph_separation ==
-	  BufferParams::PARSEP_SKIP) {
-	 if (layout.isParagraph()
-	     && firstpar->getDepth() == 0
-	     && firstpar->previous())
-	    maxasc += bview->buffer()->params.getDefSkip().inPixels(bview);
-	 else if (firstpar->previous()
-		  && textclasslist.Style(bview->buffer()->params.textclass,
-			   firstpar->previous()->getLayout()).isParagraph()
-		  && firstpar->previous()->getDepth() == 0)
-	   // is it right to use defskip here too? (AS)
-	   maxasc += bview->buffer()->params.getDefSkip().inPixels(bview);
-      }
-      
-      // the paper margins
-      if (!row_ptr->par()->previous() && bv_owner)
-      	 maxasc += LYX_PAPER_MARGIN;
-      
-      // add the vertical spaces, that the user added
-      if (firstpar->params().spaceTop().kind() != VSpace::NONE)
-      	 maxasc += int(firstpar->params().spaceTop().inPixels(bview));
-      
-      // do not forget the DTP-lines!
-      // there height depends on the font of the nearest character
-      if (firstpar->params().lineTop())
-      	 maxasc += 2 * lyxfont::ascent('x', getFont(bview->buffer(),
-						    firstpar, 0));
-      
-      // and now the pagebreaks
-      if (firstpar->params().pagebreakTop())
-      	 maxasc += 3 * defaultHeight();
-      
-      // This is special code for the chapter, since the label of this
-      // layout is printed in an extra row
-      if (layout.labeltype == LABEL_COUNTER_CHAPTER
-	  && bview->buffer()->params.secnumdepth >= 0) {
-	      float spacing_val = 1.0;
-	      if (!row_ptr->par()->params().spacing().isDefault()) {
-		      spacing_val = row_ptr->par()->params().spacing().getValue();
-	      } else {
-		      spacing_val = bview->buffer()->params.spacing.getValue();
-	      }
-	      
-	      labeladdon = int(lyxfont::maxDescent(labelfont) *
-			       layout.spacing.getValue() *
-			       spacing_val)
-		      + int(lyxfont::maxAscent(labelfont) *
-			    layout.spacing.getValue() *
-			    spacing_val);
-      }
-      
-      // special code for the top label
-      if ((layout.labeltype == LABEL_TOP_ENVIRONMENT
-	   || layout.labeltype == LABEL_BIBLIO
-	   || layout.labeltype == LABEL_CENTERED_TOP_ENVIRONMENT)
-	  && row_ptr->par()->isFirstInSequence()
-	  && !row_ptr->par()->getLabelstring().empty()) {
-	      float spacing_val = 1.0;
-	      if (!row_ptr->par()->params().spacing().isDefault()) {
-		      spacing_val = row_ptr->par()->params().spacing().getValue();
-	      } else {
-		      spacing_val = bview->buffer()->params.spacing.getValue();
-	      }
-	      
-	      labeladdon = int(
-		      (lyxfont::maxAscent(labelfont) *
-		       layout.spacing.getValue() *
-		       spacing_val)
-		      +(lyxfont::maxDescent(labelfont) *
-			layout.spacing.getValue() *
-			spacing_val)
-		      + layout.topsep * defaultHeight()
-		      + layout.labelbottomsep *  defaultHeight());
-      }
-   
-      // and now the layout spaces, for example before and after a section, 
-      // or between the items of a itemize or enumerate environment
-      
-      if (!firstpar->params().pagebreakTop()) {
-	 Paragraph * prev = row_ptr->par()->previous();
-	 if (prev)
-	    prev = row_ptr->par()->depthHook(row_ptr->par()->getDepth());
-	 if (prev && prev->getLayout() == firstpar->getLayout()
-	     && prev->getDepth() == firstpar->getDepth()
-	     && prev->getLabelWidthString() == firstpar->getLabelWidthString())
-	   {
-	      layoutasc = (layout.itemsep * defaultHeight());
-	   }
-	 else if (row_ptr->previous()) {
-	    tmptop = layout.topsep;
-	    
-	    if (row_ptr->previous()->par()->getDepth() >= row_ptr->par()->getDepth())
-	       tmptop -= textclasslist.Style(bview->buffer()->params.textclass,
-					     row_ptr->previous()->par()->
-					     getLayout()).bottomsep;
-	    
-	    if (tmptop > 0)
-	       layoutasc = (tmptop * defaultHeight());
-	 }
-	 else if (row_ptr->par()->params().lineTop()) {
-	    tmptop = layout.topsep;
-	    
-	    if (tmptop > 0)
-	       layoutasc = (tmptop * defaultHeight());
-	 }
-	 
-	 prev = row_ptr->par()->outerHook();
-	 if (prev)  {
-	    maxasc += int(textclasslist.Style(bview->buffer()->params.textclass,
-					 prev->getLayout()).parsep * defaultHeight());
-	 }
-	 else {
-		if (firstpar->previous()
-		    && firstpar->previous()->getDepth() == 0
-		    && firstpar->previous()->getLayout() != firstpar->getLayout()) {
-			// avoid parsep
+				asc = tmpinset->ascent(bview, tmpfont);
+				desc = tmpinset->descent(bview, tmpfont);
+				maxwidth += tmpinset->width(bview, tmpfont);
+				maxasc = max(maxasc, asc);
+				maxdesc = max(maxdesc, desc);
+			}
+		} else {
+			maxwidth += singleWidth(bview, row_ptr->par(), pos);
 		}
-	    else if (firstpar->previous()){
-	       maxasc += int(layout.parsep * defaultHeight());
-	    }
-	 }
-      }
-   }
-   
-   // is it a bottom line?
-   if (row_ptr->par() == par
-       && (!row_ptr->next() || row_ptr->next()->par() != row_ptr->par())) {
-	  
-	   // the paper margins
-	  if (!par->next() && bv_owner)
-	    maxdesc += LYX_PAPER_MARGIN;
-	  
-	  // add the vertical spaces, that the user added
-	  if (firstpar->params().spaceBottom().kind() != VSpace::NONE)
-		  maxdesc += int(firstpar->params().spaceBottom().inPixels(bview));
-	  
-	  // do not forget the DTP-lines!
-	  // there height depends on the font of the nearest character
-	  if (firstpar->params().lineBottom())
-		  maxdesc += 2 * lyxfont::ascent('x',
-						 getFont(bview->buffer(),
-							 par, par->size() - 1));
-	  
-	  // and now the pagebreaks
-	  if (firstpar->params().pagebreakBottom())
-	    maxdesc += 3 * defaultHeight();
-	  
-	  // and now the layout spaces, for example before and after
-	  // a section, or between the items of a itemize or enumerate
-	  // environment
-	  if (!firstpar->params().pagebreakBottom() && row_ptr->par()->next()) {
-	     Paragraph * nextpar = row_ptr->par()->next();
-	     Paragraph * comparepar = row_ptr->par();
-	     float usual = 0;
-	     float unusual = 0;
-	     
-	     if (comparepar->getDepth() > nextpar->getDepth()) {
-		usual = (textclasslist.Style(bview->buffer()->params.textclass, comparepar->getLayout()).bottomsep * defaultHeight());
-		comparepar = comparepar->depthHook(nextpar->getDepth());
-		if (comparepar->getLayout()!= nextpar->getLayout()
-		    || nextpar->getLabelWidthString() != 
-		    	comparepar->getLabelWidthString())
-		  unusual = (textclasslist.Style(bview->buffer()->params.textclass, comparepar->getLayout()).bottomsep * defaultHeight());
-		
-		if (unusual > usual)
-		  layoutdesc = unusual;
-		else
-		  layoutdesc = usual;
-	     }
-	     else if (comparepar->getDepth() ==  nextpar->getDepth()) {
-		
-		if (comparepar->getLayout()!= nextpar->getLayout()
-		    || nextpar->getLabelWidthString() != 
-			comparepar->getLabelWidthString())
-		  layoutdesc = int(textclasslist.Style(bview->buffer()->params.textclass, comparepar->getLayout()).bottomsep * defaultHeight());
-	     }
-	  }
-       }
-   
-   // incalculate the layout spaces
-   maxasc += int(layoutasc * 2 / (2 + firstpar->getDepth()));
-   maxdesc += int(layoutdesc * 2 / (2 + firstpar->getDepth()));
+	}
 
-   // calculate the new height of the text
-   height -= row_ptr->height();
+	// Check if any custom fonts are larger (Asger)
+	// This is not completely correct, but we can live with the small,
+	// cosmetic error for now.
+	LyXFont::FONT_SIZE const maxsize =
+		row_ptr->par()->highestFontInRange(row_ptr->pos(), pos_end);
+	if (maxsize > font.size()) {
+		font.setSize(maxsize);
+
+		asc = lyxfont::maxAscent(font);
+		desc = lyxfont::maxDescent(font);
+		if (asc > maxasc) 
+			maxasc = asc;
+		if (desc > maxdesc)
+			maxdesc = desc;
+	}
+
+	// This is nicer with box insets:
+	++maxasc;
+	++maxdesc;
+
+	row_ptr->ascent_of_text(maxasc);
    
-   row_ptr->height(maxasc + maxdesc + labeladdon);
-   row_ptr->baseline(maxasc + labeladdon);
+	// is it a top line?
+	if (!row_ptr->pos() && (row_ptr->par() == firstpar)) {
+      
+		// some parksips VERY EASY IMPLEMENTATION
+		if (bview->buffer()->params.paragraph_separation ==
+			BufferParams::PARSEP_SKIP)
+		{
+			if (layout.isParagraph()
+				&& firstpar->getDepth() == 0
+				&& firstpar->previous())
+			{
+				maxasc += bview->buffer()->params.getDefSkip().inPixels(bview);
+			} else if (firstpar->previous() &&
+			           textclasslist.Style(bview->buffer()->params.textclass,
+			                               firstpar->previous()->
+			                               getLayout()).isParagraph() &&
+			           firstpar->previous()->getDepth() == 0)
+			{
+				// is it right to use defskip here too? (AS)
+				maxasc += bview->buffer()->params.getDefSkip().inPixels(bview);
+			}
+		}
+      
+		// the paper margins
+		if (!row_ptr->par()->previous() && bv_owner)
+			maxasc += LYX_PAPER_MARGIN;
+      
+		// add the vertical spaces, that the user added
+		if (firstpar->params().spaceTop().kind() != VSpace::NONE)
+			maxasc += int(firstpar->params().spaceTop().inPixels(bview));
+      
+		// do not forget the DTP-lines!
+		// there height depends on the font of the nearest character
+		if (firstpar->params().lineTop())
+			maxasc += 2 * lyxfont::ascent('x', getFont(bview->buffer(),
+			                                           firstpar, 0));
+      
+		// and now the pagebreaks
+		if (firstpar->params().pagebreakTop())
+			maxasc += 3 * defaultHeight();
+      
+		// This is special code for the chapter, since the label of this
+		// layout is printed in an extra row
+		if (layout.labeltype == LABEL_COUNTER_CHAPTER
+			&& bview->buffer()->params.secnumdepth >= 0)
+		{
+			float spacing_val = 1.0;
+			if (!row_ptr->par()->params().spacing().isDefault()) {
+				spacing_val = row_ptr->par()->params().spacing().getValue();
+			} else {
+				spacing_val = bview->buffer()->params.spacing.getValue();
+			}
+	      
+			labeladdon = int(lyxfont::maxDescent(labelfont) *
+			                 layout.spacing.getValue() *
+			                 spacing_val)
+				+ int(lyxfont::maxAscent(labelfont) *
+				      layout.spacing.getValue() *
+				      spacing_val);
+		}
+      
+		// special code for the top label
+		if ((layout.labeltype == LABEL_TOP_ENVIRONMENT
+		     || layout.labeltype == LABEL_BIBLIO
+		     || layout.labeltype == LABEL_CENTERED_TOP_ENVIRONMENT)
+		    && row_ptr->par()->isFirstInSequence()
+		    && !row_ptr->par()->getLabelstring().empty())
+		{
+			float spacing_val = 1.0;
+			if (!row_ptr->par()->params().spacing().isDefault()) {
+				spacing_val = row_ptr->par()->params().spacing().getValue();
+			} else {
+				spacing_val = bview->buffer()->params.spacing.getValue();
+			}
+	      
+			labeladdon = int(
+				(lyxfont::maxAscent(labelfont) *
+				 layout.spacing.getValue() *
+				 spacing_val)
+				+(lyxfont::maxDescent(labelfont) *
+				  layout.spacing.getValue() *
+				  spacing_val)
+				+ layout.topsep * defaultHeight()
+				+ layout.labelbottomsep *  defaultHeight());
+		}
    
-   height += row_ptr->height();
-   float x;
-   float dummy;
-   prepareToPrint(bview, row_ptr, x, dummy, dummy, dummy, false);
-   row_ptr->width(int(maxwidth + x));
-   if (inset_owner) {
-	   Row * r = firstrow;
-	   width = max(0,workWidth(bview));
-	   while(r) {
-		   if (r->width() > width)
-			   width = r->width();
-		   r = r->next();
-	   }
-   }
+		// and now the layout spaces, for example before and after a section, 
+		// or between the items of a itemize or enumerate environment
+      
+		if (!firstpar->params().pagebreakTop()) {
+			Paragraph * prev = row_ptr->par()->previous();
+			if (prev)
+				prev = row_ptr->par()->depthHook(row_ptr->par()->getDepth());
+			if (prev && prev->getLayout() == firstpar->getLayout() &&
+				prev->getDepth() == firstpar->getDepth() &&
+				prev->getLabelWidthString() == firstpar->getLabelWidthString())
+			{
+				layoutasc = (layout.itemsep * defaultHeight());
+			} else if (row_ptr->previous()) {
+				tmptop = layout.topsep;
+	    
+				if (row_ptr->previous()->par()->getDepth() >= row_ptr->par()->getDepth())
+					tmptop -= textclasslist.Style(bview->buffer()->params.textclass,
+					                              row_ptr->previous()->par()->
+					                              getLayout()).bottomsep;
+	    
+				if (tmptop > 0)
+					layoutasc = (tmptop * defaultHeight());
+			} else if (row_ptr->par()->params().lineTop()) {
+				tmptop = layout.topsep;
+	    
+				if (tmptop > 0)
+					layoutasc = (tmptop * defaultHeight());
+			}
+	 
+			prev = row_ptr->par()->outerHook();
+			if (prev)  {
+				maxasc += int(textclasslist.Style(bview->buffer()->params.textclass,
+				              prev->getLayout()).parsep * defaultHeight());
+			} else {
+				if (firstpar->previous() &&
+					firstpar->previous()->getDepth() == 0 &&
+					firstpar->previous()->getLayout() !=
+					firstpar->getLayout())
+				{
+					// avoid parsep
+				} else if (firstpar->previous()) {
+					maxasc += int(layout.parsep * defaultHeight());
+				}
+			}
+		}
+	}
+   
+	// is it a bottom line?
+	if (row_ptr->par() == par
+		&& (!row_ptr->next() || row_ptr->next()->par() != row_ptr->par()))
+	{
+		// the paper margins
+		if (!par->next() && bv_owner)
+			maxdesc += LYX_PAPER_MARGIN;
+	  
+		// add the vertical spaces, that the user added
+		if (firstpar->params().spaceBottom().kind() != VSpace::NONE)
+			maxdesc += int(firstpar->params().spaceBottom().inPixels(bview));
+	  
+		// do not forget the DTP-lines!
+		// there height depends on the font of the nearest character
+		if (firstpar->params().lineBottom())
+			maxdesc += 2 * lyxfont::ascent('x',
+			                               getFont(bview->buffer(),
+			                               par, par->size() - 1));
+	  
+		// and now the pagebreaks
+		if (firstpar->params().pagebreakBottom())
+			maxdesc += 3 * defaultHeight();
+	  
+		// and now the layout spaces, for example before and after
+		// a section, or between the items of a itemize or enumerate
+		// environment
+		if (!firstpar->params().pagebreakBottom() && row_ptr->par()->next()) {
+			Paragraph * nextpar = row_ptr->par()->next();
+			Paragraph * comparepar = row_ptr->par();
+			float usual = 0;
+			float unusual = 0;
+	     
+			if (comparepar->getDepth() > nextpar->getDepth()) {
+				usual = (textclasslist.Style(bview->buffer()->params.textclass,
+				         comparepar->getLayout()).bottomsep * defaultHeight());
+				comparepar = comparepar->depthHook(nextpar->getDepth());
+				if (comparepar->getLayout()!= nextpar->getLayout()
+					|| nextpar->getLabelWidthString() != 
+					comparepar->getLabelWidthString())
+				{
+					unusual = (textclasslist.Style(bview->buffer()->params.textclass,
+					           comparepar->getLayout()).bottomsep * defaultHeight());
+				}
+				if (unusual > usual)
+					layoutdesc = unusual;
+				else
+					layoutdesc = usual;
+			} else if (comparepar->getDepth() ==  nextpar->getDepth()) {
+				
+				if (comparepar->getLayout()!= nextpar->getLayout()
+					|| nextpar->getLabelWidthString() != 
+					comparepar->getLabelWidthString())
+					layoutdesc = int(textclasslist.Style(bview->buffer()->params.textclass,
+														 comparepar->getLayout()).bottomsep * defaultHeight());
+			}
+		}
+	}
+	
+	// incalculate the layout spaces
+	maxasc += int(layoutasc * 2 / (2 + firstpar->getDepth()));
+	maxdesc += int(layoutdesc * 2 / (2 + firstpar->getDepth()));
+	
+	// calculate the new height of the text
+	height -= row_ptr->height();
+	
+	row_ptr->height(maxasc + maxdesc + labeladdon);
+	row_ptr->baseline(maxasc + labeladdon);
+	
+	height += row_ptr->height();
+	float x;
+	float dummy;
+	prepareToPrint(bview, row_ptr, x, dummy, dummy, dummy, false);
+	row_ptr->width(int(maxwidth + x));
+	if (inset_owner) {
+		Row * r = firstrow;
+		width = max(0,workWidth(bview));
+		while(r) {
+			if (r->width() > width)
+				width = r->width();
+			r = r->next();
+		}
+	}
 }
 
 
