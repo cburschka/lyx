@@ -9,6 +9,8 @@
 #ifndef BOX_H
 #define BOX_H
 
+#include "support/LOstream.h"
+
 /**
  * A simple class representing rectangular regions.
  * It is expected that the box be constructed in

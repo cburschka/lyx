@@ -1,3 +1,10 @@
+2002-01-07  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* box.h: #include "support/LOstream.h", needed for inlined function.
+
+	* lyxtextclass.C:
+	* lyxtextclasslist.C: added some using std declarations.
+
 2002-01-06  John Levon  <moz@compsoc.man.ac.uk>
 
 	* box.h: make signed dimensions to allow insets wider than

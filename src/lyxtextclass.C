@@ -27,6 +27,8 @@
 #include <algorithm>
 
 using std::endl;
+using std::find_if;
+using std::remove_if;
 
 
 /* ******************************************************************* */

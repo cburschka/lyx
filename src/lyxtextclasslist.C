@@ -34,6 +34,8 @@ using lyx::textclass_type;
 using std::pair;
 using std::make_pair;
 using std::endl;
+using std::find_if;
+using std::sort;
 
 
 // Gets textclass number from name
