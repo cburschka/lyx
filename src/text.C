@@ -119,8 +119,8 @@ void LyXText::anchor_row(RowList::iterator rit)
 	anchor_row_ = rit;
 	anchor_row_offset_ = old_y - top_y();
 	lyxerr[Debug::GUI] << "anchor_row(): changing reference to row: "
-			   << &*anchor_row_ << " offset: " << anchor_row_offset_
-			   << endl;
+			   << &*anchor_row_ << " offset: " 
+			   << anchor_row_offset_ << endl;
 }
 
 
@@ -313,7 +313,7 @@ lyx::pos_type LyXText::log2vis(lyx::pos_type pos) const
 	if (bidi_start == -1)
 		return pos;
 	else
-		return log2vis_list[pos-bidi_start];
+		return log2vis_list[pos - bidi_start];
 }
 
 
@@ -322,7 +322,7 @@ lyx::pos_type LyXText::vis2log(lyx::pos_type pos) const
 	if (bidi_start == -1)
 		return pos;
 	else
-		return vis2log_list[pos-bidi_start];
+		return vis2log_list[pos - bidi_start];
 }
 
 
@@ -331,7 +331,7 @@ lyx::pos_type LyXText::bidi_level(lyx::pos_type pos) const
 	if (bidi_start == -1)
 		return 0;
 	else
-		return bidi_levels[pos-bidi_start];
+		return bidi_levels[pos - bidi_start];
 }
 
 
@@ -1509,8 +1509,8 @@ void LyXText::breakParagraph(ParagraphList & paragraphs, char keep_layout)
 	// move one row up!
 	// This touches only the screen-update. Otherwise we would may have
 	// an empty row on the screen
-	if (cursor.pos() && !cursor.row()->par()->isNewline(cursor.row()->pos() - 1)
-			 && cursor.row()->pos() == cursor.pos())
+	if (cursor.pos() && cursor.row()->pos() == cursor.pos()
+	    && !cursor.row()->par()->isNewline(cursor.pos() - 1))
 	{
 		cursorLeft(bv());
 	}
