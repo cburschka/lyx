@@ -65,6 +65,8 @@ What's new
 - fix bug where using case changing commands on the last word of a
   paragraph would change the whole document (without any undo possible!)
 
+- fix performance bug when selecting table cells with the mouse
+
 - in commands that operate on words (Insert>Index...), make sure not
   to include insets in words
 

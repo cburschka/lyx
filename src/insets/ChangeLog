@@ -1,9 +1,12 @@
+2002-07-25  Edwin Leuven  <leuven@fee.uva.nl>
+
+	* insettabular.C (insetMotionNotify): reduce updates on mouse move
+	in selected cell
+
 2002-07-26  Juergen Vigna  <jug@sad.it>
 
-	* insettabular.C: ditto
-
-	* insettext.C: ditto
-
+	* insettabular.C: 
+	* insettext.C: 
 	* insetcollapsable.C: adaptions to changes in lyxfind.C
 
 2002-07-23  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
