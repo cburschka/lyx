@@ -512,6 +512,13 @@ string const strip(string const & a, char c)
 	if (i == a.length() - 1) return tmp; // no c's at end of a
 	if (i != string::npos) 
 		tmp.erase(i + 1, string::npos);
+#if !defined(USE_INCLUDED_STRING) && !defined(STD_STRING_IS_GOOD)
+	/// Needed for broken string::find_last_not_of
+	else if (tmp[0] != c) {
+		if (a.length() == 1) return tmp;
+		tmp.erase(1, string::npos);
+	}
+#endif
 	else
 		tmp.erase(); // only c in the whole string
 	return tmp;

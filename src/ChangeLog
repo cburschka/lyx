@@ -1,3 +1,11 @@
+2001-01-23  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* buffer.C (makeLaTeXFile): Do not load the ae package when using
+	OT1 font encoding. Also, load the aecompl package if the ae
+	package is loaded.
+
+	* tex-strings.C: Add "ae" to tex_fonts[] (from Matej Cepl).
+
 2001-01-22  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* texrow.C (increasePos): turn two error messages into debug

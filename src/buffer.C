@@ -1744,9 +1744,15 @@ void Buffer::makeLaTeXFile(string const & fname,
 		// end of \documentclass defs
 		
 		// font selection must be done before loading fontenc.sty
-		if (params.fonts != "default") {
+		// The ae package is not needed when using OT1 font encoding.
+		if (params.fonts != "default" &&
+		    (params.fonts != "ae" || lyxrc.fontenc != "default")) {
 			ofs << "\\usepackage{" << params.fonts << "}\n";
 			texrow.newline();
+			if (params.fonts == "ae") {
+				ofs << "\\usepackage{aecompl}\n";
+				texrow.newline();
+			}
 		}
 		// this one is not per buffer
 		if (lyxrc.fontenc != "default") {
