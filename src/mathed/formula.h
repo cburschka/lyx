@@ -59,8 +59,9 @@ public:
 	InsetOld::Code lyxCode() const;
 	///
 	bool insetAllowed(InsetOld::Code code) const;
-	///
-	void getLabelList(std::vector<string> &) const;
+	/// Appends \c list with all labels found within this inset.
+	void getLabelList(Buffer const &,
+			  std::vector<string> & list) const;
 	///
 	MathAtom const & par() const { return par_; }
 	///

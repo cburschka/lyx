@@ -435,9 +435,10 @@ void InsetCollapsable::deleteLyXText(BufferView * bv, bool recursive) const
 }
 
 
-void InsetCollapsable::getLabelList(std::vector<string> & list) const
+void InsetCollapsable::getLabelList(Buffer const & buffer,
+				    std::vector<string> & list) const
 {
-	inset.getLabelList(list);
+	inset.getLabelList(buffer, list);
 }
 
 

@@ -2656,11 +2656,12 @@ void LyXTabular::validate(LaTeXFeatures & features) const
 }
 
 
-void LyXTabular::getLabelList(std::vector<string> & list) const
+void LyXTabular::getLabelList(Buffer const & buffer,
+			      std::vector<string> & list) const
 {
 	for (int i = 0; i < rows_; ++i)
 		for (int j = 0; j < columns_; ++j)
-			getCellInset(i, j).getLabelList(list);
+			getCellInset(i, j).getLabelList(buffer, list);
 }
 
 

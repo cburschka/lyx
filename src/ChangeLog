@@ -1,5 +1,12 @@
 2003-09-18  Angus Leeming  <leeming@lyx.org>
 
+	* buffer.C:
+	* BufferView.C: pass the buffer when calling Inset::getLabelList,
+	Inset::fillWithBibKeys.
+	* tabular.[Ch] (getLabelList): receive, pass on a Buffer const & arg.
+
+2003-09-18  Angus Leeming  <leeming@lyx.org>
+
 	* LaTeXFeatures.[Ch]: append a '_' to the names of all private member
 	variables.
 	(ctor): pass and store a 'Buffer const &'

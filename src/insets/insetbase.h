@@ -17,6 +17,7 @@
 #include <vector>
 #include <memory>
 
+class Buffer;
 class BufferView;
 class FuncRequest;
 class MetricsInfo;
@@ -101,8 +102,9 @@ public:
 	virtual BufferView * view() const { return 0; }
 	/// request "external features"
 	virtual void validate(LaTeXFeatures &) const {}
-	/// fill in all labels in the inset
-	virtual void getLabelList(std::vector<string> &) const {}
+	/// Appends \c list with all labels found within this inset.
+	virtual void getLabelList(Buffer const &,
+				  std::vector<string> & /* list */) const {}
 };
 
 #endif

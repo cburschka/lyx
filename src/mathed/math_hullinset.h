@@ -52,8 +52,9 @@ public:
 	bool ams() const;
 	/// local dispatcher
 	dispatch_result dispatch(FuncRequest const & cmd, idx_type & idx, pos_type & pos);
-	///
-	void getLabelList(std::vector<string> &) const;
+	/// Appends \c list with all labels found within this inset.
+	void getLabelList(Buffer const &,
+			  std::vector<string> & list) const;
 	///
 	void validate(LaTeXFeatures & features) const;
 	/// identifies MatrixInsets

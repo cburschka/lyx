@@ -228,9 +228,10 @@ void InsetFormula::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-void InsetFormula::getLabelList(vector<string> & res) const
+void InsetFormula::getLabelList(Buffer const & buffer,
+				vector<string> & res) const
 {
-	par()->getLabelList(res);
+	par()->getLabelList(buffer, res);
 }
 
 

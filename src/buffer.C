@@ -2140,7 +2140,7 @@ void Buffer::getLabelList(std::vector<string> & list) const
 
 	for (inset_iterator it = inset_const_iterator_begin();
 	     it != inset_const_iterator_end(); ++it) {
-		it->getLabelList(list);
+		it->getLabelList(*this, list);
 	}
 }
 
@@ -2161,14 +2161,19 @@ void Buffer::fillWithBibKeys(std::vector<std::pair<string, string> > & keys) con
 
 	for (inset_iterator it = inset_const_iterator_begin();
 		it != inset_const_iterator_end(); ++it) {
-		if (it->lyxCode() == InsetOld::BIBTEX_CODE)
-			static_cast<InsetBibtex &>(*it).fillWithBibKeys(*this, keys);
-		else if (it->lyxCode() == InsetOld::INCLUDE_CODE)
-			static_cast<InsetInclude &>(*it).fillWithBibKeys(keys);
-		else if (it->lyxCode() == InsetOld::BIBITEM_CODE) {
-			InsetBibitem & bib = static_cast<InsetBibitem &>(*it);
-			string const key = bib.getContents();
-			string const opt = bib.getOptions();
+		if (it->lyxCode() == InsetOld::BIBTEX_CODE) {
+			InsetBibtex const & inset =
+				dynamic_cast<InsetBibtex const &>(*it);
+			inset.fillWithBibKeys(*this, keys);
+		} else if (it->lyxCode() == InsetOld::INCLUDE_CODE) {
+			InsetInclude const & inset =
+				dynamic_cast<InsetInclude const &>(*it);
+			inset.fillWithBibKeys(*this, keys);
+		} else if (it->lyxCode() == InsetOld::BIBITEM_CODE) {
+			InsetBibitem const & inset =
+				dynamic_cast<InsetBibitem const &>(*it);
+			string const key = inset.getContents();
+			string const opt = inset.getOptions();
 			string const ref; // = pit->asString(this, false);
 			string const info = opt + "TheBibliographyRef" + ref;
 			keys.push_back(pair<string, string>(key, info));

@@ -377,8 +377,8 @@ public:
 	int columns() const { return columns_;}
 	///
 	void validate(LaTeXFeatures &) const;
-	///
-	void getLabelList(std::vector<string> &) const;
+	/// Appends \c list with all labels found within this inset.
+	void getLabelList(Buffer const &, std::vector<string> & list) const;
 	///
 	/// recalculate the widths/heights only!
 	void reinit();

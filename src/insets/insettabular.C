@@ -2185,9 +2185,10 @@ FuncStatus InsetTabular::getStatus(string const & what) const
 }
 
 
-void InsetTabular::getLabelList(std::vector<string> & list) const
+void InsetTabular::getLabelList(Buffer const & buffer,
+				std::vector<string> & list) const
 {
-	tabular.getLabelList(list);
+	tabular.getLabelList(buffer, list);
 }
 
 

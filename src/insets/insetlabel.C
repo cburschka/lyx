@@ -33,7 +33,7 @@ InsetLabel::~InsetLabel()
 }
 
 
-void InsetLabel::getLabelList(std::vector<string> & list) const
+void InsetLabel::getLabelList(Buffer const &, std::vector<string> & list) const
 {
 	list.push_back(getContents());
 }

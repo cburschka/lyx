@@ -33,8 +33,8 @@ public:
 	EDITABLE editable() const { return IS_EDITABLE; }
 	///
 	InsetOld::Code lyxCode() const { return InsetOld::LABEL_CODE; }
-	///
-	void getLabelList(std::vector<string> &) const;
+	/// Appends \c list with this label
+	void getLabelList(Buffer const &, std::vector<string> & list) const;
 	///
 	int latex(Buffer const &, std::ostream &,
 		  LatexRunParams const &) const;

@@ -62,10 +62,19 @@ public:
 	virtual std::auto_ptr<InsetBase> clone() const;
 	///
 	InsetOld::Code lyxCode() const { return InsetOld::INCLUDE_CODE; }
-	/// This returns the list of labels on the child buffer
-	void getLabelList(std::vector<string> &) const;
-	/// This returns the list of bibkeys on the child buffer
-	void fillWithBibKeys(std::vector<std::pair<string,string> > & keys) const;
+	/** Fills \c list
+	 *  \param buffer the Buffer containing this inset.
+	 *  \param list the list of labels in the child buffer.
+	 */
+	void getLabelList(Buffer const & buffer,
+			  std::vector<string> & list) const;
+	/** Fills \c keys
+	 *  \param buffer the Buffer containing this inset.
+	 *  \param keys the list of bibkeys in the child buffer.
+	 */
+	///
+	void fillWithBibKeys(Buffer const & buffer,
+		std::vector<std::pair<string,string> > & keys) const;
 	///
 	EDITABLE editable() const
 	{
@@ -87,14 +96,14 @@ public:
 	///
 	void validate(LaTeXFeatures &) const;
 
-	/// return true if the file is or got loaded.
-	bool loadIfNeeded() const;
-
 	///
 	void addPreview(lyx::graphics::PreviewLoader &) const;
 
 private:
 	friend class InsetIncludeMailer;
+
+	/// return true if the file is or got loaded.
+	bool loadIfNeeded() const;
 
 	///
 	void write(std::ostream &) const;

@@ -107,8 +107,8 @@ public:
 	LyXText * getLyXText(BufferView const *, bool const recursive) const;
 	///
 	void deleteLyXText(BufferView *, bool recursive=true) const;
-	///
-	void getLabelList(std::vector<string> &) const;
+	/// Appends \c list with all labels found within this inset.
+	void getLabelList(Buffer const &, std::vector<string> & list) const;
 	///
 	int scroll(bool recursive=true) const;
 	///

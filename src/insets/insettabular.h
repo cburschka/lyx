@@ -145,8 +145,8 @@ public:
 	bool showInsetDialog(BufferView *) const;
 	///
 	FuncStatus getStatus(string const & argument) const;
-	///
-	void getLabelList(std::vector<string> &) const;
+	/// Appends \c list with all labels found within this inset.
+	void getLabelList(Buffer const &, std::vector<string> & list) const;
 	///
 	int scroll(bool recursive=true) const;
 	///
