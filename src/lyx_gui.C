@@ -38,7 +38,6 @@
 #include "lyxlookup.h"
 #endif
 #include "bufferlist.h"
-#include "language.h"
 #include "ColorHandler.h"
 #include "frontends/Dialogs.h"
 #include "frontends/GUIRunTime.h"

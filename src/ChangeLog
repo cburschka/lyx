@@ -1,4 +1,23 @@
+2001-02-23  John Levon  <moz@compsoc.man.ac.uk>
+
+	* lyx_main.C: add ISO_Left_Tab as bind synonym for Tab
+
+	* stl_string_fwd.h: add comment
+
+	* lyx_gui_misc.C: killed ALWAYS_CLOSE_MATH_PANELS
+
+	* tabular.h:
+	* tabular.C: remove unused DocBook methods
+
+	* intl.C:
+	* language.C:
+	* paragraph.C:
+	* buffer.C:
+	killed DO_USE_DEFAULT_LANGUAGE
+
 2001-03-01  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* lyx_gui.C: do not include language.h.
 
 	* bufferview_funcs.C (ToggleAndShow): do not provide optional
 	arguments in function implementation.

@@ -151,7 +151,6 @@ void updateAllVisibleBufferRelatedDialogs(bool)
 {
 	if (current_view->buffer() &&  current_view->buffer()->isReadonly()) {
 		// a little crude perhaps but it works. ARRae
-#ifndef ALWAYS_CLOSE_MATH_PANELS
 		// The math popups should be closed only if we switch
 		// to a readonly buffer
 		if (fd_panel) {
@@ -179,40 +178,7 @@ void updateAllVisibleBufferRelatedDialogs(bool)
 				fl_hide_form(fd_matrix->matrix);
 			}
 		}
-#endif
 	}
-
-	// We have either changed buffers or changed the readonly status
-	// so the safest thing to do is hide all inset popups that
-	// are editting insets from the previous buffer or aren't
-	// allowed in readonly docs.
-#ifdef ALWAYS_CLOSE_MATH_PANELS
-	if (fd_panel) {
-		if (fd_panel->panel->visible) {
-			fl_hide_form(fd_panel->panel);
-		}
-	}
-	if (fd_delim) {
-		if (fd_delim->delim->visible) {
-			fl_hide_form(fd_delim->delim);
-		}
-	}
-	if (fd_deco) {
-		if (fd_deco->deco->visible) {
-			fl_hide_form(fd_deco->deco);
-		}
-	}
-	if (fd_space) {
-		if (fd_space->space->visible) {
-			fl_hide_form(fd_space->space);
-		}
-	}
-	if (fd_matrix) {
-		if (fd_matrix->matrix->visible) {
-			fl_hide_form(fd_matrix->matrix);
-		}
-	}
-#endif
 	HideFiguresPopups();
 }
 

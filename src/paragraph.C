@@ -3923,17 +3923,9 @@ LyXParagraph::getParLanguage(BufferParams const & bparams) const
 		return FirstPhysicalPar()->getParLanguage(bparams);
 	else
 #endif
-	if (size() > 0) {
-#ifdef DO_USE_DEFAULT_LANGUAGE
-		Language const * lang = GetFirstFontSettings().language();
-
-		if (lang->lang() == "default")
-			return bparams.language;
-		return lang;
-#else
+	if (size() > 0)
 		return GetFirstFontSettings().language();
-#endif
-	} else if (previous)
+	else if (previous)
 		return previous->getParLanguage(bparams);
 	else
 		return bparams.language;

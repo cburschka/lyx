@@ -76,11 +76,6 @@ void Languages::read(string const & filename)
 					      encoding, code, latex_options);
 	}
 
-#ifdef DO_USE_DEFAULT_LANGUAGE
-	languagelist["default"] = Language("default", "default",
-					   N_("Document wide language"),
-					   false, &iso8859_1, "");
-#endif
 	default_language = getLanguage(lyxrc.default_language);
 	if (!default_language) {
 		lyxerr << "Default language \"" << lyxrc.default_language

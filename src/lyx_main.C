@@ -467,6 +467,7 @@ void LyX::defaultKeyBindings(kb_keymap  * kbmap)
 	kbmap->bind("Down", LFUN_DOWN);
 	
 	kbmap->bind("Tab", LFUN_TAB);
+	kbmap->bind("ISO_Left_Tab", LFUN_TAB); // jbl 2001-23-02
 	
 	kbmap->bind("Home", LFUN_HOME);
 	kbmap->bind("End", LFUN_END);
@@ -505,6 +506,7 @@ void LyX::defaultKeyBindings(kb_keymap  * kbmap)
 	
         kbmap->bind("C-Tab", LFUN_TABINSERT);  // ale970515
 	kbmap->bind("S-Tab", LFUN_SHIFT_TAB);  // jug20000522
+	kbmap->bind("S-ISO_Left_Tab", LFUN_SHIFT_TAB); // jbl 2001-23-02
 }
 
 

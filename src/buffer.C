@@ -1678,9 +1678,6 @@ void Buffer::makeLaTeXFile(string const & fname,
 			features.UsedLanguages.insert(default_language);
 
 		if (lyxrc.language_use_babel ||
-#ifdef DO_USE_DEFAULT_LANGUAGE
-		    params.language->lang() != "default" ||
-#endif
 		    params.language->lang() != lyxrc.default_language ||
 		    !features.UsedLanguages.empty()) {
 			use_babel = true;
@@ -2001,11 +1998,8 @@ void Buffer::makeLaTeXFile(string const & fname,
 		texrow.newline();
 	} // only_body
 	lyxerr.debug() << "preamble finished, now the body." << endl;
-#ifdef DO_USE_DEFAULT_LANGUAGE
-	if (!lyxrc.language_auto_begin && params.language->lang() != "default") {
-#else
+
 	if (!lyxrc.language_auto_begin) {
-#endif
 		ofs << subst(lyxrc.language_command_begin, "$$lang",
 			     params.language->babel())
 		    << endl;
@@ -2018,11 +2012,7 @@ void Buffer::makeLaTeXFile(string const & fname,
 	ofs << endl;
 	texrow.newline();
 
-#ifdef DO_USE_DEFAULT_LANGUAGE
-	if (!lyxrc.language_auto_end && params.language->lang() != "default") {
-#else
-		if (!lyxrc.language_auto_end) {
-#endif
+	if (!lyxrc.language_auto_end) {
 		ofs << subst(lyxrc.language_command_end, "$$lang",
 			     params.language->babel())
 		    << endl;

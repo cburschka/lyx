@@ -293,15 +293,6 @@ public:
     ///
     int Ascii(Buffer const *, std::ostream &) const;
     ///
-    int DocBookEndOfCell(std::ostream &, int cell, int & depth) const;
-#if 0
-    ///
-    int RoffEndOfCell(std::ostream &, int cell);
-#endif
-    ///
-    string const  GetDocBookAlign(int cell, bool isColumn = false) const;
-
-    ///
     bool IsMultiColumn(int cell, bool real = false) const;
     ///
     void SetMultiColumn(int cell, int number);

@@ -12,6 +12,10 @@
 #ifndef LYX_STL_STRING_FWD_H
 #define LYX_STL_STRING_FWD_H
 
+/*
+ * This file exists to appease STLPort when using included lyxstring.
+ * It won't be around forever ...
+ */ 
 
 #ifndef USE_INCLUDED_STRING
 //   include the real stl_string_fwd.h
