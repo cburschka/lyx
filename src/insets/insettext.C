@@ -1218,10 +1218,20 @@ InsetText::localDispatch(BufferView * bv,
 				}
 				break;
 			case FINISHED_DOWN:
-				if ((result = moveDown(bv)) >= FINISHED) {
+			{
+				LyXText *lt = getLyXText(bv);
+				if (lt->cursor.irow()->next()) {
+					lt->setCursorFromCoordinates(
+						bv, lt->cursor.ix() + inset_x,
+						lt->cursor.iy() -
+						lt->cursor.irow()->baseline() +
+						lt->cursor.irow()->height() + 1);
+					lt->cursor.x_fix(lt->cursor.x());
 					updateLocal(bv, CURSOR, false);
+				} else {
 					bv->unlockInset(this);
 				}
+			}
 				break;
 			default:
 				result = DISPATCHED;
@@ -2690,53 +2700,66 @@ void InsetText::toggleSelection(BufferView * bv, bool kill_selection)
 bool InsetText::searchForward(BufferView * bv, string const & str,
 			      bool cs, bool mw)
 {
+	bool clear = false;
+	if (!lt) {
+		lt = getLyXText(bv);
+		clear = true;
+	}
 	if (the_locking_inset) {
 		if (the_locking_inset->searchForward(bv, str, cs, mw))
 			return true;
-		bool clear = false;
-		if (!lt) {
-			lt = getLyXText(bv);
-			clear = true;
-		}
-		Paragraph * lpar = lt->cursor.par();
-		pos_type pos = lt->cursor.pos();
-		if (pos < lpar->size() - 1)
-			++pos;
-		else {
-			pos = 0;
-			lpar = lpar->next();
-		}
-		if (!lpar) {
-			if (clear)
-				lt = 0;
-			// we have to unlock ourself in this function by default!
-			bv->unlockInset(const_cast<InsetText *>(this));
-			return false;
-		}
-		lt->setCursor(bv, lpar, pos);
-		if (clear)
-			lt = 0;
+		lt->cursorRight(bv, true);
 	}
-	if (LyXFind(bv, str, true, true, cs , mw)) {
-		return true;
+	lyxfind::SearchResult result =
+		lyxfind::LyXFind(bv, lt, str, true, cs, mw);
+
+	if (result == lyxfind::SR_FOUND) {
+		LyXCursor cur = lt->cursor;
+		bv->unlockInset(bv->theLockingInset());
+		if (bv->lockInset(this))
+			locked = true;
+		lt->cursor = cur;
+		lt->setSelectionOverString(bv, str);
+		updateLocal(bv, SELECTION, false);
 	}
-	// we have to unlock ourself in this function by default!
-	bv->unlockInset(const_cast<InsetText *>(this));
-	return false;
+	if (clear)
+		lt = 0;
+	return (result != lyxfind::SR_NOT_FOUND);
 }
 
 bool InsetText::searchBackward(BufferView * bv, string const & str,
 			       bool cs, bool mw)
 {
-	if (the_locking_inset)
+	if (the_locking_inset) {
 		if (the_locking_inset->searchBackward(bv, str, cs, mw))
 			return true;
-	if (LyXFind(bv, str, false, true, cs, mw)) {
-		return true;
 	}
-	// we have to unlock ourself in this function by default!
-	bv->unlockInset(const_cast<InsetText *>(this));
-	return false;
+	bool clear = false;
+	if (!lt) {
+		lt = getLyXText(bv);
+		clear = true;
+	}
+	if (!locked) {
+		Paragraph * p = par;
+		while (p->next())
+			p = p->next();
+		lt->setCursor(bv, p, p->size());
+	}
+	lyxfind::SearchResult result =
+		lyxfind::LyXFind(bv, lt, str, false, cs, mw);
+
+	if (result == lyxfind::SR_FOUND) {
+		LyXCursor cur = lt->cursor;
+		bv->unlockInset(bv->theLockingInset());
+		if (bv->lockInset(this))
+			locked = true;
+		lt->cursor = cur;
+		lt->setSelectionOverString(bv, str);
+		updateLocal(bv, SELECTION, false);
+	}
+	if (clear)
+		lt = 0;
+	return (result != lyxfind::SR_NOT_FOUND);
 }
 
 

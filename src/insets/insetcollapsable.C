@@ -655,7 +655,8 @@ bool InsetCollapsable::searchForward(BufferView * bv, string const & str,
 	bool found = inset.searchForward(bv, str, cs, mw);
 	if (first_after_edit && !found)
 		close(bv);
-	first_after_edit = false;
+	else if (!found)
+		first_after_edit = false;
 	return found;
 }
 
@@ -666,7 +667,8 @@ bool InsetCollapsable::searchBackward(BufferView * bv, string const & str,
 	bool found = inset.searchBackward(bv, str, cs, mw);
 	if (first_after_edit && !found)
 		close(bv);
-	first_after_edit = false;
+	else if (!found)
+		first_after_edit = false;
 	return found;
 }
 

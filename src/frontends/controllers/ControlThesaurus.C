@@ -47,8 +47,9 @@ void ControlThesaurus::replace(string const & newstr)
 	 * on a particular charpos in a paragraph that is broken on
 	 * deletion/change !
 	 */
-	int const replace_count = LyXReplace(lv_.view(), oldstr_, newstr,
-					true, true, true, false, true);
+	int const replace_count =
+		lyxfind::LyXReplace(lv_.view(), oldstr_, newstr,
+				    true, true, true, false, true);
 
 	oldstr_ = newstr;
 

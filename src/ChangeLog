@@ -1,3 +1,10 @@
+2002-07-26  Juergen Vigna  <jug@sad.it>
+
+	* lyxfunc.C (dispatch):change LyXFind function call.
+
+	* lyxfind.C (various): Don't lock insets while searching only
+	when we found a string. This speed ups the whole stuff a lot
+	
 2002-07-23  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* paragraph_pimpl.C (simpleTeXSpecialChars): close fonts before

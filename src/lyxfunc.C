@@ -1047,7 +1047,7 @@ string const LyXFunc::dispatch(kb_action action, string argument)
 		}
 		bool fw = (action == LFUN_WORDFINDBACKWARD);
 		if (!searched_string.empty()) {
-			LyXFind(owner->view(), searched_string, fw);
+			lyxfind::LyXFind(owner->view(), searched_string, fw);
 		}
 //		owner->view()->showCursor();
 	}

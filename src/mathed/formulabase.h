@@ -74,6 +74,8 @@ public:
 	///
 	virtual void hideInsetCursor(BufferView *);
 	///
+	virtual void fitInsetCursor(BufferView *) const;
+	///
 	virtual void getCursorPos(BufferView *, int &, int &) const;
 	///
 	virtual void toggleInsetSelection(BufferView * bv);

@@ -357,6 +357,6 @@ private:
 	///
 	bool in_update;
 	///
-	mutable bool in_reset_pos;
+	mutable int in_reset_pos;
 };
 #endif

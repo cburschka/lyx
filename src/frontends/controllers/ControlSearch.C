@@ -47,8 +47,9 @@ ControlSearch::ControlSearch(LyXView & lv, Dialogs & d)
 void ControlSearch::find(string const & search,
 			 bool casesensitive, bool matchword, bool forward) const
 {
-	bool const found = LyXFind(lv_.view(), search,
-				   forward, false, casesensitive, matchword);
+	bool const found = lyxfind::LyXFind(lv_.view(), search,
+					    forward, casesensitive,
+					    matchword);
 
 	if (!found)
 		setMinibuffer(&lv_, _("String not found!"));
@@ -62,9 +63,10 @@ void ControlSearch::replace(string const & search, string const & replace,
 	// move on to the next instance once the present instance has been
 	// changed
 	bool const once = !all;
-	int const replace_count = LyXReplace(lv_.view(),
-					     search, replace, true, casesensitive,
-					     matchword, all, once);
+	int const replace_count =
+		lyxfind::LyXReplace(lv_.view(),
+				    search, replace, true, casesensitive,
+				    matchword, all, once);
 
 	if (replace_count == 0) {
 		setMinibuffer(&lv_, _("String not found!"));
