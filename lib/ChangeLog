@@ -1,3 +1,8 @@
+2003-07-28  José Matos  <jamatos@lyx.org>
+
+	* lyx2lyx (parse_options): support gziped files.
+	* parser_tools.py (set_format): output correct version.
+
 2003-07-28  José Matos  <jamatos@fep.up.pt>
 
 	* lyx2lyx/lyx_convert224.py (layout2begin_layout):

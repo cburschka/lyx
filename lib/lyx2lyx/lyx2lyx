@@ -18,8 +18,9 @@
 import getopt, sys, string, re
 from error import error, warning
 from parser_tools import set_comment, set_format, check_token
+import gzip
 
-version = "0.0.2"
+version = "1.4.0cvs"
 
 # Allow the dummy object to be able to carry related data
 # like a C struct
@@ -40,8 +41,10 @@ fileformat = re.compile(r"\\lyxformat\s*(\S*)")
 lst_ft = ["210", "215", "216", "217", "218", "220", "221", "223", "224", "225"]
 
 def usage():
-    print """Usage: lyx2lyx [options] file1
-Convert old lyx file <file1> to newer format.
+    print """Usage: lyx2lyx [options] [file]
+Convert old lyx file <file> to newer format, files can be compressed with gzip.
+If there no file is specified then the standard input is assumed, in this case
+gziped files are not handled.
 Options:
     -h, --help			this information
     -v, --version		output version information and exit
@@ -68,7 +71,7 @@ def parse_options(argv):
             sys.exit()
         if o in ("-v", "--version"):
             print "lyxconvert, version %s" %(version)
-            print "Copyright (C) 2002 LyX Team"
+            print "Copyright (C) 2002-2003 LyX Team"
             sys.exit()
         if o in ("-d", "--debug"):
             opt.debug = int(a)
@@ -96,7 +99,13 @@ def parse_options(argv):
         sys.exit(1)
 
     if args:
-        opt.input = open(args[0])
+        file = args[0]
+        try:
+            gzip.open(file).readline()
+            opt.output = gzip.GzipFile("","wb",6,opt.output)
+            opt.input = gzip.open(file)
+        except:
+            opt.input = open(file)
 
 def lyxformat(fmt):
     result = format.match(fmt)
@@ -182,7 +191,7 @@ def main(argv):
     for fmt in lst_ft[start:end]:
 	__import__("lyxconvert_" + fmt).convert(header,body)
 
-    set_comment(header, opt.end)
+    set_comment(header, version)
     set_format(header, opt.end)
     write_file(opt.output, header, body)
     
