@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.1.6\n"
-"POT-Creation-Date: 2001-11-26 13:22+0100\n"
+"POT-Creation-Date: 2002-01-11 13:16+0100\n"
 "PO-Revision-Date: 2001-11-26 12:48+01:00\n"
 "Last-Translator: Peter Sütterlin <P.Suetterlin@astro.uu.nl>\n"
 "Language-Team: German <de@li.org>\n"
@@ -30,7 +30,7 @@ msgstr " Absätze konnte nicht eingestellt werden."
 #. or stop loading the file.
 #. I can substitute but I don't see how I can
 #. stop loading... ideas??  ARRae980418
-#: src/buffer.C:330 src/buffer.C:342 src/buffer.C:559
+#: src/buffer.C:330 src/buffer.C:342 src/buffer.C:561
 msgid "Textclass Loading Error!"
 msgstr "Fehler beim Laden der Textklasse!"
 
@@ -50,131 +50,131 @@ msgstr "Ein unbekanntes Token wurde gefunden"
 msgid " unknown tokens"
 msgstr " unbekannte Token wurden gefunden"
 
-#: src/CutAndPaste.C:447 src/buffer.C:397
+#: src/CutAndPaste.C:449 src/buffer.C:397
 msgid "Layout had to be changed from\n"
 msgstr "Das Layout mußte von\n"
 
-#: src/CutAndPaste.C:448 src/CutAndPaste.C:451 src/buffer.C:398
+#: src/CutAndPaste.C:450 src/CutAndPaste.C:453 src/buffer.C:398
 #: src/converter.C:554
 msgid " to "
 msgstr " nach "
 
-#: src/buffer.C:547
+#: src/buffer.C:549
 msgid "Textclass error"
 msgstr "Fehler Textklasse"
 
-#: src/buffer.C:548
+#: src/buffer.C:550
 msgid "The document uses an unknown textclass \""
 msgstr "Das Dokument verwendet die unbekannte Textklasse \""
 
-#: src/buffer.C:550
+#: src/buffer.C:552
 msgid "LyX will not be able to produce output correctly."
 msgstr "LyX kann keine korrekte Ausgabe erzeugen."
 
-#: src/buffer.C:560
+#: src/buffer.C:562
 msgid "Can't load textclass "
 msgstr "Kann Textklasse nicht laden: "
 
-#: src/buffer.C:562
+#: src/buffer.C:564
 msgid "-- substituting default"
 msgstr "-- verwende stattdessen Standard"
 
-#: src/buffer.C:990
+#: src/buffer.C:992
 msgid "Unknown token: "
 msgstr "Unbekanntes Token: "
 
-#: src/buffer.C:1118
+#: src/buffer.C:1121
 #, c-format
 msgid "Warning: need lyxformat %.2f but found %.2f"
 msgstr "Achtung: Benötige LyX-Format %.2f, die gewählte Datei enthält %.2f"
 
-#: src/buffer.C:1122
+#: src/buffer.C:1125
 #, c-format
 msgid "ERROR: need lyxformat %.2f but found %.2f"
 msgstr "FEHLER: Benötige LyX-Format %.2f, die gewählte Datei enthält %.2f"
 
 #. future format
-#: src/buffer.C:1133 src/buffer.C:1160 src/buffer.C:1180
+#: src/buffer.C:1136 src/buffer.C:1163 src/buffer.C:1183
 msgid "Warning!"
 msgstr "Achtung!"
 
-#: src/buffer.C:1134 src/buffer.C:1181
+#: src/buffer.C:1137 src/buffer.C:1184
 msgid "Reading of document is not complete"
 msgstr "Das Dokument wurde nicht vollständig eingelesen"
 
-#: src/buffer.C:1135 src/buffer.C:1182
+#: src/buffer.C:1138 src/buffer.C:1185
 msgid "Maybe the document is truncated"
 msgstr "Möglicherweise ist die Datei beschädigt"
 
 #. "\\lyxformat" not found
-#: src/buffer.C:1141 src/buffer.C:1167 src/buffer.C:1186 src/buffer.C:1189
+#: src/buffer.C:1144 src/buffer.C:1170 src/buffer.C:1189 src/buffer.C:1192
 msgid "ERROR!"
 msgstr "FEHLER!"
 
-#: src/buffer.C:1142 src/buffer.C:1168
+#: src/buffer.C:1145 src/buffer.C:1171
 msgid "Old LyX file format found. Use LyX 0.10.x to read this!"
 msgstr ""
 "Altes LyX-Dateiformat. Bitte benutzen Sie LyX 0.10.x, um diese Datei zu "
 "lesen!"
 
-#: src/buffer.C:1161
+#: src/buffer.C:1164
 msgid "LyX file format is newer that what"
 msgstr "Das LyX Format der Datei ist neuer als von dieser"
 
-#: src/buffer.C:1162
+#: src/buffer.C:1165
 msgid "is supported in this LyX version. Expect some problems."
 msgstr "Version unterstützt wird.  Rechnen sie mit Problemen"
 
-#: src/buffer.C:1186
+#: src/buffer.C:1189
 msgid "Not a LyX file!"
 msgstr "Dies ist keine LyX-Datei!"
 
-#: src/buffer.C:1189
+#: src/buffer.C:1192
 msgid "Unable to read file!"
 msgstr "Die Datei kann nicht gelesen werden!"
 
-#: src/buffer.C:1283 src/buffer.C:1286
+#: src/buffer.C:1286 src/buffer.C:1289
 msgid "Error! Document is read-only: "
 msgstr "Fehler! Das Dokument ist schreibgeschützt: "
 
-#: src/buffer.C:1296 src/buffer.C:1299
+#: src/buffer.C:1299 src/buffer.C:1302
 msgid "Error! Cannot write file: "
 msgstr "Fehler! Die Datei kann nicht geschrieben werden: "
 
-#: src/buffer.C:1307 src/buffer.C:1310
+#: src/buffer.C:1310 src/buffer.C:1313
 msgid "Error! Cannot open file: "
 msgstr "Fehler! Die Datei kann nicht geöffnet werden: "
 
-#: src/buffer.C:1606
+#: src/buffer.C:1609
 msgid "Error: Cannot write file:"
 msgstr "Fehler! Die Datei kann nicht geschrieben werden werden: "
 
-#: src/buffer.C:1640
+#: src/buffer.C:1643
 msgid "Error: Cannot open file: "
 msgstr "Fehler! Die Datei kann nicht geöffnet werden: "
 
-#: src/buffer.C:2284 src/buffer.C:2931
+#: src/buffer.C:2285 src/buffer.C:2933
 msgid "LYX_ERROR:"
 msgstr "LYX_FEHLER:"
 
-#: src/buffer.C:2284 src/buffer.C:2931
+#: src/buffer.C:2285 src/buffer.C:2933
 msgid "Cannot write file"
 msgstr "Die Datei kann nicht geschrieben werden"
 
-#: src/buffer.C:2371 src/buffer.C:3015
+#: src/buffer.C:2372 src/buffer.C:3017
 msgid "Error : Wrong depth for LatexType Command.\n"
 msgstr "Fehler: Falsche Umgebungstiefe für den Befehl LatexType.\n"
 
 #. path to LaTeX file
-#: src/buffer.C:3336
+#: src/buffer.C:3338
 msgid "Running chktex..."
 msgstr "ChkTeX wird ausgeführt..."
 
-#: src/buffer.C:3349
+#: src/buffer.C:3351
 msgid "chktex did not work!"
 msgstr "ChkTeX war nicht erfolgreich!"
 
-#: src/buffer.C:3350
+#: src/buffer.C:3352
 msgid "Could not run with file:"
 msgstr "Fehler bei der Ausführung mit der Datei: "
 
@@ -566,7 +566,7 @@ msgstr "Matthias"
 msgid "All these people have contributed to the LyX project. Thanks,"
 msgstr "All diese Menschen haben zum LyX-Projekt beigetragen. Danke,"
 
-#: src/CutAndPaste.C:450
+#: src/CutAndPaste.C:452
 msgid ""
 "\n"
 "because of class conversion from\n"
@@ -574,16 +574,16 @@ msgstr ""
 "\n"
 "geändert werden; Grund: Klassenumwandlung von\n"
 
-#: src/CutAndPaste.C:476 src/insets/insettext.C:969 src/text.C:3956
+#: src/CutAndPaste.C:479 src/insets/insettext.C:969 src/text.C:3956
 #: src/text.C:3964 src/text.C:3991 src/text2.C:2191 src/text2.C:2304
 msgid "Impossible operation"
 msgstr "Dieser Vorgang ist nicht möglich"
 
-#: src/CutAndPaste.C:477
+#: src/CutAndPaste.C:480
 msgid "Can't paste float into float!"
 msgstr "Ein Float Objekt kann nicht in ein anderes eingefügt werden!"
 
-#: src/CutAndPaste.C:478 src/insets/insetert.C:67
+#: src/CutAndPaste.C:481 src/insets/insetert.C:67
 #: src/insets/insettabular.C:1702 src/insets/insettext.C:971 src/text.C:3958
 #: src/text.C:3966 src/text.C:3993
 msgid "Sorry."
@@ -2043,7 +2043,6 @@ msgid "RunningAuthor"
 msgstr ""
 
 #: src/ext_l10n.h:345
-#, fuzzy
 msgid "RunningTitle"
 msgstr ""
 
@@ -3871,47 +3870,47 @@ msgstr "Layout für Dokument eingestellt"
 msgid "Converting document to new document class..."
 msgstr "Dokument wird an die neue Dokumentklasse angepaßt..."
 
-#: src/frontends/xforms/FormDocument.C:434
+#: src/frontends/xforms/FormDocument.C:435
 msgid "One paragraph couldn't be converted"
 msgstr "Ein Absatz konnte nicht angepaßt werden"
 
-#: src/frontends/xforms/FormDocument.C:437
+#: src/frontends/xforms/FormDocument.C:438
 msgid " paragraphs couldn't be converted"
 msgstr " Absätze konnten nicht an die gewählte"
 
 #. problem changing class -- warn user and retain old style
-#: src/frontends/xforms/FormDocument.C:439
-#: src/frontends/xforms/FormDocument.C:446
-#: src/frontends/xforms/FormDocument.C:1107
+#: src/frontends/xforms/FormDocument.C:440
+#: src/frontends/xforms/FormDocument.C:447
+#: src/frontends/xforms/FormDocument.C:1108
 msgid "Conversion Errors!"
 msgstr "Fehler bei der Anpassung"
 
-#: src/frontends/xforms/FormDocument.C:440
+#: src/frontends/xforms/FormDocument.C:441
 msgid "into chosen document class"
 msgstr " Dokumentklasse angepaßt werden!"
 
-#: src/frontends/xforms/FormDocument.C:447
+#: src/frontends/xforms/FormDocument.C:448
 msgid "Errors loading new document class."
 msgstr "Fehler beim Laden der neuen Dokumentenklasse."
 
-#: src/frontends/xforms/FormDocument.C:448
-#: src/frontends/xforms/FormDocument.C:1109
+#: src/frontends/xforms/FormDocument.C:449
+#: src/frontends/xforms/FormDocument.C:1110
 msgid "Reverting to original document class."
 msgstr "Bleibe bei der bisherigen Dokumentklasse!"
 
-#: src/frontends/xforms/FormDocument.C:825
+#: src/frontends/xforms/FormDocument.C:826
 msgid "Document is read-only. No changes to layout permitted."
 msgstr "Schreibgeschütztes Dokument, keine Änderung am Layout möglich."
 
-#: src/frontends/xforms/FormDocument.C:1099
+#: src/frontends/xforms/FormDocument.C:1100
 msgid "Should I set some parameters to"
 msgstr "Sollen Parameter auf die Standardwerte"
 
-#: src/frontends/xforms/FormDocument.C:1100
+#: src/frontends/xforms/FormDocument.C:1101
 msgid "the defaults of this document class?"
 msgstr "dieser Dokumentklasse eingestellt werden?"
 
-#: src/frontends/xforms/FormDocument.C:1108
+#: src/frontends/xforms/FormDocument.C:1109
 msgid "Unable to switch to new document class."
 msgstr "Es kann nicht in die gewählte Dokumentklasse gewechselt werden!"
 
@@ -5893,15 +5892,15 @@ msgstr "   Optionen: "
 msgid "Document wide language"
 msgstr "Sprache für Dokument"
 
-#: src/LaTeX.C:177 src/LaTeX.C:252 src/LaTeX.C:300
+#: src/LaTeX.C:188 src/LaTeX.C:263 src/LaTeX.C:311
 msgid "LaTeX run number "
 msgstr "LaTeX Durchlauf Nr. "
 
-#: src/LaTeX.C:210 src/LaTeX.C:279
+#: src/LaTeX.C:221 src/LaTeX.C:290
 msgid "Running MakeIndex."
 msgstr "Starte MakeIndex."
 
-#: src/LaTeX.C:223
+#: src/LaTeX.C:234
 msgid "Running BibTeX."
 msgstr "Starte BibTeX."
 
@@ -7719,8 +7718,8 @@ msgid ""
 "is specified, an internal routine is used."
 msgstr ""
 "Hier können Sie ein externes Programm festlegen, das zur Formatierung von "
-"Tabellen in der ASCII Ausgabe verwendet wird, z.B. \"groff -t -Tlatin1 "
-"$$FName\".  Dabei ist $$FName die Eingabedatei.  Wird \"none\" angegeben, "
+"Tabellen in der ASCII Ausgabe verwendet wird, z.B. \"groff -t -Tlatin1 $"
+"$FName\".  Dabei ist $$FName die Eingabedatei.  Wird \"none\" angegeben, "
 "verwendet LyX eine interne Routine."
 
 #: src/lyxrc.C:1829
@@ -7782,8 +7781,8 @@ msgstr ""
 msgid ""
 "Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
 msgstr ""
-"Hier können sie ein anderes privates Wörterbuch angeben, etwa "
-"\".ispell_deutsch\"."
+"Hier können sie ein anderes privates Wörterbuch angeben, etwa \"."
+"ispell_deutsch\"."
 
 #: src/lyxrc.C:1874
 msgid "Specify additional chars that can be part of a word."
@@ -7803,8 +7802,8 @@ msgstr ""
 
 #: src/lyxrc.C:1882
 msgid ""
-"Define how to run chktex. E.g. \"chktex -n11 -n1 -n3 -n6 -n9 -22 -n25 -n30 "
-"-n38\" Refer to the ChkTeX documentation."
+"Define how to run chktex. E.g. \"chktex -n11 -n1 -n3 -n6 -n9 -22 -n25 -n30 -"
+"n38\" Refer to the ChkTeX documentation."
 msgstr ""
 "Hier können Sie festlegen, wie das Programm chktex gestartet wird, z.B. "
 "\"chktex -n11 -n1 -n3 -n6 -n9 -22 -n25 -n30 -n38\".  Bitte lesen Sie die "
@@ -7869,11 +7868,11 @@ msgstr ""
 
 #: src/lyxrc.C:1914
 msgid ""
-"The latex command for loading the language package. E.g. "
-"\"\\usepackage{babel}\", \"\\usepackage{omega}\"."
+"The latex command for loading the language package. E.g. \"\\usepackage"
+"{babel}\", \"\\usepackage{omega}\"."
 msgstr ""
-"Der LaTeX-Befehl, um das Sprachpaket zu laden.  Beispiel: "
-"\"\\usepackage{babel}\", \"\\usepackage{omega}\"."
+"Der LaTeX-Befehl, um das Sprachpaket zu laden.  Beispiel: \"\\usepackage"
+"{babel}\", \"\\usepackage{omega}\"."
 
 #: src/lyxrc.C:1918
 msgid ""

@@ -1,3 +1,7 @@
+2002-01-11  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* src/version.h (LYX_VERSION): LyX 1.1.6fix4 released
+
 2002-01-08  José Matos  <jamatos@fep.up.pt>
 
 	* src/tabular.C (DocBook): makes colspec sgml conformant.
@@ -218,7 +222,7 @@
 
 2001-07-24  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
-	* src/version.h (LYX_RELEASE): LyX 1.1.6fix3 released.
+	* src/version.h (LYX_VERSION): LyX 1.1.6fix3 released.
 
 	* sigc++/Makefile.am (EXTRA_DIST): make sure BUILT_SOURCES is in
 	the distribution
