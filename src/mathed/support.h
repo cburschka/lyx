@@ -7,8 +7,6 @@
 #include "LString.h"
 
 class Painter;
-class MathArray;
-class MathMatrixInset;
 
 extern char const * math_font_name[];
 extern char const * latex_mathspace[];

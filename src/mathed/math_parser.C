@@ -292,13 +292,6 @@ int yylex()
 				yylval.i = l->id;
 				return l->token;
 			}
-			if (lexcode[c] == LexMathSpace) {
-				int i;
-				for (i = 0; i < 4 && static_cast<int>(c) != latex_mathspace[i][0]; ++i)
-					;
-				yylval.i = (i < 4) ? i : 0; 
-				return LM_TK_SPACE; 
-			}
 			if (lexcode[c] == LexAlpha) {
 				yytext.erase();
 				while (lexcode[c] == LexAlpha && yyis->good()) {

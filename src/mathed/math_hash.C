@@ -16,12 +16,16 @@ latexkeys const wordlist[] =
 	//{"scriptscriptstyle",  LM_TK_STY, LM_ST_SCRIPTSCRIPT, LMB_NONE},
 	//{"scriptstyle",  LM_TK_STY, LM_ST_SCRIPT, LMB_NONE},
 	//{"textstyle",  LM_TK_STY, LM_ST_TEXT, LMB_NONE},
+	{"!",  LM_TK_SPACE, 0, LMB_NONE},
 	{"#",  LM_TK_SPECIAL, '#', LMB_NONE},
 	{"$",  LM_TK_SPECIAL, '$', LMB_NONE},
 	{"%",  LM_TK_SPECIAL, '%', LMB_NONE},
 	{"&",  LM_TK_SPECIAL, '&', LMB_NONE},
 	{"(",  LM_TK_BEGIN, LM_OT_SIMPLE, LMB_NONE},
 	{")",  LM_TK_END, LM_OT_SIMPLE, LMB_NONE},
+	{",",  LM_TK_SPACE, 1, LMB_NONE},
+	{":",  LM_TK_SPACE, 2, LMB_NONE},
+	{";",  LM_TK_SPACE, 3, LMB_NONE},
 	{"Delta",  LM_TK_SYM, LM_Delta, LMB_NONE},
 	{"Downarrow",  LM_TK_SYM, LM_Downarrow, LMB_NONE},
 	{"Gamma",  LM_TK_SYM, LM_Gamma, LMB_NONE},
@@ -47,7 +51,6 @@ latexkeys const wordlist[] =
 	{"Vert",  LM_TK_SYM, LM_Vert, LMB_NONE},
 	{"Xi",  LM_TK_SYM, LM_Xi, LMB_NONE},
 	{"[",  LM_TK_BEGIN, LM_OT_EQUATION, LMB_NONE},
-// -1 needed in mathed_parse_lines!
 	{"\\",  LM_TK_NEWLINE, static_cast<unsigned>(-1), LMB_NONE},
 	{"]",  LM_TK_END, LM_OT_EQUATION, LMB_NONE},
 	{"_",  LM_TK_SPECIAL, '_', LMB_NONE},
@@ -294,6 +297,7 @@ latexkeys const wordlist[] =
 	{"{",  LM_TK_SPECIAL, '{', LMB_NONE},
 	{"|",  LM_TK_UNDEF, '|', LMB_NONE},
 	{"}",  LM_TK_SPECIAL, '}', LMB_NONE}
+// -1 needed in mathed_parse_lines!
 };
 
 

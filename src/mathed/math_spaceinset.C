@@ -9,6 +9,7 @@
 #include "support/LOstream.h"
 
 
+
 MathSpaceInset::MathSpaceInset(int sp)
 	: space_(sp)
 {}

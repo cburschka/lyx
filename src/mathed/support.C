@@ -237,11 +237,6 @@ char const * math_font_name[] = {
 };
 
 
-char const * latex_mathspace[] = {
-	"!", ",", ":", ";", "quad", "qquad"
-};
-
-
 namespace {
 
 /* 
@@ -743,3 +738,6 @@ void math_font_max_dim(MathTextCodes code, MathStyles siz, int & asc, int & des)
 	des = lyxfont::maxDescent(font);
 }
 
+char const * latex_mathspace[] = {
+	"!", ",", ":", ";", "quad", "qquad"
+};
