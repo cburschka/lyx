@@ -1,3 +1,8 @@
+2004-01-15  Ronald Florence  <ron@18james.com>
+
+	* qfont_loader.C, lyx_gui.C, Menubar_pimpl.C: changed Q_WS_MAC
+	conditional defines to Q_WS_MACX.
+
 2003-12-30  Ronald Florence  <ron@18james.com>
 
 	* qfont_loader.C: added support for LyX/Mac to find Fonts
@@ -80,7 +85,7 @@
 
 	* Menubar_pimpl.C (Pimpl): when creating a top-level menu, make
 	sure that it is initialized to some reasonable value, so that the
-	(ugly) Qt/Mac code can do its magic (conditionally on Q_WS_MAC).
+	(ugly) Qt/Mac code can do its magic (conditionally on Q_WS_MACX).
 
 2003-06-01  John Levon  <levon@movementarian.org>
   	 

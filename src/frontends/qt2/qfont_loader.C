@@ -43,7 +43,7 @@ using std::vector;
 using std::pair;
 using std::make_pair;
 
-#ifdef Q_WS_MAC
+#ifdef Q_WS_MACX
 #include <ApplicationServices/ApplicationServices.h>
 #endif
 
@@ -68,7 +68,7 @@ void addFontPath()
 		lyxerr << "Unable to add font path." << endl;
 	}
 #endif
-#ifdef Q_WS_MAC
+#ifdef Q_WS_MACX
 	CFBundleRef  myAppBundle = CFBundleGetMainBundle();
 	CFURLRef  myAppResourcesURL, FontsURL;
 	FSRef  fontDirRef;
@@ -386,7 +386,7 @@ bool qfont_loader::available(LyXFont const & f)
 {
 	if (!lyxrc.use_gui)
 		return false;
-#ifdef Q_WS_MAC
+#ifdef Q_WS_MACX
 	static bool need_bundle_fonts = true;
 	if (need_bundle_fonts) {
 		addFontPath();

@@ -284,7 +284,7 @@ bool lyx_gui::needs_ugly_metrics_hack()
 // like \sum wrong under Qt/Mac. The only solution we have for now is
 // to add this ugly function, so that MathSymbolInset::metrics can do
 // the right thing
-#ifdef Q_WS_MAC
+#ifdef Q_WS_MACX
 	return true;
 #else
 	return false;
