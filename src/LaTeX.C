@@ -161,7 +161,6 @@ int LaTeX::run(TeXErrors & terr, MiniBuffer * minib)
 				deleteFilesOnError();
 				return scanres; // return on error
 			}
-			
 			run_bibtex = scanAux(head);
 			if (run_bibtex)
 				lyxerr[Debug::DEPEND]
@@ -337,7 +336,10 @@ bool LaTeX::runMakeIndex(string const & f)
 	return true;
 }
 
-
+// scanAux may return a wrong result if there are more than two bibliographies,
+// and after LaTeX-ing the file, the user changes the order of the bibliography 
+// and run LaTeX again. However, in this case, bibtopic prints a warning message which
+// is caught by scanLogFile.
 bool LaTeX::scanAux(DepTable & dep)
 {
 	// if any of the bib file has changed we don't have to
@@ -346,11 +348,48 @@ bool LaTeX::scanAux(DepTable & dep)
 	    || dep.extchanged(".bst")) return true;
 	
 	string aux = OnlyFilename(ChangeExtension(file, ".aux"));
-	return scanAux(aux, dep, false);
+	return !scanAuxFiles(aux, dep, false).empty();
+}
+
+vector<string> const
+LaTeX::scanAuxFiles(string const & file, DepTable & dep, bool insert)
+{
+	vector<string> result;
+	if (scanAuxFile(file, dep, insert)) {
+		result.push_back(file);
+		if (!insert)
+			return result;
+	}
+
+	for (int i = 1; i < 1000; ++i) {
+		string file2 = ChangeExtension(file, "") + "." + tostr(i)
+			+ ".aux";
+		FileInfo fi(file2);
+		if (!fi.exist())
+			return result;
+		if (scanAuxFile(file2, dep, insert)) {
+			result.push_back(file2);
+			if (!insert)
+				return result;
+		}
+	}
+	return result;
 }
 
 
-bool LaTeX::scanAux(string const & file, DepTable & dep, bool insert)
+// If insert = true, then scanAuxFile returns true iff the aux file contains
+// a bibtex database (i.e. a \bibdata command), or it inputs another auxfile which
+// contains a bibtex database.
+// Also the dep is updated for all bibtex databases and bibtex styles in the aux
+// file.
+// Ideally, scanAuxFile should return true iff one of the bibtex database/styles has
+// changes from previous run, or a new bibtex database/styles was added to the aux file.
+// However, it is probably not worth the effort.
+//
+// If insert = false, then scanAuxFile returns true iff the aux file contains a
+// bibtex database or a bibtex style that do not appear in dep.
+// 
+bool LaTeX::scanAuxFile(string const & file, DepTable & dep, bool insert)
 {
 	lyxerr[Debug::LATEX] << "Scanning aux file: " << file << endl;
 
@@ -359,10 +398,11 @@ bool LaTeX::scanAux(string const & file, DepTable & dep, bool insert)
 	LRegex reg1("\\\\bibdata\\{([^}]+)\\}");
 	LRegex reg2("\\\\bibstyle\\{([^}]+)\\}");
 	LRegex reg3("\\\\@input\\{([^}]+)\\}");
-	bool using_bibtex = false;
+	bool result = false;
 	while (getline(ifs, token)) {
 		if (reg1.exact_match(token)) {
-			using_bibtex = true;
+			if (insert)
+				result = true;
 			LRegex::SubMatches const & sub = reg1.exec(token);
 			string data = LSubstring(token, sub[1].first,
 						 sub[1].second);
@@ -386,7 +426,6 @@ bool LaTeX::scanAux(string const & file, DepTable & dep, bool insert)
 				}
 			}
 		} else if (reg2.exact_match(token)) {
-			using_bibtex = true;
 			LRegex::SubMatches const & sub = reg2.exec(token);
 			string style = LSubstring(token, sub[1].first,
 						  sub[1].second);
@@ -409,17 +448,12 @@ bool LaTeX::scanAux(string const & file, DepTable & dep, bool insert)
 			LRegex::SubMatches const & sub = reg3.exec(token);
 			string file2 = LSubstring(token, sub[1].first,
 						  sub[1].second);
-			if (scanAux(file2, dep, insert)) {
-				using_bibtex = true;
-				if (!insert)
-					return true;
-			}
+			result |=  scanAuxFile(file2, dep, insert);
+			if (result && !insert)
+				return true;
 		}
 	}
-	if (insert)
-		return using_bibtex;
-	else
-		return false;
+	return result;
 }
 
 
@@ -431,16 +465,17 @@ bool LaTeX::runBibTeX(DepTable & dep)
 	dep.remove_files_with_extension(".bib");
 	dep.remove_files_with_extension(".bst");
 	string aux = OnlyFilename(ChangeExtension(file, ".aux"));
-	if (scanAux(aux, dep, true)) {
-		// run bibtex and
+	vector<string> const aux_files = scanAuxFiles(aux, dep, true);
+	// Run bibtex on each of the aux files in 
+	for (vector<string>::const_iterator it = aux_files.begin();
+	     it != aux_files.end(); ++it) {
 		string tmp = "bibtex ";
-		tmp += OnlyFilename(ChangeExtension(file, string()));
+		tmp += OnlyFilename(ChangeExtension(*it, string()));
 		Systemcalls one;
 		one.startscript(Systemcalls::System, tmp);
-		return true;
 	}
-	// bibtex was not run.
-	return false;
+	// Return whether bibtex was run
+	return !aux_files.empty();
 }
 
 
@@ -484,6 +519,8 @@ int LaTeX::scanLogFile(TeXErrors & terr)
 				    && contains(token, "undefined")) {
 					retval |= UNDEF_CIT;
 				}
+			} else if (contains(token, "run BibTeX")) {
+				retval |= UNDEF_CIT;
 			} else if (contains(token, "Rerun LaTeX.")) {
 				// at least longtable.sty might use this.
 				retval |= RERUN;

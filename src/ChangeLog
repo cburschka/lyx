@@ -1,5 +1,9 @@
 2001-01-23  Dekel Tsur  <dekelts@tau.ac.il>
 
+	* LaTeX.C (scanAuxFiles): New method. Provides support for
+	multiple bibliographies (when using the bibtopic/bibunits pacakges).
+	(scanLogFile) Scan for "run BibTeX" messages.
+
 	* buffer.C (makeLaTeXFile): Do not load the ae package when using
 	OT1 font encoding. Also, load the aecompl package if the ae
 	package is loaded.

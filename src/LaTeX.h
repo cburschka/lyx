@@ -140,7 +140,10 @@ protected:
 	///
 	bool scanAux(DepTable &);
 	///
-	bool scanAux(string const &, DepTable &, bool);
+	vector<string> const
+	scanAuxFiles(string const &, DepTable &, bool);
+	///
+	bool scanAuxFile(string const &, DepTable &, bool);
 	
 	///
 	bool runBibTeX(DepTable &);
