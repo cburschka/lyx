@@ -76,7 +76,32 @@ AC_CHECK_FUNCS(flimage_dup,[
     AC_CHECK_FUNCS(flimage_enable_ps)])])
 LIBS=$save_LIBS
 test $lyx_use_xforms_image_loader = yes && lyx_flags="$lyx_flags xforms-image-loader" && XFORMS_IMAGE_LIB=-lflimage
+ 
+# try without flimage 
+if test $lyx_use_xforms_image_loader = no ; then
+	LIBS="$XFORMS_LIB -ljpeg $LIBS"
+	lyx_use_xforms_image_loader=no
+	AC_CHECK_FUNCS(flimage_dup,[
+	  AC_CHECK_FUNCS(flimage_to_pixmap,[
+	    lyx_use_xforms_image_loader=yes
+	    AC_CHECK_FUNCS(flimage_enable_ps)])])
+	LIBS=$save_LIBS
+
+	# try without -ljpeg
+	if test $lyx_use_xforms_image_loader = no ; then
+		LIBS="$XFORMS_LIB $LIBS"
+		lyx_use_xforms_image_loader=no
+		AC_CHECK_FUNCS(flimage_dup,[
+		  AC_CHECK_FUNCS(flimage_to_pixmap,[
+		    lyx_use_xforms_image_loader=yes
+		    AC_CHECK_FUNCS(flimage_enable_ps)])])
+		LIBS=$save_LIBS
+	fi
+ 
+fi
+ 
 AC_SUBST(XFORMS_IMAGE_LIB)
+ 
 ### If the gui cannot load images itself, then we default to the
 ### very simple one in graphics/GraphicsImageXPM.[Ch]
 AM_CONDITIONAL(USE_BASIC_IMAGE_LOADER,
