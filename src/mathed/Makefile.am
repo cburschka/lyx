@@ -4,7 +4,7 @@ MAINTAINERCLEANFILES = $(srcdir)/Makefile.in
 noinst_LTLIBRARIES = libmathed.la
 LIBS=
 ETAGS_ARGS = --lang=c++
-INCLUDES = -I${top_srcdir}/images -I${srcdir}/../ 
+INCLUDES = -I${top_srcdir}/images -I${srcdir}/../ $(SIGC_CFLAGS)
 
 libmathed_la_SOURCES = array.h \
 	formula.C \

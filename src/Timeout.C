@@ -12,19 +12,19 @@ extern "C" {
 	void C_intern_timeout_cb(int, void * data) 
 	{
 		Timeout * to = static_cast<Timeout*>(data);
-		to->callback();
+		to->emit();
 	}
 }
 
 
 Timeout::Timeout()
-	: type(ONETIME), timeout(0), timeout_id(-1),
-	 callback_(0), data_(0) {}
+	: type(ONETIME), timeout_ms(0), timeout_id(-1)
+{}
 
 
 Timeout::Timeout(int msec, Type t)
-	: type(t), timeout(msec), timeout_id(-1),
-	  callback_(0), data_(0) {}
+	: type(t), timeout_ms(msec), timeout_id(-1)
+{}
 
 
 Timeout::~Timeout() 
@@ -44,7 +44,7 @@ void Timeout::start()
 {
 	if (timeout_id != -1)
 		lyxerr << "Timeout::start: already running!" << endl;
-	timeout_id = fl_add_timeout(timeout,
+	timeout_id = fl_add_timeout(timeout_ms,
 				    C_intern_timeout_cb, this);
 }
 	
@@ -58,18 +58,10 @@ void Timeout::stop()
 }
 
 
-void Timeout::callback(TimeoutCallback cb, void * data)
-{
-	callback_ = cb;
-	data_ = data;
-}
-
-
-void Timeout::callback()
+void Timeout::emit()
 {
 	timeout_id = -1;
-	if (callback_)
-		callback_(data_);
+	timeout.emit();
 	if (type == CONTINOUS)
 		start();
 }
@@ -83,5 +75,5 @@ void Timeout::setType(Type t)
 
 void Timeout::setTimeout(int msec)
 {
-	timeout = msec;
+	timeout_ms = msec;
 }

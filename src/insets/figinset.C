@@ -405,7 +405,7 @@ void InitFigures()
 	if (lyxrc.use_gui) {
 		fl_add_canvas_handler(figinset_canvas, ClientMessage,
 				      GhostscriptMsg,
-				      current_view->owner()->getMainForm());
+				      current_view->owner()->getForm());
 
 		local_gc_copy = createGC();
 

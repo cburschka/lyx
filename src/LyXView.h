@@ -29,19 +29,13 @@ class Menus;
 class BufferView;
 class Dialogs;
 
-///
-struct  FD_form_main {
-	///
-	FL_FORM * form_main;
-};
-
 
 /**
   This class is the form containing the view of the buffer. The actual buffer
   view is supposed (at least IMHO) to be another class, that shows its output
   in one or more LyXView's.
  */
-class LyXView {
+class LyXView : public SigC::Object {
 public:
 	/// constructor
 	LyXView(int w, int h);
@@ -66,9 +60,6 @@ public:
 
 	///
 	BufferView * view() const;
-
-	/// returns a pointer to the main form.
-	FD_form_main * getMainForm() const;
 
 	/// returns a pointer to the form.
 	FL_FORM * getForm() const;
@@ -129,15 +120,11 @@ public:
 	static int atCloseMainFormCB(FL_FORM *, void *);
 	/// A callback
 	void AutoSave();
-	/// A callback
-	static void UpdateTimerCB(void *);
 private:
 	///
 	Timeout autosave_timeout;
 	/// makes the main form.
 	void create_form_form_main(int width, int height);
-	/// A pointer to the form.	
-	FD_form_main * form_main_;
 	/// A pointer to the form.	
 	FL_FORM * form_;
 	/** The last textclass layout list in the layout choice selector

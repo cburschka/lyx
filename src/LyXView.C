@@ -56,7 +56,6 @@ using SigC::slot;
 #endif
 
 LyXView::LyXView(int width, int height)
-//	: update_timeout(300)
 {
 	create_form_form_main(width, height);
 	fl_set_form_atclose(form_, C_LyXView_atCloseMainFormCB, 0);
@@ -106,12 +105,6 @@ BufferView * LyXView::view() const
 }
 
 
-FD_form_main * LyXView::getMainForm() const
-{
-	return form_main_;
-}
-
-
 FL_FORM * LyXView::getForm() const
 {
 	return form_;
@@ -156,14 +149,6 @@ void LyXView::AutoSave()
 		::AutoSave(view());
 }
 
-
-// Wrapper for the above
-static
-void LyXView_AutosaveTimerCB(void * ob)
-{
-	LyXView * view = static_cast<LyXView*>(ob);
-	view->AutoSave();
-}
 
 /// Reset autosave timer
 void LyXView::resetAutosaveTimer()
@@ -211,14 +196,9 @@ void LyXView::create_form_form_main(int width, int height)
 	 * are presented (and rightly so) in GUI popups. Asger. 
 	 */
 {
-	FD_form_main * fdui = static_cast<FD_form_main *>
-		(fl_calloc(1, sizeof(FD_form_main)));
-
-	form_main_ = fdui;
-
 	// the main form
-	form_ = fdui->form_main = fl_bgn_form(FL_NO_BOX, width, height);
-	fdui->form_main->u_vdata = this;
+	form_ = fl_bgn_form(FL_NO_BOX, width, height);
+	form_->u_vdata = this;
 	FL_OBJECT * obj = fl_add_box(FL_FLAT_BOX, 0, 0, width, height, "");
 	fl_set_object_color(obj, FL_MCOL, FL_MCOL);
 
@@ -263,8 +243,8 @@ void LyXView::create_form_form_main(int width, int height)
 	// TIMERS
 	//
 
-	autosave_timeout.callback(LyXView_AutosaveTimerCB, this);
-
+	autosave_timeout.timeout.connect(slot(this, &LyXView::AutoSave));
+	
 	//
 	// Misc
 	//
@@ -280,16 +260,17 @@ void LyXView::create_form_form_main(int width, int height)
 					  0,
 					  0,
 					  0); // this leaks
-        fl_set_form_icon(fdui->form_main, lyx_p, lyx_mask);
+        fl_set_form_icon(form_, lyx_p, lyx_mask);
 
 	// set min size
-	fl_set_form_minsize(fdui->form_main, 50, 50);
+	fl_set_form_minsize(form_, 50, 50);
 	
 	fl_end_form();
 }
 
 
-extern "C" int C_LyXView_KeyPressMask_raw_callback(FL_FORM * fl, void * xev);
+extern "C"
+int C_LyXView_KeyPressMask_raw_callback(FL_FORM * fl, void * xev);
 
 void LyXView::init()
 {
@@ -299,13 +280,10 @@ void LyXView::init()
 	UpdateDocumentClassChoice();
 	
 	// Start autosave timer
-	if (lyxrc.autosave)
-#if 0
-		fl_set_timer(form_main_->timer_autosave, lyxrc.autosave);
-#else
-	autosave_timeout.setTimeout(lyxrc.autosave * 1000);
-	autosave_timeout.start();
-#endif
+	if (lyxrc.autosave) {
+		autosave_timeout.setTimeout(lyxrc.autosave * 1000);
+		autosave_timeout.start();
+	}
 	
 	// Install the raw callback for keyboard events 
 	fl_register_raw_callback(form_,
@@ -338,7 +316,8 @@ void LyXView::updateLayoutChoice()
 	if (toolbar->combox->empty() ||
 	    (last_textclass != int(buffer()->params.textclass))) {
 		toolbar->combox->clear();
-		LyXTextClass const & tc = textclasslist.TextClass(buffer()->params.textclass);
+		LyXTextClass const & tc =
+			textclasslist.TextClass(buffer()->params.textclass);
 		for (LyXTextClass::const_iterator cit = tc.begin();
 		     cit != tc.end(); ++cit) {
 			if ((*cit).obsoleted_by().empty())
@@ -352,7 +331,8 @@ void LyXView::updateLayoutChoice()
 	// we need to do this.
 	toolbar->combox->Redraw();
 
-	LyXTextClass::size_type layout = bufferview->text->cursor.par()->GetLayout();
+	LyXTextClass::size_type layout =
+		bufferview->text->cursor.par()->GetLayout();
 
 	if (layout != current_layout){
 		toolbar->combox->select(layout + 1);
@@ -431,7 +411,8 @@ int LyXView::KeyPressMask_raw_callback(FL_FORM * fl, void * xev)
 
 
 // wrapper for the above
-extern "C" int C_LyXView_KeyPressMask_raw_callback(FL_FORM * fl, void * xev)
+extern "C"
+int C_LyXView_KeyPressMask_raw_callback(FL_FORM * fl, void * xev)
 {
 	return LyXView::KeyPressMask_raw_callback(fl, xev);
 }

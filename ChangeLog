@@ -1,3 +1,23 @@
+2000-06-21  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/Timeout.[Ch]: Change to use signals instead of callbacks. 
+	* src/LyXView.h (struct FD_form_main): remove, LyXView inherits
+	from SigC::Object
+	(form_main_): remove
+	
+	* src/LyXView.C (LyXView_AutosaveTimerCB): remove 
+	(create_form_form_main): remove FD_form_main stuff, connect to
+	autosave_timeout signal
+
+	* src/LyXView.[Ch] (getMainForm): remove 
+	(UpdateTimerCB): remove
+	* src/BufferView_pimpl.h: inherit from SigC::Object
+
+	* src/BufferView_pimpl.C (Pimpl): connect to cursor_timeout with
+	signal instead of callback
+
+	* src/BufferView.[Ch] (cursorToggleCB): remove 
+
 2000-06-20  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/BufferView_pimpl.C: changes because of the one below

@@ -4,7 +4,7 @@ MAINTAINERCLEANFILES = $(srcdir)/Makefile.in
 noinst_LTLIBRARIES = libinsets.la
 LIBS =
 ETAGS_ARGS = --lang=c++
-INCLUDES = -I${srcdir}/../ 
+INCLUDES = -I${srcdir}/../ $(SIGC_CFLAGS)
 
 libinsets_la_SOURCES = \
 	BoundingBox.h \

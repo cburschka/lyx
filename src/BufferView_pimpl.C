@@ -28,6 +28,10 @@
 #include "support/LAssert.h"
 #include "frontends/Dialogs.h"
 
+#ifdef SIGC_CXX_NAMESPACES
+using SigC::slot;
+#endif
+
 using std::pair;
 using std::endl;
 using std::vector;
@@ -74,7 +78,8 @@ BufferView::Pimpl::Pimpl(BufferView * b, LyXView * o,
 	workarea_ = new WorkArea(bv_, xpos, ypos, width, height);
 	screen_ = 0;
 
-	cursor_timeout.callback(BufferView::cursorToggleCB, bv_);
+	cursor_timeout.timeout.connect(slot(this,
+					    &BufferView::Pimpl::cursorToggle));
 	current_scrollbar_value = 0;
 	cursor_timeout.start();
 	workarea_->setFocus();
@@ -320,7 +325,7 @@ void BufferView::Pimpl::updateScreen()
 {
 	// Regenerate the screen.
 	delete screen_;
-	screen_ = new LyXScreen(*workarea_); //, bv_->text);
+	screen_ = new LyXScreen(*workarea_);
 }
 
 
@@ -1270,6 +1275,7 @@ void BufferView::Pimpl::restorePosition()
 	bv_->text->SetCursorFromCoordinates(bv_, x, y);
 	update(BufferView::SELECT|BufferView::FITCUR);
 } 
+
 
 bool BufferView::Pimpl::NoSavedPositions()
 {

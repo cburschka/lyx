@@ -206,9 +206,6 @@ public:
 	void scrollCB(double);
 
 	///
-	static void cursorToggleCB(void * ob);
-
-	///
 	void setState();
 
 	///

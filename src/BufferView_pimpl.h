@@ -16,7 +16,7 @@ class LyXView;
 class WorkArea;
 class LyXScreen;
 
-struct BufferView::Pimpl {
+struct BufferView::Pimpl : public SigC::Object {
 	Pimpl(BufferView * i, LyXView * o,
 	      int xpos, int ypos, int width, int height);
 	///

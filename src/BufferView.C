@@ -185,14 +185,6 @@ void BufferView::workAreaExpose()
 }
 
 
-//  // Callback for cursor timer
-void BufferView::cursorToggleCB(void * ob)
-{
-	BufferView * view = static_cast<BufferView*>(ob);
-	view->pimpl_->cursorToggle();
-}
-
-
 void BufferView::cursorPrevious()
 {
 	pimpl_->cursorPrevious();
