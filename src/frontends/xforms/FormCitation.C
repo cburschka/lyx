@@ -208,7 +208,7 @@ void FormCitation::build()
 	str = _("Here you may select how the citation label should look inside the text (Natbib).");
 	tooltips().init(dialog_->choice_style, str);
 
-	str = _("Activate if you want to print all authors in a reference with more than three authors, and not \"<First Author> et.al.\" (Natbib).");
+	str = _("Activate if you want to print all authors in a reference with more than three authors, and not \"<First Author> et al.\" (Natbib).");
 	tooltips().init(dialog_->check_full_author_list, str);
 
 	str = _("Activate if you want to print the first character of the author name as uppercase (\"Van Gogh\", not \"van Gogh\"). Useful at the beginning of sentences (Natbib).");

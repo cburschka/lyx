@@ -65,7 +65,7 @@ void FormBibtex::build()
 	str = _("Browse your directory for BibTeX stylefiles.");
 	tooltips().init(dialog_->button_style_browse, str);
 
-	str = _("The BibTeX style to use (only one allowed). Insert it without the default extension \".bst\" and without path. Most of the bibstyles are stored in $TEXMF/bibtex/bst. $TEXMF is the root dir of the local TeX tree. In \"Help->TeX Info\" you can list all installed styles.");
+	str = _("The BibTeX style to use (only one allowed). Insert it without the default extension \".bst\" and without path. Most of the bibstyles are stored in $TEXMF/bibtex/bst. $TEXMF is the root dir of the local TeX tree. In \"View->TeX Information\" you can list all installed styles.");
 	tooltips().init(dialog_->input_style, str);
 
 	str = _("Activate this option if you want the bibliography to appear in the Table of Contents (which doesn't happen by default).");
