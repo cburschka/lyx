@@ -57,6 +57,9 @@ What's new
 - allow to use some paper sizes (A3, B3, B4, and custom) without
   custom margins [Qt problem only]. 
 
+- fix bug where changing the height unit in the graphics dialog did not
+  activate the ok/apply buttons [bug #1469, Qt only].
+
 - fix installation problem when the program makepsres does not exist
 
 - remove non-ascii characters from translatable strings. This
@@ -76,7 +79,4 @@ What's new
 - compilation fixes for MacOSX
 
 - fix problems with non-GNU make program
-
-- fix bug where changing the height unit in the graphics dialog did not
-  activate the ok/apply buttons [Qt only].
 
