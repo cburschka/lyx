@@ -17,8 +17,8 @@
 namespace Alert {
 
 /// show an alert message
-void alert(string const & s1, string const & s2 = string(),
-	   string const & s3 = string());
+void alert(string const & title, string const & s1 = string(),
+	   string const & s2 = string());
 
 /// show an alert message and strerror(errno)
 void err_alert(string const & s1, string const & s2 = string());
