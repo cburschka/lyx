@@ -1,6 +1,12 @@
+2001-02-08  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* math_macro.C (draw): add .c_str() to .str() (useful when
+	compiling with lyxstring, but STL sstream).
+	(Metrics): ditto.
+
 2001-02-08  Andre Poenitz  <poenitz@HTWM.De>
 
-	* several files: get rid of reinterpret_cast
+	* several files: get rid of reinterpret_cast.
 
 2001-02-04  Allan Rae  <rae@lyx.org>
 

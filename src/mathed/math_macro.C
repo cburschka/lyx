@@ -222,7 +222,7 @@ void MathMacroArgument::draw(Painter & pain, int x, int baseline)
 	else {
 		std::ostringstream ost;
 		ost << '#' << number;
-		drawStr(pain, LM_TC_TEX, size, x, baseline, ost.str());
+		drawStr(pain, LM_TC_TEX, size, x, baseline, ost.str().c_str());
 	}
 }
 
@@ -235,8 +235,9 @@ void MathMacroArgument::Metrics()
 	else {
 		std::ostringstream ost;
 		ost << '#' << number;
-		width = mathed_string_width(LM_TC_TEX, size, ost.str());
-		mathed_string_height(LM_TC_TEX, size, ost.str(), ascent, descent);
+		width = mathed_string_width(LM_TC_TEX, size, ost.str().c_str());
+		mathed_string_height(LM_TC_TEX, size, ost.str().c_str(),
+				     ascent, descent);
 	}
 }
 
