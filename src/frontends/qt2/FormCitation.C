@@ -88,8 +88,6 @@ void FormCitation::build()
 	bc().addReadOnly(dialog_->citationStyleCO);
 	bc().addReadOnly(dialog_->textBeforeED);
 	bc().addReadOnly(dialog_->textAfterED);
-
-	bc().refresh();
 }	
 
 
@@ -107,11 +105,6 @@ void FormCitation::update()
 	dialog_->infoML->clear();
 	setBibButtons(OFF);
 	setCiteButtons(OFF);
-
-	int noKeys = int(max(bibkeys.size(), citekeys.size()));
-
-	// Place bounds, so that 4 <= noKeys <= 10
-	noKeys = max(4, min(10, noKeys));
 
 	dialog_->textAfterED->setText( controller().params().getOptions().c_str());
 }

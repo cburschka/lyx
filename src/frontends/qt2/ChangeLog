@@ -1,3 +1,13 @@
+2001-06-17  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* FormCitation.C (build): removed bc().refresh() call as the controller
+	should take care of this.
+	(update): removed noKeys stuff as you don't use it.
+
+	* FormCitationDialogImpl.C (slotBibSelected): Can't select bibkeys[-1]!
+	We were being bit by the xforms browser returns the browser line number
+	in Fortran style, but Qt uses C-style.
+
 2001-06-16  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* FormCitationDialogImpl.C: added using directive.

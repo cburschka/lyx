@@ -84,7 +84,6 @@ void FormCitation::build()
 	bc().addReadOnly(dialog_->choice_style);
 	bc().addReadOnly(dialog_->input_before);
 	bc().addReadOnly(dialog_->input_after);
-
 }
 
 

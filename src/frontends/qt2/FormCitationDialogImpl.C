@@ -1,5 +1,5 @@
 /**
- * $Id: FormCitationDialogImpl.C,v 1.8 2001/06/16 14:48:12 leeming Exp $
+ * $Id: FormCitationDialogImpl.C,v 1.9 2001/06/17 13:22:55 leeming Exp $
  */
 
 #include <config.h>
@@ -73,7 +73,7 @@ void FormCitationDialogImpl::slotBibSelected( int sel )
     infoML->clear();
 
     infoML->setText( biblio::getInfo( theMap,
-				      form_->bibkeys[sel-1] ).c_str() );
+				      form_->bibkeys[sel] ).c_str() );
 
     // Highlight the selected browser_bib key in browser_cite if
     // present
