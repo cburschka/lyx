@@ -93,7 +93,7 @@ void Menubar::Pimpl::makeMenu(QMenuData * parent, MenuItem const * item, Menu co
 		if (m->kind() == MenuItem::Separator) {
 			pm->insertSeparator();
 		} else if (m->kind() == MenuItem::Submenu) {
-			makeMenu(pm, m, m->submenu());
+			makeMenu(pm, m, *m->submenu());
 		} else {
 			pm->insertItem(getLabel(*m).c_str(), m->action());
 			MenuItemInfo const info(pm, m->action(), m);
