@@ -391,7 +391,7 @@ void LyXText::removeRow(Row * row) const
 		row->next()->previous(row->previous());
 	if (!row->previous()) {
 		firstrow = row->next();
-		lyx::Assert(firstrow);
+//		lyx::Assert(firstrow);
 	} else  {
 		row->previous()->next(row->next());
 	}

@@ -1,5 +1,7 @@
 2001-11-29  Juergen Vigna  <jug@sad.it>
 
+	* text2.C (removeRow): remove the assert as it can!
+
 	* lyxtext.h: added helper function firstRow returning firstrow and
 	made firstrow private again.
 
