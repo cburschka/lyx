@@ -287,7 +287,7 @@ void InsetFormula::metrics(MetricsInfo & m, Dimension & dim) const
 		MetricsInfo mi = m;
 		mi.base.style = LM_ST_TEXT;
 		mi.base.font.setColor(LColor::math);
-		par()->metrics(mi, dim_);
+		par()->metrics(mi, dim);
 		dim.asc += 1;
 		dim.des += 1;
 	}
