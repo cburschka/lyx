@@ -97,7 +97,7 @@ public:
 	///
 	void scroll(BufferView & bv, int offset) const;
 	///
-	int numParagraphs() const;
+	size_t nargs() const;
 	///
 	LyXText * getText(int) const;
 	///
@@ -123,7 +123,7 @@ public:
 
 protected:
 	///
-	DispatchResult priv_dispatch(LCursor & cur, FuncRequest const & cmd);
+	void priv_dispatch(LCursor & cur, FuncRequest const & cmd);
 	///
 	void dimension_collapsed(Dimension &) const;
 	///
@@ -141,7 +141,7 @@ protected:
 
 private:
 	///
-	DispatchResult lfunMouseRelease(LCursor & cur, FuncRequest const & cmd);
+	void lfunMouseRelease(LCursor & cur, FuncRequest const & cmd);
 
 public:
 	///

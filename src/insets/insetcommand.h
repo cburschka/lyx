@@ -74,9 +74,7 @@ public:
 
 protected:
 	///
-	virtual
-	DispatchResult
-	priv_dispatch(LCursor & cur, FuncRequest const & cmd);
+	void priv_dispatch(LCursor & cur, FuncRequest const & cmd);
 	///
 	std::string const getCommand() const { return p_.getCommand(); }
 	///

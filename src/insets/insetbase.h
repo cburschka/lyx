@@ -68,7 +68,7 @@ public:
 	virtual UpdatableInset * asUpdatableInset() { return 0; }
 
 	// the real dispatcher
-	DispatchResult dispatch(LCursor & cur, FuncRequest const & cmd);
+	void dispatch(LCursor & cur, FuncRequest const & cmd);
 
 	/// cursor enters
 	virtual void edit(LCursor & cur, bool left);
@@ -340,10 +340,6 @@ public:
 
 	/// if this insets owns text cells (e.g. InsetText) return cell num
 	virtual LyXText * getText(int /*num*/) const { return 0; }
-	///
-	virtual int numParagraphs() const { return 0; }
-	/// returns cell covering position (x,y), -1 if none exists
-	virtual int getCell(int x, int y) const;
 
 	/** Adds a LaTeX snippet to the Preview Loader for transformation
 	 *  into a bitmap image. Does not start the laoding process.
@@ -354,8 +350,7 @@ public:
 	virtual void addPreview(lyx::graphics::PreviewLoader &) const {}
 protected:
 	// the real dispatcher
-	virtual
-	DispatchResult priv_dispatch(LCursor & cur, FuncRequest const & cmd);
+	virtual void priv_dispatch(LCursor & cur, FuncRequest const & cmd);
 public:
 	/// returns LyX code associated with the inset. Used for TOC, ...)
 	virtual Code lyxCode() const { return NO_CODE; }

@@ -78,9 +78,7 @@ public:
 	///
 	InsetFloatParams const & params() const { return params_; }
 protected:
-	virtual
-	DispatchResult
-	priv_dispatch(LCursor & cur, FuncRequest const & cmd);
+	virtual void priv_dispatch(LCursor & cur, FuncRequest const & cmd);
 private:
 	///
 	InsetFloatParams params_;

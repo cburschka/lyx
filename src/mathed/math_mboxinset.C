@@ -64,9 +64,9 @@ void MathMBoxInset::write(WriteStream & os) const
 }
 
 
-DispatchResult MathMBoxInset::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
+void MathMBoxInset::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 {
-	return text_.dispatch(cur, cmd);
+	text_.dispatch(cur, cmd);
 }
 
 

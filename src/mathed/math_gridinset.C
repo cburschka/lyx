@@ -16,7 +16,6 @@
 #include "math_streamstr.h"
 #include "BufferView.h"
 #include "cursor.h"
-#include "dispatchresult.h"
 #include "debug.h"
 #include "funcrequest.h"
 #include "LColor.h"
@@ -1043,8 +1042,7 @@ void MathGridInset::splitCell(LCursor & cur)
 }
 
 
-DispatchResult
-MathGridInset::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
+void MathGridInset::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 {
 	//lyxerr << "*** MathGridInset: request: " << cmd << endl;
 	switch (cmd.action) {
@@ -1054,11 +1052,12 @@ MathGridInset::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 			//	GridInsetMailer(*this).showDialog();
 			//	return DispatchResult(true, true);
 			//}
-			return MathNestInset::priv_dispatch(cur, cmd);
+			MathNestInset::priv_dispatch(cur, cmd);
+			return;
 
 		case LFUN_INSET_DIALOG_UPDATE:
 			GridInsetMailer(*this).updateDialog(&cur.bv());
-			return DispatchResult(false);
+			return;
 
 		// insert file functions
 		case LFUN_DELETE_LINE_FORWARD:
@@ -1074,12 +1073,12 @@ MathGridInset::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 				cur.idx() = cur.lastidx();
 			if (cur.pos() > cur.lastpos())
 				cur.pos() = cur.lastpos();
-			return DispatchResult(true, FINISHED);
+			return;
 
 		case LFUN_CELL_SPLIT:
 			////recordUndo(cur, Undo::ATOMIC);
 			splitCell(cur);
-			return DispatchResult(true, FINISHED);
+			return;
 
 		case LFUN_BREAKLINE: {
 			////recordUndo(cur, Undo::INSERT);
@@ -1098,7 +1097,8 @@ MathGridInset::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 			cur.idx() = cur.lastpos();
 
 			//mathcursor->normalize();
-			return DispatchResult(true, FINISHED);
+			cur.dispatched(FINISHED);
+			return;
 		}
 
 		case LFUN_TABULAR_FEATURE: {
@@ -1152,10 +1152,12 @@ MathGridInset::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 				copyCol(col(cur.idx()));
 			else if (s == "swap-column")
 				swapCol(col(cur.idx()));
-			else
-				return DispatchResult(false);
+			else {
+				cur.notdispatched();
+				return;
+			}
 			lyxerr << "returning DispatchResult(true, FINISHED)" << endl;
-			return DispatchResult(true, FINISHED);
+			return;
 		}
 
 		case LFUN_PASTE: {
@@ -1168,10 +1170,10 @@ MathGridInset::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 				cur.pos() += grid.cell(0).size();
 			} else {
 				// multiple cells
-				col_type const numcols = min(grid.ncols(), ncols() -
-col(cur.idx()));
-				row_type const numrows = min(grid.nrows(), nrows() -
-cur.row());
+				col_type const numcols =
+					min(grid.ncols(), ncols() - col(cur.idx()));
+				row_type const numrows =
+					min(grid.nrows(), nrows() - cur.row());
 				for (row_type r = 0; r < numrows; ++r) {
 					for (col_type c = 0; c < numcols; ++c) {
 						idx_type i = index(r + cur.row(), c + col(cur.idx()));
@@ -1188,10 +1190,11 @@ cur.row());
 					for (col_type c = 0; c < grid.ncols(); ++c)
 						cell(i).append(grid.cell(grid.index(r, c)));
 			}
-			return DispatchResult(true, FINISHED);
+			return;
 		}
 
 		default:
-			return MathNestInset::priv_dispatch(cur, cmd);
+			MathNestInset::priv_dispatch(cur, cmd);
+			return;
 	}
 }

@@ -81,7 +81,7 @@ public:
 	void edit(LCursor & cur, bool left);
 protected:
 	///
-	DispatchResult priv_dispatch(LCursor & cur, FuncRequest const & cmd);
+	void priv_dispatch(LCursor & cur, FuncRequest const & cmd);
 private:
 	///
 	friend class InsetGraphicsMailer;

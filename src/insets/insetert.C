@@ -208,7 +208,7 @@ int InsetERT::docbook(Buffer const &, ostream & os,
 }
 
 
-DispatchResult InsetERT::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
+void InsetERT::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 {
 	//lyxerr << "\nInsetERT::priv_dispatch (begin): cmd: " << cmd << endl;
 	switch (cmd.action) {
@@ -217,9 +217,10 @@ DispatchResult InsetERT::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 		InsetCollapsable::CollapseStatus st;
 		InsetERTMailer::string2params(cmd.argument, st);
 		setStatus(st);
-		return DispatchResult(true, true);
+		break;
 	}
 
+	// suppress these
 	case LFUN_LAYOUT:
 	case LFUN_BOLD:
 	case LFUN_CODE:
@@ -235,10 +236,11 @@ DispatchResult InsetERT::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 	case LFUN_FONT_SIZE:
 	case LFUN_FONT_STATE:
 	case LFUN_UNDERLINE:
-		return DispatchResult(true);
+		break;
 
 	default:
-		return InsetCollapsable::priv_dispatch(cur, cmd);
+		InsetCollapsable::priv_dispatch(cur, cmd);
+		break;
 	}
 }
 

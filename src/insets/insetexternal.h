@@ -151,9 +151,7 @@ public:
 
 protected:
 	///
-	virtual
-	DispatchResult
-	priv_dispatch(LCursor & cur, FuncRequest const & cmd);
+	void priv_dispatch(LCursor & cur, FuncRequest const & cmd);
 private:
 	/** This method is connected to the graphics loader, so we are
 	 *  informed when the image has been loaded.

@@ -784,96 +784,96 @@ void MathHullInset::doExtern(LCursor & cur, FuncRequest const & func)
 }
 
 
-DispatchResult
-MathHullInset::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
+void MathHullInset::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 {
 	//lyxerr << "*** MathHullInset: request: " << cmd << endl;
 	switch (cmd.action) {
 
-		case LFUN_BREAKLINE:
-			if (type_ == "simple" || type_ == "equation") {
-				mutate("eqnarray");
-				cur.idx() = 1;
-				cur.pos() = 0;
-				return DispatchResult(true, FINISHED);
-			}
-			return MathGridInset::priv_dispatch(cur, cmd);
+	case LFUN_BREAKLINE:
+		if (type_ == "simple" || type_ == "equation") {
+			mutate("eqnarray");
+			cur.idx() = 1;
+			cur.pos() = 0;
+			//cur.dispatched(FINISHED);
+			return;
+		}
+		MathGridInset::priv_dispatch(cur, cmd);
+		return;
 
-		case LFUN_MATH_NUMBER:
-			//lyxerr << "toggling all numbers" << endl;
-			if (display()) {
-				////recordUndo(cur, Undo::INSERT);
-				bool old = numberedType();
-				if (type_ == "multline")
-					numbered(nrows() - 1, !old);
-				else
-					for (row_type row = 0; row < nrows(); ++row)
-						numbered(row, !old);
-				cur.message(old ? _("No number") : _("Number"));
-			}
-			return DispatchResult(true, true);
+	case LFUN_MATH_NUMBER:
+		//lyxerr << "toggling all numbers" << endl;
+		if (display()) {
+			////recordUndo(cur, Undo::INSERT);
+			bool old = numberedType();
+			if (type_ == "multline")
+				numbered(nrows() - 1, !old);
+			else
+				for (row_type row = 0; row < nrows(); ++row)
+					numbered(row, !old);
+			cur.message(old ? _("No number") : _("Number"));
+		}
+		return;
 
-		case LFUN_MATH_NONUMBER:
-			if (display()) {
-				row_type r = (type_ == "multline") ? nrows() - 1 : cur.row();
-				////recordUndo(cur, Undo::INSERT);
-				bool old = numbered(r);
-				cur.message(old ? _("No number") : _("Number"));
-				numbered(r, !old);
-			}
-			return DispatchResult(true, true);
-
-		case LFUN_INSERT_LABEL: {
+	case LFUN_MATH_NONUMBER:
+		if (display()) {
 			row_type r = (type_ == "multline") ? nrows() - 1 : cur.row();
-			string old_label = label(r);
-			string new_label = cmd.argument;
+			////recordUndo(cur, Undo::INSERT);
+			bool old = numbered(r);
+			cur.message(old ? _("No number") : _("Number"));
+			numbered(r, !old);
+		}
+		return;
 
-			if (new_label.empty()) {
-				string const default_label =
-					(lyxrc.label_init_length >= 0) ? "eq:" : "";
-				pair<bool, string> const res = old_label.empty()
-					? Alert::askForText(_("Enter new label to insert:"), default_label)
-					: Alert::askForText(_("Enter label:"), old_label);
-				if (!res.first)
-					return DispatchResult(false);
-				new_label = lyx::support::trim(res.second);
-			}
+	case LFUN_INSERT_LABEL: {
+		row_type r = (type_ == "multline") ? nrows() - 1 : cur.row();
+		string old_label = label(r);
+		string new_label = cmd.argument;
 
-			//if (new_label == old_label)
-			//	break;  // Nothing to do
-
-			if (!new_label.empty())
-				numbered(r, true);
-			label(r, new_label);
-			return DispatchResult(true, true);
+		if (new_label.empty()) {
+			string const default_label =
+				(lyxrc.label_init_length >= 0) ? "eq:" : "";
+			pair<bool, string> const res = old_label.empty()
+				? Alert::askForText(_("Enter new label to insert:"), default_label)
+				: Alert::askForText(_("Enter label:"), old_label);
+			new_label = lyx::support::trim(res.second);
 		}
 
-		case LFUN_MATH_EXTERN:
-			doExtern(cur, cmd);
-			return DispatchResult(true, FINISHED);
+		if (!new_label.empty())
+			numbered(r, true);
+		label(r, new_label);
+		return;
+	}
 
-		case LFUN_MATH_MUTATE: {
-			lyxerr << "Hull: MUTATE: " << cmd.argument << endl;
-			row_type r = cur.row();
-			col_type c = cur.col();
-			mutate(cmd.argument);
-			cur.idx() = r * ncols() + c;
-			if (cur.idx() >= nargs())
-				cur.idx() = nargs() - 1;
-			if (cur.pos() > cur.lastpos())
-				cur.pos() = cur.lastpos();
-			return DispatchResult(true, FINISHED);
-		}
+	case LFUN_MATH_EXTERN:
+		doExtern(cur, cmd);
+		//cur.dispatched(FINISHED);
+		return;
 
-		case LFUN_MATH_DISPLAY: {
-			mutate(type_ == "simple" ? "equation" : "simple");
-			cur.idx() = 0;
+	case LFUN_MATH_MUTATE: {
+		lyxerr << "Hull: MUTATE: " << cmd.argument << endl;
+		row_type r = cur.row();
+		col_type c = cur.col();
+		mutate(cmd.argument);
+		cur.idx() = r * ncols() + c;
+		if (cur.idx() >= nargs())
+			cur.idx() = nargs() - 1;
+		if (cur.pos() > cur.lastpos())
 			cur.pos() = cur.lastpos();
-			return DispatchResult(true, FINISHED);
-		}
+		//cur.dispatched(FINISHED);
+		return;
+	}
 
-		default:
-			return MathGridInset::priv_dispatch(cur, cmd);
+	case LFUN_MATH_DISPLAY: {
+		mutate(type_ == "simple" ? "equation" : "simple");
+		cur.idx() = 0;
+		cur.pos() = cur.lastpos();
+		//cur.dispatched(FINISHED);
+		return;
+	}
+
+	default:
+		MathGridInset::priv_dispatch(cur, cmd);
+		return;
 	}
 }
 

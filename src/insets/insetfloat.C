@@ -155,8 +155,7 @@ InsetFloat::~InsetFloat()
 }
 
 
-DispatchResult
-InsetFloat::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
+void InsetFloat::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 {
 	switch (cmd.action) {
 
@@ -167,16 +166,17 @@ InsetFloat::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 		params_.wide      = params.wide;
 		wide(params_.wide, cur.bv().buffer()->params());
 		cur.bv().update();
-		return DispatchResult(true, true);
+		break;
 	}
 
 	case LFUN_INSET_DIALOG_UPDATE: {
 		InsetFloatMailer(*this).updateDialog(&cur.bv());
-		return DispatchResult(true, true);
+		break;
 	}
 
 	default:
-		return InsetCollapsable::priv_dispatch(cur, cmd);
+		InsetCollapsable::priv_dispatch(cur, cmd);
+		break;
 	}
 }
 

@@ -366,9 +366,9 @@ void LyXText::number(LCursor & cur)
 }
 
 
-bool LyXText::rtl(LCursor & cur) const
+bool LyXText::isRTL(Paragraph const & par) const
 {
-	return cur.paragraph().isRightToLeftPar(bv()->buffer()->params());
+	return par.isRightToLeftPar(bv()->buffer()->params());
 }
 
 
@@ -429,7 +429,7 @@ DispatchResult LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 	case LFUN_WORDRIGHT:
 		if (!cur.mark())
 			cur.clearSelection();
-		if (rtl(cur))
+		if (isRTL(cur.paragraph()))
 			cursorLeftOneWord(cur);
 		else
 			cursorRightOneWord(cur);
@@ -439,7 +439,7 @@ DispatchResult LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 	case LFUN_WORDLEFT:
 		if (!cur.mark())
 			cur.clearSelection();
-		if (rtl(cur))
+		if (isRTL(cur.paragraph()))
 			cursorRightOneWord(cur);
 		else
 			cursorLeftOneWord(cur);
@@ -463,7 +463,7 @@ DispatchResult LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 	case LFUN_RIGHTSEL:
 		if (!cur.selection())
 			cur.resetAnchor();
-		if (rtl(cur))
+		if (isRTL(cur.paragraph()))
 			cursorLeft(cur, true);
 		else
 			cursorRight(cur, true);
@@ -473,7 +473,7 @@ DispatchResult LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 	case LFUN_LEFTSEL:
 		if (!cur.selection())
 			cur.resetAnchor();
-		if (rtl(cur))
+		if (isRTL(cur.paragraph()))
 			cursorRight(cur, true);
 		else
 			cursorLeft(cur, true);
@@ -539,7 +539,7 @@ DispatchResult LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 	case LFUN_WORDRIGHTSEL:
 		if (!cur.selection())
 			cur.resetAnchor();
-		if (rtl(cur))
+		if (isRTL(cur.paragraph()))
 			cursorLeftOneWord(cur);
 		else
 			cursorRightOneWord(cur);
@@ -549,7 +549,7 @@ DispatchResult LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 	case LFUN_WORDLEFTSEL:
 		if (!cur.selection())
 			cur.resetAnchor();
-		if (rtl(cur))
+		if (isRTL(cur.paragraph()))
 			cursorRightOneWord(cur);
 		else
 			cursorLeftOneWord(cur);
@@ -1439,7 +1439,7 @@ DispatchResult LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 	case LFUN_FINISHED_LEFT:
 		lyxerr << "handle LFUN_FINISHED_LEFT" << endl;
 		cur.pop(cur.currentDepth());
-		if (rtl(cur))
+		if (isRTL(cur.paragraph()))
 			cursorLeft(cur, true);
 		cur.bv().cursor() = cur;
 		break;
@@ -1447,7 +1447,7 @@ DispatchResult LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 	case LFUN_FINISHED_RIGHT:
 		lyxerr << "handle LFUN_FINISHED_RIGHT" << endl;
 		cur.pop(cur.currentDepth());
-		if (!rtl(cur))
+		if (!isRTL(cur.paragraph()))
 			cursorRight(cur, true);
 		cur.bv().cursor() = cur;
 		break;

@@ -83,9 +83,7 @@ public:
 	void addPreview(lyx::graphics::PreviewLoader &) const;
 protected:
 	///
-	virtual
-	DispatchResult
-	priv_dispatch(LCursor & cur, FuncRequest const & cmd);
+	virtual void priv_dispatch(LCursor & cur, FuncRequest const & cmd);
 private:
 	/// Slot receiving a signal that the preview is ready to display.
 	void statusChanged() const;

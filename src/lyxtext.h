@@ -124,6 +124,9 @@ public:
 	void draw(PainterInfo & pi, int x, int y) const;
 	/// draw textselection
 	void drawSelection(PainterInfo & pi, int x, int y) const;
+	/// returns distance of this cell to the point given by x and y
+	// assumes valid position and size cache
+	int dist(int x, int y) const;
 
 	/// try to handle that request
 	DispatchResult dispatch(LCursor & cur, FuncRequest const & cmd);
@@ -342,6 +345,8 @@ public:
 	double spacing(Paragraph const & par) const;
 	/// make a suggestion for a label
 	std::string getPossibleLabel(LCursor & cur) const;
+	/// is this paragraph right-to-left?
+	bool isRTL(Paragraph const & par) const;
 
 	///
 	DispatchResult moveRight(LCursor & cur);
@@ -460,8 +465,6 @@ private:
 	void charInserted();
 	/// set 'number' font property
 	void number(LCursor & cur);
-	/// is the cursor paragraph right-to-left?
-	bool rtl(LCursor & cur) const;
 };
 
 /// return the default height of a row in pixels, considering font zoom

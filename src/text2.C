@@ -959,7 +959,7 @@ void LyXText::copySelection(LCursor & cur)
 	       && getPar(cur.selBegin())->isLineSeparator(cur.selBegin().pos())
 	       && (cur.selBegin().par() != cur.selEnd().par()
 		   || cur.selBegin().pos() < cur.selEnd().pos()))
-		cur.selBegin().pos(cur.selBegin().pos() + 1);
+		++cur.selBegin().pos();
 
 	CutAndPaste::copySelection(getPar(cur.selBegin().par()),
 				   getPar(cur.selEnd().par()),
@@ -1098,9 +1098,9 @@ void LyXText::setCursor(CursorSlice & cur, par_type par,
 {
 	BOOST_ASSERT(par != int(paragraphs().size()));
 
-	cur.par(par);
-	cur.pos(pos);
-	cur.boundary(boundary);
+	cur.par() = par;
+	cur.pos() = pos;
+	cur.boundary() = boundary;
 
 	// no rows, no fun...
 	if (paragraphs().begin()->rows.empty())
@@ -1114,30 +1114,28 @@ void LyXText::setCursor(CursorSlice & cur, par_type par,
 	// None of these should happen, but we're scaredy-cats
 	if (pos < 0) {
 		lyxerr << "dont like -1" << endl;
-		pos = 0;
-		cur.pos(0);
 		BOOST_ASSERT(false);
-	} else if (pos > para.size()) {
+	}
+
+	if (pos > para.size()) {
 		lyxerr << "dont like 1, pos: " << pos
 		       << " size: " << para.size()
 		       << " row.pos():" << row.pos()
 		       << " par: " << par << endl;
-		pos = 0;
-		cur.pos(0);
 		BOOST_ASSERT(false);
-	} else if (pos > end) {
+	}
+
+	if (pos > end) {
 		lyxerr << "dont like 2 please report" << endl;
 		// This shouldn't happen.
-		pos = end;
-		cur.pos(pos);
 		BOOST_ASSERT(false);
-	} else if (pos < row.pos()) {
+	}
+	
+	if (pos < row.pos()) {
 		lyxerr << "dont like 3 please report pos:" << pos
 		       << " size: " << para.size()
 		       << " row.pos():" << row.pos()
 		       << " par: " << par << endl;
-		pos = row.pos();
-		cur.pos(pos);
 		BOOST_ASSERT(false);
 	}
 }
@@ -1264,9 +1262,7 @@ pos_type LyXText::getColumnNearX(ParagraphList::iterator pit,
 
 	// If lastrow is false, we don't need to compute
 	// the value of rtl.
-	bool const rtl = lastrow
-		? pit->isRightToLeftPar(bv()->buffer()->params())
-		: false;
+	bool const rtl = lastrow ? isRTL(*pit) : false;
 	if (lastrow &&
 		 ((rtl  &&  left_side && vc == row.pos() && x < tmpx - 5) ||
 		  (!rtl && !left_side && vc == end  && x > tmpx + 5)))
@@ -1358,7 +1354,7 @@ bool LyXText::checkAndActivateInset(LCursor & cur, bool front)
 
 DispatchResult LyXText::moveRight(LCursor & cur)
 {
-	if (rtl(cur))
+	if (isRTL(cur.paragraph()))
 		return moveLeftIntern(cur, false, true, false);
 	else
 		return moveRightIntern(cur, true, true, false);
@@ -1367,7 +1363,7 @@ DispatchResult LyXText::moveRight(LCursor & cur)
 
 DispatchResult LyXText::moveLeft(LCursor & cur)
 {
-	if (rtl(cur))
+	if (isRTL(cur.paragraph()))
 		return moveRightIntern(cur, true, true, false);
 	else
 		return moveLeftIntern(cur, false, true, false);

@@ -925,12 +925,12 @@ bool BufferView::Pimpl::workAreaDispatch(FuncRequest const & cmd0)
 		// built temporary path to inset
 		InsetBase * inset = bv_->text()->editXY(cur, cmd.x, cmd.y);
 		lyxerr << "hit inset at tip: " << inset << endl;
-		lyxerr << "created temp cursor: " << cur << endl;
+		lyxerr << "created temp cursor:\n" << cur << endl;
 
 		// Try to dispatch to an non-editable inset near this position
 		DispatchResult res;
 		if (inset)
-			res = inset->dispatch(cur, cmd);
+			inset->dispatch(cur, cmd);
 
 		// Dispatch to the temp cursor.
 		// An inset (or LyXText) can assign this to bv->cursor()

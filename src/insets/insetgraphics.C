@@ -191,8 +191,7 @@ void InsetGraphics::statusChanged() const
 }
 
 
-DispatchResult
-InsetGraphics::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
+void InsetGraphics::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 {
 	switch (cmd.action) {
 	case LFUN_INSET_MODIFY: {
@@ -203,19 +202,20 @@ InsetGraphics::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 			setParams(p);
 			cur.bv().update();
 		}
-		return DispatchResult(true, true);
+		break;
 	}
 
 	case LFUN_INSET_DIALOG_UPDATE:
 		InsetGraphicsMailer(*this).updateDialog(&cur.bv());
-		return DispatchResult(true, true);
+		break;
 
 	case LFUN_MOUSE_RELEASE:
 		InsetGraphicsMailer(*this).showDialog(&cur.bv());
-		return DispatchResult(true, true);
+		break;
 
 	default:
-		return DispatchResult(false);
+		InsetOld::priv_dispatch(cur, cmd);
+		break;
 	}
 }
 

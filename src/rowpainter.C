@@ -391,7 +391,7 @@ void RowPainter::paintBackground()
 
 void RowPainter::paintSelection()
 {
-	bool const is_rtl = pit_->isRightToLeftPar(bv_.buffer()->params());
+	bool const is_rtl = text_.isRTL(*pit_);
 
 	// the current selection
 	LCursor const & cur = bv_.cursor();
@@ -621,7 +621,7 @@ void RowPainter::paintFirst()
 
 	int const ww = bv_.workWidth();
 
-	bool const is_rtl = pit_->isRightToLeftPar(bv_.buffer()->params());
+	bool const is_rtl = text_.isRTL(*pit_);
 	bool const is_seq = isFirstInSequence(pit_, text_.paragraphs());
 	//lyxerr << "paintFirst: " << pit_->id() << " is_seq: " << is_seq << std::endl;
 
@@ -715,7 +715,7 @@ void RowPainter::paintFirst()
 void RowPainter::paintLast()
 {
 	int const ww = bv_.workWidth();
-	bool const is_rtl = pit_->isRightToLeftPar(bv_.buffer()->params());
+	bool const is_rtl = text_.isRTL(*pit_);
 	int const endlabel = getEndLabel(pit_, text_.paragraphs());
 
 	// draw an endlabel

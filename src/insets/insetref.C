@@ -40,7 +40,7 @@ InsetRef::InsetRef(InsetRef const & ir)
 {}
 
 
-DispatchResult InsetRef::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
+void InsetRef::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 {
 	switch (cmd.action) {
 	case LFUN_MOUSE_PRESS:
@@ -49,10 +49,10 @@ DispatchResult InsetRef::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 			cur.bv().owner()->dispatch(FuncRequest(LFUN_REF_GOTO, getContents()));
 		else
 			InsetCommandMailer("ref", *this).showDialog(&cur.bv());
-		return DispatchResult(true, true);
+		return;
 
 	case LFUN_MOUSE_RELEASE:
-		return DispatchResult(true, true);
+		return;
 
 	default:
 		return InsetCommand::priv_dispatch(cur, cmd);

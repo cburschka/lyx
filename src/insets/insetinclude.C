@@ -108,8 +108,7 @@ InsetInclude::~InsetInclude()
 }
 
 
-DispatchResult
-InsetInclude::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
+void InsetInclude::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 {
 	switch (cmd.action) {
 
@@ -120,24 +119,25 @@ InsetInclude::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 			set(p, *cur.bv().buffer());
 			cur.bv().update();
 		}
-		return DispatchResult(true, true);
+		break;
 	}
 
 	case LFUN_INSET_DIALOG_UPDATE:
 		InsetIncludeMailer(*this).updateDialog(&cur.bv());
-		return DispatchResult(true, true);
+		break;
 
 	case LFUN_MOUSE_RELEASE:
 		if (button_.box().contains(cmd.x, cmd.y))
 			InsetIncludeMailer(*this).showDialog(&cur.bv());
-		return DispatchResult(true, true);
+		break;
 
 	case LFUN_INSET_DIALOG_SHOW:
 		InsetIncludeMailer(*this).showDialog(&cur.bv());
-		return DispatchResult(true, true);
+		break;
 
 	default:
-		return DispatchResult(false);
+		InsetOld::dispatch(cur, cmd);
+		break;
 	}
 }
 

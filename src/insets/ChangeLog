@@ -1,4 +1,18 @@
 
+2004-02-16  André Pönitz  <poenitz@gmx.net>
+
+	* insetbase.C:
+	* insetbase.[Ch]: remove explicit 'DispatchResult' return type and
+	  implicitly assume 'DispatchResult(true, true) with exception of
+	  InsetBase::priv_dispatch which does the equivalent of 
+	  'retrun DispatchResult(false)'
+
+	* inset*.[Ch] (priv_dispatch): adjust
+
+	* insettabular.[Ch]: remove remains of the 'update' mechanism,
+	  simplify cursor moving function,
+	  re-enable horizontal scrolling for large tables
+
 2004-02-13  André Pönitz  <poenitz@gmx.net>
 
 	* insettabular.[Ch]: some work after IU

@@ -8,21 +8,14 @@
  *
  * Full author contact details are available in file CREDITS.
  */
+
+
 // This is the rewrite of the tabular (table) support.
-
-// It will probably be a lot of work.
-
-// One first goal could be to make the inset read the old table format
-// and just output it again... no viewing at all.
-
-// When making the internal structure of tabular support I really think
-// that STL containers should be used. This will separate the container from
-// the rest of the code, which is a good thing.
 
 // Ideally the tabular support should do as the mathed and use
 // LaTeX in the .lyx file too.
 
-// Things to think of when desingning the new tabular support:
+// Things to think of when designing the new tabular support:
 // - color support (colortbl, color)
 // - decimal alignment (dcloumn)
 // - custom lines (hhline)
@@ -47,9 +40,6 @@
 
 #include "inset.h"
 #include "tabular.h"
-
-#include "frontends/mouse_state.h"
-
 
 class FuncStatus;
 class LyXLex;
@@ -81,8 +71,6 @@ public:
 	void draw(PainterInfo & pi, int x, int y) const;
 	///
 	std::string const editMessage() const;
-	///
-	void updateLocal(LCursor & cur) const;
 	///
 	bool insetAllowed(InsetOld::Code) const { return true; }
 	///
@@ -125,8 +113,12 @@ public:
 		std::string const & argument, int cell) const;
 	/// Appends \c list with all labels found within this inset.
 	void getLabelList(Buffer const &, std::vector<std::string> & list) const;
+	/// number of cells
+	size_t nargs() const;
 	///
-	int numParagraphs() const;
+	InsetText const & cell(int) const;
+	///
+	InsetText & cell(int);
 	///
 	LyXText * getText(int) const;
 
@@ -159,62 +151,27 @@ public:
 
 protected:
 	///
-	DispatchResult priv_dispatch(LCursor & cur, FuncRequest const & cmd);
+	void priv_dispatch(LCursor & cur, FuncRequest const & cmd);
 private:
 	///
-	void lfunMousePress(LCursor & cur, FuncRequest const & cmd);
-	///
-	void lfunMouseRelease(LCursor & cur, FuncRequest const & cmd);
-	///
-	void lfunMouseMotion(LCursor & cur, FuncRequest const & cmd);
-	///
-	void calculate_dimensions_of_cells(MetricsInfo & mi) const;
-	///
 	void drawCellLines(Painter &, int x, int baseline,
-			   int row, int cell) const;
+		int row, int cell) const;
 	///
 	void drawCellSelection(PainterInfo &, int x, int baseline,
-			       int row, int column, int cell) const;
+		int row, int column, int cell) const;
 	///
 	InsetBase * setPos(LCursor & cur, int x, int y) const;
-	///
-	bool moveRight(LCursor & cur);
-	///
-	bool moveLeft(LCursor & cur);
-	///
-	bool moveUp(LCursor & cur);
-	///
-	bool moveDown(LCursor & cur);
 
 	///
-	bool moveRightLock(LCursor & cur);
+	void moveNextCell(LCursor & cur);
 	///
-	bool moveLeftLock(LCursor & cur);
-	///
-	bool moveUpLock(LCursor & cur);
-	///
-	bool moveDownLock(LCursor & cur);
-
-	///
-	bool moveNextCell(LCursor & cur);
-	///
-	bool movePrevCell(LCursor & cur);
-
-
+	void movePrevCell(LCursor & cur);
 	///
 	int getCellXPos(int cell) const;
 	///
 	void resetPos(LCursor & cur) const;
 	///
 	void removeTabularRow();
-	///
-	//void clearSelection() const;
-	///
-	//void setSelection(int start, int end) const;
-	///
-	void activateCellInset(LCursor &, int cell, int x, int y);
-	///
-	void activateCellInset(LCursor &, int cell, bool behind);
 	///
 	bool hasPasteBuffer() const;
 	///
@@ -230,28 +187,15 @@ private:
 		int & rs, int & re, int & cs, int & ce) const;
 	///
 	bool insertAsciiString(BufferView &, std::string const & buf, bool usePaste);
-
 	/// are we operating on several cells?
 	bool tablemode(LCursor & cur) const;
 
-	//
-	// Private structures and variables
 	///
 	Buffer const * buffer_;
 	///
 	mutable int cursorx_;
 	///
-	mutable int cursory_;
-	/// true if a set of cells are selected
-	//mutable bool has_selection;
-	/// the starting cell selection nr
-	//mutable int sel_cell_start;
-	/// the ending cell selection nr
-	//mutable int sel_cell_end;
-	///
 	mutable int first_visible_cell;
-	///
-	mutable int in_reset_pos;
 };
 
 

@@ -150,14 +150,14 @@ public:
 	///
 	InsetBase * editXY(LCursor & cur, int x, int y);
 
-	///
-	int numParagraphs() const { return 1; }
+	/// number of cells in this inset
+	size_t nargs() const { return 1; }
 	///
 	ParagraphList & paragraphs() const;
 
 private:
 	///
-	DispatchResult priv_dispatch(LCursor & cur, FuncRequest const & cmd);
+	void priv_dispatch(LCursor & cur, FuncRequest const & cmd);
 	///
 	void updateLocal(LCursor &);
 	///

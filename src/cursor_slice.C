@@ -41,12 +41,6 @@ CursorSlice::CursorSlice(InsetBase * p)
 }
 
 
-void CursorSlice::idx(idx_type idx)
-{
-	idx_ = idx;
-}
-
-
 size_t CursorSlice::nargs() const
 {
 	return inset_->nargs();
@@ -77,12 +71,6 @@ CursorSlice::idx_type & CursorSlice::idx()
 }
 
 
-void CursorSlice::par(par_type par)
-{
-	par_ = par;
-}
-
-
 CursorSlice::par_type CursorSlice::par() const
 {
 	return par_;
@@ -92,12 +80,6 @@ CursorSlice::par_type CursorSlice::par() const
 CursorSlice::par_type & CursorSlice::par()
 {
 	return par_;
-}
-
-
-void CursorSlice::pos(pos_type pos)
-{
-	pos_ = pos;
 }
 
 
@@ -116,12 +98,6 @@ CursorSlice::pos_type & CursorSlice::pos()
 CursorSlice::pos_type CursorSlice::lastpos() const
 {
 	return (inset_ && inset_->asMathInset()) ? cell().size() : paragraph().size();
-}
-
-
-void CursorSlice::boundary(bool boundary)
-{
-	boundary_ = boundary;
 }
 
 
@@ -233,8 +209,9 @@ bool operator>(CursorSlice const & p, CursorSlice const & q)
 
 std::ostream & operator<<(std::ostream & os, CursorSlice const & item)
 {
-	os << "inset: " << item.inset_
-	   << " text: " << item.text()
+	os
+//	   << "inset: " << item.inset_
+//	   << " text: " << item.text()
 	   << " idx: " << item.idx_
 	   << " par: " << item.par_
 	   << " pos: " << item.pos_

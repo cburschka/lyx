@@ -46,9 +46,7 @@ public:
 	bool delDatabase(std::string const &);
 protected:
 	///
-	virtual
-	DispatchResult
-	priv_dispatch(LCursor & cur, FuncRequest const & cmd);
+	virtual void priv_dispatch(LCursor & cur, FuncRequest const & cmd);
 };
 
 #endif // INSET_BIBTEX_H

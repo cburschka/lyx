@@ -155,19 +155,17 @@ bool InsetTabular::hasPasteBuffer() const
 
 InsetTabular::InsetTabular(Buffer const & buf, int rows, int columns)
 	: tabular(buf.params(), max(rows, 1), max(columns, 1)),
-	  buffer_(&buf), cursorx_(0), cursory_(0)
+	  buffer_(&buf), cursorx_(0)
 {
 	tabular.setOwner(this);
-	in_reset_pos = 0;
 }
 
 
 InsetTabular::InsetTabular(InsetTabular const & tab)
 	: UpdatableInset(tab), tabular(tab.tabular),
-		buffer_(tab.buffer_), cursorx_(0), cursory_(0)
+		buffer_(tab.buffer_), cursorx_(0)
 {
 	tabular.setOwner(this);
-	in_reset_pos = 0;
 }
 
 
@@ -233,7 +231,25 @@ void InsetTabular::metrics(MetricsInfo & mi, Dimension & dim) const
 		BOOST_ASSERT(false);
 	}
 
-	calculate_dimensions_of_cells(mi);
+	for (int i = 0, cell = -1; i < tabular.rows(); ++i) {
+		int maxAsc = 0;
+		int maxDesc = 0;
+		for (int j = 0; j < tabular.columns(); ++j) {
+			if (tabular.isPartOfMultiColumn(i, j))
+				continue;
+			++cell;
+			Dimension dim;
+			MetricsInfo m = mi;
+			m.base.textwidth =
+				tabular.column_info[j].p_width.inPixels(mi.base.textwidth);
+			tabular.getCellInset(cell).metrics(m, dim);
+			maxAsc  = max(maxAsc, dim.asc);
+			maxDesc = max(maxDesc, dim.des);
+			tabular.setWidthOfCell(cell, dim.wid);
+		}
+		tabular.setAscentOfRow(i, maxAsc + ADD_TO_HEIGHT);
+		tabular.setDescentOfRow(i, maxDesc + ADD_TO_HEIGHT);
+	}
 
 	dim.asc = tabular.getAscentOfRow(0);
 	dim.des = tabular.getHeightOfTabular() - tabular.getAscentOfRow(0) + 1;
@@ -254,11 +270,11 @@ void InsetTabular::draw(PainterInfo & pi, int x, int y) const
 
 	x += ADD_TO_TABULAR_WIDTH;
 
-	int cell = 0;
+	int idx = 0;
 	first_visible_cell = -1;
 	for (int i = 0; i < tabular.rows(); ++i) {
 		int nx = x;
-		cell = tabular.getCellNumber(i, 0);
+		idx = tabular.getCellNumber(i, 0);
 		if (y + tabular.getDescentOfRow(i) <= 0 &&
 			  y - tabular.getAscentOfRow(i) < pi.pain.paperHeight())
 		{
@@ -273,15 +289,15 @@ void InsetTabular::draw(PainterInfo & pi, int x, int y) const
 			if (tabular.isPartOfMultiColumn(i, j))
 				continue;
 			if (first_visible_cell < 0)
-				first_visible_cell = cell;
+				first_visible_cell = idx;
 			if (bv->cursor().selection())
-				drawCellSelection(pi, nx, y, i, j, cell);
+				drawCellSelection(pi, nx, y, i, j, idx);
 
-			int const cx = nx + tabular.getBeginningOfTextInCell(cell);
-			tabular.getCellInset(cell).draw(pi, cx, y);
-			drawCellLines(pi.pain, nx, y, i, cell);
-			nx += tabular.getWidthOfColumn(cell);
-			++cell;
+			int const cx = nx + tabular.getBeginningOfTextInCell(idx);
+			cell(idx).draw(pi, cx, y);
+			drawCellLines(pi.pain, nx, y, i, idx);
+			nx += tabular.getWidthOfColumn(idx);
+			++idx;
 		}
 
 // Would be nice, but for some completely unfathomable reason,
@@ -361,48 +377,6 @@ string const InsetTabular::editMessage() const
 }
 
 
-void InsetTabular::updateLocal(LCursor & cur) const
-{
-	cur.bv().update();
-	resetPos(cur);
-}
-
-
-void InsetTabular::lfunMousePress(LCursor & cur, FuncRequest const & cmd)
-{
-	if (cmd.button() == mouse_button::button3)
-		return;
-
-	int cell = getCell(cmd.x + xo_, cmd.y + yo_);
-	cur.selection() = false;
-
-	lyxerr << "# InsetTabular::lfunMousePress cell: " << cell << endl;
-	if (cell == -1) {
-		//cur.cursor_ = theTempCursor;
-		cur.push(this);
-		cur.idx() = cell;
-	} else {
-		setPos(cur, cmd.x, cmd.y);
-		//cur.cursor_ = theTempCursor;
-		cur.idx() = cell;
-	}
-	cur.resetAnchor();
-	lyxerr << cur << endl;
-
-	if (cmd.button() == mouse_button::button2)
-		dispatch(cur, FuncRequest(LFUN_PASTESELECTION, "paragraph"));
-}
-
-
-void InsetTabular::lfunMouseRelease(LCursor & cur, FuncRequest const & cmd)
-{
-	int const actcell = getCell(cmd.x + xo_, cmd.y + yo_);
-	lyxerr << "# InsetTabular::lfunMouseRelease cell: " << actcell << endl;
-	if (cmd.button() == mouse_button::button3)
-		InsetTabularMailer(*this).showDialog(&cur.bv());
-}
-
-
 void InsetTabular::edit(LCursor & cur, bool left)
 {
 	lyxerr << "InsetTabular::edit: " << this << endl;
@@ -429,185 +403,110 @@ void InsetTabular::edit(LCursor & cur, bool left)
 
 InsetBase * InsetTabular::editXY(LCursor & cur, int x, int y)
 {
-	lyxerr << "InsetTabular::edit: " << this << endl;
+	//lyxerr << "InsetTabular::editXY: " << this << endl;
 	cur.selection() = false;
 	cur.push(this);
 	return setPos(cur, x, y);
 	//int xx = cursorx_ - xo_ + tabular.getBeginningOfTextInCell(actcell);
-	//if (x > xx)
-	//	activateCellInset(bv, cell, x - xx, y - cursory_);
 }
 
 
-void InsetTabular::lfunMouseMotion(LCursor & cur, FuncRequest const & cmd)
+void InsetTabular::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 {
-	int const actcell = getCell(cmd.x + xo_, cmd.y + yo_);
-	cur.idx() = actcell;
-	lyxerr << "# InsetTabular::lfunMouseMotion cell: " << actcell << endl;
+	lyxerr << "# InsetTabular::dispatch: cmd: " << cmd << endl;
+	//lyxerr << "  cur:\n" << cur << endl;
+	CursorSlice sl = cur.current();
 
-	setPos(cur, cmd.x, cmd.y);
-/*
-	if (!hasSelection()) {
-		setSelection(actcell, actcell);
-		cur.setSelection();
-	} else {
-		setSelection(sel_cell_start, actcell);
-		tablemode = (sel_cell_start != actcell);
-	}
-*/
-}
-
-
-DispatchResult
-InsetTabular::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
-{
-	lyxerr << "# InsetTabular::dispatch: " << cmd << endl;
-
-	InsetText & cell = tabular.getCellInset(cur.idx());
-
-	DispatchResult result(true, true);
 	switch (cmd.action) {
 
 	case LFUN_MOUSE_PRESS:
+		// we'll pop up the table dialog on release
 		if (cmd.button() == mouse_button::button3)
-			DispatchResult(true, true);
+			break;
+		cur.selection() = false;
+		setPos(cur, cmd.x, cmd.y);
+		cur.resetAnchor();
+		cur.bv().cursor() = cur;
+		//if (cmd.button() == mouse_button::button2)
+		//	dispatch(cur, FuncRequest(LFUN_PASTESELECTION, "paragraph"));
+		//lyxerr << "# InsetTabular::MousePress\n" << cur.bv().cursor() << endl;
+		break;
 
 	case LFUN_MOUSE_MOTION:
-		lfunMouseMotion(cur, cmd);
-		return DispatchResult(true, true);
+		if (cmd.button() != mouse_button::button1)
+			break;
+		setPos(cur, cmd.x, cmd.y);
+		cur.bv().cursor().cursor_ = cur.cursor_;
+		cur.bv().cursor().selection() = true;
+		//lyxerr << "# InsetTabular::MouseMotion\n" << cur.bv().cursor() << endl;
+		break;
 
 	case LFUN_MOUSE_RELEASE:
-		lfunMouseRelease(cur, cmd);
-		return DispatchResult(true, true);
-
-#if 0
-	int const cell = cur.idx();
-	lyxerr << "# InsetTabular::dispatch: A " << cur << endl;
-	result = cell.dispatch(cur, cmd);
-
-	switch (result.val()) {
-	case FINISHED:
-		if (movePrevCell(cur))
-			result = DispatchResult(true, true);
-		else
-			result = DispatchResult(false, FINISHED);
+		//lyxerr << "# InsetTabular::MouseRelease\n" << cur.bv().cursor() << endl;
+		if (cmd.button() == mouse_button::button3)
+			InsetTabularMailer(*this).showDialog(&cur.bv());
 		break;
-
-	case FINISHED_RIGHT:
-		if (moveNextCell(cur))
-			result = DispatchResult(true, true);
-		else
-			result = DispatchResult(false, FINISHED_RIGHT);
-		break;
-
-	case FINISHED_UP:
-		if (moveUpLock(cur))
-			result = DispatchResult(true, true);
-		else
-			result = DispatchResult(false, FINISHED_UP);
-		break;
-
-	case FINISHED_DOWN:
-		if (moveDownLock(cur))
-			result = DispatchResult(true, true);
-		else
-			result = DispatchResult(false, FINISHED_UP);
-		break;
-#endif
 
 	case LFUN_CELL_BACKWARD:
-	case LFUN_CELL_FORWARD:
-		if (cmd.action == LFUN_CELL_FORWARD)
-			moveNextCell(cur);
-		else
-			movePrevCell(cur);
+		movePrevCell(cur);
 		cur.selection() = false;
-		return result;
+		break;
+
+	case LFUN_CELL_FORWARD:
+		moveNextCell(cur);
+		cur.selection() = false;
+		break;
 
 	case LFUN_SCROLL_INSET:
-		if (!cmd.argument.empty()) {
-			if (cmd.argument.find('.') != cmd.argument.npos)
-				scroll(cur.bv(), static_cast<float>(strToDbl(cmd.argument)));
-			else
-				scroll(cur.bv(), strToInt(cmd.argument));
-			cur.update();
-			return DispatchResult(true, true);
-		}
+		if (cmd.argument.empty())
+			break;
+		if (cmd.argument.find('.') != cmd.argument.npos)
+			scroll(cur.bv(), static_cast<float>(strToDbl(cmd.argument)));
+		else
+			scroll(cur.bv(), strToInt(cmd.argument));
+		cur.update();
+		break;
 
 	case LFUN_RIGHTSEL:
-	case LFUN_RIGHT: {
-		CursorSlice sl = cur.current();
-		cell.dispatch(cur, cmd);
+	case LFUN_RIGHT:
+		cell(cur.idx()).dispatch(cur, cmd);
 		if (sl == cur.current())
 			isRightToLeft(cur) ? movePrevCell(cur) : moveNextCell(cur);
 		if (sl == cur.current())
-			result = DispatchResult(true, true);
+			cur.dispatched(FINISHED_RIGHT);
 		break;
-	}
 
 	case LFUN_LEFTSEL: 
-	case LFUN_LEFT: {
-		CursorSlice sl = cur.current();
-		cell.dispatch(cur, cmd);
+	case LFUN_LEFT:
+		cell(cur.idx()).dispatch(cur, cmd);
 		if (sl == cur.current())
 			isRightToLeft(cur) ? moveNextCell(cur) : movePrevCell(cur);
 		if (sl == cur.current())
-			result = DispatchResult(true, true);
+			cur.dispatched(FINISHED);
 		break;
-	}
 
-#if 0
-	case LFUN_DOWNSEL: {
-		int const start = hasSelection() ? sel_cell_start : cur.idx();
-		int const ocell = cur.idx();
-		// if we are starting a selection, only select
-		// the current cell at the beginning
-		if (hasSelection()) {
-			moveDown(cur);
-			if (ocell == sel_cell_end ||
-					tabular.column_of_cell(ocell) >
-tabular.column_of_cell(cur.idx()))
-				//setSelection(start, tabular.getCellBelow(sel_cell_end));
-			else
-				//setSelection(start, tabular.getLastCellBelow(sel_cell_end));
-		} else {
-			//setSelection(start, start);
-		}
-		break;
-	}
-#endif
-
+	case LFUN_DOWNSEL:
 	case LFUN_DOWN:
-		if (!moveDown(cur))
-			result = DispatchResult(false, FINISHED_DOWN);
-		cur.selection() = false;
+		cell(cur.idx()).dispatch(cur, cmd);
+		if (sl == cur.current())
+			if (tabular.row_of_cell(cur.idx()) != tabular.rows() - 1) {
+				cur.idx() = tabular.getCellBelow(cur.idx());
+				resetPos(cur);
+			}
+		if (sl == cur.current())
+			cur.dispatched(FINISHED_DOWN);
 		break;
 
-#if 0
-	case LFUN_UPSEL: {
-		int const start = hasSelection() ? sel_cell_start : cur.idx();
-		int const ocell = cur.idx();
-		// if we are starting a selection, only select
-		// the current cell at the beginning
-		if (hasSelection()) {
-			moveUp(cur);
-			if (ocell == sel_cell_end ||
-					tabular.column_of_cell(ocell) >
-tabular.column_of_cell(cur.idx()))
-				//setSelection(start, tabular.getCellAbove(sel_cell_end));
-			else
-				//setSelection(start, tabular.getLastCellAbove(sel_cell_end));
-		} else {
-			//setSelection(start, start);
-		}
-		break;
-	}
-#endif
-
+	case LFUN_UPSEL:
 	case LFUN_UP:
-		if (!moveUp(cur))
-			result = DispatchResult(false, FINISHED_DOWN);
-		cur.selection() = false;
+		cell(cur.idx()).dispatch(cur, cmd);
+		if (sl == cur.current())
+			if (tabular.row_of_cell(cur.idx()) != 0) {
+				cur.idx() = tabular.getCellAbove(cur.idx());
+				resetPos(cur);
+			}
+		if (sl == cur.current())
+			cur.dispatched(FINISHED_UP);
 		break;
 
 	case LFUN_NEXT: {
@@ -657,7 +556,7 @@ tabular.column_of_cell(cur.idx()))
 
 	case LFUN_TABULAR_FEATURE:
 		if (!tabularFeatures(cur, cmd.argument))
-			result = DispatchResult(false);
+			cur.notdispatched();
 		break;
 
 	// insert file functions
@@ -665,7 +564,7 @@ tabular.column_of_cell(cur.idx()))
 	case LFUN_FILE_INSERT_ASCII: {
 		string tmpstr = getContentsOfAsciiFile(&cur.bv(), cmd.argument, false);
 		if (!tmpstr.empty() && !insertAsciiString(cur.bv(), tmpstr, false))
-			result = DispatchResult(false);
+			cur.notdispatched();
 		break;
 	}
 
@@ -695,7 +594,7 @@ tabular.column_of_cell(cur.idx()))
 		if (tablemode(cur))
 			cutSelection(cur);
 		else
-			cell.dispatch(cur, cmd);
+			cell(cur.idx()).dispatch(cur, cmd);
 		break;
 
 	case LFUN_COPY:
@@ -713,11 +612,11 @@ tabular.column_of_cell(cur.idx()))
 			int cols = 1;
 			int rows = 1;
 			int maxCols = 1;
-			string::size_type len = clip.length();
-			string::size_type p = 0;
-
-			while (p < len &&
-						(p = clip.find_first_of("\t\n", p)) != string::npos) {
+			size_t len = clip.length();
+			for (size_t p = 0; p < len; ++p) {
+				p = clip.find_first_of("\t\n", p);
+				if (p == string::npos)
+					break;
 				switch (clip[p]) {
 				case '\t':
 					++cols;
@@ -729,7 +628,6 @@ tabular.column_of_cell(cur.idx()))
 					cols = 1;
 					break;
 				}
-				++p;
 			}
 			maxCols = max(cols, maxCols);
 
@@ -739,37 +637,34 @@ tabular.column_of_cell(cur.idx()))
 			string::size_type op = 0;
 			int cell = 0;
 			int cells = paste_tabular->getNumberOfCells();
-			p = 0;
 			cols = 0;
 			LyXFont font;
-			while (cell < cells && p < len &&
-						(p = clip.find_first_of("\t\n", p)) != string::npos) {
-				if (p >= len)
+			for (size_t p = 0; cell < cells && p < len; ++p) {
+				p = clip.find_first_of("\t\n", p);
+				if (p == string::npos || p >= len)
 					break;
 				switch (clip[p]) {
 				case '\t':
 					paste_tabular->getCellInset(cell).
-						setText(clip.substr(op, p-op), font);
+						setText(clip.substr(op, p - op), font);
 					++cols;
 					++cell;
 					break;
 				case '\n':
 					paste_tabular->getCellInset(cell).
-						setText(clip.substr(op, p-op), font);
+						setText(clip.substr(op, p - op), font);
 					while (cols++ < maxCols)
 						++cell;
 					cols = 0;
 					break;
 				}
-				++p;
-				op = p;
+				op = p + 1;
 			}
 			// check for the last cell if there is no trailing '\n'
 			if (cell < cells && op < len)
 				paste_tabular->getCellInset(cell).
-					setText(clip.substr(op, len-op), font);
-		} else if (!insertAsciiString(cur.bv(), clip, true))
-		{
+					setText(clip.substr(op, len - op), font);
+		} else if (!insertAsciiString(cur.bv(), clip, true)) {
 			// so that the clipboard is used and it goes on
 			// to default
 			// and executes LFUN_PASTESELECTION in insettext!
@@ -784,23 +679,16 @@ tabular.column_of_cell(cur.idx()))
 			pasteSelection(cur);
 			break;
 		}
-		// fall through
-
-	// ATTENTION: the function above has to be PASTE and PASTESELECTION!!!
+		cell(cur.idx()).dispatch(cur, cmd);
+		break;
 
 	default:
-		// handle font changing stuff on selection before we lock the inset
-		// in the default part!
-		result = cell.dispatch(cur, cmd);
-		// we try to activate the actual inset and put this event down to
-		// the insets dispatch function.
+		// we try to handle this event in the insets dispatch function.
+		cell(cur.idx()).dispatch(cur, cmd);
 		break;
 	}
 
-	updateLocal(cur);
 	InsetTabularMailer(*this).updateDialog(&cur.bv());
-
-	return result;
 }
 
 
@@ -861,41 +749,38 @@ void InsetTabular::validate(LaTeXFeatures & features) const
 }
 
 
-void InsetTabular::calculate_dimensions_of_cells(MetricsInfo & mi) const
+InsetText const & InsetTabular::cell(int idx) const
 {
-	for (int i = 0, cell = -1; i < tabular.rows(); ++i) {
-		int maxAsc = 0;
-		int maxDesc = 0;
-		for (int j = 0; j < tabular.columns(); ++j) {
-			if (tabular.isPartOfMultiColumn(i, j))
-				continue;
-			++cell;
-			Dimension dim;
-			MetricsInfo m = mi;
-			m.base.textwidth =
-				tabular.column_info[j].p_width.inPixels(mi.base.textwidth);
-			tabular.getCellInset(cell).metrics(m, dim);
-			maxAsc  = max(maxAsc, dim.asc);
-			maxDesc = max(maxDesc, dim.des);
-			tabular.setWidthOfCell(cell, dim.wid);
-		}
-		tabular.setAscentOfRow(i, maxAsc + ADD_TO_HEIGHT);
-		tabular.setDescentOfRow(i, maxDesc + ADD_TO_HEIGHT);
-	}
+	return tabular.getCellInset(idx);
+}
+
+
+InsetText & InsetTabular::cell(int idx)
+{
+	return tabular.getCellInset(idx);
 }
 
 
 void InsetTabular::getCursorPos(CursorSlice const & cur, int & x, int & y) const
 {
-	tabular.getCellInset(cur.idx()).getCursorPos(cur, x, y);
+	cell(cur.idx()).getCursorPos(cur, x, y);
 }
 
 
 InsetBase * InsetTabular::setPos(LCursor & cur, int x, int y) const
 {
-	cur.idx() = getCell(x, y);
-	InsetBase * inset = tabular.getCellInset(cur.idx()).text_.editXY(cur, x, y);
-	lyxerr << "# InsetTabular::setPos()  cursor: " << cur << endl;
+	int idx_min = 0;
+	int dist_min = 1000000;
+	for (idx_type i = 0; i < nargs(); ++i) {
+		int d = getText(i)->dist(x, y);
+		if (d < dist_min) {
+			dist_min = d;
+			idx_min = i;
+		}
+	}
+	cur.idx() = idx_min;
+	InsetBase * inset = cell(cur.idx()).text_.editXY(cur, x, y);
+	//lyxerr << "# InsetTabular::setPos()\n" << cur << endl;
 	return inset;
 }
 
@@ -914,33 +799,12 @@ int InsetTabular::getCellXPos(int cell) const
 }
 
 
-void InsetTabular::resetPos(LCursor &) const
+void InsetTabular::resetPos(LCursor & cur) const
 {
-#if 0
-#ifdef WITH_WARNINGS
-#warning This should be fixed in the right manner (20011128 Jug)
-#endif
-	// fast hack to fix infinite repaintings!
-	if (in_reset_pos > 0)
-		return;
-
 	BufferView & bv = cur.bv();
-	int cell = 0;
 	int actcell = cur.idx();
 	int actcol = tabular.column_of_cell(actcell);
-	int actrow = 0;
-	cursory_ = 0;
-	for (; cell < actcell && !tabular.isLastRow(cell); ++cell) {
-		if (tabular.isLastCellInRow(cell)) {
-			cursory_ += tabular.getDescentOfRow(actrow) +
-					 tabular.getAscentOfRow(actrow + 1) +
-					 tabular.getAdditionalHeight(actrow + 1);
-			++actrow;
-		}
-	}
 
-	// we need this only from here on!!!
-	++in_reset_pos;
 	int const offset = ADD_TO_TABULAR_WIDTH + 2;
 	int new_x = getCellXPos(actcell) + offset;
 	int old_x = cursorx_;
@@ -950,149 +814,70 @@ void InsetTabular::resetPos(LCursor &) const
 		tabular.getWidthOfTabular() < bv.workWidth()-20)
 	{
 		scroll(bv, 0.0F);
-		updateLocal(cur);
 	} else if (cursorx_ - offset > 20 &&
 		   cursorx_ - offset + tabular.getWidthOfColumn(actcell)
 		   > bv.workWidth() - 20) {
 		scroll(bv, - tabular.getWidthOfColumn(actcell) - 20);
-		updateLocal(cur);
 	} else if (cursorx_ - offset < 20) {
 		scroll(bv, 20 - cursorx_ + offset);
-		updateLocal(cur);
 	} else if (scroll() && xo_ > 20 &&
 		   xo_ + tabular.getWidthOfTabular() > bv.workWidth() - 20) {
 		scroll(bv, old_x - cursorx_);
-		updateLocal(cur);
 	}
+
 	InsetTabularMailer(*this).updateDialog(&bv);
-	in_reset_pos = 0;
-#endif
 }
 
 
-bool InsetTabular::moveRight(LCursor & cur)
-{
-	bool moved = isRightToLeft(cur) ? movePrevCell(cur) : moveNextCell(cur);
-	if (!moved)
-		return false;
-	resetPos(cur);
-	return true;
-}
-
-
-bool InsetTabular::moveLeft(LCursor & cur)
-{
-	bool moved = isRightToLeft(cur) ? moveNextCell(cur) : movePrevCell(cur);
-	if (!moved)
-		return false;
-	resetPos(cur);
-	return true;
-}
-
-
-bool InsetTabular::moveLeftLock(LCursor & cur)
-{
-	bool moved = isRightToLeft(cur) ? moveNextCell(cur) : movePrevCell(cur);
-	if (!moved)
-		return false;
-	activateCellInset(cur, cur.idx(), true);
-	return true;
-}
-
-
-bool InsetTabular::moveUp(LCursor & cur)
-{
-	if (tabular.row_of_cell(cur.idx()) == 0)
-		return false;
-	cur.idx() = tabular.getCellAbove(cur.idx());
-	resetPos(cur);
-	return true;
-}
-
-
-bool InsetTabular::moveUpLock(LCursor & cur)
-{
-	if (tabular.row_of_cell(cur.idx()) == 0)
-		return false;
-	cur.idx() = tabular.getCellAbove(cur.idx());
-	resetPos(cur);
-	activateCellInset(cur, cur.idx(), cur.x_target(), 0);
-	return true;
-}
-
-
-bool InsetTabular::moveDown(LCursor & cur)
-{
-	if (tabular.row_of_cell(cur.idx()) == tabular.rows() - 1)
-		return false;
-	cur.idx() = tabular.getCellBelow(cur.idx());
-	resetPos(cur);
-	return true;
-}
-
-
-bool InsetTabular::moveDownLock(LCursor & cur)
-{
-	if (tabular.row_of_cell(cur.idx()) == tabular.rows() - 1)
-		return false;
-	cur.idx() = tabular.getCellBelow(cur.idx());
-	resetPos(cur);
-	activateCellInset(cur, cur.idx(), cur.x_target());
-	return true;
-}
-
-
-bool InsetTabular::moveNextCell(LCursor & cur)
+void InsetTabular::moveNextCell(LCursor & cur)
 {
 	lyxerr << "InsetTabular::moveNextCell 1 cur: " << cur << endl;
 	if (isRightToLeft(cur)) {
 		if (tabular.isFirstCellInRow(cur.idx())) {
 			int row = tabular.row_of_cell(cur.idx());
 			if (row == tabular.rows() - 1)
-				return false;
+				return;
 			cur.idx() = tabular.getLastCellInRow(row);
 			cur.idx() = tabular.getCellBelow(cur.idx());
 		} else {
 			if (cur.idx() == 0)
-				return false;
+				return;
 			--cur.idx();
 		}
 	} else {
 		if (tabular.isLastCell(cur.idx()))
-			return false;
+			return;
 		++cur.idx();
 	}
 	cur.par() = 0;
 	cur.pos() = 0;
 	lyxerr << "InsetTabular::moveNextCell 2 cur: " << cur << endl;
 	resetPos(cur);
-	return true;
 }
 
 
-bool InsetTabular::movePrevCell(LCursor & cur)
+void InsetTabular::movePrevCell(LCursor & cur)
 {
 	if (isRightToLeft(cur)) {
 		if (tabular.isLastCellInRow(cur.idx())) {
 			int row = tabular.row_of_cell(cur.idx());
 			if (row == 0)
-				return false;
+				return;
 			cur.idx() = tabular.getFirstCellInRow(row);
 			cur.idx() = tabular.getCellAbove(cur.idx());
 		} else {
 			if (tabular.isLastCell(cur.idx()))
-				return false;
+				return;
 			++cur.idx();
 		}
 	} else {
 		if (cur.idx() == 0) // first cell
-			return false;
+			return;
 		--cur.idx();
 	}
 	cur.par() = 0;
 	cur.pos() = 0;
 	resetPos(cur);
-	return true;
 }
 
 
@@ -1470,24 +1255,7 @@ void InsetTabular::tabularFeatures(LCursor & cur,
 		break;
 	}
 
-	updateLocal(cur);
 	InsetTabularMailer(*this).updateDialog(&bv);
-}
-
-
-void InsetTabular::activateCellInset(LCursor & cur, int cell, int x, int y)
-{
-	cur.idx() = cell;
-	tabular.getCellInset(cell).editXY(cur, x, y);
-	updateLocal(cur);
-}
-
-
-void InsetTabular::activateCellInset(LCursor & cur, int cell, bool behind)
-{
-	cur.idx() = cell;
-	tabular.getCellInset(cell).edit(cur, behind);
-	updateLocal(cur);
 }
 
 
@@ -1777,7 +1545,7 @@ void InsetTabular::cutSelection(LCursor & cur)
 	getSelection(cur, rs, re, cs, ce); 
 	for (int i = rs; i <= re; ++i)
 		for (int j = cs; j <= ce; ++j)
-			tabular.getCellInset(tabular.getCellNumber(i, j)).clear(track);
+			cell(tabular.getCellNumber(i, j)).clear(track);
 }
 
 
@@ -1808,24 +1576,22 @@ void InsetTabular::getSelection(LCursor & cur,
 }
 
 
-int InsetTabular::numParagraphs() const
+size_t InsetTabular::nargs() const
 {
 	return tabular.getNumberOfCells();
 }
 
 
-LyXText * InsetTabular::getText(int i) const
+LyXText * InsetTabular::getText(int idx) const
 {
-	return i < tabular.getNumberOfCells()
-		? tabular.getCellInset(i).getText(0)
-		: 0;
+	return size_t(idx) < nargs() ? cell(idx).getText(0) : 0;
 }
 
 
 void InsetTabular::markErased()
 {
-	for (int cell = 0; cell < tabular.getNumberOfCells(); ++cell)
-		tabular.getCellInset(cell).markErased();
+	for (idx_type idx = 0; idx < nargs(); ++idx)
+		cell(idx).markErased();
 }
 
 
@@ -1964,6 +1730,9 @@ bool InsetTabular::tablemode(LCursor & cur) const
 {
 	return cur.selBegin().idx() != cur.selEnd().idx();
 }
+
+
+
 
 
 string const InsetTabularMailer::name_("tabular");

@@ -31,7 +31,7 @@ public:
 	/// draw according to cached metrics
 	void draw(PainterInfo &, int x, int y) const;
 	///
-	DispatchResult priv_dispatch(LCursor & cur, FuncRequest const & cmd);
+	void priv_dispatch(LCursor & cur, FuncRequest const & cmd);
 
 	///
 	void write(WriteStream & os) const;

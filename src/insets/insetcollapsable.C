@@ -201,19 +201,18 @@ bool InsetCollapsable::descendable() const
 }
 
 
-DispatchResult
-InsetCollapsable::lfunMouseRelease(LCursor & cur, FuncRequest const & cmd)
+void InsetCollapsable::lfunMouseRelease(LCursor & cur, FuncRequest const & cmd)
 {
-	if (cmd.button() == mouse_button::button3) {
+	if (cmd.button() == mouse_button::button3)
 		showInsetDialog(&cur.bv());
-	}
 
 	switch (status_) {
+
 	case Collapsed:
 		lyxerr << "InsetCollapsable::lfunMouseRelease 1" << endl;
 		setStatus(Open);
 		edit(cur, true);
-		return DispatchResult(true, true);
+		break;
 
 	case Open: {
 		FuncRequest cmd1 = cmd;
@@ -221,17 +220,18 @@ InsetCollapsable::lfunMouseRelease(LCursor & cur, FuncRequest const & cmd)
 		if (hitButton(cmd1)) {
 			lyxerr << "InsetCollapsable::lfunMouseRelease 2" << endl;
 			setStatus(Collapsed);
-			return DispatchResult(false, FINISHED_RIGHT);
+			cur.dispatched(FINISHED_RIGHT);
+			break;
 		}
 		lyxerr << "InsetCollapsable::lfunMouseRelease 3" << endl;
-		return inset.dispatch(cur, cmd);
+		inset.dispatch(cur, cmd);
+		break;
 	}
+
 	case Inlined:
-		return inset.dispatch(cur, cmd);
+		inset.dispatch(cur, cmd);
+		break;
 	}
-	BOOST_ASSERT(false);
-	// shut up compiler
-	return DispatchResult(true, true);
 }
 
 
@@ -320,8 +320,7 @@ InsetBase * InsetCollapsable::editXY(LCursor & cur, int x, int y)
 }
 
 
-DispatchResult
-InsetCollapsable::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
+void InsetCollapsable::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 {
 	//lyxerr << "\nInsetCollapsable::priv_dispatch (begin): cmd: " << cmd
 	//	<< "  button y: " << button_dim.y2 << endl;
@@ -331,30 +330,33 @@ InsetCollapsable::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 				inset.dispatch(cur, cmd);
 			else if (status_ == Open && cmd.y > button_dim.y2)
 				inset.dispatch(cur, cmd);
-			return DispatchResult(true, true);
+			break;
 
 		case LFUN_MOUSE_MOTION:
 			if (status_ == Inlined)
 				inset.dispatch(cur, cmd);
 			else if (status_ == Open && cmd.y > button_dim.y2)
 				inset.dispatch(cur, cmd);
-			return DispatchResult(true, true);
+			break;
 
 		case LFUN_MOUSE_RELEASE:
-			return lfunMouseRelease(cur, cmd);
+			lfunMouseRelease(cur, cmd);
+			break;
 
 		case LFUN_INSET_TOGGLE:
 			if (inset.text_.toggleInset(cur))
-				return DispatchResult(true, true);
+				break;
 			if (status_ == Open) {
 				setStatus(Inlined);
-				return DispatchResult(true, true);
+				break;
 			}
 			setStatus(Collapsed);
-			return DispatchResult(false, FINISHED_RIGHT);
+			cur.dispatched(FINISHED_RIGHT);
+			break;
 
 		default:
-			return inset.dispatch(cur, cmd);
+			inset.dispatch(cur, cmd);
+			break;
 	}
 }
 
@@ -390,9 +392,9 @@ int InsetCollapsable::scroll(bool recursive) const
 }
 
 
-int InsetCollapsable::numParagraphs() const
+size_t InsetCollapsable::nargs() const
 {
-	return inset.numParagraphs();
+	return inset.nargs();
 }
 
 

@@ -309,7 +309,7 @@ InsetBase * InsetText::editXY(LCursor & cur, int x, int y)
 }
 
 
-DispatchResult InsetText::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
+void InsetText::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 {
 	//lyxerr << "InsetText::priv_dispatch (begin), act: "
 	//      << cmd.action << " " << endl;
@@ -317,7 +317,7 @@ DispatchResult InsetText::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 	setViewCache(&cur.bv());
 
 	bool was_empty = paragraphs().begin()->empty() && paragraphs().size() == 1;
-	DispatchResult result = text_.dispatch(cur, cmd);
+	text_.dispatch(cur, cmd);
 
 	// If the action has deleted all text in the inset, we need
 	// to change the language to the language of the surronding
@@ -331,7 +331,6 @@ DispatchResult InsetText::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 	}
 
 	//lyxerr << "InsetText::priv_dispatch (end)" << endl;
-	return result;
 }
 
 

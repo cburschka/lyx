@@ -1032,8 +1032,7 @@ void LyXText::prepareToPrint(ParagraphList::iterator pit, Row & row) const
 	double fill_separator = 0;
 	double x = 0;
 
-	bool const is_rtl =
-		pit->isRightToLeftPar(bv()->buffer()->params());
+	bool const is_rtl = isRTL(*pit);
 	if (is_rtl)
 		x = rightMargin(*pit);
 	else
@@ -1851,8 +1850,7 @@ int LyXText::cursorX(CursorSlice const & cur) const
 	if (end <= row_pos)
 		cursor_vpos = row_pos;
 	else if (pos >= end)
-		cursor_vpos = (pit->isRightToLeftPar(bv()->buffer()->params()))
-			? row_pos : end;
+		cursor_vpos = isRTL(*pit) ? row_pos : end;
 	else if (pos > row_pos && pos >= end)
 		// Place cursor after char at (logical) position pos - 1
 		cursor_vpos = (bidi.level(pos - 1) % 2 == 0)
@@ -2038,8 +2036,7 @@ string LyXText::getPossibleLabel(LCursor & cur) const
 		text = "thm"; // Create a correct prefix for prettyref
 
 	text += ':';
-	if (layout->latextype == LATEX_PARAGRAPH ||
-	    lyxrc.label_init_length < 0)
+	if (layout->latextype == LATEX_PARAGRAPH || lyxrc.label_init_length < 0)
 		text.erase();
 
 	string par_text = pit->asString(*cur.bv().buffer(), false);
@@ -2055,4 +2052,23 @@ string LyXText::getPossibleLabel(LCursor & cur) const
 	}
 
 	return text;
+}
+
+
+int LyXText::dist(int x, int y) const
+{
+	int xx = 0;
+	int yy = 0;
+
+	if (x < xo_)
+		xx = xo_ - x;
+	else if (x > xo_ + width)
+		xx = x - xo_ - width;
+
+	if (y < yo_ - ascent())
+		yy = yo_ - ascent() - y;
+	else if (y > yo_ + descent())
+		yy = y - yo_ - descent();
+
+	return xx + yy;
 }

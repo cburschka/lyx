@@ -84,26 +84,24 @@ void UpdatableInset::scroll(BufferView & bv, int offset) const
 }
 
 
-///  An updatable inset could handle lyx editing commands
-DispatchResult
-UpdatableInset::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
+void UpdatableInset::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 {
 	switch (cmd.action) {
-	case LFUN_MOUSE_RELEASE:
-		return DispatchResult(editable() == IS_EDITABLE);
+	//case LFUN_MOUSE_RELEASE:
+	//	return DispatchResult(editable() == IS_EDITABLE);
 
 	case LFUN_SCROLL_INSET:
-		if (!cmd.argument.empty()) {
+		if (cmd.argument.empty()) {
 			if (cmd.argument.find('.') != cmd.argument.npos)
 				scroll(cur.bv(), static_cast<float>(strToDbl(cmd.argument)));
 			else
 				scroll(cur.bv(), strToInt(cmd.argument));
 			cur.bv().update();
-			return DispatchResult(true, true);
 		}
+		break;
 
 	default:
-		return DispatchResult(false);
+		InsetOld::dispatch(cur, cmd);
 	}
 }
 

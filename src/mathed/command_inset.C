@@ -54,17 +54,6 @@ void CommandInset::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-DispatchResult
-CommandInset::priv_dispatch(LCursor & bv, FuncRequest const & cmd)
-{
-	switch (cmd.action) {
-		default:
-			return MathNestInset::priv_dispatch(bv, cmd);
-	}
-	return DispatchResult(false);
-}
-
-
 void CommandInset::write(WriteStream & os) const
 {
 	os << '\\' << name_.c_str();

@@ -30,8 +30,7 @@ public:
 	///
 	InsetLatexAccent();
 	///
-	explicit
-	InsetLatexAccent(std::string const & str);
+	explicit InsetLatexAccent(std::string const & str);
 	///
 	void metrics(MetricsInfo &, Dimension &) const;
 	///

@@ -24,8 +24,7 @@ public:
 	///
 	InsetCommandParams();
 	///
-	explicit
-	InsetCommandParams(std::string const & n,
+	explicit InsetCommandParams(std::string const & n,
 			    std::string const & c = std::string(),
 			    std::string const & o = std::string());
 	///

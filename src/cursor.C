@@ -81,18 +81,22 @@ DispatchResult LCursor::dispatch(FuncRequest const & cmd0)
 {
 	lyxerr << "\nLCursor::dispatch: cmd: " << cmd0 << endl << *this << endl;
 	FuncRequest cmd = cmd0;
+	disp_.update(true);
+	disp_.val(NONE);
 	for (current_ = cursor_.size() - 1; current_ >= 1; --current_) {
-		DispatchResult res = inset()->dispatch(*this, cmd);
-		if (res.dispatched()) {
-			current_ = cursor_.size() - 1;
-			return DispatchResult(true, true);
-		}
+		// the inset's dispatch() is supposed to reset the update and
+		// val flags if necessary 
+		inset()->dispatch(*this, cmd);
 		
-
 		// "Mutate" the request for semi-handled requests that need
 		// additional handling in outer levels.
-		switch (res.val()) {
+		switch (disp_.val()) {
+			case NONE:
+				// the inset handled the event fully
+				current_ = cursor_.size() - 1;
+				return DispatchResult(true, true);
 			case FINISHED:
+				// the inset handled the event partially
 				cmd = FuncRequest(LFUN_FINISHED_LEFT);
 				break;
 			case FINISHED_RIGHT:
@@ -106,15 +110,15 @@ DispatchResult LCursor::dispatch(FuncRequest const & cmd0)
 				break;
 			default:
 				//lyxerr << "not handled on level " << current_
-				//	<< " val: " << res.val() << endl;
+				//	<< " val: " << disp_.val() << endl;
 				break;
 		}
 	}
 	BOOST_ASSERT(current_ == 0);
-	DispatchResult res = bv_->text()->dispatch(*this, cmd);
+	bv_->text()->dispatch(*this, cmd);
 	//lyxerr << "   result: " << res.val() << endl;
 	current_ = cursor_.size() - 1;
-	return res;
+	return disp_;
 }
 
 
@@ -1356,9 +1360,10 @@ char LCursor::halign()
 
 bool LCursor::goUpDown(bool up)
 {
-	// Be warned: The 'logic' implemented in this function is highly fragile.
-	// A distance of one pixel or a '<' vs '<=' _really_ matters.
-	// So fiddle around with it only if you know what you are doing!
+	// Be warned: The 'logic' implemented in this function is highly
+	// fragile. A distance of one pixel or a '<' vs '<=' _really
+	// matters. So fiddle around with it only if you think you know
+	// what you are doing!
   int xo = 0;
 	int yo = 0;
 	getPos(xo, yo);
@@ -1484,10 +1489,9 @@ void LCursor::bruteFind2(int x, int y)
 	double best_dist = 1e10;
 
 	CursorBase it = cursor_;
-	it.back().pos(0);
+	it.back().pos() = 0;
 	CursorBase et = cursor_;
-	int n = et.back().asMathInset()->cell(et.back().idx_).size();
-	et.back().pos(n);
+	et.back().pos() = et.back().asMathInset()->cell(et.back().idx_).size();
 	for (int i = 0; ; ++i) {
 		int xo, yo;
 		CursorSlice & cur = it.back();
@@ -1935,4 +1939,22 @@ void LCursor::update()
 string LCursor::getPossibleLabel()
 {
 	return inMathed() ? "eq:" : text()->getPossibleLabel(*this);
+}
+
+
+void LCursor::notdispatched()
+{
+	disp_.dispatched(false);
+}
+
+
+void LCursor::dispatched(dispatch_result_t res)
+{
+	disp_.val(res);
+}
+
+
+void LCursor::noupdate()
+{
+	disp_.update(false);
 }

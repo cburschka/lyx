@@ -50,9 +50,7 @@ public:
 	std::string const getBibLabel() const;
 protected:
 	///
-	virtual
-	DispatchResult
-	priv_dispatch(LCursor & cur, FuncRequest const & cmd);
+	virtual void priv_dispatch(LCursor & cur, FuncRequest const & cmd);
 private:
 	///
 	int counter;

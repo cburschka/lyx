@@ -216,7 +216,7 @@ public:
 
 protected:
 	///
-	DispatchResult priv_dispatch(LCursor & cur, FuncRequest const & cmd);
+	void priv_dispatch(LCursor & cur, FuncRequest const & cmd);
 	/// returns x offset of cell compared to inset
 	int cellXOffset(idx_type idx) const;
 	/// returns y offset of cell compared to inset

@@ -98,33 +98,35 @@ int InsetCommand::docbook(Buffer const &, ostream &,
 }
 
 
-DispatchResult
-InsetCommand::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
+void InsetCommand::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 {
 	switch (cmd.action) {
 	case LFUN_INSET_MODIFY: {
 		InsetCommandParams p;
 		InsetCommandMailer::string2params(mailer_name_, cmd.argument, p);
-		if (p.getCmdName().empty())
-			return DispatchResult(false);
-		setParams(p);
-		cur.bv().update();
-		return DispatchResult(true, true);
+		if (p.getCmdName().empty()) {	
+			cur.notdispatched();
+		} else {
+			setParams(p);
+			cur.bv().update();
+		}
+		break;
 	}
 
 	case LFUN_INSET_DIALOG_UPDATE:
 		InsetCommandMailer(cmd.argument, *this).updateDialog(&cur.bv());
-		return DispatchResult(true, true);
+		break;
 
 	case LFUN_INSET_DIALOG_SHOW:
 	case LFUN_MOUSE_RELEASE: {
 		if (!mailer_name_.empty())
 			InsetCommandMailer(mailer_name_, *this).showDialog(&cur.bv());
-		return DispatchResult(true);
+		break;
 	}
 
 	default:
-		return DispatchResult(false);
+		InsetOld::priv_dispatch(cur, cmd);
+		break;
 	}
 
 }

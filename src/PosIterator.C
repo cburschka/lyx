@@ -119,7 +119,7 @@ PosIterator & PosIterator::operator--()
 		--p.pos;
 		InsetBase * inset = p.pit->getInset(p.pos);
 		if (inset)
-			p.index = inset->numParagraphs();
+			p.index = inset->nargs();
 	} else {
 		if (p.pit == p.pl->begin()) {
 			if (stack_.size() == 1)

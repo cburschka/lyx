@@ -53,8 +53,7 @@ auto_ptr<InsetBase> InsetBibitem::clone() const
 }
 
 
-DispatchResult
-InsetBibitem::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
+void InsetBibitem::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 {
 	switch (cmd.action) {
 
@@ -62,15 +61,16 @@ InsetBibitem::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 		InsetCommandParams p;
 		InsetCommandMailer::string2params("bibitem", cmd.argument, p);
 		if (p.getCmdName().empty())
-			return DispatchResult(true, true);
+			break;
 		setParams(p);
 		cur.bv().update();
 		cur.bv().fitCursor();
-		return DispatchResult(true, true);
+		break;
 	}
 
 	default:
-		return InsetCommand::priv_dispatch(cur, cmd);
+		InsetCommand::priv_dispatch(cur, cmd);
+		break;
 	}
 }
 

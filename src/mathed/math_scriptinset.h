@@ -98,7 +98,7 @@ public:
 	void infoize2(std::ostream & os) const;
 protected:
 	///
-	DispatchResult priv_dispatch(LCursor & cur, FuncRequest const & cmd);
+	void priv_dispatch(LCursor & cur, FuncRequest const & cmd);
 private:
 	/// returns x offset for main part
 	int dxx() const;

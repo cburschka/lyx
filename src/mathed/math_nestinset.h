@@ -101,7 +101,7 @@ public:
 
 protected:
 	///
-	DispatchResult priv_dispatch(LCursor & cur, FuncRequest const & cmd);
+	void priv_dispatch(LCursor & cur, FuncRequest const & cmd);
 	///
 	void handleFont(LCursor & cur,
 		std::string const & arg, std::string const & font);
@@ -111,11 +111,11 @@ protected:
 
 private:
 	/// lfun handler
-	DispatchResult lfunMousePress(LCursor &, FuncRequest const &);
+	void lfunMousePress(LCursor &, FuncRequest const &);
 	///
-	DispatchResult lfunMouseRelease(LCursor &, FuncRequest const &);
+	void lfunMouseRelease(LCursor &, FuncRequest const &);
 	///
-	DispatchResult lfunMouseMotion(LCursor &, FuncRequest const &);
+	void lfunMouseMotion(LCursor &, FuncRequest const &);
 
 protected:
 	/// we store the cells in a vector

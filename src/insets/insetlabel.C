@@ -91,25 +91,27 @@ void changeRefsIfUnique(BufferView & bv, string const & from, string const & to)
 } // namespace anon
 
 
-DispatchResult
-InsetLabel::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
+void InsetLabel::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 {
 	switch (cmd.action) {
 
 	case LFUN_INSET_MODIFY: {
 		InsetCommandParams p;
 		InsetCommandMailer::string2params("label", cmd.argument, p);
-		if (p.getCmdName().empty())
-			return DispatchResult(false);
+		if (p.getCmdName().empty()) {
+			cur.notdispatched();
+			break;
+		}
 		if (p.getContents() != params().getContents())
 			changeRefsIfUnique(cur.bv(), params().getContents(),
 						       p.getContents());
 		setParams(p);
-		return DispatchResult(true, true);
+		break;
 	}
 
 	default:
-		return InsetCommand::priv_dispatch(cur, cmd);
+		InsetCommand::priv_dispatch(cur, cmd);
+		break;
 	}
 }
 

@@ -1,3 +1,19 @@
+2004-02-16  André Pönitz  <poenitz@gmx.net>
+
+	* cursor.[Ch]: use new '_void_ dispatch(...)' signature (see
+	  insets/ChangeLog)
+
+	* cursor_slice.[Ch]: remove unneeded acessor function
+
+	* lyxtext.h: rename rtl() to isRTL()
+
+	* rowpainter.C:
+	* tabular.C:
+	* text.C:
+	* text2.C:
+	* text3.C: adjust
+
+
 2004-02-16  Alfredo Braunstein  <abraunst@lyx.org>
 
 	* rowpainter.C (paintSelection): coord fix

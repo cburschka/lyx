@@ -117,7 +117,7 @@ public:
 
 protected:
 	///
-	DispatchResult priv_dispatch(LCursor & cur, FuncRequest const & cmd);
+	void priv_dispatch(LCursor & cur, FuncRequest const & cmd);
 	///
 	std::string eolString(row_type row, bool fragile) const;
 

@@ -58,22 +58,16 @@ public:
 
 	/// the current inset
 	InsetBase * inset() const { return inset_; }
-	/// set the paragraph that contains this cursor
-	void idx(idx_type idx);
 	/// return the cell this cursor is in
 	idx_type idx() const;
 	/// return the cell this cursor is in
 	idx_type & idx();
 	/// return the last cell in this inset
 	idx_type lastidx() const { return nargs() - 1; }
-	/// set the paragraph that contains this cursor
-	void par(par_type par);
 	/// return the paragraph this cursor is in
 	par_type par() const;
 	/// return the paragraph this cursor is in
 	par_type & par();
-	/// set the position within the paragraph
-	void pos(pos_type pos);
 	/// return the position within the paragraph
 	pos_type pos() const;
 	/// return the position within the paragraph
@@ -94,8 +88,6 @@ public:
 	///
 	/// texted specific stuff
 	///
-	/// see comment for the member
-	void boundary(bool b);
 	/// see comment for the member
 	bool boundary() const;
 	/// see comment for the member

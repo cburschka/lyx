@@ -348,8 +348,7 @@ void MathNestInset::handleFont2(LCursor & cur, string const & arg)
 }
 
 
-DispatchResult
-MathNestInset::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
+void MathNestInset::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 {
 	lyxerr << "MathNestInset: request: " << cmd << std::endl;
 
@@ -362,7 +361,7 @@ MathNestInset::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 			cur.cell().insert(cur.pos(), ar);
 			cur.pos() += ar.size();
 		}
-		return DispatchResult(true, true);
+		break;
 /*
 	case LFUN_PASTE: {
 		size_t n = 0;
@@ -372,141 +371,184 @@ MathNestInset::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 			cur.macroModeClose();
 		//recordUndo(cur, Undo::ATOMIC);
 		cur.selPaste(n);
-		return DispatchResult(true, true);
+		break;
 	}
 */
 
 	case LFUN_PASTESELECTION:
-		return dispatch(cur, FuncRequest(LFUN_PASTE, cur.bv().getClipboard())); 
+		dispatch(cur, FuncRequest(LFUN_PASTE, cur.bv().getClipboard()));
+		break;
 
 	case LFUN_MOUSE_PRESS:
-		return lfunMousePress(cur, cmd);
+		lfunMousePress(cur, cmd);
+		break;
+
 	case LFUN_MOUSE_MOTION:
-		return lfunMouseMotion(cur, cmd);
+		lfunMouseMotion(cur, cmd);
+		break;
+
 	case LFUN_MOUSE_RELEASE:
-		return lfunMouseRelease(cur, cmd);
+		lfunMouseRelease(cur, cmd);
+		break;
+
 	case LFUN_MOUSE_DOUBLE:
 	case LFUN_MOUSE_TRIPLE:
 		//lyxerr << "Mouse double" << endl;
 		//lyxerr << "Mouse triple" << endl;
-		return dispatch(cur, FuncRequest(LFUN_WORDSEL));
+		dispatch(cur, FuncRequest(LFUN_WORDSEL));
+		break;
+
+	case LFUN_FINISHED_LEFT:
+		cur.pop(cur.currentDepth());
+		cur.bv().cursor() = cur;
+		break;
+
+	case LFUN_FINISHED_RIGHT:
+		cur.pop(cur.currentDepth());
+		++cur.pos();
+		cur.bv().cursor() = cur;
+		break;
+
+	case LFUN_FINISHED_UP:
+		cur.pop(cur.currentDepth());
+		//idxUpDown(cur, true);
+		cur.bv().cursor() = cur;
+		break;
+
+	case LFUN_FINISHED_DOWN:
+		cur.pop(cur.currentDepth());
+		//idxUpDown(cur, false);
+		cur.bv().cursor() = cur;
+		break;
 
 	case LFUN_RIGHTSEL:
 	case LFUN_RIGHT:
 		cur.selHandle(cmd.action == LFUN_RIGHTSEL);
-		return cur.right() ?
-			DispatchResult(true, true) : DispatchResult(false, FINISHED_RIGHT);
+		if (!cur.right()) 
+			cur.dispatched(FINISHED_RIGHT);
+		break;
 
 	case LFUN_LEFTSEL:
 	case LFUN_LEFT:
 		cur.selHandle(cmd.action == LFUN_LEFTSEL);
-		return cur.left() ?
-			DispatchResult(true, true) : DispatchResult(false, FINISHED);
+		if (!cur.left())
+			cur.dispatched(FINISHED);
+		break;
 
 	case LFUN_UPSEL:
 	case LFUN_UP:
 		cur.selHandle(cmd.action == LFUN_UPSEL);
-		return cur.up() ?
-			DispatchResult(true, true) : DispatchResult(false, FINISHED_UP);
+		if (!cur.up())
+			cur.dispatched(FINISHED_UP);
+		break;
 
 	case LFUN_DOWNSEL:
 	case LFUN_DOWN:
 		cur.selHandle(cmd.action == LFUN_DOWNSEL);
-		return cur.down() ?
-			DispatchResult(true, true) : DispatchResult(false, FINISHED_DOWN);
+		if (!cur.down())
+			cur.dispatched(FINISHED_DOWN);
+		break;
 
 	case LFUN_WORDSEL:
 		cur.home();
 		cur.resetAnchor();
 		cur.selection() = true;
 		cur.end();
-		return DispatchResult(true, true);
+		break;
 
 	case LFUN_UP_PARAGRAPHSEL:
 	case LFUN_UP_PARAGRAPH:
 	case LFUN_DOWN_PARAGRAPHSEL:
 	case LFUN_DOWN_PARAGRAPH:
-		return DispatchResult(true, FINISHED);
+		break;
 
 	case LFUN_WORDLEFTSEL:
 	case LFUN_WORDLEFT:
 		cur.selHandle(cmd.action == LFUN_WORDLEFTSEL);
-		return cur.home()
-			? DispatchResult(true, true) : DispatchResult(true, FINISHED);
+		if (!cur.home())
+			cur.dispatched(FINISHED);
+		break;
 
 	case LFUN_WORDRIGHTSEL:
 	case LFUN_WORDRIGHT:
 		cur.selHandle(cmd.action == LFUN_WORDRIGHTSEL);
-		return cur.end()
-			? DispatchResult(true, true) : DispatchResult(false, FINISHED_RIGHT);
+		if (!cur.end())
+			cur.dispatched(FINISHED_RIGHT);
+		break;
 
 	case LFUN_HOMESEL:
 	case LFUN_HOME:
 		cur.selHandle(cmd.action == LFUN_HOMESEL);
-		return cur.home()
-			? DispatchResult(true, true) : DispatchResult(true, FINISHED);
+		if (!cur.home())
+			cur.dispatched(FINISHED_RIGHT);
+		break;
 
 	case LFUN_ENDSEL:
 	case LFUN_END:
 		cur.selHandle(cmd.action == LFUN_ENDSEL);
-		return cur.end()
-			? DispatchResult(true, true) : DispatchResult(false, FINISHED_RIGHT);
+		if (!cur.end())
+			cur.dispatched(FINISHED_RIGHT);
+		break;
 
 	case LFUN_PRIORSEL:
 	case LFUN_PRIOR:
 	case LFUN_BEGINNINGBUFSEL:
 	case LFUN_BEGINNINGBUF:
-		return DispatchResult(true, FINISHED);
+		cur.dispatched(FINISHED);
+		break;
 
 	case LFUN_NEXTSEL:
 	case LFUN_NEXT:
 	case LFUN_ENDBUFSEL:
 	case LFUN_ENDBUF:
-		return DispatchResult(false, FINISHED_RIGHT);
+		cur.dispatched(FINISHED_RIGHT);
+		break;
 
 	case LFUN_CELL_FORWARD:
 		cur.inset()->idxNext(cur);
-		return DispatchResult(true, true);
+		break;
 
 	case LFUN_CELL_BACKWARD:
 		cur.inset()->idxPrev(cur);
-		return DispatchResult(true, true);
+		break;
 
 	case LFUN_DELETE_WORD_BACKWARD:
 	case LFUN_BACKSPACE:
 		//recordUndo(cur, Undo::ATOMIC);
 		cur.backspace();
-		return DispatchResult(true, true);
+		break;
 
 	case LFUN_DELETE_WORD_FORWARD:
 	case LFUN_DELETE:
 		//recordUndo(cur, Undo::ATOMIC);
 		cur.erase();
-		return DispatchResult(true, FINISHED);
+		cur.dispatched(FINISHED);
+		break;
 
 	case LFUN_ESCAPE:
-		if (!cur.selection())
-			return DispatchResult(true, true);
-		cur.selClear();
-		return DispatchResult(false);
+		if (cur.selection()) 
+			cur.selClear();
+		else 
+			cur.dispatched(FINISHED);
+		break;
 
 	case LFUN_INSET_TOGGLE:
 		cur.lockToggle();
-		return DispatchResult(true, true);
+		break;
 
 	case LFUN_SELFINSERT:
-		if (!cmd.argument.empty()) {
-			//recordUndo(cur, Undo::ATOMIC);
-			if (cmd.argument.size() == 1) {
-				if (cur.interpret(cmd.argument[0]))
-					return DispatchResult(true, true);
-				else
-					return DispatchResult(false, FINISHED_RIGHT);
-			}
-			cur.insert(cmd.argument);
+		if (cmd.argument.empty()) {
+			cur.dispatched(FINISHED_RIGHT);
+			break;
 		}
-		return DispatchResult(false, FINISHED_RIGHT);
-
+		//recordUndo(cur, Undo::ATOMIC);
+		if (cmd.argument.size() != 1) {
+			cur.insert(cmd.argument);
+			break;
+		}
+		if (!cur.interpret(cmd.argument[0]))
+			cur.dispatched(FINISHED_RIGHT);
+		break;
 
 #if 0
 //
@@ -533,18 +575,17 @@ MathNestInset::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 		istringstream is(cmd.argument.c_str());
 		is >> x >> y;
 		cur.setScreenPos(x, y);
-		return DispatchResult(true, true);
+		break;
 	}
 
 	case LFUN_CUT:
 		//recordUndo(cur, Undo::DELETE);
 		cur.selCut();
-		return DispatchResult(true, true);
+		break;
 
 	case LFUN_COPY:
 		cur.selCopy();
-		return DispatchResult(true, true);
-
+		break;
 
 	// Special casing for superscript in case of LyX handling
 	// dead-keys:
@@ -555,7 +596,7 @@ MathNestInset::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 			//recordUndo(cur, Undo::ATOMIC);
 			cur.script(true);
 		}
-		return DispatchResult(true, true);
+		break;
 
 	case LFUN_UMLAUT:
 	case LFUN_ACUTE:
@@ -571,44 +612,44 @@ MathNestInset::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 	case LFUN_TIE:
 	case LFUN_OGONEK:
 	case LFUN_HUNG_UMLAUT:
-		return DispatchResult(true, true);
+		break;
 
 	//  Math fonts
 	case LFUN_FREEFONT_APPLY:
 	case LFUN_FREEFONT_UPDATE:
 		handleFont2(cur, cmd.argument);
-		return DispatchResult(true, true);
+		break;
 
 	case LFUN_BOLD:
 		handleFont(cur, cmd.argument, "mathbf");
-		return DispatchResult(true, true);
+		break;
 	case LFUN_SANS:
 		handleFont(cur, cmd.argument, "mathsf");
-		return DispatchResult(true, true);
+		break;
 	case LFUN_EMPH:
 		handleFont(cur, cmd.argument, "mathcal");
-		return DispatchResult(true, true);
+		break;
 	case LFUN_ROMAN:
 		handleFont(cur, cmd.argument, "mathrm");
-		return DispatchResult(true, true);
+		break;
 	case LFUN_CODE:
 		handleFont(cur, cmd.argument, "texttt");
-		return DispatchResult(true, true);
+		break;
 	case LFUN_FRAK:
 		handleFont(cur, cmd.argument, "mathfrak");
-		return DispatchResult(true, true);
+		break;
 	case LFUN_ITAL:
 		handleFont(cur, cmd.argument, "mathit");
-		return DispatchResult(true, true);
+		break;
 	case LFUN_NOUN:
 		handleFont(cur, cmd.argument, "mathbb");
-		return DispatchResult(true, true);
+		break;
 	//case LFUN_FREEFONT_APPLY:
 		handleFont(cur, cmd.argument, "textrm");
-		return DispatchResult(true, true);
+		break;
 	case LFUN_DEFAULT:
 		handleFont(cur, cmd.argument, "textnormal");
-		return DispatchResult(true, true);
+		break;
 
 	case LFUN_MATH_MODE:
 #if 1
@@ -624,7 +665,7 @@ MathNestInset::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 			handleFont(cur, cmd.argument, "textrm");
 		//cur.owner()->message(_("math text mode toggled"));
 #endif
-		return DispatchResult(true, true);
+		break;
 
 	case LFUN_MATH_SIZE:
 #if 0
@@ -633,7 +674,7 @@ MathNestInset::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 			cur.setSize(arg);
 		}
 #endif
-		return DispatchResult(true, true);
+		break;
 
 	case LFUN_INSERT_MATRIX: {
 		//recordUndo(cur, Undo::ATOMIC);
@@ -650,7 +691,7 @@ MathNestInset::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 		v_align += 'c';
 		cur.niceInsert(
 			MathAtom(new MathArrayInset("array", m, n, v_align[0], h_align)));
-		return DispatchResult(true, true);
+		break;
 	}
 
 	case LFUN_MATH_DELIM: {
@@ -664,25 +705,25 @@ MathNestInset::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 			rs = ')';
 		//recordUndo(cur, Undo::ATOMIC);
 		cur.handleNest(MathAtom(new MathDelimInset(ls, rs)));
-		return DispatchResult(true, true);
+		break;
 	}
 
 	case LFUN_SPACE_INSERT:
 	case LFUN_MATH_SPACE:
 		//recordUndo(cur, Undo::ATOMIC);
 		cur.insert(MathAtom(new MathSpaceInset(",")));
-		return DispatchResult(true, true);
+		break;
 
 	case LFUN_UNDO:
 #warning look here
 		//cur.bv().owner()->message(_("Invalid action in math mode!"));
-		return DispatchResult(true, true);
+		break;
 
 	case LFUN_INSET_ERT:
 		// interpret this as if a backslash was typed
 		//recordUndo(cur, Undo::ATOMIC);
 		cur.interpret('\\');
-		return DispatchResult(true, true);
+		break;
 
 // FIXME: We probably should swap parts of "math-insert" and "self-insert"
 // handling such that "self-insert" works on "arbitrary stuff" too, and
@@ -690,10 +731,7 @@ MathNestInset::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 	case LFUN_INSERT_MATH:
 		//recordUndo(cur, Undo::ATOMIC);
 		cur.niceInsert(cmd.argument);
-		return DispatchResult(true, true);
-
-	case LFUN_DIALOG_SHOW:
-		return DispatchResult(false);
+		break;
 
 	case LFUN_DIALOG_SHOW_NEW_INSET: {
 		string const & name = cmd.argument;
@@ -704,10 +742,8 @@ MathNestInset::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 			data = tmp.createDialogStr(name);
 		}
 #endif
-		if (data.empty())
-			return DispatchResult(false);
 		cur.bv().owner()->getDialogs().show(name, data, 0);
-		return DispatchResult(true, true);
+		break;
 	}
 
 	case LFUN_INSET_APPLY: {
@@ -715,15 +751,16 @@ MathNestInset::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 		InsetBase * base = cur.bv().owner()->getDialogs().getOpenInset(name);
 
 		if (base) {
-			FuncRequest fr(LFUN_INSET_MODIFY, cmd.argument);
-			return base->dispatch(cur, fr);
+			base->dispatch(cur, FuncRequest(LFUN_INSET_MODIFY, cmd.argument));
+			break;
 		}
 		MathArray ar;
 		if (createMathInset_fromDialogStr(cmd.argument, ar)) {
 			cur.insert(ar);
-			return DispatchResult(true, true);
+			break;
 		}
-		return DispatchResult(false);
+		cur.notdispatched();
+		break;
 	}
 
 #warning look here
@@ -731,9 +768,9 @@ MathNestInset::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 
 	case LFUN_WORD_REPLACE:
 	case LFUN_WORD_FIND:
-		return
-			searchForward(&cur.bv(), cmd.getArg(0), false, false)
-				? DispatchResult(true, true) : DispatchResult(false);
+		if (!searchForward(&cur.bv(), cmd.getArg(0), false, false))
+			cur.notdispatched();
+		break;
 
 	cur.normalize();
 	cur.touch();
@@ -747,12 +784,12 @@ MathNestInset::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 		if (remove_inset)
 			cur.bv().owner()->dispatch(FuncRequest(LFUN_DELETE));
 	}
-
-	return result;  // original version
+	break;
 #endif
 
 	default:
-		return MathDimInset::priv_dispatch(cur, cmd);
+		MathDimInset::priv_dispatch(cur, cmd);
+		break;
 	}
 }
 
@@ -792,15 +829,14 @@ InsetBase * MathNestInset::editXY(LCursor & cur, int x, int y)
 }
 
 
-DispatchResult
-MathNestInset::lfunMouseRelease(LCursor & cur, FuncRequest const & cmd)
+void MathNestInset::lfunMouseRelease(LCursor & cur, FuncRequest const & cmd)
 {
 	//lyxerr << "lfunMouseRelease: buttons: " << cmd.button() << endl;
 
 	if (cmd.button() == mouse_button::button1) {
 		// try to dispatch to enclosed insets first
 		//cur.bv().stuffClipboard(cur.grabSelection());
-		return DispatchResult(true, true);
+		return;
 	}
 
 	if (cmd.button() == mouse_button::button2) {
@@ -810,21 +846,20 @@ MathNestInset::lfunMouseRelease(LCursor & cur, FuncRequest const & cmd)
 		cur.setScreenPos(cmd.x, cmd.y);
 		cur.insert(ar);
 		cur.bv().update();
-		return DispatchResult(true, true);
+		return;
 	}
 
 	if (cmd.button() == mouse_button::button3) {
 		// try to dispatch to enclosed insets first
 		cur.bv().owner()->getDialogs().show("mathpanel");
-		return DispatchResult(true, true);
+		return;
 	}
 
-	return DispatchResult(false);
+	cur.notdispatched();
 }
 
 
-DispatchResult
-MathNestInset::lfunMousePress(LCursor & cur, FuncRequest const & cmd)
+void MathNestInset::lfunMousePress(LCursor & cur, FuncRequest const & cmd)
 {
 	lyxerr << "lfunMousePress: buttons: " << cmd.button() << endl;
 	if (cmd.button() == mouse_button::button1) {
@@ -834,30 +869,22 @@ MathNestInset::lfunMousePress(LCursor & cur, FuncRequest const & cmd)
 		//cur.setScreenPos(cmd.x + xo_, cmd.y + yo_);
 		lyxerr << "lfunMousePress: setting cursor to: " << cur << endl;
 		cur.bv().cursor() = cur;
-		return DispatchResult(true, true);
 	}
 
 	if (cmd.button() == mouse_button::button2) {
-		return priv_dispatch(cur, FuncRequest(LFUN_PASTESELECTION));
+		priv_dispatch(cur, FuncRequest(LFUN_PASTESELECTION));
 	}
-
-	if (cmd.button() == mouse_button::button3) {
-		return DispatchResult(true, true);
-	}
-
-	return DispatchResult(true, true);
 }
 
 
-DispatchResult
-MathNestInset::lfunMouseMotion(LCursor & cur, FuncRequest const & cmd)
+void MathNestInset::lfunMouseMotion(LCursor & cur, FuncRequest const & cmd)
 {
 	// only select with button 1
 	if (cmd.button() != mouse_button::button1)
-		return DispatchResult(true, true);
+		return;
 
 	if (abs(cmd.x - first_x) < 2 && abs(cmd.y - first_y) < 2)
-		return DispatchResult(true, true);
+		return;
 
 	first_x = cmd.x;
 	first_y = cmd.y;
@@ -868,5 +895,5 @@ MathNestInset::lfunMouseMotion(LCursor & cur, FuncRequest const & cmd)
 	//cur.setScreenPos(cmd.x + xo_, cmd.y + yo_);
 	cur.bv().cursor().cursor_ = cur.cursor_;
 	cur.bv().cursor().selection() = true;
-	return DispatchResult(true, true);
+	return;
 }

@@ -14,6 +14,7 @@
 #define COMMAND_INSET_H
 
 #include "math_nestinset.h"
+
 #include "insets/render_button.h"
 
 
@@ -38,11 +39,6 @@ public:
 	std::string const createDialogStr(std::string const & name) const;
 
 	std::string const & commandname() const { return name_; }
-protected:
-	///
-	virtual
-	DispatchResult
-	priv_dispatch(LCursor & cur, FuncRequest const & cmd);
 private:
 	std::string name_;
 	mutable bool set_label_;

@@ -169,8 +169,7 @@ bool InsetBox::showInsetDialog(BufferView * bv) const
 }
 
 
-DispatchResult
-InsetBox::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
+void InsetBox::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 {
 	switch (cmd.action) {
 
@@ -178,22 +177,24 @@ InsetBox::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 		lyxerr << "InsetBox::dispatch MODIFY" << endl;
 		InsetBoxMailer::string2params(cmd.argument, params_);
 		setButtonLabel();
-		return DispatchResult(true, true);
+		break;
 	}
 
 	case LFUN_INSET_DIALOG_UPDATE:
 		InsetBoxMailer(*this).updateDialog(&cur.bv());
-		return DispatchResult(true);
+		break;
 
 	case LFUN_MOUSE_RELEASE:
 		if (cmd.button() == mouse_button::button3 && hitButton(cmd)) {
 			InsetBoxMailer(*this).showDialog(&cur.bv());
-			return DispatchResult(true);
+			break;
 		}
-		return InsetCollapsable::priv_dispatch(cur, cmd);
+		InsetCollapsable::priv_dispatch(cur, cmd);
+		break;
 
 	default:
-		return InsetCollapsable::priv_dispatch(cur, cmd);
+		InsetCollapsable::priv_dispatch(cur, cmd);
+		break;
 	}
 }
 

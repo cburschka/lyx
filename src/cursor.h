@@ -13,6 +13,7 @@
 #define CURSOR_H
 
 #include "cursor_slice.h"
+#include "dispatchresult.h"
 
 #include <iosfwd>
 #include <vector>
@@ -289,6 +290,10 @@ public:
 	void replaceWord(std::string const & replacestring);
 	/// update our view
 	void update();
+	///
+	void dispatched(dispatch_result_t res);
+	void notdispatched();
+	void noupdate();
 
 	/// output
 	friend std::ostream & operator<<(std::ostream & os, LCursor const & cur);
@@ -298,6 +303,9 @@ public:
 	std::vector<CursorSlice> cursor_;
 	/// the anchor position
 	std::vector<CursorSlice> anchor_;
+	
+	/// 
+	DispatchResult disp_;
 
 private:
 	///

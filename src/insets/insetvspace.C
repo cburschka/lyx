@@ -60,22 +60,22 @@ std::auto_ptr<InsetBase> InsetVSpace::clone() const
 }
 
 
-DispatchResult
-InsetVSpace::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
+void InsetVSpace::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 {
 	switch (cmd.action) {
 
 	case LFUN_INSET_MODIFY: {
 		InsetVSpaceMailer::string2params(cmd.argument, space_);
-		return DispatchResult(true, true);
+		break;
 	}
 
 	case LFUN_MOUSE_PRESS:
 		InsetVSpaceMailer(*this).showDialog(&cur.bv());
-		return DispatchResult(true, true);
+		break;
 
 	default:
-		return InsetOld::priv_dispatch(cur, cmd);
+		InsetOld::priv_dispatch(cur, cmd);
+		break;
 	}
 }
 

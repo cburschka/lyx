@@ -110,8 +110,7 @@ bool InsetBranch::showInsetDialog(BufferView * bv) const
 }
 
 
-DispatchResult
-InsetBranch::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
+void InsetBranch::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 {
 	switch (cmd.action) {
 	case LFUN_INSET_MODIFY: {
@@ -119,27 +118,30 @@ InsetBranch::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 		InsetBranchMailer::string2params(cmd.argument, params);
 		params_.branch = params.branch;
 		setButtonLabel();
-		return DispatchResult(true, true);
+		break;
 	}
 
 	case LFUN_MOUSE_PRESS:
 		if (cmd.button() != mouse_button::button3)
-			return InsetCollapsable::priv_dispatch(cur, cmd);
-		return DispatchResult(false);
+			InsetCollapsable::priv_dispatch(cur, cmd);
+		else
+			cur.notdispatched();
+		break;
 
 	case LFUN_INSET_DIALOG_UPDATE:
 		InsetBranchMailer(*this).updateDialog(&cur.bv());
-		return DispatchResult(true);
+		break;
 
 	case LFUN_MOUSE_RELEASE:
-		if (cmd.button() == mouse_button::button3 && hitButton(cmd)) {
+		if (cmd.button() == mouse_button::button3 && hitButton(cmd))
 			InsetBranchMailer(*this).showDialog(&cur.bv());
-			return DispatchResult(true);
-		}
-		return InsetCollapsable::priv_dispatch(cur, cmd);
+		else
+			InsetCollapsable::priv_dispatch(cur, cmd);
+		break;
 
 	default:
-		return InsetCollapsable::priv_dispatch(cur, cmd);
+		InsetCollapsable::priv_dispatch(cur, cmd);
+		break;
 	}
 }
 

@@ -27,16 +27,16 @@
 
 
 
-DispatchResult InsetBase::dispatch(LCursor & cur, FuncRequest const & cmd)
+void InsetBase::dispatch(LCursor & cur, FuncRequest const & cmd)
 {
-	return priv_dispatch(cur, cmd);
+	priv_dispatch(cur, cmd);
 }
 
 
-DispatchResult InsetBase::priv_dispatch(LCursor &, FuncRequest const &)
+void InsetBase::priv_dispatch(LCursor & cur, FuncRequest const &)
 {
-	lyxerr << "InsetBase::priv_dispatch" << std::endl;
-	return DispatchResult(false);
+	cur.noupdate();
+	cur.notdispatched();
 }
 
 
@@ -46,9 +46,9 @@ void InsetBase::edit(LCursor &, bool)
 }
 
 
-InsetBase * InsetBase::editXY(LCursor & cur, int, int)
+InsetBase * InsetBase::editXY(LCursor &, int x, int y)
 {
-	lyxerr << "InsetBase: edit xy" << std::endl;
+	lyxerr << "InsetBase: editXY x:" << x << " y: " << y << std::endl;
 	return this;
 }
 
@@ -130,29 +130,6 @@ std::string const & InsetBase::getInsetName() const
 {
 	static std::string const name = "unknown";
 	return name;
-}
-
-
-int InsetBase::getCell(int x, int y) const
-{
-	for (int i = 0, n = numParagraphs(); i < n; ++i) {
-		LyXText * text = getText(i);
-		//lyxerr << "### text: " << text << " i: " << i
-		//	<< " xo: " << text->xo_ << "..." << text->xo_ + text->width
-		//	<< " yo: " << text->yo_ 
-		//	<< " yo: " << text->yo_ - text->ascent() << "..."
-		//		<<  text->yo_ + text->descent()
-		//	<< std::endl;	
-		if (x >= text->xo_
-				&& x <= text->xo_ + text->width
-				&& y >= text->yo_ 
-				&& y <= text->yo_ + text->height)
-		{
-			lyxerr << "### found text # " << i << std::endl;	
-			return i;
-		}
-	}
-	return -1;
 }
 
 

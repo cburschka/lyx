@@ -80,27 +80,25 @@ InsetWrap::~InsetWrap()
 }
 
 
-DispatchResult
-InsetWrap::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
+void InsetWrap::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 {
 	switch (cmd.action) {
 	case LFUN_INSET_MODIFY: {
 		InsetWrapParams params;
 		InsetWrapMailer::string2params(cmd.argument, params);
-
 		params_.placement = params.placement;
 		params_.width     = params.width;
-
 		cur.bv().update();
-		return DispatchResult(true, true);
+		break;
 	}
 
 	case LFUN_INSET_DIALOG_UPDATE:
 		InsetWrapMailer(*this).updateDialog(&cur.bv());
-		return DispatchResult(true, true);
+		break;
 
 	default:
-		return InsetCollapsable::priv_dispatch(cur, cmd);
+		InsetCollapsable::priv_dispatch(cur, cmd);
+		break;
 	}
 }
 
