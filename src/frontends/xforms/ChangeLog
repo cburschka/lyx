@@ -1,5 +1,13 @@
 2004-03-31  Angus Leeming  <leeming@lyx.org>
 
+	* Dialogs.C (build): added preferences dialog.
+	* Dialogs2.C (showPreferences): removed.
+
+	* FormPreferences.[Ch]:
+	* forms/form_preferences.fd: converted to the Dialog-based scheme.
+
+2004-03-31  Angus Leeming  <leeming@lyx.org>
+
 	* FormPreferences.[Ch]: changes due to the changed ControlPrefs
 	interface.
 

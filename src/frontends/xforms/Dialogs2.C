@@ -22,20 +22,12 @@
 #include "FormPreamble.h"
 #include "forms/form_preamble.h"
 
-#include "ControlPrefs.h"
-#include "FormPreferences.h"
-#include "FormColorpicker.h"
-#include "forms/form_preferences.h"
-
 #include "ControlSpellchecker.h"
 #include "FormSpellchecker.h"
 #include "forms/form_spellchecker.h"
 
 typedef GUI<ControlPreamble, FormPreamble, NoRepeatedApplyReadOnlyPolicy, xformsBC>
 PreambleDialog;
-
-typedef GUI<ControlPrefs, FormPreferences, OkApplyCancelPolicy, xformsBC>
-PreferencesDialog;
 
 typedef GUI<ControlSpellchecker, FormSpellchecker, NoRepeatedApplyReadOnlyPolicy, xformsBC>
 SpellcheckerDialog;
@@ -45,14 +37,12 @@ struct Dialogs::Impl {
 	Impl(LyXView & lv, Dialogs & d);
 
 	PreambleDialog      preamble;
-	PreferencesDialog   preferences;
 	SpellcheckerDialog  spellchecker;
 };
 
 
 Dialogs::Impl::Impl(LyXView & lv, Dialogs & d)
 	: preamble(lv, d),
-	  preferences(lv, d),
 	  spellchecker(lv, d)
 {}
 
@@ -72,12 +62,6 @@ Dialogs::~Dialogs()
 void Dialogs::showPreamble()
 {
 	pimpl_->preamble.controller().show();
-}
-
-
-void Dialogs::showPreferences()
-{
-	pimpl_->preferences.controller().show();
 }
 
 

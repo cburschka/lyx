@@ -80,6 +80,12 @@ Kernel::DocTypes Kernel::docType() const
 }
 
 
+void Kernel::redrawGUI() const
+{
+	lyxview_.getDialogs().redrawGUI();
+}
+
+
 BufferView * Kernel::bufferview()
 {
 	return lyxview_.view().get();

@@ -65,10 +65,10 @@ using std::pair;
 using std::vector;
 
 
-typedef Qt2CB<ControlPrefs, Qt2DB<QPrefsDialog> > base_class;
+typedef QController<ControlPrefs, QView<QPrefsDialog> > base_class;
 
-QPrefs::QPrefs()
-	: base_class(_("LyX: Preferences"))
+QPrefs::QPrefs(Dialog & parent)
+	: base_class(parent, _("LyX: Preferences"))
 {
 }
 

@@ -28,12 +28,6 @@ void gui_ShowPreamble(Dialogs & d)
 }
 
 
-void gui_ShowPreferences(Dialogs & d)
-{
-	d.showPreferences();
-}
-
-
 void gui_ShowSpellchecker(Dialogs & d)
 {
 	d.showSpellchecker();

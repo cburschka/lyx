@@ -25,16 +25,11 @@
 // of the Qt headers, those most fucked up of disgusting ratholes.
 // But I won't.
 #undef signals
-#include "QPrefs.h"
-#include "QPrefsDialog.h"
 #include "QSpellchecker.h"
 #include "QSpellcheckerDialog.h"
 
 
 
-
-typedef GUI<ControlPrefs, QPrefs, OkApplyCancelPolicy, Qt2BC>
-PrefsDialog;
 
 typedef GUI<ControlSpellchecker, QSpellchecker, NoRepeatedApplyReadOnlyPolicy, Qt2BC>
 SpellcheckerDialog;
@@ -42,14 +37,12 @@ SpellcheckerDialog;
 struct Dialogs::Impl {
 	Impl(LyXView & lv, Dialogs & d);
 
-	PrefsDialog         prefs;
-	SpellcheckerDialog  spellchecker;
+	SpellcheckerDialog spellchecker;
 };
 
 
 Dialogs::Impl::Impl(LyXView & lv, Dialogs & d)
-	: prefs(lv, d),
-	  spellchecker(lv, d)
+	: spellchecker(lv, d)
 {}
 
 
@@ -70,12 +63,6 @@ void Dialogs::showPreamble()
 	show("document");
 	// Oh Angus, won't you help a poor child ?
 	//pimpl_->document.view()->showPreamble();
-}
-
-
-void Dialogs::showPreferences()
-{
-	pimpl_->prefs.controller().show();
 }
 
 

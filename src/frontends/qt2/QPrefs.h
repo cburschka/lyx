@@ -12,11 +12,7 @@
 #ifndef QPREFS_H
 #define QPREFS_H
 
-
-#include "ControlPrefs.h"
-
-#include "Qt2Base.h"
-
+#include "QDialogView.h"
 #include <vector>
 
 class QPrefsDialog;
@@ -24,13 +20,13 @@ class Controllers;
 class Formats;
 
 class QPrefs
-	: public Qt2CB<ControlPrefs, Qt2DB<QPrefsDialog> >
+	: public QController<ControlPrefs, QView<QPrefsDialog> >
 {
 public:
 
 	friend class QPrefsDialog;
 
-	QPrefs();
+	QPrefs(Dialog &);
 
 private:
 	/// Apply changes

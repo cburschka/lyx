@@ -12,7 +12,7 @@
 #ifndef CONTROLPREFS_H
 #define CONTROLPREFS_H
 
-#include "ControlDialog_impl.h"
+#include "Dialog.h"
 #include "converter.h"
 #include "format.h"
 #include "lyxrc.h"
@@ -23,9 +23,17 @@
 class LColor_color;
 
 
-class ControlPrefs : public ControlDialogBI {
+class ControlPrefs : public Dialog::Controller {
 public:
-	ControlPrefs(LyXView &, Dialogs &);
+	ControlPrefs(Dialog &);
+	///
+	virtual bool initialiseParams(std::string const &);
+	///
+	virtual void clearParams() {}
+	///
+	virtual void dispatchParams();
+	///
+	virtual bool isBufferDependent() const { return false; }
 
 	LyXRC & rc() { return rc_; }
 	LyXRC const & rc() const { return rc_; }
@@ -60,12 +68,6 @@ public:
 	void updateScreenFonts();
 
 private:
-	/// get current lyxrc
-	virtual void setParams();
-
-	/// apply current lyxrc
-	virtual void apply();
-
 	/// temporary lyxrc
 	LyXRC rc_;
 

@@ -116,8 +116,11 @@ void Dialog::hide()
 
 void Dialog::apply()
 {
-	if (kernel().isBufferReadonly())
-		return;
+	if (controller().isBufferDependent()) {
+		if (!kernel().isBufferAvailable() ||
+		    kernel().isBufferReadonly())
+			return;
+	}
 
 	view().apply();
 	controller().dispatchParams();

@@ -1,5 +1,12 @@
 2004-03-31  Angus Leeming  <leeming@lyx.org>
 
+	* Dialogs.C (build): added preferences dialog.
+	* Dialogs2.C (showPreferences): removed.
+
+	* QPrefs.[Ch]: converted to the Dialog-based scheme.
+
+2004-03-31  Angus Leeming  <leeming@lyx.org>
+
 	* QPrefs.[Ch]:
 	* QPrefsDialog.C: changes due to the changed ControlPrefs interface.
 

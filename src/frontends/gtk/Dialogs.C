@@ -34,6 +34,7 @@
 #include "ControlMath.h"
 #include "ControlNote.h"
 #include "ControlParagraph.h"
+#include "ControlPrefs.h"
 #include "ControlPrint.h"
 #include "ControlRef.h"
 #include "ControlSearch.h"
@@ -71,6 +72,7 @@
 #include "FormMathsStyle.h"
 #include "FormNote.h"
 #include "FormParagraph.h"
+#include "FormPreferences.h"
 #include "FormPrint.h"
 #include "FormRef.h"
 #include "FormSearch.h"
@@ -130,13 +132,14 @@ char const * const dialognames[] = {
 "mathgreek", "mathmisc", "mathdots", "mathbigoperators", "mathamsmisc",
 "mathamsarrows", "mathamsrelations", "mathamsnegatedrelations",
 "mathamsoperators", "mathdelimiter", "mathmatrix", "mathspace", "mathstyle",
-"box", "note", "paragraph", "print", "ref", "sendto", "tabular", "tabularcreate",
+"note", "paragraph", "prefs", "print", "ref", "sendto", "tabular",
+"tabularcreate", "texinfo",
 
 #ifdef HAVE_LIBAIKSAURUS
 "thesaurus",
 #endif
 
-"texinfo", "toc", "url", "vspace", "wrap" };
+"toc", "url", "vspace", "wrap" };
 
 char const * const * const end_dialognames =
 	dialognames + (sizeof(dialognames) / sizeof(char *));
@@ -445,6 +448,10 @@ Dialog * Dialogs::build(string const & name)
 		dialog->setController(new ControlParagraph(*dialog));
 		dialog->setView(new FormParagraph(*dialog));
 		dialog->bc().bp(new OkApplyCancelReadOnlyPolicy);
+	} else if (name == "prefs") {
+		dialog->setController(new ControlPrefs(*dialog));
+		dialog->setView(new FormPreferences(*dialog));
+		dialog->bc().bp(new OkApplyCancelPolicy);
 	} else if (name == "print") {
 		dialog->setController(new ControlPrint(*dialog));
 		dialog->setView(new FormPrint(*dialog));

@@ -67,8 +67,6 @@ public:
 	//@{
 	///
 	void showPreamble();
-	///
-	void showPreferences();
 	/// bring up the spellchecker
 	void showSpellchecker();
 	//@}

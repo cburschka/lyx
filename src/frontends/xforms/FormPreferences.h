@@ -13,7 +13,7 @@
 #ifndef FORMPREFERENCES_H
 #define FORMPREFERENCES_H
 
-#include "FormBase.h"
+#include "FormDialogView.h"
 
 #include "lyx_forms.h"
 
@@ -51,9 +51,10 @@ struct FD_preferences_spelloptions;
 /** This class provides an XForms implementation of the FormPreferences Dialog.
  *  The preferences dialog allows users to set/save their preferences.
  */
-class FormPreferences : public FormCB<ControlPrefs, FormDB<FD_preferences> > {
+class FormPreferences
+	: public FormController<ControlPrefs, FormView<FD_preferences> > {
 public:
-	FormPreferences();
+	FormPreferences(Dialog &);
 
 private:
 	/** Redraw the form (on receipt of a Signal indicating, for example,

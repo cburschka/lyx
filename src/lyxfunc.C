@@ -436,7 +436,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 			enable = name == "aboutlyx"
 				|| name == "file"
 				|| name == "forks"
-				|| name == "preferences"
+				|| name == "prefs"
 				|| name == "texinfo";
 		else if (name == "print")
 			enable = Exporter::IsExportable(*buf, "dvi")
@@ -1051,8 +1051,6 @@ void LyXFunc::dispatch(FuncRequest const & cmd, bool verbose)
 			}
 			else if (name == "preamble")
 				owner->getDialogs().showPreamble();
-			else if (name == "preferences")
-				owner->getDialogs().showPreferences();
 			else if (name == "spellchecker")
 				owner->getDialogs().showSpellchecker();
 

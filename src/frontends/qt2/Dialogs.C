@@ -30,6 +30,7 @@
 #include "ControlMath.h"
 #include "ControlNote.h"
 #include "ControlParagraph.h"
+#include "ControlPrefs.h"
 #include "ControlPrint.h"
 #include "ControlRef.h"
 #include "ControlSearch.h"
@@ -67,6 +68,7 @@
 #include "QMath.h"
 #include "QNote.h"
 #include "QParagraph.h"
+#include "QPrefs.h"
 #include "QPrint.h"
 #include "QRef.h"
 #include "QSearch.h"
@@ -96,8 +98,8 @@ char const * const dialognames[] = {
 "aboutlyx", "bibitem", "bibtex", "box", "branch", "changes", "character",
 "citation", "document", "error", "errorlist", "ert", "external", "file",
 "findreplace", "float", "graphics", "include", "index", "label", "log",
-"mathpanel", "mathdelimiter", "mathmatrix", "note", "paragraph", "print",
-"ref", "sendto", "tabular", "tabularcreate", "texinfo",
+"mathpanel", "mathdelimiter", "mathmatrix", "note", "paragraph", "prefs",
+"print", "ref", "sendto", "tabular", "tabularcreate", "texinfo",
 
 #ifdef HAVE_LIBAIKSAURUS
 "thesaurus",
@@ -240,6 +242,10 @@ Dialog * Dialogs::build(string const & name)
 		dialog->setController(new ControlParagraph(*dialog));
 		dialog->setView(new QParagraph(*dialog));
 		dialog->bc().bp(new OkApplyCancelReadOnlyPolicy);
+	} else if (name == "prefs") {
+		dialog->setController(new ControlPrefs(*dialog));
+		dialog->setView(new QPrefs(*dialog));
+		dialog->bc().bp(new OkApplyCancelPolicy);
 	} else if (name == "print") {
 		dialog->setController(new ControlPrint(*dialog));
 		dialog->setView(new QPrint(*dialog));

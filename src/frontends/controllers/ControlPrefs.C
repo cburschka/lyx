@@ -13,23 +13,18 @@
 #include "ControlPrefs.h"
 
 #include "helper_funcs.h"
-#include "ViewBase.h"
+#include "Kernel.h"
 
 #include "bufferlist.h"
 #include "gettext.h"
 #include "funcrequest.h"
 #include "LColor.h"
 
-#include "frontends/Dialogs.h"
-#include "frontends/LyXView.h"
-
 #include "support/filetools.h"
 #include "support/globbing.h"
 #include "support/path_defines.h"
 
 #include "support/std_sstream.h"
-
-#include <utility>
 
 using lyx::support::AddName;
 using lyx::support::FileFilterList;
@@ -44,14 +39,14 @@ using std::vector;
 
 extern BufferList bufferlist;
 
-ControlPrefs::ControlPrefs(LyXView & lv, Dialogs & d)
-	: ControlDialogBI(lv, d),
+ControlPrefs::ControlPrefs(Dialog & parent)
+	: Dialog::Controller(parent),
 	  redraw_gui_(false),
 	  update_screen_font_(false)
 {}
 
 
-void ControlPrefs::setParams()
+bool ControlPrefs::initialiseParams(std::string const &)
 {
 	rc_ = lyxrc;
 	formats_ = ::formats;
@@ -60,16 +55,16 @@ void ControlPrefs::setParams()
 	colors_.clear();
 	redraw_gui_ = false;
 	update_screen_font_ = false;
+
+	return true;
 }
 
 
-void ControlPrefs::apply()
+void ControlPrefs::dispatchParams()
 {
-	view().apply();
-
  	ostringstream ss;
  	rc_.write(ss);
- 	lv_.dispatch(FuncRequest(LFUN_LYXRC_APPLY, ss.str()));
+ 	kernel().dispatch(FuncRequest(LFUN_LYXRC_APPLY, ss.str()));
 
 	// FIXME: these need lfuns
 	bufferlist.setCurrentAuthor(rc_.user_name, rc_.user_email);
@@ -83,22 +78,22 @@ void ControlPrefs::apply()
 	vector<string>::const_iterator it = colors_.begin();
 	vector<string>::const_iterator const end = colors_.end();
 	for (; it != end; ++it)
-		lv_.dispatch(FuncRequest(LFUN_SET_COLOR, *it));
+		kernel().dispatch(FuncRequest(LFUN_SET_COLOR, *it));
 	colors_.clear();
 
 	if (redraw_gui_) {
-		lv_.getDialogs().redrawGUI();
+		kernel().redrawGUI();
 		redraw_gui_ = false;
 	}
 
 	if (update_screen_font_) {
-		lv_.dispatch(FuncRequest(LFUN_SCREEN_FONT_UPDATE));
+		kernel().dispatch(FuncRequest(LFUN_SCREEN_FONT_UPDATE));
 		update_screen_font_ = false;
 	}
 
 	// The Save button has been pressed
-	if (isClosing()) {
-		lv_.dispatch(FuncRequest(LFUN_SAVEPREFERENCES));
+	if (dialog().isClosing()) {
+		kernel().dispatch(FuncRequest(LFUN_SAVEPREFERENCES));
 	}
 }
 

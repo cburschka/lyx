@@ -1,5 +1,14 @@
 2004-03-31  Angus Leeming  <leeming@lyx.org>
 
+	* ControlPrefs.[Ch]: converted to the dialog-based scheme.
+
+	* Dialog.C (apply): bug fix. Enable the dispatch of dialogs
+	which aren't dependent on a buffer when no buffer is open.
+
+	Kernel.[Ch] (redrawGUI): new function.
+
+2004-03-31  Angus Leeming  <leeming@lyx.org>
+
 	* ControlPrefs.C: a bit of an overhaul, moving the local Converters
 	and Formats variables out of the various frontends to here,
 	and ensuring that nothing is actually dispatched to the core except

@@ -84,11 +84,11 @@ bool const scalableTabfolders = true;
 } // namespace anon
 
 
-typedef FormCB<ControlPrefs, FormDB<FD_preferences> > base_class;
+typedef FormController<ControlPrefs, FormView<FD_preferences> > base_class;
 
 
-FormPreferences::FormPreferences()
-	: base_class(_("Preferences"), scalableTabfolders),
+FormPreferences::FormPreferences(Dialog & parent)
+	: base_class(parent, _("Preferences"), scalableTabfolders),
 	  colors_(*this), converters_(*this), inputs_misc_(*this),
 	  formats_(*this), interface_(*this), language_(*this),
 	  lnf_misc_(*this), identity_(*this), outputs_misc_(*this),
@@ -137,7 +137,7 @@ void FormPreferences::hide()
 	FL_FORM * inner_form = fl_get_active_folder(dialog_->tabfolder_prefs);
 	if (inner_form && inner_form->visible)
 		fl_hide_form(inner_form);
-	FormBase::hide();
+	FormDialogView::hide();
 }
 
 
@@ -297,7 +297,7 @@ void FormPreferences::apply()
 	spelloptions_.apply(rc);
 
 	// The "Save" button has been pressed.
-	if (controller().isClosing() && colors_.modifiedXformsPrefs) {
+	if (dialog().isClosing() && colors_.modifiedXformsPrefs) {
 		string const filename =
 			AddName(user_lyxdir(), "preferences.xform");
 		colors_.modifiedXformsPrefs = !XformsColor::write(filename);
