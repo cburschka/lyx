@@ -4,11 +4,7 @@
 #include "lyxfont.h"
 #include "LString.h"
 
-#include <boost/weak_ptr.hpp>
-
-class BufferView;
 class Painter;
-class MathNestInset;
 
 
 /// Standard Math Sizes (Math mode styles)
@@ -48,15 +44,13 @@ struct MathMetricsInfo {
 	///
 	MathMetricsBase base;
 	///
-	boost::weak_ptr<BufferView> view;
-	///
 	bool fullredraw;
 };
 
 
 struct MathPainterInfo {
 	///
-	MathPainterInfo(Painter & p);
+	MathPainterInfo(Painter & pain);
 	///
 	void draw(int x, int y, char c);
 

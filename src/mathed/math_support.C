@@ -7,6 +7,7 @@
 #include "math_cursor.h"
 #include "math_inset.h"
 #include "math_parser.h"
+#include "math_metricsinfo.h"
 #include "frontends/Painter.h"
 #include "frontends/font_metrics.h"
 #include "frontends/lyx_gui.h"

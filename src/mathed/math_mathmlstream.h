@@ -6,6 +6,8 @@
 // settled.
 
 
+#include "math_metricsinfo.h"
+
 #include <iosfwd>
 
 class MathArray;

@@ -6,14 +6,16 @@
 #include <iosfwd>
 
 #include "math_data.h"
-#include "math_metricsinfo.h"
+//#include "math_metricsinfo.h"
 #include "dimension.h"
 
 #ifdef __GNUG__
 #pragma interface
 #endif
 
+class MathMetricsInfo;
 class MathPainterInfo;
+class TextMetricsInfo;
 class TextPainter;
 
 

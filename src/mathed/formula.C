@@ -25,6 +25,7 @@
 #include "math_parser.h"
 #include "math_charinset.h"
 #include "math_arrayinset.h"
+#include "math_metricsinfo.h"
 #include "math_deliminset.h"
 #include "math_hullinset.h"
 #include "math_support.h"

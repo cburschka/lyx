@@ -5,6 +5,7 @@
 #endif
 
 #include "math_xdata.h"
+#include "math_metricsinfo.h"
 #include "math_support.h"
 #include "math_inset.h"
 #include "frontends/Painter.h"

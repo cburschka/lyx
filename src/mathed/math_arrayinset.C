@@ -7,6 +7,7 @@
 #include "math_arrayinset.h"
 #include "math_parser.h"
 #include "math_mathmlstream.h"
+#include "math_metricsinfo.h"
 #include "math_streamstr.h"
 #include "Lsstream.h"
 

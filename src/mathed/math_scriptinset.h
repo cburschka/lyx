@@ -118,8 +118,6 @@ private:
 	bool script_[2];
 	/// 1 - "limits", -1 - "nolimits", 0 - "default"
 	int limits_;
-	/// cached font
-	mutable LyXFont font_;
 };
 
 #endif

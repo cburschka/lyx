@@ -21,10 +21,8 @@
 #pragma interface
 #endif
 
-#include <vector>
-#include <iosfwd>
-
 #include "math_nestinset.h"
+#include "math_metricsinfo.h"
 #include "math_macroarg.h"
 #include "LString.h"
 

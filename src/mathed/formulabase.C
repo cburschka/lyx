@@ -33,6 +33,7 @@
 #include "LaTeXFeatures.h"
 #include "debug.h"
 #include "math_support.h"
+#include "math_metricsinfo.h"
 #include "support/lstrings.h"
 #include "frontends/LyXView.h"
 #include "frontends/font_metrics.h"
@@ -153,7 +154,6 @@ void InsetFormulaBase::metrics(BufferView * bv) const
 	if (bv)
 		view_ = bv->owner()->view();
 	MathMetricsInfo mi;
-	mi.view       = view_;
 	//mi.base.style = display() ? LM_ST_DISPLAY : LM_ST_TEXT;
 	mi.base.style = LM_ST_TEXT;
 	mi.base.font  = font_;

@@ -3,6 +3,7 @@
 #define MATH_ARROWINSET_H
 
 #include "math_nestinset.h"
+#include "math_metricsinfo.h"
 
 #ifdef __GNUG__
 #pragma interface
@@ -19,9 +20,9 @@ public:
 	///
 	MathInset * clone() const;
 	///
-	void metrics(MathMetricsInfo & st) const;
+	void metrics(MathMetricsInfo & mi) const;
 	///
-	void draw(MathPainterInfo & pain, int x, int y) const;
+	void draw(MathPainterInfo & pi, int x, int y) const;
 	///
 	MathXYArrowInset * asXYArrowInset() { return this; }
 

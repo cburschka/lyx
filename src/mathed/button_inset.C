@@ -2,6 +2,7 @@
 
 #include "button_inset.h"
 #include "math_support.h"
+#include "math_metricsinfo.h"
 #include "frontends/Painter.h"
 
 #include <algorithm>
@@ -37,7 +38,6 @@ void ButtonInset::draw(MathPainterInfo & pi, int x, int y) const
 		xcell(1).draw(pi, x + xcell(0).width() + 2, y);
 		mathed_draw_framebox(pi, x, y, this);
 	} else {
-		pi.pain.buttonText(x + 2, y, screenLabel(),
-			pi.base.font);
+		pi.pain.buttonText(x + 2, y, screenLabel(), pi.base.font);
 	}
 }

@@ -139,7 +139,7 @@ int MathScriptInset::dy1() const
 		asc += na + 2;
 	else
 		asc = max(asc, na);
-	asc = max(asc, mathed_char_ascent(font_, 'I'));
+	asc = max(asc, 5);
 	return asc;
 }
 
@@ -166,19 +166,19 @@ int MathScriptInset::dxx() const
 
 int MathScriptInset::nwid() const
 {
-	return nuc().size() ? nuc().width() : mathed_char_width(font_, '.');
+	return nuc().size() ? nuc().width() : 2;
 }
 
 
 int MathScriptInset::nasc() const
 {
-	return nuc().size() ? nuc().ascent() : mathed_char_ascent(font_, 'I');
+	return nuc().size() ? nuc().ascent() : 5;
 }
 
 
 int MathScriptInset::ndes() const
 {
-	return nuc().size() ? nuc().descent() : mathed_char_descent(font_, 'I');
+	return nuc().size() ? nuc().descent() : 0;
 }
 
 
@@ -211,7 +211,7 @@ void MathScriptInset::draw(MathPainterInfo & pi, int x, int y) const
 	if (nuc().size())
 		nuc().draw(pi, x + dxx(), y);
 	else if (editing())
-		drawStr(pi, font_, x + dxx(), y, ".");
+		drawStr(pi, pi.base.font, x + dxx(), y, ".");
 	MathScriptChanger dummy(pi.base);
 	if (hasUp())
 		up().draw(pi, x + dx1(), y - dy1());

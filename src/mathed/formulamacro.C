@@ -24,6 +24,7 @@
 #include "math_macro.h"
 #include "math_macrotable.h"
 #include "math_macrotemplate.h"
+#include "math_metricsinfo.h"
 #include "math_support.h"
 #include "math_mathmlstream.h"
 #include "BufferView.h"

@@ -6,6 +6,7 @@
 
 #include "math_amsarrayinset.h"
 #include "math_mathmlstream.h"
+#include "math_metricsinfo.h"
 #include "math_support.h"
 #include "math_streamstr.h"
 #include "math_support.h"
