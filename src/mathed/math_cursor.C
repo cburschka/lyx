@@ -1232,7 +1232,9 @@ bool MathCursor::interpret(char c)
 
 		// leave macro mode and try again if necessary
 		macroModeClose();
-		if (c != ' ')
+		if (c == '{')
+			niceInsert(MathAtom(new MathBraceInset));
+		else if (c != ' ')
 			interpret(c);
 		return true;
 	}
