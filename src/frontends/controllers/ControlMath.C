@@ -306,19 +306,13 @@ int const nr_latex_ams_ops = sizeof(latex_ams_ops) / sizeof(char const *);
 
 string const find_xpm(string const & name)
 {
+	string xpm_name = subst(name, "_", "underscore");
+	xpm_name = subst(xpm_name, ' ', '_');
+
 #warning Use a static table for this (Lgb)
 	// And get O(log n) lookup (Lgb)
 
-	string xpm_name = subst(name, ' ', '_');
-	if (xpm_name == "(") xpm_name = "lparen";
-	else if (xpm_name == ")") xpm_name = "rparen";
-	else if (xpm_name == "[") xpm_name = "lbracket";
-	else if (xpm_name == "]") xpm_name = "rbracket";
-	else if (xpm_name == "{") xpm_name = "lbrace";
-	else if (xpm_name == "}") xpm_name = "rbrace";
-	else if (xpm_name == "|") xpm_name = "bars";
-	else if (xpm_name == "_") xpm_name = "underscore";
-	else if (xpm_name == "textrm_Å") xpm_name = "textrm_A";
+	if (xpm_name == "textrm_Å") xpm_name = "textrm_A";
 	else if (xpm_name == "textrm_Ø") xpm_name = "textrm_0";
 	else if (xpm_name == "Bumpeq") xpm_name = "bumpeq2";
 	else if (xpm_name == "Cap") xpm_name = "cap2";
@@ -352,6 +346,16 @@ string const find_xpm(string const & name)
 	else if (xpm_name == "vDash") xpm_name = "vdash2";
 	else if (xpm_name == "Vdash") xpm_name = "vdash3";
 	else if (xpm_name == "Xi") xpm_name = "xi2";
+	else {
+		// slightly different so we can have "math-delim { }" on toolbar
+		xpm_name = subst(xpm_name, "(", "lparen");
+		xpm_name = subst(xpm_name, ")", "rparen");
+		xpm_name = subst(xpm_name, "[", "lbracket");
+		xpm_name = subst(xpm_name, "]", "rbracket");
+		xpm_name = subst(xpm_name, "{", "lbrace");
+		xpm_name = subst(xpm_name, "}", "rbrace");
+		xpm_name = subst(xpm_name, "|", "bars");
+	}
 
 	lyxerr[Debug::GUI] << "Looking for math XPM called \""
 		<< xpm_name << '"' << std::endl;
