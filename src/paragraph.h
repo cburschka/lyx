@@ -13,21 +13,23 @@
 #pragma interface
 #endif
 
+#include "lyxlayout_ptr_fwd.h"
+#include "lyxfont.h" // Just for LyXFont::FONT_SIZE
+
+#include "insets/inset.h" // Just for Inset::Code
+
+#include "support/types.h"
+
 #include "LString.h"
 
-#include "lyxlayout_ptr_fwd.h"
-#include "insets/inset.h" // Just for Inset::Code
-#include "lyxfont.h" // Just for LyXFont::FONT_SIZE
-#include "support/types.h"
-#include "counters.h"
-
-class ParagraphParameters;
 class BufferParams;
-class TexRow;
-class LaTeXFeatures;
-class InsetBibKey;
 class BufferView;
+class Counters;
+class InsetBibKey;
 class Language;
+class LaTeXFeatures;
+class ParagraphParameters;
+class TexRow;
 
 // After 1.2.0 is released, during 1.3.0cvs, we enable this. And after
 // a while we verify that reading of 1.2.x files work perfectly we remove
@@ -396,7 +398,7 @@ public:
 	inset_iterator InsetIterator(lyx::pos_type pos);
 
 	///
-	Counters ctrs;
+	Counters & counters();
 	
 private:
 	/// if anything uses this we don't want it to.

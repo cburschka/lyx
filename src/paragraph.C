@@ -2197,3 +2197,10 @@ bool Paragraph::isFreeSpacing() const
 		return (pimpl_->inset_owner->owner()->lyxCode() == Inset::ERT_CODE);
 	return false;
 }
+
+
+Counters & Paragraph::counters()
+{
+	return pimpl_->ctrs;
+}
+

@@ -1222,17 +1222,17 @@ void LyXText::setCounter(Buffer const * buf, Paragraph * par) const
 	// unless this is the first paragraph
 	if (par->previous()) {
 
-		par->ctrs.copy(par->previous()->ctrs, par->ctrs, "");
+		par->counters().copy(par->previous()->counters(), par->counters(), "");
 		
 		par->params().appendix(par->previous()->params().appendix());
 		if (!par->params().appendix() && par->params().startOfAppendix()) {
 			par->params().appendix(true);
-			par->ctrs.reset("");
+			par->counters().reset("");
 		}
 		par->enumdepth = par->previous()->enumdepth;
 		par->itemdepth = par->previous()->itemdepth;
 	} else {
-		par->ctrs.reset("");
+		par->counters().reset("");
 		par->params().appendix(par->params().startOfAppendix());
 		par->enumdepth = 0;
 		par->itemdepth = 0;
@@ -1258,8 +1258,8 @@ void LyXText::setCounter(Buffer const * buf, Paragraph * par) const
 	    && par->previous()->getDepth() > par->getDepth()
 	    && layout->labeltype != LABEL_BIBLIO) {
 		par->enumdepth = par->depthHook(par->getDepth())->enumdepth;
-		par->ctrs.set(par->ctrs.enums[par->enumdepth],
-			par->depthHook(par->getDepth())->ctrs.value(par->ctrs.enums[par->enumdepth]));
+		par->counters().set(par->counters().enums[par->enumdepth],
+			par->depthHook(par->getDepth())->counters().value(par->counters().enums[par->enumdepth]));
 	}
 
 	if (!par->params().labelString().empty()) {
@@ -1283,7 +1283,7 @@ void LyXText::setCounter(Buffer const * buf, Paragraph * par) const
 
 		if (i >= 0 && i<= buf->params.secnumdepth) {
 
-			par->ctrs.step(par->ctrs.sects[i]);
+			par->counters().step(par->counters().sects[i]);
 
 			// Is there a label? Useful for Chapter layout
 			if (!par->params().appendix()) {
@@ -1310,7 +1310,7 @@ void LyXText::setCounter(Buffer const * buf, Paragraph * par) const
 					langtype = "latin";
 			}
 		
-			s << par->ctrs.numberLabel(par->ctrs.sects[i], 
+			s << par->counters().numberLabel(par->counters().sects[i], 
 				numbertype, langtype, head);
 
 			par->params().labelString(par->params().labelString() +s.str().c_str());
@@ -1318,20 +1318,20 @@ void LyXText::setCounter(Buffer const * buf, Paragraph * par) const
 			// possible...
 
 			// reset enum counters
-			par->ctrs.reset("enum");
+			par->counters().reset("enum");
 		} else if (layout->labeltype < LABEL_COUNTER_ENUMI) {
-			par->ctrs.reset("enum");
+			par->counters().reset("enum");
 		} else if (layout->labeltype == LABEL_COUNTER_ENUMI) {
-			par->ctrs.step(par->ctrs.enums[par->enumdepth]);
+			par->counters().step(par->counters().enums[par->enumdepth]);
 
-			s << par->ctrs.numberLabel(par->ctrs.enums[par->enumdepth], 
+			s << par->counters().numberLabel(par->counters().enums[par->enumdepth], 
 				"enumeration", langtype);
 			par->params().labelString(s.str().c_str());
 
 		}
 	} else if (layout->labeltype == LABEL_BIBLIO) {// ale970302
-		par->ctrs.step("bibitem");
-		int number = par->ctrs.value("bibitem");
+		par->counters().step("bibitem");
+		int number = par->counters().value("bibitem");
 		if (!par->bibkey) {
 			InsetCommandParams p("bibitem" );
 			par->bibkey = new InsetBibKey(p);
@@ -1354,10 +1354,10 @@ void LyXText::setCounter(Buffer const * buf, Paragraph * par) const
 					= floatList.getType(tmp->type());
 
 				// Why doesn't it work? -- MV
-				par->ctrs.step(fl.name());
+				par->counters().step(fl.name());
 				// We should get the correct number here too.
 				ostringstream o;
-				o << fl.name() << " " << par->ctrs.value(fl.name()) << ":";
+				o << fl.name() << " " << par->counters().value(fl.name()) << ":";
 				s = o.str();
 			} else {
 				/* par->SetLayout(0);
@@ -1371,7 +1371,7 @@ void LyXText::setCounter(Buffer const * buf, Paragraph * par) const
 		/* reset the enumeration counter. They are always resetted
 		 * when there is any other layout between */
 		for (int i = par->enumdepth + 1; i < 4; i++) {
-			par->ctrs.set(par->ctrs.enums[i], 0);
+			par->counters().set(par->counters().enums[i], 0);
 		}
 	}
 }

@@ -18,6 +18,7 @@
 
 #include "paragraph.h"
 #include "ParagraphParameters.h"
+#include "counters.h"
 
 #include <boost/array.hpp>
 
@@ -154,6 +155,9 @@ struct Paragraph::Pimpl {
 	static unsigned int paragraph_id;
 	///
 	ParagraphParameters params;
+	///
+	Counters ctrs;
+
 private:
 	/// match a string against a particular point in the paragraph
 	bool isTextAt(string const & str, lyx::pos_type pos) const;
