@@ -18,6 +18,7 @@
 #include "language.h"
 #include "buffer.h"
 #include "BufferView.h"
+#include "funcrequest.h"
 #include "LaTeXFeatures.h"
 #include "latexrunparams.h"
 #include "lyxlex.h"

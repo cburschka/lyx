@@ -17,7 +17,6 @@
 #include "inset.h"
 #include "insettext.h"
 #include "lyxfont.h"
-#include "funcrequest.h" // for adjustCommand
 #include "LColor.h"
 #include "box.h"
 

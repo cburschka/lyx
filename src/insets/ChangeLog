@@ -1,3 +1,9 @@
+2003-09-04  Angus Leeming  <leeming@lyx.org>
+
+	* insetcollapsable.h: 
+	* insetbranch.C: 
+	* insetnote.C: move #include "funcrequest.h" out of the header file.
+
 2003-09-03  Angus Leeming  <leeming@lyx.org>
 
 	* insetexternal.C (updateExternal):

@@ -12,21 +12,23 @@
 
 #include <config.h>
 
-#include "Lsstream.h"
-
 #include "insetnote.h"
-#include "metricsinfo.h"
-#include "gettext.h"
-#include "lyxfont.h"
-#include "language.h"
+#include "insettext.h"
+
 #include "buffer.h"
 #include "BufferView.h"
+#include "debug.h"
+#include "funcrequest.h"
+#include "gettext.h"
+#include "language.h"
+#include "lyxfont.h"
 #include "lyxlex.h"
 #include "lyxtext.h"
-#include "insets/insettext.h"
+#include "metricsinfo.h"
 #include "support/LOstream.h"
 #include "support/lstrings.h"
-#include "debug.h"
+
+#include "Lsstream.h"
 
 using std::ostream;
 using std::auto_ptr;
