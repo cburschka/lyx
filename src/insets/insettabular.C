@@ -1754,6 +1754,11 @@ void InsetTabular::tabularFeatures(BufferView * bv,
 		bool const update = (tmplen != vallen);
 		tabular->SetColumnPWidth(actcell, vallen);
 		if (update) {
+			// We need this otherwise we won't resize
+			// the insettext of the active cell (if any)
+			// until later (see InsetText::do_resize)
+			unlockInsetInInset(bv, the_locking_inset);
+
 			int cell;
 			for (int i = 0; i < tabular->rows(); ++i) {
 				cell = tabular->GetCellNumber(i,column);
@@ -1778,6 +1783,11 @@ void InsetTabular::tabularFeatures(BufferView * bv,
 		bool const update = (tmplen != vallen);
 		tabular->SetMColumnPWidth(actcell, vallen);
 		if (update) {
+			// We need this otherwise we won't resize
+			// the insettext of the active cell (if any)
+			// until later (see InsetText::do_resize)
+			unlockInsetInInset(bv, the_locking_inset);
+
 			for (int i = 0; i < tabular->rows(); ++i) {
 				tabular->GetCellInset(tabular->GetCellNumber(i, column))->
 					resizeLyXText(bv);
