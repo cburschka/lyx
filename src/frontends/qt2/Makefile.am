@@ -35,6 +35,7 @@ libqt2_la_SOURCES = \
 	QCitation.C QCitation.h \
 	QDocument.C QDocument.h \
 	QError.C QError.h \
+	QErrorList.C QErrorList.h \
 	QERT.C QERT.h \
 	QExternal.C QExternal.h \
 	QFloat.C QFloat.h \

@@ -79,6 +79,8 @@ libxforms_la_SOURCES = \
 	FormDocument.h \
 	FormError.C \
 	FormError.h \
+	FormErrorList.C \
+	FormErrorList.h \
 	FormERT.C \
 	FormERT.h \
 	FormExternal.C \

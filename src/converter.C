@@ -459,58 +459,19 @@ bool Converters::formatIsUsed(string const & format)
 }
 
 
-namespace {
-
-void alertErrors(string const & prog, int nr_errors)
-{
-	string s;
-	if (nr_errors == 1)
-		s = bformat(_("One error detected when running %1$s.\n"), prog);
-	else
-		s = bformat(_("%1$s errors detected when running %2$s.\n"),
-			prog, tostr(nr_errors));
-	Alert::error(_("Errors found"), s);
-}
-
-}
-
-
 bool Converters::scanLog(Buffer const * buffer, string const & command,
-			string const & filename)
+			 string const & filename)
 {
 	if (!buffer)
 		return false;
 
 	BufferView * bv = buffer->getUser();
-	if (bv) {
-		bv->owner()->busy(true);
-		// all error insets should have been removed by now
-	}
-
 	LaTeX latex("", filename, "");
 	TeXErrors terr;
 	int result = latex.scanLogFile(terr);
-	if (bv) {
-		if ((result & LaTeX::ERRORS)) {
-			// Insert all errors as errors boxes
-			bv->insertErrors(terr);
-#warning repaint() or update() or nothing ?
-			bv->repaint();
-			bv->fitCursor();
-		}
-		bv->owner()->busy(false);
-	}
+	if (bv && (result & LaTeX::ERRORS))
+		bv->showErrorList();
 
-	if ((result & LaTeX::ERRORS)) {
-		string head;
-		split(command, head, ' ');
-		alertErrors(head, latex.getNumErrors());
-		return false;
-	} else if (result & LaTeX::NO_OUTPUT) {
-		Alert::warning(_("Output is empty"),
-			_("An empty output file was generated."));
-		return false;
-	}
 	return true;
 }
 
@@ -535,14 +496,9 @@ bool Converters::runLaTeX(Buffer const * buffer, string const & command)
 	int result = latex.run(terr,
 			       bv ? &bv->owner()->getLyXFunc() : 0);
 
-	if (bv) {
-		if ((result & LaTeX::ERRORS)) {
-			// Insert all errors as errors boxes
-			bv->insertErrors(terr);
-#warning repaint() or update() or nothing ?
-			bv->repaint();
-			bv->fitCursor();
-		}
+	if (bv && (result & LaTeX::ERRORS)) {
+		//show errors
+		bv->showErrorList();
 	}
 
 	// check return value from latex.run().
@@ -550,9 +506,7 @@ bool Converters::runLaTeX(Buffer const * buffer, string const & command)
 		string str = bformat(_("LaTeX did not run successfully. Additionally, LyX "
 			"could not locate the LaTeX log %1$s."), name);
 		Alert::error(_("LaTeX failed"), str);
-	} else if ((result & LaTeX::ERRORS)) {
-		alertErrors("LaTeX", latex.getNumErrors());
-	}  else if (result & LaTeX::NO_OUTPUT) {
+	} else if (result & LaTeX::NO_OUTPUT) {
 		Alert::warning(_("Output is empty"),
 			_("An empty output file was generated."));
 	}

@@ -22,6 +22,7 @@
 #include "ControlCitation.h"
 #include "ControlCommand.h"
 #include "ControlError.h"
+#include "ControlErrorList.h"
 #include "ControlERT.h"
 #include "ControlExternal.h"
 #include "ControlFloat.h"
@@ -45,6 +46,7 @@
 #include "FormCharacter.h"
 #include "FormCitation.h"
 #include "FormError.h"
+#include "FormErrorList.h"
 #include "FormERT.h"
 #include "FormExternal.h"
 #include "FormFloat.h"
@@ -74,10 +76,7 @@
 
 namespace {
 
-char const * const dialognames[] = { "about", "bibitem", "bibtex", "changes",
-"character", "citation", "error", "ert", "external", "file", "float",
-"graphics", "include", "index", "label", "log", "minipage", "paragraph",
-"ref", "tabular", "tabularcreate",
+char const * const dialognames[] = { "about", "bibitem", "bibtex", "changes", "character", "citation", "error", "errorlist" , "ert", "external", "file", "float", "graphics", "include", "index", "label", "log", "minipage", "paragraph", "ref", "tabular", "tabularcreate",
 
 #ifdef HAVE_LIBAIKSAURUS
 "thesaurus",
@@ -144,6 +143,10 @@ Dialog * Dialogs::build(string const & name)
 		dialog->setController(new ControlError(*dialog));
 		dialog->setView(new FormError(*dialog));
 		dialog->bc().bp(new OkCancelPolicy);
+	} else if (name == "errorlist") {
+		dialog->setController(new ControlErrorList(*dialog));
+		dialog->setView(new FormErrorList(*dialog));
+		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
 	} else if (name == "ert") {
 		dialog->setController(new ControlERT(*dialog));
 		dialog->setView(new FormERT(*dialog));

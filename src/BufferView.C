@@ -467,48 +467,9 @@ bool BufferView::removeAutoInsets()
 }
 
 
-void BufferView::insertErrors(TeXErrors & terr)
+void BufferView::showErrorList()
 {
-	// Save the cursor position
-	LyXCursor cursor = text->cursor;
-
-	TeXErrors::Errors::const_iterator cit = terr.begin();
-	TeXErrors::Errors::const_iterator end = terr.end();
-	for (; cit != end; ++cit) {
-		string const desctext(cit->error_desc);
-		string const errortext(cit->error_text);
-		string const msgtxt = desctext + '\n' + errortext;
-		int const errorrow = cit->error_in_line;
-
-		// Insert error string for row number
-		int tmpid = -1;
-		int tmppos = -1;
-
-		if (buffer()->texrow.getIdFromRow(errorrow, tmpid, tmppos)) {
-			buffer()->texrow.increasePos(tmpid, tmppos);
-		}
-
-		Paragraph * texrowpar = 0;
-
-		if (tmpid == -1) {
-			texrowpar = &*text->ownerParagraphs().begin();
-			tmppos = 0;
-		} else {
-			texrowpar = &*buffer()->getParFromID(tmpid);
-		}
-
-		if (texrowpar == 0)
-			continue;
-
-		freezeUndo();
-		InsetError * new_inset = new InsetError(msgtxt);
-		text->setCursorIntern(texrowpar, tmppos);
-		text->insertInset(new_inset);
-		text->fullRebreak();
-		unFreezeUndo();
-	}
-	// Restore the cursor position
-	text->setCursorIntern(cursor.par(), cursor.pos());
+	owner()->getDialogs().show("errorlist");
 }
 
 

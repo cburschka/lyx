@@ -1,3 +1,9 @@
+2003-05-12 Alfredo Braunstein <abraunst@libero.it>
+
+	* BufferView.[Ch] (insertErrors): removed
+	* BufferView.[Ch] (showErrorList): added
+	* buffer.C (runChkTeX):
+	* converter.C (scanLog): call showErrorList instead of inserterrors
 
 2003-05-13 André Pönitz <poenitz@gmx.net>
 	

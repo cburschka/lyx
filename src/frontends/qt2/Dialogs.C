@@ -19,6 +19,7 @@
 #include "ControlCharacter.h"
 #include "ControlCitation.h"
 #include "ControlError.h"
+#include "ControlErrorList.h"
 #include "ControlERT.h"
 #include "ControlExternal.h"
 #include "ControlFloat.h"
@@ -42,6 +43,7 @@
 #include "QCharacter.h"
 #include "QCitation.h"
 #include "QError.h"
+#include "QErrorList.h"
 #include "QERT.h"
 #include "QExternal.h"
 #include "QFloat.h"
@@ -77,9 +79,9 @@
 namespace {
 
 char const * const dialognames[] = { "about", "bibitem", "bibtex", "changes",
-"character", "citation", "error", "ert", "external", "file", "float",
-"graphics", "include", "index", "label", "log", "minipage", "paragraph",
-"ref", "tabular", "tabularcreate",
+"character", "citation", "error", "errorlist", "ert", "external", "file",
+"float", "graphics", "include", "index", "label", "log", "minipage",
+"paragraph", "ref", "tabular", "tabularcreate",
 
 #ifdef HAVE_LIBAIKSAURUS
 "thesaurus",
@@ -145,6 +147,10 @@ Dialog * Dialogs::build(string const & name)
 	} else if (name == "error") {
 		dialog->setController(new ControlError(*dialog));
 		dialog->setView(new QError(*dialog));
+		dialog->bc().bp(new OkCancelPolicy);
+	} else if (name == "errorlist") {
+		dialog->setController(new ControlErrorList(*dialog));
+		dialog->setView(new QErrorList(*dialog));
 		dialog->bc().bp(new OkCancelPolicy);
 	} else if (name == "ert") {
 		dialog->setController(new ControlERT(*dialog));

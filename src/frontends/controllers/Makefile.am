@@ -50,6 +50,8 @@ libcontrollers_la_SOURCES= \
 	ControlDocument.h \
 	ControlError.C \
 	ControlError.h \
+	ControlErrorList.C \
+	ControlErrorList.h \
 	ControlERT.C \
 	ControlERT.h \
 	ControlExternal.C \

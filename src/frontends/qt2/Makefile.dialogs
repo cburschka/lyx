@@ -23,6 +23,7 @@ UIFILES = \
 	QDelimiterDialogBase.ui \
 	QDocumentDialogBase.ui \
 	QErrorDialogBase.ui \
+	QErrorListDialogBase.ui \
 	QERTDialogBase.ui \
 	QExternalDialogBase.ui \
 	QFloatDialogBase.ui \
@@ -87,6 +88,7 @@ MOCFILES = \
 	QDelimiterDialog.C QDelimiterDialog.h \
 	QDocumentDialog.C QDocumentDialog.h \
 	QErrorDialog.C QErrorDialog.h \
+	QErrorListDialog.C QErrorListDialog.h \
 	QERTDialog.C QERTDialog.h \
 	QExternalDialog.C QExternalDialog.h \
 	QFloatDialog.C QFloatDialog.h \

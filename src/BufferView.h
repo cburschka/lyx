@@ -153,8 +153,8 @@ public:
 
 	/// removes all autodeletable insets
 	bool removeAutoInsets();
-	/// insert all errors found when running latex
-	void insertErrors(TeXErrors & terr);
+	/// show the error list to the user
+	void showErrorList();
 	/// set the cursor based on the given TeX source row
 	void setCursorFromRow(int row);
 

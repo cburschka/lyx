@@ -1977,7 +1977,7 @@ int Buffer::runChktex()
 			_("Could not run chktex successfully."));
 	} else if (res > 0) {
 		// Insert all errors as errors boxes
-		users->insertErrors(terr);
+		users->showErrorList();
 	}
 
 	// if we removed error insets before we ran chktex or if we inserted
