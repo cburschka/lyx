@@ -163,77 +163,43 @@ void InsetCharStyle::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 }
 
 
-namespace {
-
-int outputVerbatim(std::ostream & os, InsetText const & inset)
+int InsetCharStyle::latex(Buffer const & buf, ostream & os,
+		     OutputParams const & runparams) const
 {
-	int lines = 0;
-	ParagraphList::const_iterator par = inset.paragraphs().begin();
-	ParagraphList::const_iterator end = inset.paragraphs().end();
-	while (par != end) {
-		lyx::pos_type siz = par->size();
-		for (lyx::pos_type i = 0; i < siz; ++i) {
-			if (par->isNewline(i)) {
-				os << '\n';
-				++lines;
-			} else {
-				os << par->getChar(i);
-			}
-		}
-		++par;
-		if (par != end) {
-			os << "\n";
-			lines ++;
-		}
-	}
-	return lines;
-}
-
-} // namespace anon
-
-
-int InsetCharStyle::latex(Buffer const &, ostream & os,
-		     OutputParams const &) const
-{
-	os << "%\n\\" << params_.latexname;
+	os << "\\" << params_.latexname;
 	if (!params_.latexparam.empty())
 		os << params_.latexparam;
 	os << "{";
-	int i = outputVerbatim(os, *this);
-	os << "}%\n";
-		i += 2;
+	int i = InsetText::latex(buf, os, runparams);
+	os << "}";
 	return i;
 }
 
 
-int InsetCharStyle::linuxdoc(Buffer const &, std::ostream & os,
-			     OutputParams const &) const
+int InsetCharStyle::linuxdoc(Buffer const & buf, ostream & os,
+			     OutputParams const & runparams) const
 {
-	ostringstream oss;
-	int i = outputVerbatim(oss, *this);
 	sgml::openTag(os, params_.latexname, params_.latexparam);
-	os << sgml::escapeString(oss.str());
+	int i = InsetText::linuxdoc(buf, os, runparams);
 	sgml::closeTag(os, params_.latexname);
 	return i;
 }
 
 
-int InsetCharStyle::docbook(Buffer const &, std::ostream & os,
-			    OutputParams const &) const
+int InsetCharStyle::docbook(Buffer const & buf, ostream & os,
+			    OutputParams const & runparams) const
 {
-	ostringstream oss;
-	int i = outputVerbatim(oss, *this);
 	sgml::openTag(os, params_.latexname, params_.latexparam);
-	os << sgml::escapeString(oss.str());
+	int i = InsetText::docbook(buf, os, runparams);
 	sgml::closeTag(os, params_.latexname);
 	return i;
 }
 
 
-int InsetCharStyle::plaintext(Buffer const &, std::ostream & os,
-			      OutputParams const & /*runparams*/) const
+int InsetCharStyle::plaintext(Buffer const & buf, ostream & os,
+			      OutputParams const & runparams) const
 {
-	return outputVerbatim(os, *this);
+	return InsetText::plaintext(buf, os, runparams);
 }
 
 

@@ -1,3 +1,10 @@
+2004-10-30  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* insetcharstyle.C (latex, linuxdoc, docbook, plaintext): use
+	InsetText methods rather than outputVerbatim (escapes special
+	characters) [bug 1731]
+	* insetcharstyle.C (outputVerbatim): remove this function.
+
 2004-10-29  José Matos  <jamatos@lyx.org>
 
 	* insetgraphics.C (uniqueID): transfered to sgml.C
@@ -5,7 +12,7 @@
 2004-10-29 Andreas Vox  <vox@isp.uni-luebeck.de>
 
 	* insetlabel.C (docbook, linuxdoc):
-	* insetref.C (docbook, linuxdoc) sanitize id.
+	* insetref.C (docbook, linuxdoc): sanitize id.
 
 2004-10-29  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
