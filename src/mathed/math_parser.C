@@ -286,6 +286,7 @@ Parser::Parser(LyXLex & lexer)
 	: lineno_(lexer.getLineNo()), pos_(0), curr_num_(false)
 {
 	tokenize(lexer.getStream());
+	lexer.eatLine();
 }
 
 
