@@ -17,6 +17,8 @@
 
 #include "lyxcursor.h"
 
+#include <string>
+
 class Buffer;
 
 // Do not even think of forward declaring LyXText/BufferView etc here!

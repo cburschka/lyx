@@ -12,6 +12,7 @@
 #ifndef FRNT_LANG_H
 #define FRNT_LANG_H
 
+#include <string>
 #include <utility>
 #include <vector>
 

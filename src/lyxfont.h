@@ -16,6 +16,7 @@
 #define LYXFONT_H
 
 #include <iosfwd>
+#include <string>
 
 class LColor_color;
 class LyXLex;

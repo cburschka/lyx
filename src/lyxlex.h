@@ -20,6 +20,7 @@
 #include <boost/utility.hpp>
 
 #include <iosfwd>
+#include <string>
 
 
 ///

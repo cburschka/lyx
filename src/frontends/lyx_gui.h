@@ -15,6 +15,7 @@
 
 #include "FuncStatus.h"
 
+#include <string>
 #include <vector>
 
 class Dialogs;

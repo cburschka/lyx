@@ -16,6 +16,7 @@
 
 #include <boost/utility.hpp>
 
+#include <string>
 #include <vector>
 
 class LyXTextClass;

@@ -14,6 +14,7 @@
 
 #include <iosfwd>
 #include <map>
+#include <string>
 
 class Buffer;
 class LyXText;

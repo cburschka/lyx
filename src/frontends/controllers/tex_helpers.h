@@ -12,6 +12,7 @@
 #ifndef TEX_HELPERS_H
 #define TEX_HELPERS_H
 
+#include <string>
 #include <vector>
 
 

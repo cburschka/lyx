@@ -14,6 +14,7 @@
 
 #include <vector>
 #include <map>
+#include <string>
 
 #ifdef HAVE_LIBAIKSAURUS
 #include AIKSAURUS_H_LOCATION

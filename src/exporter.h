@@ -13,6 +13,7 @@
 #ifndef EXPORTER_H
 #define EXPORTER_H
 
+#include <string>
 #include <vector>
 
 

@@ -14,6 +14,7 @@
 #ifndef CONTROLCOMMANDBUFFER_H
 #define CONTROLCOMMANDBUFFER_H
 
+#include <string>
 #include <vector>
 
 

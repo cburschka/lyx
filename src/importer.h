@@ -14,6 +14,7 @@
 #ifndef IMPORTER_H
 #define IMPORTER_H
 
+#include <string>
 #include <vector>
 
 

@@ -16,6 +16,7 @@
 
 #include <boost/shared_ptr.hpp>
 #include <list>
+#include <string>
 
 
 class ButtonController;

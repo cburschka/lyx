@@ -17,6 +17,7 @@
 #include <set>
 #include <list>
 #include <map>
+#include <string>
 
 class Buffer;
 class BufferParams;

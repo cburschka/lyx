@@ -14,6 +14,7 @@
 #define DEP_TABLE_H
 
 #include <map>
+#include <string>
 
 ///
 class DepTable {

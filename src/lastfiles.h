@@ -15,6 +15,7 @@
 #include <boost/utility.hpp>
 
 #include <deque>
+#include <string>
 
 
 /** The latest documents loaded.

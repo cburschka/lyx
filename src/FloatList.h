@@ -13,6 +13,7 @@
 #define FLOATLIST_H
 
 #include <map>
+#include <string>
 
 
 class Floating;

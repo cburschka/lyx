@@ -23,6 +23,7 @@
 
 #include "support/types.h"
 
+#include <string>
 
 class Buffer;
 class BufferParams;

@@ -1,3 +1,27 @@
+<<<<<<< ChangeLog
+2003-10-07  Martin Vermeer <martin.vermeer@hut.fi>
+
+	* CutAndPaste.h:
+	* DepTable.h:
+	* FloatList.h:
+	* LaTeXFeatures.h:
+	* ParagraphParameters.h:
+	* TextCache.h:
+	* Thesaurus.h:
+	* bufferlist.h:
+	* exporter.h:
+	* importer.h:
+	* lastfiles.h:
+	* lyxfind.h:
+	* lyxfont.h:
+	* lyxlex.h:
+	* lyxtextclasslist.h:
+	* messages.h:
+	* paragraph.h:
+	* paragraph_pimpl.C:
+	* textcursor.h: add <string> and other small fixes to make Lars'
+	std::string patch compile with STLport.
+
 2003-10-06  Angus Leeming  <leeming@lyx.org>
 
 	* LColor.h: Add missing #include <string>.

@@ -17,6 +17,7 @@
 #include "ParagraphList_fwd.h"
 #include "support/types.h"
 
+#include <string>
 #include <vector>
 
 class Buffer;

@@ -13,6 +13,7 @@
 #define PREVIEWIMAGE_H
 
 #include <boost/scoped_ptr.hpp>
+#include <string>
 
 class InsetOld;
 

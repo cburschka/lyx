@@ -1,3 +1,9 @@
+
+2003-10-07  Martin Vermeer  <martin.vermeer@hut.fi>
+
+	* math_macrotable.h: add <string> and other small fixes to make
+	Lars' std::string patch compile with STLport.
+
 2003-10-06  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* math_cursor.C:

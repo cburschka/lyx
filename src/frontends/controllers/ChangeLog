@@ -1,3 +1,12 @@
+2003-10-07  Martin Vermeer  <martin.vermeer@hut.fi>
+
+	* BCView.h:
+	* ControlCommandBuffer.h:
+	* biblio.h:
+	* frnt_lang.h:
+	* tex_helpers.h: add <string> and other small fixes to make Lars'
+	std::string patch compile with STLport.
+
 2003-10-01  Angus Leeming  <leeming@lyx.org>
 
 	* ControlExternal.[Ch]: changes due to the introduction of

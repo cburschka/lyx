@@ -20,6 +20,7 @@
 #include "support/types.h"
 
 #include <iosfwd>
+#include <string>
 
 class BufferView;
 class LyXLength;

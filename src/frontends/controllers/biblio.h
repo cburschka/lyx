@@ -13,6 +13,7 @@
 #define BIBLIOHELPERS_H
 
 #include <map>
+#include <string>
 #include <vector>
 
 /** Functions of use to citation and bibtex GUI controllers and views */

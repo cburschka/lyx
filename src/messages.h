@@ -12,6 +12,7 @@
 #define MESSAGES_H
 
 #include <boost/scoped_ptr.hpp>
+#include <string>
 
 ///
 class Messages {

@@ -15,6 +15,7 @@
 #include "math_atom.h"
 
 #include <map>
+#include <string>
 
 
 class MathMacroTable {

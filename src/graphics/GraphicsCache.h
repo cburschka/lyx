@@ -25,6 +25,7 @@
 #include <boost/shared_ptr.hpp>
 
 #include <vector>
+#include <string>
 
 
 namespace lyx {

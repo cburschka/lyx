@@ -16,6 +16,8 @@
 
 #include "support/types.h"
 
+#include <string>
+
 class BufferView;
 class LyXText;
 
