@@ -7,7 +7,7 @@ INCLUDES = -I$(top_srcdir)/images -I$(top_srcdir)/src/ \
 	-I$(top_srcdir)/src/frontends/controllers \
 	$(SIGC_CFLAGS) $(BOOST_INCLUDES)
 
-LYXDATADIRS = forms
+SUBDIRS = forms
 
 EXTRA_DIST = xformsGImage.C xformsGImage.h
 
@@ -227,15 +227,15 @@ updatesrc:
 	$(MAKE) -C forms updatesrc
 
 # just copied from old lyx repository
-dist-hook:
-	for subdir in $(LYXDATADIRS) ; do \
-	test -d $(distdir)/$$subdir \
-	|| mkdir $(distdir)/$$subdir \
-	|| exit 1; \
-	chmod 777 $(distdir)/$$subdir; \
-	list=`(cd $(srcdir)/$$subdir && ls -1 | grep -v CVS)`; \
-	echo $$list ; \
-	for fil in $$list ; do \
-	cp -p $(srcdir)/$$subdir/$$fil $(distdir)/$$subdir ; \
-	done ; \
-	done
+#dist-hook:
+#	for subdir in $(LYXDATADIRS) ; do \
+#	test -d $(distdir)/$$subdir \
+#	|| mkdir $(distdir)/$$subdir \
+#	|| exit 1; \
+#	chmod 777 $(distdir)/$$subdir; \
+#	list=`(cd $(srcdir)/$$subdir && ls -1 | grep -v CVS)`; \
+#	echo $$list ; \
+#	for fil in $$list ; do \
+#	cp -p $(srcdir)/$$subdir/$$fil $(distdir)/$$subdir ; \
+#	done ; \
+#	done

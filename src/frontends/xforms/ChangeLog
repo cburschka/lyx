@@ -1,3 +1,11 @@
+2002-04-06  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* forms/.cvsignore: add Makefile.in
+
+	* forms/Makefile.am: make distcheck work, new file
+
+	* Makefile.am: make distcheck work
+
 2002-04-05  Herbert Voss  <voss@perce.de>
 
 	* FormGraphics.C: use correct unit bp (big point - PostScript point)

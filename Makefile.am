@@ -9,11 +9,11 @@ MAINTAINERCLEANFILES += $(srcdir)/aclocal.m4 \
 	$(srcdir)/configure $(srcdir)/development/lyx.spec \
 	$(srcdir)/acinclude.m4
 
-SUBDIRS = intl po sigc++ boost src lib
+SUBDIRS = config intl po sigc++ boost src lib
 
 EXTRA_DIST = ANNOUNCE INSTALL.OS2 INSTALL.autoconf README.OS2 \
 	UPGRADING lyx.man acconfig.h autogen.sh \
-	config development images sourcedoc
+	development images sourcedoc
 
 man_MANS = lyx.1
 
@@ -26,7 +26,6 @@ lyx.1:
 
 dist-hook:
 	cd $(distdir) ; \
-	rm -rf `find config -name \*CVS\*` ; \
 	rm -rf `find development -name \*CVS\*` ; \
 	rm -rf `find images -name \*CVS\*`
 
@@ -34,7 +33,6 @@ rpmdist: dist
 	ln -s lib/images/lyx.xpm . ; \
 	rpm -ta $(PACKAGE)-$(VERSION).tar.gz ; saved_status=$$?; \
 	rm lyx.xpm; exit $$saved_status
-
 
 bindist:
 	mkdir $(bindistdir)

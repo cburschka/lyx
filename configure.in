@@ -350,6 +350,7 @@ AC_SUBST(VERSION_INFO)
 AC_CONFIG_SUBDIRS(sigc++ lib lib/reLyX)
 AC_OUTPUT([Makefile \
        boost/Makefile \
+       config/Makefile \
        development/lyx.spec \
        lib/Makefile \
        intl/Makefile \
@@ -364,6 +365,7 @@ AC_OUTPUT([Makefile \
        src/frontends/Makefile \
        src/frontends/controllers/Makefile \
        src/frontends/xforms/Makefile \
+       src/frontends/xforms/forms/Makefile \
        src/frontends/qt2/Makefile \
        src/frontends/qt2/xforms/Makefile \
        src/frontends/qt2/moc/Makefile \
