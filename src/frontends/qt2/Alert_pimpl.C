@@ -52,6 +52,7 @@ pair<bool, string> const askForText_pimpl(string const & msg, string const & dfl
 	// less than ideal !
 	d.askLA->setText((string("&") + msg).c_str());
 	d.askLE->setText(dflt.c_str());
+	d.askLE->setFocus();
 	int ret = d.exec();
 
 	d.hide();

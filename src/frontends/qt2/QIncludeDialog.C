@@ -16,6 +16,7 @@
 #include <qwidget.h>
 #include <qpushbutton.h>
 #include <qcheckbox.h>
+#include <qlineedit.h>
 
 #include "QIncludeDialog.h"
 #include "QInclude.h"
@@ -30,6 +31,13 @@ QIncludeDialog::QIncludeDialog(QInclude * form)
 		form, SLOT(slotClose()));
 }
 
+
+void QIncludeDialog::show()
+{
+	QIncludeDialogBase::show();
+	filenameED->setFocus();
+} 
+ 
 
 void QIncludeDialog::change_adaptor()
 {

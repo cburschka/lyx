@@ -15,6 +15,7 @@
 #include <qpushbutton.h>
 #include <qcombobox.h>
 #include <qcheckbox.h>
+#include <qlineedit.h>
 #include <qlabel.h>
 
 QSearchDialog::QSearchDialog(QSearch * form)
@@ -23,13 +24,17 @@ QSearchDialog::QSearchDialog(QSearch * form)
 {
 	connect(closePB, SIGNAL(clicked()),
 		form_, SLOT(slotClose()));
-	findCO->setDuplicatesEnabled(false); 
-	findCO->setInsertionPolicy(QComboBox::AtTop); 
-	replaceCO->setDuplicatesEnabled(false); 
-	replaceCO->setInsertionPolicy(QComboBox::AtTop); 
 }
 
 
+void QSearchDialog::show()
+{
+	QSearchDialogBase::show();
+	findCO->setFocus();
+	findCO->lineEdit()->setSelection(0, findCO->lineEdit()->text().length());
+}
+
+ 
 void QSearchDialog::closeEvent(QCloseEvent * e)
 {
 	form_->slotWMHide();

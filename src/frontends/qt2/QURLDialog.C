@@ -12,6 +12,7 @@
 #include "QURLDialog.h"
 
 #include <qpushbutton.h>
+#include <qlineedit.h>
  
 QURLDialog::QURLDialog(QURL * form)
 	: QURLDialogBase(0, 0, false, 0),
@@ -29,6 +30,13 @@ QURLDialog::~QURLDialog()
 }
 
 
+void QURLDialog::show()
+{
+	QURLDialogBase::show();
+	urlED->setFocus();
+}
+
+ 
 void QURLDialog::changed_adaptor()
 {
 	form_->changed();

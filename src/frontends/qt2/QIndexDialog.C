@@ -43,6 +43,13 @@ QIndexDialog::QIndexDialog(QIndex * form)
 }
 
 
+void QIndexDialog::show()
+{
+	QIndexDialogBase::show(); 
+	keywordED->setFocus();
+}
+
+ 
 void QIndexDialog::change_adaptor()
 {
 	form_->changed();

@@ -21,6 +21,8 @@ class QIndexDialog : public QIndexDialogBase
 public:
 	QIndexDialog(QIndex * form);
 
+	virtual void show();
+ 
 protected slots:
 	virtual void change_adaptor();
 

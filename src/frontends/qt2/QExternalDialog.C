@@ -32,6 +32,13 @@ QExternalDialog::QExternalDialog(QExternal * form)
 }
 
 
+void QExternalDialog::show()
+{
+	QExternalDialogBase::show();
+	fileED->setFocus();
+}
+
+ 
 void QExternalDialog::change_adaptor()
 {
 	form_->changed();

@@ -20,6 +20,8 @@ public:
 	QURLDialog(QURL * form);
 	~QURLDialog();
 
+	virtual void show();
+ 
 public slots:
 	void changed_adaptor();
 

@@ -77,8 +77,12 @@
                 <bool>true</bool>
             </property>
             <property stdset="1">
-                <name>duplicatesEnabled</name>
-                <bool>false</bool>
+                <name>sizeLimit</name>
+                <number>10</number>
+            </property>
+            <property stdset="1">
+                <name>maxCount</name>
+                <number>666</number>
             </property>
             <property stdset="1">
                 <name>insertionPolicy</name>
@@ -89,8 +93,8 @@
                 <bool>true</bool>
             </property>
             <property stdset="1">
-                <name>maxCount</name>
-                <number>10</number>
+                <name>duplicatesEnabled</name>
+                <bool>false</bool>
             </property>
         </widget>
         <widget row="1"  column="0" >
@@ -126,20 +130,24 @@
                 <bool>true</bool>
             </property>
             <property stdset="1">
-                <name>insertionPolicy</name>
-                <enum>AtTop</enum>
+                <name>sizeLimit</name>
+                <number>10</number>
             </property>
             <property stdset="1">
-                <name>duplicatesEnabled</name>
-                <bool>false</bool>
+                <name>maxCount</name>
+                <number>666</number>
+            </property>
+            <property stdset="1">
+                <name>insertionPolicy</name>
+                <enum>AtTop</enum>
             </property>
             <property stdset="1">
                 <name>autoCompletion</name>
                 <bool>true</bool>
             </property>
             <property stdset="1">
-                <name>maxCount</name>
-                <number>10</number>
+                <name>duplicatesEnabled</name>
+                <bool>false</bool>
             </property>
         </widget>
         <widget row="2"  column="0"  rowspan="1"  colspan="2" >
@@ -234,16 +242,16 @@
                 <cstring>findPB</cstring>
             </property>
             <property stdset="1">
+                <name>enabled</name>
+                <bool>false</bool>
+            </property>
+            <property stdset="1">
                 <name>text</name>
                 <string>Find &amp;Next</string>
             </property>
             <property stdset="1">
                 <name>default</name>
                 <bool>true</bool>
-            </property>
-            <property stdset="1">
-                <name>enabled</name>
-                <bool>false</bool>
             </property>
         </widget>
         <widget row="1"  column="3" >
@@ -253,12 +261,12 @@
                 <cstring>replacePB</cstring>
             </property>
             <property stdset="1">
-                <name>text</name>
-                <string>&amp;Replace</string>
-            </property>
-            <property stdset="1">
                 <name>enabled</name>
                 <bool>false</bool>
+            </property>
+            <property stdset="1">
+                <name>text</name>
+                <string>&amp;Replace</string>
             </property>
         </widget>
         <widget row="2"  column="3"  rowspan="2"  colspan="1" >
@@ -268,12 +276,12 @@
                 <cstring>replaceallPB</cstring>
             </property>
             <property stdset="1">
-                <name>text</name>
-                <string>Replace &amp;All </string>
-            </property>
-            <property stdset="1">
                 <name>enabled</name>
                 <bool>false</bool>
+            </property>
+            <property stdset="1">
+                <name>text</name>
+                <string>Replace &amp;All </string>
             </property>
         </widget>
         <widget row="5"  column="0"  rowspan="1"  colspan="2" >

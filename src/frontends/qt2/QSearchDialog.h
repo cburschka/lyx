@@ -23,6 +23,8 @@ class QSearchDialog : public QSearchDialogBase
 public:
 	QSearchDialog(QSearch * form);
 
+	virtual void show();
+
 protected slots:
 	void findChanged();
 	void findClicked();
@@ -30,7 +32,7 @@ protected slots:
 	void replaceallClicked();
 
 protected:
-	void closeEvent(QCloseEvent * e);
+	virtual void closeEvent(QCloseEvent * e);
 
 private:
 	// add a string to the combo if needed

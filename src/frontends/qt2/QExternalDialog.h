@@ -21,6 +21,8 @@ class QExternalDialog : public QExternalDialogBase
 public:
 	QExternalDialog(QExternal * form);
 
+	virtual void show();
+ 
 protected slots:
 	virtual void change_adaptor();
 	virtual void editClicked();

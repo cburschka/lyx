@@ -21,6 +21,8 @@ class QGraphicsDialog : public QGraphicsDialogBase
 public:
 	QGraphicsDialog(QGraphics * form);
 
+	virtual void show();
+ 
 protected slots:
 	virtual void change_adaptor();
 	virtual void browse_clicked();

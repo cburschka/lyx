@@ -23,6 +23,8 @@ public:
 
 	void updateLists();
 
+	virtual void show();
+ 
 protected slots:
 	virtual void change_adaptor();
 	virtual void loadClicked();

@@ -15,6 +15,7 @@
 
 #include <qwidget.h>
 #include <qpushbutton.h>
+#include <qlineedit.h>
 #include <qcheckbox.h>
 
 #include "QGraphicsDialog.h"
@@ -35,6 +36,13 @@ QGraphicsDialog::QGraphicsDialog(QGraphics * form)
 }
 
 
+void QGraphicsDialog::show()
+{ 
+	QGraphicsDialogBase::show();
+	filename->setFocus();
+}
+
+ 
 void QGraphicsDialog::change_adaptor()
 {
 	form_->changed();
