@@ -122,35 +122,6 @@ void GMenubar::openByName(string const & name)
 }
 
 
-bool GMenubar::submenuDisabled(MenuItem const * item)
-{
-	Menu * from = item->submenu();
-	Menu to;
-	menubackend.expand(*from, to, view_);
-	Menu::const_iterator i = to.begin();
-	Menu::const_iterator end = to.end();
-	for (; i != end; ++i) {
-		switch (i->kind()) {
-		case MenuItem::Submenu:
-			if (!submenuDisabled(&(*i)))
-				return false;
-			break;
-		case MenuItem::Command:
-		{
-			FuncStatus const flag =
-				view_->getLyXFunc().getStatus(i->func());
-			if (flag.enabled())
-				return false;
-			break;
-		}
-		default:
-			break;
-		}
-	}
-	return true;
-}
-
-
 void GMenubar::onSubMenuActivate(MenuItem const * item,
 				 Gtk::MenuItem * gitem)
 {
@@ -178,13 +149,12 @@ void GMenubar::onSubMenuActivate(MenuItem const * item,
 				sigc::bind(sigc::mem_fun(*this, &GMenubar::onSubMenuActivate),
 					   &(*i),
 					   &gmenu->items().back()));
-			if (submenuDisabled(&(*i)))
+			if (!i->status().enabled())
 				gmenu->items().back().set_sensitive(false);
 			break;
 		case MenuItem::Command:
 		{
-			FuncStatus const flag =
-				view_->getLyXFunc().getStatus(i->func());
+			FuncStatus const flag = i->status();
 			bool on = flag.onoff(true);
 			bool off = flag.onoff(false);
 

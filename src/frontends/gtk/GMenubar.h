@@ -33,7 +33,6 @@ public:
 private:
 	void onCommandActivate(MenuItem const * item, Gtk::MenuItem * gitem);
 	void onSubMenuActivate(MenuItem const * item, Gtk::MenuItem * gitem);
-	bool submenuDisabled(MenuItem const * item);
 	Gtk::MenuBar menubar_;
 	LyXView * view_;
 	std::vector<Glib::ustring> mainMenuNames_;
