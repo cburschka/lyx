@@ -79,11 +79,6 @@ public:
 	    we only update the current row. */
 	void Update();
 
-#if 0
-	/** Updates part of the screen. Updates till row with cursor,
-	    or only current row */
-	void SmallUpdate();
-#endif
 	/// first visible pixel-row
 	unsigned long first;
 
@@ -96,13 +91,8 @@ private:
 	/// y1 and y2 are coordinates of the screen
 	void DrawFromTo(int y1, int y2);
 
-#if 1
 	/// y is a coordinate of the text
 	void DrawOneRow(Row * row, long y_text);
-#else
-	/// y is a coordinate of the text
-	void DrawOneRow(Row * row, long & y_text);
-#endif
 
 	///
 	WorkArea & owner;

@@ -114,28 +114,15 @@ void LyXScreen::DrawFromTo(int y1, int y2)
 }
 
 
-#if 1
 void LyXScreen::DrawOneRow(Row * row, long y_text)
 {
 	long y = y_text - first;
       
 	if (y + row->height > 0 && y - row->height <= long(owner.height())) {
-		/* ok there is something visible */
+		// ok there is something visible
 		text->GetVisibleRow(y, row, y + first);
 	}
 }
-#else
-void LyXScreen::DrawOneRow(Row * row, long & y_text)
-{
-	long y = y_text - first;
-      
-	if (y + row->height > 0 && y - row->height <= long(owner.height())) {
-		/* ok there is something visible */
-		text->GetVisibleRow(y, row, y + first);
-	}
-	y_text += row->height;
-}
-#endif
 
 
 /* draws the screen, starting with textposition y. uses as much already
@@ -391,7 +378,6 @@ bool LyXScreen::FitCursor()
    
 void LyXScreen::Update()
 {
-#if 1
 	switch(text->status) {
 	case LyXText::NEED_MORE_REFRESH:
 	{
@@ -417,79 +403,7 @@ void LyXScreen::Update()
 		// Nothing needs done
 		break;
 	}
-#else
-	if (text->status == LyXText::NEED_MORE_REFRESH
-	    || screen_refresh_y > -1 ) {
-		long y = 0;
-		if (screen_refresh_y > -1
-		    && screen_refresh_y < text->refresh_y)
-			y = screen_refresh_y;
-		else
-			y = text->refresh_y;
-		
-		//if (y < first) y = first;
-		y = max(y, long(first));
-		
-		DrawFromTo(y - first, owner.height());
-		text->refresh_y = 0;
-		text->status = LyXText::UNCHANGED;
-		screen_refresh_y = -1;
-		expose(0, y - first,
-		       owner.workWidth(), owner.height() - (y - first));
-	} else if (text->status == LyXText::NEED_VERY_LITTLE_REFRESH) {
-		/* ok I will update the current cursor row */
-		long y = text->refresh_y;
-		DrawOneRow(text->refresh_row, y);
-		text->status = LyXText::UNCHANGED;
-		expose(0, text->refresh_y - first,
-		       owner.workWidth(), text->refresh_row->height);
-	}
-#endif
 }
-
-
-#if 0
-void LyXScreen::SmallUpdate()
-{
-#if 1
-	Update();
-#else
-	if (text->status == LyXText::NEED_MORE_REFRESH) {
-		/* ok I will update till the current cursor row */
-		Row * row = text->refresh_row;
-		long y = text->refresh_y;
-		long y2 = y;
-      
-		if (y > long(text->cursor.y)) {
-			Update();
-			return;
-		}
-	 
-		while (row
-		       && row != text->cursor.row
-		       && y < long(first + owner.height())) {
-			DrawOneRow(row, y);
-			row = row->next;
-		}
-      
-		DrawOneRow(row, y);
-		screen_refresh_y = y;
-		screen_refresh_row = row->next;
-		text->status = LyXText::UNCHANGED;
-		// Is the right regin exposed?
-		expose(0, y2 - first,
-		       owner.workWidth(), y - y2);
-	} else if (text->status == LyXText::NEED_VERY_LITTLE_REFRESH) {
-		/* ok I will update the current cursor row */
-		long y = text->refresh_y;
-		DrawOneRow(text->refresh_row, y);
-		text->status = LyXText::UNCHANGED;
-		expose(0, text->refresh_y - first,
-		       owner.workWidth(), text->refresh_row->height);
-	}
-#endif
-}
-#endif
 
 
 void LyXScreen::ToggleSelection(bool kill_selection)

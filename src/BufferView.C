@@ -244,14 +244,6 @@ void BufferView::update(signed char f)
 }
 
 
-#if 0
-void BufferView::smallUpdate(signed char f)
-{
-	pimpl_->smallUpdate(f);
-}
-#endif
-
-
 void BufferView::setState()
 {
 	pimpl_->setState();

@@ -38,10 +38,6 @@ struct BufferView::Pimpl {
 	void update();
 	///
 	void update(signed char f);
-#if 0
-	///
-	void smallUpdate(signed char f);
-#endif
 	///
 	void gotoError();
   	/// Update pixmap of screen

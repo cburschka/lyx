@@ -1192,38 +1192,6 @@ void BufferView::Pimpl::update(signed char f)
 }
 
 
-#if 0
-void BufferView::Pimpl::smallUpdate(signed char f)
-{
-#if 1
-	update(f);
-#else
-	screen->SmallUpdate();
-	if (screen->TopCursorVisible()
-	    != screen->first) {
-		update(f);
-		return;
-	}
-
-	fitCursor();
-	//updateScrollbar();
-
-	if (!bv_->text->selection)
-		bv_->text->sel_cursor = bv_->text->cursor;
-
-	if (f == 1 || f == -1) {
-		if (buffer_->isLyxClean()) {
-			buffer_->markDirty();
-			owner_->getMiniBuffer()->setTimer(4);
-		} else {
-			buffer_->markDirty();
-		}
-	}
-#endif
-}
-#endif
-
-
 // Callback for cursor timer
 void BufferView::Pimpl::cursorToggle()
 {

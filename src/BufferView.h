@@ -48,10 +48,6 @@ public:
 	void update();
 	///
 	void update(signed char f);
-#if 0
-	///
-	void smallUpdate(signed char f);
-#endif
 	///
 	void updateScrollbar();
 	///
