@@ -43,6 +43,8 @@
 #include "textpainter.h"
 #include "preview.h"
 
+#include "graphics/GraphicsCacheItem.h"
+
 using std::ostream;
 using std::ifstream;
 using std::istream;
@@ -190,8 +192,11 @@ void InsetFormula::draw(BufferView * bv, LyXFont const & font,
 	ostringstream os;
 	WriteStream wi(os, false, false);
 	par_->write(wi);
-	if (grfx::ImagePtr image = preview(os.str()))
-		pain.image(x, y, w, h, *image);
+	if (preview(os.str(), preview_) && preview_.get()) {
+		cerr << "image could be drawn\n";
+		// LyX crashes if we try that. Why? Andre'
+		//pi.pain.image(x, y, w, h, *(preview_->image()));
+	}
 #endif
 
 	xx += par_->width();

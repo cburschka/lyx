@@ -24,6 +24,7 @@
 #include "formulabase.h"
 #include "math_defs.h"
 #include "math_atom.h"
+#include "graphics/GraphicsTypes.h"
 
 class MathHullInset;
 
@@ -89,7 +90,9 @@ private:
 	///
 	void handleExtern(string const & arg);
 
-	///
+	/// contents
 	MathAtom par_;
+	/// LaTeX preview
+	mutable grfx::GraphicPtr preview_;
 };
 #endif

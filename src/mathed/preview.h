@@ -4,6 +4,6 @@
 #include "LString.h"
 #include "graphics/GraphicsTypes.h"
 
-grfx::ImagePtr preview(string const & str);
+bool preview(string const & str, grfx::GraphicPtr & graphic);
 
 #endif

@@ -1,71 +1,63 @@
 #include <config.h>
 
-#include "formula.h"
 #include "debug.h"
-#include "frontends/Painter.h"
 #include "support/systemcall.h"
 #include "graphics/GraphicsTypes.h"
 #include "graphics/GraphicsImage.h"
-#include "graphics/GraphicsImageXPM.h"
-#include "graphics/GraphicsCacheItem.h"
 #include "graphics/GraphicsCache.h"
+#include "graphics/GraphicsCacheItem.h"
+#include "Lsstream.h"
 
 #include <fstream>
-#include <map>
 
+#include <boost/utility.hpp>
+#include <boost/bind.hpp>
 
 using namespace std;
 
 
-namespace {
-
-	typedef map<string, grfx::ImagePtr> previews_map;
-
-	// cache for computed previews
-	previews_map thePreviews;
-
-	// cache for scheduled previews
-	vector<string> theSchedule;
+// built some unique filename
+string canonical_name(string const & str)
+{
+	ostringstream os;
+	for (string::const_iterator it = str.begin(); it != str.end(); ++it) 
+		os << char('A' + (*it & 15)) << char('a' + (*it >> 4));
+	return os.str();
 }
 
 
-#if 0
-class PreviewCallbackLoaded {
-public:
-	///
-	PreviewCallbackLoaded(string const & filename)
-		: image_(grfx::GImageXPM::newImage())
-	{
-		lyxerr[Debug::GRAPHICS] << "Loading image." << endl;
-
-		grfx::GImage::SignalTypePtr s(new grfx::GImage::SignalType(&PreviewCallbackLoaded::imageLoaded));
-		image_->load(filename, s);
-	}
-
-	///
-	void imageLoaded(bool result)
-	{
-		lyxerr << "Image loaded with result: " << result << endl;
-	}
-
-	grfx::ImagePtr image_;
-
-};
-#endif
-
-
-grfx::ImagePtr preview(string const & str)
+bool preview(string const & str, grfx::GraphicPtr & graphic)
 {
-	// do we already have access to a rendered version?
-	previews_map::const_iterator it = thePreviews.find(str);
-	if (it != thePreviews.end())
-		return it->second;
+	string base = canonical_name(str);
+	string dir  = "/tmp/lyx/";
+	string file = dir + base + ".ps";
+	cerr << "writing '" << str << "' to '" << file << "'\n";
 
-	// constructing new item
-	//grfx::ImagePtr & im = thePreviews[str];
+	// get the cache
+	grfx::GCache & gc = grfx::GCache::get();
 
-	lyxerr << "writing: " << str << endl;
-	std::ofstream of("/tmp/previewlyx.tex");
+	// look up the file
+	if (gc.inCache(file)) {
+
+		// it's already in there. Get hold of it.
+		grfx::GraphicPtr gr = grfx::GraphicPtr(gc.graphic(file));
+
+		// is it already loaded?
+		if (gr->status() == grfx::Loaded) {
+			cerr << "file '" << file << "' ready for display\n";
+			cerr << "im: " << graphic.get() << " " << gr.get() << "\n";
+			graphic = gr;
+			return true;
+		}
+
+		// otherwise we have to wait again
+		cerr << "file '" << file << "' not finished loading\n";
+		return false;
+	}
+
+	// The real work starts.
+	string const texfile = dir + base + ".tex";
+	std::ofstream of(texfile.c_str());
 	of << "\\documentclass{article}"
 	   << "\\usepackage{amssymb}"
 	   << "\\thispagestyle{empty}"
@@ -74,58 +66,17 @@ grfx::ImagePtr preview(string const & str)
 	   << "\\end{document}\n";
 	of.close();
 
-	Systemcall sc1;
-	sc1.startscript(Systemcall::Wait,
-		"(cd /tmp ; latex previewlyx.tex ; dvips previewlyx.dvi)");
+	string const cmd =
+		"latex " + base + ".tex ; dvips -o " + base + ".ps " + base + ".dvi ";
+	//cerr << "calling: '" << "(cd " + dir + "; " + cmd + ")\n";
+	Systemcall sc;
+	sc.startscript(Systemcall::Wait, "(cd " + dir + "; " + cmd + ")");
 
-	Systemcall sc2;
-	sc2.startscript(Systemcall::Wait,
-		"(cd /tmp ; convert previewlyx.ps previewlyx.xpm)");
+	// now we are done, add the file to the cache
+	gc.add(file);
+	gc.graphic(file)->startLoading();
 
-	//PreviewCallbackLoaded cb("/tmp/previewlyx.xpm");
-
-#if 0
-	//grfx::SignalLoadTypePtr on_finish;
-	//on_finish.reset(new SignalLoadType);
-	//on_finish->connect(SigC::slot(this, &imageLoaded));
-
-	// load image
-	XpmImage * xpm_image = new XpmImage;
-	int const success =
-		XpmReadFileToXpmImage("/tmp/previewlyx.ps", xpm_image, 0);
-
-	switch (success) {
-	case XpmOpenFailed:
-		lyxerr[Debug::GRAPHICS]
-			<< "No XPM image file found." << std::endl;
-		break;
-
-	case XpmFileInvalid:
-		lyxerr[Debug::GRAPHICS]
-			<< "File format is invalid" << std::endl;
-		break;
-
-	case XpmNoMemory:
-		lyxerr[Debug::GRAPHICS]
-			<< "Insufficient memory to read in XPM file"
-			<< std::endl;
-		break;
-	}
-
-	if (success != XpmSuccess) {
-		XpmFreeXpmImage(xpm_image);
-		delete xpm_image;
-
-		lyxerr[Debug::GRAPHICS]
-			<< "Error reading XPM file '"
-			<< XpmGetErrorString(success) << "'"
-			<< std::endl;
-	} else {
-		//grfx::GImageXPM * xim = static_cast<grfx::GImageXPM *>(im.get());
-		//xim->image_.reset(*xpm_image);
-	}
-
-	return im;
-#endif
-	return it->second;	
+	// This might take a while. Wait for the next round.
+	cerr << "file '" << file << "' registered\n";
+	return false;
 }
