@@ -2,6 +2,8 @@
 
 # LyX keyboard definitions similar to those of Scientific Word.
 # Prepared by Serge Winitzki. Version 1.2
+# Somewhat updated by Jean-Marc Lasgouttes (I'm sure that I simplified it, 
+#    but I'm not sure that I did not break it :)
 
 # Tip: to find the "LyX name" for a key, look at the status bar after
 # typing some non-existent key combination. E.g. to find how "Ctrl-&" is
@@ -99,7 +101,7 @@
 \bind "S-C-quotedbl"	"accent-umlaut"
 \bind "C-apostrophe"	"accent-acute"
 \bind "S-C-asciicircum" "accent-circumflex"
-\bind "C-equal"		"accent-vector"
+\bind "C-equal"		"math-insert \vec"
 # Why is it not "accent-bar"?
 \bind "C-minus"	"math-insert \bar"
 # What is "accent-underbar"?
@@ -123,20 +125,6 @@
 # F9 bound below as meta-prefix (useful e.g. if the keyboard doesn't have a working ALT).
 #\bind "F9"                     "------"
 #\bind "F10"                    "------"
-
-#
-# Math menu (unmodified)
-#
-
-\bind "M-m f"			"math-insert \frac"
-\bind "M-m i"			"math-insert \int"
-\bind "M-m o"			"math-insert \oint"
-\bind "M-m p"                  "math-insert \partial"
-\bind "M-m s"                  "math-insert \sqrt"
-\bind "M-m S-S"                "math-insert \sum"
-\bind "M-m l"                  "math-limits"
-\bind "M-m n"                  "math-number"
-\bind "M-m v"                  "accent-vector"
 
 # Sciword mnemonics for math editing:
 
@@ -163,6 +151,9 @@
 \bind "S-M-greater"	"math-insert \geq"
 \bind "C-s S-less"	"math-insert \ll"
 \bind "C-s S-greater"	"math-insert \gg"
+
+# usual math bindings
+\bind_file maths.bind
 
 	############################
 ######### Almost no changes below. #########
@@ -232,6 +223,7 @@
 \bind "S-KP_Insert"             "paste"
 \bind "S-KP_Delete"             "cut"
 
+
 #
 # Edit group
 #
@@ -249,113 +241,12 @@
 \bind "F9"                     "meta-prefix"
 
 
-
 #
-# Font size menu
-#
-
-\bind "M-s S-A"                "font-size largest"             # \LARGE
-\bind "M-s g"                  "font-size giant"               # \Huge
-\bind "M-s h"                  "font-size huge"                # \huge
-\bind "M-s S-H"                "font-size giant"               # \Huge
-\bind "M-s l"                  "font-size large"               # \large
-\bind "M-s S-L"                "font-size larger"              # \Large
-\bind "M-s n"                  "font-size normal"              # \normalsize
-\bind "M-s s"                  "font-size small"               # \small
-\bind "M-s t"                  "font-size tiny"                # \tiny
-
-\bind "M-s 1"                  "font-size tiny"
-\bind "M-s 2"                  "font-size small"
-\bind "M-s 3"                  "font-size normal"
-\bind "M-s 4"                  "font-size large"
-\bind "M-s 5"                  "font-size larger"
-\bind "M-s 6"                  "font-size largest"
-\bind "M-s 7"                  "font-size huge"
-\bind "M-s 8"                  "font-size giant"
-
-
-
-#
-# Alignment menu
+# The menus
 #
 
-#\bind "M-a l"                  "para-align left"               # Not yet implemented!
-#\bind "M-a r"                  "para-align right"              # Not yet implemented!
-#\bind "M-a c"                  "para-align center"             # Not yet implemented!
-#\bind "M-a b"                  "para-align block"              # Not yet implemented!
-#\bind "M-a f"                  "para-align block"              # Not yet implemented!
-#\bind "M-a d"                  "para-align default"            # Not yet implemented!
+\bind_file menus.bind
 
-
-
-#
-# Paragraph style menu
-#
-
-\bind "M-p c"                  "drop-layouts-choice"
-\bind "M-p 1"                  "layout Chapter"
-\bind "M-p 2"                  "layout Section"
-\bind "M-p 3"                  "layout Subsection"
-\bind "M-p 4"                  "layout Subsubsection"
-\bind "M-p 5"                  "layout Paragraph"
-\bind "M-p 6"                  "layout Subparagraph"
-\bind "M-p b"                  "layout Itemize"                        # bulleted list
-\bind "M-p d"                  "layout Description"
-\bind "M-p e"                  "layout Enumerate"                      # numbered list
-\bind "M-p i"                  "layout Itemize"                        # bulleted list
-\bind "M-p l"                  "layout List"
-\bind "M-p n"                  "layout Enumerate"                      # numbered list
-\bind "M-p p"                  "layout Lyx-Code"
-\bind "M-p q"                  "layout Quote"
-\bind "M-p S-Q"                "layout Quotation"
-\bind "M-p s"                  "layout Standard"
-\bind "M-p t"                  "layout Title"
-\bind "M-p S-at"               "layout Section*"                       # M-p S-2
-\bind "M-p S-dollar"           "layout Subsubsection*"                 # M-p S-4
-\bind "M-p S-numbersign"       "layout Subsection*"                    # M-p S-3
-
-\bind "M-p Left"               "depth-decrement"
-\bind "M-p Right"              "depth-increment"
-
-
-
-#
-# Character style menu
-#
-
-\bind "M-c b"                  "font-bold"
-#\bind "M-c c"                  "font-smallcaps"
-\bind "M-c e"                  "font-emph"
-\bind "M-c i"                  "font-emph"						# italics
-\bind "M-c m"                  "math-mode"
-\bind "M-c p"                  "font-code"
-\bind "M-c r"                  "font-roman"
-\bind "M-c s"                  "font-sans"
-\bind "M-c t"                  "ert-insert"
-\bind "M-c u"                  "font-underline"
-
-\bind "M-c Down"               "word-lowcase"
-\bind "M-c Up"                 "word-upcase"
-\bind "M-c Right"              "word-capitalize"
-
-\bind "M-c space"              "font-default"
-
-
-
-#
-# Keyboard menu
-#
-
-\bind "M-k 1"                  "keymap-primary"
-\bind "M-k 2"                  "keymap-secondary"
-\bind "M-k o"                  "keymap-off"
-\bind "M-k t"                  "keymap-toggle"
-\bind "M-k x"                  "keymap-off"
-
-#
-# Misc menu
-#
- 
 # this clashes with M-x so we can't use it. M-x is more
 # important (reported by Serge Winitzki <winitzki@yahoo.com>)
 # \bind "M-x c"                  "screen-recenter"

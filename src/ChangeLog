@@ -1,3 +1,8 @@
+2002-11-22  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* commandtags.h: 
+	* LyXAction.C (init): remove LFUN_VECTOR (bug 662)
+
 2002-11-27  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* lyxrc.[Ch]: Add {roman,sans,typewriter}_font_foundry variables.
