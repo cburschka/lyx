@@ -14,8 +14,6 @@ libinsets_la_SOURCES = \
 	figinset.h \
 	form_graphics.C \
 	form_graphics.h \
-	form_url.C \
-	form_url.h \
 	inset.C \
 	insetbib.C \
 	insetbib.h \

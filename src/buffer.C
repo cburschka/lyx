@@ -957,7 +957,7 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, LyXParagraph *& par,
 			inscmd.Read(this, lex);
 			Inset * inset = 0;
 			if (inscmd.getCmdName() == "cite") {
-				inset = new InsetCitation(inscmd.getContents(), inscmd.getOptions());
+				inset = new InsetCitation(inscmd.params());
 			} else if (inscmd.getCmdName() == "bibitem") {
 				lex.printError("Wrong place for bibitem");
 				inset = inscmd.Clone();
@@ -971,7 +971,7 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, LyXParagraph *& par,
 				inset = new InsetLabel(inscmd.getCommand());
 			} else if (inscmd.getCmdName() == "url"
 				   || inscmd.getCmdName() == "htmlurl") {
-				inset = new InsetUrl(inscmd.getCommand());
+				inset = new InsetUrl(inscmd.params());
 			} else if (inscmd.getCmdName() == "ref"
 				   || inscmd.getCmdName() == "pageref"
 				   || inscmd.getCmdName() == "vref"
@@ -1190,8 +1190,7 @@ void Buffer::readInset(LyXLex & lex, LyXParagraph *& par,
 		inscmd.Read(this, lex);
 		Inset * inset = 0;
 		if (inscmd.getCmdName() == "cite") {
-			inset = new InsetCitation(inscmd.getContents(),
-						  inscmd.getOptions());
+			inset = new InsetCitation(inscmd.params());
 		} else if (inscmd.getCmdName() == "bibitem") {
 			lex.printError("Wrong place for bibitem");
 			inset = inscmd.Clone();
@@ -1206,7 +1205,7 @@ void Buffer::readInset(LyXLex & lex, LyXParagraph *& par,
 			inset = new InsetLabel(inscmd.getCommand());
 		} else if (inscmd.getCmdName() == "url"
 			   || inscmd.getCmdName() == "htmlurl") {
-			inset = new InsetUrl(inscmd.getCommand());
+			inset = new InsetUrl(inscmd.params());
 		} else if (inscmd.getCmdName() == "ref"
 			   || inscmd.getCmdName() == "pageref"
 			   || inscmd.getCmdName() == "vref"

@@ -2071,18 +2071,28 @@ string LyXFunc::Dispatch(int ac,
 	case LFUN_HTMLURL:
 	case LFUN_URL:
 	{
-		InsetCommand * new_inset;
+		InsetCommandParams p;
 		if (action == LFUN_HTMLURL)
-			new_inset = new InsetUrl("htmlurl", "", "");
+			p.setCmdName("htmlurl");
 		else
-			new_inset = new InsetUrl("url", "", "");
-		if (owner->view()->insertInset(new_inset))
-			new_inset->Edit(owner->view(), 0, 0, 0);
-		else
-			delete new_inset;
+			p.setCmdName("url");
+		owner->getDialogs()->createUrl( p.getAsString() );
 	}
 	break;
-	
+		    
+	case LFUN_INSERT_URL:
+	{
+		InsetCommandParams p;
+		p.setFromString( argument );
+
+		InsetUrl * inset = new InsetUrl( p );
+		if (!owner->view()->insertInset(inset))
+			delete inset;
+		else
+			owner->view()->updateInset( inset, true );
+	}
+	break;
+		    
 	case LFUN_INSET_TEXT:
 	{
 		InsetText * new_inset = new InsetText;
@@ -2493,10 +2503,10 @@ string LyXFunc::Dispatch(int ac,
 		    
 	case LFUN_INSERT_CITATION:
 	{
-		string keys = token(argument, '|', 0);
-		string text = token(argument, '|', 1);
+		InsetCommandParams p;
+		p.setFromString( argument );
 
-		InsetCitation * inset = new InsetCitation( keys, text );
+		InsetCitation * inset = new InsetCitation( p );
 		if (!owner->view()->insertInset(inset))
 			delete inset;
 		else

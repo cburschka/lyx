@@ -267,15 +267,11 @@ enum kb_action {
 	LFUN_INSET_LIST,                // Lgb 20000627
 	LFUN_INSET_THEOREM,             // Lgb 20000630
 	LFUN_CREATE_CITATION,           // Angus 20000705
-	LFUN_INSET_CAPTION,            // Lgb 20000718
+	LFUN_INSET_CAPTION,             // Lgb 20000718
 	LFUN_SWITCHBUFFER,  // and where is this comming from?
+	LFUN_INSERT_URL,                // Angus 20000726
 	LFUN_LASTACTION  /* this marks the end of the table */
 };
 
 std::ostream & operator<<(std::ostream &, kb_action);
 #endif
-
-
-
-
-

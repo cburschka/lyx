@@ -16,9 +16,8 @@
 #endif
 
 #include "insetcommand.h"
-#include "buffer.h"
-#include "support/filetools.h"
 
+class Buffer;
 struct LaTeXFeatures;
 
 // Created by AAS 970521
@@ -72,16 +71,11 @@ public:
 	bool display() const;
 	///
 	string getScreenLabel() const;
-	///
-	void setContents(string const & c);
         ///
-        void setFilename(string const & n) { setContents(n); }
+        string getMasterFilename() const;
         ///
-        string getMasterFilename() const { return master->fileName(); }
-        ///
-        string getFileName() const { 
-		return filename;
-	}
+        string getFileName() const;
+
         ///  In "input" mode uses \input instead of \include.
 	bool isInput() const { return flag == InsetInclude::INPUT; }
         ///  If this is true, the child file shouldn't be loaded by lyx
@@ -128,8 +122,6 @@ private:
         int flag;
         ///
 	Buffer * master;
-	///
-	string filename;
 	///
 	mutable string include_label;
 };

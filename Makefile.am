@@ -25,7 +25,7 @@ dist-hook:
 	rm -rf `find images -name \*CVS\*`
 
 rpmdist: dist
-	ln -s images/lyx.xpm . ; \
+	ln -s lib/images/lyx.xpm . ; \
 	rpm -ta ${PACKAGE}-${VERSION}.tar.gz ; \
 	rm lyx.xpm
 

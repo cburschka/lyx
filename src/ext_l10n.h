@@ -7,7 +7,6 @@ _("Options|O");
 _("Documents|D");
 _("Help|H");
 _("File|F");
-_("File|F");
 _("Options|O");
 _("Help|H");
 _("New...|N");

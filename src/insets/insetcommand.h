@@ -24,14 +24,54 @@
  * Similar to InsetLaTeX but having control of the basic structure of a
  *   LaTeX command: \name[options]{contents}. 
  */
+class InsetCommandParams {
+public:
+	///
+	InsetCommandParams();
+	///
+	explicit
+	InsetCommandParams( string const & n,
+			    string const & c = string(),
+			    string const & o = string());
+	///
+	string const & getCmdName() const { return cmdname; }
+	///
+	string const & getOptions() const { return options; }
+	///
+	string const & getContents() const { return contents; }
+	///
+	void setCmdName( string const & n ) { cmdname = n; }
+	///
+	void setOptions(string const & o) { options = o; }
+	///
+	void setContents(string const & c) { contents = c; }
+	///
+	string getAsString() const;
+	///
+	void setFromString( string const & );
+
+private:
+	///    
+	string cmdname;
+	///    
+	string contents;
+	///    
+	string options;
+};
+
+
 class InsetCommand : public InsetButton {
 public:
 	///
 	InsetCommand();
 	///
 	explicit
-	InsetCommand(string const & name, string const & arg = string(), 
-		     string const & opt = string());
+	InsetCommand(string const & n,
+		     string const & c = string(), 
+		     string const & o = string());
+	///
+	explicit
+	InsetCommand(InsetCommandParams const &);
 	///
 	void Write(Buffer const *, std::ostream &) const;
 
@@ -62,48 +102,28 @@ public:
          confusion with lyxinset::getLabel(int), but I've seen that
          it wasn't. I hope you never confuse again both methods.  (ale)
 	 */
-	virtual string getScreenLabel() const
-	{
-		return getCommand();
-	}
-
+	virtual string getScreenLabel() const { return getCommand(); }
 	/// Build the complete LaTeX command
 	string getCommand() const;
 	///
-	string const & getCmdName() const {
-		return cmdname;
-	}
+	string const & getCmdName() const { return p_.getCmdName(); }
 	///
-	string const & getOptions() const {
-		return options;
-	}
+	string const & getOptions() const { return p_.getOptions(); }
 	///
-	string const & getContents() const {
-		return contents;
-	}
+	string const & getContents() const { return p_.getContents(); }
 	///
-	void setCmdName(string const & n) {
-		cmdname = n;
-	}
+	void setCmdName(string const & n) { p_.setCmdName(n); }
 	///
-	void setOptions(string const & o) {
-		options = o;
-	}
+	void setOptions(string const & o) { p_.setOptions(o); }
 	///
-	virtual void setContents(string const & c) {
-		contents = c;
-	}
+	void setContents(string const & c) { p_.setContents(c); }
 	///
-	void addContents(string const & c) {
-		contents += c;
-	}
+	InsetCommandParams const & params() const { return p_; }
+	///
+	void setParams(InsetCommandParams const &);
 private:
-	///    
-	string cmdname;
-	///    
-	string options;
-	///    
-	string contents;
+	///
+	InsetCommandParams p_;
 };
 
 #endif

@@ -35,13 +35,14 @@ class DialogBase;
 // Maybe this should be a UIFunc modelled on LyXFunc
 class LyXView;
 
+class InsetBibKey;
+class InsetBibtex;
+class InsetCitation;
 class InsetInclude;
 class InsetIndex;
-class InsetBibKey;
-class InsetCitation;
-class InsetBibtex;
 class InsetInfo;
 class InsetTabular;
+class InsetUrl;
 
 /** Container of all dialogs and signals a LyXView needs or uses to access them
     The list of dialog signals isn't comprehensive but should be a good guide
@@ -112,6 +113,10 @@ public:
 	Signal1<void, InsetCitation *> showCitation;
 	///
 	Signal1<void, string const &> createCitation;
+	///
+	Signal1<void, InsetUrl *> showUrl;
+	///
+	Signal1<void, string const &> createUrl;
 	///
 	Signal1<void, InsetBibtex *> showBibtex;
 	///

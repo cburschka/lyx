@@ -9,40 +9,28 @@
  * ======================================================
  */
 
-#ifndef FORMCITATION_H
-#define FORMCITATION_H
+#ifndef FORMURL_H
+#define FORMURL_H
 
 #include "DialogBase.h"
 #include "LString.h"
-#include <vector>
 
 class Dialogs;
-// same arguement as in Dialogs.h s/LyX/UI/
 class LyXView;
-class InsetCitation;
-struct FD_form_citation;
+class InsetCommandParams;
+class InsetUrl;
+struct FD_form_url;
 
-/** This class provides an XForms implementation of the FormCitation Dialog.
+/** This class provides an XForms implementation of the FormUrl Dialog.
  */
-class FormCitation : public DialogBase {
+class FormUrl : public DialogBase {
 public:
-	///
-	enum State {
-		DOWN,
-		UP,
-		DELETE,
-		ADD,
-		BIBBRSR,
-		CITEBRSR,
-		ON,
-		OFF
-	};
 	/**@name Constructors and Destructors */
 	//@{
-	/// #FormCitation x(LyXFunc ..., Dialogs ...);#
-	FormCitation(LyXView *, Dialogs *);
 	///
-	~FormCitation();
+	FormUrl(LyXView *, Dialogs *);
+	///
+	~FormUrl();
 	//@}
 
 	/**@name Real per-instance Callback Methods */
@@ -50,19 +38,18 @@ public:
 	static  int WMHideCB(FL_FORM *, void *);
 	static void OKCB(FL_OBJECT *, long);
 	static void CancelCB(FL_OBJECT *, long);
-	static void InputCB(FL_OBJECT *, long);
 	//@}
 
 private:
-	FormCitation() {}
-	FormCitation(FormCitation &) : DialogBase() {}
+	FormUrl() {}
+	FormUrl(FormUrl &) : DialogBase() {}
 	
 	/**@name Slot Methods */
 	//@{
 	/// Create the dialog if necessary, update it and display it.
 	void createInset( string const & );
 	/// 
-	void showInset( InsetCitation * );
+	void showInset( InsetUrl * );
 	/// 
 	void show();
 	/// Hide the dialog.
@@ -75,22 +62,10 @@ private:
 	//@{
 	/// Apply from dialog
 	void apply();
-	/// Filter the inputs
-	void input( State );
 	/// Build the dialog
 	void build();
 	///
-	void updateCitekeys( string const & );
-	///
-	void updateBrowser( FL_OBJECT *, std::vector<string> const & ) const;
-	///
-	void setBibButtons( State ) const;
-	///
-	void setCiteButtons( State ) const;
-	///
-	void setSize( int, bool ) const;
-	///
-	FD_form_citation * build_citation();
+	FD_form_url * build_url();
 	/// Explicitly free the dialog.
 	void free();
 	//@}
@@ -98,7 +73,7 @@ private:
 	/**@name Private Data */
 	//@{
 	/// Real GUI implementation.
-	FD_form_citation * dialog_;
+	FD_form_url * dialog_;
 	/** Which LyXFunc do we use?
 	    We could modify Dialogs to have a visible LyXFunc* instead and
 	    save a couple of bytes per dialog.
@@ -115,17 +90,11 @@ private:
 	/// inset::hide connection.
 	Connection ih_;
 	///
-	InsetCitation * inset_;
+	InsetUrl * inset_;
 	///
 	bool dialogIsOpen;
 	///
-  	string textAfter;
-	///
-	std::vector<string> citekeys;
-	///
-	std::vector<string> bibkeys;
-	///
-	std::vector<string> bibkeysInfo;
+  	InsetCommandParams * params;
 	//@}
 };
 

@@ -10,19 +10,17 @@
  */
 
 #include <config.h>
-#include <algorithm>
-
 #include "gettext.h"
 #include FORMS_H_LOCATION
-#include "xform_macros.h"
-#include "FormCitation.h"
-#include "Dialogs.h"
-#include "LyXView.h"
-#include "lyxfunc.h"
-#include "insets/insetcite.h"
-#include "form_citation.h"
-#include "buffer.h"
 #include "BufferView.h"
+#include "Dialogs.h"
+#include "FormCitation.h"
+#include "LyXView.h"
+#include "buffer.h"
+#include "form_citation.h"
+#include "lyxfunc.h"
+#include "xform_macros.h"
+#include "insets/insetcite.h"
 #include "support/filetools.h"
 
 #ifdef __GNUG__
@@ -41,7 +39,8 @@ C_GENERICCB(FormCitation, CancelCB)
 C_GENERICCB(FormCitation, InputCB)
 
 FormCitation::FormCitation(LyXView * lv, Dialogs * d)
-	: dialog_(0), lv_(lv), d_(d), h_(0), inset_(0), dialogIsOpen(false)
+	: dialog_(0), lv_(lv), d_(d), u_(0), h_(0), ih_(0),
+	  inset_(0), dialogIsOpen(false)
 {
 	// let the dialog be shown
 	// These are permanent connections so we won't bother
@@ -59,7 +58,7 @@ FormCitation::~FormCitation()
 
 void FormCitation::build()
 {
-  dialog_ = build_citation();
+	dialog_ = build_citation();
 }
 
 
@@ -449,22 +448,23 @@ void FormCitation::apply()
 {
 	if( lv_->buffer()->isReadonly() ) return;
 
-	string tmp;
+	string contents;
 	for( unsigned int i = 0; i < citekeys.size(); ++i ) {
-		if (i > 0) tmp += ", ";
-		tmp += citekeys[i];
+		if (i > 0) contents += ", ";
+		contents += citekeys[i];
 	}
 
 	textAfter = fl_get_input(dialog_->textAftr);
 
 	if( inset_ != 0 )
 	{
-		inset_->setContents( tmp );
+		inset_->setContents( contents );
 		inset_->setOptions( textAfter );
 		lv_->view()->updateInset( inset_, true );
 	} else {
-		string arg = tmp + '|' + textAfter;
-		lv_->getLyXFunc()->Dispatch( LFUN_INSERT_CITATION, arg.c_str() );
+		InsetCommandParams p( "cite", contents, textAfter );
+		lv_->getLyXFunc()->Dispatch( LFUN_INSERT_CITATION,
+					     p.getAsString().c_str() );
 	}
 }
 

@@ -23,6 +23,7 @@
 #include "lyxrc.h"
 #include "layout.h"
 #include "tex-strings.h"
+#include "buffer.h"
 #include "bufferparams.h"
 #include "support/FileInfo.h"
 #include "support/LAssert.h"

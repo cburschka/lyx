@@ -18,12 +18,9 @@
 #include "insetcommand.h"
 #include <sigc++/signal_system.h>
 
-class Dialogs;
-
 #ifdef SIGC_CXX_NAMESPACES
 using SigC::Signal0;
 #endif
-
 
 /** Used to insert citations  
  */
@@ -31,13 +28,11 @@ class InsetCitation : public InsetCommand {
 public:
 	///
 	explicit
-	InsetCitation(string const & key, string const & note = string());
+	InsetCitation(InsetCommandParams const &);
 	///
 	~InsetCitation();
 	///
-	Inset * Clone() const {
-		return new InsetCitation(getContents(), getOptions());
-	}
+	Inset * Clone() const { return new InsetCitation(params()); }
 	///
 	string getScreenLabel() const;
 	///

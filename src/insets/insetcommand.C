@@ -22,14 +22,65 @@ using std::ostream;
 using std::endl;
 
 
+InsetCommandParams::InsetCommandParams()
+{}
+
+
+InsetCommandParams::InsetCommandParams( string const & n,
+					string const & c,
+					string const & o )
+	: cmdname(n), contents(c), options(o)
+{}
+
+
+string InsetCommandParams::getAsString() const
+{
+	string b(cmdname);
+	b += "|++|" + options + "|++|" + contents;
+	return b;
+}
+
+
+void InsetCommandParams::setFromString( string const & b )
+{
+	string::size_type idx = b.find("|++|");
+	if( idx == string::npos ) return;
+
+	cmdname = b.substr(0, idx);
+	string tmp = b.substr(idx+4);
+
+	idx = tmp.find("|++|");
+	if( idx == string::npos ) {
+		options = tmp;
+	} else {
+		options  = tmp.substr(0, idx);
+		contents = tmp.substr(idx+4);
+	}
+}
+
+
 InsetCommand::InsetCommand()
 {}
 
 
-InsetCommand::InsetCommand(string const & cmd, string const & arg, 
-			   string const & opt)
-	: cmdname(cmd), options(opt), contents(arg)
+InsetCommand::InsetCommand( string const & n,
+			    string const & c, 
+			    string const & o )
+	: p_(n, c, o)
 {}
+
+
+InsetCommand::InsetCommand( InsetCommandParams const & p )
+	: p_( p.getCmdName(), p.getContents(), p.getOptions() )
+{}
+
+
+void InsetCommand::setParams(InsetCommandParams const & p )
+{
+	p_.setCmdName( p.getCmdName() );
+	p_.setContents( p.getContents() );
+	p_.setOptions( p.getOptions() );
+}
 
 
 // In lyxf3 this will be just LaTeX
@@ -88,10 +139,9 @@ void InsetCommand::scanCommand(string const & cmd)
 	}
 
 	// Don't mess with this.
-	if (!tcmdname.empty()) cmdname = tcmdname;
-	if (!toptions.empty()) options = toptions;
-	if (!tcontents.empty()) setContents(tcontents); 
-                	// setContents is overloaded in InsetInclude
+	if (!tcmdname.empty())  setCmdName( tcmdname );
+	if (!toptions.empty())  setOptions( toptions );
+	if (!tcontents.empty()) setContents( tcontents ); 
 
 	if (lyxerr.debugging(Debug::PARSER))
 		lyxerr << "Command <" <<  cmd
@@ -153,15 +203,15 @@ int InsetCommand::DocBook(Buffer const *, ostream &) const
 
 Inset * InsetCommand::Clone() const
 {
-	return new InsetCommand(cmdname, contents, options);
+	return new InsetCommand(getCmdName(), getContents(), getOptions());
 }
 
 
 string InsetCommand::getCommand() const
 {	
 	string s;
-	if (!cmdname.empty()) s += "\\"+cmdname;
-	if (!options.empty()) s += "["+options+']';
-	s += "{"+contents+'}';
+	if (!getCmdName().empty()) s += "\\"+getCmdName();
+	if (!getOptions().empty()) s += "["+getOptions()+']';
+	s += "{"+getContents()+'}';
 	return s;
 }

@@ -7,6 +7,7 @@
 #include "FormPreferences.h"
 #include "FormPrint.h"
 #include "FormTabular.h"
+#include "FormUrl.h"
 
 #ifdef __GNUG__
 #pragma implementation
@@ -20,6 +21,7 @@ Dialogs::Dialogs(LyXView * lv)
 	dialogs_.push_back(new FormPreferences(lv, this));
 	dialogs_.push_back(new FormPrint(lv, this));
 	dialogs_.push_back(new FormTabular(lv, this));
+	dialogs_.push_back(new FormUrl(lv, this));
 
 	// reduce the number of connections needed in
 	// dialogs by a simple connection here.

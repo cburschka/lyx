@@ -1,3 +1,4 @@
+
 #include <config.h>
 
 #include <cstdlib>
@@ -334,11 +335,16 @@ string InsetInclude::getScreenLabel() const
 }
 
 
-void InsetInclude::setContents(string const & c)
+string InsetInclude::getFileName() const
 {
-	InsetCommand::setContents(c);
-	filename = MakeAbsPath(getContents(), 
-			       OnlyPath(getMasterFilename())); 
+	return MakeAbsPath(getContents(), 
+			   OnlyPath(getMasterFilename()));
+}
+
+
+string InsetInclude::getMasterFilename() const
+{
+	return master->fileName();
 }
 
 

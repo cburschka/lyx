@@ -20,8 +20,8 @@
 #include "frontends/Dialogs.h"
 #include "support/lstrings.h"
 
-InsetCitation::InsetCitation(string const & key, string const & note)
-		: InsetCommand("cite", key, note)
+InsetCitation::InsetCitation(InsetCommandParams const & p)
+		: InsetCommand(p)
 {}
 
 InsetCitation::~InsetCitation()

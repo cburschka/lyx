@@ -1,3 +1,45 @@
+2000-07-26  Kayvan A. Sylvan <kayvan@sylvan.com>
+
+	* development/lyx.spec.in
+	* Makefile.am: Fix buglet for LyX RPM generation resulting from
+	file/directory re-organization.
+                
+2000-07-26  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* src/insets/insetcommand.[Ch]: moved the string data and
+	associated manipulation methods into a new stand-alone class
+	InsetCommandParams. This class has two additional methods
+	getAsString() and setFromString() allowing the contents to be
+	moved around as a single string.
+	(addContents) method removed.
+	(setContents) method no longer virtual.
+
+	* src/buffer.C (readInset): made use of new InsetCitation,
+	InsetUrl constructors based on InsetCommandParams.
+
+	* src/commandtags.h: add LFUN_INSERT_URL
+
+	* src/lyxfunc.C (Dispatch): changed to accomadate GUI-
+	independent InsetUrl and use InsetCommandParams to extract
+	string info and create new Insets.
+
+	* src/frontends/Dialogs.h: add signals showUrl, createUrl.
+
+	* src/frontends/xforms/FormCitation.C (apply): uses 
+	InsetCommandParams.
+
+	* src/frontends/xforms/form_url.C
+	* src/frontends/xforms/form_url.h
+	* src/frontends/xforms/FormUrl.h
+	* src/frontends/xforms/FormUrl.C
+	* src/frontends/xforms/forms/form_url.fd: new files
+
+	* src/insets/insetcite.[Ch]: removed unused constructors.
+
+	* src/insets/insetinclude.[Ch]: no longer store filename
+
+	* src/insets/inseturl.[Ch]: GUI-independent.
+
 2000-07-26  Juergen Vigna  <jug@sad.it>
 	* renamed frontend from gtk to gnome as it is that what is realized
 	and did the necessary changes in the files.

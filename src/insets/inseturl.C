@@ -1,115 +1,27 @@
 #include <config.h>
 
-#include <cstdlib>
-
 #ifdef __GNUG__
 #pragma implementation
 #endif
 
-#include FORMS_H_LOCATION 
 #include "inseturl.h"
-#include "LString.h"
-#include "commandtags.h"
-#include "debug.h"
-#include "gettext.h"
+#include "BufferView.h"
 #include "LaTeXFeatures.h"
-#include "lyx_gui_misc.h" // CancelCloseBoxCB
+#include "LyXView.h"
+#include "debug.h"
+#include "frontends/Dialogs.h"
 
 using std::ostream;
 
 
-InsetUrl::InsetUrl(string const & cmd)
-	: fd_form_url(0)
-{
-	scanCommand(cmd);
-	if (getCmdName() == "url")
-		flag = InsetUrl::URL;
-	else
-		flag = InsetUrl::HTML_URL;
-}
-
-
-InsetUrl::InsetUrl(InsetCommand const & inscmd)
-	: fd_form_url(0)
-{
-	setCmdName(inscmd.getCmdName());
-	setContents(inscmd.getContents());
-	setOptions(inscmd.getOptions());
-	if (getCmdName() == "url")
-		flag = InsetUrl::URL;
-	else
-		flag = InsetUrl::HTML_URL;
-}
-
-
-InsetUrl::InsetUrl(string const & ins_name, string const & ins_cont,
-		   string const & ins_opt)
-	: fd_form_url(0)
-{
-	setCmdName(ins_name);
-	setContents(ins_cont);
-	setOptions(ins_opt);
-	if (ins_name == "url")
-		flag = InsetUrl::URL;
-	else
-		flag = InsetUrl::HTML_URL;
-}
+InsetUrl::InsetUrl(InsetCommandParams const & p)
+		: InsetCommand(p)
+{}
 
 
 InsetUrl::~InsetUrl()
 {
-	if (fd_form_url) {
-		fl_hide_form(fd_form_url->form_url);
-		fl_free_form(fd_form_url->form_url);
-		fd_form_url = 0;
-	}
-}
-
-
-void InsetUrl::CloseUrlCB(FL_OBJECT * ob, long)
-{
-	Holder * holder = static_cast<Holder*>(ob->u_vdata);
-	
-	InsetUrl * inset = holder->inset;
-	BufferView * bv = holder->view;
-	
-	string url = fl_get_input(inset->fd_form_url->url_name);
-	string name = fl_get_input(inset->fd_form_url->name_name);
-	string cmdname;
-	if (fl_get_button(inset->fd_form_url->radio_html))
-		cmdname = "htmlurl";
-	else
-		cmdname = "url";
-	
-	Buffer * buffer = bv->buffer();
-	
-	if ((url != inset->getContents() ||
-	     name != inset->getOptions() ||
-	     cmdname != inset->getCmdName())
-	    && !(buffer->isReadonly()) ) {
-		buffer->markDirty();
-		inset->setContents(url);
-		inset->setOptions(name);
-		inset->setCmdName(cmdname);
-		if (cmdname == "url")
-			inset->flag = InsetUrl::URL;
-		else
-			inset->flag = InsetUrl::HTML_URL;
-		bv->updateInset(inset, true);
-	}
-	
-	if (inset->fd_form_url) {
-		fl_hide_form(inset->fd_form_url->form_url);
-		fl_free_form(inset->fd_form_url->form_url);
-		inset->fd_form_url = 0;
-	}
-}
-
-
-extern "C"
-void C_InsetUrl_CloseUrlCB(FL_OBJECT * ob, long data)
-{
-	InsetUrl::CloseUrlCB(ob, data);
+	hide();
 }
 
 
@@ -121,57 +33,23 @@ char const * InsetUrl::EditMessage() const
 
 void InsetUrl::Edit(BufferView * bv, int, int, unsigned int)
 {
-	static int ow = -1, oh;
-
-	if(bv->buffer()->isReadonly())
-		WarnReadonly(bv->buffer()->fileName());
-
-	if (!fd_form_url) {
-		fd_form_url = create_form_form_url();
-		holder.inset = this;
-		fd_form_url->button_close->u_vdata = &holder;
-		fl_set_form_atclose(fd_form_url->form_url,
-				    CancelCloseBoxCB, 0);
-	}
-	holder.view = bv;
-	fl_set_input(fd_form_url->url_name, getContents().c_str());
-	fl_set_input(fd_form_url->name_name, getOptions().c_str());
-	switch(flag) {
-	case InsetUrl::URL:
-		fl_set_button(fd_form_url->radio_html, 0);
-		break;
-	case InsetUrl::HTML_URL:
-		fl_set_button(fd_form_url->radio_html, 1);
-		break;
-	}
-	
-	if (fd_form_url->form_url->visible) {
-		fl_raise_form(fd_form_url->form_url);
-	} else {
-		fl_show_form(fd_form_url->form_url,
-			     FL_PLACE_MOUSE | FL_FREE_SIZE,
-			     FL_FULLBORDER, _("Insert Url"));
-		if (ow < 0) {
-			ow = fd_form_url->form_url->w;
-			oh = fd_form_url->form_url->h;
-		}
-		fl_set_form_minsize(fd_form_url->form_url, ow, oh);
-	}
+	bv->owner()->getDialogs()->showUrl( this );
 }
 
 
 string InsetUrl::getScreenLabel() const
 {
 	string temp;
-	if (flag == InsetUrl::HTML_URL)
-		temp += _("HtmlUrl: ");
+	if( getCmdName() == "url" )
+		temp = _("Url: ");
 	else 
-		temp += _("Url: ");
-	if(!getOptions().empty()) {
+		temp = _("HtmlUrl: ");
+
+	if(!getOptions().empty())
 		temp += getOptions();
-	} else {
-	  temp += getContents();
-	}
+	else
+		temp += getContents();
+
 	return temp;
 }
 

@@ -350,10 +350,11 @@ void InsetBibtex::Edit(BufferView * bv, int, int, unsigned int)
 
 bool InsetBibtex::addDatabase(string const & db)
 {
-	if (!contains(getContents(), db.c_str())) {
-		if (!getContents().empty()) 
-			addContents(",");
-		addContents(db);
+	string contents(getContents());
+	if (!contains(contents, db.c_str())) {
+		if (!contents.empty()) 
+			contents += ",";
+		setContents(contents + db);
 		return true;
 	}
 	return false;
