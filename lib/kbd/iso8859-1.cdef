@@ -14,9 +14,9 @@
 #166	What's this?
 167	"\\S{}"		# paragraph
 168	"\\\"{}"	# umlaut
-169    "\copyright{}"
+169	"\\copyright{}"
 170	"\\b{a}"		# a macron
-171	"\guillemotleft{}"
+171	"\\guillemotleft{}"
 #172	What's this?
 #173	horiz. line?
 #174	Registered?
@@ -32,10 +32,10 @@
 184	"\\c{}"	# cedilla
 185	"${^1}$"
 186	"\\b{o}"		# o macron
-187	"\guillemotright{}"
-188	"\ensuremath{\frac14}"
-189	"\ensuremath{\frac12}"
-190	"\ensuremath{\frac34}"            # "0BE
+187	"\\guillemotright{}"
+188	"\\ensuremath{\frac14}"
+189	"\\ensuremath{\frac12}"
+190	"\\ensuremath{\frac34}"            # "0BE
 191	"?`"		# mirrored ?
 192	"\\`{A}"
 193	"\\'{A}"

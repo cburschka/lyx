@@ -1,3 +1,10 @@
+1999-12-15  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/trans_mgr.C (insert): small cleanup
+	* src/chset.C (loadFile): ditto
+
+	* lib/kbd/iso8859-1.cdef: add missing backslashes
+
 1999-12-15  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/insets/insetlatexaccent.C (Lbearing): new function, used to

@@ -23,11 +23,11 @@ bool CharacterSet::loadFile(string const & fname)
 	
 	// open definition file
 	lyxerr[Debug::KBMAP]
-		<< "Reading keymap file " << fname << ".cdef" << endl;
+		<< "Reading character set file " << fname << ".cdef" << endl;
 	string filename = LibFileSearch("kbd", fname.c_str(), "cdef");
 	ifstream ifs(filename.c_str());
 	if (!ifs) {
-		lyxerr << "Unable to open keymap file" << endl;
+		lyxerr << "Unable to open character set file" << endl;
 		return true;		// no definition, use 7-bit ascii
 	}
 	name_ = fname;
