@@ -204,10 +204,10 @@ void InsetTabular::read(Buffer const & buf, LyXLex & lex)
 	if (old_format)
 		return;
 
-	lex.nextToken();
+	lex.next();
 	string token = lex.getString();
 	while (lex.isOK() && (token != "\\end_inset")) {
-		lex.nextToken();
+		lex.next();
 		token = lex.getString();
 	}
 	if (token != "\\end_inset") {

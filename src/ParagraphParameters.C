@@ -206,7 +206,7 @@ void ParagraphParameters::read(LyXLex & lex)
 		if (token == "\\noindent") {
 			noindent(true);
 		} else if (token == "\\leftindent") {
-			lex.nextToken();
+			lex.next();
 			LyXLength value(lex.getString());
 			leftIndent(value);
 		} else if (token == "\\start_of_appendix") {

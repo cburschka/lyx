@@ -1,4 +1,12 @@
-2004-09-29  Andreas Vox <vox@isp.uni-luebeck.de>
+2004-10-05  José Matos  <jamatos@lyx.org>
+	* insetfloatlist.C (read):
+	* insetquotes.C (read):
+	* insetspace.C (read):
+	* insetspecialchar.C (read):
+	* insettabular.C (read): replace nextToken by more appropriate lex
+	methods.
+
+2004-09-29  Andreas Vox  <vox@isp.uni-luebeck.de>
 
 	* insetgraphics.C (createDocBookAttribute, docbook) : 
 	convert scale, width, height and keepaspectratio to Docbook standards)
@@ -6,7 +14,7 @@
 	* insetgraphics.[hC] (toDocbookLength): new method to convert TeX units
 	to Docbook units where possible.
 
-2004-09-29  Andreas Vox <vox@isp.uni-luebeck.de>
+2004-09-29  Andreas Vox  <vox@isp.uni-luebeck.de>
 
 	* insetgraphics.C (docbook): create inlinegraphic instead of graphic. 
 	

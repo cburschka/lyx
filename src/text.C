@@ -324,14 +324,14 @@ void readParToken(Buffer const & buf, Paragraph & par, LyXLex & lex,
 			par.cleanChanges();
 		change = Change(Change::UNCHANGED);
 	} else if (token == "\\change_inserted") {
-		lex.nextToken();
+		lex.eatLine();
 		std::istringstream is(lex.getString());
 		int aid;
 		lyx::time_type ct;
 		is >> aid >> ct;
 		change = Change(Change::INSERTED, bp.author_map[aid], ct);
 	} else if (token == "\\change_deleted") {
-		lex.nextToken();
+		lex.eatLine();
 		std::istringstream is(lex.getString());
 		int aid;
 		lyx::time_type ct;

@@ -137,7 +137,7 @@ void InsetSpace::write(Buffer const &, ostream & os) const
 // This function will not be necessary when lyx3
 void InsetSpace::read(Buffer const &, LyXLex & lex)
 {
-	lex.nextToken();
+	lex.next();
 	string const command = lex.getString();
 
 	if (command == "\\space")

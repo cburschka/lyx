@@ -138,7 +138,7 @@ void InsetSpecialChar::write(Buffer const &, ostream & os) const
 // This function will not be necessary when lyx3
 void InsetSpecialChar::read(Buffer const &, LyXLex & lex)
 {
-	lex.nextToken();
+	lex.next();
 	string const command = lex.getString();
 
 	if (command == "\\-")

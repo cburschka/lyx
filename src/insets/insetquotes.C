@@ -254,7 +254,7 @@ void InsetQuotes::write(Buffer const &, ostream & os) const
 
 void InsetQuotes::read(Buffer const &, LyXLex & lex)
 {
-	lex.nextToken();
+	lex.next();
 	parseString(lex.getString());
 	lex.next();
 	if (lex.getString() != "\\end_inset") {

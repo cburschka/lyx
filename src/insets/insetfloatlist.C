@@ -82,7 +82,7 @@ void InsetFloatList::read(Buffer const & buf, LyXLex & lex)
 	} else
 		lex.printError("InsetFloatList: Parse error: `$$Token'");
 	while (lex.isOK()) {
-		lex.nextToken();
+		lex.next();
 		token = lex.getString();
 		if (token == "\\end_inset")
 			break;
