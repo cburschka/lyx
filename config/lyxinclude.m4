@@ -933,3 +933,35 @@ AC_SUBST(FRONTEND_LDFLAGS)
 AC_SUBST(FRONTEND_INCLUDES)
 AC_SUBST(FRONTEND_LIBS)
 ])
+
+
+dnl Check things are declared in headers to avoid errors or warnings.
+dnl Called like LYX_CHECK_DECL(function, headerfile)
+dnl Defines HAVE_DECL_{FUNCTION}
+AC_DEFUN(LYX_CHECK_DECL,
+[AC_MSG_CHECKING(if $1 is declared by header $2)
+tr_func=`echo $1 | tr 'abcdefghijklmnopqrstuvwxyz' 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'`
+
+tr_hdr=`echo $2 | tr . _`
+AC_CACHE_VAL([lyx_cv_declare_${tr_hdr}_$1],
+[AC_EGREP_HEADER($1, $2, [eval "lyx_cv_declare_${tr_hdr}_$1=yes"], [eval "lyx_cv_declare_${tr_hdr}_$1=no"])])
+if eval "test \"\${lyx_cv_declare_${tr_hdr}_$1}\" = \"yes\""; then
+        AC_DEFINE_UNQUOTED(HAVE_DECL_${tr_func})
+        AC_MSG_RESULT(yes)
+else
+        AC_MSG_RESULT(no)
+fi])
+
+dnl This is the multiple headers version of the LYX_CHECK_DECL macro above.
+dnl Called like LYX_CHECK_DECL_HDRS(function, file1 file2 file3)
+AC_DEFUN(LYX_CHECK_DECL_HDRS,
+[ got="no"
+for I in $2; do
+tr_hdr=`echo $I | tr . _`
+if test "${got}" = "no"; then
+    LYX_CHECK_DECL($1, $I)
+fi
+if eval "test \"\${lyx_cv_declare_${tr_hdr}_$1}\" = \"yes\""; then
+     got="yes"
+fi
+done])

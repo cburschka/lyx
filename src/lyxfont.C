@@ -504,6 +504,7 @@ LyXFont & LyXFont::setLyXColor(string const & col)
 }
 
 
+#if 0
 /// Sets size after GUI name
 LyXFont & LyXFont::setGUISize(string const & siz)
 {
@@ -514,6 +515,7 @@ LyXFont & LyXFont::setGUISize(string const & siz)
 	setColor(lcolor.getFromGUIName(siz));
 	return *this;
 }
+#endif
 
 
 // Returns size in latex format

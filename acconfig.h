@@ -44,6 +44,9 @@
 
 #undef USE_PSPELL
 
+/* Define as 1 if the MKSTEMP function is declared */
+#undef HAVE_DECL_MKSTEMP
+
 @BOTTOM@ 
 
 /************************************************************ 
@@ -66,6 +69,15 @@ char * strerror(int n);
 
 #ifdef BROKEN_HEADERS
 #include "broken_headers.h"
+#endif
+
+#ifdef HAVE_MKSTEMP
+#ifndef HAVE_DECL_MKSTEMP
+#if defined (__cplusplus)
+extern "C"
+#endif
+int mkstemp(char*);
+#endif
 #endif
 
 /* C++ always support the keyword `inline' */

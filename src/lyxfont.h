@@ -262,10 +262,12 @@ public:
 
 	/// Sets color after LyX text format
 	LyXFont & setLyXColor(string const &);
- 
+
+#if 0
 	/// Sets size after GUI name
 	LyXFont & setGUISize(string const &);
- 
+#endif
+	
 	/// Returns size of font in LaTeX text notation
 	string const latexSize() const;
  

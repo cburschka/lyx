@@ -241,7 +241,7 @@ void Underline(BufferView * bv)
 void FontSize(BufferView * bv, string const & size)
 {
 	LyXFont font(LyXFont::ALL_IGNORE);
-	font.setGUISize(size);
+	font.setLyXSize(size);
 	ToggleAndShow(bv, font);
 }
 

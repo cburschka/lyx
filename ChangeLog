@@ -1,3 +1,16 @@
+2000-11-28  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/lyxfont.[Ch] (setGUISize): comment out setGUISize
+
+	* src/bufferview_funcs.C (FontSize): use setLyXSize
+
+2000-11-24  Kayvan A. Sylvan <kayvan@sylvan.com>
+
+	* acconfig.h, configure.in, config/lyxinclude.m4: Added autoconf tests
+	to check for systems where mkstemp() is available but not declared
+	in headers. The new autoconf macro lyx_CHECK_DECL can be used
+	to check for declarations in headers.
+                 
 2000-11-23  Angus Leeming <a.leeming@ic.ac.uk>
 
 	* forms/bibforms.fd: tiny fix to get it to run with fdesign.
