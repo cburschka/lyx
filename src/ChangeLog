@@ -1,3 +1,9 @@
+2003-07-29  Angus Leeming  <leeming@lyx.org>
+
+	* BufferView.[Ch] (ChangeCitationsIfUnique): This function most
+	certainly does not do what it purports to do. I am doing it, and
+	us, a favour by killing it.
+
 2003-07-28  José Matos  <jamatos@lyx.org>
 
 	* buffer.C (readBody, do_writeFile):

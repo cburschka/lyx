@@ -48,6 +48,12 @@ InsetBibtex::~InsetBibtex()
 }
 
 
+std::auto_ptr<InsetBase> InsetBibtex::clone() const
+{
+	return std::auto_ptr<InsetBase>(new InsetBibtex(*this));
+}
+
+
 dispatch_result InsetBibtex::localDispatch(FuncRequest const & cmd)
 {
 	switch (cmd.action) {
@@ -61,14 +67,7 @@ dispatch_result InsetBibtex::localDispatch(FuncRequest const & cmd)
 		InsetCommandMailer::string2params(cmd.argument, p);
 		if (p.getCmdName().empty())
 			return DISPATCHED;
-
-		if (view() && p.getContents() != params().getContents()) {
-			view()->ChangeCitationsIfUnique(params().getContents(),
-							p.getContents());
-		}
-
 		setParams(p);
-		cmd.view()->updateInset(this);
 		return  DISPATCHED;
 	}
 
@@ -160,7 +159,6 @@ int InsetBibtex::latex(Buffer const * buffer, ostream & os,
 
 vector<string> const InsetBibtex::getFiles(Buffer const & buffer) const
 {
-	// Doesn't appear to be used (Angus, 31 July 2001)
 	Path p(buffer.filePath());
 
 	vector<string> vec;

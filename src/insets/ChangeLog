@@ -1,3 +1,15 @@
+2003-07-29  Angus Leeming  <leeming@lyx.org>
+
+	* insetcommand.C (localDispatch): default to
+	InsetOld::localDispatch.
+
+	* insetbibitem.C (localDispatch):
+	* insetbibtex.C (localDispatch): remove call to
+	ChangeCitationsIfUnique.
+
+	* insetbibtex.[Ch] (clone): move out of line; use copy c-tor.
+	
+
 2003-07-28  José Matos  <jamatos@lyx.org>
 
 	* insetext.C (read): \end_document replaces \the_end.
@@ -13,10 +25,10 @@
 
 	* insettabular.C (write): remove extra space
 
-2003-07-28	Martin Vermeer  <martin.vermeer@hut.fi>
+2003-07-28  Martin Vermeer  <martin.vermeer@hut.fi>
 	* insetnote.C: Umpf. Hope I *now* get it right :-(
 
-2003-07-28	Martin Vermeer  <martin.vermeer@hut.fi>
+2003-07-28  Martin Vermeer  <martin.vermeer@hut.fi>
 	*insetnote.C: did the right fix to greyedout: \color 
 	instead of \textcolor.
 

@@ -66,12 +66,6 @@ dispatch_result InsetBibitem::localDispatch(FuncRequest const & cmd)
 		InsetCommandMailer::string2params(cmd.argument, p);
 		if (p.getCmdName().empty())
 			return DISPATCHED;
-
-		if (view() && p.getContents() != params().getContents()) {
-			view()->ChangeCitationsIfUnique(params().getContents(),
-							p.getContents());
-		}
-
 		setParams(p);
 		cmd.view()->updateInset(this);
 		cmd.view()->fitCursor();

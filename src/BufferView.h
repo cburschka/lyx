@@ -197,8 +197,6 @@ public:
 
 	/// FIXME
 	bool ChangeRefsIfUnique(string const & from, string const & to);
-	/// FIXME
-	bool ChangeCitationsIfUnique(string const & from, string const & to);
 
 	/// get the contents of the window system clipboard
 	string const getClipboard() const;

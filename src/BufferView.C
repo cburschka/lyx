@@ -40,7 +40,6 @@
 
 #include "support/FileInfo.h"
 #include "support/filetools.h"
-#include "support/lyxfunctional.h" // equal_1st_in_pair
 #include "support/types.h"
 #include "support/lyxalgo.h" // lyx_count
 
@@ -647,21 +646,6 @@ bool BufferView::ChangeRefsIfUnique(string const & from, string const & to)
 		return false;
 
 	return ChangeInsets(InsetOld::REF_CODE, from, to);
-}
-
-
-bool BufferView::ChangeCitationsIfUnique(string const & from, string const & to)
-{
-	typedef pair<string, string> StringPair;
-
-	vector<StringPair> keys;
-	buffer()->fillWithBibKeys(keys);
-	if (count_if(keys.begin(), keys.end(),
-		     lyx::equal_1st_in_pair<StringPair>(from))
-	    > 1)
-		return false;
-
-	return ChangeInsets(InsetOld::CITE_CODE, from, to);
 }
 
 

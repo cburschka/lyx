@@ -25,9 +25,7 @@ public:
 	///
 	~InsetBibtex();
 	///
-	std::auto_ptr<InsetBase> clone() const {
-		return std::auto_ptr<InsetBase>(new InsetBibtex(params()));
-	}
+	std::auto_ptr<InsetBase> clone() const;
 	/// small wrapper for the time being
 	virtual dispatch_result localDispatch(FuncRequest const & cmd);
 	///
