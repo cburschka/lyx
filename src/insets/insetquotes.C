@@ -15,17 +15,19 @@
 #endif
 
 #include "insetquotes.h"
-#include "support/lyxlib.h"
-#include "debug.h"
-#include "lyxfont.h"
-#include "lyxrc.h"
-#include "buffer.h"
-#include "LaTeXFeatures.h"
+
+#include "support/LAssert.h"
 #include "support/lstrings.h"
+#include "BufferView.h"
+#include "LaTeXFeatures.h"
 #include "Painter.h"
+#include "buffer.h"
+#include "debug.h"
 #include "font.h"
 #include "language.h"
-#include "BufferView.h"
+#include "lyxfont.h"
+#include "lyxrc.h"
+#include "paragraph.h"
 
 using std::ostream;
 using std::endl;
@@ -259,22 +261,26 @@ void InsetQuotes::read(Buffer const *, LyXLex & lex)
 extern bool use_babel;
 
 int InsetQuotes::latex(Buffer const * buf, ostream & os,
-		       bool /*fragile*/, bool) const
+		       bool /*fragile*/, bool /* free_spc */) const
 {
 	// How do we get the local language here??
+	lyx::pos_type curr_pos = parOwner()->getPositionOfInset(this);
+	lyx::Assert(curr_pos != -1);
+	string const curr_lang =
+		parOwner()->getFont(buf->params,
+				    curr_pos).language()->babel();
 
-	string const doclang = buf->getLanguage()->babel();
 	const int quoteind = quote_index[side_][language_];
 	string qstr;
 	
 	if (language_ == FrenchQ && times_ == DoubleQ
-	    && doclang == "frenchb") {
+	    && curr_lang == "frenchb") {
 		if (side_ == LeftQ) 
 			qstr = "\\og "; //the spaces are important here
 		else 
 			qstr = " \\fg{}"; //and here
 	} else if (language_ == FrenchQ && times_ == DoubleQ
-		   && doclang == "french") {
+		   && curr_lang == "french") {
 		if (side_ == LeftQ) 
 			qstr = "<< "; //the spaces are important here
 		else 

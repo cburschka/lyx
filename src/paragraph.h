@@ -315,7 +315,7 @@ public:
 	int autoDeleteInsets();
 
 	/// returns -1 if inset not found
-	int getPositionOfInset(Inset * inset) const;
+	int getPositionOfInset(Inset const * inset) const;
 
 	/// some good comment here John?
 	Paragraph * getParFromID(int id) const;

@@ -2596,11 +2596,7 @@ void LyXText::ownerParagraph(int id, Paragraph * p) const
 	if (op && op->inInset()) {
 		static_cast<InsetText *>(op->inInset())->paragraph(p);
 	} else {
-		if (inset_owner) {
-			inset_owner->paragraph(p);
-		} else {
-			bv_owner->buffer()->paragraph = p;
-		}
+		ownerParagraph(p);
 	}
 }
 

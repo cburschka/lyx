@@ -108,7 +108,7 @@ void FontLoader::getFontinfo(LyXFont::FONT_FAMILY family,
 	{
 		case LyXFont::SYMBOL_FAMILY:
 			fontinfo[family][series][shape] =
-				new FontInfo("-*-symbol-*-*-*-*-*-*-*-*-*-*-*-*");
+				new FontInfo("-*-symbol-*-*-*-*-*-*-*-*-*-*-adobe-fontspecific");
 			return;
 
 		case LyXFont::CMR_FAMILY:

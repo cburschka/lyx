@@ -1,3 +1,9 @@
+2001-12-12  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* insetquotes.C (latex): fix to use the local language setting at
+	the point where the inset is inserted (different macros for
+	different french packages)
+
 2001-12-11  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* inset.h: add par_owner_ member variable and parOwner

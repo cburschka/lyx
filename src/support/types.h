@@ -2,7 +2,7 @@
 #define LYX_TYPES_H
 
 // provide a set of typedefs for commonly used things like sizes and
-// indices whil trying to stay compatible with typse used by the standard
+// indices while trying to stay compatible with types used by the standard
 // containers.
 
 

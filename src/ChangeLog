@@ -1,4 +1,34 @@
-2001-12-12	Martin Vermeer <martin.vermeer@hut.fi>
+2001-12-12  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* FontLoader.C (getFontinfo): only use symbol fonts with encoding
+	-adobe-fontspecific. At least Mandrake and Redhat have a symbol
+	font in urw-fonts package which is marked as -urw-fontspecific and
+	does not work (incidentally, changing the encoding in the
+	fonts.dir of this package to -adobe-fontspecific fixes the
+	problem).
+
+	* undo_funcs.C (textHandleUndo): fix leak in undo, but now there
+	is a crash when undoing first paragraph (Juergen, please take a
+	look). THis does not mean the undo fix is wrong, just that it
+	uncovers problems.
+
+	* text2.C (ownerParagraph): let the (int,Paragraph*) version call
+	the (Paragraph*) version when needed instead of duplicating the
+	code.
+
+	* text.C (workWidth): use Inset::parOwner to find out where the
+	inset has been inserted. This is a huge performance gain for large
+	documents with lots of insets. If Inset::parOwner is not set, fall
+	back on the brute force method
+
+	* paragraph_pimpl.C (insertInset): 
+	* paragraph.C (Paragraph): 
+	(cutIntoMinibuffer): set parOwner of insets when
+	inserting/removing them
+
+	* lyxtext.h: add short comment on deleteEmptyParagraphMechanism
+
+2001-12-12  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* commandtags.h:
 	* LyXAction.C:

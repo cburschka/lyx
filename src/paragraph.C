@@ -1219,7 +1219,7 @@ Paragraph::InsetIterator(pos_type pos)
 
 
 // returns -1 if inset not found
-int Paragraph::getPositionOfInset(Inset * inset) const
+int Paragraph::getPositionOfInset(Inset const * inset) const
 {
 	// Find the entry.
 	for (InsetList::const_iterator cit = insetlist.begin();
