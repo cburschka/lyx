@@ -13,6 +13,9 @@ SecNumDepth             3
 TocDepth                3
 DefaultStyle            Standard
 
+ClassOptions
+	Header             "<!DOCTYPE #  PUBLIC &quot;-//OASIS//DTD DocBook V4.1//EN&quot;"
+End
 
 Style Standard
 	Margin                Static

@@ -10,6 +10,11 @@ PageStyle               Plain
 OutputType              linuxdoc
 DefaultStyle            Standard
 
+ClassOptions
+    Header              "<!doctype linuxdoc system"
+End
+
+
 Input stdcounters.inc
 Input stdfloats.inc
 Input numarticle.inc

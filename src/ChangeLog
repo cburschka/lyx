@@ -1,4 +1,14 @@
 
+2003-11-27  Martin Vermeer  <martin.vermeer@hut.fi>
+
+	* buffer.C: parametrize SGML document header
+
+2003-11-27  Martin Vermeer  <martin.vermeer@hut.fi>
+
+	* converter.[Ch]:
+	* exporter.C: replace bool-valued Pdflatex() by FLAVOR-valued
+	getFlavor().
+
 2003-11-27  Alfredo Braunstein  <abraunst@lyx.org>
 
 	* text2.C (setFont): rework using PosIterator (no more recursive)

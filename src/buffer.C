@@ -1059,7 +1059,7 @@ void Buffer::makeLinuxDocFile(string const & fname,
 	string top_element = tclass.latexname();
 
 	if (!body_only) {
-		ofs << "<!doctype linuxdoc system";
+		ofs << tclass.class_header();
 
 		string preamble = params().preamble;
 		string const name = runparams.nice ? ChangeExtension(pimpl_->filename, ".sgml")
@@ -1120,8 +1120,7 @@ void Buffer::makeDocBookFile(string const & fname,
 	string top_element = tclass.latexname();
 
 	if (!only_body) {
-		ofs << "<!DOCTYPE " << top_element
-		    << "  PUBLIC \"-//OASIS//DTD DocBook V4.1//EN\"";
+		ofs << subst(tclass.class_header(), "#", top_element);
 
 		string preamble = params().preamble;
 		string const name = runparams.nice ? ChangeExtension(pimpl_->filename, ".sgml")
@@ -1146,7 +1145,7 @@ void Buffer::makeDocBookFile(string const & fname,
 	}
 	sgml::openTag(ofs, 0, false, top);
 
-	ofs << "<!-- DocBook file was created by LyX " << lyx_version
+	ofs << "<!-- SGML/XML file was created by LyX " << lyx_version
 	    << "\n  See http://www.lyx.org/ for more information -->\n";
 
 	params().getLyXTextClass().counters().reset();
