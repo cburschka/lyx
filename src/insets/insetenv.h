@@ -12,10 +12,9 @@
 #ifndef INSETENVIRONMENT_H
 #define INSETENVIRONMENT_H
 
-#include "insetcollapsable.h"
+#include "insettext.h"
 
-
-class InsetEnvironment : public InsetCollapsable {
+class InsetEnvironment : public InsetText {
 public:
 	///
 	InsetEnvironment(BufferParams const &, string const & name);
@@ -33,6 +32,10 @@ public:
 	int latex(Buffer const *, std::ostream &, bool fragile, bool fp) const;
 	///
 	string const editMessage() const;
+	///
+	Inset::EDITABLE editable() const { return HIGHLY_EDITABLE; }
+	///
+	bool isTextInset() const { return true; }
 	///
 	bool needFullRow() const { return true; }
 	/** returns true if, when outputing LaTeX, font changes should

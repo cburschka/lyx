@@ -1,3 +1,8 @@
+
+2003-04-25 André Pönitz <poenitz@gmx.net>
+
+	* insetenv.C: derive from InsetText instead of InsetCollapsable
+
 2003-04-24  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* insetexternal.C (string2params): dont do anything if the string

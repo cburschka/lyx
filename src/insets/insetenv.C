@@ -26,10 +26,12 @@ using std::endl;
 
 InsetEnvironment::InsetEnvironment
 		(BufferParams const & bp, string const & name)
-	: InsetCollapsable(bp)
+	: InsetText(bp)
 {
-	setLabel(name);
+	//setLabel(name);
 	setInsetName(name);
+	autoBreakRows = true;
+	drawFrame_ = ALWAYS;
 	// needs more stuff in lyxlayout. coming in later patches.
 	//LyXTextClass const & tc = bp.getLyXTextClass();
 	//LyXLayout_ptr const & layout = tc.getEnv(name);
@@ -41,7 +43,7 @@ InsetEnvironment::InsetEnvironment
 
 
 InsetEnvironment::InsetEnvironment(InsetEnvironment const & in, bool same_id)
-	: InsetCollapsable(in, same_id), header_(in.header_), footer_(in.footer_)
+	: InsetText(in, same_id), header_(in.header_), footer_(in.footer_)
 {}
 
 
@@ -54,13 +56,13 @@ Inset * InsetEnvironment::clone(Buffer const &, bool same_id) const
 void InsetEnvironment::write(Buffer const * buf, ostream & os) const
 {
 	os << "Environment " << getInsetName() << "\n";
-	InsetCollapsable::write(buf, os);
+	InsetText::write(buf, os);
 }
 
 
 void InsetEnvironment::read(Buffer const * buf, LyXLex & lex)
 {
-	InsetCollapsable::read(buf, lex);
+	InsetText::read(buf, lex);
 }
 
 
@@ -74,7 +76,7 @@ int InsetEnvironment::latex(Buffer const * buf,
 			 ostream & os, bool fragile, bool fp) const
 {
 	os << header_;
-	int i = inset.latex(buf, os, fragile, fp);
+	int i = InsetText::latex(buf, os, fragile, fp);
 	os << footer_;
 	return i;
 }
