@@ -1472,11 +1472,8 @@ string const Buffer::asciiParagraph(LyXParagraph const * par, int linelen) const
 	int j;
 	int ltype = 0;
 	int ltype_depth = 0;
-	int actcell = 0;
 	int currlinelen = 0;
 	bool ref_printed = false;
-
-	string fname1 = TmpFileName();
 
 	int noparbreak = 0;
 	int islatex = 0;
@@ -1573,7 +1570,6 @@ string const Buffer::asciiParagraph(LyXParagraph const * par, int linelen) const
 	}
       
 	font1 = LyXFont(LyXFont::ALL_INHERIT, params.language_info);
-	actcell = 0;
 	for (i = 0; i < par->size(); ++i) {
 		if (!i && !footnoteflag && !noparbreak){
 			buffer << "\n\n";

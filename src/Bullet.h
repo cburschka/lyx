@@ -106,11 +106,11 @@ private:
 	static string const bulletEntry(short int, short int);
 	
 	///
-	short font;
+	int font;
 	///
-	short character;
+	int character;
 	///
-	short size;
+	int size;
 	
 	// size, character and font are array indices to access 
 	// the predefined arrays of LaTeX equivalent strings.

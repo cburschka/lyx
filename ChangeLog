@@ -1,3 +1,13 @@
+2000-09-27  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/Bullet.h: changed type of font, character and size to int
+
+	* src/buffer.C (asciiParagraph): remove actcell and fname1.
+
+	* src/insets/inseturl.[Ch]: 
+	* src/insets/insetref.[Ch]:
+	* src/insets/insetlabel.[Ch]: add linelen to Ascii
+
 2000-09-26  Angus Leeming <a.leeming@ic.ac.uk>
 
 	* src/buffer.C (readFile): block-if statement rearranged to minimise

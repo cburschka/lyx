@@ -171,7 +171,8 @@ public:
 	virtual int Latex(Buffer const *, std::ostream &, bool fragile,
 			  bool free_spc) const = 0;
 	///
-	virtual int Ascii(Buffer const *, std::ostream &, int linelen=0) const = 0;
+	virtual int Ascii(Buffer const *,
+			  std::ostream &, int linelen = 0) const = 0;
 	///
 	virtual int Linuxdoc(Buffer const *, std::ostream &) const = 0;
 	///

@@ -38,7 +38,7 @@ public:
 	int Latex(Buffer const *, std::ostream &,
 		  bool fragile, bool free_spc) const;
 	///
-	int Ascii(Buffer const *, std::ostream &) const;
+	int Ascii(Buffer const *, std::ostream &, int linelen) const;
 	///
 	int Linuxdoc(Buffer const *, std::ostream &) const;
 	///
