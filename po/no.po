@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx 1.2.0\n"
 "POT-Creation-Date: 2002-05-03 21:12+0200\n"
-"PO-Revision-Date: 2002-05-03 20:47+0200\n"
+"PO-Revision-Date: 2002-05-07 14:35+0200\n"
 "Last-Translator: Lars Gullik Bjønnes <larsbj@lyx.org>\n"
 "Language-Team: norsk <no@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -6918,11 +6918,11 @@ msgstr "Lagre"
 
 #: src/frontends/xforms/form_preferences.C:107
 msgid "Scale & Resolution"
-msgstr "Scale & Resolution"
+msgstr "Skaléring/oppløsning"
 
 #: src/frontends/xforms/form_preferences.C:108
 msgid "Fonts used"
-msgstr "Fonts used"
+msgstr "Fonter"
 
 #: src/frontends/xforms/form_preferences.C:110
 #, fuzzy
@@ -6947,7 +6947,7 @@ msgstr "Enkoding:|#D"
 #: src/frontends/xforms/form_preferences.C:138
 #, fuzzy
 msgid "Rescale bitmap fonts|#b"
-msgstr "Rescale bitmap fonts"
+msgstr "Skalér bitmap fonter"
 
 #: src/frontends/xforms/form_preferences.C:148
 #, no-c-format
@@ -7081,7 +7081,7 @@ msgstr "Auto region delete|#A"
 
 #: src/frontends/xforms/form_preferences.C:434
 msgid "Exit confirmation|#E"
-msgstr "Exit confirmation|#E"
+msgstr "Bekreft avslutting|#B"
 
 #: src/frontends/xforms/form_preferences.C:442
 #, fuzzy
@@ -7104,11 +7104,11 @@ msgstr "Dialogs iconify with main window|#D"
 
 #: src/frontends/xforms/form_preferences.C:473
 msgid "Wheel mouse jump"
-msgstr "Musejulshopp"
+msgstr "Musehjulshopp"
 
 #: src/frontends/xforms/form_preferences.C:481
 msgid "Autosave interval"
-msgstr "Autosave interval"
+msgstr "Intervall for autolagring"
 
 #: src/frontends/xforms/form_preferences.C:491
 msgid "in Monochrome|#M"
@@ -7152,7 +7152,7 @@ msgstr "Use input encoding|#i"
 
 #: src/frontends/xforms/form_preferences.C:607
 msgid "Advanced Options"
-msgstr "Advanced Options"
+msgstr "Avansert"
 
 #: src/frontends/xforms/form_preferences.C:608
 #: src/frontends/xforms/FormPreferences.C:219
@@ -7169,7 +7169,7 @@ msgstr "Package|#P"
 
 #: src/frontends/xforms/form_preferences.C:642
 msgid "Default language|#l"
-msgstr "Default language|#l"
+msgstr "Standardspråk|#S"
 
 #: src/frontends/xforms/form_preferences.C:649
 msgid ""
@@ -7201,7 +7201,7 @@ msgstr "Auto begin|#b"
 
 #: src/frontends/xforms/form_preferences.C:699
 msgid "Use babel|#U"
-msgstr "Use babel|#U"
+msgstr "Bruk babel|#B"
 
 #: src/frontends/xforms/form_preferences.C:707
 msgid "Mark foreign|#M"
@@ -7226,7 +7226,7 @@ msgstr "Command end|#e"
 #: src/frontends/xforms/form_preferences.C:771
 #, fuzzy
 msgid "All formats|#l"
-msgstr "All formats|#A"
+msgstr "Alle formater|#l"
 
 #: src/frontends/xforms/form_preferences.C:779
 msgid "Format|#F"
@@ -7323,7 +7323,7 @@ msgstr "LyXServer pipe|#S"
 
 #: src/frontends/xforms/form_preferences.C:1034
 msgid "date format|#f"
-msgstr "date format|#f"
+msgstr "datoformat|#f"
 
 #: src/frontends/xforms/form_preferences.C:1063
 msgid "name"
@@ -7411,7 +7411,7 @@ msgstr "TeX enkoding|#T"
 
 #: src/frontends/xforms/form_preferences.C:1165
 msgid "Default paper size|#p"
-msgstr "Default paper size|#p"
+msgstr "Std. papirstørelse|#p"
 
 #: src/frontends/xforms/form_preferences.C:1172
 msgid "Outside code interaction"
@@ -7440,15 +7440,15 @@ msgstr "Preferansere"
 
 #: src/frontends/xforms/FormPreferences.C:198
 msgid "Look & Feel"
-msgstr "Utseende og Følelse"
+msgstr "Utseende"
 
 #: src/frontends/xforms/FormPreferences.C:201
 msgid "Lang Opts"
-msgstr "Språk valg"
+msgstr "Språk"
 
 #: src/frontends/xforms/FormPreferences.C:204
 msgid "Conversion"
-msgstr "Conversion"
+msgstr "Konvertering"
 
 #: src/frontends/xforms/FormPreferences.C:207
 msgid "Inputs"
@@ -10500,12 +10500,3 @@ msgstr "Ny side (bunn)"
 #: src/text.C:3536
 msgid "Space below"
 msgstr "Space below"
-
-#~ msgid "Encoding"
-#~ msgstr "Enkoding"
-
-#~ msgid "Flags|#F"
-#~ msgstr "Flags|#F"
-
-#~ msgid "Flags that control the converter behavior"
-#~ msgstr "Flag som kontrolerer konverterens oppførsel"
