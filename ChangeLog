@@ -1,5 +1,7 @@
 2000-04-14  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
+	* src/Painter.C (underline): draw a slimer underline in most cases.
+
 	* src/lyx_main.C (error_handler): use extern "C"
 
 2000-04-12  Lars Gullik Bjønnes  <larsbj@lyx.org>

@@ -324,8 +324,12 @@ void Painter::underline(LyXFont const & f, int x, int y, int width)
 	// What about underbars?
 	if (f.underbar() == LyXFont::ON && f.latex() != LyXFont::ON) {
 		int below = max(lyxfont::maxDescent(f) / 2, 2);
-		int height = max((lyxfont::maxDescent(f) / 4) - 1, 0);
-		fillRectangle(x, y + below, width, below + height, f.color());
+		int height = max((lyxfont::maxDescent(f) / 4) - 1, 1);
+		if (height < 2)
+			line(x, y + below, x + width, y + below, f.color());
+		else
+			fillRectangle(x, y + below, width, below + height,
+				      f.color());
 	}
 }
 
