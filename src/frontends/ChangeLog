@@ -1,3 +1,8 @@
+2001-02-19  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* DialogBase.h: derived from noncopyable, rather than deriving
+	xforms/FormBase from it.
+
 2001-02-12  John Levon  <moz@compsoc.man.ac.uk>
 
 	* DialogBase.C: add close(), non-pure. This is

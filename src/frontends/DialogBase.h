@@ -18,6 +18,7 @@
 #define DIALOGBASE_H
 
 #include <sigc++/signal_system.h>
+#include <boost/utility.hpp>
 
 // If we do not want to bring them in global namespace, they could be
 // defined inside DialogBase... (JMarc) 
@@ -25,7 +26,6 @@
 using SigC::Connection;
 using SigC::slot;
 using SigC::Object;
-
 #endif
 
 
@@ -35,7 +35,7 @@ using SigC::Object;
     satisfy that request.  Thus a dialog will have to "pull" the necessary
     details from the core of the program.
  */
-class DialogBase : public Object
+class DialogBase : public Object, public noncopyable
 {
 public:
 	/**@name Constructors and Deconstructors */

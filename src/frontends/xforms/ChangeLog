@@ -1,3 +1,7 @@
+2001-02-19  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* FormBase.h: moved noncopyable derivation to DialogBase.
+
 2001-02-19  Juergen Vigna  <jug@sad.it>
 
 	* FormTabular.C (build): make all input field accepted only after

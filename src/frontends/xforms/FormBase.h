@@ -14,7 +14,6 @@
 
 #include "DialogBase.h"
 #include "LString.h"
-#include <boost/utility.hpp>
 #include FORMS_H_LOCATION
 #include "ButtonController.h"
 #include "gettext.h"
@@ -34,7 +33,7 @@ class LyXView;
     @author Angus Leeming
  */
 
-class FormBase : public DialogBase, public noncopyable {
+class FormBase : public DialogBase {
 public:
 	/// Callback functions
 	static  int WMHideCB(FL_FORM *, void *);
