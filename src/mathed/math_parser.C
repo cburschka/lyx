@@ -673,6 +673,12 @@ bool Parser::parse_normal(MathAtom & matrix)
 
 	string const name = getArg('{', '}');
 
+	if (name == "math") {
+		matrix = MathAtom(new MathHullInset(LM_OT_SIMPLE));
+		parse_into(matrix->cell(0), 0);
+		return true;
+	}
+
 	if (name == "equation" || name == "equation*" || name == "displaymath") {
 		curr_num_ = (name == "equation");
 		curr_label_.erase();
