@@ -49,7 +49,6 @@ libxforms_la_SOURCES = \
 	ColorHandler.h \
 	Dialogs.C \
 	Dialogs2.C \
-	Dialogs3.C \
 	Dialogs_impl.h \
 	DropDown.h \
 	DropDown.C \

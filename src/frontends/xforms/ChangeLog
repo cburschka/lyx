@@ -1,5 +1,13 @@
 2002-08-16  Angus Leeming  <leeming@lyx.org>
 
+	* Dialogs.C:
+	* Dialogs2.C:
+	* Dialogs_impl.h: use the qt2 scheme of vars not pointer to vars.
+
+	* Dialogs3.C: removed.
+
+2002-08-16  Angus Leeming  <leeming@lyx.org>
+
 	* Tooltips.C (c-tor): don't forget the "#ifdef crap xforms" code next
 	time, old boy.
 
@@ -11,8 +19,8 @@
 2002-08-15  Angus Leeming  <leeming@lyx.org>
 
 	* Dialogs.C:
-	* Dialogs2.C
-	* Dialogs3.C
+	* Dialogs2.C:
+	* Dialogs3.C:
 	* Dialogs_impl.h: the brave new world of Dialog creation.
 
 	* FormBaseDeprecated.C:

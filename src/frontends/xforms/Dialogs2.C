@@ -16,188 +16,269 @@
 
 #include "Dialogs_impl.h"
 
-#include "combox.h"
-
-#include "ControlAboutlyx.h"
-#include "FormAboutlyx.h"
-#include "forms/form_aboutlyx.h"
-
-#include "ControlBibitem.h"
-#include "FormBibitem.h"
-#include "forms/form_bibitem.h"
-
-#include "ControlBibtex.h"
-#include "FormBibtex.h"
-#include "forms/form_bibtex.h"
-
-#include "FormBrowser.h"
-#include "forms/form_browser.h"
-
-#include "ControlCharacter.h"
-#include "FormCharacter.h"
-#include "forms/form_character.h"
-
-#include "ControlCitation.h"
-#include "FormCitation.h"
-#include "forms/form_citation.h"
-
-#include "FormDocument.h"
-#include "forms/form_document.h"
-
-#include "ControlError.h"
-#include "FormError.h"
-#include "forms/form_error.h"
-
-#include "ControlERT.h"
-#include "FormERT.h"
-#include "forms/form_ert.h"
-
-#include "ControlExternal.h"
-#include "FormExternal.h"
-#include "forms/form_external.h"
-
-#include "ControlFloat.h"
-#include "FormFloat.h"
-#include "forms/form_float.h"
-
-#include "ControlForks.h"
-#include "FormForks.h"
-#include "forms/form_forks.h"
-
-#include "ControlGraphics.h"
-#include "FormGraphics.h"
-#include "forms/form_graphics.h"
-
-#include "ControlInclude.h"
-#include "FormInclude.h"
-#include "forms/form_include.h"
-
-#include "ControlIndex.h"
-#include "FormIndex.h"
-#include "forms/form_index.h"
-
-#include "ControlLog.h"
-#include "FormLog.h"
-
-#include "ControlShowFile.h"
-#include "FormShowFile.h"
-
 
 void Dialogs::showAboutlyx()
 {
-	pimpl_->dialog(pimpl_->aboutlyx).controller().show();
+	pimpl_->aboutlyx.controller().show();
 }
 
 
 void Dialogs::showBibitem(InsetCommand * ic)
 {
-	pimpl_->dialog(pimpl_->bibitem).controller().showInset(ic);
+	pimpl_->bibitem.controller().showInset(ic);
 }
 
 
 void Dialogs::showBibtex(InsetCommand * ic)
 {
-	pimpl_->dialog(pimpl_->bibtex).controller().showInset(ic);
+	pimpl_->bibtex.controller().showInset(ic);
 }
 
 
 void Dialogs::showCharacter()
 {
-	pimpl_->dialog(pimpl_->character).controller().show();
+	pimpl_->character.controller().show();
 }
 
 
 void Dialogs::setUserFreeFont()
 {
-	pimpl_->dialog(pimpl_->character).controller().apply();
+	pimpl_->character.controller().apply();
 }
 
 
 void Dialogs::showCitation(InsetCommand * ic)
 {
-	pimpl_->dialog(pimpl_->citation).controller().showInset(ic);
+	pimpl_->citation.controller().showInset(ic);
 }
 
 
 void Dialogs::createCitation(string const & s)
 {
-	pimpl_->dialog(pimpl_->citation).controller().createInset(s);
+	pimpl_->citation.controller().createInset(s);
 }
 
 
 void Dialogs::showDocument()
 {
-	pimpl_->dialog(pimpl_->document).show();
+	pimpl_->document.show();
 }
 
 
 void Dialogs::showError(InsetError * ie)
 {
-	pimpl_->dialog(pimpl_->error).controller().showInset(ie);
+	pimpl_->error.controller().showInset(ie);
 }
 
 
 void Dialogs::showERT(InsetERT * ie)
 {
-	pimpl_->dialog(pimpl_->ert).controller().showInset(ie);
+	pimpl_->ert.controller().showInset(ie);
 }
 
 
 void Dialogs::updateERT(InsetERT * ie)
 {
-	pimpl_->dialog(pimpl_->ert).controller().showInset(ie);
+	pimpl_->ert.controller().showInset(ie);
 }
 
 
 void Dialogs::showExternal(InsetExternal * ie)
 {
-	pimpl_->dialog(pimpl_->external).controller().showInset(ie);
+	pimpl_->external.controller().showInset(ie);
 }
 
 
 void Dialogs::showFile(string const & f)
 {
-	pimpl_->dialog(pimpl_->file).controller().showFile(f);
+	pimpl_->file.controller().showFile(f);
 }
 
 
 void Dialogs::showFloat(InsetFloat * ifl)
 {
-	pimpl_->dialog(pimpl_->floats).controller().showInset(ifl);
+	pimpl_->floats.controller().showInset(ifl);
 }
 
 
 void Dialogs::showForks()
 {
-	pimpl_->dialog(pimpl_->forks).controller().show();
+	pimpl_->forks.controller().show();
 }
 
 
 void Dialogs::showGraphics(InsetGraphics * ig)
 {
-	pimpl_->dialog(pimpl_->graphics).controller().showInset(ig);
+	pimpl_->graphics.controller().showInset(ig);
 }
 
 
 void Dialogs::showInclude(InsetInclude * ii)
 {
-	pimpl_->dialog(pimpl_->include).controller().showInset(ii);
+	pimpl_->include.controller().showInset(ii);
 }
 
 
 void Dialogs::showIndex(InsetCommand * ic)
 {
-	pimpl_->dialog(pimpl_->index).controller().showInset(ic);
+	pimpl_->index.controller().showInset(ic);
 }
 
 
 void Dialogs::createIndex()
 {
-	pimpl_->dialog(pimpl_->index).controller().createInset(string());
+	pimpl_->index.controller().createInset(string());
 }
 
 
 void Dialogs::showLogFile()
 {
-	pimpl_->dialog(pimpl_->logfile).controller().show();
+	pimpl_->logfile.controller().show();
+}
+
+
+void Dialogs::showMathPanel()
+{
+	pimpl_->mathpanel.show();
+}
+
+
+void Dialogs::showMinipage(InsetMinipage * im)
+{
+	pimpl_->minipage.controller().showInset(im);
+}
+
+
+void Dialogs::updateMinipage(InsetMinipage * im)
+{
+	pimpl_->minipage.controller().showInset(im);
+}
+
+
+void Dialogs::showParagraph()
+{
+	pimpl_->paragraph.controller().show();
+}
+
+
+void Dialogs::updateParagraph()
+{
+	pimpl_->paragraph.controller().changedParagraph();
+}
+
+
+void Dialogs::showPreamble()
+{
+	pimpl_->preamble.controller().show();
+}
+
+
+void Dialogs::showPreferences()
+{
+	pimpl_->preferences.show();
+}
+
+
+void Dialogs::showPrint()
+{
+	pimpl_->print.controller().show();
+}
+
+
+void Dialogs::showRef(InsetCommand * ic)
+{
+	pimpl_->ref.controller().showInset(ic);
+}
+
+
+void Dialogs::createRef(string const & s)
+{
+	pimpl_->ref.controller().createInset(s);
+}
+
+
+void Dialogs::showSearch()
+{
+	pimpl_->search.controller().show();
+}
+
+
+void Dialogs::showSendto()
+{
+	pimpl_->sendto.controller().show();
+}
+
+
+void Dialogs::showSpellchecker()
+{
+	pimpl_->spellchecker.controller().show();
+}
+
+
+void Dialogs::showTabular(InsetTabular * it)
+{
+	pimpl_->tabular.showInset(it);
+}
+
+
+void Dialogs::updateTabular(InsetTabular * it)
+{
+	pimpl_->tabular.updateInset(it);
+}
+
+
+void Dialogs::showTabularCreate()
+{
+	pimpl_->tabularcreate.controller().show();
+}
+
+
+void Dialogs::showTexinfo()
+{
+	pimpl_->texinfo.controller().show();
+}
+
+
+#ifdef HAVE_LIBAIKSAURUS
+
+void Dialogs::showThesaurus(string const & s)
+{
+	pimpl_->thesaurus.controller().showEntry(s);
+}
+
+#else
+
+void Dialogs::showThesaurus(string const &)
+{}
+
+#endif
+
+
+void Dialogs::showTOC(InsetCommand * ic)
+{
+	pimpl_->toc.controller().showInset(ic);
+}
+
+
+void Dialogs::createTOC(string const & s)
+{
+	pimpl_->toc.controller().createInset(s);
+}
+
+
+void Dialogs::showUrl(InsetCommand * ic)
+{
+	pimpl_->url.controller().showInset(ic);
+}
+
+
+void Dialogs::createUrl(string const & s)
+{
+	pimpl_->url.controller().createInset(s);
+}
+
+
+void Dialogs::showVCLogFile()
+{
+	pimpl_->vclogfile.controller().show();
 }
