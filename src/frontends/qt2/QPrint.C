@@ -65,6 +65,8 @@ void QPrint::update_contents()
 	dialog_->oddCB->setChecked(pp.odd_pages);
 	dialog_->evenCB->setChecked(pp.even_pages);
  
+	dialog_->collateCB->setChecked(pp.sorted_copies);
+ 
 	if (pp.all_pages) {
 		dialog_->allRB->setChecked(true);
 		return;
