@@ -1,3 +1,8 @@
+2002-10-09  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* text3.C (dispatch): when changing layout, avoid an infinite loop
+	[bug #652]
+
 2002-10-07  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* lyxrc.C (read): treat a viewer or converter command of "none" as

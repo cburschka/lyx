@@ -1104,6 +1104,7 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 					change_layout = true;
 					break;
 				}
+				spar = spar->next();
 			}
 		}
 		if (change_layout) {
