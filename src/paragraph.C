@@ -73,10 +73,7 @@ extern BufferView * current_view;
 Paragraph::Paragraph()
 	: pimpl_(new Paragraph::Pimpl(this))
 {
-#ifndef NO_NEXT
-	next_ = 0;
-	previous_ = 0;
-#else
+#ifdef NO_STD_LIST
 	next_par_ = 0;
 	prev_par_ = 0;
 #endif
@@ -91,10 +88,7 @@ Paragraph::Paragraph(Paragraph const & lp, bool same_ids)
 {
 	enumdepth = 0;
 	itemdepth = 0;
-#ifndef NO_NEXT
-	next_     = 0;
-	previous_ = 0;
-#else
+#ifdef NO_STD_LIST
 	next_par_ = 0;
 	prev_par_ = 0;
 #endif
@@ -118,13 +112,6 @@ Paragraph::Paragraph(Paragraph const & lp, bool same_ids)
 // the destructor removes the new paragraph from the list
 Paragraph::~Paragraph()
 {
-#ifndef NO_NEXT
-	if (previous_)
-		previous_->next_ = next_;
-	if (next_)
-		next_->previous_ = previous_;
-#endif
-
 	delete pimpl_;
 	//
 	//lyxerr << "Paragraph::paragraph_id = "
@@ -610,47 +597,6 @@ void Paragraph::setFont(pos_type pos, LyXFont const & font)
 				Pimpl::FontTable(pos, font));
 	}
 }
-
-
-#ifndef NO_NEXT
-void Paragraph::next(Paragraph * p)
-{
-	next_ = p;
-}
-
-
-// This function is able to hide closed footnotes.
-Paragraph * Paragraph::next()
-{
-	return next_;
-}
-
-
-Paragraph const * Paragraph::next() const
-{
-	return next_;
-}
-
-
-void Paragraph::previous(Paragraph * p)
-{
-	previous_ = p;
-}
-
-
-// This function is able to hide closed footnotes.
-Paragraph * Paragraph::previous()
-{
-	return previous_;
-}
-
-
-// This function is able to hide closed footnotes.
-Paragraph const * Paragraph::previous() const
-{
-	return previous_;
-}
-#endif
 
 
 void Paragraph::makeSameLayout(Paragraph const & par)

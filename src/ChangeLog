@@ -1,3 +1,16 @@
+2003-05-24  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* paragraph.h: add NO_STD_LIST define, remove NO_NEXT define.
+
+	* paragraph.C: remove all NO_NEXT node add some NO_STD_LIST parts
+	instead. 
+
+	* ParagraphList.h: degenerate to std::list if NO_STD_LIST is not
+	set else use old code.
+
+	* ParagraphList.C: remove all NO_NEXT code and only compile this
+	code of NO_STD_LIST is set.
+
 2003-05-23  Alfredo Braunstein  <abraunst@libero.it>
 
 	* BufferView_pimpl.C:
@@ -20,7 +33,7 @@
 
 2003-05-23  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
-	* ParagraphList.h (set): remove unused function. 
+	* ParagraphList.h (set): remove unused function.
 
 2003-05-23  André Pönitz  <poenitz@gmx.net>
 

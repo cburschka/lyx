@@ -4,6 +4,8 @@
 
 #include "paragraph.h"
 
+#ifdef NO_STD_LIST
+
 ////////// The ParagraphList::iterator
 
 ParagraphList::iterator::iterator()
@@ -33,11 +35,7 @@ ParagraphList::iterator::operator->()
 ParagraphList::iterator &
 ParagraphList::iterator::operator++()
 {
-#ifndef NO_NEXT
-	ptr = ptr->next_;
-#else
 	ptr = ptr->next_par_;
-#endif
 	return *this;
 }
 
@@ -54,11 +52,7 @@ ParagraphList::iterator::operator++(int)
 ParagraphList::iterator &
 ParagraphList::iterator::operator--()
 {
-#ifndef NO_NEXT
-	ptr = ptr->previous_;
-#else
 	ptr = ptr->prev_par_;
-#endif
 	return *this;
 }
 
@@ -118,25 +112,6 @@ ParagraphList & ParagraphList::operator=(ParagraphList const & rhs)
 ParagraphList::iterator
 ParagraphList::insert(ParagraphList::iterator it, Paragraph * par)
 {
-#ifndef NO_NEXT
-	if (it != end()) {
-		Paragraph * prev = it->previous_;
-		par->next_ = &*it;
-		par->previous_ = prev;
-		prev->next_ = par;
-		it->previous_ = par;
-	} else if (parlist == 0) {
-		parlist = par;
-	} else {
-		// Find last par.
-		Paragraph * last = parlist;
-		while (last->next_)
-			last = last->next_;
-		last->next_ = par;
-		par->previous_ = last;
-	}
-	return iterator(par);
-#else
 	if (it != end()) {
 		Paragraph * prev = it->prev_par_;
 		par->next_par_ = &*it;
@@ -154,7 +129,6 @@ ParagraphList::insert(ParagraphList::iterator it, Paragraph * par)
 		par->prev_par_ = last;
 	}
 	return iterator(par);
-#endif
 }
 
 
@@ -183,33 +157,6 @@ void ParagraphList::splice(iterator pos, ParagraphList & pl)
 
 	Paragraph * first = pl.parlist;
 	Paragraph * last = first;
-#ifndef NO_NEXT
-	while (last->next_)
-		last = last->next_;
-
-	if (pos == end()) {
-		if (parlist == 0) {
-			parlist = first;
-		} else {
-			Paragraph * last_par = &back();
-			last_par->next_ = first;
-			first->previous_ = last_par;
-		}
-	} else if (pos == begin()) {
-		last->next_ = parlist;
-		parlist->previous_ = last;
-		parlist = first;
-	} else {
-		Paragraph * pos_par = &*pos;
-		Paragraph * before_pos = pos_par->previous_;
-
-		before_pos->next_ = first;
-		first->previous_ = before_pos;
-		last->next_ = pos_par;
-		pos_par->previous_ = last;
-	}
-	pl.parlist = 0;
-#else
 	while (last->next_par_)
 		last = last->next_par_;
 
@@ -235,47 +182,21 @@ void ParagraphList::splice(iterator pos, ParagraphList & pl)
 		pos_par->prev_par_ = last;
 	}
 	pl.parlist = 0;
-#endif
 }
 
 
 void ParagraphList::clear()
 {
-#ifndef NO_NEXT
-	while (parlist) {
-		Paragraph * tmp = parlist->next_;
-		delete parlist;
-		parlist = tmp;
-	}
-#else
 	while (parlist) {
 		Paragraph * tmp = parlist->next_par_;
 		delete parlist;
 		parlist = tmp;
 	}
-#endif
 }
 
 
 ParagraphList::iterator ParagraphList::erase(ParagraphList::iterator it)
 {
-#ifndef NO_NEXT
-	Paragraph * prev = it->previous_;
-	Paragraph * next = it->next_;
-
-	if (prev)
-		prev->next_ = next;
-	else
-		parlist = next;
-
-	if (next)
-		next->previous_ = prev;
-
-	it->previous_ = 0;
-	it->next_ = 0;
-	delete &*it;
-	return next;
-#else
 	Paragraph * prev = it->prev_par_;
 	Paragraph * next = it->next_par_;
 
@@ -289,7 +210,6 @@ ParagraphList::iterator ParagraphList::erase(ParagraphList::iterator it)
 
 	delete &*it;
 	return next;
-#endif
 }
 
 
@@ -341,50 +261,24 @@ Paragraph & ParagraphList::front()
 
 Paragraph const & ParagraphList::back() const
 {
-#ifndef NO_NEXT
-	Paragraph * tmp = parlist;
-	while (tmp->next_)
-		tmp = tmp->next_;
-	return *tmp;
-#else
 	Paragraph * tmp = parlist;
 	while (tmp->next_par_)
 		tmp = tmp->next_par_;
 	return *tmp;
-#endif
 }
 
 
 Paragraph & ParagraphList::back()
 {
-#ifndef NO_NEXT
-	Paragraph * tmp = parlist;
-	while (tmp->next_)
-		tmp = tmp->next_;
-	return *tmp;
-#else
 	Paragraph * tmp = parlist;
 	while (tmp->next_par_)
 		tmp = tmp->next_par_;
 	return *tmp;
-#endif
 }
 
 
 void ParagraphList::push_back(Paragraph * p)
 {
-#ifndef NO_NEXT
-	if (!parlist) {
-		parlist = p;
-		return;
-	}
-
-	Paragraph * pos = parlist;
-	while (pos->next_)
-		pos = pos->next_;
-	pos->next_ = p;
-	p->previous_ = pos;
-#else
 	if (!parlist) {
 		parlist = p;
 		return;
@@ -395,23 +289,11 @@ void ParagraphList::push_back(Paragraph * p)
 		pos = pos->next_par_;
 	pos->next_par_ = p;
 	p->prev_par_ = pos;
-#endif
 }
 
 
 int ParagraphList::size() const
 {
-#ifndef NO_NEXT
-	// When we switch to a std::container this will be O(1)
-	// instead of O(n). (Lgb)
-	Paragraph * tmp = parlist;
-	int c = 0;
-	while (tmp) {
-		++c;
-		tmp = tmp->next_;
-	}
-	return c;
-#else
 	// When we switch to a std::container this will be O(1)
 	// instead of O(n). (Lgb)
 	Paragraph * tmp = parlist;
@@ -421,7 +303,6 @@ int ParagraphList::size() const
 		tmp = tmp->next_par_;
 	}
 	return c;
-#endif
 }
 
 
@@ -429,3 +310,5 @@ bool ParagraphList::empty() const
 {
 	return parlist == 0;
 }
+
+#endif

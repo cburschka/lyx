@@ -3,10 +3,22 @@
 #ifndef PARAGRAPH_LIST_H
 #define PARAGRAPH_LIST_H
 
-#include <iterator>
-#include <utility>
+#define NO_STD_LIST 1
+
+#ifndef NO_STD_LIST
+
+#include "paragraph.h"
+
+#include <list>
+
+typedef std::list<Paragraph> ParagraphList;
+
+#else
 
 class Paragraph;
+
+#include <iterator>
+#include <utility>
 
 ///
 class ParagraphList {
@@ -104,5 +116,6 @@ bool operator==(ParagraphList::iterator const & i1,
 bool operator!=(ParagraphList::iterator const & i1,
 		ParagraphList::iterator const & i2);
 
+#endif
 
 #endif

@@ -34,15 +34,16 @@ class TexRow;
 // Define this if you want to try out the new storage container for
 // paragraphs. (Lgb)
 // This is non working and far from finished.
-#define NO_NEXT 1
+#define NO_STD_LIST 1
 
 /// A Paragraph holds all text, attributes and insets in a text paragraph
 class Paragraph  {
 public:
+#ifdef NO_STD_LIST
 	// Remove this whan ParagraphList transition is over. (Lgb)
 	friend class ParagraphList;
 	friend class ParagraphList::iterator;
-
+#endif
 	///
 	enum META_KIND {
 		/// Note that this is 1 right now to avoid
@@ -139,23 +140,6 @@ public:
 
 	///
 	InsetBibitem * bibitem();  // ale970302
-
-#ifndef NO_NEXT
-	///
-	void next(Paragraph *);
-	/** these function are able to hide closed footnotes
-	 */
-	Paragraph * next();
-	///
-	Paragraph const * next() const;
-
-	///
-	void previous(Paragraph *);
-	///
-	Paragraph * previous();
-	///
-	Paragraph const * previous() const;
-#endif
 
 	/// initialise tracking for this par
 	void trackChanges(Change::Type = Change::UNCHANGED);
@@ -318,12 +302,7 @@ private:
 	LyXLayout_ptr layout_;
 	/// if anything uses this we don't want it to.
 	Paragraph(Paragraph const &);
-#ifndef NO_NEXT
-	///
-	Paragraph * next_;
-	///
-	Paragraph * previous_;
-#else
+#ifdef NO_STD_LIST
 	Paragraph * next_par_;
 	Paragraph * prev_par_;
 #endif
