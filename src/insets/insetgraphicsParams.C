@@ -93,6 +93,7 @@ void InsetGraphicsParams::init()
 	lyxscale = 0;			// same for lyxview
 	size_type = DEFAULT_SIZE;	// do nothing
 	lyxsize_type = DEFAULT_SIZE;	// do nothing
+	keepLyXAspectRatio = false;	// only for LyXview
 	keepAspectRatio = false;	// only for latex
 	rotate = false;			// Rotating
 	rotateOrigin = "center";	// Origin
@@ -118,6 +119,7 @@ void InsetGraphicsParams::copy(InsetGraphicsParams const & igp)
 	lyxsize_type = igp.lyxsize_type;
 	lyxwidth = igp.lyxwidth;
 	lyxheight = igp.lyxheight;
+	keepLyXAspectRatio = igp.keepLyXAspectRatio;
 	lyxscale = igp.lyxscale;
 	rotate = igp.rotate;
 	rotateOrigin = igp.rotateOrigin;
@@ -144,6 +146,7 @@ bool operator==(InsetGraphicsParams const & left,
 	    left.lyxsize_type == right.lyxsize_type &&
 	    left.lyxwidth == right.lyxwidth &&
 	    left.lyxheight == right.lyxheight &&
+	    left.keepLyXAspectRatio == right.keepLyXAspectRatio &&
 	    left.lyxscale == right.lyxscale &&
 	    left.rotate == right.rotate &&
 	    left.rotateOrigin == right.rotateOrigin &&
@@ -210,6 +213,8 @@ void InsetGraphicsParams::Write(ostream & os) const
 		os << "\tlyxwidth " << lyxwidth.asString() << '\n';
 	if (!lyxheight.zero())
 		os << "\tlyxheight " << lyxheight.asString();
+	if (keepLyXAspectRatio)
+		os << "\tkeepLyXAspectRatio\n";
 	if (lyxscale != 0)
 		os << "\tlyxscale " << lyxscale << '\n';
 }
@@ -291,6 +296,8 @@ bool InsetGraphicsParams::Read(LyXLex & lex, string const& token)
 	} else if (token == "lyxheight") {
 		lex.next();
 		lyxheight = LyXLength(lex.getString());
+	} else if (token == "keepLyXAspectRatio") {
+		keepLyXAspectRatio = true;
 	} else if (token == "lyxscale") {
 		lex.next();
 		lyxscale = lex.getInteger();

@@ -13,6 +13,7 @@
 #endif
 
 #include "GraphicsParams.h"
+#include "GraphicsCache.h"
 #include "insets/insetgraphicsParams.h"
 #include "lyxrc.h"
 #include "debug.h"
@@ -112,6 +113,27 @@ GParams::GParams(InsetGraphicsParams const & iparams, string const & filepath)
 		double const scaling_factor = 100.0 / double(lyxrc.zoom);
 		width  = uint(scaling_factor * width);
 		height = uint(scaling_factor * height);
+
+		if (iparams.keepLyXAspectRatio) {
+			// get the imagesize from the cache
+			grfx::GCache & gc = grfx::GCache::get();
+			float const rw = gc.raw_width(filename);
+			float const rh = gc.raw_height(filename);
+			float const ratio = (rw > 0.001) ? rh/rw : 1.0;
+			lyxerr[Debug::GRAPHICS]
+				<< "Value of LyXAspectRatio: "
+				<< ratio << std::endl;
+			if (!iparams.lyxwidth.zero() &&
+			    !iparams.lyxheight.zero()) {
+				if (width < height)
+					height = int(ratio * width);
+				else
+					width = int(ratio * height);
+			} else if (iparams.lyxwidth.zero())
+				width = int(ratio * height);
+			else if (iparams.lyxheight.zero())
+				height = int(ratio * width);
+		}
 	}
 }
 

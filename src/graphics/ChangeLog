@@ -1,3 +1,8 @@
+2002-05-01  Herbert Voss  <voss@lyx.org>
+
+	* GraphicsParams.C (GParams c-tor): use the new keepLyXAspectRatio
+	parameter.
+
 2002-07-01  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* GraphicsConverter.C (convert): do not use ChangeExtension

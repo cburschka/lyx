@@ -99,6 +99,7 @@ struct FD_form_lyxview {
 	FL_OBJECT *input_lyxheight;
 	FL_OBJECT *choice_lyxheight;
 	FL_OBJECT *button_latex_values;
+	FL_OBJECT *check_lyxaspectratio;
 };
 
 #endif /* FD_form_graphics_h_ */
