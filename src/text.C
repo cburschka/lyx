@@ -2046,7 +2046,7 @@ void LyXText::cursorLeftOneWord(LyXCursor & cur)
 // Select current word. This depends on behaviour of
 // CursorLeftOneWord(), so it is patched as well.
 void LyXText::getWord(LyXCursor & from, LyXCursor & to,
-		      word_location loc)
+		      word_location const loc)
 {
 	// first put the cursor where we wana start to select the word
 	from = cursor;

@@ -107,7 +107,7 @@ void FuncRequest::errorMessage(string const & msg) const
 
 void split(vector<string> & args, string str)
 {
-	istringstream is(str);
+	istringstream is(STRCONV(str));
 	while (is) {
 		char c;
 		string s;

@@ -279,8 +279,7 @@ public:
 	void clearSelection();
 
 	/// select the word we need depending on word_location
-	void getWord(LyXCursor & from, LyXCursor & to,
-		     word_location loc);
+	void getWord(LyXCursor & from, LyXCursor & to, word_location const);
 	/// just selects the word the cursor is in
 	void selectWord(word_location loc);
 	/// returns the inset at cursor (if it exists), 0 otherwise

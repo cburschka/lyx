@@ -32,9 +32,6 @@
 using std::ifstream;
 using std::getline;
 
-/*
- * CLASS Chktex
- */
 
 Chktex::Chktex(string const & chktex, string const & f, string const & p)
 		: cmd(chktex), file(f), path(p)
@@ -48,7 +45,7 @@ int Chktex::run(TeXErrors &terr)
 	string log = OnlyFilename(ChangeExtension(file, ".log"));
 	string tmp = cmd + " -q -v0 -b0 -x " + file + " -o " + log;
 	Systemcall one;
-	int result= one.startscript(Systemcall::Wait, tmp);
+	int result = one.startscript(Systemcall::Wait, tmp);
 	if (result == 0) {
 		result = scanLogFile(terr);
 	} else {
@@ -66,7 +63,7 @@ int Chktex::scanLogFile(TeXErrors & terr)
 	string const tmp = OnlyFilename(ChangeExtension(file, ".log"));
 
 #if USE_BOOST_FORMAT
-	boost::format msg(_("ChkTeX warning id # %1$d"));
+	boost::format msg(STRCONV(_("ChkTeX warning id # %1$d")));
 #else
 	string const msg(_("ChkTeX warning id # "));
 #endif
@@ -87,7 +84,7 @@ int Chktex::scanLogFile(TeXErrors & terr)
 
 #if USE_BOOST_FORMAT
 		msg % warno;
-		terr.insertError(lineno, msg.str(), warning);
+		terr.insertError(lineno, STRCONV(msg.str()), warning);
 		msg.clear();
 #else
 		terr.insertError(lineno, msg + warno, warning);

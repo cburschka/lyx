@@ -692,7 +692,7 @@ string const NormalizePath(string const & path)
 
 	// Normalise paths like /foo//bar ==> /foo/bar
 	boost::RegEx regex("/{2,}");
-	RTemp = regex.Merge(RTemp, "/");
+	RTemp = STRCONV(regex.Merge(STRCONV(RTemp), "/"));
 
 	while (!RTemp.empty()) {
 		// Split by next /

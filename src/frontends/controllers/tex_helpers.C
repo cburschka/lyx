@@ -71,7 +71,7 @@ void getTexFileList(string const & filename, std::vector<string> & list)
 	std::vector<string>::iterator it  = list.begin();
 	std::vector<string>::iterator end = list.end();
 	for (; it != end; ++it) {
-		*it = regex.Merge(*it, "/");
+		*it = STRCONV(regex.Merge(it->c_str(), "/"));
 	}
 
 	lyx::eliminate_duplicates(list);
@@ -84,14 +84,14 @@ string const getListOfOptions(string const & classname, string const & type)
 	string optionList = string();
 	std::ifstream is(filename.c_str());
 	while (is) {
-	    string s;
-	    is >> s;
-	    if (contains(s,"DeclareOption")) {
-		s = s.substr(s.find("DeclareOption"));
-		s = split(s,'{');		// cut front
-		s = token(s,'}',0);		// cut end
-		optionList += (s + '\n');
-	    }
+		string s;
+		is >> s;
+		if (contains(s,"DeclareOption")) {
+			s = s.substr(s.find("DeclareOption"));
+			s = split(s,'{');		// cut front
+			s = token(s,'}',0);		// cut end
+			optionList += (s + '\n');
+		}
 	}
 	return optionList;
 }

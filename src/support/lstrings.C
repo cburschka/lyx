@@ -613,29 +613,39 @@ string const getStringFromVector(vector<string> const & vec,
 
 string bformat(string const & fmt, string const & arg1)
 {
-	return STRCONV((boost::format(fmt) % STRCONV(arg1)).str());
+	return STRCONV((boost::format(STRCONV(fmt)) % STRCONV(arg1)).str());
 }
 
 
 string bformat(string const & fmt, string const & arg1, string const & arg2)
 {
-	return STRCONV((boost::format(fmt) % STRCONV(arg1) % STRCONV(arg2)).str());
+	return STRCONV((boost::format(STRCONV(fmt)) % STRCONV(arg1)
+		% STRCONV(arg2)).str());
 }
 
 
 string bformat(string const & fmt, string const & arg1, string const & arg2,
 	string const & arg3)
 {
-	return STRCONV((boost::format(fmt) % STRCONV(arg1) % STRCONV(arg2)
-		% STRCONV(arg3)).str());
+	return STRCONV((boost::format(STRCONV(fmt)) % STRCONV(arg1)
+		% STRCONV(arg2) % STRCONV(arg3)).str());
 }
 
 
 string bformat(string const & fmt, string const & arg1, string const & arg2,
 	string const & arg3, string const & arg4)
 {
-	return STRCONV((boost::format(fmt) % STRCONV(arg1) % STRCONV(arg2)
-		% STRCONV(arg3) % STRCONV(arg4)).str());
+	return STRCONV((boost::format(STRCONV(fmt)) % STRCONV(arg1)
+		% STRCONV(arg2) % STRCONV(arg3) % STRCONV(arg4)).str());
+}
+
+
+string bformat(string const & fmt, string const & arg1, string const & arg2,
+	string const & arg3, string const & arg4, string const & arg5)
+{
+	return STRCONV((boost::format(STRCONV(fmt)) % STRCONV(arg1)
+		% STRCONV(arg2) % STRCONV(arg3) % STRCONV(arg4)
+		% STRCONV(arg5)).str());
 }
 
 #else
@@ -682,6 +692,23 @@ string bformat(string const & fmt, string const & arg1, string const & arg2,
 	str = subst(str, "%2$s", arg2);
 	str = subst(str, "%3$s", arg3);
 	str = subst(str, "%4$s", arg4);
+	return subst(str, "%%", "%");
+}
+
+
+string bformat(string const & fmt, string const & arg1, string const & arg2,
+	string const & arg3, string const & arg4, string const & arg5)
+{
+	lyx::Assert(contains(fmt, "%1$s"));
+	lyx::Assert(contains(fmt, "%2$s"));
+	lyx::Assert(contains(fmt, "%3$s"));
+	lyx::Assert(contains(fmt, "%4$s"));
+	lyx::Assert(contains(fmt, "%5$s"));
+	string str = subst(fmt, "%1$s", arg1);
+	str = subst(str, "%2$s", arg2);
+	str = subst(str, "%3$s", arg3);
+	str = subst(str, "%4$s", arg4);
+	str = subst(str, "%5$s", arg5);
 	return subst(str, "%%", "%");
 }
 
