@@ -17,6 +17,7 @@
 #pragma implementation
 #endif
 
+#include "ControlMath.h"
 #include "FormMathsDeco.h"
 #include "forms/form_maths_deco.h"
 #include "bmtable.h"
