@@ -48,6 +48,7 @@ FormCitation::FormCitation(LyXView * lv, Dialogs * d)
 	// storing a copy because we won't be disconnecting.
 	d->showCitation.connect(slot(this, &FormCitation::showInset));
 	d->createCitation.connect(slot(this, &FormCitation::createInset));
+	d->hideCitation.connect(slot(this, &FormCitation::hideInset));
 }
 
 
@@ -93,6 +94,15 @@ void FormCitation::createInset( string const & arg )
 }
 
 
+void FormCitation::hideInset(InsetCitation * ti)
+{
+	if (inset_ == ti) {
+		inset_ = 0;
+		hide();
+	}
+}
+
+
 void FormCitation::show()
 {
 	if (!dialog_) {
@@ -134,6 +144,8 @@ void FormCitation::update()
 
 	blist.clear();
 
+	fl_freeze_form( dialog_->form_citation );
+
 	updateBrowser( dialog_->bibBrsr, bibkeys );
 	updateBrowser( dialog_->citeBrsr, citekeys );
 	fl_clear_browser( dialog_->infoBrsr );
@@ -153,6 +165,8 @@ void FormCitation::update()
 	setSize( size, bibPresent );
 
 	fl_set_input( dialog_->textAftr, textAfter.c_str() );
+
+	fl_unfreeze_form( dialog_->form_citation );
 }
 
 
@@ -175,10 +189,8 @@ void FormCitation::updateBrowser( FL_OBJECT * browser,
 {
 	fl_clear_browser( browser );
 
-	fl_freeze_form( browser->form );
 	for( unsigned int i = 0; i < keys.size(); ++i )
 		fl_add_browser_line( browser, keys[i].c_str() );
-	fl_unfreeze_form( browser->form );
 }
 
 
@@ -291,7 +303,8 @@ void FormCitation::setSize( int brsrHeight, bool bibPresent ) const
 	// awaiting natbib support
 	fl_hide_object( dialog_->textBefore );
 
-	fl_set_object_geometry( dialog_->textAftr, 100, ypos,   250, 30 );
+	fl_set_object_position(dialog_->textAftr, 100, ypos);
+//	fl_set_object_geometry( dialog_->textAftr, 100, ypos,   250, 30 );
 	fl_set_object_geometry( dialog_->ok,       230, ypos+50, 90, 30 );
 	fl_set_object_geometry( dialog_->cancel,   330, ypos+50, 90, 30 );
 }

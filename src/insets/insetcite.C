@@ -15,10 +15,19 @@
 #endif
 
 #include "insetcite.h"
+#include "LyXView.h"
+#include "BufferView.h"
+#include "frontends/Dialogs.h"
 
 InsetCitation::InsetCitation(string const & key, string const & note)
-		: InsetCommand("cite", key, note)
+		: InsetCommand("cite", key, note), dialogs_(0)
 {
+}
+
+InsetCitation::~InsetCitation()
+{
+	if( dialogs_ != 0 )
+		dialogs_->hideCitation( this );
 }
 
 string InsetCitation::getScreenLabel() const
@@ -33,3 +42,10 @@ string InsetCitation::getScreenLabel() const
 
 	return temp + ']';
 }
+
+void InsetCitation::Edit(BufferView * bv, int, int, unsigned int)
+{
+	dialogs_ = bv->owner()->getDialogs();
+	dialogs_->showCitation( this );
+}
+

@@ -17,7 +17,6 @@
 #endif
 
 #include "insetcommand.h"
-#include "gettext.h"
 
 // Created by Lgb 970527
 

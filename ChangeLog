@@ -1,3 +1,11 @@
+2000-07-13  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* src/frontends/Dialogs.h (hideCitation) : new signal to prevent
+	crashes when closing dialog to a deleted inset.
+
+	* src/insets/insetcite.[Ch] (Edit) : the return of this former
+	method! Now similar to other insets.
+
 2000-07-13  Juergen Vigna  <jug@sad.it>
 
 	* src/text.C (GetVisibleRow): fixed clearing of rows with insets!

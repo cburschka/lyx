@@ -17,6 +17,7 @@
 #pragma implementation
 #endif
 
+#include "gettext.h"
 #include "insetloa.h"
 #include "LaTeXFeatures.h"
 #include "BufferView.h"

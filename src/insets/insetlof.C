@@ -4,6 +4,7 @@
 #pragma implementation
 #endif
 
+#include "gettext.h"
 #include "insetlof.h"
 #include "BufferView.h"
 #include "LyXView.h"

@@ -16,7 +16,6 @@
 #endif
 
 #include "insetcommand.h"
-#include "gettext.h"
 
 class Buffer;
 

@@ -24,6 +24,7 @@
 #include "lyxfunc.h"
 #include "commandtags.h"
 #include "buffer.h"
+#include "gettext.h"
 
 using std::ostream;
 

@@ -4,6 +4,7 @@
 #pragma implementation
 #endif
 
+#include "gettext.h"
 #include "insettoc.h"
 #include "commandtags.h"
 #include "lyxfunc.h"

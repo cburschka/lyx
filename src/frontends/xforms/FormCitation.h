@@ -15,12 +15,12 @@
 #include "DialogBase.h"
 #include "LString.h"
 #include <vector>
-#include "form_citation.h"
 
 class Dialogs;
 // same arguement as in Dialogs.h s/LyX/UI/
 class LyXView;
 class InsetCitation;
+struct FD_form_citation;
 
 /** This class provides an XForms implementation of the FormCitation Dialog.
  */
@@ -63,6 +63,8 @@ private:
 	void createInset( string const & );
 	/// 
 	void showInset( InsetCitation * );
+	/// 
+	void hideInset( InsetCitation * );
 	/// 
 	void show();
 	/// Hide the dialog.

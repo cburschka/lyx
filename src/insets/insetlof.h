@@ -13,7 +13,6 @@
 #define INSET_LOF_H
 
 #include "insetcommand.h"
-#include "gettext.h"
 
 // Created by Lgb 970527
 
