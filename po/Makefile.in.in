@@ -49,7 +49,7 @@ POFILES = @POFILES@
 GMOFILES = @GMOFILES@
 DISTFILES = ChangeLog Makefile.in.in POTFILES.in $(PACKAGE).pot \
 $(POFILES) $(GMOFILES) xforms_l10n.pot qt_l10n.pot layouts_l10n.pot \
-languages_l10n.pot default_ui_l10n.pot
+languages_l10n.pot ui_l10n.pot
 
 POTFILE_IN_DEPS = $(shell find $(top_srcdir)/src -name Makefile.am)
 
@@ -205,8 +205,8 @@ ${srcdir}/POTFILES.in: $(POTFILE_IN_DEPS)
 	&& mv $@-t $@
 
 
-l10n_pots: $(srcdir)/xforms_l10n.pot $(srcdir)/qt_l10n.pot $(srcdir)/layouts_l10n.pot $(srcdir)/languages_l10n.pot $(srcdir)/default_ui_l10n.pot
-	cat $(srcdir)/xforms_l10n.pot $(srcdir)/qt_l10n.pot $(srcdir)/layouts_l10n.pot $(srcdir)/languages_l10n.pot $(srcdir)/default_ui_l10n.pot | \
+l10n_pots: $(srcdir)/xforms_l10n.pot $(srcdir)/qt_l10n.pot $(srcdir)/layouts_l10n.pot $(srcdir)/languages_l10n.pot $(srcdir)/ui_l10n.pot
+	cat $(srcdir)/xforms_l10n.pot $(srcdir)/qt_l10n.pot $(srcdir)/layouts_l10n.pot $(srcdir)/languages_l10n.pot $(srcdir)/ui_l10n.pot | \
 	msguniq -o $(PACKAGE).po
 
 $(srcdir)/xforms_l10n.pot: $(top_srcdir)/src/frontends/xforms/forms/*.fd
@@ -273,7 +273,7 @@ $(srcdir)/languages_l10n.pot: $(top_srcdir)/lib/languages
 	    } \
             '  $(top_srcdir)/lib/languages > $@
 
-$(srcdir)/default_ui_l10n.pot: $(top_srcdir)/lib/ui/default.ui
+$(srcdir)/ui_l10n.pot: $(top_srcdir)/lib/ui/*.ui
 	awk ' \
 	    /^[^#]*Submenu/ { \
 		line=$$0; \
@@ -296,7 +296,7 @@ $(srcdir)/default_ui_l10n.pot: $(top_srcdir)/lib/ui/default.ui
 	        printf("#: %s:%d\nmsgid \"%s\"\nmsgstr \"\"\n\n", \
                        FILENAME, FNR, line); \
             } \
-            ' $(top_srcdir)/lib/ui/default.ui > $@
+            ' $(top_srcdir)/lib/ui/*.ui > $@
 
 # Tell versions [3.59,3.63) of GNU make not to export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.
