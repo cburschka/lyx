@@ -51,6 +51,8 @@ What's new
 
 - fix float placement text not being updated in Document dialog [Qt only]
 
+- fix duplicate keyboard accelerator in the paragraph dialog [Qt only]
+
 - fix loading of included files that are under revision control
 
 - the Home/End keys no longer mark the document as "(changed)"
@@ -63,4 +65,5 @@ What's new
 
 - fix bug in generation of the RPM spec file for the Qt frontend
 
-- fix duplicate keyboard accelerator in the paragraph dialog [Qt only]
+- make automatic generation of autoscripts optional; this was annoying
+  for patches.

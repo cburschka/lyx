@@ -6,6 +6,7 @@ AC_CONFIG_SRCDIR(src/main.C)
 AM_CONFIG_HEADER([src/config.h])
 
 AC_CONFIG_AUX_DIR(config)
+AM_MAINTAINER_MODE
 
 PACKAGE=lyx${program_suffix}
 VERSION="1.3.2cvs"
