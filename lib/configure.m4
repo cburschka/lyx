@@ -479,11 +479,11 @@ EOF
   for file in ./layouts/*.layout "${srcdir}"/layouts/*.layout ; do
     case $file in
       */\*.layout) ;;
-      *) if test -r "$file" ; then 
+      *) if test -r "$file" ; then
            class=`echo $file | sed -e 's%^.*layouts/\(.*\)\.layout$%\1%'`
 	   # Generate the proper TestDocClass command for this layout
 	   grep '\\Declare\(LaTeX\|DocBook\|LinuxDoc\)Class' "$file" \
-	      | sed -e 's/^\# *\(.*\)$/\\TestDocClass{'${class}'}{\1}/' 
+	      | sed -e 's/^\# *\(.*\)$/\\TestDocClass{'${class}'}{\1}/'
 	 fi ;;
     esac
   done > chklayouts.tex
@@ -587,6 +587,8 @@ cat >$outfile <<EOF
 \\converter ps         fax        "$fax_command"	""
 \\converter ps         pdf        "$ps_to_pdf_command"	""
 \\converter word       latex      "$word_to_latex_command"	""
+
+\\copier    fig        "sh \$\$s/fig_copy.sh \$\$i \$\$o"
 EOF
 
 ### the graphic converter part with the predefined ones

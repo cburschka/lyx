@@ -36,6 +36,7 @@
 #include "lyxtextclasslist.h"
 #include "lyxserver.h"
 #include "MenuBackend.h"
+#include "mover.h"
 #include "ToolbarBackend.h"
 
 #include "mathed/math_inset.h"
@@ -373,6 +374,7 @@ void LyX::init(bool gui)
 	system_lyxrc = lyxrc;
 	system_formats = formats;
 	system_converters = converters;
+	system_movers = movers;
 	system_lcolor = lcolor;
 
 	string prefsfile = "preferences";

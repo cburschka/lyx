@@ -1,3 +1,11 @@
+2004-10-26  Angus Leeming  <leeming@lyx.org>
+
+	* configure.m4: add an XFig 'copier'.
+
+	* scripts/fig_copy.sh: a script to 'copy' an XFig data file. If this
+	involves a directory change, then any references to picture files are
+	changed from relative to absolute paths.
+
 2004-10-25  Bennett Helm  <bennett.helm@fandm.edu>
 
 	* Makefile.am (dist_bind_DATA): add mac.bind
@@ -17,9 +25,9 @@
 
 2004-10-19  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
-	* bind/xemacs.bind: 
-	* bind/emacs.bind: 
-	* bind/mac.bind: 
+	* bind/xemacs.bind:
+	* bind/emacs.bind:
+	* bind/mac.bind:
 	* bind/cua.bind: add bindings for buffer-previous/next
 
 2004-10-18  Andreas Vox  <vox@isp.uni-luebeck.de>
@@ -84,7 +92,7 @@
 	be done because LyX is installed in a directory which name
 	contains spaces.
 
-	* chkconfig.ltx: remove use of macro \srcdir 
+	* chkconfig.ltx: remove use of macro \srcdir
 	(\TestDocClass): change to take two arguments
 	(\DeclareLaTeXClass, \DeclareLinuxDocClass, \DeclareDocBookClass):
 	do not exit after execution
@@ -99,12 +107,12 @@
 
 2004-08-14  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
-	* ui/stdmenus.ui: 
+	* ui/stdmenus.ui:
 	* ui/classic.ui: add LyX menu
 
 2004-08-14  Bennett Helm  <bennett.helm@fandm.edu>
 
-	* bind/mac.bind: new file. This is the Mac flavour bind file, based on 
+	* bind/mac.bind: new file. This is the Mac flavour bind file, based on
 	bindings found in the Mac world.
 
 2004-08-13  LyX Guy  <lasgouttes@lyx.org>
@@ -114,7 +122,7 @@
 2004-08-13  José Matos  <jamatos@lyx.org>
 	* layouts/elsart.layout: fixed its permission settings and readded
 	layouts. Added optional itens as already present in 1.3 version.
-	
+
 2004-08-13  José Matos  <jamatos@lyx.org>
 	* layouts/elsart.layout: removed temporarily to correct the
 	permission settings of the file.
@@ -161,12 +169,12 @@
 
 	* encodings:
 	* languages: implement iso-8859-13 (latin-7) for Latvian and
-	Lithuanian. Also include Icelandic. 
+	Lithuanian. Also include Icelandic.
 
 2004-06-09  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
 	* Makefile.am (dist_*): Use the dist annotation to clean up the
-	Makefile slightly. 
+	Makefile slightly.
 
 2004-06-02  Lars Gullik Bjonnes  <larsbj@gullik.net>
 

@@ -29,6 +29,7 @@
 #include "LColor.h"
 #include "lyxlex.h"
 #include "lyxfont.h"
+#include "mover.h"
 
 #include "graphics/GraphicsTypes.h"
 
@@ -71,6 +72,7 @@ keyword_item lyxrcTags[] = {
 	{ "\\check_lastfiles", LyXRC::RC_CHECKLASTFILES },
 	{ "\\chktex_command", LyXRC::RC_CHKTEX_COMMAND },
 	{ "\\converter", LyXRC::RC_CONVERTER },
+	{ "\\copier", LyXRC::RC_COPIER },
 	{ "\\cursor_follows_scrollbar", LyXRC::RC_CURSOR_FOLLOWS_SCROLLBAR },
 	{ "\\custom_export_command", LyXRC::RC_CUSTOM_EXPORT_COMMAND },
 	{ "\\custom_export_format", LyXRC::RC_CUSTOM_EXPORT_FORMAT },
@@ -964,6 +966,18 @@ int LyXRC::read(LyXLex & lexrc)
 			}
 			break;
 
+		case RC_COPIER: {
+			string fmt, command;
+			if (lexrc.next()) {
+				fmt = lexrc.getString();
+			}
+			if (lexrc.next()) {
+				command = lexrc.getString();
+			}
+			movers.set(fmt, command);
+			break;
+		}
+
 		case RC_CONVERTER: {
 			string from, to, command, flags;
 			if (lexrc.next()) {
@@ -1134,6 +1148,23 @@ void LyXRC::print() const
 	else
 		write(cout, false);
 }
+
+
+struct SameMover {
+	typedef std::pair<std::string, SpecialisedMover> Data;
+
+	SameMover(Data const & comparison)
+		: comparison_(comparison) {}
+
+	bool operator()(Data const & data) const
+	{
+		return data.first == comparison_.first &&
+			data.second.command() == comparison_.second.command();
+	}
+
+private:
+	Data comparison_;
+};
 
 
 void LyXRC::write(ostream & os, bool ignore_system_lyxrc) const
@@ -1915,7 +1946,34 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc) const
 				os << "\\converter \"" << cit->from
 				   << "\" \"" << cit->to << "\" \"\" \"\"\n";
 
+	case RC_COPIER:
+		os << "\n#\n"
+		   << "# COPIERS SECTION ##########################\n"
+		   << "#\n\n";
+
+		// Look for new movers
+		Movers::iterator const sysbegin = system_movers.begin();
+		Movers::iterator const sysend = system_movers.end();
+
+		for (Movers::iterator it = movers.begin(), end = movers.end();
+		     it != end; ++it) {
+			Movers::iterator const sysit =
+				std::find_if(sysbegin, sysend, SameMover(*it));
+			if (sysit == sysend) {
+				std::string const & fmt = it->first;
+				std::string const & command =
+					it->second.command();
+
+				os << "\\copier " << fmt
+				   << " \"" << command << "\"\n";
+			}
+		}
+
+		// We don't actually delete SpecialisedMover(s) from the
+		// map, just clear their 'command', so there's no need
+		// to test for anything else.
 	}
+
 	os.flush();
 }
 

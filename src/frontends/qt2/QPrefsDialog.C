@@ -9,6 +9,7 @@
  */
 
 #include <config.h>
+#include "debug.h"
 #include "qt_helpers.h"
 
 #include "QPrefsDialog.h"
@@ -28,6 +29,7 @@
 #include "ui/QPrefPathsModule.h"
 #include "ui/QPrefSpellcheckerModule.h"
 #include "ui/QPrefConvertersModule.h"
+#include "ui/QPrefCopiersModule.h"
 #include "ui/QPrefFileformatsModule.h"
 #include "ui/QPrefLanguageModule.h"
 #include "ui/QPrefPrinterModule.h"
@@ -74,6 +76,7 @@ QPrefsDialog::QPrefsDialog(QPrefs * form)
 	pathsModule = new QPrefPathsModule(this);
 	spellcheckerModule = new QPrefSpellcheckerModule(this);
 	convertersModule = new QPrefConvertersModule(this);
+	copiersModule = new QPrefCopiersModule(this);
 	fileformatsModule = new QPrefFileformatsModule(this);
 	languageModule = new QPrefLanguageModule(this);
 	printerModule = new QPrefPrinterModule(this);
@@ -104,6 +107,7 @@ QPrefsDialog::QPrefsDialog(QPrefs * form)
 	prefsPS->addPanel(pathsModule, _("Paths"));
 	prefsPS->addPanel(fileformatsModule, _("File formats"));
 	prefsPS->addPanel(convertersModule, _("Converters"));
+	prefsPS->addPanel(copiersModule, _("Copiers"));
 
 	prefsPS->setCurrentPanel(_("User interface"));
 
@@ -176,6 +180,16 @@ QPrefsDialog::QPrefsDialog(QPrefs * form)
 	connect(convertersModule->converterNewPB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
 	connect(convertersModule->converterRemovePB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
 	connect(convertersModule->converterModifyPB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
+
+	connect(copiersModule->copierNewPB, SIGNAL(clicked()), this, SLOT(new_copier()));
+	connect(copiersModule->copierRemovePB, SIGNAL(clicked()), this, SLOT(remove_copier()));
+	connect(copiersModule->copierModifyPB, SIGNAL(clicked()), this, SLOT(modify_copier()));
+	connect(copiersModule->AllCopiersLB, SIGNAL(highlighted(int)), this, SLOT(switch_copierLB(int)));
+	connect(copiersModule->copierFormatCO, SIGNAL(activated(int)), this, SLOT(switch_copierCO(int)));
+	connect(copiersModule->copierNewPB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
+	connect(copiersModule->copierRemovePB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
+	connect(copiersModule->copierModifyPB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
+
 	connect(fileformatsModule->formatNewPB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
 	connect(fileformatsModule->formatRemovePB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
 	connect(fileformatsModule->formatModifyPB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
@@ -356,6 +370,185 @@ void QPrefsDialog::remove_converter()
 	Format const & to(form_->formats().get(convertersModule->converterToCO->currentItem()));
 	form_->converters().erase(from.name(), to.name());
 	updateConverters();
+}
+
+
+void QPrefsDialog::updateCopiers()
+{
+	// The choice widget
+	copiersModule->copierFormatCO->clear();
+
+	for (Formats::const_iterator it = form_->formats().begin(),
+		     end = form_->formats().end();
+	     it != end; ++it) {
+		copiersModule->copierFormatCO->insertItem(toqstr(it->prettyname()));
+	}
+
+	// The browser widget
+	copiersModule->AllCopiersLB->clear();
+
+	for (Movers::iterator it = form_->movers().begin(),
+		     end = form_->movers().end();
+	     it != end; ++it) {
+		std::string const & command = it->second.command();
+		if (command.empty())
+			continue;
+		std::string const & fmt = it->first;
+		std::string const & pretty = form_->formats().prettyName(fmt);
+
+		copiersModule->AllCopiersLB->insertItem(toqstr(pretty));
+	}
+
+	if (copiersModule->AllCopiersLB->currentItem() == -1)
+		copiersModule->AllCopiersLB->setCurrentItem(0);
+}
+
+
+namespace {
+
+struct SamePrettyName {
+	SamePrettyName(string const & n) : pretty_name_(n) {}
+
+	bool operator()(::Format const & fmt) const {
+		return fmt.prettyname() == pretty_name_;
+	}
+
+private:
+	string const pretty_name_;
+};
+
+
+Format const * getFormat(std::string const & prettyname)
+{
+	Formats::const_iterator it = ::formats.begin();
+	Formats::const_iterator const end = ::formats.end();
+	it = std::find_if(it, end, SamePrettyName(prettyname));
+	return it == end ? 0 : &*it;
+}
+
+} // namespace anon
+
+
+void QPrefsDialog::switch_copierLB(int nr)
+{
+	std::string const browser_text =
+		fromqstr(copiersModule->AllCopiersLB->currentText());
+	lyxerr << "switch_copierLB(" << nr << ")\n"
+	       << "browser_text " << browser_text << std::endl;
+	Format const * fmt = getFormat(browser_text);
+	if (fmt == 0)
+		return;
+
+	string const & fmt_name = fmt->name();
+	string const & gui_name = fmt->prettyname();
+	string const & command = form_->movers().command(fmt_name);
+
+	lyxerr << "switch_copierLB(" << nr << ")\n"
+	       << "fmt_name " << fmt_name << '\n'
+	       << "gui_name " << gui_name << '\n'
+	       << "command " << command << std::endl;
+
+	copiersModule->copierED->clear();
+	int const combo_size = copiersModule->copierFormatCO->count();
+	for (int i = 0; i < combo_size; ++i) {
+		QString const qtext = copiersModule->copierFormatCO->text(i);
+		std::string const text = fromqstr(qtext);
+		if (text == gui_name) {
+			copiersModule->copierFormatCO->setCurrentItem(i);
+			copiersModule->copierED->setText(toqstr(command));
+			lyxerr << "found combo item " << i << std::endl;
+			break;
+		}
+	}
+}
+
+
+void QPrefsDialog::switch_copierCO(int nr)
+{
+	std::string const combo_text =
+		fromqstr(copiersModule->copierFormatCO->currentText());
+	lyxerr << "switch_copierCO(" << nr << ")\n"
+	       << "combo_text " << combo_text << std::endl;
+	Format const * fmt = getFormat(combo_text);
+	if (fmt == 0)
+		return;
+
+	string const & fmt_name = fmt->name();
+	string const & gui_name = fmt->prettyname();
+	string const & command = form_->movers().command(fmt_name);
+
+	lyxerr << "switch_copierCO(" << nr << ")\n"
+	       << "fmt_name " << fmt_name << '\n'
+	       << "gui_name " << gui_name << '\n'
+	       << "command " << command << std::endl;
+
+	copiersModule->copierED->setText(toqstr(command));
+
+	int const index = copiersModule->AllCopiersLB->currentItem();
+	if (index >= 0)
+		copiersModule->AllCopiersLB->setSelected(index, false);
+
+	int const browser_size = copiersModule->AllCopiersLB->count();
+	for (int i = 0; i < browser_size; ++i) {
+		QString const qtext = copiersModule->AllCopiersLB->text(i);
+		std::string const text = fromqstr(qtext);
+		if (text == gui_name) {
+			copiersModule->AllCopiersLB->setSelected(i, true);
+			int top = std::max(i - 5, 0);
+			copiersModule->AllCopiersLB->setTopItem(top);
+			break;
+		}
+	}
+}
+
+
+void QPrefsDialog::new_copier()
+{
+	std::string const combo_text =
+		fromqstr(copiersModule->copierFormatCO->currentText());
+	Format const * fmt = getFormat(combo_text);
+	if (fmt == 0)
+		return;
+
+	string const command = fromqstr(copiersModule->copierED->text());
+	if (command.empty())
+		return;
+
+	form_->movers().set(fmt->name(), command);
+
+	updateCopiers();
+	int const last = copiersModule->AllCopiersLB->count() - 1;
+	copiersModule->AllCopiersLB->setCurrentItem(last);
+}
+
+
+void QPrefsDialog::modify_copier()
+{
+	std::string const combo_text =
+		fromqstr(copiersModule->copierFormatCO->currentText());
+	Format const * fmt = getFormat(combo_text);
+	if (fmt == 0)
+		return;
+
+	string const command = fromqstr(copiersModule->copierED->text());
+	form_->movers().set(fmt->name(), command);
+
+	updateCopiers();
+}
+
+
+void QPrefsDialog::remove_copier()
+{
+	std::string const combo_text =
+		fromqstr(copiersModule->copierFormatCO->currentText());
+	Format const * fmt = getFormat(combo_text);
+	if (fmt == 0)
+		return;
+
+	string const & fmt_name = fmt->name();
+	form_->movers().set(fmt_name, string());
+
+	updateCopiers();
 }
 
 

@@ -1,7 +1,13 @@
+2004-10-26  Angus Leeming  <leeming@lyx.org>
+
+	* ExternalSupport.C (updateExternal):
+	* insetgraphics.C (copyFileIfNeeded): use the new Movers to move external
+	files to the temp directory.
+
 2004-10-25  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
-	* insetfoot.C (latex): use \thanks instead of \footnote on titlepage 
-	layouts. This fixes problems with the memoir class (which does not 
+	* insetfoot.C (latex): use \thanks instead of \footnote on titlepage
+	layouts. This fixes problems with the memoir class (which does not
 	allow \footnote) [bug 1677]
 
 2004-10-24  Andreas Vox  <vox@isp.uni-luebeck.de>
@@ -44,16 +50,16 @@
 
 2004-09-29  Andreas Vox  <vox@isp.uni-luebeck.de>
 
-	* insetgraphics.C (createDocBookAttribute, docbook) : 
+	* insetgraphics.C (createDocBookAttribute, docbook) :
 	convert scale, width, height and keepaspectratio to Docbook standards)
-	
+
 	* insetgraphics.[hC] (toDocbookLength): new method to convert TeX units
 	to Docbook units where possible.
 
 2004-09-29  Andreas Vox  <vox@isp.uni-luebeck.de>
 
-	* insetgraphics.C (docbook): create inlinegraphic instead of graphic. 
-	
+	* insetgraphics.C (docbook): create inlinegraphic instead of graphic.
+
 	* insetgraphics.[hC] (createDocBookAttributes): Export parameters
 	as attributes with new method for docbook.
 

@@ -27,6 +27,7 @@ class QPrefDisplayModule;
 class QPrefPathsModule;
 class QPrefSpellcheckerModule;
 class QPrefConvertersModule;
+class QPrefCopiersModule;
 class QPrefFileformatsModule;
 class QPrefLanguageModule;
 class QPrefPrinterModule;
@@ -48,7 +49,7 @@ public:
 	~QPrefsDialog();
 
 	void updateConverters();
-
+	void updateCopiers();
 	void updateFormats();
 
 public slots:
@@ -63,6 +64,12 @@ public slots:
 	void new_converter();
 	void modify_converter();
 	void remove_converter();
+
+	void switch_copierLB(int nr);
+	void switch_copierCO(int nr);
+	void new_copier();
+	void modify_copier();
+	void remove_copier();
 
 	void change_color();
 
@@ -98,6 +105,7 @@ private:
 	QPrefPathsModule * pathsModule;
 	QPrefSpellcheckerModule * spellcheckerModule;
 	QPrefConvertersModule * convertersModule;
+	QPrefCopiersModule * copiersModule;
 	QPrefFileformatsModule * fileformatsModule;
 	QPrefLanguageModule * languageModule;
 	QPrefPrinterModule * printerModule;

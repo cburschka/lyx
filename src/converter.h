@@ -142,7 +142,9 @@ private:
 	///
 	std::string latex_command_;
 	///
-	bool move(std::string const & from, std::string const & to, bool copy);
+	bool move(std::string const & fmt,
+		  std::string const & from, std::string const & to,
+		  bool copy);
 	///
 	Graph G_;
 };

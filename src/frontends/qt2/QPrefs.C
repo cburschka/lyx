@@ -93,6 +93,12 @@ Formats & QPrefs::formats()
 }
 
 
+Movers & QPrefs::movers()
+{
+	return controller().movers();
+}
+
+
 void QPrefs::build_dialog()
 {
 	dialog_.reset(new QPrefsDialog(this));
@@ -626,8 +632,8 @@ void QPrefs::update_contents()
 	fontmod->screenHugerED->setText(toqstr(tostr(rc.font_sizes[LyXFont::SIZE_HUGER])));
 
 	dialog_->updateFormats();
-
 	dialog_->updateConverters();
+	dialog_->updateCopiers();
 }
 
 } // namespace frontend

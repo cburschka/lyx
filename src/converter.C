@@ -20,6 +20,7 @@
 #include "gettext.h"
 #include "language.h"
 #include "LaTeX.h"
+#include "mover.h"
 
 #include "frontends/Alert.h"
 
@@ -42,7 +43,6 @@ using lyx::support::OnlyPath;
 using lyx::support::Path;
 using lyx::support::prefixIs;
 using lyx::support::QuoteName;
-using lyx::support::rename;
 using lyx::support::split;
 using lyx::support::subst;
 using lyx::support::Systemcall;
@@ -283,7 +283,7 @@ bool Converters::convert(Buffer const * buffer,
 				  formats.extension(to_format));
 
 	if (from_format == to_format)
-		return move(from_file, to_file, false);
+		return move(from_format, from_file, to_file, false);
 
 	Graph::EdgePath edgepath = getPath(from_format, to_format);
 	if (edgepath.empty()) {
@@ -374,7 +374,8 @@ bool Converters::convert(Buffer const * buffer,
 				res = one.startscript(type, command);
 
 			if (!real_outfile.empty()) {
-				if (!rename(outfile, real_outfile))
+				Mover const & mover = movers(conv.to);
+				if (!mover.rename(outfile, real_outfile))
 					res = -1;
 				else
 					lyxerr[Debug::FILES]
@@ -414,7 +415,6 @@ bool Converters::convert(Buffer const * buffer,
 	if (conv.To->dummy())
 		return true;
 
-
 	if (!conv.result_dir.empty()) {
 		to_file = AddName(subst(conv.result_dir, token_base, to_base),
 				  subst(conv.result_file,
@@ -424,7 +424,8 @@ bool Converters::convert(Buffer const * buffer,
 					    token_base, from_base);
 			string to = subst(conv.result_dir,
 					  token_base, to_base);
-			if (!rename(from, to)) {
+			Mover const & mover = movers(conv.from);
+			if (!mover.rename(from, to)) {
 				Alert::error(_("Cannot convert file"),
 					bformat(_("Could not move a temporary file from %1$s to %2$s."),
 						from, to));
@@ -433,13 +434,14 @@ bool Converters::convert(Buffer const * buffer,
 		}
 		return true;
 	} else
-		return move(outfile, to_file, conv.latex);
+		return move(conv.to, outfile, to_file, conv.latex);
 }
 
 
 // If from = /path/file.ext and to = /path2/file2.ext2 then this method
 // moves each /path/file*.ext file to /path2/file2*.ext2'
-bool Converters::move(string const & from, string const & to, bool copy)
+bool Converters::move(string const & fmt,
+		      string const & from, string const & to, bool copy)
 {
 	if (from == to)
 		return true;
@@ -459,9 +461,11 @@ bool Converters::move(string const & from, string const & to, bool copy)
 			to2 = ChangeExtension(to2, to_extension);
 			lyxerr[Debug::FILES] << "moving " << from2
 					     << " to " << to2 << endl;
-			bool const moved = (copy)
-				? lyx::support::copy(from2, to2)
-				: rename(from2, to2);
+
+			Mover const & mover = movers(fmt);
+			bool const moved = copy
+				? mover.copy(from2, to2)
+				: mover.rename(from2, to2);
 			if (!moved && no_errors) {
 				Alert::error(_("Cannot convert file"),
 					bformat(_("Could not move a temporary file from %1$s to %2$s."),
@@ -531,7 +535,7 @@ bool Converters::runLaTeX(Buffer const & buffer, string const & command,
 {
 	buffer.busy(true);
 	buffer.message(_("Running LaTeX..."));
-	
+
 	runparams.document_language = buffer.params().language->babel();
 
 	// do the LaTeX run(s)

@@ -1,3 +1,20 @@
+2004-10-26  Angus Leeming  <leeming@lyx.org>
+
+	* Makefile.am: add mover.[Ch].
+
+	* converter.C (convert, move): use the new Movers to move external
+	files to the temp directory.
+
+	* lyx_main.C (init): ensure that the global system_movers data
+	is initialised.
+
+	* lyxrc.[Ch]: code to read and write 'copiers' from/to the
+	preferences file.
+
+	* mover.[Ch]: new files, defining a Mover as a utility to move an
+	external file between directories and, if necessary, manipulate this
+	file using a helper script.
+
 2004-10-25  José Matos  <jamatos@lyx.org>
 
 	* output_docbook.C (makeCommand): merge two if's that tested the same condition.
@@ -28,7 +45,7 @@
 
 	* output_docbook.C (makeParagraph, makeEnvironment, makeCommand):
 	use the new functions to fix cleanly the support for descriptions.
-	
+
 2004-10-24  José Matos  <jamatos@lyx.org>
 
 	* buffer.C (makeLinuxDocFile, makeDocBookFile):
@@ -73,7 +90,7 @@
 
 	* bufferlist.C (previous, next): new methods
 
-	* lfuns.h: 
+	* lfuns.h:
 	* LyXAction.C (init): add LFUN_NEXTBUFFER and LFUN_PREVIOUSBUFFER
 
 2004-10-18  Andreas Vox  <vox@isp.uni-luebeck.de>
@@ -93,13 +110,13 @@
 2004-10-13  José Matos  <jamatos@lyx.org>
 
 	* output_docbook.C (docbookParagraphs): fix closing tags in the
-	end of the document. 
+	end of the document.
 
 2004-10-09  José Matos  <jamatos@lyx.org>
 
 	* buffer.C: format up to 237.
 	* bufferparams.C (write): use tostr to convert booleans to strings.
-	
+
 2004-10-08  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* lyxrc.C: add to tooltip about using xindy to prefs (xforms)

@@ -21,6 +21,7 @@
 #include "debug.h"
 #include "exporter.h"
 #include "format.h"
+#include "mover.h"
 
 #include "support/filetools.h"
 #include "support/forkedcall.h"
@@ -204,7 +205,8 @@ void updateExternal(InsetExternalParams const & params,
 		unsigned long const temp_checksum = support::sum(temp_file);
 
 		if (from_checksum != temp_checksum) {
-			if (!support::copy(abs_from_file, temp_file)) {
+			Mover const & mover = movers(from_format);
+			if (!mover.copy(abs_from_file, temp_file)) {
 				lyxerr[Debug::EXTERNAL]
 					<< "external::updateExternal. "
 					<< "Unable to copy "

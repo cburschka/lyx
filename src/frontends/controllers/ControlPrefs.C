@@ -52,6 +52,7 @@ bool ControlPrefs::initialiseParams(std::string const &)
 	formats_ = ::formats;
 	converters_ = ::converters;
 	converters_.update(formats_);
+	movers_ = ::movers;
 	colors_.clear();
 	redraw_gui_ = false;
 	update_screen_font_ = false;
@@ -74,6 +75,8 @@ void ControlPrefs::dispatchParams()
 	::converters = converters_;
 	::converters.update(::formats);
 	::converters.buildGraph();
+
+	::movers = movers_;
 
 	vector<string>::const_iterator it = colors_.begin();
 	vector<string>::const_iterator const end = colors_.end();

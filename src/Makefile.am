@@ -226,6 +226,8 @@ lyx_SOURCES = \
 	messages.h \
 	metricsinfo.C \
 	metricsinfo.h \
+	mover.C \
+	mover.h \
 	output.C \
 	output.h \
 	outputparams.C \

@@ -67,6 +67,7 @@ TODO
 #include "lyxlength.h"
 #include "lyxlex.h"
 #include "metricsinfo.h"
+#include "mover.h"
 #include "outputparams.h"
 
 #include "frontends/Alert.h"
@@ -454,7 +455,8 @@ copyFileIfNeeded(string const & file_in, string const & file_out)
 		// Nothing to do...
 		return std::make_pair(IDENTICAL_CONTENTS, file_out);
 
-	bool const success = support::copy(file_in, file_out);
+	Mover const & mover = movers(getExtFromContents(file_in));
+	bool const success = mover.copy(file_in, file_out);
 	if (!success) {
 		lyxerr[Debug::GRAPHICS]
 			<< support::bformat(_("Could not copy the file\n%1$s\n"
@@ -796,7 +798,7 @@ int writeImageObject(char * format, ostream& os, OutputParams const & runparams,
 		if (runparams.flavor != OutputParams::XML) {
 			os << "<![ %output.print." << format << "; [" << std::endl;
 		}
-		os <<"<imageobject><imagedata fileref=\"&" 
+		os <<"<imageobject><imagedata fileref=\"&"
 		   << graphic_label << ";." << format << "\" " << attributes ;
 		if (runparams.flavor == OutputParams::XML) {
 			os <<  " role=\"" << format << "\"/>" ;
@@ -831,14 +833,14 @@ int InsetGraphics::docbook(Buffer const &, ostream & os,
 						      params().filename.absFilename());
 	}
 	os << "<inlinemediaobject>";
-	
+
 	int r = 0;
 	string attributes = createDocBookAttributes();
 	r += writeImageObject("png", os, runparams, graphic_label, attributes);
 	r += writeImageObject("pdf", os, runparams, graphic_label, attributes);
 	r += writeImageObject("eps", os, runparams, graphic_label, attributes);
 	r += writeImageObject("bmp", os, runparams, graphic_label, attributes);
-	
+
 	os << "</inlinemediaobject>";
 	return r;
 }

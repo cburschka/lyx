@@ -21,6 +21,7 @@
 
 class Converters;
 class Formats;
+class Movers;
 
 class Dialogs;
 class LyXRC;
@@ -33,6 +34,7 @@ class ControlPrefs;
 struct FD_preferences;
 struct FD_preferences_colors;
 struct FD_preferences_converters;
+struct FD_preferences_copiers;
 struct FD_preferences_formats;
 struct FD_preferences_inputs_misc;
 struct FD_preferences_interface;
@@ -184,6 +186,42 @@ private:
 	};
 	///
 	friend class Converters;
+
+	///
+	class Copiers {
+	public:
+		///
+		Copiers(FormPreferences & p);
+		///
+		FD_preferences_copiers const * dialog();
+		///
+		void build();
+		///
+		std::string const feedback(FL_OBJECT const * const) const;
+		///
+		bool input(FL_OBJECT const * const);
+		///
+		void update();
+
+	private:
+		///
+		bool Add();
+		///
+		bool Browser();
+		///
+		bool Erase();
+		///
+		bool Input();
+		///
+		::Movers & movers();
+
+		///
+		FormPreferences & parent_;
+		///
+		boost::scoped_ptr<FD_preferences_copiers> dialog_;
+	};
+	///
+	friend class Copiers;
 
 	///
 	class Formats {
@@ -492,17 +530,19 @@ private:
 	///
 	Converters converters_;
 	///
-	InputsMisc inputs_misc_;
+	Copiers copiers_;
 	///
 	Formats formats_;
+	///
+	Identity identity_;
+	///
+	InputsMisc inputs_misc_;
 	///
 	Interface interface_;
 	///
 	Language language_;
 	///
 	LnFmisc lnf_misc_;
-	///
-	Identity identity_;
 	///
 	OutputsMisc outputs_misc_;
 	///

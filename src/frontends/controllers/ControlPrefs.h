@@ -16,6 +16,7 @@
 #include "converter.h"
 #include "format.h"
 #include "lyxrc.h"
+#include "mover.h"
 
 #include <string>
 #include <vector>
@@ -45,6 +46,9 @@ public:
 
 	Formats & formats() { return formats_; }
 	Formats const & formats() const { return formats_; }
+
+	Movers & movers() { return movers_; }
+	Movers const & movers() const { return movers_; }
 
 	/// various file pickers
 	std::string const browsebind(std::string const & file) const;
@@ -78,6 +82,9 @@ private:
 
 	/// temporary formats
 	Formats formats_;
+
+	/// temporary movers
+	Movers movers_;
 
 	/// A list of colors to be dispatched
 	std::vector<std::string> colors_;

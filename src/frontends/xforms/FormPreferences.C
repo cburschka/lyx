@@ -93,13 +93,12 @@ typedef FormController<ControlPrefs, FormView<FD_preferences> > base_class;
 
 FormPreferences::FormPreferences(Dialog & parent)
 	: base_class(parent, _("Preferences"), scalableTabfolders),
-	  colors_(*this), converters_(*this), inputs_misc_(*this),
-	  formats_(*this), interface_(*this), language_(*this),
-	  lnf_misc_(*this), identity_(*this), outputs_misc_(*this),
-	  paths_(*this), printer_(*this), screen_fonts_(*this),
-	  spelloptions_(*this)
-{
-}
+	  colors_(*this), converters_(*this), copiers_(*this),
+	  formats_(*this), identity_(*this), inputs_misc_(*this),
+	  interface_(*this), language_(*this), lnf_misc_(*this),
+	  outputs_misc_(*this), paths_(*this), printer_(*this),
+	  screen_fonts_(*this), spelloptions_(*this)
+{}
 
 
 void FormPreferences::redraw()
@@ -169,6 +168,7 @@ void FormPreferences::build()
 	// these will become nested tabfolders
 	colors_.build();
 	converters_.build();
+	copiers_.build();
 	formats_.build();
 	inputs_misc_.build();
 	interface_.build();
@@ -245,6 +245,9 @@ void FormPreferences::build()
 	fl_addto_tabfolder(converters_tab_->tabfolder_inner,
 			   _("Converters").c_str(),
 			   converters_.dialog()->form);
+	fl_addto_tabfolder(converters_tab_->tabfolder_inner,
+			   _("Copiers").c_str(),
+			   copiers_.dialog()->form);
 
 	// then build inputs
 	// Paths should probably go in a few inner_tab called Files
@@ -317,6 +320,8 @@ string const FormPreferences::getFeedback(FL_OBJECT * ob)
 		return colors_.feedback(ob);
 	if (ob->form->fdui == converters_.dialog())
 		return converters_.feedback(ob);
+	if (ob->form->fdui == copiers_.dialog())
+		return copiers_.feedback(ob);
 	if (ob->form->fdui == formats_.dialog())
 		return formats_.feedback(ob);
 	if (ob->form->fdui == inputs_misc_.dialog())
@@ -356,6 +361,8 @@ ButtonPolicy::SMInput FormPreferences::input(FL_OBJECT * ob, long)
 		colors_.input(ob);
 	} else if (ob->form->fdui == converters_.dialog()) {
 		valid = converters_.input(ob);
+	} else if (ob->form->fdui == copiers_.dialog()) {
+		valid = copiers_.input(ob);
 	} else if (ob->form->fdui == formats_.dialog()) {
 		valid = formats_.input(ob);
 	} else if  (ob->form->fdui == interface_.dialog()) {
@@ -384,6 +391,7 @@ void FormPreferences::update()
 	colors_.update();
 	formats_.update();   // Must be before converters_.update()
 	converters_.update();
+	copiers_.update();
 	inputs_misc_.update(rc);
 	interface_.update(rc);
 	language_.update(rc);
@@ -968,6 +976,292 @@ void FormPreferences::Converters::UpdateChoices()
 
 	fl_clear_choice(dialog_->choice_to);
 	fl_addto_choice(dialog_->choice_to, choice.c_str());
+}
+
+
+FormPreferences::Copiers::Copiers(FormPreferences & p)
+	: parent_(p)
+{}
+
+
+FD_preferences_copiers const * FormPreferences::Copiers::dialog()
+{
+	return dialog_.get();
+}
+
+
+::Movers & FormPreferences::Copiers::movers()
+{
+	return parent_.controller().movers();
+}
+
+
+void FormPreferences::Copiers::build()
+{
+	dialog_.reset(build_preferences_copiers(&parent_));
+
+	fl_set_input_return(dialog_->input_copier, FL_RETURN_CHANGED);
+
+	// set up the feedback mechanism
+	setPrehandler(dialog_->browser_all);
+	setPrehandler(dialog_->button_delete);
+	setPrehandler(dialog_->button_add);
+	setPrehandler(dialog_->choice_format);
+	setPrehandler(dialog_->input_copier);
+}
+
+
+string const
+FormPreferences::Copiers::feedback(FL_OBJECT const * const ob) const
+{
+	if (ob == dialog_->browser_all)
+		return _("All explicitly defined copiers for LyX");
+
+	if (ob == dialog_->choice_format)
+		return _("Copier for this format");
+
+	if (ob == dialog_->input_copier)
+
+		return _("The command used to copy the file. "
+			 "$$i is the \"from\" file name and "
+			 "$$o is the \"to\" file name.\n"
+			 "$$s can be used as path to "
+			 "LyX's own collection of scripts.");
+
+	if (ob == dialog_->button_delete)
+		return _("Remove the current copier from the list of available "
+			 "copiers. Note: you must then \"Apply\" the change.");
+
+	if (ob == dialog_->button_add) {
+		if (string(ob->label) == _("Add"))
+			return _("Add the current copier to the list of available "
+				 "copiers. Note: you must then \"Apply\" the change.");
+		else
+			return _("Modify the contents of the current copier. "
+				 "Note: you must then \"Apply\" the change.");
+	}
+
+	return string();
+}
+
+
+bool FormPreferences::Copiers::input(FL_OBJECT const * const ob)
+{
+	if (ob == dialog_->browser_all)
+		return Browser();
+
+	if (ob == dialog_->choice_format
+	    || ob == dialog_->input_copier)
+		return Input();
+
+	if (ob == dialog_->button_add)
+		return Add();
+
+	if (ob == dialog_->button_delete)
+		return Erase();
+
+	return true;
+}
+
+
+void FormPreferences::Copiers::update()
+{
+	// Build data for the browser widget
+	Movers::iterator const begin = movers().begin();
+	Movers::iterator const end = movers().end();
+
+	vector<string> fmts;
+	fmts.reserve(std::distance(begin, end));
+	for (Movers::iterator it = begin; it != end; ++it) {
+		std::string const & command = it->second.command();
+		if (command.empty())
+			continue;
+		std::string const & fmt = it->first;
+		fmts.push_back(::formats.prettyName(fmt));
+	}
+
+	std::sort(fmts.begin(), fmts.end());
+
+	// Build data for the choice widget
+	string choice;
+	for (::Formats::const_iterator it = ::formats.begin();
+	     it != ::formats.end(); ++it) {
+		if (!choice.empty())
+			choice += " | ";
+		else
+			choice += ' ';
+		choice += it->prettyname();
+	}
+	choice += ' ';
+
+	// The input widget
+	fl_freeze_form(dialog_->form);
+	fl_set_input(dialog_->input_copier, "");
+
+	// The browser widget
+	fl_clear_browser(dialog_->browser_all);
+
+	vector<string>::const_iterator it = fmts.begin();
+	vector<string>::const_iterator const fmts_end = fmts.end();
+	for (; it != fmts_end; ++it)
+		fl_addto_browser(dialog_->browser_all, it->c_str());
+
+	// The choice widget
+	fl_clear_choice(dialog_->choice_format);
+	fl_addto_choice(dialog_->choice_format, choice.c_str());
+	fl_set_choice(dialog_->choice_format, 1);
+
+	Input();
+	fl_unfreeze_form(dialog_->form);
+}
+
+
+namespace {
+
+struct SamePrettyName {
+	SamePrettyName(string const & n) : pretty_name_(n) {}
+
+	bool operator()(::Format const & fmt) const {
+		return fmt.prettyname() == pretty_name_;
+	}
+
+private:
+	string const pretty_name_;
+};
+
+
+::Format const * getFormat(std::string const & prettyname)
+{
+	::Formats::const_iterator it = ::formats.begin();
+	::Formats::const_iterator const end = ::formats.end();
+	it = std::find_if(it, end, SamePrettyName(prettyname));
+	return it == end ? 0 : &*it;
+}
+
+} // namespace anon
+
+
+bool FormPreferences::Copiers::Add()
+{
+	::Format const * fmt = getFormat(getString(dialog_->choice_format));
+	if (fmt == 0)
+		return false;
+
+	string const command = getString(dialog_->input_copier);
+	if (command.empty())
+		return false;
+
+	fl_freeze_form(dialog_->form);
+
+	movers().set(fmt->name(), command);
+	update();
+	setEnabled(dialog_->button_add, false);
+
+	fl_unfreeze_form(dialog_->form);
+	return true;
+}
+
+
+bool FormPreferences::Copiers::Browser()
+{
+	int const i = fl_get_browser(dialog_->browser_all);
+	if (i <= 0) return false;
+
+	::Format const * fmt = getFormat(getString(dialog_->browser_all, i));
+	if (fmt == 0)
+		return false;
+
+	string const & fmt_name = fmt->name();
+	string const & gui_name = fmt->prettyname();
+	string const & command = movers().command(fmt_name);
+
+	fl_freeze_form(dialog_->form);
+
+	int const choice_size = fl_get_choice_maxitems(dialog_->choice_format);
+	for (int i = 1; i <= choice_size; ++i) {
+		char const * const c_str =
+			fl_get_choice_item_text(dialog_->choice_format, i);
+		string const line = c_str ? trim(c_str) : string();
+		if (line == gui_name) {
+			fl_set_choice(dialog_->choice_format, i);
+			break;
+		}
+	}
+
+	fl_set_input(dialog_->input_copier, command.c_str());
+
+	fl_set_object_label(dialog_->button_add, idex(_("Modify|#M")).c_str());
+	fl_set_button_shortcut(dialog_->button_add,
+			       scex(_("Modify|#M")).c_str(), 1);
+
+	setEnabled(dialog_->button_add,    false);
+	setEnabled(dialog_->button_delete, true);
+
+	fl_unfreeze_form(dialog_->form);
+	return false;
+}
+
+
+bool FormPreferences::Copiers::Erase()
+{
+	::Format const * fmt = getFormat(getString(dialog_->choice_format));
+	if (fmt == 0)
+		return false;
+
+	string const & fmt_name = fmt->name();
+
+	movers().set(fmt_name, string());
+	update();
+	return true;
+}
+
+
+bool FormPreferences::Copiers::Input()
+{
+	::Format const * fmt = getFormat(getString(dialog_->choice_format));
+	if (fmt == 0)
+		return false;
+
+	string const & gui_name = fmt->prettyname();
+	string const command = getString(dialog_->input_copier);
+
+	fl_freeze_form(dialog_->form);
+	fl_deselect_browser(dialog_->browser_all);
+	bool found_line = false;
+	int const browser_size = fl_get_browser_maxline(dialog_->browser_all);
+	for (int i = 1; i <= browser_size; ++i) {
+		char const * const c_str =
+			fl_get_browser_line(dialog_->browser_all, i);
+		string const line = c_str ? trim(c_str) : string();
+		if (line == gui_name) {
+			fl_select_browser_line(dialog_->browser_all, i);
+			int top = max(i-5, 1);
+			fl_set_browser_topline(dialog_->browser_all, top);
+			found_line = true;
+			break;
+		}
+	}
+
+	if (!found_line) {
+		fl_set_object_label(dialog_->button_add,
+				    idex(_("Add|#A")).c_str());
+		fl_set_button_shortcut(dialog_->button_add,
+				       scex(_("Add|#A")).c_str(), 1);
+
+		setEnabled(dialog_->button_delete, false);
+	} else {
+		fl_set_object_label(dialog_->button_add,
+				    idex(_("Modify|#M")).c_str());
+		fl_set_button_shortcut(dialog_->button_add,
+				       scex(_("Modify|#M")).c_str(), 1);
+
+		setEnabled(dialog_->button_delete, true);
+	}
+
+	setEnabled(dialog_->button_add, !command.empty());
+
+	fl_unfreeze_form(dialog_->form);
+	return false;
 }
 
 

@@ -17,6 +17,7 @@
 
 class Converters;
 class Formats;
+class Movers;
 
 namespace lyx {
 namespace frontend {
@@ -45,6 +46,7 @@ private:
 
 	Converters & converters();
 	Formats & formats();
+	Movers & movers();
 
 	/// languages
 	std::vector<std::string> lang_;

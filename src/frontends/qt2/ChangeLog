@@ -1,3 +1,11 @@
+2004-10-26  Angus Leeming  <leeming@lyx.org>
+
+	* Makefile.dialogs:
+	* QPrefs.[Ch]:
+	* QPrefsDialog.[Ch]:
+	* ui/QPrefCopierModule.ui: enable the Movers to be modified from the
+	preferences dialog.
+
 2004-10-18  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* ui/QPrefConvertersModule.ui: Add translation context to "To:"
@@ -6,7 +14,7 @@
 2004-10-11  Andreas Vox  <vox@isp.uni-luebeck.de>
 
 	* qfont_loader.C (initFontPath, addToFontPath): two new static
-	member functions that replace addFontPath 
+	member functions that replace addFontPath
 	(available): remove special MacOSX code; use addToFontPath
 
 	* lyx_gui.C (parse_init): add call to qfont_loader::initFontPath()
