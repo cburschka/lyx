@@ -332,7 +332,7 @@ void XFormsToolbar::add(FuncRequest const & func, string const & tooltip)
 			gravity = NorthEastGravity;
 		else if (position_ == XFormsView::Bottom)
 			gravity = SouthWestGravity;
-		
+
 		fl_set_object_gravity(obj, gravity, gravity);
 
 		Funcs::iterator fit = funcs.insert(funcs.end(), func);
