@@ -26,49 +26,83 @@
 class LyXTable  {
 public:
     // Are the values of these enums important? (Lgb)
+    ///
     enum {
+	///
 	APPEND_ROW = 0,
+	///
 	APPEND_COLUMN = 1,
+	///
 	DELETE_ROW = 2,
+	///
 	DELETE_COLUMN = 3,
+	///
 	TOGGLE_LINE_TOP = 4,
+	///
 	TOGGLE_LINE_BOTTOM = 5,
+	///
 	TOGGLE_LINE_LEFT = 6,
+	///
 	TOGGLE_LINE_RIGHT = 7,
+	///
 	ALIGN_LEFT = 8, // what are these alignment enums used for?
+	///
 	ALIGN_RIGHT = 9,
+	///
 	ALIGN_CENTER = 10,
+	///
 	DELETE_TABLE = 11,
+	///
 	MULTICOLUMN = 12,
+	///
 	SET_ALL_LINES = 13,
+	///
 	UNSET_ALL_LINES = 14,
+	///
 	SET_LONGTABLE = 15,
+	///
 	UNSET_LONGTABLE = 16,
+	///
 	SET_PWIDTH = 17,
+	///
 	APPEND_CONT_ROW = 18,
+	///
 	SET_ROTATE_TABLE = 19,
+	///
 	UNSET_ROTATE_TABLE = 20,
+	///
 	SET_ROTATE_CELL = 21,
+	///
 	UNSET_ROTATE_CELL = 22,
+	///
 	SET_LINEBREAKS = 23,
+	///
 	SET_LTHEAD = 24,
+	///
 	SET_LTFIRSTHEAD = 25,
+	///
 	SET_LTFOOT = 26,
+	///
 	SET_LTLASTFOOT = 27,
+	///
 	SET_LTNEWPAGE = 28,
+	///
 	SET_SPECIAL_COLUMN = 29,
+	///
 	SET_SPECIAL_MULTI = 30
     };
-
+    ///
     enum {
+	///
 	CELL_NORMAL = 0,
+	///
 	CELL_BEGIN_OF_MULTICOLUMN = 1,
+	///
 	CELL_PART_OF_MULTICOLUMN = 2
     };
     /* konstruktor */
     ///
     LyXTable(int columns_arg, int rows_arg);
-    ///
     ///
     LyXTable(LyXTable const &);
     ///
@@ -171,7 +205,7 @@ public:
     ///
     void Reinit();
 
-	///
+    ///
     void Init(int columns_arg, int rows_arg);
 
     ///
@@ -181,9 +215,10 @@ public:
     ///
     int Latex(std::ostream &);
 
-    // cell <0 will tex the preamble
-    // returns the number of printed newlines
-    ///
+    /**
+       @param cell < 0 will tex the preamble
+       @return the number of printed newlines
+    */
     int TexEndOfCell(std::ostream &, int cell);
     ///
     int DocBookEndOfCell(std::ostream &, int cell, int & depth);
@@ -230,8 +265,9 @@ public:
     void AppendContRow(int cell);
     ///
     bool IsContRow(int cell);
-    /// returns the number of the cell which continues
-    /// or -1 if no ContRow
+    /**
+       @return number of the cell which coninues or -1 if no ContRow
+    */
     int CellHasContRow(int cell);
     ///
     bool RowHasContRow(int cell);
@@ -251,8 +287,8 @@ public:
     void SetLinebreaks(int cell, bool what);
     ///
     bool Linebreaks(int cell);
-    ///
-    /// Long Table Options
+    //
+    // Long Table Options
     ///
     void SetLTHead(int cell, bool first);
     ///
@@ -269,9 +305,7 @@ public:
     void SetLTNewPage(int cell, bool what);
     ///
     bool LTNewPage(int cell);
-    ///
-
-private: //////////////////////////////////////////////////////////////////
+private:
     ///
     struct cellstruct {
 	///
@@ -313,9 +347,13 @@ private: //////////////////////////////////////////////////////////////////
         rowstruct & operator=(rowstruct const &);
 	///
 	bool top_line;
+	///
 	bool bottom_line;
+	///
 	bool is_cont_row;
+	///
         int ascent_of_row;
+	///
         int descent_of_row;
 	/// This are for longtables only
 	bool newpage;
@@ -330,10 +368,15 @@ private: //////////////////////////////////////////////////////////////////
         columnstruct & operator=(columnstruct const &);
 	///
 	int alignment; // add approp. signedness
+	///
 	bool left_line;
+	///
 	bool right_line;
+	///
 	int  width_of_column;
+	///
 	string p_width;
+	///
 	string align_special;
     };
     ///
@@ -350,21 +393,25 @@ private: //////////////////////////////////////////////////////////////////
     cellstruct ** cell_info;
     ///
     int width_of_table;
+    //
+    // for long tables
+    /// row of endhead
+    int endhead;
+    /// row of endfirst head
+    int endfirsthead;
+    /// row of endfoot
+    int endfoot;
+    /// row of endlastfoot
+    int endlastfoot;
     ///
-    /// for long tables
-    ///
-    int endhead; // row of endhead
-    int endfirsthead; // row of endfirsthead
-    int endfoot; // row of endfoot
-    int endlastfoot; // row of endlastfoot
-    ///
-
     void set_row_column_number_info();
     /// Returns true if a complete update is necessary, otherwise false
     bool SetWidthOfMulticolCell(int cell, int new_width);
+    ///
     void recalculateMulticolCells(int cell, int new_width);
     /// Returns true if change
     bool calculate_width_of_column(int column);
+    ///
     bool calculate_width_of_column_NMC(int column); // no multi cells
     ///
     void calculate_width_of_table();

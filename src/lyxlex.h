@@ -24,11 +24,10 @@ struct keyword_item {
 	short code;
 };
 
-/*@Doc:
-  Generalized simple lexical analizer.
-  It can be used for simple syntax parsers, like lyxrc,
-  texclass and others to come.
-  See lyxrc.C for an example of usage.
+/** Generalized simple lexical analizer.
+    It can be used for simple syntax parsers, like lyxrc,
+    texclass and others to come.
+    @see lyxrc.C for an example of usage.
   */
 class LyXLex : public noncopyable { 
 public:
@@ -64,13 +63,14 @@ public:
 	int lex();
 
 	/** Just read athe next word. If esc is true remember that
-	  some chars might be escaped: "\ atleast */
+	    some chars might be escaped: "\ atleast
+	*/
 	bool next(bool esc = false);
 
 	/** Read next token. This one is almost the same as next,
-	  but it will consider " as a regular character and always
-	  split a word if it contains a backslash.
-	  */
+	    but it will consider " as a regular character and always
+	    split a word if it contains a backslash.
+	*/
 	bool nextToken();
 	/// Push a token, that next token got from lyxlex.
 	void pushToken(string const &);
@@ -87,14 +87,13 @@ public:
 	///
 	string const GetString() const;
 	
-	/**
-	 * Get a long string, ended by the tag `endtag'
-	 * This string can span several lines. The first line
-	 * serves as a template for how many spaces the lines
-	 * are indented. This much white space is skipped from
-	 * each following line. This mechanism does not work
-	 * perfectly if you use tabs.
-	 */
+	/** Get a long string, ended by the tag `endtag'.
+	    This string can span several lines. The first line
+	    serves as a template for how many spaces the lines
+	    are indented. This much white space is skipped from
+	    each following line. This mechanism does not work
+	    perfectly if you use tabs.
+	*/
 	string const getLongString(string const & endtag);
 	
 	///
@@ -110,31 +109,35 @@ public:
 	/** Pushes a token list on a stack and replaces it with a new one.
 	 */
 	void pushTable(keyword_item *, int);
-
+	
 	/** Pops a token list into void and replaces it with the one now
-	  on top of the stack.
-	  */
+	    on top of the stack.
+	*/
 	void popTable();
 
 	/** Prints an error message with the corresponding line number
-	  and file name. If message contains the substring `$$Token',
-	  it is replaced with the value of GetString()
-	  */
+	    and file name. If message contains the substring `$$Token',
+	    it is replaced with the value of GetString()
+	*/
 	void printError(string const & message) const;
 
 	/**
-	  Prints the current token table on the supplied ostream.
-	  */
+	   Prints the current token table on the supplied ostream.
+	*/
 	void printTable(std::ostream &);
 private:
 	struct Pimpl;
+	///
 	Pimpl * pimpl_;
 };
 
 
-// This is needed to ensure that the pop is done upon exit from methods
-// with more than one exit point or that can return as a response to
-// exceptions. (Lgb)
+/** Use to enable multipe exit points.
+    This is needed to ensure that the pop is done upon exit from methods
+    with more than one exit point or that can return as a response to
+    exceptions.
+    @autor Lgb
+*/
 struct pushpophelper {
 	pushpophelper(LyXLex & lexrc, keyword_item * i, int s) : lex(lexrc) {
 		lex.pushTable(i, s);
@@ -144,10 +147,11 @@ struct pushpophelper {
 	}
 	LyXLex & lex;
 };
-// To avoid wrong usage:
-// pushpophelper(...); // wrong
-// pushpophelper pph(...); // right
-// we add this macro:
+/** Avoid wrong usage of pushpophelper.
+    To avoid wrong usage:
+    pushpophelper(...); // wrong
+    pushpophelper pph(...); // right
+*/
 #define pushpophelper(x, y, z) unnamed_pushpophelper;
 // Tip gotten from Bobby Schmidt's column in C/C++ Users Journal
 

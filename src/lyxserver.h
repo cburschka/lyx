@@ -29,8 +29,7 @@ class LyXServer;
  This class encapsulates all the dirty communication and thus provides
  a clean string interface.
  */
-class LyXComm
-{
+class LyXComm {
 public:
 	/** When we receive a message, we send it to a client.
 	  This is one of the small things that would have been a lot
@@ -40,8 +39,7 @@ public:
 
 	/// Construct with pipe-basename and callback to receive messages
 	LyXComm(string const & pip, LyXServer * cli, ClientCallbackfct ccb = 0)
-		: pipename(pip), client(cli), clientcb(ccb)
-	{
+		: pipename(pip), client(cli), clientcb(ccb) {
 		ready = false;
 		openConnection();
 	}
@@ -85,22 +83,22 @@ private:
 
 
 /* --- prototypes -------------------------------------------------------- */
-class LyXServer
-{
+///
+class LyXServer {
 public:
 	// FIXME IN 0.13
 	// Hack! This should be changed in 0.13
 
-	/// The lyx server should not take an argument "LyXFunc" but this is
+	// The lyx server should not take an argument "LyXFunc" but this is
 	// how it will be done for 0.12. In 0.13 we must write a non-gui
 	// bufferview.
         // IMO lyxserver is atypical, and for the moment the only one, non-gui
         // bufferview. We just have to find a way to handle situations like if
         // lyxserver is using a buffer that is being edited with a bufferview.
         // With a common buffer list this is not a problem, maybe. (Alejandro)
+	///
 	LyXServer(LyXFunc * f, string const & pip)
-		: numclients(0), func(f), pipes(pip, (this), callback)
-	{ }
+		: numclients(0), func(f), pipes(pip, (this), callback) {}
         /// 
 	~LyXServer();
 	///
@@ -109,8 +107,13 @@ private:
 	///
 	static void callback(LyXServer *, string const & msg);
 	/// Names and number of current clients
-	enum { MAX_CLIENTS = 10 };
+	enum {
+		///
+		MAX_CLIENTS = 10
+	};
+	///
 	string clients[MAX_CLIENTS];
+	///
 	int numclients;
 	///
 	LyXFunc * func;

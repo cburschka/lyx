@@ -33,7 +33,6 @@ class LyXFindReplace;
   - regex searches (I'm working on that -- dnaber, 1999-02-24)
 
 */
-
 class SearchForm {
 public:
 	///

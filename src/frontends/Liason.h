@@ -34,14 +34,14 @@ class PrinterParams;
 class Buffer;
 
 /** Temporary namespace to hold the various frontend functions
- * until XTL and the compilers of the world are ready for something more
- * elaborate. This is basically the Communicator class from the lyx cvs module
- * all over again.
- *
- * Eventually, we will switch back to the XTL+LyXFunc combination that
- * worked so nicely on a very small number of compilers and systems.
- * See the "dialogbase" branch of lyx-devel cvs module for xtl implementation.
- */
+    until XTL and the compilers of the world are ready for something more
+    elaborate. This is basically the Communicator class from the lyx cvs module
+    all over again.
+    
+    Eventually, we will switch back to the XTL+LyXFunc combination that
+    worked so nicely on a very small number of compilers and systems.
+    See the "dialogbase" branch of lyx-devel cvs module for xtl implementation.
+*/
 #ifdef CXX_WORKING_NAMESPACES
 namespace Liason
 {

@@ -10,6 +10,11 @@
 
 extern void emergencySave();
 
+/** Live assertion.
+    This is a debug tool to ensure that the assertion holds. If it don't hole
+    we run #emergencySave()# and then #lyx::abort".
+    @param assertion this should evaluate to true unless you want an abort.
+*/
 template<class A>
 inline
 void Assert(A assertion)
@@ -22,6 +27,9 @@ void Assert(A assertion)
 
 #else
 
+/** Dummy assertion.
+    When compiling without assertions we use this no-op function.
+*/
 template<class A>
 inline
 void Assert(A /*assertion*/) {}
@@ -30,4 +38,3 @@ void Assert(A /*assertion*/) {}
 
 //} // end of namespace LyX
 #endif /* LASSERT_H */
-

@@ -73,7 +73,7 @@ private:
 	Row * row_;
 };
 
-
+///
 inline
 bool operator==(LyXCursor const & a, LyXCursor const & b)
 {
@@ -82,7 +82,7 @@ bool operator==(LyXCursor const & a, LyXCursor const & b)
 		&& a.boundary() == b.boundary();
 }
 
-
+///
 inline
 bool operator!=(LyXCursor const & a, LyXCursor const & b)
 {

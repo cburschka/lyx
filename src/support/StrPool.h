@@ -19,15 +19,18 @@
 #include "LString.h"
 #include <vector>
 
+///
 class StrPool {
 public:
-        // delete all the strings that have been allocated by add()
+        /// delete all the strings that have been allocated by add()
         ~StrPool();
-        // Make a copy of the string, and remember it in the pool
+        /// Make a copy of the string, and remember it in the pool
         char const * add(string const & str);
         
 private:
+	///
 	typedef std::vector<char const *> Pool;
+	///
         Pool pool_;
 };
 

@@ -3,15 +3,16 @@
 #define PATH_H
 
 #include "LString.h"
-#include "support/filetools.h"
+#include "filetools.h"
 #include "lyxlib.h"
+#include "utility.hpp"
 
 #ifdef __GNUG__
 #pragma interface
 #endif
 
 ///
-class Path {
+class Path : public noncopyable {
 public:
 	///
 	explicit
@@ -50,6 +51,7 @@ private:
 // Path("/tmp");   // wrong
 // Path p("/tmp");  // right
 // we add this macro:
+///
 #define Path(x) unnamed_Path;
 // Tip gotten from Bobby Schmidt's column in C/C++ Users Journal
 

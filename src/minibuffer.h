@@ -55,17 +55,17 @@ public:
 			       int, void *);
 private:
 	///
-	LyXView *owner;
+	LyXView * owner;
 	///
 	string text;
 	///
 	string text_stored;
 	///
-	FL_OBJECT *add(int, FL_Coord, FL_Coord, FL_Coord, FL_Coord);
+	FL_OBJECT * add(int, FL_Coord, FL_Coord, FL_Coord, FL_Coord);
         ///
-	FL_OBJECT *timer;
+	FL_OBJECT * timer;
 	///
-	FL_OBJECT *the_buffer;
+	FL_OBJECT * the_buffer;
 	///
 	string cur_cmd;
         ///
@@ -76,7 +76,9 @@ private:
         int history_idx, history_cnt;
         ///
         void addHistory(string const &cmd) { 
-	        if (history_cnt == 0 || (history_cnt>0 && cmd!= history[(history_cnt-1) % MAX_HISTORY])) {
+	        if (history_cnt == 0
+		    || (history_cnt > 0
+			&& cmd != history[(history_cnt - 1) % MAX_HISTORY])) {
 		    history[history_cnt % MAX_HISTORY] = cmd;
 		    ++history_cnt;
 		}

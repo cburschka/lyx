@@ -22,7 +22,7 @@ public:
 private:
     ///
     GraphicsCacheItem() {}
-    //
+    ///
     friend class GraphicsCache;
 };
 

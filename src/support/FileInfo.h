@@ -24,7 +24,8 @@
 
 #include "LString.h"
 
-/** Use objects of this class to get information about files. */
+/** Use objects of this class to get information about files.
+ */
 class FileInfo {
 public:
 	///
@@ -90,10 +91,14 @@ public:
 	
 	/// Permission flags
 	enum perm_test {
-		rperm = R_OK, // test for read permission
-		wperm = W_OK, // test for write permission
-		xperm = X_OK, // test for execute (search) permission
-		eperm = F_OK  // test for existence of file
+		/// test for read permission
+		rperm = R_OK,
+		/// test for write permission
+		wperm = W_OK,
+		/// test for execute (search) permission
+		xperm = X_OK,
+		/// test for existence of file
+		eperm = F_OK
 	};
 	/// Test whether the current user has a given set of permissions
 	bool access(int p);
@@ -122,7 +127,7 @@ public:
 	///
 	int getError() const;
 	///
-	enum {
+	enum Err {
 		///
 		NoErr = -1
 	};

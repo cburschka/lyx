@@ -74,6 +74,7 @@ private:
 			     LyXFont::FONT_SIZE size);
 };
 
+///
 extern FontLoader fontloader;
 
 #endif

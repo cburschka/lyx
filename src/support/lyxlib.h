@@ -20,6 +20,7 @@
 
 // This should have been a namespace
 #ifdef CXX_WORKING_NAMESPACES
+///
 namespace lyx {
 	///
 	char * getcwd(char * buffer, size_t size);
@@ -41,6 +42,7 @@ namespace lyx {
 	int putenv(char const * str);
 }
 #else
+///
 struct lyx {
 	///
 	static char * getcwd(char * buffer, size_t size);

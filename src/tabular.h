@@ -30,58 +30,106 @@ class Buffer;
 ///
 class LyXTabular  {
 public:
-
+    ///
     enum {
+	///
 	APPEND_ROW = 0,
+	///
 	APPEND_COLUMN,
+	///
 	DELETE_ROW,
+	///
 	DELETE_COLUMN,
+	///
 	TOGGLE_LINE_TOP,
+	///
 	TOGGLE_LINE_BOTTOM,
+	///
 	TOGGLE_LINE_LEFT,
+	///
 	TOGGLE_LINE_RIGHT,
+	///
 	ALIGN_LEFT,
+	///
 	ALIGN_RIGHT,
+	///
 	ALIGN_CENTER,
+	///
 	VALIGN_TOP,
+	///
 	VALIGN_BOTTOM,
+	///
 	VALIGN_CENTER,
+	///
 	M_TOGGLE_LINE_TOP,
+	///
 	M_TOGGLE_LINE_BOTTOM,
+	///
 	M_TOGGLE_LINE_LEFT,
+	///
 	M_TOGGLE_LINE_RIGHT,
+	///
 	M_ALIGN_LEFT,
+	///
 	M_ALIGN_RIGHT,
+	///
 	M_ALIGN_CENTER,
+	///
 	M_VALIGN_TOP,
+	///
 	M_VALIGN_BOTTOM,
+	///
 	M_VALIGN_CENTER,
+	///
 	DELETE_TABULAR,
+	///
 	MULTICOLUMN,
+	///
 	SET_ALL_LINES,
+	///
 	UNSET_ALL_LINES,
+	///
 	SET_LONGTABULAR,
+	///
 	UNSET_LONGTABULAR,
+	///
 	SET_PWIDTH,
+	///
 	SET_MPWIDTH,
+	///
 	SET_ROTATE_TABULAR,
+	///
 	UNSET_ROTATE_TABULAR,
+	///
 	SET_ROTATE_CELL,
+	///
 	UNSET_ROTATE_CELL,
+	///
 	SET_USEBOX,
+	///
 	SET_LTHEAD,
+	///
 	SET_LTFIRSTHEAD,
+	///
 	SET_LTFOOT,
+	///
 	SET_LTLASTFOOT,
+	///
 	SET_LTNEWPAGE,
+	///
 	SET_SPECIAL_COLUMN,
+	///
 	SET_SPECIAL_MULTI,
+	///
 	LAST_ACTION
     };
-
+    ///
     enum {
+	///
 	CELL_NORMAL = 0,
+	///
 	CELL_BEGIN_OF_MULTICOLUMN,
+	///
 	CELL_PART_OF_MULTICOLUMN
     };
 
@@ -98,7 +146,6 @@ public:
     /* konstruktor */
     ///
     LyXTabular(InsetTabular *, int columns_arg, int rows_arg);
-    ///
     ///
     LyXTabular(InsetTabular *, LyXTabular const &);
     ///
@@ -211,12 +258,15 @@ public:
     void Read(Buffer const *, LyXLex &);
     ///
     void OldFormatRead(LyXLex &, string const &);
-    ///
-    /// helper function for Latex returns number of newlines
+    //
+    // helper function for Latex returns number of newlines
     ///
     int TeXTopHLine(std::ostream &, int row) const;
+    ///
     int TeXBottomHLine(std::ostream &, int row) const;
+    ///
     int TeXCellPreamble(std::ostream &, int cell) const;
+    ///
     int TeXCellPostamble(std::ostream &, int cell) const;
     ///
     int Latex(Buffer const *, std::ostream &, bool, bool) const;
@@ -273,8 +323,8 @@ public:
     void SetUsebox(int cell, int what);
     ///
     int GetUsebox(int cell) const;
-    ///
-    /// Long Tabular Options
+    //
+    // Long Tabular Options
     ///
     void SetLTHead(int cell, bool first);
     ///
@@ -307,10 +357,10 @@ private: //////////////////////////////////////////////////////////////////
     struct cellstruct {
 	///
         cellstruct();
-	///
 #ifdef INSET_POINTER
-	~cellstruct();
 	///
+	~cellstruct();
+	//
         cellstruct(cellstruct const &);
 	///
 	cellstruct & operator=(cellstruct const &);
@@ -333,11 +383,12 @@ private: //////////////////////////////////////////////////////////////////
 	bool left_line;
 	///
 	bool right_line;
-	///
-	/// 0 ... don't use a box
-	/// 1 ... use a parbox
-	/// 2 ... use a minipage
-	///
+	/**
+	   0 ... don't use a box
+	   1 ... use a parbox
+	   2 ... use a minipage
+	   This should be made into an enum (Lgb)
+	*/
 	int usebox;
 	///
 	int rotate;
@@ -348,44 +399,57 @@ private: //////////////////////////////////////////////////////////////////
 	///
 	InsetText inset;
     };
+    ///
     typedef std::vector<cellstruct> cell_vector;
+    ///
     typedef std::vector<cell_vector> cell_vvector;
 
     ///
     struct rowstruct {
 	///
         rowstruct();
-	///
+	//
 	    //~rowstruct();
-	///
+	//
 	    // rowstruct & operator=(rowstruct const &);
 	///
 	bool top_line;
+	///
 	bool bottom_line;
+	///
         int ascent_of_row;
+	///
         int descent_of_row;
 	/// This are for longtabulars only
 	bool newpage;
     };
+    ///
     typedef std::vector<rowstruct> row_vector;
 
     ///
     struct columnstruct {
 	///
         columnstruct();
-	///
+	//
 	    //~columnstruct();
-	///
+	//
 	    //columnstruct & operator=(columnstruct const &);
 	///
 	int alignment;
+	///
 	int valignment;
+	///
 	bool left_line;
+	///
 	bool right_line;
+	///
 	int  width_of_column;
+	///
 	string p_width;
+	///
 	string align_special;
     };
+    ///
     typedef std::vector<columnstruct> column_vector;
 
     ///
@@ -408,15 +472,18 @@ private: //////////////////////////////////////////////////////////////////
     int width_of_tabular;
     ///
     int rotate;
-    ///
-    /// for long tabulars
+    //
+    // for long tabulars
     ///
     int is_long_tabular;
-    ///
-    int endhead; // row of endhead
-    int endfirsthead; // row of endfirsthead
-    int endfoot; // row of endfoot
-    int endlastfoot; // row of endlastfoot
+    /// row of endhead
+    int endhead;
+    /// row of endfirsthead
+    int endfirsthead;
+    /// row of endfoot
+    int endfoot;
+    /// row of endlastfoot
+    int endlastfoot;
     ///
     InsetTabular * owner_;
    
@@ -431,6 +498,7 @@ private: //////////////////////////////////////////////////////////////////
     void recalculateMulticolCells(int cell, int new_width);
     /// Returns true if change
     bool calculate_width_of_column(int column);
+    ///
     bool calculate_width_of_column_NMC(int column); // no multi cells
     ///
     void calculate_width_of_tabular();

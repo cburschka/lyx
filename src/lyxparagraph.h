@@ -89,7 +89,7 @@ public:
 #endif
 		///
 		META_NEWLINE,
-		///
+		//
 		//META_PROTECTED_SEPARATOR,
 		///
 		META_INSET
@@ -220,6 +220,7 @@ public:
 	void SetInsetOwner(Inset * i);
 	///
 	void deleteInsetsLyXText(BufferView *);
+	///
 	void resizeInsetsLyXText(BufferView *);
 private:
 	///
@@ -267,8 +268,6 @@ public:
 	/// footnote, margin, fig, tab
 	footnote_kind footnotekind;
 #endif
-	//@Man: the LyX- DTP-switches
-	//@{
 	///
 	bool line_top;
 	
@@ -296,7 +295,9 @@ private:
 public:
 	///
 	void setCounter(int i, int v) { counter_[i] = v; }
+	///
 	int getCounter(int i) const { return counter_[i]; }
+	///
 	void incCounter(int i) { counter_[i]++; }
 	///
 	bool start_of_appendix;
@@ -329,7 +330,6 @@ public:
 	
 	///
 	string labelwidthstring;
-	//@}
 	
 	///
 	LyXParagraph * next;
@@ -423,12 +423,12 @@ public:
 	LyXFont GetFirstFontSettings() const;
 
 	/** Get fully instantiated font. If pos == -1, use the layout
-	  font attached to this paragraph.
-	  If pos == -2, use the label font of the layout attached here.
-	  In all cases, the font is instantiated, i.e. does not have any
-	  attributes with values LyXFont::INHERIT, LyXFont::IGNORE or 
-	  LyXFont::TOGGLE.
-	  */
+	    font attached to this paragraph.
+	    If pos == -2, use the label font of the layout attached here.
+	    In all cases, the font is instantiated, i.e. does not have any
+	    attributes with values LyXFont::INHERIT, LyXFont::IGNORE or 
+	    LyXFont::TOGGLE.
+	*/
 	LyXFont getFont(BufferParams const &, size_type pos) const;
 	///
 	value_type GetChar(size_type pos) const;
@@ -523,11 +523,11 @@ public:
 
 #ifndef NEW_INSETS
 	/** A paragraph following a footnote is a "dummy". A paragraph
-	  with a footnote in it is stored as three paragraphs:
-	  First a paragraph with the text up to the footnote, then
-	  one (or more) paragraphs with the footnote, and finally
-	  the a paragraph with the text after the footnote. Only the
-	  first paragraph keeps information  about layoutparameters, */
+	    with a footnote in it is stored as three paragraphs:
+	    First a paragraph with the text up to the footnote, then
+	    one (or more) paragraphs with the footnote, and finally
+	    the a paragraph with the text after the footnote. Only the
+	    first paragraph keeps information  about layoutparameters, */
 	bool IsDummy() const;
 #endif
         /* If I set a PExtra Indent on one paragraph of a ENV_LIST-TYPE
@@ -598,6 +598,7 @@ private:
 		///
 		FontTable(size_type p, LyXFont const & f) {pos = p; font = f;}
 	};
+	///
 	friend struct matchFT;
 	///
 	struct matchFT {
@@ -662,23 +663,32 @@ private:
 	///
 	static unsigned int paragraph_id;
 public:
+	///
 	class inset_iterator {
 	public:
+		///
 		inset_iterator() {}
+		//
 		inset_iterator(InsetList::iterator const & iter) : it(iter) {};
+		///
 		inset_iterator & operator++() {
 			++it;
 			return *this;
 		}
+		///
 		Inset * operator*() { return (*it).inset; }
+		///
 		size_type getPos() {return (*it).pos; }
+		///
 		bool operator==(inset_iterator const & iter) const {
 			return it == iter.it;
 		}
+		///
 		bool operator!=(inset_iterator const & iter) const {
 			return it != iter.it;
 		}
 	private:
+		///
 		InsetList::iterator it;
 	};
 	///

@@ -53,9 +53,13 @@
 #  define gettext_init() { bindtextdomain (PACKAGE, lyx_localedir.c_str()); \
 	textdomain (PACKAGE); }
 #else
+///
 #  define _(str) (str)
+///
 #  define N_(str) (str)
+///
 #  define locale_init()
+///
 #  define gettext_init()
 #endif
 

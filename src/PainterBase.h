@@ -35,7 +35,11 @@ class LyXFont;
 class PainterBase {
 protected:
         ///
-	static int dummy1, dummy2, dummy3;
+	static int dummy1;
+	///
+	static int dummy2;
+	///
+	static int dummy3;
 public:
 	///
 	enum line_width {
@@ -61,7 +65,7 @@ public:
 	///
 	virtual ~PainterBase() {}
 
-	/** Screen geometry */
+	/* Screen geometry */
 	///
 	int paperMargin() const;
 	///
@@ -69,7 +73,6 @@ public:
 	///
 	int paperHeight() const;
 	
-	/**@Basic drawing routines */
 	/// Draw a line from point to point
 	virtual PainterBase & line(
 		int x1, int y1, int x2, int y2, 
@@ -141,15 +144,12 @@ public:
 	/// 
         virtual PainterBase & buttonFrame(int x, int y, int w, int h);
 	
-	/**@Image stuff */
 	
-	/// For the figure inset
+	// For the figure inset
 	// This can't be part of the base since we don't know what window
 	// system we will be useing, or if are going to use pixmaps at all.
 	//virtual PainterBase & pixmap(int x, int y, Pixmap bitmap)=0;
 
-	
-	/**@String functions */
 	
 	/// Draw a string at position x, y (y is the baseline)
 	virtual PainterBase & text(int x, int y,
@@ -184,6 +184,7 @@ public:
 			     int & ascent = PainterBase::dummy2, 
 			     int & descent = PainterBase::dummy3);
 protected:
+	///
 	WorkArea & owner;
 };
 

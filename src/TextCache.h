@@ -138,6 +138,6 @@ private:
 	Cache cache;
 };
 
-// bla bla
+///
 extern TextCache textcache;
 #endif

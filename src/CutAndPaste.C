@@ -448,7 +448,7 @@ bool CutAndPaste::pasteSelection(LyXParagraph ** par, LyXParagraph ** endpar,
 }
 
 
-int CutAndPaste::nrOfParagraphs() const
+int CutAndPaste::nrOfParagraphs()
 {
 	if (!buf) return 0;
 
@@ -503,7 +503,7 @@ int CutAndPaste::SwitchLayoutsBetweenClasses(LyXTextClassList::size_type c1,
 }
 
 
-bool CutAndPaste::checkPastePossible(LyXParagraph * par, int) const
+bool CutAndPaste::checkPastePossible(LyXParagraph * par, int)
 {
     if (!buf) return false;
 

@@ -1,8 +1,9 @@
 // -*- C++ -*-
 
-/** This is a collection of string helper functions that works
-    together with string (and later also with STL String. Some of these
-    would certainly benefit from a rewrite/optimization.
+/*
+  This is a collection of string helper functions that works
+  together with string (and later also with STL String. Some of these
+  would certainly benefit from a rewrite/optimization.
 */
 
 #ifndef LSTRINGS_H
@@ -30,21 +31,19 @@ int compare_no_case(string const & s, string const & s2);
 ///
 int compare_no_case(string const & s, string const & s2, unsigned int len);
 
-
+///
 inline
 int compare(char const * a, char const * b)
 {
 	return strcmp(a, b);
 }
 
-
-
+///
 inline
 int compare(char const * a, char const * b, unsigned int len)
 {
 	return strncmp(a, b, len);
 }
-
 
 ///
 bool isStrInt(string const & str);
@@ -70,7 +69,7 @@ string const lowercase(string const &);
 ///
 string const uppercase(string const &);
 
-// convert T to string
+/// convert T to string
 template<typename T>
 inline
 string const tostr(T const & t) 
@@ -94,6 +93,7 @@ string const tostr(T const & t)
 #endif
 }
 
+///
 inline
 string const tostr(bool b)
 {

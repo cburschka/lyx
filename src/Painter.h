@@ -36,7 +36,6 @@ public:
 	/// Constructor 
 	explicit Painter(WorkArea &);
 	
-	/**@Basic drawing routines */
 	/// Draw a line from point to point
 	PainterBase & line(int x1, int y1, int x2, int y2, 
 			   LColor::color = LColor::foreground,
@@ -78,12 +77,8 @@ public:
 	PainterBase & fillRectangle(int x, int y, int w, int h,
 				    LColor::color = LColor::background);
 	
-	/**@Image stuff */
-	
 	/// For the figure inset
 	PainterBase & pixmap(int x, int y, int w, int h, Pixmap bitmap);
-	
-	/**@String functions */
 	
 	/// Draw a string at position x, y (y is the baseline)
 	PainterBase & text(int x, int y,
@@ -104,7 +99,6 @@ private:
 	/// Check the font, and if set, draw an underline
 	void underline(LyXFont const & f, int x, int y, int width);
 	
-	/**@Low level X parameters */
 	///
 	Display * display;
 };

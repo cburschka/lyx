@@ -20,11 +20,14 @@
 #include <X11/Xlib.h>
 
 class LyXText;
-struct Row;
-typedef unsigned short Dimension;
-
 class WorkArea;
 class Buffer;
+
+struct Row;
+
+///
+typedef unsigned short Dimension;
+
 
 /** The class LyXScreen is used for the main Textbody.
     Concretely, the screen is held in a pixmap.  This pixmap is kept up to
@@ -33,7 +36,7 @@ class Buffer;
  */
 class LyXScreen {
 public:
-
+	///
 	enum Cursor_Shape {
 		///
 		BAR_SHAPE,
@@ -44,7 +47,7 @@ public:
 	};
 
 	///
-	LyXScreen(WorkArea &); //, LyXText * text_ptr);
+	LyXScreen(WorkArea &);
 
 	/** Draws the screen form textposition y. Uses as much of
 	    the already printed pixmap as possible */
@@ -64,7 +67,8 @@ public:
 	///
 	void CursorToggle(LyXText const *);
 	///
-	void ShowManualCursor(LyXText const *, long x, long y, int asc, int desc,
+	void ShowManualCursor(LyXText const *, long x, long y,
+			      int asc, int desc,
 			      Cursor_Shape shape);
 	/// returns 1 if first has changed, otherwise 0
 	bool FitManualCursor(LyXText *, long, long, int, int);

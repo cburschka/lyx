@@ -61,9 +61,7 @@ public:
 
 
 /// Init State
-class TransInitState : 
-	virtual public TransFSMData,
-	public TransState {
+class TransInitState : 	virtual public TransFSMData, public TransState {
 public:
 	///
 	TransInitState();
@@ -77,9 +75,7 @@ public:
 
 
 /// Deadkey State
-class TransDeadkeyState : 
-	virtual public TransFSMData,
-	public TransState {
+class TransDeadkeyState : virtual public TransFSMData, public TransState {
 public:
 	///
 	TransDeadkeyState();
@@ -96,9 +92,7 @@ public:
 
 
 /// Combined State
-class TransCombinedState: 
-	virtual public TransFSMData,
-	public TransState {
+class TransCombinedState : virtual public TransFSMData, public TransState {
 public:
 	///
 	TransCombinedState();
@@ -119,12 +113,10 @@ public:
 
 
 ///
-class TransFSM :	
-	virtual public TransFSMData,
-	public TransInitState,
-	public TransDeadkeyState,
-	public TransCombinedState
-{
+class TransFSM : virtual public TransFSMData,
+		 public TransInitState,
+		 public TransDeadkeyState,
+		 public TransCombinedState {
 public:
 	///
 	TransFSM();

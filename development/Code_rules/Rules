@@ -34,6 +34,7 @@ that you:
 - take advantage of the C++ standard library. especially don't use
   custom containers when a standard container is usable, learn to use
   the algorithms and functors in the standard library.
+- be aware of exceptions and write exception safe code. See Exceptions.
 - document all variables, methods, functions, classes etc. We are
   using the source documentation program doc++, a program that handles
   javadoc syntax, to document sources. See Source Documentation.
@@ -112,6 +113,70 @@ in C++.
 	T const add(...);
 	-NOT-
 	T add(...);
+
+
+Exceptions
+----------
+
+Even if LyX currently is not using exceptions we need to be aware of
+them. One important thing to realize is that you often do not have to
+use throw,try or catch to be exception safe. Let's look at the
+different types of exceptions safety: (These are taken from Herb
+Sutters book[ExC++]
+
+"
+1. Basic guarantee: Even in te presence of exceptions thrown by T or
+other exceptions, Stack objects don't leak resources.
+	Note that this also implies that the container will be
+	destructible and usable even if an exception is thrown wile
+	performing some container operation. However, if an exception
+	is thrown, the container will be in a consistent, but not
+	necessarily predictable, state. Containers that support the
+	basic guarantee can work safely in some settings.
+
+2. Strong guarantee: If an operation terminates because of an
+exception, program state will remain uncanged.
+	This always implies commit-or-rollback samantics, including
+	that no references or iterators into the container be
+	invalidated if an operation fails. For example, if a Stack
+	client calls Top and then attempts a Push that fails because
+	of an exception, then the state of the Stack object must be
+	unchanged and the reference returned from the prior call to
+	Top must still be valid. For more information on there
+	guarantees, see Dave Abrahams's documentation of the SGI
+	exception-safe standard library adaption at:
+	http://www.metabyte.com/~fbp/stl/eg_contract.html 
+
+	Probably te most interesting point here is tat wen you
+	implement the basic guarantee, the strong guarantee often
+	comes for free. For example, in our Stack implementation,
+	alost everything we did was needed to satisfy just the basic
+	guarantee -- and wath's presented above very nearly satisfires
+	the strong guarantee, with little of no extra work. Not half
+	bad, considering all the trouble we went to.
+
+	In addition to tese two guarantees, there is one more
+	guarantee that certain functions must provide in order to make
+	overall exception safety possible: 
+
+3. Nothrow guarantee: Te function will not emit an exception under any
+   circumstances.
+	Overall exception safety isn't possible unless certain
+	functions are guaranteed not to throw. In particualr, we've
+	seen that this is true for destructors; later in tis
+	miniseries, we'll see that it's also needed in certain helper
+	functions, such as Swap(). 
+"
+
+For all cases where we might be able to write exception safe functions
+without using try,throw or catch we should do so. In particular we
+should look over all destructors to ensure that they are as exception
+safe at possible.
+
+Later when more compiler support exceptions sufficiently well we will
+begin using them too. One reason for this is that the C++ standard
+library actually requires exceptions, e.g. "new" will throw
+bad_allocation if the requested memory is not available.
 
 
 Formatting
@@ -297,3 +362,9 @@ existing member functions. That will help maintainability in the
 future.
 
 (I'll fill in more from Scott Meyers article when time allows.)
+
+References
+----------
+
+[ExC++] Sutter, Herb. Exceptional C++: 47 engineering puzzles,
+	programming problems, and solutions. ISBN 0-201-61562-2

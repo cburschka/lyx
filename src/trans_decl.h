@@ -5,26 +5,33 @@
 #include "LString.h"
 #include "tex-accent.h"
 
+///
 struct Keyexc {
-	char c;		/* character to make exception */
-	string data;	/* exception data */
+	/// character to make exception
+	char c;
+	/// exception data
+	string data;
 	Keyexc * next;
-	bool combined;	// Combination with another deadkey
-	tex_accent accent;	// The accent combined with
+	/// Combination with another deadkey
+	bool combined;
+	/// The accent comined with
+	tex_accent accent;
 };
 
 ///
 typedef Keyexc * KmodException;
 
-//
-// 
-//
-
+///
 struct KmodInfo {
+	///
 	string data;
+	///
 	tex_accent accent;
+	///
 	string allowed;
-	KmodException exception_list;    
+	///
+	KmodException exception_list;
+	///
 	KmodInfo();
 };
 

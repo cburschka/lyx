@@ -56,7 +56,8 @@ public:
 	~Combox();
 
 	/** To add this object to a form. Note that there are two heights
-	 for normal (button) and expanded (browser) mode each. */
+	 for normal (button) and expanded (browser) mode each.
+	*/
 	void add(int x, int y, int w, int hmin, int hmax);
 	
 	/// Add lines. Same as for fl_browser object
@@ -85,7 +86,8 @@ public:
 	void remove();
 
 	/**  Assign a callback to this object. The callback should be a void
-	 function with a int and a void pointer as parameters. */
+	 function with a int and a void pointer as parameters.
+	*/
 	void setcallback(FL_COMBO_CB, void *);
    
         ///  Pre handler

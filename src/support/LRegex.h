@@ -56,20 +56,4 @@ private:
 	Impl * impl;
 };
 
-
-// We comment out these, we can comment them in when we need them.
-#if 0
-// some built in regular expressions
-
-extern const LRegex LRXwhite;          // = "[ \n\t\r\v\f]+"
-extern const LRegex LRXint;            // = "-?[0-9]+"
-extern const LRegex LRXdouble;         // = "-?\\(\\([0-9]+\\.[0-9]*\\)\\|
-                                       //    \\([0-9]+\\)\\|\\(\\.[0-9]+\\)\\)
-                                       //    \\([eE][---+]?[0-9]+\\)?"
-//extern const LRegex LRXalpha;          // = "[A-Za-z]+"
-//extern const LRegex LRXlowercase;      // = "[a-z]+"
-//extern const LRegex LRXuppercase;      // = "[A-Z]+"
-//extern const LRegex LRXalphanum;       // = "[0-9A-Za-z]+"
-extern const LRegex LRXidentifier;     // = "[A-Za-z_][A-Za-z0-9_]*"
-#endif
 #endif

@@ -16,6 +16,7 @@
 
 #include "DialogBase.h"
 #include <gnome--/about.h>
+#include "support/utility.hpp"
 
 class Dialogs;
 // same arguement as in Dialogs.h s/LyX/UI/
@@ -23,31 +24,20 @@ class LyXView;
 
 /** This class provides an GTK-- implementation of the FormCopyright Dialog.
  */
-class FormCopyright : public DialogBase {
+class FormCopyright : public DialogBase, public noncopyable {
 public:
-	/**@name Constructors and Destructors */
-	//@{
 	/// #FormCopyright x(LyXFunc ..., Dialogs ...);#
 	FormCopyright(LyXView *, Dialogs *);
 	///
 	~FormCopyright();
-	//@}
-
 private:
-	FormCopyright() {}
-	FormCopyright(FormCopyright &) : DialogBase() {}
-	
-	/**@name Slot Methods */
-	//@{
 	/// Create the dialog if necessary, update it and display it.
 	void show();
 	/// Hide the dialog.
 	void hide();
 	/// Not used but we've got to implement it.
 	void update() {}
-	//@}
 
-	//@{
 	/// Real GUI implementation.
 	 Gnome::About * dialog_;
 	/** Which LyXFunc do we use?
@@ -63,7 +53,6 @@ private:
 	Connection h_;
 	/// Destroy connection.
 	Connection destroy_;
-	//@}
 };
 
 #endif

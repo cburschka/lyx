@@ -30,10 +30,13 @@ class LastFiles;
 class Buffer;
 class kb_keymap;
 
+///
 extern string system_lyxdir;
+///
 extern string user_lyxdir;
+///
 extern string system_tempdir;
-
+///
 extern LastFiles * lastfiles; /* we should hopefully be able to move this
 			      * inside the LyX class */
 
@@ -43,29 +46,18 @@ extern LastFiles * lastfiles; /* we should hopefully be able to move this
 */
 class LyX : public noncopyable {
 public:
-	/**@name Constructors and Deconstructors */
-	//@{
 	/// the only allowed constructor
 	LyX(int * argc, char * argv[]); // constructor
-	// Always is useful a destructor
+	/// Always is useful a destructor
 	~LyX();
-	//@}
 
-	/**@name Pointers to... */
-	//@{
 	///
 	LyXGUI * lyxGUI;  // should be only one of this
-	//@}
 private:
-	/**@name Private variables */
-	//@{
 	/// does this user start lyx for the first time?
 	bool first_start;
 	///
 	string batch_command;
-	//@}
-	/**@name Private Members */
-	//@{
 	///
 	void runtime();
 	///
@@ -84,7 +76,6 @@ private:
 	void ReadUIFile(string const & name);
         ///
 	bool easyParse(int * argc, char * argv[]);
-	//@}
 };
 
 #endif

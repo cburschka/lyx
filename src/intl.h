@@ -28,8 +28,7 @@ class TransManager;
   classes. Probably should the gui class just have a pointer to the non
   gui class.
   */
-class Intl
-{
+class Intl {
 public:
 	///
 	Intl();

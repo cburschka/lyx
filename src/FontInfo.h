@@ -19,11 +19,13 @@
 #include "LString.h"
 
 /** This class manages a font.
-The idea is to create a FontInfo object with a font name pattern with a 
-wildcard at the size field. Then this object can host request for font-
-instances of any given size. If no exact match is found, the closest size
-is chosen instead. If the font is scalable, the flag lyxrc.use_scalable_fonts
-determines whether to allow scalable fonts to give an exact match. */
+    The idea is to create a FontInfo object with a font name pattern with a 
+    wildcard at the size field. Then this object can host request for font-
+    instances of any given size. If no exact match is found, the closest size
+    is chosen instead. If the font is scalable, the flag
+    lyxrc.use_scalable_fonts determines whether to allow scalable fonts to
+    give an exact match.
+*/
 class FontInfo {
 public:
 	///

@@ -19,8 +19,10 @@
 #include "debug.h"
 #include "LString.h"
 
+///
 class DebugTracer {
 public:
+	///
 	explicit
 	DebugTracer(string const & s) : str(s) {
 		lyxerr << string(depth, ' ') << "Trace begin : "
@@ -28,13 +30,16 @@ public:
 		++depth;
 		
 	}
+	///
 	~DebugTracer() {
 		--depth;
 		lyxerr << string(depth, ' ') << "Trace end : "
 		       << str << std::endl;
 	}
 private:
+	///
 	string str;
+	///
 	static int depth;
 };
 

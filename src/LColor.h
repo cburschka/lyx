@@ -18,6 +18,7 @@
 #include <map>
 
 #include "LString.h"
+#include "support/utility.hpp"
 
 /**
   This is a stateless class. 
@@ -31,8 +32,7 @@
   - A logical color, such as no color, inherit, math
 
   */
-
-class LColor {
+class LColor : public noncopyable {
 public:
 	/// Names of colors, including all logical colors
 	enum color {
@@ -55,7 +55,7 @@ public:
 		///
 		yellow,
 
-		/// Needed interface colors
+		// Needed interface colors
 
 		/// Background color
 		background,
@@ -161,7 +161,7 @@ public:
 		/// Color used for bottom background
 		buttonbg,
 
-	        /// Logical attributes
+	        // Logical attributes
 
 		/// Color is inherited
 		inherit,
@@ -193,9 +193,13 @@ public:
 private:
 	///
 	struct information {
+		///
 		string guiname;
+		///
 		string latexname;
+		///
 		string x11name;
+		///
 		string lyxname;
 	};
 
@@ -206,10 +210,11 @@ private:
 
 	///
 	typedef std::map<LColor::color, information> InfoTab;
-
+	///
 	InfoTab infotab;
 };
 
+///
 extern LColor lcolor;
 
 #endif

@@ -10,21 +10,27 @@
 
 #include "commandtags.h"
 #include "LString.h"
+#include "support/utility.hpp"
 
 /** This class encapsulates LyX action and user command operations.
  */
-class LyXAction {
+class LyXAction : public noncopyable {
 private:
 	///
 	struct func_info {
+		///
 		string name;
+		///
 		unsigned int attrib;
+		///
 		string helpText;
 	};
 
 	///
 	struct pseudo_func {
+		///
 		kb_action action;
+		///
 		string arg;
 	};
 public:
@@ -48,7 +54,8 @@ public:
                 /// Can be used when there is no document open
                 NoBuffer = 2,
 		//Interactive = 2, // Is interactive (requires a GUI)
-		Argument=4      // Requires argument
+		///
+		Argument = 4      // Requires argument
 		//MathOnly = 8,    // Only math mode
 		//EtcEtc = ...     // Or other attributes...
 	};

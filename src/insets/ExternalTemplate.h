@@ -19,9 +19,11 @@
 #include <iosfwd>
 #include <map>
 #include "LString.h"
+#include "support/utility.hpp"
 
 class LyXLex;
 
+///
 struct ExternalTemplate {
 	/// What is the name of this template in the LyX format?
 	string lyxName;
@@ -52,12 +54,13 @@ struct ExternalTemplate {
 		/// This constructor has to default a command for safety reasons!
 		FormatTemplate();
 	};
+	///
 	void readTemplate(LyXLex &);
-	
+	///
 	typedef std::map<string, FormatTemplate> Formats;
-
+	///
 	Formats formats;
-
+	///
 	void dumpFormats(std::ostream &) const;
 	
 	/// We have to have default commands for safety reasons!
@@ -67,9 +70,9 @@ struct ExternalTemplate {
 
 
 /**
- * A singleton class that manages the external inset templates
- */
-class ExternalTemplateManager {
+   A singleton class that manages the external inset templates
+*/
+class ExternalTemplateManager : public noncopyable {
 public:
 	/// Map from the LyX name of the template to the template structure
 	typedef std::map<string, ExternalTemplate> Templates;

@@ -23,11 +23,13 @@
 #include "form1.h"
 
 /// LyXDirEntry internal structure definition
-class LyXDirEntry
-{
+class LyXDirEntry {
 public:
+	///
 	string pszName;
+	///
 	string pszDisplayed;
+	///
 	string pszLsEntry;
 };
 

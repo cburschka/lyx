@@ -21,12 +21,13 @@
 #include "lyxlex.h"
 #include "lyxfont.h"
 #include "Spacing.h"
+#include "support/utility.hpp"
 
 /// Reads the style files
 extern void LyXSetStyle();
 
 ///
-enum { // no good name for this
+enum no_good_name_for_this {
 	///
         LYX_ENVIRONMENT_DEFAULT = 97,
 	///
@@ -85,7 +86,7 @@ enum LyXAlignment {
         LYX_ALIGN_SPECIAL = 32
 };
 
-
+///
 inline
 void operator|=(LyXAlignment & la1, LyXAlignment la2) {
 	la1 = static_cast<LyXAlignment>(la1 | la2);
@@ -145,6 +146,7 @@ enum LYX_LABEL_TYPES {
 	LABEL_COUNTER_ENUMIV
 };
 
+///
 enum LYX_END_LABEL_TYPES {
 	///
 	END_LABEL_NO_LABEL,
@@ -180,7 +182,7 @@ enum LYX_END_LABEL_TYPES {
  */ 
 
 
-/// Attributes of a layout/paragraph environment
+// Attributes of a layout/paragraph environment
 class LyXTextClass;
 
 ///
@@ -191,21 +193,37 @@ public:
 
 	///
 	bool Read (LyXLex &, LyXTextClass const &);
+	///
 	void readAlign(LyXLex &);
+	///
 	void readAlignPossible(LyXLex &);
+	///
 	void readLabelType(LyXLex &);
+	///
 	void readEndLabelType(LyXLex &);
+	///
 	void readMargin(LyXLex &);
+	///
 	void readLatexType(LyXLex &);
+	///
 	void readSpacing(LyXLex &);
+	///
 	string const & name() const { return name_; }
+	///
 	void name(string const & n) { name_ = n; }
+	///
 	string const & obsoleted_by() const { return obsoleted_by_; }
+	///
 	string const & latexname() const { return latexname_; }
+	///
 	string const & labelstring() const { return labelstring_; }
+	///
 	string const & endlabelstring() const { return endlabelstring_; }
+	///
 	string const & preamble() const { return preamble_; }
+	///
 	string const & latexparam() const { return latexparam_; }
+	///
 	string const & labelstring_appendix() const {
 		return labelstring_appendix_;
 	}
@@ -303,8 +321,8 @@ public:
 
 	///
 	bool free_spacing;
-	/// true when the fragile commands in the paragraph need to be
-	/// \protect'ed.
+	/** true when the fragile commands in the paragraph need to be
+	    \protect'ed. */
 	bool needprotect;
 	/// true when empty paragraphs should be kept.
 	bool keepempty;
@@ -378,8 +396,11 @@ public:
 	
 	///
 	bool Read(string const & filename, bool merge = false);
+	///
 	void readOutputType(LyXLex &);
+	///
 	void readMaxCounter(LyXLex &);
+	///
 	void readClassOptions(LyXLex &);
 	///
 	bool hasLayout(string const & name) const;
@@ -412,18 +433,25 @@ public:
 
 	/// Packages that are already loaded by the class
 	enum Provides {
+		///
 		nothing = 0,
+		///
 		amsmath = 1,
+		///
 		makeidx = 2,
+		///
 		url = 4
 	};
+	///
 	bool provides(Provides p) const { return provides_ & p; }
 	
 	///
 	unsigned int columns() const { return columns_; }
 	///
 	enum PageSides {
+		///
 		OneSide,
+		///
 		TwoSides
 	};
 	///
@@ -506,7 +534,7 @@ private:
 	bool loaded;
 };
 
-
+///
 inline
 void operator|=(LyXTextClass::Provides & p1, LyXTextClass::Provides p2)
 {
@@ -519,7 +547,7 @@ std::ostream & operator<<(std::ostream & os, LyXTextClass::PageSides p);
 
 
 ///
-class LyXTextClassList {
+class LyXTextClassList : public noncopyable {
 public:
 	///
 	typedef std::vector<LyXTextClass> ClassList;
@@ -580,7 +608,7 @@ private:
 	void Add (LyXTextClass const &);
 };
 
-/// Should not be declared here!! (Lgb) Why not? (Asger)
+/// 
 extern LyXTextClassList textclasslist;
  
 #endif

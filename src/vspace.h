@@ -54,24 +54,19 @@ public:
 		UNIT_NONE
 	};
 
-	//@Man: constructors
-	//@{
 	///
 	LyXLength() : val(0), uni(LyXLength::PT) {}
+	///
 	LyXLength(float v, LyXLength::UNIT u) : val(v), uni(u) {}
 
 	/** "data" must be a decimal number, followed by a unit. */
 	explicit
         LyXLength(string const & data);
-	//@}
 	
-	//@Man: selectors
-	//@{
 	///
 	float value() const         { return val; };
 	///
 	LyXLength::UNIT unit() const { return uni; };
-	//@}
 
 	/// conversion
 	virtual string asString() const;
@@ -91,7 +86,7 @@ protected:
 	LyXLength::UNIT uni;
 };
 
-
+///
 inline
 bool operator==(LyXLength const & l1, LyXLength const & l2)
 {
@@ -99,15 +94,14 @@ bool operator==(LyXLength const & l1, LyXLength const & l2)
 		&& l1.unit() == l2.unit();
 }
 	
-
+///
 extern LyXLength::UNIT unitFromString (string const & data);
+///
 extern bool isValidLength(string const & data, LyXLength * result);
 
 /// LyXGlueLength class
 class LyXGlueLength : public LyXLength {
 public:
-	//@Man: constructors
-	//@{
 	///
 	LyXGlueLength(float v,
 		      LyXLength::UNIT u, 
@@ -127,10 +121,7 @@ public:
 	  4cm plus 10pt minus 10pt */
 	explicit
         LyXGlueLength(string const & data);
-	//@}
 	
-	//@Man: selectors
-	//@{
 	///
 	float plusValue() const         { return plus_val; };
 	///
@@ -139,7 +130,6 @@ public:
 	float minusValue() const         { return minus_val; };
 	///
 	LyXLength::UNIT minusUnit() const { return minus_uni; };
-	//@}
 
 	/// conversion
 	virtual string asString() const;
@@ -159,7 +149,7 @@ protected:
 	LyXLength::UNIT plus_uni, minus_uni;
 };
 
-
+///
 inline
 bool operator==(LyXGlueLength const & l1, LyXGlueLength const & l2)
 {
@@ -172,16 +162,29 @@ bool operator==(LyXGlueLength const & l1, LyXGlueLength const & l2)
 }
 
 
-
+///
 extern bool isValidGlueLength(string const & data, LyXGlueLength * result);
 
 ///  VSpace class
 class VSpace {
 public:
 	///
-	enum vspace_kind { NONE, DEFSKIP, 
-			   SMALLSKIP, MEDSKIP, BIGSKIP, 
-			   VFILL, LENGTH };
+	enum vspace_kind {
+		///
+		NONE,
+		///
+		DEFSKIP,
+		///
+		SMALLSKIP,
+		///
+		MEDSKIP,
+		///
+		BIGSKIP,
+		///
+		VFILL,
+		///
+		LENGTH
+	};
 	/// constructors
 	VSpace() : 
 		kin (NONE), 

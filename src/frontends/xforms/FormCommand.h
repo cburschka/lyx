@@ -32,23 +32,21 @@ public:
 	/// Constructor
 	FormCommand(LyXView *, Dialogs *, string const & );
 
-	/**@name Real per-instance Callback Methods */
-	//@{
+	///
 	static  int WMHideCB(FL_FORM *, void *);
+	///
 	static void OKCB(FL_OBJECT *, long);
+	///
 	static void ApplyCB(FL_OBJECT *, long);
+	///
 	static void CancelCB(FL_OBJECT *, long);
+	///
 	static void InputCB(FL_OBJECT *, long);
-	//@}
-
 protected:
-	/**@name Slot Methods */
-	//@{
 	/// Slot launching dialog to (possibly) create a new inset
 	void createInset( string const & );
 	/// Slot launching dialog to an existing inset
 	void showInset( InsetCommand * const );
-	//@}
 
 	/// Build the dialog
 	virtual void build() = 0;
@@ -65,8 +63,6 @@ protected:
 	/// Pointer to the actual instantiation of the xform's form
 	virtual FL_FORM * const form() const = 0;
 
-	/**@name Protected Data */
-	//@{
 	/** Which LyXFunc do we use?
 	    We could modify Dialogs to have a visible LyXFunc* instead and
 	    save a couple of bytes per dialog.
@@ -80,17 +76,12 @@ protected:
 	InsetCommand * inset_;
 	/// the nitty-griity. What is modified and passed back
   	InsetCommandParams params;
-	//@}
-
 private:
 	/// Create the dialog if necessary, update it and display it.
 	void show();
 	/// Hide the dialog.
 	void hide();
 
-
-	/**@name Private Data */
-	//@{
 	/// Update connection.
 	Connection u_;
 	/// Hide connection.
@@ -101,7 +92,6 @@ private:
 	bool dialogIsOpen;
 	/// dialog title, displayed by WM.
   	string title;
-	//@}
 };
 
 #endif

@@ -24,16 +24,16 @@
 // XDR_format causes an abort that's hard to track down.  GDB says the abort
 // occurs in code from a different function to the one being run before the
 // abort!  (XTL-1.3.pl.11)
+///
 typedef GIOP_format<auto_mem_buffer> gui_format;
 
-//@name XTL assistants
-//@{
-/** Simplify the use of the XTL.  The caller is responsible for creating their
+/*  Simplify the use of the XTL.  The caller is responsible for creating their
     own memory buffer.  The buffer type isn't a template parameter because I 
     need/want the forward declared buffer class in some other header files
     thereby avoiding an extra file dependency.
     ARRae 20000423
  */
+
 /// Externalize a structure into a buffer.
 template<class Input>
 void getInMem(Input const & in, auto_mem_buffer & mb) {
@@ -50,6 +50,6 @@ void setFromMem(Input & in, auto_mem_buffer & mb) {
 	obj_input<gui_format> input(gf);
 	input.simple(in);
 }
-//@}
+
 
 #endif

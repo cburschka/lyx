@@ -32,20 +32,35 @@
 // another object. I'll let some others have a look now... (Lgb)
 
 // include this always
+///
 extern string const lyx_def;
+///
 extern string const lyxline_def;
+///
 extern string const noun_def;
+///
 extern string const lyxarrow_def;
+///
 extern string const quotedblbase_def;
+///
 extern string const quotesinglbase_def;
+///
 extern string const guillemotleft_def;
+///
 extern string const guillemotright_def;
+///
 extern string const guilsinglleft_def;
+///
 extern string const guilsinglright_def;
+///
 extern string const paragraphindent_def;
+///
 extern string const floatingfootnote_def;
+///
 extern string const minipageindent_def;
+///
 extern string const boldsymbol_def;
+///
 extern string const binom_def;
 
 #endif

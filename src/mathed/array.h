@@ -20,11 +20,10 @@
 #define byte unsigned char
 #endif
 
-/*@Doc: A resizable array
-  Why is it called "LyXArrayBase" if it is generic? (Lgb)
-  Initially I thought it could be the base class for both mathed's
-  and LyX' kernels data buffer. (Ale)
- 
+/** A resizable array.
+    A general purpose resizable array.
+    @author Alejandro Aguilar Sierra
+    @version January 1996
   */
 class LyxArrayBase  {
 public:

@@ -27,10 +27,11 @@ class LyXTextClass;
 struct Language;
 
 /** The packages and commands that a buffer needs. This struct
-  contains an entry for each of the latex packages and
-  commands that a buffer might need. This struct is supposed to be
-  extended as the need arises. Remember to update the validate function
-  in buffer.C and paragraph.C when you do so. */
+    contains an entry for each of the latex packages and
+    commands that a buffer might need. This struct is supposed to be
+    extended as the need arises. Remember to update the validate function
+    in buffer.C and paragraph.C when you do so.
+*/
 struct LaTeXFeatures {
 	///
 	LaTeXFeatures(BufferParams const &, int n) ;
@@ -52,8 +53,6 @@ struct LaTeXFeatures {
 	/// Static preamble bits from the external material insets
 	string externalPreambles;
 
-	//@Man: Packages
-	//@{
 	///
 	bool array;
 	///
@@ -92,11 +91,7 @@ struct LaTeXFeatures {
 	bool prettyref; // prettyref.sty
 	///
 	bool chess;	// chess.sty
-	//@}
 
-	
-	//@Man: Commands
-	//@{
 	///
 	bool lyx;
 	///
@@ -105,10 +100,7 @@ struct LaTeXFeatures {
 	bool noun;
 	/// \lyxarrow
 	bool lyxarrow;
-	//@}
-	
-	//@Man: Quotes
-	//@{
+
 	///
 	bool quotesinglbase;
 	///
@@ -121,25 +113,17 @@ struct LaTeXFeatures {
 	bool guillemotleft;
 	///
 	bool guillemotright;
-	//@}
-	
-	//@Man: Math mode
-	//@{
+
 	///
 	bool amsstyle;
 	///
 	bool boldsymbol;
 	///
 	bool binom;
-	//@}
 	
-	//@Man: Layouts
-	//@{
 	std::vector<bool> layout;
-	//@}
-	
-	//@Man: Special features
-	//@{
+
+	///
 	bool LyXParagraphIndent;
 	///
 	bool NeedLyXFootnoteCode;
@@ -157,9 +141,10 @@ struct LaTeXFeatures {
 	typedef std::map<string , string> FileMap;
 	///
 	FileMap IncludedFiles;
-	//@}
+	///
 	BufferParams const & bufferParams() const;
 private:
+	///
 	BufferParams const & params;
 };
 

@@ -24,10 +24,15 @@ class LyXFunc {
 public:
 	/// The status of a function.
 	enum func_status {
-		OK = 0, // No problem
+		/// No problem
+		OK = 0,
+		///
 		Unknown = 1,
-		Disabled = 2, // Command cannot be executed
+		/// Command cannot be executed
+		Disabled = 2,
+		///
 		ToggleOn = 4,
+		///
 		ToggleOff = 8
 	};
 	///
@@ -44,7 +49,7 @@ public:
 	bool Dispatch(int action, auto_mem_buffer &);
 
 	/// A keyboard event is processed to execute a lyx action. 
-	int  processKeyEvent(XEvent * ev);
+	int processKeyEvent(XEvent * ev);
 
 	///
 	func_status getStatus(int ac) const;
@@ -115,6 +120,7 @@ private:
 
 	///
 	void doImport(string const &);
+	///
 	void doImportHelper(string const &, string const &, string const &,
 		bool func(BufferView *, string const &) );
 
@@ -172,7 +178,7 @@ void LyXFunc::setHintMessage(bool hm)
 	show_sc = hm;
 }
 
-
+///
 inline
 void operator|=(LyXFunc::func_status & fs, LyXFunc::func_status f)
 {

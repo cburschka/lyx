@@ -29,14 +29,15 @@ class TeXErrors;
 class Chktex {
 public:
 	/**
-	  cmd = the chktex command, file = name of the (temporary) latex file,
-	  path = name of the files original path.
-	  */
+	  @param cmd the chktex command.
+	  @param file name of the (temporary) latex file.
+	  @param path name of the files original path.
+	*/
 	Chktex(string const & cmd, string const & file,
 	       string const & path);
 	
 	/** Runs chktex.
-	  Returns -1 if fail, number of messages otherwise.
+	    @return -1 if fail, number of messages otherwise.
 	  */
 	int run(TeXErrors &);
 private:

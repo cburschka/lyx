@@ -20,32 +20,27 @@
 
 #include "DialogBase.h"
 
-/**
-  *@author Jürgen Vigna
-  */
 
 class Dialogs;
 class LyXFunc;
 class FormCopyrightDialog;
 
+/**
+  @author Jürgen Vigna
+  */
 class FormCopyright : public DialogBase  {
 public: 
 	FormCopyright(LyXFunc *, Dialogs *);
 	~FormCopyright();
 
 private: 
-	/**@name Slot Methods */
-	//@{
 	/// Create the dialog if necessary, update it and display it.
 	void show();
 	/// Hide the dialog.
 	void hide();
 	/// Not used but we've got to implement it.
 	void update() {}
-	//@}
 
-	/**@name Private Data */
-	//@{
 	/// Real GUI implementation.
 	FormCopyrightDialog * dialog_;
 	/** Which LyXFunc do we use?
@@ -59,7 +54,6 @@ private:
 	Dialogs * d_;
 	/// Hide connection.
 	SigC::Connection h_;
-	//@}
 };
 
 #endif

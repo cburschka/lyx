@@ -32,14 +32,14 @@ public:
   on tex-accents. Monostate
   */
 class DefaultTrans : public TransInterface {
-private:
-	///
-	static bool init_;
 public:
 	///
 	DefaultTrans();
 	///
 	virtual string process(char, TransManager &);
+private:
+	///
+	static bool init_;
 };
 
 
@@ -95,6 +95,7 @@ private:
 };
 
 
+///
 char * Trans::Match(unsigned char c)
 {
 	return keymap_[c];

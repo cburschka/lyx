@@ -24,6 +24,8 @@
 #ifdef SIGC_CXX_NAMESPACES
 using SigC::Connection;
 using SigC::slot;
+using SigC::Object;
+
 #endif
 
 
@@ -33,13 +35,7 @@ using SigC::slot;
     satisfy that request.  Thus a dialog will have to "pull" the necessary
     details from the core of the program.
  */
-#ifdef SIGC_CXX_NAMESPACES
-///
-class DialogBase : public SigC::Object
-#else
-///
 class DialogBase : public Object
-#endif
 {
 public:
 	/**@name Constructors and Deconstructors */
@@ -60,8 +56,11 @@ public:
 
 	///
 	enum EnumDialogStatus {
+		///
 		DIALOG_UNMODIFIED,
+		///
 		DIALOG_MODIFIED,
+		///
 		DIALOG_READONLY
 	};
 };

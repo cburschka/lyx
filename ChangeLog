@@ -1,3 +1,14 @@
+2000-08-07  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/CutAndPaste.[Ch]: make all metods static. 
+
+	* development/Code_rules/Rules: more work, added section on
+	Exceptions, and a References section.
+
+	* a lot of header files: work to make doc++ able to generate the
+	source documentation, some workarounds of doc++ problems. Doc++ is
+	now able to generate the documentation.
+
 2000-08-07  Juergen Vigna  <jug@sad.it>
 
 	* src/insets/insettabular.C (recomputeTextInsets): removed function

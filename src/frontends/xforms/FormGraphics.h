@@ -39,74 +39,85 @@ struct FD_form_graphics;
  */
 class FormGraphics: public DialogBase {
 public:
-	/**@name Constructors and Destructors */
-	//@{
 	/// #FormGraphics x(LyXFunc ..., Dialogs ...);#
 	FormGraphics(LyXView *, Dialogs *);
 	///
 	~FormGraphics();
-	//@}
-
-	/**@name Real per-instance Callback Methods */
-	//@{
+	///
 	static  int WMHideCB(FL_FORM *, void *);
+	///
 	static void OKCB(FL_OBJECT *, long);
-    static void ApplyCB(FL_OBJECT *, long);
-    static void CancelCB(FL_OBJECT *, long);
-    static void BrowseCB(FL_OBJECT *, long);
-    static void AdvancedOptionsCB(FL_OBJECT *, long);
-    static void InputCB(FL_OBJECT *, long);
-	//@}
+	///
+	static void ApplyCB(FL_OBJECT *, long);
+	///
+	static void CancelCB(FL_OBJECT *, long);
+	///
+	static void BrowseCB(FL_OBJECT *, long);
+	///
+	static void AdvancedOptionsCB(FL_OBJECT *, long);
+	///
+	static void InputCB(FL_OBJECT *, long);
 
 private:
-	FormGraphics() : widthButtons(5), heightButtons(4), displayButtons(4) {}
-	FormGraphics(FormGraphics &) : DialogBase() {}
+	///
+	FormGraphics()
+		: widthButtons(5), heightButtons(4), displayButtons(4) {}
+	//
+	FormGraphics(FormGraphics const &) : DialogBase() {}
 	
-    /**@name Define enum constants */
-    //@{ 
-    /// The maximum digits for the image width (cm, inch, percent)
-    enum { WIDTH_MAXDIGITS = 3 }; 
-    /// The maximum digits for the image height (cm, inch, percent)
-    enum { HEIGHT_MAXDIGITS = 3 };
-    /// The maximum characters in the rotation angle (minus sign and 3 digits)
-    enum { ROTATE_MAXCHARS = 4 };
-    /// The maximum characters in a filename.
-    enum { FILENAME_MAXCHARS = 1024 };
-    //@}
-
+	/// The maximum digits for the image width (cm, inch, percent)
+	enum {
+		///
+		WIDTH_MAXDIGITS = 3
+	}; 
+	/// The maximum digits for the image height (cm, inch, percent)
+	enum {
+		///
+		HEIGHT_MAXDIGITS = 3
+	};
+	/// The maximum characters in the rotation angle (minus sign and 3 digits)
+	enum {
+		///
+		ROTATE_MAXCHARS = 4
+	};
+	/// The maximum characters in a filename.
+	enum {
+		///
+		FILENAME_MAXCHARS = 1024
+	};
     
 	/**@name Slot Methods */
 	//@{
 	/// Save the active inset and show the dialog.
 	void showDialog(InsetGraphics * inset);
 	/// Create the dialog if necessary, update it and display it.
-    void show();
+	void show();
 	/// Hide the dialog.
 	void hide();
 	/// Update the dialog
 	void update();
 	//@}
 
-    /**@name Callback methods */
-    //@{
-    /// Apply the changes to the inset.
-    void apply();
-    /// Verify that the input is correct. If not disable ok/apply buttons.
-    void input();
-    /// Open the file browse dialog to select an image file.
-    void browse();
-	/// Build the dialog
+	/**@name Callback methods */
+	//@{
+	/// Apply the changes to the inset.
+	void apply();
+	/// Verify that the input is correct. If not disable ok/apply buttons.
+	void input();
+	/// Open the file browse dialog to select an image file.
+	void browse();
 	//@}
 	
-    void build();
+	/// Build the dialog
+	void build();
 	///
 	FD_form_graphics * build_graphics();
 	/// Explicitly free the dialog.
 	void free();
-    /// Display a file browser dialog and return the file chosen.
-    string browseFile(string const & filename);
+	/// Display a file browser dialog and return the file chosen.
+	string browseFile(string const & filename);
 
-	/**@name Private Data */
+	/**@name Data */
 	//@{
 	/// Real GUI implementation.
 	FD_form_graphics * dialog_;
@@ -119,23 +130,25 @@ private:
 	    Used so we can get at the signals we have to connect to.
 	*/
 	Dialogs * d_;
-    /** Which Inset do we belong to?
-     *  Used to set and update data to/from the inset.
-     */
-    InsetGraphics * inset_;
-    /// The radio buttons groups
-    RadioButtonGroup widthButtons;
-    RadioButtonGroup heightButtons;
-    RadioButtonGroup displayButtons;
+	/** Which Inset do we belong to?
+	   Used to set and update data to/from the inset.
+	*/
+	InsetGraphics * inset_;
+	/// The radio buttons groups
+	RadioButtonGroup widthButtons;
+	///
+	RadioButtonGroup heightButtons;
+	///
+	RadioButtonGroup displayButtons;
 
-    /// Inset Hide connection, connected to the calling inset hide signal.
-    Connection ih_;
+	/// Inset Hide connection, connected to the calling inset hide signal.
+	Connection ih_;
 	/// Hide connection.
 	Connection h_;
-    /// Update connection.
-    Connection u_;
-    /// Last used figure path
-    string last_image_path;
+	/// Update connection.
+	Connection u_;
+	/// Last used figure path
+	string last_image_path;
 	//@}
 
 };

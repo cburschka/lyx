@@ -27,7 +27,8 @@ public:
 	///
 	Language() : RightToLeft_(false) {}
 	///
-	Language(string const & l, string const & d, bool rtl, Encoding const * e)
+	Language(string const & l, string const & d,
+		 bool rtl, Encoding const * e)
 		: lang_(l), display_(d), RightToLeft_(rtl) , encoding_(e) {}
 	///
 	string const & lang() const {
@@ -57,6 +58,7 @@ private:
 };
 
 #if 0
+///
 bool operator==(Language const & l1, Language const & l2) 
 {
 	return l1.lang == l2.lang
@@ -65,17 +67,20 @@ bool operator==(Language const & l1, Language const & l2)
 		&& l1.encoding_ == l2.encoding_;
 }
 
-
+///
 bool operator!=(Language const l1, Language const & l2)
 {
 	return !(l1 == l2);
 
 }
 #endif
-
+///
 typedef std::map<string, Language> Languages;
+///
 extern Languages languages;
+///
 extern Language const * default_language;
+///
 extern Language const *ignore_language;
 
 #endif

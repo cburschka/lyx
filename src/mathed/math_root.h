@@ -26,7 +26,7 @@
 
 ///
 class MathRootInset: public MathSqrtInset {
- public:
+public:
     ///
     explicit
     MathRootInset(short st = LM_ST_TEXT);
@@ -59,7 +59,7 @@ class MathRootInset: public MathSqrtInset {
     ///
     void  SetStyle(short);
 
- protected:
+protected:
     ///
     int idx;
     ///

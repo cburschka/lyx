@@ -58,7 +58,7 @@ string const FileSearch(string const & path, string const & name,
     1: dir writeable
     0: not writeable
    -1: error- couldn't find out, or unsure
-  */
+*/
 int IsDirWriteable (string const & path);
 
 /** Is a file readable ?

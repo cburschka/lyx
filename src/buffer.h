@@ -56,27 +56,21 @@ struct DEPCLEAN {
   */
 class Buffer {
 public:
-	/**@name Constructors and destructor */
-	//@{
 	///
 	explicit Buffer(string const & file, bool b = false);
 	
 	///
 	~Buffer();
-	//@}
-
-	/**@name Methods */
-	//@{
 
 	/** save the buffer's parameters as user default
-	    This function saves a file user_lyxdir/templates/defaults.lyx 
+	    This function saves a file #user_lyxdir/templates/defaults.lyx# 
 	    which parameters are those of the current buffer. This file
 	    is used as a default template when creating a new
-	    file. Returns true on success.
+	    file. Returns #true# on success.
 	*/
 	bool saveParamsAsDefaults();
 
-	/** high-level interface to buffer functionality
+	/** High-level interface to buffer functionality.
 	    This function parses a command string and executes it
 	*/
 	bool Dispatch(string const & command);
@@ -89,6 +83,7 @@ public:
 
 	/// should be changed to work for a list.
 	void resize();
+	///
 	void resizeInsets(BufferView *);
 
 	/// Update window titles of all users
@@ -98,12 +93,12 @@ public:
 	void resetAutosaveTimers() const;
 
 	/** Adds the BufferView to the users list.
-	    Later this func will insert the BufferView into a real list,
+	    Later this func will insert the #BufferView# into a real list,
 	    not just setting a pointer.
 	*/
 	void addUser(BufferView * u) { users = u; }
 
-	/** Removes the BufferView from the users list.
+	/** Removes the #BufferView# from the users list.
 	    Since we only can have one at the moment, we just reset it.
 	*/
 	void delUser(BufferView *) { users = 0; }
@@ -119,16 +114,18 @@ public:
 	void loadAutoSaveFile();
 	
 	/** Reads a file. 
-	    Returns false if it fails.
-	    If par is given, the file is inserted. */
+	    @param par if != 0 insert the file.
+	    @return #false# if method fails.
+	*/
 	bool readFile(LyXLex &, LyXParagraph * par = 0);
 	
 	/** Reads a file without header.
-	    Returns false, if file is not completely read.
-	    If par is given, the file is inserted. */
+	    @param par if != 0 insert the file.
+	    @return false if file is not completely read.
+	*/
 	bool readLyXformat2(LyXLex &, LyXParagraph * par = 0);
 
-	/* This parses a single LyXformat-Token */
+	/// This parses a single LyXformat-Token.
 	bool parseSingleLyXformat2Token(LyXLex &, LyXParagraph *& par,
 					LyXParagraph *& return_par,
 					string const & token, int & pos,
@@ -139,16 +136,16 @@ public:
 #endif
 		);
 private:
-	// Parse a single inset.
+	/// Parse a single inset.
 	void readInset(LyXLex &, LyXParagraph *& par, int & pos, LyXFont &);
 public:
 	/** Save file
 	    Takes care of auto-save files and backup file if requested.
-	    Returns true if the save is successful, false otherwise.
+	    Returns #true# if the save is successful, #false# otherwise.
 	*/
 	bool save() const;
 	
-	/// Write file. Returns false if unsuccesful.
+	/// Write file. Returns #false# if unsuccesful.
 	bool writeFile(string const &, bool) const;
 	
 	///
@@ -158,12 +155,11 @@ public:
 	void makeLaTeXFile(string const & filename,
 			   string const & original_path,
 			   bool nice, bool only_body = false);
-	//
-	// LaTeX all paragraphs from par to endpar,
-	// if endpar == 0 then to the end
-	//
-	void latexParagraphs(std::ostream & os, LyXParagraph *par,
-			     LyXParagraph *endpar, TexRow & texrow) const;
+	/** LaTeX all paragraphs from par to endpar.
+	    @param endpar if == 0 then to the end
+	*/
+	void latexParagraphs(std::ostream & os, LyXParagraph * par,
+			     LyXParagraph * endpar, TexRow & texrow) const;
 
 	///
 	int runLaTeX();
@@ -249,7 +245,8 @@ public:
 	string const & fileName() const { return filename; }
 
 	/** A transformed version of the file name, adequate for LaTeX  
-	    The path is stripped if no_path is true (default) */
+	    The path is stripped if no_path is true (default)
+	*/
 	string getLatexName(bool no_path = true) const;
 
 	/// Change name of buffer. Updates "read-only" flag.
@@ -264,16 +261,16 @@ public:
 	/// Set buffer read-only flag
 	void setReadonly(bool flag = true);
 
-	/// returns true if the buffer contains a LaTeX document
+	/// returns #true# if the buffer contains a LaTeX document
 	bool isLatex() const;
-	/// returns true if the buffer contains a LinuxDoc document
+	/// returns #true# if the buffer contains a LinuxDoc document
 	bool isLinuxDoc() const;
-	/// returns true if the buffer contains a DocBook document
+	/// returns #true# if the buffer contains a DocBook document
 	bool isDocBook() const;
-	/** returns true if the buffer contains either a LinuxDoc
+	/** returns #true# if the buffer contains either a LinuxDoc
 	    or DocBook document */
 	bool isSGML() const;
-        /// returns true if the buffer contains a Wed document
+        /// returns #true# if the buffer contains a Wed document
         bool isLiterate() const;
 
 	///
@@ -281,7 +278,7 @@ public:
 
 	/** Validate a buffer for LaTeX.
 	    This validates the buffer, and returns a struct for use by
-	    makeLaTeX and others. Its main use is to figure out what
+	    #makeLaTeX# and others. Its main use is to figure out what
 	    commands and packages need to be included in the LaTeX file.
 	    It (should) also check that the needed constructs are there
 	    (i.e. that the \refs points to coresponding \labels). It
@@ -296,8 +293,11 @@ public:
 	std::vector<std::pair<string,string> > getBibkeyList();
 	///
 	struct TocItem {
+		///
 		LyXParagraph * par;
+		///
 		int depth;
+		///
 		string str;
 	};
 	///
@@ -324,8 +324,6 @@ public:
 	void ChangeLanguage(Language const * from, Language const * to);
 	///
 	bool isMultiLingual();
-
-        //@}
 
 	/// Does this mean that this is buffer local?
         UndoStack undostack;
@@ -406,7 +404,7 @@ private:
 	/// is this a unnamed file (New...)
 	bool unnamed;
 
-	/// is regenerating .tex necessary
+	/// is regenerating #.tex# necessary
 	DEPCLEAN * dep_clean;
 
 	/// buffer is r/o
@@ -422,19 +420,25 @@ private:
 	    Why not keep a list of the BufferViews that use this buffer?
 
 	    At least then we don't have to do a lot of magic like:
-	    buffer->lyx_gui->bufferview->updateLayoutChoice. Just ask each
-	    of the buffers in the list of users to do a updateLayoutChoice.
+	    #buffer->lyx_gui->bufferview->updateLayoutChoice#. Just ask each
+	    of the buffers in the list of users to do a #updateLayoutChoice#.
 	*/
 	BufferView * users;
 
 public:
+	///
 	class inset_iterator {
 	public:
+		///
 		inset_iterator() : par(0) /*, it(0)*/ {}
+		//
 		inset_iterator(LyXParagraph * paragraph) : par(paragraph) {
 			SetParagraph();
 		}
-		inset_iterator(LyXParagraph * paragraph, LyXParagraph::size_type pos);
+		///
+		inset_iterator(LyXParagraph * paragraph,
+			       LyXParagraph::size_type pos);
+		///
 		inset_iterator & operator++() {
 			if (par) {
 				++it;
@@ -445,23 +449,26 @@ public:
 			}
 			return *this;
 		}
+		///
 		Inset * operator*() {return *it; }
+		///
 		LyXParagraph * getPar() { return par; }
+		///
 		LyXParagraph::size_type getPos() {return it.getPos(); }
+		///
 		friend
 		bool operator==(inset_iterator const & iter1,
-				inset_iterator const & iter2) {
-			return iter1.par == iter2.par
-				&& (iter1.par == 0 || iter1.it == iter2.it);
-		}
+				inset_iterator const & iter2);
+		///
 		friend
 		bool operator!=(inset_iterator const & iter1,
-				inset_iterator const & iter2) {
-			return !(iter1 == iter2);
-		}
+				inset_iterator const & iter2);
 	private:
+		///
 		void SetParagraph();
+		///
 		LyXParagraph * par;
+		///
 		LyXParagraph::inset_iterator it;
 	};
 
@@ -482,6 +489,7 @@ void Buffer::setParentName(string const & name)
 	params.parentname = name;    
 }
 
+///
 inline
 bool operator==(Buffer::TocItem const & a, Buffer::TocItem const & b) {
 	return a.par == b.par && a.str == b.str;
@@ -489,10 +497,26 @@ bool operator==(Buffer::TocItem const & a, Buffer::TocItem const & b) {
 }
 
 
+///
 inline
 bool operator!=(Buffer::TocItem const & a, Buffer::TocItem const & b) {
 	return !(a == b);
 	// No need to compare depth.
 }
 
+///
+inline
+bool operator==(Buffer::inset_iterator const & iter1,
+		Buffer::inset_iterator const & iter2) {
+	return iter1.par == iter2.par
+		&& (iter1.par == 0 || iter1.it == iter2.it);
+}
+
+///
+inline
+bool operator!=(Buffer::inset_iterator const & iter1,
+		Buffer::inset_iterator const & iter2) {
+	return !(iter1 == iter2);
+}
 #endif
+

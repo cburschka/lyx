@@ -77,8 +77,10 @@ private:
 };
 
 
+///
 class InsetCommand : public InsetButton, public noncopyable {
 public:
+	///
 	explicit
 	InsetCommand(InsetCommandParams const &);
 	///

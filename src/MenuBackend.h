@@ -108,7 +108,6 @@ private:
 	bool menubar_;
 	///
 	string name_;
-	///
 };
 
 

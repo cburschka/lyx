@@ -28,22 +28,20 @@
 
 ///
 enum mathIterFlags {
-	/// Allow newlines
+    /// Allow newlines
     MthIF_CR = 1,
     /// Allow tabs
     MthIF_Tabs = 2
 };
 
 
-/**
- Specialized array iterator for amth paragraph.  Used for
- storing and querying data operations
- */
+/** Specialized array iterator for math paragraph.
+    Used for storing and querying data operations
+*/
 class MathedIter {
  public:
     ///
-    MathedIter()
-    {
+    MathedIter() {
 	pos = 0;
 	fcode = 0;
 	array = 0;
@@ -54,11 +52,11 @@ class MathedIter {
     explicit
     MathedIter(LyxArrayBase *);
     ///
-    virtual ~MathedIter() { }
+    virtual ~MathedIter() {}
     ///
     bool goNextCode(MathedTextCodes);
     ///
-   void goPosRel(int);
+    void goPosRel(int);
     ///
     void goPosAbs(int);
     ///
@@ -139,14 +137,15 @@ class MathedIter {
     LyxArrayBase *array;
     // one element stack
     struct MIState {
-	    ///
+	///
 	short fcode;
-	    ///
+	///
 	int x, y;
-	    ///
+	///
 	int pos, row, col;
-    } stck;
-    
+    };
+    ///
+    MIState stck;
     /// Saves the current state of the iterator
     virtual void ipush();
     /// Recover previous state
@@ -166,13 +165,16 @@ class MathedIter {
 class MathedXIter: public MathedIter {
  public:
     ///
-    MathedXIter() : MathedIter(), sx(0), sw(0) { x = y = size = 0;  p = 0; crow = 0; }
-    ///
-    MathedXIter(MathParInset*);
+    MathedXIter()
+	    : MathedIter(), sx(0), sw(0) {
+	    x = y = size = 0;  p = 0; crow = 0;
+    }
+    //
+    MathedXIter(MathParInset *);
     ///
     void SetData(MathParInset *);
     ///
-    MathParInset *getPar() { return p; }
+    MathParInset * getPar() { return p; }
     ///
     bool Next();
     ///
@@ -191,12 +193,12 @@ class MathedXIter: public MathedIter {
     void Adjust();
     ///
     inline
-    void GetPos(int&, int&);
+    void GetPos(int &, int &);
     ///
     inline
-    void GetIncPos(int&, int&);
+    void GetIncPos(int &, int &);
     ///
-    byte* GetString(int&);
+    byte * GetString(int &);
     ///
     int GetX();
     ///
@@ -206,22 +208,19 @@ class MathedXIter: public MathedIter {
     ///
     void fitCoord(int, int);
     /// 
-    void getAD(int& a, int& d);
+    void getAD(int & a, int & d);
     
     /// Create a new row and insert #ncols# tabs.
     void addRow();
-	///
-	void delRow();
+    ///
+    void delRow();
     
-	/**$ These two functions will be moved from here */
-	  //@{
-	///
+    ///
     bool setLabel(char* label);
-	///
+    ///
     bool setNumbered(bool);
-	//@}
 	
-	///
+    ///
     void setTab(int, int);
     /// Merge the array at current position
     void Merge(LyxArrayBase*);
@@ -229,7 +228,7 @@ class MathedXIter: public MathedIter {
     void Clean(int pos2);
     MathedRowSt *adjustVerticalSt();
     
- private:
+private:
     /// This function is not recursive, as MathPar::Metrics is
     void IMetrics(int, int&, int&, int&);
     /// Font size (display, text, script, script2) 
@@ -248,16 +247,16 @@ class MathedXIter: public MathedIter {
     bool limits;
     /// Type of previous script
     short s_type;  
-
+    ///
     void ipush();
-
+    ///
     void ipop();
 
- protected:
+protected:
     /// 
     MathedRowSt *crow;
     
- private:
+private:
     ///
     friend class MathedCursor;
 };

@@ -96,7 +96,6 @@ public:
 	virtual void undoLast();
 	///
 	virtual void getLog(string const &);
-private:
 };
 
 

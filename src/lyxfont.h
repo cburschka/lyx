@@ -155,7 +155,7 @@ public:
 	///
 	LyXFont();
 
-	/// LyXFont x(LyXFont ...) and LyXFont x = LyXFont ...
+	// LyXFont x(LyXFont ...) and LyXFont x = LyXFont ...
 	LyXFont(LyXFont const & x);
  
 	/// Shortcut initialization
@@ -264,16 +264,15 @@ public:
 	/// Returns size of font in LaTeX text notation
 	string latexSize() const;
  
-	/** Updates font settings according to request. If an
-	    attribute is IGNORE, the attribute is left as it is. */
- 	/* 
- 	 * When toggleall = true, all properties that matches the font in use
- 	 * will have the effect that the properties is reset to the
- 	 * default.  If we have a text that is TYPEWRITER_FAMILY, and is
- 	 * update()'ed with TYPEWRITER_FAMILY, the operation will be as if
- 	 * a INHERIT_FAMILY was asked for.  This is necessary for the
- 	 * toggle-user-defined-style button on the toolbar.
- 	 */
+	/** Updates font settings according to request.
+	    If an attribute is IGNORE, the attribute is left as it is.
+	    When toggleall = true, all properties that matches the font in use
+	    will have the effect that the properties is reset to the
+	    default.  If we have a text that is TYPEWRITER_FAMILY, and is
+	    update()'ed with TYPEWRITER_FAMILY, the operation will be as if
+	    a INHERIT_FAMILY was asked for.  This is necessary for the
+	    toggle-user-defined-style button on the toolbar.
+	*/
  	void update(LyXFont const & newfont, 
 		    Language const * default_lang,
 		    bool toggleall = false);
@@ -317,16 +316,11 @@ public:
 
 	///
 	friend
-	bool operator==(LyXFont const & font1, LyXFont const & font2) {
-		return font1.bits == font2.bits &&
-			font1.lang == font2.lang;
-	}
+	bool operator==(LyXFont const & font1, LyXFont const & font2);
 
 	///
 	friend 
-	bool operator!=(LyXFont const & font1, LyXFont const & font2) {
-		return !(font1 == font2);
-	}
+	bool operator!=(LyXFont const & font1, LyXFont const & font2);
 
 	/// compares two fonts, ignoring the setting of the Latex part.
 	bool equalExceptLatex(LyXFont const &) const;
@@ -378,8 +372,21 @@ private:
 					 LyXFont::FONT_MISC_STATE org);
 };
 
-
+///
 std::ostream & operator<<(std::ostream &, LyXFont::FONT_MISC_STATE);
+
+///
+inline
+bool operator==(LyXFont const & font1, LyXFont const & font2) {
+	return font1.bits == font2.bits &&
+		font1.lang == font2.lang;
+}
+
+///
+inline
+bool operator!=(LyXFont const & font1, LyXFont const & font2) {
+	return !(font1 == font2);
+}
 
 
 inline
@@ -420,6 +427,8 @@ LyXFont::LyXFont(LyXFont::FONT_INIT3)
 	bits = sane;
 	lang = default_language;
 }
+
+
 inline
 LyXFont::LyXFont(LyXFont::FONT_INIT1, Language const * l)
 {

@@ -33,7 +33,7 @@
 
 #include <cstring> // for size_t
 
-/* A string class for LyX
+/** A string class for LyX
   
   This is a permanent String class. It is modeled closely after the C++ STL
   string class. In comparison with STL string lyxstring lack support for
@@ -159,7 +159,7 @@ public:
 	/// #lyxstring x("abc", 2) -> "ab"#
 	lyxstring(value_type const *, size_type n);
 	
-	/// #lyxstring x("abc")#
+	// #lyxstring x("abc")#
 	lyxstring(value_type const *);
 	
 	/// lyxstring(5, 'n') -> "nnnnn"

@@ -23,21 +23,53 @@
 #include "bmtable.h"                 
 
 ///
-enum  {
-   MM_GREEK, MM_ARROW, MM_BOP, MM_BRELATS, MM_VARSIZE, MM_MISC,
-   MM_FRAC, MM_SQRT, MM_DELIM, MM_MATRIX, MM_EQU,
-   MM_DECO, MM_SPACE, MM_DOTS, MM_FUNC,
-   MM_MAX,
-   MM_CLOSE = 1024,
-   MM_APPLY, MM_OK
+enum SomeMathValues {
+    ///
+    MM_GREEK,
+    ///
+    MM_ARROW,
+    ///
+    MM_BOP,
+    ///
+    MM_BRELATS,
+    ///
+    MM_VARSIZE,
+    ///
+    MM_MISC,
+    ///
+    MM_FRAC,
+    ///
+    MM_SQRT,
+    ///
+    MM_DELIM,
+    ///
+    MM_MATRIX,
+    ///
+    MM_EQU,
+    ///
+    MM_DECO,
+    ///
+    MM_SPACE,
+    ///
+    MM_DOTS,
+    ///
+    MM_FUNC,
+    ///
+    MM_MAX,
+    ///
+    MM_CLOSE = 1024,
+    ///
+    MM_APPLY,
+    ///
+    MM_OK
 };
 
-
+///
 typedef FL_OBJECT * FL_OBJECTP;
 
 /// Class to manage bitmap menu bars
 class BitmapMenu {
-  ///
+   ///
    static BitmapMenu * active;
    ///
    friend int peek_event(FL_FORM *, void *);
@@ -82,7 +114,7 @@ protected:
    int  GetIndex(FL_OBJECT * ob);
 };
 
-// This is just a wrapper around peek_event()
+/// This is just a wrapper around peek_event()
 extern "C" int C_peek_event(FL_FORM * form, void * ptr);
 
 
@@ -102,6 +134,7 @@ void BitmapMenu::Next()  {
 
 #include "math_forms.h"
 
+///
 extern FD_panel * create_math_panel(void);
 
 #endif /* FD_math_panel_h_ */

@@ -20,7 +20,9 @@ class LyXScreen;
 using SigC::Object;
 #endif
 
+///
 struct BufferView::Pimpl : public Object {
+	///
 	Pimpl(BufferView * i, LyXView * o,
 	      int xpos, int ypos, int width, int height);
 	///
@@ -41,7 +43,7 @@ struct BufferView::Pimpl : public Object {
 	int resizeCurrentBuffer();
 	///
 	void update();
-	///
+	//
 	void update(BufferView::UpdateCodes);
 	///
 	void gotoError();
@@ -54,7 +56,8 @@ struct BufferView::Pimpl : public Object {
 	///
 	void scrollCB(double value);
 	///
-	Inset * checkInsetHit(LyXText *, int & x, int & y, unsigned int button);
+	Inset * checkInsetHit(LyXText *, int & x, int & y,
+			      unsigned int button);
 	/// 
 	int scrollUp(long time);
 	///
@@ -142,6 +145,7 @@ struct BufferView::Pimpl : public Object {
 	///
 	void stuffClipboard(string const &) const;
 private:
+	///
 	bool using_xterm_cursor;
 };
 #endif

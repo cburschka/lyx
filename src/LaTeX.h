@@ -64,10 +64,10 @@ private:
 class LaTeX {
 public:
 	/** Return values from scanLogFile() and run() (to come)
-
-	  This enum should be enlarged a bit so that one could
-	  get more feedback from the LaTeX run.
-	  */
+	    
+	    This enum should be enlarged a bit so that one could
+	    get more feedback from the LaTeX run.
+	*/
 	enum log_status {
 		///
 		NO_ERRORS = 0,
@@ -154,7 +154,7 @@ protected:
 	///
 	string path;
 
-	// used by scanLogFile
+	/// used by scanLogFile
 	int num_errors;
 };
 

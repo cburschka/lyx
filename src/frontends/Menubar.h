@@ -42,8 +42,10 @@ public:
 	//with compaq cxx. (Jean-Marc)
 	// Is this a new comment? (Lgb)
 	struct Pimpl;
+	///
 	friend struct Pimpl;
 private:
+	///
 	Pimpl * pimpl_;
 };
 #endif

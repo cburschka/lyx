@@ -34,14 +34,15 @@ void CloseAllBufferRelatedDialogs();
 void updateAllVisibleBufferRelatedDialogs();
 
 /* These shortcut extractors should be shifted to frontends/xforms/ eventually */
+
 /// Extract shortcut from <ident>|<shortcut> string
 char const * flyx_shortcut_extract(char const * sc);
-/// Make a shortnamed version of the above func
+/// Shortcut for flyx_shortcut_extract
 #define scex flyx_shortcut_extract
 
 /// Extract shortcut from <ident>|<shortcut> string
 char const * flyx_ident_extract(char const * sc);
-/// Make a shortnamed versjon of the above func
+/// Shortcut for flyx_ident_extract
 #define idex flyx_ident_extract
 
 /// Show message
@@ -70,8 +71,7 @@ void WarnReadonly(string const & file);
 /// Get the dpi setting of the current screen
 float getScreenDPI();
 
-// inlined functions
-// rings the audio bell.
+/// rings the audio bell.
 inline
 void LyXBell() {
 	// if (audio()) ON/OFF switch yet to be implemented

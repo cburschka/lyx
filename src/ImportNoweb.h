@@ -41,7 +41,8 @@ private:
 	///
 	string documentclass();
 	///
-	enum { 
+	enum {
+		///
 		BUFSIZE = 512 
 	};
 };

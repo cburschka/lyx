@@ -30,7 +30,7 @@
 
 class BufferView;
 
-
+///
 class WorkArea {
 public:
 	///
@@ -106,26 +106,26 @@ public:
 	BufferView * owner() const { return owner_; }
 
 	// Signals
-	///
-	//Signal0<void> workAreaExpose;
-	///
-	//Signal3<void, int, int, unsigned int> workAreaButtonPress;
-	///
-	//Signal3<void, int, int, unsigned int> workAreaButtonRelease;
-	///
-	//Signal3<void, int, int, unsigned int> workAreaMotionNotify;
-	///
-	//Signal0<void> workAreaFocus;
-	///
-	//Signal0<void> workAreaUnfocus;
-	///
-	//Signal0<void> workAreaEnter;
-	///
-	//Signal0<void> workAreaLeave;
-	///
-	//Signal3<void, int, int, unsigned int> workAreaDoubleClick;
-	///
-	//Signal3<void, int, int, unsigned int> workAreaTripleClick;
+	//
+	// Signal0<void> workAreaExpose;
+	//
+	// Signal3<void, int, int, unsigned int> workAreaButtonPress;
+	//
+	// Signal3<void, int, int, unsigned int> workAreaButtonRelease;
+	//
+	// Signal3<void, int, int, unsigned int> workAreaMotionNotify;
+	//
+	// Signal0<void> workAreaFocus;
+	//
+	// Signal0<void> workAreaUnfocus;
+	//
+	// Signal0<void> workAreaEnter;
+	//
+	// Signal0<void> workAreaLeave;
+	//
+	// Signal3<void, int, int, unsigned int> workAreaDoubleClick;
+	//
+	// Signal3<void, int, int, unsigned int> workAreaTripleClick;
 private:
 	///
 	void createPixmap(int, int);

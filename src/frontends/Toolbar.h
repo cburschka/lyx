@@ -64,7 +64,9 @@ public:
 
 private:
 	struct Pimpl;
+	///
 	friend struct Toolbar::Pimpl;
+	///
 	Pimpl * pimpl_;
 };
 #endif

@@ -34,30 +34,22 @@ struct FD_form_copyright;
  */
 class FormCopyright : public DialogBase, public noncopyable {
 public:
-	/**@name Constructors and Destructors */
-	//@{
 	/// #FormCopyright x(LyXFunc ..., Dialogs ...);#
 	FormCopyright(LyXView *, Dialogs *);
 	///
 	~FormCopyright();
-	//@}
 
-	/**@name Real per-instance Callback Methods */
-	//@{
+	///
 	static  int WMHideCB(FL_FORM *, void *);
+	///
 	static void OKCB(FL_OBJECT *, long);
-	//@}
-
 private:
-	/**@name Slot Methods */
-	//@{
 	/// Create the dialog if necessary, update it and display it.
 	void show();
 	/// Hide the dialog.
 	void hide();
 	/// Not used but we've got to implement it.
 	void update() {}
-	//@}
 
 	/// Build the dialog
 	void build();
@@ -66,8 +58,6 @@ private:
 	/// Explicitly free the dialog.
 	void free();
 
-	/**@name Private Data */
-	//@{
 	/// Real GUI implementation.
 	FD_form_copyright * dialog_;
 	/** Which LyXFunc do we use?
@@ -81,7 +71,6 @@ private:
 	Dialogs * d_;
 	/// Hide connection.
 	Connection h_;
-	//@}
 };
 
 #endif

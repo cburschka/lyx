@@ -25,14 +25,14 @@
 #include "layout.h"
 #include "support/block.h"
 
-/**
-  This class contains all the parameters for this a buffer uses. Some
-  work needs to be done on this class to make it nice. Now everything
-  is in public.
-  */
 
 struct Language;
 
+/** Buffer parameters.
+   This class contains all the parameters for this a buffer uses. Some
+   work needs to be done on this class to make it nice. Now everything
+   is in public.
+*/
 class BufferParams {
 public:
 	///
@@ -104,11 +104,8 @@ public:
 		///
 		ORIENTATION_LANDSCAPE
 	};
-	//@Man: Constructors and Deconstructors
-	//@{
 	///
 	BufferParams();
-	//@}
 
 	///
 	void writeFile(std::ostream &) const;
@@ -136,12 +133,12 @@ public:
  	LyXTextClassList::size_type textclass;
 
 	/* this are for the PaperLayout */
-	///
-  	char papersize; /* the general papersize (papersize2 or paperpackage */ // add approp. signedness
-        ///
-        char papersize2; /* the selected Geometry papersize */ // add approp. signedness
-        ///
-        char paperpackage; /* a special paperpackage .sty-file */ // add approp. signedness
+	/// the general papersize (papersize2 or paperpackage
+  	char papersize; // add apprip. signedness 
+        ///  the selected Geometry papersize
+        char papersize2; // add approp. signedness
+        /// a special paperpackage .sty-file
+        char paperpackage; // add approp. signedness
         ///
 	PAPER_ORIENTATION orientation; // add approp. signedness
 	///
@@ -212,7 +209,8 @@ private:
 	///
 	friend class Buffer;
 	/** This is the amount of space used for paragraph_separation "skip",
-	  and for detached paragraphs in "indented" documents. */
+	  and for detached paragraphs in "indented" documents.
+	*/
 	VSpace defskip;
 };
 

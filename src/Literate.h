@@ -22,6 +22,7 @@ class MiniBuffer;
 ///
 class Literate : public LaTeX {
 public:
+	///
 	Literate(string const & cmd, string const & file, string const & path,
 		 string const & litfile,
 		 string const & literate_cmd, string const & literate_filter, 

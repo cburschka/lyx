@@ -142,6 +142,7 @@ enum MathedTextCodes  {
 	LM_TC_MAX
 };
 
+///
 std::ostream & operator<<(std::ostream &, MathedTextCodes mtc);
 
 ///
@@ -383,11 +384,11 @@ class MathParInset: public MathedInset  {
 //    virtual void SetLabel(char const *) {}
     ///
     virtual void SetStyle(short);
-	///
+    ///
     virtual MathedRowSt * getRowSt() const { return 0; }
-	///
+    ///
     virtual void setRowSt(MathedRowSt *) {}
-	///
+    ///
     virtual bool Permit(short f) { return bool(f & flag); }
     
  protected:
@@ -416,7 +417,7 @@ class MathParInset: public MathedInset  {
 };
 
 
-/* The physical structure of a row and aditional information is stored here.
+/** The physical structure of a row and aditional information is stored here.
     It allows to manage the extra info independently of the paragraph data.  
     Only used for multiline paragraphs.
  */
@@ -554,70 +555,70 @@ int MathedLookupBOP(short);
 
 /************************ Inline functions ********************************/
 
+///
 inline
 bool MathIsInset(short x)
 {
 	return LM_TC_INSET <= x && x <= LM_TC_ACTIVE_INSET;
 }
 
-
+///
 inline
 bool MathIsFont(short x)
 {
 	return LM_TC_CONST <= x && x <= LM_TC_BSYM;
 }
 
-
+///
 inline
 bool MathIsAlphaFont(short x)
 {
 	return LM_TC_VAR <= x && x <= LM_TC_TEXTRM;
 }
 
-
+///
 inline
 bool MathIsActive(short x)
 {
 	return LM_TC_INSET < x && x <= LM_TC_ACTIVE_INSET;
 }
 
-
+///
 inline
 bool MathIsUp(short x)
 {
 	return x == LM_TC_UP;
 }
 
-
+///
 inline
 bool MathIsDown(short x)
 {
 	return x == LM_TC_DOWN;
 }
 
-
+///
 inline
 bool MathIsScript(short x)
 {
 	return x == LM_TC_DOWN || x == LM_TC_UP;
 }
 
-
+///
 inline
 bool MathIsBOPS(short x)
 {
 	return MathedLookupBOP(x) > LMB_NONE;
 }
 
-
-
+///
 inline
 bool MathIsBinary(short x)
 {
     return x == LM_TC_BOP || x == LM_TC_BOPS;
 }
 
-
+///
 inline
 bool MathIsSymbol(short x) {
     return LM_TC_SYMB <= x && x <= LM_TC_BSYM;
@@ -630,6 +631,7 @@ MathedInset::MathedInset(char const * nm, short ot, short st):
 {
    width = ascent = descent = 0;
 }
+
 
 inline
 bool MathParInset::Inside(int x, int y) 

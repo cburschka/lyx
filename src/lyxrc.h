@@ -17,10 +17,12 @@
 #endif
 
 #include "bufferparams.h"
+#include "support/utility.hpp"
 
 /// This contains the runtime configuration of LyX
-class LyXRC {
+class LyXRC : public noncopyable {
 public:
+	///
 	LyXRC();
 	///
 	void setDefaults();
@@ -92,10 +94,13 @@ public:
 	string dvi_to_ps_command;
         /// program for performing literate programming
         string literate_command;
+	///
         string literate_extension;
+	///
         string literate_error_filter;
         /// program for compiling
         string build_command;
+	///
         string build_error_filter;
 	/// program for running relyx
 	string relyx_command;
@@ -163,11 +168,16 @@ public:
 	string popup_font_name;
 	///
 	string font_norm;
+	///
 	enum FontEncoding {
+		///
 		ISO_10646_1,
+		///
 		ISO_8859_6_8,
+		///
 		OTHER_ENCODING
 	};
+	///
 	FontEncoding font_norm_type;
 	///
 	void set_font_norm_type();
@@ -251,6 +261,7 @@ public:
 	string docbook_to_pdf_command;
 };
 
+///
 extern LyXRC lyxrc;
 
 #endif

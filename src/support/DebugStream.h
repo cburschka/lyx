@@ -18,27 +18,19 @@
 
 #include "LOstream.h"
 
+// I don't really like this, but too please doc++...(Lgb)
+using std::ostream;
+
 #ifdef TEST_DEBUGSTREAM
 #include <string>
-///
 struct Debug {
-	///
 	enum type {
-		///
 		NONE = 0,
-		///
 		INFO       = (1 << 0),   // 1
-		///
 		WARN       = (1 << 1),   // 2
-		///
 		CRIT       = (1 << 2)   // 4
 	};
-	///
 	static const type ANY = type(INFO | WARN | CRIT);
-
-	/** A function to convert symbolic string names on debug levels
-	    to their numerical value.
-	*/
 	static Debug::type value(string const & val) {
 		if (val == "NONE") return Debug::NONE;
 		if (val == "INFO") return Debug::INFO;
@@ -46,7 +38,6 @@ struct Debug {
 		if (val == "CRIT") return Debug::CRIT;
 		return Debug::NONE;
 	}
-
 };
 #endif
 
@@ -87,18 +78,11 @@ struct Debug {
     debug[Debug::type(Debug::INFO | Debug::CRIT)] << "...info/crit...\n";
 
 */
-
+class DebugStream : public ostream
+{
 // This workaround is needed only for gcc 2.8.1 (and possibly egcs
 // 1.0.x), which generates a compiler error when subclassing from
 // std::. (JMarc)
-#ifdef CXX_WORKING_NAMESPACES
-///
-class DebugStream : public std::ostream
-#else
-///
-class DebugStream : public ostream
-#endif
-{
 public:
 	/// Constructor, sets the debug level to t.
 	explicit DebugStream(Debug::type t = Debug::NONE);
@@ -108,8 +92,8 @@ public:
 	DebugStream(char const * f, Debug::type t = Debug::NONE);
 
 	///
-	virtual ~DebugStream();
-	
+	~DebugStream();
+
 	/// Sets the debug level to t.
 	void level(Debug::type t) {
 		dt = Debug::type(t & Debug::ANY);

@@ -60,6 +60,7 @@ public:
 	}
 protected:
 #ifdef ENABLE_ASSERTIONS
+	///
 	void testInvariant() const {
 		Assert(font >= MIN);
 		Assert(font < FONTMAX);
@@ -254,6 +255,7 @@ char const * Bullet::c_str() const
 
 /*-----------------End Bullet Member Functions-----------------*/
 
+///
 extern
 Bullet const ITEMIZE_DEFAULTS[];
 

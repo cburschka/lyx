@@ -91,7 +91,6 @@ public:
 	static void logClose(FL_OBJECT *, long);
 	///
 	static void logUpdate(FL_OBJECT *, long);
-protected:
 private:
 	///
 	Buffer * owner_;

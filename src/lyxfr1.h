@@ -11,12 +11,11 @@
 
 class LyXText;
 
-/**
-  LyXFindReplace"
-
-  This class implements Find & Replace in LyXText texts. It is based on
-  LyXFindReplace0, which implements the form related stuff. (see lyxfr0.h)
-  */
+/** Find and replace in LyXText texts.
+   
+   This class implements Find & Replace in LyXText texts. It is based on
+   LyXFindReplace0, which implements the form related stuff. (see lyxfr0.h)
+*/
 class LyXFindReplace {
 public:
 	///

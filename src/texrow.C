@@ -21,6 +21,7 @@
 #include "debug.h"
 
 using std::find_if;
+using std::endl;
 
 // Delete linked list
 void TexRow::reset()

@@ -33,15 +33,27 @@
 */
 struct PrinterParams {
 	///
-	enum Target{PRINTER, FILE};
+	enum Target{
+		///
+		PRINTER,
+		///
+		FILE
+	};
 	///
 	Target target;
 	///
 	string printer_name;
 	///
 	string file_name;
-	///We allow printing of even pages in a range and so on.
-	enum WhichPages{ALL, ODD, EVEN};
+	/// We allow printing of even pages in a range and so on.
+	enum WhichPages{
+		///
+		ALL,
+		///
+		ODD,
+		///
+		EVEN
+	};
 	///
 	WhichPages which_pages;
 	/** Print a page range. Both from_page and to_page used to be strings
@@ -63,15 +75,13 @@ struct PrinterParams {
 	// The settings below should allow us to print any read-only doc in
 	// whatever size/orientation we want it -- overriding the documents
 	// settings.
-        /// Override the documents orientation
-	//bool orientation;
-	/// Print n pages per physical sheet
-	//unsigned int nup;
-	/// Override document settings for duplex.
-	//bool duplex;
+        // Override the documents orientation
+	// bool orientation;
+	// Print n pages per physical sheet
+	// unsigned int nup;
+	// Override document settings for duplex.
+	// bool duplex;
 
-	//@name Constructors and Deconstructors
-	//@{
 	///
 	PrinterParams(Target const & t = PRINTER,
 		      string const & pname = lyxrc.printer,
@@ -108,15 +118,11 @@ struct PrinterParams {
 		{
 			testInvariant();
 		}
-	//@}
-
 
 // do we need these?
 //	friend bool operator==(PrinterParams const &, PrinterParams const &);
 //	friend bool operator<(PrinterParams const &, PrinterParams const &);
 
-	//@name Invariant Test Method
-	//@{
 	/** Test that all the fields contain valid entries.  It's unlikely
 	    that the internal code will get this wrong (at least for the
 	    xforms code anyway) however new ports and external scripts
@@ -157,7 +163,6 @@ struct PrinterParams {
 			}
 #endif
 		}
-	//@}
 };
 
 #endif

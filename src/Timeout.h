@@ -30,7 +30,9 @@ class Timeout {
 public:
 	///
 	enum Type {
+		///
 		ONETIME,
+		///
 		CONTINOUS
 	};
 	///

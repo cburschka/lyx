@@ -32,9 +32,13 @@ class BufferView : public noncopyable {
 public:
 	///
 	enum UpdateCodes {
+		///
 		UPDATE = 0,
+		///
 		SELECT = 1,
+		///
 		FITCUR = 2,
+		///
 		CHANGE = 4
 	};
 					    
@@ -62,12 +66,13 @@ public:
 	void fitCursor();
 	///
 	void update();
-	///
+	//
 	void update(UpdateCodes uc);
 	///
 	void updateScrollbar();
 	///
-	Inset * checkInsetHit(LyXText *, int & x, int & y, unsigned int button);
+	Inset * checkInsetHit(LyXText *, int & x, int & y,
+			      unsigned int button);
 	/// 
 	void redoCurrentBuffer();
 	///
@@ -172,14 +177,17 @@ public:
 	void insertErrors(TeXErrors & terr);
 	///
 	void setCursorFromRow(int row);
-	/** Insert an inset into the buffer
-	    Insert inset into buffer, placing it in a layout of lout,
-	    if no_table make sure that it doesn't end up in a table. */
+	/** Insert an inset into the buffer.
+	    Placie it in a layout of lout,
+	    if no_table make sure that it doesn't end up in a table.
+	*/
 	bool insertInset(Inset * inset, string const & lout = string(),
 			 bool no_table = false);
 	/// open and lock an updatable inset
 	bool open_new_inset(UpdatableInset * new_inset);
-	/// Inserts a lyx file at cursor position. Returns false if it fails.
+	/** Inserts a lyx file at cursor position.
+	    @return #false# if it fails.
+	*/
 	bool insertLyXFile(string const & file);
 	///
 	bool lockInset(UpdatableInset * inset);
@@ -244,11 +252,14 @@ public:
 	void stuffClipboard(string const &) const;
 private:
 	struct Pimpl;
+	///
 	friend struct BufferView::Pimpl;
+	///
 	Pimpl * pimpl_;
 };
 
 
+///
 BufferView::UpdateCodes operator|(BufferView::UpdateCodes uc1,
 				  BufferView::UpdateCodes uc2);
 

@@ -20,6 +20,7 @@
 
 #include "buffer.h"
 #include "debug.h"
+#include "support/utility.hpp"
 
 /** A class to hold all the buffers in a structure
   The point of this class is to hide from bufferlist what kind
@@ -29,7 +30,7 @@
   This class should ideally be enclosed inside class BufferList, but that
   gave me an "internal gcc error".
   */
-class BufferStorage {
+class BufferStorage : public noncopyable {
 public:
 	///
 	typedef std::vector<Buffer *> Container;
@@ -63,12 +64,9 @@ private:
 };
 
 
-/** The class governing all the open buffers
-  This class governs all the currently open buffers. Currently all the buffer
-  are located in a static array, soon this will change and we will have a
-  linked list instead.
+/** The class govern all open buffers.
  */
-class BufferList {
+class BufferList : public noncopyable {
 public:
 	///
  	BufferList();
@@ -121,10 +119,11 @@ public:
 	///
 	void emergencyWriteAll();
 
-	/** closes buffer
-	  Returns false if operation was canceled
+	/** Close buffer.
+	    @param buf the buffer that should be closed
+	    @return #false# if operation was canceled
 	  */
-	bool close(Buffer *);
+	bool close(Buffer * buf);
 
 	///
 	Buffer * first();

@@ -74,7 +74,7 @@ private:
 	Defaults defaults;
 };
 
-//The global instance
+/// The global instance
 extern ToolbarDefaults toolbardefaults;
 
 

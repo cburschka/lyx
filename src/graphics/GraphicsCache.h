@@ -20,14 +20,15 @@
 
 #include "LString.h"
 #include "GraphicsCacheItem.h"
+#include "support/utility.hpp"
 
 /** GraphicsCache is the manager of the image cache, it is responsible to
- * create the GraphicsCacheItem's and maintain them.
- *
- * GraphicsCache is a singleton class, there should be only one instance of
- * it at any moment.
- */
-class GraphicsCache {
+    create the GraphicsCacheItem's and maintain them.
+    
+    GraphicsCache is a singleton class, there should be only one instance of
+    it at any moment.
+*/
+class GraphicsCache : public noncopyable {
 public:
     /// Get the instance of the class.
     static GraphicsCache * getInstance();
@@ -47,8 +48,9 @@ private:
 
     /// Holder of the single instance of the class.
     static GraphicsCache * singleton;
-
+    ///
     typedef std::map<string, GraphicsCacheItem *> CacheType;
+    ///
     CacheType cache;
 };
 #endif

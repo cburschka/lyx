@@ -48,56 +48,56 @@ public:
     void draw(Painter &, int, int);
     ///
     void Metrics();
-	///
+    ///
     MathedInset * Clone();
-	///
+    ///
     void Write(std::ostream &, bool fragile);
-	///
+    ///
     bool setArgumentIdx(int);
-	///
+    ///
     int  getArgumentIdx();
-	///
+    ///
     int  getMaxArgumentIdx();
-	///
+    ///
     int GetColumns();
-	///
+    ///
     void GetXY(int &, int &) const;
-	///
+    ///
     void SetFocus(int, int);
-	///
+    ///
     LyxArrayBase * GetData();
-	///
+    ///
     MathedRowSt * getRowSt() const { return args[idx].row; }
-	///
+    ///
     void SetData(LyxArrayBase *);
-	///
+    ///
     MathedTextCodes getTCode() { return tcode; }
-	///
+    ///
     bool Permit(short);
     
 private:
+    ///
+    MathMacroTemplate * tmplate;
+    ///
+    struct MacroArgumentBase {
+	/// Position of the macro
+	int x, y;
 	///
-	MathMacroTemplate * tmplate;
+	MathedRowSt * row;
 	///
-	struct MacroArgumentBase {
-		/// Position of the macro
-		int x, y;
-		///
-		MathedRowSt * row;
-		///
-		LyxArrayBase * array;
-		///
-		MacroArgumentBase() { x = y = 0;  array = 0; row = 0; }
-	};
-	MacroArgumentBase * args;
+	LyxArrayBase * array;
 	///
-	int idx;
-	///
-	int nargs;
-	///
-	MathedTextCodes tcode;
-	///
-	friend class MathMacroTemplate;
+	MacroArgumentBase() { x = y = 0;  array = 0; row = 0; }
+    };
+    MacroArgumentBase * args;
+    ///
+    int idx;
+    ///
+    int nargs;
+    ///
+    MathedTextCodes tcode;
+    ///
+    friend class MathMacroTemplate;
 };
 
 
@@ -117,11 +117,11 @@ public:
     ~MathMacroArgument() { lyxerr << "help, destroyme!" << std::endl; }
     ///
     MathedInset * Clone() { return this; }
-	///
+    ///
     void Metrics();
-	///
+    ///
     void draw(Painter &, int x, int baseline);
-	///
+    ///
     void Write(std::ostream &, bool fragile);
     ///
     void setNumber(int n) { number = n; }

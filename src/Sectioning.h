@@ -47,7 +47,6 @@ private:
 
 ///
 class SectioningList {
-public:
 private:
 	///
 	typedef std::map<string, Section> List_;

@@ -48,6 +48,7 @@ public:
 
 	/// Constructor
 	LyXText(BufferView *);
+	///
 	LyXText(InsetText *);
    
 	/// Destructor
@@ -58,6 +59,7 @@ public:
 	mutable int number_of_rows;
 	///
 	mutable long height;
+	///
 	mutable unsigned int width;
 	/// the current font settings
 	mutable LyXFont current_font;
@@ -182,7 +184,8 @@ public:
 	/** returns the column near the specified x-coordinate of the row 
 	 x is set to the real beginning of this column
 	 */ 
-	int GetColumnNearX(BufferView *, Row * row, int & x, bool & boundary) const;
+	int GetColumnNearX(BufferView *, Row * row,
+			   int & x, bool & boundary) const;
 	
 	/** returns a pointer to a specified row. y is set to the beginning
 	 of the row
@@ -247,7 +250,7 @@ public:
 		       LyXParagraph::size_type pos,
 		       bool setfont = true,
 		       bool boundary = false) const;
-
+	///
 	void SetCursor(BufferView *, LyXCursor &, LyXParagraph * par,
 		       LyXParagraph::size_type pos,
 		       bool boundary = false) const;
@@ -269,6 +272,7 @@ public:
 
 	///
 	void SetCursorFromCoordinates(BufferView *, int x, long y) const;
+	///
 	void SetCursorFromCoordinates(BufferView *, LyXCursor &,
 				      int x, long y) const;
 	///
@@ -313,10 +317,13 @@ public:
 	void DeleteLineForward(BufferView *);
 	///
 	bool SelectWordWhenUnderCursor(BufferView *);
-
+	///
 	enum TextCase {
+		///
 		text_lowercase = 0,
+		///
 		text_capitalization = 1,
+		///
 		text_uppercase = 2
 	};
 	/// Change the case of the word at cursor position.
@@ -385,6 +392,7 @@ public:
 			  LyXAlignment align, 
 			  string labelwidthstring,
 			  bool noindent);
+	///
 	void SetParagraphExtraOpt(BufferView *, int type,
 				  char const * width,
 				  char const * widthp,
@@ -412,6 +420,7 @@ public:
 	/** if the string can be found: return true and set the cursor to
 	  the new position */
 	bool SearchForward(BufferView *, char const * str) const;
+	///
 	bool SearchBackward(BufferView *, char const * str) const;
 
 	/// needed to insert the selection
@@ -522,7 +531,7 @@ public:
 		else
 			return vis2log_list[pos-bidi_start];
 	}
-
+	///
 	inline
 	int bidi_level(LyXParagraph::size_type pos) const {
 		if (bidi_start == -1)
@@ -530,7 +539,7 @@ public:
 		else
 			return bidi_levels[pos-bidi_start];
 	}	
-
+	///
 	inline
 	bool bidi_InRange(LyXParagraph::size_type pos) const {
 		return bidi_start == -1 ||
@@ -544,14 +553,14 @@ private:
 	///
 	mutable Row * lastrow;
 
-	/** Copybuffer for copy environment type
+	/** Copybuffer for copy environment type.
 	  Asger has learned that this should be a buffer-property instead
 	  Lgb has learned that 'char' is a lousy type for non-characters
 	  */
 	LyXTextClass::size_type copylayouttype;
 
 	/** inserts a new row behind the specified row, increments
-	 * the touched counters */
+	    the touched counters */
 	void InsertRow(Row * row, LyXParagraph * par,
 		       LyXParagraph::size_type pos) const;
 	/** removes the row and reset the touched counters */
@@ -561,7 +570,8 @@ private:
 	void RemoveParagraph(Row * row) const;
 
 	/** insert the specified paragraph behind the specified row */
-	void InsertParagraph(BufferView *, LyXParagraph * par, Row * row) const;
+	void InsertParagraph(BufferView *,
+			     LyXParagraph * par, Row * row) const;
 
 	/** appends  the implizit specified paragraph behind the specified row,
 	 * start at the implizit given position */
@@ -684,13 +694,12 @@ private:
 
 	///
 	void charInserted();
-	///
-	/// special owner functions
+	//
+	// special owner functions
 	///
 	LyXParagraph * OwnerParagraph() const;
-	///
+	//
 	LyXParagraph * OwnerParagraph(LyXParagraph *) const;
-	///
 };
 
 #endif

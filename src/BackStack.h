@@ -15,9 +15,9 @@
 
 #include "LString.h"
 
-// Created by Alejandro Aguilar Sierra, 970806
-
 /**  Utility to get back from a reference or from a child document.
+     @author Alejandro Aguilar Sierra
+     @version 970806
  */
 class BackStack {
 private:
@@ -50,7 +50,9 @@ public:
 		stakk.pop();
 		return bit.fname;
 	}
-	///
+	/**
+	   @return returns #true# if the stack is empty, #false# otherwise.
+	 */
 	bool empty() const {
 		return stakk.empty();
 	}
