@@ -1,3 +1,8 @@
+2001-02-26  Juergen Vigna  <jug@sad.it>
+
+	* insettext.C (SetFont): Set Undo only if we have selection (as it is
+	handled in LyXText).
+
 2001-02-23  Juergen Vigna  <jug@sad.it>
 
 	* insettext.C (draw): some small repainting fixes.
