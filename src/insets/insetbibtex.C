@@ -29,6 +29,7 @@
 
 #include <fstream>
 
+using lyx::support::AbsolutePath;
 using lyx::support::ascii_lowercase;
 using lyx::support::ChangeExtension;
 using lyx::support::contains;
@@ -36,6 +37,7 @@ using lyx::support::findtexfile;
 using lyx::support::IsFileReadable;
 using lyx::support::ltrim;
 using lyx::support::MakeAbsPath;
+using lyx::support::MakeRelPath;
 using lyx::support::Path;
 using lyx::support::prefixIs;
 using lyx::support::rtrim;
@@ -91,6 +93,23 @@ string const InsetBibtex::getScreenLabel(Buffer const &) const
 }
 
 
+namespace {
+
+string normalize_name(Buffer const & buffer, OutputParams const & runparams,
+		      string const & name, string const & ext)
+{
+	string const fname = MakeAbsPath(name, buffer.filePath());
+	if (AbsolutePath(name) || !IsFileReadable(fname + ext))
+		return name;
+	else if (!runparams.nice) 
+		return fname;
+	else 
+		return MakeRelPath(fname, buffer.getMasterBuffer()->filePath());
+}
+	
+}
+
+
 int InsetBibtex::latex(Buffer const & buffer, ostream & os,
 		       OutputParams const & runparams) const
 {
@@ -113,11 +132,8 @@ int InsetBibtex::latex(Buffer const & buffer, ostream & os,
 	// have a comma-separated list of bibliographies
 	string db_out;
 	while (!adb.empty()) {
-		if (!runparams.nice &&
-		    IsFileReadable(MakeAbsPath(adb, buffer.filePath())+".bib"))
-			 adb = os::external_path(MakeAbsPath(adb,
-				buffer.filePath()));
-		db_out += adb;
+		db_out += os::external_path(normalize_name(buffer, runparams,
+							   adb, ".bib"));
 		db_out += ',';
 		db_in = split(db_in, adb,',');
 	}
@@ -136,13 +152,11 @@ int InsetBibtex::latex(Buffer const & buffer, ostream & os,
 	// line count
 	int i = 0;
 
-	if (!runparams.nice
-	    && IsFileReadable(MakeAbsPath(style, buffer.filePath()) + ".bst")) {
-		style = MakeAbsPath(style, buffer.filePath());
-	}
-
 	if (!style.empty()) {
-		os << "\\bibliographystyle{" << style << "}\n";
+		os << "\\bibliographystyle{"
+		   << os::external_path(normalize_name(buffer, runparams, 
+						       style, ".bst"))
+		   << "}\n";
 		i += 1;
 	}
 

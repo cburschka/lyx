@@ -27,8 +27,6 @@ public:
 	InsetOptArg(InsetOptArg const &);
 	/// make a duplicate of this inset
 	virtual std::auto_ptr<InsetBase> clone() const;
-	/// this inset is editable
-	EDITABLE editable() const { return IS_EDITABLE; }
 	/// code of the inset
 	InsetOld::Code lyxCode() const { return InsetOld::OPTARG_CODE; }
 	/// return an message upon editing

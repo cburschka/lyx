@@ -1,3 +1,13 @@
+2004-04-19  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* insetoptarg.h: remove the editable() method (InsetCollapsable
+	does it better already)
+
+	* insetbibtex.C (normalize_name): new helper function. Changes the
+	name to be suitable to use in a latex file (relative to master
+	buffer if necessary).
+	(latex): use normalize_name.
+
 2004-04-20  Angus Leeming  <leeming@lyx.org>
 
 	* render_preview.C (startLoading): remove lyxerr statement.
