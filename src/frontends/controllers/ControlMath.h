@@ -14,7 +14,7 @@
 #ifndef CONTROL_MATH_H
 #define CONTROL_MATH_H
 
-#include "commandtags.h"
+#include "lfuns.h"
 #include "ControlDialog_impl.h"
 
 #include "ButtonController.h"

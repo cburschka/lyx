@@ -16,7 +16,7 @@
 
 #include "buffer.h"
 #include "BufferView.h"
-#include "commandtags.h"
+#include "lfuns.h"
 #include "debug.h"
 #include "funcrequest.h"
 #include "gettext.h"

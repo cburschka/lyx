@@ -11,7 +11,7 @@
 #include "BufferView_pimpl.h"
 #include "bufferlist.h"
 #include "bufferview_funcs.h"
-#include "commandtags.h"
+#include "lfuns.h"
 #include "debug.h"
 #include "factory.h"
 #include "FloatList.h"

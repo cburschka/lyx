@@ -9,7 +9,7 @@
 #ifndef FUNCREQUEST_H
 #define FUNCREQUEST_H
 
-#include "commandtags.h"
+#include "lfuns.h"
 #include "frontends/mouse_state.h"
 #include "LString.h"
 

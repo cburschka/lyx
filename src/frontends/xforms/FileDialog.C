@@ -16,7 +16,7 @@
 #include "frontends/LyXView.h"
 #include "bufferview_funcs.h"
 #include "gettext.h"
-#include "commandtags.h"
+#include "lfuns.h"
 #include "debug.h"
 #include "support/lstrings.h"
 #include <utility>

@@ -4,7 +4,7 @@
 
 #include "FuncStatus.h"
 #include "kbsequence.h"
-#include "commandtags.h"
+#include "lfuns.h"
 #include "LString.h"
 
 #include <boost/signals/trackable.hpp>

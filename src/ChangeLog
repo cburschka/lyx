@@ -1,5 +1,11 @@
 2003-03-19  John Levon  <levon@movementarian.org>
 
+	* commandtags.h: rename to ...
+
+	* lfuns.h: ... this, and renumber / cleanup
+
+2003-03-19  John Levon  <levon@movementarian.org>
+
 	* lyxfunc.C: mark buffer dirty if we executed a "dirtying" lfun.
 	fit the cursor after an lfun
 

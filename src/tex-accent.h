@@ -12,7 +12,7 @@
 #ifndef TEX_ACCENT
 #define TEX_ACCENT
 
-#include "commandtags.h"
+#include "lfuns.h"
 
 /* the names used by TeX and XWindows for deadkeys/accents are not the same
    so here follows a table to clearify the differences. Please correct this

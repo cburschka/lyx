@@ -13,7 +13,7 @@
 
 #include "debug.h"
 
-#include "commandtags.h"
+#include "lfuns.h"
 #include "funcrequest.h"
 #include "LyXView.h"
 #include "BufferView.h"

@@ -14,7 +14,7 @@
 #include "frontends/LyXKeySymFactory.h"
 #include "kbsequence.h"
 #include "kbmap.h"
-#include "commandtags.h"
+#include "lfuns.h"
 #include "debug.h"
 
 using std::make_pair;

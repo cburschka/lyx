@@ -11,7 +11,7 @@
 
 #include <config.h>
 
-#include "commandtags.h"
+#include "lfuns.h"
 #include "LString.h"
 #include "frontends/FileDialog.h"
 #include "FileDialog_private.h"

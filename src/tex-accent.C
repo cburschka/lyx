@@ -12,7 +12,7 @@
 
 #include <cstdlib>
 #include "tex-accent.h"
-#include "commandtags.h"
+#include "lfuns.h"
 #include "LString.h"
 #include "support/lstrings.h"
 

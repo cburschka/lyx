@@ -15,7 +15,7 @@
 
 
 #include "formulamacro.h"
-#include "commandtags.h"
+#include "lfuns.h"
 #include "math_cursor.h"
 #include "math_parser.h"
 #include "math_macro.h"

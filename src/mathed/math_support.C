@@ -11,7 +11,7 @@
 #include "frontends/font_metrics.h"
 #include "frontends/lyx_gui.h"
 #include "debug.h"
-#include "commandtags.h"
+#include "lfuns.h"
 #include "dimension.h"
 
 #include <map>

@@ -10,7 +10,7 @@
 #include <config.h>
 
 #include "kbmap.h"
-#include "commandtags.h"
+#include "lfuns.h"
 #include "kbsequence.h"
 #include "debug.h"
 
