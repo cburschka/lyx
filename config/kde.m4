@@ -243,7 +243,7 @@ if AC_TRY_EVAL(ac_link) && test -s conftest; then
   AC_MSG_RESULT(yes)
 else
   AC_MSG_ERROR([your system fails at linking a small KDE application!
-Check, if your compiler is installed correctly and if you have used the
+Check if your compiler is installed correctly and if you have used the
 same compiler to compile Qt and kdelibs as you did use now])
 fi
 
@@ -547,7 +547,7 @@ AC_CACHE_VAL(ac_cv_have_qt,
 [#try to guess Qt locations
 
 qt_incdirs="$ac_qt_includes /usr/lib/qt/include /usr/local/qt/include /usr/include/qt /usr/include /usr/X11R6/include/X11/qt $x_includes $QTINC"
-test -n "$QTDIR" && qt_incdirs="$QTDIR/include $QTDIR $qt_incdirs"
+test -n "$QTDIR" && qt_incdirs="$QTDIR/include/qt $QTDIR/include $QTDIR $qt_incdirs"
 AC_FIND_FILE(qmovie.h, $qt_incdirs, qt_incdir)
 ac_qt_includes="$qt_incdir"
 
@@ -688,6 +688,10 @@ AC_REQUIRE([KDE_MISC_TESTS])
 AC_REQUIRE([AC_PATH_QT])dnl
 AC_MSG_CHECKING([for KDE])
 
+AC_ARG_WITH(kde-dir,
+    [  --with-kde-dir          where the KDE root is ],
+    [ export KDEDIR="$withval" ])
+ 
 if test "${prefix}" != NONE; then
   kde_includes=${prefix}/include
   ac_kde_includes=$prefix/include
@@ -706,24 +710,20 @@ else
   kde_includes=""
 fi
 
-AC_ARG_WITH(kde-dir,
-    [  --with-kde-dir          where the KDE root is ],
-    [
-       ac_kde_includes="$withval"/include
-       ac_kde_libraries="$withval"/lib
-    ])
- 
+if test ! -z "$KDEDIR"; then
+  ac_kde_includes="$KDEDIR/include"
+  kde_includes="$KDEDIR/include"
+  ac_kde_libraries="$KDEDIR/lib"
+  kde_libraries="$KDEDIR/lib"
+fi
+
 AC_ARG_WITH(kde-includes,
-    [  --with-kde-includes     where the KDE includes are. ],
-    [
-       ac_kde_includes="$withval"
-    ])
+    [  --with-kde-includes     where the KDE includes are installed. ],
+    [ ac_kde_includes="$withval" ])
  
 AC_ARG_WITH(kde-libraries,
-    [  --with-kde-libraries    where the KDE library is installed.],
-    [
-       ac_kde_libraries="$withval"
-    ])
+    [  --with-kde-libraries    where the KDE libraries are installed.],
+    [ ac_kde_libraries="$withval" ])
  
 AC_CACHE_VAL(ac_cv_have_kde,
 [#try to guess kde locations
@@ -731,7 +731,7 @@ AC_CACHE_VAL(ac_cv_have_kde,
 if test -z "$1"; then
 
 kde_incdirs="/usr/lib/kde/include /usr/local/kde/include /usr/kde/include /usr/include/kde /usr/include /opt/kde/include $x_includes $qt_includes"
-test -n "$KDEDIR" && kde_incdirs="$KDEDIR/include $KDEDIR $kde_incdirs"
+test -n "$KDEDIR" && kde_incdirs="$KDEDIR/include/kde $KDEDIR/include $KDEDIR $kde_incdirs"
 kde_incdirs="$ac_kde_includes $kde_incdirs"
 AC_FIND_FILE(ksock.h, $kde_incdirs, kde_incdir)
 ac_kde_includes="$kde_incdir"

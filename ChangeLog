@@ -1,3 +1,7 @@
+2000-11-03  John Levon  <moz@compsoc.man.ac.uk>
+
+	* config/kde.m4: make config more robust when KDEDIR is set
+	
 2000-11-03  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/frontends/xforms/Toolbar_pimpl.C: do not crash if mathed has
