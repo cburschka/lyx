@@ -24,6 +24,7 @@
 #include "paragraph.h"
 
 #include "mathed/math_support.h"
+#include "insets/updatableinset.h"
 
 #include <algorithm>
 
@@ -141,6 +142,13 @@ void performUndoOrRedo(BufferView & bv, Undo const & undo)
 		// re-insert old stuff instead
 		first = plist.begin();
 		advance(first, undo.from);
+
+		// this ugly stuff is needed until we get rid of the
+		// inset_owner backpointer
+		ParagraphList::const_iterator pit = undo.pars.begin();
+		ParagraphList::const_iterator end = undo.pars.end();
+		for (; pit != end; ++pit)
+			const_cast<Paragraph &>(*pit).setInsetOwner(dynamic_cast<UpdatableInset *>(&dit.inset()));
 		plist.insert(first, undo.pars.begin(), undo.pars.end());
 	}
 
@@ -156,58 +164,25 @@ void performUndoOrRedo(BufferView & bv, Undo const & undo)
 bool textUndoOrRedo(BufferView & bv,
 	limited_stack<Undo> & stack, limited_stack<Undo> & otherstack)
 {
+	finishUndo();
+
 	if (stack.empty()) {
 		// Nothing to do.
-		finishUndo();
 		return false;
 	}
 
-	//
 	// Adjust undo stack and get hold of current undo data.
-	//
 	Undo undo = stack.top();
 	stack.pop();
-	finishUndo();
 
+	// We will store in otherstack the part of the document under 'undo' 
+	DocIterator cell_dit = undo.cell.asDocIterator(&bv.buffer()->inset());
 
-	//
-	// This implements redo.
-	//
+	recordUndo(Undo::ATOMIC, cell_dit,
+		   undo.from, cell_dit.lastpit() - undo.end,
+		   bv.cursor(), otherstack);
 
-	// The cursor will be placed at cur_dit after
-	// the ongoing undo operation.
-	DocIterator cur_dit =
-		undo.cursor.asDocIterator(&bv.buffer()->inset());
-
-	// This is the place the cursor is currently located.
-	LCursor & cur = bv.cursor();
-	DocIterator cell_dit = cur;
-
-	// If both places have the same depth we stay in the same
-	// cell and store paragraphs from this cell. Otherwise we
-	// will drop slices from the more nested iterator and
-	// create an undo item from a single paragraph of the common
-	// ancestor.
-	DocIterator ancestor_dit = cur_dit;
-	while (ancestor_dit.size() > cur.size())
-		ancestor_dit.pop_back();
-
-	if (cur_dit.size() == cell_dit.size()) {
-		recordUndo(Undo::ATOMIC, cell_dit,
-			cell_dit.pit(), cur_dit.pit(),
-			cur_dit, otherstack);
-	}
-	else {
-		recordUndo(Undo::ATOMIC, ancestor_dit,
-			ancestor_dit.pit(),
-			ancestor_dit.pit(),
-			cur_dit, otherstack);
-	}
-
-
-	//
-	// This does the actual undo.
-	//
+	// This does the actual undo/redo.
 	performUndoOrRedo(bv, undo);
 	return true;
 }

@@ -1,6 +1,11 @@
 
 2004-12-06  Alfredo Braunstein  <abraunst@lyx.org>
 
+	* undo.C (textUndoOrRedo): simplify logic, fix a crash
+	(performUndoOrRedo): set the inset owner of paragraphs (fix a crash)
+
+2004-12-06  Alfredo Braunstein  <abraunst@lyx.org>
+
 	* lyxfunc.C: 
 	* text3.C: remove selection_possible global flag
 
