@@ -8,6 +8,8 @@
 
 #include <config.h>
 
+#include "debug.h"
+ 
 #include "iconpalette.h"
 
 #include <qlayout.h>
@@ -15,6 +17,8 @@
 #include <qpixmap.h>
 #include <qtooltip.h>
 
+using std::endl;
+ 
 IconPalette::IconPalette(QWidget * parent, char const * name)
 	: QWidget(parent, name), crow_(0), ccol_(0)
 {
@@ -47,4 +51,10 @@ void IconPalette::clicked()
 {
 	string name = button_map_[(QPushButton*)(sender())];
 	emit button_clicked(name);
+}
+
+
+void IconPalette::resizeEvent(QResizeEvent * e)
+{
+	lyxerr << "resize panel to " << e->size().width() << "," << e->size().height() << endl;
 }

@@ -40,6 +40,7 @@ QMathDialog::QMathDialog(QMath * form)
 	addPanel("greek", latex_greek);
 	addPanel("arrows", latex_arrow);
 	addPanel("dots", latex_dots);
+	addPanel("deco", latex_deco);
 	addPanel("misc", latex_misc);
 	addPanel("amsoperators", latex_ams_ops);
 	addPanel("amsrelations", latex_ams_rel);
@@ -47,6 +48,7 @@ QMathDialog::QMathDialog(QMath * form)
 	addPanel("amsarrows", latex_ams_arrows);
 	addPanel("amsmisc", latex_ams_misc);
 	symbolsWS->raiseWidget(0);
+	symbolsWS->resize(symbolsWS->sizeHint());
 }
 
  
@@ -88,11 +90,6 @@ void QMathDialog::sqrtClicked()
 }
 
  
-void QMathDialog::decoClicked()
-{
-}
-
- 
 void QMathDialog::delimiterClicked()
 {
 }
@@ -111,11 +108,6 @@ void QMathDialog::functionSelected(const QString & str)
 
  
 void QMathDialog::matrixClicked()
-{
-}
-
- 
-void QMathDialog::equationClicked()
 {
 }
 

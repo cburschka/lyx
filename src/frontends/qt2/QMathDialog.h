@@ -25,13 +25,11 @@ public:
 	QMathDialog(QMath * form);
 
 public slots:
-	virtual void decoClicked();
 	virtual void delimiterClicked();
 	virtual void expandClicked();
 	virtual void fracClicked();
 	virtual void functionSelected(const QString &);
 	virtual void matrixClicked();
-	virtual void equationClicked();
 	virtual void spaceClicked();
 	virtual void sqrtClicked();
 	virtual void styleClicked();

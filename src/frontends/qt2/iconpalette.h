@@ -35,6 +35,9 @@ public:
 signals:
 	void button_clicked(string);
 
+protected:
+	virtual void resizeEvent(QResizeEvent * e);
+ 
 protected slots:
 	virtual void clicked();
 
