@@ -15,7 +15,7 @@
 # replacement in ~/.lyx/scripts
 
 # converts an image from $1 to $2 format
-convert -depth 8 $1 $2 || {
+convert -depth 8 "$1" "$2" || {
 	echo "$0 ERROR"
 	echo "Execution of \"convert\" failed."
 	exit 1
@@ -26,9 +26,9 @@ convert -depth 8 $1 $2 || {
 # delimit the two parts.
 # Note that Win32 filenames have the form 'C:\my\file',
 # so use everything from the first ':' to the end of the line.
-FILE=`echo $2 | cut -d ':' -f 2-`
+FILE=`echo "$2" | cut -d ':' -f 2-`
 
-test -f $FILE || {
+test -f "$FILE" || {
 	echo "$0 ERROR"
 	echo "Unable to find file \"${FILE}\""
 	exit 1
