@@ -84,7 +84,7 @@ private:
 	CatCode cat_;
 };
 
-ostream & operator<<(ostream & os, Token const & t);
+std::ostream & operator<<(std::ostream & os, Token const & t);
 
 
 //
@@ -95,7 +95,7 @@ class Parser {
 
 public:
 	///
-	Parser(istream & is);
+	Parser(std::istream & is);
 
 	///
 	int lineno() const { return lineno_; }
@@ -111,7 +111,7 @@ public:
 	///
 	void error(string const & msg);
 	///
-	void tokenize(istream & is);
+	void tokenize(std::istream & is);
 	///
 	void push_back(Token const & t);
 	///
