@@ -1,5 +1,10 @@
 2003-11-29  Angus Leeming  <leeming@lyx.org>
 
+	* Makefile.am (stamp-forms, stamp-xpm): don't use "if test return
+	status; then... fi" but rather use the return status direct.
+
+2003-11-29  Angus Leeming  <leeming@lyx.org>
+
 	* FormVSpace.C
 	* forms/form_vspace.fd: follow Jürgen Spitzmüller's lead in QVSpace
 	and add a 'keep' option.
