@@ -438,19 +438,7 @@ void setDebuggingLevel(string const & dbgLevel)
 {
 	lyxerr << _("Setting debug level to ") <<  dbgLevel << endl;
 	lyxerr.level(Debug::value(dbgLevel));
-	lyxerr[Debug::INFO] << "Debugging INFO #"  << Debug::INFO << endl;
-	lyxerr[Debug::INIT] << "Debugging INIT #"  << Debug::INIT << endl;
-	lyxerr[Debug::KEY]  << "Debugging KEY #"  << Debug::KEY << endl;
-	lyxerr[Debug::TOOLBAR] << "Debugging TOOLBAR #"  << Debug::TOOLBAR << endl; 
-	lyxerr[Debug::PARSER] << "Debugging LEX and PARSER #" << Debug::PARSER << endl;
-	lyxerr[Debug::LYXRC] << "Debugging LYXRC #" << Debug::LYXRC << endl;
-	lyxerr[Debug::KBMAP] << "Debugging KBMAP #" << Debug::KBMAP << endl;
-	lyxerr[Debug::LATEX] << "Debugging LATEX #" << Debug::LATEX << endl;
-	lyxerr[Debug::MATHED] << "Debugging MATHED #"  << Debug::MATHED << endl; 
-	lyxerr[Debug::FONT] << "Debugging FONT #" << Debug::FONT << endl;
-	lyxerr[Debug::TCLASS] << "Debugging TCLASS #" << Debug::TCLASS << endl; 
-	lyxerr[Debug::LYXVC] << "Debugging LYXVC #" << Debug::LYXVC << endl;
-	lyxerr[Debug::LYXSERVER] << "Debugging LYXSERVER #" << Debug::LYXSERVER << endl;
+	Debug::showLevel(lyxerr, lyxerr.level());
 }
 
 
@@ -467,7 +455,9 @@ void commandLineHelp()
 		  "\t-height y       set the height of the main window\n"
 		  "\t-xpos x         set the x position of the main window\n"
 		  "\t-ypos y         set the y position of the main window\n"
-		  "\t-dbg n          where n is a sum of debugging options. Try -dbg 65535 -help\n"
+                  "\t-dbg feature[,feature]...\n"
+                  "                  select the features to debug.\n"
+                  "                  Type `lyx -dbg' to see the list of features\n"
 		  "\t-Reverse        swaps foreground & background colors\n"
 		  "\t-Mono           runs LyX in black and white mode\n"
 		  "\t-FastSelection  use a fast routine for drawing selections\n\n"
@@ -491,9 +481,13 @@ bool LyX::easyParse(int * argc, char * argv[])
 				for (int j = i; j < (*argc); ++j)
 					argv[j] = argv[j + 2];
 				--i; // After shift, check this number again.
-			} else
-				lyxerr << _("Missing number for -dbg switch!")
+			} else {
+				lyxerr << _("List of supported debug flags:")
 				       << endl;
+				Debug::showTags(lyxerr);
+				exit(0);
+			}
+			
 		} 
 		// Check for "-sysdir"
 		else if (arg == "-sysdir") {

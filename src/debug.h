@@ -57,56 +57,18 @@ struct Debug {
 	/** A function to convert symbolic string names on debug levels
 	    to their numerical value.
 	*/
-	static Debug::type value(string const & val) {
-		type l = Debug::NONE;
-		string v(val);
-		while (!v.empty()) {
-			string::size_type st = v.find(',');
-			string tmp(v.substr(0, st));
-			if (tmp.empty()) break;
-			if (isStrInt(tmp)) {
-				l |= static_cast<type>(strToInt(tmp));
-				break;
-			}
-			if (!compare_no_case(tmp,"NONE")) 
-				l |= Debug::NONE;
-			else if (!compare_no_case(tmp,"INFO"))  
-				l |= Debug::INFO;
-			else if (!compare_no_case(tmp,"INIT"))  
-				l |= Debug::INIT;
-			else if (!compare_no_case(tmp,"KEY"))  
-				l |= Debug::KEY; 
-			else if (!compare_no_case(tmp,"TOOLBAR"))  
-				l |= Debug::TOOLBAR;
-			else if (!compare_no_case(tmp,"PARSER"))  
-				l |= Debug::PARSER; 
-			else if (!compare_no_case(tmp,"LYXRC"))  
-				l |= Debug::LYXRC; 
-			else if (!compare_no_case(tmp,"KBMAP"))  
-				l |= Debug::KBMAP;  
-			else if (!compare_no_case(tmp,"LATEX"))  
-				l |= Debug::LATEX;  
-			else if (!compare_no_case(tmp,"MATHED"))  
-				l |= Debug::MATHED; 
-			else if (!compare_no_case(tmp,"FONT"))  
-				l |= Debug::FONT;   
-			else if (!compare_no_case(tmp,"TCLASS"))  
-				l |= Debug::TCLASS; 
-			else if (!compare_no_case(tmp,"LYXVC"))  
-				l |= Debug::LYXVC;  
-			else if (!compare_no_case(tmp,"LYXSERVER"))  
-				l |= Debug::LYXSERVER;
-			else if (!compare_no_case(tmp,"ROFF"))  
-				l |= Debug::ROFF;
-			else if (!compare_no_case(tmp,"ACTION"))  
-				l |= Debug::ACTION;
-			else break; // unknown string
-			if (st == string::npos) break;
-			v.erase(0, st + 1);
-		}
-		return l;
-	}
+	static Debug::type value(string const & val); 
+
+	/** Display the tags and descriptions of the current debug level 
+	    of ds 
+	*/
+	static void showLevel(ostream &o, type level);
+
+	/** show all the possible tags that can be used for debugging */
+	static void showTags(ostream &o);
+
 };
+
 ///
 inline void operator|= (Debug::type & d1, Debug::type d2)
 {

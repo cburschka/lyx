@@ -1,3 +1,24 @@
+1999-12-13  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* po/de.po: fix the Export menu
+
+	* lyx.man: update the description of -dbg
+
+	* src/lyx_main.C (setDebuggingLevel): call Debug::showLevel()
+	(commandLineHelp): updated
+	(easyParse): show list of available debug levels if -dbg is passed
+	without argument.
+
+	* src/Makefile.am: add debug.C
+
+	* src/debug.h: moved some code to debug.C
+
+	* src/debug.C: new file. Contains code to set and show debug
+	level. 
+
+	* src/layout.C: remove 'break' after 'continue' in switch
+	statements, since these cannot be reached.
+
 1999-12-13  Allan Rae  <rae@lyx.org>
 
 	* src/mathed/math_hash.C (math_hash): renamed from hash(), name clash.

@@ -178,12 +178,12 @@ bool LyXLayout::Read (LyXLex & lexrc, LyXTextClass const & tclass)
 		// See comment in lyxrc.C.
 		switch(le) {
 		case LyXLex::LEX_FEOF:
-			continue; break;
+			continue; 
 
 		case LyXLex::LEX_UNDEF:		// parse error
 			lexrc.printError("Unknown layout tag `$$Token'");
 			error = true;
-			continue; break;
+			continue; 
 		default: break;
 		}
 		switch(static_cast<LayoutTags>(le)) {
@@ -437,7 +437,7 @@ void LyXLayout::readAlignPossible(LyXLex & lexrc)
 		switch (le) {
 		case LyXLex::LEX_UNDEF:
 			lexrc.printError("Unknown alignment `$$Token'");
-			continue; break;
+			continue; 
 		default: break;
 		};
 		switch (static_cast<AlignTags>(le)) {
@@ -799,12 +799,12 @@ bool LyXTextClass::Read(string const & filename, bool merge)
 		int le = lexrc.lex();
 		switch(le) {
 		case LyXLex::LEX_FEOF:
-			continue; break;
+			continue; 
 
 		case LyXLex::LEX_UNDEF:                                 
 			lexrc.printError("Unknown TextClass tag `$$Token'");
 			error = true;
-			continue; break;
+			continue; 
 		default: break;
 		}
 		switch(static_cast<TextClassTags>(le)) {
@@ -1085,7 +1085,7 @@ void LyXTextClass::readClassOptions(LyXLex & lexrc)
 		switch (le) {
 		case LyXLex::LEX_UNDEF:
 			lexrc.printError("Unknown ClassOption tag `$$Token'");
-			continue; break;
+			continue; 
 		default: break;
 		}
 		switch (static_cast<ClassOptionsTags>(le)) {

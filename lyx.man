@@ -67,9 +67,9 @@ to obtain the
 desired effect. Negative positions are ignored. If no valid position
 is given, the main window is centered.
 .TP
-.BI \-dbg " debug-level"
-where debug-level is a sum of debugging options.
-Use "\fBlyx -dbg 65535 -help\fR" to see the different flags.
+.BI \-dbg " feature[,feature...]"
+where feature is a name or number.
+Use "\fBlyx -dbg\fR" to see the list of available debug features.
 .TP
 .BI \-Reverse
 swaps foreground and background colors.

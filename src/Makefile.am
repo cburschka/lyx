@@ -71,6 +71,7 @@ lyx_SOURCES = \
 	credits.h \
 	credits_form.C \
 	credits_form.h \
+	debug.C \
 	debug.h \
 	figure.h \
 	filedlg.C \
