@@ -1,5 +1,10 @@
 2003-05-24  John Levon  <levon@movementarian.org>
 
+	* Toolbar_pimpl.C: workaround a Qt bug with combobox
+	popup
+
+2003-05-24  John Levon  <levon@movementarian.org>
+
 	* Makefile.am:
 	* lcolorcache.h:
 	* lcolorcache.C: add LColor::color -> QColor cache

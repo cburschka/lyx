@@ -86,8 +86,12 @@ void Toolbar::Pimpl::update()
 		button->setEnabled(!status.disabled());
 	}
 
-	if (combo_)
-		combo_->setEnabled(!owner_->getLyXFunc().getStatus(LFUN_LAYOUT).disabled());
+	bool const enable = !owner_->getLyXFunc().getStatus(LFUN_LAYOUT).disabled();
+
+	// Workaround for Qt bug where setEnabled(true) closes
+	// the popup
+	if (combo_ && enable != combo_->isEnabled())
+		combo_->setEnabled(enable);
 }
 
 
