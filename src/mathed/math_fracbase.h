@@ -13,13 +13,13 @@ public:
 	///
 	MathFracbaseInset();
 	///
-	bool idxUp(int &, int &) const;
+	bool idxUp(MathInset::idx_type &, MathInset::pos_type &) const;
 	///
-	bool idxDown(int &, int &) const;
+	bool idxDown(MathInset::idx_type &, MathInset::pos_type &) const;
 	///
-	bool idxLeft(int &, int &) const;
+	bool idxLeft(MathInset::idx_type &, MathInset::pos_type &) const;
 	///
-	bool idxRight(int &, int &) const;
+	bool idxRight(MathInset::idx_type &, MathInset::pos_type &) const;
 };
 
 #endif

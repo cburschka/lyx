@@ -201,7 +201,7 @@ InsetFormula::localDispatch(BufferView * bv, kb_action action,
 			//lyxerr << "toggling line number\n";
 			if (display()) {
 				bv->lockedInsetStoreUndo(Undo::INSERT);
-				int row = mathcursor->row();
+				MathCursor::row_type row = mathcursor->row();
 				bool old = par_->numbered(row);
 				bv->owner()->message(old ? _("No number") : _("Number"));
 				par_->numbered(row, !old);
@@ -214,7 +214,7 @@ InsetFormula::localDispatch(BufferView * bv, kb_action action,
 		{
 			bv->lockedInsetStoreUndo(Undo::INSERT);
 
-			int row = mathcursor->row();
+			MathCursor::row_type row = mathcursor->row();
 			string old_label = par_->label(row);
 			string new_label = arg;
 

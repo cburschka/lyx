@@ -1,3 +1,15 @@
+2001-10-01  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* math_cursor.C:
+	* formula.C (localDispatch): fix a few of local variable sizes
+
+	* math_fracbase.C: change parameter types to match MathInset
+
+2001-09-27  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* math_cursor.C: fix type mismatches with what was declared in
+	math_cursor.h. 
+
 2001-09-28  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* math_matrixinset.C (header_write): Add \n after \begin{align}

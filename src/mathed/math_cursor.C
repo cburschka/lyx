@@ -76,7 +76,7 @@ struct Selection
 		if (i1.idx_ == i2.idx_)
 			i1.cell().erase(i1.pos_, i2.pos_);
 		else {
-			std::vector<unsigned int> indices = i1.par_->idxBetween(i1.idx_, i2.idx_);
+			std::vector<MathInset::idx_type> indices = i1.par_->idxBetween(i1.idx_, i2.idx_);
 			for (unsigned i = 0; i < indices.size(); ++i)
 				i1.cell(indices[i]).erase();
 		}
@@ -371,7 +371,7 @@ void MathCursor::setPos(int x, int y)
 			MathXArray const & ar = par()->xcell(i);
 			int x1 = x - ar.xo();
 			int y1 = y - ar.yo();
-			int c  = ar.x2pos(x1);
+			MathXArray::size_type c  = ar.x2pos(x1);
 			int xx = abs(x1 - ar.pos2x(c));
 			int yy = abs(y1);
 			//lyxerr << "idx: " << i << " xx: " << xx << " yy: " << yy
@@ -753,7 +753,7 @@ void MathCursor::drawSelection(Painter & pain) const
 		int y2 = c.yo() + c.descent();
 		pain.fillRectangle(x1, y1, x2 - x1, y2 - y1, LColor::selection);
 	} else {
-		std::vector<unsigned int> indices = i1.par_->idxBetween(i1.idx_, i2.idx_);
+		std::vector<MathInset::idx_type> indices = i1.par_->idxBetween(i1.idx_, i2.idx_);
 		for (unsigned i = 0; i < indices.size(); ++i) {
 			MathXArray & c = i1.xcell(indices[i]);
 			int x1 = c.xo();
@@ -782,7 +782,8 @@ void MathCursor::handleFont(MathTextCodes t)
 		getSelection(i1, i2); 
 		if (i1.idx_ == i2.idx_) {
 			MathArray & ar = i1.cell();
-			for (unsigned int pos = i1.pos_; pos != i2.pos_; ++pos) {
+			for (MathInset::pos_type pos = i1.pos_;
+			     pos != i2.pos_; ++pos) {
 				MathInset * p = ar.at(pos)->nucleus();
 				if (p)
 					p->handleFont(t);
@@ -833,25 +834,25 @@ InsetFormulaBase const * MathCursor::formula()
 }
 
 
-unsigned int MathCursor::idx() const
+MathCursor::idx_type MathCursor::idx() const
 {
 	return cursor().idx_;
 }
 
 
-unsigned int & MathCursor::idx()
+MathCursor::idx_type & MathCursor::idx()
 {
 	return cursor().idx_;
 }
 
 
-unsigned int MathCursor::pos() const
+MathCursor::pos_type MathCursor::pos() const
 {
 	return cursor().pos_;
 }
 
 
-unsigned int & MathCursor::pos()
+MathCursor::pos_type & MathCursor::pos()
 {
 	return cursor().pos_;
 }
@@ -869,7 +870,7 @@ bool MathCursor::selection() const
 }
 
 
-MathArrayInset * MathCursor::enclosingArray(unsigned int & idx) const
+MathArrayInset * MathCursor::enclosingArray(MathCursor::idx_type & idx) const
 {
 	for (int i = Cursor_.size() - 1; i >= 0; --i) {
 		if (Cursor_[i].par_->isArray()) {
@@ -924,19 +925,19 @@ void MathCursor::normalize() const
 }
 
 
-unsigned int MathCursor::size() const
+MathCursor::size_type MathCursor::size() const
 {
 	return array().size();
 }
 
 
-unsigned int MathCursor::col() const
+MathCursor::col_type MathCursor::col() const
 {
 	return par()->col(idx());
 }
 
 
-unsigned int MathCursor::row() const
+MathCursor::row_type MathCursor::row() const
 {
 	return par()->row(idx());
 }
@@ -1067,10 +1068,10 @@ void MathCursor::breakLine()
 		p->addRow(row());
 
 		// split line
-		const unsigned int r = row();
-		for (unsigned int c = col() + 1; c < p->ncols(); ++c) {
-			const unsigned int i1 = p->index(r, c);
-			const unsigned int i2 = p->index(r + 1, c);	
+		const row_type r = row();
+		for (col_type c = col() + 1; c < p->ncols(); ++c) {
+			const MathMatrixInset::idx_type i1 = p->index(r, c);
+			const MathMatrixInset::idx_type i2 = p->index(r + 1, c);	
 			lyxerr << "swapping cells " << i1 << " and " << i2 << "\n";
 			p->cell(i1).swap(p->cell(i2));
 		}
@@ -1084,17 +1085,17 @@ void MathCursor::breakLine()
 
 char MathCursor::valign() const
 {
-	unsigned int idx;
+	idx_type idx;
 	MathArrayInset * p = enclosingArray(idx);
-	return p ? p->valign() : 0;
+	return p ? p->valign() : '\0';
 }
 
 
 char MathCursor::halign() const
 {
-	unsigned int idx;
+	idx_type idx;
 	MathArrayInset * p = enclosingArray(idx);
-	return p ? p->halign(idx % p->ncols()) : 0;
+	return p ? p->halign(idx % p->ncols()) : '\0';
 }
 
 
@@ -1123,13 +1124,13 @@ MathCursorPos const & MathCursor::cursor() const
 }
 
 
-unsigned int MathCursor::cellXOffset() const
+int MathCursor::cellXOffset() const
 {
 	return par()->cellXOffset(idx());
 }
 
 
-unsigned int MathCursor::cellYOffset() const
+int MathCursor::cellYOffset() const
 {
 	return par()->cellYOffset(idx());
 }
@@ -1425,7 +1426,7 @@ bool operator<(MathCursorPos const & ti, MathCursorPos const & it)
 }
 
 
-MathArray & MathCursorPos::cell(unsigned int idx) const
+MathArray & MathCursorPos::cell(MathCursor::idx_type idx) const
 {
 	return par_->cell(idx);
 }
@@ -1437,7 +1438,7 @@ MathArray & MathCursorPos::cell() const
 }
 
 
-MathXArray & MathCursorPos::xcell(unsigned int idx) const
+MathXArray & MathCursorPos::xcell(MathCursor::idx_type idx) const
 {
 	return par_->xcell(idx);
 }

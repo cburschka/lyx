@@ -277,9 +277,9 @@ private:
 	/// write access to cursor cell index
 	idx_type & idx();
 	/// x-offset of current cell relative to par xo
-	idx_type cellXOffset() const;
+	int cellXOffset() const;
 	/// y-offset of current cell relative to par yo
-	idx_type cellYOffset() const;
+	int cellYOffset() const;
 	/// current x position relative to par xo
 	int xpos() const;
 	/// current y position relative to par yo

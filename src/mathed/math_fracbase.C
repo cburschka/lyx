@@ -10,19 +10,22 @@ MathFracbaseInset::MathFracbaseInset()
 {}
 
 
-bool MathFracbaseInset::idxRight(int &, int &) const
+bool MathFracbaseInset::idxRight(MathInset::idx_type &,
+				 MathInset::pos_type &) const
 {
 	return false;
 }
 
 
-bool MathFracbaseInset::idxLeft(int &, int &) const
+bool MathFracbaseInset::idxLeft(MathInset::idx_type &,
+				MathInset::pos_type &) const
 {
 	return false;
 }
 
 
-bool MathFracbaseInset::idxUp(int & idx, int &) const
+bool MathFracbaseInset::idxUp(MathInset::idx_type & idx,
+			      MathInset::pos_type &) const
 {
 	if (idx == 0)
 		return false;
@@ -31,7 +34,8 @@ bool MathFracbaseInset::idxUp(int & idx, int &) const
 }
 
 
-bool MathFracbaseInset::idxDown(int & idx, int &) const
+bool MathFracbaseInset::idxDown(MathInset::idx_type & idx,
+				MathInset::pos_type &) const
 {
 	if (idx == 1)
 		return false;
