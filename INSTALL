@@ -24,7 +24,8 @@ These four steps will compile, test and install LyX:
 	   runs the program so you can check it out.
 
 	4) make install
-	   will install it.
+	   will install it. You can use "make install-strip" instead
+           if you want a smaller binary. 
 
 
 Requirements
@@ -217,6 +218,12 @@ Once you've got the Makefile created, you just have to type:
   make install
 
 All should be OK ;)
+
+Since the binaries with debug information tend to be huge (although
+this does not affect the run-time memory footprint), you maight want
+to strip the lyx binary. In this case replace "make install" with
+
+  make install-strip
 
 BTW: in the images subdirectory there is also a small icon "lyx.xpm",
 that can be used to display lyx-documents in filemanagers.

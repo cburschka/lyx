@@ -305,6 +305,7 @@ bool PutEnv(string const & envstr)
 {
 	// CHECK Look at and fix this.
         // f.ex. what about error checking?
+
 #if HAVE_PUTENV
         // this leaks, but what can we do about it?
         //   Is doing a getenv() and a free() of the older value 
@@ -332,6 +333,9 @@ bool PutEnv(string const & envstr)
         string varname;
         string str = envstr.split(varname,'=');
         int retval = setenv(varname.c_str(), str.c_str(), true);
+#else
+	// No environment setting function. Can this happen?
+	int retval = 1; //return an error condition.
 #endif
 #endif
         return retval == 0;
