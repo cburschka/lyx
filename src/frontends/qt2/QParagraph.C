@@ -19,6 +19,9 @@
 #include "qt_helpers.h"
 #include "helper_funcs.h"
 
+#include "Spacing.h"
+#include "vspace.h"
+
 #include "support/lstrings.h"
 #include "support/tostr.h"
 

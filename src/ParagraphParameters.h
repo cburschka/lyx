@@ -14,19 +14,21 @@
 #ifndef PARAGRAPHPARAMETERS_H
 #define PARAGRAPHPARAMETERS_H
 
-#include "support/std_string.h"
-#include "ShareContainer.h"
 #include "layout.h"
+#include "ShareContainer.h"
 
-#include "ParameterStruct.h"
+#include "support/types.h"
 
+#include "support/std_string.h"
 #include <iosfwd>
 
-class VSpace;
-class Spacing;
+class BufferView;
+class LyXLength;
 class LyXLex;
 class Paragraph;
-
+class ParameterStruct;
+class Spacing;
+class VSpace;
 
 ///
 class ParagraphParameters {
@@ -114,13 +116,6 @@ private:
 	///
 	static ShareContainer<ParameterStruct> container;
 };
-
-
-inline
-ParagraphParameters::depth_type ParagraphParameters::depth() const
-{
-	return param->depth;
-}
 
 
 /** Generate a string \param data from \param par's ParagraphParameters.

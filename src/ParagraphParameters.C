@@ -22,6 +22,7 @@
 #include "lyxlex.h"
 #include "lyxtext.h"
 #include "paragraph.h"
+#include "ParameterStruct.h"
 #include "tex-strings.h"
 
 #include "frontends/LyXView.h"
@@ -64,6 +65,12 @@ void ParagraphParameters::clear()
 	tmp.labelwidthstring.erase();
 	tmp.start_of_appendix = false;
 	set_from_struct(tmp);
+}
+
+
+ParagraphParameters::depth_type ParagraphParameters::depth() const
+{
+	return param->depth;
 }
 
 

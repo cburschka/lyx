@@ -25,6 +25,8 @@
 
 #include "lyxrc.h" // to set the deafult length values
 #include "ParagraphParameters.h"
+#include "Spacing.h"
+#include "vspace.h"
 
 #include "support/LAssert.h"
 #include "support/lstrings.h"

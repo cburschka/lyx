@@ -1,5 +1,11 @@
 2003-09-06  Angus Leeming  <leeming@lyx.org>
 
+	* ParagraphParameters.h: forward declare ParameterStruct rather than
+	'including the its file.
+	(depth): moved out-of-line.
+
+2003-09-06  Angus Leeming  <leeming@lyx.org>
+
 	* BufferView_pimpl.h:
 	* kbmap.h:
 	* kbsequence.h:
