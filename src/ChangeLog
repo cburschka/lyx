@@ -1,3 +1,8 @@
+2002-02-26  Martin Vermeer  <martin.vermeer@hut.fi>
+
+	* text2.C (incDepth): make sure depth cannot be increased beyond
+	reasonable values.
+
 2002-02-20  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* lyxfunc.C (dispatch): act on LFUN_FORKS_SHOW and LFUN_FORKS_KILL.

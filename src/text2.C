@@ -649,19 +649,25 @@ void  LyXText::incDepth(BufferView * bview)
    
 	while (true) {
 		// NOTE: you can't change the depth of a bibliography entry
-		if (
-			textclasslist.Style(bview->buffer()->params.textclass,
-					    cursor.par()->getLayout()
-				).labeltype != LABEL_BIBLIO) {
+		if (textclasslist.Style(bview->buffer()->params.textclass,
+					cursor.par()->getLayout()).labeltype != LABEL_BIBLIO) {
 			Paragraph * prev = cursor.par()->previous();
 
-			if (prev 
-			    && (prev->getDepth() - cursor.par()->getDepth() > 0
-				|| (prev->getDepth() == cursor.par()->getDepth()
+			if (prev) { 
+				const int depth_diff
+					= prev->getDepth() - cursor.par()->getDepth();
+				// go deeper only if 
+				// (1) the previous para is already
+				//     deeper (depth_diff > 0) 
+				// (2) the previous para is a
+				//     list-environment at the same
+				//     depth as this para. 
+				if (depth_diff > 0 || (depth_diff > -1
 				    && textclasslist.Style(bview->buffer()->params.textclass,
-							   prev->getLayout()).isEnvironment()))) {
-				cursor.par()->params().depth(cursor.par()->params().depth() + 1);
-				anything_changed = true;
+							   prev->getLayout()).isEnvironment())) {
+					cursor.par()->params().depth(cursor.par()->params().depth() + 1);
+					anything_changed = true;
+				}
 			}
 		}
 		if (cursor.par() == selection.end.par())
