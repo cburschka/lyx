@@ -99,6 +99,12 @@ void FormBase::hide()
 
 void FormBase::InputCB(FL_OBJECT * ob, long data)
 {
+	// It is possible to set the choice to 0 when using the
+	// keyboard shortcuts. This work-around deals with the problem.
+	if (ob && ob->objclass == FL_CHOICE && fl_get_choice(ob) < 1) {
+		fl_set_choice(ob, 1);
+	}
+
 	bc().input(input(ob, data));
 }
 

@@ -1,3 +1,12 @@
+2001-09-24  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* FormBase.C (InputCB):
+	* FormBaseDeprecated.C (InputCB): generalised Dekel's fix to the
+	"select choice < 1" problem.
+
+	* FormRef.C (input): undid Dekel's change in light of the above
+	generalisation.
+
 2001-09-21  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* FormRef.C (input): Fix crash when using dialog with keyboard.

@@ -202,6 +202,13 @@ void FormBaseDeprecated::InputCB(FL_OBJECT * ob, long data)
 	FormBaseDeprecated * pre =
 		static_cast<FormBaseDeprecated*>(ob->form->u_vdata);
 	lyx::Assert(pre);
+
+	// It is possible to set the choice to 0 when using the
+	// keyboard shortcuts. This work-around deals with the problem.
+	if (ob && ob->objclass == FL_CHOICE && fl_get_choice(ob) < 1) {
+		fl_set_choice(ob, 1);
+	}
+
 	pre->bc().valid(pre->input(ob, data));
 }
 
