@@ -1,5 +1,11 @@
 2002-06-12  John Levon  <moz@compsoc.man.ac.uk>
 
+	* LyXView.h: cleanup
+
+	* LyXView.C: move init() here from xforms/
+ 
+2002-06-12  John Levon  <moz@compsoc.man.ac.uk>
+
 	* screen.h:
 	* screen.C: change topCursorVisible() prototype
  

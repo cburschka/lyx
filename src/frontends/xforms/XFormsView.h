@@ -40,8 +40,6 @@ public:
          */
 	void show(int xpos, int ypos, string const & t = string("LyX"));
  
-	/// init (should probably be removed later) (Lgb)
-	virtual void init();
 	/// get the xforms main form
 	FL_FORM * getForm() const;
 	/// redraw the main form.

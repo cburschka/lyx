@@ -26,6 +26,7 @@
 #include "frontends/Toolbar.h"
 #include "frontends/Menubar.h"
 #include "frontends/Timeout.h"
+#include "frontends/Dialogs.h"
 #include "MenuBackend.h"
 #include "ToolbarDefaults.h"
 #include "lyxfunc.h"
@@ -65,6 +66,7 @@ XFormsView::XFormsView(int width, int height)
 
 	// Make sure the buttons are disabled if needed.
 	updateToolbar();
+	Dialogs::redrawGUI.connect(boost::bind(&XFormsView::redraw, this));
 }
 
 
@@ -151,7 +153,7 @@ void XFormsView::create_form_form_main(int width, int height)
 		width - (2 * air), 25));
 
 	// FIXME: why do this in xforms/ ?
-	autosave_timeout_->timeout.connect(boost::bind(&XFormsView::AutoSave, this));
+	autosave_timeout_->timeout.connect(boost::bind(&XFormsView::autoSave, this));
 
 	//  assign an icon to main form
 	string iconname = LibFileSearch("images", "lyx", "xpm");
@@ -175,23 +177,6 @@ void XFormsView::create_form_form_main(int width, int height)
 	fl_end_form();
 
 	minibuffer_->dd_init();
-}
-
-
-void XFormsView::init()
-{
-	// Set the textclass choice
-	invalidateLayoutChoice();
-	updateLayoutChoice();
-	updateMenubar();
-
-	// Start autosave timer
-	if (lyxrc.autosave) {
-		autosave_timeout_->setTimeout(lyxrc.autosave * 1000);
-		autosave_timeout_->start();
-	}
-
-	intl_->InitKeyMapper(lyxrc.use_kbmap);
 }
 
 

@@ -50,71 +50,74 @@ class Timeout;
  */
 class LyXView : public boost::signals::trackable, boost::noncopyable {
 public:
-	///
+
 	LyXView();
-	///
+
 	virtual ~LyXView();
-	/// Redraw the main form.
-	virtual void redraw() = 0;
 
-	/// Resize all BufferViews in this LyXView (because the width changed)
-	void resize();
+	/// FIXME: what is the requirement for this be to separate from the ctor ?
+	void init();
 
-	/// returns the buffer currently shown in the main form.
-	Buffer * buffer() const;
+	/// start modal operation
+	virtual void prohibitInput() const = 0;
+	/// end modal operation
+	virtual void allowInput() const = 0;
 
-	///
+	//@{ generic accessor functions
+
+	/// return the current buffer view
 	BufferView * view() const;
+
+	/// return the LyX function handler for this view
+	LyXFunc * getLyXFunc() const;
+
+	/// return the buffer currently shown in this window
+	Buffer * buffer() const;
 
 	/// return the toolbar for this view
 	Toolbar * getToolbar() const;
 
-	/// sets the layout in the toolbar layout combox
-	void setLayout(string const & layout);
-	/// update the toolbar
-	void updateToolbar();
-
-	/// return a pointer to the lyxfunc
-	LyXFunc * getLyXFunc() const;
-
-	/// return a pointer to the minibuffer
-	MiniBuffer * getMiniBuffer() const;
-
-	///
-	void message(string const &);
-	///
-	void messagePush(string const & str);
-	///
-	void messagePop();
-
 	/// return the menubar for this view
 	Menubar * getMenubar() const;
 
-	///
-	void updateMenubar();
-
-	///
-	Intl * getIntl() const;
+	/// return the minibuffer for this view
+	/// FIXME: I'm not at all sure that LyXFunc should be
+	/// aware of a mini buffer as such
+	MiniBuffer * getMiniBuffer() const;
 
 	/// get access to the dialogs
 	Dialogs * getDialogs() { return dialogs_.get(); }
 
-	///
+	/// get this view's keyboard map handler
+	Intl * getIntl() const;
+
+	//@}
+
+	/// sets the layout in the toolbar layout selection
+	void setLayout(string const & layout);
+	/// updates the possible layouts selectable
 	void updateLayoutChoice();
 
-	/// Updates the title of the window
+	/// update the toolbar
+	void updateToolbar();
+	/// update the menubar
+	void updateMenubar();
+
+	/// display a message in the view
+	void message(string const &);
+	/// push a message onto the history, and show it
+	void messagePush(string const & str);
+	/// pop the last message pushed
+	void messagePop();
+	/// show state (font etc.) in minibuffer
+	void showState();
+	
+	/// updates the title of the window
 	void updateWindowTitle();
 
-	/// Show state (toolbar and font in minibuffer)
-	void showState();
-
-	/// Reset autosave timer
+	/// reset autosave timer
 	void resetAutosaveTimer();
-	///
-	virtual void prohibitInput() const = 0;
-	///
-	virtual void allowInput() const = 0;
- 
+
 protected:
 	/// view of a buffer. Eventually there will be several.
 	boost::scoped_ptr<BufferView> bufferview_;
@@ -133,7 +136,7 @@ protected:
 	boost::scoped_ptr<Timeout> autosave_timeout_;
 
 	/// called on timeout
-	void AutoSave();
+	void autoSave();
 
 	/// FIXME: GUII - toolbar property
 	void invalidateLayoutChoice();

@@ -1,5 +1,10 @@
 2002-06-12  John Levon  <moz@compsoc.man.ac.uk>
 
+	* XFormsView.h:
+	* XFormsView.C: move init() back to LyXView
+ 
+2002-06-12  John Levon  <moz@compsoc.man.ac.uk>
+
 	* GUIRunTime.C: remove in favour of ...
 
 	* Makefile.am:

@@ -42,9 +42,6 @@
 
 using std::endl;
 
-extern void AutoSave(BufferView *);
-extern void QuitLyX();
-
 string current_layout;
 
 
@@ -59,7 +56,6 @@ LyXView::LyXView()
 	autosave_timeout_.reset(new Timeout(5000));
 
 	dialogs_.reset(new Dialogs(this));
-	Dialogs::redrawGUI.connect(boost::bind(&LyXView::redraw, this));
 }
 
 
@@ -68,9 +64,20 @@ LyXView::~LyXView()
 }
 
 
-void LyXView::resize()
+void LyXView::init()
 {
-	view()->resize();
+	// Set the textclass choice
+	invalidateLayoutChoice();
+	updateLayoutChoice();
+	updateMenubar();
+	
+	// Start autosave timer
+	if (lyxrc.autosave) {
+		autosave_timeout_->setTimeout(lyxrc.autosave * 1000);
+		autosave_timeout_->start();
+	}
+
+	intl_->InitKeyMapper(lyxrc.use_kbmap);
 }
 
 
@@ -158,11 +165,13 @@ Intl * LyXView::getIntl() const
 }
 
 
-void LyXView::AutoSave()
+void LyXView::autoSave()
 {
-	lyxerr[Debug::INFO] << "Running AutoSave()" << endl;
-	if (view()->available())
+	lyxerr[Debug::INFO] << "Running autoSave()" << endl;
+
+	if (view()->available()) {
 		::AutoSave(view());
+	}
 }
 
 

@@ -1032,7 +1032,7 @@ void BufferView::Pimpl::workAreaExpose()
 	if (buffer_ != 0) {
 		if (widthChange) {
 			// The visible LyXView need a resize
-			owner_->resize();
+			owner_->view()->resize();
 
 			// Remove all texts from the textcache
 			// This is not _really_ what we want to do. What
