@@ -1083,13 +1083,14 @@ void paintRows(BufferView const & bv, LyXText const & text,
 
 		// compute inset metrics
 		for (; pit != end; ++pit) {
-			for (int pos = 0; pos != pit->size(); ++pos) {
-				if (pit->isInset(pos)) {
-					Dimension dim;
-					LyXFont font;
-					MetricsInfo mi(perv(bv), font, text.workWidth());
-					pit->getInset(pos)->metrics(mi, dim);
-				}
+			InsetList & insetList = pit->insetlist;
+			InsetList::iterator ii = insetList.begin();
+			InsetList::iterator iend = insetList.end();
+			for (; ii != iend; ++ii) {
+				Dimension dim;
+				LyXFont font;
+				MetricsInfo mi(perv(bv), font, text.workWidth());
+				ii->inset->metrics(mi, dim);
 			}
 		}
 #else

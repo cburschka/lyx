@@ -1,3 +1,9 @@
+2003-07-26  Asger Alstrup  <alstrup@local>
+
+	* rowpainter.C (paintRows): Change algorithm to work directly on
+	the insets rather than asking every character in the document
+	whether its an inset.
+
 2003-07.26  Alfredo Braunstein  <abraunst@libero.it>
 
 	* buffer.C (openFileWrite): factorize some code 
