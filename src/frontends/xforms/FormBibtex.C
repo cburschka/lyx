@@ -80,8 +80,8 @@ ButtonPolicy::SMInput FormBibtex::input(FL_OBJECT * ob, long)
 		string const in_name = fl_get_input(dialog_->input_database);
 		string out_name =
 			controller().Browse("",
-					    "Select Database",
-					    "*.bib| BibTeX Databases (*.bib)");
+					    _("Select Database"),
+					    _("*.bib| BibTeX Databases (*.bib)"));
 		if (!out_name.empty()) {
 			// add the database to any existing ones
 			if (!in_name.empty())
@@ -97,8 +97,8 @@ ButtonPolicy::SMInput FormBibtex::input(FL_OBJECT * ob, long)
 		string const in_name = fl_get_input(dialog_->input_style);
 		string out_name =
 			controller().Browse(in_name,
-					    "Select BibTeX-Style",
-					    "*.bst| BibTeX Styles (*.bst)");
+					    _("Select BibTeX-Style"),
+					    _("*.bst| BibTeX Styles (*.bst)"));
 		if (!out_name.empty()) {
 			fl_freeze_form(form());
 			fl_set_input(dialog_->input_style, out_name.c_str());
