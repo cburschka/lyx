@@ -1602,7 +1602,7 @@ ostream & operator<<(ostream & o, lyxstring const & s)
 }
 
 istream & getline(istream & is, lyxstring & s,
-		  lyxstring::value_type delim = '\n')
+		  lyxstring::value_type delim)
 {
 	// very bad solution
 	char tmp;
