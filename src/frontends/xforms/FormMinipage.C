@@ -61,7 +61,7 @@ void FormMinipage::apply()
 	string const units = fl_get_choice_text(dialog_->choice_width_units);
 	double const val = strToDbl(fl_get_input(dialog_->input_width));
 
-	controller().params().width =
+	controller().params().pageWidth =
 		tostr(val) + frontStrip(strip(subst(units,"%%","%")));
 
 	if (fl_get_button(dialog_->radio_top))
@@ -75,7 +75,7 @@ void FormMinipage::apply()
 
 void FormMinipage::update()
 {
-    LyXLength len(controller().params().width);
+    LyXLength len(controller().params().pageWidth);
     fl_set_input(dialog_->input_width, tostr(len.value()).c_str());
     fl_set_choice(dialog_->choice_width_units, len.unit() + 1);
 

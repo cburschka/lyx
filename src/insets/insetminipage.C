@@ -286,13 +286,13 @@ void InsetMinipage::innerPos(InsetMinipage::InnerPosition ip)
 }
 
 
-string const & InsetMinipage::height() const
+string const & InsetMinipage::pageHeight() const
 {
 	return height_;
 }
 
 
-void InsetMinipage::height(string const & ll)
+void InsetMinipage::pageHeight(string const & ll)
 {
 	if (height_ != ll) {
 		height_ = ll;
@@ -301,13 +301,13 @@ void InsetMinipage::height(string const & ll)
 }
 
 
-string const & InsetMinipage::width() const
+string const & InsetMinipage::pageWidth() const
 {
 	return width_;
 }
 
 
-void InsetMinipage::width(string const & ll)
+void InsetMinipage::pageWidth(string const & ll)
 {
 	if (ll != width_) {
 		width_ = ll;

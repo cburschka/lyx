@@ -1,3 +1,9 @@
+2002-01-14  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* buffer.C (parseSingleLyXformat2Token): changes associated with the
+	change of InsetMinipage::width to InsetMinipage::pageWidth to avoid the
+	name clash with InsetCollapsable's width function.
+
 2002-01-14  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* lastfiles.C: include <iterator>

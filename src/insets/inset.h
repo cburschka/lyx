@@ -517,10 +517,10 @@ public:
 	// needed for search/replace functionality
 	///
 	virtual bool searchForward(BufferView *, string const &,
-	                           bool const & = true, bool const & = false);
+	                           bool = true, bool = false);
 	///
 	virtual bool searchBackward(BufferView *, string const &,
-	                            bool const & = true, bool const & = false);
+	                            bool = true, bool = false);
 
 protected:
 	///

@@ -1278,10 +1278,10 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 			}
 			InsetMinipage * mini = new InsetMinipage;
 			mini->pos(static_cast<InsetMinipage::Position>(par->params().pextraAlignment()));
-			mini->width(par->params().pextraWidth());
+			mini->pageWidth(par->params().pextraWidth());
 			if (!par->params().pextraWidthp().empty()) {
-			    lyxerr << "WP:" << mini->width() << endl;
-			    mini->width(tostr(par->params().pextraWidthp())+"%");
+			    lyxerr << "WP:" << mini->pageWidth() << endl;
+			    mini->pageWidth(tostr(par->params().pextraWidthp())+"%");
 			}
 			Paragraph * op = mini->firstParagraph();
 			mini->inset.paragraph(par);
@@ -1359,10 +1359,10 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 
 		InsetMinipage * mini = new InsetMinipage;
 		mini->pos(static_cast<InsetMinipage::Position>(minipar->params().pextraAlignment()));
-		mini->width(minipar->params().pextraWidth());
+		mini->pageWidth(minipar->params().pextraWidth());
 		if (!par->params().pextraWidthp().empty()) {
-		    lyxerr << "WP:" << mini->width() << endl;
-		    mini->width(tostr(par->params().pextraWidthp())+"%");
+		    lyxerr << "WP:" << mini->pageWidth() << endl;
+		    mini->pageWidth(tostr(par->params().pextraWidthp())+"%");
 		}
 		mini->inset.paragraph(minipar);
 			

@@ -1,5 +1,10 @@
 2002-01-14  Angus Leeming  <a.leeming@ic.ac.uk>
 
+	* FormMinipage.C (apply, update): MinipageParams::width renamed
+	as MinipageParams::pageWidth.
+
+2002-01-14  Angus Leeming  <a.leeming@ic.ac.uk>
+
 	* FormMathsMatrix.C (input): use lyx::count rather than std::count.
 
 2002-01-14  Angus Leeming  <a.leeming@ic.ac.uk>

@@ -1,3 +1,9 @@
+2002-01-14  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* FormMinipage.C (apply, update): MinipageParams::width renamed
+	as MinipageParams::pageWidth. InsetMinipage::width  renamed
+	as InsetMinipage::pageWidth.
+
 2002-01-13  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* ButtonController.h (refreshReadOnly): use explicit typename

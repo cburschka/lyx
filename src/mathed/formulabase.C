@@ -726,7 +726,7 @@ int InsetFormulaBase::xhigh() const
 
 
 bool InsetFormulaBase::searchForward(BufferView * bv, string const & str,
-                   bool const &, bool const &)
+				     bool, bool)
 {
 #ifdef WITH_WARNINGS
 #warning pretty ugly
@@ -773,7 +773,7 @@ bool InsetFormulaBase::searchForward(BufferView * bv, string const & str,
 
 
 bool InsetFormulaBase::searchBackward(BufferView * bv, string const & what,
-                    bool const & a, bool const & b)
+				      bool a, bool b)
 {
 	lyxerr << "searching backward not implemented in mathed" << endl;
 	return searchForward(bv, what, a, b);

@@ -646,7 +646,7 @@ void InsetCollapsable::setLabel(string const & l) const
 
 
 bool InsetCollapsable::searchForward(BufferView * bv, string const & str,
-                                     bool const & cs, bool const & mw)
+                                     bool cs, bool mw)
 {
 	bool found = inset.searchForward(bv, str, cs, mw);
 	if (first_after_edit && !found)
@@ -657,7 +657,7 @@ bool InsetCollapsable::searchForward(BufferView * bv, string const & str,
 
 
 bool InsetCollapsable::searchBackward(BufferView * bv, string const & str,
-                                      bool const & cs, bool const & mw)
+                                      bool cs, bool mw)
 {
 	bool found = inset.searchBackward(bv, str, cs, mw);
 	if (first_after_edit && !found)

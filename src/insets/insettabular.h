@@ -218,9 +218,9 @@ public:
 	void toggleSelection(BufferView *, bool kill_selection);
 	///
 	bool searchForward(BufferView *, string const &,
-	                   bool const & = true, bool const & = false);
+	                   bool = true, bool = false);
 	bool searchBackward(BufferView *, string const &,
-	                    bool const & = true, bool const & = false);
+	                    bool = true, bool = false);
 
 	// this should return true if we have a "normal" cell, otherwise true.
 	// "normal" means without width set!

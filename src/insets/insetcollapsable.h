@@ -188,9 +188,9 @@ public:
 	}
 	///
 	bool searchForward(BufferView * bv, string const & str,
-	                   bool const & cs = true, bool const & mw = false);
+	                   bool = true, bool = false);
 	bool searchBackward(BufferView * bv, string const & str,
-	                    bool const & cs = true, bool const & mw = false);
+	                    bool = true, bool = false);
 
 protected:
 	///

@@ -2657,7 +2657,7 @@ void InsetTabular::toggleSelection(BufferView * bv, bool kill_selection)
 
 
 bool InsetTabular::searchForward(BufferView * bv, string const & str,
-                                 bool const & cs, bool const & mw)
+                                 bool cs, bool mw)
 {
 	nodraw(true);
 	if (the_locking_inset) {
@@ -2685,7 +2685,7 @@ bool InsetTabular::searchForward(BufferView * bv, string const & str,
 
 
 bool InsetTabular::searchBackward(BufferView * bv, string const & str,
-                               bool const & cs, bool const & mw)
+                               bool cs, bool mw)
 {
 	nodraw(true);
 	if (the_locking_inset) {

@@ -71,13 +71,13 @@ public:
 	///
 	void innerPos(InnerPosition);
 	///
-	string const & height() const;
+	string const & pageHeight() const;
 	///
-	void height(string const &);
+	void pageHeight(string const &);
 	///
-	string const & width() const;
+	string const & pageWidth() const;
 	///
-	void width(string const &);
+	void pageWidth(string const &);
 	///
 	SigC::Signal0<void> hideDialog;
 	///

@@ -34,7 +34,7 @@ struct MinipageParams {
 	///
 	MinipageParams(InsetMinipage const &);
 	///
-	string width;
+	string pageWidth;
 	///
 	InsetMinipage::Position pos;
 };

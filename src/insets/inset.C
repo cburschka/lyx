@@ -373,7 +373,7 @@ string const UpdatableInset::selectNextWordToSpellcheck(BufferView *bv,
 
 
 bool UpdatableInset::searchForward(BufferView * bv, string const &,
-                                   bool const &, bool const &)
+                                   bool, bool)
 {
 	// we have to unlock ourself in this function by default!
 	bv->unlockInset(const_cast<UpdatableInset *>(this));
@@ -382,7 +382,7 @@ bool UpdatableInset::searchForward(BufferView * bv, string const &,
 
 
 bool UpdatableInset::searchBackward(BufferView * bv, string const &,
-                                    bool const &, bool const &)
+                                    bool, bool)
 {
 	// we have to unlock ourself in this function by default!
 	bv->unlockInset(const_cast<UpdatableInset *>(this));

@@ -1,5 +1,10 @@
 2002-01-14  Angus Leeming  <a.leeming@ic.ac.uk>
 
+	* formulabase.[Ch] (searchForward, searchBackward): change the
+	bool const & params to bool.
+
+2002-01-14  Angus Leeming  <a.leeming@ic.ac.uk>
+
 	* math_mathmlstream.C (operator<<): use lyx::count rather than
 	countChar.
 

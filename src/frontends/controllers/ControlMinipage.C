@@ -44,7 +44,7 @@ ControlMinipage::ControlMinipage(LyXView & lv, Dialogs & d)
 
 void ControlMinipage::applyParamsToInset()
 {
-	inset()->width(params().width);
+	inset()->pageWidth(params().pageWidth);
 	inset()->pos(params().pos);
 
 	lv_.view()->updateInset(inset(), true);
@@ -67,13 +67,13 @@ MinipageParams::MinipageParams()
 {}
 
 MinipageParams::MinipageParams(InsetMinipage const & inset)
-	: width(inset.width()), pos(inset.pos())
+	: pageWidth(inset.pageWidth()), pos(inset.pos())
 {}
 
 
 bool operator==(MinipageParams const & p1, MinipageParams const & p2)
 {
-	return (p1.width == p2.width && p1.pos == p2.pos);
+	return (p1.pageWidth == p2.pageWidth && p1.pos == p2.pos);
 }
 
 
