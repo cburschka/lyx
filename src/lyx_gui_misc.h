@@ -82,7 +82,7 @@ float getScreenDPI();
 inline
 void LyXBell() {
 	// if (audio()) ON/OFF switch yet to be implemented
-	fl_ringbell(20);
+	//fl_ringbell(20);
 }
 
 #endif

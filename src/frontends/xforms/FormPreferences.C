@@ -462,7 +462,7 @@ void FormPreferences::Colors::apply()
 	for (vector<NamedColor>::const_iterator cit = lyxColorDB.begin();
 	     cit != lyxColorDB.end(); ++cit) {
 		LColor::color lc = lcolor.getFromGUIName((*cit).getname());
-		if (lc == LColor::ignore) continue;
+		if (lc == LColor::inherit) continue;
 
 		// Ascertain the X11 name
 		RGBColor const & col = (*cit).color();
@@ -893,6 +893,18 @@ bool FormPreferences::Colors::LoadBrowserX11(string const & filename)
 	fl_freeze_form(dialog_->form);
 	for (int i=0; i<LColor::ignore; ++i) {
 		LColor::color lc = static_cast<LColor::color>(i);
+
+		if (lc == LColor::none
+		    || lc == LColor::black
+		    || lc == LColor::white
+		    || lc == LColor::red
+		    || lc == LColor::green
+		    || lc == LColor::blue
+		    || lc == LColor::cyan
+		    || lc == LColor::magenta
+		    || lc == LColor::yellow
+		    || lc == LColor::inherit
+		    || lc == LColor::ignore) continue;
 
 		string name = lowercase(lcolor.getX11Name(lc));
 		Display * display = fl_get_display();;

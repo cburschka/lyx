@@ -1,5 +1,20 @@
 2000-11-29  John Levon  <moz@compsoc.man.ac.uk>
 
+	* src/frontends/xforms/FormPrint.C: set to valid()
+	when we update from the passed parameters.
+
+2000-11-29  Angus Leeming <a.leeming@ic.ac.uk>
+
+	* src/LColor.C (getFromGUIName): internationalise the comparison.
+
+	* src/lyx_gui_misc.h (LyXBell): turn off that BLOODY bell until it's a
+	FormPreferences choice.
+
+	* src/frontends/xforms/FormPreferences.C: some additional Color safety.
+	Should be redundant.
+
+2000-11-29  John Levon  <moz@compsoc.man.ac.uk>
+
 	* src/lyx_rc.C: more detail for the printer program config
 	dialog.
 

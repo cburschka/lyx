@@ -194,6 +194,7 @@ void FormPrint::update()
 
 		fl_set_input(dialog_->input_count,
 			     tostr(pp.count_copies).c_str());
+		bc_.valid();
 	}
 }
 

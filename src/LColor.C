@@ -194,7 +194,7 @@ LColor::color LColor::getFromGUIName(string const & guiname) const
 	InfoTab::const_iterator ici = infotab.begin();
 	InfoTab::const_iterator end = infotab.end();
 	for (; ici != end; ++ici) {
-		if (!compare_no_case((*ici).second.guiname, guiname))
+		if (!compare_no_case(_((*ici).second.guiname), guiname))
 			return (*ici).first;
 	}
 	return LColor::inherit;
