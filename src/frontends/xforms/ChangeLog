@@ -2,6 +2,11 @@
 
 	* xformsImage.C: use lyx::float_equal() for comparing floats & doubles
 
+2003-02-26  Rob Lahaye  <lahaye@snu.ac.kr>
+
+	* forms/form_external.fd:
+	* forms/form_forks.fd: prettifying layout.
+
 2003-02-21  Angus Leeming  <leeming@lyx.org>
 
 	* FormDialogView.[Ch]: new base class for the xforms dialogs,
