@@ -7,13 +7,12 @@
  * \author Angus Leeming, a.leeming@.ac.uk
  */
 
+#include <config.h>
 #include <fstream>
 
 #ifdef __GNUG__
 #pragma implementation
 #endif
-
-#include <config.h>
 
 #include "ControlCredits.h"
 #include "Dialogs.h"
@@ -22,40 +21,40 @@
 #include "gettext.h"
 #include "support/filetools.h" // FileSearch
 
-using SigC::slot;
-using std::getline;
-using std::ifstream;
-using std::ios_base;
-using std::vector;
+// needed for the browser
+extern string system_lyxdir;
+
 
 ControlCredits::ControlCredits(LyXView & lv, Dialogs & d)
 	: ControlDialog<ControlConnectBI>(lv, d)
 {
-	d_.showCredits.connect(slot(this, &ControlCredits::show));
+	d_.showCredits.connect(SigC::slot(this, &ControlCredits::show));
 }
 
 
-// needed for the browser
-extern string system_lyxdir;
-
 vector<string> const ControlCredits::getCredits() const
 {
-	vector<string> data;
+	std::vector<string> data;
 
 	string const name = FileSearch(system_lyxdir, "CREDITS");
 
 	bool found = (!name.empty());
 
+#warning what are you really doing here... (Lgb)
+	// why not just send a stringstream to the calling func?
+	// then the reader would look like:
+	// stringstream ss;
+	// ss << in.rdbuf();
 	if (found) {
-		ifstream in(name.c_str());
+		std::ifstream in(name.c_str());
 		found = (in.get());
 
 		if (found) {
-			in.seekg(0, ios_base::beg); // rewind to the beginning
+			in.seekg(0, std::ios::beg); // rewind to the beginning
 
 			for(;;) {
 				string line;
-				getline(in, line);
+				std::getline(in, line);
 				if (!in.good()) break;
 				data.push_back(line);
 			}
