@@ -412,25 +412,18 @@ void RowPainter::paintSelection()
 	bool const sel_on_one_row  = sel_starts_here && sel_ends_here;
 
 	if (text_.bidi.same_direction()) {
-		int x;
-		int w;
 		if (sel_on_one_row) {
-			if (startx < endx) {
-				x = startx;
-				w = endx - startx;
-			} else {
-				x = endx;
-				w = startx - endx;
-			}
-			pain_.fillRectangle(x, yo_, w, h, LColor::selection);
+			int const x1 = is_rtl ? endx : startx;
+			int const x2 = is_rtl ? startx : endx;
+			pain_.fillRectangle(x1, yo_, x2 - x1, h, LColor::selection);
 		} else if (sel_starts_here) {
-			int const x = is_rtl ? 0 : startx;
-			int const w = is_rtl ? startx : (width_ - startx);
-			pain_.fillRectangle(x, yo_, w, h, LColor::selection);
+			int const x1 = is_rtl ? int(xo_) : startx;
+			int const x2 = is_rtl ? startx : int(xo_) + width_;
+			pain_.fillRectangle(x1, yo_, x2 - x1, h, LColor::selection);
 		} else if (sel_ends_here) {
-			int const x = is_rtl ? endx : 0;
-			int const w = is_rtl ? (width_ - endx) : endx;
-			pain_.fillRectangle(x, yo_, w, h, LColor::selection);
+			int const x1 = is_rtl ? endx : int(xo_);
+			int const x2 = is_rtl ? int(xo_) + width_ : endx;
+			pain_.fillRectangle(x1, yo_, x2 - x1, h, LColor::selection);
 		} else if (row_y > starty && row_y < endy) {
 			pain_.fillRectangle(int(xo_), yo_, width_, h, LColor::selection);
 		}
@@ -721,7 +714,7 @@ void RowPainter::paintLast()
 		int const y = yo_ + row_.baseline() - size;
 		int x = is_rtl ? NEST_MARGIN + CHANGEBAR_MARGIN: width_ - size;
 
-		if (width_ - row_.width() <= size)
+		if (width_ - int(row_.width()) <= size)
 			x += (size - width_ + row_.width() + 1) * (is_rtl ? -1 : 1);
 
 		if (endlabel == END_LABEL_BOX)
