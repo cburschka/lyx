@@ -1,3 +1,14 @@
+2001-06-05  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* BufferView_pimpl.C (updateScrollbar): simplify.
+
+	* BufferView2.C: don't include insets/insetinfo.h, change
+	prototype for insertInset and call the Pimpl version. let
+	updateInset call Pimpl version.
+
+	* BufferView.h: move inset_slept to BufferView::Pimpl, move
+	gotoInset to BufferView::Pimpl
+
 2001-06-01  Juergen Vigna  <jug@sad.it>
 
 	* lyxfunc.C (Dispatch): LFUN_PREFIX don't call the update if we're

@@ -685,7 +685,7 @@ InsetFormula::LocalDispatch(BufferView * bv, kb_action action,
 	bool space_on = false;
 	bool was_selection = mathcursor->Selection();
 	RESULT result = DISPATCHED;
-	static MathSpaceInset * sp= 0;
+	static MathSpaceInset * sp;
 
 	HideInsetCursor(bv);
 

@@ -8,7 +8,8 @@
    *
    *           LyX, the High Level Word Processor
    *
-   *           Copyright (C) 1995 Matthias Ettrich
+   *           Copyright 1995 Matthias Ettrich
+   *           Copyright 1995-2001 The LyX Team.
    *
    *======================================================*/
 
@@ -121,6 +122,15 @@ int mkstemp(char*);
 
 #if defined(__CYGWIN__) || defined( __CYGWIN32__)
 #include "nt_defines.h"
+#endif
+
+/* Some support for the boost library. */
+#ifndef HAVE_LIMITS
+#define BOOST_NO_LIMITS
+#endif
+
+#ifndef HAVE_SSTREAM
+#define BOOST_NO_STRINGSTREAM
 #endif
 
 #endif /* _CONFIG_H */

@@ -171,7 +171,7 @@ string const ControlExternal::Browse(string const & input) const
 	// FIXME: a temporary hack until the FileDialog interface is updated
 	regexp += "|";
 
-	static int once = 0;
+	static int once;
 	string current_path;
 
 	while (1) {

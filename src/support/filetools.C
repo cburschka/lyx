@@ -466,12 +466,12 @@ int DestroyTmpDir(string const & tmpdir, bool Allfiles)
 
 string const CreateBufferTmpDir(string const & pathfor)
 {
-	static int count = 0;
+	static int count;
 	static string const tmpdir(pathfor.empty() ? os::getTmpDir() : pathfor);
 	// We are in our own directory.  Why bother to mangle name?
 	// In fact I wrote this code to circumvent a problematic behaviour (bug?)
 	// of EMX mkstemp().
-	string tmpfl = tmpdir + "/lyx_tmpbuf" + tostr(count++);
+	string const tmpfl = tmpdir + "/lyx_tmpbuf" + tostr(count++);
 	if (lyx::mkdir(tmpfl, 0777)) {
 		WriteFSAlert(_("Error! Couldn't create temporary directory:"),
 			     tmpdir);

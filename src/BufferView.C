@@ -27,7 +27,6 @@ BufferView::BufferView(LyXView * o, int xpos, int ypos,
 	: pimpl_(new Pimpl(this, o, xpos, ypos, width, height))
 {
 	text = 0;
-	inset_slept = false;
 }
 
 

@@ -229,7 +229,7 @@ char LexGetArg(char lf, bool accept_spaces = false)
 
 int yylex(void)
 {
-	static int init_done = 0;
+	static int init_done;
 	
 	if (!init_done) LexInitCodes();
 	

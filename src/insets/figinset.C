@@ -1936,10 +1936,11 @@ void InsetFig::Preview(string const & p)
 		lyxerr << "Can't view " << buf2 << endl;
 }
 
+
 void InsetFig::BrowseFile()
 {
 	static string current_figure_path;
-	static int once = 0;
+	static int once;
 
 	if (lyxerr.debugging()) {
 		lyxerr << "Filename: "

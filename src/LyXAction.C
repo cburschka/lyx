@@ -62,7 +62,7 @@ void LyXAction::init()
 	// occupies after the init is completed. It compiles several
 	// magnitudes faster.
 	
-	static bool init = false;
+	static bool init;
 	if (init) return;
 
 	struct lfun_item {

@@ -196,7 +196,8 @@ string const InsetInfo::EditMessage() const
 
 void InsetInfo::Edit(BufferView *bv, int, int, unsigned int)
 {
-	static int ow = -1, oh;
+	static int ow = -1;
+	static int oh;
 
 	if (bv->buffer()->isReadonly())
 		WarnReadonly(bv->buffer()->fileName());

@@ -362,11 +362,11 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, LyXParagraph *& par,
 #ifndef NO_PEXTRA_REALLY
 	// This is super temporary but is needed to get the compability
 	// mode for minipages work correctly together with new tabulars.
-	static int call_depth = 0;
+	static int call_depth;
 	++call_depth;
 	bool checkminipage = false;
-	static LyXParagraph * minipar = 0;
-	static LyXParagraph * parBeforeMinipage = 0;
+	static LyXParagraph * minipar;
+	static LyXParagraph * parBeforeMinipage;
 #endif
 	
 	if (token[0] != '\\') {

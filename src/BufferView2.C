@@ -1,4 +1,4 @@
-// -*- C++ -*-
+a// -*- C++ -*-
 /* This file is part of
  * ====================================================== 
  * 
@@ -19,7 +19,6 @@
 #include "lyxcursor.h"
 #include "lyxtext.h"
 #include "insets/inseterror.h"
-#include "insets/insetinfo.h"
 #include "LyXView.h"
 #include "bufferlist.h"
 #include "support/FileInfo.h"
@@ -191,64 +190,9 @@ void BufferView::setCursorFromRow(int row)
 }
 
 
-bool BufferView::insertInset(Inset * inset, string const & lout,
-			     bool /*no_table*/)
+bool BufferView::insertInset(Inset * inset, string const & lout)
 {
-	// if we are in a locking inset we should try to insert the
-	// inset there otherwise this is a illegal function now
-	if (theLockingInset()) {
-		if (theLockingInset()->InsertInsetAllowed(inset))
-		    return theLockingInset()->InsertInset(this, inset);
-		return false;
-	}
-
-	// not quite sure if we want this...
-	text->SetCursorParUndo(buffer());
-	text->FreezeUndo();
-	
-	beforeChange(text);
-	if (!lout.empty()) {
-		update(text, BufferView::SELECT|BufferView::FITCUR);
-		text->BreakParagraph(this);
-		update(text, BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
-
-		if (text->cursor.par()->size()) {
-			text->CursorLeft(this);
-			
-			text->BreakParagraph(this);
-			update(text, BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
-		}
-
-		pair<bool, LyXTextClass::size_type> lres =
-			textclasslist.NumberOfLayout(buffer()->params
-						     .textclass, lout);
-		LyXTextClass::size_type lay;
-		if (lres.first != false) {
-			// layout found
-			lay = lres.second;
-		} else {
-			// layout not fount using default "Standard" (0)
-			lay = 0;
-		}
-		 
-		text->SetLayout(this, lay);
-		
-		text->SetParagraph(this, 0, 0,
-				   0, 0,
-				   VSpace(VSpace::NONE), VSpace(VSpace::NONE),
-				   LYX_ALIGN_LAYOUT, 
-				   string(),
-				   0);
-		update(text, BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
-		
-		text->current_font.setLatex(LyXFont::OFF);
-	}
-	
-	text->InsertInset(this, inset);
-	update(text, BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
-
-	text->UnFreezeUndo();
-	return true;
+	return pimpl_->insertInset(inset, lout);
 }
 
 
@@ -384,48 +328,6 @@ void BufferView::paste()
 }
 
 
-void BufferView::gotoInset(std::vector<Inset::Code> const & codes,
-			   bool same_content)
-{
-	if (!available()) return;
-   
-	hideCursor();
-	beforeChange(text);
-	update(text, BufferView::SELECT|BufferView::FITCUR);
-
-	string contents;
-	if (same_content &&
-	    text->cursor.par()->GetChar(text->cursor.pos()) == LyXParagraph::META_INSET) {
-		Inset const * inset = text->cursor.par()->GetInset(text->cursor.pos());
-		if (find(codes.begin(), codes.end(), inset->LyxCode())
-		    != codes.end())
-			contents =
-				static_cast<InsetCommand const *>(inset)->getContents();
-	}
-	
-	if (!text->GotoNextInset(this, codes, contents)) {
-		if (text->cursor.pos() 
-		    || text->cursor.par() != text->FirstParagraph()) {
-				LyXCursor tmp = text->cursor;
-				text->cursor.par(text->FirstParagraph());
-				text->cursor.pos(0);
-				if (!text->GotoNextInset(this, codes, contents)) {
-					text->cursor = tmp;
-					owner()->message(_("No more insets"));
-				}
-			} else {
-				owner()->message(_("No more insets"));
-			}
-	}
-	update(text, BufferView::SELECT|BufferView::FITCUR);
-	text->selection.cursor = text->cursor;
-}
-
-
-void BufferView::gotoInset(Inset::Code code, bool same_content)
-{
-	gotoInset(vector<Inset::Code>(1, code), same_content);
-}
 
 
 void BufferView::insertCorrectQuote()
@@ -592,44 +494,7 @@ void BufferView::lockedInsetStoreUndo(Undo::undo_kind kind)
 
 void BufferView::updateInset(Inset * inset, bool mark_dirty)
 {
-	if (!inset)
-		return;
-
-	// first check for locking insets
-	if (theLockingInset()) {
-		if (theLockingInset() == inset) {
-			if (text->UpdateInset(this, inset)) {
-				update();
-				if (mark_dirty) {
-					buffer()->markDirty();
-				}
-				updateScrollbar();
-				return;
-			}
-		} else if (theLockingInset()->UpdateInsetInInset(this,inset)) {
-			if (text->UpdateInset(this, theLockingInset())) {
-				update();
-				if (mark_dirty){
-					buffer()->markDirty();
-				}
-				updateScrollbar();
-				return;
-			}
-		}
-	}
-  
-	// then check the current buffer
-	if (available()) {
-		hideCursor();
-		update(text, BufferView::UPDATE);
-		if (text->UpdateInset(this, inset)) {
-			if (mark_dirty)
-				update(text, BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
-			else 
-				update(text, SELECT);
-			return;
-		}
-	}
+	pimpl_->updateInset(inset, mark_dirty);
 }
 
 
@@ -693,6 +558,7 @@ bool BufferView::ChangeCitationsIfUnique(string const & from, string const & to)
 
 	return ChangeInsets(Inset::CITE_CODE, from, to);
 }
+
 
 UpdatableInset * BufferView::theLockingInset() const
 {

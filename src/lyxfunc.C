@@ -1508,7 +1508,7 @@ void LyXFunc::MenuNew(bool fromTemplate)
 			initpath = trypath;
 	}
 
-	static int newfile_number = 0;
+	static int newfile_number;
 	string s;
 	
 	if (lyxrc.new_ask_filename) {

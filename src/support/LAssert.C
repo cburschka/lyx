@@ -22,7 +22,7 @@
 extern BufferList bufferlist;
 
 void emergencySave() {
-	static bool didSafe = false;
+	static bool didSafe;
 	if (didSafe)
 		return;
 

@@ -1952,7 +1952,7 @@ void LyXText::charInserted()
 {
 	// Here we could call FinishUndo for every 20 characters inserted.
 	// This is from my experience how emacs does it.
-	static unsigned int counter = 0;
+	static unsigned int counter;
 	if (counter < 20) {
 		++counter;
 	} else {

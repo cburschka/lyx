@@ -355,7 +355,7 @@ PainterBase & Painter::text(int x, int y, XChar2b const * s, int ls,
 	} else {
 		LyXFont smallfont(f);
 		smallfont.decSize().decSize().setShape(LyXFont::UP_SHAPE);
-		static XChar2b c = {0, 0};
+		static XChar2b c;
 		int tmpx = x;
 		for (int i = 0; i < ls; ++i) {
 			if (s[i].byte1 == 0 && islower(s[i].byte2)) {

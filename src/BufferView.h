@@ -78,11 +78,6 @@ public:
 	///
 	int resizeCurrentBuffer();
 	///
-	void gotoInset(std::vector<Inset::Code> const & codes,
-		       bool same_content);
-	///
-	void gotoInset(Inset::Code codes, bool same_content);
-	///
 	void cursorPrevious(LyXText *);
 	///
 	void cursorNext(LyXText *);
@@ -116,8 +111,6 @@ public:
 	void theLockingInset(UpdatableInset * inset); 
 	///
 	void updateInset(Inset * inset, bool mark_dirty);
-	///
-	bool inset_slept;
 	///
 	int slx;
 	///
@@ -164,8 +157,9 @@ public:
 	    Placie it in a layout of lout,
 	    if no_table make sure that it doesn't end up in a table.
 	*/
-	bool insertInset(Inset * inset, string const & lout = string(),
-			 bool no_table = false);
+	//bool insertInset(Inset * inset, string const & lout = string(),
+	//		 bool no_table = false);
+	bool insertInset(Inset * inset, string const & lout = string());
 	/** Inserts a lyx file at cursor position.
 	    @return #false# if it fails.
 	*/

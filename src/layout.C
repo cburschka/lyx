@@ -1258,7 +1258,7 @@ string const &
 LyXTextClassList::NameOfLayout(LyXTextClassList::size_type textclass,
 			       LyXTextClass::size_type layout) const
 {
-	static string dummy("dummy");
+	static string const dummy("dummy");
 	classlist[textclass].load();
 	if (layout < classlist[textclass].numLayouts())
 		return classlist[textclass][layout].name();
@@ -1270,7 +1270,7 @@ LyXTextClassList::NameOfLayout(LyXTextClassList::size_type textclass,
 string const &
 LyXTextClassList::NameOfClass(LyXTextClassList::size_type number) const
 {
-	static string dummy("dummy");
+	static string const dummy("dummy");
 	if (classlist.size() == 0) {
 		return dummy;
 	}
@@ -1283,7 +1283,7 @@ LyXTextClassList::NameOfClass(LyXTextClassList::size_type number) const
 string const &
 LyXTextClassList::LatexnameOfClass(LyXTextClassList::size_type number) const
 {
-	static string dummy("dummy");
+	static string const dummy("dummy");
 	classlist[number].load();
 	if (classlist.size() == 0) {
 		return dummy;
@@ -1297,7 +1297,7 @@ LyXTextClassList::LatexnameOfClass(LyXTextClassList::size_type number) const
 string const &
 LyXTextClassList::DescOfClass(LyXTextClassList::size_type number) const
 {
-	static string dummy("dummy");
+	static string const dummy("dummy");
 	if (classlist.size() == 0) {
 		return dummy;
 	}

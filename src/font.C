@@ -177,7 +177,7 @@ int lyxfont::width(XChar2b const * s, int n, LyXFont const & f)
 	} else {
 		// emulate smallcaps since X doesn't support this
 		unsigned int result = 0;
-		static XChar2b c = {0, 0};
+		static XChar2b c;
 		LyXFont smallfont(f);
 		smallfont.decSize().decSize().setShape(LyXFont::UP_SHAPE);
 		for (int i = 0; i < n; ++i) {

@@ -118,6 +118,10 @@ struct BufferView::Pimpl : public SigC::Object {
 	///
 	void center();
 	///
+	bool insertInset(Inset * inset, string const & lout = string());
+	///
+	void updateInset(Inset * inset, bool mark_dirty);
+	///
 	bool Dispatch(kb_action action, string const & argument);
 private:
 	///
@@ -141,6 +145,11 @@ private:
 	///
 	void insertNote();
 	///
+	void gotoInset(std::vector<Inset::Code> const & codes,
+		       bool same_content);
+	///
+	void gotoInset(Inset::Code codes, bool same_content);
+	///
 	BufferView * bv_;
 	///
 	LyXView * owner_;
@@ -152,10 +161,6 @@ private:
 	long current_scrollbar_value;
 	///
 	Timeout cursor_timeout;
-        ///
-	int last_click_x;
-	///
-	int last_click_y;
 	///
 	WorkArea workarea_;
 	///
@@ -188,5 +193,7 @@ private:
 	Inset * getInsetByCode(Inset::Code code);
 	///
 	void MenuInsertLyXFile(string const & filen);
+	///
+	bool inset_slept;
 };
 #endif

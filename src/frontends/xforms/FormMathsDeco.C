@@ -22,10 +22,12 @@
 
 #include "deco.xbm"
 
+
 static char const * decoration_names[] = {
 	"widehat", "widetilde", "overbrace", "overleftarrow", "overrightarrow", 
 	"overline", "underbrace", "underline"
 };
+
 
 static int const nr_decoration_names = sizeof(decoration_names) / sizeof(char const *);
  

@@ -344,8 +344,9 @@ bool Trans::isAccentDefined(tex_accent accent, KmodInfo & i) const
 
 string const Trans::process(char c, TransManager & k)
 {
-	string dummy("?");
-	string dt = dummy;
+	//string dummy("?");
+	//string dt = dummy;
+	string dt("?");
 	string const t = Match(static_cast<unsigned char>(c));
 
 	if (t.empty() && c != 0) {

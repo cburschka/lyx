@@ -402,9 +402,9 @@ int WorkArea::work_area_handler(FL_OBJECT * ob, int event,
 		// If you have a better way to handle "wild-output" of
 		// characters after the key has been released than the one
 		// below, please contact me. (Lgb)
-		static Time last_time_pressed = 0;
-		static unsigned int last_key_pressed = 0;
-		static unsigned int last_state_pressed = 0;
+		static Time last_time_pressed;
+		static unsigned int last_key_pressed;
+		static unsigned int last_state_pressed;
 		lyxerr[Debug::KEY] << "Workarea Diff: "
 				   << xke->time - last_time_pressed
 				   << endl;
