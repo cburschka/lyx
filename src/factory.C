@@ -38,6 +38,7 @@
 #include "insets/insettoc.h"
 #include "insets/inseturl.h"
 #include "insets/insetwrap.h"
+
 #include "frontends/Dialogs.h"
 #include "frontends/LyXView.h"
 
@@ -105,13 +106,13 @@ Inset * createInset(FuncRequest const & cmd)
 			cmd.argument;
 		icp.setContents(contents);
 
-		string data = InsetCommandMailer::params2string(icp);
+		string data = InsetCommandMailer::params2string("index", icp);
 		LyXView * lv = bv->owner();
 
 		if (icp.getContents().empty()) {
 			lv->getDialogs().show("index", data, 0);
 		} else {
-			FuncRequest fr(bv, LFUN_INDEX_APPLY, data);
+			FuncRequest fr(bv, LFUN_INSET_APPLY, data);
 			lv->dispatch(fr);
 		}
 		return 0;
@@ -165,57 +166,55 @@ Inset * createInset(FuncRequest const & cmd)
 		return new InsetTheorem;
 #endif
 
-	case LFUN_BIBITEM_APPLY: {
-		InsetCommandParams icp;
-		InsetCommandMailer::string2params(cmd.argument, icp);
-		return new InsetBibitem(icp);
-	}
+	case LFUN_INSET_APPLY: {
+		string const name = cmd.getArg(0);
 
-	case LFUN_BIBTEX_APPLY: {
-		InsetCommandParams icp;
-		InsetCommandMailer::string2params(cmd.argument, icp);
-		return new InsetBibtex(icp);
-	}
+		if (name == "bibitem") {
+			InsetCommandParams icp;
+			InsetCommandMailer::string2params(cmd.argument, icp);
+			return new InsetBibitem(icp);
 
-	case LFUN_CITATION_APPLY: {
-		InsetCommandParams icp;
-		InsetCommandMailer::string2params(cmd.argument, icp);
-		InsetCitation * inset = new InsetCitation(icp);
-		inset->setLoadingBuffer(bv->buffer(), false);
-		return inset;
-	}
+		} else if (name == "bibtex") {
+			InsetCommandParams icp;
+			InsetCommandMailer::string2params(cmd.argument, icp);
+			return new InsetBibtex(icp);
 
-	case LFUN_ERT_APPLY: {
-		InsetERT * inset = new InsetERT(params);
-		InsetERT::ERTStatus s;
-		InsetERTMailer::string2params(cmd.argument, s);
-		inset->status(bv, s);
-		return inset;
-	}
+		} else if (name == "citation") {
+			InsetCommandParams icp;
+			InsetCommandMailer::string2params(cmd.argument, icp);
+			InsetCitation * inset = new InsetCitation(icp);
+			inset->setLoadingBuffer(bv->buffer(), false);
+			return inset;
 
-	case LFUN_INDEX_APPLY: {
-		InsetCommandParams icp;
-		InsetCommandMailer::string2params(cmd.argument, icp);
-		return new InsetIndex(icp);
-	}
+		} else if (name == "ert") {
+			InsetERT * inset = new InsetERT(params);
+			InsetERT::ERTStatus s;
+			InsetERTMailer::string2params(cmd.argument, s);
+			inset->status(bv, s);
+			return inset;
 
-	case LFUN_REF_APPLY: {
-		InsetCommandParams icp;
-		InsetCommandMailer::string2params(cmd.argument, icp);
-		return new InsetRef(icp, *bv->buffer());
-	}
+		} else if (name == "index") {
+			InsetCommandParams icp;
+			InsetCommandMailer::string2params(cmd.argument, icp);
+			return new InsetIndex(icp);
 
-	case LFUN_TOC_APPLY: {
-		InsetCommandParams icp;
-		InsetCommandMailer::string2params(cmd.argument, icp);
-		return new InsetTOC(icp);
-	}
+		} else if (name == "ref") {
+			InsetCommandParams icp;
+			InsetCommandMailer::string2params(cmd.argument, icp);
+			return new InsetRef(icp, *bv->buffer());
 
-	case LFUN_URL_APPLY: {
-		InsetCommandParams icp;
-		InsetCommandMailer::string2params(cmd.argument, icp);
-		return new InsetUrl(icp);
+		} else if (name == "toc") {
+			InsetCommandParams icp;
+			InsetCommandMailer::string2params(cmd.argument, icp);
+			return new InsetTOC(icp);
+
+		} else if (name == "url") {
+			InsetCommandParams icp;
+			InsetCommandMailer::string2params(cmd.argument, icp);
+			return new InsetUrl(icp);
+		}
 	}
+	break;
 
 	default:
 		break;

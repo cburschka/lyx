@@ -420,14 +420,7 @@ void LyXAction::init()
 		  N_("Hide the dialog"), Noop },
 		{ LFUN_DIALOG_DISCONNECT_INSET, "dialog-disconnect-inset",
 		  N_("Disconnect the dialog from the current inset"), Noop },
-		{ LFUN_BIBITEM_APPLY, "bibitem-apply", "", Noop },
-		{ LFUN_BIBTEX_APPLY, "bibtex-apply", "", Noop },
-		{ LFUN_CITATION_APPLY, "citation-apply", "", Noop },
-		{ LFUN_ERT_APPLY, "ert-apply", "", Noop },
-		{ LFUN_INDEX_APPLY, "index-apply", "", Noop },
-		{ LFUN_REF_APPLY, "ref-apply", "", Noop },
-		{ LFUN_TOC_APPLY, "toc-apply", "", Noop },
-		{ LFUN_URL_APPLY, "url-apply", "", Noop },
+		{ LFUN_INSET_APPLY, "inset-apply", "", Noop },
 		{ LFUN_NOACTION, "", "", Noop }
 	};
 

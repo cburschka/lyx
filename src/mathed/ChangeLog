@@ -1,3 +1,10 @@
+2003-02-27  Angus Leeming  <leeming@lyx.org>
+
+	* formulabase.C (localDispatch): collapse LFUN_REF_APPLY to
+	LFUN_INSET_APPLY.
+
+	* ref_inset.C (changes due to the change to LFUN_INSET_APPLY.
+
 2003-02-26  Angus Leeming  <leeming@lyx.org>
 
 	* ref_inset.C (localDispatch): act only on receipt of LFUN_REF_APPLY.

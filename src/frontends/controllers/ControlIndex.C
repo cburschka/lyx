@@ -15,5 +15,5 @@
 
 
 ControlIndex::ControlIndex(Dialog & d)
-	: ControlCommand(d, LFUN_INDEX_APPLY)
+	: ControlCommand(d, "index")
 {}

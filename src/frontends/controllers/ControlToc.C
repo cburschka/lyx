@@ -19,7 +19,7 @@ class Buffer;
 
 
 ControlToc::ControlToc(Dialog & d)
-	: ControlCommand(d, LFUN_TOC_APPLY)
+	: ControlCommand(d, "toc")
 {}
 
 

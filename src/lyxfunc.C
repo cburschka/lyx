@@ -561,12 +561,6 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 	case LFUN_REF_INSERT:
 		code = Inset::REF_CODE;
 		break;
-	case LFUN_BIBTEX_APPLY:
-		code = Inset::BIBTEX_CODE;
-		break;
-	case LFUN_CITATION_APPLY:
-		code = Inset::CITE_CODE;
-		break;
 	case LFUN_INDEX_INSERT:
 		code = Inset::INDEX_CODE;
 		break;
@@ -1050,7 +1044,7 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 	case LFUN_TOCVIEW:
 	{
 		InsetCommandParams p("tableofcontents");
-		string const data = InsetCommandMailer::params2string(p);
+		string const data = InsetCommandMailer::params2string("toc", p);
 		owner->getDialogs().show("toc", data, 0);
 		break;
 	}
@@ -1368,12 +1362,13 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 		    name == "toc" ||
 		    name == "url") {
 			InsetCommandParams p(name);
-			data = InsetCommandMailer::params2string(p);
+			data = InsetCommandMailer::params2string(name, p);
 		} else if (name == "citation") {
 			InsetCommandParams p("cite");
-			data = InsetCommandMailer::params2string(p);
-// 		} else if (name == "error" || name == "ert") {
-// 			// need do nothing special
+			data = InsetCommandMailer::params2string(name, p);
+		} else if (name == "ert") {
+			data = InsetERTMailer::params2string(name,
+							     InsetERT::Open);
 		}
                 owner->getDialogs().show(name, data, 0);
 	}

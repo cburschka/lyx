@@ -1,3 +1,21 @@
+2003-02-27  Angus Leeming  <leeming@lyx.org>
+
+	* ControlBibitem.C (c-tor):
+	* ControlBibtex.C (c-tor):
+	* ControlCitation.C (c-tor):
+	* ControlIndex.C (c-tor):
+	* ControlRef.C (c-tor):
+	* ControlToc.C (c-tor):
+	* ControlUrl.C (c-tor):
+	pass "name" to ControlCommand c-tor,
+	not an LFUN.
+
+	* ControlCommand.[Ch] (c-tor, dispatchParams): use "name" rather than a
+	specific LFUN.
+
+	* ControlERT.C (dispatchParams): use "name" rather than a
+	specific LFUN.
+
 2003-02-25  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* ControlDocument.C (apply): Call to setLanguage() after updating bp_;

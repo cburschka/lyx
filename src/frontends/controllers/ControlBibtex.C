@@ -25,7 +25,7 @@ using std::pair;
 
 
 ControlBibtex::ControlBibtex(Dialog & d)
-	: ControlCommand(d, LFUN_BIBTEX_APPLY)
+	: ControlCommand(d, "bibtex")
 {}
 
 

@@ -51,7 +51,7 @@ Inset * InsetBibitem::clone(Buffer const &, bool) const
 
 dispatch_result InsetBibitem::localDispatch(FuncRequest const & cmd)
 {
-	if (cmd.action != LFUN_BIBITEM_APPLY)
+	if (cmd.action != LFUN_INSET_APPLY)
 		return UNDISPATCHED;
 
 	InsetCommandParams p;

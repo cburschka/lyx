@@ -17,9 +17,9 @@
 #include "insets/insetcommand.h"
 
 
-ControlCommand::ControlCommand(Dialog & dialog, kb_action ac)
+ControlCommand::ControlCommand(Dialog & dialog, string const & lfun_name)
 	: Dialog::Controller(dialog),
-	  action_(ac)
+	  lfun_name_(lfun_name)
 {}
 
 
@@ -39,9 +39,10 @@ void ControlCommand::clearParams()
 
 void ControlCommand::dispatchParams()
 {
-	if (action_ == LFUN_NOACTION)
+	if (lfun_name_.empty())
 		return;
 
-	FuncRequest fr(action_, InsetCommandMailer::params2string(params_));
-	kernel().dispatch(fr);
+	string const lfun = InsetCommandMailer::params2string(lfun_name_,
+							      params_);
+	kernel().dispatch(FuncRequest(LFUN_INSET_APPLY, lfun));
 }

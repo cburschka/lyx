@@ -23,7 +23,7 @@ vector<biblio::CiteStyle> ControlCitation::citeStyles_;
 
 
 ControlCitation::ControlCitation(Dialog & d)
-	: ControlCommand(d, LFUN_CITATION_APPLY)
+	: ControlCommand(d, "citation")
 {}
 
 

@@ -1,3 +1,11 @@
+2003-02-27  Angus Leeming  <leeming@lyx.org>
+
+	* insetbibitem.C (localDispatch):
+	* insetbibtex.C (localDispatch):
+	* insetcommand.C:
+	* insetert:
+	collapse LFUN_XYZ_APPLY to LFUN_INSET_APPLY.
+
 2003-02-26  Angus Leeming  <leeming@lyx.org>
 
 	* insetbibitem.[Ch] (localDispatch):

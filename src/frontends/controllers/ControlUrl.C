@@ -15,5 +15,5 @@
 
 
 ControlUrl::ControlUrl(Dialog & d)
-	: ControlCommand(d, LFUN_URL_APPLY)
+	: ControlCommand(d, "url")
 {}

@@ -19,6 +19,8 @@
 
 #include "frontends/Painter.h"
 
+#include "support/lstrings.h"
+
 #include "Lsstream.h"
 
 using std::ostream;
@@ -65,16 +67,8 @@ int InsetCommand::docbook(Buffer const *, ostream &, bool) const
 
 dispatch_result InsetCommand::localDispatch(FuncRequest const & cmd)
 {
-	switch (cmd.action) {
-	case LFUN_CITATION_APPLY:
-	case LFUN_INDEX_APPLY:
-	case LFUN_REF_APPLY:
-	case LFUN_TOC_APPLY:
-	case LFUN_URL_APPLY:
-		break;
-	default:
+	if (cmd.action != LFUN_INSET_APPLY)
 		return UNDISPATCHED;
-	}
 
 	InsetCommandParams p;
 	InsetCommandMailer::string2params(cmd.argument, p);
@@ -96,7 +90,7 @@ InsetCommandMailer::InsetCommandMailer(string const & name,
 
 string const InsetCommandMailer::inset2string() const
 {
-	return params2string(inset_.params());
+	return params2string(name(), inset_.params());
 }
 
 
@@ -107,10 +101,13 @@ void InsetCommandMailer::string2params(string const & in,
 	params.setContents(string());
 	params.setOptions(string());
 
-	if (in.empty())
+	string name;
+	string body = split(in, name, ' ');
+
+	if (body.empty())
 		return;
 
-	istringstream data(in);
+	istringstream data(body);
 	LyXLex lex(0,0);
 	lex.setStream(data);
 
@@ -119,9 +116,11 @@ void InsetCommandMailer::string2params(string const & in,
 
 
 string const
-InsetCommandMailer::params2string(InsetCommandParams const & params)
+InsetCommandMailer::params2string(string const & name,
+				  InsetCommandParams const & params)
 {
 	ostringstream data;
+	data << name << ' ';
 	params.write(data);
 	data << "\\end_inset\n";
 

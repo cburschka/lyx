@@ -1,6 +1,19 @@
+2003-02-27  Angus Leeming  <leeming@lyx.org>
+
+	* commandtags.h:
+	* LyXAction.C (init):
+	* factory.C (createInset):
+	* BufferView_pimpl.C (dispatch):
+	collapse LFUN_XYZ_APPLY to LFUN_INSET_APPLY.
+
+	* lyxfunc.C (getStatus): remove LFUN_BIBTEX_APPLY, LFUN_CITATION_APPLY.
+
+	* lyxfunc.C (dispatch):
+	* text3.C (dispatch): pass name to params2string.
+
 2003-02-26  Angus Leeming  <leeming@lyx.org>
 
-	* BufferView_pimpl.C (dispatch): callapse the various LFUN_XYZ_APPLY
+	* BufferView_pimpl.C (dispatch): collapse the various LFUN_XYZ_APPLY
 	blocks together.
 	Rearrange the ~includes. Strip out the unnecessary ones.
 

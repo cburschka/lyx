@@ -15,5 +15,5 @@
 
 
 ControlBibitem::ControlBibitem(Dialog & d)
-	: ControlCommand(d, LFUN_BIBITEM_APPLY)
+	: ControlCommand(d, "bibitem")
 {}

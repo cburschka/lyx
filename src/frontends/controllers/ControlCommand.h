@@ -18,13 +18,15 @@
 
 #include "Dialog.h"
 #include "insets/insetcommandparams.h"
-#include "commandtags.h" // kb_action
 
 
 class ControlCommand : public Dialog::Controller {
 public:
-	///
-	ControlCommand(Dialog &, kb_action=LFUN_NOACTION);
+	/** LFUN_INSET_APPLY requires a name, "citation", "ref" etc so that
+	    it knows what to do with the rest of the contents.
+	    An empty name indicates that no action will occur on 'Apply'.
+	 */
+	ControlCommand(Dialog &, string const & lfun_name = string());
 	///
 	InsetCommandParams & params() { return params_; }
 	///
@@ -42,7 +44,7 @@ private:
 	///
 	InsetCommandParams params_;
 	/// Flags what action is taken by Kernel::dispatch()
-	kb_action const action_;
+	string const lfun_name_;
 };
 
 

@@ -25,7 +25,7 @@ extern BufferList bufferlist;
 
 
 ControlRef::ControlRef(Dialog & d)
-	: ControlCommand(d, LFUN_REF_APPLY)
+	: ControlCommand(d, "ref")
 {}
 
 

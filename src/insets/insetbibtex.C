@@ -48,7 +48,7 @@ InsetBibtex::~InsetBibtex()
 
 dispatch_result InsetBibtex::localDispatch(FuncRequest const & cmd)
 {
-	if (cmd.action != LFUN_BIBTEX_APPLY)
+	if (cmd.action != LFUN_INSET_APPLY)
 		return UNDISPATCHED;
 
 	InsetCommandParams p;

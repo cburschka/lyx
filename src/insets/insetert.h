@@ -167,7 +167,8 @@ public:
 	///
 	static void string2params(string const &, InsetERT::ERTStatus &);
 	///
-	static string const params2string(InsetERT::ERTStatus);
+	static string const params2string(string const & name,
+					  InsetERT::ERTStatus);
 private:
 	///
 	string const name_;

@@ -92,7 +92,8 @@ public:
 	///
 	static void string2params(string const &, InsetCommandParams &);
 	///
-	static string const params2string(InsetCommandParams const &);
+	static string const params2string(string const & name,
+					  InsetCommandParams const &);
 private:
 	///
 	string const name_;

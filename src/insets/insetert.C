@@ -450,7 +450,7 @@ Inset::RESULT InsetERT::localDispatch(FuncRequest const & cmd)
 	}
 
 	switch (cmd.action) {
-	case LFUN_ERT_APPLY: {
+	case LFUN_INSET_APPLY: {
 		if (!bv)
 			return UNDISPATCHED;
 
@@ -746,7 +746,7 @@ InsetERTMailer::InsetERTMailer(InsetERT & inset)
 
 string const InsetERTMailer::inset2string() const
 {
-	return params2string(inset_.status());
+	return params2string(name(), inset_.status());
 }
 
 
@@ -754,15 +754,19 @@ void InsetERTMailer::string2params(string const & in,
 				   InsetERT::ERTStatus & status)
 {
 	status = InsetERT::Collapsed;
-	if (in.empty())
+
+	string name;
+	string body = split(in, name, ' ');
+
+	if (body.empty())
 		return;
 
-	status = static_cast<InsetERT::ERTStatus>(strToInt(in));
+	status = static_cast<InsetERT::ERTStatus>(strToInt(body));
 }
 
 
 string const
-InsetERTMailer::params2string(InsetERT::ERTStatus status)
+InsetERTMailer::params2string(string const & name, InsetERT::ERTStatus status)
 {
-	return tostr(status);
+	return name + ' ' + tostr(status);
 }

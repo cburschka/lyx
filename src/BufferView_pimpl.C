@@ -1168,43 +1168,8 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev_in)
 		mathDispatch(ev);
 		break;
 
-	case LFUN_BIBITEM_APPLY:
-	case LFUN_BIBTEX_APPLY:
-	case LFUN_CITATION_APPLY:
-	case LFUN_ERT_APPLY:
-	case LFUN_INDEX_APPLY:
-	case LFUN_REF_APPLY:
-	case LFUN_TOC_APPLY:
-	case LFUN_URL_APPLY: {
-		string name;
-		switch (ev.action) {
-		case LFUN_BIBITEM_APPLY:
-			name = "bibitem";
-			break;
-		case LFUN_BIBTEX_APPLY:
-			name = "bibtex";
-			break;
-		case LFUN_CITATION_APPLY:
-			name = "citation";
-			break;
-		case LFUN_ERT_APPLY:
-			name = "ert";
-			break;
-		case LFUN_INDEX_APPLY:
-			name = "index";
-			break;
-		case LFUN_REF_APPLY:
-			name = "ref";
-			break;
-		case LFUN_TOC_APPLY:
-			name = "toc";
-			break;
-		case LFUN_URL_APPLY:
-			name = "url";
-			break;
-		default:
-			break;
-		}
+	case LFUN_INSET_APPLY: {
+		string const name = ev.getArg(0);
 
 		InsetBase * base = owner_->getDialogs().getOpenInset(name);
 		Inset * inset = 0;
@@ -1222,7 +1187,7 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev_in)
 			}
 		}
 
-		if (ev.action == LFUN_BIBITEM_APPLY) {
+		if (name == "bibitem") {
 			// We need to do a redraw because the maximum
 			// InsetBibitem width could have changed
 #warning please check you mean repaint() not update(),

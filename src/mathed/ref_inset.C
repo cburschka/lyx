@@ -54,6 +54,7 @@ RefInset::dispatch(FuncRequest const & cmd, idx_type & idx, pos_type & pos)
 				// Eventually trigger dialog with button 3
 				// not 1
 				ostringstream data;
+				data << "ref LatexCommand ";
 				WriteStream wsdata(data);
 				write(wsdata);
 				wsdata << "\n\\end_inset\n\n";
@@ -132,7 +133,7 @@ int RefInset::docbook(std::ostream & os, bool) const
 
 dispatch_result RefInset::localDispatch(FuncRequest const & cmd)
 {
-	if (cmd.action != LFUN_REF_APPLY)
+	if (cmd.action != LFUN_INSET_APPLY || cmd.getArg(0) != "ref")
 		return UNDISPATCHED;
 
 	MathArray ar;
@@ -150,10 +151,16 @@ dispatch_result RefInset::localDispatch(FuncRequest const & cmd)
 
 bool string2RefInset(string const & str, MathArray & ar)
 {
-	// str comes with a head "LatexCommand " and a
+	string name;
+	string body = split(str, name, ' ');
+
+	if (name != "ref")
+		return false;
+
+	// body comes with a head "LatexCommand " and a
 	// tail "\nend_inset\n\n". Strip them off.
 	string trimmed;
-	string body = split(str, trimmed, ' ');
+	body = split(body, trimmed, ' ');
 	split(body, trimmed, '\n');
 
 	mathed_parse_cell(ar, trimmed);
