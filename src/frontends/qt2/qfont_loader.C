@@ -64,11 +64,6 @@ QFont const & qfont_loader::get(LyXFont const & f)
 qfont_loader::font_info::font_info(LyXFont const & f)
 	: metrics(font)
 {
-	font.setPointSize(int((lyxrc.font_sizes[f.size()] * lyxrc.dpi * 
-		(lyxrc.zoom / 100.0)) / 72.27 + 0.5));
- 
-	// FIXME: lyxrc, check for failure etc.
- 
 	switch (f.family()) {
 		case LyXFont::SYMBOL_FAMILY:
 			font.setRawName("-*-symbol-*-*-*-*-*-*-*-*-*-*-adobe-fontspecific");
@@ -104,6 +99,11 @@ qfont_loader::font_info::font_info(LyXFont const & f)
 			font.setFamily("courier");
 			break;
 	}
+ 
+	font.setPointSize(int((lyxrc.font_sizes[f.size()] * lyxrc.dpi * 
+		(lyxrc.zoom / 100.0)) / 72.27 + 0.5));
+ 
+	// FIXME: lyxrc, check for failure etc.
  
 	switch (f.series()) {
 		case LyXFont::MEDIUM_SERIES:
