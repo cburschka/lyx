@@ -168,7 +168,7 @@ bool Row::isParEnd() const
 
 pos_type Row::lastPos() const
 {
-	if (!par()->size())
+	if (par()->empty())
 		return 0;
 
 	if (isParEnd()) {

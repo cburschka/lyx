@@ -88,14 +88,17 @@ RowList::RowList()
 RowList::iterator
 RowList::insert(RowList::iterator it, Row * row)
 {
-	if (it != end()) {
+	if (rowlist == 0) {
+		rowlist = row;
+	} else if (it != end()) {
 		Row * prev = it->previous();
 		row->next(&*it);
 		row->previous(prev);
-		prev->next(row);
+		if (prev)
+			prev->next(row);
+		else
+			rowlist = row;
 		it->previous(row);
-	} else if (rowlist == 0) {
-		rowlist = row;
 	} else {
 		// Find last par.
 		Row * last = rowlist;
@@ -127,7 +130,7 @@ void RowList::erase(RowList::iterator it)
 		prev->next(next);
 	else
 		rowlist = next;
-	
+
 	if (next)
 		next->previous(prev);
 

@@ -1,3 +1,33 @@
+2003-03-27  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* text2.C (LyXText): adjust, initialize refresh_row.
+	(init): adjust
+	(removeRow): adjust
+	(insertRow): adjust
+	(insertParagraph): adjst
+	(redoParagraphs): adjust
+	(fullRebreak): adjust
+	(updateCounters): adjust
+	(deleteEmptyParagraphMechanism): first attempt at fixing a
+	crashing bug.
+
+	* text.C (top_y): adjust
+	(setHeightOfRow): adjust
+	(getRow): adjust
+	(getRowNearY): adjust
+
+	* lyxtext.h: include RowList.h
+	(~LyXText): not needed anymore, deleted.
+	(firstRow): modify for RowList
+	(lastRow): new function
+	Delete firstrow and lastrow class variables, add a Rowlist
+	rowlist_ class variable.
+
+	* lyxrow.C (lastPos): use empty() and not !size() to check if a
+	paragraph is empty.
+
+	* RowList.C (insert): fix case where it == begin().
+
 2003-03-26  Angus Leeming  <leeming@lyx.org>
 
 	* BufferView_pimpl.C (dispatch): changes to the Dialogs interface for

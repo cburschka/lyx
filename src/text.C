@@ -78,7 +78,7 @@ int LyXText::top_y() const
 		return 0;
 
 	int y = 0;
-	for (Row * row = firstrow;
+	for (Row * row = firstRow();
 	     row && row != anchor_row_; row = row->next()) {
 		y += row->height();
 	}
@@ -88,7 +88,7 @@ int LyXText::top_y() const
 
 void LyXText::top_y(int newy)
 {
-	if (!firstrow)
+	if (!firstRow())
 		return;
 	lyxerr[Debug::GUI] << "setting top y = " << newy << endl;
 
@@ -1299,7 +1299,7 @@ void LyXText::setHeightOfRow(Row * row)
 	}
 	row->width(int(maxwidth + x));
 	if (inset_owner) {
-		Row * r = firstrow;
+		Row * r = firstRow();
 		width = max(0, workWidth());
 		while (r) {
 			if (r->width() > width)
@@ -1396,6 +1396,7 @@ void LyXText::breakAgainOneRow(Row * row)
 			// insert a new row
 			++z;
 			insertRow(row, row->par(), z);
+			row = row->next();
 		} else  {
 			row = row->next();
 			++z;
@@ -1513,7 +1514,6 @@ void LyXText::breakParagraph(ParagraphList & paragraphs, char keep_layout)
 	   cursor.par()->next()->erase(0);
 
 	insertParagraph(cursor.par()->next(), cursor.row());
-
 	updateCounters();
 
 	// This check is necessary. Otherwise the new empty paragraph will
@@ -2763,10 +2763,10 @@ void LyXText::backspace()
 // returns pointer to a specified row
 Row * LyXText::getRow(Paragraph * par, pos_type pos, int & y) const
 {
-	if (!firstrow)
+	if (!firstRow())
 		return 0;
 
-	Row * tmprow = firstrow;
+	Row * tmprow = firstRow();
 	y = 0;
 
 	// find the first row of the specified paragraph
@@ -2792,7 +2792,7 @@ Row * LyXText::getRowNearY(int & y) const
 {
 #if 1
 	// If possible we should optimize this method. (Lgb)
-	Row * tmprow = firstrow;
+	Row * tmprow = firstRow();
 	int tmpy = 0;
 
 	while (tmprow->next() && tmpy + tmprow->height() <= y) {

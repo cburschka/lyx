@@ -54,8 +54,9 @@ using lyx::pos_type;
 LyXText::LyXText(BufferView * bv)
 	: height(0), width(0), anchor_row_(0), anchor_row_offset_(0),
 	  inset_owner(0), the_locking_inset(0), need_break_row(0),
-	  bv_owner(bv), firstrow(0), lastrow(0)
+	  bv_owner(bv)
 {
+	refresh_row = 0;
 	clearPaint();
 }
 
@@ -63,8 +64,9 @@ LyXText::LyXText(BufferView * bv)
 LyXText::LyXText(BufferView * bv, InsetText * inset)
 	: height(0), width(0), anchor_row_(0), anchor_row_offset_(0),
 	  inset_owner(inset), the_locking_inset(0), need_break_row(0),
-	  bv_owner(bv), firstrow(0), lastrow(0)
+	  bv_owner(bv)
 {
+	refresh_row = 0;
 	clearPaint();
 }
 
@@ -72,46 +74,29 @@ LyXText::LyXText(BufferView * bv, InsetText * inset)
 void LyXText::init(BufferView * bview, bool reinit)
 {
 	if (reinit) {
-		// Delete all rows, this does not touch the paragraphs!
-		Row * tmprow = firstrow;
-		while (firstrow) {
-			tmprow = firstrow->next();
-			delete firstrow;
-			firstrow = tmprow;
-		}
-
-		lastrow = 0;
+		rowlist_.clear();
 		need_break_row = 0;
 		width = height = 0;
 		copylayouttype.erase();
 		top_y(0);
 		clearPaint();
-	} else if (firstrow)
+	} else if (firstRow())
 		return;
 
 	Paragraph * par = ownerParagraph();
 	current_font = getFont(bview->buffer(), par, 0);
 
 	while (par) {
-		insertParagraph(par, lastrow);
+		if (rowlist_.empty())
+			insertParagraph(par, 0);
+		else
+			insertParagraph(par, lastRow());
 		par = par->next();
 	}
-	setCursorIntern(firstrow->par(), 0);
+	setCursorIntern(firstRow()->par(), 0);
 	selection.cursor = cursor;
 
 	updateCounters();
-}
-
-
-LyXText::~LyXText()
-{
-	// Delete all rows, this does not touch the paragraphs!
-	Row * tmprow = firstrow;
-	while (firstrow) {
-		tmprow = firstrow->next();
-		delete firstrow;
-		firstrow = tmprow;
-	}
 }
 
 
@@ -282,52 +267,30 @@ void LyXText::insertRow(Row * row, Paragraph * par,
 			pos_type pos)
 {
 	Row * tmprow = new Row;
-	if (!row) {
-		tmprow->previous(0);
-		tmprow->next(firstrow);
-		firstrow = tmprow;
-	} else {
-		tmprow->previous(row);
-		tmprow->next(row->next());
-		row->next(tmprow);
-	}
-
-	if (tmprow->next())
-		tmprow->next()->previous(tmprow);
-
-	if (tmprow->previous())
-		tmprow->previous()->next(tmprow);
-
-
 	tmprow->par(par);
 	tmprow->pos(pos);
 
-	if (row == lastrow)
-		lastrow = tmprow;
+	if (!row) {
+		rowlist_.insert(rowlist_.begin(), tmprow);
+	} else {
+		rowlist_.insert(row->next(), tmprow);
+	}
 }
 
 
 // removes the row and reset the touched counters
 void LyXText::removeRow(Row * row)
 {
+	lyx::Assert(row);
+
 	Row * row_prev = row->previous();
-	if (row->next())
-		row->next()->previous(row_prev);
-	if (!row_prev) {
-		firstrow = row->next();
-//		lyx::Assert(firstrow);
-	} else  {
-		row_prev->next(row->next());
-	}
-	if (row == lastrow) {
-		lyx::Assert(!row->next());
-		lastrow = row_prev;
-	}
+	Row * row_next = row->next();
+	int const row_height = row->height();
 
 	/* FIXME: when we cache the bview, this should just
 	 * become a postPaint(), I think */
 	if (refresh_row == row) {
-		refresh_row = row_prev ? row_prev : row->next();
+		refresh_row = row_prev ? row_prev : row_next;
 		// what about refresh_y
 	}
 
@@ -336,14 +299,15 @@ void LyXText::removeRow(Row * row)
 			anchor_row_ = row_prev;
 			anchor_row_offset_ += row_prev->height();
 		} else {
-			anchor_row_ = row->next();
-			anchor_row_offset_ -= row->height();
+			anchor_row_ = row_next;
+			anchor_row_offset_ -= row_height;
 		}
 	}
 
-	height -= row->height(); // the text becomes smaller
+	// the text becomes smaller
+	height -= row_height;
 
-	delete row;
+	rowlist_.erase(row);
 }
 
 
@@ -362,16 +326,14 @@ void LyXText::removeParagraph(Row * row)
 }
 
 
-// insert the specified paragraph behind the specified row
-void LyXText::insertParagraph(Paragraph * par,
-			      Row * row)
+void LyXText::insertParagraph(Paragraph * par, Row * row)
 {
 	// insert a new row, starting at position 0
 	insertRow(row, par, 0);
 
 	// and now append the whole paragraph before the new row
 	if (!row) {
-		appendParagraph(firstrow);
+		appendParagraph(firstRow());
 	} else {
 		appendParagraph(row->next());
 	}
@@ -745,22 +707,24 @@ void LyXText::redoDrawingOfParagraph(LyXCursor const & cur)
 void LyXText::redoParagraphs(LyXCursor const & cur,
 			     Paragraph const * endpar)
 {
-	Row * tmprow2;
-	Paragraph * tmppar = 0;
-	Paragraph * first_phys_par = 0;
-
 	Row * tmprow = cur.row();
 
 	int y = cur.y() - tmprow->baseline();
 
+	Paragraph * first_phys_par = 0;
 	if (!tmprow->previous()) {
 		// a trick/hack for UNDO
 		// This is needed because in an UNDO/REDO we could have changed
 		// the ownerParagrah() so the paragraph inside the row is NOT
 		// my really first par anymore. Got it Lars ;) (Jug 20011206)
 		first_phys_par = ownerParagraph();
+		lyxerr << "ownerParagraph" << endl;
+
 	} else {
 		first_phys_par = tmprow->par();
+		lyxerr << "tmprow->par()" << endl;
+
+		// Find first row of this paragraph.
 		while (tmprow->previous()
 		       && tmprow->previous()->par() == first_phys_par)
 		{
@@ -771,11 +735,10 @@ void LyXText::redoParagraphs(LyXCursor const & cur,
 
 	Row * prevrow = tmprow->previous();
 
-	// remove it
+	// Remove all the rows until we reach endpar
+	Paragraph * tmppar = 0;
 	if (tmprow->next())
 		tmppar = tmprow->next()->par();
-	else
-		tmppar = 0;
 	while (tmprow->next() && tmppar != endpar) {
 		removeRow(tmprow->next());
 		if (tmprow->next()) {
@@ -785,19 +748,19 @@ void LyXText::redoParagraphs(LyXCursor const & cur,
 		}
 	}
 
-	// remove the first one
-	tmprow2 = tmprow;     /* this is because tmprow->previous()
-				 can be 0 */
+	// Remove the first of the paragraphs rows.
+	// This is because tmprow->previous() can be 0
+	Row * tmprow2 = tmprow;
 	tmprow = tmprow->previous();
 	removeRow(tmprow2);
 
+	// Reinsert the paragraphs.
 	tmppar = first_phys_par;
-
 	do {
 		if (tmppar) {
 			insertParagraph(tmppar, tmprow);
 			if (!tmprow) {
-				tmprow = firstrow;
+				tmprow = firstRow();
 			}
 			while (tmprow->next()
 			       && tmprow->next()->par() == tmppar) {
@@ -812,7 +775,7 @@ void LyXText::redoParagraphs(LyXCursor const & cur,
 		setHeightOfRow(prevrow);
 		const_cast<LyXText *>(this)->postPaint(y - prevrow->height());
 	} else {
-		setHeightOfRow(firstrow);
+		setHeightOfRow(firstRow());
 		const_cast<LyXText *>(this)->postPaint(0);
 	}
 
@@ -824,7 +787,7 @@ void LyXText::redoParagraphs(LyXCursor const & cur,
 
 void LyXText::fullRebreak()
 {
-	if (!firstrow) {
+	if (!firstRow()) {
 		init(bv());
 		return;
 	}
@@ -1330,7 +1293,7 @@ void LyXText::setCounter(Buffer const * buf, Paragraph * par)
 // Updates all counters. Paragraphs with changed label string will be rebroken
 void LyXText::updateCounters()
 {
-	Row * row = firstrow;
+	Row * row = firstRow();
 	Paragraph * par = row->par();
 
 	// CHECK if this is really needed. (Lgb)
@@ -2348,11 +2311,14 @@ bool LyXText::deleteEmptyParagraphMechanism(LyXCursor const & old_cursor)
 			 * the parindent that can occur or dissappear.
 			 * The next row can change its height, if
 			 * there is another layout before */
-			if (refresh_row->next()) {
-				breakAgain(refresh_row->next());
-				updateCounters();
+			if (refresh_row) {
+				if (refresh_row->next()) {
+					breakAgain(refresh_row->next());
+					updateCounters();
+				}
+				setHeightOfRow(refresh_row);
 			}
-			setHeightOfRow(refresh_row);
+
 		} else {
 			Row * nextrow = old_cursor.row()->next();
 			const_cast<LyXText *>(this)->postPaint(

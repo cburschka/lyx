@@ -17,6 +17,7 @@
 #include "layout.h"
 #include "LColor.h"
 #include "insets/inset.h"
+#include "RowList.h"
 
 class Buffer;
 class BufferParams;
@@ -65,9 +66,6 @@ public:
 	LyXText(BufferView *);
 	/// sets inset as owner
 	LyXText(BufferView *, InsetText *);
-
-	/// Destructor
-	~LyXText();
 
 	void init(BufferView *, bool reinit = false);
 	///
@@ -251,8 +249,8 @@ public:
 	    IMO it's stupid to have to allocate a dummy y all the time I need
 	    the first row
 	*/
-	Row * firstRow() const { return firstrow; }
-
+	Row * firstRow() const { return &*rowlist_.begin(); }
+	Row * lastRow() const { return &const_cast<LyXText*>(this)->rowlist_.back(); }
 	/** The cursor.
 	  Later this variable has to be removed. There should be now internal
 	  cursor in a text (and thus not in a buffer). By keeping this it is
@@ -489,10 +487,7 @@ public:
 	bool bidi_InRange(lyx::pos_type pos) const;
 private:
 	///
-	Row * firstrow;
-	///
-	Row * lastrow;
-
+	RowList rowlist_;
 	///
 	void cursorLeftOneWord(LyXCursor &);
 
@@ -516,6 +511,7 @@ private:
 	/** inserts a new row behind the specified row, increments
 	    the touched counters */
 	void insertRow(Row * row, Paragraph * par, lyx::pos_type pos);
+
 	/// removes the row and reset the touched counters
 	void removeRow(Row * row);
 
