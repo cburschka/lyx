@@ -1088,7 +1088,7 @@ if test -z "$TOEPS" ; then
 fi
 
 case $TOEPS in
-	convert) gif_to_eps="convert GIF:\$\$i EPS:\$\$o" png_to_eps="convert PNG:\$\$i EPS:\$\$o" jpg_to_eps="convert JPG:\$\$i EPS:\$\$o";;
+	convert) bmp_to_eps="convert BMP:\$\$i EPS:\$\$o" fits_to_eps="convert FITS:\$\$i EPS:\$\$o" gif_to_eps="convert GIF:\$\$i EPS:\$\$o" jpg_to_eps="convert JPG:\$\$i EPS:\$\$o" pbm_to_eps="convert PBM:\$\$i EPS:\$\$o" pgm_to_eps="convert PGM:\$\$i EPS:\$\$o" png_to_eps="convert PNG:\$\$i EPS:\$\$o" ppm_to_eps="convert PPM:\$\$i EPS:\$\$o" sgi_to_eps="convert SGI:\$\$i EPS:\$\$o" xwd_to_eps="convert XWD:\$\$i EPS:\$\$o" ;;
 	pnmtops) gif_to_eps="giftopnm \$\$i | pnmtops > \$\$o" png_to_eps="pngtopnm \$\$i | pnmtops >\$\$o" jpg_to_eps="jpegtopnm \$\$i | pnmtops >\$\$o";;
 esac
 
@@ -1296,11 +1296,14 @@ cat >$outfile <<EOF
 \\Format text	  txt	ASCII		A
 \\Format textparagraph txt ASCII(paragraphs)	""
 \\Format docbook  sgml	DocBook		B
+\\Format bmp      bmp	BMP		""
 \\Format dvi	  dvi	DVI		D
 \\Format eps	  eps	EPS		""
-\\Format epsi     epsi  EPSI    ""
+\\Format epsi     epsi  EPSI 		""
 \\Format fax	  ""	Fax		""
+\\Format fits     fits	FITS		""
 \\Format gif      gif	GIF		""
+\\Format grace    agr	GRACE		""
 \\Format html	  html	HTML		H
 \\Format jpg      jpg	JPEG		""
 \\Format latex	  tex	LaTeX		L
@@ -1310,10 +1313,17 @@ cat >$outfile <<EOF
 \\Format pdf	  pdf	PDF		P
 \\Format pdf2	  pdf  "PDF (pdflatex)"	F
 \\Format pdf3	  pdf  "PDF (dvipdfm)"	m
+\\Format pbm	  pbm	PBM		""
+\\Format pgm	  pgm	PGM		""
 \\Format png	  png	PNG		""
+\\Format ppm	  ppm	PPM		""
 \\Format ps	  ps	Postscript	t
 \\Format program  ""	Program		""
+\\Format sgi      sgi	SGI		""
+\\Format tgif     tgif	TGIF		""
+\\Format tiff     tif	TIFF		""
 \\Format xpm      xpm   XPM             ""
+\\Format xwd      xwd	XWD		""
 \\Format word	  doc	Word		W
 
 \\converter latex dvi "$latex_to_dvi" "latex"
@@ -1336,9 +1346,22 @@ cat >$outfile <<EOF
 \\converter html latex "$html_to_latex_command" ""
 \\converter word latex "$word_to_latex_command" ""
 
+\\converter agr  eps "xmgrace -hardcopy -hdevice EPS \$\$i" ""
+\\converter bmp  eps "$bmp_to_eps" ""
+\\converter fits  eps "$fits_to_eps" ""
 \\converter gif  eps "$gif_to_eps" ""
-\\converter png  eps "$png_to_eps" ""
 \\converter jpg  eps "$jpg_to_eps" ""
+\\converter pbm  eps "$pbm_to_eps" ""
+\\converter pgm  eps "$pgm_to_eps" ""
+\\converter png  eps "$png_to_eps" ""
+\\converter ppm  eps "$ppm_to_eps" ""
+\\converter sgi  eps "$sgi_to_eps" ""
+\\converter tgif eps "tgif -print -eps \$\$i" ""
+\\converter tiff eps "tiff2ps \$\$i > \$\$o" ""
+\\converter xwd  eps "$xwd_to_eps" ""
+
+\\converter tgif gif "tgif -print -gif \$\$i" ""
+\\converter tgif pdf "tgif -print -pdf \$\$i" ""
 
 \\converter gif  png "$gif_to_png" ""
 \\converter eps  png "$eps_to_png" ""
