@@ -978,10 +978,14 @@ static void UnregisterFigure(InsetFig *fi)
 					    tmpfig->inset->form->OkBtn);
 			fl_hide_form(tmpfig->inset->form->Figure);
 		}
+#if FL_REVISION == 89
 #warning Reactivate this free_form calls
-//		fl_free_form(tmpfig->inset->form->Figure);
-//		free(tmpfig->inset->form);
-//		tmpfig->inset->form = 0;
+#endif
+#if FL_REVISION != 89
+		fl_free_form(tmpfig->inset->form->Figure);
+		free(tmpfig->inset->form);
+		tmpfig->inset->form = 0;
+#endif
 	}
 	i = FindFigIndex(tmpfig);
 	--figinsref;
@@ -1925,10 +1929,14 @@ void InsetFig::CallbackFig(long arg)
 			if (arg == 8) {
 				fl_set_focus_object(form->Figure, form->OkBtn);
 				fl_hide_form(form->Figure);
+#if FL_REVISION == 89
 #warning Reactivate this free_form calls
-//				fl_free_form(form->Figure);
-//				free(form);
-//				form = 0;
+#endif
+#if FL_REVISION != 89
+				fl_free_form(form->Figure);
+				free(form);
+				form = 0;
+#endif
 			}
 			break;
 		} //if not readonly
@@ -1939,10 +1947,14 @@ void InsetFig::CallbackFig(long arg)
 	case 9:				/* cancel = restore and close */
 		fl_set_focus_object(form->Figure, form->OkBtn);
 		fl_hide_form(form->Figure);
+#if FL_REVISION == 89
 #warning Reactivate this free_form calls
-//		fl_free_form(form->Figure);
-//		free(form);
-//		form = 0;
+#endif
+#if FL_REVISION != 89
+		fl_free_form(form->Figure);
+		free(form);
+		form = 0;
+#endif
 		break;
 	}
 

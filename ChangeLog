@@ -1,5 +1,9 @@
 1999-10-22  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
+	* src/insets/figinset.C: added ifdef guards around the fl_free
+	code that asger commented out. Now it is commented out when
+	compiling with XForms == 0.89.
+
 	* src/support/lyxstring.C: moved the definition of lyxstring::Srep
 	to lyxstring.C, and only keep a forward declaration in
 	lyxstring.h. Simplifies the header file a bit and should help a
