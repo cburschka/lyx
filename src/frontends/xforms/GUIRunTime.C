@@ -18,7 +18,12 @@
 #include "GUIRunTime.h"
 #include "XFormsView.h"
 #include "debug.h"
+
+#if defined(HAVE_FLIMAGE_DUP) && defined(HAVE_FLIMAGE_TO_PIXMAP)
+#include "xformsGImage.h"
+#else
 #include "graphics/GraphicsImageXPM.h"
+#endif
 
 // I keep these here so that it will be processed as early in
 // the compilation process as possible.
@@ -134,9 +139,15 @@ void GUIRunTime::initialiseGraphics()
 	using namespace grfx;
 	using SigC::slot;
     
+#if defined(HAVE_FLIMAGE_DUP) && defined(HAVE_FLIMAGE_TO_PIXMAP)
+	// connect the image loader based on the xforms library
+	GImage::newImage.connect(slot(&xformsGImage::newImage));
+	GImage::loadableFormats.connect(slot(&xformsGImage::loadableFormats));
+#else
 	// connect the image loader based on the XPM library
 	GImage::newImage.connect(slot(&GImageXPM::newImage));
 	GImage::loadableFormats.connect(slot(&GImageXPM::loadableFormats));
+#endif
 }
 
 

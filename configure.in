@@ -251,6 +251,16 @@ LYX_ERROR(dnl
    the development tools.])
 fi
 
+### Check whether the xforms library has a viable image loader
+### For now, run this test always so config.h is unchanged by a change in
+### frontend
+LYX_USE_XFORMS_IMAGE_LOADER
+
+### If the gui cannot load images itself, then we default to the
+### very simple one in graphics/GraphicsImageXPM.[Ch]
+AM_CONDITIONAL(USE_BASIC_IMAGE_LOADER,
+               test x$lyx_use_xforms_image_loader = xno)
+
 ### Setup GNU gettext
 dnl GNU gettext is written in C
 AC_LANG_C

@@ -12,6 +12,13 @@ INCLUDES = -I${top_srcdir}/src/ -I${top_srcdir}/src/frontends/ \
 LIBS=
 ETAGS_ARGS = --lang=c++
 
+EXTRA_DIST = xformsGImage.C xformsGImage.h
+
+if USE_BASIC_IMAGE_LOADER
+else
+XFORMSGIMAGE = xformsGImage.C xformsGImage.h
+endif
+
 libqt2xforms_la_SOURCES = \
 	bmtable.h \
 	bmtable.c \
@@ -81,14 +88,14 @@ libqt2xforms_la_SOURCES = \
 	form_maths_style.C \
 	input_validators.h \
 	input_validators.C \
-	xformsBC.h \
+	$(XFORMSGIMAGE) xformsBC.h \
 	xformsBC.C \
 	xforms_helpers.h \
 	xforms_helpers.C
 
-libqt2xforms.la: link_files $(XFORMS_SOURCES)
+libqt2xforms.la: link_files $(libqt2xforms_la_SOURCES)
 
 link_files:
-	for i in $(XFORMS_SOURCES); do \
+	for i in $(libqt2xforms_la_SOURCES); do \
 		ln -sf "${top_srcdir}/src/frontends/xforms/$$i" . ; \
 	 done

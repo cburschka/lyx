@@ -1,3 +1,8 @@
+2002-03-06  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* lyxinclude.m4 (LYX_USE_XFORMS_IMAGE_LOADER): test whether the
+	xforms libraries can be used to load images into LyX.
+
 2002-02-28  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* lyxinclude.m4 (LYX_PROG_CXX): use -dumpversion instead of

@@ -1,3 +1,4 @@
+
 /* This file is part of
  * ======================================================
  * 
@@ -21,7 +22,13 @@
 #include <gnome--/main.h>
 #include <glade/glade.h>
 
+// For now we use the xforms image loader if we can.
+// In the future, this will be replaced by a gnome equivalent.
+#if defined(HAVE_FLIMAGE_DUP) && defined(HAVE_FLIMAGE_TO_PIXMAP)
+#include "xforms/xformsGImage.h"
+#else
 #include "graphics/GraphicsImageXPM.h"
+#endif
 
 using std::endl;
 
@@ -130,16 +137,22 @@ LyXView * GUIRunTime::createMainView(int w, int h)
 }
 
 
-// Called bu the graphics cache to connect the approriate frontend
+// Called by the graphics cache to connect the appropriate frontend
 // image loading routines to the LyX kernel.
 void GUIRunTime::initialiseGraphics()
 {
 	using namespace grfx;
 	using SigC::slot;
     
+#if defined(HAVE_FLIMAGE_DUP) && defined(HAVE_FLIMAGE_TO_PIXMAP)
+	// connect the image loader based on the xforms library
+	GImage::newImage.connect(slot(&xformsGImage::newImage));
+	GImage::loadableFormats.connect(slot(&xformsGImage::loadableFormats));
+#else
 	// connect the image loader based on the XPM library
 	GImage::newImage.connect(slot(&GImageXPM::newImage));
 	GImage::loadableFormats.connect(slot(&GImageXPM::loadableFormats));
+#endif
 }
 
 

@@ -10,6 +10,14 @@ INCLUDES = -I${top_srcdir}/images -I${top_srcdir}/src/ \
 LIBS=
 LYXDATADIRS = forms
 ETAGS_ARGS = --lang=c++
+
+EXTRA_DIST = xformsGImage.C xformsGImage.h
+
+if USE_BASIC_IMAGE_LOADER
+else
+XFORMSGIMAGE = xformsGImage.C xformsGImage.h
+endif
+
 # Alphabetical order please.  It makes it easier to figure out what's missing. 
 libxforms_la_SOURCES = \
 	Alert_pimpl.C \
@@ -198,7 +206,7 @@ libxforms_la_SOURCES = \
 	Tooltips.h \
 	xforms_helpers.C \
 	xforms_helpers.h \
-	xformsBC.C \
+	$(XFORMSGIMAGE) xformsBC.C \
 	xformsBC.h
 
 # These still have to be added. Sooner or later. ARRae-20000411

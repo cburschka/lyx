@@ -1,3 +1,9 @@
+2002-03-05  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* Makefile.am: if there is no image loading class leveraging the power
+	of the appropriate gui library, then compile the basic alternative
+	found in GraphicsImageXPM.[Ch].
+
 2002-03-04  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* GraphicsCache.C: change associated with move of initialiseGraphics

@@ -15,6 +15,11 @@ INCLUDES = ${FRONTEND_INCLUDES} -I${top_srcdir}/src/ \
 #libgnome_la_LIBADD = \
 #	@FRONTEND_LDFLAGS@ @FRONTEND_LIBS@
 
+if USE_BASIC_IMAGE_LOADER
+else
+XFORMSGIMAGE = ../xforms/xformsGImage.lo
+endif
+
 xforms_objects = \
 	../xforms/xforms_helpers.lo \
 	../xforms/Toolbar_pimpl.lo \
@@ -28,7 +33,7 @@ xforms_objects = \
 	../xforms/FormMathsSpace.lo \
 	../xforms/DropDown.lo \
 	../xforms/Alert_pimpl.lo \
-	../xforms/Menubar_pimpl.lo
+	$(XFORMSGIMAGE) ../xforms/Menubar_pimpl.lo
 
 libgnome.la: xforms.lo $(libgnome_la_OBJECTS) $(libgnome_la_DEPENDENCIES)
 

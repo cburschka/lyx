@@ -1,3 +1,10 @@
+2002-03-05  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* GUIRunTime.C (initialiseGraphics): use the xforms image loader if
+	your version of the xforms libraries is up to the task.
+
+	* xforms/Makefile.am: link in the xforms image loader if so configured.
+
 2002-03-04   Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* Dialogs.C (redrawGUI): removed to frontends/Dialogs.C

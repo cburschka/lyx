@@ -980,3 +980,19 @@ AM_PROG_LIBTOOL dnl for libraries
 CC=$ac_save_cc
 CFLAGS="$ac_save_cflags"
 ])
+
+
+### Check whether the xforms library has a viable image loader
+AC_DEFUN(LYX_USE_XFORMS_IMAGE_LOADER,
+[
+TEMP_LDFLAGS=$LDFLAGS
+LDFLAGS=$XFORMS_LIB $LDFLAGS
+
+lyx_use_xforms_image_loader=no
+AC_CHECK_FUNCS(flimage_dup,[
+  AC_CHECK_FUNCS(flimage_to_pixmap,[
+    lyx_use_xforms_image_loader=yes
+    AC_CHECK_FUNCS(flimage_enable_ps)])])
+
+LDFLAGS=$TEMP_LDFLAGS
+])
