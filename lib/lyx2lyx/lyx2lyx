@@ -39,7 +39,7 @@ opt.quiet = 0
 
 format = re.compile(r"(\d)[\.,]?(\d\d)")
 fileformat = re.compile(r"\\lyxformat\s*(\S*)")
-lst_ft = ["210", "215", "216", "217", "218", "220", "221", "223", "224", "225"]
+lst_ft = [210, 215, 216, 217,  218, 220, 221, 223, 224, 225]
 
 def usage():
     print """Usage: lyx2lyx [options] [file]
@@ -91,14 +91,6 @@ def parse_options(argv):
     if not opt.end:
         opt.end = lst_ft[len(lst_ft)-1]
 
-    if opt.start and opt.start == opt.end:
-        sys.stderr.write(error.same_format)
-        sys.exit()
-
-    if opt.start > opt.end:
-        sys.stderr.write(error.newer_format)
-        sys.exit(1)
-
     if args:
         file = args[0]
         try:
@@ -111,18 +103,13 @@ def parse_options(argv):
 def lyxformat(fmt):
     result = format.match(fmt)
     if result:
-        fmt = result.group(1)+result.group(2)
+        fmt = int(result.group(1) + result.group(2))
     else:
-        sys.stderr.write(fmt + ": " + error.invalid_format)
+        sys.stderr.write(str(fmt) + ": " + error.invalid_format)
         sys.exit(2)
 
     if fmt in lst_ft:
         return fmt
-
-    x = int(fmt)
-    if x < int(lst_ft[-1]) and x > int(lst_ft[-2]):
-        sys.stderr.write("lyx2lyx: A development version file.\n")
-        return lst_ft[-2]
 
     sys.stderr.write(fmt + ": " + error.format_not_supported)
     sys.exit(1)
@@ -186,11 +173,17 @@ def main(argv):
         opt.start = fmt
 
     # Convertion chain
+    if opt.start < opt.end:
+        mode = "lyxconvert_"
+    else:
+        lst_ft.reverse()
+        mode = "lyxrevert_"
+
     start = lst_ft.index(opt.start)
     end = lst_ft.index(opt.end)
 
     for fmt in lst_ft[start:end]:
-	__import__("lyxconvert_" + fmt).convert(header,body)
+        __import__(mode + str(fmt)).convert(header,body)
 
     set_comment(header, version)
     set_format(header, opt.end)
