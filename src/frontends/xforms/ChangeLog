@@ -1,3 +1,14 @@
+2001-09-06  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* Toolbar_pimpl.C (updateLayoutList): do not display obsolete
+	layouts
+	(layoutSelected): remove the numeric argument and use the text of
+	the combox entry instead.
+
+	* combox.C: lowercase a few remaining methods, rename select_text
+	to select
+	* several files: propagate these changes
+
 2001-09-03  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* FormPreferences.C: add fl_set_input_return to input_paperoption.

@@ -126,7 +126,7 @@ void Combox::addline(string const & text)
 }
 
 
-bool Combox::select_text(string const & t)
+bool Combox::select(string const & t)
 {
 	if (!browser || t.empty()) return false;
 	int const maxline = fl_get_browser_maxline(browser);
@@ -158,7 +158,7 @@ void Combox::select(int i)
 void Combox::add(int x, int y, int w, int hmin, int hmax,
 		 FL_OBJECT * tabfolder1_, FL_OBJECT * tabfolder2_)
 {
-	// Store these for later use in working round an xforms bug in Show()
+	// Store these for later use in working round an xforms bug in show()
 	tabfolder1 = tabfolder1_;
 	tabfolder2 = tabfolder2_;
 
@@ -243,14 +243,14 @@ Window save_window;
 } // namespace anon
 
 
-void Combox::Redraw()
+void Combox::redraw()
 {
 	if (browser) fl_redraw_object(browser);
 	if (button) fl_redraw_object(button);
 	if (label) fl_redraw_object(label);
 }
  
-void Combox::Show()
+void Combox::show()
 {
 	if (_pre) _pre();
 	
@@ -305,7 +305,7 @@ void Combox::Show()
 	XFlush(fl_get_display());
 }
 
-void Combox::Hide(int who)
+void Combox::hide(int who)
 {  
 	if (!who && browser && label) {
 		sel = fl_get_browser(browser);
@@ -394,12 +394,12 @@ void Combox::combo_cb(FL_OBJECT * ob, long data)
 						combo->cb_arg, combo);
 			break;
 		}
-		default: combo->Show(); break;
+		default: combo->show(); break;
 		}
 		break;
 	}
 	case 2:
-		combo->Hide();
+		combo->hide();
 		break;
 	}
 }
@@ -422,7 +422,7 @@ int Combox::peek_event(FL_FORM * form, void * xev)
 		static_cast<XEvent *>(xev)->xbutton.x - ob->x > ob->w ||
 		static_cast<XEvent *>(xev)->xbutton.y - ob->y < 0 ||
 		static_cast<XEvent *>(xev)->xbutton.y - ob->y > ob->h)) {
-		combo->Hide(1); 
+		combo->hide(1); 
 		return 1;
 	}
 		
@@ -466,10 +466,10 @@ int Combox::peek_event(FL_FORM * form, void * xev)
 					       fl_get_browser(combo->browser));
 		return 1;
 	case XK_Return:
-		combo->Hide();
+		combo->hide();
 		return 1;
 	case XK_Escape:
-		combo->Hide(1);
+		combo->hide(1);
 		return 1;
 	}
 	return 0;  

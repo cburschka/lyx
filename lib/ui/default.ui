@@ -1,7 +1,7 @@
-# This is the default LyX user interface definition file. The syntax
-# should be straightforward enough. The menubar "main_nobuffer" (if it
-# exists) is used when there is no buffer open; otherwise, the menubar
-# "main" is used. 
+# This is the default LyX user interface definition file.         -*- text -*- 
+# The syntax should be straightforward enough. The menubar
+# "main_nobuffer" (if it exists) is used when there is no buffer open;
+# otherwise, the menubar "main" is used. 
 
 Menuset
 
@@ -323,7 +323,7 @@ Menuset
 	Item "User's Guide|U" "help-open UserGuide"
 	Item "Extended Features|E" "help-open Extended"
 	Item "Customization|C" "help-open Customization"
-	Item "Reference Manual|R" "help-open Reference"
+#	Item "Reference Manual|R" "help-open Reference"
 	Item "FAQ|F" "help-open FAQ"
 	Item "Table of Contents|a" "help-open TOC"
 	Item "Known Bugs|K" "help-open BUGS"

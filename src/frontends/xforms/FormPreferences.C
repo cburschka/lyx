@@ -1781,7 +1781,7 @@ void FormPreferences::Language::update()
 	fl_set_button(dialog_->check_use_kbmap,
 		      lyxrc.use_kbmap);
 
-	combo_default_lang->select_text(lyxrc.default_language);
+	combo_default_lang->select(lyxrc.default_language);
 
 	if (lyxrc.use_kbmap) {
 		fl_set_input(dialog_->input_kbmap1,

@@ -70,8 +70,8 @@ public:
 	void openLayoutList();
 	/// Erase the layout list
 	void clearLayoutList();
-	/// and the non-static version
-	void layoutSelected(int); 
+	/// the non-static version of layoutSelectedCB
+	void layoutSelected(); 
 
 	///
 	struct toolbarItem

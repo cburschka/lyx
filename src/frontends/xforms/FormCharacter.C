@@ -100,7 +100,7 @@ void FormCharacter::build()
 	     cit != language.end(); ++cit) {
 		combo_language2_->addto(*cit);
 	}
-	combo_language2_->select_text(*language.begin());
+	combo_language2_->select(*language.begin());
 
 	// Manage the ok, apply and cancel/close buttons
 	bc().setApply(dialog_->button_apply);
@@ -171,7 +171,7 @@ void FormCharacter::update()
 	pos = int(findPos(color_, controller().getColor()));
 	fl_set_choice(dialog_->choice_color, pos+1);
 
-	combo_language2_->select_text(controller().getLanguage());
+	combo_language2_->select(controller().getLanguage());
 
 	fl_set_button(dialog_->check_toggle_all, controller().getToggleAll());
 }

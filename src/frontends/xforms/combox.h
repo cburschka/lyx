@@ -83,7 +83,7 @@ public:
 	///  Select an arbitrary item
 	void select(int);
 	///
-        bool select_text(string const &);
+        bool select(string const &);
    
 	///  Clear all the list
 	void clear();
@@ -117,9 +117,9 @@ public:
 	///
         void shortcut(string const &, int);
 	///
-	void Redraw();
+	void redraw();
 	///
-	void Show();
+	void show();
 	///
 	static void combo_cb(FL_OBJECT *, long);
 	///
@@ -128,7 +128,7 @@ public:
         static int  peek_event(FL_FORM *, void *);
  protected:
         /// At least Hide should not be public
-	void Hide(int who = 0);
+	void hide(int who = 0);
 	///
 	FL_OBJECT * browser;
  private:

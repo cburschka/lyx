@@ -146,18 +146,17 @@ extern "C" int C_Toolbar_BubblePost(FL_OBJECT * ob, int event,
 
 
 // this one is not "C" because combox callbacks are really C++ %-|
-void Toolbar::Pimpl::layoutSelectedCB(int sel, void * arg, Combox *)
+void Toolbar::Pimpl::layoutSelectedCB(int, void * arg, Combox *)
 {
 	Toolbar::Pimpl * tb = reinterpret_cast<Toolbar::Pimpl *>(arg);
 
-	tb->layoutSelected(sel);
+	tb->layoutSelected();
 }
 
 
-void Toolbar::Pimpl::layoutSelected(int sel)
+void Toolbar::Pimpl::layoutSelected()
 {
-	string const tmp = tostr(sel);
-	owner->getLyXFunc()->dispatch(LFUN_LAYOUTNO, tmp);
+	owner->getLyXFunc()->dispatch(LFUN_LAYOUT, combox->getline());
 }
  
 
@@ -218,8 +217,12 @@ void Toolbar::Pimpl::update()
 
 
 void Toolbar::Pimpl::setLayout(int layout) {
-	if (combox)
-		combox->select(layout+1);
+	if (combox) {
+		LyXTextClass const & tc =
+			textclasslist.TextClass(owner->buffer()->
+						params.textclass);
+		combox->select(tc[layout].name());
+	}
 }
 
 
@@ -237,14 +240,13 @@ void Toolbar::Pimpl::updateLayoutList(bool force)
 		LyXTextClass::const_iterator end = tc.end();
 		for (LyXTextClass::const_iterator cit = tc.begin();
 		     cit != end; ++cit) {
+			// ignore obsolete entries
 			if (cit->obsoleted_by().empty())
 				combox->addline(_(cit->name()));
-			else
-				combox->addline("@N" + _(cit->name()));
 		}
 	}
 	// we need to do this.
-	combox->Redraw();
+	combox->redraw();
 }
 
 
@@ -252,7 +254,7 @@ void Toolbar::Pimpl::clearLayoutList()
 {
 	if (combox) {
 		combox->clear();
-		combox->Redraw();
+		combox->redraw();
 	}
 }
 
@@ -260,7 +262,7 @@ void Toolbar::Pimpl::clearLayoutList()
 void Toolbar::Pimpl::openLayoutList()
 {
 	if (combox)
-		combox->Show();
+		combox->show();
 }
 
 

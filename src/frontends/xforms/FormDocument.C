@@ -610,7 +610,7 @@ void FormDocument::class_update(BufferParams const & params)
 
     LyXTextClass const & tclass = textclasslist.TextClass(params.textclass);
 
-    combo_doc_class->select_text(
+    combo_doc_class->select(
 	textclasslist.DescOfClass(params.textclass));
     fl_set_choice_text(class_->choice_doc_fonts, params.fonts.c_str());
     fl_clear_choice(class_->choice_doc_fontsize);
@@ -698,7 +698,7 @@ void FormDocument::language_update(BufferParams const & params)
     if (!language_.get())
         return;
 
-    combo_language->select_text(params.language->lang());
+    combo_language->select(params.language->lang());
     fl_set_choice_text(language_->choice_inputenc, params.inputenc.c_str());
     fl_set_choice(language_->choice_quotes_language, params.quotes_language + 1);
     fl_set_button(language_->radio_single, 0);
