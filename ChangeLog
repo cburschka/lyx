@@ -1,3 +1,10 @@
+1999-10-07  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/insets/insetquotes.C (Draw): Simplified a gread deal. This
+	also fixes a bug. It is not allowed to do tricks with std::strings
+	like: string a("hei"); &a[e]; this will not give what you
+	think... Any reason for the complexity in this func?
+
 1999-10-06  Asger Alstrup Nielsen  <alstrup@diku.dk>
 
 	* Updated README and INSTALL a bit, mostly to check that my

@@ -138,8 +138,7 @@ string InsetQuotes::DispString() const
 {
  	string disp;
 
-	disp += quote_char[quote_index[side][language]];
-		
+	disp = quote_char[quote_index[side][language]];
 	if (times == InsetQuotes::DoubleQ)
 		disp += disp;
 
@@ -196,18 +195,8 @@ void InsetQuotes::Draw(LyXFont font, LyXScreen & scr,
 {
 	string text = DispString();
 
-	for (string::size_type i = 0; i < text.length(); ++i) {
-		if (text[i] == ' ') 
-			x += font.width('i');
-		else if (i == text.length()-1 || text[i] != text[i+1]) {
-			scr.drawString(font, &text[i], baseline, int(x));
-			x += font.width(text[i]);
-		} else {
-			scr.drawString(font, &text[i+1], baseline, int(x));
-			x += font.width(',');
-		}
-	}
-	
+	scr.drawString(font, text, baseline, int(x));
+	x += Width(font);
 }
 
 
