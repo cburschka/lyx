@@ -1,3 +1,10 @@
+2003-09-07  Kayvan Sylvan  <kayvan@sylvan.com>
+
+	* configure.m4 - Do an additional test in the Cygwin case to
+	see if the path correction is necessary. If running with newer
+	cygwin tetex packages, the path correction actually appears to
+	fail.
+
 2003-09-05  Johnathan Burchill  <jkerrb@shaw.ca>
 
 	* external_templates: Write a message to the latex log file if the

@@ -176,9 +176,22 @@ fi
 #### Adjust PATH for Win32 (Cygwin)
 case `uname -s` in
    CYGWIN*)
-     echo "configure: cygwin detected; path correction"
-     srcdir=`cygpath -w "${srcdir}" | tr '\\\\' /`
-     echo "srcdir=${srcdir}" ;;
+     tmpfname="/tmp/x$$.ltx";
+     echo "\\documentstyle{article}" > $tmpfname
+     echo "\\begin{document}\\end{document}" >> $tmpfname
+     inpname=`cygpath -w $tmpfname | tr '\\\\' /`
+     echo "\\input{$inpname}" > wrap_temp$$.ltx
+     check_err=`latex wrap_temp$$.ltx 2>&1 < /dev/null | grep Error`
+     rm -f wrap_temp$$.* /tmp/x$$.*
+     if [ x"$check_err" = "x" ]
+     then
+       echo "configure: cygwin detected; path correction"
+       srcdir=`cygpath -w "${srcdir}" | tr '\\\\' /`
+       echo "srcdir=${srcdir}"
+     else
+       echo "configure: cygwin detected; path correction is not needed"
+     fi
+     ;;
 esac
 
 #### Create the build directories if necessary
