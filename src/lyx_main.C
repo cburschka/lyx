@@ -64,12 +64,13 @@ using lyx::support::GetEnv;
 using lyx::support::GetEnvPath;
 using lyx::support::i18nLibFileSearch;
 using lyx::support::LibFileSearch;
-using lyx::support::os;
 using lyx::support::Path;
 using lyx::support::rtrim;
 using lyx::support::setLyxPaths;
 using lyx::support::system_lyxdir;
 using lyx::support::user_lyxdir;
+
+namespace os = lyx::support::os;
 
 using std::endl;
 

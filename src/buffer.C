@@ -95,7 +95,6 @@ using lyx::support::MakeDisplayPath;
 using lyx::support::MakeLatexName;
 using lyx::support::OnlyFilename;
 using lyx::support::OnlyPath;
-using lyx::support::os;
 using lyx::support::Path;
 using lyx::support::QuoteName;
 using lyx::support::removeAutosaveFile;
@@ -106,6 +105,8 @@ using lyx::support::strToInt;
 using lyx::support::subst;
 using lyx::support::tempName;
 using lyx::support::trim;
+
+namespace os = lyx::support::os;
 
 using std::endl;
 using std::for_each;

@@ -44,8 +44,9 @@
 #include <fcntl.h>
 
 using lyx::support::AddName;
-using lyx::support::os;
 using lyx::support::user_lyxdir;
+
+namespace os = lyx::support::os;
 
 #ifndef CXX_GLOBAL_CSTD
 using std::exit;

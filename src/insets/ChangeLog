@@ -1,3 +1,8 @@
+2003-09-16  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* insetgraphics.C: 
+	* insetbibtex.C: use namespace alias for lyx::support::os
+
 2003-09-16  Angus Leeming  <leeming@lyx.org>
 
 	* insetcollapsable.h: remove ununsed framecolor variable.
@@ -29,7 +34,7 @@
 
 	* insetcollapsable.h: add #include "LColor.h"
 	(for its framecolor member variable).
-	
+
 2003-09-16  Angus Leeming  <leeming@lyx.org>
 
 	* insetenv.C (constructor): use accessor functions to access InsetText variables.

@@ -19,7 +19,8 @@
 #include <ios>
 #endif
 
-using lyx::support::os;
+
+namespace os = lyx::support::os;
 
 
 int main(int argc, char * argv[])

@@ -56,7 +56,6 @@ using lyx::support::MakeAbsPath;
 using lyx::support::MakeDisplayPath;
 using lyx::support::OnlyFilename;
 using lyx::support::OnlyPath;
-using lyx::support::os;
 using lyx::support::Path;
 using lyx::support::removeAutosaveFile;
 using lyx::support::rename;
@@ -66,6 +65,8 @@ using lyx::support::Systemcall;
 using lyx::support::tempName;
 using lyx::support::unlink;
 using lyx::support::user_lyxdir;
+
+namespace os = lyx::support::os;
 
 using std::back_inserter;
 using std::copy;

@@ -92,11 +92,12 @@ using lyx::support::GetExtension;
 using lyx::support::getExtFromContents;
 using lyx::support::IsFileReadable;
 using lyx::support::LibFileSearch;
-using lyx::support::os;
 using lyx::support::rtrim;
 using lyx::support::Systemcall;
 using lyx::support::unzipFile;
 using lyx::support::unzippedFileName;
+
+namespace os = lyx::support::os;
 
 using std::endl;
 

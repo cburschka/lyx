@@ -39,7 +39,6 @@ using lyx::support::FileInfo;
 using lyx::support::findtexfile;
 using lyx::support::getcwd;
 using lyx::support::OnlyFilename;
-using lyx::support::os;
 using lyx::support::prefixIs;
 using lyx::support::QuoteName;
 using lyx::support::rtrim;
@@ -47,6 +46,8 @@ using lyx::support::split;
 using lyx::support::suffixIs;
 using lyx::support::Systemcall;
 using lyx::support::unlink;
+
+namespace os = lyx::support::os;
 
 using boost::regex;
 using boost::smatch;
