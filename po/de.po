@@ -171,7 +171,7 @@ msgstr "Übernehmen|#b"
 #: ../src/frontends/xforms/forms/form_url.fd:152
 #: ../src/frontends/xforms/forms/form_wrap.fd:260
 msgid "Restore|#R"
-msgstr "Wiederherstellen|#W"
+msgstr "Zurücksetzen|#Z"
 
 #: ../src/frontends/xforms/forms/form_browser.fd:62
 #: ../src/frontends/xforms/forms/form_error.fd:61
@@ -306,7 +306,7 @@ msgstr "Als Dokument-Standards speichern|#S"
 
 #: ../src/frontends/xforms/forms/form_document.fd:170
 msgid "Use Class Defaults|#C"
-msgstr "Klassenstandards verwenden|#K"
+msgstr "Klassen-Standards verwenden|#l"
 
 #: ../src/frontends/xforms/forms/form_document.fd:212
 msgid "Dimensions"
@@ -346,7 +346,7 @@ msgstr "Ränder"
 
 #: ../src/frontends/xforms/forms/form_document.fd:428
 msgid "Custom sizes|#M"
-msgstr ""
+msgstr "Benutzerdefinierte Größen|#B"
 
 #: ../src/frontends/xforms/forms/form_document.fd:446
 msgid "Special (A4 portrait only):|#S"
@@ -373,14 +373,12 @@ msgid "Headheight:|#H"
 msgstr "Kopfzeilenhöhe:|#K"
 
 #: ../src/frontends/xforms/forms/form_document.fd:644
-#, fuzzy
 msgid "Headsep:|#d"
-msgstr "&Abst. zu Kopf:"
+msgstr "Abst. zum Kopf:|#K"
 
 #: ../src/frontends/xforms/forms/form_document.fd:680
-#, fuzzy
 msgid "Footskip:|#F"
-msgstr "Abst. &zu Fuß:"
+msgstr "Abst. zum Fuß:|#F"
 
 #: ../src/frontends/xforms/forms/form_document.fd:740
 msgid "Sides"
@@ -397,140 +395,120 @@ msgid "Columns"
 msgstr "Spalten"
 
 #: ../src/frontends/xforms/forms/form_document.fd:794
-#, fuzzy
 msgid "Fonts:|#F"
-msgstr "Zeichensatz: "
+msgstr "Schriften:|#c"
 
 #: ../src/frontends/xforms/forms/form_document.fd:812
-#, fuzzy
 msgid "Font Size:|#O"
-msgstr "Zeichengröße"
+msgstr "Schriftgröße:|#g"
 
 #: ../src/frontends/xforms/forms/form_document.fd:830
 msgid "Class:|#l"
-msgstr ""
+msgstr "Klasse:|#K"
 
 #: ../src/frontends/xforms/forms/form_document.fd:848
 msgid "Page style:|#P"
-msgstr "Seiten-Stil:|#S"
+msgstr "Seiten-Stil:|#n"
 
 #: ../src/frontends/xforms/forms/form_document.fd:866
-#, fuzzy
 msgid "Spacing|#g"
-msgstr "Abstand"
+msgstr "Abstand|#A"
 
 #: ../src/frontends/xforms/forms/form_document.fd:884
-#, fuzzy
 msgid "Extra Options:|#X"
-msgstr "Weitere Optionen"
+msgstr "Weitere Optionen:|#O"
 
 #: ../src/frontends/xforms/forms/form_document.fd:920
-#, fuzzy
 msgid "Default Skip:|#u"
-msgstr "Standard Pfad"
+msgstr "Standard-Abstand:|#d"
 
 #: ../src/frontends/xforms/forms/form_document.fd:956
 msgid "One|#n"
-msgstr ""
+msgstr "Einseitig|#i"
 
 #: ../src/frontends/xforms/forms/form_document.fd:974
 msgid "Two|#T"
-msgstr ""
+msgstr "Zweiseitig|#w"
 
 #: ../src/frontends/xforms/forms/form_document.fd:1028
 msgid "One|#e"
-msgstr ""
+msgstr "1-spaltig|#1"
 
 #: ../src/frontends/xforms/forms/form_document.fd:1046
 msgid "Two|#w"
-msgstr ""
+msgstr "2-spaltig|#2"
 
 #: ../src/frontends/xforms/forms/form_document.fd:1100
-#, fuzzy
 msgid "Indent|#I"
-msgstr "Einzug"
+msgstr "Einzug|#E"
 
 #: ../src/frontends/xforms/forms/form_document.fd:1118
-#, fuzzy
 msgid "Skip|#K"
-msgstr "&Abstand"
+msgstr "Abstand|#t"
 
 #: ../src/frontends/xforms/forms/form_document.fd:1215
-#, fuzzy
 msgid "Quote Style"
 msgstr "Anführungszeichen"
 
 #: ../src/frontends/xforms/forms/form_document.fd:1233
-#, fuzzy
 msgid "Encoding:|#E"
-msgstr "Kodierung:"
+msgstr "Kodierung:|#K"
 
 #: ../src/frontends/xforms/forms/form_document.fd:1251
-#, fuzzy
 msgid "Type:|#T"
-msgstr "Art:"
+msgstr "Art:|#A"
 
 #: ../src/frontends/xforms/forms/form_document.fd:1287
-#, fuzzy
 msgid "Single|#S"
-msgstr "Einfach"
+msgstr "Einfach|#E"
 
 #: ../src/frontends/xforms/forms/form_document.fd:1305
-#, fuzzy
 msgid "Double|#D"
-msgstr "Doppelt"
+msgstr "Doppelt|#D"
 
 #: ../src/frontends/xforms/forms/form_document.fd:1341
-#, fuzzy
 msgid "Language:|#L"
-msgstr "&Sprache:"
+msgstr "Sprache:|#p"
 
 #: ../src/frontends/xforms/forms/form_document.fd:1383
 msgid "Float Placement:|#L"
 msgstr "Platzierung von Floats:|#P"
 
 #: ../src/frontends/xforms/forms/form_document.fd:1401
-#, fuzzy
 msgid "Section number depth"
-msgstr "Max. Unterabschnitt"
+msgstr "Tiefe der Abschnittsnummerierung"
 
 #: ../src/frontends/xforms/forms/form_document.fd:1423
-#, fuzzy
 msgid "Table of contents depth"
-msgstr "Inhaltsverzeichnis"
+msgstr "Tiefe im Inhaltsverzeichnis"
 
 #: ../src/frontends/xforms/forms/form_document.fd:1445
 msgid "PS Driver|#S"
-msgstr ""
+msgstr "PostScript-Treiber|#T"
 
 #: ../src/frontends/xforms/forms/form_document.fd:1463
-#, fuzzy
 msgid "Use AMS Math|#M"
-msgstr "&AMS Math benutzen"
+msgstr "AMS-Mathe verwenden|#A"
 
 #: ../src/frontends/xforms/forms/form_document.fd:1481
-#, fuzzy
 msgid "Use Natbib|#N"
 msgstr "Natbib verwenden|#N"
 
 #: ../src/frontends/xforms/forms/form_document.fd:1499
 msgid "Citation style|#i"
-msgstr "Zitat-Stil|#Z"
+msgstr "Zitat-Stil|#i"
 
 #: ../src/frontends/xforms/forms/form_document.fd:1541
-#, fuzzy
 msgid "Bullet depth"
-msgstr "Aufzählungszeichen"
+msgstr "Aufzählungsebene"
 
 #: ../src/frontends/xforms/forms/form_document.fd:1577
-#, fuzzy
 msgid "Size|#z"
-msgstr "&Größe:"
+msgstr "Größe|#G"
 
 #: ../src/frontends/xforms/forms/form_document.fd:1595
-#, fuzzy
 msgid "LaTeX|#L"
-msgstr "LaTeX...|L"
+msgstr "LaTeX|#L"
 
 #: ../src/frontends/xforms/forms/form_document.fd:1631
 msgid "1|#1"
@@ -554,7 +532,7 @@ msgstr "Standard|#S"
 
 #: ../src/frontends/xforms/forms/form_document.fd:1759
 msgid "Maths|#M"
-msgstr "Mathematisches|#M"
+msgstr "Mathe|#M"
 
 #: ../src/frontends/xforms/forms/form_document.fd:1777
 msgid "Ding 1|#D"
@@ -588,19 +566,17 @@ msgstr "Geschlossen|#e"
 
 #: ../src/frontends/xforms/forms/form_ert.fd:115
 msgid "Inlined View|#I"
-msgstr "Eingebettet:|#i"
+msgstr "Eingebettet|#i"
 
 #: ../src/frontends/xforms/forms/form_external.fd:43
-#, fuzzy
 msgid "Template|#t"
-msgstr "Vorlagen|#V"
+msgstr "Vorlage|#V"
 
 #: ../src/frontends/xforms/forms/form_external.fd:79
 #: ../src/frontends/xforms/forms/form_graphics.fd:176
 #: ../src/frontends/xforms/forms/form_print.fd:373
-#, fuzzy
 msgid "File|#F"
-msgstr "Datei|D"
+msgstr "Datei|#D"
 
 #: ../src/frontends/xforms/forms/form_external.fd:115
 msgid "Parameters|#P"
@@ -611,44 +587,37 @@ msgid "Edit file|#E"
 msgstr "Datei editieren|#e"
 
 #: ../src/frontends/xforms/forms/form_external.fd:151
-#, fuzzy
 msgid "View result|#V"
-msgstr "Ergebnis anzeigen|#E"
+msgstr "Erg. anzeigen|#E"
 
 #: ../src/frontends/xforms/forms/form_external.fd:169
-#, fuzzy
 msgid "Update result|#U"
-msgstr "Aktualisieren|#A"
+msgstr "Erg. aktualisieren|#a"
 
 #: ../src/frontends/xforms/forms/form_external.fd:223
-#, fuzzy
 msgid "Cancel|#C^["
-msgstr "Abbrechen|^["
+msgstr "Abbrechen|#C^["
 
 #: ../src/frontends/xforms/forms/form_filedialog.fd:62
-#, fuzzy
 msgid "Directory:|#D"
-msgstr "Nutzerverzeichnis: "
+msgstr "Verzeichnis:|#V"
 
 #: ../src/frontends/xforms/forms/form_filedialog.fd:80
 msgid "Pattern:|#P"
-msgstr ""
+msgstr "Filter:|#F"
 
 #: ../src/frontends/xforms/forms/form_filedialog.fd:116
-#, fuzzy
 msgid "Filename:|#F"
-msgstr "Dateiname"
+msgstr "Dateiname:|#D"
 
 #: ../src/frontends/xforms/forms/form_filedialog.fd:134
 #: ../src/frontends/xforms/forms/form_texinfo.fd:62
-#, fuzzy
 msgid "Rescan|#R"
-msgstr "&Neu lesen"
+msgstr "Neu lesen|#N"
 
 #: ../src/frontends/xforms/forms/form_filedialog.fd:152
-#, fuzzy
 msgid "Home|#H"
-msgstr "Hilfe|H"
+msgstr "Hauptverz.|#H"
 
 #: ../src/frontends/xforms/forms/form_filedialog.fd:170
 msgid "User1|#1"
@@ -664,38 +633,32 @@ msgid "Placement"
 msgstr "Platzierung"
 
 #: ../src/frontends/xforms/forms/form_float.fd:62
-#, fuzzy
 msgid "Page of floats|#P"
-msgstr "Seite mit Floats"
+msgstr "Seite mit Floats|#S"
 
 #: ../src/frontends/xforms/forms/form_float.fd:80
-#, fuzzy
 msgid "Bottom of the page|#B"
-msgstr "Ende der Seite"
+msgstr "Ende der Seite|#E"
 
 #: ../src/frontends/xforms/forms/form_float.fd:98
-#, fuzzy
 msgid "Top of the page|#T"
-msgstr "Anfang der Seite"
+msgstr "Anfang der Seite|#A"
 
 #: ../src/frontends/xforms/forms/form_float.fd:116
-#, fuzzy
 msgid "Here, if possible|#r"
-msgstr "Hier, wenn möglich"
+msgstr "Hier, wenn möglich|#H"
 
 #: ../src/frontends/xforms/forms/form_float.fd:206
-#, fuzzy
 msgid "Span columns|#S"
-msgstr "Sonderformat Spalte"
+msgstr "Spalten überspannen|#S"
 
 #: ../src/frontends/xforms/forms/form_float.fd:224
 msgid "Ignore internal LaTeX rules|#I"
 msgstr ""
 
 #: ../src/frontends/xforms/forms/form_float.fd:260
-#, fuzzy
 msgid "Alternatives|#l"
-msgstr "Andere Sprache verwenden|#A"
+msgstr "Alternativen|#A"
 
 #: ../src/frontends/xforms/forms/form_float.fd:278
 msgid "Here, definitely!|#H"
@@ -706,9 +669,8 @@ msgid "Document default|#D"
 msgstr "Dokument-Standard|#D"
 
 #: ../src/frontends/xforms/forms/form_forks.fd:43
-#, fuzzy
 msgid "Forked child processes|#F"
-msgstr "Unterprozesse"
+msgstr "Unterprozesse|#U"
 
 #: ../src/frontends/xforms/forms/form_forks.fd:61
 msgid "Kill processes|#K"
@@ -732,24 +694,20 @@ msgid "Output"
 msgstr "Ausgabe"
 
 #: ../src/frontends/xforms/forms/form_graphics.fd:212
-#, fuzzy
 msgid "LyX View"
-msgstr "Anzeigen"
+msgstr "LyX-Ansicht"
 
 #: ../src/frontends/xforms/forms/form_graphics.fd:230
-#, fuzzy
 msgid "Draft mode|#a"
-msgstr "Entwurfsmodus"
+msgstr "Entwurfsmodus|#E"
 
 #: ../src/frontends/xforms/forms/form_graphics.fd:248
-#, fuzzy
 msgid "Do not unzip|#u"
-msgstr "Nicht anzeigen"
+msgstr "Nicht entpacken|#i"
 
 #: ../src/frontends/xforms/forms/form_graphics.fd:266
-#, fuzzy
 msgid "Scale|#S"
-msgstr "Größe%%|"
+msgstr "Größe|#G"
 
 #: ../src/frontends/xforms/forms/form_graphics.fd:284
 msgid "Width|#W"
@@ -794,10 +752,9 @@ msgstr "Einheiten|#E"
 
 #: ../src/frontends/xforms/forms/form_graphics.fd:560
 msgid "Clip to bounding box|#C"
-msgstr "Auf Begrenzungsbox zuschneiden|#z"
+msgstr "Auf Box zuschneiden|#z"
 
 #: ../src/frontends/xforms/forms/form_graphics.fd:578
-#, fuzzy
 msgid "Get from file|#G"
 msgstr "Lese Werte aus Datei|#L"
 
@@ -1034,9 +991,8 @@ msgid "Middle|#d"
 msgstr "Mitte"
 
 #: ../src/frontends/xforms/forms/form_minipage.fd:169
-#, fuzzy
 msgid "Bottom|#B"
-msgstr "Unten"
+msgstr "Unten|#U"
 
 #: ../src/frontends/xforms/forms/form_paragraph.fd:62
 msgid "Text"
@@ -1088,7 +1044,7 @@ msgstr "Zeilenabstand:|#Z"
 
 #: ../src/frontends/xforms/forms/form_paragraph.fd:332
 msgid "Maximum  label width:|#M"
-msgstr "Maximale Marken-Breite:|#M"
+msgstr "Max. Marken-Breite:|#M"
 
 #: ../src/frontends/xforms/forms/form_paragraph.fd:350
 msgid "No Indent|#d"
@@ -1121,9 +1077,8 @@ msgid "Scale & Resolution"
 msgstr "Skalierung und Auflösung"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:254
-#, fuzzy
 msgid "Fonts used"
-msgstr "Zeichengröße"
+msgstr "Verwendete Schriften"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:272
 msgid "Roman|#R"
@@ -1144,7 +1099,7 @@ msgstr "Kodierung:"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:344
 msgid "Rescale bitmap fonts|#b"
-msgstr "Bitmap-Fonts skalieren|#B"
+msgstr "Bitmap-Schriften neu skalieren|#B"
 
 # , c-format
 #: ../src/frontends/xforms/forms/form_preferences.fd:363
@@ -1215,16 +1170,16 @@ msgstr "&Größe:"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:629
 msgid "Popup Fonts & Encoding"
-msgstr ""
+msgstr "Popup Schriften & Kodierung"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:647
 msgid "Normal Font|#N"
-msgstr ""
+msgstr "Normale Schrift|#N"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:665
 #, fuzzy
 msgid "Bold Font|#B"
-msgstr "Fettdruck|F"
+msgstr "Fettschrift|#F"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:683
 #, fuzzy
@@ -1377,9 +1332,8 @@ msgid "Package|#P"
 msgstr "Pakete"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1553
-#, fuzzy
 msgid "Default language|#l"
-msgstr "Standard Sprache|#S"
+msgstr "Standard-Sprache|#S"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1571
 #, fuzzy
@@ -1512,9 +1466,8 @@ msgid "Extra flags|#E"
 msgstr "Datei editieren|#i"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2201
-#, fuzzy
 msgid "Default path|#p"
-msgstr "Standard Pfad"
+msgstr "Standard-Pfad|#P"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2219
 #: ../src/frontends/xforms/forms/form_preferences.fd:2255
@@ -1670,9 +1623,8 @@ msgid "TeX encoding|#T"
 msgstr "TeX Kodierung|#T"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:3004
-#, fuzzy
 msgid "Default paper size|#p"
-msgstr "Standard-Seitengröße:|#S"
+msgstr "Standard-Papiergröße|#P"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:3022
 msgid "Outside code interaction"
@@ -1950,9 +1902,8 @@ msgstr "Oben"
 
 #: ../src/frontends/xforms/forms/form_tabular.fd:452
 #: ../src/frontends/xforms/forms/form_tabular.fd:892
-#, fuzzy
 msgid "Bottom|#b"
-msgstr "Unten"
+msgstr "Unten|#U"
 
 #: ../src/frontends/xforms/forms/form_tabular.fd:470
 #: ../src/frontends/xforms/forms/form_tabular.fd:910
@@ -1999,9 +1950,8 @@ msgstr "Zentriert"
 
 #: ../src/frontends/xforms/forms/form_tabular.fd:652
 #: ../src/frontends/xforms/forms/form_tabular.fd:1092
-#, fuzzy
 msgid "Bottom|#o"
-msgstr "Unten"
+msgstr "Unten|#U"
 
 #: ../src/frontends/xforms/forms/form_tabular.fd:688
 #: ../src/frontends/xforms/forms/form_tabular.fd:1146
@@ -2126,9 +2076,8 @@ msgid "Entry : "
 msgstr "Eintrag:"
 
 #: ../src/frontends/xforms/forms/form_thesaurus.fd:98
-#, fuzzy
 msgid "Selection :"
-msgstr "Auswahl"
+msgstr "Auswahl :"
 
 #: ../src/frontends/xforms/forms/form_thesaurus.fd:116
 msgid "Meanings|#M"
@@ -2159,9 +2108,8 @@ msgid "Outer|#O"
 msgstr "Andere"
 
 #: ../src/frontends/xforms/forms/form_wrap.fd:170
-#, fuzzy
 msgid "Default|#D"
-msgstr "Standard"
+msgstr "Standard|#S"
 
 #: ../src/frontends/qt2/ui/BiblioModuleBase.ui:22
 #: ../src/frontends/qt2/ui/BulletsModuleBase.ui:22
@@ -2185,9 +2133,8 @@ msgid "Style"
 msgstr "Stil"
 
 #: ../src/frontends/qt2/ui/BiblioModuleBase.ui:67
-#, fuzzy
 msgid "Use &NatBib"
-msgstr "Natbib verwenden|#N"
+msgstr "&Natbib verwenden"
 
 #: ../src/frontends/qt2/ui/BiblioModuleBase.ui:82
 msgid "Cite &Style:"
@@ -2261,9 +2208,8 @@ msgid "Page &style :"
 msgstr "&Seiten-Stil :"
 
 #: ../src/frontends/qt2/ui/ClassModuleBase.ui:142
-#, fuzzy
 msgid "&Font && size :"
-msgstr "Zeichengröße"
+msgstr "&Schrift && Größe :"
 
 #: ../src/frontends/qt2/ui/ClassModuleBase.ui:161
 msgid "Float &placement:"
@@ -2342,9 +2288,8 @@ msgid "Numbering depth"
 msgstr "Max. Unterabschnitt"
 
 #: ../src/frontends/qt2/ui/NumberingModuleBase.ui:64
-#, fuzzy
 msgid "&Section :"
-msgstr "Auswahl"
+msgstr "&Abschnitt :"
 
 #: ../src/frontends/qt2/ui/NumberingModuleBase.ui:79
 #, fuzzy
@@ -2359,9 +2304,8 @@ msgid "Packages"
 msgstr "Pakete"
 
 #: ../src/frontends/qt2/ui/PackagesModuleBase.ui:78
-#, fuzzy
 msgid "Use AMS &math"
-msgstr "&AMS Math benutzen"
+msgstr "&AMS-Mathe verwenden"
 
 #: ../src/frontends/qt2/ui/PackagesModuleBase.ui:125
 #, fuzzy
@@ -2642,7 +2586,7 @@ msgstr "&Familie:"
 #: ../src/frontends/qt2/ui/QCharacterDialog.ui:103
 #: ../src/frontends/qt2/ui/QCharacterDialog.ui:114
 msgid "Font family"
-msgstr "Font Familie"
+msgstr "Schriftfamilie"
 
 #: ../src/frontends/qt2/ui/QCharacterDialog.ui:125
 msgid "&Series:"
@@ -2651,7 +2595,7 @@ msgstr "&Serie:"
 #: ../src/frontends/qt2/ui/QCharacterDialog.ui:133
 #: ../src/frontends/qt2/ui/QCharacterDialog.ui:204
 msgid "Font series"
-msgstr "Zeichensatz Serie"
+msgstr "Schriftserie"
 
 #. language settings
 #: ../src/frontends/qt2/ui/QCharacterDialog.ui:152
@@ -2665,12 +2609,12 @@ msgstr "Sprache"
 #: ../src/frontends/qt2/ui/QCharacterDialog.ui:163
 #: ../src/frontends/qt2/ui/QCharacterDialog.ui:193
 msgid "Font shape"
-msgstr ""
+msgstr "Schriftform"
 
 #: ../src/frontends/qt2/ui/QCharacterDialog.ui:174
 #: ../src/frontends/qt2/ui/QCharacterDialog.ui:227
 msgid "Font color"
-msgstr "Zeichensatz Farbe"
+msgstr "Schriftfarbe"
 
 #: ../src/frontends/qt2/ui/QCharacterDialog.ui:185
 msgid "S&hape:"
@@ -2686,7 +2630,7 @@ msgstr ""
 
 #: ../src/frontends/qt2/ui/QCharacterDialog.ui:253
 msgid "toggle font on all of the above"
-msgstr "Zeichensatz alles umschalten"
+msgstr "Schrift alles umschalten"
 
 #: ../src/frontends/qt2/ui/QCharacterDialog.ui:302
 msgid "Never toggled"
@@ -2699,7 +2643,7 @@ msgstr "&Größe:"
 #: ../src/frontends/qt2/ui/QCharacterDialog.ui:332
 #: ../src/frontends/qt2/ui/QCharacterDialog.ui:343
 msgid "Font size"
-msgstr "Zeichengröße"
+msgstr "Schriftgröße"
 
 #: ../src/frontends/qt2/ui/QCharacterDialog.ui:356
 msgid "Always toggled"
@@ -2708,7 +2652,7 @@ msgstr "Immer Umschalten"
 #: ../src/frontends/qt2/ui/QCharacterDialog.ui:363
 #: ../src/frontends/qt2/ui/QCharacterDialog.ui:397
 msgid "Other font settings"
-msgstr "Andere Einstellungen Zeichensatz"
+msgstr "Andere Schrift-Einstellungen"
 
 #: ../src/frontends/qt2/ui/QCharacterDialog.ui:382
 msgid "&Misc:"
@@ -2751,7 +2695,7 @@ msgstr "Zitat"
 #: ../src/frontends/qt2/ui/QWrapDialog.ui:240
 #: ../src/frontends/qt2/ui/QPrefsDialog.ui:67
 msgid "&Restore"
-msgstr "&Wiederherstellen"
+msgstr "&Zurücksetzen"
 
 #: ../src/frontends/qt2/ui/QCitationDialog.ui:142
 msgid "Search the available citations"
@@ -2902,19 +2846,16 @@ msgid "Insert the delimiters"
 msgstr "Füge die Trennzeichen ein"
 
 #: ../src/frontends/qt2/ui/QDocumentDialog.ui:71
-#, fuzzy
 msgid "Use Class Defaults"
-msgstr "Klassenstandard verwenden|#v"
+msgstr "Klassen-Standards verwenden"
 
 #: ../src/frontends/qt2/ui/QDocumentDialog.ui:75
-#, fuzzy
 msgid "Reset default params of the current class"
-msgstr "dieser Dokumentklasse eingestellt werden?"
+msgstr ""
 
 #: ../src/frontends/qt2/ui/QDocumentDialog.ui:93
-#, fuzzy
 msgid "Save as Document Defaults"
-msgstr "Als Standard speichern|#S"
+msgstr "Als Dokument-Standards speichern"
 
 #: ../src/frontends/qt2/ui/QDocumentDialog.ui:97
 msgid "Save settings as LyX's default template"
@@ -2931,7 +2872,7 @@ msgstr "ERT-Einfügung anzeigen"
 
 #: ../src/frontends/qt2/ui/QERTDialog.ui:64
 msgid "&Inline"
-msgstr ""
+msgstr "&Eingebettet"
 
 #: ../src/frontends/qt2/ui/QERTDialog.ui:68
 msgid "Show ERT inline"
@@ -2943,7 +2884,7 @@ msgstr "&Schließen"
 
 #: ../src/frontends/qt2/ui/QERTDialog.ui:83
 msgid "Show ERT button only"
-msgstr "Nur ERT Knopf zeigen"
+msgstr "Nur ERT-Knopf zeigen"
 
 #: ../src/frontends/qt2/ui/QERTDialog.ui:94
 msgid "&Open"
@@ -2979,18 +2920,16 @@ msgid "Filename"
 msgstr "Dateiname"
 
 #: ../src/frontends/qt2/ui/QExternalDialog.ui:180
-#, fuzzy
 msgid "&View Result"
-msgstr "Ergebnis anzeigen|#E"
+msgstr "&Erg. anzeigen"
 
 #: ../src/frontends/qt2/ui/QExternalDialog.ui:184
 msgid "View the file"
 msgstr "Datei anzeigen"
 
 #: ../src/frontends/qt2/ui/QExternalDialog.ui:202
-#, fuzzy
 msgid "&Update Result"
-msgstr "Aktualisieren|#A"
+msgstr "Erg. &aktualisieren"
 
 #: ../src/frontends/qt2/ui/QExternalDialog.ui:206
 msgid "Update the material"
@@ -3043,19 +2982,16 @@ msgid "&Top of page"
 msgstr "Anfang der Seite"
 
 #: ../src/frontends/qt2/ui/QFloatDialog.ui:98
-#, fuzzy
 msgid "Prefer top of page"
-msgstr "Anfang der Seite"
+msgstr "Bevorzuge Anfang der Seite"
 
 #: ../src/frontends/qt2/ui/QFloatDialog.ui:109
-#, fuzzy
 msgid "&Bottom of page"
-msgstr "Ende der Seite"
+msgstr "&Ende der Seite"
 
 #: ../src/frontends/qt2/ui/QFloatDialog.ui:113
-#, fuzzy
 msgid "Prefer bottom of page"
-msgstr "Ende der Seite"
+msgstr "Bevorzuge Ende der Seite"
 
 #: ../src/frontends/qt2/ui/QFloatDialog.ui:124
 #, fuzzy
@@ -3067,9 +3003,8 @@ msgid "Separate page for multiple floats"
 msgstr ""
 
 #: ../src/frontends/qt2/ui/QFloatDialog.ui:139
-#, fuzzy
 msgid "&Here if possible"
-msgstr "Hier, wenn möglich"
+msgstr "&Hier, wenn möglich"
 
 #: ../src/frontends/qt2/ui/QFloatDialog.ui:143
 msgid "Place float at current position if possible"
@@ -3094,13 +3029,12 @@ msgid "Place float at current position"
 msgstr "Wort durch die aktuelle Auswahl ersetzen"
 
 #: ../src/frontends/qt2/ui/QFloatDialog.ui:226
-#, fuzzy
 msgid "&Span columns"
-msgstr "Sonderformat Spalte"
+msgstr "&Spalten überspannen"
 
 #: ../src/frontends/qt2/ui/QFloatDialog.ui:230
 msgid "Span columns in multi-column documents"
-msgstr ""
+msgstr "Spalten in mehrspaltigen Dokumenten überspannen"
 
 #: ../src/frontends/qt2/ui/QGraphicsDialog.ui:55
 #, fuzzy
@@ -3234,16 +3168,15 @@ msgstr ""
 
 #: ../src/frontends/qt2/ui/QGraphicsDialog.ui:622
 msgid "Clip to &bounding box"
-msgstr "Auf &Begrenzungsbox zuschneiden"
+msgstr "Auf Box &zuschneiden"
 
 #: ../src/frontends/qt2/ui/QGraphicsDialog.ui:626
 msgid "Clip to bounding box values"
 msgstr "Auf die Werte der Begrenzungsbox zuschneiden"
 
 #: ../src/frontends/qt2/ui/QGraphicsDialog.ui:658
-#, fuzzy
 msgid "&Get from file"
-msgstr "Lese Werte aus Datei|#L"
+msgstr "&Lese Werte aus Datei"
 
 #: ../src/frontends/qt2/ui/QGraphicsDialog.ui:662
 msgid "Get bounding box from the (EPS) file"
@@ -3251,22 +3184,21 @@ msgstr "Begrenzungsbox aus der (EPS-)Datei ermitteln"
 
 #: ../src/frontends/qt2/ui/QGraphicsDialog.ui:709
 msgid "Right &top:"
-msgstr "Rechts oben"
+msgstr "Rechts &oben:"
 
 #: ../src/frontends/qt2/ui/QGraphicsDialog.ui:724
 #: ../src/frontends/qt2/ui/QGraphicsDialog.ui:781
 msgid "y"
-msgstr ""
+msgstr "y"
 
 #: ../src/frontends/qt2/ui/QGraphicsDialog.ui:749
 #: ../src/frontends/qt2/ui/QGraphicsDialog.ui:799
 msgid "x"
-msgstr ""
+msgstr "x"
 
 #: ../src/frontends/qt2/ui/QGraphicsDialog.ui:828
-#, fuzzy
 msgid "&Left bottom:"
-msgstr "Links unten"
+msgstr "&Links unten:"
 
 #: ../src/frontends/qt2/ui/QGraphicsDialog.ui:868
 #, fuzzy
@@ -3282,14 +3214,12 @@ msgid "Is this just one part of a figure float ?"
 msgstr ""
 
 #: ../src/frontends/qt2/ui/QGraphicsDialog.ui:902
-#, fuzzy
 msgid "Don't un&zip on export"
-msgstr "Kein \"unzip\" beim Export nach LaTeX|#u"
+msgstr "Beim Exportieren nicht &entpacken"
 
 #: ../src/frontends/qt2/ui/QGraphicsDialog.ui:906
-#, fuzzy
 msgid "Don't uncompress image before exporting to LaTeX"
-msgstr "Kein \"unzip\" beim Export nach LaTeX|#u"
+msgstr "Bild vor dem Exportieren nach LaTeX nicht entpacken"
 
 #: ../src/frontends/qt2/ui/QGraphicsDialog.ui:917
 msgid "LaTeX &options:"
@@ -3396,9 +3326,8 @@ msgid "Update the display"
 msgstr "Anzeige aktualisieren"
 
 #: ../src/frontends/qt2/ui/QMathDialog.ui:22
-#, fuzzy
 msgid "LyX: Math Panel"
-msgstr "Mathematische Symbole"
+msgstr "LyX: Mathe-Kontrollfläche"
 
 #: ../src/frontends/qt2/ui/QMathDialog.ui:98
 #, fuzzy
@@ -3414,9 +3343,8 @@ msgid "Set limits style"
 msgstr ""
 
 #: ../src/frontends/qt2/ui/QMathDialog.ui:155
-#, fuzzy
 msgid "Set math font"
-msgstr "Zeichengröße festlegen"
+msgstr "Mathe-Schrift festlegen"
 
 #: ../src/frontends/qt2/ui/QMathDialog.ui:213
 #, fuzzy
@@ -3617,7 +3545,7 @@ msgstr "1.5"
 #: src/frontends/qt2/QDocument.C:103 src/frontends/qt2/QDocument.C:113
 #: src/frontends/qt2/QDocumentDialog.C:342
 msgid "Custom"
-msgstr "Frei"
+msgstr "Benutzerdefiniert"
 
 #: ../src/frontends/qt2/ui/QParagraphDialog.ui:153
 #, fuzzy
@@ -3967,9 +3895,8 @@ msgid "Search &backwards"
 msgstr ""
 
 #: ../src/frontends/qt2/ui/QSendtoDialog.ui:22
-#, fuzzy
 msgid "Custom Export"
-msgstr "Frei"
+msgstr "Benutzerdefinierter Export"
 
 #: ../src/frontends/qt2/ui/QSendtoDialog.ui:45
 #, fuzzy
@@ -4163,7 +4090,7 @@ msgstr "Wählen Sie ein verwandtes Wort"
 
 #: ../src/frontends/qt2/ui/QThesaurusDialog.ui:157
 msgid "&Selection"
-msgstr "Auswahl"
+msgstr "&Auswahl"
 
 #: ../src/frontends/qt2/ui/QThesaurusDialog.ui:165
 #: ../src/frontends/qt2/ui/QThesaurusDialog.ui:176
@@ -4172,7 +4099,7 @@ msgstr "Der ausgewählte Eintrag"
 
 #: ../src/frontends/qt2/ui/QThesaurusDialog.ui:191
 msgid "Replace the entry with the selection"
-msgstr "Eintrag durch Auswahl ersetzen"
+msgstr "Eintrag durch die Auswahl ersetzen"
 
 #: ../src/frontends/qt2/ui/QTocDialog.ui:22
 msgid "Table Of Contents"
@@ -4227,9 +4154,8 @@ msgid "Wrap Options"
 msgstr "Wrap-Optionen"
 
 #: ../src/frontends/qt2/ui/QWrapDialog.ui:87
-#, fuzzy
 msgid "Default (outer)"
-msgstr "Standard Pfad"
+msgstr ""
 
 #: ../src/frontends/qt2/ui/QWrapDialog.ui:105
 #, fuzzy
@@ -4377,7 +4303,7 @@ msgstr ""
 
 #: ../src/frontends/qt2/ui/QTabularDialog.ui:466
 msgid "Custom column format (LaTeX)"
-msgstr ""
+msgstr "Benutzerdefiniertes Spaltenformat (LaTeX)"
 
 #: ../src/frontends/qt2/ui/QTabularDialog.ui:477
 msgid "LaTe&X argument:"
@@ -4400,7 +4326,7 @@ msgstr "Ränder"
 
 #: ../src/frontends/qt2/ui/QTabularDialog.ui:823
 msgid "&Default"
-msgstr "Standard"
+msgstr "&Standard"
 
 #: ../src/frontends/qt2/ui/QTabularDialog.ui:827
 #, fuzzy
@@ -4702,9 +4628,8 @@ msgid "Command s&tart:"
 msgstr "Befehl Start|#f"
 
 #: ../src/frontends/qt2/ui/QPrefLanguageModule.ui:84
-#, fuzzy
 msgid "&Default language:"
-msgstr "Standard Sprache|#S"
+msgstr "Standard-&Sprache:"
 
 #: ../src/frontends/qt2/ui/QPrefLanguageModule.ui:99
 #, fuzzy
@@ -4790,7 +4715,7 @@ msgstr "TeX Kodierung|#T"
 
 #: ../src/frontends/qt2/ui/QPrefLatexModule.ui:148
 msgid "Default paper si&ze:"
-msgstr "Standard-Seitengröße:|#S"
+msgstr "Standard-&Papiergröße:"
 
 #: ../src/frontends/qt2/ui/QPrefLatexModule.ui:188
 #, fuzzy
@@ -4849,14 +4774,12 @@ msgid "&Use temporary directory"
 msgstr "Nutzerverzeichnis: "
 
 #: ../src/frontends/qt2/ui/QPrefPathsModule.ui:200
-#, fuzzy
 msgid "&Working directory :"
-msgstr "LyX: Verzeichnis anlegen "
+msgstr "&Arbeitsverzeichnis :"
 
 #: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:22
-#, fuzzy
 msgid "Printer settings"
-msgstr "Minipage Einstellungen"
+msgstr "Drucker-Einstellungen"
 
 #: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:71
 #, fuzzy
@@ -4871,7 +4794,7 @@ msgstr "Benutzerbefehle"
 #: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:108
 #, fuzzy
 msgid "Name of the default printer"
-msgstr "Geben Sie hier die Standard Seitengröße an."
+msgstr ""
 
 #: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:119
 #, fuzzy
@@ -4969,7 +4892,7 @@ msgstr ""
 #: ../src/frontends/qt2/ui/QPrefScreenFontsModule.ui:22
 #: src/frontends/xforms/FormPreferences.C:204
 msgid "Screen Fonts"
-msgstr "Bildschirmdarstellung"
+msgstr "Bildschirmschriften"
 
 #: ../src/frontends/qt2/ui/QPrefScreenFontsModule.ui:110
 #, fuzzy
@@ -4996,7 +4919,7 @@ msgstr "&Vergrößerung %:"
 
 #: ../src/frontends/qt2/ui/QPrefScreenFontsModule.ui:323
 msgid "Font sizes"
-msgstr "Zeichengrößen"
+msgstr "Schriftgrößen"
 
 #: ../src/frontends/qt2/ui/QPrefScreenFontsModule.ui:405
 #, fuzzy
@@ -5317,7 +5240,7 @@ msgstr ""
 #: ../lib/layouts/siamltex.layout:38 ../lib/layouts/spie.layout:23
 #: ../lib/layouts/stdsections.inc:63 ../lib/layouts/svjour.inc:41
 msgid "Section"
-msgstr ""
+msgstr "Abschnitt"
 
 #: ../lib/layouts/IEEEtran.layout:313 ../lib/layouts/aa.layout:46
 #: ../lib/layouts/aa.layout:249 ../lib/layouts/aapaper.layout:61
@@ -5332,7 +5255,7 @@ msgstr ""
 #: ../lib/layouts/scrclass.inc:75 ../lib/layouts/siamltex.layout:56
 #: ../lib/layouts/stdsections.inc:88 ../lib/layouts/svjour.inc:51
 msgid "Subsection"
-msgstr ""
+msgstr "Unterabschnitt"
 
 #: ../lib/layouts/IEEEtran.layout:320 ../lib/layouts/aa.layout:48
 #: ../lib/layouts/aa.layout:261 ../lib/layouts/aapaper.layout:63
@@ -5346,23 +5269,23 @@ msgstr ""
 #: ../lib/layouts/siamltex.layout:62 ../lib/layouts/stdsections.inc:113
 #: ../lib/layouts/svjour.inc:60
 msgid "Subsubsection"
-msgstr ""
+msgstr "Unterunterabschn."
 
 #: ../lib/layouts/IEEEtran.layout:327 ../lib/layouts/egs.layout:686
 #: ../lib/layouts/siamltex.layout:78 ../lib/layouts/spie.layout:33
 #: ../lib/layouts/stdstarsections.inc:29
 msgid "Section*"
-msgstr ""
+msgstr "Abschnitt*"
 
 #: ../lib/layouts/IEEEtran.layout:338 ../lib/layouts/egs.layout:709
 #: ../lib/layouts/siamltex.layout:84 ../lib/layouts/stdstarsections.inc:38
 msgid "Subsection*"
-msgstr ""
+msgstr "Unterabschnitt*"
 
 #: ../lib/layouts/IEEEtran.layout:345 ../lib/layouts/siamltex.layout:90
 #: ../lib/layouts/stdstarsections.inc:47
 msgid "Subsubsection*"
-msgstr ""
+msgstr "Unterunterabschn.*"
 
 #: ../lib/layouts/IEEEtran.layout:358 ../lib/layouts/apa.layout:74
 #: ../lib/layouts/db_stdstruct.inc:11 ../lib/layouts/foils.layout:160
@@ -5474,7 +5397,7 @@ msgstr ""
 #: ../lib/layouts/stdtitle.inc:11 ../lib/layouts/svjour.inc:138
 #: ../lib/layouts/svprobth.layout:37
 msgid "Title"
-msgstr ""
+msgstr "Titel"
 
 #: ../lib/layouts/aa.layout:62 ../lib/layouts/aa.layout:101
 #: ../lib/layouts/aapaper.inc:8 ../lib/layouts/aapaper.layout:67
@@ -5571,7 +5494,7 @@ msgstr ""
 #: ../lib/layouts/scrclass.inc:89 ../lib/layouts/siamltex.layout:68
 #: ../lib/layouts/stdsections.inc:138 ../lib/layouts/svjour.inc:70
 msgid "Paragraph"
-msgstr ""
+msgstr "Paragraph"
 
 #: ../lib/layouts/aastex.layout:88 ../lib/layouts/aastex.layout:238
 #: ../lib/layouts/apa.layout:148 ../lib/layouts/latex8.layout:78
@@ -5908,7 +5831,7 @@ msgstr ""
 
 #: ../lib/layouts/cv.layout:57
 msgid "SubSection"
-msgstr ""
+msgstr "Unterabschnitt"
 
 #: ../lib/layouts/cv.layout:62
 msgid "Topic"
@@ -5954,7 +5877,7 @@ msgstr ""
 #: ../lib/layouts/db_stdsections.inc:18 ../lib/layouts/llncs.layout:38
 #: ../lib/layouts/scrclass.inc:59 ../lib/layouts/stdsections.inc:37
 msgid "Chapter"
-msgstr ""
+msgstr "Kapitel"
 
 #: ../lib/layouts/db_stdsections.inc:53 ../lib/layouts/egs.layout:103
 #: ../lib/layouts/kluwer.layout:87 ../lib/layouts/linuxdoc.layout:168
@@ -5962,7 +5885,7 @@ msgstr ""
 #: ../lib/layouts/scrclass.inc:96 ../lib/layouts/stdsections.inc:163
 #: ../lib/layouts/svjour.inc:80
 msgid "Subparagraph"
-msgstr ""
+msgstr "Unterparagraph"
 
 #: ../lib/layouts/db_stdtitle.inc:25
 msgid "Authorgroup"
@@ -6511,7 +6434,7 @@ msgstr ""
 
 #: ../lib/layouts/scrlettr.layout:247
 msgid "Customer"
-msgstr ""
+msgstr "Kunde"
 
 #: ../lib/layouts/scrlettr.layout:254
 msgid "Invoice"
@@ -6555,11 +6478,11 @@ msgstr ""
 
 #: ../lib/layouts/siamltex.layout:96 ../lib/layouts/stdstarsections.inc:56
 msgid "Paragraph*"
-msgstr ""
+msgstr "Paragraph*"
 
 #: ../lib/layouts/siamltex.layout:165
 msgid "AMS"
-msgstr ""
+msgstr "AMS"
 
 #: ../lib/layouts/slides.layout:131
 msgid "Overlay"
@@ -6582,9 +6505,8 @@ msgid "Authorinfo"
 msgstr ""
 
 #: ../lib/layouts/stdfloats.inc:9
-#, fuzzy
 msgid "Table"
-msgstr "Lange Tabelle"
+msgstr "Tabelle"
 
 #: ../lib/layouts/stdfloats.inc:20
 msgid "Figure"
@@ -6841,7 +6763,7 @@ msgstr "Neu von Vorlage...|V"
 
 #: ../lib/ui/default.ui:24 src/MenuBackend.C:656
 msgid "Open...|O"
-msgstr "Öffnen...|Ö"
+msgstr "Öffnen...|f"
 
 #: ../lib/ui/default.ui:26
 msgid "Close|C"
@@ -6865,7 +6787,7 @@ msgstr "Versionskontrolle|k"
 
 #: ../lib/ui/default.ui:32 src/MenuBackend.C:657
 msgid "Import|I"
-msgstr "Importieren|m"
+msgstr "Importieren|I"
 
 #: ../lib/ui/default.ui:33
 msgid "Export|E"
@@ -6877,7 +6799,7 @@ msgstr "Drucken...|D"
 
 #: ../lib/ui/default.ui:35
 msgid "Fax...|F"
-msgstr "Faxen...|F"
+msgstr "Faxen...|x"
 
 #: ../lib/ui/default.ui:37
 msgid "Exit|x"
@@ -6889,11 +6811,11 @@ msgstr "Registrieren|R"
 
 #: ../lib/ui/default.ui:44
 msgid "Check In Changes...|I"
-msgstr "Änderungen ablegen...|a"
+msgstr "Änderungen einchecken...|n"
 
 #: ../lib/ui/default.ui:45
 msgid "Check Out for Edit|O"
-msgstr "Arbeitskopie erzeugen|A"
+msgstr "Dokument auschecken|a"
 
 #: ../lib/ui/default.ui:46
 msgid "Revert to Last Version|L"
@@ -6901,7 +6823,7 @@ msgstr "Letzte Version wiederherstellen|L"
 
 #: ../lib/ui/default.ui:47
 msgid "Undo Last Check In|U"
-msgstr "Letzte Version wiederrufen|w"
+msgstr "Letztes Einchecken widerrufen|w"
 
 #: ../lib/ui/default.ui:48
 msgid "Show History|H"
@@ -6909,7 +6831,7 @@ msgstr "Entwicklung anzeigen|E"
 
 #: ../lib/ui/default.ui:57
 msgid "Custom...|C"
-msgstr "Selbstdefiniert...|S"
+msgstr "Benutzerdefiniert...|B"
 
 #: ../lib/ui/default.ui:65
 msgid "Undo|U"
@@ -6933,7 +6855,7 @@ msgstr "Einfügen|E"
 
 #: ../lib/ui/default.ui:71
 msgid "Paste External Selection|x"
-msgstr "Auswahl einfügen|u"
+msgstr "Externe Auswahl einfügen|u"
 
 #: ../lib/ui/default.ui:73
 msgid "Find & Replace...|F"
@@ -6945,7 +6867,7 @@ msgstr "Tabellen|T"
 
 #: ../lib/ui/default.ui:75
 msgid "Math|M"
-msgstr "Mathematisches|M"
+msgstr "Mathe|M"
 
 #: ../lib/ui/default.ui:77
 msgid "Read Only"
@@ -7229,7 +7151,7 @@ msgstr "Vert. Ausr. Mitte"
 
 #: ../lib/ui/default.ui:188
 msgid "V.Align Bottom|B"
-msgstr "Vert. Ausr. unten"
+msgstr "Vert. Ausr. unten|u"
 
 #: ../lib/ui/default.ui:194
 msgid "Math|h"
@@ -7249,7 +7171,7 @@ msgstr "Querverweis...|Q"
 
 #: ../lib/ui/default.ui:199
 msgid "Label...|L"
-msgstr "Marke...|M"
+msgstr "Marke...|a"
 
 #: ../lib/ui/default.ui:200
 msgid "Footnote|F"
@@ -7260,14 +7182,12 @@ msgid "Marginal Note|M"
 msgstr "Randnotiz|R"
 
 #: ../lib/ui/default.ui:202
-#, fuzzy
 msgid "Short Title"
-msgstr "Zeige Datei"
+msgstr "Kurztitel"
 
 #: ../lib/ui/default.ui:203
-#, fuzzy
 msgid "Index Entry|I"
-msgstr "Index Eintrag...|x"
+msgstr "Index-Eintrag...|I"
 
 #: ../lib/ui/default.ui:204
 msgid "URL...|U"
@@ -7279,11 +7199,11 @@ msgstr "Notiz|N"
 
 #: ../lib/ui/default.ui:206
 msgid "Lists & TOC|O"
-msgstr "Listen und Inhalt|I"
+msgstr "Listen und Inhaltsverz.|L"
 
 #: ../lib/ui/default.ui:208
 msgid "TeX|T"
-msgstr "TeX|#T"
+msgstr "TeX|X"
 
 #: ../lib/ui/default.ui:209
 msgid "Minipage|p"
@@ -7295,19 +7215,19 @@ msgstr "Grafik...|G"
 
 #: ../lib/ui/default.ui:211
 msgid "Tabular Material...|b"
-msgstr "Tabellen...|b"
+msgstr "Tabellen...|T"
 
 #: ../lib/ui/default.ui:212
 msgid "Floats|a"
-msgstr "Floats|l"
+msgstr "Floats|o"
 
 #: ../lib/ui/default.ui:214
 msgid "Include File...|d"
-msgstr "Include Datei...|D"
+msgstr "Datei einbinden...|b"
 
 #: ../lib/ui/default.ui:215
 msgid "Insert File|e"
-msgstr "Insert Datei|e"
+msgstr "Datei einfügen|D"
 
 #: ../lib/ui/default.ui:216
 msgid "External Material...|x"
@@ -7404,19 +7324,19 @@ msgstr "Cases-Umgebung|C"
 
 #: ../lib/ui/default.ui:248
 msgid "Font Change|f"
-msgstr "Zeichensatz-Änderung|#Z"
+msgstr "Schriftänderung|S"
 
 #: ../lib/ui/default.ui:249
 msgid "Math Panel|l"
-msgstr "Mathematische Symbole|M"
+msgstr "Mathe-Kontrollfläche|M"
 
 #: ../lib/ui/default.ui:253
 msgid "Math normal font"
-msgstr "Mathe normaler Font"
+msgstr "Mathe normale Schrift"
 
 #: ../lib/ui/default.ui:255
 msgid "Math calligraphic family"
-msgstr "Mathe Familie Calligraphisch"
+msgstr "Mathe Familie Kalligraphisch"
 
 #: ../lib/ui/default.ui:256
 msgid "Math fraktur family"
@@ -7436,7 +7356,7 @@ msgstr "Mathe Serie Fett"
 
 #: ../lib/ui/default.ui:262
 msgid "Text normal font"
-msgstr "Text normaler Font"
+msgstr "Text normale Schrift"
 
 #: ../lib/ui/default.ui:264
 msgid "Text roman family"
@@ -7512,7 +7432,7 @@ msgstr "Absatz|A"
 
 #: ../lib/ui/default.ui:301
 msgid "Document|D"
-msgstr "Dokument|k"
+msgstr "Dokument|D"
 
 #: ../lib/ui/default.ui:304
 msgid "Emphasize Style|E"
@@ -7563,9 +7483,8 @@ msgid "Table of Contents|T"
 msgstr "Inhaltsverzeichnis|I"
 
 #: ../lib/ui/default.ui:326
-#, fuzzy
 msgid "Child Processes|C"
-msgstr "Gestartete Prozesse|G"
+msgstr "Unterprozesse|U"
 
 #: ../lib/ui/default.ui:327
 msgid "TeX Information|X"
@@ -7649,7 +7568,7 @@ msgstr "LaTeX-Konfiguration|L"
 
 #: ../lib/ui/default.ui:380
 msgid "About LyX|X"
-msgstr "Über LyX|L"
+msgstr "Über LyX|X"
 
 #: src/buffer.C:356
 msgid "Couldn't set the layout for "
@@ -7713,7 +7632,7 @@ msgstr "Kann Textklasse %1$s nicht laden"
 
 #: src/buffer.C:644 src/buffer.C:649
 msgid "-- substituting default"
-msgstr "-- verwende stattdessen Standard"
+msgstr ""
 
 #: src/buffer.C:647
 #, fuzzy
@@ -7937,11 +7856,11 @@ msgstr "Fehler! Unbekannte Sprache"
 #: src/bufferview_funcs.C:163
 #, c-format
 msgid "Font: %1$s"
-msgstr "Zeichensatz: %1$s"
+msgstr "Schrift: %1$s"
 
 #: src/bufferview_funcs.C:165
 msgid "Font: "
-msgstr "Zeichensatz: "
+msgstr "Schrift: "
 
 #: src/bufferview_funcs.C:172
 #, c-format
@@ -8228,7 +8147,7 @@ msgstr "Verarbeitung von Tastatureingaben"
 
 #: src/debug.C:42
 msgid "GUI handling"
-msgstr "GUI Aufbau"
+msgstr "GUI-Aufbau"
 
 #: src/debug.C:43
 msgid "Lyxlex grammer parser"
@@ -8240,7 +8159,7 @@ msgstr "Lesen der Konfigurationsdateien"
 
 #: src/debug.C:45
 msgid "Custom keyboard definition"
-msgstr "Eigene Tastaturdefinitionen"
+msgstr "Eigene Tastaturdefinition"
 
 #: src/debug.C:46
 msgid "LaTeX generation/execution"
@@ -8248,11 +8167,11 @@ msgstr "LaTeX-Erzeugung/Ausführung"
 
 #: src/debug.C:47
 msgid "Math editor"
-msgstr "Mathematik Editor"
+msgstr "Mathe-Editor"
 
 #: src/debug.C:48
 msgid "Font handling"
-msgstr "Zeichensätze"
+msgstr "Schrift-Handhabung"
 
 #: src/debug.C:49
 msgid "Textclass files reading"
@@ -9142,7 +9061,7 @@ msgstr "Andere Wurzel\t\\root"
 
 #: src/frontends/qt2/QMathDialog.C:140
 msgid "LyX: Set math style"
-msgstr ""
+msgstr "LyX: Mathe-Stil setzen"
 
 #: src/frontends/qt2/QMathDialog.C:142
 msgid "Display style\t\\displaystyle"
@@ -9162,7 +9081,7 @@ msgstr ""
 
 #: src/frontends/qt2/QMathDialog.C:150
 msgid "LyX: Set math font"
-msgstr ""
+msgstr "LyX: Mathe-Schrift festlegen"
 
 #: src/frontends/qt2/QMathDialog.C:152
 msgid "Roman\t\\mathrm"
@@ -9170,7 +9089,7 @@ msgstr "Roman\t\\mathrm"
 
 #: src/frontends/qt2/QMathDialog.C:153
 msgid "Bold\t\\mathbf"
-msgstr ""
+msgstr "Fett\t\\mathbf"
 
 #: src/frontends/qt2/QMathDialog.C:154
 msgid "San serif\t\\mathsf"
@@ -9178,7 +9097,7 @@ msgstr "Serifenfrei\t\\mathsf"
 
 #: src/frontends/qt2/QMathDialog.C:155
 msgid "Italic\t\\mathit"
-msgstr ""
+msgstr "Kursiv\t\\mathit"
 
 #: src/frontends/qt2/QMathDialog.C:156
 msgid "Typewriter\t\\mathtt"
@@ -9194,7 +9113,7 @@ msgstr ""
 
 #: src/frontends/qt2/QMathDialog.C:159
 msgid "Calligraphic\t\\mathcal"
-msgstr ""
+msgstr "Kalligraphisch\t\\mathcal"
 
 #: src/frontends/qt2/QMathDialog.C:160
 msgid "Normal text mode\t\\textrm"
@@ -9249,9 +9168,8 @@ msgid "User interface"
 msgstr "Menü Layout|#M"
 
 #: src/frontends/qt2/QPrefsDialog.C:131
-#, fuzzy
 msgid "Screen fonts"
-msgstr "Bildschirmdarstellung"
+msgstr "Bildschirmschriften"
 
 #. output
 #: src/frontends/qt2/QPrefsDialog.C:142
@@ -9566,7 +9484,7 @@ msgstr "*.bst| BibTeX-Stile (*.bst)"
 
 #: src/frontends/xforms/FormCharacter.C:42
 msgid "Character Layout"
-msgstr "Zeichensatzattribute"
+msgstr "Zeichenlayout"
 
 #. set up the tooltip mechanism
 #: src/frontends/xforms/FormCitation.C:166
@@ -9664,7 +9582,7 @@ msgstr "Layout Dokument"
 
 #: src/frontends/xforms/FormDocument.C:141
 msgid " Single | OneHalf | Double | Custom "
-msgstr " Einfach | Anderthalb | Doppelt | Benutzer "
+msgstr " Einfach | Anderthalb | Doppelt | Benutzerdefiniert "
 
 #: src/frontends/xforms/FormDocument.C:161
 msgid " Smallskip | Medskip | Bigskip | Length "
@@ -9675,7 +9593,7 @@ msgid ""
 " Default | Custom | US letter | US legal | US executive | A3 | A4 | A5 | B3 "
 "| B4 | B5 "
 msgstr ""
-" Standard | Benutzer | US letter | US legal | US executive | A3 | A4 | A5 | "
+" Standard | Benutzerdefiniert | US letter | US legal | US executive | A3 | A4 | A5 | "
 "B3 | B4 | B5 "
 
 #: src/frontends/xforms/FormDocument.C:228
@@ -9750,14 +9668,12 @@ msgid "Alternative suggestions for placement of float."
 msgstr ""
 
 #: src/frontends/xforms/FormFloat.C:78
-#, fuzzy
 msgid "Try top of page."
-msgstr "Anfang der Seite"
+msgstr "Versuche Anfang der Seite."
 
 #: src/frontends/xforms/FormFloat.C:80
-#, fuzzy
 msgid "Try bottom of page."
-msgstr "Ende der Seite"
+msgstr "Versuche Ende der Seite."
 
 #: src/frontends/xforms/FormFloat.C:82
 msgid "Put float on a separate page of floats."
@@ -9773,7 +9689,7 @@ msgstr ""
 
 #: src/frontends/xforms/FormFloat.C:88
 msgid "Span float over the columns."
-msgstr ""
+msgstr "Float über die Spalten spannen."
 
 #: src/frontends/xforms/FormForks.C:36
 msgid "Child processes"
@@ -9782,11 +9698,11 @@ msgstr "Unterprozesse"
 #. Set up the tooltip mechanism
 #: src/frontends/xforms/FormForks.C:57
 msgid "All currently running child processes forked by LyX."
-msgstr "Alle derzeit laufenden von LyX gestarteten Prozesse."
+msgstr "Alle derzeit laufenden, von LyX gestarteten Unterprozesse."
 
 #: src/frontends/xforms/FormForks.C:62
 msgid "A list of all child processes to kill."
-msgstr "Eine Liste aller zu beendenden Prozesse."
+msgstr "Eine Liste aller zu beendenden Unterprozesse."
 
 #: src/frontends/xforms/FormForks.C:67
 msgid "Add all processes to the list of processes to kill."
@@ -9796,7 +9712,7 @@ msgstr "Alle Prozesse zur Liste der zu beendenden Prozesse hinzufügen."
 msgid ""
 "Add the currently selected child process to the list of processes to kill."
 msgstr ""
-"Den ausgewählten Prozess zur Liste der zu beendenden Prozesse hinzufügen."
+"Den ausgewählten Unterprozess zur Liste der zu beendenden Prozesse hinzufügen."
 
 #: src/frontends/xforms/FormForks.C:73
 msgid "Remove the currently selected item from the list of processes to kill."
@@ -9916,7 +9832,7 @@ msgstr ""
 
 #: src/frontends/xforms/FormGraphics.C:255
 msgid "Enables use of subfigure with its own caption."
-msgstr "Definiert eine Teilabbildung mit eigener Überschrift."
+msgstr "Ermöglicht eine Teilabbildung mit eigener Überschrift."
 
 #: src/frontends/xforms/FormGraphics.C:257
 msgid "Insert the optional subfigure caption."
@@ -9964,23 +9880,23 @@ msgstr "Kein Build Protokoll vorhanden"
 
 #: src/frontends/xforms/FormMathsDelim.C:57
 msgid "Maths Delimiters"
-msgstr "Mathe-Trennzeichen"
+msgstr "Mathe: Trennzeichen"
 
 #: src/frontends/xforms/FormMathsMatrix.C:62
 msgid "Maths Matrix"
-msgstr "Matrizen"
+msgstr "Mathe: Matrizen"
 
 #: src/frontends/xforms/FormMathsMatrix.C:70
 msgid "Top | Center | Bottom"
-msgstr " Oben | Mitte | Unten"
+msgstr "Oben | Mitte | Unten"
 
 #: src/frontends/xforms/FormMathsPanel.C:68
 msgid "Maths Panel"
-msgstr "Mathematische Symbole"
+msgstr "Mathe-Kontrollfläche"
 
 #: src/frontends/xforms/FormMathsPanel.C:132
 msgid "Maths Decorations & Accents"
-msgstr "Dekoration"
+msgstr "Mathe: Dekorationen und Akzente"
 
 #: src/frontends/xforms/FormMathsPanel.C:144
 msgid "Binary Ops"
@@ -10016,11 +9932,11 @@ msgstr "AMS: Operatoren"
 
 #: src/frontends/xforms/FormMathsSpace.C:32
 msgid "Maths Spacing"
-msgstr "Abstände"
+msgstr "Mathe: Abstände"
 
 #: src/frontends/xforms/FormMathsStyle.C:46
 msgid "Maths Styles & Fonts"
-msgstr "Stile und Schriften"
+msgstr "Mathe: Stile und Schriften"
 
 #: src/frontends/xforms/FormMinipage.C:30
 msgid "Minipage Options"
@@ -10036,7 +9952,7 @@ msgstr "Kein|Standard|Klein|Mittel|Groß|VFill|Länge"
 
 #: src/frontends/xforms/FormParagraph.C:136
 msgid "Default|Single|OneHalf|Double|Custom"
-msgstr "Standard|Einfach|Anderthalb|Doppelt|Andere"
+msgstr "Standard|Einfach|Anderthalb|Doppelt|Benutzerdefiniert"
 
 #. set up the tooltips
 #: src/frontends/xforms/FormParagraph.C:151
@@ -10091,7 +10007,7 @@ msgstr "Aussehen"
 
 #: src/frontends/xforms/FormPreferences.C:189
 msgid "Lang Opts"
-msgstr "Sprachen"
+msgstr "Sprach-Optionen"
 
 #: src/frontends/xforms/FormPreferences.C:192
 msgid "Conversion"
@@ -10126,19 +10042,19 @@ msgstr "Wechseln zwischen RGB und HSV Darstellung."
 
 #: src/frontends/xforms/FormPreferences.C:710
 msgid "GUI background"
-msgstr "GUI Hintergrund"
+msgstr "GUI (Hintergrund)"
 
 #: src/frontends/xforms/FormPreferences.C:716
 msgid "GUI text"
-msgstr "GUI Text"
+msgstr "GUI (Text)"
 
 #: src/frontends/xforms/FormPreferences.C:722
 msgid "GUI selection"
-msgstr "GUI Auswahl"
+msgstr "GUI (Auswahl)"
 
 #: src/frontends/xforms/FormPreferences.C:728
 msgid "GUI pointer"
-msgstr "GUI Cursor"
+msgstr "GUI (Zeiger)"
 
 #: src/frontends/xforms/FormPreferences.C:963
 msgid "All the currently defined converters known to LyX."
@@ -10263,7 +10179,7 @@ msgstr " Standard | US letter | US legal | US executive | A3 | A4 | A5 | B5 "
 
 #: src/frontends/xforms/FormPreferences.C:2190
 msgid "Default path"
-msgstr "Standard Pfad"
+msgstr "Standard-Pfad"
 
 #: src/frontends/xforms/FormPreferences.C:2194
 msgid "Template path"
@@ -10287,14 +10203,14 @@ msgstr "LyX-Server-Pipes"
 
 #: src/frontends/xforms/FormPreferences.C:2667
 msgid "Fonts must be positive!"
-msgstr "Zeichensätze müssen positiv sein!"
+msgstr "Schriften müssen positiv sein!"
 
 #: src/frontends/xforms/FormPreferences.C:2690
 msgid ""
 "Fonts must be input in the order tiny > script> footnote > small > normal > "
 "large > larger > largest > huge > huger."
 msgstr ""
-"Zeichensätze müssen in der Reihenfolge winzig > skript > Fußnote > klein > "
+"Schriften müssen in der Reihenfolge winzig > skript > Fußnote > klein > "
 "normal > groß > groß 2 > groß 3 > riesig > riesig 2 eingegeben werden."
 
 #: src/frontends/xforms/FormPreferences.C:2819
@@ -10490,14 +10406,12 @@ msgid "Shows word count and progress on spell check."
 msgstr ""
 
 #: src/frontends/xforms/FormSpellchecker.C:140
-#, fuzzy
 msgid "Stop|#S"
-msgstr "bis "
+msgstr "Anhalten|#A"
 
 #: src/frontends/xforms/FormSpellchecker.C:147
-#, fuzzy
 msgid "Stop the spellingchecker."
-msgstr "Rechtschreibprüfung starten"
+msgstr "Rechtschreibprüfung anhalten."
 
 #: src/frontends/xforms/FormTabular.C:43
 #, fuzzy
@@ -10750,7 +10664,7 @@ msgstr "Dieser Vorgang ist nicht möglich!"
 #: src/insets/insetert.C:249
 msgid "Not permitted to change font-types inside ERT-insets!"
 msgstr ""
-"Innerhalb einer ERT-Einfügung dürfen Fonttypen nicht verändert werden!"
+"Innerhalb einer ERT-Einfügung dürfen Schrifttypen nicht verändert werden!"
 
 #: src/insets/insetert.C:250 src/insets/insettabular.C:2092
 #: src/insets/insettext.C:1423
@@ -10844,7 +10758,7 @@ msgstr "Die Datei "
 
 #: src/insets/insetgraphics.C:642
 msgid "into tempdir"
-msgstr "kann nicht in das Temporäre Verzeichnis kopiert werden."
+msgstr "kann nicht in das temporäre Verzeichnis kopiert werden."
 
 #: src/insets/insetgraphics.C:679 src/insets/insetgraphics.C:683
 msgid "Cannot convert Image (not existing file?)"
@@ -10918,9 +10832,8 @@ msgid "Opened Note Inset"
 msgstr "Notiz-Einfügung geöffnet"
 
 #: src/insets/insetoptarg.C:39 src/insets/insetoptarg.C:49
-#, fuzzy
 msgid "opt"
-msgstr "Oben"
+msgstr "Opt"
 
 #: src/insets/insetoptarg.C:61
 msgid "Opened Optional Argument Inset"
@@ -11110,7 +11023,7 @@ msgstr "Auswahl"
 
 #: src/LColor.C:62
 msgid "latex text"
-msgstr "Latex Text"
+msgstr "LaTeX Text"
 
 #: src/LColor.C:63
 msgid "previewed snippet"
@@ -11146,11 +11059,11 @@ msgstr "Sonderzeichen"
 
 #: src/LColor.C:72
 msgid "math"
-msgstr "Mathematik"
+msgstr "Mathe"
 
 #: src/LColor.C:73
 msgid "math background"
-msgstr "Mathematik (Hintergrund)"
+msgstr "Mathe (Hintergrund)"
 
 #: src/LColor.C:74
 msgid "graphics background"
@@ -11158,19 +11071,19 @@ msgstr "Grafik (Hintergrund)"
 
 #: src/LColor.C:75
 msgid "Math macro background"
-msgstr "Mathematik-Makro (Hintergrund)"
+msgstr "Mathe-Makro (Hintergrund)"
 
 #: src/LColor.C:76
 msgid "math frame"
-msgstr "Mathematik (Rahmen)"
+msgstr "Mathe (Rahmen)"
 
 #: src/LColor.C:77
 msgid "math cursor"
-msgstr "Mathematik (Cursor)"
+msgstr "Mathe (Cursor)"
 
 #: src/LColor.C:78
 msgid "math line"
-msgstr "Mathematik Strich"
+msgstr "Mathe (Strich)"
 
 #: src/LColor.C:79
 msgid "caption frame"
@@ -11202,7 +11115,7 @@ msgstr "Zeilenende-Markierung"
 
 #: src/LColor.C:86
 msgid "appendix line"
-msgstr "Strich Anhang"
+msgstr "Anhang (Strich)"
 
 #: src/LColor.C:87
 msgid "added space markers"
@@ -11214,7 +11127,7 @@ msgstr "Obere/untere Linie"
 
 #: src/LColor.C:89
 msgid "tabular line"
-msgstr "Strich (Tabellen)"
+msgstr "Tabelle (Strich)"
 
 #: src/LColor.C:91
 msgid "tabular on/off line"
@@ -11230,23 +11143,23 @@ msgstr "Seitenumbruch"
 
 #: src/LColor.C:95
 msgid "top of button"
-msgstr "Button (oben)"
+msgstr "Knopf (oben)"
 
 #: src/LColor.C:96
 msgid "bottom of button"
-msgstr "Button (unten)"
+msgstr "Knopf (unten)"
 
 #: src/LColor.C:97
 msgid "left of button"
-msgstr "Button (links)"
+msgstr "Knopf (links)"
 
 #: src/LColor.C:98
 msgid "right of button"
-msgstr "Button (rechts)"
+msgstr "Knopf (rechts)"
 
 #: src/LColor.C:99
 msgid "button background"
-msgstr "Button (Hintergrund)"
+msgstr "Knopf (Hintergrund)"
 
 #: src/LColor.C:100
 msgid "inherit"
@@ -11520,7 +11433,7 @@ msgstr "Stil Code an/aus"
 
 #: src/LyXAction.C:207
 msgid "Default font style"
-msgstr "Standardschriftart"
+msgstr "Standard-Schriftstil"
 
 #: src/LyXAction.C:209
 msgid "Toggle emphasize"
@@ -11536,31 +11449,31 @@ msgstr "Kapitälchen an/aus"
 
 #: src/LyXAction.C:213
 msgid "Toggle roman font style"
-msgstr "Schriftart Roman an/aus"
+msgstr "Schriftstil Roman an/aus"
 
 #: src/LyXAction.C:215
 msgid "Toggle sans font style"
-msgstr "Schriftart Serifenfrei an/aus"
+msgstr "Schriftstil Serifenfrei an/aus"
 
 #: src/LyXAction.C:216
 msgid "Toggle fraktur font style"
-msgstr "Schriftart Fraktur an/aus"
+msgstr "Schriftstil Fraktur an/aus"
 
 #: src/LyXAction.C:217
 msgid "Toggle italic font style"
-msgstr "Schriftart Italic an/aus"
+msgstr "Schriftstil Kursiv an/aus"
 
 #: src/LyXAction.C:218
 msgid "Set font size"
-msgstr "Zeichengröße festlegen"
+msgstr "Schriftgröße festlegen"
 
 #: src/LyXAction.C:219
 msgid "Show font state"
-msgstr "Zeichensatzstatus anzeigen"
+msgstr "Schrift-Status anzeigen"
 
 #: src/LyXAction.C:222
 msgid "Toggle font underline"
-msgstr "Unterstreichen an/aus"
+msgstr "Schrift Unterstreichen an/aus"
 
 #: src/LyXAction.C:224
 msgid "Insert Footnote"
@@ -11664,11 +11577,11 @@ msgstr "Randnotiz einfügen"
 
 #: src/LyXAction.C:285
 msgid "Math Greek"
-msgstr "Griechische Zeichen"
+msgstr "Mathe Griechische Zeichen"
 
 #: src/LyXAction.C:288
 msgid "Insert math symbol"
-msgstr "Mathematik-Symbol einfügen"
+msgstr "Mathe-Symbol einfügen"
 
 #: src/LyXAction.C:289
 #, fuzzy
@@ -11682,7 +11595,7 @@ msgstr "Superscript|S"
 
 #: src/LyXAction.C:297
 msgid "Math mode"
-msgstr "Formeleditor"
+msgstr "Mathe-Modus"
 
 #: src/LyXAction.C:310
 msgid "toggle inset"
@@ -12086,7 +11999,7 @@ msgstr "Öffne Hilfe-Datei "
 
 #: src/lyxfunc.C:1347
 msgid "This is only allowed in math mode!"
-msgstr "Dies ist nur im Mathematik-Modus möglich!"
+msgstr "Dies ist nur im Mathe-Modus möglich!"
 
 #: src/lyxfunc.C:1389
 msgid "Opening child document "
@@ -12242,11 +12155,11 @@ msgstr "in dem sich die Datei `chkconfig.ltx' befindet."
 #: src/lyx_main.C:365
 #, c-format
 msgid "Using built-in default %1$s but expect problems."
-msgstr "Benutze Standardwert %1$s, aber rechnen Sie mit Problemen."
+msgstr "Benutze den festen Standardwert %1$s, aber rechnen Sie mit Problemen."
 
 #: src/lyx_main.C:370
 msgid "Using built-in default "
-msgstr "Benutze Standardwert "
+msgstr "Benutze den festen Standardwert "
 
 #: src/lyx_main.C:371
 msgid " but expect problems."
@@ -12283,7 +12196,7 @@ msgstr "Starte ohne persönliches LyX-Verzeichnis."
 #: src/lyx_main.C:617
 #, c-format
 msgid "LyX: Creating directory %1$s and running configure..."
-msgstr "LyX: Erzeuge Verzeichnis %1$s und führe Neukonfiguration durch..."
+msgstr "LyX: Erzeuge Verzeichnis %1$s und konfiguriere neu..."
 
 #: src/lyx_main.C:622
 msgid "LyX: Creating directory "
@@ -12291,7 +12204,7 @@ msgstr "LyX: Erzeuge Verzeichnis "
 
 #: src/lyx_main.C:623
 msgid " and running configure..."
-msgstr " und führe Neukonfiguration durch..."
+msgstr " und konfiguriere neu..."
 
 #: src/lyx_main.C:631
 #, c-format
@@ -12317,7 +12230,7 @@ msgstr "Fehler beim Lesen von %1$s."
 
 #: src/lyx_main.C:661 src/lyx_main.C:665
 msgid "Using built-in defaults."
-msgstr "Benutze Standardwerte."
+msgstr "Benutze feste Standardwerte."
 
 #: src/lyx_main.C:664
 msgid "Error while reading "
@@ -12410,7 +12323,7 @@ msgid ""
 "The font encoding used for the LaTeX2e fontenc package. T1 is highly "
 "recommended for non-English languages."
 msgstr ""
-"Die Zeichensatzkodierung für das LaTeX2e-Paket fontenc.  Für nicht englische "
+"Die verwendete Schriftkodierung für das LaTeX2e-Paket fontenc.  Für nicht englische "
 "Sprachen wird unbedingt T1 empfohlen."
 
 #: src/lyxrc.C:1836
@@ -12523,34 +12436,34 @@ msgid ""
 "The zoom percentage for screen fonts. A setting of 100% will make the fonts "
 "roughly the same size as on paper."
 msgstr ""
-"Der prozentuale Vergrößerungsfaktor für die Bildschirmzeichensätze.  Ein "
+"Der prozentuale Vergrößerungsfaktor für die Bildschirmschriften.  Ein "
 "Wert von 100% lässt die Zeichen etwa genauso groß erscheinen wie auf Papier."
 
 #: src/lyxrc.C:1917
 msgid "The font sizes used for calculating the scaling of the screen fonts."
 msgstr ""
-"Die Schriftgrößen, die für die Skalierung der Bildschirmzeichensätze "
+"Die Schriftgrößen, die für die Skalierung der Bildschirmschriften "
 "verwendet werden."
 
 #: src/lyxrc.C:1923
 msgid "The screen fonts used to display the text while editing."
-msgstr "Die Zeichensätze, die für die Anzeige beim Editieren verwendet werden."
+msgstr "Die Bildschirmschriften, die für die Anzeige beim Editieren verwendet werden."
 
 #: src/lyxrc.C:1927
 msgid "The bold font in the dialogs."
-msgstr "Fettschrift in den Dialogfeldern."
+msgstr "Die Fettschrift in den Dialogfeldern."
 
 #: src/lyxrc.C:1931
 msgid "The normal font in the dialogs."
-msgstr "Normalschrift in den Dialogfeldern."
+msgstr "Die Normalschrift in den Dialogfeldern."
 
 #: src/lyxrc.C:1935
 msgid "The encoding for the screen fonts."
-msgstr "Die Kodierung der Bildschirmzeichensätze."
+msgstr "Die Kodierung der Bildschirmschriften."
 
 #: src/lyxrc.C:1939
 msgid "The encoding for the menu/popups fonts."
-msgstr "Die Kodierung für die Zeichensätze von Menüs und Dialogen."
+msgstr "Die Kodierung der Schriften in den Menüs und Dialogen."
 
 #: src/lyxrc.C:1946
 msgid ""
@@ -12564,7 +12477,7 @@ msgid ""
 "The default path for your documents.  An empty value selects the directory "
 "LyX was started from."
 msgstr ""
-"Der Standard Pfad für Ihre Dokumente.  Ein leerer Eintrag selektiert das "
+"Der Standard-Pfad für Ihre Dokumente.  Ein leerer Eintrag selektiert das "
 "Verzeichnis, aus dem LyX gestartet wurde."
 
 #: src/lyxrc.C:1954
@@ -12689,7 +12602,7 @@ msgstr ""
 
 #: src/lyxrc.C:2016
 msgid "Specify the default paper size."
-msgstr "Geben Sie hier die Standard Seitengröße an."
+msgstr "Geben Sie die Standard-Papiergröße an."
 
 #: src/lyxrc.C:2023
 msgid ""
@@ -12740,11 +12653,11 @@ msgid ""
 "this option may make some fonts look blocky in LyX. Deselecting this option "
 "makes LyX use the nearest bitmap font size available, instead of scaling."
 msgstr ""
-"Dies erlaubt, Bitmap Zeichensätze zu skalieren.  Wenn Sie derartige "
-"Zeichensätze verwenden kann diese Option dazu führen, daß einige "
-"Zeichensätze in LyX blockig erscheinen.  Wenn Sie diese Option abwählen "
-"verwendet LyX die nächste passende Größe anstatt den Zeichensatz "
-"umzuskalieren."
+"Erlaube, Bitmap-Schriften zu skalieren.  Wenn Sie derartige "
+"Schriften verwenden, kann diese Option dazu führen, daß einige "
+"Schriften in LyX blockig erscheinen.  Wenn Sie diese Option abwählen, "
+"verwendet LyX die nächstpassende Größe anstatt die Schrift "
+"zu skalieren."
 
 #: src/lyxrc.C:2054
 msgid ""
@@ -12992,11 +12905,11 @@ msgstr "Möchten Sie trotzdem weitermachen?"
 
 #: src/mathed/formulabase.C:173 src/mathed/formulabase.C:1010
 msgid "Math editor mode"
-msgstr "Mathematik Modus"
+msgstr "Mathe-Editor-Modus"
 
 #: src/mathed/formulabase.C:727
 msgid "Invalid action in math mode!"
-msgstr "Dieser Vorgang ist im Formelmodus nicht möglich!"
+msgstr "Diese Aktion ist im Mathe-Modus nicht möglich!"
 
 #: src/mathed/formulamacro.C:132
 #, c-format
@@ -13095,7 +13008,7 @@ msgid ""
 "No font change defined. Use Character under the Layout menu to define font "
 "change."
 msgstr ""
-"Es wurde kein eigener Zeichensatz definiert. Benutzen Sie dafür das Menue "
+"Es wurde keine Schriftänderung definiert. Benutzen Sie dafür das Menue "
 "Layout->Zeichensätze"
 
 #: src/text2.C:1051
