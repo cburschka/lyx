@@ -1,3 +1,9 @@
+2001-11-30  José Matos <jamatos@fep.up.pt>
+
+	* buffer.C (makeDocBookFile): add a comment to point a hack.
+	(simpleDocBookOnePar): changed a PAR::META_INSET to isInset().
+	Fixed a double write of labels.
+	
 2001-11-28  André Pönitz <poenitz@gmx.net>
 
 	* all the files from the change on 2001/11/26:
@@ -166,6 +172,11 @@
 	guaranteed to fail with 8bit characters and signed chars.
 	Change return code to string::npos when there have been no error
 	(0 was a bad idea when error is at first character)
+
+2001-11-14  José Matos  <jamatos@fep.up.pt>
+
+	* buffer.h:
+	* buffer.C (simpleDocBookOnePar): removed unused argument.
 
 2001-11-13  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 

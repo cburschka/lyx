@@ -81,7 +81,7 @@ int InsetUrl::linuxdoc(Buffer const *, ostream & os) const
 }
 
 
-int InsetUrl::DocBook(Buffer const *, ostream & os) const
+int InsetUrl::docbook(Buffer const *, ostream & os) const
 {
 	os << "<ulink url=\"" << getContents() << "\">"
 	   << getOptions() << "</ulink>";

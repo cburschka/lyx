@@ -3126,6 +3126,8 @@ void Buffer::makeDocBookFile(string const & fname, bool nice, bool only_body)
 
 			// treat label as a special case for
 			// more WYSIWYM handling.
+			// This is a hack while paragraphs can't have
+			// attributes, like id in this case.
 			if (par->isInset(0)) {
 			        Inset * inset = par->getInset(0);
 				Inset::Code lyx_code = inset->lyxCode();
@@ -3306,12 +3308,14 @@ void Buffer::simpleDocBookOnePar(ostream & os,
 			}
 		}
       
-		char c = par->getChar(i);
 
-		if (c == Paragraph::META_INSET) {
+		if ( par->isInset(i) ) {
 			Inset * inset = par->getInset(i);
-			inset->docbook(this, os);
+			// don't print the inset in position 0 if desc_on == 3 (label)
+			if ( i || desc_on != 3)
+				inset->docbook(this, os);
 		} else {
+			char c = par->getChar(i);
 			string sgml_string;
 			par->sgmlConvertChar(c, sgml_string);
 

@@ -52,7 +52,7 @@ public:
 	///
 	int linuxdoc(Buffer const *, std::ostream &) const;
 	///
-	int DocBook(Buffer const *, std::ostream &) const;
+	int docbook(Buffer const *, std::ostream &) const;
 };
 
 #endif
