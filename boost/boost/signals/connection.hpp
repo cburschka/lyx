@@ -79,7 +79,7 @@ namespace boost {
       connection& operator=(const connection& other) ;
 
       // Swap connections
-      void swap(connection& other);
+      inline void swap(connection& other);
 
     public: // TBD: CHANGE THIS
       // Set whether this connection object is controlling or not
