@@ -22,6 +22,7 @@
 #include <fcntl.h>
 #include "lyx_gui.h"
 #include FORMS_H_LOCATION
+#include "support/filetools.h"
 #include "combox.h"
 #include "lyx.h"
 #include "form1.h"
@@ -42,12 +43,6 @@
 #include "bufferlist.h"
 #include "language.h"
 #include "ColorHandler.h"
-
-#ifdef TWO_COLOR_ICONS
-#include "banner_bw.xbm"
-#else
-#include "banner.xpm"
-#endif
 
 using std::endl;
 
@@ -302,39 +297,26 @@ void LyXGUI::create_forms()
 	//
 
 	// the title form
-	if (lyxrc.show_banner) {
+	string banner_file = LibFileSearch("images", "banner", "xpm");
+	if (lyxrc.show_banner && !banner_file.empty()) {
 		fd_form_title = create_form_form_title();
 		fl_set_form_dblbuffer(fd_form_title->form_title, 1); // use dbl buffer
 		fl_set_form_atclose(fd_form_title->form_title, CancelCloseBoxCB, 0);
 		fl_addto_form(fd_form_title->form_title);
-#ifdef TWO_COLOR_ICONS
-		FL_OBJECT *obj = fl_add_bitmapbutton(FL_NORMAL_BUTTON, 0, 0, 425, 290, "");
-		fl_set_bitmapbutton_data(obj, banner_bw_width,
-					 banner_bw_height, banner_bw_bits);
-		fl_set_object_color(obj, FL_WHITE, FL_BLACK);
-#else
 		FL_OBJECT *obj = fl_add_pixmapbutton(FL_NORMAL_BUTTON, 0, 0, 425, 290, "");
-		fl_set_pixmapbutton_data(obj, const_cast<char **>(banner));
+		fl_set_pixmapbutton_file(obj, banner_file.c_str());
 		
 		fl_set_pixmapbutton_focus_outline(obj, 3);
-#endif
 		fl_set_button_shortcut(obj, "^M ^[", 1);
 		fl_set_object_boxtype(obj, FL_NO_BOX);
 		fl_set_object_callback(obj, TimerCB, 0);
 		
 		obj = fl_add_text(FL_NORMAL_TEXT, 248, 265, 170, 16, LYX_VERSION);
 		fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-#ifdef TWO_COLOR_ICONS
-		fl_set_object_color(obj, FL_WHITE, FL_WHITE);
-		fl_set_object_lcol(obj, FL_BLACK);
-#else
-//	  fl_set_object_color(obj, FL_WHITE, FL_WHITE);
-//	  fl_set_object_lcol(obj, FL_BLACK);
 		fl_mapcolor(FL_FREE_COL2, 0x05, 0x2e, 0x4c);
 		fl_mapcolor(FL_FREE_COL3, 0xe1, 0xd2, 0x9b);
 		fl_set_object_color(obj, FL_FREE_COL2, FL_FREE_COL2);
 		fl_set_object_lcol(obj, FL_FREE_COL3);
-#endif
 		fl_set_object_lalign(obj, FL_ALIGN_CENTER|FL_ALIGN_INSIDE);
 		fl_set_object_lstyle(obj, FL_BOLD_STYLE);
 		fl_end_form();

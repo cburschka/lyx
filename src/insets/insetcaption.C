@@ -17,6 +17,9 @@
 #include "insetcaption.h"
 #include "debug.h"
 
+using std::ostream;
+using std::endl;
+
 void InsetCaption::Write(Buffer const * buf, ostream & os) const
 {
 	os << "Caption\n";

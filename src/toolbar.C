@@ -30,68 +30,8 @@
 #include "LyXView.h"
 #include "LyXAction.h"
 #include "support/lstrings.h"
+#include "support/filetools.h"
 #include "lyxrc.h"
-
-#ifdef TWO_COLOR_ICONS
-#include "cut_bw.xpm"
-#include "emph_bw.xpm"
-#include "fig_bw.xpm"
-#include "foot_bw.xpm"
-#include "math_bw.xpm"
-#include "depth_bw.xpm"
-#include "margin_bw.xpm"
-#include "melt_bw.xpm"
-#include "copy_bw.xpm"
-#include "noun_bw.xpm"
-#include "paste_bw.xpm"
-#include "free_bw.xpm"
-#include "tab_bw.xpm"
-#include "tex_bw.xpm"
-#include "open_bw.xpm"
-#include "close_bw.xpm"
-#include "save_bw.xpm"
-#include "print1_bw.xpm"
-#include "quit_bw.xpm"
-#include "typeset_ps_bw.xpm"
-#include "unknown_bw.xpm"
-#else 
-#include "cut.xpm"
-#include "emph.xpm"
-#include "fig.xpm"
-#include "foot.xpm"
-#include "math.xpm"
-#include "depth.xpm"
-#include "margin.xpm"
-#include "melt.xpm"
-#include "copy.xpm"
-#include "noun.xpm"
-#include "paste.xpm"
-#include "free.xpm"
-#include "tab.xpm"
-#include "tex.xpm"
-#include "open.xpm"
-#include "close.xpm"
-#include "save.xpm"
-#include "print1.xpm"
-#include "quit.xpm"
-#include "typeset_ps.xpm"
-#include "unknown.xpm"
-#endif
-
-// These pixmaps are the same regardless of color:
-#include "bold_bw.xpm"
-#include "make_ascii_bw.xpm"
-#include "make_latex_bw.xpm"
-#include "run_latex_bw.xpm"
-#include "sans_bw.xpm"
-#include "view_dvi_bw.xpm"
-#include "view_ps_bw.xpm"
-#include "layout_code.xpm"
-#include "layout_latex.xpm"
-#include "layout_scrap.xpm"
-#include "layout_sec.xpm"
-#include "layout_std.xpm"
-#include "build.xpm"
 
 using std::endl;
 
@@ -230,6 +170,52 @@ int Toolbar::get_toolbar_func(string const & func)
 	return action;
 }
 
+static
+void setPixmap(FL_OBJECT * obj, int action, int buttonwidth, int height) {
+	string name, arg, xpm_name;
+	kb_action act;
+
+	if (lyxaction.isPseudoAction(action)) {
+		lyxerr[Debug::TOOLBAR] << "Pseudo action " << action << endl;
+
+		act = lyxaction.retrieveActionArg(action, arg);
+		name = lyxaction.getActionName(act);
+		xpm_name = subst(name + ' ' + arg, ' ','_');
+	} else {
+		act = (kb_action)action;
+		name = lyxaction.getActionName(action);
+		xpm_name = name;
+	}
+
+	lyxerr[Debug::TOOLBAR] << "Icon name for action " << action
+			       << " is `" << xpm_name << "'" << endl;
+	
+	string fullname = LibFileSearch("images", xpm_name, "xpm");
+
+	if (!fullname.empty()) {
+		lyxerr[Debug::TOOLBAR] << "Full icon name is `" 
+				       << fullname << "'" << endl;
+		fl_set_pixmapbutton_file(obj, fullname.c_str());
+		return;
+	}
+
+	if (act == LFUN_INSERT_MATH && !arg.empty()) {
+		lyxerr[Debug::TOOLBAR] << "Using mathed-provided icon" << endl;
+		char const ** pixmap = get_pixmap_from_symbol(arg.c_str(),
+							buttonwidth,
+							height);
+		fl_set_pixmapbutton_data(obj, const_cast<char **>(pixmap));
+		return;
+	}
+	
+	lyxerr << "Unable to find icon `" << xpm_name << "'" << endl;
+	fullname = LibFileSearch("images", "unknown", "xpm");
+	if (!fullname.empty()) {
+		lyxerr[Debug::TOOLBAR] << "Using default `unknown' icon" 
+				       << endl;
+		fl_set_pixmapbutton_file(obj, fullname.c_str());
+	}
+}
 
 void Toolbar::set(bool doingmain)
 {
@@ -306,7 +292,7 @@ void Toolbar::set(bool doingmain)
 			fl_set_object_posthandler(obj, C_Toolbar_BubblePost);
 #endif
 
-			fl_set_pixmapbutton_data(obj, const_cast<char**>(item->pixmap));
+			setPixmap(obj, item->action, buttonwidth, height);
 			item = item->next;
 			// we must remember to update the positions
 			xpos += buttonwidth;
@@ -330,75 +316,6 @@ void Toolbar::set(bool doingmain)
 }
 
 
-char const ** Toolbar::getPixmap(kb_action action, string const & arg)
-{
-	char const ** pixmap = unknown_xpm; //0
-	switch(action){
-	case LFUN_MENUOPEN:    pixmap = open_xpm; break;
-	case LFUN_CLOSEBUFFER: pixmap = close_xpm; break;
-	case LFUN_MENUPRINT:   pixmap = print1_xpm; break;
-	case LFUN_MENUWRITE:   pixmap = save_xpm; break;
-	case LFUN_EMPH:	 pixmap = emph_xpm; break;
-	case LFUN_NOUN:        pixmap = noun_xpm; break;
-	case LFUN_FREE:        pixmap = free_xpm; break;
-	case LFUN_FOOTMELT:    pixmap = foot_xpm; break;
-	case LFUN_DEPTH:       pixmap = depth_xpm; break;
-	case LFUN_COPY:        pixmap = copy_xpm; break;
-	case LFUN_CUT:         pixmap = cut_xpm; break;
-	case LFUN_PASTE:       pixmap = paste_xpm; break;
-	case LFUN_TEX:         pixmap = tex_xpm; break;
-	case LFUN_MATH_MODE:   pixmap = math_xpm; break;
-	case LFUN_MARGINMELT:  pixmap = margin_xpm; break;
-	case LFUN_FIGURE:      pixmap = fig_xpm; break;
-	case LFUN_TABLE:       pixmap = tab_xpm; break;
-	case LFUN_MELT:        pixmap = melt_xpm; break;
-	case LFUN_QUIT:        pixmap = quit_xpm; break;
-	case LFUN_RUNDVIPS:    pixmap = update_ps_xpm; break;
-	case LFUN_EXPORT:
-	{
-		if (arg == "ascii")
-			pixmap = make_ascii_xpm;
-		else if (arg == "latex")
-			pixmap = make_latex_xpm;
-	}
-	break; 
-	case LFUN_LAYOUT:
-	{
-	        if (arg == "Section")
-		        pixmap = layout_sec_xpm;
-		else if (arg == "LaTeX")
-		        pixmap = layout_latex_xpm;
-		else if (arg == "LyX-Code")
-		        pixmap = layout_code_xpm;
-		else if (arg == "Scrap")
-		        pixmap = layout_scrap_xpm;
-		else
-		        pixmap = layout_std_xpm;
-	}
-	break;
-
-	case LFUN_BOLD : pixmap = bold_xpm; break; 
-	case LFUN_SANS: pixmap = sans_xpm; break; 
-	case LFUN_RUNLATEX: pixmap = run_latex_xpm; break; 
-        case LFUN_BUILDPROG: pixmap = build_xpm; break; 
-	case LFUN_PREVIEWPS: pixmap = view_ps_xpm; break; 
-	case LFUN_PREVIEW: pixmap = view_dvi_xpm; break; 
-	case LFUN_INSERT_MATH:
-	{
-		if (!arg.empty())
-			pixmap = get_pixmap_from_symbol(arg.c_str(),
-							buttonwidth,
-							height);
-	}
-	break;
-	default:
-		//pixmap = unknown_xpm;
-		break;
-	}
-	return pixmap;
-}
-
-
 void Toolbar::add(int action, bool doclean)
 {
 	if (doclean && !cleaned) clean();
@@ -406,9 +323,9 @@ void Toolbar::add(int action, bool doclean)
 	// this is what we do if we want to add to an existing
 	// toolbar.
 	if (!doclean && owner) {
-		// first «hide» the toolbar buttons. This is not a real hide
+		// first "hide" the toolbar buttons. This is not a real hide
 		// actually it deletes and frees the button altogether.
-		lyxerr << "Toolbar::add: «hide» the toolbar buttons." << endl;
+		lyxerr << "Toolbar::add: \"hide\" the toolbar buttons." << endl;
 		toolbarItem * tmp= 0;
 		toolbarItem * item = toollist;
 
@@ -433,43 +350,22 @@ void Toolbar::add(int action, bool doclean)
 	
 	// there exist some special actions not part of
 	// kb_action: SEPARATOR, LAYOUTS
-	char const ** pixmap = 0;
-	string help;
 
 	toolbarItem * newItem, * tmp;
 
-	if (lyxaction.isPseudoAction(action)) {
-		string arg;
-		kb_action act = static_cast<kb_action>
-			(lyxaction.retrieveActionArg(action, arg));
-		pixmap = getPixmap(act, arg);
-		help = lyxaction.helpText(act);
-		help += " ";
-		help += arg;
-		lyxerr.debug() << "Pseudo action " << action << endl;
-	} else {
-		pixmap = getPixmap(static_cast<kb_action>(action));
-		help = lyxaction.helpText(static_cast<kb_action>(action));
-	}
-	
 	// adds an item to the list
-	if (pixmap != 0
-	    || action == TOOL_SEPARATOR
-	    || action == TOOL_LAYOUTS) {
-		newItem = new toolbarItem;
-		newItem->action = action;
-		newItem->pixmap = pixmap;
-		newItem->help = help;
-		// the new item is placed at the end of the list
-		tmp = toollist;
-		if (tmp != 0){
-			while(tmp->next != 0)
-				tmp = tmp->next;
+	newItem = new toolbarItem;
+	newItem->action = action;
+	newItem->help = lyxaction.helpText(action);
+	// the new item is placed at the end of the list
+	tmp = toollist;
+	if (tmp != 0){
+		while(tmp->next != 0)
+			tmp = tmp->next;
 				// here is tmp->next == 0
-			tmp->next = newItem;
+		tmp->next = newItem;
 		} else
 			toollist = newItem;
-	}
 }
 
 

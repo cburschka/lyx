@@ -238,11 +238,6 @@ LYX_FUNC_PUTENV_ARGTYPE
 AC_REPLACE_FUNCS(strerror atexit)
 
 ### and now some special lyx flags.
-AC_ARG_WITH(two-colors,[  --with-two-colors       use two color pixmaps],
-  [AC_DEFINE(TWO_COLOR_ICONS,1,
-     [You might want to define TWO_COLOR_ICONS if you want to spare
- your colormap.  This will use monochrome icons instead of colored ones.])
-   lyx_flags="$lyx_flags two-colors"])
 AC_ARG_ENABLE(assertions,
   [  --enable-assertions     add runtime sanity checks in the program],,
   [if test $lyx_devel_version = yes -o $lyx_prerelease = yes ; then

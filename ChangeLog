@@ -1,3 +1,29 @@
+2000-07-19  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/insets/insetcaption.C: add a couple "using" directives.
+
+	* src/toolbar.C (add): get the help text directly from lyxaction.
+	(getPixmap): nuked.
+	(setPixmap): new function. Loads from disk and sets a pixmap on a
+	botton; the name of the pixmap file is derived from the command
+	name. 
+
+	* src/toolbar.h: remove members isBitmap and pixmap from
+	toobarItem struct. 
+
+	* lib/images/*.xbm *_bw.xpm: remove (not used any more).
+	* lib/images/: move many files from images/banner.xpm.
+
+	* src/lyx_gui.C (create_forms): read banner pixmap from file.
+
+	* src/lyx_gui.C (create_forms): remove TWO_COLORS_ICONS support.
+	* src/toolbar.C: ditto.
+	* configure.in: ditto.
+	* INSTALL: document. 
+
+	* src/spellchecker.C (ShowSpellChecker): use CancelCloseCB when
+	the spellchecker popup is closed from the WM.
+
 2000-07-19  Juergen Vigna  <jug@sad.it>
 
 	* src/insets/insetfloat.C (Write): small fix because we use the

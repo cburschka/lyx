@@ -94,16 +94,10 @@ private:
 		///
 		FL_OBJECT * icon;
 		///
-		bool IsBitmap;
-		///
-		char const ** pixmap;
-		///
 		toolbarItem() {
 			next = 0;
 			action = LFUN_NOACTION;
 			icon = 0;
-			pixmap = 0;
-			IsBitmap = false;
 		}
 		///
 		~toolbarItem() {

@@ -127,9 +127,6 @@ flags:
     compile lyx as lyx-1.1 and avoid clashes with earlier/later
     versions. Default is "lyx". 
 
-  o --with-two-colors=[yes|no] that forces LyX to use two colors pixmaps
-    (bitmaps) instead of the full-colored standard ones.  Defaults to no.
-
 
 There are also flags to control the internationalization support in
 LyX:

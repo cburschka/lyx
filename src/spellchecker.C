@@ -543,7 +543,8 @@ void ShowSpellChecker(BufferView * bv)
 	if (fd_form_spell_check == 0) {
 		fd_form_spell_check = create_form_form_spell_check();
 		// Make sure pressing the close box does not kill LyX. (RvdK)
-		fl_set_form_atclose(fd_form_spell_check->form_spell_check, IgnoreCloseBoxCB, 0);
+		fl_set_form_atclose(fd_form_spell_check->form_spell_check, 
+				    CancelCloseBoxCB, 0);
 	}
 
 	// Clear form
