@@ -19,12 +19,10 @@
 #include "Dialogs.h"
 #include "XFormsView.h"
 #include "lyxfunc.h"
-#include "FloatList.h"
 #include "support/lstrings.h"
 #include "support/LAssert.h"
 #include "gettext.h"
 #include "debug.h"
-#include "toc.h"
 #include FORMS_H_LOCATION
 
 #include <boost/scoped_ptr.hpp>
@@ -200,7 +198,8 @@ string const fixlabel(string const & str)
 
 
 int Menubar::Pimpl::create_submenu(Window win, XFormsView * view,
-				   Menu const & menu, vector<int> & smn)
+				   Menu const & menu, vector<int> & smn,
+				   bool & all_disabled)
 {
 	const int menuid = get_new_submenu(smn, win);
 	lyxerr[Debug::GUI] << "Menubar::Pimpl::create_submenu: creating "
@@ -295,6 +294,8 @@ int Menubar::Pimpl::create_submenu(Window win, XFormsView * view,
 				pupmode += "%b";
 			if (flag.disabled() || flag.unknown())
 				pupmode += "%i";
+			else
+				all_disabled = false;
 			label += pupmode;
 
 			// Finally the menu shortcut
@@ -319,11 +320,14 @@ int Menubar::Pimpl::create_submenu(Window win, XFormsView * view,
 
 		case MenuItem::Submenu: {
 			int submenuid = create_submenu(win, view,
-						       *item.submenu(), smn);
+						       *item.submenu(), smn,
+						       all_disabled);
 			if (submenuid == -1)
 				return -1;
 			string label = fixlabel(item.label());
 			label += extra_label + "%m";
+			if (all_disabled)
+				label += "%i";
 			string shortcut = item.shortcut();
 			if (!shortcut.empty()) {
 				shortcut += lowercase(shortcut[0]);
@@ -377,8 +381,10 @@ void Menubar::Pimpl::MenuCallback(FL_OBJECT * ob, long button)
 	Menu const frommenu = menubackend_->getMenu(item->submenuname());
 	menubackend_->expand(frommenu, tomenu, view->buffer());
 	vector<int> submenus;
+	bool all_disabled = true;
 	int menu = iteminfo->pimpl_->
-		create_submenu(FL_ObjWin(ob), view, tomenu, submenus);
+		create_submenu(FL_ObjWin(ob), view, tomenu,
+			       submenus, all_disabled);
 	if (menu != -1) {
 		// place popup
 		fl_setpup_position(view->getForm()->x + ob->x,

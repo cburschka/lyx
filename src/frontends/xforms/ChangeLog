@@ -1,3 +1,12 @@
+2002-07-25  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* Menubar_pimpl.C: do not include "toc.h" and "FloatList.h".
+	(create_submenu): add parameter ``all_disabled'' which will be
+	false only if the menu contains at least one working item. Disable
+	submenus who have all_disabled true. What I could not do, though
+	is disable menubar items when all the menu is disabled (because I
+	know about it only when I try to open this menu)
+
 2002-07-25  Herbert Voss  <voss@perce.de>
 
 	* FormBibtex.C (update): clear browser first
