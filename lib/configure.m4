@@ -414,6 +414,12 @@ case $GRACE in
    done 
 esac
 
+SEARCH_PROG([for an FIG -> EPS/XPM converter], FIG2DEV, fig2dev)
+if test "$FIG2DEV" = "fig2dev"; then
+  fig_to_eps="fig2dev -L eps \$\$i \$\$o"
+  fig_to_xpm="fig2dev -L xpm \$\$i \$\$o"
+fi
+
 #### Explore the LaTeX configuration
 MSG_CHECKING(LaTeX configuration)
 # First, remove the files that we want to re-create
@@ -492,6 +498,7 @@ cat >$outfile <<EOF
 \\Format eps	  eps	EPS		""
 \\Format epsi     epsi  EPSI		""
 \\Format fax	  ""	Fax		""
+\\Format fig	  fig	XFig		""
 \\Format fits     fits	FITS		""
 \\Format gif      gif	GIF		""
 \\Format agr      agr	GRACE		""
@@ -540,6 +547,7 @@ cat >$outfile <<EOF
 
 \\converter bmp  eps "$bmp_to_eps" ""
 \\converter fits  eps "$fits_to_eps" ""
+\\converter fig  eps "$fig_to_eps" ""
 \\converter gif  eps "$gif_to_eps" ""
 \\converter jpg  eps "$jpg_to_eps" ""
 \\converter pbm  eps "$pbm_to_eps" ""
@@ -562,6 +570,7 @@ cat >$outfile <<EOF
 \\converter epsi png "$eps_to_png" ""
 \\converter jpg  png "$jpg_to_png" ""
 
+\\converter fig  xpm "$fig_to_xpm" ""
 \\converter gif  xpm "$gif_to_xpm" ""
 \\converter eps  xpm "$eps_to_xpm" ""
 \\converter epsi xpm "$eps_to_xpm" ""
