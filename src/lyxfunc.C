@@ -537,6 +537,8 @@ FuncStatus LyXFunc::getStatus(kb_action action,
 				flag.setOnOff(type == LM_OT_EQNARRAY);
 			} else if (argument == "align") {
 				flag.setOnOff(type == LM_OT_ALIGN);
+			} else if (argument == "none") {
+				flag.setOnOff(type == LM_OT_NONE);
 			} else {
 				disable = true;
 			}
@@ -723,28 +725,28 @@ FuncStatus LyXFunc::getStatus(kb_action action,
 		}
 	}
 	else {
-		MathTextCodes tc = mathcursor->getLastCode();
+		string tc = mathcursor->getLastCode();
 		switch (action) {
 		case LFUN_BOLD:
-			flag.setOnOff(tc == LM_TC_BF);
+			flag.setOnOff(tc == "mathbf");
 			break;
 		case LFUN_SANS:
-			flag.setOnOff(tc == LM_TC_SF);
+			flag.setOnOff(tc == "mathsf");
 			break;
 		case LFUN_EMPH:
-			flag.setOnOff(tc == LM_TC_CAL);
+			flag.setOnOff(tc == "mathcal");
 			break;
 		case LFUN_ROMAN:
-			flag.setOnOff(tc == LM_TC_RM);
+			flag.setOnOff(tc == "mathrm");
 			break;
 		case LFUN_CODE:
-			flag.setOnOff(tc == LM_TC_TT);
+			flag.setOnOff(tc == "mathtt");
 			break;
 		case LFUN_NOUN:
-			flag.setOnOff(tc == LM_TC_BB);
+			flag.setOnOff(tc == "mathbb");
 			break;
 		case LFUN_DEFAULT:
-			flag.setOnOff(tc == LM_TC_VAR);
+			flag.setOnOff(tc == "mathnormal");
 			break;
 		default:
 			break;
