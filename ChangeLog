@@ -1,3 +1,9 @@
+2000-04-28  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/insets/figinset.C (various): Use IsFileReadable() to make
+	sure that the file actually exist. Relying on ghostscripts errors
+	is a bad idea since they can lead to X server crashes.	
+
 2000-04-27  Claus Hentschel <claus.hentschel@mbau.fh-hannover.de>
 
 	* intl/loadmsgcat.c (_nl_load_domain): pass O_BINARY as flag to

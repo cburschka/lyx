@@ -775,7 +775,8 @@ figdata * getfigdata(int wid, int hgh, string const & fname,
 {
 	/* first search for an exact match with fname and width/height */
 
-	if (fname.empty()) return 0;
+	if (fname.empty() || !IsFileReadable(fname)) 
+		return 0;
 
 	for (bitmaps_type::iterator it = bitmaps.begin();
 	     it != bitmaps.end(); ++it) {
@@ -1062,10 +1063,15 @@ void InsetFig::draw(Painter & pain, LyXFont const & f,
 		if (figure && figure->data) {
 			if (figure->data->broken)  msg = _("[render error]");
 			else if (figure->data->reading) msg = _("[rendering ... ]");
-		} else 
-			if (fname.empty()) msg = _("[no file]");
-			else if ((flags & 3) == 0) msg = _("[not displayed]");
-			else if (lyxrc.ps_command.empty()) msg = _("[no ghostscript]");
+		} 
+		else if (fname.empty()) 
+			msg = _("[no file]");
+		else if (!IsFileReadable(fname))
+			msg = _("[bad file name]");
+		else if ((flags & 3) == 0) 
+			msg = _("[not displayed]");
+		else if (lyxrc.ps_command.empty()) 
+			msg = _("[no ghostscript]");
 		
 		if (!msg) msg = _("[unknown error]");
 		
@@ -1299,7 +1305,8 @@ Inset * InsetFig::Clone() const
 	tmp->pswid = pswid;
 	tmp->pshgh = pshgh;
 	tmp->fname = fname;
-	if (!fname.empty() && (flags & 3) && !lyxrc.ps_command.empty()
+	if (!fname.empty() && IsFileReadable(fname) 
+	    && (flags & 3) && !lyxrc.ps_command.empty()
 	    && lyxrc.use_gui) { 
 		// do not display if there is
 		// "do not display" chosen (Matthias 260696)
@@ -1475,7 +1482,7 @@ void InsetFig::Recompute()
 	/* now recompute wid and hgh, and if that is changed, set changed */
 	/* this depends on chosen size of the picture and its bbox */
 	// This will be redone in 0.13 ... (hen)
-	if (!fname.empty()) {
+	if (!fname.empty() && IsFileReadable(fname)) {
 		// say, total width is 595 pts, as A4 in TeX, thats in 1/72" */
 
 		newx = frame_wid;
@@ -1554,7 +1561,7 @@ void InsetFig::Recompute()
 		figdata * pf = figure->data;
 
 		// get new data
-		if (!fname.empty() && (flags & 3)
+		if (!fname.empty() && IsFileReadable(fname) && (flags & 3)
 		    && !lyxrc.ps_command.empty()) {
 			// do not display if there is "do not display"
 			// chosen (Matthias 260696)
