@@ -24,7 +24,7 @@ public:
 	///
 	MathMacroTemplate(string const & name, int nargs);
 	///
-	MathMacroTemplate * Clone() const;
+	MathInset * Clone() const;
 	///
 	void Write(std::ostream &, bool fragile) const;
 	/// Number of arguments

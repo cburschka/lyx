@@ -1,3 +1,10 @@
+2001-06-27  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* *.C: remove all "using namespace std" directives (not
+	good!!) and replaced it with relevant "using" directives.
+	
+	* math_macrotemplate.C (Clone): change return type to MathInset*
+
 2001-06-27  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* math_sizeinset.C: include support/LOstream.h

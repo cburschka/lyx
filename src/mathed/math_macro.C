@@ -31,8 +31,8 @@
 #include "math_macrotemplate.h"
 #include "Painter.h"
 
-
-using namespace std;
+using std::ostream;
+using std::endl;
 
 MathMacro::MathMacro(MathMacroTemplate const & t)
 	: MathInset(t.name(), LM_OT_MACRO, t.numargs()), tmplate_(&t)
@@ -60,7 +60,7 @@ void MathMacro::Metrics(MathStyles st)
 		for (int i = 0; i < nargs(); ++i) {
 			MathXArray & c = xcell(i);
 			c.Metrics(st);
-			width_    = max(width_, c.width() + 30);
+			width_    = std::max(width_, c.width() + 30);
 			descent_ += c.height() + 10;
 		}
 	} else {

@@ -39,7 +39,7 @@
 #include "debug.h"
 #include "lyxlex.h"
 
-using namespace std;
+using std::ostream;
 
 extern MathCursor * mathcursor;
 

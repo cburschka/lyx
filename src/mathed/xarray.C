@@ -11,8 +11,8 @@
 #include "math_defs.h"
 #include "Painter.h"
 
-using namespace std;
-
+using std::max;
+using std::min;
 
 MathXArray::MathXArray()
 	: width_(0), ascent_(0), descent_(0), xo_(0), yo_(0), style_(LM_ST_TEXT)

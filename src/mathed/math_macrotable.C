@@ -18,21 +18,19 @@
 #include "debug.h"
 #include "support/LAssert.h"
 
-
-using namespace std;
-
+using std::endl;
 
 MathMacroTable::table_type MathMacroTable::macro_table;
 
 
 void MathMacroTable::dump()
 {
-	cerr << "\n------------------------------------------\n";
+	lyxerr << "\n------------------------------------------\n";
 	table_type::const_iterator it;
 	for (it = macro_table.begin(); it != macro_table.end(); ++it)
-		cerr << it->first << " [" << it->second->nargs() << "] : "
+		lyxerr << it->first << " [" << it->second->nargs() << "] : "
 			<< it->second << endl;
-	cerr << "------------------------------------------\n";
+	lyxerr << "------------------------------------------" << endl;;
 }
 
 
@@ -42,7 +40,7 @@ void MathMacroTable::updateTemplate(MathMacroTemplate * par)
 
 	if (pos == macro_table.end())
 		lyxerr << "MathMacroTable::updateTemplate: no template with name '"
-				<< par->name() << "' available.\n";
+		       << par->name() << "' available." << endl;
 	else
 		pos->second = par;
 }
@@ -62,7 +60,7 @@ MathMacroTemplate & MathMacroTable::provideTemplate(string const & name)
 
 	if (pos == macro_table.end()) {
 		lyxerr << "MathMacroTable::provideTemplate: no template with name '"
-				<< name << "' available.\n";
+		       << name << "' available." << endl;
 	}
 		
 	return *pos->second;
@@ -91,7 +89,7 @@ void MathMacroTable::builtinMacros()
 
 	built = true;
     
-	lyxerr[Debug::MATHED] << "Building macros\n";
+	lyxerr[Debug::MATHED] << "Building macros" << endl;
     
 	// This macro doesn't have arguments
 	{

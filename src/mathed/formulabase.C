@@ -41,7 +41,9 @@
 #include "support/lyxlib.h"
 #include "mathed/support.h"
 
-using namespace std;
+using std::endl;
+using std::ostream;
+using std::vector;
 
 extern char const * latex_special_chars;
 

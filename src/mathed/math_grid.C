@@ -10,7 +10,6 @@
 #include "Painter.h"
 
 
-
 namespace {
 
 ///
@@ -21,9 +20,6 @@ int const MATH_ROWSEP = 10;
 int const MATH_BORDER = 2;
 
 }
-
-
-using namespace std;
 
 
 MathGridInset::RowInfo::RowInfo()
@@ -93,8 +89,8 @@ void MathGridInset::Metrics(MathStyles st)
 		int desc = 0;
 		for (int col = 0; col < ncols(); ++col) {
 			MathXArray const & c = xcell(index(row, col));
-			asc  = max(asc,  c.ascent());
-			desc = max(desc, c.descent());
+			asc  = std::max(asc,  c.ascent());
+			desc = std::max(desc, c.descent());
 		}
 		rowinfo_[row].ascent_  = asc;
 		rowinfo_[row].descent_ = desc;
@@ -131,7 +127,7 @@ void MathGridInset::Metrics(MathStyles st)
 	for (int col = 0; col < ncols(); ++col) {
 		int wid  = 0;
 		for (int row = 0; row < nrows(); ++row) 
-			wid = max(wid, xcell(index(row, col)).width());
+			wid = std::max(wid, xcell(index(row, col)).width());
 		colinfo_[col].width_  = wid;
 		colinfo_[col].offset_ = colinfo_[col].width_;
 
@@ -264,15 +260,15 @@ void MathGridInset::delRow(int row)
 
 void MathGridInset::addCol(int newcol)
 {
-	int nc = ncols();
-	int nr = nrows();
-	cells_type new_cells = cells_type((nc + 1) * nr);
+	int const nc = ncols();
+	int const nr = nrows();
+	cells_type new_cells((nc + 1) * nr);
 	
 	for (int row = 0; row < nr; ++row)
 		for (int col = 0; col < nc; ++col)
 			new_cells[row * (nc + 1) + col + (col > newcol)]
 				= cells_[row * nc + col];
-	swap(cells_, new_cells);
+	std::swap(cells_, new_cells);
 
 	colinfo_.insert(colinfo_.begin() + newcol);
 }
@@ -287,7 +283,7 @@ void MathGridInset::delCol(int col)
 	for (int i = 0; i < nargs(); ++i) 
 		if (i % ncols() != col)
 			tmpcells.push_back(cells_[i]);
-	swap(cells_, tmpcells);
+	std::swap(cells_, tmpcells);
 
 	colinfo_.erase(colinfo_.begin() + col);
 }

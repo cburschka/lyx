@@ -12,8 +12,8 @@
 #include "math_parser.h"
 #include "mathed/support.h"
 
-using namespace std;
-
+using std::ostream;
+using std::endl;
 
 MathArray::MathArray()
 {}
