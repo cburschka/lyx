@@ -55,18 +55,20 @@ What's new
 - allow to use some paper sizes (A3, B3, B4, and custom) without
   custom margins [Qt problem only]. 
 
-- add debug output if unable to open an ofstream to output the graphics
-  conversion script.
-
 - fix installation problem when the program makepsres does not exist
 
 - remove non-ascii characters from translatable strings. This
   simplifies the work of translators
 
-- add a couple forgotten MacOSX-related files
+- add a couple of forgotten MacOSX-related files
 
 - a better fix for badly placed math symbols with LyX/Mac
 
 - compilation fixes for MacOSX
 
 - fix problems with non-GNU make program
+
+- add debug output if unable to open an ofstream to output the graphics
+  conversion script.
+
+- add debug output if unable to open preferences.xform for read/write.
