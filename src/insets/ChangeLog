@@ -1,7 +1,13 @@
+2003-11-04  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* insettext.C (priv_dispatch): some DispatchResult type cleanup,
+	don't handle LFUN_UNKNOWN_ACTION, don't call BufferView::dispatch
+	from here. Be stricter on DispatchResult returned.
+
 2003-11-03  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* Inset::dispatch's: adjust for new DispatchResult semantics.
-	
+
 2003-11-03  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* render_base.h: make clone return an auto_ptr

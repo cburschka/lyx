@@ -53,6 +53,9 @@ public:
 	DispatchResult(bool dis, dispatch_result_t val)
 		: dispatched_(dis), update_(false), val_(val) {}
 	dispatch_result_t val() const { return val_; }
+	void val(dispatch_result_t drt) {
+		val_ = drt;
+	}
 	bool dispatched() const {
 		return dispatched_;
 	}

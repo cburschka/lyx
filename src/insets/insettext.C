@@ -676,14 +676,16 @@ InsetText::priv_dispatch(FuncRequest const & cmd,
 
 	DispatchResult result = UpdatableInset::priv_dispatch(cmd, idx, pos);
 	if (result.dispatched())
-		return DispatchResult(true, true);
+		return result;
 
-	result = DispatchResult(true, true);
+#if 0
+	// This looks utterly strange. (Lgb)
 	if (cmd.action == LFUN_UNKNOWN_ACTION && cmd.argument.empty())
 		return DispatchResult(false, FINISHED);
+#endif
 
 	if (the_locking_inset) {
-		result = the_locking_inset->dispatch(cmd);
+		DispatchResult result = the_locking_inset->dispatch(cmd);
 
 		if (result.dispatched()) {
 			if (result.update()) {
@@ -696,7 +698,8 @@ InsetText::priv_dispatch(FuncRequest const & cmd,
 		switch (result.val()) {
 		case FINISHED_RIGHT:
 			moveRightIntern(bv, false, false);
-			result = DispatchResult(true, true);
+			result.dispatched(true);
+			result.update(true);
 			break;
 		case FINISHED_UP:
 			result = moveUp(bv);
@@ -713,7 +716,8 @@ InsetText::priv_dispatch(FuncRequest const & cmd,
 			}
 			break;
 		default:
-			result = DispatchResult(true, true);
+			result.dispatched(true);
+			result.update(true);
 			break;
 		}
 		the_locking_inset = 0;
@@ -722,10 +726,8 @@ InsetText::priv_dispatch(FuncRequest const & cmd,
 		bv->owner()->clearMessage();
 		return result;
 	}
-	bool updflag = false;
 
 	switch (cmd.action) {
-
 	// Normal chars
 	case LFUN_SELFINSERT:
 		if (bv->buffer()->isReadonly()) {
@@ -753,8 +755,8 @@ InsetText::priv_dispatch(FuncRequest const & cmd,
 					TranslateAndInsert(cmd.argument[i], &text_);
 		}
 		text_.selection.cursor = text_.cursor;
-		updflag = true;
-		result = DispatchResult(true);
+		result.dispatched(true);
+		result.update(true);
 		break;
 
 	// cursor movements that need special handling
@@ -778,21 +780,21 @@ InsetText::priv_dispatch(FuncRequest const & cmd,
 
 	case LFUN_PRIOR:
 		if (crow() == text_.firstRow())
-			result = DispatchResult(false, FINISHED_UP);
+			result.val(FINISHED_UP);
 		else {
 			text_.cursorPrevious();
 			text_.clearSelection();
-			result = DispatchResult(true);
+			result.dispatched(true);
 		}
 		break;
 
 	case LFUN_NEXT:
 		if (crow() == text_.lastRow())
-			result = DispatchResult(false, FINISHED_DOWN);
+			result.val(FINISHED_DOWN);
 		else {
 			text_.cursorNext();
 			text_.clearSelection();
-			result = DispatchResult(true);
+			result.dispatched(true);
 		}
 		break;
 
@@ -801,7 +803,8 @@ InsetText::priv_dispatch(FuncRequest const & cmd,
 			text_.cutSelection(true, false);
 		else
 			text_.backspace();
-		updflag = true;
+#warning should be also set dispatched here?
+		result.update(true);
 		break;
 
 	case LFUN_DELETE:
@@ -809,7 +812,8 @@ InsetText::priv_dispatch(FuncRequest const & cmd,
 			text_.cutSelection(true, false);
 		else
 			text_.Delete();
-		updflag = true;
+#warning should be also set dispatched here?
+		result.update(true);
 		break;
 
 	case LFUN_PASTE:
@@ -831,38 +835,45 @@ InsetText::priv_dispatch(FuncRequest const & cmd,
 			text_.pasteSelection(sel_index);
 			// bug 393
 			text_.clearSelection();
-			updflag = true;
+#warning should be also set dispatched here?
+			result.update(true);
 		}
 		break;
 
 	case LFUN_BREAKPARAGRAPH:
 		if (!autoBreakRows_) {
-			result = DispatchResult(true, true);
+			result.dispatched(true);
+			result.update(true);
 		} else {
 			replaceSelection(bv->getLyXText());
 			text_.breakParagraph(paragraphs, 0);
-			updflag = true;
+#warning should be also set dispatched here?
+			result.update(true);
 		}
 		break;
 
 	case LFUN_BREAKPARAGRAPHKEEPLAYOUT:
 		if (!autoBreakRows_) {
-			result = DispatchResult(true, true);
+			result.dispatched(true);
+			result.update(true);
 		} else {
 			replaceSelection(bv->getLyXText());
 			text_.breakParagraph(paragraphs, 1);
-			updflag = true;
+#warning should be also set dispatched here?
+			result.update(true);
 		}
 		break;
 
 	case LFUN_BREAKLINE: {
 		if (!autoBreakRows_) {
-			result = DispatchResult(true, true);
+			result.dispatched(true);
+			result.update(true);
 		} else {
 			replaceSelection(bv->getLyXText());
 			auto_ptr<InsetNewline> ins(new InsetNewline);
 			text_.insertInset(ins.release());
-			updflag = true;
+#warning should be also set dispatched here?
+			result.update(true);
 		}
 		break;
 	}
@@ -897,7 +908,8 @@ InsetText::priv_dispatch(FuncRequest const & cmd,
 				cur_layout = layout;
 				text_.setLayout(layout);
 				bv->owner()->setLayout(cpar()->layout()->name());
-				updflag = true;
+#warning should be also set dispatched here?
+				result.update(true);
 			}
 		} else {
 			// reset the layout box
@@ -906,12 +918,13 @@ InsetText::priv_dispatch(FuncRequest const & cmd,
 		break;
 
 	default:
-		if (!bv->dispatch(cmd))
-			result = DispatchResult(false);
 		break;
 	}
 
-	updateLocal(bv, updflag);
+	if (result.update()) {
+		result.update(false);
+		updateLocal(bv, true);
+	}
 
 	/// If the action has deleted all text in the inset, we need to change the
 	// language to the language of the surronding text.
@@ -922,11 +935,11 @@ InsetText::priv_dispatch(FuncRequest const & cmd,
 		setFont(bv, font, false);
 	}
 
-	if (result.val() >= FINISHED)
+	if (result.val() >= FINISHED) {
+		result.val(NONE);
 		bv->unlockInset(this);
+	}
 
-	if (result.val() == NONE)
-		result = DispatchResult(true, true);
 	return result;
 }
 

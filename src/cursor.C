@@ -28,8 +28,10 @@ using std::endl;
 DispatchResult Cursor::dispatch(FuncRequest const & cmd)
 {
 	for (int i = data_.size() - 1; i >= 0; --i) {
-		lyxerr << "trying to dispatch to inset" << data_[i].inset_ << endl;
-		DispatchResult res = data_[i].inset_->dispatch(cmd);
+		CursorItem & citem = data_[i];
+
+		lyxerr << "trying to dispatch to inset" << citem.inset_ << endl;
+		DispatchResult res = citem.inset_->dispatch(cmd);
 		lyxerr << "   result: " << res.val() << endl;
 
 		if (res.dispatched())
