@@ -29,6 +29,8 @@
  
 #include "Toolbar_pimpl.h"
  
+#include <boost/tuple/tuple.hpp>
+ 
 #include <qtoolbar.h>
 #include <qcombobox.h>
 #include <qtooltip.h>
