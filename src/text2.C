@@ -264,48 +264,9 @@ void LyXText::setCharFont(BufferView * bv, Paragraph * par,
 		}
 	}
 
-	LyXLayout const & layout =
-		textclasslist.Style(buf->params.textclass,
-				    par->getLayout());
-
-	// Get concrete layout font to reduce against
-	LyXFont layoutfont;
-
-	if (pos < beginningOfMainBody(buf, par))
-		layoutfont = layout.labelfont;
-	else
-		layoutfont = layout.font;
-
-	// Realize against environment font information
-	if (par->getDepth()) {
-		Paragraph * tp = par;
-		while (!layoutfont.resolved() && tp && tp->getDepth()) {
-			tp = tp->outerHook();
-			if (tp)
-#ifndef INHERIT_LANGUAGE
-				layoutfont.realize(textclasslist.
-				                   Style(buf->params.textclass,
-							 tp->getLayout()).font);
-#else
-				layoutfont.realize(textclasslist.
-				                   Style(buf->params.textclass,
-				                         tp->getLayout()).font,
-				                   buf->params.language);
-#endif
-		}
-	}
-
-#ifndef INHERIT_LANGUAGE
-	layoutfont.realize(textclasslist.TextClass(buf->params.textclass).defaultfont());
-#else
-	layoutfont.realize(textclasslist.TextClass(buf->params.textclass).defaultfont(),
-	                   buf->params.language);
-#endif
-
-	// Now, reduce font against full layout font
-	font.reduce(layoutfont);
-
-	par->setFont(pos, font);
+	// Plug thru to version below:
+	setCharFont(buf, par, pos, font);
+	
 }
 
 

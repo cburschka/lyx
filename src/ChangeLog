@@ -1,3 +1,16 @@
+2002-03-01  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* vspace.C (asLatexCommand): rewrite in a slightly different form.
+
+2002-03-01  Martin Vermeer  <martin.vermeer@hut.fi>
+
+	* text2.C (setCharFont): eliminate setCharFont code duplication.
+
+2002-03-01  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* BufferView_pimpl.C (Dispatch): remove bogus handling of
+	LFUN_TABULAR_FEATURE (bug #177)
+
 2002-02-29 ;-)  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* Makefile.am: remove figure.h

@@ -1277,66 +1277,6 @@ graphics
  package.
 \layout Subsection
 
-
-\begin_inset LatexCommand \label{ssec:graphics}
-
-\end_inset 
-
-graphics
-\layout Description
-
-Found: @chk_graphics@
-\layout Description
-
-CTAN: 
-\family typewriter 
-macros/latex/required/graphics/
-\layout Description
-
-Notes: The package 
-\family sans 
-graphics
-\family default 
- is needed by LyX to insert PostScript® figures (using the older figure
- inset).
- You will also need the program 
-\family typewriter 
-\size normal 
-ghostview
-\family default 
-\size default 
- to see them on screen.
- The configuration script has determined that the graphics driver used by
- the package should be 
-\family sans 
-
-\begin_inset Quotes eld
-\end_inset 
-
-@chk_graphicsdriver@
-\begin_inset Quotes erd
-\end_inset 
-
-
-\begin_inset Foot
-collapsed true
-
-\layout Standard
-
-Here, a value of 
-\begin_inset Quotes eld
-\end_inset 
-
-default
-\begin_inset Quotes erd
-\end_inset 
-
- means that your LaTeX installation provides a sensible value for this parameter.
-\end_inset 
-
-.
-\layout Subsection
-
 graphicx
 \layout Description
 

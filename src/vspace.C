@@ -427,27 +427,39 @@ string const VSpace::asLyXCommand() const
 
 string const VSpace::asLatexCommand(BufferParams const & params) const
 {
+	string ret;
+
 	switch (kind_) {
-	case NONE:      return string();
+	case NONE:
+		break;
 	case DEFSKIP:
-		return params.getDefSkip().asLatexCommand(params);
-	case SMALLSKIP: return keep_ ? "\\vspace*{\\smallskipamount}"
-				: "\\smallskip{}";
-	case MEDSKIP:   return keep_ ? "\\vspace*{\\medskipamount}"
-				: "\\medskip{}";
-	case BIGSKIP:   return keep_ ? "\\vspace*{\\bigskipamount}"
-				: "\\bigskip{}";
-	case VFILL:     return keep_ ? "\\vspace*{\\fill}"
-				: "\\vfill{}";
-	case LENGTH:    return keep_ ? "\\vspace*{" + len_.asLatexString() + '}'
-				: "\\vspace{" + len_.asLatexString() + '}';
+		ret = params.getDefSkip().asLatexCommand(params);
+		break;
+	case SMALLSKIP:
+		ret = keep_ ? "\\vspace*{\\smallskipamount}"
+			: "\\smallskip{}";
+		break;
+	case MEDSKIP:
+		ret = keep_ ? "\\vspace*{\\medskipamount}"
+			: "\\medskip{}";
+		break;
+	case BIGSKIP:
+		ret = keep_ ? "\\vspace*{\\bigskipamount}"
+			: "\\bigskip{}";
+		break;
+	case VFILL:
+		ret = keep_ ? "\\vspace*{\\fill}"
+			: "\\vfill{}";
+		break;
+	case LENGTH:
+		ret = keep_ ? "\\vspace*{" + len_.asLatexString() + '}'
+			: "\\vspace{" + len_.asLatexString() + '}';
+		break;
 	}
 	
-	lyx::Assert(0);
-	// of course, we cannot get there, but gcc is too stupid to
-	// see that. *Sigh*
-	return string();
+	return ret;
 }
+
 
 
 int VSpace::inPixels(BufferView * bv) const

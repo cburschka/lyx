@@ -224,7 +224,7 @@ Menuset
     End
 
     Menu "insert_math"
-	Item "Inline Formula|h" "math-mode"
+	Item "Inline Formula|I" "math-mode"
 	Item "Display Formula|D" "math-display"
 	Item "Eqnarray environment|E" "command-sequence math-mode; math-mutate eqnarray;"
 	Item "AMS align environment|A" "command-sequence math-mode; math-mutate align;"

@@ -12,7 +12,7 @@
 %%% If you want to add new packages/documentclasses to be recognized,
 %%% read the explanation that follow and jump to the section 'Actual
 %%% inspection code' below. You do not need to understand the ugly
-%%% LaTeX code below to help improving chklatex.ltx :-)
+%%% LaTeX code below to help improving chkconfig.ltx :-)
 %%%
 %%% If you want to add the new package <name>, all you need most of
 %%% the times is a two-steps work: 
@@ -212,7 +212,6 @@
 \TestPackage{array}
 \TestPackage{babel}
 \TestPackage{color} % this one should be there if graphics.sty is there.
-\TestPackage{graphicx} % this one should be there if graphics.sty is there. 
 \TestPackage{fancyhdr}
 \TestPackage{floatflt}
 \TestPackage{setspace}
@@ -229,14 +228,14 @@
 
 % The test for the graphics package is slightly more involved...
 \newcommand\groption{dvips}
-\TestItem{graphics}{package}{sty}
+\TestItem{graphicx}{package}{sty}
 %  Let's do some clever things to guess the default driver for the
-%  graphics package. The maintainer of the site might have declared it
+%  graphicx package. The maintainer of the site might have declared it
 %  in the file 'graphics.cfg'. Let's hope there are no strange commands
 %  in there...
   {\renewcommand\ExecuteOptions[1]{\renewcommand\groption{default}}
    \InputIfFileExists{graphics.cfg}{}{}
-   \AddPackage{graphics}}
+   \AddPackage{graphicx}}
   {\renewcommand{\groption}{none}}
 \message{^^J\prefix checking for graphics driver... \groption^^J}
 \AddVariable{graphicsdriver}{\groption}

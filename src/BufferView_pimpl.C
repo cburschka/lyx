@@ -1542,7 +1542,6 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		break;
 	}
 		
-	case LFUN_TABULAR_FEATURE:
 	case LFUN_SCROLL_INSET:
 		// this is not handled here as this funktion is only aktive
 		// if we have a locking_inset and that one is (or contains)

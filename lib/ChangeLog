@@ -1,3 +1,12 @@
+2002-03-01  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* ui/default.ui: fix shortcut for Insert>Math>Inline formula.
+
+	* chkconfig.ltx: do not check for graphics anymore, only graphicx. 
+
+	* doc/LaTeXConfig.lyx.in: remove info about graphics package, now
+	that figinset is dead.
+
 2002-02-19  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* ui/default.ui: add a show-forks item to the two File menus.
