@@ -22,12 +22,14 @@ void gnomeBC::setWidgetEnabled(Gtk::Widget * obj, bool enabled)
 
 void gnomeBC::setButtonEnabled(Gtk::Button * btn, bool enabled) 
 {
-	setWidgetEnabled(btn, enabled);
+	if (btn)
+		btn->set_sensitive(enabled);
 }
 
 
 void gnomeBC::setButtonLabel(Gtk::Button * obj, string const & label)
 {
 #warning Implement me! (be 20010329)
-	obj->set_text(label);
+	// There is no methods set_text!
+	//obj->set_text(label);
 }

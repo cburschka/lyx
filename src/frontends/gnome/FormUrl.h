@@ -21,11 +21,6 @@
 #include "ControlUrl.h"
 #include "GnomeBase.h"
 
-//#include <gnome--/dialog.h>
-namespace Gnome {
-class Dialog;
-}
-
 namespace Gtk {
 class Button;
 class CheckButton;
@@ -43,8 +38,6 @@ public:
 	~FormUrl();
 
 	void apply();
-	void hide();
-	void show();
 	void update();
 	
 private:
@@ -65,8 +58,6 @@ private:
 	void RestoreClicked() { RestoreButton(); }
 	void InputChanged() { bc().valid(validate()); }
 	
-	/// Get the dialog
-	Gnome::Dialog * dialog();
 	/// The url entry
 	Gtk::Entry * url() const;
 	/// The name entry
@@ -81,10 +72,6 @@ private:
 	Gtk::Button * apply_btn() const;
 	/// The restore button
 	Gtk::Button * restore_btn() const;
-
-	// Hold the dialog.
-	//boost::shared_ptr<Gnome::Dialog> dialog_;
-	Gnome::Dialog * dialog_;
 
 	/// Keeps the connection to the input validator.
 	SigC::Connection slot_url_;

@@ -21,10 +21,6 @@
 #include "ControlCredits.h"
 #include "GnomeBase.h"
 
-namespace Gnome {
-class Dialog;
-}
-
 namespace Gtk {
 class Button;
 class Text;
@@ -38,31 +34,22 @@ public:
 	///
 	FormCredits(ControlCredits & c);
 	///
-	~FormCredits();
+	~FormCredits() {};
 
-	void apply();
-
-	void hide();
-	void show();
-	void update();
+	void apply() {};
+	void update() {};
 	
 private:
 	
 	/// Build the dialog
 	void build();
 
-	/// get the dialog
-	Gnome::Dialog * dialog();
-    
 	void CancelClicked() { CancelButton(); }
 
 	/// The ok button
 	Gtk::Button * ok();
 	
 	Gtk::Text * text();
-
-	// Hold the dialog.
-	Gnome::Dialog * dialog_;
 };
 
 #endif

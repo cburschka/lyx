@@ -19,13 +19,11 @@
 #include "gnomeBC.h"
 #include "FormUrl.h"
 
-#include <gnome--/dialog.h>
 #include <gtk--/entry.h>
 #include <gtk--/checkbutton.h>
 
 FormUrl::FormUrl(ControlUrl & c)
 	: FormCB<ControlUrl>(c, "diainserturl.glade", "DiaInsertUrl")
-	, dialog_(0)
 {}
 
 
@@ -40,9 +38,6 @@ FormUrl::~FormUrl()
 
 void FormUrl::build()
 {
-	// Make sure the dialog is loaded.
-	dialog_ = dialog();
-
 	// Connect the buttons.
 	ok_btn()->clicked.connect(SigC::slot(this, &FormUrl::OKClicked));
 	cancel_btn()->clicked.connect(SigC::slot(this, &FormUrl::CancelClicked));
@@ -82,22 +77,6 @@ void FormUrl::disconnect_signals()
 }
 
 
-void FormUrl::show()
-{
-	if (!dialog_)
-		build();
-	
-	update();
-	dialog_->show();
-}
-
-
-void FormUrl::hide()
-{
-	dialog_->hide();
-}
-
-
 void FormUrl::apply()
 {
 	controller().params().setContents(url()->get_text());
@@ -134,11 +113,6 @@ bool FormUrl::validate() const
 	return true;
 }
 
-
-Gnome::Dialog * FormUrl::dialog()
-{
-	return getWidget<Gnome::Dialog>("DiaInsertUrl");
-}
 
 Gtk::Entry * FormUrl::url() const
 {

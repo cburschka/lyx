@@ -26,7 +26,7 @@
 namespace Gtk {
 class Button;
 class Widget;
-}
+};
 
 class gnomeBC : public GuiBC<Gtk::Button, Gtk::Widget>
 {
@@ -42,7 +42,7 @@ private:
 	void setWidgetEnabled(Gtk::Widget * obj, bool enabled);
 
 	/// Set the label on the button
-	void setButtonLabel(Gtk::Button * btn, string const & label)
+	void setButtonLabel(Gtk::Button * btn, string const & label);
 };
 
 #endif // GNOMEBC_H

@@ -22,17 +22,12 @@
 #include <sigc++/signal_system.h>
 #include "gnome_helpers.h"
 
-namespace Gtk {
-class Button;
-class Entry;
-};
-
 namespace Gnome {
 class Dialog;
 };
 
 /**
- * This is a base class for Gnome dialogs. Basically it handles all the common
+ * This is a base class for Gnome dialogs. It handles all the common
  * work that is needed for all dialogs.
  */
 class GnomeBase : public ViewBC<gnomeBC>, public SigC::Object {
@@ -43,19 +38,37 @@ public:
 	virtual ~GnomeBase();
 
 protected:
+	/// Get the widget named 'name' from the xml representation.
 	template <class T>
 	T* getWidget(char const * name) const; 
+
+	/// Get the dialog we use.
+	Gnome::Dialog * dialog();
+
+	/// Show the dialog.
+	void show();
+	/// Hide the dialog.
+	void hide();
+	
+	/// Build the dialog. Also connects signals and prepares it for work.
+	virtual void build() = 0;
 
 private:
 	/// Loads the glade file to memory.
 	void loadXML() const;
 
 	/// The glade file name
-	string file_;
+	const string file_;
 	/// The widget name
-	string widget_name_;
+	const string widget_name_;
 	/// The XML representation of the dialogs.
 	mutable GladeXML * xml_;
+
+	/** The dialog we work with, since it is managed by libglade, we do not
+	 *  need to delete it or destroy it, it will be destroyed with the rest
+	 *  of the libglade GladeXML structure.
+	 */
+	Gnome::Dialog * dialog_;
 };
 
 
@@ -81,7 +94,6 @@ template <class Controller>
 class FormCB : public GnomeBase {
 public:
 	FormCB(Controller & c, string const & file, string const & name);
-	
 protected:
 	Controller & controller();
 };

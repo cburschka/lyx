@@ -19,8 +19,13 @@
 #include "support/filetools.h"
 #include <glib.h>
 
-GnomeBase::GnomeBase(ControlButton & c, string const & glade_file, string const & name)
-	: ViewBC<gnomeBC>(c), file_(glade_file), widget_name_(name), xml_(0)
+#include <gnome--/dialog.h>
+
+GnomeBase::GnomeBase(ControlButton & c, 
+		string const & glade_file, string const & name)
+	: ViewBC<gnomeBC>(c)
+	, file_(glade_file), widget_name_(name), xml_(0)
+	, dialog_(0)
 {}
 	
 GnomeBase::~GnomeBase()
@@ -44,4 +49,32 @@ void GnomeBase::loadXML() const
 	lyxerr[Debug::GUI] << "Glade file to open is " << file << '\n';
 	
 	xml_ = glade_xml_new(file.c_str(), widget_name_.c_str());
+}
+
+
+void GnomeBase::show()
+{
+	if (!dialog_) {
+		dialog_ = dialog();
+		build();
+	}
+
+	update();
+	dialog_->show();
+}
+
+
+void GnomeBase::hide()
+{
+	if (dialog_)
+		dialog_->hide();
+}
+
+
+Gnome::Dialog * GnomeBase::dialog()
+{
+	if (!dialog_) 
+		dialog_ = getWidget<Gnome::Dialog>(widget_name_.c_str());
+		
+	return dialog_;
 }

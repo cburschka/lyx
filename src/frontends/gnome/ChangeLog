@@ -1,3 +1,14 @@
+2001-03-30  Baruch Even  <baruch@lyx.org>
+
+	* GnomeBase.[Ch]: Added the dialog as a responsibility.
+
+	* FormUrl.[Ch]: Changed accordingly.
+	* FormCredits.[Ch]: ditto.
+
+	* gnomeBC.[Ch]: Fixed to get it to compile.
+
+	* gnome_helpers.h: Changed declaration from const char * to char const *
+
 2001-03-30  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* GnomeBase.[Ch]: changed ControlBase to ControlButton.

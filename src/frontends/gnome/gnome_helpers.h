@@ -20,7 +20,7 @@
 
 // Glade Helper Function.  
 template<class T>
-T* getWidgetPtr(GladeXML* xml, const char* name)
+T* getWidgetPtr(GladeXML* xml, char const * name)
 {   
 	T* result = static_cast<T*>(Gtk::wrap_auto((GtkObject*)glade_xml_get_widget(xml, name)));
 	if (result == NULL)
