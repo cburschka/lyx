@@ -1,9 +1,92 @@
-# Textclass definition file for docbook.
-# Author : José Abílio Oliveira Matos <jamatos@lyx.org>
+# Standard textclass definition file. Taken from initial LyX source code
+# Author : Matthias Ettrich <ettrich@informatik.uni-tuebingen.de>
+# Transposed by Pascal André <andre@via.ecp.fr>
+# Heavily modifed and enhanced by several developers.
 
-# This file is the counterpart of stdstarsections.inc
-# It is desirable, as far as possible, to have the same look and feel for
-# related layouts in latex and docbook.
+# This include files contains all non numbered versions of the
+# sectioning-related commands that are useful for article-like
+# document classes, but not for letters. It should be Input after
+# modifying the style of the regular sectioning layouts.
 
-# empty for now, it is possible to do it using bridgehead with attribute
-# renderas="part|chapter|sect1|sect2|sect3|sect4|sect5"
+
+Style Part*
+	CopyStyle             Part
+	Margin                Static
+	LatexName             bridgehead
+	LatexType             Environment
+	InnerTag	      title
+	LabelType             No_Label
+	LatexParam	      renderas="part"
+End
+
+
+Style Chapter*
+	CopyStyle             Chapter
+	Margin                Static
+	LatexType             Environment
+	InnerTag	      title
+	LatexName             bridgehead
+	LabelType             No_Label
+	OptionalArgs          0
+	LatexParam	      renderas="chapter"
+End
+
+
+Style Section*
+	CopyStyle             Section
+	Margin                Static
+	LatexName             bridgehead
+	LatexType             Environment
+	InnerTag	      title
+	LabelType             No_Label
+	OptionalArgs          0
+	LatexParam	      renderas="sect1"
+End
+
+
+Style Subsection*
+	CopyStyle             Subsection
+	Margin                Static
+	LatexName             bridgehead
+	LatexType             Environment
+	InnerTag	      title
+	LabelType             No_Label
+	OptionalArgs          0
+	LatexParam	      renderas="sect2"
+End
+
+
+Style Subsubsection*
+	CopyStyle             Subsubsection
+	Margin                Static
+	LatexName             bridgehead
+	LatexType             Environment
+	InnerTag	      title
+	LabelType             No_Label
+	OptionalArgs          0
+	LatexParam	      renderas="sect3"
+End
+
+
+Style Paragraph*
+	CopyStyle             Paragraph
+	Margin                Static
+	LatexName             bridgehead
+	LatexType             Environment
+	InnerTag	      title
+	LabelType             No_Label
+	OptionalArgs          0
+	LatexParam	      renderas="sect4"
+End
+
+
+Style Subparagraph*
+	CopyStyle             Subparagraph
+	Margin                Static
+	LatexName             bridgehead
+	LatexType             Environment
+	InnerTag	      title
+	LabelType             No_Label
+	OptionalArgs          0
+	LatexParam	      renderas="sect5"
+End
