@@ -24,11 +24,11 @@ What's new
 
 - add Proof layout to elsart class and get sections to be numbered
 
-- make LyX compile almost out-of-the-box with Qt/Mac
+- make LyX compile almost out-of-the-box with Qt/Mac (see README.MacOSX)
 
 - add a bit of documentation of the AGU journals support in the
-  Extended manual; french documentation and examples update; german
-  documentation update; small tweaks to the english documentation
+  Extended manual; small tweaks to the english documentation; german
+  documentation update; french documentation and examples update
 
 - completely new italian localization; french, german and slovenian
   localization updates
@@ -60,6 +60,9 @@ What's new
 
 - clean-up properly after completed graphics conversion processes.
 
+- enable graphics conversion using the default convertDefault.sh converter
+  when exporting, even if convertDefault.sh is not executable.
+
 - work around a Qt 3.1.2 bug with the environment combo box [bug #1136]
 
 - fix bug where browsing for files in graphics inset would always
@@ -69,6 +72,8 @@ What's new
   default value [bug #1069, Qt only]
 
 - fix loading of symbol fonts [Qt 3.2.0 only]
+
+- fix loading of symbol fonts on solaris
 
 - fix the math panel symbols [Qt 3.2.0 only]
 
@@ -102,6 +107,3 @@ What's new
 - fix compilation with AikSaurus 1.0
 
 - clean-up properly after completed graphics conversion processes.
-
-- enable graphics conversion using the default convertDefault.sh converter
-  when exporting, even if convertDefault.sh is not executable.

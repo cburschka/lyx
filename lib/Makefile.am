@@ -59,6 +59,7 @@ install-xfonts:
 	done ; \
 	$(INSTALL_DATA) xfonts/fonts.dir $(DESTDIR)$(pkgdatadir)/xfonts/fonts.dir ; \
 	$(INSTALL_DATA) xfonts/fonts.scale $(DESTDIR)$(pkgdatadir)/xfonts/fonts.scale
+	test -f xfonts/PSres.upr && $(INSTALL_DATA) xfonts/PSres.upr $(DESTDIR)$(pkgdatadir)/xfonts/PSres.upr
 
 uninstall-xfonts:
 	rm -rf $(DESTDIR)$(pkgdatadir)/xfonts
