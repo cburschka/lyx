@@ -6,27 +6,25 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx 1.0.2\n"
 "POT-Creation-Date: 2001-07-24 15:15+0200\n"
-"PO-Revision-Date: 2001-02-14 11:35GMT\n"
+"PO-Revision-Date: 2001-07-25 15:05GMT\n"
 "Last-Translator: Claus Hindsgaul <claush@et.dtu.dk>\n"
 "Language-Team: danish <dansk@klid.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=ISO-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 0.8\n"
+"X-Generator: KBabel 0.9.2\n"
 
 #: src/buffer.C:321
 msgid "Couldn't set the layout for "
-msgstr ""
+msgstr "Kunne ikke sætte layout for "
 
 #: src/buffer.C:323
-#, fuzzy
 msgid "one paragraph"
-msgstr "Gå et afsnit op"
+msgstr "et afsnit"
 
 #: src/buffer.C:326
-#, fuzzy
 msgid " paragraphs"
-msgstr "Afsnit"
+msgstr " afsnit"
 
 #. if the textclass wasn't loaded properly
 #. we need to either substitute another
@@ -38,9 +36,8 @@ msgid "Textclass Loading Error!"
 msgstr "Fejl under indlæsning af tekstklasse!"
 
 #: src/buffer.C:329
-#, fuzzy
 msgid "When reading "
-msgstr "Fejl under læsning "
+msgstr "Under læsning "
 
 #: src/CutAndPaste.C:447 src/buffer.C:383
 msgid "Layout had to be changed from\n"
@@ -690,13 +687,12 @@ msgid "No information for exporting to "
 msgstr "Ingen information om ekportering til "
 
 #: src/exporter.C:74
-#, fuzzy
 msgid "Cannot run latex."
-msgstr "Kan ikke skrive fil"
+msgstr "Kan ikke køre latex."
 
 #: src/exporter.C:75
 msgid "The path to the lyx file cannot contain spaces."
-msgstr ""
+msgstr "Stien til lyx-filen må ikke indeholde mellemrum."
 
 #: src/exporter.C:89
 msgid "Document exported as "
@@ -1272,9 +1268,8 @@ msgid "Version...|V"
 msgstr "Version...|V"
 
 #: src/ext_l10n.h:150
-#, fuzzy
 msgid "\t\t\tAbstract"
-msgstr "Sammendrag"
+msgstr "\t\t\tSammendrag"
 
 #: src/ext_l10n.h:151
 msgid "ACT"
@@ -1670,7 +1665,7 @@ msgstr "FourAuthors"
 
 #: src/ext_l10n.h:249
 msgid "FrontMatter"
-msgstr ""
+msgstr "FrontMatter"
 
 #: src/ext_l10n.h:250
 msgid "Gruss"
@@ -1754,9 +1749,8 @@ msgid "LandscapeSlide"
 msgstr "BredformatRamme"
 
 #: src/ext_l10n.h:270
-#, fuzzy
 msgid "Left_Header"
-msgstr "Hovede"
+msgstr "Venstre_Hovede"
 
 #: src/ext_l10n.h:271
 msgid "Lemma"
@@ -2018,16 +2012,15 @@ msgstr "Returadresse"
 
 #: src/ext_l10n.h:335
 msgid "RightHeader"
-msgstr "HøjreHoved"
+msgstr "HøjreHovede"
 
 #: src/ext_l10n.h:336
 msgid "Right_Address"
-msgstr "Hojrejust_adresse"
+msgstr "Hojre_adresse"
 
 #: src/ext_l10n.h:337
-#, fuzzy
 msgid "Right_Header"
-msgstr "HøjreHoved"
+msgstr "Højre_Hovede"
 
 #: src/ext_l10n.h:338
 msgid "Rotatefoilhead"
@@ -2138,7 +2131,6 @@ msgid "Street"
 msgstr "Street"
 
 #: src/ext_l10n.h:365
-#, fuzzy
 msgid "SubSection"
 msgstr "Undersektion"
 
@@ -2267,9 +2259,8 @@ msgid "Titlehead"
 msgstr "Titlehead"
 
 #: src/ext_l10n.h:397
-#, fuzzy
 msgid "Topic"
-msgstr "&Top"
+msgstr "Emne"
 
 #: src/ext_l10n.h:398
 msgid "Town"
@@ -2391,7 +2382,7 @@ msgstr "Bahasa"
 
 #: src/ext_l10n.h:427
 msgid "Portuguese (Brazil)"
-msgstr ""
+msgstr "Portugisisk (Brasilien)"
 
 #: src/ext_l10n.h:428
 msgid "Breton"
@@ -2498,7 +2489,6 @@ msgid "Polish"
 msgstr "Polsk"
 
 #: src/ext_l10n.h:454
-#, fuzzy
 msgid "Portugese"
 msgstr "Portugisisk"
 
@@ -2515,14 +2505,12 @@ msgid "Scottish"
 msgstr "Skotsk"
 
 #: src/ext_l10n.h:458
-#, fuzzy
 msgid "Serbian"
-msgstr "Seriate"
+msgstr "Serbisk"
 
 #: src/ext_l10n.h:459
-#, fuzzy
 msgid "Serbo-Croatian"
-msgstr "Kroatisk"
+msgstr "Serbokroatisk"
 
 #: src/ext_l10n.h:460
 msgid "Spanish"
@@ -2541,9 +2529,8 @@ msgid "Swedish"
 msgstr "Svensk"
 
 #: src/ext_l10n.h:464
-#, fuzzy
 msgid "Thai"
-msgstr "Dette"
+msgstr "Thai"
 
 #: src/ext_l10n.h:465
 msgid "Turkish"
@@ -4439,8 +4426,7 @@ msgid "LyX objects that can be assigned a color."
 msgstr "LyX-objekter, de kan få tilknyttet en farve."
 
 #: src/frontends/xforms/FormPreferences.C:536
-msgid ""
-"Modify the LyX object's color. Note: you must then \"Apply\" the change."
+msgid "Modify the LyX object's color. Note: you must then \"Apply\" the change."
 msgstr "Ændr farven på LyX-objekt. Bemærk: du skal trykke \"Anvend\" for at gemme."
 
 #: src/frontends/xforms/FormPreferences.C:544
@@ -7441,8 +7427,7 @@ msgstr "Her angives antallet af kopier, der skal udskrives."
 
 #: src/lyxrc.C:1672
 msgid "The option for specifying whether the copies should be collated."
-msgstr ""
-"Denne indstilling angiver, om flere kopier af hver side skal udskrives samlet"
+msgstr "Denne indstilling angiver, om flere kopier af hver side skal udskrives samlet"
 
 #: src/lyxrc.C:1676
 msgid "The option to reverse the order of the pages printed."
@@ -7474,8 +7459,7 @@ msgstr "Få LyX til at give navnet på målprinteren til din udskriftkommando."
 
 #: src/lyxrc.C:1700
 msgid "Option to pass to the print program to print to a file."
-msgstr ""
-"Tilvalg, der skal gives til udskriftprogrammet for at skrive til en fil."
+msgstr "Tilvalg, der skal gives til udskriftprogrammet for at skrive til en fil."
 
 #: src/lyxrc.C:1704
 msgid "Extension of printer program output file. Usually \".ps\"."
@@ -7538,10 +7522,8 @@ msgid "The encoding for the menu/popups fonts."
 msgstr "Tegnsættet for menu/dialog-tekst."
 
 #: src/lyxrc.C:1758
-msgid ""
-"The time interval between auto-saves (in seconds). 0 means no auto-save."
-msgstr ""
-"Tidsintervallet mellem automatisk gemning (i sekunder). 0 betyder aldrig."
+msgid "The time interval between auto-saves (in seconds). 0 means no auto-save."
+msgstr "Tidsintervallet mellem automatisk gemning (i sekunder). 0 betyder aldrig."
 
 #: src/lyxrc.C:1762
 msgid "The default path for your documents."
@@ -7655,8 +7637,7 @@ msgid ""
 msgstr "Angiv et alternativt sprog. Normalt anvendes dokumentets sprog."
 
 #: src/lyxrc.C:1863
-msgid ""
-"Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
+msgid "Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
 msgstr "Angiv en alternativ personlig ordliste. F.eks. \".ispell_danish\"."
 
 #: src/lyxrc.C:1868
@@ -7710,8 +7691,7 @@ msgstr ""
 "samme katalog, som den originale fil."
 
 #: src/lyxrc.C:1900
-msgid ""
-"Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
+msgid "Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
 msgstr "Vælg for at aktivere understøttelse af højre-til-venstre-sprog (f.eks. hebraisk og arabisk)."
 
 #: src/lyxrc.C:1904
@@ -7729,17 +7709,20 @@ msgstr ""
 "\"\\usepackage{omega}\"."
 
 #: src/lyxrc.C:1912
-#, fuzzy
 msgid ""
 "De-select if you don't want the language(s) used as an argument to "
 "\\documentclass."
-msgstr "Deaktivér, hvis du ikke ønsker opstartsbanneret."
+msgstr ""
+"Deaktivér, hvis du ikke ønsker sprog brugt som parameter i "
+"\\documentclass."
 
 #: src/lyxrc.C:1916
 msgid ""
 "De-select if you don't want babel to be used when the language of the "
 "document is the default language."
 msgstr ""
+"Deaktivér, hvis du ikke ønsker, at babel benyttes, hvis dokumentets "
+"sprog er standardsproget."
 
 #: src/lyxrc.C:1920
 msgid ""
@@ -7748,8 +7731,7 @@ msgid ""
 msgstr "Vælg, hvis der kræves en sprogskiftekommando i starten af dokumentet."
 
 #: src/lyxrc.C:1924
-msgid ""
-"Select if a language switching command is needed at the end of the document."
+msgid "Select if a language switching command is needed at the end of the document."
 msgstr "Angiv, om der kræves en sprogskiftekommando ved dokumentets slutning."
 
 #: src/lyxrc.C:1928
@@ -7764,9 +7746,8 @@ msgid "The latex command for changing back to the language of the document."
 msgstr "LaTeX-kommandoen, der skifter tilbage til dokumentets sprog."
 
 #: src/lyxrc.C:1936
-#, fuzzy
 msgid "The latex command for local changing of the language."
-msgstr "LaTeX-kommandoen, der skifter tilbage til dokumentets sprog."
+msgstr "Den latex-kommando, der skifter sprog lokalt."
 
 #: src/lyxrc.C:1941
 #, no-c-format
@@ -8279,270 +8260,3 @@ msgstr "Do kan ikke indsætte et marginnotat i en miniside!"
 msgid "Float would include float!"
 msgstr "Flyder ville inkludere flyder!"
 
-#~ msgid "A&A"
-#~ msgstr "A&A"
-
-#~ msgid "Acknowledgement-numbered"
-#~ msgstr "Acknowledgement-numbered"
-
-#~ msgid "Acknowledgement(s)"
-#~ msgstr "Taksigelse(r)"
-
-#~ msgid "Acknowledgement-unnumbered"
-#~ msgstr "Acknowledgement-unnumbered"
-
-#~ msgid "Acnowledgement"
-#~ msgstr "Taksigelse"
-
-#~ msgid "Algorithm-numbered"
-#~ msgstr "Algorithm-numbered"
-
-#~ msgid "Algorithm-plain"
-#~ msgstr "Algorithm-plain"
-
-#~ msgid "AuthorRunning"
-#~ msgstr "AuthorRunning"
-
-#~ msgid "Axiom-numbered"
-#~ msgstr "Axiom-numbered"
-
-#~ msgid "Axiom-plain"
-#~ msgstr "Axiom-plain"
-
-#~ msgid "Case-numbered"
-#~ msgstr "Case-numbered"
-
-#~ msgid "Claim-numbered"
-#~ msgstr "Claim-numbered"
-
-#~ msgid "Claim-plain"
-#~ msgstr "Claim-plain"
-
-#~ msgid "Claim-unnumbered"
-#~ msgstr "Claim-unnumbered"
-
-#~ msgid "Conclusion-numbered"
-#~ msgstr "Conclusion-numbered"
-
-#~ msgid "Conclusion-unnumbered"
-#~ msgstr "Conclusion-unnumbered"
-
-#~ msgid "Condition-numbered"
-#~ msgstr "Condition-numbered"
-
-#~ msgid "Condition-plain"
-#~ msgstr "Condition-plain"
-
-#~ msgid "Conjecture-numbered"
-#~ msgstr "Conjecture-numbered"
-
-#~ msgid "Conjecture-plain"
-#~ msgstr "Conjecture-plain"
-
-#~ msgid "Conjecture-unnumbered"
-#~ msgstr "Conjecture-unnumbered"
-
-#~ msgid "Corollary-numbered"
-#~ msgstr "Corollary-numbered"
-
-#~ msgid "Corollary-plain"
-#~ msgstr "Corollary-plain"
-
-#~ msgid "Corollary-unnumbered"
-#~ msgstr "Corollary-unnumbered"
-
-#~ msgid "Correspondence"
-#~ msgstr "Korrespondance"
-
-#~ msgid "Criterion-numbered"
-#~ msgstr "Criterion-numbered"
-
-#~ msgid "Criterion-plain"
-#~ msgstr "Criterion-plain"
-
-#~ msgid "Current"
-#~ msgstr "Aktuel"
-
-#~ msgid "Definition-numbered"
-#~ msgstr "Definition-numbered"
-
-#~ msgid "Definition-plain"
-#~ msgstr "Definition-plain"
-
-#~ msgid "Definition-unnumbered"
-#~ msgstr "Definition-unnumbered"
-
-#~ msgid "Example-numbered"
-#~ msgstr "Example-numbered"
-
-#~ msgid "Example-plain"
-#~ msgstr "Example-plain"
-
-#~ msgid "Example-unnumbered"
-#~ msgstr "Example-unnumbered"
-
-#~ msgid "Exercise-numbered"
-#~ msgstr "Exercise-numbered"
-
-#~ msgid "Exercise-plain"
-#~ msgstr "Exercise-plain"
-
-#~ msgid "Fact-numbered"
-#~ msgstr "Fact-numbered"
-
-#~ msgid "Fact-plain"
-#~ msgstr "Fact-plain"
-
-#~ msgid "Fact-unnumbered"
-#~ msgstr "Fact-unnumbered"
-
-#~ msgid "first"
-#~ msgstr "først"
-
-#~ msgid "foilhead"
-#~ msgstr "foilhead"
-
-#~ msgid "Idea"
-#~ msgstr "Idé"
-
-#~ msgid "journal"
-#~ msgstr "tidsskrift"
-
-#~ msgid "Lemma-numbered"
-#~ msgstr "Lemma-numbered"
-
-#~ msgid "Lemma-plain"
-#~ msgstr "Lemma-plain"
-
-#~ msgid "Lemma-unnumbered"
-#~ msgstr "Lemma-unnumbered"
-
-#~ msgid "Lyx-Code"
-#~ msgstr "LyX-kode"
-
-# , c-format
-#~ msgid "modying"
-#~ msgstr "modying"
-
-#~ msgid "Notation-numbered"
-#~ msgstr "Notation-numbered"
-
-#~ msgid "Note-numbered"
-#~ msgstr "Note-numbered"
-
-#~ msgid "Note-plain"
-#~ msgstr "Note-plain"
-
-#~ msgid "Notetoeditor"
-#~ msgstr "Notetoeditor"
-
-#~ msgid "Note-unnumbered"
-#~ msgstr "Note-unnumbered"
-
-#~ msgid "offsets"
-#~ msgstr "offsets"
-
-#~ msgid "Paragraph-numbered"
-#~ msgstr "Paragraph-numbered"
-
-#~ msgid "Parenthetical"
-#~ msgstr "Parenthetical"
-
-#~ msgid "Placefigure"
-#~ msgstr "Placefigure"
-
-#~ msgid "Placetable"
-#~ msgstr "Placetable"
-
-#~ msgid "Problem-numbered"
-#~ msgstr "Problem-numbered"
-
-#~ msgid "Problem-plain"
-#~ msgstr "Problem-plain"
-
-#~ msgid "Proposition-numbered"
-#~ msgstr "Proposition-numbered"
-
-#~ msgid "Proposition-plain"
-#~ msgstr "Proposition-plain"
-
-#~ msgid "Proposition-unnumbered"
-#~ msgstr "Proposition-unnumbered"
-
-#~ msgid "Recieved"
-#~ msgstr "Modtaget"
-
-#~ msgid "Recieved/Accepted"
-#~ msgstr "Modtaget/Accepteret"
-
-#~ msgid "Remark-numbered"
-#~ msgstr "Remark-numbered"
-
-#~ msgid "Remark-plain"
-#~ msgstr "Remark-plain"
-
-#~ msgid "Remark-unnumbered"
-#~ msgstr "Remark-unnumbered"
-
-#~ msgid "Section-numbered"
-#~ msgstr "Section-numbered"
-
-#~ msgid "Send"
-#~ msgstr "Send"
-
-#~ msgid "Shortfoilhead"
-#~ msgstr "Shortfoilhead"
-
-#~ msgid "style"
-#~ msgstr "style"
-
-#~ msgid "Style"
-#~ msgstr "Style"
-
-#~ msgid "Subitle"
-#~ msgstr "Subitle"
-
-#~ msgid "Subsection-numbered"
-#~ msgstr "Subsection-numbered"
-
-#~ msgid "Subsubsection-numbered"
-#~ msgstr "Subsubsection-numbered"
-
-#~ msgid "Suggested"
-#~ msgstr "Foreslået"
-
-#~ msgid "Summary-numbered"
-#~ msgstr "Summary-numbered"
-
-#~ msgid "surname"
-#~ msgstr "surname"
-
-#~ msgid "Theorem-numbered"
-#~ msgstr "Theorem-numbered"
-
-#~ msgid "Theorem-plain"
-#~ msgstr "Theorem-plain"
-
-#~ msgid "Theorem-unnumbered"
-#~ msgstr "Theorem-unnumbered"
-
-#~ msgid "Title_Running"
-#~ msgstr "Løbende_titel"
-
-#~ msgid "Translated"
-#~ msgstr "Oversat"
-
-#~ msgid "Use"
-#~ msgstr "Brug"
-
-#~ msgid "Brazil"
-#~ msgstr "Braziliansk"
-
-#~ msgid "Hungarian"
-#~ msgstr "Ungarnsk"
-
-#~ msgid "Citation style|#s"
-#~ msgstr "Citatudformning|#s"
-
-#~ msgid "Text before|#T"
-#~ msgstr "Tekst før|#T"
