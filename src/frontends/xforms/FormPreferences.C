@@ -69,7 +69,7 @@ Converters local_converters;
 
 
 FormPreferences::FormPreferences(LyXView * lv, Dialogs * d)
-	: FormBaseBI(lv, d, _("Preferences")),
+	: FormBaseBI(lv, d, _("Preferences"), false),
 	  warningPosted(false),
 	  colors_(*this), converters_(*this), inputs_misc_(*this),
 	  formats_(*this), interface_(*this), language_(*this), 
@@ -81,24 +81,6 @@ FormPreferences::FormPreferences(LyXView * lv, Dialogs * d)
 	// storing a copy because we won't be disconnecting.
 	d->showPreferences.connect(slot(this, &FormPreferences::show));
 	d->showSpellcheckerPreferences.connect(slot(this, &FormPreferences::showSpellPref));
-}
-
-
-void FormPreferences::connect()
-{
-	fl_set_form_maxsize( dialog_->form, minw_, minh_ );
-
-	FormBaseBI::connect();
-}
-
-
-void FormPreferences::disconnect()
-{
-	// colors_->disconnect();
-	// converters_->disconnect(); //local_converters.Clear();
-	// formats_->disconnect();    //local_formats.Clear();
-
-	FormBaseBI::disconnect();
 }
 
 
@@ -185,12 +167,6 @@ void FormPreferences::build()
 	bc().setApply(dialog_->button_apply);
 	bc().setCancel(dialog_->button_cancel);
 	bc().setRestore(dialog_->button_restore);
-
-	// The first time the dialog is shown, the Apply, Save buttons are
-	// active. On any subsequent showing they aren't (as they shouldn't).
-	// Don't understand why this is so, but this fixes things.
-	// (Angus 7 Sep, 2001)
-	bc().input(ButtonPolicy::SMI_CANCEL);
 
 	// build the tab folders
 	converters_tab_.reset(build_outer_tab());

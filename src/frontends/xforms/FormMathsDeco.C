@@ -33,7 +33,7 @@ static int const nr_decoration_names = sizeof(decoration_names) / sizeof(char co
  
 FormMathsDeco::FormMathsDeco(LyXView * lv, Dialogs * d,
 			     FormMathsPanel const & p)
-	: FormMathsSub(lv, d, p, _("Maths Decorations"))
+	: FormMathsSub(lv, d, p, _("Maths Decorations"), false)
 {}
 
 

@@ -62,10 +62,6 @@ public:
 private:
 	/// Pointer to the actual instantiation of the ButtonController.
 	virtual xformsBC & bc();
-	/// Connect signals etc. Set form's max size.
-	virtual void connect();
-	/// Disconnect signals. Also perform any necessary housekeeping.
-	virtual void disconnect();
 	/** Redraw the form (on receipt of a Signal indicating, for example,
 	    that the xforms colours have been re-mapped). */
 	virtual void redraw();

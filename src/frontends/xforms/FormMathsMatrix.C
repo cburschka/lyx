@@ -44,7 +44,7 @@ int C_FormMathsMatrixAlignFilter(FL_OBJECT * ob, char const *,
 
 FormMathsMatrix::FormMathsMatrix(LyXView * lv, Dialogs * d,
 			       FormMathsPanel const & p)
-	: FormMathsSub(lv, d, p, _("Maths Matrix"))
+	: FormMathsSub(lv, d, p, _("Maths Matrix"), false)
 {}
 
 

@@ -52,7 +52,7 @@ public:
 
 protected: // methods
 	///
-	FormBaseDeprecated(LyXView *, Dialogs *, string const &);
+	FormBaseDeprecated(LyXView *, Dialogs *, string const &, bool);
 	///
 	virtual ~FormBaseDeprecated() {}
 
@@ -115,11 +115,14 @@ protected: // methods
 	SigC::Connection r_;
 	/// dialog title, displayed by WM.
   	string title_;
-public:
-	/// Overcome a dumb xforms sizing bug
-	mutable int minw_;
+
+private:
+	/// The dialog's minimum allowable dimensions.
+	int minw_;
 	///
-	mutable int minh_;
+	int minh_;
+	/// Can the dialog be resized after it has been created?
+	bool allow_resize_;
 };
 
 
@@ -130,7 +133,7 @@ public:
 class FormBaseBI : public FormBaseDeprecated {
 protected:
 	/// Constructor
-	FormBaseBI(LyXView *, Dialogs *, string const &);
+	FormBaseBI(LyXView *, Dialogs *, string const &, bool allowResize=true);
 
 	/// Connect signals
 	virtual void connect();
@@ -142,7 +145,7 @@ protected:
 class FormBaseBD : public FormBaseDeprecated {
 protected:
 	/// Constructor
-	FormBaseBD(LyXView *, Dialogs *, string const &);
+	FormBaseBD(LyXView *, Dialogs *, string const &, bool allowResize=true);
 
 	/// Connect signals
 	virtual void connect();

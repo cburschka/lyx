@@ -54,7 +54,7 @@ using std::vector;
 using SigC::slot;
 
 FormMathsPanel::FormMathsPanel(LyXView * lv, Dialogs * d)
-	: FormBaseBD(lv, d, _("Maths Panel")),
+	: FormBaseBD(lv, d, _("Maths Panel"), false),
 	  active_(0), bc_("Close")
 {
 	deco_.reset(  new FormMathsDeco(  lv, d, *this));
@@ -276,8 +276,8 @@ void FormMathsPanel::mathDisplay() const
 
 
 FormMathsSub::FormMathsSub(LyXView * lv, Dialogs * d, FormMathsPanel const & p,
-			   string const & t)
-    : FormBaseBD(lv, d, t), parent_(p), bc_("Close")
+			   string const & t, bool allowResize)
+    : FormBaseBD(lv, d, t, allowResize), parent_(p), bc_("Close")
 {}
 
 

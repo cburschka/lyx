@@ -42,7 +42,7 @@ using std::endl;
 
 FormMathsDelim::FormMathsDelim(LyXView * lv, Dialogs * d, 
 			       FormMathsPanel const & p)
-	: FormMathsSub(lv, d, p, _("Maths Delimiters"))
+	: FormMathsSub(lv, d, p, _("Maths Delimiters"), false)
 {}
 
 

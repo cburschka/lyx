@@ -53,8 +53,9 @@ extern "C" void C_FormBaseDeprecatedRestoreCB(FL_OBJECT * ob, long d)
 
 
 FormBaseDeprecated::FormBaseDeprecated(LyXView * lv, Dialogs * d,
-				       string const & t)
-	: lv_(lv), d_(d), h_(0), r_(0), title_(t), minw_(0), minh_(0)
+				       string const & t, bool allowResize)
+	: lv_(lv), d_(d), h_(0), r_(0), title_(t),
+	  minw_(0), minh_(0), allow_resize_(allowResize)
 {
 	lyx::Assert(lv && d);
 }
@@ -86,6 +87,8 @@ void FormBaseDeprecated::show()
 	if (!form()) {
 		build();
 
+		bc().refresh();
+ 
 		// work around dumb xforms sizing bug
 		minw_ = form()->w;
 		minh_ = form()->h;
@@ -110,9 +113,13 @@ void FormBaseDeprecated::show()
  		 */
  		XMapWindow(fl_get_display(), form()->window);
 	} else {
-		// calls to fl_set_form_minsize/maxsize apply only to the next
-		// fl_show_form(), so connect() comes first.
 		connect();
+
+		// calls to fl_set_form_minsize/maxsize apply only to the next
+		// fl_show_form(), so this comes first.
+		fl_set_form_minsize(form(), minw_, minh_);
+		if (!allow_resize_)
+			fl_set_form_maxsize(form(), minw_, minh_);
 
 		fl_show_form(form(),
 			FL_PLACE_MOUSE | FL_FREE_SIZE,
@@ -201,8 +208,9 @@ void FormBaseDeprecated::RestoreCB(FL_OBJECT * ob, long)
 }
 
 
-FormBaseBI::FormBaseBI(LyXView * lv, Dialogs * d, string const & t)
-	: FormBaseDeprecated(lv, d, t)
+FormBaseBI::FormBaseBI(LyXView * lv, Dialogs * d, string const & t,
+		       bool allowResize)
+	: FormBaseDeprecated(lv, d, t, allowResize)
 {}
 
 
@@ -213,8 +221,9 @@ void FormBaseBI::connect()
 }
 
 
-FormBaseBD::FormBaseBD(LyXView * lv, Dialogs * d, string const & t)
-	: FormBaseDeprecated(lv, d, t),
+FormBaseBD::FormBaseBD(LyXView * lv, Dialogs * d, string const & t,
+		       bool allowResize)
+	: FormBaseDeprecated(lv, d, t, allowResize),
 	  u_(0)
 {}
 

@@ -22,7 +22,7 @@ extern char * latex_mathspace[];
 
 FormMathsSpace::FormMathsSpace(LyXView * lv, Dialogs * d,
 			       FormMathsPanel const & p)
-	: FormMathsSub(lv, d, p, _("Maths Spacing")),
+	: FormMathsSub(lv, d, p, _("Maths Spacing"), false),
 	  space_(-1)
 {}
 

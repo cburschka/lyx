@@ -1,3 +1,17 @@
+2001-09-07  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* FormBaseDeprecated.[Ch]: use the same allow_resize methodology as has
+	been used successfully in FormBase.
+	(show): call bc().refresh() after building the dialog to activate the
+	button controller.
+
+	* FormPreferences.C (build): remove hack to fix butoon controller as
+	the correct fix is in FormBaseDeprecated.
+
+	* FormPreferences.[Ch] (connect, disconnect): removed (redundant).
+
+	* FormMaths*.C (c-tor): prohibit resizing of the dialog.
+	
 2001-09-07  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* Toolbar_pimpl.C (setLayout): 

@@ -107,7 +107,7 @@ class FormMathsSub : public FormBaseBD {
 public:
 	///
 	FormMathsSub(LyXView *, Dialogs *, FormMathsPanel const &,
-		     string const &);
+		     string const &, bool allowResize=true);
 
 protected:
 	/// Pointer to the actual instantiation of the ButtonController.
