@@ -42,7 +42,7 @@ std::ostream & operator<<(std::ostream & os, LCursor const & cursor)
 
 
 LCursor::LCursor(BufferView * bv)
-	: bv_(bv)
+	: data_(1), bv_(bv)
 {}
 
 
@@ -51,7 +51,7 @@ DispatchResult LCursor::dispatch(FuncRequest const & cmd0)
 	lyxerr << "\nLCursor::dispatch: " << *this << endl;
 	FuncRequest cmd = cmd0;
 
-	for (int i = data_.size() - 1; i >= 0; --i) {
+	for (int i = data_.size() - 1; i >= 1; --i) {
 		CursorSlice const & citem = data_[i];
 		lyxerr << "trying to dispatch to inset " << citem.inset_ << endl;
 		DispatchResult res = citem.inset_->dispatch(cmd);
@@ -105,10 +105,11 @@ void LCursor::push(UpdatableInset * inset)
 }
 
 
+
 void LCursor::pop(int depth)
 {
 	lyxerr << "LCursor::pop() to " << depth << endl;
-	while (depth < data_.size()) {
+	while (data.size() > 1 && depth < data_.size()) {
 		lyxerr <<   "LCursor::pop a level " << endl;
 		data_.pop_back();
 	}
@@ -119,7 +120,7 @@ void LCursor::pop()
 {
 	lyxerr << "LCursor::pop() " << endl;
 	//BOOST_ASSERT(!data_.empty());
-	if (data_.empty())
+	if (data_.size() <= 1)
 		lyxerr << "### TRYING TO POP FROM EMPTY CURSOR" << endl;
 	else
 		data_.pop_back();
@@ -128,16 +129,16 @@ void LCursor::pop()
 
 UpdatableInset * LCursor::innerInset() const
 {
-	return data_.empty() ? 0 : data_.back().asUpdatableInset();
+	return data_.size() <= 1 ? 0 : data_.back().asUpdatableInset();
 }
 
 
 LyXText * LCursor::innerText() const
 {
-	if (!data_.empty()) {
+	if (data_.size() > 1) {
 		// go up until first non-0 text is hit
 		// (innermost text is 0 e.g. for mathed and the outer tabular level)
-		for (int i = data_.size() - 1; i >= 0; --i)
+		for (int i = data_.size() - 1; i >= 1; --i)
 			if (data_[i].text())
 				return data_[i].text();
 	}
@@ -147,7 +148,7 @@ LyXText * LCursor::innerText() const
 
 void LCursor::updatePos()
 {
-	if (!data_.empty())
+	if (data_.size() > 1)
 		cached_y_ = bv_->top_y() + innerInset()->y();
 }
 
@@ -167,7 +168,7 @@ void LCursor::getDim(int & asc, int & desc) const
 
 void LCursor::getPos(int & x, int & y) const
 {
-	if (data_.empty()) {
+	if (data_.size() <= 1) {
 		x = bv_->text()->cursorX();
 		y = bv_->text()->cursorY();
 //		y -= bv_->top_y();
@@ -190,7 +191,7 @@ void LCursor::getPos(int & x, int & y) const
 
 UpdatableInset * LCursor::innerInsetOfType(int code) const
 {
-	for (int i = data_.size() - 1; i >= 0; --i)
+	for (int i = data_.size() - 1; i >= 1; --i)
 		if (data_[i].asUpdatableInset()->lyxCode() == code)
 			return data_[i].asUpdatableInset();
 	return 0;
@@ -206,22 +207,13 @@ InsetTabular * LCursor::innerInsetTabular() const
 
 void LCursor::cell(int idx)
 {
-#if 0
 	BOOST_ASSERT(!data_.empty());
 	data_.back().idx_ = idx;
-#else
-	if (!data_.empty())
-		data_.back().idx_ = idx;
-#endif
 }
 
 
 int LCursor::cell() const
 {
-#if 0
 	BOOST_ASSERT(!data_.empty());
 	return data_.back().idx_;
-#else
-	return data_.empty() ? 0 : data_.back().idx_;
-#endif
 }
