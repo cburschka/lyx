@@ -76,7 +76,8 @@ TODO
 
 #include "support/filetools.h"
 #include "support/lyxalgo.h" // lyx::count
-#include "support/lyxlib.h" // float_equal
+#include "support/lyxlib.h" // lyx::sum
+#include "support/lstrings.h"
 #include "support/os.h"
 #include "support/systemcall.h"
 
@@ -93,12 +94,12 @@ using lyx::support::ChangeExtension;
 using lyx::support::compare_timestamps;
 using lyx::support::contains;
 using lyx::support::FileName;
-using lyx::support::float_equal;
 using lyx::support::GetExtension;
 using lyx::support::IsFileReadable;
 using lyx::support::LibFileSearch;
 using lyx::support::OnlyFilename;
 using lyx::support::rtrim;
+using lyx::support::strToDbl;
 using lyx::support::subst;
 using lyx::support::Systemcall;
 using lyx::support::unzipFile;
@@ -298,9 +299,9 @@ string const InsetGraphics::createLatexOptions() const
 	    options << " draft,\n";
 	if (params().clip)
 	    options << " clip,\n";
-	if (!float_equal(params().scale, 0.0, 0.05)) {
-		if (!float_equal(params().scale, 100.0, 0.05))
-			options << " scale=" << params().scale / 100.0
+	if (!params().scale.empty() && params().scale != "0") {
+		if (params().scale != "100")
+			options << " scale=" << strToDbl(params().scale) / 100.0
 				<< ",\n";
 	} else {
 		if (!params().width.zero())
@@ -313,7 +314,7 @@ string const InsetGraphics::createLatexOptions() const
 
 	// Make sure rotation angle is not very close to zero;
 	// a float can be effectively zero but not exactly zero.
-	if (!float_equal(params().rotateAngle, 0, 0.001)) {
+	if (!params().rotateAngle.empty() && params().rotateAngle != "0") {
 	    options << "  angle=" << params().rotateAngle << ",\n";
 	    if (!params().rotateOrigin.empty()) {
 		options << "  origin=" << params().rotateOrigin[0];
@@ -402,9 +403,10 @@ string const InsetGraphics::createDocBookAttributes() const
 	// Right now it only works with my version of db2latex :-)
 
 	ostringstream options;
-	if (!float_equal(params().scale, 0.0, 0.05)) {
-		if (!float_equal(params().scale, 100.0, 0.05))
-			options << " scale=\"" << static_cast<int>( (params().scale) + 0.5 )
+	if (!params().scale.empty() && params().scale != "0") {
+		if (params().scale != "100")
+			options << " scale=\"" 
+				<< static_cast<int>( (strToDbl(params().scale)) + 0.5 )
 				<< "\" ";
 	} else {
 		if (!params().width.zero()) {

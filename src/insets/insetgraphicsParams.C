@@ -66,7 +66,7 @@ void InsetGraphicsParams::init()
 	filename.erase();
 	lyxscale = 100;			// lyx scaling in percentage
 	display = lyx::graphics::DefaultDisplay; // display mode; see preferences
-	scale = 100.0;			// output scaling in percentage
+	scale = string();			// output scaling in percentage
 	width = LyXLength();
 	height = LyXLength();
 	keepAspectRatio = false;	// for LaTeX output
@@ -76,7 +76,7 @@ void InsetGraphicsParams::init()
 	bb = string();			// bounding box
 	clip = false;			// clip image
 
-	rotateAngle = 0.0;		// angle of rotation in degrees
+	rotateAngle = "0";		// angle of rotation in degrees
 	rotateOrigin.erase();		// Origin of rotation
 	subcaption = false;		// subfigure
 	subcaptionText.erase();		// subfigure caption
@@ -124,7 +124,7 @@ bool operator==(InsetGraphicsParams const & left,
 	    left.bb == right.bb &&
 	    left.clip == right.clip &&
 
-	    float_equal(left.rotateAngle, right.rotateAngle, 0.001) &&
+	    left.rotateAngle == right.rotateAngle &&
 	    left.rotateOrigin == right.rotateOrigin &&
 	    left.subcaption == right.subcaption &&
 	    left.subcaptionText == right.subcaptionText &&
@@ -154,8 +154,8 @@ void InsetGraphicsParams::Write(ostream & os, string const & bufpath) const
 		os << "\tlyxscale " << lyxscale << '\n';
 	if (display != lyx::graphics::DefaultDisplay)
 		os << "\tdisplay " << lyx::graphics::displayTranslator().find(display) << '\n';
-	if (!float_equal(scale, 0.0, 0.05)) {
-		if (!float_equal(scale, 100.0, 0.05))
+	if (!scale.empty() && scale != "0") {
+		if (scale != "100")
 			os << "\tscale " << scale << '\n';
 	} else {
 		if (!width.zero())
@@ -176,7 +176,7 @@ void InsetGraphicsParams::Write(ostream & os, string const & bufpath) const
 	if (clip)			// clip image
 		os << "\tclip\n";
 
-	if (rotateAngle != 0.0)
+	if (!rotateAngle.empty() && rotateAngle != "0")
 		os << "\trotateAngle " << rotateAngle << '\n';
 	if (!rotateOrigin.empty())
 		os << "\trotateOrigin " << rotateOrigin << '\n';
@@ -203,15 +203,15 @@ bool InsetGraphicsParams::Read(LyXLex & lex, string const & token, string const 
 		display = lyx::graphics::displayTranslator().find(type);
 	} else if (token == "scale") {
 		lex.next();
-		scale = lex.getFloat();
+		scale = lex.getString();
 	} else if (token == "width") {
 		lex.next();
 		width = LyXLength(lex.getString());
-		scale = 0.0;
+		scale = string();
 	} else if (token == "height") {
 		lex.next();
 		height = LyXLength(lex.getString());
-		scale = 0.0;
+		scale = string();
 	} else if (token == "keepAspectRatio") {
 		keepAspectRatio = true;
 	} else if (token == "draft") {
@@ -230,7 +230,7 @@ bool InsetGraphicsParams::Read(LyXLex & lex, string const & token, string const 
 		clip = true;
 	} else if (token == "rotateAngle") {
 		lex.next();
-		rotateAngle = lex.getFloat();
+		rotateAngle = lex.getString();
 	} else if (token == "rotateOrigin") {
 		lex.next();
 		rotateOrigin=lex.getString();
@@ -265,7 +265,7 @@ lyx::graphics::Params InsetGraphicsParams::as_grfxParams() const
 	lyx::graphics::Params pars;
 	pars.filename = filename.absFilename();
 	pars.scale = lyxscale;
-	pars.angle = rotateAngle;
+	pars.angle = lyx::support::strToDbl(rotateAngle);
 
 	if (clip) {
 		pars.bb = bb;

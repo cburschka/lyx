@@ -37,7 +37,7 @@ struct InsetGraphicsParams
 	/// How to display the image inside LyX
 	lyx::graphics::DisplayType display;
 	/// Scaling for output (LaTeX)
-	float scale;
+	std::string scale;
 	/// sizes for output (LaTeX)
 	LyXLength width;
 	///
@@ -55,7 +55,7 @@ struct InsetGraphicsParams
 	bool clip;
 
 	/// Rotation angle.
-	float rotateAngle;
+	std::string rotateAngle;
 	/// Origin point of rotation
 	std::string rotateOrigin;
 	/// Do we have a subcaption?
