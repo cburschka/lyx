@@ -930,12 +930,12 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 		bv->switchKeyMap();
 		break;
 
-	case LFUN_PROTECTEDSPACE:
+	case LFUN_SPACE_INSERT:
 		if (cursor.par()->layout()->free_spacing) {
 			insertChar(' ');
 			update();
 		} else {
-			specialChar(this, bv, InsetSpecialChar::PROTECTED_SEPARATOR);
+			doInsertInset(this, cmd, false, false);
 		}
 		moveCursorUpdate(bv, false);
 		break;

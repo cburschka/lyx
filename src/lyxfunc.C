@@ -663,10 +663,10 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 	case LFUN_END_OF_SENTENCE:
 		code = Inset::SPECIALCHAR_CODE;
 		break;
-	case LFUN_PROTECTEDSPACE:
+	case LFUN_SPACE_INSERT:
 		// slight hack: we know this is allowed in math mode
 		if (!mathcursor)
-			code = Inset::SPECIALCHAR_CODE;
+			code = Inset::SPACE_CODE;
 		break;
 	default:
 		break;

@@ -637,7 +637,7 @@ dispatch_result InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 		break;
 	}
 
-	case LFUN_PROTECTEDSPACE:
+	case LFUN_SPACE_INSERT:
 	case LFUN_MATH_SPACE:
 		bv->lockedInsetStoreUndo(Undo::EDIT);
 		mathcursor->insert(MathAtom(new MathSpaceInset(",")));

@@ -1,6 +1,13 @@
 LyX file-format changes
 -----------------------
 
+2003-05-20  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* Added new space insets:
+		\SpecialChar ~ is now \InsetSpace ~
+		ERT: "\ " could be converted to InsetSpace \<space>
+		ERT: "\," could be converted to InsetSpace \,
+
 2003-03-12  John Levon  <levon@movementarian.org>
 
 	* Added \\end_header to signify the end of the header in a

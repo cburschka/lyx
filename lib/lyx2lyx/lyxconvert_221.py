@@ -15,11 +15,18 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
+import string
+
 def add_end(header):
     header.append("\\end_header");
 
+def convert_spaces(lines):
+    for i in range(len(lines)):
+        lines[i] = string.replace(lines[i],"\\SpecialChar ~","\\InsetSpace ~")
+
 def convert(header, body):
     add_end(header)
+    convert_spaces(body)
 
 if __name__ == "__main__":
     pass

@@ -27,6 +27,7 @@
 #include "insets/insetoptarg.h"
 #include "insets/insetcommandparams.h"
 #include "insets/insetbibitem.h"
+#include "insets/insetspace.h"
 #include "insets/insetspecialchar.h"
 #include "insets/insetlatexaccent.h"
 #include "insets/insettabular.h"
@@ -926,26 +927,30 @@ int readParToken(Buffer & buf, Paragraph & par, LyXLex & lex, string const & tok
 	} else if (token == "\\color") {
 		lex.next();
 		font.setLyXColor(lex.getString());
-	} else if (token == "\\SpecialChar") {
+	} else if (token == "\\InsetSpace" || token == "\\SpecialChar") {
 		LyXLayout_ptr const & layout = par.layout();
 
 		// Insets don't make sense in a free-spacing context! ---Kayvan
 		if (layout->free_spacing || par.isFreeSpacing()) {
-			if (lex.isOK()) {
+			if (token == "\\InsetSpace")
+				par.insertChar(par.size(), ' ', font, change);
+			else if (lex.isOK()) {
 				lex.next();
 				string const next_token = lex.getString();
-				if (next_token == "\\-") {
+				if (next_token == "\\-")
 					par.insertChar(par.size(), '-', font, change);
-				} else if (next_token == "~") {
-					par.insertChar(par.size(), ' ', font, change);
-				} else {
+				else {
 					lex.printError("Token `$$Token' "
 						       "is in free space "
 						       "paragraph layout!");
 				}
 			}
 		} else {
-			Inset * inset = new InsetSpecialChar;
+			Inset * inset = 0;
+			if (token == "\\SpecialChar" )
+				inset = new InsetSpecialChar;
+			else
+				inset = new InsetSpace;
 			inset->read(&buf, lex);
 			par.insertInset(par.size(), inset, font, change);
 		}

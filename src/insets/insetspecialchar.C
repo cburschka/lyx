@@ -50,7 +50,7 @@ void InsetSpecialChar::dimension(BufferView *, LyXFont const & font,
 		case END_OF_SENTENCE:     s = ".";     break;
 		case LDOTS:               s = ". . ."; break;
 		case MENU_SEPARATOR:      s = " x ";   break;
-		case PROTECTED_SEPARATOR: s = "x";     break;
+		case HYPHENATION:      s = "-";   break;
 	}
 	dim.w = font_metrics::width(s, font);
 	if (kind_ == HYPHENATION && dim.w > 5)
@@ -110,28 +110,6 @@ void InsetSpecialChar::draw(BufferView * bv, LyXFont const & f,
 		x += width(bv, font);
 		break;
 	}
-	case PROTECTED_SEPARATOR:
-	{
-		float w = width(bv, font);
-		int h = font_metrics::ascent('x', font);
-		int xp[4], yp[4];
-
-		xp[0] = int(x);
-		yp[0] = baseline - max(h / 4, 1);
-
-		xp[1] = int(x);
-		yp[1] = baseline;
-
-		xp[2] = int(x + w);
-		yp[2] = baseline;
-
-		xp[3] = int(x + w);
-		yp[3] = baseline - max(h / 4, 1);
-
-		pain.lines(xp, yp, 4, LColor::special);
-		x += w;
-		break;
-	}
 	}
 }
 
@@ -156,9 +134,6 @@ void InsetSpecialChar::write(Buffer const *, ostream & os) const
 	case MENU_SEPARATOR:
 		command = "\\menuseparator";
 		break;
-	case PROTECTED_SEPARATOR:
-		command = "~";
-		break;
 	}
 	os << "\\SpecialChar " << command << "\n";
 }
@@ -180,8 +155,6 @@ void InsetSpecialChar::read(Buffer const *, LyXLex & lex)
 		kind_ = LDOTS;
 	else if (command == "\\menuseparator")
 		kind_ = MENU_SEPARATOR;
-	else if (command == "~")
-		kind_ = PROTECTED_SEPARATOR;
 	else
 		lex.printError("InsetSpecialChar: Unknown kind: `$$Token'");
 }
@@ -206,9 +179,6 @@ int InsetSpecialChar::latex(Buffer const *, ostream & os, bool /*fragile*/,
 	case MENU_SEPARATOR:
 		os << "\\lyxarrow{}";
 		break;
-	case PROTECTED_SEPARATOR:
-		os << (free_space ? ' ' : '~');
-		break;
 	}
 	return 0;
 }
@@ -228,9 +198,6 @@ int InsetSpecialChar::ascii(Buffer const *, ostream & os, int) const
 		break;
 	case MENU_SEPARATOR:
 		os << "->";
-		break;
-	case PROTECTED_SEPARATOR:
-		os << ' ';
 		break;
 	}
 	return 0;
@@ -252,9 +219,6 @@ int InsetSpecialChar::linuxdoc(Buffer const *, ostream & os) const
 	case MENU_SEPARATOR:
 		os << "&lyxarrow;";
 		break;
-	case PROTECTED_SEPARATOR:
-		os << "&nbsp;";
-		break;
 	}
 	return 0;
 }
@@ -274,9 +238,6 @@ int InsetSpecialChar::docbook(Buffer const *, ostream & os, bool) const
 		break;
 	case MENU_SEPARATOR:
 		os << "&lyxarrow;";
-		break;
-	case PROTECTED_SEPARATOR:
-		os << "&nbsp;";
 		break;
 	}
 	return 0;
@@ -311,7 +272,7 @@ bool InsetSpecialChar::isLetter() const
 
 bool InsetSpecialChar::isSpace() const
 {
-	return kind_ == PROTECTED_SEPARATOR;
+	return false;
 }
 
 

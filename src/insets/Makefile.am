@@ -85,6 +85,8 @@ libinsets_la_SOURCES = \
 	insetquotes.h \
 	insetref.C \
 	insetref.h \
+	insetspace.C \
+	insetspace.h \
 	insetspecialchar.C \
 	insetspecialchar.h \
 	insettabular.C \

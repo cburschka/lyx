@@ -116,7 +116,7 @@
 \bind "braceright"		"self-insert"
 \bind "asciitilde"		"self-insert"
 
-\bind "nobreakspace"		"protected-space-insert"
+\bind "nobreakspace"		"space-insert protected"
 \bind "exclamdown"		"self-insert"
 \bind "cent"			"self-insert"
 \bind "sterling"		"self-insert"

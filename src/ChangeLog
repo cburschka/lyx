@@ -1,3 +1,11 @@
+2003-05-20  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* LyXAction.C: new lfun space-insert, kill protected-space-insert
+	* lfuns.h: new LFUN_SPACE
+	* lyxfunc.C: protected space has a new lfun
+	* paragraph_funcs.C: read new space insets
+	* text3.C:
+	* factory.C: handle new space insets
 
 2003-05-22  André Pönitz  <poenitz@gmx.net>
 

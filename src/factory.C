@@ -40,6 +40,7 @@
 #include "insets/insetoptarg.h"
 #include "insets/insetparent.h"
 #include "insets/insetref.h"
+#include "insets/insetspace.h"
 #include "insets/insettabular.h"
 #include "insets/insettext.h"
 #include "insets/insettoc.h"
@@ -245,6 +246,31 @@ Inset * createInset(FuncRequest const & cmd)
 			return new InsetUrl(icp);
 		}
 	}
+
+	case LFUN_SPACE_INSERT: {
+		string const name = cmd.argument;
+		if (name == "normal")
+			return new InsetSpace(InsetSpace::NORMAL);
+		else if (name == "protected")
+			return new InsetSpace(InsetSpace::PROTECTED);
+		else if (name == "thin")
+			return new InsetSpace(InsetSpace::THIN);
+		else if (name == "quad")
+			return new InsetSpace(InsetSpace::QUAD);
+		else if (name == "qquad")
+			return new InsetSpace(InsetSpace::QQUAD);
+		else if (name == "enspace")
+			return new InsetSpace(InsetSpace::ENSPACE);
+		else if (name == "enskip")
+			return new InsetSpace(InsetSpace::ENSKIP);
+		else if (name == "negthinspace")
+			return new InsetSpace(InsetSpace::NEGTHIN);
+		else if (name.empty())
+			lyxerr << "LyX function 'space' needs an argument." << endl;
+		else
+			lyxerr << "Wrong argument for LyX function 'space'." << endl;
+	}
+
 	break;
 
 	default:
@@ -337,6 +363,8 @@ Inset * readInset(LyXLex & lex, Buffer const & buf)
 			inset = new InsetEnvironment(buf.params, lex.getString());
 		} else if (tmptok == "ERT") {
 			inset = new InsetERT(buf.params);
+		} else if (tmptok == "InsetSpace") {
+			inset = new InsetSpace;
 		} else if (tmptok == "Tabular") {
 			inset = new InsetTabular(buf);
 		} else if (tmptok == "Text") {

@@ -1,18 +1,19 @@
 // -*- C++ -*-
 /**
- * \file insetspecialchar.h
+ * \file InsetSpace.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
  * \author Asger Alstrup Nielsen
  * \author Jean-Marc Lasgouttes
  * \author Lars Gullik Bjønnes
+ * \author Juergen Spitzmueller
  *
  * Full author contact details are available in file CREDITS
  */
 
-#ifndef INSET_SPECIALCHAR_H
-#define INSET_SPECIALCHAR_H
+#ifndef INSET_SPACE_H
+#define INSET_SPACE_H
 
 
 #include "inset.h"
@@ -20,29 +21,35 @@
 
 struct LaTeXFeatures;
 
-///  Used to insert special chars
-class InsetSpecialChar : public Inset {
+///  Used to insert different kinds of spaces
+class InsetSpace : public Inset {
 public:
 
-	/// The different kinds of special chars we support
+	/// The different kinds of spaces we support
 	enum Kind {
-		/// Optional hyphenation point (\-)
-		HYPHENATION,
-		/// Ligature break point (\textcompwordmark)
-		LIGATURE_BREAK,
-		/// ... (\ldots)
-		LDOTS,
-		/// End of sentence punctuation (\@)
-		END_OF_SENTENCE,
-		/// Menu separator
-		MENU_SEPARATOR,
+		/// Normal space ('\ ')
+		NORMAL,
+		/// Protected (no break) space ('~')
+		PROTECTED,
+		/// Thin space ('\,')
+		THIN,
+		/// \quad (1em)
+		QUAD,
+		/// \qquad (2em)
+		QQUAD,
+		/// \enspace (0.5em unbreakable)
+		ENSPACE,
+		/// \enspace (0.5em breakable)
+		ENSKIP,
+		/// Negative thin space ('\negthinspace')
+		NEGTHIN
 	};
 
 	///
-	InsetSpecialChar() {}
+	InsetSpace() {}
 	///
 	explicit
-	InsetSpecialChar(Kind k);
+	InsetSpace(Kind k);
 	///
 	Kind kind() const;
 	///
@@ -65,11 +72,9 @@ public:
 	///
 	virtual Inset * clone(Buffer const &, bool same_id = false) const;
 	///
-	Inset::Code lyxCode() const { return Inset::SPECIALCHAR_CODE; }
+	Inset::Code lyxCode() const { return Inset::SPACE_CODE; }
 	/// We don't need \begin_inset and \end_inset
 	bool directWrite() const { return true; }
-	///
-	void validate(LaTeXFeatures &) const;
 
 	// should this inset be handled like a normal charater
 	bool isChar() const;
@@ -85,4 +90,4 @@ private:
 	Kind kind_;
 };
 
-#endif
+#endif // INSET_SPACE_H
