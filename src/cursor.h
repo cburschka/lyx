@@ -82,6 +82,9 @@ public:
 	std::vector<CursorItem> data_;
 	///
 	BufferView * bv_;
+private:
+	///
+	int cached_y_;
 };
 
 #endif // LYXCURSOR_H

@@ -343,9 +343,22 @@ void BufferView::Pimpl::buffer(Buffer * b)
 bool BufferView::Pimpl::fitCursor()
 {
 	lyxerr << "BufferView::Pimpl::fitCursor." << endl;
-	bool ret;
 
-#ifndef LOCK
+	int x,y;
+	bv_->cursor().getPos(x, y);
+
+	if (y < top_y() || y > top_y() + workarea().workHeight()) {
+		int newtop = y - workarea().workHeight() / 2;
+		newtop = std::max(0, newtop);
+		top_y(newtop);
+		updateScrollbar();
+		return true;
+	}
+	return false;
+
+// dead code below
+	bool ret;
+#if 0	
 	UpdatableInset * tli =
 		static_cast<UpdatableInset *>(cursor_.innerInset());
 	if (tli) {
@@ -354,7 +367,8 @@ bool BufferView::Pimpl::fitCursor()
 	} else {
 		ret = screen().fitCursor(bv_->text, bv_);
 	}
-#else
+#endif
+#if 0
 	ret = screen().fitCursor(bv_->text, bv_);
 #endif
 
@@ -958,7 +972,8 @@ bool BufferView::Pimpl::workAreaDispatch(FuncRequest const & cmd)
 				case FINISHED_DOWN:
 					theTempCursor.pop();
 					bv_->cursor() = theTempCursor;
-					bv_->cursor().innerText()->setCursorFromCoordinates(cmd.x, cmd.y);
+					bv_->cursor().innerText()->setCursorFromCoordinates(cmd.x, top_y() + cmd.y);
+					bv_->fitCursor();
 					return true;
 				default:
 					lyxerr << "not dispatched by inner inset val: " << res.val() << endl;
@@ -969,13 +984,15 @@ bool BufferView::Pimpl::workAreaDispatch(FuncRequest const & cmd)
 		// otherwise set cursor to surrounding LyXText
 		if (!res.dispatched()) {
 			lyxerr << "cursor is: " << bv_->cursor() << endl;
-			lyxerr << "dispatching " << cmd1 << " to surrounding LyXText "
-				<< bv_->cursor().innerText() << endl;
-			theTempCursor.innerText()->dispatch(cmd1);
+			lyxerr << "dispatching " << cmd1
+			       << " to surrounding LyXText "
+			       << bv_->cursor().innerText() << endl;
 			cursor_ = theTempCursor;
+			theTempCursor.dispatch(cmd1);
 			//return DispatchResult(true, true);
 		}
 
+		bv_->update();
 		// see workAreaKeyPress
 		cursor_timeout.restart();
 		screen().showCursor(*bv_);

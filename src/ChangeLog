@@ -1,3 +1,9 @@
+2003-11-11  Alfredo Braunstein  <abraunst@libero.it>
+
+	* cursor.C (getPos): return absolute cached y coord
+
+	* BufferView_pimpl.C (fitCursor): new simplistic code
+	(workAreaDispatch): add a fitCursor call
 
 2003-11-10  André Pönitz  <poenitz@gmx.net>
 

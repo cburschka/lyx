@@ -289,7 +289,7 @@ void InsetText::updateLocal(BufferView * bv, bool /*mark_dirty*/)
 	if (!text_.selection.set())
 		text_.selection.cursor = text_.cursor;
 
-	bv->fitCursor();
+//	bv->fitCursor();
 	bv->update();
 	bv->owner()->view_state_changed();
 	bv->owner()->updateMenubar();
@@ -780,7 +780,7 @@ bool InsetText::insertInset(BufferView * bv, InsetOld * inset)
 {
 	inset->setOwner(this);
 	text_.insertInset(inset);
-	bv->fitCursor();
+//	bv->fitCursor();
 	updateLocal(bv, true);
 	return true;
 }
@@ -847,7 +847,7 @@ void InsetText::setFont(BufferView * bv, LyXFont const & font, bool toggleall,
 	if (selectall)
 		text_.clearSelection();
 
-	bv->fitCursor();
+//	bv->fitCursor();
 	updateLocal(bv, true);
 }
 

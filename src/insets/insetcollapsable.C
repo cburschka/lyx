@@ -268,9 +268,9 @@ bool InsetCollapsable::hitButton(FuncRequest const & cmd) const
 void InsetCollapsable::edit(BufferView * bv, bool left)
 {
 	lyxerr << "InsetCollapsable: edit left/right" << endl;
-	bv->cursor().push(this);
 	inset.edit(bv, left);
 	open(bv);
+	bv->cursor().push(this);
 }
 
 
@@ -288,8 +288,7 @@ void InsetCollapsable::edit(BufferView * bv, int x, int y)
 		if (y <= button_dim.y2)
 			inset.edit(bv, x, 0);
 		else
-			inset.edit(bv, x,
-				ascent() + y - height_collapsed() + inset.ascent());
+			inset.edit(bv, x, ascent() + y - height_collapsed() + inset.ascent());
 	}
 	bv->cursor().push(this);
 }

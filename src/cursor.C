@@ -113,6 +113,7 @@ void LCursor::push(UpdatableInset * inset)
 {
 	lyxerr << "LCursor::push()  inset: " << inset << endl;
 	data_.push_back(CursorItem(inset));
+	cached_y_ = bv_->top_y() + inset->y();
 }
 
 
@@ -161,7 +162,7 @@ void LCursor::getPos(int & x, int & y) const
 	if (data_.empty()) {
 		x = bv_->text->cursor.x();
 		y = bv_->text->cursor.y();
-		y -= bv_->top_y();
+//		y -= bv_->top_y();
 	} else {
 		// Would be nice to clean this up to make some understandable sense...
 		UpdatableInset * inset = innerInset();
@@ -176,7 +177,7 @@ void LCursor::getPos(int & x, int & y) const
 		//y = inset->insetInInsetY() + bv_->text->cursor.y();
 		inset->getCursorPos(bv_, x, y);
 		x += inset->x();
-		y += inset->y();
+		y += cached_y_;
 	}
 }
 

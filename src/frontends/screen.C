@@ -173,7 +173,7 @@ void LyXScreen::showCursor(BufferView & bv)
 	int x = 0;
 	int y = 0;
 	bv.cursor().getPos(x, y);
-	y -= ascent;
+	y -= ascent + bv.top_y();
 	//lyxerr << "LyXScreen::showCursor x: " << x << " y: " << y << endl;
 
 	// if it doesn't fit entirely on the screen, don't try to show it
