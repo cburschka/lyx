@@ -1,12 +1,17 @@
+# translation of lyx-1.3.3x_it.po to Italiano
 # This file is distributed under the same license as the PACKAGE package.
+# Ceoldo Costantino <inverness1ATvirgilio.it>, 2003
+# Ceoldo Costantino <inverness1ATvirgilio.it>, 2003
+# Ceoldo Costantino <inverness1ATvirgilio.it>, 2003
+# Ceoldo Costantino <inverness1ATvirgilio.it>, 2003
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER, 2003
 # Ceoldo Costantino <inverness1ATvirgilio.it>, 2003
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: lyx-1.3.3_it\n"
+"Project-Id-Version: lyx-1.3.3x_it\n"
 "POT-Creation-Date: 2003-09-25 16:13+0200\n"
-"PO-Revision-Date: 2003-09-12 20:25+0200\n"
+"PO-Revision-Date: 2003-10-02 21:23+0200\n"
 "Last-Translator: Ceoldo Costantino <inverness1ATvirgilio.it>\n"
 "Language-Team: Italiano <it@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -131,7 +136,7 @@ msgstr "Sfoglia...|#B"
 
 #: ../src/frontends/xforms/forms/form_bibtex.fd:152
 msgid "Add bibliography to TOC|#T"
-msgstr "Aggiungi bibliografia a TOC|#T"
+msgstr "Aggiungi una bibliografia a TOC|#T"
 
 #: ../src/frontends/xforms/forms/form_bibtex.fd:170
 msgid "Styles:|#y"
@@ -452,7 +457,7 @@ msgstr "Saltare|#K"
 #: ../src/frontends/xforms/forms/form_document.fd:1215
 #: ../src/frontends/qt2/ui/LanguageModuleBase.ui:41
 msgid "Quote Style"
-msgstr "Stile Virgolette"
+msgstr "Stile delle Virgolette"
 
 #: ../src/frontends/xforms/forms/form_document.fd:1233
 #: ../src/frontends/xforms/forms/form_preferences.fd:326
@@ -478,7 +483,7 @@ msgstr "Lingua:|#L"
 
 #: ../src/frontends/xforms/forms/form_document.fd:1383
 msgid "Float Placement:|#L"
-msgstr "Posizione Oggetti Mobili:|#L"
+msgstr "Posizione degli Oggetti Mobili:|#L"
 
 #: ../src/frontends/xforms/forms/form_document.fd:1401
 msgid "Section number depth:"
@@ -502,7 +507,7 @@ msgstr "Usa Natbib|#N"
 
 #: ../src/frontends/xforms/forms/form_document.fd:1499
 msgid "Citation style:|#i"
-msgstr "Stile Citazione:|#i"
+msgstr "Stile della Citazione:|#i"
 
 #: ../src/frontends/xforms/forms/form_document.fd:1541
 msgid "Bullet depth"
@@ -556,7 +561,7 @@ msgstr "Ripeti 4|#g"
 #: ../src/frontends/xforms/forms/form_tabular.fd:1764
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:956
 msgid "Status"
-msgstr "Stato"
+msgstr "Status"
 
 #: ../src/frontends/xforms/forms/form_ert.fd:79
 msgid "Open|#O"
@@ -590,11 +595,11 @@ msgstr "Edita file|#E"
 
 #: ../src/frontends/xforms/forms/form_external.fd:151
 msgid "View result|#V"
-msgstr "Mostra risultato|#V"
+msgstr "Mostra il risultato|#V"
 
 #: ../src/frontends/xforms/forms/form_external.fd:169
 msgid "Update result|#U"
-msgstr "Aggiorna risultato|#U"
+msgstr "Aggiorna il risultato|#U"
 
 #: ../src/frontends/xforms/forms/form_filedialog.fd:62
 msgid "Directory:|#D"
@@ -652,7 +657,7 @@ msgstr "Dividi colonne|#S"
 
 #: ../src/frontends/xforms/forms/form_float.fd:224
 msgid "Ignore internal LaTeX rules|#I"
-msgstr "Ignora regole interne di LaTeX|#I"
+msgstr "Ignora le regole interne di LaTeX|#I"
 
 #: ../src/frontends/xforms/forms/form_float.fd:260
 msgid "Alternatives|#l"
@@ -664,7 +669,7 @@ msgstr "Qui, definitivamente!|#H"
 
 #: ../src/frontends/xforms/forms/form_float.fd:296
 msgid "Document default|#D"
-msgstr "Impostazioni prestabilite documento|#D"
+msgstr "Impostazioni prestabilite del documento|#D"
 
 #: ../src/frontends/xforms/forms/form_forks.fd:43
 msgid "Forked child processes:|#F"
@@ -672,7 +677,7 @@ msgstr "Processi figlio divisi:|#F"
 
 #: ../src/frontends/xforms/forms/form_forks.fd:61
 msgid "Kill processes:|#K"
-msgstr "Elimina processi:|#K"
+msgstr "Elimina i processi:|#K"
 
 #: ../src/frontends/xforms/forms/form_forks.fd:79
 msgid "All ->"
@@ -1200,7 +1205,7 @@ msgstr "Struttura e Collegamenti"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:719
 msgid "User Interface file:|#U"
-msgstr "File Interfaccia Utente:|#U"
+msgstr "File dell'Interfaccia Utente:|#U"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:755
 msgid "Bind file:|#f"
@@ -1289,7 +1294,7 @@ msgstr "Mostra i grafici:|#G"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1259
 msgid "Spell command:|#S"
-msgstr "Comando correttore ortografico:|#S"
+msgstr "Comando del correttore ortografico:|#S"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1277
 msgid "Alternative language:|#a"
@@ -1309,7 +1314,7 @@ msgstr "Accetta parole composte|#w"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1421
 msgid "Use input encoding|#i"
-msgstr "Usa codifica di ingresso|#i"
+msgstr "Usa la codifica di ingresso|#i"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1439
 msgid "Advanced Options"
@@ -1527,7 +1532,7 @@ msgstr "Comando di spool:"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2742
 msgid "Paper type:"
-msgstr "Tipo carta:"
+msgstr "Tipo di carta:"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2760
 msgid "Even pages:"
@@ -1563,7 +1568,7 @@ msgstr "Formato carta:"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2964
 msgid "ASCII line length:|#A"
-msgstr "Lunghezza linea ASCII:|#A"
+msgstr "Lunghezza della linea ASCII:|#A"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2986
 msgid "TeX encoding:|#T"
@@ -1591,7 +1596,9 @@ msgstr "Opzione carta DVI:|#D"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:3094
 msgid "Autoreset Class Options on change|#u"
-msgstr "Reimposta automaticamente Opzioni Classe in caso di modifica|#u"
+msgstr ""
+"Reimposta automaticamente le Opzioni "
+"di Classe in caso di modifica|#u"
 
 #: ../src/frontends/xforms/forms/form_ref.fd:80
 msgid "Sort|#S"
@@ -1645,7 +1652,7 @@ msgstr "Cerca i precedenti|#S"
 
 #: ../src/frontends/xforms/forms/form_sendto.fd:43
 msgid "Export format:|#E"
-msgstr "Esporta formato:|#E"
+msgstr "Esporta il formato:|#E"
 
 #: ../src/frontends/xforms/forms/form_sendto.fd:61
 msgid "Command:|#C"
@@ -2029,7 +2036,7 @@ msgstr "Forma2"
 
 #: ../src/frontends/qt2/ui/ClassModuleBase.ui:41
 msgid "Document &class:"
-msgstr "&Classe Documento:"
+msgstr "&Classe del Documento:"
 
 #: ../src/frontends/qt2/ui/ClassModuleBase.ui:77
 msgid "Op&tions:"
@@ -2037,7 +2044,7 @@ msgstr "Op&zioni:"
 
 #: ../src/frontends/qt2/ui/ClassModuleBase.ui:106
 msgid "Page &style:"
-msgstr "&Stile Pagina:"
+msgstr "&Stile della Pagina:"
 
 #: ../src/frontends/qt2/ui/ClassModuleBase.ui:176
 msgid "&Indent"
@@ -2049,11 +2056,11 @@ msgstr "S&altare"
 
 #: ../src/frontends/qt2/ui/ClassModuleBase.ui:215
 msgid "Float &placement:"
-msgstr "&Posizione oggetti mobili:"
+msgstr "&Posizione degli oggetti mobili:"
 
 #: ../src/frontends/qt2/ui/ClassModuleBase.ui:255
 msgid "&Font && size:"
-msgstr "&Carattere && dimensione:"
+msgstr "&Dimensione del && carattere:"
 
 #: ../src/frontends/qt2/ui/ClassModuleBase.ui:270
 msgid "&Line spacing:"
@@ -2151,7 +2158,7 @@ msgstr "Documento su &due faccie"
 
 #: ../src/frontends/qt2/ui/PaperModuleBase.ui:84
 msgid "Paper Size"
-msgstr "Formato Carta"
+msgstr "Formato della Carta"
 
 #: ../src/frontends/qt2/ui/PaperModuleBase.ui:111
 msgid "&Height:"
@@ -2166,7 +2173,7 @@ msgstr "&Larghezza:"
 
 #: ../src/frontends/qt2/ui/PaperModuleBase.ui:145
 msgid "Paper &size:"
-msgstr "&Formato carta:"
+msgstr "&Formato della carta:"
 
 #: ../src/frontends/qt2/ui/PaperModuleBase.ui:253
 msgid "&Portrait"
@@ -2231,7 +2238,7 @@ msgstr "&Chiudi"
 
 #: ../src/frontends/qt2/ui/QAskForTextDialog.ui:22
 msgid "LyX: Enter text"
-msgstr "LyX: Immettere testo"
+msgstr "LyX: Immettere del testo"
 
 #: ../src/frontends/qt2/ui/QAskForTextDialog.ui:66
 msgid "&Dummy"
@@ -2257,7 +2264,7 @@ msgstr "&Chiave"
 #: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:68
 #: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:86
 msgid "The citation key"
-msgstr "Chiave citazione"
+msgstr "Chiave della citazione"
 
 #: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:114
 msgid "&Label"
@@ -2339,7 +2346,7 @@ msgstr "Sti&le"
 
 #: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:194
 msgid "The BibTeX style"
-msgstr "Lo stile BibTeX"
+msgstr "E' lo stile BibTeX"
 
 #: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:205
 #: ../src/frontends/qt2/ui/QExternalDialogBase.ui:294
@@ -2364,11 +2371,11 @@ msgstr "Cancella"
 
 #: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:296
 msgid "Add bibliography to &TOC"
-msgstr "Aggiungi bibliografia a &TOC"
+msgstr "Aggiungi una bibliografia a &TOC"
 
 #: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:300
 msgid "Add bibliography to the table of contents"
-msgstr "Aggiungi bibliografia all'indice generale"
+msgstr "Aggiungi una bibliografia all'indice generale"
 
 #: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:22
 #: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:73
@@ -2440,7 +2447,7 @@ msgstr "Dimen&sione:"
 #: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:332
 #: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:343
 msgid "Font size"
-msgstr "Dimensione caratteri"
+msgstr "Dimensione dei caratteri"
 
 #: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:356
 msgid "Always Toggled"
@@ -2691,7 +2698,7 @@ msgstr "&Apri"
 
 #: ../src/frontends/qt2/ui/QERTDialogBase.ui:98
 msgid "Show ERT contents"
-msgstr "Mostra contenuti ERT"
+msgstr "Mostra i contenuti ERT"
 
 #: ../src/frontends/qt2/ui/QErrorDialogBase.ui:22
 #: src/frontends/qt2/QError.C:31 src/frontends/xforms/FormError.C:27
@@ -2720,7 +2727,7 @@ msgstr "Nome file"
 
 #: ../src/frontends/qt2/ui/QExternalDialogBase.ui:184
 msgid "&View Result"
-msgstr "&Mostra Risultato"
+msgstr "&Mostra il Risultato"
 
 #: ../src/frontends/qt2/ui/QExternalDialogBase.ui:188
 msgid "View the file"
@@ -2728,7 +2735,7 @@ msgstr "Vedi il file"
 
 #: ../src/frontends/qt2/ui/QExternalDialogBase.ui:206
 msgid "&Update Result"
-msgstr "&Aggiorna Risultato"
+msgstr "&Aggiorna il Risultato"
 
 #: ../src/frontends/qt2/ui/QExternalDialogBase.ui:210
 msgid "Update the material"
@@ -2762,11 +2769,11 @@ msgstr "Edita il file esternamente"
 
 #: ../src/frontends/qt2/ui/QFloatDialogBase.ui:45
 msgid "Use &default placement"
-msgstr "Usa posizionamento &prestabilito"
+msgstr "Usa il posizionamento &prestabilito"
 
 #: ../src/frontends/qt2/ui/QFloatDialogBase.ui:49
 msgid "Use LaTeX default settings"
-msgstr "Usa impostazioni predefinite di LaTeX"
+msgstr "Usa le impostazioni predefinite di LaTeX"
 
 #: ../src/frontends/qt2/ui/QFloatDialogBase.ui:60
 msgid "Advanced Placement Options"
@@ -2806,7 +2813,7 @@ msgstr "Posiziona l'oggetto mobile nella posizione attuale se possibile"
 
 #: ../src/frontends/qt2/ui/QFloatDialogBase.ui:154
 msgid "&Ignore LaTeX rules"
-msgstr "&Ignora regole LaTeX"
+msgstr "&Ignora le regole di LaTeX"
 
 #: ../src/frontends/qt2/ui/QFloatDialogBase.ui:158
 msgid "Ignore the internal LaTeX placement rules"
@@ -2851,7 +2858,7 @@ msgstr "&Mostra in LyX"
 
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:159
 msgid "Display image in LyX"
-msgstr "Visualizza immagine in LyX"
+msgstr "Visualizza l'immagine in LyX"
 
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:170
 msgid "Display:"
@@ -3735,8 +3742,7 @@ msgstr "&Reimposta opzioni classe quando cambia la classe del documento"
 
 #: ../src/frontends/qt2/ui/QPrefLatexModule.ui:192
 msgid "Set class options to default on class change"
-msgstr ""
-"Imposta le opzioni di classe a quelle prestabilite quando cambia la classe"
+msgstr "Imposta le opzioni di classe a quelle prestabilite quando cambia la classe"
 
 #: ../src/frontends/qt2/ui/QPrefLatexModule.ui:203
 msgid "External Applications"
@@ -3846,7 +3852,7 @@ msgstr "Pref&isso di spool:"
 
 #: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:397
 msgid "Co&llated:"
-msgstr "Co&frontato:"
+msgstr "Con&frontato:"
 
 #: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:419
 msgid "&Even pages:"
@@ -4551,8 +4557,7 @@ msgid "&View"
 msgstr "&Vista"
 
 #: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:203
-msgid ""
-"Show contents of marked file. Only possible when files are shown with path"
+msgid "Show contents of marked file. Only possible when files are shown with path"
 msgstr ""
 "Mostra i contenuti del file segnato. E' possibile solo quando i file sono "
 "mostrati con il loro percorso"
@@ -6550,24 +6555,20 @@ msgid "Author_Address"
 msgstr "Indirizzo Autore"
 
 #: ../../1.3.x/lib/layouts/memoir.layout:31
-#, fuzzy
 msgid "Chapterprecis"
-msgstr "Esercizi_Capitolo"
+msgstr "Sommario del Capitolo"
 
 #: ../../1.3.x/lib/layouts/memoir.layout:52
-#, fuzzy
 msgid "Epigraph"
-msgstr "Biografia"
+msgstr "Epigrafe"
 
 #: ../../1.3.x/lib/layouts/memoir.layout:64
-#, fuzzy
 msgid "Poemtitle"
-msgstr "Immagine Verticale"
+msgstr "Titolo Poema"
 
 #: ../../1.3.x/lib/layouts/memoir.layout:82
-#, fuzzy
 msgid "Poemtitle*"
-msgstr "Immagine Verticale"
+msgstr "Titolo Poema*"
 
 #: ../lib/languages:2
 msgid "Afrikaans"
@@ -8545,8 +8546,7 @@ msgstr "ERRORE!"
 
 #: src/buffer.C:1192
 msgid "Old LyX file format found. Use LyX 0.10.x to read this!"
-msgstr ""
-"Ho trovato un vecchio formato di LyX. Utilizza LyX 0.10.x per leggerlo!"
+msgstr "Ho trovato un vecchio formato di LyX. Utilizza LyX 0.10.x per leggerlo!"
 
 #: src/buffer.C:1200
 msgid "Can't find conversion script."
@@ -10099,8 +10099,7 @@ msgstr ""
 
 #: src/frontends/xforms/FormBibtex.C:83
 msgid "Select if the bibliography should appear in the Table of Contents"
-msgstr ""
-"Da selezionare se la bibliografia dovesse apparire nell'Indice Generale"
+msgstr "Da selezionare se la bibliografia dovesse apparire nell'Indice Generale"
 
 #: src/frontends/xforms/FormBibtex.C:87
 msgid "Choose a BibTeX style from the list."
@@ -10200,14 +10199,11 @@ msgstr ""
 "frase (Natbib)."
 
 #: src/frontends/xforms/FormCitation.C:208
-msgid ""
-"Optional text which appears before the citation reference, e.g. \"see <Ref>\""
-msgstr ""
-"Testo facoltativo come appare prima della citazione e cioè \"vedi <Ref>\""
+msgid "Optional text which appears before the citation reference, e.g. \"see <Ref>\""
+msgstr "Testo facoltativo come appare prima della citazione e cioè \"vedi <Ref>\""
 
 #: src/frontends/xforms/FormCitation.C:211
-msgid ""
-"Optional text which appears after the citation reference, e.g. \"pp. 12\""
+msgid "Optional text which appears after the citation reference, e.g. \"pp. 12\""
 msgstr "Testo facoltativo come appare dopo a citazione e cioè \"pp. 12\""
 
 #: src/frontends/xforms/FormCitation.C:214
@@ -10248,8 +10244,7 @@ msgstr ""
 
 #: src/frontends/xforms/FormDocument.C:239
 msgid " None | Small Margins | Very small Margins | Very wide Margins "
-msgstr ""
-" Nessuno | Margini Stretti| Margini molto Stretti | Margini molto Larghi"
+msgstr " Nessuno | Margini Stretti| Margini molto Stretti | Margini molto Larghi"
 
 #: src/frontends/xforms/FormDocument.C:289
 msgid " ``text'' | ''text'' | ,,text`` | ,,text'' | «text» | »text« "
@@ -10363,8 +10358,7 @@ msgid "Add all processes to the list of processes to kill."
 msgstr "Aggiungi tutti i processi all'elenco di quelli da eliminare."
 
 #: src/frontends/xforms/FormForks.C:74
-msgid ""
-"Add the currently selected child process to the list of processes to kill."
+msgid "Add the currently selected child process to the list of processes to kill."
 msgstr ""
 "Aggiungi il processo figlio attualmente selezionato all'elenco dei processi "
 "da eliminare."
@@ -10413,8 +10407,7 @@ msgstr "Imposta la larghezza dell'immagine al valore inserito."
 #: src/frontends/xforms/FormGraphics.C:156
 #, no-c-format
 msgid "Select unit for width; Scale% for scaling whole image."
-msgstr ""
-"Seleziona l'unità di lunghezza e varia% per ridimensionare l'intera immagine."
+msgstr "Seleziona l'unità di lunghezza e varia% per ridimensionare l'intera immagine."
 
 #: src/frontends/xforms/FormGraphics.C:158
 msgid "Set the image height to the inserted value."
@@ -10696,8 +10689,7 @@ msgid "LyX objects that can be assigned a color."
 msgstr "Oggetti di LyX a cui può essere assegnato un colore."
 
 #: src/frontends/xforms/FormPreferences.C:543
-msgid ""
-"Modify the LyX object's color. Note: you must then \"Apply\" the change."
+msgid "Modify the LyX object's color. Note: you must then \"Apply\" the change."
 msgstr ""
 "Modifica il colore dell'oggetto di LyX. Nota che allora devi \"Applicare\" "
 "il cambiamento."
@@ -10848,8 +10840,7 @@ msgstr "Bianco e Nero|Scala di Grigi|Colore|Non mostrare"
 
 #: src/frontends/xforms/FormPreferences.C:1976
 msgid " default | US letter | US legal | US executive | A3 | A4 | A5 | B5 "
-msgstr ""
-" predefinito | Lettera US | Legale US | Esecutivo US | A3 | A4 | A5 | B5 "
+msgstr " predefinito | Lettera US | Legale US | Esecutivo US | A3 | A4 | A5 | B5 "
 
 #: src/frontends/xforms/FormPreferences.C:2217
 msgid "Default path"
@@ -11023,8 +11014,7 @@ msgstr "Ricerca all'indietro."
 
 #. Set up the tooltip mechanism
 #: src/frontends/xforms/FormSendto.C:49
-msgid ""
-"Export the buffer to this format before running the command below on it."
+msgid "Export the buffer to this format before running the command below on it."
 msgstr ""
 "Esporta il buffer in questo formato prima di eseguire il comando contenuto "
 "in esso."
@@ -11400,8 +11390,7 @@ msgstr "Nessun file trovato!"
 
 #: src/insets/insetgraphics.C:246
 msgid "Error converting to loadable format"
-msgstr ""
-"Si è verificato un errore durante la conversione ad un formato caricabile"
+msgstr "Si è verificato un errore durante la conversione ad un formato caricabile"
 
 #: src/insets/insetgraphics.C:249
 msgid "Error loading file into memory"
@@ -11879,8 +11868,7 @@ msgstr "Prova il parametro su linea di comando '-sysdir' oppure "
 
 #: src/lyx_main.C:354
 msgid "set the environment variable LYX_DIR_13x to the LyX system directory "
-msgstr ""
-"imposta la variabile d'ambiente LYX_DIR_10x alla cartella di sistema di LyX "
+msgstr "imposta la variabile d'ambiente LYX_DIR_10x alla cartella di sistema di LyX "
 
 #: src/lyx_main.C:356
 msgid "containing the file `chkconfig.ltx'."
@@ -12451,8 +12439,7 @@ msgid "The encoding for the menu/popups fonts."
 msgstr "E' la codifica per i caratteri dei menù e dei popup."
 
 #: src/lyxrc.C:1946
-msgid ""
-"The time interval between auto-saves (in seconds). 0 means no auto-save."
+msgid "The time interval between auto-saves (in seconds). 0 means no auto-save."
 msgstr ""
 "E' l'intervallo di tempo tra due auto salvataggi (in secondi). 0 significa "
 "nessun auto salvataggio."
@@ -12613,16 +12600,14 @@ msgstr ""
 "lingua del documento."
 
 #: src/lyxrc.C:2041
-msgid ""
-"Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
+msgid "Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
 msgstr ""
 "Specifica un dizionario personale alternativo. Per esempio:\".ispell_english"
 "\"."
 
 #: src/lyxrc.C:2046
 msgid "Specify additional chars that can be part of a word."
-msgstr ""
-"Specifica i caratteri addizionali che possono essere parte di una parola."
+msgstr "Specifica i caratteri addizionali che possono essere parte di una parola."
 
 #: src/lyxrc.C:2050
 msgid ""
@@ -12679,8 +12664,7 @@ msgstr ""
 "originale."
 
 #: src/lyxrc.C:2078
-msgid ""
-"Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
+msgid "Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
 msgstr ""
 "Seleziona per abilitare il supporto per i linguaggi da destra a sinistra "
 "(cioè: Ebreo, Arabo)."
@@ -12726,8 +12710,7 @@ msgstr ""
 "documento."
 
 #: src/lyxrc.C:2102
-msgid ""
-"Select if a language switching command is needed at the end of the document."
+msgid "Select if a language switching command is needed at the end of the document."
 msgstr ""
 "Da selezionare se un comando di cambio lingua è richiesto alla fine del "
 "documento."
@@ -12947,8 +12930,7 @@ msgstr ""
 
 #: src/text.C:1926
 msgid "You cannot type two spaces this way. Please read the Tutorial."
-msgstr ""
-"Non puoi usare due spazi in questo modo. Per favore, leggi il Tutorial."
+msgstr "Non puoi usare due spazi in questo modo. Per favore, leggi il Tutorial."
 
 #: src/text.C:3363
 msgid "Page Break (top)"
@@ -13021,3 +13003,4 @@ msgstr "La funzione di LyX 'layout' necessita di un argomento."
 
 #~ msgid "Files (*)"
 #~ msgstr "File (*)"
+
