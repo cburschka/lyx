@@ -178,8 +178,8 @@ case "$lyx_use_frontend" in
 	esac
 	FRONTEND_INFO=`cat <<EOF
     libXpm version:               ${XPM_VERSION}\n\
-    libforms version:             ${XFORMS_VERSION}\n
-`
+    libforms version:             ${XFORMS_VERSION}\n\
+EOF`
 	;;
   gnome)
     PKG_CHECK_MODULES(GNOME_FRONTEND, gtkmm-2.0 libglademm-2.0)
@@ -286,7 +286,7 @@ Configuration\n\
   Frontend:                       ${lyx_use_frontend}\n\
 ${FRONTEND_INFO}\
   LyX binary dir:                 ${real_bindir}\n\
-  LyX files dir:                  ${real_datadir}\n
+  LyX files dir:                  ${real_datadir}\n\
 EOF`
 
 AC_SUBST(VERSION_INFO)

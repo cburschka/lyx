@@ -210,12 +210,12 @@ void CacheItem::Impl::reset()
 	zipped_ = false;
 	if (!unzipped_filename_.empty())
 		lyx::unlink(unzipped_filename_);
-	unzipped_filename_.clear();
+	unzipped_filename_.erase();
 
 	if (remove_loaded_file_ && !file_to_load_.empty())
 		lyx::unlink(file_to_load_);
 	remove_loaded_file_ = false;
-	file_to_load_.clear();
+	file_to_load_.erase();
 
 	if (image_.get())
 		image_.reset();

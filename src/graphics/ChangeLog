@@ -1,3 +1,8 @@
+2002-07-18  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* GraphicsCacheItem.C (reset): use erase() instead of clear() for
+	strings 
+
 2002-07-18  Angus Leeming  <leeming@lyx.org>
 
 	* GraphicsCacheItem.[Ch]: add a FileMonitor variable to the the Impl
