@@ -21,6 +21,7 @@
 #include "ControlAboutlyx.h"
 #include "ControlBibitem.h"
 #include "ControlBibtex.h"
+#include "ControlChanges.h"
 #include "ControlCharacter.h"
 #include "ControlCitation.h"
 #include "ControlDocument.h"
@@ -57,6 +58,8 @@
 #include "QBibitemDialog.h"
 #include "QBibtex.h"
 #include "QBibtexDialog.h"
+#include "QChanges.h"
+#include "QChangesDialog.h"
 #include "QCharacter.h"
 #include "QCharacterDialog.h"
 #include "QCitation.h"
@@ -136,6 +139,9 @@ BibitemDialog;
 
 typedef GUI<ControlBibtex, QBibtex, OkCancelReadOnlyPolicy, Qt2BC>
 BibtexDialog;
+
+typedef GUI<ControlChanges, QChanges, NoRepeatedApplyReadOnlyPolicy, Qt2BC>
+ChangesDialog;
 
 typedef GUI<ControlCharacter, QCharacter, OkApplyCancelReadOnlyPolicy, Qt2BC>
 CharacterDialog;
@@ -230,6 +236,7 @@ struct Dialogs::Impl {
 	AboutlyxDialog      aboutlyx;
 	BibitemDialog       bibitem;
 	BibtexDialog        bibtex;
+	ChangesDialog       changes;
 	CharacterDialog     character;
 	CitationDialog      citation;
 	DocumentDialog      document;

@@ -53,6 +53,7 @@ void QRef::build_dialog()
 	dialog_.reset(new QRefDialog(this));
 
 	bc().setOK(dialog_->okPB);
+	bc().setApply(dialog_->applyPB);
 	bc().setCancel(dialog_->closePB);
 	bc().addReadOnly(dialog_->refsLB);
 	bc().addReadOnly(dialog_->sortCB);

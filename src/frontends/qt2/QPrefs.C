@@ -34,6 +34,7 @@
 #include "ui/QPrefLanguageModule.h"
 #include "ui/QPrefPrinterModule.h"
 #include "ui/QPrefUIModule.h"
+#include "ui/QPrefIdentityModule.h"
 #include "QPrefs.h"
 #include "Qt2BC.h"
 #include "lyxrc.h"
@@ -229,6 +230,10 @@ void QPrefs::apply()
 	rc.print_paper_dimension_flag = fromqstr(printmod->printerPaperSizeED->text());
 
 
+	QPrefIdentityModule * idmod(dialog_->identityModule);
+	rc.user_name = fromqstr(idmod->nameED->text());
+	rc.user_email = fromqstr(idmod->emailED->text());
+
 	QPrefScreenFontsModule * fontmod(dialog_->screenfontsModule);
 
 	LyXRC const oldrc(rc);
@@ -376,6 +381,11 @@ void QPrefs::update_contents()
 	uimod->autoSaveCB->setChecked(rc.make_backup);
 	uimod->lastfilesSB->setValue(rc.num_lastfiles);
 
+
+	QPrefIdentityModule * idmod(dialog_->identityModule);
+	idmod->nameED->setText(toqstr(rc.user_name));
+	idmod->emailED->setText(toqstr(rc.user_email));
+	
 
 	QPrefKeyboardModule * keymod(dialog_->keyboardModule);
 

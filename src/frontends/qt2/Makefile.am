@@ -28,6 +28,7 @@ libqt2_la_SOURCES = \
 	QAbout.C QAbout.h \
 	QBibitem.C QBibitem.h \
 	QBibtex.C QBibtex.h \
+	QChanges.C QChanges.h \
 	QCharacter.C QCharacter.h \
 	QCitation.C QCitation.h \
 	QDocument.C QDocument.h \

@@ -14,6 +14,7 @@ UIFILES = \
 	QAskForTextDialog.ui \
 	QBibitemDialogBase.ui \
 	QBibtexDialogBase.ui \
+	QChangesDialogBase.ui \
 	QCharacterDialogBase.ui \
 	QCitationDialogBase.ui \
 	QDelimiterDialogBase.ui \
@@ -36,6 +37,7 @@ UIFILES = \
 	QPrefDateModule.ui \
 	QPrefDisplayModule.ui \
 	QPrefFileformatsModule.ui \
+	QPrefIdentityModule.ui \
 	QPrefKeyboardModule.ui \
 	QPrefLanguageModule.ui \
 	QPrefLatexModule.ui \
@@ -71,6 +73,7 @@ MOCFILES = \
 	QBibitemDialog.C QBibitemDialog.h \
 	QBibtexDialog.C QBibtexDialog.h \
 	QBrowseBox.C QBrowseBox.h \
+	QChangesDialog.C QChangesDialog.h \
 	QCharacterDialog.C QCharacterDialog.h \
 	QCitationDialog.C QCitationDialog.h \
 	QCommandBuffer.C QCommandBuffer.h \

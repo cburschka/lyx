@@ -1,3 +1,17 @@
+2003-02-08  John Levon  <levon@movementarian.org>
+
+	* Makefile.am:
+	* QChanges.h:
+	* QChanges.C:
+	* QChangesDialog.h:
+	* QChangesDialog.C:
+	* ui/QChangesDialogBase.ui: add changes dialog
+
+	* ui/QPrefIdentityModule.ui:
+	* QPrefs.C:
+	* QPrefsDialog.h:
+	* QPrefsDialog.C: add identity prefs
+
 2003-02-07  John Levon  <levon@movementarian.org>
 
 	* lyx_gui.C: delete lyxserver on exit path (bug 865)

@@ -34,6 +34,7 @@
 #include "ui/QPrefLanguageModule.h"
 #include "ui/QPrefPrinterModule.h"
 #include "ui/QPrefUIModule.h"
+#include "ui/QPrefIdentityModule.h"
 
 #include "support/lstrings.h"
 #include "lyxrc.h"
@@ -97,6 +98,7 @@ QPrefsDialog::QPrefsDialog(QPrefs * form)
 	languageModule = new QPrefLanguageModule(prefsWS);
 	printerModule = new QPrefPrinterModule(prefsWS);
 	uiModule = new QPrefUIModule(prefsWS);
+	identityModule = new QPrefIdentityModule(prefsWS);
 
 	prefsWS->addWidget(asciiModule, 0);
 	prefsWS->addWidget(dateModule, 1);
@@ -112,6 +114,7 @@ QPrefsDialog::QPrefsDialog(QPrefs * form)
 	prefsWS->addWidget(languageModule, 11);
 	prefsWS->addWidget(printerModule, 12);
 	prefsWS->addWidget(uiModule, 13);
+	prefsWS->addWidget(identityModule, 14);
 
 	QListViewItem * i;
 
@@ -148,6 +151,8 @@ QPrefsDialog::QPrefsDialog(QPrefs * form)
 	i = new QListViewItem(out, i, qt_("Printer"));
 	pane_map_[i] = printerModule;
 
+	i = new QListViewItem(prefsLV, out, qt_("Identity"));
+	pane_map_[i] = identityModule;
 	i = new QListViewItem(prefsLV, out, qt_("Paths"));
 	pane_map_[i] = pathsModule;
 	i = new QListViewItem(prefsLV, i,  qt_("Converters"));
@@ -307,6 +312,8 @@ QPrefsDialog::QPrefsDialog(QPrefs * form)
 	connect(screenfontsModule->screenLargestED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
 	connect(screenfontsModule->screenHugeED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
 	connect(screenfontsModule->screenHugerED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
+	connect(identityModule->nameED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
+	connect(identityModule->emailED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
 }
 
 

@@ -39,6 +39,7 @@ class QPrefFileformatsModule;
 class QPrefLanguageModule;
 class QPrefPrinterModule;
 class QPrefUIModule;
+class QPrefIdentityModule;
 
 class QPrefsDialog : public QPrefsDialogBase {
 	Q_OBJECT
@@ -109,6 +110,7 @@ private:
 	QPrefLanguageModule * languageModule;
 	QPrefPrinterModule * printerModule;
 	QPrefUIModule * uiModule;
+	QPrefIdentityModule * identityModule;
 
 	QPrefs * form_;
 };

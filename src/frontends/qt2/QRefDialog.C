@@ -33,6 +33,8 @@ QRefDialog::QRefDialog(QRef * form)
 {
 	connect(okPB, SIGNAL(clicked()),
 		form_, SLOT(slotOK()));
+	connect(applyPB, SIGNAL(clicked()),
+		form_, SLOT(slotApply()));
 	connect(closePB, SIGNAL(clicked()),
 		form_, SLOT(slotClose()));
 }
