@@ -15,6 +15,8 @@
 #include "gettext.h"
 #include "language.h"
 
+#include <algorithm>
+
 using std::vector;
 
 namespace {

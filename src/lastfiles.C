@@ -15,9 +15,9 @@
 
 #include "support/FileInfo.h"
 
+#include <algorithm>
 #include <fstream>
 #include <iterator>
-
 
 using namespace lyx::support;
 

@@ -23,6 +23,8 @@
 
 #include "lyx_forms.h"
 
+#include <algorithm>
+
 using namespace lyx::support;
 
 using std::endl;

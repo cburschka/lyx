@@ -1,3 +1,8 @@
+2003-09-05  Martin Vermeer  <martin.vermeer@hut.fi>
+
+	* biblio.C:
+	* frnt_lang.C: re-add missing system headers, needed for 2.95.2.
+
 2003-09-05  Angus Leeming  <leeming@lyx.org>
 
 	* GUI.h: ensure that the header file can be compiled stand-alone.

@@ -11,6 +11,7 @@
 #include "graph.h"
 #include "format.h"
 
+#include <algorithm>
 
 using std::queue;
 using std::vector;

@@ -22,6 +22,8 @@
 
 #include <boost/scoped_array.hpp>
 
+#include <cmath>
+
 using namespace lyx::support;
 
 #ifndef CXX_GLOBAL_CSTD

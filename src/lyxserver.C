@@ -39,8 +39,6 @@
 
 #include <config.h>
 
-#include <fcntl.h>
-
 #include "lyxserver.h"
 #include "debug.h"
 #include "lyxfunc.h"
@@ -48,10 +46,18 @@
 #include "support/lyxlib.h"
 #include "frontends/lyx_gui.h"
 
+#include <cerrno>
+#include <sys/stat.h>
+#include <fcntl.h>
+
 #ifdef __EMX__
+#include <cstdlib>
+#include <io.h>
 #define OS2EMX_PLAIN_CHAR
 #define INCL_DOSNMPIPES
 #define INCL_DOSERRORS
+#include <os2.h>
+#include "support/os2_errortable.h"
 #endif
 
 

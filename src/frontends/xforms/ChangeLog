@@ -1,3 +1,10 @@
+2003-09-05  Martin Vermeer  <martin.vermeer@hut.fi>
+
+	* Color.C:
+	* ColorHandler.C:
+	* FontInfo.C:
+	* xfont_loader.C: re-add missing system headers, needed for 2.95.2.
+
 2003-09-05  Angus Leeming  <leeming@lyx.org>
 
 	* combox.h:

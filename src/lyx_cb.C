@@ -40,6 +40,7 @@
 #include "support/os.h"
 #include "support/systemcall.h"
 
+#include <cerrno>
 #include <fstream>
 
 using namespace lyx::support;

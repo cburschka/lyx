@@ -24,7 +24,9 @@
 
 // HP-UX 11.x doesn't have this header
 #ifdef HAVE_SYS_SELECT_H
+#include <sys/select.h>
 #endif
+#include <sys/time.h>
 
 using namespace lyx::support;
 

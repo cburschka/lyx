@@ -18,12 +18,8 @@
 
 #include "support/lstrings.h"
 
-
 using namespace lyx::support;
 
-#ifndef CXX_GLOBAL_CSTD
-using std::sscanf;
-#endif
 
 namespace {
 
@@ -357,7 +353,8 @@ VSpace::VSpace(string const & data)
 	else if (prefixIs (input, "bigskip"))    kind_ = BIGSKIP;
 	else if (prefixIs (input, "vfill"))      kind_ = VFILL;
 	else if (isValidGlueLength(input, &len_)) kind_ = LENGTH;
-	else if (sscanf(input.c_str(), "%lf", &value) == 1) {
+	else if (isStrDbl(input)) {
+		value = strToDbl(input);
 		// This last one is for reading old .lyx files
 		// without units in added_space_top/bottom.
 		// Let unit default to centimeters here.

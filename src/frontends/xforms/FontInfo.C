@@ -24,6 +24,8 @@
 
 #include "lyx_forms.h"
 
+#include <cmath>
+
 using namespace lyx::support;
 
 using std::abs;

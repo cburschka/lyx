@@ -50,11 +50,12 @@
 #include "frontends/Dialogs.h"
 #include "frontends/LyXView.h"
 #include "support/lstrings.h"
-
+#include "support/std_sstream.h"
 
 using namespace lyx::support;
 
 using std::endl;
+
 
 InsetOld * createInset(FuncRequest const & cmd)
 {
@@ -141,9 +142,11 @@ InsetOld * createInset(FuncRequest const & cmd)
 
 	case LFUN_TABULAR_INSERT:
 		if (!cmd.argument.empty()) {
-			int r = 2;
-			int c = 2;
-			::sscanf(cmd.argument.c_str(),"%d%d", &r, &c);
+			std::istringstream ss(cmd.argument);
+			int r, c;
+			ss >> r >> c;
+			if (r <= 0) r = 2;
+			if (c <= 0) c = 2;
 			return new InsetTabular(*bv->buffer(), r, c);
 		}
 		bv->owner()->getDialogs().show("tabularcreate");

@@ -21,6 +21,8 @@
 
 #include <boost/regex.hpp>
 
+#include <algorithm>
+
 using namespace lyx::support;
 
 using std::ostringstream;

@@ -1,5 +1,23 @@
 2003-09-05  Angus Leeming  <leeming@lyx.org>
 
+	* factory.C (createInset):
+	* vspace.C (c-tor): replace sscanf call with an istringstream.
+	* ispell.C: re-add missing HP/UX headers.
+	* lyxserver.C: re-add missing  os2 headers.
+
+2003-09-05  Martin Vermeer  <martin.vermeer@hut.fi>
+
+	* BranchList.C:
+	* graph.C:
+	* ispell.C:
+	* lastfiles.C:
+	* lyx_cb.C:
+	* lyxserver.C:
+	* texrow.C:
+	* text3.C: re-add missing system headers, needed for 2.95.2.
+
+2003-09-05  Angus Leeming  <leeming@lyx.org>
+
 	Changes most place everywhere due to the removal of using directives
 	from support/std_sstream.h.
 

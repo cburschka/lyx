@@ -12,7 +12,7 @@
 // GUI-specific implementations
 
 #include "support/std_string.h"
-
+#include <utility>
 
 int prompt_pimpl(string const & title, string const & question,
            int default_button, int escape_button,

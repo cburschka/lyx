@@ -39,6 +39,7 @@
 #include "undo_funcs.h"
 #include "text_funcs.h"
 
+#include <clocale>
 
 using namespace lyx::support;
 using namespace bv_funcs;
