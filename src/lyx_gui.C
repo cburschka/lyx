@@ -63,6 +63,7 @@ Combox * combo_language2;
 extern LyXServer * lyxserver;
 extern bool finished;	// flag, that we are quitting the program
 extern BufferList bufferlist;
+extern GUIRunTime guiruntime;
 
 FL_CMD_OPT cmdopt[] =
 {
@@ -570,7 +571,7 @@ void LyXGUI::runTime()
 {
 	if (!gui) return;
 
-	GUIRunTime::runTime();
+	guiruntime.runTime();
 }
 
 

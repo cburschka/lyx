@@ -23,6 +23,8 @@ class LyXView;
 */
 class GUIRunTime {
 public:
+	static
+	int initApplication(int argc, char * argv[]);
 	///
 	static
 	void processEvents();

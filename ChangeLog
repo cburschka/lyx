@@ -1,5 +1,14 @@
 2000-09-11  Juergen Vigna  <jug@sad.it>
 
+	* src/lyx_gui.C (runTime): uses global guiruntime variable.
+
+	* src/main.C (main): now GUII defines global guiruntime!
+
+	* src/frontends/gnome/GUIRunTime.C (initApplication): 
+	* src/frontends/kde/GUIRunTime.C (initApplication): 
+	* src/frontends/xforms/GUIRunTime.C (initApplication): 
+	* src/frontends/GUIRunTime.h: added new function initApplication.
+
 	* src/spellchecker.C (sc_accept_word): change to add_to_session.
 
 	* src/vspace.C (nextToken): fixed error with number 0cm as unvalid.
