@@ -1,3 +1,16 @@
+1999-12-07  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/Spacing.C: add a using directive to bring stream stuff into
+	normal namespace.
+	* src/paragraph.C: ditto
+	* src/buffer.C: ditto
+
+	* NEWS: updated a bit the new features of 1.1.3 (took a few things
+	from Lars' announcement).
+
+	* lib/examples/nl_voorbeeld_{ruw,verlyxt}.lyx: new tutorial
+	example files from Tino Meinen.
+	
 1999-12-06  Allan Rae  <rae@lyx.org>
 
 	* src/LaTeX.C (runBibTeX): fix typo in accessing submatch pair.

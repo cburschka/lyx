@@ -1,0 +1,264 @@
+#This file was created by <Tino Meinen tino@direct.a2000.nl> Tue Dec  7 06:31:24 1999
+#LyX 1.0 (C) 1995-1999 Matthias Ettrich and the LyX Team
+\lyxformat 2.15
+\textclass article
+\language dutch
+\inputencoding default
+\fontscheme default
+\graphics dvips
+\paperfontsize 12
+\spacing single 
+\papersize a4paper
+\paperpackage a4
+\use_geometry 0
+\use_amsmath 0
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\quotes_times 2
+\papercolumns 1
+\papersides 1
+\paperpagestyle plain
+
+\layout Standard
+
+DIT IS DE TITEL VAN HET DOCUMENT
+\begin_inset Info Hint: de titel zou er meer als een titel uit horen te zien
+\end_inset 
+
+\layout Standard
+
+door Fee LyX
+\begin_inset Info Hint: Fee is de auteur (AUTHOR)
+\end_inset 
+
+\layout Standard
+
+June 12, 1972
+\begin_inset Info Hint: Dit is een datum (DATE)
+\end_inset 
+
+\layout Standard
+
+Inhoudsopgave
+\begin_inset Info Hint: Het zou leuk zijn als we de inhoudsopgave
+(Table of Contents) niet zelf hoefden te tikken
+\end_inset 
+
+\layout Standard
+
+1.
+ Uitgangspunten..................1
+\layout Standard
+
+1.1 Hoe LyX het doet...............1
+\layout Standard
+
+1.2 Waarom LyX beter is...............1
+\layout Standard
+
+2.
+ Mogelijkheden van LyX
+\layout Standard
+
+3.
+ Slappe pogingen om meer LyX dingen te gebruiken
+\layout Standard
+
+4.
+ Wiskunde dingen
+\layout Standard
+
+---------------------------------------------------
+\layout Standard
+
+1.
+ Uitgangspunten
+\begin_inset Info Hint: Sectie titels mogen er meer uitspringen
+\end_inset 
+
+\layout Standard
+
+Het uitgangspunt van LyX is dat je je niet bezig houdt met de vormgeving,
+ maar met de inhoud van je tekst.
+
+\layout Standard
+
+1.1 Hoe LyX het fikst
+\layout Standard
+
+LyX gebruikt LaTeX, een tekstverwerkingssysteem ontworpen door Leslie Lamport
+ in 1985.
+ Dit was op zich weer gebaseerd op een opmaaktaal voor tekst genaamd TeX,
+ door Donald Knuth gemaakt in 1984.
+ LaTeX is ontworpen met dezelfde uitgangspunten als LyX.
+ Leslie Lamport zei eens (zie referentie [1]) 
+\begin_inset Info Hint: Waarschijnlijk zou de referente naar dit citaat (CITATION
+REFERENCE) niet "hard gecodeerd" moeten zijn. Wat nu als
+we Lamports boek het tweede item in de bibliografie maken?
+\end_inset 
+
+:
+\layout Standard
+
+\begin_inset Quotes eld
+\end_inset 
+
+De functie van typografisch ontwerp is om de lezer te helpen de ideeën van
+ de schrijver te begrijpen.
+ Om een document gemakkelijk leesbaar te laten zijn, zal de visuele structuur
+ de logische structuur moeten weerspiegelen.
+ Een citaat en een computerprogramma, die als structurele elementen logisch
+ van elkaar verschillen, zouden onderling visueel van elkaar te onderscheiden
+ moeten zijn....
+ Omdat LaTeX niet kan begrijpen wat je schrijft, zul je expliciet de logische
+ structuur moeten aangeven door bepaalde commando's te typen....
+ Als je je document aan het schrijven bent, zou je je bezig moeten houden
+ met de logische structuur, niet met het zichtbare uiterlijk.
+\begin_inset Quotes erd
+\end_inset 
+
+\begin_inset Info Hint: dit is een citaat (QUOTE)
+\end_inset 
+
+\layout Standard
+
+1.2 Waarom LyX beter is
+\layout Standard
+
+LyX kan voor meer mensen handig zijn dan LaTeX.
+ Het is aanzienlijk eenvoudiger te leren, omdat je LaTeX niet hoeft te leren
+ (wat eigenlijk een programmeertaal is).
+ LyX is in feite net als andere 
+\begin_inset Quotes eld
+\end_inset 
+
+Wat je ziet is wat je krijgt
+\begin_inset Quotes erd
+\end_inset 
+
+ tekstverwerkers, behalve dat LyX 
+\begin_inset Quotes eld
+\end_inset 
+
+Wat je ziet is wat je bedoelt
+\begin_inset Quotes erd
+\end_inset 
+
+ is.
+ Op deze manier combineert het het gemak van tekstverwerkers met de kracht
+ van LaTeX.
+ Dit is Goed.
+ Ook is het bestandsformaat niet afhankelijk van het platform.
+ En als beste: het is VRIJ!
+\layout Standard
+
+2.
+ De mogelijkheden van LyX
+\layout Standard
+
+LyX heeft vele mogelijkheden die het schrijven van documenten vergemakkelijken.
+ (Per slot van rekening: Waarom zou je het anders willen gebruiken?)
+\begin_inset Info Hint: Deze opmerking tussen haakjes zou beter uitkomen als
+een voetnoot.
+\end_inset 
+
+ Ik vind het ZEER SPANNEND
+\begin_inset Info Hint: Nadruk (Emphasize)
+\end_inset 
+
+ om erover te vertellen.
+ Hier volgt een lijst van slechts een aantal van deze mogelijkheden.
+\layout Standard
+
+* LyX regelt marges, en het nummeren van voetnoten voor je
+\layout Standard
+
+* LyX maakt het gemakkelijk om wiskundige formules te maken en te veranderen
+\layout Standard
+
+Voor een meer filosofische verhandeling waarom LyX beter is dan andere tekstverw
+erkers, zie Sectie 1.2, welke te vinden is op pagina 1.
+\begin_inset Info Hint: Waarschijnlijk zouden deze kruisverwijzingen
+(CROSS-REFERENCES) niet "Hard gecodeerd" moeten zijn.
+Wat nu als we de sectienummers veranderen?
+\end_inset 
+
+\layout Standard
+
+3.
+ Slappe pogingen om andere dingen in LyX te gebruiken
+\layout Standard
+
+Ik heb laatst een programma geschreven.
+ Het zag er uit als volgt.
+\layout Standard
+
+5 REMARK MIJN GEWELDIGE PROGRAMMA
+\layout Standard
+
+10 PRINT 
+\begin_inset Quotes eld
+\end_inset 
+
+IK BEN GEWELDIG!
+\begin_inset Quotes erd
+\end_inset 
+
+\layout Standard
+
+20 GOTO 10 
+\begin_inset Info Hint: Dit is computer CODE
+\end_inset 
+
+\layout Standard
+
+Na al dit wetenschappelijk denkwerk, voelde ik mij meer artistiek, dus schreef
+ ik deze haiku
+\layout Standard
+
+LyX is echt geweldig
+\layout Standard
+
+Tekstzettende tekstverwerker 
+\layout Standard
+
+Hij bespaart zo veel tijd 
+\begin_inset Info Hint: Het is niet erg goed, maar het is poezie,
+ook bekend als gedicht (VERSE)
+\end_inset 
+
+\layout Standard
+
+4.
+ Wiskunde dingen
+\begin_inset Info Hint: de wiskunde dingen moeten in math modus gezet worden
+\end_inset 
+
+\layout Standard
+
+Mijn favoriete vergelijking is de oplossing van een kwadratische vergelijking.
+ Als ax^2+bx+c=0 (verg.1), dan is x= -b + of minus de wortel van b^2-4ac
+ gedeeld door 2a (verg.
+ 2).
+\layout Standard
+
+Een andere favoriete vergelijking is de grondslag van calculus: f'(x) is
+ gedefinieerd als de limiet van f(x+deltax) - f(x) gedeeld door deltax als
+ deltax naar nul gaat (verg.
+ 3).
+\layout Standard
+
+------------------------------------------------
+\layout Standard
+
+REFERENTIES
+\layout Standard
+
+[1] Lamport, Leslie.
+ LaTeX: A Document Preparation System.
+ Addison-Wesley, Reading, Massachusetts, second edition, 1994.
+\the_end

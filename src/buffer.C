@@ -25,6 +25,13 @@
 
 #include <fstream>
 #include <iomanip>
+using std::ofstream;
+using std::ifstream;
+using std::fstream;
+using std::ios;
+using std::setw;
+
+
 #include <cstdlib>
 #include <unistd.h>
 

@@ -2,6 +2,7 @@
 
 #include <cstdio>
 #include "Spacing.h"
+using std::ios;
 
 /// how can I put this inside of Spacing (class)
 static

@@ -1,0 +1,271 @@
+#This file was created by <Tino Meinen tino@direct.a2000.nl> Tue Dec  7 06:41:12 1999
+#LyX 1.0 (C) 1995-1999 Matthias Ettrich and the LyX Team
+\lyxformat 2.15
+\textclass article
+\language dutch
+\inputencoding default
+\fontscheme default
+\graphics dvips
+\paperfontsize 12
+\spacing single 
+\papersize a4paper
+\paperpackage a4
+\use_geometry 0
+\use_amsmath 0
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\quotes_times 2
+\papercolumns 1
+\papersides 1
+\paperpagestyle plain
+
+\layout Title
+
+DIT IS DE TITEL VAN HET DOCUMENT
+\layout Author
+
+door Fee LyX
+\layout Date
+
+June 12, 1972
+\layout Standard
+
+\begin_inset LatexCommand \tableofcontents{}
+
+\end_inset 
+
+\layout Section
+
+Uitgangspunten
+\layout Standard
+
+Het uitgangspunt van LyX is dat je je niet bezig houdt met de vormgeving,
+ maar met de inhoud van je tekst.
+
+\layout Subsection
+
+Hoe LyX het fikst
+\layout Standard
+
+LyX gebruikt LaTeX, een tekstverwerkingssysteem ontworpen door Leslie Lamport
+ in 1985.
+ Dit was op zich weer gebaseerd op een opmaaktaal voor tekst genaamd TeX,
+ door Donald Knuth gemaakt in 1984.
+ LaTeX is ontworpen met dezelfde uitgangspunten als LyX.
+ Leslie Lamport zei eens (zie referentie 
+\begin_inset LatexCommand \cite{lamport}
+
+\end_inset 
+
+):
+\layout Quote
+
+De functie van typografisch ontwerp is om de lezer te helpen de ideeën van
+ de schrijver te begrijpen.
+ Om een document gemakkelijk leesbaar te laten zijn, zal de visuele structuur
+ de logische structuur moeten weerspiegelen.
+ Een citaat en een computerprogramma, die als structurele elementen logisch
+ van elkaar verschillen, zouden onderling visueel van elkaar te onderscheiden
+ moeten zijn....
+ Omdat LaTeX niet kan begrijpen wat je schrijft, zul je expliciet de logische
+ structuur moeten aangeven door bepaalde commando's te typen....
+ Als je je document aan het schrijven bent, zou je je bezig moeten houden
+ met de logische structuur, niet met het zichtbare uiterlijk.
+\layout Subsection
+
+Waarom LyX beter is
+\layout Standard
+
+\begin_inset LatexCommand \label{sec:lyxbeter}
+
+\end_inset 
+
+LyX kan voor meer mensen handig zijn dan LaTeX.
+ Het is aanzienlijk eenvoudiger te leren, omdat je LaTeX niet hoeft te leren
+ (wat eigenlijk een programmeertaal is).
+ LyX is in feite net als andere 
+\begin_inset Quotes eld
+\end_inset 
+
+Wat je ziet is wat je krijgt
+\begin_inset Quotes erd
+\end_inset 
+
+ tekstverwerkers, behalve dat LyX 
+\begin_inset Quotes eld
+\end_inset 
+
+Wat je ziet is wat je bedoelt
+\begin_inset Quotes erd
+\end_inset 
+
+ is.
+ Op deze manier combineert het het gemak van tekstverwerkers met de kracht
+ van LaTeX.
+ Dit is Goed.
+ Ook is het bestandsformaat niet afhankelijk van het platform.
+ En als beste: het is VRIJ!
+\layout Section
+
+De mogelijkheden van LyX
+\layout Standard
+
+LyX heeft vele mogelijkheden die het schrijven van documenten vergemakkelijken.
+
+\begin_float footnote 
+\layout Standard
+
+Waarom zou je het anders willen gebruiken?
+\end_float 
+ Ik vind het 
+\emph on 
+geweldig
+\emph default 
+ om er over te vertellen.
+ Hier volgt een lijst van slechts een deel van deze mogelijkhedeb.
+
+\layout Itemize
+
+LyX regelt marges, en het nummeren van voetnoten voor je
+\layout Itemize
+
+LyX maakt het gemakkelijk om wiskundige formules te maken en te veranderen
+\layout Standard
+
+Voor een meer filosofische verhandeling waarom LyX beter is dan andere tekstverw
+erkers, zie Sectie 
+\begin_inset LatexCommand \ref{sec:lyxbeter}
+
+\end_inset 
+
+, welke te vinden is op pagina 
+\begin_inset LatexCommand \pageref{sec:lyxbeter}
+
+\end_inset 
+
+.
+\layout Section
+
+Slappe pogingen om andere dingen in LyX te gebruiken
+\layout Standard
+
+Ik heb laatst een programma geschreven.
+ Het zag er uit als volgt.
+\layout LyX-Code
+
+5 
+\protected_separator 
+REMARK MIJN GEWELDIGE PROGRAMMA
+\layout LyX-Code
+
+10 PRINT 
+\begin_inset Quotes eld
+\end_inset 
+
+IK BEN GEWELDIG!
+\begin_inset Quotes erd
+\end_inset 
+
+\layout LyX-Code
+
+20 GOTO 10
+\layout Standard
+
+Na al dit wetenschappelijk denkwerk, voelde ik mij meer artistiek, dus schreef
+ ik deze haiku
+\layout Verse
+
+LyX is echt geweldig 
+\newline 
+Tekstzettende tekstverwerker
+\newline 
+Hij bespaart zo veel tijd
+\layout Section
+
+Wiskunde dingen
+\layout Standard
+
+Mijn favoriete vergelijking is de oplossing van een kwadratische vergelijking.
+ Als 
+\begin_inset Formula \( ax^{2}+bx+c=0 \)
+\end_inset 
+
+ (verg.1), dan is 
+\begin_inset Formula \( x=\frac{-b\pm \sqrt{b^{2}-4ac}}{2a} \)
+\end_inset 
+
+ (verg.
+ 2).
+\layout Standard
+
+Een andere favoriete vergelijking is de grondslag van calculus: 
+\begin_inset Formula \( f'(x)\equiv \lim _{\Delta x\rightarrow 0}\frac{f(x+\Delta x)-f(x)}{\Delta x} \)
+\end_inset 
+
+ (verg.
+ 3).
+\layout Section
+
+Opmerkingen
+\layout Standard
+
+Een paar opmerkingen over het verLyXen van dit bestand:
+\layout Itemize
+
+Ik kon de lijnen die met streepjes gemaakt waren verwijderen.
+ Deze waren daar enkel om de titel en de referenties van de rest van het
+ document te scheiden.
+ LyX (LaTeX) begrijpt genoeg om deze onderdelen van het document met witruimte
+ te scheiden.
+
+\layout Itemize
+
+Ik heb niet de moeite genomen de wiskudige vergelijkingen in display-modus
+ te zetten.
+ Ik gebruikte ook niet de mogelijkheid van LyX om de vergelijkingen automatisch
+ te nummeren, omdat dit niet in de 
+\emph on 
+Turorial
+\emph default 
+ wordt beschreven.
+
+\layout Itemize
+
+Ik hoefde het woord 
+\begin_inset Quotes eld
+\end_inset 
+
+Referenties
+\begin_inset Quotes erd
+\end_inset 
+
+ niet te typen.
+ LyX schrijft dit automatisch (of het woord 
+\begin_inset Quotes eld
+\end_inset 
+
+Bibliografie
+\begin_inset Quotes erd
+\end_inset 
+
+, afhankelijk van de tekstklasse) wanneer je 
+\family sans 
+Bibliography
+\family default 
+ stijl kiest.
+
+\layout Bibliography
+\bibitem {lamport}
+
+Lamport, Leslie.
+
+\emph on 
+LaTeX: A Document Preparation System.
+
+\emph default 
+ Addison-Wesley, Reading, Massachusetts, second edition, 1994.
+\the_end

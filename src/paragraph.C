@@ -15,6 +15,8 @@
 #endif
 
 #include <fstream>
+using std::fstream;
+using std::ios;
 
 #include "lyxparagraph.h"
 #include "support/textutils.h"
