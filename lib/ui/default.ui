@@ -52,6 +52,7 @@ Menuset
 	Separator
 	Submenu "Export|E" "exportfile"
 	Item "Print...|P" "buffer-print"
+	Item "Fax...|F" "buffer-export fax"
 	Separator
 	Item "Exit|x" "lyx-quit"
 	Separator
@@ -59,12 +60,9 @@ Menuset
     End
 
     Menu "fileimport"
-	OptItem "LaTeX...|L" "buffer-import latex"
-	OptItem "Ascii text as lines...|A" "buffer-import text"
-	OptItem "Ascii text as paragraphs...|p" "buffer-import textparagraph"
-	OptItem "HTML...|H" "buffer-import html"
-	OptItem "Noweb...|N" "buffer-import literate"
-	OptItem "LinuxDoc...|D" "buffer-import linuxdoc"
+	Item "Ascii text as lines...|A" "buffer-import text"
+	Item "Ascii text as paragraphs...|p" "buffer-import textparagraph"
+	ImportFormats
     End
 
     Menu "fileinsert"

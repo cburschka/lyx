@@ -333,6 +333,43 @@ fi
 
 test $html_to_latex_command = "html2latex" && html_to_latex_command="html2latex \$\$FName"
 
+echo $ac_n "checking for a MSWord -> Latex converter""... $ac_c"
+echo "$ac_t""(wvCleanLatex word2x)"
+word_to_latex_command=
+for ac_prog in wvCleanLatex word2x
+do
+# Extract the first word of "$ac_prog", so it can be a program name with args.
+set dummy $ac_prog ; ac_word=$2
+if test -n "$ac_word"; then
+  echo $ac_n "+checking for \"$ac_word\"""... $ac_c"
+  IFS="${IFS= 	}"; ac_save_ifs="$IFS"; IFS=":"
+  for ac_dir in $PATH; do
+    test -z "$ac_dir" && ac_dir=.
+    if test -x $ac_dir/$ac_word; then
+      word_to_latex_command="$ac_prog"
+      break
+    fi
+  done
+  IFS="$ac_save_ifs"
+
+  if test -n "$word_to_latex_command"; then
+    ac_result=yes
+  else
+    ac_result=no
+  fi
+  
+  echo "$ac_t""$ac_result"
+  test -n "$word_to_latex_command" && break
+fi
+done
+
+if test -z "$word_to_latex_command" ; then
+  word_to_latex_command=none
+fi
+
+test $word_to_latex_command = "wvCleanLatex" && word_to_latex_command="wvCleanLatex \$\$FName \$\$OutName"
+test $word_to_latex_command = "word2x" && word_to_latex_command="word2x -f latex \$\$FName"
+
 echo $ac_n "checking for Image converter""... $ac_c"
 echo "$ac_t""(convert)"
 image_command=
@@ -737,6 +774,43 @@ fi
 
 
 
+# Search a GUI Fax program
+echo $ac_n "checking for a fax program""... $ac_c"
+echo "$ac_t""(ksendfax)"
+fax_command=
+for ac_prog in ksendfax
+do
+# Extract the first word of "$ac_prog", so it can be a program name with args.
+set dummy $ac_prog ; ac_word=$2
+if test -n "$ac_word"; then
+  echo $ac_n "+checking for \"$ac_word\"""... $ac_c"
+  IFS="${IFS= 	}"; ac_save_ifs="$IFS"; IFS=":"
+  for ac_dir in $PATH; do
+    test -z "$ac_dir" && ac_dir=.
+    if test -x $ac_dir/$ac_word; then
+      fax_command="$ac_prog"
+      break
+    fi
+  done
+  IFS="$ac_save_ifs"
+
+  if test -n "$fax_command"; then
+    ac_result=yes
+  else
+    ac_result=no
+  fi
+  
+  echo "$ac_t""$ac_result"
+  test -n "$fax_command" && break
+fi
+done
+
+if test -z "$fax_command" ; then
+  fax_command=none
+fi
+
+test $fax_command = "ksendfax" && fax_command="ksendfax \$\$FName"
+
 # Search for LinuxDoc support
 echo $ac_n "checking for SGML-tools 1.x (LinuxDoc)""... $ac_c"
 echo "$ac_t""(sgml2lyx)"
@@ -1017,28 +1091,32 @@ cat >lyxrc.defaults <<EOF
 \\Format pdf	pdf	PDF		P
 \\Format html	html	HTML		H
 \\Format text	txt	ASCII		A
-\\Format literate nw	NoWeb		W
+\\Format word	doc	Word		W
+\\Format literate nw	NoWeb		N
 \\Format linuxdoc sgml	LinuxDoc	x
 \\Format docbook  sgml	DocBook		B
-\\Format program  run	Program		r
+\\Format program  ""	Program		""
+\\Format fax	  ""	Fax		""
 
-\\converter latex lyx "$tex_to_lyx_command" ""
 \\converter latex dvi "$LATEX" "latex,disable=linuxdoc&docbook"
 \\converter latex pdf "$PDFLATEX" "latex,disable=linuxdoc&docbook"
 \\converter latex html "$latex_to_html_command"
 	"originaldir,needaux,disable=linuxdoc&docbook"
-\\converter literate lyx "$literate_to_lyx_command" ""
 \\converter literate latex "$literate_to_tex_command" ""
 \\converter dvi ps "$dvi_to_ps_command" ""
 \\converter ps pdf "$ps_to_pdf_command" ""
+\\converter ps fax "$fax_command" ""
 \\converter linuxdoc lyx "$linuxdoc_to_lyx_command" ""
 \\converter linuxdoc latex "$linuxdoc_to_latex_command" ""
 \\converter linuxdoc dvi "$linuxdoc_to_dvi_command" ""
 \\converter linuxdoc html "$linuxdoc_to_html_command" ""
 \\converter docbook dvi "$docbook_to_dvi_command" ""
 \\converter docbook html "$docbook_to_html_command" ""
-\\converter html latex "$html_to_latex_command"
-                       "disable=latex&literate&linuxdoc&docbook"
+
+\\converter latex lyx "$tex_to_lyx_command" "importer"
+\\converter literate lyx "$literate_to_lyx_command" "importer"
+\\converter html latex "$html_to_latex_command" "importer"
+\\converter word latex "$word_to_latex_command" "importer"
 
 \converter gif eps "$image_command" ""
 \converter png eps "$image_command" ""

@@ -196,6 +196,10 @@ test $literate_to_tex_command = "noweave" && literate_to_tex_command="noweave -d
 SEARCH_PROG([for a HTML -> Latex converter],html_to_latex_command,html2latex)
 test $html_to_latex_command = "html2latex" && html_to_latex_command="html2latex \$\$FName"
 
+SEARCH_PROG([for a MSWord -> Latex converter],word_to_latex_command,wvCleanLatex word2x)
+test $word_to_latex_command = "wvCleanLatex" && word_to_latex_command="wvCleanLatex \$\$FName \$\$OutName"
+test $word_to_latex_command = "word2x" && word_to_latex_command="word2x -f latex \$\$FName"
+
 SEARCH_PROG([for Image converter],image_command,convert)
 test $image_command = "convert" && image_command="convert \$\$FName \$\$OutName"
 
@@ -247,6 +251,10 @@ dnl   fax_command="fax send '\$\$Phone' '\$\$FName'"
 dnl else
 dnl   fax_command="none"
 dnl fi
+
+# Search a GUI Fax program
+SEARCH_PROG([for a fax program], fax_command, ksendfax)
+test $fax_command = "ksendfax" && fax_command="ksendfax \$\$FName"
 
 # Search for LinuxDoc support
 SEARCH_PROG([for SGML-tools 1.x (LinuxDoc)], LINUXDOC, sgml2lyx)
@@ -384,28 +392,32 @@ cat >lyxrc.defaults <<EOF
 \\Format pdf	pdf	PDF		P
 \\Format html	html	HTML		H
 \\Format text	txt	ASCII		A
-\\Format literate nw	NoWeb		W
+\\Format word	doc	Word		W
+\\Format literate nw	NoWeb		N
 \\Format linuxdoc sgml	LinuxDoc	x
 \\Format docbook  sgml	DocBook		B
-\\Format program  run	Program		r
+\\Format program  ""	Program		""
+\\Format fax	  ""	Fax		""
 
-\\converter latex lyx "$tex_to_lyx_command" ""
 \\converter latex dvi "$LATEX" "latex,disable=linuxdoc&docbook"
 \\converter latex pdf "$PDFLATEX" "latex,disable=linuxdoc&docbook"
 \\converter latex html "$latex_to_html_command"
 	"originaldir,needaux,disable=linuxdoc&docbook"
-\\converter literate lyx "$literate_to_lyx_command" ""
 \\converter literate latex "$literate_to_tex_command" ""
 \\converter dvi ps "$dvi_to_ps_command" ""
 \\converter ps pdf "$ps_to_pdf_command" ""
+\\converter ps fax "$fax_command" ""
 \\converter linuxdoc lyx "$linuxdoc_to_lyx_command" ""
 \\converter linuxdoc latex "$linuxdoc_to_latex_command" ""
 \\converter linuxdoc dvi "$linuxdoc_to_dvi_command" ""
 \\converter linuxdoc html "$linuxdoc_to_html_command" ""
 \\converter docbook dvi "$docbook_to_dvi_command" ""
 \\converter docbook html "$docbook_to_html_command" ""
-\\converter html latex "$html_to_latex_command"
-                       "disable=latex&literate&linuxdoc&docbook"
+
+\\converter latex lyx "$tex_to_lyx_command" "importer"
+\\converter literate lyx "$literate_to_lyx_command" "importer"
+\\converter html latex "$html_to_latex_command" "importer"
+\\converter word latex "$word_to_latex_command" "importer"
 
 \converter gif eps "$image_command" ""
 \converter png eps "$image_command" ""

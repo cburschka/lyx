@@ -345,6 +345,11 @@ LyXFunc::func_status LyXFunc::getStatus(int ac) const
 		disable = !Exporter::IsExportable(buf, "ps")
 			|| lyxrc.fax_command == "none";
 		break;
+#else
+	case LFUN_EXPORT:
+		disable = argument == "fax" &&
+			!Exporter::IsExportable(buf, argument);
+		break;
 #endif
 	case LFUN_IMPORT:
 		disable = !Importer::IsImportable(argument);
@@ -3149,10 +3154,10 @@ void LyXFunc::doImport(string const & argument)
 		fileDlg.SetButton(0, _("Documents"), lyxrc.document_path);
 		fileDlg.SetButton(1, _("Examples"), 
 					AddPath(system_lyxdir, "examples"));
-		string text = _("Select ") + Formats::PrettyName(format)
+		string text = _("Select ") + formats.PrettyName(format)
 			+ _(" file to import");
 		string format2 = (format == "textparagraph") ? "text" : format;
-		string extension = "*." + Formats::Extension(format2);
+		string extension = "*." + formats.Extension(format2);
 		filename = fileDlg.Select(text, initpath, extension);
 		AllowInput(owner->view());
  

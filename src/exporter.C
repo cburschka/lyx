@@ -37,7 +37,7 @@ bool Exporter::Export(Buffer * buffer, string const & format0,
 	if (!buffer->tmppath.empty())
 		filename = AddName(buffer->tmppath, filename);
 	filename = ChangeExtension(filename, 
-				   Formats::Extension(backend_format));
+				   formats.Extension(backend_format));
 
 	// Ascii backend
 	if (backend_format == "text")
@@ -65,7 +65,7 @@ bool Exporter::Export(Buffer * buffer, string const & format0,
 	if (!put_in_tempdir)
 		ShowMessage(buffer,
 			    _("Document exported as ")
-			    + Formats::PrettyName(format)
+			    + formats.PrettyName(format)
 			    + _(" to file `")
 			    + MakeDisplayPath(result_file) +'\'');
 	return true;
@@ -85,7 +85,7 @@ bool Exporter::Preview(Buffer * buffer, string const & format0)
 		return false;
 	string format;
 	Converter::SplitFormat(format0, format);
-	return Formats::View(buffer, result_file, format);
+	return formats.View(buffer, result_file, format);
 }
 
 
@@ -97,24 +97,12 @@ bool Exporter::IsExportable(Buffer const * buffer, string const & format)
 
 
 vector<FormatPair> const
-Exporter::GetExportableFormats(Buffer const * buffer)
+Exporter::GetExportableFormats(Buffer const * buffer, bool only_viewable)
 {
 	vector<FormatPair> result = 
-		Converter::GetReachable(BufferFormat(buffer), "lyx", false);
-	Format * format = Formats::GetFormat("text");
-	if (format)
-		result.push_back(FormatPair(format , 0, ""));
-	return result;
-}
-
-
-vector<FormatPair> const
-Exporter::GetViewableFormats(Buffer const * buffer)
-{
-	vector<FormatPair> result = 
-		Converter::GetReachable(BufferFormat(buffer), "lyx", true);
-	Format * format = Formats::GetFormat("text");
-	if (format && !format->viewer.empty())
+		Converter::GetReachable(BufferFormat(buffer), only_viewable);
+	Format * format = formats.GetFormat("text");
+	if (format && (!only_viewable || !format->viewer.empty()))
 		result.push_back(FormatPair(format , 0, ""));
 	return result;
 }

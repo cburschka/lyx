@@ -29,8 +29,9 @@ public:
 	Format() {}
 	///
 	Format(string const & n, string const & e, string const & p,
-	       string const & s) :
-		name(n), extension(e), prettyname(p), shortcut(s) {};
+	       string const & s, string const & v) :
+		name(n), extension(e), prettyname(p), shortcut(s),
+		viewer(v) {};
 	///
 	string name;
 	///
@@ -41,13 +42,19 @@ public:
 	string shortcut;
 	///
 	string viewer;
+	///
+	bool dummy() const;
+	///
+	string const getname() const {
+		return name;
+	}
 };
 
 ///
 struct Command {
 	///
 	Command(Format const * f, Format const * t, string const & c)
-		: from(f), to(t), command(c),
+		: from(f), to(t), command(c), importer(false), 
 		  latex(false), original_dir(false), need_aux(false) {}
 	///
 	Format const * from;
@@ -55,6 +62,8 @@ struct Command {
 	Format const * to;
 	///
 	string command;
+	/// The converter is used for importing
+	bool importer;
 	/// The converter is latex or its derivatives
 	bool latex;
 	/// Do we need to run the converter in the original directory?
@@ -94,33 +103,29 @@ public:
 ///
 class Formats {
 public:
+        ///
+        typedef std::map<string, Format> FormatList;
 	///
-	static
 	void Add(string const & name);
 	///
-	static
 	void Add(string const & name, string const & extension, 
 		 string const & prettyname, string const & shortcut);
 	///
-	static
 	void SetViewer(string const & name, string const & command);
 	///
-	static
 	bool View(Buffer const * buffer, string const & filename,
 		  string const & format_name);
 	///
-	static
 	Format * GetFormat(string const & name);
 	///
-	static
 	string const PrettyName(string const & name);
 	///
-	static
 	string const Extension(string const & name);
+	///
+	std::vector<Format> const GetAllFormats();
 private:
 	///
-	static
-	std::map<string, Format> formats;
+	FormatList formats;
 };
 
 ///
@@ -131,12 +136,12 @@ public:
 	void Add(string const & from, string const & to,
 		 string const & command, string const & flags);
 	///
-	
+	static
+	std::vector<FormatPair> const GetReachableTo(string const & target);
 	///
 	static
 	std::vector<FormatPair> const
-	GetReachable(string const & from, string const & stop_format,
-		     bool only_viewable);
+	GetReachable(string const & from, bool only_viewable);
 	///
 	static
 	bool IsReachable(string const & from, string const & to);
@@ -179,5 +184,9 @@ private:
 	static
 	string latex_command;
 };
+
+extern Formats formats;
+extern Formats system_formats;
+
 
 #endif

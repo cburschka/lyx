@@ -39,7 +39,8 @@ struct FD_form_preferences;
 struct FD_form_printer;
 struct FD_form_screen_fonts;
 struct FD_form_spellchecker;
-class  Combox;
+class Combox;
+class Format;
 
 /** This class provides an XForms implementation of the FormPreferences Dialog.
     The preferences dialog allows users to set/save their preferences.
@@ -309,6 +310,9 @@ private:
 	Combox * combo_kbmap_2;
 	///
 	FL_OBJECT * feedbackObj;
+	///
+	std::vector<Format> formats_vec;
+
 };
 
 

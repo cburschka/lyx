@@ -54,7 +54,10 @@ public:
 		UpdateFormats,
 		/** This is a list of exportable formats
 		    typically for the File->Export menu. */
-		ExportFormats
+		ExportFormats,
+		/** This is a list of importable formats
+		    typically for the File->Export menu. */
+		ImportFormats
 	};
 	/// Create a Command type MenuItem
 	MenuItem(Kind kind, 

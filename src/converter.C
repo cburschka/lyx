@@ -38,7 +38,6 @@ using std::find_if;
 
 //////////////////////////////////////////////////////////////////////////////
 
-map<string, Format> Formats::formats;
 vector<Command> Converter::commands;
 string Converter::latex_command;
 
@@ -52,25 +51,41 @@ string const add_options(string const & command, string const & options)
 
 //////////////////////////////////////////////////////////////////////////////
 
+
+bool Format::dummy() const
+{
+	return extension.empty();
+}
+
+
 void Formats::Add(string const & name)
 {
 	if (formats.find(name) == formats.end())
-		formats[name] = Format(name, name, name, string());
+		formats[name] = Format(name, name, name, "", "");
 }
 
 
 void Formats::Add(string const & name, string const & extension, 
 		  string const & prettyname, string const & shortcut)
 {
-	formats[name] = Format(name, extension, prettyname, shortcut);
+
+	if (prettyname.empty()) {
+		FormatList::iterator it = formats.find(name);
+		if (it != formats.end())
+			formats.erase(it);
+		return;
+	}
+
+	string old_viewer = formats[name].viewer;
+	formats[name] = Format(name, extension, prettyname, shortcut,
+			       old_viewer);
 }
 
 
 void Formats::SetViewer(string const & name, string const & command)
 {
-
 	string command2 = command;
-	if (!contains(command2,"$$FName"))
+	if (!command2.empty() && !contains(command2,"$$FName"))
 		command2 += " $$FName";
 
 	Add(name);
@@ -88,7 +103,7 @@ bool Formats::View(Buffer const * buffer, string const & filename,
 	if (!format || format->viewer.empty()) {
 		WriteAlert(_("Can not view file"),
 			   _("No information for viewing ")
-			   + Formats::PrettyName(format_name));
+			   + PrettyName(format_name));
 			   return false;
 	}
 
@@ -124,9 +139,9 @@ bool Formats::View(Buffer const * buffer, string const & filename,
 
 Format * Formats::GetFormat(string const & name)
 {
-	map<string, Format>::iterator it = formats.find(name);
+	FormatList::iterator it = formats.find(name);
 	if (it != formats.end())
-		return &(*it).second;
+		return &it->second;
 	else
 		return 0;
 }
@@ -151,6 +166,18 @@ string const Formats::Extension(string const & name)
 		return name;
 }
 
+
+vector<Format> 
+const Formats::GetAllFormats()
+{
+	vector<Format> result;
+	for (FormatList::iterator it = formats.begin(); 
+	     it != formats.end(); ++it)
+		result.push_back(it->second);
+	return result;
+}
+
+
 //////////////////////////////////////////////////////////////////////////////
 
 class compare_Command {
@@ -167,9 +194,9 @@ private:
 void Converter::Add(string const & from, string const & to,
 		    string const & command, string const & flags)
 {
-	Formats::Add(from);
-	Formats::Add(to);
-	Command Com(Formats::GetFormat(from), Formats::GetFormat(to), command);
+	formats.Add(from);
+	formats.Add(to);
+	Command Com(formats.GetFormat(from), formats.GetFormat(to), command);
 	vector<Command>::iterator it = find_if(commands.begin(),
 					       commands.end(),
 					       compare_Command(Com));
@@ -193,6 +220,8 @@ void Converter::Add(string const & from, string const & to,
 				Com.command = command;
 			}
 		} 
+		else if (flag_name == "importer")
+			Com.importer = true;
 		else if (flag_name == "latex")
 			Com.latex = true;
 		else if (flag_name == "originaldir")
@@ -236,17 +265,47 @@ void Converter::Add(string const & from, string const & to,
 inline
 bool enable(vector<Command>::iterator it, string const & from)
 {
-	return find((*it).disable.begin(), (*it).disable.end(), from)
-		== (*it).disable.end();
+	return find(it->disable.begin(), it->disable.end(), from)
+		== it->disable.end();
 }
 
 
 vector<FormatPair> const
-Converter::GetReachable(string const & from, string const & stop_format,
-			bool only_viewable)
+Converter::GetReachableTo(string const & target)
 {
 	vector<FormatPair> result;
-	Format const * format = Formats::GetFormat(from);
+
+	queue< vector<Command>::iterator > Q;
+	for (vector<Command>::iterator it = commands.begin();
+	     it != commands.end(); ++it)
+		if (it->to->name == target && it->importer) {
+			Q.push(it);
+			it->visited = true;
+		} else
+			it->visited = false;
+
+	while (!Q.empty()) {
+		vector<Command>::iterator it = Q.front();
+		Q.pop();
+		result.push_back(FormatPair(it->from, 0, ""));
+		for (vector<Command>::iterator it2 = commands.begin();
+		     it2 != commands.end(); ++it2)
+			if (!it2->visited && it->from == it2->to &&
+			    it2->importer) {
+				Q.push(it2);
+				it2->visited = true;
+			}
+	}
+
+	return result;
+}
+
+
+vector<FormatPair> const
+Converter::GetReachable(string const & from, bool only_viewable)
+{
+	vector<FormatPair> result;
+	Format const * format = formats.GetFormat(from);
 	if (!format)
 		return result;
 
@@ -256,26 +315,25 @@ Converter::GetReachable(string const & from, string const & stop_format,
 	queue< vector<Command>::iterator > Q;
 	for (vector<Command>::iterator it = commands.begin();
 	     it != commands.end(); ++it)
-		if ((*it).from->name == from && enable(it, from)
-		    && (*it).to->name != stop_format) {
+		if (it->from->name == from && enable(it, from) 
+		    && !it->importer) {
 			Q.push(it);
-			(*it).visited = true;
+			it->visited = true;
 		} else
-			(*it).visited = false;
+			it->visited = false;
 
 	while (!Q.empty()) {
 		vector<Command>::iterator it = Q.front();
 		Q.pop();
-		if (!only_viewable || !(*it).to->viewer.empty())
-			result.push_back(FormatPair((*it).to, (*it).from,
-						    (*it).command));
+		if (!only_viewable || !it->to->viewer.empty())
+			result.push_back(FormatPair(it->to, it->from,
+						    it->command));
 		for (vector<Command>::iterator it2 = commands.begin();
 		     it2 != commands.end(); ++it2)
-			if (!(*it2).visited && (*it).to == (*it2).from &&
-			    enable(it2, from) &&
-			    (*it2).to->name != stop_format) {
+			if (!it2->visited && it->to == it2->from &&
+			    enable(it2, from) && !it2->importer) {
 				Q.push(it2);
-				(*it2).visited = true;
+				it2->visited = true;
 			}
 	}
 
@@ -291,23 +349,23 @@ bool Converter::IsReachable(string const & from, string const & to)
 	queue< vector<Command>::iterator > Q;
 	for (vector<Command>::iterator it = commands.begin();
 	     it != commands.end(); ++it)
-		if ((*it).from->name == from && enable(it, from)) {
+		if (it->from->name == from && enable(it, from)) {
 			Q.push(it);
-			(*it).visited = true;
+			it->visited = true;
 		} else
-			(*it).visited = false;
+			it->visited = false;
 
 	while (!Q.empty()) {
 		vector<Command>::iterator it = Q.front();
 		Q.pop();
-		if ((*it).to->name == to)
+		if (it->to->name == to)
 			return true;
 		for (vector<Command>::iterator it2 = commands.begin();
 		     it2 != commands.end(); ++it2)
-			if (!(*it2).visited && (*it).to == (*it2).from &&
+			if (!it2->visited && it->to == it2->from &&
 			    enable(it2, from)) {
 				Q.push(it2);
-				(*it2).visited = true;
+				it2->visited = true;
 			}
 	}
 	return false;
@@ -320,7 +378,7 @@ bool Converter::Convert(Buffer const * buffer,
 			string const & using_format, string & to_file)
 {
 	to_file = ChangeExtension(to_file_base,
-				  Formats::Extension(to_format));
+				  formats.Extension(to_format));
 
 	if (from_format == to_format)
 		if (from_file != to_file)
@@ -331,12 +389,12 @@ bool Converter::Convert(Buffer const * buffer,
 	queue< vector<Command>::iterator > Q;
 	for (vector<Command>::iterator it = commands.begin();
 	     it != commands.end(); ++it)
-		if ((*it).from->name == from_format && enable(it, from_format)) {
+		if (it->from->name == from_format && enable(it, from_format)) {
 			Q.push(it);
-			(*it).visited = true;
-			(*it).previous = commands.end();
+			it->visited = true;
+			it->previous = commands.end();
 		} else
-			(*it).visited = false;
+			it->visited = false;
 
 	if (Q.empty()) {
 		WriteAlert(_("Can not convert file"),
@@ -348,34 +406,34 @@ bool Converter::Convert(Buffer const * buffer,
 	vector<Command>::iterator it;
 	while (!Q.empty()) {
 		it = Q.front();
-		if ((*it).to->name == to_format &&
-		    (using_format.empty() || using_format == (*it).from->name)) {
+		if (it->to->name == to_format &&
+		    (using_format.empty() || using_format == it->from->name)) {
 			found = true;
 			break;
 		}
 		Q.pop();
 		for (vector<Command>::iterator it2 = commands.begin();
 		     it2 != commands.end(); ++it2)
-			if (!(*it2).visited && (*it).to == (*it2).from &&
+			if (!it2->visited && it->to == it2->from &&
 			    enable(it2, from_format)) {
 				Q.push(it2);
-				(*it2).visited = true;
-				(*it2).previous = it;
+				it2->visited = true;
+				it2->previous = it;
 			}
 	}
 
 	if (!found) {
 		WriteAlert(_("Can not convert file"),
 			   _("No information for converting from ")
-			   + Formats::PrettyName(from_format) + _(" to ")
-			   + Formats::PrettyName(to_format));
+			   + formats.PrettyName(from_format) + _(" to ")
+			   + formats.PrettyName(to_format));
 		return false;
 	}
 
 	vector< vector<Command>::iterator > S;
 	while (it != commands.end()) {
 		S.push_back(it);
-		it = (*it).previous;
+		it = it->previous;
 	}
 
 	string path = OnlyPath(from_file);
@@ -389,62 +447,66 @@ bool Converter::Convert(Buffer const * buffer,
 	for (vector< vector<Command>::iterator >::reverse_iterator rit =
 		     S.rbegin(); rit != S.rend(); ++rit) {
 		it = *rit;
-		lyxerr << "Converting from  "
-		       << (*it).from->name << " to " << (*it).to->name << endl;
+		bool dummy = it->to->dummy() && it->to->name != "program";
+		if (!dummy)
+			lyxerr << "Converting from  "
+			       << it->from->name << " to " << it->to->name << endl;
 		infile = outfile;
-		outfile = (*it).result_dir.empty()
-			? ChangeExtension(from_file, (*it).to->extension)
-			: AddName(subst((*it).result_dir,
+		outfile = it->result_dir.empty()
+			? ChangeExtension(from_file, it->to->extension)
+			: AddName(subst(it->result_dir,
 					"$$BaseName", from_base),
-				  subst((*it).result_file,
+				  subst(it->result_file,
 					"$$BaseName", OnlyFilename(from_base)));
 
-		if ((*it).latex) {
-			lyxrc.pdf_mode = (*it).to->name == "pdf";
-			lyxerr << "Running " << (*it).command << endl;
+		if (it->latex) {
+			lyxrc.pdf_mode = it->to->name == "pdf";
+			lyxerr << "Running " << it->command << endl;
 			run_latex = true;
-			if (!runLaTeX(buffer, (*it).command))
+			if (!runLaTeX(buffer, it->command))
 				return false;
 		} else {
-			if ((*it).need_aux && !run_latex
+			if (it->need_aux && !run_latex
 			    && !latex_command.empty()) {
 				lyxerr << "Running " << latex_command 
 				       << " to update aux file"<<  endl;
 				runLaTeX(buffer, latex_command);
 			}
 
-			string infile2 = ((*it).original_dir)
+			string infile2 = (it->original_dir)
 				? infile : MakeRelPath(infile, path);
-			string outfile2 = ((*it).original_dir)
+			string outfile2 = (it->original_dir)
 				? outfile : MakeRelPath(outfile, path);
 
-			string command = (*it).command;
+			string command = it->command;
 			command = subst(command, "$$FName", QuoteName(infile2));
 			command = subst(command, "$$BaseName", QuoteName(from_base));
 			command = subst(command, "$$OutName", QuoteName(outfile2));
 
-			if (!(*it).parselog.empty())
+			if (!it->parselog.empty())
 				command += " 2> " + QuoteName(infile2 + ".out");
 
-			if ((*it).from->name == "dvi" && (*it).to->name == "ps")
+			if (it->from->name == "dvi" && it->to->name == "ps")
 				command = add_options(command,
 						      dvips_options(buffer));
 
 			lyxerr << "Calling " << command << endl;
 			if (buffer)
 				ShowMessage(buffer, _("Executing command:"), command);
-			
+
+			Systemcalls::Starttype type = (dummy)
+				? Systemcalls::SystemDontWait : Systemcalls::System;
 			Systemcalls one;
 			int res;
-			if ((*it).original_dir && buffer) {
+			if (it->original_dir && buffer) {
 				Path p(buffer->filepath);
-				res = one.startscript(Systemcalls::System, command);
+				res = one.startscript(type, command);
 			} else
-				res = one.startscript(Systemcalls::System, command);
+				res = one.startscript(type, command);
 
-			if (!(*it).parselog.empty()) {
+			if (!it->parselog.empty()) {
 				string const logfile =  infile2 + ".log";
-				string const command2 = (*it).parselog +
+				string const command2 = it->parselog +
 					" < " + QuoteName(infile2 + ".out") +
 					" > " + QuoteName(logfile);
 				one.startscript(Systemcalls::System, command2);
@@ -453,7 +515,7 @@ bool Converter::Convert(Buffer const * buffer,
 			}
 
 			if (res) {
-				if ((*it).to->name == "program")
+				if (it->to->name == "program")
 					WriteAlert(_("There were errors during the Build process."),
 						   _("You should try to fix them."));
 				else
@@ -465,23 +527,36 @@ bool Converter::Convert(Buffer const * buffer,
 		}
 	}
 
-	if (!(*it).result_dir.empty()) {
-		to_file = AddName(subst((*it).result_dir,
+	if (it->to->dummy())
+		return true;
+
+
+	if (!it->result_dir.empty()) {
+		to_file = AddName(subst(it->result_dir,
 					"$$BaseName", to_base),
-				  subst((*it).result_file,
+				  subst(it->result_file,
 					"$$BaseName", OnlyFilename(to_base)));
 		if (from_base != to_base) {
-			string from = subst((*it).result_dir,
+			string from = subst(it->result_dir,
 					    "$$BaseName", from_base);
-			string to = subst((*it).result_dir,
+			string to = subst(it->result_dir,
 					  "$$BaseName", to_base);
-			return lyx::rename(from, to);
+			if (!lyx::rename(from, to)) {
+				WriteAlert(_("Error while trying to move directory:"),
+					   from, ("to ") + to);
+				return false;
+			}
 		}
-	} else if (outfile != to_file)
-		if ((*it).latex)
-			return lyx::copy(outfile, to_file);
-		else
-			return lyx::rename(outfile, to_file);
+	} else if (outfile != to_file) {
+		bool moved = (it->latex)
+			? lyx::copy(outfile, to_file)
+			: lyx::rename(outfile, to_file);
+		if (!moved) {
+			WriteAlert(_("Error while trying to move file:"),
+				   outfile, _("to ") + to_file);
+			return false;
+		}
+	}
 
         return true;
 }
@@ -702,3 +777,9 @@ string const Converter::dvips_options(Buffer const * buffer)
 void Converter::init()
 {
 }
+
+/// The global instance
+Formats formats;
+
+// The global copy of the system lyxrc entries (everything except preferences)
+Formats system_formats;

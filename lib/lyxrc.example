@@ -335,7 +335,8 @@
 #
 
 # The \converter command defines a converter between two formats. 
-# LyX uses the defined converters for generating output in varius formats.
+# LyX uses the defined converters for generating output in various formats,
+# or for importing.
 # The converter command has 4 arguments: The source format, the target format,
 # the command, and additional flags.
 # For example, the following defines a DVI->Postscript converter:
@@ -345,6 +346,7 @@
 # The flags argument is a list of comma separated flags.
 # Known flags are
 # - * : copy the previously defined flags
+# - importer : The converter is used for importing.
 # - latex : The converter is latex or its derivatives (pdflatex).
 # - originaldir : The converter must be invoked in the directory of the lyx
 #   file and not in the temporary directory. This is needed for tex->html

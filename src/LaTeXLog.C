@@ -27,7 +27,7 @@ void ShowLatexLog()
 	if (!filename.empty()) {
 		fname = OnlyFilename(ChangeExtension(filename, ".log"));
 		bname = OnlyFilename(ChangeExtension(filename,
-				     Formats::Extension("literate") + ".out"));
+				     formats.Extension("literate") + ".out"));
 		path = OnlyPath(filename);
 		if (lyxrc.use_tempdir || (IsDirWriteable(path) < 1)) {
 			path = current_view->buffer()->tmppath;

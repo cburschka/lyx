@@ -55,6 +55,7 @@ MenuItem::MenuItem(Kind kind, string const & label,
 	case ViewFormats:
 	case UpdateFormats:
 	case ExportFormats:
+	case ImportFormats:
 		break;
 	case Command:
 		action_ = lyxaction.LookupFunc(command);
@@ -88,6 +89,7 @@ Menu & Menu::read(LyXLex & lex)
 		md_documents,
 		md_endmenu,
 		md_exportformats,
+		md_importformats,
 		md_lastfiles,
 		md_optitem,
 		md_references,
@@ -103,6 +105,7 @@ Menu & Menu::read(LyXLex & lex)
 		{ "documents", md_documents },
 		{ "end", md_endmenu },
 		{ "exportformats", md_exportformats },
+		{ "importformats", md_importformats },
 		{ "item", md_item },
 		{ "lastfiles", md_lastfiles },
 		{ "optitem", md_optitem }, 
@@ -167,6 +170,10 @@ Menu & Menu::read(LyXLex & lex)
 
 		case md_exportformats:
 			add(MenuItem(MenuItem::ExportFormats));
+			break;
+
+		case md_importformats:
+			add(MenuItem(MenuItem::ImportFormats));
 			break;
 
 		case md_submenu: {
@@ -272,19 +279,21 @@ void Menu::expand(Menu & tomenu, Buffer * buf) const
 			vector<FormatPair> names;
 			kb_action action;
 			if ((*cit).kind() == MenuItem::ViewFormats) {
-				names = Exporter::GetViewableFormats(buf);
+				names = Exporter::GetExportableFormats(buf, true);
 				action = LFUN_PREVIEW;
 			} else if ((*cit).kind() == MenuItem::UpdateFormats) {
-				names = Exporter::GetViewableFormats(buf);
+				names = Exporter::GetExportableFormats(buf, true);
 				action = LFUN_UPDATE;
 			} else {
-				names = Exporter::GetExportableFormats(buf);
+				names = Exporter::GetExportableFormats(buf, false);
 				action = LFUN_EXPORT;
 			}
 			sort(names.begin(), names.end(), compare_formatpair());
 
 			for (vector<FormatPair>::const_iterator fit = names.begin();
 			     fit != names.end() ; ++fit) {
+				if ((*fit).format->dummy())
+					continue;
 				string fmt = (*fit).format->name;
 				string label = (*fit).format->prettyname;
 				bool same_before = 
@@ -311,6 +320,24 @@ void Menu::expand(Menu & tomenu, Buffer * buf) const
 		}
 		break;
 
+		case MenuItem::ImportFormats: {
+			vector<FormatPair> names = Converter::GetReachableTo("lyx");
+			sort(names.begin(), names.end(), compare_formatpair());
+
+			for (vector<FormatPair>::const_iterator fit = names.begin();
+			     fit != names.end() ; ++fit) {
+				if ((*fit).format->dummy())
+					continue;
+				string fmt = (*fit).format->name;
+				string label = (*fit).format->prettyname;
+				if (!(*fit).format->shortcut.empty())
+					label += "|" + (*fit).format->shortcut;
+				int action2 = lyxaction.getPseudoAction(LFUN_IMPORT, fmt);
+				tomenu.add(MenuItem(MenuItem::Command,
+						    label, action2));
+			}
+		}
+		break;
 			
 		default:
 			tomenu.add(*cit);

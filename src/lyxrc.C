@@ -37,10 +37,7 @@ using std::ofstream;
 using std::cout;
 using std::ios;
 using std::endl;
-
-// this is crappy... why are those colors command line arguments and
-// not in lyxrc?? (Matthias) 
-// Because nobody put them there. (Asger)
+using std::vector;
 
 extern LyXAction lyxaction;
 extern kb_keymap * toplevel_keymap;
@@ -871,7 +868,7 @@ int LyXRC::read(string const & filename)
 				format = lexrc.GetString();
 			if (lexrc.next())
 				command = lexrc.GetString();
-			Formats::SetViewer(format, command);
+			formats.SetViewer(format, command);
 			break;
 		}
 		case RC_FORMAT: {
@@ -884,7 +881,7 @@ int LyXRC::read(string const & filename)
 				prettyname = lexrc.GetString();
 			if (lexrc.next())
 				shortcut = lexrc.GetString();
-			Formats::Add(format, extension, prettyname, shortcut);
+			formats.Add(format, extension, prettyname, shortcut);
 			break;
 		}
 		case RC_DEFAULT_LANGUAGE:
@@ -1473,6 +1470,44 @@ void LyXRC::output(ostream & os) const
 		if (default_language != system_lyxrc.default_language) {
 			os << "\\default_language " << default_language << "\n";
 		}
+
+		os << "\n#\n"
+		   << "# FORMATS SECTION ##########################\n"
+		   << "#\n\n";
+
+	case RC_FORMAT: {
+		vector<Format> formats_vec = formats.GetAllFormats();
+		vector<Format> sys_formats_vec = system_formats.GetAllFormats();
+		for (vector<Format>::const_iterator it = formats_vec.begin();
+		     it != formats_vec.end(); ++it) {
+			Format const * format = system_formats.GetFormat(it->name);
+			if (!format || format->extension != it->extension ||
+			    format->prettyname != it->prettyname ||
+			    format->shortcut != it->shortcut)
+				os << "\\format \"" << it->name << "\" \""
+				   << it->extension << "\" \""
+				   << it->prettyname << "\" \""
+				   << it->shortcut << "\"\n";
+		}
+
+		for (vector<Format>::const_iterator it = sys_formats_vec.begin();
+		     it != sys_formats_vec.end(); ++it)
+			if (!formats.GetFormat(it->name))
+				os << "\\format \"" << it->name 
+				   << "\" \"\" \"\" \"\"\n";
+	}
+	case RC_VIEWER: {
+		vector<Format> formats_vec = formats.GetAllFormats();
+		for (vector<Format>::const_iterator it = formats_vec.begin();
+		     it != formats_vec.end(); ++it) {
+			Format const * format = system_formats.GetFormat(it->name);
+			if ((!format || format->viewer != it->viewer) &&
+			    (format || !it->viewer.empty()))
+				os << "\\viewer \"" << it->name << "\" \""
+				   << it->viewer << "\"\n";
+		}
+	}
+
 	}
 	os.flush();
 }

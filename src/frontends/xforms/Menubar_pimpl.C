@@ -608,6 +608,7 @@ int Menubar::Pimpl::create_submenu(Window win, LyXView * view,
 		case MenuItem::ViewFormats:
 		case MenuItem::UpdateFormats:
 		case MenuItem::ExportFormats:
+		case MenuItem::ImportFormats:
 			lyxerr << "Menubar::Pimpl::create_submenu: "
 				"this should not happen" << endl;
 			break;

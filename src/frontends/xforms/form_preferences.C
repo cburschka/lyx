@@ -462,7 +462,7 @@ FD_form_converters * FormPreferences::build_converters()
   fdui->form = fl_bgn_form(FL_NO_BOX, 450, 360);
   fdui->form->u_vdata = this;
   obj = fl_add_box(FL_FLAT_BOX, 0, 0, 450, 360, "");
-  fdui->browser_converters = obj = fl_add_browser(FL_NORMAL_BROWSER, 30, 30, 160, 270, idex(_("All converters|#A")));
+  fdui->browser_converters = obj = fl_add_browser(FL_HOLD_BROWSER, 30, 30, 160, 270, idex(_("All converters|#A")));
     fl_set_button_shortcut(obj, scex(_("All converters|#A")), 1);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_lalign(obj, FL_ALIGN_TOP);
@@ -510,7 +510,7 @@ FD_form_formats * FormPreferences::build_formats()
   fdui->form = fl_bgn_form(FL_NO_BOX, 450, 360);
   fdui->form->u_vdata = this;
   obj = fl_add_box(FL_FLAT_BOX, 0, 0, 450, 360, "");
-  fdui->browser_formats = obj = fl_add_browser(FL_NORMAL_BROWSER, 30, 30, 160, 270, idex(_("All formats|#A")));
+  fdui->browser_formats = obj = fl_add_browser(FL_HOLD_BROWSER, 30, 30, 160, 270, idex(_("All formats|#A")));
     fl_set_button_shortcut(obj, scex(_("All formats|#A")), 1);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_lalign(obj, FL_ALIGN_TOP);

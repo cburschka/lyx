@@ -52,11 +52,12 @@ Other major changes in 1.1.6 include:
   rendering when you do Ascii export if you have gifscii installed.
 
 - The code which converts from LyX format to anything else (for
-  viewing or exporting purposes) has been rewritten. In particular, the
-  PDF format is now supported. In fact it's now possible to add
-  new export formats without recompiling LyX by specifying external
-  programs or scripts in lyxrc settings (note that the old export lyxrc
-  settings no longer work).
+  viewing or exporting purposes) and from anything else to LyX has been
+  rewritten. In particular, it is now possible to export to PDF, and to
+  import from HTML/MSWord. In fact it's now possible to add new import/export
+  formats without recompiling LyX by specifying external programs or scripts
+  in lyxrc settings 
+  (note that the old import/export lyxrc settings no longer work).
 
 - LyX can do command line exports without opening any GUI components.
 
@@ -67,10 +68,13 @@ Other major changes in 1.1.6 include:
   have differently encoded languages in the same paragraph.
   The languages and the encodings are defined in text files.
 
-- Improved support for Hebrew and Arabic (already present in 1.1.5fix2).
+- Improved support for Hebrew and Arabic (also present in 1.1.5fix2).
 
 - included files work now with docbook and linuxdoc; new layout
   docbook-book.
+
+- PSpell library and Aspell spell checker support now included thanks
+  largely to Kevin Atkinson (PSpell and Aspell maintainer). 
 
 And finally, there have been a lot of smaller changes, which are
 mentioned here for your information

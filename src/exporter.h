@@ -41,11 +41,9 @@ public:
 	///
 	static
 	std::vector<FormatPair> const
-	GetExportableFormats(Buffer const * buffer);
+	GetExportableFormats(Buffer const * buffer, bool only_viewable);
 	///
-	static
-	std::vector<FormatPair> const
-	GetViewableFormats(Buffer const * buffer);
+	
 	///
 	static
 	string const BufferFormat(Buffer const * buffer);

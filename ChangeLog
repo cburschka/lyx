@@ -1,3 +1,43 @@
+2000-11-06  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* lib/configure.m4: == is not a valid operator for command test.
+
+	* src/lyxrc.C: add using directive.
+
+	* src/converter.h: add std:: qualifier.
+
+2000-11-03   Dekel Tsur  <dekelts@tau.ac.il>
+
+	* src/converter.[Ch] and other files: Change the Format class to a
+	real class, and create two instances: formats and system_format.
+
+	* src/lyxrc.C (output): Output the difference between formats and
+ 	system_formats.
+
+	* src/frontends/xforms/FormPreferences.C (input): Simplify.
+	(buildFormats): Insert formats into browser.
+	(inputFormats): Made the browser and add button functional.
+	(applyFormats): Update formats from format_vec.
+
+	* src/converter.C: Changed all (*it). to it->
+	(Format::dummy): New method.
+	(Format::importer): New format flag.
+	(Formats::GetAllFormats): New method.
+	(Formats::Add): Delete format from the map if prettyname is empty.
+	(Converter::Convert): Print an error message if moving the file fails.
+	(Converter::GetReachableTo): New method
+
+	* src/MenuBackend.[Ch]: Add support for importformats tag.
+
+	* src/support/rename.C (rename): Call to lyx::copy if ::rename fails. 
+
+	* lib/configure.m4: Add word->tex and ps->fax converters.
+
+	* lib/ui/default.ui: Use ImportFormats on file->import menu.
+	Return fax to file menu.
+
+	* NEWS: Updated.
+
 2000-11-04  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/frontends/xforms/FormPreferences.h (operator=): move out of RGB

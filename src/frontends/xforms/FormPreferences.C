@@ -29,6 +29,9 @@
 #include "input_validators.h"
 #include "xform_helpers.h" // formatted()
 #include "xform_macros.h"
+#include "converter.h"
+#include "support/lyxfunctional.h"
+
 
 #ifdef SIGC_CXX_NAMESPACES
 using SigC::slot;
@@ -39,6 +42,7 @@ using std::getline;
 using std::istream;
 using std::pair;
 using std::vector;
+using std::find_if;
 
 extern string fmt(char const * fmtstr ...);
 extern Languages languages;
@@ -47,7 +51,6 @@ typedef pair<string, FormPreferences::RGB> X11Colour;
 
 static vector<X11Colour> colourDB;
 static string const colourFile("/usr/lib/X11/rgb.txt");
-
 
 FormPreferences::FormPreferences(LyXView * lv, Dialogs * d)
 	: FormBaseBI(lv, d, _("Preferences"), new PreferencesPolicy),
@@ -296,30 +299,24 @@ void FormPreferences::feedback( FL_OBJECT * ob )
 
 bool FormPreferences::input(FL_OBJECT * ob, long)
 {
-	bool activate = true;
-
 	// whatever checks you need to ensure the user hasn't entered
 	// some totally ridiculous value somewhere.  Change activate to suit.
 	// comments before each test describe what is _valid_
 
-	if (ob->form->fdui == colours_) {
-		if (! inputColours( ob ) )
-			activate = false;
-	} else if (ob->form->fdui == language_) {
-		if (! inputLanguage( ob ) )
-			activate = false;
-	} else if (ob->form->fdui == paths_) {
-		if (! inputPaths( ob ) )
-			activate = false;
-	} else if (ob->form->fdui == screen_fonts_) {
-		if (! inputScreenFonts() )
-			activate = false;
-	} else if (ob->form->fdui == spellchecker_) {
-		if (! inputSpellChecker( ob ) )
-			activate = false;
-	}
+	if (ob->form->fdui == colours_)
+		return inputColours(ob);
+	else if (ob->form->fdui == language_)
+		return inputLanguage(ob);
+	else if (ob->form->fdui == paths_)
+		return inputPaths(ob);
+	else if (ob->form->fdui == screen_fonts_)
+		return inputScreenFonts();
+	else if (ob->form->fdui == spellchecker_)
+		return inputSpellChecker(ob);
+	else if (ob->form->fdui == formats_)
+		return inputFormats(ob);
 
-	return activate;
+	return true;
 }
 
 
@@ -595,7 +592,23 @@ void FormPreferences::updateConverters()
 
 
 void FormPreferences::applyFormats() const
-{}
+{
+	vector<Format> old = formats.GetAllFormats();
+	for (vector<Format>::const_iterator it = old.begin();
+	     it != old.end(); ++it)
+		if (find_if(formats_vec.begin(),formats_vec.end(),
+			    compare_memfun(&Format::getname, it->name))
+		    == formats_vec.end()) {
+			formats.Add(it->name, string(), string(), string());
+		}
+
+	for (vector<Format>::const_iterator it = formats_vec.begin();
+	     it != formats_vec.end(); ++it) {
+		formats.Add(it->name, it->extension, it->prettyname, 
+			    it->shortcut);
+		formats.SetViewer(it->name, it->viewer);
+	}
+}
 
 
 void FormPreferences::buildFormats()
@@ -608,6 +621,11 @@ void FormPreferences::buildFormats()
 	fl_set_input_return(formats_->input_extension, FL_RETURN_CHANGED);
 
 	fl_set_input_filter(formats_->input_format, fl_lowercase_filter);
+
+	formats_vec = formats.GetAllFormats();
+	for (vector<Format>::const_iterator it = formats_vec.begin();
+	     it != formats_vec.end(); ++it)
+		fl_addto_browser(formats_->browser_formats, it->name.c_str());
 }
 
 
@@ -619,8 +637,40 @@ string const FormPreferences::feedbackFormats( FL_OBJECT const * const ) const
 }
 
 
-bool FormPreferences::inputFormats( FL_OBJECT const * const )
+bool FormPreferences::inputFormats(FL_OBJECT const * const ob)
 {
+	if (ob == formats_->browser_formats) {
+		int i = fl_get_browser(formats_->browser_formats);
+		if (i > 0) {
+			Format const & f = formats_vec[i-1];
+			fl_set_input(formats_->input_format, f.name.c_str());
+			fl_set_input(formats_->input_gui_name, f.prettyname.c_str());
+			fl_set_input(formats_->input_extension, f.extension.c_str());
+			fl_set_input(formats_->input_viewer, f.viewer.c_str());
+		}
+	} else if (ob == formats_->button_add) {
+		string name = fl_get_input(formats_->input_format);
+		string prettyname = fl_get_input(formats_->input_gui_name);
+		string extension = fl_get_input(formats_->input_extension);
+		string viewer =  fl_get_input(formats_->input_viewer);
+		string shortcut;
+		if (prettyname.empty())
+			return false;
+		Format format(name, extension, prettyname, shortcut, viewer);
+		vector<Format>::iterator it = find_if(formats_vec.begin(),
+						      formats_vec.end(),
+						      compare_memfun(&Format::getname, name));
+		if (it == formats_vec.end()) {
+			formats_vec.push_back(format);
+			fl_add_browser_line(formats_->browser_formats, 
+					    name.c_str());
+		} else {
+			//if (*it == format)
+			//	return false;
+			*it = format;
+		}
+		return true;
+	}
 	return true;
 }
 
