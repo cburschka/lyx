@@ -2498,6 +2498,7 @@ void FormPreferences::ScreenFonts::apply(LyXRC & rc) const
 	if (rc.font_norm != str) {
 		changed = true;
 		rc.font_norm = str;
+		rc.set_font_norm_type();
 	}
 
 	bool button = fl_get_button(dialog_->check_scalable);

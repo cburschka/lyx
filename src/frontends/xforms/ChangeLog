@@ -1,3 +1,12 @@
+2003-02-16  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* FormPreferences.C (apply): make sure that rc.font_norm_type is
+	in sync with rc.font_norm
+
+2003-02-16  Rob Lahaye  <lahaye@snu.ac.kr>
+
+	* RadioButtonGroup.[Ch]: polish radio button policy.
+
 2003-02-15  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* Menubar_pimpl.C (create_submenu): Some code moved to

@@ -39,14 +39,14 @@ void RadioButtonGroup::init(FL_OBJECT * ob, size_type value)
 }
 
 
-void RadioButtonGroup::set(size_type value)
+void RadioButtonGroup::set(size_type value) const
 {
 	ButtonValueMap::const_iterator it =
 		find_if(map.begin(), map.end(),
 			lyx::equal_2nd_in_pair<ButtonValuePair>(value));
 
 	if (it != map.end()) {
-		set(it->first);
+		fl_set_button(it->first, 1);
 	} else {
 		// We found nothing: report it and do nothing.
 		lyxerr << "BUG: Requested value in RadioButtonGroup "
@@ -55,9 +55,22 @@ void RadioButtonGroup::set(size_type value)
 }
 
 
-void RadioButtonGroup::set(FL_OBJECT * ob)
+void RadioButtonGroup::set(FL_OBJECT * ob) const
 {
-	fl_set_button(ob, 1);
+	// Object must be member of the radiobutton group.
+	bool isMember = false;
+	ButtonValueMap::const_iterator it = map.begin();
+	for (; it != map.end() && !isMember; ++it) {
+		isMember = it->first == ob;
+	}
+
+	if (isMember) {
+		fl_set_button(ob, 1);
+	} else {
+		// Object is not a member; report it and do nothing.
+		lyxerr << "BUG: Requested object is not a member of "
+			<< "the RadioButtonGroup." << endl;
+	}
 }
 
 

@@ -39,8 +39,8 @@ public:
 	void init(FL_OBJECT * ob, size_type value);
 
 	// Set a single active button.
-	void set(size_type value);
-	void set(FL_OBJECT * ob);
+	void set(size_type value) const;
+	void set(FL_OBJECT * ob) const;
 
 	// Get the active button's value.
 	size_type get() const;
@@ -54,4 +54,4 @@ private:
 	ButtonValueMap map;
 };
 
-#endif
+#endif // RADIOBUTTONGROUP_H
