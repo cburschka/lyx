@@ -69,6 +69,7 @@ Gtk::BuiltinStockID getGTKStockIcon(FuncRequest const & func)
 	}
 }
 
+
 string const getDefaultUnit()
 {
 	switch (lyxrc.default_papersize) {
@@ -81,6 +82,8 @@ string const getDefaultUnit()
 		case PAPER_A5PAPER:
 		case PAPER_B5PAPER: return "cm"; break;
 	}
+	// shut up compiler
+	return "cm";
 }
 
 
@@ -122,7 +125,7 @@ vector<string> const buildLengthNoRelUnitList()
 	vector<string> data;
 	for (int i = 0; i < num_units; ++i) {
 		string str(unit_name_gui[i]);
-		if (str.find("%") == -1)
+		if (str.find("%") == string::npos)
 			data.push_back(unit_name_gui[i]);
 	}
 
