@@ -116,7 +116,7 @@ FD_form_screen_fonts * FormPreferences::build_screen_fonts()
   fdui->input_screen_encoding = obj = fl_add_input(FL_NORMAL_INPUT, 145, 130, 140, 30, _("Encoding"));
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
-  fdui->check_scalable = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 20, 190, 34, 41, _("Use scalable fonts"));
+  fdui->check_scalable = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 20, 190, 34, 41, _("Rescale bitmap fonts"));
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_lalign(obj, FL_ALIGN_RIGHT);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);

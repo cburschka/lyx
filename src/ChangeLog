@@ -1,3 +1,7 @@
+2002-01-17  Allan Rae  <rae@lyx.org>
+
+	* lyx_cb.C (ShowMessage): make sure we have a user and an owner.
+
 2002-01-17  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* CutAndPaste.C (pasteSelection): when pasting multiple paragraph,

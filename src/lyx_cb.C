@@ -121,9 +121,10 @@ void ShowMessage(Buffer const * buf,
 		 string const & msg2,
 		 string const & msg3)
 {
-	if (lyxrc.use_gui) {
-		string const str = msg1 + ' ' + msg2 + ' ' + msg3;
-		buf->getUser()->owner()->message(str);
+	if (lyxrc.use_gui
+	    && buf && buf->getUser() && buf->getUser()->owner()) {
+			string const str = msg1 + ' ' + msg2 + ' ' + msg3;
+			buf->getUser()->owner()->message(str);
 	} else
 		lyxerr << msg1 << msg2 << msg3 << endl;
 }
