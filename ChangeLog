@@ -1,7 +1,12 @@
 2001-01-17  Dekel Tsur  <dekelts@tau.ac.il>
 
+	* src/frontends/xforms/FormRef.C (input): Fix the behavior of goto 
+	reference button.
+
+	* src/text.C (IsBoundary): Remove the error message
+
 	* src/WorkArea.C (work_area_handler): Decrease keyboard purge 
-	thershold.
+	threshold.
 
 	* src/lyxrc.C (setDefaults): Correct initialization value for
  	font_norm_type.
