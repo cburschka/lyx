@@ -423,15 +423,6 @@ int MathArray::dist(int x, int y) const
 }
 
 
-void MathArray::boundingBox(int & x1, int & x2, int & y1, int & y2)
-{
-	x1 = xo_;
-	x2 = xo_ + width();
-	y1 = yo_ - ascent();
-	y2 = yo_ + descent();
-}
-
-
 bool MathArray::contains(int x, int y) const
 {
 	return xo_ <= x && x <= xo_ + width()

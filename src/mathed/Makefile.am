@@ -53,8 +53,6 @@ libmathed_la_SOURCES = \
 	math_dotsinset.h \
 	math_envinset.C \
 	math_envinset.h \
-	math_ertinset.C \
-	math_ertinset.h \
 	math_extern.C \
 	math_extern.h \
 	math_exfuncinset.C \
@@ -143,8 +141,6 @@ libmathed_la_SOURCES = \
 	math_symbolinset.h \
 	math_tabularinset.C \
 	math_tabularinset.h \
-	math_textinset.C \
-	math_textinset.h \
 	math_unknowninset.C \
 	math_unknowninset.h \
 	math_undersetinset.C \
