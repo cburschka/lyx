@@ -21,7 +21,7 @@
 #include "support/lstrings.h"
 
 using lyx::support::compare_ascii_no_case;
-using lyx::support::getExtFromContents;
+using lyx::support::getFormatFromContents;
 using lyx::support::MakeDisplayPath;
 using lyx::support::split;
 using lyx::support::subst;
@@ -131,9 +131,8 @@ void LyXLex::Pimpl::popTable()
 
 bool LyXLex::Pimpl::setFile(string const & filename)
 {
-
 	// Check the format of the file.
-	string const format = getExtFromContents(filename);
+	string const format = getFormatFromContents(filename);
 
 	if (format == "gzip" || format == "zip" || format == "compress") {
 		lyxerr[Debug::LYXLEX] << "lyxlex: compressed" << endl;

@@ -95,7 +95,7 @@ using lyx::support::contains;
 using lyx::support::FileName;
 using lyx::support::float_equal;
 using lyx::support::GetExtension;
-using lyx::support::getExtFromContents;
+using lyx::support::getFormatFromContents;
 using lyx::support::IsFileReadable;
 using lyx::support::LibFileSearch;
 using lyx::support::OnlyFilename;
@@ -133,22 +133,27 @@ string const uniqueID()
 }
 
 
-string findTargetFormat(string const & suffix, OutputParams const & runparams)
+string findTargetFormat(string const & format, OutputParams const & runparams)
 {
-	// Are we using latex or pdflatex).
+	// Are we using latex or pdflatex?
 	if (runparams.flavor == OutputParams::PDFLATEX) {
 		lyxerr[Debug::GRAPHICS] << "findTargetFormat: PDF mode" << endl;
-		if (contains(suffix, "ps") || suffix == "pdf")
+		// Convert postscript to pdf
+		if (format == "eps" || format == "ps")
 			return "pdf";
-		if (suffix == "jpg")	// pdflatex can use jpeg
-			return suffix;
-		return "png";         // and also png
+		// pdflatex can use jpeg, png and pdf directly
+		if (format == "jpg" || format == "pdf")
+			return format;
+		// Convert everything else to png
+		return "png";
 	}
 	// If it's postscript, we always do eps.
 	lyxerr[Debug::GRAPHICS] << "findTargetFormat: PostScript mode" << endl;
-	if (suffix != "ps")     // any other than ps
-		return "eps";         // is changed to eps
-	return suffix;          // let ps untouched
+	if (format != "ps")
+		// any other than ps is changed to eps
+		return "eps";
+	// let ps untouched
+	return format;
 }
 
 } // namespace anon
@@ -455,7 +460,7 @@ copyFileIfNeeded(string const & file_in, string const & file_out)
 		// Nothing to do...
 		return std::make_pair(IDENTICAL_CONTENTS, file_out);
 
-	Mover const & mover = movers(getExtFromContents(file_in));
+	Mover const & mover = movers(getFormatFromContents(file_in));
 	bool const success = mover.copy(file_in, file_out);
 	if (!success) {
 		lyxerr[Debug::GRAPHICS]
@@ -619,8 +624,9 @@ string const InsetGraphics::prepareFile(Buffer const & buf,
 		}
 	}
 
-	string const from = getExtFromContents(temp_file);
+	string const from = getFormatFromContents(temp_file);
 	string const to   = findTargetFormat(from, runparams);
+	string const ext  = formats.extension(to);
 	lyxerr[Debug::GRAPHICS]
 		<< "\t we have: from " << from << " to " << to << '\n';
 
@@ -632,7 +638,7 @@ string const InsetGraphics::prepareFile(Buffer const & buf,
 		<< "\tthe orig file is: " << orig_file << endl;
 
 	if (from == to) {
-		// The extension of temp_file might be != to!
+		// The extension of temp_file might be != ext!
 		runparams.exportdata->addExternalFile("latex", source_file,
 		                                      output_file);
 		runparams.exportdata->addExternalFile("dvi", source_file,
@@ -640,8 +646,8 @@ string const InsetGraphics::prepareFile(Buffer const & buf,
 		return stripExtensionIfPossible(output_file, to);
 	}
 
-	string const to_file = ChangeExtension(temp_file, to);
-	string const output_to_file = ChangeExtension(output_file, to);
+	string const to_file = ChangeExtension(temp_file, ext);
+	string const output_to_file = ChangeExtension(output_file, ext);
 
 	// Do we need to perform the conversion?
 	// Yes if to_file does not exist or if temp_file is newer than to_file
@@ -668,8 +674,8 @@ string const InsetGraphics::prepareFile(Buffer const & buf,
 	if (!converters.convert(&buf, temp_file, temp_file, from, to)) {
 		string const command =
 			"sh " + LibFileSearch("scripts", "convertDefault.sh") +
-				' ' + from + ':' + temp_file + ' ' +
-				to + ':' + to_file;
+				' ' + formats.extension(from) + ':' + temp_file +
+				' ' + ext + ':' + to_file;
 		lyxerr[Debug::GRAPHICS]
 			<< "No converter defined! I use convertDefault.sh:\n\t"
 			<< command << endl;
@@ -899,7 +905,7 @@ InsetGraphicsParams const & InsetGraphics::params() const
 void InsetGraphics::editGraphics(InsetGraphicsParams const & p, Buffer const & buffer) const
 {
 	string const file_with_path = p.filename.absFilename();
-	formats.edit(buffer, file_with_path, getExtFromContents(file_with_path));
+	formats.edit(buffer, file_with_path, getFormatFromContents(file_with_path));
 }
 
 

@@ -84,7 +84,7 @@ public:
 	Format const & get(FormatList::size_type i) const {
 		return formatlist[i];
 	}
-	///
+	/// \returns format named \p name if it exists, otherwise 0
 	Format const * getFormat(std::string const & name) const;
 	///
 	int getNumber(std::string const & name) const;

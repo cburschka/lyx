@@ -1,3 +1,8 @@
+2004-10-29  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* filetools.[Ch] (getExtFromContents): rename to
+	getFormatFromContents and return always a format
+
 2004-10-25  Angus Leeming  <leeming@lyx.org>
 
 	* forkedcall.C (generateChild): strip quotes from each argument

@@ -32,7 +32,7 @@ using support::FileMonitor;
 using support::IsFileReadable;
 using support::MakeDisplayPath;
 using support::OnlyFilename;
-using support::getExtFromContents;
+using support::getFormatFromContents;
 using support::tempName;
 using support::unlink;
 using support::unzipFile;
@@ -401,7 +401,7 @@ void CacheItem::Impl::convertToDisplayFormat()
 		<< "\n\twith displayed filename: " << displayed_filename
 		<< endl;
 
-	string from = getExtFromContents(filename);
+	string from = getFormatFromContents(filename);
 	lyxerr[Debug::GRAPHICS]
 		<< "\n\tThe file contains " << from << " format data." << endl;
 	string const to = findTargetFormat(from);

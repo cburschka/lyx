@@ -26,6 +26,7 @@
 #include "support/systemcall.h"
 
 #include "filetools.h"
+#include "format.h"
 #include "lstrings.h"
 #include "FileInfo.h"
 #include "forkedcontr.h"
@@ -893,6 +894,24 @@ string const GetExtension(string const & name)
 		return string();
 }
 
+
+namespace {
+
+class FormatExtensionsEqual : public std::unary_function<Format, bool> {
+public:
+	FormatExtensionsEqual(string const & extension)
+		: extension_(extension) {}
+	bool operator()(Format const & f) const
+	{
+		return f.extension() == extension_;
+	}
+private:
+	string extension_;
+};
+
+} // namespace anon
+
+
 // the different filetypes and what they contain in one of the first lines
 // (dots are any characters).		(Herbert 20020131)
 // AGR	Grace...
@@ -923,7 +942,7 @@ string const GetExtension(string const & name)
 /// return the "extension" which belongs to the contents.
 /// for no knowing contents return the extension. Without
 /// an extension and unknown contents we return "user"
-string const getExtFromContents(string const & filename)
+string const getFormatFromContents(string const & filename)
 {
 	// paranoia check
 	if (filename.empty() || !IsFileReadable(filename))
@@ -953,7 +972,7 @@ string const getExtFromContents(string const & filename)
 	while ((count++ < max_count) && format.empty()) {
 		if (ifs.eof()) {
 			lyxerr[Debug::GRAPHICS]
-				<< "filetools(getExtFromContents)\n"
+				<< "filetools(getFormatFromContents)\n"
 				<< "\tFile type not recognised before EOF!"
 				<< endl;
 			break;
@@ -1070,25 +1089,31 @@ string const getExtFromContents(string const & filename)
 
 	string const ext(GetExtension(filename));
 	lyxerr[Debug::GRAPHICS]
-		<< "filetools(getExtFromContents)\n"
-		<< "\tCouldn't find a known Type!\n";
+		<< "filetools(getFormatFromContents)\n"
+		<< "\tCouldn't find a known format!\n";
 	if (!ext.empty()) {
-	    lyxerr[Debug::GRAPHICS]
-		<< "\twill take the file extension -> "
-		<< ext << endl;
-		return ext;
-	} else {
-	    lyxerr[Debug::GRAPHICS]
-		<< "\twill use ext or a \"user\" defined format" << endl;
-	    return "user";
+		// this is ambigous if two formats have the same extension,
+		// but better than nothing
+		Formats::const_iterator cit =
+			find_if(formats.begin(), formats.end(),
+			        FormatExtensionsEqual(ext));
+		if (cit != formats.end()) {
+			lyxerr[Debug::GRAPHICS]
+				<< "\twill guess format from file extension: "
+				<< ext << " -> " << cit->name() << endl;
+			return cit->name();
+		}
 	}
+	lyxerr[Debug::GRAPHICS]
+		<< "\twill use a \"user\" defined format" << endl;
+	return "user";
 }
 
 
 /// check for zipped file
 bool zippedFile(string const & name)
 {
-	string const type = getExtFromContents(name);
+	string const type = getFormatFromContents(name);
 	if (contains("gzip zip compress", type) && !type.empty())
 		return true;
 	return false;
@@ -1303,7 +1328,7 @@ string const readBB_from_PSFile(string const & file)
 	bool zipped = zippedFile(file);
 	string const file_ = zipped ?
 		string(unzipFile(file)) : string(file);
-	string const format = getExtFromContents(file_);
+	string const format = getFormatFromContents(file_);
 
 	if (format != "eps" && format != "ps") {
 		readBB_lyxerrMessage(file_, zipped,"no(e)ps-format");

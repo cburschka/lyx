@@ -1,3 +1,8 @@
+2004-10-29  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* GraphicsCacheItem.C: s/getExtFromContents/getFormatFromContents/
+	* GraphicsImage.h (loadableFormats): correct documentation
+
 2004-10-01  Angus Leeming  <leeming@lyx.org>
 
 	* GraphicsConverter.C (move_file, build_script): protect

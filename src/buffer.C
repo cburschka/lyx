@@ -93,7 +93,7 @@ using lyx::support::createBufferTmpDir;
 using lyx::support::destroyDir;
 using lyx::support::FileInfo;
 using lyx::support::FileInfo;
-using lyx::support::getExtFromContents;
+using lyx::support::getFormatFromContents;
 using lyx::support::IsDirWriteable;
 using lyx::support::IsFileWriteable;
 using lyx::support::LibFileSearch;
@@ -532,7 +532,7 @@ void Buffer::insertStringAsLines(ParagraphList & pars,
 bool Buffer::readFile(string const & filename)
 {
 	// Check if the file is compressed.
-	string const format = getExtFromContents(filename);
+	string const format = getFormatFromContents(filename);
 	if (format == "gzip" || format == "zip" || format == "compress") {
 		params().compressed = true;
 	}

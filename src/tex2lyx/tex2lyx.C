@@ -16,6 +16,7 @@
 #include "context.h"
 
 #include "debug.h"
+#include "format.h"
 #include "lyxtextclass.h"
 #include "support/path_defines.h"
 #include "support/filetools.h"
@@ -53,6 +54,10 @@ using lyx::support::IsFileWriteable;
 
 // Hacks to allow the thing to link in the lyxlayout stuff
 LyXErr lyxerr(std::cerr.rdbuf());
+
+
+// hack to link in libsupport
+Formats formats;
 
 
 string const trim(string const & a, char const * p)

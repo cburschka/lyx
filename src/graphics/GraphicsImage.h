@@ -45,9 +45,9 @@ public:
 	///
 	static boost::function<ImagePtr()> newImage;
 
-	/// Return the list of loadable formats.
-	typedef std::vector<std::string> FormatList;
 	///
+	typedef std::vector<std::string> FormatList;
+	/// Return the list of loadable formats.
 	static boost::function<FormatList()> loadableFormats;
 
 	///
