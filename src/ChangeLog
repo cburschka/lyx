@@ -1,3 +1,12 @@
+2002-02-12  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* lyxfunc.C (getStatus): change the rules for LFUN_INSET_TOGGLE to
+	match the changes below.
+
+	* text2.C (toggleInset): if there is not editable inset at cursor
+	position, try to see if cursor is _inside_ a collapsable inset
+	and close it.
+
 2002-02-11  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* lyxfunc.C (getStatus): handle LFUN_SWITCHBUFFER so that the

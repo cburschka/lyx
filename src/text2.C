@@ -465,8 +465,16 @@ Inset * LyXText::getInset() const
 void LyXText::toggleInset(BufferView * bview)
 {
 	Inset * inset = getInset();
-	if (!isEditableInset(inset))
+	// is there an editable inset at cursor position?
+	if (!isEditableInset(inset)) {
+		// No, try to see if we are inside a collapsable inset
+		if (inset_owner && inset_owner->owner()
+		    && inset_owner->owner()->isOpen()) {
+			bview->unlockInset(static_cast<UpdatableInset *>(inset_owner->owner()));
+			inset_owner->owner()->close(bview);
+		}
 		return;
+	}
 	//bview->owner()->message(inset->editMessage());
 
 	// do we want to keep this?? (JMarc)

@@ -476,10 +476,14 @@ FuncStatus LyXFunc::getStatus(kb_action action,
 		break;
 
 
-	case LFUN_INSET_TOGGLE:
-		disable = (TEXT(false)->getInset() == 0);
+	case LFUN_INSET_TOGGLE: {
+		LyXText * lt = owner->view()->getLyXText();
+  		disable = !(isEditableInset(lt->getInset())
+  			    || (lt->inset_owner
+				&& lt->inset_owner->owner()
+  				&& lt->inset_owner->owner()->isOpen()));
 		break;
-
+	}
 	case LFUN_MATH_VALIGN: 
 		if (mathcursor) {
 			char align = mathcursor->valign();
