@@ -16,7 +16,7 @@
 #include "LString.h"
 
 class LyXView;
-class ToolbarDefaults;
+class ToolbarBackend;
 
 
 /** The LyX GUI independent toolbar class
@@ -25,7 +25,7 @@ class ToolbarDefaults;
 class Toolbar {
 public:
 	///
-	Toolbar(LyXView * o, int x, int y, ToolbarDefaults const &);
+	Toolbar(LyXView * o, int x, int y, ToolbarBackend const &);
 
 	///
 	~Toolbar();

@@ -1,17 +1,16 @@
-/* This file is part of
- * ======================================================
+/**
+ * \file ToolbarBackend.C
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
  *
- *           LyX, The Document Processor
+ * \author unknown
  *
- *           Copyright 1995 Matthias Ettrich
- *           Copyright 1995-2001 The LyX Team.
- *
- *
- * ====================================================== */
+ * Full author contact details are available in file CREDITS
+ */
 
 #include <config.h>
 
-#include "ToolbarDefaults.h"
+#include "ToolbarBackend.h"
 #include "LyXAction.h"
 #include "lyxlex.h"
 #include "debug.h"
@@ -20,7 +19,7 @@
 
 using std::endl;
 
-ToolbarDefaults toolbardefaults;
+ToolbarBackend toolbarbackend;
 
 namespace {
 
@@ -45,60 +44,24 @@ struct keyword_item toolTags[TO_LAST - 1] = {
 } // end of anon namespace
 
 
-ToolbarDefaults::ToolbarDefaults()
+ToolbarBackend::ToolbarBackend()
 {
-	init();
 }
 
 
-void ToolbarDefaults::add(int action)
+void ToolbarBackend::add(int action)
 {
-	defaults.push_back(action);
+	items.push_back(action);
 }
 
 
-void ToolbarDefaults::init()
-{
-	add(LAYOUTS);
-	add(LFUN_FILE_OPEN);
-	//add(LFUN_CLOSEBUFFER);
-	add(LFUN_MENUWRITE);
-	add(LFUN_MENUPRINT);
-	add(SEPARATOR);
-
-	add(LFUN_CUT);
-	add(LFUN_COPY);
-	add(LFUN_PASTE);
-	add(SEPARATOR);
-
-	add(LFUN_EMPH);
-	add(LFUN_NOUN);
-	add(LFUN_FREEFONT_APPLY);
-	add(SEPARATOR);
-
-	add(LFUN_INSET_FOOTNOTE);
-	add(LFUN_INSET_MARGINAL);
-
-	add(LFUN_DEPTH_PLUS);
-	add(SEPARATOR);
-
-	add(LFUN_MATH_MODE);
-	add(SEPARATOR);
-
-// 	add(LFUN_INSET_GRAPHICS);
-	add(LFUN_TABULAR_INSERT);
-}
-
-
-void ToolbarDefaults::read(LyXLex & lex)
+void ToolbarBackend::read(LyXLex & lex)
 {
 	//consistency check
 	if (compare_ascii_no_case(lex.getString(), "toolbar")) {
-		lyxerr << "Toolbar::read: ERROR wrong token:`"
+		lyxerr << "ToolbarBackend::read: ERROR wrong token:`"
 		       << lex.getString() << '\'' << endl;
 	}
-
-	defaults.clear();
 
 	bool quit = false;
 
@@ -113,7 +76,7 @@ void ToolbarDefaults::read(LyXLex & lex)
 			if (lex.next(true)) {
 				string const func = lex.getString();
 				lyxerr[Debug::PARSER]
-					<< "Toolbar::read TO_ADD func: `"
+					<< "ToolbarBackend::read TO_ADD func: `"
 					<< func << '\'' << endl;
 				add(func);
 			}
@@ -135,7 +98,7 @@ void ToolbarDefaults::read(LyXLex & lex)
 			quit = true;
 			break;
 		default:
-			lex.printError("Toolbar::read: "
+			lex.printError("ToolbarBackend::read: "
 				       "Unknown toolbar tag: `$$Token'");
 			break;
 		}
@@ -144,12 +107,12 @@ void ToolbarDefaults::read(LyXLex & lex)
 }
 
 
-void ToolbarDefaults::add(string const & func)
+void ToolbarBackend::add(string const & func)
 {
 	int const tf = lyxaction.LookupFunc(func);
 
 	if (tf == -1) {
-		lyxerr << "Toolbar::add: no LyX command called `"
+		lyxerr << "ToolbarBackend::add: no LyX command called `"
 		       << func << "' exists!" << endl;
 	} else {
 		add(tf);

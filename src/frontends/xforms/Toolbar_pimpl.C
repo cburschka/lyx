@@ -26,9 +26,9 @@
 #include "Tooltips.h"
 #include FORMS_H_LOCATION
 #include "combox.h"
+#include "ToolbarBackend.h"
 #include "xforms_helpers.h"
 
-#include "ToolbarDefaults.h"
 #include "LyXAction.h"
 
 #include "support/LAssert.h"
@@ -110,7 +110,7 @@ void Toolbar::Pimpl::update()
 	ToolbarList::const_iterator p = toollist_.begin();
 	ToolbarList::const_iterator end = toollist_.end();
 	for (; p != end; ++p) {
-		if (p->action == ToolbarDefaults::LAYOUTS && combox_) {
+		if (p->action == ToolbarBackend::LAYOUTS && combox_) {
 			LyXFunc const & lf = owner_->getLyXFunc();
 			bool const disable =
 				lf.getStatus(LFUN_LAYOUT).disabled();
@@ -307,13 +307,13 @@ void Toolbar::Pimpl::add(int action)
 	item.action = action;
 
 	switch (action) {
-	case ToolbarDefaults::SEPARATOR:
+	case ToolbarBackend::SEPARATOR:
 		xpos += sepspace;
 		break;
-	case ToolbarDefaults::NEWLINE:
+	case ToolbarBackend::NEWLINE:
 		// Not supported yet.
 		break;
-	case ToolbarDefaults::LAYOUTS:
+	case ToolbarBackend::LAYOUTS:
 		xpos += standardspacing;
 		if (combox_)
 			break;

@@ -1,3 +1,9 @@
+2003-04-01  John Levon  <levon@movementarian.org>
+
+	* QtView.C:
+	* Toolbar_pimpl.C: ToolbarDefaults got renamed,
+	handle no toolbar
+
 2003-03-31  John Levon  <levon@movementarian.org>
 
 	* lyx_gui.C: return useful default font names, add use_gui

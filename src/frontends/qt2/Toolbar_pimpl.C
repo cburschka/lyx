@@ -12,7 +12,7 @@
 #include <config.h>
 
 
-#include "ToolbarDefaults.h"
+#include "ToolbarBackend.h"
 #include "debug.h"
 #include "gettext.h"
 #include "lyxfunc.h"
@@ -157,6 +157,9 @@ void Toolbar::Pimpl::changed_layout(string const & sel)
 
 void Toolbar::Pimpl::setLayout(string const & layout)
 {
+	if (!combo_)
+		return;
+
 	LyXTextClass const & tc =
 		owner_->buffer()->params.getLyXTextClass();
 
@@ -180,6 +183,9 @@ void Toolbar::Pimpl::setLayout(string const & layout)
 
 void Toolbar::Pimpl::updateLayoutList(bool force)
 {
+	if (!combo_)
+		return;
+
 	// if we don't need an update, don't ...
 	if (combo_->count() && !force)
 		return;
@@ -211,12 +217,18 @@ void Toolbar::Pimpl::updateLayoutList(bool force)
 
 void Toolbar::Pimpl::clearLayoutList()
 {
+	if (!combo_)
+		return;
+
 	combo_->clear();
 }
 
 
 void Toolbar::Pimpl::openLayoutList()
 {
+	if (!combo_)
+		return;
+
 	combo_->popup();
 }
 
@@ -228,13 +240,13 @@ void Toolbar::Pimpl::add(int action)
 	}
 
 	switch (action) {
-	case ToolbarDefaults::SEPARATOR:
+	case ToolbarBackend::SEPARATOR:
 		toolbars_.back()->addSeparator();
 		break;
-	case ToolbarDefaults::NEWLINE:
+	case ToolbarBackend::NEWLINE:
 		toolbars_.push_back(new QToolBar(owner_));
 		break;
-	case ToolbarDefaults::LAYOUTS: {
+	case ToolbarBackend::LAYOUTS: {
 		combo_ = new QLComboBox(toolbars_.back());
 		QSizePolicy p(QSizePolicy::Minimum, QSizePolicy::Fixed);
 		combo_->setSizePolicy(p);

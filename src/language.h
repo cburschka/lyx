@@ -86,8 +86,6 @@ public:
 	///
 	void read(string const & filename);
 	///
-	void setDefaults();
-	///
 	Language const * getLanguage(string const & language) const;
 	///
 	size_type size() const {

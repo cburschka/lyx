@@ -178,8 +178,6 @@ public:
 	typedef MenuList::const_iterator const_iterator;
 	///
 	void read(LyXLex &);
-	/// Set default values for menu structure.
-	void defaults();
 	///
 	void add(Menu const &);
 	///

@@ -50,8 +50,8 @@ private:
 	void deadKeyBindings(kb_keymap * kbmap);
 	/// check, set up and configure the user dir if necessary
 	void queryUserLyXDir(bool explicit_userdir);
-	/// return true if the given prefs file was successfully read
-	bool readRcFile(string const & name);
+	/// read lyxrc/preferences
+	void readRcFile(string const & name);
 	/// read the given ui (menu/toolbar) file
 	void readUIFile(string const & name);
 	/// read the given languages file

@@ -731,51 +731,6 @@ void MenuBackend::read(LyXLex & lex)
 }
 
 
-void MenuBackend::defaults()
-{
-	menulist_.clear();
-
-	lyxerr[Debug::GUI] << "MenuBackend::defaults: using default values"
-			   << endl;
-
-	Menu file("file");
-	file
-		.add(MenuItem(MenuItem::Command, _("New...|N"), "buffer-new"))
-		.add(MenuItem(MenuItem::Command, _("Open...|O"), "file-open"))
-		.add(MenuItem(MenuItem::Submenu, _("Import|I"), "import"))
-		.add(MenuItem(MenuItem::Command, _("Quit|Q"), "lyx-quit"))
-		.add(MenuItem(MenuItem::Separator))
-		.add(MenuItem(MenuItem::Lastfiles));
-	add(file);
-
-	Menu import("import");
-	import
-		.add(MenuItem(MenuItem::Command,
-			      _("LaTeX...|L"), "buffer-import latex"))
-		.add(MenuItem(MenuItem::Command,
-			      _("LinuxDoc...|L"), "buffer-import linuxdoc"));
-	add(import);
-
-	Menu edit("edit");
-	edit
-		.add(MenuItem(MenuItem::Command, _("Cut"), "cut"))
-		.add(MenuItem(MenuItem::Command, _("Copy"), "copy"))
-		.add(MenuItem(MenuItem::Command, _("Paste"), "paste"))
-		.add(MenuItem(MenuItem::Command, _("Emphasize"), "font-emph"));
-	add(edit);
-
-	Menu documents("documents");
-	documents.add(MenuItem(MenuItem::Documents));
-	add(documents);
-
-	menubar_.add(MenuItem(MenuItem::Submenu, _("File|F"), "file"))
-		.add(MenuItem(MenuItem::Submenu, _("Edit|E"), "edit"))
-		.add(MenuItem(MenuItem::Submenu,
-			      _("Documents|D"), "documents"));
-
-}
-
-
 void MenuBackend::add(Menu const & menu)
 {
 	menulist_.push_back(menu);

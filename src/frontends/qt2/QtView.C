@@ -17,7 +17,7 @@
 #include "lyx_cb.h"
 #include "support/filetools.h"
 #include "MenuBackend.h"
-#include "ToolbarDefaults.h"
+#include "ToolbarBackend.h"
 #include "lyxfunc.h"
 #include "bufferview_funcs.h"
 #include "BufferView.h"
@@ -65,7 +65,7 @@ QtView::QtView(unsigned int width, unsigned int height)
 	::current_view = bufferview_.get();
 
 	menubar_.reset(new Menubar(this, menubackend));
-	toolbar_.reset(new Toolbar(this, 0, 0, toolbardefaults));
+	toolbar_.reset(new Toolbar(this, 0, 0, toolbarbackend));
 
 	statusBar()->setSizeGripEnabled(false);
 

@@ -1,3 +1,18 @@
+2003-04-01  John Levon  <levon@movementarian.org>
+
+	* ToolbarBackend.h:
+	* ToolbarBackend.C:
+	* Makefile.am: rename, remove defaults gunk
+
+	* MenuBackend.h:
+	* MenuBackend.C: remove defaults gunk
+
+	* Languages.h:
+	* Languages.C: remove defaults gunk
+
+	* lyx_main.h:
+	* lyx_main.C: error out if files couldn't be found.
+
 2003-04-02  John Levon  <levon@movementarian.org>
 
 	* text2.C: make incDepth() use parlist

@@ -27,7 +27,7 @@
 #include "lyxserver.h"
 #include "kbmap.h"
 #include "lyxfunc.h"
-#include "ToolbarDefaults.h"
+#include "ToolbarBackend.h"
 #include "MenuBackend.h"
 #include "language.h"
 #include "lastfiles.h"
@@ -74,6 +74,24 @@ BufferList bufferlist;
 // convenient to have it here.
 boost::scoped_ptr<kb_keymap> toplevel_keymap;
 
+namespace {
+
+void showFileError(string const & error)
+{
+#if USE_BOOST_FORMAT
+	Alert::warning(_("Could not read configuration file"),
+		   boost::io::str(boost::format(
+		   _("Error while reading the configuration file\n%1$s.\n"
+		     "Please check your installation.")) % error));
+#else
+	Alert::warning(_("Could not read configuration file"),
+		   string(_("Error while reading the configuration file\n"))
+		   + error + _(".\nPlease check your installation."));
+#endif
+	exit(EXIT_FAILURE);
+}
+
+}
 
 LyX::LyX(int & argc, char * argv[])
 {
@@ -126,9 +144,8 @@ LyX::LyX(int & argc, char * argv[])
 		files.push_back(argv[argi]);
 	}
 
-	if (first_start) {
+	if (first_start)
 		files.push_back(i18nLibFileSearch("examples", "splash.lyx"));
-	}
 
 	// Execute batch commands if available
 	if (!batch_command.empty()) {
@@ -441,10 +458,12 @@ void LyX::init(bool gui)
 	system_converters = converters;
 	system_lcolor = lcolor;
 
-	// If there is a preferences file we read that instead
-	// of the old lyxrc file.
-	if (!readRcFile("preferences"))
-		readRcFile("lyxrc");
+	string prefsfile = "preferences";
+	// back compatibility to lyxs < 1.1.6 
+	if (LibFileSearch(string(), prefsfile).empty())
+		prefsfile = "lyxrc";
+	if (!LibFileSearch(string(), prefsfile).empty())
+		readRcFile(prefsfile);
 
 	readEncodingsFile("encodings");
 	readLanguagesFile("languages");
@@ -460,9 +479,8 @@ void LyX::init(bool gui)
 	// Read menus
 	readUIFile(lyxrc.ui_file);
 
-	if (lyxerr.debugging(Debug::LYXRC)) {
+	if (lyxerr.debugging(Debug::LYXRC))
 		lyxrc.print();
-	}
 
 	os::setTmpDir(CreateLyXTmpDir(lyxrc.tempdir_path));
 	system_tempdir = os::getTmpDir();
@@ -631,33 +649,21 @@ void LyX::queryUserLyXDir(bool explicit_userdir)
 }
 
 
-bool LyX::readRcFile(string const & name)
+void LyX::readRcFile(string const & name)
 {
 	lyxerr[Debug::INIT] << "About to read " << name << "..." << endl;
 
 	string const lyxrc_path = LibFileSearch(string(), name);
 	if (!lyxrc_path.empty()) {
+
 		lyxerr[Debug::INIT] << "Found " << name
 				    << " in " << lyxrc_path << endl;
-		if (lyxrc.read(lyxrc_path) < 0) {
-#if USE_BOOST_FORMAT
-			Alert::warning(_("Could not read configuration file"),
-				   boost::io::str(boost::format(
-				   _("Error while reading the configuration file\n%1$s.\n"
-				     ".\nLyX will use the built-in defaults.")) % lyxrc_path));
-#else
-			Alert::warning(_("Could not read configuration file"),
-				   string(_("Error while reading the configuration file\n"))
-				   + lyxrc_path + _(".\nLyX will use the built-in defaults."));
-#endif
-			return false;
-		}
-		return true;
-	} else {
-		lyxerr[Debug::INIT] << "Could not find " << name << endl;
+
+		if (lyxrc.read(lyxrc_path) >= 0)
+			return;
 	}
 
-	return false;
+	showFileError(name);
 }
 
 
@@ -681,7 +687,7 @@ void LyX::readUIFile(string const & name)
 
 	if (ui_path.empty()) {
 		lyxerr[Debug::INIT] << "Could not find " << name << endl;
-		menubackend.defaults();
+		showFileError(name);
 		return;
 	}
 
@@ -704,7 +710,7 @@ void LyX::readUIFile(string const & name)
 			break;
 
 		case ui_toolbar:
-			toolbardefaults.read(lex);
+			toolbarbackend.read(lex);
 			break;
 
 		default:
@@ -724,8 +730,7 @@ void LyX::readLanguagesFile(string const & name)
 
 	string const lang_path = LibFileSearch(string(), name);
 	if (lang_path.empty()) {
-		lyxerr[Debug::INIT] << "Could not find " << name << endl;
-		languages.setDefaults();
+		showFileError(name);
 		return;
 	}
 	languages.read(lang_path);
@@ -739,7 +744,7 @@ void LyX::readEncodingsFile(string const & name)
 
 	string const enc_path = LibFileSearch(string(), name);
 	if (enc_path.empty()) {
-		lyxerr[Debug::INIT] << "Could not find " << name << endl;
+		showFileError(name);
 		return;
 	}
 	encodings.read(enc_path);

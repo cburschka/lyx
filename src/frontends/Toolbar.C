@@ -12,21 +12,21 @@
 
 
 #include "Toolbar.h"
-#include "ToolbarDefaults.h"
+#include "ToolbarBackend.h"
 #include "Toolbar_pimpl.h"
 #include "debug.h"
 #include "LyXAction.h"
 
 using std::endl;
 
-Toolbar::Toolbar(LyXView * o, int x, int y, ToolbarDefaults const &tbd)
+Toolbar::Toolbar(LyXView * o, int x, int y, ToolbarBackend const & backend)
 	: last_textclass_(-1)
 {
 	pimpl_ = new Pimpl(o, x, y);
 
-	// extracts the toolbar actions from tbd
-	for (ToolbarDefaults::const_iterator cit = tbd.begin();
-	     cit != tbd.end(); ++cit) {
+	// extracts the toolbar actions from  the backend
+	for (ToolbarBackend::const_iterator cit = backend.begin();
+	     cit != backend.end(); ++cit) {
 		pimpl_->add((*cit));
 		lyxerr[Debug::GUI] << "tool action: " << (*cit) << endl;
 	}

@@ -84,8 +84,8 @@ lyx_SOURCES = \
 	TextCache.h \
 	Thesaurus.C \
 	Thesaurus.h \
-	ToolbarDefaults.C \
-	ToolbarDefaults.h \
+	ToolbarBackend.C \
+	ToolbarBackend.h \
 	WordLangTuple.h \
 	aspell.C \
 	aspell_local.h \
