@@ -11,10 +11,6 @@
 #ifndef MATHS_SYMBOLS_H
 #define MATHS_SYMBOLS_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 /// values used by the xforms callbacks
 enum MathsCallbackValues {
 	MM_GREEK,
@@ -69,9 +65,5 @@ extern char const * latex_ams_nrel[];
 extern int const nr_latex_ams_nrel;
 extern char const * latex_ams_ops[];
 extern int const nr_latex_ams_ops;
-
-
-
-char const ** get_pixmap_from_symbol(char const *, int, int);
 
 #endif /* MATHS_SYMBOLS_H */

@@ -23,7 +23,6 @@
 #include "FuncStatus.h"
 #include "buffer.h"
 #include "funcrequest.h"
-#include "MathsSymbols.h"
 #include "gettext.h"
 #include "Tooltips.h"
 #include FORMS_H_LOCATION
@@ -245,7 +244,7 @@ extern "C" {
 }
 
 
-void setPixmap(FL_OBJECT * obj, int action, int buttonwidth, int height)
+void setPixmap(FL_OBJECT * obj, int action)
 {
 	string xpm_name;
 	FuncRequest ev = lyxaction.retrieveActionArg(action);
@@ -258,24 +257,16 @@ void setPixmap(FL_OBJECT * obj, int action, int buttonwidth, int height)
 
 	string fullname = LibFileSearch("images", xpm_name, "xpm");
 
+	if (ev.action == LFUN_INSERT_MATH && !ev.argument.empty()) {
+		string arg = ev.argument.substr(1);
+		fullname = LibFileSearch("images/math/", arg, "xpm");
+	}
+ 
 	if (!fullname.empty()) {
 		lyxerr[Debug::GUI] << "Full icon name is `"
 				   << fullname << "'" << endl;
 		fl_set_pixmapbutton_file(obj, fullname.c_str());
 		return;
-	}
-
-	if (ev.action == LFUN_INSERT_MATH && !ev.argument.empty()) {
-		char const ** pixmap = get_pixmap_from_symbol(ev.argument.c_str(),
-							      buttonwidth,
-							      height);
-		if (pixmap) {
-			lyxerr[Debug::GUI] << "Using mathed-provided icon"
-					   << endl;
-			fl_set_pixmapbutton_data(obj,
-						 const_cast<char **>(pixmap));
-			return;
-		}
 	}
 
 	lyxerr << "Unable to find icon `" << xpm_name << "'" << endl;
@@ -337,7 +328,7 @@ void Toolbar::Pimpl::add(int action)
 		// The view that this object belongs to.
 		obj->u_vdata = owner_;
 
-		setPixmap(obj, action, buttonwidth, height);
+		setPixmap(obj, action);
 		// we must remember to update the positions
 		xpos += buttonwidth;
 		// ypos is constant
