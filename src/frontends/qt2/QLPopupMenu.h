@@ -17,6 +17,8 @@
 
 #include "LString.h"
 
+#include <map>
+
 class MenuBackend;
 class MenuItem;
 class Menu;
