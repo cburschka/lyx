@@ -5,6 +5,9 @@
  
 2001-09-02  Angus Leeming  <a.leeming@ic.ac.uk>
 
+	* buffer.C (getLists): replace boost::tie code with an explicit pair
+	as boost::tie can break some compilers.
+
 	* iterators.h: Added a std:: declaration to the return type of
 	ParIterator::size.
 

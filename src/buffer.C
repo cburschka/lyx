@@ -32,8 +32,6 @@
 #include <locale>
 #endif
 
-#include <boost/tuple/tuple.hpp>
-
 #ifdef __GNUG__
 #pragma implementation
 #endif
@@ -3576,10 +3574,21 @@ Buffer::Lists const Buffer::getLists() const
 {
 	Lists l;
 	Paragraph * par = paragraph;
+
+#if 1
+	std::pair<bool, LyXTextClassList::size_type> const tmp =
+		textclasslist.NumberOfLayout(params.textclass, "Caption");
+	bool const found = tmp.first;
+	LyXTextClassList::size_type const cap = tmp.second;
+	
+#else
+	// This is the prefered way to to this, but boost::tie can break
+	// some compilers
 	bool found;
 	LyXTextClassList::size_type cap;
 	boost::tie(found, cap) = textclasslist
 		.NumberOfLayout(params.textclass, "Caption");
+#endif
 
 	while (par) {
 		char const labeltype =
