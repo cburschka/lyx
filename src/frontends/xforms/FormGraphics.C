@@ -213,7 +213,7 @@ void FormGraphics::build()
 	// Store the identifiers for later
 	origins_ = getSecond(origindata);
 
-	string const choice = " " + getStringFromVector(getFirst(origindata), " | ") + " ";
+	string const choice = "Default|" + getStringFromVector(getFirst(origindata), "|");
 	fl_addto_choice(extra_->choice_origin, choice.c_str());
 
 	// set up the tooltips for the extra section
@@ -332,7 +332,11 @@ void FormGraphics::apply()
 	fl_set_input(extra_->input_rotate_angle, tostr(igp.rotateAngle).c_str());
 
 	int const origin_pos = fl_get_choice(extra_->choice_origin);
-	igp.rotateOrigin = origins_[origin_pos-1];
+	if (origin_pos == 1) {
+		igp.rotateOrigin.erase();
+	} else {
+		igp.rotateOrigin = origins_[origin_pos - 2];
+	}
 
 	igp.subcaption = fl_get_button(extra_->check_subcaption);
 	igp.subcaptionText = getString(extra_->input_subcaption);
@@ -399,8 +403,13 @@ void FormGraphics::update() {
 	fl_set_input(extra_->input_rotate_angle,
 		     tostr(igp.rotateAngle).c_str());
 
-	int const origin_pos = findPos(origins_, igp.rotateOrigin);
-	fl_set_choice(extra_->choice_origin, 1 + origin_pos);
+	int origin_pos;
+	if (igp.rotateOrigin.empty()) {
+		origin_pos = 1;
+	} else {
+		origin_pos = 2 + findPos(origins_, igp.rotateOrigin);
+	}
+	fl_set_choice(extra_->choice_origin, origin_pos);
 
 	fl_set_button(extra_->check_subcaption, igp.subcaption);
 	fl_set_input(extra_->input_subcaption, igp.subcaptionText.c_str());

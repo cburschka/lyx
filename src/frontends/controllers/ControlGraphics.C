@@ -142,16 +142,16 @@ namespace {
 // end of each line.
 char const * const rorigin_lyx_strs[] = {
 	// the LaTeX default is leftBaseline
-	"leftBaseline",   "leftTop",   "leftBottom",             // lB lt lb
-	"center", "centerBaseline", "centerTop", "centerBottom", // c cB ct cb
-	"rightBaseline",  "rightTop",  "rightBottom"  };         // rt rb rB
+	"leftTop",  "leftBottom", "leftBaseline", // lt lb lB
+	"center", "centerTop", "centerBottom", "centerBaseline", // c ct cb cB
+	"rightTop", "rightBottom", "rightBaseline" }; // rt rb rB
 
 // These are the strings, corresponding to the above, that the GUI should
 // use. Note that they can/should be translated.
 char const * const rorigin_gui_strs[] = {
-	N_("left baseline"), N_("left top"), N_("left bottom"),
-	N_("center"), N_("center baseline"), N_("center top"), N_("center bottom"),
-	N_("right baseline"), N_("right top"),  N_("right bottom") };
+	N_("Top left"), N_("Bottom left"), N_("Left baseline"),
+	N_("Center"), N_("Top center"), N_("Bottom center"), N_("Center baseline"),
+	N_("Top right"), N_("Bottom right"), N_("Right baseline") };
 
 size_t const rorigin_size = sizeof(rorigin_lyx_strs) / sizeof(char *);
 
