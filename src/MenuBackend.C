@@ -697,6 +697,8 @@ Menu const & MenuBackend::getMenu(string const & name) const
 {
 	const_iterator cit = find_if(begin(), end(),
 				     lyx::compare_memfun(&Menu::name, name));
+	if (cit == end())
+		lyxerr << "No submenu named " << name << endl;
 	lyx::Assert(cit != end());
 	return (*cit);
 }

@@ -31,7 +31,7 @@ using boost::shared_ptr;
 
 /// the flag used by FinishUndo();
 bool undo_finished;
-/// FIXME
+/// whether actions are not added to the undo stacks
 bool undo_frozen;
 
 namespace {

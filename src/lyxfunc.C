@@ -183,6 +183,7 @@ void LyXFunc::processKeySym(LyXKeySymPtr keysym,
 		       << keysym->getSymbolName()
 		       << endl;
 	}
+ 
 	// Do nothing if we have nothing (JMarc)
 	if (!keysym->isOK()) {
 		lyxerr[Debug::KEY] << "Empty kbd action (probably composing)"
@@ -199,9 +200,7 @@ void LyXFunc::processKeySym(LyXKeySymPtr keysym,
 	cancel_meta_seq.reset();
 
 	int action = cancel_meta_seq.addkey(keysym, state);
-	if (lyxerr.debugging(Debug::KEY)) {
-		lyxerr << "action first set to [" << action << "]" << endl;
-	}
+	lyxerr[Debug::KEY] << "action first set to [" << action << "]" << endl;
 
 	// When not cancel or meta-fake, do the normal lookup.
 	// Note how the meta_fake Mod1 bit is OR-ed in and reset afterwards.
@@ -1379,19 +1378,19 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 		lyxrc.cursor_follows_scrollbar = !lyxrc.cursor_follows_scrollbar;
 		break;
 
-	case LFUN_KMAP_OFF:		// keymap off
+	case LFUN_KMAP_OFF:
 		owner->getIntl().KeyMapOn(false);
 		break;
 
-	case LFUN_KMAP_PRIM:	// primary keymap
+	case LFUN_KMAP_PRIM:
 		owner->getIntl().KeyMapPrim();
 		break;
 
-	case LFUN_KMAP_SEC:		// secondary keymap
+	case LFUN_KMAP_SEC:
 		owner->getIntl().KeyMapSec();
 		break;
 
-	case LFUN_KMAP_TOGGLE:	// toggle keymap
+	case LFUN_KMAP_TOGGLE:
 		owner->getIntl().ToggleKeyMap();
 		break;
 

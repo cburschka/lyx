@@ -1,3 +1,13 @@
+2002-09-06  John Levon  <levon@movementarian.org>
+
+	* LyXAction.C: tooltips for sub/superscript
+
+	* MenuBackend.C: a bit more verbose
+ 
+	* lyxfunc.C: tiny clean
+
+	* undo_funcs.C: document undo_frozen 
+ 
 2002-09-05  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* counters.C (Counters): add missing algorithm counter.
