@@ -98,7 +98,7 @@ public:
 	typedef value_type & reference;
 
 	///
-	typedef const reference const_reference;
+	typedef value_type const & const_reference;
 
 	///
 	typedef size_t size_type;

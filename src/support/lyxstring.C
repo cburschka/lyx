@@ -120,7 +120,7 @@ void lyxstringInvariant::helper() const
 	Assert(object->rep->res);  // always some space allocated
 	Assert(object->size() <= object->rep->res);
 	Assert(object->rep->ref >= 1);  // its in use so it must be referenced
-	Assert(object->rep->ref < (1 << 8*sizeof(lyxstring::Srep::ref)) - 1);
+	Assert(object->rep->ref < (1 << 8*sizeof(object->rep->ref)) - 1);
 	// if it does ever == then we should be generating a new copy
 	// and starting again.  (Is char always 8-bits?)
 }
@@ -1129,14 +1129,16 @@ lyxstring::size_type lyxstring::find_last_not_of(lyxstring const & a,
 }
 
 
-lyxstring::size_type lyxstring::find_last_not_of(value_type const * ptr, size_type i,
-					     size_type n) const
+lyxstring::size_type lyxstring::find_last_not_of(value_type const * ptr,
+						 size_type i,
+						 size_type n) const
 {
 	Assert(ptr);
 	TestlyxstringInvariant(this);
 
+	if (!n) return npos;
 	size_type ii = min(length() - 1, i);
-	if (!n) return (ii >= 0) ? ii : npos;
+	//if (!n) return (ii >= 0) ? ii : npos;
 	for (int t = ii; t >= 0; --t) {
 		if(memchr(ptr, rep->s[t], n) == 0) return t;
 	}
@@ -1591,9 +1593,10 @@ lyxstring operator+(lyxstring const & a, lyxstring::value_type b)
 istream & operator>>(istream & is, lyxstring & s)
 {
 	// very bad solution
-	char nome[1024];
+	char * nome = new char[1024];
 	is >> nome;
 	lyxstring tmp(nome);
+	delete [] nome;
 	if (!tmp.empty()) s = tmp;
 	return is;
 }

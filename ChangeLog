@@ -1,3 +1,12 @@
+1999-10-20  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/support/lyxstring.C (helper): changed to use
+	sizeof(object->rep->ref).
+	(operator>>): changed to use a pointer instead.
+
+	* src/support/lyxstring.h: changed const reference & to value_type
+	const & lets see if that helps.
+
 1999-10-19  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* Makefile.am (rpmdist): fixed to have non static package and
