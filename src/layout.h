@@ -26,14 +26,10 @@ class LyXLeX;
 /// Reads the style files
 extern void LyXSetStyle();
 
-///
-enum no_good_name_for_this {
-	///
-        LYX_ENVIRONMENT_DEFAULT = 97,
+enum layout_default {
 	///
 	LYX_LAYOUT_DEFAULT = 99
 };
-
 
 // Could this cause confusion that both DUMMY_LAYOUT and  LAYOUT_DEFAULT has
 // the same value? (Lgb)

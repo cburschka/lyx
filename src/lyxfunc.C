@@ -807,7 +807,7 @@ string const LyXFunc::dispatch(int ac,
 
 	// We cannot use this function here
 	if (getStatus(ac, do_not_use_this_arg) & func_status::Disabled) {
-		lyxerr << "LyXFunc::Dispatch: "
+		lyxerr[Debug::ACTION] << "LyXFunc::Dispatch: "
 		       << lyxaction.getActionName(ac)
 		       << " [" << ac << "] is disabled at this location"
 		       << endl;

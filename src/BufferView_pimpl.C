@@ -622,8 +622,7 @@ void BufferView::Pimpl::workAreaButtonPress(int xpos, int ypos,
 	updateScrollbar();
 	
 	// Single left click in math inset?
-	if ((inset_hit != 0) &&
-	    (inset_hit->editable()==Inset::HIGHLY_EDITABLE)) {
+	if (isHighlyEditableInset(inset_hit)) {
 		// Highly editable inset, like math
 		UpdatableInset * inset = static_cast<UpdatableInset *>(inset_hit);
 		selection_possible = false;
@@ -792,7 +791,7 @@ void BufferView::Pimpl::workAreaButtonRelease(int x, int y,
 
 		owner_->message(inset_hit->editMessage());
 
-		if (inset_hit->editable()==Inset::HIGHLY_EDITABLE) {
+		if (isHighlyEditableInset(inset_hit)) {
 			// Highly editable inset, like math
 			UpdatableInset *inset = (UpdatableInset *)inset_hit;
 			inset->insetButtonRelease(bv_, x, y, button);
@@ -856,9 +855,8 @@ Inset * BufferView::Pimpl::checkInsetHit(LyXText * text, int & x, int & y,
 
 
 	if (cursor.pos() < cursor.par()->size()
-	    && cursor.par()->getChar(cursor.pos()) == Paragraph::META_INSET
-	    && cursor.par()->getInset(cursor.pos())
-	    && cursor.par()->getInset(cursor.pos())->editable()) {
+	    && isMetaInset(cursor.par(), cursor.pos())
+	    && isEditableInset(cursor.par()->getInset(cursor.pos()))) {
 
 		// Check whether the inset really was hit
 		Inset * tmpinset = cursor.par()->getInset(cursor.pos());
@@ -882,9 +880,8 @@ Inset * BufferView::Pimpl::checkInsetHit(LyXText * text, int & x, int & y,
 	}
 
 	if ((cursor.pos() - 1 >= 0) &&
-	    (cursor.par()->getChar(cursor.pos()-1) == Paragraph::META_INSET) &&
-	    (cursor.par()->getInset(cursor.pos() - 1)) &&
-	    (cursor.par()->getInset(cursor.pos() - 1)->editable())) {
+	    isMetaInset(cursor.par(), cursor.pos() - 1) &&
+	    isEditableInset(cursor.par()->getInset(cursor.pos() - 1))) {
 		Inset * tmpinset = cursor.par()->getInset(cursor.pos()-1);
 		LyXFont font = text->getFont(buffer_, cursor.par(),
 						  cursor.pos() - 1);
@@ -1777,7 +1774,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 	case LFUN_INSERT_LABEL:
 		MenuInsertLabel(bv_, argument);
 		break;
-		
+
 	case LFUN_REF_INSERT:
 		if (argument.empty()) {
 			InsetCommandParams p("ref");
@@ -1836,10 +1833,8 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		if (is_rtl)
 			lt->cursorLeft(bv_, false);
 		if (lt->cursor.pos() < lt->cursor.par()->size()
-		    && lt->cursor.par()->getChar(lt->cursor.pos())
-		    == Paragraph::META_INSET
-		    && lt->cursor.par()->getInset(lt->cursor.pos())
-		    && lt->cursor.par()->getInset(lt->cursor.pos())->editable() == Inset::HIGHLY_EDITABLE){
+		    && isMetaInset(lt->cursor.par(), lt->cursor.pos())
+		    && isHighlyEditableInset(lt->cursor.par()->getInset(lt->cursor.pos()))) {
 			Inset * tmpinset = lt->cursor.par()->getInset(lt->cursor.pos());
 			owner_->getLyXFunc()->setMessage(tmpinset->editMessage());
 			if (is_rtl)
@@ -1870,12 +1865,8 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 			lt->cursorLeft(bv_, false);
 		if ((is_rtl || cur != lt->cursor) && // only if really moved!
 		    lt->cursor.pos() < lt->cursor.par()->size() &&
-		    (lt->cursor.par()->getChar(lt->cursor.pos()) ==
-		     Paragraph::META_INSET) &&
-		    lt->cursor.par()->getInset(lt->cursor.pos()) &&
-		    (lt->cursor.par()->getInset(lt->cursor.pos())->editable()
-		     == Inset::HIGHLY_EDITABLE))
-		{
+		    isMetaInset(lt->cursor.par(), lt->cursor.pos()) &&
+		    isHighlyEditableInset(lt->cursor.par()->getInset(lt->cursor.pos()))) {
 			Inset * tmpinset = lt->cursor.par()->getInset(lt->cursor.pos());
 			owner_->getLyXFunc()->setMessage(tmpinset->editMessage());
 			if (is_rtl)
@@ -3411,16 +3402,19 @@ void BufferView::Pimpl::gotoInset(vector<Inset::Code> const & codes,
 	beforeChange(bv_->text);
 	update(bv_->text, BufferView::SELECT|BufferView::FITCUR);
 	
+	LyXCursor const & cursor = bv_->text->cursor;
+ 
 	string contents;
 	if (same_content &&
-	    bv_->text->cursor.par()->getChar(bv_->text->cursor.pos()) == Paragraph::META_INSET) {
-		Inset const * inset = bv_->text->cursor.par()->getInset(bv_->text->cursor.pos());
+	    isMetaInset(cursor.par(), cursor.pos())) {
+		Inset const * inset = cursor.par()->getInset(cursor.pos());
 		if (find(codes.begin(), codes.end(), inset->lyxCode())
 		    != codes.end())
 			contents =
 				static_cast<InsetCommand const *>(inset)->getContents();
 	}
 	
+ 
 	if (!bv_->text->gotoNextInset(bv_, codes, contents)) {
 		if (bv_->text->cursor.pos() 
 		    || bv_->text->cursor.par() != bv_->text->firstParagraph()) {

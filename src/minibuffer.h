@@ -47,7 +47,7 @@ public:
 	
 	/** Makes the minibuffer wait for a string to be inserted.
 	    Waits for a string to be inserted into the minibuffer, when
-	    the string has been insterted the signal stringReady is
+	    the string has been inserted the signal stringReady is
 	    emitted.
 	*/
 	void getString(State space,

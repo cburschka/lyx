@@ -415,4 +415,10 @@ private:
 	Pimpl * pimpl_;
 };
 
+
+inline bool isMetaInset(Paragraph const * par, Paragraph::size_type const pos)
+{
+	return par->getChar(pos) == Paragraph::META_INSET;
+}
+ 
 #endif

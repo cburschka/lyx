@@ -1,3 +1,34 @@
+2001-11-07  John Levon  <moz@compsoc.man.ac.uk>
+
+	* BufferView_pimpl.C: use inline helpers
+ 
+	* LaTeXFeatures.h: 
+	* LaTeXFeatures.C: fix typos
+
+	* Spacing.h:
+	* Spacing.C: move spacing_string into class 
+
+	* ToolbarDefaults.C: move stuff into namespace anon
+ 
+	* layout.h: update enum
+
+	* lyxfunc.C: use better debug
+
+	* minibuffer.h: fix typo
+ 
+	* debug.h:
+	* debug.C:
+	* WorkArea.C: add and use Debug::WORKAREA
+
+	* lyxtext.h:
+	* text.C: 
+	* text2.C: code re-organisation, inline helpers
+
+2001-11-09  Michael A. Koziarski <michael@koziarski.org>
+
+	* Layout.C: replaced a few cases of std::vector.size() == 0 with
+	std::vector.empty().
+
 2001-11-09  Allan Rae  <rae@lyx.org>
 
 	* paragraph.C (TeXOnePar): remove old, now-irrelevent comments about

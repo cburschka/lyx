@@ -63,11 +63,14 @@ public:
 	string const writeEnvirBegin() const;
 	///
 	string const writeEnvirEnd() const;
+ 
 private:
 	///
 	Space space;
 	///
 	float value;
+	/// names of line spacing
+	static string const spacing_string[];
 };
 
 

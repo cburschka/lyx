@@ -472,8 +472,8 @@ void LaTeXFeatures::getFloatDefinitions(std::ostream & os) const
 			   << name << "}\n";
 			
 			// What missing here is to code to minimalize the code
-			// outputted so that the same flotastyle will not be
-			// used several times. when the same style is still in
+			// outputted so that the same floatstyle will not be
+			// used several times, when the same style is still in
 			// effect. (Lgb)
 		}
 	}

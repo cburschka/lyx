@@ -134,8 +134,7 @@ bool IsFileReadable (string const & path)
 int IsFileWriteable (string const & path)
 {
 	FileInfo fi(path);
-	//lyxerr << "fi : " << fi << endl; 
-	//lyxerr << "fi.exists" << fi.exist() << endl;
+ 
 	if (fi.access(FileInfo::wperm|FileInfo::rperm)) // read-write
 		return 1;
 	if (fi.readable()) // read-only

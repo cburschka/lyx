@@ -29,6 +29,7 @@
 #include "Dialogs.h"
 #include "lyxrc.h"
 #include "support/lyxlib.h"
+#include "gettext.h"
 
 using SigC::slot;
 using std::endl;
@@ -61,7 +62,7 @@ stringstream & ControlVCLog::getVCLogFile(stringstream & ss) const
 	}
 	
 	if (!found)
-		ss << "No version control log file found." << endl;
+		ss << _("No version control log file found.") << endl;
 
 	lyx::unlink(name);
 

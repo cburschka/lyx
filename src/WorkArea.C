@@ -74,7 +74,7 @@ WorkArea::WorkArea(int xpos, int ypos, int width, int height)
 
 	figinset_canvas = 0;
 
-	if (lyxerr.debugging(Debug::GUI))
+	if (lyxerr.debugging(Debug::WORKAREA))
 		lyxerr << "Creating work area: +"
 		       << xpos << '+' << ypos << ' '
 		       << width << 'x' << height << endl;
@@ -91,7 +91,7 @@ WorkArea::WorkArea(int xpos, int ypos, int width, int height)
 	fl_set_object_gravity(obj, NorthWestGravity, NorthWestGravity);
 
 	// a box
-	if (lyxerr.debugging(Debug::GUI))
+	if (lyxerr.debugging(Debug::WORKAREA))
 		lyxerr << "\tbackground box: +"
 		       << xpos << '+' << ypos << ' '
 		       << width - 15 << 'x' << height << endl;
@@ -154,7 +154,7 @@ WorkArea::WorkArea(int xpos, int ypos, int width, int height)
 
 	// We add this object as late as possible to avoit problems
 	// with drawing.
-	if (lyxerr.debugging(Debug::GUI))
+	if (lyxerr.debugging(Debug::WORKAREA))
 		lyxerr << "\tfree object: +"
 		       << xpos + bw << '+' << ypos + bw << ' '
 		       << width - 15 - 2 * bw << 'x'
@@ -195,12 +195,6 @@ bool WorkArea::belowMouse() const
 	if (x > ulx && y > uly && x < ulx + h && y < uly + w)
 		return true;
 	return false;
-	
-	
-	//lyxerr << "Mouse: (" << x << ", " << y <<") button = " << button << endl;
-	//lyxerr << "Workarea: (" << work_area->x + work_area->form->x << ", " << work_area->y + work_area->form->y << ", " << work_area->w << ", " << work_area->h << ")" << endl;
-	//lyxerr << "Below mouse: " << work_area->belowmouse << endl;
-	//return work_area->belowmouse;
 }
 
 
@@ -270,7 +264,7 @@ void WorkArea::createPixmap(int width, int height)
 	if (workareapixmap)
 		XFreePixmap(fl_get_display(), workareapixmap);
 
-	if (lyxerr.debugging(Debug::GUI))
+	if (lyxerr.debugging(Debug::WORKAREA))
 		lyxerr << "Creating pixmap ("
 		       << width << 'x' << height << ")" << endl;
 	
@@ -279,7 +273,7 @@ void WorkArea::createPixmap(int width, int height)
 				       width,
 				       height, 
 				       fl_get_visual_depth());
-	if (lyxerr.debugging(Debug::GUI))
+	if (lyxerr.debugging(Debug::WORKAREA))
 		lyxerr << "\tpixmap=" << workareapixmap << endl;
 }
 
@@ -351,7 +345,7 @@ int WorkArea::work_area_handler(FL_OBJECT * ob, int event,
 		if (!area->work_area ||
 		    !area->work_area->form->visible)
 			return 1;
-		lyxerr[Debug::GUI] << "Workarea event: DRAW" << endl;
+		lyxerr[Debug::WORKAREA] << "Workarea event: DRAW" << endl;
 		area->createPixmap(area->workWidth(), area->height());
 		Lgb_bug_find_hack = true;
 		area->workAreaExpose();
@@ -360,7 +354,7 @@ int WorkArea::work_area_handler(FL_OBJECT * ob, int event,
 	case FL_PUSH:
 		if (!ev || ev->xbutton.button == 0) break;
 		// Should really have used xbutton.state
-		lyxerr[Debug::GUI] << "Workarea event: PUSH" << endl;
+		lyxerr[Debug::WORKAREA] << "Workarea event: PUSH" << endl;
 		area->workAreaButtonPress(ev->xbutton.x - ob->x,
 					  ev->xbutton.y - ob->y,
 					  ev->xbutton.button);
@@ -369,7 +363,7 @@ int WorkArea::work_area_handler(FL_OBJECT * ob, int event,
 	case FL_RELEASE:
 		if (!ev || ev->xbutton.button == 0) break;
 		// Should really have used xbutton.state
-		lyxerr[Debug::GUI] << "Workarea event: RELEASE" << endl;
+		lyxerr[Debug::WORKAREA] << "Workarea event: RELEASE" << endl;
 		area->workAreaButtonRelease(ev->xbutton.x - ob->x,
 				      ev->xbutton.y - ob->y,
 				      ev->xbutton.button);
@@ -384,7 +378,7 @@ int WorkArea::work_area_handler(FL_OBJECT * ob, int event,
 		    ev->xmotion.y != y_old ||
 		    fl_get_scrollbar_value(area->scrollbar) != scrollbar_value_old
 			) {
-			lyxerr[Debug::GUI] << "Workarea event: MOUSE" << endl;
+			lyxerr[Debug::WORKAREA] << "Workarea event: MOUSE" << endl;
 			area->workAreaMotionNotify(ev->xmotion.x - ob->x,
 					     ev->xmotion.y - ob->y,
 					     ev->xbutton.state);
@@ -396,7 +390,7 @@ int WorkArea::work_area_handler(FL_OBJECT * ob, int event,
 	case FL_KEYPRESS:
 #endif
 	{
-		lyxerr[Debug::KEY] << "Workarea event: KEYBOARD" << endl;
+		lyxerr[Debug::WORKAREA] << "Workarea event: KEYBOARD" << endl;
 		
 		KeySym keysym = 0;
 		char dummy[1];
@@ -414,9 +408,9 @@ int WorkArea::work_area_handler(FL_OBJECT * ob, int event,
 			string const stm = (tmp ? tmp : "");
 			string const stm2 = (tmp2 ? tmp2 : "");
 			
-			lyxerr << "WorkArea: Key is `" << stm << "' ["
+			lyxerr[Debug::KEY] << "WorkArea: Key is `" << stm << "' ["
 			       << key << "]" << endl;
-			lyxerr << "WorkArea: Keysym is `" << stm2 << "' ["
+			lyxerr[Debug::KEY] << "WorkArea: Keysym is `" << stm2 << "' ["
 			       << keysym << "]" << endl;
 		}
 
@@ -499,44 +493,43 @@ int WorkArea::work_area_handler(FL_OBJECT * ob, int event,
 
 #if FL_REVISION >= 89
 	case FL_KEYRELEASE:
-		lyxerr << "Workarea event: KEYRELEASE" << endl;
+		lyxerr[Debug::WORKAREA] << "Workarea event: KEYRELEASE" << endl;
 		break;
 #endif
 
 	case FL_FOCUS:
-		lyxerr[Debug::GUI] << "Workarea event: FOCUS" << endl;
+		lyxerr[Debug::WORKAREA] << "Workarea event: FOCUS" << endl;
 		area->workAreaFocus();
 		break;
 	case FL_UNFOCUS:
-		lyxerr[Debug::GUI] << "Workarea event: UNFOCUS" << endl;
+		lyxerr[Debug::WORKAREA] << "Workarea event: UNFOCUS" << endl;
 		area->workAreaUnfocus();
 		break;
 	case FL_ENTER:
-		lyxerr[Debug::GUI] << "Workarea event: ENTER" << endl;
+		lyxerr[Debug::WORKAREA] << "Workarea event: ENTER" << endl;
 		area->workAreaEnter();
 		break;
 	case FL_LEAVE:
-		lyxerr[Debug::GUI] << "Workarea event: LEAVE" << endl;
+		lyxerr[Debug::WORKAREA] << "Workarea event: LEAVE" << endl;
 		area->workAreaLeave();
 		break;
 	case FL_DBLCLICK:
 		if (!ev) break;
-		lyxerr[Debug::GUI] << "Workarea event: DBLCLICK" << endl;
+		lyxerr[Debug::WORKAREA] << "Workarea event: DBLCLICK" << endl;
 		area->workAreaDoubleClick(ev->xbutton.x - ob->x,
 					  ev->xbutton.y - ob->y,
 					  ev->xbutton.button);
 		break;
 	case FL_TRPLCLICK:
 		if (!ev) break;
-		lyxerr[Debug::GUI] << "Workarea event: TRPLCLICK" << endl;
+		lyxerr[Debug::WORKAREA] << "Workarea event: TRPLCLICK" << endl;
 		area->workAreaTripleClick(ev->xbutton.x - ob->x,
 					  ev->xbutton.y - ob->y,
 					  ev->xbutton.button);
 		break;
 	case FL_OTHER:
 		if (!ev) break;
-			lyxerr[Debug::GUI] << "Workarea event: OTHER" << endl;
-
+		lyxerr[Debug::WORKAREA] << "Workarea event: OTHER" << endl;
 		break;
 	}
   
@@ -581,8 +574,10 @@ string const WorkArea::getClipboard() const
 	
 	while (!clipboard_read) {
 		if (fl_check_forms() == FL_EVENT) {
-			lyxerr << "LyX: This shouldn't happen..." << endl;
 			fl_XNextEvent(&ev);
+			lyxerr << "Received unhandled X11 event" << endl; 
+			lyxerr << "Type: 0x" << std::hex << ev.xany.type <<
+				"Target: 0x" << std::hex << ev.xany.window << endl;
 		}
 	}
 	return clipboard_selection;

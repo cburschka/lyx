@@ -27,6 +27,28 @@ using std::endl;
 extern LyXAction lyxaction;
 ToolbarDefaults toolbardefaults;
 
+namespace {
+
+enum _tooltags {
+	TO_ADD = 1,
+	TO_ENDTOOLBAR,
+	TO_SEPARATOR,
+	TO_LAYOUTS,
+	TO_NEWLINE,
+	TO_LAST
+};
+
+
+struct keyword_item toolTags[TO_LAST - 1] = {
+	{ "end", TO_ENDTOOLBAR },
+	{ "icon", TO_ADD },
+	{ "layouts", TO_LAYOUTS },
+	{ "newline", TO_NEWLINE },
+	{ "separator", TO_SEPARATOR }
+};
+
+}; // end of anon namespace
+
 
 ToolbarDefaults::ToolbarDefaults()
 {
@@ -73,25 +95,6 @@ void ToolbarDefaults::init()
 }
 
 
-enum _tooltags {
-	TO_ADD = 1,
-	TO_ENDTOOLBAR,
-        TO_SEPARATOR,
-        TO_LAYOUTS,
-        TO_NEWLINE,
-	TO_LAST
-};
-
-
-struct keyword_item toolTags[TO_LAST - 1] = {
-	{ "end", TO_ENDTOOLBAR },
-	{ "icon", TO_ADD },
-        { "layouts", TO_LAYOUTS },
-        { "newline", TO_NEWLINE },
-        { "separator", TO_SEPARATOR }
-};
-
-
 void ToolbarDefaults::read(LyXLex & lex) 
 {
 	//consistency check
@@ -134,8 +137,6 @@ void ToolbarDefaults::read(LyXLex & lex)
 			break;
 			
 		case TO_ENDTOOLBAR:
-			// should not set automatically
-			//set();
 			quit = true;
 			break;
 		default:

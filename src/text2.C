@@ -246,14 +246,12 @@ void LyXText::setCharFont(BufferView * bv, Paragraph * par,
 	LyXFont font = getFont(buf, par, pos);
 	font.update(fnt, buf->params.language, toggleall);
 	// Let the insets convert their font
-	if (par->getChar(pos) == Paragraph::META_INSET) {
+	if (isMetaInset(par, pos)) {
 		Inset * inset = par->getInset(pos);
-		if (inset) {
-			if (inset->editable()==Inset::IS_EDITABLE) {
-				UpdatableInset * uinset =
-					static_cast<UpdatableInset *>(inset);
-				uinset->setFont(bv, fnt, toggleall, true);
-			}
+		if (isEditableInset(inset)) {
+			UpdatableInset * uinset =
+				static_cast<UpdatableInset *>(inset);
+			uinset->setFont(bv, fnt, toggleall, true);
 		}
 	}
 
@@ -451,7 +449,7 @@ Inset * LyXText::getInset() const
 	if (cursor.pos() == 0 && cursor.par()->bibkey) {
 		inset =	cursor.par()->bibkey;
 	} else if (cursor.pos() < cursor.par()->size() 
-		   && cursor.par()->getChar(cursor.pos()) == Paragraph::META_INSET) {
+		   && isMetaInset(cursor.par(), cursor.pos())) {
 		inset = cursor.par()->getInset(cursor.pos());
 	}
 	return inset;
@@ -461,12 +459,12 @@ Inset * LyXText::getInset() const
 void LyXText::toggleInset(BufferView * bview)
 {
 	Inset * inset = getInset();
-	if (!inset->editable())
+	if (!isEditableInset(inset))
 		return;
 	//bview->owner()->message(inset->editMessage());
 
 	// do we want to keep this?? (JMarc)
-	if (inset->editable() != Inset::HIGHLY_EDITABLE)
+	if (!isHighlyEditableInset(inset))
 		setCursorParUndo(bview);
 
 	if (inset->isOpen()) {
@@ -1697,7 +1695,7 @@ void LyXText::insertInset(BufferView * bview, Inset * inset)
 	// inset now after the Undo LyX tries to call inset->Edit(...) again
 	// and cannot do this as the cursor is behind the inset and GetInset
 	// does not return the inset!
-	if (inset->editable() == Inset::HIGHLY_EDITABLE) {
+	if (isHighlyEditableInset(inset)) {
 		cursorLeft(bview, true);
 	}
 #endif
@@ -1967,7 +1965,7 @@ bool LyXText::gotoNextInset(BufferView * bview,
 		}
       
 	} while (res.par() && 
-		 !(res.par()->getChar(res.pos()) == Paragraph::META_INSET
+		 !(isMetaInset(res.par(), res.pos())
 		   && (inset = res.par()->getInset(res.pos())) != 0
 		   && find(codes.begin(), codes.end(), inset->lyxCode())
 		   != codes.end()
@@ -1976,7 +1974,7 @@ bool LyXText::gotoNextInset(BufferView * bview,
 		       == contents)));
 
 	if (res.par()) {
-		setCursor(bview, res.par(), res.pos());
+		setCursor(bview, res.par(), res.pos(), false);
 		return true;
 	}
 	return false;
@@ -2115,7 +2113,7 @@ void LyXText::setCursor(BufferView *bview, LyXCursor & cur, Paragraph * par,
 	y += row->baseline();
 	// y is now the cursor baseline 
 	cur.y(y);
-   
+
 	// now get the cursors x position
 	float x;
 	float fill_separator;

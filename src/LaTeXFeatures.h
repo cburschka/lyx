@@ -35,7 +35,7 @@ struct Language;
 struct LaTeXFeatures {
 	///
 	LaTeXFeatures(BufferParams const &, LyXTextClass::size_type n) ;
-	/// The packaes needed by the document
+	/// The packages needed by the document
 	string const getPackages() const;
 	/// The macros definitions needed by the document
 	string const getMacros() const;

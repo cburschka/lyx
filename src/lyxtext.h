@@ -546,6 +546,55 @@ private:
 			    float & fill_label_hfill,
 			    bool bidi = true) const;
 
+	/// A struct used for drawing routines
+	struct DrawRowParams {
+		// the bufferview
+		BufferView * bv; 
+		// the row
+		Row * row;
+		// the painter to use
+		Painter * pain; 
+		// has the background been cleared
+		bool cleared;
+		/// x offset
+		int xo;
+		/// y offset 
+		int yo;
+		/// FIXME
+		float x;
+		/// FIXME
+		int y;
+		/// the inset/view full width
+		int width;
+		/// hfill size
+		float hfill;
+		/// label hfill size
+		float label_hfill;
+		/// fill separator size
+		float separator;
+	};
+		 
+	/// paint the background
+	bool paintRowBackground(DrawRowParams & p);
+ 
+	/// paint the selection background 
+	void paintRowSelection(DrawRowParams & p);
+
+	/// paint appendix marker
+	void paintRowAppendix(DrawRowParams & p);
+	 
+	/// paint env depth bar 
+	void paintRowDepthBar(DrawRowParams & p);
+ 
+	/// paint a first row in a paragraph
+	void paintFirstRow(DrawRowParams & p);
+ 
+	/// paint a last row in a paragraph
+	void paintLastRow(DrawRowParams & p);
+ 
+	/// paint text
+	void paintRowText(DrawRowParams & p);
+ 
 	// fix the cursor `cur' after a characters has been deleted at `where'
 	// position. Called by deleteEmptyParagraphMechanism
 	void fixCursorAfterDelete(BufferView * bview,

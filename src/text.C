@@ -2945,642 +2945,654 @@ void LyXText::backspace(BufferView * bview)
 }
 
 
-void LyXText::getVisibleRow(BufferView * bview, int y_offset, int x_offset,
-                            Row * row_ptr, int y, bool cleared)
+bool LyXText::paintRowBackground(DrawRowParams & p)
 {
-	// returns a printed row
-	Painter & pain = bview->painter();
-	
-	bool const is_rtl =
-		row_ptr->par()->isRightToLeftPar(bview->buffer()->params);
-	
-	Paragraph::size_type const last = rowLastPrintable(row_ptr);
-
-	Paragraph::size_type vpos;
-	Paragraph::size_type pos;
-
-	float tmpx;
-
+	bool clear_area = true;
+	Inset * inset = 0;
 	LyXFont font(LyXFont::ALL_SANE);
-	int maxdesc;
-	if (row_ptr->height() <= 0) {
+
+	Paragraph::size_type const last = rowLastPrintable(p.row);
+
+	if (!p.bv->screen()->forceClear() && last == p.row->pos()
+		&& isMetaInset(p.row->par(), p.row->pos())) {
+		inset = p.row->par()->getInset(p.row->pos());
+		if (inset) {
+			clear_area = inset->doClearArea();
+		}
+	}
+ 
+	if (p.cleared) {
+		return true;
+	} 
+	
+	if (clear_area) {
+		int const x = p.xo;
+		int const y = p.yo < 0 ? 0 : p.yo;
+		int const h = p.yo < 0 ? p.row->height() + p.yo : p.row->height();
+		p.pain->fillRectangle(x, y, p.width, h, backgroundColor());
+		return true;
+	}
+ 
+	if (inset == 0)
+		return false;
+ 
+	int h = p.row->baseline() - inset->ascent(p.bv, font);
+ 
+	// first clear the whole row above the inset!
+	if (h > 0) {
+		p.pain->fillRectangle(p.xo, p.yo, p.width, h, backgroundColor());
+	}
+
+	// clear the space below the inset!
+	h += inset->ascent(p.bv, font) + inset->descent(p.bv, font);
+	if ((p.row->height() - h) > 0) {
+		p.pain->fillRectangle(p.xo, p.yo + h, 
+			p.width, p.row->height() - h, backgroundColor());
+	}
+
+	// clear the space behind the inset, if needed
+	if (!inset->display() && !inset->needFullRow()) {
+		int const xp = int(p.x) + inset->width(p.bv, font);
+		if (p.width - xp > 0) {
+			p.pain->fillRectangle(xp, p.yo, p.width - xp,
+				p.row->height(), backgroundColor());
+		}
+	}
+ 
+	return false;
+}
+
+
+void LyXText::paintRowSelection(DrawRowParams & p)
+{
+	bool const is_rtl = p.row->par()->isRightToLeftPar(p.bv->buffer()->params);
+
+	// the current selection
+	int const startx = selection.start.x();
+	int const endx = selection.end.x();
+	int const starty = selection.start.y();
+	int const endy = selection.end.y();
+	Row const * startrow = selection.start.row();
+	Row const * endrow = selection.end.row();
+ 
+	Row * row = p.row;
+ 
+	if (bidi_same_direction) {
+		int x;
+		int y = p.yo;
+		int w;
+		int h = row->height();
+ 
+		if (startrow == row && endrow == row) {
+			if (startx < endx) {
+				x = p.xo + startx;
+				w = endx - startx;
+				p.pain->fillRectangle(x, y, w, h, LColor::selection);
+			} else {
+				x = p.xo + endx;
+				w = startx - endx;
+				p.pain->fillRectangle(x, y, w, h, LColor::selection);
+			}
+		} else if (startrow == row) {
+			int const x = (is_rtl) ? p.xo : (p.xo + startx);
+			int const w = (is_rtl) ? startx : (p.width - startx);
+			p.pain->fillRectangle(x, y, w, h, LColor::selection);
+		} else if (endrow == row) {
+			int const x = (is_rtl) ? (p.xo + endx) : p.xo;
+			int const w = (is_rtl) ? (p.width - endx) : endx;
+			p.pain->fillRectangle(x, y, w, h, LColor::selection);
+		} else if (p.y > starty && p.y < endy) {
+			p.pain->fillRectangle(p.xo, y, p.width, h, LColor::selection);
+		}
+		return;
+	} else if (startrow != row && endrow != row) {
+		int w = p.width;
+		int h = row->height();
+		if (p.y > starty && p.y < endy) {
+			p.pain->fillRectangle(p.xo, p.yo, w, h, LColor::selection);
+		}
+		return;
+	}
+ 
+	if (!((startrow != row && !is_rtl) || (endrow != row && is_rtl))) {
+		return;
+	}
+ 
+	float tmpx = p.x;
+ 
+	p.pain->fillRectangle(p.xo, p.yo, int(p.x), row->height(), LColor::selection);
+ 
+	Buffer const * buffer = p.bv->buffer();
+	Paragraph * par = row->par();
+	Paragraph::size_type main_body = beginningOfMainBody(buffer, par);
+	Paragraph::size_type const last = rowLastPrintable(row);
+ 
+	for (Paragraph::size_type vpos = row->pos(); vpos <= last; ++vpos)  {
+		Paragraph::size_type pos = vis2log(vpos);
+		float const old_tmpx = tmpx;
+		if (main_body > 0 && pos == main_body - 1) {
+			LyXLayout const & layout = textclasslist.Style(buffer->params.textclass,
+				par->getLayout());
+			LyXFont const lfont = getLabelFont(buffer, par);
+			 
+ 
+			tmpx += p.label_hfill + lyxfont::width(layout.labelsep, lfont);
+
+			if (par->isLineSeparator(main_body - 1))
+				tmpx -= singleWidth(p.bv, par, main_body - 1);
+		}
+ 
+		if (hfillExpansion(buffer, row, pos)) {
+			tmpx += singleWidth(p.bv, par, pos);
+			if (pos >= main_body)
+				tmpx += p.hfill;
+			else 
+				tmpx += p.label_hfill;
+		}
+ 
+		else if (par->isSeparator(pos)) {
+			tmpx += singleWidth(p.bv, par, pos);
+			if (pos >= main_body)
+				tmpx += p.separator;
+		} else {
+			tmpx += singleWidth(p.bv, par, pos);
+		}
+		
+		if ((startrow != row || selection.start.pos() <= pos) &&
+			(endrow != row || pos < selection.end.pos())) {
+			// Here we do not use p.x as p.xo was added to p.x.
+			p.pain->fillRectangle(int(old_tmpx), p.yo,
+				int(tmpx - old_tmpx + 1),
+				row->height(), LColor::selection);
+		}
+
+		if ((startrow != row && is_rtl) || (endrow != row && !is_rtl)) {
+			p.pain->fillRectangle(p.xo + int(tmpx),
+				p.yo, int(p.bv->workWidth() - tmpx),
+				row->height(), LColor::selection);
+		}
+	}
+}
+ 
+
+void LyXText::paintRowAppendix(DrawRowParams & p)
+{
+	// FIXME: can be just p.width ?
+	int const ww = p.bv->workWidth();
+	Paragraph * firstpar = p.row->par();
+
+	if (firstpar->params().appendix()) {
+		p.pain->line(1, p.yo, 1, p.yo + p.row->height(), LColor::appendixline);
+		p.pain->line(ww - 2, p.yo, ww - 2, p.yo + p.row->height(), LColor::appendixline);
+	}
+}
+
+ 
+void LyXText::paintRowDepthBar(DrawRowParams & p)
+{
+	Paragraph::depth_type const depth = p.row->par()->getDepth();
+ 
+	if (depth <= 0)
+		return;
+
+	Paragraph::depth_type prev_depth = 0;
+	if (p.row->previous())
+		prev_depth = p.row->previous()->par()->getDepth();
+	Paragraph::depth_type next_depth = 0;
+	if (p.row->next())
+		next_depth = p.row->next()->par()->getDepth();
+
+	for (Paragraph::depth_type i = 1; i <= depth; ++i) {
+		int const x = (LYX_PAPER_MARGIN / 5) * i + p.xo;
+		int const h = p.yo + p.row->height() - 1 - (i - next_depth - 1) * 3;
+ 
+		p.pain->line(x, p.yo, x, h, LColor::depthbar);
+	
+		int const w = LYX_PAPER_MARGIN / 5;
+ 
+		if (i > prev_depth) {
+			p.pain->fillRectangle(x, p.yo, w, 2, LColor::depthbar);
+		}
+		if (i > next_depth) {
+			p.pain->fillRectangle(x, h, w, 2, LColor::depthbar);
+		}
+	}
+}
+
+ 
+void LyXText::paintFirstRow(DrawRowParams & p)
+{
+	Paragraph * par = p.row->par(); 
+	ParagraphParameters const & parparams = par->params();
+ 
+	// start of appendix?
+	if (parparams.startOfAppendix()) {
+		p.pain->line(1, p.yo, p.width - 2, p.yo, LColor::appendixline);
+	}
+	
+	int y_top = 0;
+		
+	// think about the margins
+	if (!p.row->previous() && bv_owner)
+		y_top += LYX_PAPER_MARGIN;
+
+	// draw a top pagebreak
+	if (parparams.pagebreakTop()) {
+		int const y = p.yo + y_top + 2*defaultHeight();
+		p.pain->line(0, y, p.width, y, LColor::pagebreak, Painter::line_onoffdash);
+ 
+		int w = 0;
+		int a = 0;
+		int d = 0;
+ 
+		LyXFont pb_font;
+		pb_font.setColor(LColor::pagebreak).decSize();
+		lyxfont::rectText(_("Page Break (top)"), pb_font, w, a, d);
+		p.pain->rectText((p.width - w)/2, y + d,
+			      _("Page Break (top)"), pb_font,
+			      backgroundColor(),
+			      backgroundColor());
+		y_top += 3 * defaultHeight();
+	}
+	
+	// draw a vfill top
+	if (parparams.spaceTop().kind() == VSpace::VFILL) {
+		int const y1 = p.yo + y_top + 3 * defaultHeight();
+		int const y2 = p.yo + 2 + y_top;
+ 
+		p.pain->line(0, y1, LYX_PAPER_MARGIN, y1, LColor::vfillline);
+		
+		p.pain->line(0, y2, LYX_PAPER_MARGIN, y2, LColor::vfillline);
+
+		int const x = LYX_PAPER_MARGIN / 2;
+ 
+		p.pain->line(x, y2, x, y1, LColor::vfillline);
+		
+		y_top += 3 * defaultHeight();
+	}
+	
+	// think about user added space
+	y_top += int(parparams.spaceTop().inPixels(p.bv));
+	
+	Buffer const * buffer = p.bv->buffer();
+ 
+	LyXLayout const & layout =
+		textclasslist.Style(buffer->params.textclass, par->getLayout());
+
+	// think about the parskip
+	// some parskips VERY EASY IMPLEMENTATION
+	if (buffer->params.paragraph_separation == BufferParams::PARSEP_SKIP) {
+		if (par->previous()) {
+			if (layout.latextype == LATEX_PARAGRAPH
+				&& !par->getDepth()) {
+				y_top += buffer->params.getDefSkip().inPixels(p.bv);
+			} else {
+				LyXLayout const & playout =
+					textclasslist.Style(buffer->params.textclass,
+						par->previous()->getLayout()); 
+				if (playout.latextype == LATEX_PARAGRAPH
+					&& !par->previous()->getDepth()) {
+					// is it right to use defskip here, too? (AS) 
+					y_top += buffer->params.getDefSkip().inPixels(p.bv);
+				}
+			}
+		}
+	}
+	
+	int const ww = p.bv->workWidth();
+ 
+	// draw a top line
+	if (parparams.lineTop()) {
+		LyXFont font(LyXFont::ALL_SANE);
+		int const asc = lyxfont::ascent('x', getFont(buffer, par, 0));
+ 
+		y_top += asc;
+ 
+		int const w = (inset_owner ?  inset_owner->width(p.bv, font) : ww);
+		int const xp = static_cast<int>(inset_owner ? p.x : 0);
+		p.pain->line(xp, p.yo + y_top, w, p.yo + y_top,
+			LColor::topline, Painter::line_solid,
+			Painter::line_thick);
+		
+		y_top += asc;
+	}
+	
+	bool const is_rtl = p.row->par()->isRightToLeftPar(p.bv->buffer()->params);
+
+	// should we print a label?
+	if (layout.labeltype >= LABEL_STATIC
+	    && (layout.labeltype != LABEL_STATIC
+		|| layout.latextype != LATEX_ENVIRONMENT
+		|| par->isFirstInSequence())) {
+ 
+		LyXFont font = getLabelFont(buffer, par);
+		if (!par->getLabelstring().empty()) {
+			float x = p.x;
+			string const str = par->getLabelstring();
+			
+			// this is special code for the chapter layout. This is
+			// printed in an extra row and has a pagebreak at
+			// the top.
+			if (layout.labeltype == LABEL_COUNTER_CHAPTER) {
+				if (buffer->params.secnumdepth >= 0) {
+					float spacing_val = 1.0;
+					if (!parparams.spacing().isDefault()) {
+						spacing_val = parparams.spacing().getValue();
+					} else {
+						spacing_val = buffer->params.spacing.getValue();
+					}
+ 
+					int const maxdesc = 
+						int(lyxfont::maxDescent(font) * layout.spacing.getValue() * spacing_val)
+						+ int(layout.parsep) * defaultHeight();
+ 
+					if (is_rtl) {
+						x = ww - leftMargin(p.bv, p.row) - 
+							lyxfont::width(str, font);
+					}
+ 
+					p.pain->text(int(x), p.yo +
+						p.yo + p.row->baseline() - 
+						p.row->ascent_of_text() - maxdesc,
+						str, font);
+				}
+			} else {
+				if (is_rtl) {
+					x = ww - leftMargin(p.bv, p.row)
+						+ lyxfont::width(layout.labelsep, font);
+				} else
+					x = p.x - lyxfont::width(layout.labelsep, font)
+						- lyxfont::width(str, font);
+
+				p.pain->text(int(x), p.yo + p.row->baseline(), str, font);
+			}
+		}
+	// the labels at the top of an environment.
+	// More or less for bibliography
+	} else if (par->isFirstInSequence() &&
+		(layout.labeltype == LABEL_TOP_ENVIRONMENT ||
+		layout.labeltype == LABEL_BIBLIO ||
+		layout.labeltype == LABEL_CENTERED_TOP_ENVIRONMENT)) {
+		LyXFont font = getLabelFont(buffer, par);
+		if (!par->getLabelstring().empty()) {
+			string const str = par->getLabelstring();
+			float spacing_val = 1.0;
+			if (!parparams.spacing().isDefault()) {
+				spacing_val = parparams.spacing().getValue();
+			} else {
+				spacing_val = buffer->params.spacing.getValue();
+			}
+ 
+			int maxdesc = 
+				int(lyxfont::maxDescent(font) * layout.spacing.getValue() * spacing_val
+				+ (layout.labelbottomsep * defaultHeight()));
+			
+			float x = p.x;
+			if (layout.labeltype == LABEL_CENTERED_TOP_ENVIRONMENT) {
+				x = ((is_rtl ? leftMargin(p.bv, p.row) : p.x)
+					 + ww - rightMargin(buffer, p.row) ) / 2; 
+				x -= lyxfont::width(str, font) / 2;
+			} else if (is_rtl) {
+				x = ww - leftMargin(p.bv, p.row) - 
+					lyxfont::width(str, font);
+			}
+			p.pain->text(int(x), p.yo + p.row->baseline()
+				  - p.row->ascent_of_text() - maxdesc,
+				  str, font);
+		}
+	}
+ 
+	if (layout.labeltype == LABEL_BIBLIO && par->bibkey) {
+		LyXFont font = getLayoutFont(buffer, par);
+		float x;
+		if (is_rtl) {
+			x = ww - leftMargin(p.bv, p.row)
+				+ lyxfont::width(layout.labelsep, font);
+		} else {
+			x = p.x - lyxfont::width(layout.labelsep, font)
+				- par->bibkey->width(p.bv, font);
+		}
+		par->bibkey->draw(p.bv, font, p.yo + p.row->baseline(), x, p.cleared);
+	}
+}
+	
+ 
+void LyXText::paintLastRow(DrawRowParams & p)
+{
+	Paragraph * par = p.row->par();
+	ParagraphParameters const & parparams = par->params();
+	int y_bottom = p.row->height();
+	
+	// think about the margins
+	if (!p.row->next() && bv_owner)
+		y_bottom -= LYX_PAPER_MARGIN;
+	
+	int const ww = p.bv->workWidth();
+ 
+	// draw a bottom pagebreak
+	if (parparams.pagebreakBottom()) {
+		LyXFont pb_font;
+		pb_font.setColor(LColor::pagebreak).decSize();
+		int const y = p.yo + y_bottom - 2 * defaultHeight();
+ 
+		p.pain->line(0, y, ww, y, LColor::pagebreak, Painter::line_onoffdash);
+ 
+		int w = 0;
+		int a = 0;
+		int d = 0;
+		lyxfont::rectText(_("Page Break (bottom)"), pb_font, w, a, d);
+		p.pain->rectText((ww - w) / 2, y + d,
+			_("Page Break (bottom)"),
+			pb_font, backgroundColor(), backgroundColor());
+ 
+		y_bottom -= 3 * defaultHeight();
+	}
+	
+	// draw a vfill bottom
+	if (parparams.spaceBottom().kind() == VSpace::VFILL) {
+		int const x = LYX_PAPER_MARGIN / 2; 
+		int const x2 = LYX_PAPER_MARGIN;
+		int const y = p.yo + y_bottom - 3 * defaultHeight();
+		int const y2 = p.yo + y_bottom - 2;
+		
+		p.pain->line(0, y, x2, y, LColor::vfillline);
+		p.pain->line(0, y2, x2, y2, LColor::vfillline);
+		p.pain->line(x, y, x, y2, LColor::vfillline);
+ 
+		y_bottom -= 3 * defaultHeight();
+	}
+	
+	// think about user added space
+	y_bottom -= int(parparams.spaceBottom().inPixels(p.bv));
+	
+	Buffer const * buffer = p.bv->buffer();
+ 
+	// draw a bottom line
+	if (parparams.lineBottom()) {
+		LyXFont font(LyXFont::ALL_SANE);
+		int const asc = lyxfont::ascent('x',
+			getFont(buffer, par,
+			max(Paragraph::size_type(0), par->size() - 1)));
+ 
+		y_bottom -= asc;
+ 
+		int const w = (inset_owner ?  inset_owner->width(p.bv, font) : ww);
+		int const xp = static_cast<int>(inset_owner ? p.x : 0);
+		int const y = p.yo + y_bottom; 
+		p.pain->line(xp, y, w, y, LColor::topline, Painter::line_solid,
+			  Painter::line_thick);
+ 
+		y_bottom -= asc;
+	}
+
+	Paragraph::size_type const last = rowLastPrintable(p.row);
+	bool const is_rtl = p.row->par()->isRightToLeftPar(p.bv->buffer()->params);
+	int const endlabel = par->getEndLabel(buffer->params);
+ 
+	// draw an endlabel
+	switch (endlabel) {
+	case END_LABEL_BOX:
+	case END_LABEL_FILLED_BOX:
+	{
+		LyXFont const font = getFont(buffer, par, last);
+		int const size = int(0.75 * lyxfont::maxAscent(font));
+		int const y = (p.yo + p.row->baseline()) - size;
+		int x = is_rtl ? LYX_PAPER_MARGIN : ww - LYX_PAPER_MARGIN - size;
+
+		if (p.row->fill() <= size)
+			x += (size - p.row->fill() + 1) * (is_rtl ? -1 : 1);
+ 
+		if (endlabel == END_LABEL_BOX) {
+			p.pain->line(x, y, x, y + size, LColor::eolmarker);
+			p.pain->line(x + size, y, x + size , y + size, LColor::eolmarker);
+			p.pain->line(x, y, x + size, y, LColor::eolmarker);
+			p.pain->line(x, y + size, x + size, y + size, LColor::eolmarker);
+		} else {
+			p.pain->fillRectangle(x, y, size, size, LColor::eolmarker);
+		}
+		break;
+	}
+	case END_LABEL_STATIC:
+	{
+		LyXFont font(LyXFont::ALL_SANE);
+		LyXTextClass::LayoutList::size_type layout = par->getLayout();
+		string const str = textclasslist.
+			Style(buffer->params.textclass, layout).endlabelstring();
+		font = getLabelFont(buffer, par);
+		int const x = is_rtl ?
+			int(p.x) - lyxfont::width(str, font)
+			: ww - rightMargin(buffer, p.row) - p.row->fill();
+		p.pain->text(x, p.yo + p.row->baseline(), str, font);
+		break;
+	}
+	case END_LABEL_NO_LABEL:
+		break;
+	}
+}
+
+void LyXText::paintRowText(DrawRowParams & p)
+{
+	Paragraph * par = p.row->par();
+	Buffer const * buffer = p.bv->buffer(); 
+ 
+	Paragraph::size_type const last = rowLastPrintable(p.row);
+	Paragraph::size_type main_body = 
+		beginningOfMainBody(buffer, par);
+	if (main_body > 0 && 
+		(main_body - 1 > last || 
+		!par->isLineSeparator(main_body - 1))) {
+		main_body = 0;
+	}
+	
+	LyXLayout const & layout =
+		textclasslist.Style(buffer->params.textclass, par->getLayout());
+
+	Paragraph::size_type vpos = p.row->pos();
+	while (vpos <= last) {
+		Paragraph::size_type pos = vis2log(vpos);
+		if (main_body > 0 && pos == main_body - 1) {
+			int const lwidth = lyxfont::width(layout.labelsep,
+				getLabelFont(buffer, par));
+
+			p.x += p.label_hfill + lwidth
+				- singleWidth(p.bv, par, main_body - 1);
+		}
+		
+		if (par->isHfill(pos)) {
+			p.x += 1;
+
+			int const y1 = p.yo + p.row->baseline() - defaultHeight() / 2;
+ 
+			p.pain->line(int(p.x), y1, int(p.x), p.yo + p.row->baseline(), 
+				  LColor::vfillline);
+			
+			int const y2 = y1 / 2;
+ 
+			if (hfillExpansion(buffer, p.row, pos)) {
+				if (pos >= main_body) {
+					p.pain->line(int(p.x), y2,
+						  int(p.x + p.hfill), y2,
+						  LColor::vfillline,
+						  Painter::line_onoffdash);
+					p.x += p.hfill;
+				} else {
+					p.pain->line(int(p.x), y2,
+						  int(p.x + p.label_hfill), y2,
+						  LColor::vfillline,
+						  Painter::line_onoffdash);
+					p.x += p.label_hfill;
+				}
+				p.pain->line(int(p.x), y1,
+					  int(p.x), p.yo + p.row->baseline(),
+					  LColor::vfillline);
+			}
+			p.x += 2;
+			++vpos;
+		} else if (par->isSeparator(pos)) {
+			p.x += singleWidth(p.bv, par, pos);
+			if (pos >= main_body)
+				p.x += p.separator;
+			++vpos;
+		} else {
+			draw(p.bv, p.row, vpos, p.yo, p.x, p.cleared);
+		}
+	}
+}
+
+
+void LyXText::getVisibleRow(BufferView * bv, int y_offset, int x_offset,
+                            Row * row, int y, bool cleared)
+{
+	if (row->height() <= 0) {
 		lyxerr << "LYX_ERROR: row.height: "
-		       << row_ptr->height() << endl;
+		       << row->height() << endl;
 		return;
 	}
 
-	float x;
-	float fill_separator;
-	float fill_hfill;
-	float fill_label_hfill;
-	prepareToPrint(bview, row_ptr, x, fill_separator,
-		       fill_hfill, fill_label_hfill);
-	
-	if (inset_owner && (x < 0))
-		x = 0;
-	x += x_offset;
-	
-	// clear the area where we want to paint/print
-	int const ww = bview->workWidth();
+	DrawRowParams p;
 
-	bool clear_area = true;
-	Inset * inset = 0;
+	// set up drawing parameters
+	p.bv = bv;
+	p.pain = &bv->painter();
+	p.row = row;
+	p.xo = x_offset;
+	p.yo = y_offset;
+	prepareToPrint(bv, row, p.x, p.separator, p.hfill, p.label_hfill);
+	if (inset_owner && (p.x < 0))
+		p.x = 0;
+	p.x += p.xo;
+	p.y = y;
+	p.width = inset_owner ? inset_owner->textWidth(bv, true) : bv->workWidth();
+	p.cleared = cleared;
+	 
+	// start painting
 
-	if (!bview->screen()->forceClear() && last == row_ptr->pos()
-	    && row_ptr->par()->getChar(row_ptr->pos()) == Paragraph::META_INSET
-	    && (inset = row_ptr->par()->getInset(row_ptr->pos()))) {
-		clear_area = inset->doClearArea();
-	}
-	// we don't need to clear it's already done!!!
-	if (cleared) {
-		clear_area = true;
-	} else if (clear_area) {
-		int const y = y_offset < 0 ? 0 : y_offset;
-		int const h = y_offset < 0 ?
-			row_ptr->height() + y_offset : row_ptr->height();
-		int const w = inset_owner ?
-			inset_owner->textWidth(bview, true) : ww;
-		int const x = x_offset;
-		pain.fillRectangle(x, y, w, h, backgroundColor());
-	} else if (inset != 0) {
-		int h = row_ptr->baseline() - inset->ascent(bview, font);
-		// first clear the whole row above the inset!
-		if (h > 0) {
-			int const w = (inset_owner ?
-				 inset_owner->textWidth(bview, true) : ww);
-			pain.fillRectangle(x_offset, y_offset, w, h,
-			                   backgroundColor());
-		}
-		h += inset->ascent(bview, font) + inset->descent(bview, font);
-		// clear the space below the inset!
-		if ((row_ptr->height() - h) > 0) {
-			int const w = (inset_owner ?
-			               inset_owner->textWidth(bview, true) : ww);
-			pain.fillRectangle(x_offset, y_offset + h,
-			                   w, row_ptr->height() - h,
-			                   backgroundColor());
-		}
-		// clear the space behind the inset, if needed
-		if (!inset->display() && !inset->needFullRow()) {
-			int const w = (inset_owner ?
-			               inset_owner->textWidth(bview, true) : ww);
-			int const xp = int(x) + inset->width(bview, font);
-			if (w-xp > 0) {
-				pain.fillRectangle(xp, y_offset,
-				                   w-xp, row_ptr->height(),
-				                   backgroundColor());
-			}
-		}
-	}
+	// clear to background if necessary
+	p.cleared = paintRowBackground(p);
 
+	// paint the selection background
 	if (selection.set()) {
-		int const w = (inset_owner ?
-			       inset_owner->textWidth(bview, true) : ww);
-		// selection code
-		if (bidi_same_direction) {
-			if (selection.start.row() == row_ptr &&
-			    selection.end.row() == row_ptr) {
-				if (selection.start.x() < selection.end.x())
-					pain.fillRectangle(x_offset + selection.start.x(),
-							   y_offset,
-							   selection.end.x() - selection.start.x(),
-							   row_ptr->height(),
-							   LColor::selection);
-				else
-					pain.fillRectangle(x_offset + selection.end.x(),
-							   y_offset,
-							   selection.start.x() - selection.end.x(),
-							   row_ptr->height(),
-							   LColor::selection);
-			} else if (selection.start.row() == row_ptr) {
-				if (is_rtl)
-					pain.fillRectangle(x_offset, y_offset,
-							   selection.start.x(),
-							   row_ptr->height(),
-							   LColor::selection);
-				else
-					pain.fillRectangle(x_offset + selection.start.x(),
-							   y_offset,
-							   w - selection.start.x(),
-							   row_ptr->height(),
-							   LColor::selection);
-			} else if (selection.end.row() == row_ptr) {
-				if (is_rtl)
-					pain.fillRectangle(x_offset + selection.end.x(),
-							   y_offset,
-							   w - selection.end.x(),
-							   row_ptr->height(),
-							   LColor::selection);
-				else
-					pain.fillRectangle(x_offset, y_offset,
-							   selection.end.x(),
-							   row_ptr->height(),
-							   LColor::selection);
-			} else if (y > selection.start.y()
-				   && y < selection.end.y()) {
-				pain.fillRectangle(x_offset, y_offset, w,
-						   row_ptr->height(),
-						   LColor::selection);
-			}
-		} else if (selection.start.row() != row_ptr &&
-			    selection.end.row() != row_ptr &&
-			    y > selection.start.y()
-			    && y < selection.end.y()) {
-			pain.fillRectangle(x_offset, y_offset, w,
-					   row_ptr->height(),
-					   LColor::selection);
-		} else if (selection.start.row() == row_ptr ||
-			   selection.end.row() == row_ptr) {
-			float tmpx = x;
-			if ((selection.start.row() != row_ptr && !is_rtl) ||
-			     (selection.end.row() != row_ptr && is_rtl))
-				pain.fillRectangle(x_offset, y_offset,
-						   int(tmpx),
-						   row_ptr->height(),
-						   LColor::selection);
-			Paragraph::size_type main_body =
-				beginningOfMainBody(bview->buffer(),
-						    row_ptr->par());
-			
-			for (vpos = row_ptr->pos(); vpos <= last; ++vpos)  {
-				pos = vis2log(vpos);
-				float const old_tmpx = tmpx;
-				if (main_body > 0 && pos == main_body-1) {
-					tmpx += fill_label_hfill +
-						lyxfont::width(textclasslist.Style(bview->buffer()->params.textclass,
-										   row_ptr->par()->getLayout()).labelsep,
-							       getLabelFont(bview->buffer(),row_ptr->par()));
-					if (row_ptr->par()->isLineSeparator(main_body-1))
-						tmpx -= singleWidth(bview, row_ptr->par(), main_body-1);
-				}
-				if (hfillExpansion(bview->buffer(), row_ptr, pos)) {
-					tmpx += singleWidth(bview, row_ptr->par(), pos);
-					if (pos >= main_body)
-						tmpx += fill_hfill;
-					else 
-						tmpx += fill_label_hfill;
-				}
-				else if (row_ptr->par()->isSeparator(pos)) {
-					tmpx += singleWidth(bview, row_ptr->par(), pos);
-					if (pos >= main_body)
-						tmpx += fill_separator;
-				} else
-					tmpx += singleWidth(bview, row_ptr->par(), pos);
-				
-				if ((selection.start.row() != row_ptr ||
-				      selection.start.pos() <= pos) &&
-				     (selection.end.row() != row_ptr ||
-				      pos < selection.end.pos()) )
-					// Here we do not use x_offset as x_offset was
-					// added to x.
-					pain.fillRectangle(int(old_tmpx),
-							   y_offset,
-							   int(tmpx - old_tmpx + 1),
-							   row_ptr->height(),
-							   LColor::selection);
-			}
-
-			if ((selection.start.row() != row_ptr && is_rtl) ||
-			     (selection.end.row() != row_ptr && !is_rtl) )
-				pain.fillRectangle(x_offset + int(tmpx),
-						   y_offset,
-						   int(ww - tmpx),
-						   row_ptr->height(),
-						   LColor::selection);
-		}
+		paintRowSelection(p);
 	}
 
-	int box_x = 0;
+	// vertical lines for appendix
+	paintRowAppendix(p);
 
-	// Draw appendix lines
-	Paragraph * firstpar = row_ptr->par();
-
-	if (firstpar->params().appendix()) {
-		pain.line(1, y_offset,
-			  1, y_offset + row_ptr->height(),
-			  LColor::appendixline);
-		pain.line(ww - 2, y_offset,
-			  ww - 2, y_offset + row_ptr->height(),
-			  LColor::appendixline);
+	// environment depth brackets
+	paintRowDepthBar(p);
+ 
+	// draw any stuff wanted for a first row of a paragraph
+	if (!row->pos()) {
+		paintFirstRow(p);
 	}
 
-	// Draw depth lines
-	Paragraph::depth_type const depth = firstpar->getDepth();
-	if (depth > 0) {
-		Paragraph::depth_type next_depth = 0;
-		Paragraph::depth_type prev_depth = 0;
-		if (row_ptr->next())
-				next_depth = row_ptr->next()->par()->getDepth();
-		if (row_ptr->previous())
-				prev_depth = row_ptr->previous()->par()->getDepth();
+	// draw any stuff wanted for the last row of a paragraph
+	if (!row->next() || (row->next()->par() != row->par())) {
+		paintLastRow(p);
+	} 
 
-		for (Paragraph::depth_type i = 1; i <= depth; ++i) {
-			int const line_x = (LYX_PAPER_MARGIN / 5) *
-				i + box_x + x_offset;
-			pain.line(line_x, y_offset, line_x,
-				  y_offset + row_ptr->height() - 1 - (i - next_depth - 1) * 3,
-				  LColor::depthbar);
-		
-			if (i > prev_depth)
-				pain.fillRectangle(line_x, y_offset, LYX_PAPER_MARGIN / 5, 2,
-						   LColor::depthbar);
-			if (i > next_depth)
-				pain.fillRectangle(line_x,
-						   y_offset + row_ptr->height() - 2 - (i - next_depth - 1) * 3,
-						   LYX_PAPER_MARGIN / 5, 2,
-						   LColor::depthbar);
-		}
-	}
-
-	
-	LyXLayout const & layout =
-		textclasslist.Style(bview->buffer()->params.textclass,
-				    row_ptr->par()->getLayout());
-
-	int y_top = 0;
-	int y_bottom = row_ptr->height();
-	
-	// is it a first row?
-	if (!row_ptr->pos() && (row_ptr->par() == firstpar)) {
-		
-		// start of appendix?
-		if (row_ptr->par()->params().startOfAppendix()) {
-			pain.line(1, y_offset,
-				  ww - 2, y_offset,
-				  LColor::appendixline);
-		}
-		
-		// think about the margins
-		if (!row_ptr->previous() && bv_owner)
-			y_top += LYX_PAPER_MARGIN;
-		
-		// draw a top pagebreak
-		if (row_ptr->par()->params().pagebreakTop()) {
-			LyXFont pb_font;
-			pb_font.setColor(LColor::pagebreak).decSize();
-			int w = 0;
-			int a = 0;
-			int d = 0;
-			pain.line(0, y_offset + y_top + 2*defaultHeight(),
-				  ww, 
-				  y_offset + y_top + 2 * defaultHeight(),
-				  LColor::pagebreak, 
-				  Painter::line_onoffdash);
-			lyxfont::rectText(_("Page Break (top)"), pb_font,
-					  w, a, d);
-			pain.rectText((ww - w)/2,
-				      y_offset + y_top + 2 * defaultHeight() + d,
-				      _("Page Break (top)"),
-				      pb_font,
-				      backgroundColor(),
-				      backgroundColor());
-			y_top += 3 * defaultHeight();
-		}
-		
-		if (row_ptr->par()->params().spaceTop().kind() == VSpace::VFILL) {
-			// draw a vfill top
-			pain.line(0, y_offset + 2 + y_top,
-				  LYX_PAPER_MARGIN, y_offset + 2 + y_top,
-				  LColor::vfillline);
-			
-			pain.line(0, y_offset + y_top + 3 * defaultHeight(),
-				  LYX_PAPER_MARGIN,
-				  y_offset + y_top + 3 * defaultHeight(),
-				  LColor::vfillline);
-			
-			pain.line(LYX_PAPER_MARGIN / 2, y_offset + 2 + y_top,
-				  LYX_PAPER_MARGIN / 2,
-				  y_offset + y_top + 3 * defaultHeight(),
-				  LColor::vfillline);
-			
-			y_top += 3 * defaultHeight();
-		}
-		
-		// think about user added space
-		y_top += int(row_ptr->par()->params().spaceTop().inPixels(bview));
-		
-		// think about the parskip
-		// some parskips VERY EASY IMPLEMENTATION
-		if (bview->buffer()->params.paragraph_separation == BufferParams::PARSEP_SKIP) {
-			if (layout.latextype == LATEX_PARAGRAPH
-			    && firstpar->getDepth() == 0
-			    && firstpar->previous())
-				y_top += bview->buffer()->params.getDefSkip().inPixels(bview);
-			else if (firstpar->previous()
-				 && textclasslist.Style(bview->buffer()->params.textclass,
-							firstpar->previous()->getLayout()).latextype == LATEX_PARAGRAPH
-				 && firstpar->previous()->getDepth() == 0)
-				// is it right to use defskip here, too? (AS) 
-				y_top += bview->buffer()->params.getDefSkip().inPixels(bview);
-		}
-		
-		if (row_ptr->par()->params().lineTop()) {
-			// draw a top line
-			y_top +=  lyxfont::ascent('x',
-						  getFont(bview->buffer(),
-							  row_ptr->par(), 0));
-			int const w = (inset_owner ?
-				       inset_owner->width(bview, font) : ww);
-			int const xp = static_cast<int>(inset_owner ? x : 0);
-			pain.line(xp, y_offset + y_top,
-				  w, y_offset + y_top,
-				  LColor::topline,
-				  Painter::line_solid,
-				  Painter::line_thick);
-			
-			y_top +=  lyxfont::ascent('x',getFont(bview->buffer(),
-							      row_ptr->par(), 0));
-		}
-		
-		// should we print a label?
-		if (layout.labeltype >= LABEL_STATIC
-		    && (layout.labeltype != LABEL_STATIC
-			|| layout.latextype != LATEX_ENVIRONMENT
-			|| row_ptr->par()->isFirstInSequence())) {
-			font = getLabelFont(bview->buffer(), row_ptr->par());
-			if (!row_ptr->par()->getLabelstring().empty()) {
-				tmpx = x;
-				string const tmpstring =
-					row_ptr->par()->getLabelstring();
-				
-				if (layout.labeltype == LABEL_COUNTER_CHAPTER) {
-					if (bview->buffer()->params.secnumdepth >= 0) {
-						// this is special code for
-						// the chapter layout. This is
-						// printed in an extra row
-						// and has a pagebreak at
-						// the top.
-						float spacing_val = 1.0;
-						if (!row_ptr->par()->params().spacing().isDefault()) {
-							spacing_val = row_ptr->par()->params().spacing().getValue();
-						} else {
-							spacing_val = bview->buffer()->params.spacing.getValue();
-						}
-   
-						maxdesc = int(lyxfont::maxDescent(font) * layout.spacing.getValue() * spacing_val)
-							+ int(layout.parsep) * defaultHeight();
-						if (is_rtl)
-							tmpx = ww - leftMargin(bview, row_ptr) - 
-								lyxfont::width(tmpstring, font);
-						pain.text(int(tmpx),
-							  y_offset + row_ptr->baseline() - row_ptr->ascent_of_text() - maxdesc,
-							  tmpstring, font);
-					}
-				} else {
-					if (is_rtl) {
-						tmpx = ww - leftMargin(bview, row_ptr)
-							+ lyxfont::width(layout.labelsep, font);
-					} else
-						tmpx = x - lyxfont::width(layout.labelsep, font)
-							- lyxfont::width(tmpstring, font);
-
-					// draw it!
-					pain.text(int(tmpx),
-						  y_offset + row_ptr->baseline(),
-						  tmpstring, font);
-				}
-			}
-			// the labels at the top of an environment.
-			// More or less for bibliography
-		} else if (layout.labeltype == LABEL_TOP_ENVIRONMENT ||
-			   layout.labeltype == LABEL_BIBLIO ||
-			   layout.labeltype == LABEL_CENTERED_TOP_ENVIRONMENT) {
-			if (row_ptr->par()->isFirstInSequence()) {
-				font = getLabelFont(bview->buffer(),
-						    row_ptr->par());
-				if (!row_ptr->par()->getLabelstring().empty()) {
-					string const tmpstring =
-						row_ptr->par()->getLabelstring();
-					float spacing_val = 1.0;
-					if (!row_ptr->par()->params().spacing().isDefault()) {
-						spacing_val = row_ptr->par()->params().spacing().getValue();
-					} else {
-						spacing_val = bview->buffer()->params.spacing.getValue();
-					}
-   
-					maxdesc = int(lyxfont::maxDescent(font) * layout.spacing.getValue() * spacing_val
-						      + (layout.labelbottomsep * defaultHeight()));
-					
-					tmpx = x;
-					if (layout.labeltype == LABEL_CENTERED_TOP_ENVIRONMENT){
-						tmpx = ( (is_rtl ? leftMargin(bview, row_ptr) : x)
-							 + ww - rightMargin(bview->buffer(), row_ptr) ) / 2; 
-						tmpx -= lyxfont::width(tmpstring, font) / 2;
-					} else if (is_rtl)
-						tmpx = ww - leftMargin(bview, row_ptr) - 
-							lyxfont::width(tmpstring, font);
-					pain.text(int(tmpx),
-						  y_offset + row_ptr->baseline()
-						  - row_ptr->ascent_of_text()
-						  - maxdesc,
-						  tmpstring, font);
-				}
-			}
-		}
-		if (layout.labeltype == LABEL_BIBLIO && row_ptr->par()->bibkey) {
-			font = getLayoutFont(bview->buffer(), row_ptr->par());
-			if (is_rtl)
-				tmpx = ww - leftMargin(bview, row_ptr)
-					+ lyxfont::width(layout.labelsep, font);
-			else
-				tmpx = x - lyxfont::width(layout.labelsep, font)
-					- row_ptr->par()->bibkey->width(bview, font);
-			row_ptr->par()->bibkey->draw(bview, font,
-						   y_offset + row_ptr->baseline(), 
-						   tmpx, clear_area);
-		}
-	}
-	
-	// is it a last row?
-	Paragraph * par = row_ptr->par();
-	if (row_ptr->par() == par
-	    && (!row_ptr->next() || row_ptr->next()->par() != row_ptr->par())) {
- 		// think about the margins
-		if (!row_ptr->next() && bv_owner)
-			y_bottom -= LYX_PAPER_MARGIN;
-		
-		// draw a bottom pagebreak
-		if (firstpar->params().pagebreakBottom()) {
-			LyXFont pb_font;
-			pb_font.setColor(LColor::pagebreak).decSize();
-			int const y_place = y_offset + y_bottom
-				- 2 * defaultHeight();
-			
-			int w = 0;
-			int a = 0;
-			int d = 0;
-			pain
-				.line(0, y_place, ww, y_place,
-				      LColor::pagebreak,
-				      Painter::line_onoffdash);
-			lyxfont::rectText(_("Page Break (bottom)"), pb_font,
-					  w, a, d);
-			pain.rectText((ww - w) / 2, y_place + d,
-				      _("Page Break (bottom)"),
-				      pb_font,
-				      backgroundColor(),
-				      backgroundColor());
-			y_bottom -= 3 * defaultHeight();
-		}
-		
-		if (firstpar->params().spaceBottom().kind() == VSpace::VFILL) {
-			// draw a vfill bottom
-			int const y_place = y_offset + y_bottom
-				- 3 * defaultHeight();
-			
-			pain.line(0, y_place,
-				  LYX_PAPER_MARGIN, y_place,
-				  LColor::vfillline);
-			pain.line(0, y_offset + y_bottom - 2,
-				  LYX_PAPER_MARGIN,
-				  y_offset + y_bottom - 2,
-				  LColor::vfillline);
-			pain.line(LYX_PAPER_MARGIN / 2,
-				  y_place,
-				  LYX_PAPER_MARGIN / 2,
-				  y_offset + y_bottom - 2,
-				  LColor::vfillline);
-			y_bottom -= 3 * defaultHeight();
-		}
-		
-		// think about user added space
-		y_bottom -= int(firstpar->params().spaceBottom().inPixels(bview));
-		
-		if (firstpar->params().lineBottom()) {
-			// draw a bottom line
-			y_bottom -= lyxfont::ascent('x',
-						    getFont(bview->buffer(),
-							    par,
-							    max(Paragraph::size_type(0), par->size() - 1)));
-			int const w = (inset_owner ?
-				       inset_owner->width(bview, font) : ww);
-			int const xp = static_cast<int>(inset_owner ? x : 0);
-			pain.line(xp, y_offset + y_bottom,
-				  w, y_offset + y_bottom,
-				  LColor::topline, Painter::line_solid,
-				  Painter::line_thick);
-			y_bottom -= lyxfont::ascent('x',
-						    getFont(bview->buffer(),
-							    par,
-							    max(Paragraph::size_type(0), par->size() - 1)));
-		}
-
-		// draw an endlabel
-		int const endlabel =
-			row_ptr->par()->getEndLabel(bview->buffer()->params);
-		switch (endlabel) {
-		case END_LABEL_BOX:
-		case END_LABEL_FILLED_BOX:
-		{
-			LyXFont const font = getFont(bview->buffer(),
-						     row_ptr->par(), last);
-			int const size = int(0.75 * lyxfont::maxAscent(font));
-			int const y = (y_offset + row_ptr->baseline()) - size;
-			int x = is_rtl ? LYX_PAPER_MARGIN 
-				: ww - LYX_PAPER_MARGIN - size;
-
-			if (row_ptr->fill() <= size)
-				x += (size - row_ptr->fill() + 1) * (is_rtl ? -1 : 1);
-			if (endlabel == END_LABEL_BOX) {
-				pain.line(x, y, x, y + size,
-					  LColor::eolmarker);
-				pain.line(x + size, y, x + size , y + size,
-					  LColor::eolmarker);
-				pain.line(x, y, x + size, y,
-					  LColor::eolmarker);
-				pain.line(x, y + size, x + size, y + size,
-					  LColor::eolmarker);
-			} else
-				pain.fillRectangle(x, y, size, size,
-						   LColor::eolmarker);
-			break;
-		}
-		case END_LABEL_STATIC:
-		{
-			LyXTextClass::LayoutList::size_type layout = row_ptr->par()->getLayout();
-			string const tmpstring = textclasslist.
-				Style(bview->buffer()->params.textclass,
-				      layout).endlabelstring();
-			font = getLabelFont(bview->buffer(), row_ptr->par());
-			int const tmpx = is_rtl ?
-				int(x) - lyxfont::width(tmpstring, font)
-				: ww - rightMargin(bview->buffer(), row_ptr) - row_ptr->fill();
-			pain.text( tmpx, y_offset + row_ptr->baseline(), tmpstring, font);
-			break;
-		}
-		case END_LABEL_NO_LABEL:
-			break;
-		}
-	}
-	
-	// draw the text in the pixmap
-	
-	vpos = row_ptr->pos();
-
-	Paragraph::size_type main_body = 
-		beginningOfMainBody(bview->buffer(), row_ptr->par());
-	if (main_body > 0 &&
-	    (main_body-1 > last || 
-	     !row_ptr->par()->isLineSeparator(main_body - 1)))
-		main_body = 0;
-	
-	while (vpos <= last)  {
-		pos = vis2log(vpos);
-		if (main_body > 0 && pos == main_body - 1) {
-			x += fill_label_hfill
-				+ lyxfont::width(layout.labelsep,
-						 getLabelFont(bview->buffer(),
-							      row_ptr->par()))
-				- singleWidth(bview,
-					      row_ptr->par(),
-					      main_body - 1);
-		}
-		
-		if (row_ptr->par() ->isHfill(pos)) {
-			x += 1;
-			pain.line(int(x),
-				  y_offset + row_ptr->baseline() - defaultHeight() / 2,
-				  int(x),
-				  y_offset + row_ptr->baseline(),
-				  LColor::vfillline);
-			
-			if (hfillExpansion(bview->buffer(),
-					   row_ptr, pos)) {
-				if (pos >= main_body) {
-					pain.line(int(x),
-						  y_offset + row_ptr->baseline() - defaultHeight() / 4,
-						  int(x + fill_hfill),
-						  y_offset + row_ptr->baseline() - defaultHeight() / 4,
-						  LColor::vfillline,
-						  Painter::line_onoffdash);
-					x += fill_hfill;
-				} else {
-					pain.line(int(x),
-						  y_offset + row_ptr->baseline() - defaultHeight() / 4,
-						  int(x + fill_label_hfill),
-						  y_offset + row_ptr->baseline() - defaultHeight() / 4,
-						  LColor::vfillline,
-						  Painter::line_onoffdash);
-					
-					x += fill_label_hfill;
-				}
-				pain.line(int(x),
-					  y_offset + row_ptr->baseline() - defaultHeight() / 2,
-					  int(x),
-					  y_offset + row_ptr->baseline(),
-					  LColor::vfillline);
-			}
-			x += 2;
-			++vpos;
-		} else if (row_ptr->par()->isSeparator(pos)) {
-			x += singleWidth(bview,
-					 row_ptr->par(), pos);
-			if (pos >= main_body)
-				x += fill_separator;
-			++vpos;
-		} else
-			draw(bview, row_ptr, vpos, y_offset, x, clear_area);
-	}
+	// paint text
+	paintRowText(p); 
 }
 
 

@@ -1291,7 +1291,7 @@ string const &
 LyXTextClassList::NameOfClass(LyXTextClassList::size_type number) const
 {
 	static string const dummy("dummy");
-	if (classlist.size() == 0) {
+	if (classlist.empty()) {
 		return dummy;
 	}
 	lyx::Assert(number < classlist.size());
@@ -1305,7 +1305,7 @@ LyXTextClassList::LatexnameOfClass(LyXTextClassList::size_type number) const
 {
 	static string const dummy("dummy");
 	classlist[number].load();
-	if (classlist.size() == 0) {
+	if (classlist.empty()) {
 		return dummy;
 	}
 	lyx::Assert(number < classlist.size());
@@ -1318,7 +1318,7 @@ string const &
 LyXTextClassList::DescOfClass(LyXTextClassList::size_type number) const
 {
 	static string const dummy("dummy");
-	if (classlist.size() == 0) {
+	if (classlist.empty()) {
 		return dummy;
 	}
 	lyx::Assert(number < classlist.size());
@@ -1427,7 +1427,7 @@ bool LyXTextClassList::Read ()
 	}
 	lyxerr[Debug::TCLASS] << "End of parsing of textclass.lst" << endl;
 
-	if (classlist.size() == 0) {
+	if (classlist.empty()) {
 		lyxerr << "LyXTextClassList::Read: no textclasses found!"
 		       << endl;
 		WriteAlert(_("LyX wasn't able to find any layout description!"),

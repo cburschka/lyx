@@ -513,4 +513,22 @@ private:
 	///
 	mutable bool block_drawing_;
 };
+
+/**
+ * returns true if pointer argument is valid
+ * and points to an editable inset
+ */
+inline bool isEditableInset(Inset * i)
+{
+	return i && i->editable(); 
+}
+ 
+/**
+ * returns true if poiinter argument is valid
+ * and points to a highly editable inset
+ */
+inline bool isHighlyEditableInset(Inset * i)
+{
+	return i && i->editable() == Inset::HIGHLY_EDITABLE;
+}
 #endif

@@ -53,6 +53,7 @@ error_item errorTags[] = {
 	{ Debug::DEPEND,    "depend",    N_("Dependency information")},
 	{ Debug::INSETS,    "insets",    N_("LyX Insets")},
 	{ Debug::FILES,     "files",     N_("Files used by LyX")},
+	{ Debug::WORKAREA,  "workarea",  N_("Workarea events")},
         { Debug::ANY,       "any",       N_("All debugging messages")}
 };
 
@@ -67,7 +68,7 @@ Debug::type const Debug::ANY = Debug::type(
 	Debug::PARSER | Debug::LYXRC | Debug::KBMAP | Debug::LATEX |
 	Debug::MATHED | Debug::FONT | Debug::TCLASS | Debug::LYXVC |
 	Debug::LYXSERVER | Debug::ROFF | Debug::ACTION | Debug::LYXLEX |
-	Debug::DEPEND | Debug::INSETS | Debug::FILES);
+	Debug::DEPEND | Debug::INSETS | Debug::FILES | Debug::WORKAREA);
 
 
 Debug::type Debug::value(string const & val) 

@@ -66,14 +66,10 @@ struct Debug {
 		///
 		INSETS     = (1 << 17),
 		///
-		FILES      = (1 << 18)
+		FILES      = (1 << 18),
+		///
+		WORKAREA   = (1 << 19) 
 	};
-	///
-//	static const type ANY = type(INFO | INIT | KEY | GUI |
-//				     PARSER | LYXRC | KBMAP | LATEX |
-//				     MATHED | FONT | TCLASS | LYXVC |
-//				     LYXSERVER | ROFF | ACTION | LYXLEX |
-//				     DEPEND | INSETS);
 	///
 	static type const ANY;
 

@@ -1,3 +1,9 @@
+2001-11-04  John Levon  <moz@compsoc.man.ac.uk>
+
+	* inset.h: new inline helpers
+
+	* insettext.C: use new helpers
+
 2001-11-07  José Matos  <jamatos@fep.up.pt>
 
 	* insettext.C (docbook): full support for paragraphs inside insettext.

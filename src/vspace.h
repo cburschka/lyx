@@ -52,6 +52,7 @@ public:
 		MU,
 		/// Percent of columnwidth both "%" or "%c"
 		PW,
+		///
 		PE,
 		/// Percent of pagewidth
 		PP,

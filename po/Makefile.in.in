@@ -214,6 +214,8 @@ $(top_srcdir)/src/ext_l10n.h: $(top_srcdir)/lib/layouts/*.layout $(top_srcdir)/l
 		sed -n -e 's/^[sS]tyle[ ]*\([^ ]*\)$$/_("\1");/p' | \
 		sort | uniq >> $@
 	sed < $(top_srcdir)/lib/languages -e '/^#/d' -e 's/[^"]*\("[A-Za-z0-9][^"]*"\).*/_(\1);/' >> $@
+	cat $(top_srcdir)/src/frontends/qt2/ui/*.ui | grep '<string>..*</string>' | \
+		sed 's,&amp;,\&,;s,^.*<string>,_(",;s,</string>,"),;' | uniq >> $@
 
 # Tell versions [3.59,3.63) of GNU make not to export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.

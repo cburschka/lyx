@@ -21,14 +21,9 @@
 using std::ios;
 using std::ostream;
 
-/// how can I put this inside of Spacing (class)
-namespace {
-
-char const * const spacing_string[] = {"single", "onehalf", "double", "other"};
-
-} // namespace anon
-
-
+string const Spacing::spacing_string[]
+	= {"single", "onehalf", "double", "other"};
+ 
 float Spacing::getValue() const 
 {
 	switch (space) {

@@ -181,7 +181,7 @@ pid_t Systemcalls::fork()
 #ifndef __EMX__
 		execvp(syscmd, argv);
 		// If something goes wrong, we end up here:
-		lyxerr << "LyX: execvp failed: "
+		lyxerr << "LyX: execvp(" << syscmd << ") failed: "
 		       << strerror(errno) << endl;
 	} else if (cpid < 0) { // error
 #else
