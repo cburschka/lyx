@@ -1,0 +1,116 @@
+#This file was created by <rae> Mon Dec 13 00:17:21 1999
+#LyX 1.0 (C) 1995-1999 Matthias Ettrich and the LyX Team
+\lyxformat 2.15
+\textclass IEEEtran
+\language english
+\inputencoding default
+\fontscheme default
+\graphics default
+\paperfontsize 10
+\spacing single 
+\papersize Default
+\paperpackage a4
+\use_geometry 0
+\use_amsmath 0
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\quotes_times 2
+\papercolumns 2
+\papersides 2
+\paperpagestyle empty
+
+\layout Title
+
+Your Title
+\layout Author
+
+
+\begin_inset Info Remember that initial submissions don't show the authors
+names so you'll need to make this a 'Comment'.
+\end_inset 
+
+Your Name, Your Co-Author
+\latex latex 
+
+\backslash 
+thanks{
+\latex default 
+Your name is with xyz Department\SpecialChar \ldots{}
+
+\latex latex 
+}
+\layout Abstract
+
+This paper presents a simple template for IEEEtran documents.
+ 
+\layout Keywords
+
+simplicity, beauty, elegance
+\layout Section
+
+Introduction
+\begin_inset Info Don't panic the section numbering may look different in
+LyX but LaTeX uses the correct Roman numerals and
+Alpha for section counters.
+
+It's just that LyX doesn't handle counters other than arabic
+numerals.
+\end_inset 
+
+
+\layout Standard
+
+
+\latex latex 
+
+\backslash 
+PARstart{T}{here}
+\latex default 
+ is a need for a little Evil Red Text in the first paragraph.
+ Refer to the IEEEtran documentation (sample document) for more details.
+\layout Section
+
+Previous Work
+\layout Standard
+
+This is only a template remember.
+\layout Section
+
+Methodology
+\layout Section
+
+Results
+\layout Section
+
+Conclusions
+\layout Comment
+
+
+\begin_inset Info Change this paragraphs style to 'Standard' to enable
+BibTeX bibliography generation.
+\end_inset 
+
+
+\begin_inset LatexCommand \BibTeX[IEEEbib]{biblio}
+
+\end_inset 
+
+
+\layout LaTeX
+
+
+\backslash 
+begin{bibliography}{Your Name}
+\layout Standard
+
+All about you.
+\layout LaTeX
+
+
+\backslash 
+end{bibliography}
+\the_end
