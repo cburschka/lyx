@@ -495,7 +495,7 @@ void FormCitation::updateBrowser(FL_OBJECT * browser,
 
 	for (vector<string>::const_iterator it = keys.begin();
 	     it < keys.end(); ++it) {
-		string key = frontStrip(strip(*it));
+		string key = trim(*it);
 		if (!key.empty())
 			fl_add_browser_line(browser, key.c_str());
 	}

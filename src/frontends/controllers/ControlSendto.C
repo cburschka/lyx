@@ -98,7 +98,7 @@ void ControlSendto::setFormat(Format const * fmt)
 
 void ControlSendto::setCommand(string const & cmd)
 {
-	command_ = strip(frontStrip(cmd));
+	command_ = trim(cmd);
 }
 
 

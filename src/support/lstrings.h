@@ -192,19 +192,26 @@ string const subst(string const & a,
 string const subst(string const & a,
 		   string const & oldstr, string const & newstr);
 
-/** Strips characters off the end of a string.
+/** Trims characters off the end and beginning of a string.
     \code
-    strip("abccc", "c") == "ab".
+    trim("ccabccc", "c") == "ab".
     \endcode
 */
-string const strip(string const & a, char const * p = " ");
+string const trim(string const & a, char const * p = " ");
 
-/** Strips characters off the beginning of a string.
+/** Trims characters off the end of a string.
     \code
-    frontstrip("ababcdef", "ab") = "cdef"
+    rtrim("abccc", "c") == "ab".
     \endcode
 */
-string const frontStrip(string const & a, char const * p = " ");
+string const rtrim(string const & a, char const * p = " ");
+
+/** Trims characters off the beginning of a string.
+    \code
+   ltrim("ababcdef", "ab") = "cdef"
+    \endcode
+*/
+string const ltrim(string const & a, char const * p = " ");
 
 /** Splits the string by the first delim.
     Splits the string by the first appearance of delim.

@@ -499,10 +499,10 @@ void FormPreferences::Colors::build()
 string const
 FormPreferences::Colors::feedback(FL_OBJECT const * const ob) const
 {
-	if (ob == dialog_->browser_lyx_objs) 
+	if (ob == dialog_->browser_lyx_objs)
 		return _("LyX objects that can be assigned a color.");
 
-	if (ob == dialog_->button_modify) 
+	if (ob == dialog_->button_modify)
 		return _("Modify the LyX object's color. Note: you must then \"Apply\" the change.");
 
 	if (ob == dialog_->dial_hue ||
@@ -513,7 +513,7 @@ FormPreferences::Colors::feedback(FL_OBJECT const * const ob) const
 		  ob == dialog_->slider_blue)
 		return  _("Find a new color.");
 
-	if (ob == dialog_->radio_rgb || ob == dialog_->radio_hsv) 
+	if (ob == dialog_->radio_rgb || ob == dialog_->radio_hsv)
 		return _("Toggle between RGB and HSV color spaces.");
 
 	return string();
@@ -951,7 +951,7 @@ void FormPreferences::Converters::build()
 string const
 FormPreferences::Converters::feedback(FL_OBJECT const * const ob) const
 {
-	if (ob == dialog_->browser_all) 
+	if (ob == dialog_->browser_all)
 		return _("All the currently defined converters known to LyX.");
 
 	if (ob == dialog_->choice_from)
@@ -962,25 +962,25 @@ FormPreferences::Converters::feedback(FL_OBJECT const * const ob) const
 
 	if (ob == dialog_->input_converter)
 		return _("The conversion command. $$i is the input file name, "
-		         "$$b is the file name without its extension and $$o is "
-		         "the name of the output file. $$s can be used as path to "
-		         "LyX's own collection of conversion scripts.");
+			 "$$b is the file name without its extension and $$o is "
+			 "the name of the output file. $$s can be used as path to "
+			 "LyX's own collection of conversion scripts.");
 
 	if (ob == dialog_->input_flags)
 		return _("Extra information for the Converter class, whether and "
-		         "how to parse the result, and various other things.");
+			 "how to parse the result, and various other things.");
 
 	if (ob == dialog_->button_delete)
 		return _("Remove the current converter from the list of available "
-		         "converters. Note: you must then \"Apply\" the change.");
+			 "converters. Note: you must then \"Apply\" the change.");
 
 	if (ob == dialog_->button_add) {
 		if (string(ob->label) == _("Add"))
 			return _("Add the current converter to the list of available "
-			         "converters. Note: you must then \"Apply\" the change.");
+				 "converters. Note: you must then \"Apply\" the change.");
 		else
 			return _("Modify the contents of the current converter. "
-			         "Note: you must then \"Apply\" the change.");
+				 "Note: you must then \"Apply\" the change.");
 	}
 
 	return string();
@@ -998,10 +998,10 @@ bool FormPreferences::Converters::input(FL_OBJECT const * const ob)
 		   || ob == dialog_->input_flags)
 		return Input();
 
-	if (ob == dialog_->button_add) 
+	if (ob == dialog_->button_add)
 		return Add();
 
-	if (ob == dialog_->button_delete) 
+	if (ob == dialog_->button_delete)
 		return erase();
 
 	return true;
@@ -1120,7 +1120,7 @@ bool FormPreferences::Converters::Input()
 		setEnabled(dialog_->button_delete, true);
 	}
 
-	string const command = strip(fl_get_input(dialog_->input_converter));
+	string const command = rtrim(fl_get_input(dialog_->input_converter));
 	bool const enable = !(command.empty() || from == to);
 	setEnabled(dialog_->button_add, enable);
 
@@ -1220,7 +1220,7 @@ void FormPreferences::Formats::build()
 string const
 FormPreferences::Formats::feedback(FL_OBJECT const * const ob) const
 {
-	if (ob == dialog_->browser_all) 
+	if (ob == dialog_->browser_all)
 		return  _("All the currently defined formats known to LyX.");
 
 	if (ob == dialog_->input_format)
@@ -1231,7 +1231,7 @@ FormPreferences::Formats::feedback(FL_OBJECT const * const ob) const
 
 	if (ob == dialog_->input_shrtcut)
 		return  _("The keyboard accelerator. Use a letter in the GUI name. "
-		          "Case sensitive.");
+			  "Case sensitive.");
 
 	if (ob == dialog_->input_extension)
 		return  _("Used to recognize the file. E.g., ps, pdf, tex.");
@@ -1241,15 +1241,15 @@ FormPreferences::Formats::feedback(FL_OBJECT const * const ob) const
 
 	if (ob == dialog_->button_delete)
 		return  _("Remove the current format from the list of available "
-		          "formats. Note: you must then \"Apply\" the change.");
+			  "formats. Note: you must then \"Apply\" the change.");
 
-	if (ob == dialog_->button_add) { 
+	if (ob == dialog_->button_add) {
 		if (string(ob->label) == _("Add"))
 			return  _("Add the current format to the list of available "
-			          "formats. Note: you must then \"Apply\" the change.");
+				  "formats. Note: you must then \"Apply\" the change.");
 		else
 			return  _("Modify the contents of the current format. Note: "
-			          "you must then \"Apply\" the change.");
+				  "you must then \"Apply\" the change.");
 	}
 
 	return string();
@@ -1258,7 +1258,7 @@ FormPreferences::Formats::feedback(FL_OBJECT const * const ob) const
 
 bool FormPreferences::Formats::input(FL_OBJECT const * const ob)
 {
-	if (ob == dialog_->browser_all) 
+	if (ob == dialog_->browser_all)
 		return Browser();
 
 	if (ob == dialog_->input_format
@@ -1268,10 +1268,10 @@ bool FormPreferences::Formats::input(FL_OBJECT const * const ob)
 	 || ob == dialog_->input_viewer)
 		return Input();
 
-	if (ob == dialog_->button_add) 
+	if (ob == dialog_->button_add)
 		return Add();
 
-	if (ob == dialog_->button_delete) 
+	if (ob == dialog_->button_delete)
 		return erase();
 
 	return false;
@@ -1362,7 +1362,7 @@ bool FormPreferences::Formats::erase()
 
 	if (local_converters.formatIsUsed(name)) {
 		parent_.postWarning(_("Cannot remove a Format used by a Converter. "
-		                      "Remove the converter first."));
+				      "Remove the converter first."));
 		setEnabled(dialog_->button_delete, false);
 		return false;
 	}
@@ -2760,7 +2760,7 @@ void FormPreferences::SpellOptions::apply()
 {
 
 	string choice = fl_get_choice_text(dialog_->choice_spell_command);
-	choice = strip(frontStrip(choice));
+	choice = trim(choice);
 
 	lyxrc.isp_command = choice;
 

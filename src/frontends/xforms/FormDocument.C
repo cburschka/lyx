@@ -461,7 +461,7 @@ bool FormDocument::input(FL_OBJECT * ob, long)
 		bool const metric = (paperchoice == 1 && lyxrc.default_papersize > 3)
 			|| paperchoice == 2 || paperchoice > 5;
 		int const default_unit = metric ? 8 : 9;
-		if (strip(fl_get_input(class_->input_doc_skip)).empty())
+		if (rtrim(fl_get_input(class_->input_doc_skip)).empty())
 			fl_set_choice(class_->choice_default_skip_units,
 				      default_unit);
 	}
@@ -537,31 +537,31 @@ bool FormDocument::input(FL_OBJECT * ob, long)
 		bool const metric = (defsize && lyxrc.default_papersize > 3)
 			|| paperchoice == 2 || paperchoice > 5;
 		int const default_unit = metric ? 8 : 9;
-		if (strip(fl_get_input(paper_->input_custom_width)).empty())
+		if (rtrim(fl_get_input(paper_->input_custom_width)).empty())
 			fl_set_choice(paper_->choice_custom_width_units,
 				      default_unit);
-		if (strip(fl_get_input(paper_->input_custom_height)).empty())
+		if (rtrim(fl_get_input(paper_->input_custom_height)).empty())
 			fl_set_choice(paper_->choice_custom_height_units,
 				      default_unit);
-		if (strip(fl_get_input(paper_->input_top_margin)).empty())
+		if (rtrim(fl_get_input(paper_->input_top_margin)).empty())
 			fl_set_choice(paper_->choice_top_margin_units,
 				      default_unit);
-		if (strip(fl_get_input(paper_->input_bottom_margin)).empty())
+		if (rtrim(fl_get_input(paper_->input_bottom_margin)).empty())
 			fl_set_choice(paper_->choice_bottom_margin_units,
 				      default_unit);
-		if (strip(fl_get_input(paper_->input_inner_margin)).empty())
+		if (rtrim(fl_get_input(paper_->input_inner_margin)).empty())
 			fl_set_choice(paper_->choice_inner_margin_units,
 				      default_unit);
-		if (strip(fl_get_input(paper_->input_outer_margin)).empty())
+		if (rtrim(fl_get_input(paper_->input_outer_margin)).empty())
 			fl_set_choice(paper_->choice_outer_margin_units,
 				      default_unit);
-		if (strip(fl_get_input(paper_->input_head_height)).empty())
+		if (rtrim(fl_get_input(paper_->input_head_height)).empty())
 			fl_set_choice(paper_->choice_head_height_units,
 				      default_unit);
-		if (strip(fl_get_input(paper_->input_head_sep)).empty())
+		if (rtrim(fl_get_input(paper_->input_head_sep)).empty())
 			fl_set_choice(paper_->choice_head_sep_units,
 				      default_unit);
-		if (strip(fl_get_input(paper_->input_foot_skip)).empty())
+		if (rtrim(fl_get_input(paper_->input_foot_skip)).empty())
 			fl_set_choice(paper_->choice_foot_skip_units,
 				      default_unit);
 	}

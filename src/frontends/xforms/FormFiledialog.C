@@ -710,7 +710,7 @@ string const FileDialog::Private::Select(string const & title,
 	if (!filename.empty()) {
 		for (int i = 0; i < fl_get_browser_maxline(file_dlg_form_->List); ++i) {
 			string s = fl_get_browser_line(file_dlg_form_->List, i + 1);
-			s = strip(frontStrip(s));
+			s = trim(s);
 			if (s == filename) {
 				sel = i + 1;
 				break;

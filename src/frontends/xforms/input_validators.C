@@ -116,13 +116,12 @@ void fl_print_range_filter(FL_OBJECT * ob,
 	   code below. */
 
 	string pages = subst(fl_get_input(fd_form_print->input_pages), ';',',');
-	pages = subst(pages, '+',',');
-	pages = frontStrip(strip(pages)) ;
+	pages = trim(subst(pages, '+', ','));
+
 	while (!pages.empty()) { // a page range was given
 		string piece ;
 		pages = split (pages, piece, ',') ;
-		piece = strip(piece) ;
-		piece = frontStrip(piece) ;
+		piece = trim(piece);
 		if (!stringOnlyContains (piece, "0123456789-")) {
 			Alert::alert(_("ERROR!  Unable to print!"),
 				   _("Check 'range of pages'!"));

@@ -326,7 +326,7 @@ InsetFormula::localDispatch(BufferView * bv, kb_action action,
 					: Alert::askForText(_("Enter label:"), old_label);
 				if (!res.first)
 					break;
-				new_label = frontStrip(strip(res.second));
+				new_label = trim(res.second);
 			}
 
 			//if (new_label == old_label)
@@ -451,8 +451,8 @@ int InsetFormula::descent(BufferView *, LyXFont const &) const
 	if (!preview_->usePreview())
 		return 1 + par_->descent();
 
-  	int const descent = preview_->pimage_->descent();
-  	return display() ? descent + 12 : descent;
+	int const descent = preview_->pimage_->descent();
+	return display() ? descent + 12 : descent;
 }
 
 

@@ -1,25 +1,29 @@
+2002-07-29  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* several file: strip,frontStrip -> trim,ltrim,rtrim
+
 2002-07-25  John Levon  <levon@movementarian.org>
 
 	* Toolbar_pimpl.C: fix tooltips
- 
+
 2002-07-25  John Levon  <levon@movementarian.org>
 
 	* QCommandEdit.C:
 	* Toolbar_pimpl.C: make Tab work in the content pane
- 
+
 2002-07-25  John Levon  <levon@movementarian.org>
 
 	* Menubar_pimpl.C: split create/fill of menus into
 	  two functions
- 
+
 2002-07-25  John Levon  <moz@compsoc.man.ac.uk>
 
 	* Menubar_pimpl.C: make it compile again
- 
+
 2002-07-24  John Levon  <moz@compsoc.man.ac.uk>
 
 	* Menubar_pimpl.C: make it compile again
- 
+
 2002-07-24  Angus Leeming  <leeming@lyx.org>
 
 	* FileDialog_private.C (done): add a false to the arguments passed to
@@ -48,15 +52,15 @@
 	* ui/QCitationDialog.ui: layout fix
 	* ui/QExternalDialog.ui: idem
 	* TODO: update
-	
+
 2002-07-23  John Levon  <moz@compsoc.man.ac.uk>
 
 	* QCommandBuffer.C: real compile fix
- 
+
 2002-07-22  John Levon  <moz@compsoc.man.ac.uk>
 
 	* QLyXKeySym.C: return 0 when text_ is empty
-	  for getISOEncoded() 
+	  for getISOEncoded()
 
 2002-07-22  John Levon  <moz@compsoc.man.ac.uk>
 
@@ -65,26 +69,26 @@
 	* QtView.C:
 	* Toolbar_pimpl.h:
 	* Toolbar_pimpl.C: remove dead code
- 
+
 2002-07-22  John Levon  <moz@compsoc.man.ac.uk>
 
 	* lyx_gui.C: add exit() so we don't busy loop !
- 
+
 2002-07-22  John Levon  <moz@compsoc.man.ac.uk>
 
 	* QCommandEdit.C: complete if right at end of line
- 
+
 	* QLyXKeySym.C: cleanup comments
- 
+
 	* QtView.C: prefer const int
- 
+
 	* qlkey.h: fix some transliteration errors...
- 
+
 2002-07-22  John Levon  <moz@compsoc.man.ac.uk>
 
 	* Toolbar_pimpl.h:
 	* Toolbar_pimpl.C: remove ->push()
- 
+
 2002-07-22  Edwin Leuven  <leuven@fee.uva.nl>
 
 	* QCitationDialog.C: fix loop search and info update after selecting
@@ -95,31 +99,31 @@
 	* ui/QBibtexDialog.ui: style browser
 	* QBibtex.C: idem
 	* QBibtexDialog.C: idem
-	
+
 	* ui/QRefDialog.ui: document combo
 	* QRef.C: idem
-	
+
 	* QInclude.C: new layout
 	* ui/QIncludeDialog.ui: new layout
-	
+
 	* ui/QCitationDialog.ui: new layout
-	
+
 	* ui/QExternalDialog.ui: new layout
-	
+
 	* QGraphics.C: Compile fix
-	
-	* TODO: 
+
+	* TODO:
 
 2002-07-22  John Levon  <moz@compsoc.man.ac.uk>
 
 	* Menubar_pimpl.h:
 	* Menubar_pimpl.C: implement check/disable, submenus
- 
+
 2002-07-22  John Levon  <moz@compsoc.man.ac.uk>
 
 	* Toolbar_pimpl.h:
 	* Toolbar_pimpl.C: implement getLayoutList()
- 
+
 2002-07-21  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* Toolbar_pimpl.C: use BufferParams::getLyXTextClass
@@ -128,27 +132,27 @@
 
 	* QToc.h:
 	* QToc.C: compile fixes, default to depth_(1)
- 
+
 2002-07-21  John Levon  <moz@compsoc.man.ac.uk>
 
 	* Menubar_pimpl.C: change for removed menubar stuff
- 
+
 2002-07-21  John Levon  <moz@compsoc.man.ac.uk>
 
 	* QtView.C: reset idle timer on message()
- 
+
 2002-07-20  John Levon  <moz@compsoc.man.ac.uk>
 
 	* QLImage.C: various fixes
- 
-	* QWorkArea.C: set focus proxy 
- 
+
+	* QWorkArea.C: set focus proxy
+
 	* qscreen.C: don't show cursor when in command buffer
- 
+
 	* Makefile.am:
 	* moc/Makefile.am:
 	* QMiniBuffer.h:
-	* QMiniBuffer.C: 
+	* QMiniBuffer.C:
 	* QCommandBuffer.h:
 	* QCommandBuffer.C:
 	* QCommandEdit.h:
@@ -159,18 +163,18 @@
 2002-07-19  John Levon  <moz@compsoc.man.ac.uk>
 
 	* QWorkArea.C: remove unnecessary include
- 
+
 2002-07-18  John Levon  <moz@compsoc.man.ac.uk>
 
 	* QtView.C:
 	* Toolbar_pimpl.C:
 	* lyx_gui.C: verboseDispatch() is now dispatch()
- 
+
 2002-07-07  Edwin Leuven  <leuven@fee.uva.nl>
 
 	* QParagraph.[Ch]: Add paragraph dialog
-	* QParagraphDialog.[Ch]: 
-	* ui/QParagraphDialog.[Ch]: 
+	* QParagraphDialog.[Ch]:
+	* ui/QParagraphDialog.[Ch]:
 	* Makefile.am:
 	* Makefile.dialogs:
 	* guiapi.C:
@@ -178,49 +182,49 @@
 2002-07-17  John Levon  <moz@compsoc.man.ac.uk>
 
 	* QtView.C: basic statusbar show
- 
+
 2002-07-17  John Levon  <moz@compsoc.man.ac.uk>
 
 	* QLImage.C: add using std
- 
+
 2002-07-15  John Levon  <moz@compsoc.man.ac.uk>
 
 	* QLImage.h:
 	* QLImage.C: remove getPixmap() add isDrawable()
- 
+
 2002-07-14  John Levon  <moz@compsoc.man.ac.uk>
 
 	* io_callback.h:
 	* lyx_gui.C: make set_read_callback() work
- 
+
 2002-07-14  John Levon  <moz@compsoc.man.ac.uk>
 
 	* lyx_gui.C: add set_read_callback()
- 
-	* Makefile.am: 
+
+	* Makefile.am:
 	* xforms/*: remove
- 
+
 2002-07-13  John Levon  <moz@compsoc.man.ac.uk>
 
 	* QtView.C: add a status bar
- 
-	* Toolbar_pimpl.C: minor fixes 
 
-	* lyx_gui.C: implement hexname() 
+	* Toolbar_pimpl.C: minor fixes
+
+	* lyx_gui.C: implement hexname()
 
 2002-07-12  John Levon  <moz@compsoc.man.ac.uk>
 
 	* lyx_gui.C: move init_graphics() to parse_init()
- 
+
 2002-07-12  John Levon  <moz@compsoc.man.ac.uk>
 
 	* Toolbar_pimpl.h:
 	* Toolbar_pimpl.C: remove unused (de)activate()
- 
+
 2002-07-12  John Levon  <moz@compsoc.man.ac.uk>
 
-	* lyx_gui.C: implement update_fonts(), font_available() 
- 
+	* lyx_gui.C: implement update_fonts(), font_available()
+
 2002-07-12  John Levon  <moz@compsoc.man.ac.uk>
 
 	* lyx_gui.C: add un-needed update_color()
@@ -229,7 +233,7 @@
 
 	* QtView.h:
 	* QtView.C: remove unused methods
- 
+
 2002-07-12  John Levon  <moz@compsoc.man.ac.uk>
 
 	* Makefile.am:
@@ -241,23 +245,23 @@
 	* QLPainter.C: draw images
 
 	* QWorkArea.C: implement clipboard as much as possible
- 
+
 2002-07-11  John Levon  <moz@compsoc.man.ac.uk>
 
 	* dialog files: add unused Dialogs paramater to allow compile
- 
+
 	* QtView.C:
 	* QMiniBuffer.h:
 	* QMiniBuffer.C:
 	* Makefile.am: add QMiniBuffer (placeholder)
- 
+
 	* TODO: add
- 
+
 	* Toolbar_pimpl.h:
 	* Toolbar_pimpl.C: compile fix
 
 	* lyx_gui.C: add hexname() place holder
- 
+
 2002-07-04  André Pönitz  <poenitz@lyx.org>
 
 	* xforms/Makefile.am: replace XFORMSGIMAGE by XFORMSIMAGE
@@ -288,42 +292,42 @@
 2002-06-21  John Levon  <moz@compsoc.man.ac.uk>
 
 	* qfont_metrics.C: fix variable names
- 
+
 2002-06-21  John Levon  <moz@compsoc.man.ac.uk>
 
 	* QWorkArea.C: remove dead splash code
- 
+
 2002-06-21  John Levon  <moz@compsoc.man.ac.uk>
 
 	* QContentPane.C: restore calls to workAreaResize()
 
-	* QLyXKeySym.h: tidy 
+	* QLyXKeySym.h: tidy
 
-	* QWorkArea.h: remove redraw() 
- 
+	* QWorkArea.h: remove redraw()
+
 	* QWorkArea.C: remove resize()
- 
+
 2002-06-20  John Levon  <moz@compsoc.man.ac.uk>
 
 	* guiapi.C: createIndex() changed
- 
+
 2002-06-20  John Levon  <moz@compsoc.man.ac.uk>
 
 	* QWorkArea.h: remove unused resize(...)
- 
+
 2002-06-20  John Levon  <moz@compsoc.man.ac.uk>
 
 	* QWorkArea.h: remove unused stuff
- 
+
 2002-06-19  John Levon  <moz@compsoc.man.ac.uk>
 
 	* QContentPane.h:
 	* QContentPane.C: remove focus/unfocus events
- 
+
 2002-06-19  John Levon  <moz@compsoc.man.ac.uk>
 
 	* QWorkArea.h: remove unused methods
- 
+
 2002-06-19  John Levon  <moz@compsoc.man.ac.uk>
 
 	* LyXKeySymFactory.C: add
@@ -334,12 +338,12 @@
 	* QLyXKeySym.h:
 	* QLyXKeySym.C: get keyboard partly working
 
-	* qfont_metrics.C: fix compile 
- 
+	* qfont_metrics.C: fix compile
+
 2002-06-19  John Levon  <moz@compsoc.man.ac.uk>
 
 	* Makefile.am: add the new files ...
- 
+
 	* Dialogs.C:
 	* guiapi.C:
 	* all dialogs: implement new dialog stuff, fix compile
@@ -353,13 +357,13 @@
 
 	* QContentPane.h:
 	* QContentPane.C: new widget for containing a lyx document
- 
+
 	* QLPainter.h:
 	* QLPainter.C: qt painter object
- 
+
 	* QWorkArea.h:
 	* QWorkArea.C: Qt version of the work area
- 
+
 	* QtView.h:
 	* QtView.C: Qt version of LyXView
 
@@ -367,26 +371,26 @@
 	* Toolbar_pimpl.C:
 	* Menubar_pimpl.h:
 	* Menubar_pimpl.C: initial Qt versions
- 
+
 	* WorkAreaFactory.C: generate a QWorkArea
- 
-	* emptytable.C: add a resize grippie 
- 
+
+	* emptytable.C: add a resize grippie
+
 	* qfont_loader.h:
 	* qfont_loader.C: font loader for Qt
- 
+
 	* qfont_metrics.h:
 	* qfont_metrics.C: font metrics for Qt
- 
+
 	* qlkey.h: convert Qt key symbol into a name
- 
+
 	* qscreen.h:
 	* qscreen.C: Qt version of screen
- 
+
 	* moc/Makefile.am: add new files
- 
+
 	* xforms/Makefile.am: remove all xforms dialogs
- 
+
 2002-06-10  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* Qt2BC.C: do not include ButtonController.tmpl
@@ -394,7 +398,7 @@
 2002-05-23  John Levon  <moz@compsoc.man.ac.uk>
 
 	* QtLyXView.h: moved into frontends/
- 
+
 2002-05-22  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* QDocument.h: use more specific smart_ptr header.

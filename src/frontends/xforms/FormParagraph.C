@@ -171,7 +171,7 @@ void validateVSpaceWidgets(FL_OBJECT * choice_type, FL_OBJECT * input_length)
 
 	// If a vspace kind is "Length" but there's no text in
 	// the input field, reset the kind to "None".
-	string const input = strip(getString(input_length));
+	string const input = rtrim(getString(input_length));
 	if (input.empty())
 		fl_set_choice(choice_type, 1);
 }
@@ -449,7 +449,7 @@ void synchronizeSpaceWidgets(FL_OBJECT * choice_type,
 
 		string const length = getString(input_length);
 
-		if (strip(length).empty()) {
+		if (rtrim(length).empty()) {
 			bool const metric = lyxrc.default_papersize > 3;
 			int const default_unit = metric ? 8 : 9;
 

@@ -93,7 +93,7 @@ ButtonPolicy::SMInput FormSendto::input(FL_OBJECT *, long)
 		return ButtonPolicy::SMI_INVALID;
 
 	string cmd = getString(dialog_->input_command);
-	cmd = strip(frontStrip(cmd));
+	cmd = trim(cmd);
 	if (cmd.empty())
 		return ButtonPolicy::SMI_INVALID;
 

@@ -138,10 +138,10 @@ ButtonPolicy::SMInput FormInclude::input(FL_OBJECT * ob, long)
 
 	} else if (ob == dialog_->button_load) {
 		string const in_name = fl_get_input(dialog_->input_filename);
-		if (!strip(in_name).empty() && controller().fileExists(in_name)) {
+		if (!rtrim(in_name).empty() && controller().fileExists(in_name)) {
 //			ApplyButton();
 			OKButton();
-			controller().load(strip(in_name));
+			controller().load(rtrim(in_name));
 			action = ButtonPolicy::SMI_NOOP;
 		}
 
@@ -157,7 +157,7 @@ ButtonPolicy::SMInput FormInclude::input(FL_OBJECT * ob, long)
 
 	} else if (ob == dialog_->input_filename) {
 		string const in_name = fl_get_input(dialog_->input_filename);
-		if (strip(in_name).empty())
+		if (rtrim(in_name).empty())
 			action = ButtonPolicy::SMI_INVALID;
 	}
 

@@ -79,7 +79,7 @@ void Tooltips::init(FL_OBJECT * ob, string const & tip)
 	if (it != tooltipsMap.end())
 		return;
 
-	string const str = strip(frontStrip(tip));
+	string const str = trim(tip);
 	if (str.empty())
 		return;
 
@@ -147,7 +147,7 @@ void Tooltips::init(FL_OBJECT * ob, string const & tip)
 	if (it != tooltipsMap.end())
 		return;
 
-	string const str = strip(frontStrip(tip));
+	string const str = trim(tip);
 	if (str.empty())
 		return;
 

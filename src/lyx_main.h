@@ -26,7 +26,7 @@ class LastFiles;
 class Buffer;
 class kb_keymap;
 
- 
+
 ///
 extern string user_lyxdir;
 ///
@@ -35,7 +35,7 @@ extern string system_lyxdir;
 extern string system_tempdir;
 ///
 extern boost::scoped_ptr<LastFiles> lastfiles;
- 
+
 
 class LyX : boost::noncopyable {
 public:

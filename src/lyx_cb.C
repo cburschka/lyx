@@ -466,7 +466,7 @@ void MenuInsertLabel(BufferView * bv, string const & arg)
 		pair<bool, string> result =
 			Alert::askForText(_("Enter new label to insert:"), text);
 		if (result.first) {
-			label = frontStrip(strip(result.second));
+			label = trim(result.second);
 		}
 	}
 	if (!label.empty()) {

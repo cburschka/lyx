@@ -1803,7 +1803,7 @@ bool InsetTabular::tabularFeatures(BufferView * bv, string const & what)
 		return false;
 
 	string const val =
-		frontStrip(what.substr(tabularFeature[i].feature.length()));
+		ltrim(what.substr(tabularFeature[i].feature.length()));
 	tabularFeatures(bv, action, val);
 	return true;
 }
@@ -2325,7 +2325,7 @@ FuncStatus InsetTabular::getStatus(string const & what) const
 		return status.unknown(true);
 	}
 
-	string const argument = frontStrip(what.substr(tabularFeature[i].feature.length()));
+	string const argument = ltrim(what.substr(tabularFeature[i].feature.length()));
 
 	int sel_row_start;
 	int sel_row_end;
@@ -2768,7 +2768,7 @@ bool InsetTabular::searchForward(BufferView * bv, string const & str,
 			updateLocal(bv, FULL, false);
 			return true;
 		}
-	} 
+	}
 	return false;
 }
 

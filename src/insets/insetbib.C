@@ -206,7 +206,7 @@ int InsetBibtex::latex(Buffer const * buffer, ostream & os,
 		db_out += ',';
 		db_in= split(db_in, adb,',');
 	}
-	db_out = strip(db_out, ",");
+	db_out = rtrim(db_out, ",");
 	os   << "\\bibliography{" << db_out << "}\n";
 	return 2;
 }
@@ -253,7 +253,7 @@ vector<pair<string, string> > const InsetBibtex::getKeys(Buffer const * buffer) 
 		ifstream ifs(it->c_str());
 		string linebuf0;
 		while (getline(ifs, linebuf0)) {
-			string linebuf = frontStrip(strip(linebuf0));
+			string linebuf = trim(linebuf0);
 			if (linebuf.empty()) continue;
 			if (prefixIs(linebuf, "@")) {
 				linebuf = subst(linebuf, '{', '(');
@@ -263,8 +263,7 @@ vector<pair<string, string> > const InsetBibtex::getKeys(Buffer const * buffer) 
 				if (!prefixIs(tmp, "@string")
 				    && !prefixIs(tmp, "@preamble")) {
 					linebuf = split(linebuf, tmp, ',');
-					tmp = frontStrip(tmp);
-					tmp = frontStrip(tmp,"\t");
+					tmp = ltrim(tmp, " \t");
 					if (!tmp.empty()) {
 						keys.push_back(pair<string,string>(tmp,string()));
 					}

@@ -172,7 +172,7 @@ bool xformsImage::isDrawable() const
 	return pixmap_;
 }
 
- 
+
 Pixmap xformsImage::getPixmap() const
 {
 	if (!pixmap_status_ == PIXMAP_SUCCESS)
@@ -366,7 +366,7 @@ int status_report(FL_IMAGE * ob, const char *s)
 {
 	lyx::Assert(ob && ob->u_vdata);
 
-	string const str = s ? strip(s) : string();
+	string const str = s ? rtrim(s) : string();
 	if (str.empty())
 		return 0;
 
@@ -385,7 +385,7 @@ static void error_report(FL_IMAGE * ob, const char *s)
 {
 	lyx::Assert(ob && ob->u_vdata);
 
-	string const str = s ? strip(s) : string();
+	string const str = s ? rtrim(s) : string();
 	if (str.empty())
 		return;
 

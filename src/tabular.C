@@ -472,7 +472,7 @@ bool LyXTabular::LeftLine(int cell, bool onlycolumn) const
 #ifdef SPECIAL_COLUM_HANDLING
 		if (cellinfo_of_cell(cell)->align_special.empty())
 			return cellinfo_of_cell(cell)->left_line;
-		return prefixIs(frontStrip(cellinfo_of_cell(cell)->align_special), "|");
+		return prefixIs(ltrim(cellinfo_of_cell(cell)->align_special), "|");
 #else
 		return cellinfo_of_cell(cell)->left_line;
 #endif
@@ -480,7 +480,7 @@ bool LyXTabular::LeftLine(int cell, bool onlycolumn) const
 #ifdef SPECIAL_COLUM_HANDLING
 	if (column_info[column_of_cell(cell)].align_special.empty())
 		return column_info[column_of_cell(cell)].left_line;
-	return prefixIs(frontStrip(column_info[column_of_cell(cell)].align_special), "|");
+	return prefixIs(ltrim(column_info[column_of_cell(cell)].align_special), "|");
 #else
 	return column_info[column_of_cell(cell)].left_line;
 #endif
@@ -495,7 +495,7 @@ bool LyXTabular::RightLine(int cell, bool onlycolumn) const
 #ifdef SPECIAL_COLUM_HANDLING
 		if (cellinfo_of_cell(cell)->align_special.empty())
 			return cellinfo_of_cell(cell)->right_line;
-		return suffixIs(strip(cellinfo_of_cell(cell)->align_special), "|");
+		return suffixIs(rtrim(cellinfo_of_cell(cell)->align_special), "|");
 #else
 		return cellinfo_of_cell(cell)->right_line;
 #endif
@@ -503,7 +503,7 @@ bool LyXTabular::RightLine(int cell, bool onlycolumn) const
 #ifdef SPECIAL_COLUM_HANDLING
 	if (column_info[column_of_cell(cell)].align_special.empty())
 		return column_info[right_column_of_cell(cell)].right_line;
-	return suffixIs(strip(column_info[column_of_cell(cell)].align_special), "|");
+	return suffixIs(rtrim(column_info[column_of_cell(cell)].align_special), "|");
 #else
 	return column_info[right_column_of_cell(cell)].right_line;
 #endif

@@ -161,7 +161,7 @@ string const LyXLex::getLongString(string const & endtoken)
 			// blank line in the file being read
 			continue;
 
-		string const token = frontStrip(strip(getString()), " \t");
+		string const token = trim(getString(), " \t");
 
 		lyxerr[Debug::PARSER] << "LongString: `"
 				      << getString() << '\'' << endl;
@@ -186,7 +186,7 @@ string const LyXLex::getLongString(string const & endtoken)
 			    && prefixIs(tmpstr, prefix)) {
 				tmpstr.erase(0, prefix.length() - 1);
 			}
-			str += frontStrip(tmpstr, "\t") + '\n';
+			str += ltrim(tmpstr, "\t") + '\n';
 		}
 		else // token == endtoken
 			break;
@@ -240,9 +240,9 @@ int LyXLex::findToken(char const * str[])
 		pimpl_->printError("file ended while scanning string token");
 		return -1;
 	}
- 
+
 	int i = 0;
-   
+
 	if (compare(pimpl_->buff, "default")) {
 		while (str[i][0] && compare(str[i], pimpl_->buff)) {
 			++i;
@@ -252,6 +252,6 @@ int LyXLex::findToken(char const * str[])
 			i = -1;
 		}
 	}
- 
+
 	return i;
 }

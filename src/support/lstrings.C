@@ -120,7 +120,7 @@ bool isStrInt(string const & str)
 	if (str.empty()) return false;
 
 	// Remove leading and trailing white space chars.
-	string const tmpstr = frontStrip(strip(str));
+	string const tmpstr = trim(str);
 	if (tmpstr.empty()) return false;
 
 	string::const_iterator cit = tmpstr.begin();
@@ -138,7 +138,7 @@ bool isStrUnsignedInt(string const & str)
 	if (str.empty()) return false;
 
 	// Remove leading and trailing white space chars.
-	string const tmpstr = frontStrip(strip(str));
+	string const tmpstr = trim(str);
 	if (tmpstr.empty()) return false;
 
 	string::const_iterator cit = tmpstr.begin();
@@ -154,7 +154,7 @@ int strToInt(string const & str)
 {
 	if (isStrInt(str)) {
 		// Remove leading and trailing white space chars.
-		string const tmpstr = frontStrip(strip(str));
+		string const tmpstr = trim(str);
 		// Do the conversion proper.
 		return lyx::atoi(tmpstr);
 	} else {
@@ -167,7 +167,7 @@ unsigned int strToUnsignedInt(string const & str)
 {
 	if (isStrUnsignedInt(str)) {
 		// Remove leading and trailing white space chars.
-		string const tmpstr = frontStrip(strip(str));
+		string const tmpstr = trim(str);
 		// Do the conversion proper.
 		return lyx::atoi(tmpstr);
 	} else {
@@ -181,7 +181,7 @@ bool isStrDbl(string const & str)
 	if (str.empty()) return false;
 
 	// Remove leading and trailing white space chars.
-	string const tmpstr = frontStrip(strip(str));
+	string const tmpstr = trim(str);
 	if (tmpstr.empty()) return false;
 	//	if (1 < tmpstr.count('.')) return false;
 
@@ -210,7 +210,7 @@ double strToDbl(string const & str)
 {
 	if (isStrDbl(str)) {
 		// Remove leading and trailing white space chars.
-		string const tmpstr = frontStrip(strip(str));
+		string const tmpstr = trim(str);
 		// Do the conversion proper.
 		return ::atof(tmpstr.c_str());
 	} else {
@@ -494,40 +494,54 @@ string const subst(string const & a,
 }
 
 
-string const strip(string const & a, char const * p)
+string const trim(string const & a, char const * p)
 {
 	lyx::Assert(p);
 
-	if (a.empty() || !*p) return a;
-	string tmp(a);
-	string::size_type i = tmp.find_last_not_of(p);
-	if (i == a.length() - 1) return tmp; // no c's at end of a
-	if (i != string::npos)
-		tmp.erase(i + 1, string::npos);
-#if !defined(USE_INCLUDED_STRING) && !defined(STD_STRING_IS_GOOD)
-	// Ok This code is now suspect... (Lgb)
-	/// Needed for broken string::find_last_not_of
-	else if (tmp[0] != p[0]) {
-		if (a.length() == 1) return tmp;
-		tmp.erase(1, string::npos);
-	}
-#endif
-	else
-		tmp.erase(); // only chars from p in the whole string
-	return tmp;
+	if (a.empty() || !*p)
+		return a;
+
+	string::size_type r = a.find_last_not_of(p);
+	string::size_type l = a.find_first_not_of(p);
+
+	// Is this the minimal test? (lgb)
+	if (r == string::npos && l == string::npos)
+		return string();
+
+	return a.substr(l, r - l + 1);
 }
 
 
-string const frontStrip(string const & a, char const * p)
+string const rtrim(string const & a, char const * p)
 {
 	lyx::Assert(p);
 
-	if (a.empty() || !*p) return a;
-	string tmp(a);
-	string::size_type i = tmp.find_first_not_of(p);
-	if (i > 0)
-		tmp.erase(0, i);
-	return tmp;
+	if (a.empty() || !*p)
+		return a;
+
+	string::size_type r = a.find_last_not_of(p);
+
+	// Is this test really needed? (Lgb)
+	if (r == string::npos)
+		return string();
+
+	return a.substr(0, r + 1);
+}
+
+
+string const ltrim(string const & a, char const * p)
+{
+	lyx::Assert(p);
+
+	if (a.empty() || !*p)
+		return a;
+
+	string::size_type l = a.find_first_not_of(p);
+
+	if (l == string::npos)
+		return string();
+
+	return a.substr(l, string::npos);
 }
 
 
@@ -603,14 +617,14 @@ vector<string> const getVectorFromString(string const & str,
     vector<string> vec;
     if (str.empty())
 	return vec;
-    string keys(strip(str));
+    string keys(rtrim(str));
     for(;;) {
 	string::size_type const idx = keys.find(delim);
 	if (idx == string::npos) {
-	    vec.push_back(frontStrip(keys));
+	    vec.push_back(ltrim(keys));
 	    break;
 	}
-	string const key = strip(frontStrip(keys.substr(0, idx)));
+	string const key = trim(keys.substr(0, idx));
 	if (!key.empty())
 	    vec.push_back(key);
 	string::size_type const start = idx + delim.size();
@@ -627,7 +641,7 @@ string const getStringFromVector(vector<string> const & vec,
 	int i = 0;
 	for (vector<string>::const_iterator it = vec.begin();
 	     it != vec.end(); ++it) {
-		string item = strip(frontStrip(*it));
+		string item = trim(*it);
 		if (item.empty()) continue;
 
 		if (i++ > 0) str += delim;

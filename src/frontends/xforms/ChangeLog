@@ -1,7 +1,11 @@
+2002-07-29  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* several files: strip,frontStrip -> trim,ltrim,rtrim
+
 2002-07-25  John Levon  <levon@movementarian.org>
 
 	* lyx_gui.C:
-	* XWorkArea.C: using dec 
+	* XWorkArea.C: using dec
 
 2002-07-25  Juergen Spitzmueller <j.spitzmueller@gmx.de>
 
@@ -33,7 +37,7 @@
 2002-07-25  John Levon  <levon@movementarian.org>
 
 	* forms/form_float.fd: "Span columns"
- 
+
 2002-07-25  Juergen Spitzmueller <j.spitzmueller@gmx.de>
 
 	* FormFloat.C:
@@ -59,7 +63,7 @@
 2002-07-24  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* Menubar_pimpl.C (create_submenu): updates due to changes in
-	menubackend. 
+	menubackend.
 
 2002-07-22  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
@@ -72,12 +76,12 @@
 
 2002-07-22  John Levon  <moz@compsoc.man.ac.uk>
 
-	* XFormsView.C: don't call toolbar_->set() 
+	* XFormsView.C: don't call toolbar_->set()
 
 	* Toolbar_pimpl.h:
 	* Toolbar_pimpl.C: rationalise code, remove half-working
 	  update stuff into simple add()
- 
+
 2002-07-22  John Levon  <moz@compsoc.man.ac.uk>
 
 	* lyx_gui.C: add lyx_gui::exit()

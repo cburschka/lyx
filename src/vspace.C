@@ -55,7 +55,7 @@ void lyx_advance(string & data, string::size_type n)
 inline
 bool isEndOfData(string const & data)
 {
-	return frontStrip(data).empty();
+	return ltrim(data).empty();
 }
 
 /**
@@ -72,7 +72,7 @@ bool isEndOfData(string const & data)
  */
 char nextToken(string & data)
 {
-	data = frontStrip(data);
+	data = ltrim(data);
 	if (data.empty())
 		return '\0';
 	else if (data[0] == '+') {
@@ -202,7 +202,7 @@ bool isValidGlueLength(string const & data, LyXGlueLength * result)
 
 	if (data.empty())
 		return true;
-	string buffer = frontStrip(data);
+	string buffer = ltrim(data);
 
 	// To make isValidGlueLength recognize negative values as
 	// the first number this little hack is needed:
@@ -346,7 +346,7 @@ VSpace::VSpace(string const & data)
 	if (data.empty())
 		return;
 	double value;
-	string input  = strip(data);
+	string input  = rtrim(data);
 
 	string::size_type const length = input.length();
 

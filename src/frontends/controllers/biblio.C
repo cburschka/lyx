@@ -159,10 +159,10 @@ string const familyName(string const & name)
 	// "F. Surname"
 	string::size_type idx = fname.find(",");
 	if (idx != string::npos)
-		return frontStrip(fname.substr(0,idx));
+		return ltrim(fname.substr(0, idx));
 	idx = fname.rfind(".");
 	if (idx != string::npos)
-		fname = frontStrip(fname.substr(idx+1));
+		fname = ltrim(fname.substr(idx + 1));
 	// test if we have a LaTeX Space in front
 	if (fname[0] == '\\')
 		return fname.substr(2);
@@ -185,8 +185,7 @@ string const getAbbreviatedAuthor(InfoMap const & map, string const & key)
 			return string();
 		}
 
-		string const opt =
-			strip(frontStrip(it->second.substr(0, pos-1)));
+		string const opt = trim(it->second.substr(0, pos - 1));
 		if (opt.empty())
 			return string();
 
@@ -213,7 +212,7 @@ string const getAbbreviatedAuthor(InfoMap const & map, string const & key)
 
 		for (vector<string>::iterator it = authors.begin();
 		     it != authors.end(); ++it) {
-			*it = familyName(strip(*it));
+			*it = familyName(rtrim(*it));
 		}
 
 		author = authors[0];
@@ -242,7 +241,7 @@ string const getYear(InfoMap const & map, string const & key)
 		}
 
 		string const opt =
-			strip(frontStrip(it->second.substr(0, pos-1)));
+			trim(it->second.substr(0, pos - 1));
 		if (opt.empty())
 			return string();
 
@@ -296,7 +295,7 @@ string const getInfo(InfoMap const & map, string const & key)
 	string::size_type const pos = it->second.find(separator);
 	if (pos != string::npos) {
 		string::size_type const pos2 = pos + separator.size();
-		string const info = strip(frontStrip(it->second.substr(pos2)));
+		string const info = trim(it->second.substr(pos2));
 		return info;
 	}
 
@@ -341,7 +340,7 @@ string const getInfo(InfoMap const & map, string const & key)
 	if (!year.empty())
 		result << ", " << year;
 
-	string const result_str = strip(result.str().c_str());
+	string const result_str = rtrim(result.str().c_str());
 	if (!result_str.empty())
 		return result_str;
 
@@ -363,7 +362,7 @@ searchKeys(InfoMap const & theMap,
 	if (start < keys.begin() || start >= keys.end())
 		return keys.end();
 
-	string search_expr = frontStrip(strip(expr));
+	string search_expr = trim(expr);
 	if (search_expr.empty())
 		return keys.end();
 
@@ -387,7 +386,7 @@ string const parseBibTeX(string data, string const & findkey)
 	string dummy = token(data,'\n', Entries);
 	while (!dummy.empty()) {
 		dummy = subst(dummy, '\t', ' ');	// no tabs
-		dummy = frontStrip(dummy);		// no leading spaces
+		dummy = ltrim(dummy);		// no leading spaces
 		// ignore lines with a beginning '%' or ignore all right of %
 		string::size_type const idx =
 			dummy.empty() ? string::npos : dummy.find('%');
@@ -451,10 +450,10 @@ string const parseBibTeX(string data, string const & findkey)
 
 	// Clean-up.
 	// 1. Spaces
-	data = strip(data);
+	data = rtrim(data);
 	// 2. if there is no opening '{' then a closing '{' is probably cruft.
 	if (!contains(data, '{'))
-		data = strip(data, "}");
+		data = rtrim(data, "}");
 	// happens, when last keyword
 	string::size_type const idx =
 		!data.empty() ? data.find('=') : string::npos;
@@ -462,14 +461,13 @@ string const parseBibTeX(string data, string const & findkey)
 	if (idx == string::npos)
 		return string();
 
-	data = data.substr(idx);
-	data = frontStrip(strip(data));
+	data = trim(data.substr(idx));
 
 	if (data.length() < 2 || data[0] != '=') {	// a valid entry?
 		return string();
 	} else {
 		// delete '=' and the following spaces
-		data = frontStrip(frontStrip(data, "="));
+		data = ltrim(data, " =");
 		if (data.length() < 2) {
 			return data;	// not long enough to find delimiters
 		} else {
@@ -482,7 +480,7 @@ string const parseBibTeX(string data, string const & findkey)
 			} else {
 				// no {} and no "", pure data but with a
 				// possible ',' at the end
-				return strip(data, ",");
+				return rtrim(data, ",");
 			}
 			string tmp = data.substr(keypos);
 			while (tmp.find('{') != string::npos &&

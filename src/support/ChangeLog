@@ -1,3 +1,15 @@
+2002-07-29  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* lstrings.[hC]: rename stip to rtrim and frontStrip to ltrim,
+	also add a trim function that is the equiv of
+	strip(frontStrip(...)), also reimplement the functions
+	(improvements still possible.)
+	
+	* filetools.C: strip,frontStrip -> trim,ltrim,rtrim
+	* forkedcall.C (generateChild): ditto
+	* lstrings.C: ditto
+
+
 2002-07-28  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* filetools.C (GetEnvPath): modify because of strip changes
@@ -10,7 +22,7 @@
 	(isStrDbl): ditto
 	(contains): removed unneeded version of contains
 	(containsOnly): removed uneeded versions of containsOnly
-	(strip, frontStrip): removed unneded versions, changed argument types. 
+	(strip, frontStrip): removed unneded versions, changed argument types.
 
 2002-07-22  Dekel Tsur  <dekelts@tau.ac.il>
 

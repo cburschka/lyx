@@ -348,9 +348,9 @@ void InsetFormulaBase::insetButtonPress(BufferView * bv,
 			//delete mathcursor;
 			return;
 		}
-	
+
 	}
-	if (button == mouse_button::button3) { 
+	if (button == mouse_button::button3) {
 		if (mathcursor->dispatch("mouse-3-press")) {
 			//delete mathcursor;
 			return;
@@ -366,11 +366,11 @@ void InsetFormulaBase::insetMotionNotify(BufferView * bv,
 	if (!mathcursor)
 		return;
 
-	if (button == mouse_button::button1) 
+	if (button == mouse_button::button1)
 		if (mathcursor->dispatch("mouse-1-motion"))
 			return;
 
-	if (button == mouse_button::button3) 
+	if (button == mouse_button::button3)
 		if (mathcursor->dispatch("mouse-3-motion"))
 			return;
 
@@ -460,7 +460,7 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 	case LFUN_ENDSEL:
 		sel = true; // fall through
 	case LFUN_END:
-		result = mathcursor->end(sel) ? DISPATCHED : FINISHED_RIGHT; 
+		result = mathcursor->end(sel) ? DISPATCHED : FINISHED_RIGHT;
 		updateLocal(bv, false);
 		break;
 

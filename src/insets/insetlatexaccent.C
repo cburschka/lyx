@@ -55,7 +55,7 @@ void InsetLatexAccent::checkContents()
 
 	// REMOVE IN 0.13
 	// Dirty Hack for backward compability. remove in 0.13 (Lgb)
-	contents = frontStrip(strip(contents));
+	contents = trim(contents);
 	if (!contains(contents, "{") && !contains(contents, "}")) {
 		if (contents.length() == 2) {
 			string tmp;
@@ -274,7 +274,7 @@ int InsetLatexAccent::ascent(BufferView *, LyXFont const & font) const
 			max = font_metrics::ascent('a', font);
 		else
 			max = font_metrics::ascent(ic, font);
-		if (plusasc) 
+		if (plusasc)
 			max += (font_metrics::maxAscent(font) + 3) / 3;
 	} else
 		max = font_metrics::maxAscent(font) + 4;
@@ -286,12 +286,12 @@ int InsetLatexAccent::descent(BufferView *, LyXFont const & font) const
 {
 	int max;
 	if (candisp) {
-		if (ic == ' ') 
+		if (ic == ' ')
 			max = font_metrics::descent('a', font);
-                else
-                	max = font_metrics::descent(ic, font);
-                if (plusdesc)
-                	max += 3;
+		else
+		max = font_metrics::descent(ic, font);
+		if (plusdesc)
+		max += 3;
 	} else
 		max = font_metrics::maxDescent(font) + 4;
 	return max;
@@ -302,8 +302,8 @@ int InsetLatexAccent::width(BufferView *, LyXFont const & font) const
 {
 	if (candisp)
 		return font_metrics::width(ic, font);
-        else
-                return font_metrics::width(contents, font) + 4;
+	else
+		return font_metrics::width(contents, font) + 4;
 }
 
 
@@ -430,7 +430,7 @@ void InsetLatexAccent::draw(BufferView * bv, LyXFont const & font0,
 		// now the rest - draw within (x, y, x+wid, y+hg)
 		switch (modtype) {
 		case ACUTE:     // acute 0xB4
- 		{
+		{
 			pain.text(int(x2 - (font_metrics::rbearing(0xB4, font) - font_metrics::lbearing(0xB4, font)) / 2),
 				  baseline - font_metrics::ascent(ic, font) - font_metrics::descent(0xB4, font) - (font_metrics::ascent(0xB4, font) + font_metrics::descent(0xB4, font)) / 2,
 				  char(0xB4), font);

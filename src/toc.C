@@ -44,7 +44,7 @@ string const TocItem::asString() const
 	return string(4 * depth, ' ') + str;
 }
 
-	
+
 void TocItem::goTo(LyXView & lv_) const
 {
 	string const tmp = tostr(par->id());
@@ -92,7 +92,7 @@ TocList const getTocList(Buffer const * buf)
 					   par->asString(buf, true));
 			toclist["TOC"].push_back(item);
 		}
-		
+
 		// For each paragraph, traverse its insets and look for
 		// FLOAT_CODE
 		Paragraph::inset_iterator it = par->inset_iterator_begin();
@@ -101,9 +101,9 @@ TocList const getTocList(Buffer const * buf)
 			if ((*it)->lyxCode() == Inset::FLOAT_CODE) {
 				InsetFloat * il =
 					static_cast<InsetFloat*>(*it);
-				il->addToToc(toclist, buf);		
+				il->addToToc(toclist, buf);
 			}
-		} 
+		}
 
 		par = par->next();
 	}
@@ -142,4 +142,3 @@ void asciiTocList(string const & type, Buffer const * buffer, ostream & os)
 
 
 } // namespace toc
-

@@ -107,7 +107,7 @@ void RCS::scanMaster()
 			// get version here
 			string tmv;
 			ifs >> tmv;
-			tmv = strip(tmv, ";");
+			tmv = rtrim(tmv, ";");
 			version_ = tmv;
 			lyxerr[Debug::LYXVC] << "LyXVC: version found to be "
 					     << tmv << endl;
@@ -127,7 +127,7 @@ void RCS::scanMaster()
 			string s2;
 			do {
 				ifs >> tmpt;
-				s1 = strip(tmpt, ";");
+				s1 = rtrim(tmpt, ";");
 				// tmp is now in the format <user>:<version>
 				s1 = split(s1, s2, ':');
 				// s2 is user, and s1 is version
@@ -265,7 +265,7 @@ void CVS::scanMaster()
 			FileInfo fi(file_);
 			// FIXME: must double check file is stattable/existing
 			time_t mod = fi.getModificationTime();
-			string mod_date = strip(asctime(gmtime(&mod)), "\n");
+			string mod_date = rtrim(asctime(gmtime(&mod)), "\n");
 			lyxerr[Debug::LYXVC]
 				<<  "Date in Entries: `" << file_date
 				<< "'\nModification date of file: `"

@@ -1060,7 +1060,7 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 		params.footskip = lex.getString();
 	} else if (token == "\\paperfontsize") {
 		lex.nextToken();
-		params.fontsize = strip(lex.getString());
+		params.fontsize = rtrim(lex.getString());
 	} else if (token == "\\papercolumns") {
 		lex.nextToken();
 		params.columns = lex.getInteger();
@@ -1073,7 +1073,7 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 		}
 	} else if (token == "\\paperpagestyle") {
 		lex.nextToken();
-		params.pagestyle = strip(lex.getString());
+		params.pagestyle = rtrim(lex.getString());
 	} else if (token == "\\bullet") {
 		lex.nextToken();
 		int const index = lex.getInteger();
@@ -1128,7 +1128,7 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 		params.tocdepth = lex.getInteger();
 	} else if (token == "\\spacing") {
 		lex.next();
-		string const tmp = strip(lex.getString());
+		string const tmp = rtrim(lex.getString());
 		Spacing::Space tmp_space = Spacing::Default;
 		float tmp_val = 0.0;
 		if (tmp == "single") {
@@ -1153,7 +1153,7 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 		}
 	} else if (token == "\\paragraph_spacing") {
 		lex.next();
-		string const tmp = strip(lex.getString());
+		string const tmp = rtrim(lex.getString());
 		if (tmp == "single") {
 			par->params().spacing(Spacing(Spacing::Single));
 		} else if (tmp == "onehalf") {
@@ -2338,7 +2338,7 @@ void Buffer::makeLaTeXFile(ostream & os,
 
 		string strOptions(options.str().c_str());
 		if (!strOptions.empty()) {
-			strOptions = strip(strOptions, ",");
+			strOptions = rtrim(strOptions, ",");
 			os << '[' << strOptions << ']';
 		}
 
@@ -3853,8 +3853,8 @@ bool Buffer::dispatch(string const & command, bool * result)
 {
 	// Split command string into command and argument
 	string cmd;
-	string line = frontStrip(command);
-	string const arg = strip(frontStrip(split(line, cmd, ' ')));
+	string line = ltrim(command);
+	string const arg = trim(split(line, cmd, ' '));
 
 	return dispatch(lyxaction.LookupFunc(cmd), arg, result);
 }

@@ -172,7 +172,7 @@ string const getNatbibLabel(Buffer const * buffer,
 			label += year + sep_str;
 		}
 	}
-	label = strip(strip(label), sep);
+	label = rtrim(rtrim(label), sep);
 
 	if (!after_str.empty()) {
 		if (cite_type == "citet") {
@@ -207,10 +207,10 @@ string const getBasicLabel(string const & keyList, string const & after)
 
 	if (contains(keys, ",")) {
 		// Final comma allows while loop to cover all keys
-		keys = frontStrip(split(keys, label, ',')) + ",";
+		keys = ltrim(split(keys, label, ',')) + ",";
 		while (contains(keys, ",")) {
 			string key;
-			keys = frontStrip(split(keys, key, ','));
+			keys = ltrim(split(keys, key, ','));
 			label += ", " + key;
 		}
 	} else

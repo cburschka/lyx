@@ -46,7 +46,7 @@ void InsetLabel::edit(BufferView * bv, int, int, mouse_button::state)
 {
 	pair<bool, string> result = Alert::askForText(_("Enter label:"), getContents());
 	if (result.first) {
-		string new_contents = frontStrip(strip(result.second));
+		string new_contents = trim(result.second);
 		if (!new_contents.empty() &&
 		    getContents() != new_contents) {
 			bv->buffer()->markDirty();

@@ -364,7 +364,7 @@ string const GetEnvPath(string const & name)
 #else
 	string const pathlist = os::slashify_path(GetEnv(name));
 #endif
-	return strip(pathlist, ";");
+	return rtrim(pathlist, ";");
 }
 
 
@@ -564,7 +564,7 @@ int DestroyLyXTmpDir(string const & tmpdir)
 // Creates directory. Returns true if succesfull
 bool createDirectory(string const & path, int permission)
 {
-	string temp(strip(os::slashify_path(path), "/"));
+	string temp(rtrim(os::slashify_path(path), "/"));
 
 	if (temp.empty()) {
 		Alert::alert(_("Internal error!"),
@@ -1352,10 +1352,10 @@ string const findtexfile(string const & fil, string const & /*format*/)
 	cmd_ret const c = RunCommand(kpsecmd);
 
 	lyxerr[Debug::LATEX] << "kpse status = " << c.first << "\n"
-		 << "kpse result = `" << strip(c.second, "\n")
+		 << "kpse result = `" << rtrim(c.second, "\n")
 		 << "'" << endl;
 	if (c.first != -1)
-		return os::internal_path(strip(strip(c.second, "\n"), "\r"));
+		return os::internal_path(rtrim(c.second, "\n\r"));
 	else
 		return string();
 }
@@ -1410,7 +1410,7 @@ string const readBB_from_PSFile(string const & file)
 		string s;
 		getline(is,s);
 		if (contains(s,"%%BoundingBox:") && !contains(s,"atend")) {
-			string const bb = frontStrip(s.substr(14));
+			string const bb = ltrim(s.substr(14));
 			readBB_lyxerrMessage(file_, zipped, bb);
 			return bb;
 		}

@@ -179,7 +179,7 @@ void QCitation::updateBrowser(QListBox* browser,
 
 	for (vector<string>::const_iterator it = keys.begin();
 		it < keys.end(); ++it) {
-		string const key = frontStrip(strip(*it));
+		string const key = trim(*it);
 		// FIXME: why the .empty() test ?
 		if (!key.empty())
 			browser->insertItem(key.c_str());

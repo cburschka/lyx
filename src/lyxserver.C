@@ -270,7 +270,7 @@ void LyXComm::read_ready()
 	while ((status = read(infd, charbuf, CMDBUFLEN-1))) {
 		if (status > 0) {
 			charbuf[status]= '\0'; // turn it into a c string
-			lsbuf += strip(charbuf, "\r");
+			lsbuf += rtrim(charbuf, "\r");
 			// commit any commands read
 			while (lsbuf.find('\n') != string::npos) {
 				// split() grabs the entire string if

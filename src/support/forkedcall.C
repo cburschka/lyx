@@ -230,7 +230,7 @@ pid_t Forkedcall::generateChild()
 
 	int  index = 0;
 	while (more) {
-		childcommand = frontStrip(childcommand);
+		childcommand = ltrim(childcommand);
 		if (syscmd == 0) {
 			syscmd = new char[childcommand.length() + 1];
 			childcommand.copy(syscmd, childcommand.length());

@@ -678,7 +678,7 @@ void LyX::readUIFile(string const & name)
 			break;
 
 		default:
-			if (!strip(lex.getString()).empty())
+			if (!rtrim(lex.getString()).empty())
 				lex.printError("LyX::ReadUIFile: "
 					       "Unknown menu tag: `$$Token'");
 			break;

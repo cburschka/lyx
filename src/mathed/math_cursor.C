@@ -80,7 +80,7 @@ MathCursor::~MathCursor()
   // ensure that 'notifyCursorLeave' is called
   while (popLeft())
     ;
-}   
+}
 
 
 void MathCursor::push(MathAtom & t)

@@ -157,7 +157,7 @@ private:
 InsetGraphics::Cache::Cache(InsetGraphics & p)
 	: old_ascent(0), checksum(0), parent_(p)
 {
-  	loader.connect(boost::bind(&InsetGraphics::statusChanged, &parent_));
+	loader.connect(boost::bind(&InsetGraphics::statusChanged, &parent_));
 }
 
 
@@ -550,7 +550,7 @@ string const InsetGraphics::createLatexOptions() const
 	// before writing it to the output stream.
 	ostringstream options;
 	if (!params().bb.empty())
-	    options << "  bb=" << strip(params().bb) << ",\n";
+	    options << "  bb=" << rtrim(params().bb) << ",\n";
 	if (params().draft)
 	    options << "  draft,\n";
 	if (params().clip)
@@ -644,7 +644,7 @@ string const InsetGraphics::prepareFile(Buffer const *buf) const
 	unsigned long const new_checksum = cache_->loader.checksum();
 	bool const file_has_changed = cache_->checksum != new_checksum;
 	if (file_has_changed)
-	        cache_->checksum = new_checksum;
+		cache_->checksum = new_checksum;
 
 	// temp_file will contain the file for LaTeX to act on if, for example,
 	// we move it to a temp dir or uncompress it.

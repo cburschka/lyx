@@ -681,7 +681,7 @@ double setFontScalingFactor(Buffer & buffer)
 		getline(ifs, str);
 		// To get the default font size, look for a line like
 		// "\ExecuteOptions{letterpaper,10pt,oneside,onecolumn,final}"
-		if (!prefixIs(frontStrip(str), "\\ExecuteOptions"))
+		if (!prefixIs(ltrim(str), "\\ExecuteOptions"))
 			continue;
 
 		// str contains just the options of \ExecuteOptions
@@ -737,7 +737,7 @@ void setAscentFractions(vector<double> & ascent_fractions,
 
 		if (!ifs.good() ||
 		    page != "%%Page" ||
-		    !isStrUnsignedInt(strip(page_id, ":"))) {
+		    !isStrUnsignedInt(rtrim(page_id, ":"))) {
 			lyxerr[Debug::GRAPHICS] << "setAscentFractions("
 						<< metrics_file << ")\n"
 						<< "Error reading file!"

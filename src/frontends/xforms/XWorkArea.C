@@ -270,7 +270,7 @@ void XWorkArea::redraw(int width, int height)
 				       width,
 				       height,
 				       fl_get_visual_depth());
- 
+
 	workAreaResize();
 }
 

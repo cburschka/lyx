@@ -77,7 +77,7 @@ InsetNote::InsetNote(Buffer const * buf, string const & contents,
 		font.setLanguage(default_language);
 
 	lyx::pos_type pos = 0;
-	buf->insertStringAsLines(par, pos, font, strip(contents, "\n"));
+	buf->insertStringAsLines(par, pos, font, rtrim(contents, "\n"));
 }
 
 

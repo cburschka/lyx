@@ -253,7 +253,7 @@ bool LyXTextClass::Read(string const & filename, bool merge)
 
 		case TC_PAGESTYLE:
 			lexrc.next();
-			pagestyle_ = strip(lexrc.getString());
+			pagestyle_ = rtrim(lexrc.getString());
 			break;
 
 		case TC_DEFAULTFONT:
@@ -476,11 +476,11 @@ void LyXTextClass::readClassOptions(LyXLex & lexrc)
 		switch (static_cast<ClassOptionsTags>(le)) {
 		case CO_FONTSIZE:
 			lexrc.next();
-			opt_fontsize_ = strip(lexrc.getString());
+			opt_fontsize_ = rtrim(lexrc.getString());
 			break;
 		case CO_PAGESTYLE:
 			lexrc.next();
-			opt_pagestyle_ = strip(lexrc.getString());
+			opt_pagestyle_ = rtrim(lexrc.getString());
 			break;
 		case CO_OTHER:
 			lexrc.next();

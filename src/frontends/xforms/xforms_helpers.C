@@ -50,24 +50,24 @@ void setEnabled(FL_OBJECT * ob, bool enable)
 vector<string> const getVector(FL_OBJECT * ob)
 {
 	vector <string> vec;
-	
+
 	switch (ob->objclass) {
 	case FL_CHOICE:
 		for(int i = 0; i < fl_get_choice_maxitems(ob); ++i) {
 			string const text = fl_get_choice_item_text(ob, i+1);
-			vec.push_back(strip(frontStrip(text)));
+			vec.push_back(trim(text));
 		}
 		break;
 	case FL_BROWSER:
 		for(int i = 0; i < fl_get_browser_maxline(ob); ++i) {
 			string const text = fl_get_browser_line(ob, i+1);
-			vec.push_back(strip(frontStrip(text)));
+			vec.push_back(trim(text));
 		}
 		break;
 	default:
 		lyx::Assert(0);
 	}
-	
+
 	return vec;
 }
 
@@ -85,33 +85,33 @@ string const getString(FL_OBJECT * ob, int line)
 	case FL_BROWSER:
 		if (line == -1)
 			line = fl_get_browser(ob);
-			
+
 		if (line >= 1 && line <= fl_get_browser_maxline(ob))
 			tmp = fl_get_browser_line(ob, line);
 		break;
-			
+
 	case FL_CHOICE:
 		if (line == -1)
 			line = fl_get_choice(ob);
-			
+
 		if (line >= 1 && line <= fl_get_choice_maxitems(ob))
 			tmp = fl_get_choice_item_text(ob, line);
 		break;
-			
+
 	default:
 		lyx::Assert(0);
-	}		
+	}
 
-	return (tmp) ? frontStrip(strip(tmp)) : string();
+	return (tmp) ? trim(tmp) : string();
 }
-	
+
 string getLengthFromWidgets(FL_OBJECT * input, FL_OBJECT * choice)
 {
 	// Paranoia check
 	lyx::Assert(input  && input->objclass  == FL_INPUT &&
 		    choice && choice->objclass == FL_CHOICE);
 
-	string const length = strip(frontStrip(fl_get_input(input)));
+	string const length = trim(fl_get_input(input));
 	if (length.empty())
 		return string();
 
@@ -119,7 +119,7 @@ string getLengthFromWidgets(FL_OBJECT * input, FL_OBJECT * choice)
 	if (isValidGlueLength(length))
 		return length;
 
-	string unit = strip(frontStrip(fl_get_choice_text(choice)));
+	string unit = trim(fl_get_choice_text(choice));
 	unit = subst(unit, "%%", "%");
 
 	return length + unit;

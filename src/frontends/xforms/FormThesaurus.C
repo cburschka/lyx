@@ -150,7 +150,7 @@ void FormThesaurus::setReplace(string const & templ, string const & nstr)
 ButtonPolicy::SMInput FormThesaurus::input(FL_OBJECT * obj, long)
 {
 	if (obj == dialog_->input_entry) {
-		string s = strip(frontStrip(fl_get_input(dialog_->input_entry)));
+		string s = trim(fl_get_input(dialog_->input_entry));
 
 		updateMeanings(s);
 
@@ -174,7 +174,7 @@ ButtonPolicy::SMInput FormThesaurus::input(FL_OBJECT * obj, long)
 	int const line = fl_get_browser(obj);
 	if (line > 0) {
 		setReplace(fl_get_input(dialog_->input_entry),
-			   strip(frontStrip(fl_get_browser_line(obj, line))));
+			   trim(fl_get_browser_line(obj, line)));
 	}
 
 	if (clickline_ == fl_get_browser(obj)) {

@@ -60,7 +60,7 @@ void QBibtex::update_contents()
 
 	while (!bibs.empty()) {
 		bibs = split(bibs, bib, ',');
-		bib = frontStrip(strip(bib));
+		bib = trim(bib);
 		if (!bib.empty())
 			dialog_->databaseLB->inSort(bib.c_str());
 	}
@@ -79,7 +79,7 @@ void QBibtex::update_contents()
 			bibstyle = "";
 	} else
 		dialog_->bibtocCB->setChecked(false);
-	
+
 
 	vector<string> const str = getVectorFromString(
 		controller().getBibStyles(),"\n");

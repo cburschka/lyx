@@ -1569,7 +1569,7 @@ void LyXFunc::sendDispatchMessage(string const & msg, kb_action action, string c
 	}
 
 	if (!comname.empty()) {
-		comname = strip(comname);
+		comname = rtrim(comname);
 		dispatch_msg += "(" + comname + ')';
 	}
 
