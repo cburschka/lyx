@@ -668,7 +668,11 @@ void InsetText::edit(BufferView * bv, int x, int y, unsigned int button)
 	showInsetCursor(bv);
 	if (clear)
 		lt = 0;
-	updateLocal(bv, CURSOR, false);
+	
+	int code = CURSOR;
+	if (drawFrame_ == LOCKED)
+		code = CURSOR|DRAW_FRAME;
+	updateLocal(bv, code, false);
 }
 
 
@@ -713,7 +717,10 @@ void InsetText::edit(BufferView * bv, bool front)
 	showInsetCursor(bv);
 	if (clear)
 		lt = 0;
-	updateLocal(bv, CURSOR, false);
+	int code = CURSOR;
+	if (drawFrame_ == LOCKED)
+		code = CURSOR|DRAW_FRAME;
+	updateLocal(bv, code, false);
 }
 
 
@@ -785,7 +792,7 @@ bool InsetText::lockInsetInInset(BufferView * bv, UpdatableInset * inset)
 				}
 				if ((*it)->getInsetFromID(id)) {
 					getLyXText(bv)->setCursorIntern(bv, p, it.getPos());
-					lockInset(bv, static_cast<UpdatableInset *>(*it));
+					(*it)->edit(bv);
 					return the_locking_inset->lockInsetInInset(bv, inset);
 				}
 			}

@@ -520,7 +520,7 @@ bool BufferView::lockInset(UpdatableInset * inset)
 				}
 				if ((*it)->getInsetFromID(id)) {
 					text->setCursorIntern(this, par, it.getPos());
-					theLockingInset(static_cast<UpdatableInset *>(*it));
+					(*it)->edit(this);
 					return theLockingInset()->lockInsetInInset(this, inset);
 				}
 			}

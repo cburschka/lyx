@@ -1397,7 +1397,7 @@ string const LyXFunc::dispatch(kb_action action, string argument)
 
 	case LFUN_GOTO_PARAGRAPH:
 	{
-                istringstream istr(argument.c_str());
+		istringstream istr(argument.c_str());
 
 		int id;
 		istr >> id;
@@ -1411,8 +1411,13 @@ string const LyXFunc::dispatch(kb_action action, string argument)
 			       << " found." << endl;
 		}
 
+		if (owner->view()->theLockingInset())
+			owner->view()->unlockInset(owner->view()->theLockingInset());
+		if (par->inInset()) {
+			par->inInset()->edit(owner->view());
+		}
 		// Set the cursor
-		owner->view()->text->setCursor(owner->view(), par, 0);
+		owner->view()->getLyXText()->setCursor(owner->view(), par, 0);
 		owner->view()->setState();
 		owner->showState();
 

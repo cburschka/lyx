@@ -645,9 +645,10 @@ bool InsetTabular::lockInsetInInset(BufferView * bv, UpdatableInset * inset)
 			}
 			if (in->getInsetFromID(id)) {
 				actcell = i;
-				the_locking_inset = in;
-				locked = true;
-				resetPos(bv);
+				in->edit(bv);
+//				the_locking_inset = in;
+//				locked = true;
+//				resetPos(bv);
 				return the_locking_inset->lockInsetInInset(bv, inset);
 			}
 		}
