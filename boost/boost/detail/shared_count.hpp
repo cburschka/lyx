@@ -233,18 +233,23 @@ public:
 
     template<class P, class D> shared_count(P p, D d, void const * = 0): pi_(0)
     {
+#ifndef BOOST_NO_EXCEPTIONS
         try
         {
+#endif
             pi_ = new counted_base_impl<P, D>(p, d, 1, 1);
+#ifndef BOOST_NO_EXCEPTIONS
         }
+#endif
+#ifndef BOOST_NO_EXCEPTIONS
         catch(...)
+                
         {
             d(p); // delete p
-#ifndef BOOST_NO_EXCEPTIONS
             throw;
-#endif
-            BOOST_NOEH_ASSERT(false);
         }
+#endif
+        BOOST_NOEH_ASSERT(pi_);
     }
 
     template<class P, class D> shared_count(P, D, counted_base * pi): pi_(pi)

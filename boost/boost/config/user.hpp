@@ -75,10 +75,10 @@
 // If there are no exceptions then we must report critical-errors
 // the only way we know how; by terminating.
 //
-#ifdef __BORLANDC__
+//#ifdef __BORLANDC__
 // <cstdio> seems not to make stderr usable with Borland:
-#include <stdio.h>
-#endif
+#include <cstdio>
+//#endif
 #  define BOOST_NOEH_ASSERT(x)\
 if(0 == (x))\
 {\
