@@ -175,14 +175,7 @@ void LyXTabular::ReadOld(Buffer const * buf, istream & is,
 	getTokenValue(line, "endfirsthead", fhrow);
 	getTokenValue(line, "endfoot", frow);
 	getTokenValue(line, "endlastfoot", lfrow);
-	if (abs(hrow) > 0)
-		row_info[abs(hrow)-1].endhead = true;
-	if (abs(fhrow))
-		row_info[abs(fhrow)-1].endfirsthead = true;
-	if (abs(frow))
-		row_info[abs(frow)-1].endfoot = true;
-	if (abs(lfrow))
-		row_info[abs(lfrow)-1].endlastfoot = true;
+	setHeaderFooterRows(abs(hrow), abs(fhrow), abs(frow), abs(lfrow));
 
     for (int i = 0; i < rows_; ++i) {
 	l_getline(is, line);

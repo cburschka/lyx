@@ -19,24 +19,25 @@
 // temporary until verified (08/08/2001 Jug)
 #define SPECIAL_COLUM_HANDLING 1
 
-#include <algorithm>
-#include <cstdlib>
-
 #include "tabular.h"
 #include "debug.h"
 #include "vspace.h"
 #include "layout.h"
-#include "frontends/Alert.h"
 #include "buffer.h"
 #include "BufferView.h"
 #include "Painter.h"
 #include "LaTeXFeatures.h"
+#include "insets/insettabular.h"
+#include "insets/insettext.h"
 #include "support/lstrings.h"
 #include "support/lyxmanip.h"
 #include "support/LAssert.h"
-#include "insets/insettabular.h"
-#include "insets/insettext.h"
+#include "frontends/Alert.h"
 #include "gettext.h"
+#include "tabular_funcs.h"
+
+#include <algorithm>
+#include <cstdlib>
 
 using std::ostream;
 using std::istream;
@@ -999,114 +1000,6 @@ int LyXTabular::right_column_of_cell(int cell) const
 }
 
 
-// Perfect case for a template... (Lgb)
-// or perhaps not...
-#if 1
-template<class T>
-string const write_attribute(string const & name, T const & t)
-{
-	string str = " " + name + "=\"" + tostr(t) + "\"";
-	return str;
-}
-
-template <>
-string const write_attribute(string const & name, bool const & b)
-{
-	return write_attribute(name, int(b));
-}
-
-template <>
-string const write_attribute(string const & name, LyXLength const & value)
-{
-	return write_attribute(name, value.asString());
-}
-#else
-
-string const write_attribute(string const & name, int value)
-{
-	string str = " " + name + "=\"" + tostr(value) + "\"";
-	return str;
-}
-
-
-string const write_attribute(string const & name, string const & value)
-{
-	string str = " " + name + "=\"" + value + "\"";
-	return str;
-}
-
-
-string const write_attribute(string const & name, bool value)
-{
-	string str = " " + name + "=\"" + tostr(static_cast<int>(value)) + "\"";
-	return str;
-}
-
-
-string const write_attribute(string const & name, LyXLength const & value)
-{
-	string str = " " + name + "=\"" + value.asString() + "\"";
-	return str;
-}
-#endif
-
-
-template<>
-inline
-string const tostr(LyXAlignment const & num)
-{
-	switch(num) {
-	case LYX_ALIGN_NONE:
-		return "none";
-	case LYX_ALIGN_BLOCK:
-		return "block";
-	case LYX_ALIGN_LEFT:
-		return "left";
-	case LYX_ALIGN_CENTER:
-		return "center";
-	case LYX_ALIGN_RIGHT:
-		return "right";
-	case LYX_ALIGN_LAYOUT:
-		return "layout";
-	case LYX_ALIGN_SPECIAL:
-		return "special";
-	}
-	return string();
-}
-
-
-template<>
-inline
-string const tostr(LyXTabular::VAlignment const & num)
-{
-	switch(num) {
-	case LyXTabular::LYX_VALIGN_TOP:
-		return "top";
-	case LyXTabular::LYX_VALIGN_CENTER:
-		return "center";
-	case LyXTabular::LYX_VALIGN_BOTTOM:
-		return "bottom";
-	}
-	return string();
-}
-
-
-template<>
-inline
-string const tostr(LyXTabular::BoxType const & num)
-{
-	switch(num) {
-	case LyXTabular::BOX_NONE:
-		return "none";
-	case LyXTabular::BOX_PARBOX:
-		return "parbox";
-	case LyXTabular::BOX_MINIPAGE:
-		return "minipage";
-	}
-	return string();
-}
-
-
 void LyXTabular::Write(Buffer const * buf, ostream & os) const
 {
 	// header line
@@ -1175,165 +1068,6 @@ void LyXTabular::Write(Buffer const * buf, ostream & os) const
 }
 
 
-namespace {
-
-// I would have liked a fromstr template a lot better. (Lgb)
-
-inline
-bool string2type(string const str, LyXAlignment & num)
-{
-	if (str == "none")
-		num = LYX_ALIGN_NONE;
-	else if (str == "block")
-		num = LYX_ALIGN_BLOCK;
-	else if (str == "left")
-		num = LYX_ALIGN_LEFT;
-	else if (str == "center")
-		num = LYX_ALIGN_CENTER;
-	else if (str == "right")
-		num = LYX_ALIGN_RIGHT;
-	else
-		return false;
-	return true;
-}
-
-
-inline
-bool string2type(string const str, LyXTabular::VAlignment & num)
-{
-	if (str == "top")
-		num = LyXTabular::LYX_VALIGN_TOP;
-	else if (str == "center")
-		num = LyXTabular::LYX_VALIGN_CENTER;
-	else if (str == "bottom")
-		num = LyXTabular::LYX_VALIGN_BOTTOM;
-	else
-		return false;
-	return true;
-}
-
-
-inline
-bool string2type(string const str, LyXTabular::BoxType & num)
-{
-	if (str == "none")
-		num = LyXTabular::BOX_NONE;
-	else if (str == "parbox")
-		num = LyXTabular::BOX_PARBOX;
-	else if (str == "minipage")
-		num = LyXTabular::BOX_MINIPAGE;
-	else
-		return false;
-	return true;
-}
-
-
-inline
-bool string2type(string const str, bool & num)
-{
-	if (str == "true")
-		num = true;
-	else if (str == "false")
-		num = false;
-	else
-		return false;
-	return true;
-}
-
-
-bool getTokenValue(string const & str, const char * token, string & ret)
-{
-	size_t token_length = strlen(token);
-	string::size_type pos = str.find(token);
-
-	if (pos == string::npos || pos + token_length + 1 >= str.length()
-		|| str[pos + token_length] != '=')
-		return false;
-	ret.erase();
-	pos += token_length + 1;
-	char ch = str[pos];
-	if ((ch != '"') && (ch != '\'')) { // only read till next space
-		ret += ch;
-		ch = ' ';
-	}
-	while ((pos < str.length() - 1) && (str[++pos] != ch))
-		ret += str[pos];
-
-	return true;
-}
-
-
-bool getTokenValue(string const & str, const char * token, int & num)
-{
-	string tmp;
-	if (!getTokenValue(str, token, tmp))
-		return false;
-	num = strToInt(tmp);
-	return true;
-}
-
-
-bool getTokenValue(string const & str, const char * token, LyXAlignment & num)
-{
-	string tmp;
-	if (!getTokenValue(str, token, tmp))
-		return false;
-	return string2type(tmp, num);
-}
-
-
-bool getTokenValue(string const & str, const char * token,
-				   LyXTabular::VAlignment & num)
-{
-	string tmp;
-	if (!getTokenValue(str, token, tmp))
-		return false;
-	return string2type(tmp, num);
-}
-
-
-bool getTokenValue(string const & str, const char * token,
-				   LyXTabular::BoxType & num)
-{
-	string tmp;
-	if (!getTokenValue(str, token, tmp))
-		return false;
-	return string2type(tmp, num);
-}
-
-
-bool getTokenValue(string const & str, const char * token, bool & flag)
-{
-	string tmp;
-	if (!getTokenValue(str, token, tmp))
-		return false;
-	return string2type(tmp, flag);
-}    
-
-
-bool getTokenValue(string const & str, const char * token, LyXLength & len)
-{
-	string tmp;
-	if (!getTokenValue(str, token, tmp))
-		return false;
-	return isValidLength(tmp, &len);
-}    
-
-
-inline
-void l_getline(istream & is, string & str)
-{
-	str.erase();
-	while (str.empty()) {
-		getline(is, str);
-		if (!str.empty() && str[str.length() - 1] == '\r')
-			str.erase(str.length() - 1);
-	}
-}
-
-} // namespace anon
-
-
 void LyXTabular::Read(Buffer const * buf, LyXLex & lex)
 {
 	string line;
@@ -1355,6 +1089,80 @@ void LyXTabular::Read(Buffer const * buf, LyXLex & lex)
 		ReadNew(buf, is, lex, line, version);
 }
 
+void LyXTabular::setHeaderFooterRows(int hr, int fhr, int fr, int lfr)
+{
+	// set header info
+	while(hr > 0) {
+		row_info[--hr].endhead = true;
+	}
+	// set firstheader info
+	if (fhr && (fhr < rows_)) {
+		if (row_info[fhr].endhead) {
+			while(fhr > 0) {
+				row_info[--fhr].endfirsthead = true;
+				row_info[fhr].endhead = false;
+			}
+		} else if (row_info[fhr-1].endhead) {
+			endfirsthead.empty = true;
+		} else {
+			while((fhr > 0) && !row_info[--fhr].endhead) {
+				row_info[fhr].endfirsthead = true;
+			}
+		}
+	}
+	// set footer info
+	if (fr && (fr < rows_)) {
+		if (row_info[fr].endhead && row_info[fr-1].endhead) {
+			while((fr > 0) && !row_info[--fr].endhead) {
+				row_info[fr].endfoot = true;
+				row_info[fr].endhead = false;
+			}
+		} else if (row_info[fr].endfirsthead && row_info[fr-1].endfirsthead) {
+			while((fr > 0) && !row_info[--fr].endfirsthead) {
+				row_info[fr].endfoot = true;
+				row_info[fr].endfirsthead = false;
+			}
+		} else if (!row_info[fr-1].endhead && !row_info[fr-1].endfirsthead) {
+			while((fr > 0) && !row_info[--fr].endhead &&
+				  !row_info[fr].endfirsthead)
+			{
+				row_info[fr].endfoot = true;
+			}
+		}
+	}
+	// set lastfooter info
+	if (lfr && (lfr < rows_)) {
+		if (row_info[lfr].endhead && row_info[lfr-1].endhead) {
+			while((lfr > 0) && !row_info[--lfr].endhead) {
+				row_info[lfr].endlastfoot = true;
+				row_info[lfr].endhead = false;
+			}
+		} else if (row_info[lfr].endfirsthead &&
+				   row_info[lfr-1].endfirsthead)
+		{
+			while((lfr > 0) && !row_info[--lfr].endfirsthead) {
+				row_info[lfr].endlastfoot = true;
+				row_info[lfr].endfirsthead = false;
+			}
+		} else if (row_info[lfr].endfoot && row_info[lfr-1].endfoot) {
+			while((lfr > 0) && !row_info[--lfr].endfoot) {
+				row_info[lfr].endlastfoot = true;
+				row_info[lfr].endfoot = false;
+			}
+		} else if (!row_info[fr-1].endhead && !row_info[fr-1].endfirsthead &&
+				   !row_info[fr-1].endfoot)
+		{
+			while((lfr > 0) &&
+				  !row_info[--lfr].endhead && !row_info[lfr].endfirsthead &&
+				  !row_info[lfr].endfoot)
+			{
+				row_info[lfr].endlastfoot = true;
+			}
+		} else if (haveLTFoot()) {
+			endlastfoot.empty = true;
+		}
+	}
+}
 
 void LyXTabular::ReadNew(Buffer const * buf, istream & is,
 						 LyXLex & lex, string const & l, int const version)
@@ -1375,7 +1183,14 @@ void LyXTabular::ReadNew(Buffer const * buf, istream & is,
 	}
 	getTokenValue(line, "rotate", rotate);
 	getTokenValue(line, "islongtable", is_long_tabular);
-	// compatibility read for old longtable options
+	// compatibility read for old longtable options. Now we can make any
+	// row part of the header/footer type we want before it was strict
+	// sequential from the first row down (as LaTeX does it!). So now when
+	// we find a header/footer line we have to go up the rows and set it
+	// on all preceding rows till the first or one with already a h/f option
+	// set. If we find a firstheader on the same line as a header or a
+	// lastfooter on the same line as a footer then this should be set empty.
+	// (Jug 20011220)
 	if (version < 3) {
 		int hrow;
 		int fhrow;
@@ -1386,14 +1201,7 @@ void LyXTabular::ReadNew(Buffer const * buf, istream & is,
 		getTokenValue(line, "endfirsthead", fhrow);
 		getTokenValue(line, "endfoot", frow);
 		getTokenValue(line, "endlastfoot", lfrow);
-		if (abs(hrow) > 0)
-			row_info[abs(hrow)-1].endhead = true;
-		if (abs(fhrow))
-			row_info[abs(fhrow)-1].endfirsthead = true;
-		if (abs(frow))
-			row_info[abs(frow)-1].endfoot = true;
-		if (abs(lfrow))
-			row_info[abs(lfrow)-1].endlastfoot = true;
+		setHeaderFooterRows(abs(hrow), abs(fhrow), abs(frow), abs(lfrow));
 	} else {
 	   getTokenValue(line, "firstHeadTopDL", endfirsthead.topDL);
 	   getTokenValue(line, "firstHeadBottomDL", endfirsthead.bottomDL);
@@ -1430,6 +1238,10 @@ void LyXTabular::ReadNew(Buffer const * buf, istream & is,
 		}
 		getTokenValue(line, "topline", row_info[i].top_line);
 		getTokenValue(line, "bottomline", row_info[i].bottom_line);
+		getTokenValue(line, "endfirsthead", row_info[i].endfirsthead);
+		getTokenValue(line, "endhead", row_info[i].endhead);
+		getTokenValue(line, "endfoot", row_info[i].endfoot);
+		getTokenValue(line, "endlastfoot", row_info[i].endlastfoot);
 		getTokenValue(line, "newpage", row_info[i].newpage);
 		for (int j = 0; j < columns_; ++j) {
 			l_getline(is, line);
@@ -1536,10 +1348,7 @@ void LyXTabular::OldFormatRead(LyXLex & lex, string const & fl)
 		cont_row_info = vector<int>(rows_arg);
 		SetLongTabular(is_long_tabular_arg);
 		SetRotateTabular(rotate_arg);
-		row_info[a].endhead = true;
-		row_info[b].endfirsthead = true;
-		row_info[c].endfoot = true;
-		row_info[d].endlastfoot = true;
+		setHeaderFooterRows(a+1, b+1 , c+1, d+1);
 		for (i = 0; i < rows_; ++i) {
 			a = b = c = d = e = f = g = 0;
 			is >> a >> b >> c >> d;
@@ -1886,14 +1695,19 @@ LyXTabular::BoxType LyXTabular::GetUsebox(int cell) const
 }
 
 
+///
+//  This are functions used for the longtable support
+///
 void LyXTabular::SetLTHead(int row, bool flag, ltType const & hd, bool first)
 {
 	if (first) {
 		endfirsthead = hd;
-		row_info[row].endfirsthead = flag;
+		if (hd.set)
+			row_info[row].endfirsthead = flag;
 	} else {
 		endhead = hd;
-		row_info[row].endhead = flag;
+		if (hd.set)
+			row_info[row].endhead = flag;
 	}
 }
 
@@ -1901,6 +1715,7 @@ void LyXTabular::SetLTHead(int row, bool flag, ltType const & hd, bool first)
 bool LyXTabular::GetRowOfLTHead(int row, ltType & hd) const
 {
 	hd = endhead;
+	hd.set = haveLTHead();
 	return row_info[row].endhead;
 }
 
@@ -1908,6 +1723,7 @@ bool LyXTabular::GetRowOfLTHead(int row, ltType & hd) const
 bool LyXTabular::GetRowOfLTFirstHead(int row, ltType & hd) const
 {
 	hd = endfirsthead;
+	hd.set = haveLTFirstHead();
 	return row_info[row].endfirsthead;
 }
 
@@ -1916,10 +1732,12 @@ void LyXTabular::SetLTFoot(int row, bool flag, ltType const & fd, bool last)
 {
 	if (last) {
 		endlastfoot = fd;
-		row_info[row].endlastfoot = flag;
+		if (fd.set)
+			row_info[row].endlastfoot = flag;
 	} else {
 		endfoot = fd;
-		row_info[row].endfoot = flag;
+		if (fd.set)
+			row_info[row].endfoot = flag;
 	}
 }
 
@@ -1927,6 +1745,7 @@ void LyXTabular::SetLTFoot(int row, bool flag, ltType const & fd, bool last)
 bool LyXTabular::GetRowOfLTFoot(int row, ltType & fd) const
 {
 	fd = endfoot;
+	fd.set = haveLTFoot();
 	return row_info[row].endfoot;
 }
 
@@ -1934,6 +1753,7 @@ bool LyXTabular::GetRowOfLTFoot(int row, ltType & fd) const
 bool LyXTabular::GetRowOfLTLastFoot(int row, ltType & fd) const
 {
 	fd = endlastfoot;
+	fd.set = haveLTLastFoot();
 	return row_info[row].endlastfoot;
 }
 
@@ -1949,6 +1769,52 @@ bool LyXTabular::GetLTNewPage(int row) const
 	return row_info[row].newpage;
 }
 
+
+bool LyXTabular::haveLTHead() const
+{
+	for(int i=0; i < rows_; ++i) {
+		if (row_info[i].endhead)
+			return true;
+	}
+	return false;
+}
+
+
+bool LyXTabular::haveLTFirstHead() const
+{
+	if (endfirsthead.empty)
+		return false;
+	for(int i=0; i < rows_; ++i) {
+		if (row_info[i].endfirsthead)
+			return true;
+	}
+	return false;
+}
+
+
+bool LyXTabular::haveLTFoot() const
+{
+	for(int i=0; i < rows_; ++i) {
+		if (row_info[i].endfoot)
+			return true;
+	}
+	return false;
+}
+
+
+bool LyXTabular::haveLTLastFoot() const
+{
+	if (endlastfoot.empty)
+		return false;
+	for(int i=0; i < rows_; ++i) {
+		if (row_info[i].endlastfoot)
+			return true;
+	}
+	return false;
+}
+
+
+// end longtable support functions
 
 bool LyXTabular::SetAscentOfRow(int row, int height)
 {
@@ -2179,11 +2045,146 @@ int LyXTabular::TeXCellPostamble(ostream & os, int cell) const
 }
 
 
+int LyXTabular::TeXLongtableHeaderFooter(ostream & os, Buffer const * buf,
+                                         bool fragile, bool fp) const
+{
+	if (!is_long_tabular)
+		return 0;
+
+	int ret = 0;
+	// output header info
+	if (haveLTHead()) {
+		if (endhead.topDL) {
+			os << "\\hline\n";
+			++ret;
+		}
+		for (int i = 0; i < rows_; ++i) {
+			if (row_info[i].endhead) {
+				ret += TeXRow(os, i, buf, fragile, fp);
+			}
+		}
+		if (endhead.bottomDL) {
+			os << "\\hline\n";
+			++ret;
+		}
+		os << "\\endhead\n";
+		++ret;
+		if (endfirsthead.empty) {
+			os << "\\endfirsthead\n";
+			++ret;
+		}
+	}
+	// output firstheader info
+	if (haveLTFirstHead()) {
+		if (endfirsthead.topDL) {
+			os << "\\hline\n";
+			++ret;
+		}
+		for (int i = 0; i < rows_; ++i) {
+			if (row_info[i].endfirsthead) {
+				ret += TeXRow(os, i, buf, fragile, fp);
+			}
+		}
+		if (endfirsthead.bottomDL) {
+			os << "\\hline\n";
+			++ret;
+		}
+		os << "\\endfirsthead\n";
+		++ret;
+	}
+	// output footer info
+	if (haveLTFoot()) {
+		if (endfoot.topDL) {
+			os << "\\hline\n";
+			++ret;
+		}
+		for (int i = 0; i < rows_; ++i) {
+			if (row_info[i].endfoot) {
+				ret += TeXRow(os, i, buf, fragile, fp);
+			}
+		}
+		if (endfoot.bottomDL) {
+			os << "\\hline\n";
+			++ret;
+		}
+		os << "\\endfoot\n";
+		++ret;
+		if (endlastfoot.empty) {
+			os << "\\endlastfoot\n";
+			++ret;
+		}
+	}
+	// output lastfooter info
+	if (haveLTLastFoot()) {
+		if (endlastfoot.topDL) {
+			os << "\\hline\n";
+			++ret;
+		}
+		for (int i = 0; i < rows_; ++i) {
+			if (row_info[i].endlastfoot) {
+				ret += TeXRow(os, i, buf, fragile, fp);
+			}
+		}
+		if (endlastfoot.bottomDL) {
+			os << "\\hline\n";
+			++ret;
+		}
+		os << "\\endlastfoot\n";
+		++ret;
+	}
+	return ret;
+}
+
+
+bool LyXTabular::isValidRow(int const row) const
+{
+	if (!is_long_tabular)
+		return true;
+	return (!row_info[row].endhead && !row_info[row].endfirsthead &&
+			!row_info[row].endfoot && !row_info[row].endlastfoot);
+}
+
+
+int LyXTabular::TeXRow(ostream & os, int const i, Buffer const * buf,
+                       bool fragile, bool fp) const
+{
+	int ret = 0;
+	int cell = GetCellNumber(i, 0);
+
+	ret += TeXTopHLine(os, i);
+	for (int j = 0; j < columns_; ++j) {
+		if (IsPartOfMultiColumn(i,j))
+			continue;
+		ret += TeXCellPreamble(os, cell);
+		InsetText * inset = GetCellInset(cell);
+
+		bool rtl = inset->paragraph()->isRightToLeftPar(buf->params) &&
+			inset->paragraph()->size() > 0 && GetPWidth(cell).zero();
+
+		if (rtl)
+			os << "\\R{";
+		ret += inset->latex(buf, os, fragile, fp);
+		if (rtl)
+			os << "}";
+
+		ret += TeXCellPostamble(os, cell);
+		if (!IsLastCellInRow(cell)) { // not last cell in row
+			os << "&\n";
+			++ret;
+		}
+		++cell;
+	}
+	os << "\\\\\n";
+	++ret;
+	ret += TeXBottomHLine(os, i);
+	return ret;
+}
+
+
 int LyXTabular::Latex(Buffer const * buf,
 					  ostream & os, bool fragile, bool fp) const
 {
 	int ret = 0;
-	int cell = 0;
 
 	//+---------------------------------------------------------------------
 	//+                      first the opening preamble                    +
@@ -2238,70 +2239,16 @@ int LyXTabular::Latex(Buffer const * buf,
 	os << "}\n";
 	++ret;
 
+	ret += TeXLongtableHeaderFooter(os, buf, fragile, fp);
+	
 	//+---------------------------------------------------------------------
 	//+                      the single row and columns (cells)            +
 	//+---------------------------------------------------------------------
 
 	for (int i = 0; i < rows_; ++i) {
-		ret += TeXTopHLine(os, i);
-#warning Implement top double lines for LT Header/Footers
-#if 0
-		if (ret > bret) {
-			ret += TeXBottomHLine(os, i-1);
-			ret += TeXTopHLine(os, i);
-		}
-#endif
-		for (int j = 0; j < columns_; ++j) {
-			if (IsPartOfMultiColumn(i,j))
-				continue;
-			ret += TeXCellPreamble(os, cell);
-			InsetText * inset = GetCellInset(cell);
-
-			bool rtl = inset->paragraph()->isRightToLeftPar(buf->params) &&
-					inset->paragraph()->size() > 0 && GetPWidth(cell).zero();
-
-			if (rtl)
-				os << "\\R{";
-			ret += inset->latex(buf, os, fragile, fp);
-			if (rtl)
-				os << "}";
-
-			ret += TeXCellPostamble(os, cell);
-			if (!IsLastCellInRow(cell)) { // not last cell in row
-				os << "&\n";
-				++ret;
-			}
-			++cell;
-		}
-		os << "\\\\\n";
-		++ret;
-		ret += TeXBottomHLine(os, i);
-		if (IsLongTabular()) {
-			if (row_info[i].endhead) {
-				if (endhead.bottomDL)
-					ret += TeXBottomHLine(os, i);
-				os << "\\endhead\n";
-				++ret;
-			}
-			if (row_info[i].endfirsthead) {
-				if (endfirsthead.bottomDL)
-					ret += TeXBottomHLine(os, i);
-				os << "\\endfirsthead\n";
-				++ret;
-			}
-			if (row_info[i].endfoot) {
-				if (endfoot.bottomDL)
-					ret += TeXBottomHLine(os, i);
-				os << "\\endfoot\n";
-				++ret;
-			}
-			if (row_info[i].endlastfoot) {
-				if (endlastfoot.bottomDL)
-					ret += TeXBottomHLine(os, i);
-				os << "\\endlastfoot\n";
-				++ret;
-			}
-			if (row_info[i].newpage) {
+		if (isValidRow(i)) {
+			ret += TeXRow(os, i, buf, fragile, fp);
+			if (is_long_tabular && row_info[i].newpage) {
 				os << "\\newpage\n";
 				++ret;
 			}

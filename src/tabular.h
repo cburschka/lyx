@@ -161,12 +161,15 @@ public:
 	struct lttype {
 		// constructor
 		lttype();
+		// we have this header type (is set in the GetLT... functions)
+		bool set;
 		// double borders on top
 		bool topDL;
 		// double borders on bottom
 		bool bottomDL;
 		// used for FirstHeader & LastFooter and if this is true
-		// row HAS to be 0!
+		// all the rows marked as FirstHeader or LastFooter are
+		// ignored in the output and it is set to be empty!
 		bool empty;
 	};
 	///
@@ -298,6 +301,14 @@ public:
 	///
 	int TeXCellPostamble(std::ostream &, int cell) const;
 	///
+	int TeXLongtableHeaderFooter(std::ostream &, Buffer const * buf,
+	                             bool fragile, bool fp) const;
+	///
+	bool isValidRow(int const row) const;
+	///
+	int TeXRow(std::ostream &, int const row, Buffer const * buf,
+	           bool fragile, bool fp) const;
+	///
 	int Latex(Buffer const *, std::ostream &, bool, bool) const;
 	/// auxiliary function for docbook rows
 	int docbookRow(Buffer const * buf, std::ostream & os, int row) const;
@@ -362,7 +373,7 @@ public:
 	///
 	BoxType GetUsebox(int cell) const;
 	//
-	// Long Tabular Options
+	// Long Tabular Options support functions
 	///
 	bool checkLTType(int row, ltType const &) const;
 	///
@@ -381,6 +392,16 @@ public:
 	void SetLTNewPage(int row, bool what);
 	///
 	bool GetLTNewPage(int row) const;
+	///
+	bool haveLTHead() const;
+	///
+	bool haveLTFirstHead() const;
+	///
+	bool haveLTFoot() const;
+	///
+	bool haveLTLastFoot() const;
+	///
+	// end longtable support
 	///
 	InsetText * GetCellInset(int cell) const;
 	///
@@ -554,6 +575,8 @@ private:
 	int cells_in_multicolumn(int cell) const;
 	///
 	BoxType UseParbox(int cell) const;
+	///
+	void setHeaderFooterRows(int header, int fheader, int footer, int lfooter);
 };
 
 #endif

@@ -373,7 +373,7 @@ void FormTabular::update()
 		bool use_empty;
 		bool row_set = tabular->GetRowOfLTHead(row, ltt);
 		fl_set_button(longtable_options_->radio_lt_head, row_set);
-		if (row_set) {
+		if (ltt.set) {
 			fl_set_button(longtable_options_->check_head_2border_above,
 				          ltt.topDL);
 			fl_set_button(longtable_options_->check_head_2border_above,
@@ -391,7 +391,7 @@ void FormTabular::update()
 		//
 		row_set = tabular->GetRowOfLTFirstHead(row, ltt);
 		fl_set_button(longtable_options_->radio_lt_firsthead, row_set);
-		if (row_set && (!ltt.empty || !use_empty)) {
+		if (ltt.set && (!ltt.empty || !use_empty)) {
 			fl_set_button(longtable_options_->check_1head_2border_above,
 			              ltt.topDL);
 			fl_set_button(longtable_options_->check_1head_2border_above,
@@ -410,7 +410,7 @@ void FormTabular::update()
 		//
 		row_set = tabular->GetRowOfLTFoot(row, ltt);
 		fl_set_button(longtable_options_->radio_lt_foot, row_set);
-		if (row_set) {
+		if (ltt.set) {
 			fl_set_button(longtable_options_->check_foot_2border_above,
 			              ltt.topDL);
 			fl_set_button(longtable_options_->check_foot_2border_above,
@@ -428,7 +428,7 @@ void FormTabular::update()
 		//
 		row_set = tabular->GetRowOfLTLastFoot(row, ltt);
 		fl_set_button(longtable_options_->radio_lt_lastfoot, row_set);
-		if (row_set && (!ltt.empty || !use_empty)) {
+		if (ltt.set && (!ltt.empty || !use_empty)) {
 			fl_set_button(longtable_options_->check_lastfoot_2border_above,
 			              ltt.topDL);
 			fl_set_button(longtable_options_->check_lastfoot_2border_above,

@@ -1,3 +1,16 @@
+2001-12-20  Juergen Vigna  <jug@sad.it>
+
+	* Makefile.am (lyx_SOURCES): added tabular_funcs.[hC].
+
+	* tabular.C (isValidRow): added to check if we're in a LT-h/f row.
+	(TeXRow): added to LaTeX a single tabular row.
+	(TeXLongtableHeaderFooter): added to output LT-h/f data.
+	(Latex): simplified and finally good LT-h/f support.
+	(various_functions): just small adaptions for LT-h/f support.
+
+	* tabular_funcs.[hC]: added and moved here all not classfunctions
+	of LyXTabular.
+
 2001-12-19  Juergen Vigna  <jug@sad.it>
 
 	* tabular.[Ch]: better support for longtabular options (not finished

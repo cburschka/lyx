@@ -1674,15 +1674,16 @@ static void checkLongtableSpecial(LyXTabular::ltType & ltt,
 {
 	if (special == "dl_above") {
 		ltt.topDL = flag;
-		flag = true;
+		ltt.set = false;
 	} else if (special == "dl_below") {
 		ltt.bottomDL = flag;
-		flag = true;
+		ltt.set = false;
 	} else if (special == "empty") {
 		ltt.empty = flag;
-		flag = false;
+		ltt.set = false;
 	} else if (flag) {
 		ltt.empty = false;
+		ltt.set = true;
 	}
 }
 

@@ -198,6 +198,8 @@ lyx_SOURCES = \
 	tabular.C \
 	tabular.h \
 	tabular-old.C \
+	tabular_funcs.C \
+	tabular_funcs.h \
 	tex-accent.C \
 	tex-accent.h \
 	tex-strings.C \
