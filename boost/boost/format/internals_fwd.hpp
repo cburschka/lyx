@@ -19,8 +19,8 @@
 #ifndef BOOST_FORMAT_INTERNAL_FWD_HPP
 #define BOOST_FORMAT_INTERNAL_FWD_HPP
 
-#include "boost/format/format_fwd.hpp"
-#include "boost/config.hpp"
+#include <boost/format/format_fwd.hpp>
+#include <boost/config.hpp>
 
 
 namespace boost {
@@ -40,7 +40,7 @@ namespace detail {
   // defined in format_implementation.hpp :
      template<class Ch, class Tr, class T> 
      basic_format<Ch, Tr>&  modify_item_body( basic_format<Ch, Tr>& self, 
-                                          int itemN, const T& manipulator);
+                                          int itemN, T manipulator);
 
      template<class Ch, class Tr, class T> 
      basic_format<Ch, Tr>&  bind_arg_body( basic_format<Ch, Tr>& self,

@@ -3,13 +3,9 @@
  * Copyright (c) 1998-2002
  * Dr John Maddock
  *
- * Permission to use, copy, modify, distribute and sell this software
- * and its documentation for any purpose is hereby granted without fee,
- * provided that the above copyright notice appear in all copies and
- * that both that copyright notice and this permission notice appear
- * in supporting documentation.  Dr John Maddock makes no representations
- * about the suitability of this software for any purpose.
- * It is provided "as is" without express or implied warranty.
+ * Use, modification and distribution are subject to the 
+ * Boost Software License, Version 1.0. (See accompanying file 
+ * LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
  *
  */
 
@@ -31,7 +27,11 @@
 #include <crtdbg.h>
 #endif
 
+#ifdef BOOST_REGEX_V3
 #include <boost/regex/v3/regex_raw_buffer.hpp>
+#else
+#include <boost/regex/v4/regex_raw_buffer.hpp>
+#endif
 #include <boost/regex.hpp>
 
 #ifndef BOOST_RE_OLD_IOSTREAM
@@ -213,6 +213,39 @@ debug_guard::~debug_guard()
 
 
 #endif
+
+
+//
+// regex configuration information: this prints out the settings used
+// when the library was built - include in debugging builds only:
+//
+#ifdef BOOST_REGEX_CONFIG_INFO
+
+#define print_macro regex_lib_print_macro
+#define print_expression regex_lib_print_expression
+#define print_byte_order regex_lib_print_byte_order
+#define print_sign regex_lib_print_sign
+#define print_compiler_macros regex_lib_print_compiler_macros
+#define print_stdlib_macros regex_lib_print_stdlib_macros
+#define print_platform_macros regex_lib_print_platform_macros
+#define print_boost_macros regex_lib_print_boost_macros
+#define print_separator regex_lib_print_separator
+#define OLD_MAIN regex_lib_main
+#define NEW_MAIN regex_lib_main2
+#define NO_RECURSE
+
+#include <libs/regex/test/config_info/regex_config_info.cpp>
+
+BOOST_REGEX_DECL void BOOST_REGEX_CALL print_regex_library_info()
+{
+   std::cout << "\n\n";
+   print_separator();
+   std::cout << "Regex library build configuration:\n\n";
+   regex_lib_main2();
+}
+
+#endif
+
 
 
 

@@ -9,77 +9,100 @@
 
 // See http://www.boost.org/libs/tokenizer for documentation.
 
-#ifndef BOOST_TOKENIZER_POLICY_JRB051801_HPP_
-#define BOOST_TOKENIZER_POLICY_JRB051801_HPP_
+// Revision History:
+// 16 Jul 2003   John Bandela
+//      Allowed conversions from convertible base iterators
+// 03 Jul 2003   John Bandela
+//      Converted to new iterator adapter
 
-#include<boost/iterator_adaptors.hpp>
+
+
+#ifndef BOOST_TOKENIZER_POLICY_JRB070303_HPP_
+#define BOOST_TOKENIZER_POLICY_JRB070303_HPP_
+
+#include<boost/iterator/iterator_adaptor.hpp>
+#include<boost/iterator/detail/minimum_category.hpp>
 #include<boost/token_functions.hpp>
 #include<utility>
 #include<cassert>
 
-namespace boost {
-    namespace detail{
-        // The base "iterator" for iterator adapter
-        template<class It>
-        class token_iterator_base
-        {
-        public:
-            std::pair<It,It> p_;
-            bool valid_;
-            token_iterator_base():p_(It(),It()),valid_(false){}
-            token_iterator_base(const It& b , const It& e )
-                :p_(b,e),valid_(false){}
-            operator It(){return p_.first;}
-            
-            template<class T>
-            token_iterator_base(const token_iterator_base<T>& other)
-                :p_(other.p_),valid_(other.valid_){}
-        };
-        
-        
-        template<class Type, class TokenizerFunc>
-        class tokenizer_policy{
-        private:
-            TokenizerFunc func_;
-            Type tok_;
-        public:
-            tokenizer_policy(){}
-            tokenizer_policy(const TokenizerFunc& f):func_(f){};
-            
-            template<class Base>
-            void initialize(Base& b){
-                if(b.valid_) return;
-                func_.reset();
-                b.valid_ = (b.p_.first != b.p_.second)?
-                    func_(b.p_.first,b.p_.second,tok_):false;
-            }
-            
-            template<class Iterator1, class Iterator2>
-                bool equal(const Iterator1& a, const Iterator2& b) const{
-                return (a.base().valid_ && b.base().valid_)
-                    ?(a.base().p_==b.base().p_)
-                    :(a.base().valid_==b.base().valid_);
-                
-            }
-            
-            template<class Iterator>
-                typename Iterator::reference
-                dereference(const Iterator& a) const{
-                using namespace std;
-                assert(a.base().valid_);
-                return tok_;
-            }   
-            template <class Iterator>
-                void increment(Iterator& b){
-                using namespace std;
-                assert(b.base().valid_);
-                b.base().valid_ = func_(b.base().p_.first,b.base().p_.second,tok_);
-            }
-            
-        };
-        
-    } // namespace detail
 
+namespace boost
+{
+  template <class TokenizerFunc, class Iterator, class Type>
+  class token_iterator
+      : public iterator_facade<
+            token_iterator<TokenizerFunc, Iterator, Type>
+          , Type
+          , typename detail::minimum_category<
+                forward_traversal_tag
+              , typename iterator_traversal<Iterator>::type
+            >::type 
+          , const Type&
+        >
+  {
+
+      friend class iterator_core_access;
+
+      TokenizerFunc f_;
+      Iterator begin_;
+      Iterator end_;
+      bool valid_;
+      Type tok_;
+
+      void increment(){
+          assert(valid_);
+          valid_ = f_(begin_,end_,tok_);
+      }
+
+      const Type&  dereference() const {
+          assert(valid_);
+          return tok_;
+      }
+      template<class Other>
+      bool equal(const Other& a) const{
+          return (a.valid_ && valid_)
+              ?( (a.begin_==begin_) && (a.end_ == end_) )
+              :(a.valid_==valid_);
+
+      }
+
+      void initialize(){
+          if(valid_) return;
+          f_.reset();
+          valid_ = (begin_ != end_)?
+              f_(begin_,end_,tok_):false;
+      }
+  public:
+      token_iterator():begin_(),end_(),valid_(false),tok_() { }
+
+      token_iterator(TokenizerFunc f, Iterator begin, Iterator e = Iterator())
+          : f_(f),begin_(begin),end_(e),valid_(false),tok_(){ initialize(); }
+
+      token_iterator(Iterator begin, Iterator e = Iterator())
+            : f_(),begin_(begin),end_(e),valid_(false),tok_() {initialize();}
+
+      template<class OtherIter>
+      token_iterator(
+            token_iterator<TokenizerFunc, OtherIter,Type> const& t
+            , typename enable_if_convertible<OtherIter, Iterator>::type* = 0)
+            : f_(t.tokenizer_function()),begin_(t.base())
+            ,end_(t.end()),valid_(t.at_end()),tok_(t.current_token()) {}
+
+      Iterator base()const{return begin_;}
+
+      Iterator end()const{return end_;};
+
+      TokenizerFunc tokenizer_function()const{return f_;}
+
+      Type current_token()const{return tok_;}
+
+      bool at_end()const{return valid_;}
+
+
+
+
+  };
     template <
         class TokenizerFunc = char_delimiters_separator<char>, 
         class Iterator = std::string::const_iterator,
@@ -88,14 +111,8 @@ namespace boost {
     class token_iterator_generator {
 
     private: 
-        typedef Type value_type;
-        typedef detail::tokenizer_policy<Type, TokenizerFunc> policies;
-        typedef detail::token_iterator_base<Iterator> base;
-        typedef typename boost::detail::non_bidirectional_category<
-            Iterator>::type category;
     public:
-        typedef boost::iterator_adaptor<base,policies,value_type, 
-            const value_type&,const value_type*,category,std::ptrdiff_t> type;
+        typedef token_iterator<TokenizerFunc,Iterator,Type> type;
     };
     
     
@@ -106,9 +123,7 @@ namespace boost {
     make_token_iterator(Iterator begin, Iterator end,const TokenizerFunc& fun){
         typedef typename 
             token_iterator_generator<TokenizerFunc,Iterator,Type>::type ret_type;
-        detail::token_iterator_base<Iterator> b(begin,end);
-        detail::tokenizer_policy<Type,TokenizerFunc> f(fun);
-        return ret_type(b,f);
+        return ret_type(fun,begin,end);
     }
 
 } // namespace boost

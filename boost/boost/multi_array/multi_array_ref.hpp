@@ -1,14 +1,14 @@
-// Copyright (C) 2002 Ronald Garcia
-//
-// Permission to copy, use, sell and distribute this software is granted
-// provided this copyright notice appears in all copies. 
-// Permission to modify the code and to distribute modified code is granted
-// provided this copyright notice appears in all copies, and a notice 
-// that the code was modified is included with the copyright notice.
-//
-// This software is provided "as is" without express or implied warranty, 
-// and with no claim as to its suitability for any purpose.
-//
+// Copyright 2002 The Trustees of Indiana University.
+
+// Use, modification and distribution is subject to the Boost Software 
+// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
+// http://www.boost.org/LICENSE_1_0.txt)
+
+//  Boost.MultiArray Library
+//  Authors: Ronald Garcia
+//           Jeremy Siek
+//           Andrew Lumsdaine
+//  See http://www.boost.org/libs/multi_array for documentation.
 
 #ifndef BOOST_MULTI_ARRAY_REF_RG071801_HPP
 #define BOOST_MULTI_ARRAY_REF_RG071801_HPP
@@ -48,14 +48,13 @@ public:
   typedef typename super_type::value_type value_type;
   typedef typename super_type::const_reference const_reference;
   typedef typename super_type::const_iterator const_iterator;
-  typedef typename super_type::const_iter_base const_iter_base;
   typedef typename super_type::const_reverse_iterator const_reverse_iterator;
   typedef typename super_type::element element;
   typedef typename super_type::size_type size_type;
   typedef typename super_type::difference_type difference_type;
   typedef typename super_type::index index;
   typedef typename super_type::extent_range extent_range;
-
+  typedef general_storage_order<NumDims> storage_order_type;
 
   // template typedefs
   template <std::size_t NDims>
@@ -72,6 +71,9 @@ public:
   // make const_multi_array_ref a friend of itself
   template <typename,std::size_t,typename>
   friend class const_multi_array_ref;
+
+//  template <typename From, typename To>  // needed for enable_if_convertible tests
+//  friend class boost::detail::is_convertible_basic_impl;
 #endif
 
   template <typename OPtr>
@@ -195,6 +197,11 @@ public:
     return index_base_list_.data();
   }
 
+
+  const storage_order_type& storage_order() const {
+    return storage_;
+  }
+
   template <typename IndexList>
   const element& operator()(IndexList indices) const {
     boost::function_requires<
@@ -232,13 +239,13 @@ public:
   }
   
   const_iterator begin() const {
-    return const_iterator(const_iter_base(*index_bases(),origin(),
-                                   shape(),strides(),index_bases()));
+    return const_iterator(*index_bases(),origin(),
+                          shape(),strides(),index_bases());
   }
 
   const_iterator end() const {
-    return const_iterator(const_iter_base(*index_bases()+*shape(),origin(),
-                                   shape(),strides(),index_bases()));
+    return const_iterator(*index_bases()+*shape(),origin(),
+                          shape(),strides(),index_bases());
   }
 
   const_reverse_iterator rbegin() const {
@@ -296,6 +303,17 @@ public:
     return !(*this < rhs);
   }
 
+protected:
+  // This is only supplied to support multi_array's default constructor
+  explicit const_multi_array_ref(TPtr base) :
+    base_(base), storage_(c_storage_order()) {
+    index_base_list_.assign(0);
+    boost::array<size_type,NumDims> filler;
+    filler.assign(0);
+    init_multi_array_ref(filler.begin());
+  }
+
+
 // This ensures that const_multi_array_ref types with different TPtr 
 // types can convert to each other
 #ifndef BOOST_NO_MEMBER_TEMPLATE_FRIENDS
@@ -307,9 +325,10 @@ public:
   void set_base_ptr(TPtr new_base) { base_ = new_base; }
 
   template <typename OPtr>
-  const_multi_array_ref(const detail::multi_array::
-                  const_sub_array<T,NumDims,OPtr>& rhs)
-    : base_(rhs.origin()),
+  const_multi_array_ref(
+      const detail::multi_array::const_sub_array<T,NumDims,OPtr>& rhs
+  )
+    : base_(0), // playing it "safe"; so we learn of errors
       storage_(c_storage_order()),
       origin_offset_(0), directional_offset_(0),
       num_elements_(rhs.num_elements())
@@ -324,7 +343,7 @@ public:
   typedef boost::array<index,NumDims> index_list;
 
   TPtr base_;
-  general_storage_order<NumDims> storage_;
+  storage_order_type storage_;
   size_list extent_list_;
   index_list stride_list_;
   index_list index_base_list_;
@@ -366,8 +385,9 @@ private:
     // Calculate the array size
     num_elements_ = std::accumulate(extent_list_.begin(),extent_list_.end(),
                             1,std::multiplies<index>());
+#if 0
     assert(num_elements_ != 0);
-
+#endif
     this->compute_strides(stride_list_,extent_list_,storage_);
 
     origin_offset_ =
@@ -379,7 +399,6 @@ private:
   }
 };
 
-
 template <typename T, std::size_t NumDims>
 class multi_array_ref :
   public const_multi_array_ref<T,NumDims,T*>
@@ -389,11 +408,9 @@ public:
   typedef typename super_type::value_type value_type;
   typedef typename super_type::reference reference;
   typedef typename super_type::iterator iterator;
-  typedef typename super_type::iter_base iter_base;
   typedef typename super_type::reverse_iterator reverse_iterator;
   typedef typename super_type::const_reference const_reference;
   typedef typename super_type::const_iterator const_iterator;
-  typedef typename super_type::const_iter_base const_iter_base;
   typedef typename super_type::const_reverse_iterator const_reverse_iterator;
   typedef typename super_type::element element;
   typedef typename super_type::size_type size_type;
@@ -519,14 +536,14 @@ public:
   
   
   iterator begin() {
-    return iterator(iter_base(*this->index_bases(),origin(),this->shape(),
-                              this->strides(),this->index_bases()));
+    return iterator(*this->index_bases(),origin(),this->shape(),
+                    this->strides(),this->index_bases());
   }
 
   iterator end() {
-    return iterator(iter_base(*this->index_bases()+*this->shape(),origin(),
-                              this->shape(),this->strides(),
-                              this->index_bases()));
+    return iterator(*this->index_bases()+*this->shape(),origin(),
+                    this->shape(),this->strides(),
+                    this->index_bases());
   }
 
   // RG - rbegin() and rend() written naively to thwart MSVC ICE.
@@ -588,6 +605,14 @@ public:
   const_reverse_iterator rend() const {
     return super_type::rend();
   }
+
+protected:
+  // This is only supplied to support multi_array's default constructor
+  explicit multi_array_ref(T* base) :
+    super_type(base) {
+  }
+
+
 };
 
 } // namespace boost

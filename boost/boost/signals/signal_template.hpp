@@ -1,20 +1,14 @@
 // Boost.Signals library
-//
-// Copyright (C) 2001-2002 Doug Gregor (gregod@cs.rpi.edu)
-//
-// Permission to copy, use, sell and distribute this software is granted
-// provided this copyright notice appears in all copies.
-// Permission to modify the code and to distribute modified code is granted
-// provided this copyright notice appears in all copies, and a notice
-// that the code was modified is included with the copyright notice.
-//
-// This software is provided "as is" without express or implied warranty,
-// and with no claim as to its suitability for any purpose.
- 
+
+// Copyright Doug Gregor 2001-2003. Use, modification and
+// distribution is subject to the Boost Software License, Version
+// 1.0. (See accompanying file LICENSE_1_0.txt or copy at
+// http://www.boost.org/LICENSE_1_0.txt)
+
 // For more information, see http://www.boost.org
 
 // This file intentionally does not have include guards, because it is meant
-// to be included multiple times (one for each signalN class). The 
+// to be included multiple times (one for each signalN class). The
 // BOOST_SIGNALS_SIGNAL_TEMPLATE_HEADER_INCLUDED macro merely serves to
 // suppress reinclusion of the files that this header depends on.
 
@@ -33,6 +27,10 @@
 #  include <memory>
 #  include <string>
 #endif // !BOOST_SIGNALS_SIGNAL_TEMPLATE_HEADER_INCLUDED
+
+#ifdef BOOST_HAS_ABI_HEADERS
+#  include BOOST_ABI_PREFIX
+#endif
 
 // Include the appropriate functionN header
 #define BOOST_SIGNAL_FUNCTION_N_HEADER BOOST_JOIN(<boost/function/function,BOOST_SIGNALS_NUM_ARGS.hpp>)
@@ -128,16 +126,16 @@ namespace boost {
   // The actual signalN class
   template<
     typename R,
-    BOOST_SIGNALS_TEMPLATE_PARMS 
+    BOOST_SIGNALS_TEMPLATE_PARMS
     BOOST_SIGNALS_COMMA_IF_NONZERO_ARGS
     typename Combiner = last_value<R>,
     typename Group = int,
     typename GroupCompare = std::less<Group>,
     typename SlotFunction = BOOST_SIGNALS_FUNCTION<
                               R BOOST_SIGNALS_COMMA_IF_NONZERO_ARGS
-                              BOOST_SIGNALS_TEMPLATE_ARGS> 
+                              BOOST_SIGNALS_TEMPLATE_ARGS>
   >
-  class BOOST_SIGNALS_SIGNAL : 
+  class BOOST_SIGNALS_SIGNAL :
     public BOOST_SIGNALS_NAMESPACE::detail::signal_base, // management of slot list
     public BOOST_SIGNALS_NAMESPACE::trackable // signals are trackable
   {
@@ -166,7 +164,7 @@ namespace boost {
 
     // The function object passed to the slot call iterator that will call
     // the underlying slot function with its arguments bound
-    typedef BOOST_SIGNALS_NAMESPACE::detail::BOOST_SIGNALS_CALL_BOUND<R> 
+    typedef BOOST_SIGNALS_NAMESPACE::detail::BOOST_SIGNALS_CALL_BOUND<R>
       outer_bound_slot_caller;
     typedef typename outer_bound_slot_caller::template
               caller<BOOST_SIGNALS_TEMPLATE_ARGS
@@ -176,7 +174,7 @@ namespace boost {
 
   public:
     // Combiner's result type
-    typedef typename Combiner::result_type result_type; 
+    typedef typename Combiner::result_type result_type;
 
     // Combiner type
     typedef Combiner combiner_type;
@@ -188,13 +186,12 @@ namespace boost {
     typedef Group group_type;
     typedef GroupCompare group_compare_type;
 
-    typedef typename BOOST_SIGNALS_NAMESPACE::detail::slot_call_iterator_generator<
-                       call_bound_slot, 
-                       slot_iterator>::type slot_call_iterator;
+    typedef BOOST_SIGNALS_NAMESPACE::detail::slot_call_iterator<
+              call_bound_slot, slot_iterator> slot_call_iterator;
 
-    explicit 
+    explicit
     BOOST_SIGNALS_SIGNAL(const Combiner& c = Combiner(),
-                         const GroupCompare& comp = GroupCompare()) : 
+                         const GroupCompare& comp = GroupCompare()) :
       BOOST_SIGNALS_NAMESPACE::detail::signal_base(real_group_compare_type(comp)),
       combiner(c)
     {
@@ -227,14 +224,14 @@ namespace boost {
     typename GroupCompare,
     typename SlotFunction
   >
-  BOOST_SIGNALS_NAMESPACE::connection 
-  BOOST_SIGNALS_SIGNAL<                                 
-    R, BOOST_SIGNALS_TEMPLATE_ARGS                      
-    BOOST_SIGNALS_COMMA_IF_NONZERO_ARGS  
+  BOOST_SIGNALS_NAMESPACE::connection
+  BOOST_SIGNALS_SIGNAL<
+    R, BOOST_SIGNALS_TEMPLATE_ARGS
+    BOOST_SIGNALS_COMMA_IF_NONZERO_ARGS
     Combiner, Group, GroupCompare, SlotFunction
   >::connect(const slot_type& in_slot)
   {
-    // If the slot has been disconnected, just return a disconnected 
+    // If the slot has been disconnected, just return a disconnected
     // connection
     if (!in_slot.is_active()) {
       return BOOST_SIGNALS_NAMESPACE::connection();
@@ -254,12 +251,12 @@ namespace boost {
     typename GroupCompare,
     typename SlotFunction
   >
-  BOOST_SIGNALS_NAMESPACE::connection 
-  BOOST_SIGNALS_SIGNAL<                                 
-    R, BOOST_SIGNALS_TEMPLATE_ARGS                      
-    BOOST_SIGNALS_COMMA_IF_NONZERO_ARGS  
+  BOOST_SIGNALS_NAMESPACE::connection
+  BOOST_SIGNALS_SIGNAL<
+    R, BOOST_SIGNALS_TEMPLATE_ARGS
+    BOOST_SIGNALS_COMMA_IF_NONZERO_ARGS
     Combiner, Group, GroupCompare, SlotFunction
-  >::connect(const group_type& group, 
+  >::connect(const group_type& group,
              const slot_type& in_slot)
   {
     return impl->connect_slot(in_slot.get_slot_function(),
@@ -275,14 +272,14 @@ namespace boost {
     typename Group,
     typename GroupCompare,
     typename SlotFunction
-  >                                                          
-  typename BOOST_SIGNALS_SIGNAL<                                 
-             R, BOOST_SIGNALS_TEMPLATE_ARGS                      
-             BOOST_SIGNALS_COMMA_IF_NONZERO_ARGS  
+  >
+  typename BOOST_SIGNALS_SIGNAL<
+             R, BOOST_SIGNALS_TEMPLATE_ARGS
+             BOOST_SIGNALS_COMMA_IF_NONZERO_ARGS
              Combiner, Group, GroupCompare, SlotFunction>::result_type
-  BOOST_SIGNALS_SIGNAL<                                 
-    R, BOOST_SIGNALS_TEMPLATE_ARGS                      
-    BOOST_SIGNALS_COMMA_IF_NONZERO_ARGS  
+  BOOST_SIGNALS_SIGNAL<
+    R, BOOST_SIGNALS_TEMPLATE_ARGS
+    BOOST_SIGNALS_COMMA_IF_NONZERO_ARGS
     Combiner, Group, GroupCompare, SlotFunction
   >::operator()(BOOST_SIGNALS_PARMS)
   {
@@ -290,7 +287,7 @@ namespace boost {
     BOOST_SIGNALS_NAMESPACE::detail::call_notification notification(this->impl);
 
     // Construct a function object that will call the underlying slots
-    // with the given arguments. 
+    // with the given arguments.
 #if BOOST_SIGNALS_NUM_ARGS == 0
     BOOST_SIGNALS_ARGS_STRUCT_INST args;
 #else
@@ -299,10 +296,10 @@ namespace boost {
     call_bound_slot f(&args);
 
     // Let the combiner call the slots via a pair of input iterators
-    return combiner(BOOST_SIGNALS_NAMESPACE::detail::make_slot_call_iterator(
-                      notification.impl->slots_.begin(), impl->slots_.end(), f),
-                    BOOST_SIGNALS_NAMESPACE::detail::make_slot_call_iterator(
-                      notification.impl->slots_.end(), impl->slots_.end(), f));
+    return combiner(slot_call_iterator(notification.impl->slots_.begin(),
+                                       impl->slots_.end(), f),
+                    slot_call_iterator(notification.impl->slots_.end(),
+                                       impl->slots_.end(), f));
   }
 
   template<
@@ -313,14 +310,14 @@ namespace boost {
     typename Group,
     typename GroupCompare,
     typename SlotFunction
-  >                                                          
-  typename BOOST_SIGNALS_SIGNAL<                                 
-             R, BOOST_SIGNALS_TEMPLATE_ARGS                      
-             BOOST_SIGNALS_COMMA_IF_NONZERO_ARGS  
+  >
+  typename BOOST_SIGNALS_SIGNAL<
+             R, BOOST_SIGNALS_TEMPLATE_ARGS
+             BOOST_SIGNALS_COMMA_IF_NONZERO_ARGS
              Combiner, Group, GroupCompare, SlotFunction>::result_type
-  BOOST_SIGNALS_SIGNAL<                                 
-    R, BOOST_SIGNALS_TEMPLATE_ARGS                      
-    BOOST_SIGNALS_COMMA_IF_NONZERO_ARGS  
+  BOOST_SIGNALS_SIGNAL<
+    R, BOOST_SIGNALS_TEMPLATE_ARGS
+    BOOST_SIGNALS_COMMA_IF_NONZERO_ARGS
     Combiner, Group, GroupCompare, SlotFunction
   >::operator()(BOOST_SIGNALS_PARMS) const
   {
@@ -328,7 +325,7 @@ namespace boost {
     BOOST_SIGNALS_NAMESPACE::detail::call_notification notification(this->impl);
 
     // Construct a function object that will call the underlying slots
-    // with the given arguments. 
+    // with the given arguments.
 #if BOOST_SIGNALS_NUM_ARGS == 0
     BOOST_SIGNALS_ARGS_STRUCT_INST args;
 #else
@@ -338,10 +335,10 @@ namespace boost {
     call_bound_slot f(&args);
 
     // Let the combiner call the slots via a pair of input iterators
-    return combiner(BOOST_SIGNALS_NAMESPACE::detail::make_slot_call_iterator(
-                      notification.impl->slots_.begin(), impl->slots_.end(), f),
-                    BOOST_SIGNALS_NAMESPACE::detail::make_slot_call_iterator(
-                      notification.impl->slots_.end(), impl->slots_.end(), f));
+    return combiner(slot_call_iterator(notification.impl->slots_.begin(),
+                                       impl->slots_.end(), f),
+                    slot_call_iterator(notification.impl->slots_.end(),
+                                       impl->slots_.end(), f));
   }
 } // namespace boost
 
@@ -352,3 +349,7 @@ namespace boost {
 #undef BOOST_SIGNALS_FUNCTION
 #undef BOOST_SIGNALS_SIGNAL
 #undef BOOST_SIGNALS_COMMA_IF_NONZERO_ARGS
+
+#ifdef BOOST_HAS_ABI_HEADERS
+#  include BOOST_ABI_SUFFIX
+#endif

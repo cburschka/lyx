@@ -1,21 +1,24 @@
 //  boost/filesystem/fstream.hpp  --------------------------------------------//
 
-//  (C) Copyright Beman Dawes 2002. Permission to copy, use, modify, sell and
-//  distribute this software is granted provided this copyright notice appears
-//  in all copies. This software is provided "as is" without express or implied
-//  warranty, and with no claim as to its suitability for any purpose.
+//  Copyright Beman Dawes 2002.
+//  Use, modification, and distribution is subject to the Boost Software
+//  License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
+//  http://www.boost.org/LICENSE_1_0.txt)
 
-//  See http://www.boost.org/libs/filesystem for documentation.
+//  See library home page at http://www.boost.org/libs/filesystem
 
 //----------------------------------------------------------------------------// 
 
 #ifndef BOOST_FILESYSTEM_FSTREAM_HPP
 #define BOOST_FILESYSTEM_FSTREAM_HPP
 
-#include <boost/filesystem/path.hpp>
+#include <boost/filesystem/path.hpp>  // includes <boost/filesystem/config.hpp>
+#include <boost/detail/workaround.hpp>
 
 #include <iosfwd>
 #include <fstream>
+
+#include <boost/config/abi_prefix.hpp> // must be the last header
 
 namespace boost
 {
@@ -26,8 +29,7 @@ namespace boost
     {
     public:
       virtual ~basic_filebuf() {}
-
-#if !defined(BOOST_MSVC) || BOOST_MSVC > 1200 // VC++ 6.0 can't handle this
+#if !BOOST_WORKAROUND( BOOST_MSVC, <= 1200 ) // VC++ 6.0 can't handle this
       std::basic_filebuf<charT,traits> * open( const path & file_ph,
         std::ios_base::openmode mode )
       {
@@ -47,19 +49,40 @@ namespace boost
     {
     public:
       basic_ifstream() {}
+#if !BOOST_WORKAROUND( BOOST_MSVC, == 1310 )
       explicit basic_ifstream( const path & file_ph,
         std::ios_base::openmode mode = std::ios_base::in )
         : std::basic_ifstream<charT,traits>(
         file_ph.native_file_string().c_str(), mode ) {}
-      virtual ~basic_ifstream() {}
-#if !defined(BOOST_MSVC) || BOOST_MSVC > 1200 // VC++ 6.0 can't handle this
+#  if !BOOST_WORKAROUND( BOOST_MSVC, <= 1200 ) // VC++ 6.0 can't handle this
       void open( const path & file_ph,
         std::ios_base::openmode mode = std::ios_base::in )
       {
         std::basic_ifstream<charT,traits>::open(
           file_ph.native_file_string().c_str(), mode );
       }
+#  endif
+#else // workaround for VC++ 7.1 bug id VSWhidbey 38416
+      explicit basic_ifstream( const path & file_ph )
+        : std::basic_ifstream<charT,traits>(
+        file_ph.native_file_string().c_str(), std::ios_base::in ) {}
+      basic_ifstream( const path & file_ph,
+        std::ios_base::openmode mode )
+        : std::basic_ifstream<charT,traits>(
+        file_ph.native_file_string().c_str(), mode ) {}
+      void open( const path & file_ph )
+      {
+        std::basic_ifstream<charT,traits>::open(
+          file_ph.native_file_string().c_str(), std::ios_base::in );
+      }
+      void open( const path & file_ph,
+        std::ios_base::openmode mode )
+      {
+        std::basic_ifstream<charT,traits>::open(
+          file_ph.native_file_string().c_str(), mode );
+      }
 #endif
+      virtual ~basic_ifstream() {}
     };
 
     typedef basic_ifstream<char> ifstream;
@@ -72,19 +95,40 @@ namespace boost
     {
     public:
       basic_ofstream() {}
+#if !BOOST_WORKAROUND( BOOST_MSVC, == 1310 )
       explicit basic_ofstream( const path & file_ph,
         std::ios_base::openmode mode = std::ios_base::out )
         : std::basic_ofstream<charT,traits>(
         file_ph.native_file_string().c_str(), mode ) {}
-      virtual ~basic_ofstream() {}
-#if !defined(BOOST_MSVC) || BOOST_MSVC > 1200 // VC++ 6.0 can't handle this
+#  if !BOOST_WORKAROUND( BOOST_MSVC, <= 1200 ) // VC++ 6.0 can't handle this
       void open( const path & file_ph,
         std::ios_base::openmode mode = std::ios_base::out )
       {
         std::basic_ofstream<charT,traits>::open(
           file_ph.native_file_string().c_str(), mode );
       }
+#  endif
+#else // workaround for VC++ 7.1 bug id VSWhidbey 38416
+      explicit basic_ofstream( const path & file_ph )
+        : std::basic_ofstream<charT,traits>(
+        file_ph.native_file_string().c_str(), std::ios_base::out ) {}
+      basic_ofstream( const path & file_ph,
+        std::ios_base::openmode mode )
+        : std::basic_ofstream<charT,traits>(
+        file_ph.native_file_string().c_str(), mode ) {}
+      void open( const path & file_ph )
+      {
+        std::basic_ofstream<charT,traits>::open(
+          file_ph.native_file_string().c_str(), std::ios_base::out );
+      }
+      void open( const path & file_ph,
+        std::ios_base::openmode mode )
+      {
+        std::basic_ofstream<charT,traits>::open(
+          file_ph.native_file_string().c_str(), mode );
+      }
 #endif
+      virtual ~basic_ofstream() {}
     };
 
     typedef basic_ofstream<char> ofstream;
@@ -97,19 +141,42 @@ namespace boost
     {
     public:
       basic_fstream() {}
+#if !BOOST_WORKAROUND( BOOST_MSVC, == 1310 )
       explicit basic_fstream( const path & file_ph,
         std::ios_base::openmode mode = std::ios_base::in|std::ios_base::out )
         : std::basic_fstream<charT,traits>(
         file_ph.native_file_string().c_str(), mode ) {}
-      virtual ~basic_fstream() {}
-#if !defined(BOOST_MSVC) || BOOST_MSVC > 1200 // VC++ 6.0 can't handle this
+#  if !BOOST_WORKAROUND( BOOST_MSVC, <= 1200 ) // VC++ 6.0 can't handle this
       void open( const path & file_ph,
         std::ios_base::openmode mode = std::ios_base::in|std::ios_base::out )
       {
         std::basic_fstream<charT,traits>::open(
           file_ph.native_file_string().c_str(), mode );
       }
+#  endif
+#else // workaround for VC++ 7.1 bug id VSWhidbey 38416
+      explicit basic_fstream( const path & file_ph )
+        : std::basic_fstream<charT,traits>(
+        file_ph.native_file_string().c_str(),
+        std::ios_base::in|std::ios_base::out ) {}
+      basic_fstream( const path & file_ph,
+        std::ios_base::openmode mode )
+        : std::basic_fstream<charT,traits>(
+        file_ph.native_file_string().c_str(), mode ) {}
+      void open( const path & file_ph )
+      {
+        std::basic_fstream<charT,traits>::open(
+          file_ph.native_file_string().c_str(),
+          std::ios_base::in|std::ios_base::out );
+      }
+      void open( const path & file_ph,
+        std::ios_base::openmode mode )
+      {
+        std::basic_fstream<charT,traits>::open(
+          file_ph.native_file_string().c_str(), mode );
+      }
 #endif
+      virtual ~basic_fstream() {}
     };
  
     typedef basic_fstream<char> fstream;
@@ -120,5 +187,5 @@ namespace boost
 
 } // namespace boost
 
+#include <boost/config/abi_suffix.hpp> // pops abi_suffix.hpp pragmas
 #endif  // BOOST_FILESYSTEM_FSTREAM_HPP
-

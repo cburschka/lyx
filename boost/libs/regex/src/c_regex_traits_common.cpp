@@ -3,13 +3,9 @@
  * Copyright (c) 1998-2002
  * Dr John Maddock
  *
- * Permission to use, copy, modify, distribute and sell this software
- * and its documentation for any purpose is hereby granted without fee,
- * provided that the above copyright notice appear in all copies and
- * that both that copyright notice and this permission notice appear
- * in supporting documentation.  Dr John Maddock makes no representations
- * about the suitability of this software for any purpose.  
- * It is provided "as is" without express or implied warranty.
+ * Use, modification and distribution are subject to the 
+ * Boost Software License, Version 1.0. (See accompanying file 
+ * LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
  *
  */
  
@@ -29,7 +25,11 @@
 #include <list>
 #include <cctype>
 #include <boost/regex/regex_traits.hpp>
+#ifdef BOOST_REGEX_V3
 #include <boost/regex/v3/regex_synch.hpp>
+#else
+#include <boost/regex/v4/regex_synch.hpp>
+#endif
 
 
 namespace boost{
@@ -221,7 +221,7 @@ BOOST_REGEX_DECL std::size_t BOOST_REGEX_CALL re_get_default_message(char* buf, 
 }
 
 #ifndef BOOST_NO_WREGEX
-const wchar_t combining_ranges[] = { 0x0300, 0x0361, 
+const regex_wchar_type combining_ranges[] = { 0x0300, 0x0361, 
                            0x0483, 0x0486, 
                            0x0903, 0x0903, 
                            0x093E, 0x0940, 
@@ -260,10 +260,10 @@ const wchar_t combining_ranges[] = { 0x0300, 0x0361,
                            0xFE20, 0xFE23, 
                            0xffff, 0xffff, };
 
-BOOST_REGEX_DECL bool BOOST_REGEX_CALL is_combining(wchar_t c)
+BOOST_REGEX_DECL bool BOOST_REGEX_CALL is_combining(regex_wchar_type c)
 {
    BOOST_RE_GUARD_STACK
-   const wchar_t* p = combining_ranges + 1;
+   const regex_wchar_type* p = combining_ranges + 1;
    while(*p < c) p += 2;
    --p;
    if((c >= *p) && (c <= *(p+1)))
@@ -531,7 +531,7 @@ BOOST_REGEX_DECL unsigned short wide_unicode_classes[] = {
    c_traits_base::char_class_alpha |  c_traits_base::char_class_lower,        // 'ÿ'  255
 };
 
-BOOST_REGEX_DECL wchar_t wide_lower_case_map[] = {
+BOOST_REGEX_DECL regex_wchar_type wide_lower_case_map[] = {
    0x0, 0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7, 0x8, 0x9, 0xa, 0xb, 0xc, 0xd, 0xe, 0xf,
    0x10, 0x11, 0x12, 0x13, 0x14, 0x15, 0x16, 0x17, 0x18, 0x19, 0x1a, 0x1b, 0x1c, 0x1d, 0x1e, 0x1f, 
    0x20, 0x21, 0x22, 0x23, 0x24, 0x25, 0x26, 0x27, 0x28, 0x29, 0x2a, 0x2b, 0x2c, 0x2d, 0x2e, 0x2f, 
@@ -553,5 +553,7 @@ BOOST_REGEX_DECL wchar_t wide_lower_case_map[] = {
 
    } // namespace re_detail
 } // namespace boost
+
+
 
 

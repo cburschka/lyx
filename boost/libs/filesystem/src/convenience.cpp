@@ -1,15 +1,22 @@
 //  libs/filesystem/src/convenience.cpp  -------------------------------------//
 
-//  (C) Copyright Beman Dawes, 2002
-//  (C) Copyright Vladimir Prus, 2002
-//  Permission to copy, use, modify, sell and distribute this software
-//  is granted provided this copyright notice appears in all copies.
-//  This software is provided "as is" without express or implied
-//  warranty, and with no claim as to its suitability for any purpose.
+//  © Copyright Beman Dawes, 2002
+//  © Copyright Vladimir Prus, 2002
+//  Use, modification, and distribution is subject to the Boost Software
+//  License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
+//  http://www.boost.org/LICENSE_1_0.txt)
 
-//  See http://www.boost.org/libs/filesystem for documentation.
+//  See library home page at http://www.boost.org/libs/filesystem
+
+//----------------------------------------------------------------------------//
+
+// define BOOST_FILESYSTEM_SOURCE so that <boost/filesystem/config.hpp> knows
+// the library is being built (possibly exporting rather than importing code)
+#define BOOST_FILESYSTEM_SOURCE 
 
 #include <boost/filesystem/convenience.hpp>
+
+#include <boost/config/abi_prefix.hpp> // must be the last header
 
 namespace boost
 {
@@ -18,7 +25,7 @@ namespace boost
 
 //  create_directories (contributed by Vladimir Prus)  -----------------------//
 
-     void create_directories(const path& ph)
+     BOOST_FILESYSTEM_DECL void create_directories(const path& ph)
      {
          if (ph.empty() || exists(ph)) return;
 
@@ -27,6 +34,31 @@ namespace boost
          // Now that parent's path exists, create the directory
          create_directory(ph);
      }
+
+    BOOST_FILESYSTEM_DECL std::string extension(const path& ph)
+    {
+      std::string leaf = ph.leaf();
+
+      std::string::size_type n = leaf.rfind('.');
+      if (n != std::string::npos)
+        return leaf.substr(n);
+      else
+        return std::string();
+    }
+
+    BOOST_FILESYSTEM_DECL std::string basename(const path& ph)
+    {
+      std::string leaf = ph.leaf();
+
+      std::string::size_type n = leaf.rfind('.');
+      return leaf.substr(0, n);
+    }
+
+    BOOST_FILESYSTEM_DECL path change_extension(const path& ph, const std::string& new_extension)
+    {
+      return ph.branch_path() / (basename(ph) + new_extension);
+    }
+
 
   } // namespace filesystem
 } // namespace boost

@@ -1,7 +1,9 @@
-//  (C) Copyright Boost.org 2001. Permission to copy, use, modify, sell and
-//  distribute this software is granted provided this copyright notice appears
-//  in all copies. This software is provided "as is" without express or implied
-//  warranty, and with no claim as to its suitability for any purpose.
+//  (C) Copyright John Maddock 2001 - 2003. 
+//  (C) Copyright Bill Kempf 2001. 
+//  (C) Copyright Aleksey Gurtovoy 2003. 
+//  Use, modification and distribution are subject to the 
+//  Boost Software License, Version 1.0. (See accompanying file 
+//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
 
 //  See http://www.boost.org for most recent version.
 
@@ -11,6 +13,15 @@
 
 #if defined(__GNUC__) && !defined(BOOST_NO_SWPRINTF)
 #  define BOOST_NO_SWPRINTF
+#endif
+
+#if !defined(__GNUC__) && !defined(BOOST_HAS_DECLSPEC)
+#  define BOOST_HAS_DECLSPEC
+#endif
+
+#if defined(__MINGW32__) && ((__GNUC__ > 3) || ((__GNUC__ == 3) && (__GNUC_MINOR__ >= 2)))
+#  define BOOST_HAS_STDINT_H
+#  define __STDC_LIMIT_MACROS
 #endif
 
 //
@@ -46,6 +57,7 @@
 #endif
 
 #ifdef BOOST_MSVC
+#include <algorithm> // for existing std::min and std::max
 namespace std{
   // Apparently, something in the Microsoft libraries requires the "long"
   // overload, because it calls the min/max functions with arguments of
@@ -70,3 +82,5 @@ namespace std{
 using std::min;
 using std::max;
 #     endif
+
+

@@ -1,11 +1,10 @@
 
-// (C) Copyright Steve Cleary, Beman Dawes, Howard Hinnant & John Maddock 2000.
-// Permission to copy, use, modify, sell and distribute this software is 
-// granted provided this copyright notice appears in all copies. This software 
-// is provided "as is" without express or implied warranty, and with no claim 
-// as to its suitability for any purpose.
+//  (C) Copyright Steve Cleary, Beman Dawes, Howard Hinnant & John Maddock 2000.
+//  Use, modification and distribution are subject to the Boost Software License,
+//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
+//  http://www.boost.org/LICENSE_1_0.txt).
 //
-// See http://www.boost.org for most recent version including documentation.
+//  See http://www.boost.org/libs/type_traits for most recent version including documentation.
 
 #ifndef BOOST_TT_IS_POD_HPP_INCLUDED
 #define BOOST_TT_IS_POD_HPP_INCLUDED
@@ -41,11 +40,13 @@ template <typename T> struct is_pod_impl
          >::value));
 };
 
+#if !defined(BOOST_NO_ARRAY_TYPE_SPECIALIZATIONS)
 template <typename T, std::size_t sz>
 struct is_pod_impl<T[sz]>
     : is_pod_impl<T>
 {
 };
+#endif
 
 #else
 
@@ -125,7 +126,7 @@ BOOST_TT_AUX_BOOL_TRAIT_IMPL_SPEC1(is_pod,void const volatile,true)
 } // namespace detail
 
 BOOST_TT_AUX_BOOL_TRAIT_DEF1(is_POD,T,::boost::detail::is_pod_impl<T>::value)
-BOOST_TT_AUX_BOOL_TRAIT_DEF1(is_pod,T,::boost::is_POD<T>::value)
+BOOST_TT_AUX_BOOL_TRAIT_DEF1(is_pod,T,::boost::detail::is_pod_impl<T>::value)
 
 } // namespace boost
 

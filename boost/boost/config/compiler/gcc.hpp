@@ -1,7 +1,13 @@
-//  (C) Copyright Boost.org 2001. Permission to copy, use, modify, sell and
-//  distribute this software is granted provided this copyright notice appears
-//  in all copies. This software is provided "as is" without express or implied
-//  warranty, and with no claim as to its suitability for any purpose.
+//  (C) Copyright John Maddock 2001 - 2003. 
+//  (C) Copyright Darin Adler 2001 - 2002. 
+//  (C) Copyright Jens Maurer 2001 - 2002. 
+//  (C) Copyright Beman Dawes 2001 - 2003. 
+//  (C) Copyright Douglas Gregor 2002. 
+//  (C) Copyright David Abrahams 2002 - 2003. 
+//  (C) Copyright Synge Todo 2003. 
+//  Use, modification and distribution are subject to the 
+//  Boost Software License, Version 1.0. (See accompanying file 
+//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
 
 //  See http://www.boost.org for most recent version.
 
@@ -23,6 +29,10 @@
 #     endif
 #   endif
 
+#   if __GNUC__ == 2 && __GNUC_MINOR__ < 96
+#     define BOOST_NO_SFINAE
+#   endif
+
 #   if __GNUC__ == 2 && __GNUC_MINOR__ <= 97
 #     define BOOST_NO_MEMBER_TEMPLATE_FRIENDS
 #     define BOOST_NO_OPERATORS_IN_NAMESPACE
@@ -30,6 +40,7 @@
 
 #   if __GNUC__ < 3
 #      define BOOST_NO_USING_DECLARATION_OVERLOADS_FROM_TYPENAME_BASE
+#      define BOOST_FUNCTION_SCOPE_USING_DECLARATION_BREAKS_ADL
 #   endif
 
 #ifndef __EXCEPTIONS
@@ -48,9 +59,9 @@
 // those platforms where we can know for sure). It will get turned off again
 // later if no threading API is detected.
 //
-#if !defined(__MINGW32__) && !defined(__CYGWIN__) && !defined(linux) && !defined(__linux) && !defined(__linux__)
+#if !defined(__MINGW32__) && !defined(linux) && !defined(__linux) && !defined(__linux__)
 # define BOOST_HAS_THREADS
-#endif
+#endif 
 
 //
 // gcc has "long long"
@@ -73,7 +84,7 @@
 #  error "Compiler not configured - please reconfigure"
 #endif
 //
-// last known and checked version is 3.3:
+// last known and checked version is 3.4:
 #if (__GNUC__ > 3) || ((__GNUC__ == 3) && (__GNUC_MINOR__ > 4))
 #  if defined(BOOST_ASSERT_CONFIG)
 #     error "Unknown compiler version - please run the configure tests and report the results"
@@ -81,3 +92,5 @@
 #     warning "Unknown compiler version - please run the configure tests and report the results"
 #  endif
 #endif
+
+

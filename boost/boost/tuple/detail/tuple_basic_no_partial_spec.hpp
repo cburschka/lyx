@@ -5,28 +5,28 @@
 // Copyright (C) 2001 Gary Powell (gary.powell@sierra.com)
 //
 // Permission to copy, use, sell and distribute this software is granted
-// provided this copyright notice appears in all copies. 
+// provided this copyright notice appears in all copies.
 // Permission to modify the code and to distribute modified code is granted
-// provided this copyright notice appears in all copies, and a notice 
+// provided this copyright notice appears in all copies, and a notice
 // that the code was modified is included with the copyright notice.
 //
-// This software is provided "as is" without express or implied warranty, 
+// This software is provided "as is" without express or implied warranty,
 // and with no claim as to its suitability for any purpose.
 
-// For more information, see http://www.boost.org or http://lambda.cs.utu.fi 
+// For more information, see http://www.boost.org or http://lambda.cs.utu.fi
 
-// Revision History 
+// Revision History
 //  14 02 01    Remove extra ';'. Also, fixed 10-parameter to make_tuple. (DG)
 //  10 02 01    Fixed "null_type" constructors.
 //              Implemented comparison operators globally.
 //              Hide element_type_ref and element_type_const_ref.
 //              (DG).
-//  09 02 01    Extended to tuples of length 10. Changed comparison for 
+//  09 02 01    Extended to tuples of length 10. Changed comparison for
 //              operator<()
 //              to the same used by std::pair<>, added cnull_type() (GP)
 //  03 02 01    Initial Version from original tuple.hpp code by JJ. (DG)
 
-// ----------------------------------------------------------------- 
+// -----------------------------------------------------------------
 
 #ifndef BOOST_TUPLE_BASIC_NO_PARTIAL_SPEC_HPP
 #define BOOST_TUPLE_BASIC_NO_PARTIAL_SPEC_HPP
@@ -44,20 +44,20 @@ namespace boost {
 namespace tuples {
 
     // null_type denotes the end of a list built with "cons"
-    struct null_type 
+    struct null_type
     {
       null_type() {}
       null_type(const null_type&, const null_type&) {}
     };
-     
+
     // a helper function to provide a const null_type type temporary
     inline const null_type cnull_type() { return null_type(); }
 
 // forward declaration of tuple
     template<
-      typename T1 = null_type, 
-      typename T2 = null_type, 
-      typename T3 = null_type, 
+      typename T1 = null_type,
+      typename T2 = null_type,
+      typename T3 = null_type,
       typename T4 = null_type,
       typename T5 = null_type,
       typename T6 = null_type,
@@ -67,6 +67,10 @@ namespace tuples {
       typename T10 = null_type
     >
     class tuple;
+
+// forward declaration of cons
+    template<typename Head, typename Tail = null_type>
+    struct cons;
 
     namespace detail {
 
@@ -92,17 +96,70 @@ namespace tuples {
       struct swallow_assign
       {
         template<typename T>
-        swallow_assign& operator=(const T&)
+        swallow_assign const& operator=(const T&) const
         {
           return *this;
         }
       };
 
     template <typename T> struct add_const_reference : add_reference<typename add_const<T>::type> {};
+
+    template <class MyTail>
+    struct init_tail
+    {
+        // Each of vc6 and vc7 seem to require a different formulation
+        // of this return type
+        template <class H, class T>
+#if BOOST_WORKAROUND(BOOST_MSVC, == 1200)
+        static typename add_reference<typename add_const<T>::type>::type
+#else
+        static typename add_const_reference<T>::type
+#endif
+        execute( cons<H,T> const& u, long )
+        {
+            return u.get_tail();
+        }
+    };
+
+    template <>
+    struct init_tail<null_type>
+    {
+        template <class H>
+        static null_type execute( cons<H,null_type> const& u, long )
+        {
+            return null_type();
+        }
+
+        template <class U>
+        static null_type execute(U const&, ...)
+        {
+            return null_type();
+        }
+     private:
+        template <class H, class T>
+        void execute( cons<H,T> const&, int);
+    };
+
+    template <class Other>
+    Other const&
+    init_head( Other const& u, ... )
+    {
+        return u;
+    }
+
+    template <class H, class T>
+    typename add_reference<typename add_const<H>::type>::type
+    init_head( cons<H,T> const& u, int )
+    {
+        return u.get_head();
+    }
+
+    inline char**** init_head(null_type const&, int);
+
   } // end of namespace detail
 
     // cons builds a heterogenous list of types
-   template<typename Head, typename Tail = null_type>
+   template<typename Head, typename Tail>
    struct cons
    {
      typedef cons self_type;
@@ -119,26 +176,28 @@ namespace tuples {
      tail_type tail;
 
      head_ref get_head() { return head; }
-     tail_ref get_tail() { return tail; }  
+     tail_ref get_tail() { return tail; }
 
      head_cref get_head() const { return head; }
      tail_cref get_tail() const { return tail; }
-  
+
+     cons() : head(), tail() {}
+
 #if defined BOOST_MSVC
       template<typename Tail>
-      explicit cons(head_cref h /* = head_type() */, // causes MSVC 6.5 to barf.
+      cons(head_cref h /* = head_type() */, // causes MSVC 6.5 to barf.
                     const Tail& t) : head(h), tail(t.head, t.tail)
       {
       }
 
-      explicit cons(head_cref h /* = head_type() */, // causes MSVC 6.5 to barf.
+      cons(head_cref h /* = head_type() */, // causes MSVC 6.5 to barf.
                     const null_type& t) : head(h), tail(t)
       {
       }
 
 #else
       template<typename T>
-      explicit cons(head_cref h, const T& t) : 
+      explicit cons(head_cref h, const T& t) :
         head(h), tail(t.head, t.tail)
       {
       }
@@ -150,6 +209,12 @@ namespace tuples {
       }
 #endif
 
+      template <class U>
+      cons( const U& u )
+        : head(detail::init_head(u, 0))
+        , tail(detail::init_tail<Tail>::execute(u, 0L))
+       {
+       }
 
       template<typename Other>
       cons& operator=(const Other& other)
@@ -159,13 +224,13 @@ namespace tuples {
         return *this;
       }
     };
-  
+
     namespace detail {
 
       // Determines if the parameter is null_type
       template<typename T> struct is_null_type { enum { RET = 0 }; };
       template<> struct is_null_type<null_type> { enum { RET = 1 }; };
-      
+
       /* Build a cons structure from the given Head and Tail. If both are null_type,
       return null_type. */
       template<typename Head, typename Tail>
@@ -185,15 +250,15 @@ namespace tuples {
 
       // Map the N elements of a tuple into a cons list
       template<
-        typename T1, 
-        typename T2 = null_type, 
-        typename T3 = null_type, 
-        typename T4 = null_type, 
-        typename T5 = null_type, 
-        typename T6 = null_type, 
-        typename T7 = null_type, 
-        typename T8 = null_type, 
-        typename T9 = null_type, 
+        typename T1,
+        typename T2 = null_type,
+        typename T3 = null_type,
+        typename T4 = null_type,
+        typename T5 = null_type,
+        typename T6 = null_type,
+        typename T7 = null_type,
+        typename T8 = null_type,
+        typename T9 = null_type,
         typename T10 = null_type
       >
       struct map_tuple_to_cons
@@ -338,7 +403,7 @@ namespace tuples {
     {
       BOOST_STATIC_CONSTANT(int, value = 1 + length<typename Tuple::tail_type>::value);
     };
-    
+
     template<> struct length<tuple<> > {
       BOOST_STATIC_CONSTANT(int, value = 0);
     };
@@ -396,9 +461,9 @@ namespace tuples {
 
     // tuple class
     template<
-      typename T1, 
-      typename T2, 
-      typename T3, 
+      typename T1,
+      typename T2,
+      typename T3,
       typename T4,
       typename T5,
       typename T6,
@@ -407,7 +472,7 @@ namespace tuples {
       typename T9,
       typename T10
     >
-    class tuple : 
+    class tuple :
       public detail::map_tuple_to_cons<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10>::cons1
     {
     private:
@@ -437,23 +502,31 @@ namespace tuples {
       typedef cons1 inherited;
       typedef tuple self_type;
 
-      explicit tuple(t1_cref t1 = T1(), 
-                     t2_cref t2 = T2(),
-                     t3_cref t3 = T3(),
-                     t4_cref t4 = T4(),
-                     t5_cref t5 = T5(),
-                     t6_cref t6 = T6(),
-                     t7_cref t7 = T7(),
-                     t8_cref t8 = T8(),
-                     t9_cref t9 = T9(),
-                     t10_cref t10 = T10()
-          ) :
+      tuple() : cons1(T1(), cons2(T2(), cons3(T3(), cons4(T4(), cons5(T5(), cons6(T6(),cons7(T7(),cons8(T8(),cons9(T9(),cons10(T10()))))))))))
+        {}
+
+      tuple(
+          t1_cref t1,
+          t2_cref t2,
+          t3_cref t3 = T3(),
+          t4_cref t4 = T4(),
+          t5_cref t5 = T5(),
+          t6_cref t6 = T6(),
+          t7_cref t7 = T7(),
+          t8_cref t8 = T8(),
+          t9_cref t9 = T9(),
+          t10_cref t10 = T10()
+      ) :
         cons1(t1, cons2(t2, cons3(t3, cons4(t4, cons5(t5, cons6(t6,cons7(t7,cons8(t8,cons9(t9,cons10(t10))))))))))
       {
       }
 
+      explicit tuple(t1_cref t1)
+        : cons1(t1, cons2(T2(), cons3(T3(), cons4(T4(), cons5(T5(), cons6(T6(),cons7(T7(),cons8(T8(),cons9(T9(),cons10(T10()))))))))))
+      {}
+
       template<typename Head, typename Tail>
-      explicit tuple(const cons<Head, Tail>& other) : 
+      tuple(const cons<Head, Tail>& other) :
         cons1(other.head, other.tail)
       {
       }
@@ -549,7 +622,7 @@ namespace tuples {
     {
       return tuple<T1, T2, T3, T4, T5, T6>(t1, t2, t3, t4, t5, t6);
     }
-  
+
     // Make a tuple
     template<typename T1, typename T2, typename T3, typename T4, typename T5, typename T6, typename T7>
     inline
@@ -598,7 +671,7 @@ namespace tuples {
     // Tie variables into a tuple
     template<typename T1, typename T2>
     inline
-    tuple<detail::assign_to_pointee<T1>, 
+    tuple<detail::assign_to_pointee<T1>,
       detail::assign_to_pointee<T2> >
     tie(T1& t1, T2& t2)
     {
@@ -609,8 +682,8 @@ namespace tuples {
     // Tie variables into a tuple
     template<typename T1, typename T2, typename T3>
     inline
-    tuple<detail::assign_to_pointee<T1>, 
-      detail::assign_to_pointee<T2>, 
+    tuple<detail::assign_to_pointee<T1>,
+      detail::assign_to_pointee<T2>,
       detail::assign_to_pointee<T3> >
     tie(T1& t1, T2& t2, T3& t3)
     {
@@ -622,9 +695,9 @@ namespace tuples {
     // Tie variables into a tuple
     template<typename T1, typename T2, typename T3, typename T4>
     inline
-    tuple<detail::assign_to_pointee<T1>, 
-      detail::assign_to_pointee<T2>, 
-      detail::assign_to_pointee<T3>, 
+    tuple<detail::assign_to_pointee<T1>,
+      detail::assign_to_pointee<T2>,
+      detail::assign_to_pointee<T3>,
       detail::assign_to_pointee<T4> >
     tie(T1& t1, T2& t2, T3& t3, T4& t4)
     {
@@ -637,10 +710,10 @@ namespace tuples {
     // Tie variables into a tuple
     template<typename T1, typename T2, typename T3, typename T4, typename T5>
     inline
-    tuple<detail::assign_to_pointee<T1>, 
-      detail::assign_to_pointee<T2>, 
-      detail::assign_to_pointee<T3>, 
-      detail::assign_to_pointee<T4>, 
+    tuple<detail::assign_to_pointee<T1>,
+      detail::assign_to_pointee<T2>,
+      detail::assign_to_pointee<T3>,
+      detail::assign_to_pointee<T4>,
       detail::assign_to_pointee<T5> >
     tie(T1& t1, T2& t2, T3& t3, T4& t4, T5 &t5)
     {
@@ -654,11 +727,11 @@ namespace tuples {
     // Tie variables into a tuple
     template<typename T1, typename T2, typename T3, typename T4, typename T5, typename T6>
     inline
-    tuple<detail::assign_to_pointee<T1>, 
-      detail::assign_to_pointee<T2>, 
-      detail::assign_to_pointee<T3>, 
-      detail::assign_to_pointee<T4>, 
-      detail::assign_to_pointee<T5>, 
+    tuple<detail::assign_to_pointee<T1>,
+      detail::assign_to_pointee<T2>,
+      detail::assign_to_pointee<T3>,
+      detail::assign_to_pointee<T4>,
+      detail::assign_to_pointee<T5>,
       detail::assign_to_pointee<T6> >
     tie(T1& t1, T2& t2, T3& t3, T4& t4, T5 &t5, T6 &t6)
     {
@@ -673,12 +746,12 @@ namespace tuples {
     // Tie variables into a tuple
     template<typename T1, typename T2, typename T3, typename T4, typename T5, typename T6, typename T7>
     inline
-    tuple<detail::assign_to_pointee<T1>, 
-      detail::assign_to_pointee<T2>, 
-      detail::assign_to_pointee<T3>, 
-      detail::assign_to_pointee<T4>, 
-      detail::assign_to_pointee<T5>, 
-      detail::assign_to_pointee<T6>, 
+    tuple<detail::assign_to_pointee<T1>,
+      detail::assign_to_pointee<T2>,
+      detail::assign_to_pointee<T3>,
+      detail::assign_to_pointee<T4>,
+      detail::assign_to_pointee<T5>,
+      detail::assign_to_pointee<T6>,
       detail::assign_to_pointee<T7> >
     tie(T1& t1, T2& t2, T3& t3, T4& t4, T5 &t5, T6 &t6, T7 &t7)
     {
@@ -694,13 +767,13 @@ namespace tuples {
     // Tie variables into a tuple
     template<typename T1, typename T2, typename T3, typename T4, typename T5, typename T6, typename T7, typename T8>
     inline
-    tuple<detail::assign_to_pointee<T1>, 
-      detail::assign_to_pointee<T2>, 
-      detail::assign_to_pointee<T3>, 
-      detail::assign_to_pointee<T4>, 
-      detail::assign_to_pointee<T5>, 
-      detail::assign_to_pointee<T6>, 
-      detail::assign_to_pointee<T7>, 
+    tuple<detail::assign_to_pointee<T1>,
+      detail::assign_to_pointee<T2>,
+      detail::assign_to_pointee<T3>,
+      detail::assign_to_pointee<T4>,
+      detail::assign_to_pointee<T5>,
+      detail::assign_to_pointee<T6>,
+      detail::assign_to_pointee<T7>,
       detail::assign_to_pointee<T8> >
     tie(T1& t1, T2& t2, T3& t3, T4& t4, T5 &t5, T6 &t6, T7 &t7, T8 &t8)
     {
@@ -717,14 +790,14 @@ namespace tuples {
     // Tie variables into a tuple
     template<typename T1, typename T2, typename T3, typename T4, typename T5, typename T6, typename T7, typename T8, typename T9>
     inline
-    tuple<detail::assign_to_pointee<T1>, 
-      detail::assign_to_pointee<T2>, 
-      detail::assign_to_pointee<T3>, 
-      detail::assign_to_pointee<T4>, 
-      detail::assign_to_pointee<T5>, 
-      detail::assign_to_pointee<T6>, 
-      detail::assign_to_pointee<T7>, 
-      detail::assign_to_pointee<T8>, 
+    tuple<detail::assign_to_pointee<T1>,
+      detail::assign_to_pointee<T2>,
+      detail::assign_to_pointee<T3>,
+      detail::assign_to_pointee<T4>,
+      detail::assign_to_pointee<T5>,
+      detail::assign_to_pointee<T6>,
+      detail::assign_to_pointee<T7>,
+      detail::assign_to_pointee<T8>,
       detail::assign_to_pointee<T9> >
     tie(T1& t1, T2& t2, T3& t3, T4& t4, T5 &t5, T6 &t6, T7 &t7, T8 &t8, T9 &t9)
     {
@@ -741,15 +814,15 @@ namespace tuples {
     // Tie variables into a tuple
     template<typename T1, typename T2, typename T3, typename T4, typename T5, typename T6, typename T7, typename T8, typename T9, typename T10>
     inline
-    tuple<detail::assign_to_pointee<T1>, 
-      detail::assign_to_pointee<T2>, 
-      detail::assign_to_pointee<T3>, 
-      detail::assign_to_pointee<T4>, 
-      detail::assign_to_pointee<T5>, 
-      detail::assign_to_pointee<T6>, 
-      detail::assign_to_pointee<T7>, 
-      detail::assign_to_pointee<T8>, 
-      detail::assign_to_pointee<T9>, 
+    tuple<detail::assign_to_pointee<T1>,
+      detail::assign_to_pointee<T2>,
+      detail::assign_to_pointee<T3>,
+      detail::assign_to_pointee<T4>,
+      detail::assign_to_pointee<T5>,
+      detail::assign_to_pointee<T6>,
+      detail::assign_to_pointee<T7>,
+      detail::assign_to_pointee<T8>,
+      detail::assign_to_pointee<T9>,
       detail::assign_to_pointee<T10> >
     tie(T1& t1, T2& t2, T3& t3, T4& t4, T5 &t5, T6 &t6, T7 &t7, T8 &t8, T9 &t9, T10 &t10)
     {
@@ -764,13 +837,9 @@ namespace tuples {
                         detail::assign_to_pointee<T9>(&t9),
                         detail::assign_to_pointee<T10>(&t10));
     }
-    // "ignore" allows tuple positions to be ignored when using "tie". 
-    namespace {
-#if (defined(BOOST_MSVC) && BOOST_MSVC <= 1300) || (defined(__DECCXX_VER) && __DECCXX_VER <= 60590031)
-      static
-#endif 
-      detail::swallow_assign ignore;
-    }
+    // "ignore" allows tuple positions to be ignored when using "tie".
+
+detail::swallow_assign const ignore = detail::swallow_assign();
 
 } // namespace tuples
 } // namespace boost

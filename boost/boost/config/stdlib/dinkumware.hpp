@@ -1,7 +1,11 @@
-//  (C) Copyright Boost.org 2001. Permission to copy, use, modify, sell and
-//  distribute this software is granted provided this copyright notice appears
-//  in all copies. This software is provided "as is" without express or implied
-//  warranty, and with no claim as to its suitability for any purpose.
+//  (C) Copyright John Maddock 2001 - 2003.
+//  (C) Copyright Jens Maurer 2001.
+//  (C) Copyright Peter Dimov 2001.
+//  (C) Copyright David Abrahams 2002.
+//  (C) Copyright Guillaume Melquiond 2003.
+//  Use, modification and distribution are subject to the
+//  Boost Software License, Version 1.0. (See accompanying file
+//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
 
 //  See http://www.boost.org for most recent version.
 
@@ -18,14 +22,14 @@
 #if defined(_CPPLIB_VER) && (_CPPLIB_VER >= 306)
    // full dinkumware 3.06 and above
    // fully conforming provided the compiler supports it:
-#  if !(defined(_GLOBAL_USING) && (_GLOBAL_USING+0 > 0)) && !defined(_STD) && !(defined(__ICC) && (__ICC >= 700))   // can be defined in yvals.h
+#  if !(defined(_GLOBAL_USING) && (_GLOBAL_USING+0 > 0)) && !defined(__BORLANDC__) && !defined(_STD) && !(defined(__ICC) && (__ICC >= 700))   // can be defined in yvals.h
 #     define BOOST_NO_STDC_NAMESPACE
 #  endif
 #  if !(defined(_HAS_MEMBER_TEMPLATES_REBIND) && (_HAS_MEMBER_TEMPLATES_REBIND+0 > 0)) && !(defined(_MSC_VER) && (_MSC_VER > 1300)) && defined(BOOST_MSVC)
 #     define BOOST_NO_STD_ALLOCATOR
 #  endif
 #  define BOOST_HAS_PARTIAL_STD_ALLOCATOR
-#  if defined(_MSC_VER) && (_MSC_VER < 1300)
+#  if (defined(_MSC_VER) && (_MSC_VER < 1300)) && !defined(__BORLANDC__)
       // if this lib version is set up for vc6 then there is no std::use_facet:
 #     define BOOST_NO_STD_USE_FACET
 #     define BOOST_HAS_TWO_ARG_USE_FACET
@@ -38,7 +42,7 @@
 #  if !defined(_LONGLONG) && (_CPPLIB_VER <= 310)
 #     define BOOST_NO_MS_INT64_NUMERIC_LIMITS
 #  endif
-// 3.06 appears to have (non-sgi versions of) <hash_set> & <hash_map>, 
+// 3.06 appears to have (non-sgi versions of) <hash_set> & <hash_map>,
 // and no <slist> at all
 #else
 #  define BOOST_MSVC_STD_ITERATOR 1
@@ -58,7 +62,7 @@
 #endif
 
 
-#if (defined(_MSC_VER) && (_MSC_VER <= 1300)) || !defined(_CPPLIB_VER) || (_CPPLIB_VER < 306)
+#if (defined(_MSC_VER) && (_MSC_VER <= 1300) && !defined(__BORLANDC__)) || !defined(_CPPLIB_VER) || (_CPPLIB_VER < 306)
    // if we're using a dinkum lib that's
    // been configured for VC6/7 then there is
    // no iterator traits (true even for icl)
@@ -82,6 +86,7 @@
 #else
 #  define BOOST_STDLIB "Dinkumware standard library version 1.x"
 #endif
+
 
 
 

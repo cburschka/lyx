@@ -1,15 +1,13 @@
-// Copyright (C) 2002 Ronald Garcia
-//
-// Permission to copy, use, sell and distribute this software is granted
-// provided this copyright notice appears in all copies. 
-// Permission to modify the code and to distribute modified code is granted
-// provided this copyright notice appears in all copies, and a notice 
-// that the code was modified is included with the copyright notice.
-//
-// This software is provided "as is" without express or implied warranty, 
-// and with no claim as to its suitability for any purpose.
-//
+// Copyright 2002 The Trustees of Indiana University.
 
+// Use, modification and distribution is subject to the Boost Software 
+// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
+// http://www.boost.org/LICENSE_1_0.txt)
+
+//  Boost.MultiArray Library
+//  Authors: Ronald Garcia
+//           Jeremy Siek
+//           Andrew Lumsdaine
 //  See http://www.boost.org/libs/multi_array for documentation.
 
 #ifndef BOOST_MULTI_ARRAY_RG071801_HPP
@@ -52,18 +50,16 @@ namespace boost {
 
 template<typename T, std::size_t NumDims,
   typename Allocator>
-class multi_array : 
+class multi_array :
   public multi_array_ref<T,NumDims>
 {
   typedef multi_array_ref<T,NumDims> super_type;
-public: 
+public:
   typedef typename super_type::value_type value_type;
   typedef typename super_type::reference reference;
   typedef typename super_type::const_reference const_reference;
   typedef typename super_type::iterator iterator;
   typedef typename super_type::const_iterator const_iterator;
-  typedef typename super_type::iter_base iter_base;
-  typedef typename super_type::const_iter_base const_iter_base;
   typedef typename super_type::reverse_iterator reverse_iterator;
   typedef typename super_type::const_reverse_iterator const_reverse_iterator;
   typedef typename super_type::element element;
@@ -83,17 +79,27 @@ public:
     typedef boost::detail::multi_array::multi_array_view<T,NDims> type;
   };
 
+  explicit multi_array() :
+    super_type((T*)initial_base_) {
+    allocate_space();
+  }
+    
   template <class ExtentList>
-  explicit multi_array(ExtentList const& extents) :
+  explicit multi_array(
+      ExtentList const& extents
+#ifdef BOOST_NO_FUNCTION_TEMPLATE_ORDERING
+    , typename detail::multi_array::disable_non_sub_array<ExtentList>::type* = 0
+#endif 
+  ) :
     super_type((T*)initial_base_,extents) {
     boost::function_requires<
       detail::multi_array::CollectionConcept<ExtentList> >();
     allocate_space();
   }
-
+    
   template <class ExtentList>
   explicit multi_array(ExtentList const& extents,
-                       const general_storage_order<NumDims>& so) : 
+                       const general_storage_order<NumDims>& so) :
     super_type((T*)initial_base_,extents,so) {
     boost::function_requires<
       detail::multi_array::CollectionConcept<ExtentList> >();
@@ -160,8 +166,8 @@ public:
     allocate_space();
     std::copy(rhs.begin(),rhs.end(),this->begin());
   }
-
-  // Since assignment is a deep copy, multi_array_ref 
+    
+  // Since assignment is a deep copy, multi_array_ref
   // contains all the necessary code.
   template <typename ConstMultiArray>
   multi_array& operator=(const ConstMultiArray& other) {
@@ -191,13 +197,13 @@ public:
     boost::array<size_type,NumDims> min_extents;
 
     const size_type& (*min)(const size_type&, const size_type&) =
-      std::min<size_type>;
+      std::min;
     std::transform(new_array.extent_list_.begin(),new_array.extent_list_.end(),
                    this->extent_list_.begin(),
                    min_extents.begin(),
                    min);
 
-    
+
     // typedef boost::array<index,NumDims> index_list;
     // Build index_gen objects to create views with the same shape
 
@@ -217,8 +223,10 @@ public:
                    detail::multi_array::populate_index_ranges());
 
     // Build same-shape views of the two arrays
-    typename multi_array::array_view<3>::type view_old = (*this)[old_idxes];
-    typename multi_array::array_view<3>::type view_new = new_array[new_idxes];
+    typename
+      multi_array::BOOST_NESTED_TEMPLATE array_view<NumDims>::type view_old = (*this)[old_idxes];
+    typename
+      multi_array::BOOST_NESTED_TEMPLATE array_view<NumDims>::type view_new = new_array[new_idxes];
 
     // Set the right portion of the new array
     view_new = view_old;
@@ -260,8 +268,8 @@ private:
         allocator_.destroy(i);
       allocator_.deallocate(base_,allocated_elements_);
     }
-  }    
-  
+  }
+
   typedef boost::array<size_type,NumDims> size_list;
   typedef boost::array<index,NumDims> index_list;
 

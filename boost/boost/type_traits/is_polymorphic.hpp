@@ -1,7 +1,9 @@
-//  (C) Copyright John Maddock 2000. Permission to copy, use, modify, sell and   
-//  distribute this software is granted provided this copyright notice appears
-//  in all copies. This software is provided "as is" without express or implied
-//  warranty, and with no claim as to its suitability for any purpose.
+//  (C) Copyright John Maddock 2000. 
+//  Use, modification and distribution are subject to the Boost Software License,
+//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
+//  http://www.boost.org/LICENSE_1_0.txt).
+//
+//  See http://www.boost.org/libs/type_traits for most recent version including documentation.
 
 #ifndef BOOST_TT_IS_POLYMORPHIC_HPP
 #define BOOST_TT_IS_POLYMORPHIC_HPP
@@ -34,9 +36,11 @@ struct is_polymorphic_imp1
    {
       d2();
       virtual ~d2()throw();
-#  ifndef BOOST_MSVC
-      // for some reason this messes up VC++ when T has virtual bases:
-      virtual void foo();
+#  if !defined(BOOST_MSVC) && !defined(__ICL)
+      // for some reason this messes up VC++ when T has virtual bases,
+      // probably likewise for compilers that use the same ABI:
+      struct unique{};
+      virtual void foo(unique*);
 #  endif
       char padding[256];
    };

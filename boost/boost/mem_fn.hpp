@@ -1,8 +1,10 @@
 #ifndef BOOST_MEM_FN_HPP_INCLUDED
 #define BOOST_MEM_FN_HPP_INCLUDED
 
-#if _MSC_VER+0 >= 1020
-#pragma once
+// MS compatible compilers support #pragma once
+
+#if defined(_MSC_VER) && (_MSC_VER >= 1020)
+# pragma once
 #endif
 
 //
@@ -21,6 +23,7 @@
 
 #include <boost/config.hpp>
 #include <boost/get_pointer.hpp>
+#include <boost/detail/workaround.hpp>
 
 namespace boost
 {
@@ -292,7 +295,7 @@ public:
         return call(u, &u);
     }
 
-#if !defined(BOOST_MSVC) || (BOOST_MSVC > 1300)
+#if !BOOST_WORKAROUND(BOOST_MSVC, <= 1300) && !BOOST_WORKAROUND(__MWERKS__, BOOST_TESTED_AT(0x3003))
 
     R & operator()(T & t) const
     {

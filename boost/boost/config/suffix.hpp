@@ -1,9 +1,16 @@
 //  Boost config.hpp configuration header file  ------------------------------//
 
-//  (C) Copyright Boost.org 2001. Permission to copy, use, modify, sell and
-//  distribute this software is granted provided this copyright notice appears
-//  in all copies. This software is provided "as is" without express or implied
-//  warranty, and with no claim as to its suitability for any purpose.
+//  (C) Copyright John Maddock 2001 - 2003. 
+//  (C) Copyright Darin Adler 2001. 
+//  (C) Copyright Peter Dimov 2001. 
+//  (C) Copyright Bill Kempf 2002. 
+//  (C) Copyright Jens Maurer 2002. 
+//  (C) Copyright David Abrahams 2002 - 2003. 
+//  (C) Copyright Gennaro Prota 2003. 
+//  (C) Copyright Eric Friedman 2003. 
+//  Use, modification and distribution are subject to the 
+//  Boost Software License, Version 1.0. (See accompanying file 
+//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
 
 //  See http://www.boost.org for most recent version.
 
@@ -101,6 +108,14 @@
 #  endif
 
 //
+// Without partial specialization, we can't have array-type partial specialisations:
+//
+#  if defined(BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION) \
+      && !defined(BOOST_NO_ARRAY_TYPE_SPECIALIZATIONS)
+#     define BOOST_NO_ARRAY_TYPE_SPECIALIZATIONS
+#  endif
+
+//
 // Without partial specialization, std::iterator_traits can't work:
 //
 #  if defined(BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION) \
@@ -127,6 +142,13 @@
       && !defined(BOOST_NO_STD_ALLOCATOR)
 #     define BOOST_NO_STD_ALLOCATOR
 #  endif
+
+//
+// without ADL support then using declarations will break ADL as well:
+//
+#if defined(BOOST_NO_ARGUMENT_DEPENDENT_LOOKUP) && !defined(BOOST_FUNCTION_SCOPE_USING_DECLARATION_BREAKS_ADL)
+#  define BOOST_FUNCTION_SCOPE_USING_DECLARATION_BREAKS_ADL
+#endif
 
 //
 // If we have a standard allocator, then we have a partial one as well:
@@ -208,6 +230,17 @@
 #endif
 
 //
+// Turn threading detail macros off if we don't (want to) use threading
+//
+#ifndef BOOST_HAS_THREADS
+#  undef BOOST_HAS_PTHREADS
+#  undef BOOST_HAS_PTHREAD_MUTEXATTR_SETTYPE
+#  undef BOOST_HAS_WINTHREADS
+#  undef BOOST_HAS_BETHREADS
+#  undef BOOST_HAS_MPTASKS
+#endif
+
+//
 // If the compiler claims to be C99 conformant, then it had better
 // have a <stdint.h>:
 //
@@ -226,6 +259,17 @@
 #  ifndef BOOST_HAS_HASH
 #     define BOOST_NO_HASH
 #  endif
+
+//  BOOST_HAS_ABI_HEADERS
+//  This macro gets set if we have headers that fix the ABI,
+//  and prevent ODR violations when linking to external libraries:
+#if defined(BOOST_ABI_PREFIX) && defined(BOOST_ABI_SUFFIX) && !defined(BOOST_HAS_ABI_HEADERS)
+#  define BOOST_HAS_ABI_HEADERS
+#endif
+
+#if defined(BOOST_HAS_ABI_HEADERS) && defined(BOOST_DISABLE_ABI_HEADERS)
+#  undef BOOST_HAS_ABI_HEADERS
+#endif
 
 //  BOOST_NO_STDC_NAMESPACE workaround  --------------------------------------//
 //  Because std::size_t usage is so common, even in boost headers which do not
@@ -337,6 +381,86 @@ namespace std {
 #  define BOOST_DEDUCED_TYPENAME
 #endif
 
+// BOOST_[APPEND_]EXPLICIT_TEMPLATE_[NON_]TYPE macros --------------------------//
+//
+// Some compilers have problems with function templates whose
+// template parameters don't appear in the function parameter
+// list (basically they just link one instantiation of the
+// template in the final executable). These macros provide a
+// uniform way to cope with the problem with no effects on the
+// calling syntax.
+
+// Example:
+//
+//  #include <iostream>
+//  #include <ostream>
+//  #include <typeinfo>
+//
+//  template <int n>
+//  void f() { std::cout << n << ' '; }
+//
+//  template <typename T>
+//  void g() { std::cout << typeid(T).name() << ' '; }
+//
+//  int main() {
+//    f<1>();
+//    f<2>();
+//
+//    g<int>();
+//    g<double>();
+//  }
+//
+// With VC++ 6.0 the output is:
+//
+//   2 2 double double
+//
+// To fix it, write
+//
+//   template <int n>
+//   void f(BOOST_EXPLICIT_TEMPLATE_NON_TYPE(int, n)) { ... }
+//
+//   template <typename T>
+//   void g(BOOST_EXPLICIT_TEMPLATE_TYPE(T)) { ... }
+//
+
+
+#if defined BOOST_NO_EXPLICIT_FUNCTION_TEMPLATE_ARGUMENTS
+
+#  include "boost/type.hpp"
+#  include "boost/non_type.hpp"
+
+#  define BOOST_EXPLICIT_TEMPLATE_TYPE(t)         boost::type<t>* = 0
+#  define BOOST_EXPLICIT_TEMPLATE_TYPE_SPEC(t)    boost::type<t>*
+#  define BOOST_EXPLICIT_TEMPLATE_NON_TYPE(t, v)  boost::non_type<t, v>* = 0
+#  define BOOST_EXPLICIT_TEMPLATE_NON_TYPE_SPEC(t, v)  boost::non_type<t, v>*
+
+#  define BOOST_APPEND_EXPLICIT_TEMPLATE_TYPE(t)         \
+             , BOOST_EXPLICIT_TEMPLATE_TYPE(t)
+#  define BOOST_APPEND_EXPLICIT_TEMPLATE_TYPE_SPEC(t)    \
+             , BOOST_EXPLICIT_TEMPLATE_TYPE_SPEC(t)
+#  define BOOST_APPEND_EXPLICIT_TEMPLATE_NON_TYPE(t, v)  \
+             , BOOST_EXPLICIT_TEMPLATE_NON_TYPE(t, v)
+#  define BOOST_APPEND_EXPLICIT_TEMPLATE_NON_TYPE_SPEC(t, v)  \
+             , BOOST_EXPLICIT_TEMPLATE_NON_TYPE_SPEC(t, v)
+
+#else
+
+// no workaround needed: expand to nothing
+
+#  define BOOST_EXPLICIT_TEMPLATE_TYPE(t)
+#  define BOOST_EXPLICIT_TEMPLATE_TYPE_SPEC(t)
+#  define BOOST_EXPLICIT_TEMPLATE_NON_TYPE(t, v)
+#  define BOOST_EXPLICIT_TEMPLATE_NON_TYPE_SPEC(t, v)
+
+#  define BOOST_APPEND_EXPLICIT_TEMPLATE_TYPE(t)
+#  define BOOST_APPEND_EXPLICIT_TEMPLATE_TYPE_SPEC(t)
+#  define BOOST_APPEND_EXPLICIT_TEMPLATE_NON_TYPE(t, v)
+#  define BOOST_APPEND_EXPLICIT_TEMPLATE_NON_TYPE_SPEC(t, v)
+
+
+#endif // defined BOOST_NO_EXPLICIT_FUNCTION_TEMPLATE_ARGUMENTS
+
+
 // ---------------------------------------------------------------------------//
 
 //
@@ -379,5 +503,6 @@ namespace std {
 #  endif
 
 #endif
+
 
 

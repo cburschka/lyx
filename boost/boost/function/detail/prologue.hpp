@@ -1,15 +1,9 @@
 // Boost.Function library
 
-// Copyright (C) 2002-2003 Doug Gregor (gregod@cs.rpi.edu)
-//
-// Permission to copy, use, sell and distribute this software is granted
-// provided this copyright notice appears in all copies.
-// Permission to modify the code and to distribute modified code is granted
-// provided this copyright notice appears in all copies, and a notice
-// that the code was modified is included with the copyright notice.
-//
-// This software is provided "as is" without express or implied warranty,
-// and with no claim as to its suitability for any purpose.
+//  Copyright Doug Gregor 2002-2003. Use, modification and
+//  distribution is subject to the Boost Software License, Version
+//  1.0. (See accompanying file LICENSE_1_0.txt or copy at
+//  http://www.boost.org/LICENSE_1_0.txt)
 
 // For more information, see http://www.boost.org
 
@@ -21,7 +15,7 @@
 #  include <boost/config.hpp>
 #  include <boost/function/function_base.hpp>
 #  include <boost/mem_fn.hpp>
-#  include <boost/type_traits/is_same.hpp>
+#  include <boost/type_traits/is_integral.hpp>
 #  include <boost/preprocessor/enum.hpp>
 #  include <boost/preprocessor/enum_params.hpp>
 #  include <boost/preprocessor/cat.hpp>

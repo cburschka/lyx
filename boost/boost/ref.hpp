@@ -1,13 +1,15 @@
 #ifndef BOOST_REF_HPP_INCLUDED
-# define BOOST_REF_HPP_INCLUDED
+#define BOOST_REF_HPP_INCLUDED
 
-# if _MSC_VER+0 >= 1020
-#  pragma once
-# endif
+// MS compatible compilers support #pragma once
 
-# include <boost/config.hpp>
-# include <boost/utility/addressof.hpp>
-# include <boost/mpl/bool.hpp>
+#if defined(_MSC_VER) && (_MSC_VER >= 1020)
+# pragma once
+#endif
+
+#include <boost/config.hpp>
+#include <boost/utility/addressof.hpp>
+#include <boost/mpl/bool.hpp>
 
 //
 //  ref.hpp - ref/cref, useful helper functions
@@ -38,7 +40,7 @@ public:
 
 #else
 
-    explicit reference_wrapper(T& t): t_(addressof(t)) {}
+    explicit reference_wrapper(T& t): t_(boost::addressof(t)) {}
 
 #endif
 

@@ -1,15 +1,9 @@
 // Boost.Signals library
-//
-// Copyright (C) 2001-2002 Doug Gregor (gregod@cs.rpi.edu)
-//
-// Permission to copy, use, sell and distribute this software is granted
-// provided this copyright notice appears in all copies.
-// Permission to modify the code and to distribute modified code is granted
-// provided this copyright notice appears in all copies, and a notice
-// that the code was modified is included with the copyright notice.
-//
-// This software is provided "as is" without express or implied warranty,
-// and with no claim as to its suitability for any purpose.
+
+// Copyright Doug Gregor 2001-2003. Use, modification and
+// distribution is subject to the Boost Software License, Version
+// 1.0. (See accompanying file LICENSE_1_0.txt or copy at
+// http://www.boost.org/LICENSE_1_0.txt)
 
 // For more information, see http://www.boost.org
 
@@ -21,6 +15,10 @@
 #include <boost/signals/trackable.hpp>
 #include <boost/visit_each.hpp>
 #include <cassert>
+
+#ifdef BOOST_HAS_ABI_HEADERS
+#  include BOOST_ABI_PREFIX
+#endif
 
 namespace boost {
   namespace BOOST_SIGNALS_NAMESPACE {
@@ -88,7 +86,9 @@ namespace boost {
     typename BOOST_SIGNALS_NAMESPACE::detail::get_slot_tag<F>::type
     tag_type(const F&)
     {
-      typename BOOST_SIGNALS_NAMESPACE::detail::get_slot_tag<F>::type tag;
+      typedef typename BOOST_SIGNALS_NAMESPACE::detail::get_slot_tag<F>::type
+        the_tag_type;
+      the_tag_type tag = the_tag_type();
       return tag;
     }
 
@@ -132,5 +132,9 @@ namespace boost {
     SlotFunction slot_function;
   };
 } // end namespace boost
+
+#ifdef BOOST_HAS_ABI_HEADERS
+#  include BOOST_ABI_SUFFIX
+#endif
 
 #endif // BOOST_SIGNALS_SLOT_HEADER

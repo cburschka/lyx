@@ -1,19 +1,30 @@
 
-// (C) Copyright Dave Abrahams, Steve Cleary, Beman Dawes, Howard
-// Hinnant & John Maddock 2000.  Permission to copy, use, modify,
-// sell and distribute this software is granted provided this
-// copyright notice appears in all copies. This software is provided
-// "as is" without express or implied warranty, and with no claim as
-// to its suitability for any purpose.
+//  (C) Copyright Dave Abrahams, Steve Cleary, Beman Dawes, 
+//      Howard Hinnant and John Maddock 2000. 
+//  (C) Copyright Mat Marcus, Jesse Jones and Adobe Systems Inc 2001
+
+//  Use, modification and distribution are subject to the Boost Software License,
+//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
+//  http://www.boost.org/LICENSE_1_0.txt).
 //
-// See http://www.boost.org for most recent version including documentation.
+//  See http://www.boost.org/libs/type_traits for most recent version including documentation.
+
+//    Fixed is_pointer, is_reference, is_const, is_volatile, is_same, 
+//    is_member_pointer based on the Simulated Partial Specialization work 
+//    of Mat Marcus and Jesse Jones. See  http://opensource.adobe.com or 
+//    http://groups.yahoo.com/group/boost/message/5441 
+//    Some workarounds in here use ideas suggested from "Generic<Programming>: 
+//    Mappings between Types and Values" 
+//    by Andrei Alexandrescu (see http://www.cuj.com/experts/1810/alexandr.html).
+
 
 #ifndef BOOST_TT_IS_MEMBER_POINTER_HPP_INCLUDED
 #define BOOST_TT_IS_MEMBER_POINTER_HPP_INCLUDED
 
 #include "boost/type_traits/config.hpp"
+#include "boost/detail/workaround.hpp"
 
-#if !defined(BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION) && !defined(__BORLANDC__)
+#if !defined(BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION) && !BOOST_WORKAROUND(__BORLANDC__, < 0x600)
 #   include "boost/type_traits/is_member_function_pointer.hpp"
 #else
 #   include "boost/type_traits/is_reference.hpp"
@@ -29,7 +40,7 @@
 
 namespace boost {
 
-#if defined(__BORLANDC__)
+#if BOOST_WORKAROUND(__BORLANDC__, < 0x600)
 BOOST_TT_AUX_BOOL_TRAIT_DEF1(is_member_pointer,T,false)
 BOOST_TT_AUX_BOOL_TRAIT_PARTIAL_SPEC1_2(typename T,typename U,is_member_pointer,U T::*,true)
 
@@ -58,7 +69,7 @@ struct is_member_pointer_select<false>
     {
         static T& make_t();
         BOOST_STATIC_CONSTANT(
-            bool, value = 
+            bool, value =
             (::boost::type_traits::ice_or<
                 (1 == sizeof(::boost::type_traits::is_mem_fun_pointer_tester(make_t()))),
                 (1 == sizeof(is_member_pointer_tester(make_t())))

@@ -1,9 +1,10 @@
 
-// Copyright (c) 2001 Aleksey Gurtovoy.
-// Permission to copy, use, modify, sell and distribute this software is 
-// granted provided this copyright notice appears in all copies. 
-// This software is provided "as is" without express or implied warranty, 
-// and with no claim as to its suitability for any purpose.
+//  Copyright (c) 2001-2003 Aleksey Gurtovoy.
+//  Use, modification and distribution are subject to the Boost Software License,
+//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
+//  http://www.boost.org/LICENSE_1_0.txt).
+//
+//  See http://www.boost.org/libs/type_traits for most recent version including documentation.
 
 #ifndef BOOST_TT_BROKEN_COMPILER_SPEC_HPP_INCLUDED
 #define BOOST_TT_BROKEN_COMPILER_SPEC_HPP_INCLUDED
@@ -11,18 +12,25 @@
 #include "boost/mpl/aux_/lambda_support.hpp"
 #include "boost/config.hpp"
 
-#if !defined(BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION)
-
-#   define BOOST_TT_BROKEN_COMPILER_SPEC(T) /**/
-
-#else
-
+// these are needed regardless of BOOST_TT_NO_BROKEN_COMPILER_SPEC 
+#if defined(BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION)
 namespace boost { namespace detail {
 template< typename T > struct remove_const_impl     { typedef T type; };
 template< typename T > struct remove_volatile_impl  { typedef T type; };
 template< typename T > struct remove_pointer_impl   { typedef T type; };
 template< typename T > struct remove_reference_impl { typedef T type; };
+typedef int invoke_BOOST_TT_BROKEN_COMPILER_SPEC_outside_all_namespaces;
 }}
+#endif
+
+// agurt, 27/jun/03: disable the workaround if user defined 
+// BOOST_TT_NO_BROKEN_COMPILER_SPEC
+#if    !defined(BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION) \
+    || defined(BOOST_TT_NO_BROKEN_COMPILER_SPEC)
+
+#   define BOOST_TT_BROKEN_COMPILER_SPEC(T) /**/
+
+#else
 
 // same as BOOST_TT_AUX_TYPE_TRAIT_IMPL_SPEC1 macro, except that it
 // never gets #undef-ined
@@ -42,6 +50,9 @@ template<> struct trait##_impl<spec> \
 
 #   define BOOST_TT_AUX_REMOVE_PTR_REF_RANK_1_SPEC(T)                               \
     BOOST_TT_AUX_BROKEN_TYPE_TRAIT_SPEC1(remove_pointer,T*,T)                       \
+    BOOST_TT_AUX_BROKEN_TYPE_TRAIT_SPEC1(remove_pointer,T*const,T)                  \
+    BOOST_TT_AUX_BROKEN_TYPE_TRAIT_SPEC1(remove_pointer,T*volatile,T)               \
+    BOOST_TT_AUX_BROKEN_TYPE_TRAIT_SPEC1(remove_pointer,T*const volatile,T)         \
     BOOST_TT_AUX_BROKEN_TYPE_TRAIT_SPEC1(remove_reference,T&,T)                     \
     /**/
 
@@ -66,6 +77,8 @@ template<> struct trait##_impl<spec> \
 
 #   define BOOST_TT_BROKEN_COMPILER_SPEC(T)                                         \
     namespace boost { namespace detail {                                            \
+    typedef invoke_BOOST_TT_BROKEN_COMPILER_SPEC_outside_all_namespaces             \
+      please_invoke_BOOST_TT_BROKEN_COMPILER_SPEC_outside_all_namespaces;           \
     BOOST_TT_AUX_REMOVE_ALL_RANK_1_SPEC(T)                                          \
     BOOST_TT_AUX_REMOVE_ALL_RANK_2_SPEC(T)                                          \
     BOOST_TT_AUX_REMOVE_ALL_RANK_2_SPEC(T*)                                         \

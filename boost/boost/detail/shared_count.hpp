@@ -1,6 +1,8 @@
 #ifndef BOOST_DETAIL_SHARED_COUNT_HPP_INCLUDED
 #define BOOST_DETAIL_SHARED_COUNT_HPP_INCLUDED
 
+// MS compatible compilers support #pragma once
+
 #if defined(_MSC_VER) && (_MSC_VER >= 1020)
 # pragma once
 #endif
@@ -115,14 +117,21 @@ public:
 
     virtual void * get_deleter(std::type_info const & ti) = 0;
 
-    void add_ref()
+    void add_ref_copy()
     {
 #if defined(BOOST_HAS_THREADS)
         mutex_type::scoped_lock lock(mtx_);
 #endif
-        if(use_count_ == 0 && weak_count_ != 0) boost::throw_exception(boost::bad_weak_ptr());
         ++use_count_;
-        ++weak_count_;
+    }
+
+    void add_ref_lock()
+    {
+#if defined(BOOST_HAS_THREADS)
+        mutex_type::scoped_lock lock(mtx_);
+#endif
+        if(use_count_ == 0) boost::throw_exception(boost::bad_weak_ptr());
+        ++use_count_;
     }
 
     void release() // nothrow
@@ -133,11 +142,7 @@ public:
 #endif
             long new_use_count = --use_count_;
 
-            if(new_use_count != 0)
-            {
-                --weak_count_;
-                return;
-            }
+            if(new_use_count != 0) return;
         }
 
         dispose();
@@ -182,12 +187,10 @@ private:
     sp_counted_base(sp_counted_base const &);
     sp_counted_base & operator= (sp_counted_base const &);
 
-    // inv: use_count_ <= weak_count_
+    long use_count_;        // #shared
+    long weak_count_;       // #weak + (#shared != 0)
 
-    long use_count_;
-    long weak_count_;
-
-#if defined(BOOST_HAS_THREADS)
+#if defined(BOOST_HAS_THREADS) || defined(BOOST_LWM_WIN32)
     mutable mutex_type mtx_;
 #endif
 };
@@ -369,7 +372,7 @@ public:
         r.release();
     }
 
-#endif
+#endif 
 
     ~shared_count() // nothrow
     {
@@ -384,7 +387,7 @@ public:
         , id_(shared_count_id)
 #endif
     {
-        if(pi_ != 0) pi_->add_ref();
+        if(pi_ != 0) pi_->add_ref_copy();
     }
 
     explicit shared_count(weak_count const & r); // throws bad_weak_ptr when r.use_count() == 0
@@ -392,7 +395,7 @@ public:
     shared_count & operator= (shared_count const & r) // nothrow
     {
         sp_counted_base * tmp = r.pi_;
-        if(tmp != 0) tmp->add_ref();
+        if(tmp != 0) tmp->add_ref_copy();
         if(pi_ != 0) pi_->release();
         pi_ = tmp;
 
@@ -532,7 +535,7 @@ inline shared_count::shared_count(weak_count const & r): pi_(r.pi_)
 {
     if(pi_ != 0)
     {
-        pi_->add_ref();
+        pi_->add_ref_lock();
     }
     else
     {

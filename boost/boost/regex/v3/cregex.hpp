@@ -3,13 +3,9 @@
  * Copyright (c) 1998-2002
  * Dr John Maddock
  *
- * Permission to use, copy, modify, distribute and sell this software
- * and its documentation for any purpose is hereby granted without fee,
- * provided that the above copyright notice appear in all copies and
- * that both that copyright notice and this permission notice appear
- * in supporting documentation.  Dr John Maddock makes no representations
- * about the suitability of this software for any purpose.  
- * It is provided "as is" without express or implied warranty.
+ * Use, modification and distribution are subject to the 
+ * Boost Software License, Version 1.0. (See accompanying file 
+ * LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
  *
  */
  
@@ -182,6 +178,7 @@ enum match_flags
    match_max = match_all
 };
 
+typedef unsigned long match_flag_type;
 
 #ifdef __cplusplus
 } // extern "C"
@@ -254,29 +251,29 @@ public:
    //
    // now matching operators:
    //
-   bool Match(const char* p, unsigned int flags = match_default);
-   bool Match(const std::string& s, unsigned int flags = match_default) { return Match(s.c_str(), flags); }
-   bool Search(const char* p, unsigned int flags = match_default);
-   bool Search(const std::string& s, unsigned int flags = match_default) { return Search(s.c_str(), flags); }
-   unsigned int Grep(GrepCallback cb, const char* p, unsigned int flags = match_default);
-   unsigned int Grep(GrepCallback cb, const std::string& s, unsigned int flags = match_default) { return Grep(cb, s.c_str(), flags); }
-   unsigned int Grep(std::vector<std::string>& v, const char* p, unsigned int flags = match_default);
-   unsigned int Grep(std::vector<std::string>& v, const std::string& s, unsigned int flags = match_default) { return Grep(v, s.c_str(), flags); }
-   unsigned int Grep(std::vector<std::size_t>& v, const char* p, unsigned int flags = match_default);
-   unsigned int Grep(std::vector<std::size_t>& v, const std::string& s, unsigned int flags = match_default) { return Grep(v, s.c_str(), flags); }
+   bool Match(const char* p, match_flag_type flags = match_default);
+   bool Match(const std::string& s, match_flag_type flags = match_default) { return Match(s.c_str(), flags); }
+   bool Search(const char* p, match_flag_type flags = match_default);
+   bool Search(const std::string& s, match_flag_type flags = match_default) { return Search(s.c_str(), flags); }
+   unsigned int Grep(GrepCallback cb, const char* p, match_flag_type flags = match_default);
+   unsigned int Grep(GrepCallback cb, const std::string& s, match_flag_type flags = match_default) { return Grep(cb, s.c_str(), flags); }
+   unsigned int Grep(std::vector<std::string>& v, const char* p, match_flag_type flags = match_default);
+   unsigned int Grep(std::vector<std::string>& v, const std::string& s, match_flag_type flags = match_default) { return Grep(v, s.c_str(), flags); }
+   unsigned int Grep(std::vector<std::size_t>& v, const char* p, match_flag_type flags = match_default);
+   unsigned int Grep(std::vector<std::size_t>& v, const std::string& s, match_flag_type flags = match_default) { return Grep(v, s.c_str(), flags); }
 #ifndef BOOST_REGEX_NO_FILEITER
-   unsigned int GrepFiles(GrepFileCallback cb, const char* files, bool recurse = false, unsigned int flags = match_default);
-   unsigned int GrepFiles(GrepFileCallback cb, const std::string& files, bool recurse = false, unsigned int flags = match_default) { return GrepFiles(cb, files.c_str(), recurse, flags); }
-   unsigned int FindFiles(FindFilesCallback cb, const char* files, bool recurse = false, unsigned int flags = match_default);
-   unsigned int FindFiles(FindFilesCallback cb, const std::string& files, bool recurse = false, unsigned int flags = match_default) { return FindFiles(cb, files.c_str(), recurse, flags); }
+   unsigned int GrepFiles(GrepFileCallback cb, const char* files, bool recurse = false, match_flag_type flags = match_default);
+   unsigned int GrepFiles(GrepFileCallback cb, const std::string& files, bool recurse = false, match_flag_type flags = match_default) { return GrepFiles(cb, files.c_str(), recurse, flags); }
+   unsigned int FindFiles(FindFilesCallback cb, const char* files, bool recurse = false, match_flag_type flags = match_default);
+   unsigned int FindFiles(FindFilesCallback cb, const std::string& files, bool recurse = false, match_flag_type flags = match_default) { return FindFiles(cb, files.c_str(), recurse, flags); }
 #endif
 
    std::string Merge(const std::string& in, const std::string& fmt,
-                       bool copy = true, unsigned int flags = match_default);
+                       bool copy = true, match_flag_type flags = match_default);
    std::string Merge(const char* in, const char* fmt,
-                       bool copy = true, unsigned int flags = match_default);
+                       bool copy = true, match_flag_type flags = match_default);
 
-   std::size_t Split(std::vector<std::string>& v, std::string& s, unsigned flags = match_default, unsigned max_count = ~0);
+   std::size_t Split(std::vector<std::string>& v, std::string& s, match_flag_type flags = match_default, unsigned max_count = ~0);
    //
    // now operators for returning what matched in more detail:
    //
@@ -305,6 +302,7 @@ public:
 #endif
 
 #endif // include guard
+
 
 
 

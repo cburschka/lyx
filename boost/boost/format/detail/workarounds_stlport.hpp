@@ -3,7 +3,6 @@
 //  See http://www.boost.org for updates, documentation, and revision history.
 
 //  (C) Samuel Krempp 2001
-//                  krempp@crans.ens-cachan.fr
 //  Permission to copy, use, modify, sell and
 //  distribute this software is granted provided this copyright notice appears
 //  in all copies. This software is provided "as is" without express or implied
@@ -13,14 +12,12 @@
 // and Karl Nelson's ofstream (also took its parsing code as basis for printf parsing)
 
 // ------------------------------------------------------------------------------
-// macros_stlport.hpp : configuration for the format library
+// workarounds_stlport.hpp : configuration for the format library
 // The contents of this file should be integrated into the boost config system.
 // ------------------------------------------------------------------------------
 
 #ifndef BOOST_MACROS_STLPORT_HPP
 #define BOOST_MACROS_STLPORT_HPP
-
-#include <boost/config.hpp>
 
 // *** This should go to "boost/config/stdlib/stlport.hpp".
 

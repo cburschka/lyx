@@ -1,11 +1,10 @@
 
 // (C) Copyright Steve Cleary, Beman Dawes, Howard Hinnant & John Maddock 2000.
-// Permission to copy, use, modify, sell and distribute this software is 
-// granted provided this copyright notice appears in all copies. This software 
-// is provided "as is" without express or implied warranty, and with no claim 
-// as to its suitability for any purpose.
+//  Use, modification and distribution are subject to the Boost Software License,
+//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
+//  http://www.boost.org/LICENSE_1_0.txt).
 //
-// See http://www.boost.org for most recent version including documentation.
+//  See http://www.boost.org/libs/type_traits for most recent version including documentation.
 
 #ifndef BOOST_TT_IS_EMPTY_HPP_INCLUDED
 #define BOOST_TT_IS_EMPTY_HPP_INCLUDED
@@ -46,7 +45,7 @@ struct empty_helper_t1 : public T
 
 struct empty_helper_t2 { int i[256]; };
 
-#ifndef __BORLANDC__
+#if !BOOST_WORKAROUND(__BORLANDC__, < 0x600)
 
 template <typename T, bool is_a_class = false>
 struct empty_helper
@@ -154,9 +153,9 @@ struct empty_helper_chooser<true>
    };
 };
 
-template <typename T> 
+template <typename T>
 struct is_empty_impl
-{ 
+{
    typedef ::boost::detail::empty_helper_chooser<
       ::boost::type_traits::ice_and<
          ::boost::type_traits::ice_not< ::boost::is_reference<T>::value >::value,
@@ -174,7 +173,7 @@ struct is_empty_impl
    typedef typename result::type eh_type;
 
    BOOST_STATIC_CONSTANT(bool, value =
-      (::boost::type_traits::ice_or<eh_type::value, BOOST_IS_EMPTY(T)>::value)); 
+      (::boost::type_traits::ice_or<eh_type::value, BOOST_IS_EMPTY(T)>::value));
 };
 
 #else

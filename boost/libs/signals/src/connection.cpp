@@ -1,25 +1,28 @@
 // Boost.Signals library
-//
-// Copyright (C) 2001, 2002 Doug Gregor (gregod@cs.rpi.edu)
-//
-// Permission to copy, use, sell and distribute this software is granted
-// provided this copyright notice appears in all copies.
-// Permission to modify the code and to distribute modified code is granted
-// provided this copyright notice appears in all copies, and a notice
-// that the code was modified is included with the copyright notice.
-//
-// This software is provided "as is" without express or implied warranty,
-// and with no claim as to its suitability for any purpose.
- 
+
+// Copyright Doug Gregor 2001-2003. Use, modification and
+// distribution is subject to the Boost Software License, Version
+// 1.0. (See accompanying file LICENSE_1_0.txt or copy at
+// http://www.boost.org/LICENSE_1_0.txt)
+
 // For more information, see http://www.boost.org
 
-#define BOOST_SIGNALS_IN_LIBRARY_SOURCE
+#define BOOST_SIGNALS_SOURCE
 
 #include <boost/signals/connection.hpp>
 #include <cassert>
 
 namespace boost {
   namespace BOOST_SIGNALS_NAMESPACE {
+
+    void
+    connection::add_bound_object(const BOOST_SIGNALS_NAMESPACE::detail::bound_object& b)
+    {
+      assert(con.get() != 0);
+      con->bound_objects.push_back(b);
+    }
+
+
     void connection::disconnect() const
     {
       if (this->connected()) {
@@ -36,17 +39,17 @@ namespace boost {
 
         // Disconnect signal
         signal_disconnect(local_con->signal, local_con->signal_data);
-      
+
         // Disconnect all bound objects
         typedef std::list<BOOST_SIGNALS_NAMESPACE::detail::bound_object>::iterator iterator;
-        for (iterator i = local_con->bound_objects.begin(); 
+        for (iterator i = local_con->bound_objects.begin();
              i != local_con->bound_objects.end(); ++i) {
           assert(i->disconnect != 0);
           i->disconnect(i->obj, i->data);
         }
       }
     }
-  } // end namespace boost 
+  } // end namespace boost
 } // end namespace boost
 
 #ifndef BOOST_MSVC

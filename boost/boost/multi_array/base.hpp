@@ -1,14 +1,14 @@
-// Copyright (C) 2002 Ronald Garcia
-//
-// Permission to copy, use, sell and distribute this software is granted
-// provided this copyright notice appears in all copies. 
-// Permission to modify the code and to distribute modified code is granted
-// provided this copyright notice appears in all copies, and a notice 
-// that the code was modified is included with the copyright notice.
-//
-// This software is provided "as is" without express or implied warranty, 
-// and with no claim as to its suitability for any purpose.
-//
+// Copyright 2002 The Trustees of Indiana University.
+
+// Use, modification and distribution is subject to the Boost Software 
+// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
+// http://www.boost.org/LICENSE_1_0.txt)
+
+//  Boost.MultiArray Library
+//  Authors: Ronald Garcia
+//           Jeremy Siek
+//           Andrew Lumsdaine
+//  See http://www.boost.org/libs/multi_array for documentation.
 
 #ifndef BASE_RG071801_HPP
 #define BASE_RG071801_HPP
@@ -25,7 +25,11 @@
 #include "boost/multi_array/storage_order.hpp"
 #include "boost/multi_array/types.hpp"
 #include "boost/config.hpp"
-#include "boost/multi_array/iterator_adaptors.hpp"
+#include "boost/mpl/apply_if.hpp"
+#include "boost/mpl/if.hpp"
+#include "boost/mpl/size_t.hpp"
+#include "boost/mpl/aux_/msvc_eti_base.hpp"
+#include "boost/iterator/reverse_iterator.hpp"
 #include "boost/static_assert.hpp"
 #include "boost/type.hpp"
 #include <cassert>
@@ -76,27 +80,8 @@ class sub_array;
 template <typename T, std::size_t NumDims, typename TPtr = const T*>
 class const_sub_array;
 
-template <typename T, std::size_t NumDims, typename value_type,
-  typename reference_type, typename tag, typename difference_type>
-struct iterator_generator;
-
-template <typename T, std::size_t NumDims, typename value_type,
-  typename reference_type, typename tag, typename difference_type>
-struct const_iterator_generator;
-
-template <typename T, std::size_t NumDims, typename value_type,
-  typename reference_type, typename tag, typename difference_type>
-struct reverse_iterator_generator;
-
-template <typename T, std::size_t NumDims, typename value_type,
-  typename reference_type, typename tag, typename difference_type>
-struct const_reverse_iterator_generator;
-
-template <typename T,typename TPtr>
-struct iterator_base;
-
-template <typename T, std::size_t NumDims>
-struct iterator_policies;
+template <typename T, typename TPtr, typename NumDims, typename Reference>
+class array_iterator;
 
 template <typename T, std::size_t NumDims, typename TPtr = const T*>
 class const_multi_array_view;
@@ -195,73 +180,94 @@ protected:
 // choose value accessor begins
 //
 
+template <typename T, std::size_t NumDims>
 struct choose_value_accessor_n {
-  template <typename T, std::size_t NumDims>
-  struct bind {
-    typedef value_accessor_n<T,NumDims> type;
-  };
+  typedef value_accessor_n<T,NumDims> type;
 };
 
+template <typename T>
 struct choose_value_accessor_one {
-  template <typename T, std::size_t NumDims>
-  struct bind {
-    typedef value_accessor_one<T> type;
-  };
+  typedef value_accessor_one<T> type;
 };
 
-
-template <std::size_t NumDims>
-struct value_accessor_gen_helper {
-  typedef choose_value_accessor_n choice;
+template <typename T, typename NumDims>
+struct value_accessor_generator {
+    BOOST_STATIC_CONSTANT(std::size_t, dimensionality = NumDims::value);
+    
+  typedef typename
+  mpl::apply_if_c<(dimensionality == 1),
+                  choose_value_accessor_one<T>,
+                  choose_value_accessor_n<T,dimensionality>
+  >::type type;
 };
+
+#if BOOST_WORKAROUND(BOOST_MSVC, == 1200)
+
+struct eti_value_accessor
+{
+  typedef int index;
+  typedef int size_type;
+  typedef int element;
+  typedef int index_range;
+  typedef int value_type;
+  typedef int reference;
+  typedef int const_reference;
+};
+    
+template <>
+struct value_accessor_generator<int,int>
+{
+  typedef eti_value_accessor type;
+};
+
+template <class T, class NumDims>
+struct associated_types
+  : mpl::aux::msvc_eti_base<
+        typename value_accessor_generator<T,NumDims>::type
+    >::type
+{};
 
 template <>
-struct value_accessor_gen_helper<1> {
-  typedef choose_value_accessor_one choice;
-};
+struct associated_types<int,int> : eti_value_accessor {};
 
-template <typename T, std::size_t NumDims>
-struct value_accessor_generator {
-private:
-  typedef typename value_accessor_gen_helper<NumDims>::choice Choice;
-public:
-  typedef typename Choice::template bind<T,NumDims>::type type;
-};
+#else
+
+template <class T, class NumDims>
+struct associated_types
+  : value_accessor_generator<T,NumDims>::type
+{};
+
+#endif
 
 //
 // choose value accessor ends
 /////////////////////////////////////////////////////////////////////////
 
 
-/////////////////////////////////////////////////////////////////////////
-// multi_array/sub_array base stuffs
-/////////////////////////////////////////////////////////////////////////
-template <std::size_t NumDims>
-struct iterator_tag_selector {
-  typedef std::input_iterator_tag type;
-};
-
-template <>
-struct iterator_tag_selector<1> {
-  typedef std::random_access_iterator_tag type;
-};
-
 
 ////////////////////////////////////////////////////////////////////////
 // multi_array_base
 ////////////////////////////////////////////////////////////////////////
 template <typename T, std::size_t NumDims>
-class multi_array_impl_base :
-  public value_accessor_generator<T,NumDims>::type {
-  typedef typename value_accessor_generator<T,NumDims>::type super_type;
+class multi_array_impl_base
+  :
+#if BOOST_WORKAROUND(BOOST_MSVC, == 1200)
+      public mpl::aux::msvc_eti_base<
+          typename value_accessor_generator<T,mpl::size_t<NumDims> >::type
+       >::type
+#else
+      public value_accessor_generator<T,mpl::size_t<NumDims> >::type
+#endif 
+{
+  typedef associated_types<T,mpl::size_t<NumDims> > types;
 public:
-  typedef typename super_type::index index;
-  typedef typename super_type::size_type size_type;
-  typedef typename super_type::element element;
-  typedef typename super_type::index_range index_range;
-  typedef typename super_type::value_type value_type;
-  typedef typename super_type::reference reference;
-  typedef typename super_type::const_reference const_reference;
+  typedef typename types::index index;
+  typedef typename types::size_type size_type;
+  typedef typename types::element element;
+  typedef typename types::index_range index_range;
+  typedef typename types::value_type value_type;
+  typedef typename types::reference reference;
+  typedef typename types::const_reference const_reference;
 
   template <std::size_t NDims>
   struct subarray {
@@ -287,28 +293,14 @@ public:
   //
   // iterator support
   //
+  typedef array_iterator<T,T*,mpl::size_t<NumDims>,reference> iterator;
+  typedef array_iterator<T,T const*,mpl::size_t<NumDims>,const_reference> const_iterator;
 
-  typedef typename iterator_tag_selector<NumDims>::type iterator_tag;
+  typedef ::boost::reverse_iterator<iterator> reverse_iterator;
+  typedef ::boost::reverse_iterator<const_iterator> const_reverse_iterator;
 
-  typedef typename
-    iterator_generator<T,NumDims,value_type,
-    reference,iterator_tag,index>::type iterator;
-
-  typedef typename
-    const_iterator_generator<T,NumDims,value_type,
-    const_reference,iterator_tag,index>::type const_iterator;
-
-  typedef typename
-    reverse_iterator_generator<T,NumDims,value_type,
-    reference,iterator_tag,index>::type reverse_iterator;
-
-  typedef typename
-    const_reverse_iterator_generator<T,NumDims,value_type,
-    const_reference,iterator_tag,index>::type const_reverse_iterator;
-
+  BOOST_STATIC_CONSTANT(std::size_t, dimensionality = NumDims);
 protected:
-  typedef iterator_base<T,T*> iter_base;
-  typedef iterator_base<T,const T*> const_iter_base;
 
   multi_array_impl_base() { }
   ~multi_array_impl_base() { }
@@ -424,7 +416,7 @@ protected:
       index start = current_range.get_start(default_start);
       index finish = current_range.get_finish(default_finish);
       index index_factor = current_range.stride();
-      index len = (finish - start) / index_factor;
+      index len = (finish - start + (index_factor - 1)) / index_factor;
 
       // the array data pointer is modified to account for non-zero
       // bases during slicing (see [Garcia] for the math involved)

@@ -3,13 +3,9 @@
  * Copyright (c) 1998-2002
  * Dr John Maddock
  *
- * Permission to use, copy, modify, distribute and sell this software
- * and its documentation for any purpose is hereby granted without fee,
- * provided that the above copyright notice appear in all copies and
- * that both that copyright notice and this permission notice appear
- * in supporting documentation.  Dr John Maddock makes no representations
- * about the suitability of this software for any purpose.
- * It is provided "as is" without express or implied warranty.
+ * Use, modification and distribution are subject to the 
+ * Boost Software License, Version 1.0. (See accompanying file 
+ * LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
  *
  */
 
@@ -215,11 +211,7 @@ public:
    }
    void estimate_max_state_count(iterator a, iterator b, std::size_t states, std::random_access_iterator_tag*)
    {
-#ifndef BOOST_NO_STD_DISTANCE
-      difference_type dist = std::distance(a,b);
-#else
-      difference_type dist = b - a;
-#endif
+      difference_type dist = boost::re_detail::distance(a,b);
       states *= states;
       difference_type lim = std::numeric_limits<difference_type>::max() - 1000 - states;
       if(dist > (difference_type)(lim / states))
@@ -2001,6 +1993,7 @@ inline unsigned int regex_grep(bool (*foo)(const match_results<std::basic_string
 } // namespace boost
 
 #endif   // BOOST_REGEX_MATCH_HPP
+
 
 
 

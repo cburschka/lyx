@@ -3,13 +3,9 @@
  * Copyright (c) 2001
  * Dr John Maddock
  *
- * Permission to use, copy, modify, distribute and sell this software
- * and its documentation for any purpose is hereby granted without fee,
- * provided that the above copyright notice appear in all copies and
- * that both that copyright notice and this permission notice appear
- * in supporting documentation.  Dr John Maddock makes no representations
- * about the suitability of this software for any purpose.
- * It is provided "as is" without express or implied warranty.
+ * Use, modification and distribution are subject to the 
+ * Boost Software License, Version 1.0. (See accompanying file 
+ * LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
  *
  */
 
@@ -18,6 +14,8 @@
 
 #include <boost/config.hpp>
 #include <cstdlib>
+#include <new>
+#include <assert.h>
 #if defined(BOOST_NO_STDC_NAMESPACE)
 namespace std{
 using ::ptrdiff_t;
@@ -74,7 +72,7 @@ struct rebind_allocator
 } // namespace detail
 } // namespace boost
 
-#elif !defined(BOOST_NO_MEMBER_TEMPLATES)
+#elif !defined(BOOST_NO_MEMBER_TEMPLATES) && !defined(__SUNPRO_CC)
 
 // no std::allocator, but the compiler supports the necessary syntax,
 // write our own allocator instead:

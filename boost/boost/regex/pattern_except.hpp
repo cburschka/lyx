@@ -3,13 +3,9 @@
  * Copyright (c) 1998-2002
  * Dr John Maddock
  *
- * Permission to use, copy, modify, distribute and sell this software
- * and its documentation for any purpose is hereby granted without fee,
- * provided that the above copyright notice appear in all copies and
- * that both that copyright notice and this permission notice appear
- * in supporting documentation.  Dr John Maddock makes no representations
- * about the suitability of this software for any purpose.  
- * It is provided "as is" without express or implied warranty.
+ * Use, modification and distribution are subject to the 
+ * Boost Software License, Version 1.0. (See accompanying file 
+ * LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
  *
  */
  
@@ -23,12 +19,14 @@
 #ifndef BOOST_RE_PAT_EXCEPT_HPP
 #define BOOST_RE_PAT_EXCEPT_HPP
 
+#ifndef BOOST_REGEX_CONFIG_HPP
 #include <boost/regex/config.hpp>
+#endif
 
 namespace boost{
 
-#ifdef __BORLANDC__
-   #pragma option push -a8 -b -Vx -Ve -pc
+#ifdef BOOST_HAS_ABI_HEADERS
+#  include BOOST_ABI_PREFIX
 #endif
 
 #ifdef BOOST_MSVC
@@ -52,13 +50,13 @@ public:
    ~bad_expression() throw();
 };
 
-
-#ifdef __BORLANDC__
-  #pragma option pop
+#ifdef BOOST_HAS_ABI_HEADERS
+#  include BOOST_ABI_SUFFIX
 #endif
 
 } // namespace boost
 
 #endif
+
 
 

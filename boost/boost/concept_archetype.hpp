@@ -17,6 +17,7 @@
 
 #include <boost/config.hpp>
 #include <boost/iterator.hpp>
+#include <boost/mpl/identity.hpp>
 #include <functional>
 
 namespace boost {
@@ -51,12 +52,18 @@ namespace boost {
   // is really quite innocent. The name of this class needs to be
   // changed.
   template <class T>
-  class static_object {
+  class static_object
+  {
   public:
-    static T& get() {
-     static char d[sizeof(T)];
-      return *reinterpret_cast<T*>(d);
-    }
+      static T& get()
+      {
+#if BOOST_WORKAROUND(__BORLANDC__, BOOST_TESTED_AT(0x564))
+          return *reinterpret_cast<T*>(0);
+#else 
+          static char d[sizeof(T)];
+          return *reinterpret_cast<T*>(d);
+#endif 
+      }
   };
 
   template <class Base = null_archetype<> >
@@ -258,25 +265,25 @@ namespace boost {
   struct optag2 { };
   struct optag3 { };
 
-#define BOOST_DEFINE_BINARY_PREDICATE_ARCHETYPE(OP, NAME) \
-  template <class Base = null_archetype<>, class Tag = optag1 > \
-  class NAME##_first_archetype : public Base { \
-  public: \
-    NAME##_first_archetype(detail::dummy_constructor x) : Base(x) { } \
-  }; \
-  \
-  template <class Base = null_archetype<>, class Tag = optag1 > \
-  class NAME##_second_archetype : public Base { \
-  public: \
-    NAME##_second_archetype(detail::dummy_constructor x) : Base(x) { } \
-  }; \
-  \
-  template <class BaseFirst, class BaseSecond, class Tag> \
-  boolean_archetype \
-  operator OP (const NAME##_first_archetype<BaseFirst, Tag>&, \
-               const NAME##_second_archetype<BaseSecond, Tag>&) \
-  { \
-   return boolean_archetype(static_object<detail::dummy_constructor>::get()); \
+#define BOOST_DEFINE_BINARY_PREDICATE_ARCHETYPE(OP, NAME)                       \
+  template <class Base = null_archetype<>, class Tag = optag1 >                 \
+  class NAME##_first_archetype : public Base {                                  \
+  public:                                                                       \
+    NAME##_first_archetype(detail::dummy_constructor x) : Base(x) { }           \
+  };                                                                            \
+                                                                                \
+  template <class Base = null_archetype<>, class Tag = optag1 >                 \
+  class NAME##_second_archetype : public Base {                                 \
+  public:                                                                       \
+    NAME##_second_archetype(detail::dummy_constructor x) : Base(x) { }          \
+  };                                                                            \
+                                                                                \
+  template <class BaseFirst, class BaseSecond, class Tag>                       \
+  boolean_archetype                                                             \
+  operator OP (const NAME##_first_archetype<BaseFirst, Tag>&,                   \
+               const NAME##_second_archetype<BaseSecond, Tag>&)                 \
+  {                                                                             \
+   return boolean_archetype(static_object<detail::dummy_constructor>::get());   \
   }
 
   BOOST_DEFINE_BINARY_PREDICATE_ARCHETYPE(==, equal_op)
@@ -403,89 +410,37 @@ namespace boost {
   // Iterator Archetype Classes
 
   template <class T>
-  struct input_proxy {
-    operator const T&() { return static_object<T>::get(); }
-  };
-  template <class T>
-  class trivial_iterator_archetype
-  {
-    typedef trivial_iterator_archetype self;
-  public:
-#ifdef BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION
-    typedef T value_type;
-    typedef void reference;
-    typedef void pointer;
-    typedef void difference_type;
-    typedef void iterator_category;
-#endif
-    trivial_iterator_archetype() { }
-    self& operator=(const self&) { return *this;  }
-    bool operator==(const self&) const { return true; }
-    bool operator!=(const self&) const { return true; }
-    input_proxy<T> operator*() const { return input_proxy<T>(); }
-  };
-} // namespace boost
-
-#if !defined(BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION) && !defined(BOOST_NO_STD_ITERATOR_TRAITS)
-namespace std {
-  template <class T>
-  struct iterator_traits< boost::trivial_iterator_archetype<T> >
-  {
-    typedef T value_type;
-  };
-}
-#endif
-
-namespace boost {
-  template <class T>
-  struct input_output_proxy {
-    input_output_proxy<T>& operator=(const T&) { return *this; }
-    operator const T&() { return static_object<T>::get(); }
-  };
-  template <class T>
-  class mutable_trivial_iterator_archetype
-  {
-    typedef mutable_trivial_iterator_archetype self;
-  public:
-#ifdef BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION
-    typedef T value_type;
-    typedef void reference;
-    typedef void pointer;
-    typedef void difference_type;
-    typedef void iterator_category;
-#endif
-    mutable_trivial_iterator_archetype() { }
-    self& operator=(const self&) { return *this;  }
-    bool operator==(const self&) const { return true; }
-    bool operator!=(const self&) const { return true; }
-    input_output_proxy<T> operator*() const { return input_output_proxy<T>(); }
-  };
-} // namespace boost
-
-#if !defined(BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION) && !defined(BOOST_NO_STD_ITERATOR_TRAITS)
-namespace std {
-  template <class T>
-  struct iterator_traits< boost::mutable_trivial_iterator_archetype<T> >
-  {
-    typedef T value_type;
-  };
-}
-#endif
-
-namespace boost {
-
-  template <class T>
   class input_iterator_archetype
   {
-  public:
+  private:
     typedef input_iterator_archetype self;
+  public:
+    typedef std::input_iterator_tag iterator_category;
+    typedef T value_type;
+    struct reference {
+      operator value_type() const { return static_object<T>::get(); }
+    };
+    typedef const T* pointer;
+    typedef std::ptrdiff_t difference_type;
+    self& operator=(const self&) { return *this;  }
+    bool operator==(const self&) const { return true; }
+    bool operator!=(const self&) const { return true; }
+    reference operator*() const { return reference(); }
+    self& operator++() { return *this; }
+    self operator++(int) { return *this; }
+  };
+
+  template <class T>
+  class input_iterator_archetype_no_proxy
+  {
+  private:
+    typedef input_iterator_archetype_no_proxy self;
   public:
     typedef std::input_iterator_tag iterator_category;
     typedef T value_type;
     typedef const T& reference;
     typedef const T* pointer;
     typedef std::ptrdiff_t difference_type;
-    input_iterator_archetype() { }
     self& operator=(const self&) { return *this;  }
     bool operator==(const self&) const { return true; }
     bool operator!=(const self&) const { return true; }
@@ -494,7 +449,7 @@ namespace boost {
     self operator++(int) { return *this; }
   };
 
- template <class T>
+  template <class T>
   struct output_proxy {
     output_proxy& operator=(const T&) { return *this; }
   };
@@ -523,6 +478,30 @@ namespace boost {
   };
 
   template <class T>
+  class input_output_iterator_archetype
+  {
+  private:
+    typedef input_output_iterator_archetype self;
+    struct in_out_tag : public std::input_iterator_tag, public std::output_iterator_tag { };
+  public:
+    typedef in_out_tag iterator_category;
+    typedef T value_type;
+    struct reference {
+      reference& operator=(const T&) { return *this; }
+      operator value_type() { return static_object<T>::get(); }
+    };
+    typedef const T* pointer;
+    typedef std::ptrdiff_t difference_type;
+    input_output_iterator_archetype() { }
+    self& operator=(const self&) { return *this;  }
+    bool operator==(const self&) const { return true; }
+    bool operator!=(const self&) const { return true; }
+    reference operator*() const { return reference(); }
+    self& operator++() { return *this; }
+    self operator++(int) { return *this; }
+  };
+
+  template <class T>
   class forward_iterator_archetype
   {
   public:
@@ -531,7 +510,7 @@ namespace boost {
     typedef std::forward_iterator_tag iterator_category;
     typedef T value_type;
     typedef const T& reference;
-    typedef T* pointer;
+    typedef T const* pointer;
     typedef std::ptrdiff_t difference_type;
     forward_iterator_archetype() { }
     self& operator=(const self&) { return *this;  }

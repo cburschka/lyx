@@ -1,12 +1,11 @@
 //  path implementation  -----------------------------------------------------//
 
-//  (C) Copyright Beman Dawes 2002. Permission to copy,
-//  use, modify, sell and distribute this software is granted provided this
-//  copyright notice appears in all copies. This software is provided "as is"
-//  without express or implied warranty, and with no claim as to its
-//  suitability for any purpose.
+//  © Copyright Beman Dawes 2002-2003
+//  Use, modification, and distribution is subject to the Boost Software
+//  License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
+//  http://www.boost.org/LICENSE_1_0.txt)
 
-//  See http://www.boost.org/libs/filesystem for documentation.
+//  See library home page at http://www.boost.org/libs/filesystem
 
 
 //****************************************************************************//
@@ -18,6 +17,10 @@
 //  such problems.
 
 //****************************************************************************//
+
+// define BOOST_FILESYSTEM_SOURCE so that <boost/filesystem/config.hpp> knows
+// the library is being built (possibly exporting rather than importing code)
+#define BOOST_FILESYSTEM_SOURCE 
 
 // BOOST_POSIX or BOOST_WINDOWS specify which API to use.
 # if !defined( BOOST_WINDOWS ) && !defined( BOOST_POSIX )
@@ -42,6 +45,8 @@ namespace fs = boost::filesystem;
 #include <cstring>  // SGI MIPSpro compilers need this
 #include <vector>
 #include <cassert>
+
+#include <boost/config/abi_prefix.hpp> // must be the last header
 
 //  helpers  -----------------------------------------------------------------// 
 
@@ -105,18 +110,16 @@ namespace
   const char invalid_chars[] =
     "\x01\x02\x03\x04\x05\x06\x07\x08\x09\x0A\x0B\x0C\x0D\x0E\x0F"
     "\x10\x11\x12\x13\x14\x15\x16\x17\x18\x19\x1A\x1B\x1C\x1D\x1E\x1F"
-    "<>:\"/\\|*?";
+    "<>:\"/\\|";
   // note that the terminating '\0' is part of the string - thus the size below
   // is sizeof(invalid_chars) rather than sizeof(invalid_chars)-1.  I 
-  const std::string invalid_generic( invalid_chars, sizeof(invalid_chars) );
+  const std::string windows_invalid_chars( invalid_chars, sizeof(invalid_chars) );
 
   const std::string valid_posix(
     "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789._-" );
 
-  const std::string valid_boost_file(
-    "abcdefghijklmnopqrstuvwxyz0123456789._-" );
-  const std::string valid_boost_directory(
-    "abcdefghijklmnopqrstuvwxyz0123456789_-" );
+  fs::path::name_check default_check = fs::portable_name;
+  bool safe_to_write_check = true; // write-once-before-read allowed
 
 } // unnamed namespace
 
@@ -126,82 +129,107 @@ namespace boost
 {
   namespace filesystem
   {
+    //  name_check functions  ----------------------------------------------//
 
-    //  error checking functions  --------------------------------------------//
+#   ifdef BOOST_WINDOWS
+    BOOST_FILESYSTEM_DECL bool native( const std::string & name )
+    {
+      return windows_name( name );
+    }
+#   else
+    BOOST_FILESYSTEM_DECL bool native( const std::string & )
+    {
+      return true;
+    }
+#   endif
 
-    bool generic_name( const std::string & name )
+    BOOST_FILESYSTEM_DECL bool no_check( const std::string & ) { return true; }
+
+    BOOST_FILESYSTEM_DECL bool portable_posix_name( const std::string & name )
     {
       return name.size() != 0
-        && name.find_first_of( invalid_generic ) == std::string::npos
-        && name != "."
-        && name != ".."
-        && *name.begin() != ' '
-        && *(name.end()-1) != ' ';     
+        && name.find_first_not_of( valid_posix ) == std::string::npos;     
     }
 
-    bool posix_name( const std::string & name )
+    BOOST_FILESYSTEM_DECL bool windows_name( const std::string & name )
     {
-      return name.find_first_not_of( valid_posix ) == std::string::npos
-        && name != ".";     
+      return name.size() != 0
+        && name.find_first_of( windows_invalid_chars ) == std::string::npos
+        && *(name.end()-1) != ' '
+        && (*(name.end()-1) != '.'
+          || name.length() == 1 || name == "..");
     }
 
-    const path & check_posix_leaf( const path & ph )
+    BOOST_FILESYSTEM_DECL bool portable_name( const std::string & name )
     {
-      if ( !posix_name( ph.leaf() ) )
-        boost::throw_exception( filesystem_error(
-          "boost::filesystem::check_posix_leaf",
-          ph, "invalid posix name: \""
-            + ph.leaf() + "\"" ) );
-      return ph;
+      return
+        name.size() == 0
+        || name == "."
+        || name == ".."
+        || (windows_name( name )
+        && portable_posix_name( name )
+        && name[0] != '.' && name[0] != '-');
     }
 
-    bool boost_file_name( const std::string & name )
+    BOOST_FILESYSTEM_DECL bool portable_directory_name( const std::string & name )
     {
-      return name.size() <= 31
-        && name.find_first_not_of( valid_boost_file ) == std::string::npos
-        && name != ".";     
+      return
+        name == "."
+        || name == ".."
+        || (portable_name( name )
+          && name.find('.') == std::string::npos);
     }
 
-    bool boost_directory_name( const std::string & name )
+    BOOST_FILESYSTEM_DECL bool portable_file_name( const std::string & name )
     {
-      return name.size() <= 31
-        && name.find_first_not_of( valid_boost_directory ) == std::string::npos;     
+      std::string::size_type pos;
+      return
+         name == "."
+        || name == ".."
+        || (portable_name( name )
+          && ( (pos = name.find( '.' )) == std::string::npos
+            || (name.find( '.', pos+1 )== std::string::npos
+              && (pos + 5) > name.length() )))
+        ;
     }
+
 
 //  path implementation  -----------------------------------------------------//
 
     path::path( const std::string & src )
     {
-      m_path_append( src );
+      m_path_append( src, default_name_check() );
     }
 
     path::path( const char * src )
     {
-      m_path_append( src );
+      assert( src != 0 );
+      m_path_append( src, default_name_check() );
     }
 
-    path::path( const std::string & src, path_format )
+    path::path( const std::string & src, name_check checker )
     {
-      m_path_append( src, platform );
+      m_path_append( src, checker );
     }
 
-    path::path( const char * src, path_format )
+    path::path( const char * src, name_check checker )
     {
-      m_path_append( src, platform );
+      assert( src != 0 );
+      m_path_append( src, checker );
     }
 
     path & path::operator /=( const path & rhs )
     {
-      m_path_append( rhs.m_path, nocheck );
+      m_path_append( rhs.m_path, no_check );
       return *this;
     }
 
-    void path::m_path_append( const std::string & src, source_context context )
+    void path::m_path_append( const std::string & src, name_check checker )
     {
-      // convert backslash to forward slash if context is "platform" 
-      // check names if context is "generic"
-      // allow system-specific-root if context is not "generic"
+      // convert backslash to forward slash if checker==native 
+      // allow system-specific-root if checker==no_check || checker==native
 
+      assert( checker );
       assert( src.size() == std::strlen( src.c_str() ) ); // no embedded 0
 
       if ( src.size() == 0 ) return;
@@ -210,7 +238,7 @@ namespace boost
 
       // [root-filesystem]
 #     ifdef BOOST_WINDOWS
-      if ( context != generic && src.size() >= 2 )
+      if ( (checker == no_check || checker == native) && src.size() >= 2 )
       {
         // drive or device
         if ( src[1] == ':' || src[src.size()-1] == ':' )
@@ -221,8 +249,8 @@ namespace boost
         }
 
         // share
-        else if ( (*itr == '/' || (*itr == '\\' && context == platform))
-          && (*(itr+1) == '/' || (*(itr+1) == '\\' && context == platform)) )
+        else if ( (*itr == '/' || (*itr == '\\' && checker == native))
+          && (*(itr+1) == '/' || (*(itr+1) == '\\' && checker == native)) )
         {
           m_path += "//";
           for ( itr += 2;
@@ -235,7 +263,7 @@ namespace boost
       // root directory [ "/" ]
       if ( itr != src.end() && (*itr == '/'
 #         ifdef BOOST_WINDOWS
-          || (*itr == '\\' && context == platform)
+          || (*itr == '\\' && checker == native)
 #         endif
           ) )
       {
@@ -256,73 +284,62 @@ namespace boost
       // element { "/" element } [ "/" ]
       while ( itr != src.end() )
       {
+        if ( m_path == "." ) m_path = "";
 
-        // append '/' if needed
-        if ( !empty()
-            && *(m_path.end()-1) != ':' && *(m_path.end()-1) != '/' )
-            m_path += '/'; 
-
-        if ( *itr == '.'&& (itr+1) != src.end() && *(itr+1) == '.' ) // ".."
+        // directory-placeholder
+        if ( *itr == '.' && ((itr+1) == src.end() || *(itr+1) == '/') )
         {
-          if ( m_path.size() >= 2 // there is a named parent directory present
-            && *(m_path.end()-1) == '/'
-#           ifdef BOOST_WINDOWS
-            && *(m_path.end()-2) != ':'
-#           endif
-            && *(m_path.end()-2) != '.' )    
-          {
-            // reference to parent so erase child
-            std::string::iterator child( m_path.end()-2 );
-
-            while ( child != m_path.begin() && *child != '/'
-#             ifdef BOOST_WINDOWS
-              && *child != ':'
-#             endif
-              ) --child;
-
-            // only erase '/' if it is a separator rather than part of the root
-            if ( (*child == '/'
-              && (child == m_path.begin()
-#             ifdef BOOST_WINDOWS
-                || *(child-1) == ':'))
-              || *child == ':'
-#             else                           
-              ))         
-#             endif              
-              ) ++child;
-
-            m_path.erase( child, m_path.end() );
-          }
-          else { m_path += ".."; }
+          if ( empty() ) m_path += '.';
           ++itr;
-          ++itr;
-        } // ".."
-        else // element is name
-        {
-          std::string name;
-          do
-            { name += *itr; }
-          while ( ++itr != src.end() && *itr != '/'
-#           ifdef BOOST_WINDOWS
-            && (*itr != '\\' || context != platform)
-#           endif
-            );
-
-          if ( context == generic && !generic_name( name ) )
-          {
-            boost::throw_exception( filesystem_error(
-              "boost::filesystem::path",
-              "invalid name \"" + name + "\" in path: \"" + src + "\"" ) );
-          }
-
-          m_path += name;
         }
 
+        // parent-directory or name
+        else
+        {
+          // append '/' if needed
+          if ( !empty()
+              && *(m_path.end()-1) != ':' && *(m_path.end()-1) != '/' )
+              m_path += '/';
+
+          // parent-directory
+          if ( *itr == '.'
+            && (itr+1) != src.end() && *(itr+1) == '.'
+            && ((itr+2) == src.end() || *(itr+2) == '/') )
+          {
+            m_path += "..";
+            ++itr;
+            ++itr;
+          } // parent-directory
+
+          // name
+          else
+          {
+            std::string name;
+            do
+              { name += *itr; }
+            while ( ++itr != src.end() && *itr != '/'
+#             ifdef BOOST_WINDOWS
+              && (*itr != '\\' || checker != native)
+#             endif
+              );
+
+            if ( !checker( name ) )
+            {
+              boost::throw_exception( filesystem_error(
+                "boost::filesystem::path",
+                "invalid name \"" + name + "\" in path: \"" + src + "\"" ) );
+            }
+
+            m_path += name;
+          }
+        } // parent-directory or name
+
+        // end or "/"
         if ( itr != src.end() )
         {
           if ( *itr == '/'
 #         ifdef BOOST_WINDOWS
-          || (*itr == '\\' && context == platform)
+          || (*itr == '\\' && checker == native)
 #         endif
           ) ++itr;
           else 
@@ -332,6 +349,23 @@ namespace boost
         }
 
       } // while more elements
+
+      // special case: remove one or more leading "/.."
+
+      std::string::size_type pos = 0, sz = m_path.size();
+
+#     ifdef BOOST_WINDOWS
+      if ( sz > 2 && m_path[pos] != '/' && m_path[pos+1] == ':' ) // drive
+        { pos += 2;  sz  -= 2; }
+#     endif
+
+      while ( sz >= 3 && m_path[pos] == '/'
+         && m_path[pos+1] == '.' && m_path[pos+2] == '.'
+         && (sz == 3 || m_path[pos+3] == '/') )
+      {
+        m_path.erase( pos+1, 3 ); // "..[/]"
+        sz -= 3; // on last, 3 should be 2; that doesn't matter
+      }
     }
 
 // path conversion functions  ------------------------------------------------//
@@ -352,14 +386,65 @@ namespace boost
     std::string path::native_directory_string() const
       { return native_file_string(); }
 
-// path decomposition functions  ---------------------------------------------//
+// path modification functions -----------------------------------------------//
+
+      path & path::normalize()
+      {
+        if ( m_path.empty() ) return *this;
+        std::string::size_type end, beg(0), start(0);
+
+#       ifdef BOOST_WINDOWS
+          if ( m_path.size() > 2
+            && m_path[0] != '/' && m_path[1] == ':' ) start = 2; // drive
+#       endif
+
+        while ( (beg=m_path.find( "/..", beg )) != std::string::npos )
+        {
+          end = beg + 3;
+          if ( (beg == 1 && m_path[0] == '.')
+            || (beg == 2 && m_path[0] == '.' && m_path[1] == '.')
+            || (beg > 2 && m_path[beg-3] == '/'
+                        && m_path[beg-2] == '.' && m_path[beg-1] == '.') )
+          {
+            beg = end;
+            continue;
+          }
+          if ( end < m_path.size() )
+          {
+            if ( m_path[end] == '/' ) ++end;
+            else { beg = end; continue; } // name starts with ..
+          }
+
+          // end is one past end of substr to be erased; now set beg
+          while ( beg > start && m_path[--beg] != '/' ) {}
+          if ( m_path[beg] == '/') ++beg;
+          m_path.erase( beg, end-beg );
+          if ( beg ) --beg;
+        }
+
+        if ( m_path.empty() ) m_path = ".";
+        else
+        { // remove trailing '/' if not root directory
+          std::string::size_type sz = m_path.size();
+
+#       ifdef BOOST_WINDOWS
+          if ( start ) sz  -= 2; // drive
+#       endif
+
+          if ( sz > 1 && m_path[m_path.size()-1] == '/' )
+            { m_path.erase( m_path.size()-1 ); }
+        }
+        return *this;
+      }
+
+ // path decomposition functions  ---------------------------------------------//
 
     path::iterator path::begin() const
     {
       iterator itr;
-      itr.base().path_ptr = this;
-      first_name( m_path, itr.base().name );
-      itr.base().pos = 0;
+      itr.m_path_ptr = this;
+      first_name( m_path, itr.m_name );
+      itr.m_pos = 0;
       return itr;
     }
 
@@ -405,7 +490,7 @@ namespace boost
       // skip a '/' unless it is a root directory
       if ( end_pos && m_path[end_pos-1] == '/'
         && !detail::is_absolute_root( m_path, end_pos ) ) --end_pos;
-      return path( m_path.substr( 0, end_pos ), native );
+      return path( m_path.substr( 0, end_pos ), no_check );
     }
 
     path path::relative_path() const
@@ -426,7 +511,7 @@ namespace boost
         if ( ++pos < m_path.size() && m_path[pos] == '/' ) ++pos;
 #     endif
       }
-      return path( m_path.substr( pos ) );
+      return path( m_path.substr( pos ), no_check );
     }
 
     std::string path::root_name() const
@@ -459,7 +544,7 @@ namespace boost
     {
       return path(
 #   ifdef BOOST_WINDOWS
-        root_name(), native ) /= root_directory();
+        root_name(), no_check ) /= root_directory();
 #   else
         root_directory() );
 #   endif
@@ -518,49 +603,69 @@ namespace boost
     bool path::has_relative_path() const { return !relative_path().empty(); }
     bool path::has_branch_path() const { return !branch_path().empty(); }
 
+    //  default name_check mechanism  ----------------------------------------//
 
-// path_itr_imp implementation  ----------------------------------------------// 
-
-    namespace detail
+    bool path::default_name_check_writable()
     {
-      void path_itr_imp::operator++()
+      return safe_to_write_check;
+    }
+
+    void path::default_name_check( name_check new_check )
+    {
+      assert( new_check );
+      if ( !safe_to_write_check )
+        boost::throw_exception(
+          filesystem_error( "boost::filesystem::default_name_check",
+                            "default name check already set" ));
+      default_check = new_check;
+      safe_to_write_check = false;
+    }
+
+    path::name_check path::default_name_check()
+    {
+      safe_to_write_check = false;
+      return default_check;
+    }
+
+// path::iterator implementation  --------------------------------------------// 
+
+    void path::iterator::increment()
+    {
+      assert( m_pos < m_path_ptr->m_path.size() ); // detect increment past end
+      m_pos += m_name.size();
+      if ( m_pos == m_path_ptr->m_path.size() )
       {
-        assert( pos < path_ptr->m_path.size() ); // detect increment past end
-        pos += name.size();
-        if ( pos == path_ptr->m_path.size() )
+        m_name = "";  // not strictly required, but might aid debugging
+        return;
+      }
+      if ( m_path_ptr->m_path[m_pos] == '/' )
+      {
+#       ifdef BOOST_WINDOWS
+        if ( m_name[m_name.size()-1] == ':' // drive or device
+          || (m_name[0] == '/' && m_name[1] == '/') ) // share
         {
-          name = "";  // not strictly required, but might aid debugging
+          m_name = "/";
           return;
         }
-        if ( path_ptr->m_path[pos] == '/' )
-        {
-#       ifdef BOOST_WINDOWS
-          if ( name[name.size()-1] == ':' // drive or device
-            || (name[0] == '/' && name[1] == '/') ) // share
-          {
-            name = "/";
-            return;
-          }
 #       endif
-          ++pos;
-        }
-        std::string::size_type end_pos( path_ptr->m_path.find( '/', pos ) );
-        if ( end_pos == std::string::npos ) end_pos = path_ptr->m_path.size();
-        name = path_ptr->m_path.substr( pos, end_pos - pos );
+        ++m_pos;
       }
+      std::string::size_type end_pos( m_path_ptr->m_path.find( '/', m_pos ) );
+      if ( end_pos == std::string::npos )
+        end_pos = m_path_ptr->m_path.size();
+      m_name = m_path_ptr->m_path.substr( m_pos, end_pos - m_pos );
+    }
 
-      void path_itr_imp::operator--()
-      {                                                                                
-        assert( pos ); // detect decrement of begin
-        std::string::size_type end_pos( pos );
+    void path::iterator::decrement()
+    {                                                                                
+      assert( m_pos ); // detect decrement of begin
+      std::string::size_type end_pos( m_pos );
 
-        // skip a '/' unless it is a root directory
-        if ( path_ptr->m_path[end_pos-1] == '/'
-          && !detail::is_absolute_root( path_ptr->m_path, end_pos ) ) --end_pos;
-        pos = leaf_pos( path_ptr->m_path, end_pos );
-        name = path_ptr->m_path.substr( pos, end_pos - pos );
-      }
-
-    } // namespace detail
+      // skip a '/' unless it is a root directory
+      if ( m_path_ptr->m_path[end_pos-1] == '/'
+        && !detail::is_absolute_root( m_path_ptr->m_path, end_pos ) ) --end_pos;
+      m_pos = leaf_pos( m_path_ptr->m_path, end_pos );
+      m_name = m_path_ptr->m_path.substr( m_pos, end_pos - m_pos );
+    }
   } // namespace filesystem
 } // namespace boost

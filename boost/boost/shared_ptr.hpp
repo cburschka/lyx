@@ -48,6 +48,7 @@ namespace detail
 {
 
 struct static_cast_tag {};
+struct const_cast_tag {};
 struct dynamic_cast_tag {};
 struct polymorphic_cast_tag {};
 
@@ -68,6 +69,16 @@ template<> struct shared_ptr_traits<void const>
     typedef void reference;
 };
 
+template<> struct shared_ptr_traits<void volatile>
+{
+    typedef void reference;
+};
+
+template<> struct shared_ptr_traits<void const volatile>
+{
+    typedef void reference;
+};
+
 #endif
 
 // enable_shared_from_this support
@@ -77,7 +88,7 @@ template<class T, class Y> void sp_enable_shared_from_this(boost::enable_shared_
     if(pe != 0) pe->_internal_weak_this._internal_assign(px, pn);
 }
 
-inline void sp_enable_shared_from_this(void const *, void const *, shared_count const &)
+inline void sp_enable_shared_from_this(void const volatile *, void const volatile *, shared_count const &)
 {
 }
 
@@ -155,6 +166,11 @@ public:
 
     template<class Y>
     shared_ptr(shared_ptr<Y> const & r, detail::static_cast_tag): px(static_cast<element_type *>(r.px)), pn(r.pn)
+    {
+    }
+
+    template<class Y>
+    shared_ptr(shared_ptr<Y> const & r, detail::const_cast_tag): px(const_cast<element_type *>(r.px)), pn(r.pn)
     {
     }
 
@@ -238,7 +254,7 @@ public:
         BOOST_ASSERT(px != 0);
         return px;
     }
-
+    
     T * get() const // never throws
     {
         return px;
@@ -253,13 +269,21 @@ public:
         return px != 0;
     }
 
-#else
-
+#elif defined(__MWERKS__) && BOOST_WORKAROUND(__MWERKS__, BOOST_TESTED_AT(0x3003))
     typedef T * (this_type::*unspecified_bool_type)() const;
-
+    
     operator unspecified_bool_type() const // never throws
     {
         return px == 0? 0: &this_type::get;
+    }
+
+#else 
+
+    typedef T * this_type::*unspecified_bool_type;
+
+    operator unspecified_bool_type() const // never throws
+    {
+        return px == 0? 0: &this_type::px;
     }
 
 #endif
@@ -351,6 +375,11 @@ template<class T, class U> shared_ptr<T> static_pointer_cast(shared_ptr<U> const
     return shared_ptr<T>(r, detail::static_cast_tag());
 }
 
+template<class T, class U> shared_ptr<T> const_pointer_cast(shared_ptr<U> const & r)
+{
+    return shared_ptr<T>(r, detail::const_cast_tag());
+}
+
 template<class T, class U> shared_ptr<T> dynamic_pointer_cast(shared_ptr<U> const & r)
 {
     return shared_ptr<T>(r, detail::dynamic_cast_tag());
@@ -404,7 +433,7 @@ using std::basic_ostream;
 template<class E, class T, class Y> basic_ostream<E, T> & operator<< (basic_ostream<E, T> & os, shared_ptr<Y> const & p)
 # else
 template<class E, class T, class Y> std::basic_ostream<E, T> & operator<< (std::basic_ostream<E, T> & os, shared_ptr<Y> const & p)
-# endif
+# endif 
 {
     os << p.get();
     return os;
@@ -414,9 +443,10 @@ template<class E, class T, class Y> std::basic_ostream<E, T> & operator<< (std::
 
 // get_deleter (experimental)
 
-#if defined(__GNUC__) &&  (__GNUC__ < 3)
+#if (defined(__GNUC__) &&  (__GNUC__ < 3)) || (defined(__EDG_VERSION__) && (__EDG_VERSION__ <= 238))
 
 // g++ 2.9x doesn't allow static_cast<X const *>(void *)
+// apparently EDG 2.38 also doesn't accept it
 
 template<class D, class T> D * get_deleter(shared_ptr<T> const & p)
 {
@@ -437,7 +467,7 @@ template<class D, class T> D * get_deleter(shared_ptr<T> const & p)
 
 #ifdef BOOST_MSVC
 # pragma warning(pop)
-#endif
+#endif    
 
 #endif  // #if defined(BOOST_NO_MEMBER_TEMPLATES) && !defined(BOOST_MSVC6_MEMBER_TEMPLATES)
 

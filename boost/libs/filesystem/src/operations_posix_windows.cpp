@@ -1,19 +1,12 @@
 //  directory_posix_windows.cpp  ---------------------------------------------//
 
-// < ----------------------------------------------------------------------- > 
-// <   Copyright © 2002 Beman Dawes.                                         >
-// <   Copyright © 2001 Dietmar Kühl, All Rights Reserved                    >
-// <                                                                         > 
-// <   Permission to use, copy, modify, distribute and sell this             > 
-// <   software for any purpose is hereby granted without fee, provided      > 
-// <   that the above copyright notice appears in all copies and that        > 
-// <   both that copyright notice and this permission notice appear in       > 
-// <   supporting documentation. The authors make no representations about   > 
-// <   the suitability of this software for any purpose. It is provided      > 
-// <   "as is" without expressed or implied warranty.                        > 
-// < ----------------------------------------------------------------------- > 
+//  Copyright © 2002 Beman Dawes
+//  Copyright © 2001 Dietmar Kühl
+//  Use, modification, and distribution is subject to the Boost Software
+//  License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy
+//  at http://www.boost.org/LICENSE_1_0.txt)
 
-//  See http://www.boost.org/libs/filesystem for documentation.
+//  See library home page at http://www.boost.org/libs/filesystem
 
 //----------------------------------------------------------------------------//
 
@@ -24,12 +17,21 @@
 
 //----------------------------------------------------------------------------// 
 
-#include <boost/config.hpp>
+// define BOOST_FILESYSTEM_SOURCE so that <boost/filesystem/config.hpp> knows
+// the library is being built (possibly exporting rather than importing code)
+#define BOOST_FILESYSTEM_SOURCE 
+
+#include <boost/filesystem/config.hpp>
 #include <boost/filesystem/operations.hpp>
 #include <boost/filesystem/exception.hpp>
 #include <boost/scoped_array.hpp>
 #include <boost/throw_exception.hpp>
-//#include <iostream>
+#include <boost/detail/workaround.hpp>
+#include <cstring>
+
+#ifdef BOOST_NO_STDC_NAMESPACE
+namespace std { using ::strcmp; using ::remove; using ::rename; }
+#endif
 
 namespace fs = boost::filesystem;
 
@@ -44,6 +46,14 @@ namespace fs = boost::filesystem;
 
 # if defined(BOOST_WINDOWS)
 #   include "windows.h"
+#   if defined(__BORLANDC__) || defined(__MWERKS__)
+#     if defined(__BORLANDC__)
+        using std::time_t;
+#     endif
+#     include "utime.h"
+#   else
+#     include "sys/utime.h"
+#   endif
 
 // For Windows, the xxxA form of various function names is used to avoid
 // inadvertently getting wide forms of the functions. (The undecorated
@@ -51,16 +61,19 @@ namespace fs = boost::filesystem;
 // other macros defined. There was a bug report of this happening.)
 
 # else
-#   include "sys/stat.h"
 #   include "dirent.h"
 #   include "unistd.h"
 #   include "fcntl.h"
+#   include "utime.h"
 # endif
 
+#include <sys/stat.h>  // last_write_time() uses stat()
 #include <string>
-#include <cstdio>
+#include <cstdio>      // for remove, rename
 #include <cerrno>
 #include <cassert>
+
+#include <boost/config/abi_prefix.hpp> // must be the last header
 
 //  helpers  -----------------------------------------------------------------//
 
@@ -155,6 +168,7 @@ namespace
 
 #endif
 
+  
   fs::directory_iterator end_itr;
 
   bool is_empty_directory( const fs::path & dir_path )
@@ -165,7 +179,8 @@ namespace
   unsigned long remove_all_aux( const fs::path & ph )
   {
     unsigned long count = 1;
-    if ( fs::is_directory( ph ) )
+    if ( !fs::symbolic_link_exists( ph ) // don't recurse symbolic links
+      && fs::is_directory( ph ) )
     {
       for ( fs::directory_iterator itr( ph );
             itr != end_itr; ++itr )
@@ -183,81 +198,108 @@ namespace boost
 {
   namespace filesystem
   {
+    namespace detail
+    {
 
 //  dir_itr_imp  -------------------------------------------------------------// 
 
-    class directory_iterator::dir_itr_imp
-    {
-    public:
-      path              entry_path;
-      BOOST_HANDLE      handle;
-
-      ~dir_itr_imp()
+      class dir_itr_imp
       {
-        if ( handle != BOOST_INVALID_HANDLE_VALUE ) find_close( handle );
+      public:
+        path              entry_path;
+        BOOST_HANDLE      handle;
+
+        ~dir_itr_imp()
+        {
+          if ( handle != BOOST_INVALID_HANDLE_VALUE ) find_close( handle );
+        }
+      };
+
+//  dot_or_dot_dot  ----------------------------------------------------------//
+
+      inline bool dot_or_dot_dot( const char * name )
+      {
+# if !BOOST_WORKAROUND( __BORLANDC__, BOOST_TESTED_AT(0x0564) )
+        return std::strcmp( name, "." ) == 0
+            || std::strcmp( name, ".." ) == 0;
+# else
+        // Borland workaround for failure of intrinsics to be placed in
+        // namespace std with certain combinations of compiler options.
+        // To ensure test coverage, the workaround is applied to all
+        // configurations, regardless of option settings.
+        return name[0]=='.'
+          && (name[1]=='\0' || (name[1]=='.' && name[2]=='\0'));
+# endif
       }
-    };
 
 //  directory_iterator implementation  ---------------------------------------//
 
-    // default ctor creates the "end" iterator (by letting base default to 0)
-    directory_iterator::directory_iterator() {}
-
-    directory_iterator::directory_iterator( const path & dir_path )
-    {
-      m_imp.reset( new dir_itr_imp );
-      BOOST_SYSTEM_DIRECTORY_TYPE scratch;
-      const char * name = 0;  // initialization quiets compiler warnings
-      if ( dir_path.empty() )
-       m_imp->handle = BOOST_INVALID_HANDLE_VALUE;
-      else
-        name = find_first_file( dir_path.native_directory_string().c_str(),
-          m_imp->handle, scratch );  // sets handle
-
-      if ( m_imp->handle != BOOST_INVALID_HANDLE_VALUE )
+      BOOST_FILESYSTEM_DECL void dir_itr_init( dir_itr_imp_ptr & m_imp,
+                                               const path & dir_path )
       {
-        m_imp->entry_path = dir_path;
-        m_imp->entry_path.m_path_append( name, path::nocheck );
-        while ( m_imp.get()
-             && ( m_imp->entry_path.leaf() == "."
-              || m_imp->entry_path.leaf() == ".." ) )
-          { operator++(); }
+        m_imp.reset( new dir_itr_imp );
+        BOOST_SYSTEM_DIRECTORY_TYPE scratch;
+        const char * name = 0;  // initialization quiets compiler warnings
+        if ( dir_path.empty() )
+        m_imp->handle = BOOST_INVALID_HANDLE_VALUE;
+        else
+          name = find_first_file( dir_path.native_directory_string().c_str(),
+            m_imp->handle, scratch );  // sets handle
+
+        if ( m_imp->handle != BOOST_INVALID_HANDLE_VALUE )
+        {
+          m_imp->entry_path = dir_path;
+          // append name, except ignore "." or ".."
+          if ( !dot_or_dot_dot( name ) )
+          { 
+            m_imp->entry_path.m_path_append( name, no_check );
+          }
+          else
+          {
+            m_imp->entry_path.m_path_append( "dummy", no_check );
+            dir_itr_increment( m_imp );
+          }
+        }
+        else
+        {
+          boost::throw_exception( filesystem_error(  
+            "boost::filesystem::directory_iterator constructor",
+            dir_path, fs::detail::system_error_code() ) );
+        }  
       }
-      else
+
+      BOOST_FILESYSTEM_DECL path & dir_itr_dereference(
+        const dir_itr_imp_ptr & m_imp )
       {
-        boost::throw_exception( filesystem_error(  
-          "boost::filesystem::directory_iterator constructor",
-          dir_path, fs::detail::system_error_code() ) );
-      }  
-    }
-
-    path const & directory_iterator::m_deref() const
-    {
-      assert( m_imp.get() ); // fails if dereference end iterator
-      return m_imp->entry_path;
-    }
-
-    void directory_iterator::m_inc()
-    {
-      assert( m_imp.get() ); // fails on increment end iterator
-      assert( m_imp->handle != BOOST_INVALID_HANDLE_VALUE ); // reality check
-
-      BOOST_SYSTEM_DIRECTORY_TYPE scratch;
-      const char * name;
-      if ( (name = find_next_file( m_imp->handle,
-        m_imp->entry_path, scratch )) != 0 )
-      {
-        m_imp->entry_path.m_replace_leaf( name );
+        assert( m_imp.get() ); // fails if dereference end iterator
+        return m_imp->entry_path;
       }
-      else
+
+      BOOST_FILESYSTEM_DECL void dir_itr_increment( dir_itr_imp_ptr & m_imp )
       {
+        assert( m_imp.get() ); // fails on increment end iterator
+        assert( m_imp->handle != BOOST_INVALID_HANDLE_VALUE ); // reality check
+
+        BOOST_SYSTEM_DIRECTORY_TYPE scratch;
+        const char * name;
+
+        while ( (name = find_next_file( m_imp->handle,
+          m_imp->entry_path, scratch )) != 0 )
+        {
+          // append name, except ignore "." or ".."
+          if ( !dot_or_dot_dot( name ) )
+          {
+            m_imp->entry_path.m_replace_leaf( name );
+            return;
+          }
+        }
         m_imp.reset(); // make base() the end iterator
       }
-    }
+    } // namespace detail
 
 //  free functions  ----------------------------------------------------------//
 
-    bool exists( const path & ph )
+    BOOST_FILESYSTEM_DECL bool exists( const path & ph )
     {
 #   ifdef BOOST_POSIX
       struct stat path_stat;
@@ -267,7 +309,21 @@ namespace boost
 #   endif
     }
 
-    bool is_directory( const path & ph )
+    // suggested by Walter Landry
+    BOOST_FILESYSTEM_DECL bool symbolic_link_exists( const path & ph )
+    {
+#   ifdef BOOST_POSIX
+      struct stat path_stat;
+      return ::lstat( ph.native_file_string().c_str(), &path_stat ) == 0
+        && S_ISLNK( path_stat.st_mode );
+#   else
+      return false; // Windows has no O/S concept of symbolic links
+                    // (.lnk files are an application feature, not
+                    // a Windows operating system feature)
+#   endif
+    }
+
+    BOOST_FILESYSTEM_DECL bool is_directory( const path & ph )
     {
 #   ifdef BOOST_POSIX
       struct stat path_stat;
@@ -286,7 +342,7 @@ namespace boost
 #   endif
     }
 
-    bool _is_empty( const path & ph )
+    BOOST_FILESYSTEM_DECL bool _is_empty( const path & ph )
     {
 #   ifdef BOOST_POSIX
       struct stat path_stat;
@@ -312,7 +368,31 @@ namespace boost
 #   endif
     }
 
-    void create_directory( const path & dir_path )
+    BOOST_FILESYSTEM_DECL std::time_t last_write_time( const path & ph )
+    {
+      // Works for both Windows and POSIX
+      struct stat path_stat;
+      if ( ::stat( ph.string().c_str(), &path_stat ) != 0 )
+        boost::throw_exception( filesystem_error(
+          "boost::filesystem::last_write_time",
+          ph, fs::detail::system_error_code() ) );
+      return path_stat.st_mtime;
+    }
+
+    BOOST_FILESYSTEM_DECL void last_write_time( const path & ph, const std::time_t new_time )
+    {
+      // Works for both Windows and POSIX
+      ::utimbuf buf;
+      buf.actime = std::time_t();
+      buf.modtime = new_time;
+      if ( ::utime( ph.string().c_str(),
+        new_time == std::time_t() ? 0 : &buf ) != 0 )
+        boost::throw_exception( filesystem_error(
+          "boost::filesystem::last_write_time",
+          ph, fs::detail::system_error_code() ) );
+    }
+
+    BOOST_FILESYSTEM_DECL void create_directory( const path & dir_path )
     {
 #   ifdef BOOST_POSIX
       if ( ::mkdir( dir_path.native_directory_string().c_str(),
@@ -325,13 +405,21 @@ namespace boost
           dir_path, fs::detail::system_error_code() ) );
     }
 
-    bool remove( const path & ph )
+    BOOST_FILESYSTEM_DECL bool remove( const path & ph )
     {
       if ( exists( ph ) )
       {
 #   ifdef BOOST_POSIX
-        if ( ::remove( ph.string().c_str() ) != 0 )
+        if ( std::remove( ph.string().c_str() ) != 0 )
         {
+          int error = fs::detail::system_error_code();
+          // POSIX says "If the directory is not an empty directory, rmdir()
+          // shall fail and set errno to EEXIST or ENOTEMPTY."
+          // Linux uses ENOTEMPTY, Solaris uses EEXIST.
+          if ( error == EEXIST ) error = ENOTEMPTY;
+          boost::throw_exception( filesystem_error(
+            "boost::filesystem::remove", ph, error ) );
+        }
 #   else
         if ( is_directory( ph ) )
         {
@@ -343,27 +431,28 @@ namespace boost
         else
         {
           if ( !::DeleteFileA( ph.string().c_str() ) )
-#   endif
             boost::throw_exception( filesystem_error(
               "boost::filesystem::remove",
               ph, fs::detail::system_error_code() ) );
         }
+#   endif
         return true;
       }
       return false;
     }
 
-    unsigned long remove_all( const path & ph )
+    BOOST_FILESYSTEM_DECL unsigned long remove_all( const path & ph )
     {
-      return exists( ph ) ? remove_all_aux( ph ) : 0;
+      return exists( ph )|| symbolic_link_exists( ph )
+        ? remove_all_aux( ph ) : 0;
     }
 
-    void rename( const path & old_path,
+    BOOST_FILESYSTEM_DECL void rename( const path & old_path,
                  const path & new_path )
     {
 #   ifdef BOOST_POSIX
       if ( exists( new_path ) // POSIX is too permissive so must check
-        || ::rename( old_path.string().c_str(), new_path.string().c_str() ) != 0 )
+        || std::rename( old_path.string().c_str(), new_path.string().c_str() ) != 0 )
 #   else
       if ( !::MoveFileA( old_path.string().c_str(), new_path.string().c_str() ) )
 #   endif
@@ -372,7 +461,7 @@ namespace boost
           old_path, new_path, fs::detail::system_error_code() ) );
     }
 
-    void copy_file( const path & from_file_ph,
+    BOOST_FILESYSTEM_DECL void copy_file( const path & from_file_ph,
                     const path & to_file_ph )
     {
 #   ifdef BOOST_POSIX
@@ -380,13 +469,15 @@ namespace boost
 
       const std::size_t buf_sz = 32768;
       boost::scoped_array<char> buf( new char [buf_sz] );
-      int infile, outfile=0;  // init quiets compiler warning
+      int infile=0, outfile=0;  // init quiets compiler warning
+      struct stat from_stat;
 
-      if ( (infile = ::open( from_file_ph.string().c_str(),
+      if ( ::stat( from_file_ph.string().c_str(), &from_stat ) != 0
+        || (infile = ::open( from_file_ph.string().c_str(),
                              O_RDONLY )) < 0
         || (outfile = ::open( to_file_ph.string().c_str(),
                               O_WRONLY | O_CREAT | O_EXCL,
-                              S_IRWXU|S_IRWXG|S_IRWXO )) < 0 )
+                              from_stat.st_mode )) < 0 )
       {
         if ( infile != 0 ) ::close( infile );
         boost::throw_exception( filesystem_error(
@@ -411,7 +502,7 @@ namespace boost
           from_file_ph, to_file_ph, fs::detail::system_error_code() ) );
     }
 
-    path current_path()
+    BOOST_FILESYSTEM_DECL path current_path()
     {
 #   ifdef BOOST_POSIX
       long path_max = ::pathconf( ".", _PC_PATH_MAX );
@@ -437,14 +528,14 @@ namespace boost
       return path( buf.get(), native );
     }
 
-    const path & initial_path()
+    BOOST_FILESYSTEM_DECL const path & initial_path()
     {
       static path init_path;
       if ( init_path.empty() ) init_path = current_path();
       return init_path;
     }
 
-    path system_complete( const path & ph )
+    BOOST_FILESYSTEM_DECL path system_complete( const path & ph )
     {
 #   ifdef BOOST_WINDOWS
       if ( ph.empty() ) return ph;
@@ -464,7 +555,7 @@ namespace boost
 #   endif
     }
     
-    path complete( const path & ph, const path & base )
+    BOOST_FILESYSTEM_DECL path complete( const path & ph, const path & base )
     {
       assert( base.is_complete()
         && (ph.is_complete() || !ph.has_root_name()) ); // precondition

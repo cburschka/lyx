@@ -1,7 +1,11 @@
-//  (C) Copyright Boost.org 2001. Permission to copy, use, modify, sell and
-//  distribute this software is granted provided this copyright notice appears
-//  in all copies. This software is provided "as is" without express or implied
-//  warranty, and with no claim as to its suitability for any purpose.
+//  (C) Copyright John Maddock 2001 - 2003. 
+//  (C) Copyright Jens Maurer 2001 - 2003. 
+//  (C) Copyright Aleksey Gurtovoy 2002. 
+//  (C) Copyright David Abrahams 2002 - 2003. 
+//  (C) Copyright Toon Knapen 2003. 
+//  Use, modification and distribution are subject to the 
+//  Boost Software License, Version 1.0. (See accompanying file 
+//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
 
 //  See http://www.boost.org for most recent version.
 
@@ -20,6 +24,7 @@
 // member templates are sufficiently broken that we disable them for now
 #    define BOOST_NO_MEMBER_TEMPLATES
 #    define BOOST_NO_DEPENDENT_NESTED_DERIVATIONS
+#    define BOOST_NO_USING_DECLARATION_OVERLOADS_FROM_TYPENAME_BASE
 #endif
 
 #if (__HP_aCC <= 33900) || !defined(BOOST_STRICT_CONFIG)
@@ -37,6 +42,10 @@
 #    define BOOST_HAS_PARTIAL_STD_ALLOCATOR
 #endif
 
+#if (__HP_aCC <= 53800 )
+#    define BOOST_NO_MEMBER_TEMPLATE_KEYWORD
+#endif
+
 #define BOOST_COMPILER "HP aCC version " BOOST_STRINGIZE(__HP_aCC)
 
 //
@@ -47,11 +56,12 @@
 #endif
 //
 // last known and checked version is 0:
-#if (__HP_aCC > 33900)
+#if (__HP_aCC > 53800)
 #  if defined(BOOST_ASSERT_CONFIG)
 #     error "Unknown compiler version - please run the configure tests and report the results"
 #  endif
 #endif
+
 
 
 

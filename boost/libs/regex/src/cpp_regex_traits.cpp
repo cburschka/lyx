@@ -3,16 +3,12 @@
  * Copyright (c) 1998-2002
  * Dr John Maddock
  *
- * Permission to use, copy, modify, distribute and sell this software
- * and its documentation for any purpose is hereby granted without fee,
- * provided that the above copyright notice appear in all copies and
- * that both that copyright notice and this permission notice appear
- * in supporting documentation.  Dr John Maddock makes no representations
- * about the suitability of this software for any purpose.
- * It is provided "as is" without express or implied warranty.
+ * Use, modification and distribution are subject to the 
+ * Boost Software License, Version 1.0. (See accompanying file 
+ * LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
  *
  */
-
+ 
  /*
   *   LOCATION:    see http://www.boost.org for most recent version.
   *   FILE:        c_regex_traits.cpp
@@ -25,7 +21,12 @@
 
 #include <boost/regex/config.hpp>
 
-#if !defined(BOOST_NO_STD_LOCALE) && !defined(BOOST_NO_STD_WSTREAMBUF)
+#if defined(BOOST_REGEX_HAS_SHORT_WCHAR_T) && !defined(_NATIVE_WCHAR_T_DEFINED)
+#  pragma message ("disabling support for class cpp_regex_traits<wchar_t> - rebuild with /Zc:wchar_t if you really need this")
+#  define BOOST_NO_WREGEX
+#endif
+
+#if !defined(BOOST_NO_STD_LOCALE)
 
 # ifdef BOOST_MSVC
 #  pragma warning(disable:4786 4702 4127 4244)
@@ -119,7 +120,6 @@ template<class charT, class traits>
 typename parser_buf<charT, traits>::pos_type
 parser_buf<charT, traits>::seekoff(off_type off, ::std::ios_base::seekdir way, ::std::ios_base::openmode which)
 {
-   typedef typename parser_buf<charT, traits>::pos_type pos_type;
    if(which & ::std::ios_base::out)
       return pos_type(off_type(-1));
    std::ptrdiff_t size = this->egptr() - this->eback();
@@ -159,7 +159,7 @@ parser_buf<charT, traits>::seekpos(pos_type sp, ::std::ios_base::openmode which)
 {
    if(which & ::std::ios_base::out)
       return pos_type(off_type(-1));
-   std::ptrdiff_t size = this->egptr() - this->eback();
+   off_type size = this->egptr() - this->eback();
    charT* g = this->eback();
    if(off_type(sp) <= size)
    {
@@ -186,14 +186,14 @@ struct message_data<char>
    std::istream is;
    std::string error_strings[boost::REG_E_UNKNOWN+1];
 
-   message_data(const std::locale& l, const std::string& regex_message_catalogue);
+   message_data(const std::locale& l, std::string regex_message_catalogue);
 private:
    message_data(const message_data&);
    message_data& operator=(const message_data&);
 };
 
 
-message_data<char>::message_data(const std::locale& l, const std::string& regex_message_catalogue)
+message_data<char>::message_data(const std::locale& l, std::string regex_message_catalogue)
    : is(&sbuf)
 {
    is.imbue(l);
@@ -201,24 +201,21 @@ message_data<char>::message_data(const std::locale& l, const std::string& regex_
 
    const std::messages<char>* pm = 0;
 #ifndef __IBMCPP__
-   std::messages<char>::catalog cat = static_cast<std::messages<wchar_t>::catalog>(-1);
+   std::messages<char>::catalog cat = static_cast<std::messages<char>::catalog>(-1);
 #else
-   std::messages<char>::catalog cat = reinterpret_cast<std::messages<wchar_t>::catalog>(-1);
+   std::messages<char>::catalog cat = reinterpret_cast<std::messages<char>::catalog>(-1);
 #endif
    if(regex_message_catalogue.size())
    {
       pm = &BOOST_USE_FACET(std::messages<char>, l);
       cat = pm->open(regex_message_catalogue, l);
-#ifndef BOOST_NO_EXCEPTIONS
       if(cat < 0)
       {
          std::string m("Unable to open message catalog: ");
-         throw std::runtime_error(m + regex_message_catalogue);
+         std::runtime_error err(m + regex_message_catalogue);
+         boost::throw_exception(err);
       }
-#else
-      BOOST_REGEX_NOEH_ASSERT(cat >= 0);
-#endif
-   }
+   } 
 #endif
    std::memset(syntax_map, cpp_regex_traits<char>::syntax_char, 256);
    unsigned i;
@@ -254,8 +251,9 @@ message_data<char>::message_data(const std::locale& l, const std::string& regex_
    // STLport users as well (gcc3.1+STLport5), so enable the
    // workaround for all STLport users...
    //
-#if defined(__SGI_STL_PORT) || defined(_STLPORT_VERSION)
+#if (defined(__SGI_STL_PORT) || defined(_STLPORT_VERSION)) && !defined(BOOST_MSVC)
    using namespace std;
+   using stlport::isspace;
 #  define BOOST_REGEX_STD
 #else
 #  define BOOST_REGEX_STD std::
@@ -345,6 +343,18 @@ cpp_regex_traits<char>::cpp_regex_traits()
    pctype->tolower(&lower_map[0], &lower_map[char_set_size]);
    pcollate = &BOOST_USE_FACET(std::collate<char>, locale_inst);
    sort_type = re_detail::find_sort_syntax(this, &(this->sort_delim));
+}
+
+void cpp_regex_traits<char>::swap(cpp_regex_traits<char>& that)
+{
+   std::swap(locale_inst, that.locale_inst); // this one goes first
+   std::swap(pmd, that.pmd);
+   std::swap(psyntax, that.psyntax);
+   std::swap(lower_map, that.lower_map);
+   std::swap(pctype, that.pctype);
+   std::swap(pcollate, that.pcollate);
+   std::swap(sort_type, that.sort_type);
+   std::swap(sort_delim, that.sort_delim);
 }
 
 cpp_regex_traits<char>::~cpp_regex_traits()
@@ -464,7 +474,7 @@ cpp_regex_traits<char>::locale_type BOOST_REGEX_CALL cpp_regex_traits<char>::imb
    return old_l;
 }
 
-#ifndef BOOST_NO_WREGEX
+#if !defined(BOOST_NO_WREGEX) && !defined(BOOST_NO_STD_WSTREAMBUF)
 
 namespace re_detail{
 
@@ -604,15 +614,12 @@ message_data<wchar_t>::message_data(const std::locale& l, const std::string& reg
    if(regex_message_catalogue.size())
    {
       cat = msgs.open(regex_message_catalogue, l);
-#ifndef BOOST_NO_EXCEPTIONS
       if(cat < 0)
       {
-         std::string m("Unable to open message catalog: ");
-         throw std::runtime_error(m + regex_message_catalogue);
+         std::string mess("Unable to open message catalog: ");
+         std::runtime_error err(mess + regex_message_catalogue);
+         boost::throw_exception(err);
       }
-#else
-      BOOST_REGEX_NOEH_ASSERT(cat >= 0);
-#endif
    }
 #endif
    scoped_array<char> a;
@@ -637,7 +644,11 @@ message_data<wchar_t>::message_data(const std::locale& l, const std::string& reg
 #endif
       for(unsigned int j = 0; j < s.size(); ++j)
       {
+#if defined(WCHAR_MIN) && (WCHAR_MIN == 0)
+         if(s[j] <= UCHAR_MAX)
+#else
          if((s[j] <= UCHAR_MAX) && (s[j] >= 0))
+#endif
             syntax_[s[j]] = static_cast<unsigned char>(i);
          else
          {
@@ -691,7 +702,7 @@ message_data<wchar_t>::message_data(const std::locale& l, const std::string& reg
 
    if((int)cat >= 0)
       msgs.close(cat);
-#endif
+#endif      
 }
 
 } // namespace re_detail
@@ -870,9 +881,26 @@ std::size_t BOOST_REGEX_CALL cpp_regex_traits<wchar_t>::strwiden(wchar_t *s1, st
    return ws.size()+1;
 }
 
+void cpp_regex_traits<wchar_t>::swap(cpp_regex_traits<wchar_t>& that)
+{
+   std::swap(locale_inst, that.locale_inst); // this one must go first
+   std::swap(pmd, that.pmd);
+   std::swap(psyntax, that.psyntax);
+   std::swap(lower_map, that.lower_map);
+   std::swap(pctype, that.pctype);
+   std::swap(pcollate, that.pcollate);
+   std::swap(pcdv, that.pcdv);
+   std::swap(sort_type, that.sort_type);
+   std::swap(sort_delim, that.sort_delim);
+}
+
 #endif // BOOST_NO_WREGEX
 
 
 } // namespace boost
 
 #endif
+
+
+
+

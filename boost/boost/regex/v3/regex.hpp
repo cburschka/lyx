@@ -3,13 +3,9 @@
  * Copyright (c) 1998-2002
  * Dr John Maddock
  *
- * Permission to use, copy, modify, distribute and sell this software
- * and its documentation for any purpose is hereby granted without fee,
- * provided that the above copyright notice appear in all copies and
- * that both that copyright notice and this permission notice appear
- * in supporting documentation.  Dr John Maddock makes no representations
- * about the suitability of this software for any purpose.
- * It is provided "as is" without express or implied warranty.
+ * Use, modification and distribution are subject to the 
+ * Boost Software License, Version 1.0. (See accompanying file 
+ * LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
  *
  */
 
@@ -897,7 +893,7 @@ protected:
    {
       std::size_t cmatches;
       unsigned count;
-      sub_match<iterator> head, tail, null;
+      sub_match<iterator> head, tail, re_null;
       unsigned int lines;
       iterator line_pos, base;
       c_reference(const Allocator& a)
@@ -951,7 +947,7 @@ public:
    {
       if((n >= 0) && ((unsigned int)n < ref->cmatches))
          return *(sub_match<iterator>*)((char*)ref + sizeof(c_reference) + sizeof(sub_match<iterator>)*n);
-      return (n == -1) ? ref->head : (n == -2) ? ref->tail : ref->null;
+      return (n == -1) ? ref->head : (n == -2) ? ref->tail : ref->re_null;
    }
 
    Allocator BOOST_REGEX_CALL allocator()const;
@@ -1300,8 +1296,8 @@ void BOOST_REGEX_CALL match_results_base<iterator, Allocator>::set_size(size_typ
    ref->head.first = i;
    ref->tail.second = j;
    ref->head.matched = ref->tail.matched = true;
-   ref->null.first = ref->null.second = j;
-   ref->null.matched = false;
+   ref->re_null.first = ref->re_null.second = j;
+   ref->re_null.matched = false;
 }
 
 template <class iterator, class Allocator>
@@ -1604,6 +1600,7 @@ typedef match_results<std::wstring::const_iterator> wsmatch;
 #endif  // __cplusplus
 
 #endif  // include
+
 
 
 

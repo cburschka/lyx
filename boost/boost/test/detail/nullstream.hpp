@@ -1,15 +1,14 @@
-//  (C) Copyright Gennadiy Rozental 2002.
-//  (C) Copyright Daryle Walker 2000-2001.
-//  Permission to copy, use, modify, sell and distribute this software
-//  is granted provided this copyright notice appears in all copies.
-//  This software is provided "as is" without express or implied warranty,
-//  and with no claim as to its suitability for any purpose.
+//  (C) Copyright Gennadiy Rozental 2002-2003.
+//  (C) Copyright Daryle Walker 2000-2001. 
+//  Use, modification, and distribution are subject to the 
+//  Boost Software License, Version 1.0. (See accompanying file 
+//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
 
-//  See http://www.boost.org for most recent version including documentation.
+//  See http://www.boost.org/libs/test for the library home page.
 //
 //  File        : $RCSfile: nullstream.hpp,v $
 //
-//  Version     : $Id: nullstream.hpp,v 1.1 2003/09/26 14:27:18 larsbj Exp $
+//  Version     : $Revision: 1.7 $
 //
 //  Description : simulate /dev/null stream
 // ***************************************************************************
@@ -81,5 +80,14 @@ typedef basic_onullstream<wchar_t>  wonullstream;
 
 }  // namespace boost
 
+// ***************************************************************************
+//  Revision History :
+//  
+//  $Log: nullstream.hpp,v $
+//  Revision 1.7  2003/12/01 00:41:56  rogeeff
+//  prerelease cleaning
+//
+
+// ***************************************************************************
 
 #endif  // BOOST_NULLSTREAM_HPP

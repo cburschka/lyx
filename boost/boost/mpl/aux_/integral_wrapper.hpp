@@ -1,6 +1,6 @@
 
 // + file: boost/mpl/aux_/intergal_wrapper.hpp
-// + last modified: 27/jan/03
+// + last modified: 12/apr/03
 
 // Copyright (c) 2000-03
 // Aleksey Gurtovoy
@@ -17,7 +17,7 @@
 
 // no include guards, the header is intended for multiple inclusion!
 
-#include "boost/mpl/aux_/ice_cast.hpp"
+#include "boost/mpl/aux_/static_cast.hpp"
 #include "boost/mpl/aux_/config/nttp.hpp"
 #include "boost/mpl/aux_/config/static_constant.hpp"
 #include "boost/mpl/aux_/config/workaround.hpp"
@@ -33,7 +33,11 @@
 #endif
 
 #if !defined(AUX_WRAPPER_INST)
-#   define AUX_WRAPPER_INST(value) mpl::AUX_WRAPPER_NAME< value >
+#   if BOOST_WORKAROUND(__MWERKS__, <= 0x2407)
+#       define AUX_WRAPPER_INST(value) AUX_WRAPPER_NAME< value >
+#   else 
+#       define AUX_WRAPPER_INST(value) mpl::AUX_WRAPPER_NAME< value >
+#   endif
 #endif
 
 namespace boost { namespace mpl {
@@ -56,27 +60,32 @@ struct AUX_WRAPPER_NAME
 // either
 #if BOOST_WORKAROUND(__EDG_VERSION__, <= 243)
  private:
-    BOOST_STATIC_CONSTANT(AUX_WRAPPER_VALUE_TYPE, next_value = BOOST_MPL_AUX_ICE_CAST(AUX_WRAPPER_VALUE_TYPE, (N + 1)));
-    BOOST_STATIC_CONSTANT(AUX_WRAPPER_VALUE_TYPE, prior_value = BOOST_MPL_AUX_ICE_CAST(AUX_WRAPPER_VALUE_TYPE, (N - 1)));
+    BOOST_STATIC_CONSTANT(AUX_WRAPPER_VALUE_TYPE, next_value = BOOST_MPL_AUX_STATIC_CAST(AUX_WRAPPER_VALUE_TYPE, (N + 1)));
+    BOOST_STATIC_CONSTANT(AUX_WRAPPER_VALUE_TYPE, prior_value = BOOST_MPL_AUX_STATIC_CAST(AUX_WRAPPER_VALUE_TYPE, (N - 1)));
  public:
     typedef AUX_WRAPPER_INST(next_value) next;
     typedef AUX_WRAPPER_INST(prior_value) prior;
 #elif BOOST_WORKAROUND(__BORLANDC__, BOOST_TESTED_AT(0x561)) \
     || BOOST_WORKAROUND(__IBMCPP__, BOOST_TESTED_AT(502)) \
     || BOOST_WORKAROUND(__HP_aCC, BOOST_TESTED_AT(53800))
-    typedef AUX_WRAPPER_INST( BOOST_MPL_AUX_ICE_CAST(AUX_WRAPPER_VALUE_TYPE, (N + 1)) ) next;
-    typedef AUX_WRAPPER_INST( BOOST_MPL_AUX_ICE_CAST(AUX_WRAPPER_VALUE_TYPE, (N - 1)) ) prior;
+    typedef AUX_WRAPPER_INST( BOOST_MPL_AUX_STATIC_CAST(AUX_WRAPPER_VALUE_TYPE, (N + 1)) ) next;
+    typedef AUX_WRAPPER_INST( BOOST_MPL_AUX_STATIC_CAST(AUX_WRAPPER_VALUE_TYPE, (N - 1)) ) prior;
 #else
-    typedef AUX_WRAPPER_INST( BOOST_MPL_AUX_ICE_CAST(AUX_WRAPPER_VALUE_TYPE, (value + 1)) ) next;
-    typedef AUX_WRAPPER_INST( BOOST_MPL_AUX_ICE_CAST(AUX_WRAPPER_VALUE_TYPE, (value - 1)) ) prior;
+    typedef AUX_WRAPPER_INST( BOOST_MPL_AUX_STATIC_CAST(AUX_WRAPPER_VALUE_TYPE, (value + 1)) ) next;
+    typedef AUX_WRAPPER_INST( BOOST_MPL_AUX_STATIC_CAST(AUX_WRAPPER_VALUE_TYPE, (value - 1)) ) prior;
 #endif
 
     // enables uniform function call syntax for families of overloaded 
     // functions that return objects of both arithmetic ('int', 'long',
     // 'double', etc.) and wrapped integral types (for an example, see 
     // "mpl/example/power.cpp")
-    operator AUX_WRAPPER_VALUE_TYPE() const { return this->value; } 
+    operator AUX_WRAPPER_VALUE_TYPE() const { return static_cast<AUX_WRAPPER_VALUE_TYPE>(this->value); } 
 };
+
+#if !defined(BOOST_NO_INCLASS_MEMBER_INITIALIZATION)
+template< AUX_WRAPPER_PARAMS(N) >
+AUX_WRAPPER_VALUE_TYPE const AUX_WRAPPER_INST(N)::value;
+#endif
 
 }} // namespace boost::mpl
 

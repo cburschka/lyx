@@ -1,10 +1,10 @@
-// (C) Copyright Steve Cleary, Beman Dawes, Howard Hinnant & John Maddock 2000.
-// Permission to copy, use, modify, sell and distribute this software is
-// granted provided this copyright notice appears in all copies. This software
-// is provided "as is" without express or implied warranty, and with no claim
-// as to its suitability for any purpose.
+
+//  (C) Copyright Steve Cleary, Beman Dawes, Howard Hinnant & John Maddock 2000.
+//  Use, modification and distribution are subject to the Boost Software License,
+//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
+//  http://www.boost.org/LICENSE_1_0.txt).
 //
-// See http://www.boost.org for most recent version including documentation.
+//  See http://www.boost.org/libs/type_traits for most recent version including documentation.
 
 #ifndef BOOST_TT_ADD_REFERENCE_HPP_INCLUDED
 #define BOOST_TT_ADD_REFERENCE_HPP_INCLUDED
@@ -78,7 +78,7 @@ BOOST_TT_AUX_TYPE_TRAIT_DEF1(add_reference,T,typename detail::add_reference_impl
 
 // agurt, 07/mar/03: workaround Borland's ill-formed sensitivity to an additional
 // level of indirection, here
-#if BOOST_WORKAROUND(__BORLANDC__, BOOST_TESTED_AT(0x561))
+#if BOOST_WORKAROUND(__BORLANDC__, < 0x600)
 BOOST_TT_AUX_TYPE_TRAIT_PARTIAL_SPEC1_1(typename T,add_reference,T&,T&)
 #endif
 

@@ -1,10 +1,9 @@
 //  (C) Copyright Steve Cleary, Beman Dawes, Howard Hinnant & John Maddock 2000.
-//  Permission to copy, use, modify, sell and
-//  distribute this software is granted provided this copyright notice appears
-//  in all copies. This software is provided "as is" without express or implied
-//  warranty, and with no claim as to its suitability for any purpose.
-
-//  See http://www.boost.org for most recent version including documentation.
+//  Use, modification and distribution are subject to the Boost Software License,
+//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
+//  http://www.boost.org/LICENSE_1_0.txt).
+//
+//  See http://www.boost.org/libs/utility for most recent version including documentation.
 
 // call_traits: defines typedefs for function usage
 // (see libs/utility/call_traits.htm)
@@ -22,13 +21,10 @@
 #ifndef BOOST_CONFIG_HPP
 #include <boost/config.hpp>
 #endif
+#include <cstddef>
 
-#ifndef BOOST_ARITHMETIC_TYPE_TRAITS_HPP
-#include <boost/type_traits/arithmetic_traits.hpp>
-#endif
-#ifndef BOOST_COMPOSITE_TYPE_TRAITS_HPP
-#include <boost/type_traits/composite_traits.hpp>
-#endif
+#include <boost/type_traits/is_arithmetic.hpp>
+#include <boost/type_traits/is_pointer.hpp>
 
 namespace boost{
 
@@ -125,7 +121,7 @@ struct call_traits<T&const volatile>
    typedef T& param_type;  // hh removed const
 };
 #endif
-#ifndef __SUNPRO_CC
+#if !defined(BOOST_NO_ARRAY_TYPE_SPECIALIZATIONS)
 template <typename T, std::size_t N>
 struct call_traits<T [N]>
 {

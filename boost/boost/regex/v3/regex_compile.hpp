@@ -3,13 +3,9 @@
  * Copyright (c) 1998-2002
  * Dr John Maddock
  *
- * Permission to use, copy, modify, distribute and sell this software
- * and its documentation for any purpose is hereby granted without fee,
- * provided that the above copyright notice appear in all copies and
- * that both that copyright notice and this permission notice appear
- * in supporting documentation.  Dr John Maddock makes no representations
- * about the suitability of this software for any purpose.  
- * It is provided "as is" without express or implied warranty.
+ * Use, modification and distribution are subject to the 
+ * Boost Software License, Version 1.0. (See accompanying file 
+ * LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
  *
  */
  
@@ -199,7 +195,9 @@ unsigned int BOOST_REGEX_CALL reg_expression<charT, traits, Allocator>::parse_in
    unsigned int result = traits_inst.syntax_type((traits_size_type)(traits_uchar_type)*(base+1));
    if((result == traits_type::syntax_colon) && ((first-base) == 5))
    {
-      return traits_inst.syntax_type((traits_size_type)(traits_uchar_type)*(base+2));
+      unsigned type = traits_inst.syntax_type((traits_size_type)(traits_uchar_type)*(base+2));
+      if((type == traits_type::syntax_left_word) || (type == traits_type::syntax_right_word))
+         return type;
    }
    return ((result == traits_type::syntax_colon) || (result == traits_type::syntax_dot) || (result == traits_type::syntax_equal)) ? result : 0;
 }

@@ -1,9 +1,11 @@
-//-----------------------------------------------------------------------------
-// boost mpl/aux_/config/overload_resolution.hpp header file
-// See http://www.boost.org for updates, documentation, and revision history.
-//-----------------------------------------------------------------------------
-//
-// Copyright (c) 2002
+
+#ifndef BOOST_MPL_AUX_CONFIG_OVERLOAD_RESOLUTION_HPP_INCLUDED
+#define BOOST_MPL_AUX_CONFIG_OVERLOAD_RESOLUTION_HPP_INCLUDED
+
+// + file: boost/mpl/aux_/config/overload_resolution.hpp
+// + last modified: 23/jun/03
+
+// Copyright (c) 2002-03
 // Aleksey Gurtovoy
 //
 // Permission to use, copy, modify, distribute and sell this software
@@ -13,16 +15,19 @@
 // supporting documentation. No representations are made about the 
 // suitability of this software for any purpose. It is provided "as is" 
 // without express or implied warranty.
+//
+// See http://www.boost.org/libs/mpl for documentation.
 
-#ifndef BOOST_MPL_AUX_CONFIG_OVERLOAD_RESOLUTION_HPP_INCLUDED
-#define BOOST_MPL_AUX_CONFIG_OVERLOAD_RESOLUTION_HPP_INCLUDED
+#include "boost/mpl/aux_/config/workaround.hpp"
 
-#include "boost/config.hpp"
+#if    !defined(BOOST_MPL_BROKEN_OVERLOAD_RESOLUTION) \
+    && !defined(BOOST_MPL_PREPROCESSING_MODE) \
+    && (   BOOST_WORKAROUND(__BORLANDC__, BOOST_TESTED_AT(0x561)) \
+        || BOOST_WORKAROUND(__MWERKS__, < 0x3001) \
+        )
 
-#if defined(__BORLANDC__) && (__BORLANDC__ <= 0x561 || !defined(BOOST_STRICT_CONFIG)) \
- || defined(__MWERKS__) && __MWERKS__ < 0x3001 \
- && !defined(BOOST_MPL_BROKEN_OVERLOAD_RESOLUTION)
 #   define BOOST_MPL_BROKEN_OVERLOAD_RESOLUTION
+
 #endif
 
 #endif // BOOST_MPL_AUX_CONFIG_OVERLOAD_RESOLUTION_HPP_INCLUDED

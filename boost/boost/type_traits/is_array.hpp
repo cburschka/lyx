@@ -1,11 +1,15 @@
-// (C) Copyright Dave Abrahams, Steve Cleary, Beman Dawes, Howard
-// Hinnant & John Maddock 2000.  Permission to copy, use, modify,
-// sell and distribute this software is granted provided this
-// copyright notice appears in all copies. This software is provided
-// "as is" without express or implied warranty, and with no claim as
-// to its suitability for any purpose.
+
+//  (C) Copyright Dave Abrahams, Steve Cleary, Beman Dawes, Howard
+//  Hinnant & John Maddock 2000.  
+//  Use, modification and distribution are subject to the Boost Software License,
+//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
+//  http://www.boost.org/LICENSE_1_0.txt).
 //
-// See http://www.boost.org for most recent version including documentation.
+//  See http://www.boost.org/libs/type_traits for most recent version including documentation.
+
+
+// Some fixes for is_array are based on a newgroup posting by Jonathan Lundquist.
+
 
 #ifndef BOOST_TT_IS_ARRAY_HPP_INCLUDED
 #define BOOST_TT_IS_ARRAY_HPP_INCLUDED
@@ -27,10 +31,18 @@ namespace boost {
 #ifndef BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION
 
 BOOST_TT_AUX_BOOL_TRAIT_DEF1(is_array,T,false)
+#if !defined(BOOST_NO_ARRAY_TYPE_SPECIALIZATIONS)
 BOOST_TT_AUX_BOOL_TRAIT_PARTIAL_SPEC1_2(typename T,std::size_t N,is_array,T[N],true)
 BOOST_TT_AUX_BOOL_TRAIT_PARTIAL_SPEC1_2(typename T,std::size_t N,is_array,T const[N],true)
 BOOST_TT_AUX_BOOL_TRAIT_PARTIAL_SPEC1_2(typename T,std::size_t N,is_array,T volatile[N],true)
 BOOST_TT_AUX_BOOL_TRAIT_PARTIAL_SPEC1_2(typename T,std::size_t N,is_array,T const volatile[N],true)
+#if !(defined(__BORLANDC__) && (__BORLANDC__ < 0x600))
+BOOST_TT_AUX_BOOL_TRAIT_PARTIAL_SPEC1_1(typename T,is_array,T[],true)
+BOOST_TT_AUX_BOOL_TRAIT_PARTIAL_SPEC1_1(typename T,is_array,T const[],true)
+BOOST_TT_AUX_BOOL_TRAIT_PARTIAL_SPEC1_1(typename T,is_array,T volatile[],true)
+BOOST_TT_AUX_BOOL_TRAIT_PARTIAL_SPEC1_1(typename T,is_array,T const volatile[],true)
+#endif
+#endif
 
 #else // BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION
 
@@ -48,8 +60,8 @@ yes_type BOOST_TT_DECL is_array_tester2(...);
 
 template< typename T >
 struct is_array_impl
-{
-    BOOST_STATIC_CONSTANT(bool, value =
+{ 
+    BOOST_STATIC_CONSTANT(bool, value = 
         sizeof(::boost::detail::is_array_tester2(
             ::boost::detail::is_array_tester1(
                 ::boost::type_traits::wrap<T>()

@@ -1,11 +1,10 @@
 //  Boost CRC library crc.hpp header file  -----------------------------------//
 
-//  (C) Copyright Daryle Walker 2001.  Permission to copy, use, modify, sell and
-//  distribute this software is granted provided this copyright notice appears 
-//  in all copies.  This software is provided "as is" without express or
-//  implied warranty, and with no claim as to its suitability for any purpose. 
+//  Copyright 2001 Daryle Walker.  Use, modification, and distribution are
+//  subject to the Boost Software License, Version 1.0.  (See accompanying file
+//  LICENSE_1_0.txt or a copy at <http://www.boost.org/LICENSE_1_0.txt>.)
 
-//  See http://www.boost.org/libs/crc for documentation. 
+//  See <http://www.boost.org/libs/crc/> for the library's home page.
 
 #ifndef BOOST_CRC_HPP
 #define BOOST_CRC_HPP
@@ -280,10 +279,15 @@ namespace detail
         typedef typename base_type::least  least;
         typedef typename base_type::fast   fast;
 
+#if defined(__EDG_VERSION__) && __EDG_VERSION__ <= 243
+        static const least high_bit = 1ul << ( Bits - 1u );
+        static const fast high_bit_fast = 1ul << ( Bits - 1u );
+#else
         BOOST_STATIC_CONSTANT( least, high_bit = (least( 1u ) << ( Bits
          - 1u )) );
         BOOST_STATIC_CONSTANT( fast, high_bit_fast = (fast( 1u ) << ( Bits
          - 1u )) );
+#endif
 
     };  // boost::detail::high_uint_t
 
@@ -340,7 +344,11 @@ namespace detail
         BOOST_STATIC_CONSTANT( fast, high_bit_fast = base_type::high_bit_fast );
         #endif
 
+#if defined(__EDG_VERSION__) && __EDG_VERSION__ <= 243
+        static const least sig_bits = (~( ~( 0ul ) << Bits )) ;
+#else
         BOOST_STATIC_CONSTANT( least, sig_bits = (~( ~(least( 0u )) << Bits )) );
+#endif
         BOOST_STATIC_CONSTANT( fast, sig_bits_fast = fast(sig_bits) );
 
     };  // boost::detail::mask_uint_t

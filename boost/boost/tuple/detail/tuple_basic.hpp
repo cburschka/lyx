@@ -84,17 +84,6 @@ template<class T> struct length;
 
 namespace detail {
 
-#ifdef BOOST_NO_EXPLICIT_FUNCTION_TEMPLATE_ARGUMENTS
-
-  template<int N> struct workaround_holder {};
-
-#  define BOOST_TUPLE_DUMMY_PARM        , detail::workaround_holder<N>* = 0
-#  define BOOST_TUPLE_SINGLE_DUMMY_PARM detail::workaround_holder<N>* = 0
-#else
-#  define BOOST_TUPLE_DUMMY_PARM
-#  define BOOST_TUPLE_SINGLE_DUMMY_PARM
-#endif
-
 // -- generate error template, referencing to non-existing members of this
 // template is used to produce compilation errors intentionally
 template<class T>
@@ -204,7 +193,7 @@ template<int N, class HT, class TT>
 inline typename access_traits<
                   typename element<N, cons<HT, TT> >::type
                 >::non_const_type
-get(cons<HT, TT>& c BOOST_TUPLE_DUMMY_PARM) {
+get(cons<HT, TT>& c BOOST_APPEND_EXPLICIT_TEMPLATE_NON_TYPE(int, N)) {
   return detail::get_class<N>::BOOST_NESTED_TEMPLATE
          get<
            typename access_traits<
@@ -219,7 +208,7 @@ template<int N, class HT, class TT>
 inline typename access_traits<
                   typename element<N, cons<HT, TT> >::type
                 >::const_type
-get(const cons<HT, TT>& c BOOST_TUPLE_DUMMY_PARM) {
+get(const cons<HT, TT>& c BOOST_APPEND_EXPLICIT_TEMPLATE_NON_TYPE(int, N)) {
   return detail::get_class<N>::BOOST_NESTED_TEMPLATE
          get<
            typename access_traits<
@@ -397,7 +386,7 @@ struct cons<HT, null_type> {
   typename access_traits<
              typename element<N, self_type>::type
             >::non_const_type
-  get(BOOST_TUPLE_SINGLE_DUMMY_PARM) {
+  get(BOOST_EXPLICIT_TEMPLATE_NON_TYPE(int, N)) {
     return boost::tuples::get<N>(*this);
   }
 
@@ -405,7 +394,7 @@ struct cons<HT, null_type> {
   typename access_traits<
              typename element<N, self_type>::type
            >::const_type
-  get(BOOST_TUPLE_SINGLE_DUMMY_PARM) const {
+  get(BOOST_EXPLICIT_TEMPLATE_NON_TYPE(int, N)) const {
     return boost::tuples::get<N>(*this);
   }
 
@@ -592,7 +581,7 @@ namespace detail {
 struct swallow_assign {
 
   template<typename T>
-  swallow_assign& operator=(const T&) {
+  swallow_assign const& operator=(const T&) const {
     return *this;
   }
 };
@@ -600,9 +589,7 @@ struct swallow_assign {
 } // namespace detail
 
 // "ignore" allows tuple positions to be ignored when using "tie".
-namespace {
- detail::swallow_assign ignore;
-}
+detail::swallow_assign const ignore = detail::swallow_assign();
 
 // ---------------------------------------------------------------------------
 // The call_traits for make_tuple
@@ -875,7 +862,7 @@ tie(T1& t1, T2& t2, T3& t3, T4& t4, T5& t5, T6& t6, T7& t7, T8& t8,
 } // end of namespace tuples
 } // end of namespace boost
 
-#undef BOOST_TUPLE_DUMMY_PARM
-#undef BOOST_TUPLE_SINGLE_DUMMY_PARM
 
 #endif // BOOST_TUPLE_BASIC_HPP
+
+

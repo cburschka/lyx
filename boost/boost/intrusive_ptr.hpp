@@ -128,13 +128,21 @@ public:
         return p_ != 0;
     }
 
-#else
+#elif defined(__MWERKS__) && BOOST_WORKAROUND(__MWERKS__, BOOST_TESTED_AT(0x3003))
+    typedef T * (this_type::*unspecified_bool_type)() const;
+    
+    operator unspecified_bool_type() const // never throws
+    {
+        return p_ == 0? 0: &this_type::get;
+    }
 
-    typedef T * (intrusive_ptr::*unspecified_bool_type) () const;
+#else 
+
+    typedef T * this_type::*unspecified_bool_type;
 
     operator unspecified_bool_type () const
     {
-        return p_ == 0? 0: &intrusive_ptr::get;
+        return p_ == 0? 0: &this_type::p_;
     }
 
 #endif
@@ -218,6 +226,11 @@ template<class T> T * get_pointer(intrusive_ptr<T> const & p)
 template<class T, class U> intrusive_ptr<T> static_pointer_cast(intrusive_ptr<U> const & p)
 {
     return static_cast<T *>(p.get());
+}
+
+template<class T, class U> intrusive_ptr<T> const_pointer_cast(intrusive_ptr<U> const & p)
+{
+    return const_cast<T *>(p.get());
 }
 
 template<class T, class U> intrusive_ptr<T> dynamic_pointer_cast(intrusive_ptr<U> const & p)

@@ -3,13 +3,9 @@
  * Copyright (c) 1998-2002
  * Dr John Maddock
  *
- * Permission to use, copy, modify, distribute and sell this software
- * and its documentation for any purpose is hereby granted without fee,
- * provided that the above copyright notice appear in all copies and
- * that both that copyright notice and this permission notice appear
- * in supporting documentation.  Dr John Maddock makes no representations
- * about the suitability of this software for any purpose.
- * It is provided "as is" without express or implied warranty.
+ * Use, modification and distribution are subject to the 
+ * Boost Software License, Version 1.0. (See accompanying file 
+ * LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
  *
  */
 
@@ -73,10 +69,10 @@ template class BOOST_REGEX_DECL match_results<std::basic_string<BOOST_REGEX_CHAR
 
 //template class BOOST_REGEX_DECL regex_traits< BOOST_REGEX_CHAR_T >;
 template class BOOST_REGEX_DECL reg_expression< BOOST_REGEX_CHAR_T >;
-template class BOOST_REGEX_DECL re_detail::match_results_base<BOOST_REGEX_CHAR_T const*, BOOST_DEFAULT_ALLOCATOR(re_detail::def_alloc_param_traits<BOOST_REGEX_CHAR_T const*>::type)>;
-template class BOOST_REGEX_DECL re_detail::match_results_base<std::basic_string<BOOST_REGEX_CHAR_T>::const_iterator, BOOST_DEFAULT_ALLOCATOR(re_detail::def_alloc_param_traits<std::basic_string<BOOST_REGEX_CHAR_T>::const_iterator>::type)>;
-template class BOOST_REGEX_DECL match_results<BOOST_REGEX_CHAR_T const*, BOOST_DEFAULT_ALLOCATOR(re_detail::def_alloc_param_traits<BOOST_REGEX_CHAR_T const*>::type)>;
-template class BOOST_REGEX_DECL match_results<std::basic_string<BOOST_REGEX_CHAR_T>::const_iterator, BOOST_DEFAULT_ALLOCATOR(re_detail::def_alloc_param_traits<std::basic_string<BOOST_REGEX_CHAR_T>::const_iterator>::type)>;
+template class BOOST_REGEX_DECL re_detail::match_results_base<BOOST_REGEX_CHAR_T const*, BOOST_DEFAULT_ALLOCATOR(re_detail::def_alloc_param_traits<BOOST_REGEX_CHAR_T const*>::type) >;
+template class BOOST_REGEX_DECL re_detail::match_results_base<std::basic_string<BOOST_REGEX_CHAR_T>::const_iterator, BOOST_DEFAULT_ALLOCATOR(re_detail::def_alloc_param_traits<std::basic_string<BOOST_REGEX_CHAR_T>::const_iterator>::type) >;
+template class BOOST_REGEX_DECL match_results<BOOST_REGEX_CHAR_T const*, BOOST_DEFAULT_ALLOCATOR(re_detail::def_alloc_param_traits<BOOST_REGEX_CHAR_T const*>::type) >;
+template class BOOST_REGEX_DECL match_results<std::basic_string<BOOST_REGEX_CHAR_T>::const_iterator, BOOST_DEFAULT_ALLOCATOR(re_detail::def_alloc_param_traits<std::basic_string<BOOST_REGEX_CHAR_T>::const_iterator>::type) >;
 
 
 #pragma warning(pop)
@@ -119,8 +115,8 @@ template bool BOOST_REGEX_CALL reg_expression<BOOST_REGEX_CHAR_T>::probe_start_n
 template void BOOST_REGEX_CALL reg_expression<BOOST_REGEX_CHAR_T>::fixup_apply(re_detail::re_syntax_base* b, unsigned cbraces);
 template void BOOST_REGEX_CALL reg_expression<BOOST_REGEX_CHAR_T>::move_offsets(re_detail::re_syntax_base* j, unsigned size);
 template re_detail::re_syntax_base* BOOST_REGEX_CALL reg_expression<BOOST_REGEX_CHAR_T>::compile_set(const BOOST_REGEX_CHAR_T*& first, const BOOST_REGEX_CHAR_T* last);
-template re_detail::re_syntax_base* BOOST_REGEX_CALL reg_expression<BOOST_REGEX_CHAR_T>::compile_set_aux(re_detail::jstack<reg_expression<BOOST_REGEX_CHAR_T>::traits_string_type, BOOST_DEFAULT_ALLOCATOR(BOOST_REGEX_CHAR_T)>& singles, re_detail::jstack<reg_expression<BOOST_REGEX_CHAR_T>::traits_string_type, BOOST_DEFAULT_ALLOCATOR(BOOST_REGEX_CHAR_T)>& ranges, re_detail::jstack<boost::uint_fast32_t, BOOST_DEFAULT_ALLOCATOR(BOOST_REGEX_CHAR_T)>& classes, re_detail::jstack<reg_expression<BOOST_REGEX_CHAR_T>::traits_string_type, BOOST_DEFAULT_ALLOCATOR(BOOST_REGEX_CHAR_T)>& equivalents, bool isnot, const re_detail::_narrow_type&);
-template re_detail::re_syntax_base* BOOST_REGEX_CALL reg_expression<BOOST_REGEX_CHAR_T>::compile_set_aux(re_detail::jstack<reg_expression<BOOST_REGEX_CHAR_T>::traits_string_type, BOOST_DEFAULT_ALLOCATOR(BOOST_REGEX_CHAR_T)>& singles, re_detail::jstack<reg_expression<BOOST_REGEX_CHAR_T>::traits_string_type, BOOST_DEFAULT_ALLOCATOR(BOOST_REGEX_CHAR_T)>& ranges, re_detail::jstack<boost::uint_fast32_t, BOOST_DEFAULT_ALLOCATOR(BOOST_REGEX_CHAR_T)>& classes, re_detail::jstack<reg_expression<BOOST_REGEX_CHAR_T>::traits_string_type, BOOST_DEFAULT_ALLOCATOR(BOOST_REGEX_CHAR_T)>& equivalents, bool isnot, const re_detail::_wide_type&);
+template re_detail::re_syntax_base* BOOST_REGEX_CALL reg_expression<BOOST_REGEX_CHAR_T>::compile_set_aux(re_detail::jstack<reg_expression<BOOST_REGEX_CHAR_T>::traits_string_type, BOOST_DEFAULT_ALLOCATOR(BOOST_REGEX_CHAR_T) >& singles, re_detail::jstack<reg_expression<BOOST_REGEX_CHAR_T>::traits_string_type, BOOST_DEFAULT_ALLOCATOR(BOOST_REGEX_CHAR_T)>& ranges, re_detail::jstack<boost::uint_fast32_t, BOOST_DEFAULT_ALLOCATOR(BOOST_REGEX_CHAR_T) >& classes, re_detail::jstack<reg_expression<BOOST_REGEX_CHAR_T>::traits_string_type, BOOST_DEFAULT_ALLOCATOR(BOOST_REGEX_CHAR_T) >& equivalents, bool isnot, const re_detail::_narrow_type&);
+template re_detail::re_syntax_base* BOOST_REGEX_CALL reg_expression<BOOST_REGEX_CHAR_T>::compile_set_aux(re_detail::jstack<reg_expression<BOOST_REGEX_CHAR_T>::traits_string_type, BOOST_DEFAULT_ALLOCATOR(BOOST_REGEX_CHAR_T) >& singles, re_detail::jstack<reg_expression<BOOST_REGEX_CHAR_T>::traits_string_type, BOOST_DEFAULT_ALLOCATOR(BOOST_REGEX_CHAR_T)>& ranges, re_detail::jstack<boost::uint_fast32_t, BOOST_DEFAULT_ALLOCATOR(BOOST_REGEX_CHAR_T) >& classes, re_detail::jstack<reg_expression<BOOST_REGEX_CHAR_T>::traits_string_type, BOOST_DEFAULT_ALLOCATOR(BOOST_REGEX_CHAR_T) >& equivalents, bool isnot, const re_detail::_wide_type&);
 template re_detail::re_syntax_base* BOOST_REGEX_CALL reg_expression<BOOST_REGEX_CHAR_T>::compile_set_simple(re_detail::re_syntax_base* dat, unsigned long cls, bool isnot);
 template unsigned int BOOST_REGEX_CALL reg_expression<BOOST_REGEX_CHAR_T>::parse_inner_set(const BOOST_REGEX_CHAR_T*& first, const BOOST_REGEX_CHAR_T* last);
 template re_detail::re_syntax_base* BOOST_REGEX_CALL reg_expression<BOOST_REGEX_CHAR_T>::add_simple(re_detail::re_syntax_base* dat, re_detail::syntax_element_type type, unsigned int size);
@@ -164,5 +160,6 @@ template void BOOST_REGEX_CALL match_results_base<iterator, Allocator>::cow();
 
 #endif // BOOST_REGEX_NO_EXTERNAL_TEMPLATES
  
+
 
 

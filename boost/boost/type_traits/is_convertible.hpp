@@ -1,17 +1,13 @@
 
-// Copyright (C) 2000 John Maddock (john_maddock@compuserve.com)
+// Copyright (C) 2000 John Maddock (john@johnmaddock.co.uk)
 // Copyright (C) 2000 Jeremy Siek (jsiek@lsc.nd.edu)
 // Copyright (C) 1999, 2000 Jaakko J„rvi (jaakko.jarvi@cs.utu.fi)
 //
-// Permission to copy and use this software is granted, 
-// provided this copyright notice appears in all copies. 
-// Permission to modify the code and to distribute modified code is granted, 
-// provided this copyright notice appears in all copies, and a notice 
-// that the code was modified is included with the copyright notice.
+//  Use, modification and distribution are subject to the Boost Software License,
+//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
+//  http://www.boost.org/LICENSE_1_0.txt).
 //
-// This software is provided "as is" without express or implied warranty, 
-// and with no claim as to its suitability for any purpose.
-//
+//  See http://www.boost.org/libs/type_traits for most recent version including documentation.
 
 #ifndef BOOST_TT_IS_CONVERTIBLE_HPP_INCLUDED
 #define BOOST_TT_IS_CONVERTIBLE_HPP_INCLUDED
@@ -99,19 +95,19 @@ struct is_convertible_impl
     };
 
     static From _m_from;
-    static bool const value = sizeof( checker<To>::_m_check(_m_from) ) 
+    static bool const value = sizeof( checker<To>::_m_check(_m_from) )
         == sizeof(::boost::type_traits::yes_type);
 #pragma option pop
 };
 
-#elif defined(__GNUC__) || defined(__BORLANDC__)
+#elif defined(__GNUC__) || defined(__BORLANDC__) && (__BORLANDC__ < 0x600)
 // special version for gcc compiler + recent Borland versions
 // note that this does not pass UDT's through (...)
 
 struct any_conversion
 {
     template <typename T> any_conversion(const volatile T&);
-    //template <typename T> any_conversion(T&);
+    template <typename T> any_conversion(T&);
 };
 
 template <typename T> struct checker
@@ -124,17 +120,21 @@ template <typename From, typename To>
 struct is_convertible_basic_impl
 {
     static From _m_from;
-    static bool const value = sizeof( detail::checker<To>::_m_check(_m_from, 0) ) 
+    static bool const value = sizeof( detail::checker<To>::_m_check(_m_from, 0) )
         == sizeof(::boost::type_traits::yes_type);
 };
 
-#elif (defined(BOOST_MSVC) && (BOOST_MSVC > 1310)) \
-      || (defined(__EDG_VERSION__) && (__EDG_VERSION__ >= 245) && !defined(__ICL))
+#elif (defined(__EDG_VERSION__) && (__EDG_VERSION__ >= 245) && !defined(__ICL)) \
+      || defined(__IBMCPP__)
 //
 // This is *almost* an ideal world implementation as it doesn't rely
 // on undefined behaviour by passing UDT's through (...).
 // Unfortunately it doesn't quite pass all the tests for most compilers (sigh...)
 // Enable this for your compiler if is_convertible_test.cpp will compile it...
+//
+// Note we do not enable this for VC7.1, because even though it passes all the
+// type_traits tests it is known to cause problems when instantiation occurs
+// deep within the instantiation tree :-(
 //
 struct any_conversion
 {
@@ -149,9 +149,9 @@ struct is_convertible_basic_impl
 {
     static ::boost::type_traits::no_type BOOST_TT_DECL _m_check(any_conversion ...);
     static ::boost::type_traits::yes_type BOOST_TT_DECL _m_check(To, int);
-	    static From _m_from;
+       static From _m_from;
 
-    BOOST_STATIC_CONSTANT(bool, value = 
+    BOOST_STATIC_CONSTANT(bool, value =
         sizeof( _m_check(_m_from, 0) ) == sizeof(::boost::type_traits::yes_type)
         );
 };
@@ -159,7 +159,7 @@ struct is_convertible_basic_impl
 #else
 
 //
-// This version seems to work pretty well for a wide spectrum of compilers, 
+// This version seems to work pretty well for a wide spectrum of compilers,
 // however it does rely on undefined behaviour by passing UDT's through (...).
 //
 template <typename From, typename To>
@@ -264,6 +264,7 @@ BOOST_TT_AUX_BOOL_TRAIT_DEF2(is_convertible,From,To,(::boost::detail::is_convert
     /**/
 
 #   define TT_AUX_IS_CONVERTIBLE_FROM_FLOAT_CV_SPEC(F) \
+    TT_AUX_IS_CONVERTIBLE_FROM_FLOAT_SPEC(F) \
     TT_AUX_IS_CONVERTIBLE_FROM_FLOAT_SPEC(F const) \
     TT_AUX_IS_CONVERTIBLE_FROM_FLOAT_SPEC(F volatile) \
     TT_AUX_IS_CONVERTIBLE_FROM_FLOAT_SPEC(F const volatile) \

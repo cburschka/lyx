@@ -52,17 +52,7 @@
 # define ITERATOR_DWA122600_HPP_
 
 # include <boost/config.hpp>
-# include <boost/type_traits/remove_const.hpp>
-# include <boost/type_traits/detail/yes_no_type.hpp>
-# include <boost/type_traits/is_pointer.hpp>
-# include <boost/type_traits/is_base_and_derived.hpp>
-# include <boost/mpl/if.hpp>
-# include <boost/mpl/aux_/has_xxx.hpp>
 # include <iterator>
-# include <cstddef>
-
-// should be the last #include
-#include "boost/type_traits/detail/bool_trait_def.hpp"
 
 // STLPort 4.0 and betas have a bug when debugging is enabled and there is no
 // partial specialization: instead of an iterator_category typedef, the standard
@@ -81,25 +71,29 @@
 
 # endif // STLPort <= 4.1b4 && no partial specialization
 
-namespace boost { namespace detail {
-
-BOOST_MPL_HAS_XXX_TRAIT_DEF(value_type)
-BOOST_MPL_HAS_XXX_TRAIT_DEF(reference)
-BOOST_MPL_HAS_XXX_TRAIT_DEF(pointer)
-BOOST_MPL_HAS_XXX_TRAIT_DEF(difference_type)
-BOOST_MPL_HAS_XXX_TRAIT_DEF(iterator_category)
-
 # if !defined(BOOST_NO_STD_ITERATOR_TRAITS)             \
   && !defined(BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION) \
   && !defined(BOOST_MSVC_STD_ITERATOR)
+    
+namespace boost { namespace detail {
+
 // Define a new template so it can be specialized
 template <class Iterator>
 struct iterator_traits
     : std::iterator_traits<Iterator>
 {};
 using std::distance;
-# elif  !defined(BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION) \
-     && !defined(BOOST_MSVC_STD_ITERATOR)
+
+}} // namespace boost::detail
+
+# else
+
+#  if  !defined(BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION)  \
+    && !defined(BOOST_MSVC_STD_ITERATOR)
+
+// This is the case where everything conforms except BOOST_NO_STD_ITERATOR_TRAITS
+
+namespace boost { namespace detail {
 
 // Rogue Wave Standard Library fools itself into thinking partial
 // specialization is missing on some platforms (e.g. Sun), so fails to
@@ -134,7 +128,36 @@ struct iterator_traits<T const*>
     typedef std::random_access_iterator_tag iterator_category;
 };
 
-# else
+}} // namespace boost::detail
+
+#  else
+
+# include <boost/type_traits/remove_const.hpp>
+# include <boost/type_traits/detail/yes_no_type.hpp>
+# include <boost/type_traits/is_pointer.hpp>
+
+# ifdef BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION
+#  include <boost/type_traits/is_same.hpp>
+#  include <boost/type_traits/remove_pointer.hpp>
+# endif
+# ifdef BOOST_BAD_OUTPUT_ITERATOR_SPECIALIZATION
+#  include <boost/type_traits/is_base_and_derived.hpp>
+# endif
+
+# include <boost/mpl/if.hpp>
+# include <boost/mpl/aux_/has_xxx.hpp>
+# include <cstddef>
+
+// should be the last #include
+# include "boost/type_traits/detail/bool_trait_def.hpp"
+
+namespace boost { namespace detail {
+
+BOOST_MPL_HAS_XXX_TRAIT_DEF(value_type)
+BOOST_MPL_HAS_XXX_TRAIT_DEF(reference)
+BOOST_MPL_HAS_XXX_TRAIT_DEF(pointer)
+BOOST_MPL_HAS_XXX_TRAIT_DEF(difference_type)
+BOOST_MPL_HAS_XXX_TRAIT_DEF(iterator_category)
 
 // is_mutable_iterator --
 //
@@ -150,6 +173,13 @@ struct iterator_traits<T const*>
 template <class T>
 type_traits::yes_type is_mutable_iterator_helper(T const*, BOOST_DEDUCED_TYPENAME T::value_type*);
 
+// Since you can't take the address of an rvalue, the guts of
+// is_mutable_iterator_impl will fail if we use &*t directly.  This
+// makes sure we can still work with non-lvalue iterators.
+template <class T> T* mutable_iterator_lvalue_helper(T& x);
+int mutable_iterator_lvalue_helper(...);
+
+
 // This one detects output iterators such as ostream_iterator which
 // return references to themselves.
 template <class T>
@@ -162,10 +192,14 @@ struct is_mutable_iterator_impl
 {
     static T t;
     
-    BOOST_STATIC_CONSTANT(bool, value = sizeof(
-               detail::is_mutable_iterator_helper((T*)0, &*t))
-           == sizeof(type_traits::yes_type)
-        );
+    BOOST_STATIC_CONSTANT(
+        bool, value = sizeof(
+            detail::is_mutable_iterator_helper(
+                (T*)0
+              , mutable_iterator_lvalue_helper(*t) // like &*t
+            ))
+        == sizeof(type_traits::yes_type)
+    );
 };
 
 BOOST_TT_AUX_BOOL_TRAIT_DEF1(
@@ -193,7 +227,7 @@ BOOST_TT_AUX_BOOL_TRAIT_DEF1(
     is_full_iterator_traits,T,::boost::detail::is_full_iterator_traits_impl<T>::value)
 
 
-#  ifdef BOOST_BAD_CONTAINER_ITERATOR_CATEGORY_TYPEDEF
+#   ifdef BOOST_BAD_CONTAINER_ITERATOR_CATEGORY_TYPEDEF
 BOOST_MPL_HAS_XXX_TRAIT_DEF(_Iterator_category)
     
 // is_stlport_40_debug_iterator --
@@ -225,11 +259,11 @@ struct stlport_40_debug_iterator_traits
     typedef typename T::difference_type difference_type;
     typedef typename T::_Iterator_category iterator_category;
 };
-# endif // BOOST_BAD_CONTAINER_ITERATOR_CATEGORY_TYPEDEF 
+#   endif // BOOST_BAD_CONTAINER_ITERATOR_CATEGORY_TYPEDEF 
 
 template <class T> struct pointer_iterator_traits;
 
-# ifndef BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION
+#   ifndef BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION
 template <class T>
 struct pointer_iterator_traits<T*>
 {
@@ -239,9 +273,37 @@ struct pointer_iterator_traits<T*>
     typedef std::random_access_iterator_tag iterator_category;
     typedef std::ptrdiff_t difference_type;
 };
-# else 
-template <class Ptr>
-struct must_manually_specialize_boost_detail_iterator_traits;
+#   else
+
+// In case of no template partial specialization, and if T is a
+// pointer, iterator_traits<T>::value_type can still be computed.  For
+// some basic types, remove_pointer is manually defined in
+// type_traits/broken_compiler_spec.hpp. For others, do it yourself.
+
+template<class P> class please_invoke_BOOST_TT_BROKEN_COMPILER_SPEC_on_cv_unqualified_pointee;
+
+template<class P>
+struct pointer_value_type
+  : mpl::if_<
+        is_same<P, typename remove_pointer<P>::type>
+      , please_invoke_BOOST_TT_BROKEN_COMPILER_SPEC_on_cv_unqualified_pointee<P>
+      , typename remove_const<
+            typename remove_pointer<P>::type
+        >::type
+    >
+{
+};
+
+
+template<class P>
+struct pointer_reference
+  : mpl::if_<
+        is_same<P, typename remove_pointer<P>::type>
+      , please_invoke_BOOST_TT_BROKEN_COMPILER_SPEC_on_cv_unqualified_pointee<P>
+      , typename remove_pointer<P>::type&
+    >
+{
+};
 
 template <class T>
 struct pointer_iterator_traits
@@ -250,25 +312,11 @@ struct pointer_iterator_traits
     typedef std::random_access_iterator_tag iterator_category;
     typedef std::ptrdiff_t difference_type;
 
-    // Makes MSVC6 happy under some circumstances
-    typedef must_manually_specialize_boost_detail_iterator_traits<T> value_type;
-    typedef must_manually_specialize_boost_detail_iterator_traits<T> reference;
+    typedef typename pointer_value_type<T>::type value_type;
+    typedef typename pointer_reference<T>::type reference;
 };
 
-// Use this as a base class in manual iterator_traits specializations
-// for pointer types. T should be the value_type. CV should be the
-// cv-qualified value_type to which */& is added in order to produce
-// pointer/reference.
-template <class T, class CV = T>
-struct ptr_iter_traits
-{
-    typedef T value_type;
-    typedef CV* pointer;
-    typedef CV& reference;
-    typedef std::random_access_iterator_tag iterator_category;
-    typedef std::ptrdiff_t difference_type;
-};
-# endif // BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION
+#   endif // BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION
 
 // We'll sort iterator types into one of these classifications, from which we
 // can determine the difference_type, pointer, reference, and value_type
@@ -300,7 +348,7 @@ struct msvc_stdlib_const_traits
     typedef const value_type& reference;
 };
 
-# ifdef BOOST_BAD_OUTPUT_ITERATOR_SPECIALIZATION
+#   ifdef BOOST_BAD_OUTPUT_ITERATOR_SPECIALIZATION
 template <class Iterator>
 struct is_bad_output_iterator
     : is_base_and_derived<
@@ -317,7 +365,7 @@ struct bad_output_iterator_traits
     typedef void pointer;
     typedef void reference;
 };
-# endif
+#   endif
 
 // If we're looking at an MSVC6 (old Dinkumware) ``standard''
 // iterator, this will generate an appropriate traits class. 
@@ -337,17 +385,17 @@ struct non_pointer_iterator_traits
         is_full_iterator_traits<Iterator>
         // Use a standard iterator_traits implementation
         , standard_iterator_traits<Iterator>
-# ifdef BOOST_BAD_CONTAINER_ITERATOR_CATEGORY_TYPEDEF
+#   ifdef BOOST_BAD_CONTAINER_ITERATOR_CATEGORY_TYPEDEF
         // Check for STLPort 4.0 broken _Iterator_category type
         , mpl::if_<
              is_stlport_40_debug_iterator<Iterator>
              , stlport_40_debug_iterator_traits<Iterator>
-# endif
+#   endif
         // Otherwise, assume it's a Dinkum iterator
         , msvc_stdlib_iterator_traits<Iterator>
-# ifdef BOOST_BAD_CONTAINER_ITERATOR_CATEGORY_TYPEDEF
+#   ifdef BOOST_BAD_CONTAINER_ITERATOR_CATEGORY_TYPEDEF
         >::type
-# endif 
+#   endif 
     >::type
 {
 };
@@ -368,16 +416,16 @@ struct iterator_traits
     // Explicit forwarding from base class needed to keep MSVC6 happy
     // under some circumstances.
  private:
-# ifdef BOOST_BAD_OUTPUT_ITERATOR_SPECIALIZATION
+#   ifdef BOOST_BAD_OUTPUT_ITERATOR_SPECIALIZATION
     typedef 
     typename mpl::if_<
         is_bad_output_iterator<Iterator>
         , bad_output_iterator_traits
         , iterator_traits_aux<Iterator>
     >::type base;
-# else
+#   else
     typedef iterator_traits_aux<Iterator> base;
-# endif
+#   endif
  public:
     typedef typename base::value_type value_type;
     typedef typename base::pointer pointer;
@@ -387,7 +435,20 @@ struct iterator_traits
 };
 
 // This specialization cuts off ETI (Early Template Instantiation) for MSVC.
-template <> struct iterator_traits<int>{};
+template <> struct iterator_traits<int>
+{
+    typedef int value_type;
+    typedef int pointer;
+    typedef int reference;
+    typedef int difference_type;
+    typedef int iterator_category;
+};
+
+}} // namespace boost::detail
+
+#  endif // workarounds
+
+namespace boost { namespace detail {
 
 namespace iterator_traits_
 {
@@ -396,7 +457,7 @@ namespace iterator_traits_
   {
       static Difference execute(Iterator i1, const Iterator i2, ...)
       {
-          typename Difference result = 0;
+          Difference result = 0;
           while (i1 != i2)
           {
               ++i1;
@@ -422,9 +483,11 @@ distance(Iterator first, Iterator last)
     return iterator_traits_::distance_select<Iterator,diff_t>::execute(
         first, last, (iterator_category*)0);
 }
-# endif // workarounds
 
-}} // namespace boost::detail
+}}
+
+# endif
+
 
 # undef BOOST_BAD_CONTAINER_ITERATOR_CATEGORY_TYPEDEF
 # undef BOOST_BAD_OUTPUT_ITERATOR_SPECIALIZATION

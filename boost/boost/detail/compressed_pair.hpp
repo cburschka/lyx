@@ -1,14 +1,16 @@
 //  (C) Copyright Steve Cleary, Beman Dawes, Howard Hinnant & John Maddock 2000.
-//  Permission to copy, use, modify, sell and
-//  distribute this software is granted provided this copyright notice appears
-//  in all copies. This software is provided "as is" without express or implied
-//  warranty, and with no claim as to its suitability for any purpose.
-
-//  See http://www.boost.org for most recent version including documentation.
+//  Use, modification and distribution are subject to the Boost Software License,
+//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
+//  http://www.boost.org/LICENSE_1_0.txt).
+//
+//  See http://www.boost.org/libs/utility for most recent version including documentation.
 
 // compressed_pair: pair that "compresses" empty members
 // (see libs/utility/compressed_pair.htm)
 //
+// JM changes 25 Jan 2004:
+// For the case where T1 == T2 and both are empty, then first() and second()
+// should return different objects.
 // JM changes 25 Jan 2000:
 // Removed default arguments from compressed_pair_switch to get
 // C++ Builder 4 to accept them
@@ -19,15 +21,11 @@
 #define BOOST_DETAIL_COMPRESSED_PAIR_HPP
 
 #include <algorithm>
-#ifndef BOOST_OBJECT_TYPE_TRAITS_HPP
-#include <boost/type_traits/object_traits.hpp>
-#endif
-#ifndef BOOST_SAME_TRAITS_HPP
-#include <boost/type_traits/same_traits.hpp>
-#endif
-#ifndef BOOST_CALL_TRAITS_HPP
+
+#include <boost/type_traits/remove_cv.hpp>
+#include <boost/type_traits/is_empty.hpp>
+#include <boost/type_traits/is_same.hpp>
 #include <boost/call_traits.hpp>
-#endif
 
 namespace boost
 {
@@ -273,20 +271,21 @@ namespace details
 
       compressed_pair_imp() {}
 
-      compressed_pair_imp(first_param_type x, second_param_type)
-         : first_type(x) {}
+      compressed_pair_imp(first_param_type x, second_param_type y)
+         : first_type(x), m_second(y) {}
 
       compressed_pair_imp(first_param_type x)
-         : first_type(x) {}
+         : first_type(x), m_second(x) {}
 
       first_reference       first()       {return *this;}
       first_const_reference first() const {return *this;}
 
-      second_reference       second()       {return *this;}
-      second_const_reference second() const {return *this;}
+      second_reference       second()       {return m_second;}
+      second_const_reference second() const {return m_second;}
 
       void swap(::boost::compressed_pair<T1,T2>&) {}
    private:
+      T2 m_second;
    };
 
    // 5    T1 == T2 and are not empty:   //JM

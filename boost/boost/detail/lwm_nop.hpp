@@ -1,8 +1,10 @@
 #ifndef BOOST_DETAIL_LWM_NOP_HPP_INCLUDED
 #define BOOST_DETAIL_LWM_NOP_HPP_INCLUDED
 
-#if _MSC_VER >= 1020
-#pragma once
+// MS compatible compilers support #pragma once
+
+#if defined(_MSC_VER) && (_MSC_VER >= 1020)
+# pragma once
 #endif
 
 //

@@ -6,13 +6,9 @@
 // Copyright (c) 2002
 // Aleksey Gurtovoy
 //
-// Permission to use, copy, modify, distribute and sell this software
-// and its documentation for any purpose is hereby granted without fee, 
-// provided that the above copyright notice appears in all copies and 
-// that both the copyright notice and this permission notice appear in 
-// supporting documentation. No representations are made about the 
-// suitability of this software for any purpose. It is provided "as is" 
-// without express or implied warranty.
+// Use, modification and distribution are subject to the Boost Software License,
+// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
+// http://www.boost.org/LICENSE_1_0.txt).
 
 // no include guards, the header is intended for multiple inclusion!
 
@@ -152,4 +148,47 @@ template< param > struct trait##_impl< sp1,sp2 > \
 #   define BOOST_TT_AUX_BOOL_TRAIT_CV_SPEC1(trait,sp,value) \
     BOOST_TT_AUX_BOOL_TRAIT_SPEC1(trait,sp,value) \
     /**/
+#endif
+
+#if 0  // there are true_type and false_type already in boost::
+       // This also induces dependencies which may be undesirable
+       // Let's wait until sometime not just before a release and clean
+       // the whole ct_if mess up.
+# ifndef BOOST_TT_INTEGRAL_CONSTANT
+#  define BOOST_TT_INTEGRAL_CONSTANT
+#  include <boost/mpl/integral_c.hpp>
+
+//
+// this is not a TR1 conforming integral_constant,
+// but it is a first start:
+//
+
+namespace boost{
+
+template <class T, T val>
+struct integral_constant
+: public mpl::integral_c<T,val> {};
+
+
+template<> struct integral_constant< bool, true > \
+    BOOST_TT_AUX_BOOL_C_BASE(true) \
+{ \
+    BOOST_TT_AUX_BOOL_TRAIT_VALUE_DECL(true) \
+    BOOST_MPL_AUX_LAMBDA_SUPPORT_SPEC(1,integral_constant,(bool)) \
+};
+template<> struct integral_constant< bool, false > \
+    BOOST_TT_AUX_BOOL_C_BASE(false) \
+{ \
+    BOOST_TT_AUX_BOOL_TRAIT_VALUE_DECL(false) \
+    BOOST_MPL_AUX_LAMBDA_SUPPORT_SPEC(1,integral_constant,(bool)) \
+};
+
+namespace pending {
+typedef mpl::true_ true_type;
+typedef mpl::false_ false_type;
+}
+
+}
+
+# endif
 #endif

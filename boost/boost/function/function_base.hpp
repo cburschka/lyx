@@ -1,15 +1,9 @@
 // Boost.Function library
 
-// Copyright (C) 2001-2003 Doug Gregor (gregod@cs.rpi.edu)
-//
-// Permission to copy, use, sell and distribute this software is granted
-// provided this copyright notice appears in all copies.
-// Permission to modify the code and to distribute modified code is granted
-// provided this copyright notice appears in all copies, and a notice
-// that the code was modified is included with the copyright notice.
-//
-// This software is provided "as is" without express or implied warranty,
-// and with no claim as to its suitability for any purpose.
+//  Copyright Doug Gregor 2001-2003. Use, modification and
+//  distribution is subject to the Boost Software License, Version
+//  1.0. (See accompanying file LICENSE_1_0.txt or copy at
+//  http://www.boost.org/LICENSE_1_0.txt)
 
 // For more information, see http://www.boost.org
 
@@ -29,6 +23,10 @@
 #include <boost/pending/ct_if.hpp>
 #include <boost/detail/workaround.hpp>
 
+#ifndef BOOST_NO_SFINAE
+#  include "boost/utility/enable_if.hpp"
+#endif
+
 #if defined(BOOST_MSVC) && BOOST_MSVC <= 1300 || defined(__ICL) && __ICL <= 600 || defined(__MWERKS__) && __MWERKS__ < 0x2406 && !defined(BOOST_STRICT_CONFIG)
 #  define BOOST_FUNCTION_TARGET_FIX(x) x
 #else
@@ -44,36 +42,13 @@ namespace boost { namespace python { namespace objects {
 }}}
 #endif
 
-// GCC 2.95.3 (or earlier) doesn't support enable_if
-#if BOOST_WORKAROUND(__GNUC__, < 3)
-#  define BOOST_FUNCTION_NO_ENABLE_IF
+#if defined (BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION)                    \
+ || defined(BOOST_BCB_PARTIAL_SPECIALIZATION_BUG)                         \
+ || !(BOOST_STRICT_CONFIG || !defined(__SUNPRO_CC) || __SUNPRO_CC > 0x540)
+#  define BOOST_FUNCTION_NO_FUNCTION_TYPE_SYNTAX
 #endif
 
-// MIPSpro 7.3.1.3m doesn't support enable_if
-#if defined(__sgi) && defined(_COMPILER_VERSION) && _COMPILER_VERSION <= 730 && !defined(BOOST_STRICT_CONFIG)
-#  define BOOST_FUNCTION_NO_ENABLE_IF
-#endif
-
-// MSVC 7.0 doesn't support enable_if
-#if defined(BOOST_MSVC) && BOOST_MSVC <= 1300 && !defined(BOOST_STRICT_CONFIG)
-#  define BOOST_FUNCTION_NO_ENABLE_IF
-#endif
-
-// Borland C++ 5.6.0 doesn't support enable_if
-#if BOOST_WORKAROUND(__BORLANDC__, <= 0x564)
-#  define BOOST_FUNCTION_NO_ENABLE_IF
-#endif
-
-// Metrowerks 7.2 doesn't support enable_if
-#if BOOST_WORKAROUND(__MWERKS__, <= 0x2407)
-#  define BOOST_FUNCTION_NO_ENABLE_IF
-#endif
-
-#if BOOST_WORKAROUND(__SUNPRO_CC, <= 0x540)
-#  define BOOST_FUNCTION_NO_ENABLE_IF
-#endif
-
-#if !defined(BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION)
+#if !defined(BOOST_FUNCTION_NO_FUNCTION_TYPE_SYNTAX)
 namespace boost {
 
 #if defined(__sgi) && defined(_COMPILER_VERSION) && _COMPILER_VERSION <= 730 && !defined(BOOST_STRICT_CONFIG)
@@ -293,36 +268,6 @@ namespace boost {
           return manager(functor_ptr, op, tag_type());
         }
       };
-
-#ifndef BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION
-    template<bool cond, typename T> struct enable_if;
-    template<typename T> struct enable_if<true, T>  { typedef T type; };
-    template<typename T> struct enable_if<false, T> {};
-
-    template<bool x>
-    struct enabled
-    {
-      template<typename T>
-      struct base
-      {
-        typedef T type;
-      };
-    };
-
-    template<>
-    struct enabled<false>
-    {
-      template<typename T>
-      struct base
-      {
-      };
-    };
-
-    template<bool Enabled, typename T>
-    struct enable_if : public enabled<Enabled>::template base<T>
-    {
-    };
-#endif
 
       // A type that is only used for comparisons against zero
       struct useless_clear_type {};

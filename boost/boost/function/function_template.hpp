@@ -1,15 +1,9 @@
 // Boost.Function library
 
-// Copyright (C) 2001-2003 Doug Gregor (gregod@cs.rpi.edu)
-//
-// Permission to copy, use, sell and distribute this software is granted
-// provided this copyright notice appears in all copies.
-// Permission to modify the code and to distribute modified code is granted
-// provided this copyright notice appears in all copies, and a notice
-// that the code was modified is included with the copyright notice.
-//
-// This software is provided "as is" without express or implied warranty,
-// and with no claim as to its suitability for any purpose.
+//  Copyright Doug Gregor 2001-2003. Use, modification and
+//  distribution is subject to the Boost Software License, Version
+//  1.0. (See accompanying file LICENSE_1_0.txt or copy at
+//  http://www.boost.org/LICENSE_1_0.txt)
 
 // For more information, see http://www.boost.org
 
@@ -240,9 +234,11 @@ namespace boost {
   >
   class BOOST_FUNCTION_FUNCTION : public function_base
   {
+  public:
     typedef typename detail::function::function_return_type<R>::type
       internal_result_type;
 
+  private:
     struct clear_type {};
 
   public:
@@ -280,12 +276,12 @@ namespace boost {
     // one with a default parameter.
     template<typename Functor>
     BOOST_FUNCTION_FUNCTION(Functor BOOST_FUNCTION_TARGET_FIX(const &) f
-#ifndef BOOST_FUNCTION_NO_ENABLE_IF
-                            ,typename detail::function::enable_if<
+#ifndef BOOST_NO_SFINAE
+                            ,typename enable_if_c<
                             (::boost::type_traits::ice_not<
-                             (is_same<Functor, int>::value)>::value),
+                             (is_integral<Functor>::value)>::value),
                                         int>::type = 0
-#endif // BOOST_FUNCTION_NO_ENABLE_IF
+#endif // BOOST_NO_SFINAE
                             ) :
       function_base(),
       invoker(0)
@@ -293,7 +289,7 @@ namespace boost {
       this->assign_to(f);
     }
 
-#ifndef BOOST_FUNCTION_NO_ENABLE_IF
+#ifndef BOOST_NO_SFINAE
     BOOST_FUNCTION_FUNCTION(clear_type*) : function_base(), invoker(0) {}
 #else
     BOOST_FUNCTION_FUNCTION(int zero) : function_base(), invoker(0)
@@ -316,7 +312,7 @@ namespace boost {
       if (this->empty())
         boost::throw_exception(bad_function_call());
 
-      internal_result_type result = invoker(function_base::functor
+      internal_result_type result = invoker(this->functor
                                             BOOST_FUNCTION_COMMA
                                             BOOST_FUNCTION_ARGS);
 
@@ -333,10 +329,10 @@ namespace boost {
     // handle BOOST_FUNCTION_FUNCTION as the type of the temporary to
     // construct.
     template<typename Functor>
-#ifndef BOOST_FUNCTION_NO_ENABLE_IF
-    typename detail::function::enable_if<
+#ifndef BOOST_NO_SFINAE
+    typename enable_if_c<
                (::boost::type_traits::ice_not<
-                 (is_same<Functor, int>::value)>::value),
+                 (is_integral<Functor>::value)>::value),
                BOOST_FUNCTION_FUNCTION&>::type
 #else
     BOOST_FUNCTION_FUNCTION&
@@ -347,7 +343,7 @@ namespace boost {
       return *this;
     }
 
-#ifndef BOOST_FUNCTION_NO_ENABLE_IF
+#ifndef BOOST_NO_SFINAE
     BOOST_FUNCTION_FUNCTION& operator=(clear_type*)
     {
       this->clear();
@@ -377,21 +373,20 @@ namespace boost {
       if (&other == this)
         return;
 
-      std::swap(function_base::manager, other.manager);
-      std::swap(function_base::functor, other.functor);
+      std::swap(this->manager, other.manager);
+      std::swap(this->functor, other.functor);
       std::swap(invoker, other.invoker);
     }
 
     // Clear out a target, if there is one
     void clear()
     {
-      if (function_base::manager) {
+      if (this->manager) {
         function_base::functor =
-          function_base::manager(function_base::functor,
-                                 detail::function::destroy_functor_tag);
+          this->manager(this->functor, detail::function::destroy_functor_tag);
       }
 
-      function_base::manager = 0;
+      this->manager = 0;
       invoker = 0;
     }
 
@@ -419,8 +414,8 @@ namespace boost {
     {
       if (!f.empty()) {
         invoker = f.invoker;
-        function_base::manager = f.manager;
-        function_base::functor =
+        this->manager = f.manager;
+        this->functor =
           f.manager(f.functor, detail::function::clone_functor_tag);
       }
     }
@@ -446,10 +441,10 @@ namespace boost {
           invoker_type;
 
         invoker = &invoker_type::invoke;
-        function_base::manager =
+        this->manager =
           &detail::function::functor_manager<FunctionPtr, Allocator>::manage;
-        function_base::functor =
-          function_base::manager(detail::function::make_any_pointer(
+        this->functor =
+          this->manager(detail::function::make_any_pointer(
                             // should be a reinterpret cast, but some compilers
                             // insist on giving cv-qualifiers to free functions
                             (void (*)())(f)
@@ -479,7 +474,7 @@ namespace boost {
           invoker_type;
 
         invoker = &invoker_type::invoke;
-        function_base::manager = &detail::function::functor_manager<
+        this->manager = &detail::function::functor_manager<
                                     FunctionObj, Allocator>::manage;
 #ifndef BOOST_NO_STD_ALLOCATOR
         typedef typename Allocator::template rebind<FunctionObj>::other
@@ -494,7 +489,7 @@ namespace boost {
 #else
         FunctionObj* new_f = new FunctionObj(f);
 #endif // BOOST_NO_STD_ALLOCATOR
-        function_base::functor =
+        this->functor =
           detail::function::make_any_pointer(static_cast<void*>(new_f));
       }
     }
@@ -513,9 +508,9 @@ namespace boost {
           invoker_type;
 
         invoker = &invoker_type::invoke;
-        function_base::manager = &detail::function::trivial_manager;
-        function_base::functor =
-          function_base::manager(
+        this->manager = &detail::function::trivial_manager;
+        this->functor =
+          this->manager(
             detail::function::make_any_pointer(
               const_cast<FunctionObj*>(f.get_pointer())),
             detail::function::clone_functor_tag);
@@ -534,8 +529,8 @@ namespace boost {
                      >::type
           invoker_type;
       invoker = &invoker_type::invoke;
-      function_base::manager = &detail::function::trivial_manager;
-      function_base::functor = detail::function::make_any_pointer(this);
+      this->manager = &detail::function::trivial_manager;
+      this->functor = detail::function::make_any_pointer(this);
     }
 
     typedef internal_result_type (*invoker_type)(detail::function::any_pointer
@@ -561,9 +556,7 @@ namespace boost {
     f1.swap(f2);
   }
 
-#if !defined (BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION)                         \
- && !defined(BOOST_BCB_PARTIAL_SPECIALIZATION_BUG)                              \
- && (BOOST_STRICT_CONFIG || !defined(__SUNPRO_CC) || __SUNPRO_CC > 0x540)
+#if !defined(BOOST_FUNCTION_NO_FUNCTION_TYPE_SYNTAX)
 
 #if BOOST_FUNCTION_NUM_ARGS == 0
 #define BOOST_FUNCTION_PARTIAL_SPEC R (void)
@@ -591,10 +584,10 @@ public:
 
   template<typename Functor>
   function(Functor f
-#ifndef BOOST_FUNCTION_NO_ENABLE_IF
-           ,typename detail::function::enable_if<
+#ifndef BOOST_NO_SFINAE
+           ,typename enable_if_c<
                             (::boost::type_traits::ice_not<
-                          (is_same<Functor, int>::value)>::value),
+                          (is_integral<Functor>::value)>::value),
                        int>::type = 0
 #endif
            ) :
@@ -602,7 +595,7 @@ public:
   {
   }
 
-#ifndef BOOST_FUNCTION_NO_ENABLE_IF
+#ifndef BOOST_NO_SFINAE
   function(clear_type*) : base_type() {}
 #endif
 
@@ -617,10 +610,10 @@ public:
   }
 
   template<typename Functor>
-#ifndef BOOST_FUNCTION_NO_ENABLE_IF
-  typename detail::function::enable_if<
+#ifndef BOOST_NO_SFINAE
+  typename enable_if_c<
                             (::boost::type_traits::ice_not<
-                         (is_same<Functor, int>::value)>::value),
+                         (is_integral<Functor>::value)>::value),
                       self_type&>::type
 #else
   self_type&
@@ -631,7 +624,7 @@ public:
     return *this;
   }
 
-#ifndef BOOST_FUNCTION_NO_ENABLE_IF
+#ifndef BOOST_NO_SFINAE
   self_type& operator=(clear_type*)
   {
     this->clear();

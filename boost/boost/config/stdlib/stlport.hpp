@@ -1,7 +1,9 @@
-//  (C) Copyright Boost.org 2001. Permission to copy, use, modify, sell and
-//  distribute this software is granted provided this copyright notice appears
-//  in all copies. This software is provided "as is" without express or implied
-//  warranty, and with no claim as to its suitability for any purpose.
+//  (C) Copyright John Maddock 2001 - 2002. 
+//  (C) Copyright Darin Adler 2001. 
+//  (C) Copyright Jens Maurer 2001. 
+//  Use, modification and distribution are subject to the 
+//  Boost Software License, Version 1.0. (See accompanying file 
+//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
 
 //  See http://www.boost.org for most recent version.
 
@@ -76,6 +78,10 @@
 #  define BOOST_NO_STD_ALLOCATOR
 #endif
 
+#if defined(_STLP_NO_MEMBER_TEMPLATE_KEYWORD) && defined(BOOST_MSVC) && (BOOST_MSVC <= 1300)
+#  define BOOST_NO_STD_ALLOCATOR
+#endif
+
 //
 // We always have SGI style hash_set, hash_map, and slist:
 //
@@ -93,7 +99,7 @@
 // BCB6 does cause problems. If we detect C++ Builder, then don't define 
 // BOOST_NO_STDC_NAMESPACE
 //
-#if !defined(__BORLANDC__)
+#if !defined(__BORLANDC__) && !defined(__DMC__)
 //
 // If STLport is using it's own namespace, and the real names are in
 // the global namespace, then we duplicate STLport's using declarations
@@ -108,7 +114,7 @@
 #     define BOOST_NO_STDC_NAMESPACE
 #     define BOOST_NO_EXCEPTION_STD_NAMESPACE
 #  endif
-#elif __BORLANDC__ < 0x560
+#elif defined(__BORLANDC__) && __BORLANDC__ < 0x560
 // STLport doesn't import std::abs correctly:
 #include <stdlib.h>
 namespace std { using ::abs; }
@@ -153,6 +159,7 @@ namespace std{ using _STLP_VENDOR_CSTD::strcmp; using _STLP_VENDOR_CSTD::strcpy;
 
 
 #define BOOST_STDLIB "STLPort standard library version " BOOST_STRINGIZE(__SGI_STL_PORT)
+
 
 
 

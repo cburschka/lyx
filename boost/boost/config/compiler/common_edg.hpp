@@ -1,7 +1,10 @@
-//  (C) Copyright Boost.org 2001. Permission to copy, use, modify, sell and
-//  distribute this software is granted provided this copyright notice appears
-//  in all copies. This software is provided "as is" without express or implied
-//  warranty, and with no claim as to its suitability for any purpose.
+//  (C) Copyright John Maddock 2001 - 2002. 
+//  (C) Copyright Jens Maurer 2001. 
+//  (C) Copyright David Abrahams 2002. 
+//  (C) Copyright Aleksey Gurtovoy 2002. 
+//  Use, modification and distribution are subject to the 
+//  Boost Software License, Version 1.0. (See accompanying file 
+//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
 
 //  See http://www.boost.org for most recent version.
 
@@ -16,6 +19,7 @@
 
 #if (__EDG_VERSION__ <= 238)
 #   define BOOST_NO_INTEGRAL_INT64_T
+#   define BOOST_NO_SFINAE
 #endif
 
 #if (__EDG_VERSION__ <= 240)
@@ -44,5 +48,6 @@
 // However, some libraries have insufficient "long long" support
 // #define BOOST_HAS_LONG_LONG
 #endif
+
 
 

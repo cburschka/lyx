@@ -1,14 +1,14 @@
-// Copyright (C) 2002 Ronald Garcia
-//
-// Permission to copy, use, sell and distribute this software is granted
-// provided this copyright notice appears in all copies. 
-// Permission to modify the code and to distribute modified code is granted
-// provided this copyright notice appears in all copies, and a notice 
-// that the code was modified is included with the copyright notice.
-//
-// This software is provided "as is" without express or implied warranty, 
-// and with no claim as to its suitability for any purpose.
-//
+// Copyright 2002 The Trustees of Indiana University.
+
+// Use, modification and distribution is subject to the Boost Software 
+// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
+// http://www.boost.org/LICENSE_1_0.txt)
+
+//  Boost.MultiArray Library
+//  Authors: Ronald Garcia
+//           Jeremy Siek
+//           Andrew Lumsdaine
+//  See http://www.boost.org/libs/multi_array for documentation.
 
 #ifndef SUBARRAY_RG071801_HPP
 #define SUBARRAY_RG071801_HPP
@@ -44,7 +44,6 @@ public:
   typedef typename super_type::value_type value_type;
   typedef typename super_type::const_reference const_reference;
   typedef typename super_type::const_iterator const_iterator;
-  typedef typename super_type::const_iter_base const_iter_base;
   typedef typename super_type::const_reverse_iterator const_reverse_iterator;
   typedef typename super_type::element element;
   typedef typename super_type::size_type size_type;
@@ -138,13 +137,13 @@ public:
   }
 
   const_iterator begin() const {
-    return const_iterator(const_iter_base(*index_bases(),origin(),
-                                   shape(),strides(),index_bases()));
+    return const_iterator(*index_bases(),origin(),
+                          shape(),strides(),index_bases());
   }
 
   const_iterator end() const {
-    return const_iterator(const_iter_base(*index_bases()+*shape(),origin(),
-                                   shape(),strides(),index_bases()));
+    return const_iterator(*index_bases()+*shape(),origin(),
+                          shape(),strides(),index_bases());
   }
 
   const_reverse_iterator rbegin() const {
@@ -195,6 +194,45 @@ private:
   const_sub_array& operator=(const const_sub_array&);
 };
 
+#ifdef BOOST_NO_FUNCTION_TEMPLATE_ORDERING
+//
+// Compilers that don't support partial ordering may need help to
+// disambiguate multi_array's templated constructors.  Even vc6/7 are
+// capable of some limited SFINAE, so we take the most-general version
+// out of the overload set with disable_non_sub_array.
+//
+template <typename T, std::size_t NumDims, typename TPtr>
+char is_sub_array_help(const_sub_array<T,NumDims,TPtr>&);
+
+char ( &is_sub_array_help(...) )[2];
+
+template <class T>
+struct is_sub_array
+{
+    static T x;
+    BOOST_STATIC_CONSTANT(bool, value = sizeof((is_sub_array_help)(x)) == 1);
+};
+
+template <bool sub_array = false>
+struct disable_non_sub_array_impl
+{
+    // forming a pointer to a reference triggers SFINAE
+    typedef int& type; 
+};
+
+template <>
+struct disable_non_sub_array_impl<true>
+{
+    typedef int type;
+};
+
+template <class T>
+struct disable_non_sub_array
+{
+    typedef typename disable_non_sub_array_impl<is_sub_array<T>::value>::type type;
+};
+#endif
+
 //
 // sub_array
 //    multi_array's proxy class to allow multiple overloads of
@@ -211,11 +249,9 @@ public:
   typedef typename super_type::size_type size_type;
   typedef typename super_type::iterator iterator;
   typedef typename super_type::reverse_iterator reverse_iterator;
-  typedef typename super_type::iter_base iter_base;
   typedef typename super_type::const_reference const_reference;
   typedef typename super_type::const_iterator const_iterator;
   typedef typename super_type::const_reverse_iterator const_reverse_iterator;
-  typedef typename super_type::const_iter_base const_iter_base;
 
   // template typedefs
   template <std::size_t NDims>
@@ -292,13 +328,13 @@ public:
   }
 
   iterator begin() {
-    return iterator(iter_base(*this->index_bases(),origin(),
-                                   this->shape(),this->strides(),this->index_bases()));
+    return iterator(*this->index_bases(),origin(),
+                    this->shape(),this->strides(),this->index_bases());
   }
 
   iterator end() {
-    return iterator(iter_base(*this->index_bases()+*this->shape(),origin(),
-                                   this->shape(),this->strides(),this->index_bases()));
+    return iterator(*this->index_bases()+*this->shape(),origin(),
+                    this->shape(),this->strides(),this->index_bases());
   }
 
   // RG - rbegin() and rend() written naively to thwart MSVC ICE.

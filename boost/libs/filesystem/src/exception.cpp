@@ -1,23 +1,20 @@
 //  Exception implementation file  -------------------------------------------//
 
-// < ----------------------------------------------------------------------- >
-// <   Copyright © 2002 Beman Dawes                                          >
-// <   Copyright © 2001 Dietmar Kühl, All Rights Reserved                    > 
-// <                                                                         > 
-// <   Permission to use, copy, modify, distribute and sell this             > 
-// <   software for any purpose is hereby granted without fee, provided      > 
-// <   that the above copyright notice appears in all copies and that        > 
-// <   both that copyright notice and this permission notice appear in       > 
-// <   supporting documentation. The authors make no representations about   > 
-// <   the suitability of this software for any purpose. It is provided      > 
-// <   "as is" without express or implied warranty.                          > 
-// < ----------------------------------------------------------------------- > 
+//  Copyright © 2002 Beman Dawes
+//  Copyright © 2001 Dietmar Kühl 
+//  Use, modification, and distribution is subject to the Boost Software
+//  License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy
+//  at http://www.boost.org/LICENSE_1_0.txt)
 
-//  See http://www.boost.org/libs/filesystem for documentation.
+//  See library home page at http://www.boost.org/libs/filesystem
 
 //----------------------------------------------------------------------------//
 
-#include <boost/config.hpp>
+// define BOOST_FILESYSTEM_SOURCE so that <boost/filesystem/config.hpp> knows
+// the library is being built (possibly exporting rather than importing code)
+#define BOOST_FILESYSTEM_SOURCE 
+
+#include <boost/filesystem/config.hpp>
 #include <boost/filesystem/exception.hpp>
 
 namespace fs = boost::filesystem;
@@ -44,14 +41,16 @@ namespace fs = boost::filesystem;
 #   include <errno.h> // for POSIX error codes
 # endif
 
+#include <boost/config/abi_prefix.hpp> // must be the last header
+
 //----------------------------------------------------------------------------//
 
 namespace
 {
+# ifdef BOOST_WINDOWS
   std::string system_message( int sys_err_code )
   {
     std::string str;
-# ifdef BOOST_WINDOWS
     LPVOID lpMsgBuf;
     ::FormatMessageA( 
         FORMAT_MESSAGE_ALLOCATE_BUFFER | 
@@ -69,11 +68,16 @@ namespace
     while ( str.size()
       && (str[str.size()-1] == '\n' || str[str.size()-1] == '\r') )
         str.erase( str.size()-1 );
-# else
-    str += std::strerror( errno );
-# endif
     return str;
   }
+# else
+  std::string system_message( int )
+  {
+    std::string str;
+    str += std::strerror( errno );
+    return str;
+  }
+# endif
 
   struct ec_xlate { int sys_ec; fs::error_code ec; };
   const ec_xlate ec_table[] =
@@ -179,60 +183,121 @@ namespace
       + system_message( sys_err_code );
   }
 
+  const fs::path empty_path;
+  const std::string empty_string;
 } // unnamed namespace
 
 namespace boost
 {
   namespace filesystem
   {
+//  filesystem_error m_imp class  --------------------------------------------//
+//  see www.boost.org/more/error_handling.html for implemenation rationale
+
+    class filesystem_error::m_imp
+    {
+    public:
+      std::string     m_who;
+      path            m_path1;
+      path            m_path2;
+      std::string     m_what;
+    };
+
 
 //  filesystem_error implementation  -----------------------------------------//
 
     filesystem_error::filesystem_error(
       const std::string & who,
       const std::string & message )
-      : std::runtime_error(
-          other_error_prep( who, message ).c_str() ),
-        m_sys_err(0), m_err(other_error), m_who(who)
-    {}
+      : m_sys_err(0), m_err(other_error)
+    {
+      try
+      {
+        m_imp_ptr.reset( new m_imp );
+        m_imp_ptr->m_who = who;
+        m_imp_ptr->m_what = other_error_prep( who, message );
+      }
+      catch (...) { m_imp_ptr.reset(); }
+    }
  
     filesystem_error::filesystem_error(
       const std::string & who,
       const path & path1,
       const std::string & message )
-      : std::runtime_error(
-          other_error_prep( who, path1, message ).c_str() ),
-        m_sys_err(0), m_err(other_error), m_who(who), m_path1(path1)
-    {}
+      : m_sys_err(0), m_err(other_error)
+    {
+      try
+      {
+        m_imp_ptr.reset( new m_imp );
+        m_imp_ptr->m_who = who;
+        m_imp_ptr->m_what = other_error_prep( who, path1, message );
+        m_imp_ptr->m_path1 = path1;
+      }
+      catch (...) { m_imp_ptr.reset(); }
+    }
  
     filesystem_error::filesystem_error(
       const std::string & who,
       const path & path1,
       int sys_err_code )
-      : std::runtime_error(
-          system_error_prep( who, path1, sys_err_code ).c_str() ),
-        m_sys_err(sys_err_code), m_err(lookup_error(sys_err_code)),
-        m_who(who), m_path1(path1)
-    {}
+      : m_sys_err(sys_err_code), m_err(lookup_error(sys_err_code))
+    {
+      try
+      {
+        m_imp_ptr.reset( new m_imp );
+        m_imp_ptr->m_who = who;
+        m_imp_ptr->m_what = system_error_prep( who, path1, sys_err_code );
+        m_imp_ptr->m_path1 = path1;
+      }
+      catch (...) { m_imp_ptr.reset(); }
+    }
 
     filesystem_error::filesystem_error(
       const std::string & who,
       const path & path1,
       const path & path2,
       int sys_err_code )
-      : std::runtime_error(
-          system_error_prep( who, path1, path2, sys_err_code ).c_str() ),
-        m_sys_err(sys_err_code), m_err(lookup_error(sys_err_code)),
-        m_who(who), m_path1(path1), m_path2(path2)
-    {}
+      : m_sys_err(sys_err_code), m_err(lookup_error(sys_err_code))
+    {
+      try
+      {
+        m_imp_ptr.reset( new m_imp );
+        m_imp_ptr->m_who = who;
+        m_imp_ptr->m_what = system_error_prep( who, path1, path2, sys_err_code );
+        m_imp_ptr->m_path1 = path1;
+        m_imp_ptr->m_path2 = path2;
+      }
+      catch (...) { m_imp_ptr.reset(); }
+    }
 
     filesystem_error::~filesystem_error() throw()
     {
     }
 
+    const std::string & filesystem_error::who() const
+    {
+      return m_imp_ptr.get() == 0 ? empty_string : m_imp_ptr->m_who;
+    }
+
+    const path & filesystem_error::path1() const
+    {
+      return m_imp_ptr.get() == 0 ? empty_path : m_imp_ptr->m_path1;
+    }
+
+    const path & filesystem_error::path2() const
+    {
+      return m_imp_ptr.get() == 0 ? empty_path : m_imp_ptr->m_path2;
+    }
+
+    const char * filesystem_error::what() const throw()
+    {
+      return m_imp_ptr.get() == 0 ? empty_string.c_str()
+                                  : m_imp_ptr->m_what.c_str();
+    }
+
     namespace detail
     {
-      int system_error_code() // artifact of POSIX and WINDOWS error reporting
+      BOOST_FILESYSTEM_DECL int system_error_code() // artifact of POSIX and WINDOWS error reporting
       {
   #   ifdef BOOST_WINDOWS
         return ::GetLastError();

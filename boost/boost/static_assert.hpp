@@ -1,8 +1,7 @@
 //  (C) Copyright John Maddock 2000.
-//  Permission to copy, use, modify, sell and
-//  distribute this software is granted provided this copyright notice appears
-//  in all copies. This software is provided "as is" without express or implied
-//  warranty, and with no claim as to its suitability for any purpose.
+//  Use, modification and distribution are subject to the 
+//  Boost Software License, Version 1.0. (See accompanying file 
+//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
 
 //  See http://www.boost.org/libs/static_assert for documentation.
 
@@ -16,6 +15,7 @@
 #define BOOST_STATIC_ASSERT_HPP
 
 #include <boost/config.hpp>
+#include <boost/detail/workaround.hpp>
 
 #ifdef __BORLANDC__
 //
@@ -57,21 +57,36 @@ template<int x> struct static_assert_test{};
 // style casts: too many compilers currently have problems with static_cast
 // when used inside integral constant expressions.
 //
-#if !defined(BOOST_BUGGY_INTEGRAL_CONSTANT_EXPRESSIONS) && !defined(__MWERKS__)
+#if !defined(BOOST_BUGGY_INTEGRAL_CONSTANT_EXPRESSIONS) && \
+    !BOOST_WORKAROUND(__MWERKS__, < 0x3003)
 
-#if defined(BOOST_MSVC)
+#if defined(BOOST_MSVC) && (BOOST_MSVC < 1300)
 // __LINE__ macro broken when -ZI is used see Q199057
 // fortunately MSVC ignores duplicate typedef's.
 #define BOOST_STATIC_ASSERT( B ) \
    typedef ::boost::static_assert_test<\
       sizeof(::boost::STATIC_ASSERTION_FAILURE< (bool)( B ) >)\
       > boost_static_assert_typedef_
+#elif defined(BOOST_MSVC)
+#define BOOST_STATIC_ASSERT( B ) \
+   typedef ::boost::static_assert_test<\
+      sizeof(::boost::STATIC_ASSERTION_FAILURE< (bool)( B ) >)>\
+         BOOST_JOIN(boost_static_assert_typedef_, __COUNTER__)
 #elif defined(BOOST_INTEL_CXX_VERSION)
 // agurt 15/sep/02: a special care is needed to force Intel C++ issue an error 
 // instead of warning in case of failure
 # define BOOST_STATIC_ASSERT( B ) \
     typedef char BOOST_JOIN(boost_static_assert_typedef_, __LINE__) \
         [ ::boost::STATIC_ASSERTION_FAILURE< (bool)( B ) >::value ]
+#elif defined(__sgi)
+// special version for SGI MIPSpro compiler
+#define BOOST_STATIC_ASSERT( B ) \
+   BOOST_STATIC_CONSTANT(bool, \
+     BOOST_JOIN(boost_static_assert_test_, __LINE__) = ( B )); \
+   typedef ::boost::static_assert_test<\
+     sizeof(::boost::STATIC_ASSERTION_FAILURE< \
+       BOOST_JOIN(boost_static_assert_test_, __LINE__) >)>\
+         BOOST_JOIN(boost_static_assert_typedef_, __LINE__)
 #else
 // generic version
 #define BOOST_STATIC_ASSERT( B ) \
@@ -89,3 +104,5 @@ template<int x> struct static_assert_test{};
 
 
 #endif // BOOST_STATIC_ASSERT_HPP
+
+

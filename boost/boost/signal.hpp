@@ -1,16 +1,10 @@
 // Boost.Signals library
-//
-// Copyright (C) 2001-2002 Doug Gregor (gregod@cs.rpi.edu)
-//
-// Permission to copy, use, sell and distribute this software is granted
-// provided this copyright notice appears in all copies.
-// Permission to modify the code and to distribute modified code is granted
-// provided this copyright notice appears in all copies, and a notice
-// that the code was modified is included with the copyright notice.
-//
-// This software is provided "as is" without express or implied warranty,
-// and with no claim as to its suitability for any purpose.
- 
+
+// Copyright Doug Gregor 2001-2003. Use, modification and
+// distribution is subject to the Boost Software License, Version
+// 1.0. (See accompanying file LICENSE_1_0.txt or copy at
+// http://www.boost.org/LICENSE_1_0.txt)
+
 // For more information, see http://www.boost.org/libs/signals
 
 #ifndef BOOST_SIGNAL_HPP
@@ -33,17 +27,21 @@
 #include <boost/signals/signal10.hpp>
 #include <boost/function.hpp>
 
+#ifdef BOOST_HAS_ABI_HEADERS
+#  include BOOST_ABI_PREFIX
+#endif
+
 namespace boost {
-#ifndef BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION
+#ifndef BOOST_FUNCTION_NO_FUNCTION_TYPE_SYNTAX
   namespace BOOST_SIGNALS_NAMESPACE {
     namespace detail {
-      template<int Arity, 
-               typename Signature, 
+      template<int Arity,
+               typename Signature,
                typename Combiner,
                typename Group,
                typename GroupCompare,
                typename SlotFunction>
-      struct real_get_signal_impl;
+      class real_get_signal_impl;
 
       template<typename Signature,
                typename Combiner,
@@ -303,7 +301,7 @@ namespace boost {
                typename Group,
                typename GroupCompare,
                typename SlotFunction>
-      struct get_signal_impl : 
+      struct get_signal_impl :
         public real_get_signal_impl<(function_traits<Signature>::arity),
                                     Signature,
                                     Combiner,
@@ -347,8 +345,12 @@ namespace boost {
     {
     }
   };
-#endif // ndef BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION
+#endif // ndef BOOST_FUNCTION_NO_FUNCTION_TYPE_SYNTAX
 
 } // end namespace boost
+
+#ifdef BOOST_HAS_ABI_HEADERS
+#  include BOOST_ABI_SUFFIX
+#endif
 
 #endif // BOOST_SIGNAL_HPP
