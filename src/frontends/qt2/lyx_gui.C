@@ -53,6 +53,8 @@
 #include <qapplication.h>
 #include <qwidget.h>
 #include <qpaintdevicemetrics.h>
+#include <qtranslator.h>
+#include <qtextcodec.h>
 
 #include <fcntl.h>
 #include <cstdlib>
@@ -143,7 +145,24 @@ bool LQApplication::macEventFilter(EventRef event)
 
 void lyx_gui::parse_init(int & argc, char * argv[])
 {
-	static LQApplication a(argc, argv);
+	static LQApplication app(argc, argv);
+
+#if QT_VERSION >= 0x030200
+        // install translation file for Qt built-in dialogs
+	// These are only installed since Qt 3.2.x
+        static QTranslator qt_trans(0);
+        if (qt_trans.load(QString("qt_") + QTextCodec::locale(),
+			  qInstallPathTranslations())) {
+		app.installTranslator(&qt_trans);
+		app.setReverseLayout(false);
+		lyxerr[Debug::GUI]
+			<< "Successfully installed Qt translations for locale "
+			<< QTextCodec::locale() << std::endl;
+	} else
+		lyxerr[Debug::GUI]
+			<< "Could not find  Qt translations for locale "
+			<< QTextCodec::locale() << std::endl;
+#endif
 
 	using namespace grfx;
 
