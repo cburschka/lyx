@@ -197,7 +197,7 @@ void InsetExternal::validate(LaTeXFeatures & features) const
 
 Inset * InsetExternal::clone(Buffer const &, bool same_id) const
 {
-	InsetExternal * inset = new InsetExternal();
+	InsetExternal * inset = new InsetExternal;
 	inset->params_ = params_;
 	inset->view_ = view_;
 	if (same_id)
