@@ -12,7 +12,7 @@ DOCDIST = doc/LyXConfig.lyx*
 DOCINST = doc/*.lyx doc/*.eps doc/*.lyx.in
 EXAMPLES = examples/*.lyx examples/*.fen
 HELP = help/*.hlp
-IMAGES = images/*.xpm
+IMAGES = images/*.xpm images/math/*.xpm
 KBD = kbd/*.kmap kbd/*.cdef
 LAYOUT = layouts/*.layout layouts/*.inc
 LYXSCRIPTS = configure configure.cmd scripts/*
@@ -30,7 +30,7 @@ pkgdata_DATA = lyxrc.example CREDITS chkconfig.ltx lyxrc.defaults \
 	       textclass.lst packages.lst external_templates \
 	       encodings languages symbols
 
-LYXLIBDIRS = bind clipart doc examples help images kbd layouts scripts \
+LYXLIBDIRS = bind clipart doc examples help images images/math kbd layouts scripts \
 	     templates tex ui
 
 EXTRA_DIST = CREDITS chkconfig.ltx configure.cmd lyxrc.example \
