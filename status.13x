@@ -48,7 +48,7 @@ What's new
 - fix mathed bug where curly brackets in, e.g. {a^b}^c, would get lost
   and cause TeX errors
 
-- fix bug where strange symbola were displayed instead of math symbols
+- fix bug where strange symbols were displayed instead of math symbols
   [Qt only]
 
 - fix bug where "lyx -e" would refuse to work [bug #788, Qt only]
@@ -64,8 +64,6 @@ What's new
 
 - prevent a crash when generating previews if the user is not using a
   tmp directory
-
-- squash a potential bug in the PreviewLoader before it bites
 
 - fix possible crash on exit when there are many previews
 
