@@ -4,7 +4,7 @@
 \begin_preamble
 \usepackage{multirow}
 \end_preamble
-\language french
+\language frenchb
 \inputencoding latin1
 \fontscheme default
 \graphics default
@@ -19,7 +19,7 @@
 \tocdepth 3
 \paragraph_separation skip
 \defskip medskip
-\quotes_language english
+\quotes_language french
 \quotes_times 2
 \papercolumns 1
 \papersides 1
@@ -30,7 +30,7 @@
 Quelques exemples d'emploi de tableaux dans LyX
 \begin_inset Info
 Informations de révision :
-Traduction : Date: 2001/01/25
+Traduction : Mise à jour Date: 2001/02/16
 Original : Révision: 1.3, Date: 2000/11/03
 \end_inset 
 
@@ -53,9 +53,11 @@ Rebollo
 \end_float 
 \layout Standard
 
-longtable - 
+Tableau\SpecialChar ~
+Long - 
 \series bold 
-Comment utiliser les options spéciales des tableaux longs.
+Comment utiliser les options spéciales Tableaux\SpecialChar ~
+Longs.
 \layout Standard
 \added_space_top 0.3cm \added_space_bottom 0.3cm \align center 
 
@@ -2800,7 +2802,7 @@ Margit
 
 \layout Standard
 
-multirow - 
+Rangées multiples - 
 \series bold 
 Alignement vertical dans les tableaux
 \layout Standard
@@ -2810,7 +2812,7 @@ Le paquetage
 multirow
 \family default 
  (d'auteur inconnu) automatise la procédure de construction de tableaux
- avec des cellules recouvrant plusieurs rangées en définissant la commande
+ avec des cases recouvrant plusieurs rangées en définissant la commande
  
 \family typewriter 
 
@@ -3015,7 +3017,7 @@ C4e
 
 \layout Standard
 \pagebreak_top 
-footnotes - 
+Notes de bas de page - 
 \series bold 
 Comment utiliser des notes de bas de page dans les tableaux
 \layout Standard
@@ -3034,7 +3036,7 @@ Utiliser des Environnements-Minipages
 
 Notez que les notes de bas de page sont affichées immédiatement après la
  fin de la mini-page.
- La numérotation par défuat utilise des lettres minuscules.
+ La numérotation par défaut utilise des lettres minuscules.
 \layout LaTeX
 
 {
@@ -3105,7 +3107,7 @@ b
 \backslash 
 footnote{
 \latex default 
-exemple1 cellule(b,1)
+exemple1 case(b,1)
 \latex latex 
 }
 \end_inset 
@@ -3197,7 +3199,7 @@ d
 \backslash 
 footnote{
 \latex default 
-exemple1 cellule(d,9)
+exemple1 case(d,9)
 \latex latex 
 }
 \end_inset 
@@ -3218,17 +3220,28 @@ exemple1 cellule(d,9)
 \emph on 
 Utiliser l'option
 \family sans 
- Longtable
+ Tableau\SpecialChar ~
+Long
 \begin_deeper 
 \layout Standard
 
 Cochez le bouton 
 \family sans 
+Tableau\SpecialChar ~
+Long
+\begin_float footnote 
+\end_deeper 
+\layout Standard
+
+NdT : 
+\family sans 
 Longtable
 \family default 
+ en version originale.
+\end_float 
  dans l'onglet 
 \family sans 
-Tabular
+Tableau
 \family default 
  de la fenêtre 
 \family sans 
@@ -3237,6 +3250,7 @@ du\SpecialChar ~
 tableau
 \family default 
  et les notes de bas de page seront affichées au bas de la page.
+\begin_deeper 
 \layout Standard
 \added_space_top 0.3cm \added_space_bottom 0.3cm \align center 
 
@@ -3301,7 +3315,7 @@ b
 \backslash 
 footnote{
 \latex default 
-exemple2 cellule(b,1)
+exemple2 case(b,1)
 \latex latex 
 }
 \end_inset 
@@ -3393,7 +3407,7 @@ d
 \backslash 
 footnote{
 \latex default 
-exemple2 cellule(d,9)
+exemple2 case(d,9)
 \latex latex 
 }
 \end_inset 
@@ -3582,11 +3596,11 @@ footnotemark
 \backslash 
 addtocounter{footnote}{-1}
 \backslash 
-footnotetext{example3 cell(b,1)}%
+footnotetext{exemple3 case(b,1)}%
 \newline 
  
 \backslash 
 addtocounter{footnote}{1}
 \backslash 
-footnotetext{example3 cell(d,9)}
+footnotetext{exemple3 case(d,9)}
 \the_end

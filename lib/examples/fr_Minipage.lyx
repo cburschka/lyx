@@ -1,7 +1,7 @@
 #LyX 1.1 created this file. For more info see http://www.lyx.org/
 \lyxformat 218
 \textclass article
-\language french
+\language frenchb
 \inputencoding latin1
 \fontscheme default
 \graphics default
@@ -16,7 +16,7 @@
 \tocdepth 3
 \paragraph_separation skip
 \defskip medskip
-\quotes_language danish
+\quotes_language french
 \quotes_times 2
 \papercolumns 1
 \papersides 1
@@ -27,7 +27,7 @@
 Quelques exemples d'emploi de mini-pages avec LyX
 \begin_inset Info
 Informations de révision :
-Traduction : Date: 2001/01/25
+Traduction : Mise à jour Date: 2001/02/16
 Original : Révision: 1.4, Date: 2000/11/03
 \end_inset 
 
@@ -516,7 +516,7 @@ Voici le Tableau 2
 \size normal 
 J'utilise ceci quand je dois écrire du texte bilingue (je vis dans une région
  d'Italie dans laquelle environ 60% des gens parlent allemand et où il faut
- donc écrire des lettres en allemand et italien sur deux colonnes comme
+ donc écrire des lettres en allemand et en italien sur deux colonnes, comme
  le montre le texte suivant
 \begin_float footnote 
 \layout Standard
@@ -530,17 +530,27 @@ NdT : Il s'agit de l'auteur et non du traducteur, qui habite Paris et ne
 \layout Standard
 \pextra_type 2 \pextra_alignment 0 \pextra_hfill 1 \pextra_start_minipage 1 \pextra_widthp 45
 
-C'est un texte en français.C'est un texte en français.C'est un texte en français.C'
-est un texte en français.C'est un texte en français.C'est un texte en français.C'es
-t un texte en français.C'est un texte en français.C'est un texte en français.C'est
- un texte en français.C'est un texte en français.C'est un texte en français
+C'est un texte en français.
+ C'est un texte en français.
+ C'est un texte en français.
+ C'est un texte en français.
+ C'est un texte en français.
+ C'est un texte en français.
+ C'est un texte en français.
+ C'est un texte en français.
+ C'est un texte en français.
+ C'est un texte en français.
+ C'est un texte en français.
+ C'est un texte en français
 \begin_float footnote 
 \layout Standard
 
 C'est une note en bas de page.
 \end_float 
 .
- C'est un texte en français.C'est un texte en français.C'est un texte en français.
+ C'est un texte en français.
+ C'est un texte en français.
+ C'est un texte en français.
 \layout Standard
 \pextra_type 2 \pextra_alignment 0 \pextra_hfill 1 \pextra_start_minipage 1 \pextra_widthp 45
 
@@ -575,7 +585,7 @@ This is a footnote.
 \layout Standard
 
 J'espère que cela aidera à comprendre à quoi peuvent par exemple servir
- les mini-pages!
+ les mini-pages !
 \layout Subsection*
 
 Salutations, Jürgen

@@ -4,8 +4,8 @@
 \begin_preamble
 \usepackage{latexsym,pifont,amssymb}
 \end_preamble
-\language french
-\inputencoding default
+\language frenchb
+\inputencoding latin1
 \fontscheme default
 \graphics default
 \paperfontsize 10
@@ -41,15 +41,37 @@
 	-1
 \end_bullet
 
+\layout Title
+
+Listes à Puces
+\begin_inset Info
+Informations de révision :
+Traduction : Mise à jour Date: 2001/02/16
+Original : Révision: 1.4, Date: 2000/11/03
+\end_inset 
+
+
+\begin_float footnote 
+\layout Standard
+
+Traduction : Adrien 
+\noun on 
+Rebollo
+\noun default 
+ 
+\family typewriter 
+<Adrien.Rebollo@wanadoo.fr>
+\family default 
+.
+\end_float 
 \layout Section*
 
 Introduction
 \layout Standard
 
-Vous verrez assez vite que vous pouvez rendre le réglage des puces assez
- complexe.
- Ne vous affolez pas, la plupart des réglages ne sont qu'à un clic de souris
- ou deux.
+Vous verrez vite que vous pouvez rendre le réglage des puces assez complexe.
+ Ne vous affolez pas, la plupart des options sont à portée d'un clic de
+ souris ou deux.
 \layout Itemize
 
 
@@ -82,7 +104,7 @@ LyX affiche cependant toutes les puces comme des
 \end_deeper 
 \layout Itemize
 
-A noter aussi que LyX 
+À noter aussi que LyX 
 \emph on 
 ne vérifie pas
 \emph default 
@@ -137,7 +159,7 @@ Bullets
  Essayez tout de suite.
 \layout Section*
 
-Tableaux de puces :
+Tableaux de Puces
 \layout Standard
 
 Les tableaux suivants sont utilisés pour générer les panneaux de puces dans
@@ -1373,19 +1395,18 @@ Ding 1 (Polices PSNFSS
 \layout Standard
 
 NFSS est le nouveau schéma de sélection de police (New Font Selecting Scheme)
- de LaTeX2e (basiquement, ce qui a changé les commandes de police de 
+ de LaTeX2e (basiquement, c'est ce qui a changé les commandes de police
+ de 
 \family typewriter 
 {
 \backslash 
 bf ...}
 \family default 
-à 
+ à 
 \family typewriter 
 
 \backslash 
-textbf{.
- .
- .}
+textbf{...}
 \family default 
 , bien que les vrais changements soient à l'intérieur).
  PS signifie PostScript®.

@@ -1,8 +1,8 @@
 #LyX 1.1 created this file. For more info see http://www.lyx.org/
 \lyxformat 218
 \textclass article
-\language french
-\inputencoding default
+\language frenchb
+\inputencoding latin1
 \fontscheme default
 \graphics default
 \paperfontsize default
@@ -24,7 +24,14 @@
 
 \layout Standard
 
-CECI EST LE TITRE DU DOCUMENT 
+CECI EST LE TITRE DU DOCUMENT
+\begin_inset Info
+Informations de révision :
+Traduction : Mise à jour, Date: 2001/02/16
+Original : Révision: 1.3, Date: 2000/11/03
+\end_inset 
+
+
 \begin_inset Info
 Indication:
 Le titre devrait ressembler un peu plus à un titre ("TITLE")
@@ -101,7 +108,7 @@ La philosophie générale de LyX est de vous laisser vous concentrer sur le
  contenu et non pas sur la forme de vos écrits.
 \layout Standard
 
-1.1 Comment LyX le fait
+1.1 Comment LyX procède
 \layout Standard
 
 LyX utilise LaTeX, un système de préparation de documents conçu par Leslie
@@ -117,7 +124,7 @@ Cette "Citation Bibliographique" ne devrait probablement pas
 passe en seconde position dans la bibliographie?
 \end_inset 
 
-:
+ :
 \layout Standard
 
 
@@ -173,7 +180,7 @@ What you see is what you mean
  de LaTeX.
  C'est une bonne chose.
  De plus, le format de fichier est indépendant du système.
- Et pour finir, c'est un logiciel LIBRE! 
+ Et pour finir, c'est un logiciel LIBRE ! 
 \layout Standard
 
 2.
@@ -181,7 +188,7 @@ What you see is what you mean
 \layout Standard
 
 LyX possède un bon nombre de fonctionnalités qui facilitent l'écriture.
- ( Après tout, quelle autre raison pourrait vous le faire utiliser? 
+ ( Après tout, quelle autre raison pourrait vous le faire utiliser ? 
 \begin_inset Info
 Indication:
 Cette parenthèse serait bien mieux en "Note de bas de page"
@@ -231,7 +238,7 @@ J'ai écrit un programme ces derniers jours.
 \begin_inset Quotes eld
 \end_inset 
 
-JE SUIS SUPER!
+JE SUIS SUPER !
 \begin_inset Quotes erd
 \end_inset 
 
@@ -289,7 +296,7 @@ Ma formule préférée est la résolution d'une équation du second degré.
  2).
 \layout Standard
 
-Une autre favorite, la base du calcul différentiel: f'(x) est définie comme
+Une autre favorite, la base du calcul différentiel : f'(x) est définie comme
  la limite, quand deltax tend vers zéro, de l'expression f(x+deltax) - f(x)
  divisé par deltax (eq.
  3).
@@ -302,6 +309,6 @@ REFERENCES
 \layout Standard
 
 [1] Lamport, Leslie.
- LaTeX: A Document Preparation System.
- Addison-Wesley, Reading, Massachusetts, second edition, 1994.
+ LaTeX : A Document Preparation System.
+ Addison-Wesley, Reading, Massachusetts, deuxième édition, 1994.
 \the_end
