@@ -140,6 +140,8 @@ public:
 	bool pass_thru;
 	///
 	bool is_environment;
+	/// show this in toc
+	int toclevel;
 	/// for new environment insets
 	string latexheader;
 	/// for new environment insets

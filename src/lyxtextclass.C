@@ -67,7 +67,6 @@ LyXTextClass::LyXTextClass(string const & fn, string const & cln,
 	secnumdepth_ = 3;
 	tocdepth_ = 3;
 	pagestyle_ = "default";
-	maxcounter_ = 4;
 	defaultfont_ = LyXFont(LyXFont::ALL_SANE);
 	opt_fontsize_ = "10|11|12";
 	opt_pagestyle_ = "empty|plain|headings|fancy";
@@ -111,7 +110,6 @@ enum TextClassTags {
 	TC_SIDES,
 	TC_PAGESTYLE,
 	TC_DEFAULTFONT,
-	TC_MAXCOUNTER,
 	TC_SECNUMDEPTH,
 	TC_TOCDEPTH,
 	TC_CLASSOPTIONS,
@@ -142,7 +140,6 @@ bool LyXTextClass::Read(string const & filename, bool merge)
 		{ "float",           TC_FLOAT },
 		{ "input",           TC_INPUT },
 		{ "leftmargin",      TC_LEFTMARGIN },
-		{ "maxcounter",      TC_MAXCOUNTER },
 		{ "nofloat",         TC_NOFLOAT },
 		{ "nostyle",         TC_NOSTYLE },
 		{ "outputtype",      TC_OUTPUTTYPE },
@@ -297,11 +294,6 @@ bool LyXTextClass::Read(string const & filename, bool merge)
 						 "be fully instantiated!");
 				defaultfont_.realize(LyXFont(LyXFont::ALL_SANE));
 			}
-			break;
-
-		case TC_MAXCOUNTER:
-			lexrc.next();
-			maxcounter_ = lexrc.getInteger();
 			break;
 
 		case TC_SECNUMDEPTH:
@@ -880,12 +872,6 @@ unsigned int LyXTextClass::columns() const
 }
 
 
-int LyXTextClass::maxcounter() const
-{
-	return maxcounter_;
-}
-
-
 LYX_TITLE_LATEX_TYPES LyXTextClass::titletype() const
 {
 	return titletype_;
@@ -896,9 +882,6 @@ string const & LyXTextClass::titlename() const
 {
 	return titlename_;
 }
-
-
-
 
 
 int LyXTextClass::size() const

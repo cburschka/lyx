@@ -78,6 +78,7 @@ enum LayoutTags {
 	LT_RIGHTMARGIN,
 	LT_SPACING,
 	LT_TOPSEP,
+	LT_TOCLEVEL,
 	LT_INTITLE
 };
 
@@ -115,6 +116,7 @@ LyXLayout::LyXLayout ()
 	free_spacing = false;
 	pass_thru = false;
 	is_environment = false;
+	toclevel = 0;
 }
 
 
@@ -167,6 +169,7 @@ bool LyXLayout::Read(LyXLex & lexrc, LyXTextClass const & tclass)
 		{ "rightmargin",	LT_RIGHTMARGIN },
 		{ "spacing",		LT_SPACING },
 		{ "textfont",		LT_TEXTFONT },
+		{ "toclevel",            LT_TOCLEVEL },
 		{ "topsep",		LT_TOPSEP }
 	};
 
@@ -241,9 +244,8 @@ bool LyXLayout::Read(LyXLex & lexrc, LyXTextClass const & tclass)
 			break;
 
 		case LT_DEPENDSON:
-			if (lexrc.next()) {
+			if (lexrc.next())
 				depends_on_ = lexrc.getString();
-			}
 			break;
 
 		case LT_MARGIN:		// margin style definition.
@@ -273,10 +275,14 @@ bool LyXLayout::Read(LyXLex & lexrc, LyXTextClass const & tclass)
 			intitle = lexrc.next() && lexrc.getInteger();
 			break;
 
+		case LT_TOCLEVEL:
+			lexrc.next();
+			toclevel = lexrc.getInteger();
+			break;
+
 		case LT_OPTARGS:
-			if (lexrc.next()) {
+			if (lexrc.next())
 				optionalargs = lexrc.getInteger();
-			}
 			break;
 
 		case LT_NEED_PROTECT:

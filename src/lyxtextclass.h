@@ -13,14 +13,16 @@
 #include "lyxlayout.h"
 #include "lyxlayout_ptr_fwd.h"
 
+#include "support/std_string.h"
+
 #include <boost/shared_ptr.hpp>
 
-#include "support/std_string.h"
 #include <vector>
 
 class LyXLex;
 class Counters;
 class FloatList;
+
 
 /// Stores the layout specification of a LyX document class.
 class LyXTextClass {
@@ -137,8 +139,6 @@ public:
 
 	/// Text that dictates how wide the right margin is on the screen
 	string const & rightmargin() const;
-	///
-	int maxcounter() const;
 
 	/// The type of command used to produce a title
 	LYX_TITLE_LATEX_TYPES titletype() const;
@@ -193,8 +193,6 @@ private:
 
 	/// Text that dictates how wide the right margin is on the screen
 	string rightmargin_;
-	/// highest header level used in this layout.
-	int maxcounter_; // add approp. signedness
 
 	/// The type of command used to produce a title
 	LYX_TITLE_LATEX_TYPES titletype_;
