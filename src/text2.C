@@ -113,47 +113,37 @@ LyXFont LyXText::getFont(ParagraphList::iterator pit, pos_type pos) const
 	LyXLayout_ptr const & layout = pit->layout();
 #warning broken?
 	BufferParams const & params = bv()->buffer()->params();
+	pos_type const body_pos = pit->beginningOfBody();
 
 	// We specialize the 95% common case:
 	if (!pit->getDepth()) {
-		if (layout->labeltype == LABEL_MANUAL
-		    && pos < pit->beginningOfBody()) {
-			// 1% goes here
-			LyXFont f = pit->getFontSettings(params, pos);
-			if (pit->inInset())
-				pit->inInset()->getDrawFont(f);
+		LyXFont f = pit->getFontSettings(params, pos);
+		if (pit->inInset())
+			pit->inInset()->getDrawFont(f);
+		if (layout->labeltype == LABEL_MANUAL && pos < body_pos)
 			return f.realize(layout->reslabelfont);
-		} else {
-			LyXFont f = pit->getFontSettings(params, pos);
-			if (pit->inInset())
-				pit->inInset()->getDrawFont(f);
+		else
 			return f.realize(layout->resfont);
-		}
 	}
 
 	// The uncommon case need not be optimized as much
-
 	LyXFont layoutfont;
-
-	if (pos < pit->beginningOfBody()) {
-		// 1% goes here
+	if (pos < body_pos)
 		layoutfont = layout->labelfont;
-	} else {
-		// 99% goes here
+	else
 		layoutfont = layout->font;
-	}
 
-	LyXFont tmpfont = pit->getFontSettings(params, pos);
-	tmpfont.realize(layoutfont);
+	LyXFont font = pit->getFontSettings(params, pos);
+	font.realize(layoutfont);
 
 	if (pit->inInset())
-		pit->inInset()->getDrawFont(tmpfont);
+		pit->inInset()->getDrawFont(font);
 
 	// Realize with the fonts of lesser depth.
-	tmpfont.realize(outerFont(pit, ownerParagraphs()));
-	tmpfont.realize(defaultfont_);
+	//font.realize(outerFont(pit, ownerParagraphs()));
+	font.realize(defaultfont_);
 
-	return tmpfont;
+	return font;
 }
 
 
@@ -166,7 +156,7 @@ LyXFont LyXText::getLayoutFont(ParagraphList::iterator pit) const
 
 	LyXFont font = layout->font;
 	// Realize with the fonts of lesser depth.
-	font.realize(outerFont(pit, ownerParagraphs()));
+	//font.realize(outerFont(pit, ownerParagraphs()));
 	font.realize(defaultfont_);
 
 	return font;
@@ -549,7 +539,6 @@ void LyXText::setFont(LyXFont const & font, bool toggleall)
 
 // the cursor set functions have a special mechanism. When they
 // realize, that you left an empty paragraph, they will delete it.
-// They also delete the corresponding row
 
 // need the selection cursor:
 void LyXText::setSelection()

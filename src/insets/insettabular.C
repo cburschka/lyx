@@ -2057,7 +2057,8 @@ FuncStatus InsetTabular::getStatus(string const & what) const
 	}
 	if (action == LyXTabular::LAST_ACTION) {
 		status.clear();
-		return status.unknown(true);
+		status.unknown(true);
+		return status;
 	}
 
 	string const argument
@@ -2085,7 +2086,8 @@ FuncStatus InsetTabular::getStatus(string const & what) const
 	case LyXTabular::DELETE_COLUMN:
 	case LyXTabular::SET_ALL_LINES:
 	case LyXTabular::UNSET_ALL_LINES:
-		return status.clear();
+		status.clear();
+		return status;
 
 	case LyXTabular::MULTICOLUMN:
 		status.setOnOff(tabular.isMultiColumn(actcell));

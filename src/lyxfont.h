@@ -289,7 +289,7 @@ public:
 	int latexWriteStartChanges(std::ostream &, LyXFont const & base,
 				   LyXFont const & prev) const;
 
-	/** Writes tha tail of the LaTeX needed to chagne to this font.
+	/** Writes the tail of the LaTeX needed to change to this font.
 	    Returns number of chars written. Base is the font state we want
 	    to achieve.
 	*/
@@ -305,6 +305,9 @@ public:
 	///
 	friend
 	bool operator==(LyXFont const & font1, LyXFont const & font2);
+	///
+	friend
+	std::ostream & operator<<(std::ostream & os, LyXFont const & font);
 
 	/// Converts logical attributes to concrete shape attribute
 	LyXFont::FONT_SHAPE realShape() const;
@@ -335,22 +338,16 @@ public:
 		FONT_MISC_STATE number;
 	};
 private:
-
 	///
 	FontBits bits;
-
 	///
 	Language const * lang;
-
 	/// Sane font
 	static FontBits sane;
-
 	/// All inherit font
 	static FontBits inherit;
-
 	/// All ignore font
 	static FontBits ignore;
-
 	/// Updates a misc setting according to request
 	LyXFont::FONT_MISC_STATE setMisc(LyXFont::FONT_MISC_STATE newfont,
 					 LyXFont::FONT_MISC_STATE org);
@@ -362,10 +359,14 @@ private:
  *  having to expose lyxfont.h.
  */
 class LyXFont_size {
-        LyXFont::FONT_SIZE val_;
 public:
+	///
 	LyXFont_size(LyXFont::FONT_SIZE val) : val_(val) {}
-        operator LyXFont::FONT_SIZE() const{ return val_; }
+	///
+	operator LyXFont::FONT_SIZE() const { return val_; }
+private:
+	///
+	LyXFont::FONT_SIZE val_;
 };
 
 
@@ -444,8 +445,7 @@ bool operator!=(LyXFont::FontBits const & lhs, LyXFont::FontBits const & rhs)
 inline
 bool operator==(LyXFont const & font1, LyXFont const & font2)
 {
-	return font1.bits == font2.bits &&
-		font1.lang == font2.lang;
+	return font1.bits == font2.bits && font1.lang == font2.lang;
 }
 
 ///

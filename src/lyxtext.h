@@ -66,7 +66,7 @@ public:
 	/// our buffer's default layout font
 	LyXFont defaultfont_;
 private:
-	/// offset of dran area to document start.
+	/// offset of drawn area to document start.
 	int anchor_y_;
 public:
 	/// update all cached row positions

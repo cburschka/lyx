@@ -278,7 +278,8 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 
 	if (ev.action == LFUN_NOACTION) {
 		setStatusMessage(N_("Nothing to do"));
-		return flag.disabled(true);
+		flag.disabled(true);
+		return flag;
 	}
 
 	switch (ev.action) {
@@ -318,7 +319,8 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 			// no
 			setStatusMessage(N_("Command not allowed with"
 					    "out any document open"));
-			return flag.disabled(true);
+			flag.disabled(true);
+			return flag;
 		}
 	}
 

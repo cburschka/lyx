@@ -201,7 +201,7 @@ int LyXText::singleWidth(ParagraphList::iterator pit,
 
 	// The most common case is handled first (Asger)
 	if (IsPrintable(c)) {
-		if (font.language()->RightToLeft()) {
+		if (!font.language()->RightToLeft()) {
 			if ((lyxrc.font_norm_type == LyXRC::ISO_8859_6_8 ||
 			     lyxrc.font_norm_type == LyXRC::ISO_10646_1)
 			    && font.language()->lang() == "arabic") {
@@ -234,35 +234,25 @@ int LyXText::singleWidth(ParagraphList::iterator pit,
 
 lyx::pos_type LyXText::log2vis(lyx::pos_type pos) const
 {
-	if (bidi_start == -1)
-		return pos;
-	else
-		return log2vis_list[pos - bidi_start];
+	return (bidi_start == -1) ? pos : log2vis_list[pos - bidi_start];
 }
 
 
 lyx::pos_type LyXText::vis2log(lyx::pos_type pos) const
 {
-	if (bidi_start == -1)
-		return pos;
-	else
-		return vis2log_list[pos - bidi_start];
+	return (bidi_start == -1) ? pos : vis2log_list[pos - bidi_start];
 }
 
 
 lyx::pos_type LyXText::bidi_level(lyx::pos_type pos) const
 {
-	if (bidi_start == -1)
-		return 0;
-	else
-		return bidi_levels[pos - bidi_start];
+	return (bidi_start == -1) ? 0 : bidi_levels[pos - bidi_start];
 }
 
 
 bool LyXText::bidi_InRange(lyx::pos_type pos) const
 {
-	return bidi_start == -1 ||
-		(bidi_start <= pos && pos <= bidi_end);
+	return bidi_start == -1 || (bidi_start <= pos && pos <= bidi_end);
 }
 
 
@@ -326,7 +316,6 @@ void LyXText::computeBidiTables(Paragraph const & par,
 			font = par.getFontSettings(bufparams, lpos);
 			is_space = false;
 		}
-
 
 		bool new_rtl = font.isVisibleRightToLeft();
 		bool new_rtl0 = font.isRightToLeft();
@@ -402,8 +391,8 @@ bool LyXText::isBoundary(Buffer const & buf, Paragraph const & par,
 		return false;
 
 	if (!bidi_InRange(pos - 1)) {
-		/// This can happen if pos is the first char of a row.
-		/// Returning false in this case is incorrect!
+		// This can happen if pos is the first char of a row.
+		// Returning false in this case is incorrect!
 		return false;
 	}
 
@@ -1086,7 +1075,6 @@ void LyXText::setHeightOfRow(ParagraphList::iterator pit, Row & row)
 				prev->getLabelWidthString() == pit->getLabelWidthString())
 			{
 				layoutasc = (layout->itemsep * defaultRowHeight());
-//			} else if (rit != firstRow()) {
 			} else if (pit != ownerParagraphs().begin() || row.pos() != 0) {
 				tmptop = layout->topsep;
 
@@ -1485,7 +1473,7 @@ void LyXText::prepareToPrint(ParagraphList::iterator pit,
 			// par, does not end in newline, and is not row above a
 			// display inset... then stretch it
 			if (ns
-				&& next_row != pit->rows.end()
+				&& rit->end() < pit->size()
 				&& !pit->isNewline(next_row->pos() - 1)
 				&& !disp_inset
 				) {
@@ -1619,7 +1607,8 @@ void LyXText::rejectChange()
 WordLangTuple const LyXText::selectNextWordToSpellcheck(float & value)
 {
 	if (the_locking_inset) {
-		WordLangTuple word = the_locking_inset->selectNextWordToSpellcheck(bv(), value);
+		WordLangTuple word =
+			the_locking_inset->selectNextWordToSpellcheck(bv(), value);
 		if (!word.word().empty()) {
 			value += float(cursor.y());
 			value /= float(height);
@@ -1700,8 +1689,7 @@ WordLangTuple const LyXText::selectNextWordToSpellcheck(float & value)
 	// Finally, we copy the word to a string and return it
 	string str;
 	if (selection.cursor.pos() < cursor.pos()) {
-		pos_type i;
-		for (i = selection.cursor.pos(); i < cursor.pos(); ++i) {
+		for (pos_type i = selection.cursor.pos(); i < cursor.pos(); ++i) {
 			if (!cursorPar()->isInset(i))
 				str += cursorPar()->getChar(i);
 		}
@@ -1748,8 +1736,6 @@ void LyXText::deleteWordForward()
 		selection.cursor = cursor;
 		cursor = tmpcursor;
 		setSelection();
-
-		// Great, CutSelection() gets rid of multiple spaces.
 		cutSelection(true, false);
 	}
 }
@@ -2158,11 +2144,7 @@ int LyXText::redoParagraphInternal(ParagraphList::iterator pit)
 		z = rowBreakPoint(pit, row) + 1;
 		row.end(z);
 		pit->rows.push_back(row);
-	}
-
-	RowList::iterator rit = pit->rows.begin();
-	RowList::iterator end = pit->rows.end();
-	for (rit = pit->rows.begin(); rit != end; ++rit) {
+		RowList::iterator rit = boost::prior(pit->rows.end());
 		int const f = fill(pit, *rit, ww);
 		int const w = ww - f;
 		par_width = std::max(par_width, w);
@@ -2210,8 +2192,8 @@ void LyXText::fullRebreak()
 
 void LyXText::metrics(MetricsInfo & mi, Dimension & dim)
 {
-	//lyxerr << "LyXText::metrics: width: " << mi.base.textwidth
-	//	<< " workWidth: " << workWidth() << endl;
+	lyxerr << "LyXText::metrics: width: " << mi.base.textwidth
+		<< " workWidth: " << workWidth() << "\nfont: " << mi.base.font << endl;
 	//BOOST_ASSERT(mi.base.textwidth);
 
 	// rebuild row cache

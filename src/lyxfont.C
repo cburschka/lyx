@@ -25,7 +25,6 @@
 #include "lyxrc.h"
 
 #include "support/lstrings.h"
-
 #include "support/std_sstream.h"
 
 using lyx::support::ascii_lowercase;
@@ -946,7 +945,23 @@ LyXFont::FONT_SHAPE LyXFont::realShape() const
 }
 
 
-ostream & operator<<(ostream & o, LyXFont::FONT_MISC_STATE fms)
+ostream & operator<<(ostream & os, LyXFont::FONT_MISC_STATE fms)
 {
-	return o << int(fms);
+	return os << int(fms);
+}
+
+
+std::ostream & operator<<(std::ostream & os, LyXFont const & font)
+{
+	return os << "font:"
+		<< " family " << font.bits.family
+		<< " series " << font.bits.series
+		<< " shape " << font.bits.shape
+		<< " size " << font.bits.size
+		<< " color " << font.bits.color
+		<< " emph " << font.bits.emph
+		<< " underbar " << font.bits.underbar
+		<< " noun " << font.bits.noun
+		<< " number " << font.bits.number
+		<< " lang: " << (font.lang ? font.lang->lang() : 0);
 }

@@ -37,23 +37,23 @@ public:
 	///
 	FuncStatus();
 	//
-	FuncStatus & clear ();
+	void clear();
 	///
-	void operator |= (FuncStatus const & f);
+	void operator|=(FuncStatus const & f);
 	///
-	FuncStatus & unknown(bool b);
+	void unknown(bool b);
 	///
 	bool unknown() const;
 
 	///
-	FuncStatus & disabled (bool b);
+	void disabled(bool b);
 	///
-	bool disabled () const;
+	bool disabled() const;
 
 	///
-	void setOnOff (bool b);
+	void setOnOff(bool b);
 	///
-	bool onoff (bool b) const;
+	bool onoff(bool b) const;
 };
 
 #endif

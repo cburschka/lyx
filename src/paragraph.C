@@ -374,12 +374,12 @@ LyXFont const Paragraph::getFont(BufferParams const & bparams, pos_type pos,
 	else
 		layoutfont = lout->font;
 
-	LyXFont tmpfont = getFontSettings(bparams, pos);
-	tmpfont.realize(layoutfont);
-	tmpfont.realize(outerfont);
-	tmpfont.realize(bparams.getLyXTextClass().defaultfont());
+	LyXFont font = getFontSettings(bparams, pos);
+	font.realize(layoutfont);
+	font.realize(outerfont);
+	font.realize(bparams.getLyXTextClass().defaultfont());
 
-	return tmpfont;
+	return font;
 }
 
 

@@ -17,56 +17,56 @@ FuncStatus::FuncStatus() : v_(OK)
 }
 
 
-FuncStatus & FuncStatus::clear ()
+void FuncStatus::clear()
 {
 	v_ = OK;
-	return *this;
 }
 
-void FuncStatus::operator |= (FuncStatus const & f)
+
+void FuncStatus::operator|=(FuncStatus const & f)
 {
 	v_ |= f.v_;
 }
 
-FuncStatus & FuncStatus::unknown (bool b)
+
+void FuncStatus::unknown(bool b)
 {
 	if (b)
 		v_ |= UNKNOWN;
 	else
 		v_ &= !UNKNOWN;
-	return *this;
 }
 
 
-bool FuncStatus::unknown () const
+
+bool FuncStatus::unknown() const
 {
 	return (v_ & UNKNOWN);
 }
 
 
-FuncStatus & FuncStatus::disabled (bool b)
+void FuncStatus::disabled(bool b)
 {
 	if (b)
 		v_ |= DISABLED;
 	else
 		v_ &= !DISABLED;
-	return *this;
 }
 
 
-bool FuncStatus::disabled () const
+bool FuncStatus::disabled() const
 {
 	return (v_ & DISABLED);
 }
 
 
-void FuncStatus::setOnOff (bool b)
+void FuncStatus::setOnOff(bool b)
 {
 	v_ |= (b ? ON : OFF);
 }
 
 
-bool FuncStatus::onoff (bool b) const
+bool FuncStatus::onoff(bool b) const
 {
 	if (b)
 		return (v_ & ON);

@@ -19,6 +19,7 @@ InsetBase::dispatch(FuncRequest const & f, idx_type & i, pos_type & p)
 	return priv_dispatch(f, i, p);
 }
 
+
 dispatch_result
 InsetBase::dispatch(FuncRequest const & f)
 {
