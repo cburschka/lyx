@@ -437,7 +437,7 @@ void InsetTabular::update(BufferView * bv, bool reinit)
 
 string const InsetTabular::editMessage() const
 {
-	return _("Opened Tabular Inset");
+	return _("Opened table");
 }
 
 
