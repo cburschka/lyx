@@ -1347,6 +1347,10 @@ bool MathCursor::interpret(char c)
 		}
 
 		macroModeClose();
+
+		if (c == '\\')
+			insert(c, LM_TC_TEX);
+
 		return true;
 	}
 
