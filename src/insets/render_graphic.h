@@ -29,7 +29,7 @@ public:
 
 	/// compute the size of the object returned in dim
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
-	/// draw inset and update (xo, yo)-cache
+	/// draw inset
 	void draw(PainterInfo & pi, int x, int y) const;
 
 	/// Refresh the info about which file to display and how to display it.

@@ -168,8 +168,8 @@ void RenderGraphic::draw(PainterInfo & pi, int x, int y) const
 	    !loader_.monitoring())
 		loader_.startMonitoring();
 
-	// This will draw the graphics. If the graphics has not been loaded yet,
-	// we draw just a rectangle.
+	// This will draw the graphics. If the graphics has not been
+	// loaded yet, we draw just a rectangle.
 
 	if (readyToDisplay(loader_)) {
 		pi.pain.image(x + InsetOld::TEXT_TO_INSET_OFFSET,
