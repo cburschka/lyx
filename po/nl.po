@@ -11,7 +11,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: lyx-1.1.5pre1\n"
-"POT-Creation-Date: 2002-04-16 23:38+0200\n"
+"POT-Creation-Date: 2002-04-23 19:08+0200\n"
 "PO-Revision-Date: 2000-04-27 20:44+02:00\n"
 "Last-Translator: Ivo Timmermans <itimmermans@bigfoot.com>\n"
 "Language-Team: Dutch <nl@li.org>\n"
@@ -255,7 +255,7 @@ msgstr "Die dan maar laden?"
 msgid "Unable to open template"
 msgstr "Kan sjabloon niet openen"
 
-#: src/bufferlist.C:514 src/lyxfunc.C:1754 src/lyxfunc.C:1965
+#: src/bufferlist.C:514 src/lyxfunc.C:1762 src/lyxfunc.C:1973
 msgid "Document is already open:"
 msgstr "Document is al geopend:"
 
@@ -382,112 +382,112 @@ msgstr "Alineaopmaak ingesteld"
 msgid "Formatting document..."
 msgstr "Bezig met opmaken document..."
 
-#: src/BufferView_pimpl.C:1252
+#: src/BufferView_pimpl.C:1320
 msgid "Saved bookmark"
 msgstr ""
 
-#: src/BufferView_pimpl.C:1284
+#: src/BufferView_pimpl.C:1352
 msgid "Moved to bookmark"
 msgstr ""
 
-#: src/BufferView_pimpl.C:1511
+#: src/BufferView_pimpl.C:1582
 #, fuzzy
 msgid "Select LyX document to insert"
 msgstr "Kies document ter invoeging"
 
-#: src/BufferView_pimpl.C:1513 src/frontends/controllers/ControlBibtex.C:68
+#: src/BufferView_pimpl.C:1584 src/frontends/controllers/ControlBibtex.C:68
 #: src/frontends/controllers/ControlExternal.C:166
-#: src/frontends/controllers/ControlGraphics.C:113
+#: src/frontends/controllers/ControlGraphics.C:154
 #: src/frontends/controllers/ControlInclude.C:71 src/lyx_cb.C:113
-#: src/lyxfunc.C:1730 src/lyxfunc.C:1814 src/lyxfunc.C:1855 src/lyxfunc.C:1932
+#: src/lyxfunc.C:1738 src/lyxfunc.C:1822 src/lyxfunc.C:1863 src/lyxfunc.C:1940
 #, fuzzy
 msgid "Documents|#o#O"
 msgstr "Documenten"
 
-#: src/BufferView_pimpl.C:1515 src/lyxfunc.C:1857 src/lyxfunc.C:1934
+#: src/BufferView_pimpl.C:1586 src/lyxfunc.C:1865 src/lyxfunc.C:1942
 #, fuzzy
 msgid "Examples|#E#e"
 msgstr "Voorbeelden"
 
-#: src/BufferView_pimpl.C:1520 src/frontends/controllers/ControlInclude.C:67
+#: src/BufferView_pimpl.C:1591 src/frontends/controllers/ControlInclude.C:67
 msgid "*.lyx| LyX Documents (*.lyx)"
 msgstr ""
 
 #. Cancel: Do nothing
-#: src/BufferView_pimpl.C:1529 src/lyxfunc.C:1741 src/lyxfunc.C:1768
-#: src/lyxfunc.C:1871 src/lyxfunc.C:1951 src/lyxfunc.C:1979
+#: src/BufferView_pimpl.C:1600 src/lyxfunc.C:1749 src/lyxfunc.C:1776
+#: src/lyxfunc.C:1879 src/lyxfunc.C:1959 src/lyxfunc.C:1987
 msgid "Canceled."
 msgstr "Afgebroken."
 
-#: src/BufferView_pimpl.C:1541
+#: src/BufferView_pimpl.C:1612
 msgid "Inserting document"
 msgstr "Document invoegen"
 
-#: src/BufferView_pimpl.C:1547 src/ext_l10n.h:637
-#: src/frontends/xforms/FormDocument.C:320 src/lyxfunc.C:1789
-#: src/lyxfunc.C:1899
+#: src/BufferView_pimpl.C:1618 src/ext_l10n.h:637
+#: src/frontends/xforms/FormDocument.C:320 src/lyxfunc.C:1797
+#: src/lyxfunc.C:1907
 msgid "Document"
 msgstr "Document"
 
-#: src/BufferView_pimpl.C:1548
+#: src/BufferView_pimpl.C:1619
 msgid "inserted."
 msgstr "ingevoegd."
 
-#: src/BufferView_pimpl.C:1552
+#: src/BufferView_pimpl.C:1623
 msgid "Could not insert document"
 msgstr "Kon document niet invoegen"
 
-#: src/BufferView_pimpl.C:1726 src/insets/insettext.C:1434
+#: src/BufferView_pimpl.C:1797 src/insets/insettext.C:1455
 msgid "Layout "
 msgstr "l Opmaak "
 
-#: src/BufferView_pimpl.C:1727 src/insets/insettext.C:1434
+#: src/BufferView_pimpl.C:1798 src/insets/insettext.C:1455
 msgid " not known"
 msgstr " onbekend"
 
-#: src/BufferView_pimpl.C:1910 src/insets/inseterror.C:55
-#: src/insets/inseterror.C:77 src/lyxfunc.C:1881
+#: src/BufferView_pimpl.C:1994 src/insets/inseterror.C:55
+#: src/insets/inseterror.C:77 src/lyxfunc.C:1889
 msgid "Error"
 msgstr "Fout"
 
-#: src/BufferView_pimpl.C:1911
+#: src/BufferView_pimpl.C:1995
 msgid "Couldn't find this label"
 msgstr "Kon dit label niet vinden"
 
-#: src/BufferView_pimpl.C:1912
+#: src/BufferView_pimpl.C:1996
 msgid "in current document."
 msgstr "in huidig document."
 
-#: src/BufferView_pimpl.C:2408
+#: src/BufferView_pimpl.C:2492
 msgid "Mark removed"
 msgstr "Merkteken verwijderd"
 
-#: src/BufferView_pimpl.C:2415
+#: src/BufferView_pimpl.C:2499
 msgid "Mark set"
 msgstr "Merkteken geplaatst"
 
-#: src/BufferView_pimpl.C:2546
+#: src/BufferView_pimpl.C:2630
 msgid "Mark off"
 msgstr "Merkteken uitgeschakeld"
 
-#: src/BufferView_pimpl.C:2559
+#: src/BufferView_pimpl.C:2643
 msgid "Mark on"
 msgstr "Merkteken ingechakeld"
 
-#: src/BufferView_pimpl.C:2733 src/insets/insettext.C:1487
+#: src/BufferView_pimpl.C:2817 src/insets/insettext.C:1508
 msgid "Unknown spacing argument: "
 msgstr "Onbekend spatiëringsargument: "
 
-#: src/BufferView_pimpl.C:3094
+#: src/BufferView_pimpl.C:3178
 msgid "Word `"
 msgstr ""
 
-#: src/BufferView_pimpl.C:3250
+#: src/BufferView_pimpl.C:3334
 #, fuzzy
 msgid "Unknown function!"
 msgstr "Onbekende handeling"
 
-#: src/BufferView_pimpl.C:3513 src/BufferView_pimpl.C:3516
+#: src/BufferView_pimpl.C:3597 src/BufferView_pimpl.C:3600
 #, fuzzy
 msgid "No more insets"
 msgstr "Geen verdere notities"
@@ -3359,7 +3359,7 @@ msgstr "Inhoudsopgave bekijken"
 #. /
 #: src/ext_l10n.h:571 src/ext_l10n.h:605 src/ext_l10n.h:764 src/ext_l10n.h:901
 #: src/frontends/controllers/ButtonController.h:73 src/LyXAction.C:157
-#: src/lyxfunc.C:1074
+#: src/lyxfunc.C:1082
 msgid "Cancel"
 msgstr "Annuleren"
 
@@ -5762,12 +5762,12 @@ msgstr "h Tekencodering:|#H"
 msgid "Select external file"
 msgstr "Volgende regel selecteren"
 
-#: src/frontends/controllers/ControlGraphics.C:104
+#: src/frontends/controllers/ControlGraphics.C:145
 #, fuzzy
 msgid "Select graphics file"
 msgstr "Volgende regel selecteren"
 
-#: src/frontends/controllers/ControlGraphics.C:112
+#: src/frontends/controllers/ControlGraphics.C:153
 #, fuzzy
 msgid "Clipart|#C#c"
 msgstr "Prentenboek"
@@ -6082,7 +6082,7 @@ msgstr ""
 msgid "Select external material"
 msgstr "Volgende regel selecteren"
 
-#: src/frontends/qt2/QFloat.C:31 src/frontends/qt2/QTexinfo.C:33
+#: src/frontends/qt2/QFloat.C:31 src/frontends/qt2/QTexinfo.C:35
 #: src/frontends/xforms/FormTexinfo.C:29
 #, fuzzy
 msgid "LaTeX Information"
@@ -9233,7 +9233,7 @@ msgstr "Fout geopend"
 msgid "Opened ERT Inset"
 msgstr "ERT Inzet geopend"
 
-#: src/insets/insetert.C:249 src/insets/insettabular.C:2042
+#: src/insets/insetert.C:249 src/insets/insettabular.C:2048
 msgid "Impossible Operation!"
 msgstr "Onmogelijke operatie!"
 
@@ -9241,8 +9241,8 @@ msgstr "Onmogelijke operatie!"
 msgid "Not permitted to change font-types inside ERT-insets!"
 msgstr "Veranderen van lettertype binnen ERT-inzetten is niet toegestaan!"
 
-#: src/insets/insetert.C:251 src/insets/insettabular.C:2044
-#: src/insets/insettext.C:1368
+#: src/insets/insetert.C:251 src/insets/insettabular.C:2050
+#: src/insets/insettext.C:1389
 msgid "Sorry."
 msgstr "Helaas."
 
@@ -9327,7 +9327,7 @@ msgstr ""
 #. 1. Convert file to ascii using gifscii
 #. 2. Read ascii output file and add it to the output stream.
 #. at least we send the filename
-#: src/insets/insetgraphics.C:712
+#: src/insets/insetgraphics.C:715
 #, fuzzy
 msgid "Graphic file:"
 msgstr "Grafisch bestand|#G"
@@ -9440,27 +9440,27 @@ msgstr "Ref: "
 msgid "PrettyRef: "
 msgstr "Ref: "
 
-#: src/insets/insettabular.C:548
+#: src/insets/insettabular.C:550
 msgid "Opened Tabular Inset"
 msgstr "Tabular Inzet geopend"
 
-#: src/insets/insettabular.C:2043
+#: src/insets/insettabular.C:2049
 msgid "Multicolumns can only be horizontally."
 msgstr "Meerkolom werkt alleen in horizontale richting."
 
-#: src/insets/insettext.C:654
+#: src/insets/insettext.C:674
 msgid "Opened Text Inset"
 msgstr "Tekst Inzet geopend"
 
-#: src/insets/insettext.C:1366
+#: src/insets/insettext.C:1387
 msgid "Impossible operation"
 msgstr "Onmogelijke operatie"
 
-#: src/insets/insettext.C:1367
+#: src/insets/insettext.C:1388
 msgid "Cannot include more than one paragraph!"
 msgstr "Kan niet meer dan een alinea invoegen!"
 
-#: src/insets/insettext.C:1613
+#: src/insets/insettext.C:1634
 #, fuzzy
 msgid "Error : LatexType Command not allowed here.\n"
 msgstr "Fout : Verkeerde diepte voor LatexType commando.\n"
@@ -10201,12 +10201,12 @@ msgstr "(anders is document niet opgeslagen.)"
 msgid "Choose a filename to save document as"
 msgstr "Geef bestandsnaam om document op te slaan:"
 
-#: src/lyx_cb.C:115 src/lyxfunc.C:1732 src/lyxfunc.C:1816
+#: src/lyx_cb.C:115 src/lyxfunc.C:1740 src/lyxfunc.C:1824
 #, fuzzy
 msgid "Templates|#T#t"
 msgstr "Sjablonen"
 
-#: src/lyx_cb.C:123 src/lyxfunc.C:1737 src/lyxfunc.C:1821
+#: src/lyx_cb.C:123 src/lyxfunc.C:1745 src/lyxfunc.C:1829
 msgid "*.lyx|LyX Documents (*.lyx)"
 msgstr ""
 
@@ -10421,61 +10421,61 @@ msgstr "Document is tegen schrijven beveiligd"
 msgid "Command not allowed without any document open"
 msgstr "Opdracht niet toegestaan zonder open document"
 
-#: src/lyxfunc.C:774
+#: src/lyxfunc.C:778
 #, fuzzy
 msgid "Unknown function ("
 msgstr "Onbekende handeling"
 
-#: src/lyxfunc.C:1113
+#: src/lyxfunc.C:1121
 msgid "Saving document"
 msgstr "Document wordt opgeslagen"
 
-#: src/lyxfunc.C:1260 src/mathed/formulabase.C:930
+#: src/lyxfunc.C:1268 src/mathed/formulabase.C:922
 msgid "Missing argument"
 msgstr "argument ontbreekt"
 
-#: src/lyxfunc.C:1272
+#: src/lyxfunc.C:1280
 msgid "Opening help file"
 msgstr "Openen helpbestand"
 
-#: src/lyxfunc.C:1474
+#: src/lyxfunc.C:1482
 msgid "Push-toolbar needs argument > 0"
 msgstr "\"Push-toolbar\" vereist argument > 0"
 
-#: src/lyxfunc.C:1491
+#: src/lyxfunc.C:1499
 msgid "Usage: toolbar-add-to <LyX command>"
 msgstr "Gebruik: toolbar-add-to <LyX-opdracht>"
 
-#: src/lyxfunc.C:1507
+#: src/lyxfunc.C:1515
 msgid "This is only allowed in math mode!"
 msgstr "Alleen toegestaan in wiskundige modus!"
 
-#: src/lyxfunc.C:1549
+#: src/lyxfunc.C:1557
 msgid "Opening child document "
 msgstr "Open subdocument "
 
-#: src/lyxfunc.C:1623
+#: src/lyxfunc.C:1631
 msgid "Syntax: set-color <lyx_name> <x11_name>"
 msgstr ""
 
-#: src/lyxfunc.C:1633
+#: src/lyxfunc.C:1641
 msgid "Set-color \""
 msgstr ""
 
-#: src/lyxfunc.C:1635
+#: src/lyxfunc.C:1643
 msgid "\" failed - color is undefined or may not be redefined"
 msgstr ""
 
-#: src/lyxfunc.C:1728
+#: src/lyxfunc.C:1736
 #, fuzzy
 msgid "Enter filename for new document"
 msgstr "Geef bestandsnaam voor nieuw document"
 
-#: src/lyxfunc.C:1738
+#: src/lyxfunc.C:1746
 msgid "newfile"
 msgstr "nieuw"
 
-#: src/lyxfunc.C:1756 src/lyxfunc.C:1967
+#: src/lyxfunc.C:1764 src/lyxfunc.C:1975
 msgid ""
 "Do you want to close that document now?\n"
 "('No' will just switch to the open version)"
@@ -10483,80 +10483,80 @@ msgstr ""
 "Wilt u dat document nu sluiten?\n"
 "('Nee' verplaatst U alleen naar de open versie)"
 
-#: src/lyxfunc.C:1775
+#: src/lyxfunc.C:1783
 msgid "File already exists:"
 msgstr "Bestand bestaat al:"
 
-#: src/lyxfunc.C:1777
+#: src/lyxfunc.C:1785
 msgid "Do you want to open the document?"
 msgstr "Wilt u het document openen?"
 
-#: src/lyxfunc.C:1782
+#: src/lyxfunc.C:1790
 #, fuzzy
 msgid "Opening  document"
 msgstr "Openen document"
 
-#: src/lyxfunc.C:1790 src/lyxfunc.C:1899
+#: src/lyxfunc.C:1798 src/lyxfunc.C:1907
 msgid "opened."
 msgstr "geopend."
 
-#: src/lyxfunc.C:1812
+#: src/lyxfunc.C:1820
 #, fuzzy
 msgid "Select template file"
 msgstr "Volgende regel selecteren"
 
-#: src/lyxfunc.C:1853
+#: src/lyxfunc.C:1861
 #, fuzzy
 msgid "Select document to open"
 msgstr "Kies document ter opening"
 
-#: src/lyxfunc.C:1881
+#: src/lyxfunc.C:1889
 #, fuzzy
 msgid "Could not find file"
 msgstr "Kon dit label niet vinden"
 
-#: src/lyxfunc.C:1891
+#: src/lyxfunc.C:1899
 msgid "Opening document"
 msgstr "Openen document"
 
-#: src/lyxfunc.C:1903
+#: src/lyxfunc.C:1911
 #, fuzzy
 msgid "Could not open document"
 msgstr "Kon document niet openen"
 
-#: src/lyxfunc.C:1927
+#: src/lyxfunc.C:1935
 #, fuzzy
 msgid "Select "
 msgstr "s Uitkiezen|#S"
 
-#: src/lyxfunc.C:1928
+#: src/lyxfunc.C:1936
 #, fuzzy
 msgid " file to import"
 msgstr "Kies LaTeX-bestand ter importering"
 
-#: src/lyxfunc.C:1986
+#: src/lyxfunc.C:1994
 msgid "A document by the name"
 msgstr "Een document onder de naam"
 
-#: src/lyxfunc.C:1988
+#: src/lyxfunc.C:1996
 msgid "already exists. Overwrite?"
 msgstr "bestaat al. Overschrijven?"
 
-#: src/lyxfunc.C:1989
+#: src/lyxfunc.C:1997
 #, fuzzy
 msgid "Canceled"
 msgstr "Afgebroken."
 
-#: src/lyxfunc.C:2048 src/lyxfunc.C:2085
+#: src/lyxfunc.C:2056 src/lyxfunc.C:2093
 msgid "Welcome to LyX!"
 msgstr "Welkom in LyX!"
 
-#: src/lyxfunc.C:2083 src/LyXView.C:230
+#: src/lyxfunc.C:2091 src/LyXView.C:230
 msgid " (Changed)"
 msgstr " (Veranderd)"
 
 #. this is a hack
-#: src/lyxfunc.C:2086
+#: src/lyxfunc.C:2094
 msgid "* No document open *"
 msgstr "* Geen document open *"
 
@@ -11206,11 +11206,11 @@ msgstr "Wilt u dit alsnog doen?"
 msgid " (read only)"
 msgstr " (tegen schrijven beveiligd)"
 
-#: src/mathed/formulabase.C:151 src/mathed/formulabase.C:904
+#: src/mathed/formulabase.C:151 src/mathed/formulabase.C:896
 msgid "Math editor mode"
 msgstr "Wiskunde editor modus"
 
-#: src/mathed/formulabase.C:647
+#: src/mathed/formulabase.C:639
 msgid "Invalid action in math mode!"
 msgstr "Ongeldige aktie in wiskunde modus!"
 
@@ -11329,7 +11329,7 @@ msgid "Get an older version of LyX (< 1.1.x) for conversion!"
 msgstr "Gebruik een oudere versie van LyX (<1.1.x) om te converteren!"
 
 #. Could only happen with user style
-#: src/text2.C:1079
+#: src/text2.C:1081
 msgid ""
 "No font change defined. Use Character under the Layout menu to define font "
 "change."
@@ -11337,12 +11337,12 @@ msgstr ""
 "Geen verandering lettertype gedefinieerd. Gebruik Teken onder het Stijl-menu "
 "om verandering lettertype te definieren."
 
-#: src/text2.C:1118
+#: src/text2.C:1120
 #, fuzzy
 msgid "Nothing to index!"
 msgstr "Niets te doen"
 
-#: src/text2.C:1122
+#: src/text2.C:1124
 #, fuzzy
 msgid "Cannot index more than one paragraph!"
 msgstr "Kan niet meer dan een alinea invoegen!"

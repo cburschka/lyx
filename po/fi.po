@@ -59,7 +59,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: lyx 1.1.6\n"
-"POT-Creation-Date: 2002-04-16 23:38+0200\n"
+"POT-Creation-Date: 2002-04-23 19:08+0200\n"
 "PO-Revision-Date: 2002-04-13 13:13+0300\n"
 "Last-Translator: Pauli Virtanen <pauli.virtanen@saunalahti.fi>\n"
 "Language-Team: Finnish <fi@li.org>\n"
@@ -290,7 +290,7 @@ msgstr "Lataatko sen mieluummin?"
 msgid "Unable to open template"
 msgstr "Mallitiedostoa ei voi avata"
 
-#: src/bufferlist.C:514 src/lyxfunc.C:1754 src/lyxfunc.C:1965
+#: src/bufferlist.C:514 src/lyxfunc.C:1762 src/lyxfunc.C:1973
 msgid "Document is already open:"
 msgstr "Asiakirja on jo avoinna:"
 
@@ -413,108 +413,108 @@ msgstr ", kappale: "
 msgid "Formatting document..."
 msgstr "Asiakirja muotoutuu..."
 
-#: src/BufferView_pimpl.C:1252
+#: src/BufferView_pimpl.C:1320
 msgid "Saved bookmark"
 msgstr "Tallensi kirjanmerkin"
 
-#: src/BufferView_pimpl.C:1284
+#: src/BufferView_pimpl.C:1352
 msgid "Moved to bookmark"
 msgstr "Siirtyi kirjanmerkille"
 
-#: src/BufferView_pimpl.C:1511
+#: src/BufferView_pimpl.C:1582
 msgid "Select LyX document to insert"
 msgstr "Valitse lisättävä LyX-asiakirja"
 
-#: src/BufferView_pimpl.C:1513 src/frontends/controllers/ControlBibtex.C:68
+#: src/BufferView_pimpl.C:1584 src/frontends/controllers/ControlBibtex.C:68
 #: src/frontends/controllers/ControlExternal.C:166
-#: src/frontends/controllers/ControlGraphics.C:113
+#: src/frontends/controllers/ControlGraphics.C:154
 #: src/frontends/controllers/ControlInclude.C:71 src/lyx_cb.C:113
-#: src/lyxfunc.C:1730 src/lyxfunc.C:1814 src/lyxfunc.C:1855 src/lyxfunc.C:1932
+#: src/lyxfunc.C:1738 src/lyxfunc.C:1822 src/lyxfunc.C:1863 src/lyxfunc.C:1940
 msgid "Documents|#o#O"
 msgstr "Asiakirjat|#A#a"
 
-#: src/BufferView_pimpl.C:1515 src/lyxfunc.C:1857 src/lyxfunc.C:1934
+#: src/BufferView_pimpl.C:1586 src/lyxfunc.C:1865 src/lyxfunc.C:1942
 msgid "Examples|#E#e"
 msgstr "Esimerkit|#E#e"
 
-#: src/BufferView_pimpl.C:1520 src/frontends/controllers/ControlInclude.C:67
+#: src/BufferView_pimpl.C:1591 src/frontends/controllers/ControlInclude.C:67
 msgid "*.lyx| LyX Documents (*.lyx)"
 msgstr "*.lyx| LyX-asiakirjat (*.lyx)"
 
 #. Cancel: Do nothing
-#: src/BufferView_pimpl.C:1529 src/lyxfunc.C:1741 src/lyxfunc.C:1768
-#: src/lyxfunc.C:1871 src/lyxfunc.C:1951 src/lyxfunc.C:1979
+#: src/BufferView_pimpl.C:1600 src/lyxfunc.C:1749 src/lyxfunc.C:1776
+#: src/lyxfunc.C:1879 src/lyxfunc.C:1959 src/lyxfunc.C:1987
 msgid "Canceled."
 msgstr "Peruttu."
 
-#: src/BufferView_pimpl.C:1541
+#: src/BufferView_pimpl.C:1612
 msgid "Inserting document"
 msgstr "Lisätään asiakirja"
 
-#: src/BufferView_pimpl.C:1547 src/ext_l10n.h:637
-#: src/frontends/xforms/FormDocument.C:320 src/lyxfunc.C:1789
-#: src/lyxfunc.C:1899
+#: src/BufferView_pimpl.C:1618 src/ext_l10n.h:637
+#: src/frontends/xforms/FormDocument.C:320 src/lyxfunc.C:1797
+#: src/lyxfunc.C:1907
 msgid "Document"
 msgstr "Asiakirja"
 
-#: src/BufferView_pimpl.C:1548
+#: src/BufferView_pimpl.C:1619
 msgid "inserted."
 msgstr "lisätty."
 
-#: src/BufferView_pimpl.C:1552
+#: src/BufferView_pimpl.C:1623
 msgid "Could not insert document"
 msgstr "Asiakirjaa ei voi lisätä"
 
-#: src/BufferView_pimpl.C:1726 src/insets/insettext.C:1434
+#: src/BufferView_pimpl.C:1797 src/insets/insettext.C:1455
 msgid "Layout "
 msgstr "Muotoilu "
 
-#: src/BufferView_pimpl.C:1727 src/insets/insettext.C:1434
+#: src/BufferView_pimpl.C:1798 src/insets/insettext.C:1455
 msgid " not known"
 msgstr " tuntematon"
 
-#: src/BufferView_pimpl.C:1910 src/insets/inseterror.C:55
-#: src/insets/inseterror.C:77 src/lyxfunc.C:1881
+#: src/BufferView_pimpl.C:1994 src/insets/inseterror.C:55
+#: src/insets/inseterror.C:77 src/lyxfunc.C:1889
 msgid "Error"
 msgstr "Virhe"
 
-#: src/BufferView_pimpl.C:1911
+#: src/BufferView_pimpl.C:1995
 msgid "Couldn't find this label"
 msgstr "Nimikettä ei löytynyt"
 
-#: src/BufferView_pimpl.C:1912
+#: src/BufferView_pimpl.C:1996
 msgid "in current document."
 msgstr "tässä asiakirjassa"
 
-#: src/BufferView_pimpl.C:2408
+#: src/BufferView_pimpl.C:2492
 msgid "Mark removed"
 msgstr "Merkintä poistettu"
 
-#: src/BufferView_pimpl.C:2415
+#: src/BufferView_pimpl.C:2499
 msgid "Mark set"
 msgstr "Merkintä asetettu"
 
-#: src/BufferView_pimpl.C:2546
+#: src/BufferView_pimpl.C:2630
 msgid "Mark off"
 msgstr "Merkintä pois päältä"
 
-#: src/BufferView_pimpl.C:2559
+#: src/BufferView_pimpl.C:2643
 msgid "Mark on"
 msgstr "Merkintä päälle"
 
-#: src/BufferView_pimpl.C:2733 src/insets/insettext.C:1487
+#: src/BufferView_pimpl.C:2817 src/insets/insettext.C:1508
 msgid "Unknown spacing argument: "
 msgstr "Tuntematon väliparametri: "
 
-#: src/BufferView_pimpl.C:3094
+#: src/BufferView_pimpl.C:3178
 msgid "Word `"
 msgstr "Sana '"
 
-#: src/BufferView_pimpl.C:3250
+#: src/BufferView_pimpl.C:3334
 msgid "Unknown function!"
 msgstr "Tuntematon toiminto!"
 
-#: src/BufferView_pimpl.C:3513 src/BufferView_pimpl.C:3516
+#: src/BufferView_pimpl.C:3597 src/BufferView_pimpl.C:3600
 msgid "No more insets"
 msgstr "Ei muita muistiinpanoja"
 
@@ -3051,7 +3051,7 @@ msgstr "Lisää lähdeluettelo sisällysluetteloon"
 #. /
 #: src/ext_l10n.h:571 src/ext_l10n.h:605 src/ext_l10n.h:764 src/ext_l10n.h:901
 #: src/frontends/controllers/ButtonController.h:73 src/LyXAction.C:157
-#: src/lyxfunc.C:1074
+#: src/lyxfunc.C:1082
 msgid "Cancel"
 msgstr "Peru"
 
@@ -5114,11 +5114,11 @@ msgstr "Merkistö"
 msgid "Select external file"
 msgstr "Valitse ulkoinen tiedosto"
 
-#: src/frontends/controllers/ControlGraphics.C:104
+#: src/frontends/controllers/ControlGraphics.C:145
 msgid "Select graphics file"
 msgstr "Valitse kuvatiedosto"
 
-#: src/frontends/controllers/ControlGraphics.C:112
+#: src/frontends/controllers/ControlGraphics.C:153
 msgid "Clipart|#C#c"
 msgstr "Leikekuva|#L#l"
 
@@ -5406,7 +5406,7 @@ msgstr "Ulkoinen aineisto (*)"
 msgid "Select external material"
 msgstr "Valitse ulkoinen tiedosto"
 
-#: src/frontends/qt2/QFloat.C:31 src/frontends/qt2/QTexinfo.C:33
+#: src/frontends/qt2/QFloat.C:31 src/frontends/qt2/QTexinfo.C:35
 #: src/frontends/xforms/FormTexinfo.C:29
 msgid "LaTeX Information"
 msgstr "LaTeX-tietoja"
@@ -8319,7 +8319,7 @@ msgstr "Avattiin virhe"
 msgid "Opened ERT Inset"
 msgstr "ERT-osio avattiin"
 
-#: src/insets/insetert.C:249 src/insets/insettabular.C:2042
+#: src/insets/insetert.C:249 src/insets/insettabular.C:2048
 msgid "Impossible Operation!"
 msgstr "Mahdoton toiminto!"
 
@@ -8327,8 +8327,8 @@ msgstr "Mahdoton toiminto!"
 msgid "Not permitted to change font-types inside ERT-insets!"
 msgstr "Kirjasinlajia ei voi vaihtaa ERT-osioiden sisällä!"
 
-#: src/insets/insetert.C:251 src/insets/insettabular.C:2044
-#: src/insets/insettext.C:1368
+#: src/insets/insetert.C:251 src/insets/insettabular.C:2050
+#: src/insets/insettext.C:1389
 msgid "Sorry."
 msgstr "Valitettavasti."
 
@@ -8406,7 +8406,7 @@ msgstr "Ladattu mutta ei näytetä"
 #. 1. Convert file to ascii using gifscii
 #. 2. Read ascii output file and add it to the output stream.
 #. at least we send the filename
-#: src/insets/insetgraphics.C:712
+#: src/insets/insetgraphics.C:715
 msgid "Graphic file:"
 msgstr "Kuvatiedosto:"
 
@@ -8502,27 +8502,27 @@ msgstr "Sanallinen viite"
 msgid "PrettyRef: "
 msgstr "Hieno viite: "
 
-#: src/insets/insettabular.C:548
+#: src/insets/insettabular.C:550
 msgid "Opened Tabular Inset"
 msgstr "Taulukko-osio avattu"
 
-#: src/insets/insettabular.C:2043
+#: src/insets/insettabular.C:2049
 msgid "Multicolumns can only be horizontally."
 msgstr "Sarakkeiden yhdistäminen toimii vain vaakasuuntaan."
 
-#: src/insets/insettext.C:654
+#: src/insets/insettext.C:674
 msgid "Opened Text Inset"
 msgstr "Tekstiosio avattiin"
 
-#: src/insets/insettext.C:1366
+#: src/insets/insettext.C:1387
 msgid "Impossible operation"
 msgstr "Mahdoton toiminto"
 
-#: src/insets/insettext.C:1367
+#: src/insets/insettext.C:1388
 msgid "Cannot include more than one paragraph!"
 msgstr "Tämä osio voi sisältää vain yhden kappaleen!"
 
-#: src/insets/insettext.C:1613
+#: src/insets/insettext.C:1634
 msgid "Error : LatexType Command not allowed here.\n"
 msgstr "Virhe : LatexType-komentoa ei voi käyttää tässä.\n"
 
@@ -9218,11 +9218,11 @@ msgstr "(muuten asiakirjaa ei tallenneta.)"
 msgid "Choose a filename to save document as"
 msgstr "Valitse tiedostonimi, joksi asiakirja tallennetaan:"
 
-#: src/lyx_cb.C:115 src/lyxfunc.C:1732 src/lyxfunc.C:1816
+#: src/lyx_cb.C:115 src/lyxfunc.C:1740 src/lyxfunc.C:1824
 msgid "Templates|#T#t"
 msgstr "Mallipohjat|#o#O"
 
-#: src/lyx_cb.C:123 src/lyxfunc.C:1737 src/lyxfunc.C:1821
+#: src/lyx_cb.C:123 src/lyxfunc.C:1745 src/lyxfunc.C:1829
 msgid "*.lyx|LyX Documents (*.lyx)"
 msgstr "*.lyx|LyX-asiakirjat (*.lyx)"
 
@@ -9427,60 +9427,60 @@ msgstr "Asiakirja on kirjoitussuojattu"
 msgid "Command not allowed without any document open"
 msgstr "Komento ei toimi ilman avoinna olevaa asiakirjaa"
 
-#: src/lyxfunc.C:774
+#: src/lyxfunc.C:778
 msgid "Unknown function ("
 msgstr "Tuntematon funktio ("
 
-#: src/lyxfunc.C:1113
+#: src/lyxfunc.C:1121
 msgid "Saving document"
 msgstr "Asiakirja tallentuu"
 
-#: src/lyxfunc.C:1260 src/mathed/formulabase.C:930
+#: src/lyxfunc.C:1268 src/mathed/formulabase.C:922
 msgid "Missing argument"
 msgstr "Argumentti puuttuu"
 
-#: src/lyxfunc.C:1272
+#: src/lyxfunc.C:1280
 msgid "Opening help file"
 msgstr "Ohjetiedosto avautuu"
 
-#: src/lyxfunc.C:1474
+#: src/lyxfunc.C:1482
 msgid "Push-toolbar needs argument > 0"
 msgstr "\"Push-toolbar\" vaatii parametria > 0"
 
-#: src/lyxfunc.C:1491
+#: src/lyxfunc.C:1499
 msgid "Usage: toolbar-add-to <LyX command>"
 msgstr "Käyttöohje: toolbar-add-to <LyX-komento>"
 
-#: src/lyxfunc.C:1507
+#: src/lyxfunc.C:1515
 msgid "This is only allowed in math mode!"
 msgstr "Tämä on mahdollista vain matematiikkatilassa!"
 
-#: src/lyxfunc.C:1549
+#: src/lyxfunc.C:1557
 msgid "Opening child document "
 msgstr "Aliasiakirja avautuu"
 
-#: src/lyxfunc.C:1623
+#: src/lyxfunc.C:1631
 msgid "Syntax: set-color <lyx_name> <x11_name>"
 msgstr "Syntaksi: set-color <lyx_nimi> <x11_nimi>"
 
-#: src/lyxfunc.C:1633
+#: src/lyxfunc.C:1641
 msgid "Set-color \""
 msgstr "Set-color \""
 
-#: src/lyxfunc.C:1635
+#: src/lyxfunc.C:1643
 msgid "\" failed - color is undefined or may not be redefined"
 msgstr ""
 "\" epäonnistui: väriä ei ole määritelty, tai sitä ei voi uudelleenmääritellä."
 
-#: src/lyxfunc.C:1728
+#: src/lyxfunc.C:1736
 msgid "Enter filename for new document"
 msgstr "Anna uuden asiakirjatiedoston nimi"
 
-#: src/lyxfunc.C:1738
+#: src/lyxfunc.C:1746
 msgid "newfile"
 msgstr "uusi"
 
-#: src/lyxfunc.C:1756 src/lyxfunc.C:1967
+#: src/lyxfunc.C:1764 src/lyxfunc.C:1975
 msgid ""
 "Do you want to close that document now?\n"
 "('No' will just switch to the open version)"
@@ -9488,72 +9488,72 @@ msgstr ""
 "Haluatko sulkea asiakirjan nyt?\n"
 "('Ei': siirry avoinna olevaan versioon)"
 
-#: src/lyxfunc.C:1775
+#: src/lyxfunc.C:1783
 msgid "File already exists:"
 msgstr "Tiedosto jo olemassa:"
 
-#: src/lyxfunc.C:1777
+#: src/lyxfunc.C:1785
 msgid "Do you want to open the document?"
 msgstr "Haluatko avata asiakirjan?"
 
-#: src/lyxfunc.C:1782
+#: src/lyxfunc.C:1790
 msgid "Opening  document"
 msgstr "Asiakirja avautuu"
 
-#: src/lyxfunc.C:1790 src/lyxfunc.C:1899
+#: src/lyxfunc.C:1798 src/lyxfunc.C:1907
 msgid "opened."
 msgstr "avattu."
 
-#: src/lyxfunc.C:1812
+#: src/lyxfunc.C:1820
 msgid "Select template file"
 msgstr "Valitse mallitiedosto"
 
-#: src/lyxfunc.C:1853
+#: src/lyxfunc.C:1861
 msgid "Select document to open"
 msgstr "Valitse avattava asiakirja"
 
-#: src/lyxfunc.C:1881
+#: src/lyxfunc.C:1889
 msgid "Could not find file"
 msgstr "Tiedostoa ei löytynyt"
 
-#: src/lyxfunc.C:1891
+#: src/lyxfunc.C:1899
 msgid "Opening document"
 msgstr "Asiakirja avautuu"
 
-#: src/lyxfunc.C:1903
+#: src/lyxfunc.C:1911
 msgid "Could not open document"
 msgstr "Ei voinut avata asiakirjaa"
 
-#: src/lyxfunc.C:1927
+#: src/lyxfunc.C:1935
 msgid "Select "
 msgstr "Valitse "
 
-#: src/lyxfunc.C:1928
+#: src/lyxfunc.C:1936
 msgid " file to import"
 msgstr " tuotava tiedosto"
 
-#: src/lyxfunc.C:1986
+#: src/lyxfunc.C:1994
 msgid "A document by the name"
 msgstr "Asiakirja, jonka nimi on"
 
-#: src/lyxfunc.C:1988
+#: src/lyxfunc.C:1996
 msgid "already exists. Overwrite?"
 msgstr "on jo olemassa. Haluatko korvata sen?"
 
-#: src/lyxfunc.C:1989
+#: src/lyxfunc.C:1997
 msgid "Canceled"
 msgstr "Peruttu"
 
-#: src/lyxfunc.C:2048 src/lyxfunc.C:2085
+#: src/lyxfunc.C:2056 src/lyxfunc.C:2093
 msgid "Welcome to LyX!"
 msgstr "Tervetuloa LyXiin!"
 
-#: src/lyxfunc.C:2083 src/LyXView.C:230
+#: src/lyxfunc.C:2091 src/LyXView.C:230
 msgid " (Changed)"
 msgstr " (Muuttunut)"
 
 #. this is a hack
-#: src/lyxfunc.C:2086
+#: src/lyxfunc.C:2094
 msgid "* No document open *"
 msgstr "* Avoimia asiakirjoja ei ole *"
 
@@ -10299,11 +10299,11 @@ msgstr "Haluatko kuitenkin tehdä se?"
 msgid " (read only)"
 msgstr " (kirjoitussuojattu)"
 
-#: src/mathed/formulabase.C:151 src/mathed/formulabase.C:904
+#: src/mathed/formulabase.C:151 src/mathed/formulabase.C:896
 msgid "Math editor mode"
 msgstr "Matematiikkaeditoritila"
 
-#: src/mathed/formulabase.C:647
+#: src/mathed/formulabase.C:639
 msgid "Invalid action in math mode!"
 msgstr "Kelvoton toiminto matematiikkatilassa!"
 
@@ -10417,7 +10417,7 @@ msgid "Get an older version of LyX (< 1.1.x) for conversion!"
 msgstr "Hanki vanhempi LyXin versio (< 1.1.x) muunnosta varten!"
 
 #. Could only happen with user style
-#: src/text2.C:1079
+#: src/text2.C:1081
 msgid ""
 "No font change defined. Use Character under the Layout menu to define font "
 "change."
@@ -10425,11 +10425,11 @@ msgstr ""
 "Kirjasinlajin muutosta ei määritetty. Määritä kirjasinlajin muutos Muotoilu-"
 "valikon Merkki-alivalikon avulla."
 
-#: src/text2.C:1118
+#: src/text2.C:1120
 msgid "Nothing to index!"
 msgstr "Ei mitään hakemistossa!"
 
-#: src/text2.C:1122
+#: src/text2.C:1124
 msgid "Cannot index more than one paragraph!"
 msgstr "Hakemistoon voi lisätä vain yhden kappaleen!"
 

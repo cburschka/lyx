@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.0.2\n"
-"POT-Creation-Date: 2002-04-16 23:38+0200\n"
+"POT-Creation-Date: 2002-04-23 19:08+0200\n"
 "PO-Revision-Date: 2000-01-20 02:57+01:00\n"
 "Last-Translator: Ludek Brukner <ludek.brukner@regionet.cz>\n"
 "Language-Team: Czech <LL@li.org>\n"
@@ -249,7 +249,7 @@ msgstr "Chcete ji pou¾ít?"
 msgid "Unable to open template"
 msgstr "Nemohu otevøít ¹ablonu"
 
-#: src/bufferlist.C:514 src/lyxfunc.C:1754 src/lyxfunc.C:1965
+#: src/bufferlist.C:514 src/lyxfunc.C:1762 src/lyxfunc.C:1973
 msgid "Document is already open:"
 msgstr "Dokument je u¾ otevøen:"
 
@@ -380,113 +380,113 @@ msgstr "Formát odstavce nastaven."
 msgid "Formatting document..."
 msgstr "Formátuji dokument..."
 
-#: src/BufferView_pimpl.C:1252
+#: src/BufferView_pimpl.C:1320
 msgid "Saved bookmark"
 msgstr ""
 
-#: src/BufferView_pimpl.C:1284
+#: src/BufferView_pimpl.C:1352
 msgid "Moved to bookmark"
 msgstr ""
 
-#: src/BufferView_pimpl.C:1511
+#: src/BufferView_pimpl.C:1582
 #, fuzzy
 msgid "Select LyX document to insert"
 msgstr "Vyberte dokument, který chcete vlo¾it"
 
-#: src/BufferView_pimpl.C:1513 src/frontends/controllers/ControlBibtex.C:68
+#: src/BufferView_pimpl.C:1584 src/frontends/controllers/ControlBibtex.C:68
 #: src/frontends/controllers/ControlExternal.C:166
-#: src/frontends/controllers/ControlGraphics.C:113
+#: src/frontends/controllers/ControlGraphics.C:154
 #: src/frontends/controllers/ControlInclude.C:71 src/lyx_cb.C:113
-#: src/lyxfunc.C:1730 src/lyxfunc.C:1814 src/lyxfunc.C:1855 src/lyxfunc.C:1932
+#: src/lyxfunc.C:1738 src/lyxfunc.C:1822 src/lyxfunc.C:1863 src/lyxfunc.C:1940
 #, fuzzy
 msgid "Documents|#o#O"
 msgstr "Dokumenty"
 
-#: src/BufferView_pimpl.C:1515 src/lyxfunc.C:1857 src/lyxfunc.C:1934
+#: src/BufferView_pimpl.C:1586 src/lyxfunc.C:1865 src/lyxfunc.C:1942
 #, fuzzy
 msgid "Examples|#E#e"
 msgstr "Pøíklady"
 
-#: src/BufferView_pimpl.C:1520 src/frontends/controllers/ControlInclude.C:67
+#: src/BufferView_pimpl.C:1591 src/frontends/controllers/ControlInclude.C:67
 msgid "*.lyx| LyX Documents (*.lyx)"
 msgstr ""
 
 #. Cancel: Do nothing
-#: src/BufferView_pimpl.C:1529 src/lyxfunc.C:1741 src/lyxfunc.C:1768
-#: src/lyxfunc.C:1871 src/lyxfunc.C:1951 src/lyxfunc.C:1979
+#: src/BufferView_pimpl.C:1600 src/lyxfunc.C:1749 src/lyxfunc.C:1776
+#: src/lyxfunc.C:1879 src/lyxfunc.C:1959 src/lyxfunc.C:1987
 msgid "Canceled."
 msgstr "Zru¹eno."
 
-#: src/BufferView_pimpl.C:1541
+#: src/BufferView_pimpl.C:1612
 msgid "Inserting document"
 msgstr "Vkládám dokument"
 
-#: src/BufferView_pimpl.C:1547 src/ext_l10n.h:637
-#: src/frontends/xforms/FormDocument.C:320 src/lyxfunc.C:1789
-#: src/lyxfunc.C:1899
+#: src/BufferView_pimpl.C:1618 src/ext_l10n.h:637
+#: src/frontends/xforms/FormDocument.C:320 src/lyxfunc.C:1797
+#: src/lyxfunc.C:1907
 msgid "Document"
 msgstr "Dokument"
 
-#: src/BufferView_pimpl.C:1548
+#: src/BufferView_pimpl.C:1619
 msgid "inserted."
 msgstr "vlo¾en."
 
-#: src/BufferView_pimpl.C:1552
+#: src/BufferView_pimpl.C:1623
 msgid "Could not insert document"
 msgstr "Nemohu vlo¾it dokument"
 
-#: src/BufferView_pimpl.C:1726 src/insets/insettext.C:1434
+#: src/BufferView_pimpl.C:1797 src/insets/insettext.C:1455
 msgid "Layout "
 msgstr "Formát "
 
-#: src/BufferView_pimpl.C:1727 src/insets/insettext.C:1434
+#: src/BufferView_pimpl.C:1798 src/insets/insettext.C:1455
 msgid " not known"
 msgstr " není znám"
 
-#: src/BufferView_pimpl.C:1910 src/insets/inseterror.C:55
-#: src/insets/inseterror.C:77 src/lyxfunc.C:1881
+#: src/BufferView_pimpl.C:1994 src/insets/inseterror.C:55
+#: src/insets/inseterror.C:77 src/lyxfunc.C:1889
 msgid "Error"
 msgstr "Chyba"
 
-#: src/BufferView_pimpl.C:1911
+#: src/BufferView_pimpl.C:1995
 msgid "Couldn't find this label"
 msgstr "Nemohu tuto znaèku"
 
-#: src/BufferView_pimpl.C:1912
+#: src/BufferView_pimpl.C:1996
 msgid "in current document."
 msgstr "v aktuálním dokumentu nalézt."
 
-#: src/BufferView_pimpl.C:2408
+#: src/BufferView_pimpl.C:2492
 msgid "Mark removed"
 msgstr "Znaèka odstranìna"
 
-#: src/BufferView_pimpl.C:2415
+#: src/BufferView_pimpl.C:2499
 msgid "Mark set"
 msgstr "Znaèka nastavena"
 
-#: src/BufferView_pimpl.C:2546
+#: src/BufferView_pimpl.C:2630
 msgid "Mark off"
 msgstr "Znaèka vypnuta"
 
-#: src/BufferView_pimpl.C:2559
+#: src/BufferView_pimpl.C:2643
 msgid "Mark on"
 msgstr "Znaèka zapnuta"
 
-#: src/BufferView_pimpl.C:2733 src/insets/insettext.C:1487
+#: src/BufferView_pimpl.C:2817 src/insets/insettext.C:1508
 #, fuzzy
 msgid "Unknown spacing argument: "
 msgstr "Chybìjící parametr"
 
-#: src/BufferView_pimpl.C:3094
+#: src/BufferView_pimpl.C:3178
 msgid "Word `"
 msgstr ""
 
-#: src/BufferView_pimpl.C:3250
+#: src/BufferView_pimpl.C:3334
 #, fuzzy
 msgid "Unknown function!"
 msgstr "Neznámá akce"
 
-#: src/BufferView_pimpl.C:3513 src/BufferView_pimpl.C:3516
+#: src/BufferView_pimpl.C:3597 src/BufferView_pimpl.C:3600
 #, fuzzy
 msgid "No more insets"
 msgstr "®ádné dal¹í poznámky"
@@ -3350,7 +3350,7 @@ msgstr "Obsah"
 #. /
 #: src/ext_l10n.h:571 src/ext_l10n.h:605 src/ext_l10n.h:764 src/ext_l10n.h:901
 #: src/frontends/controllers/ButtonController.h:73 src/LyXAction.C:157
-#: src/lyxfunc.C:1074
+#: src/lyxfunc.C:1082
 msgid "Cancel"
 msgstr "Zru¹it"
 
@@ -5753,12 +5753,12 @@ msgstr "Znaková sada:|#Z"
 msgid "Select external file"
 msgstr "Výbìr následujícího øádku"
 
-#: src/frontends/controllers/ControlGraphics.C:104
+#: src/frontends/controllers/ControlGraphics.C:145
 #, fuzzy
 msgid "Select graphics file"
 msgstr "Výbìr následujícího øádku"
 
-#: src/frontends/controllers/ControlGraphics.C:112
+#: src/frontends/controllers/ControlGraphics.C:153
 #, fuzzy
 msgid "Clipart|#C#c"
 msgstr "Clipart"
@@ -6075,7 +6075,7 @@ msgstr ""
 msgid "Select external material"
 msgstr "Výbìr následujícího øádku"
 
-#: src/frontends/qt2/QFloat.C:31 src/frontends/qt2/QTexinfo.C:33
+#: src/frontends/qt2/QFloat.C:31 src/frontends/qt2/QTexinfo.C:35
 #: src/frontends/xforms/FormTexinfo.C:29
 #, fuzzy
 msgid "LaTeX Information"
@@ -9221,7 +9221,7 @@ msgstr "Otevøená chyba"
 msgid "Opened ERT Inset"
 msgstr "Otevøený objekt"
 
-#: src/insets/insetert.C:249 src/insets/insettabular.C:2042
+#: src/insets/insetert.C:249 src/insets/insettabular.C:2048
 msgid "Impossible Operation!"
 msgstr "Nemo¾ná operace!"
 
@@ -9229,8 +9229,8 @@ msgstr "Nemo¾ná operace!"
 msgid "Not permitted to change font-types inside ERT-insets!"
 msgstr ""
 
-#: src/insets/insetert.C:251 src/insets/insettabular.C:2044
-#: src/insets/insettext.C:1368
+#: src/insets/insetert.C:251 src/insets/insettabular.C:2050
+#: src/insets/insettext.C:1389
 msgid "Sorry."
 msgstr "Lituji."
 
@@ -9317,7 +9317,7 @@ msgstr ""
 #. 1. Convert file to ascii using gifscii
 #. 2. Read ascii output file and add it to the output stream.
 #. at least we send the filename
-#: src/insets/insetgraphics.C:712
+#: src/insets/insetgraphics.C:715
 #, fuzzy
 msgid "Graphic file:"
 msgstr "Souboru|#S"
@@ -9431,30 +9431,30 @@ msgstr "Odkaz: "
 msgid "PrettyRef: "
 msgstr "Odkaz: "
 
-#: src/insets/insettabular.C:548
+#: src/insets/insettabular.C:550
 #, fuzzy
 msgid "Opened Tabular Inset"
 msgstr "Otevøený objekt"
 
-#: src/insets/insettabular.C:2043
+#: src/insets/insettabular.C:2049
 msgid "Multicolumns can only be horizontally."
 msgstr "Vícesloupcové buòky mohou být pouze horizontálnì."
 
-#: src/insets/insettext.C:654
+#: src/insets/insettext.C:674
 #, fuzzy
 msgid "Opened Text Inset"
 msgstr "Otevøený objekt"
 
-#: src/insets/insettext.C:1366
+#: src/insets/insettext.C:1387
 msgid "Impossible operation"
 msgstr "Nemo¾ná operace"
 
-#: src/insets/insettext.C:1367
+#: src/insets/insettext.C:1388
 #, fuzzy
 msgid "Cannot include more than one paragraph!"
 msgstr "Buòka tabulky nemù¾e obsahovat víc ne¾ jeden odstavec!"
 
-#: src/insets/insettext.C:1613
+#: src/insets/insettext.C:1634
 #, fuzzy
 msgid "Error : LatexType Command not allowed here.\n"
 msgstr "Chyba: Nesprávné zanoøení pøíkazù LaTeXu.\n"
@@ -10219,12 +10219,12 @@ msgstr "(Pokud ne, dokument není ulo¾en.)"
 msgid "Choose a filename to save document as"
 msgstr "Zadejte jméno pod kterým má být dokument ulo¾en"
 
-#: src/lyx_cb.C:115 src/lyxfunc.C:1732 src/lyxfunc.C:1816
+#: src/lyx_cb.C:115 src/lyxfunc.C:1740 src/lyxfunc.C:1824
 #, fuzzy
 msgid "Templates|#T#t"
 msgstr "©ablony"
 
-#: src/lyx_cb.C:123 src/lyxfunc.C:1737 src/lyxfunc.C:1821
+#: src/lyx_cb.C:123 src/lyxfunc.C:1745 src/lyxfunc.C:1829
 msgid "*.lyx|LyX Documents (*.lyx)"
 msgstr ""
 
@@ -10441,61 +10441,61 @@ msgstr "Dokument je pouze ke ètení"
 msgid "Command not allowed without any document open"
 msgstr "Pøíkaz není povolen pokud není otevøen dokument"
 
-#: src/lyxfunc.C:774
+#: src/lyxfunc.C:778
 #, fuzzy
 msgid "Unknown function ("
 msgstr "Neznámá akce"
 
-#: src/lyxfunc.C:1113
+#: src/lyxfunc.C:1121
 msgid "Saving document"
 msgstr "Ukládám dokument"
 
-#: src/lyxfunc.C:1260 src/mathed/formulabase.C:930
+#: src/lyxfunc.C:1268 src/mathed/formulabase.C:922
 msgid "Missing argument"
 msgstr "Chybìjící parametr"
 
-#: src/lyxfunc.C:1272
+#: src/lyxfunc.C:1280
 msgid "Opening help file"
 msgstr "Otevírám soubor s nápovìdou"
 
-#: src/lyxfunc.C:1474
+#: src/lyxfunc.C:1482
 msgid "Push-toolbar needs argument > 0"
 msgstr "Push-toolbar potøebuje parametr > 0"
 
-#: src/lyxfunc.C:1491
+#: src/lyxfunc.C:1499
 msgid "Usage: toolbar-add-to <LyX command>"
 msgstr "Pou¾ití: toolbar-add-to <pøíkaz LyXu>"
 
-#: src/lyxfunc.C:1507
+#: src/lyxfunc.C:1515
 msgid "This is only allowed in math mode!"
 msgstr "Toto je povoleno pouze v matematickém re¾imu!"
 
-#: src/lyxfunc.C:1549
+#: src/lyxfunc.C:1557
 msgid "Opening child document "
 msgstr "Otvírám podøízený dokument "
 
-#: src/lyxfunc.C:1623
+#: src/lyxfunc.C:1631
 msgid "Syntax: set-color <lyx_name> <x11_name>"
 msgstr ""
 
-#: src/lyxfunc.C:1633
+#: src/lyxfunc.C:1641
 msgid "Set-color \""
 msgstr ""
 
-#: src/lyxfunc.C:1635
+#: src/lyxfunc.C:1643
 msgid "\" failed - color is undefined or may not be redefined"
 msgstr ""
 
-#: src/lyxfunc.C:1728
+#: src/lyxfunc.C:1736
 #, fuzzy
 msgid "Enter filename for new document"
 msgstr "Zadejte jméno nového dokumentu"
 
-#: src/lyxfunc.C:1738
+#: src/lyxfunc.C:1746
 msgid "newfile"
 msgstr "novy"
 
-#: src/lyxfunc.C:1756 src/lyxfunc.C:1967
+#: src/lyxfunc.C:1764 src/lyxfunc.C:1975
 msgid ""
 "Do you want to close that document now?\n"
 "('No' will just switch to the open version)"
@@ -10503,80 +10503,80 @@ msgstr ""
 "Chcete teï uzavøít tento dokument?\n"
 "('Ne' pouze pøepne do otevøené verze)"
 
-#: src/lyxfunc.C:1775
+#: src/lyxfunc.C:1783
 msgid "File already exists:"
 msgstr "Soubor u¾ existuje:"
 
-#: src/lyxfunc.C:1777
+#: src/lyxfunc.C:1785
 msgid "Do you want to open the document?"
 msgstr "Chcete otevøít dokument?"
 
-#: src/lyxfunc.C:1782
+#: src/lyxfunc.C:1790
 #, fuzzy
 msgid "Opening  document"
 msgstr "Vkládám dokument"
 
-#: src/lyxfunc.C:1790 src/lyxfunc.C:1899
+#: src/lyxfunc.C:1798 src/lyxfunc.C:1907
 msgid "opened."
 msgstr "otevøen."
 
-#: src/lyxfunc.C:1812
+#: src/lyxfunc.C:1820
 #, fuzzy
 msgid "Select template file"
 msgstr "Výbìr následujícího øádku"
 
-#: src/lyxfunc.C:1853
+#: src/lyxfunc.C:1861
 #, fuzzy
 msgid "Select document to open"
 msgstr "Vyberte dokument, který chcete naèíst"
 
-#: src/lyxfunc.C:1881
+#: src/lyxfunc.C:1889
 #, fuzzy
 msgid "Could not find file"
 msgstr "Nemohu tuto znaèku"
 
-#: src/lyxfunc.C:1891
+#: src/lyxfunc.C:1899
 msgid "Opening document"
 msgstr "Vkládám dokument"
 
-#: src/lyxfunc.C:1903
+#: src/lyxfunc.C:1911
 #, fuzzy
 msgid "Could not open document"
 msgstr "Nemohu otevøít dokument"
 
-#: src/lyxfunc.C:1927
+#: src/lyxfunc.C:1935
 #, fuzzy
 msgid "Select "
 msgstr "Vyber z|#V"
 
-#: src/lyxfunc.C:1928
+#: src/lyxfunc.C:1936
 #, fuzzy
 msgid " file to import"
 msgstr "Zvolte soubor LaTeX pro import"
 
-#: src/lyxfunc.C:1986
+#: src/lyxfunc.C:1994
 msgid "A document by the name"
 msgstr "Je otevøen jiný dokument stejného jména!"
 
-#: src/lyxfunc.C:1988
+#: src/lyxfunc.C:1996
 msgid "already exists. Overwrite?"
 msgstr "Pøepsat?"
 
-#: src/lyxfunc.C:1989
+#: src/lyxfunc.C:1997
 #, fuzzy
 msgid "Canceled"
 msgstr "Zru¹eno."
 
-#: src/lyxfunc.C:2048 src/lyxfunc.C:2085
+#: src/lyxfunc.C:2056 src/lyxfunc.C:2093
 msgid "Welcome to LyX!"
 msgstr "Vítejte v LyXu!"
 
-#: src/lyxfunc.C:2083 src/LyXView.C:230
+#: src/lyxfunc.C:2091 src/LyXView.C:230
 msgid " (Changed)"
 msgstr "(zmìneno)"
 
 #. this is a hack
-#: src/lyxfunc.C:2086
+#: src/lyxfunc.C:2094
 msgid "* No document open *"
 msgstr "* Není otevøen ¾ádný dokument *"
 
@@ -11217,11 +11217,11 @@ msgstr "Stále to chcete udìlat?"
 msgid " (read only)"
 msgstr "(pouze ke ètení)"
 
-#: src/mathed/formulabase.C:151 src/mathed/formulabase.C:904
+#: src/mathed/formulabase.C:151 src/mathed/formulabase.C:896
 msgid "Math editor mode"
 msgstr "Re¾im matematického editoru"
 
-#: src/mathed/formulabase.C:647
+#: src/mathed/formulabase.C:639
 msgid "Invalid action in math mode!"
 msgstr "Tato akce je v matematickém re¾imu neplatná!"
 
@@ -11341,18 +11341,18 @@ msgid "Get an older version of LyX (< 1.1.x) for conversion!"
 msgstr ""
 
 #. Could only happen with user style
-#: src/text2.C:1079
+#: src/text2.C:1081
 msgid ""
 "No font change defined. Use Character under the Layout menu to define font "
 "change."
 msgstr "Není nastavena ¾ádná zmìna písma. Nastavte ji v menu Formát/písmo."
 
-#: src/text2.C:1118
+#: src/text2.C:1120
 #, fuzzy
 msgid "Nothing to index!"
 msgstr "Nic na práci"
 
-#: src/text2.C:1122
+#: src/text2.C:1124
 #, fuzzy
 msgid "Cannot index more than one paragraph!"
 msgstr "Buòka tabulky nemù¾e obsahovat víc ne¾ jeden odstavec!"

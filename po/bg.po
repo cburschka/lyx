@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.1.6\n"
-"POT-Creation-Date: 2002-04-16 23:38+0200\n"
+"POT-Creation-Date: 2002-04-23 19:08+0200\n"
 "PO-Revision-Date: 2001-07-10 17:40+01:00\n"
 "Last-Translator: George Tellalov <gogi_t@yahoo.com>\n"
 "Language-Team: Bulgarian <gogi_t@yahoo.com>\n"
@@ -298,7 +298,7 @@ msgid "Unable to open template"
 msgstr "Невъзможно е да се отвори шаблона"
 
 # src/bufferlist.C:476 src/lyxfunc.C:3074 src/lyxfunc.C:3237
-#: src/bufferlist.C:514 src/lyxfunc.C:1754 src/lyxfunc.C:1965
+#: src/bufferlist.C:514 src/lyxfunc.C:1762 src/lyxfunc.C:1973
 msgid "Document is already open:"
 msgstr "Документът вече е отворен:"
 
@@ -450,136 +450,136 @@ msgstr "Абзац"
 msgid "Formatting document..."
 msgstr "Форматирам документа..."
 
-#: src/BufferView_pimpl.C:1252
+#: src/BufferView_pimpl.C:1320
 msgid "Saved bookmark"
 msgstr ""
 
-#: src/BufferView_pimpl.C:1284
+#: src/BufferView_pimpl.C:1352
 msgid "Moved to bookmark"
 msgstr ""
 
 # src/lyxfunc.C:3291
-#: src/BufferView_pimpl.C:1511
+#: src/BufferView_pimpl.C:1582
 #, fuzzy
 msgid "Select LyX document to insert"
 msgstr "Изберете документ за вмъкване"
 
 # src/MenuBackend.C:446 src/ext_l10n.h:10
-#: src/BufferView_pimpl.C:1513 src/frontends/controllers/ControlBibtex.C:68
+#: src/BufferView_pimpl.C:1584 src/frontends/controllers/ControlBibtex.C:68
 #: src/frontends/controllers/ControlExternal.C:166
-#: src/frontends/controllers/ControlGraphics.C:113
+#: src/frontends/controllers/ControlGraphics.C:154
 #: src/frontends/controllers/ControlInclude.C:71 src/lyx_cb.C:113
-#: src/lyxfunc.C:1730 src/lyxfunc.C:1814 src/lyxfunc.C:1855 src/lyxfunc.C:1932
+#: src/lyxfunc.C:1738 src/lyxfunc.C:1822 src/lyxfunc.C:1863 src/lyxfunc.C:1940
 #, fuzzy
 msgid "Documents|#o#O"
 msgstr "Документи(D)|D"
 
 # src/lyxfunc.C:3157 src/lyxfunc.C:3213 src/lyxfunc.C:3289
-#: src/BufferView_pimpl.C:1515 src/lyxfunc.C:1857 src/lyxfunc.C:1934
+#: src/BufferView_pimpl.C:1586 src/lyxfunc.C:1865 src/lyxfunc.C:1942
 #, fuzzy
 msgid "Examples|#E#e"
 msgstr "Примери"
 
-#: src/BufferView_pimpl.C:1520 src/frontends/controllers/ControlInclude.C:67
+#: src/BufferView_pimpl.C:1591 src/frontends/controllers/ControlInclude.C:67
 msgid "*.lyx| LyX Documents (*.lyx)"
 msgstr ""
 
 # src/lyxfunc.C:3061 src/lyxfunc.C:3088 src/lyxfunc.C:3165 src/lyxfunc.C:3223
 # src/lyxfunc.C:3251 src/lyxfunc.C:3261 src/lyxfunc.C:3297
 #. Cancel: Do nothing
-#: src/BufferView_pimpl.C:1529 src/lyxfunc.C:1741 src/lyxfunc.C:1768
-#: src/lyxfunc.C:1871 src/lyxfunc.C:1951 src/lyxfunc.C:1979
+#: src/BufferView_pimpl.C:1600 src/lyxfunc.C:1749 src/lyxfunc.C:1776
+#: src/lyxfunc.C:1879 src/lyxfunc.C:1959 src/lyxfunc.C:1987
 msgid "Canceled."
 msgstr "Прекъснат."
 
 # src/lyxfunc.C:3309
-#: src/BufferView_pimpl.C:1541
+#: src/BufferView_pimpl.C:1612
 msgid "Inserting document"
 msgstr "Вмъквам документ"
 
 # src/frontends/xforms/FormDocument.C:273 src/insets/figinset.C:1975
 # src/insets/insetexternal.C:143 src/lyxfunc.C:3105 src/lyxfunc.C:3181
 # src/lyxfunc.C:3313
-#: src/BufferView_pimpl.C:1547 src/ext_l10n.h:637
-#: src/frontends/xforms/FormDocument.C:320 src/lyxfunc.C:1789
-#: src/lyxfunc.C:1899
+#: src/BufferView_pimpl.C:1618 src/ext_l10n.h:637
+#: src/frontends/xforms/FormDocument.C:320 src/lyxfunc.C:1797
+#: src/lyxfunc.C:1907
 msgid "Document"
 msgstr "Документ"
 
 # src/lyxfunc.C:3315
-#: src/BufferView_pimpl.C:1548
+#: src/BufferView_pimpl.C:1619
 msgid "inserted."
 msgstr "вмъкнат."
 
 # src/lyxfunc.C:3317
 
-#: src/BufferView_pimpl.C:1552
+#: src/BufferView_pimpl.C:1623
 msgid "Could not insert document"
 msgstr "Неуспех при вмъкването"
 
 # src/insets/insettext.C:1036 src/lyxfunc.C:1260
-#: src/BufferView_pimpl.C:1726 src/insets/insettext.C:1434
+#: src/BufferView_pimpl.C:1797 src/insets/insettext.C:1455
 msgid "Layout "
 msgstr "Непознато "
 
 # src/insets/insettext.C:1036 src/lyxfunc.C:1261
-#: src/BufferView_pimpl.C:1727 src/insets/insettext.C:1434
+#: src/BufferView_pimpl.C:1798 src/insets/insettext.C:1455
 msgid " not known"
 msgstr " оформление"
 
 # src/insets/inseterror.C:54 src/insets/inseterror.C:76 src/lyxfunc.C:1440
-#: src/BufferView_pimpl.C:1910 src/insets/inseterror.C:55
-#: src/insets/inseterror.C:77 src/lyxfunc.C:1881
+#: src/BufferView_pimpl.C:1994 src/insets/inseterror.C:55
+#: src/insets/inseterror.C:77 src/lyxfunc.C:1889
 msgid "Error"
 msgstr "Грешка"
 
 # src/lyxfunc.C:1441
-#: src/BufferView_pimpl.C:1911
+#: src/BufferView_pimpl.C:1995
 msgid "Couldn't find this label"
 msgstr "Този етикет не може да бъде намерен "
 
 # src/lyxfunc.C:1442
-#: src/BufferView_pimpl.C:1912
+#: src/BufferView_pimpl.C:1996
 msgid "in current document."
 msgstr "в текущия документ."
 
 # src/lyxfunc.C:1839
-#: src/BufferView_pimpl.C:2408
+#: src/BufferView_pimpl.C:2492
 msgid "Mark removed"
 msgstr "Маркиране премахнато"
 
 # src/lyxfunc.C:1844
-#: src/BufferView_pimpl.C:2415
+#: src/BufferView_pimpl.C:2499
 msgid "Mark set"
 msgstr "Маркиране установено"
 
 # src/lyxfunc.C:1949
-#: src/BufferView_pimpl.C:2546
+#: src/BufferView_pimpl.C:2630
 msgid "Mark off"
 msgstr "Маркиране изкл."
 
 # src/lyxfunc.C:1962
-#: src/BufferView_pimpl.C:2559
+#: src/BufferView_pimpl.C:2643
 msgid "Mark on"
 msgstr "Маркиране вкл."
 
 # src/insets/insettext.C:1089 src/lyxfunc.C:2113
-#: src/BufferView_pimpl.C:2733 src/insets/insettext.C:1487
+#: src/BufferView_pimpl.C:2817 src/insets/insettext.C:1508
 msgid "Unknown spacing argument: "
 msgstr ""
 
-#: src/BufferView_pimpl.C:3094
+#: src/BufferView_pimpl.C:3178
 msgid "Word `"
 msgstr ""
 
 # src/lyxfunc.C:328 src/lyxfunc.C:2996
-#: src/BufferView_pimpl.C:3250
+#: src/BufferView_pimpl.C:3334
 #, fuzzy
 msgid "Unknown function!"
 msgstr "Непознато действие"
 
 # src/BufferView2.C:636 src/BufferView2.C:640
-#: src/BufferView_pimpl.C:3513 src/BufferView_pimpl.C:3516
+#: src/BufferView_pimpl.C:3597 src/BufferView_pimpl.C:3600
 #, fuzzy
 msgid "No more insets"
 msgstr "Няма повече бележки"
@@ -3813,7 +3813,7 @@ msgstr "Покажи съдържанието"
 #. /
 #: src/ext_l10n.h:571 src/ext_l10n.h:605 src/ext_l10n.h:764 src/ext_l10n.h:901
 #: src/frontends/controllers/ButtonController.h:73 src/LyXAction.C:157
-#: src/lyxfunc.C:1074
+#: src/lyxfunc.C:1082
 msgid "Cancel"
 msgstr "Отказ"
 
@@ -6599,13 +6599,13 @@ msgid "Select external file"
 msgstr "Избор на следващ ред"
 
 # src/frontends/kde/printdlg.C:35
-#: src/frontends/controllers/ControlGraphics.C:104
+#: src/frontends/controllers/ControlGraphics.C:145
 #, fuzzy
 msgid "Select graphics file"
 msgstr "Избор на файл"
 
 # src/lyx_gui_misc.C:430
-#: src/frontends/controllers/ControlGraphics.C:112
+#: src/frontends/controllers/ControlGraphics.C:153
 #, fuzzy
 msgid "Clipart|#C#c"
 msgstr "Изтрий(e)|#e"
@@ -6974,7 +6974,7 @@ msgid "Select external material"
 msgstr "Външен материал(x)...|x"
 
 # src/ext_l10n.h:146
-#: src/frontends/qt2/QFloat.C:31 src/frontends/qt2/QTexinfo.C:33
+#: src/frontends/qt2/QFloat.C:31 src/frontends/qt2/QTexinfo.C:35
 #: src/frontends/xforms/FormTexinfo.C:29
 #, fuzzy
 msgid "LaTeX Information"
@@ -10681,7 +10681,7 @@ msgid "Opened ERT Inset"
 msgstr "Отворен ERT Inset"
 
 # src/insets/insetert.C:65 src/insets/insettabular.C:1700
-#: src/insets/insetert.C:249 src/insets/insettabular.C:2042
+#: src/insets/insetert.C:249 src/insets/insettabular.C:2048
 msgid "Impossible Operation!"
 msgstr "Невъзможна операция!"
 
@@ -10693,8 +10693,8 @@ msgstr "Смяната на типа на шрифт не е разрешена в  ERT-inset!"
 # src/CutAndPaste.C:478 src/insets/insetert.C:67
 # src/insets/insettabular.C:1702 src/insets/insettext.C:971 src/text.C:3963
 # src/text.C:3971 src/text.C:3998
-#: src/insets/insetert.C:251 src/insets/insettabular.C:2044
-#: src/insets/insettext.C:1368
+#: src/insets/insetert.C:251 src/insets/insettabular.C:2050
+#: src/insets/insettext.C:1389
 msgid "Sorry."
 msgstr "Уви."
 
@@ -10796,7 +10796,7 @@ msgstr ""
 #. 1. Convert file to ascii using gifscii
 #. 2. Read ascii output file and add it to the output stream.
 #. at least we send the filename
-#: src/insets/insetgraphics.C:712
+#: src/insets/insetgraphics.C:715
 #, fuzzy
 msgid "Graphic file:"
 msgstr "Графичен файл(F)|#F"
@@ -10924,33 +10924,33 @@ msgid "PrettyRef: "
 msgstr "Вмъкни Pretty Ref%m"
 
 # src/insets/insettabular.C:481
-#: src/insets/insettabular.C:548
+#: src/insets/insettabular.C:550
 msgid "Opened Tabular Inset"
 msgstr "Отворен Tabular Inset "
 
 # src/insets/insettabular.C:1701
-#: src/insets/insettabular.C:2043
+#: src/insets/insettabular.C:2049
 msgid "Multicolumns can only be horizontally."
 msgstr "Възможни са само хоризонтални много колони."
 
 # src/insets/insettext.C:478
-#: src/insets/insettext.C:654
+#: src/insets/insettext.C:674
 msgid "Opened Text Inset"
 msgstr "Отворен Text Inset"
 
 # src/CutAndPaste.C:476 src/insets/insettext.C:969 src/text.C:3961
 # src/text.C:3969 src/text.C:3996 src/text2.C:2197 src/text2.C:2310
-#: src/insets/insettext.C:1366
+#: src/insets/insettext.C:1387
 msgid "Impossible operation"
 msgstr "Операцията е невъзможна"
 
 # src/insets/insettext.C:970
-#: src/insets/insettext.C:1367
+#: src/insets/insettext.C:1388
 msgid "Cannot include more than one paragraph!"
 msgstr "Невъзможност за включване на повече от един абзац!"
 
 # src/buffer.C:2350 src/buffer.C:2996
-#: src/insets/insettext.C:1613
+#: src/insets/insettext.C:1634
 #, fuzzy
 msgid "Error : LatexType Command not allowed here.\n"
 msgstr "Грешка: Грешна дълбочина на LatexType команда.\n"
@@ -11840,12 +11840,12 @@ msgid "Choose a filename to save document as"
 msgstr "Въведете име за запазване на документа"
 
 # src/lyx.C:75
-#: src/lyx_cb.C:115 src/lyxfunc.C:1732 src/lyxfunc.C:1816
+#: src/lyx_cb.C:115 src/lyxfunc.C:1740 src/lyxfunc.C:1824
 #, fuzzy
 msgid "Templates|#T#t"
 msgstr "Шаблон(t)|#t"
 
-#: src/lyx_cb.C:123 src/lyxfunc.C:1737 src/lyxfunc.C:1821
+#: src/lyx_cb.C:123 src/lyxfunc.C:1745 src/lyxfunc.C:1829
 msgid "*.lyx|LyX Documents (*.lyx)"
 msgstr ""
 
@@ -12111,74 +12111,74 @@ msgid "Command not allowed without any document open"
 msgstr "Командата не е позволена без да има отворен документ"
 
 # src/lyxfunc.C:328 src/lyxfunc.C:2996
-#: src/lyxfunc.C:774
+#: src/lyxfunc.C:778
 #, fuzzy
 msgid "Unknown function ("
 msgstr "Непознато действие"
 
 # src/lyxfunc.C:795
-#: src/lyxfunc.C:1113
+#: src/lyxfunc.C:1121
 msgid "Saving document"
 msgstr "Записвам документа"
 
 # src/lyxfunc.C:1105 src/lyxfunc.C:2550
-#: src/lyxfunc.C:1260 src/mathed/formulabase.C:930
+#: src/lyxfunc.C:1268 src/mathed/formulabase.C:922
 msgid "Missing argument"
 msgstr "Липсващ аргумент"
 
 # src/lyxfunc.C:1116
-#: src/lyxfunc.C:1272
+#: src/lyxfunc.C:1280
 msgid "Opening help file"
 msgstr "Отварям помощен файл"
 
 # src/lyxfunc.C:2464
-#: src/lyxfunc.C:1474
+#: src/lyxfunc.C:1482
 msgid "Push-toolbar needs argument > 0"
 msgstr "Команадта 'Push-toolbar' изисква аргумент > 0"
 
 # src/lyxfunc.C:2481
-#: src/lyxfunc.C:1491
+#: src/lyxfunc.C:1499
 msgid "Usage: toolbar-add-to <LyX command>"
 msgstr "Употреба: toolbar-add-to <LyX команда>"
 
 # src/lyxfunc.C:2572
-#: src/lyxfunc.C:1507
+#: src/lyxfunc.C:1515
 msgid "This is only allowed in math mode!"
 msgstr "Това е позволено само в матем. режим!"
 
 # src/lyxfunc.C:2761
-#: src/lyxfunc.C:1549
+#: src/lyxfunc.C:1557
 msgid "Opening child document "
 msgstr "Отварям поддокумент "
 
 # src/lyxfunc.C:2912
-#: src/lyxfunc.C:1623
+#: src/lyxfunc.C:1631
 msgid "Syntax: set-color <lyx_name> <x11_name>"
 msgstr ""
 
 # src/lyxfunc.C:2918
-#: src/lyxfunc.C:1633
+#: src/lyxfunc.C:1641
 msgid "Set-color \""
 msgstr ""
 
 # src/lyxfunc.C:2920
-#: src/lyxfunc.C:1635
+#: src/lyxfunc.C:1643
 msgid "\" failed - color is undefined or may not be redefined"
 msgstr "\" пропадна  - цветът не е дефиниран или не може да бъде предефиниран"
 
 # src/lyxfunc.C:3056
-#: src/lyxfunc.C:1728
+#: src/lyxfunc.C:1736
 #, fuzzy
 msgid "Enter filename for new document"
 msgstr "Въведете име на файл за нов документ"
 
 # src/lyxfunc.C:3057
-#: src/lyxfunc.C:1738
+#: src/lyxfunc.C:1746
 msgid "newfile"
 msgstr "нов файл"
 
 # src/lyxfunc.C:3076 src/lyxfunc.C:3239
-#: src/lyxfunc.C:1756 src/lyxfunc.C:1967
+#: src/lyxfunc.C:1764 src/lyxfunc.C:1975
 msgid ""
 "Do you want to close that document now?\n"
 "('No' will just switch to the open version)"
@@ -12187,94 +12187,94 @@ msgstr ""
 "('Не' ще превключи на отворената версия"
 
 # src/lyxfunc.C:3096
-#: src/lyxfunc.C:1775
+#: src/lyxfunc.C:1783
 msgid "File already exists:"
 msgstr "Файлът вече съществува:"
 
 # src/lyxfunc.C:3098
-#: src/lyxfunc.C:1777
+#: src/lyxfunc.C:1785
 msgid "Do you want to open the document?"
 msgstr "Искате ли да отворите документа?"
 
 # src/lyxfunc.C:3100 src/lyxfunc.C:3176
-#: src/lyxfunc.C:1782
+#: src/lyxfunc.C:1790
 #, fuzzy
 msgid "Opening  document"
 msgstr "Отварям документ"
 
 # src/lyxfunc.C:3107 src/lyxfunc.C:3183
-#: src/lyxfunc.C:1790 src/lyxfunc.C:1899
+#: src/lyxfunc.C:1798 src/lyxfunc.C:1907
 msgid "opened."
 msgstr "отворен."
 
 # src/frontends/kde/printdlg.C:35
-#: src/lyxfunc.C:1812
+#: src/lyxfunc.C:1820
 #, fuzzy
 msgid "Select template file"
 msgstr "Избор на файл"
 
 # src/lyxfunc.C:3159
-#: src/lyxfunc.C:1853
+#: src/lyxfunc.C:1861
 #, fuzzy
 msgid "Select document to open"
 msgstr "Изберете документ за отваряне"
 
 # src/lyxfunc.C:1441
-#: src/lyxfunc.C:1881
+#: src/lyxfunc.C:1889
 #, fuzzy
 msgid "Could not find file"
 msgstr "Този етикет не може да бъде намерен "
 
 # src/lyxfunc.C:3100 src/lyxfunc.C:3176
-#: src/lyxfunc.C:1891
+#: src/lyxfunc.C:1899
 msgid "Opening document"
 msgstr "Отварям документ"
 
 # src/lyxfunc.C:3185
-#: src/lyxfunc.C:1903
+#: src/lyxfunc.C:1911
 msgid "Could not open document"
 msgstr "Неуспех при отварянето"
 
 # src/lyxfunc.C:3215
-#: src/lyxfunc.C:1927
+#: src/lyxfunc.C:1935
 msgid "Select "
 msgstr "Изберете "
 
 # src/lyxfunc.C:3216
-#: src/lyxfunc.C:1928
+#: src/lyxfunc.C:1936
 msgid " file to import"
 msgstr " Файл за импортиране"
 
 # src/lyxfunc.C:3258
-#: src/lyxfunc.C:1986
+#: src/lyxfunc.C:1994
 msgid "A document by the name"
 msgstr "Документ с името"
 
 # src/lyxfunc.C:3260
-#: src/lyxfunc.C:1988
+#: src/lyxfunc.C:1996
 msgid "already exists. Overwrite?"
 msgstr "вече съществува. Запис отогоре?"
 
 # src/lyxfunc.C:3061 src/lyxfunc.C:3088 src/lyxfunc.C:3165 src/lyxfunc.C:3223
 # src/lyxfunc.C:3251 src/lyxfunc.C:3261 src/lyxfunc.C:3297
-#: src/lyxfunc.C:1989
+#: src/lyxfunc.C:1997
 #, fuzzy
 msgid "Canceled"
 msgstr "Прекъснат."
 
 # src/minibuffer.C:46 src/minibuffer.C:244
-#: src/lyxfunc.C:2048 src/lyxfunc.C:2085
+#: src/lyxfunc.C:2056 src/lyxfunc.C:2093
 msgid "Welcome to LyX!"
 msgstr "Добре дошли в LyX!"
 
 # src/LyXView.C:370 src/minibuffer.C:242
-#: src/lyxfunc.C:2083 src/LyXView.C:230
+#: src/lyxfunc.C:2091 src/LyXView.C:230
 msgid " (Changed)"
 msgstr " (Променен)"
 
 # src/minibuffer.C:245
 #. this is a hack
-#: src/lyxfunc.C:2086
+#: src/lyxfunc.C:2094
 msgid "* No document open *"
 msgstr "* Няма отворен документ *"
 
@@ -13121,12 +13121,12 @@ msgid " (read only)"
 msgstr " (само за четене)"
 
 # src/lyxfunc.C:2565 src/mathed/formula.C:486
-#: src/mathed/formulabase.C:151 src/mathed/formulabase.C:904
+#: src/mathed/formulabase.C:151 src/mathed/formulabase.C:896
 msgid "Math editor mode"
 msgstr "Матем. редактор"
 
 # src/mathed/formula.C:1137
-#: src/mathed/formulabase.C:647
+#: src/mathed/formulabase.C:639
 msgid "Invalid action in math mode!"
 msgstr "Невалидно действие в матем. режим!"
 
@@ -13263,20 +13263,20 @@ msgstr "Вземете по-стара версия на LyX (< 1.1.x) за конвертиране!"
 
 # src/text2.C:1275
 #. Could only happen with user style
-#: src/text2.C:1079
+#: src/text2.C:1081
 msgid ""
 "No font change defined. Use Character under the Layout menu to define font "
 "change."
 msgstr ""
 
 # src/text2.C:456
-#: src/text2.C:1118
+#: src/text2.C:1120
 #, fuzzy
 msgid "Nothing to index!"
 msgstr "Няма нищо за правене"
 
 # src/insets/insettext.C:970
-#: src/text2.C:1122
+#: src/text2.C:1124
 #, fuzzy
 msgid "Cannot index more than one paragraph!"
 msgstr "Невъзможност за включване на повече от един абзац!"
