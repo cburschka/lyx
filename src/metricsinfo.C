@@ -16,10 +16,20 @@ MetricsBase::MetricsBase()
 
 
 
+MetricsBase::MetricsBase(BufferView * b, LyXFont const & f)
+	: bv(b), font(f), style(LM_ST_TEXT), fontname("mathnormal"),
+	  restrictwidth(false), textwidth(0)
+{}
+
+
 
 MetricsInfo::MetricsInfo()
 {}
 
+
+MetricsInfo::MetricsInfo(BufferView * bv, LyXFont const & font)
+	: base(bv, font)
+{}
 
 
 

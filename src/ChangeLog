@@ -11,6 +11,8 @@
 	* rowpainter.C:
 	* text2.C: don't call inset->update() anymore
 
+	* metricsinfo.[Ch]: add convenience constructor
+
 2003-07-16  André Pönitz  <poenitz@gmx.net>
 
 	* lyxcursor.[Ch]:

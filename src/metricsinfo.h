@@ -27,6 +27,8 @@ enum Styles {
 struct MetricsBase {
 	///
 	MetricsBase();
+	///
+	MetricsBase(BufferView * bv, LyXFont const & font);
 
 	/// the current view
 	BufferView * bv;
@@ -50,6 +52,8 @@ struct MetricsBase {
 struct MetricsInfo {
 	///
 	MetricsInfo();
+	///
+	MetricsInfo(BufferView * bv, LyXFont const & font);
 
 	///
 	MetricsBase base;

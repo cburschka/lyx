@@ -1245,10 +1245,11 @@ bool InsetTabular::calculate_dimensions_of_cells(BufferView * bv, bool reinit) c
 	if ((need_update != INIT) &&
 	    (the_locking_inset == tabular.getCellInset(actcell))) {
 		for(int i = 0; i < tabular.columns(); ++i) {
-			maxAsc = max(tabular.getCellInset(actrow, i)->ascent(bv, font),
-				     maxAsc);
-			maxDesc = max(tabular.getCellInset(actrow, i)->descent(bv, font),
-				      maxDesc);
+			Dimension dim;
+			MetricsInfo mi(bv, font);
+			tabular.getCellInset(actrow, i)->metrics(mi, dim);
+			maxAsc = max(dim.asc, maxAsc);
+			maxDesc = max(dim.des, maxDesc);
 		}
 		changed = tabular.setWidthOfCell(actcell, the_locking_inset->width(bv, font));
 		changed = tabular.setAscentOfRow(actrow, maxAsc + ADD_TO_HEIGHT) || changed;
@@ -1262,10 +1263,12 @@ bool InsetTabular::calculate_dimensions_of_cells(BufferView * bv, bool reinit) c
 			if (tabular.isPartOfMultiColumn(i,j))
 				continue;
 			++cell;
-			inset = tabular.getCellInset(cell);
-			maxAsc = max(maxAsc, inset->ascent(bv, font));
-			maxDesc = max(maxDesc, inset->descent(bv, font));
-			changed = tabular.setWidthOfCell(cell, inset->width(bv, font)) || changed;
+			Dimension dim;
+			MetricsInfo mi(bv, font);
+			tabular.getCellInset(cell)->metrics(mi, dim);
+			maxAsc = max(maxAsc, dim.asc);
+			maxDesc = max(maxDesc, dim.des);
+			changed = tabular.setWidthOfCell(cell, dim.wid) || changed;
 		}
 		changed = tabular.setAscentOfRow(i, maxAsc + ADD_TO_HEIGHT) || changed;
 		changed = tabular.setDescentOfRow(i, maxDesc + ADD_TO_HEIGHT) || changed;
