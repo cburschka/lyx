@@ -1,5 +1,8 @@
 2002-07-20  Dekel Tsur  <dekelts@tau.ac.il>
 
+	* BufferView_pimpl.C (workAreaButtonRelease): Fix opening of
+	a bibitem inset in a RTL paragraph.
+
 	* language.C (read): Use iso8859-1 encoding in latex_lang
 	(this prevents LyX from crashing when using iso10646-1 encoding).
 
