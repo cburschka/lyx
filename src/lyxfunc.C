@@ -1872,22 +1872,7 @@ void LyXFunc::doImport(string const & argument)
 
 	// Check if the document already is open
 	if (lyx_gui::use_gui && bufferlist.exists(lyxfile)) {
-		string const file = MakeDisplayPath(lyxfile, 30);
-
-		// FIXME: sucky UI !
-
-#if USE_BOOST_FORMAT
-		boost::format fmt(_("The document %1$s is already open.\n\nDo you want to close that document?"));
-		fmt % file;
-		string text = fmt.str();
-#else
-		string text = _("The document ");
-		text += file + _(" is already open.\n\nDo you want to close that document?");
-#endif
-		int const ret = Alert::prompt(_("Close open document?"),
-			text, 1, _("&Close"), _("&Cancel"));
-
-		if (ret == 0 || !bufferlist.close(bufferlist.getBuffer(lyxfile), true)) {
+		if (!bufferlist.close(bufferlist.getBuffer(lyxfile), true)) {
 			owner->message(_("Canceled."));
 			return;
 		}

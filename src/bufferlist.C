@@ -158,7 +158,7 @@ void BufferList::closeAll()
 	textcache.clear();
 
 	while (!bstore.empty()) {
-		close(bstore.front(), true);
+		close(bstore.front(), false);
 	}
 }
 
@@ -167,6 +167,7 @@ bool BufferList::close(Buffer * buf, bool ask)
 {
 	lyx::Assert(buf);
 
+	// FIXME: is the quitting check still necessary ?
 	if (!ask || buf->isClean() || quitting || buf->paragraphs.empty()) {
 		release(buf);
 		return true;
@@ -186,7 +187,7 @@ bool BufferList::close(Buffer * buf, bool ask)
 	text += fname + _(" has unsaved changes.\n\nWhat do you want to do with it?");
 #endif
 	int const ret = Alert::prompt(_("Save changed document?"),
-		text, 0, _("&Save"), _("&Discard"));
+		text, 0, _("&Save"), _("&Discard"), _("&Cancel"));
 
 	if (ret == 0) {
 		if (buf->isUnnamed()) {
@@ -197,6 +198,8 @@ bool BufferList::close(Buffer * buf, bool ask)
 		} else {
 			return false;
 		}
+	} else if (ret == 2) {
+		return false;
 	}
 	
 	if (buf->isUnnamed()) {
