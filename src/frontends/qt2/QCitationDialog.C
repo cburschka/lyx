@@ -311,5 +311,5 @@ void QCitationDialog::doFind(biblio::Direction dir)
 	int const top = max(found - 5, 1);
 	bibLB->setTopItem(top);
 	bibLB->setSelected(found, true);
-	slotBibHighlighted(0);
+	slotBibHighlighted(found);
 }
