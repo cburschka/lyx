@@ -1,5 +1,7 @@
 2002-03-02  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
+	* lyxlayout.C (Read): remove some debug info that I forgot.
+
 	* buffer.C (makeLaTeXFile): fix calling of LaTeXFeatures, and
 	clean up the code slightly.
 	(makeLinuxDocFile): ditto

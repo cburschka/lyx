@@ -192,8 +192,7 @@ bool LyXLayout::Read (LyXLex & lexrc, LyXTextClass const & tclass)
 					LyXTextClass::const_iterator end = tclass.end();
 					lyxerr << "All layouts so far:" << endl;
 					for (; it != end; ++it) {
-						//lyxerr << it->name() << endl;
-						fprintf(stderr, "%s\n", it->name().c_str());
+						lyxerr << it->name() << endl;
 					}
 					
 					//lexrc.printError("Cannot copy known "
