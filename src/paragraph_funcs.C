@@ -1049,19 +1049,10 @@ LyXFont const outerFont(ParagraphList::iterator pit)
 
 
 LyXFont const realizeFont(LyXFont const & font,
-			  BufferParams const & params,
-			  ParagraphList::iterator pit,
-			  bool outerhook)
+			  BufferParams const & params)
 {
 	LyXTextClass const & tclass = params.getLyXTextClass();
 	LyXFont tmpfont(font);
-
-	if (outerhook) {
-		LyXFont of = outerFont(pit);
-		tmpfont.realize(of);
-	}
-
 	tmpfont.realize(tclass.defaultfont());
-
 	return tmpfont;
 }

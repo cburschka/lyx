@@ -1,3 +1,15 @@
+2003-04-15  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* text2.C (getFont): adjust
+	(getLayoutFont): adjust
+	(getLabelFont): adjust
+
+	* paragraph.C (getFont): adjust
+	(getLabelFont): adjust
+	(getLayoutFont): adjust
+
+	* paragraph_funcs.[Ch] (realizeFont): remove unneeded arguments.
+
 2003-04-15  John Levon  <levon@movementarian.org>
 
 	From Angus Leeming

@@ -67,9 +67,7 @@ void latexParagraphs(Buffer const * buf,
 int readParagraph(Buffer & buf, Paragraph & par, LyXLex & lex);
 
 LyXFont const realizeFont(LyXFont const & font,
-			  BufferParams const & params,
-			  ParagraphList::iterator pit,
-			  bool outerhook = true);
+			  BufferParams const & params);
 
 LyXFont const outerFont(ParagraphList::iterator pit);
 

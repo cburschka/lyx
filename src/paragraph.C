@@ -453,7 +453,7 @@ LyXFont const Paragraph::getFont(BufferParams const & bparams, pos_type pos,
 	tmpfont.realize(layoutfont);
 	tmpfont.realize(outerfont);
 
-	return realizeFont(tmpfont, bparams, 0, false);
+	return realizeFont(tmpfont, bparams);
 }
 
 
@@ -466,7 +466,7 @@ LyXFont const Paragraph::getLabelFont(BufferParams const & bparams,
 	tmpfont.setLanguage(getParLanguage(bparams));
 	tmpfont.realize(outerfont);
 
-	return realizeFont(tmpfont, bparams, 0, false);
+	return realizeFont(tmpfont, bparams);
 }
 
 
@@ -479,7 +479,7 @@ LyXFont const Paragraph::getLayoutFont(BufferParams const & bparams,
 	tmpfont.setLanguage(getParLanguage(bparams));
 	tmpfont.realize(outerfont);
 
-	return realizeFont(tmpfont, bparams, 0, false);
+	return realizeFont(tmpfont, bparams);
 }
 
 
