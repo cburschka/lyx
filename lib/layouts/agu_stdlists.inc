@@ -12,7 +12,7 @@ Input stdlists.inc
 Style Itemize
 	LatexType             Item_Environment
 	LatexName             lst
-	Latexparam            "type=&quot;bulleted&quot;"
+	Latexparam            "type=<bulleted>"
 	ItemTag               item
 End
 
@@ -20,7 +20,7 @@ End
 Style Enumerate
 	LatexType             Item_Environment
 	LatexName             lst
-	Latexparam            "type=&quot;ordered&quot;"
+	Latexparam            "type=<ordered>"
 	ItemTag               item
 End
 
@@ -28,7 +28,7 @@ End
 Style Description
 	LatexType             Item_environment
 	LatexName             lst
-	Latexparam            "type=&quot;unordered&quot;"
+	Latexparam            "type=<unordered>"
 	ItemTag               item
 End
 

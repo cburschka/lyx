@@ -98,7 +98,7 @@ End
 CharStyle Emph
 	LatexType             Command
 	LatexName             emph
-	LatexParam            "type=&quot;italic&quot;"
+	LatexParam            "type=<italic>"
 	Font
 	  Shape               Italic
 	EndFont

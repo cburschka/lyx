@@ -44,7 +44,7 @@ End
 
 Style AGU-journal
 	CopyStyle             Special-section
-	LatexParam            "journal-code=&quot;$1&quot; electronic-only=&quot;yes&quot;"
+	LatexParam            "journal-code=<$1> electronic-only=<yes>"
 	LatexName             AGU-journal
 	LabelString           "AGU-journal: "
 	CommandDepth          3

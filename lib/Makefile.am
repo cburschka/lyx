@@ -747,6 +747,7 @@ dist_layouts_DATA =\
 	layouts/cv.layout \
 	layouts/db_lyxmacros.inc \
 	layouts/db_stdclass.inc \
+	layouts/db_stdcounters.inc \
 	layouts/db_stdlayouts.inc \
 	layouts/db_stdlists.inc \
 	layouts/db_stdsections.inc \
