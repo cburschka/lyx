@@ -308,14 +308,9 @@ notify us.
 	are needed for compilation). A 'make symlinks' in linux kernel
 	sources fixes that. 
 
-  o if you are using the standard compiler that comes with RedHat Linux 7.0
-    (rpm versions 69 or below), it is known to miscompile LyX under some
-    circumstances. Compiling without optimisation seems to work :
-
-	CXXFLAGS="-g"
-	./configure ...
-
-    You must use at least gcc 2.96-69 to compile LyX (check "rpm -q gcc").
+  o if you are using RedHat Linux 7.x, you must make sure you have the
+    latest updated gcc and related packages installed (at least -85),
+    or LyX will not compile or will be mis-compiled.
  
   o if you get an error message when compiling LyX that looks like this :
 

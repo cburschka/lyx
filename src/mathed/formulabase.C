@@ -553,7 +553,7 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 		int y;
 		int x1;
 		int y1;
-		istringstream is(arg);
+		istringstream is(arg.c_str());
 		is >> x >> y;
 		lyxerr << "LFUN_SETXY: x: " << x << " y: " << y << "\n";
 		par_->GetXY(x1, y1);
@@ -667,7 +667,7 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 			int n = 1;
 			string v_align;
 			string h_align;
-			istringstream is(arg);
+			istringstream is(arg.c_str());
 			is >> m >> n >> v_align >> h_align;
 			MathArrayInset * p = new MathArrayInset(m, n);
 			p->valign(v_align[0]);
@@ -688,7 +688,7 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 		if (arg.empty())
 			break;
 
-		istringstream is(arg);
+		istringstream is(arg.c_str());
 		string lt;
 		string rt;
 		is >> lt >> rt;

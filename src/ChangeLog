@@ -1,3 +1,10 @@
+2001-06-29  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* lyxfunc.C (Dispatch): 
+	* Spacing.C (set): 
+	* BufferView_pimpl.C (Dispatch): use .c_str() on istringstream
+	constructor argument.
+
 2001-06-29  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* paragraph.C (Paragraph): dont't clear, and just set layout.

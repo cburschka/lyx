@@ -278,7 +278,7 @@ int LyXRC::read(string const & filename)
 	lexrc.setFile(filename);
 	if (!lexrc.IsOK()) return -2;
 	
-	lyxerr[Debug::INIT] << "Reading '" << filename << "'..." << endl;
+	lyxerr[Debug::LYXRC] << "Reading '" << filename << "'..." << endl;
 	
 	while (lexrc.IsOK()) {
 		// By using two switches we take advantage of the compiler
@@ -707,7 +707,7 @@ int LyXRC::read(string const & filename)
 			}
 			
 			if ((action = lyxaction.LookupFunc(cmd))>= 0) {
-				if (lyxerr.debugging(Debug::KBMAP)) {
+				if (lyxerr.debugging(Debug::LYXRC)) {
 					lyxerr << "RC_BIND: Sequence `"
 					       << seq << "' Command `"
 					       << cmd << "' Action `"
@@ -715,7 +715,7 @@ int LyXRC::read(string const & filename)
 				}
 				res = toplevel_keymap->bind(seq, action);
 				if (res != 0
-				    && lyxerr.debugging(Debug::KBMAP)) {
+				    && lyxerr.debugging(Debug::LYXRC)) {
 					lexrc.printError(
 						"RC_BIND: "
 						"Invalid key sequence `"

@@ -2598,7 +2598,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 			cur_value = par->params().spacing().getValue();
 		}
 		
-		istringstream istr(argument);
+		istringstream istr(argument.c_str());
 
 		string tmp;
 		istr >> tmp;

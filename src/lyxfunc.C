@@ -1264,7 +1264,7 @@ string const LyXFunc::Dispatch(int ac,
 #else
 		string file_name;
 		int row;
-		istringstream istr(argument);
+		istringstream istr(argument.c_str());
 		istr >> file_name >> row;
 #endif
 		// Must replace extension of the file to be .lyx and get full path
@@ -1287,7 +1287,7 @@ string const LyXFunc::Dispatch(int ac,
 
 	case LFUN_GOTO_PARAGRAPH:
 	{
-                istringstream istr(argument);
+                istringstream istr(argument.c_str());
 
 		int id;
 		istr >> id;
