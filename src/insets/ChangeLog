@@ -1,3 +1,16 @@
+2001-11-03  José Matos  <jamatos@fep.up.pt>
+
+	* insetindex.C: added using std::ostream that I forgot yesterday.
+
+2001-11-02  Ben Guillon  <nicolas.marsgui@libertysurf.fr>
+
+	* insetindex.h (docbook):
+	* insetindex.C (docbook): added support for docbook export.
+
+2001-11-02  José Matos  <jamatos@fep.up.pt>
+
+	* insetcaption.C(docbook): added support for docbook export.
+
 2001-11-02  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* insetexternal.C (updateExternal): Do not run update command if

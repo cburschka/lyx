@@ -11,6 +11,8 @@
 #include "LaTeXFeatures.h"
 #include "gettext.h"
 
+using std::ostream;
+
 InsetIndex::InsetIndex(InsetCommandParams const & p, bool)
 	: InsetCommand(p)
 {}
