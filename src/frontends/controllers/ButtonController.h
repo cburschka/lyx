@@ -73,6 +73,8 @@ public:
 	ButtonController(string const & = _("Cancel"),
 			 string const & = _("Close"));
 	///
+	~ButtonController() {}
+	///
 	virtual ButtonPolicy & bp() { return bp_; }
 
 protected:

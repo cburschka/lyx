@@ -14,7 +14,7 @@
 #endif
 
 #include "Dialogs.h"
-#include "GUI.h"
+#include "controllers/GUI.h"
 
 #include <boost/scoped_ptr.hpp>
 
@@ -202,7 +202,7 @@ typedef GUI<ControlVCLog, FormVCLog, OkCancelPolicy, xformsBC>
 VCLogFileDialog;
 
 struct Dialogs::Impl {
-	Impl(LyXView & lv, Dialogs & d) : lv_(lv), d_(d) {}
+	Impl(LyXView & lv, Dialogs & d);
 
 	template <typename T>
 	T & dialog(boost::scoped_ptr<T> & var)

@@ -168,6 +168,11 @@
 #include "FormVCLog.h"
 
 
+Dialogs::Impl::Impl(LyXView & lv, Dialogs & d)
+	: lv_(lv), d_(d)
+{}
+
+
 Dialogs::Dialogs(LyXView & lv)
 	: pimpl_(new Impl(lv, *this))
 {
