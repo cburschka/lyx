@@ -1730,7 +1730,7 @@ void LyXText::breakParagraph(BufferView * bview, char keep_layout)
 
 	// this is only allowed, if the current paragraph is not empty or caption
 	// and if it has not the keepempty flag aktive
-	if ((cursor.par()->size() <= 0)
+	if (cursor.par()->empty()
 	   && layout->labeltype != LABEL_SENSITIVE
 	   && !layout->keepempty)
 		return;
@@ -1755,7 +1755,7 @@ void LyXText::breakParagraph(BufferView * bview, char keep_layout)
 	// breakParagraph call should return a bool if it inserts the
 	// paragraph before or behind and we should react on that one
 	// but we can fix this in 1.3.0 (Jug 20020509)
-	bool const isempty = (layout->keepempty && !cursor.par()->size());
+	bool const isempty = (layout->keepempty && cursor.par()->empty());
 	cursor.par()->breakParagraph(bview->buffer()->params, cursor.pos(),
 				keep_layout);
 
@@ -1799,7 +1799,7 @@ void LyXText::breakParagraph(BufferView * bview, char keep_layout)
 
 	setHeightOfRow(bview, cursor.row());
 
-	while (cursor.par()->next()->size()
+	while (!cursor.par()->next()->empty()
 	  && cursor.par()->next()->isNewline(0))
 	   cursor.par()->next()->erase(0);
 
@@ -2507,7 +2507,7 @@ void LyXText::selectSelectedWord(BufferView * bview)
 // Delete from cursor up to the end of the current or next word.
 void LyXText::deleteWordForward(BufferView * bview)
 {
-	if (!cursor.par()->size())
+	if (cursor.par()->empty())
 		cursorRight(bview);
 	else {
 		LyXCursor tmpcursor = cursor;
@@ -2528,7 +2528,7 @@ void LyXText::deleteWordForward(BufferView * bview)
 // Delete from cursor to start of current or prior word.
 void LyXText::deleteWordBackward(BufferView * bview)
 {
-	if (!cursor.par()->size())
+	if (cursor.par()->empty())
 		cursorLeft(bview);
 	else {
 		LyXCursor tmpcursor = cursor;
@@ -2547,7 +2547,7 @@ void LyXText::deleteWordBackward(BufferView * bview)
 // Kill to end of line.
 void LyXText::deleteLineForward(BufferView * bview)
 {
-	if (!cursor.par()->size())
+	if (cursor.par()->empty())
 		// Paragraph is empty, so we just go to the right
 		cursorRight(bview);
 	else {
@@ -2898,7 +2898,7 @@ void LyXText::backspace(BufferView * bview)
 			}
 
 			// delete newlines at the beginning of paragraphs
-			while (cursor.par()->size() &&
+			while (!cursor.par()->empty() &&
 			       cursor.par()->isNewline(cursor.pos()) &&
 			       cursor.pos() == beginningOfMainBody(bview->buffer(),
 								   cursor.par())) {
@@ -3342,9 +3342,9 @@ int LyXText::paintPageBreak(string const & label, int y, DrawRowParams & p)
 
 	int const text_start = p.xo + ((p.width - w) / 2);
 	int const text_end = text_start + w;
- 
+
 	p.pain->rectText(text_start, y + d, label, pb_font);
- 
+
 	p.pain->line(p.xo, y, text_start, y,
 		LColor::pagebreak, Painter::line_onoffdash);
 	p.pain->line(text_end, y, p.xo + p.width, y,
@@ -3352,7 +3352,7 @@ int LyXText::paintPageBreak(string const & label, int y, DrawRowParams & p)
 
 	return 3 * defaultHeight();
 }
- 
+
 
 void LyXText::paintFirstRow(DrawRowParams & p)
 {
@@ -3610,7 +3610,7 @@ void LyXText::paintLastRow(DrawRowParams & p)
 		break;
 	}
 }
- 
+
 
 void LyXText::paintRowText(DrawRowParams & p)
 {

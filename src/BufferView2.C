@@ -338,7 +338,7 @@ void BufferView::menuUndo()
 {
 	if (!available())
 		return;
- 
+
 	owner()->message(_("Undo"));
 	hideCursor();
 	beforeChange(text);
@@ -355,7 +355,7 @@ void BufferView::menuRedo()
 {
 	if (!available())
 		return;
- 
+
 	owner()->message(_("Redo"));
 	hideCursor();
 	beforeChange(text);

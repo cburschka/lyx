@@ -2208,7 +2208,7 @@ int LyXTabular::TeXRow(ostream & os, int const i, Buffer const * buf,
 		InsetText * inset = GetCellInset(cell);
 
 		bool rtl = inset->paragraph()->isRightToLeftPar(buf->params) &&
-			inset->paragraph()->size() > 0 && GetPWidth(cell).zero();
+			!inset->paragraph()->empty() && GetPWidth(cell).zero();
 
 		if (rtl)
 			os << "\\R{";

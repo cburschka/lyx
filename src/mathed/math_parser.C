@@ -663,7 +663,7 @@ void Parser::parse1(MathGridInset & grid, unsigned flags,
 		}
 
 		else if (t.cat() == catSuper || t.cat() == catSub) {
-			if (mode == MathInset::VERBATIM_MODE) 
+			if (mode == MathInset::VERBATIM_MODE)
 				cell->push_back(MathAtom(new MathStringInset(t.asString())));
 			else {
 				bool up = (t.cat() == catSuper);
@@ -682,7 +682,7 @@ void Parser::parse1(MathGridInset & grid, unsigned flags,
 				parse(p->cell(up), FLAG_ITEM, mode);
 				p->limits(limits);
 				limits = 0;
-				// special handling of {}-bases 
+				// special handling of {}-bases
 				// is this always correct?
 				if (p->nuc().size() == 1 && p->nuc().back()->asNestInset() &&
 						p->nuc().back()->extraBraces())

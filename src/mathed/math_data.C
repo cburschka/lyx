@@ -182,7 +182,7 @@ MathArray::size_type MathArray::find(MathArray const & ar) const
 
 MathArray::size_type MathArray::find_last(MathArray const & ar) const
 {
-	for (int i = size() - ar.size(); i >= 0; --i) 
+	for (int i = size() - ar.size(); i >= 0; --i)
 		if (find1(ar, i))
 			return i;
 	return size();
@@ -385,4 +385,3 @@ void MathArray::setXY(int x, int y)
 	xo_ = x;
 	yo_ = y;
 }
-

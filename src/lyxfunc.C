@@ -91,7 +91,7 @@
 #include "support/lyxfunctional.h"
 
 #include <boost/tuple/tuple.hpp>
- 
+
 #include <ctime>
 #include <clocale>
 #include <cstdlib>
@@ -217,7 +217,7 @@ void LyXFunc::processKeySym(LyXKeySymPtr keysym,
 		lyxerr[Debug::KEY] << "action now set to ["
 			<< action << "]" << endl;
 	}
- 
+
 	// Dont remove this unless you know what you are doing.
 	meta_fake_bit = key_modifier::none;
 
@@ -249,7 +249,7 @@ void LyXFunc::processKeySym(LyXKeySymPtr keysym,
 		lyxerr[Debug::KEY] << "Removing modifiers...\n"
 			<< "Action now set to ["
 			<< action << "]" << endl;
- 
+
 		if (action == LFUN_UNKNOWN_ACTION) {
 			owner->message(_("Unknown function."));
 			return;
@@ -1683,7 +1683,7 @@ void LyXFunc::open(string const & fname)
 	// if the file doesn't exist, let the user create one
 	FileInfo const f(filename, true);
 	if (!f.exist()) {
-		if (!Alert::askQuestion(_("No such file"), disp_fn, 
+		if (!Alert::askQuestion(_("No such file"), disp_fn,
 			_("Start a new document with this filename ?"))) {
 			owner->message(_("Canceled"));
 			return;

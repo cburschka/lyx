@@ -161,6 +161,8 @@ public:
 	///
 	lyx::pos_type size() const;
 	///
+	bool empty() const;
+	///
 	void setContentsFromPar(Paragraph * par);
 	///
 	void clearContents();
@@ -395,7 +397,7 @@ public:
 
 	///
 	Counters & counters();
-	
+
 private:
 	/// if anything uses this we don't want it to.
 	Paragraph(Paragraph const &);

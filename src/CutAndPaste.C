@@ -144,7 +144,7 @@ bool CutAndPaste::cutSelection(Paragraph * startpar, Paragraph ** endpar,
 		if (doclear)
 			startpar->next()->stripLeadingSpaces();
 		if (startpar->hasSameLayout(startpar->next()) ||
-		    !startpar->next()->size()) {
+		    startpar->next()->empty()) {
 			startpar->pasteParagraph(current_view->buffer()->params);
 			(*endpar) = startpar; // this because endpar gets deleted here!
 		}
@@ -367,10 +367,10 @@ bool CutAndPaste::pasteSelection(Paragraph ** par, Paragraph ** endpar,
 		if (lastbuffer->next() && paste_the_end) {
 			if (lastbuffer->next()->hasSameLayout(lastbuffer)) {
 				lastbuffer->pasteParagraph(current_view->buffer()->params);
-			} else if (!lastbuffer->next()->size()) {
+			} else if (lastbuffer->next()->empty()) {
 				lastbuffer->next()->makeSameLayout(lastbuffer);
 				lastbuffer->pasteParagraph(current_view->buffer()->params);
-			} else if (!lastbuffer->size()) {
+			} else if (lastbuffer->empty()) {
 				lastbuffer->makeSameLayout(lastbuffer->next());
 				lastbuffer->pasteParagraph(current_view->buffer()->params);
 			} else

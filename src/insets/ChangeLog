@@ -1,3 +1,7 @@
+2002-08-10  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* insettext.C, insetert.C: use Paragraph::empty where appropriate
+
 2002-08-09  Angus Leeming  <leeming@lyx.org>
 
 	* insetinclude.C (latexString): remove fudge now that I've found out
@@ -7,7 +11,7 @@
 
 	* insettext.h:
 	* insettext.C: remove unused xpos
- 
+
 2002-08-07  Juergen Vigna  <jug@lyx.org>
 
 	* insettabular.C (localDispatch): make delete not put the stuff
@@ -28,17 +32,17 @@
 
 2002-08-06  John Levon  <levon@movementarian.org>
 
-	* inset.h: 
-	* inset.C: 
-	* insetcollapsable.h: 
-	* insetcollapsable.C: 
+	* inset.h:
+	* inset.C:
+	* insetcollapsable.h:
+	* insetcollapsable.C:
 	* insetert.h:
 	* insetert.C:
 	* insettabular.h:
 	* insettabular.C:
 	* insettext.h:
 	* insettext.C: use WordLangTuple for spellcheck
- 
+
 2002-08-06  Angus Leeming  <leeming@lyx.org>
 
 	* insetinclude.C: add a monitor to the previewed image, so that the
@@ -48,7 +52,7 @@
 
 	* inset.h:
 	* insetnote.h: s/IGNORE_CODE/NOTE_CODE/
- 
+
 2002-08-02  Angus Leeming  <leeming@lyx.org>
 
 	* insetcommandparams.[Ch] (preview): new methods returning and setting

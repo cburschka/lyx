@@ -449,7 +449,7 @@ InsetERT::localDispatch(BufferView * bv, FuncRequest const & ev)
 {
 	UpdatableInset::RESULT result = DISPATCHED_NOUPDATE;
 
-	if (!inset.paragraph()->size()) {
+	if (inset.paragraph()->empty()) {
 		set_latex_font(bv);
 	}
 

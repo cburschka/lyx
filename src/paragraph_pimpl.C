@@ -43,7 +43,7 @@ struct special_phrase {
 	string macro;
 	bool builtin;
 };
-	
+
 special_phrase special_phrases[] = {
 	{ "LyX", "\\LyX{}", false },
 	{ "TeX", "\\TeX{}", true },
@@ -657,7 +657,7 @@ void Paragraph::Pimpl::validate(LaTeXFeatures & features,
 				break;
 			}
 		}
-	}		
+	}
 }
 
 

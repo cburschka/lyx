@@ -377,7 +377,7 @@ void InsetText::draw(BufferView * bv, LyXFont const & f,
 	}
 
 	// no draw is necessary !!!
-	if ((drawFrame_ == LOCKED) && !locked && !par->size()) {
+	if ((drawFrame_ == LOCKED) && !locked && par->empty()) {
 		top_baseline = baseline;
 		x += width(bv, f);
 		if (need_update & CLEAR_FRAME)
@@ -704,7 +704,7 @@ void InsetText::edit(BufferView * bv, int x, int y, mouse_button::state button)
 	finishUndo();
 	// If the inset is empty set the language of the current font to the
 	// language to the surronding text (if different).
-	if (par->size() == 0 && !par->next() &&
+	if (par->empty() && !par->next() &&
 		bv->getParentLanguage(this) != lt->current_font.language())
 	{
 		LyXFont font(LyXFont::ALL_IGNORE);
@@ -757,7 +757,7 @@ void InsetText::edit(BufferView * bv, bool front)
 	finishUndo();
 	// If the inset is empty set the language of the current font to the
 	// language to the surronding text (if different).
-	if (par->size() == 0 && !par->next() &&
+	if (par->empty() && !par->next() &&
 		bv->getParentLanguage(this) != lt->current_font.language()) {
 		LyXFont font(LyXFont::ALL_IGNORE);
 		font.setLanguage(bv->getParentLanguage(this));
@@ -807,7 +807,7 @@ void InsetText::insetUnlock(BufferView * bv)
 	} else
 		bv->owner()->setLayout(bv->text->cursor.par()->layout()->name());
 	// hack for deleteEmptyParMech
-	if (par->size()) {
+	if (!par->empty()) {
 		lt->setCursor(bv, par, 0);
 	} else if (par->next()) {
 		lt->setCursor(bv, par->next(), 0);
@@ -841,7 +841,7 @@ void InsetText::lockInset(BufferView * bv)
 	finishUndo();
 	// If the inset is empty set the language of the current font to the
 	// language to the surronding text (if different).
-	if (par->size() == 0 && !par->next() &&
+	if (par->empty() && !par->next() &&
 		bv->getParentLanguage(this) != lt->current_font.language()) {
 		LyXFont font(LyXFont::ALL_IGNORE);
 		font.setLanguage(bv->getParentLanguage(this));
@@ -1176,7 +1176,7 @@ void InsetText::insetMotionNotify(BufferView * bv, int x, int y, mouse_button::s
 UpdatableInset::RESULT
 InsetText::localDispatch(BufferView * bv, FuncRequest const & ev)
 {
-	bool was_empty = par->size() == 0 && !par->next();
+	bool was_empty = (par->empty() && !par->next());
 	no_selection = false;
 	UpdatableInset::RESULT
 		result= UpdatableInset::localDispatch(bv, ev);
@@ -1533,7 +1533,7 @@ InsetText::localDispatch(BufferView * bv, FuncRequest const & ev)
 		updateLocal(bv, updwhat, updflag);
 	/// If the action has deleted all text in the inset, we need to change the
 	// language to the language of the surronding text.
-	if (!was_empty && par->size() == 0 && !par->next()) {
+	if (!was_empty && par->empty() && !par->next()) {
 		LyXFont font(LyXFont::ALL_IGNORE);
 		font.setLanguage(bv->getParentLanguage(this));
 		setFont(bv, font, false);
@@ -1987,7 +1987,7 @@ void InsetText::setFont(BufferView * bv, LyXFont const & font, bool toggleall,
 		the_locking_inset->setFont(bv, font, toggleall, selectall);
 		return;
 	}
-	if ((!par->next() && !par->size()) || !cpar(bv)->size()) {
+	if ((!par->next() && par->empty()) || cpar(bv)->empty()) {
 		getLyXText(bv)->setFont(bv, font, toggleall);
 		return;
 	}
@@ -2314,7 +2314,7 @@ void InsetText::resizeLyXText(BufferView * bv, bool force) const
 	}
 	do_resize = 0;
 //	lyxerr << "InsetText::resizeLyXText\n";
-	if (!par->next() && !par->size()) { // no data, resize not neccessary!
+	if (!par->next() && par->empty()) { // no data, resize not neccessary!
 		// we have to do this as a fixed width may have changed!
 		LyXText * t = getLyXText(bv);
 		saveLyXTextState(t);
@@ -2729,8 +2729,8 @@ void InsetText::collapseParagraphs(BufferView * bv) const
 	LyXText * llt = getLyXText(bv);
 
 	while(par->next()) {
-		if (par->size() && par->next()->size() &&
-			!par->isSeparator(par->size()-1))
+		if (!par->empty() && !par->next()->empty() &&
+			!par->isSeparator(par->size() - 1))
 		{
 			par->insertChar(par->size(), ' ');
 		}
@@ -2776,8 +2776,8 @@ void InsetText::appendParagraphs(BufferParams const & bparams,
 	lastbuffer = par;
 	while (lastbuffer->next())
 		lastbuffer = lastbuffer->next();
-	if (newpar->size() && lastbuffer->size() &&
-		!lastbuffer->isSeparator(lastbuffer->size()-1))
+	if (!newpar->empty() && !lastbuffer->empty() &&
+		!lastbuffer->isSeparator(lastbuffer->size() - 1))
 	{
 		lastbuffer->insertChar(lastbuffer->size(), ' ');
 	}

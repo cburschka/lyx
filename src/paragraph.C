@@ -524,7 +524,7 @@ LyXFont const Paragraph::getFontSettings(BufferParams const & bparams,
 	LyXFont retfont;
 	if (cit != end) {
 		retfont = cit->font();
-	} else if (pos == size() && size()) {
+	} else if (pos == size() && !empty()) {
 		retfont = getFontSettings(bparams, pos - 1);
 	} else
 		retfont = LyXFont(LyXFont::ALL_INHERIT, getParLanguage(bparams));
@@ -540,7 +540,7 @@ LyXFont const Paragraph::getFontSettings(BufferParams const & bparams,
 // Gets uninstantiated font setting at position 0
 LyXFont const Paragraph::getFirstFontSettings() const
 {
-	if (size() > 0 && !pimpl_->fontlist.empty())
+	if (!empty() && !pimpl_->fontlist.empty())
 		return pimpl_->fontlist[0].font();
 
 	return LyXFont(LyXFont::ALL_INHERIT);
@@ -803,9 +803,9 @@ void Paragraph::breakParagraph(BufferParams const & bparams,
 		tmp->setLabelWidthString(params().labelWidthString());
 	}
 
-	bool isempty = (layout()->keepempty && !size());
+	bool isempty = (layout()->keepempty && empty());
 
-	if (!isempty && (size() > pos || !size() || flag == 2)) {
+	if (!isempty && (size() > pos || empty() || flag == 2)) {
 		tmp->layout(layout());
 		tmp->params().align(params().align());
 		tmp->setLabelWidthString(params().labelWidthString());
@@ -873,7 +873,7 @@ int Paragraph::stripLeadingSpaces()
 	}
 
 	int i = 0;
-	while (size() && (isNewline(0) || isLineSeparator(0))) {
+	while (!empty() && (isNewline(0) || isLineSeparator(0))) {
 		erase(0);
 		++i;
 	}
@@ -1284,7 +1284,7 @@ Paragraph * Paragraph::TeXOnePar(Buffer const * buf,
 	// We do not need to use to change the font for the last paragraph
 	// or for a command.
 	LyXFont const font =
-		(size() == 0
+		(empty()
 		 ? getLayoutFont(bparams) : getFont(bparams, size() - 1));
 
 	bool is_command = style->isCommand();
@@ -1405,7 +1405,7 @@ int Paragraph::startTeXParParams(BufferParams const & bparams,
 		}
 		break;
 	}
-	
+
 	switch (params().align()) {
 	case LYX_ALIGN_NONE:
 	case LYX_ALIGN_BLOCK:
@@ -1460,7 +1460,7 @@ int Paragraph::endTeXParParams(BufferParams const & bparams,
 		}
 		break;
 	}
-	
+
 	switch (params().align()) {
 	case LYX_ALIGN_NONE:
 	case LYX_ALIGN_BLOCK:
@@ -1548,7 +1548,7 @@ bool Paragraph::simpleTeXOnePar(Buffer const * buf,
 	texrow.start(this, 0);
 
 	// if the paragraph is empty, the loop will not be entered at all
-	if (!size()) {
+	if (empty()) {
 		if (style->isCommand()) {
 			os << '{';
 			++column;
@@ -1866,7 +1866,7 @@ bool Paragraph::isWord(pos_type pos) const
 Language const *
 Paragraph::getParLanguage(BufferParams const & bparams) const
 {
-	if (size() > 0) {
+	if (!empty()) {
 #ifndef INHERIT_LANGUAGE
 		return getFirstFontSettings().language();
 #else
@@ -2033,6 +2033,12 @@ lyx::pos_type Paragraph::size() const
 }
 
 
+bool Paragraph::empty() const
+{
+	return pimpl_->empty();
+}
+
+
 Paragraph::value_type Paragraph::getChar(pos_type pos) const
 {
 	return pimpl_->getChar(pos);
@@ -2132,4 +2138,3 @@ Counters & Paragraph::counters()
 {
 	return pimpl_->ctrs;
 }
-

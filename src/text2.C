@@ -974,7 +974,7 @@ string const LyXText::selectionAsString(Buffer const * buffer,
 	Paragraph * endpar(selection.end.par());
 	pos_type const startpos(selection.start.pos());
 	pos_type const endpos(selection.end.pos());
-	 
+
 	if (startpar == endpar) {
 		return startpar->asString(buffer, startpos, endpos, label);
 	}
@@ -1024,7 +1024,7 @@ void LyXText::cursorEnd(BufferView * bview) const
 	    || cursor.row()->next()->par() != cursor.row()->par()) {
 		setCursor(bview, cursor.par(), rowLast(cursor.row()) + 1);
 	} else {
-		if (cursor.par()->size() &&
+		if (!cursor.par()->empty() &&
 		    (cursor.par()->getChar(rowLast(cursor.row())) == ' '
 		     || cursor.par()->isNewline(rowLast(cursor.row())))) {
 			setCursor(bview, cursor.par(), rowLast(cursor.row()));
@@ -1223,7 +1223,7 @@ void LyXText::setCounter(Buffer const * buf, Paragraph * par) const
 	if (par->previous()) {
 
 		par->counters().copy(par->previous()->counters(), par->counters(), "");
-		
+
 		par->params().appendix(par->previous()->params().appendix());
 		if (!par->params().appendix() && par->params().startOfAppendix()) {
 			par->params().appendix(true);
@@ -1273,12 +1273,12 @@ void LyXText::setCounter(Buffer const * buf, Paragraph * par) const
 	} else {
 		par->setLabelWidthString(string());
 	}
-   
+
 	// is it a layout that has an automatic label?
 	if (layout->labeltype >=  LABEL_COUNTER_CHAPTER) {
 
 		int i = layout->labeltype - LABEL_COUNTER_CHAPTER;
-		string numbertype, langtype;	
+		string numbertype, langtype;
 		ostringstream s;
 
 		if (i >= 0 && i<= buf->params.secnumdepth) {
@@ -1309,8 +1309,8 @@ void LyXText::setCounter(Buffer const * buf, Paragraph * par) const
 				else
 					langtype = "latin";
 			}
-		
-			s << par->counters().numberLabel(par->counters().sects[i], 
+
+			s << par->counters().numberLabel(par->counters().sects[i],
 				numbertype, langtype, head);
 
 			par->params().labelString(par->params().labelString() +s.str().c_str());
@@ -1324,7 +1324,7 @@ void LyXText::setCounter(Buffer const * buf, Paragraph * par) const
 		} else if (layout->labeltype == LABEL_COUNTER_ENUMI) {
 			par->counters().step(par->counters().enums[par->enumdepth]);
 
-			s << par->counters().numberLabel(par->counters().enums[par->enumdepth], 
+			s << par->counters().numberLabel(par->counters().enums[par->enumdepth],
 				"enumeration", langtype);
 			par->params().labelString(s.str().c_str());
 
@@ -2040,7 +2040,7 @@ namespace {
 		return false;
 	}
 }
- 
+
 
 void LyXText::setCursorFromCoordinates(BufferView * bview, LyXCursor & cur,
 				       int x, int y) const
@@ -2055,7 +2055,7 @@ void LyXText::setCursorFromCoordinates(BufferView * bview, LyXCursor & cur,
 	cur.x(x);
 	cur.y(y + row->baseline());
 	cur.row(row);
- 
+
 	if (beforeFullRowInset(*row, cur)) {
 		pos_type last = rowLastPrintable(row);
 		float x = getCursorX(bview, row->next(), cur.pos(), last, bound);
@@ -2281,7 +2281,7 @@ bool LyXText::deleteEmptyParagraphMechanism(BufferView * bview,
 	// we can't possibly have deleted a paragraph before this point
 	bool deleted = false;
 
-	if ((old_cursor.par()->size() == 0
+	if ((old_cursor.par()->empty()
 	     || (old_cursor.par()->size() == 1
 		 && old_cursor.par()->isLineSeparator(0)))) {
 		// ok, we will delete anything
@@ -2439,7 +2439,7 @@ LyXText::text_status LyXText::status() const
 void LyXText::status(BufferView * bview, LyXText::text_status st) const
 {
 	LyXText * t = bview->text;
- 
+
 	// We should only go up with refreshing code so this means that if
 	// we have a MORE refresh we should never set it to LITTLE if we still
 	// didn't handle it (and then it will be UNCHANGED. Now as long as

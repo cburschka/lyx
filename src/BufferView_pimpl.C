@@ -374,7 +374,7 @@ int BufferView::Pimpl::resizeCurrentBuffer()
 	owner_->allowInput();
 
 	updateScrollbar();
- 
+
 	return 0;
 }
 
@@ -2818,7 +2818,7 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev)
 			owner_->getDialogs()->showTabularCreate();
 			break;
 		}
- 
+
 		int r = 2;
 		int c = 2;
 		::sscanf(ev.argument.c_str(),"%d%d", &r, &c);
@@ -3329,7 +3329,7 @@ bool BufferView::Pimpl::insertInset(Inset * inset, string const & lout)
 		bv_->text->breakParagraph(bv_);
 		update(bv_->text, BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 
-		if (bv_->text->cursor.par()->size()) {
+		if (!bv_->text->cursor.par()->empty()) {
 			bv_->text->cursorLeft(bv_);
 
 			bv_->text->breakParagraph(bv_);

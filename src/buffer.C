@@ -1499,7 +1499,7 @@ void Buffer::insertStringAsLines(Paragraph *& par, pos_type & pos,
 	for(string::const_iterator cit = str.begin();
 	    cit != str.end(); ++cit) {
 		if (*cit == '\n') {
-			if (autobreakrows && (par->size() || layout->keepempty)) {
+			if (autobreakrows && (!par->empty() || layout->keepempty)) {
 				par->breakParagraph(params, pos,
 						    layout->isEnvironment());
 				par = par->next();

@@ -37,6 +37,10 @@ struct Paragraph::Pimpl {
 		return text.size();
 	}
 	///
+	bool empty() const {
+		return text.empty();
+	}
+	///
 	void clear();
 	///
 	void setContentsFromPar(Paragraph const * par);

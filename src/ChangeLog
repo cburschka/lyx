@@ -1,7 +1,15 @@
+2002-08-10  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* paragraph_pimpl.h (empty): new function
+
+	* paragraph.[Ch] (empty): new function
+
+	* other files: use the new Paragraph::empty function
+	
 2002-08-09  John Levon  <levon@movementarian.org>
 
 	* lyxtext.h: remove unused refresh_height
- 
+
 2002-08-09  John Levon  <levon@movementarian.org>
 
 	* Makefile.am:
@@ -10,49 +18,49 @@
 	* buffer.C:
 	* paragraph.h:
 	* paragraph.C: move sgml char escaping out of paragraph
- 
+
 	* paragraph.h:
 	* paragraph.C: remove id setter
- 
+
 	* buffer.C:
-	* paragraph.C: 
+	* paragraph.C:
 	* paragraph_pimpl.C: remove dead tex_code_break_column
- 
+
 	* bufferview_funcs.C: small cleanup
- 
-	* lyxfunc.C: remove dead proto 
+
+	* lyxfunc.C: remove dead proto
 
 	* lyxtext.h: make some stuff private. Remove some dead stuff.
 
 	* lyxgluelength.C: make as[LyX]String() readable
- 
+
 2002-08-08  John Levon  <levon@movementarian.org>
 
 	* LyXAction.h:
 	* LyXAction.C:
 	* MenuBackend.C:
-	* ToolbarDefaults.C: 
+	* ToolbarDefaults.C:
 	* lyxfunc.C:
 	* lyxrc.C:
 	* toc.C: lyxaction cleanup
- 
+
 2002-08-08  John Levon  <levon@movementarian.org>
 
 	* BufferView2.C: small cleanup
- 
+
 	* lyxfind.h:
 	* lyxfind.C: move unnecessary header into the .C
- 
+
 2002-08-08  John Levon  <levon@movementarian.org>
 
 	* funcrequest.h: just tedious nonsense
- 
+
 	* lyx_main.h:
 	* lyx_main.C: cleanups
- 
-	* buffer.C: 
+
+	* buffer.C:
 	* vspace.C: remove dead header lyx_main.h
- 
+
 2002-08-07  Angus Leeming  <leeming@lyx.org>
 
 	* Paragraph.[Ch]:
@@ -68,7 +76,7 @@
 	* BufferView_pimpl.C (resizeCurrentBuffer): update scrollbar
 
 	* BufferView_pimpl.C: announce X selection on double/triple
-	  click 
+	  click
 
 	* lyx_main.C: use correct bool in batch dispatch
 
@@ -90,7 +98,7 @@
 
 	* BufferView_pimpl.C (redoCurrentBuffer): fix screen update when
 	  document options change.
- 
+
 2002-08-06  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* counters.[Ch]
@@ -102,21 +110,21 @@
 2002-08-06  John Levon  <levon@movementarian.org>
 
 	* WordLangTuple.h: new file for word + language code tuple
- 
+
 	* SpellBase.h:
 	* pspell.h:
 	* pspell.C:
 	* ispell.h:
 	* ispell.C:
-	* lyxtext.h: 
+	* lyxtext.h:
 	* text.C:
 	* text2.C:
 	* BufferView.h:
 	* BufferView2.C: use WordLangTuple
- 
+
 	* layout.h:
 	* buffer.C: remove very dead LYX_LAYOUT_DEFAULT
- 
+
 2002-08-06  John Levon  <levon@movementarian.org>
 
 	* lyx_main.C: fix cmdline batch handling
