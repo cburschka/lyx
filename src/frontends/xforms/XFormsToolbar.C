@@ -190,7 +190,7 @@ void XFormsToolbar::toolbarItem::generateInactivePixmaps()
 Toolbars::ToolbarPtr make_toolbar(ToolbarBackend::Toolbar const & tbb,
 				  LyXView & owner)
 {
-	using lyx::frontend::XFormsToolbar
+	using lyx::frontend::XFormsToolbar;
 	return Toolbars::ToolbarPtr(new XFormsToolbar(tbb, owner));
 }
 
