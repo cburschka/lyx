@@ -31,10 +31,6 @@
 \bind "M-m e"			"math-superscript"
 \bind "M-m x"			"math-subscript"
 
-\bind "M-m S-A"		"command-sequence math-mode; font-roman; math-insert Å;"
-\bind "M-m S-O"		"command-sequence math-mode; font-roman; math-insert Ø;"
-\bind "M-m S-T"		"command-sequence math-mode; math-insert \mathrm; math-insert T;"
-
 \bind "M-m u"			"math-insert \sum"
 \bind "M-m i"			"math-insert \int"
 \bind "M-m m"			"math-mode"
@@ -59,11 +55,13 @@
 \bind "M-m o 8"   "self-insert \#8"
 \bind "M-m o 9"   "self-insert \#9"
 
+\bind "M-m t n"   "math-mutate none"
 \bind "M-m t t"   "math-mutate dump"
 \bind "M-m t a"   "math-mutate align"
-\bind "M-m t i"   "math-mutate inline"
-\bind "M-m t d"   "math-mutate display"
+\bind "M-m t i"   "math-mutate simple"
+\bind "M-m t d"   "math-mutate equation"
 \bind "M-m t e"   "math-mutate eqnarray"
+\bind "M-m t m"   "math-mutate multline"
 
 \bind "M-m c i"   "math-column-insert"
 \bind "M-m c d"   "math-column-delete"

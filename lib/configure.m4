@@ -285,6 +285,10 @@ LYXRC_PROG([for ChkTeX], \chktex_command,dnl
 # Search for a spellchecker
 LYXRC_PROG([for a spell-checker], \spell_command, ispell)
 
+# Search for computer algebra systems
+SEARCH_PROG([for Octave],OCTAVE,octave)
+SEARCH_PROG([for Maple],MAPLE,maple)
+
 dnl # Search a Fax handling program
 dnl SEARCH_PROG([for a fax driver], FAX, sendfax faxsend fax)
 dnl if test $FAX = sendfax ; then

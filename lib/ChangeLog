@@ -1,3 +1,10 @@
+2002-07-30  André Pönitz <poenitz@gmx.net>
+	
+	* configure.m4:
+	* ui/default.ui: make math-extern a bit more visible in Edit->Math
+
+	* bind/math.bind: remove some strange bindings for Ø and Å
+
 2002-07-30  Angus Leeming  <leeming@lyx.org>
 
 	* scripts/lyxpreview2ppm.sh: rename bbox.sed so that multiple runs

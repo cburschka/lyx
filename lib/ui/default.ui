@@ -126,13 +126,9 @@ Menuset
 	Item "Toggle numbering of line|u" "math-nonumber"
 	Item "Toggle limits|l" "math-limits"
 	Separator
-	Item "Inline formula|I" "math-mutate simple"
-	Item "Displayed formula|D" "math-mutate equation"
-	Item "Eqnarray environment|q" "math-mutate eqnarray"
-	Item "Align environment|A" "math-mutate align"
-	Item "AlignAt environment" "math-mutate alignat"
-	Item "XAlignAt environment" "math-mutate xalignat"
-	Item "XXAlignAt environment" "math-mutate xxalignat"
+	Submenu "Change formula type...|t" "edit_math_mutate"
+	Separator
+	Submenu "Call external CAS...|t" "edit_math_extern"
 	Separator
 	Item "Align Left|f" "math-halign left"
 	Item "Align Center|C" "math-halign center"
@@ -147,6 +143,26 @@ Menuset
 	Separator
 	Item "Add Column" "math-column-insert"
 	Item "Delete Column" "math-column-delete"
+    End
+
+    Menu "edit_math_extern"
+	Item "Octave" "math-extern octave"
+	Separator
+	Item "Maple, simplify" "math-extern maple simplify"
+	Item "Maple, factor" "math-extern maple factor"
+	Item "Maple, evalm" "math-extern maple evalm"
+	Item "Maple, evalf" "math-extern maple evalf"
+    End
+
+    Menu "edit_math_mutate"
+	Item "Inline formula|I" "math-mutate simple"
+	Item "Displayed formula|D" "math-mutate equation"
+	Item "Eqnarray environment|q" "math-mutate eqnarray"
+	Item "Align environment|A" "math-mutate align"
+	Item "AlignAt environment" "math-mutate alignat"
+	Item "XAlignAt environment" "math-mutate xalignat"
+	Item "XXAlignAt environment" "math-mutate xxalignat"
+	Item "Multline environment" "math-mutate multline"
     End
 
 #
@@ -199,6 +215,7 @@ Menuset
 	Item "AMS alignat environment|t" "command-sequence math-mode; math-mutate alignat;"
 	Item "AMS xalignat environment|x" "command-sequence math-mode; math-mutate xalignat;"
 	Item "AMS xxalignat environment" "command-sequence math-mode; math-mutate xxalignat;"
+	Item "AMS multline environment" "command-sequence math-mode; math-mutate multline;"
   Separator
 	Item "Array environment|y" "math-insert matrix 2 2"
 	Item "Cases environment|C" "math-insert cases 2"
