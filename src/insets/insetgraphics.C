@@ -486,7 +486,8 @@ void InsetGraphics::readFigInset(LyXLex & lex)
 			if (lex.next())
 				params_.lyxwidth = LyXLength(lex.getString()+"pt");
 			if (lex.next())
-				params_.lyxheight = LyXLength(lex.getString()+"pt");
+				params_.lyxheight = LyXLength(lex.getString()+"pt");	
+			params_.lyxsize_type = InsetGraphicsParams::WH;
 		} else if (token == "flags") {
 			if (lex.next())
 				switch (lex.getInteger()) {

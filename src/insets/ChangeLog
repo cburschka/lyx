@@ -1,3 +1,7 @@
+2002-03-26  Herbert Voss  <voss@lyx.org>
+
+	* insetgraphics.C (figinsetRead): set the right lyxview
+
 2002-03-26  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* insetgraphicsParams.C (latexify): use \textbackslash in preference to
