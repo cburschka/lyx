@@ -136,7 +136,7 @@ void QContentPane::resizeEvent(QResizeEvent *)
 	}
 
 	pixmap_->resize(width(), height());
-	// FIXME wa_->workAreaResize();
+	wa_->workAreaResize();
 }
 
  
@@ -144,9 +144,7 @@ void QContentPane::paintEvent(QPaintEvent * e)
 {
 	if (!pixmap_.get()) {
 		pixmap_.reset(new QPixmap(width(), height()));
-		// FIXME: hmm. We do this to get an /initial/
-		// painting. So it's wrong.
-		// FIXME wa_->workAreaResize();
+		wa_->workAreaResize();
 		return;
 	}
 

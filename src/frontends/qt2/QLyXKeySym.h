@@ -27,11 +27,13 @@ class QLyXKeySym : public LyXKeySym {
 public:
 	QLyXKeySym();
 
+	virtual ~QLyXKeySym() {}
+
+	/// delayed constructor
 	void set(int key, QString const & text);
 
+	/// set from a LyX symbolic name
 	virtual void init(string const & symbolname);
-
-	virtual ~QLyXKeySym() {}
 
 	/// Is this a valid key?
 	virtual bool isOK() const;
@@ -39,6 +41,7 @@ public:
 	/// Is this a modifier key only?
 	virtual bool isModifier() const;
 	
+	/// return the LyX symbolic name
 	virtual string getSymbolName() const;
 
 	/**
@@ -51,7 +54,13 @@ public:
 	virtual bool operator==(LyXKeySym const & k) const;
 
 private:
+	/// the Qt sym value
 	int key_;
+	/**
+	 * The generated text from the symbol. This will only be
+	 * filled when the QLyXKeySym is used to pass a key press
+	 * event, not when stored in a kbsequence etc.
+	 */
 	QString text_;
 };
 

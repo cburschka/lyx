@@ -136,6 +136,8 @@ void QScreen::hideCursor()
  
 void QScreen::expose(int x, int y, int exp_width, int exp_height)
 {
+	lyxerr[Debug::GUI] << "expose " << exp_width << "x" << exp_height
+		<< "+" << x << "+" << y << endl;
 	owner_.getContent()->update(x, y, exp_width, exp_height);
 }
 

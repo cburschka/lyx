@@ -70,12 +70,6 @@ QWorkArea::~QWorkArea()
 }
 
 
-void QWorkArea::resize(int xpos, int ypos, int width, int height)
-{
-	setGeometry(xpos, ypos, width, height);
-}
-
-
 void QWorkArea::setScrollbarParams(int h, int pos, int line_h)
 {
 	// do what cursor movement does (some grey)

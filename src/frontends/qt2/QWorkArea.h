@@ -48,8 +48,6 @@ public:
 	virtual int workWidth() const { return content_->width(); }
 	/// return the height of the content pane
 	virtual int workHeight() const { return content_->height(); }
-	/// FIXME: makes no sense ?
-	virtual void redraw() const { }
 	/// 
 	virtual void setScrollbarParams(int height, int pos, int line_height);
  

@@ -286,7 +286,6 @@ void LyXScreen::redraw(LyXText * text, BufferView * bv)
 		cursor_visible_ = false;
 		bv->showCursor();
 	}
- 
 }
 
 
