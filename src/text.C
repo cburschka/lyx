@@ -772,7 +772,7 @@ void LyXText::breakParagraph(ParagraphList & paragraphs, char keep_layout)
 	//
 	// It is better to erase the space (Dekel)
 	if (cursor.pos() < cpit->size() && cpit->isLineSeparator(cursor.pos()))
-	   cpit->erase(cursor.pos());
+		cpit->erase(cursor.pos());
 
 	// break the paragraph
 	if (keep_layout)
@@ -788,10 +788,6 @@ void LyXText::breakParagraph(ParagraphList & paragraphs, char keep_layout)
 	::breakParagraph(bv()->buffer()->params(), paragraphs, cpit,
 			 cursor.pos(), keep_layout);
 
-#warning Trouble Point! (Lgb)
-	// When ::breakParagraph is called from within an inset we must
-	// ensure that the correct ParagraphList is used. Today that is not
-	// the case and the Buffer::paragraphs is used. Not good. (Lgb)
 	cpit = cursorPar();
 	ParagraphList::iterator next_par = boost::next(cpit);
 
