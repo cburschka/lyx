@@ -12,7 +12,6 @@
 
 #include "math_stackrelinset.h"
 #include "math_mathmlstream.h"
-#include "math_support.h"
 
 
 using std::max;

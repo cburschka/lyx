@@ -12,12 +12,9 @@
 
 #include "math_fontinset.h"
 #include "math_mathmlstream.h"
-#include "math_streamstr.h"
-#include "math_support.h"
 #include "math_parser.h"
 #include "LaTeXFeatures.h"
 #include "support/LOstream.h"
-#include "textpainter.h"
 
 using std::auto_ptr;
 

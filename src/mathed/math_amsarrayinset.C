@@ -12,10 +12,8 @@
 
 #include "math_amsarrayinset.h"
 #include "math_mathmlstream.h"
-#include "metricsinfo.h"
 #include "math_streamstr.h"
 #include "math_support.h"
-#include "Lsstream.h"
 
 using std::auto_ptr;
 

@@ -14,7 +14,6 @@
 #include "math_parser.h"
 #include "math_mathmlstream.h"
 #include "math_streamstr.h"
-#include "math_support.h"
 #include "support/LOstream.h"
 
 using std::atoi;

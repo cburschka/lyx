@@ -11,8 +11,6 @@
 #include <config.h>
 
 #include "math_diminset.h"
-#include "Lsstream.h"
-#include "textpainter.h"
 
 
 void MathDimInset::metricsT(TextMetricsInfo const &) const

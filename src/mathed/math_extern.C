@@ -14,7 +14,6 @@
 
 #include <config.h>
 
-#include "math_amsarrayinset.h"
 #include "math_arrayinset.h"
 #include "math_charinset.h"
 #include "math_deliminset.h"
@@ -29,16 +28,12 @@
 #include "math_scriptinset.h"
 #include "math_stringinset.h"
 #include "math_symbolinset.h"
-#include "math_unknowninset.h"
 #include "math_parser.h"
 #include "Lsstream.h"
 #include "debug.h"
-#include "support/lyxlib.h"
-#include "support/systemcall.h"
 #include "support/filetools.h"
 #include "support/lstrings.h"
 
-#include <algorithm>
 
 using namespace lyx::support;
 

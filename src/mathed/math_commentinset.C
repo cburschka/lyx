@@ -11,12 +11,9 @@
 #include <config.h>
 
 #include "math_commentinset.h"
-#include "math_data.h"
 #include "math_support.h"
 #include "math_mathmlstream.h"
-#include "LaTeXFeatures.h"
 #include "support/LOstream.h"
-#include "textpainter.h"
 
 using std::auto_ptr;
 

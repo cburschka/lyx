@@ -12,7 +12,6 @@
 
 #include "math_biginset.h"
 #include "math_support.h"
-#include "math_parser.h"
 #include "math_mathmlstream.h"
 #include "math_streamstr.h"
 

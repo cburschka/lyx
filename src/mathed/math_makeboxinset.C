@@ -13,8 +13,6 @@
 #include "math_makeboxinset.h"
 #include "math_support.h"
 #include "math_mathmlstream.h"
-#include "math_streamstr.h"
-#include "frontends/Painter.h"
 
 using std::auto_ptr;
 

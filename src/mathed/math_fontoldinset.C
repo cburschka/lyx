@@ -13,11 +13,8 @@
 #include "math_fontoldinset.h"
 #include "math_mathmlstream.h"
 #include "math_streamstr.h"
-#include "math_support.h"
 #include "math_parser.h"
-#include "textpainter.h"
 #include "support/LOstream.h"
-#include "frontends/Painter.h"
 
 using std::auto_ptr;
 

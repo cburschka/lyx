@@ -12,12 +12,9 @@
 
 #include "math_spaceinset.h"
 #include "math_data.h"
-#include "math_support.h"
-#include "LColor.h"
 #include "frontends/Painter.h"
 #include "math_mathmlstream.h"
 #include "LaTeXFeatures.h"
-#include "debug.h"
 
 using std::auto_ptr;
 

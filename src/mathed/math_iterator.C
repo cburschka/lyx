@@ -12,7 +12,6 @@
 
 #include "math_iterator.h"
 #include "math_inset.h"
-#include "debug.h"
 #include "support/LAssert.h"
 
 using namespace lyx::support;

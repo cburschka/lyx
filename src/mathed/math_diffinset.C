@@ -11,9 +11,7 @@
 #include <config.h>
 
 #include "math_diffinset.h"
-#include "math_support.h"
 #include "math_mathmlstream.h"
-#include "math_symbolinset.h"
 #include "debug.h"
 
 using std::auto_ptr;

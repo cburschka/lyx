@@ -11,9 +11,7 @@
 #include <config.h>
 
 #include "math_matrixinset.h"
-#include "math_parser.h"
 #include "math_mathmlstream.h"
-#include "Lsstream.h"
 
 using std::auto_ptr;
 

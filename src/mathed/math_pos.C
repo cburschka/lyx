@@ -14,7 +14,6 @@
 #include "math_inset.h"
 #include "debug.h"
 #include "support/LAssert.h"
-#include "support/LOstream.h"
 
 using namespace lyx::support;
 

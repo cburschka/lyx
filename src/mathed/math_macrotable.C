@@ -11,14 +11,9 @@
 #include <config.h>
 
 #include "math_macrotable.h"
-#include "math_macro.h"
 #include "math_macrotemplate.h"
-#include "math_parser.h"
-#include "math_mathmlstream.h"
 #include "debug.h"
-#include "math_support.h" // math_font_available
 
-#include <iostream>
 
 using std::endl;
 

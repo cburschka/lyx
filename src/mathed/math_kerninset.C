@@ -11,7 +11,6 @@
 #include <config.h>
 
 #include "math_kerninset.h"
-#include "math_extern.h"
 #include "math_mathmlstream.h"
 #include "math_streamstr.h"
 #include "math_support.h"

@@ -23,7 +23,6 @@
 #include "frontends/LyXView.h"
 #include "frontends/Dialogs.h"
 
-#include "support/LOstream.h"
 
 using std::auto_ptr;
 using std::endl;

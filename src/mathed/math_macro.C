@@ -17,9 +17,6 @@
 #include "math_macrotable.h"
 #include "math_macrotemplate.h"
 #include "math_mathmlstream.h"
-#include "math_streamstr.h"
-#include "support/lstrings.h"
-#include "support/LAssert.h"
 #include "debug.h"
 #include "LaTeXFeatures.h"
 

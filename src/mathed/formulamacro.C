@@ -12,26 +12,16 @@
 #include <config.h>
 
 #include "formulamacro.h"
-#include "lfuns.h"
 #include "math_cursor.h"
-#include "math_parser.h"
-#include "math_macro.h"
 #include "math_macrotable.h"
 #include "math_macrotemplate.h"
-#include "metricsinfo.h"
-#include "math_support.h"
 #include "math_mathmlstream.h"
-#include "BufferView.h"
 #include "gettext.h"
 #include "latexrunparams.h"
 #include "frontends/Painter.h"
 #include "frontends/font_metrics.h"
-#include "support/lyxlib.h"
 #include "support/lstrings.h"
-#include "support/LOstream.h"
-#include "debug.h"
 #include "lyxlex.h"
-#include "lyxtext.h"
 #include "Lsstream.h"
 
 using namespace lyx::support;

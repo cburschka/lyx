@@ -12,19 +12,12 @@
 #include <config.h>
 
 #include "math_charinset.h"
-#include "LColor.h"
 #include "dimension.h"
-#include "frontends/Painter.h"
-#include "frontends/font_metrics.h"
 #include "support/LOstream.h"
-#include "debug.h"
 #include "math_support.h"
 #include "math_mathmlstream.h"
-#include "LaTeXFeatures.h"
 #include "textpainter.h"
 
-#include <cctype>
-#include <cstring>
 
 
 using std::ostream;

@@ -11,7 +11,6 @@
 
 #include <config.h>
 
-#include "math_macroarg.h"
 #include "math_macro.h"
 #include "math_mathmlstream.h"
 #include "math_support.h"

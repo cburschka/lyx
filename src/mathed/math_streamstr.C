@@ -10,10 +10,7 @@
 
 #include <config.h>
 
-#include "math_streamstr.h"
 #include "math_mathmlstream.h"
-#include "support/LOstream.h"
-#include "support/lyxalgo.h"
 
 
 WriteStream & operator<<(WriteStream & ws, string const & s)

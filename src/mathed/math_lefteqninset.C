@@ -11,7 +11,6 @@
 #include <config.h>
 
 #include "math_lefteqninset.h"
-#include "math_support.h"
 #include "support/LOstream.h"
 
 using std::auto_ptr;

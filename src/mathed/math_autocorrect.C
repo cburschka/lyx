@@ -10,7 +10,6 @@
 
 #include <config.h>
 
-#include "LString.h"
 #include "Lsstream.h"
 #include "debug.h"
 #include "support/filetools.h" //  LibFileSearch
@@ -18,9 +17,7 @@
 #include "math_inset.h"
 #include "math_parser.h"
 
-#include <iostream>
 #include <fstream>
-#include <vector>
 
 using namespace lyx::support;
 

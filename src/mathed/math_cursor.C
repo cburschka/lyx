@@ -13,24 +13,18 @@
 
 #include <lyxrc.h>
 
-#include "support/lstrings.h"
 #include "support/LAssert.h"
 #include "support/limited_stack.h"
 #include "debug.h"
 #include "Lsstream.h"
-#include "frontends/Painter.h"
 #include "math_cursor.h"
 #include "formulabase.h"
 #include "funcrequest.h"
-#include "math_autocorrect.h"
 #include "math_braceinset.h"
 #include "math_commentinset.h"
 #include "math_charinset.h"
-#include "math_extern.h"
 #include "math_factory.h"
-#include "math_fontinset.h"
 #include "math_gridinset.h"
-#include "math_iterator.h"
 #include "math_macroarg.h"
 #include "math_macrotemplate.h"
 #include "math_mathmlstream.h"
@@ -39,8 +33,6 @@
 #include "math_support.h"
 #include "math_unknowninset.h"
 
-#include <algorithm>
-#include <cctype>
 
 //#define FILEDEBUG 1
 

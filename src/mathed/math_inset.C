@@ -11,15 +11,10 @@
 
 #include <config.h>
 
-#include "math_inset.h"
-#include "math_scriptinset.h"
 #include "math_mathmlstream.h"
 #include "math_cursor.h"
 #include "debug.h"
 
-#include "frontends/LyXView.h"
-#include "frontends/Dialogs.h"
-#include "BufferView.h"
 #include "formulabase.h"
 
 using std::ostream;

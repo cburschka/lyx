@@ -10,10 +10,7 @@
 
 #include <config.h>
 
-#include "math_data.h"
-#include "math_inset.h"
 #include "math_cursor.h"
-#include "math_deliminset.h"
 #include "math_fontinset.h"
 #include "math_scriptinset.h"
 #include "math_mathmlstream.h"
@@ -21,10 +18,7 @@
 #include "math_replace.h"
 #include "debug.h"
 #include "support/LAssert.h"
-#include "metricsinfo.h"
-#include "math_data.h"
 #include "frontends/Painter.h"
-#include "textpainter.h"
 
 using namespace lyx::support;
 

@@ -12,11 +12,9 @@
 #include <config.h>
 
 #include "math_deliminset.h"
-#include "math_parser.h"
 #include "math_support.h"
 #include "math_mathmlstream.h"
 #include "math_streamstr.h"
-#include "math_extern.h"
 
 
 using std::max;

@@ -29,7 +29,6 @@
 #include "math_macro.h"
 #include "math_macrotable.h"
 #include "math_macrotemplate.h"
-#include "math_macroarg.h"
 #include "math_makeboxinset.h"
 #include "math_oversetinset.h"
 #include "math_parboxinset.h"
@@ -49,8 +48,6 @@
 //#include "insets/insetref.h"
 #include "ref_inset.h"
 
-#include "metricsinfo.h"
-#include "math_data.h"
 #include "debug.h"
 #include "math_support.h"
 #include "Lsstream.h"
@@ -58,7 +55,6 @@
 #include "support/lstrings.h"
 #include "frontends/lyx_gui.h"
 
-#include <map>
 #include <fstream>
 
 using namespace lyx::support;

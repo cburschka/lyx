@@ -12,7 +12,6 @@
 
 #include "math_substackinset.h"
 #include "math_mathmlstream.h"
-#include "math_streamstr.h"
 #include "support/LOstream.h"
 
 using std::auto_ptr;

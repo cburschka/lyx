@@ -23,14 +23,11 @@
 #include "Lsstream.h"
 #include "LaTeXFeatures.h"
 #include "support/LAssert.h"
-#include "frontends/Painter.h"
 
 #include "frontends/Alert.h"
 #include "lyxrc.h"
 #include "gettext.h"
-#include "BufferView.h"
 
-#include <vector>
 
 using namespace lyx::support;
 

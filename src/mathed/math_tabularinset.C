@@ -11,11 +11,8 @@
 #include <config.h>
 
 #include "math_tabularinset.h"
-#include "math_parser.h"
 #include "math_mathmlstream.h"
-#include "metricsinfo.h"
 #include "math_streamstr.h"
-#include "Lsstream.h"
 
 #include <iterator>
 

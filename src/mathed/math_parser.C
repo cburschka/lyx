@@ -39,27 +39,21 @@ following hack as starting point to write some macros:
 #include <config.h>
 
 #include "math_parser.h"
-#include "math_inset.h"
 #include "math_arrayinset.h"
 #include "math_braceinset.h"
-#include "math_boxinset.h"
 #include "math_charinset.h"
 #include "math_commentinset.h"
 #include "math_deliminset.h"
 #include "math_envinset.h"
-#include "math_extern.h"
 #include "math_factory.h"
 #include "math_kerninset.h"
 #include "math_macro.h"
 #include "math_macrotemplate.h"
-#include "math_hullinset.h"
 #include "math_parboxinset.h"
 #include "math_parinset.h"
 #include "math_rootinset.h"
 #include "math_scriptinset.h"
-#include "math_sizeinset.h"
 #include "math_sqrtinset.h"
-#include "math_stringinset.h"
 #include "math_support.h"
 #include "math_tabularinset.h"
 
@@ -69,10 +63,7 @@ following hack as starting point to write some macros:
 #include "lyxlex.h"
 #include "Lsstream.h"
 #include "debug.h"
-#include "support/LAssert.h"
 
-#include <cctype>
-#include <algorithm>
 
 using std::istream;
 using std::ostream;

@@ -12,9 +12,7 @@
 
 #include "math_atom.h"
 #include "math_inset.h"
-#include "insets/insetbase.h"
 
-#include <utility>
 
 
 MathAtom::MathAtom()

@@ -1,3 +1,7 @@
+2003-09-05  Angus Leeming  <leeming@lyx.org>
+
+	* most .C files: strip out redundant #includes.
+
 2003-09-02  Alfredo Braunstein  <abraunst@libero.it>
 
 	* formulamacro.C (prefix): replace %s by %1$s to make bformat happy

@@ -11,7 +11,6 @@
 #include <config.h>
 
 #include "math_casesinset.h"
-#include "math_parser.h"
 #include "math_mathmlstream.h"
 #include "math_support.h"
 #include "LaTeXFeatures.h"

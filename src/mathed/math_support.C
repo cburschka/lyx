@@ -12,17 +12,12 @@
 #include <config.h>
 
 #include "math_support.h"
-#include "lyxfont.h"
-#include "math_inset.h"
 #include "math_parser.h"
-#include "metricsinfo.h"
 #include "math_data.h"
 #include "frontends/Painter.h"
 #include "frontends/font_metrics.h"
 #include "frontends/lyx_gui.h"
 #include "debug.h"
-#include "lfuns.h"
-#include "dimension.h"
 #include "Lsstream.h"
 #include "math_mathmlstream.h"
 

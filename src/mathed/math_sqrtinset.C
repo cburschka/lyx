@@ -12,7 +12,6 @@
 
 #include "math_sqrtinset.h"
 #include "math_mathmlstream.h"
-#include "LColor.h"
 #include "frontends/Painter.h"
 #include "textpainter.h"
 
