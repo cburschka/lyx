@@ -57,7 +57,7 @@
 #include "FormBox.h"
 #include "FormBranch.h"
 #include "FormChanges.h"
-#include "FormCharacter.h"
+#include "GCharacter.h"
 #include "FormCitation.h"
 #include "FormDocument.h"
 #include "FormErrorList.h"
@@ -198,8 +198,9 @@ Dialogs::DialogPtr Dialogs::build(string const & name)
 		dialog->setView(new FormChanges(*dialog));
 		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
 	} else if (name == "character") {
+		dialog->bc().view(new GBC(dialog->bc()));
 		dialog->setController(new ControlCharacter(*dialog));
-		dialog->setView(new FormCharacter(*dialog));
+		dialog->setView(new GCharacter(*dialog));
 		dialog->bc().bp(new OkApplyCancelReadOnlyPolicy);
 	} else if (name == "citation") {
 		dialog->setController(new ControlCitation(*dialog));
