@@ -506,6 +506,14 @@ Inset::RESULT InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 		updateLocal(bv, false);
 		break;
 
+	case LFUN_UP_PARAGRAPHSEL:
+	case LFUN_UP_PARAGRAPH:
+	case LFUN_DOWN_PARAGRAPHSEL:
+	case LFUN_DOWN_PARAGRAPH:
+		result = FINISHED;
+		updateLocal(bv, false);
+		break;
+
 	case LFUN_HOMESEL:
 	case LFUN_WORDLEFTSEL:
 		sel = true; // fall through
