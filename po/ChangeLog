@@ -1,3 +1,8 @@
+2003-11-14  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* Makefile.in.in (xforms_l10n.pot): skip entries in symbol font
+	(we do not want to translate them...)
+
 2003-11-03  Claus Hindsgaul  <claus_h@image.dk>
 
 	* da.po: update

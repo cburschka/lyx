@@ -89,8 +89,8 @@ void QDocument::build_dialog()
 	dialog_->langModule->quoteStyleCO->insertItem(qt_("''text''"));
 	dialog_->langModule->quoteStyleCO->insertItem(qt_(",,text``"));
 	dialog_->langModule->quoteStyleCO->insertItem(qt_(",,text''"));
-	dialog_->langModule->quoteStyleCO->insertItem(qt_("«text»"));
-	dialog_->langModule->quoteStyleCO->insertItem(qt_("»text«"));
+	dialog_->langModule->quoteStyleCO->insertItem(qt_("<<text>>"));
+	dialog_->langModule->quoteStyleCO->insertItem(qt_(">>text<<"));
 
 	// packages
 	for (int n = 0; tex_graphics[n][0]; ++n) {

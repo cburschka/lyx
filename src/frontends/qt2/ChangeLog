@@ -1,3 +1,12 @@
+2003-11-14  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* ui/QMathDialogBase.ui: remove mention of \frac in tooltip, since
+	\f is interpreted by gettext as a special sequence.
+
+	* QDocument.C (build_dialog): 
+	* ui/QTabularDialogBase.ui: remove use of latin1 in
+	some translatable strings. It confuses gettext.
+
 2003-10-22  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* lyx_gui.C (needs_ugly_metrics_hack): new function. Returns true

@@ -48,6 +48,9 @@ What's new
 
 - fix installation problem when the program makepsres does not exist
 
+- remove non-ascii characters from translatable strings. This
+  simplifies the work of translators
+
 - add a couple forgotten MacOSX-related files
 
 - a better fix for badly placed math symbols with LyX/Mac

@@ -291,7 +291,7 @@ void FormDocument::build()
 
 	fl_addto_choice(language_->choice_quotes_language,
 			_(" ``text'' | ''text'' | ,,text`` | ,,text'' |"
-			  " «text» | »text« "));
+			  " <<text>> | >>text<< "));
 
 	// the document options form
 	options_.reset(build_document_options(this));
