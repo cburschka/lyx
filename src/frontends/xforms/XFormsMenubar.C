@@ -30,8 +30,6 @@ using namespace lyx::support;
 
 using std::endl;
 using std::for_each;
-using std::max;
-using std::min;
 using std::vector;
 
 

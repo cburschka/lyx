@@ -37,15 +37,11 @@
 
 namespace support = lyx::support;
 
-
 using std::endl;
 using std::find;
 using std::fill;
 using std::find_if;
-using std::getline;
 using std::make_pair;
-using std::setfill;
-using std::setw;
 
 using std::ifstream;
 using std::list;
@@ -55,6 +51,7 @@ using std::ostream;
 using std::ostringstream;
 using std::pair;
 using std::vector;
+
 
 namespace {
 

@@ -22,7 +22,6 @@
 
 #include "lyx_forms.h"
 
-using std::endl;
 using std::make_pair;
 using std::pair;
 

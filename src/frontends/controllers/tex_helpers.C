@@ -26,10 +26,7 @@
 
 using namespace lyx::support;
 
-using std::vector;
 using std::endl;
-using std::sort;
-using std::unique;
 
 
 // build filelists of all availabe bst/cls/sty-files. done through

@@ -17,10 +17,6 @@
 #include "qt_helpers.h"
 #include "gettext.h"
 
-#include <utility>
-
-using std::make_pair;
-using std::pair;
 using std::endl;
 
 

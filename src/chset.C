@@ -22,20 +22,20 @@
 
 using namespace lyx::support;
 
-using std::ifstream;
-using std::getline;
-using std::pair;
-using std::make_pair;
 using std::endl;
+using std::getline;
+using std::make_pair;
+
+using std::ifstream;
+using std::pair;
+
 using boost::regex;
-using boost::regex_match;
 
 #ifndef USE_INCLUDED_STRING
 using boost::smatch;
 #else
 using boost::cmatch;
 #endif
-
 
 
 bool CharacterSet::loadFile(string const & fname)

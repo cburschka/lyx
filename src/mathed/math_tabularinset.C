@@ -17,10 +17,6 @@
 
 #include <iterator>
 
-using std::vector;
-using std::istringstream;
-using std::getline;
-using std::istream_iterator;
 using std::auto_ptr;
 
 

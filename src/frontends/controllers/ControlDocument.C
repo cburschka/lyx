@@ -33,8 +33,6 @@
 
 using namespace lyx::support;
 
-using std::endl;
-
 
 ControlDocument::ControlDocument(LyXView & lv, Dialogs & d)
 	: ControlDialogBD(lv, d), bp_(0)

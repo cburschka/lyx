@@ -20,11 +20,6 @@
 #include <qcursor.h>
 
 
-using std::endl;
-using std::vector;
-using std::max;
-using std::min;
-using std::for_each;
 using std::pair;
 
 

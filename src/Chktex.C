@@ -25,8 +25,8 @@
 
 using namespace lyx::support;
 
-using std::ifstream;
 using std::getline;
+using std::ifstream;
 
 
 Chktex::Chktex(string const & chktex, string const & f, string const & p)

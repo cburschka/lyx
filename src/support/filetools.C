@@ -69,17 +69,17 @@
 
 #ifndef CXX_GLOBAL_CSTD
 using std::fgetc;
-using std::isalpha;
 using std::isalnum;
+using std::isalpha;
 #endif
 
-using std::make_pair;
-using std::pair;
 using std::endl;
+using std::getline;
+using std::make_pair;
+
 using std::ifstream;
 using std::ostringstream;
 using std::vector;
-using std::getline;
 
 
 namespace lyx {

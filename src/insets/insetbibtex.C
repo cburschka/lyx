@@ -30,6 +30,7 @@ using namespace lyx::support;
 
 using std::endl;
 using std::getline;
+
 using std::ifstream;
 using std::ostream;
 using std::pair;

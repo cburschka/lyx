@@ -19,11 +19,12 @@
 
 #include <iterator>
 
-using std::vector;
-using std::istringstream;
 using std::getline;
-using std::istream_iterator;
+
 using std::auto_ptr;
+using std::istringstream;
+using std::istream_iterator;
+using std::vector;
 
 
 MathArrayInset::MathArrayInset(string const & name, int m, int n)

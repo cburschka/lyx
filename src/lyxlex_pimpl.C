@@ -22,14 +22,14 @@
 
 using namespace lyx::support;
 
+using std::endl;
+using std::getline;
+using std::lower_bound;
 using std::sort;
-using std::ostream;
+
 using std::ios;
 using std::istream;
-using std::endl;
-using std::lower_bound;
-using std::vector;
-using std::getline;
+using std::ostream;
 
 // namespace {
 struct compare_tags {

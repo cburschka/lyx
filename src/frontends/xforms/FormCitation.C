@@ -27,9 +27,7 @@ using namespace lyx::support;
 
 using std::find;
 using std::max;
-using std::min;
-using std::sort;
-using std::pair;
+
 using std::vector;
 
 

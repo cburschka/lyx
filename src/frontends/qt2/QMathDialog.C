@@ -26,8 +26,6 @@
 #include <qlistbox.h>
 #include <qpopupmenu.h>
 
-using std::min;
-using std::max;
 
 
 class QScrollViewSingle : public QScrollView {

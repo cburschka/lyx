@@ -24,8 +24,6 @@
 #include "QCitation.h"
 
 using std::vector;
-using std::find;
-using std::max;
 
 
 QCitationDialog::QCitationDialog(QCitation * form)

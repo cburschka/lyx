@@ -28,7 +28,6 @@
 
 using std::vector;
 using std::max;
-using std::endl;
 using std::ostream;
 
 namespace lyx {

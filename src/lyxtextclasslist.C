@@ -27,11 +27,13 @@ using std::exit;
 #endif
 
 using lyx::textclass_type;
-using std::pair;
-using std::make_pair;
+
 using std::endl;
 using std::find_if;
+using std::make_pair;
 using std::sort;
+
+using std::pair;
 
 
 // Gets textclass number from name

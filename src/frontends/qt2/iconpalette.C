@@ -10,7 +10,6 @@
 
 #include <config.h>
 
-
 #include "debug.h"
 
 #include "iconpalette.h"
@@ -22,8 +21,10 @@
 
 using std::endl;
 using std::make_pair;
-using std::vector;
 using std::max;
+
+using std::vector;
+
 
 int const button_size = 40;
 

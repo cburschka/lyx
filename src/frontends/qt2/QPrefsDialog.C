@@ -46,7 +46,6 @@
 #include "qcoloritem.h"
 #include "qfontexample.h"
 
-using std::endl;
 
 QPrefsDialog::QPrefsDialog(QPrefs * form)
 	: QPrefsDialogBase(0, 0, false, 0), form_(form)

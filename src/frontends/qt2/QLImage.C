@@ -27,8 +27,9 @@
 
 using namespace lyx::support;
 
-using std::find_if;
 using std::endl;
+using std::find_if;
+
 
 namespace lyx {
 namespace graphics {

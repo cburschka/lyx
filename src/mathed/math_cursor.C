@@ -39,12 +39,11 @@
 using namespace lyx::support;
 
 using std::endl;
-using std::min;
-using std::max;
-using std::swap;
-using std::vector;
-using std::ostringstream;
 using std::isalpha;
+using std::min;
+using std::swap;
+
+using std::ostringstream;
 
 
 // matheds own cut buffer

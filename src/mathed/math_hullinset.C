@@ -28,16 +28,16 @@
 #include "lyxrc.h"
 #include "gettext.h"
 
-
 using namespace lyx::support;
 
+using std::endl;
+using std::max;
+
+using std::auto_ptr;
 using std::istringstream;
 using std::ostringstream;
-using std::vector;
-using std::max;
-using std::endl;
 using std::pair;
-using std::auto_ptr;
+
 
 namespace {
 

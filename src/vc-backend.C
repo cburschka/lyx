@@ -32,8 +32,10 @@ using std::gmtime;
 #endif
 
 using std::endl;
-using std::ifstream;
 using std::getline;
+
+using std::ifstream;
+
 using boost::regex;
 using boost::regex_match;
 

@@ -33,8 +33,9 @@
 
 using namespace lyx::support;
 
-using std::pair;
 using std::make_pair;
+
+using std::pair;
 using std::vector;
 
 

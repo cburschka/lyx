@@ -11,7 +11,6 @@
 
 #include <config.h>
 
-
 #include "QLyXKeySym.h"
 #include "qlkey.h"
 #include "debug.h"
@@ -23,7 +22,9 @@
 #include <map>
 
 using std::endl;
+
 using std::map;
+
 
 namespace {
 

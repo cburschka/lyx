@@ -27,11 +27,14 @@
 #include "support/LAssert.h"
 
 using namespace lyx::support;
+
 using lyx::pos_type;
+
 using std::endl;
-using std::ostream;
 using std::upper_bound;
-using std::lower_bound;
+
+using std::ostream;
+
 
 // Initialize static member.
 ShareContainer<LyXFont> Paragraph::Pimpl::FontTable::container;

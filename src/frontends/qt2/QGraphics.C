@@ -37,7 +37,6 @@
 using namespace lyx::support;
 
 using std::vector;
-using std::endl;
 
 typedef QController<ControlGraphics, QView<QGraphicsDialog> > base_class;
 

@@ -18,7 +18,7 @@
 #include <algorithm>
 
 using std::find_if;
-using std::endl;
+
 
 namespace {
 

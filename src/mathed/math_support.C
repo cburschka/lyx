@@ -12,20 +12,23 @@
 #include <config.h>
 
 #include "math_support.h"
-#include "math_parser.h"
+
 #include "math_data.h"
+#include "math_mathmlstream.h"
+#include "math_parser.h"
+
+#include "debug.h"
+
 #include "frontends/Painter.h"
 #include "frontends/font_metrics.h"
 #include "frontends/lyx_gui.h"
-#include "debug.h"
+
 #include "support/std_sstream.h"
-#include "math_mathmlstream.h"
 
 #include <map>
 
 using std::max;
 using std::endl;
-using std::ostringstream;
 
 
 ///

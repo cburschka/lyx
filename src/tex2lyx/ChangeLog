@@ -1,3 +1,11 @@
+2003-09-08  Angus Leeming  <leeming@lyx.org>
+
+	* math.C:
+	* preamble.C:
+	* table.C:
+	* tex2lyx.C:
+	* texparser.C: remove redundant using directives.
+
 2003-08-19  Angus Leeming  <leeming@lyx.org>
 
 	* most files: add 'standard conformant' header blurb.

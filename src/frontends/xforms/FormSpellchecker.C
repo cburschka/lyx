@@ -22,8 +22,6 @@
 
 #include "lyx_forms.h"
 
-using std::endl;
-
 
 typedef FormCB<ControlSpellchecker, FormDB<FD_spellchecker> > base_class;
 

@@ -17,11 +17,11 @@
 #include "debug.h"
 #include "support/std_sstream.h"
 
+using std::endl;
+using std::getline;
 
 using std::istringstream;
 using std::vector;
-using std::getline;
-using std::endl;
 
 
 FuncRequest::FuncRequest()

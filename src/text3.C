@@ -52,9 +52,12 @@ using namespace bv_funcs;
 
 using std::endl;
 using std::find;
+
 using std::istringstream;
 using std::vector;
+
 using lyx::pos_type;
+
 
 extern string current_layout;
 extern int bibitemMaxWidth(BufferView *, LyXFont const &);

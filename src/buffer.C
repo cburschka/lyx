@@ -68,28 +68,22 @@
 
 using namespace lyx::support;
 
-#ifndef CXX_GLOBAL_CSTD
-using std::pow;
-#endif
+using std::endl;
+using std::for_each;
+using std::make_pair;
 
+using std::ifstream;
+using std::list;
+using std::ios;
 using std::ostream;
 using std::ostringstream;
 using std::ofstream;
-using std::ifstream;
-using std::fstream;
-using std::ios;
-using std::setw;
-using std::endl;
 using std::pair;
-using std::make_pair;
-using std::vector;
-using std::map;
 using std::stack;
-using std::list;
-using std::for_each;
+using std::vector;
 
 using lyx::pos_type;
-using lyx::textclass_type;
+
 
 // all these externs should eventually be removed.
 extern BufferList bufferlist;

@@ -13,7 +13,6 @@
 
 #include <algorithm>
 
-using std::queue;
 using std::vector;
 
 

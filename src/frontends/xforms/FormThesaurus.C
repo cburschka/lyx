@@ -24,8 +24,8 @@
 using namespace lyx::support;
 
 #ifndef CXX_GLOBAL_CSTD
-using std::isupper;
 using std::islower;
+using std::isupper;
 #endif
 
 using std::vector;

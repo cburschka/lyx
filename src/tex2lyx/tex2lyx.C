@@ -28,14 +28,13 @@
 #include <sstream>
 #include <vector>
 
+using std::endl;
 using std::cout;
 using std::cerr;
-using std::endl;
 using std::getline;
-using std::istream;
+
 using std::ifstream;
 using std::istringstream;
-using std::ostream;
 using std::ostringstream;
 using std::stringstream;
 using std::string;

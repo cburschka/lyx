@@ -27,6 +27,7 @@
 using namespace lyx::support;
 
 using std::getline;
+
 using std::istringstream;
 using std::ostringstream;
 

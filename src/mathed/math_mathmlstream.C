@@ -16,9 +16,10 @@
 #include "math_extern.h"
 #include "support/lyxalgo.h"
 
+using std::strlen;
 
 using std::ostream;
-using std::strlen;
+
 
 namespace {
 

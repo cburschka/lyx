@@ -55,6 +55,7 @@
 
 using std::max;
 using std::sort;
+
 using std::map;
 
 using namespace lyx::support;

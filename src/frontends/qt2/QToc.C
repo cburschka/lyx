@@ -10,7 +10,6 @@
 
 #include <config.h>
 
-
 #include <stack>
 
 #include "qt_helpers.h"
@@ -25,9 +24,11 @@
 #include <qcombobox.h>
 
 using std::endl;
+
 using std::pair;
 using std::stack;
 using std::vector;
+
 
 typedef QController<ControlToc, QView<QTocDialog> > base_class;
 

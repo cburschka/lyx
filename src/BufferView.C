@@ -44,15 +44,10 @@
 
 extern BufferList bufferlist;
 
-using lyx::pos_type;
 using namespace lyx::support;
 
-using std::pair;
-using std::endl;
-using std::ifstream;
-using std::vector;
 using std::find;
-using std::count_if;
+using std::vector;
 
 
 BufferView::BufferView(LyXView * owner, int xpos, int ypos,

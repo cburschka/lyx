@@ -12,15 +12,12 @@
 
 #include <config.h>
 
-
 #include "debug.h"
 #include "gettext.h"
 #include "lyxfunc.h"
 #include "funcrequest.h"
 #include "FuncStatus.h"
 #include "buffer.h"
-
-
 
 #include "QtView.h"
 #include "QLToolbar.h"

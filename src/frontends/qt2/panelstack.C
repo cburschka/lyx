@@ -22,8 +22,6 @@
 
 using namespace lyx::support;
 
-using std::map;
-
 
 PanelStack::PanelStack(QWidget * parent, const char * name)
 	: QWidget(parent, name)

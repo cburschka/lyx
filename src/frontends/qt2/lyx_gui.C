@@ -47,9 +47,9 @@ using namespace lyx::support;
 using std::exit;
 #endif
 
-using std::vector;
 using std::map;
-using std::endl;
+using std::vector;
+
 
 extern BufferList bufferlist;
 

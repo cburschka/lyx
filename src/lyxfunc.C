@@ -73,14 +73,11 @@
 
 using namespace lyx::support;
 
-using std::pair;
-using std::make_pair;
 using std::endl;
-using std::find_if;
+using std::make_pair;
+
 using std::istringstream;
-using std::vector;
-using std::transform;
-using std::back_inserter;
+
 using namespace bv_funcs;
 
 extern BufferList bufferlist;

@@ -10,7 +10,6 @@
 
 #include <config.h>
 
-
 #include "qt_helpers.h"
 #include "ControlLog.h"
 #include "support/std_sstream.h"
@@ -25,7 +24,6 @@
 #include <fstream>
 
 using std::ifstream;
-using std::getline;
 using std::ostringstream;
 
 typedef QController<ControlLog, QView<QLogDialog> > base_class;

@@ -10,7 +10,6 @@
 
 #include <config.h>
 
-
 #include "QWorkArea.h"
 #include "debug.h"
 #include "qt_helpers.h"
@@ -28,8 +27,8 @@
 #include <X11/Xlib.h>
 #endif
 
-
 using std::endl;
+
 
 QWorkArea::QWorkArea(int, int, int, int)
 	: WorkArea(), QWidget(qApp->mainWidget()), painter_(*this)

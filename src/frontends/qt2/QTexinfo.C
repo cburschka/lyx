@@ -24,7 +24,6 @@
 
 using namespace lyx::support;
 
-using std::vector;
 
 typedef QController<ControlTexinfo, QView<QTexinfoDialog> > base_class;
 

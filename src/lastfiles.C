@@ -21,12 +21,13 @@
 
 using namespace lyx::support;
 
-using std::ifstream;
-using std::ofstream;
-using std::getline;
+using std::copy;
 using std::endl;
 using std::find;
-using std::copy;
+using std::getline;
+
+using std::ifstream;
+using std::ofstream;
 using std::ostream_iterator;
 
 

@@ -25,17 +25,13 @@
 #include "support/path.h"
 #include "support/systemcall.h"
 
-
-
 using namespace lyx::support;
 
-#ifndef CXX_GLOBAL_CSTD
-using std::isdigit;
-#endif
-
-using std::vector;
 using std::endl;
 using std::find_if;
+
+using std::vector;
+
 
 namespace {
 

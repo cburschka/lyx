@@ -44,7 +44,6 @@ static char const * delim_values[] = {
 	"langle",  "rangle", "|", "Vert", ".", 0
 };
 
-using std::endl;
 
 
 typedef FormController<ControlMath, FormView<FD_maths_delim> > base_class;

@@ -27,11 +27,7 @@
 
 #include "qt_helpers.h"
 
-using std::find;
-using std::max;
-using std::sort;
 using std::vector;
-using std::endl;
 
 
 typedef QController<ControlRef, QView<QRefDialog> > base_class;

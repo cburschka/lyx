@@ -10,8 +10,6 @@
 
 #include <config.h>
 
-
-
 #include "QWorkArea.h"
 #include "qscreen.h"
 #include "debug.h"
@@ -19,8 +17,7 @@
 #include <qapplication.h>
 
 using std::endl;
-using std::max;
-using std::min;
+
 
 namespace {
 

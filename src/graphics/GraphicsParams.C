@@ -17,7 +17,6 @@
 #include "support/std_sstream.h"
 
 using std::abs;
-using std::istringstream;
 
 
 namespace lyx {

@@ -8,7 +8,6 @@
  * Full author contact details are available in file CREDITS.
  */
 
-
 #include <config.h>
 
 #include "FormNote.h"
@@ -21,8 +20,6 @@
 #include "insets/insetnote.h"
 
 #include "lyx_forms.h"
-
-using std::vector;
 
 
 typedef FormController<ControlNote, FormView<FD_note> > base_class;

@@ -31,14 +31,11 @@
 using namespace lyx::support;
 
 using std::find;
-using std::max;
-using std::min;
-using std::pair;
-using std::sort;
+
 using std::vector;
 
-typedef QController<ControlCitation, QView<QCitationDialog> > base_class;
 
+typedef QController<ControlCitation, QView<QCitationDialog> > base_class;
 
 QCitation::QCitation(Dialog & parent)
 	: base_class(parent, _("LyX: Citation Reference"))

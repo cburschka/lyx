@@ -23,12 +23,13 @@
 
 #include "frontends/controllers/ControlMath.h"
 
-
 using namespace lyx::support;
 
 using std::endl;
-using std::vector;
 using std::make_pair;
+
+using std::vector;
+
 
 ToolbarBackend toolbarbackend;
 

@@ -24,12 +24,6 @@
 
 #include <boost/bind.hpp>
 
-
-#ifndef CXX_GLOBAL_CSTD
-using std::isprint;
-#endif
-
-using std::endl;
 using std::vector;
 
 

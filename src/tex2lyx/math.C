@@ -15,13 +15,12 @@
 #include "tex2lyx.h"
 
 #include <iostream>
-#include <vector>
 
 using std::cerr;
 using std::endl;
+
 using std::ostream;
 using std::string;
-using std::vector;
 
 
 bool is_math_env(string const & name)

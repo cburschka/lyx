@@ -1,3 +1,38 @@
+2003-09-08  Angus Leeming  <leeming@lyx.org>
+
+	* BranchList.C:
+	* BufferView.C:
+	* BufferView_pimpl.C:
+	* CutAndPaste.C:
+	* DepTable.C:
+	* LaTeX.C:
+	* LaTeXFeatures.C:
+	* LyXAction.C:
+	* MenuBackend.C:
+	* TextCache.C:
+	* aspell.C:
+	* buffer.C:
+	* bufferlist.C:
+	* changes.C:
+	* chset.C:
+	* converter.C:
+	* counters.C:
+	* debug.C:
+	* graph.C:
+	* ispell.C:
+	* lyx_cb.C:
+	* lyxfind.C:
+	* lyxfunc.C:
+	* lyxlex_pimpl.C:
+	* lyxrc.C:
+	* lyxrow.C:
+	* paragraph.C:
+	* rowpainter.C:
+	* texrow.C:
+	* text.C:
+	* text2.C:
+	* toc.C: remove redundant using directives.
+
 2003-09-07  Angus Leeming  <leeming@lyx.org>
 
 	* LaTeXFeatures.h: remove #include "support/types.h".

@@ -11,7 +11,6 @@
 
 #include <config.h>
 
-
 #include "QParagraphDialog.h"
 #include "QParagraph.h"
 
@@ -22,9 +21,6 @@
 #include <qwhatsthis.h>
 
 #include "qt_helpers.h"
-
-
-using std::vector;
 
 
 QParagraphDialog::QParagraphDialog(QParagraph * form)

@@ -1,3 +1,25 @@
+2003-09-08  Angus Leeming  <leeming@lyx.org>
+
+	* FileDialog.C:
+	* QCitation.C:
+	* QCitationDialog.C:
+	* QCommandBuffer.C:
+	* QContentPane.C:
+	* QGraphics.C:
+	* QLMenubar.C:
+	* QLPopupMenu.C:
+	* QLog.C:
+	* QMathDialog.C:
+	* QParagraphDialog.C:
+	* QPrefsDialog.C:
+	* QRef.C:
+	* QTexinfo.C:
+	* QtView.C:
+	* lyx_gui.C:
+	* panelstack.C:
+	* qscreen.C:
+	* qt_helpers.C: remove redundant using directives.
+
 2003-09-07  Angus Leeming  <leeming@lyx.org>
 
 	* BulletsModule.h: remove #include "support/std_string.h", <vector>.

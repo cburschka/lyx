@@ -48,11 +48,11 @@ extern boost::scoped_ptr<kb_keymap> toplevel_keymap;
 using namespace lyx::support;
 
 using std::endl;
-using std::vector;
-using std::max;
-using std::pair;
 using std::find_if;
+using std::max;
 using std::sort;
+
+using std::vector;
 
 // This is the global menu definition
 MenuBackend menubackend;

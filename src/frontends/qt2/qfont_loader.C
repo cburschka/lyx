@@ -32,9 +32,10 @@
 using namespace lyx::support;
 
 using std::endl;
-using std::vector;
-using std::pair;
 using std::make_pair;
+
+using std::pair;
+using std::vector;
 
 namespace {
 

@@ -16,8 +16,6 @@
 #include "GraphicsParams.h"
 #include "debug.h"
 
-using std::endl;
-using std::abs;
 
 namespace lyx {
 namespace graphics {

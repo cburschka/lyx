@@ -11,17 +11,18 @@
 
 #include <config.h>
 
-
 #include "XWorkArea.h"
+
 #include "debug.h"
 #include "XLyXKeySym.h"
 #include "funcrequest.h"
 #include "Timeout.h"
 
-using std::endl;
 using std::abs;
-using std::hex;
 using std::dec;
+using std::endl;
+using std::hex;
+
 
 namespace {
 

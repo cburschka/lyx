@@ -18,6 +18,7 @@
 #include "support/std_ostream.h"
 
 using std::atoi;
+
 using std::auto_ptr;
 
 

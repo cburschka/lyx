@@ -37,13 +37,13 @@ using namespace lyx::support;
 using std::sscanf;
 #endif
 
-using std::ifstream;
-using std::getline;
 using std::endl;
-using std::vector;
+using std::getline;
+using std::ifstream;
 using std::set;
+using std::vector;
+
 using boost::regex;
-using boost::regex_match;
 
 #ifndef USE_INCLUDED_STRING
 using boost::smatch;

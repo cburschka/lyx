@@ -65,10 +65,6 @@
 #include <boost/bind.hpp>
 
 
-using std::vector;
-using std::find_if;
-using std::find;
-using std::pair;
 using std::endl;
 using std::make_pair;
 using std::min;

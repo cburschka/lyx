@@ -21,8 +21,6 @@
 
 using lyx::pos_type;
 
-using std::max;
-using std::min;
 
 Row::Row()
 	: pos_(0), end_(0), fill_(0), height_(0), width_(0), y_(0),

@@ -23,8 +23,6 @@ using namespace lyx::support;
 
 using std::ostream;
 using std::endl;
-using std::pair;
-using std::make_pair;
 
 /*
      NAMING RULES FOR USER-COMMANDS

@@ -32,8 +32,9 @@
 
 using namespace lyx::support;
 
-using std::vector;
 using std::find;
+
+using std::vector;
 
 
 namespace {

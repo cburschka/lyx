@@ -51,12 +51,13 @@
 
 using namespace lyx::support;
 
-using std::vector;
-using std::pair;
-using std::ostringstream;
+using std::endl;
 using std::setfill;
 using std::setw;
-using std::endl;
+
+using std::ostringstream;
+using std::pair;
+using std::vector;
 
 
 typedef Qt2CB<ControlPrefs, Qt2DB<QPrefsDialog> > base_class;

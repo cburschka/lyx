@@ -18,12 +18,10 @@
 using std::cerr;
 using std::endl;
 using std::fill;
-using std::ios;
 using std::istream;
 using std::istringstream;
 using std::ostream;
 using std::string;
-using std::vector;
 
 
 namespace {

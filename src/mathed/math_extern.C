@@ -40,11 +40,12 @@
 
 using namespace lyx::support;
 
-using std::ostream;
-using std::istringstream;
-using std::ostringstream;
-using std::find_if;
 using std::endl;
+using std::find_if;
+
+using std::istringstream;
+using std::ostream;
+using std::ostringstream;
 
 
 ostream & operator<<(ostream & os, MathArray const & ar)

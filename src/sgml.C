@@ -16,10 +16,12 @@
 #include "paragraph.h"
 #include "sgml.h"
 
-using std::pair;
-using std::make_pair;
-using std::ostream;
 using std::endl;
+using std::make_pair;
+
+using std::ostream;
+using std::pair;
+
 
 namespace sgml {
 

@@ -36,6 +36,7 @@ using namespace lyx::support;
 
 using std::find_if;
 
+
 namespace {
 
 void init_graphics();

@@ -36,7 +36,6 @@
 using namespace lyx::support;
 
 using std::max;
-using std::endl;
 using lyx::pos_type;
 
 extern int PAPER_MARGIN;

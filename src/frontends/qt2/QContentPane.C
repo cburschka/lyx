@@ -20,7 +20,6 @@
 
 #include "funcrequest.h"
 
-using std::endl;
 
 namespace {
 

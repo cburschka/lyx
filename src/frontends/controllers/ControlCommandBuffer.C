@@ -22,11 +22,13 @@
 
 using namespace lyx::support;
 
-using std::vector;
 using std::back_inserter;
 using std::transform;
-using std::endl;
+
+using std::vector;
+
 using namespace bv_funcs;
+
 
 namespace {
 

@@ -36,11 +36,11 @@ using namespace lyx::support;
 using std::strcpy;
 using std::strlen;
 using std::strpbrk;
-using std::strstr;
 #endif
 
 using std::endl;
 using std::max;
+
 
 namespace {
 

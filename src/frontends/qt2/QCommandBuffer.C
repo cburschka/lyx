@@ -10,7 +10,6 @@
 
 #include <config.h>
 
-
 #include "support/filetools.h"
 #include "controllers/ControlCommandBuffer.h"
 #include "qt_helpers.h"
@@ -28,7 +27,6 @@
 using namespace lyx::support;
 
 using std::vector;
-using std::endl;
 
 namespace {
 

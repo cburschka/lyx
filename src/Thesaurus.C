@@ -18,6 +18,7 @@
 
 using std::sort;
 
+
 Thesaurus::Thesaurus()
 {
 	aik_ = new Aiksaurus;

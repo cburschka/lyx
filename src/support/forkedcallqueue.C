@@ -18,7 +18,7 @@
 #include <boost/signals/signal2.hpp>
 
 using std::endl;
-using std::queue;
+
 
 namespace lyx {
 namespace support {

@@ -79,7 +79,6 @@ unsigned long lyx::support::sum(string const & file)
 #include <fstream>
 #include <iterator>
 
-using std::for_each;
 
 namespace {
 
@@ -88,7 +87,7 @@ inline
 unsigned long do_crc(InputIterator first, InputIterator last)
 {
 	boost::crc_32_type crc;
-	crc = for_each(first, last, crc);
+	crc = std::for_each(first, last, crc);
 	return crc.checksum();
 }
 

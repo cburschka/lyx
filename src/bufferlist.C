@@ -31,12 +31,12 @@
 
 using namespace lyx::support;
 
-using std::vector;
-using std::find;
 using std::endl;
+using std::find;
 using std::find_if;
 using std::for_each;
-using std::mem_fun;
+
+using std::vector;
 
 
 BufferList::BufferList()

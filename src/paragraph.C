@@ -44,10 +44,6 @@ using namespace lyx::support;
 using std::ostream;
 using std::ostringstream;
 using std::endl;
-using std::fstream;
-using std::ios;
-using std::lower_bound;
-using std::upper_bound;
 
 using lyx::pos_type;
 

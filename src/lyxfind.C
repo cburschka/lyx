@@ -23,8 +23,6 @@
 
 using namespace lyx::support;
 
-using lyx::pos_type;
-using std::endl;
 
 namespace lyx {
 namespace find {

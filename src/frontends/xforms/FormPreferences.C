@@ -41,8 +41,7 @@ using std::endl;
 using std::make_pair;
 using std::max;
 using std::min;
-using std::setfill;
-using std::setw;
+
 using std::pair;
 using std::vector;
 

@@ -23,7 +23,6 @@
 
 #include <qpainter.h>
 
-
 using std::endl;
 
 

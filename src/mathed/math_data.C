@@ -23,10 +23,9 @@
 
 using namespace lyx::support;
 
-using std::max;
-using std::min;
 using std::abs;
 using std::endl;
+using std::min;
 
 
 MathArray::MathArray()

@@ -59,12 +59,10 @@
 
 using namespace lyx::support;
 
-using std::ostringstream;
-using std::vector;
-using std::copy;
 using std::endl;
-using std::find;
-using std::pair;
+
+using std::ostringstream;
+
 using lyx::pos_type;
 
 

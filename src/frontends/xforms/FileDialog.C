@@ -21,8 +21,6 @@
 using namespace lyx::support;
 
 using std::endl;
-using std::make_pair;
-using std::pair;
 
 
 FileDialog::FileDialog(string const &t, kb_action s, Button b1, Button b2)

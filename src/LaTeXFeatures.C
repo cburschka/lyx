@@ -31,14 +31,13 @@
 
 using namespace lyx::support;
 
-using lyx::textclass_type;
-
 using std::endl;
-using std::list;
-using std::set;
 using std::find;
+
+using std::list;
 using std::ostream;
 using std::ostringstream;
+using std::set;
 
 
 LaTeXFeatures::LaTeXFeatures(BufferParams const & p)

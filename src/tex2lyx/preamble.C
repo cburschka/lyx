@@ -26,10 +26,6 @@
 #include <vector>
 #include <map>
 
-using std::cerr;
-using std::endl;
-using std::getline;
-using std::istream;
 using std::istringstream;
 using std::ostream;
 using std::ostringstream;

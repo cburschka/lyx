@@ -13,21 +13,16 @@
 
 #include "math_charinset.h"
 #include "dimension.h"
-#include "support/std_ostream.h"
 #include "math_support.h"
 #include "math_mathmlstream.h"
 #include "textpainter.h"
 
-
-
-using std::ostream;
-using std::endl;
 using std::auto_ptr;
 
 #ifndef CXX_GLOBAL_CSTD
 using std::strchr;
-using std::isalpha;
 #endif
+
 
 extern bool has_math_fonts;
 

@@ -18,8 +18,6 @@
 
 using std::auto_ptr;
 using std::ostream;
-using std::pair;
-using std::vector;
 
 
 InsetOptArg::InsetOptArg(BufferParams const & ins)

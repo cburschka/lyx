@@ -24,11 +24,10 @@
 #include "gettext.h"
 #include "BufferView.h"
 
-
 using namespace lyx::support;
 
-using std::vector;
 using std::find;
+using std::vector;
 
 
 extern BufferList bufferlist;

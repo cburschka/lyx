@@ -30,13 +30,12 @@ using std::time;
 
 using namespace lyx::support;
 
-using std::make_pair;
-using std::ofstream;
-using std::ifstream;
-using std::flush;
 using std::endl;
+using std::flush;
 using std::getline;
 
+using std::ofstream;
+using std::ifstream;
 
 inline
 bool DepTable::dep_info::changed() const

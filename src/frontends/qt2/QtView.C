@@ -11,13 +11,11 @@
 
 #include <config.h>
 
-
 #include "lyx_cb.h"
 #include "support/filetools.h"
 #include "MenuBackend.h"
 #include "lyxfunc.h"
 #include "BufferView.h"
-
 
 #include <boost/bind.hpp>
 
@@ -32,7 +30,6 @@
 
 using namespace lyx::support;
 
-using std::endl;
 
 namespace {
 

@@ -18,12 +18,12 @@
 
 #include "insets/insetbranch.h"
 
-
 using lyx::pos_type;
 
+using std::endl;
 using std::lower_bound;
 using std::upper_bound;
-using std::endl;
+
 
 namespace {
 

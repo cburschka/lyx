@@ -36,12 +36,13 @@
 using namespace lyx::support;
 
 using std::abs;
-using std::ostream;
-using std::ostringstream;
-using std::istream;
+using std::endl;
 using std::getline;
 using std::max;
-using std::endl;
+
+using std::istream;
+using std::ostream;
+using std::ostringstream;
 using std::vector;
 
 #ifndef CXX_GLOBAL_CSTD

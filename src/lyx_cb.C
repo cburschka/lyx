@@ -46,15 +46,14 @@
 
 using namespace lyx::support;
 
-using std::vector;
-using std::ifstream;
+using std::back_inserter;
 using std::copy;
 using std::endl;
-using std::ios;
-using std::back_inserter;
-using std::istream_iterator;
-using std::pair;
 using std::make_pair;
+
+using std::ifstream;
+using std::ios;
+using std::istream_iterator;
 
 extern BufferList bufferlist;
 // this should be static, but I need it in buffer.C
@@ -387,7 +386,7 @@ string getContentsOfAsciiFile(BufferView * bv, string const & f, bool asParagrap
 	istream_iterator<char> end;
 #if !defined(USE_INCLUDED_STRING) && !defined(STD_STRING_IS_GOOD)
 	// We use this until the compilers get better...
-	vector<char> tmp;
+	std::vector<char> tmp;
 	copy(ii, end, back_inserter(tmp));
 	string const tmpstr(tmp.begin(), tmp.end());
 #else

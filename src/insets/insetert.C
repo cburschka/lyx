@@ -32,8 +32,9 @@ using namespace lyx::support;
 
 using lyx::pos_type;
 
-using std::min;
 using std::endl;
+using std::min;
+
 using std::auto_ptr;
 using std::ostream;
 

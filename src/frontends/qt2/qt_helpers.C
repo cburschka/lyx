@@ -19,10 +19,10 @@
 #include <qlineedit.h>
 #include <qtextcodec.h>
 
+using std::make_pair;
 
 using std::pair;
-using std::make_pair;
-using std::min;
+
 
 string makeFontName(string const & family, string const & foundry)
 {

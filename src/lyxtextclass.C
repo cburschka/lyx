@@ -31,6 +31,7 @@ using namespace lyx::support;
 using std::endl;
 using std::find_if;
 using std::remove_if;
+
 using std::ostream;
 
 namespace { // anon

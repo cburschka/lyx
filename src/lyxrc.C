@@ -41,7 +41,6 @@ using std::ofstream;
 using std::cout;
 using std::ios;
 using std::endl;
-using std::vector;
 
 namespace lyx {
 namespace graphics {

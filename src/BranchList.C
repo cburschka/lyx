@@ -16,7 +16,6 @@
 #include <functional>
 
 using std::bind2nd;
-using std::remove_if;
 using std::binary_function;
 using namespace lyx::support;
 

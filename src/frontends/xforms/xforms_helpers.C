@@ -30,8 +30,8 @@
 using namespace lyx::support;
 
 using std::make_pair;
+
 using std::ofstream;
-using std::pair;
 using std::vector;
 
 

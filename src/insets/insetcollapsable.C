@@ -34,7 +34,6 @@ using namespace lyx::graphics;
 
 using std::endl;
 using std::max;
-using std::vector;
 using std::ostream;
 
 

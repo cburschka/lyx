@@ -29,7 +29,6 @@ using std::ostream;
 using std::ostringstream;
 using std::string;
 using std::vector;
-using std::map;
 
 #include "mathed/math_gridinfo.h"
 

@@ -35,9 +35,11 @@
 
 using namespace lyx::support;
 
-using std::vector;
 using std::bind2nd;
 using std::remove_if;
+
+using std::vector;
+
 
 typedef QController<ControlParagraph, QView<QParagraphDialog> > base_class;
 

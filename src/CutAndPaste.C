@@ -29,10 +29,9 @@
 #include "support/LAssert.h"
 #include "support/lstrings.h"
 
-using std::endl;
-using std::pair;
-using std::make_pair;
 using std::for_each;
+using std::make_pair;
+using std::pair;
 using std::vector;
 
 using namespace lyx::support;

@@ -27,6 +27,7 @@ namespace support = lyx::support;
 
 using std::endl;
 using std::for_each;
+
 using std::ostream;
 
 

@@ -48,9 +48,7 @@
 using namespace lyx::support;
 
 using std::max;
-using std::min;
 using std::endl;
-using std::pair;
 
 using lyx::pos_type;
 using lyx::word_location;

@@ -20,8 +20,6 @@
 using namespace lyx::support;
 
 using std::ostream;
-using std::pair;
-using std::vector;
 
 
 InsetLabel::InsetLabel(InsetCommandParams const & p)

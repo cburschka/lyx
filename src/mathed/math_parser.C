@@ -65,15 +65,15 @@ following hack as starting point to write some macros:
 #include "support/std_sstream.h"
 #include "debug.h"
 
+using std::atoi;
+using std::endl;
+using std::fill;
 
+using std::ios;
 using std::istream;
 using std::istringstream;
 using std::ostream;
-using std::ios;
-using std::endl;
-using std::fill;
 using std::vector;
-using std::atoi;
 
 
 //#define FILEDEBUG

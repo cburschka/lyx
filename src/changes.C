@@ -19,7 +19,6 @@
 
 using namespace lyx::support;
 
-using std::vector;
 using std::endl;
 using lyx::pos_type;
 

@@ -17,7 +17,6 @@
 #include "toc.h"
 
 using std::ostream;
-using std::vector;
 
 
 InsetTOC::InsetTOC(InsetCommandParams const & p)

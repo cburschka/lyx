@@ -44,13 +44,10 @@
 
 using std::endl;
 using std::for_each;
-using std::min;
 using std::max;
-using std::make_pair;
+
 using std::auto_ptr;
 using std::ostream;
-using std::ifstream;
-using std::pair;
 using std::vector;
 
 using namespace lyx::support;
@@ -58,7 +55,6 @@ using namespace lyx::graphics;
 using namespace bv_funcs;
 
 using lyx::pos_type;
-using lyx::textclass_type;
 
 
 InsetText::InsetText(BufferParams const & bp)

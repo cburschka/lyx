@@ -21,7 +21,6 @@ using namespace lyx::support;
 
 using std::ostream;
 using std::setw;
-using std::endl;
 
 namespace {
 

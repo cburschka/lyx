@@ -29,7 +29,6 @@
 
 using namespace lyx::support;
 
-using std::sort;
 using std::vector;
 
 

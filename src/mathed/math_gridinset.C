@@ -19,18 +19,18 @@
 #include "frontends/Painter.h"
 #include "support/std_sstream.h"
 
-
 #include "insets/mailinset.h"
 
-using std::swap;
+using std::endl;
 using std::max;
 using std::min;
-using std::vector;
+using std::swap;
+
+using std::auto_ptr;
 using std::istream;
 using std::istringstream;
 using std::ostringstream;
-using std::auto_ptr;
-using std::endl;
+using std::vector;
 
 
 class GridInsetMailer : public MailInset {
