@@ -241,99 +241,98 @@ enum kb_action {
 	LFUN_VC_HISTORY,                // Lgb 97-07-01
 	LFUN_EXPORT,                    // Lgb 97-07-29
 	LFUN_REF_GOTO,                  // Ale 970806
-	LFUN_PARENTINSERT,              // Ale 970813
-	// 180
 	LFUN_LDOTS,                     // Asger 970929
+	// 180
 	LFUN_END_OF_SENTENCE,           // Asger 970929
 	LFUN_TOGGLECURSORFOLLOW,        // ARRae 971202
 	LFUN_RUNCHKTEX,                 // Asger 971030
 	LFUN_HTMLURL,                   // CFO-G 971121
-	// 185
 	LFUN_URL,                       // CFO-G 971121
+	// 185
 	LFUN_WORDFINDFORWARD,           // Etienne 980216
 	LFUN_WORDFINDBACKWARD,          // Etienne 980220
 	LFUN_APPENDIX,                  // ettrich 980505
 	LFUN_IMPORT,                    // Asger 980724
-	// 190
 	LFUN_MENU_SEPARATOR,            // Asger 990220
+	// 190
 	LFUN_SEQUENCE,                  // Andre' 991111
 	LFUN_DIALOG_PREFERENCES,        // ARRae 20000726
 	LFUN_SAVEPREFERENCES,           // Lgb 991127
 	LFUN_HELP_OPEN,                 // Jug 990627
-	// 195
 	LFUN_DATE_INSERT,	        // jdblair 20000131
+	// 195
 	LFUN_LANGUAGE,                  // Dekel 20000203
 	LFUN_INSET_ERT,	                // Jug 20000218
 	LFUN_INSET_FOOTNOTE,            // Jug 20000307
 	LFUN_PARAGRAPH_SPACING,         // Lgb 20000411
-	// 200
 	LFUN_TABULAR_INSERT,            // Jug 20000412
+	// 200
 	LFUN_LOFVIEW,                   // Dekel 20000519
 	LFUN_LOTVIEW,                   // Dekel 20000519
 	LFUN_LOAVIEW,                   // Dekel 20000519
 	LFUN_SET_COLOR,                 // SLior 20000611
-	// 205
 	LFUN_INSET_MARGINAL,            // Lgb 20000626
+	// 205
 	LFUN_INSET_MINIPAGE,            // Lgb 20000627
 	LFUN_INSET_FLOAT,               // Lgb 20000627
 	LFUN_INSET_WIDE_FLOAT,          // Lgb 20010531
 	LFUN_INSET_CAPTION,             // Lgb 20000718
-	// 210
 	LFUN_SWITCHBUFFER,
+	// 210
 	LFUN_TABULAR_FEATURE,           // Jug 20000728
 	LFUN_LAYOUT_TABULAR,            // Jug 20000731
 	LFUN_SCROLL_INSET,              // Jug 20000801
 	LFUN_UPDATE,                    // Dekel 20000805
-	// 215
 	LFUN_INDEX_INSERT,              // Angus 20000803
+	// 215
 	LFUN_SCREEN_FONT_UPDATE,        // ARRae 20000813
 	LFUN_GOTO_PARAGRAPH,            // Dekel 20000826
 	LFUN_REFERENCE_GOTO,            // Dekel 20010114
 	LFUN_BOOKMARK_SAVE,             // Dekel 20010127
-	// 220
 	LFUN_BOOKMARK_GOTO,             // Dekel 20010127
+	// 220
 	LFUN_SELECT_FILE_SYNC,          // Levon 20010214
 	LFUN_MESSAGE,                   // Lgb 20010408
 	LFUN_TRANSPOSE_CHARS,           // Lgb 20010425
 	LFUN_ESCAPE,                    // Lgb 20010517
-	// 225
 	LFUN_HELP_ABOUTLYX,             // Edwin 20010712
+	// 225
 	LFUN_THESAURUS_ENTRY,           // Levon 20010720
 	LFUN_HELP_TEXINFO,              // Herbert 20011001
 	LFUN_FORKS_SHOW,                // Angus 16 Feb 2002
 	LFUN_FORKS_KILL,                // Angus 16 Feb 2002
-	// 230
 	LFUN_TOOLTIPS_TOGGLE,           // Angus 8 Mar 2002
+	// 230
 	LFUN_INSET_OPTARG,              // Martin 12 Aug 2002
 	LFUN_MOUSE_PRESS,               // André 9 Aug 2002
 	LFUN_MOUSE_MOTION,              // André 9 Aug 2002
 	LFUN_MOUSE_RELEASE,             // André 9 Aug 2002
-	// 235
 	LFUN_MOUSE_DOUBLE,              // André 9 Aug 2002
+	// 235
 	LFUN_MOUSE_TRIPLE,              // André 9 Aug 2002
 	LFUN_INSET_EDIT,                      // André 16 Aug 2002
 	LFUN_INSET_WRAP,                // Dekel 7 Apr 2002
 	LFUN_TRACK_CHANGES,             // Levon 20021001 (cool date !)
-	// 240
 	LFUN_MERGE_CHANGES,             // Levon 20021016
+	// 240
 	LFUN_ACCEPT_CHANGE,             // Levon 20021016
 	LFUN_REJECT_CHANGE,             // Levon 20021016
 	LFUN_ACCEPT_ALL_CHANGES,        // Levon 20021016
 	LFUN_REJECT_ALL_CHANGES,        // Levon 20021016
-	// 245
 	LFUN_INSERT_BIBITEM,            // André 14 Feb 2003
+	// 245
 	LFUN_DIALOG_SHOW_NEW_INSET,
 	LFUN_DIALOG_SHOW_NEXT_INSET,
 	LFUN_DIALOG_UPDATE,
 	LFUN_DIALOG_HIDE,
-	// 250
 	LFUN_DIALOG_DISCONNECT_INSET,
+	// 250
 	LFUN_INSET_APPLY,
 	LFUN_INSET_INSERT,
 	LFUN_INSET_MODIFY,
 	LFUN_INSET_DIALOG_UPDATE,
-	// 255
 	LFUN_INSET_SETTINGS,
+	// 255
 	LFUN_PARAGRAPH_APPLY,
 	LFUN_PARAGRAPH_UPDATE,
 

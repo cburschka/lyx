@@ -83,8 +83,6 @@ public:
 		///
 		GRAPHICS_CODE,
 		///
-		PARENT_CODE,
-		///
 		BIBITEM_CODE,
 		///
 		BIBTEX_CODE,

@@ -1598,7 +1598,6 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 		break;
 
 	case LFUN_INDEX_PRINT:
-	case LFUN_PARENTINSERT:
 	case LFUN_TOC_INSERT:
 	case LFUN_HFILL:
 		// do nothing fancy

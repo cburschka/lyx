@@ -38,7 +38,6 @@
 #include "insets/insetminipage.h"
 #include "insets/insetnote.h"
 #include "insets/insetoptarg.h"
-#include "insets/insetparent.h"
 #include "insets/insetref.h"
 #include "insets/insetspace.h"
 #include "insets/insettabular.h"
@@ -157,10 +156,6 @@ Inset * createInset(FuncRequest const & cmd)
 
 	case LFUN_TOC_INSERT:
 		return new InsetTOC(InsetCommandParams("tableofcontents"));
-
-	case LFUN_PARENTINSERT:
-		return new InsetParent(
-			InsetCommandParams("lyxparent", cmd.argument), *bv->buffer());
 
 	case LFUN_ENVIRONMENT_INSERT:
 		return new InsetEnvironment(params, cmd.argument);
@@ -339,8 +334,6 @@ Inset * readInset(LyXLex & lex, Buffer const & buf)
 			inset = new InsetFloatList("table");
 		} else if (cmdName == "printindex") {
 			inset = new InsetPrintIndex(inscmd);
-		} else if (cmdName == "lyxparent") {
-			inset = new InsetParent(inscmd, buf);
 		}
 	} else {
 		if (tmptok == "Quotes") {

@@ -77,8 +77,6 @@ libinsets_la_SOURCES = \
 	insetnote.h \
 	insetoptarg.C \
 	insetoptarg.h \
-	insetparent.C \
-	insetparent.h \
 	insetquotes.C \
 	insetquotes.h \
 	insetref.C \

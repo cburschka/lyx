@@ -1,5 +1,13 @@
 2003-06-02  John Levon  <levon@movementarian.org>
 
+	* LyXAction.C:
+	* factory.C:
+	* lfuns.h:
+	* lyxfunc.C:
+	* text3.C: remove insetparent
+
+2003-06-02  John Levon  <levon@movementarian.org>
+
 	* buffer.h:
 	* buffer.C: fix inset_iterator.end(), move out of line
 	(bug 1149)

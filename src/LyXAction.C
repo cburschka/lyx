@@ -236,7 +236,6 @@ void LyXAction::init()
 		{ LFUN_PARAGRAPH_SPACING, "paragraph-spacing", Noop },
 		{ LFUN_UP_PARAGRAPH, "paragraph-up", ReadOnly },
 		{ LFUN_UP_PARAGRAPHSEL, "paragraph-up-select", ReadOnly },
-		{ LFUN_PARENTINSERT, "parent-insert", Noop },
 		{ LFUN_PASTE, "paste", Noop },
 		{ LFUN_DIALOG_PREFERENCES, "dialog-preferences", NoBuffer },
 		{ LFUN_SAVEPREFERENCES, "preferences-save", NoBuffer },
