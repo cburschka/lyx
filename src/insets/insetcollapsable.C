@@ -468,7 +468,7 @@ void InsetCollapsable::resizeLyXText(BufferView * bv) const
 }
 
 
-vector<string> const InsetCollapsable::getLabelList() const
+std::vector<string> const InsetCollapsable::getLabelList() const
 {
 	return inset.getLabelList();
 }

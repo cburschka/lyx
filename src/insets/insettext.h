@@ -178,7 +178,7 @@ public:
 	///
 	bool ShowInsetDialog(BufferView *) const;
 	///
-	vector<string> const getLabelList() const;
+	std::vector<string> const getLabelList() const;
 	///
 	LyXParagraph * par;
 	///

@@ -1447,16 +1447,16 @@ bool InsetText::ShowInsetDialog(BufferView * bv) const
 }
 
 
-vector<string> const InsetText::getLabelList() const 
+std::vector<string> const InsetText::getLabelList() const 
 {
-	vector<string> label_list;
+	std::vector<string> label_list;
 
 	LyXParagraph * tpar = par;
 	while (tpar) {
 		LyXParagraph::inset_iterator beg = tpar->inset_iterator_begin();
 		LyXParagraph::inset_iterator end = tpar->inset_iterator_end();
 		for (; beg != end; ++beg) {
-			vector<string> const l = (*beg)->getLabelList();
+			std::vector<string> const l = (*beg)->getLabelList();
 			label_list.insert(label_list.end(), l.begin(), l.end());
 		}
 		tpar = tpar->next();
