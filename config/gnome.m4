@@ -161,7 +161,7 @@ dnl /*=== End new stuff for acconfig.h ===*/
 dnl
 
 
-AC_DEFUN(AC_CHECK_CURSES,[
+AC_DEFUN([AC_CHECK_CURSES],[
 	search_ncurses=true
 	screen_manager=""
 	has_curses=false
@@ -225,7 +225,7 @@ AC_DEFUN(AC_CHECK_CURSES,[
 ])
 
 
-AC_DEFUN(AC_USE_SUNOS_CURSES, [
+AC_DEFUN([AC_USE_SUNOS_CURSES], [
 	search_ncurses=false
 	screen_manager="SunOS 4.x /usr/5include curses"
 	AC_MSG_RESULT(Using SunOS 4.x /usr/5include curses)
@@ -239,7 +239,7 @@ AC_DEFUN(AC_USE_SUNOS_CURSES, [
 	AC_MSG_RESULT(Please note that some screen refreshs may fail)
 ])
 
-AC_DEFUN(AC_USE_OSF1_CURSES, [
+AC_DEFUN([AC_USE_OSF1_CURSES], [
        AC_MSG_RESULT(Using OSF1 curses)
        search_ncurses=false
        screen_manager="OSF1 curses"
@@ -250,7 +250,7 @@ AC_DEFUN(AC_USE_OSF1_CURSES, [
        CURSES_LIBS="-lcurses"
 ])
 
-AC_DEFUN(AC_USE_SYSV_CURSES, [
+AC_DEFUN([AC_USE_SYSV_CURSES], [
 	AC_MSG_RESULT(Using SysV curses)
 	AC_DEFINE(HAS_CURSES, 1, [dummy])
 	has_curses=true
@@ -285,7 +285,7 @@ dnl)
 dnl
 dnl Parameters: directory filename cureses_LIBS curses_INCLUDEDIR nicename
 dnl
-AC_DEFUN(AC_NCURSES, [
+AC_DEFUN([AC_NCURSES], [
     if $search_ncurses
     then
 	if test -f $1/$2
@@ -302,7 +302,7 @@ AC_DEFUN(AC_NCURSES, [
     fi
 ])
 
-AC_DEFUN(AC_SEARCH_NCURSES, [
+AC_DEFUN([AC_SEARCH_NCURSES], [
     AC_MSG_NOTICE("checking location of ncurses.h file")
 
     AC_NCURSES(/usr/include, ncurses.h, -lncurses,, "ncurses on /usr/include")
@@ -1145,7 +1145,7 @@ dnl that we need to #include some other header files on some
 dnl systems to get some types.
 
 dnl AC_LIBGTOP_CHECK_TYPE(TYPE, DEFAULT)
-AC_DEFUN(AC_LIBGTOP_CHECK_TYPE,
+AC_DEFUN([AC_LIBGTOP_CHECK_TYPE],
 [AC_REQUIRE([AC_HEADER_STDC])dnl
 AC_MSG_CHECKING(for $1)
 AC_CACHE_VAL(ac_cv_type_$1,
@@ -1480,7 +1480,7 @@ AC_DEFUN([GNOME_ORBIT_CHECK], [
 dnl AM_PATH_GNOME_PRINT([MINIMUM-VERSION, [ACTION-IF-FOUND [, ACTION-IF-NOT-FOUND]]])
 dnl Test for GNOME-PRINT, and define GNOME_PRINT_CFLAGS and GNOME_PRINT_LIBS
 dnl
-AC_DEFUN(AM_PATH_GNOME_PRINT,
+AC_DEFUN([AM_PATH_GNOME_PRINT],
 [dnl
 dnl Get the cflags and libraries from the gnome-config script
 dnl
@@ -2185,7 +2185,7 @@ main ()
 dnl
 dnl Check for struct linger
 dnl
-AC_DEFUN(AC_STRUCT_LINGER, [
+AC_DEFUN([AC_STRUCT_LINGER], [
 av_struct_linger=no
 AC_MSG_CHECKING(struct linger is available)
 AC_TRY_RUN([
@@ -2212,7 +2212,7 @@ AC_MSG_RESULT($av_struct_linger)
 ])
 dnl See whether we need a declaration for a function.
 dnl GCC_NEED_DECLARATION(FUNCTION [, EXTRA-HEADER-FILES])
-AC_DEFUN(GCC_NEED_DECLARATION,
+AC_DEFUN([GCC_NEED_DECLARATION],
 [AC_MSG_CHECKING([whether $1 must be declared])
 AC_CACHE_VAL(gcc_cv_decl_needed_$1,
 [AC_TRY_COMPILE([
@@ -2245,7 +2245,7 @@ fi
 
 dnl Check multiple functions to see whether each needs a declaration.
 dnl GCC_NEED_DECLARATIONS(FUNCTION... [, EXTRA-HEADER-FILES])
-AC_DEFUN(GCC_NEED_DECLARATIONS,
+AC_DEFUN([GCC_NEED_DECLARATIONS],
 [for ac_func in $1
 do
 GCC_NEED_DECLARATION($ac_func, $2)
@@ -2258,7 +2258,7 @@ done
 dnl AM_PATH_GTK([MINIMUM-VERSION, [ACTION-IF-FOUND [, ACTION-IF-NOT-FOUND [, MODULES]]]])
 dnl Test for GTK, and define GTK_CFLAGS and GTK_LIBS
 dnl
-AC_DEFUN(AM_PATH_GTK,
+AC_DEFUN([AM_PATH_GTK],
 [dnl
 dnl Get the cflags and libraries from the gtk-config script
 dnl

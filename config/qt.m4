@@ -1,5 +1,5 @@
 dnl find a binary in the path
-AC_DEFUN(QT_FIND_PATH,
+AC_DEFUN([QT_FIND_PATH],
 [
 	AC_MSG_CHECKING([for $1])
 	AC_CACHE_VAL(qt_cv_path_$1,
@@ -43,7 +43,7 @@ AC_DEFUN(QT_FIND_PATH,
 ])
 
 dnl Find the uic compiler on the path or in qt_cv_dir
-AC_DEFUN(QT_FIND_UIC,
+AC_DEFUN([QT_FIND_UIC],
 [
 	QT_FIND_PATH(uic, ac_uic, $qt_cv_dir/bin)
 	if test -z "$ac_uic" -a "$FATAL" = 1; then
@@ -52,7 +52,7 @@ AC_DEFUN(QT_FIND_UIC,
 ])
  
 dnl Find the right moc in path/qt_cv_dir
-AC_DEFUN(QT_FIND_MOC,
+AC_DEFUN([QT_FIND_MOC],
 [
 	QT_FIND_PATH(moc2, ac_moc2, $qt_cv_dir/bin)
 	QT_FIND_PATH(moc, ac_moc1, $qt_cv_dir/bin)
@@ -79,7 +79,7 @@ AC_DEFUN(QT_FIND_MOC,
 ])
 
 dnl check a particular libname
-AC_DEFUN(QT_TRY_LINK,
+AC_DEFUN([QT_TRY_LINK],
 [
 	SAVE_LIBS="$LIBS"
 	LIBS="$LIBS $1"
@@ -99,7 +99,7 @@ AC_DEFUN(QT_TRY_LINK,
 ])
  
 dnl check we can do a compile
-AC_DEFUN(QT_CHECK_COMPILE,
+AC_DEFUN([QT_CHECK_COMPILE],
 [
 	AC_MSG_CHECKING([for Qt library name])
  
@@ -131,7 +131,7 @@ AC_DEFUN(QT_CHECK_COMPILE,
 ])
 
 dnl get Qt version we're using
-AC_DEFUN(QT_GET_VERSION,
+AC_DEFUN([QT_GET_VERSION],
 [
 	AC_CACHE_CHECK([Qt version],lyx_cv_qtversion,
 	[
@@ -157,7 +157,7 @@ EOF
 ])
  
 dnl start here 
-AC_DEFUN(QT_DO_IT_ALL,
+AC_DEFUN([QT_DO_IT_ALL],
 [
 	dnl Please leave this alone. I use this file in
 	dnl oprofile.

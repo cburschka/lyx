@@ -1,5 +1,5 @@
 dnl We use this until autoconf fixes its version.
-AC_DEFUN(LYX_FUNC_SELECT_ARGTYPES,
+AC_DEFUN([LYX_FUNC_SELECT_ARGTYPES],
 [AC_MSG_CHECKING([types of arguments for select()])
  AC_CACHE_VAL(ac_cv_func_select_arg234,dnl
  [AC_CACHE_VAL(ac_cv_func_select_arg1,dnl
@@ -44,7 +44,7 @@ extern int select ($ac_cv_func_select_arg1,$ac_cv_func_select_arg234,$ac_cv_func
 dnl Check things are declared in headers to avoid errors or warnings.
 dnl Called like LYX_CHECK_DECL(function, headerfile)
 dnl Defines HAVE_DECL_{FUNCTION}
-AC_DEFUN(LYX_CHECK_DECL,
+AC_DEFUN([LYX_CHECK_DECL],
 [AC_MSG_CHECKING(if $1 is declared by header $2)
 tr_func=`echo $1 | tr 'abcdefghijklmnopqrstuvwxyz' 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'`
 
@@ -60,7 +60,7 @@ fi])
 
 dnl This is the multiple headers version of the LYX_CHECK_DECL macro above.
 dnl Called like LYX_CHECK_DECL_HDRS(function, file1 file2 file3)
-AC_DEFUN(LYX_CHECK_DECL_HDRS,
+AC_DEFUN([LYX_CHECK_DECL_HDRS],
 [ got="no"
 for I in $2; do
 tr_hdr=`echo $I | tr . _`

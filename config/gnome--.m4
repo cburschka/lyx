@@ -5,7 +5,7 @@ dnl Test for GNOMEMM, and define GNOMEMM_INCLUDEDIR, GNOMEMM_LIBDIR, GNOMEMM_LIB
 dnl   to be used as follows:
 dnl AM_PATH_GNOMEMM([MINIMUM-VERSION, [ACTION-IF-FOUND [, ACTION-IF-NOT-FOUND]]])
 dnl
-AC_DEFUN(AM_PATH_GNOMEMM,
+AC_DEFUN([AM_PATH_GNOMEMM],
 [
 dnl 
 dnl Get the cflags and libraries from the gtkmm-config script

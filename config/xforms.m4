@@ -3,7 +3,7 @@ dnl some macros to test for xforms-related functionality  -*- sh -*-
 dnl Usage LYX_PATH_XFORMS: Checks for xforms library and flags
 dnl   If it is found, the variable XFORMS_LIB is set to the relevant -l flags,
 dnl and FORMS_H_LOCATION / FLIMAGE_H_LOCATION is also set
-AC_DEFUN(LYX_PATH_XFORMS,[
+AC_DEFUN([LYX_PATH_XFORMS],[
 AC_REQUIRE([LYX_PATH_XPM])
 
 AC_CHECK_LIB(forms, fl_initialize, XFORMS_LIB="-lforms",
@@ -57,7 +57,7 @@ fi
 
 
 dnl Check the details of the xforms image loader
-AC_DEFUN(LYX_CHECK_XFORMS_IMAGE_LOADER,
+AC_DEFUN([LYX_CHECK_XFORMS_IMAGE_LOADER],
 [AC_REQUIRE([LYX_PATH_XFORMS])
 save_LIBS=$LIBS
 LIBS="$XFORMS_LIB $XPM_LIB $LIBS"

@@ -1,7 +1,7 @@
 # Macro to add for using pspell spellchecker libraries!     -*- sh -*-
 # @author@: Jürgen Vigna
 
-AC_DEFUN(CHECK_WITH_PSPELL,
+AC_DEFUN([CHECK_WITH_PSPELL],
 [
   USE_PSPELL="no"
   AC_MSG_CHECKING([for pspell support])
