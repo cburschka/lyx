@@ -917,10 +917,10 @@ bool MathCursor::selection() const
 }
 
 
-MathArrayInset * MathCursor::enclosingArray(MathCursor::idx_type & idx) const
+MathGridInset * MathCursor::enclosingGrid(MathCursor::idx_type & idx) const
 {
 	for (int i = Cursor_.size() - 1; i >= 0; --i) {
-		MathArrayInset * p = (*Cursor_[i].par_)->asArrayInset();
+		MathGridInset * p = (*Cursor_[i].par_)->asGridInset();
 		if (p) {
 			idx = Cursor_[i].idx_;
 			return p;
@@ -1126,7 +1126,7 @@ void MathCursor::readLine(MathArray & ar) const
 char MathCursor::valign() const
 {
 	idx_type idx;
-	MathArrayInset * p = enclosingArray(idx);
+	MathGridInset * p = enclosingGrid(idx);
 	return p ? p->valign() : '\0';
 }
 
@@ -1134,7 +1134,7 @@ char MathCursor::valign() const
 char MathCursor::halign() const
 {
 	idx_type idx;
-	MathArrayInset * p = enclosingArray(idx);
+	MathGridInset * p = enclosingGrid(idx);
 	return p ? p->halign(idx % p->ncols()) : '\0';
 }
 

@@ -555,7 +555,7 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 	case LFUN_MATH_COLUMN_DELETE:
 	{
 		MathInset::idx_type idx = 0;
-		MathArrayInset * p = mathcursor ? mathcursor->enclosingArray(idx) : 0;
+		MathGridInset * p = mathcursor ? mathcursor->enclosingGrid(idx) : 0;
 		if (p) {
 			bv->lockedInsetStoreUndo(Undo::EDIT);
 			char al = arg.size() ? arg[0] : 'c';

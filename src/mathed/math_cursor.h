@@ -27,7 +27,7 @@
 
 class MathInset;
 class MathAtom;
-class MathArrayInset;
+class MathGridInset;
 class MathFuncInset;
 class MathHullInset;
 class MathScriptInset;
@@ -126,7 +126,7 @@ public:
 	///
 	MathAtom & par() const;
 	/// return the next enclosing grid inset and the cursor's index in it
-	MathArrayInset * enclosingArray(idx_type &) const;
+	MathGridInset * enclosingGrid(idx_type &) const;
 	///
 	InsetFormulaBase const * formula();
 	///
