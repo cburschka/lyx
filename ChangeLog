@@ -1,3 +1,13 @@
+2001-01-22  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* config/lyxinclude.m4 (LYX_PROG_CXX): do not use -fno-rtti with
+	gcc 2.95.3. 
+
+	* src/texrow.C (increasePos): change to error messages into debug
+	messages.
+
+	* lib/images/banner.xpm: revert to the cucumberless banner.
+
 2001-01-21  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* src/frontends/xforms/FormRef.C (update): Do not update
