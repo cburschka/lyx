@@ -38,6 +38,7 @@ T * lstrchr(T const * t, int c)
 #include <cctype>
 #include "LString.h"
 
+
 ///
 inline int compare_no_case(string const & s, string const & s2)
 {
@@ -54,6 +55,7 @@ inline int compare_no_case(string const & s, string const & s2)
 
 	return s.size() - s2.size();
 }
+
 
 ///
 inline int compare_no_case(string const & s, string const & s2,
@@ -73,17 +75,20 @@ inline int compare_no_case(string const & s, string const & s2,
 	return s.size() - s2.size();
 }
 
+
 ///
 inline int compare(char const * a, char const * b)
 {
 	return strcmp(a, b);
 }
 
+
 ///
 inline int compare(char const * a, char const * b, unsigned int len)
 {
 	return strncmp(a, b, len);
 }
+
 
 ///
 bool isStrInt(string const & str);
@@ -109,8 +114,8 @@ string tostr(unsigned long l);
 ///
 string tostr(char c);
 
-/// void* to string
-string tostr(void* v);
+/// void * to string
+string tostr(void * v);
 
 /// bool to string
 string tostr(bool b);
@@ -171,7 +176,7 @@ string subst(string const & a, char oldchar, char newchar);
 
 /// Substitutes all instances of oldstr with newstr
 string subst(string const & a,
-	      char const * oldstr, string const & newstr);
+	     char const * oldstr, string const & newstr);
 
 /** Strips characters off the end of a string.
   #"abccc".strip('c') = "ab".#

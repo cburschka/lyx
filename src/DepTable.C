@@ -58,7 +58,7 @@ void DepTable::update()
 }
 
 
-bool DepTable::sumchange()
+bool DepTable::sumchange() const
 {
 	for (DepList::const_iterator cit = deplist.begin();
 	     cit != deplist.end();
@@ -69,7 +69,7 @@ bool DepTable::sumchange()
 }
 
 
-bool DepTable::haschanged(string const & f)
+bool DepTable::haschanged(string const & f) const
 {
 	// not quite sure if this is the correct place for MakeAbsPath
 	string fil = MakeAbsPath(f);
@@ -83,7 +83,7 @@ bool DepTable::haschanged(string const & f)
 }
 
 
-bool DepTable::extchanged(string const & ext)
+bool DepTable::extchanged(string const & ext) const
 {
 	for (DepList::const_iterator cit = deplist.begin();
 	     cit != deplist.end();
@@ -98,7 +98,28 @@ bool DepTable::extchanged(string const & ext)
 }
 
 
-void DepTable::write(string const & f)
+bool DepTable::exist(string const & fil) const
+{
+	DepList::const_iterator cit = deplist.find(fil);
+	if (cit != deplist.end()) return true;
+	return false;
+}
+
+
+void DepTable::remove_files_with_extension(string const & suf)
+{
+	DepList tmp;
+	for (DepList::const_iterator cit = deplist.begin();
+	     cit != deplist.end(); ++cit) {
+		if (!suffixIs((*cit).first, suf.c_str()))
+			tmp[(*cit).first] = (*cit).second;
+	}
+	deplist.swap(tmp);
+	
+}
+
+
+void DepTable::write(string const & f) const
 {
 	ofstream ofs(f.c_str());
 	for (DepList::const_iterator cit = deplist.begin();
@@ -116,7 +137,8 @@ void DepTable::write(string const & f)
 	}
 }
 
-void DepTable::read(string const &f)
+
+void DepTable::read(string const & f)
 {
 	ifstream ifs(f.c_str());
 	string nome;

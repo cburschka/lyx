@@ -26,6 +26,8 @@
 #include "support/syscall.h"
 #include "support/syscontr.h"
 #include "support/path.h"
+#include "support/LRegex.h"
+#include "support/LSubstring.h"
 #include "bufferlist.h"
 #include "minibuffer.h"
 #include "gettext.h"
@@ -140,8 +142,6 @@ int LaTeX::run(TeXErrors & terr, MiniBuffer * minib)
 		lyxerr[Debug::LATEX] << "Dependency file exists" << endl;
 		if (head.sumchange()) {
 			++count;
-			if (head.extchanged(".bib")
-			    || head.extchanged(".bst")) run_bibtex = true;
 			lyxerr[Debug::LATEX]
 				<< "Dependency file has changed\n"
 				<< "Run #" << count << endl; 
@@ -150,6 +150,9 @@ int LaTeX::run(TeXErrors & terr, MiniBuffer * minib)
 			this->operator()();
 			scanres = scanLogFile(terr);
 			if (scanres & LaTeX::ERRORS) return scanres; // return on error
+			run_bibtex = scanAux(head);
+			if (run_bibtex)
+				lyxerr << "Bibtex demands rerun" << endl;
 		} else {
 			lyxerr[Debug::LATEX] << "return no_change" << endl;
 			return LaTeX::NO_CHANGE;
@@ -311,10 +314,68 @@ bool LaTeX::runMakeIndex(string const &file)
 }
 
 
+bool LaTeX::scanAux(DepTable & dep)
+{
+	// if any of the bib file has changed we don't have to
+	// check the .aux file.
+	if (dep.extchanged(".bib")
+	    || dep.extchanged(".bst")) return true;
+	
+	string aux = ChangeExtension(file, ".aux", true);
+	ifstream ifs(aux.c_str());
+	string token;
+	LRegex reg1("\\\\bibdata{([^}]+)}");
+	LRegex reg2("\\\\bibstyle{([^}]+)}");
+	while (getline(ifs, token)) {
+		if (reg1.exact_match(token)) {
+			LRegex::SubMatches sub = reg1.exec(token);
+			string data = LSubstring(token, sub[1].first,
+						 sub[1].second);
+			string::size_type b;
+			do {
+				b = data.find_first_of(',', 0);
+				string l;
+				if (b == string::npos)
+					l = data;
+				else {
+					l = data.substr( 0, b - 0);
+					data.erase(0, b + 1);
+				}
+				string full_l =
+					findtexfile(
+						ChangeExtension(l, "bib", false), "bib");
+				if (!full_l.empty()) {
+					if (!dep.exist(full_l))
+						return true;
+				}
+			} while (b != string::npos);
+		} else if (reg2.exact_match(token)) {
+			LRegex::SubMatches sub = reg2.exec(token);
+			string style = LSubstring(token, sub[1].first,
+						  sub[1].second);
+			// token is now the style file
+			// pass it to the helper
+			string full_l =
+				findtexfile(
+					ChangeExtension(style, "bst", false),
+					"bst");
+			if (!full_l.empty()) {
+				if (!dep.exist(full_l))
+					return true;
+			}
+		}
+	}
+	return false;
+}
 
 
 bool LaTeX::runBibTeX(string const & file, DepTable & dep)
 {
+	// Since a run of Bibtex mandates more latex runs it is ok to
+	// remove all ".bib" and ".bst" files, it is also required to
+	// discover style and database changes.
+	dep.remove_files_with_extension(".bib");
+	dep.remove_files_with_extension(".bst");
 	ifstream ifs(file.c_str());
 	string token;
 	bool using_bibtex = false;
@@ -574,3 +635,4 @@ void LaTeX::deptex(DepTable & head)
 		}
 	}
 }
+

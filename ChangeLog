@@ -1,3 +1,27 @@
+1999-11-26  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/support/lyxstring.C (lyxstring::Srep): Changed to use a
+	doubling of allocated space scheme. This makes it faster for large
+	strings end to use less memory for small strings. xtra rememoved. 
+
+	* src/insets/figinset.C (waitalarm): commented out.
+	(GhostscriptMsg): use static_cast
+	(GhostscriptMsg): use new instead of malloc to allocate memory for
+	cmap. also delete the memory after use.
+
+	* src/lyx_cb.C (SetXtermCursor): made cursor_undefined a bool
+
+	* src/LaTeX.C (scanAux): new method. Scans the .aux file and looks
+	for changes in bibtex database or style.
+	(runBibTeX): remove all .bib and .bst files from dep before we
+	begin. 
+	(run): use scanAuc in when dep file already exist.
+
+	* src/DepTable.C (remove_files_with_extension): new method
+	(exist): new method
+
+	* src/DepTable.[Ch]: made many of the methods const. 
+
 1999-11-25  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/bufferparams.C: make sure that the default textclass is

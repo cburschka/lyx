@@ -62,33 +62,33 @@
 #include "gettext.h"
 #include "layout.h"
 
-extern MiniBuffer *minibuffer;
-extern Combox *combo_language;
+extern MiniBuffer * minibuffer;
+extern Combox * combo_language;
 extern BufferList bufferlist;
 extern void show_symbols_form();
-extern FD_form_main *fd_form_main;
-extern FD_form_title *fd_form_title;
-extern FD_form_paragraph *fd_form_paragraph;
-extern FD_form_character *fd_form_character;
-extern FD_form_document *fd_form_document;
-extern FD_form_quotes *fd_form_quotes;
-extern FD_form_preamble *fd_form_preamble;
-extern FD_form_table *fd_form_table;
-extern FD_form_print *fd_form_print;
-extern FD_form_figure *fd_form_figure;
-extern FD_form_screen *fd_form_screen;
-extern FD_form_toc *fd_form_toc;
-extern FD_form_ref *fd_form_ref;
-extern FD_LaTeXOptions *fd_latex_options;
-extern FD_form_bullet *fd_form_bullet;
+extern FD_form_main * fd_form_main;
+extern FD_form_title * fd_form_title;
+extern FD_form_paragraph * fd_form_paragraph;
+extern FD_form_character * fd_form_character;
+extern FD_form_document * fd_form_document;
+extern FD_form_quotes * fd_form_quotes;
+extern FD_form_preamble * fd_form_preamble;
+extern FD_form_table * fd_form_table;
+extern FD_form_print * fd_form_print;
+extern FD_form_figure * fd_form_figure;
+extern FD_form_screen * fd_form_screen;
+extern FD_form_toc * fd_form_toc;
+extern FD_form_ref * fd_form_ref;
+extern FD_LaTeXOptions * fd_latex_options;
+extern FD_form_bullet * fd_form_bullet;
 
-extern BufferView *current_view; // called too many times in this file...
+extern BufferView * current_view; // called too many times in this file...
 
 extern void DeleteSimpleCutBuffer(); /* for the cleanup when exiting */
 
-extern bool send_fax(string const &fname, string const &sendcmd);
+extern bool send_fax(string const & fname, string const & sendcmd);
 
-extern LyXServer *lyxserver;
+extern LyXServer * lyxserver;
 extern FontLoader fontloader;
 
 // this should be static, but I need it in buffer.C
@@ -151,22 +151,22 @@ void InsertCorrectQuote();
                   Matthias
    */
 
-void UpdateInset(Inset* inset, bool mark_dirty = true);
+void UpdateInset(Inset * inset, bool mark_dirty = true);
 /* these functions return 1 if an error occured, 
    otherwise 0 */
 // Now they work only for updatable insets. [Alejandro 080596]
-int LockInset(UpdatableInset* inset);
+int LockInset(UpdatableInset * inset);
 void ToggleLockedInsetCursor(long x, long y, int asc, int desc);
 void FitLockedInsetCursor(long x, long y, int asc, int desc);
-int UnlockInset(UpdatableInset* inset);
+int UnlockInset(UpdatableInset * inset);
 void LockedInsetStoreUndo(Undo::undo_kind kind);
 
 /* this is for asyncron updating. UpdateInsetUpdateList will be called
    automatically from LyX. Just insert the Inset into the Updatelist */
 void UpdateInsetUpdateList();
-void PutInsetIntoInsetUpdateList(Inset* inset);
+void PutInsetIntoInsetUpdateList(Inset * inset);
 
-InsetUpdateStruct *InsetUpdateList = 0;
+InsetUpdateStruct * InsetUpdateList = 0;
 
 
 /*
@@ -188,9 +188,9 @@ void ProtectedBlank();
 void CopyCB();
 int RunLinuxDoc(int, string const &);
 int RunDocBook(int, string const &);
-void MenuWrite(Buffer* buf);
-void MenuWriteAs(Buffer *buffer);
-void MenuReload(Buffer *buf);
+void MenuWrite(Buffer * buf);
+void MenuWriteAs(Buffer * buffer);
+void MenuReload(Buffer * buf);
 void MenuLayoutSave();
 
 unsigned char GetCurrentTextClass()
@@ -244,11 +244,11 @@ void ProhibitInput()
 void SetXtermCursor(Window win)
 {
 	static Cursor cursor;
-	static char cursor_undefined = 1;
+	static bool cursor_undefined = true;
 	if (cursor_undefined){
 		cursor = XCreateFontCursor(fl_display, XC_xterm);
 		XFlush(fl_display);
-		cursor_undefined = 0;
+		cursor_undefined = false;
 	}
 	XDefineCursor(fl_display, win, cursor);
 	XFlush(fl_display);
@@ -336,7 +336,7 @@ void SmallUpdate(signed char f)
 //
 
 // should be moved to lyxfunc.C
-void MenuWrite(Buffer* buf)
+void MenuWrite(Buffer * buf)
 {
 	XFlush(fl_display);
 	if (!bufferlist.write(buf)) {
@@ -354,7 +354,7 @@ void MenuWrite(Buffer* buf)
 
 
 // should be moved to BufferView.C
-void MenuWriteAs(Buffer *buffer)
+void MenuWriteAs(Buffer * buffer)
 {
 	if (!buffer->text) return;
 
@@ -429,7 +429,7 @@ void MenuWriteAs(Buffer *buffer)
 }    
 
 
-int MenuRunLaTeX(Buffer *buffer)
+int MenuRunLaTeX(Buffer * buffer)
 {
 	int ret = 0;
 
@@ -459,39 +459,37 @@ int MenuRunLaTeX(Buffer *buffer)
 }
 
 
-int MenuBuildProg(Buffer *buffer)
+int MenuBuildProg(Buffer * buffer)
 {
-       int ret = 0;
-
-       if (buffer->isLiterate())
-	       ret = buffer->buildProgram();
-       else {
-	       string s;
-	       string t;
-	       s = _("Wrong type of document");
-	       t = _("The Build operation is not allowed in this document");
-               WriteAlert(_("There were errors during the Build process."), s, t);
-	       return 1;
-       }
-   
-       if (ret > 0) {
-               string s;
-               string t;
-               if (ret == 1) {
-                       s = _("One error detected");
-                       t = _("You should try to fix it.");
-               } else {
-                       s += tostr(ret);
-                       s += _(" errors detected.");
-                       t = _("You should try to fix them.");
-               }
-               WriteAlert(_("There were errors during the Build process."), s, t);
-       }
-       return ret;
+	int ret = 0;
+	
+	if (buffer->isLiterate())
+		ret = buffer->buildProgram();
+	else {
+		string s = _("Wrong type of document");
+		string t = _("The Build operation is not allowed in this document");
+		WriteAlert(_("There were errors during the Build process."), s, t);
+		return 1;
+	}
+	
+	if (ret > 0) {
+		string s;
+		string t;
+		if (ret == 1) {
+			s = _("One error detected");
+			t = _("You should try to fix it.");
+		} else {
+			s += tostr(ret);
+			s += _(" errors detected.");
+			t = _("You should try to fix them.");
+		}
+		WriteAlert(_("There were errors during the Build process."), s, t);
+	}
+	return ret;
 }
 
 
-int MenuRunChktex(Buffer *buffer)
+int MenuRunChktex(Buffer * buffer)
 {
 	int ret;
 
@@ -522,7 +520,7 @@ int MenuRunChktex(Buffer *buffer)
 }
 
  
-int MakeDVIOutput(Buffer *buffer)
+int MakeDVIOutput(Buffer * buffer)
 {
 	if (!(buffer->text))
 		return 1;
@@ -546,7 +544,8 @@ int MakeDVIOutput(Buffer *buffer)
 // The bool should be placed last on the argument line. (Lgb)
 // Returns false if we fail.
 bool RunScript(Buffer * buffer, bool wait,
-	       string const & command, string const & orgname = string(),
+	       string const & command,
+	       string const & orgname = string(),
 	       bool need_shell = true)
 {
 	string path;
@@ -612,7 +611,7 @@ bool RunScript(Buffer * buffer, bool wait,
 
 
 // Returns false if we fail
-bool MenuRunDvips(Buffer *buffer, bool wait = false)
+bool MenuRunDvips(Buffer * buffer, bool wait = false)
 {
 	if (!buffer->text)
 		return false;
@@ -698,7 +697,7 @@ bool MenuRunDvips(Buffer *buffer, bool wait = false)
 
 
 // Returns false if we fail
-bool MenuPreviewPS(Buffer *buffer)
+bool MenuPreviewPS(Buffer * buffer)
 {
 	if (!buffer->text)
 		return false;
@@ -724,7 +723,7 @@ bool MenuPreviewPS(Buffer *buffer)
 }
 
 
-void MenuFax(Buffer *buffer)
+void MenuFax(Buffer * buffer)
 {
 	if (!buffer->text)
 		return;
@@ -751,7 +750,7 @@ void MenuFax(Buffer *buffer)
 
 
 // Returns false if we fail
-bool MenuPreview(Buffer *buffer)
+bool MenuPreview(Buffer * buffer)
 {
 	if (!buffer->text)
 		return false;
@@ -844,10 +843,9 @@ void MenuMakeLaTeX(Buffer * buffer)
 }
 
 
-void MenuMakeLinuxDoc(Buffer *buffer)
+void MenuMakeLinuxDoc(Buffer * buffer)
 {
 	if (buffer->text) {
-
 		if (!buffer->isLinuxDoc()) {
 			WriteAlert(_("Error!"), _("Document class must be linuxdoc."));
 			return;
@@ -877,12 +875,12 @@ void MenuMakeLinuxDoc(Buffer *buffer)
 }
 
 
-void MenuMakeDocBook(Buffer *buffer)
+void MenuMakeDocBook(Buffer * buffer)
 {
 	if (buffer->text) {
-
 		if (!buffer->isDocBook()) {
-			WriteAlert(_("Error!"), _("Document class must be docbook."));
+			WriteAlert(_("Error!"),
+				   _("Document class must be docbook."));
 			return;
 		}
 
@@ -910,7 +908,7 @@ void MenuMakeDocBook(Buffer *buffer)
 }
 
 
-void MenuMakeAscii(Buffer *buffer)
+void MenuMakeAscii(Buffer * buffer)
 {
 	if (buffer->text) {
 		/* get LaTeX-Filename */
@@ -933,14 +931,12 @@ void MenuMakeAscii(Buffer *buffer)
 }
 
 
-void MenuPrint(Buffer *buffer)
+void MenuPrint(Buffer * buffer)
 {
-	string input_file;
-
 	if (!buffer->text) 
 		return;
 	
-	input_file = ChangeExtension(buffer->getFileName(),
+	string input_file = ChangeExtension(buffer->getFileName(),
 				     lyxrc->print_file_extension,
 				     true);
 	fl_set_input(fd_form_print->input_file, input_file.c_str());
@@ -1075,7 +1071,7 @@ Buffer * NewLyxFile(string const & filename)
 		       << "\nTemplate is " << tmpname << endl;
 
 	// find a free buffer 
-	Buffer *tmpbuf = bufferlist.newFile(name, tmpname);
+	Buffer * tmpbuf = bufferlist.newFile(name, tmpname);
 	if (tmpbuf)
 		lastfiles->newFile(tmpbuf->getFileName());
 	return tmpbuf;
@@ -1119,11 +1115,11 @@ void InsertAsciiFile(string const & f, bool asParagraph)
 	// set the end of the string
 #warning why do we do this?
 	// I don't think this is needed. Actually it might be plain wrong.
-	tmppar->InsertChar(tmppar->text.size() - 1,'\0');
+	tmppar->InsertChar(tmppar->text.size() - 1, '\0');
 
 	// insert the string
 	current_view->getScreen()->HideCursor();
-      
+	
 	// clear the selection
 	BeforeChange();
 	if (!asParagraph)
@@ -1155,7 +1151,7 @@ void MenuShowTableOfContents()
 }
 
 
-void MenuInsertLabel(char const *arg)
+void MenuInsertLabel(char const * arg)
 {
 	string label = arg;
 	ProhibitInput();
@@ -1210,7 +1206,7 @@ void MenuPasteSelection(char at)
 }
 
 
-extern "C" void FootCB(FL_OBJECT*, long)
+extern "C" void FootCB(FL_OBJECT *, long)
 {
 	if (!current_view->available()) 
 		return;
@@ -1318,15 +1314,9 @@ int RunLinuxDoc(int flag, string const & filename)
  */
 int RunDocBook(int flag, string const & filename)
 {
-	string name;
-	string s2;
-	string path;
-
-	int errorcode = 0;
-
 	/* generate a path-less extension name */
-	name = ChangeExtension (filename, ".sgml", true);
-	path = OnlyPath (filename);
+	string name = ChangeExtension (filename, ".sgml", true);
+	string path = OnlyPath (filename);
 	if (lyxrc->use_tempdir || (IsDirWriteable(path) < 1)) {
 		path = current_view->buffer()->tmppath;
 	}
@@ -1347,16 +1337,19 @@ int RunDocBook(int flag, string const & filename)
 //  	}
 	ProhibitInput();
 	
+	int errorcode = 0;
 	Systemcalls one;
 	switch (flag) {
 	case 1: /* dvi output asked */
+	{
 		minibuffer->Set(_("Converting DocBook SGML to dvi file..."));
-		s2 = "sgmltools --backend dvi " + name;
+		string s2 = "sgmltools --backend dvi " + name;
 		if (one.startscript(Systemcalls::System, s2)) {
 			errorcode = 1;
 		} else
 			current_view->buffer()->markDviClean();
-		break;
+	}
+	break;
 	default: /* unknown output */
 		break;
 	}
@@ -1397,28 +1390,18 @@ void AllFloats(char flag, char figmar)
 	while (par) {
 		if (flag) {
 			if (par->footnoteflag == LyXParagraph::CLOSED_FOOTNOTE
-			    && (
-				    (figmar 
-				     &&
-				     par->footnotekind != LyXParagraph::FOOTNOTE 
-				     &&
-				     par->footnotekind !=  LyXParagraph::MARGIN
-					    )
-				    ||
-				    (!figmar
-				     &&
-				     par->footnotekind != LyXParagraph::FIG 
-				     &&
-				     par->footnotekind != LyXParagraph::TAB
-				     &&
- 				     par->footnotekind != LyXParagraph::WIDE_FIG 
- 				     &&
- 				     par->footnotekind != LyXParagraph::WIDE_TAB
- 				     &&
-				     par->footnotekind != LyXParagraph::ALGORITHM
-					    )
+			    && ((figmar 
+				 && par->footnotekind != LyXParagraph::FOOTNOTE 
+				 && par->footnotekind !=  LyXParagraph::MARGIN)
+				|| (!figmar
+				    && par->footnotekind != LyXParagraph::FIG 
+				    && par->footnotekind != LyXParagraph::TAB
+				    && par->footnotekind != LyXParagraph::WIDE_FIG 
+				    && par->footnotekind != LyXParagraph::WIDE_TAB
+				    && par->footnotekind != LyXParagraph::ALGORITHM
+					)
 				    )
-				){
+				) {
 				if (par->previous
 				    && par->previous->footnoteflag != 
 				    LyXParagraph::CLOSED_FOOTNOTE){ /* should be */ 
@@ -1493,6 +1476,7 @@ inline void DeactivateParagraphButtons ()
 	fl_set_object_lcol (fd_form_paragraph->button_apply, FL_INACTIVE);
 }
 
+
 inline void ActivateParagraphButtons ()
 {
 	fl_activate_object (fd_form_paragraph->button_ok);
@@ -1500,6 +1484,7 @@ inline void ActivateParagraphButtons ()
 	fl_set_object_lcol (fd_form_paragraph->button_ok, FL_BLACK);
 	fl_set_object_lcol (fd_form_paragraph->button_apply, FL_BLACK);
 }
+
 
 inline void DisableParagraphLayout ()
 {
@@ -1523,6 +1508,7 @@ inline void DisableParagraphLayout ()
 	fl_deactivate_object (fd_form_paragraph->check_space_below);
 }
 
+
 inline void EnableParagraphLayout ()
 {
         ActivateParagraphButtons();
@@ -1545,6 +1531,7 @@ inline void EnableParagraphLayout ()
 	fl_activate_object (fd_form_paragraph->check_space_below);
 }
 
+
 bool UpdateLayoutParagraph()
 {
 	if (!current_view->getScreen() || !current_view->available()) {
@@ -1564,8 +1551,8 @@ bool UpdateLayoutParagraph()
 
 	int align = buf->text->cursor.par->GetAlign();
 	if (align == LYX_ALIGN_LAYOUT)
-		align = 	textclasslist.Style(buf->params.textclass,
-				       buf->text->cursor.par->GetLayout()).align;
+		align = textclasslist.Style(buf->params.textclass,
+				  buf->text->cursor.par->GetLayout()).align;
 	 
 	switch (align) {
 	case LYX_ALIGN_RIGHT:
@@ -1596,32 +1583,25 @@ bool UpdateLayoutParagraph()
 	
 	switch (buf->text->cursor.par->FirstPhysicalPar()->added_space_top.kind()) {
 	case VSpace::NONE:
-		fl_set_choice (fd_form_paragraph->choice_space_above,
-			       1);
+		fl_set_choice (fd_form_paragraph->choice_space_above, 1);
 		break;
 	case VSpace::DEFSKIP:
-		fl_set_choice (fd_form_paragraph->choice_space_above,
-			       2);
+		fl_set_choice (fd_form_paragraph->choice_space_above, 2);
 		break;
 	case VSpace::SMALLSKIP:
-		fl_set_choice (fd_form_paragraph->choice_space_above,
-			       3);
+		fl_set_choice (fd_form_paragraph->choice_space_above, 3);
 		break;
 	case VSpace::MEDSKIP:
-		fl_set_choice (fd_form_paragraph->choice_space_above,
-			       4);
+		fl_set_choice (fd_form_paragraph->choice_space_above, 4);
 		break;
 	case VSpace::BIGSKIP:
-		fl_set_choice (fd_form_paragraph->choice_space_above,
-			       5);
+		fl_set_choice (fd_form_paragraph->choice_space_above, 5);
 		break;
 	case VSpace::VFILL:
-		fl_set_choice (fd_form_paragraph->choice_space_above,
-			       6);
+		fl_set_choice (fd_form_paragraph->choice_space_above, 6);
 		break;
 	case VSpace::LENGTH:
-		fl_set_choice (fd_form_paragraph->choice_space_above,
-			       7); 
+		fl_set_choice (fd_form_paragraph->choice_space_above, 7); 
 		fl_set_input  (fd_form_paragraph->input_space_above, 
 			       buf->text->cursor.par->FirstPhysicalPar()->added_space_top.length().asString().c_str());
 		break;
@@ -1675,6 +1655,7 @@ bool UpdateLayoutParagraph()
 	return true;
 }
 
+
 void MenuLayoutParagraph()
 {
 	if (UpdateLayoutParagraph()) {
@@ -1708,6 +1689,7 @@ void ActivateDocumentButtons ()
 	fl_set_object_lcol (fd_form_document->button_apply, FL_BLACK);
 }
 
+
 inline
 void DisableDocumentLayout ()
 {
@@ -1739,6 +1721,7 @@ void DisableDocumentLayout ()
 	fl_deactivate_object (fd_form_document->input_spacing);
 	fl_deactivate_object (fd_form_document->check_use_amsmath);
 }
+
 
 inline
 void EnableDocumentLayout ()
@@ -1772,7 +1755,8 @@ void EnableDocumentLayout ()
 	fl_activate_object (fd_form_document->check_use_amsmath);
 }
 
-bool UpdateLayoutDocument(BufferParams *params)
+
+bool UpdateLayoutDocument(BufferParams * params)
 {
 	if (!current_view->getScreen() || !current_view->available()) {
 		if (fd_form_document->form_document->visible) 
@@ -1862,31 +1846,31 @@ bool UpdateLayoutDocument(BufferParams *params)
 	fl_set_input(fd_form_document->input_spacing, "");
 	switch (params->spacing.getSpace()) {
 	case Spacing::Single:
-		{
-			// \singlespacing
-			fl_set_choice(fd_form_document->choice_spacing, 1);
-			break;
-		}
+	{
+		// \singlespacing
+		fl_set_choice(fd_form_document->choice_spacing, 1);
+		break;
+	}
 	case Spacing::Onehalf:
-		{
-			// \onehalfspacing
-			fl_set_choice(fd_form_document->choice_spacing, 2);
-			break;
-		}
+	{
+		// \onehalfspacing
+		fl_set_choice(fd_form_document->choice_spacing, 2);
+		break;
+	}
 	case Spacing::Double:
-		{
-			// \ doublespacing
-			fl_set_choice(fd_form_document->choice_spacing, 3);
-			break;
-		}
+	{
+		// \ doublespacing
+		fl_set_choice(fd_form_document->choice_spacing, 3);
+		break;
+	}
 	case Spacing::Other:
-		{
-			fl_set_choice(fd_form_document->choice_spacing, 4);
-			char sval[20];
-			sprintf(sval, "%g", params->spacing.getValue()); 
-			fl_set_input(fd_form_document->input_spacing, sval);
-			break;
-		}
+	{
+		fl_set_choice(fd_form_document->choice_spacing, 4);
+		char sval[20];
+		sprintf(sval, "%g", params->spacing.getValue()); 
+		fl_set_input(fd_form_document->input_spacing, sval);
+		break;
+	}
 	}
 
 
@@ -1926,6 +1910,7 @@ bool UpdateLayoutDocument(BufferParams *params)
 	return true;
 }
 
+
 void MenuLayoutDocument()
 {
 	if (UpdateLayoutDocument()) {
@@ -1963,6 +1948,7 @@ bool UpdateLayoutQuotes()
 	}
 	return update;
 }
+
 
 void MenuLayoutQuotes()
 {
@@ -2030,6 +2016,7 @@ void MenuLayoutPreamble()
 	}
 }
 
+
 void MenuLayoutSave()
 {
 	if (!current_view->getScreen() || ! current_view->available())
@@ -2061,6 +2048,7 @@ void OpenStuff()
 		current_view->buffer()->update(0);
 	}
 }
+
 
 void ToggleFloat()
 {
@@ -2449,7 +2437,7 @@ extern "C" void MeltCB(FL_OBJECT *, long)
 // if decInc == 0, depth change taking mouse button number into account
 // if decInc == 1, increment depth
 // if decInc == -1, decrement depth
-extern "C" void DepthCB(FL_OBJECT *ob, long decInc)
+extern "C" void DepthCB(FL_OBJECT * ob, long decInc)
 {
 	int button = 1;
 
@@ -2481,9 +2469,8 @@ extern "C" void DepthCB(FL_OBJECT *ob, long decInc)
 LyXFont UserFreeFont()
 {
 	LyXFont font(LyXFont::ALL_IGNORE);
-	int pos;
 
-	pos = fl_get_choice(fd_form_character->choice_family);
+	int pos = fl_get_choice(fd_form_character->choice_family);
 	switch(pos) {
 	case 1: font.setFamily(LyXFont::IGNORE_FAMILY); break;
 	case 2: font.setFamily(LyXFont::ROMAN_FAMILY); break;
@@ -2587,12 +2574,12 @@ extern "C" void TimerCB(FL_OBJECT *, long)
 
 /* callbacks for form form_paragraph */
 
-extern "C" void ParagraphVSpaceCB(FL_OBJECT* obj, long )
+extern "C" void ParagraphVSpaceCB(FL_OBJECT * obj, long )
 {
 	// "Synchronize" the choices and input fields, making it
 	// impossible to commit senseless data.
 
-	const FD_form_paragraph* fp = fd_form_paragraph;
+	FD_form_paragraph const * fp = fd_form_paragraph;
 
 	if (obj == fp->choice_space_above) {
 		if (fl_get_choice (fp->choice_space_above) != 7) {
@@ -2752,7 +2739,7 @@ extern "C" void CharacterOKCB(FL_OBJECT *ob, long data)
 
 /* callbacks for form form_document */
 
-void UpdateDocumentButtons(BufferParams const &params) 
+void UpdateDocumentButtons(BufferParams const & params) 
 {
 	fl_set_choice(fd_form_document->choice_pagestyle, 1);
 	
@@ -2774,7 +2761,7 @@ void UpdateDocumentButtons(BufferParams const &params)
 	
 }
 
-extern "C" void ChoiceClassCB(FL_OBJECT *ob, long)
+extern "C" void ChoiceClassCB(FL_OBJECT * ob, long)
 {
 	ProhibitInput();
 	if (textclasslist.Load(fl_get_choice(ob)-1)) {
@@ -2799,11 +2786,11 @@ extern "C" void ChoiceClassCB(FL_OBJECT *ob, long)
 }
 
 
-extern "C" void DocumentDefskipCB(FL_OBJECT *obj, long)
+extern "C" void DocumentDefskipCB(FL_OBJECT * obj, long)
 {
 	// "Synchronize" the choice and the input field, so that it
 	// is impossible to commit senseless data.
-	const FD_form_document* fd = fd_form_document;
+	FD_form_document const * fd = fd_form_document;
 
 	if (obj == fd->choice_default_skip) {
 		if (fl_get_choice (fd->choice_default_skip) != 4) {
@@ -2812,7 +2799,7 @@ extern "C" void DocumentDefskipCB(FL_OBJECT *obj, long)
 		}
 	} else if (obj == fd->input_default_skip) {
 
-		const char* input = fl_get_input (fd->input_default_skip);
+		char const * input = fl_get_input (fd->input_default_skip);
 
 		if (!*input) {
 			fl_set_choice (fd->choice_default_skip, 2);
@@ -2828,11 +2815,11 @@ extern "C" void DocumentDefskipCB(FL_OBJECT *obj, long)
 }
 
 
-extern "C" void DocumentSpacingCB(FL_OBJECT *obj, long)
+extern "C" void DocumentSpacingCB(FL_OBJECT * obj, long)
 {
 	// "Synchronize" the choice and the input field, so that it
 	// is impossible to commit senseless data.
-	const FD_form_document* fd = fd_form_document;
+	FD_form_document const * fd = fd_form_document;
 
 	if (obj == fd->choice_spacing
 	    && fl_get_choice (fd->choice_spacing) != 4) {
@@ -3010,7 +2997,7 @@ extern "C" void DocumentCancelCB(FL_OBJECT *, long)
 }
 
 
-extern "C" void DocumentOKCB(FL_OBJECT *ob, long data)
+extern "C" void DocumentOKCB(FL_OBJECT * ob, long data)
 {
 	DocumentCancelCB(ob, data);
 	DocumentApplyCB(ob, data);
@@ -3120,7 +3107,7 @@ extern "C" void QuotesCancelCB(FL_OBJECT *, long)
 }
 
 
-extern "C" void QuotesOKCB(FL_OBJECT *ob, long data)
+extern "C" void QuotesOKCB(FL_OBJECT * ob, long data)
 {
 	QuotesApplyCB(ob, data);
 	QuotesCancelCB(ob, data);
@@ -3148,7 +3135,7 @@ extern "C" void PreambleApplyCB(FL_OBJECT *, long)
 }
 
    
-extern "C" void PreambleOKCB(FL_OBJECT *ob, long data)
+extern "C" void PreambleOKCB(FL_OBJECT * ob, long data)
 {
 	PreambleApplyCB(ob, data);
 	PreambleCancelCB(ob, data);
@@ -3159,7 +3146,6 @@ extern "C" void PreambleOKCB(FL_OBJECT *ob, long data)
 
 extern "C" void TableApplyCB(FL_OBJECT *, long)
 {
-	int xsize, ysize;
 	if (!current_view->getScreen())
 		return;
    
@@ -3173,8 +3159,8 @@ extern "C" void TableApplyCB(FL_OBJECT *, long)
  
 	minibuffer->Set(_("Inserting table..."));
 
-	ysize = (int)(fl_get_slider_value(fd_form_table->slider_columns) + 0.5);
-	xsize = (int)(fl_get_slider_value(fd_form_table->slider_rows) + 0.5);
+	int ysize = int(fl_get_slider_value(fd_form_table->slider_columns) + 0.5);
+	int xsize = int(fl_get_slider_value(fd_form_table->slider_rows) + 0.5);
    
    
 	current_view->getScreen()->HideCursor();
@@ -3214,17 +3200,19 @@ extern "C" void TableApplyCB(FL_OBJECT *, long)
 					   0);
 	}
 	else
-		current_view->buffer()->text->SetParagraph(0, 0,
-								  0, 0,
-								  VSpace(VSpace::NONE),
-								  VSpace(VSpace::NONE),
+		current_view->buffer()->
+			text->SetParagraph(0, 0,
+					   0, 0,
+					   VSpace(VSpace::NONE),
+					   VSpace(VSpace::NONE),
 					   LYX_ALIGN_CENTER, 
 					   string(),
 					   0);
 
-	current_view->buffer()->text->cursor.par->table = new LyXTable(xsize, ysize);
-	int i;
-	for (i = 0; i<xsize * ysize - 1; i++)
+	current_view->buffer()->text->cursor.par->table =
+		new LyXTable(xsize, ysize);
+
+	for (int i = 0; i < xsize * ysize - 1; ++i)
 		current_view->buffer()->text->cursor.par->InsertChar(0, LyXParagraph::META_NEWLINE);
 	current_view->buffer()->text->RedoParagraph();
    
@@ -3241,7 +3229,7 @@ extern "C" void TableCancelCB(FL_OBJECT *, long)
 }
 
 
-extern "C" void TableOKCB(FL_OBJECT *ob, long data)
+extern "C" void TableOKCB(FL_OBJECT * ob, long data)
 {
 	TableApplyCB(ob, data);
 	TableCancelCB(ob, data);
@@ -3266,7 +3254,7 @@ extern "C" void PrintApplyCB(FL_OBJECT *, long)
 {
 	if (!current_view->available())
 		return;
-        Buffer *buffer = current_view->buffer();
+        Buffer * buffer = current_view->buffer();
         string path = OnlyPath(buffer->getFileName());
 
 	string pageflag;
@@ -3343,9 +3331,8 @@ extern "C" void PrintApplyCB(FL_OBJECT *, long)
 	char real_papersize = buffer->params.papersize;
 	if (real_papersize == BufferParams::PAPER_DEFAULT)
 		real_papersize = lyxrc->default_papersize;
-        string
-            paper;
-
+	
+        string paper;
 	switch (real_papersize) {
 	case BufferParams::PAPER_USLETTER:
 		paper = "letter";
@@ -3423,7 +3410,7 @@ extern "C" void PrintApplyCB(FL_OBJECT *, long)
 }
 
 
-extern "C" void PrintOKCB(FL_OBJECT *ob, long data)
+extern "C" void PrintOKCB(FL_OBJECT * ob, long data)
 {
 	PrintCancelCB(ob, data);  
 	PrintApplyCB(ob, data);
@@ -3473,14 +3460,15 @@ extern "C" void FigureApplyCB(FL_OBJECT *, long)
 	
 	if (buffer->text->cursor.par->footnoteflag == 
 	    LyXParagraph::NO_FOOTNOTE) {
-		buffer->text->SetParagraph(0, 0,
-					   0, 0,
-					   VSpace (0.3 * buffer->params.spacing.getValue(),
-						   LyXLength::CM),
-					   VSpace (0.3 *
-						   buffer->params.spacing.getValue(),
-						   LyXLength::CM),
-					   LYX_ALIGN_CENTER, string(), 0);
+		buffer->text->
+			SetParagraph(0, 0,
+				     0, 0,
+				     VSpace (0.3 * buffer->params.spacing.getValue(),
+					     LyXLength::CM),
+				     VSpace (0.3 *
+					     buffer->params.spacing.getValue(),
+					     LyXLength::CM),
+				     LYX_ALIGN_CENTER, string(), 0);
 	} else
 		buffer->text->SetParagraph(0, 0,
 					   0, 0,
@@ -3507,11 +3495,12 @@ extern "C" void FigureCancelCB(FL_OBJECT *, long)
 }
 
 
-extern "C" void FigureOKCB(FL_OBJECT *ob, long data)
+extern "C" void FigureOKCB(FL_OBJECT * ob, long data)
 {
 	FigureApplyCB(ob, data);
 	FigureCancelCB(ob, data);
 }
+
 
 extern "C" void ScreenApplyCB(FL_OBJECT *, long)
 {
@@ -3535,7 +3524,7 @@ extern "C" void ScreenCancelCB(FL_OBJECT *, long)
 }
 
 
-extern "C" void ScreenOKCB(FL_OBJECT *ob, long data)
+extern "C" void ScreenOKCB(FL_OBJECT * ob, long data)
 {
 	ScreenCancelCB(ob, data);
 	ScreenApplyCB(ob, data);
@@ -3580,14 +3569,14 @@ void Reconfigure()
 
 
 /* these functions are for the spellchecker */ 
-char* NextWord(float &value)
+char * NextWord(float & value)
 {
 	if (!current_view->available()){
 		value = 1;
 		return 0;
 	}
    
-	char* string =  current_view->buffer()->text->SelectNextWord(value);
+	char * string =  current_view->buffer()->text->SelectNextWord(value);
 
 	return string;
 }
@@ -3651,23 +3640,21 @@ void ReplaceWord(string const & replacestring)
 struct TocList {
 	int counter[6];
 	bool appendix;
-	TocList *next;
+	TocList * next;
 };
 
 
-static TocList* toclist = 0;
+static TocList * toclist = 0;
 
 
-extern "C" void TocSelectCB(FL_OBJECT *ob, long)
+extern "C" void TocSelectCB(FL_OBJECT * ob, long)
 {
 	if (!current_view->available())
 		return;
    
-	TocList* tmptoclist = toclist;
+	TocList * tmptoclist = toclist;
 	int i = fl_get_browser(ob);
-	int a = 0;
-
-	for (a = 1; a<i && tmptoclist->next; a++){
+	for (int a = 1; a < i && tmptoclist->next; ++a) {
 		tmptoclist = tmptoclist->next;
 	}
 
@@ -3675,7 +3662,7 @@ extern "C" void TocSelectCB(FL_OBJECT *ob, long)
 		return;
      
 
-	LyXParagraph *par = current_view->buffer()->paragraph;
+	LyXParagraph * par = current_view->buffer()->paragraph;
 	while (par && (par->GetFirstCounter(0) != tmptoclist->counter[0] ||
 		       par->GetFirstCounter(1) != tmptoclist->counter[1] ||
 		       par->GetFirstCounter(2) != tmptoclist->counter[2] ||
@@ -3727,7 +3714,8 @@ extern "C" void TocUpdateCB(FL_OBJECT *, long)
 
 	fl_clear_browser(fd_form_toc->browser_toc);
 	if (!current_view->available()) {
-		fl_add_browser_line(fd_form_toc->browser_toc, _("*** No Document ***"));
+		fl_add_browser_line(fd_form_toc->browser_toc,
+				    _("*** No Document ***"));
 		return;
 	}
 	fl_hide_object(fd_form_toc->browser_toc);
@@ -3922,7 +3910,7 @@ extern "C" void RefHideCB(FL_OBJECT *, long)
 }
 
 
-void UpdateInset(Inset* inset, bool mark_dirty)
+void UpdateInset(Inset * inset, bool mark_dirty)
 {
 	if (!inset)
 		return;
@@ -3962,7 +3950,7 @@ void UpdateInset(Inset* inset, bool mark_dirty)
 
 /* these functions return 1 if an error occured, 
    otherwise 0 */
-int LockInset(UpdatableInset* inset)
+int LockInset(UpdatableInset * inset)
 {
 	if (!current_view->buffer()->the_locking_inset && inset){
 		current_view->buffer()->the_locking_inset = inset;
@@ -4060,6 +4048,7 @@ void UpdateInsetUpdateList()
 	InsetUpdateList = 0;
 }
 
+
 #ifdef WITH_WARNINGS
 #warning UGLY!!
 #endif
@@ -4072,5 +4061,3 @@ void addNewlineAndDepth(string & file, int const depth)
        file += '\n';
        file.append(depth, ' ');
 }
-
-

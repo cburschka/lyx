@@ -58,20 +58,23 @@ using std::ofstream;
 #include "lyx_gui_misc.h" // CancelCloseBoxCB
 #include "support/FileInfo.h"
 
-extern BufferView *current_view;
+extern BufferView * current_view;
+#if 0
 static volatile bool alarmed;
-
-extern FL_OBJECT *figinset_canvas;
+#endif
+extern FL_OBJECT * figinset_canvas;
+#if 0
 //inline
 extern "C" void waitalarm(int)
 {
 	alarmed = true;
 }
+#endif
 
-extern char **environ; // is this only redundtant on linux systems? Lgb.
-extern void UpdateInset(Inset* inset, bool mark_dirty = true);
+extern char ** environ; // is this only redundtant on linux systems? Lgb.
+extern void UpdateInset(Inset * inset, bool mark_dirty = true);
 // better for asyncron updating:
-void PutInsetIntoInsetUpdateList(Inset* inset);
+void PutInsetIntoInsetUpdateList(Inset * inset);
 extern void ProhibitInput();
 extern void AllowInput();
 
@@ -86,20 +89,20 @@ static int bmparrsize = 0;	/* current max number of bitmaps */
 struct queue {
 	float rx, ry;		/* resolution x and y */
 	int ofsx, ofsy;		/* x and y translation */
-	figdata *data;		/* we are doing it for this data */
-	queue *next;	        /* next item in queue */
+	figdata * data;		/* we are doing it for this data */
+	queue * next;	        /* next item in queue */
 };
 
 struct pidwait {
 	int pid;		/* pid to wait for */
-	pidwait *next;	/* next */
+	pidwait * next;	/* next */
 };
 
 #define MAXGS 3			/* maximum 3 gs's at a time */
 
-static Figref **figures;	/* all the figures */
-static figdata **bitmaps;	/* all the bitmaps */
-static queue *gsqueue = 0;	/* queue for ghostscripting */
+static Figref ** figures;	/* all the figures */
+static figdata ** bitmaps;	/* all the bitmaps */
+static queue * gsqueue = 0;	/* queue for ghostscripting */
 static int gsrunning = 0;	/* currently so many gs's are running */
 static bool bitmap_waiting = false; /* bitmaps are waiting finished */
 static char bittable[256];	/* bit reversion table */
@@ -113,16 +116,16 @@ static int gs_spc;			// shades per color
 static bool gs_gray;			// is grayscale?
 static int gs_allcolors;		// number of all colors
 
-static pidwait *pw = 0;		// pid wait list
+static pidwait * pw = 0;		// pid wait list
 
 
-extern FD_form_main *fd_form_main;
+extern FD_form_main * fd_form_main;
 extern Colormap color_map;
 
 void addpidwait(int pid)
 {
 	// adds pid to pid wait list
-	register pidwait *p = new pidwait;
+	register pidwait * p = new pidwait;
 
 	p->pid = pid;
 	p->next = pw;
@@ -139,12 +142,11 @@ void addpidwait(int pid)
 
 
 extern "C" int GhostscriptMsg(FL_OBJECT *, Window, int, int,
-		   XEvent *ev, void *)
+		   XEvent * ev, void *)
 {
-	int i;
 	char tmp[128];
 
-	XClientMessageEvent *e = (XClientMessageEvent*) ev;
+	XClientMessageEvent * e = reinterpret_cast<XClientMessageEvent*>(ev);
 
 	if(lyxerr.debugging()) {
 		lyxerr << "ClientMessage, win:[xx] gs:[" << e->data.l[0]
@@ -152,42 +154,41 @@ extern "C" int GhostscriptMsg(FL_OBJECT *, Window, int, int,
 	}
 
 	// just kill gs, that way it will work for sure
-	for (i = 0; i < bmpinsref; ++i)
+	for (int i = 0; i < bmpinsref; ++i)
 		if ((long)bitmaps[i]->bitmap == (long)e->data.l[1]) {
 			// found the one
-			figdata *p = bitmaps[i];
+			figdata * p = bitmaps[i];
 			p->gsdone = true;
 
 			// first update p->bitmap, if necessary
 			if (p->bitmap != None && p->flags > (1|8) && gs_color && p->wid) {
 				// query current colormap and re-render
 				// the pixmap with proper colors
-				XColor *cmap;
+				//XColor * cmap;
 				XWindowAttributes wa;
-				register XImage *im;
+				register XImage * im;
 				int i, y, wid1, spc1 = gs_spc-1,
-					spc2 = gs_spc*gs_spc, wid = p->wid,
+					spc2 = gs_spc * gs_spc, wid = p->wid,
 					forkstat;
-				Display *tmpdisp;
+				Display * tmpdisp;
 				GC gc = getGC(gc_copy);
 
 				XGetWindowAttributes(fl_display, fl_get_canvas_id(
 					figinset_canvas), &wa);
 				XFlush(fl_display);
 				if (lyxerr.debugging()) {
-					lyxerr 
-						<< "Starting image translation "
-						<< p->bitmap << " "
-						<< p->flags << " "
-						<< p->wid << "x" << p->hgh
-						<< " " << wa.depth
-						<< " " << XYPixmap << endl;
-
+					lyxerr << "Starting image translation "
+					       << p->bitmap << " "
+					       << p->flags << " "
+					       << p->wid << "x" << p->hgh
+					       << " " << wa.depth
+					       << " " << XYPixmap << endl;
 				}
 				// now fork rendering process
 				forkstat = fork();
 				if (forkstat == -1) {
-					lyxerr.debug() << "Cannot fork, using slow "
+					lyxerr.debug()
+						<< "Cannot fork, using slow "
 						"method for pixmap translation." << endl;
 					tmpdisp = fl_display;
 				} else if (forkstat > 0) {
@@ -214,26 +215,30 @@ extern "C" int GhostscriptMsg(FL_OBJECT *, Window, int, int,
 					}
 					goto noim;
 				}
+				{
 				// query current colormap
-				cmap = (XColor *) malloc(gs_allcolors*sizeof(XColor));
+				//cmap = (XColor *) malloc(gs_allcolors*sizeof(XColor));
+				XColor * cmap = new XColor[gs_allcolors];
 				for (i = 0; i < gs_allcolors; ++i) cmap[i].pixel = i;
 				XQueryColors(tmpdisp, color_map, cmap, gs_allcolors);
 				XFlush(tmpdisp);
 				wid1 = p->wid - 1;
 				// now we process all the image
 				for (y = 0; y < p->hgh; ++y) {
-					register int x;
-					for (x = 0; x < wid; ++x) {
-						register XColor* pc;
-						pc = cmap + XGetPixel(im, x, y);
+					for (int x = 0; x < wid; ++x) {
+						XColor * pc = cmap +
+							XGetPixel(im, x, y);
 						XFlush(tmpdisp);
-						XPutPixel(im, x, y, gs_pixels[((pc->red+6553)*
+						XPutPixel(im, x, y,
+							  gs_pixels[((pc->red+6553)*
 									       spc1/65535)*spc2+((pc->green+6553)*
 												 spc1/65535)*gs_spc+((pc->blue+6553)*
 														     spc1/65535)]);
 						XFlush(tmpdisp);
 					}
 				}
+				// This must be correct.
+				delete [] cmap;
 				if (lyxerr.debugging()) {
 					lyxerr << "Putting image back" << endl;
 				}
@@ -242,6 +247,7 @@ extern "C" int GhostscriptMsg(FL_OBJECT *, Window, int, int,
 				XDestroyImage(im);
 				if (lyxerr.debugging()) {
 					lyxerr << "Done translation" << endl;
+				}
 				}
 			  noim:
 				if (lyxerr.debugging()) {

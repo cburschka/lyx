@@ -60,12 +60,14 @@ string tostr(long i)
 	return string(str);
 }
 
+
 string tostr(unsigned long i)
 {
 	char str[30];
 	sprintf(str, "%lu", i);
 	return string(str);
 }
+
 
 string tostr(void * v)
 {
@@ -78,20 +80,24 @@ string tostr(int i)
 	return tostr(long(i));
 }
 
+
 string tostr(unsigned int ui)
 {
 	return tostr(long(ui));
 }
+
 
 string tostr(char c)
 {
 	return string(1, c);
 }
 
+
 string tostr(bool b)
 {
 	return b ? "true" : "false";
 }
+
 
 #if 0
 string tostr(float f)
@@ -99,6 +105,7 @@ string tostr(float f)
 	return tostr(double(f));
 }
 #endif
+
 
 string tostr(double d)
 {
@@ -241,7 +248,7 @@ string subst(string const & a, char oldchar, char newchar)
 
 
 string subst(string const & a,
-	      char const * oldstr, string const & newstr)
+	     char const * oldstr, string const & newstr)
 {
 	string lstr(a);
 	string::size_type i = 0;

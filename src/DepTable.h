@@ -37,15 +37,19 @@ public:
 	void update();
 
 	///
-	void write(string const &f);
+	void write(string const & f) const;
 	///
-	void read(string const &f);
+	void read(string const & f);
 	/// returns true if any of the files has changed
-	bool sumchange();
+	bool sumchange() const;
 	/// return true if fil has changed.
-	bool haschanged(string const & fil);
+	bool haschanged(string const & fil) const;
 	/// return true if a file with extension ext has changed.
-	bool extchanged(string const & ext);
+	bool extchanged(string const & ext) const;
+	///
+	bool exist(string const & fil) const;
+	///
+	void remove_files_with_extension(string const &);
 private:
 	///
 	typedef map<string, pair<unsigned long, unsigned long> > DepList;

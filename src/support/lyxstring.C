@@ -33,26 +33,42 @@ using std::min;
 
 // Asserts with a STD! are required by the standard.
 // Asserts with a OURS! are added by me.
+// Some asserts could still be missing and some of the existing
+// ones might be wrong or not needed.
+
 // Reference count has been checked, empty_rep removed and
 // introduced again in a similar guise. Where is empty_rep _really_
 // needed?
 
-// Insertion and replace is implemented, as far as I can see everything
-// works, but could perhaps be done smarter.
+// We are missing a couple of imporant things from the standard:
+// reverse iterators and methods taking InputIterators as paramters.
+// Also the methods returning iterators is returning the wrong value.
 
 // All the different find functions need a good look over.
 // I have so far not tested them extensively and would be
 // happy if others took the time to have a peek.
+
+// Space allocation of string.
+// I have tried to do this very simple without using any special tricks.
+// Earlier we used a fixed value to enlarge the string with this would
+// cause a lot of reallocations with large strings (especially if
+// push_back was used) and wasting space for very small strings.
+// I have now changed the allocation to use a doubling of reserved
+// space until it is large enough. So far tests show a small speed
+// increase and a noticable memory saving.
 
 // Lgb.
 
 ///////////////////////////////////////
 // The internal string representation
 ///////////////////////////////////////
+#define NEW_ALLOC 1
 
 struct lyxstring::Srep {
+#ifndef NEW_ALLOC
 	///
 	static size_t const xtra = static_cast<size_t>(8);
+#endif
 	/// size
 	size_t sz;
 	/// Reference count
@@ -69,12 +85,11 @@ struct lyxstring::Srep {
 	///
 	~Srep() { delete[] s; }
 	///
-	Srep * get_own_copy()
-		{
-			if (ref == 1) return this;
-			--ref;
-			return new Srep(sz, s);
-		}
+	Srep * get_own_copy() {
+		if (ref == 1) return this;
+		--ref;
+		return new Srep(sz, s);
+	}
 	
 	///
 	void assign(lyxstring::size_type nsz, const lyxstring::value_type * p);
@@ -107,7 +122,11 @@ lyxstring::Srep::Srep(lyxstring::size_type nsz, const value_type * p)
 
 	sz = nsz;
 	ref = 1;
+#ifdef NEW_ALLOC
+	res = sz ? sz : 1;
+#else
 	res = sz + xtra;
+#endif
 	s = new value_type[res + 1]; // add space for terminator
 	if (p && sz) {
 		// if sz = 0 nothing gets copied and we have an error
@@ -124,7 +143,11 @@ lyxstring::Srep::Srep(lyxstring::size_type nsz, value_type ch)
 {
 	sz = nsz;
 	ref = 1;
+#ifdef NEW_ALLOC
+	res = sz ? sz : 1;
+#else
 	res = sz + xtra;
+#endif
 	s = new value_type[res + 1]; // add space for terminator
 	memset(s, ch, sz);
 	if (!ch) {
@@ -142,7 +165,11 @@ void lyxstring::Srep::assign(lyxstring::size_type nsz, const value_type * p)
 	if (res < nsz) {
 		delete[] s;
 		sz = nsz;
+#ifdef NEW_ALLOC
+		res = sz ? sz : 1;
+#else
 		res = sz + xtra;
+#endif
 		s = new value_type[res + 1]; // add space for terminator
 	} else {
 		sz = nsz;
@@ -163,7 +190,11 @@ void lyxstring::Srep::assign(lyxstring::size_type nsz, value_type ch)
 	sz = nsz;
 	if (res < nsz) {
 		delete[] s;
+#ifdef NEW_ALLOC
+		res = sz ? sz : 1;
+#else
 		res = sz + xtra;
+#endif
 		s = new value_type[res + 1]; // add space for terminator
 	}
 	memset(s, ch, sz);
@@ -179,7 +210,13 @@ void lyxstring::Srep::append(lyxstring::size_type asz, const value_type * p)
 {
 	register unsigned int const len = sz + asz;
 	if (res < len) {
+#ifdef NEW_ALLOC
+		do {
+			res *= 2;
+		} while (res < len);
+#else
 		res = len + xtra;
+#endif
 		value_type * tmp = new value_type[res + 1];
 		memcpy(tmp, s, sz);
 		memcpy(tmp + sz, p, asz);
@@ -198,7 +235,13 @@ void lyxstring::Srep::push_back(value_type c)
 	s[sz] = c; // it is always room to put a value_type at the end
 	++sz;
 	if (res < sz) {
+#ifdef NEW_ALLOC
+		do {
+			res *= 2;
+		} while (res < sz);
+#else
 		res = sz + xtra;
+#endif
 		value_type * tmp = new value_type[res + 1];
 		memcpy(tmp, s, sz);
 		delete[] s;
@@ -211,7 +254,13 @@ void lyxstring::Srep::insert(lyxstring::size_type pos, const value_type * p,
 			   lyxstring::size_type n)
 {
 	if (res < n + sz) {
+#ifdef NEW_ALLOC
+		do {
+			res *= 2;
+		} while (res < n + sz);
+#else
 		res = sz + n + xtra;
+#endif
 		value_type * tmp = new value_type[res + 1];
 		memcpy(tmp, s, pos);
 		memcpy(tmp + pos, p, n);
@@ -264,7 +313,13 @@ void lyxstring::Srep::replace(lyxstring::size_type i, lyxstring::size_type n,
 		memcpy(s + i, p, n2);
 		sz += n2;
 	} else {
+#ifdef NEW_ALLOC
+		do {
+			res *= 2;
+		} while (res < n2 + sz);
+#else
 		res = sz + n2 + xtra;
+#endif
 		value_type * tmp = new value_type[res + 1];
 		memcpy(tmp, s, i);
 		memcpy(tmp + i, p, n2);
@@ -346,7 +401,7 @@ void lyxstringInvariant::helper() const
 	Assert(object);
 	Assert(object->rep);
 	Assert(object->rep->s);    // s is never 0
-	Assert(object->rep->res);  // always some space allocated
+	Assert(object->rep->res);  // res cannot be 0
 	Assert(object->rep->sz <= object->rep->res);
 	Assert(object->rep->ref >= 1);  // its in use so it must be referenced
 	Assert(object->rep->ref < 1UL << (8UL * sizeof(object->rep->ref) - 1));

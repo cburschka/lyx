@@ -177,6 +177,9 @@ protected:
 	bool runMakeIndex(string const &);
 
 	///
+	bool scanAux(DepTable &);
+	
+	///
 	bool runBibTeX(string const &, DepTable &);
 	
 	///
