@@ -298,7 +298,7 @@ ErtComp ert_comp;
 } // anon
 
 
-set<string> unknown_layouts;
+int unknown_layouts;
 
 // candidate for move to BufferView
 // (at least some parts in the beginning of the func)
@@ -310,7 +310,7 @@ set<string> unknown_layouts;
 // Returns false if "\the_end" is not read for formats >= 2.13. (Asger)
 bool Buffer::readLyXformat2(LyXLex & lex, Paragraph * par)
 {
-	unknown_layouts.clear();
+	unknown_layouts = 0;
 #ifdef NO_LATEX
 	ert_comp.contents.erase();
 	ert_comp.active = false;
@@ -366,17 +366,15 @@ bool Buffer::readLyXformat2(LyXLex & lex, Paragraph * par)
 
 	paragraph = first_par;
 
-	if (!unknown_layouts.empty()) {
-		string list;
-		for (set<string>::const_iterator it = unknown_layouts.begin();
-		     it != unknown_layouts.end(); ++it) {
-			if (it != unknown_layouts.begin())
-				list += ", ";
-			list += *it;
+	if (unknown_layouts > 0) {
+		string s = _("Couldn't set the layout for ");
+		if (unknown_layouts == 1) {
+			s += _("one paragraph");
+		} else {
+			s += tostr(unknown_layouts);
+			s += _(" paragraphs");
 		}
-		WriteAlert(_("Textclass Loading Error!"),
-			   _("The following layouts are undefined:"),
-			   list+".");
+		WriteAlert(_("Textclass Loading Error!"),s);
 	}	
 
 	return the_end_read;
@@ -520,7 +518,12 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 				// layout not found
 				// use default layout "Standard" (0)
 				par->layout = 0;
-				unknown_layouts.insert(layoutname);
+				++unknown_layouts;
+				string const s = _("Layout had to be changed from\n")
+					+ layoutname + _(" to ")
+					+ textclasslist.NameOfLayout(params.textclass, par->layout);
+				InsetError * new_inset = new InsetError(s);
+				par->insertInset(0, new_inset);
 			}
 			// Test whether the layout is obsolete.
 			LyXLayout const & layout =
