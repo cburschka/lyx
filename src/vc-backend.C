@@ -264,7 +264,7 @@ void CVS::scanMaster()
 	string tmpf = "/" + OnlyFilename(file_) + "/";
 	lyxerr[Debug::LYXVC] << "\tlooking for `" << tmpf << '\'' << endl;
 	string line;
-	regex reg("/(.*)/(.*)/(.*)/(.*)/(.*)");
+	static regex const reg("/(.*)/(.*)/(.*)/(.*)/(.*)");
 	while (getline(ifs, line)) {
 		lyxerr[Debug::LYXVC] << "\t  line: " << line << endl;
 		if (contains(line, tmpf)) {

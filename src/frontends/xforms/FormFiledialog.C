@@ -200,17 +200,23 @@ int FileDialog::Private::minh_ = 0;
 
 namespace {
 
-bool globMatch(string const & a, string const & pattern)
+boost::regex getRegex(string const & pat)
 {
 	// We massage the pattern a bit so that the usual
 	// shell pattern we all are used to will work.
 	// One nice thing about using a real regex is that
 	// things like "*.*[^~]" will work also.
 	// build the regex string.
-	string regex = subst(pattern, ".", "\\.");
-	regex = subst(regex, "*", ".*");
+	string pattern = subst(pat, ".", "\\.");
+	pattern = subst(pattern, "*", ".*");
 
-	boost::regex reg(regex);
+	boost::regex reg(pattern);
+	return reg;
+}
+
+
+bool globMatch(string const & a, boost::regex const & reg)
+{
 	return boost::regex_match(a, reg);
 }
 
@@ -257,6 +263,8 @@ void FileDialog::Private::Reread()
 	}
 
 	// Parses all entries of the given subdirectory
+	boost::regex reg = getRegex(mask_);
+
 	time_t curTime = time(0);
 	rewinddir(dir);
 	while (dirent * entry = readdir(dir)) {
@@ -340,7 +348,7 @@ void FileDialog::Private::Reread()
 		    || fileInfo.isChar()
 		    || fileInfo.isBlock()
 		    || fileInfo.isFifo()) {
-			if (!globMatch(fname, mask_))
+			if (!globMatch(fname, reg))
 				continue;
 		} else if (!(isDir = fileInfo.isDir()))
 			continue;

@@ -258,7 +258,7 @@ string const sanitizeLatexOption(string const & input)
 	// "[,,,,foo..." -> "foo..."
 	string output;
 	boost::smatch what;
-	boost::regex const front("^( *[[],*)(.*)$");
+	static boost::regex const front("^( *[[],*)(.*)$");
 
 	regex_match(it, end, what, front, boost::match_partial);
 	if (!what[0].matched) {
@@ -271,7 +271,7 @@ string const sanitizeLatexOption(string const & input)
 	// Replace any consecutive commas with a single one
 	// "foo,,,,bar" -> "foo,bar"
 	// with iterator now pointing to 'b'
-	boost::regex const commas("([^,]*)(,,*)(.*)$");
+	static boost::regex const commas("([^,]*)(,,*)(.*)$");
 	for (; it != end;) {
 		regex_match(it, end, what, commas, boost::match_partial);
 		if (!what[0].matched) {
@@ -284,7 +284,7 @@ string const sanitizeLatexOption(string const & input)
 
 	// Strip any trailing commas
 	// "...foo,,,]" -> "...foo"
-	boost::regex const back("^(.*[^,])(,*[]] *)$");
+	static boost::regex const back("^(.*[^,])(,*[]] *)$");
 	regex_match(output, what, back);
 	if (!what[0].matched) {
 		lyxerr << "Unable to sanitize LaTeX \"Option\": "

@@ -446,10 +446,10 @@ void LaTeX::scanAuxFile(string const & file, Aux_Info & aux_info)
 
 	ifstream ifs(file.c_str());
 	string token;
-	regex reg1("\\\\citation\\{([^}]+)\\}");
-	regex reg2("\\\\bibdata\\{([^}]+)\\}");
-	regex reg3("\\\\bibstyle\\{([^}]+)\\}");
-	regex reg4("\\\\@input\\{([^}]+)\\}");
+	static regex const reg1("\\\\citation\\{([^}]+)\\}");
+	static regex const reg2("\\\\bibdata\\{([^}]+)\\}");
+	static regex const reg3("\\\\bibstyle\\{([^}]+)\\}");
+	static regex const reg4("\\\\@input\\{([^}]+)\\}");
 
 	while (getline(ifs, token)) {
 		token = rtrim(token, "\r");
