@@ -53,10 +53,10 @@ Inset::Code InsetTOC::lyxCode() const
 }
 
 
-void InsetTOC::edit(BufferView *, int, int, mouse_button::state)
+void InsetTOC::edit(BufferView * bv, int, int, mouse_button::state)
 {
 	InsetCommandMailer mailer("toc", *this);
-	mailer.showDialog();
+	mailer.showDialog(bv);
 }
 
 

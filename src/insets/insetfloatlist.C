@@ -96,10 +96,10 @@ void InsetFloatList::read(Buffer const * buf, LyXLex & lex)
 }
 
 
-void InsetFloatList::edit(BufferView *, int, int, mouse_button::state)
+void InsetFloatList::edit(BufferView * bv, int, int, mouse_button::state)
 {
 	InsetCommandMailer mailer("toc", *this);
-	mailer.showDialog();
+	mailer.showDialog(bv);
 }
 
 

@@ -18,6 +18,7 @@
 #include <boost/scoped_ptr.hpp>
 #include <boost/signals/signal0.hpp>
 #include <boost/signals/signal1.hpp>
+#include <boost/signals/signal2.hpp>
 
 class Dialog;
 class InsetBase;
@@ -123,13 +124,17 @@ public:
 	    Update the contents of the dialog.
 	 */
 	void update(string const & name, string const & data);
-	///
-	void hide(string const & name);
+	/** All Dialogs of the given 'name' will be closed if they are
+	    connected to the given 'inset'.
+	 */
+	static boost::signal2<void, string const &, InsetBase*> & hide();
 	///
 	void disconnect(string const & name);
 	///
 	InsetBase * getOpenInset(string const & name) const;
 private:
+	///
+	void hideSlot(string const & name, InsetBase * inset);
 	///
 	void redraw() const;
 	///

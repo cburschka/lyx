@@ -126,10 +126,10 @@ string const InsetBibitem::getScreenLabel(Buffer const *) const
 }
 
 
-void InsetBibitem::edit(BufferView *, int, int, mouse_button::state)
+void InsetBibitem::edit(BufferView * bv, int, int, mouse_button::state)
 {
 	InsetCommandMailer mailer("bibitem", *this);
-	mailer.showDialog();
+	mailer.showDialog(bv);
 }
 
 

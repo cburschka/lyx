@@ -670,10 +670,10 @@ void InsetERT::status(BufferView * bv, ERTStatus const st) const
 }
 
 
-bool InsetERT::showInsetDialog(BufferView *) const
+bool InsetERT::showInsetDialog(BufferView * bv) const
 {
 	InsetERTMailer mailer(const_cast<InsetERT &>(*this));
-	mailer.showDialog();
+	mailer.showDialog(bv);
 	return true;
 }
 

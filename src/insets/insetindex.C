@@ -38,10 +38,10 @@ string const InsetIndex::getScreenLabel(Buffer const *) const
 }
 
 
-void InsetIndex::edit(BufferView *, int, int, mouse_button::state)
+void InsetIndex::edit(BufferView * bv, int, int, mouse_button::state)
 {
 	InsetCommandMailer mailer("index", *this);
-	mailer.showDialog();
+	mailer.showDialog(bv);
 }
 
 

@@ -1409,7 +1409,7 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 	break;
 
 	case LFUN_DIALOG_HIDE:
-		owner ->getDialogs().hide(argument);
+		Dialogs::hide()(argument, 0);
 		break;
 
 	case LFUN_DIALOG_DISCONNECT_INSET:

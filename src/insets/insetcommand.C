@@ -84,7 +84,7 @@ dispatch_result InsetCommand::localDispatch(FuncRequest const & cmd)
 
 	case LFUN_INSET_DIALOG_UPDATE: {
 		InsetCommandMailer mailer(cmd.argument, *this);
-		mailer.updateDialog();
+		mailer.updateDialog(cmd.view());
 	}
 	break;
 

@@ -237,7 +237,7 @@ dispatch_result InsetGraphics::localDispatch(FuncRequest const & cmd)
 
 	case LFUN_INSET_DIALOG_UPDATE: {
 		InsetGraphicsMailer mailer(*this);
-		mailer.updateDialog();
+		mailer.updateDialog(cmd.view());
 	}
 	break;
 
@@ -436,10 +436,10 @@ void InsetGraphics::draw(BufferView * bv, LyXFont const & font,
 }
 
 
-void InsetGraphics::edit(BufferView *, int, int, mouse_button::state)
+void InsetGraphics::edit(BufferView * bv, int, int, mouse_button::state)
 {
 	InsetGraphicsMailer mailer(*this);
-	mailer.showDialog();
+	mailer.showDialog(bv);
 }
 
 

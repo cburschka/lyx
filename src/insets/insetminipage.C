@@ -124,7 +124,7 @@ dispatch_result InsetMinipage::localDispatch(FuncRequest const & cmd)
 
 	case LFUN_INSET_DIALOG_UPDATE: {
 		InsetMinipageMailer mailer(*this);
-		mailer.updateDialog();
+		mailer.updateDialog(cmd.view());
 	}
 	break;
 
@@ -367,7 +367,7 @@ bool InsetMinipage::showInsetDialog(BufferView * bv) const
 	if (!inset.showInsetDialog(bv)) {
 		InsetMinipage * tmp = const_cast<InsetMinipage *>(this);
 		InsetMinipageMailer mailer(*tmp);
-		mailer.showDialog();
+		mailer.showDialog(bv);
 	}
 
 	return true;

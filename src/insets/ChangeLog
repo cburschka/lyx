@@ -1,3 +1,31 @@
+2003-03-10  Angus Leeming  <leeming@lyx.org>
+
+	* mailinset.[Ch] (showDialog, updateDialog): now take a mandatory
+	BufferView * arg.
+	(hideDialog): calls the new static Dialogs::hide() method.
+
+	* insetbibitem.C (edit):
+	* insetbibtex.C (edit):
+	* insetcite.C (edit):
+	* insetcommand.C (localDispatch):
+	* inseterror.C (d-tor):
+	* insetert.C (showInsetDialog):
+	* insetexternal.C (localDispatch, edit):
+	* insetfloat.C (localDispatch, showInsetDialog):
+	* insetfloatlist.C (edit):
+	* insetgraphics.C (localDispatch, edit):
+	* insetinclude.C (localDispatch, edit):
+	* insetindex.C (edit):
+	* insetlabel.C (edit):
+	* insetminipage.C (localDispatch, showInsetDialog):
+	* insetref.C (edit):
+	* insettabular.C (unlockInsetInInset, lfunMouseRelease, localDispatch,
+	resetPos, showInsetDialog, openLayoutDialog):
+	* insettoc.C (edit):
+	* inseturl.C (edit):
+	* insetwrap.C (localDispatch, showInsetDialog):
+	changes due to the changed MailInset interface.
+
 2003-03-10  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* insetfloat.h: Set default placement to an empty string.

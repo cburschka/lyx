@@ -45,10 +45,10 @@ vector<string> const InsetLabel::getLabelList() const
 }
 
 
-void InsetLabel::edit(BufferView *, int, int, mouse_button::state)
+void InsetLabel::edit(BufferView * bv, int, int, mouse_button::state)
 {
 	InsetCommandMailer mailer("label", *this);
-	mailer.showDialog();
+	mailer.showDialog(bv);
 }
 
 

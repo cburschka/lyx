@@ -218,10 +218,10 @@ void InsetBibtex::fillWithBibKeys
 }
 
 
-void InsetBibtex::edit(BufferView *, int, int, mouse_button::state)
+void InsetBibtex::edit(BufferView * bv, int, int, mouse_button::state)
 {
 	InsetCommandMailer mailer("bibtex", *this);
-	mailer.showDialog();
+	mailer.showDialog(bv);
 }
 
 

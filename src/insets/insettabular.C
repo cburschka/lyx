@@ -736,7 +736,7 @@ bool InsetTabular::unlockInsetInInset(BufferView * bv, UpdatableInset * inset,
 		if (inset->lyxCode() == TABULAR_CODE &&
 		    !the_locking_inset->getFirstLockingInsetOfType(TABULAR_CODE)) {
 			InsetTabularMailer mailer(*this);
-			mailer.updateDialog();
+			mailer.updateDialog(bv);
 			oldcell = actcell;
 		}
 		return true;
@@ -884,7 +884,7 @@ bool InsetTabular::lfunMouseRelease(FuncRequest const & cmd)
 	}
 	if (cmd.button() == mouse_button::button3 && !ret) {
 		InsetTabularMailer mailer(*this);
-		mailer.showDialog();
+		mailer.showDialog(cmd.view());
 		return true;
 	}
 	return ret;
@@ -1170,12 +1170,12 @@ Inset::RESULT InsetTabular::localDispatch(FuncRequest const & cmd)
 		break;
 	case LFUN_LAYOUT_TABULAR: {
 		InsetTabularMailer mailer(*this);
-		mailer.showDialog();
+		mailer.showDialog(bv);
 		break;
 	}
 	case LFUN_INSET_DIALOG_UPDATE: {
 		InsetTabularMailer mailer(*this);
-		mailer.updateDialog();
+		mailer.updateDialog(bv);
 		break;
 	}
 	case LFUN_TABULAR_FEATURE:
@@ -1667,7 +1667,7 @@ void InsetTabular::resetPos(BufferView * bv) const
 	    actcell != oldcell) {
 		InsetTabular * inset = const_cast<InsetTabular *>(this);
 		InsetTabularMailer mailer(*inset);
-		mailer.updateDialog();
+		mailer.updateDialog(bv);
 		oldcell = actcell;
 	}
 	in_reset_pos = 0;
@@ -2354,7 +2354,7 @@ bool InsetTabular::showInsetDialog(BufferView * bv) const
 	if (!the_locking_inset || !the_locking_inset->showInsetDialog(bv)) {
 		InsetTabular * tmp = const_cast<InsetTabular *>(this);
 		InsetTabularMailer mailer(*tmp);
-		mailer.showDialog();
+		mailer.showDialog(bv);
 	}
 	return true;
 }
@@ -2372,7 +2372,7 @@ void InsetTabular::openLayoutDialog(BufferView * bv) const
 	}
 	InsetTabular * tmp = const_cast<InsetTabular *>(this);
 	InsetTabularMailer mailer(*tmp);
-	mailer.showDialog();
+	mailer.showDialog(bv);
 }
 
 

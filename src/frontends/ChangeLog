@@ -1,3 +1,8 @@
+2003-03-10  Angus Leeming  <leeming@lyx.org>
+
+	* Dialogs.h (hide): make it a static method that returns a
+	boost::signal2<> & (takes 'name' and 'inset' args).
+
 2003-03-09  Angus Leeming  <leeming@lyx.org>
 
 	* Dialogs.h: remove showMergeChanges.

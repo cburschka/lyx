@@ -42,7 +42,7 @@ void InsetRef::edit(BufferView * bv, int, int, mouse_button::state button)
 		bv->owner()->dispatch(FuncRequest(LFUN_REF_GOTO, getContents()));
 	else if (button == mouse_button::button1) {
 		InsetCommandMailer mailer("ref", *this);
-		mailer.showDialog();
+		mailer.showDialog(bv);
 	}
 }
 

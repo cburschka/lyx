@@ -35,8 +35,7 @@ InsetError::InsetError(string const & str, bool)
 
 InsetError::~InsetError()
 {
-	if (view())
-		view()->owner()->getDialogs().hide("error");
+	Dialogs::hide()("error", this);
 }
 
 

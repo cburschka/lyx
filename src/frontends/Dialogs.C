@@ -43,11 +43,20 @@ boost::signal0<void> & Dialogs::redrawGUI()
 }
 
 
+boost::signal2<void, string const &, InsetBase*> & Dialogs::hide()
+{
+	static BugfixSignal<boost::signal2<void, string const &, InsetBase*> >
+		thesignal;
+	return thesignal();
+}
+
+
 Dialogs::Dialogs(LyXView & lyxview)
 	: lyxview_(lyxview)
 {
 	// Connect signals
 	redrawGUI().connect(boost::bind(&Dialogs::redraw, this));
+	hide().connect(boost::bind(&Dialogs::hideSlot, this, _1, _2));
 
 	// All this is slated to go
 	init_pimpl();
@@ -106,10 +115,13 @@ void Dialogs::update(string const & name, string const & data)
 }
 
 
-void Dialogs::hide(string const & name)
+void Dialogs::hideSlot(string const & name, InsetBase * inset)
 {
 	Dialog * dialog = find(name);
 	if (!dialog)
+		return;
+
+	if (inset && inset != getOpenInset(name))
 		return;
 
 	if (dialog->isVisible())

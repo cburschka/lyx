@@ -172,7 +172,7 @@ dispatch_result InsetFloat::localDispatch(FuncRequest const & cmd)
 
 	case LFUN_INSET_DIALOG_UPDATE: {
 		InsetFloatMailer mailer(*this);
-		mailer.updateDialog();
+		mailer.updateDialog(cmd.view());
 	}
 	break;
 
@@ -335,7 +335,7 @@ bool InsetFloat::showInsetDialog(BufferView * bv) const
 	if (!inset.showInsetDialog(bv)) {
 		InsetFloat * tmp = const_cast<InsetFloat *>(this);
 		InsetFloatMailer mailer(*tmp);
-		mailer.showDialog();
+		mailer.showDialog(bv);
 	}
 	return true;
 }

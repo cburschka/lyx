@@ -11,8 +11,6 @@
 #include <config.h>
 
 #include "ControlChanges.h"
-#include "frontends/Dialogs.h"
-#include "frontends/LyXView.h"
 #include "buffer.h"
 #include "BufferView.h"
 #include "funcrequest.h"

@@ -134,7 +134,7 @@ dispatch_result InsetInclude::localDispatch(FuncRequest const & cmd)
 
 	case LFUN_INSET_DIALOG_UPDATE: {
 		InsetIncludeMailer mailer(*this);
-		mailer.updateDialog();
+		mailer.updateDialog(cmd.view());
 	}
 	break;
 
@@ -212,10 +212,10 @@ Inset * InsetInclude::clone(Buffer const & buffer, bool) const
 }
 
 
-void InsetInclude::edit(BufferView *, int, int, mouse_button::state)
+void InsetInclude::edit(BufferView * bv, int, int, mouse_button::state)
 {
 	InsetIncludeMailer mailer(*this);
-	mailer.showDialog();
+	mailer.showDialog(bv);
 }
 
 

@@ -81,7 +81,7 @@ dispatch_result InsetExternal::localDispatch(FuncRequest const & cmd)
 
 	case LFUN_INSET_DIALOG_UPDATE: {
 		InsetExternalMailer mailer(*this);
-		mailer.updateDialog();
+		mailer.updateDialog(cmd.view());
 	}
 	break;
 
@@ -111,10 +111,10 @@ string const InsetExternal::editMessage() const
 }
 
 
-void InsetExternal::edit(BufferView *, int, int, mouse_button::state)
+void InsetExternal::edit(BufferView * bv, int, int, mouse_button::state)
 {
 	InsetExternalMailer mailer(*this);
-	mailer.showDialog();
+	mailer.showDialog(bv);
 }
 
 

@@ -17,6 +17,7 @@
 
 
 class InsetBase;
+class BufferView;
 
 
 class MailInset {
@@ -24,9 +25,9 @@ public:
 	///
 	virtual ~MailInset() {};
 	///
-	void showDialog() const;
+	void showDialog(BufferView *) const;
 	///
-	void updateDialog() const;
+	void updateDialog(BufferView *) const;
 	///
 	void hideDialog() const;
 	///

@@ -324,7 +324,7 @@ void InsetCitation::edit(BufferView * bv, int, int, mouse_button::state)
 	setLoadingBuffer(bv->buffer(), false);
 
 	InsetCommandMailer mailer("citation", *this);
-	mailer.showDialog();
+	mailer.showDialog(bv);
 }
 
 

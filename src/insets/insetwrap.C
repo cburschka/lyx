@@ -102,7 +102,7 @@ dispatch_result InsetWrap::localDispatch(FuncRequest const & cmd)
 
 	case LFUN_INSET_DIALOG_UPDATE: {
 		InsetWrapMailer mailer(*this);
-		mailer.updateDialog();
+		mailer.updateDialog(cmd.view());
 	}
 	break;
 
@@ -291,7 +291,7 @@ bool InsetWrap::showInsetDialog(BufferView * bv) const
 	if (!inset.showInsetDialog(bv)) {
 		InsetWrap * tmp = const_cast<InsetWrap *>(this);
 		InsetWrapMailer mailer(*tmp);
-		mailer.showDialog();
+		mailer.showDialog(bv);
 	}
 	return true;
 }
