@@ -1,3 +1,7 @@
+2005-02-12  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* bufferparams.C (readGraphicsDriver): prevent crash
+
 2005-02-10  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* text2.C (setCounter): check for inInset() == 0
