@@ -4,7 +4,7 @@
  *           LyX, The Document Processor
  *
  *	     Copyright 1995 Matthias Ettrich
- *           Copyright 1995-1999 The LyX Team.
+ *           Copyright 1995-2000 The LyX Team.
  *
  *           This file is Copyright 1996-1999
  *           Lars Gullik Bjønnes
@@ -305,7 +305,7 @@ bool Buffer::parseSingleLyXformat2Token(LyXLex & lex, LyXParagraph *& par,
 		if (!return_par) 
 			return_par = par;
 		else {
-			par->text.resize(par->text.size());
+			par->fitToSize();
 			par = new LyXParagraph(par);
 		}
 		pos = 0;
@@ -336,7 +336,7 @@ bool Buffer::parseSingleLyXformat2Token(LyXLex & lex, LyXParagraph *& par,
 		if (!return_par) 
 			return_par = par;
 		else {
-			par->text.resize(par->text.size());
+			par->fitToSize();
 			par = new LyXParagraph(par);
 		}
 		footnotekind = LyXParagraph::FOOTNOTE;

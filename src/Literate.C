@@ -3,7 +3,7 @@
  * 
  *           LyX, The Document Processor 	 
  *	     Copyright 1995 Matthias Ettrich
- *           Copyright 1995-1999 The LyX Team.
+ *           Copyright 1995-2000 The LyX Team.
  *
  * ====================================================== 
  */

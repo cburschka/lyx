@@ -4,7 +4,7 @@
  *           LyX, The Document Processor
  * 	 
  *           Copyright 1995 Matthias Ettrich
- *           Copyright 1995-1999 The LyX Team.
+ *           Copyright 1995-2000 The LyX Team.
  *
  * ====================================================== */
 
@@ -390,7 +390,7 @@ void LyXText::CloseFootnote()
 		// now the cursor is at the beginning of the physical par
 		SetCursor(cursor.par,
 			  cursor.pos +
-			  cursor.par->ParFromPos(cursor.pos)->text.size());
+			  cursor.par->ParFromPos(cursor.pos)->size());
 	} else  {
 		/* we are in a footnote, so let us move at the beginning */ 
 		/* this is just faster than using just CursorLeft() */ 
@@ -1128,7 +1128,7 @@ void LyXText::MeltFootnoteEnvironment()
 	tmppar = firsttmppar;
 	/* tmppar is now the paragraph right before the footnote */
 
-	char first_footnote_par_is_not_empty = tmppar->next->text.size();
+	bool first_footnote_par_is_not_empty = tmppar->next->size();
    
 	while (tmppar->next
 	       && tmppar->next->footnoteflag == LyXParagraph::OPEN_FOOTNOTE) {
@@ -1172,8 +1172,8 @@ void LyXText::MeltFootnoteEnvironment()
 	 * (only if the previous par and the footnotepar are not empty!) */
 	if ((!firsttmppar->next->GetLayout() && !firsttmppar->next->table)
 	    || firsttmppar->HasSameLayout(firsttmppar->next)) {
-		if (firsttmppar->text.size()
-		    && !firsttmppar->IsSeparator(firsttmppar->text.size() - 1)
+		if (firsttmppar->size()
+		    && !firsttmppar->IsSeparator(firsttmppar->size() - 1)
 		    && first_footnote_par_is_not_empty) {
 			firsttmppar->next->InsertChar(0, ' ');
 		}
@@ -2236,7 +2236,7 @@ void LyXText::CopySelection()
      
 		tmpi2 = sel_end_cursor.par->PositionInParFromPos(sel_end_cursor.pos);
 		while (tmppar2->size() > tmpi2) {
-			tmppar2->Erase(tmppar2->text.size() - 1);
+			tmppar2->Erase(tmppar2->size() - 1);
 		}
 	}
 }
@@ -2301,7 +2301,7 @@ void LyXText::PasteSelection()
 		/* table stuff -- begin */
 		bool table_too_small = false;
 		if (tmpcursor.par->table) {
-			while (simple_cut_buffer->text.size()
+			while (simple_cut_buffer->size()
 			       && !table_too_small) {
 				if (simple_cut_buffer->IsNewline(0)){
 					while(tmpcursor.pos < tmpcursor.par->Last() && !tmpcursor.par->IsNewline(tmpcursor.pos))
@@ -2341,7 +2341,7 @@ void LyXText::PasteSelection()
 			// of the text to insert and we are inserting at
 			// the beginning of the paragraph the space should
 			// be removed.
-			while (simple_cut_buffer->text.size()) {
+			while (simple_cut_buffer->size()) {
 #ifdef FIX_DOUBLE_SPACE
 				// This is an attempt to fix the
 				// "never insert a space at the
@@ -2622,20 +2622,9 @@ bool LyXText::SearchBackward(char const * string) const
 }
 
 
-void LyXText::InsertStringA(LyXParagraph::TextContainer const & text)
-{
-	char * str = new char[text.size() + 1];
-	copy(text.begin(), text.end(), str);
-	str[text.size()] = '\0';
-	InsertStringA(str);
-	delete [] str;
-}
-
-
 // needed to insert the selection
-void LyXText::InsertStringA(char const * s)
+void LyXText::InsertStringA(string const & str)
 {
-	string str(s);
 	LyXParagraph * par = cursor.par;
 	LyXParagraph::size_type pos = cursor.pos;
 	LyXParagraph::size_type a = 0;
@@ -2695,7 +2684,7 @@ void LyXText::InsertStringA(char const * s)
 #endif
 				}
 				pos = a;
-			} else if (str[i]!= 13 && 
+			} else if (str[i] != 13 && 
 				   // Ignore unprintables
 				   (str[i] & 127) >= ' ') {
 				par->InsertChar(pos, str[i]);
@@ -2725,7 +2714,7 @@ void LyXText::InsertStringA(char const * s)
                                         // no more fields to fill skip the rest
                                         break;
                         } else {
-                                if (!par->text.size()) {
+                                if (!par->size()) { // par is empty
 #if 1
 					InsetSpecialChar * new_inset =
 						new InsetSpecialChar(InsetSpecialChar::PROTECTED_SEPARATOR);
@@ -2752,21 +2741,11 @@ void LyXText::InsertStringA(char const * s)
 }
 
 
-void LyXText::InsertStringB(LyXParagraph::TextContainer const & text)
-{
-	char * str = new char[text.size() + 1];
-	copy(text.begin(), text.end(), str);
-	str[text.size()] = '\0';
-	InsertStringB(str);
-	delete [] str;
-}
-
-
 /* turns double-CR to single CR, others where converted into one blank and 13s 
  * that are ignored .Double spaces are also converted into one. Spaces at
  * the beginning of a paragraph are forbidden. tabs are converted into one
  * space. then InsertStringA is called */ 
-void LyXText::InsertStringB(char const * s)
+void LyXText::InsertStringB(string const & s)
 {
 	string str(s);
 	LyXParagraph * par = cursor.par;
@@ -2794,7 +2773,7 @@ void LyXText::InsertStringB(char const * s)
 		}
 		++i;
 	}
-	InsertStringA(str.c_str());
+	InsertStringA(str);
 }
 
 
@@ -3027,12 +3006,12 @@ void LyXText::SetCursorIntern(LyXParagraph * par,
 			par = par->previous ;
 			if (par->IsDummy() &&
 			    par->previous->footnoteflag == LyXParagraph::CLOSED_FOOTNOTE)
-				pos += par->text.size() + 1;
+				pos += par->size() + 1;
 		}
 		if (par->previous) {
 			par = par->previous;
 		}
-		pos += par->text.size() + 1;
+		pos += par->size() + 1;
 	}
 
 	cursor.par = par;
@@ -3525,8 +3504,6 @@ bool LyXText::TextHandleUndo(Undo * undo)
 			GetParFromID(undo->number_of_behind_par); 
 		LyXParagraph * tmppar;
 		LyXParagraph * tmppar2;
-		LyXParagraph * tmppar3;
-		LyXParagraph * tmppar4;
 		LyXParagraph * endpar;
 		LyXParagraph * tmppar5;
     
@@ -3537,9 +3514,9 @@ bool LyXText::TextHandleUndo(Undo * undo)
 
 		// replace the paragraphs with the undo informations
 
-		tmppar3 = undo->par;
+		LyXParagraph * tmppar3 = undo->par;
 		undo->par = 0; // otherwise the undo destructor would delete the paragraph
-		tmppar4 = tmppar3;
+		LyXParagraph * tmppar4 = tmppar3;
 		if (tmppar4){
 			while (tmppar4->next)
 				tmppar4 = tmppar4->next;
@@ -3557,9 +3534,11 @@ bool LyXText::TextHandleUndo(Undo * undo)
 				tmppar5 = tmppar5->next;
 				// a memory optimization for edit: Only layout information
 				// is stored in the undo. So restore the text informations.
-				if (undo->kind == Undo::EDIT){
-					tmppar2->text = tmppar->text;
-					tmppar->text.clear();
+				if (undo->kind == Undo::EDIT) {
+					tmppar2->setContentsFromPar(tmppar);
+					tmppar->clearContents();
+					//tmppar2->text = tmppar->text;
+					//tmppar->text.clear();
 					tmppar2 = tmppar2->next;
 				}
 				if ( currentrow && currentrow->par == tmppar )
@@ -3592,7 +3571,7 @@ bool LyXText::TextHandleUndo(Undo * undo)
     
     
 		// Set the cursor for redoing
-		if (before){
+		if (before) {
 			SetCursorIntern(before->FirstSelfrowPar(), 0);
 			// check wether before points to a closed float and open it if necessary
 			if (before && before->footnoteflag == LyXParagraph::CLOSED_FOOTNOTE
@@ -3736,7 +3715,8 @@ Undo * LyXText::CreateUndo(Undo::undo_kind kind, LyXParagraph const * before,
 		// a memory optimization: Just store the layout information
 		// when only edit
 		if (kind == Undo::EDIT){
-			tmppar2->text.clear();
+			//tmppar2->text.clear();
+			tmppar2->clearContents();
 		}
 
 		undopar = tmppar2;
@@ -3748,7 +3728,8 @@ Undo * LyXText::CreateUndo(Undo::undo_kind kind, LyXParagraph const * before,
 			// a memory optimization: Just store the layout
 			// information when only edit
 			if (kind == Undo::EDIT){
-				tmppar2->next->text.clear();
+				//tmppar2->next->text.clear();
+				tmppar2->clearContents();
 			}
 			tmppar2->next->previous = tmppar2;
 			tmppar2 = tmppar2->next;

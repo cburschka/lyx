@@ -1252,9 +1252,9 @@ void BufferView::workAreaSelectionNotify(Window win, XEvent * event)
 	string clb = fromClipboard(win, event);
 	if (!clb.empty()) {
 		if (!ascii_type)
-			text->InsertStringA(clb.c_str());
+			text->InsertStringA(clb);
 		else
-			text->InsertStringB(clb.c_str());
+			text->InsertStringB(clb);
 
 		update(1);
 		

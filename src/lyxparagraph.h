@@ -148,9 +148,6 @@ public:
 	void read();
 
 	///
-	void readSimpleWholeFile(istream &);
-
-	///
 	LyXParagraph * TeXOnePar(ostream &, TexRow & texrow,
 				 ostream & foot, TexRow & foot_texrow,
 				 int & foot_count);
@@ -182,10 +179,23 @@ public:
 	/// proof environment
 	int GetEndLabel() const;
 
+private:
 	///
 	TextContainer text;
+public:
 	///
 	size_type size() const { return text.size(); }
+	///
+	void fitToSize() {
+		text.resize(text.size());
+	}
+	void setContentsFromPar(LyXParagraph * par) {
+		text = par->text;
+	}
+	void clearContents() {
+		text.clear();
+	}
+	
 	/// 
 	VSpace added_space_top;
 	
@@ -366,6 +376,11 @@ public:
 	char GetChar(size_type pos);
 	///
 	char GetChar(size_type pos) const;
+	/// The position must already exist.
+	void SetChar(size_type pos, char c) {
+		text[pos] = c;
+	}
+	
 	///
 	void SetFont(size_type pos, LyXFont const & font);
 	///

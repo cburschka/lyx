@@ -2,11 +2,7 @@
 
 #include <algorithm>
 
-#ifdef __GLIBCPP__
-#include <ctype.h>
-#else
 #include <cctype>
-#endif
 #include <cstdlib>
 
 #include "LString.h"
@@ -15,9 +11,12 @@
 
 using std::count;
 using std::transform;
+#ifndef __GLIBCPP__
+// The new glibstdc++-v3 has not worked out all the quirks regarding cctype
+// yet. So currently it failes if the to using lines below are stated.
 using std::tolower;
 using std::toupper;
-
+#endif
 	
 int compare_no_case(string const & s, string const & s2)
 {

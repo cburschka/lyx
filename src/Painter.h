@@ -4,7 +4,7 @@
  * 
  *           LyX, The Document Processor
  * 	 
- *	    Copyright 1999-2000 The LyX Team
+ *	    Copyright 1995-2000 The LyX Team
  *
  * ======================================================*/
 
@@ -25,7 +25,7 @@
 #include "PainterBase.h"
 #include "LColor.h"
 
-using std::less;
+//using std::less;
 
 class LyXFont;
 class WorkArea;

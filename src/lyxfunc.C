@@ -1958,8 +1958,11 @@ string LyXFunc::Dispatch(int ac,
 		LyXParagraph::size_type pos = 
 			owner->view()->text->cursor.pos;
 		if(pos < owner->view()->text->cursor.par->size())
-			dispatch_buffer = owner->view()->text->
-				cursor.par->text[pos];
+			//dispatch_buffer = owner->view()->text->
+			//	cursor.par->text[pos];
+			dispatch_buffer =
+				owner->view()->text->
+				cursor.par->GetChar(pos);
 		else
 			dispatch_buffer = "EOF";
 	}

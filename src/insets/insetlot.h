@@ -5,7 +5,7 @@
  *           LyX, The Document Processor
  * 	 
  *           Copyright 1995 Matthias Ettrich
- *           Copyright 1996-1999 LyX Team
+ *           Copyright 1996-2000 LyX Team
  * 
  * ====================================================== */
 

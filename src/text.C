@@ -4,7 +4,7 @@
  *           LyX, The Document Processor
  * 	 
  *           Copyright 1995 Matthias Ettrich
- *           Copyright 1995-1999 The LyX Team.
+ *           Copyright 1995-2000 The LyX Team.
  *
  * ====================================================== */
 
@@ -1647,7 +1647,7 @@ void LyXText::BreakParagraph(char keep_layout)
    if (cursor.par->table) {
        int cell = NumberOfCell(cursor.par, cursor.pos);
        if (cursor.par->table->ShouldBeVeryLastCell(cell))
-           SetCursor(cursor.par, cursor.par->text.size());
+           SetCursor(cursor.par, cursor.par->size());
    }
    /* table stuff -- end */
    
@@ -1750,7 +1750,7 @@ void LyXText::OpenFootnote()
 	cursor.par->ParFromPos(cursor.pos) != par; cursor.pos++);
    /* now the cursor is at the beginning of the physical par */
    SetCursor(cursor.par,
-	     cursor.pos + cursor.par->ParFromPos(cursor.pos)->text.size());
+	     cursor.pos + cursor.par->ParFromPos(cursor.pos)->size());
    
    /* the cursor must be exactly before the footnote */ 
    par = cursor.par->ParFromPos(cursor.pos);
@@ -2086,7 +2086,7 @@ void LyXText::TableFeatures(int feature) const
           // dummy-paragraph !! 
           // not necessar anymore with UNDO :)
           for (LyXParagraph::size_type i = 
-		       cursor.par->text.size() - 1; i >= 0; --i)
+		       cursor.par->size() - 1; i >= 0; --i)
 	      cursor.par->Erase(i);
           RedoParagraph();
           return;
@@ -3225,7 +3225,8 @@ void LyXText::ChangeWordCase(LyXText::TextCase action)
 	LyXParagraph::size_type tmppos = 
 		cursor.par->PositionInParFromPos(cursor.pos);
 	while (tmppos < tmppar->size()) {
-		unsigned char c = tmppar->text[tmppos];
+		//unsigned char c = tmppar->text[tmppos];
+		unsigned char c = tmppar->GetChar(tmppos);
 		if (IsKommaChar(c) || IsLineSeparatorChar(c))
 			break;
 		if (c != LyXParagraph::META_INSET) {
@@ -3243,7 +3244,8 @@ void LyXText::ChangeWordCase(LyXText::TextCase action)
 			}
 		}
 		
-		tmppar->text[tmppos] = c;
+		//tmppar->text[tmppos] = c;
+		tmppar->SetChar(tmppos, c);
 		++tmppos;
 	}
 	CheckParagraph(tmppar, tmppos);

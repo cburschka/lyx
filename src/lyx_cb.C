@@ -11,6 +11,7 @@
 #include <config.h>
 
 #include <fstream>
+
 using std::ifstream;
 
 #include "LString.h"
@@ -1154,26 +1155,22 @@ void InsertAsciiFile(string const & f, bool asParagraph)
 			     MakeDisplayPath(fname, 50));
 		return;
 	}
-	LyXParagraph * tmppar = new LyXParagraph;
-	tmppar->readSimpleWholeFile(ifs);
-	
-	// set the end of the string
-#ifdef WITH_WARNINGS
-#warning why do we do this?
-#endif
-	// I don't think this is needed. Actually it might be plain wrong.
-	tmppar->InsertChar(tmppar->text.size() - 1, '\0');
 
+	ifs.unsetf(std::ios::skipws);
+	std::istream_iterator<char> ii(ifs);
+	std::istream_iterator<char> end;
+	string tmpstr(ii, end); // yet a reason for using std::string
+	// alternate approach to get the file into a string:
+	//copy(ii, end, back_inserter(tmpstr));
 	// insert the string
 	current_view->hideCursor();
 	
 	// clear the selection
 	current_view->beforeChange();
 	if (!asParagraph)
-		current_view->text->InsertStringA(tmppar->text);
+		current_view->text->InsertStringA(tmpstr);
 	else
-		current_view->text->InsertStringB(tmppar->text);
-	delete tmppar;
+		current_view->text->InsertStringB(tmpstr);
 	current_view->update(1);
 }
 

@@ -15,6 +15,7 @@
 using std::filebuf;
 
 #include "support/LIstream.h"
+#include "support/LOstream.h"
 
 #include "LString.h"
 

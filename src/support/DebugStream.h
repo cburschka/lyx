@@ -2,7 +2,7 @@
 
 // Created by Lars Gullik Bjønnes
 // Copyright 1999 Lars Gullik Bjønnes (larsbj@lyx.org)
-// Released under the Gnu General Public License
+// Released into the public domain.
 
 // Implemented and tested on g++ 2.7.2.3
 

@@ -5,7 +5,7 @@
  *           LyX, The Document Processor
  * 	 
  *           Copyright 1995 Matthias Ettrich
- *           Copyright 1995-1999 The LyX Team.
+ *           Copyright 1995-2000 The LyX Team.
  *
  * ====================================================== */
 
@@ -381,13 +381,9 @@ public:
 	bool SearchBackward(char const * str) const;
 
 	/// needed to insert the selection
-	void InsertStringA(LyXParagraph::TextContainer const & text);
+	void InsertStringA(string const & str);
 	/// needed to insert the selection
-	void InsertStringB(LyXParagraph::TextContainer const & text);
-	/// needed to insert the selection
-	void InsertStringA(char const * str);
-	/// needed to insert the selection
-	void InsertStringB(char const * str);
+	void InsertStringB(string const & str);
 
 	/// usefull when texing from within LyX
 	bool GotoNextError() const;

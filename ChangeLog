@@ -1,3 +1,27 @@
+2000-03-16  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/support/lstrings.C (compare_no_case): some change to make it
+	compile with gcc 2.95.2 and stdlibc++-v3
+
+	* src/text2.C (MeltFootnoteEnvironment): change type o
+	first_footnote_par_is_not_empty to bool.
+
+	* src/lyxparagraph.h: make text private. Changes in other files
+	because of this.
+	(fitToSize): new function
+	(setContentsFromPar): new function
+	(clearContents): new function
+	(SetChar): new function
+
+	* src/paragraph.C (readSimpleWholeFile): deleted.
+
+	* src/lyx_cb.C (InsertAsciiFile): don't use a LyXParagraph to hold
+	the file, just use a simple string instead. Also read the file in
+	a more maintainable manner.
+
+	* src/text2.C (InsertStringA): deleted.
+	(InsertStringB): deleted.
+
 2000-03-15  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/text2.C (DeleteEmptyParagraphMechanism): don't run,

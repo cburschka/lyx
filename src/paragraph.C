@@ -1894,17 +1894,6 @@ int LyXParagraph::GetPositionOfInset(Inset * inset) const
 }
 
 
-void LyXParagraph::readSimpleWholeFile(istream & is)
-{
-	is.seekg(0);
-	char c = 0;
-	while(!is.eof()) {
-		is.get(c);
-		InsertChar(text.size(), c);
-	};
-}
-
-
 LyXParagraph * LyXParagraph::TeXOnePar(ostream & os, TexRow & texrow,
 				       ostream & foot, TexRow & foot_texrow,
 				       int & foot_count)
