@@ -85,7 +85,9 @@ CatCode catcode(unsigned char c)
 ostream & operator<<(ostream & os, Token const & t)
 {
 	if (t.cs().size())
-		os << '\\' << t.cs();
+		os << '\\' << t.cs() << ' ';
+	else if (t.cat() == catLetter)
+		os << t.character();
 	else
 		os << '[' << t.character() << ',' << t.cat() << ']';
 	return os;
