@@ -129,6 +129,32 @@ AC_DEFUN(QT_CHECK_COMPILE,
 	fi
 ])
 
+dnl get Qt version we're using
+AC_DEFUN(QT_GET_VERSION,
+[
+	AC_CACHE_CHECK([Qt version],lyx_cv_qtversion,
+	[
+		AC_LANG_CPLUSPLUS
+		SAVE_CPPFLAGS=$CPPFLAGS
+		CPPFLAGS="$CPPFLAGS $QT_INCLUDES"
+
+		cat > conftest.$ac_ext <<EOF
+#line __oline__ "configure"
+#include "confdefs.h"
+#include <qglobal.h>
+"%%%"QT_VERSION_STR"%%%"
+EOF
+		lyx_cv_qtversion=`(eval "$ac_cpp conftest.$ac_ext") 2>&5 | \
+			grep '^"%%%"'  2>/dev/null | \
+			sed -e 's/^"%%%""\(.*\)""%%%"/\1/' -e 's/ //g'`
+		rm -f conftest.$ac_ext
+		CPPFLAGS=$SAVE_CPPFLAGS
+	])
+ 
+	QT_VERSION=$lyx_cv_qtversion
+	AC_SUBST(QT_VERSION)
+])
+ 
 dnl start here 
 AC_DEFUN(QT_DO_IT_ALL,
 [
@@ -183,4 +209,6 @@ AC_DEFUN(QT_DO_IT_ALL,
  
 	QT_LIB=$qt_cv_libname;
 	AC_SUBST(QT_LIB)
+
+	QT_GET_VERSION
 ])

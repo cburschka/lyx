@@ -195,7 +195,9 @@ case "$lyx_use_frontend" in
     FRONTEND_GUILIB="qt2/*.lo qt2/ui/*.lo qt2/moc/*.lo qt2/ui/moc/*.lo"
     FRONTEND_LDFLAGS="\$(QT_LDFLAGS)"
     FRONTEND_INCLUDES="-I\${srcdir}/qt2 \$(QT_INCLUDES)"
-    FRONTEND_LIBS="\$(QT_LIB)";;
+    FRONTEND_LIBS="\$(QT_LIB)"
+    FRONTEND_INFO="    Qt version:                   ${QT_VERSION}\n"
+    ;;
   *)
     LYX_ERROR(Unknown frontend $lyx_use_frontend);;
 esac
