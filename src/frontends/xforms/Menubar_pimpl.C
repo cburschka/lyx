@@ -231,12 +231,15 @@ int Menubar::Pimpl::create_submenu(Window win, XFormsView * view,
 	vector<string>::iterator it = extra_labels.begin();
 	vector<string>::iterator last = it;
 	for (Menu::const_iterator i = menu.begin(); i != end; ++i, ++it) {
-		FuncStatus flag = view->getLyXFunc().getStatus(i->action());
 		if (i->kind() == MenuItem::Separator)
 			*last = "%l";
-		else if (!(i->optional() && flag.disabled())
-			 && ! flag.unknown())
-			last = it;
+		else {
+			FuncStatus flag
+				= view->getLyXFunc().getStatus(i->action());
+			if (!(i->optional() && flag.disabled())
+			    && ! flag.unknown())
+				last = it;
+		}
 	}
 
 	it = extra_labels.begin();
