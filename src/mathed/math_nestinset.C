@@ -381,6 +381,7 @@ void MathNestInset::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 	switch (cmd.action) {
 
 	case LFUN_PASTE: {
+		recordUndo(cur);	
 		cur.message(_("Paste"));
 		replaceSelection(cur);
 		size_t n = 0;
@@ -425,12 +426,10 @@ void MathNestInset::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 		break;
 
 	case LFUN_FINISHED_UP:
-		//idxUpDown(cur, true);
 		cur.bv().cursor() = cur;
 		break;
 
 	case LFUN_FINISHED_DOWN:
-		//idxUpDown(cur, false);
 		cur.bv().cursor() = cur;
 		break;
 
@@ -569,7 +568,7 @@ void MathNestInset::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 
 	case LFUN_DELETE_WORD_FORWARD:
 	case LFUN_DELETE:
-		recordUndo(cur, Undo::ATOMIC);
+		recordUndo(cur);
 		cur.erase();
 		cmd = FuncRequest(LFUN_FINISHED_LEFT);
 		break;
@@ -582,6 +581,7 @@ void MathNestInset::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 		break;
 
 	case LFUN_INSET_TOGGLE:
+		recordUndo(cur);
 		//lockToggle();
 		if (cur.pos() != cur.lastpos()) {
 			// toggle previous inset ...
@@ -594,11 +594,7 @@ void MathNestInset::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 		break;
 
 	case LFUN_SELFINSERT:
-		if (cmd.argument.empty()) {
-			cmd = FuncRequest(LFUN_FINISHED_RIGHT);
-			break;
-		}
-		recordUndo(cur, Undo::ATOMIC);
+		recordUndo(cur);
 		if (cmd.argument.size() != 1) {
 			cur.insert(cmd.argument);
 			break;
@@ -607,24 +603,10 @@ void MathNestInset::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 			cmd = FuncRequest(LFUN_FINISHED_RIGHT);
 		break;
 
-#if 0
-//
-// this needs to be incorporated
-//
-	// delete empty mathbox (LFUN_BACKSPACE and LFUN_DELETE)
-	bool remove_inset = false;
+	//case LFUN_GETXY:
+	//	sprintf(dispatch_buffer, "%d %d",);
+	//	break;
 
-	DispatchResult result(true);
-	bool was_macro = cur.inMacroMode();
-
-	cur.normalize();
-	cur.touch();
-#endif
-
-	//    case LFUN_GETXY:
-	//      sprintf(dispatch_buffer, "%d %d",);
-	//      DispatchResult= dispatch_buffer;
-	//      break;
 	case LFUN_SETXY: {
 		lyxerr << "LFUN_SETXY broken!" << endl;
 		int x = 0;
@@ -707,20 +689,20 @@ void MathNestInset::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 		cur.posLeft();
 		cur.pushLeft(*cur.nextInset());
 #else
-		if (currentMode() == InsetBase::TEXT_MODE)
+		if (currentMode() == InsetBase::TEXT_MODE) {
 			cur.niceInsert(MathAtom(new MathHullInset("simple")));
-		else
+			cur.message(_("create new math text environment ($...$)"));
+		} else {
 			handleFont(cur, cmd.argument, "textrm");
-		//cur.owner()->message(_("math text mode toggled"));
+			cur.message(_("entered math text mode (textrm)"));
+		}
 #endif
 		break;
 
 	case LFUN_MATH_SIZE:
 #if 0
-		if (!arg.empty()) {
-			recordUndo(cur, Undo::ATOMIC);
-			cur.setSize(arg);
-		}
+		recordUndo(cur);
+		cur.setSize(arg);
 #endif
 		break;
 
@@ -806,32 +788,6 @@ void MathNestInset::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 		cur.undispatched();
 		break;
 	}
-
-#ifdef WITH_WARNINGS
-#warning look here
-#endif
-#if 0
-
-	case LFUN_WORD_REPLACE:
-	case LFUN_WORD_FIND:
-		if (!searchForward(&cur.bv(), cmd.getArg(0), false, false))
-			cur.undispatched();
-		break;
-
-	cur.normalize();
-	cur.touch();
-
-	BOOST_ASSERT(cur.inMathed());
-
-	if (result.dispatched()) {
-		revealCodes(cur);
-		cur.bv().stuffClipboard(cur.grabSelection());
-	} else {
-		if (remove_inset)
-			cur.bv().owner()->dispatch(FuncRequest(LFUN_DELETE));
-	}
-	break;
-#endif
 
 	default:
 		MathDimInset::priv_dispatch(cur, cmd);

@@ -890,10 +890,10 @@ void MathHullInset::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 
 	case LFUN_BREAKLINE:
 		if (type_ == "simple" || type_ == "equation") {
+			recordUndoInset(cur);
 			mutate("eqnarray");
-			cur.idx() = 1;
-			cur.pos() = 0;
-			//cur.dispatched(FINISHED);
+			cur.idx() = 0;
+			cur.pos() = cur.lastpos();
 			break;
 		}
 		MathGridInset::priv_dispatch(cur, cmd);
@@ -902,7 +902,7 @@ void MathHullInset::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 	case LFUN_MATH_NUMBER:
 		//lyxerr << "toggling all numbers" << endl;
 		if (display()) {
-			recordUndo(cur);
+			recordUndoInset(cur);
 			bool old = numberedType();
 			if (type_ == "multline")
 				numbered(nrows() - 1, !old);
@@ -915,8 +915,8 @@ void MathHullInset::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 
 	case LFUN_MATH_NONUMBER:
 		if (display()) {
+			recordUndoInset(cur);
 			row_type r = (type_ == "multline") ? nrows() - 1 : cur.row();
-			recordUndo(cur);
 			bool old = numbered(r);
 			cur.message(old ? _("No number") : _("Number"));
 			numbered(r, !old);
@@ -924,6 +924,7 @@ void MathHullInset::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 		break;
 
 	case LFUN_INSERT_LABEL: {
+		recordUndoInset(cur);
 		row_type r = (type_ == "multline") ? nrows() - 1 : cur.row();
 		string old_label = label(r);
 		string new_label = cmd.argument;
@@ -944,12 +945,12 @@ void MathHullInset::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 	}
 
 	case LFUN_MATH_EXTERN:
+		recordUndoInset(cur);
 		doExtern(cur, cmd);
-		//cur.dispatched(FINISHED);
 		break;
 
 	case LFUN_MATH_MUTATE: {
-		lyxerr << "Hull: MUTATE: " << cmd.argument << endl;
+		recordUndoInset(cur);
 		row_type row = cur.row();
 		col_type col = cur.col();
 		mutate(cmd.argument);
@@ -965,6 +966,7 @@ void MathHullInset::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 	}
 
 	case LFUN_MATH_DISPLAY: {
+		recordUndoInset(cur);
 		mutate(type_ == "simple" ? "equation" : "simple");
 		cur.idx() = 0;
 		cur.pos() = cur.lastpos();

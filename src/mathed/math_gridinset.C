@@ -22,6 +22,7 @@
 #include "cursor.h"
 #include "debug.h"
 #include "funcrequest.h"
+#include "undo.h"
 
 #include "frontends/Painter.h"
 
@@ -1026,6 +1027,7 @@ void MathGridInset::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 
 	// insert file functions
 	case LFUN_DELETE_LINE_FORWARD:
+		recordUndo(cur);	
 		//autocorrect_ = false;
 		//macroModeClose();
 		//if (selection_) {
@@ -1041,12 +1043,12 @@ void MathGridInset::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 		break;
 
 	case LFUN_CELL_SPLIT:
-		////recordUndo(cur, Undo::ATOMIC);
+		recordUndo(cur);	
 		splitCell(cur);
 		break;
 
 	case LFUN_BREAKLINE: {
-		////recordUndo(cur, Undo::INSERT);
+		recordUndo(cur);	
 		row_type const r = cur.row();
 		addRow(r);
 
@@ -1059,14 +1061,15 @@ void MathGridInset::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 		swap(cell(cur.idx()), cell(cur.idx() + ncols() - 1));
 		if (cur.idx() > 0)
 			--cur.idx();
-		cur.idx() = cur.lastpos();
+		cur.pos() = cur.lastpos();
 
 		//mathcursor->normalize();
-		cmd = FuncRequest(LFUN_FINISHED_LEFT);
+		//cmd = FuncRequest(LFUN_FINISHED_LEFT);
 		break;
 	}
 
 	case LFUN_TABULAR_FEATURE: {
+		recordUndo(cur);	
 		//lyxerr << "handling tabular-feature " << cmd.argument << endl;
 		istringstream is(cmd.argument);
 		string s;
@@ -1126,6 +1129,7 @@ void MathGridInset::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 	}
 
 	case LFUN_PASTE: {
+		recordUndo(cur);	
 		lyxerr << "MathGridInset: PASTE: " << cmd << std::endl;
 		istringstream is(cmd.argument);
 		int n = 0;

@@ -49,7 +49,7 @@ struct Undo {
 		ATOMIC
 	};
 
-	/// which kind of operation are we recording for?
+	/// Which kind of operation are we recording for?
 	undo_kind kind;
 	/// the position of the cursor
 	StableDocIterator cursor;
@@ -81,19 +81,22 @@ void finishUndo();
  * will record the original information of the paragraphs in the undo stack.
  */
 
-/// the common case: prepare undo for an arbitrary range
+/// The general case: prepare undo for an arbitrary range.
 void recordUndo(LCursor & cur, Undo::undo_kind kind,
 	lyx::par_type from, lyx::par_type to);
 
-/// convienience: prepare undo for the range between 'from' and cursor.
+/// Convenience: prepare undo for the range between 'from' and cursor.
 void recordUndo(LCursor & cur, Undo::undo_kind kind, lyx::par_type from);
 
-/// convienience: prepare undo for the single paragraph containing the cursor
+/// Convenience: prepare undo for the single paragraph or cell
+/// containing the cursor
 void recordUndo(LCursor & cur, Undo::undo_kind kind = Undo::ATOMIC);
-/// convienience: prepare undo for the selected paragraphs
+/// Convenience: prepare undo for the inset containing the cursor
+void recordUndoInset(LCursor & cur, Undo::undo_kind kind = Undo::ATOMIC);
+/// Convenience: prepare undo for the selected paragraphs
 void recordUndoSelection(LCursor & cur, Undo::undo_kind kind = Undo::ATOMIC);
 
-/// convienience: prepare undo for the single paragraph containing the cursor
+/// Convenience: prepare undo for the single paragraph containing the cursor
 void recordUndoFullDocument(LCursor & cur);
 
 #endif // UNDO_FUNCS_H

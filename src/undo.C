@@ -212,15 +212,23 @@ void recordUndo(Undo::undo_kind kind,
 	Buffer * buf = cur.bv().buffer();
 	recordUndo(kind, cur, first, last, buf->undostack());
 	buf->redostack().clear();
-	//lyxerr << "undostack:\n";
-	//for (size_t i = 0, n = buf->undostack().size(); i != n && i < 6; ++i)
-	//	lyxerr << "  " << i << ": " << buf->undostack()[i] << std::endl;
+	lyxerr << "undostack:\n";
+	for (size_t i = 0, n = buf->undostack().size(); i != n && i < 6; ++i)
+		lyxerr << "  " << i << ": " << buf->undostack()[i] << std::endl;
 }
 
 
 void recordUndo(LCursor & cur, Undo::undo_kind kind)
 {
 	recordUndo(kind, cur, cur.par(), cur.par());
+}
+
+
+void recordUndoInset(LCursor & cur, Undo::undo_kind kind)
+{
+	LCursor c = cur;
+	c.pop();
+	recordUndo(c, kind);
 }
 
 
