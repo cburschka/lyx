@@ -5,6 +5,7 @@
 #include FORMS_H_LOCATION
 #include "LString.h"
 #include "gettext.h"
+#include "Timeout.h"
 
 #ifdef __GNUG__
 #pragma interface
@@ -12,8 +13,12 @@
 
 class LyXView;
 
+#ifdef SIGC_CXX_NAMESPACES
+using SigC::Object;
+#endif
+
 ///
-class MiniBuffer {
+class MiniBuffer : public Object{
 public:
 	///
 	MiniBuffer(LyXView * o,
@@ -21,15 +26,17 @@ public:
 
 	///
 	bool shows_no_match;
+
 	///
-	void setTimer(int a) {
-		fl_set_timer(timer, a);
+	void setTimer(unsigned int a) {
+		timer.setTimeout(a * 1000);
 	}
+
 	///
 	void Set(string const & = string(),
 		 string const & = string(),
 		 string const & = string(),
-		 int delay_secs= 6);
+		 unsigned int delay_secs = 6);
 	/// 
 	string const GetText() const { return text; }
 	///
@@ -47,9 +54,7 @@ public:
 	///
 	void Deactivate();
 	///
-	static void ExecutingCB(FL_OBJECT *ob, long);
-	///
-	static void TimerCB(FL_OBJECT *ob, long);
+	static void ExecutingCB(FL_OBJECT * ob, long);
 	///
         static int  peek_event(FL_OBJECT *, int, FL_Coord, FL_Coord,
 			       int, void *);
@@ -62,8 +67,8 @@ private:
 	string text_stored;
 	///
 	FL_OBJECT * add(int, FL_Coord, FL_Coord, FL_Coord, FL_Coord);
-        ///
-	FL_OBJECT * timer;
+	///
+	Timeout timer;
 	///
 	FL_OBJECT * the_buffer;
 	///
@@ -87,6 +92,8 @@ private:
 	        history_idx = history_cnt;
 	}
         ///
-        string const getHistory() const { return history[history_idx % MAX_HISTORY]; }
+        string const getHistory() const {
+		return history[history_idx % MAX_HISTORY];
+	}
 };
 #endif

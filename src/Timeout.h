@@ -40,7 +40,7 @@ public:
 	///
 	Timeout();
 	///
-	Timeout(int msec, Type = ONETIME);
+	Timeout(unsigned int msec, Type = ONETIME);
 	///
 	~Timeout();
 	///
@@ -54,14 +54,14 @@ public:
 	///
 	void emit();
 	///
-	void setType(Type t);
+	Timeout & setType(Type t);
 	///
-	void setTimeout(int msec);
+	Timeout & setTimeout(unsigned int msec);
 private:
 	///
 	Type type;
 	///
-	int timeout_ms;
+	unsigned int timeout_ms;
 	///
 	int timeout_id;
 };

@@ -31,8 +31,8 @@
 using std::endl;
 
 extern bool keyseqUncomplete();
-extern string keyseqOptions(int l= 190);
-extern string keyseqStr(int l= 190);
+extern string keyseqOptions(int l = 190);
+extern string keyseqStr(int l = 190);
 extern LyXAction lyxaction;
 
 MiniBuffer::MiniBuffer(LyXView * o, FL_Coord x, FL_Coord y,
@@ -43,18 +43,9 @@ MiniBuffer::MiniBuffer(LyXView * o, FL_Coord x, FL_Coord y,
 	shows_no_match = true;
 	history_idx = history_cnt = 0;
 	add(FL_NORMAL_INPUT, x, y, h, w);
+	timer.timeout.connect(slot(this, &MiniBuffer::Init));
 }
 
-void MiniBuffer::TimerCB(FL_OBJECT * ob, long)
-{
-	MiniBuffer * obj = static_cast<MiniBuffer*>(ob->u_vdata);
-	obj->Init();
-}
-
-extern "C" void C_MiniBuffer_TimerCB(FL_OBJECT * ob, long data)
-{
-	MiniBuffer::TimerCB(ob, data);
-}
 
 void MiniBuffer::ExecutingCB(FL_OBJECT * ob, long)
 {
@@ -77,10 +68,13 @@ void MiniBuffer::ExecutingCB(FL_OBJECT * ob, long)
 	return ;
 }
 
-extern "C" void C_MiniBuffer_ExecutingCB(FL_OBJECT * ob, long data)
+
+extern "C" void C_MiniBuffer_ExecutingCB(FL_OBJECT * ob, long)
 {
-	MiniBuffer::TimerCB(ob, data);
+	MiniBuffer * obj = static_cast<MiniBuffer*>(ob->u_vdata);
+	obj->Init();
 }
+
 
 // This is not as dirty as it seems, the hidden buttons removed by this
 // function were just kludges for an uncomplete keyboard callback (ale)
@@ -88,8 +82,9 @@ int MiniBuffer::peek_event(FL_OBJECT * ob, int event, FL_Coord, FL_Coord,
 			   int key, void */*xev*/)
 {
 	MiniBuffer * mini = static_cast<MiniBuffer*>(ob->u_vdata);
-	
-	if (event == FL_KEYBOARD){
+
+	switch (event) {
+	case FL_KEYBOARD:
 		switch (key) {
 		case XK_Down:
 			mini->history_idx++;
@@ -106,7 +101,7 @@ int MiniBuffer::peek_event(FL_OBJECT * ob, int event, FL_Coord, FL_Coord,
 		case XK_Tab:
 		{
 			// complete or increment the command
-			string  s = lyxaction.getApproxFuncName(fl_get_input(ob));
+			string s(lyxaction.getApproxFuncName(fl_get_input(ob)));
 			if (!s.empty())
 				fl_set_input(ob, s.c_str());
 			return 1; 
@@ -126,14 +121,22 @@ int MiniBuffer::peek_event(FL_OBJECT * ob, int event, FL_Coord, FL_Coord,
 		default:
 			return 0;
 		}
-	} else if (event == FL_PUSH) {
+	case FL_PUSH:
 		// This actually clears the buffer.
 		mini->PrepareForCommand();
 		return 1;
- 	}
+	case FL_DRAW:
+		lyxerr << "Minibuffer event: DRAW" << endl;
+		break;
+	default:
+		lyxerr << "Unhandled minibuffer event!" << endl;
+		break;
+	}
+	
 
 	return 0;
 }
+
 
 extern "C" int C_MiniBuffer_peek_event(FL_OBJECT * ob, int event, 
 				       FL_Coord, FL_Coord,
@@ -168,13 +171,9 @@ FL_OBJECT * MiniBuffer::add(int type, FL_Coord x, FL_Coord y,
         fl_set_object_prehandler(obj, C_MiniBuffer_peek_event);
         obj->u_vdata = this;
         obj->wantkey = FL_KEY_TAB;
-	
-	// timer
-	timer = fl_add_timer(FL_HIDDEN_TIMER, 0, 0, 0, 0, "Timer");
-	fl_set_object_callback(timer, C_MiniBuffer_TimerCB, 0);
-	timer->u_vdata = this;
-	fl_set_input(the_buffer, text.c_str());
 
+	fl_set_input(the_buffer, text.c_str());
+	
 	return obj;
 }
 
@@ -182,10 +181,13 @@ FL_OBJECT * MiniBuffer::add(int type, FL_Coord x, FL_Coord y,
 // Added optional arg `delay_secs', defaults to 4.
 //When 0, no timeout is done. RVDK_PATCH_5 
 void MiniBuffer::Set(string const& s1, string const& s2,
-		     string const& s3, int delay_secs)
+		     string const& s3, unsigned int delay_secs)
 {
-	setTimer(delay_secs);
-
+	if (delay_secs)
+		timer.setTimeout(delay_secs * 1000).restart();
+	else
+		timer.stop();
+	
 	string ntext = strip(s1 + ' ' + s2 + ' ' + s3);
 
 	if (!the_buffer->focus) {
@@ -241,7 +243,9 @@ void MiniBuffer::Init()
 	
 
 	fl_set_input(the_buffer, text.c_str());
-	setTimer(0);
+
+	timer.stop();
+
 	XFlush(fl_get_display());
 }
 
@@ -262,15 +266,15 @@ void MiniBuffer::Reset()
 	}
 }
 
+
 void MiniBuffer::Activate()
 {
 	fl_activate_object(the_buffer);
 	fl_redraw_object(the_buffer);
 }
 
+
 void MiniBuffer::Deactivate()
 {
 	fl_deactivate_object(the_buffer);
 }
-
-

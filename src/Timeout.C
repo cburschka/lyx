@@ -36,7 +36,7 @@ Timeout::Timeout()
 {}
 
 
-Timeout::Timeout(int msec, Type t)
+Timeout::Timeout(unsigned int msec, Type t)
 	: type(t), timeout_ms(msec), timeout_id(-1)
 {}
 
@@ -81,13 +81,15 @@ void Timeout::emit()
 }
 	
 
-void Timeout::setType(Type t)
+Timeout & Timeout::setType(Type t)
 {
 	type = t;
+	return *this;
 }
 
 
-void Timeout::setTimeout(int msec)
+Timeout & Timeout::setTimeout(unsigned int msec)
 {
 	timeout_ms = msec;
+	return *this;
 }
