@@ -1,3 +1,16 @@
+2001-05-31  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* acconfig.h: auto update
+
+	* configure.in: call AC_PROG_LIBTOOL instead of AM_PROG_LIBTOOL
+	GUI: modify FRONTEND_GUILIB for all target to match what is
+	needed in the Makefile.am
+	(AC_CONFIG_SUBDIRS): remove boost
+	(AC_OUTPUT): generate boost/Makefile
+
+	* autogen.sh (AUTOCONF): remove some commented code, remove the
+	boost configuration.
+
 2001-05-30  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* acconfig.h: add entry for HAVE_DECL_ISTREAMBUF_ITERATOR

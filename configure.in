@@ -76,7 +76,7 @@ LYX_PROG_CXX
 AC_PROG_CXXCPP
 AC_DISABLE_SHARED
 AC_LIBTOOL_WIN32_DLL
-AM_PROG_LIBTOOL
+AC_PROG_LIBTOOL
 
 ### Some checks on what the C++ compiler can(not) do
 LYX_CXX_MUTABLE
@@ -164,14 +164,14 @@ case "$lyx_use_frontend" in
   kde) 
     KDE_DO_IT_ALL
     FRONTEND="kde"
-    FRONTEND_GUILIB="\${top_builddir}/src/frontends/kde/libkde.la"
+    FRONTEND_GUILIB="kde/libkde.la"
     FRONTEND_LDFLAGS="\$(QT_LDFLAGS) \$(KDE_LDFLAGS)"
     FRONTEND_INCLUDES="-I\${srcdir}/kde \$(QT_INCLUDES) \$(KDE_INCLUDES)"
     FRONTEND_LIBS="\$(KDE_LIBS)";;
   xforms) 
   # for now don't set it for xforms as this is always entered
     FRONTEND=""
-    FRONTEND_GUILIB="\${top_builddir}/src/frontends/xforms/libxforms.la";;
+    FRONTEND_GUILIB="xforms/libxforms.la";;
   gnome)    
     AM_PATH_GTKMM(1.2.1,,
         AC_MSG_ERROR(Cannot find GTK--: Please install Version 1.2.1+))
@@ -190,14 +190,14 @@ dnl Ensure gnome-config is available...
 	fi
 		
     FRONTEND="gnome"
-    FRONTEND_GUILIB="\${top_builddir}/src/frontends/gnome/libgnome.la"
+    FRONTEND_GUILIB="gnome/libgnome.la"
     FRONTEND_LDFLAGS="\$(GNOMEMM_LIBDIR)"
     FRONTEND_INCLUDES="-I\${srcdir}/gnome \$(GNOMEMM_INCLUDEDIR) \$(GTKMM_CFLAGS)"
     FRONTEND_LIBS="\$(GNOMEMM_LIBS) \$(GTKMM_LIBS) `gnome-config --libs libglade`";;
   qt2)
     QT2_DO_IT_ALL
     FRONTEND="qt2"
-    FRONTEND_GUILIB="\${top_builddir}/src/frontends/qt2/libqt2.la"
+    FRONTEND_GUILIB="qt2/libqt2.la"
     FRONTEND_LDFLAGS="\$(QT2_LDFLAGS)"
     FRONTEND_INCLUDES="-I\${srcdir}/qt2 \$(QT2_INCLUDES)"
     FRONTEND_LIBS="\$(QT2_LIBS)";;
@@ -303,8 +303,9 @@ if test "x$enable_assertions" = xyes ; then
 fi
 
 ### Finish the work.
-AC_CONFIG_SUBDIRS(boost sigc++ lib lib/reLyX)
+AC_CONFIG_SUBDIRS(sigc++ lib lib/reLyX)
 AC_OUTPUT([Makefile \
+       boost/Makefile \
        development/lyx.spec \
        lib/Makefile \
        intl/Makefile \

@@ -1,5 +1,8 @@
 2001-05-31  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
+	* Makefile.am (lyx_DEPENDENCIES): adjust for change in
+	frontends/Makefile.am
+
 	* text2.C: adjust
 	* text.C: adjust
 	

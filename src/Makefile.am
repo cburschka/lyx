@@ -9,10 +9,8 @@ bin_PROGRAMS = lyx
 ## magically, but I do not understand them much (JMarc)
 lyx_DEPENDENCIES = mathed/libmathed.la insets/libinsets.la \
 	graphics/libgraphics.la \
-	frontends/libfrontends.la @FRONTEND_GUILIB@ \
-	frontends/controllers/libcontrollers.la \
-	frontends/support/libfrontendsupport.la support/libsupport.la \
 	frontends/libfrontends.la \
+	support/libsupport.la \
 	@INCLUDED_SIGC@
 lyx_LDADD = $(lyx_DEPENDENCIES) @INTLLIBS@ $(LYX_LIBS) $(SIGC_LIBS) \
 	$(PSPELL_LIBS) @FRONTEND_LDFLAGS@ @FRONTEND_LIBS@
