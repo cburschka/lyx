@@ -61,7 +61,7 @@ libfdesign.la: $(libfdesign_la_OBJECTS) $(libfdesign_la_DEPENDENCIES)
 	$(SHELL) $(SCRIPT) $<
 
 clean-local:
-	rm -f *.[ChH] *.orig \
+	rm -f *.[Ch] *.[ch]pp *.orig \
 	rm -f $(srcdir)/*.[hc] $(srcdir)/*.bak
 
 distclean-local:

@@ -1,3 +1,11 @@
+2002-07-01  Angus Leeming  <leeming@lyx.org>
+
+	* forma/Makefile.am: keep "make clean" consistent with Kayvan's fix.
+
+2002-07-01  Kayvan A. Sylvan  <kayvan@sylvan.com>
+
+	* forms/fdfix.sh: fix compilation failure on WinXP.
+
 2002-06-28  Angus Leeming  <leeming@lyx.org>
 
 	* XPainter.[Ch]: changes associated with the name change

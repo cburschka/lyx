@@ -61,7 +61,7 @@ fi
 # Modify the .h file for use by LyX
 HIN=${DIRNAME}/${BASENAME}.h
 HPATCH=${DIRNAME}/${BASENAME}.h.patch
-HOUT=${BASENAME}.H
+HOUT=${BASENAME}.hpp
 
 FDFIXH=${DIRNAME}/fdfixh.sed
 
@@ -99,7 +99,8 @@ fi
 # Create the .C file for use by LyX
 CIN=${DIRNAME}/${BASENAME}.c
 CPATCH=${DIRNAME}/${BASENAME}.C.patch
-COUT=${BASENAME}.C
+COUT=${BASENAME}.cpp
+FINAL_COUT=${BASENAME}.C
 
 FDFIXC=${DIRNAME}/fdfixc.sed
 
@@ -137,5 +138,6 @@ fi
 
 # Clean up, to leave the finished .C file
 rm -f ${CIN}
+mv ${COUT} ${FINAL_COUT}
 
 #========================================
