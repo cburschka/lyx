@@ -32,13 +32,13 @@ FD_form_graphics * FormGraphics::build_graphics()
     fdui->input_filename = obj = fl_add_input(FL_NORMAL_INPUT, 90, 20, 280, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
-    fl_set_object_callback(obj, C_FormBaseInputCB, CHECKINPUT);
+    fl_set_object_callback(obj, C_FormBaseInputCB, 0);
   {
     char const * const dummy = N_("Browse|#B");
     fdui->button_browse = obj = fl_add_button(FL_NORMAL_BUTTON, 380, 20, 90, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
-    fl_set_object_callback(obj, C_FormBaseInputCB, BROWSE);
+    fl_set_object_callback(obj, C_FormBaseInputCB, 0);
   obj = fl_add_labelframe(FL_ENGRAVED_FRAME, 20, 70, 240, 140, _("Size"));
   {
     char const * const dummy = N_("Width|#W");
@@ -47,8 +47,7 @@ FD_form_graphics * FormGraphics::build_graphics()
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
-  fdui->choice_width_units = obj = fl_add_choice(FL_NORMAL_CHOICE, 180, 80, 65, 30, "");
-    fl_set_object_boxtype(obj, FL_BORDER_BOX);
+  fdui->choice_width_units = obj = fl_add_choice(FL_NORMAL_CHOICE2, 180, 80, 65, 30, "");
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
   {
     char const * const dummy = N_("Height|#H");
@@ -57,8 +56,7 @@ FD_form_graphics * FormGraphics::build_graphics()
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
-  fdui->choice_height_units = obj = fl_add_choice(FL_NORMAL_CHOICE, 180, 120, 65, 30, "");
-    fl_set_object_boxtype(obj, FL_BORDER_BOX);
+  fdui->choice_height_units = obj = fl_add_choice(FL_NORMAL_CHOICE2, 180, 120, 65, 30, "");
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
   {
     char const * const dummy = N_("Scale|#S");
@@ -94,13 +92,13 @@ FD_form_graphics * FormGraphics::build_graphics()
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lalign(obj, FL_ALIGN_LEFT);
-    fl_set_object_callback(obj, C_FormBaseInputCB, CHECKINPUT);
+    fl_set_object_callback(obj, C_FormBaseInputCB, 0);
   {
     char const * const dummy = N_("Title|#T");
     fdui->input_subcaption = obj = fl_add_input(FL_NORMAL_INPUT, 110, 280, 350, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
-    fl_set_object_callback(obj, C_FormBaseInputCB, CHECKINPUT);
+    fl_set_object_callback(obj, C_FormBaseInputCB, 0);
   {
     char const * const dummy = N_("Restore|#R");
     fdui->button_restore = obj = fl_add_button(FL_NORMAL_BUTTON, 20, 350, 90, 30, idex(_(dummy)));

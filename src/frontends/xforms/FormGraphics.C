@@ -22,6 +22,7 @@
 #include "FormGraphics.h"
 #include "form_graphics.h"
 
+#include "xforms_helpers.h"
 #include "input_validators.h"
 #include "debug.h" // for lyxerr
 #include "support/lstrings.h"  // for strToDbl & tostr
@@ -56,6 +57,7 @@ void FormGraphics::build()
 	fl_set_input_return (dialog_->input_subcaption,   FL_RETURN_CHANGED);
 
 	// Set the maximum characters that can be written in the input texts.
+	fl_set_input_maxchars(dialog_->input_scale,        SCALE_MAXDIGITS);
 	fl_set_input_maxchars(dialog_->input_width,        WIDTH_MAXDIGITS);
 	fl_set_input_maxchars(dialog_->input_height,       HEIGHT_MAXDIGITS);
 	fl_set_input_maxchars(dialog_->input_filename,     FILENAME_MAXCHARS);
@@ -111,10 +113,11 @@ void FormGraphics::apply()
 		igp.display = InsetGraphicsParams::NONE;
 	}
 
-	double const scale = strToDbl(fl_get_input(dialog_->input_scale));
+	double const scale =
+		strToDbl(strip(fl_get_input(dialog_->input_scale)));
 	if (scale < tol) {
 		double const width =
-			strToDbl(fl_get_input(dialog_->input_width));
+			strToDbl(strip(fl_get_input(dialog_->input_width)));
 
 		if (width < tol) {
 			igp.widthResize = InsetGraphicsParams::DEFAULT_SIZE;
@@ -140,7 +143,7 @@ void FormGraphics::apply()
 		}
 		
 		double const height =
-			strToDbl(fl_get_input(dialog_->input_height));
+			strToDbl(strip(fl_get_input(dialog_->input_height)));
 		
 		if (height < tol) {
 			igp.heightResize = InsetGraphicsParams::DEFAULT_SIZE;
@@ -168,7 +171,8 @@ void FormGraphics::apply()
 		igp.heightSize   = scale;
 	}
 	
-	igp.rotateAngle = strToDbl(fl_get_input(dialog_->input_rotate_angle));
+	igp.rotateAngle =
+		strToDbl(strip(fl_get_input(dialog_->input_rotate_angle)));
 	while (igp.rotateAngle < 0.0 || igp.rotateAngle > 360.0) {
 		if (igp.rotateAngle < 0.0) {
 			igp.rotateAngle += 360.0;
@@ -263,8 +267,8 @@ void FormGraphics::update()
 	fl_set_input(dialog_->input_subcaption,
         	     igp.subcaptionText.c_str());
 
-	// Now make sure that the buttons are set correctly.
-	input(0, 0);
+	setEnabled(dialog_->input_subcaption,
+		   fl_get_button(dialog_->check_subcaption));
 }
 
 
@@ -282,7 +286,7 @@ ButtonPolicy::SMInput FormGraphics::input(FL_OBJECT * ob, long)
 
 	if (ob == dialog_->input_scale) {
 		double const scale =
-			strToDbl(fl_get_input(dialog_->input_scale));
+			strToDbl(strip(fl_get_input(dialog_->input_scale)));
 		if (scale > tol) {
 			fl_set_input(dialog_->input_width, "");
 			fl_set_choice(dialog_->choice_width_units, 1);
@@ -293,13 +297,18 @@ ButtonPolicy::SMInput FormGraphics::input(FL_OBJECT * ob, long)
 
 	if (ob == dialog_->input_width || ob == dialog_->input_height) {
 		double const width =
-			strToDbl(fl_get_input(dialog_->input_width));
+			strToDbl(strip(fl_get_input(dialog_->input_width)));
 		double const height =
-			strToDbl(fl_get_input(dialog_->input_height));
+			strToDbl(strip(fl_get_input(dialog_->input_height)));
 
 		if (width > tol || height > tol) {
 			fl_set_input(dialog_->input_scale, "");
 		}
+	}
+
+	if (ob == dialog_->check_subcaption) {
+	    	setEnabled(dialog_->input_subcaption,
+			   fl_get_button(dialog_->check_subcaption));
 	}
 
 	return checkInput();

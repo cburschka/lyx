@@ -46,7 +46,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_filename
 callback: C_FormBaseInputCB
-argument: CHECKINPUT
+argument: 0
 
 --------------------
 class: FL_BUTTON
@@ -64,7 +64,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: button_browse
 callback: C_FormBaseInputCB
-argument: BROWSE
+argument: 0
 
 --------------------
 class: FL_LABELFRAME
@@ -104,9 +104,9 @@ argument: 0
 
 --------------------
 class: FL_CHOICE
-type: NORMAL_CHOICE
+type: NORMAL_CHOICE2
 box: 180 80 65 30
-boxtype: FL_BORDER_BOX
+boxtype: FL_UP_BOX
 colors: FL_COL1 FL_BLACK
 alignment: FL_ALIGN_LEFT
 style: FL_NORMAL_STYLE
@@ -140,9 +140,9 @@ argument: 0
 
 --------------------
 class: FL_CHOICE
-type: NORMAL_CHOICE
+type: NORMAL_CHOICE2
 box: 180 120 65 30
-boxtype: FL_BORDER_BOX
+boxtype: FL_UP_BOX
 colors: FL_COL1 FL_BLACK
 alignment: FL_ALIGN_LEFT
 style: FL_NORMAL_STYLE
@@ -316,7 +316,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: check_subcaption
 callback: C_FormBaseInputCB
-argument: CHECKINPUT
+argument: 0
 
 --------------------
 class: FL_INPUT
@@ -334,7 +334,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_subcaption
 callback: C_FormBaseInputCB
-argument: CHECKINPUT
+argument: 0
 
 --------------------
 class: FL_BUTTON

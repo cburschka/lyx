@@ -42,35 +42,16 @@ private:
 	/// Filter the inputs on callback from xforms
 	virtual ButtonPolicy::SMInput input(FL_OBJECT *, long);
 
-	/// The maximum digits for the image width (cm, inch, percent)
-	enum {
-	    ///
-	    WIDTH_MAXDIGITS = 3
-	};
-	/// The maximum digits for the image height (cm, inch, percent)
-	enum {
-	    ///
-	    HEIGHT_MAXDIGITS = 3
-	};
-	/// The maximum characters in the rotation angle (minus sign and 3 digits)
-	enum {
-	    ///
-	    ROTATE_MAXCHARS = 4
-	};
+	/// The maximum digits for the image scale
+	static const int SCALE_MAXDIGITS = 3;
+	/// The maximum digits for the image width
+	static const int WIDTH_MAXDIGITS = 3;
+	/// The maximum digits for the image height
+	static const int HEIGHT_MAXDIGITS = 3;
+	/// The max characters in the rotation angle (minus sign and 3 digits)
+	static const int ROTATE_MAXCHARS = 4;
 	/// The maximum characters in a filename.
-	enum {
-	    ///
-	    FILENAME_MAXCHARS = 1024
-	};
-	///
-	enum State {
-		///
-		CHECKINPUT,
-		///
-		BROWSE,
-		///
-		ADVANCEDINPUT
-	};
+	static const int FILENAME_MAXCHARS = 1024;
 
 	/// Verify that the input is correct. If not disable ok/apply buttons.
 	ButtonPolicy::SMInput checkInput();
