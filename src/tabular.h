@@ -182,7 +182,7 @@ public:
 	bool IsLastRow(int cell) const;
 
 	///
-	int GetAdditionalHeight(int row) const;
+	int GetAdditionalHeight(int cell) const;
 
 	///
 	int GetAdditionalWidth(int cell) const;
@@ -493,7 +493,7 @@ private:
 	InsetTabular * owner_;
 
 	///
-	void Init(int columns_arg, int rows_arg, LyXTabular const * lt = 0);
+	void Init(int columns_arg, int rows_arg);
 	///
 	void Reinit();
 	///

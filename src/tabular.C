@@ -96,13 +96,11 @@ LyXTabular::LyXTabular(InsetTabular * inset, int rows_arg, int columns_arg)
 LyXTabular::LyXTabular(InsetTabular * inset, LyXTabular const & lt)
 {
 	owner_ = inset;
-	Init(lt.rows_, lt.columns_, &lt);
-#if 0
+	Init(lt.rows_, lt.columns_);
 #ifdef WITH_WARNINGS
 #warning Jürgen, can you make it the other way round. So that copy assignment depends on the copy constructor and not the other way. (Lgb)
 #endif
 	operator=(lt);
-#endif
 }
 
 
@@ -142,7 +140,6 @@ LyXTabular & LyXTabular::operator=(LyXTabular const & lt)
 LyXTabular * LyXTabular::Clone(InsetTabular * inset)
 {
 	LyXTabular * result = new LyXTabular(inset, *this);
-#if 0
 	// don't know if this is good but I need to Clone also
 	// the text-insets here, this is for the Undo-facility!
 	for (int i = 0; i < rows_; ++i) {
@@ -151,13 +148,12 @@ LyXTabular * LyXTabular::Clone(InsetTabular * inset)
 			result->cell_info[i][j].inset.setOwner(inset);
 		}
 	}
-#endif
 	return result;
 }
 
 
 /* activates all lines and sets all widths to 0 */
-void LyXTabular::Init(int rows_arg, int columns_arg, LyXTabular const * lt)
+void LyXTabular::Init(int rows_arg, int columns_arg)
 {
 	rows_ = rows_arg;
 	columns_ = columns_arg;
@@ -165,11 +161,6 @@ void LyXTabular::Init(int rows_arg, int columns_arg, LyXTabular const * lt)
 	column_info = column_vector(columns_, columnstruct());
 	cell_info = cell_vvector(rows_, cell_vector(columns_, cellstruct()));
 
-	if (lt) {
-		operator=(*lt);
-		return;
-	}
-	
 	int cellno = 0;
 	for (int i = 0; i < rows_; ++i) {
 		for (int j = 0; j < columns_; ++j) {
@@ -437,8 +428,10 @@ bool LyXTabular::RightLine(int cell, bool onlycolumn) const
 
 bool LyXTabular::TopAlreadyDrawed(int cell) const
 {
+	if (GetAdditionalHeight(cell))
+		return false;
 	int row = row_of_cell(cell);
-	if ((row > 0) && !GetAdditionalHeight(row)) {
+	if (row > 0) {
 		int column = column_of_cell(cell);
 		--row;
 		while (column
@@ -476,10 +469,10 @@ bool LyXTabular::IsLastRow(int cell) const
 }
 
 
-int LyXTabular::GetAdditionalHeight(int row) const
+int LyXTabular::GetAdditionalHeight(int cell) const
 {
-	if (!row || row >= rows_)
-		return 0;
+	int const row = row_of_cell(cell);
+	if (!row) return 0;
 	
 	bool top = true;
 	bool bottom = true;
@@ -675,7 +668,7 @@ bool LyXTabular::SetMColumnPWidth(int cell, string const & width)
 
 
 bool LyXTabular::SetAlignSpecial(int cell, string const & special,
-                                 LyXTabular::Feature what)
+				 LyXTabular::Feature what)
 {
 	if (what == SET_SPECIAL_MULTI)
 		cellinfo_of_cell(cell)->align_special = special;
@@ -1888,7 +1881,7 @@ int LyXTabular::GetHeightOfTabular() const
 
 	for (int row = 0; row < rows_; ++row)
 		height += GetAscentOfRow(row) + GetDescentOfRow(row) +
-			GetAdditionalHeight(row);
+			GetAdditionalHeight(GetCellNumber(row, 0));
 	return height;
 }
 
@@ -2592,9 +2585,3 @@ LyXTabular::BoxType LyXTabular::UseParbox(int cell) const
 	return BOX_NONE;
 }
 #endif
-/* Emacs:
- * Local variables:
- * tab-width: 4
- * End:
- * vi:set tabstop=4:
- */

@@ -234,11 +234,7 @@ public:
 	///
 	virtual void resizeLyXText(BufferView *) const {}
 	/// returns the actuall scroll-value
-	virtual int scroll(bool recursive=true) const {
-		if (!recursive || !owner_)
-			return scx;
-		return 0;
-	}
+	int scroll() const { return scx; }
 protected:
 	///
 	mutable int top_x;
@@ -308,7 +304,7 @@ public:
 	}
 
 	///
-	UpdatableInset() : cursor_visible_(false), block_drawing_(false) {}
+	UpdatableInset() : cursor_visible_(false) {}
 	///
 	virtual EDITABLE Editable() const;
 	
@@ -367,20 +363,12 @@ public:
 	///
 	virtual int getMaxWidth(BufferView * bv, UpdatableInset const *) const;
 	///
-	int scroll(bool recursive=true) const {
+	int scroll() const {
 		// We need this method to not clobber the real method in Inset
-		return Inset::scroll(recursive);
+		return Inset::scroll();
 	}
 	///
 	virtual bool ShowInsetDialog(BufferView *) const { return false; }
-	///
-	virtual void nodraw(bool b) {
-		block_drawing_ = b;
-	}
-	///
-	virtual bool nodraw() const {
-		return block_drawing_;
-	}
 protected:
 	///
 	void toggleCursorVisible() const {
@@ -394,11 +382,8 @@ protected:
 	void scroll(BufferView *, float sx) const;
 	/// scrolls offset pixels
 	void scroll(BufferView *, int offset) const;
-
 private:
 	///
 	mutable bool cursor_visible_;
-	///
-	bool block_drawing_;
 };
 #endif

@@ -35,21 +35,6 @@
 	* figinset.C (runqueue): #warning triggers an error on Sun CC 6.0 as
 	an unrecognised preprocessor directive.  So ensure they're wrapped. 
 
-2001-04-13  Juergen Vigna  <jug@sad.it>
-
-	* insettext.C: tried to avoid unneeded redraws.
-	(doClearArea): return true also if I need a FULL|INIT redraw.
-
-	* insettabular.C: tried to avoid unneeded redraws. Still one
-	problem with scrolling remains (resetPos).
-	(doClearArea): return true also if I need a FULL|INIT redraw.
-
-	* lyxinset.h: changed the scroll() function behaviour a bit.
-	Added nodraw() function so that I can block unneeded redraws.
-	Implemented the above 2 functions correctly in InsetText,
-	InsetTabular and InsetCollapsable. Now only the topmost Inset
-	owner is scrolled (as it should be) if a child inset requests this!
-
 2001-04-06  John Levon  <moz@compsoc.man.ac.uk>
 
 	* insetexternal.h:

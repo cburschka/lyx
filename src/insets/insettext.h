@@ -99,7 +99,7 @@ public:
 	///
 	void update(BufferView *, LyXFont const &, bool =false);
 	///
-	void SetUpdateStatus(BufferView *, int what) const;
+	void SetUpdateStatus(BufferView *, int what);
 	///
 	string const EditMessage() const;
 	///
@@ -107,7 +107,7 @@ public:
 	///
 	bool IsTextInset() const { return true; }
 	///
-	bool doClearArea() const;
+	bool doClearArea() const { return !locked; }
 	///
 	void InsetUnlock(BufferView *);
 	///
@@ -180,16 +180,6 @@ public:
 	///
 	std::vector<string> const getLabelList() const;
 	///
-	bool nodraw() const;
-	///
-	int scroll(bool recursive=true) const;
-	void scroll(BufferView *bv, float sx) const {
-		UpdatableInset::scroll(bv, sx);
-	}
-	void scroll(BufferView *bv, int offset) const {
-		UpdatableInset::scroll(bv, offset);
-	}
-
 	LyXParagraph * par;
 	///
 	mutable int need_update;
@@ -204,7 +194,7 @@ protected:
 	///
 	bool autoBreakRows;
 	///
-	DrawFrame drawFrame_;
+	DrawFrame drawFrame;
 	///
 	LColor::color frame_color;
 
@@ -247,8 +237,8 @@ private:
 	///
 	bool checkAndActivateInset(BufferView * bv, int x = 0, int y = 0,
 				   int button = 0);
-	///
 	void removeNewlines();
+
 	///
 	int cx(BufferView *) const;
 	///
@@ -261,15 +251,11 @@ private:
 	bool cboundary(BufferView *) const;
 	///
 	Row * crow(BufferView *) const;
-	///
+
 	/// This instead of a macro
 	LyXText * TEXT(BufferView * bv) const {
 		return getLyXText(bv);
 	}
-	///
-	void drawFrame(Painter &, bool cleared) const;
-	void clearFrame(Painter &, bool cleared) const;
-	///
 	
 	/* Private structures and variables */
 	///
@@ -310,7 +296,5 @@ private:
 	mutable Cache cache;
 	///
 	mutable int last_drawn_width;
-	///
-	mutable bool frame_is_visible;
 };
 #endif
