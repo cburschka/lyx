@@ -32,7 +32,7 @@ MathInset * MathMacroArgument::clone() const
 
 void MathMacroArgument::write(WriteStream & os) const
 {
-	os << '#' << number_;
+	os << str_;
 }
 
 
@@ -60,7 +60,7 @@ void MathMacroArgument::draw(Painter & pain, int x, int y) const
 
 void MathMacroArgument::normalize(NormalStream & os) const
 {
-	os << "[macroarg " << number_ << "] ";
+	os << "[macroarg " << str_ << "] ";
 }
 
 
