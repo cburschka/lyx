@@ -21,7 +21,7 @@ MathInset * MathSpaceInset::clone() const
 }
 
 
-void MathSpaceInset::metrics(MathMetricsInfo const & mi) const
+void MathSpaceInset::metrics(MathMetricsInfo const &) const
 {
 	width_ = space_ ? space_ * 2 : 2;
 	if (space_ > 3)
