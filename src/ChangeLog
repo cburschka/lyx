@@ -41,6 +41,11 @@
 	* BufferView_pimpl.C (update): call a status update to see if LyXText
 	needs it.
 
+2001-02-20  Lars Gullik Bjønnes  <larsbj@trylle.birdstep.com>
+
+	* vc-backend.C (revert): implement for CVS
+	(getLog): implement for CVS
+
 2001-02-20  Juergen Vigna  <jug@sad.it>
 
 	* text2.C (ClearSelection): added BufferView param for inset_owner call

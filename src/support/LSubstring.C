@@ -68,14 +68,14 @@ LSubstring & LSubstring::operator=(LSubstring const & s)
 }
 
 
-LSubstring & LSubstring::operator=(char const * p)
+LSubstring & LSubstring::operator=(string::value_type const * p)
 {
 	ps->replace(pos, n, p);
 	return *this;
 }
 
 
-LSubstring & LSubstring::operator=(char c)
+LSubstring & LSubstring::operator=(string::value_type c)
 {
 	ps->replace(pos, n, 1, c);
 	return *this;
