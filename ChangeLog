@@ -1,5 +1,9 @@
 1999-10-27  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
+	* src/LyXAction.C (LookupFunc): added a workaround for sun
+	compiler, on the other hand...we don't know if the current code
+	compiles on sun at all...
+
 	* src/support/filetools.C (CleanupPath): subst fix
 
 	* src/insets/insetbib.C (delDatabase): subst fix, this looks

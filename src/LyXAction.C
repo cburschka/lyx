@@ -499,7 +499,7 @@ int LyXAction::retrieveActionArg(int i, char const** arg)
 
 
 // Returns an action tag from a string.
-int LyXAction::LookupFunc(char const *func)
+int LyXAction::LookupFunc(char const * func)
 {
 	if (!func) 
 		return LFUN_UNKNOWN_ACTION;         
@@ -510,7 +510,9 @@ int LyXAction::LookupFunc(char const *func)
       valid func table slot. RVDK_PATCH_5 */
 	int k, l= 0, r = funcCount;
 	int action = LFUN_UNKNOWN_ACTION;
-	char *arg = strchr(func, ' ');
+	char * arg = strchr(const_cast<char*>(func), ' '); // const cast to
+	// help a sun complier, will go away when this func is rewritten
+	// to use std::containers and std::string.
 
 	if (arg) *(arg++) = '\0';      
 
