@@ -95,7 +95,7 @@ Pixmap GImageXPM::getPixmap() const
 void GImageXPM::load(string const & filename, GImage::SignalTypePtr on_finish)
 {
 	if (filename.empty()) {
-		on_finish->oprator()(false);
+		on_finish->operator()(false);
 		return;
 	}
 
