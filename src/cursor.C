@@ -35,8 +35,8 @@
 #include "insets/insettext.h"
 
 #include "mathed/math_data.h"
-#include "mathed/math_hullinset.h"
 #include "mathed/math_support.h"
+#include "mathed/math_inset.h"
 
 #include "support/limited_stack.h"
 #include "support/std_sstream.h"
@@ -58,6 +58,26 @@ using std::swap;
 
 // our own cut buffer
 limited_stack<string> theCutBuffer;
+
+
+namespace {
+
+void region(CursorSlice const & i1, CursorSlice const & i2,
+	LCursor::row_type & r1, LCursor::row_type & r2,
+	LCursor::col_type & c1, LCursor::col_type & c2)
+{
+	InsetBase & p = i1.inset();
+	c1 = p.col(i1.idx_);
+	c2 = p.col(i2.idx_);
+	if (c1 > c2)
+		swap(c1, c2);
+	r1 = p.row(i1.idx_);
+	r2 = p.row(i2.idx_);
+	if (r1 > r2)
+		swap(r1, r2);
+}
+
+}
 
 
 LCursor::LCursor(BufferView & bv)
@@ -174,12 +194,9 @@ bool LCursor::popLeft()
 {
 	BOOST_ASSERT(!empty());
 	//lyxerr << "Leaving inset to the left" << endl;
-	if (depth() <= 1) {
-		if (depth() == 1)
-			inset().notifyCursorLeaves(idx());
-		return false;
-	}
 	inset().notifyCursorLeaves(idx());
+	if (depth() == 1)
+		return false;
 	pop();
 	return true;
 }
@@ -189,12 +206,9 @@ bool LCursor::popRight()
 {
 	BOOST_ASSERT(!empty());
 	//lyxerr << "Leaving inset to the right" << endl;
-	if (depth() <= 1) {
-		if (depth() == 1)
-			inset().notifyCursorLeaves(idx());
-		return false;
-	}
 	inset().notifyCursorLeaves(idx());
+	if (depth() == 1)
+		return false;
 	pop();
 	++pos();
 	return true;
@@ -204,12 +218,12 @@ bool LCursor::popRight()
 int LCursor::currentMode()
 {
 	BOOST_ASSERT(!empty());
-	for (int i = size() - 1; i >= 1; --i) {
+	for (int i = size() - 1; i >= 0; --i) {
 		int res = operator[](i).inset().currentMode();
-		if (res != MathInset::UNDECIDED_MODE)
+		if (res != InsetBase::UNDECIDED_MODE)
 			return res;
 	}
-	return MathInset::TEXT_MODE;
+	return InsetBase::TEXT_MODE;
 }
 
 
@@ -393,26 +407,6 @@ void LCursor::info(std::ostream & os) const
 		prevInset()->infoize2(os);
 	// overwite old message
 	os << "                    ";
-}
-
-
-namespace {
-
-void region(CursorSlice const & i1, CursorSlice const & i2,
-	LCursor::row_type & r1, LCursor::row_type & r2,
-	LCursor::col_type & c1, LCursor::col_type & c2)
-{
-	InsetBase & p = i1.inset();
-	c1 = p.col(i1.idx_);
-	c2 = p.col(i2.idx_);
-	if (c1 > c2)
-		swap(c1, c2);
-	r1 = p.row(i1.idx_);
-	r2 = p.row(i2.idx_);
-	if (r1 > r2)
-		swap(r1, r2);
-}
-
 }
 
 
@@ -637,14 +631,8 @@ bool positionable(DocumentIterator const & cursor,
 
 void LCursor::setScreenPos(int x, int y)
 {
-	bool res = bruteFind(x, y, formula()->xlow(), formula()->xhigh(),
-		formula()->ylow(), formula()->yhigh());
-	if (!res) {
-		// this can happen on creation of "math-display"
-		idx() = 0;
-		pos() = 0;
-	}
-	clearTargetX();
+	x_target() = x;
+	bruteFind(x, y, 0, bv().workWidth(), 0, bv().workHeight());
 }
 
 
@@ -903,17 +891,6 @@ int LCursor::targetX() const
 }
 
 
-MathHullInset * LCursor::formula() const
-{
-	for (int i = size() - 1; i >= 1; --i) {
-		MathInset * inset = operator[](i).inset().asMathInset();
-		if (inset && inset->asHullInset())
-			return static_cast<MathHullInset *>(inset);
-	}
-	return 0;
-}
-
-
 void LCursor::adjust(pos_type from, int diff)
 {
 	if (pos() > from)
@@ -1032,6 +1009,7 @@ bool LCursor::goUpDown(bool up)
 	// fragile. A distance of one pixel or a '<' vs '<=' _really
 	// matters. So fiddle around with it only if you think you know
 	// what you are doing!
+
   int xo = 0;
 	int yo = 0;
 	getPos(xo, yo);
@@ -1098,13 +1076,9 @@ bool LCursor::goUpDown(bool up)
 		// no such inset found, just take something "above"
 		//lyxerr << "updown: handled by strange case" << endl;
 		if (!popLeft()) {
-			return
-				bruteFind(xo, yo,
-					formula()->xlow(),
-					formula()->xhigh(),
-					up ? formula()->ylow() : yo + 4,
-					up ? yo - 4 : formula()->yhigh()
-				);
+			int ylow  = up ? 0 : yo + 1;
+			int yhigh = up ? yo - 1 : bv().workHeight();
+			return bruteFind(xo, yo, 0, bv().workWidth(), ylow, yhigh);
 		}
 
 		// any improvement so far?
@@ -1118,34 +1092,47 @@ bool LCursor::goUpDown(bool up)
 
 bool LCursor::bruteFind(int x, int y, int xlow, int xhigh, int ylow, int yhigh)
 {
-	DocumentIterator best_cursor;
-	double best_dist = 1e10;
+	BOOST_ASSERT(!empty());
+	ParagraphList::iterator beg;
+	ParagraphList::iterator end;
+	CursorSlice bottom = operator[](0); 
+	LyXText * text = bottom.text();
+	BOOST_ASSERT(text);
+	getParsInRange(text->paragraphs(), ylow, yhigh, beg, end);
 
 	DocumentIterator it = insetBegin(bv().buffer()->inset());
-	DocumentIterator et = insetEnd();
-	while (1) {
+	DocumentIterator et;
+	lyxerr << "x: " << x << " y: " << y << endl;
+	lyxerr << "xlow: " << xlow << " ylow: " << ylow << endl;
+	lyxerr << "xhigh: " << xhigh << " yhigh: " << yhigh << endl;
+
+	it.par() = text->parOffset(beg);
+	//et.par() = text->parOffset(end);
+
+	double best_dist = 10e10;
+	DocumentIterator best_cursor = it;
+
+	for ( ; it != et; it.forwardPos()) {
 		// avoid invalid nesting when selecting
 		if (!selection() || positionable(it, anchor_)) {
-			int xo, yo;
+			int xo = 0, yo = 0;
 			CursorSlice & cur = it.back();
 			cur.inset().getCursorPos(cur, xo, yo);
 			if (xlow <= xo && xo <= xhigh && ylow <= yo && yo <= yhigh) {
 				double d = (x - xo) * (x - xo) + (y - yo) * (y - yo);
-				//lyxerr << "x: " << x << " y: " << y << " d: " << endl;
+				lyxerr << "xo: " << xo << " yo: " << yo << " d: " << d << endl;
 				// '<=' in order to take the last possible position
 				// this is important for clicking behind \sum in e.g. '\sum_i a'
 				if (d <= best_dist) {
+					lyxerr << "*" << endl;
 					best_dist   = d;
 					best_cursor = it;
 				}
 			}
 		}
-
-		if (it == et)
-			break;
-		it.forwardPos();
 	}
 
+	lyxerr << "best_dist: " << best_dist << " cur:\n" << best_cursor << endl;
 	if (best_dist < 1e10)
 		setCursor(best_cursor, false);
 	return best_dist < 1e10;

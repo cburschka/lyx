@@ -23,7 +23,6 @@ class FuncStatus;
 class FuncRequest;
 
 // these should go
-class MathHullInset;
 class MathUnknownInset;
 class MathGridInset;
 class Encoding;
@@ -257,8 +256,6 @@ public:
 	MathGridInset * enclosingGrid(idx_type & idx) const;
 	/// adjust anchor position after deletions/insertions
 	void adjust(pos_type from, int diff);
-	///
-	MathHullInset * formula() const;
 	/// current offset in the top cell
 	/// interpret name a name of a macro
 	void macroModeClose();
@@ -306,10 +303,6 @@ public:
 
 	/// moves position somehow up or down
 	bool goUpDown(bool up);
-	/// moves position closest to (x, y) in given box
-	bool bruteFind(int x, int y, int xlow, int xhigh, int ylow, int yhigh);
-	/// moves position closest to (x, y) in current cell
-	void bruteFind2(int x, int y);
 
 	/// the name of the macro we are currently inputting
 	std::string macroName();
@@ -319,6 +312,12 @@ public:
 	bool openable(MathAtom const &) const;
 	///
 	Encoding const * getEncoding() const;
+
+private:
+	/// moves position closest to (x, y) in current cell
+	void bruteFind2(int x, int y);
+	/// moves position closest to (x, y) in given box
+	bool bruteFind(int x, int y, int xlow, int xhigh, int ylow, int yhigh);
 };
 
 #endif // LYXCURSOR_H

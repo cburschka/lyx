@@ -154,22 +154,10 @@ private:
 // Incorporate me
 //
 public:
-	/// lowest x coordinate
-	int xlow() const;
-	/// highest x coordinate
-	int xhigh() const;
-	/// lowest y coordinate
-	int ylow() const;
-	/// highest y coordinate
-	int yhigh() const;
-
-
 	/// what appears in the minibuffer when opening
 	virtual std::string const editMessage() const;
 	///
 	virtual void getCursorDim(int &, int &) const;
-	///
-	virtual void insetUnlock(BufferView & bv);
 
 	/// To allow transparent use of math editing functions
 	//virtual void status(FuncRequest &);
@@ -193,28 +181,11 @@ public:
 	///
 	Code lyxCode() const;
 
-private:
-	/// common base for handling accents
-	void handleAccent(BufferView & bv, std::string const & arg,
-		std::string const & name);
-
 protected:
-
-	/** Find the PreviewLoader, add a LaTeX snippet to it and
-	 *  start the loading process.
-	 *
-	 *  Most insets have no interest in this capability, so the method
-	 *  defaults to empty.
-	 */
-	virtual void generatePreview(Buffer const &) const {}
-
 	///
 	void handleFont(LCursor &, std::string const & arg, std::string const & font);
 	///
 	void handleFont2(LCursor &, std::string const & arg);
 };
 
-// We don't really want to mess around with mathed stuff outside mathed.
-// So do it here.
-void mathDispatch(LCursor & cur, FuncRequest & cmd);
 #endif

@@ -909,30 +909,6 @@ string MathHullInset::fileInsetLabel() const
 #include "support/lyxlib.h"
 
 
-int MathHullInset::ylow() const
-{
-	return yo_ - dim_.asc;
-}
-
-
-int MathHullInset::yhigh() const
-{
-	return yo_ + dim_.des;
-}
-
-
-int MathHullInset::xlow() const
-{
-	return xo_;
-}
-
-
-int MathHullInset::xhigh() const
-{
-	return xo_ + dim_.wid;
-}
-
-
 // simply scrap this function if you want
 void MathHullInset::mutateToText()
 {
@@ -987,18 +963,6 @@ void MathHullInset::handleFont2(LCursor & cur, string const & arg)
 string const MathHullInset::editMessage() const
 {
 	return _("Math editor mode");
-}
-
-
-void MathHullInset::insetUnlock(BufferView & bv)
-{
-	if (bv.cursor().inMathed()) {
-		if (bv.cursor().inMacroMode())
-			bv.cursor().macroModeClose();
-	}
-	if (bv.buffer())
-		generatePreview(*bv.buffer());
-	bv.update();
 }
 
 
