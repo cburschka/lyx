@@ -1393,7 +1393,7 @@ bool MathCursor::interpret(char c)
 
 		if (c == '\\')
 			insert(c, LM_TC_TEX);
-		else
+		else if (c != ' ')
 			insert(c, lastcode_);
 
 		return true;
