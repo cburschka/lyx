@@ -459,6 +459,9 @@ int Combox::peek_event(FL_FORM * form, void * xev)
 	XFlush(fl_get_display());
 	switch (keysym_return) {
 	case XK_Down:
+#ifdef XK_KP_Down
+	case XK_KP_Down:
+#endif
 		if (fl_get_browser(combo->browser) <
 		    fl_get_browser_maxline(combo->browser))
 			fl_select_browser_line(combo->browser,
@@ -475,6 +478,9 @@ int Combox::peek_event(FL_FORM * form, void * xev)
 					       fl_get_browser(combo->browser));
 		return 1;
 	case XK_Up:
+#ifdef XK_KP_Up
+	case XK_KP_Up:
+#endif
 		if (fl_get_browser(combo->browser) > 1)
 			fl_select_browser_line(combo->browser,
 					       fl_get_browser(combo->browser)-1);
@@ -490,6 +496,9 @@ int Combox::peek_event(FL_FORM * form, void * xev)
 					       fl_get_browser(combo->browser));
 		return 1;
 	case XK_Return:
+#ifdef XK_KP_Enter
+	case XK_KP_Enter:
+#endif
 		combo->hide();
 		return 1;
 	case XK_Escape:

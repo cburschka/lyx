@@ -134,12 +134,21 @@ int DropDown::peek(XEvent * xev)
 		XLookupString(&xev->xkey, s_r, 10, &keysym_return, 0);
 		switch (keysym_return) {
 		case XK_Down:
+#ifdef XK_KP_Down
+		case XK_KP_Down:
+#endif
 			line_down();
 			return 1;
 		case XK_Up:
+#ifdef XK_KP_Up
+		case XK_KP_Up:
+#endif
 			line_up();
 			return 1;
 		case XK_Return:
+#ifdef XK_KP_Enter
+		case XK_KP_Enter:
+#endif
 			completed();
 			return 1;
 		case XK_Escape:
