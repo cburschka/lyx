@@ -220,15 +220,15 @@ public:
 	///
 	mutable LyXCursor sel_cursor;
 	///
-	LyXCursor sel_start_cursor;
+	mutable LyXCursor sel_start_cursor;
 	///
 	mutable LyXCursor sel_end_cursor;
 	/// needed for the toggling
-	LyXCursor last_sel_cursor;
+	mutable LyXCursor last_sel_cursor;
 	///
-	LyXCursor toggle_cursor;
+	mutable LyXCursor toggle_cursor;
 	///
-	LyXCursor toggle_end_cursor;
+	mutable LyXCursor toggle_end_cursor;
    
 	/// need the selection cursor:
 	void SetSelection();
@@ -566,6 +566,12 @@ private:
 			    float & fill_label_hfill,
 			    bool bidi = true) const;
 
+	// fix the cursor `cur' after a characters has been deleted at `where'
+	// position. Called by deleteEmptyParagraphMechanism
+	void fixCursorAfterDelete(BufferView * bview,
+				  LyXCursor & cur,
+				  LyXCursor const & where) const;
+	
 	///
 	void DeleteEmptyParagraphMechanism(BufferView *,
 					   LyXCursor const & old_cursor) const;

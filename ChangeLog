@@ -1,3 +1,15 @@
+2001-10-15  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/text2.C (fixCursorAfterDelete): new method. Fixes the parameters
+	of a cursor (row, etc.) after a character has been deleted
+	(DeleteEmptyParagraphMechanism): call the method above on _all_
+	cursors held by the LyXText when a double space has been
+	detected/deleted.
+
+2001-10-01  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* lib/languages: change default encoding for estonian to latin1
+
 2001-10-01  Garst R. Reese  <reese@isn.net>
 
 	* lib/tex/hollywood.cls:
