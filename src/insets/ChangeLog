@@ -1,3 +1,8 @@
+2002-02-22  Juergen Vigna  <jug@sad.it>
+
+	* insettext.C (insetUnlock): set the cursor to the second paragraph
+	if available and if the first one is empty (fix #191).
+
 2002-02-20  Juergen Vigna  <jug@sad.it>
 
 	* insettext.C (getDrawFont): implemented this function to call the

@@ -753,7 +753,11 @@ void InsetText::insetUnlock(BufferView * bv)
 	} else
 		bv->owner()->setLayout(bv->text->cursor.par()->getLayout());
 	// hack for deleteEmptyParMech
-	lt->setCursor(bv, par, 0);
+	if (par->size()) {
+		lt->setCursor(bv, par, 0);
+	} else if (par->next()) {
+		lt->setCursor(bv, par->next(), 0);
+	}
 	if (clear)
 		lt = 0;
 	updateLocal(bv, code, false);

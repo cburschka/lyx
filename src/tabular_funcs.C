@@ -30,12 +30,21 @@ using std::getline;
 template <>
 string const write_attribute(string const & name, bool const & b)
 {
+	// we write only true attribute values so we remove a bit of the
+	// file format bloat for tabulars.
+	if (!b)
+		return string();
+	
 	return write_attribute(name, int(b));
 }
 
 template <>
 string const write_attribute(string const & name, LyXLength const & value)
 {
+	// we write only the value if we really have one same reson as above.
+	if (value.zero())
+		return string();
+	
 	return write_attribute(name, value.asString());
 }
 
@@ -210,6 +219,9 @@ bool getTokenValue(string const & str, const char * token,
 
 bool getTokenValue(string const & str, const char * token, bool & flag)
 {
+	// set the flag always to false as this should be the default for bools
+	// not in the file-format.
+	flag = false;
 	string tmp;
 	if (!getTokenValue(str, token, tmp))
 		return false;
@@ -219,6 +231,9 @@ bool getTokenValue(string const & str, const char * token, bool & flag)
 
 bool getTokenValue(string const & str, const char * token, LyXLength & len)
 {
+	// set the lenght to be zero() as default as this it should be if not
+	// in the file format.
+	len = LyXLength();
 	string tmp;
 	if (!getTokenValue(str, token, tmp))
 		return false;
