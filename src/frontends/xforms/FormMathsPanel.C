@@ -321,12 +321,12 @@ bool FormMathsPanel::input(FL_OBJECT *, long data)
 		break;
 
 	case MM_SUPER:
-		lv_->getLyXFunc()->dispatch(LFUN_MATH_MODE);
+		//lv_->getLyXFunc()->dispatch(LFUN_MATH_MODE);
 		lv_->getLyXFunc()->dispatch(LFUN_SUPERSCRIPT);
 		break;
 
 	case MM_SUB:
-		lv_->getLyXFunc()->dispatch(LFUN_MATH_MODE);
+		//lv_->getLyXFunc()->dispatch(LFUN_MATH_MODE);
 		lv_->getLyXFunc()->dispatch(LFUN_SUBSCRIPT);
 		break;
 
