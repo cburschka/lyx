@@ -42,10 +42,11 @@ public:
 	typedef std::vector<byte>         buffer_type;
 	typedef byte                      value_type;
 	typedef buffer_type::size_type    size_type;
+	typedef buffer_type::iterator iterator;
+	typedef buffer_type::const_iterator const_iterator;
+	
 	///
 	enum {
-		///
-		ARRAY_SIZE = 256,
 		///
 		ARRAY_STEP = 16,
 		///
@@ -57,20 +58,30 @@ public:
 	MathedArray(int size = ARRAY_STEP);
 
 	///
+	iterator begin();
+	///
+	iterator end();
+	///
+	const_iterator begin() const;
+	///
+	const_iterator end() const;
+	
+	///
 	int empty() const;
    
 	///
 	int last() const;
 	///
 	void last(int l);
-   
+
+#if 0
+	///
+	void insert(iterator pos, const_iterator beg, const_iterator end);
+#else
 	/// Merge \a dx elements from array \a a at \apos.
 	/// This doesn't changes the size (dangerous)
 	void mergeF(MathedArray * a, int pos, int dx); 
-
-	/// Insert a character at position \a pos
-	void insert(int pos, byte);
-
+#endif
 	///
 	void raw_pointer_copy(MathedInset ** p, int pos) const;
 	///
@@ -86,12 +97,9 @@ public:
 	void move(int p, int shift);
 	///
 	void resize(int newsize);
-	///
-	int maxsize() const;
 	/// Make sure we can access at least \a needed elements
 	void need_size(int needed);
 private:
-
 	/// Buffer
 	buffer_type bf_;
 	/// Last position inserted.

@@ -18,6 +18,38 @@ void * my_memcpy(void * ps_in, void const * pt_in, size_t n)
 }
 
 
+MathedArray::MathedArray(int size)
+	: last_(0)
+{
+	int const newsize = (size < ARRAY_MIN_SIZE) ? ARRAY_MIN_SIZE : size;
+	bf_.resize(newsize);
+}
+
+
+MathedArray::iterator MathedArray::begin() 
+{
+	return bf_.begin();
+}
+
+
+MathedArray::iterator MathedArray::end() 
+{
+	return bf_.end();
+}
+
+
+MathedArray::const_iterator MathedArray::begin() const
+{
+	return bf_.begin();
+}
+
+
+MathedArray::const_iterator MathedArray::end() const
+{
+	return bf_.end();
+}
+
+
 int MathedArray::empty() const
 {
 	return (last_ == 0);
@@ -36,15 +68,9 @@ void MathedArray::last(int l)
 }
 
 
-int MathedArray::maxsize() const
-{
-	return static_cast<int>(bf_.size());
-}
-
-
 void MathedArray::need_size(int needed)
 {
-	if (needed >= maxsize()) 
+	if (needed >= static_cast<int>(bf_.size()))
 		resize(needed);
 }
 
@@ -55,16 +81,9 @@ void MathedArray::resize(int newsize)
 		newsize = ARRAY_MIN_SIZE;
 	newsize += ARRAY_STEP - (newsize % ARRAY_STEP);
 	bf_.resize(newsize);
-	if (last_ >= newsize) last_ = newsize - 1;
+	if (last_ >= newsize)
+		last_ = newsize - 1;
 	bf_[last_] = 0;
-}
-
-
-MathedArray::MathedArray(int size) 
-{
-	int newsize = (size < ARRAY_MIN_SIZE) ? ARRAY_MIN_SIZE : size;
-	bf_.resize(newsize);
-	last_ = 0;
 }
 
 
@@ -79,10 +98,20 @@ void MathedArray::move(int p, int shift)
 }
 
 
+#if 0
+void MathedArray::insert(MathedArray::iterator pos,
+			 MathedArray::const_iterator beg,
+			 MathedArray::const_iterator end)
+{
+	bf_.insert(pos, beg, end);
+	last_ = bf_.size() - 1;
+}
+#else
 void MathedArray::mergeF(MathedArray * a, int p, int dx)
 {
 	my_memcpy(&bf_[p], &a->bf_[0], dx);
 }
+#endif
 
 
 void MathedArray::raw_pointer_copy(MathedInset ** p, int pos) const
@@ -113,18 +142,4 @@ byte MathedArray::operator[](int i) const
 byte & MathedArray::operator[](int i)
 {
 	return bf_[i];
-}
-
-
-void MathedArray::insert(int pos, byte c)
-{
-	if (pos < 0) pos = last_;
-
-	// I think this should be replaced by  need_size(pos).  Note that the
-	// current code looks troublesome if  pos > maxsize() + ARRAY_STEP.
-	if (pos >= maxsize()) 
-		resize(maxsize() + ARRAY_STEP);
-	bf_[pos] = c;
-	if (pos >= last_)
-		last_ = pos + 1;
 }

@@ -137,11 +137,15 @@ void MathedXIter::Merge(MathedArray * a0)
 	// All insets must be clonned
 	MathedIter it(a0);
 	MathedArray * a = it.Copy();
-	
+
+#if 0
+	array->insert(array->begin() + pos,
+		      a->begin(), a->end());
+#else
 	// make room for the data 
 	split(a->last());
 	array->mergeF(a, pos, a->last());
-	
+#endif
 	int pos1 = pos;
 	int pos2 = pos + a->last();
 	

@@ -1,3 +1,12 @@
+2001-02-14  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* array.C (begin): new method
+	(end): ditto
+
+2001-02-14  André Pönitz  <poenitz@htwm.de>
+	
+	* math_iter.[Ch]: remove 'insert', 'maxsize' and 'ARRAY_SIZE'
+
 2001-02-14  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* math_spaceinset.C: 
@@ -13,7 +22,7 @@
 	* math_accentinset.C: 
 	* math_sqrtinset.C: include LOstream.h and add using directive.
 
-2001-02-12  André Pönitz  <poenitz@htwm.de>
+2001-02-14  André Pönitz  <poenitz@htwm.de>
 
 	* math_iter.C: reformatting 
 
