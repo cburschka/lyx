@@ -46,7 +46,7 @@ struct Previews::Impl {
 
 
 Previews::Previews()
-	: pimpl_(new Impl())
+	: pimpl_(new Impl)
 {}
 
 

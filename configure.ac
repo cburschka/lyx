@@ -184,8 +184,8 @@ for frontend in $FRONTENDS ; do
 	  RPM_FRONTEND_DEPS='libforms >= 1.0'
 	  FRONTEND_INFO="${FRONTEND_INFO}\
   XForms Frontend:\n\
-      libXpm version:               ${XPM_VERSION}\n\
-      libforms version:             ${XFORMS_VERSION}\n"
+      libXpm version:\t\t${XPM_VERSION}\n\
+      libforms version:\t\t${XFORMS_VERSION}\n"
 	  ;;
   dnl   gnome)
   dnl     XFORMS_DO_IT_ALL
@@ -208,8 +208,10 @@ for frontend in $FRONTENDS ; do
 	  RPM_FRONTEND_DEPS='gtkmm >= 2.2.0'
 	  GTKMM_VERSION=`pkg-config --modversion gtkmm-2.0`
 	  LIBGLADEMM_VERSION=`pkg-config --modversion libglademm-2.0`
-	  FRONTEND_INFO="    libgtkmm version:             ${GTKMM_VERSION}\n\
-    libglademm version:           ${LIBGLADEMM_VERSION}\n"
+	  FRONTEND_INFO="${FRONTEND_INFO}\
+  GTK Frontend:\n\
+    libgtkmm version:\t\t${GTKMM_VERSION}\n\
+    libglademm version:\t\t${LIBGLADEMM_VERSION}\n"
 	  ;;
 
     qt)
@@ -220,7 +222,7 @@ for frontend in $FRONTENDS ; do
 	  RPM_FRONTEND_DEPS='qt >= 2.2.1'
 	  FRONTEND_INFO="${FRONTEND_INFO}\
   Qt Frontend:\n\
-      Qt version:                   ${QT_VERSION}\n"
+      Qt version:\t\t${QT_VERSION}\n"
       ;;
     *)
 	  LYX_ERROR(Unknown frontend '$frontend');;

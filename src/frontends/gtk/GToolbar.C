@@ -77,7 +77,7 @@ GToolbar::~GToolbar()
 
 void GToolbar::add(ToolbarBackend::Toolbar const & tb)
 {
-	Gtk::Toolbar * toolbar = manage(new Gtk::Toolbar());
+	Gtk::Toolbar * toolbar = manage(new Gtk::Toolbar);
 	ToolbarBackend::item_iterator it = tb.items.begin();
 	ToolbarBackend::item_iterator end = tb.items.end();
 	for (; it != end; ++it)

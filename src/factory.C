@@ -67,7 +67,7 @@ InsetOld * createInset(FuncRequest const & cmd)
 
 	switch (cmd.action) {
 	case LFUN_HFILL:
-		return new InsetHFill();
+		return new InsetHFill;
 
 	case LFUN_INSET_MINIPAGE:
 		return new InsetMinipage(params);

@@ -1,3 +1,9 @@
+2003-09-21  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* QContentPane.C (keyPressEvent): fix new bug
+
+	* LyXKeySymFactory.C (create): fix new bug
+
 2003-09-19  Angus Leeming  <leeming@lyx.org>
 
 	* QInclude.C: changes dues to the changed storage in InsetInclude,
@@ -48,7 +54,7 @@
 
 2003-09-15  Angus Leeming  <leeming@lyx.org>
 
-	* QAbout.C (build_dialog): 
+	* QAbout.C (build_dialog):
 	* QPrefs.C (apply): remove STRCONV.
 
 2003-09-09  Lars Gullik Bjønnes  <larsbj@lyx.org>

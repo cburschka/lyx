@@ -31,7 +31,7 @@ GView * GView::view_ = 0;
 GView::GView()
 {
 	view_ = this;
-	vbox_.reset(new Gtk::VBox());
+	vbox_.reset(new Gtk::VBox);
 	add(*vbox_.get());
 	menubar_.reset(new GMenubar(this, menubackend));
 	toolbar_.reset(new GToolbar(this, 0, 0));

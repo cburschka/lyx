@@ -1,3 +1,7 @@
+2003-09-21  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* factory.C (createInset): fix new bug
+
 2003-09-19  Angus Leeming  <leeming@lyx.org>
 
 	* CutAndPaste.C (pasteSelection): remove fudge used to set the
@@ -27,7 +31,7 @@
 	'*this' to the LaTeXFeatures ctor.
 
 2003-09-18  Angus Leeming  <leeming@lyx.org>
-	
+
 	* LColor.h:
 	* lyxfont.C:
 	* lyxfont.h:
@@ -84,10 +88,10 @@
 
 2003-09-16  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
-	* main.C: 
-	* lyx_main.C: 
-	* lyx_cb.C: 
-	* buffer.C: 
+	* main.C:
+	* lyx_main.C:
+	* lyx_cb.C:
+	* buffer.C:
 	* LaTeX.C: use namespace alias for lyx::support::os
 
 2003-09-16  Angus Leeming  <leeming@lyx.org>

@@ -91,7 +91,7 @@ XFormsToolbar::toolbarItem::operator=(toolbarItem const & ti)
 XFormsToolbar::XFormsToolbar(LyXView * o, int x, int y)
 	: owner_(static_cast<XFormsView *>(o)), combox_(0), xpos(x), ypos(y)
 {
-	tooltip_ = new Tooltips();
+	tooltip_ = new Tooltips;
 }
 
 

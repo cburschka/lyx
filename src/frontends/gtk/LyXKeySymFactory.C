@@ -20,7 +20,7 @@ namespace LyXKeySymFactory {
 
 LyXKeySym * create()
 {
-	return new GLyXKeySym();
+	return new GLyXKeySym;
 }
 
 

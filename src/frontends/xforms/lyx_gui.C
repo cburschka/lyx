@@ -174,7 +174,7 @@ void parse_init(int & argc, char * argv[])
 
 	XSetErrorHandler(LyX_XErrHandler);
 
-	lyxColorHandler.reset(new LyXColorHandler());
+	lyxColorHandler.reset(new LyXColorHandler);
 
 	using namespace lyx::graphics;
 

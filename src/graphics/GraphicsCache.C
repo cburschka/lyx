@@ -45,7 +45,7 @@ Cache & Cache::get()
 
 
 Cache::Cache()
-	: pimpl_(new Impl())
+	: pimpl_(new Impl)
 {}
 
 

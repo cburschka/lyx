@@ -229,10 +229,10 @@ int signedWidth(string const & s, LyXFont const & f)
 		return 0;
 	boost::scoped_array<wchar_t> wcs(new wchar_t[s.length() + 1]);
 	int len = mbstowcs(wcs.get(), s.c_str(), s.length());
-   	if (wcs[0] == '-')
-    		return width(wcs.get() + 1, len - 1, f);
-    	else
-    		return width(wcs.get(), len, f);
+	if (wcs[0] == '-')
+		return width(wcs.get() + 1, len - 1, f);
+	else
+		return width(wcs.get(), len, f);
 }
 
 
@@ -262,4 +262,3 @@ void buttonText(string const & str, LyXFont const & font,
 
 
 } // namespace font_metrics
-

@@ -52,7 +52,7 @@ FormBase::FormBase(string const & t, bool allowResize)
 	  warning_posted_(false), message_widget_(0),
 	  minw_(0), minh_(0), allow_resize_(allowResize),
 	  icon_pixmap_(0), icon_mask_(0),
-	  tooltips_(new Tooltips())
+	  tooltips_(new Tooltips)
 {}
 
 

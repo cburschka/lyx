@@ -93,7 +93,7 @@ void ControlDocument::apply()
 void ControlDocument::setParams()
 {
 	if (!bp_.get())
-		bp_.reset(new BufferParams());
+		bp_.reset(new BufferParams);
 
 	/// Set the buffer parameters
 	*bp_ = buffer()->params();
