@@ -16,7 +16,7 @@
 
 #include "xformsImage.h"
 #include "graphics/GraphicsParams.h"
-#include "LColor.h"
+#include "Color.h"
 #include "converter.h"              // formats
 #include "debug.h"
 #include "support/LAssert.h"
@@ -454,23 +454,13 @@ void init_graphics()
 }
 
 
-unsigned int packedcolor(LColor::color c)
+unsigned int packedcolor(LColor::color col)
 {
-	string const x11color = lcolor.getX11Name(c);
-
-	Display * display = fl_get_display();
-	Colormap cmap     = fl_state[fl_get_vclass()].colormap;
-	XColor xcol;
-	XColor ccol;
-	if (XLookupColor(display, cmap, x11color.c_str(), &xcol, &ccol) == 0)
-		// Unable to parse x11color.
+	unsigned int r, g, b;
+	bool const success = getRGBColor(col, r, g, b);
+	if (!success)
+		// Set to black on failure
 		return FL_PACK(255,255,255);
-
-	// Note that X stores the RGB values in the range 0 - 65535
-	// whilst we require them in the range 0 - 255.
-	unsigned int const r = xcol.red   / 256;
-	unsigned int const g = xcol.green / 256;
-	unsigned int const b = xcol.blue  / 256;
 
 	return FL_PACK(r, g, b);
 }

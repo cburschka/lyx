@@ -325,26 +325,20 @@ FuncStatus lyx_gui::getStatus(FuncRequest const & /*ev*/)
 
 string const lyx_gui::hexname(LColor::color col)
 {
-	string const name = lcolor.getX11Name(col);
-	Display * const display = fl_get_display();
-	Colormap const cmap = fl_state[fl_get_vclass()].colormap;
-	XColor xcol, ccol;
+	unsigned int r, g, b;
+	bool const success = getRGBColor(col, r, g, b);
+	if (!success) {
+		lyxerr << "X can't find color for \"" << lcolor.getLyXName(col)
+		       << '"' << endl;
+		return string();
+        }
 
-	if (XLookupColor(display, cmap, name.c_str(), &xcol, &ccol) == 0) {
-			lyxerr << "X can't find color \""
-			       << lcolor.getLyXName(col)
-			       << '"' << endl;
-			return string();
-	}
+        ostringstream os;
 
-	ostringstream os;
-
-	// Note that X stores the RGB values in the range 0 - 65535
-	// whilst we require them in the range 0 - 255.
 	os << setbase(16) << setfill('0')
-	   << setw(2) << (xcol.red   / 256)
-	   << setw(2) << (xcol.green / 256)
-	   << setw(2) << (xcol.blue  / 256);
+	   << setw(2) << r
+	   << setw(2) << g
+	   << setw(2) << b;
 
 	return STRCONV(os.str());
 }

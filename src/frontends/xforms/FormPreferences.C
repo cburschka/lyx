@@ -89,6 +89,18 @@ pair<string,string> parseFontName(string const & name)
 }
 
 
+string const X11hexname(RGBColor const & col)
+{
+	ostringstream ostr;
+
+	ostr << '#' << std::setbase(16) << setfill('0')
+	     << setw(2) << col.r
+	     << setw(2) << col.g
+	     << setw(2) << col.b;
+
+	return STRCONV(ostr.str());
+}
+
 } // namespace anon
 
 
@@ -635,7 +647,7 @@ void FormPreferences::Colors::InputHSV()
 	fl_redraw_object(dialog_->button_color);
 
 	col = HSVColor(hue, 1.0, 1.0);
-	col.r = max(col.r, 0);
+	col.r = max(col.r, 0u);
 	fl_mapcolor(GUI_COLOR_HUE_DIAL, col.r, col.g, col.b);
 	fl_redraw_object(dialog_->dial_hue);
 
@@ -755,32 +767,19 @@ void FormPreferences::Colors::LoadBrowserLyX()
 		    || lc == LColor::inherit
 		    || lc == LColor::ignore) continue;
 
-		string const name = lcolor.getX11Name(lc);
-		Display * display = fl_get_display();;
-		Colormap const colormap = fl_state[fl_get_vclass()].colormap;
-		XColor xcol, ccol;
-
-		if (XLookupColor(display, colormap, name.c_str(), &xcol, &ccol)
-		    == 0) {
+		RGBColor col;
+		bool const success = getRGBColor(lc, col.r, col.g, col.b);
+		if (!success) {
 			lyxerr << "FormPreferences::Colors::LoadBrowserLyX:\n"
 			       << "LColor " << lcolor.getLyXName(lc)
-			       << ": X can't find color \"" << name
+			       << ": X can't find color \""
+			       << lcolor.getX11Name(lc)
 			       << "\". Set to \"black\"!" << endl;
 
 			string const arg = lcolor.getLyXName(lc) + " black";
 			parent_.controller().setColor(lc, "black");
 			continue;
 		}
-
-		// X has found the color. Now find the "appropriate" X11 name
-		// for this color.
-
-		// Note that X stores the RGB values in the range 0 - 65535
-		// whilst we require them in the range 0 - 255.
-		RGBColor col;
-		col.r = xcol.red   / 256;
-		col.g = xcol.green / 256;
-		col.b = xcol.blue  / 256;
 
 		// Create a valid X11 name of the form "#rrggbb" and change the
 		// LColor X11name to this. Don't want to trigger a redraw,
@@ -878,7 +877,7 @@ void FormPreferences::Colors::SwitchColorSpace() const
 		fl_set_slider_value(dialog_->slider_value, hsv.v);
 
 		col = HSVColor(hsv.h, 1.0, 1.0);
-		col.r = max(col.r, 0);
+		col.r = max(col.r, 0u);
 		fl_mapcolor(GUI_COLOR_HUE_DIAL, col.r, col.g, col.b);
 		fl_redraw_object(dialog_->dial_hue);
 
@@ -914,18 +913,6 @@ void FormPreferences::Colors::SwitchColorSpace() const
 	}
 
 	fl_unfreeze_form(dialog_->form);
-}
-
-string const FormPreferences::Colors::X11hexname(RGBColor const & col) const
-{
-	ostringstream ostr;
-
-	ostr << '#' << std::setbase(16) << setfill('0')
-	     << setw(2) << col.r
-	     << setw(2) << col.g
-	     << setw(2) << col.b;
-
-	return STRCONV(ostr.str());
 }
 
 

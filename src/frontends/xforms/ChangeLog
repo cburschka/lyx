@@ -1,5 +1,19 @@
 2003-02-11  Angus Leeming  <leeming@lyx.org>
 
+	* xforms_helpers.[Ch] (fl_getmcolor): new function; a wrapper for the
+	xforms routine that accepts unsigned ints.
+
+	* Color.[Ch] (getRGBColor): factorise code into one place.
+
+	* FormPreferences.[Ch] (X11hexname: not a class member. Move to
+	namespace anon.
+
+	* FormPreferences.C: use fl_getmcolor and getRGBColor.
+	* lyx_gui.C: use getRGBColor.
+	* xformsImage.C: use getRGBColor.
+	
+2003-02-11  Angus Leeming  <leeming@lyx.org>
+
 	* bmtable.c: whitespace and indentation consistent with the other
 	files.
 

@@ -42,6 +42,19 @@ bool isActive(FL_OBJECT * ob)
 }
 
 
+// A wrapper for the xforms routine, but this one accepts uint args
+unsigned long fl_getmcolor(int i,
+			   unsigned int * r, unsigned int * g, unsigned int * b)
+{
+	int r2, g2, b2;
+	unsigned long ret_val = ::fl_getmcolor(i, &r2, &g2, &b2);
+	*r = r2;
+	*g = g2;
+	*b = b2;
+	return ret_val;
+}
+
+
 // Set an FL_OBJECT to activated or deactivated
 void setEnabled(FL_OBJECT * ob, bool enable)
 {

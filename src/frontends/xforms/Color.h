@@ -22,6 +22,13 @@
 #endif
 
 #include "LString.h"
+#include "LColor.h"
+
+/** Given col, fills r, g, b in the range 0-255.
+    The function returns true if successful.
+    It returns false on failure and sets r, g, b to 0. */
+bool getRGBColor(LColor::color col,
+		 unsigned int & r, unsigned int & g, unsigned int & b);
 
 struct RGBColor;
 
@@ -36,11 +43,11 @@ struct HSVColor {
 };
 
 struct RGBColor {
-	int r;
-	int g;
-	int b;
+	unsigned int r;
+	unsigned int g;
+	unsigned int b;
 	RGBColor() : r(0), g(0), b(0) {}
-	RGBColor(int red, int green, int blue)
+	RGBColor(unsigned int red, unsigned int green, unsigned int blue)
 		: r(red), g(green), b(blue) {}
 	RGBColor(HSVColor const &);
 };

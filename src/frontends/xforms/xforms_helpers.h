@@ -26,6 +26,10 @@
 
 class LyXLength;
 
+// A wrapper for the xforms routine, but this one accepts uint args
+unsigned long fl_getmcolor(int i, unsigned int * r, unsigned int * g,
+			   unsigned int * b);
+
 // what we always need for lengths
 string const choice_Length_All =
     "cm|mm|in|text%%|col%%|page%%|line%%|ex|em|pt|sp|bp|dd|pc|cc|mu";

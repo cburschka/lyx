@@ -129,8 +129,6 @@ private:
 		void Modify();
 		///
 		void SwitchColorSpace() const;
-		///
-		string const X11hexname(RGBColor const &) const;
 
 		///
 		FormPreferences & parent_;
