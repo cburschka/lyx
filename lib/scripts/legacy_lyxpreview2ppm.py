@@ -1,66 +1,71 @@
 #! /usr/bin/env python
+# -*- coding: iso-8859-1 -*-
 
 # file legacy_lyxpreview2ppm.py
 # This file is part of LyX, the document processor.
 # Licence details can be found in the file COPYING.
 
 # author Angus Leeming
-
 # Full author contact details are available in file CREDITS
 
-# This script converts a LaTeX file to a bunch of ppm files using the
-# deprecated dvi->ps->ppm conversion route.
+# with much advice from members of the preview-latex project:
+#   David Kastrup, dak@gnu.org and
+#   Jan-Åke Larsson, jalar@mai.liu.se.
+# and with much help testing the code under Windows from
+#   Paul A. Rubin, rubin@msu.edu.
 
+# This script takes a LaTeX file and generates a collection of
+# ppm image files, one per previewed snippet.
+# Example usage:
+# legacy_lyxpreview2bitmap.py 0lyxpreview.tex 128 ppm 000000 faf0e6
+
+# This script takes five arguments:
+# TEXFILE:       the name of the .tex file to be converted.
+# SCALEFACTOR:   a scale factor, used to ascertain the resolution of the
+#                generated image which is then passed to gs.
+# OUTPUTFORMAT:  the format of the output bitmap image files.
+#                This particular script can produce only "ppm" format output.
+# FG_COLOR:      the foreground color as a hexadecimal string, eg '000000'.
+# BG_COLOR:      the background color as a hexadecimal string, eg 'faf0e6'.
+
+# Decomposing TEXFILE's name as DIR/BASE.tex, this script will,
+# if executed successfully, leave in DIR:
+# * a (possibly large) number of image files with names
+#   like BASE[0-9]+.ppm
+# * a file BASE.metrics, containing info needed by LyX to position
+#   the images correctly on the screen.
+
+# The script uses several external programs and files:
+# * A latex executable;
+# * preview.sty;
+# * dvips;
+# * gs;
+# * pnmcrop (optional).
+
+# preview.sty is part of the preview-latex project
+#   http://preview-latex.sourceforge.net/
+# Alternatively, it can be obtained from
+#   CTAN/support/preview-latex/
+
+# The script uses the deprecated dvi->ps->ppm conversion route.
 # If possible, please grab 'dvipng'; it's faster and more robust.
-# This legacy support will be removed one day...
+# If you have it then this script will not be invoked by
+# lyxpreview2bitmap.py.
+# Warning: this legacy support will be removed one day...
 
-import glob, os, re, string, sys
-import pipes, tempfile
+import glob, os, pipes, re, string, sys
 
+from lyxpreview_tools import copyfileobj, error, find_exe, \
+     find_exe_or_terminate, mkstemp, run_command
 
-# Pre-compiled regular expressions.
+# Pre-compiled regular expression.
 latex_file_re = re.compile("\.tex$")
 
 
 def usage(prog_name):
-    return "Usage: %s <latex file> <dpi> <fg color> <bg color>\n"\
+    return "Usage: %s <latex file> <dpi> ppm <fg color> <bg color>\n"\
            "\twhere the colors are hexadecimal strings, eg 'faf0e6'"\
            % prog_name
-
-
-def error(message):
-    sys.stderr.write(message + '\n')
-    sys.exit(1)
-
-
-def find_exe(candidates, path):
-    for prog in candidates:
-        for directory in path:
-            if os.name == "nt":
-                full_path = os.path.join(directory, prog + ".exe")
-            else:
-                full_path = os.path.join(directory, prog)
-
-            if os.access(full_path, os.X_OK):
-                return full_path
-
-    return None
-
-
-def find_exe_or_terminate(candidates, path):
-    exe = find_exe(candidates, path)
-    if exe == None:
-        error("Unable to find executable from '%s'" % string.join(candidates))
-
-    return exe
-
-
-def run_command(cmd):
-    handle = os.popen(cmd, 'r')
-    cmd_stdout = handle.read()
-    cmd_status = handle.close()
-
-    return cmd_status, cmd_stdout
 
 
 def extract_metrics_info(log_file, metrics_file):
@@ -73,30 +78,37 @@ def extract_metrics_info(log_file, metrics_file):
     tp_descent = 0.0
 
     success = 0
-    for line in open(log_file, 'r').readlines():
-        match = log_re.match(line)
-        if match == None:
-            continue
+    try:
+        for line in open(log_file, 'r').readlines():
+            match = log_re.match(line)
+            if match == None:
+                continue
 
-        snippet = (match.group(1) == 'S')
-        success = 1
-        match = data_re.search(line)
-        if match == None:
-            error("Unexpected data in %s\n%s" % (log_file, line))
+            snippet = (match.group(1) == 'S')
+            success = 1
+            match = data_re.search(line)
+            if match == None:
+                error("Unexpected data in %s\n%s" % (log_file, line))
 
-        if snippet:
-            ascent  = string.atof(match.group(2)) + tp_ascent
-            descent = string.atof(match.group(3)) - tp_descent
+            if snippet:
+                ascent  = string.atof(match.group(2)) + tp_ascent
+                descent = string.atof(match.group(3)) - tp_descent
 
-            frac = 0.5
-            if abs(ascent + descent) > 0.1:
-                frac = ascent / (ascent + descent)
+                frac = 0.5
+                if abs(ascent + descent) > 0.1:
+                    frac = ascent / (ascent + descent)
 
-                metrics.write("Snippet %s %f\n" % (match.group(1), frac))
+                    metrics.write("Snippet %s %f\n" % (match.group(1), frac))
 
-        else:
-            tp_descent = string.atof(match.group(2))
-            tp_ascent  = string.atof(match.group(4))
+            else:
+                tp_descent = string.atof(match.group(2))
+                tp_ascent  = string.atof(match.group(4))
+
+    except:
+        # Unable to open the file, but do nothing here because
+        # the calling function will act on the value of 'success'.
+        warning('Warning in extract_metrics_info! Unable to open "%s"' % log_file)
+        warning(`sys.exc_type` + ',' + `sys.exc_value`)
 
     return success
 
@@ -112,101 +124,40 @@ def extract_resolution(log_file, dpi):
 
     # Default values
     magnification = 1000.0
-    fontsize = 0.0
+    fontsize = 10.0
 
-    for line in open(log_file, 'r').readlines():
-        if found_fontsize and found_magnification:
-            break
+    try:
+        for line in open(log_file, 'r').readlines():
+            if found_fontsize and found_magnification:
+                break
 
-        if not found_fontsize:
-            match = fontsize_re.match(line)
-            if match != None:
-                match = extract_decimal_re.search(line)
-                if match == None:
-                    error("Unable to parse: %s" % line)
-                fontsize = string.atof(match.group(1))
-                found_fontsize = 1
-                continue
+            if not found_fontsize:
+                match = fontsize_re.match(line)
+                if match != None:
+                    match = extract_decimal_re.search(line)
+                    if match == None:
+                        error("Unable to parse: %s" % line)
+                    fontsize = string.atof(match.group(1))
+                    found_fontsize = 1
+                    continue
 
-        if not found_magnification:
-            match = magnification_re.match(line)
-            if match != None:
-                match = extract_integer_re.search(line)
-                if match == None:
-                    error("Unable to parse: %s" % line)
-                magnification = string.atof(match.group(1))
-                found_magnification = 1
-                continue
+            if not found_magnification:
+                match = magnification_re.match(line)
+                if match != None:
+                    match = extract_integer_re.search(line)
+                    if match == None:
+                        error("Unable to parse: %s" % line)
+                    magnification = string.atof(match.group(1))
+                    found_magnification = 1
+                    continue
 
+    except:
+        warning('Warning in extract_resolution! Unable to open "%s"' % log_file)
+        warning(`sys.exc_type` + ',' + `sys.exc_value`)
+
+    # This is safe because both fontsize and magnification have
+    # non-zero default values.
     return dpi * (10.0 / fontsize) * (1000.0 / magnification)
-
-    
-def get_version_info():
-    version_re = re.compile("([0-9])\.([0-9])")
-
-    match = version_re.match(sys.version)
-    if match == None:
-        error("Unable to extract version info from 'sys.version'")
-
-    return string.atoi(match.group(1)), string.atoi(match.group(2))
-
-
-def copyfileobj(fsrc, fdst, rewind=0, length=16*1024):
-    """copy data from file-like object fsrc to file-like object fdst"""
-    if rewind:
-        fsrc.flush()
-        fsrc.seek(0)
-
-    while 1:
-        buf = fsrc.read(length)
-        if not buf:
-            break
-        fdst.write(buf)
-
-
-class TempFile:
-    """clone of tempfile.TemporaryFile to use with python < 2.0."""
-    # Cache the unlinker so we don't get spurious errors at shutdown
-    # when the module-level "os" is None'd out.  Note that this must
-    # be referenced as self.unlink, because the name TempFile
-    # may also get None'd out before __del__ is called.
-    unlink = os.unlink
-
-    def __init__(self):
-        self.filename = tempfile.mktemp()
-        self.file = open(self.filename,"w+b")
-        self.close_called = 0
-
-    def close(self):
-        if not self.close_called:
-            self.close_called = 1
-            self.file.close()
-            self.unlink(self.filename)
-
-    def __del__(self):
-        self.close()
-
-    def read(self, size = -1):
-        return self.file.read(size)
-
-    def write(self, line):
-        return self.file.write(line)
-
-    def seek(self, offset):
-        return self.file.seek(offset)
-
-    def flush(self):
-        return self.file.flush()
-
-
-def mkstemp():
-    """create a secure temporary file and return its object-like file"""
-    major, minor = get_version_info()
-
-    if major >= 2 and minor >= 0:
-        return tempfile.TemporaryFile()
-    else:
-        return TempFile()
 
 
 def legacy_latex_file(latex_file, fg_color, bg_color):
@@ -215,19 +166,26 @@ def legacy_latex_file(latex_file, fg_color, bg_color):
     tmp = mkstemp()
 
     success = 0
-    for line in open(latex_file, 'r').readlines():
-        match = use_preview_re.match(line)
-        if match == None:
-            tmp.write(line)
-            continue
+    try:
+        for line in open(latex_file, 'r').readlines():
+            match = use_preview_re.match(line)
+            if match == None:
+                tmp.write(line)
+                continue
 
-        success = 1
-        tmp.write("%s,dvips,tightpage%s\n\n" \
-                  "\\AtBeginDocument{\\AtBeginDvi{%%\n" \
-                  "\\special{!userdict begin/bop-hook{//bop-hook exec\n" \
-                  "<%s%s>{255 div}forall setrgbcolor\n" \
-                  "clippath fill setrgbcolor}bind def end}}}\n" \
-                  % (match.group(1), match.group(2), fg_color, bg_color))
+            success = 1
+            tmp.write("%s,dvips,tightpage%s\n\n" \
+                      "\\AtBeginDocument{\\AtBeginDvi{%%\n" \
+                      "\\special{!userdict begin/bop-hook{//bop-hook exec\n" \
+                      "<%s%s>{255 div}forall setrgbcolor\n" \
+                      "clippath fill setrgbcolor}bind def end}}}\n" \
+                      % (match.group(1), match.group(2), fg_color, bg_color))
+
+    except:
+        # Unable to open the file, but do nothing here because
+        # the calling function will act on the value of 'success'.
+        warning('Warning in legacy_latex_file! Unable to open "%s"' % latex_file)
+        warning(`sys.exc_type` + ',' + `sys.exc_value`)
 
     if success:
         copyfileobj(tmp, open(latex_file,"wb"), 1)
@@ -237,8 +195,8 @@ def legacy_latex_file(latex_file, fg_color, bg_color):
 
 def crop_files(pnmcrop, basename):
     t = pipes.Template()
-    t.append("%s -left" % pnmcrop, '--')
-    t.append("%s -right" % pnmcrop, '--')
+    t.append('"%s" -left' % pnmcrop, '--')
+    t.append('"%s" -right' % pnmcrop, '--')
 
     for file in glob.glob("%s*.ppm" % basename):
         tmp = mkstemp()
@@ -253,13 +211,16 @@ def legacy_conversion(argv):
     if len(argv) != 6:
         error(usage(argv[0]))
 
-    # Ignore argv[1]
-
-    dir, latex_file = os.path.split(argv[2])
+    dir, latex_file = os.path.split(argv[1])
     if len(dir) != 0:
         os.chdir(dir)
 
-    dpi = string.atoi(argv[3])
+    dpi = string.atoi(argv[2])
+
+    output_format = argv[3]
+    if output_format != "ppm":
+        error("This script will generate ppm format images only.")
+
     fg_color = argv[4]
     bg_color = argv[5]
 
@@ -275,7 +236,7 @@ def legacy_conversion(argv):
         error("Unable to move color info into the latex file")
 
     # Compile the latex file.
-    latex_call = "%s %s" % (latex, latex_file)
+    latex_call = '"%s" "%s"' % (latex, latex_file)
 
     latex_status, latex_stdout = run_command(latex_call)
     if latex_status != None:
@@ -286,8 +247,8 @@ def legacy_conversion(argv):
     dvi_file = latex_file_re.sub(".dvi", latex_file)
     ps_file  = latex_file_re.sub(".ps",  latex_file)
 
-    dvips_call = "%s -o %s %s" % (dvips, ps_file, dvi_file)
-    
+    dvips_call = '"%s" -o "%s" "%s"' % (dvips, ps_file, dvi_file)
+
     dvips_status, dvips_stdout = run_command(dvips_call)
     if dvips_status != None:
         error("Failed: %s %s" % (os.path.basename(dvips), dvi_file))
@@ -303,10 +264,10 @@ def legacy_conversion(argv):
         alpha = 2
 
     # Generate the bitmap images
-    gs_call = "%s -dNOPAUSE -dBATCH -dSAFER -sDEVICE=pnmraw " \
-              "-sOutputFile=%s%%d.ppm " \
-              "-dGraphicsAlphaBit=%d -dTextAlphaBits=%d " \
-              "-r%f %s" \
+    gs_call = '"%s" -dNOPAUSE -dBATCH -dSAFER -sDEVICE=pnmraw ' \
+              '-sOutputFile="%s%%d.ppm" ' \
+              '-dGraphicsAlphaBit=%d -dTextAlphaBits=%d ' \
+              '-r%f "%s"' \
               % (gs, latex_file_re.sub("", latex_file), \
                  alpha, alpha, resolution, ps_file)
 
@@ -324,3 +285,7 @@ def legacy_conversion(argv):
         error("Failed to extract metrics info from %s" % log_file)
 
     return 0
+
+
+if __name__ == "__main__":
+    legacy_conversion(sys.argv)

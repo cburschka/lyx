@@ -31,9 +31,10 @@
 # lyxpreview2bitmap.py png 0lyxpreview.tex 128 000000 faf0e6
 
 # This script takes five arguments:
-# FORMAT:   either 'png' or 'ppm'. The desired output format.
+# FORMAT:   The desired output format. Either 'png' or 'ppm'.
 # TEXFILE:  the name of the .tex file to be converted.
-# DPI:      a scale factor, passed to dvipng.
+# DPI:      a scale factor, used to ascertain the resolution of the
+#           generated image which is then passed to gs.
 # FG_COLOR: the foreground color as a hexadecimal string, eg '000000'.
 # BG_COLOR: the background color as a hexadecimal string, eg 'faf0e6'.
 
@@ -45,7 +46,11 @@
 #   the images correctly on the screen.
 
 import glob, os, re, string, sys
+
 from legacy_lyxpreview2ppm import legacy_conversion
+
+from lyxpreview_tools import error, find_exe, \
+     find_exe_or_terminate, run_command
 
 
 # Pre-compiled regular expressions.
@@ -54,44 +59,9 @@ latex_file_re = re.compile("\.tex$")
 
 
 def usage(prog_name):
-    return "Usage: %s <latex file> <dpi> <fg color> <bg color>\n"\
+    return "Usage: %s <format> <latex file> <dpi> <fg color> <bg color>\n"\
            "\twhere the colors are hexadecimal strings, eg 'faf0e6'"\
            % prog_name
-
-
-def error(message):
-    sys.stderr.write(message + '\n')
-    sys.exit(1)
-
-
-def find_exe(candidates, path):
-    for prog in candidates:
-        for directory in path:
-            if os.name == "nt":
-                full_path = os.path.join(directory, prog + ".exe")
-            else:
-                full_path = os.path.join(directory, prog)
-
-            if os.access(full_path, os.X_OK):
-                return full_path
-
-    return None
-
-
-def find_exe_or_terminate(candidates, path):
-    exe = find_exe(candidates, path)
-    if exe == None:
-        error("Unable to find executable from '%s'" % string.join(candidates))
-
-    return exe
-
-
-def run_command(cmd):
-    handle = os.popen(cmd, 'r')
-    cmd_stdout = handle.read()
-    cmd_status = handle.close()
-
-    return cmd_status, cmd_stdout
 
 
 def make_texcolor(hexcolor):
@@ -137,7 +107,7 @@ def convert_to_ppm_format(pngtopnm, basename):
     for png_file in glob.glob("%s*.png" % basename):
         ppm_file = png_file_re.sub(".ppm", png_file)
 
-        p2p_cmd = "%s %s" % (pngtopnm, png_file)
+        p2p_cmd = "'%s' '%s'" % (pngtopnm, png_file)
         p2p_status, p2p_stdout = run_command(p2p_cmd)
         if p2p_status != None:
             error("Unable to convert %s to ppm format" % png_file)
@@ -170,7 +140,11 @@ def main(argv):
     dvipng = find_exe(["dvipng"], path)
     if dvipng == None:
         if output_format == "ppm":
-            return legacy_conversion(argv)
+            # The data is input to legacy_conversion in as similar
+            # as possible a manner to that input to the code used in
+            # LyX 1.3.x.
+            vec = [ argv[0], argv[2], argv[3], argv[1], argv[4], argv[5] ]
+            return legacy_conversion(vec)
         else:
             error("The old 'dvi->ps->ppm' conversion requires "
                   "ppm as the output format")
@@ -180,7 +154,7 @@ def main(argv):
         pngtopnm = find_exe_or_terminate(["pngtopnm"], path)
 
     # Compile the latex file.
-    latex_call = "%s %s" % (latex, latex_file)
+    latex_call = "'%s' '%s'" % (latex, latex_file)
 
     latex_status, latex_stdout = run_command(latex_call)
     if latex_status != None:
@@ -189,7 +163,7 @@ def main(argv):
 
     # Run the dvi file through dvipng.
     dvi_file = latex_file_re.sub(".dvi", latex_file)
-    dvipng_call = "%s -Ttight -depth -height -D %d -fg '%s' -bg '%s' %s" \
+    dvipng_call = "'%s' -Ttight -depth -height -D %d -fg '%s' -bg '%s' '%s'" \
                   % (dvipng, dpi, fg_color, bg_color, dvi_file)
 
     dvipng_status, dvipng_stdout = run_command(dvipng_call)
@@ -207,6 +181,7 @@ def main(argv):
         convert_to_ppm_format(pngtopnm, latex_file_re.sub("", latex_file))
 
     return 0
+
 
 if __name__ == "__main__":
     main(sys.argv)
