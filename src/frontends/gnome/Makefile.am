@@ -22,6 +22,8 @@ libgnome_la_LIBADD = \
 	../xforms/FormMathsMatrix.lo \
 	../xforms/FormMathsPanel.lo \
 	../xforms/FormMathsSpace.lo \
+	../xforms/DropDown.lo \
+	../xforms/Alert_pimpl.lo \
 	@LYX_LIBS@ @FRONTEND_LDFLAGS@ @FRONTEND_LIBS@
 
 #	../xforms/FileDialog.lo \

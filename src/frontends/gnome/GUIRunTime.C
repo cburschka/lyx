@@ -154,3 +154,10 @@ int GUIRunTime::x11VisualDepth()
 {
 	return fl_get_visual_depth();
 }
+
+float GUIRunTime::getScreenDPI()
+{
+	Screen * scr = ScreenOfDisplay(fl_get_display(), fl_screen);
+	return ((HeightOfScreen(scr) * 25.4 / HeightMMOfScreen(scr)) +
+		(WidthOfScreen(scr) * 25.4 / WidthMMOfScreen(scr))) / 2;
+}

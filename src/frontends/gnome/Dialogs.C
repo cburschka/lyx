@@ -17,6 +17,7 @@
 #include "gettext.h"
 
 #include "Dialogs.h"
+#include "BufferView.h"
 #include "gnomeBC.h"
 
 #include "ControlBibitem.h"
