@@ -36,7 +36,8 @@ extern int mathed_char_height(short, int, byte, int&, int&);
 
 // the builtin memcpy() is broken in egcs and gcc 2.95.x on alpha
 // stations. We provide a hand-made version instead. 
-inline void my_memcpy( void * ps_in, const void * pt_in, size_t n )
+inline
+void my_memcpy( void * ps_in, const void * pt_in, size_t n )
 {
     char * ps = static_cast<char *>(ps_in);
     char const * pt = static_cast<char const *>(pt_in);

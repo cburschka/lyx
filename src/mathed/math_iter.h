@@ -191,9 +191,11 @@ class MathedXIter: public MathedIter {
     ///
     void Adjust();
     ///
-    inline void GetPos(int&, int&);
+    inline
+    void GetPos(int&, int&);
     ///
-    inline void GetIncPos(int&, int&);
+    inline
+    void GetIncPos(int&, int&);
     ///
     byte* GetString(int&);
     ///

@@ -8,7 +8,9 @@
 
 #ifdef ENABLE_ASSERTIONS
 
-template<class A> inline void Assert(A assertion)
+template<class A>
+inline
+void Assert(A assertion)
 {
 	if (!assertion) {
 		lyx::abort();
@@ -17,7 +19,9 @@ template<class A> inline void Assert(A assertion)
 
 #else
 
-template<class A> inline void Assert(A /*assertion*/) {}
+template<class A>
+inline
+void Assert(A /*assertion*/) {}
 
 #endif /* ENABLE_ASSERTIONS */
 

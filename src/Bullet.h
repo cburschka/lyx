@@ -141,7 +141,8 @@ private:
 
 /*----------------Inline Bullet Member Functions------------------*/
 
-inline Bullet::Bullet(string const & t) 
+inline
+Bullet::Bullet(string const & t) 
 	:  font(MIN), character(MIN), size(MIN), user_text(1), text(t)
 {
 #ifdef ENABLE_ASSERTIONS
@@ -150,7 +151,8 @@ inline Bullet::Bullet(string const & t)
 }
 
 
-inline void Bullet::setCharacter(int c)
+inline
+void Bullet::setCharacter(int c)
 {
 	if (c < MIN || c >= CHARMAX) {
 		character = MIN;
@@ -164,7 +166,8 @@ inline void Bullet::setCharacter(int c)
 }
 
 
-inline void Bullet::setFont(int f)
+inline
+void Bullet::setFont(int f)
 {
 	if (f < MIN || f >= FONTMAX) {
 		font = MIN;
@@ -178,7 +181,8 @@ inline void Bullet::setFont(int f)
 }
 
 
-inline void Bullet::setSize(int s)
+inline
+void Bullet::setSize(int s)
 {
 	if (s < MIN || s >= SIZEMAX) {
 		size = MIN;
@@ -192,7 +196,8 @@ inline void Bullet::setSize(int s)
 }
 
 
-inline void Bullet::setText(string const & t)
+inline
+void Bullet::setText(string const & t)
 {
 	font = character = size = MIN;
 	user_text = 1;
@@ -203,31 +208,36 @@ inline void Bullet::setText(string const & t)
 }
 
 
-inline int Bullet::getCharacter() const
+inline
+int Bullet::getCharacter() const
 {
 	return character;
 }
 
 
-inline int Bullet::getFont() const
+inline
+int Bullet::getFont() const
 {
 	return font;
 }
 
 
-inline int Bullet::getSize() const
+inline
+int Bullet::getSize() const
 {
 	return size;
 }
 
 
-inline string Bullet::getText() const
+inline
+string Bullet::getText() const
 {
 	return text;
 }
 
 
-inline Bullet & Bullet::operator=(Bullet const & b)
+inline
+Bullet & Bullet::operator=(Bullet const & b)
 {
 #ifdef ENABLE_ASSERTIONS
 	b.testInvariant();
@@ -244,7 +254,8 @@ inline Bullet & Bullet::operator=(Bullet const & b)
 }
 
 
-inline char const * Bullet::c_str() const
+inline
+char const * Bullet::c_str() const
 {
 	return this->getText().c_str();
 }

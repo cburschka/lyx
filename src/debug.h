@@ -77,7 +77,8 @@ struct Debug {
 
 
 ///
-inline void operator|= (Debug::type & d1, Debug::type d2)
+inline
+void operator|= (Debug::type & d1, Debug::type d2)
 {
 	d1 = static_cast<Debug::type>(d1 | d2);
 }

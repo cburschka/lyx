@@ -1,3 +1,16 @@
+2000-03-06  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/mathed/math_inset.h (Write(ostream & os): add a space at the
+	end. This fixes a bug. 
+
+	* src/mathed (all files concerned with file writing): apply the
+	USE_OSTREAM_ONLY changes to mathed too.
+	
+	* src/support/DebugStream.h: make the constructor explicit.
+
+	* src/lyxfont.C (latexWriteStartChanges): small bug related to
+	count and ostream squashed.
+
 2000-03-06  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/support/Makefile.am (libsupport_la_SOURCES): add lyxmanip.h.

@@ -1441,7 +1441,8 @@ void MenuLayoutCharacter()
 }
 
 
-inline void DeactivateParagraphButtons ()
+inline
+void DeactivateParagraphButtons ()
 {
 	fl_deactivate_object (fd_form_paragraph->button_ok);
 	fl_deactivate_object (fd_form_paragraph->button_apply);
@@ -1450,7 +1451,8 @@ inline void DeactivateParagraphButtons ()
 }
 
 
-inline void ActivateParagraphButtons ()
+inline
+void ActivateParagraphButtons ()
 {
 	fl_activate_object (fd_form_paragraph->button_ok);
 	fl_activate_object (fd_form_paragraph->button_apply);
@@ -1459,7 +1461,8 @@ inline void ActivateParagraphButtons ()
 }
 
 
-inline void DisableParagraphLayout ()
+inline
+void DisableParagraphLayout ()
 {
         DeactivateParagraphButtons();
 	fl_deactivate_object (fd_form_paragraph->input_labelwidth);
@@ -1482,7 +1485,8 @@ inline void DisableParagraphLayout ()
 }
 
 
-inline void EnableParagraphLayout ()
+inline
+void EnableParagraphLayout ()
 {
         ActivateParagraphButtons();
 	fl_activate_object (fd_form_paragraph->input_labelwidth);

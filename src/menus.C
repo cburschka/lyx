@@ -127,7 +127,8 @@ Menus::Menus(LyXView * view, int air)
 }
 
 
-inline BufferView * Menus::currentView() 
+inline
+BufferView * Menus::currentView() 
 {
 	return _view->view(); 
 }

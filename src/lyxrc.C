@@ -140,7 +140,8 @@ enum LyXRCTags {
 };
 
 
-static keyword_item lyxrcTags[] = {
+static
+keyword_item lyxrcTags[] = {
 	{ "\\accept_compound", RC_ACCEPT_COMPOUND },
 	{ "\\alternate_language", RC_ALT_LANG },
 	{ "\\ascii_linelen", RC_ASCII_LINELEN },

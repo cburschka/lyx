@@ -693,8 +693,8 @@ int LyXFont::latexWriteStartChanges(ostream & os, LyXFont const & base,
 	if (f.family() != INHERIT_FAMILY) {
 		os << '\\'
 		   << LaTeXFamilyNames[f.family()]
-		   << '{'
-		   << LaTeXFamilyNames[f.family()].length() + 2;
+		   << '{';
+		count += LaTeXFamilyNames[f.family()].length() + 2;
 		env = true; //We have opened a new environment
 	}
 	if (f.series() != INHERIT_SERIES) {

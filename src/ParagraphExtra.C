@@ -18,7 +18,8 @@ extern FD_form_paragraph_extra * fd_form_paragraph_extra;
 extern BufferView * current_view;
 static bool CheckInputWidth();
 
-inline void DeactivateParagraphExtraButtons ()
+inline
+void DeactivateParagraphExtraButtons ()
 {
 	fl_deactivate_object(fd_form_paragraph_extra->button_ok);
 	fl_deactivate_object(fd_form_paragraph_extra->button_apply);
@@ -26,7 +27,8 @@ inline void DeactivateParagraphExtraButtons ()
 	fl_set_object_lcol(fd_form_paragraph_extra->button_apply, FL_INACTIVE);
 }
 
-inline void ActivateParagraphExtraButtons ()
+inline
+void ActivateParagraphExtraButtons ()
 {
 	fl_activate_object(fd_form_paragraph_extra->button_ok);
 	fl_activate_object(fd_form_paragraph_extra->button_apply);
@@ -34,7 +36,8 @@ inline void ActivateParagraphExtraButtons ()
 	fl_set_object_lcol(fd_form_paragraph_extra->button_apply, FL_BLACK);
 }
 
-inline void DisableParagraphExtra ()
+inline
+void DisableParagraphExtra ()
 {
         DeactivateParagraphExtraButtons();
 	fl_deactivate_object(fd_form_paragraph_extra->input_pextra_width);
@@ -52,7 +55,8 @@ inline void DisableParagraphExtra ()
 	fl_deactivate_object(fd_form_paragraph_extra->radio_pextra_startmp);
 }	
 
-inline void EnableParagraphExtra ()
+inline
+void EnableParagraphExtra ()
 {
         ActivateParagraphExtraButtons();
 	fl_activate_object(fd_form_paragraph_extra->input_pextra_width);
@@ -278,7 +282,8 @@ void CheckPExtraOptCB(FL_OBJECT * ob, long)
 }
 
 
-static bool CheckInputWidth()
+static
+bool CheckInputWidth()
 {
 	string s1 = fl_get_input(fd_form_paragraph_extra->input_pextra_width);
 	string s2 = fl_get_input(fd_form_paragraph_extra->input_pextra_widthp);

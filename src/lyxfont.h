@@ -441,37 +441,43 @@ private:
 
 ostream & operator<<(ostream &, LyXFont::FONT_MISC_STATE);
 
-inline LyXFont::LyXFont()
+inline
+LyXFont::LyXFont()
 {
 	bits = sane;
 }
 
 
-inline LyXFont::LyXFont(LyXFont const & x)
+inline
+LyXFont::LyXFont(LyXFont const & x)
 {
 	bits = x.bits;
 }
 
 
-inline LyXFont::LyXFont(LyXFont::FONT_INIT1)
+inline
+LyXFont::LyXFont(LyXFont::FONT_INIT1)
 {
 	bits = inherit;
 }
 
 
-inline LyXFont::LyXFont(LyXFont::FONT_INIT2)
+inline
+LyXFont::LyXFont(LyXFont::FONT_INIT2)
 {
 	bits = ignore;
 }
 
 
-inline LyXFont::LyXFont(LyXFont::FONT_INIT3)
+inline
+LyXFont::LyXFont(LyXFont::FONT_INIT3)
 {
 	bits = sane;
 }
 
 
-inline LyXFont & LyXFont::operator=(LyXFont const & x) 
+inline
+LyXFont & LyXFont::operator=(LyXFont const & x) 
 {
 	bits = x.bits;
 	return *this;

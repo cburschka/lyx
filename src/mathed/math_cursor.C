@@ -33,13 +33,15 @@
 
 static LyxArrayBase * selarray = 0;
 
-inline bool IsAlpha(char c)
+inline
+bool IsAlpha(char c)
 {
    return ('A' <= c  && c <= 'Z' || 'a' <= c  && c <= 'z');
 }
 
 // This was very smaller, I'll change it later 
-inline bool IsMacro(short tok, int id)
+inline
+bool IsMacro(short tok, int id)
 {
    return (tok != LM_TK_STACK && tok != LM_TK_FRAC && tok != LM_TK_SQRT
 	   && tok != LM_TK_WIDE
@@ -51,7 +53,8 @@ inline bool IsMacro(short tok, int id)
 
 
 // Yes, mathed isn't using string yet.
-inline char * strnew(char const * s)
+inline
+char * strnew(char const * s)
 {
     char * s1 = new char[strlen(s)+1];
     strcpy(s1, s);

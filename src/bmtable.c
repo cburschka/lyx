@@ -68,7 +68,8 @@ FL_OBJECT *fl_add_bmtable(int type, FL_Coord x, FL_Coord y,
 }
 
 
-static void draw_bitmaptable(FL_OBJECT *ob)
+static
+void draw_bitmaptable(FL_OBJECT *ob)
 {
 	int i, j, lx;
 	FL_Coord mx, my;

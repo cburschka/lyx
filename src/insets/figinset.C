@@ -1942,7 +1942,8 @@ void InsetFig::CallbackFig(long arg)
 }
 
 
-inline void DisableFigurePanel(FD_Figure * const form)
+inline
+void DisableFigurePanel(FD_Figure * const form)
 {
         fl_deactivate_object(form->EpsFile);
 	fl_deactivate_object(form->Browse);
@@ -1978,7 +1979,8 @@ inline void DisableFigurePanel(FD_Figure * const form)
 }
 
 
-inline void EnableFigurePanel(FD_Figure * const form)
+inline
+void EnableFigurePanel(FD_Figure * const form)
 {
         fl_activate_object(form->EpsFile);
 	fl_activate_object(form->Browse);

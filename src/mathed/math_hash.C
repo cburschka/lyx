@@ -16,7 +16,8 @@
 #define MAX_HASH_VALUE 490
 /* maximum key range = 483, duplicates = 40 */
 
-static unsigned int
+static
+unsigned int
 math_hash (register char const *str, register int len)
 {
   static unsigned short asso_values[] = 
@@ -38,7 +39,8 @@ math_hash (register char const *str, register int len)
   return len + asso_values[str[len - 1]] + asso_values[str[0]];
 }
 
-static latexkeys wordlist[] = 
+static
+latexkeys wordlist[] = 
 {
       {"",0,0}, {"",0,0}, {"",0,0}, {"",0,0}, {"",0,0}, {"",0,0}, {"",0,0}, {"",0,0}, 
       {"setminus",  LM_TK_SYM, LM_setminus},

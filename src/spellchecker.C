@@ -63,7 +63,7 @@ enum {
 
 static bool RunSpellChecker(BufferView * bv);
 
-static FILE *in, *out;  /* streams to communicate with ispell */
+static FILE * in, * out;  /* streams to communicate with ispell */
 pid_t isp_pid = -1; // pid for the `ispell' process. Also used (RO) in
                     // lyx_cb.C
 
@@ -468,8 +468,8 @@ isp_result *ispell_check_word(char *word)
 }
 
 
-static
-inline void ispell_terminate()
+static inline
+void ispell_terminate()
 {
         // Note: If you decide to optimize this out when it is not 
         // needed please note that when Aspell is used this command 
@@ -483,15 +483,15 @@ inline void ispell_terminate()
 }
 
 
-static
-inline void ispell_terse_mode()
+static inline
+void ispell_terse_mode()
 {
 	fputs("!\n", out); // Set terse mode (silently accept correct words)
 }
 
 
-static
-inline void ispell_insert_word(char const *word)
+static inline
+void ispell_insert_word(char const *word)
 {
 	fputc('*', out); // Insert word in personal dictionary
 	fputs(word, out);
@@ -499,16 +499,16 @@ inline void ispell_insert_word(char const *word)
 }
 
 
-static
-inline void ispell_accept_word(char const *word) 
+static inline
+void ispell_accept_word(char const *word) 
 {
 	fputc('@', out); // Accept in this session
 	fputs(word, out);
 	fputc('\n', out);
 }
 
-static
-inline void ispell_store_replacement(char const *mis, string const & cor) {
+static inline
+void ispell_store_replacement(char const *mis, string const & cor) {
         if(actual_spell_checker == ASC_ASPELL) {
                 fputs("$$ra ", out);
                 fputs(mis, out);

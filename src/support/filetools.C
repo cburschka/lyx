@@ -989,7 +989,8 @@ bool LyXReadLink(string const & File, string & Link)
 
 
 typedef pair<int, string> cmdret;
-static cmdret do_popen(string const & cmd)
+static
+cmdret do_popen(string const & cmd)
 {
 	// One question is if we should use popen or
 	// create our own popen based on fork, exec, pipe

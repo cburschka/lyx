@@ -1348,7 +1348,8 @@ void LyXText::SetParagraphExtraOpt(int type,
 }
 
 
-static char const * alphaCounter(int n) {
+static
+char const * alphaCounter(int n) {
 	static char result[2];
 	result[1] = 0;
 	if (n == 0)

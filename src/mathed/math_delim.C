@@ -225,14 +225,15 @@ static struct math_deco_struct {
 };
 
 
-inline int odd(int x) { return ((x) & 1); }
+inline
+int odd(int x) { return ((x) & 1); }
 
 typedef float matriz_data[2][2];
 
 const matriz_data MATIDEN= { {1, 0}, {0, 1}};
 
 extern int mathed_char_width(short type, int style, byte c);
-extern int mathed_char_height(short, int, byte, int&, int&);
+extern int mathed_char_height(short, int, byte, int &, int &);
 
 #define mateq(m1, m2)  memcpy(m1, m2, sizeof(matriz_data))
 
@@ -241,11 +242,11 @@ class Matriz {
    Matriz() { mateq(m, MATIDEN); }
    void rota(int);
    void escala(float, float);
-   void transf(float, float, float&, float&);
+   void transf(float, float, float &, float &);
    
  protected:
    matriz_data m;
-   void matmat(matriz_data& a);
+   void matmat(matriz_data & a);
 };
 
 
@@ -271,20 +272,20 @@ void Matriz::escala(float x, float y)
 }
 
 
-void Matriz::matmat(matriz_data& a)
+void Matriz::matmat(matriz_data & a)
 {
    matriz_data c;   
    for (int i = 0;i < 2; ++i) {
-      c[0][i] = a[0][0]*m[0][i] + a[0][1]*m[1][i];
-      c[1][i] = a[1][0]*m[0][i] + a[1][1]*m[1][i];
+      c[0][i] = a[0][0] * m[0][i] + a[0][1] * m[1][i];
+      c[1][i] = a[1][0] * m[0][i] + a[1][1] * m[1][i];
    }
    mateq(m, c);
 }
 
-void Matriz::transf(float xp, float yp, float &x, float &y)
+void Matriz::transf(float xp, float yp, float & x, float & y)
 {
-   x = m[0][0]*xp + m[0][1]*yp;
-   y = m[1][0]*xp + m[1][1]*yp;
+   x = m[0][0] * xp + m[0][1] * yp;
+   y = m[1][0] * xp + m[1][1] * yp;
 }
 
 
@@ -293,7 +294,7 @@ int search_deco(int code)
 {
    int i = 0;
    
-   while (math_deco_table[i].code &&  math_deco_table[i].code!= code) ++i;
+   while (math_deco_table[i].code &&  math_deco_table[i].code != code) ++i;
    if (!math_deco_table[i].code) i = -1;
    return i;
 }
@@ -311,7 +312,8 @@ void mathed_draw_deco(Painter & pain, int x, int y, int w, int h, int code)
 	int r = math_deco_table[j].angle;
 	float * d = math_deco_table[j].data;
 	
-	if (h > 70 && (math_deco_table[j].code == int('(') || math_deco_table[j].code == int(')')))
+	if (h > 70 && (math_deco_table[j].code == int('(')
+		       || math_deco_table[j].code == int(')')))
 		d = parenthHigh;
 	
 	mt.rota(r);

@@ -307,17 +307,17 @@ int InsetFormula::Latex(ostream & os, signed char fragile) const
     int ret = 0;      
 //#warning Alejandro, the number of lines is not returned in this case
 // This problem will disapear at 0.13.
-    string output;
 #ifdef USE_OSTREAM_ONLY
     if (fragile < 0)
-	    par->Write(output);
+	    par->Write(os);
     else
-	    mathed_write(par, output, &ret, fragile, label.c_str());
+	    mathed_write(par, os, &ret, fragile, label.c_str());
     
 #else
+    string output;
     InsetFormula::Latex(output, fragile);
-#endif
     os << output;
+#endif
     return ret;
 }
 

@@ -33,6 +33,7 @@
 
 class Painter;
 
+#define USE_OSTREAM_ONLY 1
 
 ///
 enum math_align {
@@ -233,8 +234,10 @@ class MathedInset  {
     /// Write LaTeX and Lyx code
     virtual void Write(ostream &) = 0;
 
+#ifndef USE_OSTREAM_ONLY
     /// Write LaTeX and Lyx code
     virtual void Write(string & file) = 0;
+#endif
    
     /// Reproduces itself
     virtual MathedInset * Clone() = 0;
@@ -333,8 +336,11 @@ class MathParInset: public MathedInset  {
     /// Write LaTeX code
     virtual void Write(ostream &);
 
+#ifndef USE_OSTREAM_ONLY
     /// Write LaTeX code
     virtual void Write(string & file);
+#endif
+	
     ///
     virtual void Metrics();
     ///
@@ -490,8 +496,12 @@ class MathMatrixInset: public MathParInset {
     void draw(Painter &, int, int);
     ///
     void Write(ostream &);
+	
+#ifndef USE_OSTREAM_ONLY
     ///
     void Write(string & file);
+#endif
+	
     ///
     void Metrics();
     ///
@@ -541,9 +551,12 @@ LyxArrayBase * mathed_parse(unsigned flags, LyxArrayBase * data,
 void mathed_write(MathParInset *, ostream &, int *, char fragile,
 		  char const * label = 0);
 
+#ifndef USE_OSTREAM_ONLY
 ///
 void mathed_write(MathParInset *, string &, int *, char fragile,
 		  char const * label = 0);
+#endif
+
 ///
 void mathed_parser_file(istream &, int);
 ///
@@ -553,67 +566,77 @@ int MathedLookupBOP(short);
 
 /************************ Inline functions ********************************/
 ///
-inline bool MathIsInset(short x)
+inline
+bool MathIsInset(short x)
 {
 	return LM_TC_INSET <= x && x <= LM_TC_ACTIVE_INSET;
 }
 
 ///
-inline bool MathIsFont(short x)
+inline
+bool MathIsFont(short x)
 {
 	return LM_TC_CONST <= x && x <= LM_TC_BSYM;
 }
 
 ///
-inline bool MathIsAlphaFont(short x)
+inline
+bool MathIsAlphaFont(short x)
 {
 	return LM_TC_VAR <= x && x <= LM_TC_TEXTRM;
 }
 
 ///
-inline bool MathIsActive(short x)
+inline
+bool MathIsActive(short x)
 {
 	return LM_TC_INSET < x && x <= LM_TC_ACTIVE_INSET;
 }
 
 ///
-inline bool MathIsUp(short x)
+inline
+bool MathIsUp(short x)
 {
 	return x == LM_TC_UP;
 }
 
 ///
-inline bool MathIsDown(short x)
+inline
+bool MathIsDown(short x)
 {
 	return x == LM_TC_DOWN;
 }
 
 ///
-inline bool MathIsScript(short x)
+inline
+bool MathIsScript(short x)
 {
 	return x == LM_TC_DOWN || x == LM_TC_UP;
 }
 
 ///
-inline bool MathIsBOPS(short x)
+inline
+bool MathIsBOPS(short x)
 {
 	return MathedLookupBOP(x) > LMB_NONE;
 }
 
 
 ///
-inline bool MathIsBinary(short x)
+inline
+bool MathIsBinary(short x)
 {
     return x == LM_TC_BOP || x == LM_TC_BOPS;
 }
 
 ///
-inline bool MathIsSymbol(short x) {
+inline
+bool MathIsSymbol(short x) {
     return LM_TC_SYMB <= x && x <= LM_TC_BSYM;
 }
      
 
-inline 
+inline
 MathedInset::MathedInset(char const * nm, short ot, short st):
   name(nm), objtype(ot), size(st) 
 {

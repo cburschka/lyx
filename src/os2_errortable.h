@@ -87,7 +87,8 @@ static unsigned char const errno_tab[] =
   EACCES, EACCES, EACCES, ENOENT, ENOMEM   /* 330..334 */
 };
 
-inline int TranslateOS2Error(unsigned long rc)
+inline
+int TranslateOS2Error(unsigned long rc)
 {
 	if (rc >= sizeof (errno_tab))
 		return EINVAL;

@@ -85,7 +85,8 @@ enum LyXAlignment {
 };
 
 
-inline void operator|=(LyXAlignment & la1, LyXAlignment la2) {
+inline
+void operator|=(LyXAlignment & la1, LyXAlignment la2) {
 	la1 = static_cast<LyXAlignment>(la1 | la2);
 }
 
@@ -485,14 +486,16 @@ private:
 
 
 ///
-inline void operator|=(LyXTextClass::Provides & p1, LyXTextClass::Provides p2)
+inline
+void operator|=(LyXTextClass::Provides & p1, LyXTextClass::Provides p2)
 {
 	p1 = static_cast<LyXTextClass::Provides>(p1 | p2);
 }
 
 
 ///
-inline ostream & operator<<(ostream & os, LyXTextClass::PageSides p)
+inline
+ostream & operator<<(ostream & os, LyXTextClass::PageSides p)
 {
 	switch (p) {
 	case LyXTextClass::OneSide:

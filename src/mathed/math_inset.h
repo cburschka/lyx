@@ -47,8 +47,10 @@ public:
 	void draw(Painter &, int, int);
 	///
 	void Write(ostream &);
+#ifndef USE_OSTREAM_ONLY
 	///
 	void Write(string & file);
+#endif
 	///
 	void Metrics();
 	///
@@ -78,8 +80,10 @@ public:
 	void draw(Painter &, int, int);
 	///
 	void Write(ostream &);
+#ifndef USE_OSTREAM_ONLY
 	///
 	void Write(string & file);
+#endif
 	///
 	void Metrics();
 	///
@@ -110,8 +114,10 @@ public:
 	void draw(Painter &, int, int);
 	///
 	void Write(ostream &);
+#ifndef USE_OSTREAM_ONLY
 	///
 	void Write(string & file);
+#endif
 	///
 	void Metrics();
 protected:
@@ -131,8 +137,10 @@ public:
 	void draw(Painter &, int, int);
 	///
 	void Write(ostream &);
+#ifndef USE_OSTREAM_ONLY
 	///
 	void Write(string & file);
+#endif
 	///
 	inline void Metrics();
 	///
@@ -156,8 +164,10 @@ public:
 	void draw(Painter &, int, int);
 	///
 	void Write(ostream &);
+#ifndef USE_OSTREAM_ONLY
 	///
 	void Write(string & file);
+#endif
 	///
 	void Metrics();
 	///
@@ -185,8 +195,10 @@ public:
 	void draw(Painter &, int x, int baseline);
 	///
 	void Write(ostream &);
+#ifndef USE_OSTREAM_ONLY
 	///
 	void Write(string & file);
+#endif
 	///
 	void Metrics();
 	///
@@ -210,8 +222,10 @@ public:
 	void draw(Painter &, int x, int baseline);
 	///
 	void Write(ostream &);
+#ifndef USE_OSTREAM_ONLY
 	///
 	void Write(string & file);
+#endif
 	///
 	void Metrics();
 	
@@ -258,8 +272,10 @@ public:
 	void draw(Painter &, int, int);
 	///
 	void Write(ostream &);
+#ifndef USE_OSTREAM_ONLY
 	///
 	void Write(string & file);
+#endif
 	///
 	void Metrics();
 protected:
@@ -281,8 +297,10 @@ public:
 	void draw(Painter &, int, int);
 	///
 	void Write(ostream &);
+#ifndef USE_OSTREAM_ONLY
 	///
 	void Write(string & file);
+#endif
 	///
 	void Metrics();
 	///
@@ -317,10 +335,11 @@ bool MathFuncInset::GetLimits() const
 inline
 void MathFuncInset::Write(ostream & os)
 {
-	os << "\\" << name;
+	os << "\\" << name << ' ';
 }
 
 
+#ifndef USE_OSTREAM_ONLY
 inline
 void MathFuncInset::Write(string & file)
 {
@@ -328,6 +347,7 @@ void MathFuncInset::Write(string & file)
    file += name;
    file += ' ';
 }
+#endif
 
 
 inline

@@ -158,12 +158,55 @@ void MathMacro::SetFocus(int x, int y)
 
 void MathMacro::Write(ostream & os)
 {
+#ifdef USE_OSTREAM_ONLY
+    if (tmplate->flags & MMF_Exp) {
+	    lyxerr[Debug::MATHED] << "Expand " << tmplate->flags
+				  << ' ' << MMF_Exp << endl; 
+	tmplate->update(this);
+	tmplate->Write(os);
+    } else {
+	if (tmplate->flags & MMF_Env) {
+		os << "\\begin{"
+		   << name
+		   << "} ";
+	} else {
+		os << '\\' << name;
+	}
+//	if (options) { 
+//	  file += '[';
+//	  file += options;
+//	  file += ']';
+//      }
+	
+	if (!(tmplate->flags & MMF_Env) && nargs > 0) 
+		os << '{';
+	
+	for (int i = 0; i < nargs; ++i) {
+	    array = args[i].array;
+	    MathParInset::Write(os);
+	    if (i < nargs - 1)  
+		    os << "}{";
+	}   
+	if (tmplate->flags & MMF_Env) {
+		os << "\\end{"
+		   << name
+		   << '}';
+	} else {
+	    if (nargs > 0) 
+		    os << '}';
+	    else
+		    os << ' ';
+	}
+    }
+#else
    string output;
    MathMacro::Write(output);
    os << output;
+#endif
 }
 
 
+#ifndef USE_OSTREAM_ONLY
 void MathMacro::Write(string &file)
 {
     if (tmplate->flags & MMF_Exp) {
@@ -207,7 +250,7 @@ void MathMacro::Write(string &file)
 	}
     }
 }
-
+#endif
 
 
 /*---------------  Macro argument -----------------------------------*/
@@ -247,12 +290,21 @@ void MathMacroArgument::Metrics()
 
 void MathMacroArgument::Write(ostream & os)
 {
+#ifdef USE_OSTREAM_ONLY
+    if (expnd_mode) {
+	MathParInset::Write(os);
+    } else {
+	    os << '#' << number << ' ';
+    }
+#else
    string output;
    MathMacroArgument::Write(output);
    os << output;
+#endif
 }
 
 
+#ifndef USE_OSTREAM_ONLY
 void MathMacroArgument::Write(string & file)
 {
     if (expnd_mode) {
@@ -263,6 +315,7 @@ void MathMacroArgument::Write(string & file)
 	file += ' ';
     }
 }
+#endif
 
 
 /* --------------------- MathMacroTemplate ---------------------------*/
@@ -386,6 +439,7 @@ void MathMacroTemplate::WriteDef(ostream & os)
 }
 
 
+#ifndef USE_OSTREAM_ONLY
 void MathMacroTemplate::WriteDef(string & file)
 {
     file += "\n\\newcommand{\\";
@@ -406,6 +460,7 @@ void MathMacroTemplate::WriteDef(string & file)
     Write(file); 
     file += "}\n";
 }
+#endif
 
 
 void MathMacroTemplate::setArgument(LyxArrayBase * a, int i)
@@ -439,7 +494,7 @@ void MathMacroTemplate::SetMacroFocus(int &idx, int x, int y)
 
 /* -------------------------- MathMacroTable -----------------------*/
 
-MathMacroTable::MathMacroTable(int n): max_macros(n)
+MathMacroTable::MathMacroTable(int n) : max_macros(n)
 {
     macro_table = new MathMacroTemplateP[max_macros];
     num_macros = 0;

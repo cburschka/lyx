@@ -20,7 +20,8 @@ extern FD_form_paper * fd_form_paper;
 extern BufferView * current_view;
 
 
-inline void DeactivatePaperButtons ()
+inline
+void DeactivatePaperButtons ()
 {
 	fl_deactivate_object (fd_form_paper->button_ok);
 	fl_deactivate_object (fd_form_paper->button_apply);
@@ -29,7 +30,8 @@ inline void DeactivatePaperButtons ()
 }
 
 
-inline void ActivatePaperButtons ()
+inline
+void ActivatePaperButtons ()
 {
 	fl_activate_object (fd_form_paper->button_ok);
 	fl_activate_object (fd_form_paper->button_apply);
@@ -38,7 +40,8 @@ inline void ActivatePaperButtons ()
 }
 
 
-inline void DisablePaperLayout()
+inline
+void DisablePaperLayout()
 {
         DeactivatePaperButtons();
         fl_deactivate_object (fd_form_paper->choice_paperpackage);
@@ -60,7 +63,8 @@ inline void DisablePaperLayout()
 }
 
 
-inline void EnablePaperLayout()
+inline
+void EnablePaperLayout()
 {
         ActivatePaperButtons();
         fl_activate_object (fd_form_paper->choice_paperpackage);
@@ -82,7 +86,8 @@ inline void EnablePaperLayout()
 }
 
 
-static void checkMarginValues()
+static
+void checkMarginValues()
 {
 	int allEmpty;
     

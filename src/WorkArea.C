@@ -203,6 +203,13 @@ WorkArea::~WorkArea()
 }
 
 
+bool WorkArea::belowMouse() const
+{
+	lyxerr << "Below mouse: " << work_area->belowmouse << endl;
+	return work_area->belowmouse;
+}
+
+
 void WorkArea::resize(int xpos, int ypos, int width, int height)
 {
 	fl_freeze_all_forms();

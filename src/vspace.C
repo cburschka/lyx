@@ -55,17 +55,20 @@ static LyXLength::UNIT unit[4]   = { LyXLength::UNIT_NONE,
 //static int number_index, unit_index;
 int number_index, unit_index;
 
-static inline void lyx_advance (string & data, unsigned int n)
+static inline
+void lyx_advance (string & data, unsigned int n)
 {
 	data.erase(0, n);
 }
 
-static inline bool isEndOfData (string const & data)
+static inline
+bool isEndOfData (string const & data)
 {
 	return frontStrip (data).empty();
 }
 
-static char nextToken (string & data)
+static
+char nextToken (string & data)
 {
 	data = frontStrip(data);
 	if (data.empty())

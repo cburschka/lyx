@@ -35,7 +35,7 @@ class MathMacroTemplate;
 /// This class contains the data for a macro
 class MathMacro : public MathParInset
 {
- public:
+public:
     /// A macro can only be builded from an existing template
     MathMacro(MathMacroTemplate *);
     /// or from another macro.
@@ -50,8 +50,10 @@ class MathMacro : public MathParInset
     MathedInset * Clone();
 	///
     void Write(ostream &);
+#ifndef USE_OSTREAM_ONLY
 	///
     void Write(string &);
+#endif
 	///
     bool setArgumentIdx(int);
 	///
@@ -75,7 +77,7 @@ class MathMacro : public MathParInset
 	///
     bool Permit(short);
     
- private:
+private:
 	///
 	MathMacroTemplate * tmplate;
 	///
@@ -102,9 +104,8 @@ class MathMacro : public MathParInset
 
 
 /// An argument
-class MathMacroArgument: public MathParInset
-{
- public:
+class MathMacroArgument: public MathParInset {
+public:
     ///
     MathMacroArgument() { expnd_mode = false; number = 1;  SetType(LM_OT_MACRO_ARG); }
     ///
@@ -119,8 +120,10 @@ class MathMacroArgument: public MathParInset
     void draw(Painter &, int x, int baseline);
 	///
     void Write(ostream &);
+#ifndef USE_OSTREAM_ONLY
 	///
     void Write(string &);
+#endif
     ///
     void setNumber(int n) { number = n; }
     /// Is expanded or not
@@ -128,7 +131,7 @@ class MathMacroArgument: public MathParInset
     /// Is expanded or not
     bool getExpand() { return expnd_mode; }
     
- private:
+private:
 	///
     bool expnd_mode;
 	///
@@ -137,9 +140,8 @@ class MathMacroArgument: public MathParInset
 
 
 /// This class contains the macro definition
-class MathMacroTemplate: public MathParInset
-{
- public:
+class MathMacroTemplate: public MathParInset {
+public:
     /// A template constructor needs all the data
     MathMacroTemplate(char const *, int na = 0, int f = 0);
 	///
@@ -150,8 +152,10 @@ class MathMacroTemplate: public MathParInset
     void Metrics();
 	///
     void WriteDef(ostream &);
+#ifndef USE_OSTREAM_ONLY
 	///
-    void WriteDef(string &); 
+    void WriteDef(string &);
+#endif
     /// useful for special insets
     void  setTCode(MathedTextCodes t) { tcode = t; }
     ///
@@ -172,7 +176,7 @@ class MathMacroTemplate: public MathParInset
     /// Replace the appropriate arguments with a specific macro's data
     void update(MathMacro * m = 0);
       
- private:
+private:
     ///
     short flags;
     ///
@@ -192,9 +196,8 @@ typedef MathMacro * MathMacroP;
 typedef MathMacroTemplate * MathMacroTemplateP;
 
 ///
-class MathMacroTable 
-{
- public:
+class MathMacroTable {
+public:
 	///
     MathMacroTable(int);
 	///
@@ -212,7 +215,7 @@ class MathMacroTable
 	///
     static bool built;
     
- private:
+private:
 	///
     const int max_macros;
 	///
@@ -264,10 +267,10 @@ void MathMacro::SetData(LyxArrayBase * a)
 
 inline 
 MathMacro * MathMacroTable::getMacro(char const * name) const
- {
-     MathMacroTemplate * mt = getTemplate(name);
-     return (mt) ? new MathMacro(mt): 0;
- }
+{
+	MathMacroTemplate * mt = getTemplate(name);
+	return (mt) ? new MathMacro(mt): 0;
+}
 
 
 #endif

@@ -85,7 +85,7 @@ struct Debug {
 class DebugStream : public ostream {
 public:
 	/// Constructor, sets the debug level to t.
-	DebugStream(Debug::type t = Debug::NONE);
+	explicit DebugStream(Debug::type t = Debug::NONE);
 	
 	/// Constructor, sets the log file to f, and the debug level to t.
 	DebugStream(char const * f, Debug::type t = Debug::NONE);

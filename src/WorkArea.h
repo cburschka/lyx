@@ -60,7 +60,7 @@ public:
 	///
 	bool active() const { return work_area->active; }
 	///
-	bool belowMouse() const { return work_area->belowmouse; }
+	bool belowMouse() const;
 	///
 	bool visible() const { return work_area->form->visible; }
 	///

@@ -98,14 +98,16 @@ char * strnew(char const * s)
 }
 
 
-static void mathPrintError(char const * msg) 
+static
+void mathPrintError(char const * msg) 
 {
 	lyxerr << "Line ~" << yylineno << ": Math parse error: "
 	       << msg << endl;
 }
 
 
-static void LexInitCodes()
+static
+void LexInitCodes()
 {
    for (int i = 0;  i <= 255; ++i)     {
      if (isalpha(i)) lexcode[i] = LexAlpha;
@@ -134,7 +136,8 @@ static void LexInitCodes()
 }
 
 
-static char LexGetArg(char lf, bool accept_spaces= false)
+static
+char LexGetArg(char lf, bool accept_spaces= false)
 {
 	char rg;
 	char * p = &yytext[0];
@@ -170,7 +173,8 @@ static char LexGetArg(char lf, bool accept_spaces= false)
 }
 
 
-static int yylex(void)
+static
+int yylex(void)
 {
    static int init_done = 0;
    unsigned char c;
