@@ -292,7 +292,9 @@ void InsetText::draw(BufferView * bv, LyXFont const & f,
 		return;
 
 	if (top_x != int(x)) {
-		if ((getMaxWidth(bv, this) > 0) && (TEXT(bv)->width != old_max_width)){
+		if ((getMaxWidth(bv, this) > 0) &&
+			(TEXT(bv)->width != old_max_width))
+		{
 			resizeLyXText(bv);
 			need_update |= FULL;
 			old_max_width = TEXT(bv)->width;
@@ -330,12 +332,6 @@ void InsetText::draw(BufferView * bv, LyXFont const & f,
 	}
 	x += TEXT_TO_INSET_OFFSET;
 
-#ifdef WITH_WARNINGS
-#warning Jürgen, why is this a block of its own? (Lgb)
-#warning because you told me to define variables only in local context (Jug)!
-#warning then make it a function/method of its own. (Lgb)
-#endif
-	{
 	int y = 0;
 	Row * row = TEXT(bv)->GetRowNearY(y);
 	int y_offset = baseline - row->ascent_of_text();
@@ -379,7 +375,7 @@ void InsetText::draw(BufferView * bv, LyXFont const & f,
 		bv->screen()->Update(TEXT(bv), bv, y_offset, int(x));
 		locked = true;
 	}
-	}
+
 	TEXT(bv)->refresh_y = 0;
 	TEXT(bv)->status = LyXText::UNCHANGED;
 	if ((need_update != CURSOR_PAR) &&
