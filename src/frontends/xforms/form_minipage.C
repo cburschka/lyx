@@ -34,7 +34,8 @@ FD_form_minipage * FormMinipage::build_minipage()
   fdui->input_width = obj = fl_add_input(FL_NORMAL_INPUT, 30, 30, 110, 30, "");
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
-  fdui->choice_width_units = obj = fl_add_choice(FL_NORMAL_CHOICE2, 150, 30, 60, 30, "");
+  fdui->choice_width_units = obj = fl_add_choice(FL_NORMAL_CHOICE, 150, 30, 60, 30, "");
+    fl_set_object_boxtype(obj, FL_FRAME_BOX);
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
 
   fdui->group_alignment = fl_bgn_group();

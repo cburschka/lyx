@@ -86,9 +86,9 @@ argument: 0
 
 --------------------
 class: FL_CHOICE
-type: NORMAL_CHOICE2
+type: NORMAL_CHOICE
 box: 150 30 60 30
-boxtype: FL_UP_BOX
+boxtype: FL_FRAME_BOX
 colors: FL_COL1 FL_BLACK
 alignment: FL_ALIGN_LEFT
 style: FL_NORMAL_STYLE

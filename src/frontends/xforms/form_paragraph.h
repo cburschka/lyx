@@ -41,6 +41,8 @@ struct FD_form_paragraph {
 	FL_OBJECT *button_apply;
 	FL_OBJECT *button_cancel;
 	FL_OBJECT *text_warning;
+	FL_OBJECT *choice_value_space_above;
+	FL_OBJECT *choice_value_space_below;
 };
 
 #endif /* FD_form_paragraph_h_ */

@@ -30,6 +30,7 @@
 #include "Spacing.h"
 #include "ParagraphParameters.h"
 #include "input_validators.h"
+#include "helper_funcs.h"
 
 using Liason::setMinibuffer;
 using SigC::slot;
@@ -119,6 +120,21 @@ void FormParagraph::build()
     fl_set_input_return(dialog_->input_labelwidth, FL_RETURN_CHANGED);
     fl_set_input_return(dialog_->input_linespacing, FL_RETURN_CHANGED);
     fl_set_input_filter(dialog_->input_linespacing, fl_unsigned_float_filter);
+    fl_set_input_filter(dialog_->input_space_above, fl_unsigned_float_filter);
+    fl_set_input_filter(dialog_->input_space_below, fl_unsigned_float_filter);
+
+    // Create the contents of the unit choices
+    // Don't include the "%" terms...
+    std::vector<string> units_vec = getLatexUnits();
+    for (std::vector<string>::iterator it = units_vec.begin();
+       it != units_vec.end(); ++it) {
+       if (contains(*it, "%"))
+               it = units_vec.erase(it, it+1) - 1;
+    }
+    string units = getStringFromVector(units_vec, "|");
+
+    fl_addto_choice(dialog_->choice_value_space_above,  units.c_str());
+    fl_addto_choice(dialog_->choice_value_space_below, units.c_str());
 
     // Manage the ok, apply, restore and cancel/close buttons
     bc_.setOK(dialog_->button_ok);
@@ -196,10 +212,16 @@ void FormParagraph::apply()
 	space_top = VSpace(VSpace::VFILL);
 	break;
     case 7:
+    {
+	    string const length =
+		    getLengthFromWidgets(dialog_->input_space_above,
+					 dialog_->choice_value_space_above);
 	space_top =
-		VSpace(LyXGlueLength(fl_get_input(dialog_->input_space_above)));
+		VSpace(LyXGlueLength(length));
 	break;
     }
+    }
+
     if (fl_get_button (dialog_->check_space_above))
 	space_top.setKeep (true);
     switch (fl_get_choice (dialog_->choice_space_below)) {
@@ -359,6 +381,7 @@ void FormParagraph::update()
     fl_set_input (dialog_->input_space_above, "");
 
     setEnabled(dialog_->input_space_above, false);
+    setEnabled(dialog_->choice_value_space_above, false);
     switch (par_->params().spaceTop().kind()) {
     case VSpace::NONE:
 	fl_set_choice (dialog_->choice_space_above, 1);
@@ -379,11 +402,16 @@ void FormParagraph::update()
 	fl_set_choice (dialog_->choice_space_above, 6);
 	break;
     case VSpace::LENGTH:
-	setEnabled(dialog_->input_space_above, true);
-	fl_set_choice (dialog_->choice_space_above, 7);
-	fl_set_input(dialog_->input_space_above, par_->
-		     params().spaceTop().length().asString().c_str());
-	break;
+    {
+	    setEnabled(dialog_->input_space_above, true);
+	    setEnabled(dialog_->choice_value_space_above, true);
+	    string const default_unit = "cm";
+	    string const length = par_->params().spaceTop().length().asString();
+	    updateWidgetsFromLengthString(dialog_->input_space_above,
+					  dialog_->choice_value_space_above,
+					  length, default_unit);
+	    break;
+    }
     }
     
     fl_set_button (dialog_->check_space_above,
@@ -391,6 +419,7 @@ void FormParagraph::update()
     fl_set_input (dialog_->input_space_below, "");
 
     setEnabled(dialog_->input_space_below, false);
+    setEnabled(dialog_->choice_value_space_below, false);
     switch (par_->params().spaceBottom().kind()) {
     case VSpace::NONE:
 	fl_set_choice (dialog_->choice_space_below, 1);
@@ -411,12 +440,19 @@ void FormParagraph::update()
 	fl_set_choice (dialog_->choice_space_below, 6);
 	break;
     case VSpace::LENGTH:
-        setEnabled(dialog_->input_space_below, true);
-	fl_set_choice (dialog_->choice_space_below, 7);
-        fl_set_input(dialog_->input_space_below, par_->
-		     params().spaceBottom().length().asString().c_str());
-	break;
+    {
+	    setEnabled(dialog_->input_space_below, true);
+	    setEnabled(dialog_->choice_value_space_below, true);
+	    string const default_unit = "cm";
+	    string const length =
+		    par_->params().spaceBottom().length().asString();
+	    updateWidgetsFromLengthString(dialog_->input_space_below,
+					  dialog_->choice_value_space_below,
+					  length, default_unit);
+	    break;
     }
+    }
+
     fl_set_button(dialog_->check_space_below,
 		   par_->params().spaceBottom().keep());
     fl_set_button(dialog_->check_noindent,
@@ -440,16 +476,28 @@ bool FormParagraph::input(FL_OBJECT * ob, long)
         if (fl_get_choice (dialog_->choice_space_above) != 7) {
             fl_set_input (dialog_->input_space_above, "");
             setEnabled (dialog_->input_space_above, false);
+           setEnabled (dialog_->choice_value_space_above, false);
         } else {
             setEnabled (dialog_->input_space_above, !lv_->buffer()->isReadonly());
+           setEnabled (dialog_->choice_value_space_above, !lv_->buffer()->isReadonly());
+           int const default_unit = 8;
+           if (strip(fl_get_input(dialog_->input_space_above)).empty())
+                       fl_set_choice(dialog_->choice_value_space_above,
+                                     default_unit);
         }
     }
     if (ob == dialog_->choice_space_below) {
         if (fl_get_choice (dialog_->choice_space_below) != 7) {
             fl_set_input (dialog_->input_space_below, "");
             setEnabled (dialog_->input_space_below, false);
+           setEnabled (dialog_->choice_value_space_below, false);
         } else {
             setEnabled (dialog_->input_space_below, !lv_->buffer()->isReadonly());
+           setEnabled (dialog_->choice_value_space_below, !lv_->buffer()->isReadonly());
+           int const default_unit = 8;
+           if (strip(fl_get_input(dialog_->input_space_below)).empty())
+                       fl_set_choice(dialog_->choice_value_space_below,
+                                     default_unit);
         }
     }
  
@@ -458,38 +506,6 @@ bool FormParagraph::input(FL_OBJECT * ob, long)
     else {
         setEnabled (dialog_->input_linespacing, false);
         fl_set_input (dialog_->input_linespacing, "");
-    }
-
-    string input = fl_get_input (dialog_->input_space_above);
-	
-    if (fl_get_choice(dialog_->choice_space_above)==7 &&
-        input.empty() || !isValidGlueLength(input))
-        valid = false;
-
-    if (ob == dialog_->input_space_above) {
-        if (!isValidGlueLength(input)) {
-            fl_set_object_label(dialog_->text_warning,
-                _("Warning: Invalid Length (valid example: 10mm)"));
-            fl_show_object(dialog_->text_warning);
-            valid = false;
-        } else
-            fl_hide_object(dialog_->text_warning);
-    }
-
-    input = fl_get_input (dialog_->input_space_below);
-
-    if (fl_get_choice(dialog_->choice_space_below)==7 &&
-        input.empty() || !isValidGlueLength(input))
-        valid = false;
-
-    if (ob == dialog_->input_space_below) {
-        if (!isValidGlueLength(input)) {
-            fl_set_object_label(dialog_->text_warning,
-                _("Warning: Invalid Length (valid example: 10mm)"));
-            fl_show_object(dialog_->text_warning);
-            valid = false;
-        } else
-            fl_hide_object(dialog_->text_warning);
     }
 
     double spacing(strToDbl(fl_get_input(dialog_->input_linespacing)));
