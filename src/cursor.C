@@ -58,6 +58,110 @@ using std::isalpha;
 using std::min;
 using std::swap;
 
+namespace {
+
+	bool positionable
+		(DocIterator const & cursor, DocIterator const & anchor)
+	{
+		// avoid deeper nested insets when selecting
+		if (cursor.size() > anchor.size())
+			return false;
+
+		// anchor might be deeper, should have same path then
+		for (size_t i = 0; i < cursor.size(); ++i)
+			if (&cursor[i].inset() != &anchor[i].inset())
+				return false;
+
+		// position should be ok.
+		return true;
+	}
+
+
+	// Find position closest to (x, y) in cell given by iter.
+	DocIterator bruteFind2(LCursor const & c, int x, int y)
+	{
+		double best_dist = 1e10;
+
+		DocIterator result;
+
+		DocIterator it = c;
+		it.back().pos() = 0;
+		DocIterator et = c;
+		et.back().pos() = et.back().asMathInset()->cell(et.back().idx()).size();
+		for (int i = 0; ; ++i) {
+			int xo, yo;
+			LCursor cur = c;
+			cur.setCursor(it, false);
+			cur.inset().getCursorPos(cur, xo, yo);
+			double d = (x - xo) * (x - xo) + (y - yo) * (y - yo);
+			// '<=' in order to take the last possible position
+			// this is important for clicking behind \sum in e.g. '\sum_i a'
+			lyxerr << "i: " << i << " d: " << d << " best: " << best_dist << endl;
+			if (d <= best_dist) {
+				best_dist = d;
+				result = it;
+			}
+			if (it == et)
+				break;
+			it.forwardPos();
+		}
+		return result;
+	}
+
+
+	/// moves position closest to (x, y) in given box
+	bool bruteFind(LCursor & cursor,
+		int x, int y, int xlow, int xhigh, int ylow, int yhigh)
+	{
+		BOOST_ASSERT(!cursor.empty());
+		par_type beg, end;
+		CursorSlice bottom = cursor[0];
+		LyXText * text = bottom.text();
+		BOOST_ASSERT(text);
+		getParsInRange(text->paragraphs(), ylow, yhigh, beg, end);
+
+		DocIterator it = doc_iterator_begin(cursor.bv().buffer()->inset());
+		DocIterator et = doc_iterator_end(cursor.bv().buffer()->inset());
+		//lyxerr << "x: " << x << " y: " << y << endl;
+		//lyxerr << "xlow: " << xlow << " ylow: " << ylow << endl;
+		//lyxerr << "xhigh: " << xhigh << " yhigh: " << yhigh << endl;
+
+		it.par() = beg;
+		//et.par() = text->parOffset(end);
+
+		double best_dist = 10e10;
+		DocIterator best_cursor = it;
+
+		for ( ; it != et; it.forwardPos()) {
+			// avoid invalid nesting when selecting
+			if (!cursor.selection() || positionable(it, cursor.anchor_)) {
+				int xo = 0, yo = 0;
+				LCursor cur = cursor;
+				cur.setCursor(it, false);
+				cur.inset().getCursorPos(cur, xo, yo);
+				if (xlow <= xo && xo <= xhigh && ylow <= yo && yo <= yhigh) {
+					double d = (x - xo) * (x - xo) + (y - yo) * (y - yo);
+					//lyxerr << "xo: " << xo << " yo: " << yo << " d: " << d << endl;
+					// '<=' in order to take the last possible position
+					// this is important for clicking behind \sum in e.g. '\sum_i a'
+					if (d <= best_dist) {
+						//lyxerr << "*" << endl;
+						best_dist   = d;
+						best_cursor = it;
+					}
+				}
+			}
+		}
+
+		//lyxerr << "best_dist: " << best_dist << " cur:\n" << best_cursor << endl;
+		if (best_dist < 1e10)
+			cursor.setCursor(best_cursor, false);
+		return best_dist < 1e10;
+	}
+
+
+} // namespace anon
+
 
 LCursor::LCursor(BufferView & bv)
 	: DocIterator(), bv_(&bv), anchor_(), x_target_(-1),
@@ -472,27 +576,10 @@ bool LCursor::openable(MathAtom const & t) const
 }
 
 
-bool positionable(DocIterator const & cursor,
-	DocIterator const & anchor)
-{
-	// avoid deeper nested insets when selecting
-	if (cursor.size() > anchor.size())
-		return false;
-
-	// anchor might be deeper, should have same path then
-	for (size_t i = 0; i < cursor.size(); ++i)
-		if (&cursor[i].inset() != &anchor[i].inset())
-			return false;
-
-	// position should be ok.
-	return true;
-}
-
-
 void LCursor::setScreenPos(int x, int y)
 {
 	x_target() = x;
-	bruteFind(x, y, 0, bv().workWidth(), 0, bv().workHeight());
+	bruteFind(*this, x, y, 0, bv().workWidth(), 0, bv().workHeight());
 }
 
 
@@ -724,7 +811,6 @@ void LCursor::macroModeClose()
 	if (macro && macro->getInsetName() == name)
 		lyxerr << "can't enter recursive macro" << endl;
 
-	//niceInsert(createMathInset(name));
 	plainInsert(createMathInset(name));
 }
 
@@ -830,7 +916,7 @@ bool LCursor::goUpDown(bool up)
 	// matters. So fiddle around with it only if you think you know
 	// what you are doing!
 
-  int xo = 0;
+	int xo = 0;
 	int yo = 0;
 	getPos(xo, yo);
 
@@ -877,7 +963,7 @@ bool LCursor::goUpDown(bool up)
 	//	yhigh = yo - 4;
 	//else
 	//	ylow = yo + 4;
-	//if (bruteFind(xo, yo, xlow, xhigh, ylow, yhigh)) {
+	//if (bruteFind(*this, xo, yo, xlow, xhigh, ylow, yhigh)) {
 	//	lyxerr << "updown: handled by brute find in the same cell" << endl;
 	//	return true;
 	//}
@@ -889,7 +975,7 @@ bool LCursor::goUpDown(bool up)
 		if (inset().idxUpDown(*this, up)) {
 			// try to find best position within this inset
 			if (!selection())
-				bruteFind2(xo, yo);
+				setCursor(bruteFind2(*this, xo, yo), false);
 			return true;
 		}
 
@@ -898,7 +984,7 @@ bool LCursor::goUpDown(bool up)
 		if (!popLeft()) {
 			int ylow  = up ? 0 : yo + 1;
 			int yhigh = up ? yo - 1 : bv().workHeight();
-			return bruteFind(xo, yo, 0, bv().workWidth(), ylow, yhigh);
+			return bruteFind(*this, xo, yo, 0, bv().workWidth(), ylow, yhigh);
 		}
 
 		// any improvement so far?
@@ -907,83 +993,9 @@ bool LCursor::goUpDown(bool up)
 		if (up ? ynew < yo : ynew > yo)
 			return true;
 	}
-}
 
-
-bool LCursor::bruteFind(int x, int y, int xlow, int xhigh, int ylow, int yhigh)
-{
-	BOOST_ASSERT(!empty());
-	par_type beg, end;
-	CursorSlice bottom = operator[](0);
-	LyXText * text = bottom.text();
-	BOOST_ASSERT(text);
-	getParsInRange(text->paragraphs(), ylow, yhigh, beg, end);
-
-	DocIterator it = doc_iterator_begin(bv().buffer()->inset());
-	DocIterator et = doc_iterator_end(bv().buffer()->inset());
-	//lyxerr << "x: " << x << " y: " << y << endl;
-	//lyxerr << "xlow: " << xlow << " ylow: " << ylow << endl;
-	//lyxerr << "xhigh: " << xhigh << " yhigh: " << yhigh << endl;
-
-	it.par() = beg;
-	//et.par() = text->parOffset(end);
-
-	double best_dist = 10e10;
-	DocIterator best_cursor = it;
-
-	for ( ; it != et; it.forwardPos()) {
-		// avoid invalid nesting when selecting
-		if (!selection() || positionable(it, anchor_)) {
-			int xo = 0, yo = 0;
-			LCursor cur = *this;
-			cur.setCursor(it, false);
-			cur.inset().getCursorPos(cur, xo, yo);
-			if (xlow <= xo && xo <= xhigh && ylow <= yo && yo <= yhigh) {
-				double d = (x - xo) * (x - xo) + (y - yo) * (y - yo);
-				//lyxerr << "xo: " << xo << " yo: " << yo << " d: " << d << endl;
-				// '<=' in order to take the last possible position
-				// this is important for clicking behind \sum in e.g. '\sum_i a'
-				if (d <= best_dist) {
-					//lyxerr << "*" << endl;
-					best_dist   = d;
-					best_cursor = it;
-				}
-			}
-		}
-	}
-
-	//lyxerr << "best_dist: " << best_dist << " cur:\n" << best_cursor << endl;
-	if (best_dist < 1e10)
-		setCursor(best_cursor, false);
-	return best_dist < 1e10;
-}
-
-
-void LCursor::bruteFind2(int x, int y)
-{
-	double best_dist = 1e10;
-
-	DocIterator it = *this;
-	it.back().pos() = 0;
-	DocIterator et = *this;
-	et.back().pos() = et.back().asMathInset()->cell(et.back().idx()).size();
-	for (int i = 0; ; ++i) {
-		int xo, yo;
-		LCursor cur = *this;
-		cur.setCursor(it, false);
-		cur.inset().getCursorPos(cur, xo, yo);
-		double d = (x - xo) * (x - xo) + (y - yo) * (y - yo);
-		// '<=' in order to take the last possible position
-		// this is important for clicking behind \sum in e.g. '\sum_i a'
-		lyxerr << "i: " << i << " d: " << d << " best: " << best_dist << endl;
-		if (d <= best_dist) {
-			best_dist = d;
-			setCursor(it, false);
-		}
-		if (it == et)
-			break;
-		it.forwardPos();
-	}
+	// we should not come here.
+	BOOST_ASSERT(false);
 }
 
 

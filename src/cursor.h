@@ -272,12 +272,6 @@ public:
 	bool openable(MathAtom const &) const;
 	///
 	Encoding const * getEncoding() const;
-
-private:
-	/// moves position closest to (x, y) in current cell
-	void bruteFind2(int x, int y);
-	/// moves position closest to (x, y) in given box
-	bool bruteFind(int x, int y, int xlow, int xhigh, int ylow, int yhigh);
 };
 
 #endif // LYXCURSOR_H
