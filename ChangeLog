@@ -1,3 +1,18 @@
+2000-10-04  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/frontends/xforms/Menubar_pimpl.C (create_submenu): use
+	Menu::expand. 
+	(add_lastfiles): removed.
+	(add_documents): removed.
+	(add_formats): removed.
+
+	* src/frontends/Menubar.C: remove useless "using" directive.
+
+	* src/MenuBackend.h: add a new MenuItem constructor.
+
+	* src/MenuBackend.[Ch] (Menu::expand): new method. Used in the
+	xforms frontend.
+
 2000-10-04  Allan Rae  <rae@lyx.org>
 
 	* lib/Makefile.am (listerrors):

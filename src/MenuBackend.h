@@ -23,6 +23,7 @@
 #include <vector>
 
 class LyXLex;
+class Buffer;
 
 ///
 class MenuItem {
@@ -46,13 +47,13 @@ public:
 		///
 		References,
 		/** This is a list of viewable formats
-		    typically for the Documents menu. */
+		    typically for the File->View menu. */
 		ViewFormats,
 		/** This is a list of updatable formats
-		    typically for the Documents menu. */
+		    typically for the File->Update menu. */
 		UpdateFormats,
 		/** This is a list of exportable formats
-		    typically for the Documents menu. */
+		    typically for the File->Export menu. */
 		ExportFormats
 	};
 	/// Create a Command type MenuItem
@@ -60,6 +61,13 @@ public:
 		 string const & label = string(), 
 		 string const & command = string(), 
 		 bool optional = false);
+	MenuItem(Kind kind,
+		 string const & label, 
+		 int action, 
+		 bool optional = false)
+		: kind_(kind), label_(label),
+		  action_(action), submenu_(), optional_(optional) {}
+ 
 	/// The label of a given menuitem
 	string const label() const { return token(label_, '|', 0); }
 	///
@@ -94,12 +102,18 @@ public:
 	///
 	typedef ItemList::const_iterator const_iterator;
 	///
-	explicit Menu(string const & name, bool mb = false) 
+	explicit Menu(string const & name = string(), bool mb = false) 
 		: menubar_(mb), name_(name) {}
 	///
 	Menu & add(MenuItem const &);
 	///
 	Menu & read(LyXLex &);
+	/// Expands some special entries of the menu
+	/** The entries with the following kind are exanded to a
+	    sequence of Command MenuItems: Lastfiles, Documents,
+	    ViewFormats, ExportFormats, UpdateFormats
+	*/
+	void expand(Menu & tomenu, Buffer *) const;
 	/// 
 	bool menubar() const { return menubar_; }
 	/// 

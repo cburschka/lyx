@@ -21,10 +21,18 @@
 #include "LyXAction.h"
 #include "debug.h"
 #include "gettext.h"
+#include "lastfiles.h"
+#include "bufferlist.h"
+#include "exporter.h"
+#include "support/filetools.h"
 
 extern LyXAction lyxaction;
+extern LastFiles * lastfiles; 
+extern BufferList bufferlist;
 
 using std::endl;
+using std::vector;
+using std::pair;
 
 // This is the global menu definition
 MenuBackend menubackend;
@@ -184,6 +192,83 @@ Menu & Menu::read(LyXLex & lex)
 	return *this;
 }
 
+void Menu::expand(Menu & tomenu, Buffer *buf) const
+{
+	for (const_iterator cit = begin();
+	     cit != end() ; ++cit) {
+		switch ((*cit).kind()) {
+		case MenuItem::Lastfiles: {
+			int ii = 1;
+			for (LastFiles::const_iterator lfit = lastfiles->begin();
+			     lfit != lastfiles->end() && ii < 10;
+			     ++lfit, ++ii) {
+				string label = tostr(ii) + ". "
+					+ MakeDisplayPath((*lfit), 30)
+					+ '|' + tostr(ii);
+				int action = lyxaction.
+					getPseudoAction(LFUN_FILE_OPEN,
+							(*lfit));
+				tomenu.add(MenuItem(MenuItem::Command,
+						    label, action));
+			}
+		}
+		break;
+		
+		case MenuItem::Documents: {
+			vector<string> names = bufferlist.getFileNames();
+			
+			if (names.empty()) {
+				tomenu.add(MenuItem(MenuItem::Command,
+						    _("No Documents Open!"),
+						    LFUN_NOACTION));
+				break;
+			}
+
+			for (vector<string>::const_iterator docit = names.begin();
+			     docit != names.end() ; ++docit) {
+				int action =
+					lyxaction.getPseudoAction(LFUN_SWITCHBUFFER, *docit);
+				string label = MakeDisplayPath(*docit, 30);
+				tomenu.add(MenuItem(MenuItem::Command,
+						    label, action));
+			}
+		}
+		break;
+
+		case MenuItem::ViewFormats:
+		case MenuItem::UpdateFormats:
+		case MenuItem::ExportFormats: {
+			vector<pair<string,string> > names;
+			kb_action action;
+			if ((*cit).kind() == MenuItem::ViewFormats) {
+				names = Exporter::GetViewableFormats(buf);
+				action = LFUN_PREVIEW;
+			} else if ((*cit).kind() == MenuItem::UpdateFormats) {
+				names = Exporter::GetViewableFormats(buf);
+				action = LFUN_UPDATE;
+			} else {
+				names = Exporter::GetExportableFormats(buf);
+				action = LFUN_EXPORT;
+			}
+
+			for (vector<pair<string,string> >::const_iterator fit = names.begin();
+			     fit != names.end() ; ++fit) {
+				int action2 =
+					lyxaction.getPseudoAction(action,
+								  (*fit).first);
+				string label = (*fit).second;
+				tomenu.add(MenuItem(MenuItem::Command,
+						    label, action2));
+			}
+		}
+		break;
+
+			
+		default:
+			tomenu.add(*cit);
+		}
+	}
+}
 
 void MenuBackend::read(LyXLex & lex)
 {

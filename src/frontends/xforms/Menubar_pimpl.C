@@ -14,22 +14,18 @@
 #include <config.h>
 
 #include <algorithm>
-#include <cctype>
+//#include <cctype>
 #include "support/lstrings.h"
-#include "support/filetools.h"
 #include "support/LAssert.h"
 #include "debug.h"
 #include "LyXAction.h"
 #include "lyxfunc.h"
 #include "kbmap.h"
-#include "bufferlist.h"
-#include "lastfiles.h"
+#include "buffer.h"
 #include "LyXView.h"
 #include "MenuBackend.h"
 #include "Menubar_pimpl.h"
-#include "exporter.h"
 
-using std::pair;
 using std::endl;
 using std::vector;
 using std::max;
@@ -39,8 +35,6 @@ typedef vector<int>::size_type size_type;
 
 extern kb_keymap * toplevel_keymap;
 extern LyXAction lyxaction;
-extern BufferList bufferlist;
-extern LastFiles * lastfiles; 
 
 // Some constants
 const int MENU_LABEL_SIZE = FL_NORMAL_SIZE;
@@ -184,52 +178,6 @@ void Menubar::Pimpl::openByName(string const & name)
 	}
 	lyxerr << "Menubar::Pimpl::openByName: menu "
 	       << name << " not found" << endl;
-}
-
-
-void Menubar::Pimpl::add_lastfiles(int menu, string const & extra_label) 
-{
-	int ii = 1;
-	for (LastFiles::const_iterator cit = lastfiles->begin();
-	     cit != lastfiles->end() && ii < 10; ++cit, ++ii) {
-
-		int action =
-			lyxaction.getPseudoAction(LFUN_FILE_OPEN, (*cit));
-		string label = tostr(ii) + ". "
-			+ MakeDisplayPath((*cit),30)
-			+ "%x" + tostr(action) + "%h";
-		if ((cit + 1) == lastfiles->end())
-			label += extra_label;
-		string shortcut = tostr(ii) + "#" + tostr(ii); 
-		lyxerr[Debug::GUI] << "shortcut is " << shortcut <<
-			endl;
-
-		fl_addtopup(menu, label.c_str(), shortcut.c_str());
-	}
-
-}
-
-void Menubar::Pimpl::add_documents(int menu, string const & extra_label)
-{
-	vector<string> names = bufferlist.getFileNames();
-
-	if (names.empty()) {
-		fl_addtopup(menu,_("No Documents Open!%i"));
-		return;
-	}
-
-	for (vector<string>::const_iterator cit = names.begin();
-	     cit != names.end() ; ++cit) {
-		int action =
-			lyxaction.getPseudoAction(LFUN_SWITCHBUFFER, *cit);
-		string label = MakeDisplayPath(*cit, 30)
-			+ "%x" + tostr(action);
-		if ((cit + 1) == names.end())
-			label += extra_label;
-				
-		fl_addtopup(menu, label.c_str());
-	}
-
 }
 
 
@@ -497,28 +445,6 @@ void Menubar::Pimpl::add_references(int menu, string const & extra_label,
 }
 
 
-void Menubar::Pimpl::add_formats(int menu, string const & extra_label,
-				 kb_action action, bool viewable)
-{
-	vector<pair<string,string> > names = 
-		viewable
-		? Exporter::GetViewableFormats(owner_->buffer())
-		: Exporter::GetExportableFormats(owner_->buffer());
-
-	for (vector<pair<string,string> >::const_iterator cit = names.begin();
-	     cit != names.end() ; ++cit) {
-		int action2 =
-			lyxaction.getPseudoAction(action, (*cit).first);
-		string label = (*cit).second
-			+ "%x" + tostr(action2);
-		if ((cit + 1) == names.end())
-			label += extra_label;
-				
-		fl_addtopup(menu, label.c_str());
-	}
-}
-
-
 int Menubar::Pimpl::create_submenu(Window win, LyXView * view, 
 				   string const & menu_name, 
 				   vector<int> & smn) 
@@ -528,7 +454,8 @@ int Menubar::Pimpl::create_submenu(Window win, LyXView * view,
 		       << menu_name << "'" << endl;
 		return -1;
 	}
-	Menu md = menubackend_->getMenu(menu_name);
+	Menu md = Menu();
+	menubackend_->getMenu(menu_name).expand(md, owner_->buffer());
 
 	int menu = fl_newpup(win);
 	fl_setpup_softedge(menu, true);
@@ -657,14 +584,6 @@ int Menubar::Pimpl::create_submenu(Window win, LyXView * view,
 			// we just ignore it.
 			break;
 
-		case MenuItem::Documents: 
-			add_documents(menu, extra_label);
-			break;
-
-		case MenuItem::Lastfiles: 
-			add_lastfiles(menu, extra_label);
-			break;
-
 		case MenuItem::Toc:
 			add_toc(menu, extra_label, smn, win);
 			break;
@@ -673,16 +592,13 @@ int Menubar::Pimpl::create_submenu(Window win, LyXView * view,
 			add_references(menu, extra_label, smn, win);
 			break;
 
+		case MenuItem::Documents: 
+		case MenuItem::Lastfiles: 
 		case MenuItem::ViewFormats:
-			add_formats(menu, extra_label, LFUN_PREVIEW, true);
-			break;
-
 		case MenuItem::UpdateFormats:
-			add_formats(menu, extra_label, LFUN_UPDATE, true);
-			break;  
-
 		case MenuItem::ExportFormats:
-			add_formats(menu, extra_label, LFUN_EXPORT, false);
+			lyxerr << "Menubar::Pimpl::create_submenu: "
+				"this should not happen" << endl;
 			break;
 
 		}

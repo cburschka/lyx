@@ -20,9 +20,6 @@
 #include "Menubar.h"
 #include "Menubar_pimpl.h"
 
-using std::endl;
-
-
 Menubar::Menubar(LyXView * o, MenuBackend const & md)
 {
 	pimpl_ = new Pimpl(o, md);

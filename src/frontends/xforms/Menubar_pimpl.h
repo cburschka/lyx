@@ -29,8 +29,6 @@ class MenuBackend;
 class MenuItem;
 class Menu;
 
-#include "debug.h"
-
 /** The LyX GUI independent menubar class
   The GUI interface is implemented in the corresponding Menubar_pimpl class. 
   */
@@ -48,18 +46,6 @@ public:
 	///
 	static void MenuCallback(FL_OBJECT *, long);
 
-	/** Add to "menu" the list of last opened files
-	    (add "extra_label" to the last entry)
-	*/
-	void add_lastfiles(int menu, string const & extra_label);
-	/** Add to "menu" the list of opened documents
-	    (add "extra_label" to the last entry)
-	*/
-	void add_documents(int menu, string const & extra_label);
-	/// Add to "menu" the list of exportable/viewable formats
-	/// (add "extra_label" to the last entry)
-	void add_formats(int menu, string const & extra_label,
-			 kb_action action, bool viewable);
 	///
 	void add_toc(int menu, string const & extra_label,
 		     std::vector<int> & smn, Window win);
