@@ -993,12 +993,8 @@ int InsetText::docbook(Buffer const & buf, ostream & os, bool mixcont) const
 
 		// environment tag closing
 		for (; depth > pit->params().depth(); --depth) {
-			if (environment_inner[depth] != "!-- --") {
-				item_name = "listitem";
-				lines += sgml::closeTag(os, command_depth + depth, mixcont, item_name);
-				if (environment_inner[depth] == "varlistentry")
-					lines += sgml::closeTag(os, depth+command_depth, mixcont, environment_inner[depth]);
-			}
+			lines += sgml::closeEnvTags(os, mixcont, environment_inner[depth],
+				command_depth + depth);
 			lines += sgml::closeTag(os, depth + command_depth, mixcont, environment_stack[depth]);
 			environment_stack[depth].erase();
 			environment_inner[depth].erase();
@@ -1007,13 +1003,8 @@ int InsetText::docbook(Buffer const & buf, ostream & os, bool mixcont) const
 		if (depth == pit->params().depth()
 		   && environment_stack[depth] != style->latexname()
 		   && !environment_stack[depth].empty()) {
-			if (environment_inner[depth] != "!-- --") {
-				item_name= "listitem";
-				lines += sgml::closeTag(os, command_depth+depth, mixcont, item_name);
-				if (environment_inner[depth] == "varlistentry")
-					lines += sgml::closeTag(os, depth + command_depth, mixcont, environment_inner[depth]);
-			}
-
+			lines += sgml::closeEnvTags(os, mixcont, environment_inner[depth],
+				command_depth + depth);
 			lines += sgml::closeTag(os, depth + command_depth, mixcont, environment_stack[depth]);
 
 			environment_stack[depth].erase();
@@ -1047,12 +1038,8 @@ int InsetText::docbook(Buffer const & buf, ostream & os, bool mixcont) const
 				environment_inner[depth] = "!-- --";
 				lines += sgml::openTag(os, depth + command_depth, mixcont, environment_stack[depth]);
 			} else {
-				if (environment_inner[depth] != "!-- --") {
-					item_name= "listitem";
-					lines += sgml::closeTag(os, command_depth + depth, mixcont, item_name);
-					if (environment_inner[depth] == "varlistentry")
-						lines += sgml::closeTag(os, depth + command_depth, mixcont, environment_inner[depth]);
-				}
+				lines += sgml::closeEnvTags(os, mixcont, environment_inner[depth],
+					command_depth + depth);
 			}
 
 			if (style->latextype == LATEX_ENVIRONMENT) {
@@ -1110,13 +1097,8 @@ int InsetText::docbook(Buffer const & buf, ostream & os, bool mixcont) const
 	// Close open tags
 	for (int d = depth; d >= 0; --d) {
 		if (!environment_stack[depth].empty()) {
-			if (environment_inner[depth] != "!-- --") {
-				item_name = "listitem";
-				lines += sgml::closeTag(os, command_depth + depth, mixcont, item_name);
-			       if (environment_inner[depth] == "varlistentry")
-				       lines += sgml::closeTag(os, depth + command_depth, mixcont, environment_inner[depth]);
-			}
-
+			lines += sgml::closeEnvTags(os, mixcont, environment_inner[depth],
+				command_depth + depth);
 			lines += sgml::closeTag(os, depth + command_depth, mixcont, environment_stack[depth]);
 		}
 	}

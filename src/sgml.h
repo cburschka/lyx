@@ -34,6 +34,13 @@ int openTag(std::ostream & os, lyx::depth_type depth,
 /// FIXME
 int closeTag(std::ostream & os, lyx::depth_type depth,
 	    bool mixcont, std::string const & latexname);
+
+///
+unsigned int closeEnvTags(std::ostream & os, 
+		bool mixcont,
+		std::string const & environment_inner_depth,
+		lyx::depth_type total_depth);
+
 }
 
 #endif // SGML_H

@@ -115,4 +115,21 @@ int closeTag(ostream & os, Paragraph::depth_type depth,
 	return !mixcont;
 }
 
+
+unsigned int closeEnvTags(ostream & ofs, bool mixcont,
+			string const & environment_inner_depth,
+			lyx::depth_type total_depth)
+{
+	unsigned int lines;
+	if (environment_inner_depth != "!-- --") {
+		string item_name= "listitem";
+		lines += closeTag(ofs, total_depth, mixcont, item_name);
+		if (environment_inner_depth == "varlistentry")
+			lines += closeTag(ofs, total_depth, mixcont, 
+				environment_inner_depth);
+	}
+	return lines;
+}
+
+
 } // namespace sgml
