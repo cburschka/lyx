@@ -135,7 +135,7 @@ dispatch_result InsetInclude::localDispatch(FuncRequest const & cmd)
 		return DISPATCHED;
 
 	default:
-		return InsetOld::localDispatch(cmd);
+		return UNDISPATCHED;
 	}
 }
 
@@ -174,7 +174,7 @@ Types type(InsetCommandParams const & params)
 bool isVerbatim(InsetCommandParams const & params)
 {
 	string const command_name = params.getCmdName();
-	return command_name == "verbatiminput" || 
+	return command_name == "verbatiminput" ||
 		command_name == "verbatiminput*";
 }
 

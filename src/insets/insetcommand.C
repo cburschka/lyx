@@ -106,7 +106,7 @@ dispatch_result InsetCommand::localDispatch(FuncRequest const & cmd)
 		return localDispatch(FuncRequest(cmd.view(), LFUN_INSET_EDIT));
 
 	default:
-		return InsetOld::localDispatch(cmd);
+		return UNDISPATCHED;
 	}
 
 }

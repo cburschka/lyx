@@ -227,7 +227,7 @@ dispatch_result InsetGraphics::localDispatch(FuncRequest const & cmd)
 		return DISPATCHED;
 
 	default:
-		return InsetOld::localDispatch(cmd);
+		return UNDISPATCHED;
 	}
 }
 

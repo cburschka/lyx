@@ -1,5 +1,12 @@
 2003-10-13  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
+	* insetinclude.C (localDispatch): do not call
+	InsetOld::localDispatch, just return UNDISPATCHED
+	* insetgraphics.C (localDispatch): ditto
+	* insetcommand.C (localDispatch): ditto
+
+2003-10-13  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
 	* inset.h: get rid of RESULT typedef for dispatch_result
 
 	* insetcollapsable.[Ch] (localDispatch): RESULT -> dispatch_result
