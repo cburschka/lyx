@@ -3801,7 +3801,7 @@ bool Buffer::Dispatch(string const & command)
 	string cmd, line = frontStrip(command);
 	string arg = strip(frontStrip(split(line, cmd, ' ')));
 
-	return Dispatch(lyxaction.LookupFunc(cmd.c_str()), arg.c_str());
+	return Dispatch(lyxaction.LookupFunc(cmd.c_str()), arg);
 }
 
 

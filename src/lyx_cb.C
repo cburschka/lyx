@@ -1178,7 +1178,7 @@ void LayoutsCB(int sel, void *, Combox *)
 {
 	string tmp = tostr(sel);
 	current_view->owner()->getLyXFunc()->Dispatch(LFUN_LAYOUTNO,
-						      tmp.c_str());
+						      tmp);
 }
 
 #ifndef NEW_EXPORT

@@ -298,7 +298,7 @@ int LyXFunc::processKeySym(KeySym keysym, unsigned int state)
 
         bool tmp_sc = show_sc;
 	show_sc = false;
-	Dispatch(action, argument.c_str());
+	Dispatch(action, argument);
 	show_sc = tmp_sc;
 	
 	return 0;
@@ -432,7 +432,7 @@ int LyXFunc::processKeyEvent(XEvent * ev)
 
         bool tmp_sc = show_sc;
 	show_sc = false;
-	Dispatch(action, argument.c_str());
+	Dispatch(action, argument);
 	show_sc = tmp_sc;
 	
 	return 0;
@@ -650,10 +650,11 @@ LyXFunc::func_status LyXFunc::getStatus(int ac) const
 string const LyXFunc::Dispatch(string const & s) 
 {
 	// Split command string into command and argument
-	string cmd, line = frontStrip(s);
+	string cmd;
+	string line = frontStrip(s);
 	string arg = strip(frontStrip(split(line, cmd, ' ')));
 
-	return Dispatch(lyxaction.LookupFunc(cmd.c_str()), arg.c_str());
+	return Dispatch(lyxaction.LookupFunc(cmd.c_str()), arg);
 }
 
 
@@ -1388,7 +1389,7 @@ string const LyXFunc::Dispatch(int ac,
 		Dispatch(int(LFUN_LAYOUT), 
 			 textclasslist.NameOfLayout(owner->view()
 						    ->buffer()->params.textclass,
-						    sel).c_str());
+						    sel));
 		return string();
 	}
 		

@@ -52,5 +52,5 @@ bindist:
 
 sourcedoc:
 	mkdir sourcedoc
-	cd sourcedoc
-	doc++ -p $(srcdir)/src/*.h
+	cd sourcedoc ; \
+	doc++ -p `find ../$(top_srcdir)/src -name \*.h`

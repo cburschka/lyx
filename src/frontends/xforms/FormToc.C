@@ -146,9 +146,9 @@ void FormToc::apply()
 
 	updateToc();
 
-	unsigned int choice = fl_get_browser( dialog_->browser );
+	unsigned int const choice = fl_get_browser( dialog_->browser );
 	if (0 < choice && choice - 1 < toclist.size()) {
-		string tmp = tostr(toclist[choice-1].par->id());
-		lv_->getLyXFunc()->Dispatch(LFUN_GOTO_PARAGRAPH, tmp.c_str());
+		string const tmp = tostr(toclist[choice-1].par->id());
+		lv_->getLyXFunc()->Dispatch(LFUN_GOTO_PARAGRAPH, tmp);
 	}
 }

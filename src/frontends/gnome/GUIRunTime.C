@@ -63,6 +63,8 @@ int GUIRunTime::initApplication(int, char * argv[])
 		return 1;
 	}
 
+	// I belive that this should be done at a later stage, in
+	// lyx_gui, the same place as xforms does the same. (Lgb)
 	static string app_id(PACKAGE);
 	static string app_version(VERSION);
 	static Gnome::Main  a(app_id, app_version, 1, argv);

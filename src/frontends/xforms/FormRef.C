@@ -234,21 +234,20 @@ void FormRef::apply()
   	if (!lv_->view()->available())
 		return;
 
-	Type type = static_cast<Type>( fl_get_choice(dialog_->type)-1 );
-	params.setCmdName( getName( type ) );
+	Type const type = static_cast<Type>(fl_get_choice(dialog_->type) - 1);
+	params.setCmdName(getName(type));
 
-	params.setOptions( fl_get_input(dialog_->name) );
+	params.setOptions(fl_get_input(dialog_->name));
 
-	if( inset_ != 0 )
-	{
+	if (inset_ != 0) {
 		// Only update if contents have changed
-		if( params != inset_->params() ) {
-			inset_->setParams( params );
-			lv_->view()->updateInset( inset_, true );
+		if(params != inset_->params()) {
+			inset_->setParams(params);
+			lv_->view()->updateInset(inset_, true);
 		}
 	} else {
-		lv_->getLyXFunc()->Dispatch( LFUN_REF_INSERT,
-					     params.getAsString().c_str() );
+		lv_->getLyXFunc()->Dispatch(LFUN_REF_INSERT,
+					    params.getAsString());
 	}
 }
 
@@ -262,12 +261,12 @@ void FormRef::input( long data )
 		toggle = static_cast<Goto>(toggle + 1);
 		if( toggle == GOFIRST ) toggle = GOREF;
 	
-		switch( toggle ) {
+		switch (toggle) {
 		case GOREF:
 		{
 			lv_->getLyXFunc()->
 				Dispatch(LFUN_REF_GOTO,
-					 params.getContents().c_str());
+					 params.getContents());
 	  		fl_set_object_label(dialog_->go, _("Go back"));
 		}
 		break;

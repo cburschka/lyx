@@ -63,6 +63,8 @@ int GUIRunTime::initApplication(int argc, char * argv[])
 		return 1;
 	}
 
+	// I belive this is done in the wrong place, imo this should
+	// be done in lyx_gui.C similar to how/where xforms does it (Lgb)
 	static KApplication a(argc, argv);
 
 	return 0;

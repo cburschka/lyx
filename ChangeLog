@@ -1,4 +1,26 @@
+2000-09-19  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/buffer.C (Dispatch): fix call to Dispatch
+	* src/insets/insetref.C (Edit): likewise
+	* src/insets/insetparent.C (Edit): likewise
+	* src/insets/insetinclude.C (include_cb): likewise
+	* src/frontends/xforms/FormUrl.C (apply): likewise
+	* src/frontends/xforms/FormToc.C (apply): likewise
+	* src/frontends/xforms/FormRef.C (apply): likewise
+	* src/frontends/xforms/FormIndex.C (apply): likewise
+	* src/frontends/xforms/FormCitation.C (apply): likewise
+	* src/lyxserver.C (callback): likewise
+	* src/lyxfunc.C (processKeySym): likewise
+	(Dispatch): likewise
+	(Dispatch): likewise
+	* src/lyx_cb.C (LayoutsCB): likewise
+
+	* Makefile.am (sourcedoc): small change
+
 2000-09-18  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/main.C (main): Don't make an empty GUIRunTime object. all
+	methods are static. constify a bit remove unneded using + headers.
 
 	* src/tabular.C: some more const to local vars move some loop vars
 	

@@ -9,7 +9,6 @@
  * ====================================================== */
 
 #include <config.h>
-#include <iostream>
 
 #include "lyx_main.h"
 #include "gettext.h"
@@ -17,14 +16,10 @@
 #include "support/filetools.h"
 #include "frontends/GUIRunTime.h"
 
-using std::cerr;
-using std::endl;
-
-GUIRunTime guiruntime;
 
 int main(int argc, char * argv[])
 {
-	int val = guiruntime.initApplication(argc, argv);
+	int const val = GUIRunTime::initApplication(argc, argv);
 	if (val)
 		return val;
 
@@ -35,8 +30,8 @@ int main(int argc, char * argv[])
 		lyx_localedir = LOCALEDIR;
 	
 	// initialize for internationalized version *EK*
-	locale_init();
-	gettext_init();
+	locale_init(); // macro
+	gettext_init(); // macro
 
 #ifdef __EMX__
 	_wildcard(&argc, &argv);

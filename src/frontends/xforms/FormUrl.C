@@ -93,25 +93,24 @@ void FormUrl::update()
 
 void FormUrl::apply()
 {
-	if( lv_->buffer()->isReadonly() ) return;
+	if(lv_->buffer()->isReadonly()) return;
 
-	params.setContents( fl_get_input(dialog_->url) );
-	params.setOptions( fl_get_input(dialog_->name) );
+	params.setContents(fl_get_input(dialog_->url));
+	params.setOptions(fl_get_input(dialog_->name));
 
 	if (fl_get_button(dialog_->radio_html))
 		params.setCmdName("htmlurl");
 	else
 		params.setCmdName("url");
 
-	if( inset_ != 0 )
-	{
+	if(inset_ != 0) {
 		// Only update if contents have changed
-		if( params != inset_->params() ) {
-			inset_->setParams( params );
-			lv_->view()->updateInset( inset_, true );
+		if(params != inset_->params()) {
+			inset_->setParams(params);
+			lv_->view()->updateInset(inset_, true);
 		}
 	} else {
-		lv_->getLyXFunc()->Dispatch( LFUN_INSERT_URL,
-					     params.getAsString().c_str() );
+		lv_->getLyXFunc()->Dispatch(LFUN_INSERT_URL,
+					    params.getAsString());
 	}
 }

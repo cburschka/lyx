@@ -438,26 +438,25 @@ void FormCitation::input( long data )
 
 void FormCitation::apply()
 {
-	if( lv_->buffer()->isReadonly() ) return;
+	if(lv_->buffer()->isReadonly()) return;
 
 	string contents;
-	for( unsigned int i = 0; i < citekeys.size(); ++i ) {
+	for(unsigned int i = 0; i < citekeys.size(); ++i) {
 		if (i > 0) contents += ", ";
 		contents += citekeys[i];
 	}
 
-	params.setContents( contents );
-	params.setOptions( fl_get_input(dialog_->textAftr) );
+	params.setContents(contents);
+	params.setOptions(fl_get_input(dialog_->textAftr));
 
-	if( inset_ != 0 )
-	{
+	if (inset_ != 0) {
 		// Only update if contents have changed
-		if( params != inset_->params() ) {
-			inset_->setParams( params );
-			lv_->view()->updateInset( inset_, true );
+		if(params != inset_->params()) {
+			inset_->setParams(params);
+			lv_->view()->updateInset(inset_, true);
 		}
 	} else {
-		lv_->getLyXFunc()->Dispatch( LFUN_CITATION_INSERT,
-					     params.getAsString().c_str() );
+		lv_->getLyXFunc()->Dispatch(LFUN_CITATION_INSERT,
+					    params.getAsString());
 	}
 }

@@ -83,19 +83,18 @@ void FormIndex::update()
 
 void FormIndex::apply()
 {
-	if( lv_->buffer()->isReadonly() ) return;
+	if(lv_->buffer()->isReadonly()) return;
 
-	params.setContents( fl_get_input(dialog_->key) );
+	params.setContents(fl_get_input(dialog_->key));
 
-	if( inset_ != 0 )
-	{
+	if (inset_ != 0) {
 		// Only update if contents have changed
-		if( params != inset_->params() ) {
-			inset_->setParams( params );
-			lv_->view()->updateInset( inset_, true );
+		if (params != inset_->params()) {
+			inset_->setParams(params);
+			lv_->view()->updateInset(inset_, true);
 		}
 	} else {
-		lv_->getLyXFunc()->Dispatch( LFUN_INDEX_INSERT,
-		 			     params.getAsString().c_str() );
+		lv_->getLyXFunc()->Dispatch(LFUN_INDEX_INSERT,
+					    params.getAsString());
 	}
 }

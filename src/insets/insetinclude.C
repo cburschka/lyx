@@ -173,7 +173,7 @@ void include_cb(FL_OBJECT *, long arg)
 			
 			fl_hide_form(form->include);
 			current_view->updateInset(inset, true);
-			current_view->owner()->getLyXFunc()->Dispatch(LFUN_CHILDOPEN, inset->getContents().c_str());
+			current_view->owner()->getLyXFunc()->Dispatch(LFUN_CHILDOPEN, inset->getContents());
                 }
                 break;
 		

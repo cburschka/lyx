@@ -77,7 +77,7 @@ private:
 	///
 	mutable int history_cnt;
         ///
-        void addHistory(string const &cmd) const { 
+        void addHistory(string const & cmd) const { 
 	        if (history_cnt == 0
 		    || (history_cnt > 0
 			&& cmd != history[(history_cnt - 1) % MAX_HISTORY])) {
