@@ -53,7 +53,7 @@ Bullet::Bullet(int f, int c, int s)
 }
 
 
-string Bullet::getText()
+string const & Bullet::getText() const
 {
 	if (user_text == 0) {
 		generateText();
@@ -83,7 +83,7 @@ bool operator == (const Bullet & b1, const Bullet & b2)
 /*--------------------Private Member Functions-------------------*/
 
 
-void Bullet::generateText()
+void Bullet::generateText() const
 {
 	// Assumption:
 	// user hasn't defined their own text and/or I haven't generated

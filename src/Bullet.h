@@ -47,9 +47,7 @@ public:
 	///
 	int getSize() const;
 	///
-	string getText() const;
-	///
-	string getText();
+	string const & getText() const;
 	///
 	char const * c_str() const;
 	///
@@ -106,7 +104,7 @@ private:
 	};
 	
 	///
-	void generateText();
+	void generateText() const;
 	///
 	static string bulletSize(short int);
 	///
@@ -126,7 +124,7 @@ private:
 	    or if I can use it to generate strings (0)
 	    or have already (-1)
 	*/
-	short user_text; 
+	mutable short user_text; 
 	
 	//NOTE: Arranging these four shorts above to be together
 	//      like this should ensure they are in a single cache line
@@ -135,7 +133,7 @@ private:
 	    or one generated internally from the font, character
 	    and size settings.
 	*/
-	string text;
+	mutable string text;
 };
 
 
@@ -230,13 +228,6 @@ int Bullet::getSize() const
 
 
 inline
-string Bullet::getText() const
-{
-	return text;
-}
-
-
-inline
 Bullet & Bullet::operator=(Bullet const & b)
 {
 #ifdef ENABLE_ASSERTIONS
@@ -257,7 +248,7 @@ Bullet & Bullet::operator=(Bullet const & b)
 inline
 char const * Bullet::c_str() const
 {
-	return this->getText().c_str();
+	return getText().c_str();
 }
 
 
