@@ -1,5 +1,8 @@
 2001-03-29  Juergen Vigna  <jug@sad.it>
 
+	* lyxinset.h: changed parameter of getMaxWidth from Painter & to
+	BufferView *.
+
 	* insetminipage.C: removed widthp_ and all it's functions and changed
 	to use new %-lengths of LyXLength.
 
