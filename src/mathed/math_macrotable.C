@@ -100,6 +100,7 @@ void MathMacroTable::builtinMacros()
 	createTemplate("owns",         0, "\\ni");
 	createTemplate("gets",         0, "\\leftarrow");
 	createTemplate("to",           0, "\\rightarrow");
+	createTemplate("|",            0, "\\parallel");
 
 	createTemplate("longleftrightarrow", 0, "\\leftarrow\\kern-6mu\\rightarrow");
 	createTemplate("Longleftrightarrow", 0, "\\Leftarrow\\kern-6mu\\Rightarrow");

@@ -785,17 +785,6 @@ void Parser::parse_into(MathArray & array, unsigned flags, MathTextCodes code)
 			break; 
 		}
 
-		case LM_TK_UNDEF: 
-			if (MathMacroTable::hasTemplate(sval_)) {
-				MathMacro * m = MathMacroTable::cloneTemplate(sval_);
-				for (int i = 0; i < m->nargs(); ++i) 
-					parse_into(m->cell(i), FLAG_ITEM);
-				array.push_back(m);
-				m->metrics(LM_ST_TEXT);
-			} else
-				array.push_back(new MathFuncInset(sval_));
-			break;
-
 		else  LM_TK_SPECIAL:
 			array.push_back(new MathCharInset(ival_, LM_TC_TEX));
 			break;

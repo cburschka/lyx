@@ -128,7 +128,6 @@ latexkeys_a wordlist_array[] =
 	{"widehat",  LM_TK_DECORATION, 0},
 	{"widetilde",  LM_TK_DECORATION, 0},
 	{"{",  LM_TK_SPECIAL, '{'},
-	{"|",  LM_TK_UNDEF, '|'},
 	{"}",  LM_TK_SPECIAL, '}'}
 };
 

@@ -1284,14 +1284,14 @@ void MathCursor::interpret(string const & s)
 		return;
 	}
 
-	if (lastcode_ != LM_TC_TEX && strchr("#$%{|}", c)) {
+	if (lastcode_ != LM_TC_TEX && strchr("#$%{}", c)) {
 		insert(new MathSpecialCharInset(c));	
 		return;
 	}
 
 	if (lastcode_ == LM_TC_TEX) {
 		if (macroName().empty()) {
-			if (strchr("#$%{|}", c)) {
+			if (strchr("#$%{}", c)) {
 				insert(new MathCharInset(c, LM_TC_TEX));	
 				lastcode_ = LM_TC_VAR;
 				return;
