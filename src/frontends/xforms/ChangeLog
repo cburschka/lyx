@@ -1,3 +1,8 @@
+2002-07-18  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* xformsGImage.C (init_graphics): disable handling of ps files in
+	xforms loader
+
 2002-07-11  Herbert Voss  <voss@perce.de>
 
 	* FormGraphics.C (input): test also the height for %-value, when

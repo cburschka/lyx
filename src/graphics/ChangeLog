@@ -1,6 +1,6 @@
 2002-06-17  Herbert Voss  <voss@lyx.org>
 
-	* GraphicsCachItem.C: (findTargetFormat) remove the speciell case
+	* GraphicsCachItem.C (findTargetFormat): remove the speciell case
 	for old ps-files (Garst). It's no handled via defining a converter
 	and disabling the ps-support of xforms.
 
