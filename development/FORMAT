@@ -1,6 +1,26 @@
 Changes to the LyX format since version 220 (LyX 1.2.0) was released.
 =====================================================================
 
+2003-02-10  John Levon  <levon@movementarian.org>
+
+	Format bumped to 222
+
+	Added \\tracking_changes 0|1 to the header.
+
+	Added \\author to the header. This can be present multiple
+	times, and is of the form :
+
+	\\author "Real Name" email@address.com
+
+	Added \\change_deleted, \\change_inserted. Each of these does not
+	span a paragraph, and is delimited by "\\change_unchanged\n". Both are
+	of the form :
+
+	\\change_inserted author time
+
+	where author is an integer ID reference into the author list in
+	the header, and time is time_t.
+
 2002-10-24  Rob Lahaye  <lahaye@snu.ac.kr>
 
 	* insetgraphicsParams.h (scale): is now a float, not an unsigned int.
