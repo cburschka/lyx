@@ -46,7 +46,6 @@
 #include <algorithm>
 #include <cstdlib>
 #include <map>
-//#include <signal.h>
 
 
 using namespace lyx::support;
@@ -156,7 +155,7 @@ bool InsetTabular::hasPasteBuffer() const
 
 InsetTabular::InsetTabular(Buffer const & buf, int rows, int columns)
 	: tabular(buf.params, this, max(rows, 1), max(columns, 1)),
-	  buffer_(&buf)
+	  buffer_(&buf), cursorx_(0), cursory_(0)
 {
 	// for now make it always display as display() inset
 	// just for test!!!
@@ -176,7 +175,7 @@ InsetTabular::InsetTabular(Buffer const & buf, int rows, int columns)
 InsetTabular::InsetTabular(InsetTabular const & tab)
 	: UpdatableInset(tab),
 		tabular(tab.buffer_->params, this, tab.tabular),
-		buffer_(tab.buffer_)
+		buffer_(tab.buffer_), cursorx_(0), cursory_(0)
 {
 	the_locking_inset = 0;
 	old_locking_inset = 0;
@@ -1283,8 +1282,8 @@ void InsetTabular::getCursor(BufferView & bv, int & x, int & y) const
 		return;
 	}
 
-	x = cursor_.x();
-	y = cursor_.y() + InsetTabular::y();
+	x = cursorx_;
+	y = cursory_ + InsetTabular::y();
 
 	// Fun stuff
 	int desc = tabular.getDescentOfRow(actrow);
@@ -1302,8 +1301,8 @@ void InsetTabular::getCursorPos(BufferView * bv, int & x, int & y) const
 		the_locking_inset->getCursorPos(bv, x, y);
 		return;
 	}
-	x = cursor_.x() - top_x;
-	y = cursor_.y();
+	x = cursorx_ - top_x;
+	y = cursory_;
 }
 
 
@@ -1322,25 +1321,24 @@ void InsetTabular::fitInsetCursor(BufferView * bv) const
 	int const desc = font_metrics::maxDescent(font);
 	resetPos(bv);
 
-	if (bv->fitLockedInsetCursor(cursor_.x(), cursor_.y(), asc, desc))
+	if (bv->fitLockedInsetCursor(cursorx_, cursory_, asc, desc))
 		need_update = FULL;
 }
 
 
 void InsetTabular::setPos(BufferView * bv, int x, int y) const
 {
-	cursor_.y(0);
-
+	cursory_ = 0;
 	actcell = actrow = actcol = 0;
 	int ly = tabular.getDescentOfRow(actrow);
 
 	// first search the right row
-	while ((ly < y) && ((actrow+1) < tabular.rows())) {
-		cursor_.y(cursor_.y() + tabular.getDescentOfRow(actrow) +
+	while (ly < y && actrow + 1 < tabular.rows()) {
+		cursory_ += tabular.getDescentOfRow(actrow) +
 				 tabular.getAscentOfRow(actrow + 1) +
-				 tabular.getAdditionalHeight(actrow + 1));
+				 tabular.getAdditionalHeight(actrow + 1);
 		++actrow;
-		ly = cursor_.y() + tabular.getDescentOfRow(actrow);
+		ly = cursory_ + tabular.getDescentOfRow(actrow);
 	}
 	actcell = tabular.getCellNumber(actrow, actcol);
 
@@ -1351,7 +1349,7 @@ void InsetTabular::setPos(BufferView * bv, int x, int y) const
 		lx += tabular.getWidthOfColumn(actcell + 1)
 			+ tabular.getAdditionalWidth(actcell);
 	}
-	cursor_.x(lx - tabular.getWidthOfColumn(actcell) + top_x + 2);
+	cursorx_ = lx - tabular.getWidthOfColumn(actcell) + top_x + 2;
 	resetPos(bv);
 }
 
@@ -1382,27 +1380,27 @@ void InsetTabular::resetPos(BufferView * bv) const
 	int cell = 0;
 	actcol = tabular.column_of_cell(actcell);
 	actrow = 0;
-	cursor_.y(0);
-	for (; (cell < actcell) && !tabular.isLastRow(cell); ++cell) {
+	cursory_ = 0;
+	for (; cell < actcell && !tabular.isLastRow(cell); ++cell) {
 		if (tabular.isLastCellInRow(cell)) {
-			cursor_.y(cursor_.y() + tabular.getDescentOfRow(actrow) +
+			cursory_ += tabular.getDescentOfRow(actrow) +
 					 tabular.getAscentOfRow(actrow + 1) +
-					 tabular.getAdditionalHeight(actrow + 1));
+					 tabular.getAdditionalHeight(actrow + 1);
 			++actrow;
 		}
 	}
 	if (!locked || nodraw()) {
 		if (the_locking_inset)
-			inset_y = cursor_.y();
+			inset_y = cursory_;
 		return;
 	}
 	// we need this only from here on!!!
 	++in_reset_pos;
 	static int const offset = ADD_TO_TABULAR_WIDTH + 2;
 	int new_x = getCellXPos(actcell);
-	int old_x = cursor_.x();
+	int old_x = cursorx_;
 	new_x += offset;
-	cursor_.x(new_x);
+	cursorx_ = new_x;
 //    cursor.x(getCellXPos(actcell) + offset);
 	if ((actcol < tabular.columns() - 1) && scroll(false) &&
 		(tabular.getWidthOfTabular() < bv->workWidth()-20))
@@ -1410,9 +1408,9 @@ void InsetTabular::resetPos(BufferView * bv) const
 		scroll(bv, 0.0F);
 		updateLocal(bv, FULL);
 	} else if (the_locking_inset &&
-		 (tabular.getWidthOfColumn(actcell) > bv->workWidth()-20))
+		 tabular.getWidthOfColumn(actcell) > bv->workWidth() - 20)
 	{
-		int xx = cursor_.x() - offset + bv->text->getRealCursorX();
+		int xx = cursorx_ - offset + bv->text->getRealCursorX();
 		if (xx > (bv->workWidth()-20)) {
 			scroll(bv, -(xx - bv->workWidth() + 60));
 			updateLocal(bv, FULL);
@@ -1424,22 +1422,22 @@ void InsetTabular::resetPos(BufferView * bv) const
 			scroll(bv, xx);
 			updateLocal(bv, FULL);
 		}
-	} else if ((cursor_.x() - offset) > 20 &&
-		   (cursor_.x() - offset + tabular.getWidthOfColumn(actcell))
+	} else if ((cursorx_ - offset) > 20 &&
+		   (cursorx_ - offset + tabular.getWidthOfColumn(actcell))
 		   > (bv->workWidth() - 20)) {
 		scroll(bv, -tabular.getWidthOfColumn(actcell) - 20);
 		updateLocal(bv, FULL);
-	} else if ((cursor_.x() - offset) < 20) {
-		scroll(bv, 20 - cursor_.x() + offset);
+	} else if ((cursorx_ - offset) < 20) {
+		scroll(bv, 20 - cursorx_ + offset);
 		updateLocal(bv, FULL);
 	} else if (scroll() && top_x > 20 &&
 		   (top_x + tabular.getWidthOfTabular()) > (bv->workWidth() - 20)) {
-		scroll(bv, old_x - cursor_.x());
+		scroll(bv, old_x - cursorx_);
 		updateLocal(bv, FULL);
 	}
 	if (the_locking_inset) {
-		inset_x = cursor_.x() - top_x + tabular.getBeginningOfTextInCell(actcell);
-		inset_y = cursor_.y();
+		inset_x = cursorx_ - top_x + tabular.getBeginningOfTextInCell(actcell);
+		inset_y = cursory_;
 	}
 	if ((!the_locking_inset ||
 	     !the_locking_inset->getFirstLockingInsetOfType(TABULAR_CODE)) &&
@@ -1495,7 +1493,7 @@ Inset::RESULT InsetTabular::moveUp(BufferView * bv, bool lock)
 		int y = 0;
 		if (old_locking_inset) {
 			old_locking_inset->getCursorPos(bv, x, y);
-			x -= cursor_.x() + tabular.getBeginningOfTextInCell(actcell);
+			x -= cursorx_ + tabular.getBeginningOfTextInCell(actcell);
 		}
 		if (activateCellInset(bv, x, 0))
 			return DISPATCHED;
@@ -1516,7 +1514,7 @@ Inset::RESULT InsetTabular::moveDown(BufferView * bv, bool lock)
 		int y = 0;
 		if (old_locking_inset) {
 			old_locking_inset->getCursorPos(bv, x, y);
-			x -= cursor_.x() + tabular.getBeginningOfTextInCell(actcell);
+			x -= cursorx_ + tabular.getBeginningOfTextInCell(actcell);
 		}
 		if (activateCellInset(bv, x, 0))
 			return DISPATCHED;
@@ -1989,28 +1987,28 @@ void InsetTabular::tabularFeatures(BufferView * bv,
 	case LyXTabular::UNSET_LTFIRSTHEAD:
 		flag = false;
 	case LyXTabular::SET_LTFIRSTHEAD:
-		(void)tabular.getRowOfLTFirstHead(row, ltt);
+		tabular.getRowOfLTFirstHead(row, ltt);
 		checkLongtableSpecial(ltt, value, flag);
 		tabular.setLTHead(row, flag, ltt, true);
 		break;
 	case LyXTabular::UNSET_LTHEAD:
 		flag = false;
 	case LyXTabular::SET_LTHEAD:
-		(void)tabular.getRowOfLTHead(row, ltt);
+		tabular.getRowOfLTHead(row, ltt);
 		checkLongtableSpecial(ltt, value, flag);
 		tabular.setLTHead(row, flag, ltt, false);
 		break;
 	case LyXTabular::UNSET_LTFOOT:
 		flag = false;
 	case LyXTabular::SET_LTFOOT:
-		(void)tabular.getRowOfLTFoot(row, ltt);
+		tabular.getRowOfLTFoot(row, ltt);
 		checkLongtableSpecial(ltt, value, flag);
 		tabular.setLTFoot(row, flag, ltt, false);
 		break;
 	case LyXTabular::UNSET_LTLASTFOOT:
 		flag = false;
 	case LyXTabular::SET_LTLASTFOOT:
-		(void)tabular.getRowOfLTLastFoot(row, ltt);
+		tabular.getRowOfLTLastFoot(row, ltt);
 		checkLongtableSpecial(ltt, value, flag);
 		tabular.setLTFoot(row, flag, ltt, true);
 		break;
@@ -2039,8 +2037,8 @@ bool InsetTabular::activateCellInset(BufferView * bv, int x, int y,
 		x = inset->x() + inset->width();
 		y = inset->descent();
 	}
-	//inset_x = cursor.x() - top_x + tabular.getBeginningOfTextInCell(actcell);
-	//inset_y = cursor.y();
+	//inset_x = cursorx_ - top_x + tabular.getBeginningOfTextInCell(actcell);
+	//inset_y = cursory_;
 	inset->localDispatch(FuncRequest(bv, LFUN_INSET_EDIT, x,  y, button));
 	if (!the_locking_inset)
 		return false;
@@ -2052,9 +2050,8 @@ bool InsetTabular::activateCellInset(BufferView * bv, int x, int y,
 bool InsetTabular::activateCellInsetAbs(BufferView * bv, int x, int y,
 					mouse_button::state button)
 {
-	inset_x = cursor_.x()
-		- top_x + tabular.getBeginningOfTextInCell(actcell);
-	inset_y = cursor_.y();
+	inset_x = cursorx_ - top_x + tabular.getBeginningOfTextInCell(actcell);
+	inset_y = cursory_;
 	return activateCellInset(bv, x - inset_x, y - inset_y, button);
 }
 
@@ -2062,7 +2059,7 @@ bool InsetTabular::activateCellInsetAbs(BufferView * bv, int x, int y,
 bool InsetTabular::insetHit(BufferView *, int x, int) const
 {
 	return x + top_x
-		> cursor_.x() + tabular.getBeginningOfTextInCell(actcell);
+		> cursorx_ + tabular.getBeginningOfTextInCell(actcell);
 }
 
 

@@ -48,7 +48,6 @@
 #include "inset.h"
 #include "tabular.h"
 #include "LString.h"
-#include "lyxcursor.h"
 #include "FuncStatus.h"
 #include "frontends/mouse_state.h"
 
@@ -313,7 +312,9 @@ private:
 	///
 	Buffer const * buffer_;
 	///
-	mutable LyXCursor cursor_;
+	mutable int cursorx_;
+	///
+	mutable int cursory_;
 	///
 	mutable unsigned int inset_x;
 	///
