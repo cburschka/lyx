@@ -63,7 +63,7 @@ CATALOGS = @CATALOGS@
 	$(COMPILE) $<
 
 .po.pox:
-	$(MAKE) $(PACKAGE).pot
+	$(MAKE) $(srcdir)/$(PACKAGE).pot
 	$(MSGMERGE) $< $(srcdir)/$(PACKAGE).pot -o $*.pox
 
 .po.mo:
