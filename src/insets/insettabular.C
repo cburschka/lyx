@@ -266,6 +266,7 @@ void InsetTabular::draw(BufferView * bv, LyXFont const & font, int baseline,
 		cleared = true;
 	}
 	top_x = int(x);
+	topx_set = true;
 	top_baseline = baseline;
 	x += ADD_TO_TABULAR_WIDTH;
 	if (cleared) {
@@ -459,8 +460,12 @@ void InsetTabular::drawCellSelection(Painter & pain, int x, int baseline,
 
 void InsetTabular::update(BufferView * bv, LyXFont const & font, bool reinit)
 {
-	if (in_update)
+	if (in_update) {
+		if (reinit && owner()) {
+			owner()->update(bv, font, true);
+		}
 		return;
+	}
 	in_update = true;
 	if (reinit) {
 		need_update = INIT;

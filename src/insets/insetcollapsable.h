@@ -129,7 +129,7 @@ public:
 	void setFont(BufferView *, LyXFont const &, bool toggleall = false,
                  bool selectall = false);
 	///
-	void setLabel(string const & l);
+	void setLabel(string const & l) const;
 	///
 	void setLabelFont(LyXFont & f) { labelfont = f; }
 #if 0
@@ -171,11 +171,10 @@ public:
 	///
 	void open(BufferView *);
 	///
-	void close(BufferView *);
+	void close(BufferView *) const;
 	///
-	string const selectNextWord(BufferView * bv, float & value) const {
-		return inset.selectNextWord(bv, value);
-	}
+	string const selectNextWord(BufferView * bv, float & value) const;
+
 	void selectSelectedWord(BufferView * bv) {
 		inset.selectSelectedWord(bv);
 	}
@@ -184,13 +183,9 @@ public:
 	}
 	///
 	bool searchForward(BufferView * bv, string const & str,
-	                   bool const & cs = true, bool const & mw = false) {
-		return inset.searchForward(bv, str, cs, mw);
-	}
+	                   bool const & cs = true, bool const & mw = false);
 	bool searchBackward(BufferView * bv, string const & str,
-	                    bool const & cs = true, bool const & mw = false) {
-		return inset.searchBackward(bv, str, cs, mw);
-	}
+	                    bool const & cs = true, bool const & mw = false);
 	/// check if the font of the char we want inserting is correct
 	/// and modify it if it is not.
 	virtual bool checkInsertChar(LyXFont &) { return false; }
@@ -208,14 +203,14 @@ protected:
 	int getMaxTextWidth(Painter & pain, UpdatableInset const *) const;
 	
 	///
-	bool collapsed_;
+	mutable bool collapsed_;
 	///
 	LColor::color framecolor;
 	///
 	LyXFont labelfont;
 public:
 	///
-	InsetText inset;
+	mutable InsetText inset;
 protected:
 	///
 	mutable int button_length;
@@ -230,7 +225,7 @@ protected:
 
 private:
 	///
-	string label;
+	mutable string label;
 #if 0
 	///
 	bool autocollapse;
@@ -239,6 +234,8 @@ private:
 	mutable int oldWidth;
 	///
 	bool in_update;
+	///
+	mutable bool first_after_edit;
 };
 
 #endif

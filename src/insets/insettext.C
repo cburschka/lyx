@@ -117,49 +117,30 @@ InsetText::InnerCache::InnerCache(boost::shared_ptr<LyXText> t)
 
 
 InsetText::InsetText()
+	: UpdatableInset(), lt(0), in_update(false)
 {
 	par = new Paragraph;
 	init();
-	in_update = false;
 }
 
 
-InsetText::InsetText(InsetText const & ins, bool same_id)
-	: UpdatableInset()
+InsetText::InsetText(InsetText const & in, bool same_id)
+	: UpdatableInset(in, same_id), lt(0), in_update(false)
 {
 	par = 0;
-	init(&ins, same_id);
-	in_update = false;
-	autoBreakRows = ins.autoBreakRows;
+	init(&in, same_id);
 }
 
 
 InsetText & InsetText::operator=(InsetText const & it)
 {
 	init(&it);
-	autoBreakRows = it.autoBreakRows;
 	return * this;
 }
 
 
 void InsetText::init(InsetText const * ins, bool same_id)
 {
-	top_y = 0;
-	last_width = 0;
-	last_height = 0;
-	insetAscent = 0;
-	insetDescent = 0;
-	insetWidth = 0;
-	the_locking_inset = 0;
-	old_max_width = 0;
-	no_selection = false;
-	need_update = INIT;
-	drawTextXOffset = 0;
-	drawTextYOffset = 0;
-	autoBreakRows = false;
-	drawFrame_ = NEVER;
-	xpos = 0.0;
-	frame_color = LColor::insetframe;
 	if (ins) {
 		setParagraphData(ins->par);
 		autoBreakRows = ins->autoBreakRows;
@@ -167,15 +148,35 @@ void InsetText::init(InsetText const * ins, bool same_id)
 		frame_color = ins->frame_color;
 		if (same_id)
 			id_ = ins->id_;
+	} else {
+		Paragraph * p = par;
+		while(p) {
+			p->setInsetOwner(this);
+			p = p->next();
+		}
+		the_locking_inset = 0;
+		drawFrame_ = NEVER;
+		frame_color = LColor::insetframe;
+		autoBreakRows = false;
 	}
-	par->setInsetOwner(this);
+	top_y = 0;
+	last_width = 0;
+	last_height = 0;
+	insetAscent = 0;
+	insetDescent = 0;
+	insetWidth = 0;
+	old_max_width = 0;
+	no_selection = false;
+	need_update = INIT;
+	drawTextXOffset = 0;
+	drawTextYOffset = 0;
+	xpos = 0.0;
 	locked = false;
 	old_par = 0;
 	last_drawn_width = -1;
 	frame_is_visible = false;
 	cached_bview = 0;
 	sstate.lpar = 0;
-	lt = 0;
 }
 
 
@@ -201,7 +202,7 @@ void InsetText::clear()
 		par = tmp;
 	}
 	par = new Paragraph;
-	reinitLyXText();
+	reinitLyXText(true);
 }
 
 
@@ -342,6 +343,7 @@ void InsetText::draw(BufferView * bv, LyXFont const & f,
 			need_update = INIT;
 			old_max_width = nw;
 			bv->text->status(bv, LyXText::CHANGED_IN_DRAW);
+			topx_set = true;
 			return;
 		} else {
 			top_x = old_x;
@@ -358,6 +360,7 @@ void InsetText::draw(BufferView * bv, LyXFont const & f,
 	// no draw is necessary !!!
 	if ((drawFrame_ == LOCKED) && !locked && !par->size()) {
 		top_x = int(x);
+		topx_set = true;
 		top_baseline = baseline;
 		x += width(bv, f);
 		if (need_update & CLEAR_FRAME)
@@ -370,7 +373,7 @@ void InsetText::draw(BufferView * bv, LyXFont const & f,
 	if (!owner())
 		x += static_cast<float>(scroll());
 
-	// if top_x differs we have a rule down and we don't have to clear anything
+	// if top_x differs we did it already
 	if (!cleared && (top_x == int(x)) &&
 		((need_update&(INIT|FULL)) || (top_baseline!=baseline) ||
 		 (last_drawn_width!=insetWidth))) {
@@ -378,6 +381,7 @@ void InsetText::draw(BufferView * bv, LyXFont const & f,
 	}
 
 	top_x = int(x);
+	topx_set = true;
 	if (cleared)
 		frame_is_visible = false;
 
@@ -509,12 +513,20 @@ void InsetText::clearFrame(Painter & pain, bool cleared) const
 
 void InsetText::update(BufferView * bv, LyXFont const & font, bool reinit)
 {
-	if (in_update)
+	if (in_update) {
+		if (reinit && owner()) {
+			owner()->update(bv, font, true);
+		}
 		return;
+	}
 	in_update = true;
-	if (reinit) {
-		need_update |= INIT;
+	if (reinit || need_update == INIT) {
+		need_update |= FULL;
+#if 0
 		resizeLyXText(bv);
+#else
+		reinitLyXText();
+#endif
 		if (owner())
 			owner()->update(bv, font, true);
 		in_update = false;
@@ -1691,9 +1703,10 @@ bool InsetText::checkAndActivateInset(BufferView * bv, int x, int y,
 
 int InsetText::getMaxWidth(BufferView * bv, UpdatableInset const * inset) const
 {
+#if 0
 	int w = UpdatableInset::getMaxWidth(bv, inset);
 	if (w < 0) {
-		return w;
+		return -1;
 	}
 	if (owner()) {
 		w = w - top_x + owner()->x();
@@ -1701,11 +1714,16 @@ int InsetText::getMaxWidth(BufferView * bv, UpdatableInset const * inset) const
 	}
 	w -= (2 * TEXT_TO_INSET_OFFSET);
 	return w - top_x;
+#else
+	return UpdatableInset::getMaxWidth(bv, inset);
+#endif
 }
 
 
 void InsetText::setParagraphData(Paragraph * p)
 {
+	// we have to unlock any locked inset otherwise we're in troubles
+	the_locking_inset = 0;
 	while (par) {
 		Paragraph * tmp = par->next();
 		delete par;
@@ -1722,7 +1740,7 @@ void InsetText::setParagraphData(Paragraph * p)
 		np = np->next();
 		np->setInsetOwner(this);
 	}
-	reinitLyXText();
+	reinitLyXText(true);
 }
 
 
@@ -1742,7 +1760,7 @@ void InsetText::setAutoBreakRows(bool flag)
 		need_update = FULL;
 		if (!flag)
 			removeNewlines();
-		reinitLyXText();
+		reinitLyXText(true);
 	}
 }
 
@@ -1911,18 +1929,19 @@ void InsetText::resizeLyXText(BufferView * bv, bool force) const
 	}
 
 	if (bv->screen()) {
-			t->first = bv->screen()->topCursorVisible(t);
+		t->first = bv->screen()->topCursorVisible(t);
 	}
-	if (!owner())
+	if (!owner()) {
 		updateLocal(bv, FULL, false);
-	else
+		// this will scroll the screen such that the cursor becomes visible 
+		bv->updateScrollbar();
+	} else {
 		need_update |= FULL;
-	// this will scroll the screen such that the cursor becomes visible 
-	bv->updateScrollbar();
+	}
 }
 
 
-void InsetText::reinitLyXText() const
+void InsetText::reinitLyXText(bool wrong_cursor) const
 {
 	for(Cache::iterator it = cache.begin(); it != cache.end(); ++it) {
 		lyx::Assert(it->second.text.get());
@@ -1930,6 +1949,11 @@ void InsetText::reinitLyXText() const
 		LyXText * t = it->second.text.get();
 		BufferView * bv = it->first;
 
+		if (wrong_cursor) {
+			t->cursor.par(par);
+			t->cursor.pos(0);
+			t->clearSelection();
+		}
 		saveLyXTextState(t);
 		for (Paragraph * p = par; p; p = p->next()) {
 			p->resizeInsetsLyXText(bv);
@@ -1943,12 +1967,13 @@ void InsetText::reinitLyXText() const
 		if (bv->screen()) {
 			t->first = bv->screen()->topCursorVisible(t);
 		}
-		if (!owner())
+		if (!owner()) {
 			updateLocal(bv, FULL, false);
-		else
+			// this will scroll the screen such that the cursor becomes visible 
+			bv->updateScrollbar();
+		} else {
 			need_update = FULL;
-		// this will scroll the screen such that the cursor becomes visible 
-		bv->updateScrollbar();
+		}
 	}
 }
 

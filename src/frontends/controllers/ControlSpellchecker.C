@@ -157,6 +157,7 @@ void ControlSpellchecker::replaceAll(string const & replacement)
 void ControlSpellchecker::insert()
 {
 	speller_->insert(word_);
+	check();
 }
 
 

@@ -1,3 +1,16 @@
+2001-08-07  Juergen Vigna  <jug@sad.it>
+
+	* inset.C (getMaxWidth): recoded and all it's implementations!
+
+	* insettext.C (init,setParagraph+constructors): cleanups
+	(reinitLyXText): fixed problem with wrong cursor when all paragraphs
+	are new and I want do a save/restore of the cursor position which is
+	not possible anymore.
+
+	* insetcollapsable.C (searchBackward): recollapse inset if not found.
+	(searchBackward): ditto
+	(selectNextWord): ditto
+
 2001-08-07  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* insetlatexaccent.C (checkContents): Add some debug messages

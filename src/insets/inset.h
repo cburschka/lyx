@@ -278,7 +278,7 @@ public:
 	/// open the inset
 	virtual void open(BufferView *) {}
 	/// close the inset
-	virtual void close(BufferView *) {}
+	virtual void close(BufferView *) const {}
 	/// check if the font of the char we want inserting is correct
 	/// and modify it if it is not.
 	virtual bool checkInsertChar(LyXFont &);
@@ -288,6 +288,8 @@ public:
 protected:
 	///
 	mutable int top_x;
+	///
+	mutable bool topx_set; /* have we already drawn ourself! */
 	///
 	mutable int top_baseline;
 	///

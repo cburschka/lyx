@@ -93,7 +93,7 @@ public:
 	///
 	void open(BufferView *);
 	///
-	void close(BufferView *);
+	void close(BufferView *) const;
 	///
 	bool inlined() const { return status_ == Inlined; }
 	///
@@ -107,7 +107,7 @@ public:
 	///
 	ERTStatus status() const { return status_; }
 	///
-	void status(BufferView *, ERTStatus const st);
+	void status(BufferView *, ERTStatus const st) const;
 	///
 	bool showInsetDialog(BufferView *) const;
 
@@ -117,12 +117,12 @@ private:
 	///
 	string const get_new_label() const;
 	///
-	void setButtonLabel();
+	void setButtonLabel() const;
 	///
 	void set_latex_font(BufferView *);
 
 	///
-	ERTStatus status_;
+	mutable ERTStatus status_;
 };
 
 #endif

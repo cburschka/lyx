@@ -1963,7 +1963,8 @@ void Paragraph::resizeInsetsLyXText(BufferView * bv)
 {
 	// then the insets
 	for (InsetList::const_iterator cit = insetlist.begin();
-	     cit != insetlist.end(); ++cit) {
+	     cit != insetlist.end(); ++cit)
+	{
 		if (cit->inset) {
 			if (cit->inset->isTextInset()) {
 				static_cast<UpdatableInset *>

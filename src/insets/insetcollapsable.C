@@ -217,6 +217,7 @@ void InsetCollapsable::draw(BufferView * bv, LyXFont const & f,
 	}
 
 	top_x = int(x);
+	topx_set = true;
 	top_baseline = baseline;
 
 	int const bl = baseline - ascent(bv, f) + ascent_collapsed();
@@ -253,6 +254,7 @@ void InsetCollapsable::edit(BufferView * bv, int xp, int yp,
 			inset.edit(bv, xp, yy, button);
 		}
 	}
+	first_after_edit = true;
 }
 
 
@@ -272,6 +274,7 @@ void InsetCollapsable::edit(BufferView * bv, bool front)
 			return;
 		inset.edit(bv, front);
 	}
+	first_after_edit = true;
 }
 
 
@@ -365,15 +368,16 @@ void InsetCollapsable::insetKeyPress(XKeyEvent * xke)
 
 
 int InsetCollapsable::latex(Buffer const * buf, ostream & os,
-			    bool fragile, bool free_spc) const
+                            bool fragile, bool free_spc) const
 {
 	return inset.latex(buf, os, fragile, free_spc);
 }
 
 
 int InsetCollapsable::getMaxWidth(BufferView * bv,
-				  UpdatableInset const * inset) const
+                                  UpdatableInset const * inset) const
 {
+#if 0
 	int const w = UpdatableInset::getMaxWidth(bv, inset);
 
 	if (w < 0) {
@@ -383,14 +387,21 @@ int InsetCollapsable::getMaxWidth(BufferView * bv,
 	}
 	// should be at least 30 pixels !!!
 	return max(30, w - width_collapsed());
+#else
+	return UpdatableInset::getMaxWidth(bv, inset);
+#endif
 }
 
 
 void InsetCollapsable::update(BufferView * bv, LyXFont const & font,
                               bool reinit)
 {
-	if (in_update)
+	if (in_update) {
+		if (reinit && owner()) {
+			owner()->update(bv, font, true);
+		}
 		return;
+	}
 	in_update = true;
 	inset.update(bv, font, reinit);
 	if (reinit && owner()) {
@@ -407,6 +418,7 @@ InsetCollapsable::localDispatch(BufferView * bv, kb_action action,
 	UpdatableInset::RESULT result = inset.localDispatch(bv, action, arg);
 	if (result == FINISHED)
 		bv->unlockInset(this);
+	first_after_edit = false;
 	return result;
 }
 
@@ -584,17 +596,47 @@ void InsetCollapsable::open(BufferView * bv)
 }
 
 
-void InsetCollapsable::close(BufferView * bv)
+void InsetCollapsable::close(BufferView * bv) const
 {
 	if (collapsed_)
 		return;
 	
 	collapsed_ = true;
-	bv->updateInset(this, true);
+	bv->updateInset(const_cast<InsetCollapsable *>(this), true);
 }
 
 
-void InsetCollapsable::setLabel(string const & l)
+void InsetCollapsable::setLabel(string const & l) const
 {
 	label = l;
+}
+
+
+bool InsetCollapsable::searchForward(BufferView * bv, string const & str,
+                                     bool const & cs, bool const & mw)
+{
+	bool found = inset.searchForward(bv, str, cs, mw);
+	if (first_after_edit && !found)
+		close(bv);
+	first_after_edit = false;
+	return found;
+}
+bool InsetCollapsable::searchBackward(BufferView * bv, string const & str,
+                                      bool const & cs, bool const & mw)
+{
+	bool found = inset.searchBackward(bv, str, cs, mw);
+	if (first_after_edit && !found)
+		close(bv);
+	first_after_edit = false;
+	return found;
+}
+
+
+string const InsetCollapsable::selectNextWord(BufferView * bv, float & value) const
+{
+	string str = inset.selectNextWord(bv, value);
+	if (first_after_edit && str.empty())
+		close(bv);
+	first_after_edit = false;
+	return str;
 }

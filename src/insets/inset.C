@@ -34,14 +34,14 @@ using std::endl;
 unsigned int Inset::inset_id = 0;
 
 Inset::Inset()
-	: top_x(0), top_baseline(0), scx(0), id_(inset_id++), owner_(0),
-	  background_color_(LColor::inherit)
+	: top_x(0), topx_set(false), top_baseline(0), scx(0),
+	  id_(inset_id++), owner_(0), background_color_(LColor::inherit)
 {}
 
 
 Inset::Inset(Inset const & in, bool same_id)
-	: top_x(0), top_baseline(0), scx(0), owner_(0), name_(in.name_),
-	  background_color_(in.background_color_)
+	: top_x(0), topx_set(false), top_baseline(0), scx(0), owner_(0),
+	  name_(in.name_), background_color_(in.background_color_)
 {
 	if (same_id)
 		id_ = in.id();
@@ -310,10 +310,34 @@ UpdatableInset::localDispatch(BufferView * bv,
 
 int UpdatableInset::getMaxWidth(BufferView * bv, UpdatableInset const *) const
 {
-	if (owner())
-		return static_cast<UpdatableInset*>
+	int w;
+	if (owner()){
+		w = static_cast<UpdatableInset*>
 			(owner())->getMaxWidth(bv, this);
-	return bv->workWidth();
+	} else {
+		w = bv->workWidth();
+	}
+	if (w < 0) {
+		return -1;
+	}
+	if (owner()) {
+		if (topx_set) // this makes only sense if we have a top_x
+			w = w - top_x + owner()->x();
+		return w;
+	}
+	// check for margins left/right and extra right margin "const 5"
+	if ((w - ((2 * TEXT_TO_INSET_OFFSET) + 5)) >= 0)
+		w -= (2 * TEXT_TO_INSET_OFFSET) + 5;
+	if (topx_set) {
+		if ((w - top_x) < 10) {
+			w = 10; // minimum I require!!!
+		} else {
+			w -= top_x;
+		}
+	} else if (w < 10) {
+		w = 10;
+	}
+	return w;
 }
 
 

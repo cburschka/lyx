@@ -320,7 +320,7 @@ private:
 	void saveLyXTextState(LyXText *) const;
 	void restoreLyXTextState(BufferView *, LyXText *) const;
 	///
-	void reinitLyXText() const;
+	void reinitLyXText(bool wrong_cursor = false) const;
 	
 	/* Private structures and variables */
 	///

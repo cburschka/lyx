@@ -236,6 +236,7 @@ SearchResult SearchForward(BufferView * bv, LyXText * text, string const & str,
 	if (par) {
 		text->setCursor(bv, par, pos);
 		return SR_FOUND;
+#if 0
 	} else if (text->inset_owner) {
 		// test if we're inside an inset if yes unlock the inset
 		// and recall us with the outside LyXText!
@@ -257,6 +258,7 @@ SearchResult SearchForward(BufferView * bv, LyXText * text, string const & str,
 		} else {
 			return SR_NOT_FOUND;
 		}
+#endif
 	} else
 		return SR_NOT_FOUND;
 }

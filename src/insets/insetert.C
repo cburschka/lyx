@@ -342,7 +342,7 @@ string const InsetERT::get_new_label() const
 }
 
 
-void InsetERT::setButtonLabel() 
+void InsetERT::setButtonLabel() const
 {
 	if (status_ == Collapsed) {
 		setLabel(get_new_label());
@@ -423,6 +423,7 @@ void InsetERT::draw(BufferView * bv, LyXFont const & f,
 	}
 
 	top_x = int(x);
+	topx_set = true;
 	top_baseline = baseline;
 
 	int const bl = baseline - ascent(bv, f) + ascent_collapsed();
@@ -449,7 +450,7 @@ void InsetERT::set_latex_font(BufferView * bv)
 }
 
 
-void InsetERT::status(BufferView * bv, ERTStatus const st)
+void InsetERT::status(BufferView * bv, ERTStatus const st) const
 {
 	if (st != status_) {
 		status_ = st;
@@ -469,11 +470,11 @@ void InsetERT::status(BufferView * bv, ERTStatus const st)
 			need_update = FULL;
 			setButtonLabel();
 			if (bv)
-				bv->unlockInset(this);
+				bv->unlockInset(const_cast<InsetERT *>(this));
 			break;
 		}
 		if (bv)
-			bv->updateInset(this, true);
+			bv->updateInset(const_cast<InsetERT *>(this), true);
 	}
 }
 
@@ -493,7 +494,7 @@ void InsetERT::open(BufferView * bv)
 }
 
 
-void InsetERT::close(BufferView * bv)
+void InsetERT::close(BufferView * bv) const
 {
 	if (collapsed_)
 		return;
