@@ -145,7 +145,7 @@ int LyXText::workWidth() const
 }
 
 
-int LyXText::workWidth(Inset * inset) const
+int LyXText::workWidth(Inset const * inset) const
 {
 	Paragraph * par = inset->parOwner();
 	lyx::Assert(par);

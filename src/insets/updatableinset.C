@@ -142,16 +142,16 @@ int UpdatableInset::getMaxWidth(BufferView * bv, UpdatableInset const *) const
 	int w;
 
 	if (owner()) {
-		w = static_cast<UpdatableInset*> (owner())->getMaxWidth(bv, this);
+		w = static_cast<UpdatableInset *>(owner())->getMaxWidth(bv, this);
 	} else {
-		w = bv->text->workWidth(const_cast<UpdatableInset *>(this));
+		w = bv->text->workWidth(this);
 	}
 	if (w < 0) {
 		return -1;
 	}
 	// check for margins left/right and extra right margin "const 5"
-	if ((w - ((2 * TEXT_TO_INSET_OFFSET) + 5)) >= 0)
-		w -= (2 * TEXT_TO_INSET_OFFSET) + 5;
+	if ((w - (2 * TEXT_TO_INSET_OFFSET + 5)) >= 0)
+		w -= 2 * TEXT_TO_INSET_OFFSET + 5;
 
 	// Deep magic. I don't understand this either.
 	if (owner() && owner()->owner()) {

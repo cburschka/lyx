@@ -175,10 +175,12 @@ void InsetFormulaMacro::draw(BufferView * bv, LyXFont const & f,
 	pi.base.style = LM_ST_TEXT;
 	pi.base.font  = font;
 
+	Dimension dim;
+	dimension(bv, font, dim);
 	int const x = int(xx);
-	int const a = y - ascent(bv, font) + 1;
-	int const w = width(bv, font) - 2;
-	int const h = ascent(bv, font) + descent(bv, font) - 2;
+	int const a = y - dim.a + 1;
+	int const w = dim.w - 2;
+	int const h = dim.height() - 2;
 
 	// LColor::mathbg used to be "AntiqueWhite" but is "linen" now, too
 	pi.pain.fillRectangle(x, a, w, h, LColor::mathmacrobg);

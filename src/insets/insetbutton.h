@@ -14,7 +14,6 @@
 #ifndef INSET_BUTTON_H
 #define INSET_BUTTON_H
 
-
 #include "inset.h"
 #include "LString.h"
 #include <boost/weak_ptr.hpp>

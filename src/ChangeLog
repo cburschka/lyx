@@ -33,6 +33,8 @@
 
 	* iterators.[Ch]: add access to topmost ParagraphList
 
+	* lyxtext.[Ch] (workWidth): add a const
+
 2003-05-23  Alfredo Braunstein  <abraunst@libero.it>
 
 	* texrow.[Ch] (increasePos): remove function

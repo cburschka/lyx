@@ -681,8 +681,7 @@ bool InsetTabular::lfunMouseRelease(FuncRequest const & cmd)
 		ret = the_locking_inset->localDispatch(cmd1);
 	}
 	if (cmd.button() == mouse_button::button3 && !ret) {
-		InsetTabularMailer mailer(*this);
-		mailer.showDialog(cmd.view());
+		InsetTabularMailer(*this).showDialog(cmd.view());
 		return true;
 	}
 	return ret;
