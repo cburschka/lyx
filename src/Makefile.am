@@ -173,7 +173,10 @@ lyx_SOURCES = \
 	vspace.C \
 	vspace.h
 
-lyx_main.o: lyx_main.C lyx_main.h config.h version.h debug.h gettext.h
+lyx_main.o: lyx_main.C lyx_main.h config.h version.h debug.h gettext.h \
+	lyx_gui.h lyx_gui_misc.h lyxrc.h support/path.h support/filetools.h \
+	bufferlist.h debug.h support/FileInfo.h lastfiles.h intl.h \
+	lyxserver.h layout.h gettext.h
 	$(CXXCOMPILE) -DLYX_DIR=\"$(LYX_DIR)\" -DTOP_SRCDIR=\"$(top_srcdir)\" \
 	-DLYX_NAME=\"$(PACKAGE)\" -c $(top_srcdir)/src/lyx_main.C
 

@@ -49,14 +49,13 @@ using std::min;
 
 struct lyxstring::Srep {
 	///
-	static lyxstring::size_type const xtra = 
-	static_cast<lyxstring::size_type>(8);
+	static size_t const xtra = static_cast<size_t>(8);
 	/// size
-	lyxstring::size_type sz;
+	size_t sz;
 	/// Reference count
-	unsigned short ref;
+	size_t ref;
 	/// The total amount of data reserved for this representaion
-	lyxstring::size_type res;
+	size_t res;
 	/// Data. At least 1 char for trailing null.
 	lyxstring::value_type * s;
 	
@@ -344,16 +343,13 @@ void lyxstringInvariant::helper() const
 	// test every last little thing we *know* should be true.
 	// I may have missed a test or two, so feel free to fill
 	// in the gaps.  ARRae.
-	// NOTE:  Don't put TestlyxstringInvariant() in any of the
-	// lyxstring methods used below otherwise you'll get an
-	// infinite recursion and a crash.
 	Assert(object);
 	Assert(object->rep);
 	Assert(object->rep->s);    // s is never 0
 	Assert(object->rep->res);  // always some space allocated
-	Assert(object->size() <= object->rep->res);
+	Assert(object->rep->sz <= object->rep->res);
 	Assert(object->rep->ref >= 1);  // its in use so it must be referenced
-	Assert(object->rep->ref < (1 << 8*sizeof(object->rep->ref)) - 1);
+	Assert(object->rep->ref < static_cast<size_t>(1 << (8 * sizeof(object->rep->ref) - 1)));
 	// if it does ever == then we should be generating a new copy
 	// and starting again.  (Is char always 8-bits?)
 }
@@ -367,7 +363,8 @@ void lyxstringInvariant::helper() const
 // Constructors and Deconstructors.
 ///////////////////////////////////////
 
-lyxstring::size_type const lyxstring::npos = static_cast<lyxstring::size_type>(-1);
+lyxstring::size_type const lyxstring::npos =
+static_cast<lyxstring::size_type>(-1);
 
 lyxstring::lyxstring()
 {
@@ -983,7 +980,8 @@ lyxstring::size_type lyxstring::rfind(value_type const * ptr, size_type i,
 }
 
 
-lyxstring::size_type lyxstring::rfind(value_type const * ptr, size_type i) const
+lyxstring::size_type lyxstring::rfind(value_type const * ptr,
+				      size_type i) const
 {
 	Assert(ptr);
 	TestlyxstringInvariant(this);
@@ -1123,7 +1121,7 @@ lyxstring::size_type lyxstring::find_last_of(value_type c, size_type i) const
 
 
 lyxstring::size_type lyxstring::find_first_not_of(lyxstring const & a,
-					      size_type i) const
+						  size_type i) const
 {
 	TestlyxstringInvariant(this);
 
@@ -1412,49 +1410,11 @@ lyxstring::size_type lyxstring::copy(value_type * buf, size_type len,
 ////////////////////
 
 // Compare funcs should be verified.
-// Should we try to make them work with '\0' value_types?
-// An STL string can usually contain '\0' value_types.
 
-int lyxstring::compare(lyxstring const & str) const
+int lyxstring::internal_compare(size_type pos, size_type n,
+				value_type const * s,
+				size_type slen, size_type n2) const
 {
-	TestlyxstringInvariant(this);
-
-	return compare(0, rep->sz, str.c_str(), str.rep->sz);
-}
-
-
-int lyxstring::compare(value_type const * s) const
-{
-	Assert(s);
-	TestlyxstringInvariant(this);
-
-	return compare(0, rep->sz, s, (!s) ? 0 : strlen(s));
-}
-
-
-int lyxstring::compare(size_type pos, size_type n, lyxstring const & str) const
-{
-	TestlyxstringInvariant(this);
-
-	return compare(pos, n, str.c_str(), str.rep->sz);
-}
-
-
-int lyxstring::compare(size_type pos, size_type n, lyxstring const & str,
-		     size_type pos2, size_type n2) const
-{
-	TestlyxstringInvariant(this);
-
-	return compare(pos, n, str.c_str() + pos2, n2);
-}
-
-
-int lyxstring::compare(size_type pos, size_type n, value_type const * s,
-		     size_type n2) const
-{
-	Assert(s && (pos < rep->sz || pos == 0));
-	TestlyxstringInvariant(this);
-
 	if ((rep->sz == 0 || n == 0) && (!*s || n2 == 0)) return 0;
 	if (!*s) return 1;
 	// since n > n2, min(n,n2) == 0, c == 0 (stops segfault also)
@@ -1462,7 +1422,7 @@ int lyxstring::compare(size_type pos, size_type n, value_type const * s,
         // remember that n can very well be a lot larger than rep->sz
         // so we have to ensure that n is no larger than rep->sz
         n = min(n, rep->sz);
-	n2 = min(n2, strlen(s));
+	n2 = min(n2, slen);
         if (n == n2)
 		return memcmp(&(rep->s[pos]), s, n);
 	int c = memcmp(&(rep->s[pos]), s, min(n,n2));
@@ -1471,6 +1431,52 @@ int lyxstring::compare(size_type pos, size_type n, value_type const * s,
 	if (n < n2)
 		return -1;
 	return 1;
+}
+
+
+int lyxstring::compare(lyxstring const & str) const
+{
+	TestlyxstringInvariant(this);
+	return internal_compare(0, rep->sz, str.rep->s,
+				str.rep->sz, str.rep->sz);
+}
+
+
+int lyxstring::compare(value_type const * s) const
+{
+	Assert(s);
+	TestlyxstringInvariant(this);
+	int n = (!s) ? 0 : strlen(s);
+	return internal_compare(0, rep->sz, s, n, n);
+}
+
+
+int lyxstring::compare(size_type pos, size_type n, lyxstring const & str) const
+{
+	Assert(pos < rep->sz || pos == 0);
+	TestlyxstringInvariant(this);
+	return internal_compare(pos, n, str.rep->s, str.rep->sz, str.rep->sz);
+}
+
+
+int lyxstring::compare(size_type pos, size_type n, lyxstring const & str,
+		       size_type pos2, size_type n2) const
+{
+	Assert(pos < rep->sz || pos == 0);
+	Assert(pos2 < str.rep->sz || pos2 == 0);
+	TestlyxstringInvariant(this);
+	return internal_compare(pos, n,
+				str.rep->s + pos2,
+				str.rep->sz - pos2, n2);
+}
+
+
+int lyxstring::compare(size_type pos, size_type n, value_type const * s,
+		       size_type n2) const
+{
+	Assert(s && (pos < rep->sz || pos == 0));
+	TestlyxstringInvariant(this);
+	return internal_compare(pos, n, s, (!s) ? 0 : strlen(s), n2);
 }
 
 

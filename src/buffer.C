@@ -159,7 +159,7 @@ bool Buffer::saveParamsAsDefaults()
 	// Use the current buffer's parameters as default
 	defaults.params.Copy(params);
 	// add an empty paragraph. Is this enough?
-	defaults.paragraph = new LyXParagraph();
+	defaults.paragraph = new LyXParagraph;
 
 	return defaults.writeFile(defaults.filename,false);
 }
@@ -258,7 +258,7 @@ bool Buffer::insertLyXFile(string const & filen)
 // if par = 0 normal behavior
 // else insert behavior
 // Returns false if "\the_end" is not read for formats >= 2.13. (Asger)
-bool Buffer::readLyXformat2(LyXLex &lex, LyXParagraph *par)
+bool Buffer::readLyXformat2(LyXLex &lex, LyXParagraph * par)
 {
 	string tmptok;
 	Inset * inset = 0;
@@ -277,7 +277,10 @@ bool Buffer::readLyXformat2(LyXLex &lex, LyXParagraph *par)
 	string pretoken;
 
 	if(!par) {
-		par = new LyXParagraph();
+		par = new LyXParagraph;
+#ifdef NEW_TEXT
+		par->text.reserve(500);
+#endif
 	} else {
 		text->BreakParagraph();
 		return_par = text->FirstParagraph();
@@ -326,8 +329,15 @@ bool Buffer::readLyXformat2(LyXLex &lex, LyXParagraph *par)
 		} else if (token == "\\layout") {
 			if (!return_par) 
 				return_par = par;
-			else 
+			else {
+#ifdef NEW_TEXT
+				par->text.resize(par->text.size());
+#endif
 				par = new LyXParagraph(par);
+#ifdef NEW_TEXT
+				par->text.reserve(500);
+#endif
+			}
 			pos = 0;
 			lex.EatLine();
 			string layoutname = lex.GetString();
@@ -354,8 +364,15 @@ bool Buffer::readLyXformat2(LyXLex &lex, LyXParagraph *par)
 		} else if (token == "\\end_float") {
 			if (!return_par) 
 				return_par = par;
-			else 
+			else {
+#ifdef NEW_TEXT
+				par->text.resize(par->text.size());
+#endif
 				par = new LyXParagraph(par);
+#ifdef NEW_TEXT
+				par->text.reserve(500);
+#endif
+			}
 			footnotekind = LyXParagraph::FOOTNOTE;
 			footnoteflag = LyXParagraph::NO_FOOTNOTE;
 			pos = 0;

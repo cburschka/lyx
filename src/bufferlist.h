@@ -21,6 +21,8 @@
 #include "buffer.h"
 #include "debug.h"
 
+#define NEW_STORE 1
+
 /** A class to hold all the buffers in a structure
   The point of this class is to hide from bufferlist what kind
   of structure the buffers are stored in. Should be no concern for
@@ -30,15 +32,41 @@
   gave me an "internal gcc error".
   */
 class BufferStorage {
+#ifdef NEW_STORE
+public:
+	///
+	typedef vector<Buffer *> Container;
+	///
+	typedef Container::iterator iterator;
+	///
+	bool empty() const { return container.empty(); }
+	///
+	void release(Buffer * buf);
+	///
+	Buffer * newBuffer(string const & s, LyXRC *, bool = false);
+	///
+	Container::iterator begin() { return container.begin(); }
+	///
+	Container::iterator end() { return container.end(); }
+	///
+	Buffer * front() { return container.front(); }
+	///
+	Buffer * operator[](int c) { return container[c]; }
+	///
+	int size() const { return container.size(); }
+private:
+	///
+	Container container;
+#else
 public:
 	///
 	BufferStorage();
 	///
-	bool isEmpty();
+	bool empty();
 	///
-	void release(Buffer* buf);
+	void release(Buffer * buf);
 	///
-	Buffer* newBuffer(string const &s, LyXRC *, bool =false);
+	Buffer* newBuffer(string const & s, LyXRC *, bool =false);
 private:
 	enum {
 		/** The max number of buffers there are possible to have
@@ -54,8 +82,11 @@ private:
 	Buffer *buffer[NUMBER_OF_BUFFERS];
 	///
 	friend class BufferStorage_Iter;
+#endif
 };
 
+
+#ifndef NEW_STORE
 /// An Iterator class for BufferStorage
 class BufferStorage_Iter {
 public:
@@ -72,7 +103,7 @@ private:
 	///
 	unsigned char index;
 };
-
+#endif
 
 
 /** The class governing all the open buffers
@@ -84,9 +115,6 @@ class BufferList {
 public:
 	///
  	BufferList();
-
-	///
-	~BufferList();
 
 	/// state info
 	enum list_state {
@@ -104,11 +132,11 @@ public:
             true), the file name will not be added to the last opened
 	    files list
 	    */  
-	Buffer* loadLyXFile(string const & filename, 
-			    bool tolastfiles = true);
+	Buffer * loadLyXFile(string const & filename, 
+			     bool tolastfiles = true);
 	
 	///
-	bool isEmpty();
+	bool empty();
 
 	/// Saves buffer. Returns false if unsuccesful.
 	bool write(Buffer *, bool makeBackup = true);
@@ -123,24 +151,20 @@ public:
 	void resize();
 
 	/// Read a file into a buffer readonly or not.
-	Buffer* readFile(string const &, bool ro);
+	Buffer * readFile(string const &, bool ro);
 
 	/// Make a new file (buffer) using a template
-	Buffer* newFile(string const &, string);
+	Buffer * newFile(string const &, string);
 
 	/** This one must be moved to some other place.
 	 */
 	void makePup(int);
 
-	///** Later with multiple frames this should not be here.
-	// */
-	//Buffer* switchBuffer(Buffer *from, int);
+	///
+	void updateInset(Inset *, bool = true);
 
 	///
-	void updateInset(Inset*, bool = true);
-
-	///
-	int unlockInset(UpdatableInset*);
+	int unlockInset(UpdatableInset *);
 
 	///
 	void updateIncludedTeXfiles(string const &);
@@ -154,15 +178,15 @@ public:
 	bool close(Buffer *);
 
 	///
-	Buffer* first();
+	Buffer * first();
 	
 	/// returns true if the buffer exists already
 	bool exists(string const &);
 
 	/// returns a pointer to the buffer with the given name.
-	Buffer* getBuffer(string const &);
+	Buffer * getBuffer(string const &);
 	/// returns a pointer to the buffer with the given number.
-	Buffer* getBuffer(int);
+	Buffer * getBuffer(int);
 
 private:
 	///

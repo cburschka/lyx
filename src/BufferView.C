@@ -520,6 +520,7 @@ void BufferView::UpCB(FL_OBJECT * ob, long)
 static
 void waitForX()
 {
+#if 0
 	static Window w = 0;
 	static Atom a = 0;
 	if (!a)
@@ -539,6 +540,8 @@ void waitForX()
 	XChangeProperty(fl_display, w, a, a, 8,
 			PropModeAppend, reinterpret_cast<unsigned char*>(""), 0);
 	XWindowEvent(fl_display, w, PropertyChangeMask, &ev);
+#endif
+	XSync(fl_get_display(), 0);
 }
 
 

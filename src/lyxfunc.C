@@ -2826,7 +2826,7 @@ void LyXFunc::reloadBuffer()
 void LyXFunc::CloseBuffer()
 {
 	if (bufferlist.close(owner->currentBuffer()) && !quitting) {
-		if (bufferlist.isEmpty()) {
+		if (bufferlist.empty()) {
 			// need this otherwise SEGV may occur while trying to
 			// set variables that don't exist
 			// since there's no current buffer

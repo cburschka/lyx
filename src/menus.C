@@ -1573,7 +1573,11 @@ void Menus::ShowBufferMenu(FL_OBJECT * ob, long)
 	// set the pseudo menu-button back
 	fl_set_object_boxtype(ob, FL_FLAT_BOX);
 	fl_redraw_object(ob);
+#ifdef NEW_STORE
+	if (choice > 0) men->handleBufferMenu(choice - 1);
+#else
 	if (choice > 0) men->handleBufferMenu(choice);
+#endif
    
 	fl_freepup(BufferMenu);
 }

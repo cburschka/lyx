@@ -1898,8 +1898,9 @@ This is not implemented yet.
 	if (sel_start_cursor.par->ParFromPos(sel_start_cursor.pos) 
 	    == sel_end_cursor.par->ParFromPos(sel_end_cursor.pos)) {
 		/* only within one paragraph */
-		simple_cut_buffer = new LyXParagraph();
+		simple_cut_buffer = new LyXParagraph;
 #ifdef NEW_TEXT
+		simple_cut_buffer->text.reserve(500);
 		LyXParagraph::size_type i =
 			sel_start_cursor.pos;
 #else
@@ -2072,6 +2073,9 @@ void LyXText::CopySelection()
 	    == sel_end_cursor.par->ParFromPos(sel_end_cursor.pos)) {
 		/* only within one paragraph */
 		simple_cut_buffer = new LyXParagraph;
+#if NEW_TEXT
+		simple_cut_buffer->text.reserve(500);
+#endif
 		for (i = sel_start_cursor.pos; i < sel_end_cursor.pos; ++i){
 			sel_start_cursor.par->CopyIntoMinibuffer(i);
 			simple_cut_buffer->InsertFromMinibuffer(i - sel_start_cursor.pos);
@@ -2390,8 +2394,8 @@ bool LyXText::IsStringInText(LyXParagraph * par, int pos, char const * str)
 	if (par) {
 		int i = 0;
 		while (pos + i < par->Last() && str[i] && 
-		       str[i]==par->GetChar(pos+i)) {
-			i++;
+		       str[i] == par->GetChar(pos + i)) {
+			++i;
 		}
 		if (!str[i])
 			return true;
@@ -3427,7 +3431,9 @@ bool LyXText::TextHandleUndo(Undo * undo){ // returns false if no undo possible
 				if (undo->kind == Undo::EDIT){
 					tmppar2->text = tmppar->text;
 #ifdef NEW_TEXT
-					tmppar->text.clear();
+					//tmppar->text.clear();
+					tmppar->text.erase(tmppar->text.begin(),
+							   tmppar->text.end());
 #else
 					tmppar->text = 0;
 #endif
@@ -3598,7 +3604,9 @@ Undo * LyXText::CreateUndo(Undo::undo_kind kind, LyXParagraph * before,
 		// a memory optimization: Just store the layout information when only edit
 		if (kind == Undo::EDIT){
 #ifdef NEW_TEXT
-			tmppar2->text.clear();
+			//tmppar2->text.clear();
+			tmppar2->text.erase(tmppar2->text.begin(),
+					    tmppar2->text.end());
 #else
 			if (tmppar2->text)
 				delete[] tmppar2->text;
@@ -3615,7 +3623,8 @@ Undo * LyXText::CreateUndo(Undo::undo_kind kind, LyXParagraph * before,
 			// a memory optimization: Just store the layout information when only edit
 			if (kind == Undo::EDIT){
 #ifdef NEW_TEXT
-				tmppar2->next->text.clear();
+				//tmppar2->next->text.clear();
+				tmppar2->next->text.erase(tmppar2->next->text.begin(), tmppar2->next->text.end());
 #else
 				if (tmppar2->next->text)
 					delete[] tmppar2->next->text;

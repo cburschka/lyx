@@ -854,7 +854,7 @@ int LyXText::Fill(Row * row, int paperwidth)
    LyXParagraph::size_type main_body =
 	   BeginningOfMainBody(row->par);
    LyXParagraph::size_type i = row->pos;
-   while (i < last) {
+   while (i <= last) {
 #else
    int main_body = BeginningOfMainBody(row->par);
    int i = row->pos;

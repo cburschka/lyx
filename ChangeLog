@@ -1,3 +1,27 @@
+1999-11-05  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/bufferlist.C: use a vector to store the buffers in. This is
+	an internal change and should not affect any other thing.
+	
+	* src/BufferView.C (waitForX): use XSync instead of the lengthy
+	stuff in waitForX.
+
+	* src/text.C (Fill): fix potential bug, one off bug.
+
+1999-11-04  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/Makefile.am (lyx_main.o): add more files it depends on.
+
+	* src/lyx_cb.C (addNewlineAndDepth): parameters in wrong order.
+
+	* src/support/lyxstring.C: use size_t for the reference count,
+	size, reserved memory and xtra.
+	(internal_compare): new private member function. Now the compare
+	functions should work for std::strings that have embedded '\0'
+	characters.
+	(compare): all compare functions rewritten to use
+	internal_compare.
+	
 1999-11-03  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/support/lyxstring.C (compare): pass c_str()

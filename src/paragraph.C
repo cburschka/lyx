@@ -697,6 +697,7 @@ void LyXParagraph::Erase(int pos)
 #endif
 #ifdef NEW_TEXT
 		text.erase(text.begin() + pos);
+		//text.erase(pos, 1);
 #else
 		// Shift rest of text      
 		for (int i = pos; i < last - 1; i++) {
@@ -847,6 +848,7 @@ void LyXParagraph::InsertChar(int pos, char c)
 		return;
 	}
 	text.insert(text.begin() + pos, c);
+	//text.insert(pos, c);
 #else
 	/* > because last is the next unused position, and you can 
 	 * use it if you want  */
@@ -1872,6 +1874,7 @@ void LyXParagraph::BreakParagraph(int pos, int flag)
 
 #ifdef NEW_TEXT
 		pos_end = pos_first + par->text.size() - 1;
+		tmp->text.reserve(pos_end - pos);
 #else
 		pos_end = pos_first + par->last - 1;
 		/* make sure there is enough memory for the now larger
@@ -1888,7 +1891,9 @@ void LyXParagraph::BreakParagraph(int pos, int flag)
 
 		for (i = pos_end; i >= pos; i--)
 			par->Erase(i - pos_first);
-#ifndef NEW_TEXT
+#ifdef NEW_TEXT
+		par->text.resize(par->text.size());
+#else
 		/* free memory of the now shorter paragraph*/
 		par->FitSize();
 #endif
@@ -1961,7 +1966,7 @@ LyXParagraph * LyXParagraph::FirstSelfrowPar()
 LyXParagraph * LyXParagraph::Clone()
 {
 	/* create a new paragraph */
-	LyXParagraph * result = new LyXParagraph();
+	LyXParagraph * result = new LyXParagraph;
    
 	result->MakeSameLayout(this);
 
@@ -1983,6 +1988,7 @@ LyXParagraph * LyXParagraph::Clone()
 	/* copy everything behind the break-position to the new paragraph */
    
 #ifdef NEW_TEXT
+	result->text.reserve(size());
 	for (size_type i = 0; i < size(); i++) {
 		CopyIntoMinibuffer(i);
 		result->InsertFromMinibuffer(i);
@@ -2070,7 +2076,9 @@ void LyXParagraph::BreakParagraphConservative(int pos)
 		   InsertFromMinibuffer will enlarge the memory (it uses
 		   InsertChar of course). But doing it by hand
 		   is MUCH faster! (only one time, not thousend times!!) */
-#ifndef NEW_TEXT   
+#ifdef NEW_TEXT
+		tmp->text.reserve(pos_end - pos);
+#else
 		tmp->Enlarge(0, pos_end - pos);
 #endif
 		for (i = pos; i <= pos_end; i++) {
@@ -2080,7 +2088,9 @@ void LyXParagraph::BreakParagraphConservative(int pos)
 		}
 		for (i = pos_end; i >= pos; i--)
 			par->Erase(i - pos_first);
-#ifndef NEW_TEXT
+#ifdef NEW_TEXT
+		par->text.resize(par->text.size());
+#else
 		/* free memory of the now shorter paragraph*/
 		par->FitSize();
 #endif

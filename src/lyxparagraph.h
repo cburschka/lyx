@@ -17,15 +17,17 @@
 #endif
 
 #define NEW_TEXT 1
-#define NEW_TABLE 1
+//#define NEW_TABLE 1
 
 #ifdef NEW_TABLE
 #include <list>
 #endif
 
 #ifdef NEW_TEXT
-//#include <vector>
-#include <deque>
+#include <vector>
+//#include <deque>
+//#define __STD_STUFF 1
+//#include <rope.h>
 #endif
 
 #include "definitions.h"
@@ -142,7 +144,11 @@ public:
 
 #ifdef NEW_TEXT
 	///
-	typedef deque<char> TextContainer;
+	typedef char value_type;
+	///
+	typedef vector<value_type> TextContainer;
+	//typedef deque<char> TextContainer;
+	//typedef rope<char> TextContainer;
 	typedef int size_type;
 	///
 	TextContainer text;

@@ -533,7 +533,12 @@ private:
 	//lyxstring & operator=(int);
 	//
 	//lyxstring & operator+=(int);
-	
+
+	/// Compare this with s. works with embedded '\0' chars also.
+	int internal_compare(size_type pos, size_type n,
+			     value_type const * s,
+			     size_type slen, size_type n2) const;
+		
 	/// Forward declaration of the string representation
 	struct Srep;
 	// DEC cxx requires this.

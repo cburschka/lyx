@@ -148,7 +148,7 @@ extern "C" int LyX_XErrHandler(Display *display, XErrorEvent *xeev)
 {
 //#warning Please see if you can trigger this!
 	// emergency save
-	if (!bufferlist.isEmpty())
+	if (!bufferlist.empty())
 		bufferlist.emergencyWriteAll();
 
 	// Get the reason for the crash.
