@@ -1,3 +1,15 @@
+2001-01-04  Juergen Vigna  <jug@sad.it>
+
+	* src/insets/insettabular.C (resetPos): an extra scroll, but we
+	really should redo all this scrolling code!
+
+	* src/text.C (GetVisibleRow): check that y/h values are good otherwise
+	change them.
+
+	* src/insets/insettabular.C (LocalDispatch): fixes to PASTESELECTION.
+	(pasteSelection): pay attention to multicolumn cells.
+	(calculate_dimensions_of_cells): forgot to reset maxAsc/Desc.
+
 2001-01-03  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/mathed/math_panel.C (deco_cb): check the decoration index is

@@ -970,36 +970,40 @@ UpdatableInset::RESULT InsetTabular::LocalDispatch(BufferView * bv, int action,
 	if (clip.empty())
 	    break;
 	if (clip.find('\t') != string::npos) {
-	    int cols = 0;
-	    int rows = 0;
-	    int maxCols = 0;
+	    int cols = 1;
+	    int rows = 1;
+	    int maxCols = 1;
+	    unsigned int len = clip.length();
 	    string::size_type p = 0;
 
-	    while((p < clip.length()) &&
-		  (p = clip.find_first_of("\t\n", p)) != string::npos)
+	    while((p < len) &&
+		  ((p = clip.find_first_of("\t\n", p)) != string::npos))
 	    {
 		switch(clip[p]) {
 		case '\t':
 		    ++cols;
 		    break;
 		case '\n':
-		    ++rows;
-		    maxCols = max(cols+1, maxCols);
-		    cols = 0;
+		    if ((p+1) < len)
+			++rows;
+		    maxCols = max(cols, maxCols);
+		    cols = 1;
 		    break;
 		}
 		++p;
 	    }
+	    maxCols = max(cols, maxCols);
 	    delete paste_tabular;
-	    paste_tabular = new LyXTabular(this, rows+1, maxCols);
+	    paste_tabular = new LyXTabular(this, rows, maxCols);
 	    string::size_type op = 0;
 	    int cell = 0;
-	    unsigned int len = clip.length();
 	    int cells = paste_tabular->GetNumberOfCells();
 	    p = cols = 0;
 	    while((cell < cells) && (p < len) &&
 		  (p = clip.find_first_of("\t\n", p)) != string::npos)
 	    {
+		if (p >= len)
+		    break;
 		switch(clip[p]) {
 		case '\t':
 		    paste_tabular->GetCellInset(cell)->SetText(clip.substr(op, p-op));
@@ -1013,12 +1017,12 @@ UpdatableInset::RESULT InsetTabular::LocalDispatch(BufferView * bv, int action,
 		    cols = 0;
 		    break;
 		}
-		op = p + 1;
 		++p;
+		op = p;
 	    }
 	    // check for the last cell if there is no trailing '\n'
-	    if ((cell < cells) && ((op-1) < len))
-		paste_tabular->GetCellInset(cell)->SetText(clip.substr(op, p-op));
+	    if ((cell < cells) && (op < len))
+		paste_tabular->GetCellInset(cell)->SetText(clip.substr(op, len-op));
 	} else {
 	    // so that the clipboard is used and it goes on to default
 	    // and executes LFUN_PASTESELECTION in insettext!
@@ -1131,6 +1135,8 @@ bool InsetTabular::calculate_dimensions_of_cells(BufferView * bv,
 	return changed;
     }
     for (int i = 0; i < tabular->rows(); ++i) {
+	maxAsc = 0;
+	maxDesc = 0;
 	for (int j= 0; j < tabular->columns(); ++j) {
 	    if (tabular->IsPartOfMultiColumn(i,j))
 		continue;
@@ -1283,6 +1289,7 @@ void InsetTabular::resetPos(BufferView * bv) const
     }
     static int const offset = ADD_TO_TABULAR_WIDTH + 2;
     int new_x = getCellXPos(actcell);
+    int old_x = cursor.x();
     new_x += offset;
     cursor.x(new_x);
 //    cursor.x(getCellXPos(actcell) + offset);
@@ -1299,6 +1306,9 @@ void InsetTabular::resetPos(BufferView * bv) const
 	LyXFont font(LyXFont::ALL_SANE);
 	cursor.x(cursor.x() + tabular->GetCellInset(actcell)->width(bv,font) +
 		tabular->GetBeginningOfTextInCell(actcell));
+    } else if (scroll() && (top_x > 20) &&
+	       ((top_x+tabular->GetWidthOfTabular()) > (bv->workWidth()-20))) {
+	scroll(bv, old_x - cursor.x());
     }
     if ((!the_locking_inset ||
 	 !the_locking_inset->GetFirstLockingInsetOfType(TABULAR_CODE)) &&
@@ -2138,6 +2148,17 @@ bool InsetTabular::pasteSelection(BufferView * bv)
 	    (c1 < paste_tabular->columns()) && (c2 < tabular->columns());
 	    ++c1, ++c2)
 	{
+	    if (paste_tabular->IsPartOfMultiColumn(r1,c1) &&
+		tabular->IsPartOfMultiColumn(r2,c2))
+		continue;
+	    if (paste_tabular->IsPartOfMultiColumn(r1,c1)) {
+		--c2;
+		continue;
+	    }
+	    if (tabular->IsPartOfMultiColumn(r2,c2)) {
+		--c1;
+		continue;
+	    }
 	    int n1 = paste_tabular->GetCellNumber(r1, c1);
 	    int n2 = tabular->GetCellNumber(r2, c2);
 	    *(tabular->GetCellInset(n2)) = *(paste_tabular->GetCellInset(n1));
