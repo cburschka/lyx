@@ -150,14 +150,14 @@ def update_tabular(lines):
                     paragraph = []
                     if cell_info[m][4] == '1':
                         l = j
-                        paragraph.extend(cell_content[j][k])
+                        paragraph = paragraph + cell_content[j][k]
                         while cell_info[m][4] == '1':
                             m = m + columns
                             l = l + 1
-                            paragraph.extend(cell_content[l][k])
+                            paragraph = paragraph + cell_content[l][k]
                     else:
                         paragraph = cell_content[j][k]
-                    tmp.extend(set_paragraph_properties(paragraph, prop_dict))
+                    tmp = tmp + set_paragraph_properties(paragraph, prop_dict)
                 
                 tmp.append('\\end_inset ')
                 tmp.append('</Cell>')
@@ -169,10 +169,7 @@ def update_tabular(lines):
         tmp.append('\\end_inset ')
         tmp.append('')
         tmp.append('')
-        tail = lines[i:]
-        lines[i:] = []
-        lines.extend(tmp)
-        lines.extend(tail)
+        lines[i:i] = tmp
 
         i = i + len(tmp)
 
