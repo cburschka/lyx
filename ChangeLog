@@ -1,3 +1,9 @@
+2001-06-06  Juergen Vigna  <jug@sad.it>
+
+	* src/paragraph.C (BreakParagraph): Setting of the inset_owner
+	variable if this paragraph is inside an Inset, otherwise some
+	operations may not work as expected after the break of the paragraph.
+
 2001-05-30  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* configure.in:
