@@ -822,7 +822,6 @@ dist_layouts_DATA =\
 	layouts/numarticle.inc \
 	layouts/numreport.inc \
 	layouts/numrevtex.inc \
-	layouts/db_stdcounters.inc \
 	layouts/agu-dtd.layout \
 	layouts/agu_stdclass.inc \
 	layouts/agu_stdcounters.inc \
