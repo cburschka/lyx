@@ -10,7 +10,9 @@
 \usepackage{extramarks}
 \usepackage{ifthen}
 \usepackage{lastpage}
-\pagestyle{fancy}
+%%\usepackage{geometry}
+\usepackage{calc}
+%%\usepackage{setspace}
 \renewcommand{\ref}[1]{#1}
 \newcommand\@ptsize{}
 \newif\if@restonecol
@@ -19,7 +21,8 @@
 \newif\if@openright
 \DeclareOption{letterpaper}
    {\setlength\paperheight {11in}%
-    \setlength\paperwidth  {8.5in}}
+    \setlength\paperwidth  {8.5in}%
+}
 \DeclareFontFamily{OT1}{pcr}{\hyphenchar\font=-1}
 \DeclareFontShape{OT1}{pcr}{m}{n}{<12>  pcrr7t}{}
 \DeclareFontFamily{T1}{pcr}{\hyphenchar\font=-1}
@@ -150,17 +153,8 @@
 \setlength\columnseprule{0\p@}
 \pagestyle{plain}
 \pagenumbering{arabic}
-\if@twoside
-\else
   \raggedbottom
-\fi
-\if@twocolumn
-  \twocolumn
-  \sloppy
-  \flushbottom
-\else
   \onecolumn
-\fi
 % This stuff is for a shooting script
 % \lhead{\ifthenelse{ \not \value{page} = 1}{CONTINUED:}{}}
 % \rfoot{\ifthenelse{ \not \value{page}=\pageref{LastPage}}{(CONT'D)}
@@ -168,6 +162,24 @@
 
 
 % This is what we want for a spec script
+%% set l & rt margin
+ \setlength{\rightmargin}{.75in}
+   \setlength{\leftmargin}{1.5in}%
+   \setlength{\textwidth}%
+     {\paperwidth -\leftmargin -\rightmargin}%
+%% Set vertical spacing
+   \setlength\topmargin {.5in}%
+   \setlength\headheight {12bp}%
+   \setlength\headsep {24bp}%
+   \setlength\footskip {0bp}% there are no footnotes
+%% set page length
+\newlength{\bmargin}%
+\setlength{\bmargin}{.75in}%
+\setlength{\textheight}%
+{\paperheight -\bmargin -\topmargin -\headheight -\headsep }% 
+
+
+\pagestyle{headings}
 \rhead{\thepage.}
 \cfoot{}
   % This one is needed to get real adobe courier, but you can use
@@ -180,39 +192,86 @@
   % hyphenation, but I do not remember how.
   % That's good because we -do not- want any hyphenation.
   \sloppy
+\newcommand{\titleover}[1]{\filbreak
+\par TITLEOVER:\par\centering{#1}\par\raggedright}
 \newcommand{\fadein}[1]{\filbreak\raggedright\par FADE IN: \uppercase{#1}}%
 \newcommand{\fadeout}{\filbreak\raggedright\par FADE OUT }%
-\newcommand{\interiorshot}[1]{\filbreak\raggedright\par INT. \uppercase{#1}}%
-\newcommand{\exteriorshot}[1]{\filbreak\raggedright\par EXT. \uppercase{#1}}%
+\newcommand{\intercut}{\filbreak\par INTERCUT WITH: }%
+\newcommand{\interiorshot}[1]%
+{\filbreak
+\vspace{4bp}
+\raggedright
+\par INT. 
+\uppercase{#1}}%
+\newcommand{\exteriorshot}[1]%
+{\filbreak
+\vspace{4bp}
+\raggedright
+\par EXT. 
+\uppercase{#1}}%
+
+\newlength{\dialogLength}
+\setlength{\dialogLength}{3in plus 1in}
+\newlength{\dialogindent}
+\setlength{\dialogindent}{1in plus .5in minus .25in}
 
 \newcommand{\dialogue}[1]%
 {\raggedright
-\hspace{1in}
-\parbox{4in}{#1}
-\vspace{6pt}
+\hspace{\dialogindent}
+\parbox{\dialogLength}{#1}
+\vspace{4bp}
 }
 
 \newcommand{\narrative}[1]%
 {\filbreak
-\vspace{6pt}
+\vspace{4bp}
 \raggedright{#1}
-\vspace{6pt}
+\vspace{4bp}
 }
-
-
+\newcommand{\description}[1]%
+{
+\vspace{2bp}
+\raggedright{#1}
+\vspace{4bp}
+}
+\newsavebox{\currentspeaker}
+\newlength{\speakerindent}
+\setlength{\speakerindent}{2.25in plus .5in minus .25in}
 \newcommand{\speaker}[1]%
 {\filbreak
-\vspace{12pt}
-\hspace{2.25in}{#1}
-\vspace{6pt}
+\vspace{4bp}
+\hspace{\speakerindent}
+\sbox{\currentspeaker}{\uppercase{#1}}
+\usebox{\currentspeaker}
+\vspace{2bp}
 }
+\newcommand{\contd}%
+{\filbreak
+\vspace{4bp}
+\hspace{\speakerindent}\usebox{\currentspeaker} (CONT'D)
+\vspace{2bp}
+}
+
+\newcommand{\more}%
+{
+\vspace{0bp}
+\hspace{\speakerindent}\uppercase{(MORE)}
+\pagebreak\contd%
+}
+
+\newlength{\parenLength}
+\setlength{\parenLength}{1.5in}
+\newlength{\parenindent}
+\setlength{\parenindent}{1.75in plus .25in minus .25in}
 
 \newcommand{\parenthetical}[1]%
 {\raggedright
-\hspace{1.75in}
-\parbox{1.5in}{(#1)}
-\vspace{6pt}}
+\hspace{\parenindent}
+\parbox{\parenLength}{(#1)}
+\vspace{4bp}}
+
 
 \endinput
 %%
-%% End of file `hollywood.cls'.
+%% End of file `hollywood.cls'
+~
