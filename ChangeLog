@@ -1,3 +1,7 @@
+2000-10-17  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/lyx_gui.C (init): increase max number of menus to 128.
+
 2000-10-16  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/mathed/math_macro.C (MathMacroTemplate): initialize args to

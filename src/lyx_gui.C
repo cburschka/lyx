@@ -45,6 +45,9 @@
 #include "banner.xpm"
 #endif
 
+#include <vector>
+extern vector<int>::size_type max_number_of_menus;
+
 using std::endl;
 
 FD_form_title * fd_form_title;
@@ -241,6 +244,7 @@ void LyXGUI::init()
  	fl_setpup_fontsize(FL_NORMAL_SIZE);
  	fl_setpup_color(FL_MCOL, FL_BLACK);
 	fl_set_goodies_font(FL_NORMAL_STYLE, FL_NORMAL_SIZE);
+	max_number_of_menus = fl_setpup_maxpup(128);
 
         // all lyxrc settings has to be done here as lyxrc has not yet
         // been read when the GUI is created (Jug)

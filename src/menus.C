@@ -1283,7 +1283,7 @@ void Menus::ShowEditMenu(FL_OBJECT * ob, long)
 	fl_freepup(SubVersionControl);
 }
 
-vector<int>::size_type const max_number_of_menus = 32;
+vector<int>::size_type max_number_of_menus = 32;
 unsigned int const max_number_of_items = 25;
 
 string Limit_string_length(string const & str) {
