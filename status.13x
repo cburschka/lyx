@@ -45,7 +45,7 @@ What's new
 
 - delete lyxserver pipes on exit [bug #865, Qt only]
 
-- fix bug where "lyx -e" would refuse to work [Qt only]
+- fix bug where "lyx -e" would refuse to work [bug #788, Qt only]
 
 - some tab-navigation problems in dialogs fixed [Qt only]
 
@@ -61,6 +61,8 @@ What's new
 
 - duplicate 'A' shortcut in spellchecker dialog fixed [bug #884, Qt
   only]
+
+- duplicate 'i' shortcut in paragraph dialog fixed [bug #918, Qt only]
 
 - in the BibTeX dialog, fix the browsing mechanism of *.sty files and
   remove the unused Update button [bug #773, Qt only]
@@ -82,6 +84,20 @@ What's new
 - enable the debug level to be set in lyx2lyx
 
 - fix strerror() build problem with some gcc/glibc versions [bug #874]
+
+- revert is now disabled for an unchanged or unsaved document [bug #783]
+
+- The spell-checking system has been over-hauled, including the following
+  changes :
+
+  o start spell-checking immediately on pressing F7
+  o xform's broken start/stop button removed
+  o better spell progress feedback
+  o long hang on ispell error changed
+  o infinite hang on ispell error fixed
+  o reports ispell errors back to the user
+  o the personal dictionaries are always correctly written out
+  o "Accept" button became "Ignore All" for clarity
 
 - fix compilation on OpenBSD
 
