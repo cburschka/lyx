@@ -234,7 +234,7 @@ Menuset
 		Item "URL...|U" "url-insert"
 		Item "Footnote|F" "footnote-insert"
 		Item "Marginal Note|M" "marginalnote-insert"
-		Item "Note|N" "note-insert"
+		Submenu "Note|N" "insert_note"
 		Item "Minipage|p" "minipage-insert"
 		Item "Short Title" "optional-insert"
 		Item "TeX|X" "ert-insert"
@@ -323,6 +323,12 @@ Menuset
 		Separator
 		Item "External Material..." "dialog-show-new-inset external"
 		Item "Child Document...|d" "dialog-show-new-inset include"
+	End
+
+	Menu "insert_note"
+		Item "Yellow Note" "note-insert Note"
+		Item "LaTeX Comment" "note-insert Comment"
+		Item "Greyed Out" "note-insert Greyedout"
 	End
 
 #

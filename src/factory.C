@@ -71,7 +71,7 @@ InsetOld * createInset(FuncRequest const & cmd)
 		return new InsetMinipage(params);
 
 	case LFUN_INSERT_NOTE:
-		return new InsetNote(params, "Note");
+		return new InsetNote(params, cmd.getArg(0));
 
 	case LFUN_INSET_ERT:
 		return new InsetERT(params);
