@@ -37,10 +37,8 @@ void MathAccentInset::Metrics(MathStyles st, int, int)
 
 void MathAccentInset::draw(Painter & pain, int x, int y)
 {
-	int const dw = width() - 2;
 	xcell(0).draw(pain, x, y);
-	x += (code == LM_not) ? (width() - dw) / 2 : 2;
-	mathed_draw_deco(pain, x, y - dy, dw, dh, code);
+	mathed_draw_deco(pain, x, y - dy, width(), dh, code);
 }
 
 
