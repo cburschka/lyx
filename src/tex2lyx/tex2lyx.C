@@ -529,7 +529,7 @@ void parse(Parser & p, ostream & os, unsigned flags, mode_type mode)
 			string const opts = p.getArg('[', ']');
 			string const body = p.verbatimItem();
 			// only non-lyxspecific stuff
-			if (name != "noun" && name != "tabularnewline") {
+			if (name != "\\noun " && name != "\\tabularnewline ") {
 				ostream & out = in_preamble ? h_preamble : os;
 				if (!in_preamble)
 					begin_inset(os, "FormulaMacro\n");
