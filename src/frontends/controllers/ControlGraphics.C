@@ -30,6 +30,7 @@
 #include "support/tostr.h"
 #include "support/filetools.h"
 #include "support/FileInfo.h"
+#include "support/path_defines.h"
 
 using namespace lyx::support;
 
@@ -38,7 +39,6 @@ using std::make_pair;
 using std::vector;
 
 // We need these in the file browser.
-extern string system_lyxdir;
 extern string user_lyxdir;
 
 
@@ -80,7 +80,7 @@ string const ControlGraphics::Browse(string const & in_name)
 	FileInfo fileInfo(clipdir);
 	if (!(fileInfo.isOK() && fileInfo.isDir()))
 		// No - bail out to system clipart directory
-		clipdir = AddName (system_lyxdir, "clipart");
+		clipdir = AddName (system_lyxdir(), "clipart");
 	pair<string, string> dir1(_("Clipart|#C#c"), clipdir);
 	pair<string, string> dir2(_("Documents|#o#O"), string(lyxrc.document_path));
 	// Show the file browser dialog

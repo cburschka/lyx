@@ -27,11 +27,13 @@
 using std::endl;
 
 
-string system_lyxdir;
 string user_lyxdir;
 
 
 namespace {
+
+// Store for the path to the lyx support files we're actually going to use.
+string system_lyxdir_;
 
 /* The absolute path to the system-level lyx support files.
  * (Make-time value.)
@@ -75,6 +77,18 @@ string const & build_lyxdir()
 }
 
 
+string const & system_lyxdir()
+{
+	return system_lyxdir_;
+}
+
+
+void system_lyxdir(string const & sld)
+{
+	system_lyxdir_ = sld;
+}
+
+
 bool setLyxPaths()
 {
 	//
@@ -112,10 +126,10 @@ bool setLyxPaths()
 	// If no chkconfig.ltx file is found, a warning is given,
 	// and the hardcoded lyx_dir is used.
 
-	// If we had a command line switch, system_lyxdir is already set
+	// If we had a command line switch, system_lyxdir_ is already set
 	string searchpath;
-	if (!system_lyxdir.empty())
-		searchpath = MakeAbsPath(system_lyxdir) + ';';
+	if (!system_lyxdir_.empty())
+		searchpath = MakeAbsPath(system_lyxdir_) + ';';
 
 	string const lyxdir = GetEnvPath("LYX_DIR_14x");
 
@@ -173,26 +187,26 @@ bool setLyxPaths()
 
 	string const filename = "chkconfig.ltx";
 	string const temp = FileOpenSearch(searchpath, filename, string());
-	system_lyxdir = OnlyPath(temp);
+	system_lyxdir_ = OnlyPath(temp);
 
 	// Reduce "path/../path" stuff out of system directory
-	system_lyxdir = NormalizePath(system_lyxdir);
+	system_lyxdir_ = NormalizePath(system_lyxdir_);
 
 	bool path_shown = false;
 
 	// Warn if environment variable is set, but unusable
 	if (!lyxdir.empty()) {
-		if (system_lyxdir != NormalizePath(lyxdir)) {
+		if (system_lyxdir_ != NormalizePath(lyxdir)) {
 			lyxerr <<_("LYX_DIR_14x environment variable no good.")
 			       << '\n'
 			       << _("System directory set to: ")
-			       << system_lyxdir << endl;
+			       << system_lyxdir_ << endl;
 			path_shown = true;
 		}
 	}
 
 	// Warn the user if we couldn't find "chkconfig.ltx"
-	if (system_lyxdir == "./") {
+	if (system_lyxdir_ == "./") {
 		lyxerr <<_("LyX Warning! Couldn't determine system directory. ")
 		       <<_("Try the '-sysdir' command line parameter or ")
 		       <<_("set the environment variable LYX_DIR_14x to the "
@@ -210,13 +224,13 @@ bool setLyxPaths()
 		} else {
 			lyxerr << _("Expect problems.") << endl;
 		}
-		system_lyxdir = lyx_dir();
+		system_lyxdir_ = lyx_dir();
 		path_shown = true;
 	}
 
 	if (!path_shown)
 		lyxerr[Debug::INIT] << "System directory: '"
-				    << system_lyxdir << '\'' << endl;
+				    << system_lyxdir_ << '\'' << endl;
 
 	//
 	// Determine user lyx-dir

@@ -64,7 +64,6 @@ extern void QuitLyX();
 
 extern LyXServer * lyxserver;
 
-extern string system_lyxdir;
 extern string user_lyxdir;
 
 DebugStream lyxerr;
@@ -250,7 +249,7 @@ void LyX::init(bool gui)
 	lyx_gui::use_gui = gui;
 
 	if (lyxrc.template_path.empty()) {
-		lyxrc.template_path = AddPath(system_lyxdir, "templates");
+		lyxrc.template_path = AddPath(system_lyxdir(), "templates");
 	}
 
 	if (lyxrc.lastfiles.empty()) {
@@ -413,7 +412,7 @@ void LyX::deadKeyBindings(kb_keymap * kbmap)
 
 void LyX::queryUserLyXDir(bool explicit_userdir)
 {
-	string const configure_script = AddName(system_lyxdir, "configure");
+	string const configure_script = AddName(system_lyxdir(), "configure");
 
 	// Does user directory exist?
 	FileInfo fileInfo(user_lyxdir);
@@ -647,7 +646,7 @@ int parse_sysdir(string const & arg, string const &)
 		lyxerr << _("Missing directory for -sysdir switch") << endl;
 		exit(1);
 	}
-	system_lyxdir = arg;
+	system_lyxdir(arg);
 	return 1;
 }
 

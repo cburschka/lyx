@@ -22,6 +22,12 @@ namespace support {
  */
 string const & build_lyxdir();
 
+/// The absolute path to the lyx support files we're actually going to use.
+string const & system_lyxdir();
+
+/// Set the absolute path to the lyx support files (from the command line).
+void system_lyxdir(string const &);
+
 /** \returns true if the user lyx dir existed already and did not need
  *  to be created afresh.
  */

@@ -64,7 +64,6 @@ using std::vector;
 using std::setw;
 using std::setfill;
 
-extern string system_lyxdir;
 extern string user_lyxdir;
 
 using namespace lyx::support;

@@ -80,7 +80,6 @@ using std::ifstream;
 using std::vector;
 using std::getline;
 
-extern string system_lyxdir;
 extern string user_lyxdir;
 
 namespace lyx {
@@ -187,7 +186,7 @@ string const FileOpenSearch(string const & path, string const & name,
 		path_element = os::slashify_path(path_element);
 		if (!suffixIs(path_element, '/'))
 			path_element+= '/';
-		path_element = subst(path_element, "$$LyX", system_lyxdir);
+		path_element = subst(path_element, "$$LyX", system_lyxdir());
 		path_element = subst(path_element, "$$User", user_lyxdir);
 
 		real_file = FileSearch(path_element, name, ext);
@@ -302,7 +301,7 @@ string const LibFileSearch(string const & dir, string const & name,
 	if (!fullname.empty())
 		return fullname;
 
-	return FileSearch(AddPath(system_lyxdir, dir), name, ext);
+	return FileSearch(AddPath(system_lyxdir(), dir), name, ext);
 }
 
 

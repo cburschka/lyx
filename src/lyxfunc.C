@@ -68,6 +68,7 @@
 #include "support/lstrings.h"
 #include "support/tostr.h"
 #include "support/path.h"
+#include "support/path_defines.h"
 #include "support/lyxfunctional.h"
 
 #include <ctime>
@@ -1783,7 +1784,7 @@ void LyXFunc::open(string const & fname)
 			make_pair(string(_("Documents|#o#O")),
 				  string(lyxrc.document_path)),
 			make_pair(string(_("Examples|#E#e")),
-				  string(AddPath(system_lyxdir, "examples"))));
+				  string(AddPath(system_lyxdir(), "examples"))));
 
 		FileDialog::Result result =
 			fileDlg.open(initpath,
@@ -1858,7 +1859,7 @@ void LyXFunc::doImport(string const & argument)
 			make_pair(string(_("Documents|#o#O")),
 				  string(lyxrc.document_path)),
 			make_pair(string(_("Examples|#E#e")),
-				  string(AddPath(system_lyxdir, "examples"))));
+				  string(AddPath(system_lyxdir(), "examples"))));
 
 		string const extension = "*." + formats.extension(format)
 			+ "| " + formats.prettyName(format)

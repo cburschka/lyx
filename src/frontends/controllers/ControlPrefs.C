@@ -21,12 +21,12 @@
 #include "helper_funcs.h"
 #include "gettext.h"
 #include "support/filetools.h"
+#include "support/path_defines.h"
 #include "frontends/Dialogs.h"
 #include "converter.h"
 #include "format.h"
 #include "debug.h"
 
-extern string system_lyxdir;
 extern string user_lyxdir;
 extern BufferList bufferlist;
 
@@ -62,7 +62,7 @@ void ControlPrefs::apply()
 
 string const ControlPrefs::browsebind(string const & file)
 {
-	string dir  = AddName(system_lyxdir, "bind");
+	string dir  = AddName(system_lyxdir(), "bind");
 	// FIXME: stupid name
 	string name = _("System Bind|#S#s");
 	pair<string,string> dir1(name, dir);
@@ -78,7 +78,7 @@ string const ControlPrefs::browsebind(string const & file)
 
 string const ControlPrefs::browseUI(string const & file)
 {
-	string dir  = AddName(system_lyxdir, "ui");
+	string dir  = AddName(system_lyxdir(), "ui");
 	// FIXME: stupid name
 	string name = _("Sys UI|#S#s");
 	pair<string,string> dir1(name, dir);
@@ -94,7 +94,7 @@ string const ControlPrefs::browseUI(string const & file)
 
 string const ControlPrefs::browsekbmap(string const & file)
 {
-	string const dir = AddName(system_lyxdir, "kbd");
+	string const dir = AddName(system_lyxdir(), "kbd");
 	string const name = _("Key maps|#K#k");
 	pair<string, string> dir1(name, dir);
 

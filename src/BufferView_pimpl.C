@@ -59,6 +59,7 @@
 #include "support/LAssert.h"
 #include "support/tostr.h"
 #include "support/filetools.h"
+#include "support/path_defines.h"
 
 #include <boost/bind.hpp>
 #include <boost/signals/connection.hpp>
@@ -935,7 +936,7 @@ void BufferView::Pimpl::MenuInsertLyXFile(string const & filen)
 			make_pair(string(_("Documents|#o#O")),
 				  string(lyxrc.document_path)),
 			make_pair(string(_("Examples|#E#e")),
-				  string(AddPath(system_lyxdir, "examples"))));
+				  string(AddPath(system_lyxdir(), "examples"))));
 
 		FileDialog::Result result =
 			fileDlg.open(initpath,

@@ -37,6 +37,7 @@
 #include "support/lstrings.h"
 #include "support/lyxalgo.h"
 #include "support/path.h"
+#include "support/path_defines.h"
 #include "support/tostr.h"
 #include "support/LAssert.h"
 #include "support/translator.h"
@@ -559,7 +560,7 @@ string const doSubstitution(InsetExternal::Params const & params,
 	result = subst(result, "$$Basename", basename);
 	result = subst(result, "$$FPath", filepath);
 	result = subst(result, "$$Tempname", params.tempname);
-	result = subst(result, "$$Sysdir", system_lyxdir);
+	result = subst(result, "$$Sysdir", system_lyxdir());
 
 	// Handle the $$Contents(filename) syntax
 	if (contains(result, "$$Contents(\"")) {

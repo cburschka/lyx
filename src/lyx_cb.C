@@ -35,6 +35,7 @@
 #include "support/filetools.h"
 #include "support/forkedcall.h"
 #include "support/path.h"
+#include "support/path_defines.h"
 #include "support/systemcall.h"
 #include "support/lstrings.h"
 
@@ -456,7 +457,7 @@ void Reconfigure(BufferView * bv)
 	Path p(user_lyxdir);
 	Systemcall one;
 	one.startscript(Systemcall::Wait,
-			AddName(system_lyxdir, "configure"));
+			AddName(system_lyxdir(), "configure"));
 	p.pop();
 	bv->owner()->message(_("Reloading configuration..."));
 	lyxrc.read(LibFileSearch(string(), "lyxrc.defaults"));

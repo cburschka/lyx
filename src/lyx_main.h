@@ -27,8 +27,6 @@ class kb_keymap;
 
 /// e.g. $HOME/.lyx/
 extern string user_lyxdir;
-/// e.g. /usr/share/lyx/
-extern string system_lyxdir;
 /// last files loaded
 extern boost::scoped_ptr<LastFiles> lastfiles;
 
