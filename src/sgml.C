@@ -11,12 +11,20 @@
 
 #include <config.h>
 
-#include "support/std_ostream.h"
-
-#include "paragraph.h"
 #include "sgml.h"
 
-using std::endl;
+#include "buffer.h"
+#include "bufferparams.h"
+#include "counters.h"
+#include "lyxtext.h"
+#include "paragraph.h"
+
+#include "support/lstrings.h"
+#include "support/std_ostream.h"
+#include "support/tostr.h"
+
+using lyx::support::subst;
+
 using std::make_pair;
 
 using std::ostream;
@@ -86,16 +94,26 @@ pair<bool, string> escapeChar(char c)
 }
 
 
-int openTag(ostream & os, Paragraph::depth_type depth,
-	    bool mixcont, string const & latexname,
-		string const & latexparam)
+int openTag(Buffer const & buf, ostream & os, Paragraph::depth_type depth,
+	    bool mixcont, string const & name, string const & param)
 {
-	if (!latexname.empty() && latexname != "!-- --") {
+	Counters & counters = buf.params().getLyXTextClass().counters();
+	LyXLayout_ptr const & defaultstyle = buf.params().getLyXTextClass().defaultLayout();
+
+	string attribute = param;
+	// code for paragraphs like the standard paragraph in AGU.
+	if ( defaultstyle->latexname() == name and !defaultstyle->latexparam().empty()) {
+		counters.step(name);
+		int i = counters.value(name);
+		attribute += "" + subst(defaultstyle->latexparam(), "#", tostr(i));
+	}
+
+	if (!name.empty() && name != "!-- --") {
 		if (!mixcont)
 			os << string(depth, ' ');
-		os << '<' << latexname;
-		if (!latexparam.empty())
-			os << " " << latexparam;
+		os << '<' << name;
+		if (!attribute.empty())
+			os << " " << attribute;
 		os << '>';
 	}
 
@@ -104,12 +122,12 @@ int openTag(ostream & os, Paragraph::depth_type depth,
 
 
 int closeTag(ostream & os, Paragraph::depth_type depth,
-	     bool mixcont, string const & latexname)
+	     bool mixcont, string const & name)
 {
-	if (!latexname.empty() && latexname != "!-- --") {
+	if (!name.empty() && name != "!-- --") {
 		if (!mixcont)
 			os << '\n' << string(depth, ' ');
-		os << "</" << latexname << '>';
+		os << "</" << name << '>';
 	}
 
 	if (!mixcont)

@@ -1,4 +1,12 @@
-2004-10-24   José Matos  <jamatos@lyx.org>
+2004-10-24  José Matos  <jamatos@lyx.org>
+
+	* buffer.C (makeLinuxDocFile, makeDocBookFile):
+	* output_docbook.C (makeParagraph, makeEnvironment, makeCommand):
+	* output_linuxdoc.C (linuxdocParagraphs):
+	* sgml.[Ch] (openTag): )move paragraph counting code to openTag, and
+	add buffer as argument.
+
+2004-10-24  José Matos  <jamatos@lyx.org>
 
 	* output_docbook.C (makeEnvironment, searchEnvironment): place
 	CDATA inside paragraphs and fix scope for listitems.

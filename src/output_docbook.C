@@ -100,21 +100,13 @@ ParagraphList::const_iterator makeParagraph(Buffer const & buf,
 					    ParagraphList::const_iterator const & pbegin,
 					    ParagraphList::const_iterator const & pend) {
 	ParagraphList::const_iterator par = pbegin;
-	Counters & counters = buf.params().getLyXTextClass().counters();
 	const int depth = 0;
-
 	for(; par != pend; ++par) {
 		LyXLayout_ptr const & style = par->layout();
 		string id = par->getDocbookId();
-	
-		if (!style->latexparam().empty()) {
-			counters.step("para");
-			int i = counters.value("para");
-			id = subst(style->latexparam(), "#", tostr(i));
-		}
-
 		id = id.empty()? "": " id = \"" + id + "\"";
-		sgml::openTag(os, depth, true, style->latexname(), id);
+
+		sgml::openTag(buf, os, depth, true, style->latexname(), id);
 		par->simpleDocBookOnePar(buf, os, outerFont(par - paragraphs.begin(), paragraphs), runparams, depth);
 	
 		sgml::closeTag(os, depth, true, style->latexname());
@@ -132,7 +124,6 @@ ParagraphList::const_iterator makeEnvironment(Buffer const & buf,
 					      ParagraphList::const_iterator const & pend) {
 	ParagraphList::const_iterator par = pbegin;
 
-	Counters & counters = buf.params().getLyXTextClass().counters();
 	LyXLayout_ptr const & defaultstyle = buf.params().getLyXTextClass().defaultLayout();
 	const int depth = 0;
 
@@ -142,7 +133,7 @@ ParagraphList::const_iterator makeEnvironment(Buffer const & buf,
 	string id = par->getDocbookId();
 	string env_name = bstyle->latexname();
 	// Opening outter tag
-	sgml::openTag(os, depth, false, env_name, bstyle->latexparam() + id);
+	sgml::openTag(buf, os, depth, false, env_name, bstyle->latexparam() + id);
 	os << '\n';
 	if (bstyle->latextype == LATEX_ENVIRONMENT and bstyle->innertag() == "CDATA")
 		os << "<![CDATA[";
@@ -157,21 +148,16 @@ ParagraphList::const_iterator makeEnvironment(Buffer const & buf,
 		switch (bstyle->latextype) {
 		case LATEX_ENVIRONMENT:
 			if (!bstyle->innertag().empty() and bstyle->innertag() != "CDATA") {
-				sgml::openTag(os, depth, true, bstyle->innertag());
+				sgml::openTag(buf, os, depth, true, bstyle->innertag());
 			}
 			break;
 
 		case LATEX_ITEM_ENVIRONMENT:
 			if (!bstyle->labeltag().empty()) {
-				sgml::openTag(os, depth, true, bstyle->labeltag());
+				sgml::openTag(buf, os, depth, true, bstyle->labeltag());
 			} else {
-				if (!defaultstyle->latexparam().empty()) {
-					counters.step("para");
-					id = tostr(counters.value("para"));
-					id = " id=\""+ subst(defaultstyle->latexparam(), "#", id) + '"';
-				}
 				wrapper = defaultstyle->latexname();
-				sgml::openTag(os, depth, true, bstyle->itemtag());
+				sgml::openTag(buf, os, depth, true, bstyle->itemtag());
 			}
 		default:
 			break;
@@ -181,7 +167,7 @@ ParagraphList::const_iterator makeEnvironment(Buffer const & buf,
 		case LATEX_ENVIRONMENT:
 		case LATEX_ITEM_ENVIRONMENT: {
 			if(par->params().depth() == pbegin->params().depth()) {
-				sgml::openTag(os, depth, true, wrapper, id);
+				sgml::openTag(buf, os, depth, true, wrapper, id);
 				par->simpleDocBookOnePar(buf, os, outerFont(par - paragraphs.begin(), paragraphs), runparams, depth);
 				sgml::closeTag(os, depth, true, wrapper);
 				++par;
@@ -236,7 +222,6 @@ ParagraphList::const_iterator makeCommand(Buffer const & buf,
 	Paragraph::depth_type depth = 0; // paragraph depth
 
 	ParagraphList::const_iterator par = pbegin;
-
 	Counters & counters = buf.params().getLyXTextClass().counters();
 	LyXLayout_ptr const & bstyle = par->layout();
 	
@@ -257,18 +242,18 @@ ParagraphList::const_iterator makeCommand(Buffer const & buf,
 	}
 
 	//Open outter tag
-	sgml::openTag(os, depth, false, bstyle->latexname(), id);
+	sgml::openTag(buf, os, depth, false, bstyle->latexname(), id);
 	os << '\n';
 
 	// Label around sectioning number:
 	if (!bstyle->labeltag().empty()) {
-		sgml::openTag(os, depth, false, bstyle->labeltag());
+		sgml::openTag(buf, os, depth, false, bstyle->labeltag());
 		os << expandLabel(buf.params().getLyXTextClass(), bstyle, false);
 		sgml::closeTag(os, depth, false, bstyle->labeltag());
 	}
 	
 	// Opend inner tag
-	sgml::openTag(os, depth, true, bstyle->innertag());
+	sgml::openTag(buf, os, depth, true, bstyle->innertag());
 
 	par->simpleDocBookOnePar(buf, os, outerFont(par - paragraphs.begin(), paragraphs),
 				 runparams, depth);

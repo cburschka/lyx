@@ -18,31 +18,25 @@
 #include <iosfwd>
 #include <utility>
 
+class Buffer;
+
 namespace sgml {
 
 /**
- * Escape the given character if necessary
+ * Escape the given character, if necessary,
  * to an SGML entity. Returns true
  * if it was a whitespace character.
  */
 std::pair<bool, std::string> escapeChar(char c);
 
-/// FIXME
-int openTag(std::ostream & os, lyx::depth_type depth,
-	    bool mixcont, std::string const & latexname,
-		std::string const & latexparam = std::string());
+/// Opens tag
+int openTag(Buffer const & buf, std::ostream & os, lyx::depth_type depth,
+	    bool mixcont, std::string const & name,
+	    std::string const & param = std::string());
 
-/// FIXME
+/// Close tag
 int closeTag(std::ostream & os, lyx::depth_type depth,
-	    bool mixcont, std::string const & latexname);
-
-///
-unsigned int closeEnvTags(std::ostream & os,
-		bool mixcont,
-		std::string const & environment_inner_depth,
-		std::string const & item_tag,
-		lyx::depth_type total_depth);
+	    bool mixcont, std::string const & name);
 
 }
-
 #endif // SGML_H
