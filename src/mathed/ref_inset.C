@@ -41,8 +41,7 @@ void RefInset::infoize(std::ostream & os) const
 dispatch_result
 RefInset::dispatch(FuncRequest const & cmd, idx_type & idx, pos_type & pos)
 {
-	lyxerr << "RefInset::dispatch" << std::endl;
-	lyxerr << "dispatching " << cmd.argument << "\n";
+	lyxerr << "RefInset::dispatch " << cmd.argument << std::endl;
 	switch (cmd.action) {
 		case LFUN_MOUSE_RELEASE:
 			if (cmd.button() == mouse_button::button3) {
@@ -51,17 +50,12 @@ RefInset::dispatch(FuncRequest const & cmd, idx_type & idx, pos_type & pos)
 				return DISPATCHED;
 			}
 			if (cmd.button() == mouse_button::button1) {
-				lyxerr << "trying to open ref" << cell(0) << "\n";
 				// Eventually trigger dialog with button 3
 				// not 1
 				ostringstream data;
 				WriteStream wsdata(data);
 				write(wsdata);
-
-				lyxerr << "ref_inset dispatch.\n"
-				       << "this " << this << "\n"
-				       << "The data is "<< data.str()
-				       << std::endl;
+				wsdata << "\n\\end_inset\n\n";
 
 				cmd.view()->owner()->getDialogs().
 					show("ref", data.str(), this);
