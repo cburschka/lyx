@@ -1,7 +1,7 @@
 AUTOMAKE_OPTIONS = foreign
 DISTCLEANFILES= *.orig *.rej *~ *.bak core
 MAINTAINERCLEANFILES = $(srcdir)/Makefile.in
-noinst_LTLIBRARIES = libinsets.o
+noinst_LTLIBRARIES = libinsets.la
 LIBS =
 ETAGS_ARGS = --lang=c++
 BOOST_INCLUDES = -I$(top_srcdir)/boost
@@ -15,7 +15,7 @@ EXTRA_DIST = \
 	insettheorem.C \
 	insettheorem.h
 
-libinsets_o_SOURCES = \
+libinsets_la_SOURCES = \
 	ExternalTemplate.C \
 	ExternalTemplate.h \
 	figinset.C \
@@ -88,3 +88,8 @@ libinsets_o_SOURCES = \
 #	insetsection.C \
 #	insettheorem.C \
 #	insettheorem.h \
+
+libinsets.la: libinsets.o
+
+libinsets.o: $(libinsets_la_OBJECTS) $(libinsets_la_DEPENDENCIES)
+	$(CXXLINK) $(libinsets_la_OBJECTS)

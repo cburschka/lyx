@@ -9,19 +9,19 @@ ETAGS_ARGS = --lang=c++
 BOOST_INCLUDES = -I$(top_srcdir)/boost
 INCLUDES = ${FRONTEND_INCLUDES} -I${srcdir}/.. -I${srcdir}/xforms ${SIGC_CFLAGS} $(BOOST_INCLUDES)
 LIBS =
-noinst_LTLIBRARIES = libfrontends.o
+noinst_LTLIBRARIES = libfrontends.la
 
-libfrontends_o_LIBADD= \
+libfrontends_la_LIBADD= \
 	xforms/*.lo \
 	controllers/*.lo \
 	support/libfrontendsupport.o
 
-libfrontends_o_DEPENDENCIES = \
+libfrontends_la_DEPENDENCIES = \
 	xforms/*.lo \
 	controllers/*.lo \
 	support/libfrontendsupport.o
 
-libfrontends_o_SOURCES=\
+libfrontends_la_SOURCES=\
 	Alert.C \
 	Alert.h \
 	Alert_pimpl.h \
@@ -38,6 +38,11 @@ libfrontends_o_SOURCES=\
 	Timeout.h \
 	Toolbar.C \
 	Toolbar.h
+
+libfrontends.la: libfrontends.o
+
+libfrontends.o: $(libfrontends_la_OBJECTS) $(libfrontends_la_DEPENDENCIES)
+	$(CXXLINK) $(libfrontends_la_OBJECTS) $(libfrontends_la_LIBADD)
 
 EXTRA_DIST = qt2 gnome
 
