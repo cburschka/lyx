@@ -10,6 +10,7 @@
  */
 
 #include <config.h>
+#include <string>
 
 #include "Spacing.h"
 
