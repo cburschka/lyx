@@ -9,6 +9,7 @@ src/converter.C
 src/CutAndPaste.C
 src/debug.C
 src/exporter.C
+src/ext_l10n.h
 src/figure_form.C
 src/figureForm.C
 src/FontLoader.C
@@ -174,7 +175,6 @@ src/insets/inseturl.C
 src/kbsequence.C
 src/language.C
 src/LaTeX.C
-src/layout.C
 src/LColor.C
 src/LyXAction.C
 src/lyx_cb.C
@@ -184,6 +184,7 @@ src/lyxfunc.C
 src/lyx_main.C
 src/lyxrc.C
 src/LyXSendto.C
+src/lyxtextclasslist.C
 src/lyxvc.C
 src/LyXView.C
 src/mathed/formulabase.C

@@ -301,11 +301,13 @@ void LyXTabular::AppendColumn(int cell)
 			c_info[i][j] = cell_info[i][j - 1];
 		}
 		// care about multicolumns
-		if (c_info[i][column + 1].multicolumn==CELL_BEGIN_OF_MULTICOLUMN) {
+		if (c_info[i][column + 1].multicolumn==CELL_BEGIN_OF_MULTICOLUMN)
+		{
 			c_info[i][column + 1].multicolumn = CELL_PART_OF_MULTICOLUMN;
 		}
-		if ((column + 1) == columns_ ||
-			c_info[i][column + 2].multicolumn != CELL_PART_OF_MULTICOLUMN) {
+		if ((column + 2) >= columns_ ||
+			c_info[i][column + 2].multicolumn != CELL_PART_OF_MULTICOLUMN)
+		{
 			c_info[i][column + 1].multicolumn = LyXTabular::CELL_NORMAL;
 		}
 	}
