@@ -1,3 +1,9 @@
+2000-01-04  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/lyx_gui_misc.C: add a 'using std::make_pair;' statement.
+
+	* src/lyx_gui_misc.h: add a 'using std::pair;' statement.
+
 1999-12-30  Allan Rae  <rae@lyx.org>
 
 	* lib/templates/IEEEtran.lyx: minor change

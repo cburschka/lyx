@@ -17,6 +17,7 @@
 #include FORMS_H_LOCATION
 #include "LString.h"
 #include <utility>  /* needed for pair<> definition */
+using std::pair;
 
 /// Prevents LyX from being killed when the close box is pressed in a popup.
 extern "C" int CancelCloseBoxCB(FL_FORM *, void *);

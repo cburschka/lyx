@@ -32,6 +32,8 @@
 #include "insets/insetindex.h"
 #include "LyXView.h"
 
+using std::make_pair;
+
 extern BufferView * current_view;
 
 extern FD_form_paragraph * fd_form_paragraph;
