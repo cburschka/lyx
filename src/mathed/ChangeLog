@@ -1,5 +1,11 @@
 
-2001-02-14  André Pönitz  <poenitz@htwm.de>
+2001-03-06  André Pönitz  <poenitz@htwm.de>
+	* array.[Ch]: factor out deep_copy,
+	  remove third argument from raw_pointer_insert 
+
+	* mathiter.[Ch]: remove unused function Clear()	
+
+2001-03-04  André Pönitz  <poenitz@htwm.de>
   * math_macrotemplate.[Ch]:
     math_macro.C: move update() functionality to the macro
 

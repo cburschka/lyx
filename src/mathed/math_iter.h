@@ -110,8 +110,6 @@ public:
 	void setNumCols(int n) { ncols = n; }
 	///
 	MathedArray * GetData() const;
-	/// Copy every object from position p1 to p2
-	void Clear();
 protected:
 	///
 	void split(int);

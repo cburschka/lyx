@@ -96,7 +96,7 @@ public:
 	MathedInset * getInset(int pos);
 #else
 	///
-	void raw_pointer_insert(void * p, int pos, int len);
+	void raw_pointer_insert(void * p, int pos);
 #endif
 	///
 	void strange_copy(MathedArray * dest, int dpos, int spos, int len);
@@ -113,6 +113,8 @@ public:
 	void need_size(int needed);
 	///
 	void dump(std::ostream &) const;
+	/// creates copies of all embedded insets
+	void deep_copy();
 private:
 	/// Buffer
 	buffer_type bf_;

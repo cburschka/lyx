@@ -60,13 +60,17 @@ MathedArray::MathedArray(MathedArray const & array)
 	last_ = array.last_;
 
 	// deep copy
-	// we'll not yet get exeption safety
+	deep_copy();
+}
+
+void MathedArray::deep_copy()
+{
 	MathedIter it(this);
 	while (it.OK()) {
 		if (it.IsInset()) {
 			MathedInset * inset = it.GetInset();
 			inset = inset->Clone();
-			raw_pointer_insert(inset, it.getPos() + 1, sizeof(inset));
+			raw_pointer_insert(inset, it.getPos() + 1);
 		}
 		it.Next();
 	}
@@ -200,18 +204,8 @@ void MathedArray::shrink(int pos1, int pos2)
 	a.last(dx);
 	a[dx] = '\0';
 
-	MathedIter it(&a);
-	it.Reset();
-
-	while (it.OK()) {
-		if (it.IsInset()) {
-			MathedInset * inset = it.GetInset();
-			inset = inset->Clone();
-			a.raw_pointer_insert(inset, it.getPos() + 1, sizeof(inset));
-		}
-		it.Next();
-	}
 	swap(a);
+	deep_copy();
 }
 
 
@@ -261,9 +255,9 @@ MathedInset * MathedArray::getInset(int pos)
 }
 
 #else
-void MathedArray::raw_pointer_insert(void * p, int pos, int len)
+void MathedArray::raw_pointer_insert(void * p, int pos)
 {
-	my_memcpy(&bf_[pos], &p, len);
+	my_memcpy(&bf_[pos], &p, sizeof(p));
 }
 #endif
 

@@ -325,7 +325,7 @@ void MathedIter::insertInset(MathedInset * p, int type)
 	split(shift);
 
 	(*array)[pos] = type;
-	array->raw_pointer_insert(p, pos + 1, sizeof(p));
+	array->raw_pointer_insert(p, pos + 1);
 	pos += SizeInset;
 	(*array)[pos - 1] = type;
 	(*array)[array->last()] = '\0';
@@ -375,27 +375,6 @@ bool MathedIter::Delete()
 	} else
 		return false;
 }
-
-
-void MathedIter::Clear()
-{
-	if (!array) {
-		lyxerr << "Math error: Attempting to clean a void array." << endl;
-		return;
-	}
-
-	Reset();
-	while (OK()) {
-		if (IsInset()) {
-			MathedInset * inset = GetInset();
-			if (inset->GetType()!= LM_OT_MACRO_ARG)
-			delete inset;
-			Delete();
-		} else
-			Next();
-	}
-}
-
 
 // Check consistency of tabs and crs
 void MathedIter::checkTabs()
