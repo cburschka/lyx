@@ -60,6 +60,10 @@ public:
 	///
 	void push_back(Paragraph *);
 	///
+	Paragraph const * back() const;
+	///
+	Paragraph * back();
+	///
 	int size() const;
 	///
 	bool empty() const;

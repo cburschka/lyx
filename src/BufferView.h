@@ -134,8 +134,6 @@ public:
 	///
 	bool gotoLabel(string const & label);
 	///
-	void message(string const & msg) const;
-	///
 	void paste();
 	///
 	void cut(bool realcut = true);
@@ -156,15 +154,11 @@ public:
 	///
 	void setCursorFromRow(int row);
 	/** Insert an inset into the buffer.
-	    Placie it in a layout of lout,
+	    Place it in a layout of lout,
 	    if no_table make sure that it doesn't end up in a table.
 	*/
-	//bool insertInset(Inset * inset, string const & lout = string(),
-	//		 bool no_table = false);
 	bool insertInset(Inset * inset, string const & lout = string());
-	/** Inserts a lyx file at cursor position.
-	    \return #false# if it fails.
-	*/
+	/// Inserts a lyx file at cursor position. return #false# if it fails
 	bool insertLyXFile(string const & file);
 	///
 	bool lockInset(UpdatableInset * inset);
@@ -204,8 +198,6 @@ public:
 	bool ChangeCitationsIfUnique(string const & from, string const & to);
 	///
 	string const getClipboard() const;
-	///
-	void pasteClipboard(bool asPara);
 	///
 	void stuffClipboard(string const &) const;
 	///

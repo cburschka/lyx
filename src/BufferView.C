@@ -224,12 +224,6 @@ void BufferView::center()
 }
 
 
-void BufferView::pasteClipboard(bool asPara)
-{
-	pimpl_->pasteClipboard(asPara);
-}
-
-
 string const BufferView::getClipboard() const
 {
 	return pimpl_->workarea().getClipboard();
@@ -259,10 +253,4 @@ bool BufferView::dispatch(FuncRequest const & ev)
 void BufferView::moveCursorUpdate(bool selecting, bool fitcur = true)
 {
 	pimpl_->moveCursorUpdate(selecting, fitcur);
-}
-
-
-void BufferView::message(string const & msg) const
-{
-	owner()->message(msg);
 }

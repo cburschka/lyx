@@ -127,8 +127,6 @@ struct BufferView::Pimpl : public boost::signals::trackable {
 	void updateInset(Inset * inset, bool mark_dirty);
 	///
 	bool dispatch(FuncRequest const & ev);
-	///
-	void message(string const & msg);
 private:
 	/**
 	 * Return the on-screen dimensions of the inset at the cursor.
@@ -169,8 +167,6 @@ private:
 	boost::scoped_ptr<WorkArea> workarea_;
 	///
 	Timeout cursor_timeout;
-	///
-	void pasteClipboard(bool asPara);
 	///
 	void stuffClipboard(string const &) const;
 	///

@@ -87,8 +87,6 @@
 #include <clocale>
 
 
-extern string current_layout;
-
 #ifndef CXX_GLOBAL_CSTD
 using std::tm;
 using std::localtime;
@@ -1279,7 +1277,7 @@ void BufferView::Pimpl::switchKeyMap()
 	LyXText * text = bv_->getLyXText();
 	if (text->real_current_font.isRightToLeft()
 	    && !(bv_->theLockingInset()
-		 && bv_->theLockingInset()->lyxCode()== Inset::ERT_CODE))
+		 && bv_->theLockingInset()->lyxCode() == Inset::ERT_CODE))
 	{
 		if (owner_->getIntl().keymap == Intl::PRIMARY)
 			owner_->getIntl().KeyMapSec();
@@ -1354,29 +1352,6 @@ void BufferView::Pimpl::center()
 	screen().draw(t, bv_, new_y);
 
 	update(t, BufferView::SELECT | BufferView::FITCUR);
-}
-
-
-void BufferView::Pimpl::pasteClipboard(bool asPara)
-{
-	if (!buffer_)
-		return;
-
-	screen().hideCursor();
-	beforeChange(bv_->text);
-
-	string const clip(workarea().getClipboard());
-
-	if (clip.empty())
-		return;
-
-	if (asPara) {
-		bv_->getLyXText()->insertStringAsParagraphs(bv_, clip);
-	} else {
-		bv_->getLyXText()->insertStringAsLines(bv_, clip);
-	}
-	bv_->getLyXText()->clearSelection();
-	update(bv_->text, BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 }
 
 
@@ -1542,10 +1517,6 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev)
 		switchKeyMap();
 		break;
 
-	case LFUN_PASTESELECTION:
-		pasteClipboard(ev.argument == "paragraph");
-		break;
-
 	case LFUN_CUT:
 		bv_->cut();
 		break;
@@ -1603,72 +1574,6 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev)
 	case LFUN_FILE_INSERT_ASCII:
 		InsertAsciiFile(bv_, ev.argument, false);
 		break;
-
-	case LFUN_LAYOUT:
-	{
-		lyxerr[Debug::INFO] << "LFUN_LAYOUT: (arg) "
-				    << ev.argument << endl;
-
-		// This is not the good solution to the empty argument
-		// problem, but it will hopefully suffice for 1.2.0.
-		// The correct solution would be to augument the
-		// function list/array with information about what
-		// functions needs arguments and their type.
-		if (ev.argument.empty()) {
-			owner_->getLyXFunc().setErrorMessage(
-				_("LyX function 'layout' needs an argument."));
-			break;
-		}
-
-		// Derive layout number from given argument (string)
-		// and current buffer's textclass (number). */
-		bool hasLayout = tclass.hasLayout(ev.argument);
-		string layout = ev.argument;
-
-		// If the entry is obsolete, use the new one instead.
-		if (hasLayout) {
-			string const & obs = tclass[layout]->obsoleted_by();
-			if (!obs.empty())
-				layout = obs;
-		}
-
-		if (!hasLayout) {
-			owner_->getLyXFunc().setErrorMessage(
-				string(N_("Layout ")) + ev.argument +
-				N_(" not known"));
-			break;
-		}
-
-		bool change_layout = (current_layout != layout);
-		LyXText * lt = bv_->getLyXText();
-		if (!change_layout && lt->selection.set() &&
-			lt->selection.start.par() != lt->selection.end.par())
-		{
-			Paragraph * spar = lt->selection.start.par();
-			Paragraph * epar = lt->selection.end.par()->next();
-			while(spar != epar) {
-				if (spar->layout()->name() != current_layout) {
-					change_layout = true;
-					break;
-				}
-			}
-		}
-		if (change_layout) {
-			hideCursor();
-			current_layout = layout;
-			update(lt,
-			       BufferView::SELECT
-			       | BufferView::FITCUR);
-			lt->setLayout(bv_, layout);
-			owner_->setLayout(layout);
-			update(lt,
-			       BufferView::SELECT
-			       | BufferView::FITCUR
-			       | BufferView::CHANGE);
-			switchKeyMap();
-		}
-	}
-	break;
 
 	case LFUN_LANGUAGE:
 		lang(bv_, ev.argument);
@@ -1774,281 +1679,6 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev)
 		}
 	}
 	break;
-
-	case LFUN_DELETE:
-	{
-		LyXText * lt = bv_->getLyXText();
-
-		if (!lt->selection.set()) {
-			lt->Delete(bv_);
-			lt->selection.cursor = lt->cursor;
-			update(lt,
-			       BufferView::SELECT
-			       | BufferView::FITCUR
-			       | BufferView::CHANGE);
-			// It is possible to make it a lot faster still
-			// just comment out the line below...
-			showCursor();
-		} else {
-			bv_->cut(false);
-		}
-		moveCursorUpdate(false);
-		owner_->view_state_changed();
-		switchKeyMap();
-	}
-	break;
-
-	case LFUN_DELETE_SKIP:
-	{
-		LyXText * lt = bv_->getLyXText();
-
-		// Reverse the effect of LFUN_BREAKPARAGRAPH_SKIP.
-
-		LyXCursor cursor = lt->cursor;
-
-		if (!lt->selection.set()) {
-			if (cursor.pos() == cursor.par()->size()) {
-				lt->cursorRight(bv_);
-				cursor = lt->cursor;
-				if (cursor.pos() == 0
-				    && !(cursor.par()->params().spaceTop()
-					 == VSpace (VSpace::NONE))) {
-					lt->setParagraph
-						(bv_,
-						 cursor.par()->params().lineTop(),
-						 cursor.par()->params().lineBottom(),
-						 cursor.par()->params().pagebreakTop(),
-						 cursor.par()->params().pagebreakBottom(),
-						 VSpace(VSpace::NONE),
-						 cursor.par()->params().spaceBottom(),
-						 cursor.par()->params().spacing(),
-						 cursor.par()->params().align(),
-						 cursor.par()->params().labelWidthString(), 0);
-					lt->cursorLeft(bv_);
-					update(lt,
-					       BufferView::SELECT
-					       | BufferView::FITCUR
-					       | BufferView::CHANGE);
-				} else {
-					lt->cursorLeft(bv_);
-					lt->Delete(bv_);
-					lt->selection.cursor = lt->cursor;
-					update(lt,
-					       BufferView::SELECT
-					       | BufferView::FITCUR
-					       | BufferView::CHANGE);
-				}
-			} else {
-				lt->Delete(bv_);
-				lt->selection.cursor = lt->cursor;
-				update(lt,
-				       BufferView::SELECT
-				       | BufferView::FITCUR
-				       | BufferView::CHANGE);
-			}
-		} else {
-			bv_->cut(false);
-		}
-	}
-	break;
-
-
-	case LFUN_BACKSPACE:
-	{
-		LyXText * lt = bv_->getLyXText();
-
-		if (!lt->selection.set()) {
-			if (owner_->getIntl().getTransManager().backspace()) {
-				lt->backspace(bv_);
-				lt->selection.cursor = lt->cursor;
-				update(lt,
-				       BufferView::SELECT
-				       | BufferView::FITCUR
-				       | BufferView::CHANGE);
-				// It is possible to make it a lot faster still
-				// just comment out the line below...
-				showCursor();
-			}
-		} else {
-			bv_->cut(false);
-		}
-		owner_->view_state_changed();
-		switchKeyMap();
-	}
-	break;
-
-	case LFUN_BACKSPACE_SKIP:
-	{
-		// Reverse the effect of LFUN_BREAKPARAGRAPH_SKIP.
-		LyXText * lt = bv_->getLyXText();
-
-		LyXCursor cursor = lt->cursor;
-
-		if (!lt->selection.set()) {
-			if (cursor.pos() == 0
-			    && !(cursor.par()->params().spaceTop()
-				 == VSpace (VSpace::NONE))) {
-				lt->setParagraph
-					(bv_,
-					 cursor.par()->params().lineTop(),
-					 cursor.par()->params().lineBottom(),
-					 cursor.par()->params().pagebreakTop(),
-					 cursor.par()->params().pagebreakBottom(),
-					 VSpace(VSpace::NONE), cursor.par()->params().spaceBottom(),
-					 cursor.par()->params().spacing(),
-					 cursor.par()->params().align(),
-					 cursor.par()->params().labelWidthString(), 0);
-				update(lt,
-				       BufferView::SELECT
-				       | BufferView::FITCUR
-				       | BufferView::CHANGE);
-			} else {
-				lt->backspace(bv_);
-				lt->selection.cursor = cursor;
-				update(lt,
-				       BufferView::SELECT
-				       | BufferView::FITCUR
-				       | BufferView::CHANGE);
-			}
-		} else
-			bv_->cut(false);
-	}
-	break;
-
-	case LFUN_BREAKPARAGRAPH:
-	{
-		LyXText * lt = bv_->getLyXText();
-
-		beforeChange(lt);
-		lt->breakParagraph(bv_, 0);
-		update(lt,
-		       BufferView::SELECT
-		       | BufferView::FITCUR
-		       | BufferView::CHANGE);
-		lt->selection.cursor = lt->cursor;
-		switchKeyMap();
-		owner_->view_state_changed();
-		break;
-	}
-
-	case LFUN_BREAKPARAGRAPHKEEPLAYOUT:
-	{
-		LyXText * lt = bv_->getLyXText();
-
-		beforeChange(lt);
-		lt->breakParagraph(bv_, 1);
-		update(lt,
-		       BufferView::SELECT
-		       | BufferView::FITCUR
-		       | BufferView::CHANGE);
-		lt->selection.cursor = lt->cursor;
-		switchKeyMap();
-		owner_->view_state_changed();
-		break;
-	}
-
-	case LFUN_BREAKPARAGRAPH_SKIP:
-	{
-		// When at the beginning of a paragraph, remove
-		// indentation and add a "defskip" at the top.
-		// Otherwise, do the same as LFUN_BREAKPARAGRAPH.
-		LyXText * lt = bv_->getLyXText();
-
-		LyXCursor cursor = lt->cursor;
-
-		beforeChange(lt);
-		if (cursor.pos() == 0) {
-			if (cursor.par()->params().spaceTop() == VSpace(VSpace::NONE)) {
-				lt->setParagraph
-					(bv_,
-					 cursor.par()->params().lineTop(),
-					 cursor.par()->params().lineBottom(),
-					 cursor.par()->params().pagebreakTop(),
-					 cursor.par()->params().pagebreakBottom(),
-					 VSpace(VSpace::DEFSKIP), cursor.par()->params().spaceBottom(),
-					 cursor.par()->params().spacing(),
-					 cursor.par()->params().align(),
-					 cursor.par()->params().labelWidthString(), 1);
-				//update(BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
-			}
-		}
-		else {
-			lt->breakParagraph(bv_, 0);
-			//update(BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
-		}
-
-		update(lt,
-		       BufferView::SELECT
-		       | BufferView::FITCUR
-		       | BufferView::CHANGE);
-		lt->selection.cursor = cursor;
-		switchKeyMap();
-		owner_->view_state_changed();
-	}
-	break;
-
-	case LFUN_PARAGRAPH_SPACING:
-	{
-		LyXText * lt = bv_->getLyXText();
-
-		Paragraph * par = lt->cursor.par();
-		Spacing::Space cur_spacing = par->params().spacing().getSpace();
-		float cur_value = 1.0;
-		if (cur_spacing == Spacing::Other) {
-			cur_value = par->params().spacing().getValue();
-		}
-
-		istringstream istr(ev.argument.c_str());
-
-		string tmp;
-		istr >> tmp;
-		Spacing::Space new_spacing = cur_spacing;
-		float new_value = cur_value;
-		if (tmp.empty()) {
-			lyxerr << "Missing argument to `paragraph-spacing'"
-			       << endl;
-		} else if (tmp == "single") {
-			new_spacing = Spacing::Single;
-		} else if (tmp == "onehalf") {
-			new_spacing = Spacing::Onehalf;
-		} else if (tmp == "double") {
-			new_spacing = Spacing::Double;
-		} else if (tmp == "other") {
-			new_spacing = Spacing::Other;
-			float tmpval = 0.0;
-			istr >> tmpval;
-			lyxerr << "new_value = " << tmpval << endl;
-			if (tmpval != 0.0)
-				new_value = tmpval;
-		} else if (tmp == "default") {
-			new_spacing = Spacing::Default;
-		} else {
-			lyxerr << _("Unknown spacing argument: ")
-			       << ev.argument << endl;
-		}
-		if (cur_spacing != new_spacing || cur_value != new_value) {
-			par->params().spacing(Spacing(new_spacing, new_value));
-			lt->redoParagraph(bv_);
-			update(lt,
-			       BufferView::SELECT
-			       | BufferView::FITCUR
-			       | BufferView::CHANGE);
-		}
-	}
-	break;
-
-	case LFUN_INSET_TOGGLE:
-	{
-		LyXText * lt = bv_->getLyXText();
-		hideCursor();
-		beforeChange(lt);
-		update(lt, BufferView::SELECT|BufferView::FITCUR);
-		lt->toggleInset(bv_);
-		update(lt, BufferView::SELECT|BufferView::FITCUR);
-		switchKeyMap();
-	}
-		break;
-
 
 	case LFUN_QUOTE:
 		smartQuote();
@@ -2289,9 +1919,8 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev)
 	case LFUN_INDEX_INSERT:
 	{
 		string entry = ev.argument;
-		if (entry.empty()) {
+		if (entry.empty())
 			entry = bv_->getLyXText()->getStringToIndex(bv_);
-		}
 
 		if (entry.empty()) {
 			owner_->getDialogs().createIndex();
@@ -2405,7 +2034,7 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev)
 	break;
 
 	case LFUN_UNKNOWN_ACTION:
-		owner_->getLyXFunc().setErrorMessage(N_("Unknown function!"));
+		ev.errorMessage(N_("Unknown function!"));
 		break;
 
 	default:
@@ -2650,10 +2279,4 @@ void BufferView::Pimpl::gotoInset(vector<Inset::Code> const & codes,
 void BufferView::Pimpl::gotoInset(Inset::Code code, bool same_content)
 {
 	gotoInset(vector<Inset::Code>(1, code), same_content);
-}
-
-
-void BufferView::Pimpl::message(string const & msg)
-{
-	bv_->owner()->getLyXFunc().setMessage(msg);
 }
