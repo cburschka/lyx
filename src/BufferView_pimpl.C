@@ -1145,9 +1145,8 @@ void BufferView::Pimpl::cursorPrevious(LyXText * text)
 		return;
 	
 	int y = text->first_y;
-	if (text->inset_owner)
-		y += bv_->text->first_y;
 	Row * cursorrow = text->cursor.row();
+	
 	text->setCursorFromCoordinates(bv_, bv_->text->cursor.x_fix(), y);
 	finishUndo();
 	// This is to allow jumping over large insets

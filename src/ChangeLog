@@ -1,3 +1,8 @@
+2002-03-11  Juergen Vigna  <jug@sad.it>
+
+	* BufferView_pimpl.C (cursorPrevious): remove old cruft which is
+	plainly wrong.
+
 2002-03-08  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* commandtags.h:
