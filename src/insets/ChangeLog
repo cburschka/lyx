@@ -1,3 +1,8 @@
+2004-03-03  Alfredo Braunstein  <abraunst@lyx.org>
+
+	* insetcollapsable.C (lfunMouseRelease): right mouse button only
+	shows the inset dialog.
+
 2004-02-27  Alfredo Braunstein  <abraunst@lyx.org>
 
 	* insetlabel.[Ch]: remove them

@@ -203,8 +203,10 @@ bool InsetCollapsable::descendable() const
 
 void InsetCollapsable::lfunMouseRelease(LCursor & cur, FuncRequest const & cmd)
 {
-	if (cmd.button() == mouse_button::button3)
+	if (cmd.button() == mouse_button::button3) {
 		showInsetDialog(&cur.bv());
+		return;
+	}
 
 	switch (status_) {
 
@@ -216,7 +218,6 @@ void InsetCollapsable::lfunMouseRelease(LCursor & cur, FuncRequest const & cmd)
 
 	case Open: {
 		FuncRequest cmd1 = cmd;
-//		cmd1.y -= cur.bv().top_y();
 		if (hitButton(cmd1)) {
 			lyxerr << "InsetCollapsable::lfunMouseRelease 2" << endl;
 			setStatus(Collapsed);
