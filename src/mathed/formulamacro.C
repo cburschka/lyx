@@ -124,7 +124,7 @@ void InsetFormulaMacro::read(std::istream & is)
 
 string InsetFormulaMacro::prefix() const
 {
-	return bformat(_(" Macro: %s: "), getInsetName());
+	return bformat(_(" Macro: %1$s: "), getInsetName());
 }
 
 
