@@ -4,6 +4,8 @@
  * Licence details can be found in the file COPYING.
  *
  * \author Alejandro Aguilar Sierra
+ * \author Lars Gullik Bjønnes
+ * \author Jean-Marc Lasgouttes
  * \author Angus Leeming
  *
  * Full author contact details are available in file CREDITS
@@ -64,9 +66,10 @@ static void set_state_label(COMBOX_SPEC * sp, int state);
 static void attrib_change(COMBOX_SPEC * sp);
 
 
-FL_OBJECT * fl_create_combox(FL_COMBOX_TYPE type,
-			     FL_Coord x, FL_Coord y, FL_Coord w, FL_Coord h,
-			     char const * label)
+FL_OBJECT *
+fl_create_combox(FL_COMBOX_TYPE type,
+		 FL_Coord x, FL_Coord y, FL_Coord w, FL_Coord h,
+		 char const * label)
 {
     FL_OBJECT * ob;
     FL_OBJECT * button;
@@ -122,9 +125,10 @@ FL_OBJECT * fl_create_combox(FL_COMBOX_TYPE type,
 }
 
 
-FL_OBJECT * fl_add_combox(FL_COMBOX_TYPE type,
-			  FL_Coord x, FL_Coord y, FL_Coord w, FL_Coord h,
-			  char const * label)
+FL_OBJECT *
+fl_add_combox(FL_COMBOX_TYPE type,
+	      FL_Coord x, FL_Coord y, FL_Coord w, FL_Coord h,
+	      char const * label)
 {
     FL_OBJECT * ob = fl_create_combox(type, x, y, w, h, label);
     COMBOX_SPEC * sp = ob->spec;
@@ -138,7 +142,8 @@ FL_OBJECT * fl_add_combox(FL_COMBOX_TYPE type,
 }
 
 
-void fl_set_combox_browser_height(FL_OBJECT * ob, int bh)
+void
+fl_set_combox_browser_height(FL_OBJECT * ob, int bh)
 {
     COMBOX_SPEC * sp;
 
@@ -150,7 +155,8 @@ void fl_set_combox_browser_height(FL_OBJECT * ob, int bh)
 }
 
 
-void fl_set_combox_position(FL_OBJECT * ob, FL_COMBOX_POSITION position)
+void
+fl_set_combox_position(FL_OBJECT * ob, FL_COMBOX_POSITION position)
 {
     COMBOX_SPEC * sp;
 
@@ -165,7 +171,8 @@ void fl_set_combox_position(FL_OBJECT * ob, FL_COMBOX_POSITION position)
 }
 
 
-void fl_clear_combox(FL_OBJECT * ob)
+void
+fl_clear_combox(FL_OBJECT * ob)
 {
     COMBOX_SPEC * sp;
     FL_OBJECT * browser;
@@ -181,7 +188,8 @@ void fl_clear_combox(FL_OBJECT * ob)
 }
 
 
-void fl_addto_combox(FL_OBJECT * ob, char const * text)
+void
+fl_addto_combox(FL_OBJECT * ob, char const * text)
 {
     COMBOX_SPEC * sp;
     FL_OBJECT * browser;
@@ -207,15 +215,16 @@ void fl_addto_combox(FL_OBJECT * ob, char const * text)
 	}
     }
 
-    if (j != 0)
-	{
+    if (j != 0) {
 	    line[j] = '\0';
 	    fl_add_browser_line(browser, line);
-	}
+    }
 
     /* By default the first item is selected */
-    if (!fl_get_browser(browser)) {
-	fl_set_object_label(sp->button_chosen, text);
+    if (fl_get_browser_maxline(browser)) {
+	char const * const label = fl_get_browser_line(browser, 1);
+	fl_set_object_label(sp->button_chosen, label);
+	fl_select_browser_line(browser, 1);
 	set_activation(sp->button_chosen, ACTIVATE);
 	if (sp->button_state)
 	    set_activation(sp->button_state,  ACTIVATE);
@@ -223,7 +232,8 @@ void fl_addto_combox(FL_OBJECT * ob, char const * text)
 }
 
 
-void fl_set_combox(FL_OBJECT * ob, int sel)
+void
+fl_set_combox(FL_OBJECT * ob, int sel)
 {
     COMBOX_SPEC * sp;
     FL_OBJECT * browser;
@@ -242,7 +252,8 @@ void fl_set_combox(FL_OBJECT * ob, int sel)
 }
 
 
-int fl_get_combox(FL_OBJECT * ob)
+int
+fl_get_combox(FL_OBJECT * ob)
 {
     COMBOX_SPEC * sp;
     FL_OBJECT * browser;
@@ -256,7 +267,8 @@ int fl_get_combox(FL_OBJECT * ob)
 }
 
 
-char const * fl_get_combox_text(FL_OBJECT * ob)
+char const *
+fl_get_combox_text(FL_OBJECT * ob)
 {
     COMBOX_SPEC * sp;
 
@@ -268,7 +280,8 @@ char const * fl_get_combox_text(FL_OBJECT * ob)
 }
 
 
-char const * fl_get_combox_line(FL_OBJECT * ob, int line)
+char const *
+fl_get_combox_line(FL_OBJECT * ob, int line)
 {
     COMBOX_SPEC * sp;
     FL_OBJECT * browser;
@@ -288,7 +301,8 @@ char const * fl_get_combox_line(FL_OBJECT * ob, int line)
 }
 
 
-int fl_get_combox_maxitems(FL_OBJECT * ob)
+int
+fl_get_combox_maxitems(FL_OBJECT * ob)
 {
     COMBOX_SPEC * sp;
     FL_OBJECT * browser;
@@ -302,7 +316,8 @@ int fl_get_combox_maxitems(FL_OBJECT * ob)
 }
 
 
-void fl_show_combox_browser(FL_OBJECT * ob)
+void
+fl_show_combox_browser(FL_OBJECT * ob)
 {
     if (!ob || ob->objclass != FL_COMBOX)
 	return;
@@ -311,7 +326,8 @@ void fl_show_combox_browser(FL_OBJECT * ob)
 }
 
 
-void fl_hide_combox_browser(FL_OBJECT * ob)
+void
+fl_hide_combox_browser(FL_OBJECT * ob)
 {
     COMBOX_SPEC * sp;
 
@@ -323,8 +339,9 @@ void fl_hide_combox_browser(FL_OBJECT * ob)
 }
 
 
-static int combox_pre(FL_OBJECT * ob, int ev, FL_Coord mx, FL_Coord my,
-		      int key, void *xev)
+static int
+combox_pre(FL_OBJECT * ob, int ev, FL_Coord mx, FL_Coord my, int key,
+	   void * xev)
 {
     COMBOX_SPEC * sp = ob->u_vdata;
     FL_OBJECT * combox = sp->combox;
@@ -334,8 +351,9 @@ static int combox_pre(FL_OBJECT * ob, int ev, FL_Coord mx, FL_Coord my,
 }
 
 
-static int combox_post(FL_OBJECT * ob, int ev, FL_Coord mx, FL_Coord my,
-		       int key, void *xev)
+static int
+combox_post(FL_OBJECT * ob, int ev, FL_Coord mx, FL_Coord my, int key,
+	    void * xev)
 {
     COMBOX_SPEC * sp = ob->u_vdata;
     FL_OBJECT * combox = sp->combox;
@@ -345,8 +363,9 @@ static int combox_post(FL_OBJECT * ob, int ev, FL_Coord mx, FL_Coord my,
 }
 
 
-static int combox_handle(FL_OBJECT * ob, int event, FL_Coord mx, FL_Coord my,
-			 int key, void * ev)
+static int
+combox_handle(FL_OBJECT * ob, int event, FL_Coord mx, FL_Coord my, int key,
+	      void * ev)
 {
     if (!ob || ob->objclass != FL_COMBOX)
 	return 0;
@@ -374,7 +393,8 @@ static int combox_handle(FL_OBJECT * ob, int event, FL_Coord mx, FL_Coord my,
 }
 
 
-static void set_activation(FL_OBJECT * ob, int activation)
+static void
+set_activation(FL_OBJECT * ob, int activation)
 {
     switch (activation) {
     case ACTIVATE:
@@ -388,7 +408,8 @@ static void set_activation(FL_OBJECT * ob, int activation)
 }
 
 
-static void show_browser(COMBOX_SPEC * sp)
+static void
+show_browser(COMBOX_SPEC * sp)
 {
     FL_OBJECT * ob = sp->combox;
 
@@ -406,19 +427,22 @@ static void show_browser(COMBOX_SPEC * sp)
 }
 
 
-static void state_cb(FL_OBJECT * ob, long data)
+static void
+state_cb(FL_OBJECT * ob, long data)
 {
     show_browser(ob->u_vdata);
 }
 
 
-static void chosen_cb(FL_OBJECT * ob, long data)
+static void
+chosen_cb(FL_OBJECT * ob, long data)
 {
     show_browser(ob->u_vdata);
 }
 
 
-static void update_button_chosen(FL_FREEBROWSER * fb, int action)
+static void
+update_button_chosen(FL_FREEBROWSER * fb, int action)
 {
     COMBOX_SPEC * sp = fb->parent;
 
@@ -437,7 +461,8 @@ static void update_button_chosen(FL_FREEBROWSER * fb, int action)
 }
 
 
-static void set_state_label(COMBOX_SPEC * sp, int state)
+static void
+set_state_label(COMBOX_SPEC * sp, int state)
 {
     char const * const up   = "@2<-";
     char const * const down = "@2->";
@@ -456,7 +481,8 @@ static void set_state_label(COMBOX_SPEC * sp, int state)
 }
 
 
-static void attrib_change(COMBOX_SPEC * sp)
+static void
+attrib_change(COMBOX_SPEC * sp)
 {
     FL_OBJECT * parent = sp->combox;
     FL_OBJECT * button = sp->button_chosen;

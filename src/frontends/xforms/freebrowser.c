@@ -4,6 +4,8 @@
  * Licence details can be found in the file COPYING.
  *
  * \author Alejandro Aguilar Sierra
+ * \author Lars Gullik Bjønnes
+ * \author Jean-Marc Lasgouttes
  * \author Angus Leeming
  *
  * Full author contact details are available in file CREDITS
@@ -23,7 +25,8 @@ static void browser_cb(FL_OBJECT * ob, long data);
 static int peek_event(FL_FORM * form, void * xev);
 
 
-FL_FREEBROWSER * fl_create_freebrowser(void * parent)
+FL_FREEBROWSER *
+fl_create_freebrowser(void * parent)
 {
     FL_FORM * current_form = fl_current_form;
     FL_FREEBROWSER * fb = fl_calloc(1, sizeof(FL_FREEBROWSER));
@@ -60,7 +63,8 @@ FL_FREEBROWSER * fl_create_freebrowser(void * parent)
 }
 
 
-void fl_free_freebrowser(FL_FREEBROWSER * fb)
+void
+fl_free_freebrowser(FL_FREEBROWSER * fb)
 {
     if (!fb)
 	return;
@@ -73,8 +77,9 @@ void fl_free_freebrowser(FL_FREEBROWSER * fb)
 }
 
 
-void fl_show_freebrowser(FL_FREEBROWSER * fb,
-			 FL_Coord x, FL_Coord y, FL_Coord w, FL_Coord h)
+void
+fl_show_freebrowser(FL_FREEBROWSER * fb,
+		    FL_Coord x, FL_Coord y, FL_Coord w, FL_Coord h)
 {
     int tmp;
     int const pos = fl_get_browser(fb->browser);
@@ -99,7 +104,8 @@ void fl_show_freebrowser(FL_FREEBROWSER * fb,
 }
 
 
-void fl_hide_freebrowser(FL_FREEBROWSER * fb)
+void
+fl_hide_freebrowser(FL_FREEBROWSER * fb)
 {
     XUngrabPointer(fl_get_display(), 0);
     XFlush(fl_get_display());
@@ -116,7 +122,8 @@ void fl_hide_freebrowser(FL_FREEBROWSER * fb)
 }
 
 
-static void browser_cb(FL_OBJECT * ob, long data)
+static void
+browser_cb(FL_OBJECT * ob, long data)
 {
     FL_FREEBROWSER * fb = ob->u_vdata;
     fl_hide_freebrowser(fb);
@@ -125,7 +132,30 @@ static void browser_cb(FL_OBJECT * ob, long data)
 }
 
 
-static int peek_event(FL_FORM * form, void * ev)
+static int
+eventWithinObj(XEvent * xev, FL_OBJECT * ob)
+{
+    int result = 0;
+    if (xev && ob) {
+	int const xev_x = (int)(xev->xbutton.x);
+	int const xev_y = (int)(xev->xbutton.y);
+	int const ob_x  = (int)(ob->x);
+	int const ob_y  = (int)(ob->y);
+	int const ob_w  = (int)(ob->w);
+	int const ob_h  = (int)(ob->h);
+
+	int const dx = xev_x - ob_x;
+	int const dy = xev_y - ob_y;
+
+	/* result is true if the event occurred within the ob */
+	result = !(dx < 0 || dx > ob_w || dy < 0 || dy > ob_h);
+    }
+    return result;
+}
+
+
+static int
+peek_event(FL_FORM * form, void * ev)
 {
     XEvent * xev = ev;
     FL_FREEBROWSER * fb = form->u_vdata;
@@ -134,11 +164,7 @@ static int peek_event(FL_FORM * form, void * ev)
     fb->last_printable = 0;
     fl_hide_tooltip();
 
-    if (xev->type == ButtonPress &&
-	((int)(xev->xbutton.x) - (int)(browser->x) < 0 ||
-	 (int)(xev->xbutton.x) - (int)(browser->x) > (int)(browser->w) ||
-	 (int)(xev->xbutton.y) - (int)(browser->y) < 0 ||
-	 (int)(xev->xbutton.y) - (int)(browser->y) > (int)(browser->h))) {
+    if (xev->type == ButtonPress && !eventWithinObj(xev, browser)) {
 	fl_hide_freebrowser(fb);
 	return 1;
     }

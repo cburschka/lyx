@@ -1,5 +1,14 @@
 2003-04-03  Angus Leeming  <leeming@lyx.org>
 
+	* combox.[ch]:
+	* freebrowser.[ch]: ensure that the formatting conforms to xforms
+	style. Add all major authors.
+
+	combox.c (fl_addto_combox): squash bug in initial selection
+	of the first line of the browser.
+	
+2003-04-03  Angus Leeming  <leeming@lyx.org>
+
 	* freebrowser.[ch] (fl_get_freebrowser_browser): removed spurious
 	accessor function.
 

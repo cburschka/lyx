@@ -53,50 +53,60 @@ fl_create_combox(FL_COMBOX_TYPE type,
  *  \see fl_create_combox() for an explanation of the argument list.
  */
 FL_EXPORT FL_OBJECT *
-fl_add_combox(FL_COMBOX_TYPE type,
-	      FL_Coord x, FL_Coord y, FL_Coord w, FL_Coord h,
+fl_add_combox(FL_COMBOX_TYPE type, 
+	      FL_Coord x, FL_Coord y, FL_Coord w, FL_Coord h, 
 	      char const * label);
 
 /** The combox browser has a default height of 100 pixels. Adjust to suit. */
-FL_EXPORT void fl_set_combox_browser_height(FL_OBJECT * ob, int bh);
+FL_EXPORT void
+fl_set_combox_browser_height(FL_OBJECT * ob, int bh);
 
 /** The browser will be displayed either below or above the button,
  *  dependent upon \param position.
  */
-FL_EXPORT void fl_set_combox_position(FL_OBJECT * ob, 
-				      FL_COMBOX_POSITION position);
+FL_EXPORT void
+fl_set_combox_position(FL_OBJECT * ob, FL_COMBOX_POSITION position);
 
 /** Empty the browser and the combox, \param ob. */
-FL_EXPORT void fl_clear_combox(FL_OBJECT * ob);
+FL_EXPORT void
+fl_clear_combox(FL_OBJECT * ob);
 
 /** Add a line to the combox browser.*/
-FL_EXPORT void fl_addto_combox(FL_OBJECT * ob, char const * text);
+FL_EXPORT void
+fl_addto_combox(FL_OBJECT * ob, char const * text);
 
 /** Set the combox to return line \param choice of the combox browser. */
-FL_EXPORT void fl_set_combox(FL_OBJECT * ob, int choice);
+FL_EXPORT void
+fl_set_combox(FL_OBJECT * ob, int choice);
 
 /** \return the currently selected line of the combox browser. */
-FL_EXPORT int fl_get_combox(FL_OBJECT * ob);
+FL_EXPORT int
+fl_get_combox(FL_OBJECT * ob);
 
 /** \return the contents of the combox.
  *  (Also the contents of currently selected line of the combox browser.)
  */
-FL_EXPORT char const * fl_get_combox_text(FL_OBJECT * ob);
+FL_EXPORT char const *
+fl_get_combox_text(FL_OBJECT * ob);
 
 /** \return the contents of \param line of the combox browser. */
-FL_EXPORT char const * fl_get_combox_line(FL_OBJECT * ob, int line);
+FL_EXPORT char const *
+fl_get_combox_line(FL_OBJECT * ob, int line);
 
 /** \return the number of items in the combox browser. */
-FL_EXPORT int fl_get_combox_maxitems(FL_OBJECT * ob);
+FL_EXPORT int
+fl_get_combox_maxitems(FL_OBJECT * ob);
 
 /** Show the browser */
-void fl_show_combox_browser(FL_OBJECT * ob);
+FL_EXPORT void
+fl_show_combox_browser(FL_OBJECT * ob);
 
 /** Hide the browser */
-void fl_hide_combox_browser(FL_OBJECT * ob);
+FL_EXPORT void
+fl_hide_combox_browser(FL_OBJECT * ob);
 
 #if defined(__cplusplus)
 }
 #endif
 
-#endif
+#endif /* not FL_COMBOX_H */
