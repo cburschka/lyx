@@ -1,6 +1,8 @@
 2003-10-13  Angus Leeming  <leeming@lyx.org>
 
 	* formula.C: remove #include "PreviewImage.h".
+	(draw, metrics): some simplification of the editing_inset check.
+	Also make it compile with g++2.95.
 
 2003-10-12  Angus Leeming  <leeming@lyx.org>
 
