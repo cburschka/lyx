@@ -7,12 +7,15 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{hollywood} [2001/9/10 v1.2 uses hollywood.layout]
 \usepackage{fancyhdr}
-\usepackage{extramarks}
+%%\usepackage{extramarks}
 \usepackage{ifthen}
-\usepackage{lastpage}
+%%\usepackage{lastpage}
 %%\usepackage{geometry}
 \usepackage{calc}
 %%\usepackage{setspace}
+\RequirePackage{ulem}
+\input{ot1pcr.fd}
+\input{t1pcr.fd}
 \renewcommand{\ref}[1]{#1}
 \newcommand\@ptsize{}
 \newif\if@restonecol
@@ -135,12 +138,12 @@
       \fi
       \thispagestyle{empty}%
       \setcounter{page}\@ne
-      \addtocounter{page}{1}
+%%      \addtocounter{page}{1}
     }%
     {\if@restonecol\twocolumn \else \newpage \fi
      \if@twoside\else
         \setcounter{page}\@ne
-      \addtocounter{page}{1}
+%%      \addtocounter{page}{1}
      \fi
     }
 \setlength\tabbingsep{\labelsep}
@@ -153,11 +156,11 @@
 \setcounter{tocdepth}{2}
 \setlength\columnsep{10\p@}
 \setlength\columnseprule{0\p@}
-\pagestyle{plain}
+\pagestyle{fancy}
 \pagenumbering{arabic}
   \raggedbottom
   \onecolumn
-\rfoot{\pageref{LastPage}[]{}}
+%%\rfoot{\pageref{LastPage}[]{}}
 
 % This is what we want for a spec script
 %% set l & rt margin
@@ -177,9 +180,13 @@
 {\paperheight -\bmargin -\topmargin -\headheight -\headsep }% 
 
 
-\pagestyle{fancy}
+%%\pagestyle{fancy}
 \rhead{\thepage.}
 \cfoot{}
+\rfoot{}
+\lhead{}
+\lfoot{}
+
   % This one is needed to get real adobe courier, but you can use
   % cmtt which is also correct
   \renewcommand{\familydefault}{pcr}
@@ -243,8 +250,6 @@
 }
 \newcommand{\description}[1]%
 {
-\rfoot[]{}
-\lhead[]{}
 \vspace{\lnspace}
 \raggedright{#1}
 \vspace{\lnspace}
