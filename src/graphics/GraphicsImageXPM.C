@@ -282,7 +282,8 @@ void GImageXPM::rotate(GParams const & params)
 	// Ascertain the bounding box of the rotated image
 	// Rotate about the bottom-left corner
 	static double const pi = 3.14159265358979323846;
-	double const angle = double(params.angle) * pi / 180.0;
+	// The minus sign is needed to rotate in the same sense as xdvi et al.
+	double const angle = -double(params.angle) * pi / 180.0;
 	double const cos_a = cos(angle);
 	double const sin_a = sin(angle);
 
