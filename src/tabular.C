@@ -2603,7 +2603,6 @@ int LyXTabular::Ascii(Buffer const * buf, ostream & os) const
 
 InsetText * LyXTabular::GetCellInset(int cell) const
 {
-	lyxerr << "LyXTabular::GetCellInset: cell=" << cell <<endl;
 	cur_cell = cell;
 	return & cell_info[row_of_cell(cell)][column_of_cell(cell)].inset;
 }
