@@ -255,6 +255,12 @@
 # This is the default in LyX (exactly what LaTeX does):
 #\screen_font_sizes 5.0 7.0 8.0 9.0 10.0 12.0 14.4 17.28 20.74 24.88
 
+# To change the colors for footnotes:
+#\set_color footnote green
+# for mathed you may also want to change the coloring of lines and brackets:
+#\set_color math yellow
+#\set_color mathlines yellow
+
 #
 # TOOLBAR SECTION ########################################################
 #

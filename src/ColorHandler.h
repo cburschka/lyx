@@ -42,6 +42,9 @@ public:
 	///
 	GC getGCLinepars(PainterBase::line_style,
 			 PainterBase::line_width, LColor::color c);
+	/// update the cache after a color definition change
+	void updateColor(LColor::color c);
+
 private:
 	///
 	Display * display;

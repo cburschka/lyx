@@ -195,5 +195,33 @@ GC LyXColorHandler::getGCLinepars(PainterBase::line_style ls,
 			  GCCapStyle | GCJoinStyle | GCFunction, &val);
 }
 
+// update GC cache after color redefinition
+void LyXColorHandler::updateColor (LColor::color c)
+{
+	// color GC cache
+	GC gc = colorGCcache[c];
+	if (gc != NULL) {
+		XFreeGC(display, gc);
+		colorGCcache[c] = NULL;
+		getGCForeground(c);
+	}
+
+	// line GC cache
+
+	int index, ls, lw;
+	for (ls=0; ls<3; ++ls)
+		for (lw=0; lw<2; ++lw) {
+			index = lw + (ls << 1) + (c << 3);
+			if (lineGCcache.find(index) != lineGCcache.end()) {
+				gc = lineGCcache[index];
+				XFreeGC(display,gc);
+				lineGCcache.erase(index);
+				getGCLinepars(PainterBase::line_style(ls),
+						PainterBase::line_width(lw), c);
+			}
+		}
+ 
+}
+
 //
 LyXColorHandler * lyxColorHandler;

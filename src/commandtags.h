@@ -250,6 +250,7 @@ enum kb_action {
 	LFUN_LOFVIEW,			// Dekel 20000519	
 	LFUN_LOTVIEW,			// Dekel 20000519
 	LFUN_LOAVIEW,			// Dekel 20000519
+	LFUN_SET_COLOR,			// SLior 20000611
 	LFUN_LASTACTION  /* this marks the end of the table */
 };
 

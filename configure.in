@@ -42,6 +42,12 @@ if test "x$KPSEWHICH" = xkpsewhich ; then
     [Define this if you have the kpsewhich program working on your system.])
 fi
 
+# Work around a problem in automake 1.4: when invoking install-strip,
+# INSTALL_PROGRAM is changed to 'install -s', and since
+# INSTALL_SCRIPT==INSTALL_PROGRAM, we get errors with fileutils-4.0
+# which returns an error condition when stripping fails.
+INSTALL_SCRIPT='${INSTALL}'
+
 ### we will also need a C compiler to compile GNU gettext
 AC_PROG_CC
 

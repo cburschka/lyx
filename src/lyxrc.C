@@ -85,6 +85,7 @@ enum LyXRCTags {
 	RC_SCREEN_FONT_POPUP,
 	RC_SCREEN_FONT_ENCODING,
 	RC_SCREEN_FONT_ENCODING_MENU,
+	RC_SET_COLOR,
 	RC_AUTOSAVE,
 	RC_DOCUMENTPATH,
 	RC_TEMPLATEPATH,
@@ -250,6 +251,7 @@ keyword_item lyxrcTags[] = {
 	{ "\\screen_font_typewriter", RC_SCREEN_FONT_TYPEWRITER },
 	{ "\\screen_zoom", RC_SCREEN_ZOOM },
 	{ "\\serverpipe", RC_SERVERPIPE },
+	{ "\\set_color", RC_SET_COLOR },
 	{ "\\show_banner", RC_SHOW_BANNER },
 	{ "\\spell_command", RC_SPELL_COMMAND },
 	{ "\\tempdir_path", RC_TEMPDIRPATH },
@@ -830,6 +832,30 @@ int LyXRC::read(string const & filename)
 				font_norm_menu = lexrc.GetString();
 			break;
 
+		case RC_SET_COLOR:
+		{
+			string lyx_name, x11_name;
+
+			if (lexrc.lex() == LyXLex::LEX_DATA)  {
+				lyx_name = lexrc.GetString();
+			} else {
+				lexrc.printError("Bad color tag: `$$Token'");
+				break;
+			}
+			
+			if (lexrc.lex() == LyXLex::LEX_DATA) {
+				x11_name = lexrc.GetString();
+			} else {
+				lexrc.printError("Bad color name: `$$Token'");
+				break;
+			}
+
+			if (!lcolor.setColor(lyx_name, x11_name))
+				lyxerr << "Bad lyxrc set_color for "
+					<< lyx_name << endl;
+
+			break;
+		}
 		case RC_AUTOREGIONDELETE:
 			// Auto region delete defaults to true
 		        if (lexrc.next())
@@ -1035,6 +1061,7 @@ int LyXRC::read(string const & filename)
 			if ( lexrc.next())
 				docbook_to_pdf_command = lexrc.GetString();
 			break;
+
 		case RC_LAST: break; // this is just a dummy
 		}
 	}
@@ -1093,6 +1120,8 @@ void LyXRC::output(ostream & os) const
 		// bind files are not done here.
 	case RC_BEGINTOOLBAR:
 		// Toolbar is not written here (yet).
+	case RC_SET_COLOR:
+		// color bindings not written to preference file.
 	case RC_FONT_ENCODING:
 		os << "\\font_encoding \"" << fontenc << "\"\n";
 	case RC_PRINTER:
