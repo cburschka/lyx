@@ -1,7 +1,7 @@
 2005-01-19  Angus Leeming  <leeming@lyx.org>
 
 	* lyx_main.C (error_handler, init): protect SIGHUP with
-	#ifndef _WIN32 guards.
+	#ifdef SIGHUP guards.
 
 	* BufferView_pimpl.C:
 	* DepTable.C:
