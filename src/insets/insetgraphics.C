@@ -135,17 +135,15 @@ string findTargetFormat(string const & suffix)
 		lyxerr[Debug::GRAPHICS] << "findTargetFormat: PDF mode\n";
 		if (contains(suffix, "ps") || suffix == "pdf")
 			return "pdf";
-		else if (suffix == "jpg")	// pdflatex can use jpeg
+		if (suffix == "jpg")	// pdflatex can use jpeg
 			return suffix;
-		else
-			return "png";		// and also png
+		return "png";         // and also png
 	}
 	// If it's postscript, we always do eps.
 	lyxerr[Debug::GRAPHICS] << "findTargetFormat: PostScript mode\n";
-	if (suffix != "ps")			// any other than ps
-	    return "eps";			// is changed to eps
-	else
-	    return suffix;			// let ps untouched
+	if (suffix != "ps")     // any other than ps
+		return "eps";         // is changed to eps
+	return suffix;          // let ps untouched
 }
 
 } // namespace anon
@@ -206,6 +204,12 @@ InsetGraphics::InsetGraphics(InsetGraphics const & ig,
 }
 
 
+Inset * InsetGraphics::clone(Buffer const & buffer, bool same_id) const
+{
+	return new InsetGraphics(*this, buffer.filePath(), same_id);
+}
+
+
 InsetGraphics::~InsetGraphics()
 {
 	// Emits the hide signal to the dialog connected (if any)
@@ -215,45 +219,31 @@ InsetGraphics::~InsetGraphics()
 
 string const InsetGraphics::statusMessage() const
 {
-	string msg;
-
 	switch (cache_->loader.status()) {
 	case grfx::WaitingToLoad:
-		msg = _("Not shown.");
-		break;
+		return _("Not shown.");
 	case grfx::Loading:
-		msg = _("Loading...");
-		break;
+		return _("Loading...");
 	case grfx::Converting:
-		msg = _("Converting to loadable format...");
-		break;
+		return _("Converting to loadable format...");
 	case grfx::Loaded:
-		msg = _("Loaded into memory. Must now generate pixmap.");
-		break;
+		return _("Loaded into memory. Must now generate pixmap.");
 	case grfx::ScalingEtc:
-		msg = _("Scaling etc...");
-		break;
+		return _("Scaling etc...");
 	case grfx::Ready:
-		msg = _("Ready to display");
-		break;
+		return _("Ready to display");
 	case grfx::ErrorNoFile:
-		msg = _("No file found!");
-		break;
+		return _("No file found!");
 	case grfx::ErrorConverting:
-		msg = _("Error converting to loadable format");
-		break;
+		return _("Error converting to loadable format");
 	case grfx::ErrorLoading:
-		msg = _("Error loading file into memory");
-		break;
+		return _("Error loading file into memory");
 	case grfx::ErrorGeneratingPixmap:
-		msg = _("Error generating the pixmap");
-		break;
+		return _("Error generating the pixmap");
 	case grfx::ErrorUnknown:
-		msg = _("No image");
-		break;
+		return _("No image");
 	}
-
-	return msg;
+	return string();
 }
 
 
@@ -688,7 +678,7 @@ string const InsetGraphics::prepareFile(Buffer const * buf) const
 }
 
 
-int InsetGraphics::latex(Buffer const *buf, ostream & os,
+int InsetGraphics::latex(Buffer const * buf, ostream & os,
 			 bool /*fragile*/, bool/*fs*/) const
 {
 	// If there is no file specified or not existing,
@@ -699,7 +689,7 @@ int InsetGraphics::latex(Buffer const *buf, ostream & os,
 
 	// A missing (e)ps-extension is no problem for LaTeX, so
 	// we have to test three different cases
-	string const file_(MakeAbsPath(params().filename, buf->filePath()));
+	string const file_ = MakeAbsPath(params().filename, buf->filePath());
 	bool const file_exists =
 		!file_.empty() &&
 		(IsFileReadable(file_) ||		// original
@@ -756,10 +746,7 @@ int InsetGraphics::latex(Buffer const *buf, ostream & os,
 	os << latex_str;
 
 	// Return how many newlines we issued.
-	int const newlines =
-		int(lyx::count(latex_str.begin(), latex_str.end(),'\n') + 1);
-
-	return newlines;
+	return int(lyx::count(latex_str.begin(), latex_str.end(),'\n') + 1);
 }
 
 
@@ -808,7 +795,7 @@ void InsetGraphics::validate(LaTeXFeatures & features) const
 {
 	// If we have no image, we should not require anything.
 	if (params().filename.empty())
-		return ;
+		return;
 
 	features.includeFile(graphic_label, RemoveExtension(params().filename));
 
@@ -830,9 +817,8 @@ bool InsetGraphics::setParams(InsetGraphicsParams const & p,
 			      string const & filepath)
 {
 	// If nothing is changed, just return and say so.
-	if (params() == p && !p.filename.empty()) {
+	if (params() == p && !p.filename.empty())
 		return false;
-	}
 
 	// Copy the new parameters.
 	params_ = p;
@@ -848,10 +834,4 @@ bool InsetGraphics::setParams(InsetGraphicsParams const & p,
 InsetGraphicsParams const & InsetGraphics::params() const
 {
 	return params_;
-}
-
-
-Inset * InsetGraphics::clone(Buffer const & buffer, bool same_id) const
-{
-	return new InsetGraphics(*this, buffer.filePath(), same_id);
 }

@@ -22,7 +22,6 @@
 #include "Lsstream.h"
 
 using std::ostream;
-using std::endl;
 
 
 InsetCommand::InsetCommand(InsetCommandParams const & p, bool)
