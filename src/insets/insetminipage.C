@@ -110,64 +110,72 @@ void InsetMinipage::write(Buffer const * buf, ostream & os) const
 
 void InsetMinipage::read(Buffer const * buf, LyXLex & lex)
 {
-	string token;
+	//string token;
 
 	if (lex.IsOK()) {
 		lex.next();
-		token = lex.GetString();
+		string const token = lex.GetString();
 		if (token == "position") {
 			lex.next();
 			pos_ = static_cast<Position>(lex.GetInteger());
-			token = string();
+			//token = string();
 		} else {
 			lyxerr << "InsetMinipage::Read: Missing 'position'-tag!"
 				   << endl;
+			// take countermeasures
+			lex.pushToken(token);
 		}
 	}
 	if (lex.IsOK()) {
-		if (token.empty()) {
-			lex.next();
-			token = lex.GetString();
-		}
+		//if (token.empty()) {
+		lex.next();
+		string const token = lex.GetString();
+		//}
 		if (token == "inner_position") {
 			lex.next();
 			inner_pos_ = static_cast<InnerPosition>(lex.GetInteger());
-			token = string();
+			//token = string();
 		} else {
 			lyxerr << "InsetMinipage::Read: Missing 'inner_position'-tag!"
 				   << endl;
+			// take countermeasures
+			lex.pushToken(token);
 		}
 	}
 	if (lex.IsOK()) {
-		if (token.empty()) {
-			lex.next();
-			token = lex.GetString();
-		}
+		//if (token.empty()) {
+		lex.next();
+		string const token = lex.GetString();
+		//}
 		if (token == "height") {
 			lex.next();
 			height_ = lex.GetString();
-			token = string();
+			//token = string();
 		} else {
 			lyxerr << "InsetMinipage::Read: Missing 'height'-tag!"
 				   << endl;
+			// take countermeasures
+			lex.pushToken(token);
 		}
 	}
 	if (lex.IsOK()) {
-		if (token.empty()) {
-			lex.next();
-			token = lex.GetString();
-		}
+		//if (token.empty()) {
+		lex.next();
+		string const token = lex.GetString();
+		//}
 		if (token == "width") {
 			lex.next();
 			width_ = lex.GetString();
-			token = string();
+			//token = string();
 		} else {
 			lyxerr << "InsetMinipage::Read: Missing 'width'-tag!"
 				   << endl;
+			// take countermeasures
+			lex.pushToken(token);
 		}
 	}
-	if (!token.empty())
-		lex.pushToken(token);
+	//if (!token.empty())
+	//	lex.pushToken(token);
 	InsetCollapsable::read(buf, lex);
 }
 

@@ -116,6 +116,8 @@ void InsetCollapsable::read(Buffer const * buf, LyXLex & lex)
 		} else {
 			lyxerr << "InsetCollapsable::Read: Missing collapsed!"
 			       << endl;
+			// Take countermeasures
+			lex.pushToken(token);
 		}
 	}
 	inset.read(buf, lex);
