@@ -1,0 +1,157 @@
+#LyX 1.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 2.16
+\textclass article
+\begin_preamble
+\usepackage{dcolumn}
+\newcolumntype{d}[1]{D{.}{.}{#1}}
+\end_preamble
+\language default
+\inputencoding latin1
+\fontscheme default
+\graphics default
+\paperfontsize default
+\spacing single 
+\papersize Default
+\paperpackage a4
+\use_geometry 0
+\use_amsmath 0
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\quotes_times 2
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+
+\layout Title
+
+A Better Decimal-Alignment Solution
+\layout Standard
+
+An alternative way to have decimal alignment in tables is through the dcolumn
+ package.
+ Add the following to the LateX preamble:
+\layout LyX-Code
+
+
+\backslash 
+usepackage{dcolumn} 
+\layout LyX-Code
+
+
+\backslash 
+newcolumntype{d}[1]{D{.}{.}{#1}}
+\layout Standard
+
+To have a column decimally aligned, enter in the 
+\family sans 
+Special Column Alignment
+\family default 
+ box of the 
+\family sans 
+Table extra
+\family default 
+ form the following:
+\layout LyX-Code
+
+d{number of decimals of the data}
+\layout Standard
+
+In the following table we entered 
+\family typewriter 
+d{4}
+\family default 
+:
+\layout Standard
+\added_space_top 0.3cm \added_space_bottom 0.3cm \align center \LyXTable
+multicol5
+5 2 0 0 -1 -1 -1 -1
+0 1 0 0
+0 0 0 0
+0 0 0 0
+0 0 0 0
+0 0 0 0
+8 0 0 "" ""
+4 1 0 "" "d{4}"
+0 8 1 0 0 0 0 "" ""
+1 8 0 1 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+1 4 0 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+
+Expression
+\newline 
+Value 
+\newline 
+
+\begin_inset Formula \( \pi  \)
+\end_inset 
+
+
+\newline 
+3.1416
+\newline 
+
+\begin_inset Formula \( \pi ^{\pi } \)
+\end_inset 
+
+
+\newline 
+36.462
+\newline 
+
+\begin_inset Formula \( (\pi ^{\pi })^{\pi } \)
+\end_inset 
+
+
+\newline 
+80663.
+\newline 
+
+\begin_inset Formula \( \pi ^{\pi ^{\pi }} \)
+\end_inset 
+
+
+\newline 
+1.3402e18
+\layout Standard
+
+To create extra column space just increase the number of decimals in 
+\family typewriter 
+d{}
+\family default 
+.
+ Setting the multicolumn attribute for a single cell makes it insensitive
+ to the decimal alignment which comes in handy as well.
+ A drawback of this method is that math mode is not allowed in a column
+ with decimal alignment except if the multicolumn attribute is set.
+\layout Standard
+
+This method offers the same flexibility as the 
+\family typewriter 
+dcolumn
+\family default 
+ package.
+ One could, for example, change the alignment separator, and have different
+ alignment separators for different columns by defining multiple column
+ types in the preamble.
+ The syntax is as follows: 
+\layout LyX-Code
+
+D{inputsep}{outputsep}{decimal places}
+\layout Standard
+
+The interested reader is directed towards the 
+\family typewriter 
+dcolumn
+\family default 
+ package documentation for more details.
+\the_end

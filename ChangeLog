@@ -1,5 +1,14 @@
 2000-06-13  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
+	* lib/examples/decimal.lyx: new example file from Mike.
+
+	* src/insets/ExternalTemplate.C (readTemplates): Use LibFileSearch()
+	to find template definitions (from Dekel)
+
+	* src/frontends/.cvsignore: add a few things.
+
+	* src/frontends/xforms/input_validators.[ch]: remove C++ comments.
+
 	* src/Timeout.C (TimeOut): remove default argument.
 
 	* src/LyXView.C (LyXView_AutosaveTimerCB): this should not have

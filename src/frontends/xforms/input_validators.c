@@ -1,4 +1,3 @@
-// -*- C++ -*-
 /* input_validators.C
  * A collection of input filtering and validating functions for use in
  * XForms popups.  Mainly meant for filtering input boxes although may
@@ -19,9 +18,9 @@ int fl_unsigned_int_filter(FL_OBJECT * ob,
 			   char const * unused,
 			   int c)
 {
-	if (c == 0 // final test before handing contents to app
+	if (c == 0 /* final test before handing contents to app */
 	    || strchr("0123456789", c)) {
-		// since we only accept numerals then it must be valid
+		/* since we only accept numerals then it must be valid */
 		return FL_VALID;
 	}
 	return FL_INVALID|FL_RINGBELL;
@@ -29,36 +28,36 @@ int fl_unsigned_int_filter(FL_OBJECT * ob,
 
 
 #if 0
-// I've just moved this code here and written a few comments.
-// still to complete it.  ARRae 20000518
-//
+/* I've just moved this code here and written a few comments.
+   still to complete it.  ARRae 20000518 */
+
 void fl_print_range_filter(FL_OBJECT * ob,
 			   char const * not_used,
 			   char const * unused,
 			   int c)
 {
-	// Started life as changes to PrintApplyCB by Stephan Witt
-	//  (stephan.witt@beusen.de), 19-Jan-99
-	// User may give a page (range) list
+	/* Started life as changes to PrintApplyCB by Stephan Witt
+	   (stephan.witt@beusen.de), 19-Jan-99
+	   User may give a page (range) list */
 
 	if (strchr("0123456789", c)) {
-		// Numerals are always valid
+		/* Numerals are always valid */
 		return FL_VALID;
 	} else if (strchr("-,", c)) {
-		// make sure that the character can go there
+		/* make sure that the character can go there */
 	} else if (c == 0) {
-		// final test before handing contents to app
-		// make sure the last char isn't a "-,"
-		// That might be acceptable if there was a "to_page"
-		// entry however if you start making a page range in the "from"
-		// field you can do it all in the "from" field.  That is, a
-		// range in the "from" field immmediately blanks the "to" 
-		// field.
+		/* final test before handing contents to app
+		   make sure the last char isn't a "-,"
+		   That might be acceptable if there was a "to_page"
+		   entry however if you start making a page range in the "from"
+		   field you can do it all in the "from" field.  That is, a
+		   range in the "from" field immmediately blanks the "to" 
+		   field. */
 	}
 	return FL_INVALID|FL_RINGBELL;
 
-	// The code above should do the same sort of checking as the
-	// code below.
+	/* The code above should do the same sort of checking as the
+	   code below. */
 
 	string pages = subst(fl_get_input(fd_form_print->input_pages), ';',',');
 	pages = subst(pages, '+',',');

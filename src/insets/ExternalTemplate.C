@@ -138,8 +138,14 @@ void ExternalTemplateManager::readTemplates(string const & path)
 		{ "templateend", TM_END }
 	};
 
+	string filename = LibFileSearch("", "external_templates");
+	if (filename.empty()) {
+		lyxerr << "No template file" << endl;
+		return;
+	}
+
 	LyXLex lex(templatetags, TM_END);
-	if (!lex.setFile("external_templates")) {
+	if (!lex.setFile(filename)) {
 		lyxerr << "No template file" << endl;
 		return;
 	}

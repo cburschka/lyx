@@ -72,7 +72,7 @@ void ObjectReferenced::unreference()
 void ObjectScoped::register_data(ScopeNode *data)
   {
    list_.insert_direct(list_.end(),data);
-  };
+  }
 
 void ObjectScoped::register_scope(Scope *scope,const Scope *parent)
   {
