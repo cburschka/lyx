@@ -425,10 +425,10 @@ void LyX::ReadRcFile(string const & name)
 
 
 // Set debugging level and report result to user
-void setDebuggingLevel(int dbgLevel)
+void setDebuggingLevel(string const &dbgLevel)
 {
 	lyxerr << _("Setting debug level to ") <<  dbgLevel << endl;
-	lyxerr.level(Debug::type(dbgLevel));
+	lyxerr.level(Debug::value(dbgLevel));
 	lyxerr[Debug::INFO] << "Debugging INFO #"  << Debug::INFO << endl;
 	lyxerr[Debug::INIT] << "Debugging INIT #"  << Debug::INIT << endl;
 	lyxerr[Debug::KEY] << "Debugging KEY #"  << Debug::KEY << endl;
@@ -474,10 +474,7 @@ bool LyX::easyParse(int * argc, char * argv[])
 		// Check for -dbg int
 		if (arg == "-dbg") {
 			if (i+1 < *argc) {
-				int erri = 0;
-				sscanf(argv[i+1], "%d", &erri);
-
-				setDebuggingLevel(erri);
+				setDebuggingLevel(argv[i+1]);
 
 				// Now, remove these two arguments by shifting
 				// the following two places down.

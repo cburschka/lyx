@@ -35,13 +35,13 @@ void InitLyXLookup(Display * display, Window window)
 	// This part could be done before opening display
 	setlocale(LC_CTYPE, "");
        	if (!XSupportsLocale()) {
-		lyxerr.debug()
+		lyxerr[Debug::KEY]
 			<< "InitLyXLookup: X does not support this locale."
 			<< endl;
 		return;
 	} 
 	if (!XSetLocaleModifiers("")) {
-		lyxerr.debug() << "InitLyXLookup: Could not set modifiers "
+		lyxerr[Debug::KEY] << "InitLyXLookup: Could not set modifiers "
 			"for this locale." << endl;
 		return;
 	}
@@ -56,14 +56,14 @@ void InitLyXLookup(Display * display, Window window)
 				0);
 		
 		if (!xic) {
-			lyxerr.debug() << "InitLyXLookup: could not create "
+			lyxerr[Debug::KEY] << "InitLyXLookup: could not create "
 				"an input context" << endl;
 			XCloseIM (xim);
 			xim = 0;
 		} 
 	}
 	else 
-		lyxerr.debug() << "InitLyXLookup: could not open "
+		lyxerr[Debug::KEY] << "InitLyXLookup: could not open "
 			"an input method." << endl;
 }
 
@@ -190,7 +190,7 @@ int LyXLookupString(XEvent * event,
 void CloseLyXLookup() 
 {
 	if (xic) {
-		lyxerr.debug() << "CloseLyXLookup: destroying input context"
+		lyxerr[Debug::KEY] << "CloseLyXLookup: destroying input context"
 			       << endl;
 		XDestroyIC(xic);
 		XCloseIM(xim);

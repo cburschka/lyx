@@ -514,7 +514,7 @@ int LyXAction::searchActionArg(kb_action action, string const & arg) const
 
 	if (pit == lyx_arg_map.end()) {
 		// the action does not have any pseudoactions
-		lyxerr[Debug::INFO] << "Action " << action
+		lyxerr[Debug::ACTION] << "Action " << action
 				    << " does not have any pseudo actions.\n";
 		return LFUN_UNKNOWN_ACTION;
 	}
@@ -523,7 +523,7 @@ int LyXAction::searchActionArg(kb_action action, string const & arg) const
 
 	if (aci == (*pit).second.end()) {
 		// the action does not have any pseudoactions with this arg
-		lyxerr[Debug::INFO] 
+		lyxerr[Debug::ACTION] 
 			<< "Action " << action
 			<< "does not have any pseudoactions with arg "
 			<< arg << '\n';
@@ -531,7 +531,7 @@ int LyXAction::searchActionArg(kb_action action, string const & arg) const
 	}
 
 	// pseudo action exist
-	lyxerr[Debug::INFO] << "Pseudoaction exist[" 
+	lyxerr[Debug::ACTION] << "Pseudoaction exist[" 
 			    << action << '|' 
 			    << arg << "] = " << (*aci).second << '\n';
 
@@ -561,7 +561,7 @@ int LyXAction::getPseudoAction(kb_action action, string const & arg) const
 	// put the new pseudo function in it
 	(*ami).second[arg] = pseudo_counter;
 
-	lyxerr[Debug::INFO] << "Creating new pseudoaction "
+	lyxerr[Debug::ACTION] << "Creating new pseudoaction "
 			    << pseudo_counter << " for [" << action
 			    << '|' << arg << "]\n";
 	
@@ -576,7 +576,7 @@ kb_action LyXAction::retrieveActionArg(int pseudo, string & arg) const
 	pseudo_map::const_iterator pit = lyx_pseudo_map.find(pseudo);
 
 	if (pit != lyx_pseudo_map.end()) {
-		lyxerr[Debug::INFO] << "Found the pseudoaction: ["
+		lyxerr[Debug::ACTION] << "Found the pseudoaction: ["
 				    << (*pit).second.action << '|'
 				    << (*pit).second.arg << '\n';
 		arg = (*pit).second.arg;
@@ -597,8 +597,8 @@ int LyXAction::LookupFunc(string const & func) const
 	// split action and arg
 	string actstr;
 	string argstr = split(func, actstr, ' ');
-	lyxerr[Debug::INIT] << "Action: " << actstr << '\n';
-	lyxerr[Debug::INIT] << "Arg   : " << argstr << '\n';
+	lyxerr[Debug::ACTION] << "Action: " << actstr << '\n';
+	lyxerr[Debug::ACTION] << "Arg   : " << argstr << '\n';
 
 	func_map::const_iterator fit = lyx_func_map.find(actstr);
 
@@ -674,7 +674,7 @@ string LyXAction::helpText(int pseudoaction) const
 
 	info_map::const_iterator ici = lyx_info_map.find(action);
 	if (ici != lyx_info_map.end()) {
-		if (lyxerr.debugging(Debug::INFO)) {
+		if (lyxerr.debugging(Debug::ACTION)) {
 			lyxerr << "Action: " << action << '\n';
 			lyxerr << "   name: "
 			       << (*ici).second.name << '\n';

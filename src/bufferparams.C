@@ -30,7 +30,12 @@ BufferParams::BufferParams()
 	quotes_language = InsetQuotes::EnglishQ;
 	quotes_times = InsetQuotes::DoubleQ;
 	fontsize = "default";
-	textclass = 0; 
+	// Initialize textclass to point to article. if `first' is
+	// true in the returned pair, then `second' is the textclass
+	// number; if it is false, second is 0. In both cases, second
+	// is what we want.
+	textclass = textclasslist.NumberOfClass("article").second;
+
         /*  PaperLayout */
 	papersize = PAPER_DEFAULT;
         papersize2 = VM_PAPER_DEFAULT; /* DEFAULT */

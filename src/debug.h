@@ -4,6 +4,7 @@
 #define LYXDEBUG_H
 
 #include "LString.h"
+#include "support/lstrings.h"
 
 /** Ideally this should have been a namespace, but since we try to be
     compilable on older C++ compilators too, we use a struct instead.
@@ -41,13 +42,15 @@ struct Debug {
 		///
 		LYXSERVER  = (1 << 12),  // 4096
 		///
-		ROFF       = (1 << 13) 
+		ROFF       = (1 << 13),  // 8192
+		///
+		ACTION     = (1 << 14)   // 16384
 	};
 	///
 	static const type ANY = type(INFO | INIT | KEY | TOOLBAR |
 				     PARSER | LYXRC | KBMAP | LATEX |
 				     MATHED | FONT | TCLASS | LYXVC |
-				     LYXSERVER | ROFF);
+				     LYXSERVER | ROFF | ACTION);
 	///
 	friend inline void operator|=(Debug::type & d1, Debug::type d2);
 	
@@ -61,21 +64,42 @@ struct Debug {
 			string::size_type st = v.find(',');
 			string tmp(v.substr(0, st));
 			if (tmp.empty()) break;
-			if (val == "NONE") l |= Debug::NONE;
-			else if (val == "INFO") l |= Debug::INFO;
-			else if (val == "INIT") l |= Debug::INIT;
-			else if (val == "KEY") l |= Debug::KEY; 
-			else if (val == "TOOLBAR") l |= Debug::TOOLBAR;
-			else if (val == "PARSER") l |= Debug::PARSER; 
-			else if (val == "LYXRC") l |= Debug::LYXRC; 
-			else if (val == "KBMAP") l |= Debug::KBMAP;  
-			else if (val == "LATEX") l |= Debug::LATEX;  
-			else if (val == "MATHED") l |= Debug::MATHED; 
-			else if (val == "FONT") l |= Debug::FONT;   
-			else if (val == "TCLASS") l |= Debug::TCLASS; 
-			else if (val == "LYXVC") l |= Debug::LYXVC;  
-			else if (val == "LYXSERVER") l |= Debug::LYXSERVER;
-			else if (val == "ROFF") l |= Debug::ROFF;
+			if (isStrInt(tmp)) {
+				l |= static_cast<type>(strToInt(tmp));
+				break;
+			}
+			if (!compare_no_case(tmp,"NONE")) 
+				l |= Debug::NONE;
+			else if (!compare_no_case(tmp,"INFO"))  
+				l |= Debug::INFO;
+			else if (!compare_no_case(tmp,"INIT"))  
+				l |= Debug::INIT;
+			else if (!compare_no_case(tmp,"KEY"))  
+				l |= Debug::KEY; 
+			else if (!compare_no_case(tmp,"TOOLBAR"))  
+				l |= Debug::TOOLBAR;
+			else if (!compare_no_case(tmp,"PARSER"))  
+				l |= Debug::PARSER; 
+			else if (!compare_no_case(tmp,"LYXRC"))  
+				l |= Debug::LYXRC; 
+			else if (!compare_no_case(tmp,"KBMAP"))  
+				l |= Debug::KBMAP;  
+			else if (!compare_no_case(tmp,"LATEX"))  
+				l |= Debug::LATEX;  
+			else if (!compare_no_case(tmp,"MATHED"))  
+				l |= Debug::MATHED; 
+			else if (!compare_no_case(tmp,"FONT"))  
+				l |= Debug::FONT;   
+			else if (!compare_no_case(tmp,"TCLASS"))  
+				l |= Debug::TCLASS; 
+			else if (!compare_no_case(tmp,"LYXVC"))  
+				l |= Debug::LYXVC;  
+			else if (!compare_no_case(tmp,"LYXSERVER"))  
+				l |= Debug::LYXSERVER;
+			else if (!compare_no_case(tmp,"ROFF"))  
+				l |= Debug::ROFF;
+			else if (!compare_no_case(tmp,"ACTION"))  
+				l |= Debug::ACTION;
 			else break; // unknown string
 			if (st == string::npos) break;
 			v.erase(0, st + 1);

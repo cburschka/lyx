@@ -1,5 +1,22 @@
 1999-11-25  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
+	* src/bufferparams.C: make sure that the default textclass is
+	"article". It used to be the first one by description order, but
+	now the first one is "docbook".
+
+	* src/lyx_main.C (setDebuggingLevel): change type of argument to
+	string; call Debug::value.
+	(easyParse): pass complete argument to setDebuggingLevel().
+
+	* src/debug.h (value): fix the code that parses debug levels.
+
+	* src/debug.h: add new debug type ACTION, reserved for LyXAction
+	class.  
+
+	* src/LyXAction.C: use Debug::ACTION as debug channel.
+
+	* src/lyxlookup.C: make the debug statements go to Debug::KEY.
+
 	* NEWS: updated for the future 1.1.3 release.
 
 	* src/mathed/symbol_def.h: swap the definitions of \varepsilon and
