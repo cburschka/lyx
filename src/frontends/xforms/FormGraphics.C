@@ -544,9 +544,10 @@ ButtonPolicy::SMInput FormGraphics::input(FL_OBJECT * ob, long)
 		setEnabled(lyxview_->choice_lyxheight, 0);
 		setEnabled(lyxview_->input_lyxscale, 1);
 	} else if (ob == lyxview_->button_latex_values) {
-		if (contains(fl_get_choice_text(size_->choice_width),'%'))
+		if (contains(fl_get_choice_text(size_->choice_width),'%') || 
+			contains(fl_get_choice_text(size_->choice_height),'%'))
 			Alert::alert(_("Warning!"),
-				     _("The units text%, page%, col% and line% are not allowed here."),
+				     _("The %-units are not allowed here."),
 				     _("Cannot use the values from LaTeX size!"));
 		else {
 			LyXLength dummy =
