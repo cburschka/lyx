@@ -2,7 +2,7 @@ include $(top_srcdir)/config/common.am
 
 noinst_LTLIBRARIES = libsupport.la
 
-CLEANFILES = path_defines.C
+CLEANFILES += path_defines.C
 
 INCLUDES = -I$(srcdir)/../ $(BOOST_INCLUDES)
 
@@ -17,7 +17,7 @@ BUILT_SOURCES = path_defines.C
 AM_CXXFLAGS = $(PCH_FLAGS)
 
 libsupport_la_SOURCES = \
-	$(PCH_FILE) FileInfo.C \
+	FileInfo.C \
 	FileInfo.h \
 	FileMonitor.h \
 	FileMonitor.C \

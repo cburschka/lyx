@@ -1,7 +1,7 @@
 include $(top_srcdir)/config/common.am
 
 SUBDIRS = forms
-CLEANFILES = stamp-xpm stamp-forms
+CLEANFILES += stamp-xpm stamp-forms
 DISTCLEANFILES += lyx_forms.h lyx_forms.h-tmp lyx_xpm.h lyx_xpm.h-tmp
 BUILT_SOURCES = lyx_forms.h lyx_xpm.h
 
@@ -17,8 +17,6 @@ AM_CXXFLAGS = $(PCH_FLAGS)
 noinst_LTLIBRARIES = libxforms.la
 
 libxforms_la_LIBADD = @XFORMS_LIBS@ forms/*.lo
-
-libxforms_la_DEPENDENCIES = $(PCH_FILE)
 
 # Alphabetical order please.  It makes it easier to figure out what's missing.
 libxforms_la_SOURCES = \

@@ -14,6 +14,8 @@ DISTCLEANFILES += $(BUILT_SOURCES)
 
 bin_PROGRAMS = tex2lyx
 
+AM_CXXFLAGS = $(PCH_FLAGS)
+
 BUILT_SOURCES = \
 	FloatList.C \
 	Floating.C \

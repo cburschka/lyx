@@ -4,7 +4,8 @@ noinst_LTLIBRARIES = libboostsignals.la
 
 INCLUDES = $(BOOST_INCLUDES)
 
-AM_CXXFLAGS = -DBOOST_USER_CONFIG="<config.h>"
+AM_CPPFLAGS = -DBOOST_USER_CONFIG="<config.h>"
+AM_CXXFLAGS = $(PCH_FLAGS)
 
 libboostsignals_la_SOURCES = \
 	connection.cpp \

@@ -1,5 +1,7 @@
 AUTOMAKE_OPTIONS = foreign
 
+CLEANFILES = pch.h.gch
+
 DISTCLEANFILES= *.orig *.rej *~ *.bak core
 
 MAINTAINERCLEANFILES = $(srcdir)/Makefile.in
@@ -10,12 +12,21 @@ AM_ETAGSFLAGS = --lang=c++
 
 if LYX_BUILD_PCH
 PCH_FLAGS = -Winvalid-pch --include=pch.h
-PCH_FILE = pch.h.gch
+PCH_FILE = ./pch.h.gch
+PCH_SOURCE = ./pch.h
+sinclude pch.h.gch.dep
+
+*.C *.cpp: $(PCH_FILE)
+
+pch.h.gch: $(PCH_SOURCE)
+	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) \
+        $(AM_CPPFLAGS) $(CPPFLAGS) $(CXXFLAGS) \
+	-x c++-header $(PCH_SOURCE) -MT $@ -MD -MP -MF "./$@.Tdep" \
+	&& mv "./$@.Tdep" "./$@.dep" || rm "./$@.Tdep"
+
 endif
 
-pch.h.gch:
-	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) \
-        $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -x c++-header pch.h
+SUFFIXES = .gch
 
 if USE_INCLUDED_BOOST
 BOOST_INCLUDES = -I$(top_srcdir)/boost

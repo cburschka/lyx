@@ -4,7 +4,8 @@ noinst_LTLIBRARIES = libboostfilesystem.la
 
 INCLUDES = $(BOOST_INCLUDES)
 
-AM_CXXFLAGS = -DBOOST_USER_CONFIG="<config.h>"
+AM_CPPFLAGS = -DBOOST_USER_CONFIG="<config.h>"
+AM_CXXFLAGS = $(PCH_FLAGS)
 
 libboostfilesystem_la_SOURCES = \
 	convenience.cpp \

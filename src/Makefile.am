@@ -58,8 +58,6 @@ BUILT_SOURCES = version.C
 
 AM_CXXFLAGS = $(PCH_FLAGS)
 
-lyx_DEPENDENCIES = $(PCH_FILE)
-
 lyx_SOURCES = \
 	Bidi.C \
 	Bidi.h \

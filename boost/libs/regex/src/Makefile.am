@@ -4,7 +4,8 @@ noinst_LTLIBRARIES = libboostregex.la
 
 INCLUDES = $(BOOST_INCLUDES)
 
-AM_CXXFLAGS = -DBOOST_USER_CONFIG="<config.h>"
+AM_CPPFLAGS = -DBOOST_USER_CONFIG="<config.h>"
+AM_CXXFLAGS = $(PCH_FLAGS)
 
 libboostregex_la_SOURCES = \
 	cpp_regex_traits.cpp \

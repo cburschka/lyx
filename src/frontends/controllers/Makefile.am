@@ -9,7 +9,7 @@ noinst_LTLIBRARIES = libcontrollers.la
 AM_CXXFLAGS = $(PCH_FLAGS)
 
 libcontrollers_la_SOURCES= \
-	$(PCH_FILE) Dialog.C \
+	Dialog.C \
 	Dialog.h \
 	Kernel.C \
 	Kernel.h \

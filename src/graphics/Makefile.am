@@ -7,7 +7,7 @@ INCLUDES = -I$(srcdir)/.. $(BOOST_INCLUDES)
 AM_CXXFLAGS = $(PCH_FLAGS)
 
 libgraphics_la_SOURCES = \
-	$(PCH_FILE) GraphicsCache.h \
+	GraphicsCache.h \
 	GraphicsCache.C \
 	GraphicsCacheItem.h \
 	GraphicsCacheItem.C \

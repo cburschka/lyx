@@ -10,10 +10,8 @@ EXTRA_DIST = \
 
 AM_CXXFLAGS = $(PCH_FLAGS)
 
-libinsets_la_DEPENDENCIES = $(PCH_FILE)
-
 libinsets_la_SOURCES = \
-	$(PCH_FILE) mailinset.C \
+	mailinset.C \
 	mailinset.h \
 	ExternalSupport.C \
 	ExternalSupport.h \

@@ -15,9 +15,8 @@ noinst_LTLIBRARIES = libqt2.la
 libqt2_la_LDFLAGS = $(QT_LDFLAGS)
 libqt2_la_LIBADD = $(QT_LIB) ui/*.lo moc/*.lo ui/moc/*.lo
 
-AM_CXXFLAGS = $(PCH_FLAGS) -DQT_CLEAN_NAMESPACE -DQT_GENUINE_STR
-
-libqt2_la_DEPENDENCIES = $(PCH_FILE)
+AM_CPPFLAGS = -DQT_CLEAN_NAMESPACE -DQT_GENUINE_STR
+AM_CXXFLAGS = $(PCH_FLAGS)
 
 libqt2_la_SOURCES = \
 	QDialogView.C \

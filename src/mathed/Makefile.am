@@ -8,10 +8,8 @@ INCLUDES = -I$(srcdir)/../ $(BOOST_INCLUDES)
 
 AM_CXXFLAGS = $(PCH_FLAGS)
 
-libmathed_la_DEPENDENCIES = $(PCH_FILE)
-
 libmathed_la_SOURCES = \
-	$(PCH_FILE) textpainter.C \
+	textpainter.C \
 	textpainter.h \
 	math_amsarrayinset.C \
 	math_amsarrayinset.h \
