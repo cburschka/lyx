@@ -1561,6 +1561,10 @@ void BufferView::Pimpl::moveCursorUpdate(bool selecting, bool fitcur)
 		else
 			update(lt, BufferView::SELECT);
 		showCursor();
+	} else if (bv_->text->status() != LyXText::UNCHANGED) {
+		bv_->theLockingInset()->hideInsetCursor(bv_);
+		update(bv_->text, BufferView::SELECT|BufferView::FITCUR);
+		showCursor();
 	}
 
 	if (!lt->selection.set())
@@ -2478,6 +2482,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		       BufferView::SELECT
 		       | BufferView::FITCUR
 		       | BufferView::CHANGE);
+		lt->setCursor(bv_, lt->cursor.par(), lt->cursor.pos());
 		moveCursorUpdate(false);
 	}
 	break;
