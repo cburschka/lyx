@@ -17,6 +17,8 @@ BUILTSOURCES = 	moc_FormCopyrightDialogBase.C \
 	       moc_paragraphdlgimpl.C \
 	       moc_printdlg.C \
 	       moc_printdlgimpl.C \
+	       moc_searchdlg.C \
+	       moc_searchdlgimpl.C \
 	       moc_tabularcreatedlg.C \
 	       moc_tabularcreatedlgimpl.C \
 	       moc_emptytable.C
@@ -35,6 +37,7 @@ libqt2_la_OBJADD = \
 	../xforms/FormGraphics.lo \
 	../xforms/FormIndex.lo \
 	../xforms/FormInset.lo \
+	../xforms/FormPreamble.lo \
 	../xforms/FormPreferences.lo \
 	../xforms/FormRef.lo \
 	../xforms/FormTabular.lo \
@@ -50,13 +53,14 @@ libqt2_la_OBJADD = \
 	../xforms/form_error.lo \
 	../xforms/form_index.lo \
 	../xforms/form_graphics.lo \
+	../xforms/form_preamble.lo \
 	../xforms/form_preferences.lo \
 	../xforms/form_ref.lo \
 	../xforms/form_tabular.lo \
 	../xforms/form_toc.lo \
 	../xforms/form_url.lo \
 	../xforms/input_validators.lo \
-	../xforms/xform_helpers.lo
+	../xforms/xforms_helpers.lo
 
 LIBS=
 LDFLAGS= $(libqt2_la_OBJADD)
@@ -92,6 +96,12 @@ libqt2_la_SOURCES = \
 	printdlgimpl.h \
 	emptytable.C \
 	emptytable.h \
+	FormSearch.C	\
+	FormSearch.h	\
+	searchdlg.C \
+	searchdlg.h \
+	searchdlgimpl.C \
+	searchdlgimpl.h \
 	FormTabularCreate.C \
 	FormTabularCreate.h \
 	tabularcreatedlg.C \
@@ -163,5 +173,15 @@ chardlg.C: chardlg.ui
 moc_chardlg.C: chardlg.h
 	$(MOC) -o $@ $<
 moc_chardlgimpl.C: chardlgimpl.h
+	$(MOC) -o $@ $<
+
+FormSearch.C: searchdlg.h
+searchdlg.h: searchdlg.ui
+	$(UIC) -o $@ $<
+searchdlg.C: searchdlg.ui
+	$(UIC) -impl searchdlg.h -o $@ $<
+moc_searchdlg.C: searchdlg.h
+	$(MOC) -o $@ $<
+moc_searchdlgimpl.C: searchdlgimpl.h
 	$(MOC) -o $@ $<
 

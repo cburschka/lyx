@@ -23,6 +23,7 @@
 #include "FormPreferences.h"
 #include "FormPrint.h"
 #include "FormRef.h"
+#include "FormSearch.h"
 #include "FormTabular.h"
 #include "FormTabularCreate.h"
 #include "FormToc.h"
@@ -56,6 +57,7 @@ Dialogs::Dialogs(LyXView * lv)
 	dialogs_.push_back(new FormPreferences(lv, this));
 	dialogs_.push_back(new FormPrint(lv, this));
 	dialogs_.push_back(new FormRef(lv, this));
+	dialogs_.push_back(new FormSearch(lv, this));
 	dialogs_.push_back(new FormTabular(lv, this));
 	dialogs_.push_back(new FormTabularCreate(lv, this));
 	dialogs_.push_back(new FormToc(lv, this));
