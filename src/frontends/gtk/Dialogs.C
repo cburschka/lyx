@@ -83,7 +83,7 @@
 #include "FormTabular.h"
 #include "FormTexinfo.h"
 #include "FormShowFile.h"
-#include "FormSpellchecker.h"
+#include "GSpellchecker.h"
 #include "GTableCreate.h"
 #include "GToc.h"
 #include "GUrl.h"
@@ -479,8 +479,9 @@ Dialogs::DialogPtr Dialogs::build(string const & name)
 		dialog->setView(new FormSendto(*dialog));
 		dialog->bc().bp(new OkApplyCancelPolicy);
 	} else if (name == "spellchecker") {
+		dialog->bc().view(new GBC(dialog->bc()));
 		dialog->setController(new ControlSpellchecker(*dialog));
-		dialog->setView(new FormSpellchecker(*dialog));
+		dialog->setView(new GSpellchecker(*dialog));
 		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
 	} else if (name == "tabular") {
 		dialog->setController(new ControlTabular(*dialog));

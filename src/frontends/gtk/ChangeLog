@@ -1,5 +1,10 @@
 2004-10-06  John Spray  <spray_john@users.sourceforge.net>
 
+	* The Spellchecker dialog
+	* Dialogs.C, GSpellchecker.C, GSpellchecker.h, Makefile.am
+
+2004-10-06  John Spray  <spray_john@users.sourceforge.net>
+
 	* GView.C (c-tor): get the layout engine working correctly by
 	invoking Gtk::PACK_EXPAND_WIDGET for the main LyX screen.
 

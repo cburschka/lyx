@@ -48,6 +48,8 @@ libgtk_la_SOURCES = \
 	GScreen.h \
 	GSearch.C \
 	GSearch.h \
+	GSpellchecker.C \
+	GSpellchecker.h \
 	GTableCreate.C \
 	GTableCreate.h \
 	GText.C \
@@ -120,7 +122,6 @@ xforms_objects = \
 	../xforms/FormSendto.lo \
 	../xforms/forms_gettext.lo \
 	../xforms/FormShowFile.lo \
-	../xforms/FormSpellchecker.lo \
 	../xforms/FormTabular.lo \
 	../xforms/FormTexinfo.lo \
 	../xforms/FormText.lo \
@@ -135,11 +136,3 @@ xforms_objects = \
 	../xforms/xforms_helpers.lo \
 	../xforms/xformsImage.lo \
 	../xforms/xforms_resize.lo
-
-#	../xforms/Dialogs.lo
-#	../xforms/FormFiledialog.lo
-#	../xforms/FileDialog.lo
-#	../xforms/FormAboutlyx.lo
-#	../xforms/FormUrl.lo
-#	../xforms/FormTabularCreate.lo
-#	../xforms/FormMathsPanel.lo
