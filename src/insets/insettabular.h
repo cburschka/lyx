@@ -119,9 +119,6 @@ public:
 	///
 	int getActCell() const { return actcell; }
 	///
-	void setFont(BufferView *, LyXFont const &, bool toggleall = false,
-		     bool selectall = false);
-	///
 	void openLayoutDialog(BufferView *) const;
 	///
 	bool showInsetDialog(BufferView *) const;

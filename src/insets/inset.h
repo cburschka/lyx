@@ -239,10 +239,6 @@ public:
 	/// check if the font of the char we want inserting is correct
 	/// and modify it if it is not.
 	virtual bool checkInsertChar(LyXFont &);
-	/// we need this here because collapsed insets are only EDITABLE
-	virtual void setFont(BufferView *, LyXFont const &,
-			 bool toggleall = false, bool selectall = false);
-
 	// should this inset be handled like a normal charater
 	virtual bool isChar() const { return false; }
 	// is this equivalent to a letter?

@@ -79,9 +79,6 @@ public:
 	/// get the screen x,y of the cursor
 	void getCursorPos(int & x, int & y) const;
 	///
-	void setFont(BufferView *, LyXFont const &, bool toggleall = false,
-		 bool selectall = false);
-	///
 	void setLabel(std::string const & l) const;
 	///
 	void setLabelFont(LyXFont & f);

@@ -337,13 +337,6 @@ void InsetCollapsable::getCursorPos(int & x, int & y) const
 }
 
 
-void InsetCollapsable::setFont(BufferView * bv, LyXFont const & font,
-			       bool toggleall, bool selectall)
-{
-	inset.setFont(bv, font, toggleall, selectall);
-}
-
-
 void InsetCollapsable::getLabelList(Buffer const & buffer,
 				    std::vector<string> & list) const
 {

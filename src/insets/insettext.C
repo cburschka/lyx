@@ -301,11 +301,11 @@ string const InsetText::editMessage() const
 void InsetText::sanitizeEmptyText(BufferView * bv)
 {
 	if (paragraphs.size() == 1
-			&& paragraphs.begin()->empty()
-			&& bv->getParentLanguage(this) != text_.current_font.language()) {
+	    && paragraphs.begin()->empty()
+	    && bv->getParentLanguage(this) != text_.current_font.language()) {
 		LyXFont font(LyXFont::ALL_IGNORE);
 		font.setLanguage(bv->getParentLanguage(this));
-		setFont(bv, font, false);
+		text_.setFont(font, false);
 	}
 }
 
@@ -376,7 +376,7 @@ DispatchResult InsetText::priv_dispatch(FuncRequest const & cmd,
 	    paragraphs.size() == 1) {
 		LyXFont font(LyXFont::ALL_IGNORE);
 		font.setLanguage(bv->getParentLanguage(this));
-		setFont(bv, font, false);
+		text_.setFont(font, false);
 	}
 
 	lyxerr << "InsetText::priv_dispatch (end)" << endl;
@@ -486,34 +486,6 @@ void InsetText::getLabelList(Buffer const & buffer,
 		for (; beg != end; ++beg)
 			beg->inset->getLabelList(buffer, list);
 	}
-}
-
-
-void InsetText::setFont(BufferView * bv, LyXFont const & font, bool toggleall,
-			bool selectall)
-{
-	if ((paragraphs.size() == 1 && paragraphs.begin()->empty())
-	    || cpar()->empty()) {
-		text_.setFont(font, toggleall);
-		return;
-	}
-
-	if (text_.selection.set())
-		text_.recUndo(text_.cursor.par());
-
-	if (selectall) {
-		text_.cursorTop();
-		text_.selection.cursor = text_.cursor;
-		text_.cursorBottom();
-		text_.setSelection();
-	}
-
-	text_.toggleFree(font, toggleall);
-
-	if (selectall)
-		text_.clearSelection();
-
-	updateLocal(bv, true);
 }
 
 

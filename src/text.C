@@ -1281,7 +1281,7 @@ void LyXText::Delete()
 	LyXCursor old_cursor = cursor;
 
 	// just move to the right
-	cursorRight(bv());
+	cursorRight(true);
 
 	// if you had success make a backspace
 	if (old_cursor.par() != cursor.par() || old_cursor.pos() != cursor.pos()) {

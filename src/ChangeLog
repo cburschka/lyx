@@ -1,3 +1,12 @@
+
+2003-11-27  Alfredo Braunstein  <abraunst@lyx.org>
+
+	* text2.C (setFont): rework using PosIterator (no more recursive)
+	(setCharFont): no more needed 
+	(setLayout): no more selection cursors fiddling (done by redoCursor)
+	* text.C: cursorRight(bv)->cursorRight(true) (TODO: find and
+	destroy remaining ones)
+
 2003-11-26  Alfredo Braunstein  <abraunst@lyx.org>
 
 	* bufferview_funcs.[Ch]: split changeDepthAllowed from changeDepth

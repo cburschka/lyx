@@ -61,9 +61,6 @@ public:
 		return code == InsetOld::NEWLINE_CODE;
 	}
 	///
-	void setFont(BufferView *, LyXFont const &,
-			     bool toggleall = false, bool selectall = false);
-	///
 	EDITABLE editable() const;
 	///
 	int latex(Buffer const &, std::ostream &,

@@ -1212,38 +1212,6 @@ bool InsetTabular::movePrevCell(BufferView * bv, bool lock)
 }
 
 
-void InsetTabular::setFont(BufferView * bv, LyXFont const & font, bool tall,
-			   bool selectall)
-{
-	if (selectall) {
-		setSelection(0, tabular.getNumberOfCells() - 1);
-	}
-	if (hasSelection()) {
-		recordUndo(bv, Undo::ATOMIC);
-		bool const frozen = undo_frozen;
-		if (!frozen)
-			freezeUndo();
-		// apply the fontchange on the whole selection
-		int sel_row_start;
-		int sel_row_end;
-		int sel_col_start;
-		int sel_col_end;
-		getSelection(sel_row_start, sel_row_end, sel_col_start, sel_col_end);
-		for (int i = sel_row_start; i <= sel_row_end; ++i)
-			for (int j = sel_col_start; j <= sel_col_end; ++j)
-				tabular.getCellInset(i, j).setFont(bv, font, tall, true);
-
-		if (!frozen)
-			unFreezeUndo();
-		if (selectall)
-			clearSelection();
-		updateLocal(bv);
-	}
-	if (the_locking_inset)
-		the_locking_inset->setFont(bv, font, tall);
-}
-
-
 bool InsetTabular::tabularFeatures(BufferView * bv, string const & what)
 {
 	LyXTabular::Feature action = LyXTabular::LAST_ACTION;

@@ -224,19 +224,6 @@ bool InsetERT::insertInset(BufferView *, InsetOld *)
 }
 
 
-void InsetERT::setFont(BufferView *, LyXFont const &, bool, bool selectall)
-{
-#ifdef WITH_WARNINGS
-#warning FIXME. More UI stupidity...
-#endif
-	// if selectall is activated then the fontchange was an outside general
-	// fontchange and this messages is not needed
-	if (!selectall)
-		Alert::error(_("Cannot change font"),
-			   _("You cannot change font settings inside TeX code."));
-}
-
-
 void InsetERT::updateStatus(bool swap) const
 {
 	if (status_ != Inlined) {

@@ -43,6 +43,7 @@
 #include "paragraph.h"
 #include "paragraph_funcs.h"
 #include "ParagraphParameters.h"
+#include "PosIterator.h"
 #include "undo.h"
 #include "vspace.h"
 
@@ -175,27 +176,6 @@ LyXFont LyXText::getLabelFont(ParagraphList::iterator pit) const
 	font.realize(defaultfont_);
 
 	return font;
-}
-
-
-void LyXText::setCharFont(ParagraphList::iterator pit,
-			  pos_type pos, LyXFont const & fnt,
-			  bool toggleall)
-{
-	BufferParams const & params = bv()->buffer()->params();
-	LyXFont font = getFont(pit, pos);
-	font.update(fnt, params.language, toggleall);
-	// Let the insets convert their font
-	if (pit->isInset(pos)) {
-		InsetOld * inset = pit->getInset(pos);
-		if (isEditableInset(inset)) {
-			static_cast<UpdatableInset *>(inset)
-				->setFont(bv(), fnt, toggleall, true);
-		}
-	}
-
-	// Plug through to version below:
-	setCharFont(pit, pos, font);
 }
 
 
@@ -349,14 +329,7 @@ LyXText::setLayout(LyXCursor & cur, LyXCursor & sstart_cur,
 // set layout over selection and make a total rebreak of those paragraphs
 void LyXText::setLayout(string const & layout)
 {
-	LyXCursor tmpcursor = cursor;  // store the current cursor
-
-	// if there is no selection just set the layout
-	// of the current paragraph
-	if (!selection.set()) {
-		selection.start = cursor;  // dummy selection
-		selection.end = cursor;
-	}
+	setSelection();
 
 	// special handling of new environment insets
 	BufferParams const & params = bv()->buffer()->params();
@@ -371,8 +344,7 @@ void LyXText::setLayout(string const & layout)
 		if (bv()->insertInset(inset)) {
 			//inset->edit(bv());
 			//bv()->owner()->dispatch(FuncRequest(LFUN_PASTE));
-		}
-		else
+		} else
 			delete inset;
 		return;
 	}
@@ -380,16 +352,8 @@ void LyXText::setLayout(string const & layout)
 	ParagraphList::iterator endpit = setLayout(cursor, selection.start,
 						   selection.end, layout);
 	redoParagraphs(getPar(selection.start), endpit);
-
-	// we have to reset the selection, because the
-	// geometry could have changed
-	setCursor(selection.start.par(), selection.start.pos(), false);
-	selection.cursor = cursor;
-	setCursor(selection.end.par(), selection.end.pos(), false);
 	updateCounters();
-	clearSelection();
-	setSelection();
-	setCursor(tmpcursor.par(), tmpcursor.pos(), true);
+	redoCursor();
 }
 
 
@@ -499,39 +463,28 @@ void LyXText::setFont(LyXFont const & font, bool toggleall)
 		return;
 	}
 
-	LyXCursor tmpcursor = cursor; // store the current cursor
-
-	// ok we have a selection. This is always between sel_start_cursor
-	// and sel_end cursor
-
+	// ok we have a selection.
 	recUndo(selection.start.par(), selection.end.par());
 	freezeUndo();
-	cursor = selection.start;
-	while (cursor.par() != selection.end.par() ||
-	       cursor.pos() < selection.end.pos())
-	{
-		if (cursor.pos() < cursorPar()->size()) {
-			// an open footnote should behave like a closed one
-			setCharFont(cursorPar(), cursor.pos(), font, toggleall);
-			cursor.pos(cursor.pos() + 1);
-		} else {
-			cursor.pos(0);
-			cursor.par(cursor.par() + 1);
-		}
+
+	ParagraphList::iterator beg = getPar(selection.start.par());
+	ParagraphList::iterator end = getPar(selection.end.par());
+	
+	PosIterator pos(&ownerParagraphs(), beg, selection.start.pos());
+	PosIterator posend(&ownerParagraphs(), end, selection.end.pos());
+
+	BufferParams const & params = bv()->buffer()->params();
+
+	for (; pos != posend; ++pos) {
+		LyXFont f = getFont(pos.pit(), pos.pos());
+		f.update(font, params.language, toggleall);
+		setCharFont(pos.pit(), pos.pos(), f);
 	}
+	
 	unFreezeUndo();
 
-	redoParagraph(getPar(selection.start));
-
-	// we have to reset the selection, because the
-	// geometry could have changed, but we keep
-	// it for user convenience
-	setCursor(selection.start.par(), selection.start.pos());
-	selection.cursor = cursor;
-	setCursor(selection.end.par(), selection.end.pos());
-	setSelection();
-	setCursor(tmpcursor.par(), tmpcursor.pos(), true,
-		  tmpcursor.boundary());
+	redoParagraphs(beg, ++end);
+	redoCursor();
 }
 
 
@@ -665,12 +618,7 @@ void LyXText::setParagraph(VSpace const & space_top,
 			   string const & labelwidthstring,
 			   bool noindent)
 {
-	LyXCursor tmpcursor = cursor;
-	if (!selection.set()) {
-		selection.start = cursor;
-		selection.end = cursor;
-	}
-
+	setSelection();
 	// make sure that the depth behind the selection are restored, too
 	ParagraphList::iterator endpit = boost::next(getPar(selection.end));
 	ParagraphList::iterator undoendpit = endpit;
@@ -716,13 +664,7 @@ void LyXText::setParagraph(VSpace const & space_top,
 	}
 
 	redoParagraphs(getPar(selection.start), endpit);
-
-	clearSelection();
-	setCursor(selection.start.par(), selection.start.pos());
-	selection.cursor = cursor;
-	setCursor(selection.end.par(), selection.end.pos());
-	setSelection();
-	setCursor(tmpcursor.par(), tmpcursor.pos());
+	redoCursor();
 }
 
 

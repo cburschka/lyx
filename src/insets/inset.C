@@ -92,10 +92,6 @@ LColor_color InsetOld::backgroundColor() const
 }
 
 
-void InsetOld::setFont(BufferView *, LyXFont const &, bool, bool)
-{}
-
-
 bool InsetOld::forceDefaultParagraphs(InsetOld const * inset) const
 {
 	if (owner())
