@@ -1,0 +1,155 @@
+#LyX 1.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 218
+\textclass article
+\language magyar
+\inputencoding latin2
+\fontscheme default
+\graphics default
+\paperfontsize default
+\spacing single 
+\papersize a4paper
+\paperpackage a4
+\use_geometry 0
+\use_amsmath 0
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language polish
+\quotes_times 2
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+
+\layout Title
+
+Üdvözöli a LyX!
+\layout Section*
+
+Az elsõ N dolog, amit tudnia kell a LyX-rõl
+\layout Enumerate
+
+A LyX rendkívül jól dokumentált.
+ Kérjük használja ki ezt! Kezdje a 
+\family sans 
+\bar under 
+S
+\bar default 
+úgó\SpecialChar \menuseparator
+
+\bar under 
+B
+\bar default 
+evezetés
+\family default 
+ elolvasásával, ami egy gyors áttekintést ad a dokumentáció használatával
+ kapcsolatban.
+ Aztán folytassa a 
+\family sans 
+\bar under 
+S
+\bar default 
+úgó\SpecialChar \menuseparator
+
+\bar under 
+T
+\bar default 
+ankönyv
+\family default 
+ olvasásával, aminek segítségével elsajátíthatja a LyX használatával kapcsolatos
+ alapvetõ dolgokat.
+\layout Enumerate
+
+A LyX az, amit mi 
+\begin_inset Quotes pld
+\end_inset 
+
+szövegszerkesztõnek
+\begin_inset Quotes prd
+\end_inset 
+
+ nevezünk.
+ Ez alapvetõen más elveket követ, mint egy átlagos szövegszerkesztõ, és
+ ezzel sokkal könnyebbé teszi a dokumentumok szerkesztését.
+ De ez csak egy kis különbség, szóval ne ijedjen meg.
+ A dokumentációból minden világos lesz.
+\begin_float footnote 
+\layout Standard
+
+\SpecialChar ~
+Eléggé kihangsúlyoztuk, hogy el kellene olvasni a dokumentációt?
+\end_float 
+\layout Enumerate
+
+A LyX kimenete nagyon jól mutat! Válassza a 
+\family sans 
+\bar under 
+N
+\bar default 
+ézet\SpecialChar \menuseparator
+
+\bar under 
+D
+\bar default 
+VI
+\family default 
+ menüpontot, így meg is gyõzõdhet róla.
+\layout Enumerate
+
+Igen, a LyX tudja (majdnem) mindazt amit a LaTeX, és importálni is tudja
+ a LaTeX fájlokat.
+ Gyakorlott LaTeX felhasználók ki is hagyhatják a 
+\emph on 
+Tankönyv
+\emph default 
+ nagy részét, nyugodtan kezdjék a 
+\begin_inset Quotes pld
+\end_inset 
+
+LyX a LaTeX felhasználóknak
+\begin_inset Quotes prd
+\end_inset 
+
+ résszel.
+ (A többiek ne essenek kétségbe, nem kell megtanulni a LaTeX használatát
+ ahhoz, hogy a LyX-et használják.)
+\layout Enumerate
+
+A LyX sok hasznos lehetõséggel rendelkezik azok számára is, akik más nyelveken
+ is írnak dokumentumokat.
+ Például a billentyûzet, a menük és sok egyéb tulajdonság részletesen beállíthat
+ó az ön igényeinek megfelelõen.
+ További információkért olvassa el a 
+\family sans 
+\bar under 
+S
+\bar default 
+úgó\SpecialChar \menuseparator
+Te
+\bar under 
+s
+\bar default 
+treszabás
+\family default 
+ részt.
+\layout Enumerate
+
+A LyX honlapja a következõ címen található meg: 
+\begin_inset LatexCommand \url{http://www.lyx.org/}
+
+\end_inset 
+
+ Itt további információkat tudhat meg a LyX-rõl, feliratkozhat a levelezõlistákr
+a, stb\SpecialChar \ldots{}
+
+\layout Enumerate
+
+A LyX magyar honlapja következõ címen található meg: 
+\begin_inset LatexCommand \url{http://k2.jozsef.kando.hu/~zrubi/LyX/}
+
+\end_inset 
+
+ Inen töltheti le a legfrissebb magyar dokumentációs fájlokat, amiket az
+ eredeti csomag esetleg még nem tartalmaz.
+\the_end
