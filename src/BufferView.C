@@ -19,6 +19,7 @@
 #include "buffer.h"
 #include "bufferlist.h"
 #include "BufferView_pimpl.h"
+#include "debug.h"
 #include "funcrequest.h"
 #include "gettext.h"
 #include "iterators.h"
@@ -169,12 +170,6 @@ Change const BufferView::getCurrentChange()
 }
 
 
-void BufferView::beforeChange(LyXText * text)
-{
-	pimpl_->beforeChange(text);
-}
-
-
 void BufferView::savePosition(unsigned int i)
 {
 	pimpl_->savePosition(i);
@@ -196,12 +191,6 @@ bool BufferView::isSavedPosition(unsigned int i)
 void BufferView::switchKeyMap()
 {
 	pimpl_->switchKeyMap();
-}
-
-
-void BufferView::insetUnlock()
-{
-	pimpl_->insetUnlock();
 }
 
 
@@ -267,12 +256,10 @@ bool BufferView::insertLyXFile(string const & filen)
 
 	string const fname = MakeAbsPath(filen);
 
-	beforeChange(text);
-
+	text->clearSelection();
 	text->breakParagraph(buffer()->paragraphs());
 
 	bool res = buffer()->readFile(fname, text->cursorPar());
-
 	resize();
 	return res;
 }
@@ -322,7 +309,7 @@ void BufferView::gotoLabel(string const & label)
 		vector<string> labels;
 		it->getLabelList(*buffer(), labels);
 		if (find(labels.begin(),labels.end(),label) != labels.end()) {
-			beforeChange(text);
+			text->clearSelection();
 			text->setCursor(
 				std::distance(text->ownerParagraphs().begin(), it.getPar()),
 				it.getPos());
@@ -340,7 +327,7 @@ void BufferView::undo()
 		return;
 
 	owner()->message(_("Undo"));
-	beforeChange(text);
+	text->clearSelection();
 	if (!textUndo(this))
 		owner()->message(_("No further undo information"));
 	update();
@@ -354,7 +341,7 @@ void BufferView::redo()
 		return;
 
 	owner()->message(_("Redo"));
-	beforeChange(text);
+	text->clearSelection();
 	if (!textRedo(this))
 		owner()->message(_("No further redo information"));
 	update();
@@ -382,51 +369,16 @@ void BufferView::replaceWord(string const & replacestring)
 }
 
 
-bool BufferView::lockInset(UpdatableInset * inset)
-{
-	if (!inset)
-		return false;
-
-	// don't relock if we're already locked
-	if (theLockingInset() == inset)
-		return true;
-
-	if (theLockingInset())
-		return theLockingInset()->lockInsetInInset(this, inset);
-
-	// first check if it's the inset under the cursor we want lock
-	// should be most of the time
-	if (text->cursor.pos() < text->cursorPar()->size()
-			&& text->cursorPar()->getChar(text->cursor.pos()) ==
-			Paragraph::META_INSET) {
-		if (inset == text->cursorPar()->getInset(text->cursor.pos())) {
-			theLockingInset(inset);
-			return true;
-		}
-	}
-
-	// then do a deep look at the inset and lock the right one
-	ParagraphList::iterator pit = buffer()->paragraphs().begin();
-	ParagraphList::iterator pend = buffer()->paragraphs().end();
-	for (int par = 0; pit != pend; ++pit, ++par) {
-		InsetList::iterator it = pit->insetlist.begin();
-		InsetList::iterator end = pit->insetlist.end();
-		for (; it != end; ++it) {
-			if (it->inset == inset) {
-				text->setCursorIntern(par, it->pos);
-				theLockingInset(inset);
-				return true;
-			}
-		}
-	}
-	return false;
-}
-
-
 bool BufferView::fitLockedInsetCursor(int x, int y, int asc, int desc)
 {
-	if (theLockingInset() && available()) {
-		y += text->cursor.y() + theLockingInset()->insetInInsetY();
+	lyxerr << "BufferView::fitLockedInsetCursor x: " << x
+		<< " y: " << y << std::endl;
+	UpdatableInset * tli =
+		static_cast<UpdatableInset *>(cursor().innerInset());
+	if (tli && available()) {
+		lyxerr << "    text->cursor.y: " << text->cursor.y() << std::endl;
+		lyxerr << "    insetInInsetY: " << tli->insetInInsetY() << std::endl;
+		y += text->cursor.y() + tli->insetInInsetY();
 		if (screen().fitManualCursor(this, text, x, y, asc, desc)) {
 			updateScrollbar();
 			return true;
@@ -439,32 +391,6 @@ bool BufferView::fitLockedInsetCursor(int x, int y, int asc, int desc)
 void BufferView::hideCursor()
 {
 	screen().hideCursor();
-}
-
-
-int BufferView::unlockInset(UpdatableInset * inset)
-{
-	if (!inset)
-		return 0;
-	if (inset && theLockingInset() == inset) {
-		inset->insetUnlock(this);
-		theLockingInset(0);
-		// make sure we update the combo !
-		owner()->setLayout(getLyXText()->cursorPar()->layout()->name());
-		// Tell the paragraph dialog that we changed paragraph
-		dispatch(FuncRequest(LFUN_PARAGRAPH_UPDATE));
-		finishUndo();
-		return 0;
-	}
-	if (inset && theLockingInset() &&
-		   theLockingInset()->unlockInsetInInset(this, inset)) {
-		// Tell the paragraph dialog that we changed paragraph
-		dispatch(FuncRequest(LFUN_PARAGRAPH_UPDATE));
-		// owner inset has updated the layout combo
-		finishUndo();
-		return 0;
-	}
-	return 1;
 }
 
 
@@ -487,29 +413,15 @@ bool BufferView::ChangeRefsIfUnique(string const & from, string const & to)
 }
 
 
-UpdatableInset * BufferView::theLockingInset() const
+UpdatableInset * BufferView::innerInset() const
 {
-	// If NULL is not allowed we should put an Assert here. (Lgb)
-	if (text)
-		return text->the_locking_inset;
-	return 0;
-}
-
-
-void BufferView::theLockingInset(UpdatableInset * inset)
-{
-	text->the_locking_inset = inset;
+	return static_cast<UpdatableInset*>(cursor().innerInset());
 }
 
 
 LyXText * BufferView::getLyXText() const
 {
-	if (theLockingInset()) {
-		LyXText * txt = theLockingInset()->getLyXText(this, true);
-		if (txt)
-			return txt;
-	}
-	return text;
+	return cursor().innerText();
 }
 
 
@@ -524,9 +436,6 @@ Language const * BufferView::getParentLanguage(InsetOld * inset) const
 Encoding const * BufferView::getEncoding() const
 {
 	LyXText * text = getLyXText();
-	if (!text)
-		return 0;
-
 	return text->cursorPar()->getFont(
 		buffer()->params(),
 		text->cursor.pos(),
@@ -568,4 +477,10 @@ void BufferView::x_target(int x)
 int BufferView::x_target() const
 {
 	return x_target_;
+}
+
+
+void BufferView::updateParagraphDialog()
+{
+	pimpl_->updateParagraphDialog();
 }

@@ -149,11 +149,13 @@ void InsetBox::setButtonLabel()
 }
 
 
-void InsetBox::metrics(MetricsInfo & mi, Dimension & dim) const
+void InsetBox::metrics(MetricsInfo & m, Dimension & dim) const
 {
+	MetricsInfo mi = m;
+	mi.base.textwidth = params_.width.inPixels(m.base.textwidth); 
 	InsetCollapsable::metrics(mi, dim);
-	if (params_.inner_box && isOpen())
-		dim.wid = mi.base.textwidth;
+	//if (params_.inner_box && isOpen())
+	//	dim.wid = mi.base.textwidth;
 	dim_ = dim;
 }
 
@@ -175,31 +177,30 @@ InsetBox::priv_dispatch(FuncRequest const & cmd,
 	switch (cmd.action) {
 
 	case LFUN_INSET_MODIFY: {
+		lyxerr << "InsetBox::dispatch MODIFY" << endl;
 		InsetBoxMailer::string2params(cmd.argument, params_);
 		setButtonLabel();
 		bv->updateInset(this);
 		result.dispatched(true);
 		result.update(true);
-		break;
+		return result;
 	}
+
 	case LFUN_INSET_DIALOG_UPDATE:
 		InsetBoxMailer(*this).updateDialog(bv);
 		result.dispatched(true);
-		break;
+		return result;
 
 	case LFUN_MOUSE_RELEASE:
 		if (cmd.button() == mouse_button::button3 && hitButton(cmd)) {
 			InsetBoxMailer(*this).showDialog(bv);
 			return DispatchResult(true);
 		}
-		// fallthrough:
+		return InsetCollapsable::priv_dispatch(cmd, idx, pos);
 
 	default:
-		result = InsetCollapsable::priv_dispatch(cmd, idx, pos);
-		break;
+		return InsetCollapsable::priv_dispatch(cmd, idx, pos);
 	}
-	
-	return result;
 }
 
 
@@ -349,49 +350,26 @@ int InsetBox::docbook(Buffer const & buf, std::ostream & os,
 int InsetBox::plaintext(Buffer const & buf, std::ostream & os,
 		    OutputParams const & runparams) const
 {
-	int i = 0;
-	string const pt = params_.type;
-	BoxType btype = boxtranslator().find(params_.type);
+	BoxType const btype = boxtranslator().find(params_.type);
+
 	switch (btype) {
-		case Frameless:
-		break;
-		case Boxed:
-		os << "[";
-		break;
-		case ovalbox:
-		os << "(";
-		break;
-		case Ovalbox:
-		os << "((";
-		break;
-		case Shadowbox:
-		os << "[";
-		break;
-		case Doublebox:
-		os << "[[";
-		break;
+		case Frameless: break;
+		case Boxed:     os << "[";  break;
+		case ovalbox:   os << "(";  break;
+		case Ovalbox:   os << "(("; break;
+		case Shadowbox: os << "[";  break;
+		case Doublebox: os << "[["; break;
 	}
 
-	i = inset.plaintext(buf, os, runparams);
+	int i = inset.plaintext(buf, os, runparams);
 
 	switch (btype) {
-		case Frameless:
-		break;
-		case Boxed:
-		os << "]";
-		break;
-		case ovalbox:
-		os << ")";
-		break;
-		case Ovalbox:
-		os << "))";
-		break;
-		case Shadowbox:
-		os << "]/";
-		break;
-		case Doublebox:
-		os << "]]";
-		break;
+		case Frameless: break;
+		case Boxed:     os << "]";  break;
+		case ovalbox:   os << ")";  break;
+		case Ovalbox:   os << "))"; break;
+		case Shadowbox: os << "]/"; break;
+		case Doublebox: os << "]]"; break;
 	}
 
 	return i;

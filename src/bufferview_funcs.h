@@ -37,15 +37,7 @@ bool string2font(std::string const & data, LyXFont & font, bool & toggle);
  *  frontends.
  */
 std::string const freefont2string();
-/** Set the freefont using the contents of \param data dispatched from
- *  the frontends and apply it at the current cursor location.
- */
-void update_and_apply_freefont(BufferView * bv, std::string const & data);
-/** Apply the contents of freefont at the current cursor location.
- */
-void apply_freefont(BufferView * bv);
-
-
+///
 void put_selection_at(BufferView * bv, PosIterator const & cur,
 		      int length, bool backwards);
 
@@ -61,39 +53,12 @@ enum DEPTH_CHANGE {
  * if test_only, don't change any depths. Returns whether something
  * (would have) changed
  */
-extern bool changeDepth(BufferView *, LyXText *, DEPTH_CHANGE, bool test_only);
+bool changeDepth(BufferView *, LyXText *, DEPTH_CHANGE, bool test_only);
 
-///
-extern void emph(BufferView *);
-///
-extern void bold(BufferView *);
-///
-extern void noun(BufferView *);
-///
-extern void lang(BufferView *, std::string const &);
-///
-extern void number(BufferView *);
-///
-extern void tex(BufferView *);
-///
-extern void code(BufferView *);
-///
-extern void sans(BufferView *);
-///
-extern void roman(BufferView *);
-///
-extern void styleReset(BufferView *);
-///
-extern void underline(BufferView *);
-///
-extern void fontSize(BufferView *, std::string const &);
 /// Returns the current font and depth as a message.
-extern std::string const currentState(BufferView *);
-///
-extern void toggleAndShow(BufferView *, LyXFont const &,
-			  bool toggleall = true);
+std::string const currentState(BufferView *);
 /// replace selection with insertion
-extern void replaceSelection(LyXText * lt);
+void replaceSelection(LyXText * lt);
 
 
 

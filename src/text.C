@@ -50,8 +50,6 @@
 #include "support/lstrings.h"
 #include "support/textutils.h"
 
-using bv_funcs::number;
-
 using lyx::pos_type;
 using lyx::word_location;
 
@@ -127,15 +125,6 @@ void LyXText::updateRowPositions()
 int LyXText::workWidth() const
 {
 	return inset_owner ? inset_owner->textWidth() : bv()->workWidth();
-}
-
-
-int LyXText::getRealCursorX() const
-{
-	int x = cursor.x();
-	if (the_locking_inset && the_locking_inset->getLyXText(bv()) != this)
-		x = the_locking_inset->getLyXText(bv())->getRealCursorX();
-	return x;
 }
 
 
@@ -942,10 +931,10 @@ void LyXText::insertChar(char c)
 			      getFont(cursorPar(), cursor.pos()).number() == LyXFont::ON &&
 			      getFont(cursorPar(), cursor.pos() - 1).number() == LyXFont::ON)
 			   )
-				number(bv()); // Set current_font.number to OFF
+				number(); // Set current_font.number to OFF
 		} else if (IsDigit(c) &&
 			   real_current_font.isVisibleRightToLeft()) {
-			number(bv()); // Set current_font.number to ON
+			number(); // Set current_font.number to ON
 
 			if (cursor.pos() > 0) {
 				char const c = cursorPar()->getChar(cursor.pos() - 1);

@@ -203,10 +203,7 @@ bool textUndoOrRedo(BufferView * bv,
 {
 	if (stack.empty()) {
 		// nothing to do
-		freezeUndo();
-		bv->unlockInset(bv->theLockingInset());
 		finishUndo();
-		unFreezeUndo();
 		return false;
 	}
 
@@ -232,12 +229,7 @@ bool textUndoOrRedo(BufferView * bv,
 		lyxerr << " undo other: " << otherstack.top() << std::endl;
 	}
 
-	// Now we can unlock the inset for safety because the inset
-	// pointer could be changed during the undo-function. Anyway
-	// if needed we have to lock the right inset/position if this
-	// is requested.
 	freezeUndo();
-	bv->unlockInset(bv->theLockingInset());
 	bool const ret = performUndoOrRedo(bv, undo);
 	unFreezeUndo();
 	return ret;

@@ -176,18 +176,15 @@ InsetOld * createInset(FuncRequest const & cmd)
 		bv->owner()->getDialogs().show("tabularcreate");
 		return 0;
 
-	case LFUN_INSET_CAPTION:
-		if (bv->theLockingInset()) {
-			lyxerr << "Locking inset code: "
-			       << static_cast<int>(bv->theLockingInset()->lyxCode());
-			auto_ptr<InsetCaption> inset(new InsetCaption(params));
-			inset->setOwner(bv->theLockingInset());
-			inset->setAutoBreakRows(true);
-			inset->setDrawFrame(InsetText::LOCKED);
-			inset->setFrameColor(LColor::captionframe);
-			return inset.release();
-		}
-		return 0;
+	case LFUN_INSET_CAPTION: 
+	if (bv->innerInset()) {
+		auto_ptr<InsetCaption> inset(new InsetCaption(params));
+		inset->setOwner(bv->innerInset());
+		inset->setAutoBreakRows(true);
+		inset->setDrawFrame(InsetText::LOCKED);
+		inset->setFrameColor(LColor::captionframe);
+		return inset.release();
+	}
 
 	case LFUN_INDEX_PRINT:
 		return new InsetPrintIndex(InsetCommandParams("printindex"));

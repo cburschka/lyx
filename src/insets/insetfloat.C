@@ -366,9 +366,7 @@ bool InsetFloat::insetAllowed(InsetOld::Code code) const
 {
 	if (code == InsetOld::FLOAT_CODE)
 		return false;
-	if (inset.getLockingInset() != const_cast<InsetFloat *>(this))
-		return inset.insetAllowed(code);
-	if ((code == InsetOld::FOOT_CODE) || (code == InsetOld::MARGIN_CODE))
+	if (code == InsetOld::FOOT_CODE || code == InsetOld::MARGIN_CODE)
 		return false;
 	return true;
 }
@@ -376,11 +374,8 @@ bool InsetFloat::insetAllowed(InsetOld::Code code) const
 
 bool InsetFloat::showInsetDialog(BufferView * bv) const
 {
-	if (!inset.showInsetDialog(bv)) {
-		InsetFloat * tmp = const_cast<InsetFloat *>(this);
-		InsetFloatMailer mailer(*tmp);
-		mailer.showDialog(bv);
-	}
+	if (!inset.showInsetDialog(bv))
+		InsetFloatMailer(const_cast<InsetFloat &>(*this)).showDialog(bv);
 	return true;
 }
 
@@ -388,13 +383,9 @@ bool InsetFloat::showInsetDialog(BufferView * bv) const
 void InsetFloat::wide(bool w, BufferParams const & bp)
 {
 	params_.wide = w;
-
-	string lab(_("float: "));
-	lab += floatname(params_.type, bp);
-
+	string lab = _("float: ") + floatname(params_.type, bp);
 	if (params_.wide)
 		lab += '*';
-
 	setLabel(lab);
 }
 

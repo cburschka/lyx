@@ -72,12 +72,10 @@ using std::string;
 
 LyXText::LyXText(BufferView * bv, InsetText * inset, bool ininset,
 	  ParagraphList & paragraphs)
-	: height(0), width(0),
-	  inset_owner(inset), the_locking_inset(0), bv_owner(bv),
+	: height(0), width(0), inset_owner(inset), bv_owner(bv),
 	  in_inset_(ininset), paragraphs_(&paragraphs),
 		cache_pos_(-1)
-{
-}
+{}
 
 
 void LyXText::init(BufferView * bview)
@@ -257,9 +255,10 @@ void LyXText::toggleInset()
 		// No, try to see if we are inside a collapsable inset
 		if (inset_owner && inset_owner->owner()
 		    && inset_owner->owner()->isOpen()) {
-			bv()->unlockInset(inset_owner->owner());
+			finishUndo();
 			inset_owner->owner()->close(bv());
 			bv()->getLyXText()->cursorRight(bv());
+			bv()->updateParagraphDialog();
 		}
 		return;
 	}
@@ -278,7 +277,7 @@ void LyXText::toggleInset()
 }
 
 
-/* used in setlayout */
+// used in setLayout 
 // Asger is not sure we want to do this...
 void LyXText::makeFontEntriesLayoutSpecific(BufferParams const & params,
 					    Paragraph & par)
@@ -439,6 +438,7 @@ bool LyXText::changeDepth(bv_funcs::DEPTH_CHANGE type, bool test_only)
 
 		prev_after_depth = pit->getMaxDepthAfter();
 
+#warning SERIOUS: Uahh... does this mean we access end->getMaxDepthAfter?
 		if (pit == end) {
 			break;
 		}
@@ -549,7 +549,6 @@ void LyXText::setSelection()
 }
 
 
-
 void LyXText::clearSelection()
 {
 	TextCursor::clearSelection();
@@ -571,8 +570,8 @@ void LyXText::cursorEnd()
 {
 	ParagraphList::iterator cpit = cursorPar();
 	pos_type end = cpit->getRow(cursor.pos())->endpos();
-	/* if not on the last row of the par, put the cursor before
-	  the final space */
+	// if not on the last row of the par, put the cursor before
+	// the final space
 	setCursor(cpit, end == cpit->size() ? end : end - 1);
 }
 
@@ -656,7 +655,7 @@ string LyXText::getStringToIndex()
 // the DTP switches for paragraphs. LyX will store them in the first
 // physical paragraph. When a paragraph is broken, the top settings rest,
 // the bottom settings are given to the new one. So I can make sure,
-// they do not duplicate themself and you cannnot make dirty things with
+// they do not duplicate themself and you cannot play dirty tricks with
 // them!
 
 void LyXText::setParagraph(
@@ -689,7 +688,6 @@ void LyXText::setParagraph(
 	}
 
 	recUndo(selection.start.par(), parOffset(undoendpit) - 1);
-
 
 	int tmppit = selection.end.par();
 
@@ -1021,6 +1019,7 @@ void LyXText::insertInset(InsetOld * inset)
 {
 	if (!cursorPar()->insetAllowed(inset->lyxCode()))
 		return;
+
 	recUndo(cursor.par());
 	freezeUndo();
 	cursorPar()->insertInset(cursor.pos(), inset);

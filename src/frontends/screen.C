@@ -21,6 +21,7 @@
 #include "BufferView.h"
 #include "buffer.h"
 #include "bufferparams.h"
+#include "cursor.h"
 #include "debug.h"
 #include "language.h"
 #include "LColor.h"
@@ -171,34 +172,9 @@ void LyXScreen::showCursor(BufferView & bv)
 	int h = ascent + descent;
 	int x = 0;
 	int y = 0;
-	int const top_y = bv.top_y();
-
-	if (bv.theLockingInset()) {
-		// Would be nice to clean this up to make some understandable sense...
-		UpdatableInset * inset = bv.theLockingInset();
-		inset->getCursor(bv, x, y);
-
-		// Non-obvious. The reason we have to have these
-		// extra checks is that the ->getCursor() calls rely
-		// on the inset's own knowledge of its screen position.
-		// If we scroll up or down in a big enough increment, the
-		// inset->draw() is not called: this doesn't update
-		// inset.top_baseline, so getCursor() returns an old value.
-		// Ugly as you like.
-		int bx, by;
-		inset->getCursorPos(&bv, bx, by);
-		by += inset->insetInInsetY() + bv.text->cursor.y();
-		if (by < top_y)
-			return;
-		if (by > top_y + workarea().workHeight())
-			return;
-	} else {
-		x = bv.text->cursor.x();
-		y = bv.text->cursor.y();
-		y -= top_y;
-	}
-
+	bv.cursor().getPos(x, y);
 	y -= ascent;
+	//lyxerr << "LyXScreen::showCursor x: " << x << " y: " << y << endl;
 
 	// if it doesn't fit entirely on the screen, don't try to show it
 	if (y < 0 || y + h > workarea().workHeight())
@@ -229,12 +205,12 @@ void LyXScreen::toggleCursor(BufferView & bv)
 
 
 bool LyXScreen::fitManualCursor(BufferView * bv, LyXText *,
-	int /*x*/, int y, int asc, int desc)
+	int x, int y, int asc, int desc)
 {
+	lyxerr << "LyXScreen::fitManualCursor x: " << x << " y: " << y << std::endl;
 	int const vheight = workarea().workHeight();
 	int const topy = bv->top_y();
 	int newtop = topy;
-
 
 	if (y + desc - topy >= vheight)
 		newtop = y - 3 * vheight / 4;  // the scroll region must be so big!!

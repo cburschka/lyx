@@ -353,13 +353,12 @@ void InsertAsciiFile(BufferView * bv, string const & f, bool asParagraph)
 		return;
 
 	// clear the selection
-	bool flag = (bv->text == bv->getLyXText());
-	if (flag)
-		bv->beforeChange(bv->text);
-	if (!asParagraph)
-		bv->getLyXText()->insertStringAsLines(tmpstr);
-	else
+	if (bv->text == bv->getLyXText())
+		bv->text->clearSelection();
+	if (asParagraph)
 		bv->getLyXText()->insertStringAsParagraphs(tmpstr);
+	else
+		bv->getLyXText()->insertStringAsLines(tmpstr);
 	bv->update();
 }
 
@@ -459,9 +458,9 @@ string const getPossibleLabel(BufferView const & bv)
 			break;
 		string head;
 		par_text = split(par_text, head, ' ');
+		// Is it legal to use spaces in labels ?
 		if (i > 0)
-			text += '-'; // Is it legal to use spaces in
-		// labels ?
+			text += '-';
 		text += head;
 	}
 

@@ -51,8 +51,7 @@ class VSpace;
 class LyXText : public TextCursor {
 public:
 	/// Constructor
-	LyXText(BufferView *, InsetText *, bool ininset,
-		ParagraphList & paragraphs);
+	LyXText(BufferView *, InsetText *, bool ininset, ParagraphList & plist);
 
 	void init(BufferView *);
 	///
@@ -67,13 +66,9 @@ public:
 	LyXFont defaultfont_;
 	///
 	InsetText * inset_owner;
-	///
-	UpdatableInset * the_locking_inset;
 
 	/// update all cached row positions
 	void updateRowPositions();
-	///
-	int getRealCursorX() const;
 	///
 	LyXFont getFont(ParagraphList::iterator pit, lyx::pos_type pos) const;
 	///
@@ -403,6 +398,10 @@ private:
 
 	///
 	void charInserted();
+	/// set 'number' font property
+	void number();
+	/// is the cursor paragraph right-to-left?
+	bool rtl() const;
 
 public:
 	///

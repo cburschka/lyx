@@ -25,6 +25,8 @@
 			the inset.
 	FINISHED_DOWN       = FINISHED, but move the cursor DOWN from
 			the inset.
+	FINISHED_POP       = FINISHED, but move the cursor DOWN from
+			the inset.
 	UNDISPATCHED        = the action was not catched, it should be
 			dispatched by lower level insets
 */

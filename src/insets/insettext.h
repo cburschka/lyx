@@ -73,13 +73,6 @@ public:
 	///
 	bool isTextInset() const { return true; }
 	///
-	void insetUnlock(BufferView *);
-	///
-	bool lockInsetInInset(BufferView *, UpdatableInset *);
-	///
-	bool unlockInsetInInset(BufferView *,
-				UpdatableInset *, bool lr = false);
-	///
 	int latex(Buffer const &, std::ostream &,
 		  OutputParams const &) const;
 	///
@@ -97,8 +90,6 @@ public:
 	InsetOld::Code lyxCode() const { return InsetOld::TEXT_CODE; }
 	/// FIXME, document
 	void getCursorPos(BufferView *, int & x, int & y) const;
-	/// Get the absolute document x,y of the cursor
-	virtual void getCursor(BufferView &, int &, int &) const;
 	///
 	int insetInInsetY() const;
 	///
@@ -107,10 +98,6 @@ public:
 	bool insertInset(BufferView *, InsetOld *);
 	///
 	bool insetAllowed(InsetOld::Code) const;
-	///
-	UpdatableInset * getLockingInset() const;
-	///
-	UpdatableInset * getFirstLockingInsetOfType(InsetOld::Code);
 	///
 	void setFont(BufferView *, LyXFont const &,
 		     bool toggleall = false,
@@ -127,10 +114,8 @@ public:
 	void setDrawFrame(DrawFrame);
 	///
 	LColor_color frameColor() const;
-	void setFrameColor(LColor_color);
 	///
-	LyXText * getLyXText(BufferView const *,
-			     bool const recursive = false) const;
+	void setFrameColor(LColor_color);
 	///
 	void setViewCache(BufferView const * bv) const;
 	///
@@ -155,8 +140,6 @@ public:
 	ParagraphList * getParagraphs(int) const;
 	///
 	LyXText * getText(int) const;
-	///
-	LyXCursor const & cursor(BufferView *) const;
 
 	/// mark as erased for change tracking
 	void markErased() { clear(true); };
@@ -183,8 +166,6 @@ public:
 	void edit(BufferView *, bool);
 	///
 	void edit(BufferView *, int, int);
-	///
-	UpdatableInset * lockingInset() const { return the_locking_inset; }
 
 	///
 	int numParagraphs() const { return 1; }
@@ -192,15 +173,10 @@ public:
 	mutable ParagraphList paragraphs;
 protected:
 	///
-	virtual
 	DispatchResult
 	priv_dispatch(FuncRequest const &, idx_type &, pos_type &);
 	///
 	void updateLocal(BufferView *, bool mark_dirty);
-	/// set parameters for an initial lock of this inset
-	void lockInset(BufferView *);
-	/// lock an inset inside this one
-	void lockInset(BufferView *, UpdatableInset *);
 
 private:
 	///
@@ -208,9 +184,12 @@ private:
 	///
 	void lfunMousePress(FuncRequest const &);
 	///
-	bool lfunMouseRelease(FuncRequest const &);
-	///
 	void lfunMouseMotion(FuncRequest const &);
+	///
+	void lfunMouseRelease(FuncRequest const &);
+	// If the inset is empty set the language of the current font to the
+	// language to the surronding text (if different).
+	void sanitizeEmptyText(BufferView *);
 
 	///
 	DispatchResult moveRight(BufferView *);
@@ -246,8 +225,6 @@ private:
 	///
 	ParagraphList::iterator cpar() const;
 	///
-	bool cboundary() const;
-	///
 	RowList::iterator crow() const;
 	///
 	void drawFrame(Painter &, int x) const;
@@ -266,17 +243,7 @@ private:
 	 */
 	int frame_color_;
 	///
-	mutable bool locked;
-	///
-	bool inset_boundary;
-	///
-	mutable int inset_x;
-	///
-	mutable int inset_y;
-	///
 	bool no_selection;
-	///
-	UpdatableInset * the_locking_inset;
 	///
 	mutable lyx::paroffset_type old_par;
 

@@ -15,11 +15,14 @@
 #include "cursor.h"
 #include "debug.h"
 #include "dispatchresult.h"
+#include "funcrequest.h"
 #include "iterators.h"
+#include "lfuns.h"
 #include "lyxtext.h"
 #include "paragraph.h"
 
 #include "insets/updatableinset.h"
+#include "insets/insettabular.h"
 #include "insets/insettext.h"
 
 #include <boost/assert.hpp>
@@ -31,11 +34,19 @@ using std::endl;
 std::ostream & operator<<(std::ostream & os, CursorItem const & item)
 {
 	os << " inset: " << item.inset_
-	   << " idx: " << item.idx_
-	   << " text: " << item.text_
-	   << " par: " << item.par_
-	   << " pos: " << item.pos_;
+	   << " text: " << item.text()
+//	   << " par: " << item.par_
+//	   << " pos: " << item.pos_
+	   << " x: " << item.inset_->x()
+	   << " y: " << item.inset_->y()
+;
 	return os;
+}
+
+
+LyXText * CursorItem::text() const
+{
+	return inset_->getText(0);
 }
 
 
@@ -48,14 +59,48 @@ std::ostream & operator<<(std::ostream & os, LCursor const & cursor)
 }
 
 
-DispatchResult LCursor::dispatch(FuncRequest const & cmd)
+LCursor::LCursor(BufferView * bv)
+	: bv_(bv)
+{}
+
+
+DispatchResult LCursor::dispatch(FuncRequest const & cmd0)
 {
+	lyxerr << "\nLCursor::dispatch: " << *this << endl;
+	FuncRequest cmd = cmd0;
+
 	for (int i = data_.size() - 1; i >= 0; --i) {
 		CursorItem const & citem = data_[i];
-		lyxerr << "trying to dispatch to inset" << citem.inset_ << endl;
+		lyxerr << "trying to dispatch to inset " << citem.inset_ << endl;
 		DispatchResult res = citem.inset_->dispatch(cmd);
-		if (handleResult(res))
+		if (res.update())
+			bv_->updateInset(citem.inset_);
+		if (res.dispatched()) {
+			lyxerr << " successfully dispatched to inset " << citem.inset_ << endl;
 			return DispatchResult(true, true);
+		}
+		// remove one level of cursor
+		switch (res.val()) {
+			case FINISHED:
+				pop(i);
+				cmd = FuncRequest(bv_, LFUN_FINISHED_LEFT);
+				break;
+			case FINISHED_RIGHT:
+				pop(i);
+				cmd = FuncRequest(bv_, LFUN_FINISHED_RIGHT);
+				break;
+			case FINISHED_UP: 
+				pop(i);
+				cmd = FuncRequest(bv_, LFUN_FINISHED_UP);
+				break;
+			case FINISHED_DOWN:
+				pop(i);
+				cmd = FuncRequest(bv_, LFUN_FINISHED_DOWN);
+				break;
+			default:
+				lyxerr << "not handled on level " << i << " val: " << res.val() << endl;
+				break;
+		}
 	}
 	lyxerr << "trying to dispatch to main text " << bv_->text << endl;
 	DispatchResult res = bv_->text->dispatch(cmd);
@@ -64,59 +109,20 @@ DispatchResult LCursor::dispatch(FuncRequest const & cmd)
 }
 
 
-bool LCursor::handleResult(DispatchResult const & res)
+void LCursor::push(UpdatableInset * inset)
 {
-	lyxerr << "LCursor::handleResult: " << res.val() << endl;
-	switch (res.val()) {
-		case FINISHED:
-			///pop();
-			return true;
-
-		case FINISHED_RIGHT: {
-			///pop();
-			//InsetText * inset = static_cast<InsetText *>(innerInset());
-			//if (inset)
-			//	inset->moveRightIntern(bv_, false, false);
-			//else
-			//	bv_->text->cursorRight(bv_);
-			innerText()->cursorRight(bv_);
-			return true;
-		}
-
-		case FINISHED_UP: {
-			///pop();
-			//InsetText * inset = static_cast<InsetText *>(inset());
-			//if (inset)
-			//	result = inset->moveUp(bv);
-			return true;
-		}
-
-		case FINISHED_DOWN: {
-			///pop();
-			//InsetText * inset = static_cast<InsetText *>(inset());
-			//if (inset)
-			// 	result = inset->moveDown(bv);
-			return true;
-		}
-
-		default:
-			lyxerr << "# unhandled result: " << res.val() << endl;
-			return false;
-	}
+	lyxerr << "LCursor::push()  inset: " << inset << endl;
+	data_.push_back(CursorItem(inset));
 }
 
 
-
-LCursor::LCursor(BufferView * bv)
-	: bv_(bv)
-{}
-
-
-void LCursor::push(InsetOld * inset, LyXText * text)
+void LCursor::pop(int depth)
 {
-	lyxerr << "LCursor::push()  inset: " << inset << " text: " << text
-		<< endl;
-	data_.push_back(CursorItem(inset, text));
+	lyxerr << "LCursor::pop() to " << depth << endl;
+	while (depth < data_.size()) {
+		lyxerr <<   "LCursor::pop a level " << endl;
+		data_.pop_back();
+	}
 }
 
 
@@ -131,7 +137,7 @@ void LCursor::pop()
 }
 
 
-InsetOld * LCursor::innerInset() const
+UpdatableInset * LCursor::innerInset() const
 {
 	return data_.empty() ? 0 : data_.back().inset_;
 }
@@ -139,5 +145,53 @@ InsetOld * LCursor::innerInset() const
 
 LyXText * LCursor::innerText() const
 {
-	return data_.empty() ? bv_->text : data_.back().text_;
+	if (!data_.empty()) {
+		// go up until first non-0 text is hit
+		// (innermost text is 0 e.g. for mathed and the outer tabular level)
+		for (int i = data_.size() - 1; i >= 0; --i)
+			if (data_[i].text())
+				return data_[i].text();
+	}
+	return bv_->text;
+}
+
+
+void LCursor::getPos(int & x, int & y) const
+{
+	if (data_.empty()) {
+		x = bv_->text->cursor.x();
+		y = bv_->text->cursor.y();
+		y -= bv_->top_y();
+	} else {
+		// Would be nice to clean this up to make some understandable sense...
+		UpdatableInset * inset = innerInset();
+		// Non-obvious. The reason we have to have these
+		// extra checks is that the ->getCursor() calls rely
+		// on the inset's own knowledge of its screen position.
+		// If we scroll up or down in a big enough increment, the
+		// inset->draw() is not called: this doesn't update
+		// inset.top_baseline, so getCursor() returns an old value.
+		// Ugly as you like.
+		//inset->getCursorPos(bv_, x, y);
+		//y = inset->insetInInsetY() + bv_->text->cursor.y();
+		inset->getCursorPos(bv_, x, y);
+		x += inset->x();
+		y += inset->y();
+	}
+}
+
+
+UpdatableInset * LCursor::innerInsetOfType(int code) const
+{
+	for (int i = data_.size() - 1; i >= 0; --i)
+		if (data_[i].inset_->lyxCode() == code)
+			return data_[i].inset_;
+	return 0;
+}
+
+	
+InsetTabular * LCursor::innerInsetTabular() const
+{
+	return static_cast<InsetTabular *>
+		(innerInsetOfType(InsetOld::TABULAR_CODE));
 }

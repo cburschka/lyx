@@ -1,3 +1,17 @@
+
+2003-11-10  André Pönitz  <poenitz@gmx.net>
+
+	* inset.[Ch]:
+	* insetbox.[Ch]:
+	* insetcollapsable.[Ch]:
+	* insetert.C:
+	* insetfloat.C:
+	* insetminipage.C:
+	* insettabular.[Ch]:
+	* insettext.[Ch]:
+	* insetwrap.C:
+	* updatableinset.[Ch]: remove inset locking & adjust
+
 2003-11-07  Alfredo Braunstein  <abraunst@libero.it>
 
 	* inset.h (allowSpellCheck): add (return true)

@@ -74,15 +74,6 @@ string const InsetOld::editMessage() const
 }
 
 
-LyXText * InsetOld::getLyXText(BufferView const * bv, bool /*recursive*/) const
-{
-	if (owner())
-		return owner()->getLyXText(bv, false);
-	else
-		return bv->text;
-}
-
-
 void InsetOld::setBackgroundColor(LColor_color color)
 {
 	background_color_ = color;

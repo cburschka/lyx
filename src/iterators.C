@@ -354,10 +354,12 @@ PosIterator ParIterator::asPosIterator(lyx::pos_type pos) const
 	int const last = size() - 1;
 	for (int i = 0; i < last; ++i) {
 		ParPosition & pp = pimpl_->positions[i];
-		p.stack_.push_back(PosIteratorItem(const_cast<ParagraphList *>(pp.plist), pp.pit, (*pp.it)->pos, *pp.index + 1));
+		p.stack_.push_back(
+			PosIteratorItem(const_cast<ParagraphList *>(pp.plist), pp.pit, (*pp.it)->pos, *pp.index + 1));
 	}
 	ParPosition const & pp = pimpl_->positions[last];
-	p.stack_.push_back(PosIteratorItem(const_cast<ParagraphList *>(pp.plist), pp.pit, pos, 0));
+	p.stack_.push_back(
+		PosIteratorItem(const_cast<ParagraphList *>(pp.plist), pp.pit, pos, 0));
 	return p;
 }
 
@@ -375,7 +377,8 @@ ParIterator::ParIterator(PosIterator const & pos)
 			BOOST_ASSERT(inset);
 			InsetList::iterator beg = it.pit->insetlist.begin();
 			InsetList::iterator end = it.pit->insetlist.end();
-			for (; beg != end && beg->inset != inset; ++beg);
+			for ( ; beg != end && beg->inset != inset; ++beg)
+				;
 			pp.it.reset(beg);
 			pp.index.reset(it.index - 1);
 		}
@@ -386,21 +389,9 @@ ParIterator::ParIterator(PosIterator const & pos)
 
 void ParIterator::lockPath(BufferView * bv) const
 {
-	bv->insetUnlock();
+	bv->cursor() = LCursor(bv);
 	int last = size() - 1;
-	for (int i = 0; i < last; ++i) {
-		UpdatableInset * outer =
-			dynamic_cast<UpdatableInset *>((*pimpl_->positions[i].it)->inset);
-		outer->edit(bv, true);
-		LyXText * txt = outer->getText(*pimpl_->positions[i].index);
-		InsetText * inner = txt->inset_owner;
-		// deep voodoo magic: on a table, the edit call locks the first
-		// cell and further lock calls get lost there.
-		// We have to unlock it to then lock the correct one.
-		if (outer != inner) {
-			outer->insetUnlock(bv);
-			outer->lockInsetInInset(bv, inner);
-			inner->edit(bv, true);
-		}
-	}
+#warning this seems to create just one entry for InsetTabulars
+	for (int i = 0; i < last; ++i)
+		(*pimpl_->positions[i].it)->inset->edit(bv, true);
 }

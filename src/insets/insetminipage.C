@@ -104,13 +104,8 @@ InsetMinipage::priv_dispatch(FuncRequest const & cmd,
 	case LFUN_INSET_MODIFY: {
 		InsetMinipage::Params params;
 		InsetMinipageMailer::string2params(cmd.argument, params);
-
 		params_.pos   = params.pos;
 		params_.width = params.width;
-
-		/* FIXME: I refuse to believe we have to live
-		 * with ugliness like this ... */
-		inset.getLyXText(cmd.view())->fullRebreak();
 		cmd.view()->updateInset(this);
 		return DispatchResult(true, true);
 	}

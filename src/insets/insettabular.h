@@ -77,21 +77,10 @@ public:
 	void draw(PainterInfo & pi, int x, int y) const;
 	///
 	std::string const editMessage() const;
-	//
-	void insetUnlock(BufferView *);
 	///
 	void updateLocal(BufferView *) const;
 	///
-	bool lockInsetInInset(BufferView *, UpdatableInset *);
-	///
-	bool unlockInsetInInset(BufferView *, UpdatableInset *,
-				bool lr = false);
-	///
 	int insetInInsetY() const;
-	///
-	UpdatableInset * getLockingInset() const;
-	///
-	UpdatableInset * getFirstLockingInsetOfType(InsetOld::Code);
 	///
 	bool insertInset(BufferView *, InsetOld *);
 	///
@@ -120,10 +109,8 @@ public:
 	void validate(LaTeXFeatures & features) const;
 	///
 	InsetOld::Code lyxCode() const { return InsetOld::TABULAR_CODE; }
-	/// FIXME, document
+	/// get the absolute screen x,y of the cursor
 	void getCursorPos(BufferView *, int & x, int & y) const;
-	/// Get the absolute document x,y of the cursor
-	virtual void getCursor(BufferView &, int &, int &) const;
 	///
 	bool tabularFeatures(BufferView * bv, std::string const & what);
 	///
@@ -134,9 +121,6 @@ public:
 	///
 	void setFont(BufferView *, LyXFont const &, bool toggleall = false,
 		     bool selectall = false);
-	///
-	LyXText * getLyXText(BufferView const *,
-			     bool const recursive = false) const;
 	///
 	void deleteLyXText(BufferView *, bool recursive = true) const;
 	///
@@ -163,8 +147,6 @@ public:
 	int numParagraphs() const;
 	///
 	LyXText * getText(int) const;
-	///
-	LyXCursor const & cursor(BufferView *) const;
 
 	///
 	void markErased();
@@ -182,12 +164,8 @@ public:
 	mutable LyXTabular tabular;
 
 	/// are some cells selected ?
-	bool hasSelection() const {
-		return has_selection;
-	}
+	bool hasSelection() const { return has_selection; }
 
-	///
-	virtual BufferView * view() const;
 	///
 	Buffer const & buffer() const;
 
@@ -206,11 +184,7 @@ private:
 	///
 	void lfunMousePress(FuncRequest const &);
 	///
-	// the bool return is used to see if we opened a dialog so that we can
-	// check this from an outer inset and open the dialog of the outer inset
-	// if that one has one!
-	///
-	bool lfunMouseRelease(FuncRequest const &);
+	void lfunMouseRelease(FuncRequest const &);
 	///
 	void lfunMouseMotion(FuncRequest const &);
 	///
@@ -226,13 +200,13 @@ private:
 	///
 	void setPos(BufferView *, int x, int y) const;
 	///
-	DispatchResult moveRight(BufferView *, bool lock = true);
+	DispatchResult moveRight(BufferView *, bool lock);
 	///
-	DispatchResult moveLeft(BufferView *, bool lock = true);
+	DispatchResult moveLeft(BufferView *, bool lock);
 	///
-	DispatchResult moveUp(BufferView *, bool lock = true);
+	DispatchResult moveUp(BufferView *, bool lock);
 	///
-	DispatchResult moveDown(BufferView *, bool lock = true);
+	DispatchResult moveDown(BufferView *, bool lock);
 	///
 	bool moveNextCell(BufferView *, bool lock = false);
 	///
@@ -257,8 +231,6 @@ private:
 	bool activateCellInset(BufferView *, int x = 0, int y = 0,
 			       bool behind = false);
 	///
-	bool insetHit(BufferView * bv, int x, int y) const;
-	///
 	bool hasPasteBuffer() const;
 	///
 	bool copySelection(BufferView *);
@@ -269,29 +241,20 @@ private:
 	///
 	bool isRightToLeft(BufferView *);
 	///
-	void getSelection(int & scol, int & ecol,
-			  int & srow, int & erow) const;
+	void getSelection(int & scol, int & ecol, int & srow, int & erow) const;
 	///
 	bool insertAsciiString(BufferView *, std::string const & buf, bool usePaste);
-	///
-	UpdatableInset * lockingInset() const { return the_locking_inset; }
 
 	//
 	// Private structures and variables
 	///
 	InsetText * the_locking_inset;
 	///
-	InsetText * old_locking_inset;
-	///
 	Buffer const * buffer_;
 	///
 	mutable int cursorx_;
 	///
 	mutable int cursory_;
-	///
-	mutable unsigned int inset_x;
-	///
-	mutable unsigned int inset_y;
 	/// true if a set of cells are selected
 	mutable bool has_selection;
 	/// the starting cell selection nr
@@ -301,17 +264,11 @@ private:
 	///
 	mutable int actcell;
 	///
-	mutable int oldcell;
-	///
 	mutable int actcol;
 	///
 	mutable int actrow;
 	///
 	mutable int first_visible_cell;
-	///
-	bool no_selection;
-	///
-	mutable bool locked;
 	///
 	mutable int in_reset_pos;
 };

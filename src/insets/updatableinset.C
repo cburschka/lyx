@@ -27,16 +27,6 @@
 using lyx::support::strToDbl;
 using lyx::support::strToInt;
 
-using std::string;
-
-
-// some stuff for inset locking
-
-void UpdatableInset::insetUnlock(BufferView *)
-{
-	lyxerr[Debug::INFO] << "Inset Unlock" << std::endl;
-}
-
 
 // An updatable inset is highly editable by definition
 InsetOld::EDITABLE UpdatableInset::editable() const
@@ -49,18 +39,8 @@ void UpdatableInset::fitInsetCursor(BufferView *) const
 {}
 
 
-void UpdatableInset::draw(PainterInfo &, int, int) const
-{
-	// ATTENTION: don't do the following here!!!
-	//    top_x = x;
-	//    top_baseline = y;
-}
-
-
 void UpdatableInset::scroll(BufferView * bv, float s) const
 {
-	//LyXFont font;
-
 	if (!s) {
 		scx = 0;
 		return;
@@ -75,23 +55,21 @@ void UpdatableInset::scroll(BufferView * bv, float s) const
 		return;
 
 	scx = int(s * workW / 2);
-	// if (!display())
-	// scx += 20;
 
 #warning metrics?
-	if (tmp_top_x + scx + width() < workW / 2) {
-		scx += workW / 2 - (tmp_top_x + scx + width());
-	}
+	if (tmp_top_x + scx + width() < workW / 2)
+		scx = workW / 2 - tmp_top_x - width();
 }
+
 
 void UpdatableInset::scroll(BufferView * bv, int offset) const
 {
 	if (offset > 0) {
 		if (!scx && top_x >= 20)
 			return;
-		if ((top_x + offset) > 20)
+		if (top_x + offset > 20)
 			scx = 0;
-		// scx += offset - (top_x - scx + offset - 20);
+		// scx = - top_x;
 		else
 			scx += offset;
 	} else {
@@ -109,30 +87,23 @@ void UpdatableInset::scroll(BufferView * bv, int offset) const
 
 ///  An updatable inset could handle lyx editing commands
 DispatchResult
-UpdatableInset::priv_dispatch(FuncRequest const & ev, idx_type &, pos_type &)
+UpdatableInset::priv_dispatch(FuncRequest const & cmd, idx_type &, pos_type &)
 {
-	if (ev.action == LFUN_MOUSE_RELEASE)
+	switch (cmd.action) {
+	case LFUN_MOUSE_RELEASE:
 		return DispatchResult(editable() == IS_EDITABLE);
 
-	if (!ev.argument.empty() && ev.action == LFUN_SCROLL_INSET) {
-		if (ev.argument.find('.') != ev.argument.npos) {
-			float const xx = static_cast<float>(strToDbl(ev.argument));
-			scroll(ev.view(), xx);
-		} else {
-			int const xx = strToInt(ev.argument);
-			scroll(ev.view(), xx);
+	case LFUN_SCROLL_INSET:
+		if (!cmd.argument.empty()) {
+			if (cmd.argument.find('.') != cmd.argument.npos)
+				scroll(cmd.view(), static_cast<float>(strToDbl(cmd.argument)));
+			else
+				scroll(cmd.view(), strToInt(cmd.argument));
+			cmd.view()->updateInset(this);
+			return DispatchResult(true, true);
 		}
-		ev.view()->updateInset(this);
 
-		return DispatchResult(true, true);
+	default:
+		return DispatchResult(false);
 	}
-	return DispatchResult(false);
-}
-
-
-LyXCursor const & InsetOld::cursor(BufferView * bv) const
-{
-	if (owner())
-		return owner()->getLyXText(bv, false)->cursor;
-	return bv->text->cursor;
 }

@@ -55,16 +55,9 @@ public:
 	///
 	bool insertInset(BufferView *, InsetOld * inset);
 	///
-	virtual bool insetAllowed(InsetOld::Code code) const;
+	bool insetAllowed(InsetOld::Code code) const;
 	///
-	bool isTextInset() const;
-	///
-	void insetUnlock(BufferView *);
-	///
-	bool lockInsetInInset(BufferView *, UpdatableInset *);
-	///
-	bool unlockInsetInInset(BufferView *, UpdatableInset *,
-				bool lr = false);
+	bool isTextInset() const { return true; }
 	///
 	int insetInInsetY() const;
 	///
@@ -81,16 +74,10 @@ public:
 		    OutputParams const & runparams) const;
 	///
 	void validate(LaTeXFeatures & features) const;
-	/// FIXME, document
+	/// get the screen x,y of the cursor
 	void getCursorPos(BufferView *, int & x, int & y) const;
-	/// Get the absolute document x,y of the cursor
-	virtual void getCursor(BufferView &, int &, int &) const;
 	///
 	void fitInsetCursor(BufferView * bv) const;
-	///
-	UpdatableInset * getLockingInset() const;
-	///
-	UpdatableInset * getFirstLockingInsetOfType(InsetOld::Code);
 	///
 	void setFont(BufferView *, LyXFont const &, bool toggleall = false,
 		 bool selectall = false);
@@ -102,8 +89,6 @@ public:
 	///
 	void setAutoCollapse(bool f);
 #endif
-	///
-	LyXText * getLyXText(BufferView const *, bool const recursive) const;
 	///
 	void deleteLyXText(BufferView *, bool recursive=true) const;
 	/// Appends \c list with all labels found within this inset.
@@ -121,18 +106,15 @@ public:
 	///
 	LyXText * getText(int) const;
 	///
-	LyXCursor const & cursor(BufferView *) const;
-	///
-	virtual bool display() const { return isOpen(); }
+	bool display() const { return isOpen(); }
 	///
 	bool isOpen() const;
 	///
 	void open(BufferView *);
 	///
 	void close(BufferView *) const;
-
+	///
 	void markErased();
-
 	///
 	void addPreview(lyx::graphics::PreviewLoader &) const;
 
@@ -157,12 +139,10 @@ protected:
 	void edit(BufferView *, bool);
 	///
 	void edit(BufferView *, int, int);
-	///
-	UpdatableInset * lockingInset() const { return inset.lockingInset(); }
 
 private:
 	///
-	void lfunMouseRelease(FuncRequest const &);
+	DispatchResult lfunMouseRelease(FuncRequest const &);
 	///
 	FuncRequest adjustCommand(FuncRequest const &);
 
@@ -178,80 +158,14 @@ private:
 	mutable Box button_dim;
 	///
 	mutable int topx;
+	///
 	mutable int topbaseline;
-
 	///
 	mutable std::string label;
 #if 0
 	///
 	bool autocollapse;
 #endif
-	///
-	bool in_update;
-	///
-	mutable bool first_after_edit;
 };
-
-
-inline
-bool InsetCollapsable::insetAllowed(InsetOld::Code code) const
-{
-	return inset.insetAllowed(code);
-}
-
-
-inline
-bool InsetCollapsable::isTextInset() const
-{
-	return true;
-}
-
-
-inline
-void InsetCollapsable::fitInsetCursor(BufferView * bv) const
-{
-	inset.fitInsetCursor(bv);
-}
-
-inline
-void InsetCollapsable::setLabelFont(LyXFont & f)
-{
-	labelfont_ = f;
-}
-
-#if 0
-inline
-void InsetCollapsable::setAutoCollapse(bool f)
-{
-	autocollapse = f;
-}
-#endif
-
-inline
-void InsetCollapsable::scroll(BufferView *bv, float sx) const
-{
-	UpdatableInset::scroll(bv, sx);
-}
-
-
-inline
-void InsetCollapsable::scroll(BufferView *bv, int offset) const
-{
-	UpdatableInset::scroll(bv, offset);
-}
-
-
-inline
-bool InsetCollapsable::isOpen() const
-{
-	return !collapsed_;
-}
-
-
-inline
-Box const & InsetCollapsable::buttonDim() const
-{
-	return button_dim;
-}
 
 #endif

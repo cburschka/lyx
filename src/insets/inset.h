@@ -214,12 +214,6 @@ public:
 	int x() const { return top_x; }
 	///
 	int y() const { return top_baseline; }
-	//
-	// because we could have fake text insets and have to call this
-	// inside them without cast!!!
-	///
-	virtual LyXText * getLyXText(BufferView const *,
-				     bool recursive = false) const;
 	///
 	virtual void deleteLyXText(BufferView *, bool = true) const {}
 	/// returns the actuall scroll-value
@@ -236,10 +230,6 @@ public:
 	virtual LyXText * getText(int /*num*/) const { return 0; }
 	///
 	virtual int numParagraphs() const { return 0; }
-
-	/// return the cursor if we own one otherwise giv'em just the
-	/// BufferView cursor to work with.
-	virtual LyXCursor const & cursor(BufferView * bview) const;
 
 	/// used to toggle insets
 	// is the inset open?

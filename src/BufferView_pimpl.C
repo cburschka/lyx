@@ -67,17 +67,7 @@
 
 #include <boost/bind.hpp>
 
-using bv_funcs::bold;
-using bv_funcs::code;
 using bv_funcs::currentState;
-using bv_funcs::emph;
-using bv_funcs::fontSize;
-using bv_funcs::lang;
-using bv_funcs::noun;
-using bv_funcs::roman;
-using bv_funcs::sans;
-using bv_funcs::styleReset;
-using bv_funcs::underline;
 
 using lyx::pos_type;
 
@@ -341,12 +331,9 @@ void BufferView::Pimpl::buffer(Buffer * b)
 	owner_->updateLayoutChoice();
 	owner_->updateWindowTitle();
 
-	if (buffer_) {
-		// Don't forget to update the Layout
-		string const layoutname =
-			bv_->text->cursorPar()->layout()->name();
-		owner_->setLayout(layoutname);
-	}
+	// Don't forget to update the Layout
+	if (buffer_)
+		owner_->setLayout(bv_->text->cursorPar()->layout()->name());
 
 	if (lyx::graphics::Previews::activated() && buffer_)
 		lyx::graphics::Previews::get().generateBufferPreviews(*buffer_);
@@ -355,14 +342,21 @@ void BufferView::Pimpl::buffer(Buffer * b)
 
 bool BufferView::Pimpl::fitCursor()
 {
+	lyxerr << "BufferView::Pimpl::fitCursor." << endl;
 	bool ret;
 
-	if (bv_->theLockingInset()) {
-		bv_->theLockingInset()->fitInsetCursor(bv_);
+#ifndef LOCK
+	UpdatableInset * tli =
+		static_cast<UpdatableInset *>(cursor_.innerInset());
+	if (tli) {
+		tli->fitInsetCursor(bv_);
 		ret = true;
 	} else {
 		ret = screen().fitCursor(bv_->text, bv_);
 	}
+#else
+	ret = screen().fitCursor(bv_->text, bv_);
+#endif
 
 	//dispatch(FuncRequest(LFUN_PARAGRAPH_UPDATE));
 
@@ -393,7 +387,6 @@ void BufferView::Pimpl::resizeCurrentBuffer()
 	int par = -1;
 	int selstartpar = -1;
 	int selendpar = -1;
-	UpdatableInset * the_locking_inset = 0;
 
 	pos_type pos = 0;
 	pos_type selstartpos = 0;
@@ -414,12 +407,11 @@ void BufferView::Pimpl::resizeCurrentBuffer()
 		selendpos = bv_->text->selection.end.pos();
 		selection = bv_->text->selection.set();
 		mark_set = bv_->text->selection.mark();
-		the_locking_inset = bv_->theLockingInset();
 		bv_->text->fullRebreak();
 		update();
 	} else {
-			bv_->text = new LyXText(bv_, 0, false, bv_->buffer()->paragraphs());
-			bv_->text->init(bv_);
+		bv_->text = new LyXText(bv_, 0, false, bv_->buffer()->paragraphs());
+		bv_->text->init(bv_);
 	}
 
 	if (par != -1) {
@@ -438,8 +430,6 @@ void BufferView::Pimpl::resizeCurrentBuffer()
 			bv_->text->selection.cursor = bv_->text->cursor;
 			bv_->text->selection.set(false);
 		}
-		// remake the inset locking
-		bv_->theLockingInset(the_locking_inset);
 	}
 
 	top_y(screen().topCursorVisible(bv_->text));
@@ -502,9 +492,8 @@ void BufferView::Pimpl::scrollDocView(int value)
 
 void BufferView::Pimpl::scroll(int lines)
 {
-	if (!buffer_) {
+	if (!buffer_)
 		return;
-	}
 
 	LyXText const * t = bv_->text;
 	int const line_height = defaultRowHeight();
@@ -627,16 +616,13 @@ void BufferView::Pimpl::cursorToggle()
 	}
 
 	screen().toggleCursor(*bv_);
-
 	cursor_timeout.restart();
 }
 
 
 bool BufferView::Pimpl::available() const
 {
-	if (buffer_ && bv_->text)
-		return true;
-	return false;
+	return buffer_ && bv_->text;
 }
 
 
@@ -652,12 +638,6 @@ Change const BufferView::Pimpl::getCurrentChange()
 
 	return text->getPar(text->selection.start)
 		->lookupChangeFull(text->selection.start.pos());
-}
-
-
-void BufferView::Pimpl::beforeChange(LyXText * text)
-{
-	text->clearSelection();
 }
 
 
@@ -680,7 +660,7 @@ void BufferView::Pimpl::restorePosition(unsigned int i)
 
 	string const fname = saved_positions[i].filename;
 
-	beforeChange(bv_->text);
+	bv_->text->clearSelection();
 
 	if (fname != buffer_->fileName()) {
 		Buffer * b = 0;
@@ -709,10 +689,7 @@ void BufferView::Pimpl::restorePosition(unsigned int i)
 
 bool BufferView::Pimpl::isSavedPosition(unsigned int i)
 {
-	if (i >= saved_positions_num)
-		return false;
-
-	return !saved_positions[i].filename.empty();
+	return i < saved_positions_num && !saved_positions[i].filename.empty();
 }
 
 
@@ -721,26 +698,13 @@ void BufferView::Pimpl::switchKeyMap()
 	if (!lyxrc.rtl_support)
 		return;
 
-	LyXText * text = bv_->getLyXText();
-	if (text->real_current_font.isRightToLeft()
-	    && !(bv_->theLockingInset()
-		 && bv_->theLockingInset()->lyxCode() == InsetOld::ERT_CODE))
-	{
-		if (owner_->getIntl().keymap == Intl::PRIMARY)
-			owner_->getIntl().KeyMapSec();
+	Intl & intl = owner_->getIntl();
+	if (bv_->getLyXText()->real_current_font.isRightToLeft()) {
+		if (intl.keymap == Intl::PRIMARY)
+			intl.KeyMapSec();
 	} else {
-		if (owner_->getIntl().keymap == Intl::SECONDARY)
-			owner_->getIntl().KeyMapPrim();
-	}
-}
-
-
-void BufferView::Pimpl::insetUnlock()
-{
-	if (bv_->theLockingInset()) {
-		bv_->theLockingInset()->insetUnlock(bv_);
-		bv_->theLockingInset(0);
-		finishUndo();
+		if (intl.keymap == Intl::SECONDARY)
+			intl.KeyMapPrim();
 	}
 }
 
@@ -749,13 +713,11 @@ void BufferView::Pimpl::center()
 {
 	LyXText * text = bv_->text;
 
-	beforeChange(text);
+	text->clearSelection();
 	int const half_height = workarea().workHeight() / 2;
 	int new_y = std::max(0, text->cursor.y() - half_height);
 
 	// FIXME: look at this comment again ...
-
-	// FIXME: can we do this w/o calling screen directly ?
 	// This updates top_y() but means the fitCursor() call
 	// from the update(FITCUR) doesn't realise that we might
 	// have moved (e.g. from GOTOPARAGRAPH), so doesn't cause
@@ -765,7 +727,6 @@ void BufferView::Pimpl::center()
 	// updateScrollbar() currently. Never mind that this is a
 	// pretty obfuscated way of updating t->top_y()
 	top_y(new_y);
-	//screen().draw();
 	update();
 }
 
@@ -774,12 +735,6 @@ void BufferView::Pimpl::stuffClipboard(string const & stuff) const
 {
 	workarea().putClipboard(stuff);
 }
-
-
-/*
- * Dispatch functions for actions which can be valid for BufferView->text
- * and/or InsetText->text!!!
- */
 
 
 InsetOld * BufferView::Pimpl::getInsetByCode(InsetOld::Code code)
@@ -918,16 +873,38 @@ void BufferView::Pimpl::trackChanges()
 	buf->redostack().clear();
 }
 
+#warning remove me
+LCursor theTempCursor(0);
 
-bool BufferView::Pimpl::workAreaDispatch(FuncRequest const & ev)
+namespace {
+
+	InsetOld * insetFromCoords(BufferView * bv, int x, int y)
+	{
+		LyXText * text = bv->text;
+		InsetOld * inset = 0;
+		InsetOld * inset_hit = 0;
+		theTempCursor = LCursor(bv);
+		while ((inset_hit = text->checkInsetHit(x, y))) {
+			inset = inset_hit;
+			text = inset_hit->getText(0);
+			lyxerr << "Hit inset: " << inset << " at x: " << x
+				<< " y: " << y << endl;
+			theTempCursor.push(static_cast<UpdatableInset*>(inset));
+		}
+		return inset;
+	}
+
+}
+
+
+bool BufferView::Pimpl::workAreaDispatch(FuncRequest const & cmd)
 {
-	switch (ev.action) {
+	switch (cmd.action) {
 	case LFUN_MOUSE_PRESS:
 	case LFUN_MOUSE_MOTION:
 	case LFUN_MOUSE_RELEASE:
 	case LFUN_MOUSE_DOUBLE:
-	case LFUN_MOUSE_TRIPLE:
-	{
+	case LFUN_MOUSE_TRIPLE: {
 		// We pass those directly to the Bufferview, since
 		// otherwise selection handling breaks down
 
@@ -940,7 +917,35 @@ bool BufferView::Pimpl::workAreaDispatch(FuncRequest const & ev)
 
 		screen().hideCursor();
 
-		bool const res = dispatch(ev);
+		// either the inset under the cursor or the surrounding LyXText will
+		// handle this event.
+
+		// built temporary path to inset
+		InsetOld * inset = insetFromCoords(bv_, cmd.x, cmd.y); 
+		FuncRequest cmd1(cmd, bv_);
+		DispatchResult res;
+
+		// try to dispatch to that inset
+		if (inset) {
+			FuncRequest cmd2 = cmd1;
+			lyxerr << "dispatching action " << cmd2.action 
+				<< " to inset " << inset << endl;
+			cmd2.x -= inset->x();
+			cmd2.y -= inset->y();
+			res = inset->dispatch(cmd2);
+			if (res.update())
+				bv_->updateInset(inset);
+			res.update(false);
+		}
+
+		// otherwise set cursor to surrounding LyXText
+		if (!res.dispatched()) {
+			lyxerr << "cursor is: " << bv_->cursor() << endl;
+			lyxerr << "dispatching to surrounding LyXText "
+				<< bv_->cursor().innerText() << endl;
+			bv_->cursor().innerText()->dispatch(cmd1);
+			//return DispatchResult(true, true);
+		}
 
 		// see workAreaKeyPress
 		cursor_timeout.restart();
@@ -955,11 +960,11 @@ bool BufferView::Pimpl::workAreaDispatch(FuncRequest const & ev)
 		// clicked somewhere, so we force through the display
 		// of the new status here.
 		owner_->clearMessage();
-
-		return res;
+		return true;
 	}
+
 	default:
-		owner_->dispatch(ev);
+		owner_->dispatch(cmd);
 		return true;
 	}
 }
@@ -1001,57 +1006,6 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev_in)
 		InsertAsciiFile(bv_, ev.argument, false);
 		break;
 
-	case LFUN_LANGUAGE:
-		lang(bv_, ev.argument);
-		switchKeyMap();
-		owner_->view_state_changed();
-		break;
-
-	case LFUN_EMPH:
-		emph(bv_);
-		owner_->view_state_changed();
-		break;
-
-	case LFUN_BOLD:
-		bold(bv_);
-		owner_->view_state_changed();
-		break;
-
-	case LFUN_NOUN:
-		noun(bv_);
-		owner_->view_state_changed();
-		break;
-
-	case LFUN_CODE:
-		code(bv_);
-		owner_->view_state_changed();
-		break;
-
-	case LFUN_SANS:
-		sans(bv_);
-		owner_->view_state_changed();
-		break;
-
-	case LFUN_ROMAN:
-		roman(bv_);
-		owner_->view_state_changed();
-		break;
-
-	case LFUN_DEFAULT:
-		styleReset(bv_);
-		owner_->view_state_changed();
-		break;
-
-	case LFUN_UNDERLINE:
-		underline(bv_);
-		owner_->view_state_changed();
-		break;
-
-	case LFUN_FONT_SIZE:
-		fontSize(bv_, ev.argument);
-		owner_->view_state_changed();
-		break;
-
 	case LFUN_FONT_STATE:
 		owner_->getLyXFunc().setMessage(currentState(bv_));
 		break;
@@ -1063,8 +1017,8 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev_in)
 		InsetCommandParams icp("label", contents);
 		string data = InsetCommandMailer::params2string("label", icp);
 		owner_->getDialogs().show("label", data, 0);
+		break;
 	}
-	break;
 
 	case LFUN_BOOKMARK_SAVE:
 		savePosition(strToUnsignedInt(ev.argument));
@@ -1179,36 +1133,20 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev_in)
 	case LFUN_LAYOUT_PARAGRAPH: {
 		string data;
 		params2string(*bv_->getLyXText()->cursorPar(), data);
-
 		data = "show\n" + data;
 		bv_->owner()->getDialogs().show("paragraph", data);
 		break;
 	}
 
-	case LFUN_PARAGRAPH_UPDATE: {
-		if (!bv_->owner()->getDialogs().visible("paragraph"))
-			break;
-		Paragraph const & par = *bv_->getLyXText()->cursorPar();
-
-		string data;
-		params2string(par, data);
-
-		// Will the paragraph accept changes from the dialog?
-		InsetOld * const inset = par.inInset();
-		bool const accept =
-			!(inset && inset->forceDefaultParagraphs(inset));
-
-		data = "update " + tostr(accept) + '\n' + data;
-		bv_->owner()->getDialogs().update("paragraph", data);
+	case LFUN_PARAGRAPH_UPDATE:
+		updateParagraphDialog();
 		break;
-	}
 
 	case LFUN_PARAGRAPH_APPLY:
 		setParagraphParams(*bv_, ev.argument);
 		break;
 
-	case LFUN_THESAURUS_ENTRY:
-	{
+	case LFUN_THESAURUS_ENTRY: {
 		string arg = ev.argument;
 
 		if (arg.empty()) {
@@ -1225,8 +1163,8 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev_in)
 		}
 
 		bv_->owner()->getDialogs().show("thesaurus", arg);
-	}
 		break;
+	}
 
 	case LFUN_TRACK_CHANGES:
 		trackChanges();
@@ -1286,6 +1224,7 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev_in)
 
 bool BufferView::Pimpl::insertInset(InsetOld * inset, string const & lout)
 {
+#ifdef LOCK
 	// if we are in a locking inset we should try to insert the
 	// inset there otherwise this is a illegal function now
 	if (bv_->theLockingInset()) {
@@ -1293,12 +1232,13 @@ bool BufferView::Pimpl::insertInset(InsetOld * inset, string const & lout)
 			return bv_->theLockingInset()->insertInset(bv_, inset);
 		return false;
 	}
+#endif
 
 	// not quite sure if we want this...
 	bv_->text->recUndo(bv_->text->cursor.par());
 	freezeUndo();
 
-	beforeChange(bv_->text);
+	bv_->text->clearSelection();
 	if (!lout.empty()) {
 		bv_->text->breakParagraph(bv_->buffer()->paragraphs());
 
@@ -1310,17 +1250,8 @@ bool BufferView::Pimpl::insertInset(InsetOld * inset, string const & lout)
 		string lres = lout;
 		LyXTextClass const & tclass = buffer_->params().getLyXTextClass();
 		bool hasLayout = tclass.hasLayout(lres);
-		string lay = tclass.defaultLayoutName();
 
-		if (hasLayout != false) {
-			// layout found
-			lay = lres;
-		} else {
-			// layout not fount using default
-			lay = tclass.defaultLayoutName();
-		}
-
-		bv_->text->setLayout(lay);
+		bv_->text->setLayout(hasLayout ? lres : tclass.defaultLayoutName());
 
 		bv_->text->setParagraph(
 				   VSpace(VSpace::NONE), VSpace(VSpace::NONE),
@@ -1330,7 +1261,7 @@ bool BufferView::Pimpl::insertInset(InsetOld * inset, string const & lout)
 				   0);
 	}
 
-	bv_->text->insertInset(inset);
+	bv_->cursor().innerText()->insertInset(inset);
 	update();
 
 	unFreezeUndo();
@@ -1338,15 +1269,16 @@ bool BufferView::Pimpl::insertInset(InsetOld * inset, string const & lout)
 }
 
 
-void BufferView::Pimpl::updateInset(InsetOld const * inset)
+void BufferView::Pimpl::updateInset(InsetOld const * /*inset*/)
 {
 	if (!available())
 		return;
 
-	bv_->text->redoParagraph(outerPar(*bv_->buffer(), inset));
+#warning used for asynchronous updates?
+	//bv_->text->redoParagraph(outerPar(*bv_->buffer(), inset));
 
 	// this should not be needed, but it is...
-	// bv_->text->redoParagraph(bv_->text->cursorPar());
+	bv_->text->redoParagraph(bv_->text->cursorPar());
 	// bv_->text->fullRebreak();
 
 	update();
@@ -1392,4 +1324,22 @@ bool BufferView::Pimpl::ChangeInsets(InsetOld::Code code,
 	}
 	bv_->text->setCursorIntern(cursor.par(), cursor.pos());
 	return need_update;
+}
+
+
+void BufferView::Pimpl::updateParagraphDialog()
+{
+	if (!bv_->owner()->getDialogs().visible("paragraph"))
+		return;
+	Paragraph const & par = *bv_->getLyXText()->cursorPar();
+	string data;
+	params2string(par, data);
+
+	// Will the paragraph accept changes from the dialog?
+	InsetOld * const inset = par.inInset();
+	bool const accept =
+		!(inset && inset->forceDefaultParagraphs(inset));
+
+	data = "update " + tostr(accept) + '\n' + data;
+	bv_->owner()->getDialogs().update("paragraph", data);
 }

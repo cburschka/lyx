@@ -91,8 +91,6 @@ lyx_SOURCES = \
 	LyXAction.h \
 	MenuBackend.C \
 	MenuBackend.h \
-	paragraph_funcs.C \
-	paragraph_funcs.h \
 	ParagraphList_fwd.h \
 	ParagraphParameters.C \
 	ParagraphParameters.h \
@@ -236,6 +234,8 @@ lyx_SOURCES = \
 	paper.h \
 	paragraph.C \
 	paragraph.h \
+	paragraph_funcs.C \
+	paragraph_funcs.h \
 	paragraph_pimpl.C \
 	paragraph_pimpl.h \
 	PosIterator.h \

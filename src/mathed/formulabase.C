@@ -11,6 +11,7 @@
 
 #include <config.h>
 
+#include "cursor.h"
 #include "formulabase.h"
 #include "formula.h"
 #include "formulamacro.h"
@@ -61,13 +62,13 @@ namespace {
 int first_x;
 int first_y;
 
-bool openNewInset(BufferView * bv, UpdatableInset * new_inset)
+bool openNewInset(BufferView * bv, UpdatableInset * inset)
 {
-	if (!bv->insertInset(new_inset)) {
-		delete new_inset;
+	if (!bv->insertInset(inset)) {
+		delete inset;
 		return false;
 	}
-	new_inset->edit(bv, true);
+	inset->edit(bv, true);
 	return true;
 }
 
@@ -186,7 +187,7 @@ void InsetFormulaBase::getCursorPos(BufferView *, int & x, int & y) const
 	x = mathcursor->targetX();
 	x -= xo_;
 	y -= yo_;
-	//lyxerr << "getCursorPos: " << x << ' ' << y << endl;
+	lyxerr << "InsetFormulaBase::getCursorPos: " << x << ' ' << y << endl;
 }
 
 
@@ -320,10 +321,9 @@ DispatchResult InsetFormulaBase::lfunMouseMotion(FuncRequest const & cmd)
 void InsetFormulaBase::edit(BufferView * bv, bool left)
 {
 	lyxerr << "Called FormulaBase::edit" << endl;
-	if (!bv->lockInset(this))
-		lyxerr << "Cannot lock math inset in edit call!" << endl;
 	releaseMathCursor(bv);
 	mathcursor = new MathCursor(this, left);
+	bv->cursor().push(this); 
 	// if that is removed, we won't get the magenta box when entering an
 	// inset for the first time
 	bv->updateInset(this);
@@ -333,12 +333,11 @@ void InsetFormulaBase::edit(BufferView * bv, bool left)
 void InsetFormulaBase::edit(BufferView * bv, int x, int y)
 {
 	lyxerr << "Called FormulaBase::EDIT with '" << x << ' ' << y << "'" << endl;
-	if (!bv->lockInset(this))
-		lyxerr << "Cannot lock math inset in edit call!" << endl;
 	releaseMathCursor(bv);
 	mathcursor = new MathCursor(this, true);
 	//metrics(bv);
 	mathcursor->setPos(x + xo_, y + yo_);
+	bv->cursor().push(this); 
 	// if that is removed, we won't get the magenta box when entering an
 	// inset for the first time
 	bv->updateInset(this);
@@ -710,9 +709,8 @@ InsetFormulaBase::priv_dispatch(FuncRequest const & cmd,
 
 		if (data.empty())
 			result = DispatchResult(false);
-		else {
+		else
 			bv->owner()->getDialogs().show(name, data, 0);
-		}
 	}
 	break;
 
@@ -757,7 +755,6 @@ InsetFormulaBase::priv_dispatch(FuncRequest const & cmd,
 		cmd.view()->stuffClipboard(mathcursor->grabSelection());
 	} else {
 		releaseMathCursor(bv);
-		bv->unlockInset(this);
 		if (remove_inset)
 			bv->owner()->dispatch(FuncRequest(LFUN_DELETE));
 	}
@@ -859,11 +856,6 @@ bool InsetFormulaBase::searchForward(BufferView * bv, string const & str,
 
 	for (MathIterator it = current; it != iend(par().nucleus()); ++it) {
 		if (it.cell().matchpart(ar, it.back().pos_)) {
-			bv->unlockInset(bv->theLockingInset());
-			if (!bv->lockInset(this)) {
-				lyxerr << "Cannot lock inset" << endl;
-				return false;
-			}
 			delete mathcursor;
 			mathcursor = new MathCursor(this, true);
 			//metrics(bv);
@@ -917,7 +909,7 @@ void mathDispatchCreation(FuncRequest const & cmd, bool display)
 	if (sel.empty()) {
 		InsetFormula * f = new InsetFormula(bv);
 		if (openNewInset(bv, f)) {
-			bv->theLockingInset()->
+			bv->cursor().innerInset()->
 				dispatch(FuncRequest(bv, LFUN_MATH_MUTATE, "simple"));
 			// don't do that also for LFUN_MATH_MODE unless you want end up with
 			// always changing to mathrm when opening an inlined inset
@@ -980,9 +972,9 @@ void mathDispatch(FuncRequest const & cmd)
 		case LFUN_MATH_DELIM: {
 			InsetFormula * f = new InsetFormula(bv);
 			if (openNewInset(bv, f)) {
-				bv->theLockingInset()->
-					dispatch(FuncRequest(bv, LFUN_MATH_MUTATE, "simple"));
-				bv->theLockingInset()->dispatch(cmd);
+				UpdatableInset * inset = bv->cursor().innerInset();
+				inset->dispatch(FuncRequest(bv, LFUN_MATH_MUTATE, "simple"));
+				inset->dispatch(cmd);
 			}
 			break;
 		}

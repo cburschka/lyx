@@ -15,37 +15,12 @@
 #ifndef UPDATABLEINSET_H
 #define UPDATABLEINSET_H
 
-//  Updatable Insets. These insets can be locked and receive
-//  directly user interaction. Currently used only for mathed.
+//  Updatable Insets. These insets can receive directly user interaction.
 //  Note that all pure methods from Inset class are pure here too.
 //  [Alejandro 080596]
 
 #include "inset.h"
 
-#include "support/types.h"
-
-
-/** Extracted from Matthias notes:
- *
- * An inset can simple call LockInset in it's edit call and *ONLY*
- * in it's edit call.
- *
- * Unlocking is either done by LyX or the inset itself with a
- * UnlockInset-call
- *
- * During the lock, all button and keyboard events will be modified
- * and send to the inset through the following inset-features. Note that
- * InsetOld::insetUnlock will be called from inside UnlockInset. It is meant
- * to contain the code for restoring the menus and things like this.
- *
- * If a inset wishes any redraw and/or update it just has to call
- * updateInset(this).
- *
- * It's is completly irrelevant, where the inset is. UpdateInset will
- * find it in any paragraph in any buffer.
- * Of course the_locking_inset and the insets in the current paragraph/buffer
- *  are checked first, so no performance problem should occur.
- */
 class UpdatableInset : public InsetOld {
 public:
 	/// check if the font of the char we want inserting is correct
@@ -58,29 +33,10 @@ public:
 	virtual void fitInsetCursor(BufferView *) const;
 	/// FIXME
 	virtual void getCursorPos(BufferView *, int &, int &) const {}
-	/// Get the absolute document x,y of the cursor
-	virtual void getCursor(BufferView &, int &, int &) const = 0;
-	///
-	virtual void insetUnlock(BufferView *);
-	///
-	virtual void draw(PainterInfo & pi, int x, int y) const;
 	///
 	virtual bool insertInset(BufferView *, InsetOld *) { return false; }
 	///
-	virtual UpdatableInset * getLockingInset() const
-		{ return const_cast<UpdatableInset *>(this); }
-	///
-	virtual UpdatableInset * getFirstLockingInsetOfType(InsetOld::Code c)
-		{ return (c == lyxCode()) ? this : 0; }
-	///
 	virtual int insetInInsetY() const { return 0; }
-	///
-	virtual bool lockInsetInInset(BufferView *, UpdatableInset *)
-		{ return false; }
-	///
-	virtual bool unlockInsetInInset(BufferView *, UpdatableInset *,
-					bool /*lr*/ = false)
-		{ return false; }
 	// We need this method to not clobber the real method in Inset
 	int scroll(bool recursive = true) const
 		{ return InsetOld::scroll(recursive); }
@@ -88,8 +44,6 @@ public:
 	virtual bool showInsetDialog(BufferView *) const { return false; }
 	///
 	virtual void toggleSelection(BufferView *, bool /*kill_selection*/) {}
-	///
-	virtual UpdatableInset * lockingInset() const { return 0; }
 
 protected:
 	///  An updatable inset could handle lyx editing commands

@@ -8,6 +8,7 @@
  *
  * Full author contact details are available in file CREDITS.
  */
+
 #include <config.h>
 
 #include "insetert.h"
@@ -59,10 +60,7 @@ void InsetERT::init()
 InsetERT::InsetERT(BufferParams const & bp, bool collapsed)
 	: InsetCollapsable(bp, collapsed)
 {
-	if (collapsed)
-		status_ = Collapsed;
-	else
-		status_ = Open;
+	status_ = collapsed ? Collapsed : Open;
 	init();
 }
 
@@ -84,10 +82,7 @@ InsetERT::InsetERT(BufferParams const & bp,
 		   Language const * l, string const & contents, bool collapsed)
 	: InsetCollapsable(bp, collapsed)
 {
-	if (collapsed)
-		status_ = Collapsed;
-	else
-		status_ = Open;
+	status_ = collapsed ? Collapsed : Open;
 
 	LyXFont font(LyXFont::ALL_INHERIT, l);
 #ifdef SET_HARD_FONT
@@ -140,21 +135,6 @@ void InsetERT::read(Buffer const & buf, LyXLex & lex)
 			lex.pushToken(token);
 		}
 	}
-#if 0
-#warning this should be really short lived only for compatibility to
-#warning files written 07/08/2001 so this has to go before 1.2.0! (Jug)
-	if (lex.isOK()) {
-		lex.next();
-		string const token = lex.getString();
-		if (token == "collapsed") {
-			lex.next();
-			setCollapsed(lex.getBool());
-		} else {
-			// Take countermeasures
-			lex.pushToken(token);
-		}
-	}
-#endif
 	inset.read(buf, lex);
 
 #ifdef SET_HARD_FONT
@@ -198,8 +178,7 @@ void InsetERT::write(Buffer const & buf, ostream & os) const
 		break;
 	}
 
-	os << getInsetName() << "\n"
-	   << "status "<< st << "\n";
+	os << getInsetName() << "\n" << "status "<< st << "\n";
 
 	//inset.writeParagraphData(buf, os);
 	string const layout(buf.params().getLyXTextClass().defaultLayoutName());
@@ -271,9 +250,7 @@ void InsetERT::updateStatus(BufferView * bv, bool swap) const
 
 InsetOld::EDITABLE InsetERT::editable() const
 {
-	if (status_ == Collapsed)
-		return IS_EDITABLE;
-	return HIGHLY_EDITABLE;
+	return (status_ == Collapsed) ? IS_EDITABLE : HIGHLY_EDITABLE;
 }
 
 
@@ -308,7 +285,7 @@ bool InsetERT::lfunMouseRelease(FuncRequest const & cmd)
 		// inlined is special - the text appears above
 		if (status_ == Inlined)
 			inset.dispatch(cmd1);
-		else if (isOpen() && (cmd.y > buttonDim().y2)) {
+		else if (isOpen() && cmd.y > buttonDim().y2) {
 			cmd1.y -= height_collapsed();
 			inset.dispatch(cmd1);
 		}
@@ -427,8 +404,6 @@ int InsetERT::docbook(Buffer const &, ostream & os,
 void InsetERT::edit(BufferView * bv, bool left)
 {
 	if (status_ == Inlined) {
-		if (!bv->lockInset(this))
-			return;
 		inset.edit(bv, left);
 	} else {
 		InsetCollapsable::edit(bv, left);
@@ -439,8 +414,7 @@ void InsetERT::edit(BufferView * bv, bool left)
 
 
 DispatchResult
-InsetERT::priv_dispatch(FuncRequest const & cmd,
-			idx_type & idx, pos_type & pos)
+InsetERT::priv_dispatch(FuncRequest const & cmd, idx_type & idx, pos_type & pos)
 {
 	BufferView * bv = cmd.view();
 
@@ -452,16 +426,7 @@ InsetERT::priv_dispatch(FuncRequest const & cmd,
 	case LFUN_INSET_MODIFY: {
 		InsetERT::ERTStatus status_;
 		InsetERTMailer::string2params(cmd.argument, status_);
-
 		status(bv, status_);
-
-		/* FIXME: I refuse to believe we have to live
-		 * with ugliness like this ! Note that this
-		 * rebreak *is* needed. Consider a change from
-		 * Open (needfullrow) to Inlined (only the space
-		 * taken by the text).
-		 */
-		inset.getLyXText(cmd.view())->fullRebreak();
 		bv->updateInset(this);
 		return DispatchResult(true, true);
 	}
@@ -491,7 +456,7 @@ InsetERT::priv_dispatch(FuncRequest const & cmd,
 	case LFUN_DELETE_LINE_FORWARD:
 	case LFUN_CUT:
 		set_latex_font(bv);
-		return DispatchResult(false);
+		return InsetCollapsable::priv_dispatch(cmd, idx, pos);
 
 	default:
 		return InsetCollapsable::priv_dispatch(cmd, idx, pos);
@@ -507,7 +472,7 @@ string const InsetERT::get_new_label() const
 	pos_type const n = min(max_length, p_siz);
 	pos_type i = 0;
 	pos_type j = 0;
-	for(; i < n && j < p_siz; ++j) {
+	for( ; i < n && j < p_siz; ++j) {
 		if (inset.paragraphs.begin()->isInset(j))
 			continue;
 		la += inset.paragraphs.begin()->getChar(j);
@@ -525,19 +490,14 @@ string const InsetERT::get_new_label() const
 
 void InsetERT::setButtonLabel() const
 {
-	if (status_ == Collapsed) {
-		setLabel(get_new_label());
-	} else {
-		setLabel(_("ERT"));
-	}
+	setLabel(status_ == Collapsed ? get_new_label() : _("ERT"));
 }
 
 
 bool InsetERT::checkInsertChar(LyXFont & /* font */)
 {
 #ifdef SET_HARD_FONT
-	LyXFont f(LyXFont::ALL_INHERIT, latex_language);
-	font = f;
+	LyXFont font(LyXFont::ALL_INHERIT, latex_language);
 	font.setFamily(LyXFont::TYPEWRITER_FAMILY);
 	font.setColor(LColor::latex);
 #endif
@@ -566,15 +526,13 @@ void InsetERT::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-void InsetERT::set_latex_font(BufferView * /* bv */)
+void InsetERT::set_latex_font(BufferView * /*bv*/)
 {
 #ifdef SET_HARD_FONT
 	LyXFont font(LyXFont::ALL_INHERIT, latex_language);
-
 	font.setFamily(LyXFont::TYPEWRITER_FAMILY);
 	font.setColor(LColor::latex);
-
-	inset.getLyXText(bv)->setFont(bv, font, false);
+	inset.text_.setFont(bv, font, false);
 #endif
 }
 
@@ -582,26 +540,29 @@ void InsetERT::set_latex_font(BufferView * /* bv */)
 // attention this function can be called with bv == 0
 void InsetERT::status(BufferView * bv, ERTStatus const st) const
 {
-	if (st != status_) {
-		status_ = st;
-		switch (st) {
-		case Inlined:
-			break;
-		case Open:
-			setCollapsed(false);
-			setButtonLabel();
-			break;
-		case Collapsed:
-			setCollapsed(true);
-			setButtonLabel();
-			if (bv)
-				bv->unlockInset(const_cast<InsetERT *>(this));
-			break;
-		}
-		if (bv) {
-			bv->updateInset(this);
-			bv->buffer()->markDirty();
-		}
+	if (st == status_)
+		return;
+
+	status_ = st;
+	switch (st) {
+	case Inlined:
+		break;
+	case Open:
+		setCollapsed(false);
+		setButtonLabel();
+		break;
+	case Collapsed:
+		setCollapsed(true);
+		setButtonLabel();
+#ifdef LOCK
+		if (bv)
+			bv->unlockInset();
+#endif
+		break;
+	}
+	if (bv) {
+		bv->updateInset(this);
+		bv->buffer()->markDirty();
 	}
 }
 
@@ -615,9 +576,8 @@ bool InsetERT::showInsetDialog(BufferView * bv) const
 
 void InsetERT::open(BufferView * bv)
 {
-	if (isOpen())
-		return;
-	status(bv, Open);
+	if (!isOpen())
+		status(bv, Open);
 }
 
 
@@ -632,8 +592,7 @@ void InsetERT::close(BufferView * bv) const
 
 void InsetERT::getDrawFont(LyXFont & font) const
 {
-	LyXFont f(LyXFont::ALL_INHERIT, latex_language);
-	font = f;
+	font = LyXFont(LyXFont::ALL_INHERIT, latex_language);
 	font.setFamily(LyXFont::TYPEWRITER_FAMILY);
 	font.setColor(LColor::latex);
 }
@@ -667,8 +626,7 @@ void InsetERTMailer::string2params(string const & in,
 }
 
 
-string const
-InsetERTMailer::params2string(InsetERT::ERTStatus status)
+string const InsetERTMailer::params2string(InsetERT::ERTStatus status)
 {
 	return name_ + ' ' + tostr(status);
 }

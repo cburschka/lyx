@@ -17,6 +17,8 @@
 #include "debug.h"
 #include "support/std_sstream.h"
 
+#include <iostream>
+
 using std::endl;
 using std::getline;
 
@@ -133,4 +135,20 @@ string FuncRequest::getArg(unsigned int i) const
 	vector<string> args;
 	split(args, argument);
 	return i < args.size() ? args[i] : string();
+}
+
+
+bool operator==(FuncRequest const & lhs, FuncRequest const & rhs)
+{
+	return lhs.action == rhs.action && lhs.argument == rhs.argument;
+}
+
+
+std::ostream & operator<<(std::ostream & os, FuncRequest const & cmd)
+{
+	return os
+		<< " action: " << cmd.action 
+		<< " arg: '" << cmd.argument << "'"
+		<< " x: " << cmd.x 
+		<< " y: " << cmd.y; 
 }

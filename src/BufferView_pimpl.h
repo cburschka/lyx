@@ -93,8 +93,6 @@ struct BufferView::Pimpl : public boost::signals::trackable {
 	/// get the change at the cursor position
 	Change const getCurrentChange();
 	///
-	void beforeChange(LyXText *);
-	///
 	void savePosition(unsigned int i);
 	///
 	void restorePosition(unsigned int i);
@@ -102,8 +100,6 @@ struct BufferView::Pimpl : public boost::signals::trackable {
 	bool isSavedPosition(unsigned int i);
 	///
 	void switchKeyMap();
-	///
-	void insetUnlock();
 	///
 	void center();
 	///
@@ -118,6 +114,8 @@ struct BufferView::Pimpl : public boost::signals::trackable {
 	int top_y() const;
 	///
 	void top_y(int y);
+	/// update paragraph dialogs
+	void updateParagraphDialog();
 private:
 	/// the y coordinate of the top of the screen
 	int top_y_;

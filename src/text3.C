@@ -46,8 +46,10 @@
 
 #include "support/lstrings.h"
 #include "support/tostr.h"
-
 #include "support/std_sstream.h"
+
+#include "mathed/formulabase.h"
+
 #include <clocale>
 
 using bv_funcs::replaceSelection;
@@ -73,6 +75,144 @@ bool selection_possible = false;
 
 
 namespace {
+
+	// globals...
+	LyXFont freefont(LyXFont::ALL_IGNORE);
+	bool toggleall = false;
+
+
+	void toggleAndShow(BufferView * bv, LyXText * text,
+		LyXFont const & font, bool toggleall = true)
+	{
+		if (!bv->available())
+			return;
+
+		text->toggleFree(font, toggleall);
+		bv->update();
+
+		if (font.language() != ignore_language ||
+				font.number() != LyXFont::IGNORE) {
+			LyXCursor & cursor = text->cursor;
+			Paragraph & par = *text->cursorPar();
+			text->bidi.computeTables(par, *bv->buffer(),
+				*par.getRow(cursor.pos()));
+			if (cursor.boundary() !=
+					text->bidi.isBoundary(*bv->buffer(), par,
+							cursor.pos(),
+							text->real_current_font))
+				text->setCursor(cursor.par(), cursor.pos(),
+						false, !cursor.boundary());
+		}
+	}
+
+
+	/// Apply the contents of freefont at the current cursor location.
+	void apply_freefont(BufferView * bv, LyXText * text)
+	{
+		toggleAndShow(bv, text, freefont, toggleall);
+		bv->owner()->view_state_changed();
+		bv->owner()->message(_("Character set"));
+	}
+
+
+	/** Set the freefont using the contents of \param data dispatched from
+	 *  the frontends and apply it at the current cursor location.
+	 */
+	void update_and_apply_freefont(BufferView * bv, LyXText * text,
+		string const & data)
+	{
+		LyXFont font;
+		bool toggle;
+		if (bv_funcs::string2font(data, font, toggle)) {
+			freefont = font;
+			toggleall = toggle;
+			apply_freefont(bv, text);
+		}
+	}
+
+
+	void emph(BufferView * bv, LyXText * text)
+	{
+		LyXFont font(LyXFont::ALL_IGNORE);
+		font.setEmph(LyXFont::TOGGLE);
+		toggleAndShow(bv, text, font);
+	}
+
+
+	void bold(BufferView * bv, LyXText * text)
+	{
+		LyXFont font(LyXFont::ALL_IGNORE);
+		font.setSeries(LyXFont::BOLD_SERIES);
+		toggleAndShow(bv, text, font);
+	}
+
+
+	void noun(BufferView * bv, LyXText * text)
+	{
+		LyXFont font(LyXFont::ALL_IGNORE);
+		font.setNoun(LyXFont::TOGGLE);
+		toggleAndShow(bv, text, font);
+	}
+
+
+	void lang(BufferView * bv, string const & l, LyXText * text)
+	{
+		Language const * lang = languages.getLanguage(l);
+		if (!lang)
+			return;
+
+		LyXFont font(LyXFont::ALL_IGNORE);
+		font.setLanguage(lang);
+		toggleAndShow(bv, text, font);
+	}
+
+
+	void code(BufferView * bv, LyXText * text)
+	{
+		LyXFont font(LyXFont::ALL_IGNORE);
+		font.setFamily(LyXFont::TYPEWRITER_FAMILY); // no good
+		toggleAndShow(bv, text, font);
+	}
+
+
+	void sans(BufferView * bv, LyXText * text)
+	{
+		LyXFont font(LyXFont::ALL_IGNORE);
+		font.setFamily(LyXFont::SANS_FAMILY);
+		toggleAndShow(bv, text, font);
+	}
+
+
+	void roman(BufferView * bv, LyXText * text)
+	{
+		LyXFont font(LyXFont::ALL_IGNORE);
+		font.setFamily(LyXFont::ROMAN_FAMILY);
+		toggleAndShow(bv, text, font);
+	}
+
+
+	void styleReset(BufferView * bv, LyXText * text)
+	{
+		LyXFont font(LyXFont::ALL_INHERIT, ignore_language);
+		toggleAndShow(bv, text, font);
+	}
+
+
+	void underline(BufferView * bv, LyXText * text)
+	{
+		LyXFont font(LyXFont::ALL_IGNORE);
+		font.setUnderbar(LyXFont::TOGGLE);
+		toggleAndShow(bv, text, font);
+	}
+
+
+	void fontSize(BufferView * bv, string const & size, LyXText * text)
+	{
+		LyXFont font(LyXFont::ALL_IGNORE);
+		font.setLyXSize(size);
+		toggleAndShow(bv, text, font);
+	}
+
 
 	void moveCursorUpdate(BufferView * bv, bool selecting)
 	{
@@ -151,6 +291,20 @@ namespace {
 } // anon namespace
 
 
+namespace bv_funcs {
+
+string const freefont2string()
+{
+	string data;
+	if (font2string(freefont, toggleall, data))
+		return data;
+	return string();
+}
+
+}
+
+
+
 InsetOld * LyXText::checkInsetHit(int & x, int & y)
 {
 	int y_tmp = y + bv_owner->top_y();
@@ -213,7 +367,7 @@ bool LyXText::gotoNextInset(vector<InsetOld::Code> const & codes,
 void LyXText::gotoInset(vector<InsetOld::Code> const & codes,
 			bool same_content)
 {
-	bv()->beforeChange(this);
+	clearSelection();
 
 	string contents;
 	if (same_content && cursor.pos() < cursorPar()->size()
@@ -275,7 +429,8 @@ void LyXText::cursorPrevious()
 
 	if (inset_owner) {
 		new_y += bv()->text->cursor.y()
-			+ bv()->theLockingInset()->insetInInsetY() + y;
+			+ bv()->cursor().innerInset()->insetInInsetY()
+			+ y;
 	} else {
 		new_y += cursor.y() - crit->baseline();
 	}
@@ -305,14 +460,14 @@ void LyXText::cursorNext()
 
 	int y = topy + bv()->workHeight();
 	if (inset_owner && !topy) {
-		y -= (bv()->text->cursor.y()
-			  - bv()->top_y()
-			  + bv()->theLockingInset()->insetInInsetY());
+		y += - bv()->text->cursor.y()
+			   + bv()->top_y()
+			   - bv()->cursor().innerInset()->insetInInsetY();
 	}
 
 	ParagraphList::iterator dummypit;
-	Row const & rr = *getRowNearY(y, dummypit);
-	y = dummypit->y + rr.y_offset();
+	Row const & row = *getRowNearY(y, dummypit);
+	y = dummypit->y + row.y_offset();
 
 	setCursorFromCoordinates(bv()->x_target(), y);
 	// + bv->workHeight());
@@ -333,7 +488,7 @@ void LyXText::cursorNext()
 
 	if (inset_owner) {
 		new_y = bv()->text->cursor.y()
-			+ bv()->theLockingInset()->insetInInsetY()
+			+ bv()->cursor().innerInset()->insetInInsetY()
 			+ y - crit->baseline();
 	} else {
 		new_y = cursor.y() - crit->baseline();
@@ -389,11 +544,24 @@ void doInsertInset(LyXText * lt, FuncRequest const & cmd,
 } // anon namespace
 
 
+void LyXText::number()
+{
+	LyXFont font(LyXFont::ALL_IGNORE);
+	font.setNumber(LyXFont::TOGGLE);
+	toggleAndShow(bv(), this, font);
+}
+
+
+bool LyXText::rtl() const
+{
+	return cursorPar()->isRightToLeftPar(bv()->buffer()->params());
+}
+
+
 DispatchResult LyXText::dispatch(FuncRequest const & cmd)
 {
-	lyxerr[Debug::ACTION] << "LyXText::dispatch: action[" << cmd.action
-			      <<"] arg[" << cmd.argument << ']' << "xy[" <<
-				  cmd.x << ',' << cmd.y << ']' << endl;
+	//lyxerr[Debug::ACTION] << "LyXText::dispatch: cmd: " << cmd << endl;
+	lyxerr << "LyXText::dispatch: cmd: " << cmd << endl;
 
 	BufferView * bv = cmd.view();
 
@@ -428,27 +596,27 @@ DispatchResult LyXText::dispatch(FuncRequest const & cmd)
 	}
 
 	case LFUN_DELETE_WORD_FORWARD:
-		bv->beforeChange(this);
+		clearSelection();
 		deleteWordForward();
 		finishChange(bv);
 		break;
 
 	case LFUN_DELETE_WORD_BACKWARD:
-		bv->beforeChange(this);
+		clearSelection();
 		deleteWordBackward();
 		finishChange(bv);
 		break;
 
 	case LFUN_DELETE_LINE_FORWARD:
-		bv->beforeChange(this);
+		clearSelection();
 		deleteLineForward();
 		finishChange(bv);
 		break;
 
 	case LFUN_WORDRIGHT:
 		if (!selection.mark())
-			bv->beforeChange(this);
-		if (cursorPar()->isRightToLeftPar(bv->buffer()->params()))
+			clearSelection();
+		if (rtl())
 			cursorLeftOneWord();
 		else
 			cursorRightOneWord();
@@ -457,8 +625,8 @@ DispatchResult LyXText::dispatch(FuncRequest const & cmd)
 
 	case LFUN_WORDLEFT:
 		if (!selection.mark())
-			bv->beforeChange(this);
-		if (cursorPar()->isRightToLeftPar(bv->buffer()->params()))
+			clearSelection();
+		if (rtl())
 			cursorRightOneWord();
 		else
 			cursorLeftOneWord();
@@ -467,14 +635,14 @@ DispatchResult LyXText::dispatch(FuncRequest const & cmd)
 
 	case LFUN_BEGINNINGBUF:
 		if (!selection.mark())
-			bv->beforeChange(this);
+			clearSelection();
 		cursorTop();
 		finishChange(bv);
 		break;
 
 	case LFUN_ENDBUF:
 		if (selection.mark())
-			bv->beforeChange(this);
+			clearSelection();
 		cursorBottom();
 		finishChange(bv);
 		break;
@@ -482,7 +650,7 @@ DispatchResult LyXText::dispatch(FuncRequest const & cmd)
 	case LFUN_RIGHTSEL:
 		if (!selection.set())
 			selection.cursor = cursor;
-		if (cursorPar()->isRightToLeftPar(bv->buffer()->params()))
+		if (rtl())
 			cursorLeft(bv);
 		else
 			cursorRight(bv);
@@ -492,7 +660,7 @@ DispatchResult LyXText::dispatch(FuncRequest const & cmd)
 	case LFUN_LEFTSEL:
 		if (!selection.set())
 			selection.cursor = cursor;
-		if (cursorPar()->isRightToLeftPar(bv->buffer()->params()))
+		if (rtl())
 			cursorRight(bv);
 		else
 			cursorLeft(bv);
@@ -556,7 +724,7 @@ DispatchResult LyXText::dispatch(FuncRequest const & cmd)
 		break;
 
 	case LFUN_WORDRIGHTSEL:
-		if (cursorPar()->isRightToLeftPar(bv->buffer()->params()))
+		if (rtl())
 			cursorLeftOneWord();
 		else
 			cursorRightOneWord();
@@ -564,7 +732,7 @@ DispatchResult LyXText::dispatch(FuncRequest const & cmd)
 		break;
 
 	case LFUN_WORDLEFTSEL:
-		if (cursorPar()->isRightToLeftPar(bv->buffer()->params()))
+		if (rtl())
 			cursorRightOneWord();
 		else
 			cursorLeftOneWord();
@@ -576,16 +744,16 @@ DispatchResult LyXText::dispatch(FuncRequest const & cmd)
 		LyXCursor cur2;
 		::getWord(*this, cur1, cur2, lyx::WHOLE_WORD, ownerParagraphs());
 		setCursor(cur1.par(), cur1.pos());
-		bv->beforeChange(this);
+		clearSelection();
 		setCursor(cur2.par(), cur2.pos());
 		finishChange(bv, true);
 		break;
 	}
 
 	case LFUN_RIGHT: {
-		bool is_rtl = cursorPar()->isRightToLeftPar(bv->buffer()->params());
+		bool is_rtl = rtl();
 		if (!selection.mark())
-			bv->beforeChange(this);
+			clearSelection();
 		if (is_rtl)
 			cursorLeft(false);
 		if (cursor.pos() < cursorPar()->size()
@@ -603,11 +771,11 @@ DispatchResult LyXText::dispatch(FuncRequest const & cmd)
 	}
 
 	case LFUN_LEFT: {
-		// This is soooo ugly. Isn`t it possible to make
+		// This is soooo ugly. Isn't it possible to make
 		// it simpler? (Lgb)
-		bool const is_rtl = cursorPar()->isRightToLeftPar(bv->buffer()->params());
+		bool const is_rtl = rtl();
 		if (!selection.mark())
-			bv->beforeChange(this);
+			clearSelection();
 		LyXCursor const cur = cursor;
 		if (!is_rtl)
 			cursorLeft(false);
@@ -618,7 +786,6 @@ DispatchResult LyXText::dispatch(FuncRequest const & cmd)
 			InsetOld * tmpinset = cursorPar()->getInset(cursor.pos());
 			cmd.message(tmpinset->editMessage());
 			tmpinset->edit(bv, is_rtl);
-			bv->cursor().push(tmpinset, tmpinset->getText(0));
 			break;
 		}
 		if (is_rtl)
@@ -629,56 +796,56 @@ DispatchResult LyXText::dispatch(FuncRequest const & cmd)
 
 	case LFUN_UP:
 		if (!selection.mark())
-			bv->beforeChange(this);
+			clearSelection();
 		cursorUp(false);
 		finishChange(bv);
 		break;
 
 	case LFUN_DOWN:
 		if (!selection.mark())
-			bv->beforeChange(this);
+			clearSelection();
 		cursorDown(false);
 		finishChange(bv);
 		break;
 
 	case LFUN_UP_PARAGRAPH:
 		if (!selection.mark())
-			bv->beforeChange(this);
+			clearSelection();
 		cursorUpParagraph();
 		finishChange(bv);
 		break;
 
 	case LFUN_DOWN_PARAGRAPH:
 		if (!selection.mark())
-			bv->beforeChange(this);
+			clearSelection();
 		cursorDownParagraph();
 		finishChange(bv, false);
 		break;
 
 	case LFUN_PRIOR:
 		if (!selection.mark())
-			bv->beforeChange(this);
+			clearSelection();
 		cursorPrevious();
 		finishChange(bv, false);
 		break;
 
 	case LFUN_NEXT:
 		if (!selection.mark())
-			bv->beforeChange(this);
+			clearSelection();
 		cursorNext();
 		finishChange(bv, false);
 		break;
 
 	case LFUN_HOME:
 		if (!selection.mark())
-			bv->beforeChange(this);
+			clearSelection();
 		cursorHome();
 		finishChange(bv, false);
 		break;
 
 	case LFUN_END:
 		if (!selection.mark())
-			bv->beforeChange(this);
+			clearSelection();
 		cursorEnd();
 		finishChange(bv, false);
 		break;
@@ -866,12 +1033,11 @@ DispatchResult LyXText::dispatch(FuncRequest const & cmd)
 	}
 
 	case LFUN_INSET_SETTINGS:
-		BOOST_ASSERT(bv->theLockingInset());
-		bv->theLockingInset()->getLockingInset()->showInsetDialog(bv);
+		bv->cursor().innerInset()->showInsetDialog(bv);
 		break;
 
 	case LFUN_INSET_TOGGLE:
-		bv->beforeChange(this);
+		clearSelection();
 		toggleInset();
 		bv->update();
 		bv->switchKeyMap();
@@ -906,14 +1072,14 @@ DispatchResult LyXText::dispatch(FuncRequest const & cmd)
 		break;
 
 	case LFUN_MARK_OFF:
-		bv->beforeChange(this);
+		clearSelection();
 		bv->update();
 		selection.cursor = cursor;
 		cmd.message(N_("Mark off"));
 		break;
 
 	case LFUN_MARK_ON:
-		bv->beforeChange(this);
+		clearSelection();
 		selection.mark(true);
 		bv->update();
 		selection.cursor = cursor;
@@ -921,7 +1087,7 @@ DispatchResult LyXText::dispatch(FuncRequest const & cmd)
 		break;
 
 	case LFUN_SETMARK:
-		bv->beforeChange(this);
+		clearSelection();
 		if (selection.mark()) {
 			cmd.message(N_("Mark removed"));
 		} else {
@@ -1082,16 +1248,15 @@ DispatchResult LyXText::dispatch(FuncRequest const & cmd)
 	}
 
 	case LFUN_PASTESELECTION: {
-		// this was originally a beforeChange(bv->text), i.e
+		// this was originally a bv->text->clearSelection(), i.e
 		// the outermost LyXText!
-		bv->beforeChange(this);
+		clearSelection();
 		string const clip = bv->getClipboard();
 		if (!clip.empty()) {
 			if (cmd.argument == "paragraph")
 				insertStringAsParagraphs(clip);
 			else
 				insertStringAsLines(clip);
-			clearSelection();
 			bv->update();
 		}
 		break;
@@ -1161,8 +1326,6 @@ DispatchResult LyXText::dispatch(FuncRequest const & cmd)
 	case LFUN_MOUSE_TRIPLE:
 		if (!bv->buffer())
 			break;
-		if (!isInInset() && bv->theLockingInset())
-			break;
 		if (cmd.button() == mouse_button::button1) {
 			cursorHome();
 			selection.cursor = cursor;
@@ -1176,8 +1339,6 @@ DispatchResult LyXText::dispatch(FuncRequest const & cmd)
 	case LFUN_MOUSE_DOUBLE:
 		if (!bv->buffer())
 			break;
-		if (!isInInset() && bv->theLockingInset())
-			break;
 		if (cmd.button() == mouse_button::button1) {
 			selectWord(lyx::WHOLE_WORD_STRICT);
 			bv->update();
@@ -1185,8 +1346,7 @@ DispatchResult LyXText::dispatch(FuncRequest const & cmd)
 		}
 		break;
 
-	case LFUN_MOUSE_MOTION:
-	{
+	case LFUN_MOUSE_MOTION: {
 		// Only use motion with button 1
 		//if (ev.button() != mouse_button::button1)
 		//	return false;
@@ -1195,8 +1355,9 @@ DispatchResult LyXText::dispatch(FuncRequest const & cmd)
 			break;
 
 		// Check for inset locking
-		if (bv->theLockingInset()) {
-			InsetOld * tli = bv->theLockingInset();
+#ifdef LOCK
+		if (bv->innerInset()) {
+			InsetOld * tli = bv->innerInset();
 			LyXCursor cursor = bv->text->cursor;
 			LyXFont font = bv->text->getFont(bv->text->cursorPar(), cursor.pos());
 			int width = tli->width();
@@ -1209,6 +1370,7 @@ DispatchResult LyXText::dispatch(FuncRequest const & cmd)
 			tli->dispatch(cmd1);
 			break;
 		}
+#endif
 
 		// The test for not selection possible is needed, that only motion
 		// events are used, where the bottom press event was on
@@ -1261,10 +1423,6 @@ DispatchResult LyXText::dispatch(FuncRequest const & cmd)
 			break;
 		}
 
-		int x = cmd.x;
-		int y = cmd.y;
-		InsetOld * inset_hit = bv->text->checkInsetHit(x, y);
-
 		// Middle button press pastes if we have a selection
 		// We do this here as if the selection was inside an inset
 		// it could get cleared on the unlocking of the inset so
@@ -1276,46 +1434,12 @@ DispatchResult LyXText::dispatch(FuncRequest const & cmd)
 		}
 
 		int const screen_first = bv->top_y();
-
-		if (bv->theLockingInset()) {
-			// We are in inset locking mode
-
-			// Check whether the inset was hit. If not reset mode,
-			// otherwise give the event to the inset
-			if (inset_hit == bv->theLockingInset()) {
-				FuncRequest cmd1(bv, LFUN_MOUSE_PRESS, x, y, cmd.button());
-				bv->theLockingInset()->dispatch(cmd1);
-				break;
-			}
-			bv->unlockInset(bv->theLockingInset());
-			lyxerr << "Re-initializing cursor" << endl;
-			bv->cursor() = LCursor(bv);
-		}
-
-		if (!inset_hit)
-			selection_possible = true;
+		selection_possible = true;
 
 		// Clear the selection
 		bv->text->clearSelection();
 		bv->update();
 		bv->updateScrollbar();
-
-		// Single left click in math inset?
-		if (isHighlyEditableInset(inset_hit)) {
-			lyxerr << "click on highly editable inset, like math" << endl;
-			UpdatableInset * inset = static_cast<UpdatableInset *>(inset_hit);
-			selection_possible = false;
-			bv->owner()->message(inset->editMessage());
-			// We just have to lock the inset before calling a PressEvent on it!
-			if (!bv->lockInset(inset))
-				lyxerr << "Cannot lock inset" << endl;
-#warning cell 0 is certainly not always good.
-			bv->cursor().push(inset, inset->getText(0));
-			FuncRequest cmd1(bv, LFUN_MOUSE_PRESS, x, y, cmd.button());
-			inset->dispatch(cmd1);
-			break;
-		}
-		// I'm not sure we should continue here if we hit an inset (Jug20020403)
 
 		// Right click on a footnote flag opens float menu
 		if (cmd.button() == mouse_button::button3) {
@@ -1323,8 +1447,7 @@ DispatchResult LyXText::dispatch(FuncRequest const & cmd)
 			break;
 		}
 
-		if (!inset_hit) // otherwise it was already set in checkInsetHit(...)
-			bv->text->setCursorFromCoordinates(x, y + screen_first);
+		bv->text->setCursorFromCoordinates(cmd.x, cmd.y + screen_first);
 		finishUndo();
 		bv->text->selection.cursor = bv->text->cursor;
 		bv->x_target(bv->text->cursor.x());
@@ -1345,8 +1468,7 @@ DispatchResult LyXText::dispatch(FuncRequest const & cmd)
 		break;
 	}
 
-	case LFUN_MOUSE_RELEASE:
-	{
+	case LFUN_MOUSE_RELEASE: {
 		// do nothing if we used the mouse wheel
 		if (!bv->buffer())
 			break;
@@ -1354,24 +1476,6 @@ DispatchResult LyXText::dispatch(FuncRequest const & cmd)
 		if (cmd.button() == mouse_button::button4
 		 || cmd.button() == mouse_button::button5)
 			break;
-
-		// If we hit an inset, we have the inset coordinates in these
-		// and inset_hit points to the inset.  If we do not hit an
-		// inset, inset_hit is 0, and inset_x == x, inset_y == y.
-		int x = cmd.x;
-		int y = cmd.y;
-		InsetOld * inset_hit = bv->text->checkInsetHit(x, y);
-
-		if (bv->theLockingInset()) {
-			// We are in inset locking mode.
-
-			// LyX does a kind of work-area grabbing for insets.
-			// Only a ButtonPress FuncRequest outside the inset will
-			// force a insetUnlock.
-			FuncRequest cmd1(bv, LFUN_MOUSE_RELEASE, x, y, cmd.button());
-			bv->theLockingInset()->dispatch(cmd1);
-			break;
-		}
 
 		selection_possible = false;
 
@@ -1386,49 +1490,6 @@ DispatchResult LyXText::dispatch(FuncRequest const & cmd)
 		bv->owner()->view_state_changed();
 		bv->owner()->updateMenubar();
 		bv->owner()->updateToolbar();
-
-		// Did we hit an editable inset?
-		if (inset_hit) {
-			selection_possible = false;
-
-			// if we reach this point with a selection, it
-			// must mean we are currently selecting.
-			// But we don't want to open the inset
-			// because that is annoying for the user.
-			// So just pretend we didn't hit it.
-			// this is OK because a "kosher" ButtonRelease
-			// will follow a ButtonPress that clears
-			// the selection.
-			// Note this also fixes selection drawing
-			// problems if we end up opening an inset
-			if (selection.set())
-				break;
-
-			// CHECK fix this proper in 0.13
-			// well, maybe 13.0 !!!!!!!!!
-
-			// Following a ref shouldn't issue
-			// a push on the undo-stack
-			// anylonger, now that we have
-			// keybindings for following
-			// references and returning from
-			// references.  IMHO though, it
-			// should be the inset's own business
-			// to push or not push on the undo
-			// stack. They don't *have* to
-			// alter the document...
-			// (Joacim)
-			// ...or maybe the recordUndo()
-			// below isn't necessary at all anylonger?
-			if (inset_hit->lyxCode() == InsetOld::REF_CODE)
-				recUndo(cursor.par());
-
-			bv->owner()->message(inset_hit->editMessage());
-
-			FuncRequest cmd1(bv, LFUN_MOUSE_RELEASE, x, y, cmd.button());
-			inset_hit->dispatch(cmd1);
-		}
-
 		break;
 	}
 
@@ -1448,7 +1509,7 @@ DispatchResult LyXText::dispatch(FuncRequest const & cmd)
 			bv->haveSelection(false);
 		}
 
-		bv->beforeChange(this);
+		clearSelection();
 		LyXFont const old_font = real_current_font;
 
 		string::const_iterator cit = cmd.argument.begin();
@@ -1522,16 +1583,111 @@ DispatchResult LyXText::dispatch(FuncRequest const & cmd)
 		break;
 
 	case LFUN_DEPTH_MIN:
-		bv_funcs::changeDepth(bv, this, bv_funcs::DEC_DEPTH, false);
 		clearSelection();
+		bv_funcs::changeDepth(bv, this, bv_funcs::DEC_DEPTH, false);
 		bv->update();
 		break;
 
 	case LFUN_DEPTH_PLUS:
 		clearSelection();
 		bv_funcs::changeDepth(bv, this, bv_funcs::INC_DEPTH, false);
-		clearSelection();
 		bv->update();
+		break;
+
+	case LFUN_MATH_DELIM:
+	case LFUN_MATH_DISPLAY:
+	case LFUN_INSERT_MATH:
+	case LFUN_MATH_LIMITS:
+	case LFUN_MATH_MACRO:
+	case LFUN_MATH_MUTATE:
+	case LFUN_MATH_SPACE:
+	case LFUN_MATH_IMPORT_SELECTION:
+	case LFUN_MATH_MODE:
+	case LFUN_MATH_NONUMBER:
+	case LFUN_MATH_NUMBER:
+	case LFUN_MATH_EXTERN:
+	case LFUN_MATH_SIZE:
+		mathDispatch(cmd);
+		break;
+
+	case LFUN_EMPH:
+		emph(bv, this);
+		bv->owner()->view_state_changed();
+		break;
+
+	case LFUN_BOLD:
+		bold(bv, this);
+		bv->owner()->view_state_changed();
+		break;
+
+	case LFUN_NOUN:
+		noun(bv, this);
+		bv->owner()->view_state_changed();
+		break;
+
+	case LFUN_CODE:
+		code(bv, this);
+		bv->owner()->view_state_changed();
+		break;
+
+	case LFUN_SANS:
+		sans(bv, this);
+		bv->owner()->view_state_changed();
+		break;
+
+	case LFUN_ROMAN:
+		roman(bv, this);
+		bv->owner()->view_state_changed();
+		break;
+
+	case LFUN_DEFAULT:
+		styleReset(bv, this);
+		bv->owner()->view_state_changed();
+		break;
+
+	case LFUN_UNDERLINE:
+		underline(bv, this);
+		bv->owner()->view_state_changed();
+		break;
+
+	case LFUN_FONT_SIZE:
+		fontSize(bv, cmd.argument, this);
+		bv->owner()->view_state_changed();
+		break;
+
+	case LFUN_LANGUAGE:
+		lang(bv, cmd.argument, this);
+		bv->switchKeyMap();
+		bv->owner()->view_state_changed();
+		break;
+
+	case LFUN_FREEFONT_APPLY:
+		apply_freefont(bv, this);
+		break;
+
+	case LFUN_FREEFONT_UPDATE:
+		update_and_apply_freefont(bv, this, cmd.argument);
+		break;
+	
+	case LFUN_FINISHED_LEFT:
+		lyxerr << "swallow LFUN_FINISHED_LEFT" << endl;
+		if (rtl())
+			cursorRight(bv);
+		break;
+
+	case LFUN_FINISHED_RIGHT:
+		lyxerr << "swallow LFUN_FINISHED_RIGHT" << endl;
+		if (!rtl())
+			cursorRight(bv);
+		break;
+
+	case LFUN_FINISHED_UP:
+		lyxerr << "swallow LFUN_FINISHED_UP" << endl;
+		break;
+
+	case LFUN_FINISHED_DOWN:
+		lyxerr << "swallow LFUN_FINISHED_DOWN" << endl;
+		cursorRight(bv);
 		break;
 
 	default:

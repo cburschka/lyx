@@ -19,7 +19,6 @@
 
 #include <string>
 
-
 class Buffer;
 class Change;
 class Encoding;
@@ -90,6 +89,14 @@ public:
 	/** update for a particular inset. Gets a pointer and not a
 	 *  reference because we really need the pointer information
 	 *  to find it in the buffer.
+   *
+	 * Extracted from Matthias notes:
+	 *
+	 * If a inset wishes any redraw and/or update it just has to call
+	 * updateInset(this). It's is completly irrelevant, where the inset is.
+   * UpdateInset will find it in any paragraph in any buffer.
+	 * Of course the insets in the current paragraph/buffer
+	 * are checked first, so no performance problem should occur.
 	 */
 	void updateInset(InsetOld const *);
 	/// reset the scrollbar to reflect current view position
@@ -99,9 +106,6 @@ public:
 
 	/// FIXME
 	bool available() const;
-
-	/// FIXME
-	void beforeChange(LyXText *);
 
 	/// Save the current position as bookmark i
 	void savePosition(unsigned int i);
@@ -121,14 +125,8 @@ public:
 	/// return the lyxtext we are using
 	LyXText * getLyXText() const;
 
-	/// Return the current inset we are "locked" in
-	UpdatableInset * theLockingInset() const;
-	/// lock the given inset FIXME: return value ?
-	bool lockInset(UpdatableInset * inset);
-	/// unlock the given inset
-	int unlockInset(UpdatableInset * inset);
-	/// unlock the currently locked inset
-	void insetUnlock();
+	/// update paragraph dialogs
+	void updateParagraphDialog();
 
 	/// return the current encoding at the cursor
 	Encoding const * getEncoding() const;
@@ -206,11 +204,10 @@ public:
 	LCursor & cursor();
 	/// access to cursor
 	LCursor const & cursor() const;
+	///
+	UpdatableInset * innerInset() const;
 
 private:
-	/// Set the current locking inset
-	void theLockingInset(UpdatableInset * inset);
-
 	struct Pimpl;
 	friend struct BufferView::Pimpl;
 

@@ -1,3 +1,8 @@
+
+2003-11-10  André Pönitz  <poenitz@gmx.net>
+
+	* screen.C: adjust to removed inset locking 
+
 2003-10-14  Angus Leeming  <leeming@lyx.org>
 
 	* LyXView.[Ch] (updateInset): invoke BufferView::updateInset, returning

@@ -16,6 +16,7 @@
 #include "frontends/mouse_state.h"
 
 #include <string>
+#include <iosfwd>
 
 class BufferView;
 
@@ -77,10 +78,8 @@ public:  // should be private, too...
 };
 
 
-inline
-bool operator==(FuncRequest const & lhs, FuncRequest const & rhs)
-{
-	return lhs.action == rhs.action && lhs.argument == rhs.argument;
-}
+bool operator==(FuncRequest const & lhs, FuncRequest const & rhs);
+
+std::ostream & operator<<(std::ostream &, FuncRequest const &);
 
 #endif // FUNCREQUEST_H

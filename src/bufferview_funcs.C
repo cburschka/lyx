@@ -47,13 +47,6 @@ using std::ostringstream;
 using std::string;
 
 
-namespace {
-
-LyXFont freefont(LyXFont::ALL_IGNORE);
-bool toggleall(false);
-
-}
-
 namespace bv_funcs {
 
 // Set data using font and toggle
@@ -155,79 +148,6 @@ bool string2font(string const & data, LyXFont & font, bool & toggle)
 }
 
 
-string const freefont2string()
-{
-	string data;
-	if (font2string(freefont, toggleall, data))
-		return data;
-	return string();
-}
-
-
-void update_and_apply_freefont(BufferView * bv, string const & data)
-{
-	LyXFont font;
-	bool toggle;
-	if (string2font(data, font, toggle)) {
-		freefont = font;
-		toggleall = toggle;
-		apply_freefont(bv);
-	}
-}
-
-
-void apply_freefont(BufferView * bv)
-{
-	toggleAndShow(bv, freefont, toggleall);
-	bv->owner()->view_state_changed();
-	bv->owner()->message(_("Character set"));
-}
-
-
-void emph(BufferView * bv)
-{
-	LyXFont font(LyXFont::ALL_IGNORE);
-	font.setEmph(LyXFont::TOGGLE);
-	toggleAndShow(bv, font);
-}
-
-
-void bold(BufferView * bv)
-{
-	LyXFont font(LyXFont::ALL_IGNORE);
-	font.setSeries(LyXFont::BOLD_SERIES);
-	toggleAndShow(bv, font);
-}
-
-
-void noun(BufferView * bv)
-{
-	LyXFont font(LyXFont::ALL_IGNORE);
-	font.setNoun(LyXFont::TOGGLE);
-	toggleAndShow(bv, font);
-}
-
-
-void number(BufferView * bv)
-{
-	LyXFont font(LyXFont::ALL_IGNORE);
-	font.setNumber(LyXFont::TOGGLE);
-	toggleAndShow(bv, font);
-}
-
-
-void lang(BufferView * bv, string const & l)
-{
-	Language const * lang = languages.getLanguage(l);
-	if (!lang)
-		return;
-
-	LyXFont font(LyXFont::ALL_IGNORE);
-	font.setLanguage(lang);
-	toggleAndShow(bv, font);
-}
-
-
 bool changeDepth(BufferView * bv, LyXText * text, DEPTH_CHANGE type, bool test_only)
 {
 	if (!bv->available() || !text)
@@ -240,53 +160,6 @@ bool changeDepth(BufferView * bv, LyXText * text, DEPTH_CHANGE type, bool test_o
 	if (text->inset_owner)
 		bv->updateInset(text->inset_owner);
 	return changed;
-}
-
-
-void code(BufferView * bv)
-{
-	LyXFont font(LyXFont::ALL_IGNORE);
-	font.setFamily(LyXFont::TYPEWRITER_FAMILY); // no good
-	toggleAndShow(bv, font);
-}
-
-
-void sans(BufferView * bv)
-{
-	LyXFont font(LyXFont::ALL_IGNORE);
-	font.setFamily(LyXFont::SANS_FAMILY);
-	toggleAndShow(bv, font);
-}
-
-
-void roman(BufferView * bv)
-{
-	LyXFont font(LyXFont::ALL_IGNORE);
-	font.setFamily(LyXFont::ROMAN_FAMILY);
-	toggleAndShow(bv, font);
-}
-
-
-void styleReset(BufferView * bv)
-{
-	LyXFont font(LyXFont::ALL_INHERIT, ignore_language);
-	toggleAndShow(bv, font);
-}
-
-
-void underline(BufferView * bv)
-{
-	LyXFont font(LyXFont::ALL_IGNORE);
-	font.setUnderbar(LyXFont::TOGGLE);
-	toggleAndShow(bv, font);
-}
-
-
-void fontSize(BufferView * bv, string const & size)
-{
-	LyXFont font(LyXFont::ALL_IGNORE);
-	font.setLyXSize(size);
-	toggleAndShow(bv, font);
 }
 
 
@@ -372,47 +245,13 @@ string const currentState(BufferView * bv)
 	state << _(", Inset: ");
 	InsetOld * inset = pit->inInset();
 	if (inset)
-		state << inset
-			<< " text: " << inset->getLyXText(bv, true)
-			<< " owner: " << inset->owner();
+		state << inset << " owner: " << inset->owner();
 	else
 		state << -1;
 #endif
 	return state.str();
 }
 
-
-/* Does the actual toggle job of the calls above.
- * Also shows the current font state.
- */
-void toggleAndShow(BufferView * bv, LyXFont const & font, bool toggleall)
-{
-	if (!bv->available())
-		return;
-
-	if (bv->theLockingInset()) {
-		bv->theLockingInset()->setFont(bv, font, toggleall);
-		return;
-	}
-
-	LyXText * text = bv->getLyXText();
-	text->toggleFree(font, toggleall);
-	bv->update();
-
-	if (font.language() != ignore_language ||
-	    font.number() != LyXFont::IGNORE) {
-		LyXCursor & cursor = text->cursor;
-		Paragraph & par = *text->cursorPar();
-		text->bidi.computeTables(par, *bv->buffer(),
-			*par.getRow(cursor.pos()));
-		if (cursor.boundary() !=
-		    text->bidi.isBoundary(*bv->buffer(), par,
-					  cursor.pos(),
-					  text->real_current_font))
-			text->setCursor(cursor.par(), cursor.pos(),
-					false, !cursor.boundary());
-	}
-}
 
 
 // deletes a selection during an insertion
@@ -444,10 +283,8 @@ void put_selection_at(BufferView * bv, PosIterator const & cur,
 			text->cursor = text->selection.start;
 	}
 	
-	
 	bv->fitCursor();
 	bv->update();
-		
 }
 
 

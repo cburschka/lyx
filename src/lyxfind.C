@@ -37,9 +37,9 @@ using bv_funcs::put_selection_at;
 
 using std::string;
 
+
 namespace lyx {
 namespace find {
-
 
 namespace {
 
@@ -78,18 +78,6 @@ private:
 	bool cs;
 	bool mw;
 };
-
-
-
-} //namespace anon
-
-
-
-
-
-namespace {
-
-
 
 
 bool findForward(PosIterator & cur, PosIterator const & end,
@@ -135,13 +123,11 @@ bool searchAllowed(BufferView * bv, string const & str)
 		Alert::error(_("Search error"), _("Search string is empty"));
 		return false;
 	}
-	if (!bv->available())
-		return false;
-	return true;
-	    
+	return bv->available();
 }
 
 } // namespace anon
+
 
 
 bool find(BufferView * bv, string const & searchstr,
@@ -169,13 +155,6 @@ bool find(BufferView * bv, string const & searchstr,
 
 	return found;
 }
-
-namespace {
-	
-
-
- 
-} //namespace anon
 
 
 int replaceAll(BufferView * bv,
@@ -236,10 +215,11 @@ int replace(BufferView * bv,
 		}
 	}
 
+#ifdef LOCK
 	LyXText * text = bv->getLyXText();
 	// We have to do this check only because mathed insets don't
 	// return their own LyXText but the LyXText of it's parent!
-	if (!bv->theLockingInset() ||
+	if (!bv->innerInset() ||
 	    ((text != bv->text) &&
 	     (text->inset_owner == text->inset_owner->getLockingInset()))) {
 		text->replaceSelectionWithString(replacestr);
@@ -247,10 +227,9 @@ int replace(BufferView * bv,
 		text->cursor = fw ? text->selection.end
 			: text->selection.start;
 	}
+#endif
 
-	// FIXME: should be called via an LFUN
 	bv->buffer()->markDirty();
-
 	find(bv, searchstr, cs, mw, fw);
 	bv->update();
 	

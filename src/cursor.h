@@ -19,10 +19,11 @@
 #include <vector>
 
 class BufferView;
-class InsetOld;
+class UpdatableInset;
 class DispatchResult;
 class FuncRequest;
 class LyXText;
+class InsetTabular;
 
 
 /**
@@ -32,20 +33,18 @@ class LyXText;
 class CursorItem {
 public:
 	///
-	CursorItem() : inset_(0), text_(0), idx_(0), par_(0), pos_(0) {}
+	CursorItem() : inset_(0), par_(0), pos_(0) {}
 	///
-	CursorItem(InsetOld * inset, LyXText * text)
-		: inset_(inset), text_(text), idx_(0), par_(0), pos_(0)
+	explicit CursorItem(UpdatableInset * inset)
+		: inset_(inset), par_(0), pos_(0)
 	{}
+	///
+	LyXText * text() const;
 	///
 	friend std::ostream & operator<<(std::ostream &, CursorItem const &);
 public:
 	///
-	InsetOld * inset_;
-	///
-	LyXText * text_;
-	///
-	int idx_;
+	UpdatableInset * inset_;
 	///
 	int par_;
 	///
@@ -55,20 +54,26 @@ public:
 
 class LCursor {
 public:
-	///
-	LCursor(BufferView * bv);
+	/// create 'empty' cursor
+	explicit LCursor(BufferView * bv);
 	/// dispatch from innermost inset upwards
 	DispatchResult dispatch(FuncRequest const & cmd);
-	/// adjust cursor acording to result
-	bool handleResult(DispatchResult const & res);
 	///
-	void push(InsetOld *, LyXText *);
-	///
+	void push(UpdatableInset * inset);
+	/// restrict cursor nesting to given size
+	void pop(int depth);
+	/// pop one level off the cursor
 	void pop();
 	///
-	InsetOld * innerInset() const;
+	UpdatableInset * innerInset() const;
+	///
+	UpdatableInset * innerInsetOfType(int code) const;
+	///
+	InsetTabular * innerInsetTabular() const;
 	///
 	LyXText * innerText() const;
+	/// returns x,y position
+	void getPos(int & x, int & y) const;
 	///
 	friend std::ostream & operator<<(std::ostream &, LCursor const &);
 public:

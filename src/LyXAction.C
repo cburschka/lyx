@@ -370,7 +370,10 @@ bool LyXAction::funcHasFlag(kb_action action,
 {
 	info_map::const_iterator ici = lyx_info_map.find(action);
 
-	BOOST_ASSERT(ici != lyx_info_map.end());
+	if (ici == lyx_info_map.end()) {
+		lyxerr << "action: " << action << " is not known." << endl;
+		BOOST_ASSERT(false);
+	}
 
 	return ici->second.attrib & flag;
 }

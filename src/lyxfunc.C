@@ -75,13 +75,11 @@
 #include "support/std_sstream.h"
 #include "support/os.h"
 
-using bv_funcs::apply_freefont;
 using bv_funcs::changeDepth;
 using bv_funcs::currentState;
 using bv_funcs::DEC_DEPTH;
 using bv_funcs::freefont2string;
 using bv_funcs::INC_DEPTH;
-using bv_funcs::update_and_apply_freefont;
 
 using lyx::support::AddName;
 using lyx::support::AddPath;
@@ -325,7 +323,8 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 		}
 	}
 
-	UpdatableInset * tli = view()->theLockingInset();
+	UpdatableInset * tli = view()->cursor().innerInset();
+	InsetTabular * tab = view()->cursor().innerInsetTabular();
 
 	// I would really like to avoid having this switch and rather try to
 	// encode this in the function itself.
@@ -343,29 +342,22 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 		break;
 	case LFUN_CUT:
 	case LFUN_COPY:
-		if (tli) {
-			UpdatableInset * in = tli;
-			if (in->lyxCode() != InsetOld::TABULAR_CODE) {
-				in = tli->getFirstLockingInsetOfType(InsetOld::TABULAR_CODE);
-			}
-			if (in && static_cast<InsetTabular*>(in)->hasSelection()) {
-				disable = false;
-				break;
-			}
-		}
-		disable = !mathcursor && !view()->getLyXText()->selection.set();
+		if (tab && tab->hasSelection())
+			disable = false;
+		else
+			disable = !mathcursor && !view()->getLyXText()->selection.set();
 		break;
+
 	case LFUN_RUNCHKTEX:
 		disable = !buf->isLatex() || lyxrc.chktex_command == "none";
 		break;
+
 	case LFUN_BUILDPROG:
 		disable = !Exporter::IsExportable(*buf, "program");
 		break;
 
 	case LFUN_LAYOUT_TABULAR:
-		disable = !tli
-			|| (tli->lyxCode() != InsetOld::TABULAR_CODE
-			    && !tli->getFirstLockingInsetOfType(InsetOld::TABULAR_CODE));
+		disable = !view()->cursor().innerInsetTabular();
 		break;
 
 	case LFUN_DEPTH_MIN:
@@ -388,8 +380,8 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 		break;
 
 	case LFUN_TABULAR_FEATURE:
-		if (mathcursor) {
 #if 0
+		if (mathcursor) {
 			// FIXME: check temporarily disabled
 			// valign code
 			char align = mathcursor->valign();
@@ -423,7 +415,6 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 				break;
 			}
 			flag.setOnOff(ev.argument[0] == align);
-#endif
 
 			disable = !mathcursor->halign();
 			break;
@@ -432,15 +423,9 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 		if (tli) {
 			FuncStatus ret;
 			//ret.disabled(true);
-			if (tli->lyxCode() == InsetOld::TABULAR_CODE) {
-				ret = static_cast<InsetTabular *>(tli)
-					->getStatus(ev.argument);
-				flag |= ret;
-				disable = false;
-			} else if (tli->getFirstLockingInsetOfType(InsetOld::TABULAR_CODE)) {
-				ret = static_cast<InsetTabular *>
-					(tli->getFirstLockingInsetOfType(InsetOld::TABULAR_CODE))
-					->getStatus(ev.argument);
+			InsetTabular * tab = view()->cursor().innerInsetTabular();
+			if (tab) {
+				ret = tab->getStatus(ev.argument);
 				flag |= ret;
 				disable = false;
 			} else {
@@ -453,6 +438,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 			if (ret.onoff(true) || ret.onoff(false))
 				flag.setOnOff(false);
 		}
+#endif
 		break;
 
 	case LFUN_VC_REGISTER:
@@ -495,13 +481,10 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 
 	case LFUN_INSET_SETTINGS: {
 		disable = true;
-		UpdatableInset * inset = view()->theLockingInset();
+		UpdatableInset * inset = view()->cursor().innerInset();
 
 		if (!inset)
 			break;
-
-		// get the innermost inset
-		inset = inset->getLockingInset();
 
 		// jump back to owner if an InsetText, so
 		// we get back to the InsetTabular or whatever
@@ -573,7 +556,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 			disable = !Exporter::IsExportable(*buf, "dvi") ||
 				lyxrc.print_command == "none";
 		} else if (name == "character") {
-			UpdatableInset * tli = view()->theLockingInset();
+			UpdatableInset * tli = view()->cursor().innerInset();
 			disable = tli && tli->lyxCode() == InsetOld::ERT_CODE;
 		} else if (name == "vclog") {
 			disable = !buf->lyxvc().inUse();
@@ -756,6 +739,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 		break;
 	}
 
+#ifdef LOCK
 	// the font related toggles
 	if (!mathcursor) {
 		LyXFont const & font = view()->getLyXText()->real_current_font;
@@ -809,6 +793,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 			break;
 		}
 	}
+#endif
 
 	// this one is difficult to get right. As a half-baked
 	// solution, we consider only the first action of the sequence
@@ -852,8 +837,8 @@ void LyXFunc::dispatch(FuncRequest const & func, bool verbose)
 	string argument = func.argument;
 	kb_action action = func.action;
 
-	lyxerr[Debug::ACTION] << "LyXFunc::dispatch: action[" << action
-			      <<"] arg[" << argument << ']' << endl;
+	//lyxerr[Debug::ACTION] << "LyXFunc::dispatch: cmd: " << func << endl;
+	lyxerr << "LyXFunc::dispatch: cmd: " << func << endl;
 
 	// we have not done anything wrong yet.
 	errorstat = false;
@@ -881,207 +866,14 @@ void LyXFunc::dispatch(FuncRequest const & func, bool verbose)
 	if (view()->available())
 		view()->hideCursor();
 
-#if 1
-	{
-		UpdatableInset * innerinset = view()->theLockingInset();
-		for (UpdatableInset * tmp = innerinset; tmp; tmp = tmp->lockingInset())
-			innerinset = tmp;
-
-		if (view()->cursor().innerInset() != innerinset) {
-			lyxerr << "### CURSOR OUT OF SYNC: tli: "
-				<< view()->theLockingInset() << "  inner: "
-				<< innerinset
-				<< "\ncursor: " << view()->cursor() << endl; 
-		}
-	}
-
-	if (0) {
-		DispatchResult result =
-			view()->cursor().dispatch(FuncRequest(func, view()));
-
-		if (result.dispatched()) {
-			if (result.update()) {
-				view()->update();
-			}
-			lyxerr << "dispatched by Cursor::dispatch()\n";
-			goto exit_with_message;
-		}
-		lyxerr << "### NOT DispatchResult(true, true) BY Cursor::dispatch() ###\n";
-	}
-#endif
-
-
-	if (view()->available() && view()->theLockingInset()) {
-		DispatchResult result;
-		if (action > 1 || (action == LFUN_UNKNOWN_ACTION &&
-				     !keyseq.deleted()))
-		{
-			UpdatableInset * inset = view()->theLockingInset();
-#if 1
-			int inset_x;
-			int dummy_y;
-			inset->getCursorPos(view(), inset_x, dummy_y);
-#endif
-			if (action == LFUN_UNKNOWN_ACTION && argument.empty())
-				argument = encoded_last_key;
-
-			// the insets can't try to handle this,
-			// a table cell in the dummy position will
-			// lock its insettext, the insettext will
-			// pass it the bufferview, and succeed,
-			// so it will stay not locked. Not good
-			// if we've just done LFUN_ESCAPE (which
-			// injects an LFUN_PARAGRAPH_UPDATE)
-			if (action == LFUN_PARAGRAPH_UPDATE) {
-				view()->dispatch(func);
-				goto exit_with_message;
-			}
-
-			// Undo/Redo is a bit tricky for insets.
-			if (action == LFUN_UNDO) {
-				view()->undo();
-				goto exit_with_message;
-			}
-
-			if (action == LFUN_REDO) {
-				view()->redo();
-				goto exit_with_message;
-			}
-
-			// Hand-over to inset's own dispatch:
-			result = inset->dispatch(FuncRequest(view(), action, argument));
-			if (result.dispatched()) {
-				if (result.update())
-					view()->update();
-
-				goto exit_with_message;
-			}
-
-			// If DispatchResult(false), just soldier on
-			if (result.val() == FINISHED) {
-				owner->clearMessage();
-				goto exit_with_message;
-				// We do not need special RTL handling here:
-				// FINISHED means that the cursor should be
-				// one position after the inset.
-			}
-
-			if (result.val() == FINISHED_RIGHT) {
-				view()->text->cursorRight(view());
-				moveCursorUpdate();
-				owner->clearMessage();
-				goto exit_with_message;
-			}
-
-			if (result.val() == FINISHED_UP) {
-				LyXText * text = view()->text;
-				ParagraphList::iterator pit = text->cursorPar();
-				Row const & row = *pit->getRow(text->cursor.pos());
-				if (text->isFirstRow(pit, row)) {
-#if 1
-					text->setCursorFromCoordinates(
-						text->cursor.x() + inset_x,
-						text->cursor.y() -
-						row.baseline() - 1);
-					view()->x_target(text->cursor.x());
-#else
-					text->cursorUp(view());
-#endif
-					moveCursorUpdate();
-				} else {
-					view()->update();
-				}
-				owner->clearMessage();
-				goto exit_with_message;
-			}
-
-			if (result.val() == FINISHED_DOWN) {
-				LyXText * text = view()->text;
-				ParagraphList::iterator pit = text->cursorPar();
-				Row const & row = *pit->getRow(text->cursor.pos());
-				if (text->isLastRow(pit, row)) {
-#if 1
-					text->setCursorFromCoordinates(
-						text->cursor.x() + inset_x,
-						text->cursor.y() -
-						row.baseline() +
-						row.height() + 1);
-					view()->x_target(text->cursor.x());
-#else
-					text->cursorDown(view());
-#endif
-				} else {
-					text->cursorRight(view());
-				}
-				moveCursorUpdate();
-				owner->clearMessage();
-				goto exit_with_message;
-			}
-
-#warning I am not sure this is still right, please have a look! (Jug 20020417)
-			// result == DispatchResult()
-			//setMessage(N_("Text mode"));
-			switch (action) {
-			case LFUN_UNKNOWN_ACTION:
-			case LFUN_BREAKPARAGRAPH:
-			case LFUN_BREAKLINE:
-				view()->text->cursorRight(view());
-				view()->switchKeyMap();
-				owner->view_state_changed();
-				break;
-			case LFUN_RIGHT:
-				if (!view()->text->cursorPar()->isRightToLeftPar(owner->buffer()->params())) {
-					view()->text->cursorRight(view());
-					moveCursorUpdate();
-					owner->view_state_changed();
-				}
-				goto exit_with_message;
-			case LFUN_LEFT:
-				if (view()->text->cursorPar()->isRightToLeftPar(owner->buffer()->params())) {
-					view()->text->cursorRight(view());
-					moveCursorUpdate();
-					owner->view_state_changed();
-				}
-				goto exit_with_message;
-			case LFUN_DOWN: {
-				LyXText * text = view()->text;
-				ParagraphList::iterator pit = text->cursorPar();
-				if (text->isLastRow(pit, *pit->getRow(text->cursor.pos())))
-					view()->text->cursorDown(view());
-				else
-					view()->text->cursorRight(view());
-				moveCursorUpdate();
-				owner->view_state_changed();
-				goto exit_with_message;
-			}
-			default:
-				break;
-			}
-		}
-	}
-
 	switch (action) {
 
 	case LFUN_ESCAPE: {
 		if (!view()->available())
 			break;
-		// this function should be used always [asierra060396]
-		UpdatableInset * tli = view()->theLockingInset();
-		if (tli) {
-			UpdatableInset * lock = tli->getLockingInset();
-
-			if (tli == lock) {
-				view()->unlockInset(tli);
-				view()->text->cursorRight(view());
-				moveCursorUpdate();
-				owner->view_state_changed();
-			} else {
-				tli->unlockInsetInInset(view(), lock, true);
-			}
-			finishUndo();
-			// Tell the paragraph dialog that we changed paragraph
-			dispatch(FuncRequest(LFUN_PARAGRAPH_UPDATE));
-		}
+		view()->cursor().pop();
+		// Tell the paragraph dialog that we changed paragraph
+		dispatch(FuncRequest(LFUN_PARAGRAPH_UPDATE));
 		break;
 	}
 
@@ -1104,7 +896,7 @@ void LyXFunc::dispatch(FuncRequest const & func, bool verbose)
 	}
 
 	case LFUN_PREFIX:
-		if (view()->available() && !view()->theLockingInset())
+		if (view()->available())
 			view()->update();
 		owner->message(keyseq.printOptions());
 		break;
@@ -1140,7 +932,7 @@ void LyXFunc::dispatch(FuncRequest const & func, bool verbose)
 		view()->center();
 		break;
 
-		// --- Menus -----------------------------------------------
+	// --- Menus -----------------------------------------------
 	case LFUN_MENUNEW:
 		menuNew(argument, false);
 		break;
@@ -1236,34 +1028,9 @@ void LyXFunc::dispatch(FuncRequest const & func, bool verbose)
 		view()->redo();
 		break;
 
-	case LFUN_FREEFONT_APPLY:
-		apply_freefont(view());
-		break;
-
-	case LFUN_FREEFONT_UPDATE:
-		update_and_apply_freefont(view(), argument);
-		break;
-
 	case LFUN_RECONFIGURE:
 		Reconfigure(view());
 		break;
-
-#if 0
-	case LFUN_FLOATSOPERATE:
-		if (argument == "openfoot")
-			view()->allFloats(1,0);
-		else if (argument == "closefoot")
-			view()->allFloats(0,0);
-		else if (argument == "openfig")
-			view()->allFloats(1,1);
-		else if (argument == "closefig")
-			view()->allFloats(0,1);
-		break;
-#else
-#ifdef WITH_WARNINGS
-//#warning Find another implementation here (or another lyxfunc)!
-#endif
-#endif
 
 	case LFUN_HELP_OPEN: {
 		string const arg = argument;
@@ -1283,7 +1050,7 @@ void LyXFunc::dispatch(FuncRequest const & func, bool verbose)
 		break;
 	}
 
-		// --- version control -------------------------------
+	// --- version control -------------------------------
 	case LFUN_VC_REGISTER:
 		if (!ensureBufferClean(view()))
 			break;
@@ -1324,7 +1091,6 @@ void LyXFunc::dispatch(FuncRequest const & func, bool verbose)
 		break;
 
 	// --- buffers ----------------------------------------
-
 	case LFUN_SWITCHBUFFER:
 		view()->buffer(bufferlist.getBuffer(argument));
 		break;
@@ -1337,19 +1103,10 @@ void LyXFunc::dispatch(FuncRequest const & func, bool verbose)
 		open(argument);
 		break;
 
-	case LFUN_LAYOUT_TABULAR: {
-		UpdatableInset * tli = view()->theLockingInset();
-		if (tli) {
-			if (tli->lyxCode() == InsetOld::TABULAR_CODE) {
-				static_cast<InsetTabular *>(tli)->openLayoutDialog(view());
-			} else if (tli->getFirstLockingInsetOfType(InsetOld::TABULAR_CODE)) {
-				static_cast<InsetTabular *>(
-					tli->getFirstLockingInsetOfType(InsetOld::TABULAR_CODE))
-						->openLayoutDialog(view());
-			}
-		}
+	case LFUN_LAYOUT_TABULAR:
+		if (InsetTabular * tab = view()->cursor().innerInsetTabular())
+			tab->openLayoutDialog(view());
 		break;
-	}
 
 	case LFUN_DROP_LAYOUTS_CHOICE:
 		owner->getToolbar().openLayoutList();
@@ -1357,11 +1114,9 @@ void LyXFunc::dispatch(FuncRequest const & func, bool verbose)
 
 	case LFUN_MENU_OPEN_BY_NAME:
 		owner->getMenubar().openByName(argument);
-		break; // RVDK_PATCH_5
+		break;
 
 	// --- lyxserver commands ----------------------------
-
-
 	case LFUN_GETNAME:
 		setMessage(owner->buffer()->fileName());
 		lyxerr[Debug::INFO] << "FNAME["
@@ -1417,7 +1172,6 @@ void LyXFunc::dispatch(FuncRequest const & func, bool verbose)
 					    << " found." << endl;
 		}
 
-
 		par.lockPath(view());
 		LyXText * lt = par.text(view());
 
@@ -1429,10 +1183,8 @@ void LyXFunc::dispatch(FuncRequest const & func, bool verbose)
 		view()->center();
 		// see BufferView_pimpl::center()
 		view()->updateScrollbar();
+		break;
 	}
-	break;
-
-	// --- insert characters ----------------------------------------
 
 	// ---  Mathed stuff. If we are here, there is no locked inset yet.
 	case LFUN_MATH_EXTERN:
@@ -1643,10 +1395,9 @@ void LyXFunc::dispatch(FuncRequest const & func, bool verbose)
 	case LFUN_FORKS_KILL:
 		if (isStrInt(argument)) {
 			pid_t const pid = strToInt(argument);
-			ForkedcallsController & fcc = ForkedcallsController::get();
-			fcc.kill(pid);
+			ForkedcallsController::get().kill(pid);
+			break;
 		}
-		break;
 
 	case LFUN_TOOLTIPS_TOGGLE:
 		owner->getDialogs().toggleTooltips();
@@ -1656,15 +1407,19 @@ void LyXFunc::dispatch(FuncRequest const & func, bool verbose)
 		InsetExternal().dispatch(FuncRequest(view(), action, argument));
 		break;
 
-	default:
-		// Then if it was none of the above
-		// Trying the BufferView::pimpl dispatch:
-		if (!view()->dispatch(func))
-			lyxerr << "A truly unknown func ["
-			       << lyxaction.getActionName(func.action) << "]!"
-			       << endl;
-		break;
-	} // end of switch
+	default: {
+			DispatchResult result =
+				view()->cursor().dispatch(FuncRequest(func, view()));
+			if (result.dispatched()) {
+				if (result.update())
+					view()->update();
+				lyxerr << "dispatched by Cursor::dispatch()" << endl;
+			} else {
+				lyxerr << "### NOT DISPATCHED BY Cursor::dispatch() ###" << endl;
+			}
+			break;
+		}
+	}
 
 exit_with_message:
 

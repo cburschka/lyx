@@ -27,9 +27,8 @@
 #include "outputparams.h"
 #include "paragraph.h"
 
-#include "support/tostr.h"
-
 #include "support/std_sstream.h"
+#include "support/tostr.h"
 
 
 using std::string;
@@ -50,10 +49,7 @@ string floatname(string const & type, BufferParams const & bp)
 {
 	FloatList const & floats = bp.getLyXTextClass().floats();
 	FloatList::const_iterator it = floats[type];
-	if (it == floats.end())
-		return type;
-
-	return _(it->second.name());
+	return (it == floats.end()) ? type : _(it->second.name());
 }
 
 } // namespace anon
@@ -62,9 +58,7 @@ string floatname(string const & type, BufferParams const & bp)
 InsetWrap::InsetWrap(BufferParams const & bp, string const & type)
 	: InsetCollapsable(bp)
 {
-	string lab(_("wrap: "));
-	lab += floatname(type, bp);
-	setLabel(lab);
+	setLabel(_("wrap: ") + floatname(type, bp));
 	LyXFont font(LyXFont::ALL_SANE);
 	font.decSize();
 	font.decSize();
@@ -272,8 +266,7 @@ string const InsetWrapMailer::inset2string(Buffer const &) const
 }
 
 
-void InsetWrapMailer::string2params(string const & in,
-				    InsetWrapParams & params)
+void InsetWrapMailer::string2params(string const & in, InsetWrapParams & params)
 {
 	params = InsetWrapParams();
 

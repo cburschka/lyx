@@ -196,9 +196,9 @@ bool editing_inset(InsetFormula const * inset)
 void InsetFormula::draw(PainterInfo & pi, int x, int y) const
 {
 	// The previews are drawn only when we're not editing the inset.
-	bool const use_preview = (!editing_inset(this) &&
-				  RenderPreview::activated() &&
-				  preview_->previewReady());
+	bool const use_preview = !editing_inset(this)
+		&& RenderPreview::activated()
+		&& preview_->previewReady();
 
 	int const w = dim_.wid;
 	int const d = dim_.des;
@@ -227,6 +227,10 @@ void InsetFormula::draw(PainterInfo & pi, int x, int y) const
 
 	xo_ = x;
 	yo_ = y;
+
+	top_x = x;
+	top_baseline = y;
+
 }
 
 
@@ -260,9 +264,9 @@ bool InsetFormula::insetAllowed(InsetOld::Code code) const
 
 void InsetFormula::metrics(MetricsInfo & m, Dimension & dim) const
 {
-	bool const use_preview = (!editing_inset(this) &&
-				  RenderPreview::activated() &&
-				  preview_->previewReady());
+	bool const use_preview = !editing_inset(this)
+		&& RenderPreview::activated()
+		&& preview_->previewReady();
 
 	if (use_preview) {
 		preview_->metrics(m, dim);
@@ -303,10 +307,10 @@ namespace {
 
 string const latex_string(InsetFormula const & inset, Buffer const &)
 {
-	ostringstream ls;
-	WriteStream wi(ls, false, false);
+	ostringstream os;
+	WriteStream wi(os, false, false);
 	inset.par()->write(wi);
-	return ls.str();
+	return os.str();
 }
 
 } // namespace anon

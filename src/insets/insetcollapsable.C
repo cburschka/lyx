@@ -39,12 +39,10 @@ using std::ostream;
 
 
 InsetCollapsable::InsetCollapsable(BufferParams const & bp, bool collapsed)
-	: UpdatableInset(), inset(bp), collapsed_(collapsed),
-	  button_dim(0, 0, 0, 0), label("Label"),
+	: UpdatableInset(), inset(bp), collapsed_(collapsed), label("Label")
 #if 0
-	autocollapse(false),
+	,autocollapse(false)
 #endif
-	  in_update(false), first_after_edit(false)
 {
 	inset.setOwner(this);
 	inset.setAutoBreakRows(true);
@@ -56,11 +54,10 @@ InsetCollapsable::InsetCollapsable(BufferParams const & bp, bool collapsed)
 
 InsetCollapsable::InsetCollapsable(InsetCollapsable const & in)
 	: UpdatableInset(in), inset(in.inset), collapsed_(in.collapsed_),
-	  labelfont_(in.labelfont_), button_dim(0, 0, 0, 0), label(in.label),
+	  labelfont_(in.labelfont_), label(in.label)
 #if 0
-	  autocollapse(in.autocollapse),
+	  ,autocollapse(in.autocollapse)
 #endif
-	  in_update(false), first_after_edit(false)
 {
 	inset.setOwner(this);
 }
@@ -128,6 +125,7 @@ void InsetCollapsable::metrics(MetricsInfo & mi, Dimension & dim) const
 		dim.wid = max(dim.wid, insetdim.wid);
 	}
 	dim_ = dim;
+	//lyxerr << "InsetCollapsable::metrics:  dim.wid: " << dim.wid << endl;
 }
 
 
@@ -161,11 +159,10 @@ void InsetCollapsable::draw(PainterInfo & pi, int x, int y, bool inlined) const
 	top_x = x;
 	top_baseline = y;
 
-	int const bl = y - aa + dim_collapsed.ascent();
-
 	if (inlined) {
 		inset.draw(pi, x, y);
 	} else {
+		int const bl = y - aa + dim_collapsed.ascent();
 		draw_collapsed(pi, old_x, bl);
 		inset.draw(pi, x, bl + dim_collapsed.descent() + inset.ascent());
 	}
@@ -185,59 +182,52 @@ InsetOld::EDITABLE InsetCollapsable::editable() const
 }
 
 
-void InsetCollapsable::insetUnlock(BufferView * bv)
-{
-#if 0
-	if (autocollapse) {
-		if (change_label_with_text) {
-			draw_label = get_new_label();
-		} else {
-			draw_label = label;
-		}
-		collapsed_ = true;
-	}
-#endif
-	inset.insetUnlock(bv);
-	if (scroll())
-		scroll(bv, 0.0F);
-	bv->updateInset(this);
-}
-
-
 FuncRequest InsetCollapsable::adjustCommand(FuncRequest const & cmd)
 {
 	FuncRequest cmd1 = cmd;
-	cmd1.y = ascent() + cmd.y - (height_collapsed() + inset.ascent());
+	cmd1.y = ascent() + cmd.y - height_collapsed() - inset.ascent();
 	return cmd1;
 }
 
 
-void InsetCollapsable::lfunMouseRelease(FuncRequest const & cmd)
+DispatchResult InsetCollapsable::lfunMouseRelease(FuncRequest const & cmd)
 {
-	bool ret = false;
+	DispatchResult result(true, true);
 	BufferView * bv = cmd.view();
 
-	if (collapsed_ && cmd.button() != mouse_button::button3) {
-		collapsed_ = false;
-		bv->updateInset(this);
-		bv->buffer()->markDirty();
-		return;
-	}
-
-	if (cmd.button() != mouse_button::button3 && hitButton(cmd)) {
+	if (cmd.button() == mouse_button::button3) {
+		lyxerr << "InsetCollapsable::lfunMouseRelease 0" << endl;
+		if (hitButton(cmd))
+			showInsetDialog(bv);
+	} else {
 		if (collapsed_) {
+			lyxerr << "InsetCollapsable::lfunMouseRelease 1" << endl;
 			collapsed_ = false;
-		} else {
-			collapsed_ = true;
-			bv->unlockInset(this);
+			bv->updateInset(this);
+			bv->buffer()->markDirty();
+			return result;
 		}
-		bv->updateInset(this);
-		bv->buffer()->markDirty();
-	} else if (!collapsed_ && cmd.y > button_dim.y2) {
-		ret = inset.dispatch(adjustCommand(cmd)) == DispatchResult(true, true);
+
+		if (hitButton(cmd)) {
+			if (collapsed_) {
+				lyxerr << "InsetCollapsable::lfunMouseRelease 2" << endl;
+				collapsed_ = false;
+			} else {
+				collapsed_ = true;
+				result.update(true);
+				result.val(FINISHED_RIGHT);
+				return result;
+			}
+			result.update(true);
+			bv->updateInset(this);
+			bv->buffer()->markDirty();
+		} else if (!collapsed_ && cmd.y > button_dim.y2) {
+			lyxerr << "InsetCollapsable::lfunMouseRelease 3" << endl;
+			result = inset.dispatch(adjustCommand(cmd));
+		}
 	}
-	if (cmd.button() == mouse_button::button3 && !ret)
-		showInsetDialog(bv);
+	lyxerr << "InsetCollapsable::lfunMouseRelease 4" << endl;
+	return result;
 }
 
 
@@ -278,35 +268,10 @@ bool InsetCollapsable::hitButton(FuncRequest const & cmd) const
 void InsetCollapsable::edit(BufferView * bv, bool left)
 {
 	lyxerr << "InsetCollapsable: edit left/right" << endl;
-	if (!bv->lockInset(this))
-		lyxerr << "InsetCollapsable: can't lock" << endl;
-	bv->cursor().push(this, inset.getText(0));
+	bv->cursor().push(this);
 	inset.edit(bv, left);
-	first_after_edit = true;
 	open(bv);
 }
-
-/*
-	if (!cmd.argument.empty()) {
-		UpdatableInset::edit(
-		if (collapsed_) {
-			lyxerr << "branch collapsed_" << endl;
-			collapsed_ = false;
-			if (bv->lockInset(this)) {
-				bv->updateInset(this);
-				bv->buffer()->markDirty();
-				inset.dispatch(cmd);
-				first_after_edit = true;
-			}
-		} else {
-			lyxerr << "branch not collapsed_" << endl;
-			if (bv->lockInset(this))
-				inset.dispatch(cmd);
-		}
-		return;
-	}
-	UpdatableInset::edit(cmd, idx, pos);
-*/
 
 
 void InsetCollapsable::edit(BufferView * bv, int x, int y)
@@ -316,30 +281,25 @@ void InsetCollapsable::edit(BufferView * bv, int x, int y)
 		collapsed_ = false;
 		// set this only here as it should be recollapsed only if
 		// it was already collapsed!
-		first_after_edit = true;
-		if (!bv->lockInset(this))
-			return;
 		bv->updateInset(this);
 		bv->buffer()->markDirty();
 		inset.edit(bv, x, y);
 	} else {
-		if (!bv->lockInset(this))
-			return;
 		if (y <= button_dim.y2)
 			inset.edit(bv, x, 0);
 		else
 			inset.edit(bv, x,
-				ascent() + y - (height_collapsed() + inset.ascent()));
+				ascent() + y - height_collapsed() + inset.ascent());
 	}
-	bv->cursor().push(this, inset.getText(0));
+	bv->cursor().push(this);
 }
 
 
 DispatchResult
 InsetCollapsable::priv_dispatch(FuncRequest const & cmd, idx_type &, pos_type &)
 {
-	//lyxerr << "InsetCollapsable::localDispatch: "
-	//	<< cmd.action << " '" << cmd.argument << "'\n";
+	lyxerr << "\nInsetCollapsable::priv_dispatch (begin): cmd: " << cmd
+		<< "  button y: " << button_dim.y2 << endl;
 	switch (cmd.action) {
 		case LFUN_MOUSE_PRESS:
 			if (!collapsed_ && cmd.y > button_dim.y2)
@@ -352,39 +312,22 @@ InsetCollapsable::priv_dispatch(FuncRequest const & cmd, idx_type &, pos_type &)
 			return DispatchResult(true, true);
 
 		case LFUN_MOUSE_RELEASE:
-			lfunMouseRelease(cmd);
+			if (!collapsed_ && cmd.y > button_dim.y2)
+				inset.dispatch(adjustCommand(cmd));
+			else
+				return lfunMouseRelease(cmd);
 			return DispatchResult(true, true);
 
 		default:
-			DispatchResult const result = inset.dispatch(cmd);
-			first_after_edit = false;
-			return result;
+			return inset.dispatch(cmd);
 	}
-}
-
-
-bool InsetCollapsable::lockInsetInInset(BufferView * bv, UpdatableInset * in)
-{
-	if (&inset == in)
-		return true;
-	return inset.lockInsetInInset(bv, in);
-}
-
-
-bool InsetCollapsable::unlockInsetInInset(BufferView * bv, UpdatableInset * in,
-					  bool lr)
-{
-	if (&inset == in) {
-		bv->unlockInset(this);
-		return true;
-	}
-	return inset.unlockInsetInInset(bv, in, lr);
+	lyxerr << "InsetCollapsable::priv_dispatch (end)" << endl;
 }
 
 
 int InsetCollapsable::insetInInsetY() const
 {
-	return inset.insetInInsetY() - (top_baseline - inset.y());
+	return inset.y() - top_baseline + inset.insetInInsetY();
 }
 
 
@@ -394,32 +337,10 @@ void InsetCollapsable::validate(LaTeXFeatures & features) const
 }
 
 
-void InsetCollapsable::getCursor(BufferView & bv, int & x, int & y) const
-{
-	inset.getCursor(bv, x, y);
-}
-
-
 void InsetCollapsable::getCursorPos(BufferView * bv, int & x, int & y) const
 {
 	inset.getCursorPos(bv, x , y);
-}
-
-
-UpdatableInset * InsetCollapsable::getLockingInset() const
-{
-	UpdatableInset * in = inset.getLockingInset();
-	if (&inset == in)
-		return const_cast<InsetCollapsable *>(this);
-	return in;
-}
-
-
-UpdatableInset * InsetCollapsable::getFirstLockingInsetOfType(InsetOld::Code c)
-{
-	if (c == lyxCode())
-		return this;
-	return inset.getFirstLockingInsetOfType(c);
+	y += - ascent() + height_collapsed() + inset.ascent();
 }
 
 
@@ -427,13 +348,6 @@ void InsetCollapsable::setFont(BufferView * bv, LyXFont const & font,
 			       bool toggleall, bool selectall)
 {
 	inset.setFont(bv, font, toggleall, selectall);
-}
-
-
-LyXText * InsetCollapsable::getLyXText(BufferView const * bv,
-				       bool const recursive) const
-{
-	return inset.getLyXText(bv, recursive);
 }
 
 
@@ -479,12 +393,6 @@ LyXText * InsetCollapsable::getText(int i) const
 }
 
 
-LyXCursor const & InsetCollapsable::cursor(BufferView * bv) const
-{
-	return inset.cursor(bv);
-}
-
-
 void InsetCollapsable::open(BufferView * bv)
 {
 	if (!collapsed_)
@@ -527,3 +435,52 @@ void InsetCollapsable::addPreview(PreviewLoader & loader) const
 {
 	inset.addPreview(loader);
 }
+
+
+bool InsetCollapsable::insetAllowed(InsetOld::Code code) const
+{
+	return inset.insetAllowed(code);
+}
+
+
+void InsetCollapsable::fitInsetCursor(BufferView * bv) const
+{
+	inset.fitInsetCursor(bv);
+}
+
+
+void InsetCollapsable::setLabelFont(LyXFont & f)
+{
+	labelfont_ = f;
+}
+
+#if 0
+void InsetCollapsable::setAutoCollapse(bool f)
+{
+	autocollapse = f;
+}
+#endif
+
+void InsetCollapsable::scroll(BufferView *bv, float sx) const
+{
+	UpdatableInset::scroll(bv, sx);
+}
+
+
+void InsetCollapsable::scroll(BufferView *bv, int offset) const
+{
+	UpdatableInset::scroll(bv, offset);
+}
+
+
+bool InsetCollapsable::isOpen() const
+{
+	return !collapsed_;
+}
+
+
+Box const & InsetCollapsable::buttonDim() const
+{
+	return button_dim;
+}
+

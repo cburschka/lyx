@@ -1,3 +1,29 @@
+
+2003-11-10  André Pönitz  <poenitz@gmx.net>
+
+	* lfuns.h: new LFUN_FINISHED_LEFT, LFUN_FINISHED_RIGHT,
+	LFUN_FINISHED_UP, LFUN_FINISHED_DOWN used in dispatch to
+	indicate that the cursor needs to leave an inset
+
+	* lyxtext.h: remove inset locking
+
+	* cursor.[Ch]: re-implement functionality provided by inset locking
+
+	* BufferView.[Ch]:
+	* BufferView_pimpl.[Ch]:
+	* LyXAction.C:
+	* bufferview_funcs.[Ch]:
+	* factory.C:
+	* funcrequest.[Ch]:
+	* iterators.C:
+	* lyx_cb.C:
+	* lyxfind.C:
+	* lyxfunc.C:
+	* text.C:
+	* text2.C:
+	* text3.C:
+	* undo.C: adjust
+
 2003-11-07  Alfredo Braunstein  <abraunst@libero.it>
 
 	* PosIterator.[Ch]: replace the stack with a vector, add inset 

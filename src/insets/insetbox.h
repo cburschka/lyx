@@ -78,6 +78,8 @@ public:
 	/// show the Box dialog
 	bool showInsetDialog(BufferView * bv) const;
 	///
+	bool display() const { return false; }
+	///
 	int latex(Buffer const &, std::ostream &,
 			OutputParams const &) const;
 	///
