@@ -1,3 +1,8 @@
+2005-01-24  Angus Leeming  <leeming@lyx.org>
+
+	* reLyX/configure.ac: revert Jean-Marc's wrapping of the
+	prefix variable in single quotes.
+
 2005-01-20  Angus Leeming  <leeming@lyx.org>
 
 	* configure.m4: replace all occurences of '$$s/' with '$$s/scripts'.
