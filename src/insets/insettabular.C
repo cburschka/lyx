@@ -1328,10 +1328,9 @@ void InsetTabular::tabularFeatures(LCursor & cur,
 				   _("You cannot set multicolumn vertically."));
 			return;
 		}
-#if 0
-		// just multicol for one Single Cell
-		if (!hasSelection()) {
-			// check whether we are completly in a multicol
+		if (!cur.selection()) {
+			// just multicol for one single cell
+			// check whether we are completely in a multicol
 			if (tabular.isMultiColumn(cur.idx()))
 				tabular.unsetMultiColumn(cur.idx());
 			else
@@ -1340,21 +1339,12 @@ void InsetTabular::tabularFeatures(LCursor & cur,
 		}
 		// we have a selection so this means we just add all this
 		// cells to form a multicolumn cell
-		int s_start;
-		int s_end;
-
-		if (sel_cell_start > sel_cell_end) {
-			s_start = sel_cell_end;
-			s_end = sel_cell_start;
-		} else {
-			s_start = sel_cell_start;
-			s_end = sel_cell_end;
-		}
+		CursorSlice::idx_type const s_start = cur.selBegin().idx();
+		CursorSlice::idx_type const s_end = cur.selEnd().idx();
 		tabular.setMultiColumn(bv.buffer(), s_start, s_end - s_start + 1);
 		cur.idx() = s_start;
 		cur.par() = 0;
 		cur.pos() = 0;
-#endif
 		cur.selection() = false;
 		break;
 	}
