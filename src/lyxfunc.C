@@ -469,6 +469,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 	case LFUN_MATH_LIMITS:
 	case LFUN_MATH_NONUMBER:
 	case LFUN_MATH_NUMBER:
+	case LFUN_MATH_EXTERN:
 		disable = !mathcursor;
 		break;
 
