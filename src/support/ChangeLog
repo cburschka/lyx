@@ -1,3 +1,9 @@
+2005-02-17  Angus Leeming  <leeming@lyx.org>
+
+	* copy.C (copy): Pass the ios::in flag to the ifstream constructor.
+	Enables copying to work when the code is compiled with the gcc 2.95
+	compiler and stdlib.
+
 2005-02-15  Angus Leeming  <leeming@lyx.org>
 
 	* filetools.C (setEnvPath): compare iterators rather than use tellp().
