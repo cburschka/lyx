@@ -188,15 +188,15 @@ void InsetFormula::draw(BufferView * bv, LyXFont const & font,
 	par_->draw(pi, x, y);
 
 	// preview stuff
-#if 0
-	ostringstream os;
-	WriteStream wi(os, false, false);
-	par_->write(wi);
-	if (preview(os.str(), preview_)) {
-		cerr << "image could be drawn\n";
-		pi.pain.image(x + 40, y, 50, 50, *(preview_->image()));
+	if (lyxrc.preview) {
+		ostringstream os;
+		WriteStream wi(os, false, false);
+		par_->write(wi);
+		if (preview(os.str(), preview_)) {
+			cerr << "image could be drawn\n";
+			pi.pain.image(x + 40, y, 50, 50, *(preview_->image()));
+		}
 	}
-#endif
 
 	xx += par_->width();
 	xo_ = x;

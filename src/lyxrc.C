@@ -43,6 +43,7 @@ extern boost::scoped_ptr<kb_keymap> toplevel_keymap;
 
 namespace {
 
+// when adding something to this array keep it sorted!
 keyword_item lyxrcTags[] = {
 	{ "\\accept_compound", LyXRC::RC_ACCEPT_COMPOUND },
 	{ "\\alternate_language", LyXRC::RC_ALT_LANG },
@@ -94,6 +95,7 @@ keyword_item lyxrcTags[] = {
 	{ "\\popup_bold_font", LyXRC::RC_POPUP_BOLD_FONT },
 	{ "\\popup_font_encoding", LyXRC::RC_POPUP_FONT_ENCODING },
 	{ "\\popup_normal_font", LyXRC::RC_POPUP_NORMAL_FONT },
+	{ "\\preview", LyXRC::RC_PREVIEW },
 	{ "\\print_adapt_output", LyXRC::RC_PRINT_ADAPTOUTPUT },
 	{ "\\print_collcopies_flag", LyXRC::RC_PRINTCOLLCOPIESFLAG },
 	{ "\\print_command", LyXRC::RC_PRINT_COMMAND },
@@ -130,6 +132,7 @@ keyword_item lyxrcTags[] = {
 	{ "\\screen_zoom", LyXRC::RC_SCREEN_ZOOM },
 	{ "\\serverpipe", LyXRC::RC_SERVERPIPE },
 	{ "\\set_color", LyXRC::RC_SET_COLOR },
+	{ "\\show_banner", LyXRC::RC_SHOW_BANNER },
 	{ "\\spell_command", LyXRC::RC_SPELL_COMMAND },
 	{ "\\tempdir_path", LyXRC::RC_TEMPDIRPATH },
 	{ "\\template_path", LyXRC::RC_TEMPLATEPATH },
@@ -253,6 +256,7 @@ void LyXRC::setDefaults() {
 	cursor_follows_scrollbar = false;
 	dialogs_iconify_with_main = false;
 	label_init_length = 3;
+	preview = false;
 
 	/// These variables are not stored on disk (perhaps they
 	// should be moved from the LyXRC class).
@@ -935,6 +939,16 @@ int LyXRC::read(string const & filename)
 				label_init_length = lexrc.getInteger();
 			break;
 
+		case RC_SHOW_BANNER:
+			if (lexrc.next())
+				show_banner = lexrc.getBool();
+			break;
+
+		case RC_PREVIEW:
+			if (lexrc.next())
+				preview = lexrc.getBool();
+			break;
+
 		case RC_LAST: break; // this is just a dummy
 		}
 	}
@@ -1107,6 +1121,16 @@ void LyXRC::output(ostream & os) const
 		if (label_init_length != system_lyxrc.label_init_length) {
 			os << "\\label_init_length " << label_init_length
 			   << "\n";
+		}
+
+	case RC_SHOW_BANNER:
+		if (show_banner != system_lyxrc.show_banner) {
+			os << "\\show_banner " << tostr(show_banner) << "\n";
+		}
+
+	case RC_PREVIEW:
+		if (preview != system_lyxrc.preview) {
+			os << "\\preview " << tostr(preview) << "\n";
 		}
 
 		os << "\n#\n"
@@ -1974,6 +1998,10 @@ string const LyXRC::getDescription(LyXRCTags tag)
 
 	case RC_LABEL_INIT_LENGTH:
 		str = _("Maximum number of words in the initialization string for a new label");
+		break;
+
+	case RC_PREVIEW:
+		str = _("Shows a typeset preview besides formulas");
 		break;
 
 	default:

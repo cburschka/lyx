@@ -50,7 +50,7 @@ public:
 	/// This is a singleton class. Get the instance.
 	static SplashScreen const & get();
 	///
-	grfx::GImage const * image() const { return image_.get(); }
+	grfx::GImage const * image() const { return graphic_->image().get(); }
 	///
 	string const & text() const { return text_; }
 	///
@@ -73,10 +73,6 @@ private:
 	 *  erased unexpectedly by the cache itself.
 	 */
 	grfx::GraphicPtr graphic_;
-	/** We generate a pixmap from a copy of the grfx::GImage * stored in
-	 *  the cache.
-	 */
-	grfx::ImagePtr image_;
 	/// The loading status of the image.
 	grfx::ImageStatus status_;
 	/// The text to be written on top of the pixmap
@@ -140,27 +136,22 @@ SplashScreen::~SplashScreen()
 
 void SplashScreen::createPixmap()
 {
-	if (!graphic_.get() || image_.get())
+	if (!graphic_.get() || status_ != grfx::WaitingToLoad)
 		return;
 
-	if (graphic_->status() != grfx::Loaded)
+	// We aren't going to modify the image, so don't bother making a
+	// local copy
+	grfx::GImage * const image = graphic_->image().get();
+	if (!image)
 		return;
 
-	if (status_ != grfx::WaitingToLoad)
-		return;
-
-	// Strictly speaking, we need to create a copy only if we're going to
-	// modify the image (scale, etc).
-	image_.reset(graphic_->image()->clone());
-	
-	bool const success = image_->setPixmap(grfx::GParams());
-
-	if (success) {
+	if (image->getPixmap()) {
 		status_ = grfx::Loaded;
-	} else {
-		image_.reset();
-		status_ = grfx::ErrorScalingEtc;
+		return;
 	}
+
+	bool const success = image->setPixmap(grfx::GParams());
+	status_ = success ? grfx::Loaded : grfx::ErrorLoading;
 }
 
 } // namespace anon

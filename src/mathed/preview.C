@@ -48,7 +48,9 @@ bool preview(string const & str, grfx::GraphicPtr & graphic)
 		if (gr->status() == grfx::Loaded) {
 			cerr << "file '" << file << "' ready for display\n";
 			graphic = gr;
-			return graphic->image()->setPixmap(grfx::GParams());
+			grfx::GParams pars;
+			bool const res = graphic->image()->setPixmap(pars);
+			return res;
 		}
 
 		// otherwise we have to wait again
@@ -59,16 +61,22 @@ bool preview(string const & str, grfx::GraphicPtr & graphic)
 	// The real work starts.
 	string const texfile = dir + base + ".tex";
 	std::ofstream of(texfile.c_str());
-	of << "\\documentclass{article}"
+	of << "\\batchmode"
+	   << "\\documentclass{article}"
 	   << "\\usepackage{amssymb}"
 	   << "\\thispagestyle{empty}"
+	   << "\\pdfoutput=0"
 	   << "\\begin{document}"
 	   << str
 	   << "\\end{document}\n";
 	of.close();
 
 	string const cmd =
-		"latex " + base + ".tex ; dvips -E -o " + base + ".eps " + base + ".dvi ";
+//		"latex " + base + ".tex ; " + "
+//    "dvips -x 2500 -R -E -o " + base + ".eps " + base + ".dvi ";
+	// Herbert says this is faster
+		"pdflatex --interaction batchmode " + base + "; " +
+		"dvips -x 2000 -R -E -o " + base + ".eps " + base + ".dvi ";
 	//cerr << "calling: '" << "(cd " + dir + "; " + cmd + ")\n";
 	Systemcall sc;
 	sc.startscript(Systemcall::Wait, "(cd " + dir + "; " + cmd + ")");
