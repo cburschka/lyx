@@ -219,6 +219,19 @@ else
   LATEX=
   ac_result="not useable"
 fi
+# Grab the list of languages avaliable to LaTeX by parsing the LaTeX log file, chklatex.log.
+LANGUAGES=`sed -n '/hyphenation patterns/{
+:loop
+/loaded\.$/!{
+$!{
+N
+s/\n//
+s/^.*for\ //
+tloop
+}
+}
+/loaded\.$/p
+}' chklatex.log`
 rm -f chklatex.ltx chklatex.log])dnl
 dnl
 # Search LaTeX2e
@@ -523,6 +536,11 @@ changequote(,)dnl
 echo "creating doc/LaTeXConfig.lyx"
 echo "s/@chk_linuxdoc@/$chk_linuxdoc/g" >> chkconfig.sed
 echo "s/@chk_docbook@/$chk_docbook/g" >> chkconfig.sed
+# Add a line to chkconfig.sed so that the placeholder in
+# LaTeXConfig.lyx.in will be replaced by the list of available
+# languages.
+test "${LANGUAGES}" != "" && \
+        echo "s/@chk_languages@/${LANGUAGES}/g" >> chkconfig.sed
 sed -f chkconfig.sed "${srcdir}"/doc/LaTeXConfig.lyx.in >doc/LaTeXConfig.lyx
 
 echo "creating $outfile"

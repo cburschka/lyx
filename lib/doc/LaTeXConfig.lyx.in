@@ -1,20 +1,20 @@
 #LyX 1.4.0cvs created this file. For more info see http://www.lyx.org/
-\lyxformat 232
+\lyxformat 237
+\begin_document
+\begin_header
 \textclass article
 \language english
 \inputencoding default
 \fontscheme default
 \graphics dvips
 \paperfontsize 0
-\spacing single 
-\papersize Default
-\paperpackage a4
-\use_geometry 0
+\spacing single
+\papersize default
+\paperpackage none
+\use_geometry false
 \use_amsmath 0
-\use_natbib 0
-\use_numerical_citations 0
-\use_jurabib 0
-\use_bibtopic 0
+\cite_engine basic
+\use_bibtopic false
 \paperorientation portrait
 \secnumdepth 2
 \tocdepth 3
@@ -25,8 +25,10 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle plain
-\tracking_changes 0
+\tracking_changes false
 \end_header
+
+\begin_body
 
 \begin_layout Title
 
@@ -73,11 +75,11 @@ The document classes that should be standard on any LaTeX implementation.
 Some optional document classes that LyX knows about.
  If one of these is marked as missing (the 
 \begin_inset Quotes eld
-\end_inset 
+\end_inset
 
 Found
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
  item is no) and you need its functionality, you can grab it at your nearest
  CTAN ftp site
@@ -110,15 +112,15 @@ There are also a zillion mirror sites which are listed at the three primary
  sites.
 \end_layout
 
-\end_inset 
+\end_inset
 
  at the location indicated in the 
 \begin_inset Quotes eld
-\end_inset 
+\end_inset
 
 CTAN
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
  item.
  Note that only detected document classes can be selected as document layouts
@@ -129,11 +131,11 @@ CTAN
 
 The packages that have been stamped 
 \begin_inset Quotes eld
-\end_inset 
+\end_inset
 
 required
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
  by the LaTeX maintainers.
  These ones should definitely be present, but you may not have some of them
@@ -162,17 +164,17 @@ Note that most of these packages will be available if you use a modern TeX
  If you decide to install one of the missing items, you should tell LyX
  about it.
  After the installation, please use the menu entry 
-\family sans 
-\bar under 
+\family sans
+\bar under
 T
-\bar default 
+\bar default
 ools\SpecialChar \menuseparator
 
-\bar under 
+\bar under
 R
-\bar default 
+\bar default
 econfigure
-\family default 
+\family default
 
 \begin_inset Foot
 status collapsed
@@ -180,43 +182,43 @@ status collapsed
 \begin_layout Standard
 
 or, if you want to change the system-wide settings, issue the command 
-\family typewriter 
+\family typewriter
 ./configure
-\family default 
+\family default
  from the LyX system directory (by default 
-\family typewriter 
+\family typewriter
 /usr/local/lib/lyx/
-\family default 
+\family default
 )
 \end_layout
 
-\end_inset 
+\end_inset
 
  and reload this file to see if the new package was recognized.
  If the 
 \begin_inset Quotes eld
-\end_inset 
+\end_inset
 
 Found
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
  items read 
 \begin_inset Quotes eld
-\end_inset 
+\end_inset
 
 ???
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
 , it means that LyX could not do the inventory of your LaTeX configuration
  for some reason.
  If you are using teTeX, it might be that the new package you installed
  is not found.
  This is because you forgot to run the command 
-\family typewriter 
+\family typewriter
 texhash
-\family default 
+\family default
 , which tells teTeX to update its own configuration.
 \end_layout
 
@@ -228,15 +230,15 @@ LaTeX version currently in use
 \begin_layout Standard
 
 The LaTeX version that LyX will use is: 
-\family typewriter 
+\family typewriter
 @chk_fmtversion@
-\family default 
+\family default
 .
  Note that, for best results, you should be using at least LaTeX release
  
-\family typewriter 
+\family typewriter
 1995/12/01
-\family default 
+\family default
 
 \begin_inset Foot
 status collapsed
@@ -247,7 +249,7 @@ In case it is not clear to you, this number is the date at which the version
  has been released.
 \end_layout
 
-\end_inset 
+\end_inset
 
 .
  In fact, earlier versions may work for many things, but will certainly
@@ -274,35 +276,35 @@ Found: @chk_ec@
 \begin_layout Description
 
 CTAN: 
-\family typewriter 
+\family typewriter
 fonts/ec
 \end_layout
 
 \begin_layout Description
 
 Notes: LaTeX does not require the use of 
-\family sans 
+\family sans
 ec
-\family default 
+\family default
  fonts, however they are strongly recommended.
  The 
-\family sans 
+\family sans
 ec
-\family default 
+\family default
  fonts are available in a more natural range of sizes and allow better hyphenati
 on and kerning than the old fonts such as 
-\family sans 
+\family sans
 cmr10
-\family default 
+\family default
 .
  If you already have the so-called 
-\family sans 
+\family sans
 dc
-\family default 
+\family default
  fonts installed, please upgrade to the 
-\family sans 
+\family sans
 ec
-\family default 
+\family default
  fonts, which replace them.
  They are used automatically if LyX determines that you have them installed.
 \end_layout
@@ -320,29 +322,29 @@ Found: @chk_psnfss@
 \begin_layout Description
 
 CTAN: 
-\family typewriter 
+\family typewriter
 macros/latex/required/psnfss/
 \end_layout
 
 \begin_layout Description
 
 Notes: The package 
-\family sans 
+\family sans
 psnfss
-\family default 
+\family default
  allows you to change the fonts used by LyX to one of the 35 classical fonts
  available on PostScript® printers.
  Currently, the support for 
-\family sans 
+\family sans
 psnfss
-\family default 
+\family default
  is limited in LyX: you can only chose a few combinations of PostScript®
  fonts in 
-\family sans 
-\size normal 
+\family sans
+\size normal
 Layout->Document
-\family default 
-\size default 
+\family default
+\size default
 .
 \end_layout
 
@@ -379,9 +381,9 @@ CTAN: N/A
 \begin_layout Description
 
 Notes: The standard document class 
-\family sans 
+\family sans
 article
-\family default 
+\family default
  is used to type articles or short texts.
  It is the basic LaTeX document class.
 \end_layout
@@ -404,13 +406,13 @@ CTAN: N/A
 \begin_layout Description
 
 Notes: The standard document class 
-\family sans 
+\family sans
 report
-\family default 
+\family default
  is similar to 
-\family sans 
+\family sans
 article
-\family default 
+\family default
  but is slightly more structured (support for different parts).
 \end_layout
 
@@ -432,9 +434,9 @@ CTAN: N/A
 \begin_layout Description
 
 Notes: The standard document class 
-\family sans 
+\family sans
 book
-\family default 
+\family default
  is, as its name suggests, intended to produce books.
  It supports in particular sectioning by chapters.
 \end_layout
@@ -457,9 +459,9 @@ CTAN: N/A
 \begin_layout Description
 
 Notes: The standard document class 
-\family sans 
+\family sans
 letter
-\family default 
+\family default
  is the basic class for writing letters, mostly in English.
 \end_layout
 
@@ -481,20 +483,20 @@ CTAN: N/A
 \begin_layout Description
 
 Notes: The standard document class 
-\family sans 
+\family sans
 slides
-\family default 
+\family default
  is intended to produce transparencies.
  It is not very well supported by LyX.
  It is advised to use 
-\family sans 
+\family sans
 foils
-\family default 
+\family default
  instead if it is available (see\InsetSpace ~
 
 \begin_inset LatexCommand \ref{ssec:foils}
 
-\end_inset 
+\end_inset
 
 ).
 \end_layout
@@ -512,20 +514,20 @@ Found: @chk_amsart@
 \begin_layout Description
 
 CTAN: 
-\family typewriter 
+\family typewriter
 macros/latex/required/amslatex/classes/
 \end_layout
 
 \begin_layout Description
 
 Notes: The document class 
-\family sans 
+\family sans
 amsart
-\family default 
+\family default
  is an alternative to the class 
-\family sans 
+\family sans
 article
-\family default 
+\family default
 .
  It is part of the AMS-LaTeX package and is used for typesetting of mathematics
  with a look the American Mathematical Society has developed.
@@ -555,27 +557,27 @@ Found: @chk_aa@
 \begin_layout Description
 
 CTAN: N/A (available from ftp site
-\family typewriter 
+\family typewriter
  ftp.edpsciences.org
-\family default 
+\family default
  in directory 
-\family typewriter 
+\family typewriter
 /pub/aa/
-\family default 
+\family default
 )
 \end_layout
 
 \begin_layout Description
 
 Notes: The document class 
-\family sans 
+\family sans
 aa
-\family default 
+\family default
  (Version 5.01) can be used to write articles for submission to the  scientific
  journal 
-\emph on 
+\emph on
 Astronomy and Astrophysics
-\emph default 
+\emph default
 published by EDP Sciences.
 \end_layout
 
@@ -592,30 +594,30 @@ Found: @chk_aastex@
 \begin_layout Description
 
 CTAN: N/A (available from the American Astronomical Society's ftp site
-\family typewriter 
+\family typewriter
  ftp.aas.
-\family default 
+\family default
 org in directory 
-\family typewriter 
+\family typewriter
 /pub
-\family default 
+\family default
 s)
 \end_layout
 
 \begin_layout Description
 
 Notes: The document class 
-\family sans 
+\family sans
 aastex
-\family default 
+\family default
  can be used to write articles for submission to the American journals 
-\emph on 
+\emph on
 Astrophysical Journal, Astronomical Journal
-\emph default 
+\emph default
  and 
-\emph on 
+\emph on
 Publications of the Astronomical Society of the Pacific
-\emph default 
+\emph default
 .
 \end_layout
 
@@ -632,34 +634,34 @@ Found: @chk_jgrga@, @chk_agums@
 \begin_layout Description
 
 CTAN:
-\family typewriter 
+\family typewriter
  macros/latex/contrib/aguplus
 \end_layout
 
 \begin_layout Description
 
 Notes: The document class 
-\family sans 
+\family sans
 jgrga
-\family default 
+\family default
  can be used to write articles for the 
-\emph on 
+\emph on
 Journal of Geophysical Research
-\emph default 
+\emph default
 , published by the American Geophysical Union.
 \end_layout
 
-\begin_deeper 
+\begin_deeper
 \begin_layout Standard
 
 The layout consists of two parts: the general part 
-\family typewriter 
+\family typewriter
 aguplus.inc
-\family default 
+\family default
 , and the journal specific part 
-\family typewriter 
+\family typewriter
 jgrga.layout
-\family default 
+\family default
 .
  It is not very thoroughly tested yet.
  It would be straightforward to extend this to support other publications
@@ -669,18 +671,18 @@ jgrga.layout
 \begin_layout Standard
 
 The document class 
-\family sans 
+\family sans
 agums
-\family default 
+\family default
  (file 
-\family typewriter 
+\family typewriter
 agums.layout
-\family default 
+\family default
 ) can be used to write articles for first-time submission to AGU editors
  (e.g., for review and copy editing)
 \end_layout
 
-\end_deeper 
+\end_deeper
 \begin_layout Subsection
 
 broadway
@@ -694,18 +696,18 @@ Found: @chk_broadway@
 \begin_layout Description
 
 CTAN: N/A (must be installed from the 
-\family typewriter 
+\family typewriter
 tex/
-\family default 
+\family default
  subdirectory of LyX source distribution)
 \end_layout
 
 \begin_layout Description
 
 Notes: The document class 
-\family sans 
+\family sans
 broadway
-\family default 
+\family default
  is for writing plays.
  It is not an existing LaTeX document class, but a new one which is distributed
  with LyX.
@@ -724,9 +726,9 @@ Found: @chk_cv@
 \begin_layout Description
 
 CTAN: N/A (must be installed from the 
-\family typewriter 
+\family typewriter
 tex/
-\family default 
+\family default
  subdirectory of LyX source distribution)
 \end_layout
 
@@ -736,7 +738,7 @@ WWW: At the time of this writing, the latest version can be obtained at
  
 \begin_inset LatexCommand \url{http://www-rocq.inria.fr/~lasgoutt/lyx/cv-1.5.tar.gz}
 
-\end_inset 
+\end_inset
 
 
 \end_layout
@@ -744,9 +746,9 @@ WWW: At the time of this writing, the latest version can be obtained at
 \begin_layout Description
 
 Notes: The document class 
-\family sans 
+\family sans
 cv
-\family default 
+\family default
  is for writing a curriculum vitae.
  It is rather minimalist, but has nice features like bibliography support
  (useful for academics).
@@ -772,7 +774,7 @@ CTAN: N/A
 FTP: 
 \begin_inset LatexCommand \url{ftp://ftp.springer.de/pub/tex/latex/compsc/proc/author}
 
-\end_inset 
+\end_inset
 
 
 \end_layout
@@ -780,9 +782,9 @@ FTP:
 \begin_layout Description
 
 Notes: The document class 
-\family sans 
+\family sans
 cl2emult
-\family default 
+\family default
  is for writing multi authored Springer books.
 \end_layout
 
@@ -799,16 +801,16 @@ Found: @chk_dinbrief@
 \begin_layout Description
 
 CTAN: 
-\family typewriter 
+\family typewriter
 macros/latex/contrib/dinbrief/
 \end_layout
 
 \begin_layout Description
 
 Notes: The document class 
-\family sans 
+\family sans
 dinbrief
-\family default 
+\family default
  can be used to type letters according to German conventions.
 \end_layout
 
@@ -832,7 +834,7 @@ CTAN: N/A
 WWW: 
 \begin_inset LatexCommand \url{http://www.sgmltools.org}
 
-\end_inset 
+\end_inset
 
 
 \end_layout
@@ -842,9 +844,9 @@ WWW:
 Notes: The class docbook is not a LaTeX document class.
  It is designed to produce Docbook SGML documents, which, in turn, can be
  exported as HTML, RTF, text, or dvi (through 
-\family typewriter 
+\family typewriter
 jadetex
-\family default 
+\family default
 ).
  You need the sgmltools v2.0 package installed to use this.
 \end_layout
@@ -862,24 +864,24 @@ Found: @chk_dtk@
 \begin_layout Description
 
 CTAN: 
-\family typewriter 
+\family typewriter
 usergrps/dante/dtk/
 \end_layout
 
 \begin_layout Description
 
 Notes: The document class 
-\family sans 
+\family sans
 dtk
-\family default 
+\family default
  can be used to write articles for the Journal of the German TeX User Group
  
 \begin_inset Quotes eld
-\end_inset 
+\end_inset
 
 Die TeXnische Komödie
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
 .
 \end_layout
@@ -889,7 +891,7 @@ Die TeXnische Komödie
 WWW: 
 \begin_inset LatexCommand \url{http://www.dante.de}
 
-\end_inset 
+\end_inset
 
 
 \end_layout
@@ -912,9 +914,9 @@ CTAN: N/A
 \begin_layout Description
 
 Notes: The document class 
-\family sans 
+\family sans
 egs
-\family default 
+\family default
  can be used to write articles for the European Geophysical Society.
 \end_layout
 
@@ -931,14 +933,14 @@ Found: @chk_elsart@
 \begin_layout Description
 
 CTAN: 
-\family typewriter 
+\family typewriter
 macros/latex/contrib/elsevier/
 \end_layout
 
 \begin_layout Description
 
 WWW: 
-\family typewriter 
+\family typewriter
 http://authors.elsevier.com/
 \end_layout
 
@@ -969,7 +971,7 @@ CTAN: N/A
 WWW: 
 \begin_inset LatexCommand \url{http://math.tulane.edu/~entcs/}
 
-\end_inset 
+\end_inset
 
 
 \end_layout
@@ -977,9 +979,9 @@ WWW:
 \begin_layout Description
 
 Notes: The document class 
-\family sans 
+\family sans
 entcs
-\family default 
+\family default
  is Elsevier Science's Electronic Notes in Theoretical Computer Science
  article style, used for the ENTCS series, and many conference proceedings.
  
@@ -993,28 +995,28 @@ extsizes
 \begin_layout Description
 
 Found: 
-\family sans 
+\family sans
 extarticle
-\family default 
+\family default
 : @chk_extarticle@, 
-\family sans 
+\family sans
 extbook
-\family default 
+\family default
 : @chk_extbook@, 
-\family sans 
+\family sans
 extreport
-\family default 
+\family default
 : @chk_extreport@, 
-\family sans 
+\family sans
 extletter
-\family default 
+\family default
 : @chk_extletter@
 \end_layout
 
 \begin_layout Description
 
 CTAN: 
-\family typewriter 
+\family typewriter
 macros/latex/contrib/extsizes/
 \end_layout
 
@@ -1022,13 +1024,13 @@ macros/latex/contrib/extsizes/
 
 Notes: These document classes are equivalent to the corresponding standard
  classes (
-\family sans 
+\family sans
 article
-\family default 
+\family default
 , 
-\family sans 
+\family sans
 book
-\family default 
+\family default
 , \SpecialChar \ldots{}
 ) with additional document-wide font sizes.
 \end_layout
@@ -1038,7 +1040,7 @@ book
 
 \begin_inset LatexCommand \label{ssec:foils}
 
-\end_inset 
+\end_inset
 
 foils
 \end_layout
@@ -1051,31 +1053,31 @@ Found: @chk_foils@
 \begin_layout Description
 
 CTAN: 
-\family typewriter 
+\family typewriter
 macros/latex/contrib/foiltex/
 \end_layout
 
 \begin_layout Description
 
 Notes: The document class 
-\family sans 
+\family sans
 foils
-\family default 
+\family default
  (aka FoilTeX) provides an alternative to the standard 
-\family sans 
+\family sans
 slides
-\family default 
+\family default
  class to make transparencies.
  It allows cross references, uses a less ugly font, and is in general much
  better to use than 
-\family sans 
+\family sans
 slides
-\family default 
+\family default
 .
  It does not however have some of the advanced features found in the 
-\family sans 
+\family sans
 seminar
-\family default 
+\family default
  class, which is not currently supported by LyX.
  Note that, due to its somewhat restrictive license, it is not included
  in free TeX distributions like teTeX.
@@ -1094,16 +1096,16 @@ Found: @chk_g-brief-en@
 \begin_layout Description
 
 CTAN: 
-\family typewriter 
+\family typewriter
 macros/latex/contrib/g-brief/
 \end_layout
 
 \begin_layout Description
 
 Notes: The document class 
-\family sans 
+\family sans
 g-brief
-\family default 
+\family default
  can be used to type commercial letters with a nice outfit.
 \end_layout
 
@@ -1120,16 +1122,16 @@ Found: @chk_g-brief-de@
 \begin_layout Description
 
 CTAN: 
-\family typewriter 
+\family typewriter
 macros/latex/contrib/g-brief/
 \end_layout
 
 \begin_layout Description
 
 Notes: The document class 
-\family sans 
+\family sans
 g-brief-de
-\family default 
+\family default
  is the same as the above g-brief-en only with german labels.
 \end_layout
 
@@ -1146,16 +1148,16 @@ Found: @chk_g-brief2@
 \begin_layout Description
 
 CTAN: 
-\family typewriter 
+\family typewriter
 macros/latex/contrib/g-brief/
 \end_layout
 
 \begin_layout Description
 
 Notes: The document class 
-\family sans 
+\family sans
 g-brief2
-\family default 
+\family default
  can be used to type commercial letters with a nice outfit.
  It's the successor of g-brief, its better configurable, but not backward
  compatible to g-brief.
@@ -1174,18 +1176,18 @@ Found: @chk_hollywood@
 \begin_layout Description
 
 CTAN: N/A (must be installed from the 
-\family typewriter 
+\family typewriter
 tex/
-\family default 
+\family default
  subdirectory of LyX source distribution)
 \end_layout
 
 \begin_layout Description
 
 Notes: The document class 
-\family sans 
+\family sans
 hollywood
-\family default 
+\family default
  can be used to type spec scripts for the U.S.
  film industry.
  It is not an existing LaTeX document class, but a new one which is distributed
@@ -1210,30 +1212,30 @@ CTAN: N/A
 \begin_layout Description
 
 FTP: Currently, the IEEE ftp site only has an old version at: 
-\newline 
+\newline
 
-\family sans 
+\family sans
 
 \begin_inset LatexCommand \url{ftp://ftp.ieee.org/info/publish/latex/ieeetran.cls}
 
-\end_inset 
+\end_inset
 
 
-\family default 
+\family default
  
-\family sans 
+\family sans
 
-\newline 
+\newline
 
-\family default 
+\family default
 A newer version is available from: 
-\newline 
+\newline
 
-\family sans 
+\family sans
 
 \begin_inset LatexCommand \url{ftp://ftp.isi.edu/pub/graham/infocom99/latest/IEEEtran.cls}
 
-\end_inset 
+\end_inset
 
 
 \end_layout
@@ -1241,40 +1243,40 @@ A newer version is available from:
 \begin_layout Description
 
 Notes: The class
-\family sans 
+\family sans
  IEEEtran 
-\family default 
+\family default
 produces documents suitable for submission to most of the IEEE Transactions.
  You should consult the IEEE Author Information pages at 
-\family sans 
+\family sans
 www.ieee.org
-\family default 
+\family default
  if you intend to use this class.
  Note that there are both 
-\family sans 
+\family sans
 IEEEtran.cls
-\family default 
+\family default
  and 
-\family sans 
+\family sans
 IEEEtran.sty
-\family default 
+\family default
  files you 
-\emph on 
+\emph on
 must
-\emph default 
+\emph default
  get the 
-\family sans 
+\family sans
 .cls
-\family default 
+\family default
  file for use with LyX as the 
-\family sans 
+\family sans
 .sty
-\family default 
+\family default
  file is for LaTeX 2.09 only.
  Also note that if your 
-\family sans 
+\family sans
 ieeetran.cls
-\family default 
+\family default
  is in lowercase like this example LyX will not find it and you should upgrade
  to a newer version which has IEEE in capitals.
 \end_layout
@@ -1299,7 +1301,7 @@ CTAN: N/A
 WWW: available from the site 
 \begin_inset LatexCommand \url{http://www.worldscinet.com/ijmpd/mkt/guidelines.shtml}
 
-\end_inset 
+\end_inset
 
 .
 \end_layout
@@ -1307,9 +1309,9 @@ WWW: available from the site
 \begin_layout Description
 
 Notes: The document class 
-\family sans 
+\family sans
 ijmpd
-\family default 
+\family default
  can be used to write articles for submission to the International Journal
  of Modern Physics D (usually abbreviated as IJMPD), published by World
  Scientific.
@@ -1335,7 +1337,7 @@ CTAN: N/A
 WWW: available from the Kluwer Academic Publishers site 
 \begin_inset LatexCommand \url{http://www.wkap.nl/kaphtml.htm/STYLEFILES}
 
-\end_inset 
+\end_inset
 
 .
 \end_layout
@@ -1343,18 +1345,18 @@ WWW: available from the Kluwer Academic Publishers site
 \begin_layout Description
 
 Notes: The document class 
-\family sans 
+\family sans
 kluwer
-\family default 
+\family default
  can be used to write articles for submission to the journals published
  by Kluwer Academic Publishers, such as 
-\emph on 
+\emph on
 Astrophysics and Space Science, Solar Physics
-\emph default 
+\emph default
  and many others (see a full list at 
 \begin_inset LatexCommand \url{http://www.wkap.nl/jrnllist.htm/JRNLHOME}
 
-\end_inset 
+\end_inset
 
 ).
 \end_layout
@@ -1364,7 +1366,7 @@ Astrophysics and Space Science, Solar Physics
 KOMA-Script
 \begin_inset LatexCommand \label{sub:Koma-Script}
 
-\end_inset 
+\end_inset
 
 
 \end_layout
@@ -1372,24 +1374,24 @@ KOMA-Script
 \begin_layout Description
 
 Found: 
-\family sans 
+\family sans
 scrartcl
-\family default 
+\family default
 : @chk_scrartcl@, 
-\family sans 
+\family sans
 scrreprt
-\family default 
+\family default
 : @chk_scrreprt@, 
-\family sans 
+\family sans
 scrbook
-\family default 
+\family default
 : @chk_scrbook@
 \end_layout
 
 \begin_layout Description
 
 CTAN: 
-\family typewriter 
+\family typewriter
 macros/latex/contrib/koma-script/
 \end_layout
 
@@ -1397,17 +1399,17 @@ macros/latex/contrib/koma-script/
 
 Notes: These document classes provide different versions of the base LaTeX
  document classes 
-\family sans 
+\family sans
 article
-\family default 
+\family default
 , 
-\family sans 
+\family sans
 report
-\family default 
+\family default
  and 
-\family sans 
+\family sans
 book
-\family default 
+\family default
 .
  They have been changed to look somewhat better and be more adapted to european
  typesetting standards.
@@ -1421,20 +1423,20 @@ KOMA-Script letter
 \begin_layout Standard
 
 Found: 
-\family sans 
+\family sans
 scrlettr
-\family default 
+\family default
 : @chk_scrlettr@, 
-\family sans 
+\family sans
 scrlttr2
-\family default 
+\family default
 : @chk_scrlttr2@
 \end_layout
 
 \begin_layout Description
 
 CTAN: 
-\family typewriter 
+\family typewriter
 macros/latex/contrib/koma-script/
 \end_layout
 
@@ -1444,17 +1446,17 @@ Notes: These letter classes are bundled with the Koma-Script classes (see
  
 \begin_inset LatexCommand \ref{sub:Koma-Script}
 
-\end_inset 
+\end_inset
 
 ).
  LyX provides layouts for both the old (now unsupported) 
-\family sans 
+\family sans
 scrlettr
-\family default 
+\family default
  class and the new, much more flexible 
-\family sans 
+\family sans
 scrlttr2
-\family default 
+\family default
  class, which was introduced with Koma-Script version 2.9 (released 2002-06-21).
 \end_layout
 
@@ -1476,13 +1478,13 @@ CTAN: N/A
 \begin_layout Description
 
 Notes: The class 
-\family sans 
+\family sans
 latex8
-\family default 
+\family default
  is actually a LaTeX style file that adds some extra features to the 
-\family sans 
+\family sans
 article
-\family default 
+\family default
  document class.
  It produces documents suitable for submission to IEEE Conferences.
  The LaTeX files (including BibTeX style file) are distributed with the
@@ -1507,21 +1509,21 @@ CTAN: N/A
 \begin_layout Description
 
 Notes: The class 
-\family sans 
+\family sans
 linuxdoc
-\family default 
+\family default
  is not a LaTeX document class.
  It is designed to produce LinuxDoc-SGML documents, which, in turn, can
  be exported as HTML, RTF, text or...
  LaTeX.
  You need to have the 
-\family sans 
+\family sans
 sgml-tools
-\family default 
+\family default
  (previously known as 
-\family sans 
+\family sans
 LinuxDoc
-\family default 
+\family default
 ) set of programs installed to use this.
  
 \end_layout
@@ -1544,37 +1546,37 @@ CTAN: N/A
 \begin_layout Description
 
 Notes: The document class 
-\family sans 
+\family sans
 llncs 
-\family default 
+\family default
 can be used to write articles for submission to the Springer journal 
 \begin_inset Quotes eld
-\end_inset 
+\end_inset
 
 Lecture Notes in Computer Science
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
 .
  LaTeX documents are available from Springer's ftp site on the following
  URL:
-\newline 
+\newline
 
 \begin_inset LatexCommand \url{ftp://trick.ntp.springer.de/pub/tex/latex/llncs/latex2e}
 
-\end_inset 
+\end_inset
 
 .
  
 \end_layout
 
-\begin_deeper 
+\begin_deeper
 \begin_layout Standard
 
 The LyX layout file for this document class is still insufficiently tested.
 \end_layout
 
-\end_deeper 
+\end_deeper
 \begin_layout Subsection
 
 memoir
@@ -1588,7 +1590,7 @@ Found: @chk_memoir@
 \begin_layout Description
 
 CTAN: 
-\family typewriter 
+\family typewriter
 macros/latex/contrib/memoir/
 \end_layout
 
@@ -1613,7 +1615,7 @@ Found: @chk_mwart@
 \begin_layout Description
 
 CTAN: 
-\family typewriter 
+\family typewriter
 macros/latex/contrib/mwcls/
 \end_layout
 
@@ -1621,17 +1623,17 @@ macros/latex/contrib/mwcls/
 
 Notes: These document classes provide different versions of the base LaTeX
  document classes 
-\family sans 
+\family sans
 article
-\family default 
+\family default
 , 
-\family sans 
+\family sans
 report
-\family default 
+\family default
  and 
-\family sans 
+\family sans
 book
-\family default 
+\family default
 .
  They have been adapted to polish typesetting standards by Marcin Woliñski.
 \end_layout
@@ -1649,20 +1651,20 @@ Found: @chk_paper@
 \begin_layout Description
 
 CTAN: 
-\family typewriter 
+\family typewriter
 macros/latex/contrib/paper/
 \end_layout
 
 \begin_layout Description
 
 Notes: The document class 
-\family sans 
+\family sans
 paper
-\family default 
+\family default
  provides an alternative to the standard 
-\family sans 
+\family sans
 article
-\family default 
+\family default
  class.
  It provides similar functionality, but you might prefer this layout with
  sans serif sections, headings, and more.
@@ -1688,7 +1690,7 @@ CTAN: N/A
 WWW: 
 \begin_inset LatexCommand \url{http://public.lanl.gov/kmh/spie/}
 
-\end_inset 
+\end_inset
 
 
 \end_layout
@@ -1696,15 +1698,15 @@ WWW:
 \begin_layout Description
 
 Notes: 
-\family sans 
+\family sans
 spie.cls 
-\family default 
+\family default
 is a LaTeX class for submissions to the Proceedings of  SPIE--The International
  Society for Optical Engineering.More info on submitting a manuscript can
  be found at the SPIE website under
 \begin_inset LatexCommand \url{http://spie.org/app/Publications/index.cfm?fuseaction=authinfo&type=proceedings}
 
-\end_inset 
+\end_inset
 
 .
 \end_layout
@@ -1722,7 +1724,7 @@ Found: @chk_revtex@
 \begin_layout Description
 
 CTAN: 
-\family typewriter 
+\family typewriter
 macros/latex209/contrib/revtex/
 \end_layout
 
@@ -1730,23 +1732,23 @@ macros/latex209/contrib/revtex/
 
 Notes: This class, which used the REVTeX 3 class, has been superseded by
  the 
-\family sans 
+\family sans
 revtex4
-\family default 
+\family default
  class, so you should use that instead.
  (Old 
-\family sans 
+\family sans
 revtex
-\family default 
+\family default
  class documents should be pretty easy to change to the new class.) If you
  have to use this class for some reason, you should use the file 
-\family typewriter 
+\family typewriter
 revtex.cls
-\family default 
+\family default
  from the 
-\family typewriter 
+\family typewriter
 tex/
-\family default 
+\family default
  subdirectory of LyX source distribution.
 \end_layout
 
@@ -1763,7 +1765,7 @@ Found: @chk_revtex4@
 \begin_layout Description
 
 CTAN: 
-\family typewriter 
+\family typewriter
 macros/latex/contrib/revtex/
 \end_layout
 
@@ -1776,7 +1778,7 @@ Notes: REVTeX 4 is a class used for submitting manuscripts to journals including
  Also see 
 \begin_inset LatexCommand \url{http://publish.aps.org/revtex4/}
 
-\end_inset 
+\end_inset
 
 .
 \end_layout
@@ -1794,7 +1796,7 @@ Found: @chk_siamltex@
 \begin_layout Description
 
 CTAN: 
-\family typewriter 
+\family typewriter
 macros/latex/contrib/siam/siamltex.tar
 \end_layout
 
@@ -1810,7 +1812,7 @@ Notes: The Society for Industrial and Applied Mathematics, Philadelphia,
 
 \begin_inset LatexCommand \label{svglobal}
 
-\end_inset 
+\end_inset
 
 Springer Unspecific Journal
 \end_layout
@@ -1823,7 +1825,7 @@ Found: @chk_svglobal@
 \begin_layout Description
 
 CTAN: 
-\family typewriter 
+\family typewriter
 macros/latex/contrib/springer/svjour/global
 \end_layout
 
@@ -1832,7 +1834,7 @@ macros/latex/contrib/springer/svjour/global
 WWW: 
 \begin_inset LatexCommand \url{http://www.springeronline.com}
 
-\end_inset 
+\end_inset
 
 
 \end_layout
@@ -1840,41 +1842,41 @@ WWW:
 \begin_layout Description
 
 Notes: 
-\family sans 
+\family sans
 Svglobal
-\family default 
+\family default
  is a format suitable for publication in a Springer journal for which a
  specific style is not provided; i.e., if the journal author guidelines at
  the above Springer site suggest using the 
-\family sans 
+\family sans
 svglobal
-\family default 
+\family default
  style.
   The corresponding documentclass files and associated material can be found
  on the Springer site.
  The layout consists of two parts: 
-\family typewriter 
+\family typewriter
 svjour.inc
-\family default 
+\family default
  (which is generic for all Springer journals) and 
-\family typewriter 
+\family typewriter
 svglobal.layout
-\family default 
+\family default
 , which includes 
-\family typewriter 
+\family typewriter
 svjour.inc
-\family default 
+\family default
  and is the default style for any Springer Journal without any specific
  style.
  You can write your own 
-\family typewriter 
+\family typewriter
 sv<journal>.layout
-\family default 
+\family default
  to support any other Springer journals (hint, hint!).
  Note that you need to specify the 
-\family typewriter 
+\family typewriter
 global
-\family default 
+\family default
  extra documentclass option which is included in the class defaults.
 \end_layout
 
@@ -1891,7 +1893,7 @@ Found: @chk_svjog@
 \begin_layout Description
 
 CTAN: 
-\family typewriter 
+\family typewriter
 macros/latex/contrib/springer/svjour/jog
 \end_layout
 
@@ -1900,7 +1902,7 @@ macros/latex/contrib/springer/svjour/jog
 WWW: 
 \begin_inset LatexCommand \url{http://www.springeronline.com}
 
-\end_inset 
+\end_inset
 
 
 \end_layout
@@ -1908,16 +1910,16 @@ WWW:
 \begin_layout Description
 
 Notes: 
-\family sans 
+\family sans
 Svjog
-\family default 
+\family default
  is for the journal formats used by Springer Verlag, in particular that
  of Journal of Geodesy.
  It is not very well tested yet.
  For more information, see section 
 \begin_inset LatexCommand \ref{svglobal}
 
-\end_inset 
+\end_inset
 
 .
 \end_layout
@@ -1935,7 +1937,7 @@ Found: @chk_svprobth@
 \begin_layout Description
 
 CTAN: 
-\family typewriter 
+\family typewriter
 macros/latex/contrib/springer/svjour/prothe
 \end_layout
 
@@ -1944,7 +1946,7 @@ macros/latex/contrib/springer/svjour/prothe
 WWW: 
 \begin_inset LatexCommand \url{http://www.springeronline.com}
 
-\end_inset 
+\end_inset
 
 
 \end_layout
@@ -1952,15 +1954,15 @@ WWW:
 \begin_layout Description
 
 Notes: 
-\family sans 
+\family sans
 Svprothe
-\family default 
+\family default
  is a format suitable for publication in the journal Probability Theory
  and Related Fields.
  For more information, see section 
 \begin_inset LatexCommand \ref{svglobal}
 
-\end_inset 
+\end_inset
 
 .
 \end_layout
@@ -1978,23 +1980,23 @@ Found: @chk_ltugboat@
 \begin_layout Description
 
 CTAN: 
-\family typewriter 
+\family typewriter
 plain/contrib/tugboat.tar
 \end_layout
 
 \begin_layout Description
 
 Notes: The document class 
-\family sans 
+\family sans
 ltugboat
-\family default 
+\family default
  can be used to write articles for the Journal of the TeX User Group 
 \begin_inset Quotes eld
-\end_inset 
+\end_inset
 
 TUGboat
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
 .
 \end_layout
@@ -2004,7 +2006,7 @@ TUGboat
 WWW: 
 \begin_inset LatexCommand \url{http://www.tug.org}
 
-\end_inset 
+\end_inset
 
 
 \end_layout
@@ -2018,11 +2020,11 @@ Required packages
 
 This section contains packages which have been declared as 
 \begin_inset Quotes eld
-\end_inset 
+\end_inset
 
 required
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
  by the LaTeX maintainers.
  You should really consider upgrading your LaTeX setup if one of them is
@@ -2042,7 +2044,7 @@ Found: @chk_array@
 \begin_layout Description
 
 CTAN: 
-\family typewriter 
+\family typewriter
 macros/latex/required/tools/
 \end_layout
 
@@ -2065,46 +2067,69 @@ Found: @chk_babel@
 \begin_layout Description
 
 CTAN: 
-\family typewriter 
+\family typewriter
 macros/latex/required/babel/
 \end_layout
 
 \begin_layout Description
 
 Notes: The package 
-\family sans 
+\family sans
 babel
-\family default 
+\family default
  allows you to customize your document for your favorite language (see the
  
-\family sans 
-\size normal 
+\family sans
+\size normal
 Layout->Document
-\family default 
-\size default 
+\family default
+\size default
   popup).
  In particular, it handles hyphenation and automatic translation of all
  labels like 
 \begin_inset Quotes eld
-\end_inset 
+\end_inset
 
 Chapter
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
   and 
 \begin_inset Quotes eld
-\end_inset 
+\end_inset
 
 Table of contents
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
 .
  This package is not needed if you only plan to write in English, except
  if you want to use non-English quotes.
 \end_layout
 
+\begin_deeper
+\begin_layout Subsubsection*
+
+Languages for which hyphenation patterns are loaded:
+\end_layout
+
+\begin_layout Standard
+
+@chk_languages@
+\end_layout
+
+\begin_layout Standard
+
+If a language you use is not on this list, you should reconfigure your LaTeX
+ installation to include it.
+ For teTeX, this means running 
+\family typewriter
+texconfig
+\family default
+.
+\end_layout
+
+\end_deeper
 \begin_layout Subsection
 
 color
@@ -2118,23 +2143,23 @@ Found: @chk_color@
 \begin_layout Description
 
 CTAN: 
-\family typewriter 
+\family typewriter
 macros/latex/required/graphics/
 \end_layout
 
 \begin_layout Description
 
 Notes: The package 
-\family sans 
+\family sans
 color
-\family default 
+\family default
  is needed by LyX to handled colored text.
  These colors will not show in the DVI preview window, but will be correct
  on the printed output or with a PostScript® previewer.
  This package is bundled with the 
-\family sans 
+\family sans
 graphics
-\family default 
+\family default
  package.
 \end_layout
 
@@ -2151,39 +2176,39 @@ Found: @chk_graphicx@
 \begin_layout Description
 
 CTAN: 
-\family typewriter 
+\family typewriter
 macros/latex/required/graphics/
 \end_layout
 
 \begin_layout Description
 
 Notes: The package 
-\family sans 
+\family sans
 graphicx
-\family default 
+\family default
  is needed by LyX to insert PostScript® figures (using the new graphics
  inset).
  You will also need 
-\family typewriter 
-\size normal 
+\family typewriter
+\size normal
 ghost
-\size default 
+\size default
 script
-\family default 
+\family default
  to see them on screen.
  The configuration script has determined that the graphics driver used by
  the package should be 
-\family sans 
+\family sans
 
 \begin_inset Quotes eld
-\end_inset 
+\end_inset
 
 @chk_graphicsdriver@
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
 
-\family default 
+\family default
 
 \begin_inset Foot
 status collapsed
@@ -2192,16 +2217,16 @@ status collapsed
 
 Here, a value of 
 \begin_inset Quotes eld
-\end_inset 
+\end_inset
 
 default
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
  means that your LaTeX installation provides a sensible value for this parameter.
 \end_layout
 
-\end_inset 
+\end_inset
 
 .
 \end_layout
@@ -2219,16 +2244,16 @@ Found: @chk_longtable@
 \begin_layout Description
 
 CTAN: 
-\family typewriter 
+\family typewriter
 macros/latex/required/tools/
 \end_layout
 
 \begin_layout Description
 
 Notes: The package 
-\family sans 
+\family sans
 longtable
-\family default 
+\family default
  is needed by LyX to be able to output correctly multipage tables.
 \end_layout
 
@@ -2245,7 +2270,7 @@ Found: @chk_varioref@
 \begin_layout Description
 
 CTAN: 
-\family typewriter 
+\family typewriter
 macros/latex/required/tools/
 \end_layout
 
@@ -2266,9 +2291,9 @@ Changing the margins of a document is one thing people like to do.
  some people feel that these margins are too large and want to set them
  up differently.
  You can use the package 
-\family sans 
+\family sans
 geometry 
-\family default 
+\family default
 for this purpose, but note that for the sake of readability, your lines
  should not contain more than 60-70 characters.
 \end_layout
@@ -2286,16 +2311,16 @@ Found: @chk_a4@
 \begin_layout Description
 
 CTAN: 
-\family typewriter 
+\family typewriter
 macros/latex/contrib/ntgclass/
 \end_layout
 
 \begin_layout Description
 
 Notes: The package 
-\family sans 
+\family sans
 a4
-\family default 
+\family default
  changes the margins of your document to suit the European A4 page dimensions
  with smaller margins that the default A4 format.
 \end_layout
@@ -2313,16 +2338,16 @@ Found: @chk_a4wide@
 \begin_layout Description
 
 CTAN: 
-\family typewriter 
+\family typewriter
 macros/latex/contrib/misc/
 \end_layout
 
 \begin_layout Description
 
 Notes: The package 
-\family sans 
+\family sans
 a4wide
-\family default 
+\family default
  is another package that allows setting of the margins of your document
  to A4 paper.
  With this package, the margins are very wide, but do not follow typographical
@@ -2342,30 +2367,30 @@ Found: @chk_geometry@
 \begin_layout Description
 
 CTAN: 
-\family typewriter 
+\family typewriter
 macros/latex/contrib/geometry/
 \end_layout
 
 \begin_layout Description
 
 Notes: The package 
-\family sans 
+\family sans
 geometry
-\family default 
+\family default
  allows to change the paper size and margins of your document in an arbitrary
  way.
  It does not provide a typographically correct page layout like 
-\family sans 
+\family sans
 a4
-\family default 
+\family default
  or the standard options, though.
 \end_layout
 
 \begin_layout Section
 
 
-\series bold 
-\size large 
+\series bold
+\size large
 Other packages
 \end_layout
 
@@ -2382,33 +2407,33 @@ Found: @chk_algorithm@
 \begin_layout Description
 
 CTAN: 
-\family typewriter 
+\family typewriter
 macros/latex/contrib/algorithms/
 \end_layout
 
 \begin_layout Description
 
 Notes: The package 
-\family sans 
+\family sans
 algorithm
-\family default 
+\family default
  is needed by LyX to be able to output 
 \begin_inset Quotes eld
-\end_inset 
+\end_inset
 
 algorithm
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
  floats.
  These are useful in placing short algorithms across pagebreaks and support
  an 
 \begin_inset Quotes eld
-\end_inset 
+\end_inset
 
 index of algorithms
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
  too.
 \end_layout
@@ -2426,16 +2451,16 @@ Found: @chk_bibtopic@
 \begin_layout Description
 
 CTAN: 
-\family typewriter 
+\family typewriter
 macros/latex/contrib/bibtopic/
 \end_layout
 
 \begin_layout Description
 
 Notes: The package 
-\family sans 
+\family sans
 bibtopic
-\family default 
+\family default
  is used to split BibTeX created bibliographies into sections.
 \end_layout
 
@@ -2452,27 +2477,27 @@ Found: @chk_fancyhdr@
 \begin_layout Description
 
 CTAN: 
-\family typewriter 
+\family typewriter
 macros/latex/contrib/fancyhdr/
 \end_layout
 
 \begin_layout Description
 
 Notes: The package 
-\family sans 
+\family sans
 fancyhdr
-\family default 
+\family default
  (previously known as 
-\family sans 
+\family sans
 fancyheadings
-\family default 
+\family default
 ) is used when you select the 
 \begin_inset Quotes eld
-\end_inset 
+\end_inset
 
 fancy
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
  page style in the document layout popup.
  It provides alternate headers and footers to your pages.
@@ -2491,24 +2516,24 @@ Found: @chk_floatflt@
 \begin_layout Description
 
 CTAN: 
-\family typewriter 
+\family typewriter
 macros/latex/contrib/floatflt/
 \end_layout
 
 \begin_layout Description
 
 Notes: The package
-\family sans 
+\family sans
  floatflt 
-\family default 
+\family default
 (an extension of 
-\family sans 
+\family sans
 floatfig
-\family default 
+\family default
 ) is used by LyX if you select the ``floatflt'' type in 
-\family sans 
+\family sans
 Layout->Paragraph->ExtraOpt
-\family default 
+\family default
  in the paragraph of a figure float.
  It allows you to create a figure float which is narrower than the full
  page and wrap the text around it.
@@ -2527,29 +2552,29 @@ Found: @chk_jurabib@
 \begin_layout Description
 
 CTAN: 
-\family typewriter 
+\family typewriter
 macros/latex/contrib/jurabib/
 \end_layout
 
 \begin_layout Description
 
 Notes: The package 
-\family typewriter 
+\family typewriter
 jura
-\family sans 
+\family sans
 bib
-\family default 
+\family default
  
 \color none
 (
 \begin_inset LatexCommand \url{http://www.jurabib.org}
 
-\end_inset 
+\end_inset
 
 ) can be used as an alternative to 
-\family sans 
+\family sans
 natbib
-\family default 
+\family default
 , to get flexible bibliographic styles with LyX.
  It supports cite styles which are common in human sciences and law studies,
  footcites, ibidems, and more.
@@ -2569,25 +2594,25 @@ Found: @chk_natbib@
 \begin_layout Description
 
 CTAN: 
-\family typewriter 
+\family typewriter
 macros/latex/contrib/natbib/
 \end_layout
 
 \begin_layout Description
 
 Notes: The package 
-\family sans 
+\family sans
 natbib
-\family default 
+\family default
  is needed by LyX to produce a flexible interface to most of the available
  bibliographic styles
-\family typewriter 
+\family typewriter
  
-\family default 
+\family default
 (you can also use 
-\family sans 
+\family sans
 jurabib
-\family default 
+\family default
  instead).
 \end_layout
 
@@ -2604,7 +2629,7 @@ Found: @chk_prettyref@
 \begin_layout Description
 
 CTAN: 
-\family typewriter 
+\family typewriter
 macros/latex/contrib/prettyref
 \end_layout
 
@@ -2626,16 +2651,16 @@ Found: @chk_rotating@
 \begin_layout Description
 
 CTAN: 
-\family typewriter 
+\family typewriter
 macros/latex/contrib/rotating
 \end_layout
 
 \begin_layout Description
 
 Notes: The package 
-\family sans 
+\family sans
 rotating
-\family default 
+\family default
  is needed by LyX to change the orientation of some parts of your documents.
  Note that it only really works with a PostScript® compatible printer.
 \end_layout
@@ -2653,16 +2678,16 @@ Found: @chk_subfigure@
 \begin_layout Description
 
 CTAN: 
-\family typewriter 
+\family typewriter
 macros/latex/contrib/subfigure
 \end_layout
 
 \begin_layout Description
 
 Notes: The package
-\family sans 
+\family sans
  subfigure 
-\family default 
+\family default
 is used by LyX when you select ``subfigure'' in the EPS figure popup.
  Several figures marked in this way can be packed into a single float with
  individual subcaptions.
@@ -2681,16 +2706,16 @@ Found: @chk_setspace@
 \begin_layout Description
 
 CTAN: 
-\family typewriter 
+\family typewriter
 macros/latex/contrib/setspace/
 \end_layout
 
 \begin_layout Description
 
 Notes: The package 
-\family sans 
+\family sans
 setspace
-\family default 
+\family default
  is needed by LyX to change the line spacing of your document.
 \end_layout
 
@@ -2707,17 +2732,18 @@ Found: @chk_url@
 \begin_layout Description
 
 CTAN: 
-\family typewriter 
+\family typewriter
 macros/latex/contrib/misc/url.sty
 \end_layout
 
 \begin_layout Description
 
 Notes: The package 
-\family sans 
+\family sans
 url
-\family default 
+\family default
  is needed by LyX to be able to output url's corrently.
 \end_layout
 
+\end_body
 \end_document
