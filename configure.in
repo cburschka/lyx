@@ -323,6 +323,9 @@ AC_OUTPUT([Makefile \
        src/frontends/controllers/Makefile \
        src/frontends/xforms/Makefile \
        src/frontends/qt2/Makefile \
+       src/frontends/qt2/moc/Makefile \
+       src/frontends/qt2/ui/Makefile \
+       src/frontends/qt2/ui/moc/Makefile \
        src/frontends/gnome/Makefile \
 ])
 
