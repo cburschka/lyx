@@ -1,3 +1,9 @@
+2003-07-27  José Matos  <jamatos@fep.up.pt>
+
+	* buffer.[Ch] (makeLaTeXFile): changed name of arguments for
+	consistency in both functions.
+	* bufferlist.C (updateIncludedTeXfiles): change client to comply.
+
 2003-07-26  Asger Alstrup  <alstrup@local>
 
 	* rowpainter.C (paintRows): Change algorithm to work directly on

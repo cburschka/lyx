@@ -575,7 +575,7 @@ void PreviewLoader::Impl::dumpPreamble(ostream & os) const
 	runparams.nice = true;
 	runparams.moving_arg = true;
 	runparams.free_spacing = true;
-	tmp.makeLaTeXFile(os, buffer_.filePath(), runparams, false, true);
+	tmp.makeLaTeXFile(os, buffer_.filePath(), runparams, true, false);
 
 	// FIXME! This is a HACK! The proper fix is to control the 'true'
 	// passed to WriteStream below:

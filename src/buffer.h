@@ -141,14 +141,14 @@ public:
 	void makeLaTeXFile(string const & filename,
 			   string const & original_path,
 			   LatexRunParams const &,
-			   bool only_body = false,
-			   bool only_preamble = false);
+			   bool output_preamble = true,
+			   bool output_body = true);
 	///
 	void makeLaTeXFile(std::ostream & os,
 			   string const & original_path,
 			   LatexRunParams const &,
-			   bool only_body = false,
-			   bool only_preamble = false);
+			   bool output_preamble = true,
+			   bool output_body = true);
 	///
 	void simpleDocBookOnePar(std::ostream &,
 				 ParagraphList::iterator par, int & desc_on,

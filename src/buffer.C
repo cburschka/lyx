@@ -910,7 +910,7 @@ void Buffer::writeFileAscii(ostream & os, int linelen)
 void Buffer::makeLaTeXFile(string const & fname,
 			   string const & original_path,
 			   LatexRunParams const & runparams,
-			   bool only_body, bool only_preamble)
+			   bool output_preamble, bool output_body)
 {
 	lyxerr[Debug::LATEX] << "makeLaTeXFile..." << endl;
 
@@ -919,7 +919,7 @@ void Buffer::makeLaTeXFile(string const & fname,
 		return;
 
 	makeLaTeXFile(ofs, original_path,
-		      runparams, only_body, only_preamble);
+		      runparams, output_preamble, output_body);
 
 	ofs.close();
 	if (ofs.fail()) {
@@ -931,7 +931,7 @@ void Buffer::makeLaTeXFile(string const & fname,
 void Buffer::makeLaTeXFile(ostream & os,
 			   string const & original_path,
 			   LatexRunParams const & runparams_in,
-			   bool only_body, bool only_preamble)
+			   bool output_preamble, bool output_body)
 {
 	LatexRunParams runparams = runparams_in;
 	niceFile = runparams.nice; // this will be used by Insetincludes.
@@ -947,7 +947,7 @@ void Buffer::makeLaTeXFile(ostream & os,
 	// first paragraph of the document. (Asger)
 	texrow.start(paragraphs.begin()->id(), 0);
 
-	if (!only_body && runparams.nice) {
+	if (output_preamble && runparams.nice) {
 		os << "%% " << lyx_docversion << " created this file.  "
 			"For more info, see http://www.lyx.org/.\n"
 			"%% Do not edit unless you really know what "
@@ -963,7 +963,7 @@ void Buffer::makeLaTeXFile(ostream & os,
 	// input@path is set when the actual parameter
 	// original_path is set. This is done for usual tex-file, but not
 	// for nice-latex-file. (Matthias 250696)
-	if (!only_body) {
+	if (output_preamble) {
 		if (!runparams.nice) {
 			// code for usual, NOT nice-latex-file
 			os << "\\batchmode\n"; // changed
@@ -985,13 +985,13 @@ void Buffer::makeLaTeXFile(ostream & os,
 		// Write the preamble
 		runparams.use_babel = params.writeLaTeX(os, features, texrow);
 
-		if (only_preamble)
+		if (!output_body)
 			return;
 
 		// make the body.
 		os << "\\begin{document}\n";
 		texrow.newline();
-	} // only_body
+	} // output_preamble
 	lyxerr[Debug::INFO] << "preamble finished, now the body." << endl;
 
 	if (!lyxrc.language_auto_begin) {
@@ -1014,7 +1014,7 @@ void Buffer::makeLaTeXFile(ostream & os,
 		texrow.newline();
 	}
 
-	if (!only_body) {
+	if (output_preamble) {
 		os << "\\end{document}\n";
 		texrow.newline();
 

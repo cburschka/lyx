@@ -345,7 +345,7 @@ int InsetInclude::latex(Buffer const * buffer, ostream & os,
 		tmp->markDepClean(buffer->tmppath);
 
 		tmp->makeLaTeXFile(writefile, OnlyPath(getMasterFilename()),
-				   runparams, true);
+				   runparams, false);
 	}
 
 	if (isVerbatim()) {
