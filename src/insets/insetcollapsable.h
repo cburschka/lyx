@@ -38,7 +38,7 @@ public:
     ///
     ~InsetCollapsable() {}
     ///
-    Inset * InsetCollapsable::Clone();
+    Inset * Clone();
     ///
     int ascent(Painter &, LyXFont const &) const;
     ///
