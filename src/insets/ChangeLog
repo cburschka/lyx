@@ -1,5 +1,10 @@
 2003-03-28  John Levon  <levon@movementarian.org>
 
+	* insetgraphicsParams.C: read subcaptionText as a whole line
+	(bug 656)
+
+2003-03-28  John Levon  <levon@movementarian.org>
+
 	* insettext.C: remove unused prototypes
 
 2003-03-25  Angus Leeming  <leeming@lyx.org>
