@@ -1,5 +1,8 @@
 2002-02-22  Juergen Vigna  <jug@sad.it>
 
+	* BufferView_pimpl.C (workAreaButtonPress): call edit() before calling
+	insetButtonPress for HIGHLY_EDITABLE_INSETS seems saner (fix #250).
+
 	* text.C (leftMargin): don't add an indent for paragraphs inside
 	tabular cells (fix #208).
 

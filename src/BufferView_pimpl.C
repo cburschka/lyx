@@ -648,8 +648,10 @@ void BufferView::Pimpl::workAreaButtonPress(int xpos, int ypos,
 		selection_possible = false;
 		owner_->updateLayoutChoice();
 		owner_->message(inset->editMessage());
+		// IMO the inset has to be first in edit-mode and then we send the
+		// button press. (Jug 20020222)
+		inset->edit(bv_); //, xpos, ypos, button);
 		inset->insetButtonPress(bv_, xpos, ypos, button);
-		inset->edit(bv_, xpos, ypos, button);
 		return;
 	} 
 	
