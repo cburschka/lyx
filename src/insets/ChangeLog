@@ -1,3 +1,10 @@
+
+2002-07-04  André Pönitz <poenitz@gmx.net>
+
+	* insetcommandparams.[Ch]: new files
+
+	* insetcommand.[Ch]: move code to insetcommandparams.[Ch]
+
 2002-06-15  Herbert Voss  <voss@perce.de>
 
 	* insetgraphics.C (prepareFile): bugfix; return always

@@ -29,6 +29,8 @@ libinsets_la_SOURCES = \
 	insetcollapsable.h \
 	insetcommand.C \
 	insetcommand.h \
+	insetcommandparams.C \
+	insetcommandparams.h \
 	inseterror.C \
 	inseterror.h \
 	insetert.C \
