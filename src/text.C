@@ -31,6 +31,7 @@
 #include "lyxrc.h"
 #include "lyxrow.h"
 #include "lyxrow_funcs.h"
+#include "paragraph.h"
 #include "paragraph_funcs.h"
 #include "ParagraphParameters.h"
 #include "rowpainter.h"
@@ -1809,7 +1810,7 @@ void LyXText::changeCase(LyXText::TextCase action)
 			continue;
 		}
 		unsigned char c = pit->getChar(pos);
-		if (!IsInsetChar(c)) {
+		if (c != Paragraph::META_INSET) {
 			switch (action) {
 			case text_lowercase:
 				c = lowercase(c);

@@ -1,3 +1,18 @@
+2003-09-16  Angus Leeming  <leeming@lyx.org>
+
+	* paragraph.C (IsInsetChar): new function in namespace anon, moved out of
+	support/textutils.h.
+	(isWord): move the contents of support/textutils.h's IsWordChar here.
+
+	* buffer.C:
+	* lyxfind.C:
+	* rowpainter.C:
+	* text.C:
+	* text2.C: add #include "paragraph.h".
+
+	* rowpainter.C:
+	* text.C: replace IsInsetChar(c) with a direct test of Paragraph::META_INSET.
+
 2003-09-16  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* main.C: 

@@ -32,6 +32,7 @@
 #include "lyxrc.h"
 #include "lyxvc.h"
 #include "messages.h"
+#include "paragraph.h"
 #include "paragraph_funcs.h"
 #include "ParagraphParameters.h"
 #include "sgml.h"

@@ -15,8 +15,6 @@
 #ifndef TEXTUTILS_H
 #define TEXTUTILS_H
 
-#include "paragraph.h"
-
 /// return true if the char is a word separator
 inline
 bool IsSeparatorChar(char c)
@@ -30,14 +28,6 @@ inline
 bool IsLineSeparatorChar(char c)
 {
 	return (c == ' ');
-}
-
-
-/// return true if the char is a meta-character for an inset
-inline
-bool IsInsetChar(char c)
-{
-	return (c == Paragraph::META_INSET);
 }
 
 
@@ -95,16 +85,6 @@ inline
 bool IsPrintableNonspace(unsigned char c)
 {
 	return IsPrintable(c) && (c != ' ');
-}
-
-
-/// return true if the char forms part of a word
-inline
-bool IsWordChar(unsigned char c)
-{
-	return !(IsSeparatorChar(c)
-		  || IsKommaChar(c)
-		  || IsInsetChar(c));
 }
 
 

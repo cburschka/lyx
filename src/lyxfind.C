@@ -18,6 +18,7 @@
 #include "BufferView.h"
 #include "gettext.h"
 #include "lyxtext.h"
+#include "paragraph.h"
 
 #include "frontends/Alert.h"
 

@@ -1004,6 +1004,17 @@ bool Paragraph::simpleTeXOnePar(Buffer const & buf,
 }
 
 
+namespace {
+
+/// return true if the char is a meta-character for an inset
+inline
+bool IsInsetChar(char c)
+{
+	return (c == Paragraph::META_INSET);
+}
+
+} // namespace anon
+
 
 
 bool Paragraph::isHfill(pos_type pos) const
@@ -1063,7 +1074,10 @@ bool Paragraph::isLetter(pos_type pos) const
 
 bool Paragraph::isWord(pos_type pos) const
 {
-	return IsWordChar(getChar(pos)) ;
+	unsigned char const c = getChar(pos);
+	return !(IsSeparatorChar(c)
+		  || IsKommaChar(c)
+		  || IsInsetChar(c));
 }
 
 

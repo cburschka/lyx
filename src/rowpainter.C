@@ -24,6 +24,7 @@
 #include "lyxrow.h"
 #include "lyxrow_funcs.h"
 #include "metricsinfo.h"
+#include "paragraph.h"
 #include "paragraph_funcs.h"
 #include "ParagraphParameters.h"
 #include "vspace.h"
@@ -336,7 +337,7 @@ void RowPainter::paintFromPos(pos_type & vpos)
 
 	char const c = pit_->getChar(pos);
 
-	if (IsInsetChar(c)) {
+	if (c == Paragraph::META_INSET) {
 		paintInset(pos);
 		++vpos;
 		paintForeignMark(orig_x, orig_font);

@@ -39,6 +39,7 @@
 #include "lyxrow.h"
 #include "lyxrow_funcs.h"
 #include "metricsinfo.h"
+#include "paragraph.h"
 #include "paragraph_funcs.h"
 #include "ParagraphParameters.h"
 #include "undo_funcs.h"
