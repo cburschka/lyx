@@ -1,7 +1,12 @@
+2001-09-13  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* forms/form_graphics.fd: complete rewrite of the dialog
+	(Most work was done by Angus, though).
+
 2001-09-12  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* combox.C (hide): execute the callback _after_ closing the
-	combox. 
+	combox.
 
 2001-09-12  Angus Leeming  <a.leeming@ic.ac.uk>
 

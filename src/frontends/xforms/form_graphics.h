@@ -20,31 +20,18 @@ struct FD_form_graphics {
 	FL_OBJECT *input_filename;
 	FL_OBJECT *button_browse;
 	FL_OBJECT *input_width;
+	FL_OBJECT *choice_width_units;
 	FL_OBJECT *input_height;
-	FL_OBJECT *radio_button_group_width;
-	FL_OBJECT *radio_width_percent_page;
-	FL_OBJECT *radio_width_default;
-	FL_OBJECT *radio_width_cm;
-	FL_OBJECT *radio_width_inch;
-	FL_OBJECT *radio_width_percent_column;
-	FL_OBJECT *radio_button_group_height;
-	FL_OBJECT *radio_height_percent_page;
-	FL_OBJECT *radio_height_inch;
-	FL_OBJECT *radio_height_cm;
-	FL_OBJECT *radio_height_default;
-	FL_OBJECT *radio_button_group_display;
-	FL_OBJECT *radio_display_monochrome;
-	FL_OBJECT *radio_display_grayscale;
-	FL_OBJECT *radio_display_color;
-	FL_OBJECT *radio_no_display;
+	FL_OBJECT *choice_height_units;
+	FL_OBJECT *input_scale;
 	FL_OBJECT *input_rotate_angle;
-	FL_OBJECT *input_subcaption;
+	FL_OBJECT *check_display;
 	FL_OBJECT *check_subcaption;
+	FL_OBJECT *input_subcaption;
 	FL_OBJECT *button_restore;
 	FL_OBJECT *button_ok;
 	FL_OBJECT *button_apply;
 	FL_OBJECT *button_cancel;
-	FL_OBJECT *radio_height_scale;
 };
 
 #endif /* FD_form_graphics_h_ */

@@ -78,14 +78,6 @@ private:
 	/// Fdesign generated method
 	FD_form_graphics * build_graphics();
 
-	/// The radio buttons groups
-	RadioButtonGroup widthButtons;
-	///
-	RadioButtonGroup heightButtons;
-	///
-	RadioButtonGroup displayButtons;
-	/// Last used figure path
-	string last_image_path;
 };
 
 

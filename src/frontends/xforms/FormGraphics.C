@@ -30,14 +30,12 @@
 
 using std::endl;
 
+static double const tol = 1.0e-08;
+
 typedef FormCB<ControlGraphics, FormDB<FD_form_graphics> > base_class;
 
 FormGraphics::FormGraphics(ControlGraphics & c)
-	: base_class(c, _("Graphics")),
-	  // The buttons c-tor values are the number of buttons we use
-	  // This is only to reduce memory waste.
-	  widthButtons(5), heightButtons(4), displayButtons(4),
-	  last_image_path(".")
+	: base_class(c, _("Graphics"))
 {}
 
 
@@ -50,70 +48,35 @@ void FormGraphics::build()
 
 	// Set the input widgets to issue a callback to input() whenever
 	// they change, so we can verify their content.
-	fl_set_input_return (dialog_->input_width,
-	                      FL_RETURN_CHANGED);
-	fl_set_input_return (dialog_->input_height,
-	                      FL_RETURN_CHANGED);
-	fl_set_input_return (dialog_->input_filename,
-	                      FL_RETURN_CHANGED);
-	fl_set_input_return (dialog_->input_rotate_angle,
-	                      FL_RETURN_CHANGED);
-	fl_set_input_return (dialog_->input_subcaption,
-	                      FL_RETURN_CHANGED);
+	fl_set_input_return (dialog_->input_filename,     FL_RETURN_CHANGED);
+	fl_set_input_return (dialog_->input_scale,        FL_RETURN_CHANGED);
+	fl_set_input_return (dialog_->input_width,        FL_RETURN_CHANGED);
+	fl_set_input_return (dialog_->input_height,       FL_RETURN_CHANGED);
+	fl_set_input_return (dialog_->input_rotate_angle, FL_RETURN_CHANGED);
+	fl_set_input_return (dialog_->input_subcaption,   FL_RETURN_CHANGED);
 
 	// Set the maximum characters that can be written in the input texts.
-	fl_set_input_maxchars(dialog_->input_width, WIDTH_MAXDIGITS);
-	fl_set_input_maxchars(dialog_->input_height, HEIGHT_MAXDIGITS);
-	fl_set_input_maxchars(dialog_->input_filename, FILENAME_MAXCHARS);
+	fl_set_input_maxchars(dialog_->input_width,        WIDTH_MAXDIGITS);
+	fl_set_input_maxchars(dialog_->input_height,       HEIGHT_MAXDIGITS);
+	fl_set_input_maxchars(dialog_->input_filename,     FILENAME_MAXCHARS);
 	fl_set_input_maxchars(dialog_->input_rotate_angle, ROTATE_MAXCHARS);
 
 	// Set input filter on width and height to make them accept only
 	// unsigned numbers.
-	fl_set_input_filter(dialog_->input_width,
-	                    fl_unsigned_int_filter);
-	fl_set_input_filter(dialog_->input_height,
-	                    fl_unsigned_int_filter);
+	fl_set_input_filter(dialog_->input_scale,  fl_unsigned_float_filter);
+	fl_set_input_filter(dialog_->input_width,  fl_unsigned_float_filter);
+	fl_set_input_filter(dialog_->input_height, fl_unsigned_float_filter);
 
 	// Set input filter on rotate_angle to make it accept only
 	// floating point numbers.
 	fl_set_input_filter(dialog_->input_rotate_angle, fl_float_filter);
 
-	// Add the widgets of the width radio buttons to their group
-	widthButtons.reset();
-	widthButtons.registerRadioButton(dialog_->radio_width_default,
-	                                 InsetGraphicsParams::DEFAULT_SIZE);
-	widthButtons.registerRadioButton(dialog_->radio_width_cm,
-	                                 InsetGraphicsParams::CM);
-	widthButtons.registerRadioButton(dialog_->radio_width_inch,
-	                                 InsetGraphicsParams::INCH);
-	widthButtons.registerRadioButton(dialog_->radio_width_percent_page,
-	                                 InsetGraphicsParams::PERCENT_PAGE);
-	widthButtons.registerRadioButton(dialog_->radio_width_percent_column,
-	                                 InsetGraphicsParams::PERCENT_COLUMN);
+	// Create the contents of the choices
+	string const width = " cm | inch | page %% | column %% ";
+	fl_addto_choice(dialog_->choice_width_units, width.c_str());
 
-	// Add the widgets of the height radio buttons to their group
-	heightButtons.reset();
-	heightButtons.registerRadioButton(dialog_->radio_height_default,
-	                                  InsetGraphicsParams::DEFAULT_SIZE);
-	heightButtons.registerRadioButton(dialog_->radio_height_cm,
-	                                  InsetGraphicsParams::CM);
-	heightButtons.registerRadioButton(dialog_->radio_height_inch,
-	                                  InsetGraphicsParams::INCH);
-	heightButtons.registerRadioButton(dialog_->radio_height_percent_page,
-	                                  InsetGraphicsParams::PERCENT_PAGE);
-	heightButtons.registerRadioButton(dialog_->radio_height_scale,
-	                                  InsetGraphicsParams::SCALE);
-
-	// Add the widgets of the display radio buttons to their group
-	displayButtons.reset();
-	displayButtons.registerRadioButton(dialog_->radio_display_color,
-	                                   InsetGraphicsParams::COLOR);
-	displayButtons.registerRadioButton(dialog_->radio_display_grayscale,
-	                                   InsetGraphicsParams::GRAYSCALE);
-	displayButtons.registerRadioButton(dialog_->radio_display_monochrome,
-	                                   InsetGraphicsParams::MONOCHROME);
-	displayButtons.registerRadioButton(dialog_->radio_no_display,
-	                                   InsetGraphicsParams::NONE);
+	string const height = " cm | inch | page %% ";
+	fl_addto_choice(dialog_->choice_height_units, height.c_str());
 
         // Manage the ok, apply, restore and cancel/close buttons
 	bc().setOK(dialog_->button_ok);
@@ -123,11 +86,12 @@ void FormGraphics::build()
 
 	bc().addReadOnly(dialog_->input_filename);
 	bc().addReadOnly(dialog_->button_browse);
+	bc().addReadOnly(dialog_->check_display);
+	bc().addReadOnly(dialog_->input_scale);
 	bc().addReadOnly(dialog_->input_width);
+	bc().addReadOnly(dialog_->choice_width_units);
 	bc().addReadOnly(dialog_->input_height);
-	bc().addReadOnly(dialog_->radio_button_group_width);
-	bc().addReadOnly(dialog_->radio_button_group_height);
-	bc().addReadOnly(dialog_->radio_button_group_display);
+	bc().addReadOnly(dialog_->choice_height_units);
 	bc().addReadOnly(dialog_->input_rotate_angle);
 	bc().addReadOnly(dialog_->input_subcaption);
 	bc().addReadOnly(dialog_->check_subcaption);
@@ -141,24 +105,77 @@ void FormGraphics::apply()
 
 	igp.filename = fl_get_input(dialog_->input_filename);
 
-	igp.display = static_cast < InsetGraphicsParams::DisplayType >
-	              (displayButtons.getButton());
+	if (fl_get_button(dialog_->check_display)) {
+		igp.display = InsetGraphicsParams::COLOR;
+	} else {
+		igp.display = InsetGraphicsParams::NONE;
+	}
 
-	igp.widthResize = static_cast < InsetGraphicsParams::Resize >
-	                  (widthButtons.getButton());
-	igp.widthSize = strToDbl(fl_get_input(dialog_->input_width));
+	double const scale = strToDbl(fl_get_input(dialog_->input_scale));
+	if (scale < tol) {
+		double const width =
+			strToDbl(fl_get_input(dialog_->input_width));
 
-	igp.heightResize = static_cast < InsetGraphicsParams::Resize >
-	                   (heightButtons.getButton());
-	igp.heightSize = strToDbl(fl_get_input(dialog_->input_height));
-
+		if (width < tol) {
+			igp.widthResize = InsetGraphicsParams::DEFAULT_SIZE;
+			igp.widthSize   = 0.0;
+		} else {
+			switch (fl_get_choice(dialog_->choice_width_units)) {
+			case 2:
+				igp.widthResize = InsetGraphicsParams::INCH;
+				break;
+			case 3:
+				igp.widthResize =
+					InsetGraphicsParams::PERCENT_PAGE;
+				break;
+			case 4:
+				igp.widthResize =
+					InsetGraphicsParams::PERCENT_COLUMN;
+				break;
+			default:
+				igp.widthResize = InsetGraphicsParams::CM;
+				break;
+			}
+			igp.widthSize = width;
+		}
+		
+		double const height =
+			strToDbl(fl_get_input(dialog_->input_height));
+		
+		if (height < tol) {
+			igp.heightResize = InsetGraphicsParams::DEFAULT_SIZE;
+			igp.heightSize   = 0.0;
+		} else {
+			switch (fl_get_choice(dialog_->choice_height_units)) {
+			case 2:
+				igp.heightResize = InsetGraphicsParams::INCH;
+				break;
+			case 3:
+				igp.heightResize =
+					InsetGraphicsParams::PERCENT_PAGE;
+				break;
+			default:
+				igp.heightResize = InsetGraphicsParams::CM;
+				break;
+			}
+			igp.heightSize = height;
+		}
+		
+	} else {
+		igp.widthResize  = InsetGraphicsParams::DEFAULT_SIZE;
+		igp.widthSize    = 0.0;
+		igp.heightResize = InsetGraphicsParams::SCALE;
+		igp.heightSize   = scale;
+	}
+	
 	igp.rotateAngle = strToDbl(fl_get_input(dialog_->input_rotate_angle));
-	/* // Need to redo it for floats, but I'm lazy now - BE 20010725
-	if (igp.rotateAngle >= 360)
-		igp.rotateAngle = igp.rotateAngle % 360;
-	if (igp.rotateAngle <= -360)
-		igp.rotateAngle = - (( -igp.rotateAngle) % 360);
-	*/
+	while (igp.rotateAngle < 0.0 || igp.rotateAngle > 360.0) {
+		if (igp.rotateAngle < 0.0) {
+			igp.rotateAngle += 360.0;
+		} else if (igp.rotateAngle > 360.0) {
+			igp.rotateAngle -= 360.0;
+		}
+	}
 
 	igp.subcaption = fl_get_button(dialog_->check_subcaption);
 	igp.subcaptionText = fl_get_input(dialog_->input_subcaption);
@@ -176,19 +193,66 @@ void FormGraphics::update()
 	fl_set_input(dialog_->input_filename,
 	             igp.filename.c_str());
 
-	// Update the display depth radio buttons
-	displayButtons.setButton(igp.display);
+	// To display or not to display
+	if (igp.display == InsetGraphicsParams::NONE) {
+		fl_set_button(dialog_->check_display, 0);
+	} else {
+		fl_set_button(dialog_->check_display, 1);
+	}
 
-	// Update the width radio buttons and input field
-	widthButtons.setButton(igp.widthResize);
-	fl_set_input(dialog_->input_width,
-	             tostr(igp.widthSize).c_str());
+	if (igp.heightResize == InsetGraphicsParams::SCALE) {
+		string number = tostr(igp.heightSize);
+		fl_set_input(dialog_->input_scale, number.c_str());
+		fl_set_input(dialog_->input_width, "");
+		fl_set_choice(dialog_->choice_width_units, 1);
+		fl_set_input(dialog_->input_height, "");
+		fl_set_choice(dialog_->choice_height_units, 1);
 
-	// Update the height radio buttons and input field
-	heightButtons.setButton(igp.heightResize);
-	fl_set_input(dialog_->input_height,
-	             tostr(igp.heightSize).c_str());
+	} else {
+		fl_set_input(dialog_->input_scale, "");
 
+		string number;
+		if (igp.widthResize != InsetGraphicsParams::DEFAULT_SIZE) {
+			number = tostr(igp.widthSize);
+		}
+		fl_set_input(dialog_->input_width, number.c_str());
+
+		int pos = 1;
+		switch (igp.widthResize) {
+		case InsetGraphicsParams::INCH:
+			pos = 2; break;
+
+		case InsetGraphicsParams::PERCENT_PAGE:
+			pos = 3; break;
+
+		case InsetGraphicsParams::PERCENT_COLUMN:
+			pos = 4; break;
+
+		default:
+			break;
+		}
+		fl_set_choice(dialog_->choice_width_units, pos);
+
+		number.erase();
+		if (igp.heightResize != InsetGraphicsParams::DEFAULT_SIZE) {
+			number = tostr(igp.heightSize);
+		}
+		fl_set_input(dialog_->input_height, number.c_str());
+
+		pos = 1;
+		switch (igp.heightResize) {
+		case InsetGraphicsParams::INCH:
+			pos = 2; break;
+
+		case InsetGraphicsParams::PERCENT_PAGE:
+			pos = 3; break;
+
+		default:
+			break;
+		}
+		fl_set_choice(dialog_->choice_width_units, pos);
+	}
+		
 	// Update the rotate angle
 	fl_set_input(dialog_->input_rotate_angle,
 	             tostr(igp.rotateAngle).c_str());
@@ -197,46 +261,48 @@ void FormGraphics::update()
 	fl_set_button(dialog_->check_subcaption,
 	              igp.subcaption);
 	fl_set_input(dialog_->input_subcaption,
-	             igp.subcaptionText.c_str());
+        	     igp.subcaptionText.c_str());
 
 	// Now make sure that the buttons are set correctly.
 	input(0, 0);
 }
 
 
-ButtonPolicy::SMInput FormGraphics::input(FL_OBJECT *, long data)
+ButtonPolicy::SMInput FormGraphics::input(FL_OBJECT * ob, long)
 {
-	State cb = static_cast<State>( data );
-
-	ButtonPolicy::SMInput activate = ButtonPolicy::SMI_NOOP;
-
-	switch (cb) {
-	case CHECKINPUT:
-		activate = checkInput();
-		break;
-	case BROWSE:
-	{
+	if (ob == dialog_->button_browse) {
 		// Get the filename from the dialog
 		string const in_name = fl_get_input(dialog_->input_filename);
 		string const out_name = controller().Browse(in_name);
 
 		if (out_name != in_name && !out_name.empty()) {
 			fl_set_input(dialog_->input_filename, out_name.c_str());
-			activate = input(0, CHECKINPUT);
 		}
-		break;
 	}
 
-	case ADVANCEDINPUT:
-		lyxerr << "Advanced Options button depressed, "
-		       << "show advanced options dialog"
-		       << endl;
-		break;
-	default:
-		break;
+	if (ob == dialog_->input_scale) {
+		double const scale =
+			strToDbl(fl_get_input(dialog_->input_scale));
+		if (scale > tol) {
+			fl_set_input(dialog_->input_width, "");
+			fl_set_choice(dialog_->choice_width_units, 1);
+			fl_set_input(dialog_->input_height, "");
+			fl_set_choice(dialog_->choice_height_units, 1);
+		}
 	}
-	
-	return activate;
+
+	if (ob == dialog_->input_width || ob == dialog_->input_height) {
+		double const width =
+			strToDbl(fl_get_input(dialog_->input_width));
+		double const height =
+			strToDbl(fl_get_input(dialog_->input_height));
+
+		if (width > tol || height > tol) {
+			fl_set_input(dialog_->input_scale, "");
+		}
+	}
+
+	return checkInput();
 }
 
 
@@ -248,15 +314,6 @@ ButtonPolicy::SMInput FormGraphics::checkInput()
 
 	ButtonPolicy::SMInput activate = ButtonPolicy::SMI_VALID;
 
-	// Things that we check (meaning they are incorrect states):
-	// 1. No filename specified.
-	// 2. Width radio button is not Default and width text is not a number.
-	// 3. Height radio button is not Default and height text is a not a number
-
-	// Note: radio button default means that the user asks for the image
-	// to be included as is with no size change, in this case we don't need
-	// any width or height.
-
 	// We verify now that there is a filename, it exists, it's a file
 	// and it's readable.
 	string filename = fl_get_input(dialog_->input_filename);
@@ -267,21 +324,7 @@ ButtonPolicy::SMInput FormGraphics::checkInput()
 	        || !file.isRegular()
 	        || !file.readable()
 	   )
-		activate = ButtonPolicy::SMI_NOOP;
-
-	// Width radio button not default and no number.
-	if (!fl_get_button(dialog_->radio_width_default)
-	        && strToDbl(fl_get_input(dialog_->input_width)) <= 0.0) {
-
-		activate = ButtonPolicy::SMI_NOOP;
-	}
-
-	// Height radio button not default and no number.
-	if (!fl_get_button(dialog_->radio_height_default)
-	        && strToDbl(fl_get_input(dialog_->input_height)) <= 0.0) {
-
-		activate = ButtonPolicy::SMI_NOOP;
-	}
+		activate = ButtonPolicy::SMI_INVALID;
 
 	return activate;
 }
