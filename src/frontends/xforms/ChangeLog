@@ -1,3 +1,8 @@
+2001-02-21  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* FormDocument.C (checkMarginValues): Activate "use geometry" button 
+	if using custom paper size/margin.
+
 2001-02-21  Allan Rae  <rae@lyx.org>
 
 	* forms/form_preferences.fd: larger, bold font for outer tabfolder
