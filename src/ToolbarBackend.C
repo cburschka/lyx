@@ -134,8 +134,11 @@ string const ToolbarBackend::getIcon(int action)
 	string fullname;
 	FuncRequest f = lyxaction.retrieveActionArg(action);
 
-	if (f.action == LFUN_INSERT_MATH && !f.argument.empty()) {
-		fullname = find_xpm(f.argument.substr(1));
+	if (f.action == LFUN_INSERT_MATH) {
+		if (!f.argument.empty())
+			fullname = find_xpm(f.argument.substr(1));
+	} else if (f.action == LFUN_MATH_DELIM) {
+		fullname = find_xpm(f.argument);
 	} else {
 		string const name = lyxaction.getActionName(f.action);
 		string xpm_name(name);
