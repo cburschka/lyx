@@ -1,3 +1,14 @@
+2000-07-26  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/frontends/gtk/.cvsignore: add MAKEFILE
+
+	* src/MenuBackend.C (read): run the label strings through gettext
+	before storing them in the containers.
+
+	* src/ext_l10n.h: new file 
+
+	* autogen.sh : generate the ext_l10n.h file here
+
 2000-07-25  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/lyxrc.C (read): do not use LyXLex::lex() to parse set_color
