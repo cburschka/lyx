@@ -182,7 +182,7 @@ public:
 	row_type gridRow() const;
 
 	/// make sure cursor position is valid
-	void normalize() const;
+	void normalize();
 	///
 	UpdatableInset * asHyperActiveInset() const;
 

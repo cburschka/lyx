@@ -25,18 +25,14 @@
 #endif
 
 
-/** The restrictions of a standard LaTeX math paragraph
-  allows to get a small number of text codes (<30) */
+///
 enum MathTextCodes  {
-	/// This must be >= 0
+	/// 
 	LM_TC_MIN = 0,
-	/// Math Inset
-	LM_TC_INSET,
-
-	///
-	LM_FONT_BEGIN,
-	/// Internal code for variables
+	/// internal code for variables
 	LM_TC_VAR,
+	/// internal code for stuff in wrapped in mbox etc
+	LM_TC_BOX,
 	///
 	LM_TC_CONST,
 	///
@@ -57,13 +53,13 @@ enum MathTextCodes  {
 	LM_TC_IT,
 	///
 	LM_TC_TEXTRM,
-	/// Math mode TeX characters ",;:{}"  
+	/// math mode TeX characters ",;:{}"  
 	LM_TC_TEX,
-	/// Internal code when typing greek
+	/// internal code when typing greek
 	LM_TC_GREEK,
-	/// Internal code when typing a single greek character
+	/// internal code when typing a single greek character
 	LM_TC_GREEK1,
-	/// Internal code for symbols
+	/// internal code for symbols
 	LM_TC_SYMB,
 	/// internal code for symbols that get bigger in displayed math
 	LM_TC_BOLDSYMB,
@@ -81,9 +77,6 @@ enum MathTextCodes  {
 	LM_TC_MSB,
 	///
 	LM_FONT_END,
-	
-	/// This must be < 32 
-	LM_TC_MAX
 };
 
 

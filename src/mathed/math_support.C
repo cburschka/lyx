@@ -153,6 +153,7 @@ LyXFont const & whichFontBaseIntern(MathTextCodes type)
 	case LM_TC_TT:
 		return MathFonts[FONT_TT];
 
+	case LM_TC_BOX:
 	case LM_TC_TEXTRM:
 	case LM_TC_CONST:
 	case LM_TC_TEX:
@@ -253,7 +254,7 @@ LyXFont whichFont(MathTextCodes type, MathMetricsInfo const & size)
 		break;
 	}
 
-	if (type != LM_TC_TEXTRM)
+	if (type != LM_TC_TEXTRM && type != LM_TC_BOX)
 		f.setColor(LColor::math);
 
 	if (type == LM_TC_TEX)

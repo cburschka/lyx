@@ -6,44 +6,20 @@
 
 #include "math_boxinset.h"
 #include "support/LOstream.h"
-#include "LColor.h"
 #include "debug.h"
 #include "Painter.h"
 #include "math_cursor.h"
-#include "insets/insettext.h"
 #include "math_mathmlstream.h"
 #include "math_streamstr.h"
 
 MathBoxInset::MathBoxInset(string const & name)
-	: MathDimInset(), name_(name), text_(new InsetText), buffer_(0)
+	: MathGridInset(1, 1), name_(name)
 {}
-
-
-MathBoxInset::MathBoxInset(MathBoxInset const & m)
-	:	MathDimInset(*this), name_(m.name_), text_(0), buffer_(m.buffer_)
-{
-	if (!m.buffer_)
-		lyxerr << "no buffer\n";
-	else
-		text_ = static_cast<InsetText *>(m.text_->clone(*m.buffer_, false));
-}
-
-
-MathBoxInset::~MathBoxInset()
-{
-	delete text_;
-}
 
 
 MathInset * MathBoxInset::clone() const
 {
 	return new MathBoxInset(*this);
-}
-
-
-UpdatableInset * MathBoxInset::asHyperActiveInset() const
-{
-	return text_;
 }
 
 
@@ -55,40 +31,23 @@ void MathBoxInset::write(WriteStream & os) const
 
 void MathBoxInset::normalize(NormalStream & os) const
 {
-	os << "[mbox ";
+	os << '[' << name_ << ' ';
 	//text_->write(buffer(), os);
 	os << "] ";
 }
 
 
-void MathBoxInset::metrics(MathMetricsInfo const & st) const
+void MathBoxInset::rebreak()
 {
-	mi_ = st;
-	if (text_ && mi_.view) {
-		ascent_  = text_->ascent(mi_.view, mi_.font)  + 2;
-		descent_ = text_->descent(mi_.view, mi_.font) + 2;
-		width_   = text_->width(mi_.view, mi_.font)   + 4;
-	} else {
-		ascent_  = 10;
-		descent_ = 0;
-		width_   = 10;
-	}
+	//lyxerr << "trying to rebreak...\n";
 }
 
 
 void MathBoxInset::draw(Painter & pain, int x, int y) const
 {
-	float fx = x + 2;
-	if (text_ && mi_.view)
-		text_->draw(mi_.view, mi_.font, y, fx, false);
-	if (mathcursor && mathcursor->isInside(this))
-		pain.rectangle(x, y - ascent(), xcell(0).width(), height(),
+	MathGridInset::draw(pain, x, y);
+	if (mathcursor && mathcursor->isInside(this)) {
+		pain.rectangle(x - 1, y - ascent() - 1, width(), height(),
 			LColor::mathframe);
-}
-
-
-void MathBoxInset::edit(BufferView * bv, int x, int y, unsigned int button)
-{
-	if (text_)
-		text_->edit(bv, x, y, button);
+	}
 }

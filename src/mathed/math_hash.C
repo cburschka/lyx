@@ -90,6 +90,7 @@ key_type wordlist_array[] =
 	{"limsup",  LM_TK_FUNCLIM, 0},
 	{"ln",  LM_TK_FUNC, 0},
 	{"log",  LM_TK_FUNC, 0},
+	{"lyxbox",  LM_TK_BOX, 0},
 	{"mathbb",  LM_TK_FONT, LM_TC_BB},
 	{"mathbf",  LM_TK_FONT, LM_TC_BF},
 	{"mathcal",  LM_TK_FONT, LM_TC_CAL},

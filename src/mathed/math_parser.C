@@ -137,6 +137,7 @@ enum {
 	FLAG_RIGHT      = 1 << 2,  //  next \\right ends the parsing process
 	FLAG_END        = 1 << 3,  //  next \\end ends the parsing process
 	FLAG_BRACK_END  = 1 << 4,  //  next closing bracket ends the parsing process
+	FLAG_BOX        = 1 << 5,  //  we are in a box
 	FLAG_ITEM       = 1 << 7,  //  read a (possibly braced token)
 	FLAG_BLOCK      = 1 << 8,  //  next block ends the parsing process
 	FLAG_LEAVE      = 1 << 9   //  leave the loop at the end
@@ -148,13 +149,6 @@ void catInit()
 	fill(theCatcode, theCatcode + 256, catOther);
 	fill(theCatcode + 'a', theCatcode + 'z' + 1, catLetter);
 	fill(theCatcode + 'A', theCatcode + 'Z' + 1, catLetter);
-	
-//	for (int i = 0; i <= 255; ++i) 
-//		theCatcode[i] = catOther;
-//	for (int i = 'a'; i <= 'z'; ++i) 
-//		theCatcode[i] = catLetter;
-//	for (int i = 'A'; i <= 'Z'; ++i) 
-//		theCatcode[i] = catLetter;
 
 	theCatcode['\\'] = catEscape;	
 	theCatcode['{']  = catBegin;	
@@ -767,8 +761,16 @@ void Parser::parse_into(MathArray & array, unsigned flags, MathTextCodes code)
 		//
 		// cat codes
 		//
-		if (t.cat() == catMath)
-			break;
+		if (t.cat() == catMath) {
+			if (flags & FLAG_BOX) {
+				// we are inside an mbox, so opening new math is allowed
+				array.push_back(MathAtom(new MathHullInset(LM_OT_SIMPLE)));
+				parse_into(array.back()->cell(0), 0);
+			} else {
+				// otherwise this is the end of the formula
+				break;
+			}
+		}
 
 		else if (t.cat() == catLetter)
 			add(array, t.character(), code);
@@ -990,6 +992,12 @@ void Parser::parse_into(MathArray & array, unsigned flags, MathTextCodes code)
 
 				else if (l->token == LM_TK_OLDFONT) {
 					code = static_cast<MathTextCodes>(l->id);
+				}
+
+				else if (l->token == LM_TK_BOX) {
+					MathAtom p = createMathInset(t.cs());
+					parse_into(p->cell(0), FLAG_ITEM | FLAG_BOX, LM_TC_BOX);
+					array.push_back(p);
 				}
 
 				else {

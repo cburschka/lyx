@@ -21,10 +21,16 @@
 #pragma implementation
 #endif
 
+#include "support/lstrings.h"
+#include "support/LAssert.h"
+#include "debug.h"
+#include "LColor.h"
+#include "Painter.h"
 #include "math_cursor.h"
 #include "formulabase.h"
 #include "math_arrayinset.h"
 #include "math_braceinset.h"
+#include "math_boxinset.h"
 #include "math_casesinset.h"
 #include "math_charinset.h"
 #include "math_deliminset.h"
@@ -38,13 +44,6 @@
 #include "math_spaceinset.h"
 #include "math_specialcharinset.h"
 #include "math_support.h"
-
-#include "debug.h"
-#include "LColor.h"
-#include "Painter.h"
-
-#include "support/lstrings.h"
-#include "support/LAssert.h"
 
 #include <algorithm>
 #include <cctype>
@@ -891,30 +890,34 @@ void MathCursor::pullArg(bool goright)
 }
 
 
-void MathCursor::normalize() const
+void MathCursor::normalize()
 {
-#ifdef WITH_WARNINGS
-#warning This is evil!
-#endif
-	MathCursor * it = const_cast<MathCursor *>(this);
+	// rebreak
+	{
+		MathIterator it = ibegin(formula()->par().nucleus());
+		MathIterator et = iend(formula()->par().nucleus());
+		for ( ; it != et; ++it) 
+			if (it.par()->asBoxInset())
+				it.par()->asBoxInset()->rebreak();
+	}
 
  	if (idx() >= par()->nargs()) {
 		lyxerr << "this should not really happen - 1: "
 		       << idx() << " " << par()->nargs() << "\n";
 		dump("error 2");
 	}
- 	it->idx() = min(idx(), par()->nargs() - 1);
+ 	idx() = min(idx(), par()->nargs() - 1);
 
 	if (pos() > size()) {
 		lyxerr << "this should not really happen - 2: "
-			<< pos() << " " << size() <<  " in idx: " << it->idx()
+			<< pos() << " " << size() <<  " in idx: " << idx()
 			<< " in atom: '";
 		WriteStream wi(lyxerr, false);
-		it->par()->write(wi);
+		par()->write(wi);
 		lyxerr << "\n";
 		dump("error 4");
 	}
-	it->pos() = min(pos(), size());
+	pos() = min(pos(), size());
 }
 
 
@@ -1339,7 +1342,7 @@ bool MathCursor::interpret(char c)
 		// fall through in the other cases
 	}
 
-	if (lastcode_ == LM_TC_TEXTRM) {
+	if (lastcode_ == LM_TC_TEXTRM || par()->asBoxInset()) {
 		// suppress direct insertion of two spaces in a row
 		// the still allows typing  '<space>a<space>' and deleting the 'a', but
 		// it is better than nothing...
@@ -1354,7 +1357,7 @@ bool MathCursor::interpret(char c)
 			prevAtom()->asSpaceInset()->incSpace();
 			return true;
 		}
-		if (mathcursor->popRight())
+		if (popRight())
 			return true;
 		// if are at the very end, leave the formula
 		return pos() != size();

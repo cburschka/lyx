@@ -36,12 +36,13 @@
 #include "LyXView.h"
 #include "Painter.h"
 #include "font.h"
-#include "math_cursor.h"
 #include "math_arrayinset.h"
-#include "math_spaceinset.h"
-#include "math_macrotable.h"
+#include "math_cursor.h"
 #include "math_factory.h"
+#include "math_hullinset.h"
+#include "math_macrotable.h"
 #include "math_parser.h"
+#include "math_spaceinset.h"
 #include "undo_funcs.h"
 
 using std::endl;
@@ -523,7 +524,9 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 		break;
 
 	case LFUN_MATH_MODE:
-		handleFont(bv, LM_TC_TEXTRM);
+		//handleFont(bv, LM_TC_TEXTRM);
+		mathcursor->niceInsert(MathAtom(new MathHullInset(LM_OT_SIMPLE)));
+		updateLocal(bv, true);
 		//bv->owner()->message(_("math text mode toggled"));
 		break;
 

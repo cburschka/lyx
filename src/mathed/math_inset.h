@@ -177,6 +177,7 @@ public:
 	/// identifies certain types of insets
 	virtual MathArrayInset        * asArrayInset()        { return 0; }
 	virtual MathBoxInset          * asBoxInset()          { return 0; }
+	virtual MathBoxInset const    * asBoxInset() const    { return 0; }
 	virtual MathCharInset const   * asCharInset() const   { return 0; }
 	virtual MathDelimInset        * asDelimInset()        { return 0; }
 	virtual MathDelimInset const  * asDelimInset() const  { return 0; }
