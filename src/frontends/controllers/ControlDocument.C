@@ -162,8 +162,8 @@ void ControlDocument::saveAsDefault()
 	defaults.params = params();
 
 	// add an empty paragraph. Is this enough?
-	Paragraph * par = new Paragraph;
-	par->layout(params().getLyXTextClass().defaultLayout());
+	Paragraph par;
+	par.layout(params().getLyXTextClass().defaultLayout());
 	defaults.paragraphs.push_back(par);
 
 	defaults.writeFile(defaults.fileName());

@@ -463,7 +463,7 @@ bool Converters::formatIsUsed(string const & format)
 }
 
 
-bool Converters::scanLog(Buffer const * buffer, string const & command,
+bool Converters::scanLog(Buffer const * buffer, string const & /*command*/,
 			 string const & filename)
 {
 	if (!buffer)

@@ -139,7 +139,7 @@ InsetText::InsetText(BufferParams const & bp)
 	: UpdatableInset(), lt(0), in_update(false), do_resize(0),
 	  do_reinit(false)
 {
-	paragraphs.push_back(new Paragraph);
+	paragraphs.push_back(Paragraph());
 	paragraphs.begin()->layout(bp.getLyXTextClass().defaultLayout());
 	if (bp.tracking_changes)
 		paragraphs.begin()->trackChanges();
@@ -217,7 +217,7 @@ void InsetText::clear(bool just_mark_erased)
 	LyXLayout_ptr old_layout = paragraphs.begin()->layout();
 
 	paragraphs.clear();
-	paragraphs.push_back(new Paragraph);
+	paragraphs.push_back(Paragraph());
 	paragraphs.begin()->setInsetOwner(this);
 	paragraphs.begin()->layout(old_layout);
 
@@ -1945,13 +1945,34 @@ void InsetText::setParagraphData(ParagraphList const & plist, bool same_id)
 	// we have to unlock any locked inset otherwise we're in troubles
 	the_locking_inset = 0;
 
-	paragraphs.clear();
-	ParagraphList::iterator pit = plist.begin();
-	ParagraphList::iterator pend = plist.end();
-	for (; pit != pend; ++pit) {
-		Paragraph * new_par = new Paragraph(*pit, same_id);
-		new_par->setInsetOwner(this);
-		paragraphs.push_back(new_par);
+	#warning CHECK not adhering to same_id here might wreck havoc (Lgb)
+	// But it it makes no difference that is a lot better.
+	if (same_id) {
+		lyxerr << "Same_id called with 'true'" << endl;
+		lyxerr << "Please report this to the list." << endl;
+
+		paragraphs.clear();
+		ParagraphList::iterator it = plist.begin();
+		ParagraphList::iterator end = plist.end();
+		for (; it != end; ++it) {
+			int const id = it->id();
+			paragraphs.push_back(*it);
+			Paragraph & tmp = paragraphs.back();
+			tmp.setInsetOwner(this);
+			tmp.id(id);
+		}
+	} else {
+#warning FIXME.
+		// See if this can be simplified when std::list is in effect.
+		paragraphs.clear();
+
+		ParagraphList::iterator it = plist.begin();
+		ParagraphList::iterator end = plist.end();
+		for (; it != end; ++it) {
+			paragraphs.push_back(*it);
+			Paragraph & tmp = paragraphs.back();
+			tmp.setInsetOwner(this);
+		}
 	}
 
 	reinitLyXText();
@@ -2635,7 +2656,7 @@ void InsetText::appendParagraphs(Buffer * buffer, ParagraphList & plist)
 
 	ParagraphList::iterator pend = plist.end();
 	for (; pit != pend; ++pit) {
-		paragraphs.push_back(new Paragraph(*pit, false));
+		paragraphs.push_back(*pit);
 	}
 
 #endif

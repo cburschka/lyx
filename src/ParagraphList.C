@@ -96,7 +96,7 @@ ParagraphList::ParagraphList(ParagraphList const & pl)
 	ParagraphList::iterator it = pl.begin();
 	ParagraphList::iterator end = pl.end();
 	for (; it != end; ++it) {
-		push_back(new Paragraph(*it, false));
+		push_back(*it);
 	}
 }
 
@@ -145,7 +145,7 @@ void ParagraphList::assign(iterator beg, iterator end)
 {
 	clear();
 	for (; beg != end; ++beg) {
-		push_back(new Paragraph(*beg, false));
+		push_back(*beg);
 	}
 }
 
@@ -277,8 +277,10 @@ Paragraph & ParagraphList::back()
 }
 
 
-void ParagraphList::push_back(Paragraph * p)
+void ParagraphList::push_back(Paragraph const & pr)
 {
+	Paragraph * p = new Paragraph(pr, false);
+
 	if (!parlist) {
 		parlist = p;
 		return;

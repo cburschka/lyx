@@ -1,9 +1,17 @@
 2003-05-24  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
+	* paragraph.[Ch] (id): new function
+
+	* bufferlist.C (newFile): adjust
+
+	* ParagraphList.C (ParagraphList): adjust
+	(assign): adjust
+	(push_back): take a reference instead of a pointer.
+
 	* paragraph.h: add NO_STD_LIST define, remove NO_NEXT define.
 
 	* paragraph.C: remove all NO_NEXT node add some NO_STD_LIST parts
-	instead. 
+	instead.
 
 	* ParagraphList.h: degenerate to std::list if NO_STD_LIST is not
 	set else use old code.

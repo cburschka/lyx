@@ -1341,6 +1341,12 @@ int Paragraph::id() const
 }
 
 
+void Paragraph::id(int i)
+{
+	pimpl_->id_ = i;
+}
+
+
 LyXLayout_ptr const & Paragraph::layout() const
 {
 	Inset * inset = inInset();

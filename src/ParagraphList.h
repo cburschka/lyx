@@ -85,7 +85,7 @@ public:
 	///
 	iterator end() const;
 	///
-	void push_back(Paragraph *);
+	void push_back(Paragraph const &);
 	///
 	Paragraph const & front() const;
 	///

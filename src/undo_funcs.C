@@ -168,7 +168,7 @@ bool textHandleUndo(BufferView * bv, Undo & undo)
 			}
 		*/
 	}
-	
+
 	// Set the cursor for redoing
 	// if we have a par before the first.
 	if (before != null) {
@@ -295,7 +295,7 @@ bool createUndo(BufferView * bv, Undo::undo_kind kind,
 	// Create a new Undo.
 	std::vector<Paragraph *> undo_pars;
 
-	for (ParagraphList::iterator it = *first; it != *last; ++it) 
+	for (ParagraphList::iterator it = *first; it != *last; ++it)
 		undo_pars.push_back(new Paragraph(*it, true));
 	undo_pars.push_back(new Paragraph(**last, true));
 

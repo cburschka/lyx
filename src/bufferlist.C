@@ -362,7 +362,7 @@ Buffer * BufferList::readFile(string const & s, bool ronly)
 			if (fileInfoA.getModificationTime()
 			    > fileInfo2.getModificationTime()) {
 				string const file = MakeDisplayPath(s, 20);
-				string text = bformat(_("The backup of the document %1$s is newer.\n\n"	
+				string text = bformat(_("The backup of the document %1$s is newer.\n\n"
 					"Load the backup instead?"), file);
 				int const ret = Alert::prompt(_("Load backup?"),
 					text, 0, 1, _("&Load backup"), _("Load &original"));
@@ -442,11 +442,11 @@ Buffer * BufferList::newFile(string const & name, string tname, bool isNamed)
 				"could not be read."), file);
 			Alert::error(_("Could not read template"), text);
 			// no template, start with empty buffer
-			b->paragraphs.push_back(new Paragraph);
+			b->paragraphs.push_back(Paragraph());
 			b->paragraphs.begin()->layout(b->params.getLyXTextClass().defaultLayout());
 		}
 	} else {  // start with empty buffer
-		b->paragraphs.push_back(new Paragraph);
+		b->paragraphs.push_back(Paragraph());
 		b->paragraphs.begin()->layout(b->params.getLyXTextClass().defaultLayout());
 	}
 
