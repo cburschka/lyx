@@ -73,6 +73,7 @@ libgnome_la_SOURCES = \
 	Timeout_pimpl.h \
 	gnomeBC.C \
 	gnomeBC.h \
+	gnome_helpers.C \
 	gnome_helpers.h \
 	mainapp.C \
 	mainapp.h \

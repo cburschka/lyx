@@ -26,6 +26,7 @@
   <type>GTK_WINDOW_DIALOG</type>
   <position>GTK_WIN_POS_NONE</position>
   <modal>False</modal>
+  <default_width>330</default_width>
   <default_height>300</default_height>
   <allow_shrink>True</allow_shrink>
   <allow_grow>True</allow_grow>
@@ -121,8 +122,7 @@ Matthias</label>
 	  <name>credits_text</name>
 	  <can_focus>True</can_focus>
 	  <editable>False</editable>
-	  <text>
-</text>
+	  <text></text>
 	</widget>
       </widget>
     </widget>
