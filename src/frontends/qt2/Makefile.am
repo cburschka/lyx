@@ -41,6 +41,8 @@ libqt2_la_SOURCES = \
 	QLImage.h \
 	QLPainter.C \
 	QLPainter.h \
+	QLPopupMenu.C \
+	QLPopupMenu.h \
 	QLyXKeySym.C \
 	QLyXKeySym.h \
 	Qt2Base.C \

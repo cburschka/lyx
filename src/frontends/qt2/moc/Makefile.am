@@ -25,6 +25,7 @@ nodist_libqt2moc_la_SOURCES = \
 	QCommandBuffer_moc.C \
 	QCommandEdit_moc.C \
 	QContentPane_moc.C \
+	QLPopupMenu_moc.C \
 	Qt2Base_moc.C \
 	QtView_moc.C \
 	io_callback_moc.C \

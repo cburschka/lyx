@@ -23,35 +23,10 @@
 
 #include "LString.h"
 #include "frontends/Menubar.h"
-#include "commandtags.h"
 
 class LyXView;
 class QtView;
-class QMenuData;
-class QPopupMenu;
-class Menu;
-class MenuItem;
 class MenuBackend;
-
-/// stored state for menu items
-struct MenuItemInfo {
-	// I REALLY hate this stupid requirement of std::map
-	MenuItemInfo()
-		: parent_(0), id_(0), item_(0) {};
- 
-	MenuItemInfo(QMenuData * p, int id, MenuItem const * item)
-		: parent_(p), id_(id), item_(item) {};
- 
-	/// menu containing item
-	QMenuData * parent_;
- 
-	/// id in containing menu
-	int id_;
- 
-	/// LyX info for item
-	MenuItem const * item_;
-};
- 
 
 struct Menubar::Pimpl {
 public:
@@ -60,32 +35,20 @@ public:
 	/// opens a top-level submenu given its name
 	void openByName(string const &);
 
-	/// update the state of the menuitems
-	void update();
+	/// update the state of the menuitems - not needed
+	void update() {};
 
+	/// return the owning view
+	QtView * view() { return owner_; } 
+
+	/// return the menu controller
+	MenuBackend const & backend() { return menubackend_; }
 private:
-	/// create a menu
-	QPopupMenu * createMenu(QMenuData * parent, MenuItem const * item);
- 
-	/// populate a menu (recursively)
-	void fillMenu(QMenuData * qmenu, Menu const & menu);
- 
-	/// special handling updating a submenu label
-	void updateSubmenu(MenuItemInfo const & i);
- 
-	/// update an individual item, returns true if enabled
-	void updateItem(MenuItemInfo const & i);
-
 	/// owning view
 	QtView * owner_;
 
 	/// menu controller
 	MenuBackend const & menubackend_;
-
-	typedef std::map<string, MenuItemInfo> ItemMap;
-
-	/// menu items
-	ItemMap items_;
 };
  
 #endif // MENUBAR_PIMPL_H
