@@ -220,6 +220,8 @@ def set_paragraph_properties(lines, prop_dict):
 
     # remove final char properties
     n = len(lines)
+    changed_prop = []
+
     while n:
         n = n - 1
         if not lines[n]:
@@ -230,6 +232,7 @@ def set_paragraph_properties(lines, prop_dict):
             result = prop_exp.match(lines[n])
             prop = result.group(1)
             if prop in properties:
+                changed_prop.append(prop)
                 prop_dict[prop] = result.group(2)
                 del lines[n]
                 continue
@@ -239,6 +242,13 @@ def set_paragraph_properties(lines, prop_dict):
                 lines.append('')
                 lines.append('')
         break
+
+    for line in lines[end:]:
+        if line[:1] == '\\':
+            result = prop_exp.match(line)
+            prop = result.group(1)
+            if prop in properties and prop not in changed_prop:
+                prop_dict[prop] = result.group(2)
 
     if not lines[start:] and not lines[end:]:
         return []
