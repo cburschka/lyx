@@ -137,8 +137,6 @@ vector<BarPair> const getBarData()
 	bar[2] = pr;
 	pr.first = _("Noun");       pr.second = NOUN_TOGGLE;
 	bar[3] = pr;
-	pr.first = _("LaTeX mode"); pr.second = LATEX_TOGGLE;
-	bar[4] = pr;
 	pr.first = _("Reset");      pr.second = INHERIT;
 	bar[5] = pr;
 	

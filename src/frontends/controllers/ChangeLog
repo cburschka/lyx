@@ -1,3 +1,8 @@
+2001-08-15  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* character.[Ch]: remove LATEX_TOGGLE from the FONT_STATE enum as
+	LaTeX is no longer a font property.
+
 2001-08-09  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* GUI.h: Button controller for Reference dialog changed to
@@ -129,7 +134,7 @@
 	* ControlSpellchecker.C (getSuggestion): 
 	(getWord): add std:: qualifier
 
->001-07-13  Edwin Leuven  <leuven@fee.uva.nl>
+2001-07-13  Edwin Leuven  <leuven@fee.uva.nl>
 
 	* ControlSpellchecker.[Ch]: added
 	* ViewBase.h: added partialUpdate(int) member

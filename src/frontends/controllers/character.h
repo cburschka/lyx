@@ -35,8 +35,6 @@ namespace character {
 		///
 		NOUN_TOGGLE,
 		///
-		LATEX_TOGGLE,
-		///
 		INHERIT
 	};
 
