@@ -1,10 +1,7 @@
 -*- text -*-
 
-This file describes what has been done in the preparation of LyX 1.3.4
+This file describes what has been done in the preparation of LyX 1.3.5
 All comments are welcome.
-
-You can find a list of bugs pending for 1.3.4 at URL
-http://bugzilla.lyx.org/buglist.cgi?bug_status=NEW&bug_status=ASSIGNED&bug_status=REOPENED&&target_milestone=1.3.4
 
 I'd be glad if some of you could take the time to check it out (or fix
 a bug or two if you are feeling adventurous). Let me recall that all
@@ -22,98 +19,7 @@ What's new
 
 ** Updates
 
-- it is now possible to open documents which use a textclass for
-  which no LaTeX support is installed. The documents can be normally
-  edited, but they can of course be neither previewed nor printed. Note
-  that the format of the file .lyx/textclasses.lst has changed as a
-  consequence and it is therefore not possible to use LyX 1.3.4 and an
-  earlier version with the same .lyx/ directory.
-
-- add support for drag-n-drop opening of lyx files from your favourite
-  file manager [Qt only]
-
-- add support for intelligent scrolling with the mouse cursor [Qt only]
-
-- improvements in LyX/Mac: support for opening files with LyX in
-  finder; the LyX.app bundle can now be moved around and is
-  self-contained with its own fonts (for math equations), support
-  files, and PATH
-
-- add support for \boldsymbol in the math editor
-
-- add new keymap to type spanish text on a US keyboard
-
-- enable lyx to read documents from versions 0.10 and 0.12
-
-- improve support for LaTeX documentclasses: new agums (generic style
-  for first-time submissions to AGU editors) and g-brief2 (a nice
-  letter class) textclasses; allow optional arguments in Author,
-  AuthorAdress and Thanks styles for the elsart layout; add
-  Affiliation layout to jgrga textclass
-
-- improve documentation for some languages: basque (new Extended
-  Manual and User Guide; updated Intro and Tutorial), german
-  (updated User Guide) and norwegian (new Intro)
-
-- update basque, danish, finnish, french, german, italian, nynorsk,
-  romanian, spanish and slovenian interface localizations
-
-- remove localization for the following languages, since they were too
-  incomplete to be useful: bulgarian, catalan, czech, hebrew,
-  hungarian, portuguese, swedish, turkish, walloon
 
 
 ** Bug fixes
-
-- fix a security problem where an evil .lyx file could cause
-  arbitrary commands to be executed during processing
-
-- fix a crash when saving a file containing a table (only with some
-  compilers) [Bug #1415]
-
-- fix a crash in the math editor when selecting up/down close to
-  subscript insets
-
-- several fixes related to old files: silence a bogus warning about
-  encoding; fix conversion of tables (out of range error)
-
-- fix warnings for docbook counters
-
-- enable the file dialog to open files with non-latin filenames [Qt only]
-
-- allow the use of some paper sizes (A3, B3, B4, and custom) without
-  custom margins [Qt problem only]
-
-- fix a bug where changing the height unit in the graphics dialog did not
-  activate the ok/apply buttons [bug #1469, Qt only]
-
-- fix a bug where some menu entries did not show the corresponding
-  keyboard binding [bug #1350, Qt only]
-
-- fix the language of the russian table of contents of the documentation
-
-- remove non-ascii characters from translatable strings. This
-  simplifies the work of translators
-
-- output useful info on receipt of LFUN_GETLAYOUT.
-
-- add debug output if unable to open an ofstream to output the graphics
-  conversion script.
-
-- add debug output if unable to open preferences.xform for read/write.
-
-- add a couple of forgotten MacOSX-related files
-
-- a better fix for badly placed math symbols with LyX/Mac
-
-- fix installation when program "makepsres" is not available on the
-  path [bug #1479]
-
-- compilation fixes for MacOSX
-
-- fix (some) problems when compiling with a non-GNU make program
-
-- enable lyx to compile on Itanium machines
-
-- add autoconf 2.59 as a supported version
 
