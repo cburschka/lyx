@@ -64,6 +64,7 @@ extern int greek_kb_flag;
 
 using std::vector;
 using std::find_if;
+using std::find;
 using std::pair;
 using std::endl;
 using std::make_pair;

@@ -1,3 +1,7 @@
+2001-06-07  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* gettext.h: include LString.h even when --disable-nls is on. 
+
 2001-06-07  Juergen Vigna  <jug@sad.it>
 
 	* text.C (BreakAgain): subst spaces with tabs.

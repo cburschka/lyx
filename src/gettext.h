@@ -30,9 +30,9 @@
  *   Panic/fatal (that should not happen) messages need not be translated
  */
 
-#ifdef ENABLE_NLS
-
 #include "LString.h"
+
+#ifdef ENABLE_NLS
 
 ///
 char const * _(char const *);
