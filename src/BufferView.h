@@ -190,6 +190,8 @@ public:
 	void stuffClipboard(string const &) const;
 	///
 	bool dispatch(FuncRequest const & argument);
+	/// height of a normal line in pixels (zoom factor considered)
+	int defaultHeight() const;
 
 private:
 	///

@@ -22,6 +22,7 @@
 #include "insets/insettabular.h"
 #include "insets/insettext.h"
 #include "insets/insettoc.h"
+#include "insets/inseturl.h"
 #include "frontends/Dialogs.h"
 #include "frontends/LyXView.h"
 
@@ -114,6 +115,13 @@ Inset * createInset(FuncRequest const & cmd)
 		case LFUN_PARENTINSERT:
 			return new InsetParent(
 				InsetCommandParams("lyxparent", cmd.argument), *bv->buffer());
+
+		case LFUN_INSERT_URL:
+		{
+			InsetCommandParams p;
+			p.setFromString(cmd.argument);
+			return new InsetUrl(p);
+		}
 
 	#if 0
 		case LFUN_INSET_LIST:

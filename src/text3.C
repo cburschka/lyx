@@ -1552,6 +1552,7 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 	case LFUN_INSET_THEOREM:
 #endif
 	case LFUN_INSERT_NOTE:
+	case LFUN_INSERT_URL:
 	case LFUN_INSET_CAPTION:
 	case LFUN_INSET_ERT:
 	case LFUN_INSET_EXTERNAL:

@@ -16,7 +16,6 @@
 #include "lengthcommon.h"
 #include "buffer.h"
 #include "lyxrc.h"
-#include "lyxtext.h"
 #include "BufferView.h"
 #include "support/LAssert.h"
 
@@ -472,21 +471,22 @@ string const VSpace::asLatexCommand(BufferParams const & params) const
 int VSpace::inPixels(BufferView const * bv) const
 {
 	// Height of a normal line in pixels (zoom factor considered)
-	int const default_height = bv->text->defaultHeight(); // [pixels]
+	int const default_height = bv->defaultHeight(); // [pixels]
 
 	int retval = 0;
 
 	switch (kind_) {
+
 	case NONE:
-		// Value for this is already set
+		// value for this is already set
 		break;
+
 	case DEFSKIP:
 		retval = bv->buffer()->params.getDefSkip().inPixels(bv);
 		break;
 
-		// This is how the skips are normally defined by
-		// LateX.  But there should be some way to change
-		// this per document.
+	// This is how the skips are normally defined by LateX. 
+	// But there should be some way to change this per document.
 	case SMALLSKIP:
 		retval = default_height / 4;
 		break;
@@ -504,11 +504,9 @@ int VSpace::inPixels(BufferView const * bv) const
 		retval = 3 * default_height;
 		break;
 
-	case LENGTH: {
-		int const default_width  = bv->workWidth();
-		retval = len_.len().inPixels(default_width, default_height);
+	case LENGTH:
+		retval = len_.len().inPixels(bv->workWidth(), default_height);
 		break;
-	}
 
 	}
 	return retval;

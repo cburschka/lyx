@@ -113,9 +113,7 @@ bool TexRow::getIdFromRow(int row, int & id, int & pos) const
 
 void TexRow::increasePos(int id, int pos)
 {
-	RowList::iterator it = rowlist.begin();
-	RowList::iterator end = rowlist.end();
-	for_each(it, end, increase_pos(id, pos));
+	for_each(rowlist.begin(), rowlist.end(), increase_pos(id, pos));
 }
 
 

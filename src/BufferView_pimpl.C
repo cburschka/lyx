@@ -44,7 +44,6 @@
 
 #include "insets/insetbib.h"
 #include "insets/insettext.h"
-#include "insets/inseturl.h"
 #include "insets/insetlatexaccent.h"
 #include "insets/insettoc.h"
 #include "insets/insetindex.h"
@@ -364,13 +363,13 @@ void BufferView::Pimpl::scrollDocView(int value)
 {
 	lyxerr[Debug::GUI] << "scrollDocView of " << value << endl;
 
-	if (!buffer_) return;
+	if (!buffer_)
+		return;
 
 	screen().draw(bv_->text, bv_, value);
 
-	if (!lyxrc.cursor_follows_scrollbar) {
+	if (!lyxrc.cursor_follows_scrollbar)
 		return;
-	}
 
 	LyXText * vbt = bv_->text;
 
@@ -1080,20 +1079,6 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev)
 	}
 	break;
 
-	case LFUN_INSERT_URL:
-	{
-		InsetCommandParams p;
-		p.setFromString(ev.argument);
-
-		InsetUrl * inset = new InsetUrl(p);
-		if (!insertInset(inset))
-			delete inset;
-		else
-			updateInset(inset, true);
-	}
-	break;
-
-
 	// --- accented characters ---------------------------
 
 	case LFUN_UMLAUT:
@@ -1267,7 +1252,7 @@ bool BufferView::Pimpl::insertInset(Inset * inset, string const & lout)
 	// inset there otherwise this is a illegal function now
 	if (bv_->theLockingInset()) {
 		if (bv_->theLockingInset()->insetAllowed(inset))
-		    return bv_->theLockingInset()->insertInset(bv_, inset);
+			return bv_->theLockingInset()->insertInset(bv_, inset);
 		return false;
 	}
 

@@ -40,7 +40,6 @@ BUILT_SOURCES = version.C
 lyx_SOURCES = \
 	BufferView.C \
 	BufferView.h \
-	BufferView2.C \
 	BufferView_pimpl.C \
 	BufferView_pimpl.h \
 	Bullet.C \
