@@ -1026,33 +1026,31 @@ string const getExtFromContents(string const & filename) {
 			return "compress";
 		    // the graphics part
 		    else if (stamp == "BM")
-			return "bmp";
+			    return "bmp";
 		    else if (str.at(0) == 'P') {	// PBM family
-			switch (str.at(1)) {
+			    switch (str.at(1)) {
 			    case '1':
 			    case '4':
 				return "pbm";
-			    break;
+
 			    case '2':
 			    case '5':
 				return "pgm";
-			    break;
+
 			    case '3':
 			    case '6':
 				return "ppm";
-			    break;
-			    default: ;			// do nothing
 			}
 		    } 
 		    if (stamp == "\001\332")
-			return "sgi";
+			    return "sgi";
 		    else if ((stamp == "II") || (stamp == "MM"))
-			return "tiff";
+			    return "tiff";
 		    else if (str.substr(0,3) == "GIF")
-			return "gif";
-		    else if ((str.at(3) == 'i') && (str.at(0) == '\000') &&
-			     (str.at(1) == '\000') && (str.at(2) == '\000'))
-			return "xwd";
+			    return "gif";
+//		    else if ((str.at(3) == 'i') && (str.at(0) == '\000') &&
+//			     (str.at(1) == '\000') && (str.at(2) == '\000'))
+//			return "xwd";
 		    firstLine = false;
 		}
 		if (contains(str,"EPSF")) // dummy, if we have wrong file
