@@ -1,3 +1,34 @@
+2001-07-24  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* insetminipage.C (InsetMinipage): set background color to red :)
+
+2001-07-23  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* insettext.C (insetUnlock): only set update to CLEAR_FRAME if
+	draw frame mode is LOCKED.
+
+	* insetcollapsable.C (edit): 
+	(insetButtonRelease): set update status to full when
+	opening inset.
+
+	* insettext.C (clearInset): 
+	* insettabular.C (draw): 
+	* insetlatexaccent.C (draw): honor background color.
+
+	* inset.h: new member background_color_, initialized to
+	LColor::inherit.
+
+	* inset.C (backgroundColor): new method.
+	(setBackgroundColor): new method.
+
+	* insetert.C (init): new method, called by the ctors.
+	(InsetERT): when inserting contents, make sure the font is
+	ALL_INHERIT.
+
+	* insetnote.C (InsetNote): when inserting content, remove trailing
+	newline
+	(init): set background color to LColor::note
+
 2001-07-24  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* insetcollapsable.C: adjust

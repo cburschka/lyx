@@ -259,7 +259,7 @@ void InsetTabular::draw(BufferView * bv, LyXFont const & font, int baseline,
 			h = pain.paperHeight();
 		if ((top_x + w) > pain.paperWidth())
 			w = pain.paperWidth();
-		pain.fillRectangle(tx, ty, w, h);
+		pain.fillRectangle(tx, ty, w, h, backgroundColor());
 		need_update = FULL;
 		cleared = true;
 	}
@@ -366,7 +366,8 @@ void InsetTabular::draw(BufferView * bv, LyXFont const & font, int baseline,
 				baseline - tabular->GetAscentOfRow(i) + 1,
 				int(cx - nx - 1),
 				tabular->GetAscentOfRow(i) +
-				tabular->GetDescentOfRow(i) - 1);
+				tabular->GetDescentOfRow(i) - 1,
+				backgroundColor());
 			// clear behind the inset
 			pain.fillRectangle(
 				int(cx + the_locking_inset->width(bv,font) + 1),
@@ -376,7 +377,8 @@ void InsetTabular::draw(BufferView * bv, LyXFont const & font, int baseline,
 				the_locking_inset->width(bv,font) -
 				tabular->GetAdditionalWidth(cell) - 1,
 				tabular->GetAscentOfRow(i) +
-				tabular->GetDescentOfRow(i) - 1);
+				tabular->GetDescentOfRow(i) - 1,
+				backgroundColor());
 		}
 	}
 	x -= ADD_TO_TABULAR_WIDTH;

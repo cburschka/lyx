@@ -22,6 +22,7 @@
 #include "layout.h"
 #include "lyxrow.h"
 #include "vspace.h"
+#include "LColor.h"
 
 class Buffer;
 class BufferParams;
@@ -392,14 +393,6 @@ public:
 	void copyEnvironmentType();
 	///
 	void pasteEnvironmentType(BufferView *);
-	///
-	void insertFootnote();
-	///
-	void insertMarginpar();
-	///
-	void insertFigure();
-	///
-	void insertTabular();
 
 	/** the DTP switches for paragraphs. LyX will store the top settings
 	 always in the first physical paragraph, the bottom settings in the
@@ -606,6 +599,8 @@ private:
 	  */
 	bool hfillExpansion(Buffer const *, Row const * row_ptr,
 			    Paragraph::size_type pos) const;
+	/// 
+	LColor::color backgroundColor();
 
 
 	///

@@ -1,3 +1,16 @@
+2001-07-24  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* lyxtext.h: remove unused (and unimplemented) methods
+
+2001-07-23  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* text.C (getVisibleRow): honor background color
+
+	* PainterBase.h:
+	* Painter.h: remove default color argument for fillRectangle
+
+	* text.C (backgroundColor): new method
+
 2001-07-24  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* text.C (getVisibleRow): adjust

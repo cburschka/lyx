@@ -69,6 +69,8 @@ InsetMinipage::InsetMinipage()
 	font.setColor(LColor::collapsable);
 	setLabelFont(font);
 	setAutoCollapse(false);
+	// just for experimentation :)
+	setBackgroundColor(LColor::red);
 	setInsetName("Minipage");
 	width_ = "100%"; // set default to 100% of column_width
 }

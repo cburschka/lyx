@@ -90,6 +90,24 @@ LyXText * Inset::getLyXText(BufferView const * bv, bool const) const
 }
 
 
+void Inset::setBackgroundColor(LColor::color color)
+{
+	background_color_ = color;
+}
+
+
+LColor::color Inset::backgroundColor() const
+{
+	if (background_color_ == LColor::inherit) {
+		if (owner())
+			return owner()->backgroundColor();
+		else
+			return LColor::background;
+	} else
+		return background_color_;
+}
+
+
 int Inset::id() const
 {
 	return id_;

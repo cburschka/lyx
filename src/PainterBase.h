@@ -137,7 +137,7 @@ public:
 	/// Fill a rectangle
 	virtual PainterBase & fillRectangle(
 		int x, int y, int w, int h,
-		LColor::color = LColor::background) = 0;
+		LColor::color) = 0;
 	
 	/// A filled rectangle with the shape of a 3D button
 	virtual PainterBase & button(int x, int y, int w, int h);

@@ -289,8 +289,11 @@ private:
 	UpdatableInset::RESULT moveDown(BufferView *);
 	///
 	void setCharFont(Buffer const *, int pos, LyXFont const & font);
+#if 0
+	///What's that ??? Not used, not implemented!
 	///
 	string const getText(int);
+#endif
 	///
 	bool checkAndActivateInset(BufferView * bv, bool behind);
 	///

@@ -74,7 +74,7 @@ public:
 	
 	/// Fill a rectangle
 	PainterBase & fillRectangle(int x, int y, int w, int h,
-				    LColor::color = LColor::background);
+				    LColor::color);
 	
 	/// For the graphics inset.
 	PainterBase & image(int x, int y, int w, int h, LyXImage const * image);

@@ -472,7 +472,7 @@ void InsetText::clearFrame(Painter & pain, bool cleared) const
 		if (!cleared) {
 			pain.rectangle(top_x + 1, top_baseline - insetAscent + 1,
 			               insetWidth - 1, insetAscent + insetDescent - 1,
-			               LColor::background);
+			               backgroundColor());
 		}
 		frame_is_visible = false;
 	}
@@ -667,7 +667,11 @@ void InsetText::insetUnlock(BufferView * bv)
 	hideInsetCursor(bv);
 	no_selection = false;
 	locked = false;
-	int code = CURSOR|CLEAR_FRAME;
+	int code;
+	if (drawFrame_ == LOCKED)
+		code = CURSOR|CLEAR_FRAME;
+	else 
+		code = CURSOR;
 	bool clear = false;
 	if (!lt) {
 		lt = getLyXText(bv);
@@ -1941,7 +1945,8 @@ void InsetText::clearInset(Painter & pain, int baseline, bool & cleared) const
 		h = pain.paperHeight();
 	if ((top_x + drawTextXOffset + w) > pain.paperWidth())
 		w = pain.paperWidth();
-	pain.fillRectangle(top_x+drawTextXOffset, ty, w, h);
+	pain.fillRectangle(top_x+drawTextXOffset, ty, w, h, 
+			   backgroundColor());
 	cleared = true;
 	need_update = FULL;
 }

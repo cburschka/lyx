@@ -58,6 +58,9 @@ public:
 	virtual int linuxdoc(Buffer const *, std::ostream &) const;
 	///
 	virtual int docBook(Buffer const *, std::ostream &) const;
+private:
+	///
+	void init();
 };
 
 #endif

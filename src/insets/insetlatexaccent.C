@@ -409,7 +409,7 @@ void InsetLatexAccent::draw(BufferView * bv, LyXFont const & font0,
 			pain.fillRectangle(int(x + tmpx), tmpvar, wid,
 					   lyxfont::ascent('i', font) -
 					   lyxfont::ascent('x', font) - 1,
-					   LColor::background);
+					   backgroundColor());
 			// the five lines below is a simple hack to
 			// make the display of accent 'i' and 'j'
 			// better. It makes the accent be written
@@ -602,7 +602,8 @@ void InsetLatexAccent::draw(BufferView * bv, LyXFont const & font0,
 				   baseline - ascent(bv, font) + 1,
 				   width(bv, font) - 2,
 				   ascent(bv, font)
-				   + descent(bv, font) - 2);
+				   + descent(bv, font) - 2,
+				   backgroundColor());
 		pain.rectangle(int(x + 1), baseline - ascent(bv, font) + 1,
 			       width(bv, font) - 2,
 			       ascent(bv, font) + descent(bv, font) - 2);

@@ -19,6 +19,7 @@
 #include "LString.h"
 #include <X11/Xlib.h>
 #include "commandtags.h"
+#include "LColor.h"
 
 class LyXFont;
 class BufferView;
@@ -128,7 +129,7 @@ public:
 	};
 	
 	///
-	Inset() : top_x(0), top_baseline(0), scx(0), id_(inset_id++), owner_(0) {}
+	Inset() : top_x(0), top_baseline(0), scx(0), id_(inset_id++), owner_(0), background_color_(LColor::inherit) {}
 	/// Virtual base destructor
 	virtual ~Inset() {}
 	///
@@ -225,6 +226,10 @@ public:
 	///
 	Inset * owner() const { return owner_; }
 	///
+	void setBackgroundColor(LColor::color);
+	///
+	LColor::color backgroundColor() const;
+	///
 	int x() const { return top_x; }
 	///
 	int y() const { return top_baseline; }
@@ -288,6 +293,8 @@ private:
 	Inset * owner_;
 	///
 	string name;
+	///
+	LColor::color background_color_;
 };
 
 

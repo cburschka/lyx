@@ -1159,6 +1159,14 @@ bool LyXText::hfillExpansion(Buffer const * buf, Row const * row_ptr,
 }
 
 
+LColor::color LyXText::backgroundColor()
+{
+	if (inset_owner)
+		return inset_owner->backgroundColor();
+	else
+		return LColor::background;
+}
+
 void LyXText::setHeightOfRow(BufferView * bview, Row * row_ptr) const
 {
     /* get the maximum ascent and the maximum descent */
@@ -2938,25 +2946,29 @@ void LyXText::getVisibleRow(BufferView * bview, int y_offset, int x_offset,
 		int const w = inset_owner ?
 			inset_owner->width(bview, font) - 2 : ww;
 		int const x = x_offset;
-		pain.fillRectangle(x, y, w, h);
+		pain.fillRectangle(x, y, w, h, backgroundColor());
 	} else if (inset != 0) {
 		int h = row_ptr->baseline() - inset->ascent(bview, font);
 		if (h > 0) {
 			int const w = (inset_owner ?
 				 inset_owner->width(bview, font) : ww);
-			pain.fillRectangle(x_offset, y_offset, w, h);
+			pain.fillRectangle(x_offset, y_offset, w, h,
+					   backgroundColor());
 		}
 		h += inset->ascent(bview, font) + inset->descent(bview, font);
 		if ((row_ptr->height() - h) > 0) {
 			int const w = (inset_owner ?
 				 inset_owner->width(bview, font) : ww);
 			pain.fillRectangle(x_offset, y_offset + h,
-					   w, row_ptr->height() - h);
+					   w, row_ptr->height() - h,
+					   backgroundColor());
 		}
 		if (!inset_owner && !inset->display() && !inset->needFullRow())
 		{
 			int const w = inset->width(bview, font) + int(x);
-			pain.fillRectangle(w, y_offset, ww - w, row_ptr->height());
+			pain.fillRectangle(w, y_offset, 
+					   ww - w, row_ptr->height(),
+					   backgroundColor());
 		}
 	}
 
@@ -3158,8 +3170,8 @@ void LyXText::getVisibleRow(BufferView * bview, int y_offset, int x_offset,
 					  0,
 					  _("Page Break (top)"),
 					  pb_font,
-					  LColor::background,
-					  LColor::background, false, w, a, d);
+					  backgroundColor(),
+					  backgroundColor(), false, w, a, d);
 #else
 			;
 			lyxfont::rectText(_("Page Break (top)"), pb_font,
@@ -3169,8 +3181,8 @@ void LyXText::getVisibleRow(BufferView * bview, int y_offset, int x_offset,
 				      y_offset + y_top + 2 * defaultHeight() + d,
 				      _("Page Break (top)"),
 				      pb_font,
-				      LColor::background,
-				      LColor::background);
+				      backgroundColor(),
+				      backgroundColor());
 			y_top += 3 * defaultHeight();
 		}
 		
@@ -3354,8 +3366,8 @@ void LyXText::getVisibleRow(BufferView * bview, int y_offset, int x_offset,
 				.rectText(0, 0,
 					  _("Page Break (bottom)"),
 					  pb_font,
-					  LColor::background,
-					  LColor::background, false, w, a, d);
+					  backgroundColor(),
+					  backgroundColor(), false, w, a, d);
 #else
 			;
 			lyxfont::rectText(_("Page Break (bottom)"), pb_font,
@@ -3364,8 +3376,8 @@ void LyXText::getVisibleRow(BufferView * bview, int y_offset, int x_offset,
 			pain.rectText((ww - w) / 2, y_place + d,
 				      _("Page Break (bottom)"),
 				      pb_font,
-				      LColor::background,
-				      LColor::background);
+				      backgroundColor(),
+				      backgroundColor());
 			y_bottom -= 3 * defaultHeight();
 		}
 		

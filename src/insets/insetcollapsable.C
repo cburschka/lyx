@@ -289,6 +289,7 @@ void InsetCollapsable::edit(BufferView * bv, bool front)
 		collapsed_ = false;
 		if (!bv->lockInset(this))
 			return;
+		inset.setUpdateStatus(bv, InsetText::FULL);
 		bv->updateInset(this, false);
 		inset.edit(bv, front);
 	} else {
@@ -347,6 +348,7 @@ void InsetCollapsable::insetButtonRelease(BufferView * bv,
 			draw_label = label;
 			collapsed_ = false;
 			inset.insetButtonRelease(bv, 0, 0, button);
+			inset.setUpdateStatus(bv, InsetText::FULL);
 			bv->updateInset(this, false);
 		} else {
 			if (change_label_with_text) {
@@ -620,8 +622,9 @@ void InsetCollapsable::setLabel(string const & l, bool flag)
 string InsetCollapsable::get_new_label() const
 {
 	string la;
+	Paragraph::size_type const max_length = 10;
 
-	int n = std::min(10, inset.paragraph()->size());
+	int n = std::min(max_length, inset.paragraph()->size());
 	int i,j;
 	for(i=0,j=0; i < n && j < inset.paragraph()->size(); ++j) {
 		if (inset.paragraph()->isInset(j))
