@@ -815,6 +815,9 @@ void MathCursor::getPos(int & x, int & y)
 #warning This should probably take cellXOffset and cellYOffset into account
 #endif
 	x = xarray().xo() + xarray().pos2x(pos());
+	// move cursor visually into empty cells ("blue rectangles");
+	if (array().empty())
+		x += 2;
 	y = xarray().yo();
 }
 
