@@ -72,7 +72,7 @@ What's new
 
 - fix some dialogs to make OK the default button [bug #921, Qt only]
 
-- fix various problems with paper size selection [bug #844 and more]
+- fix various problems with paper size selection [bug #844 and #866]
 
 - duplicate 'a' shortcut in graphics dialog fixed [XForms only]
 
@@ -99,3 +99,6 @@ What's new
 
 - add a few autoconf-related files that were missing from the
   distribution 
+
+- improve the lyx.spec file used to produce rpms
+
