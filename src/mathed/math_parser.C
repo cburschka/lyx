@@ -529,6 +529,7 @@ bool Parser::parse(MathAtom & at)
 
 string Parser::parse_verbatim_option()
 {
+	skipSpaces();
 	string res;
 	if (nextToken().character() == '[') {
 		Token t = getToken();
@@ -546,6 +547,7 @@ string Parser::parse_verbatim_option()
 
 string Parser::parse_verbatim_item()
 {
+	skipSpaces();
 	string res;
 	if (nextToken().cat() == catBegin) {
 		Token t = getToken();
@@ -578,15 +580,15 @@ void Parser::parse(MathArray & array, unsigned flags, mode_type mode)
 }
 
 
-void Parser::parse2(MathAtom & at, unsigned flags, mode_type mode,
-	bool numbered)
+void Parser::parse2(MathAtom & at, const unsigned flags, const mode_type mode,
+	const bool numbered)
 {
 	parse1(*(at.nucleus()->asGridInset()), flags, mode, numbered);
 }
 
 
 void Parser::parse1(MathGridInset & grid, unsigned flags,
-	mode_type mode, bool numbered)
+	const mode_type mode, const bool numbered)
 {
 	int limits = 0;
 	MathGridInset::row_type cellrow = 0;
@@ -609,8 +611,7 @@ void Parser::parse1(MathGridInset & grid, unsigned flags,
 #endif
 
 		if (flags & FLAG_ITEM) {
-			if (t.cat() == catSpace)
-				continue;
+			skipSpaces();
 
 			flags &= ~FLAG_ITEM;
 			if (t.cat() == catBegin) {
@@ -972,9 +973,11 @@ void Parser::parse1(MathGridInset & grid, unsigned flags,
 		}
 
 		else if (t.cs() == "left") {
+			skipSpaces();
 			string l = getToken().asString();
 			MathArray ar;
 			parse(ar, FLAG_RIGHT, mode);
+			skipSpaces();
 			string r = getToken().asString();
 			cell->push_back(MathAtom(new MathDelimInset(l, r, ar)));
 		}
@@ -989,7 +992,6 @@ void Parser::parse1(MathGridInset & grid, unsigned flags,
 
 		else if (t.cs() == "begin") {
 			string const name = getArg('{', '}');
-			skipSpaces();
 
 			if (name == "array" || name == "subarray") {
 				string const valign = parse_verbatim_option() + 'c';
@@ -998,7 +1000,7 @@ void Parser::parse1(MathGridInset & grid, unsigned flags,
 				parse2(cell->back(), FLAG_END, mode, false);
 			}
 
-			if (name == "tabular") {
+			else if (name == "tabular") {
 				string const valign = parse_verbatim_option() + 'c';
 				string const halign = parse_verbatim_item();
 				cell->push_back(MathAtom(new MathTabularInset(name, valign[0], halign)));
@@ -1076,10 +1078,10 @@ void Parser::parse1(MathGridInset & grid, unsigned flags,
 			}
 
 			else {
-				// lyxerr << "unknow math inset begin '" << name << "'\n";
+				//lyxerr << "unknow math inset begin '" << name << "'\n";
 				// create generic environment inset
 				cell->push_back(MathAtom(new MathEnvInset(name)));
-				parse(cell->back().nucleus()->cell(0), FLAG_END, mode);
+				parse2(cell->back(), FLAG_END, mode, false);
 			}
 		}
 
