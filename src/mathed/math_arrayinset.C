@@ -84,6 +84,7 @@ void MathArrayInset::metrics(MetricsInfo & mi, Dimension & dim) const
 
 void MathArrayInset::draw(PainterInfo & pi, int x, int y) const
 {
+	setPosCache(pi, x, y);
 	ArrayChanger dummy(pi.base);
 	MathGridInset::draw(pi, x + 1, y);
 }

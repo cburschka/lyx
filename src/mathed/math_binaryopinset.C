@@ -55,6 +55,7 @@ void MathBinaryOpInset::metrics(MetricsInfo & mi, Dimension & dim) const
 }
 #endif
 
+
 void MathBinaryOpInset::draw(PainterInfo & pain, int x, int y) const
 {
 	cell(0).draw(pain, x, y);

@@ -65,6 +65,7 @@ void MathMakeboxInset::draw(PainterInfo & pi, int x, int y) const
 	x += w_ + 2;
 
 	cell(2).draw(pi, x, y);
+	setPosCache(pi, x, y);
 }
 
 

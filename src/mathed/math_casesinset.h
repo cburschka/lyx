@@ -26,7 +26,7 @@ public:
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
-	void draw(PainterInfo & pain, int x, int y) const;
+	void draw(PainterInfo & pi, int x, int y) const;
 
 	///
 	void infoize(std::ostream & os) const;

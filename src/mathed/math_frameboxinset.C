@@ -66,6 +66,7 @@ void MathFrameboxInset::draw(PainterInfo & pi, int x, int y) const
 	x += w_ + 4;
 
 	cell(2).draw(pi, x, y);
+	drawMarkers(pi, x, y);
 }
 
 

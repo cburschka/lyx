@@ -101,6 +101,7 @@ void MathMacroTemplate::draw(PainterInfo & pi, int x, int y) const
 	cell(1).draw(pi, x + 8 + w0, y + 1);
 	pi.pain.rectangle(x + w0 + 6 , y - dim_.ascent() + 1, w1 + 4,
 			dim_.height(), LColor::mathline);
+	setPosCache(pi, x, y);
 }
 
 

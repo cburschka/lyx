@@ -85,6 +85,7 @@ void MathAMSArrayInset::draw(PainterInfo & pi, int x, int y) const
 	int const yy = y - dim_.ascent();
 	mathed_draw_deco(pi, x + 1, yy, 5, dim_.height(), name_left());
 	mathed_draw_deco(pi, x + dim_.width() - 6, yy, 5, dim_.height(), name_right());
+	setPosCache(pi, x, y);
 }
 
 

@@ -44,11 +44,12 @@ void MathBraceInset::metrics(MetricsInfo & mi, Dimension & dim) const
 	cell(0).metrics(mi);
 	Dimension t;
 	mathed_char_dim(mi.base.font, '{', t);
-	wid_ = t.wid;
-	dim_.asc = max(cell(0).ascent(), t.asc);
-	dim_.des = max(cell(0).descent(), t.des);
-	dim_.wid = cell(0).width() + 2 * wid_;
-	dim = dim_;
+	dim.wid = t.wid;
+	dim.asc = max(cell(0).ascent(), t.asc);
+	dim.des = max(cell(0).descent(), t.des);
+	dim.wid = cell(0).width() + 2 * dim.wid;
+	metricsMarkers(dim);
+	dim_ = dim;
 }
 
 
@@ -59,6 +60,7 @@ void MathBraceInset::draw(PainterInfo & pi, int x, int y) const
 	drawChar(pi, font, x, y, '{');
 	cell(0).draw(pi, x + wid_, y);
 	drawChar(pi, font, x + dim_.width() - wid_, y, '}');
+	drawMarkers(pi, x, y);
 }
 
 

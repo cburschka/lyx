@@ -63,6 +63,7 @@ void MathFboxInset::draw(PainterInfo & pi, int x, int y) const
 	} else {
 		cell(0).draw(pi, x + 5, y);
 	}
+	setPosCache(pi, x, y);
 }
 
 

@@ -62,6 +62,7 @@ void MathMacroArgument::draw(PainterInfo & pi, int x, int y) const
 		cell(0).draw(pi, x, y);
 	else
 		drawStrRed(pi, x, y, str_);
+	setPosCache(pi, x, y);
 }
 
 

@@ -44,6 +44,7 @@ void MathOversetInset::draw(PainterInfo & pi, int x, int y) const
 	cell(1).draw(pi, m - cell(1).width() / 2, y);
 	FracChanger dummy(pi.base);
 	cell(0).draw(pi, m - cell(0).width() / 2, yo);
+	setPosCache(pi, x, y);
 }
 
 

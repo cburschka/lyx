@@ -68,6 +68,7 @@ void MathColorInset::draw(PainterInfo & pi, int x, int y) const
 	pi.base.font.setColor(lcolor.getFromGUIName(asString(cell(0))));
 	cell(1).draw(pi, x, y);
 	pi.base.font.setColor(origcol);
+	setPosCache(pi, x, y);
 }
 
 

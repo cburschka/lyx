@@ -52,10 +52,11 @@ void MathFracInset::metrics(MetricsInfo & mi, Dimension & dim) const
 	FracChanger dummy(mi.base);
 	cell(0).metrics(mi);
 	cell(1).metrics(mi);
-	dim_.wid = max(cell(0).width(), cell(1).width()) + 2;
-	dim_.asc = cell(0).height() + 2 + 5;
-	dim_.des = cell(1).height() + 2 - 5;
-	dim = dim_;
+	dim.wid = max(cell(0).width(), cell(1).width()) + 2;
+	dim.asc = cell(0).height() + 2 + 5;
+	dim.des = cell(1).height() + 2 - 5;
+	metricsMarkers(dim);
+	dim_ = dim;
 }
 
 
@@ -68,6 +69,7 @@ void MathFracInset::draw(PainterInfo & pi, int x, int y) const
 	cell(1).draw(pi, m - cell(1).width() / 2, y + cell(1).ascent()  + 2 - 5);
 	if (!atop_)
 		pi.pain.line(x + 1, y - 5, x + dim_.wid - 2, y - 5, LColor::math);
+	drawMarkers(pi, x, y);
 }
 
 

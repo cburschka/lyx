@@ -39,10 +39,11 @@ void MathCasesInset::metrics(MetricsInfo & mi, Dimension & dim) const
 }
 
 
-void MathCasesInset::draw(PainterInfo & pain, int x, int y) const
+void MathCasesInset::draw(PainterInfo & pi, int x, int y) const
 {
-	mathed_draw_deco(pain, x + 1, y - dim_.ascent(), 6, dim_.height(), "{");
-	MathGridInset::draw(pain, x + 8, y);
+	mathed_draw_deco(pi, x + 1, y - dim_.ascent(), 6, dim_.height(), "{");
+	MathGridInset::draw(pi, x + 8, y);
+	setPosCache(pi, x, y);
 }
 
 

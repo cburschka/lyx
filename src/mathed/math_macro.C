@@ -140,6 +140,7 @@ void MathMacro::draw(PainterInfo & pi, int x, int y) const
 	}
 
 	expanded_.draw(pi, x, y);
+	setPosCache(pi, x, y);
 }
 
 

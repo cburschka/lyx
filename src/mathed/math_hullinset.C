@@ -242,6 +242,7 @@ void MathHullInset::draw(PainterInfo & pi, int x, int y) const
 			drawStr(pi, pi.base.font, xx, yy, nicelabel(row));
 		}
 	}
+	setPosCache(pi, x, y);
 }
 
 

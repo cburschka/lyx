@@ -184,6 +184,7 @@ void MathTextInset::metrics(MetricsInfo & mi, Dimension & dim) const
 void MathTextInset::draw(PainterInfo & pi, int x, int y) const
 {
 	cache_.draw(pi, x + 1, y);
+	setPosCache(pi, x, y);
 }
 
 
