@@ -420,12 +420,13 @@ bool MathCursor::backspace()
 	}
 
 	if (pos() == 0) {
-		if (par()->ncols() == 1 && par()->nrows() == 1 && depth() == 1 && size() == 0)
+		if (par()->ncols() == 1 &&
+			  par()->nrows() == 1 &&
+			  depth() == 1 &&
+			  size() == 0)
 			return false;
-		else{
-			pullArg();
-			return true;
-		}
+		pullArg();
+		return true;
 	}
 
 	if (inMacroMode()) {
@@ -438,7 +439,7 @@ bool MathCursor::backspace()
 
 	--pos();
 	plainErase();
-        return true;
+	return true;
 }
 
 
