@@ -23,6 +23,9 @@ What's new
 
 ** Bug fixes
 
+- fix bug where the configure script would try to delete the /dev/null
+  device when there has been an error in configuration step
+
 - fix bug where autosaving would leave a lot of zombie processes after
   a long time
 

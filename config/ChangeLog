@@ -1,3 +1,10 @@
+2003-01-07  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* lyxinclude.m4 (LYX_CHECK_ERRORS): do not delete $cache_file if
+	there has been an error in configuration. With autoconf 2.5x,
+	$cache_file is often set to /dev/null, and deleting that is not a
+	good idea...
+
 2002-12-16  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* ltmain.sh: update to libtool 1.4.2.
