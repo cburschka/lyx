@@ -128,9 +128,9 @@ Note that most of these packages will be available if you use a modern TeX
  After the installation, please use the menu entry 
 \family sans 
 \bar under 
-O
+E
 \bar default 
-ptions\SpecialChar \menuseparator
+dit\SpecialChar \menuseparator
 
 \bar under 
 R
@@ -147,11 +147,13 @@ or, if you want to change the system-wide settings, issue the command
 \family default 
  from the LyX system directory (by default 
 \family typewriter 
-/usr/local/lib/lyx/
+/usr/local/share/lyx/
 \family default 
 )
 \end_inset 
 
+
+\family default 
  and reload this file to see if the new package was recognized.
  If the 
 \begin_inset Quotes eld
@@ -173,7 +175,9 @@ Found
  for some reason.
  If you are using teTeX, it might be that the new package you installed
  is not found.
- This is because you forgot to run the command 
+ This is because you forgot to run the command
+\family sans 
+ 
 \family typewriter 
 texhash
 \family default 
@@ -501,7 +505,7 @@ agums
 
 CTAN:
 \family typewriter 
- macros/latex/contrib/supported/aguplus
+ macros/latex/contrib/aguplus
 \layout Description
 
 Notes: The document class 
@@ -620,7 +624,7 @@ Found: @chk_dinbrief@
 
 CTAN: 
 \family typewriter 
-macros/latex/contrib/supported/dinbrief/
+macros/latex/contrib/dinbrief/
 \layout Description
 
 Notes: The document class 
@@ -716,7 +720,7 @@ Found: @chk_elsart@
 
 CTAN: 
 \family typewriter 
-macros/latex/contrib/supported/elsevier/
+macros/latex/contrib/elsevier/
 \layout Description
 
 WWW: 
@@ -779,7 +783,7 @@ extletter
 
 CTAN: 
 \family typewriter 
-macros/latex/contrib/other/extsizes/
+macros/latex/contrib/extsizes/
 \layout Description
 
 Notes: These document classes are equivalent to the corresponding standard
@@ -808,7 +812,7 @@ Found: @chk_foils@
 
 CTAN: 
 \family typewriter 
-macros/latex/contrib/supported/foiltex/
+macros/latex/contrib/foiltex/
 \layout Description
 
 Notes: The document class 
@@ -843,7 +847,7 @@ Found: @chk_g-brief-en@
 
 CTAN: 
 \family typewriter 
-macros/latex/contrib/supported/g-brief/
+macros/latex/contrib/g-brief/
 \layout Description
 
 Notes: The document class 
@@ -861,7 +865,7 @@ Found: @chk_g-brief-de@
 
 CTAN: 
 \family typewriter 
-macros/latex/contrib/supported/g-brief/
+macros/latex/contrib/g-brief/
 \layout Description
 
 Notes: The document class 
@@ -879,7 +883,7 @@ Found: @chk_g-brief2@
 
 CTAN: 
 \family typewriter 
-macros/latex/contrib/supported/g-brief/
+macros/latex/contrib/g-brief/
 \layout Description
 
 Notes: The document class 
@@ -1072,7 +1076,7 @@ scrbook
 
 CTAN: 
 \family typewriter 
-macros/latex/contrib/supported/koma-script/
+macros/latex/contrib/koma-script/
 \layout Description
 
 Notes: These document classes provide different versions of the base LaTeX
@@ -1105,7 +1109,7 @@ lttr2: @chk_scrlttr2@
 
 CTAN: 
 \family typewriter 
-macros/latex/contrib/supported/koma-script/
+macros/latex/contrib/koma-script/
 \layout Description
 
 Notes: These letter classes are bundled with the Koma-Script classes (see
@@ -1225,7 +1229,7 @@ Found: @chk_memoir@
 
 CTAN: 
 \family typewriter 
-macros/latex/contrib/supported/memoir/
+macros/latex/contrib/memoir/
 \layout Description
 
 Notes: Memoir is a flexible class for typesetting general fiction, non-fiction
@@ -1242,7 +1246,7 @@ Found: @chk_mwart@
 
 CTAN: 
 \family typewriter 
-macros/latex/contrib/supported/mwcls/
+macros/latex/contrib/mwcls/
 \layout Description
 
 Notes: These document classes provide different versions of the base LaTeX
@@ -1270,7 +1274,7 @@ Found: @chk_paper@
 
 CTAN: 
 \family typewriter 
-macros/latex/contrib/supported/paper/
+macros/latex/contrib/paper/
 \layout Description
 
 Notes: The document class 
@@ -1358,7 +1362,7 @@ Found: @chk_revtex4@
 
 CTAN: 
 \family typewriter 
-macros/latex/contrib/supported/revtex/
+macros/latex/contrib/revtex/
 \layout Description
 
 Notes: REVTeX 4 is a class used for submitting manuscripts to journals including
@@ -1381,7 +1385,7 @@ Found: @chk_siamltex@
 
 CTAN: 
 \family typewriter 
-macros/latex/contrib/other/siam/siamltex.tar
+macros/latex/contrib/siam/siamltex.tar
 \layout Description
 
 Notes: The Society for Industrial and Applied Mathematics, Philadelphia,
@@ -1765,7 +1769,7 @@ Found: @chk_a4@
 
 CTAN: 
 \family typewriter 
-macros/latex/contrib/supported/ntgclass/
+macros/latex/contrib/ntgclass/
 \layout Description
 
 Notes: The package 
@@ -1784,7 +1788,7 @@ Found: @chk_a4wide@
 
 CTAN: 
 \family typewriter 
-macros/latex/contrib/other/misc/
+macros/latex/contrib/misc/
 \layout Description
 
 Notes: The package 
@@ -1805,7 +1809,7 @@ Found: @chk_geometry@
 
 CTAN: 
 \family typewriter 
-macros/latex/contrib/supported/geometry/
+macros/latex/contrib/geometry/
 \layout Description
 
 Notes: The package 
@@ -1835,7 +1839,7 @@ Found: @chk_algorithm@
 
 CTAN: 
 \family typewriter 
-macros/latex/contrib/supported/algorithms/
+macros/latex/contrib/algorithms/
 \layout Description
 
 Notes: The package 
@@ -1871,7 +1875,7 @@ Found: @chk_fancyhdr@
 
 CTAN: 
 \family typewriter 
-macros/latex/contrib/supported/fancyhdr/
+macros/latex/contrib/fancyhdr/
 \layout Description
 
 Notes: The package 
@@ -1902,7 +1906,7 @@ Found: @chk_floatflt@
 
 CTAN: 
 \family typewriter 
-macros/latex/contrib/other/floatflt/
+macros/latex/contrib/floatflt/
 \layout Description
 
 Notes: The package
@@ -1930,7 +1934,7 @@ Found: @chk_natbib@
 
 CTAN: 
 \family typewriter 
-macros/latex/contrib/supported/natbib/
+macros/latex/contrib/natbib/
 \layout Description
 
 Notes: The package 
@@ -1949,7 +1953,7 @@ Found: @chk_prettyref@
 
 CTAN: 
 \family typewriter 
-macros/latex/contrib/supported/prettyref
+macros/latex/contrib/prettyref
 \layout Description
 
 Notes: none yet
@@ -1963,7 +1967,7 @@ Found: @chk_rotating@
 
 CTAN: 
 \family typewriter 
-macros/latex/contrib/supported/rotating
+macros/latex/contrib/rotating
 \layout Description
 
 Notes: The package 
@@ -1982,7 +1986,7 @@ Found: @chk_subfigure@
 
 CTAN: 
 \family typewriter 
-macros/latex/contrib/supported/subfigure
+macros/latex/contrib/subfigure
 \layout Description
 
 Notes: The package
@@ -2002,7 +2006,7 @@ Found: @chk_setspace@
 
 CTAN: 
 \family typewriter 
-macros/latex/contrib/supported/setspace/
+macros/latex/contrib/setspace/
 \layout Description
 
 Notes: The package 
@@ -2020,7 +2024,7 @@ Found: @chk_url@
 
 CTAN: 
 \family typewriter 
-macros/latex/contrib/other/misc/url.sty
+macros/latex/contrib/misc/url.sty
 \layout Description
 
 Notes: The package 
