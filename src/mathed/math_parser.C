@@ -795,7 +795,7 @@ void Parser::parse_into1(MathGridInset & grid, unsigned flags, bool numbered)
 		else if (t.cat() == catLetter)
 			add(*cell, t.character());
 
-		else if (t.cat() == catSpace) //&& code == LM_TC_TEXTRM
+		else if (t.cat() == catSpace && (flags & FLAG_TEXTMODE))
 			add(*cell, t.character());
 
 		else if (t.cat() == catParameter) {

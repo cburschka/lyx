@@ -104,6 +104,7 @@ namespace {
 		MapleStream ms(os);
 		ms << ar;
 		string expr = os.str().c_str();
+		lyxerr << "ar: '" << ar << "'\n";
 
 		for (int i = 0; i < 100; ++i) { // at most 100 attempts
 			// try to fix missing '*' the hard way by using mint
@@ -527,12 +528,6 @@ InsetFormula::localDispatch(BufferView * bv, kb_action action,
 }
 
 
-bool needEqnArray(string const & extra)
-{
-	return extra == "dsolve";
-}
-
-
 void InsetFormula::handleExtern(const string & arg)
 {
 	// where are we?
@@ -549,11 +544,7 @@ void InsetFormula::handleExtern(const string & arg)
 	bool selected = mathcursor->selection();
 
 	MathArray ar;
-	if (needEqnArray(extra)) {
-		mathcursor->last();
-		//mathcursor->readLine(ar);
-		mathcursor->breakLine();
-	} else if (selected) {
+	if (selected) {
 		mathcursor->selGet(ar);
 		//lyxerr << "use selection: " << ar << "\n";
 	} else {
