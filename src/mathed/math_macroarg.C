@@ -11,8 +11,8 @@
 
 
 
-MathMacroArgument::MathMacroArgument(int n)
-	: MathNestInset(1), number_(n), expanded_(false)
+MathMacroArgument::MathMacroArgument(int n, MathTextCodes code)
+	: MathNestInset(1), number_(n), expanded_(false), code_(code)
 {
 	if (n < 1 || n > 9) {
 		lyxerr << "MathMacroArgument::MathMacroArgument: wrong Argument id: "
@@ -32,7 +32,10 @@ MathInset * MathMacroArgument::clone() const
 
 void MathMacroArgument::write(WriteStream & os) const
 {
-	os << str_;
+	if (code_ == LM_TC_MIN)
+		os << str_;
+	else
+		os << '\\' << math_font_name(code_) << '{' << str_ << '}';
 }
 
 
@@ -67,6 +70,8 @@ void MathMacroArgument::normalize(NormalStream & os) const
 void MathMacroArgument::substitute(MathMacro const & m)
 {
 	cell(0) = m.cell(number_ - 1);
+	for (MathArray::iterator it = cell(0).begin(); it != cell(0).end(); ++it)
+		it->nucleus()->handleFont(code_);
 	expanded_ = true;
 }
 

@@ -14,7 +14,7 @@
 class MathMacroArgument : public MathNestInset {
 public:
 	///
-	explicit MathMacroArgument(int);
+	explicit MathMacroArgument(int, MathTextCodes = LM_TC_MIN);
 	///
 	MathInset * clone() const;
 	///
@@ -40,6 +40,8 @@ private:
 	bool expanded_;
 	///
 	mutable MathMetricsInfo mi_;
+	///
+	MathTextCodes code_;
 };
 
 #endif

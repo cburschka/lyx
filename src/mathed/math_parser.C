@@ -788,7 +788,7 @@ void Parser::parse_into(MathArray & array, unsigned flags, MathTextCodes code)
 
 		else if (t.cat() == catParameter) {
 			Token const & n	= getToken();
-			array.push_back(MathAtom(new MathMacroArgument(n.character() - '0')));
+			array.push_back(MathAtom(new MathMacroArgument(n.character()-'0', code)));
 		}
 
 		else if (t.cat() == catBegin) {
