@@ -180,7 +180,7 @@ public:
 	///
 	void setParagraphData(Paragraph *, bool same_id = false);
 	///
-	void setText(string const &);
+	void setText(string const &, LyXFont const &);
 	///
 	void setAutoBreakRows(bool);
 	///

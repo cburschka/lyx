@@ -2802,9 +2802,9 @@ bool InsetTabular::forceDefaultParagraphs(Inset const * in) const
 bool InsetTabular::insertAsciiString(BufferView * bv, string const & buf,
 				     bool usePaste)
 {
-	if (buf.find('\t') == string::npos)
-		return false;
-
+	if (buf.length() <= 0)
+		return true;
+	
 	int cols = 1;
 	int rows = 1;
 	int maxCols = 1;
@@ -2859,15 +2859,22 @@ bool InsetTabular::insertAsciiString(BufferView * bv, string const & buf,
 		case '\t':
 			// we can only set this if we are not too far right
 			if (cols < columns) {
-				loctab->GetCellInset(cell)->setText(buf.substr(op, p-op));
+				InsetText * ti = loctab->GetCellInset(cell);
+				LyXFont const font = ti->getLyXText(bv)->
+					getFont(bv->buffer(), ti->paragraph(), 0);
+				ti->setText(buf.substr(op, p-op), font);
 				++cols;
 				++cell;
 			}
 			break;
 		case '\n':
 			// we can only set this if we are not too far right
-			if (cols < columns)
-				loctab->GetCellInset(cell)->setText(buf.substr(op, p-op));
+			if (cols < columns) {
+				InsetText * ti = loctab->GetCellInset(cell);
+				LyXFont const font = ti->getLyXText(bv)->
+					getFont(bv->buffer(), ti->paragraph(), 0);
+				ti->setText(buf.substr(op, p-op), font);
+			}
 			cols = ocol;
 			++row;
 			if (row < rows)
@@ -2878,8 +2885,12 @@ bool InsetTabular::insertAsciiString(BufferView * bv, string const & buf,
 		op = p;
 	}
 	// check for the last cell if there is no trailing '\n'
-	if ((cell < cells) && (op < len))
-		loctab->GetCellInset(cell)->setText(buf.substr(op, len-op));
+	if ((cell < cells) && (op < len)) {
+		InsetText * ti = loctab->GetCellInset(cell);
+		LyXFont const font = ti->getLyXText(bv)->
+			getFont(bv->buffer(), ti->paragraph(), 0);
+		ti->setText(buf.substr(op, len-op), font);
+	}
 
 	return true;
 }

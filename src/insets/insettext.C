@@ -553,6 +553,10 @@ void InsetText::update(BufferView * bv, LyXFont const & font, bool reinit)
 		in_update = false;
 		return;
 	}
+
+	if (!autoBreakRows && par->next())
+		collapseParagraphs(bv->buffer()->params);
+
 	if (the_locking_inset) {
 		inset_x = cx(bv) - top_x + drawTextXOffset;
 		inset_y = cy(bv) + drawTextYOffset;
@@ -2059,12 +2063,12 @@ void InsetText::setParagraphData(Paragraph * p, bool same_id)
 }
 
 
-void InsetText::setText(string const & data)
+void InsetText::setText(string const & data, LyXFont const & font)
 {
 	clear();
-	LyXFont font(LyXFont::ALL_SANE);
 	for (unsigned int i=0; i < data.length(); ++i)
 		par->insertChar(i, data[i], font);
+	reinitLyXText();
 }
 
 
@@ -2646,8 +2650,11 @@ bool InsetText::checkInsertChar(LyXFont & font)
 void InsetText::collapseParagraphs(BufferParams const & bparams) const
 {
 	while(par->next()) {
-		if (!par->isSeparator(par->size()-1))
-			par->insertChar(par->size()-1, ' ');
+		if (par->size() && par->next()->size() &&
+			!par->isSeparator(par->size()-1))
+		{
+			par->insertChar(par->size(), ' ');
+		}
 		par->pasteParagraph(bparams);
 	}
 	reinitLyXText();

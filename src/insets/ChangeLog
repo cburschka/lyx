@@ -1,5 +1,12 @@
 2002-03-26  Juergen Vigna  <jug@sad.it>
 
+	* insettext.C (setText): added a LyXFont param and call reinitLyXText()
+	(collapseParagraphs): fixed inserting of separator ' '
+
+	* insettabular.C (insertAsciiString): only check for buffer lenght
+	not if we have \t or \n inside the buffer as if we don't have we only
+	have 1 cell and that's it!
+
 	* insetert.C (close): don't collapse if inlined.
 
 2002-03-25  Herbert Voss  <voss@lyx.org>
