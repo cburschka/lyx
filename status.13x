@@ -35,6 +35,8 @@ What's new
 
 - updated french translation of menus
 
+- updates to Extended Manual and Customization Manual.
+
 ** Bug fixes
 
 - delete lyxserver pipes on exit [bug #865, Qt only]
@@ -62,6 +64,9 @@ What's new
 - fix various problems with paper size selection [bug #844 and more]
 
 - duplicate 'a' shortcut in graphics dialog fixed [XForms only]
+
+- fix bug where changing encoding of screen fonts would not work
+  immediately [XForms only]
 
 - in the dialogs, replace LaTeX font size names by LyX names for
   consistency reasons and to resolve a translation conflict

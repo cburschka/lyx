@@ -1,3 +1,8 @@
+2003-02-16  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* FormPreferences.C (apply): when changing font_norm, call
+	set_font_norm_type too.
+
 2003-02-15  John Levon  <levon@movementarian.org>
 
 	* forms/form_graphics.fd: fix duplicate 'a' shortcut
