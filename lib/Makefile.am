@@ -17,7 +17,7 @@ TEMPL = templates/*.lyx
 BIND = bind/*.bind
 EXAMPLES = examples/*.lyx
 TEXSUPPORT = tex/*.cls
-IMAGES = images/README images/*.xpm images/*.xbm
+IMAGES = images/*.xpm images/*.xbm
 
 pkgdata_DATA = lyxrc.example CREDITS chkconfig.ltx lyxrc.defaults \
                textclass.lst packages.lst

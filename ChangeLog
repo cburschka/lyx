@@ -1,3 +1,7 @@
+1999-10-13  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* Configure.cmd: removed file 
+
 1999-10-13  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/support/DebugStream.[Ch]: remove the explicit std:: before
@@ -37,6 +41,11 @@
 	* lib/lyxrc.example: Added stuff for new \tth_command
 
 1999-10-12  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* lib/Makefile.am (IMAGES): removed images/README
+	(pkgdata_SCRIPTS): use this instead of bin_SCRIPTS to that it
+	installes in correct place. Check permisions is installed
+	correctly.
 
 	* src/LaTeX.C: some no-op changes moved declaration of some
 	variables around.
