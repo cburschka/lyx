@@ -453,6 +453,6 @@ void Reconfigure(BufferView * bv)
 
 	Alert::information(_("System reconfigured"),
 		_("The system has been reconfigured.\n"
-		"You need to restart LyX to make use of any \n"
+		"You need to restart LyX to make use of any\n"
 		"updated document class specifications."));
 }

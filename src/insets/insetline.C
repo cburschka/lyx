@@ -32,7 +32,7 @@ void InsetLine::read(Buffer const &, LyXLex &)
 
 void InsetLine::write(Buffer const &, ostream & os) const
 {
-	os << "\n\\lyxline \n";
+	os << "\n\\lyxline\n";
 }
 
 

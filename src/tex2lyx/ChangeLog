@@ -1,3 +1,11 @@
+2008-08-16  José Matos  <jamatos@lyx.org>
+
+	* context.C (begin_deeper, end_deeper):
+	* preamble.C (end_preamble):
+	* table.C (handle_tabular):
+	* text.C (end_inset, handle_ert, handle_comment):
+	(parse_text_attributes, parse_text): remove space at end of line.
+
 2004-08-10  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* preamble.C (split_options): new, split package options into vector

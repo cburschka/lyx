@@ -792,7 +792,7 @@ bool Buffer::do_writeFile(ostream & ofs) const
 	    << "\\begin_document\n";
 
 	// now write out the buffer parameters.
-	ofs << "\n\\begin_header\n";
+	ofs << "\\begin_header\n";
 	params().writeFile(ofs);
 	ofs << "\\end_header\n";
 	

@@ -77,7 +77,7 @@ int InsetHFill::docbook(Buffer const &, std::ostream & os,
 
 void InsetHFill::write(Buffer const &, ostream & os) const
 {
-	os << "\n\\hfill \n";
+	os << "\n\\hfill\n";
 }
 
 

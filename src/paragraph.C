@@ -138,12 +138,12 @@ void Paragraph::write(Buffer const & buf, ostream & os,
 	if (dth != params().depth()) {
 		if (params().depth() > dth) {
 			while (params().depth() > dth) {
-				os << "\n\\begin_deeper ";
+				os << "\n\\begin_deeper";
 				++dth;
 			}
 		} else {
 			while (params().depth() < dth) {
-				os << "\n\\end_deeper ";
+				os << "\n\\end_deeper";
 				--dth;
 			}
 		}
@@ -192,13 +192,13 @@ void Paragraph::write(Buffer const & buf, ostream & os,
 				} else {
 					os << "\n\\begin_inset ";
 					inset->write(buf, os);
-					os << "\n\\end_inset \n\n";
+					os << "\n\\end_inset\n\n";
 					column = 0;
 				}
 		}
 		break;
 		case '\\':
-			os << "\n\\backslash \n";
+			os << "\n\\backslash\n";
 			column = 0;
 			break;
 		case '.':

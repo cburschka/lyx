@@ -1005,7 +1005,7 @@ bool BufferParams::writeLaTeX(ostream & os, LaTeXFeatures & features,
 			"\\dvipost{osstart color push Red}\n"
 			"\\dvipost{osend color pop}\n"
 			"\\dvipost{cbstart color push Blue}\n"
-			"\\dvipost{cbend color pop} \n";
+			"\\dvipost{cbend color pop}\n";
 	}
 
 	int const nlines =

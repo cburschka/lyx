@@ -1,5 +1,15 @@
 2004-08-16  José Matos  <jamatos@lyx.org>
 
+	* ParagraphParameters.C (write):
+	* Spacing.C (writeFile):
+	* bufferparams.C (writeLaTeX):
+	* lyx_cb.C (Reconfigure):
+	* paragraph.C (write):
+	* tabular.C (write): remove unnecessary space at end of line.
+
+
+2004-08-16  José Matos  <jamatos@lyx.org>
+
 	* text.C (readParagraph): remove debug message.
 
 2004-08-16  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>

@@ -331,7 +331,7 @@ void begin_inset(ostream & os, string const & name)
 
 void end_inset(ostream & os)
 {
-	os << "\n\\end_inset \n\n";
+	os << "\n\\end_inset\n\n";
 }
 
 
@@ -360,9 +360,9 @@ void handle_ert(ostream & os, string const & s, Context & context, bool check_la
 	newcontext.check_layout(os);
 	for (string::const_iterator it = s.begin(), et = s.end(); it != et; ++it) {
 		if (*it == '\\')
-			os << "\n\\backslash \n";
+			os << "\n\\backslash\n";
 		else if (*it == '\n')
-			os << "\n\\newline \n";
+			os << "\n\\newline\n";
 		else
 			os << *it;
 	}
@@ -380,7 +380,7 @@ void handle_comment(ostream & os, string const & s, Context & context)
 	newcontext.check_layout(os);
 	for (string::const_iterator it = s.begin(), et = s.end(); it != et; ++it) {
 		if (*it == '\\')
-			os << "\n\\backslash \n";
+			os << "\n\\backslash\n";
 		else
 			os << *it;
 	}
@@ -840,10 +840,10 @@ void parse_text_attributes(Parser & p, ostream & os, unsigned flags, bool outer,
 	context.check_layout(os);
 	string oldvalue = currentvalue;
 	currentvalue = newvalue;
-	os << '\n' << attribute << ' ' << newvalue << " \n";
+	os << '\n' << attribute << ' ' << newvalue << "\n";
 	parse_text_snippet(p, os, flags, outer, context);
 	currentvalue = oldvalue;
-	os << '\n' << attribute << ' ' << oldvalue << " \n";
+	os << '\n' << attribute << ' ' << oldvalue << "\n";
 }
 
 
@@ -1008,22 +1008,22 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				// s will change the size, so we must reset
 				// it here
 				os << s << "\n\\size " << context.font.size
-				   << " \n";
+				   << "\n";
 			else if (is_known(next.cs(), known_font_families))
 				// s will change the font family, so we must
 				// reset it here
 				os << s << "\n\\family "
-				   << context.font.family << " \n";
+				   << context.font.family << "\n";
 			else if (is_known(next.cs(), known_font_series))
 				// s will change the font series, so we must
 				// reset it here
 				os << s << "\n\\series "
-				   << context.font.series << " \n";
+				   << context.font.series << "\n";
 			else if (is_known(next.cs(), known_font_shapes))
 				// s will change the font shape, so we must
 				// reset it here
 				os << s << "\n\\shape "
-				   << context.font.shape << " \n";
+				   << context.font.shape << "\n";
 			else if (is_known(next.cs(), known_old_font_families) ||
 			         is_known(next.cs(), known_old_font_series) ||
 			         is_known(next.cs(), known_old_font_shapes))
@@ -1031,9 +1031,9 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				// and shape, so we must reset it here
 				os << s
 				   <<  "\n\\family " << context.font.family
-				   << " \n\\series " << context.font.series
-				   << " \n\\shape "  << context.font.shape
-				   << " \n";
+				   << "\n\\series " << context.font.series
+				   << "\n\\shape "  << context.font.shape
+				   << "\n";
 			else {
 				handle_ert(os, "{", context, false);
 				// s will end the current layout and begin a
@@ -1334,7 +1334,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 
 		else if (t.cs() == "hfill") {
 			context.check_layout(os);
-			os << "\n\\hfill \n";
+			os << "\n\\hfill\n";
 			skip_braces(p);
 			p.skip_spaces();
 		}
@@ -1431,31 +1431,31 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			Font oldFont = context.font;
 			context.font.init();
 			context.font.size = oldFont.size;
-			os << "\n\\family " << context.font.family << " \n";
-			os << "\n\\series " << context.font.series << " \n";
-			os << "\n\\shape " << context.font.shape << " \n";
+			os << "\n\\family " << context.font.family << "\n";
+			os << "\n\\series " << context.font.series << "\n";
+			os << "\n\\shape " << context.font.shape << "\n";
 			if (t.cs() == "textnormal") {
 				parse_text_snippet(p, os, FLAG_ITEM, outer, context);
 				context.font = oldFont;
-				os << "\n\\shape " << oldFont.shape << " \n";
-				os << "\n\\series " << oldFont.series << " \n";
-				os << "\n\\family " << oldFont.family << " \n";
+				os << "\n\\shape " << oldFont.shape << "\n";
+				os << "\n\\series " << oldFont.series << "\n";
+				os << "\n\\family " << oldFont.family << "\n";
 			} else
 				eat_whitespace(p, os, context, false);
 		}
 
 		else if (t.cs() == "underbar") {
 			context.check_layout(os);
-			os << "\n\\bar under \n";
+			os << "\n\\bar under\n";
 			parse_text_snippet(p, os, FLAG_ITEM, outer, context);
-			os << "\n\\bar default \n";
+			os << "\n\\bar default\n";
 		}
 
 		else if (t.cs() == "emph" || t.cs() == "noun") {
 			context.check_layout(os);
-			os << "\n\\" << t.cs() << " on \n";
+			os << "\n\\" << t.cs() << " on\n";
 			parse_text_snippet(p, os, FLAG_ITEM, outer, context);
-			os << "\n\\" << t.cs() << " default \n";
+			os << "\n\\" << t.cs() << " default\n";
 		}
 
 		else if (use_natbib &&
@@ -1618,9 +1618,9 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			context.font.size = oldsize;
 			context.font.family =
 				known_coded_font_families[where - known_old_font_families];
-			os << "\n\\family " << context.font.family << " \n"
-			   <<   "\\series " << context.font.series << " \n"
-			   <<   "\\shape "  << context.font.shape  << " \n";
+			os << "\n\\family " << context.font.family << "\n"
+			   <<   "\\series " << context.font.series << "\n"
+			   <<   "\\shape "  << context.font.shape  << "\n";
 			eat_whitespace(p, os, context, false);
 		}
 
@@ -1633,9 +1633,9 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			context.font.size = oldsize;
 			context.font.series =
 				known_coded_font_series[where - known_old_font_series];
-			os << "\n\\family " << context.font.family << " \n"
-			   <<   "\\series " << context.font.series << " \n"
-			   <<   "\\shape "  << context.font.shape  << " \n";
+			os << "\n\\family " << context.font.family << "\n"
+			   <<   "\\series " << context.font.series << "\n"
+			   <<   "\\shape "  << context.font.shape  << "\n";
 			eat_whitespace(p, os, context, false);
 		}
 
@@ -1648,9 +1648,9 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			context.font.size = oldsize;
 			context.font.shape =
 				known_coded_font_shapes[where - known_old_font_shapes];
-			os << "\n\\family " << context.font.family << " \n"
-			   <<   "\\series " << context.font.series << " \n"
-			   <<   "\\shape "  << context.font.shape  << " \n";
+			os << "\n\\family " << context.font.family << "\n"
+			   <<   "\\series " << context.font.series << "\n"
+			   <<   "\\shape "  << context.font.shape  << "\n";
 			eat_whitespace(p, os, context, false);
 		}
 
@@ -1710,7 +1710,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 
 		else if (t.cs() == "textbackslash") {
 			context.check_layout(os);
-			os << "\n\\backslash \n";
+			os << "\n\\backslash\n";
 			skip_braces(p);
 		}
 
@@ -1783,7 +1783,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				handle_ert(os, "\\\\*" + p.getOpt(), context);
 			}
 			else {
-				os << "\n\\newline \n";
+				os << "\n\\newline\n";
 			}
 		}
 

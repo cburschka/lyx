@@ -1,3 +1,10 @@
+2004-08-16  José Matos  <jamatos@lyx.org>
+
+	* lyx_1_4.lyx (convert_comment, convert_breaks, convert_frameless_box):
+	(convert_names, add_begin_body, strip_end_space): use the same policy
+	of lyx of not using spaces as the last character in a line that starts
+	with a command token (\xxxxx).
+
 2004-08-15  José Matos  <jamatos@lyx.org>
 
 	* lyx_1_4.py (normalize_papersize, denormalize_papersize):

@@ -194,7 +194,7 @@ def convert_comment(lines):
             	i = find_token(lines, "\\layout", i)
                 if i == -1:
                     i = len(lines) - 1
-                    lines[i:i] = ["\\end_inset ","",""]
+                    lines[i:i] = ["\\end_inset","",""]
                     return
 
                 j = find_token(lines, '\\begin_deeper', old_i, i)
@@ -211,7 +211,7 @@ def convert_comment(lines):
                         #but if this happens deal with it greacefully adding
                         #the missing \end_deeper.
                         i = len(lines) - 1
-                        lines[i:i] = ["\end_deeper","","","\\end_inset ","",""]
+                        lines[i:i] = ["\end_deeper","","","\\end_inset","",""]
                         return
                     else:
                         del lines[i]
@@ -225,7 +225,7 @@ def convert_comment(lines):
                         #but if this happens deal with it greacefully adding
                         #the missing \end_inset.
                         i = len(lines) - 1
-                        lines[i:i] = ["\\end_inset ","","","\\end_inset ","",""]
+                        lines[i:i] = ["\\end_inset","","","\\end_inset","",""]
                         return
                     else:
                         i = i + 1
@@ -525,7 +525,7 @@ def convert_breaks(lines):
                 paragraph_above.extend(['\\newpage ',''])
 
             if vspace_top != -1:
-                paragraph_above.extend(['\\begin_inset VSpace ' + vspace_top_value,'\\end_inset ','',''])
+                paragraph_above.extend(['\\begin_inset VSpace ' + vspace_top_value,'\\end_inset','',''])
 
             if line_top != -1:
                 paragraph_above.extend(['\\lyxline ',''])
@@ -550,7 +550,7 @@ def convert_breaks(lines):
                 paragraph_bellow.extend(['\\lyxline ',''])
 
             if vspace_bot != -1:
-                paragraph_bellow.extend(['\\begin_inset VSpace ' + vspace_bot_value,'\\end_inset ','',''])
+                paragraph_bellow.extend(['\\begin_inset VSpace ' + vspace_bot_value,'\\end_inset','',''])
 
             if pb_bot != -1:
                 paragraph_bellow.extend(['\\newpage ',''])
@@ -1037,7 +1037,7 @@ def convert_frameless_box(lines, opt):
             else:
                 lines[i] = lines[i] + '}'
 	    i = i + 1
-	    lines[i:i] = ['', '\\end_inset ']
+	    lines[i:i] = ['', '\\end_inset']
 	    i = i + 2
 	    j = find_end_of_inset(lines, i)
 	    if j == -1:
@@ -1249,7 +1249,7 @@ def convert_names(lines, opt):
                           "%s" % firstname,
                           "\end_layout",
                           "",
-                          "\end_inset ",
+                          "\end_inset",
                           "",
                           "",
                           "\\begin_inset CharStyle Surname",
@@ -1260,7 +1260,7 @@ def convert_names(lines, opt):
                           "%s" % surname,
                           "\\end_layout",
                           "",
-                          "\\end_inset ",
+                          "\\end_inset",
                           ""]
 
 
@@ -1419,10 +1419,10 @@ def add_begin_header(header, opt):
 
 
 def remove_begin_header(header, opt):
-    i = find_token(header, "\\begin_header", 0)
+    i = find_token(header, "\\begin_document", 0)
     if i != -1:
         del header[i]
-    i = find_token(header, "\\begin_document", 0)
+    i = find_token(header, "\\begin_header", 0)
     if i != -1:
         del header[i]
 
@@ -1432,6 +1432,7 @@ def remove_begin_header(header, opt):
 #
 def add_begin_body(body, opt):
     body.insert(0, '\\begin_body')
+    body.insert(1, '')
     i = find_token(body, "\\end_document", 0)
     body.insert(i, '\\end_body')
 
@@ -1439,6 +1440,8 @@ def remove_begin_body(body, opt):
     i = find_token(body, "\\begin_body", 0)
     if i != -1:
         del body[i]
+        if not body[i]:
+            del body[i]
     i = find_token(body, "\\end_body", 0)
     if i != -1:
         del body[i]
@@ -1468,6 +1471,15 @@ def denormalize_papersize(header):
     tmp = split(header[i])
     if tmp[1] == "custom":
         header[i] = '\\papersize Custom'
+
+
+##
+# Strip spaces at end of command line
+#
+def strip_end_space(body):
+    for i in range(len(body)):
+        if body[i][:1] == '\\':
+            body[i] = strip(body[i])
 
 
 ##
@@ -1556,6 +1568,7 @@ def convert(file):
         add_begin_header(file.header, file)
         add_begin_body(file.body, file)
         normalize_papersize(file.header)
+        strip_end_space(file.body)
         file.format = 236
 
 def revert(file):
@@ -1638,7 +1651,7 @@ def revert(file):
 	revert_spaces(file.body)
 	revert_bibtex(file.body)
 	rm_tracking_changes(file.header)
-	rm_file.body_changes(file.body)
+	rm_body_changes(file.body)
 	file.format = 221
 
 

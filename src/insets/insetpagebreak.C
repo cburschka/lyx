@@ -33,7 +33,7 @@ void InsetPagebreak::read(Buffer const &, LyXLex &)
 
 void InsetPagebreak::write(Buffer const &, ostream & os) const
 {
-	os << "\n\\newpage \n";
+	os << "\n\\newpage\n";
 }
 
 

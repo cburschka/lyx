@@ -528,7 +528,7 @@ void handle_tabular(Parser & p, ostream & os,
 			   << ">"
 			   << "\n\\begin_inset Text\n"
 			   << cell.content
-			   << "\n\\end_inset \n"
+			   << "\n\\end_inset\n"
 			   << "</cell>\n";
 		}
 		os << "</row>\n";

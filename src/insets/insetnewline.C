@@ -35,7 +35,7 @@ void InsetNewline::read(Buffer const &, LyXLex &)
 
 void InsetNewline::write(Buffer const &, ostream & os) const
 {
-	os << "\n\\newline \n";
+	os << "\n\\newline\n";
 }
 
 

@@ -69,7 +69,7 @@ auto_ptr<InsetBase> InsetFormulaMacro::clone() const
 
 void InsetFormulaMacro::write(Buffer const &, ostream & os) const
 {
-	os << "FormulaMacro ";
+	os << "FormulaMacro\n";
 	WriteStream wi(os, false, false);
 	tmpl()->write(wi);
 }

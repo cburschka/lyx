@@ -36,13 +36,13 @@ void end_layout(ostream & os)
 
 void begin_deeper(ostream & os)
 {
-	os << "\n\\begin_deeper \n";
+	os << "\n\\begin_deeper\n";
 }
 
 
 void end_deeper(ostream & os)
 {
-	os << "\n\\end_deeper \n";
+	os << "\n\\end_deeper\n";
 }
 
 }

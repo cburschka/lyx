@@ -225,25 +225,27 @@ void ParagraphParameters::read(LyXLex & lex)
 
 void ParagraphParameters::write(ostream & os) const
 {
+	ostringstream oss;
+
 	// Maybe the paragraph has special spacing
-	spacing().writeFile(os, true);
+	spacing().writeFile(oss, true);
 
 	// The labelwidth string used in lists.
 	if (!labelWidthString().empty())
-		os << "\\labelwidthstring "
+		oss << "\\labelwidthstring "
 		   << labelWidthString() << '\n';
 
 	// Start of appendix?
 	if (startOfAppendix())
-		os << "\\start_of_appendix ";
+		oss << "\\start_of_appendix ";
 
 	// Noindent?
 	if (noindent())
-		os << "\\noindent ";
+		oss << "\\noindent ";
 
 	// Do we have a manual left indent?
 	if (!leftIndent().zero())
-		os << "\\leftindent " << leftIndent().asString()
+		oss << "\\leftindent " << leftIndent().asString()
 		   << ' ';
 
 	// Alignment?
@@ -255,8 +257,9 @@ void ParagraphParameters::write(ostream & os) const
 		case LYX_ALIGN_CENTER: h = 3; break;
 		default: h = 0; break;
 		}
-		os << "\\align " << string_align[h] << ' ';
+		oss << "\\align " << string_align[h] << ' ';
 	}
+	os << rtrim(oss.str());
 }
 
 

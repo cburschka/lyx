@@ -72,9 +72,9 @@ void Spacing::writeFile(ostream & os, bool para) const
 		os.setf(ios::showpoint|ios::fixed);
 		os.precision(2);
 		os << cmd << spacing_string[getSpace()]
-		   << ' ' << getValue() << " \n";
+		   << ' ' << getValue() << "\n";
 	} else {
-		os << cmd << spacing_string[getSpace()] << " \n";
+		os << cmd << spacing_string[getSpace()] << "\n";
 	}
 }
 

@@ -510,7 +510,7 @@ void PreviewLoader::Impl::startLoading()
 
 	if (ret != 0) {
 		lyxerr[Debug::GRAPHICS] << "PreviewLoader::startLoading()\n"
-					<< "Unable to start process \n"
+					<< "Unable to start process\n"
 					<< command << endl;
 		return;
 	}

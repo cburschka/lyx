@@ -1,3 +1,10 @@
+2004-08-16  José Matos  <jamatos@lyx.org>
+
+	* insethfill.C (write):
+	* insetline.C (write):
+	* insetnewline.C (write):
+	* insetpagebreak.C (write): remove space at end of line.
+
 2004-08-16  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* insettabular.C (plaintext): do not use ownerPar to get the

@@ -172,7 +172,7 @@ void MathMacroTemplate::read(Buffer const &, LyXLex & lex)
 void MathMacroTemplate::write(Buffer const &, std::ostream & os) const
 {
 	WriteStream wi(os, false, false);
-	os << "FormulaMacro ";
+	os << "FormulaMacro\n";
 	write(wi);
 }
 
@@ -180,12 +180,12 @@ void MathMacroTemplate::write(Buffer const &, std::ostream & os) const
 void MathMacroTemplate::write(WriteStream & os) const
 {
 	if (type_ == "def") {
-		os << "\n\\def\\" << name_.c_str();
+		os << "\\def\\" << name_.c_str();
 		for (int i = 1; i <= numargs_; ++i)
 			os << '#' << i;
 	} else {
 		// newcommand or renewcommand
-		os << "\n\\" << type_.c_str() << "{\\" << name_.c_str() << '}';
+		os << "\\" << type_.c_str() << "{\\" << name_.c_str() << '}';
 		if (numargs_ > 0)
 			os << '[' << numargs_ << ']';
 	}

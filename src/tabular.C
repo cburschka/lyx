@@ -1126,7 +1126,7 @@ void LyXTabular::write(Buffer const & buf, ostream & os) const
 			   << ">\n";
 			os << "\\begin_inset ";
 			cell_info[i][j].inset.write(buf, os);
-			os << "\n\\end_inset \n"
+			os << "\n\\end_inset\n"
 			   << "</cell>\n";
 		}
 		os << "</row>\n";
