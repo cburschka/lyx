@@ -1,3 +1,12 @@
+2004-08-12  Kornel Benko  <kornel.benko@berlin.de>
+
+	* QPrefs.C (setComboxFont): Use fromqstr() instead of latin1() for
+	font name comparison since latin1() can return NULL
+	* lyx_gui.C (roman_font_name): convert return value with fromqstr()
+	instead of latin1() since latin1() can return NULL
+	(sans_font_name): ditto
+	(typewriter_font_name): ditto
+
 2004-08-09  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* FileDialog.C: #define USE_NATIVE_FILEDIALOG under LyX/Mac

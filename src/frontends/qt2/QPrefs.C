@@ -418,7 +418,7 @@ void setComboxFont(QComboBox * cb, string const & family, string const & foundry
 
 	for (int i = 0; i < cb->count(); ++i) {
 		lyxerr << "Looking at " << fromqstr(cb->text(i)) << endl;
-		if (compare_no_case(cb->text(i).latin1(), info.family().latin1()) == 0) {
+		if (compare_no_case(fromqstr(cb->text(i)), fromqstr(info.family())) == 0) {
 			cb->setCurrentItem(i);
 			return;
 		}
