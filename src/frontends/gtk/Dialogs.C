@@ -38,7 +38,6 @@
 #include "ControlTabularCreate.h"
 #include "ControlTexinfo.h"
 #include "ControlToc.h"
-#include "ControlVCLog.h"
 #include "ControlWrap.h"
 
 #include "GAboutlyx.h"
@@ -71,7 +70,6 @@
 #include "GTableCreate.h"
 #include "FormToc.h"
 #include "GUrl.h"
-#include "FormVCLog.h"
 #include "FormWrap.h"
 
 #ifdef HAVE_LIBAIKSAURUS
@@ -125,7 +123,7 @@ char const * const dialognames[] = { "aboutlyx", "bibitem", "bibtex", "branch", 
 "thesaurus",
 #endif
 
-"toc", "url", "vclog", "wrap" };
+"toc", "url", "wrap" };
 
 char const * const * const end_dialognames =
 	dialognames + (sizeof(dialognames) / sizeof(char *));
@@ -453,10 +451,6 @@ Dialog * Dialogs::build(string const & name)
 		dialog->setController(new ControlCommand(*dialog, name));
 		dialog->setView(new GUrl(*dialog));
 		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
-	} else if (name == "vclog") {
-		dialog->setController(new ControlVCLog(*dialog));
-		dialog->setView(new FormVCLog(*dialog));
-		dialog->bc().bp(new OkCancelPolicy);
 	} else if (name == "wrap") {
 		dialog->setController(new ControlWrap(*dialog));
 		dialog->setView(new FormWrap(*dialog));

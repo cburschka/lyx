@@ -114,7 +114,6 @@ xforms_objects = \
 	../xforms/FormText.lo \
 	../xforms/FormThesaurus.lo \
 	../xforms/FormToc.lo \
-	../xforms/FormVCLog.lo \
 	../xforms/FormWrap.lo \
 	../xforms/freebrowser.lo \
 	../xforms/input_validators.lo \
