@@ -5,6 +5,7 @@
  * Licence details can be found in the file COPYING.
  *
  * \author Edwin Leuven
+ * \author John Levon
  *
  * Full author contact details are available in file CREDITS
  */
@@ -13,6 +14,7 @@
 
 #include <qwidget.h>
 #include <qpixmap.h>
+#include <qcolor.h>
 
 class QMouseEvent;
 class QResizeEvent;
@@ -37,6 +39,10 @@ signals:
 	void clicked();
 
 public slots:
+	void setLeftEnabled(bool);
+	void setRightEnabled(bool);
+	void setTopEnabled(bool);
+	void setBottomEnabled(bool);
 	void setLeft(bool);
 	void setRight(bool);
 	void setTop(bool);
@@ -50,17 +56,23 @@ protected:
 private:
 	void init();
 
-	void drawLine(bool set, int x, int y, int x2, int y2);
+	void drawLine(QColor const & col, int x, int y, int x2, int y2);
  
 	void drawLeft(bool);
 	void drawRight(bool);
 	void drawTop(bool);
 	void drawBottom(bool);
 
-	bool left_;
-	bool right_;
-	bool top_;
-	bool bottom_;
+	struct Border {
+		Border() : set(true), enabled(true) {}
+		bool set;
+		bool enabled;
+	};
+
+	Border left_;
+	Border right_;
+	Border top_;
+	Border bottom_;
 
 	int m;
 	int l;

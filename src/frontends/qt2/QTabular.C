@@ -46,7 +46,37 @@ void QTabular::build_dialog()
 
 	bc().setCancel(dialog_->closePB);
 
-	// FIXME: add widgets to read only
+	bc().addReadOnly(dialog_->multicolumnCB);
+	bc().addReadOnly(dialog_->rotateCellCB);
+	bc().addReadOnly(dialog_->rotateTabularCB);
+	bc().addReadOnly(dialog_->specialAlignmentED);
+	bc().addReadOnly(dialog_->widthED);
+	bc().addReadOnly(dialog_->widthUnit);
+	bc().addReadOnly(dialog_->hAlignCB);
+	bc().addReadOnly(dialog_->vAlignCB);
+	bc().addReadOnly(dialog_->columnAddPB);
+	bc().addReadOnly(dialog_->columnDeletePB);
+	bc().addReadOnly(dialog_->rowAddPB);
+	bc().addReadOnly(dialog_->rowDeletePB);
+	bc().addReadOnly(dialog_->borderSetPB);
+	bc().addReadOnly(dialog_->borderUnsetPB);
+	bc().addReadOnly(dialog_->borders);
+	bc().addReadOnly(dialog_->longTabularCB);
+	bc().addReadOnly(dialog_->headerStatusCB);
+	bc().addReadOnly(dialog_->headerBorderAboveCB);
+	bc().addReadOnly(dialog_->headerBorderBelowCB);
+	bc().addReadOnly(dialog_->firstheaderStatusCB);
+	bc().addReadOnly(dialog_->firstheaderBorderAboveCB);
+	bc().addReadOnly(dialog_->firstheaderBorderBelowCB);
+	bc().addReadOnly(dialog_->firstheaderNoContentsCB);
+	bc().addReadOnly(dialog_->footerStatusCB);
+	bc().addReadOnly(dialog_->footerBorderAboveCB);
+	bc().addReadOnly(dialog_->footerBorderBelowCB);
+	bc().addReadOnly(dialog_->lastfooterStatusCB);
+	bc().addReadOnly(dialog_->lastfooterBorderAboveCB);
+	bc().addReadOnly(dialog_->lastfooterBorderBelowCB);
+	bc().addReadOnly(dialog_->lastfooterNoContentsCB);
+	bc().addReadOnly(dialog_->newpageCB);
 }
 
 
@@ -62,17 +92,38 @@ void QTabular::update_borders()
 	int cell(controller().inset()->getActCell());
  
 	if (!controller().isMulticolumnCell()) {
+		dialog_->borders->setLeftEnabled(true);
+		dialog_->borders->setRightEnabled(true);
 		dialog_->borders->setTop(tabular->TopLine(cell, true));
 		dialog_->borders->setBottom(tabular->BottomLine(cell, true));
 		dialog_->borders->setLeft(tabular->LeftLine(cell, true));
 		dialog_->borders->setRight(tabular->RightLine(cell, true));
+		// repaint the setborder widget
+		dialog_->borders->repaint();
 		return;
 	}
- 
+
 	dialog_->borders->setTop(tabular->TopLine(cell));
 	dialog_->borders->setBottom(tabular->BottomLine(cell));
-	dialog_->borders->setLeft(tabular->LeftLine(cell));
-	dialog_->borders->setRight(tabular->RightLine(cell));
+	// pay attention to left/right lines: they are only allowed
+	// to set if we are in first/last cell of row or if the left/right
+	// cell is also a multicolumn.
+	if (tabular->IsFirstCellInRow(cell) || tabular->IsMultiColumn(cell - 1)) {
+		dialog_->borders->setLeftEnabled(true);
+		dialog_->borders->setLeft(tabular->LeftLine(cell));
+	} else {
+		dialog_->borders->setLeft(false);
+		dialog_->borders->setLeftEnabled(false);
+	}
+	if (tabular->IsLastCellInRow(cell) || tabular->IsMultiColumn(cell + 1)) {
+		dialog_->borders->setRightEnabled(true);
+		dialog_->borders->setRight(tabular->RightLine(cell));
+	} else {
+		dialog_->borders->setRight(false);
+		dialog_->borders->setRightEnabled(false);
+	}
+	// repaint the setborder widget
+	dialog_->borders->repaint();
 }
 
 

@@ -84,7 +84,6 @@ void QTabularDialog::borderSet_clicked()
 	form_->controller().set(LyXTabular::SET_ALL_LINES);
 	form_->update_borders();
 	form_->changed();
-	//FIXME: qsetborder widget not updated
 }
 
 void QTabularDialog::borderUnset_clicked()
@@ -92,7 +91,6 @@ void QTabularDialog::borderUnset_clicked()
 	form_->controller().set(LyXTabular::UNSET_ALL_LINES);
 	form_->update_borders();
 	form_->changed();
-	//FIXME: qsetborder widget not updated
 }
  
 

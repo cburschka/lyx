@@ -4,6 +4,7 @@
  * Licence details can be found in the file COPYING.
  *
  * \author Edwin Leuven
+ * \author John Levon
  *
  * Full author contact details are available in file CREDITS
  */
@@ -15,9 +16,7 @@
 
 
 QSetBorder::QSetBorder(QWidget * parent, char const * name, WFlags fl)
-	: QWidget(parent, name, fl),
-	  left_(true), right_(true), top_(true), bottom_(true),
-	  buffer(75, 75)
+	: QWidget(parent, name, fl), buffer(75, 75)
 {
 	/* length of corner line */
 	l = buffer.width() / 10;
@@ -70,19 +69,27 @@ void QSetBorder::mousePressEvent(QMouseEvent * e)
 {
 	if (e->y() > e->x()) {
 		if (e->y() < height() - e->x()) {
-			setLeft(!left_);
-			emit leftSet(left_);
+			if (left_.enabled) {
+				setLeft(!left_.set);
+				emit leftSet(left_.set);
+			}
 		} else {
-			setBottom(!bottom_);
-			emit bottomSet(bottom_);
+			if (bottom_.enabled) {
+				setBottom(!bottom_.set);
+				emit bottomSet(bottom_.set);
+			}
 		}
 	} else {
 		if (e->y() < height() - e->x()) {
-			setTop(!top_);
-			emit topSet(top_);
+			if (top_.enabled) {
+				setTop(!top_.set);
+				emit topSet(top_.set);
+			}
 		} else {
-			setRight(!right_);
-			emit rightSet(right_);
+			if (right_.enabled) {
+				setRight(!right_.set);
+				emit rightSet(right_.set);
+			}
 		}
 	}
 	update();
@@ -90,13 +97,13 @@ void QSetBorder::mousePressEvent(QMouseEvent * e)
 }
 
 
-void QSetBorder::drawLine(bool draw, int x, int y, int x2, int y2)
+void QSetBorder::drawLine(QColor const & col, int x, int y, int x2, int y2)
 {
 	QPainter paint;
 	paint.begin(&buffer);
 	QPen p = paint.pen();
 	p.setWidth(2);
-	p.setColor(draw ? Qt::black : Qt::white);
+	p.setColor(col);
 	paint.setPen(p);
 	paint.drawLine(x, y, x2, y2);
 	paint.end();
@@ -105,52 +112,92 @@ void QSetBorder::drawLine(bool draw, int x, int y, int x2, int y2)
 
 void QSetBorder::drawLeft(bool draw)
 {
-	drawLine(draw, m + l, m + l + 2, m + l, h - m - l - 1);
+	QColor col(draw ? Qt::black : Qt::white);
+	if (!left_.enabled)
+		col = QColor("grey");
+	drawLine(col, m + l, m + l + 2, m + l, h - m - l - 1);
 }
  
 
 void QSetBorder::drawRight(bool draw)
 {
-	drawLine(draw, h - m - l + 1, m + l + 2, h - m - l + 1, h - m - l - 1);
+	QColor col(draw ? Qt::black : Qt::white);
+	if (!right_.enabled)
+		col = QColor("grey");
+	drawLine(col, h - m - l + 1, m + l + 2, h - m - l + 1, h - m - l - 1);
 }
 
  
 void QSetBorder::drawTop(bool draw)
 {
-	drawLine(draw, m + l + 2, m + l, w - m - l - 1, m + l);
+	QColor col(draw ? Qt::black : Qt::white);
+	if (!top_.enabled)
+		col = QColor("grey");
+	drawLine(col, m + l + 2, m + l, w - m - l - 1, m + l);
 }
 
 
 void QSetBorder::drawBottom(bool draw)
 {
-	drawLine(draw, m + l + 2, w - m - l + 1, w - m - l - 1, w - m - l + 1);
+	QColor col(draw ? Qt::black : Qt::white);
+	if (!bottom_.enabled)
+		col = QColor("grey");
+	drawLine(col, m + l + 2, w - m - l + 1, w - m - l - 1, w - m - l + 1);
 }
 
- 
+
+void QSetBorder::setLeftEnabled(bool border)
+{
+	left_.enabled = border;
+	drawLeft(border);
+}
+
+
+void QSetBorder::setRightEnabled(bool border)
+{
+	right_.enabled = border;
+	drawRight(border);
+}
+
+
+void QSetBorder::setTopEnabled(bool border)
+{
+	top_.enabled = border;
+	drawTop(border);
+}
+
+
+void QSetBorder::setBottomEnabled(bool border)
+{
+	bottom_.enabled = border;
+	drawBottom(border);
+}
+
+
 void QSetBorder::setLeft(bool border)
 {
-	left_ = border;
+	left_.set = border;
 	drawLeft(border);
 }
 
 
 void QSetBorder::setRight(bool border)
 {
-	right_ = border;
+	right_.set = border;
 	drawRight(border);
 }
  
 
 void QSetBorder::setTop(bool border)
 {
-	top_ = border;
+	top_.set = border;
 	drawTop(border);
 }
  
 
 void QSetBorder::setBottom(bool border)
 {
-	bottom_ = border;
+	bottom_.set = border;
 	drawBottom(border);
 }
 
@@ -166,23 +213,23 @@ void QSetBorder::setAll(bool border)
 
 bool QSetBorder::getLeft()
 {
-	return left_;
+	return left_.set;
 }
 
 
 bool QSetBorder::getRight()
 {
-	return right_;
+	return right_.set;
 }
 
 
 bool QSetBorder::getTop()
 {
-	return top_;
+	return top_.set;
 }
 
 
 bool QSetBorder::getBottom()
 {
-	return bottom_;
+	return bottom_.set;
 }
