@@ -1,0 +1,166 @@
+#% Do not delete the line below; configure depends on this
+#  \DeclareLaTeXClass{article (paper)}
+# Paper textclass definition file. 
+# Created by Jean-Marc Lasgouttes (Jean-Marc.Lasgouttes@inria.fr)
+
+
+# General textclass parameters
+MaxCounter		Counter_Section
+Columns			1
+Sides			1
+SecNumDepth		3
+TocDepth		3
+
+# Standard style definition
+Style Standard
+  Margin  		Static
+  LatexType 		Paragraph
+  LatexName 		dummy
+  ParIndent		MM
+  ParSkip 		0.4
+  Align 		Block
+  AlignPossible 	Block, Left, Right, Center
+  LabelType 		No_Label
+End
+
+# A few lists
+Input stdlists.inc
+
+# Standard sections.
+Input stdsections.inc
+
+### All the section headings now use sans serif
+Style Part
+  Align			Left
+  AlignPossible		Left
+  TopSep                2
+  BottomSep             1.5
+
+  Font
+    Family		Sans
+    Series		Bold
+    Size		Largest
+  EndFont
+End
+
+Style Section
+  Font 
+    Family              Sans
+    Series              Bold
+    Size                Large
+  EndFont
+End
+
+Style Subsection
+  Font 
+    Family              Sans
+    Series              Bold
+    Size                Large
+  EndFont
+End
+
+Style Subsubsection
+  Font 
+    Family              Sans
+    Series              Bold
+    Size                Normal
+  EndFont
+End
+
+Style Paragraph
+  Font 
+    Family              Sans
+    Series              Bold
+    Size                Normal
+  EndFont
+End
+
+Style Subparagraph
+  Font 
+    Family              Sans
+    Size                Normal
+  EndFont
+End
+
+# Starred versions of the sectioning layouts.
+Input stdstarsections.inc
+
+# There are no chapters in a paper.
+NoStyle			Chapter
+NoStyle			Chapter*
+
+# Some standard layouts 
+Input stdstruct.inc
+Input lyxmacros.inc
+Input stdlayouts.inc
+Input obsolete.inc
+
+### The description environment also uses sans serif labels.
+Style Description
+  LabelFont 
+    Family              Sans
+    Series              Bold
+  EndFont
+End
+
+### The \maketitle stuff is by default left justified.
+Style Title
+  Align                 Left
+  AlignPossible         Left
+
+  Font 
+    Family              Sans
+    Series              Bold
+    Size                Largest
+  EndFont
+End
+
+Style Author
+  Align                 Left
+  AlignPossible         Left
+
+  Font 
+    Size                Larger
+    Family              Sans
+    Shape               Italic
+  EndFont
+End
+
+Style			Abstract
+  Align                 Left
+  AlignPossible         Left
+
+  Font 
+    Size                Small
+    Family              Sans
+  EndFont
+End
+
+### A few new things defined only in the paper document class
+Style SubTitle
+  CopyStyle		Title
+  LatexName		subtitle
+
+  Font 
+    Family              Sans
+    Series              Medium
+    Size                Large
+  EndFont
+End
+
+Style Institution
+  CopyStyle		Title
+  LatexName		institution
+
+  Font 
+    Family              Sans
+    Series              Medium
+    Size                Normal
+  EndFont
+End
+
+Style Keywords
+  CopyStyle		Abstract
+  LatexName		keywords
+  LabelString		"Keywords:"
+End

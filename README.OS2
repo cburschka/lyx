@@ -1,0 +1,197 @@
+
+README file for OS/2 version of LyX 1.0.1
+by Shigeru Miyata <miyata@kusm.kyoto-u.ac.jp>
+modified by Arnd Hanses <Arnd.H.Hanses@rz.ruhr-uni-bochum.de>
+##############################################################
+
+- This README.OS2 addresses experienced users of XFree86 and 
+  LyX on OS/2 and covers in very short form the steps for 
+  updating (installing) LyX.
+
+- For general information on LyX please refer to the generic
+  README. For generic compiling instructions refer to INSTALL.
+
+- For a more detailed step by step guide on installing (or compiling) 
+  LyX and other related useful (or even necessary) optional programs 
+  on OS/2 please refer to INSTALL.OS2. If you are not already an
+  experienced user of LyX an OS/2 you are advised to read it.
+
+- For a description of the binary distribution and any necessary 
+  support libraries please refer to README.bin, which comes with the
+  binary distribution.
+
+
+LyX has been ported to OS/2 with XFree86 by Shigeru Miyata and
+has been installed and used successfully by many people. 
+Unfortunately there is yet no easy to install and complete distribu-
+tion of XFree86-related software for OS/2. Despite increasing popula-
+rity of X on OS/2, extensive printed documentation about XFree/2 and 
+related programs like LyX is still not available. So you will 
+have to study the available documentation (man pages, READMEs, faq,
+etc.) thoroughly to avoid unnecessary grief for you and for other 
+people, trying to help you on the net. Nevertheless, there are 
+existing tutorials and manuals covering X on UNIX family operating
+systems, which do contain some valuable information even for X on 
+OS/2. 
+    [A hint as a starting point for users speaking German: 
+	http://www.rrzn-uni-hannover.de/Umdrucke/WSC.5/WSC5_1.html].
+
+This release is considered to be stable for general use, but - like 
+any other piece of software - certainly is not bug free.
+So take the usual precautions like adopting a regular backup policy. 
+Standard disclaimers of non liability apply.
+
+As this is a voluntary project with a large number of contributions 
+by many people, hints and bug fixes to the program and/or the 
+documentation are always appreciated and thoroughly considered. If
+you have the necessary skills (or want to take the chance to acquire 
+them) for programming in LaTeX or C++ you can become a LyX developer.
+You can support further development by making a donation, if you feel 
+that LyX made your live a bit easier or you want to support open source
+software.
+Please refer to the links at www.lyx.org for details.
+
+==============================================================
+
+	A. Quick Update:
+	   ------------
+
+0) Only for update: If you are upgrading from LyX v. 0.12.0,
+   any old documentation files in %HOME%/.lyx/doc/ and 
+   %X11ROOT%/XFree86/lib/X11/lyx/doc should be removed before 
+   unpacking (since they are read only). You might wish to make 
+   a backup, if you want to keep old docs.
+
+1) Unpack the archive at %X11ROOT%. 
+
+2) Run lyx and let the program copy configuration files to
+	%HOME%\.lyx\.
+
+3) If you don't have %HOME%\.lyx\lyxrc then move 
+   %X11ROOT%\XFree86\lyxrc.example to %HOME%\.lyx\lyxrc. 
+   If updating, make a backup of old version, if you want.
+   Read README and WHATSNEW about updating and run 
+   Options->Reconfigure as indicated.
+
+4) Verify if LYX is able to find the programs mentioned 
+   in %HOME%\.lyx\lyxrc and in %HOME%\.lyx\lyxrc.defaults; if not, 
+   change name and path as required.
+
+   Note: Remember to repeat the check after any 'Reconfigure'!
+
+5) In config.sys SET LANG and LANGUAGE according to 
+   your preferences. Beware: All programs supporting local
+   languages will be affected, e.g.:
+
+SET LANG=de_DE		rem german helpfiles will be used
+SET LANGUAGE=de_DE	rem german menus and messages
+
+6) Restart OS/2 and run LyX. Have fun!
+
+
+
+	B. Help/Problems:
+	   -------------
+
+* Please refer to the manpage (type 'man lyx' on the command line or
+  use 'xman')
+
+* If you encounter apparently OS/2 specific bugs, (i.e. bugs not
+  already mentioned in the documentation or the buglist) you can report
+  them to the XFree86/OS2 mailing list as well as to the LyX developer 
+  mailing list. 
+
+* For any questions on using LyX please subscribe to the the LyX user 
+  mailing list.
+
+  - To subscribe to the XFree86 mailing list send mail to
+      majordomo@borneo.gmd.de
+    with "subscribe" as the subject.
+    To contribute to the mailing list, mail to
+      xfreeos2@borneo.gmd.de
+
+  - For subscription to lyx-user list (general help on LyX) go to
+	http://www.lyx.org
+    and search for subscription info.
+
+* Hints:
+  -----
+1. To prevent 'file not found' with EmTeX and some non-US versions 
+   of Warp, I recommend:
+
+	1) In filenames use only A-Z, a-z, 1-9. 
+	
+	2) Use a recent LaTeX package inputenc.sty. Select
+	   Layout->Document->Encoding:latin1, so that LyX adds 
+	   the LaTeX command '\usepackage[latin1]{inputenc}'.
+
+2. LaTeX import occasionally produces buggy *.lyx files. LyX tries 
+   to save data in case of problems (and does a good job here),
+   but I recommend:
+
+	To import LaTeX close down and restart LyX (or close all
+	documents, you are working on) and try the import, so that 
+	in case of any problems none of your existing documents will 
+	be affected.
+
+3. Inline preview of inline images sometimes does not show the
+   image: If you want to preview the image, just click on it and 
+   select fullscreen preview. 
+
+4. Some XFree/2 programs (as ported from UNIX) expect a sh.exe
+   in \bin directory: I recommend to install sh.exe of pdksh.zip 
+   in x:\bin (x: drive of %X11ROOT%). To work around problems you
+   can try the commands 
+	set EMXSHELL=x:\bin\sh.exe
+   before starting the programs. As far as I know, LyX runs without 
+   problems in this way.
+
+
+Some suggestions in case of problems:
+------------------------------------
+1) Please check, if your x:\xfree86\lib does appear correctly in
+   libpath.
+
+2) Please check against the file list, if you did install all files of
+   the distribution.
+
+3) Remove all installed files and 
+	%.home%/.lyx/ 
+   and perform a 
+	chkdsk /f 
+   and a consistency check of your lyx binary package (unzip -tv
+   foo.zip). 
+
+4) Reinstall the complete package and check out if everything appears,
+   no truncated files, no crc errors, etc.
+
+5) Run 
+	lyx -dbg 1026 >lyxerrors.log 2>&1
+   or, if you have tee.exe,
+	lyx -dbg 1026 2>&1|tee lyxerrors.log
+  and watch out for any error messages. Report any remaining problems. 
+  As this is a completely voluntary project, everybody involved will be
+  grateful for user efforts like detailed bug reports, suggestions,
+  fixes, additions to the documentation, etc. 
+
+6) Have fun! (I'm sure).
+
+
+	C. Tips for Advanced Users:
+	   -----------------------
+* You can start LyX automatically by adding 
+	'start/min/n xconsole.exe'
+	'set EMXSHELL=x:\bin\sh.exe'
+	'start/min/n lyx >/dev/console$ 2>&1'
+  to xinitrc.cmd before the line that invokes the 
+  window manager, so that LyX' messages appear in the 
+  console window and LyX appears in the pm-task list.
+
+* You can start LyX automatically by adding 
+	'detach xconsole.exe'
+	'detach lyx >/dev/console$ 2>&1'
+  to xinitrc.cmd before the line that invokes the 
+  window manager, so that LyX' messages appear in the 
+  console window and LyX does not appear in the PM task list.
+
+

@@ -1,0 +1,295 @@
+#This file was created by <phb> Tue Apr 13 00:28:13 1999
+#LyX 1.0 (C) 1995-1999 Matthias Ettrich and the LyX Team
+\lyxformat 2.15
+\textclass article
+\language french
+\inputencoding default
+\fontscheme default
+\graphics default
+\paperfontsize default
+\spacing single 
+\papersize a4paper
+\paperpackage a4
+\use_geometry 0
+\use_amsmath 0
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language french
+\quotes_times 2
+\papercolumns 1
+\papersides 1
+\paperpagestyle plain
+
+\layout Standard
+
+CECI EST LE TITRE DU DOCUMENT 
+\begin_inset Info Indication:
+Le titre devrait ressembler un peu plus à un titre ("TITLE")
+\end_inset 
+
+
+\layout Standard
+
+par Fée LyX 
+\begin_inset Info Indication:
+Fée est l'auteur de ce document ("AUTHOR")
+\end_inset 
+
+
+\layout Standard
+
+12 Juin 1972 
+\begin_inset Info Indication:
+Ceci est une "DATE".(NdT: Si si !)
+\end_inset 
+
+
+\layout Standard
+
+Table des Matières 
+\begin_inset Info Indication:
+Ce serait plus agréable de ne pas avoir à taper la
+ "Table des Matières"  explicitement.
+\end_inset 
+
+
+\layout Standard
+
+1.
+ Philosophie Générale.................1
+\layout Standard
+
+1.1 Comment LyX le fait...............1
+\layout Standard
+
+1.2 Pourquoi LyX est meilleur....1
+\layout Standard
+
+2.
+ Fonctionnalités de LyX
+\layout Standard
+
+3.
+ Tentatives maladroites de mieux utiliser LyX
+\layout Standard
+
+4.
+ Les Maths
+\layout Standard
+
+---------------------------------------------------
+\layout Standard
+
+1.
+ Philosophie Générale 
+\begin_inset Info Indication:
+Les titres de "Sections" ne sont pas assez en valeur, et ne
+devraient pas ^etre numérotés manuellement.
+\end_inset 
+
+
+\layout Standard
+
+La philosophie générale de LyX est de vous laisser vous concentrer sur le
+ contenu et non pas sur la forme de vos écrits.
+\layout Standard
+
+1.1 Comment LyX le fait
+\layout Standard
+
+LyX utilise LaTeX, un système de préparation de documents conçu par Leslie
+ Lamport en 1985.
+ Il a été construit, à son tour, à partir d'un langage de composition, appelé
+ TeX, créé par Donald Knuth en 1984.
+ LaTeX est conçu autour d'une philosophie similaire à celle de LyX.
+ Leslie Lamport disait lui-même (voir référence [1]) 
+\begin_inset Info Indication:
+Cette "Citation Bibliographique" ne devrait probablement pas
+^etre écrite en dur. Que se passe-t-il si le livre de Leslie Lamport
+passe en seconde position dans la bibliographie?
+\end_inset 
+
+:
+\layout Standard
+
+
+\begin_inset Quotes fld
+\end_inset 
+
+Le but de la typographie est d'aider le lecteur à comprendre l'idée de l'auteur.
+ Pour qu'un document soit facile à lire, sa structure visuelle doit refléter
+ sa structure logique.
+ Les citations et les sources de programmes, étant, logiquement parlant,
+ des éléments structurels différents, doivent être visuellement différents
+ les uns des autres...
+ Comme LaTeX ne peut pas comprendre votre prose, vous devez explicitement
+ définir sa structure logique en insérant des codes appropriés...
+ Lors de l'écriture de votre document, vous devez vous préoccuper de sa
+ structure logique, et non pas de son apparence.
+\begin_inset Quotes frd
+\end_inset 
+
+ 
+\begin_inset Info Indication:
+C'est une citation (QUOTE)
+\end_inset 
+
+
+\layout Standard
+
+1.2 Pourquoi LyX est meilleur
+\layout Standard
+
+LyX peut être profitable à un plus grand nombre d'utilisateurs que LaTeX.
+ Il est beaucoup plus facile à apprendre, car vous n'avez pas à connaître
+ LaTeX, qui est pratiquement un langage de programmation.
+ LyX est en bien des points comparable à d'autres traitements de texte 
+\begin_inset Quotes fld
+\end_inset 
+
+What you see is what you get
+\begin_inset Quotes frd
+\end_inset 
+
+ (WYSIWYG), excepté que LyX est plutôt 
+\begin_inset Quotes fld
+\end_inset 
+
+What you see is what you mean
+\begin_inset Quotes frd
+\end_inset 
+
+ (WYSIWYM).
+ LyX combine donc le confort des autres traitements de texte, et la puissance
+ de LaTeX.
+ C'est une bonne chose.
+ De plus, le format de fichier est indépendant du système.
+ Et pour finir, c'est un logiciel LIBRE! 
+\layout Standard
+
+2.
+ Fonctionnalités de LyX
+\layout Standard
+
+LyX possède un bon nombre de fonctionnalités qui facilitent l'écriture.
+ ( Après tout, quelle autre raison pourrait vous le faire utiliser? 
+\begin_inset Info Indication:
+Cette parenthèse serait bien mieux en "Note de bas de page"
+\end_inset 
+
+) Je NE RÉSISTE PLUS 
+\begin_inset Info Indication:
+A mettre en "Italique" (ou en "Evidence") plut^ot qu'en majuscules!
+\end_inset 
+
+ à l'envie de vous les présenter.
+ En voici quelques une.
+ 
+\layout Standard
+
+* LyX gère les marges et la numérotation des notes de bas de page pour vous.
+\layout Standard
+
+* L'écriture de formules mathématiques est un jeu d'enfant avec LyX.
+\layout Standard
+
+Voir Section 1.2, page 1 
+\begin_inset Info Indication:
+Cette "Référence Croisée" ne devrait pas ^etre écrite en dur.
+Que se passe-t-il si l'on change la numèrotation des sections?
+\end_inset 
+
+ pour une discussion plus approfondie sur les avantages de LyX par rapport
+ aux autres traitements de texte.
+ 
+\layout Standard
+
+3.
+ Tentatives maladroites de mieux utiliser LyX
+\layout Standard
+
+J'ai écrit un programme ces derniers jours.
+ Le voici :
+\layout Standard
+
+5 REMARK MON SUPER PROGRAMME
+\layout Standard
+
+10 PRINT 
+\begin_inset Quotes eld
+\end_inset 
+
+JE SUIS SUPER!
+\begin_inset Quotes erd
+\end_inset 
+
+
+\layout Standard
+
+20 GOTO 10
+\layout Standard
+
+
+\begin_inset Info Indication: C'est du source de programme ("CODE")
+\end_inset 
+
+
+\layout Standard
+
+Après cette pensée hautement scientifique, je me suis senti l'âme d'un poète.
+ J'ai donc écrit ceci
+\layout Standard
+
+LyX est vraiment un extraordinaire
+\layout Standard
+
+Outil de composition et de traitement de texte
+\layout Standard
+
+Il fait gagner tellement de temps
+\layout Standard
+
+
+\begin_inset Info Indication:
+Pas terrible comme poésie! Mais ce sont quand m^eme
+des vers ("VERSE").
+\end_inset 
+
+
+\layout Standard
+
+4.
+ Les maths 
+\begin_inset Info Indication:
+Les mathématiques qui suivent devraient ^etre traitées
+en "Mode Mathématique":
+\end_inset 
+
+
+\layout Standard
+
+Ma formule préférée est la résolution d'une équation du second degré.
+ Si ax^2+bx+c=0 (eq.1), alors x= -b + ou moins la racine carrée de b^2-4ac
+ le tout divisé par 2a (eq.
+ 2).
+\layout Standard
+
+Une autre favorite, la base du calcul différentiel: f'(x) est définie comme
+ la limite, quand deltax tend vers zéro, de l'expression f(x+deltax) - f(x)
+ divisé par deltax (eq.
+ 3).
+\layout Standard
+
+------------------------------------------------
+\layout Standard
+
+REFERENCES
+\layout Standard
+
+[1] Lamport, Leslie.
+ LaTeX: A Document Preparation System.
+ Addison-Wesley, Reading, Massachusetts, second edition, 1994.
+\the_end

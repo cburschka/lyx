@@ -1,0 +1,19 @@
+#
+# Contributed by Juergen Vigna (so ask me if you have questions)
+# This is a keyboard map for keyboards which do not have dead-keys
+# so you can put accents and umlauts on carachters
+#
+\kmod ' acute aeiouAEIOU
+\kmod ` grave aeiouAEIOU
+\kmod \" umlaut aeouAEOU
+\kxmod acute i "\\'{\\i}"
+\kxmod grave i "\\`{\\i}"
+\kxmod acute j "\\'{\\j}"
+\kxmod grave j "\\`{\\j}"
+# \kxmod acute ' '
+# \kxmod grave ` `
+# \kxmod umlaut \" \"
+#
+# Example of substituting local chars to TeX-Strings
+#
+# \kmap ß "\\ss{}"

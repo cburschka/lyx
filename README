@@ -1,0 +1,217 @@
+This is a LyX 1.0.x (stable) release
+------------------------------------
+
+What is LyX?
+
+	LyX is an advanced open-source "document processor". Unlike
+	standard word processors, LyX encourages writing based on the
+	structure of your documents, not their appearance. It lets you
+	concentrate on writing, leaving details of visual layout to the
+	software.
+
+	You can read more about this concept in the documentation,
+	which you'll find under the Help menu.  If you plan to use LyX, 
+	you really should read about it to be able to make the best of 
+	it.
+
+What is LyX not?
+
+	LyX is not just another word processor that claims to be a
+	Desktop Publishing program.  It's a more modern way of
+	creating documents that look much nicer, but without wasting 
+	time with layout-fiddling.  For these reasons you might need 
+	little time to get used to the differences.
+	If you are looking for a free Desktop Publishing program for
+	Unix, you will be disappointed.
+
+What do I need to run LyX?
+
+	A Unix-like system or OS/2 with XFree
+	At least X11 Release 5
+	A decent LaTeX2e installation (e.g. teTeX or NTeX) not older
+	   than 1995/12/01
+	Optionally ghostscript and ghostview (or compatible)
+	Perl5.002 or later to import LaTeX files into LyX
+
+What's new?
+
+	Read WHATSNEW.
+
+How do I install a binary distribution of LyX?
+
+	Unpack it and run it.  We recommend unpacking it in /usr/local,
+	but it should work anywhere.  In particular, you can try LyX
+	in a temporary directory before installing permanently by
+	typing "bin/lyx".
+
+	We recommend that you configure LyX system-wide by copying the
+        file share/lyx/lyxrc.example to share/lyx/lyxrc, and then
+	reading and modifying it.
+
+	You should read the notes regarding this particular build in
+	the file README.bin.
+
+How do I upgrade from an earlier LyX version?
+
+	Read the file UPGRADING for info on this subject.
+	If you are upgrading from version 0.12.0 or later, you don't 
+	need to do anything special.
+
+What do I need to compile LyX from the source distribution?
+
+	1. A good c++ compiler.  Development is being done mainly on
+	   gcc/g++, but many others work.
+	2. The Xforms library version 0.81, 0.86 or 0.88.
+	3. LibXpm version 4.7 (or newer).
+
+	Read the file "INSTALL" for more information on compiling.
+
+Okay, I've installed LyX. What now?
+
+	Once you've installed it, and everything looks fine, go read
+	the "Introduction" item under the Help menu.  You should follow
+	the instructions there, which tell you to read (or at least skim)
+	the Tutorial. After that, you should also read "Help/LaTeX
+	configuration" which provides info on your LaTeX configuration
+	as LyX sees it.  You might be missing a package or two that you'd
+	like to have.
+
+	User-level configuration is possible with a file "~/.lyx/lyxrc".
+	You can use the system-wide lyxrc file (which should be somewhere
+	like /usr/local/share/lyx/lyxrc) as a template for your personal
+	lyxrc file.  Remember that a personal configuration file will be
+	used instead of, not in addition to, any system-wide file.
+
+Does LyX have support for non-English speakers/writers/readers?
+
+	Yes. LyX supports writing in many languages.
+
+	Menus and error messages have been translated to the following
+	languages (* means there are language-specific keyboard menu
+	bindings as well):
+
+	Catalan     (ca)
+	Czech       (cs)
+	Danish      (da)
+	German      (de)    *
+	Spanish     (es)
+	Finnish     (fi)
+	French      (fr)    *
+	Hungarian   (hu)    *
+	Italian     (it)
+	Dutch       (nl)
+	Norwegian   (no)
+	Polish      (pl)
+	Portuguese  (pt)    *
+	Russian     (ru)
+	Slovenian   (sl)
+	Swedish     (sv)    *
+	Turkish     (tr)
+	Walloon	    (wa)
+
+	Keymaps can ease typing in one or more of the following languages:
+
+	Czech
+	French, Swiss French
+	German, Swiss German
+	Greek
+	Hungarian (Magyar)
+	Polish
+	Portugese
+	Romanian
+	Slovenian
+	Turkish
+
+Internet resources of relevance to LyX
+
+	The LyX homepage contains valuable information about LyX and the
+	various LyX mailing lists, as well as links to mirrors and other
+	LyX homepages around the world:
+	http://www.lyx.org/
+
+	Main LyX archive site:
+	ftp://ftp.lyx.org/pub/lyx/
+
+	The LyX Development page has information about the development
+	effort. LyX is now under CVS control, so you can get the very
+	latest sources from there at any time.
+	http://www.devel.lyx.org/
+	ftp://www.devel.lyx.org/pub/lyx/
+
+What is the numbering scheme for releases? Is it like the Linux kernel?
+
+	Yes, it's like the Linux kernel since LyX version 0.8:
+
+		0.10.x, 0.12.x, 1.0.x    ... are stable, public releases
+		0.11.x, 0.13.x, 1.1.x    ... are developer releases
+
+	Of course you may also use the developer releases, but only
+	at your own risk. This is definitely higher than your risk when 
+	using the public releases, even if this is your own risk, too.
+
+How do I submit a bug report?
+
+	If possible, read the "Known Bugs" document found under the
+	Help menu.  You'll find detailed info on submitting bug reports
+	there.
+
+	You should also check the BUGS file in this directory.
+
+	If you can't do that, send details to the LyX Developers mailing
+	list.  Don't forget to mention which version you are having
+	problems with!
+
+How do I prepare a binary distribution for the use of others?
+
+	1) Compile LyX with the right compiler switches for your
+	architecture. In particular you might want to ensure that libraries
+	like xforms and xpm are statically linked. To this end, you
+	can use a command like
+
+		make LYX_LIBS='/foo/libforms.a /bar/libXpm.a'
+
+	Moreover, make sure you use the --without-latex-config switch
+	of configure, since others might not be interested by your
+	configuration :-) 
+
+	2) Create a file README.bin describing your distribution and
+	referring to *you* if problems arise. As a model, you can use the 
+	file development/tools/README.bin.example which was originally
+	written for Linux by David L. Johnson. Do *not* use directly
+	the file in the distribution, since it refers to Linux and
+	points to David L. Johnson for help. However, it can be a good
+	starting point. Note that removing the file completely is
+	better than not	editing it at all.
+
+	3) Type `make bindist'. This will create a file
+	lyx-1.xx.yy-bin.tar.gz. Rename it to reflect you architecture 
+	and the peculiarities of your build (e.g. static vs. dynamic).
+
+	4) Check that everything is correct by unpacking the distribution 
+	in some private place and running it. In particular, check the 
+	output of `ldd lyx' to know which libraries are really needed.
+
+	5) Upload your binary file to ftp.lyx.org:/pub/lyx/uploads.
+
+How can I participate in the development of LyX? 
+
+	Any help with the development of LyX is greatly appreciated--
+	after all LyX wouldn't be what it is today without the help
+	of volunteers. We need your help!
+
+	If you want to work on LyX, you should contact the developer's 
+	mailing list for discussion on how to do your stuff.  LyX is being 
+	cleaned up, and therefore it's important to follow some rules. 
+	Read about those rules in development/Code_rules/.
+
+	If you don't know C++, there are many other ways to contribute.
+	Write documentation. Help to internationalize LyX by translating
+	documentation or menus/error messages, or by writing a new keymap.
+	Write a new textclass.  Work on reLyX (Perl). Find bugs (but please
+	read the list of known bugs first). Contribute money. Or just offer
+	feature suggestions (but please read the online TODO list first).  
+
+Thank you for trying LyX, and we appreciate your feedback in the mailing
+lists.
+
+The LyX Team.

@@ -1,0 +1,106 @@
+Rules for the code in LyX
+-------------------------
+
+The aim of this file is to serve as a guide for the developers, to aid us to
+get clean and uniform code. Still uncomplete.
+
+In general, if you want to contribute to the main source, we expect at least 
+that you:
+
+- write good C++ code: Readable, well commented and taking advantage of the 
+  OO model.
+- adapt the code to the structures already existing in LyX, or in case that 
+  you have better ideas, discuss them on the developer's list before writing 
+  the code.
+
+These guidelines should save us a lot of work while cleaning up the code and 
+help us to have quality code. LyX has been haunted by problems coming from 
+unfinished projects by people who have left the team. Those problems will 
+hopefully disappear if the code is easy to hand over to somebody else.
+
+
+* Naming rules for classes
+
+  - Use descriptive but simple and short names. For stuff specific to LyX
+    use LyX as prefix. Some modules, like mathed or spellchecker, could have
+    other prefixes.
+
+  - Class names are usually capitalized, and function names lowercased.
+    Enums are in CAPS.
+
+  - Long variables are named like thisLongVariableName.
+
+
+* Formatting
+
+  - Please adapt the formatting of your code to the setting in LyX in that
+    particular file. Lars and Asger are slowly, but surely moving the source 
+    towards Linux kernel style formatting, aka K&R style. We suggest that you 
+    also do this, but this is NOT something that has been decided generally.
+
+
+* Use existing structures
+
+  - Use LString whereever possible. LyX will someday move to Unicode, and
+    that will be easy if everybody uses LString now.
+
+  - Check out the filename and path tools in filetools.h
+
+  - Use the Error class to report errors and messages
+
+  [add description of other existing structures]
+
+
+* Declarations
+  
+  - Use this order for the access sections of your class: public,
+    protected, private. The public section is interesting for every
+    user of the class. The private section is only of interest for the
+    implementors of the class (you).
+  
+  - Avoid to declare global objects in the declaration file of the class. 
+    If the same variable is used for all object, use a static member.
+
+  - Avoid global or static variables. An exception to this rule is 
+    very private stuff like the math stack.
+
+  - Use the const keyword like this: char const * instead of const char *
+    because this is more logical.
+
+
+* Documentation
+
+  - The documentation is generated from the header files.
+  - You document for the other developers, not for yourself.
+  - You should document what the funtion do, not the implementation.
+  - in the .C files you document the implementation.
+  - Short description (///), large description (/** ... */)
+    (someone explain this please)
+  - You make the documentation by doing "make srcdoc" in the root,
+    and then you'll find HTML in the srcdoc/ directory. Read with
+    Netscape for best results.
+
+
+* NAMING RULES FOR USER-COMMANDS
+   
+  Here's the set of rules to apply when a new command name is introduced:
+ 
+  1) Use the object.event order. That is, use `word-forward' instead of 
+     `forward-word'.
+  2) Don't introduce an alias for an already named object. Same for events.
+  3) Forward movement or focus is called `forward' (not `right').
+  4) Backward movement or focus is called `backward' (not `left').
+  5) Upward movement of focus is called `up'.
+  6) Downward movement is called `down'.
+  7) The begin of an object is called `begin' (not `start').
+  8) The end of an object is called `end'.
+
+
+* Using external GUI constructors (XForms fdesign)
+
+  - Fdesign generated files should not be changed at all. The only changes
+    needed are gettext, compability with 0.81 or when you have made your own
+    xforms objects and have just a dummy in the .fd file in place of your
+    own. In case you have to change the generated files for any of the
+    reasons above, you should provide a patch against the clean generated
+    file. Your callbacks must be in a separate file.

@@ -1,0 +1,32 @@
+#
+# Key definition file for Transilvanian keyboard
+#
+#   Well, I live in a multicultural environment and it is 
+# very frequent to use hungarian and romanian letters in the
+# same document. 
+#   Also, I prefer deadkeys to keyboard arrangements. Here only 
+# "'", ";" and "q" are used as deadkeys, their initial values can be 
+# obtained repeating them 
+#
+# (c) 1996 by Laszlo Boloni, blaci@utcluj.ro
+#
+
+\kmod ' acute aeiouAEIOU	# acute is on '
+\kmod q hugarian_umlaut ouOU		# hungarian umlaut on q 
+\kmod ; umlaut ouOU		# umlaut is on ;
+# \kxmod hug q q	 	# possibility to type q, ' or ; by duplicating
+# \kxmod acute ' '	# 
+# \kxmod umlaut ; ;		
+\kxmod acute i "\\'{\\i}"	# use only root of i for i acute
+\kxmod hugarian_umlaut a "\\u{a}"
+\kxmod hugarian_umlaut A "\\u{A}"
+\kxmod acute s "\\c{s}"
+\kxmod acute S "\\c{S}"
+\kxmod acute t "\\c{t}"
+\kxmod acute T "\\c{T}"
+\kxmod umlaut i "\\^{\\i}"
+\kxmod umlaut I "\\^{I}"
+\kxmod umlaut a "\\^{a}"
+\kxmod umlaut A "\\^{A}"
+
+

@@ -1,0 +1,21 @@
+#!/bin/sh 
+# This is hack-gcc, an ugly hack to force gcc to recompile without
+# optimization when an error occurs. It is meant as wrapper around gcc
+# that works around compiler bugs when optimization is on . Do what
+# you want with this code.  
+
+# Author Jean-Marc Lasgouttes (Jean-Marc.Lasgouttes@inria.fr)
+
+ARGS=`echo "$*" | sed -e 's/\"/\\\"/g`
+
+if test "x$ARGS" = x ; then
+  echo "usage: $0 [gcc name] [normal gcc options]"
+  exit 0
+fi
+
+if eval "$ARGS" ; then
+  exit 0
+else
+  echo "$0: an error occurred, retrying without optimization." >&2
+  eval `echo $ARGS | sed -e 's/-O[0-9]*//'`
+fi

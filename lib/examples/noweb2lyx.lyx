@@ -1,0 +1,1358 @@
+#This file was created by <kayvan> Sun May  2 15:56:35 1999
+#LyX 1.0 (C) 1995-1999 Matthias Ettrich and the LyX Team
+\lyxformat 2.15
+\textclass literate-article
+\begin_preamble
+%
+% This relaxes the noweb constraint that chunks are
+% never broken across pages.
+%
+% This is from the noweb FAQ
+%
+\def\nwendcode{\endtrivlist \endgroup}
+\let\nwdocspar=\smallbreak
+\end_preamble
+\language default
+\inputencoding default
+\fontscheme default
+\graphics default
+\paperfontsize default
+\spacing single 
+\papersize Default
+\paperpackage a4
+\use_geometry 0
+\use_amsmath 0
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\quotes_times 2
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+
+\layout Title
+
+
+\noun on 
+noweb2lyx
+\layout Author
+
+Kayvan A.
+ Sylvan <kayvan@sylvan.com>
+\layout Date
+
+May 6, 1999
+\layout Abstract
+
+This document describes and implements a perl script for importing noweb
+ files into LyX
+\layout Standard
+\pagebreak_bottom 
+
+\begin_inset LatexCommand \tableofcontents{}
+
+\end_inset 
+
+
+\layout Section
+
+Introduction
+\layout Standard
+
+Since version 1.0.1, LyX now supports Literate Programming using 
+\noun on 
+noweb
+\noun default 
+.
+ This addition to LyX made it very pleasant to write programs in the literate
+ style (like this one).
+ In addition to being able to write new literate programs, it would be quite
+ useful if old 
+\noun on 
+noweb
+\noun default 
+ code could be imported into LyX in some fashion.
+ That's where this program comes in.
+\layout Standard
+
+The purpose of 
+\noun on 
+noweb2lyx
+\noun default 
+ is to convert a 
+\noun on 
+noweb
+\noun default 
+ file to LyX.
+\layout Scrap
+
+<<noweb2lyx.in>>=
+\newline 
+#!@PERL@
+\newline 
+# 
+\newline 
+# Copyright (C) 1999 Kayvan A.
+ Sylvan <kayvan@sylvan.com>
+\newline 
+#
+\protected_separator 
+You are free to use and modify this code under the terms of
+\newline 
+# the GNU General Public Licence version 2 or later.
+\newline 
+#
+\newline 
+#
+\protected_separator 
+Written with assistance from:
+\newline 
+# 
+\protected_separator 
+ Edmar Wienskoski Jr.
+ <edmar-w-jr@technologist.com>
+\newline 
+# 
+\protected_separator 
+ Amir Karger <karger@post.harvard.edu>
+\newline 
+#
+\newline 
+# $Id: noweb2lyx.lyx,v 1.1 1999/09/27 18:44:32 larsbj Exp $
+\newline 
+#
+\newline 
+# NOTE: This file was automatically generated from noweb2lyx.lyx using noweb.
+\newline 
+#
+\newline 
+<<Setup variables from user supplied args>>
+\newline 
+<<Subroutines>>
+\newline 
+<<Convert noweb to LyX>>
+\newline 
+@
+\layout Section
+
+The Noweb file defined
+\layout Standard
+
+A 
+\noun on 
+noweb
+\noun default 
+ file is a collection of documentation and code chunks.
+ Documentation chunks simply start with an ``@'' and have no name:
+\layout LyX-Code
+
+@ Here is some documentation.
+\newline 
+We can do arbitrary LaTeX code here.
+\newline 
+[...
+ blah blah blah ...]
+\layout Standard
+
+Code chunks look like this:
+\layout LyX-Code
+
+<<Name of chunk here>>=
+\newline 
+{...
+ code for the chunk goes here ...}
+\newline 
+@ 
+\layout Standard
+
+The ``@'' is a necessary delimiter to end the code chunk.
+ The other form that the ``@'' line takes is as follows:
+\layout LyX-Code
+
+<<Name of chunk here>>=
+\newline 
+{...
+ code for the chunk ...}
+\newline 
+@ %def identifier1 identifier2
+\layout Standard
+
+In the latter form, we are declaring to 
+\noun on 
+noweb
+\noun default 
+ that this code chunk defines identifier1, identifier2, etc.
+\layout Standard
+
+When first tackling this problem, I spoke with members of the LyX team that
+ knew about the literate programming extensions and reLyX (the LaTeX importing
+ code).
+\layout Standard
+
+One of the first ideas was to extend the reLyX code to understand the 
+\noun on 
+noweb
+\noun default 
+ code chunks.
+ This proved to be too hard and presents other problems
+\begin_float footnote 
+\layout Standard
+
+Not the least of these problems is the fact that << is a quote in French.
+\end_float 
+.
+ On the other hand, it turns out that reLyX contains a very useful literal
+ quoting mechanism.
+ If the input file contains the construct
+\layout LyX-Code
+
+
+\backslash 
+begin{reLyXskip}
+\newline 
+{...
+ LaTeX stuff ...}
+\newline 
+
+\backslash 
+end{reLyXskip}
+\layout Standard
+
+then reLyX will copy the surrounded code to the output file verbatim.
+ Given this, the first part of the translation is easy; we simply have to
+ copy the code chunks into an intermediate file that surrounds them with
+ 
+\family typewriter 
+
+\backslash 
+begin{reLyXskip}
+\family default 
+ and 
+\family typewriter 
+
+\backslash 
+end{reLyXskip}
+\family default 
+.
+\layout Standard
+
+Once reLyX is done with the input file, the problem is reduced to changing
+ the code chunks from LyX's LaTeX layout to the Scrap layout.
+\layout Standard
+
+There is one final constraint on 
+\noun on 
+noweb2lyx
+\noun default 
+.
+ We want to be able to run it as a simple pre-processor and post-processor
+ from within reLyX.
+ We can accomplish this by setting the flags 
+\latex latex 
+[[pre_only]]
+\latex default 
+ and 
+\latex latex 
+[[post_only]]
+\latex default 
+ before we reach the main conversion code.
+\layout Standard
+
+With all that preamble out of the way, we now have the basic high-level
+ outline for our code:
+\layout Scrap
+
+<<Convert noweb to LyX>>=
+\newline 
+if (!$post_only) {
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+<<Transform noweb for reLyX>>
+\newline 
+}
+\newline 
+if ((!$pre_only) && (!$post_only)) {
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+<<Run reLyX on intermediate file>>
+\newline 
+}
+\newline 
+if (!$pre_only) {
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+<<Fix up LyX file>>
+\newline 
+}
+\newline 
+<<Clean up>>
+\newline 
+@
+\layout Section
+
+Making a file that reLyX can process
+\layout Standard
+
+In this section, we present the code that performs the task of creating
+ the intermediate file that reLyX can process, using the algorithm that
+ we just outlined.
+ This algorithm is outlined in the code that follows:
+\layout Scrap
+
+<<Transform noweb for reLyX>>=
+\newline 
+<<Setup INPUT and OUTPUT>>
+\newline 
+inputline: while(<INPUT>)
+\newline 
+{
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+if (/^
+\backslash 
+s*
+\backslash 
+<
+\backslash 
+<.*
+\backslash 
+>
+\backslash 
+>=/) { # Beginning of a noweb scrap
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+<<Read in and output the noweb code chunk>>
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+} elsif (/^@
+\backslash 
+s+(.*)/) { # Beginning of a documentation chunk
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+print OUTPUT $1; # We do not need the ``@'' part
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+} elsif (/
+\backslash 
+[
+\backslash 
+[.+
+\backslash 
+]
+\backslash 
+]/) { # noweb quoted code
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+<<Perform special input quoting of [[var]]>>
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+} else {
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+print OUTPUT; # Just let the line pass through
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+}
+\newline 
+}
+\newline 
+<<Close INPUT and OUTPUT>>
+\newline 
+@
+\layout Standard
+
+In the code above, we do some pre-processing of the noweb ``[[...]]'' construct.
+ This avoids some problems with reLyX confusing lists composed of ``[[...]]''
+ constructs.
+\layout Scrap
+
+<<Perform special input quoting of [[var]]>>=
+\newline 
+s/
+\backslash 
+[
+\backslash 
+[.+?
+\backslash 
+]{2,}/{$&}/g;
+\newline 
+print OUTPUT;
+\newline 
+@
+\layout Standard
+
+While reading in the 
+\latex latex 
+[[INPUT]]
+\latex default 
+ file, once we have identified a 
+\noun on 
+noweb
+\noun default 
+ code chunk, we transform it into a form that is usable by reLyX.
+\layout Scrap
+
+<<Read in and output the noweb code chunk>>= 
+\newline 
+<<Save the beginning of the scrap to savedScrap>>
+\newline 
+<<Concatenate the rest of the scrap>>
+\newline 
+<<print out the scrap in a reLyXskip block>>
+\newline 
+@
+\layout Subsection
+
+File input and output for the pre-processing step
+\layout Standard
+
+In 
+\noun on 
+noweb2lyx
+\noun default 
+, we will use 
+\latex latex 
+[[INPUT]]
+\latex default 
+ and 
+\latex latex 
+[[OUTPUT]]
+\latex default 
+ to read and write files.
+ In the code fragment above, we need to read from the input file and write
+ to a file that will be later transformed by reLyX.
+ If we are being called only to pre-process the input file, then there is
+ no need to create a temporary file.
+\layout Scrap
+
+<<Setup INPUT and OUTPUT>>=
+\newline 
+if ($pre_only) {
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+&setup_files($input_file, $output_file);
+\newline 
+} else {
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+$relyx_file = "temp$$";
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+&setup_files($input_file, $relyx_file);
+\newline 
+}
+\newline 
+@
+\layout Standard
+
+This code uses a small perl subroutine, 
+\latex latex 
+[[setup_files]]
+\latex default 
+, which we define below:
+\layout Scrap
+
+<<Subroutines>>=
+\newline 
+sub setup_files {
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+my($in, $out) = @_;
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+open(INPUT, "<$in") || die "Can not read $in: $!
+\backslash 
+n";
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+open(OUTPUT, ">$out") || die "Can not write $out: $!
+\backslash 
+n";
+\newline 
+}
+\newline 
+@ %def setup_files 
+\protected_separator 
+
+\protected_separator 
+
+\layout Subsection
+
+Reading in the 
+\noun on 
+noweb
+\noun default 
+ scrap
+\layout Standard
+
+After we see the beginning of the scrap, we need to read in and save the
+ rest of the scrap for output.
+\layout Scrap
+
+<<Save the beginning of the scrap to savedScrap>>=
+\newline 
+$savedScrap = $_;
+\newline 
+$endLine = "";
+\newline 
+@
+\layout Scrap
+
+<<Concatenate the rest of the scrap>>=
+\newline 
+scrapline: while (<INPUT>) {
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+last scrapline if /^@
+\backslash 
+s+/;
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+$savedScrap .= $_;
+\newline 
+};
+\newline 
+switch: {
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+if (/^@
+\backslash 
+s+$/) {$savedScrap .= $_; last switch; }
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+if (/^@
+\backslash 
+s+%def.*$/) {$savedScrap .= $_; last switch; }
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+if (/^@
+\backslash 
+s+(.*)$/) {$savedScrap .= "@
+\backslash 
+n"; $endLine = "$1
+\backslash 
+n"; }
+\newline 
+}
+\newline 
+@
+\layout Subsection
+
+Printing out the scrap
+\layout Standard
+
+The final piece of the first pass of the conversion is done by this code.
+\layout Scrap
+
+<<print out the scrap in a reLyXskip block>>=
+\newline 
+print OUTPUT "
+\backslash 
+
+\backslash 
+begin{reLyXskip}
+\backslash 
+n";
+\newline 
+print OUTPUT $savedScrap;
+\newline 
+print OUTPUT "
+\backslash 
+
+\backslash 
+end{reLyXskip}
+\backslash 
+n
+\backslash 
+n";
+\newline 
+print OUTPUT "$endLine";
+\newline 
+@
+\layout Standard
+
+Finally, we need to close the 
+\latex latex 
+[[INPUT]]
+\latex default 
+ and 
+\latex latex 
+[[OUTPUT]]
+\latex default 
+ files.
+\layout Scrap
+
+<<Close INPUT and OUTPUT>>=
+\newline 
+close(INPUT);
+\newline 
+close(OUTPUT);
+\newline 
+@
+\layout Section
+
+Running reLyX
+\layout Standard
+
+In this section, we describe and implement the code that runs reLyX on the
+ intermediate file 
+\latex latex 
+[[relyx_file]]
+\latex default 
+.
+ 
+\layout Subsection
+
+Selecting the document class
+\layout Standard
+
+In order to run reLyX, we need to know the article class of the input document
+ (to choose the corresponding literate document layout).
+ For this, we need to parse the intermediate file.
+\layout Scrap
+
+<<Run reLyX on intermediate file>>=
+\newline 
+<<Parse for document class>>
+\newline 
+<<Run reLyX with document class>>
+\newline 
+@
+\layout Standard
+
+In the code below, you'll see a strange regular expression to search for
+ the document class.
+ The reason for this kludge is that without it, we can't run 
+\noun on 
+noweb2lyx
+\noun default 
+ on the 
+\emph on 
+noweb2lyx.nw
+\emph default 
+ file that is generated by LyX
+\begin_float footnote 
+\layout Standard
+
+reLyX searches for 
+\backslash 
+
+\backslash 
+doc
+\latex latex 
+{}
+\latex default 
+ument
+\latex latex 
+{}
+\latex default 
+class and gets confused, so we have to obfuscate it slightly.
+\end_float 
+.
+ With the regular expression as it is, we can actually run 
+\noun on 
+noweb2lyx
+\noun default 
+ on itself and a produce a quite reasonable LyX file.
+\layout Scrap
+
+<<Parse for document class>>=
+\newline 
+open(INPUT, "<$relyx_file") ||
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+die "Can not read $relyx_file: $!
+\backslash 
+n";
+\newline 
+$class = "article"; # default if none found
+\newline 
+parse: while(<INPUT>) {
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+if (/
+\backslash 
+
+\backslash 
+docu[m]entclass{(.*)}/) {
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+$class = $1;
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+last parse;
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+}
+\newline 
+}
+\newline 
+close(INPUT);
+\newline 
+@
+\layout Subsection
+
+Running reLyX with the corresponding literate document layout
+\layout Standard
+
+Now that we know what the document class ought to be, we do:
+\layout Scrap
+
+<<Run reLyX with document class>>= 
+\newline 
+$doc_class = "literate-" .
+ $class;
+\newline 
+die "reLyX returned non-zero: $!
+\backslash 
+n"
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+if (system("reLyX -c $doc_class $relyx_file"));
+\newline 
+@
+\layout Standard
+
+reLyX performs the main bulk of the translation work.
+ Note that if the ``literate-
+\emph on 
+class
+\emph default 
+'' document layout is not found, then reLyX will fail with an error.
+ In that case, you may need to modify your 
+\noun on 
+noweb
+\noun default 
+ input file to a supported document type.
+\layout Section
+
+Fixing the reLyX output
+\layout Standard
+
+We need to perform some post-processing of what reLyX produces in order
+ to have the best output for our literate document.
+ The outline of the post-processing steps are:
+\layout Scrap
+
+<<Fix up LyX file>>=
+\newline 
+<<Setup INPUT and OUTPUT for the final output>>
+\newline 
+line: while(<INPUT>)
+\newline 
+{
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+<<Fix code chunks in latex layout>>
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+<<Fix [[var]] noweb construct>>
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+print OUTPUT; # default
+\newline 
+} 
+\newline 
+<<Close INPUT and OUTPUT>>
+\newline 
+@
+\layout Standard
+
+Note that in the perl code that is contained in the 
+\latex latex 
+[[while(<INPUT>)]]
+\latex default 
+ loop above, the perl construct 
+\latex latex 
+[[next line]]
+\latex default 
+ is sufficient to restart the loop.
+ We can use this construct to do some relatively complex parsing of the
+ reLyX generated file.
+\layout Subsection
+
+File input and output for the post-processing
+\layout Standard
+
+Setting up the 
+\latex latex 
+[[INPUT]]
+\latex default 
+ and 
+\latex latex 
+[[OUTPUT]]
+\latex default 
+ is taken care of by this code:
+\layout Scrap
+
+<<Setup INPUT and OUTPUT for the final output>>=
+\newline 
+if ($post_only) {
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+&setup_files("$input_file", "$output_file");
+\newline 
+} else {
+\newline 
+
+\protected_separator 
+ &setup_files("$relyx_file.lyx", "$output_file");
+\newline 
+}
+\newline 
+@
+\layout Subsection
+
+Making sure the code chunks are in the Scrap layout
+\layout Standard
+
+Now, as we outlined before, the final step is transforming the code-chunks
+ which have been put into a LaTeX layout by LyX into the scrap layout.
+\layout Scrap
+
+<<Fix code chunks in latex layout>>=
+\newline 
+if (/
+\backslash 
+
+\backslash 
+latex latex/) { # Beginning of some latex code
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+if (($line = <INPUT>) =~ /^
+\backslash 
+s*<</) { # code scrap
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+ 
+\protected_separator 
+<<Transform this chunk into layout scrap>>
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+} else {
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+# print the 
+\backslash 
+latex latex line + next line
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+print OUTPUT "$_$line";
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+}
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+next line;
+\newline 
+}
+\newline 
+@
+\layout Standard
+
+When we are sure that we are in a code chunk, we must read in the rest of
+ the code chunk and output a scrap layout for it:
+\layout Scrap
+
+<<Transform this chunk into layout scrap>>=
+\newline 
+$savedScrap = "
+\backslash 
+
+\backslash 
+layout Scrap
+\backslash 
+n
+\backslash 
+n$line";
+\newline 
+codeline: while (<INPUT>) {
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+$savedScrap .= $_;
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+last codeline if /^@
+\backslash 
+s+/;
+\newline 
+};
+\newline 
+print OUTPUT $savedScrap;
+\newline 
+<<Slurp up to the end of the latex layout>>
+\newline 
+@
+\layout Standard
+
+Okay, now we just need to eat the rest of the latex layout.
+ There should only be a few different types of lines for us to match:
+\layout Scrap
+
+<<Slurp up to the end of the latex layout>>=
+\newline 
+slurp: while (<INPUT>) {
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+last slurp if /
+\backslash 
+
+\backslash 
+latex /;
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+next slurp if /
+\backslash 
+
+\backslash 
+newline/;
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+next slurp if /^
+\backslash 
+s*$/;
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+warn "confused by line: $_";
+\newline 
+}
+\newline 
+@
+\layout Subsection
+
+Taking care of the 
+\noun on 
+noweb
+\noun default 
+ 
+\emph on 
+[[quoted code]]
+\emph default 
+ construct
+\layout Standard
+
+
+\noun on 
+noweb
+\noun default 
+ allows the user to use a special code quoting mechanism in documentation
+ chunks.
+ Fixing this ``[[quoted-code]]'' 
+\noun on 
+noweb
+\noun default 
+ syntax means putting the ``[[quoted-code]]'' in a LaTeX layout in the LyX
+ file.
+ Otherwise, LyX will backslash-quote the brackets, creating ugly output.
+ The quoted-code is transformed by 
+\noun on 
+noweb
+\noun default 
+ when it generates the final LaTeX code.
+\layout Scrap
+
+<<Fix [[var]] noweb construct>>=
+\newline 
+if (/
+\backslash 
+[
+\backslash 
+[.+
+\backslash 
+]
+\backslash 
+]/) { # special code for [[var]]
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+s/
+\backslash 
+[
+\backslash 
+[.+?
+\backslash 
+]{2,}/
+\backslash 
+n
+\backslash 
+
+\backslash 
+latex latex
+\backslash 
+n$&
+\backslash 
+n
+\backslash 
+
+\backslash 
+latex default
+\backslash 
+n/g;
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+print OUTPUT;
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+next line;
+\newline 
+}
+\newline 
+@
+\layout Section
+
+Cleaning up intermediate files
+\layout Standard
+
+The cleanup code is very simple:
+\layout Scrap
+
+<<Clean up>>=
+\newline 
+system("rm -f $relyx_file*") unless ($post_only || $pre_only);
+\newline 
+@
+\layout Section
+
+User supplied arguments
+\layout Standard
+
+The 
+\noun on 
+noweb2lyx
+\noun default 
+ script understands two arguments, input-file and output-file.
+ It is also set up to be used internally by reLyX to pre-process or postprocess
+ files in the import pipeline.
+\layout Scrap
+
+<<Setup variables from user supplied args>>=
+\newline 
+&usage() if ($#ARGV < 1); # zero or one argument 
+\newline 
+if ($ARGV[0] eq "-pre") {
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+&usage unless ($#ARGV == 2);
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+$input_file = $ARGV[1]; $output_file = $ARGV[2]; $pre_only = 1;
+\newline 
+} elsif ($ARGV[0] eq "-post") {
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+&usage unless ($#ARGV == 2);
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+$input_file = $ARGV[1]; $output_file = $ARGV[2]; $post_only = 1;
+\newline 
+} else {
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+&usage unless ($#ARGV == 1);
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+$input_file = $ARGV[0];
+\protected_separator 
+$output_file = $ARGV[1];
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+$pre_only = 0; $post_only = 0;
+\newline 
+}
+\newline 
+@ %def input_file output_file pre_only post_only
+\layout Scrap
+
+<<Subroutines>>=
+\newline 
+sub usage() {
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+print "Usage: noweb2lyx [-pre | -post] input-file output-file
+\newline 
+
+\newline 
+If -pre is specified, only pre-processes the input-file for reLyX.
+\newline 
+Similarly, in the case of -post, post-processes reLyX output.
+\newline 
+In case of bugs, Email Kayvan Sylvan <kayvan
+\backslash 
+@sylvan.com>.
+\backslash 
+n";
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+exit;
+\newline 
+}
+\newline 
+@ %def usage
+\layout Section
+
+Generating the 
+\noun on 
+noweb2lyx
+\noun default 
+ script
+\layout Standard
+
+The noweb2lyx script can be tangled from LyX if you set 
+\family typewriter 
+
+\backslash 
+build_command
+\family default 
+ to call a generic script that always extracts a scrap named 
+\family typewriter 
+build-script
+\family default 
+ and executes it.
+ Here is an example of such a script:
+\layout LyX-Code
+
+#!/bin/sh
+\newline 
+notangle -Rbuild-script $1 | sh
+\layout Scrap
+
+<<build-script>>=
+\newline 
+PREFIX=/usr
+\newline 
+notangle -Rnoweb2lyx.in noweb2lyx.nw > noweb2lyx.in
+\newline 
+sed -e "s=@PERL@=$PREFIX/bin/perl=" noweb2lyx.in > noweb2lyx
+\newline 
+chmod +x noweb2lyx
+\newline 
+@
+\layout Section*
+\pagebreak_top 
+Macros
+\layout Standard
+
+
+\latex latex 
+
+\backslash 
+nowebchunks
+\layout Section*
+
+Identifiers
+\layout Standard
+
+
+\latex latex 
+
+\backslash 
+nowebindex
+\the_end

@@ -1,0 +1,4892 @@
+# Turkish translation for LyX.
+# Copyright (C) 1998. F. Kaðan Gürkaynak, Nurhan Çetin.
+# F. Kaðan Gürkaynak <kgf@linux.org.tr>, 1998.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: lyx 0.12.1\n"
+"POT-Creation-Date: 1999-09-23 15:37+0200\n"
+"PO-Revision-Date: 1999-09-23 16:54+02:00\n"
+"Last-Translator: F. Kaðan Gürkaynak <kgf@wpi.edu>\n"
+"Language-Team: turkish <tr@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=ISO-8859-9\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/BufferView.C:284
+msgid "Formatting document..."
+msgstr "Belgeniz biçimleniyor..."
+
+#: src/BufferView.C:357 src/BufferView.C:361
+msgid "No more errors"
+msgstr "Baþka hata yok"
+
+#: src/Chktex.C:94
+msgid "ChkTeX warning id #"
+msgstr "ChkTeX uyarý no #"
+
+#: src/FontLoader.C:217
+msgid "Loading font into X-Server..."
+msgstr "Yazýtipleri X-Sunucusuna yükleniyor"
+
+#: src/LaTeX.C:296 src/LaTeX.C:310 src/LaTeX.C:412
+msgid "Run #"
+msgstr "Ýsim "
+
+#: src/LaTeX.C:298 src/LaTeX.C:313 src/LaTeX.C:369 src/LaTeX.C:413
+msgid "LaTeX run number "
+msgstr "LaTeX Önyazý"
+
+#. no checks for now
+#: src/LaTeX.C:335 src/LaTeX.C:392
+msgid "Running MakeIndex."
+msgstr "chktex çalýþtýrýlýyor..."
+
+#. Here we must scan the .aux file and look for
+#. "\bibdata" and/or "\bibstyle". If one of those
+#. tags is found -> run bibtex and set rerun = true;
+#. no checks for now
+#: src/LaTeX.C:346
+msgid "Running BibTeX."
+msgstr "LaTex çalýþtýrýlýyor..."
+
+#: src/LaTeXLog.C:48
+msgid "NO LATEX LOG FILE!"
+msgstr "LATEX KÜTÜK DOSYASI BULUNAMADI!"
+
+#: src/LaTeXLog.C:55
+msgid "Build Program Log"
+msgstr ""
+
+#: src/LaTeXLog.C:55
+msgid "LaTeX Log"
+msgstr "LaTeX Kütüðü"
+
+#: src/LyXAction.C:589
+msgid "Describe command"
+msgstr "Komutu tanýmla"
+
+#: src/LyXAction.C:590
+msgid "Select previous char"
+msgstr "Bir önceki karakteri seç"
+
+#: src/LyXAction.C:591
+msgid "Insert bibtex"
+msgstr "Bibtex ekle"
+
+#: src/LyXAction.C:592
+msgid "Autosave"
+msgstr "Otomatik kayýt"
+
+#: src/LyXAction.C:593
+msgid "Go to beginning of document"
+msgstr "Belgenin baþýna git"
+
+#: src/LyXAction.C:594
+msgid "Select to beginning of document"
+msgstr "Belgenin baþýna kadar seç"
+
+#: src/LyXAction.C:595 src/inseterror.C:168 src/insetref.C:64
+#: src/latexoptions.C:46 src/layout_forms.C:158 src/layout_forms.C:472
+#: src/layout_forms.C:692 src/lyx.C:112 src/lyx_sendfax.C:109 src/lyxvc.C:328
+#: src/math_forms.C:179
+msgid "Close"
+msgstr "Kapat"
+
+#: src/LyXAction.C:596
+msgid "Go to end of document"
+msgstr "Belgenin sonuna git"
+
+#: src/LyXAction.C:597
+msgid "Select to end of document"
+msgstr "Belgenin sonuna kadar seç"
+
+#: src/LyXAction.C:598
+msgid "Fax"
+msgstr "Faks"
+
+#: src/LyXAction.C:599
+msgid "New document"
+msgstr "Yeni belge"
+
+#: src/LyXAction.C:600
+msgid "New document from template"
+msgstr "Hazýr biçimlerden yeni belge"
+
+#: src/LyXAction.C:601
+msgid "Open"
+msgstr "Aç"
+
+#: src/LyXAction.C:602
+msgid "Switch to previous document"
+msgstr "Bir önceki belgeye geç"
+
+#: src/LyXAction.C:603 src/lyx_cb.C:981 src/print_form.C:72
+msgid "Print"
+msgstr "Bastýr"
+
+#: src/LyXAction.C:604
+msgid "Revert to saved"
+msgstr "Son kayýtlý hale dön"
+
+#: src/LyXAction.C:605
+msgid "Update DVI"
+msgstr "DVI güncelle"
+
+#: src/LyXAction.C:606
+msgid "Update PostScript"
+msgstr "PS güncelle"
+
+#: src/LyXAction.C:607
+msgid "View DVI"
+msgstr "DVI görüntüle"
+
+#: src/LyXAction.C:608
+msgid "View PostScript"
+msgstr "PS görüntüle"
+
+#: src/LyXAction.C:609
+msgid "Build program"
+msgstr ""
+
+#: src/LyXAction.C:610
+msgid "Check TeX"
+msgstr "TeX denetimi"
+
+#: src/LyXAction.C:611 src/lyx_sendfax_main.C:284
+msgid "Save"
+msgstr "Kaydet"
+
+#: src/LyXAction.C:612
+msgid "Save As"
+msgstr "Ýsimle Kaydet"
+
+#: src/LyXAction.C:613 src/lyxfunc.C:585
+msgid "Cancel"
+msgstr "Vazgeç"
+
+#: src/LyXAction.C:614
+msgid "Go one char back"
+msgstr "Bir karakter geri git"
+
+#: src/LyXAction.C:615
+msgid "Go one char forward"
+msgstr "Bir karakter ileri git"
+
+#: src/LyXAction.C:616
+msgid "Insert citation"
+msgstr "Gönderme ekle"
+
+#: src/LyXAction.C:617
+msgid "Execute command"
+msgstr "Komut çalýþtýr"
+
+#: src/LyXAction.C:618 src/lyx_cb.C:2392
+msgid "Copy"
+msgstr "Kopyala"
+
+#: src/LyXAction.C:619 src/lyx_cb.C:2404
+msgid "Cut"
+msgstr "Kes"
+
+#: src/LyXAction.C:620
+msgid "Decrement environment depth"
+msgstr "Ortam derinliðini azalt"
+
+#: src/LyXAction.C:621
+msgid "Increment environment depth"
+msgstr "Ortam derinliðini arttýr"
+
+#: src/LyXAction.C:622
+msgid "Change environment depth"
+msgstr "Ortam derinliðini deðiþtir"
+
+#: src/LyXAction.C:623
+msgid "Change itemize bullet settings"
+msgstr "`Bullet' ayarlarýný deðiþtir"
+
+#: src/LyXAction.C:624
+msgid "Go down"
+msgstr "Aþaðý git"
+
+#: src/LyXAction.C:625
+msgid "Select next line"
+msgstr "Sonraki satýrý seç"
+
+#: src/LyXAction.C:626
+msgid "Choose Paragraph Environment"
+msgstr "Paragraf ortamýný seç"
+
+#: src/LyXAction.C:627
+msgid "Go to next error"
+msgstr "Sonraki hataya git"
+
+#: src/LyXAction.C:628 src/lyx_cb.C:2344
+msgid "Insert Figure"
+msgstr "Þekil ekle"
+
+#: src/LyXAction.C:629 src/lyxfr0.C:95
+msgid "Find & Replace"
+msgstr "Bul ve Deðiþtir"
+
+#: src/LyXAction.C:630
+msgid "Toggle cursor does/doesn't follow the scrollbar"
+msgstr "Ýmlecin kaydýrma çubuðunu izleyiþini deðiþtir"
+
+#: src/LyXAction.C:631
+msgid "Toggle bold"
+msgstr "Kalýnlaþtýr/incelt"
+
+#: src/LyXAction.C:632
+msgid "Toggle code style"
+msgstr "Kod tarzýný deðiþtir"
+
+#: src/LyXAction.C:633
+msgid "Default font style"
+msgstr "Öntanýmlý yazýtipi"
+
+#: src/LyXAction.C:634
+msgid "Toggle emphasize"
+msgstr "Vurgulamayý deðiþtir"
+
+#: src/LyXAction.C:635
+msgid "Toggle user defined style"
+msgstr "Kullanýcý-tanýmlý tarzý deðiþtir"
+
+#: src/LyXAction.C:636
+msgid "Toggle noun style"
+msgstr "Ýsim tarzýný deðiþtir"
+
+#: src/LyXAction.C:637
+msgid "Toggle roman font style"
+msgstr "Roman yazý tipini deðiþtir"
+
+#: src/LyXAction.C:638
+msgid "Toggle sans font style"
+msgstr "Sans yazý tipini deðiþtir"
+
+#: src/LyXAction.C:639
+msgid "Set font size"
+msgstr "Yazýtipi boyunu ayarla"
+
+#: src/LyXAction.C:640
+msgid "Show font state"
+msgstr "Yazýtipi durumunu göster"
+
+#: src/LyXAction.C:641
+msgid "Toggle font underline"
+msgstr "Altý-çizili yazýtipini deðiþtir"
+
+#: src/LyXAction.C:642
+msgid "Insert Footnote"
+msgstr "Dipnot ekle"
+
+#: src/LyXAction.C:643
+msgid "Select next char"
+msgstr "Sonraki karakteri seç"
+
+#: src/LyXAction.C:644
+msgid "Insert horizontal fill"
+msgstr "Yatay dolgu ekle"
+
+#: src/LyXAction.C:645
+msgid "Insert hyphenation point"
+msgstr "Hece bölme tiresi ekle"
+
+#: src/LyXAction.C:646
+msgid "Insert ... dots"
+msgstr "Üç nokta (...) ekle"
+
+#: src/LyXAction.C:647
+msgid "Insert end of sentence period"
+msgstr "Cümle sonu noktasý ekle"
+
+#: src/LyXAction.C:648
+msgid "Turn off keymap"
+msgstr "Klavye eþlemesini kapat"
+
+#: src/LyXAction.C:649
+msgid "Use primary keymap"
+msgstr "Temel klavye eþlemesini kullan"
+
+#: src/LyXAction.C:650
+msgid "Use secondary keymap"
+msgstr "Ýkincil klavye eþlemesini kullan"
+
+#: src/LyXAction.C:651
+msgid "Toggle keymap"
+msgstr "Klavye eþlemesini deðiþtir"
+
+#: src/LyXAction.C:652
+msgid "Insert Label"
+msgstr "Etiket ekle"
+
+#: src/LyXAction.C:653
+msgid "Copy paragraph environment type"
+msgstr "Paragraf ortamýný kopyala"
+
+#: src/LyXAction.C:654
+msgid "Paste paragraph environment type"
+msgstr "Paragraf ortamýný yapýþtýr"
+
+#: src/LyXAction.C:655
+msgid "Specify paper size and margins"
+msgstr "Kaðýt boyu ve yazý alanýný belirle"
+
+#: src/LyXAction.C:656
+msgid "Go to beginning of line"
+msgstr "Satýr baþýna git"
+
+#: src/LyXAction.C:657
+msgid "Select to beginning of line"
+msgstr "Satýr baþýna kadar seç"
+
+#: src/LyXAction.C:658
+msgid "Go to end of line"
+msgstr "Satýr sonuna git"
+
+#: src/LyXAction.C:659
+msgid "Select to end of line"
+msgstr "Satýr sonuna kadar seç"
+
+#: src/LyXAction.C:660
+msgid "Exit"
+msgstr "Çýkýþ"
+
+#: src/LyXAction.C:661
+msgid "Insert Margin note"
+msgstr "Kenar boþluðu etiketi ekle"
+
+#: src/LyXAction.C:662
+msgid "Math Greek"
+msgstr "Yunan harfleri"
+
+#: src/LyXAction.C:663
+msgid "Math mode"
+msgstr "Matematik kipi"
+
+#: src/LyXAction.C:664
+msgid "Go one paragraph down"
+msgstr "Bir paragraf aþaðý git"
+
+#: src/LyXAction.C:665
+msgid "Select next paragraph"
+msgstr "Sonraki paragrafý seç"
+
+#: src/LyXAction.C:666
+msgid "Go one paragraph up"
+msgstr "Bir paragraf yukarý git"
+
+#: src/LyXAction.C:667
+msgid "Select previous paragraph"
+msgstr "Önceki paragrafý seç"
+
+#: src/LyXAction.C:668 src/lyx_cb.C:2413
+msgid "Paste"
+msgstr "Yapýþtýr"
+
+#: src/LyXAction.C:669
+msgid "Insert protected space"
+msgstr "Boþluk ekle"
+
+#: src/LyXAction.C:670
+msgid "Insert quote"
+msgstr "Alýntý ekle"
+
+#: src/LyXAction.C:671
+msgid "Reconfigure"
+msgstr "Yeniden yapýlandýr"
+
+#: src/LyXAction.C:672 src/lyx_cb.C:2100
+msgid "Redo"
+msgstr "Yeniden yap"
+
+#: src/LyXAction.C:673
+msgid "Insert cross reference"
+msgstr "Çapraz-baþvuru ekle"
+
+#: src/LyXAction.C:674 src/lyx_cb.C:2356
+msgid "Insert Table"
+msgstr "Tablo ekle"
+
+#: src/LyXAction.C:675
+msgid "Toggle TeX style"
+msgstr "TeX tarzýný deðiþtir"
+
+#: src/LyXAction.C:676 src/lyx_cb.C:2080
+msgid "Undo"
+msgstr "Geri al"
+
+#: src/LyXAction.C:677 src/lyx_cb.C:2435
+msgid "Melt"
+msgstr "Melt"
+
+#: src/LyXAction.C:678
+msgid "Import document"
+msgstr "Belge ekleniyor"
+
+#: src/LyXAction.C:679
+msgid "Remove all error boxes"
+msgstr "Tüm hata kutularýný kaldýr"
+
+#: src/LyXAction.C:680
+#, fuzzy
+msgid "Insert menu separator"
+msgstr "Cümle sonu noktasý ekle"
+
+#. In an ideal world, this never happens:
+#: src/LyXAction.C:715
+msgid "No description available!"
+msgstr "Taným mevcut deðil!"
+
+#: src/LyXSendto.C:43
+msgid "Send Document to Command"
+msgstr "Belgeyi komuta gönder"
+
+#: src/LyXView.C:353 src/minibuffer.C:192
+msgid " (Changed)"
+msgstr " (deðiþtirildi)"
+
+#: src/LyXView.C:355
+msgid " (read only)"
+msgstr " (deðiþtirilemez)"
+
+#: src/PaperLayout.C:165 src/ParagraphExtra.C:150
+msgid "Document is read-only.  No changes to layout permitted."
+msgstr "Belgeniz sadece okunabilir, deðiþtirilemez."
+
+#: src/PaperLayout.C:188
+msgid "Paper Layout"
+msgstr "Kaðýt Düzeni"
+
+#: src/PaperLayout.C:220
+msgid "Paper layout set"
+msgstr "Kaðýt düzeni ayarlandý"
+
+#: src/PaperLayout.C:277 src/ParagraphExtra.C:309 src/TableLayout.C:299
+#: src/TableLayout.C:466
+msgid "Warning: Invalid Length (valid example: 10mm)"
+msgstr "Dikkat: Geçersiz uzunluk (geçerli örnek: 10mm)"
+
+#: src/ParagraphExtra.C:167
+msgid "ParagraphExtra Layout"
+msgstr "'ParagraphExtra' Düzeni"
+
+#: src/ParagraphExtra.C:208
+msgid "ParagraphExtra layout set"
+msgstr "'ParagraphExtra' düzeni ayarlandý"
+
+#: src/ParagraphExtra.C:319
+msgid "Warning: Invalid percent value (0-100)"
+msgstr "Uyarý: Geçersiz yüzde deðeri (0-100)"
+
+#: src/TableLayout.C:236
+msgid "Table Extra Form"
+msgstr "Tablo Ýçin Ek Form"
+
+#: src/TableLayout.C:249
+msgid "Table Layout"
+msgstr "Tablo Düzeni"
+
+#: src/TableLayout.C:279
+msgid "Warning: Wrong Cursor position, updated window"
+msgstr "Uyarý: Yanlýþ imleç konumu, pencere güncellendi"
+
+#: src/TableLayout.C:334
+msgid "Confirm: press Delete-Button again"
+msgstr "Onay: Sil-tuþuna bir kere daha basýn"
+
+#. sgml2lyx failed
+#: src/buffer.C:229 src/buffer.C:239 src/buffer.C:3525 src/bufferlist.C:582
+#: src/bufferlist.C:612 src/lyx_cb.C:540 src/lyx_cb.C:879 src/lyx_cb.C:912
+#: src/lyx_sendfax_main.C:268
+msgid "Error!"
+msgstr "Hata!"
+
+#: src/buffer.C:230 src/buffer.C:240 src/bufferlist.C:661
+msgid "Cannot open specified file:"
+msgstr "Belirtilen dosya açýlamadý:"
+
+#. if the textclass wasn't loaded properly
+#. we need to either substitute another
+#. or stop loading the file.
+#. I can substitute but I don't see how I can
+#. stop loading... ideas??  ARRae980418
+#: src/buffer.C:403
+msgid "Textclass Loading Error!"
+msgstr ""
+
+#: src/buffer.C:404
+msgid "Can't load textclass "
+msgstr "Yazý sýnýfý yüklenemedi "
+
+#: src/buffer.C:406
+msgid "-- substituting default"
+msgstr "-- öntanýmlar kullanýlýyor"
+
+#: src/buffer.C:1015
+msgid "Warning: Ignoring Old Inset"
+msgstr ""
+
+# , c-format
+#: src/buffer.C:1095
+#, c-format
+msgid "Warning: need lyxformat %.2f but found %.2f\n"
+msgstr "Uyarý: lyx %.2f formatý beklerken %.2f bulundu\n"
+
+# , c-format
+#: src/buffer.C:1099
+#, c-format
+msgid "ERROR: need lyxformat %.2f but found %.2f\n"
+msgstr "Hata: lyx %.2f formatý beklerken %.2f bulundu\n"
+
+#: src/buffer.C:1113
+msgid "Warning!"
+msgstr "Uyarý!"
+
+#: src/buffer.C:1114
+msgid "Reading of document is not complete"
+msgstr "Belgenin okunmasý tamamlanamadý"
+
+#: src/buffer.C:1115
+msgid "Maybe the document is truncated"
+msgstr "Belgeniz kýrpýlmýþ olabilir"
+
+#. "\\lyxformat" not found
+#: src/buffer.C:1121 src/buffer.C:1128 src/buffer.C:1131
+msgid "ERROR!"
+msgstr "HATA!"
+
+#: src/buffer.C:1122
+msgid "Old LyX file format found. Use LyX 0.10.x to read this!"
+msgstr "Eski LyX dosya formatý, okumak için LyX 0.10.x kullanýn!"
+
+#: src/buffer.C:1128
+msgid "Not a LyX file!"
+msgstr "LyX dosyasý deðil!"
+
+#: src/buffer.C:1131
+msgid "Unable to read file!"
+msgstr "Dosya okunamadý!"
+
+#: src/buffer.C:1147 src/buffer.C:1149
+msgid "Error! Document is read-only: "
+msgstr "Hata! Belge sadece okunabilir: "
+
+#: src/buffer.C:1158 src/buffer.C:1160 src/buffer.C:1167 src/buffer.C:1169
+msgid "Error! Cannot write file: "
+msgstr "Hata! Dosya yazýlamadý: "
+
+#: src/buffer.C:1201 src/buffer.C:1204
+msgid "Error! Could not close file properly: "
+msgstr "Hata! Dosya düzgün olarak kapatýlamadý: "
+
+#: src/buffer.C:1249 src/buffer.C:1564
+msgid "Error: Cannot write file:"
+msgstr "Hata: Dosya yazýlamadý:"
+
+#: src/buffer.C:1354
+msgid "Error: Cannot open temporary file:"
+msgstr "Hata: Geçici dosya açýlamadý:"
+
+#: src/buffer.C:2054 src/buffer.C:2276 src/buffer.C:2922
+msgid "Error! Could not close file properly:"
+msgstr "Hata! Dosya düzgün kapatýlamadý:"
+
+#: src/buffer.C:2123 src/buffer.C:2699 src/buffer.C:3447 src/buffer.C:3468
+#: src/paragraph.C:3223
+msgid "LYX_ERROR:"
+msgstr "LYX_HATASI:"
+
+#: src/buffer.C:2123 src/buffer.C:2699
+msgid "Cannot write file"
+msgstr "Dosya yazýlamadý"
+
+#: src/buffer.C:2193 src/buffer.C:2761
+msgid "Error : Wrong depth for LatexType Command.\n"
+msgstr ""
+
+#. path to LaTeX file
+#: src/buffer.C:3103
+msgid "Running LaTeX..."
+msgstr "LaTex çalýþtýrýlýyor..."
+
+#: src/buffer.C:3125
+msgid "LaTeX did not work!"
+msgstr "LaTeX çalýþmadý!"
+
+#: src/buffer.C:3126 src/buffer.C:3195 src/buffer.C:3264
+msgid "Missing log file:"
+msgstr "Kütük dosyasý yok:"
+
+#. no errors or any other things to think about so:
+#: src/buffer.C:3128 src/buffer.C:3137 src/buffer.C:3197 src/buffer.C:3206
+#: src/buffer.C:3266 src/buffer.C:3274 src/combox.C:448
+msgid "Done"
+msgstr "Bitti"
+
+#. path to Literate file
+#: src/buffer.C:3174
+#, fuzzy
+msgid "Running Literate..."
+msgstr "LaTex çalýþtýrýlýyor..."
+
+#: src/buffer.C:3194
+#, fuzzy
+msgid "Literate command did not work!"
+msgstr "LaTeX çalýþmadý!"
+
+#. path to Literate file
+#: src/buffer.C:3243
+msgid "Building Program..."
+msgstr ""
+
+#: src/buffer.C:3263
+#, fuzzy
+msgid "Build did not work!"
+msgstr "LaTeX çalýþmadý!"
+
+#. path to LaTeX file
+#: src/buffer.C:3311
+msgid "Running chktex..."
+msgstr "chktex çalýþtýrýlýyor..."
+
+#: src/buffer.C:3327
+msgid "chktex did not work!"
+msgstr "chktex çalýþmadý!"
+
+#: src/buffer.C:3328
+msgid "Could not run with file:"
+msgstr "Aþaðýdaki dosya ile çalýþtýrýlamadý:"
+
+#: src/buffer.C:3448 src/buffer.C:3469 src/paragraph.C:3223
+msgid "Cannot open temporary file:"
+msgstr "Geçici dosya açýlamadý:"
+
+#: src/buffer.C:3518
+msgid "Error! Can't open temporary file:"
+msgstr "Hata! Geçici dosya açýlamadý:"
+
+#: src/buffer.C:3526
+msgid "Error executing *roff command on table"
+msgstr "Tablo üzerinde *roff komutu çalýþtýrýlýrken hata oluþtu"
+
+#: src/buffer.C:3718 src/lyx_cb.C:3166 src/text.C:1882
+msgid "Impossible Operation!"
+msgstr "Geçersiz Ýþlem!"
+
+#: src/buffer.C:3719
+msgid "Cannot insert table/list in table."
+msgstr "Tablo içine tablo veya liste eklenemez"
+
+#: src/buffer.C:3720 src/lyx_cb.C:3168 src/text.C:1884 src/text.C:3937
+#: src/text.C:3945 src/text.C:3960 src/text.C:3977 src/text2.C:2136
+#: src/text2.C:2146
+msgid "Sorry."
+msgstr "Üzgünüm."
+
+#: src/bufferlist.C:157 src/bufferlist.C:318 src/lyxvc.C:170 src/lyxvc.C:204
+#: src/lyxvc.C:230
+msgid "Changes in document:"
+msgstr "Belgede deðiþiklik var:"
+
+#: src/bufferlist.C:159 src/bufferlist.C:320
+msgid "Save document?"
+msgstr "Belge kaydedilsin mi?"
+
+#: src/bufferlist.C:175
+msgid "Some documents were not saved:"
+msgstr "Kaydedilmemiþ belgeler var:"
+
+#: src/bufferlist.C:176
+msgid "Exit anyway?"
+msgstr "Yine de çýkmak istiyor musunuz?"
+
+#: src/bufferlist.C:187
+msgid "Saving document"
+msgstr "Belge kaydediliyor"
+
+#: src/bufferlist.C:260
+msgid "Document saved as"
+msgstr "Belge belirtilen isimle kaydedildi"
+
+#: src/bufferlist.C:271
+msgid "Could not delete auto-save file!"
+msgstr "Otomatik yedek dosyasý silinemedi!"
+
+#: src/bufferlist.C:281
+msgid "Save failed!"
+msgstr "Kayýt iþlemi baþarýsýz!"
+
+#: src/bufferlist.C:354
+msgid "No Documents Open!%t"
+msgstr "Hiç bir belge açýk deðil!%t"
+
+#: src/bufferlist.C:430
+msgid "lyx: Attempting to save document "
+msgstr "lyx: Belgeyi kaydetmeyi deniyorum "
+
+#: src/bufferlist.C:433
+msgid " as..."
+msgstr " þu isimle.."
+
+#: src/bufferlist.C:457
+msgid "  Save seems successful. Phew."
+msgstr " Kayýt baþarýlý gözüküyor. Oh be."
+
+#: src/bufferlist.C:460
+msgid "  Save failed! Trying..."
+msgstr " Kayýt iþlemi baþarýsýz! Hala deniyorum..."
+
+#: src/bufferlist.C:462
+msgid "  Save failed! Bummer. Document is lost."
+msgstr " Kayýt iþlemi baþarýsýz! Kötü haber, belge kayýp."
+
+#: src/bufferlist.C:489
+msgid "An emergency save of this document exists!"
+msgstr "Belgenin acil durum yedeði var!"
+
+#: src/bufferlist.C:491
+msgid "Try to load that instead?"
+msgstr "Onu yüklemeyi deneyeyim mi?"
+
+#: src/bufferlist.C:513
+msgid "Autosave file is newer."
+msgstr "Otomatik yedek dosyasý daha yeni."
+
+#: src/bufferlist.C:515
+msgid "Load that one instead?"
+msgstr "Onu mu yükleyeyim?"
+
+#: src/bufferlist.C:582
+msgid "Unable to open template"
+msgstr "Hazýr biçimli dosya açýlamadý"
+
+#: src/bufferlist.C:613
+msgid "Could not convert file"
+msgstr "Dosya dönüþtürülemedi"
+
+#: src/bufferlist.C:626 src/lyxfunc.C:2476 src/lyxfunc.C:2615
+#: src/lyxfunc.C:2694
+msgid "Document is already open:"
+msgstr "Belge zaten açýk:"
+
+#: src/bufferlist.C:628
+msgid "Do you want to reload that document?"
+msgstr "O belgeyi yeniden yüklemek ister misiniz?"
+
+#: src/bufferlist.C:644
+msgid "File `"
+msgstr "`"
+
+#: src/bufferlist.C:645
+msgid "' is read-only."
+msgstr "' dosyasý sadece okunabilir"
+
+#: src/bufferlist.C:663
+msgid "Create new document with this name?"
+msgstr "Bu isimle yeni bir belge yaratayým mý? "
+
+#: src/bullet_forms.C:46
+msgid "Size|#z"
+msgstr "Boyut|#z"
+
+#: src/bullet_forms.C:51 src/credits_form.C:19 src/credits_form.C:59
+#: src/form1.C:43 src/form1.C:117 src/form1.C:267 src/form1.C:290
+#: src/insetbib.C:107 src/insetbib.C:135 src/insetinclude.C:46
+#: src/insetindex.C:65 src/latexoptions.C:21 src/layout_forms.C:53
+#: src/layout_forms.C:188 src/layout_forms.C:323 src/layout_forms.C:387
+#: src/layout_forms.C:607 src/lyx.C:47 src/lyx.C:85 src/math_forms.C:111
+#: src/print_form.C:41 src/print_form.C:114 src/sp_form.C:38
+msgid "OK"
+msgstr "Peki"
+
+#: src/bullet_forms.C:54 src/form1.C:114 src/form1.C:293 src/latexoptions.C:24
+#: src/layout_forms.C:50 src/layout_forms.C:155 src/layout_forms.C:192
+#: src/layout_forms.C:298 src/layout_forms.C:326 src/layout_forms.C:384
+#: src/layout_forms.C:611 src/lyx.C:50 src/lyx.C:88 src/lyx_sendfax.C:39
+#: src/math_forms.C:108 src/math_forms.C:158 src/math_forms.C:203
+#: src/print_form.C:44 src/print_form.C:117 src/sp_form.C:62
+msgid "Apply|#A"
+msgstr "Uygula|#A"
+
+#: src/bullet_forms.C:57 src/form1.C:120 src/form1.C:270 src/form1.C:296
+#: src/insetbib.C:110 src/insetbib.C:111 src/insetbib.C:138 src/insetbib.C:139
+#: src/insetinclude.C:49 src/insetinclude.C:50 src/insetindex.C:69
+#: src/insetindex.C:70 src/latexoptions.C:27 src/layout_forms.C:47
+#: src/layout_forms.C:196 src/layout_forms.C:302 src/layout_forms.C:329
+#: src/layout_forms.C:381 src/layout_forms.C:615 src/lyx.C:53 src/lyx.C:91
+#: src/lyx_gui_misc.C:394 src/lyx_gui_misc.C:399 src/lyx_gui_misc.C:405
+#: src/lyx_gui_misc.C:414 src/lyx_sendfax.C:35 src/math_forms.C:102
+#: src/math_forms.C:132 src/math_forms.C:200 src/print_form.C:47
+#: src/print_form.C:120 src/sp_form.C:42
+msgid "Cancel|^["
+msgstr "Vazgeç|^["
+
+#: src/bullet_forms.C:60
+msgid "LaTeX|#L"
+msgstr "LaTeX|#L"
+
+#: src/bullet_forms.C:68
+msgid "1|#1"
+msgstr "1|#1"
+
+#: src/bullet_forms.C:72
+msgid "2|#2"
+msgstr "2|#2"
+
+#: src/bullet_forms.C:75
+msgid "3|#3"
+msgstr "3|#3"
+
+#: src/bullet_forms.C:78
+msgid "4|#4"
+msgstr "4|#4"
+
+#: src/bullet_forms.C:83
+msgid "Bullet Depth"
+msgstr "Bullet derinliði"
+
+#: src/bullet_forms.C:88
+msgid "Standard|#S"
+msgstr "Standart|#S"
+
+#: src/bullet_forms.C:93
+msgid "Maths|#M"
+msgstr "Matematik|#M"
+
+#: src/bullet_forms.C:97
+msgid "Ding 2|#i"
+msgstr "Ding 2|#i"
+
+#: src/bullet_forms.C:101
+msgid "Ding 3|#n"
+msgstr "Ding 3|#n"
+
+#: src/bullet_forms.C:105
+msgid "Ding 4|#g"
+msgstr "Ding 4|#g"
+
+#: src/bullet_forms.C:109
+msgid "Ding 1|#D"
+msgstr "Ding 1|#D"
+
+#: src/bullet_forms_cb.C:29
+msgid "Sorry, your libXpm is too old."
+msgstr "Üzgünüm, sisteminizdeki libXpm çok eski."
+
+#: src/bullet_forms_cb.C:30
+msgid "This feature requires xpm-4.7 (a.k.a 3.4g) or newer."
+msgstr "Bu özellik için en az xpm-4.7 (3.4g) gerekli."
+
+#: src/bullet_forms_cb.C:31
+msgid "Try running LyX in mono mode (lyx  -Mono)."
+msgstr "LyX'i siyah-beyaz çalýþtýrmayý deneyin (lyx  -Mono)."
+
+#: src/bullet_forms_cb.C:36
+msgid ""
+" default | tiny | script | footnote | small | normal | large | Large | LARGE "
+"| huge | Huge"
+msgstr ""
+" öntanýmlý | minik | betik | dipnot | küçük | normal | büyük | Büyük | BÜYÜK "
+"| dev | Dev"
+
+#: src/bullet_forms_cb.C:51
+msgid "Itemize Bullet Selection"
+msgstr "Ayrýntýlý 'bullet' seçimi"
+
+#: src/credits.C:62
+msgid "ERROR: LyX wasn't able to read CREDITS file"
+msgstr ""
+
+#: src/credits.C:66
+#, fuzzy
+msgid "Please install correctly to estimate the great"
+msgstr "olup olmadýðýný kontrol edin. Ne yazýk ki çýkmak zorundayým."
+
+#: src/credits.C:69
+#, fuzzy
+msgid "amount of work other people have done for the LyX project."
+msgstr "LyX projesine katkýda bulunan herkese teþekkürler."
+
+#: src/credits.C:79
+msgid "Credits"
+msgstr ""
+
+#: src/credits.C:106
+msgid "Copyright and Warranty"
+msgstr ""
+
+#: src/credits_form.C:24
+msgid "Matthias"
+msgstr "Matthias"
+
+#: src/credits_form.C:29
+msgid "All these people have contributed to the LyX project. Thanks,"
+msgstr "LyX projesine katkýda bulunan herkese teþekkürler."
+
+#: src/credits_form.C:50
+#, fuzzy
+msgid ""
+"LyX is Copyright (C) 1995 by Matthias Ettrich,\n"
+"1995-1999 LyX Team"
+msgstr ""
+"LyX is Copyright (C) 1995 by Matthias Ettrich,\n"
+"1995-1998 LyX Team"
+
+#: src/credits_form.C:55
+msgid ""
+"This program is free software; you can redistribute it\n"
+"and/or modify it under the terms of the GNU General\n"
+"Public License as published by the Free Software\n"
+"Foundation; either version 2 of the License, or\n"
+"(at your option) any later version."
+msgstr ""
+"Bu program serbest bir yazýlýmdýr. Free Software Foundation\n"
+"tarafýndan yayýmlandýðý þekilde GNU GPL (General Public Licence)\n"
+"koþullarý (2. ya da daha sonraki bir sürüm) altýnda daðýtýlabilir\n"
+"ve/veya deðiþtirilebilir."
+
+#: src/credits_form.C:64
+msgid ""
+"LyX is distributed in the hope that it will\n"
+"be useful, but WITHOUT ANY WARRANTY;\n"
+"without even the implied warranty of MERCHANTABILITY\n"
+"or FITNESS FOR A PARTICULAR PURPOSE.\n"
+"See the GNU General Public License for more details.\n"
+"You should have received a copy of\n"
+"the GNU General Public License\n"
+"along with this program; if not, write to\n"
+"the Free Software Foundation, Inc.,\n"
+"675 Mass Ave, Cambridge, MA 02139, USA."
+msgstr ""
+"LyX is distributed in the hope that it will\n"
+"be useful, but WITHOUT ANY WARRANTY;\n"
+"without even the implied warranty of MERCHANTABILITY\n"
+"or FITNESS FOR A PARTICULAR PURPOSE.\n"
+"See the GNU General Public License for more details.\n"
+"You should have received a copy of\n"
+"the GNU General Public License\n"
+"along with this program; if not, write to\n"
+"the Free Software Foundation, Inc.,\n"
+"675 Mass Ave, Cambridge, MA 02139, USA."
+
+#: src/figinset.C:1083
+msgid "[render error]"
+msgstr "[görüntüleme hatasý]"
+
+#: src/figinset.C:1084
+msgid "[rendering ... ]"
+msgstr "[görüntülüyorum ... ]"
+
+#: src/figinset.C:1086
+msgid "[no file]"
+msgstr "[dosya yok]"
+
+#: src/figinset.C:1087
+msgid "[not displayed]"
+msgstr "[gösterilmiyor]"
+
+#: src/figinset.C:1088
+msgid "[no ghostscript]"
+msgstr "[ghostscript yok]"
+
+#: src/figinset.C:1090
+msgid "[unknown error]"
+msgstr "[bilinmeyen bir hata]"
+
+#: src/figinset.C:1287
+msgid "Figure"
+msgstr "Þekil"
+
+#: src/figinset.C:1348 src/figinset.C:1486
+msgid "empty figure path"
+msgstr "Þekil yolu verilmemiþ"
+
+#: src/figinset.C:2128
+msgid "Clipart"
+msgstr "Clipart"
+
+#: src/figinset.C:2129 src/lyxfunc.C:2508 src/lyxfunc.C:2571
+#: src/lyxfunc.C:2794
+msgid "Document"
+msgstr "Belge"
+
+#: src/figinset.C:2135 src/figinset.C:2138
+msgid "EPS Figure"
+msgstr "EPS Þekil"
+
+#: src/figinset.C:2152
+msgid "Filename can't contain any of these characters:"
+msgstr "Dosya isminde aþaðýdaki karakterler bulunmamalý:"
+
+# , c-format
+#: src/figinset.C:2153
+#, no-c-format
+msgid "space, '#', '~', '$' or '%'."
+msgstr "boþluk, '#', '~', '$' veya '%'."
+
+#: src/filedlg.C:225
+msgid "Warning! Couldn't open directory."
+msgstr "Hata! Belirtilen dizin yaratýlamadý:"
+
+#: src/filetools.C:167 src/filetools.C:176 src/filetools.C:183
+msgid "LyX Internal Error!"
+msgstr "LyX iç hatasý!"
+
+#: src/filetools.C:168
+msgid "Could not test if directory is writeable"
+msgstr "Dizine yazýlýp yazýlamayacaðý denenemedi"
+
+#: src/filetools.C:177
+msgid "Cannot open directory test file"
+msgstr "Dizin test dosyasý açýlamadý"
+
+#: src/filetools.C:184
+msgid "Created test file but cannot remove it?"
+msgstr "Test dosyasý yaratýldý ama silinemiyor, hayýrdýr?"
+
+#: src/filetools.C:305
+msgid "Error! Cannot open directory:"
+msgstr "Hata! Dizin açýlamýyor:"
+
+#: src/filetools.C:317
+msgid "Error! Could not remove file:"
+msgstr "Hata! Dosya silinemedi:"
+
+#: src/filetools.C:331
+msgid "Error! Couldn't create temporary directory:"
+msgstr "Hata! Geçici dizin yaratýlamadý:"
+
+#: src/filetools.C:350
+msgid "Error! Couldn't delete temporary directory:"
+msgstr "Hata! Geçici dizin silinemedi:"
+
+#: src/filetools.C:414
+msgid "Internal error!"
+msgstr "Ýç hata!"
+
+#: src/filetools.C:415
+msgid "Call to createDirectory with invalid name"
+msgstr "createDirectory geçersiz bir isimle çaðrýldý"
+
+#: src/filetools.C:420
+msgid "Error! Couldn't create directory:"
+msgstr "Hata! Belirtilen dizin yaratýlamadý:"
+
+#: src/form1.C:21
+msgid "Set Charset|#C"
+msgstr "Karakter kümesini ayarla|#C"
+
+#: src/form1.C:23
+msgid "Charset not found!"
+msgstr "Karakter kümesi bulunamadý!"
+
+#: src/form1.C:28
+msgid ""
+"Error:\n"
+"\n"
+"Keymap\n"
+"not found"
+msgstr ""
+"Hata:\n"
+"\n"
+"Klavye eþlemesi\n"
+"bulunamadý"
+
+#: src/form1.C:33
+msgid "Character set:|#H"
+msgstr "Karakter kümesi:|#H"
+
+#: src/form1.C:45
+msgid "Other...|#O"
+msgstr "Diðer...|#O"
+
+#: src/form1.C:48
+msgid "Other...|#T"
+msgstr "Diðer...|#T"
+
+#: src/form1.C:51
+msgid "Language"
+msgstr "Dil"
+
+#: src/form1.C:56
+msgid "Mapping"
+msgstr "Eþleme"
+
+#: src/form1.C:62
+msgid "Primary key map|#r"
+msgstr "Temel klavye eþlemesi|#r"
+
+#: src/form1.C:64
+msgid "No key mapping|#N"
+msgstr "Klavye eþlemesi kullanma|#N"
+
+#: src/form1.C:66
+msgid "Secondary key map|#e"
+msgstr "Ýkincil klavye eþlemesi|#e"
+
+#: src/form1.C:70
+msgid "Secondary"
+msgstr "Ýkincil"
+
+#: src/form1.C:73
+msgid "Primary"
+msgstr "Temel"
+
+#: src/form1.C:99
+msgid "EPS file|#E"
+msgstr "EPS dosyasý|#E"
+
+#: src/form1.C:102
+msgid "Full Screen Preview|#v"
+msgstr "Tam ekran öngörüntüleme|#v"
+
+#: src/form1.C:105
+msgid "Browse...|#B"
+msgstr "Tara...|#B"
+
+#: src/form1.C:123
+msgid "Display Frame|#F"
+msgstr "Çerçeve göster|#F"
+
+#: src/form1.C:126
+msgid "Do Translations|#r"
+msgstr "Dönüþümleri yap|#r"
+
+#: src/form1.C:129 src/menus.C:127 src/menus.C:133 src/menus.C:239
+#: src/menus.C:240 src/menus.C:241 src/menus.C:314 src/menus.C:315
+#: src/menus.C:316 src/sp_form.C:58
+msgid "Options"
+msgstr "Seçenekler"
+
+#: src/form1.C:133
+msgid "Angle:|#L"
+msgstr "Açý:|#L"
+
+#: src/form1.C:139 src/form1.C:141
+#, no-c-format
+msgid "% of Page|#g"
+msgstr "sayfanýn yüzde kaçý|#g"
+
+#: src/form1.C:144
+msgid "Default|#t"
+msgstr "Öntanýmlý|#t"
+
+#: src/form1.C:147
+msgid "cm|#m"
+msgstr "cm|#m"
+
+#: src/form1.C:150
+msgid "inches|#h"
+msgstr "inç|#h"
+
+#: src/form1.C:155
+msgid "Display"
+msgstr "Görüntüle"
+
+#: src/form1.C:159
+msgid "Height"
+msgstr "Yükseklik"
+
+#: src/form1.C:163 src/layout_forms.C:539 src/layout_forms.C:622
+msgid "Width"
+msgstr "Geniþlik"
+
+#: src/form1.C:167
+msgid "Rotation"
+msgstr "Dönüþ açýsý"
+
+#: src/form1.C:173
+msgid "Display in Color|#D"
+msgstr "Renkli görüntüle|#D"
+
+#: src/form1.C:176
+msgid "Do not display this figure|#y"
+msgstr "Bu þekli görüntüleme|#y "
+
+#: src/form1.C:179
+msgid "Display as Grayscale|#i"
+msgstr "Gri tonlarý ile görüntüle|#i"
+
+#: src/form1.C:182
+msgid "Display as Monochrome|#s"
+msgstr "Siyah-beyaz görüntüle|#s"
+
+#: src/form1.C:189
+msgid "Default|#U"
+msgstr "Öntanýmlý|#U"
+
+#: src/form1.C:192
+msgid "cm|#c"
+msgstr "cm|#c"
+
+#: src/form1.C:195
+msgid "inches|#n"
+msgstr "inç|#n"
+
+#: src/form1.C:199 src/form1.C:201
+#, no-c-format
+msgid "% of Page|#P"
+msgstr "sayfanýn yüzde kaçý|#P"
+
+#: src/form1.C:205 src/form1.C:207
+#, no-c-format
+msgid "% of Column|#o"
+msgstr "Sütunun yüzde kaçý|#o"
+
+#: src/form1.C:213
+msgid "Caption|#k"
+msgstr "Altbaþlýk|#k"
+
+#: src/form1.C:216
+msgid "Subfigure|#q"
+msgstr "Altþekil|#q"
+
+#: src/form1.C:239
+msgid "Directory:|#D"
+msgstr "Dizin:|#D"
+
+#: src/form1.C:243
+msgid "Pattern:|#P"
+msgstr "Dosya tipi:|#P"
+
+#: src/form1.C:251
+msgid "Filename:|#F"
+msgstr "Dosya ismi:|#F"
+
+#: src/form1.C:255
+msgid "Rescan|#R#r"
+msgstr "Tazele|#R#r"
+
+#: src/form1.C:258
+msgid "Home|#H#h"
+msgstr "Baþlangýç|#H#h"
+
+#: src/form1.C:261
+msgid "User1|#1"
+msgstr "Kullanýcý1|#1"
+
+#: src/form1.C:264
+msgid "User2|#2"
+msgstr "Kullanýcý2|#2"
+
+#: src/form1.C:299 src/layout_forms.C:83
+msgid "Columns"
+msgstr "Sütun"
+
+#: src/form1.C:303 src/math_forms.C:135
+msgid "Rows"
+msgstr "Satýr"
+
+#: src/form1.C:323
+msgid "Find|#n"
+msgstr "Bul|#n"
+
+#: src/form1.C:327
+msgid "Replace with|#W"
+msgstr "ve deðiþtir|#W"
+
+#: src/form1.C:331
+#, fuzzy
+msgid "@>|#F"
+msgstr "@>|#F"
+
+#: src/form1.C:335
+#, fuzzy
+msgid "@<|#B"
+msgstr "@<|#B"
+
+#: src/form1.C:339
+msgid "Replace|#R#r"
+msgstr "Deðiþtir"
+
+#: src/form1.C:343
+msgid "Close|^["
+msgstr "Kapat|^["
+
+#: src/form1.C:347
+msgid "Case sensitive|#s#S"
+msgstr "Büyük-küçük farklý|#s#S"
+
+#: src/form1.C:349
+msgid "Match word|#M#m"
+msgstr "Sözcük eþle|#M#m"
+
+#: src/form1.C:351
+#, fuzzy
+msgid "Replace All|#A#a"
+msgstr "Deðiþtir"
+
+#: src/formula.C:858 src/lyxfunc.C:2055
+msgid "Math greek mode on"
+msgstr "Yunan harfleri kipi"
+
+#: src/formula.C:869 src/lyxfunc.C:2066
+msgid "Math greek keyboard on"
+msgstr "Yunan harfleri klavye dizilimi"
+
+#: src/formula.C:871 src/lyxfunc.C:2068
+msgid "Math greek keyboard off"
+msgstr "Normal klavye dizilimi"
+
+#: src/formula.C:886 src/formula.C:1174
+msgid "TeX mode"
+msgstr "TeX kipi"
+
+#: src/formula.C:901
+msgid "No number"
+msgstr "Numarasýz"
+
+#: src/formula.C:904
+msgid "Number"
+msgstr "Numara"
+
+#: src/formula.C:1034 src/lyx_cb.C:1179
+msgid "Enter new label to insert:"
+msgstr "Eklenecek etiketi girin:"
+
+#: src/formula.C:1063
+msgid "math text mode"
+msgstr "Matematik yazý kipi"
+
+#: src/formula.C:1072
+msgid "Invalid action in math mode!"
+msgstr "Matematik kipi için geçersiz iþlem!"
+
+#. / what appears in the minibuffer when opening
+#: src/formula.h:74 src/lyxfunc.C:2119
+msgid "Math editor mode"
+msgstr "Formül düzenleme kipi"
+
+#: src/formulamacro.C:146 src/formulamacro.C:170
+msgid "Macro: "
+msgstr "Makro: "
+
+#: src/insetbib.C:100
+msgid "Key:"
+msgstr "Tuþ:"
+
+#: src/insetbib.C:114 src/insetbib.C:115
+msgid "Remark:|#R"
+msgstr "Not:|#R"
+
+#. InsetBibtex uses the same form, with different labels
+#: src/insetbib.C:132 src/insetbib.C:133 src/insetbib.C:283 src/insetbib.C:284
+msgid "Key:|#K"
+msgstr "Tuþ:|#K"
+
+#: src/insetbib.C:142 src/insetbib.C:143 src/insetbib.C:285 src/insetbib.C:286
+msgid "Label:|#L"
+msgstr "Etiket:|#L"
+
+#: src/insetbib.C:189
+msgid "Citation"
+msgstr "Gönderme"
+
+#: src/insetbib.C:294
+msgid "Bibliography item"
+msgstr "Kaynakça elemaný"
+
+#: src/insetbib.C:314
+msgid "BibTeX Generated References"
+msgstr "BibTeX Kaynaklarý"
+
+#: src/insetbib.C:445
+msgid "Database:"
+msgstr "Veri tabaný:"
+
+#: src/insetbib.C:446
+msgid "Style:  "
+msgstr "Tarz: "
+
+#: src/insetbib.C:453
+msgid "BibTeX"
+msgstr "BibTeX"
+
+#: src/inseterror.C:74 src/inseterror.C:99 src/lyx_cb.C:3704
+msgid "Error"
+msgstr "Hata"
+
+#: src/inseterror.C:180
+msgid "LaTeX Error"
+msgstr "LaTeX Hatasý"
+
+#. / what appears in the minibuffer when opening
+#: src/inseterror.h:59
+msgid "Opened error"
+msgstr "Hata kutusu açýldý"
+
+#: src/insetinclude.C:39 src/insetinclude.C:40
+msgid "Browse|#B"
+msgstr "Tara|#B"
+
+#: src/insetinclude.C:43 src/insetinclude.C:44
+msgid "Don't typeset|#D"
+msgstr "Harf dizgisi yapma|#D"
+
+#: src/insetinclude.C:53 src/insetinclude.C:54
+msgid "Load|#L"
+msgstr "Yükle|#L"
+
+#: src/insetinclude.C:57 src/insetinclude.C:58
+msgid "File name:|#F"
+msgstr "Dosya ismi:|#F"
+
+#: src/insetinclude.C:61 src/insetinclude.C:62
+msgid "Visible space|#s"
+msgstr "Görünür boþluk|#s"
+
+#: src/insetinclude.C:66 src/insetinclude.C:67
+msgid "Verbatim|#V"
+msgstr "Verbatim|#V"
+
+#: src/insetinclude.C:70 src/insetinclude.C:71
+msgid "Use input|#i"
+msgstr "`input' kullan|#i"
+
+#: src/insetinclude.C:74 src/insetinclude.C:75
+msgid "Use include|#U"
+msgstr "`include' kullan|#U"
+
+#. launches dialog
+#: src/insetinclude.C:110 src/lyx_cb.C:368 src/lyxfunc.C:2456
+#: src/lyxfunc.C:2546 src/lyxfunc.C:2595 src/lyxfunc.C:2668 src/lyxfunc.C:2769
+#: src/menus.C:128 src/menus.C:253 src/menus.C:254 src/menus.C:255
+msgid "Documents"
+msgstr "Belgeler"
+
+#. Use by default the master's path
+#: src/insetinclude.C:113
+msgid "Select Child Document"
+msgstr "Altbelgeyi seçin"
+
+#: src/insetinclude.C:255 src/insetinclude.C:290
+msgid "Include"
+msgstr "Ekle"
+
+#: src/insetinclude.C:286
+msgid "Input"
+msgstr "Girdi"
+
+#: src/insetinclude.C:288
+msgid "Verbatim Input"
+msgstr "Verbatim Input"
+
+#: src/insetindex.C:62 src/insetindex.C:63
+msgid "Keyword:|#K"
+msgstr "Tuþ:|#K"
+
+#: src/insetindex.C:113
+msgid "Index"
+msgstr "Dizin"
+
+#: src/insetindex.C:120
+#, fuzzy
+msgid "Idx"
+msgstr "Dizin"
+
+#: src/insetindex.C:148
+msgid "PrintIndex"
+msgstr "Dizini bastýr"
+
+#: src/insetinfo.C:73 src/insetinfo.C:92 src/insetinfo.C:203
+msgid "Note"
+msgstr "Not"
+
+#: src/insetinfo.C:190 src/insetinfo.C:194 src/lyx.C:142
+msgid "Close|#C^["
+msgstr "Kapat|#C^["
+
+#. /
+#: src/insetloa.h:37
+msgid "List of Algorithms"
+msgstr "Algoritma listesi"
+
+#. /
+#: src/insetlof.h:35
+msgid "List of Figures"
+msgstr "Þekil listesi"
+
+#. /
+#: src/insetlot.h:35
+msgid "List of Tables"
+msgstr "Tablo listesi"
+
+#. /
+#: src/insetparent.h:42
+msgid "Parent:"
+msgstr "Üstbelge:"
+
+#: src/insetref.C:67
+msgid "Reference Type"
+msgstr "Kaynak tipi"
+
+#: src/insetref.C:70
+msgid "Goto Label"
+msgstr "Etikete git"
+
+#: src/insetref.C:73
+msgid "Change Label"
+msgstr "Etiketi deðiþtir"
+
+#: src/insetref.C:78
+msgid "Page Number"
+msgstr "Sayfa numarasý"
+
+#: src/insetref.C:80
+msgid "Reference"
+msgstr "Kaynak"
+
+#: src/insetref.C:191
+msgid "Page: "
+msgstr "Sayfa: "
+
+#: src/insetref.C:193
+msgid "Ref: "
+msgstr "Ref: "
+
+#. /
+#: src/insettoc.h:35 src/lyxfunc.C:781
+msgid "Table of Contents"
+msgstr "Ýçindekiler"
+
+#: src/inseturl.C:112 src/inseturl.C:113
+msgid "Url|#U"
+msgstr ""
+
+#: src/inseturl.C:114 src/inseturl.C:115 src/lyx.C:158
+#, fuzzy
+msgid "Name|#N"
+msgstr "Alýcý Adý:|#N"
+
+#: src/inseturl.C:116 src/inseturl.C:117
+msgid "Close|#C^[^M"
+msgstr "Kapat|#C^[^M"
+
+#: src/inseturl.C:120 src/inseturl.C:121
+msgid "HTML type|#H"
+msgstr "HTML Tip:|#H"
+
+#: src/inseturl.C:141
+#, fuzzy
+msgid "Insert Url"
+msgstr "Ekle"
+
+#: src/inseturl.C:150
+msgid "HtmlUrl: "
+msgstr ""
+
+#: src/inseturl.C:152
+msgid "Url: "
+msgstr ""
+
+#: src/intl.C:295 src/intl.C:296
+msgid "other..."
+msgstr "diðer..."
+
+#: src/intl.C:365
+msgid "Key Mappings"
+msgstr "Tuþ eþlemeleri"
+
+#: src/kbmap.C:307
+msgid "   options: "
+msgstr " seçenekler:"
+
+#: src/latexoptions.C:19
+msgid "Allow accents on ALL characters|#w"
+msgstr "TÜM harflere aksan izni ver|#w"
+
+#: src/latexoptions.C:49 src/lyxvc.C:332 src/lyxvc.C:333
+msgid "Update|#Uu"
+msgstr "Güncelle|#Uu"
+
+#: src/layout.C:1293
+#, fuzzy
+msgid "LyX wasn't able to find its layout descriptions!"
+msgstr "LyX kendi düzen tanýmlamalarýný bulmayý baþaramadý!"
+
+#: src/layout.C:1294
+msgid "Check that the file \"textclass.lst\""
+msgstr "\"textclass.lst\" dosyasýnýn yüklenmiþ"
+
+#: src/layout.C:1295
+msgid "is installed correctly. Sorry, has to exit :-("
+msgstr "olup olmadýðýný kontrol edin. Ne yazýk ki çýkmak zorundayým."
+
+#: src/layout.C:1349
+#, fuzzy
+msgid "LyX wasn't able to find any layout description!"
+msgstr "LyX kendi düzen tanýmlamalarýný bulmayý baþaramadý!"
+
+#: src/layout.C:1350
+#, fuzzy
+msgid "Check the contents of  the file \"textclass.lst\""
+msgstr "\"textclass.lst\" dosyasýnýn yüklenmiþ"
+
+#: src/layout.C:1351
+#, fuzzy
+msgid "Sorry, has to exit :-("
+msgstr "olup olmadýðýný kontrol edin. Ne yazýk ki çýkmak zorundayým."
+
+#: src/layout_forms.C:22
+msgid "Separation"
+msgstr "Paragraf Arasý"
+
+#: src/layout_forms.C:28
+msgid "Indent|#I"
+msgstr "Ýçeriden|#I"
+
+#: src/layout_forms.C:30
+msgid "Skip|#K"
+msgstr "Boþluk|#K"
+
+#: src/layout_forms.C:34
+msgid "Class:|#C"
+msgstr "Sýnýf:|#C"
+
+#: src/layout_forms.C:38
+msgid "Pagestyle:|#P"
+msgstr "Sayfa tarzý:|#P"
+
+#: src/layout_forms.C:41
+msgid "Fonts:|#F"
+msgstr "Yazýtipleri:|#F"
+
+#: src/layout_forms.C:44
+msgid "Font Size:|#O"
+msgstr "Yazýtipi boyu:|#O"
+
+#: src/layout_forms.C:56
+msgid "Float Placement:|#L"
+msgstr "Tek-parça yerleþtirmesi:|#L"
+
+#: src/layout_forms.C:58
+msgid "PS Driver:|#S"
+msgstr "PS sürücüsü:|#S"
+
+#: src/layout_forms.C:61
+msgid "Encoding:|#D"
+msgstr "Kodlama:|#D"
+
+#: src/layout_forms.C:73
+msgid "One|#n"
+msgstr "Bir|#n"
+
+#: src/layout_forms.C:75
+msgid "Two|#T"
+msgstr "Ýki|#T"
+
+#: src/layout_forms.C:79
+msgid "Sides"
+msgstr "Yüz"
+
+#: src/layout_forms.C:89
+msgid "One|#e"
+msgstr "Bir|#n"
+
+#: src/layout_forms.C:91
+msgid "Two|#w"
+msgstr "Ýki|#T"
+
+#: src/layout_forms.C:95
+msgid "Extra Options:|#X"
+msgstr "Ek seçenekler:|#X"
+
+#: src/layout_forms.C:97
+msgid "Language:"
+msgstr "Dil:"
+
+#: src/layout_forms.C:103
+msgid "Default Skip:|#u"
+msgstr "Öntanýmlý ara:|#u"
+
+#: src/layout_forms.C:107
+msgid "Section number depth"
+msgstr "Bölüm numaralandýrma derinliði"
+
+#: src/layout_forms.C:110
+msgid "Table of contents depth"
+msgstr "Ýçindekiler derinliði"
+
+#: src/layout_forms.C:113
+msgid "Spacing|#g"
+msgstr "Boþluk|#g"
+
+#: src/layout_forms.C:117
+msgid "Bullet Shapes|#B"
+msgstr "`Bullet' þekilleri"
+
+#: src/layout_forms.C:120
+msgid "Use AMS Math|#M"
+msgstr "AMS Math kullan|#M"
+
+#: src/layout_forms.C:140
+msgid "Family:|#F"
+msgstr "Aile:|#F"
+
+#: src/layout_forms.C:143
+msgid "Series:|#S"
+msgstr "Seri:|#S"
+
+#: src/layout_forms.C:146
+msgid "Shape:|#H"
+msgstr "Þekil:|#H"
+
+#: src/layout_forms.C:149
+msgid "Size:|#Z"
+msgstr "Boy:|#Z"
+
+#: src/layout_forms.C:152
+msgid "Misc:|#M"
+msgstr "Diðer:|#M"
+
+#: src/layout_forms.C:161
+msgid "Color:|#C"
+msgstr "Renk:|#C"
+
+#: src/layout_forms.C:164
+#, fuzzy
+msgid "Toggle on all these|#T"
+msgstr "Ýsim tarzýný deðiþtir"
+
+#: src/layout_forms.C:166
+msgid "These are never toggled"
+msgstr ""
+
+#: src/layout_forms.C:170
+msgid "These are always toggled"
+msgstr ""
+
+#: src/layout_forms.C:211
+msgid "Label Width:|#d"
+msgstr "Etiket Geniþliði:|#d"
+
+#: src/layout_forms.C:215
+msgid "Indent"
+msgstr "Ýçeriden"
+
+#: src/layout_forms.C:219
+msgid "Above|#b"
+msgstr "Yukarý|#b"
+
+#: src/layout_forms.C:221
+msgid "Below|#E"
+msgstr "Aþaðý|#E"
+
+#: src/layout_forms.C:223
+msgid "Above|#o"
+msgstr "Yukarý|#o"
+
+#: src/layout_forms.C:225
+msgid "Below|#l"
+msgstr "Aþaðý|#E"
+
+#: src/layout_forms.C:227
+msgid "No Indent|#I"
+msgstr "Ýçeriden baþlama|#I"
+
+#: src/layout_forms.C:231 src/layout_forms.C:494 src/math_forms.C:94
+msgid "Right|#R"
+msgstr "Sað|#R"
+
+#: src/layout_forms.C:233
+msgid "Left|#f"
+msgstr "Sol|#f"
+
+#: src/layout_forms.C:235
+msgid "Block|#c"
+msgstr "Blok|#c"
+
+#: src/layout_forms.C:237
+msgid "Center|#n"
+msgstr "Ortala|#n"
+
+#: src/layout_forms.C:247
+msgid "Above:|#v"
+msgstr "Yukarý:|#v"
+
+#: src/layout_forms.C:251
+msgid "Below:|#w"
+msgstr "Aþaðý:|#w"
+
+#: src/layout_forms.C:255
+msgid "Pagebreaks"
+msgstr "Sayfa aralarý"
+
+#: src/layout_forms.C:259
+msgid "Lines"
+msgstr "Satýrlar"
+
+#: src/layout_forms.C:263 src/layout_forms.C:500 src/layout_forms.C:626
+msgid "Alignment"
+msgstr "Hizalama"
+
+#: src/layout_forms.C:267
+msgid "Vertical Spaces"
+msgstr "Düþey boþluk"
+
+#: src/layout_forms.C:271
+msgid "ExtraOpt|#X"
+msgstr "Ek Seçenekler|#X"
+
+#: src/layout_forms.C:275
+msgid "Keep|#K"
+msgstr "Koru|#K"
+
+#: src/layout_forms.C:277
+msgid "Keep|#p"
+msgstr "Koru|#p"
+
+#: src/layout_forms.C:294 src/lyx_gui_misc.C:415 src/lyx_sendfax.C:31
+msgid "OK|#O"
+msgstr "Peki|#O"
+
+#: src/layout_forms.C:332
+msgid "Type:|#T"
+msgstr "Tip:|#T"
+
+#: src/layout_forms.C:337
+msgid "Single|#S"
+msgstr "Tek|#S"
+
+#: src/layout_forms.C:339
+msgid "Double|#D"
+msgstr "Çift|#D"
+
+#: src/layout_forms.C:343
+msgid "Text"
+msgstr "Metin"
+
+#: src/layout_forms.C:363
+msgid "Special:|#S"
+msgstr "Özel:|#S"
+
+#: src/layout_forms.C:373
+msgid "Margins"
+msgstr "Kenar boþluklarý"
+
+#: src/layout_forms.C:377
+msgid "Foot/Head Margins"
+msgstr "Üst/dip boþluklar"
+
+#: src/layout_forms.C:397
+msgid "Orientation"
+msgstr "Yön"
+
+#: src/layout_forms.C:403
+msgid "Portrait|#o"
+msgstr "Boyuna|#o"
+
+#: src/layout_forms.C:405
+msgid "Landscape|#L"
+msgstr "Enine|#L"
+
+#: src/layout_forms.C:409
+msgid "Papersize:|#P"
+msgstr "Kaðýt boyu:|#P"
+
+#: src/layout_forms.C:413
+msgid "Custom Papersize"
+msgstr "Özel kaðýt boyu"
+
+#: src/layout_forms.C:417
+msgid "Use Geometry Package|#U"
+msgstr "`Geometry' paketini kullan|#U"
+
+#: src/layout_forms.C:419
+msgid "Width:|#W"
+msgstr "Geniþlik:|#W"
+
+#: src/layout_forms.C:422
+msgid "Height:|#H"
+msgstr "Uzunluk:|#H"
+
+#: src/layout_forms.C:425
+msgid "Top:|#T"
+msgstr "Üst:|#T"
+
+#: src/layout_forms.C:428
+msgid "Bottom:|#B"
+msgstr "Alt:|#B"
+
+#: src/layout_forms.C:431
+msgid "Left:|#e"
+msgstr "Sol:|#e"
+
+#: src/layout_forms.C:434
+msgid "Right:|#R"
+msgstr "Sað:|#R"
+
+#: src/layout_forms.C:437
+msgid "Headheight:|#i"
+msgstr "Üst kýsým yüksekliði:|#i"
+
+#: src/layout_forms.C:440
+msgid "Headsep:|#d"
+msgstr "Üst aralýðý:|#d"
+
+#: src/layout_forms.C:443
+msgid "Footskip:|#F"
+msgstr "Dip aralýðý:|#F"
+
+#: src/layout_forms.C:478
+msgid "Borders"
+msgstr "Çerçeve"
+
+#: src/layout_forms.C:482 src/layout_forms.C:632
+msgid "Top|#T"
+msgstr "Üst|#T"
+
+#: src/layout_forms.C:486 src/layout_forms.C:638
+msgid "Bottom|#B"
+msgstr "Alt|#B"
+
+#: src/layout_forms.C:490 src/math_forms.C:97
+msgid "Left|#L"
+msgstr "Sol|#L"
+
+#: src/layout_forms.C:504
+msgid "Special Cell"
+msgstr "Özel hücre"
+
+#: src/layout_forms.C:508
+msgid "Multicolumn|#M"
+msgstr "Çoklu sütun|#M"
+
+#: src/layout_forms.C:510
+msgid "Append Column|#A"
+msgstr "Sütun ekle|#A"
+
+#: src/layout_forms.C:513
+msgid "Delete Column|#O"
+msgstr "Sütun sil|#O"
+
+#: src/layout_forms.C:516
+msgid "Append Row|#p"
+msgstr "Satýr ekle|#p"
+
+#: src/layout_forms.C:519
+msgid "Delete Row|#w"
+msgstr "Satýr sil|#w"
+
+#: src/layout_forms.C:522
+msgid "Delete Table|#D"
+msgstr "Tablo sil|#D"
+
+#: src/layout_forms.C:525
+msgid "Column"
+msgstr "Sütun"
+
+#: src/layout_forms.C:528
+msgid "Row"
+msgstr "Sað"
+
+#: src/layout_forms.C:531
+msgid "Set Borders|#S"
+msgstr "Çerçeveyi ayarla|#S"
+
+#: src/layout_forms.C:534
+msgid "Unset Borders|#U"
+msgstr "Çerçeve ayarlarýný geri al|#U"
+
+#: src/layout_forms.C:537 src/layout_forms.C:551
+msgid "Longtable"
+msgstr "Uzun tablo"
+
+#: src/layout_forms.C:542
+msgid "Rotate 90°|#9"
+msgstr "90° çevir|#9"
+
+#: src/layout_forms.C:544
+msgid "Linebreaks|#N"
+msgstr "Satýr kesmeleri|#N"
+
+#: src/layout_forms.C:546
+msgid "Spec. Table"
+msgstr "Özel tablo"
+
+#: src/layout_forms.C:555
+msgid "First Head"
+msgstr "Ýlk Baþlýk"
+
+#: src/layout_forms.C:557
+msgid "Head"
+msgstr "Baþlýk"
+
+#: src/layout_forms.C:559
+msgid "Foot"
+msgstr "Dip"
+
+#: src/layout_forms.C:561
+msgid "Last Foot"
+msgstr "Son Dip"
+
+#: src/layout_forms.C:563
+msgid "New Page"
+msgstr "Yeni sayfa"
+
+#: src/layout_forms.C:565
+msgid "Rotate 90°"
+msgstr "90° çevir"
+
+#: src/layout_forms.C:567
+msgid "Extra|#X"
+msgstr "Ek Seçenekler|#X"
+
+#: src/layout_forms.C:570
+msgid "Left|#e"
+msgstr "Sol|#e"
+
+#: src/layout_forms.C:573
+msgid "Right|#i"
+msgstr "Sað|#i"
+
+#: src/layout_forms.C:576
+msgid "Center|#C"
+msgstr "Ortala|#C"
+
+#: src/layout_forms.C:600
+msgid "Extra Options"
+msgstr "Ek seçenekler"
+
+#: src/layout_forms.C:604
+msgid "Length|#L"
+msgstr "Uzunluk|#L"
+
+#: src/layout_forms.C:619
+msgid "or %|#o"
+msgstr "ya da %|#o"
+
+#: src/layout_forms.C:635
+msgid "Middle|#d"
+msgstr "Orta|#d"
+
+#: src/layout_forms.C:647
+msgid "HFill between Minipage paragraphs|#H"
+msgstr "Sayfacýk ve paragraflar arasýnda HFill|#H"
+
+#: src/layout_forms.C:649
+msgid "Start new Minipage|#S"
+msgstr "Yeni sayfacýða baþla|#S"
+
+#: src/layout_forms.C:653
+msgid "Indented Paragraph|#I"
+msgstr "Ýçeriden paragraf|#I"
+
+#: src/layout_forms.C:656
+msgid "Minipage|#M"
+msgstr "Sayfacýk|#M"
+
+#: src/layout_forms.C:659
+msgid "Floatflt|#F"
+msgstr "Tek-parça|#F"
+
+#: src/layout_forms.C:682
+msgid "Special Multicolumn Alignment"
+msgstr "Özel Çoklu Sütun Hizalamasý"
+
+#: src/layout_forms.C:695
+msgid "Special Column Alignment"
+msgstr "Özel hücre"
+
+#: src/lyx.C:41
+msgid "Encapsulated Postscript (*.eps, *.ps)|#E"
+msgstr "Encapsulated Postscript (*.eps, *.ps)|#E"
+
+#: src/lyx.C:43
+msgid "Inlined EPS (*.eps, *.ps)|#I"
+msgstr "Satýr içinde EPS (*.eps, *.ps)|#I"
+
+#: src/lyx.C:56
+msgid "Type"
+msgstr "Tip"
+
+#: src/lyx.C:75
+msgid "Roman Font|#R"
+msgstr "Roman yazýtipi|#R"
+
+#: src/lyx.C:77
+msgid "Sans Serif Font|#S"
+msgstr "Sans Serif Yazýtipi|#S"
+
+#: src/lyx.C:79
+msgid "Typewriter Font|#T"
+msgstr "Daktilo Yazýtipi|#T"
+
+#: src/lyx.C:81
+msgid "Font Norm|#N"
+msgstr "Yazýtipi Kodlamasý|#N"
+
+#: src/lyx.C:83
+msgid "Font Zoom|#Z"
+msgstr "Yazýtipi Ölçeði|#Z"
+
+#: src/lyx.C:116
+msgid "Update|Uu#u"
+msgstr "Güncelle|Uu#u"
+
+#: src/lyx.C:138
+msgid "Update|#U"
+msgstr "Güncelle|#U"
+
+#: src/lyx.C:146
+msgid "Insert Reference|#I^M"
+msgstr "Kaynak ekle|#I^M"
+
+#: src/lyx.C:150
+msgid "Insert Page Number|#P"
+msgstr "Sayfa Numarasý Ekle|#P"
+
+#: src/lyx.C:154
+msgid "Go to Reference|#G"
+msgstr "Kaynaða git|#G"
+
+#: src/lyx_cb.C:347
+msgid "Save failed. Rename and try again?"
+msgstr "Kayýt iþlemi baþarýsýz. Dosya ismini deðiþtirip yeniden deneyin."
+
+#: src/lyx_cb.C:349
+msgid "(If not, document is not saved.)"
+msgstr "(belge kaydedilmedi)"
+
+#: src/lyx_cb.C:369 src/lyxfunc.C:2457
+msgid "Templates"
+msgstr "Hazýr biçimler"
+
+#: src/lyx_cb.C:374
+msgid "Enter Filename to Save Document as"
+msgstr "Kayýt için yeni dosya ismini girin"
+
+#. Cancel: Do nothing
+#: src/lyx_cb.C:381 src/lyxfunc.C:2463 src/lyxfunc.C:2490 src/lyxfunc.C:2555
+#: src/lyxfunc.C:2604 src/lyxfunc.C:2629 src/lyxfunc.C:2639 src/lyxfunc.C:2684
+#: src/lyxfunc.C:2709 src/lyxfunc.C:2719 src/lyxfunc.C:2778
+msgid "Canceled."
+msgstr "Vazgeçildi."
+
+#: src/lyx_cb.C:392
+msgid "Same name as document already has:"
+msgstr "Ayný isimde bir belge var:"
+
+#: src/lyx_cb.C:394
+msgid "Save anyway?"
+msgstr "Yine de kaydedeyim mi?"
+
+#: src/lyx_cb.C:400
+msgid "Another document with same name open!"
+msgstr "Ayný isimli, açýk baþka bir belge var!"
+
+#: src/lyx_cb.C:402
+msgid "Replace with current document?"
+msgstr "Þu anki belge ile deðiþtireyim mi?"
+
+#: src/lyx_cb.C:410
+msgid "Document renamed to '"
+msgstr "Belgenin ismi '"
+
+#: src/lyx_cb.C:412
+msgid "', but not saved..."
+msgstr "olarak deðiþtirildi ama kaydedilmedi"
+
+#: src/lyx_cb.C:418
+msgid "Document already exists:"
+msgstr "Belge zaten var:"
+
+#: src/lyx_cb.C:420
+msgid "Replace file?"
+msgstr "Üzerine yazayým mý?"
+
+#: src/lyx_cb.C:443 src/lyxvc.C:359
+msgid "Sorry, can't do this while pictures are being rendered."
+msgstr "Üzgünüm, þekiller görüntülenirken bunu yapamam."
+
+#: src/lyx_cb.C:444 src/lyxvc.C:361
+msgid "Please wait a few seconds for this to finish and try again."
+msgstr "Lütfen iþlemin bitmesi için biraz bekleyin ve yeniden deneyin."
+
+#: src/lyx_cb.C:445 src/lyxvc.C:363
+msgid "(or kill runaway gs processes by hand and try again.)"
+msgstr "(ya da asi gs süreçlerini elle sonlandýrýn ve yeniden deneyin.)"
+
+#: src/lyx_cb.C:451 src/lyxvc.C:369
+msgid "Can't do this while the spellchecker is running."
+msgstr "Yazým denetimi yapýlýrken bu iþlemi yapamam."
+
+#: src/lyx_cb.C:452 src/lyxvc.C:371
+msgid "Stop the spellchecker first."
+msgstr "Önce yazým denetimini durdurun"
+
+#: src/lyx_cb.C:470 src/lyx_cb.C:502
+msgid "One error detected"
+msgstr "Bir hata bulundu"
+
+#: src/lyx_cb.C:471 src/lyx_cb.C:503
+msgid "You should try to fix it."
+msgstr "Hatayý düzeltmeyi denemelisiniz."
+
+#: src/lyx_cb.C:474 src/lyx_cb.C:506
+msgid " errors detected."
+msgstr " adet hata bulundu"
+
+#: src/lyx_cb.C:475 src/lyx_cb.C:507
+msgid "You should try to fix them."
+msgstr "Hatalarý düzeltmeyi denemelisiniz."
+
+#: src/lyx_cb.C:477
+#, fuzzy
+msgid "There were errors during the LaTeX run."
+msgstr "LaTeX çalýþýrken hatalar oluþtu."
+
+#: src/lyx_cb.C:492
+#, fuzzy
+msgid "Wrong type of document"
+msgstr "Belgenin sonuna git"
+
+#: src/lyx_cb.C:493
+msgid "The Build operation is not allowed in this document"
+msgstr ""
+
+#: src/lyx_cb.C:494 src/lyx_cb.C:509
+#, fuzzy
+msgid "There were errors during the Build process."
+msgstr "LaTeX çalýþýrken hatalar oluþtu."
+
+#: src/lyx_cb.C:520
+#, fuzzy
+msgid "Chktex does not work with SGML derived documents."
+msgstr "Chktex, LinuxDoc için pek anlamlý deðil."
+
+#: src/lyx_cb.C:529
+msgid "No warnings found."
+msgstr "Hiç uyarý bulunamadý."
+
+#: src/lyx_cb.C:531
+msgid "One warning found."
+msgstr "Bir tane uyarý bulundu."
+
+#: src/lyx_cb.C:532
+msgid "Use 'Edit->Go to Error' to find it."
+msgstr "'Deðiþtir->Hataya git' seçeneðini kullan."
+
+#: src/lyx_cb.C:535
+msgid " warnings found."
+msgstr " adet uyarý bulundu."
+
+#: src/lyx_cb.C:536
+msgid "Use 'Edit->Go to Error' to find them."
+msgstr "`Deðiþtir->Hataya git' seçeneðini kullan"
+
+#: src/lyx_cb.C:538
+msgid "Chktex run successfully"
+msgstr "Chktex baþarý ile çalýþtýrýldý"
+
+#: src/lyx_cb.C:540
+msgid "It seems chktex does not work."
+msgstr "Görünüþe göre chktex çalýþmýyor."
+
+#: src/lyx_cb.C:624 src/lyx_cb.C:627
+msgid "Executing command:"
+msgstr "Çalýþtýrýlan komut:"
+
+#: src/lyx_cb.C:852 src/lyx_cb.C:889 src/lyx_cb.C:922 src/lyx_cb.C:949
+#: src/lyxfunc.C:2499
+msgid "File already exists:"
+msgstr "Belirtilen dosya halihazýrda mevcut:"
+
+#: src/lyx_cb.C:854 src/lyx_cb.C:891 src/lyx_cb.C:924 src/lyx_cb.C:951
+#, fuzzy
+msgid "Do you want to overwrite the file?"
+msgstr "Belgeyi açmak istiyor musunuz?"
+
+#: src/lyx_cb.C:855 src/lyx_cb.C:892 src/lyx_cb.C:925 src/lyx_cb.C:952
+#, fuzzy
+msgid "Canceled"
+msgstr "Vazgeçildi."
+
+#: src/lyx_cb.C:860
+msgid "DocBook does not have a latex backend"
+msgstr ""
+
+#: src/lyx_cb.C:866
+msgid "Nice LaTeX file saved as"
+msgstr "Düzgün LaTeX dosyasý belirtilen isimle kaydedildi"
+
+#: src/lyx_cb.C:879
+msgid "Document class must be linuxdoc."
+msgstr "Belge sýnýfý linuxdoc olmalý."
+
+#: src/lyx_cb.C:896
+msgid "Building LinuxDoc SGML file `"
+msgstr "LinuxDoc SGML dosyasý oluþturuluyor `"
+
+#: src/lyx_cb.C:901
+#, fuzzy
+msgid "LinuxDoc SGML file save as"
+msgstr "LinuxDoc SGML dosyasý"
+
+#: src/lyx_cb.C:912
+#, fuzzy
+msgid "Document class must be docbook."
+msgstr "Belge sýnýfý linuxdoc olmalý."
+
+#: src/lyx_cb.C:929
+#, fuzzy
+msgid "Building DocBook SGML file `"
+msgstr "LinuxDoc SGML dosyasý oluþturuluyor `"
+
+#: src/lyx_cb.C:934
+#, fuzzy
+msgid "DocBook SGML file save as"
+msgstr "LinuxDoc SGML dosyasý"
+
+#: src/lyx_cb.C:958
+msgid "Ascii file saved as"
+msgstr "ASCII dosyasý belirtilen isimle kaydedildi"
+
+#: src/lyx_cb.C:1026
+msgid "Autosaving current document..."
+msgstr "Belgenin otomatik yedeði alýnýyor..."
+
+#: src/lyx_cb.C:1067
+msgid "Autosave Failed!"
+msgstr "Otomatik yedekleme sýrasýnda hata oluþtu!"
+
+#: src/lyx_cb.C:1124
+msgid "File to Insert"
+msgstr "Eklenecek dosya"
+
+#: src/lyx_cb.C:1135
+msgid "Error! Cannot open specified file:"
+msgstr "Hata! Belirtilen dosya açýlamýyor:"
+
+#: src/lyx_cb.C:1168
+msgid "Table Of Contents"
+msgstr "Ýçindekiler"
+
+#: src/lyx_cb.C:1199
+msgid "Insert Reference"
+msgstr "Kaynak ekleniyor"
+
+#: src/lyx_cb.C:1228
+msgid "Inserting Footnote..."
+msgstr "Dipnot ekleniyor..."
+
+#. Import file
+#: src/lyx_cb.C:1285
+msgid "Importing LinuxDoc SGML file `"
+msgstr "LinuxDoc SGML dosyasý okunuyor `"
+
+#. TeX output asked
+#: src/lyx_cb.C:1293
+msgid "Converting LinuxDoc SGML to TeX file..."
+msgstr "LinuxDoc SGML dosyasý TeX dosyasýna çevriliyor..."
+
+#. dvi output asked
+#: src/lyx_cb.C:1300
+msgid "Converting LinuxDoc SGML to dvi file..."
+msgstr "LinuxDoc SGML dosyasý dvi biçimine çevriliyor..."
+
+#. dvi output asked
+#: src/lyx_cb.C:1358
+#, fuzzy
+msgid "Converting DocBook SGML to dvi file..."
+msgstr "LinuxDoc SGML dosyasý dvi biçimine çevriliyor..."
+
+#: src/lyx_cb.C:1482
+msgid "Character Style"
+msgstr "Karakter tarzý"
+
+#: src/lyx_cb.C:1685
+msgid "Paragraph Environment"
+msgstr "Paragraf Ortamý"
+
+#: src/lyx_cb.C:1937
+msgid "Document Layout"
+msgstr "Belge Düzeni"
+
+#: src/lyx_cb.C:1976
+msgid "Quotes"
+msgstr "Alýntýlar"
+
+#: src/lyx_cb.C:2021
+msgid "LaTeX Preamble"
+msgstr "LaTeX Önyazý"
+
+#: src/lyx_cb.C:2031
+msgid "Do you want to save the current settings"
+msgstr "Þu anki ayarlarý "
+
+#: src/lyx_cb.C:2032
+msgid "for Character, Document, Paper and Quotes"
+msgstr "(karakter, belge, kaðýt ve alýntýlar)"
+
+#: src/lyx_cb.C:2033
+msgid "as default for new documents?"
+msgstr "yeni belgeler için öntanýmlý yapmak istiyor musunuz?"
+
+#: src/lyx_cb.C:2050 src/lyx_cb.C:2062
+msgid "Open/Close..."
+msgstr "Aç/Kapat..."
+
+#: src/lyx_cb.C:2085
+msgid "No further undo information"
+msgstr "Baþka `geri al' bilgisi yok"
+
+#: src/lyx_cb.C:2095
+msgid "Redo not yet supported in math mode"
+msgstr "Matematik kipinde `Yeniden Yap' henüz yok"
+
+#: src/lyx_cb.C:2105
+msgid "No further redo information"
+msgstr "Baþka `Yeniden Yap' bilgisi yok"
+
+#: src/lyx_cb.C:2296
+msgid "Font: "
+msgstr "Yazýtipi: "
+
+#: src/lyx_cb.C:2300
+msgid ", Depth: "
+msgstr ", Derinlik: "
+
+#: src/lyx_cb.C:2328
+msgid "Inserting margin note..."
+msgstr "Kenar boþluk notu ekleniyor."
+
+#: src/lyx_cb.C:2369
+msgid "Paragraph environment type copied"
+msgstr "Paragraf ortam tipi kopyalandý"
+
+#: src/lyx_cb.C:2378
+msgid "Paragraph environment type set"
+msgstr "Paragraf ortam tipi ayarlandý"
+
+#: src/lyx_cb.C:2469
+msgid "Changed environment depth (in possible range, maybe not)"
+msgstr "Ortam derinliði deðiþtirildi (belki imkan dýþýndadýr, kimbilir)"
+
+#: src/lyx_cb.C:2709
+msgid "Paragraph layout set"
+msgstr "Paragraf düzeni ayarlandý"
+
+#: src/lyx_cb.C:2779
+msgid "Should I set some parameters to"
+msgstr "Bazý parametreleri bu belge sýnýfýnýn"
+
+#: src/lyx_cb.C:2781
+msgid "the defaults of this document class?"
+msgstr "öntanýmlý deðerlerine göre ayarlayayým mý?"
+
+#. unable to load new style
+#: src/lyx_cb.C:2790 src/lyx_cb.C:2909 src/lyx_cb.C:2916
+msgid "Conversion Errors!"
+msgstr "Çevrim hatalarý!"
+
+#: src/lyx_cb.C:2791 src/lyx_cb.C:2917
+msgid "Unable to switch to new document class."
+msgstr "seçilen belge sýnýfý için"
+
+#: src/lyx_cb.C:2792 src/lyx_cb.C:2918
+msgid "Reverting to original document class."
+msgstr "seçilen belge sýnýfý için"
+
+#: src/lyx_cb.C:2892
+msgid "Converting document to new document class..."
+msgstr "Belge yeni belge sýnýfýna göre çevriliyor..."
+
+#: src/lyx_cb.C:2904
+msgid "One paragraph couldn't be converted"
+msgstr "Bir paragraf çevrilemedi"
+
+#: src/lyx_cb.C:2907
+msgid " paragraphs couldn't be converted"
+msgstr " adet paragraf çevrilemedi"
+
+#: src/lyx_cb.C:2910
+msgid "into chosen document class"
+msgstr "seçilen belge sýnýfý için"
+
+#: src/lyx_cb.C:2996
+msgid "Document layout set"
+msgstr "Belge düzeni ayarlandý"
+
+#: src/lyx_cb.C:3046 src/lyx_cb.C:3050
+msgid "No more notes"
+msgstr "Baþka not yok"
+
+#: src/lyx_cb.C:3081
+msgid "Quotes type set"
+msgstr "Alýntý tipi ayarlandý"
+
+#: src/lyx_cb.C:3145
+msgid "LaTeX preamble set"
+msgstr "LaTeX önyazýsý ayarlandý"
+
+#: src/lyx_cb.C:3167
+msgid "Cannot insert table in table."
+msgstr "Tablo içine tablo ekleyemem."
+
+#: src/lyx_cb.C:3172
+msgid "Inserting table..."
+msgstr "Tablo ekleniyor..."
+
+#: src/lyx_cb.C:3232
+msgid "Table inserted"
+msgstr "Tablo eklendi"
+
+#: src/lyx_cb.C:3291 src/lyx_cb.C:3311
+#, fuzzy
+msgid "ERROR!  Unable to print!"
+msgstr "Dosya okunamadý!"
+
+#: src/lyx_cb.C:3292
+msgid "Check 'range of pages'!"
+msgstr ""
+
+#: src/lyx_cb.C:3312
+msgid "Check 'number of copies'!"
+msgstr ""
+
+#: src/lyx_cb.C:3425
+#, fuzzy
+msgid "Error:"
+msgstr "Hata:"
+
+#: src/lyx_cb.C:3426
+#, fuzzy
+msgid "Unable to print"
+msgstr "Dosya okunamadý!"
+
+#: src/lyx_cb.C:3427
+msgid "Check that your parameters are correct"
+msgstr ""
+
+#: src/lyx_cb.C:3449
+msgid "Inserting figure..."
+msgstr "Þekil ekleniyor..."
+
+#: src/lyx_cb.C:3454 src/lyx_cb.C:3506
+msgid "Figure inserted"
+msgstr "Þekil eklendi"
+
+#: src/lyx_cb.C:3535
+msgid "Screen options set"
+msgstr "Ekran seçenekeleri ayarlandý"
+
+#: src/lyx_cb.C:3565
+msgid "LaTeX Options"
+msgstr "LaTeX Seçenekleri"
+
+#: src/lyx_cb.C:3574
+msgid "Running configure..."
+msgstr "Yapýlandýrma çalýþtýrýlýyor..."
+
+#: src/lyx_cb.C:3581
+msgid "Reloading configuration..."
+msgstr "Yapýlandýrma bilgisi yeniden yükleniyor..."
+
+#: src/lyx_cb.C:3583
+msgid "The system has been reconfigured."
+msgstr "Sistem yeniden yapýlandýrýldý."
+
+#: src/lyx_cb.C:3584
+msgid "You need to restart LyX to make use of any"
+msgstr "Yenilenmiþ herhangi bir belge sýnýfýný kullanmak"
+
+#: src/lyx_cb.C:3585
+msgid "updated document class specifications."
+msgstr "için LyX'i yeniden baþlatmalýsýnýz."
+
+#: src/lyx_cb.C:3705
+msgid "Couldn't find this label"
+msgstr "Bu etiket "
+
+#: src/lyx_cb.C:3706
+msgid "in current document."
+msgstr "belgede bulunamadý"
+
+#: src/lyx_cb.C:3737
+msgid "*** No Document ***"
+msgstr "*** Belge yok ***"
+
+#: src/lyx_cb.C:3903
+msgid "*** No labels found in document ***"
+msgstr "*** Belgede hiç etiket bulunamadý ***"
+
+#: src/lyx_gui.C:385 src/lyx_gui.C:388
+msgid " None | Defskip | Smallskip | Medskip | Bigskip | VFill | Length "
+msgstr ""
+" Hiçbiri | Tanýmlý-ara | Küçük-ara | Orta-ara | Büyük-ara | Dikey-Doldur | "
+"Uzunluk "
+
+#: src/lyx_gui.C:414
+msgid " No change %l| Roman | Sans Serif | Typewriter %l| Reset "
+msgstr " Deðiþtirme %l| Roman | Sans Serif | Daktilo %l| Baþtan "
+
+#: src/lyx_gui.C:416
+msgid " No change %l| Medium | Bold %l| Reset "
+msgstr " Deðiþtirme %l| Ýnce | Kalýn %l| Baþtan "
+
+#: src/lyx_gui.C:418
+msgid " No change %l| Upright | Italic | Slanted | Small Caps %l| Reset "
+msgstr " Deðiþtirme %l| Dik | Ýtalik | Eðik | Small Caps %l| Baþtan "
+
+#: src/lyx_gui.C:421
+msgid ""
+" No change %l| Tiny | Smallest | Smaller | Small | Normal | Large | Larger | "
+"Largest | Huge | Huger %l| Increase | Decrease | Reset "
+msgstr ""
+" Deðiþtirme %l| Minicik | Çok küçük | Daha küçük | Küçük | Normal | Büyük | "
+"Daha büyük | Çok büyük | Kocaman | Dev gibi %l| Arttýr | Azalt | Baþtan "
+
+#: src/lyx_gui.C:425
+msgid " No change %l| Emph | Underbar | Noun | LaTeX mode %l| Reset "
+msgstr " Deðiþtirme %l| Vurgu | Altçizgi | Ýsim | LaTeX kipi %l| Baþtan "
+
+#: src/lyx_gui.C:427
+msgid ""
+" No change %l| No color | Black | White | Red | Green | Blue | Cyan | "
+"Magenta | Yellow %l| Reset "
+msgstr ""
+" Deðiþtirme %l| Renksiz | Siyah | Beyaz | Kýrmýzý | Yeþil | Mavi | Turkuaz | "
+"Mor | Sarý %l| Baþtan "
+
+#: src/lyx_gui.C:435
+msgid " Single | OneHalf | Double | Other "
+msgstr " Tek | Birbuçuk| Çift | Baþka "
+
+#: src/lyx_gui.C:474
+msgid " Smallskip | Medskip | Bigskip | Length "
+msgstr " Küçük-ara | Orta-ara | Büyük-ara | Uzunluk "
+
+#: src/lyx_gui.C:483
+msgid ""
+" Default | Custom | USletter | USlegal | USexecutive | A3 | A4 | A5 | B3 | "
+"B4 | B5 "
+msgstr ""
+" Öntanýmlý | Özel | USletter | USlegal | USexecutive | A3 | A4 | A5 | B3 | "
+"B4 | B5 "
+
+#: src/lyx_gui.C:486
+msgid ""
+" None | A4 small Margins (only portrait) | A4 very small Margins (only "
+"portrait) | A4 very wide margins (only portrait) "
+msgstr ""
+" Hiçbiri | A4 küçük boþluk (sadece boyuna) | A4 çok küçük boþluk "
+"(sadeceboyuna) | A4 çok geniþ boþluk (sadece boyuna) "
+
+#: src/lyx_gui.C:532
+msgid " ``text'' | ''text'' | ,,text`` | ,,text'' | «text» | »text« "
+msgstr " ``metin'' | ''metin'' | ,,metin`` | ,,metin'' | «metin» | »metin« "
+
+#: src/lyx_gui.C:610
+msgid "LyX Banner"
+msgstr "LyX Flamasý"
+
+#: src/lyx_gui_misc.C:363
+msgid "Dismiss"
+msgstr "Kaldýr"
+
+#: src/lyx_gui_misc.C:380 src/lyx_gui_misc.C:392 src/lyx_gui_misc.C:397
+#: src/lyx_gui_misc.C:403
+msgid "Yes|Yy#y"
+msgstr "Evet|Yy#y"
+
+#: src/lyx_gui_misc.C:381 src/lyx_gui_misc.C:393 src/lyx_gui_misc.C:398
+#: src/lyx_gui_misc.C:404
+msgid "No|Nn#n"
+msgstr "Hayýr|Nn#n"
+
+#: src/lyx_gui_misc.C:416
+#, fuzzy
+msgid "Clear|#e"
+msgstr "büyük"
+
+#: src/lyx_gui_misc.C:425
+msgid "Any changes will be ignored"
+msgstr "Deðiþiklikler belgeye yansýtýlmayacaktýr."
+
+#: src/lyx_gui_misc.C:426
+msgid "The document is read-only:"
+msgstr "Belge sadece okunabilir:"
+
+#: src/lyx_main.C:184
+msgid "Warning: could not determine path of binary."
+msgstr "Uyarý: çalýþtýrýlabilir dosyanýn yolu belirlenemedi."
+
+#: src/lyx_main.C:185
+msgid "If you have problems, try starting LyX with an absolute path."
+msgstr "Sorun yaþarsanýz, LyX'i tam yolunu belirterek çaðýrmayý deneyin."
+
+#: src/lyx_main.C:271
+#, fuzzy
+msgid "LYX_DIR_10x environment variable no good."
+msgstr "LYX_DIR_12 çevre deðiþkeni iþe yaramýyor."
+
+#: src/lyx_main.C:272
+msgid "System directory set to: "
+msgstr "Kullanýcý dizini: "
+
+#: src/lyx_main.C:280
+msgid "LyX Warning! Couldn't determine system directory."
+msgstr "Hata! Geçici dizin silinemedi:"
+
+#: src/lyx_main.C:281
+msgid "Try the '-sysdir' command line parameter or"
+msgstr "'-sysdir' komut satýrý parametresini kullanýn veya"
+
+#: src/lyx_main.C:282
+#, fuzzy
+msgid "set the environment variable LYX_DIR_10x to the LyX system directory"
+msgstr "LYX_DIR_12 çevre deðiþkeni deðerini `chkconfig.ltx' dosyasýný içeren"
+
+#: src/lyx_main.C:284
+msgid "containing the file `chkconfig.ltx'."
+msgstr "LyX sistem dizinine ayarlayýn."
+
+#: src/lyx_main.C:286
+msgid "Using built-in default "
+msgstr "Öntanýmlý bilgileri kullanýyorum."
+
+#: src/lyx_main.C:287
+msgid " but expect problems."
+msgstr " ancak sorunlar çýkabilir."
+
+#: src/lyx_main.C:289
+msgid "Expect problems."
+msgstr " Sorunlar bekleniyor."
+
+#. Nope
+#: src/lyx_main.C:388
+msgid "You don't have a personal LyX directory."
+msgstr "Ama sizin kiþisel bir LyX dizininiz yok ki."
+
+#: src/lyx_main.C:389
+msgid "It is needed to keep your own configuration."
+msgstr "Kendi yapýlandýrmanýz için bu dizin gerekli."
+
+#: src/lyx_main.C:390
+msgid "Should I try to set it up for you (recommended)?"
+msgstr "Sizin için bir tane yaratmamý ister misiniz (isteyin)?"
+
+#: src/lyx_main.C:391
+msgid "Running without personal LyX directory."
+msgstr "Ama sizin kiþisel bir LyX dizininiz yok ki."
+
+#. Tell the user what is going on
+#: src/lyx_main.C:398
+msgid "LyX: Creating directory "
+msgstr "LyX: Dizin yaratýlýyor "
+
+#: src/lyx_main.C:398
+msgid " and running configure..."
+msgstr " ve yapýlandýrma çalýþtýrýlýyor..."
+
+#: src/lyx_main.C:404
+msgid "Failed. Will use "
+msgstr "Baþarýsýz, yerine "
+
+#: src/lyx_main.C:404
+msgid " instead."
+msgstr "eklendi."
+
+#: src/lyx_main.C:412
+msgid "Done!"
+msgstr "Bitti!"
+
+#: src/lyx_main.C:425
+msgid "LyX Warning!"
+msgstr "LyX uyarýsý!"
+
+#: src/lyx_main.C:426
+msgid "Error while reading "
+msgstr "Okuma sýrasýnda hata oluþtu "
+
+#: src/lyx_main.C:427
+msgid "Using built-in defaults."
+msgstr "Öntanýmlý bilgileri kullanýyorum."
+
+#: src/lyx_main.C:437
+msgid "Setting debug level to "
+msgstr "Hata ayýklama seviyesi "
+
+#: src/lyx_main.C:472
+msgid "LyX "
+msgstr "LyX|#L"
+
+#: src/lyx_main.C:473
+msgid "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
+msgstr "Kullaným: lyx [ komut satýrý deðerleri ] [ isim.lyx ... ]\n"
+
+#: src/lyx_main.C:474
+msgid "Command line switches (case sensitive):"
+msgstr "Komut satýrý deðerleri (büyük küçük harf farklý):"
+
+#: src/lyx_main.C:475
+msgid "   -help           summarize LyX usage"
+msgstr "   -help           LyX kullanýmý özeti"
+
+#: src/lyx_main.C:476
+msgid "   -sysdir x       try to set system directory to x"
+msgstr "   -sysdir x       sistem dizinini x olarak belirle"
+
+#: src/lyx_main.C:477
+msgid "   -width x        set the width of the main window"
+msgstr "   -width x        ana pencerenin geniþliði"
+
+#: src/lyx_main.C:478
+msgid "   -height y       set the height of the main window"
+msgstr "   -height y       ana pencerenin yüksekliði"
+
+#: src/lyx_main.C:479
+msgid "   -xpos x         set the x position of the main window"
+msgstr "   -xpos x         ana pencerenin x koordinatý"
+
+#: src/lyx_main.C:480
+msgid "   -ypos y         set the y position of the main window"
+msgstr "   -ypos y         ana pencerenin y koordinatý"
+
+#: src/lyx_main.C:481
+msgid ""
+"   -dbg n          where n is a sum of debugging options. Try -dbg 65535 "
+"-help"
+msgstr ""
+"   -dbg n          n hata ayýklama seviyesini kullan. Seçenekler için -dbg "
+"65535 -help deneyin"
+
+#: src/lyx_main.C:482
+msgid "   -Reverse        swaps foreground & background colors"
+msgstr "   -Reverse        yazý ve arkaplan renklerini terisne çevirir"
+
+#: src/lyx_main.C:483
+msgid "   -Mono           runs LyX in black and white mode"
+msgstr "   -Mono           LyX'in siyah-beyaz çalýþmasýný saðlar"
+
+#: src/lyx_main.C:484
+msgid "   -FastSelection  use a fast routine for drawing selections\n"
+msgstr "   -FastSelection  seçimler için alternatif bir yöntem kullanýr\n"
+
+#: src/lyx_main.C:485
+msgid "Check the LyX man page for more options."
+msgstr "Ek seçenekler için LyX kýlavuz sayfasýna bakýn."
+
+#: src/lyx_main.C:509
+msgid "Missing number for -dbg switch!"
+msgstr "-dbp için gereken sayý eksik!"
+
+#: src/lyx_main.C:523
+msgid "Missing directory for -sysdir switch!"
+msgstr "-sysdir için gereken dizin eksik!"
+
+#: src/lyx_sendfax.C:21
+msgid "Fax no.:|#F"
+msgstr "Faks no.:|#F"
+
+#: src/lyx_sendfax.C:23
+msgid "Dest. Name:|#N"
+msgstr "Alýcý Adý:|#N"
+
+#: src/lyx_sendfax.C:25
+msgid "Enterprise:|#E"
+msgstr "Þirket:|#E"
+
+#: src/lyx_sendfax.C:45
+msgid "Phone Book"
+msgstr "Telefon Defteri"
+
+#: src/lyx_sendfax.C:49
+msgid "Select from|#S"
+msgstr "Seç|#S"
+
+#: src/lyx_sendfax.C:53
+msgid "Add to|#t"
+msgstr "Ekle|#t"
+
+#: src/lyx_sendfax.C:57
+msgid "Delete from|#D"
+msgstr "Çýkar|#D"
+
+#: src/lyx_sendfax.C:61
+msgid "Save|#V"
+msgstr "Kaydet|#V"
+
+#: src/lyx_sendfax.C:65
+msgid "Destination:"
+msgstr "Gideceði yer:"
+
+#: src/lyx_sendfax.C:71
+msgid "Comment:"
+msgstr "Not:"
+
+#: src/lyx_sendfax_main.C:44
+msgid "Fax File: "
+msgstr "Faks dosyasý: "
+
+#: src/lyx_sendfax_main.C:154 src/lyx_sendfax_main.C:201
+#: src/lyx_sendfax_main.C:240 src/lyx_sendfax_main.C:274
+msgid "Empty Phonebook"
+msgstr "Boþ telefon rehberi"
+
+#: src/lyx_sendfax_main.C:213 src/lyx_sendfax_main.C:252
+msgid "Save (needed)"
+msgstr "Kayýt (gerekli)"
+
+#: src/lyx_sendfax_main.C:268
+msgid "Cannot open phone book: "
+msgstr "Telefon rehberi açýlamýyor: "
+
+#: src/lyx_sendfax_main.C:296
+msgid "NO OR EMPTY LOGFILE!"
+msgstr "OLMAYAN VEYA BOÞ KÜTÜK DOSYASI!"
+
+#: src/lyx_sendfax_main.C:303
+msgid "Message-Window"
+msgstr "Mesaj-Penceresi"
+
+#: src/lyx_sendfax_main.C:334
+msgid "@L@b@cEmpty Phonebook"
+msgstr "@L@b@cBoþ Telefon Rehberi"
+
+#: src/lyx_sendfax_main.C:336
+msgid "Phonebook"
+msgstr "Telefon rehberi"
+
+#: src/lyxfont.C:44
+msgid "Roman"
+msgstr "Roman"
+
+#: src/lyxfont.C:44
+msgid "Sans serif"
+msgstr "Sans serif"
+
+#: src/lyxfont.C:44
+msgid "Typewriter"
+msgstr "Daktilo"
+
+#: src/lyxfont.C:44
+msgid "Symbol"
+msgstr "Sembol"
+
+#: src/lyxfont.C:44 src/lyxfont.C:48 src/lyxfont.C:51 src/lyxfont.C:57
+#: src/lyxfont.C:65 src/lyxfont.C:70
+msgid "Inherit"
+msgstr "Inherit"
+
+#: src/lyxfont.C:45 src/lyxfont.C:48 src/lyxfont.C:52 src/lyxfont.C:57
+#: src/lyxfont.C:65 src/lyxfont.C:70
+msgid "Ignore"
+msgstr "Aldýrma"
+
+#: src/lyxfont.C:48
+msgid "Medium"
+msgstr "Ýnce"
+
+#: src/lyxfont.C:48
+msgid "Bold"
+msgstr "Kalýn"
+
+#: src/lyxfont.C:51
+msgid "Upright"
+msgstr "Dik"
+
+#: src/lyxfont.C:51
+msgid "Italic"
+msgstr "Ýtalik"
+
+#: src/lyxfont.C:51
+msgid "Slanted"
+msgstr "Eðik"
+
+#: src/lyxfont.C:51
+msgid "Smallcaps"
+msgstr "Small Caps"
+
+#: src/lyxfont.C:55
+msgid "Tiny"
+msgstr "Minicik"
+
+#: src/lyxfont.C:55
+msgid "Smallest"
+msgstr "Çok küçük"
+
+#: src/lyxfont.C:55
+msgid "Smaller"
+msgstr "Daha küçük"
+
+#: src/lyxfont.C:55
+msgid "Small"
+msgstr "Küçük"
+
+#: src/lyxfont.C:55
+msgid "Normal"
+msgstr "Normal"
+
+#: src/lyxfont.C:55
+msgid "Large"
+msgstr "Büyük"
+
+#: src/lyxfont.C:56
+msgid "Larger"
+msgstr "Daha büyük"
+
+#: src/lyxfont.C:56
+msgid "Largest"
+msgstr "Çok büyük"
+
+#: src/lyxfont.C:56
+msgid "Huge"
+msgstr "Kocaman"
+
+#: src/lyxfont.C:56
+msgid "Huger"
+msgstr "Dev gibi"
+
+#: src/lyxfont.C:56
+msgid "Increase"
+msgstr "Arttýr"
+
+#: src/lyxfont.C:56
+msgid "Decrease"
+msgstr "Azalt"
+
+#: src/lyxfont.C:60
+msgid "tiny"
+msgstr "minicik"
+
+#: src/lyxfont.C:60
+msgid "smallest"
+msgstr "çok küçük"
+
+#: src/lyxfont.C:60
+msgid "smaller"
+msgstr "daha küçük"
+
+#: src/lyxfont.C:60
+msgid "small"
+msgstr "küçük"
+
+#: src/lyxfont.C:60
+msgid "normal"
+msgstr "normal"
+
+#: src/lyxfont.C:60
+msgid "large"
+msgstr "büyük"
+
+#: src/lyxfont.C:61
+msgid "larger"
+msgstr "daha büyük"
+
+#: src/lyxfont.C:61
+msgid "largest"
+msgstr "çok büyük"
+
+#: src/lyxfont.C:61
+msgid "huge"
+msgstr "kocaman"
+
+#: src/lyxfont.C:61
+msgid "huger"
+msgstr "dev gibi"
+
+#: src/lyxfont.C:61
+msgid "increase"
+msgstr "arttýr"
+
+#: src/lyxfont.C:61
+msgid "decrease"
+msgstr "azalt"
+
+#: src/lyxfont.C:62
+msgid "inherit"
+msgstr "inherit"
+
+#: src/lyxfont.C:62
+msgid "ignore"
+msgstr "aldýrma"
+
+#: src/lyxfont.C:65
+msgid "Off"
+msgstr "Kapalý"
+
+#: src/lyxfont.C:65
+msgid "On"
+msgstr "Açýk"
+
+#: src/lyxfont.C:65
+msgid "Toggle"
+msgstr "Deðiþtir"
+
+#: src/lyxfont.C:68
+msgid "None"
+msgstr "Hiçbiri"
+
+#: src/lyxfont.C:68
+msgid "Black"
+msgstr "Siyah"
+
+#: src/lyxfont.C:68
+msgid "White"
+msgstr "Beyaz"
+
+#: src/lyxfont.C:68
+msgid "Red"
+msgstr "Kýrmýzý"
+
+#: src/lyxfont.C:68
+msgid "Green"
+msgstr "Yeþil"
+
+#: src/lyxfont.C:68
+msgid "Blue"
+msgstr "Mavi"
+
+#: src/lyxfont.C:69
+msgid "Cyan"
+msgstr "Turkuaz"
+
+#: src/lyxfont.C:69
+msgid "Magenta"
+msgstr "Mor"
+
+#: src/lyxfont.C:70
+msgid "Yellow"
+msgstr "Sarý"
+
+#: src/lyxfont.C:70 src/menus.C:126 src/menus.C:225 src/menus.C:226
+#: src/menus.C:227
+msgid "Math"
+msgstr "Matematik"
+
+#: src/lyxfont.C:70
+msgid "Inset"
+msgstr "Inset"
+
+#: src/lyxfont.C:363
+msgid "Emphasis "
+msgstr "Vurgu "
+
+#: src/lyxfont.C:365
+msgid "Underline "
+msgstr "Alt çizgi "
+
+#: src/lyxfont.C:367
+msgid "Noun "
+msgstr "Ýsim "
+
+#: src/lyxfont.C:369
+msgid "Latex "
+msgstr "LaTeX"
+
+#: src/lyxfont.C:371
+msgid "Default"
+msgstr "Öntanýmlý"
+
+#: src/lyxfunc.C:297
+msgid "Unknown sequence:"
+msgstr "Bilinmeyen dizi:"
+
+#: src/lyxfunc.C:397 src/lyxfunc.C:2406
+msgid "Unknown action"
+msgstr "Bilinmeyen hareket"
+
+#: src/lyxfunc.C:400
+msgid "Command not allowed without any document open"
+msgstr "Bir belge açýk deðilken bu komut kullanýlamaz"
+
+#: src/lyxfunc.C:460
+msgid "Document is read-only"
+msgstr "Belge sadece okunabilir"
+
+#: src/lyxfunc.C:502
+msgid "Text mode"
+msgstr "Metin kipi"
+
+#: src/lyxfunc.C:739
+msgid "Unknown export type: "
+msgstr "Bilinmeyen dýþyazým tipi: "
+
+#: src/lyxfunc.C:763
+msgid "Unknown import type: "
+msgstr "Bilinmeyen dýþyazým tipi: "
+
+#: src/lyxfunc.C:1099
+msgid "Layout "
+msgstr "Düzen "
+
+#: src/lyxfunc.C:1100
+msgid " not known"
+msgstr " bilinmiyor"
+
+#: src/lyxfunc.C:1242
+msgid "No cross-reference to toggle"
+msgstr "Deðiþtirilecek bir çapraz-baþvuru yok"
+
+#: src/lyxfunc.C:1595
+msgid "Mark removed"
+msgstr "Ýþaret kaldýrýldý"
+
+#: src/lyxfunc.C:1600
+msgid "Mark set"
+msgstr "Ýþaret konuldu"
+
+#: src/lyxfunc.C:1703
+msgid "Mark off"
+msgstr "Ýþaretleme devre dýþý"
+
+#: src/lyxfunc.C:1713
+msgid "Mark on"
+msgstr "Ýþaretleme seçildi"
+
+#: src/lyxfunc.C:2013
+msgid "Push-toolbar needs argument > 0"
+msgstr "Push-toolbar en az bir parametre ister"
+
+#: src/lyxfunc.C:2031
+msgid "Usage: toolbar-add-to <LyX command>"
+msgstr "Kullaným: toolbar-add-to <LyX komutu>"
+
+#: src/lyxfunc.C:2103
+msgid "Missing argument"
+msgstr "Kütük dosyasý yok:"
+
+#: src/lyxfunc.C:2126
+msgid "This is only allowed in math mode!"
+msgstr "Bunu sadece matematik kipinde yapabilirsiniz!"
+
+#: src/lyxfunc.C:2281
+msgid "Opening child document "
+msgstr "Alt belge açýlýyor "
+
+#: src/lyxfunc.C:2314
+msgid "Unknown kind of footnote"
+msgstr "Bilinmeyen tür dipnot"
+
+#: src/lyxfunc.C:2366
+msgid "Document is read only"
+msgstr "Belge sadece okunabilir"
+
+#: src/lyxfunc.C:2458
+msgid "Enter Filename for new document"
+msgstr "Yeni belge için dosya ismini girin"
+
+#: src/lyxfunc.C:2459
+msgid "newfile"
+msgstr "yenidosya"
+
+#: src/lyxfunc.C:2478 src/lyxfunc.C:2617 src/lyxfunc.C:2696
+msgid ""
+"Do you want to close that document now?\n"
+"('No' will just switch to the open version)"
+msgstr ""
+"Bu belgeyi kapatmak istiyor musunuz ?\n"
+"('Hayýr' açýk olan sürüme geçmenizi saðlayacak)"
+
+#: src/lyxfunc.C:2501
+msgid "Do you want to open the document?"
+msgstr "Belgeyi açmak istiyor musunuz?"
+
+#. loads document
+#: src/lyxfunc.C:2503 src/lyxfunc.C:2566
+msgid "Opening document"
+msgstr "Belge açýlýyor"
+
+#: src/lyxfunc.C:2510 src/lyxfunc.C:2573
+msgid "opened."
+msgstr "açýldý."
+
+#: src/lyxfunc.C:2519
+msgid "Choose template"
+msgstr "Hazýr biçimlerden birini seçin"
+
+#: src/lyxfunc.C:2547 src/lyxfunc.C:2596 src/lyxfunc.C:2669 src/lyxfunc.C:2770
+msgid "Examples"
+msgstr "Örnekler"
+
+#: src/lyxfunc.C:2549
+msgid "Select Document to Open"
+msgstr "Açýlacak belgeyi seçin"
+
+#: src/lyxfunc.C:2575
+msgid "Could not open document"
+msgstr "Belge açýlamadý"
+
+#: src/lyxfunc.C:2598
+msgid "Select ASCII file to Import"
+msgstr "Eklenecek ASCII dosyayý seçin"
+
+#: src/lyxfunc.C:2636 src/lyxfunc.C:2716
+msgid "A document by the name"
+msgstr "Ayný isimli, açýk baþka bir belge var!"
+
+#: src/lyxfunc.C:2638 src/lyxfunc.C:2718
+msgid "already exists. Overwrite?"
+msgstr "Belirtilen dosya halihazýrda mevcut:"
+
+#: src/lyxfunc.C:2644
+msgid "Importing ASCII file"
+msgstr "LinuxDoc SGML dosyasý okunuyor `"
+
+#: src/lyxfunc.C:2648
+msgid "ASCII file "
+msgstr "ASCII dosya "
+
+#: src/lyxfunc.C:2650 src/lyxfunc.C:2741
+msgid "imported."
+msgstr "eklendi."
+
+#: src/lyxfunc.C:2673
+msgid "Select Noweb file to Import"
+msgstr "Ekleneeck Noweb dosyasýný seçin"
+
+#: src/lyxfunc.C:2676
+msgid "Select LaTeX file to Import"
+msgstr "Ekleneeck LaTeX dosyasýný seçin"
+
+#: src/lyxfunc.C:2726
+msgid "Importing LaTeX file"
+msgstr "LinuxDoc SGML dosyasý okunuyor `"
+
+#: src/lyxfunc.C:2731
+#, fuzzy
+msgid "Importing Noweb file"
+msgstr "LinuxDoc SGML dosyasý okunuyor `"
+
+#: src/lyxfunc.C:2739
+#, fuzzy
+msgid "Noweb file "
+msgstr "Kayýt iþlemi baþarýsýz!"
+
+#: src/lyxfunc.C:2739
+msgid "LateX file "
+msgstr "Kayýt iþlemi baþarýsýz!"
+
+#: src/lyxfunc.C:2744
+#, fuzzy
+msgid "Could not import Noweb file"
+msgstr "Dosya dönüþtürülemedi"
+
+#: src/lyxfunc.C:2745
+msgid "Could not import LaTeX file"
+msgstr "Dosya dönüþtürülemedi"
+
+#: src/lyxfunc.C:2772
+msgid "Select Document to Insert"
+msgstr "Eklenecek belgeyi seçin"
+
+#. Inserts document
+#: src/lyxfunc.C:2790
+msgid "Inserting document"
+msgstr "Belge ekleniyor"
+
+#: src/lyxfunc.C:2796
+msgid "inserted."
+msgstr "eklendi."
+
+#: src/lyxfunc.C:2798
+msgid "Could not insert document"
+msgstr "Belge eklenemedi"
+
+#. /
+#. virtual void setBuffer(Buffer const&) {;}
+#. / what appears in the minibuffer when opening
+#: src/lyxinset.h:94
+msgid "Opened inset"
+msgstr "Inset açýldý"
+
+#: src/lyxlib.h:45
+msgid "unknown"
+msgstr "bilinmeyen"
+
+#: src/lyxvc.C:172 src/lyxvc.C:206
+#, fuzzy
+msgid "Save document and proceed?"
+msgstr "Belge kaydedilsin mi?"
+
+#: src/lyxvc.C:183
+msgid "LyX VC: Initial description"
+msgstr "LyX VC: Baþlangýç tanýmý"
+
+#: src/lyxvc.C:184
+#, fuzzy
+msgid "(no initial description)"
+msgstr "LyX VC: Baþlangýç tanýmý"
+
+#: src/lyxvc.C:187
+#, fuzzy
+msgid "Info"
+msgstr "Aldýrma"
+
+#: src/lyxvc.C:187
+msgid "This document has NOT been registered."
+msgstr ""
+
+#: src/lyxvc.C:218
+msgid "LyX VC: Log Message"
+msgstr "LyX VC: Kütük mesajý"
+
+#: src/lyxvc.C:232
+msgid "Ignore changes and proceed with check out?"
+msgstr ""
+
+#. Here we should check if the buffer is dirty. And if it is
+#. we should warn the user that reverting will discard all
+#. changes made since the last check in.
+#: src/lyxvc.C:249
+#, fuzzy
+msgid "When you revert, you will loose all changes made"
+msgstr "Çevirme yapýlýrken, en son yaptýðýnýz deðiþiklikleri kaybedeceksiniz"
+
+#: src/lyxvc.C:250
+#, fuzzy
+msgid "to the document since the last check in."
+msgstr "Çevirme yapýlýrken, en son yaptýðýnýz deðiþiklikleri kaybedeceksiniz"
+
+#: src/lyxvc.C:251
+msgid "Do you still want to do it?"
+msgstr "Hala yapmak istiyor musunuz?"
+
+#: src/lyxvc.C:341
+msgid "No RCS History!"
+msgstr "RCS Geçmiþi yok!"
+
+#: src/lyxvc.C:348
+msgid "RCS History"
+msgstr "RCS Geçmiþi"
+
+#: src/math_forms.C:19
+msgid "Close "
+msgstr "Kapat"
+
+#: src/math_forms.C:22
+msgid "Functions"
+msgstr "Fonksiyon"
+
+#: src/math_forms.C:28
+msgid "Greek"
+msgstr "Yunan"
+
+#: src/math_forms.C:32
+msgid "­ Û"
+msgstr "­ Û"
+
+#: src/math_forms.C:36
+msgid "± ´"
+msgstr "± ´"
+
+#: src/math_forms.C:40
+msgid "£ @"
+msgstr "£ @"
+
+#: src/math_forms.C:44
+msgid "S  ò"
+msgstr "S  ò"
+
+#: src/math_forms.C:48
+msgid "Misc"
+msgstr "Diðer"
+
+#: src/math_forms.C:129
+msgid "OK  "
+msgstr "Peki"
+
+#: src/math_forms.C:142
+msgid "Columns "
+msgstr "Sütun"
+
+#: src/math_forms.C:149
+msgid "Vertical align|#V"
+msgstr "Dikey hizalama|#V"
+
+#: src/math_forms.C:154
+msgid "Horizontal align|#H"
+msgstr "Yatay hizalama|#H"
+
+#: src/math_forms.C:197
+msgid "OK "
+msgstr "Peki"
+
+#: src/math_forms.C:208
+msgid "Thin|#T"
+msgstr "Ýnce|#T"
+
+#: src/math_forms.C:212
+msgid "Medium|#M"
+msgstr "Orta|#M"
+
+#: src/math_forms.C:216
+msgid "Thick|#H"
+msgstr "Kalýn|#H"
+
+#: src/math_forms.C:220
+msgid "Negative|#N"
+msgstr "Negatif|#N"
+
+#: src/math_forms.C:224
+msgid "Quadratin|#Q"
+msgstr "Çeyrek|#Q"
+
+#: src/math_forms.C:228
+msgid "2Quadratin|#2"
+msgstr "2Çeyrek|#2"
+
+#: src/math_panel.C:103
+msgid "Delimiter"
+msgstr "Ayýrýcý"
+
+#: src/math_panel.C:107
+msgid "Decoration"
+msgstr "Üst/alt süsler"
+
+#: src/math_panel.C:111
+msgid "Spacing"
+msgstr "Boþluk"
+
+#: src/math_panel.C:115
+msgid "Matrix"
+msgstr "Matris"
+
+#: src/math_panel.C:300
+msgid "Top | Center | Bottom"
+msgstr "Üst |  Orta  | Alt"
+
+#: src/math_panel.C:350
+msgid "Math Panel"
+msgstr "Matematik"
+
+#: src/menus.C:122 src/menus.C:132 src/menus.C:169 src/menus.C:170
+#: src/menus.C:171 src/menus.C:300 src/menus.C:301 src/menus.C:302
+msgid "File"
+msgstr "Dosya"
+
+#: src/menus.C:123 src/menus.C:183 src/menus.C:184 src/menus.C:185
+msgid "Edit"
+msgstr "Deðiþtir"
+
+#: src/menus.C:124 src/menus.C:197 src/menus.C:198 src/menus.C:199
+msgid "Layout"
+msgstr "Düzen"
+
+#: src/menus.C:125 src/menus.C:211 src/menus.C:212 src/menus.C:213
+msgid "Insert"
+msgstr "Ekle"
+
+#: src/menus.C:129 src/menus.C:134 src/menus.C:267 src/menus.C:268
+#: src/menus.C:269 src/menus.C:328 src/menus.C:329 src/menus.C:330
+msgid "Help"
+msgstr "Yardým"
+
+#: src/menus.C:173 src/menus.C:304
+msgid "MB|#F"
+msgstr "MB|#F"
+
+#: src/menus.C:187
+msgid "MB|#E"
+msgstr "MB|#E"
+
+#: src/menus.C:201
+msgid "MB|#L"
+msgstr "MB|#L"
+
+#: src/menus.C:215
+msgid "MB|#I"
+msgstr "MB|#I"
+
+#: src/menus.C:229
+msgid "MB|#M"
+msgstr "MB|#M"
+
+#: src/menus.C:243 src/menus.C:318
+msgid "MB|#O"
+msgstr "MB|#O"
+
+#: src/menus.C:257
+msgid "MB|#D"
+msgstr "MB|#D"
+
+#: src/menus.C:271 src/menus.C:332
+msgid "MB|#H"
+msgstr "MB|#H"
+
+#: src/menus.C:372
+msgid "Screen Options"
+msgstr "Ekran Seçenekleri"
+
+#: src/menus.C:408
+msgid ""
+"Import%t|LaTeX...%x30|Ascii Text as Lines...%x31|Ascii Text as "
+"Paragraphs%x32|Noweb%x33"
+msgstr ""
+"Dýþalým%t|LaTeX...%x30|Ascii Metin as lines...%x31|Ascii Metin as "
+"Paragraphs%x32|Noweb%x33"
+
+#: src/menus.C:413 src/menus.C:643
+msgid "FIM|Ll#l#L"
+msgstr "IM|Ll#l#L"
+
+#: src/menus.C:414 src/menus.C:644
+msgid "FIM|Aa#a#A"
+msgstr "FM|Aa#a#A"
+
+#: src/menus.C:415 src/menus.C:645
+#, fuzzy
+msgid "FIM|Pp#p#P"
+msgstr "FM|Pp#p#P"
+
+#: src/menus.C:416 src/menus.C:646
+msgid "FIM|Nn#n#N"
+msgstr "FIM|Nn#n#N"
+
+#: src/menus.C:425
+msgid ""
+"Export%t|as LaTeX...%x40|as DVI...%x41|as PostScript...%x42|as Ascii "
+"Text...%x43|Custom...%x44"
+msgstr ""
+"Dýþyazým tipi%t|LaTeX...%x40|DVI...%x41|PostScript...%x42|Ascii "
+"Metin...%x43|Özel...%x44"
+
+#: src/menus.C:433
+msgid ""
+"Export%t|as LinuxDoc...%x40|as DVI...%x41|as PostScript...%x42|as Ascii "
+"Text...%x43"
+msgstr ""
+"Dýþyazým tipi%t|LinuxDoc...%x40|DVI...%x41|PostScript...%x42|Ascii "
+"Metin...%x43"
+
+#: src/menus.C:440
+#, fuzzy
+msgid ""
+"Export%t|as DocBook...%x40|as DVI...%x41|as PostScript...%x42|as Ascii "
+"Text...%x43"
+msgstr ""
+"Dýþyazým tipi%t|LinuxDoc...%x40|DVI...%x41|PostScript...%x42|Ascii "
+"Metin...%x43"
+
+#: src/menus.C:446
+msgid "FEX|Ll#l#L"
+msgstr "FEX|Ll#l#L"
+
+#: src/menus.C:447
+msgid "FEX|Dd#d#D"
+msgstr "FEX|Dd#d#D"
+
+#: src/menus.C:448
+msgid "FEX|Pp#p#P"
+msgstr "FEX|Pp#p#P"
+
+#: src/menus.C:449
+msgid "FEX|Tt#t#T"
+msgstr "FEX|Tt#t#T"
+
+#: src/menus.C:450
+msgid "FEX|mM#m#M"
+msgstr "FEX|mM#m#M"
+
+#: src/menus.C:453
+#, fuzzy
+msgid ""
+"New...|New from template...|Open...%l|Close|Save|Save As...|Revert to "
+"saved%l|View dvi|View PostScript|Update dvi|Update PostScript|Build "
+"program%l|Print...|Fax..."
+msgstr ""
+"Yeni...|Hazýr biçimden yeni...|Aç...%l|Kapat|Kaydet|Farklý isimle "
+"kaydet...|Kaydedilmiþ hale geri dön%l|Dvi görüntüle|PostScript görüntüle|Dvi "
+"yenile|PostScript yenile%l|Yazdýr...|Faks..."
+
+#: src/menus.C:468 src/menus.C:662
+msgid "FM|Nn#n#N"
+msgstr "FM|Nn#n#N"
+
+#: src/menus.C:469 src/menus.C:663
+msgid "FM|tT#t#T"
+msgstr "FM|tT#t#T"
+
+#: src/menus.C:470 src/menus.C:664
+msgid "FM|Oo#o#O"
+msgstr "FM|Oo#o#O"
+
+#: src/menus.C:471
+msgid "FM|Cc#c#C"
+msgstr "FM|Cc#c#C"
+
+#: src/menus.C:472
+msgid "FM|Ss#s#S"
+msgstr "FM|Ss#s#S"
+
+#: src/menus.C:473
+msgid "FM|Aa#a#A"
+msgstr "FM|Aa#a#A"
+
+#: src/menus.C:474
+msgid "FM|Rr#r#R"
+msgstr "FM|Rr#r#R"
+
+#: src/menus.C:475
+msgid "FM|dD#d#D"
+msgstr "FM|dD#d#D"
+
+#: src/menus.C:476
+msgid "FM|wW#w#W"
+msgstr "EM|wW#w#W"
+
+#: src/menus.C:477
+msgid "FM|vV#v#V"
+msgstr "FM|vV#v#V"
+
+#: src/menus.C:478
+msgid "FM|Uu#u#U"
+msgstr "FM|Uu#u#U"
+
+#: src/menus.C:479
+#, fuzzy
+msgid "FM|Bb#b#B"
+msgstr "LM|Bb#b#B"
+
+#: src/menus.C:480
+msgid "FM|Pp#p#P"
+msgstr "FM|Pp#p#P"
+
+#: src/menus.C:481
+msgid "FM|Ff#f#F"
+msgstr "FM|Ff#f#F"
+
+# , c-format
+#: src/menus.C:521
+#, no-c-format
+msgid "|Import%m"
+msgstr "|Dýþyazým%m%l"
+
+# , c-format
+#: src/menus.C:523
+#, no-c-format
+msgid "|Export%m%l"
+msgstr "|Dýþyazým%m%l"
+
+# , c-format
+#: src/menus.C:525
+#, no-c-format
+msgid "|Exit%l"
+msgstr "|Çýkýþ%l"
+
+#: src/menus.C:526 src/menus.C:665
+msgid "FM|Ii#i#I"
+msgstr "FM|iI#i#I"
+
+#: src/menus.C:527
+msgid "FM|Ee#e#E"
+msgstr "FM|Ee#e#E"
+
+#: src/menus.C:528 src/menus.C:666
+msgid "FM|xX#x#X"
+msgstr "FM|xX#x#X"
+
+#: src/menus.C:638
+msgid ""
+"Import%t|LaTeX...%x15|Ascii Text as Lines...%x16|Ascii Text as "
+"Paragraphs...%x17|Noweb...%x18"
+msgstr ""
+"Dýþalým%t|LaTeX...%x15|Ascii Metin as lines...%x16|Ascii Metin as "
+"Paragraphs...%x17|Noweb...%x18"
+
+#: src/menus.C:657
+#, fuzzy
+msgid "New...|New from template...|Open...%l|Import%m%l|Exit%l"
+msgstr "Yeni...|Hazýr biçimlerden yeni belge...|Aç...%l|Import%m%l|Çýkýþ%l"
+
+#: src/menus.C:747
+msgid ""
+"Floats & Insets%t|Open/Close%x21|Melt%x22|Open All Footnotes/Margin "
+"Notes%x23|Close All Footnotes/Margin Notes%x24|Open All "
+"Figures/Tables%x25|Close All Figures/Tables%x26%l|Remove all Error Boxes%x27"
+msgstr ""
+"Tek-parçalar ve Insets%t|Aç/Kapat%x21|Melt%x22|Tüm dipnotlarý/boþluk "
+"notlarýnýaç%x23|Tüm dipnotlarý/boþluk notlarýný kapat%x24|Tüm "
+"þekil/tablolarý aç%x25|Tüm þekil/tablolarý kapat%x26%l|Tüm hata kutularýný "
+"sil%x27"
+
+#: src/menus.C:756
+msgid "EMF|Oo#o#O"
+msgstr "EMF|Oo#o#O"
+
+#: src/menus.C:757
+msgid "EMF|Mm#m#M"
+msgstr "EMF|Mm#m#M"
+
+#: src/menus.C:758
+msgid "EMF|Aa#a#A"
+msgstr "EMF|Aa#a#A"
+
+#: src/menus.C:759
+msgid "EMF|Cc#c#C"
+msgstr "EMF|Cc#c#C"
+
+#: src/menus.C:760
+msgid "EMF|Ff#f#F"
+msgstr "EMF|Ff#f#F"
+
+#: src/menus.C:761
+msgid "EMF|Tt#t#T"
+msgstr "EMF|Tt#t#T"
+
+#: src/menus.C:762
+msgid "EMF|Rr#r#R"
+msgstr "EMF|Rr#r#R"
+
+#: src/menus.C:770 src/menus.C:868
+msgid "Table%t"
+msgstr "Tablo%t"
+
+#: src/menus.C:778
+msgid "|Multicolumn%B%x44%l"
+msgstr "|Çoklu kolon%B%x44%l"
+
+#: src/menus.C:780
+msgid "|Multicolumn%b%x44%l"
+msgstr "|Çoklu kolon%b%x44%l"
+
+#: src/menus.C:781
+msgid "EMT|Mm#m#M"
+msgstr "EMT|Mm#m#M"
+
+#: src/menus.C:789
+msgid "|Line Top%B%x36"
+msgstr "|En üst satýr%B%x36"
+
+#: src/menus.C:791
+msgid "|Line Top%b%x36"
+msgstr "|En üst satýr%b%x36"
+
+#: src/menus.C:792
+msgid "EMT|Tt#t#T"
+msgstr "EMT|Tt#t#T"
+
+#: src/menus.C:800
+msgid "|Line Bottom%B%x37"
+msgstr "|En alt satýr%B%x37"
+
+#: src/menus.C:802
+msgid "|Line Bottom%b%x37"
+msgstr "|En alt satýr%b%x37"
+
+#: src/menus.C:803
+msgid "EMT|Bb#b#B"
+msgstr "EMT|Bb#b#B"
+
+#: src/menus.C:811
+msgid "|Line Left%B%x38"
+msgstr "|Sol satýr%B%x38"
+
+#: src/menus.C:813
+msgid "|Line Left%b%x38"
+msgstr "|Sol satýr%b%x38"
+
+#: src/menus.C:814
+msgid "EMT|Ll#l#L"
+msgstr "EMT|Ll#l#L"
+
+#: src/menus.C:822
+msgid "|Line Right%B%x39%l"
+msgstr "|Sað Satýr%B%x39%l"
+
+#: src/menus.C:824
+msgid "|Line Right%b%x39%l"
+msgstr "|Sað satýr%b%x39%l"
+
+#: src/menus.C:825
+msgid "EMT|Rr#r#R"
+msgstr "EMT|Rr#r#R"
+
+#: src/menus.C:834
+msgid "|Align Left%R%x40"
+msgstr "|Sola yanaþýk%R%x40"
+
+#: src/menus.C:836
+msgid "|Align Left%r%x40"
+msgstr "|Sola yanaþýk%r%x40"
+
+#: src/menus.C:837
+msgid "EMT|eE#e#E"
+msgstr "EMT|eE#e#E"
+
+#: src/menus.C:840
+msgid "|Align Right%R%x41"
+msgstr "|Saða yanaþýk%R%x41"
+
+#: src/menus.C:842
+msgid "|Align Right%r%x41"
+msgstr "|Saða yanaþýk%r%x41"
+
+#: src/menus.C:843
+msgid "EMT|iI#i#I"
+msgstr "EMT|iI#i#I"
+
+#: src/menus.C:846
+msgid "|Align Center%R%x42%l"
+msgstr "|Ortaya yanaþýk%R%x42%l"
+
+#: src/menus.C:848
+msgid "|Align Center%r%x42%l"
+msgstr "|Ortaya yanaþýk%r%x42%l"
+
+#: src/menus.C:849
+msgid "EMT|Cc#c#C"
+msgstr "EMT|Cc#c#C"
+
+# , c-format
+#: src/menus.C:852
+#, no-c-format
+msgid "|Append Row%x32"
+msgstr "|Satýr ekle%x32"
+
+#: src/menus.C:853
+msgid "EMT|oO#o#O"
+msgstr "EMT|oO#o#O"
+
+# , c-format
+#: src/menus.C:855
+#, no-c-format
+msgid "|Append Column%x33%l"
+msgstr "|Kolon ekle%x33%l"
+
+#: src/menus.C:856
+msgid "EMT|uU#u#U"
+msgstr "EMT|uU#u#U"
+
+# , c-format
+#: src/menus.C:858
+#, no-c-format
+msgid "|Delete Row%x34"
+msgstr "|Satýr sil%x34"
+
+#: src/menus.C:859
+msgid "EMT|wW#w#W"
+msgstr "EMT|wW#w#W"
+
+# , c-format
+#: src/menus.C:861
+#, no-c-format
+msgid "|Delete Column%x35%l"
+msgstr "|Kolon sil%x35%l"
+
+#: src/menus.C:862
+msgid "EMT|nN#n#N"
+msgstr "EMT|nN#n#N"
+
+# , c-format
+#: src/menus.C:864
+#, no-c-format
+msgid "|Delete Table%x43"
+msgstr "|Tablo sil%x43"
+
+#: src/menus.C:865
+msgid "EMT|Dd#d#D"
+msgstr "EMT|Dd#d#D"
+
+# , c-format
+#: src/menus.C:870
+#, no-c-format
+msgid "|Insert table%x31"
+msgstr "|Tablo ekle%x31"
+
+#: src/menus.C:871
+msgid "EMT|Ii#i#I"
+msgstr "EMT|Ii#i#I"
+
+#: src/menus.C:875
+msgid "Version Control%t"
+msgstr "Sürüm Denetimi%t"
+
+# , c-format
+#: src/menus.C:878
+#, no-c-format
+msgid "|Register%d%x51"
+msgstr "|Kaydol%d%x51"
+
+# , c-format
+#. signifies that the file is not checked out
+#: src/menus.C:882
+#, no-c-format
+msgid "|Check In Changes%d%x52"
+msgstr "|Deðiþiklikleri denetle%d%x52"
+
+# , c-format
+#: src/menus.C:884
+#, no-c-format
+msgid "|Check Out for Edit%x53"
+msgstr "|Deðiþtirmek için denetle%x53"
+
+# , c-format
+#. signifies that the file is checked out
+#: src/menus.C:888
+#, no-c-format
+msgid "|Check In Changes%x52"
+msgstr "|Deðiþiklikleri denetle%x52"
+
+# , c-format
+#: src/menus.C:890
+#, no-c-format
+msgid "|Check Out for Edit%d%x53"
+msgstr "|Deðiþtirmek için denetle%d%x53"
+
+# , c-format
+#: src/menus.C:893
+#, no-c-format
+msgid "|Revert to last version%x54"
+msgstr "|Son sürüme çevir%x54"
+
+# , c-format
+#: src/menus.C:895
+#, no-c-format
+msgid "|Undo last check in%x55"
+msgstr "|Son denetimi geri al%x55"
+
+# , c-format
+#: src/menus.C:897
+#, no-c-format
+msgid "|Show History%x56"
+msgstr "|Geçmiþi göster%x56"
+
+# , c-format
+#: src/menus.C:900
+#, no-c-format
+msgid "|Register%x51"
+msgstr "|Kaydol%x51"
+
+#. the shortcuts are not good.
+#: src/menus.C:903
+msgid "EMV|Rr#r#R"
+msgstr "EMV|Rr#r#R"
+
+#: src/menus.C:904
+msgid "EMV|Ii#i#I"
+msgstr "EMV|Ii#i#I"
+
+#: src/menus.C:905
+msgid "EMV|Oo#o#O"
+msgstr "EMV|Oo#o#O"
+
+#: src/menus.C:906
+msgid "EMV|lL#l#l"
+msgstr "EMV|lL#l#l"
+
+#: src/menus.C:907
+msgid "EMV|Uu#u#U"
+msgstr "EMV|Uu#u#U"
+
+#: src/menus.C:908
+msgid "EMV|Hh#h#H"
+msgstr "EMV|Hh#h#H"
+
+#: src/menus.C:911
+msgid ""
+"Undo|Redo %l|Cut|Copy|Paste%l|Find & Replace...|Go to Error|Go to "
+"Note|Floats & Insets%m|Table%m|Spellchecker....|Check TeX|Table of "
+"Contents...%l|Version Control%m%l|View LaTeX log file%l|Paste Primary "
+"Selection as Lines|Paste Primary Selection as Paragraphs"
+msgstr ""
+"Geri Al|Yeniden Yap %l|Kes|Kopyala|Yapýþtýr%l|Bul ve Deðiþtir...|Hataya "
+"git|Nota git|Tek-parçalar%m|Tablo%m|Yazým denetimi....|TeX "
+"Denetimi|Ýçindekiler...%l|Sürüm Denetimi%m%l|LaTeX kütük dosyasý "
+"görüntüle%l|Satýr olarak yapýþtýr|Paragraf olarak yapýþtýr"
+
+#: src/menus.C:930
+msgid "EM|Uu#u#U"
+msgstr "EM|Uu#u#U"
+
+#: src/menus.C:931
+msgid "EM|Rr#r#R"
+msgstr "EM|Rr#r#R"
+
+#: src/menus.C:932
+msgid "EM|Cc#c#C"
+msgstr "EM|Cc#c#C"
+
+#: src/menus.C:933
+msgid "EM|oO#o#O"
+msgstr "EM|oO#o#O"
+
+#: src/menus.C:934
+msgid "EM|Pp#p#P"
+msgstr "EM|Pp#p#P"
+
+#: src/menus.C:935
+msgid "EM|Ff#f#F"
+msgstr "EM|Ff#f#F"
+
+#: src/menus.C:936
+msgid "EM|Ee#e#E"
+msgstr "EM|Ee#e#E"
+
+#: src/menus.C:937
+msgid "EM|Nn#n#N"
+msgstr "EM|Nn#n#N"
+
+#: src/menus.C:938
+msgid "EM|Ii#i#I"
+msgstr "EM|Ii#i#I"
+
+#: src/menus.C:939
+msgid "EM|Tt#t#T"
+msgstr "EM|Tt#t#T"
+
+#: src/menus.C:940
+msgid "EM|Ss#s#S"
+msgstr "EM|Ss#s#S"
+
+#: src/menus.C:941
+msgid "EM|hH#h#H"
+msgstr "EM|hH#h#H"
+
+#: src/menus.C:942
+msgid "EM|aA#a#A"
+msgstr "EM|aA#a#A"
+
+#: src/menus.C:943
+msgid "EM|Vv#v#V"
+msgstr "EM|Vv#v#V"
+
+#: src/menus.C:944
+msgid "EM|wW#w#W"
+msgstr "EM|wW#w#W"
+
+#: src/menus.C:945
+msgid "EM|Ll#l#L"
+msgstr "EM|Ll#l#L"
+
+#: src/menus.C:946
+msgid "EM|gG#g#G"
+msgstr "EM|gG#g#G"
+
+#: src/menus.C:1071
+msgid ""
+"Character...|Paragraph...|Document...|Paper...|Table...|Quotes...%l|Emphasize"
+" Style%b|Noun Style%b|Bold Style%b|TeX Style%b|Change Environment "
+"Depth|LaTeX Preamble...%l|Save layout as default"
+msgstr ""
+"Karakter...|Paragraf...|Belge...|Kaðýt...|Tablo...|Alýntý...%l|Vurgu "
+"Tarzý%b|Noun Tarzý%b|Kalýn tip%b|TeX tarzý%b|Ortam Derinliðini "
+"Deðiþtir|LaTeX Önyazý...%l|Düzeni öntanýmlý kaydet"
+
+#: src/menus.C:1084
+msgid "LM|Cc#c#C"
+msgstr "LM|Cc#c#C"
+
+#: src/menus.C:1085
+msgid "LM|Pp#p#P"
+msgstr "LM|Pp#p#P"
+
+#: src/menus.C:1086
+msgid "LM|Dd#d#D"
+msgstr "LM|Dd#d#D"
+
+#: src/menus.C:1087
+msgid "LM|aA#a#A"
+msgstr "LM|aA#a#A"
+
+#: src/menus.C:1088
+msgid "LM|eE#e#E"
+msgstr "LM|eE#e#E"
+
+#: src/menus.C:1089
+msgid "LM|Qq#q#Q"
+msgstr "LM|Qq#q#Q"
+
+#: src/menus.C:1090
+msgid "LM|mM#m#M"
+msgstr "LM|mM#m#M"
+
+#: src/menus.C:1091
+msgid "LM|Nn#n#N"
+msgstr "LM|Nn#n#N"
+
+#: src/menus.C:1092
+msgid "LM|Bb#b#B"
+msgstr "LM|Bb#b#B"
+
+#: src/menus.C:1093
+msgid "LM|Tt#t#T"
+msgstr "LM|Tt#t#T"
+
+#: src/menus.C:1094
+msgid "LM|vV#v#V"
+msgstr "LM|vV#v#V"
+
+#: src/menus.C:1095
+msgid "LM|Ll#l#L"
+msgstr "LM|Ll#l#L"
+
+#: src/menus.C:1096
+msgid "LM|Ss#s#S"
+msgstr "LM|Ss#s#S"
+
+#: src/menus.C:1166
+msgid "Import ASCII file%t|As Lines%x41|As Paragraphs%x42"
+msgstr "ASCII dosyasý dýþalýmý%t|Satýr olarak%x41|Paragraf olarak%x42"
+
+#: src/menus.C:1169
+msgid "IMA|Ll#l#L"
+msgstr "IMA|Ll#l#L"
+
+#: src/menus.C:1170
+msgid "IMA|Pp#p#P"
+msgstr "IMA|Pp#p#P"
+
+#: src/menus.C:1173
+msgid ""
+"Lists & TOC%t|Table of Contents%x21|List of Figures%x22|List of "
+"Tables%x23|List of Algorithms%x24|Index List%x25|BibTeX Reference%x26"
+msgstr ""
+"Listeler%t|Ýçindekiler%x21|Þekil Listesi%x22|Tablo Listesi%x23|Algoritma "
+"Listesi%x24|Dizin Listesi%x25|BibTeX Kaynaðý%x26"
+
+#: src/menus.C:1180
+msgid "IMT|Cc#c#C"
+msgstr "IMT|Cc#c#C"
+
+#: src/menus.C:1181
+msgid "IMT|Ff#f#F"
+msgstr "IMT|Ff#f#F"
+
+#: src/menus.C:1182
+msgid "IMT|Tt#t#T"
+msgstr "IMT|Tt#t#T"
+
+#: src/menus.C:1183
+msgid "IMT|Aa#a#A"
+msgstr "IMT|Aa#a#A"
+
+#: src/menus.C:1184
+msgid "IMT|Ii#i#I"
+msgstr "IMT|Ii#i#I"
+
+#: src/menus.C:1185
+msgid "IMT|Bb#b#B"
+msgstr "IMT|Bb#b#B"
+
+#: src/menus.C:1197
+msgid ""
+"Floats%t|Figure Float%x71|Table Float%x72|Wide Figure Float%x73|Wide Table "
+"Float%l%x74|Algorithm Float%x75"
+msgstr ""
+"Tek-parça%t|Þekil%x71|Tablo%x72|Geniþ Þekil%x73|Geniþ "
+"Tablo%l%x74|Algoritma%x75"
+
+#. }
+#: src/menus.C:1204
+#, fuzzy
+msgid "IMF|gG#g#G"
+msgstr "IM|gG#g#G"
+
+#: src/menus.C:1205
+msgid "IMF|Tt#t#T"
+msgstr "IMF|Tt#t#T"
+
+#: src/menus.C:1206
+msgid "IMF|Ww#w#W"
+msgstr "IMF|Ww#w#W"
+
+#: src/menus.C:1207
+msgid "IMF|iI#i#I"
+msgstr "IMF|iI#i#I"
+
+#: src/menus.C:1208
+msgid "IMF|Aa#a#A"
+msgstr "IMF|Aa#a#A"
+
+#: src/menus.C:1211
+#, fuzzy
+msgid ""
+"Special Character%t|HFill%x31|Hyphenation Point%x32|Protected "
+"Blank%x33|Linebreak%x34|Ellipsis (...)%x35|End of sentence "
+"period%x36|Ordinary Quote (\")%x37|Menu Separator %x38"
+msgstr ""
+"Özel Karakter%t|HFill%x31|Kesme Noktasý%x32|Korunmuþ Boþluk%x33|Satýr "
+"Kesmesi%x34|Üç nokta (...)%x35|Cümle sonu noktasý%x36|Sýradan Alýntý (\")%x37"
+
+#: src/menus.C:1221
+msgid "IMS|Hh#h#H"
+msgstr "IMS|Hh#h#H"
+
+#: src/menus.C:1222
+msgid "IMS|Pp#p#P"
+msgstr "IMS|Pp#p#P"
+
+#: src/menus.C:1223
+msgid "IMS|Bb#b#B"
+msgstr "IMS|Bb#b#B"
+
+#: src/menus.C:1224
+msgid "IMS|Ll#l#L"
+msgstr "IMS|Ll#l#L"
+
+#: src/menus.C:1225
+msgid "IMS|iI#i#I"
+msgstr "IMS|iI#i#I"
+
+#: src/menus.C:1226
+msgid "IMS|Ee#e#E"
+msgstr "IMS|Ee#e#E"
+
+#: src/menus.C:1227
+msgid "IMS|Qq#q#Q"
+msgstr "IMS|Qq#q#Q"
+
+#: src/menus.C:1228
+#, fuzzy
+msgid "IMS|Mm#m#M"
+msgstr "IM|Mm#m#M"
+
+#: src/menus.C:1231
+#, fuzzy
+msgid ""
+"Figure...|Table...%l|Include File...|Import ASCII File%m|Insert LyX "
+"File...%l|Footnote|Margin Note|Floats%m%l|Lists & TOC%m%l|Special "
+"Character%m%l|Note...|Label...|Cross-Reference...|Citation "
+"Reference...|Index entry...|Index entry of last word"
+msgstr ""
+"Þekil...|Tablo...%l|Ek Dosya...|ASCII Dosya dýþalýmý%m|LyX "
+"dosyasýEkle...%l|Dipnot|Boþluk Notu|Tek-parçalar%m%l|Listeler ve "
+"Ýçindekiler%m%l|Özel Karakter%m%l|Not|Etiket...|Çapraz-Baþvuru...|Gönderme "
+"Baþvuru"
+
+#: src/menus.C:1252
+msgid "IM|gG#g#G"
+msgstr "IM|gG#g#G"
+
+#: src/menus.C:1253
+msgid "IM|bB#b#B"
+msgstr "IM|bB#b#B"
+
+#: src/menus.C:1254
+msgid "IM|cC#c#C"
+msgstr "IM|cC#c#C"
+
+#: src/menus.C:1255
+msgid "IM|Aa#a#A"
+msgstr "IM|Aa#a#A"
+
+#: src/menus.C:1256
+msgid "IM|Xx#x#X"
+msgstr "IM|Xx#x#X"
+
+#: src/menus.C:1257
+msgid "IM|Ff#f#F"
+msgstr "IM|Ff#f#F"
+
+#: src/menus.C:1258
+msgid "IM|Mm#m#M"
+msgstr "IM|Mm#m#M"
+
+#: src/menus.C:1259
+msgid "IM|oO#o#O"
+msgstr "IM|oO#o#O"
+
+#: src/menus.C:1260
+msgid "IM|Tt#t#T"
+msgstr "IM|Tt#t#T"
+
+#: src/menus.C:1261
+msgid "IM|Ss#s#S"
+msgstr "IM|Ss#s#S"
+
+#: src/menus.C:1262
+msgid "IM|Nn#n#N"
+msgstr "IM|Nn#n#N"
+
+#: src/menus.C:1263
+msgid "IM|Ll#l#L"
+msgstr "IM|Ll#l#L"
+
+#: src/menus.C:1264
+msgid "IM|rR#r#R"
+msgstr "IM|rR#r#R"
+
+#: src/menus.C:1265
+msgid "IM|iI#i#I"
+msgstr "IM|iI#i#I"
+
+#: src/menus.C:1266
+msgid "IM|dD#d#D"
+msgstr "FM|dD#d#D"
+
+#: src/menus.C:1267
+#, fuzzy
+msgid "IM|wW#w#W"
+msgstr "EM|wW#w#W"
+
+#: src/menus.C:1273
+#, fuzzy
+msgid "|URL..."
+msgstr "|URL"
+
+#: src/menus.C:1274
+msgid "IM|Uu#u#U"
+msgstr "IM|Uu#u#U"
+
+#: src/menus.C:1388
+msgid ""
+"Fraction|Square root|Exponent|Index|Sum|Integral%l|Math mode|Display%l|Math "
+"Panel..."
+msgstr ""
+"Kesir|Kare Kök|Üs|Alt|Sum|Ýntegral%l|Matematik kipi|Görüntüle%l|Matematik..."
+
+#: src/menus.C:1398
+msgid "MM|Ff#f#F"
+msgstr "MM|Ff#f#F"
+
+#: src/menus.C:1399
+msgid "MM|Ss#s#S"
+msgstr "MM|Ss#s#S"
+
+#: src/menus.C:1400
+msgid "MM|Ee#e#E"
+msgstr "MM|Ee#e#E"
+
+#: src/menus.C:1401
+msgid "MM|xX#x#X"
+msgstr "MM|xX#x#X"
+
+#: src/menus.C:1402
+msgid "MM|uU#u#U"
+msgstr "MM|uU#u#U"
+
+#: src/menus.C:1403
+msgid "MM|Ii#i#I"
+msgstr "MM|Ii#i#I"
+
+#: src/menus.C:1404
+msgid "MM|Mm#m#M"
+msgstr "MM|Mm#m#M"
+
+#: src/menus.C:1405
+msgid "MM|Dd#d#D"
+msgstr "MM|Dd#d#D"
+
+#: src/menus.C:1406
+msgid "MM|Pp#p#P"
+msgstr "MM|Pp#p#P"
+
+#: src/menus.C:1472
+msgid ""
+"Screen Fonts...|Spellchecker Options...|Keyboard...|LaTeX...%l|Reconfigure"
+msgstr ""
+"Ekran Yazýtipi...|Yazým Denetleyicisi "
+"Seçenekleri...|Klavye...|LaTeX...%l|Yeniden Ayarla"
+
+#: src/menus.C:1478
+msgid "OM|Ff#f#F"
+msgstr "OM|Ff#f#F"
+
+#: src/menus.C:1479
+msgid "OM|Ss#s#S"
+msgstr "OM|Ss#s#S"
+
+#: src/menus.C:1480
+msgid "OM|Kk#k#K"
+msgstr "OM|Kk#k#K"
+
+#: src/menus.C:1481
+msgid "OM|Ll#l#L"
+msgstr "OM|Ll#l#L"
+
+#: src/menus.C:1482
+msgid "OM|Rr#r#R"
+msgstr "OM|Rr#r#R"
+
+#: src/menus.C:1551
+msgid ""
+"Introduction|Tutorial|User's Guide|Extended Features|Customization|Reference "
+"Manual|Known Bugs|LaTeX Configuration%l|Copyright and "
+"Warranty...|Credits...|Version..."
+msgstr ""
+
+#: src/menus.C:1563
+msgid "HM|Ii#I#i"
+msgstr "HM|Ii#I#i"
+
+#: src/menus.C:1564
+msgid "HM|Tt#T#t"
+msgstr "HM|Tt#T#t"
+
+#: src/menus.C:1565
+msgid "HM|Uu#U#u"
+msgstr "HM|Uu#U#u"
+
+#: src/menus.C:1566
+#, fuzzy
+msgid "HM|xX#x#X"
+msgstr "FM|xX#x#X"
+
+#: src/menus.C:1567
+msgid "HM|Cc#C#c"
+msgstr "HM|Cc#C#c"
+
+#: src/menus.C:1568
+msgid "HM|Rr#R#r"
+msgstr "HM|Rr#R#r"
+
+#: src/menus.C:1569
+msgid "HM|Kk#K#k"
+msgstr "HM|Kk#K#k"
+
+#: src/menus.C:1570
+msgid "HM|Ll#L#l"
+msgstr "EM|Ll#l#L"
+
+#: src/menus.C:1571
+msgid "HM|oO#o#O"
+msgstr "HM|oO#o#O"
+
+#: src/menus.C:1572
+msgid "HM|eE#e#E"
+msgstr "HM|eE#e#E"
+
+#: src/menus.C:1573
+msgid "HM|Vv#v#V"
+msgstr "HM|Vv#v#V"
+
+#: src/menus.C:1596
+msgid "LyX Version "
+msgstr "LyX Sürümü: "
+
+#: src/menus.C:1597
+msgid " of "
+msgstr " Tarih: "
+
+#: src/menus.C:1598
+msgid "Library directory: "
+msgstr "Kitaplýk dizini: "
+
+#: src/menus.C:1600
+msgid "User directory: "
+msgstr "Kullanýcý dizini: "
+
+#: src/menus.C:1612
+msgid "Opening help file"
+msgstr "Yardým dosyasý açýlýyor"
+
+#: src/minibuffer.C:56
+msgid "Executing:"
+msgstr "Çalýþtýrýyorum:"
+
+#. this is a hack
+#: src/minibuffer.C:195
+msgid "* No document open *"
+msgstr "* Açýk Belge Yok *"
+
+#: src/minibuffer.h:22
+msgid "Welcome to LyX!"
+msgstr "LyX'e Hoþgeldiniz"
+
+#: src/paragraph.C:1676
+msgid "Senseless with this layout!"
+msgstr "Bu belge düzeni ile anlamsýz!"
+
+#: src/pathstack.C:55 src/pathstack.C:83
+msgid "Error: Could not change to directory: "
+msgstr "Hata: Þu dizine deðiþiklik yapýlamýyor:"
+
+#: src/pathstack.C:74
+msgid "LyX Internal Error:"
+msgstr "LyX iç hatasý:"
+
+#: src/pathstack.C:74
+msgid "Path Stack underflow."
+msgstr "Yol deðiþkeni yýðýtý aþýmý."
+
+#: src/print_form.C:21
+msgid "Print to"
+msgstr "Hedef"
+
+#: src/print_form.C:31
+msgid "Printer|#P"
+msgstr "Yazýcý|#P"
+
+#: src/print_form.C:33
+msgid "File|#F"
+msgstr "Dosya|#F"
+
+#: src/print_form.C:52
+msgid "All Pages|#G"
+msgstr "Tüm sayfalar|#G"
+
+#: src/print_form.C:54
+msgid "Only Odd Pages|#O"
+msgstr "Tek numaralý sayfalar|#O"
+
+#: src/print_form.C:56
+msgid "Only Even Pages|#E"
+msgstr "Çift numaralý sayfalar|#E"
+
+#: src/print_form.C:62
+msgid "Normal Order|#N"
+msgstr "Normal Sýra|#N"
+
+#: src/print_form.C:64
+msgid "Reverse Order|#R"
+msgstr "Ters Sýra|#R"
+
+#: src/print_form.C:68
+msgid "Order"
+msgstr "Sýralama"
+
+#: src/print_form.C:76
+#, fuzzy
+msgid "Pages:"
+msgstr "Sayfa: "
+
+#: src/print_form.C:81
+#, fuzzy
+msgid "Copies"
+msgstr "Kopyala"
+
+#: src/print_form.C:85
+#, fuzzy
+msgid "Count:"
+msgstr "Not:"
+
+#: src/print_form.C:88
+#, fuzzy
+msgid "Unsorted|#U"
+msgstr "Çerçeve ayarlarýný geri al|#U"
+
+#: src/print_form.C:107
+msgid "File Type"
+msgstr "Dosya tipi"
+
+#: src/print_form.C:111
+msgid "Command:|#C"
+msgstr "Komut:|#C"
+
+#: src/print_form.C:125
+msgid "DVI|#D"
+msgstr "DVI|#D"
+
+#: src/print_form.C:127
+msgid "Postscript|#P"
+msgstr "Postscript|#P"
+
+#: src/print_form.C:129
+msgid "LaTeX|#T"
+msgstr "LaTeX|#T"
+
+#: src/print_form.C:132
+msgid "LyX|#L"
+msgstr "LyX|#L"
+
+#: src/print_form.C:134
+msgid "Ascii|#s"
+msgstr "Ascii|#s"
+
+#: src/sp_form.C:26
+msgid "Use language of document|#D"
+msgstr "Belgenin dil kullanýmý|#D"
+
+#: src/sp_form.C:28
+msgid "Use alternate language:|#U"
+msgstr "Baþka bir dil kullanýmý:|#U"
+
+#: src/sp_form.C:34
+msgid "Treat run-together words as legal|#T"
+msgstr "`-' ile ayrýlmýþ tamlamalarý doðru kabul et|#T"
+
+#: src/sp_form.C:36
+msgid "Input Encoding switch to ispell|#I"
+msgstr "Girdi kodlamasý ispell'e çevrildi|#I"
+
+#: src/sp_form.C:46
+msgid "Use alternate personal dictionary:|#P"
+msgstr "Baþka bir kiþisel sözlük kullan:|#P"
+
+#: src/sp_form.C:48
+msgid "Extra special chars allowed in words:|#E"
+msgstr "Sözcük içinde ek özel karakterler:|#E"
+
+#: src/sp_form.C:54
+msgid "Dictionary"
+msgstr "Sözlük"
+
+#: src/sp_form.C:86
+msgid "Replace"
+msgstr "Deðiþtir"
+
+#: src/sp_form.C:88
+msgid ""
+"Near\n"
+"Misses"
+msgstr ""
+"Near\n"
+"Misses"
+
+#: src/sp_form.C:91
+msgid "Spellchecker Options...|#O"
+msgstr "Yazým denetimi seçenekleri|#O"
+
+#: src/sp_form.C:93
+msgid "Start spellchecking|#S"
+msgstr "Yazým denetimini baþlat|#S"
+
+#: src/sp_form.C:95
+msgid "Insert in personal dictionary|#I"
+msgstr "Kiþisel sözlük içine ekle|#I"
+
+#: src/sp_form.C:97
+msgid "Ignore word|#g"
+msgstr "Sözcüðü atla"
+
+#: src/sp_form.C:99
+msgid "Accept word in this session|#A"
+msgstr "Bu oturumda sözcüðü kabul et|#A"
+
+#: src/sp_form.C:101
+msgid "Stop spellchecking|#T"
+msgstr "Yazým denetimini durdur|#T"
+
+#: src/sp_form.C:103
+msgid "Close Spellchecker|#C^["
+msgstr "Yazým denetimini kapat|#C^["
+
+# , c-format
+#: src/sp_form.C:106
+#, no-c-format
+msgid "0 %"
+msgstr "%0"
+
+# , c-format
+#: src/sp_form.C:110
+#, no-c-format
+msgid "100 %"
+msgstr "%100"
+
+#: src/sp_form.C:113
+msgid "Replace word|#R"
+msgstr "Sözcüðü deðiþtir"
+
+#: src/spellchecker.C:222
+msgid "Spellchecker Options"
+msgstr "Yazým Denetleyici Seçenekleri"
+
+#: src/spellchecker.C:525
+msgid "Spellchecker"
+msgstr "Yazým Denetleyici"
+
+#: src/spellchecker.C:632
+msgid ""
+"\n"
+"\n"
+"The ispell-process has died for some reason. *One* possible reason\n"
+"could be that you do not have a dictionary file\n"
+"for the language of this document installed.\n"
+"Check /usr/lib/ispell or set another\n"
+"dictionary in the Spellchecker Options menu."
+msgstr ""
+"\n"
+"\n"
+"ispell programý bir nedenden çalýþmaya devam etmiyor. Olasý *bir* sebep \n"
+"belge için seçtiðiniz dile iliþkin bir sözlük dosyasýnýn sisteminizde\n"
+"yüklü olmamasý olabilir..\n"
+"/usr/lib/ispell dizinini kontrol edin veya \n"
+"Yazým Denetleyicisi seçenekleri altýndan baþka bir sözlük seçin."
+
+#: src/spellchecker.C:748
+msgid " words checked."
+msgstr " kelime denetlendi."
+
+#: src/spellchecker.C:750
+msgid " word checked."
+msgstr "sözcük denetlendi."
+
+#: src/spellchecker.C:752
+msgid "Spellchecking completed!"
+msgstr "Yazým denetlenmesi tamamlandý!"
+
+#: src/spellchecker.C:756
+msgid ""
+"The ispell-process has died for some reason.\n"
+"Maybe it has been killed."
+msgstr ""
+"ispell programý bir nedenden dolayý çalýþmýyor\n"
+"Belki süreç yok edilmiþtir."
+
+#: src/text.C:1883
+msgid "Multicolumns can only be horizontally."
+msgstr "Çoklu-sütunlar sadece yatay olabilirler."
+
+#. the user inserted a space before a space. So we
+#. * will just make a CursorRight. BUT: The font of this
+#. * space should be set to current font. That is why
+#. * we need to rebreak perhaps. If there is a protected
+#. * blank at the end of a row we have to force
+#. * a rebreak.
+#: src/text.C:2291 src/text.C:2310
+msgid "You cannot type two spaces this way.  Please read the Tutorial."
+msgstr ""
+
+#: src/text.C:2308
+msgid ""
+"You cannot insert a space at the beginning of a paragraph.  Please read the "
+"Tutorial."
+msgstr ""
+
+#: src/text.C:3935 src/text.C:3943 src/text.C:3960 src/text.C:3975
+#: src/text2.C:1817 src/text2.C:1827 src/text2.C:2033 src/text2.C:2043
+#: src/text2.C:2135 src/text2.C:2144
+msgid "Impossible operation"
+msgstr "Geçersiz iþlem"
+
+#: src/text.C:3936
+msgid "You can't insert a float in a float!"
+msgstr "Tek-parça içine tek-parça eklenemez!"
+
+#: src/text.C:3944
+msgid "You can't insert a marginpar in a minipage!"
+msgstr "Bir sayfacýk içine bir marginpar eklenemez!"
+
+#: src/text.C:3960
+msgid "Cannot cut table."
+msgstr "Tabloyu kesemem."
+
+#: src/text.C:3976
+msgid "Float would include float!"
+msgstr "Tek-parça, tek-parça içermeli!"
+
+#: src/text2.C:337
+msgid "Opened float"
+msgstr "Tek-parça açýldý"
+
+#: src/text2.C:340
+msgid "Closed float"
+msgstr "Tek-parça kapandý"
+
+#: src/text2.C:378
+msgid "Nothing to do"
+msgstr "Yapacak bir þey yok."
+
+#. Could only happen with user style
+#: src/text2.C:1077
+msgid ""
+"No font change defined. Use Character under the Layout menu to define font "
+"change."
+msgstr ""
+"Tanýmlý yazýtipi deðiþimi yok. Yazýtipi deðiþimini tanýmlamak için Düzen "
+"menüsünden Karakter'i seçin"
+
+#: src/text2.C:1817 src/text2.C:2033
+msgid "Don't know what to do with half floats."
+msgstr "Yarý tek-parçalarla çalýþamam."
+
+#: src/text2.C:1817 src/text2.C:1827 src/text2.C:2033 src/text2.C:2043
+msgid "sorry."
+msgstr "üzgünüm."
+
+#: src/text2.C:1827 src/text2.C:2043
+msgid "Don't know what to do with half tables."
+msgstr "Yarým tablo ile çalýþamam"
+
+#: src/text2.C:2136
+msgid "Can't paste float into float!"
+msgstr "Tek-parça içine baþka tek-parça yapýþtýrýlamaz!"
+
+#: src/text2.C:2145
+msgid "Table cell cannot include more than one paragraph!"
+msgstr "Tablo hücresi bir paragraftan fazlasýný içeremez!"

@@ -1,0 +1,186 @@
+@bMaarten Afman
+@iE-mail: afman@student.tn.tudelft.nl
+   Dutch translation team member
+@bAlejandro Aguilar Sierra
+@iE-mail: asierra@servidor.unam.mx
+   fast parsing with lyxlex, pseudoactions,
+   mathpanel, Math Editor,
+   combox and more
+@bAsger Alstrup
+@iE-mail: alstrup@diku.dk
+   General hacking of user interface stuff
+   and those other bits and pieces.
+@bPascal Andre 
+@iE-mail: andre@via.ecp.fr
+   external style definition files,
+   linuxdoc sgml support and more
+   ftp-site ftp.lyx.org
+@bHeinrich Bauer
+@iE-mail: heinrich.bauer@t-mobil.de
+   Fixes for dvi output
+   original version of page selection for printing
+@bHans Bausewein
+@iE-mail: hans@comerwell.xs4all.nl
+   "case insensitive" and "complete word" search 
+@bGraham Biswell
+   small bugfixes that were very hard to find
+@bLars Gullik Bjønnes
+@iE-mail: larsbj@ifi.uio.no
+   improvements to user interface (menus and 
+   keyhandling) including configurable toolbar,
+   and a few other minor things. Also current
+   source maintainer.
+@bChristian Buescher 
+   user-definable keys, lyxserver and more
+@bFrancesc Burrull i Mestres
+@iE-mail: fburrull@mat.upc.es
+   Catalan translation.
+@bClaudio Coco
+@iE-mail: lacocio@iol.it
+   Italian translation
+@bMatthias Ettrich
+@iE-mail: ettrich@kde.org
+   started the project, implemented
+   the early versions, various improvements
+   including undo/redo, tables,
+   and much, much more.
+@bJohn Michael Floyd
+@iE-mail: jmf@pwd.nsw.gov.au
+   fix to spellchecker.C
+@bStefano Ghirlanda
+@istefano@zool.su.se
+   Improvements to lyxserver; LyX-Client perl package
+@bBernhard Iselborn
+@iE-mail: biselbor@rhrk.uni-kl.de
+   some minor bug-fixes, FAQ
+   linuxdoc sgml support
+@bMichal Jaegermann
+@imichal@ellpspace.math.ualberta.ca
+   Fix to a very hard-to-find egcs bug that crashed 
+     LyX on alpha architecture
+@bDavid L. Johnson
+@iE-mail: dlj0@lehigh.edu
+   public relations, feedback, documentation and 
+   support
+@bRobert van der Kamp
+   various small things and code simplifying
+   (see thousands of RVDKs in the code ;-) )
+@bAmir Karger
+@iE-mail: karger@post.harvard.edu
+   Tutorial
+   reLyX: the LaTeX to LyX translator
+@bCarmen Kauffmann
+   original name that is now two character shorter
+@bMartin Konold
+@iE-mail: zxmmz01@fiwi02.wiwi.uni-tuebingen.de
+   german ftp-mirror-site fiwi02.wiwi.uni-tuebingen.de
+@bPeter Kremer
+@iE-mail: kremer@bme-tel.ttt.bme.hu
+   Hungarian translation and
+   bind file for menu shortcuts.
+@bBernd Kümmerlen
+@iE-mail: bkuemmer@ix.urz.uni-heidelberg.de
+   Initial version of the koma-script textclasses
+@bJean-Marc Lasgouttes
+@iE-mail: Jean-Marc.Lasgouttes@inria.fr
+   configure and Makefile-stuff and more
+@bVictor Lavrenko
+@iE-mail: lyx@lavrenko.pp.ru
+   Russian translation
+@bJose' Matos
+@iE-mail: jamatos@novalis.fc.up.pt
+   linuxdoc sgml support
+@bTino Meinen
+@iE-mail: tino@direct.a2000.nl
+   Dutch translation coordinator
+@bDaniel Naber
+@iE-mail dnaber@mini.gt.owl.de
+   Improvements to find&replace popup
+@bDirk Niggemann
+@iE-mail: dabn100@cam.ac.uk
+   config. handling enhancements,
+   bugfixes, printer enhancements
+   path mingling
+@bCarl Ollivier-Gooch
+@iE-mail: cfog@mech.ubc.ca
+   Support for two-column figure (figure*) and table (table*)
+   environments.  Fixed minibuffer entry of floats.  
+@bJoacim Persson
+@iE-mail: sp2joap1@ida.his.se
+   po-file for Swedish, a tool for picking shortcuts,
+   bug reports and hacking at random
+@bAlkis Polyzotis
+   Keymap work.
+@bBernhard Psaier
+   Designer of the LyX-Banner
+@bThomas Pundt
+@iE-mail: pundtt@math.uni-muenster.de
+   initial configure script
+@bAllan Rae
+@iE-mail: rae@elec.uq.edu.au
+   bug reports/fixes, Itemize Bullet Selection,
+   xforms-0.81 + gcc-2.6.3 compatibility
+@bBernd Rellermeyer
+@iE-mail: 100.41728@germanynet.de
+   Support for Koma-Script family of classes
+@bMichael Ressler
+@iE-mail: mike.ressler@alum.mit.edu
+   various documentation contributions, AASTeX support
+@bHubert Schreier
+   spellchecker (ispell frontend)
+   beautiful document-manager based on the simple 
+   table of contents (temporary removed)
+@bIvan Schreter
+@iE-mail: schreter@kdk.sk
+   international support and kbmaps for slovak, czech, 
+   german, ... wysiwyg figure
+@bMiyata Shigeru
+@iE-mail: miyata@kusm.kyoto-u.ac.jp
+   OS/2 port
+@bAndre Spiegel
+@iE-mail: spiegel@inf.fu-berlin.de
+   vertical spaces
+@bPeter Sütterlin
+@iE-mail: pit@uni-sw.gwdg.de
+   aapaper support, bug reports
+@bKayvan Aghaiepour Sylvan
+@iE-mail: kayvan@sylvan.com      
+   noweb2lyx and reLyX integration of noweb files. 
+   Added Import->Noweb and key bindings to menus.
+@bMatthias Ulrichs
+@iE-mail: urlichs@smurf.noris.de
+   bug reports and small fixes
+@bH. Turgut Uyar
+@iE-mail: uyar@cs.itu.edu.tr
+   turkish kbmnaps
+@bMartin Vermeer
+@iE-mail: mv@fgi.fi
+   ejour2 document class
+@bJuergen Vigna
+@iE-mail: jug@sad.it
+   Fax- and Ascii-Export support
+   iletter and dinbrief support
+@bJohn P. Weiss
+@iE-mail: weissjp@colorado.edu
+   Bugreports and suggestions,
+   slides class support, editor of the
+   documentation project, 6/96-9/97.
+   Tutorial chapter 1
+@bEdmar Wienskoski Jr.
+@iE-mail: edmar-w-jr@technologist.com
+   Literate programming support
+   Various bug fixes
+@bStephan Witt
+@iE-mail: stephan.witt@beusen.de
+   Support for page selection for printing
+   Support for number of copies
+@bHenner Zeller
+@iE-mail: zeller@think.de
+   rotation of wysiwyg figures
+@bXiaokun Zhu
+@iE-mail: xiaokun@aero.gla.ac.uk
+   bug reports and small fixes
+   
+If your name doesn't appear here although you've done 
+something for LyX, or your entry is wrong or incomplete, 
+just drop some e-mail to lyx@lyx.org. Thanks.

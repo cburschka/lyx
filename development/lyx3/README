@@ -1,0 +1,47 @@
+Project: LyX File format 3.0 (subset of LaTeX) 
+============================
+
+Initial coordinator: Alejandro Aguilar Sierra
+
+
+On the developers list has been discussed several times the advantages of a
+LyX format compatible with LaTeX. Some of the advantages we would have are:
+
+- A better grammar than that of the current format would led us to simpler
+  and powerful syntax for insets (I'm thinking on math, figures, tables and
+  accents).
+
+- Almost anything can be expressed better with a powerful grammar.
+
+- There are many anything->LaTeX and LaTeX->anything converters around.
+  The exchange of documents would be better.
+  
+- We could have better control on the preamble of a document (options, 
+  packages included, macros). Only include those that are needed
+  for the document.
+  
+- We could save disk space using only one format.
+
+
+
+The following are not goals of this project:
+
+- The parser doesn't have to be able to read every latex file (for instance
+  LaTeX2.09). Still would be necessary filters to import latex files
+  generated elsewhere.
+
+- With a more readable format some LaTeX experts couldn't resist the
+  temptation to edit manually the files. This wouldn't be recommended, for
+  the same reason as above. Any special thing can (should) be written using
+  TeX mode under LyX.
+
+
+
+Q. Why LaTeX and not linux-sgml?
+
+A. Well, say some good reasons in favor of linux-sgml. Does it can
+   express complex mathematics expressions, nested layouts, etc. in
+   a better way?
+
+
+Alejandro

@@ -1,0 +1,54 @@
+#This file was created by <jamatos> Fri Sep 24 13:10:52 1999
+#LyX 1.0 (C) 1995-1999 Matthias Ettrich and the LyX Team
+\lyxformat 2.15
+\textclass docbook
+\begin_preamble
+<!entity header system "header.sgml">
+\end_preamble
+\language default
+\inputencoding default
+\fontscheme default
+\graphics default
+\paperfontsize default
+\spacing single 
+\papersize Default
+\paperpackage a4
+\use_geometry 0
+\use_amsmath 0
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\quotes_times 2
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+
+\layout Title
+\added_space_top vfill \added_space_bottom vfill 
+Title
+\layout Date
+
+Date 
+\layout Author
+
+
+\latex latex 
+<firstname>
+\latex default 
+Joe
+\latex latex 
+</firstname><surname>
+\latex default 
+Doe
+\latex latex 
+</surname>
+\layout Abstract
+
+Abstract
+\layout Section
+
+First Section
+\the_end

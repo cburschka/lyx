@@ -1,0 +1,527 @@
+#% Do not delete the line below; configure depends on this
+#  \DeclareLaTeXClass[aastex]{article (AASTeX)}
+#
+# Author: Mike Ressler <mike.ressler@alum.mit.edu>	
+#
+# Disclaimer: Though I am an astronomer at the Jet Propulsion Laboratory, this
+# package was prepared on my own time on my own machine. Neither the United
+# States government, the National Aeronautics and Space Administration, the
+# California Institute of Technology, the American Astronomical Society, nor
+# the Jet Propulsion Laboratory endorse this package - indeed, they probably
+# don't even know of it's existence. Use of this package is covered by the LyX
+# license which is found in the file COPYING in the root directory of the LyX
+# distribution.
+#
+# Version 0.0	5/27/99 - Initial submission, basic LaTeX equivalents
+# Version 0.1	6/04/99 - Most everything in sections 2.1-2.11 of AASTeX guide
+#			  works. References work with some ERT. Regular tables
+#			  (2.14) okay, deluxetable will never be supported.
+#			  Figures (2.13) not even attempted yet. Misc (2.15) 
+#			  partially supported, but much will remain ERT.
+#			  Style options (section 3) can be typed into Extra
+#			  Document options.
+#			  Much cleaning of this file needs to be done.
+# Version 1.0	6/09/99 - Implemented remaining commands as well as possible.
+#			  There is little more I can do unless LyX source code
+#			  is changed. (Not by me!) Documentation, template, and
+#			  example files are available.
+# Version 1.1	7/25/99 - Changed \url to take advantage of new layout option.
+
+# General textclass parameters
+Columns			1
+Sides			1
+MaxCounter		Counter_Section
+#SecNumDepth		3
+TocDepth		0
+PageStyle		Plain
+ProvidesAmsmath		1
+ProvidesUrl		1
+ClassOptions
+  PageStyle		""	
+End
+
+DefaultFont
+  Family		Roman
+  Series		Medium
+  Shape			Up
+  Size			Normal
+  Color			None
+EndFont
+
+# Standard style definition
+Style Standard
+  Margin  		Static
+  LatexType 		Paragraph
+  LatexName 		dummy
+  ParIndent		MM
+  ParSkip		0.4
+  Align 		Block
+  AlignPossible 	Block, Left, Right, Center
+  LabelType 		No_Label
+End
+
+# I want to keep the entries in a logical order.
+# Therefore I'll define the entries first, then fill them in
+
+Style Section
+  End
+Style Subsection
+  End
+Style Subsubsection
+  End
+Style Paragraph
+  End
+Style Itemize
+  End
+Style Enumerate
+  End
+Style Description
+  End
+Style List
+  End
+Style Title
+  End
+Style Author
+  End
+Style Affiliation
+  End
+Style Email
+  End
+Style And
+  End
+Style Date
+  End
+Style Abstract 
+  End
+Style Keywords
+  End
+Style Acknowledgements
+  End
+Style Appendix
+  End
+Style References
+  End
+Style PlaceFigure
+  End
+Style PlaceTable
+  End
+Style TableComments
+  End
+Style TableRefs
+  End
+Style Caption
+  End
+Style MathLetters
+  End
+Style NoteToEditor
+  End
+
+# OK, now we have a more or less consistent Ordering. Now fill the
+# definitions. 
+# First, the standard includes
+
+Input stdsections.inc
+Input stdstruct.inc
+Input stdlists.inc
+
+# Remove unwanted Styles
+NoStyle Part
+NoStyle Chapter
+NoStyle Subparagraph
+NoStyle List
+NoStyle Bibliography
+
+# Redefine some things
+
+# Section style redefinition
+Style Section
+  Align			Center
+  AlignPossible		Center
+  NextNoIndent          0
+  TopSep		2.0
+  BottomSep		1.3
+  Font 
+    Series 		Bold
+    Size		Normal
+  EndFont
+End
+
+# Subsection style redefinition
+Style Subsection
+  Align			Center
+  AlignPossible		Center
+  NextNoIndent          0
+  TopSep		1.7
+  BottomSep		1.1
+  Font 
+    Series 		Bold
+    Size		Normal
+  EndFont
+End
+
+# Subsubsection style redefinition
+Style Subsubsection
+  Align			Center
+  AlignPossible		Center
+  NextNoIndent          0
+  TopSep		1.7
+  BottomSep		1.1
+  Font 
+    Series 		Medium
+    Shape		Italic
+    Size		Normal
+  EndFont
+End
+
+# Title style redefinition
+Style Title
+  TopSep		2
+  BottomSep		1.3
+  Align			Center
+  AlignPossible		Center
+  InTitle		0
+  Font 
+    Series		Bold
+    Size		Large
+  EndFont
+End
+
+# Author style redefinition
+Style Author
+  Align			Center
+  AlignPossible		Center
+  LabelType		No_Label
+  InTitle		0
+  Font 
+    Size		Normal
+    Series		Medium
+    Shape		SmallCaps
+  EndFont
+End
+
+# Date style redefinition
+Style Date
+  LabelSep		""
+  TopSep		1.2
+  Align			Center
+  AlignPossible		Center
+  InTitle		0
+  Font 
+    Size		Small
+  EndFont
+End
+
+# Abstract style redefinition
+Style Abstract 
+  LeftMargin            "MMM"
+  RightMargin           "MMM"
+  ParIndent		"MM"
+  TopSep		1.4
+  BottomSep		0.7
+  LabelType		Centered_Top_Environment
+  Align			Block
+  AlignPossible		Block, Left, Right, Center
+  Font 
+    Size		Normal
+  EndFont
+  LabelFont 
+    Series		Bold
+    Size		Normal
+  EndFont
+End 
+
+# Affiliation style definition
+Style Affiliation
+  Margin		Static
+  LatexType		Command
+  InTitle		0
+  LatexName		affil
+  ParSkip		0.4
+  BottomSep		0.4
+  Align			Center
+  AlignPossible		Block, Left, Right, Center
+  LabelType		No_Label
+
+  Font 
+    Family  		Roman
+    Size		Normal
+  EndFont
+End
+
+# Keywords style definition
+Style Keywords
+  LeftMargin		MMM	
+  Margin		Dynamic
+  LatexType		Command
+  InTitle		0
+  LatexName		keywords
+  ParSkip		0.4
+  BottomSep		0.4
+  Align			Block
+  AlignPossible		Block, Left, Right, Center
+  LabelType		Static
+  LabelSep		M
+  LabelString		"Subject headings:"
+  Font 
+    Family  		Roman
+    Shape		Up
+    Size		Normal
+  EndFont
+  LabelFont 
+    Family  		Roman
+    Shape		Italic
+    Size		Normal
+  EndFont
+End
+
+# Email style definition
+Style Email
+  Margin		Static
+  LatexType		Command
+  InTitle		0
+  LatexName		email
+  ParSkip		0.4
+  BottomSep		0.4
+  Align			Center
+  AlignPossible		Block, Left, Right, Center
+  LabelType		No_Label
+  Font 
+    Family  		Roman
+    Size		Normal
+    Shape		Italic
+  EndFont
+End
+
+# Acknowledgements style definition
+Style Acknowledgements
+  Margin		Dynamic
+  LatexType		Command
+  InTitle		0
+  LatexName		acknowledgements
+  TopSep		1.2	
+  ParSkip		0.4
+  BottomSep		0.8
+  Align			Left
+  AlignPossible		Left
+  LabelType		Static
+  LabelString		[Acknowledgements]
+  KeepEmpty		1	
+  Font 
+    Family  		Roman
+    Size		Normal
+    Shape		Italic
+  EndFont
+End
+
+  
+# And style definition
+Style And
+  Margin		Dynamic
+  LatexType		Command
+  InTitle		0
+  LatexName		and
+  TopSep		1.2	
+  ParSkip		0.4
+  BottomSep		1.2
+  Align			Center
+  AlignPossible		Center
+  LabelType		Static
+  LabelString		and
+  KeepEmpty		1	
+  Font 
+    Family  		Roman
+    Size		Normal
+  EndFont
+End
+ 
+# Placefigure style definition
+Style PlaceFigure
+  Margin		Dynamic
+  LatexType		Command
+  InTitle		0
+  LatexName		placefigure
+  TopSep		1.2	
+  ParSkip		0.4
+  BottomSep		0.8
+  Align			Left
+  AlignPossible		Left
+  LabelType		Static
+  LabelString		"Place Figure here: "
+  Font 
+    Family  		Roman
+    Size		Normal
+    Shape		Italic
+  EndFont
+End
+
+# Placetable style definition
+Style PlaceTable
+  Margin		Dynamic
+  LatexType		Command
+  InTitle		0
+  LatexName		placetable
+  TopSep		1.2	
+  ParSkip		0.4
+  BottomSep		0.8
+  Align			Left
+  AlignPossible		Left
+  LabelType		Static
+  LabelString		"Place Table here: "
+  Font 
+    Family  		Roman
+    Size		Normal
+    Shape		Italic
+  EndFont
+End
+
+# Appendix style definition
+Style Appendix
+  Margin		Dynamic
+  LatexType		Command
+  InTitle		0
+  LatexName		appendix
+  TopSep		1.2	
+  ParSkip		0.4
+  BottomSep		0.8
+  Align			Left
+  AlignPossible		Left
+  LabelType		Static
+  LabelString		[Appendix]
+  KeepEmpty		1	
+  Font 
+    Family  		Roman
+    Size		Normal
+    Shape		Italic
+  EndFont
+End
+
+# MathLetters style redefinition
+Style MathLetters
+  LatexType		Environment	
+  LatexName		mathletters
+  LabelType		No_Label
+  Align			Block
+  AlignPossible		Block, Left, Right, Center
+  Font 
+    Size		Normal
+  EndFont
+End 
+
+# References style redefinition
+Style References
+  Margin		First_Dynamic	
+  LatexType		Item_Environment	
+  LatexName		thebibliography
+  NextNoIndent		1
+  LeftMargin		MM
+  ParSkip		0.4
+  ItemSep               0
+  TopSep                0.7
+  BottomSep             0.7
+  ParSep                0.5
+  LabelType		Bibliography
+  LabelString		References
+  LabelBottomSep	0.7
+  Align			Block
+  AlignPossible		Block, Left, Right, Center
+  LabelFont 
+    Family  		Roman
+    Size		Normal
+    Series		Bold
+  EndFont
+End 
+
+# Need reordering below here
+
+# Notetoeditor style definition
+Style NoteToEditor
+  Margin		Dynamic
+  LatexType		Command
+  InTitle		0
+  LatexName		notetoeditor
+  TopSep		1.2	
+  ParSkip		0.4
+  BottomSep		0.8
+  Align			Left
+  AlignPossible		Block, Left, Right, Center
+  LabelType		Static
+  LabelString		"Note to Editor: "
+  Font 
+    Family  		Roman
+    Size		Normal
+    Shape		Italic
+  EndFont
+End
+
+# TableRefs style definition
+Style TableRefs
+  Margin		First_Dynamic
+  LatexType		Command
+  InTitle		0
+  LatexName		tablerefs
+  TopSep		1.2	
+  ParSkip		0.4
+  BottomSep		0.8
+  Align			Block
+  AlignPossible		Block, Left, Right, Center
+  LabelType		Static
+  LabelString		"References. --- "
+  Font 
+    Family  		Roman
+    Size		Normal
+  EndFont
+End
+
+# TableComments style definition
+Style TableComments
+  Margin		First_Dynamic
+  LatexType		Command
+  InTitle		0
+  LatexName		tablecomments
+  TopSep		1.2	
+  ParSkip		0.4
+  BottomSep		0.8
+  Align			Block
+  AlignPossible		Block, Left, Right, Center
+  LabelType		Static
+  LabelString		"Note. --- "
+  Font 
+    Family  		Roman
+    Size		Normal
+  EndFont
+End
+
+# Caption style definition
+Style Caption
+  Margin                First_Dynamic
+  LatexType             Command
+  LatexName             caption
+  NeedProtect           1
+  LabelSep              xx
+  ParSkip               0.4
+  TopSep                0.5
+  Align                 Block
+  AlignPossible         Block, Left
+  LabelType             Sensitive
+  LabelString           Caption
+
+  # label font definition
+  LabelFont 
+    Series              Bold
+  EndFont
+End
+
+# FigCaption style definition
+Style FigCaption
+  Margin                First_Dynamic
+  LatexType             Command
+  LatexName             figcaption
+  LatexParam		[FileName]
+  LabelSep              xx
+  ParSkip               0.4
+  TopSep                0.5
+  Align                 Block
+  AlignPossible         Block, Left
+  LabelType             Static
+  LabelString           "Fig. --- "
+End

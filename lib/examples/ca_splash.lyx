@@ -1,0 +1,161 @@
+#This file was created by <fburrull> Wed Jun 16 15:02:40 1999
+#LyX 1.0 (C) 1995-1999 Matthias Ettrich and the LyX Team
+\lyxformat 2.15
+\textclass article
+\language catalan
+\inputencoding default
+\fontscheme default
+\graphics default
+\paperfontsize default
+\spacing single 
+\papersize Default
+\paperpackage a4
+\use_geometry 0
+\use_amsmath 0
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\quotes_times 2
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+
+\layout Title
+
+Benvinguts a LyX !
+\layout Section*
+
+N coses que cal saber per utilitzar LyX
+\layout Enumerate
+
+LyX inclou una documentació excel·lent ---Utilitzeu-la, si us plau! Podeu
+ començar per 
+\family sans 
+\bar under 
+A
+\bar default 
+juda->
+\bar under 
+I
+\bar default 
+ntroducció
+\family default 
+, que proporciona una breu introducció de la documentació disponible.
+ A continuació podeu aprendre a utilitzar LyX mitjançant
+\family sans 
+ 
+\bar under 
+A
+\bar default 
+juda->
+\bar under 
+T
+\bar default 
+utorial
+\family default 
+.
+\layout Enumerate
+
+LyX és el que s'anomena un 
+\begin_inset Quotes eld
+\end_inset 
+
+processador de documents.
+\begin_inset Quotes erd
+\end_inset 
+
+ El disseny de LyX és diferent del dels processadors de texts normals ---fent
+ senzilla l'escriptura de documents.
+ Això sí, només una mica diferent, que ningú s'espanti! La documentació
+ ho aclarirà tot
+\begin_float footnote 
+\layout Standard
+
+No us havia dit encara que cal llegir la documentació ?
+\end_float 
+.
+\layout Enumerate
+
+Els documents LyX ténen un aspecte formidable! Proveu de seleccionar 
+\family sans 
+\bar under 
+F
+\bar default 
+itxer->Visualitzar
+\protected_separator 
+
+\bar under 
+d
+\bar default 
+vi
+\family default 
+ ara mateix per veure-ho.
+\layout Enumerate
+
+Sí, LyX pot imitar (quasi bé) tota la funcionalitat de LaTeX.
+ A més a més, LyX pot importar fitxers LaTeX.
+ Els usuaris de LaTeX amb experiència es poden saltar la resta del 
+\emph on 
+Tutorial
+\emph default 
+, i llegir el capítol 
+\begin_inset Quotes eld
+\end_inset 
+
+
+\emph on 
+LyX for LaTeX Users
+\emph default 
+
+\begin_inset Quotes erd
+\end_inset 
+
+.
+ (Per tots els altres: no us preocupeu, no cal saber LaTeX per utilitzar
+ LyX.) 
+\layout Enumerate
+
+LyX té moltes utilitats per qui vulgui fer servir altres idiomes que l'Anglès.
+ A més, els lligams de tecles (
+\emph on 
+keybindings
+\emph default 
+), barra d'utilitats (
+\emph on 
+toolbar
+\emph default 
+), i moltes altres característiques són configurables en gran manera (bàsicament
+ editant el fitxer 
+\family typewriter 
+lyxrc
+\family default 
+).
+ Vegeu 
+\family sans 
+\bar under 
+A
+\bar default 
+juda->
+\bar under 
+P
+\bar default 
+ersonalització
+\family default 
+ per més detalls.
+\layout Enumerate
+
+La pàgina web de LyX 
+\family typewriter 
+és http://www.lyx.org
+\family default 
+.
+ Obté informació sobre LyX, subscriviu-vos a la/les llista/llistes de correu
+ de LyX, Passegeu-vos pel 
+\emph on 
+LyX Graphical Tour
+\emph default 
+, i molt més.
+\the_end

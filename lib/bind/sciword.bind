@@ -1,0 +1,479 @@
+# This file is part of LyX
+
+# LyX keyboard definitions similar to those of Scientific Word.
+# Prepared by Serge Winitzki. Version 1.0
+
+# Tip: to find how LyX calls a pressed key, look at the status bar after
+# entering a non-existent key combination. E.g. want to find how "Ctrl-&" is
+# referenced, so press Ctrl-S Ctrl-&: the status bar shows "C-s S-C-ampersand."
+
+#\bind "C-a"                    "------"
+#\bind "C-b"                    "font-bold"
+
+# Copy, paste, etc.: more familiar keys
+\bind "C-c"	"copy"
+
+# Display equation toggle: type it in a displayed equation to convert it
+# back to an inline equation
+# Sciword mnemonic.
+\bind "C-d"	"math-display"
+
+#\bind "C-e"	"------"
+# Greek for only one character. "math-greek-toggle" is the persistent Greek
+# toggle which nobody really needs when typing math.
+# Sciword mnemonic.
+\bind "C-f"	"math-insert frac"
+\bind "C-g"	"math-greek"
+
+# Do I need this?
+#\bind "C-h"	"hyphenation-point-insert"
+
+# Sciword mnemonic.
+\bind "C-i"	"math-insert int"
+
+#\bind "C-j"	"------"
+
+\bind "C-k"	"line-delete-forward"
+\bind "C-l"	"screen-recenter"
+
+# Toggle: in text mode, switch to math, and vice versa. Also C-t.
+\bind "C-m"	"math-mode"
+#\bind "C-n"	"------"
+\bind "C-o"	"open-stuff"
+\bind "C-p"	"font-code"
+# Insert a quote character. Do I need this?
+\bind "C-q"	"quote-insert"
+
+# Sciword mnemonic.
+\bind "C-r"	"math-insert sqrt"
+
+# This combination is now a gateway to math symbols (C-s ...)
+#\bind "C-s"	"font-smallcaps"
+\bind "C-t"	"math-mode"
+\bind "C-u"	"font-underline"
+\bind "C-v"	"paste"
+\bind "C-w"	"buffer-close"
+\bind "C-x"	"cut"
+\bind "C-z"	"undo"
+\bind "S-C-z"	"redo"
+
+
+# This combination makes an umlaut accept now.
+#\bind "S-C-quotedbl"           "quote-insert"
+
+# Bracket delimiters. Sciword mnemonic is to press Control-<bracket key>
+
+\bind "C-9"	"math-delim ( )"
+\bind "S-C-parenleft"	"math-delim ( )"
+\bind "C-0"	"math-delim ( )"
+\bind "S-C-parenright"	"math-delim ( )"
+
+\bind "C-S-bracketleft"		"math-delim [ ]"
+\bind "C-S-bracketright"	"math-delim [ ]"
+\bind "C-S-less"		"math-delim langle rangle"
+\bind "C-S-greater"		"math-delim langle rangle"
+
+# The bar bracket: on some keyboards, e.g. British, the bar character is
+# misplaced to an Alt-something
+\bind "C-S-bar"		"math-delim | |"
+\bind "C-S-brokenbar"	"math-delim | |"
+\bind "C-M-bar"		"math-delim | |"
+
+\bind "S-C-braceleft"		"math-delim { }"
+\bind "S-C-braceright"		"math-delim { }"
+
+# Accents. Sciword mnemonic. Mostly need to press Ctrl-<accent key>
+# e.g. Ctrl-. for overdot, Ctrl-' for acute accent, Ctrl-~ for tilda etc.
+# Some of them seem to work only in math mode?
+
+# S-C-period?
+\bind "C-period"	"accent-dot"
+\bind "C-quoteleft"	"accent-grave"
+\bind "S-C-asciitilde"	"accent-tilde"
+\bind "S-C-quotedbl"	"accent-umlaut"
+\bind "C-apostrophe"	"accent-acute"
+\bind "S-C-asciicircum" "accent-circumflex"
+\bind "C-equal"	"accent-vector"
+# Why is it not "accent-bar"?
+\bind "C-minus"	"math-insert bar"
+# What is "accent-underbar"?
+#\bind "S-C-underscore"	"accent-underbar"
+
+# Numbering equations. Should perhaps simplify math-number and math-nonumber into one command. This and also math-macro stuff should be available in the menus!
+# Sciword mnemonic, kind of (was just "TAB").
+
+\bind "C-Tab"	"math-number"
+\bind "C-S-Tab"	"math-nonumber"
+
+# Function keys.
+
+#\bind "F1"	"help"	# Not yet implemented!
+#\bind "C-F1"                   "help-context"                  # Not yet implemented!
+\bind "F2"                     "buffer-write"
+\bind "F3"                     "find-replace"
+
+\bind "C-F4"                   "buffer-close"
+\bind "M-F4"                   "lyx-quit"
+# F4 to F8 are used to switch fonts. Sciword mnemonic.
+\bind "F4"                     "font-default"
+\bind "F5"                     "font-bold"
+\bind "F6"                     "font-emph"
+\bind "F7"                     "font-code"
+\bind "F8"                     "font-noun"
+# F9 bound below as meta-prefix (e.g. if the keyboard doesn't have ALT).
+#\bind "F9"                     "------"
+#\bind "F10"                    "------"
+
+#
+# Math menu (unmodified)
+#
+
+\bind "M-m f"			"math-insert frac"
+\bind "M-m i"			"math-insert int"
+\bind "M-m o"			"math-insert oint"
+\bind "M-m p"                  "math-insert partial"
+\bind "M-m s"                  "math-insert sqrt"
+\bind "M-m S-S"                "math-insert sum"
+\bind "M-m l"                  "math-limits"
+\bind "M-m n"                  "math-number"
+\bind "M-m v"                  "accent-vector"
+\bind "M-m space"              "menu-open Math"
+
+# Sciword mnemonics for math editing:
+
+\bind "M-apostrophe"	"math-insert prime"
+\bind "C-Up"		"math-insert ^"
+\bind "C-Down"		"math-insert _"
+\bind "C-s d"		"math-insert partial"
+\bind "C-s e"		"math-insert sum"
+\bind "C-s p"		"math-insert prod"
+\bind "C-s i"		"math-insert infty"
+
+# My own embellishments for symbols I use often.
+
+#I'd like to combine math-insert ^ and math-insert prime, but don't know how.
+
+\bind "C-s apostrophe"	"math-insert prime"
+\bind "C-s S-plus"	"math-insert dagger"
+\bind "C-s equal"	"math-insert equiv"
+\bind "M-equal"		"math-insert approx"
+\bind "M-minus"		"math-insert sim"
+\bind "M-less"		"math-insert leq"
+\bind "M-greater"	"math-insert geq"
+\bind "C-s S-less"	"math-insert ll"
+\bind "C-s S-greater"	"math-insert gg"
+
+	############################
+######### Almost no changes below. #########
+	############################
+
+#
+# Motion group
+#
+
+\bind "Right"                  "char-forward"
+\bind "Left"                   "char-backward"
+\bind "Up"                     "up"
+\bind "Down"                   "down"
+\bind "C-Right"                "word-forward"
+\bind "C-Left"                 "word-backward"
+# These are now used to insert superscripts and subscripts.
+#\bind "C-Up"                   "paragraph-up"
+#\bind "C-Down"                 "paragraph-down"
+\bind "Home"                   "line-begin"
+\bind "End"                    "line-end"
+\bind "Prior"                  "screen-up"
+\bind "Next"                   "screen-down"
+\bind "C-Home"                 "buffer-begin"
+\bind "C-End"                  "buffer-end"
+\bind "Tab"                    "tab-forward"
+
+#
+# Motion + select group
+#
+
+\bind "S-Right"                "forward-select"
+\bind "S-Left"                 "backward-select"
+\bind "S-Up"                   "up-select"
+\bind "S-Down"                 "down-select"
+\bind "S-C-Right"              "word-forward-select"
+\bind "S-C-Left"               "word-backward-select"
+\bind "S-C-Up"                 "paragraph-up-select"
+\bind "S-C-Down"               "paragraph-down-select"
+\bind "S-Home"                 "line-begin-select"
+\bind "S-End"                  "line-end-select"
+\bind "S-Prior"                "screen-up-select"
+\bind "S-Next"                 "screen-down-select"
+\bind "S-C-Home"               "buffer-begin-select"
+\bind "S-C-End"                "buffer-end-select"
+\bind "C-Insert"               "copy"
+\bind "S-Insert"               "paste"
+\bind "S-Delete"               "cut"
+
+#
+# Edit group
+#
+
+\bind "Delete"                 "delete-forward"
+\bind "BackSpace"              "delete-backward"
+\bind "C-Delete"               "word-delete-forward"
+\bind "C-BackSpace"            "word-delete-backward"
+\bind "Return"                 "break-paragraph"
+\bind "M-Return"               "break-paragraph-keep-layout"
+\bind "C-Return"               "break-line"
+\bind "C-space"                "protected-space-insert"
+\bind "Escape"                 "cancel"
+\bind "F9"                     "meta-prefix"
+
+#
+# Visible Menu access menu
+#
+
+\bind "F10 d"                  "menu-open Documents"
+\bind "F10 e"                  "menu-open Edit"
+\bind "F10 f"                  "menu-open File"
+\bind "F10 h"                  "menu-open Help"
+\bind "F10 i"                  "menu-open Insert"
+\bind "F10 l"                  "menu-open Layout"
+\bind "F10 m"                  "menu-open Math"
+\bind "F10 o"                  "menu-open Options"
+
+
+
+#
+# File menu
+#
+
+\bind "M-f a"                  "buffer-write-as"
+\bind "M-f c"                  "buffer-close"
+\bind "M-f n"                  "buffer-new"
+#\bind "M-f l"                  "file-last"                      # Not yet implemented.
+\bind "M-f o"                  "buffer-open"
+\bind "M-f p"                  "buffer-print"
+\bind "M-f q"                  "lyx-quit"
+\bind "M-f r"                  "buffer-typeset"
+        # Obsolete
+\bind "M-f s"                  "buffer-write"
+\bind "M-f t"                  "buffer-typeset"
+
+\bind "M-f x"                  "buffer-view"
+\bind "M-f g"                  "buffer-view-ps"
+\bind "M-f space"              "menu-open File"
+
+
+#
+# Edit menu
+#
+
+#\bind "M-e b"                  "table"                         # Not yet implemented!
+\bind "M-e c"                  "cut"
+\bind "M-e e"                  "error-next"
+\bind "M-e f"                  "find-replace"
+\bind "M-e k"                  "line-delete-forward"
+\bind "M-e m"                  "mark-on"
+\bind "M-e S-M"                "mark-off"
+\bind "M-e n"                  "note-next"
+\bind "M-e o"                  "copy"
+\bind "M-e p"                  "paste"
+\bind "M-e r"                  "redo"
+\bind "M-e s"                  "spellchecker"
+#\bind "M-e t"                  "toc-update"
+\bind "M-e u"                  "undo"
+\bind "M-e space"              "menu-open Edit"
+
+
+#
+# Layout menu
+#
+
+\bind "M-l c"                  "layout-character"
+\bind "M-l p"                  "layout-paragraph"
+\bind "M-l d"                  "layout-document"
+\bind "M-l q"                  "layout-quotes"
+\bind "M-l l"                  "layout-preamble"
+\bind "M-l e"                  "font-emph"
+#\bind "M-l n"                  "font-smallcaps"
+\bind "M-l b"                  "font-bold"
+\bind "M-l t"                  "tex-mode"
+\bind "M-l v"                  "depth-next"
+\bind "M-l space"              "menu-open Layout"
+
+
+
+#
+# Insert menu
+#
+
+\bind "M-i f"                  "footnote-insert"
+\bind "M-i h"                  "hfill-insert"
+\bind "M-i m"                  "marginpar-insert"
+\bind "M-i n"                  "note-insert"
+\bind "M-i l"                  "label-insert"
+\bind "M-i r"                  "reference-insert"
+\bind "M-i minus"              "hyphenation-point-insert"
+\bind "M-i apostrophe"         "quote-insert"
+\bind "M-i S-quotedbl"         "quote-insert"
+\bind "M-i space"              "menu-open Insert"
+
+
+
+#
+# Options menu
+#
+
+#\bind "M-o f"                  "screen-font-options"           # Not yet implemented!
+#\bind "M-o s"                  "spellcheck-options"            # Not yet implemented!
+#\bind "M-o k"                  "keyboard-options"              # Not yet implemented!
+#\bind "M-o l"                  "latex-options"                 # Not yet implemented!
+\bind "M-o space"              "menu-open Options"
+
+
+
+#
+# Documents menu
+#
+
+\bind "M-d p"                  "buffer-previous"
+\bind "M-d space"              "menu-open Documents"
+
+
+
+#
+# Help menu
+#
+
+#\bind "M-h d"                  "help-documentation"            # Not yet implemented!
+#\bind "M-h o"                  "help-copyright"                # Not yet implemented!
+#\bind "M-h w"                  "help-warranty"                 # Not yet implemented!
+#\bind "M-h c"                  "help-credits"                  # Not yet implemented!
+#\bind "M-h v"                  "help-version"                  # Not yet implemented!
+\bind "M-h space"              "menu-open Help"
+
+
+
+#
+# Font size menu
+#
+
+\bind "M-s S-A"                "font-size largest"             # \LARGE
+\bind "M-s g"                  "font-size giant"               # \Huge
+\bind "M-s h"                  "font-size huge"                # \huge
+\bind "M-s S-H"                "font-size giant"               # \Huge
+\bind "M-s l"                  "font-size large"               # \large
+\bind "M-s S-L"                "font-size larger"              # \Large
+\bind "M-s n"                  "font-size normal"              # \normalsize
+\bind "M-s s"                  "font-size small"               # \small
+\bind "M-s t"                  "font-size tiny"                # \tiny
+
+\bind "M-s 1"                  "font-size tiny"
+\bind "M-s 2"                  "font-size small"
+\bind "M-s 3"                  "font-size normal"
+\bind "M-s 4"                  "font-size large"
+\bind "M-s 5"                  "font-size larger"
+\bind "M-s 6"                  "font-size largest"
+\bind "M-s 7"                  "font-size huge"
+\bind "M-s 8"                  "font-size giant"
+
+
+
+#
+# Alignment menu
+#
+
+#\bind "M-a l"                  "para-align left"               # Not yet implemented!
+#\bind "M-a r"                  "para-align right"              # Not yet implemented!
+#\bind "M-a c"                  "para-align center"             # Not yet implemented!
+#\bind "M-a b"                  "para-align block"              # Not yet implemented!
+#\bind "M-a f"                  "para-align block"              # Not yet implemented!
+#\bind "M-a d"                  "para-align default"            # Not yet implemented!
+
+
+
+#
+# Paragraph style menu
+#
+
+\bind "M-p c"                  "drop-layouts-choice"
+\bind "M-p 1"                  "layout Chapter"
+\bind "M-p 2"                  "layout Section"
+\bind "M-p 3"                  "layout Subsection"
+\bind "M-p 4"                  "layout Subsubsection"
+\bind "M-p 5"                  "layout Paragraph"
+\bind "M-p 6"                  "layout Subparagraph"
+\bind "M-p b"                  "layout Itemize"                        # bulleted list
+\bind "M-p d"                  "layout Description"
+\bind "M-p e"                  "layout Enumerate"                      # numbered list
+\bind "M-p i"                  "layout Itemize"                        # bulleted list
+\bind "M-p l"                  "layout List"
+\bind "M-p n"                  "layout Enumerate"                      # numbered list
+\bind "M-p p"                  "layout Lyx-Code"
+\bind "M-p q"                  "layout Quote"
+\bind "M-p S-Q"                "layout Quotation"
+\bind "M-p s"                  "layout Standard"
+\bind "M-p t"                  "layout Title"
+\bind "M-p S-at"               "layout Section*"                       # M-p S-2
+\bind "M-p S-dollar"           "layout Subsubsection*"                 # M-p S-4
+\bind "M-p S-numbersign"       "layout Subsection*"                    # M-p S-3
+
+\bind "M-p Left"               "depth-decrement"
+\bind "M-p Right"              "depth-increment"
+
+
+
+#
+# Character style menu
+#
+
+\bind "M-c b"                  "font-bold"
+#\bind "M-c c"                  "font-smallcaps"
+\bind "M-c e"                  "font-emph"
+\bind "M-c i"                  "font-emph"						# italics
+\bind "M-c m"                  "math-mode"
+\bind "M-c p"                  "font-code"
+\bind "M-c r"                  "font-roman"
+\bind "M-c s"                  "font-sans"
+\bind "M-c t"                  "tex-mode"
+\bind "M-c u"                  "font-underline"
+
+\bind "M-c Down"               "word-lowcase"
+\bind "M-c Up"                 "word-upcase"
+\bind "M-c Right"              "word-capitalize"
+
+\bind "M-c space"              "font-default"
+
+
+
+#
+# Keyboard menu
+#
+
+\bind "M-k 1"                  "keymap-primary"
+\bind "M-k 2"                  "keymap-secondary"
+\bind "M-k o"                  "keymap-off"
+\bind "M-k t"                  "keymap-toggle"
+\bind "M-k x"                  "keymap-off"
+
+
+
+#
+# Misc menu
+#
+
+\bind "M-x c"                  "screen-recenter"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,41 @@
+README file for the binary distribution of LyX 1.0.2
+======================================================
+
+Please read the file README for general information on LyX.
+
+To use this binary distribution of LyX, please follow these steps:
+
+1) Unpack the distribution in the directory /usr/local (if you unpack
+   it in a different place, please read the note below)
+
+2) Configure LyX for you system by executing
+     cd share/lyx ; ./configure
+
+3) Make sure that the directory bin/ is in your path. For example, if
+   you unpacked the distribution in /usr/local, your PATH environment
+   variable should contain "/usr/local/bin".
+
+4) If you want to use reLyX, the LaTeX-to-LyX translator, you will
+   have to edit the first line of the script, which should read
+     #!/usr/local/bin/perl
+   if you have perl installed as /usr/local/bin/perl. 
+   Note that reLyX requires at least perl version 5.002.
+
+That's it. Happy LyXing !
+
+
+If you did not unpack the distribution in /usr/local
+----------------------------------------------------
+
+LyX can perfectly work in this situation, except for one thing: as
+distributed, LyX expects to find its internationalization files in the
+directory /usr/local/share/locale. If you unpacked the distribution in
+directory /foo, you should set the environment variable LYX_LOCALEDIR
+to point to /foo/share/locale as follows:
+  LYX_LOCALEDIR=/foo/share/locale            (if you use sh or bash as shell)
+or
+  setenv LYX_LOCALEDIR /foo/share/locale     (for csh or tcsh)
+
+Note that, if if you do not have any interest in having LyX display
+its messages in other languages than english, you can safely skip this
+step.

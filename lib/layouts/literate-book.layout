@@ -1,0 +1,13 @@
+#% Do not delete the line below; configure depends on this
+#  \DeclareLaTeXClass[book,noweb.sty]{book (Noweb)}
+# literate-book textclass definition file.
+# Author : Edmar Wienskoski Jr. <edmar-w-jr@technologist.com>
+
+Preamble
+  \usepackage{noweb}
+EndPreamble
+
+Input book.layout
+Input literate-scrap.inc
+
+

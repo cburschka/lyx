@@ -1,0 +1,53 @@
+#This file was created by <karger> Sun Nov 15 16:55:13 1998
+#LyX 1.0 (C) 1995-1998 Matthias Ettrich and the LyX Team
+\lyxformat 2.15
+\textclass letter
+
+\layout My Address
+
+<My Name>
+\newline 
+<My Street>
+\newline 
+<My Town>
+\layout Send To Address
+
+<Send To Name> 
+\newline 
+<Send To Street> 
+\newline 
+<Send To Town>
+\layout Signature
+
+<Your signature
+\begin_inset Info This field MUST come before the "Opening" field!
+
+\end_inset 
+
+>
+\layout Opening
+
+<Dear ...>
+\layout Standard
+
+<Text of Your Letter.
+ To create a real letter, just replace erase all the text in <> (including
+ the 
+\begin_inset Quotes eld
+\end_inset 
+
+<>
+\begin_inset Quotes erd
+\end_inset 
+
+ characters) with the desired text.> 
+\layout Closing
+
+<Yours sincerely,>
+\layout cc
+
+<cc>
+\layout encl
+
+<encl>
+\the_end

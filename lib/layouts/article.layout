@@ -1,0 +1,40 @@
+#% Do not delete the line below; configure depends on this
+#  \DeclareLaTeXClass{article}
+# Article textclass definition file. Taken from initial LyX source code
+# Author : Matthias Ettrich <ettrich@informatik.uni-tuebingen.de>
+# Transposed by Pascal André <andre@via.ecp.fr>
+# Heavily modifed and enhanced by serveral developers.
+
+# Input general definitions
+Input stdclass.inc
+
+# There are no chapters in an article.
+NoStyle Chapter
+NoStyle Chapter*
+
+MaxCounter		Counter_Section
+SecNumDepth		3
+TocDepth		3
+
+# Change a bit Part and Part*
+Style Part
+  Align			Left
+  AlignPossible		Left
+  TopSep                2
+  BottomSep             1.5
+
+  Font
+    Size		Larger
+  EndFont
+End
+
+Style Part*
+  Align			Left
+  AlignPossible		Left
+  TopSep                2
+  BottomSep             1.5
+
+  Font
+    Size		Larger
+  EndFont
+End

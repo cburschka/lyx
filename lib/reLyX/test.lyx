@@ -1,0 +1,262 @@
+#This file was created by <karger> Wed May 12 10:56:40 1999
+#LyX 1.0 (C) 1995-1999 Matthias Ettrich and the LyX Team
+\lyxformat 2.15
+\textclass article
+\paperfontsize 11
+\begin_preamble
+%some comments
+
+%comments
+\def\blah{\blahblah}
+% And more comments
+
+%more comments
+\end_preamble
+
+\layout Title
+
+Test Document
+\layout Standard
+
+
+\begin_inset LatexCommand \tableofcontents
+
+\end_inset 
+
+
+\layout Section
+
+First Section
+\layout Standard
+
+This 
+\size large 
+a 
+\size small 
+b 
+\size tiny 
+c
+\size small
+
+\size large
+ 
+\size huge 
+d
+\size large
+
+\size default
+ is some text. 
+\latex latex 
+
+\backslash framebox[3in][s]{
+\latex default 
+What are you doing 
+\SpecialChar \ldots{}
+Dave
+\latex latex 
+}
+\latex default 
+.
+ This is more text.
+\layout Section*
+
+MySection
+\layout Standard
+
+
+\begin_inset LatexCommand \label{sec:mysection}
+
+\end_inset 
+
+This is some 
+\begin_inset Quotes eld
+\end_inset 
+
+quoted
+\begin_inset Quotes erd
+\end_inset 
+
+ text in a new section.
+ I 
+\emph on 
+am
+\begin_float footnote 
+
+\layout Standard
+
+This is a great footnote because: 
+\layout Itemize
+
+The footnote is not 
+\emph on 
+emphasized
+\emph default 
+. 
+\layout Itemize
+
+The text is 
+\layout Standard
+
+How cool is that!?
+\end_float 
+
+
+\emph on 
+ emphasizing 
+\begin_inset Quotes eld
+\end_inset 
+
+text.
+\layout Standard
+
+
+\emph on 
+I keep
+\begin_inset Quotes erd
+\end_inset 
+
+ emphasizing
+\emph default 
+.
+ This 
+\protected_separator 
+ is text in a new par\SpecialChar \-
+agraph.
+\newline 
+ It has 
+\SpecialChar \ldots{}
+an 
+\begin_inset Formula \(  \alpha \)
+\end_inset 
+
+ in it, which is OK\SpecialChar \@.
+ I can type special characters
+\begin_float footnote 
+
+\layout Standard
+
+i.e., characters which must be escaped
+\end_float 
+
+ like & and #.
+\layout Standard
+
+_ is a neat token.
+ Now I 
+\family sans 
+want 
+\family typewriter 
+to
+\family sans 
+ write
+\family default 
+ some math in a displayed equation. 
+\begin_inset Formula \begin{eqnarray*} 
+q^{(i)}_{O} & = & q^{water}_{O}+dq_{O}\times (P_{deg}^{(i-1)}-P_{deg}^{(i)})\\
+q_{H}^{(i)} & = & q^{water}_{H}+dq_{H}\times (P_{deg}^{(i-1)}-P_{deg}^{(i)})\\
+q_{p}^{(i)} & = & q^{water}_{H}+dq_{H}\times (P_{deg}^{(i-1)}-P^{(i+1)}_{deg})
+\end{eqnarray*}
+\end_inset 
+
+
+\layout Standard
+
+Here's an itemized list 
+\layout Itemize
+
+this is an item 
+\begin_deeper 
+\layout Enumerate
+
+this is a numbered item
+\begin_deeper 
+\layout Standard
+
+But now I want to write some text. 
+\end_deeper 
+\layout Enumerate
+
+this is another numbered item
+\begin_deeper 
+\layout Standard
+
+More text 
+\end_deeper 
+\end_deeper 
+\begin_deeper 
+\layout Standard
+
+Yet more text
+\end_deeper 
+\layout Itemize
+
+this is another unnumbered item
+\begin_deeper 
+\layout Standard
+
+Final text 
+\end_deeper 
+\layout Section
+
+New Section
+\layout Standard
+
+Here's a 
+\emph on 
+quotation: 
+\layout Quotation
+
+
+\emph on 
+Hello there how are you?
+\layout Quotation
+
+
+\emph on 
+I am fine.
+ Thanks 
+\layout Standard
+
+
+\emph on 
+This
+\emph default 
+ is a reference to section 
+\begin_inset LatexCommand \ref{sec:mysection}
+
+\end_inset 
+
+ on page 
+\begin_inset LatexCommand \pageref{sec:mysection}
+
+\end_inset 
+
+.
+\layout Standard
+
+
+
+\LyXTable
+multicol5
+2 2 0 0 0 0 0 0
+0 0 0 0
+0 0 0 0
+2 0 0 "" ""
+2 0 0 "" ""
+0 2 0 0 0 0 0 "" ""
+0 2 0 0 0 0 0 "" ""
+0 2 0 0 0 0 0 "" ""
+0 2 0 0 0 0 0 "" ""
+
+ foo 
+\newline 
+ bar 
+\newline 
+ bar 
+\newline 
+ foo 
+
+\layout Standard
+
+Final Text. 
+\the_end

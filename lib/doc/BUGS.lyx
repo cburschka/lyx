@@ -1,0 +1,520 @@
+#This file was created by <lasgoutt> Thu Jul  1 15:12:26 1999
+#LyX 1.0 (C) 1995-1999 Matthias Ettrich and the LyX Team
+\lyxformat 2.15
+\textclass article
+\language default
+\inputencoding default
+\fontscheme default
+\graphics default
+\paperfontsize default
+\spacing single 
+\papersize Default
+\paperpackage a4
+\use_geometry 0
+\use_amsmath 0
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\quotes_times 2
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+
+\layout Title
+
+Known BUGS in LyX
+\layout Date
+
+Last updated 1999-07-01
+\layout Standard
+
+This file contains a compilation of bug reports that have been sent to the
+ mailing list 
+\family sans 
+lyx-devel@lists.lyx.org
+\family default 
+.
+ We try to keep it up to date as far as possible, but of course it's better
+ to spend time fixing bugs instead of archiving them.
+ Since we cannot reproduce all of these bugs, please send us any details
+ and updates and, of course, fixes.
+\layout Section
+
+How do I submit a bug report?
+\layout Standard
+
+All bug reports should always include information about which versions of
+ LyX the bug appears in (you will be surprised to know how many forget that
+ information).
+ Try to get the latest version of LyX and see if the problem still exist
+ before complaining.
+ New releases will typically contain bug fixes :-) 
+\layout Standard
+
+Remember: the less time the developers have to spend to understand and fix
+ a problem, the faster the problem is likely to be fixed.
+\layout Standard
+
+Other than that, the good bug report is characterized by including 
+\emph on 
+all
+\emph default 
+ relevant information and only that.
+ It's always relevant what the problem is, and how the problem is triggered.
+ If it's a compilation problem, include 
+\family typewriter 
+\size small 
+config.log
+\family default 
+\size default 
+ and information about your system (
+\family typewriter 
+\size small 
+uname -a
+\family default 
+\size default 
+), which compiler you use, versions of libraries and so on.
+\layout Standard
+
+If you found a bug that causes LyX to crash, please take the time to produce
+ a backtrace with a non-stripped lyx executable.
+ The one built in the source directory is per default not stripped, while
+ the installed binary is stripped.
+ So, run LyX from gdb by typing 
+\begin_inset Quotes eld
+\end_inset 
+
+
+\family typewriter 
+\size small 
+gdb /users/bozo/lyx-1.0.x/src/lyx
+\family default 
+\size default 
+
+\begin_inset Quotes erd
+\end_inset 
+
+ and then 
+\begin_inset Quotes eld
+\end_inset 
+
+
+\family typewriter 
+\size small 
+run
+\family default 
+\size default 
+
+\begin_inset Quotes erd
+\end_inset 
+
+.
+ Make LyX crash and you'll return to gdb.
+ Use 
+\begin_inset Quotes eld
+\end_inset 
+
+
+\family typewriter 
+\size small 
+bt
+\family default 
+\size default 
+
+\begin_inset Quotes erd
+\end_inset 
+
+ to produce a backtrace and include the output in the bug report
+\begin_float footnote 
+\layout Standard
+
+if you want to be thorough, use the 
+\latex no_latex 
+
+\begin_inset Quotes eld
+\end_inset 
+
+info locals
+\begin_inset Quotes erd
+\end_inset 
+
+ and 
+\begin_inset Quotes eld
+\end_inset 
+
+up
+\begin_inset Quotes erd
+\end_inset 
+
+ commands to print out the values of local variables at a few stack levels.
+\end_float 
+.
+ If possible, then a description of a way to reproduce the bug is more important
+ than a backtrace, because then we have the possibility to roll our own
+ backtrace.
+ If the bug is not easily reproducible, a backtrace is essential, because
+ then that might be all we've got.
+\layout Standard
+
+Bug reports should be mailed to the developer's list at
+\family sans 
+ lyx-devel@lists.lyx.org
+\family default 
+.
+ However to avoid that we get cluttered with the same bug reports from many
+ people, we recommend that you either check the archive of the developer's
+ mailing list at 
+\family typewriter 
+http://www.mail-archive.com/lyx-devel@lists.lyx.org/
+\family default 
+ or subscribe to the list first.
+ If you want to be a real sport, you provide a patch along with the bug
+ report.
+\layout Section
+
+Bugs
+\layout Enumerate
+
+The LyX keyboard mappings, including dead-keys, do not work in pop-up dialogs.
+ You can try cut & paste from a text editor.
+\layout Enumerate
+
+It is not possible to enter 
+\family typewriter 
+
+\backslash 
+dj{}
+\family default 
+ or 
+\family typewriter 
+
+\backslash 
+DJ{}
+\family default 
+ as LaTeX accent insets; this means that these characters are not available
+ to people who want to use latin1 as encoding.
+\layout Enumerate
+
+On a very small (
+\begin_inset Formula \( 640\times 480 \)
+\end_inset 
+
+?) screen, math panel pops up the subpanels off screen.
+ It should check it's position, and put the panels somewhere visible.
+\layout Enumerate
+
+
+\family sans 
+Options\SpecialChar \menuseparator
+Keyboard
+\family default 
+ has no 
+\family sans 
+Apply
+\family default 
+ and 
+\family sans 
+Cancel
+\family default 
+ buttons.
+ [
+\emph on 
+Note from Asger: Well, I think the entire form should be redesigned, such
+ that it isn't dynamic.
+ Also, it should not be possible to select a non-existing keyboard mapping.
+ In other words, the drop-down list should show exactly those that are available.
+ Similarly, the charset definition should be a droplist too.
+ 
+\emph default 
+] 
+\layout Enumerate
+
+The vertical scroll bar of the preamble window is broken.
+ If you resize the window, strange things can happen, including a fatal
+ crash! This is a bug in XForms.
+ [
+\emph on 
+Note from Jean-Marc: things are a bit better now, but not perfect.
+
+\emph default 
+ ]
+\layout Enumerate
+
+Navigation by table of contents (ToC) is limited by Section Number Depth,
+ rather than ToC Depth.
+ If you have Section Number Depth of 1, but ToC of 2, clicking on any of
+ the numbered sections takes you to the right point in the document.
+ But clicking on a (unnumbered) Subsection takes you to the beginning of
+ the Section, rather than to the subsection.
+\layout Enumerate
+
+If you have a footnote (or margin note) in a section heading, the text after
+ this not will not appear in the ToC popup.
+\layout Enumerate
+
+When several insets are placed consecutively (this can happen with error
+ insets), clicking on an inset can result in opening the wrong one.
+ A workaround is to use 
+\family sans 
+C-o
+\family default 
+, with the cursor placed just before the desired inset.
+\layout Enumerate
+
+The 
+\family sans 
+Citation Reference
+\family default 
+ command doesn't escape 
+\begin_inset Quotes eld
+\end_inset 
+
+
+\family typewriter 
+_
+\family default 
+
+\begin_inset Quotes erd
+\end_inset 
+
+ characters in the remarks field when generating TeX documents.
+ You have to type 
+\begin_inset Quotes eld
+\end_inset 
+
+
+\family typewriter 
+
+\backslash 
+_
+\family default 
+
+\begin_inset Quotes erd
+\end_inset 
+
+ by hand in these remarks if you want to use an underscore.
+ Similar for other special characters.
+\layout Enumerate
+
+If a figure is larger than one page down press would have taken you, the
+ page down fails and you are left where you started.
+ [
+\emph on 
+Comment: behavior in this situation is improved but still imperfect.
+ LyX now does the pageup or pagedown, but jumps from the top to the bottom
+ of the figure, potentially skipping part of the middle.]
+\layout Enumerate
+
+If you delete marked text, the text is not deleted, but 
+\begin_inset Quotes eld
+\end_inset 
+
+cut
+\begin_inset Quotes erd
+\end_inset 
+
+, which deletes the current text in the clipboard.
+\layout Enumerate
+
+Sometimes, when you delete large sections of text, the screen will appear
+ empty, and you have to use the scrollbar to make the cursor visible again.
+\layout Enumerate
+
+You can not export a selection from LyX to another X11 program.
+ Not even between two instances of LyX.
+ You can only paste into LyX using the middle mouse button.
+ 
+\layout Enumerate
+
+If you have edited and then undo all changes, then the 
+\begin_inset Quotes eld
+\end_inset 
+
+Changed
+\begin_inset Quotes erd
+\end_inset 
+
+ status is not reset.
+\layout Enumerate
+
+If you have a margin note in itemize text and the first paragraph of the
+ margin note is also itemize text it is possible to 
+\begin_inset Quotes eld
+\end_inset 
+
+depth-increment
+\begin_inset Quotes erd
+\end_inset 
+
+ and make the first itemize paragraph in the margin note deeper on-screen
+ even though LaTeX doesn't permit this (and ignores this).
+ 
+\layout Enumerate
+
+A table which is larger than the screen manages to go outside the red lines
+ drawn by a table float.
+ Same goes for figures.
+ A similar thing can happen with large mathematical equations.
+ Resize your LyX window.
+\layout Enumerate
+
+It is not possible to include footnotes in tables.
+ 
+\layout Enumerate
+
+The numbering policy of LyX does not exactly match what LaTeX does for sections:
+ for example, LyX resets subsection 
+\emph on 
+and
+\emph default 
+ subsubsection counters at a new section, while LaTeX does not reset the
+ subsubsection counter.
+ As a workaround, you can add 
+\family typewriter 
+
+\backslash 
+setcounter{subsubsection}{0}
+\family default 
+, marked as TeX, just after the section heading.
+\layout Enumerate
+
+LyX is not able to render correctly 
+\family sans 
+Paragraph
+\family default 
+ and 
+\family sans 
+SubParagraph
+\family default 
+ headings which, in standard LaTeX classes, are just placed at the start
+ of the following paragraph.
+ This can be confusing.
+\layout Enumerate
+
+LyX sometimes gets caught by TeX fonts ligatures: for example, in the sentence
+ 
+\begin_inset Quotes eld
+\end_inset 
+
+He said 'Hello!'
+\begin_inset Quotes erd
+\end_inset 
+
+, the single and double closing quotes come out inverted (just try to preview
+ this paragraph).
+ The only sollution is to write it as 
+\begin_inset Quotes eld
+\end_inset 
+
+He said 'Hello!'
+\latex latex 
+
+\backslash 
+textcompwordmark
+\latex default 
+
+\begin_inset Quotes erd
+\end_inset 
+
+, which is admittedly not very nice.
+\layout Enumerate
+
+When going into math text mode (which results in 
+\family typewriter 
+
+\backslash 
+mathrm{}
+\family default 
+ in the LaTeX output) it is impossible to enter punctuation, as this is
+ always put back into math mode.
+\layout Enumerate
+
+If a LaTeX command is partially bold, it doesn't generate correct LaTeX
+ commands.
+ LaTeX commands written using the LaTeX layout or the LaTeX font state should
+ always use the standard font (this means no font changing commands should
+ be allowed).
+ Don't use font changing commands when you are in LaTeX mode.
+\layout Enumerate
+
+If you change font in a special word (like in 
+\begin_inset Quotes eld
+\end_inset 
+
+
+\bar under 
+L
+\bar default 
+aTeX
+\begin_inset Quotes erd
+\end_inset 
+
+), the whole word will have the font of the first character in dvi output.
+ This can be solved by using for example 
+\begin_inset Quotes eld
+\end_inset 
+
+
+\bar under 
+L
+\bar default 
+\latex latex 
+{}
+\latex default 
+aTeX
+\begin_inset Quotes erd
+\end_inset 
+
+, thus disabling the automatic translation to the macro 
+\family typewriter 
+
+\backslash 
+LaTeX
+\family default 
+.
+\layout Enumerate
+
+In a LyX-Code environment, you can't have an empty line.
+ You'll have to type a single space to make it work.
+\layout Enumerate
+
+In LyX-Code and in paragraphs written completely using the typewriter font,
+ all spaces are protected so that LaTeX isn't able to perform correct formatting
+ of the text.
+ You'll have to insert linebreaks manually.
+\layout Enumerate
+
+It is possible to use the subfigure style to get two small figures (side-by-side
+), each with a caption and label, and then a common caption and label for
+ the entire figure.
+ LyX currently seems to support this in the pop-up menu for an eps figure.
+ However, I am unable to successfully add labels to each of the subfigures.
+ If I insert a label next to each subfigure, the labels appear fine and
+ can be cross-referenced in the usual manner.
+ However, the actual output (dvi or ps) does not distinguish between the
+ two labels and any cross-reference gets the same number.
+ You have to use plain old raw LaTeX mode and do this by hand.
+\layout Enumerate
+
+If you close a document while some included images are still in the rendering
+ phase, all images in newly opened documents will stay in the rendering
+ phase, making it impossible to preview or print the document.
+ You can't fix this by killing gs-processes, because there aren't any.
+ You'll have to restart LyX to work with figures again.
+\layout Enumerate
+
+If you preview an empty document, no dvi-file will be created, and xdvi
+ will not start.
+ We should present a kind warning to the user rather than be silent.
+\layout Enumerate
+
+Document that includes others: if LaTeX reports an error during the execution
+ of LaTeX on a sub-document as a chain reaction of executing LaTeX on a
+ higher level document, LyX places the error window on the correct position
+ of the higher level doc, not of the lower one.
+ There might be some spurious document corruption effects related to this.
+ Be careful with raw LaTeX in sub-documents.
+\the_end

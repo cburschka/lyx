@@ -1,0 +1,129 @@
+#This file was created by <const> Thu May 27 14:26:22 1999
+#LyX 1.0 (C) 1995-1999 Matthias Ettrich and the LyX Team
+\lyxformat 2.15
+\textclass article
+\language russian
+\inputencoding koi8-r
+\fontscheme default
+\graphics default
+\paperfontsize default
+\spacing single 
+\papersize Default
+\paperpackage a4
+\use_geometry 0
+\use_amsmath 0
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language french
+\quotes_times 2
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+
+\layout Title
+
+Добро пожаловать в LyX!
+\layout Section*
+
+Главные N вещей, которые нужно знать при работе в LyX
+\layout Enumerate
+
+LyX поставляется с прекрасным набором документации --- пользуйтесь ей! Начните
+ с выбора пункта меню
+\family sans 
+ Помощь->Введение
+\family default 
+, где вы сможете найти очень краткое введение в систему документации.
+ Затем изучите принципы работы в LyX, выбрав в меню пункт
+\family sans 
+ Помощь->Самоучитель
+\family default 
+.
+\layout Enumerate
+
+Мы называем LyX 
+\begin_inset Quotes fld
+\end_inset 
+
+процессором документов
+\begin_inset Quotes frd
+\end_inset 
+
+.
+ Эта программа отличается по замыслу от обычных 
+\begin_inset Quotes fld
+\end_inset 
+
+текстовых процессоров
+\begin_inset Quotes frd
+\end_inset 
+
+; с помощью LyX процесс создания документа упрощается.
+ Но не пугайтесь, если этот процесс несколько отличается от того, к которому
+ вы привыкли.
+ Возникшие у вас вопросы может прояснить документация
+\begin_float footnote 
+\layout Standard
+
+Мы, кажется, уже упоминали, что документацию читать очень полезно?
+\end_float 
+.
+\layout Enumerate
+
+Вывод программы LyX выглядит потрясающе! Чтобы сейчас же в этом убедиться,
+ выберите пункт меню 
+\family sans 
+Файл->Просмотреть
+\protected_separator 
+dvi
+\family default 
+.
+\layout Enumerate
+
+LyX может имитировать всю (или почти всю) функциональность системы LaTeX.
+ И, кроме того, LyX может импортировать файлы, созданные для LaTeX.
+ Опытные пользователи LaTeX могут лишь бегло просмотреть остальную часть
+ 
+\emph on 
+Самоучителя
+\emph default 
+, и приступить к чтению главы 
+\begin_inset Quotes fld
+\end_inset 
+
+LyX для пользователей LaTeX
+\begin_inset Quotes frd
+\end_inset 
+
+.
+ (Всем остальным: не беспокойтесь, вам необязательно знать LaTeX для работы
+ в LyX.)
+\layout Enumerate
+
+LyX содержит множество возможностей для чтения или создания документов на
+ языке, отличном от английского.
+ В дополнение к этому, назначения клавиш, набор кнопок панели управления
+ и многие другие свойства программы допускают очень гибкую настройку (в
+ основном, с помощью правки вашего файла 
+\family typewriter 
+lyxrc
+\family default 
+).
+ Для более подробной информации найдите в меню пункт 
+\family sans 
+Помощь->Настройка
+\family default 
+.
+\layout Enumerate
+
+Страница LyX в Internet находится по адресу
+\family typewriter 
+ www.lyx.org
+\family default 
+.
+ Вы можете найти информацию о программе LyX, подписаться на списки рассылки,
+ ознакомиться с графическими образами экрана LyX, и многое другое.
+\the_end

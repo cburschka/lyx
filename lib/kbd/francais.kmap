@@ -1,0 +1,10 @@
+#
+# Key definition file for French national keyboard for LyX
+#
+
+\kmap ¤ "\\oe{}"                # {\oe} before u and i
+\kmod ¨ umlaut aeiouAEIOU       # umlaut on ¨
+\kxmod umlaut i "\\\"{\\i}"      # some exceptions
+\kmod ^ circumflex aeiouAEIOU   # circumflex on ^
+\kxmod circumflex i "\\^{\\i}"   # some exceptions
+\kmod ² cedilla cC              # cedilla on cC

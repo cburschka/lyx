@@ -1,0 +1,148 @@
+# This file is part of
+# ==================================================================
+#
+#                  LyX, the High Level Word Processor
+# 
+#         Copyright (C) 1995-1997 Asger Alstrup & The LyX Team
+#
+# ==================================================================
+
+#
+# This is the CUA (Common User Access) flavour bind file, based on 
+# bindings found in the Windows, Mac and Motif world.
+#
+#
+# DO NOT CHANGE THIS DEFAULT BINDING FILE! It will be replaced
+# with every new install of LyX and your changes will be lost. 
+# Instead, customize a copy of this file placed in 
+# ~/.lyx/bind/cua.bind
+#
+# Happy tuning!
+
+# Free bindings:
+
+#\bind "C-a"
+#\bind "C-h"
+#\bind "C-j"
+#\bind "C-y"
+
+## Documents menu
+#
+# These are now defined in cua or emacs bind files so their "standard"
+# bindings are available. (eg M-d "word-delete-forward" in emacs) ARRae
+
+\bind "M-d p"			"buffer-previous"
+\bind "M-d space"		"menu-open Documents"
+
+###
+
+\bind "C-n"			"buffer-new"
+\bind "C-S-N"			"buffer-new-template"
+\bind "C-o"			"buffer-open"
+\bind "C-r"			"buffer-reload"
+\bind "C-w"			"buffer-close"
+\bind "C-s"			"buffer-write"
+\bind "C-S-S"			"buffer-write-as"
+\bind "C-p"			"buffer-print" 
+\bind "C-d"			"buffer-view"		# 'd' for dvi
+\bind "C-t"			"buffer-view-ps"
+\bind "C-S-D"			"buffer-typeset"	# 'd' for dvi
+\bind "C-S-T"			"buffer-typeset-ps"
+\bind "C-q"			"lyx-quit"
+
+\bind "C-b"			"font-bold"
+\bind "C-e"			"font-emph"
+\bind "C-k"			"font-noun"		# 'k' for capitals
+\bind "C-l"			"tex-mode"		# 'l' for LaTeX
+\bind "C-u"			"font-underline"
+\bind "C-S-P"			"font-code"		# 'P' for program
+
+\bind "C-m"			"math-mode"
+\bind "C-S-M"			"math-display"
+
+\bind "C-f"			"find-replace"
+\bind "C-g"			"error-next"
+\bind "C-i"			"open-stuff"		# 'i' for Inset
+
+\bind "C-c"			"copy"
+\bind "C-x"			"cut"
+\bind "C-v"			"paste"
+
+\bind "C-S-C"			"layout-copy"
+\bind "C-S-V"			"layout-paste"
+
+\bind "C-z"			"undo"
+\bind "C-S-Z"			"redo"
+
+\bind "S-C-quotedbl"		"quote-insert"
+\bind "C-minus"			"hyphenation-point-insert"
+\bind "M-S-Right"		"depth-increment"
+\bind "M-S-Left"		"depth-decrement"
+\bind "C-S-space"		"protected-space-insert"
+
+#bind "F1"			"help"			# Not yet implemented!
+#bind "C-F1"			"help-context"		# Not yet implemented!
+\bind "F2"			"buffer-write"
+\bind "F3"			"buffer-open"
+\bind "C-F4"			"buffer-close"
+\bind "F5"			"screen-recenter"
+\bind "M-F4"			"lyx-quit"
+\bind "F7"			"spellchecker"
+
+\bind "M-x"			"command-execute"
+
+#
+# Motion group
+#
+
+\bind "C-Right"			"word-forward"
+\bind "C-Left"			"word-backward"
+\bind "C-Up"			"paragraph-up"
+\bind "C-Down"			"paragraph-down"
+\bind "C-Home"			"buffer-begin"
+\bind "C-End"			"buffer-end"
+
+\bind "C-~S-greater"		"reference-goto"
+\bind "C-~S-less" 		"reference-back"
+
+
+#
+# Motion + select group
+#
+
+\bind "S-Right"			"forward-select"
+\bind "S-Left"			"backward-select"
+\bind "S-Up"			"up-select"
+\bind "S-Down"			"down-select"
+\bind "S-C-Right"		"word-forward-select"
+\bind "S-C-Left"		"word-backward-select"
+\bind "S-C-Up"			"paragraph-up-select"
+\bind "S-C-Down"		"paragraph-down-select"
+\bind "S-Home"			"line-begin-select"
+\bind "S-End"			"line-end-select"               
+\bind "S-Prior"			"screen-up-select"
+\bind "S-Next"			"screen-down-select"
+\bind "S-C-Home"		"buffer-begin-select"
+\bind "S-C-End"			"buffer-end-select"
+\bind "C-Insert"		"copy"
+\bind "S-Insert"		"paste"
+\bind "S-Delete"		"cut"
+
+#
+# Edit group
+#
+
+\bind "C-Delete"		"word-delete-forward"
+\bind "C-BackSpace"		"word-delete-backward"
+\bind "M-Return"		"break-paragraph-keep-layout"
+\bind "C-Return"		"break-line"
+\bind "C-space"			"protected-space-insert"
+\bind "C-period"		"end-of-sentence-period-insert"
+\bind "M-period"		"dots-insert"
+\bind "Escape"			"cancel"
+\bind "F9"			"meta-prefix"
+
+# Include menu and math bindings
+
+\bind_file menus.bind
+\bind_file math.bind

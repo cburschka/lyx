@@ -1,0 +1,38 @@
+#% Do not delete the line below; configure depends on this
+#  \DeclareLaTeXClass[scrartcl]{article (koma-script)}
+# KOMA scrartcl textclass definition file.
+# Bernd Rellermeyer <100.41728@germanynet.de>, 1998/7/11.
+
+# General textclass parameters
+Input scrclass.inc
+MaxCounter              Counter_Section
+NoStyle Chapter
+NoStyle Chapter*
+NoStyle Addchap
+NoStyle Addchap*
+SecNumDepth             3
+TocDepth                3
+
+# Modify Part
+Style Part
+  Align                 Left
+  AlignPossible         Left
+  TopSep                2
+  BottomSep             1.5
+
+  Font
+    Size                Larger
+  EndFont
+End
+
+# Modify Part*
+Style Part*
+  Align                 Left
+  AlignPossible         Left
+  TopSep                2
+  BottomSep             1.5
+
+  Font
+    Size                Larger
+  EndFont
+End

@@ -1,0 +1,259 @@
+-*- text -*-
+
+This is a tasklist/todo list for the 0.13.x development series. We
+should perhaps name these seies LyX3 as a common name. As I see it
+there are three major tasks to be done:
+
+	o Buffer structure rewrite
+		So that it will be easier to expand for
+		new and unknow future features.
+		The main problems with the current structure is that
+		is intended to be viewed by only one window at the
+		time. It also uses characters as the smallest unit, it
+		would probably be better to use something a bit
+		bigger.
+		The LyXText class does not necessarily need to change
+		a lot, it could be per-view. However all the special
+		code in it needs to be (re)moved. Also a lot of the 
+		functionality needs to be relocated.
+	o Switch to LaTeX as fileformat
+		Will ease move from latex to LyX a lot.
+		Also will let people work both in (ex) emacs
+		and LyX on the same files.
+	o GUI independence.
+		Should be a compile time switch what gui (toolkit)
+		you wish to use. We are going to support Xforms first,
+		and I am sure that GTK and Qt will follow soon. I also
+		plan to do support for Fl (even a text only toolkit
+		should be possible. ncurses perhaps. Even the
+		lyxserver could be a special case of this: a view with
+		no view being able to coexist with other views or alone)
+		We will do this by providing an interface all the
+		toolkits will need to follow. Functions that the LyX
+		core will expect to be there. 
+
+When these three is finished, we will probably declare a code freeze
+and try to release a new version. Hopefully other features has also
+been added, and none removed.
+
+
+====================
+
+In addition to these there are a lot of small tasks that should be
+performed, that has no direct bearing on features, but are more geared
+towards code quality:
+
+	o always try to use POSIX commands.
+	o switch to use POSIX signals
+	o rewrite LString to be a true subset of STL string
+		then it will be _very_ easy to switch to
+		multibyte characters later if we want to.
+	o use STL storage containers (or prepare for it)
+		code reuse. Very often faster and better tested 
+		than what we make/do ourselves.
+	o use C++ iostreams
+		better interface and typesafe
+	o make as much as possible of the code reentreanant(?)
+		should make it easier to move to threads later.
+	o signal slot mechanism (borrowed from GTK-- project)
+		better interface, leaner code, typesafe. I have
+		been using this for another project and it works
+		like a charm.
+	o other code rewrites to make multiple buffers/windows
+	  possible, without too much hassle.
+		- get rid of most of the global variables.
+		- non shared variables in shared structures 
+		  (i.e. the cursor in the text class)
+	o make source documentation better. Remember that the better
+	  we document LyX internals the easier is it for new
+	  developers to begin working on LyX.
+
+
+Some other things related to structure and services in the code:
+	o change pathpush and pathpop to be a class instead.
+	o class FileInfo does way too much, move the unneeded parts to
+	  a super class or friends.
+	o a process manager class to handle execution of external
+	  commands.
+		- ensure that not too many commands are executed at
+		  the same time.
+		- ensure that non-compatible commands are running at
+		  the same time. 
+		- to setup file descriptors where communicating with
+		  the processes can take place.
+	o make a liblyx for functions/classes delivering services to LyX
+		- lyxsum
+		- FileInfo
+		- syscall/syscontr/syssingleton
+		- strerror.C
+	o get rid of definitions.h
+	o pass an inforeceiver around in the object structure.
+	  (this instead of passing minibuffers, and lyxerrors.)
+	o get a regexp package (GNU) and use it in filedialogs, search
+	  and the like.
+
+
+Some small things to do with the linker:
+
+	o link partially in the subdirs, should make linking faster.
+		PostgreSQL does this so we should be able to do it
+		too. 
+
+================
+
+Also a lot of new features are thought of, only some of these are likely
+to make it into 0.14:
+
+	o rewrite of table code. Should probably be written as some
+	  kind of an inset. At least get the code out of the kernel.
+		- colortbl  -multirow
+		- hhline    -multicolumn
+		- dcolumn
+	o index support (and multiple indeces support)
+		- multind ?
+	o tocs for each section
+		- minitoc
+	o multiple table of contentes
+		- multitoc
+	o trivlist?
+	o better version control (both document and file wise)
+		- version.sty
+		- cvs
+		- sccs 
+	o I am sure mathed improvements. (Alejandro's department)
+		- better macro support
+		- better amsmath support
+	o character styles (similar to emph and noun)
+		Will make a lot of small things conceptual instead of
+		specific. Will be alot easier to change the
+		presentation of a filename f.ex. This is actually very
+		important, because this is where the user can't be
+		conceptual in the current version.
+	o macro support. Similar to the math-macro support, but
+	  usable in regular text too.
+	o support for abbrevations (static macros)
+	o add a incremental search function.
+	o change the "Find and Replace" to Query Replace.
+	o better/more search functions:
+		- replace & find next
+		- replace & find previous
+		We should perhaps try to make the interface a bit
+		emacs like, that should at least give us the 
+		features we want.
+	o improved template support.
+	o collapse "New" and "New from Template" into one item.
+	o make lyx recognize some file types (i.e. gzipped) and do
+	  the right thing when encountering them.
+	o We should look at all the LyX specific paragraph styles and
+	  check carefully that we really need them. We should also try
+	  to collapse some of them into singel items (i.e. chapter and
+	  chapter*)
+	o the "LyX-Code" environment should be removed. Add a verbatim
+	  environment instead.
+	o tabbing support
+	o picture support
+	o better graphics support
+	o rotating and scaling of text
+	o PSTricks (we should be able to support some of this package)
+	o better reference support
+		- varioref
+	o better citation support
+		Especially the support for some of the main
+		bibtex supplied styles are needed. (harvard natbib...)
+		A complete support for natbib should perhaps be enough.
+	o improved spellchecker
+		- an ispell class should be made, this should
+		  take care of communicating with the ispell
+		  process.
+	o online configuration
+		So that users should not need to edit lyxrc
+		manualy
+	o better fontsupport
+		T1-lib font renderer.
+	o better latex code quality
+		This means reading LaTeX books to get an better idea
+		on how things are done in the latex world. 
+	o perhaps find better names for the paragraph styles
+	  "paragraph" and "subparagraph"
+	o support for filecontents
+		This can make a latex document selfcontained, all the
+		needed graphics can be in the document.
+	o support for optional args to latex commands
+		- For sectioning commands I have an idea on how we can
+		  do this: have a popup on RMB to set properties.
+	o pdf support
+		pdftex
+	o hyperlink support
+		- url.sty (or better packages)
+		- hyperref.sty
+	o references to external documents
+		- xr.sty
+	o better babel support
+		- make it possible to tune the language strings
+		- the possibility for several languages in the same
+		  document. 
+	o title page support
+	o draft copy
+		- draftcopy.sty
+	o better float support (allow user to make its own floats)
+	o support newtheorem (allow user to make its own thorem like envirs)
+	o a bit more wysiwyg where it is appropiate.
+		- show bullets the way they will be on paper
+		- show a few more characters as they will be on paper
+		  (--, ---)
+	o online generation of new paragraph styles (or editing or old
+	  ones)
+	o support for inlined sectioning commands (i.e. \paragraph{} )
+	o we should parse the command line ourselves.
+	o remove support for XResources, with multiple toolkits it
+	  will be impossible to manage. And they are not very needed
+	  either.
+	o the possebility to collapse parts of the document.
+	  (i.e. collapse the contents of a section. Would make moving
+	   parts of the document around very easy)
+	o better LyXServer support
+		- perhaps use UNIX sockets instead of pipes
+		- make a decent protocol with return codes.
+		- make it indepentent of the GUI
+		- prob: concurrency (locks)
+	o other packages to support:
+		- keyval (we should not use it directly, but know how
+			to parse options for it.)
+		- here.sty
+		- ulem.sty
+		- indentfirst.sty
+		- lscape.sty
+
+I am sure others has a list as long as mine...
+
+
+======================
+
+We should also do some work to enhance the support we already have for
+some packages, I think these are the packages supported by 0.12:
+	- longtable	- color (papercolor boxes?)
+	- setspace (should support setting spacing on individual paragraphs)
+	- psnffs packages
+	- geometry	- makeidx
+	- verbatim	- algorithm
+	- inputenc	- fancyhdr (we only have _very_ basic support)
+	- fontenc	- a4
+	- graphics	- a4wide
+
+(I am sure I have forgot some, please fill me in.)
+
+
+======================
+
+Wild thoughts:
+
+	o the internal text-encoding could be Cork (T1)
+	o always keep the output file (.tex) 7bit.
+	o use plugins for insets.
+
+
+====================== 
+
+If you have other wishes for features, or comments, please let us know.
+
+	Lgb

@@ -1,0 +1,256 @@
+// -*- C++ -*-
+/* This file is part of
+* ======================================================
+* 
+*           LyX, The Document Processor
+*        
+*           Copyright (C) 1995 Matthias Ettrich
+*           Copyright (C) 1995-1998 the LyX Team.
+*
+*======================================================*/
+
+#include <config.h>
+
+#ifdef __GNUG__
+#pragma implementation "LaTeXFeatures.h"
+#endif
+
+#include "LString.h"
+#include "error.h"
+#include "lyx_sty.h"
+#include "lyxrc.h"
+#include "LaTeXFeatures.h"
+#include "bufferparams.h"
+#include "layout.h"
+
+extern LyXRC* lyxrc;
+
+LaTeXFeatures::LaTeXFeatures(int n) 
+{
+	// packages
+	color = false;
+	graphics = false;
+	setspace = false;
+	makeidx = false;
+	verbatim = false;
+	longtable = false;
+	algorithm = false;
+	rotating = false;
+	amssymb = false;
+	latexsym = false;
+	pifont = false;
+	subfigure = false;
+	floatflt = false;
+	url = false;
+	
+	// commands
+	lyx = false;
+	lyxline = false;
+	noun = false;
+	lyxarrow = false;
+
+	// quotes
+	quotesinglbase = false;
+	quotedblbase = false;
+	guilsinglleft = false;
+	guilsinglright = false;
+	guillemotleft = false;
+	guillemotright = false;
+
+	// Math mode
+	amsstyle = false;
+	binom = false;
+	boldsymbol = false;
+    
+	// special features
+	LyXParagraphIndent = false;
+	NeedLyXFootnoteCode = false;
+	NeedLyXMinipageIndent = false;
+
+	// layouts
+	layout = new bool[n];
+	for (int i = n; i--;) 
+		layout[i] = false;
+}
+
+
+LString LaTeXFeatures::getPackages(BufferParams const &params)
+{
+	LString packages;
+	LyXTextClass *tclass = lyxstyle.TextClass(params.textclass);
+
+	// color.sty
+	if (color) {
+		if (params.graphicsDriver == "default")
+			packages +="\\usepackage{color}\n";
+		else
+			packages += "\\usepackage[" 
+				+ params.graphicsDriver + "]{color}\n";
+	}
+		
+	// makeidx.sty
+	if (makeidx) {
+		if (! tclass->provides_makeidx
+		    && params.language != "french") // french provides
+						    // \index !
+			packages += "\\usepackage{makeidx}\n";
+		packages += "\\makeindex\n";
+	}
+
+	// graphics.sty
+	if (graphics && params.graphicsDriver != "none") {
+		if (params.graphicsDriver == "default")
+			packages += "\\usepackage{graphics}\n";
+		else
+			packages += "\\usepackage[" 
+				+ params.graphicsDriver + "]{graphics}\n";
+	}
+
+	//verbatim.sty
+	if (verbatim)
+		packages += "\\usepackage{verbatim}\n";
+
+	if (algorithm) {
+		packages += "\\usepackage{algorithm}\n";
+	}
+
+	// setspace.sty
+	if ((params.spacing.getSpace() != Spacing::Single)
+	    || setspace) {
+		packages += "\\usepackage{setspace}\n";
+	}
+	switch (params.spacing.getSpace()) {
+	case Spacing::Single:
+		// we dont use setspace.sty so dont print anything
+		//packages += "\\singlespacing\n";
+		break;
+	case Spacing::Onehalf:
+		packages += "\\onehalfspacing\n";
+		break;
+	case Spacing::Double:
+		packages += "\\doublespacing\n";
+		break;
+	case Spacing::Other:
+		char value[30];
+		sprintf(value, "%.2f", params.spacing.getValue());
+		packages += LString("\\setstretch{") 
+			  + value + "}\n";
+		break;
+	}
+
+	//longtable.sty
+	if (longtable)
+		packages += "\\usepackage{longtable}\n";
+
+	//rotating.sty
+	if (rotating)
+		packages += "\\usepackage{rotating}\n";
+
+	// amssymb.sty
+	if (amssymb)
+		packages += "\\usepackage{amssymb}\n";
+
+	// latexsym.sty
+	if (latexsym)
+		packages += "\\usepackage{latexsym}\n";
+
+	// pifont.sty
+	if (pifont)
+		packages += "\\usepackage{pifont}\n";
+
+	// subfigure.sty
+	if (subfigure)
+		packages += "\\usepackage{subfigure}\n";
+
+	// floatflt.sty
+	if (floatflt)
+		packages += "\\usepackage{floatflt}\n";
+
+	// url.sty
+	if (url && ! tclass->provides_url)
+		packages += "\\IfFileExists{url.sty}{\\usepackage{url}}\n"
+			    "                      {\\newcommand{\\url}{\\texttt}}\n";
+	
+	return packages;
+}
+
+
+LString LaTeXFeatures::getMacros(BufferParams const & /* params */)
+{
+	LString macros;
+
+	// always include this
+	if (true || lyx) 
+		macros += lyx_def + '\n';
+
+	if (lyxline) 
+		macros += lyxline_def + '\n';
+
+	if (noun) {
+		macros += noun_def + '\n';
+	}
+
+	if (lyxarrow) {
+		macros += lyxarrow_def + '\n';
+	}
+
+	// quotes. 
+	if (quotesinglbase)
+		macros += quotesinglbase_def + '\n';
+	if (quotedblbase)
+		macros += quotedblbase_def + '\n';
+	if (guilsinglleft)
+		macros += guilsinglleft_def + '\n';
+	if (guilsinglright)
+		macros += guilsinglright_def + '\n';
+	if (guillemotleft)
+		macros += guillemotleft_def + '\n';
+	if (guillemotright)
+		macros += guillemotright_def + '\n';
+    
+        // Math mode    
+	if (boldsymbol && !amsstyle)
+		macros += boldsymbol_def + '\n';
+	if (binom && !amsstyle)
+		macros += binom_def + '\n';
+
+	// other
+        if (NeedLyXMinipageIndent) 
+		macros += minipageindent_def;
+        if (LyXParagraphIndent) 
+		macros += paragraphindent_def;
+        if (NeedLyXFootnoteCode) 
+		macros += floatingfootnote_def;
+
+	return macros;
+}
+
+
+LString LaTeXFeatures::getTClassPreamble(BufferParams const &params)
+{
+	// the text class specific preamble 
+	LyXTextClass *tclass = lyxstyle.TextClass(params.textclass);
+	LString tcpreamble = tclass->preamble;
+
+	int l;
+	for (l = 0 ; l < tclass->number_of_defined_layouts ; l++) {
+		if (layout[l] 
+		    && !tclass->style[l].preamble.empty())
+			tcpreamble += tclass->style[l].preamble;
+	}
+
+	return tcpreamble;
+}	
+
+
+void LaTeXFeatures::showStruct(BufferParams &params) {
+	lyxerr.print("LyX needs the following commands when LaTeXing:");
+	// packs
+	lyxerr.print("***** Packages:");
+	lyxerr.print(getPackages(params));
+	lyxerr.print("***** Macros:");
+	lyxerr.print(getMacros(params));
+	lyxerr.print("***** Textclass stuff:");
+	lyxerr.print(getTClassPreamble(params));
+	lyxerr.print("***** done.");
+}

@@ -1,0 +1,266 @@
+#% Do not delete the line below; configure depends on this
+#  \DeclareLaTeXClass[hollywood]{hollywood}
+# This layout follows the current Hollywood standard for movie scripts
+# 
+# Font Courier 12 pts
+# abbreviations used in scripts are as follows:
+# INT. - interior	EXT. - exterior
+#(O.S) - off screen	b.g. - background	PAN - camera movement
+#(V.O) - voice over	C.U. - close-up		INSERT - cut to close-up of
+# each page should be 1 minute of film
+# Spec scripts should not be more that 120 pages or less than 110.
+# Nothing goes in a script that you cannot see or hear.
+
+# Contributed by Garst R. Reese with lots of help from the LyX Team
+# Based on course given by Lars Davidson
+
+# General textclass parameters
+Columns                 1
+Sides                   1
+SecNumDepth             2
+TocDepth                2
+
+ClassOptions
+FontSize		12
+End
+
+# This is just to show how to declare the default font.
+# The defaults are exactly those shown here.
+DefaultFont
+  Family                Typewriter
+  Series                Medium
+  Shape                 Up
+  Size                  Normal
+  Color                 None
+EndFont
+
+Preamble
+\usepackage{fancyhdr}
+\usepackage{extramarks}
+\usepackage{ifthen}
+\usepackage{lastpage}
+\pagestyle{fancy}
+% This stuff is for a shooting script
+% \lhead{\ifthenelse{ \not \value{page} = 1}{CONTINUED:}{}}
+% \rfoot{\ifthenelse{ \not \value{page}=\pageref{LastPage}}{(CONT'D)}
+%  {\ifthenelse{\value{page}=\pageref{LastPage}}{(END)}{}}}
+
+
+% This is what we want for a spec script
+\rhead{\thepage.}
+\cfoot{}
+% \renewcommand{\headrulewitdh}{0pt}
+  % This one is needed to get real adobe courier, but you can use
+  % cmtt which is also correct
+  \renewcommand{\familydefault}{pcr}
+  % This is to negate the effect of the ~ that LyX adds everywhere
+ \let~=\space
+  % this protects you against the fact that TeX does not want to
+  % hyphenate in typewriter font. It is possible to enable
+  % hyphenation, but I do not remember how.
+  % That's good because we -do not- want any hyphenation.
+  \sloppy
+EndPreamble
+
+# Standard style definition (I kept this one to provide a general case)
+Style Standard
+  Margin                Static
+  LatexType             Paragraph
+  LatexName             dummy
+  ParIndent             ""
+  ParSkip               0.4
+  Align                 Left
+  AlignPossible         Block, Left, Right, Center
+  Labeltype             No_Label
+End
+
+
+# Narrative description of Scene
+Style Narrative
+  Margin                Static
+  LatexType             Environment
+  LatexName             narrative
+  ParIndent             ""
+  ParSkip               0.8
+  TopSep		1.0
+  Align                 Left
+  AlignPossible         Left
+  LabelType             No_Label
+End
+
+# FADE_IN: and FADE_OUT: usually stand alone. If you want a more complicated
+# FADE_IN e.g. FADE_IN on STELLA:, use the Narrative Style.
+Style FADE_IN:
+  Margin                Dynamic
+  LatexType             Environment
+  LatexName             fadein
+  ParIndent             ""
+  ParSkip               0.8
+  TopSep		1.0
+  Align                 Left
+  AlignPossible         Left
+  KeepEmpty		1
+  LabelType             Static
+  LabelString		"FADE IN: "
+End
+
+# Scene headings (ALL CAPS) This is a general case, probably not needed
+# example:
+# INT. LOG CABIN - NIGHT
+# Use Style EXT. for Exterior, INT. for Interior scenes. Last word should be
+# - DAY, or - NIGHT or similar to define lighting.
+Style INT.
+  Margin                Dynamic
+  LatexType             Environment
+  LatexName             interior
+  ParIndent             ""
+  ParSkip               0.8
+  TopSep		1.0
+  Align                 Left
+  AlignPossible         Left
+  LabelType             Static
+  LabelString		"INT. "
+End
+
+Style EXT.
+  Margin                Dynamic
+  LatexType             Environment
+  LatexName             exterior
+  ParIndent             ""
+  ParSkip               0.8
+  TopSep		1.0
+  Align                 Left
+  AlignPossible         Left
+  LabelType             Static
+  LabelString		"EXT. "
+End
+
+# Dialogue style definition. Actor dialog
+Style Dialogue
+  Margin                Static
+  LatexType             Environment
+  LatexName             dialogue
+  LeftMargin            MMMMMMMMMMMM
+  RightMargin		MMMMMMMMMMMM
+  ParSkip               0.0
+  TopSep		0.0
+  BottomSep		0.0
+  Align                 Left
+  AlignPossible         Left
+  LabelType             No_Label
+End
+# Speaker style definition, identifies speaker  ALL CAPS
+Style Speaker
+  Margin                Static
+  LatexType             Environment
+  LatexName             speaker
+  LeftMargin            MMMMMMMMMMMMMMMMMMMMMM
+  ParSkip               0.0
+  TopSep		1.0
+  BottomSep		0.0
+  Align                 Left
+  AlignPossible         Left
+  LabelType             No_Label
+End
+
+# Parenthetical instruction to speaker (in parenthises, l.c.)
+# The ( will automatically appear on screen, both () will be
+# in print, so don't type any.
+Style Parenthetical  
+  Margin                Static
+  LatexType             Environment
+  LatexName             parenthetical
+  LeftMargin            MMMMMMMMMMMMMMMMM
+  TopSep		0.0
+  BottomSep		0.0
+  ParSkip		0.0
+  Align                 Left
+  AlignPossible         Left
+  LabelType		Static
+  LabelString		(
+Font
+  Family                Typewriter
+  Series                Medium
+  Shape                 Up
+  Size                  Normal
+  Color                 Blue
+EndFont
+
+End
+
+# Transition style definition ALL CAPS
+Style Transition
+  Margin                Static
+  LatexType             Environment
+  LatexName             flushright
+  ParIndent             ""
+  TopSep		1.0
+  ParSkip               0.4
+  Align                 Right
+  AlignPossible         Right
+  LabelType             No_Label
+End
+
+Style FADE_OUT:
+  Margin                Dynamic
+  LatexType             Environment
+  LatexName             fadeout
+  ParIndent             ""
+  ParSkip               0.8
+  TopSep		1.0
+  Align                 Left
+  AlignPossible         Left
+  KeepEmpty		1
+  LabelType             Static
+  LabelString		"FADE OUT: "
+End
+
+
+
+
+# Right Address style
+Style Right_Address
+  Margin		Right_Address_Box
+  LatexType		Command
+  LatexName		address
+  InTitle		1
+  ParSkip		0.4
+  BottomSep		1.5
+  ParSep		1.5
+  Align			Left
+  AlignPossible		Left, Right
+End
+
+Style Author
+  Margin		Static
+  LatexType		Command
+  LatexName		author
+  InTitle		1
+  ParSkip		0.4
+  BottomSep		1.5
+  ParSep		1.5
+  Align			Center
+  AlignPossible		Left, Right, Center
+
+End
+
+Style Title
+  Margin		Static
+  LatexType		Command
+  LatexName		title
+  InTitle		1
+  ParSkip		0.4
+  BottomSep		1.5
+  ParSep		1.5
+  Align			Center
+  AlignPossible		Left, Right, Center
+
+End
+ 
+Input stdstruct.inc
+# Input lyxmacros.inc
+NoStyle Abstract
+NoStyle Bibliography
+NoStyle Date
+
+

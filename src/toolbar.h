@@ -1,0 +1,178 @@
+// -*- C++ -*-
+/* This file is part of
+ * ======================================================
+* 
+*           LyX, The Document Processor
+*	    Copyright (C) 1995 Matthias Ettrich
+*
+*           This file is Copyright (C) 1996-1998
+*           Lars Gullik Bjønnes
+*
+*======================================================*/
+
+#ifndef _TOOLBAR_H_
+#define _TOOLBAR_H_
+
+#ifdef __GNUG__
+#pragma interface
+#endif
+
+#include FORMS_H_LOCATION
+#include "lyxfunc.h"
+#include "lyxlex.h"
+#include "combox.h"
+
+/** The LyX toolbar class
+  This class {\em is} the LyX toolbar, and is not likely to be enhanced
+  further until we begin the move to Qt. We will probably have to make our
+  own QToolBar, at least until Troll Tech makes theirs.
+  */
+class Toolbar {
+public:
+	///
+	Toolbar(Toolbar const &, LyXView *o, int x, int y);
+
+	///
+	Toolbar()
+	{
+		owner = NULL;
+		sxpos = 0;
+		sypos = 0;
+		bubble_timer = NULL;
+		combox = NULL;
+		reset();
+		init(); // set default toolbar.
+	}
+
+	///
+	~Toolbar() {
+		clean();
+	}
+	
+	///
+	int get_toolbar_func(LString const & func);
+	
+        /// The special toolbar actions
+	enum  TOOLBARITEMS {
+		/// adds space between buttons in the toolbar
+		TOOL_SEPARATOR = -1,
+		/// a special combox insead of a button
+		TOOL_LAYOUTS = -2,
+		/// begin a new line of button (not working)
+		TOOL_NEWLINE = -3
+	};
+
+	///
+	Combox *combox;
+
+	///
+	void read(LyXLex&);
+	/// sets up the default toolbar
+	void init();
+	/// (re)sets the toolbar
+	void set(bool doingmain=false);
+
+	/** this is to be the entry point to the toolbar
+	  frame, where you can change the toolbar realtime. */
+	void edit();
+	/// add a new button to the toolbar.
+    	void add(int ,bool doclean=true);
+	/// name of func instead of kb_action
+	void add(LString const & , bool doclean=true);
+	/// invokes the n'th icon in the toolbar
+	void push(int);
+	/// activates the toolbar
+        void activate();
+	/// deactivates the toolbar
+        void deactivate();
+
+private:
+	///
+	struct toolbarItem
+	{
+		///
+		toolbarItem *next;
+		///
+		int action;
+		///
+		LString help;
+		///
+		FL_OBJECT *icon;
+		///
+		bool IsBitmap;
+		///
+		char **pixmap;
+		///
+		toolbarItem(){
+			next = NULL;
+			action = LFUN_NOACTION;
+			icon = NULL;
+			pixmap = NULL;
+			IsBitmap = false;
+		}
+		///
+		~toolbarItem(){
+			if (icon){
+				fl_delete_object(icon);
+				fl_free_object(icon);
+			}
+		}
+			
+	};
+
+	/// a list containing all the buttons
+	toolbarItem *toollist;
+	///
+	LyXView *owner;
+	///
+	FL_OBJECT *bubble_timer;
+	/// Starting position
+	int sxpos, sypos;
+	///
+	int xpos;
+	///
+	int ypos;
+	///
+	int buttonwidth;
+	///
+	int height;
+	///
+	int standardspacing;
+	///
+	int sepspace;
+	///
+	bool cleaned;
+
+	///
+	char **getPixmap(kb_action, LString const & arg=LString());
+	/// removes all toolbar buttons from the toolbar.
+	void clean();
+	///
+	static void ToolbarCB(FL_OBJECT*, long);
+	///
+	static void BubbleTimerCB(FL_OBJECT *, long);
+	///
+	static int BubblePost(FL_OBJECT *ob, int event,
+			      FL_Coord mx, FL_Coord my, int key, void *xev);
+
+	/** more...
+	 */
+	void reset(){
+		toollist = NULL;
+		cleaned = false;
+		
+		lightReset();
+	}
+
+	/** more...
+	 */
+	void lightReset(){
+		standardspacing = 2; // the usual space between items
+		sepspace = 6; // extra space
+		xpos = sxpos - standardspacing;
+		ypos = sypos;
+		buttonwidth = 30; // the standard button width
+		height = 30; // the height of all items in the toolbar
+	}
+};
+#endif

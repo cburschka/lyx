@@ -1,0 +1,25 @@
+********************************************************************************
+*			reLyX -- a LaTeX to LyX translator                     *
+********************************************************************************
+
+The purpose of reLyX is to translate *well-behaved* LaTeX into LyX.
+
+Its main goals are:
+    1) Get through a well-behaved LaTeX2e file without crashing
+    2) Translate a lot of that file.
+    3) Localize the parts that can't be translated and copy them in TeX mode
+It seems to achieve these main goals pretty well on most files.
+
+reLyX is in its early stages, so it still has some bugs and lacking features.
+There are many improvements that can and will be made to reLyX in the
+near future. However, we wanted to get reLyX out there early on, to make
+it easier for new LyX users who want to translate their existing LaTeX files.
+
+reLyX uses a modified version of the Perl TeX parser Text::TeX package written
+by Ilya Zakharevich (ilya@math.ohio-state.edu). The original Text::TeX is
+available on CPAN.
+
+There are lots more details in the man pages, so try 'man reLyX'
+
+Amir Karger
+karger@post.harvard.edu

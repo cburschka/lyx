@@ -1,0 +1,37 @@
+Here is what to do to make a binary rpm using the spec file lyx.spec.
+The description below apply only to the Intel platform, but only minor
+changes should be needed for other platforms.
+
+1) Install xforms-88 or later. You can find an xforms-0.88 rpm
+at
+
+ftp://moni.msci.memphis.edu/pub
+
+2) Install LaTeX.  You can do this using rpms (you need tetex-xdvi,
+tetex, tetex-latex) from your RH distribution.
+
+3) Copy lyx.spec to /usr/src/redhat/SPECS
+
+4) Copy lyx-1.0.0.tar.gz to /usr/src/redhat/SOURCES
+
+5) Issue the command 
+
+	rpm -bb /usr/src/redhat/SPECS/lyx.spec
+
+This builds the binary rpm, and puts it in /usr/src/redhat/RPMS/i386.
+Note that building lyx requires about 35M free space on your disk.
+
+6) Now install the package:
+
+	rpm -Uvh /usr/src/redhat/RPMS/i386/lyx-1.0.0-1.i386.rpm
+
+If you get dependency errors about xforms or tetex, then you need to
+use the --nodeps option (because you installed xforms or tetex not in
+rpm form):
+
+        rpm -Uvh --nodeps /usr/src/redhat/RPMS/i386/lyx-1.0.0-1.i386.rpm
+
+You should not get any more errors.
+	
+mw@moni.msci.memphis.edu
+

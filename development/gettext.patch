@@ -1,0 +1,34 @@
+This patch contains the modifications that have been made to
+the files from GNU gettext 0.10.31
+
+--- /afs/inria.fr/rocq/home/meval/lasgoutt/.common/src/gettext-0.10.31/intl/Makefile.in	Fri Aug 15 23:36:39 1997
++++ intl/Makefile.in	Wed Sep  3 14:35:31 1997
+@@ -79,7 +79,7 @@
+ .c.lo:
+ 	$(LIBTOOL) --mode=compile $(COMPILE) $<
+ 
+-INCLUDES = -I.. -I. -I$(top_srcdir)/intl -I$(top_srcdir)/lib
++INCLUDES = -I../src -I. -I$(top_srcdir)/src -I$(top_srcdir)/intl 
+ 
+ all: all-@USE_INCLUDED_LIBINTL@
+ 
+@@ -150,7 +150,7 @@
+ 
+ info dvi:
+ 
+-$(OBJECTS): ../config.h libgettext.h
++$(OBJECTS): ../src/config.h libgettext.h
+ bindtextdom.$lo finddomain.$lo loadmsgcat.$lo: gettextP.h gettext.h loadinfo.h
+ dcgettext.$lo: gettextP.h gettext.h hash-string.h loadinfo.h
+ 
+--- /afs/inria.fr/rocq/home/meval/lasgoutt/.common/src/gettext-0.10.31/po/Makefile.in.in	Fri Aug 15 23:43:26 1997
++++ po/Makefile.in.in	Tue Sep  2 18:53:19 1997
+@@ -48,7 +48,7 @@
+ CFLAGS = @CFLAGS@
+ CPPFLAGS = @CPPFLAGS@
+ 
+-INCLUDES = -I.. -I$(top_srcdir)/intl
++INCLUDES = -I../src -I$(top_srcdir)/intl
+ 
+ COMPILE = $(CC) -c $(DEFS) $(INCLUDES) $(CPPFLAGS) $(CFLAGS) $(XCFLAGS)
+ 

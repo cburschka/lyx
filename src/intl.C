@@ -1,0 +1,366 @@
+/* This file is part of
+* ======================================================
+* 
+*           LyX, The Document Processor
+* 	 
+*	    Copyright (C) 1995 Matthias Ettrich
+*           Copyright (C) 1995-1998 The LyX Team.
+*
+*======================================================*/
+
+/*
+ *	International support for LyX
+ */
+
+#include <config.h>
+
+#ifdef __GNUG__
+#pragma implementation
+#endif
+ 
+#include FORMS_H_LOCATION
+#include "intl.h"
+#include "form1.h"
+#include "tex-strings.h"
+#include "combox.h"
+#include "lyx_gui_misc.h" // CancelCloseBoxCB
+#include "error.h"
+#include "lyxrc.h"
+#include "trans_mgr.h"
+
+
+// 	$Id: intl.C,v 1.1 1999/09/27 18:44:37 larsbj Exp $	
+
+#if !defined(lint) && !defined(WITH_WARNINGS)
+static char vcid[] = "$Id: intl.C,v 1.1 1999/09/27 18:44:37 larsbj Exp $";
+#endif /* lint */
+
+// lyx rc 
+extern LyXRC* lyxrc;
+
+
+Intl::Intl()
+	: prim_lang(lyxrc->primary_kbmap), 
+	  sec_lang(lyxrc->secondary_kbmap),
+	  trans(new TransManager)
+{
+	keymapon = lyxrc->use_kbmap;
+	chsetcode = NULL;
+	primarykeymap = false;
+	curkeymap = 0;
+	otherkeymap = 0;
+}
+
+
+Intl::~Intl()
+{
+}
+
+
+int Intl::SetPrimary(LString const & lang)
+{
+	if (lyxerr.debugging(Error::KBMAP))
+		lyxerr.print("Primary: `" + lang + "'");
+	return trans->SetPrimary(lang);
+}
+
+
+int Intl::SetSecondary(LString const & lang)
+{
+	if (lyxerr.debugging(Error::KBMAP))
+		lyxerr.print("Secondary: `" + lang + "'");
+	return trans->SetSecondary(lang);
+}
+
+
+void Intl::update()
+{
+	int off,prim,sec;
+	
+	off=prim=sec=0;
+	
+	if (!keymapon) {
+		off=1;
+	} else {
+		if (primarykeymap) {
+			prim=1;
+		} else {
+			sec=1;
+		}
+	}
+	
+	fl_set_button(fd_form_keymap->KeyOffBtn,off);
+	fl_set_button(fd_form_keymap->KeyOnBtn,prim);
+	fl_set_button(fd_form_keymap->KeyOnBtn2,sec);
+}
+
+
+void Intl::KeyMapOn(bool on)
+	/* turn on/off key mappings, status in keymapon */
+{
+	keymapon = on;
+
+	if (!fd_form_keymap) return;
+	
+	fl_set_button(fd_form_keymap->KeyOffBtn, 0);
+	fl_set_button(fd_form_keymap->KeyOnBtn, 0);
+	fl_set_button(fd_form_keymap->KeyOnBtn2, 0);
+
+	if (on) {
+		if (primarykeymap) {
+			KeyMapPrim();
+		} else {
+			KeyMapSec();
+		}
+	} else {
+		fl_set_button(fd_form_keymap->KeyOffBtn, 1);
+		fl_hide_object(fd_form_keymap->KeymapErr);
+		trans->DisableKeymap();
+	}
+}
+
+
+void Intl::ToggleKeyMap()
+{
+	if (keymapon && primarykeymap) {
+		KeyMapSec();
+	} else if (keymapon) {
+		KeyMapOn(false);
+	} else	
+		KeyMapPrim();
+}
+
+
+void Intl::KeyMapPrim()
+{
+	int i;
+	LString p;
+
+	fl_set_button(fd_form_keymap->KeyOffBtn, 0);
+	fl_set_button(fd_form_keymap->KeyOnBtn, 1);
+	fl_set_button(fd_form_keymap->KeyOnBtn2, 0);
+
+	/* read text from choice */
+	i = Language->get();
+	
+	if (lyxerr.debugging(Error::KBMAP))
+		lyxerr.print(LString("Table: ") + tex_babel[i-1]);
+
+	if (i == otherkeymap)
+		p = fl_get_input(fd_form_keymap->OtherKeymap);
+	else
+		p = Language->getline();
+
+	curkeymap = i;
+
+	if (p.empty() || trans->SetPrimary(p)) {
+		// error selecting keymap
+		fl_show_object(fd_form_keymap->KeymapErr);
+		update();
+	} else {
+		// no error
+		trans->EnablePrimary();
+		keymapon = true;
+		primarykeymap = true;
+		fl_hide_object(fd_form_keymap->KeymapErr);
+	}
+}
+
+
+void Intl::KeyMapSec()
+{
+	int i;
+	LString p;
+
+	fl_set_button(fd_form_keymap->KeyOffBtn, 0);
+	fl_set_button(fd_form_keymap->KeyOnBtn, 0);
+	fl_set_button(fd_form_keymap->KeyOnBtn2, 1);
+
+	/* read text from choice */
+	i = Language2->get();
+	
+	if (lyxerr.debugging(Error::KBMAP))
+		lyxerr.print(LString("Table: ") + tex_babel[i-1]);
+
+	if (i == otherkeymap)
+		p = fl_get_input(fd_form_keymap->OtherKeymap2);
+	else
+		p = Language2->getline();
+	curkeymap = i;
+
+	if (p.empty() || trans->SetSecondary(p)) {
+		// error selecting keymap
+		fl_show_object(fd_form_keymap->KeymapErr);
+		update();
+	} else {
+		// no error
+		trans->EnableSecondary();
+		keymapon = true;
+		primarykeymap = false;
+		fl_hide_object(fd_form_keymap->KeymapErr);
+	}
+}
+
+
+void Intl::LCombo(int, void *v)
+{
+	Intl *itl = (Intl*) v;
+	itl->Keymap(23);
+	return;
+}
+
+
+void Intl::LCombo2(int, void *v)
+{
+	Intl *itl = (Intl*) v;
+	itl->Keymap(43);
+	return;
+}
+
+
+void Intl::DispatchCallback(FL_OBJECT *ob,long code)
+{
+	if (ob && (code == 0)) {
+		fl_hide_form(ob->form);
+		return;
+	}
+	if (!ob || !(ob->u_vdata))
+		return;
+	
+	Intl *itl=(Intl *)ob->u_vdata;
+
+	if (itl!=NULL) itl->Keymap(code);
+}
+
+
+void Intl::InitKeyMapper(bool on)
+	/* initialize key mapper */
+{
+	lyxerr.debug("Initializing key mappings...", Error::KBMAP);
+
+	if (prim_lang.empty() && sec_lang.empty())
+		keymapon = false; 
+	else
+		keymapon = on;
+
+	Language = new Combox(FL_COMBOX_DROPLIST);
+	Language2 = new Combox(FL_COMBOX_DROPLIST);
+	Language->setcallback(LCombo,this);
+	Language2->setcallback(LCombo2,this);
+
+	fd_form_keymap = create_form_KeyMap();
+
+	// Add the Intl* pointer
+	fd_form_keymap->AcceptChset->u_vdata=
+		fd_form_keymap->Charset->u_vdata=
+		fd_form_keymap->Accept->u_vdata=
+		fd_form_keymap->OtherKeymap->u_vdata=
+		fd_form_keymap->KeyOnBtn->u_vdata=
+		fd_form_keymap->KeyOffBtn->u_vdata=
+		fd_form_keymap->KeyOnBtn2->u_vdata=(void *)this;
+
+	// add the callbacks.
+	fl_set_object_callback(fd_form_keymap->AcceptChset,DispatchCallback,27);
+	fl_set_object_callback(fd_form_keymap->Charset,DispatchCallback,26);
+	fl_set_object_callback(fd_form_keymap->Accept,DispatchCallback,0);
+
+	fl_set_object_callback(fd_form_keymap->KeyOnBtn,DispatchCallback,23);
+	fl_set_object_callback(fd_form_keymap->KeyOffBtn,DispatchCallback,3);
+	fl_set_object_callback(fd_form_keymap->KeyOnBtn2,DispatchCallback,43);
+	
+	// Make sure pressing the close box does not kill LyX. (RvdK)
+	fl_set_form_atclose(fd_form_keymap->KeyMap, CancelCloseBoxCB, NULL);
+
+	fl_hide_object(fd_form_keymap->KeymapErr);
+	fl_hide_object(fd_form_keymap->ChsetErr);
+	fl_set_input(fd_form_keymap->Charset, lyxrc->font_norm.c_str());
+
+	// Adds two comboxes to the keyboard map
+	fl_addto_form(fd_form_keymap->KeyMap);
+	Language->add(120,30,160,30,300);	// Primary
+	Language2->add(120,110,160,30,300);	// Secondary
+	fl_end_form();
+
+	int n=0;
+
+ 	while (true)
+		if (!strlen(tex_babel[n]))
+			break;
+		else {
+			Language->addto(tex_babel[n]);
+			Language2->addto(tex_babel[n]);
+			n++;
+		}
+	
+	Language->addto(_("other..."));
+	Language2->addto(_("other..."));
+	otherkeymap = n+1;
+	if (!Language->select_text(prim_lang.c_str())) {
+		Language->select(n+1);
+		fl_set_input(fd_form_keymap->OtherKeymap, prim_lang.c_str());
+	}
+	else 
+		trans->SetPrimary(prim_lang);
+
+	if (!Language2->select_text(sec_lang.c_str())) {
+		Language2->select(n+1);
+		fl_set_input(fd_form_keymap->OtherKeymap2, sec_lang.c_str());
+	}
+	else
+		trans->SetSecondary(sec_lang);
+
+	KeyMapOn(keymapon);
+	if (keymapon)
+		Keymap(23); // turn primary on
+
+	trans->setCharset(lyxrc->font_norm.c_str());
+}
+
+
+void Intl::Keymap(long code)
+{
+	char const *p;
+
+	if (lyxerr.debugging(Error::KBMAP))
+		lyxerr.print(LString("KeyMap callback: ") + code);
+
+	switch (code) {
+	case 0:
+		/* cancel/hide */
+		fl_hide_form(fd_form_keymap->KeyMap);
+		break;
+	case 3:
+	case 23:
+	case 43:
+		if (code==3) {
+			KeyMapOn(false);
+			return;
+		}
+		code -= 19;	// change to language change type code
+		
+	case 4: // 4 and 24 will never be called directly, they will only be
+	case 24: // called through 3,23,43 (lgb)
+		if (code==4) {
+			KeyMapPrim();
+		} else {
+			KeyMapSec();
+		}
+		break;
+	case 27:	/* set new font norm */
+		p = fl_get_input(fd_form_keymap->Charset);
+		if (trans->setCharset(p))
+			fl_show_object(fd_form_keymap->ChsetErr);
+		else
+			fl_hide_object(fd_form_keymap->ChsetErr);
+		break;
+	}
+}
+
+
+void Intl::MenuKeymap()
+{
+	if (fd_form_keymap->KeyMap->visible) {
+		fl_raise_form(fd_form_keymap->KeyMap);
+	} else fl_show_form(fd_form_keymap->KeyMap, FL_PLACE_MOUSE,
+			    FL_FULLBORDER, _("Key Mappings"));
+}

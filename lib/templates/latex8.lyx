@@ -1,0 +1,79 @@
+#This file was created by <rae> Wed Sep 16 09:48:15 1998
+#LyX 0.12 (C) 1995-1998 Matthias Ettrich and the LyX Team
+\lyxformat 2.15
+\textclass latex8
+\language english
+\inputencoding default
+\fontscheme default
+\graphics default
+\paperfontsize 10
+\spacing single 
+\papersize Default
+\use_geometry 0
+\use_amsmath 0
+\paperorientation portrait
+\secnumdepth 2
+\tocdepth 2
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\quotes_times 2
+\papercolumns 2
+\papersides 1
+\paperpagestyle empty
+
+\layout Title
+
+Put your title here
+\layout Author
+
+First Author
+\newline 
+Dept.
+ of Doing Stuff
+\newline 
+Institution 
+\newline 
+
+\latex latex 
+
+\backslash 
+and
+\newline 
+
+\latex default 
+Second Author
+\newline 
+Dept.
+ of Something
+\newline 
+Another Institution
+\layout LaTeX
+
+
+\backslash 
+thispagestyle{empty}
+\layout Abstract
+
+A short description of about 60 words.
+\layout Section
+
+Introduction
+\begin_inset Info rae Sat Jun 20 18:39:35 1998
+Section number will appear correctly on paper.
+That is, "1." instead of just "1"
+\end_inset 
+
+
+\layout Section
+
+Conclusions
+\layout Comment
+
+
+\begin_inset LatexCommand \BibTeX[latex8]{yourbibfile}
+
+\end_inset 
+
+
+\the_end

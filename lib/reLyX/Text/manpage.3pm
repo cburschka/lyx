@@ -1,0 +1,339 @@
+.rn '' }`
+''' $RCSfile: manpage.3pm,v $$Revision: 1.1 $$Date: 1999/09/27 18:44:35 $
+'''
+''' $Log: manpage.3pm,v $
+''' Revision 1.1  1999/09/27 18:44:35  larsbj
+''' Initial revision
+'''
+''' Revision 1.1.1.1  1998/04/20 21:14:36  larsbj
+''' repository moved due to corrupted repository on other machine
+'''
+''' Revision 1.1.2.1  1998/03/02 16:12:47  larsbj
+''' two patches added to 0.12.1pre2
+'''
+''' Revision 1.1.2.1  1998/02/07 02:27:30  larsbj
+''' patch from jean-marc, and a fix to libdir detection by lgb
+'''
+''' Revision 1.1  1997/10/26 10:22:04  larsbj
+''' lots of small changes
+'''
+''' Revision 1.1  1997/10/17 16:52:21  larsbj
+''' changes
+'''
+'''
+.de Sh
+.br
+.if t .Sp
+.ne 5
+.PP
+\fB\\$1\fR
+.PP
+..
+.de Sp
+.if t .sp .5v
+.if n .sp
+..
+.de Ip
+.br
+.ie \\n(.$>=3 .ne \\$3
+.el .ne 3
+.IP "\\$1" \\$2
+..
+.de Vb
+.ft CW
+.nf
+.ne \\$1
+..
+.de Ve
+.ft R
+
+.fi
+..
+'''
+'''
+'''     Set up \*(-- to give an unbreakable dash;
+'''     string Tr holds user defined translation string.
+'''     Bell System Logo is used as a dummy character.
+'''
+.tr \(*W-|\(bv\*(Tr
+.ie n \{\
+.ds -- \(*W-
+.ds PI pi
+.if (\n(.H=4u)&(1m=24u) .ds -- \(*W\h'-12u'\(*W\h'-12u'-\" diablo 10 pitch
+.if (\n(.H=4u)&(1m=20u) .ds -- \(*W\h'-12u'\(*W\h'-8u'-\" diablo 12 pitch
+.ds L" ""
+.ds R" ""
+.ds L' '
+.ds R' '
+'br\}
+.el\{\
+.ds -- \(em\|
+.tr \*(Tr
+.ds L" ``
+.ds R" ''
+.ds L' `
+.ds R' '
+.ds PI \(*p
+'br\}
+.\"	If the F register is turned on, we'll generate
+.\"	index entries out stderr for the following things:
+.\"		TH	Title 
+.\"		SH	Header
+.\"		Sh	Subsection 
+.\"		Ip	Item
+.\"		X<>	Xref  (embedded
+.\"	Of course, you have to process the output yourself
+.\"	in some meaninful fashion.
+.if \nF \{
+.de IX
+.tm Index:\\$1\t\\n%\t"\\$2"
+..
+.nr % 0
+.rr F
+.\}
+.TH TEX 1 "perl 5.003, patch 07" "30/Oct/96" "User Contributed Perl Documentation"
+.IX Title "TEX 1"
+.UC
+.IX Name "Text::TeX - Perl module for parsing of C<TeX>."
+.if n .hy 0
+.if n .na
+.ds C+ C\v'-.1v'\h'-1p'\s-2+\h'-1p'+\s0\v'.1v'\h'-1p'
+.de CQ          \" put $1 in typewriter font
+.ft CW
+'if n "\c
+'if t \\&\\$1\c
+'if n \\&\\$1\c
+'if n \&"
+\\&\\$2 \\$3 \\$4 \\$5 \\$6 \\$7
+'.ft R
+..
+.\" @(#)ms.acc 1.5 88/02/08 SMI; from UCB 4.2
+.	\" AM - accent mark definitions
+.bd B 3
+.	\" fudge factors for nroff and troff
+.if n \{\
+.	ds #H 0
+.	ds #V .8m
+.	ds #F .3m
+.	ds #[ \f1
+.	ds #] \fP
+.\}
+.if t \{\
+.	ds #H ((1u-(\\\\n(.fu%2u))*.13m)
+.	ds #V .6m
+.	ds #F 0
+.	ds #[ \&
+.	ds #] \&
+.\}
+.	\" simple accents for nroff and troff
+.if n \{\
+.	ds ' \&
+.	ds ` \&
+.	ds ^ \&
+.	ds , \&
+.	ds ~ ~
+.	ds ? ?
+.	ds ! !
+.	ds /
+.	ds q
+.\}
+.if t \{\
+.	ds ' \\k:\h'-(\\n(.wu*8/10-\*(#H)'\'\h"|\\n:u"
+.	ds ` \\k:\h'-(\\n(.wu*8/10-\*(#H)'\`\h'|\\n:u'
+.	ds ^ \\k:\h'-(\\n(.wu*10/11-\*(#H)'^\h'|\\n:u'
+.	ds , \\k:\h'-(\\n(.wu*8/10)',\h'|\\n:u'
+.	ds ~ \\k:\h'-(\\n(.wu-\*(#H-.1m)'~\h'|\\n:u'
+.	ds ? \s-2c\h'-\w'c'u*7/10'\u\h'\*(#H'\zi\d\s+2\h'\w'c'u*8/10'
+.	ds ! \s-2\(or\s+2\h'-\w'\(or'u'\v'-.8m'.\v'.8m'
+.	ds / \\k:\h'-(\\n(.wu*8/10-\*(#H)'\z\(sl\h'|\\n:u'
+.	ds q o\h'-\w'o'u*8/10'\s-4\v'.4m'\z\(*i\v'-.4m'\s+4\h'\w'o'u*8/10'
+.\}
+.	\" troff and (daisy-wheel) nroff accents
+.ds : \\k:\h'-(\\n(.wu*8/10-\*(#H+.1m+\*(#F)'\v'-\*(#V'\z.\h'.2m+\*(#F'.\h'|\\n:u'\v'\*(#V'
+.ds 8 \h'\*(#H'\(*b\h'-\*(#H'
+.ds v \\k:\h'-(\\n(.wu*9/10-\*(#H)'\v'-\*(#V'\*(#[\s-4v\s0\v'\*(#V'\h'|\\n:u'\*(#]
+.ds _ \\k:\h'-(\\n(.wu*9/10-\*(#H+(\*(#F*2/3))'\v'-.4m'\z\(hy\v'.4m'\h'|\\n:u'
+.ds . \\k:\h'-(\\n(.wu*8/10)'\v'\*(#V*4/10'\z.\v'-\*(#V*4/10'\h'|\\n:u'
+.ds 3 \*(#[\v'.2m'\s-2\&3\s0\v'-.2m'\*(#]
+.ds o \\k:\h'-(\\n(.wu+\w'\(de'u-\*(#H)/2u'\v'-.3n'\*(#[\z\(de\v'.3n'\h'|\\n:u'\*(#]
+.ds d- \h'\*(#H'\(pd\h'-\w'~'u'\v'-.25m'\f2\(hy\fP\v'.25m'\h'-\*(#H'
+.ds D- D\\k:\h'-\w'D'u'\v'-.11m'\z\(hy\v'.11m'\h'|\\n:u'
+.ds th \*(#[\v'.3m'\s+1I\s-1\v'-.3m'\h'-(\w'I'u*2/3)'\s-1o\s+1\*(#]
+.ds Th \*(#[\s+2I\s-2\h'-\w'I'u*3/5'\v'-.3m'o\v'.3m'\*(#]
+.ds ae a\h'-(\w'a'u*4/10)'e
+.ds Ae A\h'-(\w'A'u*4/10)'E
+.ds oe o\h'-(\w'o'u*4/10)'e
+.ds Oe O\h'-(\w'O'u*4/10)'E
+.	\" corrections for vroff
+.if v .ds ~ \\k:\h'-(\\n(.wu*9/10-\*(#H)'\s-2\u~\d\s+2\h'|\\n:u'
+.if v .ds ^ \\k:\h'-(\\n(.wu*10/11-\*(#H)'\v'-.4m'^\v'.4m'\h'|\\n:u'
+.	\" for low resolution devices (crt and lpr)
+.if \n(.H>23 .if \n(.V>19 \
+\{\
+.	ds : e
+.	ds 8 ss
+.	ds v \h'-1'\o'\(aa\(ga'
+.	ds _ \h'-1'^
+.	ds . \h'-1'.
+.	ds 3 3
+.	ds o a
+.	ds d- d\h'-1'\(ga
+.	ds D- D\h'-1'\(hy
+.	ds th \o'bp'
+.	ds Th \o'LP'
+.	ds ae ae
+.	ds Ae AE
+.	ds oe oe
+.	ds Oe OE
+.\}
+.rm #[ #] #H #V #F C
+.SH "NAME"
+.IX Header "NAME"
+Text::TeX -- Perl module for parsing of \f(CWTeX\fR.
+.SH "SYNOPSIS"
+.IX Header "SYNOPSIS"
+.PP
+.Vb 1
+\&  use Text::TeX;
+.Ve
+.Vb 12
+\&  sub report {
+\&    my($eaten,$txt) = (shift,shift);
+\&    print "Comment: `", $eaten->[1], "'\en" if defined $eaten->[1];
+\&    print "@{$txt->{waitfors}} ", ref $eaten, ": `", $eaten->[0], "'";
+\&    if (defined $eaten->[3]) {
+\&      my @arr = @{ $eaten->[3] };
+\&      foreach (@arr) {
+\&        print " ", $_->print;
+\&      }
+\&    }
+\&    print "\en";
+\&  }
+.Ve
+.Vb 3
+\&  my $file = new Text::TeX::OpenFile 'test.tex',
+\&    'defaultact' => \e&report;
+\&  $file->process;
+.Ve
+.SH "DESCRIPTION"
+.IX Header "DESCRIPTION"
+A new \f(CWTeX\fR parser is created by
+.PP
+.Vb 1
+\&  $file = new Text::TeX::OpenFile $filename, attr1 => $val1, ...;
+.Ve
+$filename may be \f(CWundef\fR, in this case the text to parse may be
+specified in the attribute \f(CWstring\fR.
+.PP
+Recognized attributes are:
+.Ip "\f(CWstring\fR" 12
+.IX Item "\f(CWstring\fR"
+contains the text to parse before parsing \f(CW$filename\fR.
+.Ip "\f(CWdefaultact\fR" 12
+.IX Item "\f(CWdefaultact\fR"
+denotes a procedure to submit \f(CWoutput tokens\fR to.
+.Ip "\f(CWtokens\fR" 12
+.IX Item "\f(CWtokens\fR"
+gives a hash of \f(CWdescriptors\fR for \f(CWinput token\fR. A sane default is
+provided.
+.PP
+A call to the method \f(CWprocess\fR launches the parser.
+.Sh "Tokenizer"
+.IX Subsection "Tokenizer"
+When the parser is running, it processes input stream by splitting it
+into \f(CWinput tokens\fR using some \fIheuristics\fR similar to the actual
+rules of TeX tokenizer. However, since it does not use \fIthe exact
+rules\fR, the resulting tokens may be wrong if some advanced TeX command
+are used, say, the character classes are changed.
+.PP
+This should not be of any concern if the stream in question is a
+\*(L"user\*(R" file, but is important for \*(L"packages\*(R".
+.Sh "Digester"
+.IX Subsection "Digester"
+The processed \f(CWinput tokens\fR are handled to the digester, which
+handles them according to the provided \f(CWtokens\fR attribute.
+.Sh "\f(CWtokens\fR attribute"
+.IX Subsection "\f(CWtokens\fR attribute"
+This is a hash reference which describes how the \f(CWinput tokens\fR
+should be handled. A key to this hash is a literal like \f(CW^\fR or
+\f(CW\efraction\fR. A value should be another hash reference, with the
+following keys recognized:
+.Ip "class" 7
+.IX Item "class"
+Into which class to bless the token. Several predefined classes are
+provided. The default is \f(CWText::TeX::Token\fR.
+.Ip "Type" 7
+.IX Item "Type"
+What kind of special processing to do with the input after the
+\f(CWclass\fR methods are called. Recognized \f(CWType\fRs are:
+.Ip "report_args" 17
+.IX Item "report_args"
+When the token of this \f(CWType\fR is encountered, it is converted into
+\f(CWText::Tex::BegArgsToken\fR. Then the arguments are processed as usual,
+and an \f(CWoutput token\fR of type \f(CWText::Tex::ArgToken\fR is inserted
+between them. Finally, after all the arguments are processed, an
+\f(CWoutput token\fR \f(CWText::Tex::EndArgsToken\fR is inserted.
+.Sp
+The first element of these simulated \f(CWoutput tokens\fR is an array
+reference with the first element being the initial \f(CWoutput token\fR
+which generated this sequence. The second element of the internal
+array is the number of arguments required by the \f(CWinput token\fR. The
+\f(CWText::Tex::ArgToken\fR token has a third element, which is the ordinal
+of the argument which ends immediately before this token.
+.Sp
+If requested, a token \f(CWText::Tex::LookAhead\fR may be returned instead
+of \f(CWText::Tex::EndArgsToken\fR. The additional elements of
+\f(CW$token-\fR[0]> are: the reference to the corresponding \f(CWlookahead\fR
+attribute, the relevant key (text of following token) and the
+corresponding value.
+.Sp
+In such a case the input token which was looked-ahead would generate
+an output token of type \f(CWText::Tex::BegArgsTokenLookedAhead\fR (if it
+usually generates \f(CWText::Tex::BegArgsToken\fR).
+.Ip "local" 17
+.IX Item "local"
+Means that these macro introduces a local change, which should be
+undone at the end of enclosing block. At the end of the block an
+output event \f(CWText::TeX::EndLocal\fR is delivered, with \f(CW$token-\fR[0]>
+being the output token for the \fIlocal\fR event starting.
+.Sp
+Useful for font switching. 
+.PP
+Some additional keys may be recognized by the code for the particular
+\f(CWclass\fR.
+.Ip "\f(CWcount\fR" 12
+.IX Item "\f(CWcount\fR"
+number of arguments to the macro.
+.Ip "\f(CWwaitfor\fR" 12
+.IX Item "\f(CWwaitfor\fR"
+gives the matching token for a \fIstarting delimiter\fR token.
+.Ip "\f(CWeatargs\fR" 12
+.IX Item "\f(CWeatargs\fR"
+number of tokens to swallow literally and put into the relevant slot
+of the \f(CWoutput token\fR. The surrounding braces are stripped.
+.Ip "\f(CWselfmatch\fR" 12
+.IX Item "\f(CWselfmatch\fR"
+is used with \f(CWeatargs==1\fR. Denotes that the matching token is also
+\f(CWeatargs==1\fR, and the swallowed tokens should coinside (like with
+\f(CW\ebegin{blah} ... \eend{blah}\fR).
+.Ip "\f(CWlookahead\fR" 12
+.IX Item "\f(CWlookahead\fR"
+is a hash with keys being texts of tokens which need to be treated
+specially after the end of arguments for the current token. If the
+corresponding text follows the token indeed, a token
+\f(CWText::Tex::LookAhead\fR is returned instead of
+\f(CWText::Tex::EndArgsToken\fR.
+.Sh "Symbol font table"
+.IX Subsection "Symbol font table"
+The hash \f(CW%Text::TeX::xfont\fR contains the translation table from TeX
+tokens into the corresponding font elements. The values are array
+references of the form \f(CW[fontname, char]\fR, Currently the only font
+supported is \f(CWsymbol\fR.
+.SH "AUTHOR"
+.IX Header "AUTHOR"
+Ilya Zakharevich, ilya@math.ohio-state.edu
+.SH "SEE ALSO"
+.IX Header "SEE ALSO"
+\fIperl\fR\|(1).
+
+.rn }` ''

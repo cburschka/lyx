@@ -1,0 +1,125 @@
+#% Do not delete the line below; configure depends on this
+#  \DeclareLaTeXClass[article,latex8.sty,times.sty]{article (Latex8)}
+# Latex8 textclass definition file.
+# Author : Allan Rae <rae@elec.uq.edu.au>
+
+Preamble
+  \usepackage{latex8}
+  \usepackage{times}
+EndPreamble
+
+# Input general definitions
+Input stdclass.inc
+
+Columns 		1
+MaxCounter		Counter_Section
+
+ClassOptions
+   FontSize		10
+End
+
+NoStyle Part
+NoStyle Part*
+NoStyle Chapter
+NoStyle Chapter*
+NoStyle Section*
+NoStyle Subsection*
+NoStyle Subsubsection
+NoStyle Subsubsection*
+NoStyle Paragraph
+NoStyle Subparagraph
+
+Style Title
+  Font
+    Series		Bold
+    Size		Larger
+  EndFont
+End
+
+Style Section
+  TopSep		1.0
+  BottomSep		1.0
+  ParSep		1.0
+  latexname		"Section"
+End
+
+Style Subsection
+  TopSep		1.0
+  BottomSep		1.0
+  ParSep		1.0
+  latexname		"SubSection"
+End
+
+Style Email
+  Margin		Dynamic
+  LatexType		Command
+  InTitle		1
+  LatexName	        email
+  LabelSep		xxx
+  ParSkip		0.4
+  TopSep		0.9
+  BottomSep		0.5
+  ParSep		1
+  Align			Center
+  AlignPossible		Center
+  LabelType		Static
+  LabelString		"E-mail:"
+  # standard font definition
+  Font 
+    Size		Large
+    Family		Typewriter
+  EndFont
+
+  LabelFont
+    Family		Roman
+  EndFont
+End
+
+Style Affiliation
+  Margin		Dynamic
+  LatexType		Command
+  InTitle		1
+  LatexName		affiliation
+  LabelSep		xxx
+  ParSkip		0.4
+  TopSep		0.9
+  BottomSep		0.5
+  ParSep		1
+  Align			Center
+  AlignPossible		Center
+  LabelType		No_Label
+  # standard font definition
+  Font 
+    Size		Large
+  EndFont
+End
+
+# Abstract style redefinition
+Style Abstract 
+  LeftMargin		""
+  RightMargin		""
+
+  # standard font definition
+  Font
+    Size		Normal
+    Shape		Italic
+  EndFont
+  
+  LabelFont
+    Size		Large
+    Shape		Up
+    Series		Bold
+  EndFont
+End
+
+Style Caption
+  Font
+    Series		Bold
+  EndFont
+End
+
+Style Bibliography
+  LabelFont
+    Size		Large
+  EndFont
+End

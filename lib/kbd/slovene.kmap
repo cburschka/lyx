@@ -1,0 +1,32 @@
+#
+# Key definition file for Slovene national keyboard for LyX
+#
+# (c)1996 by Alen Salamun, alen.salamun@medinet.si
+#
+
+\kmap ` -                         # Remaped keys
+\kmap ~ _
+\kmap @ \"
+\kmap ^ &
+\kmap & /
+\kmap * (
+\kmap ( )
+\kmap ) =
+\kmap - '
+\kmap _ ?
+\kmap + *
+\kmap = +
+\kmap \\ <
+\kmap | >
+\kmap < ;
+\kmap > :
+
+\kmap [ "\\v{s}"                    # Chars with carons
+\kmap { "\\v{S}"
+\kmap ; "\\v{c}"
+\kmap : "\\v{C}"
+\kmap / "\\v{z}"
+\kmap ? "\\v{Z}"
+
+\kmap ' "\\'{c}"                     # Chars with accute
+\kmap \" "\\'{C}"

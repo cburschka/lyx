@@ -1,0 +1,164 @@
+This is part of a private discussion I had with John Collins, the author 
+of the first LaTeX2LyX conversor. Attached is also a document describing his
+ideas about the subject. Such ideas could be useful for our project.
+
+Alejandro
+
+------------------------------------------------------------
+From: John Collins <John.Collins@cern.ch>
+Date: Wed, 4 Sep 1996 11:39:45 +0200 (MET DST)
+To: Alejandro Aguilar Sierra <asierra@servidor.unam.mx>
+Subject: Re: TeX2LyX document
+
+[Removed non-related stuff, AAS]
+
+I am not convinced devising a lyx format as a subset of latex is ideal. 
+It would take some time to explain my thoughts.  But the problem I see
+with latex is that its syntax is not pleasant, so that it is relatively
+time-consuming and/or memory intensive to parse it.  Most importantly from
+the point of view of an editor, it cannot be locally and bidirectionally
+parsed.  (I can explain further.)  IMHO, the important matter in the
+relation to latex is that the format should be in (1-1) correspondence
+with a suitably rational subset of latex.  Is your format supposed to be
+just a file format, or will it also be used for the representation of a
+document in memory?  If the latter is true, then I would particularly stay
+away from a directly latex based format.  A file format could be closer to
+latex, since it might need to read by humans. 
+
+But you have obviously thought about the issue and have come to different
+conclusions.  
+
+My experience in writing ET convinced me that a good internal format is
+important to speed and to robustness.  ET will run with good speed on an
+8088 processor(!), whereas the scientific word processor Scientific Word,
+which has somewhat of the same philosophy as ET and lyx, needs a minimum
+of a Pentium to be acceptable, and even then it frequently crashes the
+operating system. (Scientific Word appears to use a latex-based format
+internally.)
+
+John Collins
+
+
+----------------------------------------------------
+From: John Collins <collins@phys.psu.edu>
+Date: Fri, 12 Jan 1996 11:57:23 -0500
+To: lyx@via.ecp.fr
+Subject: Latex2lyx
+
+Although I have been working on the latex2lyx program, I do not have
+something ready for use yet.  The trouble is that I am staring at
+several other priority projects including a research grant renewal.
+
+I realize a quick-and-dirty version would be useful, so perhaps I ought
+to get that out.  That could probably be done quickly from my
+preexisting code.  Several messages have provoked me to think that
+would be worth doing.
+
+What I realized over the Christmas break is that by a suitable design
+of C++ classes I can fairly easily make a powerful, efficient and
+robust (La)TeX parser.  (It would also give useful error messages.)
+The tricky bit was to figure out the right design.  But I have that
+now, and the basic program.  I would estimate about a month to get
+something presentable to the lyx collaboration.
+
+I have appended some of my thoughts about the overall ideas.  They
+correspond to what I did for my ET editor.  I'd appreciate comments.
+
+
+John Collins
+
+============================================================
+
+	     Latex2lyx convertor
+             ===================
+
+1.  Latex2lyx and the lyx2latex convertor in the lyx program should be
+as close to 1-1 as reasonable.  This is particularly important for
+collaborations where some people are using lyx and some are not.  Then
+ordinary TeX files serve as the communications medium.
+
+2.  Perfect 1-1 conversion is not possible, because there are several
+different TeX constructs that are equivalent (for example a blank line
+and \par).
+
+3.  Parts of a TeX file not translated by latex2lyx should be converted
+into something like LyX TeX style.  One then has raw TeX in the lyx
+file, and that is reconstructed when making the TeX file.
+
+4.  Some enhancements to lyx will be necessary to handle converted
+files sensibly.  (E.g., (a) multiline pieces of raw TeX, including
+arbitrary numbers of blank lines, (b) comments.)
+
+5.  It appears necessary to change some of the lyx2latex conversion
+done by lyx to approach the 1-1 ideal better.  (My preference, for
+example, would be for paragraphs not to be enclosed in braces,
+normally.  Paragraphs with font changes, etc would need different
+treatment, of course.)  User preferences will undoubtedly vary here, so
+some configuration options are likely to be needed.
+
+6.  In particular, white space and new lines are often used to prettify
+TeX files to make them convenient for humans to edit.  I feel it would
+be useful to provide a mechanism for entering extra space and newlines
+in a lyx file, not for the purpose of getting the corresponding spaces
+and newlines in the hard copy, but for making the TeX file pretty.
+(User preferences will vary here, of course.)  This will not matter
+much if lyx is the only editor being used, but it will be important if
+the .tex file is being worked on by a collaborator.  Automatic
+prettyprinting of the output .tex file would help here, but lyx's
+preprogrammed concept of prettyprinting may not agree with a user's
+need-of-the-moment.
+
+7.  The most general case of a TeX file would be very hard to deal
+with, since catcodes and TeX macros may be redefined in an arbitrary
+way.  Moreover the definitions may be hidden away in a TeX format
+file.  So it is necessary to restrict latex2lyx's scope to files where
+catcodes don't change, and where the macros don't lose their standard
+meanings.
+
+8.  I think all TeX files that I have ever seen satisfy this
+requirement, except possibly in their preambles where commands are
+defined or redefined.
+
+9.  The program should handle incorrect TeX gracefully, and with useful
+error messages.  At worst it should bundle up the
+incorrect/misunderstood TeX as uninterpreted raw TeX that would be
+recreated in the .tex file.  (I emphasize this because one commerical
+competitor to lyx, Scientific Word (for MS-Windows), does a
+particularly bad job: it sometimes crashes the operating system when
+reading correct Latex files, and often loses bits of a file when the
+structure doesn't correspond to Scientific Word's standards for LaTeX.
+That is sufficiently unfriendly that I stopped using it.)
+
+10.  latex2lyx is aimed at converting document contents, not TeX
+programming, so it need not attempt to understand the semanitics of
+\defs, \newcommands etc.  (Although it should know the syntax, to parse
+the commands.)
+
+11.  Since the most general case of a TeX macro definition is likely to
+cause indigestion to latex2lyx (and quite often to a human reader, even
+a TeXpert), there needs to be a mechanism to force latex2lyx to treat
+sections of the tex file as raw TeX which is not to be converted.  I
+propose that the conversion be controlled by metacommands (like
+preprocessor metacommands in C).  These must be TeX comments, so that
+they are invisible to TeX.
+
+12.  It would be useful to recognize that other programs might want to
+use the same mechanism.  I propose the following kind of format:
+
+	    %#{}raw
+            %#{}end.raw
+
+
+The signature of a metacommand is %#{program_name}command ....  The #
+is reminiscent of a C metacommand.  To allow a mechanism for
+metacommand sets for different programs, I allow a place for an
+identifier for a program.  For example we MIGHT have
+
+	    %#{lyx}begin.preamble
+            %#{lyx}end.preamble
+
+for stuff that's to be bundled up in the LaTeX preamble used by lyx.
+However, for that case, my preference is for latex2lyx to bundle up
+ALL of the preamble automatically, except for those commands that are
+specifically used by lyx (e.g., \usepackage).
+

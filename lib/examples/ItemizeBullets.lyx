@@ -1,0 +1,1808 @@
+#This file was created by <rae> Sat Oct  4 03:17:47 1997
+#LyX 0.11 (C) 1995-1997 Matthias Ettrich and the LyX Team
+\lyxformat 2.15
+\textclass article
+\begin_preamble
+\usepackage{latexsym,pifont,amssymb}
+\end_preamble
+\language default
+\inputencoding default
+\fontscheme default
+\graphics default
+\paperfontsize 10
+\spacing single 
+\papersize Default
+\paperpackage a4
+\use_geometry 0
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\quotes_times 2
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\bulletLaTeX 0
+	\raise1pt\hbox{\small\(\blacktriangleright\)}
+\end_bullet
+\bulletLaTeX 1
+	\raise1pt\hbox{\(\leadsto\)}
+\end_bullet
+\bullet 2
+	4
+	8
+	3
+\end_bullet
+\bullet 3
+	0
+	8
+	-1
+\end_bullet
+
+\layout Section*
+\cursor 0 
+Introduction
+\layout Standard
+
+You'll see pretty quickly that bullet settings can be quite complex if you
+ want them to be.
+ Don't be frightened, most settings are just a mouse click or two away.
+\layout Itemize
+
+
+\emph on 
+itemize
+\emph default 
+ is the standard environment for bullet lists
+\begin_deeper 
+\layout Itemize
+
+it has its own counter that limits it to 4 levels
+\begin_deeper 
+\layout Itemize
+
+each level can have its own bullet shape
+\begin_deeper 
+\layout Itemize
+
+LyX however displays all bullets as an `*'
+\end_deeper 
+\end_deeper 
+\end_deeper 
+\layout Itemize
+
+Also note that LyX does *NOT* check the environment depths for you
+\begin_deeper 
+\begin_deeper 
+\begin_deeper 
+\begin_deeper 
+\begin_deeper 
+\layout Itemize
+
+Other than to enforce the LaTeX depth limit of 6 for all lists.
+\end_deeper 
+\end_deeper 
+\end_deeper 
+\end_deeper 
+\end_deeper 
+\layout Standard
+
+Are there any other restrictions?
+\layout Standard
+
+Yes.
+ The bullet selection support will allow you to set the bullets used across
+ the entire document only.
+ If you want to customise each paragraph you'll have to do that manually.
+\layout Standard
+
+You can access the popup via the 
+\bar under 
+L
+\bar default 
+ayout->
+\bar under 
+D
+\bar default 
+ocument
+\begin_inset LatexCommand \ldots
+
+\end_inset 
+
+ menu and select the 
+\begin_inset Quotes eld
+\end_inset 
+
+Default Itemize Bullets
+\begin_inset Quotes erd
+\end_inset 
+
+ button.
+ Try it now.
+\layout Section*
+
+Bullet Tables:
+\layout Standard
+
+The following tables are those used to generate the bullet panels in the
+ Itemize Bullet Selection popup.
+ 
+\layout Subsection*
+
+Standard
+\layout Standard
+\added_space_top 0.3cm \added_space_bottom 0.3cm \align center \LyXTable
+multicol4
+6 6 0 0 -1 -1 -1 -1
+1 0 0 0
+1 0 0 0
+1 0 0 0
+1 0 0 0
+1 0 0 0
+1 1 0 0
+8 1 0 
+8 1 0 
+2 1 0 
+8 1 0 
+8 1 0 
+8 1 1 
+0 8 1 1 0 0 0
+0 8 1 1 0 0 0
+0 8 1 1 0 0 0
+0 8 1 1 0 0 0
+0 8 1 1 0 0 0
+0 8 1 1 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 2 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 1 0 0 0
+0 8 1 1 0 0 0
+0 8 1 1 0 0 0
+0 8 1 1 0 0 0
+0 8 1 1 0 0 0
+0 8 1 1 0 0 0
+
+
+\latex latex 
+
+\backslash 
+normalfont
+\backslash 
+bfseries{--}
+\latex default 
+
+\newline 
+
+\latex latex 
+
+\backslash 
+(
+\backslash 
+vdash
+\backslash 
+)
+\newline 
+
+\backslash 
+(
+\backslash 
+dashv
+\backslash 
+)
+\newline 
+
+\backslash 
+(
+\backslash 
+flat
+\backslash 
+)
+\newline 
+
+\backslash 
+(
+\backslash 
+natural
+\backslash 
+)
+\newline 
+
+\backslash 
+(
+\backslash 
+sharp
+\backslash 
+)
+\newline 
+
+\backslash 
+(
+\backslash 
+ast
+\backslash 
+)
+\newline 
+
+\backslash 
+(
+\backslash 
+star
+\backslash 
+)
+\newline 
+
+\backslash 
+(
+\backslash 
+bullet
+\backslash 
+)
+\newline 
+
+\backslash 
+(
+\backslash 
+circ
+\backslash 
+)
+\newline 
+
+\backslash 
+(
+\backslash 
+cdot
+\backslash 
+)
+\newline 
+
+\backslash 
+(
+\backslash 
+dagger
+\backslash 
+)
+\newline 
+
+\backslash 
+(
+\backslash 
+bigtriangleup
+\backslash 
+)
+\newline 
+
+\backslash 
+(
+\backslash 
+bigtriangledown
+\backslash 
+)
+\newline 
+
+\backslash 
+(
+\backslash 
+triangleleft
+\backslash 
+)
+\newline 
+
+\backslash 
+(
+\backslash 
+triangleright
+\backslash 
+)
+\newline 
+
+\backslash 
+(
+\backslash 
+lhd
+\backslash 
+)
+\newline 
+
+\backslash 
+(
+\backslash 
+rhd
+\backslash 
+)
+\newline 
+
+\backslash 
+(
+\backslash 
+oplus
+\backslash 
+)
+\newline 
+
+\backslash 
+(
+\backslash 
+ominus
+\backslash 
+)
+\newline 
+
+\backslash 
+(
+\backslash 
+otimes
+\backslash 
+)
+\newline 
+
+\backslash 
+(
+\backslash 
+oslash
+\backslash 
+)
+\newline 
+
+\backslash 
+(
+\backslash 
+odot
+\backslash 
+)
+\newline 
+
+\backslash 
+(
+\backslash 
+spadesuit
+\backslash 
+)
+\newline 
+
+\backslash 
+(
+\backslash 
+diamond
+\backslash 
+)
+\newline 
+
+\backslash 
+(
+\backslash 
+Diamond
+\backslash 
+)
+\newline 
+
+\backslash 
+(
+\backslash 
+Box
+\backslash 
+)
+\newline 
+
+\backslash 
+(
+\backslash 
+diamondsuit
+\backslash 
+)
+\newline 
+
+\backslash 
+(
+\backslash 
+heartsuit
+\backslash 
+)
+\newline 
+
+\backslash 
+(
+\backslash 
+clubsuit
+\backslash 
+)
+\newline 
+
+\backslash 
+(
+\backslash 
+rightarrow
+\backslash 
+)
+\latex default 
+
+\newline 
+
+\latex latex 
+
+\backslash 
+(
+\backslash 
+leadsto
+\backslash 
+)
+\latex default 
+
+\newline 
+
+\latex latex 
+
+\backslash 
+(
+\backslash 
+rightharpoonup
+\backslash 
+)
+\latex default 
+
+\newline 
+
+\latex latex 
+
+\backslash 
+(
+\backslash 
+rightharpoondown
+\backslash 
+)
+\latex default 
+
+\newline 
+
+\latex latex 
+
+\backslash 
+(
+\backslash 
+Rightarrow
+\backslash 
+)
+\latex default 
+
+\newline 
+
+\latex latex 
+
+\backslash 
+(
+\backslash 
+succ
+\backslash 
+)
+\layout Subsection*
+
+Maths (AMS-symbols) 
+\layout Standard
+\added_space_top 0.3cm \added_space_bottom 0.3cm \align center \LyXTable
+multicol4
+6 6 0 0 -1 -1 -1 -1
+1 0 0 0
+1 0 0 0
+1 0 0 0
+1 0 0 0
+1 0 0 0
+1 1 0 0
+8 1 0 
+8 1 0 
+8 1 0 
+8 1 0 
+8 1 0 
+8 1 1 
+0 8 1 1 0 0 0
+0 8 1 1 0 0 0
+0 8 1 1 0 0 0
+0 8 1 1 0 0 0
+0 8 1 1 0 0 0
+0 8 1 1 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 1 0 0 0
+0 8 1 1 0 0 0
+0 8 1 1 0 0 0
+0 8 1 1 0 0 0
+0 8 1 1 0 0 0
+0 8 1 1 0 0 0
+
+
+\latex latex 
+
+\backslash 
+(
+\backslash 
+Rrightarrow
+\backslash 
+)
+\newline 
+
+\backslash 
+(
+\backslash 
+rightarrowtail
+\backslash 
+)
+\newline 
+
+\backslash 
+(
+\backslash 
+twoheadrightarrow
+\backslash 
+)
+\newline 
+
+\backslash 
+(
+\backslash 
+rightsquigarrow
+\backslash 
+)
+\newline 
+
+\backslash 
+(
+\backslash 
+looparrowright
+\backslash 
+)
+\newline 
+
+\backslash 
+(
+\backslash 
+multimap
+\backslash 
+)
+\newline 
+
+\backslash 
+(
+\backslash 
+boxtimes
+\backslash 
+)
+\newline 
+
+\backslash 
+(
+\backslash 
+boxplus
+\backslash 
+)
+\newline 
+
+\backslash 
+(
+\backslash 
+boxminus
+\backslash 
+)
+\newline 
+
+\backslash 
+(
+\backslash 
+boxdot
+\backslash 
+)
+\newline 
+
+\backslash 
+(
+\backslash 
+divideontimes
+\backslash 
+)
+\newline 
+
+\backslash 
+(
+\backslash 
+Vvdash
+\backslash 
+)
+\newline 
+
+\backslash 
+(
+\backslash 
+lessdot
+\backslash 
+)
+\newline 
+
+\backslash 
+(
+\backslash 
+gtrdot
+\backslash 
+)
+\newline 
+
+\backslash 
+(
+\backslash 
+maltese
+\backslash 
+)
+\newline 
+
+\backslash 
+(
+\backslash 
+bigstar
+\backslash 
+)
+\newline 
+
+\backslash 
+(
+\backslash 
+checkmark
+\backslash 
+)
+\newline 
+
+\backslash 
+(
+\backslash 
+Vdash
+\backslash 
+)
+\newline 
+
+\backslash 
+(
+\backslash 
+backsim
+\backslash 
+)
+\newline 
+
+\backslash 
+(
+\backslash 
+thicksim
+\backslash 
+)
+\newline 
+
+\backslash 
+(
+\backslash 
+centerdot
+\backslash 
+)
+\newline 
+
+\backslash 
+(
+\backslash 
+circleddash
+\backslash 
+)
+\newline 
+
+\backslash 
+(
+\backslash 
+circledast
+\backslash 
+)
+\newline 
+
+\backslash 
+(
+\backslash 
+circledcirc
+\backslash 
+)
+\newline 
+
+\backslash 
+(
+\backslash 
+vartriangleleft
+\backslash 
+)
+\newline 
+
+\backslash 
+(
+\backslash 
+vartriangleright
+\backslash 
+)
+\newline 
+
+\backslash 
+(
+\backslash 
+vartriangle
+\backslash 
+)
+\newline 
+
+\backslash 
+(
+\backslash 
+triangledown
+\backslash 
+)
+\newline 
+
+\backslash 
+(
+\backslash 
+lozenge
+\backslash 
+)
+\newline 
+
+\backslash 
+(
+\backslash 
+square
+\backslash 
+)
+\newline 
+
+\backslash 
+(
+\backslash 
+blacktriangleleft
+\backslash 
+)
+\newline 
+
+\backslash 
+(
+\backslash 
+blacktriangleright
+\backslash 
+)
+\newline 
+
+\backslash 
+(
+\backslash 
+blacktriangle
+\backslash 
+)
+\newline 
+
+\backslash 
+(
+\backslash 
+blacktriangledown
+\backslash 
+)
+\newline 
+
+\backslash 
+(
+\backslash 
+blacklozenge
+\backslash 
+)
+\newline 
+
+\backslash 
+(
+\backslash 
+blacksquare
+\backslash 
+)
+\layout Subsection*
+
+Ding 1 (PSNFSS Fonts - Zapf Dingbats and Symbols)
+\layout Standard
+\added_space_top 0.3cm \added_space_bottom 0.3cm \align center \LyXTable
+multicol4
+6 6 0 0 -1 -1 -1 -1
+1 0 0 0
+1 0 0 0
+1 0 0 0
+1 0 0 0
+1 0 0 0
+1 1 0 0
+8 1 0 
+8 1 0 
+8 1 0 
+8 1 0 
+8 1 0 
+8 1 1 
+0 8 1 1 0 0 0
+0 8 1 1 0 0 0
+0 8 1 1 0 0 0
+0 8 1 1 0 0 0
+0 8 1 1 0 0 0
+0 8 1 1 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 1 0 0 0
+0 8 1 1 0 0 0
+0 8 1 1 0 0 0
+0 8 1 1 0 0 0
+0 8 1 1 0 0 0
+0 8 1 1 0 0 0
+
+
+\latex latex 
+
+\backslash 
+ding{108}
+\newline 
+
+\backslash 
+ding{109}
+\newline 
+
+\backslash 
+ding{119}
+\newline 
+
+\backslash 
+Pisymbol{psy}{197}
+\newline 
+
+\backslash 
+Pisymbol{psy}{196}
+\newline 
+
+\backslash 
+Pisymbol{psy}{183}
+\newline 
+
+\backslash 
+ding{71}
+\newline 
+
+\backslash 
+ding{70}
+\newline 
+
+\backslash 
+ding{118}
+\newline 
+
+\backslash 
+ding{117}
+\newline 
+
+\backslash 
+Pisymbol{psy}{224}
+\latex default 
+
+\newline 
+
+\latex latex 
+
+\backslash 
+Pisymbol{psy}{215}
+\latex default 
+
+\newline 
+
+\latex latex 
+
+\backslash 
+ding{111}
+\newline 
+
+\backslash 
+ding{112}
+\newline 
+
+\backslash 
+ding{113}
+\latex default 
+
+\newline 
+
+\latex latex 
+
+\backslash 
+ding{114}
+\latex default 
+
+\newline 
+
+\latex latex 
+
+\backslash 
+Pisymbol{psy}{68}
+\latex default 
+
+\newline 
+
+\latex latex 
+
+\backslash 
+Pisymbol{psy}{209}
+\latex default 
+
+\newline 
+
+\latex latex 
+
+\backslash 
+ding{120}
+\newline 
+
+\backslash 
+ding{121}
+\newline 
+
+\backslash 
+ding{122}
+\newline 
+
+\backslash 
+ding{110}
+\latex default 
+
+\newline 
+
+\latex latex 
+
+\backslash 
+ding{115}
+\latex default 
+
+\newline 
+
+\latex latex 
+
+\backslash 
+ding{116}
+\latex default 
+
+\newline 
+
+\latex latex 
+
+\backslash 
+Pisymbol{psy}{42}
+\latex default 
+
+\newline 
+
+\latex latex 
+
+\backslash 
+ding{67}
+\newline 
+
+\backslash 
+ding{66}
+\latex default 
+
+\newline 
+
+\latex latex 
+
+\backslash 
+ding{82}
+\latex default 
+
+\newline 
+
+\latex latex 
+
+\backslash 
+ding{81}
+\latex default 
+
+\newline 
+
+\latex latex 
+
+\backslash 
+ding{228}
+\latex default 
+
+\newline 
+
+\latex latex 
+
+\backslash 
+ding{162}
+\latex default 
+
+\newline 
+
+\latex latex 
+
+\backslash 
+ding{163}
+\latex default 
+
+\newline 
+
+\latex latex 
+
+\backslash 
+ding{166}
+\latex default 
+
+\newline 
+
+\latex latex 
+
+\backslash 
+ding{167}
+\latex default 
+
+\newline 
+
+\latex latex 
+
+\backslash 
+ding{226}
+\latex default 
+
+\newline 
+
+\latex latex 
+
+\backslash 
+ding{227}
+\layout Subsection*
+
+Ding 2
+\layout Standard
+\added_space_top 0.3cm \added_space_bottom 0.3cm \align center \LyXTable
+multicol4
+6 6 0 0 -1 -1 -1 -1
+1 0 0 0
+1 0 0 0
+1 0 0 0
+1 0 0 0
+1 0 0 0
+1 1 0 0
+8 1 0 
+8 1 0 
+8 1 0 
+8 1 0 
+8 1 0 
+8 1 1 
+0 8 1 1 0 0 0
+0 8 1 1 0 0 0
+0 8 1 1 0 0 0
+0 8 1 1 0 0 0
+0 8 1 1 0 0 0
+0 8 1 1 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 1 0 0 0
+0 8 1 1 0 0 0
+0 8 1 1 0 0 0
+0 8 1 1 0 0 0
+0 8 1 1 0 0 0
+0 8 1 1 0 0 0
+
+
+\latex latex 
+
+\backslash 
+ding{37}
+\newline 
+
+\backslash 
+ding{38}
+\newline 
+
+\backslash 
+ding{34}
+\newline 
+
+\backslash 
+ding{36}
+\newline 
+
+\backslash 
+ding{39}
+\newline 
+
+\backslash 
+ding{40}
+\newline 
+
+\backslash 
+ding{41}
+\newline 
+
+\backslash 
+ding{42}
+\newline 
+
+\backslash 
+ding{43}
+\newline 
+
+\backslash 
+ding{44}
+\newline 
+
+\backslash 
+ding{45}
+\newline 
+
+\backslash 
+ding{47}
+\newline 
+
+\backslash 
+ding{53}
+\newline 
+
+\backslash 
+ding{54}
+\newline 
+
+\backslash 
+ding{59}
+\newline 
+
+\backslash 
+ding{57}
+\newline 
+
+\backslash 
+ding{62}
+\newline 
+
+\backslash 
+ding{61}
+\newline 
+
+\backslash 
+ding{55}
+\newline 
+
+\backslash 
+ding{56}
+\newline 
+
+\backslash 
+ding{58}
+\newline 
+
+\backslash 
+ding{60}
+\newline 
+
+\backslash 
+ding{63}
+\newline 
+
+\backslash 
+ding{64}
+\newline 
+
+\backslash 
+ding{51}
+\newline 
+
+\backslash 
+ding{52}
+\latex default 
+
+\newline 
+
+\latex latex 
+
+\backslash 
+Pisymbol{psy}{170}
+\newline 
+
+\backslash 
+Pisymbol{psy}{167}
+\newline 
+
+\backslash 
+Pisymbol{psy}{168}
+\newline 
+
+\backslash 
+Pisymbol{psy}{169}
+\newline 
+
+\backslash 
+ding{164}
+\newline 
+
+\backslash 
+ding{165}
+\newline 
+
+\backslash 
+ding{171}
+\newline 
+
+\backslash 
+ding{168}
+\newline 
+
+\backslash 
+ding{169}
+\newline 
+
+\backslash 
+ding{170}
+\layout Subsection*
+
+Ding 3
+\layout Standard
+\added_space_top 0.3cm \added_space_bottom 0.3cm \align center \LyXTable
+multicol4
+6 6 0 0 -1 -1 -1 -1
+1 0 0 0
+1 0 0 0
+1 0 0 0
+1 0 0 0
+1 0 0 0
+1 1 0 0
+8 1 0 
+8 1 0 
+8 1 0 
+8 1 0 
+8 1 0 
+8 1 1 
+0 8 1 1 0 0 0
+0 8 1 1 0 0 0
+0 8 1 1 0 0 0
+0 8 1 1 0 0 0
+0 8 1 1 0 0 0
+0 8 1 1 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 1 0 0 0
+0 8 1 1 0 0 0
+0 8 1 1 0 0 0
+0 8 1 1 0 0 0
+0 8 1 1 0 0 0
+0 8 1 1 0 0 0
+
+
+\latex latex 
+
+\backslash 
+ding{65}
+\newline 
+
+\backslash 
+ding{76}
+\newline 
+
+\backslash 
+ding{75}
+\newline 
+
+\backslash 
+ding{72}
+\newline 
+
+\backslash 
+ding{80}
+\newline 
+
+\backslash 
+ding{74}
+\newline 
+
+\backslash 
+ding{78}
+\newline 
+
+\backslash 
+ding{77}
+\newline 
+
+\backslash 
+ding{79}
+\newline 
+
+\backslash 
+ding{85}
+\newline 
+
+\backslash 
+ding{90}
+\newline 
+
+\backslash 
+ding{98}
+\newline 
+
+\backslash 
+ding{83}
+\newline 
+
+\backslash 
+ding{84}
+\newline 
+
+\backslash 
+ding{86}
+\newline 
+
+\backslash 
+ding{87}
+\newline 
+
+\backslash 
+ding{88}
+\newline 
+
+\backslash 
+ding{89}
+\newline 
+
+\backslash 
+ding{92}
+\newline 
+
+\backslash 
+ding{91}
+\newline 
+
+\backslash 
+ding{93}
+\latex default 
+
+\newline 
+
+\latex latex 
+
+\backslash 
+ding{105}
+\newline 
+
+\backslash 
+ding{94}
+\newline 
+
+\backslash 
+ding{99}
+\newline 
+
+\backslash 
+ding{103}
+\newline 
+
+\backslash 
+ding{104}
+\newline 
+
+\backslash 
+ding{106}
+\newline 
+
+\backslash 
+ding{107}
+\newline 
+
+\backslash 
+ding{68}
+\newline 
+
+\backslash 
+ding{69}
+\newline 
+
+\backslash 
+ding{100}
+\newline 
+
+\backslash 
+ding{101}
+\newline 
+
+\backslash 
+ding{102}
+\newline 
+
+\backslash 
+ding{96}
+\newline 
+
+\backslash 
+ding{95}
+\newline 
+
+\backslash 
+ding{97}
+\layout Subsection*
+
+Ding 4
+\layout Standard
+\added_space_top 0.3cm \added_space_bottom 0.3cm \align center \LyXTable
+multicol4
+6 6 0 0 -1 -1 -1 -1
+1 0 0 0
+1 0 0 0
+1 0 0 0
+1 0 0 0
+1 0 0 0
+1 1 0 0
+8 1 0 
+8 1 0 
+8 1 0 
+8 1 0 
+8 1 0 
+8 1 1 
+0 8 1 1 0 0 0
+0 8 1 1 0 0 0
+0 8 1 1 0 0 0
+0 8 1 1 0 0 0
+0 8 1 1 0 0 0
+0 8 1 1 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 1 0 0 0
+0 8 1 1 0 0 0
+0 8 1 1 0 0 0
+0 8 1 1 0 0 0
+0 8 1 1 0 0 0
+0 8 1 1 0 0 0
+
+
+\latex latex 
+
+\backslash 
+ding{223}
+\latex default 
+
+\newline 
+
+\latex latex 
+
+\backslash 
+ding{224}
+\latex default 
+
+\newline 
+
+\latex latex 
+
+\backslash 
+ding{225}
+\latex default 
+
+\newline 
+
+\latex latex 
+
+\backslash 
+ding{232}
+\latex default 
+
+\newline 
+
+\latex latex 
+
+\backslash 
+ding{229}
+\newline 
+
+\backslash 
+ding{230}
+\latex default 
+
+\newline 
+
+\latex latex 
+
+\backslash 
+ding{238}
+\latex default 
+
+\newline 
+
+\latex latex 
+
+\backslash 
+ding{237}
+\latex default 
+
+\newline 
+
+\latex latex 
+
+\backslash 
+ding{236}
+\latex default 
+
+\newline 
+
+\latex latex 
+
+\backslash 
+ding{235}
+\latex default 
+
+\newline 
+
+\latex latex 
+
+\backslash 
+ding{234}
+\latex default 
+
+\newline 
+
+\latex latex 
+
+\backslash 
+ding{233}
+\latex default 
+
+\newline 
+
+\latex latex 
+
+\backslash 
+ding{239}
+\latex default 
+
+\newline 
+
+\latex latex 
+
+\backslash 
+ding{241}
+\latex default 
+
+\newline 
+
+\latex latex 
+
+\backslash 
+ding{250}
+\newline 
+
+\backslash 
+ding{251}
+\newline 
+
+\backslash 
+ding{49}
+\newline 
+
+\backslash 
+ding{50}
+\latex default 
+
+\newline 
+
+\latex latex 
+
+\backslash 
+ding{217}
+\newline 
+
+\backslash 
+ding{245}
+\latex default 
+
+\newline 
+
+\latex latex 
+
+\backslash 
+ding{243}
+\latex default 
+
+\newline 
+
+\latex latex 
+
+\backslash 
+ding{248}
+\latex default 
+
+\newline 
+
+\latex latex 
+
+\backslash 
+ding{252}
+\latex default 
+
+\newline 
+
+\latex latex 
+
+\backslash 
+ding{253}
+\latex default 
+
+\newline 
+
+\latex latex 
+
+\backslash 
+ding{219}
+\newline 
+
+\backslash 
+ding{213}
+\newline 
+
+\backslash 
+ding{221}
+\newline 
+
+\backslash 
+ding{222}
+\newline 
+
+\backslash 
+ding{220}
+\newline 
+
+\backslash 
+ding{212}
+\newline 
+
+\backslash 
+Pisymbol{psy}{174}
+\newline 
+
+\backslash 
+Pisymbol{psy}{222}
+\newline 
+
+\backslash 
+ding{254}
+\newline 
+
+\backslash 
+ding{242}
+\newline 
+
+\backslash 
+ding{231}
+\newline 
+
+\backslash 
+Pisymbol{psy}{45}
+\the_end

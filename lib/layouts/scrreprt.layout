@@ -1,0 +1,18 @@
+#% Do not delete the line below; configure depends on this
+#  \DeclareLaTeXClass[scrreprt]{report (koma-script)}
+# KOMA scrreprt textclass definition file.
+# Bernd Rellermeyer <100.41728@germanynet.de>, 1998/7/11.
+
+# General textclass parameters
+Input scrclass.inc
+
+# Modify bibliography
+Style Bibliography
+  TopSep                4
+  LabelString           Bibliography
+
+  LabelFont 
+    Series              Bold
+    Size                Largest
+  EndFont
+End

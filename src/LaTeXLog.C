@@ -1,0 +1,69 @@
+#include <config.h>
+
+#include <stdlib.h>
+#include FORMS_H_LOCATION
+#include "buffer.h"
+#include "latexoptions.h"
+#include "lyx_main.h"
+#include "LString.h"
+#include "FileInfo.h"
+#include "filetools.h"
+#include "pathstack.h"
+#include "lyxrc.h"
+#include "BufferView.h"
+#include "gettext.h"
+
+// 	$Id: LaTeXLog.C,v 1.1 1999/09/27 18:44:36 larsbj Exp $	
+
+#if !defined(lint) && !defined(WITH_WARNINGS)
+static char vcid[] = "$Id: LaTeXLog.C,v 1.1 1999/09/27 18:44:36 larsbj Exp $";
+#endif /* lint */
+
+/* Prototypes */
+extern FD_LaTeXLog *fd_latex_log;
+extern BufferView *current_view;
+
+void ShowLatexLog()
+{
+    LString filename, fname, bname, path;
+    bool use_build = false;
+
+    filename = current_view->currentBuffer()->getFileName();
+    if (!filename.empty()) {
+	fname = SpaceLess(ChangeExtension(filename, ".log", true));
+	bname = SpaceLess(ChangeExtension(filename, lyxrc->literate_extension + ".out", true));
+	path = OnlyPath(filename);
+	if (lyxrc->use_tempdir || (IsDirWriteable(path) < 1)) {
+		path = current_view->currentBuffer()->tmppath;
+	}
+	FileInfo f_fi(path + fname), b_fi(path + bname);
+	if (b_fi.exist())
+	    if ( ! f_fi.exist()
+		 || f_fi.getModificationTime() < b_fi.getModificationTime())
+	        use_build = true; // If no Latex log or Build log is newer, show Build log
+	PathPush(path); // path to LaTeX file
+    }
+    if (!fl_load_browser(fd_latex_log->browser_latexlog,
+			 (use_build)?bname.c_str():fname.c_str()))
+        fl_add_browser_line(fd_latex_log->browser_latexlog, _("NO LATEX LOG FILE!"));
+    if (fd_latex_log->LaTeXLog->visible) {
+	fl_raise_form(fd_latex_log->LaTeXLog);
+    }
+    else {
+	fl_show_form(fd_latex_log->LaTeXLog,
+		     FL_PLACE_MOUSE | FL_FREE_SIZE,FL_FULLBORDER,
+		     (use_build)?_("Build Program Log"):_("LaTeX Log"));
+    }
+    if (!filename.empty())
+        PathPop();
+}
+
+void LatexLogClose(FL_OBJECT *, long)
+{
+    fl_hide_form(fd_latex_log->LaTeXLog);
+}
+
+void LatexLogUpdate(FL_OBJECT *, long)
+{
+    ShowLatexLog();
+}

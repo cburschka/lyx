@@ -1,0 +1,75 @@
+# This file is part of
+# ==================================================================
+#
+#                   LyX, the Document Processor
+#
+#               Copyright (C) 1997 LyX Team
+#
+#                      Version 0.1, May 28 1997
+#
+# ==================================================================
+
+# This file provides math mode keys.  Most were suggested by John Weiss 
+# and modified by Alejandro Aguilar Sierra to be used with different 
+# keyboard layouts.
+#
+# This file is automatically included from the main bind file.
+#
+# DO NOT CHANGE THIS BINDING FILE! It will be replaced
+# with every new install of LyX and your changes will be lost.
+# Instead, copy it to ~/.lyx/bind/math.bind and modify that copy.
+
+# Note that the order of these is important.  If you put the bindings
+# that need "period" and "parenleft" first, they flood the minibuffer
+# and make the keybinding hints impossible to read.  That's why they're
+# at the end.
+
+# These are defined for the math menu:
+
+\bind "M-m f"			"math-insert frac"
+\bind "M-m s"			"math-insert sqrt"
+\bind "M-m e"			"math-insert ^"
+\bind "M-m x"			"math-insert _"
+\bind "M-m u"			"math-insert sum"
+\bind "M-m i"			"math-insert int"
+\bind "M-m m"			"math-mode"
+\bind "M-m d"			"math-display"
+
+\bind "M-m g"			"math-greek"
+\bind "M-m S-G"			"math-greek-toggle" 
+\bind "M-m o"			"math-insert oint"
+\bind "M-m p"			"math-insert partial"
+\bind "M-m r"			"math-insert root"
+\bind "M-m l"			"math-limits"
+
+\bind "M-m n"			"math-number"
+\bind "M-m S-N"			"math-nonumber"
+\bind "M-m 8"			"math-insert infty"
+\bind "M-m v"			"accent-vector"
+
+# The accent-circumflex is 'h' for 'hat', which is what most math
+# folks call it verbally.
+
+\bind "M-m b"			"math-insert overline"
+\bind "M-m h"			"accent-circumflex"
+\bind "M-m ~S-period"		"accent-dot"
+\bind "M-m ~S-asciitilde"	"accent-tilde"
+\bind "M-m ~S-apostrophe"	"math-insert prime"
+\bind "M-m ~S-quotedbl" 	"accent-umlaut"
+
+
+# These do pairs of: () {} [] <> ||
+
+\bind "M-m ~S-parenleft"	"math-delim ( )"
+\bind "M-m ~S-bracketleft"	"math-delim [ ]"
+\bind "M-m ~S-braceleft"	"math-delim { }"
+\bind "M-m ~S-less"		"math-delim langle rangle"  
+\bind "M-m ~S-greater"		"math-delim rangle langle"
+\bind "M-m ~S-bar"		"math-delim | |"
+
+
+# Note: it's easy to insert binary relations like \pm, \mp, \neq, \geq, 
+# and \leq just by typing them. However it's easier to remember these:
+
+\bind "M-m ~S-plus"		"math-insert pm" 
+\bind "M-m ~S-equal"		"math-insert neq"

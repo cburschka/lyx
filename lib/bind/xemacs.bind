@@ -1,0 +1,299 @@
+# This file is part of
+# ==================================================================
+#
+#                   LyX, the High Level Word Processor
+# 
+#                  Copyright (C) 1995-1997 The LyX Team
+#
+#               THIS FILE DEFINES THE XEMACS LYX BINDINGS
+#
+# ==================================================================
+
+#
+# This is the XEMACS flavour bind file, based on the bindings found 
+# in the XEmacs editor. It has many bindings identical to the
+# Emacs binding file although there are a few significant changes.
+#
+#
+# DO NOT CHANGE THIS DEFAULT BINDING FILE! It will be replaced
+# with every new install of LyX and your changes will be lost. 
+# Instead, customize a copy of this file placed in 
+# ~/.lyx/bind/xemacs.bind
+#
+# Happy tuning!
+
+\bind "C-~S-at"			"mark-on"
+\bind "C-a"			"line-begin"
+\bind "C-b"			"char-backward"
+#bind "C-c"			"------" # see end of file
+\bind "C-d"			"delete-forward"
+\bind "C-e"			"line-end"
+\bind "C-f"			"char-forward"
+\bind "C-g"			"cancel"
+
+# help in emacs
+\bind "C-h"                    "hyphenation-point-insert" 
+\bind "C-i"                    "hfill-insert"
+#bind "C-j"                    "------"
+\bind "C-k"                    "line-delete-forward"
+\bind "C-l"                    "screen-recenter"
+\bind "C-m"                    "mark-toggle"
+\bind "C-n"                    "down"
+\bind "C-o"                    "open-stuff"
+\bind "C-p"                    "up"
+
+# this is "quoted-insert" a total different meaning from "quote-insert"
+\bind "C-q"                    "quote-insert"
+#bind "C-r"                    "------"
+\bind "C-s"                    "find-replace"
+\bind "M-~S-percent"		"find-replace"
+
+# should be "chars-transpose" (swaps two chars)
+#bind "C-t"                    "------"
+
+# universal argument in emacs
+\bind "C-u"                    "font-underline"
+
+# better name would be "scroll-up" as in emacs
+\bind "C-v"                    "screen-down"
+\bind "M-v"                    "screen-up"
+
+\bind "C-w"                    "cut"
+#bind "C-x"                    "------"
+\bind "C-y"                    "paste"
+\bind "C-S-Y"                  "layout-paste"
+
+#should be "lyx-iconify"
+#bind "C-z"                    "------"   # see end of file
+
+\bind "C-~S-slash"             "undo"
+\bind "C-~S-underscore"        "undo"
+
+\bind "S-C-quotedbl"           "quote-insert"
+
+\bind "C-x a"                  "buffer-auto-save"
+\bind "C-x b"                  "buffer-previous"
+\bind "C-x c"                  "lyx-quit"
+\bind "C-x d"                  "buffer-new"
+\bind "C-x g"                  "buffer-view-ps"
+\bind "C-x k"                  "buffer-close"
+\bind "C-x p"                  "buffer-view"
+\bind "C-x r"                  "buffer-typeset"
+# Should have been "buffer-write-some"
+# \bind "C-x s"                  "buffer-write"
+\bind "C-x t"                  "buffer-typeset"
+\bind "C-x u"                  "undo"
+\bind "C-x v h"                "vc-history"
+\bind "C-x v v"                "vc-check-in"
+\bind "C-x v u"                "vc-revert"
+\bind "C-x v c"                "vc-undo-last"
+\bind "C-x v i"                "vc-register"
+#\bind "C-x w"                  "buffer-write-as"
+\bind "C-x bracketleft"        "screen-up"
+\bind "C-x bracketright"       "screen-down"
+\bind "C-x quoteleft"		"error-next"
+\bind "C-x C-a"                "buffer-auto-save"
+\bind "C-x C-b"                "menu-open Documents"	# list all buffers
+\bind "C-x C-c"                "lyx-quit"
+\bind "C-x C-d"                "buffer-new"
+\bind "C-x C-f"                "buffer-open"
+\bind "C-x C-g"                "buffer-view-ps"
+\bind "C-x C-l"			"word-lowcase"		# downcase-region!
+\bind "C-x C-p"                "buffer-view"
+\bind "C-x C-q"                "buffer-toggle-read-only"
+#\bind "C-x C-r"                "buffer-typeset"
+\bind "C-x C-s"                "buffer-write"
+\bind "C-x C-t"                "buffer-typeset"
+\bind "C-x C-u"			"word-upcase"		# upcase-region!
+\bind "C-x C-w"                "buffer-write-as"
+
+#bind "C-1"                    "------"
+#bind "C-2"                    "------"
+#bind "C-3"                    "------"
+#bind "C-4"                    "------"
+#bind "C-5"                    "------"
+#bind "C-6"                    "------"
+#bind "C-7"                    "------"
+#bind "C-8"                    "------"
+#bind "C-9"                    "------"
+#bind "C-0"                    "------"
+
+#bind "F1"                     "help"                          # Not yet implemented!
+#bind "C-F1"                   "help-context"                  # Not yet implemented!
+#\bind "F2"                     "buffer-write"
+#\bind "F3"                     "buffer-open"
+#bind "F4"                     "------"
+#bind "F5"                     "------"
+#bind "F6"                     "------"
+#bind "F7"                     "------"
+#bind "F8"                     "------"
+#bind "F9"                     "------"
+#bind "F10"                    "------"
+
+\bind "M-x"			"command-execute"
+
+
+#
+# Motion group
+#
+
+\bind "C-Right"                "word-forward"
+\bind "C-Left"                 "word-backward"
+\bind "C-Up"                   "paragraph-up"
+\bind "C-Down"                 "paragraph-down"
+\bind "M-bracketleft"          "paragraph-up"
+\bind "M-bracketright"         "paragraph-down"
+\bind "Home"                   "line-begin"
+\bind "End"                    "line-end"
+\bind "C-Home"                 "buffer-begin"
+\bind "C-End"                  "buffer-end"
+\bind "M-~S-less"              "buffer-begin"
+\bind "M-~S-greater"           "buffer-end"
+
+\bind "Prior"                  "screen-up"
+\bind "Next"                   "screen-down"
+
+# A bit like autoindent in c-mode
+\bind "Tab"                     "depth-next"
+
+\bind "C-~S-greater"		"reference-goto"
+\bind "C-~S-less" 		"reference-back"
+
+#
+# Motion + select group
+#
+
+\bind "S-Right"                "forward-select"
+\bind "S-Left"                 "backward-select"
+\bind "S-C-F"                  "forward-select"
+\bind "S-C-B"                  "backward-select"
+\bind "S-Up"                   "up-select"
+\bind "S-Down"                 "down-select"
+\bind "S-C-Right"              "word-forward-select"
+\bind "S-C-Left"               "word-backward-select"
+\bind "S-C-Up"                 "paragraph-up-select"
+\bind "S-C-Down"               "paragraph-down-select"
+\bind "S-Home"                 "line-begin-select"
+\bind "S-End"                  "line-end-select"
+\bind "S-C-A"                  "line-begin-select"
+\bind "S-C-E"                  "line-end-select"
+\bind "S-Prior"                "screen-up-select"
+\bind "S-Next"                 "screen-down-select"
+\bind "S-C-Home"               "buffer-begin-select"
+\bind "S-C-End"                "buffer-end-select"
+
+
+#
+# Edit group
+#
+
+\bind "M-Delete"		"word-delete-backward"
+\bind "C-Delete"		"word-delete-forward"
+\bind "M-d"                     "word-delete-forward"
+\bind "C-BackSpace"		"word-delete-backward"
+\bind "M-Return"		"break-paragraph-keep-layout"
+\bind "C-Return"		"break-line"
+\bind "C-space"			"protected-space-insert"
+\bind "C-period"		"end-of-sentence-period-insert"
+\bind "M-period"		"dots-insert"
+\bind "M-w"			"copy"
+\bind "M-S-W"			"layout-copy"
+\bind "Escape"			"meta-prefix"
+
+## Trying to incorporate the best of AucTeX and HM--HTML modes
+##
+# "C-z" is used in HM--HTML-mode for paragraph styles so try to support
+#  similar here especially for LinuxDoc (although LinuxDoc isn't only for
+#  making HTML).
+##
+\bind "C-c C-l"                 "latex-view-log"        # show warning log
+\bind "C-c C-o"                 "error-next"
+\bind "C-c C-v"                 "buffer-chktex"         # validate
+
+\bind "C-z space"		"drop-layouts-choice"
+\bind "C-z 1"			"layout Title" 
+\bind "C-z 2"			"layout Section" 
+\bind "C-z 3"			"layout Subsection"  
+\bind "C-z 4"			"layout Subsubsection"    
+\bind "C-z 5"			"layout Paragraph"        
+\bind "C-z 6"			"layout Subparagraph"
+\bind "C-z a"			"layout Author"		# address!!
+\bind "C-z S-A"			"layout Abstract"
+\bind "C-z c"			"layout LyX-Code"
+\bind "C-z b"			"font-bold"
+\bind "C-z d"			"layout Description"
+\bind "C-z S-D"			"layout Date"
+\bind "C-z e"			"font-emph"
+\bind "C-z i"			"layout Itemize"	# smart-insert-item!!
+\bind "C-z o"			"font-emph"		# italic!
+\bind "C-z q"			"layout Quote"
+\bind "C-z s"			"font-bold"		# strong!
+\bind "C-c t"			"font-sans"		# typewriter!
+\bind "C-c v"			"font-roman"		# variable!
+\bind "C-z S-V"			"layout Verbatim"
+
+\bind "C-z l d"			"layout Description"
+\bind "C-z l t"			"layout Description"
+\bind "C-z l o"			"layout Enumerate"	# numbered list
+\bind "C-z l l"			"layout Itemize"	# bulleted list
+\bind "C-z l u"			"layout Itemize"	# bulleted list
+#
+## End HM--HTML Mode
+##
+## Start AucTeX
+#
+#\bind "C-u C-c C-f"		"layout-character"
+\bind "C-c C-f C-b"		"font-bold"
+\bind "C-c C-f C-c"		"font-noun"
+\bind "C-c C-f C-e"		"font-emph"
+\bind "C-c C-f C-i"		"font-emph" #italic
+\bind "C-c C-f C-s"		"font-emph" #slanted
+
+\bind "C-c C-f C-f"		"font-sans"
+\bind "C-c C-f C-r"		"font-roman"
+\bind "C-c C-f C-t"		"font-code"  #typewriter
+
+\bind "C-c asciitilde"		"math-mode"
+
+\bind "C-c quoteleft"		"error-next"
+
+\bind "C-c C-s 0"		"layout Standard"
+\bind "C-c C-s 1"		"layout Chapter"
+\bind "C-c C-s 2"		"layout Section"
+\bind "C-c C-s 3"		"layout Subsection"
+\bind "C-c C-s 4"		"layout Subsubsection"
+\bind "C-c C-s 5"		"layout Paragraph"
+\bind "C-c C-s 6"		"layout Subparagraph"
+\bind "C-c C-e a"		"layout Abstract"
+\bind "C-c C-e d"		"layout Description"
+\bind "C-c C-e e"		"layout Enumerate"
+\bind "C-c C-e i"		"layout Itemize"
+\bind "C-c C-e l"		"layout List"
+\bind "C-c C-e m"		"math-display"	# should this be math-mode?
+\bind "C-c C-e q"		"layout Quote"
+\bind "C-c C-e S-q"		"layout Quotation"
+\bind "C-c C-e v"		"layout Quote"
+
+\bind "C-c C-e f"		"figure-insert"  ## should be figure-float
+\bind "C-c C-e t"		"table-insert"   ## should be table-float
+
+\bind "C-c percent"		"layout Comment"
+
+\bind "C-c Return"		"break-paragraph-keep-layout"
+#
+## End AucTeX
+#
+## Start TeX mode, some overlap with AucTeX mode
+#
+\bind "C-c C-b"			"buffer-typeset"
+\bind "C-c C-p"			"buffer-print"
+\bind "C-c C-r"			"buffer-typeset"	# tex region
+#
+## End TeX mode
+#
+
+################################
+# Include menu and math bindings
+
+\bind_file menus.bind
+\bind_file math.bind

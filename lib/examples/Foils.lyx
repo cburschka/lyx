@@ -1,0 +1,547 @@
+#This file was created by <lasgoutt> Mon Apr 20 15:52:03 1998
+#LyX 0.12 (C) 1995-1998 Matthias Ettrich and the LyX Team
+\lyxformat 2.15
+\textclass foils
+\begin_preamble
+\raggedright
+\MyLogo{-\LyX{} and \FoilTeX{}: What a team!-}
+\end_preamble
+\options dvips
+\language default
+\inputencoding default
+\fontscheme default
+\graphics dvips
+\paperfontsize default
+\spacing single 
+\papersize Default
+\paperpackage a4
+\use_geometry 0
+\use_amsmath 0
+\paperorientation portrait
+\paperwidth 0cm
+\paperheight 0cm
+\leftmargin 0cm
+\topmargin 0cm
+\rightmargin 0cm
+\bottommargin 0cm
+\headheight 0cm
+\headsep 0cm
+\footskip 0cm
+\secnumdepth 0
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\quotes_times 2
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\bullet 0
+	5
+	2
+	-1
+\end_bullet
+\bullet 1
+	5
+	4
+	-1
+\end_bullet
+\bullet 2
+	4
+	8
+	-1
+\end_bullet
+\bullet 3
+	1
+	3
+	-1
+\end_bullet
+
+\layout Title
+
+Foils Class
+\latex latex 
+
+\newline 
+
+\backslash 
+vspace{7pt}
+\backslash 
+hrule height 7pt
+\layout Author
+
+
+\noun on 
+Allan Rae 
+\noun default 
+and The LyX Team
+\layout Date
+
+November 19 1997
+\layout Abstract
+
+LyX and FoilTeX combine to provide a powerful presentation package for creating
+ 
+\begin_inset Quotes eld
+\end_inset 
+
+foils
+\begin_inset Quotes erd
+\end_inset 
+
+ also known as slides and overhead transparencies.
+\layout Foilhead
+
+This is a Foilhead
+\layout LaTeX
+
+
+\backslash 
+hrule height 3pt 
+\layout Standard
+
+A Foilhead starts a new foil.
+ A 
+\emph on 
+short
+\emph default 
+ version is also provided that reduces the separation between the Foilhead
+ and the body of the foil.
+ Almost all the environments found in other classes are also supported.
+\layout Itemize
+
+
+\latex latex 
+
+\backslash 
+zerolistvertdimens{}
+\latex default 
+The new Itemize Bullet Selection popup
+\begin_deeper 
+\layout Itemize
+
+is tailor-made for use with the foils class
+\begin_deeper 
+\layout Itemize
+
+allowing you to select the bullet used
+\begin_deeper 
+\layout Itemize
+
+at each of the four levels of the Itemize environment
+\end_deeper 
+\end_deeper 
+\end_deeper 
+\layout Itemize
+
+NOTE: to get the full capabilities of the Itemize Bullet Selection popup
+ read the Special Tools manual and the ItemizeBullets.lyx file included with
+ the examples.
+\layout Itemize
+
+NOTE 2: To get your list spacing small like this use the FoilTeX command:
+ 
+\family typewriter 
+
+\backslash 
+zerolistvertdimens{}
+\family default 
+ set as TeX at the start of the first item.
+\layout ShortFoilhead
+
+This is a ShortFoilhead
+\layout LaTeX
+
+
+\backslash 
+hrule height 3pt
+\layout Standard
+
+The foils class has been extended to provide two additional bullet-lists.
+ These lists are namely:
+\layout TickList
+
+TickList
+\layout Standard
+
+and
+\layout CrossList
+
+CrossList
+\layout Standard
+
+These two lists were added because the listing of do's and don'ts or good
+ and bad are relatively common in foils.
+ Providing a dedicated paragraph style for these occasions should allow
+ faster entry and simplify interaction with LyX.
+\layout Rotatefoilhead
+
+Rotatefoilhead
+\layout LaTeX
+
+
+\backslash 
+hrule height 3pt
+\layout Itemize
+
+Create landscape foils by using Rotatefoilhead
+\layout Itemize
+
+Note that if you are viewing this with xdvi the page will appear to overrun
+ the page dimensions because it xdvi doesn't rotate the text
+\layout Itemize
+
+If you view this document using ghostview or something similar then the
+ page should appear rotated.
+ If not then you probably don't have the necessary dvips driver.
+\layout Definition*
+
+There are also several environments specially designed for presenting Theorems,
+ Lemmas, Corollaries, Propositions, Proofs and Definitions.
+ These are available as numbered or unnumbered environments.
+\layout ShortRotatefoilhead
+
+ShortRotateFoilhead
+\layout LaTeX
+
+
+\backslash 
+hrule height 3pt
+\layout Itemize
+
+Again the short version reduces the space below the heading
+\layout Itemize
+
+Another way to control the amount of separation is to adjust the length
+ in the preamble.
+ This will affect both the normal and short versions of foilhead and rotatefoilh
+ead.
+ For example,
+\newline 
+
+\family typewriter 
+ 
+\backslash 
+setlength{
+\backslash 
+foilheadskip}{-0.5in} 
+\family default 
+
+\newline 
+will reduce the spacing by 0.5 inches.
+ Other units include mm (millimeters) and pt (points).
+\layout Itemize
+
+The 
+\emph on 
+short
+\emph default 
+ versions of the foilheads reduce the separation by 0.5 inches (approximately
+ 12.5mm).
+\layout ShortFoilhead
+
+Tricky Proofs
+\layout LaTeX
+
+
+\backslash 
+hrule height 3pt 
+\layout Lemma*
+
+Several consecutive paragraphs of type
+\emph on 
+ Theorem
+\emph default 
+, 
+\emph on 
+Lemma
+\emph default 
+, 
+\emph on 
+Corollary
+\emph default 
+, 
+\emph on 
+Proposition
+\emph default 
+, 
+\emph on 
+Definition
+\emph default 
+, 
+\emph on 
+Proof
+\emph default 
+ or the starred versions of these are part of the same environment.
+\layout Lemma*
+
+As you can see, we are still in the same lemma.
+\layout LaTeX
+
+%
+\layout Lemma*
+
+To force this second Lemma straight after the first it's necessary to add
+ some dividing text or as I've done in this case separate the two by inserting
+ a 
+\emph on 
+LaTeX
+\emph default 
+ environment that simply contains a 
+\begin_inset Quotes eld
+\end_inset 
+
+%
+\begin_inset Quotes erd
+\end_inset 
+
+.
+ This is simply a comment character in LaTeX but the insertion of the LaTeX
+ paragraph is sufficient to fool LyX into correctly handling the multiple
+ environments.
+\layout Lemma*
+
+NOTE: You only have this problem with multiple paragraphs of the same type
+ 
+\emph on 
+not
+\emph default 
+ with different types such as a Proof followed by a Theorem.
+\layout ShortFoilhead
+
+Tables and Figures
+\layout LaTeX
+
+
+\backslash 
+hrule height 3pt 
+\layout Standard
+\added_space_top 0.3cm \added_space_bottom 0.3cm \align center \LyXTable
+multicol4
+3 3 0 0 -1 -1 -1 -1
+1 1 0 0
+1 0 0 0
+1 1 0 0
+8 1 0 
+8 1 0 
+8 1 1 
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+
+Column1
+\newline 
+Column2
+\newline 
+Column3
+\newline 
+A
+\newline 
+
+\emph on 
+simple
+\emph default 
+
+\newline 
+table
+\newline 
+
+\bar under 
+example
+\bar default 
+
+\newline 
+with
+\newline 
+
+\series bold 
+foils
+\layout Standard
+
+Both tables and figures are supported in Foils however floats don't float
+ instead they appear exactly where they appear in the text.
+ Any placement parameters you set will be ignored.
+\begin_float tab 
+\layout Standard
+\align center \LyXTable
+multicol4
+3 3 0 0 -1 -1 -1 -1
+1 1 0 0
+1 0 0 0
+1 1 0 0
+8 1 0 
+8 1 0 
+8 1 1 
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+
+Row1
+\newline 
+
+\emph on 
+Another
+\emph default 
+
+\newline 
+simple
+\newline 
+Row2
+\newline 
+
+\bar under 
+table
+\bar default 
+
+\newline 
+example
+\newline 
+Row3
+\newline 
+
+\series bold 
+with
+\series default 
+
+\newline 
+foils
+\layout Caption
+
+This is a non-floating 
+\begin_inset Quotes eld
+\end_inset 
+
+float
+\begin_inset Quotes erd
+\end_inset 
+
+ table
+\end_float 
+\layout ShortFoilhead
+
+Headers and Footers
+\layout LaTeX
+
+
+\backslash 
+hrule height 3pt
+\layout Standard
+
+FoilTeX provides some powerful header and footer capabilities
+\begin_float footnote 
+\layout Standard
+
+You can also use the standard footnotes like this one.
+\end_float 
+ that are best set in the preamble although they may be set at any point
+ in a document.
+ If you want to change these settings in the document the best place to
+ do so is at the very top of a foil ie.
+ straight after the foilhead.
+\layout Standard
+
+The left-footer is controlled by two commands: 
+\family typewriter 
+
+\backslash 
+MyLogo{}
+\family default 
+ and 
+\family typewriter 
+
+\backslash 
+Restriction{}
+\family default 
+.
+ The first is meant to allow you to include a graphic logo on your foils
+ and defaults to 
+\begin_inset Quotes eld
+\end_inset 
+
+-Typeset by FoilTeX-
+\begin_inset Quotes erd
+\end_inset 
+
+.
+ While the second is meant to provide a classification for the audience
+ eg.
+ Confidential.
+\layout Standard
+
+The remaining corners are controlled by:
+\layout Standard
+
+
+\family typewriter 
+
+\backslash 
+rightfooter{}
+\family default 
+ -- which defaults to page numbers
+\layout Standard
+
+
+\family typewriter 
+
+\backslash 
+rightheader{}
+\layout Standard
+
+
+\family typewriter 
+
+\backslash 
+leftheader{}
+\layout Foilhead
+
+Further Reading
+\layout LaTeX
+
+
+\backslash 
+hrule height 3pt
+\layout Standard
+
+Your LaTeX distribution should include some documentation on FoilTeX.
+ There are many more features in FoilTeX than those described here.
+ For example, FoilTeX can automatically place a horizontal rule between
+ the headers and all foilheads, and between the body and the footers.
+\layout Bibliography
+\bibitem {2}
+
+Jim Hafner, 
+\begin_inset Quotes eld
+\end_inset 
+
+The FoilTeX Class Package
+\begin_inset Quotes erd
+\end_inset 
+
+, 
+\family typewriter 
+.../texmf/texmf/doc/latex/foiltex/foiltex.dvi
+\layout Bibliography
+\bibitem {2}
+
+LyX Documentation Team, 
+\begin_inset Quotes eld
+\end_inset 
+
+Advanced Editing Tools
+\begin_inset Quotes erd
+\end_inset 
+
+.
+\the_end

@@ -1,0 +1,258 @@
+#% Do not delete the line below; configure depends on this
+#  \DeclareLaTeXClass[scrlettr]{letter (koma-script)}
+# KOMA scrlettr textclass definition file. 
+# Bernd Rellermeyer <100.41728@germanynet.de>, 1999/2/17.
+
+# Standard style definition
+Style Standard
+  LatexName             dummy
+  ParSep                0.4
+  AlignPossible         Block, Left, Right, Center
+End
+
+Input stdlists.inc
+
+# Modify Description
+Style Description
+  LabelFont
+    Family              Sans
+  EndFont
+End
+
+# Delete List
+NoStyle List
+
+# Labeling style definition
+Style Labeling
+  Margin		Manual
+  LatexType		List_Environment
+  LatexName             labeling
+  NextNoindent		1
+  LabelSep		xxx
+  ParSkip		0.4
+  TopSep		0.7
+  BottomSep		0.7
+  ParSep		0.5
+  Align			Block
+  AlignPossible		Block, Left
+  LabelType		Manual
+  LabelString		00.00.0000
+End
+
+Input stdlayouts.inc
+
+# Delete Caption
+NoStyle Caption
+
+# Letter style definition
+Style Letter
+  LatexType             Command
+  LatexName             letter
+  KeepEmpty             1
+  LabelSep              xx
+  TopSep                1.5
+  BottomSep             1.5
+  ParSep                1.5
+  Align                 Left
+  AlignPossible         Left
+  LabelType             Static
+  LabelString           "L"
+
+  LabelFont 
+    Series              Bold
+    Shape               Italic
+    Size                Small
+    Color               Blue
+  EndFont
+End
+
+# Opening style definition
+Style Opening
+  CopyStyle             Letter
+  LatexName             lyxopening
+  LabelString           "O"
+
+  Preamble
+    \newcommand{\lyxopening}[1]{\pagebreak\startbreaks\opening{#1}}
+  EndPreamble
+End
+
+# Closing style definition
+Style Closing
+  LatexType             Command
+  LatexName             closing
+  KeepEmpty             0
+  TopSep                1.5
+  BottomSep             1.5
+  ParSep                1.5
+  Align                 Left
+  AlignPossible         Left
+End
+
+# PS style definition
+Style PS
+  LatexType             Command
+  LatexName             ps
+  TopSep                0.4
+  BottomSep             0.4
+  ParSep                0.4
+  Align                 Left
+  AlignPossible         Left
+End
+
+# CC style definition
+Style CC
+  LatexType             Command
+  LatexName             cc
+  LeftMargin            xxxx::xx
+  LabelSep              xx
+  TopSep                0.4
+  BottomSep             0.4
+  ParSep                0.4
+  Align                 Left
+  AlignPossible         Left
+  LabelType             Static
+  LabelString           "cc:"
+End
+
+# Encl style definition
+Style Encl
+  CopyStyle             CC
+  LatexName             encl
+  LabelString           "encl:"
+End
+
+# Name style definition
+Style Name
+  LatexType             Command
+  LatexName             name
+  KeepEmpty             1
+  LeftMargin            xxxxxxxxxxxx::xx
+  LabelSep              xx
+  TopSep                0.4
+  BottomSep             0.4
+  ParSep                0.4
+  Align                 Left
+  AlignPossible         Left
+  LabelType             Static
+  LabelString           "Name:"
+
+  LabelFont 
+    Series              Bold
+    Shape               Italic
+    Color               Blue
+  EndFont
+End
+
+# Signature style definition
+Style Signature
+  CopyStyle             Name
+  LatexName             signature
+  LabelString           "Signature:"
+End
+
+# Address style definition
+Style Address
+  CopyStyle             Name
+  LatexName             address
+  LabelString           "Address:"
+End
+
+# Telephone style definition
+Style Telephone
+  CopyStyle             Name
+  LatexName             telephone
+  LabelString           "Telephone:"
+End
+
+# Place style definition
+Style Place
+  CopyStyle             Name
+  LatexName             place
+  LabelString           "Place:"
+End
+
+# Date style definition
+Style Date
+  CopyStyle             Name
+  LatexName             date
+  LabelString           "Date:"
+End
+
+# Backaddress style definition
+Style Backaddress
+  CopyStyle             Name
+  LatexName             backaddress
+  LabelString           "Backaddress:"
+End
+
+# Specialmail style definition
+Style Specialmail
+  CopyStyle             Name
+  LatexName             specialmail
+  LabelString           "Specialmail:"
+End
+
+# Location style definition
+Style Location
+  CopyStyle             Name
+  LatexName             location
+  LabelString           "Location:"
+End
+
+# Title style definition
+Style Title
+  CopyStyle             Name
+  LatexName             title
+  LabelString           "Title:"
+End
+
+# Subject style definition
+Style Subject
+  CopyStyle             Name
+  LatexName             subject
+  LabelString           "Subject:"
+End
+
+# Yourref style definition
+Style Yourref
+  CopyStyle             Name
+  LatexName             yourref
+  LabelString           "Your ref.:"
+
+  LabelFont 
+    Family              Sans
+    Series              Medium
+    Shape               Up
+    Size                Small
+    Color               None
+  EndFont
+End
+
+# Yourmail style definition
+Style Yourmail
+  CopyStyle             Yourref
+  LatexName             yourmail
+  LabelString           "Your letter of:"
+End
+
+# Myref style definition
+Style Myref
+  CopyStyle             Yourref
+  LatexName             myref
+  LabelString           "Our ref.:"
+End
+
+# Customer style definition
+Style Customer
+  CopyStyle             Yourref
+  LatexName             customer
+  LabelString           "Customer no.:"
+End
+
+# Invoice style definition
+Style Invoice
+  CopyStyle             Yourref
+  LatexName             invoice
+  LabelString           "Invoice no.:"
+End

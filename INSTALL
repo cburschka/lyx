@@ -1,0 +1,380 @@
+Compiling and installing LyX
+============================
+
+Quick compilation guide
+-----------------------
+
+These four steps will compile, test and install LyX:
+
+	1) ./configure
+	   configures LyX to your system.
+
+	2) make
+	   compiles the program.
+
+	3) src/lyx
+	   runs the program so you can check it out.
+
+	4) make install
+	   will install it.
+
+
+Requirements
+------------
+
+You will need to have both an Xforms library and Xpm library to compile 
+LyX.  It is imperative that you have the correct versions of these 
+libraries, and their associated header files.
+
+As of LyX version 1.0.0, you will need to have Xforms library and header
+version 0.81, 0.86, or 0.88.  Version 0.88 is a stable release and the
+recommended version.  On some systems, such as linux ELF, there are shared 
+library versions of the Xforms library, which require an installation step 
+to configure the system.
+
+Xforms is available (free) only in binary format, source code is not
+available.  If it is not available for your machine, contact the Xforms
+developers to request a version for your system.  You can get it from
+
+    http://bragg.phys.uwm.edu/xforms
+    ftp://bragg.phys.uwm.edu/pub/xforms/
+    ftp://ftp.lyx.org/pub/xforms/
+    ftp://ftp.fu-berlin.de/unix/X11/gui/xforms
+    ftp://ftp.cs.ruu.nl/pub/XFORMS/
+
+In addition, you must have libXpm version 4.7 (or newer; 4.8 rumoured
+to work).
+
+libXpm can be found at:
+	    http://www.funet.fi/pub/Linux/sunsite/X11/libs/!INDEX.html
+	    (or similar locations at other sunsites like sunsite.unc.edu)
+
+If you compile LyX with gcc, you should not need to have libg++ installed 
+on most systems.  However, see the note in the section `Problems'.
+
+If you make modifications to files in src/ (for example by applying a 
+patch), you will need to have the GNU gettext package installed, due to 
+some dependencies in the makefiles. You can find the latest (alpha) 
+version from:
+
+    ftp://alpha.gnu.org/gnu/gettext-0.10.xx.tar.gz.
+
+LyX contains a hack to work around this, but you should not rely too
+much on it.
+
+
+Finally, the two following programs should be available at
+configuration time:
+
+  o Perl (at least 5.002) is needed for the reLyX script. reLyX will
+    not be installed if perl is not found.  If the environment
+    variable PERL is set to point to some program, this value will be
+    used, even if the program does no exist (this can be useful if
+    the machine on which LyX is built is not the one where it will
+    run). 
+
+  o LaTeX2e should be correctly setup for the user you are logged
+    as. Otherwise, LyX will not be able to run a number of tests. Note
+    that users can run these tests manually with Option->Configure.
+
+
+Creating the Makefile
+---------------------
+
+LyX can be configured using GNU autoconf utility which attempts to guess 
+the configuration needed to suit your system.  The standard way to use it 
+is described in the file INSTALL.autoconf.  In most cases you will be able 
+to create the Makefile by typing
+
+  ./configure
+
+For more complicated cases, LyX configure takes the following specific
+flags:
+
+  o --with-extra-lib=DIRECTORY that specifies the path where LyX will find
+    extra libraries (Xpm, xforms) it needs.  Defaults to NONE (i.e. search 
+    in standard places).  You can specify several directories, separated
+    by colons.
+
+  o --with-extra-inc=DIRECTORY that gives the place where LyX will find
+    xforms headers.  Defaults to NONE (i.e.  search in standard places).
+    You can specify several directories, separated by colons.
+
+  o --with-extra-prefix[=DIRECTORY] that is equivalent to
+       --with-extra-lib=DIRECTORY/lib --with-extra-inc=DIRECTORY/include
+   If DIRECTORY is not specified, the current prefix is used.
+
+  o --with-two-colors=[yes|no] that forces LyX to use two colors pixmaps
+    (bitmaps) instead of the full-colored standard ones.  Defaults to no.
+
+
+There are also flags to control the internationalization support in
+LyX:
+
+  o --disable-nls suppresses all internationalization support,
+    yielding a somewhat smaller code. 
+
+  o --with-included-gettext forces the use of the included GNU gettext
+    library, although you might have another one installed.
+
+  o --with-catgets allows to use the catget() functions which can
+    exist on your system.  This can cause problems, though. Use with
+    care.
+
+  o You can also set the environment variable LINGUAS to a list of
+    language in case ou do not want to install all the translation 
+    files. For example, if you are only interested in German and
+    Finnish, you can type (with sh or bash)
+        export LINGUAS='de fi'
+    before running configure.
+
+Moreover, the following generic configure flags may be useful:
+
+  o --prefix=DIRECTORY specifies the root directory to use for
+    installation. [defaults to where lyx has already been installed or
+    /usr/local]
+
+  o --program-suffix=STRING sets the name of the installed LyX binary and 
+      of the LyX library directory to lyxSTRING. This may be used to
+      compile lyx as lyx-1.0.0 and avoid clashes with earlier/later versions.
+
+  o --datadir=DIRECTORY gives the directory where all extra LyX 
+    files (lyxrc example, documentation, templates and layouts
+    definitions) will be installed. 
+    [defaults to ${prefix}/share/lyx${program_suffix}]
+
+  o --bindir=DIRECTORY gives the directory where the lyx binary
+    will be installed. [defaults to ${prefix}/bin]
+
+  o --mandir=DIRECTORY gives the directory where the man pages will go.
+    [defaults to ${prefix}/man]
+
+Note that the --with-extra-* commands are not really robust when it
+comes to use of relative paths.  If you really want to use a relative path
+here, you can prepend it with "`pwd`/". 
+
+If you do not like the default compile flags used (-g -O2 on gcc), you can 
+set CXXFLAGS variable to other values as follows:
+
+  o CXXFLAGS='-O2' (sh, bash)
+  o setenv CXXFLAGS '-O2' (csh, tcsh)
+
+Similarly, if you want to force the use of some specific compiler, you can 
+give a value to the CXX variable.
+
+If you encounter problems, please read the section 'Problems' at the end of 
+this file. 
+
+In particular, the following options could be useful in some
+desperate cases:
+
+  o --with-debug that specifies whether you want to have debug information
+    by default on standard error.  Default is no. 
+
+  o --with-warnings that make the compiler output more warnings during
+    the compilation of LyX.  Opposite is --without-warnings.  By default,
+    this flag is on for development versions only.
+
+  o --with-broken-headers that provides prototypes to replace functions
+    not correctly defined in SunOS4 and SCO header files.  Its only effect is
+    to suppress a few warnings.  It is autodetected by default.
+
+  o --without-latex-config that disables the automatic detection of your
+    latex.  This detection is automatically disabled if latex cannot be found. 
+    If you find that you have to use this flag, please report it as a bug.
+
+  o --with-broken-const attempts to fix a bug in gcc 2.7.[012] (see the
+    section 'Problems').
+
+  o ---with-gcc-hack which provide a wrapper around gcc that tries to
+    compile without optimization after a compilation failed (see the
+    section 'Problems').
+
+  o --without-liberty suppresses the detection of the -liberty library
+    (see the section 'Problems').
+
+
+Compiling and installing LyX
+----------------------------
+
+Once you've got the Makefile created, you just have to type:
+
+  make all
+  make install
+
+All should be OK ;)
+
+BTW: in the images subdirectory there is also a small icon "lyx.xpm",
+that can be used to display lyx-documents in filemanagers.
+
+If configure fails for some strange reason
+------------------------------------------
+
+Even when configure fails, it creates a Makefile.  You always can check
+the contents of this file, modify it and run 'make'.
+
+Compiling For Multiple Architectures
+------------------------------------
+
+You can compile LyX for more than one kind of computer at the same
+time, by placing the object files for each architecture in their own
+directory.  To do this, you must use a version of `make' that supports
+the `VPATH' variable, such as GNU `make'.  `cd' to the directory where
+you want the object files and executables to go and run the
+`configure' script.  `configure' automatically checks for the source
+code in the directory that `configure' is in and in `..'.
+
+If you have to use a `make' that does not supports the `VPATH'
+variable, you have to compile LyX for one architecture at a time in
+the source code directory.  After you have installed LyX for one
+architecture, use `make distclean' before reconfiguring for another
+architecture.
+
+Stripping LyX
+-------------
+
+A LyX binary for linux is about 1M when compiled without debug-information 
+and with dynamic libraries.  If yours is much bigger you probably compiled 
+it with debug-informations (-g).  If you don't want to debug LyX just enter
+
+          strip src/lyx
+
+before installing.  Note that this is done automatically for public
+versions.
+
+
+Problems
+--------
+
+This section provides several hints that have been submitted by LyX
+team member or users to help compiling on some particular
+architectures. If you find that some of this hints are wrong, please
+notify us.
+
+  o If you have problems indicating that configure cannot find a part of
+    the xforms or Xpm library, use the --with-extra-lib and --with-extra-inc 
+    options of configure to specify where these libraries reside.  
+
+  o Configure will seemingly fail to find xpm.h and forms.h on linux if
+    you did a 'make mrproper' in the kernel directory, because this
+    removes some symbolic links that are needed for compilation. A 'make
+    symlinks' in linux kernel sources fixes that.
+
+  o If you have GNU gettext installed on your system (e.g. on linux),
+    you will get tons of warnings like:
+
+    bullet_forms.C:101: warning: passing `char *' to argument 1 of
+    `__builtin_constant_p(int)' lacks a cast
+
+    These are in harmless warnings caused by a bug in libintl.h, but
+    will be solved if you use --with-included-gettext when configuring
+    LyX.
+
+  o On Digital Unix with cxx, you may have a compilation error in
+    lyx_main.C if you have GNU gettext installed. This is due to a bug
+    in gettext. To solve this, you can either (1) configure with
+    --with-included-gettext or (2) add -D__STDC__ to cxx flags.
+
+  o The configure script seems to hang while it is checking the LaTeX setup.
+    We think that this is not a real problem, but rather a symptom of the 
+    fact that the ec-fonts are being rendered.  This process can take quite 
+    some time, so the remedy is simply to have patience. (The fonts need to 
+    be rendered at some point to be usable anyways.)
+
+  o According to John Collins <collins@phys.psu.edu>, on SunOS 4.1.3 you may 
+    find two sets of X libraries, and they are of course incompatible :-)
+    One is the set provided as part of OpenWindows, and one is the standard
+    X distribution (e.g., X11R5).  If you encounter problems (or if, for
+    some obscure reasons configure cannot find your X libraries) you can
+    use the following options:
+
+     o --x-libraries=DIRECTORY that indicates where the X libraries reside.
+
+     o --x-includes=DIRECTORY that indicate where the X include files reside.
+
+    The standard X11R5 libraries should work when the OpenWindows ones
+    don't.
+
+  o Some systems lack functions that LyX needs.  To fix this, configure
+    tries to link against the -liberty library, if it is available. 
+    If you experience problems with missing symbols at link time, you 
+    could try to install libiberty.a, which comes with several GNU 
+    packages (in particular libg++).  In any case, please report your 
+    problems to lyx-devel@lists.lyx.org. 
+
+    The option --without-liberty disable the detection of -liberty.  It
+    is meant for debugging purpose only.
+
+  o There are several known bugs in gcc 2.7.xx that cause compiler
+    errors.  This is in particular the case in spellchecker.C under
+    HP-UX 9.05 (ask Bernhard Iselborn <biselbor@rhrk.uni-kl.de> for
+    more comments) and in lyxrc.C under Linux/Alpha or DEC OSF/1.  In
+    both cases, the solution is to recompile the offending file
+    without optimization and resume the compilation process with
+    'make'.  To make things simpler, you can use the option
+    --with-gcc-hack of configure that will do that for you
+    automatically.  
+
+  o According to David Sundqvist <David_Sundqvist@vd.volvo.se>, some
+    changes are needed to compile with aCC on HP-UX 10.20. These are the
+    relevant changes in the makefile (with comments tagged on):  
+
+    CXX = /opt/aCC/bin/aCC 
+    CXXFLAGS = -O +inst_none # The aCC compiler tries to run instantiations
+                             # which currently break.
+
+    LIBS = -lforms -lXpm  -lSM -lICE -lc -lm -lX11 -lCsup # must link with Csup
+    LDFLAGS = -L/opt/aCC/lib # perhaps not needed. 
+
+  o There is a bug in gcc 2.7.[012] in the handling of const which can
+    cause various unpredictable problems.  If you experience weird
+    crashes with a LyX compiled by gcc 2.7.[012], try to configure
+    with the --with-broken-const flag and recompile.  If this improves
+    things, please report it to the mailing list.  Note that this 
+    compiler bug is fixed in gcc 2.7.2.1 and in several Linux 
+    distributions of gcc 2.7.[012].
+
+    This bug is currently not autodetected, but any code to do so
+    would be welcome.  A patch for gcc 2.7.2 is as follows:
+
+*** clean-ss-951203/expr.c      Sun Nov 26 08:18:07 1995
+--- ss-951203/expr.c    Mon Dec  4 11:41:18 1995
+*************** expand_expr (exp, target, tmode, modifie
+*** 4582,4587 ****
+           through a pointer to const does not mean that the value there can
+           never change.  Languages where it can never change should
+           also set TREE_STATIC.  */
+!       RTX_UNCHANGING_P (temp) = TREE_READONLY (exp) | TREE_STATIC (exp);
+        return temp;
+        }
+--- 4582,4588 ----
+           through a pointer to const does not mean that the value there can
+           never change.  Languages where it can never change should
+           also set TREE_STATIC.  */
+!       RTX_UNCHANGING_P (temp) = TREE_READONLY (exp) & TREE_STATIC (exp);
+        return temp;
+        }
+
+
+  o On Digital Unix with gcc, you can get warnings like
+
+warning, LyXFamilyNames not found in original or external symbol tables, value defaults to 0
+warning, LyXSeriesNames not found in original or external symbol tables, value de
+
+    These concern symbols beginning with an uppercase letter and seems
+    to be harmless. Similarly, the compilation can end with the
+    following warning:
+
+/bin/ld:
+Warning: Linking some objects which contain exception information sections
+        and some which do not. This may cause fatal runtime exception handling
+        problems (last obj encountered without exceptions was ../intl/libintl.a).
+
+
+    You can safely ignore it. 
+
+  o Configure fails to work with cxx V5.0-3 on Digital Unix
+    V3.2c.  This is due to a bug in this particular version of cxx. 
+    Contact Achim Bohnet <ach@rosat.mpe-garching.mpg.de> for more
+    details concerning this problem.
+

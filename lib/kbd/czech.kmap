@@ -1,0 +1,54 @@
+#
+# Key definition file for Czech national keyboard for LyX - hope it's OK
+#
+# (c)1995 by Ivan Schreter, schreter@ccsun.tuke.sk
+#
+
+\kmod = acute aceilnorsuyzACEILNORSUYZ	# acute is on '='
+\kmod + caron cdelnrstzCDELNRSTZ	# caron is on Shift-'='
+\kmap ~ ;
+\kmap 1 +		# map numbers to Czech letters and
+\kmap ! 1		# Shift-numbers to numbers
+\kmap 2 "\\v{e}"
+\kmap @ 2
+\kmap 3 "\\v{s}"
+\kmap \# 3
+\kmap 4 "\\v{c}"
+\kmap $ 4
+\kmap 5 "\\v{r}"
+\kmap % 5
+\kmap 6 "\\v{z}"
+\kmap ^ 6
+\kmap 7 "\\'{y}"
+\kmap & 7
+\kmap 8 "\\'{a}"
+\kmap * 8
+\kmap 9 "\\'{\\i}"
+\kmap ( 9
+\kmap 0 "\\'{e}"
+\kmap ) 0
+\kmap - =		# map other keys to reflect Slovak keyboard
+\kmap _ %
+\kmap ; "\\r{u}"
+\kmap : \"
+\kmap ' "\\S{}"
+\kmap \" !
+\kmap [ "\\'{u}"
+\kmap { /
+\kmap ] )
+\kmap } (
+\kmap < ?
+\kmap > :
+\kmap ? _
+\kmap / -
+\kxmod caron o "\\^{o}"		# mapping exception - generate ^ instead for o
+\kxmod caron O "\\^{O}"
+\kxmod caron u "\\r{u}"		# generate circle for u - it's a Czech letter
+\kxmod caron U "\\r{U}"
+\kxmod caron t "\\q{t}"	# use proper caron mark for t, l, d and L
+\kxmod caron l "\\q{l}"
+\kxmod caron L "\\q{L}"
+\kxmod caron d "\\q{d}"
+\kxmod acute i "\\'{\\i}"	# use only root of i for i acute
+
+

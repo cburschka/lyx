@@ -1,0 +1,769 @@
+#% Do not delete the line below; configure depends on this
+#  \DeclareLaTeXClass{article (European Geophysical Society) egs}
+# egs (article) textclass definition file for LyX.
+# Get egs.cls from EGS website under www.copernicus.org
+# Author : Matthias Ettrich <ettrich@informatik.uni-tuebingen.de>
+# Transposed by Pascal André <andre@via.ecp.fr>
+# Heavily modifed and enhanced by several developers.
+# Converted article -> egs Martin Vermeer
+
+# General textclass parameters
+Columns			2
+Sides			1
+PageStyle		Plain
+MaxCounter		Counter_Section
+
+# Standard style definition
+Style Standard
+  Margin  		Static
+  LatexType 		Paragraph
+  LatexName 		dummy
+  ParIndent		MM
+  ParSkip 		0.4
+  Align 		Block
+  AlignPossible 	Block, Left, Right, Center
+  LabelType 		No_Label
+End
+
+# Section style definition
+Style Section
+  Margin		Dynamic
+  LatexType		Command
+  LatexName		section
+  NextNoIndent		1
+  LabelSep		xxx
+  ParSkip		0.4
+  TopSep		1.3
+  BottomSep		0.7
+  ParSep		0.7
+  Align			Block
+  AlignPossible		Block, Left
+  LabelType		Counter_Section
+
+  # standard font definition
+  Font
+    Series 		Bold
+  EndFont
+
+  # label font definition
+  LabelFont
+    Series		Bold
+  EndFont
+End
+
+# Subsection style definition
+Style Subsection
+  Margin		Dynamic
+  LatexType		Command
+  LatexName		subsection
+  NextNoIndent		1
+  LabelSep		xxx
+  ParSkip		0.4
+  TopSep		0.9
+  BottomSep		0.5
+  ParSep		0.5
+  Align			Block
+  AlignPossible		Block, Left
+  LabelType		Counter_Subsection
+
+  Font
+    Shape		Up
+  EndFont
+
+End
+
+# Paragraph style definition
+Style Paragraph
+  Margin		Dynamic
+  LatexType		Command
+  LatexName		paragraph
+  NextNoIndent		1
+  LabelSep		xxx
+  ParSkip		0.4
+  TopSep		0.4
+  BottomSep		0.4
+  Align			Block
+  AlignPossible		Block, Left
+  LabelType		Counter_Paragraph
+
+  # standard font definition
+  Font 
+    Series 		Bold
+    Size		Normal
+  EndFont
+
+  # label font definition
+  LabelFont 
+    Series		Bold
+    Size		Normal
+  EndFont
+End
+
+# Subparagraph style definition
+Style Subparagraph
+  Margin		Dynamic
+  LatexType		Command
+  LatexName		subparagraph
+  NextNoIndent		0
+  LeftMargin		MM
+  LabelSep		xxx
+  ParSkip		0.4
+  TopSep		0.4
+  ParSep		0.4
+  Align			Block
+  AlignPossible		Block, Left
+  LabelType		Counter_SubParagraph
+
+  # standard font definition
+  Font 
+    Series 		Bold
+    Size		Normal
+  EndFont
+
+  # label font definition
+  LabelFont 
+    Series		Bold
+    Size		Normal
+  EndFont
+End
+
+# Quotation style definition
+Style Quotation
+  Margin		Static
+  LatexType		Environment
+  LatexName		quotation
+  NextNoIndent		1
+  LeftMargin		MMM
+  RightMargin		MMM
+  ParIndent		MM
+  ParSkip		0
+  ItemSep		0
+  TopSep		0.5
+  BottomSep		0.5
+  ParSep		0
+  Align			Block
+  AlignPossible		Block, Left, Right, Center
+End
+
+# Quote style definition
+Style Quote
+  Margin		Static
+  LatexType		Environment
+  LatexName		quote
+  NextNoIndent		1
+  LeftMargin		MMM
+  RightMargin		MMM
+  TopSep		0.5
+  ParSep		0.5
+  BottomSep		0.5
+  Align			Block
+  AlignPossible		Block, Left, Right, Center
+  LabelType		No_Label
+End
+
+# List style definition
+Style List
+  Margin		Manual
+  LatexType		List_Environment
+  LatexName		lyxlist
+  NextNoindent		1
+  LabelSep		xxx
+  ParSkip		0.4
+  TopSep		0.7
+  BottomSep		0.7
+  ParSep		0.5
+  Align			Block
+  AlignPossible		Block, Left
+  LabelType		Manual
+  LabelString		00.00.0000
+End
+
+# Enumerate style definition
+Style Enumerate
+  Margin		Static
+  LatexType		Item_Environment
+  LatexName		enumerate
+  NextNoIndent		1
+  LeftMargin		MMN
+  LabelSep		xx
+  ParSkip		0.0
+  ItemSep		0.2
+  TopSep		0.7
+  BottomSep		0.7
+  ParSep		0.3
+  Align			Block
+  AlignPossible		Block, Left
+  LabelType		Counter_EnumI
+End
+
+# Itemize style definition
+Style Itemize
+  Margin		Static
+  LatexType		Item_Environment
+  LatexName		itemize
+  NextNoIndent		1
+  LeftMargin		MMN
+  LabelSep		xx
+  ItemSep		0.2
+  TopSep		0.7
+  BottomSep		0.7
+  ParSep		0.3
+  Align			Block
+  AlignPossible		Block, Left
+  LabelType		Static
+  LabelString		*
+End
+
+# Description style definition
+Style Description
+  Margin		First_Dynamic
+  LatexType		Item_environment
+  LatexName		description
+  NextNoIndent		1
+  LeftMargin		MM
+  LabelSep		xxx
+  ParSkip		0.4
+  ItemSep		0.2
+  TopSep		0.7
+  BottomSep		0.7
+  ParSep		0.3
+  Align			Block
+  AlignPossible		Block, Left
+  LabelType		Manual
+  LabelString		MM
+
+  # label font definition
+  LabelFont 
+    Series		Bold
+  EndFont
+End
+
+# Verse style definition
+Style Verse
+# LaTeX type is first dynamic because of LaTeX implementation.
+# In LyX this does not make sense.
+  LatexType		Environment
+  LatexName		verse
+  Margin		First_Dynamic
+  NextNoIndent		1
+  LeftMargin		MMMM
+  LabelIndent		MMMM
+  ParSkip		0.4
+  TopSep		0.7
+  BottomSep		0.7
+  ParSep		0.5
+  Align			Block
+  AlignPossible		Block, Left
+  LabelType		No_Label
+End
+
+# Right Address style
+Style Right_Address
+  Margin		Right_Address_Box
+  LatexType		Command
+  LatexName		lyxrightaddress
+  ParSkip		0.4
+  BottomSep		1.5
+  ParSep		1.5
+  Align			Left
+  AlignPossible		Left
+End
+
+# Address style definition
+Style Address
+  Margin		Static
+  LatexType		Command
+  LatexName		lyxaddress
+  ParSkip		0.4
+  BottomSep		1.5
+  ParSep		1.5
+  Align			Left
+  AlignPossible		Block, Left, Right, Center
+  LabelType		No_Label
+End
+
+# Title style definition
+Style Title
+  Margin		Static
+  LatexType		Command
+  LatexName		title
+  NextNoIndent		1
+  ParSkip		0.4
+  TopSep		1.3
+  BottomSep		0.7
+  ParSep		0.7
+  Align			Left
+  AlignPossible		Block, Center, Left, Right, Center
+  LabelType		No_Label
+  Fill_Top		1
+  Fill_Bottom		1
+
+  # standard font definition
+  Font 
+    Family  		Sans
+    Series 		Bold
+    Size		Largest
+  EndFont
+
+End
+
+
+# Title style definition
+Style LaTeX_Title
+  Margin		Static
+  LatexType		Command
+  LatexName		title
+  NextNoIndent		1
+  ParSkip		0.4
+  ItemSep		0
+  TopSep		0
+  BottomSep		0
+  ParSep		0
+  Align			Center
+  AlignPossible		Center
+  LabelType		No_Label
+
+  # standard font definition
+  Font 
+    Family  		Sans
+    Series 		Bold
+    Size		Largest
+  EndFont
+
+End
+
+# Author style definition
+Style Author
+  Margin		Static
+  LatexType		Command
+  LatexName		author
+  NextNoIndent		1
+  LeftMargin		Author:xx
+  LabelSep		xxx
+  ParSkip		0.4
+  TopSep		1.3
+  BottomSep		0.7
+  ParSep		0.7
+  Align			Left
+  AlignPossible		Left
+  LabelType		Static
+  LabelString		Author:
+
+  # standard font definition
+  LabelFont 
+    Series 		Bold
+    Shape		Italic
+    Latex		Latex
+  EndFont
+
+End
+
+# Affiliation style definition
+Style Affil
+  Margin		Static
+  LatexType		Command
+  LatexName		affil
+  NextNoIndent		1
+  LeftMargin		Affiliation:x
+  LabelSep		xxx
+  ParSkip		0.4
+  TopSep		1.3
+  BottomSep		0.7
+  ParSep		0.7
+  Align			Left
+  AlignPossible		Left
+  LabelType		Static
+  LabelString		Affilation:
+
+  # standard font definition
+  LabelFont 
+    Series 		Bold
+    Shape		Italic
+    Latex		Latex
+  EndFont
+
+End
+
+# journal name style definition
+Style Journal
+  Margin		Static
+  LatexType		Command
+  LatexName		journal
+  NextNoIndent		1
+  LeftMargin		Journal:xx
+  LabelSep		xxx
+  ParSkip		0.4
+  TopSep		1.3
+  BottomSep		0.7
+  ParSep		0.7
+  Align			Left
+  AlignPossible		Left
+  LabelType		Static
+  LabelString		Journal:
+
+  # standard font definition
+  LabelFont 
+    Series 		Bold
+    Shape		Italic
+    Latex		Latex
+  EndFont
+
+End
+
+# msnumber style definition
+Style msnumber
+  Margin		Static
+  LatexType		Command
+  LatexName		msnumber
+  NextNoIndent		1
+  LabelSep		xxx
+  LeftMargin		MS_number:xx
+  LabelSep		xxx
+  ParSkip		0.4
+  TopSep		1.3
+  BottomSep		0.7
+  ParSep		0.7
+  Align			Left
+  AlignPossible		Left
+  LabelType		Static
+  LabelString		MS_number:
+
+  # standard font definition
+  LabelFont 
+    Series 		Bold
+    Shape		Italic
+    Latex		Latex
+  EndFont
+
+End
+
+
+# FirstAuthor style definition
+Style FirstAuthor
+  Margin		Static
+  LatexType		Command
+  LatexName		firstauthor
+  NextNoIndent		1
+  LabelSep		xxx
+  LeftMargin		1st_author_surname:xx
+  ParSkip		0.4
+  TopSep		1.3
+  BottomSep		0.7
+  ParSep		0.7
+  Align			Left
+  AlignPossible		Left
+  LabelType		Static
+  LabelString		1st_author_surname:
+ 
+  # standard font definition
+  LabelFont 
+    Series 		Bold
+    Shape		Italic
+    Latex		Latex
+  EndFont
+
+End
+
+# Recieved style definition
+Style Received
+  Margin		Static
+  LatexType		Command
+  LatexName		received
+  NextNoIndent		1
+  LabelSep		xxx
+  LeftMargin		Received:xx
+  ParSkip		0.4
+  TopSep		1.3
+  BottomSep		0.7
+  ParSep		0.7
+  Align			Left
+  AlignPossible		Left
+  LabelType		Static
+  LabelString		Received:
+
+  # standard font definition
+  LabelFont 
+    Series 		Bold
+    Shape		Italic
+    Latex		Latex
+  EndFont
+
+End
+
+# Accepted style definition
+Style Accepted
+  Margin		Static
+  LatexType		Command
+  LatexName		accepted
+  NextNoIndent		1
+  LabelSep		xxx
+  LeftMargin		Accepted:xx
+  ParSkip		0.4
+  TopSep		1.3
+  BottomSep		0.7
+  ParSep		0.7
+  Align			Left
+  AlignPossible		Left
+  LabelType		Static
+  LabelString		Accepted:
+
+  # standard font definition
+  LabelFont 
+    Series 		Bold
+    Shape		Italic
+    Latex		Latex
+  EndFont
+
+End
+
+#
+#
+# offsets style definition
+Style Offsets
+  Margin		Static
+  LatexType		Command
+  LatexName		offsets	
+  NextNoIndent		1
+  LabelSep		xxx
+  LeftMargin		Reprint_reqs_To:x
+  ParSkip		0.4
+  TopSep		1.3
+  BottomSep		0.7
+  ParSep		0.7
+  Align			Left
+  AlignPossible		Left
+  LabelType		Static
+  LabelString		reprint_reqs_to:
+
+  # standard font definition
+  LabelFont 
+    Series 		Bold
+    Shape		Italic
+    Latex		Latex
+  EndFont
+
+End
+
+# Date style definition
+Style Date
+  Margin		Dynamic
+  LatexType		Command
+  LatexName		date
+  NextNoIndent		1
+  LabelSep		xxx
+  ParSkip		0.4
+  TopSep		0.9
+  BottomSep		0.5
+  ParSep		0.5
+  Align			Left
+  AlignPossible		Left
+  LabelType		No_Label
+
+End
+
+# Abstract style definition
+Style Abstract 
+  Margin		First_Dynamic
+  LatexType		Environment
+  LatexName		abstract
+  NextNoIndent		0
+  ParIndent		MM
+  LabelSep		x
+  ItemSep		0
+  TopSep		0.7
+  BottomSep		0.7
+  ParSep		0
+  Align			Block
+  AlignPossible		Block, Left
+  LabelType		Static
+  LabelString		Abstract.  
+
+  # label font definition
+  LabelFont 
+    Series		Bold
+  EndFont
+End 
+
+# Acknowledgement(s) style definitions
+Style Acknowledgements
+  Margin		First_Dynamic
+  LatexType		Environment
+  LatexName		acknowledgements
+  NextNoIndent		0
+  ParIndent		MM
+  LabelSep		x
+  ItemSep		0
+  TopSep		0.7
+  BottomSep		0.7
+  ParSep		0
+  Align			Block
+  AlignPossible		Block, Left
+  LabelType		Static
+  LabelString		Acknowledgements. 
+
+  # font & label font definition
+  Font 
+    Size		Small
+  EndFont
+
+  LabelFont 
+    Shape		Italic
+    Size		Small
+  EndFont
+End 
+
+Style Acknowledgement
+  Margin		First_Dynamic
+  LatexType		Environment
+  LatexName		acknowledgement
+  NextNoIndent		0
+  ParIndent		MM
+  LabelSep		x
+  ItemSep		0
+  TopSep		0.7
+  BottomSep		0.7
+  ParSep		0
+  Align			Block
+  AlignPossible		Block, Left
+  LabelType		Static
+  LabelString		Acknowledgement. 
+
+  # font & label font definition
+  Font 
+    Size		Small
+  EndFont
+
+  LabelFont 
+    Shape		Italic
+    Size		Small
+  EndFont
+End 
+#
+# Bibliography style definition
+Style Bibliography
+  Margin		First_Dynamic
+  LatexType		Item_Environment
+#  LatexName		lyxsectionbibliography
+  LatexName		lyxbibliography
+  NextNoIndent		1
+  LeftMargin		MM
+  ParSkip		0.4
+  ItemSep		0
+  TopSep		0.7
+  BottomSep		0.7
+  ParSep		0.5
+  Align			Block
+  AlignPossible		Block, Left
+  LabelType		Top_Environment
+  LabelString		References 
+  LabelBottomSep    0.7
+
+  # label font definition
+  LabelFont 
+    Series		Bold
+  EndFont
+End
+
+# Caption style definition
+Style Caption
+  Margin		First_Dynamic
+  LatexType		Command
+  LatexName		caption
+  LabelSep		xx
+  ParSkip		0.4
+  TopSep		0.5
+  Align			Block
+  AlignPossible		Block, Left
+  LabelType		Sensitive
+  LabelString		Caption
+
+  # label font definition
+  LabelFont 
+    Series		Bold
+  EndFont
+End
+
+# Section* style definition
+Style Section*
+  Margin		Static
+  LatexType		Command
+  LatexName		section*
+  NextNoIndent		1
+  LabelSep		xxx
+  ParSkip		0.4
+  TopSep		1.3
+  BottomSep		0.7
+  ParSep		0.7
+  Align			Block
+  AlignPossible		Block, Left, Right, Center
+  LabelType		No_Label
+
+  # standard font definition
+  Font 
+    Series 		Bold
+#    Size		Larger
+  EndFont
+
+End
+
+# Subsection* style definition
+Style Subsection*
+  Margin		Static
+  LatexType		Command
+  LatexName		subsection*
+  NextNoIndent		1
+  LabelSep		xxx
+  ParSkip		0.4
+  TopSep		0.9
+  BottomSep		0.5
+  ParSep		0.5
+  Align			Block
+  AlignPossible		Block, Left, Right, Center
+  LabelType		No_Label
+
+End
+
+# LaTeX style definition
+Style LaTeX
+  Margin		Static
+  LatexType		Paragraph
+  LatexName		dummy
+  NewLine		0
+  ParIndent		MM
+  ParSkip		0.4
+  ParSep		0.5
+  Align			Block
+  AlignPossible		Block, Left, Right, Center
+  LabelType		No_Label
+  FreeSpacing 	    	1
+
+  # standard font definition
+  Font 
+    Latex		Latex
+  EndFont
+
+End
+
+
+
+# Lyx-Code style definition
+Style LyX-Code
+  Margin		Static
+  LatexType		Environment
+  LatexName		lyxcode
+  NextNoIndent		1
+  LeftMargin		MMM
+  RightMargin		MMM
+  TopSep		0.5
+  BottomSep		0.5
+  Align			Left
+  AlignPossible		Block, Left, Right, Center
+  LabelType		No_Label
+  FreeSpacing 	    	1
+
+  # standard font definition
+  Font 
+    Family  		Typewriter
+  EndFont
+
+End

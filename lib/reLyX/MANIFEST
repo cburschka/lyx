@@ -1,0 +1,42 @@
+******* Files of general interest
+README           - General info, pointer to man page
+MANIFEST         - this file (hopefully)
+CHANGES          - changes from various versions
+BUGS             - bugs (note that some larger bugs are in the man page)
+syntax.default   - file describing LaTeX syntax
+reLyX.man        - man page for using reLyX
+TODO             - future plans
+
+******* Files of interest to developers (maybe)
+reLyXmain.pl     - Executable Perl script to translate LaTeX to LyX
+reLyX.in         - input file to generate wrapper script 'reLyX', which gets
+		   installed in user's path, e.g., /usr/local/bin
+		   reLyX calls reLyXmain.pl
+noweb2lyx.in     - input file to generate noweb2lyx, for converting noweb
+		   file to LyX. noweb2lyx calls reLyX. Alternatively (but
+		   not recursively) reLyX -n calls noweb2lyx
+
+test.ltx         - test tex file
+test.lyx         - LyX file created by running 'reLyX.pl test.ltx'
+
+reLyX.pod        - documentation. Used to generate man page
+		   (could be used to make HTML or text, too!)
+
+*.pm are files containing subroutines (aka modules) which reLyX.pl calls
+MakePreamble.pm  - split off and translate the LaTeX preamble
+CleanTeX.pm      - "Clean" the TeX file
+BasicLyX.pm      - main translation pass
+LastLyX.pm       - final pass: create the LyX file
+ReadCommands.pm  - subs to read and use a file containing LaTeX syntax
+RelyxFigure.pm   - classes & methods for handling LaTeX figures
+RelyxTable.pm    - classes & methods for handling LaTeX tables
+Verbatim.pm      - subs to copy stuff exactly (e.g, \verb or unknown commands)
+
+Text/TeX.pm      - Text::TeX package which contains the TeX parser
+                   ./Text/TeX.pm was originally copied from 
+		   Text-TeX-0.01/Text/TeX.pm, but has been changed.
+Text/manpage.3pm   original manpage for Text::TeX
+
+Text::TeX v0.01 was originally obtained from CPAN, but it has been
+changed rather significantly.  The original package was written by Ilya
+Zakharevich (ilya@math.ohio-state.edu)

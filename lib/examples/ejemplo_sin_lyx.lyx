@@ -1,0 +1,277 @@
+#This file was created by <sergio> Mon May 24 07:03:07 1999
+#LyX 1.0 (C) 1995-1999 Matthias Ettrich and the LyX Team
+\lyxformat 2.15
+\textclass article
+\language spanish
+\inputencoding latin1
+\fontscheme default
+\graphics dvips
+\paperfontsize 12
+\spacing single 
+\papersize a4paper
+\paperpackage a4
+\use_geometry 0
+\use_amsmath 0
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\quotes_times 2
+\papercolumns 1
+\papersides 1
+\paperpagestyle plain
+
+\layout Standard
+
+ESTE ES EL TÍTULO DEL DOCUMENTO
+\begin_inset Info Pista: el título debería parecerse más a un título
+\end_inset 
+
+
+\layout Standard
+
+por Fulanito
+\begin_inset Info Pista: Fulanito es el AUTOR
+\end_inset 
+
+
+\layout Standard
+
+12 de junio de 1972
+\begin_inset Info Pista: Esto es una FECHA
+\end_inset 
+
+
+\layout Standard
+
+Índice general
+\begin_inset Info Pista: Sería estupendo que no tuviésemos que escribir el índice
+de manera explícita
+\end_inset 
+
+
+\layout Standard
+
+1.
+ Filosofía general..................1
+\layout Standard
+
+1.1 Cómo lo hace LyX...............1
+\layout Standard
+
+1.2 Por qué LyX es mejor...............1
+\layout Standard
+
+2.
+ Características de LyX
+\layout Standard
+
+3.
+ Intentos fallidos de usar más cosas de LyX
+\layout Standard
+
+4.
+ Matemáticas
+\layout Standard
+
+---------------------------------------------------
+\layout Standard
+
+1.
+ Filosofía general
+\begin_inset Info Pista: Los títulos de sección deberían resaltar mas
+\end_inset 
+
+
+\layout Standard
+
+La filosofía básica de LyX es que te preocupes del contenido de lo que escribes,
+ no de la forma.
+\layout Standard
+
+1.1 Cómo lo hace LyX
+\layout Standard
+
+LyX utiliza LaTeX, un sistema de preparación de documentos diseñado por
+ Leslie Lamport en 1985.
+ Fue construido sobre un lenguaje de composición llamado TeX, creado por
+ Donald Knuth en 1984.
+ LaTeX está diseñado sobre una filosofía similar a la de LyX.
+ Leslie Lamport dijo (ver referencia [1]) 
+\begin_inset Info Pista: Probablemente esta REFERENCIA A CITA no debería
+estar escrita "directamente". ¿Qué pasaría si ponemos el libro
+de Lamport en la segunda entrada de la bibliografía?
+\end_inset 
+
+:
+\layout Standard
+
+
+\begin_inset Quotes eld
+\end_inset 
+
+La función del diseño tipográfico es ayudar al lector a comprender las ideas
+ del autor.
+ Para que un documento sea fácil de leer, su estructura visual debe reflejar
+ su estructura lógica.
+ Las citas y los programas de ordenador, al ser elementos estructuralmente
+ distintos, deberían distinguirse visualmente uno de otro [...] Como LaTeX
+ no puede entenderte directamente, debes indicarle explícitamente la estructura
+ lógica mediante comandos especiales [...] Mientras escribes el documento,
+ deberías preocuparte de su estructura lógica, no de su apariencia.
+\begin_inset Quotes erd
+\end_inset 
+
+
+\begin_inset Info Pista: Esto es una CITA
+\end_inset 
+
+
+\layout Standard
+
+1.2 Por qué LyX es mejor
+\layout Standard
+
+LyX puede ser útil a más gente que LaTeX.
+ Es considerablemente más fácil de usar, ya que no necesitas aprender LaTeX
+ (que es prácticamente un lenguaje de programación).
+ LyX es básicamente como los demás procesadores de texto 
+\begin_inset Quotes eld
+\end_inset 
+
+lo que ves es lo que obtienes
+\begin_inset Quotes erd
+\end_inset 
+
+, salvo que LyX es 
+\begin_inset Quotes eld
+\end_inset 
+
+lo que ves es lo que quieres decir
+\begin_inset Quotes erd
+\end_inset 
+
+.
+ De esta forma, combina la facilidad de uso de los procesadores de texto
+ con la potencia de LaTeX.
+ Esto es Bueno.
+ Además, el formato de fichero es independiente del ordenador/sistema que
+ uses.
+ Y lo mejor de todo, ¡es LIBRE y GRATUITO!
+\layout Standard
+
+2.
+ Características de LyX
+\layout Standard
+
+LyX posee muchas características que hacen más fácil escribir documentos.
+ (Después de todo, ¿por qué otra cosa lo querrías usar?
+\begin_inset Info Pista: Este comentario entre paréntesis quedaría mejor en una
+nota a pie de página
+\end_inset 
+
+) Estoy MUY EMOCIONADO
+\begin_inset Info Pista: ¡Resáltalo!
+\end_inset 
+
+ de hablarte de ellas.
+ Aquí tienes una lista con sólo unas pocas.
+\layout Standard
+
+* LyX se engarga él solo de los márgenes y la numeración de las notas a
+ pie de página
+\layout Standard
+
+* LyX hace muy simple la edición de fórmulas matemáticas.
+\layout Standard
+
+Para una discusión más filosófica de por qué LyX es mejor que muchos procesadore
+s de texto, mira la sección 1.2, que se encuentra en la página 1.
+\begin_inset Info Pista: Seguramente, estas REFERENCIAS CRUZADAS no
+deberían escribirse "directamente". ¿Y si cambiásemos los
+números de sección?
+\end_inset 
+
+
+\layout Standard
+
+3.
+ Intentos fallidos de usar más cosas de LyX
+\layout Standard
+
+El otro día escribí un programa.
+ Era el siguiente:
+\layout Standard
+
+5 REMARK MI IMPRESIONANTE PROGRAMA
+\layout Standard
+
+10 PRINT 
+\begin_inset Quotes eld
+\end_inset 
+
+¡SOY IMPRESIONANTE!
+\begin_inset Quotes erd
+\end_inset 
+
+
+\layout Standard
+
+20 GOTO 10 
+\begin_inset Info Pista: Esto es código de ordenador
+\end_inset 
+
+
+\layout Standard
+
+Después de este gran esfuerzo científico, empecé a sentirme más artístico,
+ así que escribí este haiku:
+\layout Standard
+
+LyX es un maravilloso
+\layout Standard
+
+Procesador de textos
+\layout Standard
+
+Ahorra tanto tiempo 
+\begin_inset Info Pista: No es muy bueno, pero es poesia, concretamente una
+estrofa
+\end_inset 
+
+
+\layout Standard
+
+4.
+ Matemáticas
+\begin_inset Info Pista: Todas las fórmulas a partir de aquí deberían escribirse
+en modo matematico
+\end_inset 
+
+
+\layout Standard
+
+Mi ecuación favorita es la solución de la ecuación de segundo grado.
+ Si ax^2+bx+c=0 (ec.1), entonces x= -b + o menos la raíz cuadrada de b^2-4ac,
+ todo dividido por 2a (ec.
+ 2).
+\layout Standard
+
+Otra de mis ecuaciones favoritas es la base del cálculo: f'(x) se define
+ como el límite cuando deltax tiende a cero de f(x+deltax) - f(x) dividido
+ por deltax (ec.
+ 3).
+\layout Standard
+
+------------------------------------------------
+\layout Standard
+
+REFERENCIAS
+\layout Standard
+
+[1] Lamport, Leslie.
+ LaTeX: A Document Preparation System.
+ Addison-Wesley, Reading, Massachusetts, segunda edición, 1994.
+\the_end

@@ -1,0 +1,354 @@
+#! /bin/sh
+dnl Use 'make' to create configure from this m4 script.
+# This script is a hand-made configure script. It contains a lot of
+# code stolen from GNU autoconf. I removed all the code that was not
+# useful for configuring a LyX installation.
+
+
+dnl ######### Begin M4 macros #########################################
+dnl This is a template for my stripped-down configure script.
+dnl First, a few convenient macros.
+changequote([,])dnl
+dnl
+dnl
+dnl MSG_CHECKING(FEATURE-DESCRIPTION,PREFIX)
+dnl
+define(MSG_CHECKING,
+[echo $ac_n "$2checking $1""... $ac_c"])dnl
+dnl
+dnl
+dnl MSG_RESULT(RESULT-DESCRIPTION)
+dnl
+define(MSG_RESULT,
+[echo "$ac_t""$1"])dnl
+dnl
+dnl
+dnl SEARCH_PROG(FEATURE-DESCRIPTION,VARIABLE-NAME,PROGRAMS-LIST,
+dnl             ACTION-IF-FOUND,ACTION-IF-NOT-FOUND)
+dnl
+define(SEARCH_PROG,[dnl
+changequote([,])dnl
+MSG_CHECKING($1)
+MSG_RESULT()
+$2=
+for ac_prog in $3
+do
+# Extract the first word of "$ac_prog", so it can be a program name with args.
+set dummy $ac_prog ; ac_word=$[2]
+if test -n "$ac_word"; then
+  MSG_CHECKING([for \"$ac_word\"],[+])
+  IFS="${IFS= 	}"; ac_save_ifs="$IFS"; IFS="${IFS}:"
+  for ac_dir in $PATH; do
+    test -z "$ac_dir" && ac_dir=.
+    if test -x [$ac_dir/$ac_word]; then
+      $2="$ac_prog"
+      break
+    fi
+  done
+  IFS="$ac_save_ifs"
+
+  if test -n "[$]$2"; then
+    ac_result=yes
+  else
+    ac_result=no
+  fi
+  ifelse($4,,,[$4])
+  MSG_RESULT($ac_result)
+  test -n "[$]$2" && break
+fi
+done
+
+if test -z "[$]$2" ; then
+  $2=none
+ifelse($5,,,[  $5
+])dnl
+fi
+changequote(,)dnl
+])dnl
+dnl
+dnl
+dnl PROVIDE_DEFAULT_FILE(FILE, DEFAULT-VALUE)
+dnl
+define(PROVIDE_DEFAULT_FILE,[dnl
+# if $1 does not exist (because LaTeX did not run), 
+# then provide a standard version.
+if test ! -f $1 ; then
+  cat >$1 <<EOF
+$2
+EOF
+fi])
+changequote(,)dnl
+dnl ######### End M4 macros #############################################
+
+
+####some configuration variables
+lyx_check_config=yes
+lyx_keep_temps=no
+srcdir=
+
+#### Parse the command line
+for ac_option do
+  case "$ac_option" in
+    -help | --help | -h)
+      cat << EOF
+Usage: configure [options] 
+Options: 
+  --help                   show this help lines
+  --keep-temps             keep temporary files (for debug. purposes)
+  --without-latex-config   do not run LaTeX to determine configuration
+EOF
+      exit 0;;
+    --without-latex-config)
+      lyx_check_config=no ;;
+    --keep-temps)
+      lyx_keep_temps=yes ;;
+  esac 
+done
+
+
+#### Checking for some echo oddities
+if (echo "testing\c"; echo 1,2,3) | grep c >/dev/null; then
+  # Stardent Vistra SVR4 grep lacks -e, says ghazi@caip.rutgers.edu.
+  if (echo -n testing; echo 1,2,3) | sed s/-n/xn/ | grep xn >/dev/null; then
+    ac_n= ac_c='
+' ac_t='	'
+  else
+    ac_n=-n ac_c= ac_t=
+  fi
+else
+  ac_n= ac_c='\c' ac_t=
+fi
+
+
+#### I do not really know why this is useful, but we might as well keep it.
+# NLS nuisances.
+# Only set these to C if already set.  These must not be set unconditionally
+# because not all systems understand e.g. LANG=C (notably SCO).
+# Fixing LC_MESSAGES prevents Solaris sh from translating var values in `set'!
+# Non-C LC_CTYPE values break the ctype check.
+if test "${LANG+set}"   = set; then LANG=C;   export LANG;   fi
+if test "${LC_ALL+set}" = set; then LC_ALL=C; export LC_ALL; fi
+if test "${LC_MESSAGES+set}" = set; then LC_MESSAGES=C; export LC_MESSAGES; fi
+if test "${LC_CTYPE+set}"    = set; then LC_CTYPE=C;    export LC_CTYPE;    fi
+
+
+#### Guess the directory in which configure is located.
+changequote([,])dnl
+ac_prog=[$]0
+changequote(,)dnl
+srcdir=`echo $ac_prog|sed 's%/[^/][^/]*$%%'` 
+srcdir=`echo "${srcdir}" | sed 's%\([^/]\)/*$%\1%'`
+test "x$srcdir" = "x$ac_prog" && srcdir=.
+if test ! -r ${srcdir}/chkconfig.ltx ; then
+  echo "configure: error: cannot find chkconfig.ltx script"
+  exit 1
+fi
+
+
+#### Create the build directories if necessary
+for dir in bind doc kbd layouts templates reLyX ; do
+  test ! -d $dir && mkdir $dir
+done
+
+
+#### Searching some useful programs
+define(CHECKLATEX2E,[
+## Check whether this is really LaTeX2e
+rm -f chklatex.ltx
+cat >chklatex.ltx <<EOF
+\\nonstopmode\\makeatletter
+\\ifx\\undefined\\documentclass\\else
+  \\message{ThisIsLaTeX2e}
+\\fi
+\\@@end
+EOF
+if eval ${LATEX} chklatex.ltx </dev/null 2>/dev/null \
+                       | grep 'ThisIsLaTeX2e' >/dev/null; then
+  :
+else
+  LATEX=
+  ac_result="not useable"
+fi
+rm -f chklatex.ltx chklatex.log])dnl
+dnl
+# Search LaTeX2e
+SEARCH_PROG([for a LaTeX2e program],LATEX,latex latex2e,CHECKLATEX2E,dnl
+  [lyx_check_config=no])
+
+# Search for an installed reLyX or a ready-to-install one
+save_PATH=${PATH}
+PATH=${PATH}:./reLyX/
+SEARCH_PROG([for reLyX LaTeX-to-LyX translator],RELYX,reLyX)
+PATH=${save_PATH}
+
+# Search something to process a literate document
+SEARCH_PROG([for a Literate programming processor],LITERATE,"noweave -delay -index")
+if test "$LITERATE" = "none"; then LITERATE_EXT="none"; else LITERATE_EXT=".nw"; fi
+
+# Search for a Postscript interpreter
+SEARCH_PROG([for a Postscript interpreter],GS, gs)
+
+# Search something to preview postscript
+SEARCH_PROG([for a Postscript previewer],GHOSTVIEW,gv ghostview)
+
+# Search a *roff program (used to translate tables in ASCII export)
+SEARCH_PROG([for a *roff formatter],ROFF,groff nroff)
+ascii_roff_command=$ROFF
+test $ROFF = "groff" && ascii_roff_command="groff -t -Tlatin1 \$\$FName"
+test $ROFF = "nroff" && ascii_roff_command="tbl \$\$FName | nroff"
+
+# Search the ChkTeX program
+SEARCH_PROG([for ChkTeX],CHKTEX,chktex)
+chktex_command=$CHKTEX
+test $CHKTEX = "chktex" && chktex_command="$CHKTEX -n1 -n3 -n6 -n9 -n22 -n25 -n30 -n38"
+
+# Search for a spellchecker
+SEARCH_PROG([for a spell-checker], SPELL,ispell)
+
+# Search a Fax handling program
+SEARCH_PROG([for a fax driver], FAX, sendfax faxsend fax)
+if test $FAX = sendfax ; then
+  fax_command="sendfax -n -h '\$\$Host' -c '\$\$Comment' -x '\$\$Enterprise' -d '\$\$Name'@'\$\$Phone' '\$\$FName'"
+elif test $FAX = faxsend ; then
+  fax_command="faxsend '\$\$Phone' '\$\$FName'"
+elif test $FAX = fax ; then
+  fax_command="fax send '\$\$Phone' '\$\$FName'"
+else
+  fax_command="none"
+fi
+
+# Search for LinuxDoc support
+SEARCH_PROG([for SGML-tools 1.x (LinuxDoc)], LINUXDOC, sgml2lyx)
+chk_linuxdoc=no
+if test $LINUXDOC != none; then
+  chk_linuxdoc=yes
+  linuxdoc_cmd="\\def\\haslinuxdoc{yes}"
+fi
+
+# Search for DocBook support
+SEARCH_PROG([for SGML-tools 2.x (DocBook)], DOCBOOK, sgmltools)
+chk_docbook=no
+if test $DOCBOOK != none; then
+  chk_docbook=yes
+  docbook_cmd="\\def\\hasdocbook{yes}"
+fi
+
+
+# Search for a spool command
+SEARCH_PROG([for a spool command], LPR, lp lpr)
+case $LPR in
+  lp) print_spool_command=lp
+      print_spool_printerprefix="-d ";;
+ lpr) print_spool_command=lpr
+      print_spool_printerprefix="-P";;
+   *) :;; # leave to empty values
+esac
+
+#### Explore the LaTeX configuration
+MSG_CHECKING(LaTeX configuration)
+# First, remove the files that we want to re-create
+rm -f textclass.lst packages.lst chkconfig.sed
+if test ${lyx_check_config} = no ; then
+  MSG_RESULT(default values)
+else
+  MSG_RESULT(auto)
+  rm -f wrap_chkconfig.ltx chkconfig.vars chkconfig.classes chklayouts.tex
+  cat >wrap_chkconfig.ltx <<EOF
+\\newcommand\\srcdir{${srcdir}}
+${linuxdoc_cmd}
+${docbook_cmd}
+\\input{${srcdir}/chkconfig.ltx}
+EOF
+  ## Construct the list of classes to test for.
+  # build the list of available layout files and convert it to commands 
+  # for chkconfig.ltx 
+  for file in ./layouts/*.layout ${srcdir}/layouts/*.layout ; do 
+    case $file in
+      */\*.layout) ;;
+      *) echo $file ;;
+    esac
+  done | sed -e 's%^.*layouts/\(.*\)\.layout$%\\TestDocClass{\1}%'\
+             > chklayouts.tex
+changequote([,])dnl
+  [eval] ${LATEX} wrap_chkconfig.ltx 2>/dev/null | grep '^\+'
+  [eval] `cat chkconfig.vars | sed 's/-/_/g'`
+changequote(,)dnl
+fi
+
+# Do we have all the files we need? Useful if latex did not run
+changequote([,])dnl
+echo creating textclass.lst 
+PROVIDE_DEFAULT_FILE(textclass.lst,dnl
+[# This file declares layouts and their associated definition files
+# (include dir. relative to the place where this file is).
+# It contains only default values, since chkconfig.ltx could not be run 
+# for some reason. Run ./configure if you need to update it after a
+# configuration change.  
+article	article	article
+report	report	report
+book	book	book
+linuxdoc	linuxdoc	linuxdoc
+letter	letter	letter])
+
+PROVIDE_DEFAULT_FILE(chkconfig.sed,[s/@.*@/???/g])
+
+echo creating packages.lst
+PROVIDE_DEFAULT_FILE(packages.lst,dnl
+[# This file should contain the list of LaTeX packages that have been
+# recognized by LyX. Unfortunately, since configure could not find
+# your LaTeX2e program, the tests have not been run. Run ./configure
+# if you need to update it after a configuration change.
+])
+changequote(,)dnl
+
+echo creating doc/LaTeXConfig.lyx
+echo "s/@chk_linuxdoc@/$chk_linuxdoc/g" >> chkconfig.sed
+echo "s/@chk_docbook@/$chk_docbook/g" >> chkconfig.sed
+sed -f chkconfig.sed ${srcdir}/doc/LaTeXConfig.lyx.in >doc/LaTeXConfig.lyx
+
+echo creating lyxrc.defaults
+rm -f lyxrc.defaults
+cat >lyxrc.defaults <<EOF
+# This file has been automatically generated by LyX' lib/configure
+# script. It contains default settings that have been determined by
+# examining your system. PLEASE DO NOT MODIFY ANYTHING HERE! If you
+# want to customize LyX, make a copy of the file LYXDIR/lyxrc as
+# ~/.lyx/lyxrc and edit this file instead. Any setting in lyxrc will
+# override the values given here.
+\\latex_command "$LATEX"
+\\relyx_command "$RELYX"
+\\literate_command "$LITERATE"
+\\literate_extension "$LITERATE_EXT"
+\\ps_command "$GS"
+\\view_ps_command "$GHOSTVIEW -swap"
+\\view_pspic_command "$GHOSTVIEW"
+\\ascii_roff_command "$ascii_roff_command"
+\\chktex_command "$chktex_command"
+\\spell_command "$SPELL"
+\\fax_command "$fax_command"
+\\print_spool_command "$print_spool_command"
+\\print_spool_printerprefix "$print_spool_printerprefix"
+\\font_encoding "$chk_fontenc"
+EOF
+
+# Remove superfluous files if we are not writing in the main lib
+# directory 
+for file in lyxrc.defaults textclass.lst packages.lst \
+            doc/LaTeXConfig.lyx ; do
+  # we rename the file first, so that we avoid comparing a file with itself
+  mv $file $file.new
+  if test -r $srcdir/$file && diff $file.new $srcdir/$file >/dev/null 2>/dev/null ; 
+  then 
+    echo "removing $file, which is identical to the system global version"
+    rm -f $file.new
+  else
+    mv $file.new $file
+  fi
+done
+
+
+# Final clean-up
+if test $lyx_keep_temps = no ; then
+rm -f chkconfig.sed chkconfig.vars wrap_chkconfig.* chklayouts.tex \
+      missfont.log
+fi

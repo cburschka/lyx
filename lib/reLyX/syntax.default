@@ -1,0 +1,936 @@
+% This is the default list of commands for reLyX to read
+%    It tells reLyX many arguments each command takes, and which of them
+% (if any) are optional.
+%    It is taken from the list of commands written by John Weiss 970311
+% plus the math commands from math_hash.C
+%
+% Also had to add textrm etc. commands and many size commands (like \small)
+%
+%    I left in things like units of measure (\depth) because reLyX will think
+% that they're commands, and this way it will know they don't take any
+% arguments...
+%
+%    There are almost certainly commands in here we don't need -- but that
+% shouldn't matter
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% The first thing listed here is commands that are hard-coded into reLyX.
+% Redefining these commands in a new syntax file will probably not help%
+% and may break things. 
+\#
+\$
+\%
+\&
+\@
+\_
+\{
+\}
+~
+
+\hfill
+\i
+\j
+\L
+\l
+\LaTeX
+\LaTeXe
+\LyX
+\ldots
+\TeX
+
+\"{}
+$$
+\'{}
+\(
+\)
+\-
+\.{}
+\={}
+\[
+\]
+\\[]
+\\*[]
+\^{}
+\`{}
+\~{}
+\b{}
+% \begin{}[]   %reLyX will get confused if \begin is found in this file!
+%\begin{}[]{} % All of these show the different variations of \begin (jpw)
+%\begin{}{}   % reLyX can only handle \begin{}
+%\begin{}{}{}
+%\begin{}[][][]{}
+%\begin{}(,)
+%\begin{}(,)(,)
+%\begin{}{}[]{}
+\bf
+\bibitem[]{}
+\bibliography{}
+\bibliographystyle{}
+\c{}
+\cite[]{}
+\cline{ - }
+\d{}
+\documentclass[]{}[]
+\documentstyle[]{}
+\em
+\emph{}
+% \end{}   %reLyX will get confused if \end is found in this file!
+\epsf{}
+\epsfbox{}
+\epsffile{}
+\epsfig{}
+\epsfxsize
+\epsfysize
+\footnote[]{}
+\footnotesize
+\H{}
+\hline
+\huge
+\Huge
+\include{}
+\includegraphics[,][,]{} % btw, LyX doesn't support graphicx, just graphics
+\input{}
+\it
+\item[]  % Has two variants (jpw) Other variant is unsupported (adk)
+\label{}
+\large
+\Large
+\LARGE
+\marginpar[]{}
+\multicolumn{}{}{}
+\newline
+\noindent
+\normalsize
+\noun{}    % LyX style for nouns (appears in lyx-generated files)
+\pageref{}
+\psfig{}
+\ref{}
+\rm
+\sc
+\sf
+\sl
+\t{ }
+\textmd{}   % I had to add these (adk)
+\textbf{}   %         :
+\textrm{}   %         :
+\textsf{}   %         :
+\texttt{}   %         :
+\textup{}   %         :
+\textit{}   %         :
+\textsl{}   %         :
+\textsc{}   %         :
+\textbar
+\textbackslash
+\textgreater
+\textless
+\scriptsize
+\small
+\tiny
+\tt
+\u{}
+\underbar{}  % LyX generated files use underbar instead of underline
+\underline{}
+\v{}
+
+
+
+% Units of measure.  These get used only within the arguments of
+% commands that take some length quantity.
+
+\depth
+\fill
+\height
+\totalheight
+\width
+
+%
+% Length variables
+%
+
+\abovedisplay
+\abovedisplayshortskip
+\arraycolsep
+\arrayrulewidth
+\arraystretch
+\baselineskip
+\baselinestretch
+\belowdisplayskip
+\belowdisplayshortskip
+\bigskipamount
+\columnsep
+\columnseprule
+\dblfloatsep
+\dbltextfloatsep
+\doublerulesep
+\evensidemargin
+\fboxrule
+\fboxsep
+\floatsep
+\footnotesep
+\footskip
+\headheight
+\headsep
+\hoffset
+\intextsep
+\itemindent
+\itemsep
+\jot
+\labelsep
+\labelwidth
+\leftmargin
+\leftmargini
+\leftmarginii
+\leftmarginiii
+\leftmarginiv
+\leftmarginv
+\leftmarginvi
+\listparindent
+\marginpush
+\marginparsep
+\marginparwidth
+\mathindent
+\medskipamount
+\oddsidemargin
+\paperheight
+\paperwidth
+\parindent
+\parsep
+\parskip
+\partopsep
+\rightmargin
+\smallskipamount
+\tabbingsep
+\tabcolsep
+\textfloatsep
+\textheight
+\textwidth
+\topmargin
+\topsep
+\topskip
+\unitlength
+\voffset
+
+%
+% Commands that act like single characters and insert something.  This
+% excludes the commands that place accents on characters, since they
+% require arguments, whereas these don't.  Also excluded are commands
+% that insert a specified amount of space [again, that requires
+% arguments] and those that insert lists, since a list isn't a single
+% object.
+%
+% I had to remove things that TeX.pm doesn't recognize as a token, and hardcode
+%   those into reLyX. This included !' ?' -- --- and maybe some other things
+
+\ % A "\" followed by a space.
+\,
+\/
+\AA
+\aa
+\AE
+\ae
+\bigskip
+\copyright
+\dag
+\ddag
+\DH
+\dh
+\DJ
+\dj
+\dotfill
+\dots
+\guillemotleft
+\guillemotright
+\guilsinglleft
+\guilsinglright
+\hrulefill
+\lq
+\medskip
+\NG
+\ng
+\O
+\o
+\OE
+\oe
+\P
+\pounds
+\quad
+\qquad
+\quotedblbase
+\quotesinglebase
+\rq
+\S
+\SS
+\smallskip
+\ss
+\textbullet
+\textemdash
+\textendash
+\textexclamdown
+\textperiodcenter
+\textquestiondown
+\textquotedblleft
+\textquotedblright
+\textquoteleft
+\textquoteright
+\textvisiblespace
+\textcompwordmark
+\textquotedbl
+\TH
+\th
+\thechapter
+\theenumi
+\theenumii
+\theenumiii
+\theenumiv
+\theequation
+\thefigure
+\thefootnote
+\thempfootnote
+\thepage
+\theparagraph
+\thepart
+\thesection
+\thesubsection
+\thesubsubsection
+\thesubparagraph
+\thetable
+\vfill
+
+
+%
+% The LaTeX commands.  As per Alejandro's request, I've omitted all of
+% the math commands he appears to support in Mathed.  I'm also
+% omitting commands used primarily for defining new class and style
+% files. (jpw)
+%
+% For some reason, John didn't write {} after \" and some of the other
+%    accent commands (adk)
+% He also didn't include the \textsc{} equivalent to {\sc}
+% Because any commands with arguments in parentheses (rather than braces or
+%    brackets) appear in a picture environment, which reLyX doesn't support,
+%    we can comment those out.
+%
+% These are the commands you're mostly likely to want to redefine in your own
+% syntax files
+%
+% Arguments whose text is "translate" will have regular LaTeX in them (as
+% opposed to commands with special syntax) which should be translated by
+% reLyX like regular LaTeX. \mbox{} is an obvious example. LyX doesn't
+% support it, but only the "\mbox{" and the "}" need to be in TeX mode.
+
+\abstractname
+\addcontentsline{}{}{translate}
+\address{}
+\addtime{}
+\addtocontents{}{translate}  % one argument was missing here (JMarc)
+\addtocounter{}{}
+\addtolength{}{}
+\addvspace{}
+\Alph{}
+\alph{}
+\alsoname
+\and
+\appendix % had to add this -Ak
+\appendixname
+\arabic{}
+\author{}
+\backmatter
+%\bezier{}(,)(,)(,)    % picture
+\bfdefault
+\bibname
+\botfigrule
+\bottomfraction
+\caption[]{}
+\cc{}
+\ccname
+\centering
+\centerline{translate}
+\chapter[]{}
+\chapter*{}
+\chaptername
+\check{}
+%\circle{}    % picture environment (JMarc)
+%\circle*{}
+\cleardoublepage
+\clearpage
+\closing{}
+\color[]{,,}  % Two variants of this command and the next (jpw)
+% \color{}    %  This variant doesn't matter to reLyX (adk)
+\colorspec[]{,,}{}
+%\colorspec{}{}    %  This variant doesn't matter to reLyX (adk)
+%\contentsline{}{\numberline{}  }{}     % Appears only in .toc file (JMarc)
+\contentsname
+% \dashbox{}(,)[]{}   %picture
+\date{}
+\dblfigrule
+\dblfloatpagefraction
+\dbltopfraction
+\definecolor{}{}{,,}
+\discretionary{}{}{}
+\encl{}
+\enclname
+\enlargethispage{}
+\enlargethispage*{}
+\ensuremath{}
+\extracolsep{}
+\fbox{translate}
+\fcolorbox[]{,,}{,,}{}  % Two variants of this command
+%\fcolorbox{}{}{}    %  This variant doesn't matter to reLyX (adk)
+\figurename
+\floatpagefraction
+\flushbottom
+\fnsymbol{}
+\fontfamily{}
+\fontseries{}
+\fontshape{}
+\fontsize{}{}
+\footnotemark[]
+\footnoterule
+\footnotetext[]{translate}
+\frame{translate}
+\framebox[][]{translate} % Two variants of this command
+%\framebox(,)[]{}    %  picture variant
+\frenchspacing
+\frontmatter
+\fussy
+\glossary{translate}
+\glossaryentry{}{}       %only in .glo file (JMarc)
+% \graphpaper[](,)(,)    %picture
+\headtoname
+\hspace{}
+\hspace*{}
+\hyphenation{}
+\iflanguage{}{}{}
+\ifthenelse
+\includegraphics*[,][,]{} % LyX 1.0 doesn't support clipping figures
+\indent
+\index{}
+\indexentry{}{}        % only in .idx files (JMarc)
+\indexname
+\indexspace
+\invisible
+\itdefault
+% This variant of \item might break reLyX!
+%  \item{}   % Only appears in unsupported theindex environment
+\k{}
+\kill
+\labelnumi
+\labelnumii
+\labelnumiii
+\labelnumiv
+\labelitemi
+\labelitemii
+\labelitemiii
+\labelitemiv
+\language{}
+% \line(,){}    %picture
+\linebreak[]
+\linethickness{}
+\listfigurename
+\listofalgorithms %AMStex?
+\listoffigures
+\listoftables
+\listtablename
+\location{}
+\mainmatter
+\makebox[][]{translate}
+%  \makebox(,)[]{}     %picture variant
+\makeglossary
+\makeindex
+\makelabel{translate}
+\makelabels
+\maketitle
+\markboth{}{translate}
+\markright{translate}
+\mathversion{}
+\mbox{translate}
+\mddefault
+% \multiput(,)(,){}{}     %picture
+\name{}
+\newboolean{}
+\newcommand{}[][]{}
+\newcommand*{}[][]{}
+%\newcommand{}[]{}    % reLyX doesn't care about missing optarg
+\newcounter{}[]
+\newenvironment{}[][]{}{}
+\newenvironment*{}[][]{}{}
+% \newenvironment{}[]{}{}    % reLyX doesn't care about missing optarg
+\newfont{}{ scaled }
+\newlength{}
+\newpage
+\newsavebox{}
+\newtheorem{}[]{translate}[]
+\nocite{}
+\nocorr
+\nolinebreak[]
+\nonfrenchspacing
+\nopagebreak[]
+\normalcolor
+\normalfont
+\normalmarginpar
+\notesname
+\numberline{}{}
+\onecolumn
+\onlynotes{}
+\onlyslides{}
+\opening{}
+% \oval(,)[]   %picture
+\pagebreak[]
+\pagecolor[]{,,}
+% \pagecolor{}    % reLyX doesn't care about this version
+\pagename
+\pagenumbering{}
+\par
+\paragraph[]{}
+\paragraph*{}
+%\parbox[]{}{}            % reLyX treats next line same as this one (adk)
+\parbox[][][]{}{translate}
+\part[]{}
+\part*{}
+\partname
+\poptabs
+\prefacename
+\printindex
+\protect
+\providecommand{}[][]{}
+\providecommand*{}[][]{}
+\ps
+\pushtabs
+% \put(,){}     %picture
+% \qbezier[](,)(,)(,)     %picture
+\r{}
+\raggedbottom
+\raggedleft
+\raggedright
+\raisebox{}[][]{translate}
+\reflectbox{translate}
+\refname
+\refstepcounter{}
+\renewcommand{}[][]{}
+\renewcommand*{}[][]{}
+% \renewcommand{}[]{}   %reLyX doesn't care about variants
+\renewenvironment{}[][]{}{}
+\renewenvironment*{}[][]{}{}
+% \renewenvironment{}[]{}{}
+\resizebox{}{}{translate}
+\resizebox*{}{}{translate}
+\reversemarginpar
+\rmdefault
+\Roman{}
+\roman{}
+\rotatebox{}{translate}
+\rule[]{}{}
+\samepage
+\savebox{}[][]{}
+% \savebox{}(,)[]{}   %picture
+\sbox{}{}
+\scalebox{}[]{translate}
+\scdefault
+\section[]{}
+\section*{}
+\see
+\seename
+\selectfont
+\selectlanguage{}
+\setboolean{}{}
+\setcounter{}{}
+\setlength{}{}
+\settime{}
+\settodepth{}{}
+\settoheight{}{}
+\settowidth{}{}
+\sfdefault
+\shortstack[]{translate}
+\showhyphens{}
+\signature{}
+\sldefault
+\sloppy
+\stepcounter{}
+\stretch{}
+%\subitem{}   % unsupported theindex environment
+\subjectname
+\subparagraph[]{}  % These "sub" versions of the sectioning commands weren't
+\subparagraph*{}   % in the original commandlist for some reason (adk)
+\subsection[]{}    %
+\subsection*{}     %
+\subsubsection[]{} %
+\subsubsection*{}  %
+%\subsubitem{}   % unsupported theindex environment
+\suppressfloats[]
+\symbol{}
+\tablename
+\tableofcontents
+\tabularnewline[]
+\telephone{translate}
+\textcircled{translate}
+\textcolor[]{,,}{translate}
+%\textcolor{}{}      % reLyX doesn't care about this version
+\textnormal{translate}
+\textfraction
+\thanks{}
+\thicklines
+\thinlines
+\thispagestyle{}
+\title{}
+\today
+\topfigrule
+\topfraction
+\ttdefault
+\twocolumn[]
+\updefault
+\usebox{}
+\usecounter{}
+\usefont{}{}{}{}
+\usepackage[]{}[]
+\value{}
+% \vector(,){}   %picture
+% \verb||     % reLyX needs \verb to be hardcoded
+% \verb*||
+\visible
+\vline
+\vspace{}
+\vspace*{}
+\whiledo{}{}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% MATH COMMANDS
+% This includes some AMSmath commands
+
+% characters (not in math_hash.C)
+^{}
+_{}
+&
+
+% Math space (not in math_hash.C)
+\:
+\;
+\!
+
+% Greek letters
+
+\alpha
+\beta
+\gamma
+\delta
+\epsilon
+\varepsilon
+\zeta
+\eta
+\theta
+\vartheta
+\iota
+\kappa
+\lambda
+\mu
+\nu
+\xi
+\pi
+\varpi
+\rho
+% \varrho isn't supported
+\sigma
+\varsigma
+\tau
+\upsilon
+\phi
+\varphi
+\chi
+\psi
+\omega
+
+\Delta
+\Omega
+\Upsilon
+\Theta
+\Lambda
+\Sigma
+\Gamma
+\Pi
+\Phi
+\Psi
+\Xi
+
+% Other stuff
+%\setminus
+%\ldots    % already in non-math
+\limits
+\stackrel{}{}
+%\ll
+%\label  % already in non-math
+\lceil
+\aleph
+\sqrt[]{}
+\times
+\subset
+\supset
+\spadesuit
+\Re
+\left   % kind of takes an argument...
+\smile
+\exists
+\Vert
+\uplus
+\ell
+\langle
+\arccos
+\sup
+\sharp
+\sqcup
+\sqcap
+\approx
+\triangleleft
+\triangleright
+\tilde{}
+\emptyset
+\triangle
+\limsup
+\partial
+\parallel
+\infty
+\leftharpoonup
+\searrow
+\swarrow
+\top
+\Rightarrow
+% \underline   % already in non-Math list
+\underbrace{}
+\acute{}
+\angle
+\exp
+\leftarrow
+\prime
+\int
+\longleftarrow
+\leftrightarrow
+\longrightarrow
+\longleftrightarrow
+\widehat{}
+\sin
+\asymp
+\nolimits
+\perp
+\wedge
+\ln
+\widetilde{}
+\natural
+\uparrow
+\updownarrow
+\star
+\leftharpoondown
+\wp
+\not
+\tan
+\rceil
+\lfloor
+\rightleftharpoons
+\cos
+\sec
+\succ
+\cdots
+\ker
+\forall
+\liminf
+\Uparrow
+\right
+\Updownarrow
+\Pr
+\nabla
+\arcsin
+\arctan
+\flat
+\check{}
+\rangle
+\cot
+\cdot
+\clubsuit
+\in
+\ni
+\Downarrow
+\sb{}   % equivalent to _
+\sp{}   % equivalent to ^
+\sim
+\sum
+\models
+\nearrow
+\nwarrow
+\max
+\Im
+\lim
+\rightharpoonup
+\cap
+\cup
+\prec
+\wr
+\inf
+\bigoplus
+\biguplus
+\bigotimes
+\rightarrow
+% \textrm    % already in nonmath
+\simeq
+\succeq
+\notin
+\subseteq
+\supseteq
+\sqsubseteq
+\sqsupseteq
+\leq
+\surd
+\ddots
+\bot
+\bullet
+\bigodot
+\sinh
+\jmath
+\mp
+\pm
+\nonumber
+\breve{}
+\bigvee
+\bowtie
+\bigwedge
+\frown
+\rightharpoondown
+\det
+\dot{}
+\ddot{}
+\lg
+\log
+\oplus
+\ominus
+\otimes
+\diamondsuit
+\rfloor
+% \end  % already exist in non-Math part -Ak
+\hat{}
+\tanh
+\vdots
+\bigcap
+\bigcup
+\bigsqcup
+\heartsuit
+\longmapsto
+\bigtriangleup
+\preceq
+\odot
+\oint
+\grave{}
+\pmod{}
+\prod
+\frac{}{}
+\csc
+\circ
+\min
+\overline{}
+\arg
+\overbrace{}
+\amalg
+\vee
+\equiv
+\downarrow
+\imath
+\propto
+% \begin      % already in non-Math list
+\neq
+\hookleftarrow
+\hookrightarrow
+\bigtriangledown
+\bar{}
+% \newcommand   % already in non-Math list
+\overleftarrow
+\overrightarrow
+\Leftarrow
+\Longleftarrow
+\Leftrightarrow
+\Longrightarrow
+\neg
+\bigcirc
+\Longleftrightarrow
+\dagger
+\ddagger
+\hbar
+\coprod
+\cosh
+\coth
+\cong
+\vec{}
+\dim
+\mid
+\hom
+\bmod
+\quad
+\doteq
+\qquad
+\mapsto
+\backslash
+\diamond
+\geq
+\deg
+\gcd
+\gg
+\div
+\dashv
+\oslash
+\vdash
+
+% Font changes
+\mathbf{}
+\mathsf{}
+\mathcal{}
+\boldmath     % This command's actually given in text mode
+\unboldmath   % This command's actually given in text mode
+\mathrm{}
+\mathtt{}
+\mathit{}
+\mathnormal{}  %not in lamport, but it should be safe
+\scriptstyle
+\scriptscriptstyle
+\textstyle
+\displaystyle
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% There are some environments which reLyX doesn't have an equivalent for.
+% However, *within* that environment, simple translatable LaTeX appears.
+% (E.g., this doesn't include something like "picture" because the TeX
+% parser can't (yet?) understand the parentheses as being delimiters of
+% coordinates rather than plain text.)
+%    The environment names are placed in a "reLyXre" environment.
+%    There aren't very many of these; the idea is that the user can add
+% user-defined environments in personal syntax files
+
+\begin{reLyXre}
+% filecontents can only appear before \documentclass command, so not worth it
+fussypar
+sloppypar
+% slide only appears in the slides class, but if we don't put this in, then
+% the whole document will be copied in TeX mode!
+slide
+titlepage
+\end{reLyXre}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% There are some math commands which LyX doesn't support. If there's an
+% equivalent command that it *does* support, then we might as well
+% translate it.
+%    While copying things in math mode, reLyX will replace anything of the
+% following commands with (exactly) whatever text is in braces, so, e.g.,
+% $x\sb{a}$ will be converted to $x_{a}$ in the LyX file.
+%    In most cases, this simply avoids "evil red text" in math mode, but
+% in a couple cases, it actually fixes things (e.g. '\ ')
+%    Tokens to replace should be "normal" tokens, backslash followed by a
+% nonletter or one or more letters. (Token may also have * at the end.)
+
+\begin{reLyXmt}
+\sb    {_}
+\sp    {^}
+\|     {\Vert}
+\vert  {|}
+\      {\,\,}    % That's '\ ', same length (6/18 quad) as two '\,' tokens
+\to    {\rightarrow}
+\gets  {\leftarrow}
+\le    {\leq}
+\ge    {\geq}
+\ensuremath   {}  % If it's in math mode, \ensuremath is unnec.
+\end{reLyXmt}

@@ -1,0 +1,172 @@
+diff -ub intl.orig/bindtextdom.c intl/bindtextdom.c
+--- intl.orig/bindtextdom.c	Thu Aug 28 09:18:18 1997
++++ intl/bindtextdom.c	Fri Apr 10 10:40:36 1998
+@@ -94,15 +94,15 @@
+ 
+   if (dirname == NULL)
+     /* The current binding has be to returned.  */
+-    return binding == NULL ? (char *) _nl_default_dirname : binding->dirname;
++    return binding == NULL ? (char *) strdup(__XOS2RedirRoot(_nl_default_dirname)) : binding->dirname;
+ 
+   if (binding != NULL)
+     {
+       /* The domain is already bound.  Replace the old binding.  */
+       char *new_dirname;
+ 
+-      if (strcmp (dirname, _nl_default_dirname) == 0)
+-	new_dirname = (char *) _nl_default_dirname;
++      if (strcmp (dirname, __XOS2RedirRoot(_nl_default_dirname)) == 0)
++	new_dirname = (char *) strdup(__XOS2RedirRoot(_nl_default_dirname));
+       else
+ 	{
+ 	  size_t len = strlen (dirname) + 1;
+@@ -113,7 +113,7 @@
+ 	  memcpy (new_dirname, dirname, len);
+ 	}
+ 
+-      if (strcmp (binding->dirname, _nl_default_dirname) != 0)
++      if (strcmp (binding->dirname, __XOS2RedirRoot(_nl_default_dirname)) != 0)
+         free (binding->dirname);
+ 
+       binding->dirname = new_dirname;
+@@ -134,8 +134,8 @@
+ 	  return NULL;
+       memcpy (new_binding->domainname, domainname, len);
+ 
+-      if (strcmp (dirname, _nl_default_dirname) == 0)
+-	new_binding->dirname = (char *) _nl_default_dirname;
++      if (strcmp (dirname, __XOS2RedirRoot(_nl_default_dirname)) == 0)
++	new_binding->dirname = (char *) strdup(__XOS2RedirRoot(_nl_default_dirname));
+       else
+ 	{
+ 	  len = strlen (dirname) + 1;
+diff -ub intl.orig/dcgettext.c intl/dcgettext.c
+--- intl.orig/dcgettext.c	Thu Aug 28 09:18:20 1997
++++ intl/dcgettext.c	Fri Apr 10 10:40:34 1998
+@@ -154,6 +154,7 @@
+ const char *_nl_current_default_domain = _nl_default_default_domain;
+ 
+ /* Contains the default location of the message catalogs.  */
++
+ const char _nl_default_dirname[] = GNULOCALEDIR;
+ 
+ /* List with bindings of specific domains created by bindtextdomain()
+@@ -260,8 +261,12 @@
+     }
+ 
+   if (binding == NULL)
+-    dirname = (char *) _nl_default_dirname;
++    dirname = (char *) strdup(__XOS2RedirRoot(_nl_default_dirname));
++#ifdef __EMX__
++  else if (binding->dirname[0] == '/' || (isalpha(binding->dirname[0]) && binding->dirname[1] == ':'))
++#else
+   else if (binding->dirname[0] == '/')
++#endif
+     dirname = binding->dirname;
+   else
+     {
+@@ -326,7 +331,7 @@
+   while (1)
+     {
+       /* Make CATEGORYVALUE point to the next element of the list.  */
+-      while (categoryvalue[0] != '\0' && categoryvalue[0] == ':')
++      while (categoryvalue[0] != '\0' && categoryvalue[0] == PATH_SEPARATOR)
+ 	++categoryvalue;
+       if (categoryvalue[0] == '\0')
+ 	{
+@@ -340,7 +345,7 @@
+       else
+ 	{
+ 	  char *cp = single_locale;
+-	  while (categoryvalue[0] != '\0' && categoryvalue[0] != ':')
++	  while (categoryvalue[0] != '\0' && categoryvalue[0] != PATH_SEPARATOR)
+ 	    *cp++ = *categoryvalue++;
+ 	  *cp = '\0';
+ 	}
+diff -ub intl.orig/gettext.h intl/gettext.h
+--- intl.orig/gettext.h	Thu Aug 28 09:18:20 1997
++++ intl/gettext.h	Wed Apr  8 15:47:08 1998
+@@ -25,6 +25,12 @@
+ # include <limits.h>
+ #endif
+ 
++#ifdef __EMX__
++#define PATH_SEPARATOR ';'
++#else
++#define PATH_SEPARATOR ':'
++#endif
++
+ /* @@ end of prolog @@ */
+ 
+ /* The magic number of the GNU message catalog format.  */
+diff -ub intl.orig/l10nflist.c intl/l10nflist.c
+--- intl.orig/l10nflist.c	Thu Aug 28 09:18:22 1997
++++ intl/l10nflist.c	Thu Apr  9 00:03:58 1998
+@@ -222,7 +222,11 @@
+ 
+   /* Construct file name.  */
+   memcpy (abs_filename, dirlist, dirlist_len);
++#ifndef __EMX__
+   __argz_stringify (abs_filename, dirlist_len, ':');
++#else
++  __argz_stringify (abs_filename, dirlist_len, ';');
++#endif
+   cp = abs_filename + (dirlist_len - 1);
+   *cp++ = '/';
+   cp = stpcpy (cp, language);
+diff -ub intl.orig/libgettext.h intl/libgettext.h
+--- intl.orig/libgettext.h	Wed Sep 17 14:28:58 1997
++++ intl/libgettext.h	Wed Apr  8 15:47:08 1998
+@@ -36,6 +36,13 @@
+ # include <locale.h>
+ #endif
+ 
++#ifdef __EMX__
++#undef GNULOCALEDIR
++#define GNULOCALEDIR "/XFree86/lib/X11/locale"
++#include <X11/Xlocale.h>
++#else
++#define __XOS2RedirRoot(path) path
++#endif
+ 
+ #ifdef __cplusplus
+ extern "C" {
+diff -ub intl.orig/localealias.c intl/localealias.c
+--- intl.orig/localealias.c	Thu Aug 28 09:18:22 1997
++++ intl/localealias.c	Wed Apr  8 15:47:08 1998
+@@ -72,6 +72,11 @@
+ #include "gettext.h"
+ #include "gettextP.h"
+ 
++#ifdef __EMX__
++#undef LOCALE_ALIAS_PATH
++#define LOCALE_ALIAS_PATH "/XFree86/lib/X11/locale"
++#endif
++
+ /* @@ end of prolog @@ */
+ 
+ #ifdef _LIBC
+@@ -170,11 +175,11 @@
+ 	{
+ 	  const char *start;
+ 
+-	  while (locale_alias_path[0] == ':')
++	  while (locale_alias_path[0] == PATH_SEPARATOR)
+ 	    ++locale_alias_path;
+ 	  start = locale_alias_path;
+ 
+-	  while (locale_alias_path[0] != '\0' && locale_alias_path[0] != ':')
++	  while (locale_alias_path[0] != '\0' && locale_alias_path[0] != PATH_SEPARATOR)
+ 	    ++locale_alias_path;
+ 
+ 	  if (start < locale_alias_path)
+@@ -350,6 +355,9 @@
+      const struct alias_map *map1;
+      const struct alias_map *map2;
+ {
++#ifdef __EMX__
++#define strcasecmp stricmp
++#endif
+ #if defined _LIBC || defined HAVE_STRCASECMP
+   return strcasecmp (map1->alias, map2->alias);
+ #else

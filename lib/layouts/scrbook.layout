@@ -1,0 +1,21 @@
+#% Do not delete the line below; configure depends on this
+#  \DeclareLaTeXClass[scrbook]{book (koma-script)}
+# KOMA scrbook textclass definition file.
+# Bernd Rellermeyer <100.41728@germanynet.de>, 1998/7/11.
+
+# General textclass parameters
+Input scrclass.inc
+Sides                   2
+PageStyle               Headings
+NoStyle Abstract
+        
+# Modify bibliography
+Style Bibliography
+  TopSep                4
+  LabelString           Bibliography
+
+  LabelFont 
+    Series              Bold
+    Size                Largest
+  EndFont
+End

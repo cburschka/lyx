@@ -1,0 +1,399 @@
+#% Do not delete the line below; configure depends on this
+#  \DeclareLinuxDocClass[article]{SGML (LinuxDoc article)}
+# LinuxDoc textclass definition file. 
+# Author : Pascal André <andre@via.ecp.fr>
+
+# General textclass parameters
+Columns			1
+Sides			1
+PageStyle		Plain
+MaxCounter		Counter_Section
+OutputType		linuxdoc
+
+# Standard style definition
+Style Standard
+  Margin  		Static
+  LatexType 		Paragraph
+  LatexName 		p
+  ParIndent		MM
+  ParSkip 		0.4
+  Align 		Block
+  AlignPossible 	Block
+  LabelType 		No_Label
+End
+
+# Quote style definition
+Style Quote
+  Margin  		Static
+  LatexType 		Environment
+  LatexName 		quote
+  ParIndent		MM
+  ParSkip 		0.4
+  Align 		Block
+  AlignPossible 	Block
+  LabelType 		No_Label
+End
+
+# Title style definition
+Style Title
+  Margin		Static
+  LatexType		Paragraph
+  LatexName		title
+  NextNoIndent		1
+  ParSkip		0.4
+  Align			Center
+  AlignPossible		Block, Center, Left, Right, Center
+  LabelType		No_Label
+  Fill_Top		1
+  Fill_Bottom		1
+
+  # standard font definition
+  Font 
+    Family  		Sans
+    Series 		Bold
+    Size		Largest
+  EndFont
+
+  # label font definition
+  LabelFont 
+    Family		Sans
+    Series		Bold
+    Size		Largest
+  EndFont
+End
+
+# Section style definition
+Style Section
+  Margin		Dynamic
+  LatexType		Command
+  LatexName		sect
+  NextNoIndent		1
+  LabelSep		xxx
+  ParSkip		0.4
+  TopSep		1.3
+  BottomSep		0.7
+  ParSep		0.7
+  Align			Block
+  AlignPossible		Block, Left
+  LabelType		Counter_Section
+
+  # standard font definition
+  Font 
+    Series 		Bold
+    Size		Larger
+  EndFont
+
+  # label font definition
+  LabelFont 
+    Series		Bold
+    Size		Larger
+  EndFont
+End
+
+# Subsection style definition
+Style Subsection
+  Margin		Dynamic
+  LatexType		Command
+  LatexName		sect1
+  NextNoIndent		1
+  LabelSep		xxx
+  ParSkip		0.4
+  TopSep		0.9
+  BottomSep		0.5
+  ParSep		0.5
+  Align			Block
+  AlignPossible		Block, Left
+  LabelType		Counter_Subsection
+
+  # standard font definition
+  Font 
+    Series 		Bold
+    Size		Large
+  EndFont
+
+  # label font definition
+  LabelFont 
+    Series		Bold
+    Size		Large
+  EndFont
+End
+
+# Subsubsection style definition
+Style Subsubsection
+  Margin		Dynamic
+  LatexType		Command
+  LatexName		sect2
+  NextNoIndent		1
+  LabelSep		xxx
+  ParSkip		0.4
+  TopSep		0.7
+  BottomSep		0.4
+  ParSep		0.4
+  Align			Block
+  AlignPossible		Block, Left
+  LabelType		Counter_SubSubSection
+
+  # standard font definition
+  Font 
+    Series 		Bold
+  EndFont
+
+  # label font definition
+  LabelFont 
+    Series		Bold
+  EndFont
+End
+
+# Paragraph style definition
+Style Paragraph
+  Margin		Dynamic
+  LatexType		Command
+  LatexName		sect3
+  NextNoIndent		1
+  LabelSep		xxx
+  ParSkip		0.4
+  TopSep		0.4
+  BottomSep		0.4
+  Align			Block
+  AlignPossible		Block, Left
+  LabelType		Counter_Paragraph
+
+  # standard font definition
+  Font 
+    Series 		Bold
+  EndFont
+
+  # label font definition
+  LabelFont 
+    Series		Bold
+  EndFont
+End
+
+# Subparagraph style definition
+Style Subparagraph
+  Margin		Dynamic
+  LatexType		Command
+  LatexName		sect4
+  LeftMargin		MM
+  LabelSep		xxx
+  ParSkip		0.4
+  TopSep		0.4
+  ParSep		0.4
+  Align			Block
+  AlignPossible		Block, Left
+  LabelType		Counter_SubParagraph
+
+  # standard font definition
+  Font 
+    Series 		Bold
+  EndFont
+
+  # label font definition
+  LabelFont 
+    Series		Bold
+  EndFont
+End
+
+# Enumerate style definition
+Style Enumerate
+  Margin		Static
+  LatexType		Item_Environment
+  LatexName		enum
+  NextNoIndent		1
+  LeftMargin		MMN
+  LabelSep		xx
+  ItemSep		0.2
+  TopSep		0.7
+  BottomSep		0.7
+  ParSep		0.3
+  Align			Block
+  AlignPossible		Block, Left
+  LabelType		Counter_EnumI
+End
+
+# Itemize style definition
+Style Itemize
+  Margin		Static
+  LatexType		Item_Environment
+  LatexName		itemize
+  NextNoIndent		1
+  LeftMargin		MMN
+  LabelSep		xx
+  ItemSep		0.2
+  TopSep		0.7
+  BottomSep		0.7
+  ParSep		0.3
+  Align			Block
+  AlignPossible		Block, Left
+  LabelType		Static
+  LabelString		*
+End
+
+# Description style definition
+Style Description
+  Margin		First_Dynamic
+  LatexType		Item_environment
+  LatexName		descrip
+  NextNoIndent		1
+  LeftMargin		MM
+  LabelSep		xxx
+  ParSkip		0.4
+  ItemSep		0.2
+  TopSep		0.7
+  BottomSep		0.7
+  ParSep		0.3
+  Align			Block
+  AlignPossible		Block, Left
+  LabelType		Manual
+  LabelString		MM
+
+  # label font definition
+  LabelFont 
+    Series		Bold
+  EndFont
+End
+
+# Verbatim style definition
+Style Verbatim
+  Margin		Static
+  LatexType		environment
+  LatexName		verb
+  NextNoIndent		1
+  LeftMargin		MM
+  LabelSep		xx
+  ItemSep		0.2
+  Topsep		0.7
+  BottomSep		0.7
+  ParSep		0.3
+  Align			Block
+  AlignPossible		Block
+  FreeSpacing		1
+  LabelType		No_Label
+
+  # standard font definition
+  Font 
+    Family  		Typewriter
+  EndFont
+
+  # label font definition
+  LabelFont 
+    Family		Typewriter
+  EndFont
+End
+
+# Code style definition
+Style Code
+  Margin		Static
+  LatexType		Environment
+  LatexName		code
+  NextNoIndent		1
+  LeftMargin		MM
+  LabelSep		xx
+  ItemSep		0.2
+  TopSep		0.7
+  BottomSep		0.7
+  ParSep		0.3
+  Align			Block
+  AlignPossible		Block
+  LabelType		No_Label
+  FreeSpacing 	    	1
+End
+
+# Author style definition
+Style Author
+  Margin		Dynamic
+  LatexType		Paragraph
+  LatexName		author
+  NextNoIndent		1
+  LabelSep		xxx
+  ParSkip		0.4
+  TopSep		1.3
+  BottomSep		0.7
+  ParSep		0.7
+  Align			Center
+  AlignPossible		Center
+  LabelType		No_Label
+
+  # standard font definition
+  Font 
+    Size		Larger
+  EndFont
+
+  # label font definition
+  LabelFont 
+    Size		Larger
+  EndFont
+End
+
+# Date style definition
+Style Date
+  Margin		Dynamic
+  LatexType		Paragraph
+  LatexName		date
+  NextNoIndent		1
+  LabelSep		xxx
+  ParSkip		0.4
+  TopSep		0.9
+  BottomSep		0.5
+  ParSep		0.5
+  Align			Center
+  AlignPossible		Center
+  LabelType		No_Label
+
+  # standard font definition
+  Font 
+    Size		Large
+  EndFont
+
+  # label font definition
+  LabelFont 
+    Size		Large
+  EndFont
+End
+
+# Abstract style definition
+Style Abstract
+  Margin		Static
+  LatexType		Paragraph
+  LatexName		abstract
+  NextNoIndent		1
+  LeftMargin		MM
+  LabelSep		xx
+  ItemSep		0
+  TopSep		0.7
+  BottomSep		0.7
+  ParSep		0
+  Align			Block
+  AlignPossible		Block
+  LabelType		No_Label
+
+  # standard font definition
+  Font 
+    Shape  		Italic
+  EndFont
+
+  # label font definition
+  LabelFont 
+    Shape		Italic
+  EndFont
+End 
+
+# SGML style definition
+Style SGML
+  Margin                Static
+  LatexType             Paragraph
+  LatexName             p
+  NewLine               0
+  ParIndent             MM
+  ParSkip               0.4
+  ParSep                0.5
+  Align                 Center
+  AlignPossible         Block, Left, Right, Center
+  LabelType             No_Label
+  FreeSpacing           1
+
+  # standard font definition
+  Font 
+    Latex               Latex
+  EndFont
+End

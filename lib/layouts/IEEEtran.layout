@@ -1,0 +1,262 @@
+#% Do not delete he line below; configure depends on this
+#  \DeclareLaTeXClass{article (IEEEtran)}
+# Based on Article textclass definition file. 
+#
+# Author : Allan Rae <rae@elec.uq.edu.au>
+#
+# IEEEtran is the class used for submitting to any of the IEEE Transactions.
+# The on-screen display in LyX is set to reflect the appearance of two column
+# text.  The section counters appear correctly in the output but are
+# in arabic numerals in LyX -- this requires some additional code in LyX
+# to get right (maybe LyX-1.0.1).
+#
+# IEEEtran.cls can be obtained from the www.ieee.org website -- look for
+# the author information area.  There is a LaTeX 2.09 IEEEtran.sty available
+# also but LyX doesn't support 2.09 stuff so don't get that one.
+#
+# Input general definitions
+
+Columns                 1
+Sides                   1
+MaxCounter		Counter_Section
+SecNumDepth		3
+TocDepth		3
+
+ClassOptions
+  FontSize              9|10|11|12
+End  
+
+DefaultFont
+  Family		Roman
+  Series		Medium
+  Shape			Up
+  Size			Normal
+  Color			None
+EndFont
+
+# Standard style definition
+Style Standard
+  Margin  		Static
+  LatexType 		Paragraph
+  LatexName 		dummy
+  ParIndent		MM
+  ParSkip 		0.4
+  Align 		Block
+  AlignPossible 	Block, Left, Right, Center
+  LabelType 		No_Label
+End
+
+##
+## stdlists
+##
+Input stdlists.inc
+
+##
+## stdsections and stdstarsections
+##
+Input stdsections.inc
+Input stdstarsections.inc
+
+NoStyle                 Part
+NoStyle                 Part*
+NoStyle                 Chapter
+NoStyle                 Chapter*
+NoStyle                 Subparagraph
+NoStyle                 Subparagraph*
+
+Style Section
+  Align			Center
+  AlignPossible		Block, Center, Left
+
+  Font
+     Shape              Smallcaps
+     Size               Normal
+  EndFont
+End
+
+
+Style Subsection
+  Font
+     Shape              Italic
+     Size               Normal
+  EndFont
+End
+
+Style Subsubsection
+  Font
+     Shape              Up
+     Size               Normal
+  EndFont
+End
+
+Style Section*
+  Align			Center
+  AlignPossible		Block, Center, Left
+
+  Font
+     Shape              Smallcaps
+     Size               Normal
+  EndFont
+End
+
+
+Style Subsection*
+  Font
+     Shape              Italic
+     Size               Normal
+  EndFont
+End
+
+Style Subsubsection*
+  Font
+     Shape              Up
+     Size               Normal
+  EndFont
+End
+
+##
+## stdstruct
+##
+Input stdstruct.inc
+
+Style Abstract
+  Margin                First_Dynamic
+  LeftMargin		""
+  RightMargin		""
+#  ParIndent		MM
+  LabelSep              M
+  LabelType		Static
+  LabelString		"Abstract---"
+#  LabelBottomSep        0.0
+
+  # standard font definition
+  Font 
+    Series              Bold
+    Size		Small
+  EndFont
+
+  # label font definition
+  LabelFont
+    Shape               Italic
+    Series		Medium
+    Size		Small
+  EndFont
+End 
+
+Style Keywords
+  Margin		Dynamic
+  LatexType		Environment
+  InTitle		0
+  LatexName		keywords
+  ParSkip		0.4
+  BottomSep		1.5
+  ParSep		1.5
+  Align			Left
+  AlignPossible		Block, Left, Right, Center
+  LabelType		Static
+  LabelString		"Keywords---"
+  # label font definition
+  TextFont
+    Shape               Up
+    Size                Small
+  EndFont
+  LabelFont
+    Shape		Italic
+    Size                Small
+  EndFont
+End
+
+# Bibliography style definition
+Style Bibliography
+  # label font definition
+  LabelFont
+    Shape               Smallcaps             
+    Series		Medium
+    Size		Normal
+  EndFont
+End
+
+Style Appendix
+  Margin		Static
+  LatexType		Command
+  InTitle		0
+  LatexName		appendix
+  ParSkip		0.4
+  BottomSep		1.5
+  ParSep		1.5
+  Align			Block
+  AlignPossible		Block, Left, Right, Center
+  LabelType		Static
+  LabelString		"Appendix"
+  # label font definition
+  TextFont
+    Shape               Up
+    Size                Normal
+  EndFont
+  LabelFont
+    Shape		Smallcaps
+    Size                Normal
+  EndFont
+End
+
+Style Appendices
+  Margin		Static
+  LatexType		Command
+  InTitle		0
+  LatexName		appendices
+  ParSkip		0.4
+  BottomSep		1.5
+  ParSep		1.5
+  Align			Center
+  AlignPossible		Block, Left, Right, Center
+  LabelType		Static
+  LabelString		"Appendices"
+  # label font definition
+  TextFont
+    Shape               Up
+    Size                Small
+  EndFont
+  LabelFont
+    Shape		Smallcaps
+    Size                Normal
+  EndFont
+End
+
+##
+##  stdlayouts
+##
+Input stdlayouts.inc
+
+Style Caption
+  LabelFont
+    Series              Medium
+  EndFont
+End
+
+Style Footernote
+  Margin		Static
+  LatexType		Command
+  InTitle		0
+  LatexName		footernote
+  ParSkip		0.4
+  BottomSep		1.5
+  ParSep		1.5
+  Align			Center
+  AlignPossible		Block, Left, Right, Center
+  LabelType		Static
+  LabelString		"Footernote"
+  # label font definition
+  TextFont
+    Shape               Up
+    Size                Small
+  EndFont
+  LabelFont
+    Shape		Italic
+    Size                Small
+  EndFont
+End
+##
+## Others
+##
+Input lyxmacros.inc
+Input obsolete.inc

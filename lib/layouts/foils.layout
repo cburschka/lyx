@@ -1,0 +1,356 @@
+#% Do not delete the line below; configure depends on this
+#  \DeclareLaTeXClass{slides (FoilTeX)}
+# Foils textclass definition file. 
+# Created (1.Oct.96):   Alejandro Aguilar Sierra
+# Enhanced (fonts & centering):  Jean-Marc Lasgouttes
+# To do: Define class specific options.
+
+# General textclass parameters
+Columns			1
+Sides			1
+MaxCounter		Counter_Section
+
+DefaultFont
+  Family		Sans
+  Series		Medium
+  Shape			Up
+  Size			Normal
+  Color			None
+EndFont
+
+ClassOptions
+  FontSize   17|20|25|30
+  PageStyle  "empty|plain|foilheadings|fancy"
+  Other      "dvips"
+End
+
+# Standard style definition
+Style Standard
+  Margin  		Static
+  LatexType 		Paragraph
+  LatexName 		dummy
+  ParIndent		MM
+  ParSkip 		0.4
+  Align 		Block
+  AlignPossible 	Block, Left, Right, Center
+  LabelType 		No_Label
+End
+
+# foilhead style definition
+Style Foilhead
+  Margin		Static
+  LatexType		Command
+  LatexName		foilhead
+  LabelSep		xxx
+  ParSkip		0.4
+  TopSep		1.3
+  BottomSep		0.7
+  ParSep		0.7
+  Align			Center
+  AlignPossible		Center
+  LabelType		No_Label
+
+  # standard font definition
+  Font 
+    Series 		Bold
+    Size		Larger
+  EndFont
+
+End
+
+
+# Shortfoilhead style definition
+Style ShortFoilhead
+  Margin		Static
+  LatexType		Command
+  LatexName		foilhead
+  LatexParam		"[-0.5in]"
+  LabelSep		xxx
+  ParSkip		0.4
+  TopSep		1.3
+  BottomSep		0.7
+  ParSep		0.7
+  Align			Center
+  AlignPossible		Center
+  LabelType		No_Label
+
+  # standard font definition
+  Font 
+    Series 		Bold
+    Size		Larger
+  EndFont
+
+End
+
+
+# landscape foilhead style definition
+Style Rotatefoilhead
+  Margin		Static
+  LatexType		Command
+  LatexName		rotatefoilhead
+  LabelSep		xxx
+  ParSkip		0.4
+  TopSep		1.3
+  BottomSep		0.7
+  ParSep		0.7
+  Align			Center
+  AlignPossible		Center
+  LabelType		No_Label
+
+  # standard font definition
+  Font 
+    Series 		Bold
+    Size		Larger
+  EndFont
+
+End
+
+
+# ShortRotatefoilhead style definition
+Style ShortRotatefoilhead
+  Margin		Static
+  LatexType		Command
+  LatexName		rotatefoilhead
+  LatexParam		"[-0.5in]"
+  LabelSep		xxx
+  ParSkip		0.4
+  TopSep		1.3
+  BottomSep		0.7
+  ParSep		0.7
+  Align			Center
+  AlignPossible		Center
+  LabelType		No_Label
+
+  # standard font definition
+  Font 
+    Series 		Bold
+    Size		Larger
+  EndFont
+
+End
+
+# then a few lists
+Input stdlists.inc
+
+# We add there a few additional lists that look good in foils.
+
+# TickList style definition
+Style TickList
+  Margin		Static
+  LatexType		Item_Environment
+  LatexName		dinglist
+  LatexParam		"{52}"
+  NextNoIndent		1
+  LeftMargin		MMN
+  LabelSep		xx
+  ItemSep		0.2
+  TopSep		0.7
+  BottomSep		0.7
+  ParSep		0.3
+  Align			Block
+  AlignPossible		Block, Left
+  LabelType		Static
+  LabelString		_/
+  
+  Preamble
+     \usepackage{pifont}
+  EndPreamble
+End
+
+# CrossList style definition
+Style CrossList
+  Margin		Static
+  LatexType		Item_Environment
+  LatexName		dinglist
+  LatexParam		"{56}"
+  NextNoIndent		1
+  LeftMargin		MMN
+  LabelSep		xx
+  ItemSep		0.2
+  TopSep		0.7
+  BottomSep		0.7
+  ParSep		0.3
+  Align			Block
+  AlignPossible		Block, Left
+  LabelType		Static
+  LabelString		><
+  
+  Preamble
+    \usepackage{pifont}
+  EndPreamble
+End
+
+# Then the Titles stuff.
+Input stdstruct.inc
+
+# Title style definition. 
+Style Title
+  Font 
+    Series 		Bold
+    Size		Largest
+  EndFont
+End
+
+# Author style definition
+Style Author
+  Font 
+    Size		Large
+  EndFont
+End
+
+# Date style definition
+Style Date
+  Font 
+    Size		Large
+  EndFont
+End
+
+# Abstract style definition
+Style Abstract
+  Font 
+    Size		Normal
+    Series		Medium
+  EndFont
+  
+  LabelFont 
+    Size		Large
+    Series		Bold
+  EndFont
+End
+
+# Bibliography style definition
+Style Bibliography
+  LabelFont 
+    Size		Larger
+    Series		Bold    
+  EndFont
+End
+
+# Theorem-numbered style declaration
+Style Theorem
+  Margin		First_Dynamic
+  LatexType		Environment
+  LatexName		Theorem
+  NextNoIndent		1
+  LabelSep		xx
+  ParSkip		0.4
+  ItemSep		0.2
+  TopSep		0.7
+  BottomSep		0.7
+  ParSep		0.3
+  Align			Block
+  AlignPossible		Block, Left
+  LabelType		Static
+  LabelString		"Theorem #."
+
+  
+  # standard font definition
+  TextFont
+    Shape 		Slanted
+    Size		Normal
+  EndFont
+
+  # label font definition
+  LabelFont
+    Series		Bold
+  EndFont
+End
+
+# Lemma-numbered style declaration
+Style Lemma
+  CopyStyle		Theorem
+  LatexName		Lemma
+  LabelString		"Lemma #."
+End  
+
+# Corollary-numbered style declaration
+Style Corollary
+  CopyStyle		Theorem
+  LatexName	        Corollary
+  LabelString		"Corollary #."
+End  
+
+# Proposition-numbered style declaration
+Style Proposition
+  CopyStyle		Theorem
+  LatexName		Proposition
+  LabelString		"Proposition #."
+End  
+
+# Definition-numbered style declaration
+Style Definition
+  CopyStyle		Theorem
+  LatexName		Definition
+  LabelString		"Definition #."
+
+  # standard font definition
+  Font
+    Shape 		Up
+  EndFont
+
+  # label font definition
+  LabelFont
+    Shape 		Up
+    Series		Bold
+  EndFont
+End
+
+# Proof style declaration
+Style Proof
+  CopyStyle		Theorem
+  LatexName		Proof
+  LabelString		"Proof."
+  
+  # standard font definition
+  Font
+    Shape		Up
+  EndFont
+
+  # label font definition
+  LabelFont
+    Shape 		Up
+    Series		Bold
+  EndFont
+End  
+
+
+# Theorem-numbered style declaration
+Style Theorem*
+  CopyStyle		Theorem
+  LatexName		Theorem*
+  LabelString		"Theorem."
+ End
+
+# Lemma-numbered style declaration
+Style Lemma*
+  CopyStyle		Lemma
+  LatexName		Lemma*
+  LabelString		"Lemma."
+End  
+
+# Corollary-numbered style declaration
+Style Corollary*
+  CopyStyle		Corollary
+  LatexName	        Corollary*
+  LabelString		"Corollary."
+End  
+
+# Proposition-numbered style declaration
+Style Proposition*
+  CopyStyle		Proposition
+  LatexName		Proposition*
+  LabelString		"Proposition."
+End  
+
+# Definition-numbered style declaration
+Style Definition*
+  CopyStyle		Definition
+  LatexName		Definition*
+  LabelString		"Definition."
+End
+
+# all the standard LaTeX environments
+Input stdlayouts.inc
+
+# Finally add a few weird LyX environments.
+Input lyxmacros.inc

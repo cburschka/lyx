@@ -1,0 +1,67 @@
+Rules for the use of popups
+===========================
+
+We need to have some rules in order to keep LyX enjoyable to use.  This
+document describes the rules for designing popups.  Please obey the rules.
+If you don't do it correctly, somebody else has to fix it for you, and we 
+don't like to waste time because you were lazy.  So, read it now, design 
+your popups, and come back and check if your new popup is in compliance.
+
+Internationalization
+--------------------
+
+We need some rules to be followed so that popups and short-cuts will
+work properly with regard to internationalization and gettext.
+
+We have made a method to make the shortcuts in xforms work correctly with
+internationalizationed shortcuts. We concat the label and the shortcut like 
+this:
+
+	<ident>|<shortcut>  (where <ident> often is a label)
+
+And have made two funcs to extract that info: scex and idex
+(shortcut-extract and ident-extract). To minimize the translation effort 
+you should use stuff like:
+
+	fl_add_object(<params>, idex(_("<ident>|<shortcut>")));
+	fl_set_shortcut(<obj>, scex(_("<ident>|<shortcut>")));
+
+Make sure the two texts are identical, such that gettext will join them.
+
+This will also help use make the labels and shortcuts consistent across 
+all the dialogs.
+
+Some <ident>|<shortcuts> pairs have been decided:
+
+1. Most popups have at least three buttons in common:
+
+	- OK		No shortcut in the usual case (it is a return button)
+	- Apply		"Apply|#A"
+	- Cancel	"Cancel|^[" (This is the escape key)
+			You can optionally use "Cancel|#C^[" also.
+	- Close		Either return-button, "Close|^[" or "Close|#C^[".
+
+Design rules
+------------
+
+1) Remember that you have to add this function to your form definition:
+
+		fl_set_form_atclose(form, CancelCloseBoxCB, NULL);
+
+   to prevent crashes when the users close the popup with the window manager.
+   You need to #include "lyx_gui_misc.h" to get CancelCloseBoxCB.
+
+More will follow...
+
+NB! If any of the shortcut keys is a part of the label and you want it to
+be underlined in the label, that character must be the _first_ in the
+accelerator string (allthough it may be an alt-key etc). Case _sensitive_.
+  Apply|Pp#p#P     won't get an underlined 'p'
+  Apply|GpaAP      won't either.
+  Apply|aA         nope
+  Apply|pP#p#P     will underline the first 'p'
+  Apply|Aa         will underline the 'A'
+  Apply|#Aa        will also underline the 'A'!
+See the docs for xforms... (fl_set_shortcut() etc)
+It seems xforms .86 doesn't recognise 128+ chars as shortcuts. (not with
+fl_set_shortcut() anyway)  /Joacim

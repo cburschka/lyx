@@ -1,0 +1,88 @@
+#This file was created by <candide> Tue Dec 22 07:58:14 1998
+#LyX 1.0 (C) 1995-1998 Matthias Ettrich and the LyX Team
+\lyxformat 2.15
+\textclass slides
+\begin_preamble
+% Uncomment to print out only slides and overlays
+%
+%\onlyslides{\slides}
+
+% Uncomment to print out only notes
+%
+%\onlynotes{\notes}
+\end_preamble
+\language default
+\inputencoding default
+\fontscheme default
+\graphics dvips
+\paperfontsize default
+\spacing single 
+\papersize Default
+\paperpackage a4
+\use_geometry 0
+\use_amsmath 0
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\quotes_times 2
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+
+\layout Slide
+
+\layout Standard
+
+Test slide.
+\layout InvisibleText
+
+\layout Standard
+
+Text visible only in an overlay.
+\layout VisibleText
+
+\layout Standard
+
+Text visible in the main slide.
+\layout Overlay
+
+\layout Standard
+
+Test overlay.
+\layout VisibleText
+
+\layout Standard
+
+Text visible only in an overlay.
+\layout InvisibleText
+
+\layout Standard
+
+Text visible in the main slide.
+\layout VisibleText
+
+\layout Note
+
+\layout Standard
+
+Test note.
+\layout Standard
+
+A time marker: 
+\latex latex 
+
+\backslash 
+settime{60}
+\layout Standard
+
+Don't talk more than 
+\latex latex 
+
+\backslash 
+addtime{200}
+\latex default 
+.
+\the_end

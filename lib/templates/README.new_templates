@@ -1,0 +1,38 @@
+HOW TO CREATE A NEW TEMPLATE
+============================
+
+Templates are almost usual LyX file that are saved by LyX itself.
+The strength is on "almost".
+
+LyX stores some properties in a file, for example:
+
+        \textclass dinbrief
+        \language german
+        \inputencoding default
+        \fontscheme default
+        \epsfig dvips
+        \papersize a4paper 
+        \paperfontsize 12 
+        \baselinestretch 1.00 
+        \secnumdepth 3 
+        \tocdepth 3 
+        \paragraph_separation skip 
+        \quotes_language german 
+        \quotes_times 2 
+        \paperorientation portrait 
+        \papercolumns 9 
+        \papersides 1 
+        \paperpagestyle plain 
+
+Some of these may be very reasonable for a certain template. In the
+case of a dinbrief-template this might be the papersize, the language
+and the quotes-settings, since it is a german-only template.  But it
+wouldn't make much sense to set the fontscheme or the inputencoding,
+since a user might have customized this already like he/she wanted it
+to be.
+
+So please delete all the lines of a new template with your favorite
+text editor (for example ed, ex or vi) that you don't want to set
+explicit for this template. LyX will use the user's default-values
+(defined in lyxrc) if a property isn't defined in the file itself.
+

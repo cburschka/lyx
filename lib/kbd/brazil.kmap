@@ -1,0 +1,25 @@
+#
+# brazil.kmap
+#
+# this is for Brazil, with US Keyborad.
+# 1998 By Marcos Tadeu (marcos@microlink.com.br)
+#
+# For use with br.ispell (http://www.ime.usp.br/~ueda/br.ispell),
+# execute a ln -s br.hash brazil.hash in a /usr/lib/ispell directory
+# and configure Brazil as default language in Layout/Document/Language
+#
+# Pode ser usado com o ispell Brasil (http://www.ime.usp.br/~ueda/br.ispell).
+# Se o ispell esta' instalado, va' para o diretorio /usr/lib/ispell e
+# execute um ln -s br.hash brazil.hash.  Use Brazil na opcao
+# Layout/Document/Language do lyx
+#
+\kmod ' acute aeioucAEIOUC
+\kmod ` grave aA
+\kmod ~ tilde aoAO
+\kmod ^ circumflex eaoEAO
+\kmod \" umlaut aeiouAEIOU
+
+\kxmod acute c "\\c{c}"
+\kxmod acute C "\\c{C}"
+
+\kxmod acute i "\\'{\\i}"

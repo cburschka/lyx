@@ -1,0 +1,343 @@
+// -*- C++ -*-
+/* This file is part of
+ * ======================================================
+ * 
+ *           LyX, The Document Processor
+ * 	 
+ *	  Copyright (C) 1995, 1996 Matthias Ettrich
+ *
+ *======================================================*/
+#ifndef TABLE_H
+#define TABLE_H
+
+#ifdef __GNUG__
+#pragma interface
+#endif
+
+#include <config.h>
+#include <stdio.h>
+#include "definitions.h"
+#include "lyxlex.h"
+#include "LString.h"
+
+/* The features the text class offers for tables */ 
+
+///
+class LyXTable  {
+public:
+	// Are the values of these enums important? (Lgb)
+	enum {
+		APPEND_ROW = 0,
+		APPEND_COLUMN = 1,
+		DELETE_ROW = 2,
+		DELETE_COLUMN = 3,
+		TOGGLE_LINE_TOP = 4,
+		TOGGLE_LINE_BOTTOM = 5,
+		TOGGLE_LINE_LEFT = 6,
+		TOGGLE_LINE_RIGHT = 7,
+		ALIGN_LEFT = 8, // what are these alignment enums used for?
+		ALIGN_RIGHT = 9,
+		ALIGN_CENTER = 10,
+		DELETE_TABLE = 11,
+		MULTICOLUMN = 12,
+                SET_ALL_LINES = 13,
+                UNSET_ALL_LINES = 14,
+                SET_LONGTABLE = 15,
+                UNSET_LONGTABLE = 16,
+                SET_PWIDTH = 17,
+                APPEND_CONT_ROW = 18,
+                SET_ROTATE_TABLE = 19,
+                UNSET_ROTATE_TABLE = 20,
+                SET_ROTATE_CELL = 21,
+                UNSET_ROTATE_CELL = 22,
+                SET_LINEBREAKS = 23,
+                SET_LTHEAD = 24,
+                SET_LTFIRSTHEAD = 25,
+                SET_LTFOOT = 26,
+                SET_LTLASTFOOT = 27,
+                SET_LTNEWPAGE = 28,
+                SET_SPECIAL_COLUMN = 29,
+                SET_SPECIAL_MULTI = 30
+	};
+
+	enum {
+		CELL_NORMAL = 0,
+		CELL_BEGIN_OF_MULTICOLUMN = 1,
+		CELL_PART_OF_MULTICOLUMN = 2
+	};
+	/* konstruktor */
+	///
+	LyXTable(int columns_arg, int rows_arg);
+	///
+	LyXTable(LyXLex &lex);
+	///
+	~LyXTable();
+	///
+	LyXTable* Clone();
+
+	/// Returns true if there is a topline, returns false if not
+	bool TopLine(int cell);
+	/// Returns true if there is a topline, returns false if not
+	bool BottomLine(int cell);
+	/// Returns true if there is a topline, returns false if not
+	bool LeftLine(int cell);
+	/// Returns true if there is a topline, returns false if not
+	bool RightLine(int cell);
+
+	///
+	bool TopAlreadyDrawed(int cell);
+	///
+	bool VeryLastRow(int cell);
+
+	///
+	int AdditionalHeight(int cell);
+	///
+	int AdditionalWidth(int cell);
+   
+	/* returns the maximum over all rows */
+	///
+	int WidthOfColumn(int cell);
+	///
+	int WidthOfTable();
+   
+	/// Returns true if a complete update is necessary, otherwise false
+	bool SetWidthOfCell(int cell, int new_width);
+	/// Returns true if a complete update is necessary, otherwise false
+	bool SetAllLines(int cell, bool line);
+	/// Returns true if a complete update is necessary, otherwise false
+	bool SetTopLine(int cell, bool line);
+	/// Returns true if a complete update is necessary, otherwise false
+	bool SetBottomLine(int cell, bool line);
+	/// Returns true if a complete update is necessary, otherwise false
+	bool SetLeftLine(int cell, bool line);
+	/// Returns true if a complete update is necessary, otherwise false
+	bool SetRightLine(int cell, bool line);
+	/// Returns true if a complete update is necessary, otherwise false
+	bool SetAlignment(int cell, char align);
+        ///
+	bool SetPWidth(int cell, LString width);
+        ///
+	bool SetAlignSpecial(int cell, LString special,int what);
+	///
+	char GetAlignment(int cell); // add approp. signedness
+        ///
+        LString GetPWidth(int cell);
+        ///
+        LString GetAlignSpecial(int cell, int what);
+
+	///
+	int GetWidthOfCell(int cell);
+	///
+	int GetBeginningOfTextInCell(int cell);
+
+	///
+	void AppendRow(int cell);
+	///
+	void DeleteRow(int cell);
+
+	///
+	void AppendColumn(int cell);
+	///
+	void DeleteColumn(int cell);
+
+	///
+	bool IsFirstCell(int cell);
+	///
+	bool IsLastCell(int cell);
+
+	///
+	int GetNumberOfCells();
+	///
+	int AppendCellAfterCell(int append_cell, int question_cell);
+	///
+	int DeleteCellIfColumnIsDeleted(int cell, int delete_column_cell);
+	///
+	int NumberOfCellsInRow(int cell);
+	///
+	void Reinit();
+
+	///
+	void Init(int columns_arg, int rows_arg);
+
+	///
+	void Write(FILE* file);
+	///
+	void Read(FILE* file);
+
+	// cell <0 will tex the preamble
+	// returns the number of printed newlines
+	///
+	int TexEndOfCell(LString& file, int cell);
+	///
+	int RoffEndOfCell(FILE* file, int cell);
+	///
+	const char *getDocBookAlign(int cell, bool isColumn=false);
+	///
+	int DocBookEndOfCell(LString &file, int cell, int &depth);
+
+	///
+	bool IsMultiColumn(int cell);
+	///
+	void SetMultiColumn(int cell, int number);
+	///
+	int UnsetMultiColumn(int cell); // returns number of new cells
+        ///
+	int row_of_cell(int cell);
+	///
+	int column_of_cell(int cell);
+	///
+	int rows;
+	///
+	int columns;
+	///
+	void SetLongTable(int what);
+	///
+	bool IsLongTable();
+	///
+	void SetRotateTable(int what);
+	///
+	bool RotateTable();
+	///
+	void SetRotateCell(int cell, int what);
+	///
+	bool RotateCell(int cell);
+	///
+        bool NeedRotating();
+        ///
+        void AppendContRow(int cell);
+        ///
+        bool IsContRow(int cell);
+        /// returns the number of the cell which continues
+        /// or -1 if no ContRow
+        int CellHasContRow(int cell);
+        ///
+        bool RowHasContRow(int cell);
+        ///
+        int FirstVirtualCell(int cell);
+        ///
+        int NextVirtualCell(int cell);
+        ///
+        bool ShouldBeVeryLastCell(int cell);
+        ///
+        bool ShouldBeVeryLastRow(int cell);
+        ///
+        int GetCellAbove(int cell);
+	///
+	int GetCellNumber(int column, int row);
+	///
+        void SetLinebreaks(int cell, bool what);
+	///
+        bool Linebreaks(int cell);
+        ///
+        /// Long Table Options
+        ///
+        void SetLTHead(int cell, bool first);
+        ///
+        bool RowOfLTHead(int cell);
+	///
+        bool RowOfLTFirstHead(int cell);
+	///
+        void SetLTFoot(int cell, bool last);
+	///
+        bool RowOfLTFoot(int cell);
+	///
+        bool RowOfLTLastFoot(int cell);
+	///
+        void SetLTNewPage(int cell, bool what);
+	///
+        bool LTNewPage(int cell);
+private:
+	///
+	struct cellstruct {
+            ///
+            int cellno;
+            ///
+            int width_of_cell;
+            ///
+            char  multicolumn; // add approp. signedness
+            ///
+            char alignment; // add approp. signedness
+            ///
+            bool top_line;
+            ///
+            bool bottom_line;
+            ///
+            bool has_cont_row;
+            ///
+            bool linebreaks;
+            ///
+            int rotate;
+            ///
+            LString align_special;
+            ///
+            LString p_width; // this is only set for multicolumn!!!
+	};
+        ///
+        struct rowstruct {
+                bool top_line;
+                bool bottom_line;
+                bool is_cont_row;
+                /// This are for longtables only
+                bool newpage;
+        };
+        ///
+        struct columnstruct {
+                char alignment; // add approp. signedness
+                bool left_line;
+                bool right_line;
+                int  width_of_column;
+                LString p_width;
+                LString align_special;
+        };
+	///
+	int numberofcells;
+	///
+	int* rowofcell;
+	///
+	int* columnofcell;
+	///
+	void set_row_column_number_info();
+
+	///
+        rowstruct *row_info;
+        ///
+        columnstruct *column_info;
+        ///
+	cellstruct** cell_info;
+	///
+	int width_of_table;
+        ///
+        /// for long tables
+        ///
+        int endhead; // row of endhead
+        int endfirsthead; // row of endfirsthead
+        int endfoot; // row of endfoot
+        int endlastfoot; // row of endlastfoot
+   
+	/// Returns true if a complete update is necessary, otherwise false
+	bool SetWidthOfMulticolCell(int cell, int new_width);
+	void recalculateMulticolCells(int cell, int new_width);
+	/// Returns true if change
+	bool calculate_width_of_column(int column);
+	bool calculate_width_of_column_NMC(int column); // no multi cells
+	///
+	void calculate_width_of_table();
+
+        ///
+	int right_column_of_cell(int cell);
+
+	///
+	cellstruct* cellinfo_of_cell(int cell);
+
+	///
+	void delete_column(int column);
+
+	///
+	int cells_in_multicolumn(int cell);
+	///
+	int is_long_table;
+	///
+	int rotate;
+};
+
+#endif

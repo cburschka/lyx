@@ -1,0 +1,282 @@
+#This file was created by <roman> Wed May 26 23:42:34 1999
+#LyX 1.0 (C) 1995-1999 Matthias Ettrich and the LyX Team
+\lyxformat 2.15
+\textclass article
+\language slovene
+\inputencoding latin2
+\fontscheme default
+\graphics dvips
+\paperfontsize 12
+\spacing single 
+\papersize letterpaper
+\paperpackage a4
+\use_geometry 0
+\use_amsmath 0
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language german
+\quotes_times 2
+\papercolumns 1
+\papersides 1
+\paperpagestyle plain
+
+\layout Title
+
+TO JE NASLOV VA©EGA SPISA
+\layout Author
+
+Fe LyX
+\layout Date
+
+12.
+ junij 1972
+\layout Standard
+
+
+\begin_inset LatexCommand \tableofcontents{}
+
+\end_inset 
+
+
+\layout Section
+
+Osnovna filozofija
+\layout Standard
+
+Osnovna filozofija LyX-a je ta, da bi morali skrbeti za vsebino tega, kar
+ pi¹ete, ne za obliko.
+\layout Subsection
+
+Kako to poène LyX
+\layout Standard
+
+LyX uporablja LaTeX, sistem za pripravo spisov, ki ga je leta 1985 zasnoval
+ Leslie Lamport.
+ LaTeX pa je zgrajen na stavnem jeziku, imenovanem TeX, ki ga je leta 1984
+ ustvaril Donald Knuth.
+ LaTeX je zasnovan na podobni filozofiji kot LyX.
+ Leslie Lamport je nekoè rekel (glejte vir 
+\begin_inset LatexCommand \cite{lamport}
+
+\end_inset 
+
+):
+\layout Quote
+
+Funkcija tipografskega oblikovanja je pomagati bralcu, da razume avtorjeve
+ ideje.
+ Èe naj bo spis lahek za branje, mora njegova vizualna struktura odsevati
+ njegovo logièno strukturo.
+ Navedki in raèunalni¹ki programi, ki so logièno razlièni strukturni elementi,
+ bi morali biti vizualno razloèljivi drug od drugega ...
+ Ker LaTeX ne more razumeti va¹e poezije, morate eksplicitno oznaèiti logièno
+ strukturo z vnosom posebnih ukazov ...
+ Ko pi¹ete va¹ spis, bi se morali ukvarjati z njegovo logièno strukturo
+ in ne z njegovo vizualno pojavo.
+\layout Subsection
+
+Zakaj je LyX bolj¹i
+\layout Standard
+
+
+\begin_inset LatexCommand \label{sec:lyxbetter}
+
+\end_inset 
+
+LyX je lahko uporaben veè ljudem kot LaTeX.
+ Precej la¾je se ga je nauèiti, saj se vam ni treba nauèiti LaTeX-a (ki
+ je praktièno programski jezik).
+ LyX je pravzaprav kot ostali urejevalniki besedil tipa 
+\begin_inset Quotes gld
+\end_inset 
+
+kar vidi¹ to dobi¹
+\begin_inset Quotes grd
+\end_inset 
+
+, le da je LyX tipa 
+\begin_inset Quotes gld
+\end_inset 
+
+kar vidi¹ to misli¹
+\begin_inset Quotes grd
+\end_inset 
+
+.
+ Na ta naèin kombinira preprostost uporabe urejevalnikov besedil z moèjo
+ LaTeX-a.
+ To je Dobra Stvar.
+ Tudi datoteèni format je neodvisen od platforme.
+ Najbolj¹e od vsega pa je, da je PROST!
+\layout Section
+
+Odlike LyX-a
+\layout Standard
+
+LyX ima mnoge odlike, ki olaj¹ajo pisanje spisov.
+\begin_float footnote 
+\layout Standard
+
+Navsezadnje, zakaj bi ga sicer ¾eleli uporabljati?
+\end_float 
+ 
+\emph on 
+Zelo vznemirjen
+\emph default 
+ sem, da lahko govorim o tem.
+ Tukaj je seznam le nekaterih.
+\layout Itemize
+
+LyX skrbi za robove in ¹tevilèenje opomb v nogi namesto vas.
+\layout Itemize
+
+Z LyX-om postane pisanje in urejanje matematiènih obrazcev preprosto.
+\layout Standard
+
+Za bolj filozofsko diskusijo o tem zakaj je LyX bolj¹i od drugih urejevalnikov
+ besedil glejte razdelek 
+\begin_inset LatexCommand \ref{sec:lyxbetter}
+
+\end_inset 
+
+, ki ga lahko najdete na strani 
+\begin_inset LatexCommand \pageref{sec:lyxbetter}
+
+\end_inset 
+
+.
+\layout Section
+
+3.
+ Nerodni poskusi uporabe veè zadev LyX-a
+\layout Standard
+
+Zadnjiè sem napisal program.
+ Videti je bil takole.
+\layout LyX-Code
+
+5 REM MOJ STRA©NI PROGRAM
+\layout LyX-Code
+
+10 PRINT 
+\begin_inset Quotes eld
+\end_inset 
+
+STRA©EN SEM!
+\begin_inset Quotes erd
+\end_inset 
+
+
+\layout LyX-Code
+
+20 GOTO 10
+\layout Standard
+
+Po vsem tem znanstvenem razmi¹ljanju sem se zaèel poèutiti bolj umetni¹ko,
+ zato sem napisal tale haiku
+\layout Verse
+
+LyX je zares èudovit
+\newline 
+stavni urejevalnik besedil
+\newline 
+prihrani mi toliko èasa
+\layout Section
+
+Matematiène zadeve
+\layout Standard
+
+Moja najljub¹a enaèba je re¹itev kvadratne enaèbe.
+ Èe je 
+\begin_inset Formula \( ax^{2}+bx+c=0 \)
+\end_inset 
+
+ (en.
+ 1), potem je 
+\begin_inset Formula \( x=\frac{-b\pm \sqrt{b^{2}-4ac}}{2a} \)
+\end_inset 
+
+ (en.
+ 2).
+\layout Standard
+
+Druga priljubljena enaèba predstavlja osnovo matematiène analize: 
+\begin_inset Formula \( f'(x)\equiv \lim _{\Delta x\rightarrow 0}\frac{f(x+\Delta x)-f(x)}{\Delta x} \)
+\end_inset 
+
+ (en.
+ 3).
+\layout Section
+
+Opazke
+\layout Standard
+
+Nekaj opazk o LyXanju te datoteke:
+\layout Itemize
+
+Vrstice, narejene z vezaji, sem lahko odstranil.
+ Tam so bile le zato, da so loèevale naslove in vire od ostanka spisa.
+ LyX (LaTeX) ve dovolj, da loèi te dele spisa z razmikom.
+\layout Itemize
+
+Nisem se trudil z vstavljanjem matematiènih enaèb v prikazni naèin.
+ Nisem tudi uporabljal samodejnega ¹tevilèenja enaèb, ki ga pozna LyX, saj
+ to ni opisano v 
+\emph on 
+Uèbeniku
+\emph default 
+.
+\layout Itemize
+
+Ni mi bilo treba vpisati besede 
+\begin_inset Quotes gld
+\end_inset 
+
+Literatura
+\begin_inset Quotes grd
+\end_inset 
+
+, spodaj (v LyX-u pravzaprav 
+\begin_inset Quotes gld
+\end_inset 
+
+References
+\begin_inset Quotes grd
+\end_inset 
+
+ ali 
+\begin_inset Quotes gld
+\end_inset 
+
+Bibliography
+\begin_inset Quotes grd
+\end_inset 
+
+, v izhodu pa ob slovenskih nastavitvah 
+\begin_inset Quotes gld
+\end_inset 
+
+Literatura
+\begin_inset Quotes grd
+\end_inset 
+
+).
+ LyX jo samodejno zapi¹e, ko izberete okolje 
+\family sans 
+Bibliography
+\family default 
+.
+\layout Bibliography
+\bibitem {lamport}
+
+Lamport, Leslie.
+ 
+\emph on 
+LaTeX: A Document Preparation System.
+
+\emph default 
+ Addison-Wesley, Reading, Massachusetts, second edition, 1994.
+\the_end

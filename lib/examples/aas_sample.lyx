@@ -1,0 +1,1305 @@
+#This file was created by <mike> Sun Jul 25 23:59:27 1999
+#LyX 1.0 (C) 1995-1999 Matthias Ettrich and the LyX Team
+\lyxformat 2.15
+\textclass aastex
+\begin_preamble
+\newcommand{\vdag}{(v)^\dagger}
+\newcommand{\myemail}{skywalker@galaxy.far.far.away}
+\slugcomment{Not to appear in Nonlearned J., 45.}
+\shorttitle{Djorgovski et al.}
+\shortauthors{Collapsed Cores in Globular Clusters}
+\end_preamble
+\language default
+\inputencoding default
+\fontscheme default
+\graphics default
+\paperfontsize default
+\spacing single 
+\papersize Default
+\paperpackage a4
+\use_geometry 0
+\use_amsmath 0
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\quotes_times 2
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+
+\layout Title
+
+Collapsed Cores in Globular Clusters,  Gauge-Boson Couplings, and AASTeX
+\latex latex 
+ 
+\latex default 
+Examples
+\layout Author
+
+S.
+ Djorgovski
+\latex latex 
+
+\backslash 
+altaffilmark{1,2,3}
+\latex default 
+ and Ivan R.
+ King
+\latex latex 
+
+\backslash 
+altaffilmark{1}
+\layout Affiliation
+
+Astronomy Department, University of California, Berkeley, CA 94720
+\layout Author
+
+C.
+ D.
+ Biemesderfer
+\latex latex 
+
+\backslash 
+altaffilmark{4,5}
+\layout Affiliation
+
+National Optical Astronomy Observatories, Tucson, AZ 85719
+\layout Email
+
+aastex-help@aas.org
+\layout And
+
+\layout Author
+
+R.
+ J.
+ Hanisch
+\latex latex 
+
+\backslash 
+altaffilmark{5}
+\layout Affiliation
+
+Space Telescope Science Institute, Baltimore, MD 21218
+\layout Standard
+
+
+\latex latex 
+
+\backslash 
+altaffiltext{1}{Visiting Astronomer, Cerro Tololo Inter-American Observatory.
+ CTIO is operated by AURA, Inc.
+\backslash 
+ under contract to the National Science Foundation.} 
+\layout Standard
+
+
+\latex latex 
+
+\backslash 
+altaffiltext{2}{Society of Fellows, Harvard University.} 
+\layout Standard
+
+
+\latex latex 
+
+\backslash 
+altaffiltext{3}{present address: Center for Astrophysics, 60 Garden Street,
+ Cambridge, MA 02138} 
+\layout Standard
+
+
+\latex latex 
+
+\backslash 
+altaffiltext{4}{Visiting Programmer, Space Telescope Science Institute}
+ 
+\layout Standard
+
+
+\latex latex 
+
+\backslash 
+altaffiltext{5}{Patron, Alonso's Bar and Grill}
+\layout Abstract
+
+This is a preliminary report on surface photometry of the major fraction
+ of known globular clusters, to see which of them show the signs of a collapsed
+ core.
+ We also explore some diversionary mathematics and recreational tables.
+ 
+\layout Keywords
+
+clusters: globular, peanut---bosons: bozos
+\layout Section
+
+Introduction
+\layout Standard
+
+A focal problem today in the dynamics of globular clusters is core collapse.
+ It has been predicted by theory for decades 
+\latex latex 
+
+\backslash 
+citep{hen61,lyn68,spi85}
+\latex default 
+, but observation has been less alert to the phenomenon.
+ For many years the central brightness peak in M15 
+\latex latex 
+
+\backslash 
+citep{kin75,new78}
+\latex default 
+ seemed a unique anomaly.
+ Then 
+\latex latex 
+
+\backslash 
+citet{aur82}
+\latex default 
+ suggested a central peak in NGC 6397, and a limited photographic survey
+ of ours 
+\latex latex 
+
+\backslash 
+citep[Paper I]{djo84}
+\latex default 
+ found three more cases, including NGC 6624, whose sharp center had often
+ been remarked on 
+\latex latex 
+
+\backslash 
+citep{can78}
+\latex default 
+.
+ 
+\layout Section
+
+Observations
+\layout Standard
+
+All our observations were short direct exposures with CCD's.
+ At Lick Observatory we used a TI 500
+\begin_inset Formula \( \times  \)
+\end_inset 
+
+500 chip and a GEC 575
+\begin_inset Formula \( \times  \)
+\end_inset 
+
+385, on the 1-m Nickel reflector.
+ The only filter available at Lick was red.
+ At CTIO we used a GEC 575
+\begin_inset Formula \( \times  \)
+\end_inset 
+
+385, with 
+\begin_inset Formula \( B,V, \)
+\end_inset 
+
+ and 
+\begin_inset Formula \( R \)
+\end_inset 
+
+ filters, and an RCA 512
+\begin_inset Formula \( \times  \)
+\end_inset 
+
+320, with 
+\begin_inset Formula \( U,B,V,R, \)
+\end_inset 
+
+ and 
+\begin_inset Formula \( I \)
+\end_inset 
+
+ filters, on the 1.5-m reflector.
+ In the CTIO observations we tried to concentrate on the shortest practicable
+ wavelengths; but faintness, reddening, and poor short-wavelength sensitivity
+ often kept us from observing in 
+\begin_inset Formula \( U \)
+\end_inset 
+
+ or even in 
+\begin_inset Formula \( B \)
+\end_inset 
+
+.
+ All four cameras had scales of the order of 0.4 arcsec/pixel, and our field
+ sizes were around 3 arcmin.
+\layout Standard
+
+The CCD images are unfortunately not always suitable, for very poor clusters
+ or for clusters with large cores.
+ Since the latter are easily studied by other means, we augmented our own
+ CCD profiles by collecting from the literature a number of star-count profiles
+ 
+\latex latex 
+
+\backslash 
+citep{kin68,pet76,har84,ort85}
+\latex default 
+, as well as photoelectric profiles 
+\latex latex 
+
+\backslash 
+citep{kin66,kin75}
+\latex default 
+ and electronographic profiles 
+\latex latex 
+
+\backslash 
+citep{kro84}
+\latex default 
+.
+ In a few cases we judged normality by eye estimates on one of the Sky Surveys.
+\layout Section
+
+Helicity Amplitudes
+\layout Standard
+
+It has been realized that helicity amplitudes provide a convenient means
+ for Feynman diagram
+\begin_float footnote 
+\layout Standard
+
+Footnotes can be inserted like this.
+\end_float 
+ evaluations.
+ These amplitude-level techniques are particularly convenient for calculations
+ involving many Feynman diagrams, where the usual trace techniques for the
+ amplitude squared becomes unwieldy.
+ Our calculations use the helicity techniques developed by other authors
+ 
+\begin_inset LatexCommand \cite{hag86}
+
+\end_inset 
+
+; we briefly summarize below.
+\layout Subsection
+
+Formalism
+\layout Standard
+
+
+\begin_inset LatexCommand \label{bozomath}
+
+\end_inset 
+
+
+\layout Standard
+
+A tree-level amplitude in 
+\begin_inset Formula \( e^{+}e^{-} \)
+\end_inset 
+
+ collisions can be expressed in terms of fermion strings of the form 
+\begin_inset Formula 
+\begin{equation}
+\bar{v}(p_{2},\sigma _{2})P_{-\tau }\hat{a}_{1}\hat{a}_{2}\cdots \hat{a}_{n}u(p_{1},\sigma _{1}),
+\end{equation}
+
+\end_inset 
+
+ where 
+\begin_inset Formula \( p \)
+\end_inset 
+
+ and 
+\begin_inset Formula \( \sigma  \)
+\end_inset 
+
+ label the initial 
+\begin_inset Formula \( e^{\pm } \)
+\end_inset 
+
+ four-momenta and helicities 
+\begin_inset Formula \( (\sigma =\pm 1) \)
+\end_inset 
+
+, 
+\begin_inset Formula \( \hat{a}_{i}=a^{\mu }_{i}\gamma _{\nu } \)
+\end_inset 
+
+ and 
+\begin_inset Formula \( P_{\tau }=\frac{1}{2}(1+\tau \gamma _{5}) \)
+\end_inset 
+
+ is a chirality projection operator 
+\begin_inset Formula \( (\tau =\pm1 ) \)
+\end_inset 
+
+.
+ The 
+\begin_inset Formula \( a^{\mu }_{i} \)
+\end_inset 
+
+ may be formed from particle four-momenta, gauge-boson polarization vectors
+ or fermion strings with an uncontracted Lorentz index associated with final-sta
+te fermions.
+\layout NoteToEditor
+
+Figures 1 and 2 should appear side-by-side in print
+\layout Standard
+
+In the chiral representation the 
+\begin_inset Formula \( \gamma  \)
+\end_inset 
+
+ matrices are expressed in terms of 
+\begin_inset Formula \( 2\times 2 \)
+\end_inset 
+
+ Pauli matrices 
+\begin_inset Formula \( \sigma  \)
+\end_inset 
+
+ and the unit matrix 1 as 
+\begin_inset Formula 
+\begin{eqnarray}
+\gamma ^{\mu } & = & \left( \begin{array}{cc}
+0 & \sigma ^{\mu }_{+}\\
+\sigma ^{\mu }_{-} & 0
+\end{array}\right) ,\gamma ^{5}=\left( \begin{array}{cc}
+-1 & 0\\
+0 & 1
+\end{array}\right) ,\nonumber \\
+\sigma ^{\mu }_{\pm } & = & ({\textbf {1}},\pm \sigma ),\nonumber 
+\end{eqnarray}
+
+\end_inset 
+
+ giving 
+\begin_inset Formula 
+\begin{equation}
+\hat{a}=\left( \begin{array}{cc}
+0 & (\hat{a})_{+}\\
+(\hat{a})_{-} & 0
+\end{array}\right) ,(\hat{a})_{\pm }=a_{\mu }\sigma ^{\mu }_{\pm },
+\end{equation}
+
+\end_inset 
+
+ The spinors are expressed in terms of two-component Weyl spinors as 
+\begin_inset Formula 
+\begin{equation}
+u=\left( \begin{array}{c}
+(u)_{-}\\
+(u)_{+}
+\end{array}\right) ,v={\textbf {(}}\vdag _{+}{\textbf {,}}\vdag _{-}{\textbf {)}}.
+\end{equation}
+
+\end_inset 
+
+
+\layout Standard
+
+The Weyl spinors are given in terms of helicity eigenstates 
+\begin_inset Formula \( \chi _{\lambda }(p) \)
+\end_inset 
+
+ with 
+\begin_inset Formula \( \lambda =\pm1  \)
+\end_inset 
+
+ by 
+\layout MathLetters
+
+
+\begin_inset Formula 
+\begin{eqnarray}
+u(p,\lambda )_{\pm } & = & (E\pm \lambda |{\textbf {p}}|)^{1/2}\chi _{\lambda }(p),\\
+v(p,\lambda )_{\pm } & = & \pm \lambda (E\mp \lambda |{\textbf {p}}|)^{1/2}\chi _{-\lambda }(p)
+\end{eqnarray}
+
+\end_inset 
+
+
+\layout Section
+
+Floating material and so forth
+\layout Standard
+
+Consider a task that computes profile parameters for a modified Lorentzian
+ of the form 
+\begin_inset Formula 
+\begin{equation}
+I=\frac{1}{1+d_{1}^{P(1+d_{2})}}
+\end{equation}
+
+\end_inset 
+
+ where 
+\begin_inset Formula 
+\[
+d_{1}=\sqrt{\left( \begin{array}{c}
+\frac{x_{1}}{R_{maj}}
+\end{array}\right) ^{2}+\left( \begin{array}{c}
+\frac{y_{1}}{R_{min}}
+\end{array}\right) ^{2}}\]
+
+\end_inset 
+
+
+\begin_inset Formula 
+\[
+d_{2}=\sqrt{\left( \begin{array}{c}
+\frac{x_{1}}{PR_{maj}}
+\end{array}\right) ^{2}+\left( \begin{array}{c}
+\case {y_{1}}{PR_{min}}
+\end{array}\right) ^{2}}\]
+
+\end_inset 
+
+
+\begin_inset Formula 
+\[
+x_{1}=(x-x_{0})\cos \Theta +(y-y_{0})\sin \Theta \]
+
+\end_inset 
+
+
+\begin_inset Formula 
+\[
+y_{1}=-(x-x_{0})\sin \Theta +(y-y_{0})\cos \Theta \]
+
+\end_inset 
+
+
+\layout Standard
+
+In these expressions 
+\begin_inset Formula \( x_{0} \)
+\end_inset 
+
+,
+\begin_inset Formula \( y_{0} \)
+\end_inset 
+
+ is the star center, and 
+\begin_inset Formula \( \Theta  \)
+\end_inset 
+
+ is the angle with the 
+\begin_inset Formula \( x \)
+\end_inset 
+
+ axis.
+ Results of this task are shown in table
+\protected_separator 
+
+\begin_inset LatexCommand \ref{tbl-2}
+
+\end_inset 
+
+.
+ It is not clear how these sorts of analyses may affect determination of
+ 
+\begin_inset Formula \( M_{\sun } \)
+\end_inset 
+
+, but the assumption is that the alternate results should be less than 90
+\latex latex 
+
+\backslash 
+degr
+\backslash 
+ 
+\latex default 
+out of phase with previous values.
+ We have no observations of 
+\latex latex 
+
+\backslash 
+ion{Ca}{2}
+\latex default 
+.
+ Roughly 
+\latex latex 
+
+\backslash 
+slantfrac{4}{5}
+\latex default 
+ of the electronically submitted abstracts for AAS meetings are error-free.
+\layout Acknowledgements
+
+\layout Standard
+
+We are grateful to V.
+ Barger, T.
+ Han, and R.
+ J.
+ N.
+ Phillips for doing the math in section
+\protected_separator 
+
+\begin_inset LatexCommand \ref{bozomath}
+
+\end_inset 
+
+.
+ More information on the AASTeX macros package are available at 
+\latex latex 
+
+\begin_inset LatexCommand \url{http://www.aas.org/publications/aastex}
+
+\end_inset 
+
+
+\latex default 
+ or the 
+\latex latex 
+
+\backslash 
+anchor{ftp://www.aas.org/pubs/}{AAS ftp site}
+\latex default 
+.
+\layout Appendix
+
+\layout Section
+
+Appendicial material
+\layout Standard
+
+Consider once again a task that computes profile parameters for a modified
+ Lorentzian of the form 
+\begin_inset Formula 
+\begin{equation}
+I=\frac{1}{1+d_{1}^{P(1+d_{2})}}
+\end{equation}
+
+\end_inset 
+
+ where 
+\layout MathLetters
+
+
+\begin_inset Formula 
+\[
+d_{1}=\frac{3}{4}\sqrt{\left( \begin{array}{c}
+\frac{x_{1}}{R_{maj}}
+\end{array}\right) ^{2}+\left( \begin{array}{c}
+\frac{y_{1}}{R_{min}}
+\end{array}\right) ^{2}}\]
+
+\end_inset 
+
+
+\begin_inset Formula 
+\begin{equation}
+d_{2}=\case {3}{4}\sqrt{\left( \begin{array}{c}
+\frac{x_{1}}{PR_{maj}}
+\end{array}\right) ^{2}+\left( \begin{array}{c}
+\case {y_{1}}{PR_{min}}
+\end{array}\right) ^{2}}
+\end{equation}
+
+\end_inset 
+
+
+\begin_inset Formula 
+\begin{eqnarray}
+x_{1} & = & (x-x_{0})\cos \Theta +(y-y_{0})\sin \Theta \\
+y_{1} & = & -(x-x_{0})\sin \Theta +(y-y_{0})\cos \Theta 
+\end{eqnarray}
+
+\end_inset 
+
+
+\layout Standard
+
+For completeness, here is one last equation.
+ 
+\begin_inset Formula 
+\begin{equation}
+e=mc^{2}
+\end{equation}
+
+\end_inset 
+
+
+\layout References
+\bibitem [Auri\`ere(1982)]{aur82}
+
+Auri\i \`{e}
+re, M.
+ 1982, 
+\latex latex 
+
+\backslash 
+aap
+\latex default 
+, 109, 301 
+\layout References
+\bibitem [Canizares et al.(1978)]{can78}
+
+Canizares, C.
+ R., Grindlay, J.
+ E., Hiltner, W.
+ A., Liller, W., and McClintock, J.
+ E.
+ 1978, 
+\latex latex 
+
+\backslash 
+apj
+\latex default 
+, 224, 39 
+\layout References
+\bibitem [Djorgovski and King(1984)]{djo84}
+
+Djorgovski, S., and King, I.
+ R.
+ 1984, 
+\latex latex 
+
+\backslash 
+apjl
+\latex default 
+, 277, L49 
+\layout References
+\bibitem [Hagiwara and Zeppenfeld(1986)]{hag86}
+
+Hagiwara, K., and Zeppenfeld, D.
+ 1986, Nucl.Phys., 274, 1 
+\layout References
+\bibitem [Harris and van den Bergh(1984)]{har84}
+
+Harris, W.
+ E., and van den Bergh, S.
+ 1984, 
+\latex latex 
+
+\backslash 
+aj
+\latex default 
+, 89, 1816 
+\layout References
+\bibitem [H\`enon(1961)]{hen61}
+
+H\i \'{e}
+non, M.
+ 1961, Ann.d'Ap., 24, 369 
+\layout References
+\bibitem [King(1966)]{kin66}
+
+King, I.
+ R.
+ 1966, 
+\latex latex 
+
+\backslash 
+aj
+\latex default 
+, 71, 276 
+\layout References
+\bibitem [King(1975)]{kin75}
+
+King, I.
+ R.
+ 1975, Dynamics of Stellar Systems, A.
+ Hayli, Dordrecht: Reidel, 1975, 99 
+\layout References
+\bibitem [King et al.(1968)]{kin68}
+
+King, I.
+ R., Hedemann, E., Hodge, S.
+ M., and White, R.
+ E.
+ 1968, 
+\latex latex 
+
+\backslash 
+aj
+\latex default 
+, 73, 456 
+\layout References
+\bibitem [Kron et al.(1984)]{kro84}
+
+Kron, G.
+ E., Hewitt, A.
+ V., and Wasserman, L.
+ H.
+ 1984, 
+\latex latex 
+
+\backslash 
+pasp
+\latex default 
+, 96, 198 
+\layout References
+\bibitem [Lynden-Bell and Wood(1968)]{lyn68}
+
+Lynden-Bell, D., and Wood, R.
+ 1968, 
+\latex latex 
+
+\backslash 
+mnras
+\latex default 
+, 138, 495 
+\layout References
+\bibitem [Newell and O'Neil(1978)]{new78}
+
+Newell, E.
+ B., and O'Neil, E.
+ J.
+ 1978, 
+\latex latex 
+
+\backslash 
+apjs
+\latex default 
+, 37, 27 
+\layout References
+\bibitem [Ortolani et al.(1985)]{ort85}
+
+Ortolani, S., Rosino, L., and Sandage, A.
+ 1985, 
+\latex latex 
+
+\backslash 
+aj
+\latex default 
+, 90, 473 
+\layout References
+\bibitem [Peterson(1976)]{pet76}
+
+Peterson, C.
+ J.
+ 1976, 
+\latex latex 
+
+\backslash 
+aj
+\latex default 
+, 81, 617 
+\layout References
+\bibitem [Spitzer(1985)]{spi85}
+
+Spitzer, L.
+ 1985, Dynamics of Star Clusters, J.
+ Goodman and P.
+ Hut, Dordrecht: Reidel, 109 
+\layout Standard
+
+
+\latex latex 
+
+\backslash 
+clearpage
+\layout FigCaption
+
+
+\begin_inset LatexCommand \label{fig1}
+
+\end_inset 
+
+This is the first figure and it uses sgi9259.eps as its EPS figure file.
+\layout FigCaption
+
+
+\begin_inset LatexCommand \label{fig2}
+
+\end_inset 
+
+This is an example of a long figure caption that must be set as a paragraph.
+  The processor has to buffer the text of the caption, so it is good not
+ to be too wordy, but that would make for poor communication as well.
+ 
+\layout FigCaption
+
+
+\begin_inset LatexCommand \label{fig3}
+
+\end_inset 
+
+This figure has no associated EPS file, so the optional parameter is omitted.
+ 
+\layout Standard
+
+
+\latex latex 
+
+\backslash 
+clearpage
+\layout Standard
+
+\begin_float tab 
+\layout Caption
+\added_space_bottom medskip 
+Terribly relevant tabular information.
+\begin_inset LatexCommand \label{tbl-2}
+
+\end_inset 
+
+
+\layout Standard
+\LyXTable
+multicol5
+7 13 0 0 -1 -1 -1 -1
+0 0 0 0
+0 0 0 0
+0 0 0 0
+0 0 0 0
+0 0 0 0
+0 0 0 0
+0 0 0 0
+8 0 0 "" ""
+4 0 0 "" ""
+4 0 0 "" ""
+4 0 0 "" ""
+4 0 0 "" ""
+4 0 0 "" ""
+4 0 0 "" ""
+4 0 0 "" ""
+4 0 0 "" ""
+4 0 0 "" ""
+4 0 0 "" ""
+4 0 0 "" ""
+8 0 0 "" ""
+0 8 1 1 0 0 0 "" ""
+0 4 1 1 0 0 0 "" ""
+0 4 1 1 0 0 0 "" ""
+0 4 1 1 0 0 0 "" ""
+0 4 1 1 0 0 0 "" ""
+0 4 1 1 0 0 0 "" ""
+0 4 1 1 0 0 0 "" ""
+0 4 1 1 0 0 0 "" ""
+1 8 0 0 0 0 0 "" ""
+0 4 1 1 0 0 0 "" ""
+0 4 1 1 0 0 0 "" ""
+1 8 0 0 0 0 0 "" ""
+0 8 0 0 0 0 0 "" ""
+0 8 0 0 0 0 0 "" ""
+0 4 0 0 0 0 0 "" ""
+0 4 0 0 0 0 0 "" ""
+0 4 0 0 0 0 0 "" ""
+0 4 0 0 0 0 0 "" ""
+0 4 0 0 0 0 0 "" ""
+0 4 0 0 0 0 0 "" ""
+0 4 0 0 0 0 0 "" ""
+0 4 0 0 0 0 0 "" ""
+0 4 0 0 0 0 0 "" ""
+0 4 0 0 0 0 0 "" ""
+0 4 0 0 0 0 0 "" ""
+0 4 0 0 0 0 0 "" ""
+0 8 0 0 0 0 0 "" ""
+0 4 0 0 0 0 0 "" ""
+0 4 0 0 0 0 0 "" ""
+0 4 0 0 0 0 0 "" ""
+0 4 0 0 0 0 0 "" ""
+0 4 0 0 0 0 0 "" ""
+0 4 0 0 0 0 0 "" ""
+0 4 0 0 0 0 0 "" ""
+0 4 0 0 0 0 0 "" ""
+0 4 0 0 0 0 0 "" ""
+0 4 0 0 0 0 0 "" ""
+0 4 0 0 0 0 0 "" ""
+0 4 0 0 0 0 0 "" ""
+0 8 0 0 0 0 0 "" ""
+0 4 0 0 0 0 0 "" ""
+0 4 0 0 0 0 0 "" ""
+0 4 0 0 0 0 0 "" ""
+0 4 0 0 0 0 0 "" ""
+0 4 0 0 0 0 0 "" ""
+0 4 0 0 0 0 0 "" ""
+0 4 0 0 0 0 0 "" ""
+0 4 0 0 0 0 0 "" ""
+0 4 0 0 0 0 0 "" ""
+0 4 0 0 0 0 0 "" ""
+0 4 0 0 0 0 0 "" ""
+0 4 0 0 0 0 0 "" ""
+0 8 0 0 0 0 0 "" ""
+0 4 0 0 0 0 0 "" ""
+0 4 0 0 0 0 0 "" ""
+0 4 0 0 0 0 0 "" ""
+0 4 0 0 0 0 0 "" ""
+0 4 0 0 0 0 0 "" ""
+0 4 0 0 0 0 0 "" ""
+0 4 0 0 0 0 0 "" ""
+0 4 0 0 0 0 0 "" ""
+0 4 0 0 0 0 0 "" ""
+0 4 0 0 0 0 0 "" ""
+0 4 0 0 0 0 0 "" ""
+0 4 0 0 0 0 0 "" ""
+0 8 0 0 0 0 0 "" ""
+0 4 0 0 0 0 0 "" ""
+0 4 0 0 0 0 0 "" ""
+0 4 0 0 0 0 0 "" ""
+0 4 0 0 0 0 0 "" ""
+0 4 0 0 0 0 0 "" ""
+0 4 0 0 0 0 0 "" ""
+0 4 0 0 0 0 0 "" ""
+0 4 0 0 0 0 0 "" ""
+0 4 0 0 0 0 0 "" ""
+0 4 0 0 0 0 0 "" ""
+0 4 0 0 0 0 0 "" ""
+0 4 0 0 0 0 0 "" ""
+0 8 0 1 0 0 0 "" ""
+0 4 0 1 0 0 0 "" ""
+0 4 0 1 0 0 0 "" ""
+0 4 0 1 0 0 0 "" ""
+0 4 0 1 0 0 0 "" ""
+0 4 0 1 0 0 0 "" ""
+0 4 0 1 0 0 0 "" ""
+0 4 0 1 0 0 0 "" ""
+0 4 0 1 0 0 0 "" ""
+0 4 0 1 0 0 0 "" ""
+0 4 0 1 0 0 0 "" ""
+0 4 0 1 0 0 0 "" ""
+0 4 0 1 0 0 0 "" ""
+
+Star 
+\newline 
+ Height 
+\newline 
+ 
+\begin_inset Formula \( d_{x} \)
+\end_inset 
+
+
+\newline 
+ 
+\begin_inset Formula \( d_{y} \)
+\end_inset 
+
+
+\newline 
+ 
+\begin_inset Formula \( n \)
+\end_inset 
+
+
+\newline 
+ 
+\begin_inset Formula \( \chi ^{2} \)
+\end_inset 
+
+
+\newline 
+ 
+\begin_inset Formula \( R_{maj} \)
+\end_inset 
+
+
+\newline 
+ 
+\begin_inset Formula \( R_{min} \)
+\end_inset 
+
+
+\newline 
+
+\begin_inset Formula \( P \)
+\end_inset 
+
+
+\latex latex 
+
+\backslash 
+tablenotemark{a}
+\latex default 
+
+\newline 
+ 
+\begin_inset Formula \( PR_{maj} \)
+\end_inset 
+
+
+\newline 
+ 
+\begin_inset Formula \( PR_{min} \)
+\end_inset 
+
+
+\newline 
+
+\begin_inset Formula \( \Theta  \)
+\end_inset 
+
+
+\latex latex 
+
+\backslash 
+tablenotemark{b}
+\latex default 
+
+\newline 
+Ref.
+\newline 
+
+\latex latex 
+
+\backslash 
+tableline
+\backslash 
+tableline
+\latex default 
+1 
+\newline 
+33472.5 
+\newline 
+-0.1 
+\newline 
+0.4 
+\newline 
+53 
+\newline 
+27.4 
+\newline 
+2.065 
+\newline 
+1.940 
+\newline 
+3.900 
+\newline 
+68.3 
+\newline 
+116.2 
+\newline 
+-27.639
+\newline 
+1,2
+\newline 
+ 2 
+\newline 
+27802.4 
+\newline 
+-0.3 
+\newline 
+-0.2 
+\newline 
+60 
+\newline 
+3.7 
+\newline 
+1.628 
+\newline 
+1.510 
+\newline 
+2.156 
+\newline 
+6.8 
+\newline 
+7.5 
+\newline 
+-26.764
+\newline 
+3
+\newline 
+ 3 
+\newline 
+29210.6 
+\newline 
+0.9 
+\newline 
+0.3 
+\newline 
+60 
+\newline 
+3.4 
+\newline 
+1.622 
+\newline 
+1.551 
+\newline 
+2.159 
+\newline 
+6.7 
+\newline 
+7.3 
+\newline 
+-40.272
+\newline 
+4
+\newline 
+ 4 
+\newline 
+32733.8 
+\newline 
+-1.2
+\latex latex 
+
+\backslash 
+tablenotemark{c}
+\latex default 
+
+\newline 
+-0.5 
+\newline 
+41 
+\newline 
+54.8 
+\newline 
+2.282 
+\newline 
+2.156 
+\newline 
+4.313 
+\newline 
+117.4 
+\newline 
+78.2 
+\newline 
+-35.847
+\newline 
+5,6
+\newline 
+ 5 
+\newline 
+ 9607.4 
+\newline 
+-0.4 
+\newline 
+-0.4 
+\newline 
+60 
+\newline 
+1.4 
+\newline 
+1.669
+\latex latex 
+
+\backslash 
+tablenotemark{c}
+\latex default 
+
+\newline 
+1.574 
+\newline 
+2.343 
+\newline 
+8.0 
+\newline 
+8.9 
+\newline 
+-33.417
+\newline 
+7
+\newline 
+ 6 
+\newline 
+31638.6 
+\newline 
+1.6 
+\newline 
+0.1 
+\newline 
+39 
+\newline 
+315.2 
+\newline 
+ 3.433 
+\newline 
+3.075 
+\newline 
+7.488 
+\newline 
+92.1 
+\newline 
+25.3 
+\newline 
+-12.052 
+\newline 
+8
+\layout Standard
+
+
+\latex latex 
+
+\backslash 
+tablenotetext{a}{Sample footnote for table~
+\backslash 
+ref{tbl-2} that was generated with the 
+\backslash 
+LaTeX
+\backslash 
+ table environment} 
+\layout Standard
+
+
+\latex latex 
+
+\backslash 
+tablenotetext{b}{Yet another sample footnote for table~
+\backslash 
+ref{tbl-2}} 
+\layout Standard
+
+
+\latex latex 
+
+\backslash 
+tablenotetext{c}{Another sample footnote for table~
+\backslash 
+ref{tbl-2}}
+\layout TableComments
+
+We can also attach a long-ish paragraph of explanatory material to a table.
+ Use 
+\backslash 
+tablerefs to append a list of references.
+ The following references were from a different table: I've patched them
+ in here to show how they look, but don't take them too seriously---I certainly
+ have not.
+\layout TableRefs
+
+(1) Barbuy, Spite, & Spite 1985; (2) Bond 1980; (3) Carbon et al.
+ 1987; (4) Hobbs & Duncan 1987; (5) Gilroy et al.
+ 1988: (6) Gratton & Ortolani 1986; (7) Gratton & Sneden 1987; (8) Gratton
+ & Sneden (1988); (9) Gratton & Sneden 1991; (10) Kraft et al.
+ 1982; (11) LCL, or Laird, 1990; (12) Leep & Wallerstein 1981; (13) Luck
+ & Bond 1981; (14) Luck & Bond 1985; (15) Magain 1987; (16) Magain 1989;
+ (17) Peterson 1981; (18) Peterson, Kurucz, & Carney 1990; (19) RMB; (20)
+ Schuster & Nissen 1988; (21) Schuster & Nissen 1989b; (22) Spite et al.
+ 1984; (23) Spite & Spite 1986; (24) Hobbs & Thorburn 1991; (25) Hobbs et
+ al.
+ 1991; (26) Olsen 1983.
+\end_float 
+\layout Standard
+
+
+\latex latex 
+% LyX can load deluxetable files verbatim.
+ To see this in action, uncomment the following
+\layout Standard
+
+
+\latex latex 
+% line (delete the 
+\latex default 
+
+\begin_inset Quotes eld
+\end_inset 
+
+
+\latex latex 
+%
+\latex default 
+
+\begin_inset Quotes erd
+\end_inset 
+
+
+\latex latex 
+) and copy the file table.tex from the AASTeX 5.0 distribution into
+\layout Standard
+
+
+\latex latex 
+% the same directory as this file.
+\layout Standard
+
+
+\latex latex 
+%
+\begin_inset Include \input{table}
+
+\end_inset 
+
+
+\the_end

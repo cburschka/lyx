@@ -1,0 +1,144 @@
+#This file was created by <karger> Fri Feb 26 14:30:20 1999
+#LyX 1.0 (C) 1995-1998 Matthias Ettrich and the LyX Team
+\lyxformat 2.15
+\textclass article
+\language default
+\inputencoding default
+\fontscheme default
+\graphics default
+\paperfontsize default
+\spacing single 
+\papersize Default
+\paperpackage a4
+\use_geometry 0
+\use_amsmath 0
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\quotes_times 2
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+
+\layout Title
+
+Welcome to LyX!
+\layout Section*
+
+Top N Things to know when using LyX
+\layout Enumerate
+
+LyX comes with excellent documentation---please use it! Start with the 
+\family sans 
+\bar under 
+H
+\bar default 
+elp->
+\bar under 
+I
+\bar default 
+ntroduction
+\family default 
+, which will give you a very brief introduction to the documentation.
+ Then learn about using LyX with
+\family sans 
+ 
+\bar under 
+H
+\bar default 
+elp->
+\bar under 
+T
+\bar default 
+utorial
+\family default 
+.
+\layout Enumerate
+
+LyX is what we call a 
+\begin_inset Quotes eld
+\end_inset 
+
+document processor.
+\begin_inset Quotes erd
+\end_inset 
+
+ By design, it is different from regular word processors---in a way that
+ makes writing documents easier.
+ But only a little different, so don't be scared.
+ The documentation will make it all clear
+\begin_float footnote 
+\layout Standard
+
+Have we mentioned yet that you ought to read the documentation?
+\end_float 
+.
+\layout Enumerate
+
+The output from LyX looks great! Select 
+\family sans 
+\bar under 
+F
+\bar default 
+ile->View
+\protected_separator 
+
+\bar under 
+d
+\bar default 
+vi
+\family default 
+ now to see for yourself.
+\layout Enumerate
+
+Yes, LyX can mimic (almost) all LaTeX functionality.
+ And yes, LyX can import LaTeX files.
+ Experienced LaTeX users should skim the rest of the 
+\emph on 
+Tutorial
+\emph default 
+, then read the 
+\begin_inset Quotes eld
+\end_inset 
+
+LyX for LaTeX Users
+\begin_inset Quotes erd
+\end_inset 
+
+ chapter.
+ (Everyone else: don't worry, you don't need to know LaTeX to use LyX.) 
+\layout Enumerate
+
+LyX has lots of features for people who read or write a language other than
+ English.
+ In addition, the keybindings, toolbar, and many other characteristics are
+ highly configurable (mostly by editing your 
+\family typewriter 
+lyxrc
+\family default 
+ file).
+ See 
+\family sans 
+\bar under 
+H
+\bar default 
+elp->
+\bar under 
+C
+\bar default 
+ustomization
+\family default 
+ for details.
+\layout Enumerate
+
+The LyX home page is at 
+\family typewriter 
+www.lyx.org
+\family default 
+.
+ Get information about LyX, subscribe to the LyX mailing list(s), take the
+ LyX Graphical Tour, and more.
+\the_end

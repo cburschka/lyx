@@ -1,0 +1,27 @@
+How do I upgrade my existing LyX system to version 1.0.2?
+---------------------------------------------------------
+
+If you upgrade from version 0.12.0 or 1.0.0, you shouldn't have 
+any problems.  Just run "make install", and it will automatically
+update the necessary files, provided that you install LyX the
+same place as an existing version.
+
+Document transfer
+-----------------
+
+In general, you don't need to convert any documents saved with LyX
+v0.10, v0.12.0 or v1.0.0 to use them with LyX v1.0.2.
+
+LyX v1.0.2 can read all documents saved with lyx-0.12.0 and later correctly.
+Documents saved with lyx-0.10.x are read correctly up to the old math 
+mode, which is not supported anymore. If you have documents with such 
+math formulas, you convert it using the program COLD, written by Preben 
+Rhandol. COLD can be found at:
+
+  http://www.pvv.org/~randhol/lyx/COLD/
+  ftp://ftp.lyx.org/pub/lyx/contrib/
+
+or at one of LyX archive mirror sites listed in README.
+
+Documents saved with LyX version 1.0.2 can be read correctly by 
+LyX v0.12.0 and v1.0.0 and v1.0.1, except for new features.

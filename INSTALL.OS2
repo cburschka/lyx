@@ -1,0 +1,589 @@
+
+INSTALL.OS2 file for OS/2 version of LyX 1.0.1
+by Shigeru Miyata <miyata@kusm.kyoto-u.ac.jp>
+modified by Arnd Hanses <Arnd.H.Hanses@rz.ruhr-uni-bochum.de>
+##############################################################
+
+- This INSTALL.OS2 file is a more detailed step by step guide on
+  installing (or compiling) LyX and related useful (or even 
+  necessary) optional programs on OS/2.
+
+- For general information on LyX please refer to the generic
+  README and README.OS2. For generic compilation instructions 
+  refer to INSTALL. WHATSNEW also contains important information.
+
+Thanks to all contributors to this piece of documentation,
+namely Mika Kristian Laitio <lamikr@cc.jyu.fi>.
+I hope this will make live a bit easier for OS/2 LyXers.
+
+Happy LyXing!
+
+
+
+	CONTENTS:
+	========
+
+A. Installation Details
+
+   I.  Requirements/Optional Software
+	1) XFree/2
+	2) xpm.dll library (depends on distribution)
+	3) 'GNU file utilities' and 'sed'
+	4) LaTeX and 'dvips' (Options)
+	5) 'Xdvi', 'gs', 'ghostview' or 'gv' (Options)
+	6) 'perl' (Option)
+	7) 'man' and 'gnugroff' (Options)
+
+   II. Installing a Binary Distribution
+
+
+B. Compiling/Installing the Source Distribution
+
+
+
+	A. Installation Details:
+	------------------------
+
+* Introduction:
+  ------------
+  LyX and related programs have been ported from UNIX, following
+  the UNIX design philosophy to do complex tasks combining small 
+  external standard utilities. 
+  UNIX is designed as a multi user system, where a professional
+  system administrator maintains applications. On a single user 
+  workstation the user has to do this complicated job. Often
+  programs assume you are familiar with the details of the UNIX
+  standard. Even if documentation therefore seems complicated,
+  you should try to read all the documents, UNIX manual (man) 
+  pages and FAQ a program supplies.
+
+
+  I. Requirements/Optional Software:
+     ------------------------------
+
+1) XFree86 for OS/2
+   ----------------
+
+   Use only a current version. Check 
+
+	http://www-set.gmd.de/~veit/os2/xf86os2.html
+
+  An OS/2 specific FAQ answering most of the questions about 
+  using XFree86/2 is found always up to date at:
+
+	http://www-set.gmd.de/~veit/os2/xf86os2.html
+
+
+2) 'xpm.dll' library (if indicated in README.bin)
+   -----------------
+
+   Check hobbes for 'xpm', or:
+
+	http://set.gmd.de/~veit/os2/xf86plib.html
+
+3) 'sed' and 'GNU utilities' (Option)
+   -------------------------
+   - Required: 'sed.exe'
+
+   - Optional: 'groff.exe' for ASCII text export, 'GNU text 
+     utilities', 'man' to read man/man1/lyx.1. 
+
+   You can search for OS/2 ports of those standard UNIX utilities on:
+
+	Hobbes or ftp.leo.org 
+
+   in unix or gnu directories. Put the executables into a directory
+   in PATH, e. g.:
+
+	d:\bin 
+   (Hint: Often ports assume a UNIX-like 'sh.exe' in '\bin'!)
+
+    and put the dll's into a directory in LIBPATH.
+
+
+4) 'LaTeX' and 'dvips' (Option)
+   -------------------
+
+   You will need them for printable output. With emTeX make sure that
+   you have latex2e.cmd in \emtex\bin-directory. If it is missing (i.
+   e. if you installed emtex from emtex-bin-os2.zip) create it using 
+   the following commands from \emtex\doc\english:
+
+	cd \emtex\btexfmts
+	makefmt 386 latex2e US 8bit -b \emtex\bin\latex2e
+
+   Now you can print US-english text. If LyX cannot find the files
+   'latex.cmd' or 'latex2e.cmd' (available if your LaTeX is installed 
+   correctly) it will work with standard options. Then you can use it
+   as an editor to write files in native (*.lyx) and LaTeX (*.tex) 
+   format. You can later print LaTeX files on every system with a
+   proper LaTeX2e installation (or send them to your editor).
+
+ * A preconfigured version of emTeX may be found searching:
+
+	http://tsikora.tiac.net/os2/os2-body.html
+	
+   for 'emTeX'. Install first 'emTeX' and then unzip 'dvips583' into 
+   your emtex root directory.
+
+ * Additional TeX macros for special purposes (e. g. Babel) are
+   available on your local CTAN mirror. There you will find also the
+   documentation how to install it. Please read Help->LaTeXconfig for 
+   availability of the LaTeX packages after installing LyX. 
+
+   Babel is - unlike with almost all other recent TeX distributions -
+   not standard with emTeX. For non-US languages you can install Babel
+   and recreate the LaTeX format files with the correct languages 
+   after selected, reading the respective original documentation. All 
+   further problems should be discussed with the author (Eberhard 
+   Mattes) and on emTeX list. 
+
+ * In Germany I recommend:
+
+ftp://ftp.dante.de/tex-archive/help/Catalogue/catalogue.html
+
+   as the starting point for browsing CTAN. Dvips is also available
+   on:
+
+http://www.leo.org/pub/comp/os/os2/leo/emTeX/contrib/index.html.
+
+
+   
+
+5) 'Xdvi', 'gs', 'ghostview' or 'gv' with 'xaw3d' (Options)
+   ----------------------------------------------
+
+ * For fast preview you need XDVI.
+
+[Excerpt from Peter Ganten's README.OS2 (missing in the package):
+ ....
+ -- Xdvi now understands drive letters and semicolons as path 
+    separators
+ -- Xdvi is now compiled with the SEARCH-SUBDIRECTORIES flag
+ -- Xdvi will now call ghostscript to display postscript-pictures (see
+    note below)
+ -- MakeTeXPk.cmd will now look into your psfonts.map file and call
+    gsftopk to display postscript fonts
+ -- Xdvi will now use virtual fonts ... ]
+
+ * For perfect preview of the printed
+   output of LyX you need ghostview or gv (the latter needs xaw3d.dll 
+   being renamed to xaw.dll) and a special version of Ghostscript for 
+   X11. (The standard 'gsos2' lacks '-sDEVICE=x11' and will *not*
+   work!). 
+
+ * OS/2 ports (and necessary info) can be found using the links in:
+
+http://www-set.gmd.de/~veit/os2/xf86ported.html,
+
+   and Ghostscript in Michael Holzapfel's page:
+
+http://www.ime.rwth-aachen.de/~michael/os2/ghostscript/index.html.
+	
+ * Configuration of EmTeX and XDVI to work poperly is a bit tricky,
+   as they use different directory structures and syntax: 
+
+    - You can export documents in tex format and preview later with 
+      emTeX's tools.
+
+    - Else you must unzip 'xdvi.zip' and 'xaw3d.zip' in %x11root%. Then
+      correct the line 
+
+	mapfile='d:\emtex\data\dvips\psfonts.map'
+
+      in 'MakeTeXpk.cmd' so that it points to the psfonts.map file
+      which came with dvips*.zip'. You will find this 'MakeTeXpk.cmd'
+      in
+
+	%x11root%\xfree86\bin
+
+      SET XDVIFONTS to your upper TeX fonts directory 'foo':
+
+	SET XDVIFONTS=x:/foo/*/%ddpi/%f.%p
+
+      The asterisk means: search subdirectories and will be expanded,
+      e.g. to 
+
+x:/foo/pixel.lj/300dpi/fontname.pk
+
+      For preview of Postscript fonts (Type 1) you need the
+      corresponding virtual fonts und must use SET XDVIVFS like above:
+
+SET XDVIVFS=D:/foo/vf;D:/foo/vf/adobe
+
+     There is no possibility to search subdirectories here, so you have
+     to list all directories with virtual fonts.
+
+  * Gv needs to find gs.exe: You should rename gsos2.exe to gs.exe, 
+    and move the executables and the dll to %PATH%. [According to the
+    original documentation moving the dll to %LIBPATH% should work as 
+    well. But on my system it doesn't.] Also you should add to 
+    config.sys:
+
+SET GS_LIB=x:/path_to_your_gs2dll.dll;*.ps_helper_files;type_1fonts
+SET GS_FONTPATH=path_to_aditional_fonts_not_included_in_fontmap 
+
+    For details please refer to the (often complicated) docs of the
+    respective packages.
+
+
+Here an example:
+...
+SET GS_LIB=D:/HYOTY/GSTOOLS/gs5.50;E:/PSFONTS;
+SET GS_FONTPATH=D:/APPS/GSTOOLS/gs5.50/FONTS;E:/PSFONTS;
+
+rem This is where EmTeX tree begins
+SET EMTEXDIR=D:\EMTEX
+
+rem  This is where Xdvi/dvips look for fonts (bitmap, virtual, type1
+fonts, resp.)
+SET XDVIFONTS=D:/texfonts/*/%ddpi/%f.%p
+SET XDVIVFS=D:/texfonts/vf/%f.vf
+SET T1FONTS=D:\PSFONTS;D:\XFREE86\LIB\X11\FONTS\TYPE1;
+SET TEXCONFIG=D:/EMTEX/data/dvips
+
+rem  TeX/LaTeX has to find its font metrics (*.tfm)
+SET TEXTFM=D:\EMTEX\tfm!!
+
+rem  TeX/LaTeX has to find its macros, etc. (*.sty; *.cls; *.tcp; etc.)
+SET TEXINPUT=D:\EMTEX\TEXINPUT\LATEX2E!!;D:\EMTEX\TEXINPUT!!
+
+rem  This is where dvipm/Xdvi looks for input data to preview
+SET DVIDRVinput=D:\EMTEX\doc;D:\EMTEX\doc\latex;D:\EMTEX\doc\english;
+SET DVIDRVGRAPH=D:\EMTEX\DOC
+SET XDVIFIGS=D:/EMTEX/data/dvips;D:/HYOTY/GSTOOLS/gs5.50;E:/PSFONTS;
+SET indexstyle=D:\emtex\idxstyle
+
+rem Call mf386.exe to render missing bitmap fonts
+SET MFJOBOPT=/3
+
+SET indexstyle=D:\XFREE86\USR\emtex\idxstyle
+SET EMTEXED=emacsclient +%1 %2
+
+rem Where chktex stores its user configuration
+SET chktexrc=%home%
+.......
+
+Do not copy it! You need to adapt it to your directory structure.
+
+
+6) perl:
+   ----
+
+For LaTeX import (relyx.cmd) you need perl:
+Check your local CPAN server for a recent OS/2 port or try:
+
+	http://www.perl.org
+
+Note:
+----
+If perl cannot find its modules and libraries it has a hardcoded
+path chosen at compile time that does not match your configuration.
+You can recompile with your directory structure or exchange the path
+as follows (from man perlos2):
+
+       PERLLIB_PREFIX
+
+       Specific for EMX port. Should have the form
+
+         path1;path2
+
+       or
+
+         path1 path2
+
+       If the beginning of some prebuilt path matches path1, it
+       is substituted with path2.
+
+       Should be used if the perl library is moved from the
+       default location in preference to PERL(5)LIB, since this
+       would not leave wrong entries in @INC.  Say, if the
+       compiled version of perl looks for @INC in f:/perllib/lib,
+       and you want to install the library in h:/opt/gnu, do
+
+         set PERLLIB_PREFIX=f:/perllib/lib;h:/opt/gnu"
+On my system 'f:/perllib/lib' is hardcoded and has to be exchanged
+for 'd:/bin/perllib/lib'. Also like many other programs ported from
+UNIX (unfortunately this is also true for many XFree/2 programs) it 
+uses a UNIX-like sh; you should give its path. 
+I recommend sh.exe of pdksh.zip; other shells have problems.
+
+Here an example of my config.sys:
+
+rem Not default directory of perllib/lib (here:d:\bin) 
+set PERLLIB_PREFIX=f:/perllib/lib;d:/bin/perllib/lib
+rem Where sh.exe of pdksh.zip resides:
+set PERL_SH_DIR=D:\bin
+
+excerpt from perlos2:
+
+      After you installed the components you needed and updated
+       the Config.sys correspondingly, you need to hand-edit
+       Config.pm. This file resides somewhere deep in the
+       location you installed your perl library, find it out by
+
+         perl -MConfig -le "print $INC{'Config.pm'}"
+
+       You need to correct all the entries which look like file
+       paths (they currently start with f:/).
+
+       Warning
+
+       The automatic and manual perl installation leave
+       precompiled paths inside perl executables. While these
+       paths are overwriteable (see the section on
+       PERLLIB_PREFIX, the section on PERL_SH_DIR), one may get
+       better results by binary editing of paths inside the
+       executables/DLLs.
+
+7) 'man' and 'gnugroff':
+   --------------------
+
+For reading unformatted manual pages in UNIX 'roff' format like the 
+ones coming with LyX you need 'manxxx.zip' and 'gnugroff.zip', both 
+available from www.leo.org.
+
+Hint: 
+----
+gnugroff.zip (README.OS2 date: Feb 24th 1994) from Leo has a little 
+bug concerning doc macros:
+
+Please change file prefix and suffix in groff/tmac/mdoc directory to 
+the following:
+
+	doc-common
+	doc-ditroff
+	doc-nroff
+	doc-syms
+
+or adapt the content of
+
+	groff\tmac\doc 
+
+accordingly, so that it will find the distribution macros with 
+non-standard names.
+
+My proposed settings for man and groff are:
+
+rem path to font directory
+SET GROFF_FONT_PATH=D:/USR/local/lib/GROFF/FONT
+rem path to tmac directory
+SET GROFF_TMAC_PATH=D:/USR/local/lib/GROFF/TMAC
+SET REFER=D:/XFREE86/USR/local/lib/GROFF/DICT/PAPERS/IND
+rem system primary codepage
+SET GROFF_TYPESETTER=cp850
+rem where man finds it manual pages
+SET MANPATH=D:/XFREE86/MAN;D:/XFREE86/usr/emx/doc/MAN
+rem necessary for correct formatting of BSD man pages
+set NROFF=GROFF -Tascii -mandoc
+
+
+
+II. Installing a Binary Distribution:
+    --------------------------------
+
+0) Only for update: If you are upgrading from LyX v. 0.12.0,
+   old documentation files in %HOME%/.lyx/doc/ and 
+   %X11ROOT%/XFree86/lib/X11/lyx/doc should be removed before 
+   unpacking (since they are read only). You might wish to make 
+   a backup, if you want to keep old docs.
+
+1) Unpack the distribution in the directory %X11ROOT% 
+
+2) In config.sys SET LANG and LANGUAGE according to 
+   your preferences and restart. 
+     Beware: All programs supporting local
+   languages will be affected, e.g.:
+
+SET LANG=de_DE		rem german helpfiles will be used
+SET LANGUAGE=de_DE	rem german menus and messages
+
+Note1: For keyboard problems read the XFree documentation. Lyx 
+	helpfiles also contain several hints.
+
+Note2: German users should always use Layout; Document; Language:German
+        and Encoding:latin1 to avoid problems with special characters. 
+	This might apply to other languages, too.
+
+Note3: As distributed, LyX expects to find
+	its internationalization files in the directory
+ %X11ROOT%/XFree86/lib/X11/locale
+	its system configuration files in the directory
+ %X11ROOT%/XFree86/lib/X11/lyx
+	If you unpacked the distribution in directory c:\foo, add
+	the environment variables LYX_LOCALEDIR and LYX_DIR_10x
+	to config.sys to point to c:/foo/XFree86/lib/X11/locale and 
+	c:/foo/XFree86/lib/X11/lyx as follows:
+ SET LYX_LOCALEDIR=c:/foo/XFree86/lib/X11/locale 
+ SET LYX_DIR_10x=c:/foo/XFree86/lib/X11/lyx
+	Note that, if you do not have any interest in having LyX display
+	its messages in other languages than english, you can safely 
+	skip this step for LYX_LOCALEDIR.
+
+3) At the root of the drive where your %HOME% resides, create a
+   directory named tmp, if you haven't got one. LyX will need it, so 
+   remember not to delete it later.
+
+4) If updating make a backup of %HOME%\.lyx\lyxrc.defaults as it will 
+   be changed.
+   Read README and WHATSNEW about updating and run 
+   Options;Reconfigure as indicated.
+
+5) Configure LyX for your system by executing
+     lyx
+   and choose Options->Reconfigure in the menu bar.
+   Watch the messages there.
+
+6) If you don't have %HOME%\.lyx\lyxrc now then move 
+   %X11ROOT%\XFree86\lyxrc.example to %HOME%\.lyx\lyxrc. 
+   Verify if LYX is able to find the programs mentioned 
+   there and in %HOME%\.lyx\lyxrc.defaults. If not, 
+   change name and path as required. Read LyX doc in
+
+	Help->Customization 
+
+  about customizing LyX for your needs. Read 
+
+	Help->LatexConfiguration 
+
+   to verify that all installed LaTeX packages which LyX can use 
+   have been detected.
+   Remember to repeat the check after any 'Reconfigure'!
+
+7) Printer setup is difficult. The most simple solution is to print to a
+   postscript file and the use gvpm for printing. If you have installed
+   'printlp.exe' of 'gnugroff.zip' from 'ww.leo.org', you could try to 
+   directly print to the local OS/2 spooler:
+
+Excerpt from 'gnugroff.zip' README.OS2:
+
+- New printlp and printdvi programs: Printlp captures all stdin input
+  and spools it to "lpt1" (default) or the output device set in the
+  environment variable LP_DEVICE. Printdvi captures all stdin input
+  into a temporary file and calls the command "v" with the name as
+  argument (v is the viewer in emTeX) or the command in the
+  environment variable DVI_PRINT_COMMAND. If the command contains a
+  %s, this will be replaced by the temporary file name.
+
+I recommend to add to config.sys
+
+	SET DVI_PRINT_COMMAND=VP
+
+and to add to your lyxrc
+	\print_spool_command "printdvi"
+
+or printlp for postscript printer or if you already configured a 
+postscript filter according to the LyX documentation. A different solution
+to try is this one from Marcus von Cube (for xephem): Create an
+
+	/* xprint.cmd */
+	parse arg file
+	file = translate( file, "\", "/" )
+	'@print /d:lpt2 /b' file
+
+(you may want to change "print /d:lpt2 /b" to "printdvi") or create a
+
+	LPR-Installation:
+
+If your %ETC%\INETD.LST contains the following line:
+	printer tcp lpd
+and inetd is running, you should be able to use lpr:
+	lpr -s localhost -p lpt2 -b <filename>
+It accepts "/" as path seperator.
+
+This would mean adding 
+	\print_spool_command "lpr"
+	\print_spool_printerprefix "-s localhost -p lpt2 -b"
+
+
+=======================================================================
+
+	B. Compiling/Installing the source distribution with emx:
+	   -----------------------------------------------------
+
+++++to be written++++++
+
+Some hints:
+
+Run configure.cmd from top level lyx-xxx directory of the source distribution.
+To create a smaller stripped version optimized for pentium on emx 0.9c type:
+	configure.cmd --pentium-optimize
+
+1,368,068 bytes (1.0.1 on emx 0.9c)
+
+To create a smaller english-only version type:
+	configure.cmd --disable-nls --pentium-optimize
+and then type
+cd src
+x11make
+
+I recommend to run 
+	lib\configure.cmd --without-latex-config. 
+The LaTeX configuration should better made when running LyX the first
+time and can always be repeated with Menu: Options->Reconfigure. So I 
+added --without-latex-config to the call at the end of top configure.cmd.
+
+Run the following if you have tee.exe:
+	configure.cmd 2>&1|tee errors.log
+or
+	configure.cmd --pentium-optimize 2>&1|tee errors.log
+
+Read the logfile for any problems:
+	cd.. & e errors.log
+
+I recommend the following compilation settings:
+
+set CC=gcc
+set CONFIG_SHELL=d:/bin/sh.exe
+set MAKE_SHELL=d:/bin/sh.exe
+set EMX_FIX_CMD="emxbind -a \$@ ..."
+SET C_INCLUDE_PATH=D:/XFREE86/INCLUDE/X11;d:/XFREE86/usr/emx/include
+set CPLUS_INCLUDE_PATH=D:/XFREE86/INCLUDE/X11;d:/XFREE86/usr/emx/include/cpp;d:/XFREE86/usr/emx/include
+set OBJC_INCLUDE_PATH=D:/XFREE86/INCLUDE/X11;d:/XFREE86/usr/emx/include
+SET LIBRARY_PATH=D:/XFREE86/LIB/X11;d:/XFREE86/usr/emx/lib
+set PROTODIR=d:/XFREE86/usr/emx/include/cpp/gen
+set GCCLOAD=5
+set GCCOPT=-pipe
+set emxopt=-c
+set MAKE=x11make.exe
+set shell=/bin/sh
+
+Now you can run
+
+x11make
+
+directly from toplevel source directory.
+
+
+Note by Shigeru Miyata <miyata@kusm.kyoto-u.ac.jp>:
+----------------------
+Run configure.cmd rather than configure!  Notice it is not the
+one in binary package, which is actually lib/configure.cmd, but
+the one in the top directory of the source distribution.
+It won't check the xpm version and other things BTW since I think
+I can assume rather uniform installations on OS/2 (actually the
+outdated error of the sh-script comes from an old header file,
+not from the library, though.  Remove the incompatible header or
+you will experience very weird, hard to track crashes).
+Makefiles are not perfect, however:
+  - You have to type make in src/ directory;
+  - If you do not specify --disable-nls, you have to make libintl
+    first;
+  - make install/bindist won't work, the makefile in po/ directory
+    not generated;
+  - In order to link xforms statically, "-lforms" in LYX_LIBS flag
+    must be modified manually to "-lforms_s -lulib -lsocket";
+  - And probably more ;-(
+Here is a statistic (exact size depends on libraries used,
+codepage, etc.):
+                          unstripped      stripped
+emx09c                     10,735,882       1,634,308
+emx09d                     15,938,707       2,899,972
+emx09d (-fno-exceptions)   13,246,507       1,519,620
+In LyX 1.2, g++-2.8 (emx09d) or later will be the definite
+requirement.  (You cannot link 1.1 with emx09c, since the
+executable size far exceeds 70M unstripped due to template codes,
+for example.)
+
+
+

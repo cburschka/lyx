@@ -1,0 +1,94 @@
+What's new in 1.0.3 compared to LyX version 1.0.2?
+--------------------------------------------------
+
+LyX 1.0.3 is mainly a bugfix update to 1.0.2.
+
+- improved dependency tracking when running LaTeX (fixes one important
+  bug in 1.0.2).
+
+- new italian and walloon localizations of the user interface.
+
+- New slovene and spanish translations of the Tutorial.
+
+What's new in 1.0.2 compared to LyX version 1.0.1?
+--------------------------------------------------
+
+LyX 1.0.2 is a minor update to LyX 1.0.1. Besides fixing many bugs
+compared to version 1.0.0, it adds the following features:
+
+- Improved reLyX: supports EPS image inclusion and works in windows.
+
+- New french translation of Intro.lyx and Tutorial.lyx; new german
+  translation of UserGuide.lyx.
+
+- Better multipart document support.
+
+- LyX is now able to parse your BibTex files and show a list of
+  entries. 
+
+- New broadway textclass (for plays).
+
+
+What's new in 1.0.1 compared to LyX version 1.0.0?
+--------------------------------------------------
+
+LyX 1.0.1 is a minor update to LyX 1.0.0. Besides fixing many bugs
+compared to version 1.0.0, it adds the following features:
+
+- Support for selecting pages and number of copies in print dialog
+
+- New function 'Replace all' in Find&Replace popup
+
+- Support for optional argument of \sqrt in math editor
+
+- Support for literate programming with the 'noweb' program
+
+- New LaTeX document classe: APA 
+
+
+
+What's new in 1.0.0 compared to LyX version 0.12.0?
+----------------------------------------------------
+
+LyX 1.0.0 is a stable release. Besides fixing many bugs compared to
+version 0.12.0, it adds the following features:
+
+- much improved reLyX script: many bugs have been fixed, new options
+  have been added, many constructs are now correctly handled. reLyX is now 
+  installed along with LyX and has its own man page. Separate upgrades
+  of reLyX will be made available later.  The reLyX script is utilized
+  by the File->Import LaTeX command in LyX.
+
+- Much improved LinuxDoc (sgml-tools) support: multiple textclasses,
+  footnotes, and generally better output.
+
+- New textclasses scrartcl, scrbook, scrreprt and scrlettr
+  implementing the corresponding classes of the koma-script
+  package. New textclasses latex8 for some IEEE journals, IEEEtran for
+  various IEEE Transactions journals and ejour2 for some Springer Verlag
+  Journals.  New textclass hollywood to typeset your own film scripts.
+
+- Better support (keyboard bindings, keyboard mappings, and/or menu
+  and error message translations) for several languages.
+
+- Documentation has been partly translated to German, Swedish, and Czech. You
+  will get this automatically from the Help menu if you set up the LANG
+  environment variable correctly (i.e. to 'de' or 'sv').
+
+- Documentation has been generally improved and expanded.
+
+- Improved table support.
+
+- Support for arbitrary line spacing in documents.
+
+- easier handling of index entries.
+
+- The printer configuration scheme has changed a bit to help people
+  whose dvips is not configured correctly. As a consequence, you might
+  have to modify your lyxrc a bit. All users are advised to re-run
+  Option->Reconfigure to update LyX configuration.
+
+
+Note that your existing global lyxrc file will not be overwritten by
+default since now LyX only installs a file lyxrc.example to use as
+template. 

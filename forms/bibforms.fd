@@ -1,0 +1,202 @@
+Magic: 13000
+
+Internal Form Definition File
+    (do not change)
+
+Number of forms: 2
+Unit of measure: FL_COORD_PIXEL
+
+=============== FORM ===============
+Name: citation_form
+Width: 220
+Height: 130
+Number of Objects: 5
+
+--------------------
+class: FL_BOX
+type: UP_BOX
+box: 0 0 220 130
+boxtype: FL_UP_BOX
+colors: FL_COL1 FL_COL1
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_DEFAULT_SIZE
+lcol: FL_BLACK
+label: 
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: 
+callback: 
+argument: 
+
+--------------------
+class: FL_INPUT
+type: NORMAL_INPUT
+box: 80 10 130 30
+boxtype: FL_DOWN_BOX
+colors: FL_COL1 FL_MCOL
+alignment: FL_ALIGN_LEFT
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: Key:|#K
+shortcut:
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: key
+callback: 
+argument: 
+
+--------------------
+class: FL_BUTTON
+type: RETURN_BUTTON
+box: 20 90 90 30
+boxtype: FL_UP_BOX
+colors: FL_COL1 FL_COL1
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: OK
+shortcut: ^M
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: 
+callback: bibitem_cb
+argument: 1
+
+--------------------
+class: FL_BUTTON
+type: NORMAL_BUTTON
+box: 120 90 90 30
+boxtype: FL_UP_BOX
+colors: FL_COL1 FL_COL1
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: Cancel|^[
+shortcut:
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: 
+callback: bibitem_cb
+argument: 0
+
+--------------------
+class: FL_INPUT
+type: NORMAL_INPUT
+box: 80 50 130 30
+boxtype: FL_DOWN_BOX
+colors: FL_COL1 FL_MCOL
+alignment: FL_ALIGN_LEFT
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: Remark:|#R
+shortcut:
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: label
+callback: 
+argument: 
+
+=============== FORM ===============
+Name: bibitem_form
+Width: 220
+Height: 130
+Number of Objects: 5
+
+--------------------
+class: FL_BOX
+type: UP_BOX
+box: 0 0 220 130
+boxtype: FL_UP_BOX
+colors: FL_COL1 FL_COL1
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_DEFAULT_SIZE
+lcol: FL_BLACK
+label: 
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: 
+callback: 
+argument: 
+
+--------------------
+class: FL_INPUT
+type: NORMAL_INPUT
+box: 80 10 130 30
+boxtype: FL_DOWN_BOX
+colors: FL_COL1 FL_MCOL
+alignment: FL_ALIGN_LEFT
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: Key:|#K
+shortcut:
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: key
+callback: 
+argument: 
+
+--------------------
+class: FL_BUTTON
+type: RETURN_BUTTON
+box: 20 90 90 30
+boxtype: FL_UP_BOX
+colors: FL_COL1 FL_COL1
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: OK
+shortcut: ^M
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: 
+callback: bibitem_cb
+argument: 3
+
+--------------------
+class: FL_BUTTON
+type: NORMAL_BUTTON
+box: 120 90 90 30
+boxtype: FL_UP_BOX
+colors: FL_COL1 FL_COL1
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: Cancel|^[
+shortcut:
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: 
+callback: bibitem_cb
+argument: 2
+
+--------------------
+class: FL_INPUT
+type: NORMAL_INPUT
+box: 80 50 130 30
+boxtype: FL_DOWN_BOX
+colors: FL_COL1 FL_MCOL
+alignment: FL_ALIGN_LEFT
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: Label:|#L
+shortcut:
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: label
+callback: 
+argument: 
+
+==============================
+create_the_forms

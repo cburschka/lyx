@@ -1,0 +1,183 @@
+#This file was created by <mike> Wed Jun  9 13:29:15 1999
+#LyX 1.0 (C) 1995-1999 Matthias Ettrich and the LyX Team
+\lyxformat 2.15
+\textclass aastex
+\begin_preamble
+\slugcomment{}
+\shorttitle{}
+\shortauthors{}
+\end_preamble
+\language default
+\inputencoding default
+\fontscheme default
+\graphics default
+\paperfontsize default
+\spacing single 
+\papersize Default
+\paperpackage a4
+\use_geometry 0
+\use_amsmath 0
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\quotes_times 2
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+
+\layout Title
+
+<Paper Title>
+\layout Author
+
+<Author 1>
+\latex latex 
+
+\backslash 
+altaffilmark{1}
+\layout Affiliation
+
+<Institution and Address>
+\layout Email
+
+<email@address>
+\layout Author
+
+<Author 2>
+\latex latex 
+
+\backslash 
+altaffilmark{2,3}
+\layout Affiliation
+
+<Institution and Address>
+\layout And
+
+\layout Author
+
+<Author 3>
+\latex latex 
+
+\backslash 
+altaffilmark{3}
+\layout Affiliation
+
+<Institution and Address>
+\layout Standard
+
+
+\latex latex 
+
+\backslash 
+altaffiltext{1}{Visiting Astronomer, etc.}
+\latex default 
+ 
+\layout Standard
+
+
+\latex latex 
+
+\backslash 
+altaffiltext{2}{Current Address, etc.}
+\latex default 
+ 
+\layout Standard
+
+
+\latex latex 
+
+\backslash 
+altaffiltext{3}{Visiting Astronomer, etc.}
+\latex default 
+ 
+\layout Abstract
+
+<Abstract text>
+\layout Keywords
+
+<Journal approved keywords>
+\layout Section
+
+Introduction
+\layout Standard
+
+<intro text>
+\layout Section
+
+Observations
+\layout Standard
+
+<observations text>
+\layout Section
+
+Results
+\layout Standard
+
+<results text; refer to Figure 
+\begin_inset LatexCommand \ref{fig1}
+
+\end_inset 
+
+ and to 
+\latex latex 
+
+\backslash 
+citet{ref1}
+\latex default 
+> 
+\layout Section
+
+Discussion
+\layout Standard
+
+<discussion text> 
+\layout Section
+
+Conclusions
+\layout Standard
+
+<conclusions text>
+\layout Acknowledgements
+
+\layout Standard
+
+<acknowledgment text>
+\layout Appendix
+
+\layout Section
+
+Appendix
+\layout References
+\bibitem [Author(1982)]{ref1}
+
+Author, A., 
+\latex latex 
+
+\backslash 
+apj
+\latex default 
+, 109, 301 
+\layout Standard
+
+
+\latex latex 
+
+\backslash 
+clearpage
+\layout FigCaption
+
+
+\latex latex 
+
+\begin_inset LatexCommand \label{fig1}
+
+\end_inset 
+
+
+\latex default 
+This is the first figure.
+ 
+\the_end

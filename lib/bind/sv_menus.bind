@@ -1,0 +1,305 @@
+# This file is part of
+# ==================================================================
+#
+#                  LyX, the High Level Word Processor
+# 
+#                 Copyright (C) 1995-1998 The LyX Team
+#
+# ==================================================================
+
+# Key bindings for menus, both invisible and visible.
+
+#
+# Visible Menu access menu
+#################################
+# Menu key bindings for Swedish locale.
+# 
+# Denna är avsedd för användning tillsammans med svensk lokalisering av LyX.
+# Placeras i LYXDIR/bind, eller ~/.lyx/bind under namnet sv_menus.bind och
+# laddas automatiskt av LyX i stället för menus.bind då LANG=sv
+# Dessa bindningar kan krocka med andra bindningar; betrakta detta som ett
+# prov. Observera att namnen på menyerna måste stämma med de översatta
+# (File/Fil, Edit/Redigera osv.), för "menu-open"
+# Wed Dec  9 17:15:45 GMT+0100 1998, Joacim Persson <sp2joap1@ida.his.se>
+# 
+#
+
+\bind "F10 f"			"menu-open Fil"
+\bind "F10 r"			"menu-open Redigera"
+\bind "F10 s"			"menu-open Stil"
+\bind "F10 l"			"menu-open Lägg in"
+\bind "F10 m"			"menu-open Matematik"
+\bind "F10 i"			"menu-open Inställningar"
+\bind "F10 d"			"menu-open Dokument"
+\bind "F10 h"			"menu-open Hjälp"
+
+#
+# Fil
+#
+
+\bind "M-f n"			"buffer-new"
+\bind "M-f m"			"buffer-new-template"
+\bind "M-f p"			"buffer-open"
+\bind "M-f g"			"buffer-close"
+\bind "M-f s"			"buffer-write"
+\bind "M-f o"			"buffer-write-as"
+\bind "M-f t"			"buffer-reload"
+\bind "M-f v"			"buffer-view"
+\bind "M-f i"			"buffer-view-ps"
+\bind "M-f u"			"buffer-typeset"
+\bind "M-f d"			"buffer-typeset-ps"
+\bind "M-f k"			"buffer-print" 
+\bind "M-f f"			"buffer-fax"
+\bind "M-f l"			"buffer-export latex"
+\bind "M-f x"			"buffer-export linuxdoc"
+\bind "M-f S-T"		"buffer-export ascii"
+\bind "M-f S-A"		"buffer-export custom"
+\bind "M-f a"			"lyx-quit"
+\bind "M-f space"		"menu-open Fil" 
+#bind "M-f l"			"file-last"		# Not yet implemented.
+
+
+#
+# Edit menu
+#
+
+\bind "M-r a"			"table"
+\bind "M-r k"			"cut"
+\bind "M-r f"			"error-next"
+\bind "M-r s"			"find-replace"
+\bind "M-r k"			"line-delete-forward"
+\bind "M-r m"			"mark-on"
+\bind "M-r S-M"		"mark-off"
+\bind "M-r t"			"note-next"
+\bind "M-r o"			"copy"
+\bind "M-r i"			"paste"
+\bind "M-r g"			"redo"
+\bind "M-r r"			"spellchecker"
+\bind "M-r e"			"buffer-chktex"
+\bind "M-r h"			"toc-view"
+\bind "M-r n"			"undo"
+\bind "M-r x"			"latex-view-log"
+\bind "M-r space"		"menu-open Redigera" 
+
+
+#
+# Layout menu
+#
+
+\bind "M-s c"			"layout-character"
+\bind "M-s p"			"layout-paragraph"
+\bind "M-s d"			"layout-document"
+\bind "M-s a"			"layout-paper"
+\bind "M-s q"			"layout-quotes" 
+\bind "M-s l"			"layout-preamble" 
+\bind "M-s e"			"font-emph" 
+\bind "M-s n"			"font-noun" 
+\bind "M-s b"			"font-bold" 
+\bind "M-s t"			"tex-mode" 
+\bind "M-s v"			"depth-next"
+\bind "M-s space"		"menu-open Stil"  
+\bind "M-s i"			"buffer-itemize-bullets-select"
+
+
+#
+# Insert menu
+#
+
+\bind "M-i g"			"figure-insert"
+\bind "M-i b"			"table-insert"
+\bind "M-i c"			"buffer-child-insert"
+\bind "M-i f"			"footnote-insert"
+\bind "M-i m"			"marginpar-insert"
+
+\bind "M-i minus"		"hyphenation-point-insert"
+\bind "M-i p"			"dots-insert"
+\bind "M-i e"			"end-of-sentence-period-insert"
+\bind "M-i q"			"quote-insert"
+\bind "M-i apostrophe"		"quote-insert"
+\bind "M-i S-quotedbl"		"quote-insert"
+\bind "M-i s h"			"hfill-insert"
+\bind "M-i s minus"		"hyphenation-point-insert"
+\bind "M-i s b"			"protected-space-insert"
+\bind "M-i s l"			"break-line"
+\bind "M-i s p"			"dots-insert"
+\bind "M-i s e"			"end-of-sentence-period-insert"
+\bind "M-i s q"			"quote-insert"
+
+\bind "M-i a"			"loa-insert"
+\bind "M-i t c"			"toc-insert"
+\bind "M-i t f"			"lof-insert"
+\bind "M-i t t"			"lot-insert"
+\bind "M-i t i"			"index-print"
+\bind "M-i t b"			"bibtex-insert"
+\bind "M-i t a"			"loa-insert"
+
+\bind "M-i n"			"note-insert"
+\bind "M-i l"			"label-insert"
+\bind "M-i r"			"reference-insert"
+\bind "M-i i"			"citation-insert"
+\bind "M-i d"			"index-insert"
+
+\bind "M-l space"		"menu-open Lägg in"  
+
+
+
+#
+# Math menu
+#
+
+\bind "M-m space"		"menu-open Matematik" 
+
+#
+# Options menu
+#
+
+#bind "M-o s"			"screen-font-options"	# Not yet implemented!
+#bind "M-o r"			"spellcheck-options"	# Not yet implemented!
+#bind "M-o t"			"keyboard-options"	# Not yet implemented!
+#bind "M-o l"			"latex-options"		# Not yet implemented!
+\bind "M-i space"		"menu-open Inställningar"  
+
+
+#
+# Documents menu
+#
+# These are now defined in cua or emacs bind files so their "standard"
+# bindings are available. (eg M-d "word-delete-forward" in emacs) ARRae
+#\bind "M-d p"			"buffer-previous"
+#\bind "M-d space"		"menu-open Dokument"
+
+
+#
+# Help menu
+#
+
+#bind "M-h i"			"help-introduction"	# Not yet implemented!
+#bind "M-h t"			"help-tutorial"		# Not yet implemented!
+#bind "M-h u"			"help-user-guide"	# Not yet implemented!
+#bind "M-h r"			"help-reference-guide"	# Not yet implemented!
+#bind "M-h h"			"help-how-do-i-"	# Not yet implemented!
+#bind "M-h c"			"help-customization"	# Not yet implemented!
+#bind "M-h s"			"help-special-tools"	# Not yet implemented!
+#bind "M-h k"			"help-known-bugs"	# Not yet implemented!
+#bind "M-h a"			"help-latex-config"	# Not yet implemented!
+#bind "M-h o"			"help-copyright"	# Not yet implemented!
+#bind "M-h e"			"help-credits"		# Not yet implemented!
+#bind "M-h v"			"help-version"		# Not yet implemented!
+\bind "M-h space"		"menu-open Hjälp" 
+
+
+#
+# Font size menu
+#
+
+\bind "M-s t"			"font-size pytteliten"
+\bind "M-s S-S"			"font-size mindre"
+\bind "M-s s"			"font-size liten"
+\bind "M-s n"			"font-size normal"
+\bind "M-s l"			"font-size stor"
+\bind "M-s S-L"			"font-size större"
+\bind "M-s h"			"font-size störst"
+\bind "M-s S-H"			"font-size störstare"
+
+\bind "M-s 1"			"font-size pytteliten"
+\bind "M-s 2"			"font-size minst"
+\bind "M-s 3"			"font-size mindre"
+\bind "M-s 4"			"font-size liten"
+\bind "M-s 5"			"font-size normal"
+\bind "M-s 6"			"font-size stor"
+\bind "M-s 7"			"font-size större"
+\bind "M-s 8"			"font-size störst"
+\bind "M-s 9"			"font-size störstare"
+\bind "M-s 0"			"font-size störstast"
+
+\bind "M-s plus"		"font-size öka"
+\bind "M-s minus"		"font-size minska"
+
+
+#
+# Alignment menu
+#
+
+#bind "M-a l"			"para-align left"	# Not yet implemented!
+#bind "M-a r"			"para-align right"	# Not yet implemented!
+#bind "M-a c"			"para-align center"	# Not yet implemented!
+#bind "M-a b"			"para-align block"	# Not yet implemented!
+#bind "M-a f"			"para-align block"	# Not yet implemented!
+#bind "M-a d"			"para-align default"	# Not yet implemented!
+
+
+#
+# Paragraph style menu
+#
+
+\bind "M-p 1"			"layout Chapter" 
+\bind "M-p 2"			"layout Section" 
+\bind "M-p 3"			"layout Subsection"  
+\bind "M-p 4"			"layout Subsubsection"    
+\bind "M-p 5"			"layout Paragraph"        
+\bind "M-p 6"			"layout Subparagraph"
+\bind "M-p a"			"layout Abstract"
+\bind "M-p S-A"			"layout Author"
+\bind "M-p M-a"			"layout Address"
+\bind "M-p C-a"			"layout RightAddress"
+\bind "M-p b"			"layout Itemize"	# bulleted list
+\bind "M-p S-B"			"layout Bibliography"
+\bind "M-p c"			"layout LyX-Code"
+\bind "M-p S-C"			"layout Comment"
+\bind "M-p M-c"			"layout Caption"
+\bind "M-p d"			"layout Description"
+\bind "M-p S-D"			"layout Date"
+\bind "M-p e"			"layout Enumerate"	# numbered list
+\bind "M-p f"			"layout ShortFoilhead"	# Foils!!
+\bind "M-p S-F"			"layout Foilhead"	# Foils!!
+\bind "M-p i"			"layout Itemize"	# bulleted list
+\bind "M-p l"			"layout List"
+\bind "M-p S-L"			"layout LaTeX"
+\bind "M-p n"			"layout Enumerate"	# numbered list
+\bind "M-p q"			"layout Quote"
+\bind "M-p S-Q"			"layout Quotation"
+\bind "M-p r"			"layout ShortRotatefoilhead"	# Foils!!
+\bind "M-p S-R"			"layout Rotatefoilhead"	# Foils!!
+\bind "M-p s"			"layout Standard"
+\bind "M-p t"			"layout Title"
+\bind "M-p x"			"layout LaTeX"
+\bind "M-p space"		"drop-layouts-choice"
+\bind "M-p S-at"		"layout Section*"	# M-p S-2
+\bind "M-p S-dollar"		"layout Subsubsection*"	# M-p S-4
+\bind "M-p S-numbersign"	"layout Subsection*"	# M-p S-3
+\bind "M-p v"			"layout Verse"
+
+\bind "M-p Left"		"depth-decrement"
+\bind "M-p Right"		"depth-increment"
+
+
+#
+# Character style menu
+# 
+
+\bind "M-c b"			"font-bold"
+\bind "M-c c"			"font-noun"
+\bind "M-c e"			"font-emph"
+\bind "M-c m"			"math-mode"
+\bind "M-c p"			"font-code"
+\bind "M-c r"			"font-roman"
+\bind "M-c s"			"font-sans"
+\bind "M-c t"			"tex-mode"
+\bind "M-c u"			"font-underline"
+
+\bind "M-c Down"		"word-lowcase"
+\bind "M-c Up"			"word-upcase"
+\bind "M-c Right"		"word-capitalize"
+
+\bind "M-c space"		"font-default"                  
+
+
+#
+# Keyboard menu
+#
+
+\bind "M-k 1"			"keymap-primary"
+\bind "M-k 2"			"keymap-secondary"
+\bind "M-k o"			"keymap-off"
+\bind "M-k t"			"keymap-toggle"
+\bind "M-k x"			"keymap-off"

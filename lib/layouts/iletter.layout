@@ -1,0 +1,111 @@
+#% Do not delete the line below; configure depends on this
+#  \DeclareLaTeXClass{letter (italian)}
+# Italian Letter textclass definition file. 
+# Author : Juergen Vigna <jug@sad.it>
+# Modifies only some things from letter.layout
+
+
+# Input general definitions
+Input letter
+
+# Redefine some stuff
+
+# My Address style
+Style My_Address
+  Margin		Static
+End
+
+# Send_To_Address style definition
+Style Send_To_Address
+  Margin		Right_Address_Box
+End
+
+# Opening style definition
+Style Opening
+  LeftMargin		Apertura::xx
+  LabelString		Apertura:
+End
+
+# Signature style definition
+Style Signature
+  LeftMargin		Firma::xx
+  LabelString		Firma:
+End
+
+# Closing style definition
+Style Closing
+  LeftMargin		Saluti::xx
+  LabelString		Saluti:
+End
+
+# encl style definition
+Style encl
+  LeftMargin		Allegati::xx
+  LabelString		Allegati:
+End
+
+# Oggetto style definition
+Style Oggetto
+  Margin  		Static
+  LatexType 		Command
+  LatexName 		oggetto
+  LeftMargin		Oggetto::xx
+  LabelSep		xx
+  TopSep		0.4
+  BottomSep		0.4
+  ParSep		0.4
+  Align 		Block
+  AlignPossible 	Block, Left
+  LabelType		Static
+  LabelString		Oggetto:
+  # label font definition
+  LabelFont 
+    Series		Bold
+    Shape		Italic
+    Latex		Latex
+  EndFont
+End
+
+# Citta style definition
+Style Citta
+  Margin  		Static
+  LatexType 		Command
+  LatexName 		citta
+  LeftMargin		Città::xx
+  LabelSep		xx
+  TopSep		0.4
+  BottomSep		0.4
+  ParSep		0.4
+  Align 		Block
+  AlignPossible 	Block, Left
+  LabelType		Static
+  LabelString		Città:
+  # label font definition
+  LabelFont 
+    Series		Bold
+    Shape		Italic
+    Latex		Latex
+  EndFont
+End
+
+# Data style definition
+Style Data
+  Margin  		Static
+  LatexType 		Command
+  LatexName 		data
+  LeftMargin		Data::xx
+  LabelSep		xx
+  TopSep		0.4
+  BottomSep		0.4
+  ParSep		0.4
+  Align 		Block
+  AlignPossible 	Block, Left
+  LabelType		Static
+  LabelString		Data:
+  # label font definition
+  LabelFont 
+    Series		Bold
+    Shape		Italic
+    Latex		Latex
+  EndFont
+End

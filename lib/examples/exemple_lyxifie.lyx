@@ -1,0 +1,275 @@
+#This file was created by <phb> Tue Apr 13 00:29:05 1999
+#LyX 1.0 (C) 1995-1999 Matthias Ettrich and the LyX Team
+\lyxformat 2.15
+\textclass article
+\language french
+\inputencoding default
+\fontscheme default
+\graphics default
+\paperfontsize default
+\spacing single 
+\papersize a4paper
+\paperpackage a4
+\use_geometry 0
+\use_amsmath 0
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language french
+\quotes_times 2
+\papercolumns 1
+\papersides 1
+\paperpagestyle plain
+
+\layout Title
+
+CECI EST LE TITRE DU DOCUMENT
+\layout Author
+
+par Fée LyX
+\layout Date
+
+12 Juin 1972
+\layout Standard
+
+
+\begin_inset LatexCommand \tableofcontents{}
+
+\end_inset 
+
+
+\layout Section
+
+Philosophie Générale
+\layout Standard
+
+La philosophie générale de LyX est de vous laisser vous concentrer sur le
+ contenu et non pas sur la forme de vos écrits.
+\layout Subsection
+
+Comment LyX le fait
+\layout Standard
+
+LyX utilise LaTeX, un système de préparation de documents conçu par Leslie
+ Lamport en 1985.
+ Il a été construit, à son tour, à partir d'un langage de composition, appelé
+ TeX, créé par Donald Knuth en 1984.
+ LaTeX est conçu autour d'une philosophie similaire à celle de LyX.
+ Leslie Lamport disait lui-même (voir référence 
+\begin_inset LatexCommand \cite{lamport}
+
+\end_inset 
+
+):
+\layout Quote
+
+Le but de la typographie est d'aider le lecteur à comprendre l'idée de l'auteur.
+ Pour qu'un document soit facile à lire, sa structure visuelle doit refléter
+ sa structure logique.
+ Les citations et les sources de programmes, étant, logiquement parlant,
+ des éléments structurels différents, doivent être visuellement différents
+ les uns les autres...
+ Comme LaTeX ne peut pas comprendre votre prose, vous devez explicitement
+ définir sa structure logique en insérant des codes appropriés...
+ Lors de l'écriture de votre document, vous devez vous préoccuper de sa
+ structure logique, et non pas de son apparence.
+\layout Subsection
+
+Pourquoi LyX est meilleur
+\layout Standard
+
+
+\begin_inset LatexCommand \label{sec:lyxmeilleur}
+
+\end_inset 
+
+LyX peut être profitable à un plus grand nombre d'utilisateurs que LaTeX.
+ Il est beaucoup plus facile à apprendre, car vous n'avez pas à connaître
+ LaTeX, qui est pratiquement un langage de programmation.
+ LyX est en bien des points comparable à d'autres traitements de texte 
+\begin_inset Quotes fld
+\end_inset 
+
+What you see is what you get
+\begin_inset Quotes frd
+\end_inset 
+
+ (WYSIWYG), excepté que LyX est plutôt 
+\begin_inset Quotes fld
+\end_inset 
+
+What you see is what you mean
+\begin_inset Quotes frd
+\end_inset 
+
+ (WYSIWYM).
+ LyX combine donc le confort des autres traitements de texte, et la puissance
+ de LaTeX.
+ C'est une bonne chose.
+ De plus, le format de fichier est indépendant du système.
+ Et pour finir, c'est un logiciel LIBRE! 
+\layout Section
+
+Fonctionnalités de LyX
+\layout Standard
+
+LyX possède un bon nombre de fonctionnalités qui facilitent l'écriture.
+\begin_float footnote 
+\layout Standard
+
+Après tout, quelle autre raison pourrait vous le faire utiliser?
+\end_float 
+ Je 
+\shape italic 
+ne résiste plus
+\shape default 
+ à l'envie de vous les présenter.
+ En voici quelques une.
+\layout Itemize
+
+LyX gère les marges et la numérotation des notes de bas de page pour vous.
+\layout Itemize
+
+L'écriture de formules mathématiques est un jeu d'enfant avec LyX.
+\layout Standard
+
+Voir Section 
+\begin_inset LatexCommand \ref{sec:lyxmeilleur}
+
+\end_inset 
+
+, page 
+\begin_inset LatexCommand \pageref{sec:lyxmeilleur}
+
+\end_inset 
+
+ pour une discussion plus approfondie sur les avantages de LyX par rapport
+ aux autres traitements de texte.
+\layout Section
+
+Tentatives maladroites de mieux utiliser LyX
+\layout Standard
+
+J'ai écrit un programme ces derniers jours.
+ Le voici :
+\layout LyX-Code
+
+5 REMARK MON SUPER PROGRAMME
+\layout LyX-Code
+
+10 PRINT 
+\begin_inset Quotes eld
+\end_inset 
+
+JE SUIS SUPER!
+\begin_inset Quotes erd
+\end_inset 
+
+
+\layout LyX-Code
+
+20 GOTO 10
+\layout Standard
+
+Après cette pensée hautement scientifique, je me suis senti l'âme d'un poète.
+ J'ai donc écrit ceci
+\layout Verse
+
+LyX est vraiment un extraordinaire
+\newline 
+Outil de composition et de traitement de texte
+\newline 
+Il fait gagner tellement de temps
+\layout Section
+
+Les maths
+\layout Standard
+
+Ma formule préférée est la résolution d'une équation du second degré.
+ 
+\layout Standard
+
+Si 
+\begin_inset Formula \( ax^{2}+bx+c=0 \)
+\end_inset 
+
+ (eq.1), 
+\layout Standard
+
+alors 
+\begin_inset Formula \( x=\frac{-b\pm \sqrt{b^{2}-4ac}}{2a} \)
+\end_inset 
+
+ (eq.
+ 2).
+\layout Standard
+
+Une autre favorite, la base du calcul différentiel: 
+\layout Standard
+
+
+\begin_inset Formula \( f'(x)\equiv \lim _{\Delta x\rightarrow 0}\frac{f(x+\Delta x)-f(x)}{\Delta x} \)
+\end_inset 
+
+ (eq.
+ 3).
+\layout Section
+
+Notes
+\layout Standard
+
+Quelques notes à propos de la LyXification de ce fichier:
+\layout Itemize
+
+J'ai pu éliminer les lignes de tirets.
+ Elles n'étaient là que pour séparer le titre et les références du reste
+ du document.
+ LyX (ou LaTeX) en sait assez pour les séparer avec de l'espace.
+ 
+\layout Itemize
+
+Je ne me suis pas ennuyé à mettre les équations mathématiques en mode affichage.
+ Je n'ai pas non plus utilisé le mode de numérotation automatique des équations
+ de LyX parce qu'il n'est pas décrit dans le 
+\emph on 
+Manuel d'Apprentissage
+\emph default 
+.
+\layout Itemize
+
+Je n'ai pas eut à taper le mot 
+\begin_inset Quotes fld
+\end_inset 
+
+References
+\begin_inset Quotes frd
+\end_inset 
+
+ ci-dessous.
+ LyX le met automatiquement (ou le mot 
+\begin_inset Quotes fld
+\end_inset 
+
+Bibliography,
+\begin_inset Quotes frd
+\end_inset 
+
+ en fonction de la classe du document) lorsque vous sélectionnez l'environnement
+ 
+\family sans 
+Bibliography
+\family default 
+.
+\layout Bibliography
+\bibitem {lamport}
+
+Lamport, Leslie.
+ 
+\emph on 
+LaTeX: A Document Preparation System.
+
+\emph default 
+ Addison-Wesley, Reading, Massachusetts, second edition, 1994.
+\the_end

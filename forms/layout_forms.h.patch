@@ -1,0 +1,26 @@
+--- layout_forms.h	Tue Dec  2 02:50:13 1997
++++ layout_forms.h.patched	Tue Dec  2 03:05:24 1997
+@@ -43,4 +43,23 @@
+ extern void TableOptionsCB(FL_OBJECT *, long);
+ extern void TableSpeCloseCB(FL_OBJECT *, long);
+ 
++/* Additional Functions/Methods */
++
++#include "bufferparams.h"
++
++extern bool UpdateLayoutDocument(BufferParams *params = NULL);
++extern bool UpdateLayoutPreamble();
++extern bool UpdateLayoutPaper();
++extern bool UpdateLayoutQuotes();
++extern bool UpdateLayoutParagraph();
++extern bool UpdateParagraphExtra();
++extern bool UpdateLayoutTable(int);
++
++extern void MenuLayoutCharacter();
++extern void MenuLayoutDocument();
++extern void MenuLayoutPreamble();
++extern void MenuLayoutPaper();
++extern void MenuLayoutQuotes();
++extern void MenuLayoutParagraph();
++extern void MenuLayoutTable(int);
+ 

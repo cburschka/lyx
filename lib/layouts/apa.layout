@@ -1,0 +1,311 @@
+#% Do not delete the line below; configure depends on this
+#  \DeclareLaTeXClass[apa,apacite.sty]{APA style}
+# Author: Randy Gobbel <gobbel@andrew.cmu.edu>
+
+# General textclass parameters
+# Description	"APA style"
+Columns		1
+Sides		1
+PageStyle	Headers
+MaxCounter	Counter_Section
+
+ClassOptions
+  Other	"man"
+  FontSize	6|8|10|12
+End
+
+Preamble
+\helvetica
+\author{Author} % hack around some bugs in apa.cls
+\affiliation{Affiliation} % hack around some bugs in apa.cls
+EndPreamble
+
+DefaultFont
+  Family	Roman
+  Series	Medium
+  Shape		Up
+  Size		Normal
+  Color		None
+EndFont
+
+Style Standard
+  LatexName 	dummy
+  LatexType	Paragraph
+  Margin	Static
+  ParIndent	MM
+  ParSkip 	0.4
+  ParSep	0.4
+  TopSep	1.0
+  BottomSep	1.0
+  Align 	Block
+  AlignPossible Block, Left, Right, Center
+  LabelType 	No_Label
+End
+
+Style Title
+  LatexName	title
+  LatexType	Command
+  InTitle	1
+  Font
+    Size	Huge
+  EndFont
+  Align		Center
+End
+
+Style RightHeader
+  LatexName	rightheader
+  LatexType	Command
+  InTitle	1
+  Font
+    Size	Small
+    Shape	SmallCaps
+  EndFont
+  Labeltype	Static
+  LabelString	"Right header: "
+  Labelsep	M
+  LabelFont
+    Series	Bold
+    Size	Small
+  EndFont
+  Align		Right
+  AlignPossible	Right
+End
+
+Style Abstract
+  LatexName	abstract
+  LatexType	Command
+  InTitle	1
+  Font
+    Size	Small
+  EndFont
+  Margin	Dynamic
+  LeftMargin	MMN
+  RightMargin	MMN
+  Align		Block
+  AlignPossible	Block, Left, Right, Center
+  Labeltype	Static
+  LabelString	"Abstract: "
+  Labelsep	M
+  LabelFont
+    Series	Bold
+    Size	Small
+  EndFont
+End
+
+Style ShortTitle
+  LatexName	shorttitle
+  LatexType	Command
+  InTitle	1
+  Align		Left
+  AlignPossible	Left, Right, Center
+  Margin	Dynamic
+  Labeltype	Static
+  LabelString	"Short title: "
+  Labelsep	M
+  Font
+    Shape	SmallCaps
+    Size	Small
+  EndFont
+  LabelFont
+    Series	Bold
+    Size	Small
+    Shape	Up
+  EndFont
+End
+
+Style Author
+  LatexName	author
+  LatexType	Command
+  InTitle	1
+  Align		Center
+  AlignPossible	Left, Right, Center
+  TopSep	0.5
+  BottomSep	0.5
+  Font
+    Shape	Italic
+    Size	Small
+  EndFont
+End
+
+Style TwoAuthors
+  LatexName	twoauthors
+  LatexType	Command
+  InTitle	1
+End
+
+Style ThreeAuthors
+  LatexName	threeauthors
+  LatexType	Command
+  InTitle	1
+End
+
+Style FourAuthors
+  LatexName	fourauthors
+  LatexType	Command
+  InTitle	1
+End
+
+Style Affiliation
+  LatexName	affiliation
+  LatexType	Command
+  InTitle	1
+  Margin	Dynamic
+  ParSkip	0.4
+  BottomSep	1.5
+  TopSep	1.5
+  ParSep	1.5
+  Align		Left
+  AlignPossible	Block, Left, Right, Center
+  LabelType	Static
+  LabelString	"Affiliation: "
+  Labelsep	M
+  LabelFont
+    Series	Bold
+    Size	Small
+  EndFont
+End
+
+Style TwoAffiliations
+  LatexName	twoaffiliations
+  LatexType	Command
+  InTitle	1
+End
+
+Style ThreeAffiliations
+  LatexName	threeaffiliations
+  LatexType	Command
+  InTitle	1
+End
+
+Style FourAffiliations
+  LatexName	fouraffiliations
+  LatexType	Command
+  InTitle	1
+End
+
+Style Journal
+  LatexName	journal
+  LatexType	Command
+  InTitle	1
+End
+
+Style Copyright
+  LatexName	ccoppy
+  LatexType	Command
+  InTitle	1
+End
+
+Style CopNum
+  LatexName	copnum
+  LatexType	Command
+  InTitle	1
+End
+
+Style Note
+  LatexName	note
+  LatexType	Command
+  Font
+    Size	Small
+  EndFont
+End
+
+Style Acknowledgments
+  LatexName	acknowledgments
+  LatexType	Command
+End
+
+Style ThickLine
+  LatexName	thickline
+  LatexType	Command
+  KeepEmpty	1
+End
+
+Input stdlayouts.inc
+
+Style CenteredCaption
+  CopyStyle	Caption
+  LatexName	centeredcaption
+  Align		Center
+  AlignPossible	Center
+End
+
+Style FitFigure
+  LatexName	fitfigure
+  LatexType	Command
+End
+
+Style FitBitmap
+  LatexName	fitbitmap
+  LatexType	Command
+End
+
+############### Sections.
+# First the standard numbered definitions
+Input stdsections.inc
+# then define the unumbered sections, based on the numbered ones.
+Input stdstarsections.inc
+
+# remove the layouts that we do not need.
+NoStyle	Part
+NoStyle	Section
+NoStyle	Subsection
+NoStyle	Subsubsection
+NoStyle	Chapter
+NoStyle	Paragraph
+NoStyle	Subparagraph
+NoStyle	Chapter*
+
+# Itemize style definition
+Style Itemize
+  Margin		Static
+  LatexType		Item_Environment
+  LatexName		APAitemize
+  NextNoIndent		1
+  LeftMargin		MMN
+  LabelSep		xx
+  ItemSep		0.2
+  TopSep		0.7
+  BottomSep		0.7
+  ParSep		0.3
+  Align			Block
+  AlignPossible		Block, Left
+  LabelType		Static
+  LabelString		*
+End
+
+# Enumerate style definition
+Style Enumerate
+  Margin		Static
+  LatexType		Item_Environment
+  LatexName		APAenumerate
+  NextNoIndent		1
+  LeftMargin		MMN
+  LabelSep		xx
+  ParSkip		0.0
+  ItemSep		0.2
+  TopSep		0.7
+  BottomSep		0.7
+  ParSep		0.3
+  Align			Block
+  AlignPossible		Block, Left
+  LabelType		Counter_EnumI
+End
+
+#seriate style definition
+Style Seriate
+  Margin		Static
+  LatexType		Item_Environment
+  LatexName		seriate
+  NextNoIndent		1
+  LeftMargin		MMN
+  LabelSep		x
+  ParSkip		0.0
+  ItemSep		0.9
+  TopSep		0.5
+  BottomSep		0.5
+  ParSep		0.0
+  Align			Block
+  AlignPossible		Block, Left
+  LabelType		Counter_EnumII
+End
+

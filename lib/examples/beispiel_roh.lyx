@@ -1,0 +1,289 @@
+#This file was created by <pit> Wed Mar  3 01:32:12 1999
+#LyX 1.0 (C) 1995-1999 Matthias Ettrich and the LyX Team
+\lyxformat 2.15
+\textclass article
+\language german
+\inputencoding latin1
+\fontscheme default
+\graphics dvips
+\paperfontsize 12
+\spacing single 
+\papersize a4paper
+\paperpackage a4
+\use_geometry 0
+\use_amsmath 0
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\quotes_times 2
+\papercolumns 1
+\papersides 1
+\paperpagestyle plain
+
+\layout Standard
+
+DIES IST DER TITEL DES DOKUMENTS 
+\begin_inset Info 
+Hinweis: der Titel sollte mehr nach einem Titel aussehen
+\end_inset 
+
+
+\layout Standard
+
+von Fee LyX 
+\begin_inset Info 
+Hinweis: Fee LyX ist der AUTHOR
+\end_inset 
+
+
+\layout Standard
+
+12.
+ Juni 1972 
+\begin_inset Info 
+Hinweis: dies ist ein DATE
+\end_inset 
+
+
+\layout Standard
+
+Inhaltsverzeichnis 
+\begin_inset Info 
+Hinweis: Es wäre schön, wenn wir das Verzeichnis nicht selber schreiben
+ müßten
+\end_inset 
+
+
+\layout Standard
+
+1.
+ Grundidee..................1
+\layout Standard
+
+1.1 Wie LyX es macht...............1
+\layout Standard
+
+1.2 Warum LyX besser ist ...............1
+\layout Standard
+
+2.
+ LyX-Merkmale
+\layout Standard
+
+3.
+ Lahme Versuche mit anderen LyX-Teilen
+\layout Standard
+
+4.
+ Mathematik
+\layout Standard
+
+---------------------------------------------------
+\layout Standard
+
+1.
+ Grundidee 
+\begin_inset Info 
+Hinweis:
+Abschnittüberschriften sollten ein wenig hervorgehoben sein
+\end_inset 
+
+
+\layout Standard
+
+Die Grundidee von LyX ist, daß Sie sich um den Inhalt Ihrer Dokumente kümmern
+ sollten, und nicht um das Aussehen.
+\layout Standard
+
+1.1 Wie LyX es macht
+\layout Standard
+
+LyX benutzt LaTeX, ein Textsatzsystem für Dokumente, das Leslie Lamport
+ 1985 entworfen hatte.
+ Das wiederum baut auf der Textsatzsprache TeX auf, die Donald Knuth 1984
+ entwickelt hatte.
+ Die Grundidee von LaTeX ist ähnlich wie die von LyX.
+ Leslie Lamport sagte einmal (siehe Referenz [1]):
+\begin_inset Info 
+Hinweis: dieser Zitat-Verweis sollte nicht fest sein.
+ Was wäre, wenn wir Lamports Buch als zweites in der Literaturverzeichnis
+ haben wollten?
+\end_inset 
+
+
+\layout Standard
+
+
+\begin_inset Quotes eld
+\end_inset 
+
+Der Sinn des typographischen Entwurfs ist, daß der Leser die Ideen des Autors
+ versteht.
+ Damit ein Dokument leicht zu lesen ist, muß die sichtbare Struktur die
+ logische widerspiegeln.
+ Zitate und Computerprogramme, die logisch unterschiedliche Strukturelemente
+ darstellen, sollten auch anders aussehen....
+ Weil LaTeX Ihren Text nicht verstehen kann, müssen Sie die logische Struktur
+ durch Spezialbefehle kennzeichnen....
+ Während Sie Ihr Dokument schreiben, sollten Sie sich auf die logische Struktur
+ konzentrieren, nicht auf sein Aussehen.
+\begin_inset Quotes erd
+\end_inset 
+
+
+\begin_inset Info 
+Hinweis: Dies ist ein Zitat
+\end_inset 
+
+
+\layout Standard
+
+1.2 Warum LyX besser ist
+\layout Standard
+
+LyX kann mehr Menschen nützen als LaTeX.
+ Es ist viel leichter zu lernen, weil Sie nicht LaTeX lernen müssen (LaTeX
+ ist im Prinzip eine Programmiersprache).
+ LyX ist im Prinzip wie andere WYSIWYG-Textverarbeitungen, aber LyX ist
+ WYSIWYM 
+\begin_inset Quotes eld
+\end_inset 
+
+What you see is what you mean
+\begin_inset Quotes erd
+\end_inset 
+
+.
+ Auf diese Weise verbindet es die Benutzerfreundlichkeit einer Textverarbeitung
+ mit der Stärke von LaTeX.
+ Das ist eine gute Sache.
+ Außerdem ist das Dateiformat plattformunabhängig.
+ Das Beste aber ist: es ist KOSTENLOS!
+\layout Standard
+
+2.
+ LyX-Merkmale
+\layout Standard
+
+LyX hat viele Merkmale, die das Schreiben von Dokumenten erleichtern.
+ (Warum sollte man es sonst benutzen?
+\begin_inset Info 
+Hinweis: Dieser hervorgehobene Satz würde in einer Fußnote besser aussehen
+\end_inset 
+
+) Ich bin SEHR AUFGEREGT
+\begin_inset Info 
+Hinweis: Hervorheben!
+\end_inset 
+
+ über sie zu sprechen.
+ Hier sind ein paar:
+\layout Standard
+
+* LyX kümmert sich für Sie um Ränder und die Numerierung von Fußnoten
+\layout Standard
+
+* LyX erleichtert das Schreiben und Bearbeiten von mathematischen Formeln
+ 
+\layout Standard
+
+Für eine mehr philosophische Diskussion, warum LyX besser als viele andere
+ Textverarbeitungen ist, lesen Sie bitte Abschnitt 1.2 auf Seite 1.
+\begin_inset Info 
+Hinweis: Dieser Querverweis sollte nicht fest sein.
+ Was wäre, wenn wir die Abschnittsnummern ändern würden?
+\end_inset 
+
+
+\layout Standard
+
+3.
+ Lahme Versuche mit anderen LyX-Teilen
+\layout Standard
+
+Neulich schrieb ich ein Programm.
+ Es sah so aus:
+\layout Standard
+
+5 BEACHTET MEIN TOLLES PROGRAMM
+\layout Standard
+
+10 PRINT 
+\begin_inset Quotes eld
+\end_inset 
+
+ICH BIN TOLL!
+\begin_inset Quotes erd
+\end_inset 
+
+
+\layout Standard
+
+20 GOTO 10
+\layout Standard
+
+
+\begin_inset Info 
+Hinweis: Dies ist Computer-CODE
+\end_inset 
+
+
+\layout Standard
+
+Nach all dem wissenschaftlichen Denken fühlte ich mehr künstlerisch, also
+ schrieb ich dies Gedicht:
+\layout Standard
+
+LyX ist eine wirklich großartige
+\layout Standard
+
+schriftsetzende Textverarbeitung
+\layout Standard
+
+Es spart soviel Zeit.
+\layout Standard
+
+
+\begin_inset Info 
+Hinweis: Es ist nicht sehr gut, aber es ist Poesie, auch als VERSE
+ bekannt
+\end_inset 
+
+
+\layout Standard
+
+4.
+ Mathematik 
+\begin_inset Info 
+Hinweis: diese mathematischen Dinge sollten im Mathematikmodus gedruckt
+ werden!
+\end_inset 
+
+
+\layout Standard
+
+Meine Lieblingsformel ist die Lösung einer quadratischen Gleichung.
+ Aus ax^2+bx+c=0 (Gl.1) folgt x= -b +/- der Quadratwurzel aus b^2-4ac, dividiert
+ durch 2a (Gl.
+ 2).
+\layout Standard
+
+Eine weitere Lieblingsformel ist die Ableitung: f'(x) ist der Grenzwert
+ von f(x+deltax) - f(x) dividiert durch deltax, wenn deltax gegen 0 geht
+ (Gl.
+ 3).
+\layout Standard
+
+------------------------------------------------
+\layout Standard
+
+LITERATUR
+\layout Standard
+
+[1] Lamport, Leslie.
+ LaTeX: A Document Preparation System.
+ Addison-Wesley, Reading, Massachusetts, second edition, 1994.
+\the_end

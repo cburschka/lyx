@@ -1,0 +1,72 @@
+#
+# (C)1998 by Jacek M. Holeczek, holeczek@us.edu.pl
+# This is the second version of the international european keyboard map.
+# It should fully work ( at least ) for english, french, german, polish.
+# Other languages are currently ( probably ) not fully supported, but
+# most of special characters should already be present. Feel free to
+# add your own language here.
+# To get all characters properly in latex/dvi/ps one needs to set
+# Layout->Document->Encoding latin1 in LyX.
+# This is a keyboard map for keyboards which do not have dead-keys
+# so you can put accents and umlauts on characters.
+#
+\kmod ' acute aAcCeEiIjJlLnNoOsSuUzZ
+\kmod ` grave aAeEiIjJoOuU
+\kmod ~ tilde aAoO
+\kmod "," cedilla aAcCeE
+\kmod ^ circumflex aAcCeEiIjJnNoOrRsSuUyYzZ
+\kmod \" umlaut aAeEiIjJoOsSuUyY$\#~
+\kmod . dot zZ
+#
+# some exceptions
+#
+\kxmod acute i "\\'{\\i}"
+\kxmod grave i "\\`{\\i}"
+\kxmod circumflex i "\\^{\\i}"
+\kxmod acute j "\\'{\\j}"
+\kxmod grave j "\\`{\\j}"
+\kxmod circumflex j "\\^{\\j}"
+#
+# polish characters
+#
+\kxmod cedilla a "\\k{a}"
+\kxmod cedilla A "\\k{A}"
+# \kxmod acute c "\\'{c}"
+# \kxmod acute C "\\'{C}"
+\kxmod cedilla e "\\k{e}"
+\kxmod cedilla E "\\k{E}"
+\kxmod acute l "\\l{}"
+\kxmod acute L "\\L{}"
+# \kxmod acute n "\\'{n}"
+# \kxmod acute N "\\'{N}"
+# \kxmod acute o "\\'{o}"
+# \kxmod acute O "\\'{O}"
+# \kxmod acute s "\\'{s}"
+# \kxmod acute S "\\'{S}"
+# \kxmod dot z "\\.{z}"
+# \kxmod dot Z "\\.{Z}"
+# \kxmod acute z "\\'{z}"
+# \kxmod acute Z "\\'{Z}"
+#
+# german characters
+#
+\kxmod umlaut s "\\ss{}"
+\kxmod umlaut S "\\ss{}"
+#
+# special characters
+#
+\kxmod umlaut $ "\\pounds{}"	# pound
+\kxmod umlaut \# "\\S{}"	# paragraph
+\kxmod umlaut ~ "\\b{}"		# degree
+#
+# \kxmod acute ' '
+# \kxmod grave ` `
+# \kxmod tilde ~ ~
+# \kxmod cedilla "," ","
+# \kxmod circumflex ^ ^
+# \kxmod umlaut \" \"
+# \kxmod dot . .
+#
+# Example of substituting local chars to TeX-Strings
+#
+# \kmap ß "\\ss{}"

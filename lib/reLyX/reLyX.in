@@ -1,0 +1,55 @@
+#!@PERL@
+# This file is part of reLyX
+# Copyright (c) 1998-9 Amir Karger karger@post.harvard.edu
+# You are free to use and modify this code under the terms of
+# the GNU General Public Licence version 2 or later.
+
+############################# reLyX wrapper
+use strict;
+use File::Basename;
+$^W = 1; # same as 'perl -w'
+
+# Variables to make global, so subroutines can use them
+use vars qw($lyxdir $lyxname);
+
+my (@maybe_dir);
+my $mainscript = "reLyXmain.pl"; 
+
+# Do this in a BEGIN block so it's done before the 'use lib' below
+BEGIN{
+# This points to LyX library dir, e.g. /usr/local/share/lyx
+$lyxdir = "@LYX_DIR@";
+# This is just "." if you compiled from the source directory
+my $srcdir = "@srcdir@";
+# This is the name of the program, usually just "lyx"
+$lyxname = "@PACKAGE@";
+# The name under which reLyX was invoked
+my $name = $0;
+# resolve any links to dirname
+while (defined (readlink($name))) {$name = readlink($name)};
+my $dir = &dirname($name);
+
+# Create a list of possible directories to look in. Non-existent directories
+#    are OK, but empty or undefined values will make 'use lib' complain
+my $i = 0;
+# case 1: for developers, e.g. - reLyX and $mainscript in same directory
+$maybe_dir[$i++] = ".";
+# case 2: environment variable LYX_DIR_12 has been set
+if (exists $ENV{LYX_DIR_10x}) { $maybe_dir[$i++] = "$ENV{LYX_DIR_10x}/reLyX"};
+# case 3: ran make but not make install.
+$maybe_dir[$i++] = "$dir/$srcdir";
+# case 4: e.g., reLyX in /opt/bin, $mainscript in /opt/share/lyx/reLyX
+$maybe_dir[$i++] = "$dir/../share/$lyxname/reLyX"; # case 4
+# case 5: configure figured out where $mainscript is
+$maybe_dir[$i++] = "$lyxdir/reLyX";
+} # end BEGIN block
+
+# Now put those directories into @INC
+use lib @maybe_dir;
+
+# Now run the script. Perl will look in @INC to find the script (and
+#     other modules that $mainscript calls)
+require $mainscript; # require includes and runs the code...
+
+exit;
+############################ end reLyX wrapper

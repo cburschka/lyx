@@ -1,0 +1,22 @@
+#% Do not delete the line below; configure depends on this
+#  \DeclareLaTeXClass[amsart]{article (AMS, sequential numbering)}
+# AMS-Article textclass definition file. Taken from initial LyX source code
+# and from the Article textclass definition file, following the AMS sample
+# paper "testmath.tex" of January, 1995
+# Author : David L. Johnson <dlj0@lehigh.edu>
+# The "seq" version has all results, figures, etc., numbered in a separate
+# sequence, without section numbers attached (Theorem (1), Corollary (1), Theorem
+# (2), etc.).  
+# Probably broken by Jean-Marc Lasgouttes <Jean-Marc.Lasgouttes@inria.fr>
+# modified and modularized by Emmanuel GUREGHIAN <gureghia@boston.bertin.fr>
+
+Input amsart.layout
+# Change the definitions of the theorem-like environments to get a
+# better numbering.
+Input amsmaths-seq.inc
+
+# Use a simpler preamble.
+Preamble
+
+EndPreamble
+

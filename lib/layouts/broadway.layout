@@ -1,0 +1,242 @@
+#% Do not delete the line below; configure depends on this
+#  \DeclareLaTeXClass[broadway]{broadway}
+# 
+# For theater plays
+# General textclass parameters
+Columns                 1
+Sides                   1
+SecNumDepth             2
+TocDepth                2
+
+ClassOptions
+FontSize		12
+End
+
+# This is just to show how to declare the default font.
+# The defaults are exactly those shown here.
+DefaultFont
+  Family                Roman
+  Series                Medium
+  Shape                 Up
+  Size                  Normal
+  Color                 None
+EndFont
+
+Preamble
+\usepackage{fancyhdr}
+\usepackage{extramarks}
+\usepackage{ifthen}
+\usepackage{lastpage}
+\pagestyle{fancy}
+\newcommand{\TheAuthor}{}
+\newcommand{\Author}[1]{\renewcommand{\TheAuthor}{#1}}
+\newcommand{\TheTitle}{}
+\newcommand{\Title}[1]{\renewcommand{\TheTitle}{#1}}
+
+
+\rhead{\thepage}
+\lhead{\TheTitle}
+\chead{\TheAuthor}
+\cfoot{}
+% We do not want any hyphenation
+  \sloppy
+EndPreamble
+
+# Standard style definition (I kept this one to provide a general case)
+Style Standard
+  Margin                Static
+  LatexType             Paragraph
+  LatexName             dummy
+  ParIndent             ""
+  ParSkip               0.4
+  Align                 Left
+  AlignPossible         Block, Left, Right, Center
+  Labeltype             No_Label
+End
+
+# Narrative description of Scene
+Style Narrative
+  Margin                Static
+  LatexType             Environment
+  LatexName             narrative
+  ParIndent             ""
+  ParSkip               0.8
+  TopSep		1.0
+  Align                 Left
+  AlignPossible         Left
+  LabelType             No_Label
+Font
+  Family                Roman
+  Series                Medium
+  Shape                 Italic
+  Size                  Normal
+  Color                 Black
+EndFont
+End
+
+Style ACT
+  Margin                Dynamic
+  LatexType             Environment
+  LatexName             act
+  ParIndent             ""
+  ParSkip               0.8
+  TopSep		1.0
+  KeepEmpty		1
+  Align                 Center
+  AlignPossible         Center
+  LabelType             Counter_Chapter
+  LabelString		"ACT "
+End
+
+Style ACT*
+  Margin                Dynamic
+  LatexType             Paragraph
+  LatexName             dummy
+  ParIndent             ""
+  ParSkip               0.8
+  TopSep		1.0
+  Align                 Center
+  AlignPossible         Center
+  LabelType		No_Label
+End
+
+Style SCENE
+  Margin                Dynamic
+  LatexType             Environment
+  LatexName             scene
+  ParIndent             ""
+  ParSkip               0.8
+  TopSep		1.0
+  KeepEmpty		1
+  Align                 Center
+  AlignPossible         Center
+  LabelType             Static       # Counter_EnumI
+  LabelString		"SCENE "
+End
+
+Style AT_RISE:
+  Margin                Dynamic
+  LatexType             Environment
+  LatexName             atrise
+  ParIndent             ""
+  ParSkip               0.8
+  TopSep		1.0
+  Align                 Left
+  AlignPossible         Left
+  KeepEmpty		1
+  LabelType             Static
+  LabelString		"AT RISE: "
+End
+
+# Speaker style definition, identifies speaker  ALL CAPS
+Style Speaker
+  Margin                Static
+  LatexType             Environment
+  LatexName             speaker
+  ParSkip               0.4
+  TopSep		0.4
+  Align                 Center
+  AlignPossible         Center
+  LabelType             No_Label
+End
+
+# Parenthetical instruction to speaker (in parenthises, l.c.)
+# The ( will automatically appear on screen, both () will be
+# in print, so don't type any.
+Style Parenthetical  
+  Margin                Static
+  LatexType             Environment
+  LatexName             parenthetical
+  Align                 Center
+  AlignPossible         Center
+  LabelType		Static
+  LabelString		(
+
+Font
+  Family                Roman
+  Series                Medium
+  Shape                 Italic
+  Size                  Normal
+  Color                 Blue
+EndFont
+
+LabelFont
+  Family                Roman
+  Series                Medium
+  Shape                 Up
+  Size                  Normal
+  Color                 Blue
+EndFont
+End
+
+# Dialogue style definition. Actor dialog
+Style Dialogue
+  Margin                Static
+  LatexType             Environment
+  LatexName             dialogue
+  LeftMargin            MM
+  RightMargin		MM
+  Align                 Left
+  AlignPossible         Left
+  LabelType             No_Label
+End
+
+Style CURTAIN
+  Margin                Dynamic
+  LatexType             Paragraph
+  LatexName             dummy
+  ParIndent             ""
+  ParSkip               0.8
+  TopSep		1.0
+  KeepEmpty		1
+  Align                 Center
+  AlignPossible         Center
+  LabelType             Static
+  LabelString		"CURTAIN"
+End
+
+Style Title
+  Margin		Static
+  LatexType		Command
+  LatexName		title
+  InTitle		1
+  ParSkip		0.4
+  BottomSep		1.5
+  ParSep		1.5
+  Align			Center
+  AlignPossible		Left, Right, Center
+
+End
+
+Style Author
+  Margin		Static
+  LatexType		Command
+  LatexName		author
+  InTitle		1
+  ParSkip		0.4
+  BottomSep		1.5
+  ParSep		1.5
+  Align			Center
+  AlignPossible		Left, Right, Center
+End
+
+# Right Address style
+Style Right_Address
+  Margin		Right_Address_Box
+  LatexType		Command
+  LatexName		address
+  InTitle		1
+  ParSkip		0.4
+  BottomSep		1.5
+  ParSep		1.5
+  Align			Left
+  AlignPossible		Left, Right
+End
+ 
+Input stdstruct.inc
+# Input lyxmacros.inc
+NoStyle Abstract
+NoStyle Bibliography
+NoStyle Date
+
+

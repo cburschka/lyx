@@ -1,0 +1,200 @@
+// -*- C++ -*-
+/* This file is part of
+ * ======================================================
+ * 
+ *           LyX, The Document Processor
+ * 	 
+ *	    Copyright (C) 1995 1996 Matthias Ettrich
+ *           and the LyX Team.
+ *
+ *======================================================*/
+
+#ifndef _VSPACE_H_
+#define _VSPACE_H_
+
+#ifdef __GNUG__
+#pragma interface
+#endif
+
+#include <stdio.h>
+
+///  LyXLength Class
+class LyXLength {
+public:
+	/// length units
+	enum UNIT {
+		/// Scaled point (65536sp = 1pt) TeX's smallest unit.
+		SP,
+		/// Point = 1/72.27in = 0.351mm
+		PT,
+		/// Big point (72bp = 1in), also PostScript point
+		BP,
+		/// Didot point = 1/72 of a French inch, = 0.376mm
+		DD,
+		/// Millimeter = 2.845pt
+		MM,
+		/// Pica = 12pt = 4.218mm
+		PC,
+		/// Cicero = 12dd = 4.531mm
+		CC,
+		/// Centimeter = 10mm = 2.371pc
+		CM,
+		/// Inch = 25.4mm = 72.27pt = 6.022pc
+		IN,
+		/// Height of a small "x" for the current font.
+		EX,
+		/// Width of capital "M" in current font.
+		EM,
+		/// Math unit (18mu = 1em) for positioning in math mode
+		MU,
+		/// no unit
+		UNIT_NONE
+	};
+
+	//@Man: constructors
+	//@{
+	///
+	LyXLength() : val(0), uni(LyXLength::PT) {};
+	LyXLength(float v, LyXLength::UNIT u) : val(v), uni(u) {};
+
+	/** "data" must be a decimal number, followed by a unit. */
+        LyXLength(LString const & data);
+	//@}
+	
+	//@Man: selectors
+	//@{
+	///
+	float value() const         { return val; };
+	///
+	LyXLength::UNIT unit() const { return uni; };
+	//@}
+
+	///
+        bool operator==(LyXLength other);
+
+	/// conversion
+	virtual LString asString() const;
+	virtual LString asLatexString() const { return this->asString(); };
+
+
+	/** If "data" is valid, the length represented by it is
+	  stored into "result", if that is not NULL. */
+	friend bool isValidLength(LString const & data, 
+				  LyXLength* result=NULL);
+
+protected:
+	float           val;
+	LyXLength::UNIT uni;
+};
+
+extern LyXLength::UNIT unitFromString (LString const & data);
+extern bool isValidLength(LString const &data, LyXLength* result);
+
+/// LyXGlueLength class
+class LyXGlueLength : public LyXLength {
+public:
+	//@Man: constructors
+	//@{
+	///
+	LyXGlueLength(float v,      LyXLength::UNIT u, 
+		      float pv=0.0, LyXLength::UNIT pu=LyXLength::UNIT_NONE, 
+		      float mv=0.0, LyXLength::UNIT mu=LyXLength::UNIT_NONE) 
+		: LyXLength (v, u), 
+		  plus_val(pv), minus_val(mv), 
+		  plus_uni(pu), minus_uni(mu) {};
+
+	/** "data" must be a decimal number, followed by a unit, and 
+	  optional "glue" indicated by "+" and "-".  You may abbreviate
+	  reasonably.  Examples:
+	  1.2 cm  //  4mm +2pt  //  2cm -4mm +2mm  //  4+0.1-0.2cm
+	  The traditional Latex format is also accepted, like  
+	  4cm plus 10pt minus 10pt */
+        LyXGlueLength(LString const & data);
+	//@}
+	
+	//@Man: selectors
+	//@{
+	///
+	float plusValue() const         { return plus_val; };
+	///
+	LyXLength::UNIT plusUnit() const { return plus_uni; };
+	///
+	float minusValue() const         { return minus_val; };
+	///
+	LyXLength::UNIT minusUnit() const { return minus_uni; };
+	//@}
+
+	///
+        bool operator==(LyXGlueLength other);
+
+	/// conversion
+	virtual LString asString() const;
+	virtual LString asLatexString() const;
+
+
+	/** If "data" is valid, the length represented by it is
+	  stored into "result", if that is not NULL. */
+	friend bool isValidGlueLength(LString const & data, 
+				      LyXGlueLength* result=NULL);
+
+protected:
+	float           plus_val, minus_val;
+	LyXLength::UNIT plus_uni, minus_uni;
+};
+
+extern bool isValidGlueLength(LString const &data, LyXGlueLength* result);
+
+///  VSpace class
+class VSpace {
+public:
+	///
+	enum vspace_kind { NONE, DEFSKIP, 
+			   SMALLSKIP, MEDSKIP, BIGSKIP, 
+			   VFILL, LENGTH };
+	// constructors
+	VSpace() : 
+		kin (NONE), 
+		len(0.0, LyXLength::PT),
+                kp (false) {};
+
+	VSpace(vspace_kind k) : 
+		kin (k), 
+		len (0.0, LyXLength::PT),
+	        kp (false) {};
+
+	VSpace(LyXGlueLength l) :
+		kin (LENGTH),
+		len (l),
+	        kp (false) {};
+
+	VSpace(float v, LyXLength::UNIT u) : 
+		kin (LENGTH), 
+		len (v, u),
+	        kp (false) {};
+
+	/// this constructor is for reading from a .lyx file
+	VSpace(LString const & data);
+	
+	// access functions
+	vspace_kind kind() const  { return  kin; }
+	LyXLength   length() const { return len; }
+
+	// a flag that switches between \vspace and \vspace*
+        bool keep() const      { return kp; }
+	void setKeep(bool val) { kp = val; } 
+
+        bool operator== (VSpace other);
+
+	// conversion
+	LString asLyXCommand() const;  // how it goes into the LyX file
+	LString asLatexCommand() const;
+	int inPixels() const;
+private:
+	vspace_kind  kin;  
+	LyXGlueLength    len;
+	bool kp;
+};
+
+#endif
+
+

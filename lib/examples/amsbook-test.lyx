@@ -1,0 +1,394 @@
+#This file was created by <dlj0> Sun Dec 14 14:56:10 1997
+#LyX 0.11 (C) 1995-1997 Matthias Ettrich and the LyX Team
+\lyxformat 2.15
+\textclass amsbook
+\language default
+\inputencoding default
+\fontscheme default
+\graphics default
+\paperfontsize default
+\spacing single 
+\papersize Default
+\paperpackage a4
+\use_geometry 0
+\use_amsmath 0
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\quotes_times 2
+\papercolumns 1
+\papersides 2
+\paperpagestyle default
+
+\layout Title
+
+Test of AMS-Book Style
+\layout Author
+
+David L.
+ Johnson
+\layout Address
+
+Department of Mathematics
+\newline 
+Lehigh University
+\newline 
+Bethlehem, PA 18015
+\layout Current Address
+
+Home
+\layout Email
+
+dlj0@lehigh.edu
+\layout URL
+
+http://www.lehigh.edu/~dlj0/dlj0.html
+\layout Keywords
+
+Test
+\layout Thanks
+
+To Emmanuel, for forcing me to fix this, and Jean-Marc, for making it possible,
+ and necessary.
+\layout Dedicatory
+
+To my wife.
+\layout Translator
+
+Joe
+\layout Subjectclass
+
+Primary: 12G34, Secondary: 09G87
+\layout Chapter
+
+Beginning.
+\layout Section
+
+Introduction
+\layout Standard
+
+This file, using the amsbook layout, numbers all results, Theorems, Definitions,
+ etc., using 
+\begin_inset Formula \( (m.n.p) \)
+\end_inset 
+
+ where the 
+\begin_inset Formula \( m \)
+\end_inset 
+
+ is the chapter number, the 
+\begin_inset Formula \( n \)
+\end_inset 
+
+ is the section number, and, finally, the 
+\begin_inset Formula \( p \)
+\end_inset 
+
+ is the result number in that section.
+\layout Standard
+
+This can be changed by modifying the layout file, removing the line 
+\family typewriter 
+
+\newline 
+
+\backslash 
+numberwithin{section}{chapter} 
+\family default 
+
+\newline 
+from the 
+\family typewriter 
+Preamble
+\family default 
+ .
+\layout Theorem
+
+This is a theorem
+\layout Proof
+
+Here is its proof.
+\layout Standard
+
+More text.
+\layout Corollary
+
+First corollary.
+\layout Proof
+
+Its proof.
+\layout Lemma
+
+Lemma number 1
+\layout Proposition
+
+First proposition.
+\layout Conjecture
+
+A wild guess.
+\layout Criterion
+
+Need some criteria
+\layout Algorithm
+
+first this, then the next
+\layout Fact
+
+Not fiction.
+\layout Axiom
+
+It stands to reason.
+\layout Definition
+
+a word means exactly what I say it means.
+\layout Example
+
+This should be an example.
+\layout Standard
+
+Plain text.
+\layout Condition
+
+If you say so.
+\layout Problem
+
+I don't know what to write is the problem.
+\layout Remark
+
+I think this will be useful.
+\layout Claim
+
+I did it the way the documentation said to.
+\layout Note
+
+It may need more work yet.
+\layout Standard
+
+More plain text, in standard format.
+\layout Theorem
+
+This is a second theorem
+\layout Proof
+
+Here is its proof.
+\layout Standard
+
+More text.
+\layout Corollary
+
+Second corollary.
+\layout Proof
+
+Its proof.
+\layout Lemma
+
+Lemma number 2
+\layout Proposition
+
+Second proposition.
+\layout Conjecture
+
+A wild guess.
+\layout Criterion
+
+Need some criteria
+\layout Notation
+
+
+\begin_inset Formula \( S=\mathbb {R} \)
+\end_inset 
+
+.
+\layout Summary
+
+In the end, will it matter?
+\layout Acknowledgement
+
+Thanks to Mattias Ettrich.
+ Without him I never would have learned LaTeX.
+\layout Case
+
+If this works, then the rest will.
+\layout Conclusion
+
+It seems to work.
+\layout Proof
+
+Here goes another proof.
+\layout Standard
+
+Plain text
+\layout Chapter Exercises
+
+Exercise 1
+\layout Chapter Exercises
+
+Exercise 2
+\layout Chapter Exercises
+
+These should not be italicised!
+\layout Section
+
+Next try.
+\layout Standard
+
+This tries out the section environments.
+\layout Theorem
+
+This is a theorem
+\layout Proof
+
+Here is its proof.
+\layout Standard
+
+More text.
+\layout Corollary
+
+Third corollary.
+ First one of this section.
+\layout Proof
+
+Its proof.
+\layout Lemma
+
+Lemma number 3
+\layout Proposition
+
+Third proposition.
+\layout Conjecture
+
+A wild guess.
+\layout Criterion
+
+Need some criteria
+\layout Subsection
+
+This is a subsection
+\layout Standard
+
+With more results therein.
+\layout Theorem
+
+This is a theorem, maybe the fourth one.
+\layout Proof
+
+Here is its proof.
+\layout Standard
+
+More text.
+\layout Chapter
+
+Next one.
+\layout Section
+
+Next Section
+\layout Corollary
+
+Fourth corollary.
+\layout Proof
+
+Its proof.
+\layout Lemma
+
+Lemma number 4
+\layout Proposition
+
+Fourth proposition.
+\layout Conjecture
+
+A wild guess.
+\layout Criterion
+
+Need some criteria
+\layout Standard
+
+More random text.
+\layout Section
+
+Another section
+\layout Theorem
+
+This is a theorem
+\layout Proof
+
+Here is its proof.
+\layout Standard
+
+More text.
+\layout Corollary
+
+Fifth corollary.
+\layout Proof
+
+Its proof.
+\layout Lemma
+
+Lemma number 5
+\layout Proposition
+
+Fifth proposition.
+\layout Conjecture
+
+A wild guess.
+\layout Criterion
+
+Need some criteria
+\layout Subsubsection
+
+This is the subsection with results.
+\layout Standard
+
+The quick, brown fox jumped over the lazy dog.
+\layout Theorem
+
+This is a theorem - sixth in the series
+\layout Proof
+
+Here is its proof.
+\layout Standard
+
+More text.
+\layout Corollary
+
+Sixth corollary.
+\layout Proof
+
+Its proof.
+\layout Lemma
+
+Lemma number 6
+\layout Proposition
+
+Sixth proposition.
+\layout Conjecture
+
+A wild guess.
+\layout Criterion
+
+Need some criteria
+\layout Bibliography
+\bibitem {1}
+
+Johnson, D.
+ L.
+ 
+\emph on 
+Out of my head
+\layout Bibliography
+\bibitem {2}
+
+American Mathematical Society, 
+\emph on 
+Instructions for preparation of papers and monographs: AMS-LaTeX
+\emph default 
+, (1997).
+\layout Bibliography
+\bibitem {3}
+
+American Mathematical Society, 
+\layout Standard
+
+\the_end

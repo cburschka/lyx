@@ -1,0 +1,213 @@
+#% Do not delete he line below; configure depends on this
+#  \DeclareLinuxDocClass[manpage]{SGML (LinuxDoc manpage)}
+# LinuxDoc manpage textclass definition file. 
+# Author : José Matos <jamatos@novalis.fc.up.pt>
+
+# General textclass parameters
+Columns			1
+Sides			1
+PageStyle		Plain
+MaxCounter		Counter_Subsection
+OutputType		linuxdoc
+
+# Standard style definition
+Style Standard
+  Margin  		Static
+  LatexType 		Paragraph
+  LatexName 		p
+  ParIndent		MM
+  ParSkip 		0.4
+  Align 		Block
+  AlignPossible 	Block
+  LabelType 		No_Label
+End
+
+# Quote style definition
+Style Quote
+  Margin  		Static
+  LatexType 		Environment
+  LatexName 		quote
+  ParIndent		MM
+  ParSkip 		0.4
+  Align 		Block
+  AlignPossible 	Block
+  LabelType 		No_Label
+End
+
+# Subsection style definition
+Style Section
+  Margin		Dynamic
+  LatexType		Command
+  LatexName		sect1
+  NextNoIndent		1
+  LabelSep		xxx
+  ParSkip		0.4
+  TopSep		0.9
+  BottomSep		0.5
+  ParSep		0.5
+  Align			Block
+  AlignPossible		Block, Left
+  LabelType		Counter_Subsection
+
+  # standard font definition
+  Font 
+    Series 		Bold
+    Size		Large
+  EndFont
+
+  # label font definition
+  LabelFont 
+    Series		Bold
+    Size		Large
+  EndFont
+End
+
+# Subsubsection style definition
+Style SubSection
+  Margin		Dynamic
+  LatexType		Command
+  LatexName		sect2
+  NextNoIndent		1
+  LabelSep		xxx
+  ParSkip		0.4
+  TopSep		0.7
+  BottomSep		0.4
+  ParSep		0.4
+  Align			Block
+  AlignPossible		Block, Left
+  LabelType		Counter_SubSubSection
+
+  # standard font definition
+  Font 
+    Series 		Bold
+  EndFont
+
+  # label font definition
+  LabelFont 
+    Series		Bold
+  EndFont
+End
+
+# Enumerate style definition
+Style Enumerate
+  Margin		Static
+  LatexType		Item_Environment
+  LatexName		enum
+  NextNoIndent		1
+  LeftMargin		MMN
+  LabelSep		xx
+  ItemSep		0.2
+  TopSep		0.7
+  BottomSep		0.7
+  ParSep		0.3
+  Align			Block
+  AlignPossible		Block, Left
+  LabelType		Counter_EnumI
+End
+
+# Itemize style definition
+Style Itemize
+  Margin		Static
+  LatexType		Item_Environment
+  LatexName		itemize
+  NextNoIndent		1
+  LeftMargin		MMN
+  LabelSep		xx
+  ItemSep		0.2
+  TopSep		0.7
+  BottomSep		0.7
+  ParSep		0.3
+  Align			Block
+  AlignPossible		Block, Left
+  LabelType		Static
+  LabelString		*
+End
+
+# Description style definition
+Style Description
+  Margin		First_Dynamic
+  LatexType		Item_environment
+  LatexName		descrip
+  NextNoIndent		1
+  LeftMargin		MM
+  LabelSep		xxx
+  ParSkip		0.4
+  ItemSep		0.2
+  TopSep		0.7
+  BottomSep		0.7
+  ParSep		0.3
+  Align			Block
+  AlignPossible		Block, Left
+  LabelType		Manual
+  LabelString		MM
+
+  # label font definition
+  LabelFont 
+    Series		Bold
+  EndFont
+End
+
+# Verbatim style definition
+Style Verbatim
+  Margin		Static
+  LatexType		environment
+  LatexName		verb
+  NextNoIndent		1
+  LeftMargin		MM
+  LabelSep		xx
+  ItemSep		0.2
+  Topsep		0.7
+  BottomSep		0.7
+  ParSep		0.3
+  Align			Block
+  AlignPossible		Block
+  LabelType		No_Label
+
+  # standard font definition
+  Font 
+    Family  		Typewriter
+  EndFont
+
+  # label font definition
+  LabelFont 
+    Family		Typewriter
+  EndFont
+End
+
+# Code style definition
+Style Code
+  Margin		Static
+  LatexType		Environment
+  LatexName		code
+  NextNoIndent		1
+  LeftMargin		MM
+  LabelSep		xx
+  ItemSep		0.2
+  TopSep		0.7
+  BottomSep		0.7
+  ParSep		0.3
+  Align			Block
+  AlignPossible		Block
+  LabelType		No_Label
+  FreeSpacing 	    	1
+End
+
+# SGML style definition
+Style SGML
+  Margin                Static
+  LatexType             Paragraph
+  LatexName             p
+  NewLine               0
+  ParIndent             MM
+  ParSkip               0.4
+  ParSep                0.5
+  Align                 Center
+  AlignPossible         Block, Left, Right, Center
+  LabelType             No_Label
+  FreeSpacing           1
+
+  # standard font definition
+  Font 
+    Latex               Latex
+  EndFont
+End

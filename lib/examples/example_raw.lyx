@@ -1,0 +1,273 @@
+#This file was created by <karger> Tue Mar  2 14:50:20 1999
+#LyX 1.0 (C) 1995-1998 Matthias Ettrich and the LyX Team
+\lyxformat 2.15
+\textclass article
+\language default
+\inputencoding default
+\fontscheme default
+\graphics dvips
+\paperfontsize 12
+\spacing single 
+\papersize letterpaper
+\paperpackage a4
+\use_geometry 0
+\use_amsmath 0
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\quotes_times 2
+\papercolumns 1
+\papersides 1
+\paperpagestyle plain
+
+\layout Standard
+
+THIS IS THE TITLE OF THE DOCUMENT 
+\begin_inset Info Hint: the title should look more like a title
+\end_inset 
+
+
+\layout Standard
+
+by Fee LyX
+\begin_inset Info Hint: Fee is the AUTHOR
+\end_inset 
+
+
+\layout Standard
+
+June 12, 1972
+\begin_inset Info Hint: this is a DATE
+\end_inset 
+
+
+\layout Standard
+
+Table of Contents
+\begin_inset Info Hint: It would be nice if we didn't have to type the Table
+of Contents explicitly
+\end_inset 
+
+
+\layout Standard
+
+1.
+ Basic Philosophy..................1
+\layout Standard
+
+1.1 How LyX Does It...............1
+\layout Standard
+
+1.2 Why LyX is Better...............1
+\layout Standard
+
+2.
+ Features of LyX
+\layout Standard
+
+3.
+ Lame Attempts to use more LyX stuff
+\layout Standard
+
+4.
+ Math Stuff
+\layout Standard
+
+---------------------------------------------------
+\layout Standard
+
+1.
+ Basic Philosophy
+\begin_inset Info Hint: Section titles should probably stand out more
+\end_inset 
+
+
+\layout Standard
+
+The basic philosophy of LyX is that you should worry about the form of what
+ you're writing and not the content.
+\layout Standard
+
+1.1 How LyX does it
+\layout Standard
+
+LyX uses LaTeX, a document preparation system designed by Leslie Lamport
+ in 1985.
+ It, in turn, was built up from a typesetting language called TeX, created
+ by Donald Knuth in 1984.
+ LaTeX is designed around a philosophy similar to that of LyX.
+ Leslie Lamport once said (see reference [1])
+\begin_inset Info Hint: Probably, this CITATION REFERENCE shouldn't be
+"hard-coded". What if we make Lamport's book the second
+ item in the bibliography?
+\end_inset 
+
+:
+\layout Standard
+
+
+\begin_inset Quotes eld
+\end_inset 
+
+The function of typographic design is to help the reader understand the
+ author's ideas.
+ For a document to be easy to read, its visual structure must reflect its
+ logical structure.
+ Quotations and computer programs, being logically distinct structural elements,
+ should be distinguished visually from one another....
+ Since LaTeX can't understand your prose, you must explicitly indicate the
+ logical structure by typing special commands....
+ As you are writing your document, you should be concerned with its logical
+ structure, not its visual appearance.
+\begin_inset Quotes erd
+\end_inset 
+
+
+\begin_inset Info Hint: This is a QUOTE
+\end_inset 
+
+
+\layout Standard
+
+1.2 Why LyX is better
+\layout Standard
+
+LyX can be useful to more people than LaTeX.
+ It's considerably easier to learn, because you don't need to learn LaTeX
+ (which is practically a programming language).
+ LyX is basically like other 
+\begin_inset Quotes eld
+\end_inset 
+
+What you see is what you get
+\begin_inset Quotes erd
+\end_inset 
+
+ word processors, except that LyX is 
+\begin_inset Quotes eld
+\end_inset 
+
+What you see is what you mean
+\begin_inset Quotes erd
+\end_inset 
+
+.
+ In this way, it combines the ease of use of word processors with the power
+ of LaTeX.
+ This is a Good Thing.
+ Also, the file format is platform independent.
+ Best of all, it's FREE!
+\layout Standard
+
+2.
+ Features of LyX
+\layout Standard
+
+LyX has many features which make writing documents easier.
+ (After all, why else would you want to use it?
+\begin_inset Info Hint: This parenthetical statement would look better in a footnote
+\end_inset 
+
+) I'm VERY EXCITED
+\begin_inset Info Hint: Emphasize!
+\end_inset 
+
+ to talk about them.
+ Here's a list of just a few.
+\layout Standard
+
+* LyX worries about margins, and footnote numbering for you
+\layout Standard
+
+* LyX makes it simple to write and edit mathematical formulae
+\layout Standard
+
+For a more philosophical discussion of why LyX is better than lots of other
+ word processors, see Section 1.2, which can be found on page 1.
+\begin_inset Info Hint: Probably, these CROSS-REFERENCES shouldn't be
+"hard-coded". What if we change the section numbers?
+\end_inset 
+
+
+\layout Standard
+
+3.
+ Lame attempts to use other LyX stuff
+\layout Standard
+
+I wrote a program the other day.
+ It looked like this.
+\layout Standard
+
+5 REMARK MY AWESOME PROGRAM
+\layout Standard
+
+10 PRINT 
+\begin_inset Quotes eld
+\end_inset 
+
+I'M AWESOME!
+\begin_inset Quotes erd
+\end_inset 
+
+
+\layout Standard
+
+20 GOTO 10 
+\begin_inset Info Hint: This is computer CODE
+\end_inset 
+
+
+\layout Standard
+
+After all that scientific thinking, I started feeling more artistic, so
+ I wrote this haiku
+\layout Standard
+
+LyX is really great
+\layout Standard
+
+Typesetting word processor
+\layout Standard
+
+It saves so much time 
+\begin_inset Info Hint: It's not very good, but it is poetry,
+otherwise known as VERSE
+\end_inset 
+
+
+\layout Standard
+
+4.
+ Math Stuff
+\begin_inset Info Hint: these math things should be printed in math mode!
+\end_inset 
+
+
+\layout Standard
+
+My favorite equation is the solution to a quadratic equation.
+ If ax^2+bx+c=0 (eq.1), then x= -b + or minus the square root of b^2-4ac
+ all divided by 2a (eq.
+ 2).
+\layout Standard
+
+Another favorite equation is the basis of calculus: f'(x) is defined as
+ the limit as deltax goes to zero of f(x+deltax) - f(x) divided by deltax
+ (eq.
+ 3).
+\layout Standard
+
+------------------------------------------------
+\layout Standard
+
+REFERENCES
+\layout Standard
+
+[1] Lamport, Leslie.
+ LaTeX: A Document Preparation System.
+ Addison-Wesley, Reading, Massachusetts, second edition, 1994.
+\the_end

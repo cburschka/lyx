@@ -1,0 +1,43 @@
+#
+# German keyboard definition for LyX - hopefully correct
+#
+# (C)1995 by Ivan Schreter, schreter@ccsun.tuke.sk
+#
+\kmod ` circumflex aceijnorsuyzACEIJNORSUYZ	# dead circumflex
+\kmap ~ °		# degree
+\kmap @ \"		# shift-numbers is different on German kbd
+\kmap \# "\\S{}"
+\kmap ^ &
+\kmap & /
+\kmap * (
+\kmap ( )
+\kmap ) =
+\kmap - "\\ss{}"		# - maps to sharfes s
+\kmap _ ?		# _ maps to question mark
+\kmod = acute aceijlnorsuyzACEIJLNORSUYZ	# = is acute deadkey
+\kmod + grave aceijlnorsuyzACEIJLNORSUYZ	# Shift-= is grave dead key
+\kmap z y		# they have switched Y and Z !!
+\kmap Z Y
+\kmap y z
+\kmap Y Z
+\kmap [ "\\\"{u}"		# [{ maps to u umlaut
+\kmap { "\\\"{U}"
+\kmap ] +
+\kmap } *
+\kmap ; "\\\"{o}"		# ;: maps to o umlaut
+\kmap : "\\\"{O}"
+\kmap ' "\\\"{a}"		# '" maps to a umlaut
+\kmap \" "\\\"{A}"
+\kmap < ;		# yet some modifiers
+\kmap > :
+\kmap / -
+\kmap ? _
+\kmap \\ \#
+\kmap | '
+\kxmod acute i "\\'{\\i}"		# correct some misspellings :-)
+\kxmod acute j "\\'{\\j}"
+\kxmod grave i "\\`{\\i}"
+\kxmod grave j "\\`{\\j}"
+\kxmod circumflex i "\\^{\\i}"
+\kxmod circumflex j "\\^{\\j}"
+

@@ -1,0 +1,28 @@
+dnl Process this file with autoconf to produce a configure script.
+AC_INIT(reLyX.in)
+AC_PREREQ(2.13) dnl We want to use autoconf 2.13
+
+PACKAGE=reLyX
+VERSION=2.0
+dnl must make a macro that gets the reLyX version
+AM_INIT_AUTOMAKE($PACKAGE, $VERSION)
+
+dnl Checks for programs.
+AC_PROG_INSTALL
+RELYX_CHECK_PERL
+
+dnl Checks for libraries.
+dnl Replace `main' with a function in -lXpm:
+dnl AC_CHECK_LIB(Xpm, main)
+dnl Replace `main' with a function in -lforms:
+dnl AC_CHECK_LIB(forms, main)
+
+dnl Checks for header files.
+
+dnl Checks for typedefs, structures, and compiler characteristics.
+
+dnl Checks for library functions.
+
+AC_OUTPUT(Makefile reLyX, chmod 755 reLyX)
+
+RELYX_CHECK_ERRORS

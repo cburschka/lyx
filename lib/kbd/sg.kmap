@@ -1,0 +1,41 @@
+# Key definition file for Swiss german keyboard for LyX
+#
+# (c)1998 by Alain Borel, Alain.Borel@icma.unil.ch
+#
+#
+
+\kmod = circumflex aceijnorsuyzACEIJNORSUYZ     # circumflex on =
+\kmod ] umlaut aeijouyAEIJOUY                   # umlaut on ]
+\kmap ! +
+\kmap @ \"
+\kmap \# \*
+\kmap $ "\\c{c}"
+\kmap ^ &
+\kmap & /
+\kmap * (
+\kmap ( )
+\kmap ) =
+\kmap - '
+\kmap _ ?
+\kmap + `
+\kmap ~ "\\b{}" # degree sign?
+\kmap ` "\\it\\${}"             # paragraph mark? doesn't work
+\kmap y z
+\kmap z y       # switched Y<->Z
+\kmap Y Z
+\kmap Z Y
+\kmap { "\\`{e}"
+\kmap [ "\\\"{u}"
+\kmap } !
+\kmap : "\\'{e}"
+\kmap ; "\\\"{o}"
+\kmap \" "\\`{a}"
+\kmap ' "\\\"{a}"
+\kmap < ;
+\kmap > :
+\kmap ? _
+\kmap / -
+\kmap \\ $
+\kmap | "\\it\\${}"
+\kxmod circumflex i "\\^{\\i}"  # some exceptions
+\kxmod umlaut i "\\\"{\\i}"

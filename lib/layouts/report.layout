@@ -1,0 +1,23 @@
+#% Do not delete the line below; configure depends on this
+#  \DeclareLaTeXClass{report}
+# Report textclass definition file. Taken from initial LyX source code
+# Author : Matthias Ettrich <ettrich@informatik.uni-tuebingen.de>
+# Transposed by Pascal André <andre@via.ecp.fr>
+# Heavily modifed and enhanced by serveral developers.
+
+# Input general definitions
+Input stdclass.inc
+
+# a few changes to the bibliography
+Style Bibliography
+  TopSep		4
+  LabelString		Bibliography
+
+  # label font definition
+  LabelFont 
+    Series		Bold
+    Size		Huge
+  EndFont
+End
+
+

@@ -1,0 +1,4654 @@
+# Polskie teksty dla LyXa (1999).
+# Copyright (C) 1999 Free Software Foundation, Inc.
+# Pawe³ Dziekoñski <pdziekonski@mml.ch.pwr.wroc.pl>
+# Podziêkowania dla grupy pl.comp.dtp.tex.gust
+# Pre-translation has bean done using PePeSza v0.7[C
+# get your own copy of PePeSza from http://www.ids.pl/~pkollegu/pepesza.html
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: LyX 1.0.4pre8\n"
+"POT-Creation-Date: 1999-09-23 15:37+0200\n"
+"PO-Revision-Date: 1999-09-27 17:28+02:00\n"
+"Last-Translator: Pawe³ Dziekoñski <pdziekonski@mml.ch.pwr.wroc.pl>\n"
+"Language-Team: Polish <pl@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=ISO-8859-2\n"
+"Content-Transfer-Encoding: 8-bit\n"
+
+#: src/BufferView.C:284
+msgid "Formatting document..."
+msgstr "Formatowanie dokumentu..."
+
+#: src/BufferView.C:357 src/BufferView.C:361
+msgid "No more errors"
+msgstr "Brak kolejnych b³êdów"
+
+#: src/Chktex.C:94
+msgid "ChkTeX warning id #"
+msgstr "ChkTeX: ostrze¿enie #"
+
+#: src/FontLoader.C:217
+msgid "Loading font into X-Server..."
+msgstr "£adowanie fontów do X-Serwera..."
+
+#: src/LaTeX.C:296 src/LaTeX.C:310 src/LaTeX.C:412
+msgid "Run #"
+msgstr "Przebieg #"
+
+#: src/LaTeX.C:298 src/LaTeX.C:313 src/LaTeX.C:369 src/LaTeX.C:413
+msgid "LaTeX run number "
+msgstr "Przebieg LaTeXa numer "
+
+#. no checks for now
+#: src/LaTeX.C:335 src/LaTeX.C:392
+msgid "Running MakeIndex."
+msgstr "Uruchomiony MakeIndex."
+
+#. Here we must scan the .aux file and look for
+#. "\bibdata" and/or "\bibstyle". If one of those
+#. tags is found -> run bibtex and set rerun = true;
+#. no checks for now
+#: src/LaTeX.C:346
+msgid "Running BibTeX."
+msgstr "Uruchomiony BibTeX."
+
+#: src/LaTeXLog.C:48
+msgid "NO LATEX LOG FILE!"
+msgstr "BRAK PLIKU LOGU LATEXA!"
+
+#: src/LaTeXLog.C:55
+msgid "Build Program Log"
+msgstr "Log z budowania programu"
+
+#: src/LaTeXLog.C:55
+msgid "LaTeX Log"
+msgstr "Log LaTeXa"
+
+#: src/LyXAction.C:589
+msgid "Describe command"
+msgstr "Opis polecenia"
+
+#: src/LyXAction.C:590
+msgid "Select previous char"
+msgstr "Zaznacz poprzedni znak"
+
+#: src/LyXAction.C:591
+msgid "Insert bibtex"
+msgstr "Wstaw bibtex'a"
+
+#: src/LyXAction.C:592
+msgid "Autosave"
+msgstr "Automatyczne zachowanie"
+
+#: src/LyXAction.C:593
+msgid "Go to beginning of document"
+msgstr "Id¼ na pocz±tek dokumenu"
+
+#: src/LyXAction.C:594
+msgid "Select to beginning of document"
+msgstr "Zaznacz do pocz±tku dokumentu"
+
+#: src/LyXAction.C:595 src/inseterror.C:168 src/insetref.C:64 src/latexoptions.C:46 src/layout_forms.C:158 src/layout_forms.C:472 src/layout_forms.C:692 src/lyx.C:112 src/lyx_sendfax.C:109 src/lyxvc.C:328 src/math_forms.C:179
+msgid "Close"
+msgstr "Zamknij"
+
+#: src/LyXAction.C:596
+msgid "Go to end of document"
+msgstr "Id¼ na koniec dokumentu"
+
+#: src/LyXAction.C:597
+msgid "Select to end of document"
+msgstr "Zaznacz do koñca dokumentu"
+
+#: src/LyXAction.C:598
+msgid "Fax"
+msgstr "Faks"
+
+#: src/LyXAction.C:599
+msgid "New document"
+msgstr "Nowy dokument"
+
+#: src/LyXAction.C:600
+msgid "New document from template"
+msgstr "Nowy dokument z szablonu"
+
+#: src/LyXAction.C:601
+msgid "Open"
+msgstr "Otwórz"
+
+#: src/LyXAction.C:602
+msgid "Switch to previous document"
+msgstr "Prze³±cz na poprzeni dokument"
+
+#: src/LyXAction.C:603 src/lyx_cb.C:981 src/print_form.C:72
+msgid "Print"
+msgstr "Drukuj"
+
+#: src/LyXAction.C:604
+msgid "Revert to saved"
+msgstr "Wróæ do zachowanego"
+
+#: src/LyXAction.C:605
+msgid "Update DVI"
+msgstr "Aktualizuj DVI"
+
+#: src/LyXAction.C:606
+msgid "Update PostScript"
+msgstr "Aktualizuj PostScript"
+
+#: src/LyXAction.C:607
+msgid "View DVI"
+msgstr "Podgl±d DVI"
+
+#: src/LyXAction.C:608
+msgid "View PostScript"
+msgstr "Podgl±d PostScriptu"
+
+#: src/LyXAction.C:609
+msgid "Build program"
+msgstr "Buduj program"
+
+#: src/LyXAction.C:610
+msgid "Check TeX"
+msgstr "Sprawd¼ TeX'a"
+
+#: src/LyXAction.C:611 src/lyx_sendfax_main.C:284
+msgid "Save"
+msgstr "Zachowaj"
+
+#: src/LyXAction.C:612
+msgid "Save As"
+msgstr "Zachowaj jako"
+
+#: src/LyXAction.C:613 src/lyxfunc.C:585
+msgid "Cancel"
+msgstr "Anuluj"
+
+#: src/LyXAction.C:614
+msgid "Go one char back"
+msgstr "Id¼ jeden znak do ty³u"
+
+#: src/LyXAction.C:615
+msgid "Go one char forward"
+msgstr "Id¼ jeden znak do przodu"
+
+#: src/LyXAction.C:616
+msgid "Insert citation"
+msgstr "Wstaw cytat"
+
+#: src/LyXAction.C:617
+msgid "Execute command"
+msgstr "Wykonaj polecenie"
+
+#: src/LyXAction.C:618 src/lyx_cb.C:2392
+msgid "Copy"
+msgstr "Kopiuj"
+
+#: src/LyXAction.C:619 src/lyx_cb.C:2404
+msgid "Cut"
+msgstr "Wytnij"
+
+#: src/LyXAction.C:620
+msgid "Decrement environment depth"
+msgstr "Zmniejsz rozmiar ¶rodowiska"
+
+#: src/LyXAction.C:621
+msgid "Increment environment depth"
+msgstr "Zwiêksz rozmiar ¶rodowiska"
+
+#: src/LyXAction.C:622
+msgid "Change environment depth"
+msgstr "Zmieñ rozmiar ¶rodowiska"
+
+#: src/LyXAction.C:623
+msgid "Change itemize bullet settings"
+msgstr "Zmieñ znaki wyró¿nieñ wyszczególnieñ"
+
+#: src/LyXAction.C:624
+msgid "Go down"
+msgstr "Id¼ na dó³"
+
+#: src/LyXAction.C:625
+msgid "Select next line"
+msgstr "Zaznacz nastêpn± liniê"
+
+#: src/LyXAction.C:626
+msgid "Choose Paragraph Environment"
+msgstr "Wybie¿ ¶rodowisko akapitu"
+
+#: src/LyXAction.C:627
+msgid "Go to next error"
+msgstr "Id¼ do nastêpnego b³êdu"
+
+#: src/LyXAction.C:628 src/lyx_cb.C:2344
+msgid "Insert Figure"
+msgstr "Wstaw rysunek"
+
+#: src/LyXAction.C:629 src/lyxfr0.C:95
+msgid "Find & Replace"
+msgstr "Znajd¼ i zast±p"
+
+#: src/LyXAction.C:630
+msgid "Toggle cursor does/doesn't follow the scrollbar"
+msgstr "Czy kursor ma nad±¿aæ za paskiem przewijania?"
+
+#: src/LyXAction.C:631
+msgid "Toggle bold"
+msgstr "Prze³±cz pogrubienie"
+
+#: src/LyXAction.C:632
+msgid "Toggle code style"
+msgstr "Prze³±cz styl kodu"
+
+#: src/LyXAction.C:633
+msgid "Default font style"
+msgstr "Domy¶lny styl fontu"
+
+#: src/LyXAction.C:634
+msgid "Toggle emphasize"
+msgstr "Kursywa"
+
+#: src/LyXAction.C:635
+msgid "Toggle user defined style"
+msgstr "Prze³±cz styl definiowany przez u¿ytkownika"
+
+#: src/LyXAction.C:636
+msgid "Toggle noun style"
+msgstr "Kapitaliki"
+
+#: src/LyXAction.C:637
+msgid "Toggle roman font style"
+msgstr "Font szeryfowy"
+
+#: src/LyXAction.C:638
+msgid "Toggle sans font style"
+msgstr "Font bezszeryfowy"
+
+#: src/LyXAction.C:639
+msgid "Set font size"
+msgstr "Ustaw rozmiar fontu"
+
+#: src/LyXAction.C:640
+msgid "Show font state"
+msgstr "Poka¿ stan fontu"
+
+#: src/LyXAction.C:641
+msgid "Toggle font underline"
+msgstr "Czcionkê podkre¶lon±"
+
+#: src/LyXAction.C:642
+msgid "Insert Footnote"
+msgstr "Wstaw przypis w stopce strony"
+
+#: src/LyXAction.C:643
+msgid "Select next char"
+msgstr "Zaznacz nastêpny znak"
+
+#: src/LyXAction.C:644
+msgid "Insert horizontal fill"
+msgstr "Wstaw poziome wype³nienie"
+
+#: src/LyXAction.C:645
+msgid "Insert hyphenation point"
+msgstr "Wstaw punkt przeniesienia"
+
+#: src/LyXAction.C:646
+msgid "Insert ... dots"
+msgstr "Wstaw ... kropki"
+
+#: src/LyXAction.C:647
+msgid "Insert end of sentence period"
+msgstr "Wstaw kropkê koñcz±ca zdanie"
+
+#: src/LyXAction.C:648
+msgid "Turn off keymap"
+msgstr "Wy³acz mapowanie klawiatury"
+
+#: src/LyXAction.C:649
+msgid "Use primary keymap"
+msgstr "U¿yj podstawowego mapowania klawiatury"
+
+#: src/LyXAction.C:650
+msgid "Use secondary keymap"
+msgstr "U¿yj alternatywnej mapy klawiatóry"
+
+#: src/LyXAction.C:651
+msgid "Toggle keymap"
+msgstr "Prze³±cz mapê klawiatury"
+
+#: src/LyXAction.C:652
+msgid "Insert Label"
+msgstr "Wstaw etykietê"
+
+#: src/LyXAction.C:653
+msgid "Copy paragraph environment type"
+msgstr "Kopiuj typ ¶rodowiska akapitu"
+
+#: src/LyXAction.C:654
+msgid "Paste paragraph environment type"
+msgstr "Wstaw typ ¶rodowiska akapitu"
+
+#: src/LyXAction.C:655
+msgid "Specify paper size and margins"
+msgstr "Podaj rozmiar papieru i marginesów"
+
+#: src/LyXAction.C:656
+msgid "Go to beginning of line"
+msgstr "Id¼ na pocz±tek linii"
+
+#: src/LyXAction.C:657
+msgid "Select to beginning of line"
+msgstr "Zaznacz do pocz±tku linii"
+
+#: src/LyXAction.C:658
+msgid "Go to end of line"
+msgstr "Id¼ na koniec linii"
+
+#: src/LyXAction.C:659
+msgid "Select to end of line"
+msgstr "Zaznacz do koñca linii"
+
+#: src/LyXAction.C:660
+msgid "Exit"
+msgstr "Wyj¶cie"
+
+#: src/LyXAction.C:661
+msgid "Insert Margin note"
+msgstr "Wstaw przypis na marginesie"
+
+#: src/LyXAction.C:662
+msgid "Math Greek"
+msgstr "Greckie znaki matematyczne"
+
+#: src/LyXAction.C:663
+msgid "Math mode"
+msgstr "Tryb matematyczny"
+
+#: src/LyXAction.C:664
+msgid "Go one paragraph down"
+msgstr "Id¼ jeden akapit na dó³"
+
+#: src/LyXAction.C:665
+msgid "Select next paragraph"
+msgstr "Zaznacz nastêpny akapit"
+
+#: src/LyXAction.C:666
+msgid "Go one paragraph up"
+msgstr "Id¼ jeden akapit do góry"
+
+#: src/LyXAction.C:667
+msgid "Select previous paragraph"
+msgstr "Zaznacz poprzedni akapit"
+
+#: src/LyXAction.C:668 src/lyx_cb.C:2413
+msgid "Paste"
+msgstr "Wklej"
+
+#: src/LyXAction.C:669
+msgid "Insert protected space"
+msgstr "Wstaw \"tward±\" spacjê"
+
+#: src/LyXAction.C:670
+msgid "Insert quote"
+msgstr "Wstaw cudzys³ów"
+
+#: src/LyXAction.C:671
+msgid "Reconfigure"
+msgstr "Rekonfiguruj"
+
+#: src/LyXAction.C:672 src/lyx_cb.C:2100
+msgid "Redo"
+msgstr "Powtórz"
+
+#: src/LyXAction.C:673
+msgid "Insert cross reference"
+msgstr "Wstaw odsy³acz wewnêtrzny"
+
+#: src/LyXAction.C:674 src/lyx_cb.C:2356
+msgid "Insert Table"
+msgstr "Wstaw tabelê"
+
+#: src/LyXAction.C:675
+msgid "Toggle TeX style"
+msgstr "Polecenie TeXa"
+
+#: src/LyXAction.C:676 src/lyx_cb.C:2080
+msgid "Undo"
+msgstr "Cofnij"
+
+#: src/LyXAction.C:677 src/lyx_cb.C:2435
+msgid "Melt"
+msgstr "Rozbij"
+
+#: src/LyXAction.C:678
+msgid "Import document"
+msgstr "Importuj dokument"
+
+#: src/LyXAction.C:679
+msgid "Remove all error boxes"
+msgstr "Usuñ wszystkie okienka b³êdów"
+
+#: src/LyXAction.C:680
+msgid "Insert menu separator"
+msgstr "Wstaw kropkê koñcz±ca zdanie"
+
+#. In an ideal world, this never happens:
+#: src/LyXAction.C:715
+msgid "No description available!"
+msgstr "Opis niedostêpny!"
+
+#: src/LyXSendto.C:43
+msgid "Send Document to Command"
+msgstr "Przeka¿ dokument do polecenia"
+
+#: src/LyXView.C:353 src/minibuffer.C:192
+msgid " (Changed)"
+msgstr " (zmieniony)"
+
+#: src/LyXView.C:355
+msgid " (read only)"
+msgstr " (tylko do odczytu)"
+
+#: src/PaperLayout.C:165 src/ParagraphExtra.C:150
+msgid "Document is read-only.  No changes to layout permitted."
+msgstr "Dokument jest tylko do odczytu. Zmiany ustawieñ nie dozwolone."
+
+#: src/PaperLayout.C:188
+msgid "Paper Layout"
+msgstr "Parametry papieru"
+
+#: src/PaperLayout.C:220
+msgid "Paper layout set"
+msgstr "Parametry papieru ustawione"
+
+#: src/PaperLayout.C:277 src/ParagraphExtra.C:309 src/TableLayout.C:299 src/TableLayout.C:466
+msgid "Warning: Invalid Length (valid example: 10mm)"
+msgstr "Niepoprawna warto¶æ (porawny przyk³ad: 10mm)"
+
+#: src/ParagraphExtra.C:167
+msgid "ParagraphExtra Layout"
+msgstr "¦rodowisko akapitu - zaawansowane"
+
+#: src/ParagraphExtra.C:208
+msgid "ParagraphExtra layout set"
+msgstr "¦rodowisko akapitu - zaawansowane: ustawione"
+
+#: src/ParagraphExtra.C:319
+msgid "Warning: Invalid percent value (0-100)"
+msgstr "Ostrze¿enie: nieporawna warto¶æ procentowa (0-100)"
+
+#: src/TableLayout.C:236
+msgid "Table Extra Form"
+msgstr "Tabele - zaawansowane"
+
+#: src/TableLayout.C:249
+msgid "Table Layout"
+msgstr "Parametry tabeli"
+
+#: src/TableLayout.C:279
+msgid "Warning: Wrong Cursor position, updated window"
+msgstr "Nieporawna pozycja kursora, od¶wie¿ zawarto¶æ okna"
+
+#: src/TableLayout.C:334
+msgid "Confirm: press Delete-Button again"
+msgstr "Potwierd¼: naci¶nij ponownie klawisz Delete"
+
+#. sgml2lyx failed
+#: src/buffer.C:229 src/buffer.C:239 src/buffer.C:3525 src/bufferlist.C:582 src/bufferlist.C:612 src/lyx_cb.C:540 src/lyx_cb.C:879 src/lyx_cb.C:912 src/lyx_sendfax_main.C:268
+msgid "Error!"
+msgstr "B³±d!"
+
+#: src/buffer.C:230 src/buffer.C:240 src/bufferlist.C:661
+msgid "Cannot open specified file:"
+msgstr "Nie mo¿na otworzyæ podanego pliku:"
+
+#. if the textclass wasn't loaded properly
+#. we need to either substitute another
+#. or stop loading the file.
+#. I can substitute but I don't see how I can
+#. stop loading... ideas??  ARRae980418
+#: src/buffer.C:403
+msgid "Textclass Loading Error!"
+msgstr "B³±d czytania pliku textclass.lst!"
+
+#: src/buffer.C:404
+msgid "Can't load textclass "
+msgstr "Nie mo¿na wczytaæ pliku textclass.lst "
+
+#: src/buffer.C:406
+msgid "-- substituting default"
+msgstr "-- podstawiam domy¶lny"
+
+#: src/buffer.C:1015
+msgid "Warning: Ignoring Old Inset"
+msgstr "Ostrze¿enie: Ignorujê star± wstawkê"
+
+#: src/buffer.C:1095
+#, c-format
+msgid "Warning: need lyxformat %.2f but found %.2f\n"
+msgstr "Ostrze¿enie: potrzebny format lyxa %.2f, a znaleziono %.2f\n"
+
+#: src/buffer.C:1099
+#, c-format
+msgid "ERROR: need lyxformat %.2f but found %.2f\n"
+msgstr "B£¡D: potrzebny format lyxa %.2f, a znaleziono %.2f\n"
+
+#: src/buffer.C:1113
+msgid "Warning!"
+msgstr "Ostrze¿enie!"
+
+#: src/buffer.C:1114
+msgid "Reading of document is not complete"
+msgstr "Odczyt dokumentu nie zakoñczy³ siê"
+
+#: src/buffer.C:1115
+msgid "Maybe the document is truncated"
+msgstr "Prawdopodobnie dokument jest uciêty"
+
+#. "\\lyxformat" not found
+#: src/buffer.C:1121 src/buffer.C:1128 src/buffer.C:1131
+msgid "ERROR!"
+msgstr "B£¡D!"
+
+#: src/buffer.C:1122
+msgid "Old LyX file format found. Use LyX 0.10.x to read this!"
+msgstr "Stary format pliku LyXa. U¿yj LyXa 0.10x aby go odczytac!"
+
+#: src/buffer.C:1128
+msgid "Not a LyX file!"
+msgstr "Plik nie jest w formacie LyXa!"
+
+#: src/buffer.C:1131
+msgid "Unable to read file!"
+msgstr "Nie mo¿na odczytac pliku!"
+
+#: src/buffer.C:1147 src/buffer.C:1149
+msgid "Error! Document is read-only: "
+msgstr "B³±d! Dokument tylko do odczytu: "
+
+#: src/buffer.C:1158 src/buffer.C:1160 src/buffer.C:1167 src/buffer.C:1169
+msgid "Error! Cannot write file: "
+msgstr "B³±d! Nie mo¿na zapisaæ pliku: "
+
+#: src/buffer.C:1201 src/buffer.C:1204
+msgid "Error! Could not close file properly: "
+msgstr "B³±d! Nie mo¿na poprawnie zamkn±æ pliku: "
+
+#: src/buffer.C:1249 src/buffer.C:1564
+msgid "Error: Cannot write file:"
+msgstr "B³±d! Nie mo¿na zapisaæ pliku:"
+
+#: src/buffer.C:1354
+msgid "Error: Cannot open temporary file:"
+msgstr "B³±d! Nie mo¿na otworzyæ pliku tymczasowego:"
+
+#: src/buffer.C:2054 src/buffer.C:2276 src/buffer.C:2922
+msgid "Error! Could not close file properly:"
+msgstr "B³±d! Nie mo¿na poprawnie zamkn±æ pliku:"
+
+#: src/buffer.C:2123 src/buffer.C:2699 src/buffer.C:3447 src/buffer.C:3468 src/paragraph.C:3223
+msgid "LYX_ERROR:"
+msgstr "B£¡D_LYXA:"
+
+#: src/buffer.C:2123 src/buffer.C:2699
+msgid "Cannot write file"
+msgstr "Nie mo¿na zapisaæ pliku"
+
+#: src/buffer.C:2193 src/buffer.C:2761
+msgid "Error : Wrong depth for LatexType Command.\n"
+msgstr ""
+
+#. path to LaTeX file
+#: src/buffer.C:3103
+msgid "Running LaTeX..."
+msgstr "LaTeX uruchomiony..."
+
+#: src/buffer.C:3125
+msgid "LaTeX did not work!"
+msgstr "LaTeX nie dzia³a!"
+
+#: src/buffer.C:3126 src/buffer.C:3195 src/buffer.C:3264
+msgid "Missing log file:"
+msgstr "Brakuje pliku logu:"
+
+#. no errors or any other things to think about so:
+#: src/buffer.C:3128 src/buffer.C:3137 src/buffer.C:3197 src/buffer.C:3206 src/buffer.C:3266 src/buffer.C:3274 src/combox.C:448
+msgid "Done"
+msgstr "Zrobione"
+
+#. path to Literate file
+#: src/buffer.C:3174
+msgid "Running Literate..."
+msgstr "LaTeX uruchomiony..."
+
+#: src/buffer.C:3194
+msgid "Literate command did not work!"
+msgstr "LaTeX nie dzia³a!"
+
+#. path to Literate file
+#: src/buffer.C:3243
+msgid "Building Program..."
+msgstr "Budowanie programu..."
+
+#: src/buffer.C:3263
+msgid "Build did not work!"
+msgstr "Budowanie nie powiod³o siê!"
+
+#. path to LaTeX file
+#: src/buffer.C:3311
+msgid "Running chktex..."
+msgstr "chktex uruchomiony..."
+
+#: src/buffer.C:3327
+msgid "chktex did not work!"
+msgstr "chktex nie dzia³a!"
+
+#: src/buffer.C:3328
+msgid "Could not run with file:"
+msgstr "Nie mo¿na uruchomiæ z plikiem:"
+
+#: src/buffer.C:3448 src/buffer.C:3469 src/paragraph.C:3223
+msgid "Cannot open temporary file:"
+msgstr "Nie mo¿na otworzyæ pliku tymczasowego:"
+
+#: src/buffer.C:3518
+msgid "Error! Can't open temporary file:"
+msgstr "B³±d! Nie mo¿na otworzyæ pliku tymczasowego:"
+
+#: src/buffer.C:3526
+msgid "Error executing *roff command on table"
+msgstr "B³±d uruchomienia *roff na tabeli"
+
+#: src/buffer.C:3718 src/lyx_cb.C:3166 src/text.C:1882
+msgid "Impossible Operation!"
+msgstr "Operacja niemo¿liwa!"
+
+#: src/buffer.C:3719
+msgid "Cannot insert table/list in table."
+msgstr "Nie mo¿na wstawiæ tabeli/listy do tabeli."
+
+#: src/buffer.C:3720 src/lyx_cb.C:3168 src/text.C:1884 src/text.C:3937 src/text.C:3945 src/text.C:3960 src/text.C:3977 src/text2.C:2136 src/text2.C:2146
+msgid "Sorry."
+msgstr "Przykro mi."
+
+#: src/bufferlist.C:157 src/bufferlist.C:318 src/lyxvc.C:170 src/lyxvc.C:204 src/lyxvc.C:230
+msgid "Changes in document:"
+msgstr "Zmiany w dokumencie:"
+
+#: src/bufferlist.C:159 src/bufferlist.C:320
+msgid "Save document?"
+msgstr "Zachowaæ dokument?"
+
+#: src/bufferlist.C:175
+msgid "Some documents were not saved:"
+msgstr "Niektóre dokumenty nie zosta³y zachowane:"
+
+#: src/bufferlist.C:176
+msgid "Exit anyway?"
+msgstr "Wyj¶æ i tak?"
+
+#: src/bufferlist.C:187
+msgid "Saving document"
+msgstr "Zachowywanie dokumentu"
+
+#: src/bufferlist.C:260
+msgid "Document saved as"
+msgstr "Dokument zachowany jako"
+
+#: src/bufferlist.C:271
+msgid "Could not delete auto-save file!"
+msgstr "Nie mo¿na usun±c pliku auto-zapisu!"
+
+#: src/bufferlist.C:281
+msgid "Save failed!"
+msgstr "Zachowanie pliku nie powiod³o siê!"
+
+#: src/bufferlist.C:354
+msgid "No Documents Open!%t"
+msgstr "Brak otwartych dokumentów!%t"
+
+#: src/bufferlist.C:430
+msgid "lyx: Attempting to save document "
+msgstr "lyx: Próbujê zachowaæ dokument "
+
+#: src/bufferlist.C:433
+msgid " as..."
+msgstr " jako..."
+
+#: src/bufferlist.C:457
+msgid "  Save seems successful. Phew."
+msgstr "  Zachowanie chyba powiod³o siê. Uff."
+
+#: src/bufferlist.C:460
+msgid "  Save failed! Trying..."
+msgstr " Zachowanie nie powiod³o siê! Próbujê..."
+
+#: src/bufferlist.C:462
+msgid "  Save failed! Bummer. Document is lost."
+msgstr " Zachowanie pliku nie powiod³o siê! Dokument utracony."
+
+#: src/bufferlist.C:489
+msgid "An emergency save of this document exists!"
+msgstr "Awaryjna kopia tego dokumentu ju¿ istnieje!"
+
+#: src/bufferlist.C:491
+msgid "Try to load that instead?"
+msgstr "Spróbowaæ za³adowaæ ten zamiast?"
+
+#: src/bufferlist.C:513
+msgid "Autosave file is newer."
+msgstr "Plik zachowany jest nowszy."
+
+#: src/bufferlist.C:515
+msgid "Load that one instead?"
+msgstr "Za³adowac ten zamiast?"
+
+#: src/bufferlist.C:582
+msgid "Unable to open template"
+msgstr "Nie mo¿na otworzyæ pliku szablonu"
+
+#: src/bufferlist.C:613
+msgid "Could not convert file"
+msgstr "Nie mo¿na wykonaæ konwersji pliku"
+
+#: src/bufferlist.C:626 src/lyxfunc.C:2476 src/lyxfunc.C:2615 src/lyxfunc.C:2694
+msgid "Document is already open:"
+msgstr "Dokument jest ju¿ otwarty:"
+
+#: src/bufferlist.C:628
+msgid "Do you want to reload that document?"
+msgstr "Chcesz prze³adowac dokument?"
+
+#: src/bufferlist.C:644
+msgid "File `"
+msgstr "Plik `"
+
+#: src/bufferlist.C:645
+msgid "' is read-only."
+msgstr "' jest tylko do odczytu."
+
+#: src/bufferlist.C:663
+msgid "Create new document with this name?"
+msgstr "Utworzyæ nowy dokument z t± nazw±?"
+
+#: src/bullet_forms.C:46
+msgid "Size|#z"
+msgstr "Rozmiar|#r"
+
+#: src/bullet_forms.C:51 src/credits_form.C:19 src/credits_form.C:59 src/form1.C:43 src/form1.C:117 src/form1.C:267 src/form1.C:290 src/insetbib.C:107 src/insetbib.C:135 src/insetinclude.C:46 src/insetindex.C:65 src/latexoptions.C:21 src/layout_forms.C:53 src/layout_forms.C:188 src/layout_forms.C:323 src/layout_forms.C:387 src/layout_forms.C:607 src/lyx.C:47 src/lyx.C:85 src/math_forms.C:111 src/print_form.C:41 src/print_form.C:114 src/sp_form.C:38
+msgid "OK"
+msgstr "OK"
+
+#: src/bullet_forms.C:54 src/form1.C:114 src/form1.C:293 src/latexoptions.C:24 src/layout_forms.C:50 src/layout_forms.C:155 src/layout_forms.C:192 src/layout_forms.C:298 src/layout_forms.C:326 src/layout_forms.C:384 src/layout_forms.C:611 src/lyx.C:50 src/lyx.C:88 src/lyx_sendfax.C:39 src/math_forms.C:108 src/math_forms.C:158 src/math_forms.C:203 src/print_form.C:44 src/print_form.C:117 src/sp_form.C:62
+msgid "Apply|#A"
+msgstr "Zastosuj|#a"
+
+#: src/bullet_forms.C:57 src/form1.C:120 src/form1.C:270 src/form1.C:296 src/insetbib.C:110 src/insetbib.C:111 src/insetbib.C:138 src/insetbib.C:139 src/insetinclude.C:49 src/insetinclude.C:50 src/insetindex.C:69 src/insetindex.C:70 src/latexoptions.C:27 src/layout_forms.C:47 src/layout_forms.C:196 src/layout_forms.C:302 src/layout_forms.C:329 src/layout_forms.C:381 src/layout_forms.C:615 src/lyx.C:53 src/lyx.C:91 src/lyx_gui_misc.C:394 src/lyx_gui_misc.C:399 src/lyx_gui_misc.C:405 src/lyx_gui_misc.C:414 src/lyx_sendfax.C:35 src/math_forms.C:102 src/math_forms.C:132 src/math_forms.C:200 src/print_form.C:47 src/print_form.C:120 src/sp_form.C:42
+msgid "Cancel|^["
+msgstr "Anuluj|^["
+
+#: src/bullet_forms.C:60
+msgid "LaTeX|#L"
+msgstr "LaTeX|#L"
+
+#: src/bullet_forms.C:68
+msgid "1|#1"
+msgstr "1|#1"
+
+#: src/bullet_forms.C:72
+msgid "2|#2"
+msgstr "2|#2"
+
+#: src/bullet_forms.C:75
+msgid "3|#3"
+msgstr "3|#3"
+
+#: src/bullet_forms.C:78
+msgid "4|#4"
+msgstr "4|#4"
+
+#: src/bullet_forms.C:83
+msgid "Bullet Depth"
+msgstr "G³êboko¶æ"
+
+#: src/bullet_forms.C:88
+msgid "Standard|#S"
+msgstr "Standard|#S"
+
+#: src/bullet_forms.C:93
+msgid "Maths|#M"
+msgstr "Maths|#M"
+
+#: src/bullet_forms.C:97
+msgid "Ding 2|#i"
+msgstr "Ding 2|#i"
+
+#: src/bullet_forms.C:101
+msgid "Ding 3|#n"
+msgstr "Ding 3|#n"
+
+#: src/bullet_forms.C:105
+msgid "Ding 4|#g"
+msgstr "Ding 4|#g"
+
+#: src/bullet_forms.C:109
+msgid "Ding 1|#D"
+msgstr "Ding 1|#D"
+
+#: src/bullet_forms_cb.C:29
+msgid "Sorry, your libXpm is too old."
+msgstr "Niestety Twoje libXpm jest zbyt stare."
+
+#: src/bullet_forms_cb.C:30
+msgid "This feature requires xpm-4.7 (a.k.a 3.4g) or newer."
+msgstr "Wymagany xpm-4.7 (znane jako 3.4g) albo nowszy."
+
+#: src/bullet_forms_cb.C:31
+msgid "Try running LyX in mono mode (lyx  -Mono)."
+msgstr "Spróbuj uruchomic LyX'a w trybie mono (lyx -Mono)."
+
+#: src/bullet_forms_cb.C:36
+msgid " default | tiny | script | footnote | small | normal | large | Large | LARGE | huge | Huge"
+msgstr " domy¶lny | mikroskopijny | bardzo ma³y | mniejszy | ma³y | normalny | du¿y | wiêkszy | bardzo du¿y | ogromny | najwiêkszy"
+
+#: src/bullet_forms_cb.C:51
+msgid "Itemize Bullet Selection"
+msgstr "Wybór znaków wyró¿nieñ wyszczególnieñ"
+
+#: src/credits.C:62
+msgid "ERROR: LyX wasn't able to read CREDITS file"
+msgstr "B£¡D: Plik CREDITS nie jest osi±galny"
+
+#: src/credits.C:66
+msgid "Please install correctly to estimate the great"
+msgstr "Zainstaluj LyXa poprawnie, proszê, by zobaczyæ"
+
+#: src/credits.C:69
+msgid "amount of work other people have done for the LyX project."
+msgstr "jak wiele pracy w³o¿y³o wielu ludzi w projekt LyXa."
+
+#: src/credits.C:79
+msgid "Credits"
+msgstr "Autorzy"
+
+#: src/credits.C:106
+msgid "Copyright and Warranty"
+msgstr "Prawa autorskie i zastrze¿enia"
+
+#: src/credits_form.C:24
+msgid "Matthias"
+msgstr "Matthias"
+
+#: src/credits_form.C:29
+msgid "All these people have contributed to the LyX project. Thanks,"
+msgstr "Wszystkie poni¿sze osoby wspó³pracowa³y w tworzeniu Lyx'a. Dziekujemy"
+
+#: src/credits_form.C:50
+msgid ""
+"LyX is Copyright (C) 1995 by Matthias Ettrich,\n"
+"1995-1999 LyX Team"
+msgstr ""
+"LyX is Copyright (C) 1995 by Matthias Ettrich,\n"
+"1995-1999 LyX Team"
+
+#: src/credits_form.C:55
+msgid ""
+"This program is free software; you can redistribute it\n"
+"and/or modify it under the terms of the GNU General\n"
+"Public License as published by the Free Software\n"
+"Foundation; either version 2 of the License, or\n"
+"(at your option) any later version."
+msgstr ""
+"Tem program jest darmowy. Mo¿esz redystrybuowaæ go\n"
+"i/lub zmieniaæ z zachowaniem warunków zawartych w Ogólnej Publicznej\n"
+"Licencji GNU, publikowanej przez Free Software Foundation,\n"
+"lub jej wersji 2, czy te¿ ka¿dej nastêpnej wed³ug w³asnego\n"
+"uznania."
+
+#: src/credits_form.C:64
+msgid ""
+"LyX is distributed in the hope that it will\n"
+"be useful, but WITHOUT ANY WARRANTY;\n"
+"without even the implied warranty of MERCHANTABILITY\n"
+"or FITNESS FOR A PARTICULAR PURPOSE.\n"
+"See the GNU General Public License for more details.\n"
+"You should have received a copy of\n"
+"the GNU General Public License\n"
+"along with this program; if not, write to\n"
+"the Free Software Foundation, Inc.,\n"
+"675 Mass Ave, Cambridge, MA 02139, USA."
+msgstr ""
+"LyX jest dystrybuowany z nadziej±, ¿e bedzie u¿yteczny,\n"
+"ale bez ¿adnych gwarancji. Nawet gwarancji przydatno¶ci\n"
+"do jakiegokolwiek zastosowania lub sprzeda¿y.\n"
+"\n"
+"Zajrzyj do Ogólnej Publicznej Licencji GNU aby uzyskaæ\n"
+"szczegó³y. Powiniene¶ otrzymaæ kopiê tej licencji wraz\n"
+"z programem, je¶li nie, napisz do Free Software\n"
+"Foundation, Inc.,\n"
+"675 Mass Ave, Cambridge, MA 02139, USA."
+
+#: src/figinset.C:1083
+msgid "[render error]"
+msgstr "[b³±d wy¶wietlania]"
+
+#: src/figinset.C:1084
+msgid "[rendering ... ]"
+msgstr "[wy¶wietlanie...]"
+
+#: src/figinset.C:1086
+msgid "[no file]"
+msgstr "[brak pliku]"
+
+#: src/figinset.C:1087
+msgid "[not displayed]"
+msgstr "[nie wy¶wietlany]"
+
+#: src/figinset.C:1088
+msgid "[no ghostscript]"
+msgstr "[brak Ghostscripta]"
+
+#: src/figinset.C:1090
+msgid "[unknown error]"
+msgstr "[nieznany b³±d]"
+
+#: src/figinset.C:1287
+msgid "Figure"
+msgstr "Rysunek"
+
+#: src/figinset.C:1348 src/figinset.C:1486
+msgid "empty figure path"
+msgstr "brak ¶cie¿ki do rysunku"
+
+#: src/figinset.C:2128
+msgid "Clipart"
+msgstr "Rysunek"
+
+#: src/figinset.C:2129 src/lyxfunc.C:2508 src/lyxfunc.C:2571 src/lyxfunc.C:2794
+msgid "Document"
+msgstr "Dokument"
+
+#: src/figinset.C:2135 src/figinset.C:2138
+msgid "EPS Figure"
+msgstr "Rysunek EPS"
+
+#: src/figinset.C:2152
+msgid "Filename can't contain any of these characters:"
+msgstr "Nazwa pliku nie mo¿e zawieraæ ¿adnego z wymienionych znaków:"
+
+#: src/figinset.C:2153
+#, no-c-format
+msgid "space, '#', '~', '$' or '%'."
+msgstr "spacja, '#', '~', '$' lub '%'."
+
+#: src/filedlg.C:225
+msgid "Warning! Couldn't open directory."
+msgstr "Ostrze¿enie! Nie mo¿na otworzyc katalogu."
+
+#: src/filetools.C:167 src/filetools.C:176 src/filetools.C:183
+msgid "LyX Internal Error!"
+msgstr "B³±d wewnêtrzny LyXa!"
+
+#: src/filetools.C:168
+msgid "Could not test if directory is writeable"
+msgstr "Nie mo¿na sprawdziæ czy masz prawo zapisu do tego katalogu"
+
+#: src/filetools.C:177
+msgid "Cannot open directory test file"
+msgstr "Nie mo¿na otworzyc katalogu pliku testowego"
+
+#: src/filetools.C:184
+msgid "Created test file but cannot remove it?"
+msgstr "Utworzono plik testowy ale nie mo¿na go usun±æ?"
+
+#: src/filetools.C:305
+msgid "Error! Cannot open directory:"
+msgstr "B³±d! Nie mo¿na otworzyæ katalogu:"
+
+#: src/filetools.C:317
+msgid "Error! Could not remove file:"
+msgstr "B³±d! Nie mo¿na usuni±æ pliku:"
+
+#: src/filetools.C:331
+msgid "Error! Couldn't create temporary directory:"
+msgstr "B³±d! Nie mo¿na utworzyæ katalogu tymczasowego:"
+
+#: src/filetools.C:350
+msgid "Error! Couldn't delete temporary directory:"
+msgstr "B³±d! Nie mo¿na usun±æ katalogu tymczasowego:"
+
+#: src/filetools.C:414
+msgid "Internal error!"
+msgstr "B³ad wewnêtrzny!"
+
+#: src/filetools.C:415
+msgid "Call to createDirectory with invalid name"
+msgstr "Wywo³anie createDirectory z nieprawid³ow± nazw±"
+
+#: src/filetools.C:420
+msgid "Error! Couldn't create directory:"
+msgstr "B³±d! Nie mo¿na utworzyæ katalogu:"
+
+#: src/form1.C:21
+msgid "Set Charset|#C"
+msgstr "Ustaw kodowanie|#U"
+
+#: src/form1.C:23
+msgid "Charset not found!"
+msgstr "Brak tabeli kodowania!"
+
+#: src/form1.C:28
+msgid ""
+"Error:\n"
+"\n"
+"Keymap\n"
+"not found"
+msgstr ""
+"B³±d:\n"
+"\n"
+"Mapa klawiatury\n"
+"nie znaleziona"
+
+#: src/form1.C:33
+msgid "Character set:|#H"
+msgstr "Kodowanie:|#K"
+
+#: src/form1.C:45
+msgid "Other...|#O"
+msgstr "Inny...|#I"
+
+#: src/form1.C:48
+msgid "Other...|#T"
+msgstr "Inny...|#y"
+
+#: src/form1.C:51
+msgid "Language"
+msgstr "Jêzyk"
+
+#: src/form1.C:56
+msgid "Mapping"
+msgstr "Mapa"
+
+#: src/form1.C:62
+msgid "Primary key map|#r"
+msgstr "Jêzyk g³ówny|#g"
+
+#: src/form1.C:64
+msgid "No key mapping|#N"
+msgstr "Brak mapy kodowania|#B"
+
+#: src/form1.C:66
+msgid "Secondary key map|#e"
+msgstr "Jêzyk drugorzêdny|#d"
+
+#: src/form1.C:70
+msgid "Secondary"
+msgstr "Drugorzêdny"
+
+#: src/form1.C:73
+msgid "Primary"
+msgstr "G³ówny"
+
+#: src/form1.C:99
+msgid "EPS file|#E"
+msgstr "Plik EPS|#E"
+
+#: src/form1.C:102
+msgid "Full Screen Preview|#v"
+msgstr "Podg³±d|#v"
+
+#: src/form1.C:105
+msgid "Browse...|#B"
+msgstr "Przegl±daj...|#P"
+
+#: src/form1.C:123
+msgid "Display Frame|#F"
+msgstr "Poka¿ ramkê|#r"
+
+#: src/form1.C:126
+msgid "Do Translations|#r"
+msgstr ""
+
+#: src/form1.C:129 src/menus.C:127 src/menus.C:133 src/menus.C:239 src/menus.C:240 src/menus.C:241 src/menus.C:314 src/menus.C:315 src/menus.C:316 src/sp_form.C:58
+msgid "Options"
+msgstr "Opcje"
+
+#: src/form1.C:133
+msgid "Angle:|#L"
+msgstr "K±t:|#K"
+
+#: src/form1.C:139 src/form1.C:141
+#, no-c-format
+msgid "% of Page|#g"
+msgstr "% strony|#s"
+
+#: src/form1.C:144
+msgid "Default|#t"
+msgstr "Domy¶lny|#D"
+
+#: src/form1.C:147
+msgid "cm|#m"
+msgstr "cm|#m"
+
+#: src/form1.C:150
+msgid "inches|#h"
+msgstr "cale|#l"
+
+#: src/form1.C:155
+msgid "Display"
+msgstr "Wy¶wietl"
+
+#: src/form1.C:159
+msgid "Height"
+msgstr "Wysoko¶æ"
+
+#: src/form1.C:163 src/layout_forms.C:539 src/layout_forms.C:622
+msgid "Width"
+msgstr "Szeroko¶æ"
+
+#: src/form1.C:167
+msgid "Rotation"
+msgstr "Obrót"
+
+#: src/form1.C:173
+msgid "Display in Color|#D"
+msgstr "W kolorze|#W"
+
+#: src/form1.C:176
+msgid "Do not display this figure|#y"
+msgstr "Nie wy¶wietlaj|#w"
+
+#: src/form1.C:179
+msgid "Display as Grayscale|#i"
+msgstr "W odcieniach szaro¶ci|#s"
+
+#: src/form1.C:182
+msgid "Display as Monochrome|#s"
+msgstr "Monochromatycznie|#M"
+
+#: src/form1.C:189
+msgid "Default|#U"
+msgstr "Domy¶lny|#D"
+
+#: src/form1.C:192
+msgid "cm|#c"
+msgstr "cm|#c"
+
+#: src/form1.C:195
+msgid "inches|#n"
+msgstr "cale|#l"
+
+#: src/form1.C:199 src/form1.C:201
+#, no-c-format
+msgid "% of Page|#P"
+msgstr "% strony|#s"
+
+#: src/form1.C:205 src/form1.C:207
+#, no-c-format
+msgid "% of Column|#o"
+msgstr "% kolumny|#k"
+
+#: src/form1.C:213
+msgid "Caption|#k"
+msgstr "Podpis|#P"
+
+#: src/form1.C:216
+msgid "Subfigure|#q"
+msgstr "Podrysunek|#P"
+
+#: src/form1.C:239
+msgid "Directory:|#D"
+msgstr "Katalog:|#K"
+
+#: src/form1.C:243
+msgid "Pattern:|#P"
+msgstr "Maska:|#M"
+
+#: src/form1.C:251
+msgid "Filename:|#F"
+msgstr "Nazwa pliku:|#N"
+
+#: src/form1.C:255
+msgid "Rescan|#R#r"
+msgstr "Od¶wie¿|#R#r"
+
+#: src/form1.C:258
+msgid "Home|#H#h"
+msgstr "Domowy|#D#d"
+
+#: src/form1.C:261
+msgid "User1|#1"
+msgstr "U¿ytkownik1|#1"
+
+#: src/form1.C:264
+msgid "User2|#2"
+msgstr "U¿ytkownik2|#2"
+
+#: src/form1.C:299 src/layout_forms.C:83
+msgid "Columns"
+msgstr "Kolumn"
+
+#: src/form1.C:303 src/math_forms.C:135
+msgid "Rows"
+msgstr "Wierszy"
+
+#: src/form1.C:323
+msgid "Find|#n"
+msgstr "Szukaj|#S"
+
+#: src/form1.C:327
+msgid "Replace with|#W"
+msgstr "Zamieñ z|#Z"
+
+#: src/form1.C:331
+msgid "@>|#F"
+msgstr "@>|#F"
+
+#: src/form1.C:335
+msgid "@<|#B"
+msgstr "@<|#B"
+
+#: src/form1.C:339
+msgid "Replace|#R#r"
+msgstr "Zamieñ|#Z#z"
+
+#: src/form1.C:343
+msgid "Close|^["
+msgstr "Zamknij|^["
+
+#: src/form1.C:347
+msgid "Case sensitive|#s#S"
+msgstr "Wielko¶æ liter|#w#W"
+
+#: src/form1.C:349
+msgid "Match word|#M#m"
+msgstr "Ca³e s³owo|#S#s"
+
+#: src/form1.C:351
+msgid "Replace All|#A#a"
+msgstr "Zamieñ wszystkie|#A#a"
+
+#: src/formula.C:858 src/lyxfunc.C:2055
+msgid "Math greek mode on"
+msgstr "`"
+
+#: src/formula.C:869 src/lyxfunc.C:2066
+msgid "Math greek keyboard on"
+msgstr "Grecka klawiatura w³±czona"
+
+#: src/formula.C:871 src/lyxfunc.C:2068
+msgid "Math greek keyboard off"
+msgstr "Grecka klawaitura matematyczna wy³±czona"
+
+#: src/formula.C:886 src/formula.C:1174
+msgid "TeX mode"
+msgstr "Tryb TeXa"
+
+#: src/formula.C:901
+msgid "No number"
+msgstr "Bez numeru"
+
+#: src/formula.C:904
+msgid "Number"
+msgstr "Numer"
+
+#: src/formula.C:1034 src/lyx_cb.C:1179
+msgid "Enter new label to insert:"
+msgstr "Podaj now± etykietê do wstawienia:"
+
+#: src/formula.C:1063
+msgid "math text mode"
+msgstr "Tryb tekstowy matematyczny"
+
+#: src/formula.C:1072
+msgid "Invalid action in math mode!"
+msgstr "Niew³a¶ciwa akcja w trybie matematycznym"
+
+#. / what appears in the minibuffer when opening
+#: src/formula.h:74 src/lyxfunc.C:2119
+msgid "Math editor mode"
+msgstr "Tryb edytora matematycznego"
+
+#: src/formulamacro.C:146 src/formulamacro.C:170
+msgid "Macro: "
+msgstr "Makro: "
+
+#: src/insetbib.C:100
+msgid "Key:"
+msgstr "Klucz:"
+
+#: src/insetbib.C:114 src/insetbib.C:115
+msgid "Remark:|#R"
+msgstr "Notka:|#N"
+
+#. InsetBibtex uses the same form, with different labels
+#: src/insetbib.C:132 src/insetbib.C:133 src/insetbib.C:283 src/insetbib.C:284
+msgid "Key:|#K"
+msgstr "Klucz:|#K"
+
+#: src/insetbib.C:142 src/insetbib.C:143 src/insetbib.C:285 src/insetbib.C:286
+msgid "Label:|#L"
+msgstr "Etykieta:|#E"
+
+#: src/insetbib.C:189
+msgid "Citation"
+msgstr "Cytowanie"
+
+#: src/insetbib.C:294
+msgid "Bibliography item"
+msgstr "Pozycja bibliografii"
+
+#: src/insetbib.C:314
+msgid "BibTeX Generated References"
+msgstr "Odno¶niki wygenerowane przez BibTeXa"
+
+#: src/insetbib.C:445
+msgid "Database:"
+msgstr "Baza danych:"
+
+#: src/insetbib.C:446
+msgid "Style:  "
+msgstr "Styl:  "
+
+#: src/insetbib.C:453
+msgid "BibTeX"
+msgstr "BibTeX"
+
+#: src/inseterror.C:74 src/inseterror.C:99 src/lyx_cb.C:3704
+msgid "Error"
+msgstr "B³±d"
+
+#: src/inseterror.C:180
+msgid "LaTeX Error"
+msgstr "B³±d LaTeXa"
+
+#. / what appears in the minibuffer when opening
+#: src/inseterror.h:59
+msgid "Opened error"
+msgstr "Otwarty b³±d"
+
+#: src/insetinclude.C:39 src/insetinclude.C:40
+msgid "Browse|#B"
+msgstr "Przegl±daj|#P"
+
+#: src/insetinclude.C:43 src/insetinclude.C:44
+msgid "Don't typeset|#D"
+msgstr "Nie formatuj|#N"
+
+#: src/insetinclude.C:53 src/insetinclude.C:54
+msgid "Load|#L"
+msgstr "Za³aduj|#Z"
+
+#: src/insetinclude.C:57 src/insetinclude.C:58
+msgid "File name:|#F"
+msgstr "Nazwa pliku:|#P"
+
+#: src/insetinclude.C:61 src/insetinclude.C:62
+msgid "Visible space|#s"
+msgstr "Zachowaj spacje|#s"
+
+#: src/insetinclude.C:66 src/insetinclude.C:67
+msgid "Verbatim|#V"
+msgstr "Maszynopis|#V"
+
+#: src/insetinclude.C:70 src/insetinclude.C:71
+msgid "Use input|#i"
+msgstr "Wstaw|#i"
+
+#: src/insetinclude.C:74 src/insetinclude.C:75
+msgid "Use include|#U"
+msgstr "Do³±cz|#U"
+
+#. launches dialog
+#: src/insetinclude.C:110 src/lyx_cb.C:368 src/lyxfunc.C:2456 src/lyxfunc.C:2546 src/lyxfunc.C:2595 src/lyxfunc.C:2668 src/lyxfunc.C:2769 src/menus.C:128 src/menus.C:253 src/menus.C:254 src/menus.C:255
+msgid "Documents"
+msgstr "Dokumenty"
+
+#. Use by default the master's path
+#: src/insetinclude.C:113
+msgid "Select Child Document"
+msgstr "Wybierz dokument podrzêdny"
+
+#: src/insetinclude.C:255 src/insetinclude.C:290
+msgid "Include"
+msgstr "Do³±cz"
+
+#: src/insetinclude.C:286
+msgid "Input"
+msgstr "Wstaw"
+
+#: src/insetinclude.C:288
+msgid "Verbatim Input"
+msgstr "Wstaw maszynopis"
+
+#: src/insetindex.C:62 src/insetindex.C:63
+msgid "Keyword:|#K"
+msgstr "S³. kluczowe:|#k"
+
+#: src/insetindex.C:113
+msgid "Index"
+msgstr "Indeks"
+
+#: src/insetindex.C:120
+msgid "Idx"
+msgstr "Indeks"
+
+#: src/insetindex.C:148
+msgid "PrintIndex"
+msgstr "Indeks"
+
+#: src/insetinfo.C:73 src/insetinfo.C:92 src/insetinfo.C:203
+msgid "Note"
+msgstr "Notka"
+
+#: src/insetinfo.C:190 src/insetinfo.C:194 src/lyx.C:142
+msgid "Close|#C^["
+msgstr "Zamknij|#C^["
+
+#. /
+#: src/insetloa.h:37
+msgid "List of Algorithms"
+msgstr "Lista algorytmów"
+
+#. /
+#: src/insetlof.h:35
+msgid "List of Figures"
+msgstr "Lista rysunków"
+
+#. /
+#: src/insetlot.h:35
+msgid "List of Tables"
+msgstr "Lista tabel"
+
+#. /
+#: src/insetparent.h:42
+msgid "Parent:"
+msgstr "Nadrzêdny:"
+
+#: src/insetref.C:67
+msgid "Reference Type"
+msgstr "Typ odwa³ania"
+
+#: src/insetref.C:70
+msgid "Goto Label"
+msgstr "Id¼ do etykiety"
+
+#: src/insetref.C:73
+msgid "Change Label"
+msgstr "Zmieñ etykietê"
+
+#: src/insetref.C:78
+msgid "Page Number"
+msgstr "Numer strony"
+
+#: src/insetref.C:80
+msgid "Reference"
+msgstr "Odwo³anie"
+
+#: src/insetref.C:191
+msgid "Page: "
+msgstr "Strona: "
+
+#: src/insetref.C:193
+msgid "Ref: "
+msgstr "Odw: "
+
+#. /
+#: src/insettoc.h:35 src/lyxfunc.C:781
+msgid "Table of Contents"
+msgstr "Spis tre¶ci"
+
+#: src/inseturl.C:112 src/inseturl.C:113
+msgid "Url|#U"
+msgstr "Url|#U"
+
+#: src/inseturl.C:114 src/inseturl.C:115 src/lyx.C:158
+msgid "Name|#N"
+msgstr "Nazwa|#N"
+
+#: src/inseturl.C:116 src/inseturl.C:117
+msgid "Close|#C^[^M"
+msgstr "Zamknij|#Z^[^M"
+
+#: src/inseturl.C:120 src/inseturl.C:121
+msgid "HTML type|#H"
+msgstr "typu HTML|#H"
+
+#: src/inseturl.C:141
+msgid "Insert Url"
+msgstr "Wstaw URL"
+
+#: src/inseturl.C:150
+msgid "HtmlUrl: "
+msgstr "HtmlUrl: "
+
+#: src/inseturl.C:152
+msgid "Url: "
+msgstr "Url: "
+
+#: src/intl.C:295 src/intl.C:296
+msgid "other..."
+msgstr "inny..."
+
+#: src/intl.C:365
+msgid "Key Mappings"
+msgstr "Mapowanie Klawiatury"
+
+#: src/kbmap.C:307
+msgid "   options: "
+msgstr "   opcje: "
+
+#: src/latexoptions.C:19
+msgid "Allow accents on ALL characters|#w"
+msgstr "Wy¶wiatlaj WSZYSTKIE znaki akcentowane|#w"
+
+#: src/latexoptions.C:49 src/lyxvc.C:332 src/lyxvc.C:333
+msgid "Update|#Uu"
+msgstr "Aktualizuj|#Aa"
+
+#: src/layout.C:1293
+msgid "LyX wasn't able to find its layout descriptions!"
+msgstr "Lyx nie mo¿e znale¼æ opisu swych ustawieñ!"
+
+#: src/layout.C:1294
+msgid "Check that the file \"textclass.lst\""
+msgstr "Sprawd¼ czy plik \"textclass.lst\" jest"
+
+#: src/layout.C:1295
+msgid "is installed correctly. Sorry, has to exit :-("
+msgstr "zainstalowany prawid³owo. Niestety muszê wyj¶æ :-("
+
+#: src/layout.C:1349
+msgid "LyX wasn't able to find any layout description!"
+msgstr "Lyx nie mo¿e znale¼æ ¿adnego opisu swych ustawieñ!"
+
+#: src/layout.C:1350
+msgid "Check the contents of  the file \"textclass.lst\""
+msgstr "Sprawd¼ zawarto¶æ pliku \"textclass.lst\""
+
+#: src/layout.C:1351
+msgid "Sorry, has to exit :-("
+msgstr "Niestety muszê zakoñczyæ pracê :-("
+
+#: src/layout_forms.C:22
+msgid "Separation"
+msgstr "Separacja"
+
+#: src/layout_forms.C:28
+msgid "Indent|#I"
+msgstr "Wciêcie|#c"
+
+#: src/layout_forms.C:30
+msgid "Skip|#K"
+msgstr "Odstêp|#p"
+
+#: src/layout_forms.C:34
+msgid "Class:|#C"
+msgstr "Klasa:|#K"
+
+#: src/layout_forms.C:38
+msgid "Pagestyle:|#P"
+msgstr "Styl strony:|#S"
+
+#: src/layout_forms.C:41
+msgid "Fonts:|#F"
+msgstr "Font:|#F"
+
+#: src/layout_forms.C:44
+msgid "Font Size:|#O"
+msgstr "Rozmiar fontu:|#R"
+
+#: src/layout_forms.C:56
+msgid "Float Placement:|#L"
+msgstr "Pozycja wstawki:|#L"
+
+#: src/layout_forms.C:58
+msgid "PS Driver:|#S"
+msgstr "Sterownik PS:|#n"
+
+#: src/layout_forms.C:61
+msgid "Encoding:|#D"
+msgstr "Kodowanie:|#D"
+
+#: src/layout_forms.C:73
+msgid "One|#n"
+msgstr "Jednostronnie|#J"
+
+#: src/layout_forms.C:75
+msgid "Two|#T"
+msgstr "Dwustronnie|#w"
+
+#: src/layout_forms.C:79
+msgid "Sides"
+msgstr "Strony"
+
+#: src/layout_forms.C:89
+msgid "One|#e"
+msgstr "Jedna|#e"
+
+#: src/layout_forms.C:91
+msgid "Two|#w"
+msgstr "Dwie|#i"
+
+#: src/layout_forms.C:95
+msgid "Extra Options:|#X"
+msgstr "Opcje dodatkowe:|#t"
+
+#: src/layout_forms.C:97
+msgid "Language:"
+msgstr "Jêzyk:"
+
+#: src/layout_forms.C:103
+msgid "Default Skip:|#u"
+msgstr "Domy¶lny odstêp:|#o"
+
+#: src/layout_forms.C:107
+msgid "Section number depth"
+msgstr "G³êboko¶æ numer. rozdzia³ów"
+
+#: src/layout_forms.C:110
+msgid "Table of contents depth"
+msgstr "G³êboko¶æ spisu tre¶ci"
+
+#: src/layout_forms.C:113
+msgid "Spacing|#g"
+msgstr "Interlinia:|#y"
+
+#: src/layout_forms.C:117
+msgid "Bullet Shapes|#B"
+msgstr "Kszta³ty wyró¿nieñ|#z"
+
+#: src/layout_forms.C:120
+msgid "Use AMS Math|#M"
+msgstr "U¿yj AMS Math|#M"
+
+#: src/layout_forms.C:140
+msgid "Family:|#F"
+msgstr "Rodzina:|#R"
+
+#: src/layout_forms.C:143
+msgid "Series:|#S"
+msgstr "Seria:|#S"
+
+#: src/layout_forms.C:146
+msgid "Shape:|#H"
+msgstr "Kszta³t:|#K"
+
+#: src/layout_forms.C:149
+msgid "Size:|#Z"
+msgstr "Rozmiar:|#z"
+
+#: src/layout_forms.C:152
+msgid "Misc:|#M"
+msgstr "Inne:|#I"
+
+#: src/layout_forms.C:161
+msgid "Color:|#C"
+msgstr "Kolor:|#L"
+
+#: src/layout_forms.C:164
+msgid "Toggle on all these|#T"
+msgstr "Zastosuj dla wszystkich|#t"
+
+#: src/layout_forms.C:166
+msgid "These are never toggled"
+msgstr "Nieprze³±czalne"
+
+#: src/layout_forms.C:170
+msgid "These are always toggled"
+msgstr "Prze³±czalne"
+
+#: src/layout_forms.C:211
+msgid "Label Width:|#d"
+msgstr "Szer. etykiety:|#d"
+
+#: src/layout_forms.C:215
+msgid "Indent"
+msgstr "Wciêcie"
+
+#: src/layout_forms.C:219
+msgid "Above|#b"
+msgstr "Powy¿ej|#o"
+
+#: src/layout_forms.C:221
+msgid "Below|#E"
+msgstr "Poni¿ej|#n"
+
+#: src/layout_forms.C:223
+msgid "Above|#o"
+msgstr "Powy¿ej|#y"
+
+#: src/layout_forms.C:225
+msgid "Below|#l"
+msgstr "Poni¿ej|#i"
+
+#: src/layout_forms.C:227
+msgid "No Indent|#I"
+msgstr "Bez wciêcia|#B"
+
+#: src/layout_forms.C:231 src/layout_forms.C:494 src/math_forms.C:94
+msgid "Right|#R"
+msgstr "W prawo|#p"
+
+#: src/layout_forms.C:233
+msgid "Left|#f"
+msgstr "W lewo|#l"
+
+#: src/layout_forms.C:235
+msgid "Block|#c"
+msgstr "Wyrównane|#W"
+
+#: src/layout_forms.C:237
+msgid "Center|#n"
+msgstr "Centrowane|#C"
+
+#: src/layout_forms.C:247
+msgid "Above:|#v"
+msgstr "Powy¿ej:|#j"
+
+#: src/layout_forms.C:251
+msgid "Below:|#w"
+msgstr "Poni¿ej:|#e"
+
+#: src/layout_forms.C:255
+msgid "Pagebreaks"
+msgstr "Koniec strony"
+
+#: src/layout_forms.C:259
+msgid "Lines"
+msgstr "Linie"
+
+#: src/layout_forms.C:263 src/layout_forms.C:500 src/layout_forms.C:626
+msgid "Alignment"
+msgstr "Justowanie"
+
+#: src/layout_forms.C:267
+msgid "Vertical Spaces"
+msgstr "Odstêpy w pionie"
+
+#: src/layout_forms.C:271
+msgid "ExtraOpt|#X"
+msgstr "Zaawans|#Z"
+
+#: src/layout_forms.C:275
+msgid "Keep|#K"
+msgstr "Utrzymaj|#U"
+
+#: src/layout_forms.C:277
+msgid "Keep|#p"
+msgstr "Utrzymaj|#t"
+
+#: src/layout_forms.C:294 src/lyx_gui_misc.C:415 src/lyx_sendfax.C:31
+msgid "OK|#O"
+msgstr "OK|#O"
+
+#: src/layout_forms.C:332
+msgid "Type:|#T"
+msgstr "Typ:|#T"
+
+#: src/layout_forms.C:337
+msgid "Single|#S"
+msgstr "Pojed.|#j"
+
+#: src/layout_forms.C:339
+msgid "Double|#D"
+msgstr "Podwójny|#d"
+
+#: src/layout_forms.C:343
+msgid "Text"
+msgstr "Tekst"
+
+#: src/layout_forms.C:363
+msgid "Special:|#S"
+msgstr "Inny:|#I"
+
+#: src/layout_forms.C:373
+msgid "Margins"
+msgstr "Marginesy"
+
+#: src/layout_forms.C:377
+msgid "Foot/Head Margins"
+msgstr "Stopka/nag³ówek"
+
+#: src/layout_forms.C:397
+msgid "Orientation"
+msgstr "Orientacja"
+
+#: src/layout_forms.C:403
+msgid "Portrait|#o"
+msgstr "W pionie|#p"
+
+#: src/layout_forms.C:405
+msgid "Landscape|#L"
+msgstr "W poziomie|#z"
+
+#: src/layout_forms.C:409
+msgid "Papersize:|#P"
+msgstr "Rozmiar:|#R"
+
+#: src/layout_forms.C:413
+msgid "Custom Papersize"
+msgstr "W³asny rozmiar papieru"
+
+#: src/layout_forms.C:417
+msgid "Use Geometry Package|#U"
+msgstr "U¿yj pakiet Geometry|#U"
+
+#: src/layout_forms.C:419
+msgid "Width:|#W"
+msgstr "Szeroko¶æ|#S"
+
+#: src/layout_forms.C:422
+msgid "Height:|#H"
+msgstr "Wysoko¶æ|#W"
+
+#: src/layout_forms.C:425
+msgid "Top:|#T"
+msgstr "Górny:|#G"
+
+#: src/layout_forms.C:428
+msgid "Bottom:|#B"
+msgstr "Dolny:|#D"
+
+#: src/layout_forms.C:431
+msgid "Left:|#e"
+msgstr "Lewy:|#L"
+
+#: src/layout_forms.C:434
+msgid "Right:|#R"
+msgstr "Prawy:|#P"
+
+#: src/layout_forms.C:437
+msgid "Headheight:|#i"
+msgstr "Nag³ówek:|#N"
+
+#: src/layout_forms.C:440
+msgid "Headsep:|#d"
+msgstr "Odstêp nag³ówka:|#t"
+
+#: src/layout_forms.C:443
+msgid "Footskip:|#F"
+msgstr "Odstêp stopki:|#O"
+
+#: src/layout_forms.C:478
+msgid "Borders"
+msgstr "Ramki"
+
+#: src/layout_forms.C:482 src/layout_forms.C:632
+msgid "Top|#T"
+msgstr "W górê|#g"
+
+#: src/layout_forms.C:486 src/layout_forms.C:638
+msgid "Bottom|#B"
+msgstr "W dó³|#d"
+
+#: src/layout_forms.C:490 src/math_forms.C:97
+msgid "Left|#L"
+msgstr "Lewy|#L"
+
+#: src/layout_forms.C:504
+msgid "Special Cell"
+msgstr "Spec-komórka"
+
+#: src/layout_forms.C:508
+msgid "Multicolumn|#M"
+msgstr "Multicolumn|#M"
+
+#: src/layout_forms.C:510
+msgid "Append Column|#A"
+msgstr "Do³±cz kolumnê|#±"
+
+#: src/layout_forms.C:513
+msgid "Delete Column|#O"
+msgstr "Usuñ kolumnê|#o"
+
+#: src/layout_forms.C:516
+msgid "Append Row|#p"
+msgstr "Do³±cz wiersz|#i"
+
+#: src/layout_forms.C:519
+msgid "Delete Row|#w"
+msgstr "Usuñ wiersz|#w"
+
+#: src/layout_forms.C:522
+msgid "Delete Table|#D"
+msgstr "Usuñ tabelê|#U"
+
+#: src/layout_forms.C:525
+msgid "Column"
+msgstr "Kolumna"
+
+#: src/layout_forms.C:528
+msgid "Row"
+msgstr "Wiersz"
+
+#: src/layout_forms.C:531
+msgid "Set Borders|#S"
+msgstr "Ustal ramki|#s"
+
+#: src/layout_forms.C:534
+msgid "Unset Borders|#U"
+msgstr "Usuñ ramki|#ñ"
+
+#: src/layout_forms.C:537 src/layout_forms.C:551
+msgid "Longtable"
+msgstr "D³uga tabela"
+
+#: src/layout_forms.C:542
+msgid "Rotate 90°|#9"
+msgstr "Obróæ o 90°|#9"
+
+#: src/layout_forms.C:544
+msgid "Linebreaks|#N"
+msgstr "£amane linie|#n"
+
+#: src/layout_forms.C:546
+msgid "Spec. Table"
+msgstr "Spec-tabela"
+
+#: src/layout_forms.C:555
+msgid "First Head"
+msgstr "1szy nag³ówek"
+
+#: src/layout_forms.C:557
+msgid "Head"
+msgstr "Nag³ówek"
+
+#: src/layout_forms.C:559
+msgid "Foot"
+msgstr "Stopka"
+
+#: src/layout_forms.C:561
+msgid "Last Foot"
+msgstr "Ost. stopka"
+
+#: src/layout_forms.C:563
+msgid "New Page"
+msgstr "Nowa strona"
+
+#: src/layout_forms.C:565
+msgid "Rotate 90°"
+msgstr "Obróæ o 90°"
+
+#: src/layout_forms.C:567
+msgid "Extra|#X"
+msgstr "Zaawans|#Z"
+
+#: src/layout_forms.C:570
+msgid "Left|#e"
+msgstr "W lewo|#e"
+
+#: src/layout_forms.C:573
+msgid "Right|#i"
+msgstr "W prawo|#r"
+
+#: src/layout_forms.C:576
+msgid "Center|#C"
+msgstr "Centruj|#C"
+
+#: src/layout_forms.C:600
+msgid "Extra Options"
+msgstr "Opcje dodatkowe"
+
+#: src/layout_forms.C:604
+msgid "Length|#L"
+msgstr "Warto¶æ|#t"
+
+#: src/layout_forms.C:619
+msgid "or %|#o"
+msgstr "lub %|#l"
+
+#: src/layout_forms.C:635
+msgid "Middle|#d"
+msgstr "¦rodek|#r"
+
+#: src/layout_forms.C:647
+msgid "HFill between Minipage paragraphs|#H"
+msgstr "Wstaw HFill pomiêdzy akapity Minipage|#H"
+
+#: src/layout_forms.C:649
+msgid "Start new Minipage|#S"
+msgstr "Rozpocznij nowy akapit Minipage|#n"
+
+#: src/layout_forms.C:653
+msgid "Indented Paragraph|#I"
+msgstr "Wciêty akapit|#W"
+
+#: src/layout_forms.C:656
+msgid "Minipage|#M"
+msgstr "Minipage|#M"
+
+#: src/layout_forms.C:659
+msgid "Floatflt|#F"
+msgstr "Pakiet Floatflt|#F"
+
+#: src/layout_forms.C:682
+msgid "Special Multicolumn Alignment"
+msgstr "Spec. justowanie w Multicolumn"
+
+#: src/layout_forms.C:695
+msgid "Special Column Alignment"
+msgstr "Spec. justowanie kolumn"
+
+#: src/lyx.C:41
+msgid "Encapsulated Postscript (*.eps, *.ps)|#E"
+msgstr "Encapsulated Postscript (*.eps, *.ps)|#E"
+
+#: src/lyx.C:43
+msgid "Inlined EPS (*.eps, *.ps)|#I"
+msgstr "EPS w linii (*.eps, *.ps)|#i"
+
+#: src/lyx.C:56
+msgid "Type"
+msgstr "Typ"
+
+#: src/lyx.C:75
+msgid "Roman Font|#R"
+msgstr "Szeryfowy|#R"
+
+#: src/lyx.C:77
+msgid "Sans Serif Font|#S"
+msgstr "Bezszeryfowy|#S"
+
+#: src/lyx.C:79
+msgid "Typewriter Font|#T"
+msgstr "Grotesk|#T"
+
+#: src/lyx.C:81
+msgid "Font Norm|#N"
+msgstr "Norma|#N"
+
+#: src/lyx.C:83
+msgid "Font Zoom|#Z"
+msgstr ""
+
+#: src/lyx.C:116
+msgid "Update|Uu#u"
+msgstr "Aktualizuj|#A"
+
+#: src/lyx.C:138
+msgid "Update|#U"
+msgstr "Aktualizuj|#A"
+
+#: src/lyx.C:146
+msgid "Insert Reference|#I^M"
+msgstr "Wstaw odsy³acz|#I^M"
+
+#: src/lyx.C:150
+msgid "Insert Page Number|#P"
+msgstr "Wstaw numer strony|#n"
+
+#: src/lyx.C:154
+msgid "Go to Reference|#G"
+msgstr "Id¼ do odsy³acza|#o"
+
+#: src/lyx_cb.C:347
+msgid "Save failed. Rename and try again?"
+msgstr "Zachowanie nieudane. Zmieniæ nazwê i spróbowaæ jeszcze raz?"
+
+#: src/lyx_cb.C:349
+msgid "(If not, document is not saved.)"
+msgstr "(Je¶li nie, dokument nie zostanie zachowany.)"
+
+#: src/lyx_cb.C:369 src/lyxfunc.C:2457
+msgid "Templates"
+msgstr "Szablony"
+
+#: src/lyx_cb.C:374
+msgid "Enter Filename to Save Document as"
+msgstr "Wprowad¼ nazwê pliku pod jak± dokument ma byæ zachowany"
+
+#. Cancel: Do nothing
+#: src/lyx_cb.C:381 src/lyxfunc.C:2463 src/lyxfunc.C:2490 src/lyxfunc.C:2555 src/lyxfunc.C:2604 src/lyxfunc.C:2629 src/lyxfunc.C:2639 src/lyxfunc.C:2684 src/lyxfunc.C:2709 src/lyxfunc.C:2719 src/lyxfunc.C:2778
+msgid "Canceled."
+msgstr "Zaniechane."
+
+#: src/lyx_cb.C:392
+msgid "Same name as document already has:"
+msgstr "T± sam± nazwê ma juz dokument:"
+
+#: src/lyx_cb.C:394
+msgid "Save anyway?"
+msgstr "Zachowaæ i tak ?"
+
+#: src/lyx_cb.C:400
+msgid "Another document with same name open!"
+msgstr "Inny dokument z t± sam± nazwa jest otwarty!"
+
+#: src/lyx_cb.C:402
+msgid "Replace with current document?"
+msgstr "Zast±piæ bie¿±cym dokumentem?"
+
+#: src/lyx_cb.C:410
+msgid "Document renamed to '"
+msgstr "Zmieniono nazwê dokumentu na '"
+
+#: src/lyx_cb.C:412
+msgid "', but not saved..."
+msgstr "', ale nie zachowano..."
+
+#: src/lyx_cb.C:418
+msgid "Document already exists:"
+msgstr "Dokument juz istnieje:"
+
+#: src/lyx_cb.C:420
+msgid "Replace file?"
+msgstr "Zast±piæ plik?"
+
+#: src/lyx_cb.C:443 src/lyxvc.C:359
+msgid "Sorry, can't do this while pictures are being rendered."
+msgstr "Niestety, nie mo¿na tego wykonaæ gdy obrazki s± przetwarzane."
+
+#: src/lyx_cb.C:444 src/lyxvc.C:361
+msgid "Please wait a few seconds for this to finish and try again."
+msgstr "Proszê poczekaæ kilka sekund na zakoñczenie i spróbowaæ jeszcze raz"
+
+#: src/lyx_cb.C:445 src/lyxvc.C:363
+msgid "(or kill runaway gs processes by hand and try again.)"
+msgstr "(lub zabiæ rêcznie procesy ghostscripta i spróbowaæ)."
+
+#: src/lyx_cb.C:451 src/lyxvc.C:369
+msgid "Can't do this while the spellchecker is running."
+msgstr "Nie mo¿na tego wykonaæ kiedy sprawdzanie jest uruchomione."
+
+#: src/lyx_cb.C:452 src/lyxvc.C:371
+msgid "Stop the spellchecker first."
+msgstr "Najpierw zatrzymaj sprawdzanie."
+
+#: src/lyx_cb.C:470 src/lyx_cb.C:502
+msgid "One error detected"
+msgstr "Znaleziono jeden b³±d"
+
+#: src/lyx_cb.C:471 src/lyx_cb.C:503
+msgid "You should try to fix it."
+msgstr "Powiniene¶ spróbowaæ go poprawiæ."
+
+#: src/lyx_cb.C:474 src/lyx_cb.C:506
+msgid " errors detected."
+msgstr " b³êdów znaleziono."
+
+#: src/lyx_cb.C:475 src/lyx_cb.C:507
+msgid "You should try to fix them."
+msgstr "Powiniene¶ spróbowac je poprawiæ."
+
+#: src/lyx_cb.C:477
+msgid "There were errors during the LaTeX run."
+msgstr "Wyst±pi³y b³êdy w trakcie przebiegu LaTeXa."
+
+#: src/lyx_cb.C:492
+msgid "Wrong type of document"
+msgstr "Id¼ na koniec dokumentu"
+
+#: src/lyx_cb.C:493
+msgid "The Build operation is not allowed in this document"
+msgstr "Ten dokument nie pozwala na wykonanie budowania"
+
+#: src/lyx_cb.C:494 src/lyx_cb.C:509
+msgid "There were errors during the Build process."
+msgstr "Wyst±pi³y b³êdy w trakcie budowania."
+
+#: src/lyx_cb.C:520
+msgid "Chktex does not work with SGML derived documents."
+msgstr "Chktex nie wspó³pracuje z dokumentami pochodnymi od SGML."
+
+#: src/lyx_cb.C:529
+msgid "No warnings found."
+msgstr "Brak ostrze¿eñ."
+
+#: src/lyx_cb.C:531
+msgid "One warning found."
+msgstr "Znaleziono jedno ostrze¿enie."
+
+#: src/lyx_cb.C:532
+msgid "Use 'Edit->Go to Error' to find it."
+msgstr "U¿yj 'Edycja->Id¼ do b³êdu' aby go znale¼æ."
+
+#: src/lyx_cb.C:535
+msgid " warnings found."
+msgstr " ostrze¿eñ znaleziono."
+
+#: src/lyx_cb.C:536
+msgid "Use 'Edit->Go to Error' to find them."
+msgstr "U¿yj 'Edycja->Id¼ do b³êdu' aby je znale¼æ."
+
+#: src/lyx_cb.C:538
+msgid "Chktex run successfully"
+msgstr "Przebieg Chktex zakoñczy³ siê pomy¶lnie"
+
+#: src/lyx_cb.C:540
+msgid "It seems chktex does not work."
+msgstr "Wydaje sie, ¿ê chktex nie dzia³a."
+
+#: src/lyx_cb.C:624 src/lyx_cb.C:627
+msgid "Executing command:"
+msgstr "Wykonujê polecenie:"
+
+#: src/lyx_cb.C:852 src/lyx_cb.C:889 src/lyx_cb.C:922 src/lyx_cb.C:949 src/lyxfunc.C:2499
+msgid "File already exists:"
+msgstr "Plik ju¿ istnieje:"
+
+#: src/lyx_cb.C:854 src/lyx_cb.C:891 src/lyx_cb.C:924 src/lyx_cb.C:951
+msgid "Do you want to overwrite the file?"
+msgstr "Chcesz nadpisaæ ten plik?"
+
+#: src/lyx_cb.C:855 src/lyx_cb.C:892 src/lyx_cb.C:925 src/lyx_cb.C:952
+msgid "Canceled"
+msgstr "Zaniechane"
+
+#: src/lyx_cb.C:860
+msgid "DocBook does not have a latex backend"
+msgstr ""
+
+#: src/lyx_cb.C:866
+msgid "Nice LaTeX file saved as"
+msgstr "Plik LaTeXa zachowany jako"
+
+#: src/lyx_cb.C:879
+msgid "Document class must be linuxdoc."
+msgstr "Klas± dokumentu musi byæ linuxdoc."
+
+#: src/lyx_cb.C:896
+msgid "Building LinuxDoc SGML file `"
+msgstr "Tworzê plik LinuxDoc SGML "
+
+#: src/lyx_cb.C:901
+msgid "LinuxDoc SGML file save as"
+msgstr "Plik LinuxDoc SGML zachowany jako"
+
+#: src/lyx_cb.C:912
+msgid "Document class must be docbook."
+msgstr "Klas± dokumentu musi byæ docbook."
+
+#: src/lyx_cb.C:929
+msgid "Building DocBook SGML file `"
+msgstr "Tworzenie pliku DocBook SGML "
+
+#: src/lyx_cb.C:934
+msgid "DocBook SGML file save as"
+msgstr "Plik DocBook SGML zachowany jako"
+
+#: src/lyx_cb.C:958
+msgid "Ascii file saved as"
+msgstr "Plik ascii zachowany jako"
+
+#: src/lyx_cb.C:1026
+msgid "Autosaving current document..."
+msgstr "Autozapis bie¿±cego dokumentu..."
+
+#: src/lyx_cb.C:1067
+msgid "Autosave Failed!"
+msgstr "Autozapis nieudany!"
+
+#: src/lyx_cb.C:1124
+msgid "File to Insert"
+msgstr "Plik do wstawienia"
+
+#: src/lyx_cb.C:1135
+msgid "Error! Cannot open specified file:"
+msgstr "B³±d! Nie mozna otworzyæ podanego pliku:"
+
+#: src/lyx_cb.C:1168
+msgid "Table Of Contents"
+msgstr "Spis tre¶ci"
+
+#: src/lyx_cb.C:1199
+msgid "Insert Reference"
+msgstr "Wstaw odwo³anie"
+
+#: src/lyx_cb.C:1228
+msgid "Inserting Footnote..."
+msgstr "Wstawianie przypisu..."
+
+#. Import file
+#: src/lyx_cb.C:1285
+msgid "Importing LinuxDoc SGML file `"
+msgstr "Importujê plik LinuxDoc SGML `"
+
+#. TeX output asked
+#: src/lyx_cb.C:1293
+msgid "Converting LinuxDoc SGML to TeX file..."
+msgstr "Konwersja LinuxDoc SGML na plik TeX'a..."
+
+#. dvi output asked
+#: src/lyx_cb.C:1300
+msgid "Converting LinuxDoc SGML to dvi file..."
+msgstr "Konwersja LinuxDoc SGML na plik dvi..."
+
+#. dvi output asked
+#: src/lyx_cb.C:1358
+msgid "Converting DocBook SGML to dvi file..."
+msgstr "Konwersja DocBook SGML na plik dvi..."
+
+#: src/lyx_cb.C:1482
+msgid "Character Style"
+msgstr "Styl znaku"
+
+#: src/lyx_cb.C:1685
+msgid "Paragraph Environment"
+msgstr "¦rodowisko akapitu"
+
+#: src/lyx_cb.C:1937
+msgid "Document Layout"
+msgstr "Ustawienia dokumentu"
+
+#: src/lyx_cb.C:1976
+msgid "Quotes"
+msgstr "Cudzys³owy"
+
+#: src/lyx_cb.C:2021
+msgid "LaTeX Preamble"
+msgstr "Preambu³a LaTeXa"
+
+#: src/lyx_cb.C:2031
+msgid "Do you want to save the current settings"
+msgstr "Czy chcesz zachowaæ bie¿±ce ustawienia"
+
+#: src/lyx_cb.C:2032
+msgid "for Character, Document, Paper and Quotes"
+msgstr "dla znaków, dokumentu, papieru i cudzys³owów"
+
+#: src/lyx_cb.C:2033
+msgid "as default for new documents?"
+msgstr "jako domy¶lne dla nowwych dokumentów?"
+
+#: src/lyx_cb.C:2050 src/lyx_cb.C:2062
+msgid "Open/Close..."
+msgstr "Otwórz/Zamknij..."
+
+#: src/lyx_cb.C:2085
+msgid "No further undo information"
+msgstr "Nie mo¿na ju¿ dalej cofn±æ"
+
+#: src/lyx_cb.C:2095
+msgid "Redo not yet supported in math mode"
+msgstr "Powtarzanie nie zosta³o jeszcze zaimplementowane w trybie matematycznym"
+
+#: src/lyx_cb.C:2105
+msgid "No further redo information"
+msgstr "Nie mo¿na ju¿ dalej powtarzaæ"
+
+#: src/lyx_cb.C:2296
+msgid "Font: "
+msgstr "Czcionka: "
+
+#: src/lyx_cb.C:2300
+msgid ", Depth: "
+msgstr ", g³êboko¶c: "
+
+#: src/lyx_cb.C:2328
+msgid "Inserting margin note..."
+msgstr "Wstaw notatkê na marginesie..."
+
+#: src/lyx_cb.C:2369
+msgid "Paragraph environment type copied"
+msgstr "Typ ¶rodowiska akapitu skopiowany"
+
+#: src/lyx_cb.C:2378
+msgid "Paragraph environment type set"
+msgstr "¦rodowisko akapitu ustawione"
+
+#: src/lyx_cb.C:2469
+msgid "Changed environment depth (in possible range, maybe not)"
+msgstr "Znieniono g³êboko¶æ ¶rodowiska (w mo¿liwym zakresie, wiêc mo¿e nie)"
+
+#: src/lyx_cb.C:2709
+msgid "Paragraph layout set"
+msgstr "Styl akapitu ustawiony"
+
+#: src/lyx_cb.C:2779
+msgid "Should I set some parameters to"
+msgstr "Ustawiæ jakie¶ parametry"
+
+#: src/lyx_cb.C:2781
+msgid "the defaults of this document class?"
+msgstr "domy¶lne dla tej klasy dokumentów?"
+
+#. unable to load new style
+#: src/lyx_cb.C:2790 src/lyx_cb.C:2909 src/lyx_cb.C:2916
+msgid "Conversion Errors!"
+msgstr "B³±d konwersji!"
+
+#: src/lyx_cb.C:2791 src/lyx_cb.C:2917
+msgid "Unable to switch to new document class."
+msgstr "Nie mo¿na przestawiæ na now± klasê dokumentu."
+
+#: src/lyx_cb.C:2792 src/lyx_cb.C:2918
+msgid "Reverting to original document class."
+msgstr "Wracam do oryginalnej klasy dokumentu."
+
+#: src/lyx_cb.C:2892
+msgid "Converting document to new document class..."
+msgstr "Konwersja dokumentu do nowej klasy dokumentu..."
+
+#: src/lyx_cb.C:2904
+msgid "One paragraph couldn't be converted"
+msgstr "Jeden akapit nie mo¿e byæ konwertowany"
+
+#: src/lyx_cb.C:2907
+msgid " paragraphs couldn't be converted"
+msgstr " akapity nie mog± byæ konwertowane"
+
+#: src/lyx_cb.C:2910
+msgid "into chosen document class"
+msgstr "w wybran± klasê dokumentu"
+
+#: src/lyx_cb.C:2996
+msgid "Document layout set"
+msgstr "Styl dokumentu ustawiony"
+
+#: src/lyx_cb.C:3046 src/lyx_cb.C:3050
+msgid "No more notes"
+msgstr "Brak innych notek"
+
+#: src/lyx_cb.C:3081
+msgid "Quotes type set"
+msgstr "Typ cudzys³owów ustawiony"
+
+#: src/lyx_cb.C:3145
+msgid "LaTeX preamble set"
+msgstr "Preambu³a LaTeXa ustawiona"
+
+#: src/lyx_cb.C:3167
+msgid "Cannot insert table in table."
+msgstr "Nie mo¿na wstawiæ tabeli do tabeli"
+
+#: src/lyx_cb.C:3172
+msgid "Inserting table..."
+msgstr "Wstawianie tabeli..."
+
+#: src/lyx_cb.C:3232
+msgid "Table inserted"
+msgstr "Tabela wstawiona"
+
+#: src/lyx_cb.C:3291 src/lyx_cb.C:3311
+msgid "ERROR!  Unable to print!"
+msgstr "Nie mo¿na drukowaæ"
+
+#: src/lyx_cb.C:3292
+msgid "Check 'range of pages'!"
+msgstr "Sprawd¼ 'zakres stron'!"
+
+#: src/lyx_cb.C:3312
+msgid "Check 'number of copies'!"
+msgstr "Sprawd¼ 'ilo¶æ kopii'!"
+
+#: src/lyx_cb.C:3425
+msgid "Error:"
+msgstr "B³±d:"
+
+#: src/lyx_cb.C:3426
+msgid "Unable to print"
+msgstr "Nie mo¿na drukowaæ"
+
+#: src/lyx_cb.C:3427
+msgid "Check that your parameters are correct"
+msgstr "Sprawd¼, czy podano poprawne parametry"
+
+#: src/lyx_cb.C:3449
+msgid "Inserting figure..."
+msgstr "Wstawianie rysunku..."
+
+#: src/lyx_cb.C:3454 src/lyx_cb.C:3506
+msgid "Figure inserted"
+msgstr "Rysunek wstawiony"
+
+#: src/lyx_cb.C:3535
+msgid "Screen options set"
+msgstr "Czcionki ekranowe ustawione"
+
+#: src/lyx_cb.C:3565
+msgid "LaTeX Options"
+msgstr "Opcje LaTeXa"
+
+#: src/lyx_cb.C:3574
+msgid "Running configure..."
+msgstr "Uruchomione konfigurowanie..."
+
+#: src/lyx_cb.C:3581
+msgid "Reloading configuration..."
+msgstr "Prze³adowanie konfiguracji..."
+
+#: src/lyx_cb.C:3583
+msgid "The system has been reconfigured."
+msgstr "System zosta³ zrekonfigurowany."
+
+#: src/lyx_cb.C:3584
+msgid "You need to restart LyX to make use of any"
+msgstr "Musisz zrestartowac LyXa by skorzystaæ"
+
+#: src/lyx_cb.C:3585
+msgid "updated document class specifications."
+msgstr "z wprowadzonych zmian w konfiguracji."
+
+#: src/lyx_cb.C:3705
+msgid "Couldn't find this label"
+msgstr "Nie znaleziono tej etykiety"
+
+#: src/lyx_cb.C:3706
+msgid "in current document."
+msgstr "w bie¿±cym dokumencie"
+
+#: src/lyx_cb.C:3737
+msgid "*** No Document ***"
+msgstr "*** Brak dokumentu ***"
+
+#: src/lyx_cb.C:3903
+msgid "*** No labels found in document ***"
+msgstr "*** Nie znaleziono etykiet w dokumencie ***"
+
+#: src/lyx_gui.C:385 src/lyx_gui.C:388
+msgid " None | Defskip | Smallskip | Medskip | Bigskip | VFill | Length "
+msgstr " Brak | Defskip | Smallskip | Medskip | Bigskip | VFill | Warto¶æ "
+
+#: src/lyx_gui.C:414
+msgid " No change %l| Roman | Sans Serif | Typewriter %l| Reset "
+msgstr " Bez zmian %l| Szeryfowy | Bezszeryfowy | Grotesk %l| Od¶wie¿ "
+
+#: src/lyx_gui.C:416
+msgid " No change %l| Medium | Bold %l| Reset "
+msgstr " Bez zmian %l| Zwyk³y (jasny) | Pogrubiony %l| Od¶wie¿ "
+
+#: src/lyx_gui.C:418
+msgid " No change %l| Upright | Italic | Slanted | Small Caps %l| Reset "
+msgstr " Bez zmian %l| Prosty | Kursywa | Pochy³y | Kapitaliki %l| Od¶wie¿ "
+
+#: src/lyx_gui.C:421
+msgid " No change %l| Tiny | Smallest | Smaller | Small | Normal | Large | Larger | Largest | Huge | Huger %l| Increase | Decrease | Reset "
+msgstr " Bez zmian %l| Mikroskopijny | Najmniejszy | Mniejszy | Ma³y | Normalny | Du¿y | Wiêkszy | Najwiêkszy | Wielki | Ogromny %l| Zwiêksz | Zmiejsz %l| Od¶wie¿ "
+
+#: src/lyx_gui.C:425
+msgid " No change %l| Emph | Underbar | Noun | LaTeX mode %l| Reset "
+msgstr " Bez zmian %l| Kursywa | Podkre¶lenie | Kapitaliki | Polecenie LaTeXa %l| Od¶wie¿ "
+
+#: src/lyx_gui.C:427
+msgid " No change %l| No color | Black | White | Red | Green | Blue | Cyan | Magenta | Yellow %l| Reset "
+msgstr " Bez zmian %l| Bez koloru | Czarny | Bia³y | Czerwony | Zielony | Niebieski | Cyan | Fioletowy | ¯ó³ty %l| Od¶wie¿ "
+
+#: src/lyx_gui.C:435
+msgid " Single | OneHalf | Double | Other "
+msgstr " Pojedyñczy | Pó³tora | Podwójny | Inny "
+
+#: src/lyx_gui.C:474
+msgid " Smallskip | Medskip | Bigskip | Length "
+msgstr " Smallskip | Medskip | Bigskip | Inny "
+
+#: src/lyx_gui.C:483
+msgid " Default | Custom | USletter | USlegal | USexecutive | A3 | A4 | A5 | B3 | B4 | B5 "
+msgstr " Domy¶lny | W³asny | USletter | USlegal | USexecutive | A3 | A4 | A5 | B3 | B4 | B5 "
+
+#: src/lyx_gui.C:486
+msgid " None | A4 small Margins (only portrait) | A4 very small Margins (only portrait) | A4 very wide margins (only portrait) "
+msgstr "Brak|A4 ma³e marginesy (tylko pionowy)|A4 bardzo ma³e marginesy (tylko pionowy)|A4 szerokie marginesy (tylko pionowy)"
+
+#: src/lyx_gui.C:532
+msgid " ``text'' | ''text'' | ,,text`` | ,,text'' | «text» | »text« "
+msgstr " ``tekst'' | ''tekst'' | ,,tekst`` | ,,tekst'' | «tekst» | »tekst« "
+
+#: src/lyx_gui.C:610
+msgid "LyX Banner"
+msgstr "Logo LyXa"
+
+#: src/lyx_gui_misc.C:363
+msgid "Dismiss"
+msgstr "Zamknij"
+
+#: src/lyx_gui_misc.C:380 src/lyx_gui_misc.C:392 src/lyx_gui_misc.C:397 src/lyx_gui_misc.C:403
+msgid "Yes|Yy#y"
+msgstr "Tak|Tt#y"
+
+#: src/lyx_gui_misc.C:381 src/lyx_gui_misc.C:393 src/lyx_gui_misc.C:398 src/lyx_gui_misc.C:404
+msgid "No|Nn#n"
+msgstr "Nie|Nn#n"
+
+#: src/lyx_gui_misc.C:416
+msgid "Clear|#e"
+msgstr "Wyczy¶æ|#W"
+
+#: src/lyx_gui_misc.C:425
+msgid "Any changes will be ignored"
+msgstr "Zmiany bêd± ignorowane"
+
+#: src/lyx_gui_misc.C:426
+msgid "The document is read-only:"
+msgstr "Dokument jest tylko do odczytu:"
+
+#: src/lyx_main.C:184
+msgid "Warning: could not determine path of binary."
+msgstr "Ostrze¿enie: nie mo¿na znale¼æ scie¿ki do binariów."
+
+#: src/lyx_main.C:185
+msgid "If you have problems, try starting LyX with an absolute path."
+msgstr "Je¶li masz problemy spróbuj uruchomic LyXa ze scie¿ka bezwzglêdn±."
+
+#: src/lyx_main.C:271
+msgid "LYX_DIR_10x environment variable no good."
+msgstr "B³êdna warto¶æ zmiennej ¶rodowiska LYX_DIR_10x"
+
+#: src/lyx_main.C:272
+msgid "System directory set to: "
+msgstr "¦cie¿ka do katalogu systemowego: "
+
+#: src/lyx_main.C:280
+msgid "LyX Warning! Couldn't determine system directory."
+msgstr "Ostrze¿enie LyXa! Nie mo¿na okresliæ katalogu systemowego."
+
+#: src/lyx_main.C:281
+msgid "Try the '-sysdir' command line parameter or"
+msgstr "U¿yj opcji '-sysdir' z linii komend lub"
+
+#: src/lyx_main.C:282
+msgid "set the environment variable LYX_DIR_10x to the LyX system directory"
+msgstr "ustaw warto¶æ zmiennej ¶rodowiska LYX_DIR_10x na katalog systemowy LyXa"
+
+#: src/lyx_main.C:284
+msgid "containing the file `chkconfig.ltx'."
+msgstr "zawieraj±cy plik `chkconfig.ltx'."
+
+#: src/lyx_main.C:286
+msgid "Using built-in default "
+msgstr "U¿yto ustawieñ domy¶lnych "
+
+#: src/lyx_main.C:287
+msgid " but expect problems."
+msgstr " ale spodziewaj siê problemów."
+
+#: src/lyx_main.C:289
+msgid "Expect problems."
+msgstr "Spodziewaj siê problemów."
+
+#. Nope
+#: src/lyx_main.C:388
+msgid "You don't have a personal LyX directory."
+msgstr "Nie posiadasz osobistego katalogu domowego LyXa."
+
+#: src/lyx_main.C:389
+msgid "It is needed to keep your own configuration."
+msgstr "Jest on wymagany do zapisania w³asnej konfiguracji LyXa."
+
+#: src/lyx_main.C:390
+msgid "Should I try to set it up for you (recommended)?"
+msgstr "Czy spróbowaæ wykonaæ to dla Ciebie (zalecane)?"
+
+#: src/lyx_main.C:391
+msgid "Running without personal LyX directory."
+msgstr "Uruchamianie bez osobistego katalogu LyXa."
+
+#. Tell the user what is going on
+#: src/lyx_main.C:398
+msgid "LyX: Creating directory "
+msgstr "LyX: Tworzenie katalogu "
+
+#: src/lyx_main.C:398
+msgid " and running configure..."
+msgstr " i konfigurowanie..."
+
+#: src/lyx_main.C:404
+msgid "Failed. Will use "
+msgstr "Nie powiod³o siê. U¿yjê "
+
+#: src/lyx_main.C:404
+msgid " instead."
+msgstr " zamiast."
+
+#: src/lyx_main.C:412
+msgid "Done!"
+msgstr "Zakoñczone!"
+
+#: src/lyx_main.C:425
+msgid "LyX Warning!"
+msgstr "Ostrze¿enie LyXa!"
+
+#: src/lyx_main.C:426
+msgid "Error while reading "
+msgstr "B³±d w trakcie czytania "
+
+#: src/lyx_main.C:427
+msgid "Using built-in defaults."
+msgstr "U¿ywam ustawieñ domy¶lnych."
+
+#: src/lyx_main.C:437
+msgid "Setting debug level to "
+msgstr "Poziom odpluskwiania ustawiony na "
+
+#: src/lyx_main.C:472
+msgid "LyX "
+msgstr "LyX"
+
+#: src/lyx_main.C:473
+msgid "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
+msgstr "U¿ycie: lyx [ opcje linii poleceñ ] [ nazwa.lyx ... ]\n"
+
+#: src/lyx_main.C:474
+msgid "Command line switches (case sensitive):"
+msgstr "Opcje linii poleceñ:"
+
+#: src/lyx_main.C:475
+msgid "   -help           summarize LyX usage"
+msgstr "   -help           wywo³anie LyXa"
+
+#: src/lyx_main.C:476
+msgid "   -sysdir x       try to set system directory to x"
+msgstr "   -sysdir x       katalog systemowy w x"
+
+#: src/lyx_main.C:477
+msgid "   -width x        set the width of the main window"
+msgstr "   -width x        ustawia szeroko¶æ okna g³ównego na x"
+
+#: src/lyx_main.C:478
+msgid "   -height y       set the height of the main window"
+msgstr "   -height y       ustawia wysoko¶æ okna g³ównego na y"
+
+#: src/lyx_main.C:479
+msgid "   -xpos x         set the x position of the main window"
+msgstr "   -xpos x         pozycja x okna g³ównego"
+
+#: src/lyx_main.C:480
+msgid "   -ypos y         set the y position of the main window"
+msgstr "   -ypos y         pozycja y okna g³ównego"
+
+#: src/lyx_main.C:481
+msgid "   -dbg n          where n is a sum of debugging options. Try -dbg 65535 -help"
+msgstr "   -dbg n          gdzie n jest opcj± odpluswiania. Spróbuj -dbg 65535 -help"
+
+#: src/lyx_main.C:482
+msgid "   -Reverse        swaps foreground & background colors"
+msgstr "   -Reverse        zamieñ kolory t³a i pierwszego planu"
+
+#: src/lyx_main.C:483
+msgid "   -Mono           runs LyX in black and white mode"
+msgstr "   -Mono           uruchamia LyXa w trybie czarno-bia³ym"
+
+#: src/lyx_main.C:484
+msgid "   -FastSelection  use a fast routine for drawing selections\n"
+msgstr "   -FastSelection  u¿ywaj szybkiej procedury rysowania zaznaczeñ\n"
+
+#: src/lyx_main.C:485
+msgid "Check the LyX man page for more options."
+msgstr "Sprawd¼ stronê manuala LyXa w celu znalezienia innych opcji."
+
+#: src/lyx_main.C:509
+msgid "Missing number for -dbg switch!"
+msgstr "Brak argumentu opcji -dbg!"
+
+#: src/lyx_main.C:523
+msgid "Missing directory for -sysdir switch!"
+msgstr "Brak argumentu opcji -sysdir!"
+
+#: src/lyx_sendfax.C:21
+msgid "Fax no.:|#F"
+msgstr "Faks nr:|#F"
+
+#: src/lyx_sendfax.C:23
+msgid "Dest. Name:|#N"
+msgstr "Nazwa celu:|#N"
+
+#: src/lyx_sendfax.C:25
+msgid "Enterprise:|#E"
+msgstr "Instytucja:|#E"
+
+#: src/lyx_sendfax.C:45
+msgid "Phone Book"
+msgstr "Ksi±¿ka telefoniczna"
+
+#: src/lyx_sendfax.C:49
+msgid "Select from|#S"
+msgstr "Wybie¿ z|#W"
+
+#: src/lyx_sendfax.C:53
+msgid "Add to|#t"
+msgstr "Dodaj do|#D"
+
+#: src/lyx_sendfax.C:57
+msgid "Delete from|#D"
+msgstr "Skasuj z|#S"
+
+#: src/lyx_sendfax.C:61
+msgid "Save|#V"
+msgstr "Zachowaj|#Z"
+
+#: src/lyx_sendfax.C:65
+msgid "Destination:"
+msgstr "Przeznaczenie:"
+
+#: src/lyx_sendfax.C:71
+msgid "Comment:"
+msgstr "Komenta¿:"
+
+#: src/lyx_sendfax_main.C:44
+msgid "Fax File: "
+msgstr "Plik faksu: "
+
+#: src/lyx_sendfax_main.C:154 src/lyx_sendfax_main.C:201 src/lyx_sendfax_main.C:240 src/lyx_sendfax_main.C:274
+msgid "Empty Phonebook"
+msgstr "Pusta ksi±¿ka telefoniczna"
+
+#: src/lyx_sendfax_main.C:213 src/lyx_sendfax_main.C:252
+msgid "Save (needed)"
+msgstr "Zachowaj (wymagane)"
+
+#: src/lyx_sendfax_main.C:268
+msgid "Cannot open phone book: "
+msgstr "Nie mo¿na otworzyæ ksi±¿ki telefonicznej: "
+
+#: src/lyx_sendfax_main.C:296
+msgid "NO OR EMPTY LOGFILE!"
+msgstr "BRAK LUB PUSTY PLIK LOGU!"
+
+#: src/lyx_sendfax_main.C:303
+msgid "Message-Window"
+msgstr ""
+
+#: src/lyx_sendfax_main.C:334
+msgid "@L@b@cEmpty Phonebook"
+msgstr "@L@b@cPusta ksi±¿ka telefoniczna"
+
+#: src/lyx_sendfax_main.C:336
+msgid "Phonebook"
+msgstr "Ksi±¿ka telefoniczna"
+
+#: src/lyxfont.C:44
+msgid "Roman"
+msgstr "Szeryfowy"
+
+#: src/lyxfont.C:44
+msgid "Sans serif"
+msgstr "Bezszeryfowy"
+
+#: src/lyxfont.C:44
+msgid "Typewriter"
+msgstr "Grotesk"
+
+#: src/lyxfont.C:44
+msgid "Symbol"
+msgstr "Symbol"
+
+#: src/lyxfont.C:44 src/lyxfont.C:48 src/lyxfont.C:51 src/lyxfont.C:57 src/lyxfont.C:65 src/lyxfont.C:70
+msgid "Inherit"
+msgstr ""
+
+#: src/lyxfont.C:45 src/lyxfont.C:48 src/lyxfont.C:52 src/lyxfont.C:57 src/lyxfont.C:65 src/lyxfont.C:70
+msgid "Ignore"
+msgstr "Ignoruj"
+
+#: src/lyxfont.C:48
+msgid "Medium"
+msgstr "Zwyk³y (jasny)"
+
+#: src/lyxfont.C:48
+msgid "Bold"
+msgstr "Pogrubiony"
+
+#: src/lyxfont.C:51
+msgid "Upright"
+msgstr "Prosty"
+
+#: src/lyxfont.C:51
+msgid "Italic"
+msgstr "Kursywa"
+
+#: src/lyxfont.C:51
+msgid "Slanted"
+msgstr "Pochy³y"
+
+#: src/lyxfont.C:51
+msgid "Smallcaps"
+msgstr "Kapitaliki"
+
+#: src/lyxfont.C:55
+msgid "Tiny"
+msgstr "mikroskopijny"
+
+#: src/lyxfont.C:55
+msgid "Smallest"
+msgstr "Najmniejszy"
+
+#: src/lyxfont.C:55
+msgid "Smaller"
+msgstr "Mniejszy"
+
+#: src/lyxfont.C:55
+msgid "Small"
+msgstr "Ma³y"
+
+#: src/lyxfont.C:55
+msgid "Normal"
+msgstr "Normalny"
+
+#: src/lyxfont.C:55
+msgid "Large"
+msgstr "Du¿y"
+
+#: src/lyxfont.C:56
+msgid "Larger"
+msgstr "Wiêkszy"
+
+#: src/lyxfont.C:56
+msgid "Largest"
+msgstr "Najwiêkszy"
+
+#: src/lyxfont.C:56
+msgid "Huge"
+msgstr "Wielki"
+
+#: src/lyxfont.C:56
+msgid "Huger"
+msgstr "Ogromny"
+
+#: src/lyxfont.C:56
+msgid "Increase"
+msgstr "Zwiêksz"
+
+#: src/lyxfont.C:56
+msgid "Decrease"
+msgstr "Zmniejsz"
+
+#: src/lyxfont.C:60
+msgid "tiny"
+msgstr "mikroskopijny"
+
+#: src/lyxfont.C:60
+msgid "smallest"
+msgstr "najmniejszy"
+
+#: src/lyxfont.C:60
+msgid "smaller"
+msgstr "mniejszy"
+
+#: src/lyxfont.C:60
+msgid "small"
+msgstr "ma³y"
+
+#: src/lyxfont.C:60
+msgid "normal"
+msgstr "normalny"
+
+#: src/lyxfont.C:60
+msgid "large"
+msgstr "du¿y"
+
+#: src/lyxfont.C:61
+msgid "larger"
+msgstr "wiekszy"
+
+#: src/lyxfont.C:61
+msgid "largest"
+msgstr "najwiêkszy"
+
+#: src/lyxfont.C:61
+msgid "huge"
+msgstr "wielki"
+
+#: src/lyxfont.C:61
+msgid "huger"
+msgstr "ogromny"
+
+#: src/lyxfont.C:61
+msgid "increase"
+msgstr "zwiêksz"
+
+#: src/lyxfont.C:61
+msgid "decrease"
+msgstr "zmniejsz"
+
+#: src/lyxfont.C:62
+msgid "inherit"
+msgstr ""
+
+#: src/lyxfont.C:62
+msgid "ignore"
+msgstr "ignoruj"
+
+#: src/lyxfont.C:65
+msgid "Off"
+msgstr "Off"
+
+#: src/lyxfont.C:65
+msgid "On"
+msgstr ""
+
+#: src/lyxfont.C:65
+msgid "Toggle"
+msgstr "Prze³±cz"
+
+#: src/lyxfont.C:68
+msgid "None"
+msgstr "¯aden"
+
+#: src/lyxfont.C:68
+msgid "Black"
+msgstr "Czarny"
+
+#: src/lyxfont.C:68
+msgid "White"
+msgstr "Bia³y"
+
+#: src/lyxfont.C:68
+msgid "Red"
+msgstr "Czerwony"
+
+#: src/lyxfont.C:68
+msgid "Green"
+msgstr "Zielony"
+
+#: src/lyxfont.C:68
+msgid "Blue"
+msgstr "Niebieski"
+
+#: src/lyxfont.C:69
+msgid "Cyan"
+msgstr "Niebiesko-zielony (Cyan)"
+
+#: src/lyxfont.C:69
+msgid "Magenta"
+msgstr "Purpurowy (Magenta)"
+
+#: src/lyxfont.C:70
+msgid "Yellow"
+msgstr "¯ó³ty"
+
+#: src/lyxfont.C:70 src/menus.C:126 src/menus.C:225 src/menus.C:226 src/menus.C:227
+msgid "Math"
+msgstr "Tryb matematyczny"
+
+#: src/lyxfont.C:70
+msgid "Inset"
+msgstr "Wstaw"
+
+#: src/lyxfont.C:363
+msgid "Emphasis "
+msgstr "Kursywa"
+
+#: src/lyxfont.C:365
+msgid "Underline "
+msgstr "Podkre¶lony "
+
+#: src/lyxfont.C:367
+msgid "Noun "
+msgstr "Kapitaliki "
+
+#: src/lyxfont.C:369
+msgid "Latex "
+msgstr "LaTeX"
+
+#: src/lyxfont.C:371
+msgid "Default"
+msgstr "Domy¶lny"
+
+#: src/lyxfunc.C:297
+msgid "Unknown sequence:"
+msgstr "Nieznana sekwencja:"
+
+#: src/lyxfunc.C:397 src/lyxfunc.C:2406
+msgid "Unknown action"
+msgstr "Nieznana akcja"
+
+#: src/lyxfunc.C:400
+msgid "Command not allowed without any document open"
+msgstr "Plecenie nie dostêpne bez otwartego dokumentu"
+
+#: src/lyxfunc.C:460
+msgid "Document is read-only"
+msgstr "Dokument tylko do odczytu"
+
+#: src/lyxfunc.C:502
+msgid "Text mode"
+msgstr "Tryb tekstowy"
+
+#: src/lyxfunc.C:739
+msgid "Unknown export type: "
+msgstr "Nieznany typ eksportu: "
+
+#: src/lyxfunc.C:763
+msgid "Unknown import type: "
+msgstr "Nieznany typ importu: "
+
+#: src/lyxfunc.C:1099
+msgid "Layout "
+msgstr "Ustawienia "
+
+#: src/lyxfunc.C:1100
+msgid " not known"
+msgstr " nieznane"
+
+#: src/lyxfunc.C:1242
+msgid "No cross-reference to toggle"
+msgstr "Brak odsy³acza do prze³±czenia"
+
+#: src/lyxfunc.C:1595
+msgid "Mark removed"
+msgstr ""
+
+#: src/lyxfunc.C:1600
+msgid "Mark set"
+msgstr ""
+
+#: src/lyxfunc.C:1703
+msgid "Mark off"
+msgstr ""
+
+#: src/lyxfunc.C:1713
+msgid "Mark on"
+msgstr ""
+
+#: src/lyxfunc.C:2013
+msgid "Push-toolbar needs argument > 0"
+msgstr ""
+
+#: src/lyxfunc.C:2031
+msgid "Usage: toolbar-add-to <LyX command>"
+msgstr "U¿ycie: toolbar-add-to <polecenie LyXa>"
+
+#: src/lyxfunc.C:2103
+msgid "Missing argument"
+msgstr "Oczekiwany argument"
+
+#: src/lyxfunc.C:2126
+msgid "This is only allowed in math mode!"
+msgstr "Mo¿esz to zrobiæ tylko w trybie matematycznym!"
+
+#: src/lyxfunc.C:2281
+msgid "Opening child document "
+msgstr "Otwieram dokument potomny "
+
+#: src/lyxfunc.C:2314
+msgid "Unknown kind of footnote"
+msgstr "Nieznany rodzaj przypisu"
+
+#: src/lyxfunc.C:2366
+msgid "Document is read only"
+msgstr "Dokument tylko do odczytu"
+
+#: src/lyxfunc.C:2458
+msgid "Enter Filename for new document"
+msgstr "Wprowad¼ nazwê nowego dokumentu"
+
+#: src/lyxfunc.C:2459
+msgid "newfile"
+msgstr "nowyplik"
+
+#: src/lyxfunc.C:2478 src/lyxfunc.C:2617 src/lyxfunc.C:2696
+msgid ""
+"Do you want to close that document now?\n"
+"('No' will just switch to the open version)"
+msgstr ""
+"Czy chcesz zamkn±c ten dokument?\n"
+"('Nie' prze³±czy do otwartej wersji)"
+
+#: src/lyxfunc.C:2501
+msgid "Do you want to open the document?"
+msgstr "Czy chcesz otworzyæ dokument?"
+
+#. loads document
+#: src/lyxfunc.C:2503 src/lyxfunc.C:2566
+msgid "Opening document"
+msgstr "Otwieranie dokumentu"
+
+#: src/lyxfunc.C:2510 src/lyxfunc.C:2573
+msgid "opened."
+msgstr "otwarty."
+
+#: src/lyxfunc.C:2519
+msgid "Choose template"
+msgstr "Wybierz szablon"
+
+#: src/lyxfunc.C:2547 src/lyxfunc.C:2596 src/lyxfunc.C:2669 src/lyxfunc.C:2770
+msgid "Examples"
+msgstr "Przyk³ady"
+
+#: src/lyxfunc.C:2549
+msgid "Select Document to Open"
+msgstr "Wybierz dokument do otwarcia"
+
+#: src/lyxfunc.C:2575
+msgid "Could not open document"
+msgstr "Nie mo¿na otworzyæ dokumentu"
+
+#: src/lyxfunc.C:2598
+msgid "Select ASCII file to Import"
+msgstr "Wybierz plik ASCII do importu"
+
+#: src/lyxfunc.C:2636 src/lyxfunc.C:2716
+msgid "A document by the name"
+msgstr "Dokument o nazwie"
+
+#: src/lyxfunc.C:2638 src/lyxfunc.C:2718
+msgid "already exists. Overwrite?"
+msgstr "ju¿ istnieje. Nadpisaæ?"
+
+#: src/lyxfunc.C:2644
+msgid "Importing ASCII file"
+msgstr "Importujê plik ASCII"
+
+#: src/lyxfunc.C:2648
+msgid "ASCII file "
+msgstr "Plik ASCII "
+
+#: src/lyxfunc.C:2650 src/lyxfunc.C:2741
+msgid "imported."
+msgstr "zaimportowany."
+
+#: src/lyxfunc.C:2673
+msgid "Select Noweb file to Import"
+msgstr "Wybierz plik Noweb do importu"
+
+#: src/lyxfunc.C:2676
+msgid "Select LaTeX file to Import"
+msgstr "Wybierz plik LaTeXa do importu"
+
+#: src/lyxfunc.C:2726
+msgid "Importing LaTeX file"
+msgstr "Importujê plik LaTeXa"
+
+#: src/lyxfunc.C:2731
+msgid "Importing Noweb file"
+msgstr "Importujê plik Noweb"
+
+#: src/lyxfunc.C:2739
+msgid "Noweb file "
+msgstr "Plik Noweb"
+
+#: src/lyxfunc.C:2739
+msgid "LateX file "
+msgstr "Plik LaTeXa "
+
+#: src/lyxfunc.C:2744
+msgid "Could not import Noweb file"
+msgstr "Nie mo¿na importowaæ tego pliku Noweb"
+
+#: src/lyxfunc.C:2745
+msgid "Could not import LaTeX file"
+msgstr "Nie mo¿na importowaæ tego pliku LaTeXa"
+
+#: src/lyxfunc.C:2772
+msgid "Select Document to Insert"
+msgstr "Wybie¿ dokument do wstawienia"
+
+#. Inserts document
+#: src/lyxfunc.C:2790
+msgid "Inserting document"
+msgstr "Wstawiam dokumentu"
+
+#: src/lyxfunc.C:2796
+msgid "inserted."
+msgstr "wstawiony."
+
+#: src/lyxfunc.C:2798
+msgid "Could not insert document"
+msgstr "Nie mo¿na wstawiæ dokumentu"
+
+#. /
+#. virtual void setBuffer(Buffer const&) {;}
+#. / what appears in the minibuffer when opening
+#: src/lyxinset.h:94
+msgid "Opened inset"
+msgstr "Otwarta wstawka"
+
+#: src/lyxlib.h:45
+msgid "unknown"
+msgstr "nieznany"
+
+#: src/lyxvc.C:172 src/lyxvc.C:206
+msgid "Save document and proceed?"
+msgstr "Zachowaæ dokument i kontynuowaæ?"
+
+#: src/lyxvc.C:183
+msgid "LyX VC: Initial description"
+msgstr "Kontrola wersji: opis wersji"
+
+#: src/lyxvc.C:184
+msgid "(no initial description)"
+msgstr "(brak opisu)"
+
+#: src/lyxvc.C:187
+msgid "Info"
+msgstr ""
+
+#: src/lyxvc.C:187
+msgid "This document has NOT been registered."
+msgstr "Ten dokument NIE zosta³ zarejestrowany."
+
+#: src/lyxvc.C:218
+msgid "LyX VC: Log Message"
+msgstr "Kontrola wersji: opis bie¿±cej wersji"
+
+#: src/lyxvc.C:232
+msgid "Ignore changes and proceed with check out?"
+msgstr "Zignorowaæ zmiany i odblokowaæ do edycji?"
+
+#. Here we should check if the buffer is dirty. And if it is
+#. we should warn the user that reverting will discard all
+#. changes made since the last check in.
+#: src/lyxvc.C:249
+msgid "When you revert, you will loose all changes made"
+msgstr "Je¶li wrócisz to stracisz wszystkie zmiany wykonane"
+
+#: src/lyxvc.C:250
+msgid "to the document since the last check in."
+msgstr "na dokumencie od ostatniego zablokowania."
+
+#: src/lyxvc.C:251
+msgid "Do you still want to do it?"
+msgstr "Czy nadal chcesz to wykonaæ?"
+
+#: src/lyxvc.C:341
+msgid "No RCS History!"
+msgstr "Brak historii kontroli wersji!"
+
+#: src/lyxvc.C:348
+msgid "RCS History"
+msgstr "Historia kontroli wersji"
+
+#: src/math_forms.C:19
+msgid "Close "
+msgstr "Zamknij "
+
+#: src/math_forms.C:22
+msgid "Functions"
+msgstr "Funkcje"
+
+#: src/math_forms.C:28
+msgid "Greek"
+msgstr "Greka"
+
+#: src/math_forms.C:32
+msgid "­ Û"
+msgstr ""
+
+#: src/math_forms.C:36
+msgid "± ´"
+msgstr ""
+
+#: src/math_forms.C:40
+msgid "£ @"
+msgstr ""
+
+#: src/math_forms.C:44
+msgid "S  ò"
+msgstr ""
+
+#: src/math_forms.C:48
+msgid "Misc"
+msgstr "Inne"
+
+#: src/math_forms.C:129
+msgid "OK  "
+msgstr "OK  "
+
+#: src/math_forms.C:142
+msgid "Columns "
+msgstr "Kolumny"
+
+#: src/math_forms.C:149
+msgid "Vertical align|#V"
+msgstr "Pionowe dosuniêcie|#i"
+
+#: src/math_forms.C:154
+msgid "Horizontal align|#H"
+msgstr "Poziome dosuniêcie|#P"
+
+#: src/math_forms.C:197
+msgid "OK "
+msgstr "OK "
+
+#: src/math_forms.C:208
+msgid "Thin|#T"
+msgstr "Cienki|#C"
+
+#: src/math_forms.C:212
+msgid "Medium|#M"
+msgstr "¦redni|#r"
+
+#: src/math_forms.C:216
+msgid "Thick|#H"
+msgstr "Gruby|#G"
+
+#: src/math_forms.C:220
+msgid "Negative|#N"
+msgstr "Ujemny|#n"
+
+#: src/math_forms.C:224
+msgid "Quadratin|#Q"
+msgstr ""
+
+#: src/math_forms.C:228
+msgid "2Quadratin|#2"
+msgstr ""
+
+#: src/math_panel.C:103
+msgid "Delimiter"
+msgstr "Znak rozdzielaj±cy"
+
+#: src/math_panel.C:107
+msgid "Decoration"
+msgstr "Dekoracja"
+
+#: src/math_panel.C:111
+msgid "Spacing"
+msgstr "Odstêp"
+
+#: src/math_panel.C:115
+msgid "Matrix"
+msgstr "Macierz"
+
+#: src/math_panel.C:300
+msgid "Top | Center | Bottom"
+msgstr "Do góry | Centruj | Do do³u"
+
+#: src/math_panel.C:350
+msgid "Math Panel"
+msgstr "Panel symboli matematycznych"
+
+#: src/menus.C:122 src/menus.C:132 src/menus.C:169 src/menus.C:170 src/menus.C:171 src/menus.C:300 src/menus.C:301 src/menus.C:302
+msgid "File"
+msgstr "Plik"
+
+#: src/menus.C:123 src/menus.C:183 src/menus.C:184 src/menus.C:185
+msgid "Edit"
+msgstr "Edycja"
+
+#: src/menus.C:124 src/menus.C:197 src/menus.C:198 src/menus.C:199
+msgid "Layout"
+msgstr "Ustawienia"
+
+#: src/menus.C:125 src/menus.C:211 src/menus.C:212 src/menus.C:213
+msgid "Insert"
+msgstr "Wstaw"
+
+#: src/menus.C:129 src/menus.C:134 src/menus.C:267 src/menus.C:268 src/menus.C:269 src/menus.C:328 src/menus.C:329 src/menus.C:330
+msgid "Help"
+msgstr "Pomoc"
+
+#: src/menus.C:173 src/menus.C:304
+msgid "MB|#F"
+msgstr ""
+
+#: src/menus.C:187
+msgid "MB|#E"
+msgstr ""
+
+#: src/menus.C:201
+msgid "MB|#L"
+msgstr ""
+
+#: src/menus.C:215
+msgid "MB|#I"
+msgstr ""
+
+#: src/menus.C:229
+msgid "MB|#M"
+msgstr ""
+
+#: src/menus.C:243 src/menus.C:318
+msgid "MB|#O"
+msgstr ""
+
+#: src/menus.C:257
+msgid "MB|#D"
+msgstr ""
+
+#: src/menus.C:271 src/menus.C:332
+msgid "MB|#H"
+msgstr ""
+
+#: src/menus.C:372
+msgid "Screen Options"
+msgstr "Czcionki ekranowe"
+
+#: src/menus.C:408
+msgid "Import%t|LaTeX...%x30|Ascii Text as Lines...%x31|Ascii Text as Paragraphs%x32|Noweb%x33"
+msgstr "Importuj%t|LaTeX...%x30|Tekst jako linie...%x31|Tekst jako akapity...%x32|Noweb%x33"
+
+#: src/menus.C:413 src/menus.C:643
+msgid "FIM|Ll#l#L"
+msgstr ""
+
+#: src/menus.C:414 src/menus.C:644
+msgid "FIM|Aa#a#A"
+msgstr ""
+
+#: src/menus.C:415 src/menus.C:645
+msgid "FIM|Pp#p#P"
+msgstr ""
+
+#: src/menus.C:416 src/menus.C:646
+msgid "FIM|Nn#n#N"
+msgstr ""
+
+#: src/menus.C:425
+msgid "Export%t|as LaTeX...%x40|as DVI...%x41|as PostScript...%x42|as Ascii Text...%x43|Custom...%x44"
+msgstr "Eksportuj%t|jako LaTeX...%x40|jako DVI...%x41|jako PostScript...%x42|jako Tekst...%x43|W³asny...%x44"
+
+#: src/menus.C:433
+msgid "Export%t|as LinuxDoc...%x40|as DVI...%x41|as PostScript...%x42|as Ascii Text...%x43"
+msgstr "Eksportuj%t|LinuxDoc...%x40|DVI...%x41|PostScript...%x42|Tekst...%x43"
+
+#: src/menus.C:440
+msgid "Export%t|as DocBook...%x40|as DVI...%x41|as PostScript...%x42|as Ascii Text...%x43"
+msgstr "Eksportuj%t|DocBook...%x40|DVI...%x41|PostScript...%x42|Tekst...%x43"
+
+#: src/menus.C:446
+msgid "FEX|Ll#l#L"
+msgstr ""
+
+#: src/menus.C:447
+msgid "FEX|Dd#d#D"
+msgstr ""
+
+#: src/menus.C:448
+msgid "FEX|Pp#p#P"
+msgstr ""
+
+#: src/menus.C:449
+msgid "FEX|Tt#t#T"
+msgstr ""
+
+#: src/menus.C:450
+msgid "FEX|mM#m#M"
+msgstr ""
+
+#: src/menus.C:453
+msgid "New...|New from template...|Open...%l|Close|Save|Save As...|Revert to saved%l|View dvi|View PostScript|Update dvi|Update PostScript|Build program%l|Print...|Fax..."
+msgstr "Nowy...|Nowy z szablonu...|Otwórz...%l|Zamknij|Zachowaj|Zachowaj jako...|Wróæ do zachowanego%l|Podgl±d dvi|Podgl±d PostScriptu|Aktualizuj dvi|Aktualizuj PostScript|Buduj program%l|Drukuj...|Faks..."
+
+#: src/menus.C:468 src/menus.C:662
+msgid "FM|Nn#n#N"
+msgstr ""
+
+#: src/menus.C:469 src/menus.C:663
+msgid "FM|tT#t#T"
+msgstr ""
+
+#: src/menus.C:470 src/menus.C:664
+msgid "FM|Oo#o#O"
+msgstr ""
+
+#: src/menus.C:471
+msgid "FM|Cc#c#C"
+msgstr ""
+
+#: src/menus.C:472
+msgid "FM|Ss#s#S"
+msgstr ""
+
+#: src/menus.C:473
+msgid "FM|Aa#a#A"
+msgstr ""
+
+#: src/menus.C:474
+msgid "FM|Rr#r#R"
+msgstr ""
+
+#: src/menus.C:475
+msgid "FM|dD#d#D"
+msgstr ""
+
+#: src/menus.C:476
+msgid "FM|wW#w#W"
+msgstr ""
+
+#: src/menus.C:477
+msgid "FM|vV#v#V"
+msgstr ""
+
+#: src/menus.C:478
+msgid "FM|Uu#u#U"
+msgstr ""
+
+#: src/menus.C:479
+msgid "FM|Bb#b#B"
+msgstr ""
+
+#: src/menus.C:480
+msgid "FM|Pp#p#P"
+msgstr ""
+
+#: src/menus.C:481
+msgid "FM|Ff#f#F"
+msgstr ""
+
+#: src/menus.C:521
+#, no-c-format
+msgid "|Import%m"
+msgstr "|Importuj%m"
+
+#: src/menus.C:523
+#, no-c-format
+msgid "|Export%m%l"
+msgstr "|Eksportuj%m%l"
+
+#: src/menus.C:525
+#, no-c-format
+msgid "|Exit%l"
+msgstr "|Wyj¶cie%l"
+
+#: src/menus.C:526 src/menus.C:665
+msgid "FM|Ii#i#I"
+msgstr ""
+
+#: src/menus.C:527
+msgid "FM|Ee#e#E"
+msgstr ""
+
+#: src/menus.C:528 src/menus.C:666
+msgid "FM|xX#x#X"
+msgstr ""
+
+#: src/menus.C:638
+msgid "Import%t|LaTeX...%x15|Ascii Text as Lines...%x16|Ascii Text as Paragraphs...%x17|Noweb...%x18"
+msgstr "Importuj%t|LaTeX...%x15|Tekst jako linie...%x16|Tekst jako akapity...%x17|Noweb...%x18"
+
+#: src/menus.C:657
+msgid "New...|New from template...|Open...%l|Import%m%l|Exit%l"
+msgstr "Nowy...|Nowy z szablonu...|Otwórz...%l|Importuj%m%l|Koniec%l"
+
+#: src/menus.C:747
+msgid "Floats & Insets%t|Open/Close%x21|Melt%x22|Open All Footnotes/Margin Notes%x23|Close All Footnotes/Margin Notes%x24|Open All Figures/Tables%x25|Close All Figures/Tables%x26%l|Remove all Error Boxes%x27"
+msgstr "Wstawki%t|Otwórz / Zamknij%x21|Rozbij%x22|Otwórz wszystkie przypisy na marginesach / w stopkach%x23|Zamknij wszystkie przypisy na marginesach / w stopkach%x24|Otwórz wszystkie rysunki / tabelki%x25|Zamknij wszystkie rysunki / tabelki%x26%l|Usuñ wszystkie znaczniki b³êdów%x27"
+
+#: src/menus.C:756
+msgid "EMF|Oo#o#O"
+msgstr ""
+
+#: src/menus.C:757
+msgid "EMF|Mm#m#M"
+msgstr ""
+
+#: src/menus.C:758
+msgid "EMF|Aa#a#A"
+msgstr ""
+
+#: src/menus.C:759
+msgid "EMF|Cc#c#C"
+msgstr ""
+
+#: src/menus.C:760
+msgid "EMF|Ff#f#F"
+msgstr ""
+
+#: src/menus.C:761
+msgid "EMF|Tt#t#T"
+msgstr ""
+
+#: src/menus.C:762
+msgid "EMF|Rr#r#R"
+msgstr ""
+
+#: src/menus.C:770 src/menus.C:868
+msgid "Table%t"
+msgstr "Tabela%t"
+
+#: src/menus.C:778
+msgid "|Multicolumn%B%x44%l"
+msgstr "|Multicolumn%B%x44%l"
+
+#: src/menus.C:780
+msgid "|Multicolumn%b%x44%l"
+msgstr "|Multicolumn%b%x44%l"
+
+#: src/menus.C:781
+msgid "EMT|Mm#m#M"
+msgstr "EMT|Mm#m#M"
+
+#: src/menus.C:789
+msgid "|Line Top%B%x36"
+msgstr "|Linia z góry%B%x36"
+
+#: src/menus.C:791
+msgid "|Line Top%b%x36"
+msgstr "|Linia z góry%b%x36"
+
+#: src/menus.C:792
+msgid "EMT|Tt#t#T"
+msgstr ""
+
+#: src/menus.C:800
+msgid "|Line Bottom%B%x37"
+msgstr "|Linia pod spodem%B%x37"
+
+#: src/menus.C:802
+msgid "|Line Bottom%b%x37"
+msgstr "|Linia pod spodem%b%x37"
+
+#: src/menus.C:803
+msgid "EMT|Bb#b#B"
+msgstr ""
+
+#: src/menus.C:811
+msgid "|Line Left%B%x38"
+msgstr "|Linia z lewej%B%x38"
+
+#: src/menus.C:813
+msgid "|Line Left%b%x38"
+msgstr "|Linia z lewej%b%x38"
+
+#: src/menus.C:814
+msgid "EMT|Ll#l#L"
+msgstr ""
+
+#: src/menus.C:822
+msgid "|Line Right%B%x39%l"
+msgstr "|Linia z prawej%B%x39%l"
+
+#: src/menus.C:824
+msgid "|Line Right%b%x39%l"
+msgstr "|Linia z prawej%b%x39%l"
+
+#: src/menus.C:825
+msgid "EMT|Rr#r#R"
+msgstr ""
+
+#: src/menus.C:834
+msgid "|Align Left%R%x40"
+msgstr "|Justuj w lewo%R%x40"
+
+#: src/menus.C:836
+msgid "|Align Left%r%x40"
+msgstr "|Justuj w lewo%r%x40"
+
+#: src/menus.C:837
+msgid "EMT|eE#e#E"
+msgstr ""
+
+#: src/menus.C:840
+msgid "|Align Right%R%x41"
+msgstr "|Justuj w prawo%R%x41"
+
+#: src/menus.C:842
+msgid "|Align Right%r%x41"
+msgstr "|Justuj w prawo%r%x41"
+
+#: src/menus.C:843
+msgid "EMT|iI#i#I"
+msgstr ""
+
+#: src/menus.C:846
+msgid "|Align Center%R%x42%l"
+msgstr "|Wycentruj%R%x42%l"
+
+#: src/menus.C:848
+msgid "|Align Center%r%x42%l"
+msgstr "|Wycentruj%r%x42%l"
+
+#: src/menus.C:849
+msgid "EMT|Cc#c#C"
+msgstr ""
+
+#: src/menus.C:852
+#, no-c-format
+msgid "|Append Row%x32"
+msgstr "|Do³±cz wiersz%x32"
+
+#: src/menus.C:853
+msgid "EMT|oO#o#O"
+msgstr "EMT|oO#o#O"
+
+#: src/menus.C:855
+#, no-c-format
+msgid "|Append Column%x33%l"
+msgstr "|Do³±cz kolumnê%x33%l"
+
+#: src/menus.C:856
+msgid "EMT|uU#u#U"
+msgstr "EMT|uU#u#U"
+
+#: src/menus.C:858
+#, no-c-format
+msgid "|Delete Row%x34"
+msgstr "|Usuñ wiersz%x34"
+
+#: src/menus.C:859
+msgid "EMT|wW#w#W"
+msgstr "EMT|wW#w#W"
+
+#: src/menus.C:861
+#, no-c-format
+msgid "|Delete Column%x35%l"
+msgstr "|Usuñ kolumnê%x35%l"
+
+#: src/menus.C:862
+msgid "EMT|nN#n#N"
+msgstr "EMT|nN#n#N"
+
+#: src/menus.C:864
+#, no-c-format
+msgid "|Delete Table%x43"
+msgstr "|Usuñ tabelê%x43"
+
+#: src/menus.C:865
+msgid "EMT|Dd#d#D"
+msgstr "EMT|Dd#d#D"
+
+#: src/menus.C:870
+#, no-c-format
+msgid "|Insert table%x31"
+msgstr "|Wstaw tabelê%x31"
+
+#: src/menus.C:871
+msgid "EMT|Ii#i#I"
+msgstr "EMT|Ii#i#I"
+
+#: src/menus.C:875
+msgid "Version Control%t"
+msgstr "Kontrola wersji%t"
+
+#: src/menus.C:878
+#, no-c-format
+msgid "|Register%d%x51"
+msgstr "|Rejestruj%d%x51"
+
+#. signifies that the file is not checked out
+#: src/menus.C:882
+#, no-c-format
+msgid "|Check In Changes%d%x52"
+msgstr "|Nanie¶ zmiany i zablokuj%d%x52"
+
+#: src/menus.C:884
+#, no-c-format
+msgid "|Check Out for Edit%x53"
+msgstr "|Odblokuj i edytuj%x53"
+
+#. signifies that the file is checked out
+#: src/menus.C:888
+#, no-c-format
+msgid "|Check In Changes%x52"
+msgstr "|Nanie¶ zmiany i zablokuj%x52"
+
+#: src/menus.C:890
+#, no-c-format
+msgid "|Check Out for Edit%d%x53"
+msgstr "|Odblokuj i edytuj%d%x53"
+
+#: src/menus.C:893
+#, no-c-format
+msgid "|Revert to last version%x54"
+msgstr "|Wróæ do ostatniej wersji%x54"
+
+#: src/menus.C:895
+#, no-c-format
+msgid "|Undo last check in%x55"
+msgstr "|Usuñ ostatnio naniesione zmiany%x55"
+
+#: src/menus.C:897
+#, no-c-format
+msgid "|Show History%x56"
+msgstr "|Poka¿ historiê%x56"
+
+#: src/menus.C:900
+#, no-c-format
+msgid "|Register%x51"
+msgstr "|Rejestruj%x51"
+
+#. the shortcuts are not good.
+#: src/menus.C:903
+msgid "EMV|Rr#r#R"
+msgstr "EMV|Rr#r#R"
+
+#: src/menus.C:904
+msgid "EMV|Ii#i#I"
+msgstr "EMV|Ii#i#I"
+
+#: src/menus.C:905
+msgid "EMV|Oo#o#O"
+msgstr "EMV|Oo#o#O"
+
+#: src/menus.C:906
+msgid "EMV|lL#l#l"
+msgstr "EMV|lL#l#l"
+
+#: src/menus.C:907
+msgid "EMV|Uu#u#U"
+msgstr "EMV|Uu#u#U"
+
+#: src/menus.C:908
+msgid "EMV|Hh#h#H"
+msgstr "EMV|Hh#h#H"
+
+#: src/menus.C:911
+msgid "Undo|Redo %l|Cut|Copy|Paste%l|Find & Replace...|Go to Error|Go to Note|Floats & Insets%m|Table%m|Spellchecker....|Check TeX|Table of Contents...%l|Version Control%m%l|View LaTeX log file%l|Paste Primary Selection as Lines|Paste Primary Selection as Paragraphs"
+msgstr "Cofnij|Powtórz %l|Wytnij|Kopiuj|Wklej%l|Znajd¼ i zamieñ...|Id¼ do b³êdu|Id¼ do Notki|Wstawki%m|Tabele%m|Pisownia....|Check TeX|Spis tre¶ci...%l|Kontrola wersji%m%l|Komunikaty LateXa%l|Wklej nadrzêdne zaznaczenie jako linie|Wklej nadrzêdne zaznaczenie jako akapity"
+
+#: src/menus.C:930
+msgid "EM|Uu#u#U"
+msgstr ""
+
+#: src/menus.C:931
+msgid "EM|Rr#r#R"
+msgstr ""
+
+#: src/menus.C:932
+msgid "EM|Cc#c#C"
+msgstr ""
+
+#: src/menus.C:933
+msgid "EM|oO#o#O"
+msgstr ""
+
+#: src/menus.C:934
+msgid "EM|Pp#p#P"
+msgstr ""
+
+#: src/menus.C:935
+msgid "EM|Ff#f#F"
+msgstr ""
+
+#: src/menus.C:936
+msgid "EM|Ee#e#E"
+msgstr ""
+
+#: src/menus.C:937
+msgid "EM|Nn#n#N"
+msgstr ""
+
+#: src/menus.C:938
+msgid "EM|Ii#i#I"
+msgstr ""
+
+#: src/menus.C:939
+msgid "EM|Tt#t#T"
+msgstr ""
+
+#: src/menus.C:940
+msgid "EM|Ss#s#S"
+msgstr ""
+
+#: src/menus.C:941
+msgid "EM|hH#h#H"
+msgstr ""
+
+#: src/menus.C:942
+msgid "EM|aA#a#A"
+msgstr ""
+
+#: src/menus.C:943
+msgid "EM|Vv#v#V"
+msgstr ""
+
+#: src/menus.C:944
+msgid "EM|wW#w#W"
+msgstr ""
+
+#: src/menus.C:945
+msgid "EM|Ll#l#L"
+msgstr ""
+
+#: src/menus.C:946
+msgid "EM|gG#g#G"
+msgstr ""
+
+#: src/menus.C:1071
+msgid "Character...|Paragraph...|Document...|Paper...|Table...|Quotes...%l|Emphasize Style%b|Noun Style%b|Bold Style%b|TeX Style%b|Change Environment Depth|LaTeX Preamble...%l|Save layout as default"
+msgstr "Czcionki...|Akapity...|Dokumenty...|Papier...|Tabele...|Cudzys³owy...%l|Kursywa%b|Kapitaliki%b|Pogrubienie%b|Polecenie TeXa%b|Zmieñ g³êboko¶æ ¶rodowiska|Preambu³a LaTeXa...%l|Zachowaj ustawienia jako domy¶lne"
+
+#: src/menus.C:1084
+msgid "LM|Cc#c#C"
+msgstr ""
+
+#: src/menus.C:1085
+msgid "LM|Pp#p#P"
+msgstr ""
+
+#: src/menus.C:1086
+msgid "LM|Dd#d#D"
+msgstr ""
+
+#: src/menus.C:1087
+msgid "LM|aA#a#A"
+msgstr ""
+
+#: src/menus.C:1088
+msgid "LM|eE#e#E"
+msgstr ""
+
+#: src/menus.C:1089
+msgid "LM|Qq#q#Q"
+msgstr ""
+
+#: src/menus.C:1090
+msgid "LM|mM#m#M"
+msgstr ""
+
+#: src/menus.C:1091
+msgid "LM|Nn#n#N"
+msgstr ""
+
+#: src/menus.C:1092
+msgid "LM|Bb#b#B"
+msgstr ""
+
+#: src/menus.C:1093
+msgid "LM|Tt#t#T"
+msgstr ""
+
+#: src/menus.C:1094
+msgid "LM|vV#v#V"
+msgstr ""
+
+#: src/menus.C:1095
+msgid "LM|Ll#l#L"
+msgstr ""
+
+#: src/menus.C:1096
+msgid "LM|Ss#s#S"
+msgstr ""
+
+#: src/menus.C:1166
+msgid "Import ASCII file%t|As Lines%x41|As Paragraphs%x42"
+msgstr "Importuj plik tekstowy%t|Jako linie %x41|Jako akapity%x42"
+
+#: src/menus.C:1169
+msgid "IMA|Ll#l#L"
+msgstr ""
+
+#: src/menus.C:1170
+msgid "IMA|Pp#p#P"
+msgstr ""
+
+#: src/menus.C:1173
+msgid "Lists & TOC%t|Table of Contents%x21|List of Figures%x22|List of Tables%x23|List of Algorithms%x24|Index List%x25|BibTeX Reference%x26"
+msgstr "Listy i spisy%t|Spis tre¶ci%x21|Spis rysunków%x22|Spis tabel%x23|Spis algorytmów%x24|Indeks%x25|Cytowania literaturowe (BibTeX)%x26"
+
+#: src/menus.C:1180
+msgid "IMT|Cc#c#C"
+msgstr ""
+
+#: src/menus.C:1181
+msgid "IMT|Ff#f#F"
+msgstr ""
+
+#: src/menus.C:1182
+msgid "IMT|Tt#t#T"
+msgstr ""
+
+#: src/menus.C:1183
+msgid "IMT|Aa#a#A"
+msgstr ""
+
+#: src/menus.C:1184
+msgid "IMT|Ii#i#I"
+msgstr ""
+
+#: src/menus.C:1185
+msgid "IMT|Bb#b#B"
+msgstr ""
+
+#: src/menus.C:1197
+msgid "Floats%t|Figure Float%x71|Table Float%x72|Wide Figure Float%x73|Wide Table Float%l%x74|Algorithm Float%x75"
+msgstr "Wstawki%t|Rysunek%x71|Tabelka%x72|Szeroki rysunek%x73|Szeroka tabelka%l%x74|Algorytm%x75"
+
+#. }
+#: src/menus.C:1204
+msgid "IMF|gG#g#G"
+msgstr ""
+
+#: src/menus.C:1205
+msgid "IMF|Tt#t#T"
+msgstr ""
+
+#: src/menus.C:1206
+msgid "IMF|Ww#w#W"
+msgstr ""
+
+#: src/menus.C:1207
+msgid "IMF|iI#i#I"
+msgstr ""
+
+#: src/menus.C:1208
+msgid "IMF|Aa#a#A"
+msgstr ""
+
+#: src/menus.C:1211
+msgid "Special Character%t|HFill%x31|Hyphenation Point%x32|Protected Blank%x33|Linebreak%x34|Ellipsis (...)%x35|End of sentence period%x36|Ordinary Quote (\")%x37|Menu Separator %x38"
+msgstr "Znaki specjalne%t|HFill%x31|Punkt dzielenia wyrazu%x32|Twarda spacja%x33|Z³amanie linii%x34|Wielokropek (...)%x35|Kropka koñcz±ca zdanie%x36|Zwyk³y cudzys³ów (\")%x37|Menu Separator %x38"
+
+#: src/menus.C:1221
+msgid "IMS|Hh#h#H"
+msgstr ""
+
+#: src/menus.C:1222
+msgid "IMS|Pp#p#P"
+msgstr ""
+
+#: src/menus.C:1223
+msgid "IMS|Bb#b#B"
+msgstr ""
+
+#: src/menus.C:1224
+msgid "IMS|Ll#l#L"
+msgstr ""
+
+#: src/menus.C:1225
+msgid "IMS|iI#i#I"
+msgstr ""
+
+#: src/menus.C:1226
+msgid "IMS|Ee#e#E"
+msgstr ""
+
+#: src/menus.C:1227
+msgid "IMS|Qq#q#Q"
+msgstr ""
+
+#: src/menus.C:1228
+msgid "IMS|Mm#m#M"
+msgstr ""
+
+#: src/menus.C:1231
+msgid "Figure...|Table...%l|Include File...|Import ASCII File%m|Insert LyX File...%l|Footnote|Margin Note|Floats%m%l|Lists & TOC%m%l|Special Character%m%l|Note...|Label...|Cross-Reference...|Citation Reference...|Index entry...|Index entry of last word"
+msgstr "Rysunek...|Tabelkê...%l|Wstaw plik...|Importuj plik tekstowy%m|Wstaw plik LyXa...%l|Przypis|Notatka marginesowa|Wstawki%m%l|Listy i spisy%m%l|Znaki specjalne%m%l|Notka...|Etykieta...|Odno¶nik wewnêtrzny...|Cytowanie...|S³owo do indeksu...|To s³owo do indeksu"
+
+#: src/menus.C:1252
+msgid "IM|gG#g#G"
+msgstr ""
+
+#: src/menus.C:1253
+msgid "IM|bB#b#B"
+msgstr ""
+
+#: src/menus.C:1254
+msgid "IM|cC#c#C"
+msgstr ""
+
+#: src/menus.C:1255
+msgid "IM|Aa#a#A"
+msgstr ""
+
+#: src/menus.C:1256
+msgid "IM|Xx#x#X"
+msgstr ""
+
+#: src/menus.C:1257
+msgid "IM|Ff#f#F"
+msgstr ""
+
+#: src/menus.C:1258
+msgid "IM|Mm#m#M"
+msgstr ""
+
+#: src/menus.C:1259
+msgid "IM|oO#o#O"
+msgstr ""
+
+#: src/menus.C:1260
+msgid "IM|Tt#t#T"
+msgstr ""
+
+#: src/menus.C:1261
+msgid "IM|Ss#s#S"
+msgstr ""
+
+#: src/menus.C:1262
+msgid "IM|Nn#n#N"
+msgstr ""
+
+#: src/menus.C:1263
+msgid "IM|Ll#l#L"
+msgstr ""
+
+#: src/menus.C:1264
+msgid "IM|rR#r#R"
+msgstr ""
+
+#: src/menus.C:1265
+msgid "IM|iI#i#I"
+msgstr ""
+
+#: src/menus.C:1266
+msgid "IM|dD#d#D"
+msgstr ""
+
+#: src/menus.C:1267
+msgid "IM|wW#w#W"
+msgstr ""
+
+#: src/menus.C:1273
+msgid "|URL..."
+msgstr "|URL..."
+
+#: src/menus.C:1274
+msgid "IM|Uu#u#U"
+msgstr ""
+
+#: src/menus.C:1388
+msgid "Fraction|Square root|Exponent|Index|Sum|Integral%l|Math mode|Display%l|Math Panel..."
+msgstr "U³amek|Pierwiastek kwadratowy|Eksponent|Indeks|Suma|Ca³ka%l|Tryb matematyczny|Tryb Display%l|Panel..."
+
+#: src/menus.C:1398
+msgid "MM|Ff#f#F"
+msgstr ""
+
+#: src/menus.C:1399
+msgid "MM|Ss#s#S"
+msgstr ""
+
+#: src/menus.C:1400
+msgid "MM|Ee#e#E"
+msgstr ""
+
+#: src/menus.C:1401
+msgid "MM|xX#x#X"
+msgstr ""
+
+#: src/menus.C:1402
+msgid "MM|uU#u#U"
+msgstr ""
+
+#: src/menus.C:1403
+msgid "MM|Ii#i#I"
+msgstr ""
+
+#: src/menus.C:1404
+msgid "MM|Mm#m#M"
+msgstr ""
+
+#: src/menus.C:1405
+msgid "MM|Dd#d#D"
+msgstr ""
+
+#: src/menus.C:1406
+msgid "MM|Pp#p#P"
+msgstr ""
+
+#: src/menus.C:1472
+msgid "Screen Fonts...|Spellchecker Options...|Keyboard...|LaTeX...%l|Reconfigure"
+msgstr "Czcionki ekranowe...|Sprawdzanie pisowni...|Klawiatura...|LaTeX...%l|Rekonfiguruj"
+
+#: src/menus.C:1478
+msgid "OM|Ff#f#F"
+msgstr ""
+
+#: src/menus.C:1479
+msgid "OM|Ss#s#S"
+msgstr ""
+
+#: src/menus.C:1480
+msgid "OM|Kk#k#K"
+msgstr ""
+
+#: src/menus.C:1481
+msgid "OM|Ll#l#L"
+msgstr ""
+
+#: src/menus.C:1482
+msgid "OM|Rr#r#R"
+msgstr ""
+
+#: src/menus.C:1551
+msgid "Introduction|Tutorial|User's Guide|Extended Features|Customization|Reference Manual|Known Bugs|LaTeX Configuration%l|Copyright and Warranty...|Credits...|Version..."
+msgstr "Wprowadzenie|Samouczek|Podrêcznik U¿ytkownika|Zaawansowane mo¿liwo¶ci|Konfiguracja|Podrêcznik Programisty|Znane b³êdy|Konfiguracja LaTeXa%l|Prawa i zastrze¿enia...|Autorzy...|Wersja..."
+
+#: src/menus.C:1563
+msgid "HM|Ii#I#i"
+msgstr ""
+
+#: src/menus.C:1564
+msgid "HM|Tt#T#t"
+msgstr ""
+
+#: src/menus.C:1565
+msgid "HM|Uu#U#u"
+msgstr ""
+
+#: src/menus.C:1566
+msgid "HM|xX#x#X"
+msgstr ""
+
+#: src/menus.C:1567
+msgid "HM|Cc#C#c"
+msgstr ""
+
+#: src/menus.C:1568
+msgid "HM|Rr#R#r"
+msgstr ""
+
+#: src/menus.C:1569
+msgid "HM|Kk#K#k"
+msgstr ""
+
+#: src/menus.C:1570
+msgid "HM|Ll#L#l"
+msgstr ""
+
+#: src/menus.C:1571
+msgid "HM|oO#o#O"
+msgstr ""
+
+#: src/menus.C:1572
+msgid "HM|eE#e#E"
+msgstr ""
+
+#: src/menus.C:1573
+msgid "HM|Vv#v#V"
+msgstr ""
+
+#: src/menus.C:1596
+msgid "LyX Version "
+msgstr "Wersja LyXa "
+
+#: src/menus.C:1597
+msgid " of "
+msgstr " z "
+
+#: src/menus.C:1598
+msgid "Library directory: "
+msgstr "Katalog bibliotek: "
+
+#: src/menus.C:1600
+msgid "User directory: "
+msgstr "Katalog u¿ytkownika: "
+
+#: src/menus.C:1612
+msgid "Opening help file"
+msgstr "Otwieranie pliku pomocy"
+
+#: src/minibuffer.C:56
+msgid "Executing:"
+msgstr "Wykonujê:"
+
+#. this is a hack
+#: src/minibuffer.C:195
+msgid "* No document open *"
+msgstr "* Brak otwartych dokumentów *"
+
+#: src/minibuffer.h:22
+msgid "Welcome to LyX!"
+msgstr "Witaj w LyXie!"
+
+#: src/paragraph.C:1676
+msgid "Senseless with this layout!"
+msgstr "Bez sensu w tej konfiguracji!"
+
+#: src/pathstack.C:55 src/pathstack.C:83
+msgid "Error: Could not change to directory: "
+msgstr "B³±d: Nie mo¿na przej¶æ do katalogu: "
+
+#: src/pathstack.C:74
+msgid "LyX Internal Error:"
+msgstr "B³±d wewnêtrzny LyXa:"
+
+#: src/pathstack.C:74
+msgid "Path Stack underflow."
+msgstr ""
+
+#: src/print_form.C:21
+msgid "Print to"
+msgstr "Drukuj"
+
+#: src/print_form.C:31
+msgid "Printer|#P"
+msgstr "Na drukarkê|#d"
+
+#: src/print_form.C:33
+msgid "File|#F"
+msgstr "Do pliku|#p"
+
+#: src/print_form.C:52
+msgid "All Pages|#G"
+msgstr "Wszystkie strony|#W"
+
+#: src/print_form.C:54
+msgid "Only Odd Pages|#O"
+msgstr "Nieparzyste|#N"
+
+#: src/print_form.C:56
+msgid "Only Even Pages|#E"
+msgstr "Parzyste|#P"
+
+#: src/print_form.C:62
+msgid "Normal Order|#N"
+msgstr "Normalna|#N"
+
+#: src/print_form.C:64
+msgid "Reverse Order|#R"
+msgstr "Odwrotna|#o"
+
+#: src/print_form.C:68
+msgid "Order"
+msgstr "Kolejno¶æ"
+
+#: src/print_form.C:76
+msgid "Pages:"
+msgstr "Strona: "
+
+#: src/print_form.C:81
+msgid "Copies"
+msgstr "Kopiuj"
+
+#: src/print_form.C:85
+msgid "Count:"
+msgstr "Komenta¿:"
+
+#: src/print_form.C:88
+msgid "Unsorted|#U"
+msgstr "Usuñ ramki|#ñ"
+
+#: src/print_form.C:107
+msgid "File Type"
+msgstr "Typ pkiku"
+
+#: src/print_form.C:111
+msgid "Command:|#C"
+msgstr "Polecenie:|#P"
+
+#: src/print_form.C:125
+msgid "DVI|#D"
+msgstr "DVI|#D"
+
+#: src/print_form.C:127
+msgid "Postscript|#P"
+msgstr "Postscript|#P"
+
+#: src/print_form.C:129
+msgid "LaTeX|#T"
+msgstr "LaTeX|#T"
+
+#: src/print_form.C:132
+msgid "LyX|#L"
+msgstr "LyX|#L"
+
+#: src/print_form.C:134
+msgid "Ascii|#s"
+msgstr "Ascii|#s"
+
+#: src/sp_form.C:26
+msgid "Use language of document|#D"
+msgstr "U¿yj s³ownika jêzyka dokumnentu|#d"
+
+#: src/sp_form.C:28
+msgid "Use alternate language:|#U"
+msgstr "U¿yj s³ownika innego jêzyka:|#U"
+
+#: src/sp_form.C:34
+msgid "Treat run-together words as legal|#T"
+msgstr "Akceptuj s³owa z ³±cznikiem|#t"
+
+#: src/sp_form.C:36
+msgid "Input Encoding switch to ispell|#I"
+msgstr "Opcja kodowania dla ispella|#i"
+
+#: src/sp_form.C:46
+msgid "Use alternate personal dictionary:|#P"
+msgstr "U¿yj alternatywnego osobistego s³ownika:|#a"
+
+#: src/sp_form.C:48
+msgid "Extra special chars allowed in words:|#E"
+msgstr "Znaki specjalne akceptowane w s³owach:|#s"
+
+#: src/sp_form.C:54
+msgid "Dictionary"
+msgstr "S³ownik"
+
+#: src/sp_form.C:86
+msgid "Replace"
+msgstr "Zamieñ"
+
+#: src/sp_form.C:88
+msgid ""
+"Near\n"
+"Misses"
+msgstr "Podobne"
+
+#: src/sp_form.C:91
+msgid "Spellchecker Options...|#O"
+msgstr "Opcje...|#O"
+
+#: src/sp_form.C:93
+msgid "Start spellchecking|#S"
+msgstr "Rozpocznij sprawdzanie|#s"
+
+#: src/sp_form.C:95
+msgid "Insert in personal dictionary|#I"
+msgstr "Dodaj do osobistego s³ownika|#D"
+
+#: src/sp_form.C:97
+msgid "Ignore word|#g"
+msgstr "Ignoruj s³owo|#I"
+
+#: src/sp_form.C:99
+msgid "Accept word in this session|#A"
+msgstr "Akceptuj s³owo na czas tej sesji|#A"
+
+#: src/sp_form.C:101
+msgid "Stop spellchecking|#T"
+msgstr "Zatrzymaj sprawdzanie pisowni|#t"
+
+#: src/sp_form.C:103
+msgid "Close Spellchecker|#C^["
+msgstr "Zamknij|#^["
+
+#: src/sp_form.C:106
+#, no-c-format
+msgid "0 %"
+msgstr "0 %"
+
+#: src/sp_form.C:110
+#, no-c-format
+msgid "100 %"
+msgstr "100 %"
+
+#: src/sp_form.C:113
+msgid "Replace word|#R"
+msgstr "Zamieñ s³owo|#Z"
+
+#: src/spellchecker.C:222
+msgid "Spellchecker Options"
+msgstr "Opcje"
+
+#: src/spellchecker.C:525
+msgid "Spellchecker"
+msgstr "Sprawd¼ pisowniê"
+
+#: src/spellchecker.C:632
+msgid ""
+"\n"
+"\n"
+"The ispell-process has died for some reason. *One* possible reason\n"
+"could be that you do not have a dictionary file\n"
+"for the language of this document installed.\n"
+"Check /usr/lib/ispell or set another\n"
+"dictionary in the Spellchecker Options menu."
+msgstr ""
+"\n"
+"\n"
+"Sprawdzanie pisowni zakoñczy³o sie z nieznanego powodu.\n"
+"Jednym z powodów mo¿e byæ brak s³ownika dla jêzyka tego dokumentu.\n"
+"Sprawd¼ katalog \"/usr/lib/ispell\" lub u¿yj innego s³ownika\n"
+"w menu \"Opcje\"."
+
+#: src/spellchecker.C:748
+msgid " words checked."
+msgstr " s³ów sprawdzono."
+
+#: src/spellchecker.C:750
+msgid " word checked."
+msgstr " s³owo sprawdzono."
+
+#: src/spellchecker.C:752
+msgid "Spellchecking completed!"
+msgstr "Sprawdzanie pisowni zakoñczone!"
+
+#: src/spellchecker.C:756
+msgid ""
+"The ispell-process has died for some reason.\n"
+"Maybe it has been killed."
+msgstr ""
+"Nie mo¿na odszukaæ procesu ispell-a.\n"
+"Prawdopodobnie zosta³ zabity."
+
+#: src/text.C:1883
+msgid "Multicolumns can only be horizontally."
+msgstr "Trybu Multicolumn mo¿na u¿ywaæ tylko w poziomie."
+
+#. the user inserted a space before a space. So we
+#. * will just make a CursorRight. BUT: The font of this
+#. * space should be set to current font. That is why
+#. * we need to rebreak perhaps. If there is a protected
+#. * blank at the end of a row we have to force
+#. * a rebreak.
+#: src/text.C:2291 src/text.C:2310
+msgid "You cannot type two spaces this way.  Please read the Tutorial."
+msgstr "Nie mo¿na wstawiæ dwu spacji w ten sposób. Przeczytaj, proszê, Samouczek."
+
+#: src/text.C:2308
+msgid "You cannot insert a space at the beginning of a paragraph.  Please read the Tutorial."
+msgstr "Nie mo¿na wstawiæ spacji na pocz±tku akapitu. Przeczytaj, proszê, Samouczek."
+
+#: src/text.C:3935 src/text.C:3943 src/text.C:3960 src/text.C:3975 src/text2.C:1817 src/text2.C:1827 src/text2.C:2033 src/text2.C:2043 src/text2.C:2135 src/text2.C:2144
+msgid "Impossible operation"
+msgstr "Operacja niemo¿liwa"
+
+#: src/text.C:3936
+msgid "You can't insert a float in a float!"
+msgstr "Nie mo¿na umie¶ciæ wstawki w innej wstawce!"
+
+#: src/text.C:3944
+msgid "You can't insert a marginpar in a minipage!"
+msgstr "Nie mo¿na wstawiaæ notki marginesowej w Minipage!"
+
+#: src/text.C:3960
+msgid "Cannot cut table."
+msgstr "Nie mo¿na wyci±æ tabeli."
+
+#: src/text.C:3976
+msgid "Float would include float!"
+msgstr "Wstawka móg³aby zawieraæ inn± wstawkê!"
+
+#: src/text2.C:337
+msgid "Opened float"
+msgstr "Otwarta wstawka"
+
+#: src/text2.C:340
+msgid "Closed float"
+msgstr "Zamkniêta wstawka"
+
+#: src/text2.C:378
+msgid "Nothing to do"
+msgstr "Nic do zrobienia"
+
+#. Could only happen with user style
+#: src/text2.C:1077
+msgid "No font change defined. Use Character under the Layout menu to define font change."
+msgstr "Operacja zmiany fontu nie jest zdefiniowana. Podaj j± w menu Ustawienia/Czcionki."
+
+#: src/text2.C:1817 src/text2.C:2033
+msgid "Don't know what to do with half floats."
+msgstr "Nie wiem co zrobiæ z po³ow± wstawki."
+
+#: src/text2.C:1817 src/text2.C:1827 src/text2.C:2033 src/text2.C:2043
+msgid "sorry."
+msgstr "przykro mi."
+
+#: src/text2.C:1827 src/text2.C:2043
+msgid "Don't know what to do with half tables."
+msgstr "Nie wiem co zrobiæ z po³ow± tabelki."
+
+#: src/text2.C:2136
+msgid "Can't paste float into float!"
+msgstr "Nie mo¿na wkleiæ wstawki w inn± wstawkê!"
+
+#: src/text2.C:2145
+msgid "Table cell cannot include more than one paragraph!"
+msgstr "Komórka nie mo¿e zawieraæ wiêcej ni¿ jedego akapitu!"
+
+#~ msgid "Index: "
+#~ msgstr "Indeks: "

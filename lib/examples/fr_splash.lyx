@@ -1,0 +1,155 @@
+#This file was created by <chretien> Tue Apr 27 17:38:30 1999
+#LyX 1.0 (C) 1995-1999 Matthias Ettrich and the LyX Team
+\lyxformat 2.15
+\textclass article
+\language french
+\inputencoding default
+\fontscheme default
+\graphics default
+\paperfontsize default
+\spacing single 
+\papersize Default
+\paperpackage a4
+\use_geometry 0
+\use_amsmath 0
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language french
+\quotes_times 2
+\papercolumns 1
+\papersides 1
+\paperpagestyle empty
+
+\layout Title
+
+Bienvenue dans l'univers de LyX!
+\layout Section*
+
+Le Top N des choses à connaître pour utiliser LyX
+\layout Enumerate
+
+LyX est fourni avec une excellente documentation --- servez-vous-en s'il
+ vous plaît! Vous pouvez commencer par 
+\family sans 
+\bar under 
+A
+\bar default 
+ide
+\bar under 
+\SpecialChar \menuseparator
+I
+\bar default 
+ntroduction
+\family default 
+, qui donne une brève description de la documentation.
+ Vous pourrez ensuite apprendre à vous servir de LyX avec 
+\family sans 
+\bar under 
+A
+\bar default 
+ide\SpecialChar \menuseparator
+Manuel
+\protected_separator 
+d'Apprentissage.
+ 
+\family default 
+Seul le titre des autres documents est traduit en français pour le moment.
+\layout Enumerate
+
+LyX est ce qu'on appelle un 
+\begin_inset Quotes fld
+\end_inset 
+
+constructeur de documents
+\begin_inset Quotes frd
+\end_inset 
+
+.
+ Par sa conception, il se distingue des traitements de texte ordinaires
+ --- en ce sens qu'il facilite l'écriture des documents.
+ Mais la distinction est minime, ne vous inquiétez pas.
+ La documentation est là pour faire toute la lumière la-dessus
+\begin_float footnote 
+\layout Standard
+
+Avons-nous déjà mentionné que vous devez lire la documentation? 
+\end_float 
+.
+\layout Enumerate
+
+Les résultats de mise en page de LyX sont très esthétiques! Sélectionnez
+ 
+\family sans 
+\bar under 
+F
+\bar default 
+ichier\SpecialChar \menuseparator
+Visualisez
+\protected_separator 
+
+\bar under 
+d
+\bar default 
+vi
+\family default 
+ pour vous en convaincre.
+\layout Enumerate
+
+Oui! LyX est capable d'imiter (presque) toutes les fonctionnalités de LaTeX.
+ Et de nouveau Oui! LyX sait lire les fichiers LaTeX.
+ Les utilisateurs de LaTeX peuvent survoler le 
+\emph on 
+Manuel
+\emph default 
+ 
+\emph on 
+d'Apprentissage
+\emph default 
+ et passer au chapitre 
+\begin_inset Quotes fld
+\end_inset 
+
+LyX pour les connaisseurs de LaTeX
+\begin_inset Quotes frd
+\end_inset 
+
+.
+ (Pour tous les autres: ne vous inquiétez pas, vous n'avez pas besoin de
+ connaître LaTeX pour vous servir de LyX).
+\layout Enumerate
+
+LyX possède de nombreuses fonctionnalités pour ceux qui lisent ou écrivent
+ d'autres langages que l'anglais.
+ De plus, le clavier, la barre d'outils et beaucoup d'autres caractéristiques
+ sont pleinement configurables (pour la plupart en éditant votre fichier
+ 
+\family typewriter 
+lyxrc
+\family default 
+).
+ Voir le fichier 
+\family sans 
+\bar under 
+A
+\bar default 
+ide
+\bar under 
+\SpecialChar \menuseparator
+P
+\bar default 
+ersonnalisation 
+\family default 
+pour les détails.
+\layout Enumerate
+
+Le site web de LyX est 
+\family typewriter 
+www.lyx.org
+\family default 
+.
+ Vous pouvez y piocher des informations, souscrire à l'une ou l'autre des
+ listes de distributions, faire le tour de LyX (par l'image), et plus encore.
+\the_end

@@ -1,0 +1,311 @@
+# This file is part of
+# ==================================================================
+#
+#                  LyX, the High Level Word Processor
+# 
+#                 Copyright (C) 1995-1997 The LyX Team
+#
+# ==================================================================
+
+# Key bindings for menus, both invisible and visible.
+
+# Note que trocamos a tecla f10 para Control para abrir os menus
+# Pedro Kröger <kroger@e-net.com.br>
+# 03/22/1999
+# 0.3 version [não-revisada]
+
+# Abre os menus
+#
+
+\bind "C-a"			"menu-open Arquivo"
+\bind "C-e"			"menu-open Editar"
+\bind "C-f"			"menu-open Formatação"
+\bind "C-i"			"menu-open Inserir"
+\bind "C-m"			"menu-open Matemático"
+\bind "C-o"			"menu-open Opções"
+\bind "C-d"			"menu-open Documentos"
+\bind "C-u"			"menu-open Ajuda"
+
+
+#
+# Arquivo
+#
+
+\bind "M-a n"			"buffer-new"
+\bind "M-a m"			"buffer-new-template"
+\bind "M-a a"			"buffer-open"
+\bind "M-a f"			"buffer-close"
+\bind "M-a l"			"buffer-write"
+\bind "M-a c"			"buffer-write-as"
+\bind "M-a r"			"buffer-reload"
+\bind "M-a d"			"buffer-view"
+\bind "M-a o"			"buffer-view-ps"
+\bind "M-a v"			"buffer-typeset"
+\bind "M-a z"			"buffer-typeset-ps"
+\bind "M-a p"			"buffer-print" 
+\bind "M-a x"			"buffer-fax"
+\bind "M-a i l"                 "buffer-import latex"
+\bind "M-a i a"                 "buffer-import ascii"
+\bind "M-a i p"                 "buffer-import asciiparagraph"
+\bind "M-a e l"                 "buffer-export latex"
+\bind "M-a e p"                 "buffer-export postscript"
+\bind "M-a e d"                 "buffer-export linuxdoc"
+\bind "M-a e t"                 "buffer-export ascii"
+\bind "M-a e m"                 "buffer-export custom"
+\bind "M-a s"			"lyx-quit"
+\bind "M-a space"		"menu-open Arquivo" 
+#bind "M-a l"			"file-last"		# Not yet implemented.
+
+#
+#  Editar
+#
+
+#bind "M-e t"			"table"			# Not yet implemented!
+\bind "M-e c"			"cut"
+\bind "M-e e"			"error-next"
+\bind "M-e s"			"find-replace"
+\bind "M-e k"			"line-delete-forward"
+\bind "M-e m"			"mark-on"
+\bind "M-e S-M"			"mark-off"
+\bind "M-e n"			"note-next"
+\bind "M-e o"			"copy"
+\bind "M-e p"			"paste"
+\bind "M-e r"			"redo"
+\bind "M-e g"			"spellchecker"
+\bind "M-e t"			"buffer-chktex"
+\bind "M-e i"			"toc-view"
+\bind "M-e u"			"undo"
+\bind "M-e x"			"latex-view-log"
+\bind "M-e space"		"menu-open Edit" 
+
+#
+# Formatação
+#
+
+\bind "M-f c"			"layout-character"
+\bind "M-f r"			"layout-paragraph"
+\bind "M-f d"			"layout-document"
+\bind "M-f p"			"layout-paper"
+\bind "M-f t"			"layout-table"
+\bind "M-f i"			"layout-quotes" 
+\bind "M-f e"			"font-emph" 
+\bind "M-f s"			"font-noun" 
+\bind "M-f n"			"font-bold" 
+\bind "M-f t"			"tex-mode" 
+\bind "M-f v"			"depth-next"
+\bind "M-f l"			"layout-preamble"
+\bind "M-f a"			"layout-save-default"
+\bind "M-f space"		"menu-open Layout"  
+\bind "M-f i"			"buffer-itemize-bullets-select"
+
+
+#
+# Inserir
+#
+
+\bind "M-i g"			"figure-insert"
+\bind "M-i b"			"table-insert"
+\bind "M-i a"			"buffer-child-insert"
+\bind "M-i i l"			"file-insert-ascii line"         
+\bind "M-i i p"			"file-insert-ascii paragraph"
+\bind "M-i x"			"file-insert"
+\bind "M-i r"			"footnote-insert"
+\bind "M-i m"			"marginpar-insert"
+
+# PREVIOUS PATCH
+\bind "M-i f f"			"buffer-float-insert figure" 
+\bind "M-i f t"			"buffer-float-insert table"
+\bind "M-i f l"			"buffer-float-insert wide-fig"
+\bind "M-i f b"			"buffer-float-insert wide-tab"
+\bind "M-i f a"			"buffer-float-insert algorithm"
+
+\bind "M-i t d"			"toc-insert"
+\bind "M-i t f"			"lof-insert"
+\bind "M-i t t"			"lot-insert"
+\bind "M-i t i"			"index-print"
+\bind "M-i t b"			"bibtex-insert"
+\bind "M-i t a"			"loa-insert"
+
+\bind "M-i minus"		"hyphenation-point-insert"
+\bind "M-i p"			"dots-insert"
+#\bind "M-i e"			"end-of-sentence-period-insert"
+\bind "M-i q"			"quote-insert"
+\bind "M-i apostrophe"		"quote-insert"
+\bind "M-i S-quotedbl"		"quote-insert"
+\bind "M-i s h"			"hfill-insert"
+# NOT IN MENU. (HIDDEN TO LEARNER)
+\bind "M-i s minus"		"hyphenation-point-insert"
+\bind "M-i s e"			"protected-space-insert"
+\bind "M-i s l"			"break-line"
+\bind "M-i s r"			"dots-insert"
+\bind "M-i s f"			"end-of-sentence-period-insert"
+\bind "M-i s a"			"quote-insert"
+\bind "M-i n"			"note-insert"
+\bind "M-i e"			"label-insert"
+\bind "M-i c"			"reference-insert"
+\bind "M-i t"			"citation-insert"
+\bind "M-i d"			"index-insert"
+\bind "M-i p"			"index-insert-last"
+\bind "M-i space"		"menu-open Inserir"  
+
+
+#
+# Metemático
+#
+
+\bind "M-m space"		"menu-open Matemático" 
+
+#
+# Opções
+#
+
+#bind "M-o f"			"screen-font-options"	# Not yet implemented!
+#bind "M-o o"			"spellcheck-options"	# Not yet implemented!
+#bind "M-o t"			"keyboard-options"	# Not yet implemented!
+#bind "M-o l"			"latex-options"		# Not yet implemented!
+\bind "M-o space"		"menu-open Opções"  
+
+
+#
+# Documentos
+#
+# These are now defined in cua or emacs bind files so their "standard"
+# bindings are available. (eg M-d "word-delete-forward" in emacs) ARRae
+\bind "M-d a"			"buffer-previous"
+\bind "M-d space"		"menu-open Documentos"
+
+
+#
+# Ajuda
+#
+
+#bind "M-h i"			"help-introduction"	# Not yet implemented!
+#bind "M-h t"			"help-tutorial"		# Not yet implemented!
+#bind "M-h u"			"help-user-guide"	# Not yet implemented!
+#bind "M-h r"			"help-reference-guide"	# Not yet implemented!
+#bind "M-h h"			"help-how-do-i-"	# Not yet implemented!
+#bind "M-h c"			"help-customization"	# Not yet implemented!
+#bind "M-h s"			"help-special-tools"	# Not yet implemented!
+#bind "M-h k"			"help-known-bugs"	# Not yet implemented!
+#bind "M-h a"			"help-latex-config"	# Not yet implemented!
+#bind "M-h o"			"help-copyright"	# Not yet implemented!
+#bind "M-h e"			"help-credits"		# Not yet implemented!
+#bind "M-h v"			"help-version"		# Not yet implemented!
+\bind "M-u space"		"menu-open Ajuda" 
+
+#
+# Tamanho de Fonte
+#
+
+\bind "M-s t"			"font-size tiny"
+\bind "M-s S-S"			"font-size smaller"
+\bind "M-s s"			"font-size small"
+\bind "M-s n"			"font-size normal"
+\bind "M-s l"			"font-size large"
+\bind "M-s S-L"			"font-size larger"
+\bind "M-s h"			"font-size huge"
+\bind "M-s S-H"			"font-size huger"
+
+\bind "M-s 1"			"font-size tiny"
+\bind "M-s 2"			"font-size smallest"
+\bind "M-s 3"			"font-size smaller"
+\bind "M-s 4"			"font-size small"
+\bind "M-s 5"			"font-size normal"
+\bind "M-s 6"			"font-size large"
+\bind "M-s 7"			"font-size larger"
+\bind "M-s 8"			"font-size largest"
+\bind "M-s 9"			"font-size huge"
+\bind "M-s 0"			"font-size huger"
+
+\bind "M-s plus"		"font-size increase"
+\bind "M-s minus"		"font-size decrease"
+
+
+#
+# Alinhamento
+#
+
+#bind "M-l l"			"para-align left"	# Not yet implemented!
+#bind "M-l r"			"para-align right"	# Not yet implemented!
+#bind "M-l c"			"para-align center"	# Not yet implemented!
+#bind "M-l b"			"para-align block"	# Not yet implemented!
+#bind "M-l f"			"para-align block"	# Not yet implemented!
+#bind "M-l d"			"para-align default"	# Not yet implemented!
+
+
+#
+# Parágrafo
+#
+
+\bind "M-p 1"			"layout Chapter" 
+\bind "M-p 2"			"layout Section" 
+\bind "M-p 3"			"layout Subsection"  
+\bind "M-p 4"			"layout Subsubsection"    
+\bind "M-p 5"			"layout Paragraph"        
+\bind "M-p 6"			"layout Subparagraph"
+\bind "M-p r"			"layout Abstract"       # resumo
+\bind "M-p S-A"			"layout Author"
+\bind "M-p e"			"layout Address"        # endereço
+\bind "M-p S-E"			"layout RightAddress"   # endereço à direita
+\bind "M-p m"			"layout Itemize"	# lista com Marcadores
+\bind "M-p S-B"			"layout Bibliography"   # Bibliografia
+\bind "M-p y"			"layout LyX-Code"
+\bind "M-p S-C"			"layout Comment"        # cometário
+\bind "M-p S-L"			"layout Caption"	# Legenda
+\bind "M-p d"			"layout Description" 	# descrição
+\bind "M-p S-D"			"layout Date"		# Data
+\bind "M-p n"			"layout Enumerate"	# lista Numerada
+\bind "M-p f"			"layout ShortFoilhead"	# Foils!!
+\bind "M-p S-F"			"layout Foilhead"	# Foils!!
+\bind "M-p i"			"layout Itemize"	# bulleted list
+\bind "M-p l"			"layout List"
+# \bind "M-p S-X"			"layout LaTeX"
+\bind "M-p n"			"layout Enumerate"	# numbered list
+\bind "M-p S-C"			"layout Quote"		# Citação
+\bind "M-p c"			"layout Quotation"
+
+\bind "M-p r"			"layout ShortRotatefoilhead"	# Foils!!
+\bind "M-p S-R"			"layout Rotatefoilhead"	# Foils!!
+
+\bind "M-p p"			"layout Standard"	# Padrão
+\bind "M-p t"			"layout Title"
+\bind "M-p x"			"layout LaTeX"
+\bind "M-p space"		"drop-layouts-choice"
+\bind "M-p S-at"		"layout Section*"	# M-p S-2
+\bind "M-p S-numbersign"	"layout Subsection*"	# M-p S-3
+\bind "M-p S-dollar"		"layout Subsubsection*"	# M-p S-4
+\bind "M-p v"			"layout Verse"
+\bind "M-p Left"		"depth-decrement"
+\bind "M-p Right"		"depth-increment"
+
+
+#
+# Estilo do Caractere
+# 
+
+\bind "M-c n"			"font-bold"	# Negrito
+\bind "M-c S-S"			"font-noun"	# substantivo
+\bind "M-c e"			"font-emph"	# 
+\bind "M-c m"			"math-mode"	# modo matemático
+\bind "M-c p"			"font-code"
+\bind "M-c r"			"font-roman"
+\bind "M-c s"			"font-sans"
+\bind "M-c t"			"tex-mode"
+\bind "M-c s"			"font-underline" # Sublinhado
+
+\bind "M-c Down"		"word-lowcase"
+\bind "M-c Up"			"word-upcase"
+\bind "M-c Right"		"word-capitalize"
+
+\bind "M-c space"		"font-default"                  
+
+
+#
+# Teclado
+#
+
+\bind "M-t 1"			"keymap-primary"
+\bind "M-t 2"			"keymap-secondary"
+\bind "M-t 0"			"keymap-off"
+\bind "M-t a"			"keymap-toggle"
+\bind "M-t x"			"keymap-off"

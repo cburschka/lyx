@@ -1,0 +1,884 @@
+.rn '' }`
+''' $RCSfile: reLyX.man,v $$Revision: 1.1 $$Date: 1999/09/27 18:44:34 $
+'''
+''' $Log: reLyX.man,v $
+''' Revision 1.1  1999/09/27 18:44:34  larsbj
+''' Initial revision
+'''
+'''
+.de Sh
+.br
+.if t .Sp
+.ne 5
+.PP
+\fB\\$1\fR
+.PP
+..
+.de Sp
+.if t .sp .5v
+.if n .sp
+..
+.de Ip
+.br
+.ie \\n(.$>=3 .ne \\$3
+.el .ne 3
+.IP "\\$1" \\$2
+..
+.de Vb
+.ft CW
+.nf
+.ne \\$1
+..
+.de Ve
+.ft R
+
+.fi
+..
+'''
+'''
+'''     Set up \*(-- to give an unbreakable dash;
+'''     string Tr holds user defined translation string.
+'''     Bell System Logo is used as a dummy character.
+'''
+.tr \(*W-|\(bv\*(Tr
+.ie n \{\
+.ds -- \(*W-
+.ds PI pi
+.if (\n(.H=4u)&(1m=24u) .ds -- \(*W\h'-12u'\(*W\h'-12u'-\" diablo 10 pitch
+.if (\n(.H=4u)&(1m=20u) .ds -- \(*W\h'-12u'\(*W\h'-8u'-\" diablo 12 pitch
+.ds L" ""
+.ds R" ""
+'''   \*(M", \*(S", \*(N" and \*(T" are the equivalent of
+'''   \*(L" and \*(R", except that they are used on ".xx" lines,
+'''   such as .IP and .SH, which do another additional levels of
+'''   double-quote interpretation
+.ds M" """
+.ds S" """
+.ds N" """""
+.ds T" """""
+.ds L' '
+.ds R' '
+.ds M' '
+.ds S' '
+.ds N' '
+.ds T' '
+'br\}
+.el\{\
+.ds -- \(em\|
+.tr \*(Tr
+.ds L" ``
+.ds R" ''
+.ds M" ``
+.ds S" ''
+.ds N" ``
+.ds T" ''
+.ds L' `
+.ds R' '
+.ds M' `
+.ds S' '
+.ds N' `
+.ds T' '
+.ds PI \(*p
+'br\}
+.\"	If the F register is turned on, we'll generate
+.\"	index entries out stderr for the following things:
+.\"		TH	Title 
+.\"		SH	Header
+.\"		Sh	Subsection 
+.\"		Ip	Item
+.\"		X<>	Xref  (embedded
+.\"	Of course, you have to process the output yourself
+.\"	in some meaninful fashion.
+.if \nF \{
+.de IX
+.tm Index:\\$1\t\\n%\t"\\$2"
+..
+.nr % 0
+.rr F
+.\}
+.TH RELYX 1 "Version 2.9.2.1" "2/May/99" "User Contributed Perl Documentation"
+.UC
+.if n .hy 0
+.if n .na
+.ds C+ C\v'-.1v'\h'-1p'\s-2+\h'-1p'+\s0\v'.1v'\h'-1p'
+.de CQ          \" put $1 in typewriter font
+.ft CW
+'if n "\c
+'if t \\&\\$1\c
+'if n \\&\\$1\c
+'if n \&"
+\\&\\$2 \\$3 \\$4 \\$5 \\$6 \\$7
+'.ft R
+..
+.\" @(#)ms.acc 1.5 88/02/08 SMI; from UCB 4.2
+.	\" AM - accent mark definitions
+.bd B 3
+.	\" fudge factors for nroff and troff
+.if n \{\
+.	ds #H 0
+.	ds #V .8m
+.	ds #F .3m
+.	ds #[ \f1
+.	ds #] \fP
+.\}
+.if t \{\
+.	ds #H ((1u-(\\\\n(.fu%2u))*.13m)
+.	ds #V .6m
+.	ds #F 0
+.	ds #[ \&
+.	ds #] \&
+.\}
+.	\" simple accents for nroff and troff
+.if n \{\
+.	ds ' \&
+.	ds ` \&
+.	ds ^ \&
+.	ds , \&
+.	ds ~ ~
+.	ds ? ?
+.	ds ! !
+.	ds /
+.	ds q
+.\}
+.if t \{\
+.	ds ' \\k:\h'-(\\n(.wu*8/10-\*(#H)'\'\h"|\\n:u"
+.	ds ` \\k:\h'-(\\n(.wu*8/10-\*(#H)'\`\h'|\\n:u'
+.	ds ^ \\k:\h'-(\\n(.wu*10/11-\*(#H)'^\h'|\\n:u'
+.	ds , \\k:\h'-(\\n(.wu*8/10)',\h'|\\n:u'
+.	ds ~ \\k:\h'-(\\n(.wu-\*(#H-.1m)'~\h'|\\n:u'
+.	ds ? \s-2c\h'-\w'c'u*7/10'\u\h'\*(#H'\zi\d\s+2\h'\w'c'u*8/10'
+.	ds ! \s-2\(or\s+2\h'-\w'\(or'u'\v'-.8m'.\v'.8m'
+.	ds / \\k:\h'-(\\n(.wu*8/10-\*(#H)'\z\(sl\h'|\\n:u'
+.	ds q o\h'-\w'o'u*8/10'\s-4\v'.4m'\z\(*i\v'-.4m'\s+4\h'\w'o'u*8/10'
+.\}
+.	\" troff and (daisy-wheel) nroff accents
+.ds : \\k:\h'-(\\n(.wu*8/10-\*(#H+.1m+\*(#F)'\v'-\*(#V'\z.\h'.2m+\*(#F'.\h'|\\n:u'\v'\*(#V'
+.ds 8 \h'\*(#H'\(*b\h'-\*(#H'
+.ds v \\k:\h'-(\\n(.wu*9/10-\*(#H)'\v'-\*(#V'\*(#[\s-4v\s0\v'\*(#V'\h'|\\n:u'\*(#]
+.ds _ \\k:\h'-(\\n(.wu*9/10-\*(#H+(\*(#F*2/3))'\v'-.4m'\z\(hy\v'.4m'\h'|\\n:u'
+.ds . \\k:\h'-(\\n(.wu*8/10)'\v'\*(#V*4/10'\z.\v'-\*(#V*4/10'\h'|\\n:u'
+.ds 3 \*(#[\v'.2m'\s-2\&3\s0\v'-.2m'\*(#]
+.ds o \\k:\h'-(\\n(.wu+\w'\(de'u-\*(#H)/2u'\v'-.3n'\*(#[\z\(de\v'.3n'\h'|\\n:u'\*(#]
+.ds d- \h'\*(#H'\(pd\h'-\w'~'u'\v'-.25m'\f2\(hy\fP\v'.25m'\h'-\*(#H'
+.ds D- D\\k:\h'-\w'D'u'\v'-.11m'\z\(hy\v'.11m'\h'|\\n:u'
+.ds th \*(#[\v'.3m'\s+1I\s-1\v'-.3m'\h'-(\w'I'u*2/3)'\s-1o\s+1\*(#]
+.ds Th \*(#[\s+2I\s-2\h'-\w'I'u*3/5'\v'-.3m'o\v'.3m'\*(#]
+.ds ae a\h'-(\w'a'u*4/10)'e
+.ds Ae A\h'-(\w'A'u*4/10)'E
+.ds oe o\h'-(\w'o'u*4/10)'e
+.ds Oe O\h'-(\w'O'u*4/10)'E
+.	\" corrections for vroff
+.if v .ds ~ \\k:\h'-(\\n(.wu*9/10-\*(#H)'\s-2\u~\d\s+2\h'|\\n:u'
+.if v .ds ^ \\k:\h'-(\\n(.wu*10/11-\*(#H)'\v'-.4m'^\v'.4m'\h'|\\n:u'
+.	\" for low resolution devices (crt and lpr)
+.if \n(.H>23 .if \n(.V>19 \
+\{\
+.	ds : e
+.	ds 8 ss
+.	ds v \h'-1'\o'\(aa\(ga'
+.	ds _ \h'-1'^
+.	ds . \h'-1'.
+.	ds 3 3
+.	ds o a
+.	ds d- d\h'-1'\(ga
+.	ds D- D\h'-1'\(hy
+.	ds th \o'bp'
+.	ds Th \o'LP'
+.	ds ae ae
+.	ds Ae AE
+.	ds oe oe
+.	ds Oe OE
+.\}
+.rm #[ #] #H #V #F C
+.SH "NAME"
+\fBreLyX\fR \- translate well-behaved LaTeX into LyX
+.SH "SYNOPSIS"
+The simplest way to use \fBreLyX\fR is via the File->Import command in LyX. (This
+option is available starting with version 1.0.0.) That runs \fBreLyX\fR on
+the given file and loads the resulting file into LyX. You should try that
+first, and call it from the command line only if you need to use more
+complicated options.
+.PP
+\fBreLyX\fR [ \fB\-c\fR \fItextclass\fR ] [ \fB\-df\fR ] [ \fB\-o\fR \fIoutputdir\fR ] [\fB\-n\fR]
+[\ \fB\-r\fR\ \fIrenv1\fR[,\fIrenv2\fR...]] [\ \fB\-s\fR\ \fIsfile1\fR[,\fIsfile2\fR...]]
+\fIinputfile\fR
+.PP
+\fBreLyX\fR \fB\-p\fR \fB\-c\fR \fItextclass\fR [ \fB\-df\fR ] [ \fB\-o\fR \fIoutputdir\fR ]
+[\ \fB\-r\fR\ \fIrenv1\fR[,\fIrenv2\fR...]] [\ \fB\-s\fR\ \fIsfile1\fR[,\fIsfile2\fR...]]
+\fIinputfiles\fR
+.PP
+\fBreLyX\fR \fB\-h\fR
+.SH "OPTIONS"
+.Ip "\fB\-c\fR" 4
+Class. By default, when \fBreLyX\fR sees a \f(CW\edocumentclass{foo}\fR command, it
+creates a file of textclass \*(L"foo\*(R" and reads the LyX layout file for that class
+(something like /usr/local/share/lyx/layouts/foo.layout \s-1OR\s0
+\fB\s-1HOME\s0\fR/.lyx/layouts/foo.layout).  Use \fB\-c\fR to declare a different textclass
+(and read a different layout file).
+.Ip "\fB\-d\fR" 4
+Debug. By default, \fBreLyX\fR gives sparse output and deletes the temporary files
+which were created during translation. Using the \fB\-d\fR flag will create much
+more output (both to stdout and stderr) and leave the temporary files around.
+.Ip "\fB\-f\fR" 4
+Force. \fBreLyX\fR will not run if the .lyx file it would generate already exists
+Use the \fB\-f\fR option (carefully) to clobber any existing files.
+.Ip "\fB\-h\fR" 4
+Help. Print out usage information and quit.
+.Ip "\fB\-n\fR" 4
+Noweb. Translate a noweb (aka literate programming) file. This should be
+(almost?) equivalent to running \*(L"noweb2lyx foo.tex foo.lyx\*(R". This option
+requires the \fB\-c\fR option.
+.Ip "\fB\-o\fR" 4
+Output directory. With this option, all temporary files and LyX output files
+(for the given input file, for any included files, or for any file fragments
+given with the \fB\-p\fR option) will be put into \fIoutputdir\fR. Otherwise, for
+each file \fIdir/foo.tex\fR, the temporary files and the LyX output file will be
+created in \fIdir\fR. This can be useful if a file includes files from other
+directories which you want to consolidate in one directory, or if you don't
+have write permission on the directory the LaTeX files are in.
+.Ip "\fB\-p\fR" 4
+Partial file. The input files are LaTeX fragments, with no preamble matter or
+\f(CW\ebegin{document}\fR commands. This option requires the \fB\-c\fR option, since there
+are no \f(CW\edocumentclass\fR commands in the files \fBreLyX\fR is translating. When
+using this option, you can translate more than one file, as long as all files
+are the same class. The LyX file created by \fBreLyX\fR can be included in an
+existing LyX file using the \*(L"Include LyX File\*(R" command from LyX's Insert menu.
+.Ip "\fB\-r\fR" 4
+Regular environments (see the section on \fISyntax Files\fR).  If you give more than one
+environment, separate them with commas (not spaces). You'll probably need to
+quote the environment list, especially if it has asterisk environments (foo*)
+in it. If you use this command often, considering creating a personal syntax
+file.
+.Ip "\fB\-s\fR" 4
+Syntax files. Input (one or more quoted, comma-separated) syntax files to read
+in addition to the default. (see the section on \fISyntax Files\fR for details).
+.SH "DESCRIPTION"
+.Sh "Introduction"
+\fBreLyX\fR will create a LyX file \fIdir/foo.lyx\fR from the LaTeX file
+\fIdir/foo.tex\fR (unless the \fB\-o\fR option is used).
+.PP
+Suffixes .tex, .ltx and .latex are supported. If \fIinputfile\fR
+does not exist and does not have one of these suffixes, \fBreLyX\fR will try to
+translate \fIinputfile.tex\fR. (This is similar to the behavior of LaTeX.)
+.PP
+The purpose of \fBreLyX\fR is to translate \fIwell-behaved\fR LaTeX2e into LyX. If
+your LaTeX file doesn't compile---or if you do weird things, like redefining
+standard LaTex commands---it may choke. LaTeX209 will often be translated
+correctly, but it's not guaranteed.
+.PP
+\fBreLyX\fR has some bugs and lacks a few features. However, its main goals are:
+.Ip "\(bu" 4
+Get through a well-behaved LaTeX2e file without crashing
+.Ip "\(bu" 4
+Translate a lot of that file.
+.Ip "\(bu" 4
+Localize the parts that can't be translated and copy them in TeX mode
+.PP
+It achieves these main goals pretty well on most files.
+.PP
+There are many improvements that can and will be made to \fBreLyX\fR in the
+future. However, we wanted to get \fBreLyX\fR out there early on, to make
+it easier for new LyX users to read in their existing LaTeX files.
+.Sh "Usage"
+Here's a more lengthy description of what you should do to translate a LaTeX
+document into LyX.
+.Ip "\(bu" 4
+Run \fBreLyX\fR.
+.Sp
+\fBreLyX\fR will inform you of its progress and give any warnings to stderr, so if
+you don't want any output at all, try (in csh) \*(L'reLyX foo.tex >& /dev/null\*(R'.
+You should \s-1NOT\s0 redirect standard output to \fIfoo.lyx\fR. 
+.Ip "\(bu" 4
+Run LyX (version 0.12 or 1.0 or later) on the resulting .lyx file.
+.Sp
+In theory, most of the file will have been translated, and anything that's
+untranslatable will be highlighted in red (TeX mode). In theory, LyX will be
+able to read in the file, and to create printed documents from it, because all
+that untranslated red stuff will be passed directly back to LaTeX, which LyX 
+uses as a backend. Unfortunately, reality doesn't always reflect theory. If
+\fBreLyX\fR crashes, or LyX cannot read the generated LyX file, see the \f(CWBUGS\fR entry elsewhere in this documentor the \fI\s-1BUGS\s0\fR file.
+.Ip "\(bu" 4
+Change things that are highlighted in red (TeX mode) by hand in LyX.
+.Sp
+As mentioned above, you should be able to print out the LyX file even without
+doing this. However, changing a command in TeX mode to the corresponding LyX
+object will allow you to take advantage of LyX's \s-1WYSIWYM\s0 editing.
+.Sp
+\fBreLyX\fR is not guaranteed to create a LyX file which generates exactly the same
+output as the LaTeX file, but it should come close. \fBrelyX\fR will generally err
+on the side of translating less to ensure that dvi or ps files are accurate,
+even though this leads to more \*(L"evil red text\*(R" and less \s-1WYSIWYM\s0.
+.Ip "\(bu" 4
+\s-1PROOFREAD\s0 \s-1THE\s0 \s-1DOCUMENT\s0!!
+.Sp
+I'm sure you were planning on doing this anyway, but it's particularly
+important after translating a LaTeX document. \fBreLyX\fR is, at least now, better
+at \*(L"macro-translating\*(R" (translating the whole document) than
+\*(L"micro-translating\*(R" (translating every little detail). For example, you may see
+extra spaces or deleted spaces. Space handling has improved, but it's
+not perfect.
+.Sh "What reLyX Can Handle"
+\fBreLyX\fR understands many LaTeX commands. It will translate:
+.Ip "\(bu" 4
+regular text, including mini-commands like ~, \*(L'\*(R', \f(CW\e@\fR, \f(CW\eTeX\fR, as well as
+accented characters like \f(CW\e'{a}\fR, and the special cases ?` and !`
+.Ip "\(bu" 4
+title commands like \f(CW\eauthor\fR, \f(CW\edate\fR, \f(CW\etitle\fR, \f(CW\ethanks\fR and the
+abstract environment
+.Ip "\(bu" 4
+heading commands like \f(CW\esection\fR including starred commands (\f(CW\esection*\fR)
+.Ip "\(bu" 4
+Environments: quote, quotation, and verse; center, flushright, and flushleft
+.Ip "\(bu" 4
+itemize, enumerate, and description environments, and their \f(CW\eitem\fR commands.
+Also, well-behaved nested lists
+.Ip "\(bu" 4
+cross-referencing commands: \f(CW\eref\fR, \f(CW\epageref\fR, \f(CW\elabel\fR, and \f(CW\ecite\fR
+.Ip "\(bu" 4
+\f(CW\efootnote\fR and \f(CW\emargin\fR
+.Ip "\(bu" 4
+font-changing commands including \f(CW\eem\fR, \f(CW\eemph\fR, \f(CW\etextit\fR, and
+corresponding commands to change family, size, series, and shape
+.Ip "\(bu " 4
+\f(CW\einput{foo}\fR (or \f(CW\einput{foo.blah}\fR) and \f(CW\einclude{foo}\fR. Plain TeX
+\f(CW\einput\fR command \*(L"\f(CW\einput foo.tex\fR\*(R" is also supported.
+.Ip "\(bu" 4
+tabular environment, and commands that go inside it like \f(CW\ehline\fR, \f(CW\ecline\fR,
+and \f(CW\emulticolumn\fR (but see below)
+.Ip "\(bu" 4
+float environments table and table*, as well as \f(CW\ecaption\fR commands within
+them
+.Ip "\(bu" 4
+float environments figure and figure*, as well as graphics inclusion commands
+\eepsf, \eepsffile, \eepsfbox, \eepsfxsize, \eepsfig, \epsfig, and \eincludegraphics.
+Both the graphics and graphicx forms of \eincludegraphics are supported.
+Note, however, that many figures will not be translatable into LyX. See
+the section on \*(L"What LyX Can't Handle\*(R" below.
+.Ip "\(bu" 4
+thebibliography environment and \f(CW\ebibitem\fR command, as well as BibTeX's
+\f(CW\ebibliography\fR and \f(CW\ebibliographystyle\fR commands
+.Ip "\(bu" 4
+miscellaneous commands: \f(CW\ehfill\fR, \f(CW\e\fR\f(CW\e\fR, \f(CW\enoindent\fR, \f(CW\eldots\fR...
+.Ip "\(bu" 4
+documentclass-specific environments (and some commands) which can be 
+translated to LyX layouts
+.Ip "\(bu" 4
+arguments to certain untranslatable commands (e.g. \f(CW\embox\fR)
+.PP
+Some of this support may not be 100% yet. See below for details
+.PP
+\fBreLyX\fR copies math (almost) verbatim from your LaTeX file. Luckily, LyX reads 
+in LaTeX math, so (almost) any math which is supported by LyX should work just
+fine. A few math commands which are not supported by LyX will be replaced with
+their equivalents, e.g., \f(CW\eto\fR is converted to \f(CW\erightarrow\fR. See
+the section on \fISyntax Files\fR for more details.
+.PP
+\fBreLyX\fR will also copy any preamble commands (i.e., anything before
+\f(CW\ebegin{document}\fR) verbatim, so fancy stuff you've got in your preamble
+should be conserved in dvi and printed documents, although it will not of
+course show up in the LyX window. Check Layout->LaTeX Preamble to make sure.
+.Sh "What reLyX Can't Handle --- But it's \s-1OK\s0"
+.Ip "\(bu" 4
+tabular* tables
+.Ip "\(bu" 4
+minipages
+.Ip "\(bu" 4
+spacing commands (\f(CW\evspace\fR, \f(CW\epagebreak\fR, \f(CW\epar\fR, ...)
+.Ip "\(bu" 4
+\f(CW\ecentering\fR, \f(CW\eraggedleft\fR, \f(CW\eraggedright\fR
+.Ip "\(bu" 4
+\f(CW\everb\fR and verbatim environment. \fBreLyX\fR is careful to copy \fIexactly\fR in
+this case, including comments and whitespace.
+.Ip "\(bu" 4
+some unknown (e.g., user-defined) environments and commands
+.PP
+\fBreLyX\fR copies unknown commands, along with their arguments, verbatim into the
+LyX file. Also, if it sees a \f(CW\ebegin{foo}\fR where it doesn't recognize the
+\*(L"foo\*(R" environment, it will copy verbatim until it sees \f(CW\eend{foo}\fR (unless
+you use the \fB\-r\fR option). Hopefully, then, most of these unknown commands
+won't cause \fBreLyX\fR to break; they'll merely require you to do some editing
+once you've loaded the file up in LyX.  That should be less painful than
+editing either the .tex or the .lyx file using a text editor.
+.Sh "What reLyX Handles Badly --- aka \s-1BUGS\s0"
+Since \fBreLyX\fR is relatively new, it's got a number of problems.  As it
+matures, these bugs will be squished.
+.PP
+If \fBreLyX\fR is choking on something, or LyX can't read it after \fBreLyX\fR
+translates it, the best thing to do is to put \f(CW\ebegin{reLyXskip}\fR before the
+offending text, and \f(CW\eend{reLyXskip}\fR after it. I call this a \*(L"skip\*(R" block.
+\fBreLyX\fR will copy this block exactly, in TeX mode. Then edit the resulting
+LyX file, and translate the unknown stuff by hand. The reLyXskip environment
+is magical; the \f(CW\ebegin\fR and \f(CW\eend\fR commands will not be put into the LyX
+file.
+.Ip "\(bu" 4
+\*(L"Exact\*(R" copying of unknown environments and commands isn't quite exact.
+Specifically, newlines and comments may be lost. This will yield ugly LyX, but
+in almost all cases the output will be the same. However, certain parts of the
+file will be copied perfectly, including whitespace and comments. This
+includes: the LaTeX preamble, verbatim environments and \f(CW\everb\fR commands, and
+skip blocks.
+.Ip "\(bu" 4
+\fBreLyX\fR translates only a few options to the \f(CW\edocumentclass\fR command.
+(Specifically 1[012]pt, [letter|legal|executive|a4|a5|b5]paper,
+[one|two]side, landscape, and [one|two]column.) Other options are placed in
+the \*(L"options\*(R" field in the Layout->Document popup.
+.Sp
+More importantly, \fBreLyX\fR doesn't translate \f(CW\eusepackage\fR commands, margin 
+commands, \f(CW\enewcommands\fR, or, in fact, anything else from the preamble. It
+simply copies them into the LaTeX preamble. If you have margin commands in
+your preamble, then the LyX file will generate the right margins. However,
+these margins will override any margins you set in the LyX Layout->Paper
+popup. So you should remove the options from the preamble
+(Layout->Latex Preamble) to be safe. The same goes for setting your language
+with babel, \f(CW\einputencoding\fR, \f(CW\epagestyle\fR, etc.
+.Ip "\(bu" 4
+The foil class has a couple bugs. \fBreLyX\fR may do weird things with optional
+arguments to \f(CW\efoilhead\fR commands. Also, it may handle \f(CW\ebegin{dinglist}\fR
+incorrectly (although the stuff in the environment should translate normally).
+.PP
+Less significant bugs can be found in the \fI\s-1BUGS\s0\fR file.
+.PP
+\fBreLyX\fR is hopefully rather robust. As mentioned above, it may not translate
+your file perfectly, but it shouldn't crash. If it does crash---and the
+problem is not one of those mentioned above or in the \fI\s-1BUGS\s0\fR file---see
+the section on \fIBug Reports\fR.
+.Sh "What LyX Can't Handle"
+LyX itself is missing a couple features, such that even if \fBreLyX\fR translates
+things perfectly, LyX may still have trouble reading it. If you really need
+these features, you can export your final document as LaTeX, and put them
+back in. See \fI\s-1BUGS\s0\fR for more details on these bugs.
+.Ip "\(bu" 4
+For a number of commands, LyX does not support the optional argument. Examples
+include \f(CW\echapter\fR (and other sectioning commands), and \f(CW\e\e\fR.
+\fBreLyX\fR will automatically discard the optional arguments with a warning to
+stdout.  LyX also ignores the width argument for the thebibliography
+environment.
+.Ip "\(bu" 4
+Centering (or right or left justifying) works on full paragraphs.
+.Ip "\(bu" 4
+LyX support for tables isn't perfect. For complicated tables, use a \*(L"skip\*(R"
+block, so that they will be copied in TeX mode.
+.Ip "\(bu" 4
+The LyX math editor can't handle the \s-1AMS\s0\-LaTeX math environments align, split,
+etc. So those environments will be copied in TeX mode. You can change
+equation* environments to the exactly equivalent displaymath, and then they
+will be translated correctly.
+.Ip "\(bu" 4
+Lyx does not support clipping or bounding boxes for included graphics files.
+Therefore, many graphics inclusion commands will be untranslatable, and
+copied in TeX mode. In certain cases, you might be able to translate the
+command by hand within LyX---for example, if you included a bounding box but
+the bounding box is already in the .eps file.
+.Sp
+LyX only allows figures to have sizes in in,cm, or percentages of \etextwidth
+or \etextheight (or \ecolumnwidth). \fBreLyX\fR will translate from other units, like
+pt or mm, but it cannot translate other lengths (e.g. if you wanted to scale a
+figure to size \etopmargin for some reason). \fBreLyX\fR will copy figures with
+untranslatable sizes in TeX mode. Again, you might be able to fix that within
+LyX.
+.Sh "The Future of reLyX"
+In the future, more commands and environments will be supported by \fBreLyX\fR.
+Bugs will be eradicated.
+.PP
+See the \s-1TODO\s0 file for details.
+.SH "EXAMPLES"
+reLyX \fB\-df\fR \fB\-o\fR \*(L"my/dir\*(R" \fB\-r\fR \*(L"myenv\*(R" foo.tex > foo.debug
+.PP
+The above will create a file my/dir/foo.lyx from foo.tex, overwriting if
+necessary.  When it finds a \f(CW\ebegin{myenv} ... \eend{myenv}\fR block, it will
+translate the stuff within the block, but copy the \f(CW\ebegin\fR and \f(CW\eend\fR
+commands in TeX mode.  Finally, I'm going to keep the temporary files around
+(they will also be in my/dir/) and output lots of debugging information into
+the file foo.debug.
+.PP
+reLyX \fB\-n\fR \fB\-c\fR \*(L"literate-article\*(R" foo.tex
+.PP
+The above will change a noweb document into a LyX literate-article
+document. A user would do this if the noweb document had documentclass
+article.
+.SH "NOTES"
+.Sh "Bug Reports"
+If \fBreLyX\fR is crashing or otherwise acting strangely---in ways
+other than those described in the section on \fI\s-1BUGS\s0\fR or the \fI\s-1BUGS\s0\fR file---then please run
+\fBreLyX \-d\fR.  That will allow you to figure out where in the reLyXing process
+it crashed. That, in turn, will allow you to write a better bug report, which
+will allow the developers to fix it more quickly and easily.
+.PP
+Bug reports should be sent to the LyX developers\*(R' mailing list. Its address
+is currently lyx-devel@lists.lyx.org, but you can check the LyX home page,
+http://www.lyx.org if that bounces. If you are running \fBreLyX\fR on a huge file,
+please do not send all of the output in your bug report. Just include the last
+ten or twenty lines of output, along with the piece of the LaTeX file it
+crashed on.  Or, even better, attach a small but complete file which causes
+the same problem as your original file.
+.Sh "Implementation Details:"
+\fBreLyX\fR makes several \*(L"passes\*(R" in order to translate a TeX file. On each pass,
+it creates one or two files.
+.Ip "Pass 0" 4
+Before doing anything, read the syntax file (or files).
+.Ip "Pass 1a" 4
+Split preamble (anything before a \f(CW\ebegin{document}\fR command) off the rest
+of the file. It saves the two pieces in separate files. This is necessary
+because there may be very strange stuff in a preamble. It also ignores
+anything after the \f(CW\eend{document}\fR, on the assumption that it isn't LaTeX.
+.Ip "Pass 1b" 4
+Translate the preamble. Currently, that just means translating the
+\f(CW\edocumentclass\fR command and copying the rest exactly into the LyX preamble.
+.Sp
+Once you know what class the document is, read the LyX layout file for that
+class.
+.Ip "Pass 2" 4
+\*(L"Clean\*(R" the TeX file, generating slightly stricter LaTeX. This includes:
+.Ip "\(bu" 12
+Change, e.g., x^2 to the equivalent but clearer x^{2}
+.Ip "\(bu" 12
+Removing optional arguments that LyX can't handle (e.g., from \f(CW\echapter\fR)
+.Ip "\(bu" 12
+Changing \f(CW{\eem foo}\fR to \f(CW\eemph{foo}\fR, etc. This is necessary because LyX
+always writes out the non-local forms anyway. This should very rarely make a
+difference.
+.Ip "Pass 3" 4
+Translate LaTeX text, commands, and environments to LyX.
+.Ip "Pass 4" 4
+Put the two pieces back together, and do some final tweaking, to generate the
+LyX file
+.PP
+If there are any \f(CW\einput\fR or \f(CW\einclude\fR commands, \fBreLyX\fR will loop back to
+the beginning and translate those. It assumes that the included files are the
+same class as the main file, and that they have no preamble matter. (If you
+have an \f(CW\einput\fR command in the preamble of a file, the command will be
+copied exactly into the LaTeX preamble portion of the LyX file, so the
+included file won't be translated.) So when translating included files, it
+skips passes 0 and 1.
+.PP
+If \fBreLyX\fR doesn't find a file you wanted to include, it will give a warning,
+but will continue to translate any files it does find.
+.Sh "Layout Files"
+\fBreLyX\fR reads a LyX layout file to know how to handle LaTeX environments and
+commands which get translated to LyX layouts. This file will include all
+\*(L"normal\*(R" non-math environments (i.e., including quote and itemize, but not
+tabular, minipage, and some other fancy environments), and commands like
+\f(CW\esection\fR and \f(CW\etitle\fR. If you want to reLyX a class that doesn't have an
+existing layout file, then you'll have to create a layout file. But you have
+to do this anyway, in order to LyX the file, since LyX depends on layout files
+to know how to display and process its files. Check the LyX documentation for
+help with this task (which can be hard or easy, depending on the class you
+want to create a layout file for.) If your class is quite similar to a class
+that has a layout file, then consider using the \fB\-c\fR option.
+.Sh "Syntax Files"
+\fBreLyX\fR always reads at least one syntax file, called the default syntax file.
+\fBreLyX\fR will read your personal syntax file if it exists; otherwise it will
+read the system-wide file. \fBreLyX\fR will read additional syntax files if you
+specify them with the \fB\-s\fR option. (These extra files should have the same
+format as the default file, but will tend to be shorter, since they only have
+to specify extra commands not found in the default file.) A syntax file tells
+\fBreLyX\fR a few things.
+.PP
+First, it describes the syntax of each command, that is, how many required
+arguments and how many optional arguments the command takes. Knowing this
+makes it easier for \fBreLyX\fR to copy (in TeX mode) commands that it doesn't
+know how to translate. The syntax file simply has a command, followed by
+braces or brackets describing its arguments in the correct order. For example,
+a syntax file entry \f(CW\ebibitem[]{}\fR means that the \f(CW\ebibitem\fR command takes
+an optional argument followed by a required one, while the entry \f(CW\ebf\fR
+means that the \f(CW\ebf\fR command takes no arguments at all.  When \fBreLyX\fR
+encounters a token that it doesn't know how to translate into LyX, it will
+copy the token---along with the correct number of arguments---exactly.  If the
+token is not in the syntax file, then \fBreLyX\fR just copies as many arguments
+as it finds.  This means that it may copy too much. But since the user can
+specify additional syntax files, that shouldn't happen often.
+.PP
+Some commands that cannot be translated to LyX, like \f(CW\embox\fR, have as one of
+their arguments regular LaTeX text. If the string \*(L"translate\*(R" is put into an
+argument of an (untranslatable) command in the syntax file, then \fBreLyX\fR will
+translate that argument instead of copying it verbatim. So, for example, the
+default syntax file has \f(CW\eraisebox{}[][]{translate}\fR. This means that the
+\f(CW\eraisebox\fR command and the first argument (and optional arguments if they
+exist) are copied in TeX mode, but the last argument (which may contain math,
+complicated LaTeX, other untranslatable commands, etc.) will be translated
+into LyX. You can't use \*(L"translate\*(R" on optional arguments.
+.PP
+User-defined syntax files are allowed to define new commands and
+their syntax, or override the number of arguments for a command given in the
+default syntax file. (E.g., if you're using a style that gives an extra
+argument to some command...) However, this will only be useful for commands
+copied in TeX mode. Commands which are actually translated by \fBreLyX\fR (like
+\f(CW\eitem\fR) have their argument syntax hard-coded. The hard-coded commands are
+identified in the default syntax file.
+.PP
+Second, the syntax file describes any \*(L"regular environments\*(R".  Usually, an
+entire unknown environment will be copied in TeX mode. If you define a regular
+environment \*(L"foo\*(R", though, then only the \f(CW\ebegin{foo}\fR and \f(CW\eend{foo}\fR
+commands will be copied in TeX mode; the text within the environment will be
+treated (i.e., translated) by \fBreLyX\fR as regular LaTeX, rather than being
+copied into TeX mode. Don't try to declare \*(L"tabbing\*(R" and \*(L"picture\*(R" as regular
+environments, as the text within those environments will confuse \fBreLyX\fR; use
+this capability for new environments you create that have plain text or math
+or simple commands in them. You also can't declare unknown math environments
+(like equation*) as regular environments, either, since the LyX math editor
+won't understand them. The names of regular environments appear,
+whitespace-separated, between \f(CW\ebegin{reLyXre}\fR and \f(CW\eend{reLyXre}\fR
+statements in the syntax file. (If you have a regular environment which you
+won't use very often, you can use the \fB\-r\fR option rather than writing a
+syntax file.)
+.PP
+Third, the syntax file describes a math translation table. The LyX math editor
+doesn't support a few commands. For example, \f(CW_\fR is supported, but the
+equivalent \f(CW\esb\fR is not. Put any commands you'd like translate between
+\f(CW\ebegin{reLyXmt}\fR and \f(CW\eend{reLyXmt}\fR statements. The statement
+\*(L"\f(CW\e| {\eVert}\fR\*(R" means that any \f(CW\e|\fR in math mode will be converted to
+\*(L"\f(CW\eVert \fR\*(R" (in cases where a token made up of a backslash and a non-letter is
+translated to something with letters at the end, a space is added by \fBreLyX\fR.
+That way, \*(L"\f(CW\e|a\fR\*(R" is correctly translated to \*(L"\f(CW\eVert a\fR").
+.Sh "Miscellaneous"
+You need Perl version 5.002 or later to run \fBreLyX\fR. <plug> If you don't have
+Perl, you should get it anyway (at http://www.perl.com), because it's a really
+useful tool for pretty much anything. </plug>
+.SH "DIAGNOSTICS"
+\fBreLyX\fR should always explain why it crashes, if it crashes. Some diagnostics
+may be very technical, though, if they come from the guts of the code.
+\fBreLyX\fR gives much more information while running if you use the \fB\-d\fR option,
+but you shouldn't need that unless something goes wrong.
+.PP
+When it's finished, \fBreLyX\fR will tell you if it finished successfully or
+died due to some error.
+.SH "WARNINGS"
+Always keep a copy of your original LaTeX files either under a different
+name or in a different directory. There are a couple ways in which using LyX
+could lead to overwriting the original LaTeX file.
+.PP
+If you import foo.tex to create foo.lyx, then edit foo.lyx and want to
+re-export it, note that it will overwrite the original foo.tex. (LyX will ask
+you if you want to overwrite it.)
+.PP
+If you have the \euse_tempdir variable set to false in your lyxrc, then LyX
+will create its temporary files in your current directory, which means your
+LaTeX original may be overwritten (without a warning from LyX) when you \*(L"view
+dvi\*(R" or print the LyX document.
+.SH "FILES"
+.Ip "\fI\s-1MY_LYXDIR\s0\fR/layouts/*.layout" 4
+User's personal layout files for document classes
+.Ip "\fI\s-1MY_LYXDIR\s0\fR/reLyX/syntax.default" 4
+User's personal syntax file
+.Ip "\fI\s-1LIBDIR\s0\fR/layouts/*.layout" 4
+System-wide layout files for document classes
+.Ip "\fI\s-1LIBDIR\s0\fR/reLyX/syntax.default" 4
+System-wide LaTeX syntax file
+.PP
+\fI\s-1LIBDIR\s0\fR is the system-wide LyX directory, usually something like
+/usr/local/share/lyx/. \fI\s-1MY_LYXDIR\s0\fR is your personal LyX directory, something
+like .lyx/ in your home directory.
+.SH "SEE ALSO"
+\fIlyx\fR\|(1), \fIlatex\fR\|(1)
+.SH "AUTHORS"
+Copyright (c) 1998-9 Amir Karger (karger@post.harvard.edu)
+.PP
+Code contributors:
+.Ip "\(bu" 4
+John Weiss wrote the original CleanTeX pass.
+.Ip "\(bu" 4
+Etienne Grossmann
+.Ip "\(bu" 4
+Jose\*' Abi\*'lio Oliveira Matos
+.Ip "\(bu" 4
+David Suarez de Lis
+.Ip "\(bu" 4
+Kayvan Aghaiepour Sylvan added noweb stuff and wrote noweb2lyx
+.PP
+Other contributors:
+.Ip "\(bu" 4
+Jean-Marc Lasgouttes worked on the wrapper script and offered lots of bug
+reports, advice, and feature suggestions.
+.Ip "\(bu" 4
+Asger K. Alstrup Nielsen and Marc Pavese provided advice.
+.Ip "\(bu" 4
+Various members of the LyX developers\*(R' and users\*(R' lists provided bug reports
+and feature suggestions.
+.PP
+\fBreLyX\fR uses a modified version the Perl TeX parser Text::TeX package written
+by Ilya Zakharevich (ilya@math.ohio-state.edu), available on \s-1CPAN\s0.
+
+.rn }` ''
+.IX Title "RELYX 1"
+.IX Name "B<reLyX> - translate well-behaved LaTeX into LyX"
+
+.IX Header "NAME"
+
+.IX Header "SYNOPSIS"
+
+.IX Header "OPTIONS"
+
+.IX Item "\fB\-c\fR"
+
+.IX Item "\fB\-d\fR"
+
+.IX Item "\fB\-f\fR"
+
+.IX Item "\fB\-h\fR"
+
+.IX Item "\fB\-n\fR"
+
+.IX Item "\fB\-o\fR"
+
+.IX Item "\fB\-p\fR"
+
+.IX Item "\fB\-r\fR"
+
+.IX Item "\fB\-s\fR"
+
+.IX Header "DESCRIPTION"
+
+.IX Subsection "Introduction"
+
+.IX Item "\(bu"
+
+.IX Item "\(bu"
+
+.IX Item "\(bu"
+
+.IX Subsection "Usage"
+
+.IX Item "\(bu"
+
+.IX Item "\(bu"
+
+.IX Item "\(bu"
+
+.IX Item "\(bu"
+
+.IX Subsection "What reLyX Can Handle"
+
+.IX Item "\(bu"
+
+.IX Item "\(bu"
+
+.IX Item "\(bu"
+
+.IX Item "\(bu"
+
+.IX Item "\(bu"
+
+.IX Item "\(bu"
+
+.IX Item "\(bu"
+
+.IX Item "\(bu"
+
+.IX Item "\(bu "
+
+.IX Item "\(bu"
+
+.IX Item "\(bu"
+
+.IX Item "\(bu"
+
+.IX Item "\(bu"
+
+.IX Item "\(bu"
+
+.IX Item "\(bu"
+
+.IX Item "\(bu"
+
+.IX Subsection "What reLyX Can't Handle --- But it's \s-1OK\s0"
+
+.IX Item "\(bu"
+
+.IX Item "\(bu"
+
+.IX Item "\(bu"
+
+.IX Item "\(bu"
+
+.IX Item "\(bu"
+
+.IX Item "\(bu"
+
+.IX Subsection "What reLyX Handles Badly --- aka \s-1BUGS\s0"
+
+.IX Item "\(bu"
+
+.IX Item "\(bu"
+
+.IX Item "\(bu"
+
+.IX Subsection "What LyX Can't Handle"
+
+.IX Item "\(bu"
+
+.IX Item "\(bu"
+
+.IX Item "\(bu"
+
+.IX Item "\(bu"
+
+.IX Item "\(bu"
+
+.IX Subsection "The Future of reLyX"
+
+.IX Header "EXAMPLES"
+
+.IX Header "NOTES"
+
+.IX Subsection "Bug Reports"
+
+.IX Subsection "Implementation Details:"
+
+.IX Item "Pass 0"
+
+.IX Item "Pass 1a"
+
+.IX Item "Pass 1b"
+
+.IX Item "Pass 2"
+
+.IX Item "\(bu"
+
+.IX Item "\(bu"
+
+.IX Item "\(bu"
+
+.IX Item "Pass 3"
+
+.IX Item "Pass 4"
+
+.IX Subsection "Layout Files"
+
+.IX Subsection "Syntax Files"
+
+.IX Subsection "Miscellaneous"
+
+.IX Header "DIAGNOSTICS"
+
+.IX Header "WARNINGS"
+
+.IX Header "FILES"
+
+.IX Item "\fI\s-1MY_LYXDIR\s0\fR/layouts/*.layout"
+
+.IX Item "\fI\s-1MY_LYXDIR\s0\fR/reLyX/syntax.default"
+
+.IX Item "\fI\s-1LIBDIR\s0\fR/layouts/*.layout"
+
+.IX Item "\fI\s-1LIBDIR\s0\fR/reLyX/syntax.default"
+
+.IX Header "SEE ALSO"
+
+.IX Header "AUTHORS"
+
+.IX Item "\(bu"
+
+.IX Item "\(bu"
+
+.IX Item "\(bu"
+
+.IX Item "\(bu"
+
+.IX Item "\(bu"
+
+.IX Item "\(bu"
+
+.IX Item "\(bu"
+
+.IX Item "\(bu"
+

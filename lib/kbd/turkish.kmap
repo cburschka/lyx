@@ -1,0 +1,37 @@
+#
+# Key definition file for Turkish national Q-keyboard for LyX
+
+\kmod \# circumflex auAU	# circumflex on #
+
+\kmap @ '			# mappings for Shift-numbers
+\kmap $ +
+\kmap ^ &
+\kmap & /
+\kmap * (
+\kmap ( )
+\kmap ) =
+
+\kmap - *			# mappings for punctuation signs
+\kmap _ ?
+\kmap = -
+\kmap + _
+\kmap ` \\
+\kmap ~ \"
+\kmap / .
+\kmap ? :
+\kmap \\ ","
+\kmap | ;
+
+\kmap [ "\\u{g}"			# mappings for Turkish letters
+\kmap { "\\u{G}"
+\kmap ] "\\\"{u}"
+\kmap } "\\\"{U}"
+\kmap i "\\i{}"	
+\kmap ; "\\c{s}"
+\kmap : "\\c{S}"
+\kmap ' i
+\kmap \" "\\.{I}"
+\kmap "," "\\\"{o}"
+\kmap < "\\\"{O}"
+\kmap . "\\c{c}"
+\kmap > "\\c{C}"

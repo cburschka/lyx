@@ -1,0 +1,1835 @@
+#This file was created by <larsbj> Fri Jan  9 14:59:14 1998
+#LyX 0.12 (C) 1995-1998 Matthias Ettrich and the LyX Team
+\lyxformat 2.15
+\textclass article
+\begin_preamble
+\usepackage{multirow}
+\end_preamble
+\language default
+\inputencoding latin1
+\fontscheme default
+\graphics default
+\paperfontsize default
+\spacing single 
+\papersize Default
+\paperpackage a4
+\use_geometry 0
+\use_amsmath 0
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation skip
+\defskip medskip
+\quotes_language english
+\quotes_times 2
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+
+\layout Standard
+\align center 
+
+\series bold 
+\size largest 
+Some examples of how to use tables in 
+\layout Standard
+\align center 
+
+\series bold 
+\size largest 
+LyX 
+\layout Standard
+\added_space_bottom bigskip \align center 
+
+\series bold 
+\size largest 
+by Jürgen Vigna (jug@sad.it)
+\layout Standard
+
+longtable - 
+\series bold 
+How to use the longtable special options
+\layout Standard
+\added_space_top 0.3cm \added_space_bottom 0.3cm \align center \LyXTable
+multicol4
+98 3 1 0 3 1 4 4
+1 1 0 0
+1 1 0 0
+1 1 0 0
+1 1 0 0
+1 1 0 0
+1 0 0 0
+1 0 0 0
+1 0 0 0
+1 1 0 0
+0 1 0 0
+0 1 0 0
+0 1 0 0
+0 1 0 0
+0 1 0 0
+0 1 0 0
+0 1 0 0
+0 1 0 0
+0 1 0 0
+0 1 0 0
+0 1 0 0
+0 1 0 0
+0 1 0 0
+0 1 0 0
+0 1 0 0
+0 1 0 0
+0 1 0 0
+0 1 0 0
+0 1 0 0
+0 1 0 0
+0 1 0 0
+0 1 0 0
+0 1 0 0
+0 1 0 0
+0 1 0 0
+0 1 0 0
+0 1 0 0
+0 1 0 0
+0 1 0 0
+0 1 0 0
+0 1 0 0
+0 1 0 0
+0 1 0 0
+0 1 0 0
+0 1 0 0
+0 1 0 0
+0 1 0 0
+0 1 0 0
+0 1 0 0
+0 1 0 0
+0 1 0 0
+0 1 0 0
+0 1 0 0
+0 1 0 0
+0 1 0 0
+0 1 0 0
+0 1 0 0
+0 1 0 0
+0 1 0 0
+0 1 0 0
+0 1 0 0
+0 1 0 0
+0 1 0 0
+0 1 0 0
+0 1 0 0
+0 1 0 0
+0 1 0 0
+0 1 0 0
+0 1 0 0
+0 1 0 0
+0 1 0 0
+0 1 0 0
+0 1 0 0
+0 1 0 0
+0 1 0 0
+0 1 0 0
+0 1 0 0
+0 1 0 0
+0 1 0 0
+0 1 0 0
+0 1 0 0
+0 1 0 0
+0 1 0 0
+0 1 0 0
+0 1 0 0
+0 1 0 0
+0 1 0 0
+0 1 0 0
+0 1 0 0
+0 1 0 0
+0 1 0 0
+0 1 0 0
+0 1 0 0
+0 1 0 0
+0 1 0 0
+0 1 0 0
+0 1 0 0
+0 1 0 0
+0 1 0 0
+2 1 0 5cm
+2 0 0 
+4 1 1 
+1 8 1 1 0 0 0
+2 8 1 1 0 0 0
+2 8 1 1 0 0 0
+1 8 0 1 0 0 0
+2 8 1 1 0 0 0
+1 8 0 1 0 0 0
+1 8 1 1 0 0 0
+2 8 1 1 0 0 0
+2 8 1 1 0 0 0
+1 8 0 1 0 0 0
+2 8 1 1 0 0 0
+1 8 0 1 0 0 0
+1 2 1 1 0 0 0
+2 8 1 1 0 0 0
+2 8 1 1 0 0 0
+0 2 1 0 0 0 1
+0 2 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+1 2 1 0 0 0 0
+2 8 1 0 0 0 0
+2 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 4 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+1 2 0 1 0 0 0
+2 8 1 0 0 0 0
+2 8 1 0 0 0 0
+0 2 0 1 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 2 0 1 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 2 0 1 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 2 0 1 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 2 0 1 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 2 0 1 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 2 0 1 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 2 0 1 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 2 0 1 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 2 0 1 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 2 0 1 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 2 0 1 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 2 0 1 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 2 0 1 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 2 0 1 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 2 0 1 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 2 0 1 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 2 0 1 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 2 0 1 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 2 0 1 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 2 0 1 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 2 0 1 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 2 0 1 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 2 0 1 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 2 0 1 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 2 0 1 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 2 0 1 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 2 0 1 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 2 0 1 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 2 0 1 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 2 0 1 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+1 2 0 1 0 0 0
+2 8 1 0 0 0 0
+2 8 1 0 0 0 0
+0 2 0 1 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 2 0 1 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 2 0 1 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 2 0 1 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 2 0 1 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 2 0 1 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 2 0 1 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 2 0 1 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 2 0 1 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 2 0 1 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 2 0 1 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 2 0 1 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 2 0 1 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 2 0 1 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 2 0 1 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 2 0 1 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 2 0 1 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 2 0 1 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 2 0 1 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 2 0 1 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 2 0 1 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 2 0 1 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 2 0 1 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 2 0 1 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 2 0 1 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 2 0 1 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+
+
+\series bold 
+Example Phone List (ignore the names)
+\newline 
+NAME
+\newline 
+TEL.
+\newline 
+ Example Phone List
+\newline 
+NAME
+\newline 
+TEL.
+\newline 
+ continue ...
+\newline 
+Kemenater
+\series default 
+
+\newline 
+Klaus
+\newline 
+111
+\newline 
+
+\series bold 
+Maccioni
+\series default 
+
+\newline 
+Piero
+\newline 
+111
+\newline 
+ 
+\newline 
+
+\series bold 
+Annovi
+\series default 
+
+\newline 
+Silvia
+\newline 
+111
+\newline 
+
+\series bold 
+Bertoli
+\series default 
+
+\newline 
+Stefano
+\newline 
+111
+\newline 
+
+\series bold 
+Bozzi
+\series default 
+
+\newline 
+Walter
+\newline 
+111
+\newline 
+
+\series bold 
+Cachia
+\series default 
+
+\newline 
+Maria
+\newline 
+111
+\newline 
+
+\series bold 
+Cachia
+\series default 
+
+\newline 
+Maurizio
+\newline 
+111
+\newline 
+
+\series bold 
+Cinquemani
+\series default 
+
+\newline 
+Giusi
+\newline 
+111
+\newline 
+
+\series bold 
+Colin
+\series default 
+
+\newline 
+Bernard
+\newline 
+111
+\newline 
+
+\series bold 
+Concli
+\series default 
+
+\newline 
+Gianfranco
+\newline 
+111
+\newline 
+
+\series bold 
+Dal Bosco
+\series default 
+
+\newline 
+Carolina
+\newline 
+111
+\newline 
+
+\series bold 
+Dalpiaz
+\series default 
+
+\newline 
+Annamaria
+\newline 
+111
+\newline 
+
+\series bold 
+Feliciello
+\series default 
+
+\newline 
+Domenico
+\newline 
+111
+\newline 
+
+\series bold 
+Focarelli
+\series default 
+
+\newline 
+Paola
+\newline 
+111
+\newline 
+
+\series bold 
+Galletti
+\series default 
+
+\newline 
+Oreste
+\newline 
+111
+\newline 
+
+\series bold 
+Gasparini
+\series default 
+
+\newline 
+Franca
+\newline 
+111
+\newline 
+
+\series bold 
+Rizzardi
+\series default 
+
+\newline 
+Paola
+\newline 
+111
+\newline 
+
+\series bold 
+Lassini
+\series default 
+
+\newline 
+Giancarlo
+\newline 
+111
+\newline 
+
+\series bold 
+Malfatti
+\series default 
+
+\newline 
+Luciano
+\newline 
+111
+\newline 
+
+\series bold 
+Malfatti
+\series default 
+
+\newline 
+Valeriano
+\newline 
+111
+\newline 
+
+\series bold 
+Meneguzzo
+\series default 
+
+\newline 
+Roberto
+\newline 
+111
+\newline 
+
+\series bold 
+Mezzadra
+\series default 
+
+\newline 
+Roberto
+\newline 
+111
+\newline 
+
+\series bold 
+Pirpamer
+\series default 
+
+\newline 
+Erich
+\newline 
+111
+\newline 
+
+\series bold 
+Pochiesa
+\series default 
+
+\newline 
+Paolo
+\newline 
+111, 222
+\newline 
+
+\series bold 
+Radina
+\series default 
+
+\newline 
+Claudio
+\newline 
+111
+\newline 
+
+\series bold 
+Stuffer
+\series default 
+
+\newline 
+Oskar
+\newline 
+111
+\newline 
+
+\series bold 
+Tacchelli
+\series default 
+
+\newline 
+Ugo
+\newline 
+111
+\newline 
+
+\series bold 
+Tezzele
+\series default 
+
+\newline 
+Margit
+\newline 
+111
+\newline 
+
+\series bold 
+Unterkalmsteiner
+\series default 
+
+\newline 
+Frieda
+\newline 
+111
+\newline 
+
+\series bold 
+Vieider
+\series default 
+
+\newline 
+Hilde
+\newline 
+111
+\newline 
+
+\series bold 
+Vigna
+\series default 
+
+\newline 
+Jürgen
+\newline 
+111
+\newline 
+
+\series bold 
+Weber
+\series default 
+
+\newline 
+Maurizio
+\newline 
+111
+\newline 
+
+\series bold 
+Winkler
+\series default 
+
+\newline 
+Franz
+\newline 
+111
+\newline 
+ 
+\newline 
+
+\series bold 
+Annovi
+\series default 
+
+\newline 
+Silvia
+\newline 
+555
+\newline 
+
+\series bold 
+Bertoli
+\series default 
+
+\newline 
+Stefano
+\newline 
+555
+\newline 
+
+\series bold 
+Bozzi
+\series default 
+
+\newline 
+Walter
+\newline 
+555
+\newline 
+
+\series bold 
+Cachia
+\series default 
+
+\newline 
+Maria
+\newline 
+555
+\newline 
+
+\series bold 
+Cachia
+\series default 
+
+\newline 
+Maurizio
+\newline 
+555
+\newline 
+
+\series bold 
+Cinquemani
+\series default 
+
+\newline 
+Giusi
+\newline 
+555
+\newline 
+
+\series bold 
+Colin
+\series default 
+
+\newline 
+Bernard
+\newline 
+555
+\newline 
+
+\series bold 
+Concli
+\series default 
+
+\newline 
+Gianfranco
+\newline 
+555
+\newline 
+
+\series bold 
+Dal Bosco
+\series default 
+
+\newline 
+Carolina
+\newline 
+555
+\newline 
+
+\series bold 
+Dalpiaz
+\series default 
+
+\newline 
+Annamaria
+\newline 
+555
+\newline 
+
+\series bold 
+Feliciello
+\series default 
+
+\newline 
+Domenico
+\newline 
+555
+\newline 
+
+\series bold 
+Focarelli
+\series default 
+
+\newline 
+Paola
+\newline 
+555
+\newline 
+
+\series bold 
+Galletti
+\series default 
+
+\newline 
+Oreste
+\newline 
+555
+\newline 
+
+\series bold 
+Gasparini
+\series default 
+
+\newline 
+Franca
+\newline 
+555
+\newline 
+
+\series bold 
+Rizzardi
+\series default 
+
+\newline 
+Paola
+\newline 
+555
+\newline 
+
+\series bold 
+Lassini
+\series default 
+
+\newline 
+Giancarlo
+\newline 
+555
+\newline 
+
+\series bold 
+Malfatti
+\series default 
+
+\newline 
+Luciano
+\newline 
+555
+\newline 
+
+\series bold 
+Malfatti
+\series default 
+
+\newline 
+Valeriano
+\newline 
+555
+\newline 
+
+\series bold 
+Meneguzzo
+\series default 
+
+\newline 
+Roberto
+\newline 
+555
+\newline 
+
+\series bold 
+Mezzadra
+\series default 
+
+\newline 
+Roberto
+\newline 
+555
+\newline 
+
+\series bold 
+Pirpamer
+\series default 
+
+\newline 
+Erich
+\newline 
+555
+\newline 
+
+\series bold 
+Pochiesa
+\series default 
+
+\newline 
+Paolo
+\newline 
+555, 222
+\newline 
+
+\series bold 
+Radina
+\series default 
+
+\newline 
+Claudio
+\newline 
+555
+\newline 
+
+\series bold 
+Stuffer
+\series default 
+
+\newline 
+Oskar
+\newline 
+555
+\newline 
+
+\series bold 
+Tacchelli
+\series default 
+
+\newline 
+Ugo
+\newline 
+555
+\newline 
+
+\series bold 
+Tezzele
+\series default 
+
+\newline 
+Margit
+\newline 
+555
+\newline 
+
+\series bold 
+Unterkalmsteiner
+\series default 
+
+\newline 
+Frieda
+\newline 
+555
+\newline 
+
+\series bold 
+Vieider
+\series default 
+
+\newline 
+Hilde
+\newline 
+555
+\newline 
+
+\series bold 
+Vigna
+\series default 
+
+\newline 
+Jürgen
+\newline 
+999
+\newline 
+
+\series bold 
+Weber
+\series default 
+
+\newline 
+Maurizio
+\newline 
+555
+\newline 
+
+\series bold 
+Winkler
+\series default 
+
+\newline 
+Franz
+\newline 
+555
+\newline 
+ 
+\newline 
+
+\series bold 
+Annovi
+\series default 
+
+\newline 
+Silvia
+\newline 
+999
+\newline 
+
+\series bold 
+Bertoli
+\series default 
+
+\newline 
+Stefano
+\newline 
+999
+\newline 
+
+\series bold 
+Bozzi
+\series default 
+
+\newline 
+Walter
+\newline 
+999
+\newline 
+
+\series bold 
+Cachia
+\series default 
+
+\newline 
+Maria
+\newline 
+999
+\newline 
+
+\series bold 
+Cachia
+\series default 
+
+\newline 
+Maurizio
+\newline 
+999
+\newline 
+
+\series bold 
+Cinquemani
+\series default 
+
+\newline 
+Giusi
+\newline 
+999
+\newline 
+
+\series bold 
+Colin
+\series default 
+
+\newline 
+Bernard
+\newline 
+999
+\newline 
+
+\series bold 
+Concli
+\series default 
+
+\newline 
+Gianfranco
+\newline 
+999
+\newline 
+
+\series bold 
+Dal Bosco
+\series default 
+
+\newline 
+Carolina
+\newline 
+999
+\newline 
+
+\series bold 
+Dalpiaz
+\series default 
+
+\newline 
+Annamaria
+\newline 
+999
+\newline 
+
+\series bold 
+Feliciello
+\series default 
+
+\newline 
+Domenico
+\newline 
+999
+\newline 
+
+\series bold 
+Focarelli
+\series default 
+
+\newline 
+Paola
+\newline 
+999
+\newline 
+
+\series bold 
+Galletti
+\series default 
+
+\newline 
+Oreste
+\newline 
+999
+\newline 
+
+\series bold 
+Gasparini
+\series default 
+
+\newline 
+Franca
+\newline 
+999
+\newline 
+
+\series bold 
+Rizzardi
+\series default 
+
+\newline 
+Paola
+\newline 
+999
+\newline 
+
+\series bold 
+Lassini
+\series default 
+
+\newline 
+Giancarlo
+\newline 
+999
+\newline 
+
+\series bold 
+Malfatti
+\series default 
+
+\newline 
+Luciano
+\newline 
+999
+\newline 
+
+\series bold 
+Malfatti
+\series default 
+
+\newline 
+Valeriano
+\newline 
+999
+\newline 
+
+\series bold 
+Meneguzzo
+\series default 
+
+\newline 
+Roberto
+\newline 
+999
+\newline 
+
+\series bold 
+Mezzadra
+\series default 
+
+\newline 
+Roberto
+\newline 
+999
+\newline 
+
+\series bold 
+Pirpamer
+\series default 
+
+\newline 
+Erich
+\newline 
+999
+\newline 
+
+\series bold 
+Pochiesa
+\series default 
+
+\newline 
+Paolo
+\newline 
+999, 222
+\newline 
+
+\series bold 
+Radina
+\series default 
+
+\newline 
+Claudio
+\newline 
+999
+\newline 
+
+\series bold 
+Stuffer
+\series default 
+
+\newline 
+Oskar
+\newline 
+999
+\newline 
+
+\series bold 
+Tacchelli
+\series default 
+
+\newline 
+Ugo
+\newline 
+999
+\newline 
+
+\series bold 
+Tezzele
+\series default 
+
+\newline 
+Margit
+\newline 
+999
+\layout Standard
+
+multirow - 
+\series bold 
+Vertical Alignment in Tables
+\layout Standard
+
+The package file 
+\family sans 
+multirow
+\family default 
+ (unknown author) automates the procedure of constructing tables with cells
+ spanning several rows by defining a 
+\family typewriter 
+
+\backslash 
+multirow
+\family default 
+ command.
+\layout Standard
+\added_space_top 0.3cm \added_space_bottom 0.3cm \align center \LyXTable
+multicol4
+5 4 1 0 -1 -1 -1 -1
+1 1 0 0
+1 0 0 0
+1 0 0 0
+1 0 0 0
+1 1 0 0
+8 1 0 
+8 1 0 
+8 1 0 
+8 1 1 
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+1 8 0 0 0 0 0
+0 8 1 0 0 0 0
+1 8 0 0 0 0 0
+0 8 1 0 0 0 0
+1 8 0 0 0 0 0
+0 8 1 0 0 0 0
+1 8 0 0 0 0 0
+0 8 1 0 0 0 0
+1 8 0 1 0 0 0
+0 8 1 0 0 0 0
+1 8 0 1 0 0 0
+0 8 1 0 0 0 0
+
+a
+\newline 
+b
+\newline 
+c
+\newline 
+d
+\newline 
+
+\latex latex 
+
+\backslash 
+multirow{4}{14mm}{
+\latex default 
+Text in column 1
+\latex latex 
+}
+\latex default 
+
+\newline 
+C2a
+\newline 
+
+\latex latex 
+
+\backslash 
+multirow{4}{14mm}{
+\latex default 
+Text in column 1
+\latex latex 
+}
+\latex default 
+
+\newline 
+C4a
+\newline 
+
+\newline 
+C2b
+\newline 
+
+\newline 
+C4b
+\newline 
+
+\newline 
+C2c
+\newline 
+
+\newline 
+C4c
+\newline 
+
+\newline 
+C2e
+\newline 
+
+\newline 
+C4e
+\layout Standard
+\pagebreak_top 
+footnotes - 
+\series bold 
+How to use footnotes in tables
+\layout Standard
+
+There are different approaches to putting footnotes inside tables.
+ I'll explain to you the ones I've found work quite well within LyX (maybe
+ these are the only ones which work at all :).
+\layout Enumerate
+
+
+\emph on 
+Using Minipage-Environments
+\begin_deeper 
+\layout Standard
+
+Note that the footnotes are displayed immediately after the minipage closes.
+ The default numbering uses lowercase letters.
+\layout LaTeX
+
+{
+\backslash 
+centering
+\layout Standard
+\added_space_top 0.3cm \added_space_bottom 0.3cm \align center \pextra_type 2 \pextra_alignment 0 \pextra_widthp 25
+\LyXTable
+multicol4
+6 4 0 0 -1 -1 -1 -1
+1 1 0 0
+1 0 0 0
+0 0 1 0
+1 0 0 0
+1 1 0 0
+0 1 1 0
+8 1 1 
+8 1 0 
+8 1 0 
+8 1 1 
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 1 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 1 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+
+a
+\newline 
+b
+\newline 
+c
+\newline 
+d
+\newline 
+b
+\newline 
+1
+\latex latex 
+
+\backslash 
+footnote{
+\latex default 
+
+\newline 
+2
+\newline 
+3
+\newline 
+
+\newline 
+example1 cell(b,1)
+\latex latex 
+}
+\latex default 
+
+\newline 
+
+\newline 
+
+\newline 
+c
+\newline 
+4
+\newline 
+5
+\newline 
+6
+\newline 
+d
+\newline 
+7
+\newline 
+8
+\newline 
+9
+\latex latex 
+
+\backslash 
+footnote{
+\latex default 
+
+\newline 
+
+\newline 
+
+\newline 
+
+\newline 
+example1 cell(d,9)
+\latex latex 
+}
+\layout LaTeX
+
+}
+\end_deeper 
+\layout Enumerate
+
+
+\emph on 
+Using the 
+\family sans 
+Longtable-Option
+\begin_deeper 
+\layout Standard
+
+Just select the 
+\family sans 
+Longtable-Button
+\family default 
+ in the 
+\family sans 
+Table-Layout-Menu
+\family default 
+ and footnotes will be displayed at the bottom of the page.
+\layout Standard
+\added_space_top 0.3cm \added_space_bottom 0.3cm \align center \LyXTable
+multicol4
+6 4 1 0 -1 -1 -1 -1
+1 1 0 0
+1 0 0 0
+0 0 1 0
+1 0 0 0
+1 1 0 0
+0 1 1 0
+8 1 1 
+8 1 0 
+8 1 0 
+8 1 1 
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 1 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 1 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+
+a
+\newline 
+b
+\newline 
+c
+\newline 
+d
+\newline 
+b
+\newline 
+1
+\latex latex 
+
+\backslash 
+footnote{
+\latex default 
+
+\newline 
+2
+\newline 
+3
+\newline 
+
+\newline 
+example2 cell(b,1)
+\latex latex 
+}
+\latex default 
+
+\newline 
+
+\newline 
+
+\newline 
+c
+\newline 
+4
+\newline 
+5
+\newline 
+6
+\newline 
+d
+\newline 
+7
+\newline 
+8
+\newline 
+9
+\latex latex 
+
+\backslash 
+footnote{
+\latex default 
+
+\newline 
+
+\newline 
+
+\newline 
+
+\newline 
+example2 cell(d,9)
+\latex latex 
+}
+\end_deeper 
+\layout Enumerate
+
+
+\emph on 
+Using footnotemark and footnotetext LaTeX commands
+\begin_deeper 
+\layout Standard
+
+This is a heavy way to do it but just to demonstrate that it works, here
+ it is.
+ Use this method in minipages to get footnotes at the bottom of the page.
+\layout Standard
+\added_space_top 0.3cm \added_space_bottom 0.3cm \align center \LyXTable
+multicol4
+4 4 0 0 -1 -1 -1 -1
+1 1 0 0
+1 0 0 0
+1 0 0 0
+1 1 0 0
+8 1 1 
+8 1 0 
+8 1 0 
+8 1 1 
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 0 0 0
+0 8 1 0 1 0 0
+
+a
+\newline 
+b
+\newline 
+c
+\newline 
+d
+\newline 
+b
+\newline 
+1
+\latex latex 
+
+\backslash 
+footnotemark
+\latex default 
+
+\newline 
+2
+\newline 
+3
+\newline 
+c
+\newline 
+4
+\newline 
+5
+\newline 
+6
+\newline 
+d
+\newline 
+7
+\newline 
+8
+\newline 
+9
+\latex latex 
+
+\backslash 
+footnotemark
+\layout LaTeX
+
+
+\backslash 
+addtocounter{footnote}{-1}
+\backslash 
+footnotetext{example3 cell(b,1)}%
+\newline 
+ 
+\backslash 
+addtocounter{footnote}{1}
+\backslash 
+footnotetext{example3 cell(d,9)}
+\the_end

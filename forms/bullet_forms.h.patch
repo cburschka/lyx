@@ -1,0 +1,23 @@
+--- bullet_forms.h	Thu Dec  4 12:33:14 1997
++++ ../src/bullet_forms.h	Thu Dec  4 12:34:48 1997
+@@ -11,5 +11,11 @@
+ extern void InputBulletLaTeXCB(FL_OBJECT *, long);
+ extern void BulletDepthCB(FL_OBJECT *, long);
+ extern void BulletPanelCB(FL_OBJECT *, long);
++extern void BulletBMTableCB(FL_OBJECT *, long);
++
++
++/**** Additional routines ****/
+ 
++extern void bulletForm();
++extern bool updateBulletForm(); 
+ 
+@@ -20,7 +39,7 @@
+ 	void *vdata;
+ 	char *cdata;
+ 	long  ldata;
+-	FL_OBJECT *replace_this_with_a_BMTable;
++	FL_OBJECT *bmtable_bullet_panel;
+ 	FL_OBJECT *choice_bullet_size;
+ 	FL_OBJECT *button_ok;
+ 	FL_OBJECT *button_apply;

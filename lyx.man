@@ -1,0 +1,235 @@
+.\" Man page for LyX.
+.\" Use the following command to view man page:
+.\"
+.\"  tbl lyx.1 | nroff -man | less
+.\"
+.TH LYX 1 "October 1998" "Version 1.0" "LyX 1.0"
+.SH NAME
+lyx \- A Document Processor
+.\"
+.\" setup
+.de Cr
+.ie n (c)
+.el \(co
+..
+.SH SYNOPSIS
+\fBlyx\fR [ \fIcommand-line switches\fR] [\fIname.lyx ...\fR ]
+.br
+.SH DESCRIPTION
+\fBLyX\fR is too complex to be described completely in the "man" page
+format. If your system is properly configured, you can access the full
+documentation within \fBLyX\fR under the Help menu.
+
+\fBLyX\fR is a modern approach of writing documents with a computer
+which breaks with the tradition of the obsolete typewriter concept. It
+is designed for people who want a professional output with a minimum
+of time effort, without becoming specialists in typesetting. Compared
+to common word processors, \fBLyX\fR will increase the productivity a
+lot, since most of the typesetting will be done by the computer, not
+the author. With \fBLyX\fR the author can concentrate on the contents
+of his writing, since the computer will take care of the look. Read more 
+about this concept in the online documentation under the Help menu.
+
+Currently, \fBLyX\fR uses the XForms library as a toolkit. \fBLyX\fR
+should run everywhere, where XForms runs. This is on all major Unix
+platforms as well as some PC platforms, including Sun, SGI, HP, DEC
+Alpha/OSF, IBM RS6000, Convex, Cray, i386/Linux, Alpha/Linux,
+i386/FreeBSD, i386/NetBSD, DecSystem(mips)/Ultrix, OS/2 with XFree or 
+PMX and others. 
+
+.SH OPTIONS
+\fBLyX\fR supports the following command-line switches, which can also
+be specified as X resources (e. g. in .Xdefaults) with class
+name \fBLyX\fR:
+.TP 6
+.BI \-help
+summarizes LyX usage
+.TP
+.BI \-sysdir " directory"
+sets system directory. Normally not needed.
+.TP
+.BI \-width " x"
+the width of the main window in \fBLyX\fR.
+.TP
+.BI \-height " y"
+the height of the main window in \fBLyX\fR.
+.TP
+.BI \-xpos " x"
+the x position of the main window in \fBLyX\fR.
+.TP
+.BI \-ypos " y"
+the y position of the main window in \fBLyX\fR.
+Notice, you have to specify both 
+.BI \-xpos 
+and 
+.BI \-ypos 
+to obtain the
+desired effect. Negative positions are ignored. If no valid position
+is given, the main window is centered.
+.TP
+.BI \-dbg " debug-level"
+where debug-level is a sum of debugging options.
+Use "\fBlyx -dbg 65535 -help\fR" to see the different flags.
+.TP
+.BI \-Reverse
+swaps foreground and background colors.
+.TP
+.BI \-Mono
+runs \fBLyX\fR in black and white mode.
+.TP
+.BI \-FastSelection
+uses a fast black and white drawing routine for selections. If you use
+this, the switches BackgroundColor and SelectionColor are ignored.
+.PP
+The following options can be used to define the colors to use for
+different things:
+.TP
+.BI \-MathColor " color"
+.TP
+.BI \-MathFrameColor " color"
+.TP
+.BI \-FootColor " color"
+.TP
+.BI \-LabelColor " color"
+.TP
+.BI \-FillColor " color"
+.TP
+.BI \-NewLineColor " color"
+.TP
+.BI \-OnOffLineColor " color"
+.TP
+.BI \-LatexColor " color"
+.TP
+.BI \-NoteColor " color"
+.TP
+.BI \-LightedColor " color"
+.TP
+.BI \-BackgroundColor " color"
+.TP
+.BI \-SelectionColor " color"
+.PP
+Furthermore, \fBLyX\fR understands the following generic command line options 
+from the \fBForms Library\fR:
+.TP 6
+.BI \-display " host:display"
+specifies the server to connect to.
+.TP
+.BI \-bw " borderwidth"
+specifies the border width to use to built-in objects. 
+.TP
+.BI \-visual " visualName"
+requests a visual by name such as TrueColor etc. By default the
+.B Forms Library
+always selects the visual that has the most depth.
+.TP
+.BI \-depth " depth"
+requests a specific depth. Try "\fB-depth\fR best" or "\fB-depth\fR
+8" if you get a bad match.
+.TP
+.BI \-debug " level"
+generates some info about the state of the
+.B XForms. 
+where 
+.I level
+is an integer between 1-5 and controls the amount of
+information to output. Depending on the options used
+when the
+.B Forms Library
+was built, a level more than 3 might not be available.
+.TP
+.B \-sync
+runs the application in synchronous mode with debug level set to 4. 
+.TP
+.B \-private
+requests a private colormap for the application.
+.TP
+.B \-shared
+requests a shared colormap even if the application needs more
+colors than available. For those colors that can't be allocated
+in the shared colormap, substitutions are made so the closest
+matching color is used.
+.TP
+.B \-stdcmap
+requests a standard colormap.
+.TP
+.B \-name " newname"
+specifies the application name under which resources are to be
+obtained, rather than the default executable file name. 
+.SH ENVIRONMENT
+.TP
+.B LYX_DIR_10x
+can be used to specify which system directory to use.
+.PP
+The system directory is determined by searching for the file
+"chkconfig.ltx". Directories are searched in this order:
+.br
+1) -sysdir command line parameter
+.br
+2) LYX_DIR_10x environment variable
+.br
+3) Maybe <path of binary>/TOP_SRCDIR/lib
+.br
+4) <path of binary>/../share/<name of binary>/ 
+.br
+5) hardcoded lyx_dir (usually /usr/local/share/lyx on UNIX and %X11ROOT%\\XFree86\\lib\\X11\\lyx on OS/2 with XFree)
+
+.TP
+.B LYX_LOCALEDIR
+can be used to tell LyX where to look for the translations of its GUI
+strings in other languages.
+
+.SH FILES
+.nf
+.ta \w'\fILIBDIR\fR/lyxrc.in  'u
+~/.lyx/lyxrc      Personal configuration file
+\fILIBDIR\fR/lyxrc      System wide configuration file
+\fILIBDIR\fR/lyxrc.example System wide configuration file template
+\fILIBDIR\fR/configure  Updates \fBLyX\fR if config has changed
+\fILIBDIR\fR/bind/      Keybindings
+\fILIBDIR\fR/clipart/   Clipart pictures
+\fILIBDIR\fR/doc/       Documentation in \fBLyX\fR format.
+\fILIBDIR\fR/examples/  Example documents
+\fILIBDIR\fR/images/    Images used as icons or in popups
+\fILIBDIR\fR/kbd/       Keyboard mappings
+\fILIBDIR\fR/layouts/   Layout descriptions
+\fILIBDIR\fR/templates/ Templates for documents
+\fILIBDIR\fR/tex/       Extra TeX files
+.Sp
+.fi
+
+.I LIBDIR
+is the system directory. This is usually /usr/local/share/lyx on UNIX and %X11ROOT%\\XFree86\\lib\\X11\\lyx on OS/2 with XFree.
+
+.SH SEE ALSO
+reLyX(1), latex(1), xforms(5).
+
+Full documentation in either native \fBLyX\fR or postscript format.
+.SH BUGS/LIMITATIONS
+There are probably still some bugs in \fBLyX\fR. Please report them to
+lyx-devel@lists.lyx.org with detailed info, including which version of \fBLyX\fR
+you use.  Consult the "Known Bugs" item under the Help menu first if possible.
+
+\fBLaTeX\fR import is still not perfect and may produce buggy *.lyx files. Consult the \fBreLyX\fR documentation.
+
+XFree on OS/2 currently does not support PC codepages. If you use \fBemTeX\fR to preview/print with cp850, etc., this might lead to strange \fBemTeX\fR error messages.
+.B Remedy:
+  1) In filenames use only A-Z, a-z, 1-9.
+  2) Install a recent \fBLaTeX\fR package inputenc.sty. Select Layout->Document->encoding:latin1, so that \fBreLyX\fR adds the \fBLaTeX\fR command '\\usepackage[latin1]{inputenc}'.
+
+\fBLyX\fR server has some limitations under OS/2: See Help->Customization for details. 
+
+Preview of inline images in rare cases does not show the image. If you want to preview the image, just click on it and choose fullscreen preview. 
+
+If you have performance problems, please go through the \fBlyxrc\fR 
+configuration file.  It contains settings that can be used to improve 
+performance on slow systems.
+ 
+
+
+.SH AUTHOR
+Copyright
+.Cr
+1995, 1996, 1997, 1998 by Matthias Ettrich (ettrich@informatik.uni-tuebingen.de)
+and the rest of the \fBLyX Team\fR (See Credits under the Help menu
+item).
+

@@ -1,0 +1,88 @@
+// -*- C++ -*-
+/* This file is part of
+* ======================================================
+* 
+*           LyX, The Document Processor
+* 	 
+*	    Copyright (C) 1995 1996 Matthias Ettrich
+*           and the LyX Team.
+*
+*======================================================*/
+
+/* This is the declaration of the LyX class, there should only
+ * exist _one_ instance of this in the application. */
+
+#ifndef _LYX_MAIN_H_
+#define _LYX_MAIN_H_
+
+#include <signal.h>
+
+class LyXGUI;
+class LyXRC;
+class LastFiles;
+class Buffer;
+class LString;
+
+extern LString system_lyxdir;
+extern LString user_lyxdir;
+extern LString system_tempdir;
+
+extern LastFiles *lastfiles; /* we should hopefully be able to move this
+			      * inside the LyX class */
+
+extern LyXRC *lyxrc;
+
+
+/**
+  This is the main LyX object it encapsulates most of the other objects.
+*/
+class LyX
+{
+public:
+	/**@name Constructors and Deconstructors */
+	//@{
+	/// the only allowed constructor
+	LyX(int *argc, char *argv[]); // constructor
+	// Always is useful a destructor
+	~LyX();
+	//@}
+
+	/**@name Pointers to... */
+	//@{
+	///
+	LyXGUI *lyxGUI;  // should be only one of this
+	//@}
+private:
+	/**@name Constructors and Deconstructors */
+	//@{
+	/// not allowed
+	LyX(const LyX &){;} // not allowed
+	/// not allowed
+	LyX(){;} // not allowed
+	//@}
+
+	/**@name Private variables */
+	//@{
+	/// does this user start lyx for the first time?
+	bool first_start;
+	///
+	struct sigaction act_;
+	//@}
+	/**@name Private Members */
+	//@{
+	///
+	void runtime();
+	///
+	void init(int *argc, char *argv[]);
+	///
+	void queryUserLyXDir();
+	///
+        void ReadRcFile(LString const & name);
+        ///
+	bool easyParse(int *argc, char *argv[]);
+	//@}
+};
+
+#endif
+
+

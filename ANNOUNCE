@@ -1,0 +1,114 @@
+Public release of LyX version 1.0.1
+===================================
+
+What is LyX?
+------------
+
+LyX is an advanced open-source "document processor".   Unlike standard
+word processors, LyX encourages writing based on the structure of your
+documents, not their appearance, It lets you concentrate on writing,
+leaving details of visual layout to the software.
+
+With the familiar face of a WSYWIG word processor, LyX produces high
+quality, professional output -- using LaTeX, an industrial
+strength typesetting engine. No knowledge of LaTeX is required to
+use LyX; however, there is also a "TeX mode" which allows you to enter
+plain LaTeX commands.
+
+All in all, LyX is a complete environment for writing documents.  It has
+superior support for scientific writing, but works well for any kind of
+document.
+
+Read more about LyX (including screen shots) at:
+
+    http://www.lyx.org/
+
+What can LyX do?
+----------------
+
+A very incomplete feature list:
+
+- "standard" word processing: fonts, cut & paste, infinite undo...
+- footnotes, citations, cross-referencing, faxes, spellchecking
+- almost any math expression (with a simple, but powerfull interface)
+- automatic, multilevel outline support (enumerated or bullets)
+- tables and embedded postscript figures support
+- import LaTeX or ASCII
+- export LaTeX, ASCII, DVI, PostScript, LinuxDoc-SGML
+- fair support for non-English documents and/or menus
+- extensive documentation, including a tutorial
+- version control using RCS
+
+What's new compared to LyX version 0.12.0?
+------------------------------------------
+
+Most importantly, import of LaTeX documents is possible if you have
+Perl installed.  Other than that, some new features, and lots of bug 
+fixes. See WHATSNEW
+
+How stable is LyX?
+------------------
+
+This release is considered stable, but as with any software, you should 
+take appropriate back-up steps in a production environment.
+
+Where can I get it?
+-------------------
+
+LyX is distributed under the GNU General Public Licence (GPL), which
+means that you can not only use it freely, but also modify and
+redistribute it, provided that you include the source of the program.
+
+The main LyX site is
+
+	ftp://ftp.lyx.org/pub/lyx/
+
+with mirrors at
+
+	ftp://alpha.tat.physik.uni-tuebingen.de/pub/lyx
+        ftp://ftp.lip6.fr/pub/lyx/
+        ftp://ftp.sdsc.edu/pub/other/lyx/
+        ftp://ftp.fciencias.unam.mx/pub/Lyx/
+	ftp://mirror.aarnet.edu.au/pub/LyX/
+	
+The source code package is available at:
+
+        ftp://ftp.lyx.org/pub/lyx/stable/lyx-1.0.0.tar.gz
+	ftp://ftp.devel.lyx.org/pub/lyx/lyx-1.0.0.tar.gz
+
+and at the mirrors listed above.
+
+You need to have XForms version 0.81, 0.86 or 0.88 to compile your own 
+version.  Version 0.88 is highly recomended.
+
+Ready-to-run precompiled binaries for various platforms are available at:
+
+        ftp://ftp.lyx.org/pub/lyx/bin/1.0.0/
+
+Binaries for i386-Linux are also available at your local sunsite mirror:
+
+        ftp://sunsite.unc.edu/pub/Linux/apps/editors/lyx-1.0.0-bin.tar.gz
+
+Credits
+-------
+
+The LyX Team is composed of volunteers from around the world.  Many, many 
+people have helped make the 1.0 release possible, including:
+
+    Lars Gullik Bjoennes, Alejandro Aguilar Sierra, Asger Alstrup,
+    Jean-Marc Lasgouttes, Juergen Vigna, John P. Weiss, Bernhard Iselborn,
+    Andre Spiegel, Allan Rae, Henner Zeller, Robert van der Kamp,
+    David L. Johnson, Amir Karger, Joacim Persson, Peter Suetterlin,
+    SMiyata, Alkis Polyzotis, ...
+
+Special thanks should go to Matthias Ettrich who started it all.
+
+Feedback
+--------
+
+Please direct any comments or questions to the appropriate mailing list as
+described on the LyX homepage (http://www.lyx.org/).
+
+Enjoy!
+
+The LyX Team

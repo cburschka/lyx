@@ -1,0 +1,265 @@
+#This file was created by <sergio> Mon May 24 07:03:57 1999
+#LyX 1.0 (C) 1995-1999 Matthias Ettrich and the LyX Team
+\lyxformat 2.15
+\textclass article
+\language spanish
+\inputencoding latin1
+\fontscheme default
+\graphics dvips
+\paperfontsize 12
+\spacing single 
+\papersize a4paper
+\paperpackage a4
+\use_geometry 0
+\use_amsmath 0
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\quotes_times 2
+\papercolumns 1
+\papersides 1
+\paperpagestyle plain
+
+\layout Title
+
+ESTE ES EL TÍTULO DEL DOCUMENTO
+\layout Author
+
+por Fulanito
+\layout Date
+
+12 de junio de 1972
+\layout Standard
+
+
+\begin_inset LatexCommand \tableofcontents{}
+
+\end_inset 
+
+
+\layout Section
+
+Filosofía general
+\layout Standard
+
+La filosofía básica de LyX es que te preocupes del contenido de lo que escribes,
+ no de la forma.
+\layout Subsection
+
+Cómo lo hace LyX
+\layout Standard
+
+LyX utiliza LaTeX, un sistema de preparación de documentos diseñado por
+ Leslie Lamport en 1985.
+ Fue construido sobre un lenguaje de composición llamado TeX, creado por
+ Donald Knuth en 1984.
+ LaTeX está diseñado sobre una filosofía similar a la de LyX.
+ Leslie Lamport dijo (ver referencia 
+\begin_inset LatexCommand \cite{lamport}
+
+\end_inset 
+
+):
+\layout Quote
+
+La función del diseño tipográfico es ayudar al lector a comprender las ideas
+ del autor.
+ Para que un documento sea fácil de leer, su estructura visual debe reflejar
+ su estructura lógica.
+ Las citas y los programas de ordenador, al ser elementos estructuralmente
+ distintos, deberían distinguirse visualmente uno de otro [...] Como LaTeX
+ no puede entenderte directamente, debes indicarle explícitamente la estructura
+ lógica mediante comandos especiales [...] Mientras escribes el documento,
+ deberías preocuparte de su estructura lógica, no de su apariencia.
+\layout Subsection
+
+Por qué LyX es mejor
+\layout Standard
+
+
+\begin_inset LatexCommand \label{sec:lyxbetter}
+
+\end_inset 
+
+LyX puede ser útil a más gente que LaTeX.
+ Es considerablemente más fácil de usar, ya que no necesitas aprender LaTeX
+ (que es prácticamente un lenguaje de programación).
+ LyX es básicamente como los demás procesadores de texto 
+\begin_inset Quotes eld
+\end_inset 
+
+lo que ves es lo que obtienes
+\begin_inset Quotes erd
+\end_inset 
+
+, salvo que LyX es 
+\begin_inset Quotes eld
+\end_inset 
+
+lo que ves es lo que quieres decir
+\begin_inset Quotes erd
+\end_inset 
+
+.
+ De esta forma, combina la facilidad de uso de los procesadores de texto
+ con la potencia de LaTeX.
+ Esto es Bueno.
+ Además, el formato de fichero es independiente del ordenador/sistema que
+ uses.
+ Y lo mejor de todo, ¡es LIBRE y GRATUITO!
+\layout Section
+
+Características de LyX
+\layout Standard
+
+LyX posee muchas características que hacen más fácil escribir documentos.
+\begin_float footnote 
+\layout Standard
+
+Después de todo, ¿por qué otra cosa lo querrías usar?
+\end_float 
+ Estoy 
+\emph on 
+muy emocionado
+\emph default 
+ de hablarte de ellas.
+ Aquí tienes una lista con sólo unas pocas.
+\layout Itemize
+
+LyX se engarga él solo de los márgenes y la numeración de las notas a pie
+ de página
+\layout Itemize
+
+LyX hace muy simple la edición de fórmulas matemáticas.
+\layout Standard
+
+Para una discusión más filosófica de por qué LyX es mejor que muchos procesadore
+s de texto, mira la sección 
+\begin_inset LatexCommand \ref{sec:lyxbetter}
+
+\end_inset 
+
+, que se encuentra en la página 
+\begin_inset LatexCommand \pageref{sec:lyxbetter}
+
+\end_inset 
+
+.
+\layout Section
+
+Intentos fallidos de usar más cosas de LyX
+\layout Standard
+
+El otro día escribí un programa.
+ Era el siguiente:
+\layout LyX-Code
+
+5 REMARK MI IMPRESIONANTE PROGRAMA
+\layout LyX-Code
+
+10 PRINT 
+\begin_inset Quotes eld
+\end_inset 
+
+¡SOY IMPRESIONANTE!
+\begin_inset Quotes erd
+\end_inset 
+
+
+\layout LyX-Code
+
+20 GOTO 10 
+\layout Standard
+
+Después de este gran esfuerzo científico, empecé a sentirme más artístico,
+ así que escribí este haiku:
+\layout Verse
+
+LyX es un maravilloso
+\newline 
+Procesador de textos
+\newline 
+Ahorra tanto tiempo
+\layout Section
+
+Matemáticas
+\layout Standard
+
+Mi ecuación favorita es la solución de la ecuación de segundo grado.
+ Si 
+\begin_inset Formula \( ax^{2}+bx+c=0 \)
+\end_inset 
+
+ (ec.1), entonces 
+\begin_inset Formula \( x=\frac{-b\pm \sqrt{b^{2}-4ac}}{2a} \)
+\end_inset 
+
+ (ec.
+ 2).
+\layout Standard
+
+Otra de mis ecuaciones favoritas es la base del cálculo: 
+\begin_inset Formula \( f'(x)\equiv \lim _{\Delta x\rightarrow 0}\frac{f(x+\Delta x)-f(x)}{\Delta x} \)
+\end_inset 
+
+ (ec.
+ 3).
+\layout Section
+
+Comentarios
+\layout Standard
+
+Un par de apuntes sobre la adaptación a LyX de este fichero:
+\layout Itemize
+
+He quitado la línea hecha a base de guiones.
+ Era simplemente para separar las referencias y el índice del resto del
+ documento.
+ LyX (LaTeX) ya sabe que debe separarlos dejando un espacio.
+\layout Itemize
+
+No me he molestado en poner las ecuaciones en modo demostración.
+ Tampoco he utilizado la numeración automática de ecuaciones, porque no
+ se ha explicado en el 
+\emph on 
+Tutorial
+\emph default 
+.
+\layout Itemize
+
+No he tenido que escribir la palabra 
+\begin_inset Quotes eld
+\end_inset 
+
+Referencias
+\begin_inset Quotes erd
+\end_inset 
+
+.
+ LyX la escribe automáticamente (o la palabra 
+\begin_inset Quotes eld
+\end_inset 
+
+Bibliografía
+\begin_inset Quotes erd
+\end_inset 
+
+, dependiendo de la clase de texto) cuando seleccionas el estilo 
+\family sans 
+Bibliography
+\family default 
+.
+\layout Bibliography
+\bibitem {lamport}
+
+Lamport, Leslie.
+ 
+\emph on 
+LaTeX: A Document Preparation System.
+
+\emph default 
+ Addison-Wesley, Reading, Massachusetts, segunda edición, 1994.
+\the_end

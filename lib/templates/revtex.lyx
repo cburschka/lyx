@@ -1,0 +1,130 @@
+#This file was created by <karger> Tue Jan 26 17:48:36 1999
+#LyX 1.0 (C) 1995-1998 Matthias Ettrich and the LyX Team
+\lyxformat 2.15
+\textclass revtex
+\options aps,manuscript
+
+\layout Title
+
+Insert your Title Here
+\layout Author
+
+Author1
+\begin_float footnote 
+\layout Standard
+
+Author to whom correspondence should be addressed
+\end_float 
+ and Author2
+\layout Address
+
+Insert the name of your university, company, or institute here.
+\layout Standard
+
+
+\begin_inset Info You don't have to write \maketitle.. LyX does this by itself.
+\end_inset 
+
+
+\layout Abstract
+
+Insert your abstract here.
+\layout Section
+
+Introduction
+\layout Standard
+
+Introduction goes here.
+\layout Standard
+
+By the way, any of the style options, like 
+\family typewriter 
+prl
+\family default 
+ or 
+\family typewriter 
+preprint
+\family default 
+ should go in the 
+\family sans 
+Extra
+\protected_separator 
+Options
+\family default 
+ field in the 
+\family sans 
+Document
+\protected_separator 
+Layout
+\family default 
+ popup (accessed from the 
+\family sans 
+Layout
+\family default 
+ menu).
+\layout Section
+
+Insert section title here
+\layout Standard
+
+Section 2 text goes here.
+ 
+\layout Standard
+
+Special REVTeX 3.1 macros must be typed in TeX mode, so typing 
+\family typewriter 
+
+\backslash 
+openone
+\family default 
+ in TeX mode yields 
+\latex latex 
+
+\backslash 
+openone{}
+\latex default 
+.
+ (See the REVTeX manual for other macros.) REVTeX macros can also be used
+ freely in the math editor, so you can type 
+\begin_inset Formula \( \sqrt{\overstar {a}}>\overcirc {b} \)
+\end_inset 
+
+.
+\layout Standard
+
+You can do a bibliography by hand, as shown below, or erase that, and use
+ BibTeX.
+ If you use BibTeX, don't forget to use a REVTeX bibliography style file,
+ such as 
+\family typewriter 
+prsty.bst
+\family default 
+.
+ With either method, you can cite references with the LyX citation commands
+\begin_inset LatexCommand \cite{mycitation}
+
+\end_inset 
+
+.
+\begin_inset Info If you get question marks instead of numbers in your references,
+re-run LaTeX (File->update dvi)
+\end_inset 
+
+
+\layout Bibliography
+\bibitem {mycitation}
+
+Author, 
+\begin_inset Quotes eld
+\end_inset 
+
+Title
+\begin_inset Quotes erd
+\end_inset 
+
+, Journal 
+\series bold 
+Volume
+\series default 
+, page--numbers (year).
+\the_end

@@ -1,0 +1,94 @@
+There are still a couple large bugs (or features lacking) in reLyX, and new
+users (i.e., everyone) will need to know them in order to know how to avoid
+them. Those bugs are currently listed in the BUGS section of the reLyX man
+page. This file lists only the smaller bugs. This includes bugs which appear
+only rarely, and bugs which may be more common but do not affect the printed
+output.
+
+- In optional arguments, reLyX doesn't recognize a braced bracket "{]}"
+as being different from a regular bracket. You'll notice this problem if
+you've got a description environment item like "\item [foo {]} bar]". This
+is probably simplest to fix in the LyX file after you run reLyX. If
+you're very unlucky, it could mess up reLyX, in which case you'll have to
+remove it from the TeX file and put it in the LyX file after you translate it.
+
+- The underscore character '_', when used as an argument to an unknown command,
+may be copied incorrectly. \foo{a_b} will be copied in TeX mode as \foo{a_{b}}.
+'_' in math mode works fine.  It also works fine as the argument to known
+tokens, like \cite{foo_bar}, or even in translated arguments to untranslatable
+commands (see the Syntax Files section of the man page).  Also, if you have
+an underscore in a file name, you have to use the LaTeX style of \input. That
+is, write "\input{a_b}" instead of the old TeX style "\input a_b" (even though
+the latter is legal LaTeX). If \includegraphics can't be copied for various
+reasons (see the reLyX man page), underscore will break. Finally, 
+\label{foo_bar} in math mode will break.
+
+- Complicated nesting could confuse matters. Simple nesting, including nesting
+lists within lists, or having multiple paragraphs in one \item, should work.
+
+- ' { } { } ' is a legal LaTeX way to make five spaces. reLyX will translate
+it as '     ', which will show up in the LyX display, but not in the LaTeX
+document. Use '~~~~~' instead. Or don't use it because it's usually bad style.
+
+- \normalfont and \textnormal are not supported and may confuse the font stacks.
+You can change "\sffamily foo \normalfont" to "\sffamily foo \rmfamily" or
+even to "\textsf{foo}" to get around this problem.
+
+- font sizing commands *usually* work. reLyX may complain about "font
+confusion" when several font sizing commands are given in close proximity.
+Even if it complains, it may get the sizes right.
+
+- {\cal foo} is translated as {\mathcal{foo}}. The LyX file will display
+and extra set of (red) braces, but those braces won't show up in the dvi file
+or printed output.
+
+- CleanTeX adds {} around arguments if they're not there already. It breaks
+on a_b_c or a_\foo{bar}. Unfortunately, examples like that are pretty hard
+to parse, so all we can do is ask you to write clearer LaTeX (or contribute
+your coding skills to the reLyX project!). Sorry.
+
+- reLyX translates {\bf foo} to \textbf{foo}. However, it also does that in
+math mode. Write \mathbf{foo} explicitly in the LyX file instead.
+
+- period in \label or \ref will word-wrap. E.g. \ref{Dr. foo} will yield
+a reference to "Dr." in the LyX file, with an extra "foo}" printed as
+regular text
+
+- \end in a \newcommand, for example, will really confuse reLyX. Put the
+\newcommand in the preamble to avoid this problem.
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Changes in translation caused by features not (yet) in LyX:
+
+
+- Centering (or right or left justifying) works on full paragraphs. Therefore,
+if you have the following:
+    \begin{center}
+    centered text
+    \end{center}
+    NON-centered text without a blank line before it
+
+the reLyX'ed file will put your NON-centered text into a new paragraph. To
+closely approximate what you had, just select "No Indent" from the
+Layout->Paragraph popup for the new paragraph.
+
+- LyX support for tables isn't perfect. Some complicated column descriptions
+(e.g., multiple lines between columns or @{} column descriptions) will not
+be displayed WYSIWYG, but will be printed out correctly. These can be
+entered using the "Extra" popup in LyX's table popup. reLyX should
+translate these things correctly. In addition, '|' characters in the second
+argument to \multicolumn will be ignored. (For example, if you have:
+    \begin{tabular}{|cc|}
+    a & b \\
+    \multicolumn{2}{c}
+    \end{tabular}
+
+there will be lines to the right and left in all rows of the table.)
+Tables must be their own paragraphs, while LaTeX allows a table to appear
+in the middle of a paragraph. \clines will only work on multicolumns. However,
+most tables that aren't too complicated will be translated just fine. For very
+complicated tables, use a "skip" block, so that they will be copied in TeX
+mode.
+
+- Nested \input files will only work if you set \use_tempdir false in your
+lyxrc file.

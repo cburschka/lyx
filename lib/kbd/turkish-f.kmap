@@ -1,0 +1,86 @@
+#
+# Key definition file for Turkish national F-keyboard for LyX
+
+\kmod ^ circumflex auAU		# circumflex on #
+
+\kmap @ '			# mappings for Shift-numbers
+\kmap $ +
+\kmap ^ &
+\kmap & /
+\kmap * (
+\kmap ( )
+\kmap ) =
+
+\kmap ` \\			# mappings for punctuation signs
+\kmap ~ \"
+\kmap - *
+\kmap _ ?
+\kmap = -
+\kmap + _
+\kmap > :
+\kmap / ","
+\kmap ? ;
+
+\kmap q f			# mappings for standard letters
+\kmap Q F
+\kmap w g
+\kmap W G
+\kmap R I
+\kmap t o
+\kmap T O
+\kmap y d
+\kmap Y D
+\kmap u r
+\kmap U R
+\kmap i n
+\kmap I N
+\kmap o h
+\kmap O H
+\kmap [ q
+\kmap { Q
+\kmap ] w
+\kmap } W
+\kmap a u
+\kmap A U
+\kmap s i
+\kmap d e
+\kmap D E
+\kmap f a
+\kmap F A
+\kmap h t
+\kmap H T
+\kmap j k
+\kmap J K
+\kmap k m
+\kmap K M
+\kmap ; y
+\kmap : Y
+\kmap \\ x
+\kmap | X
+\kmap z j
+\kmap Z J
+\kmap c v
+\kmap C V
+\kmap v c
+\kmap V C
+\kmap n z
+\kmap N Z
+\kmap m s
+\kmap M S
+\kmap "," b
+\kmap < B
+
+\kmap e "\\u{g}"			# mappings for Turkish letters
+\kmap E "\\u{G}"
+\kmap r "\\i{}"
+\kmap S "\\.{I}"
+\kmap g "\\\"{u}"
+\kmap G "\\\"{U}"
+\kmap ' "\\c{s}"
+\kmap \" "\\c{S}"
+\kmap x "\\\"{o}"
+\kmap X "\\\"{O}"
+\kmap b "\\c{c}"
+\kmap B "\\c{C}"
+
+

@@ -1,0 +1,106 @@
+#% Do not delete the line below; configure depends on this
+#  \DeclareLaTeXClass{article (AMS)}
+# AMS-Article textclass definition file. Taken from initial LyX source code
+# and from the Article textclass definition file, following the AMS sample
+# paper "testmath.tex" of January, 1995
+# Author : David L. Johnson <dlj0@lehigh.edu>
+# Probably broken by Jean-Marc Lasgouttes <Jean-Marc.Lasgouttes@inria.fr>
+# modified and modularized by Emmanuel GUREGHIAN <gureghia@boston.bertin.fr>
+
+
+# General textclass parameters
+# Description          "article (AMS)"
+Columns			1
+Sides			2
+PageStyle		Headers
+MaxCounter		Counter_Section
+
+ClassOptions
+  FontSize   8|9|10|11|12
+End  
+
+# Standard style definition
+Style Standard
+  Margin  		Static
+  LatexType 		Paragraph
+  LatexName 		dummy
+  ParIndent		MM
+  ParSkip 		0.4
+  Align 		Block
+  AlignPossible 	Block, Left, Right, Center
+  LabelType 		No_Label
+End
+
+############### Sections.
+# First the standard numbered definitions
+Input stdsections.inc
+
+
+# Redefine some of the section styles.
+Style Section
+  Align			Center
+  AlignPossible		Block, Center, Left
+
+  # standard font definition
+  Font
+    Series 		Medium
+    Shape		Smallcaps
+    Size		Large
+  EndFont
+End
+
+# Subsection-numbered style definition
+Style Subsection
+  # standard font definition
+  Font
+    Series 		Bold
+    Size		Normal
+  EndFont
+End
+
+# Subsubsection-numbered style definition
+Style Subsubsection
+  # standard font definition
+  Font
+    Shape 		Italic
+    Size		Normal
+  EndFont
+End
+
+# then define the unumbered sections, based on the numbered ones.
+Input stdstarsections.inc
+
+# remove the layouts that we do not need.
+NoStyle		Chapter
+NoStyle		Paragraph
+NoStyle		Subparagraph
+NoStyle		Chapter*
+#NoStyle		Paragraph*
+#NoStyle		Subparagraph*
+
+# Perharp's we should put this at the end of the file so it appears at the end
+# of the list box ??
+
+Preamble
+  \theoremstyle{plain}    
+  \newtheorem{thm}{Theorem}[section]
+  \numberwithin{equation}{section} %% Comment out for sequentially-numbered
+  \numberwithin{figure}{section} %% Comment out for sequentially-numbered
+EndPreamble
+
+
+
+Input amsdefs.inc
+
+ 
+Input stdlayouts.inc
+NoStyle Verse    # Although mathematicians tend to be poets at times, 
+                 # we don't need this.
+
+
+Input stdlists.inc
+
+
+### Finally a few obsolete definitions for compatibility
+Input obsolete.inc
+

@@ -1,0 +1,1802 @@
+#This file was created by <wiensk> Tue Feb 23 22:25:52 1999
+#LyX 1.0 (C) 1995-1999 Matthias Ettrich and the LyX Team
+\lyxformat 2.15
+\textclass literate-article
+\language default
+\inputencoding default
+\fontscheme default
+\graphics default
+\paperfontsize default
+\spacing single 
+\papersize Default
+\paperpackage a4
+\use_geometry 0
+\use_amsmath 0
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\quotes_times 2
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+
+\layout Title
+
+LyX and Literate Programming
+\newline 
+An example program
+\layout Author
+
+Edmar Wienskoski Jr.
+\newline 
+edmar-w-jr@technologist.com
+\layout Date
+
+
+\latex latex 
+
+\backslash 
+today
+\layout Standard
+
+
+\begin_inset LatexCommand \tableofcontents
+
+\end_inset 
+
+
+\layout Section
+
+Introduction
+\layout Standard
+
+After typesetting a document, LyX scans the LaTeX log file looking for errors.
+ For each error found, the line number is obtained and a error box is displayed
+ in the LyX screen at that position.
+\layout Standard
+
+To use this feature to view compilation errors while working with literate
+ documents, we need a program that filters the compilation errors and puts
+ them in a format suitable for LyX reading it.
+ 
+\layout Standard
+
+In this document we present a filter that recognizes compilation error messages
+ from noweb, gnu C, and the IBM C compiler (xlc).
+\layout Standard
+
+The filter is required to read from standard input, parse for error messages
+ and copy the error messages to the standard output.
+ During the output process, the filter must present the error messages in a
+ format that LyX can interpret, currently, the LaTeX error message format.
+ Of course, nothing will prevent future LyX releases from being able to read
+ other formats as well (like gcc error messages for example).
+ This mechanism is necessary to fully explore the literate programming
+ tool's capabilities.
+\layout Section
+
+Algorithm
+\layout Scrap
+
+<<Function bodies>>=
+\newline 
+int
+\newline 
+main (int argc, char **argv)
+\newline 
+{
+\newline 
+
+\protected_separator 
+ if (argc == 2) {
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+ switch (argv[1][0]) {
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+ case 'n':
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+ <<Scan input for noweb error messages>>
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+ break;
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+ case 'x':
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+ <<Scan input for xlc error messages>>
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+ break;
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+ case 'a':
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+<<AIX system using both noweb and xlc>>
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+ break;
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+ case 's':
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+ case 'b':
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+ <<Solaris and Linux systems using both noweb and gcc>>
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+ break;
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+ case 'g':
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+ default:
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+ <<Scan input for gcc error messages>>
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+ break;
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+ }
+\newline 
+
+\protected_separator 
+ } else {
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+ <<Scan input for gcc error messages>>
+\newline 
+
+\protected_separator 
+ }
+\newline 
+}
+\newline 
+@
+\layout Scrap
+
+<<Function prototypes>>=
+\newline 
+int main (int argc, char **argv);
+\newline 
+@
+\layout Section
+
+Data Structures
+\layout Standard
+
+We resort to some global variables to allow access from several different
+ routines.
+ These are the buffer and related pointers used during the parse of the
+ input.
+\layout Scrap
+
+<<Global variables>>=
+\newline 
+char
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+ buffer[200][200];
+\newline 
+int
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+ last_buf_line;
+\newline 
+int
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+ last_err_line;
+\newline 
+int
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+ err_line;
+\newline 
+@ 
+\layout Section
+
+The output format
+\layout Standard
+
+The output format mimics the LaTeX error messages format.
+ This function prints a number of lines residing in the global variable
+ 
+\family typewriter 
+buffer
+\family default 
+, a program name and line number.
+ There is no special requirement on the input strings, they can be anything.
+\layout Scrap
+
+<<Function bodies>>=
+\newline 
+void
+\newline 
+output_error (int buf_size, int error_line, char *tool)
+\newline 
+{
+\newline 
+
+\protected_separator 
+ int
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+ i;
+\newline 
+
+\protected_separator 
+
+\newline 
+
+\protected_separator 
+ fprintf(stdout, "! Build Error: ==> %s ==>
+\backslash 
+n", tool);
+\newline 
+
+\protected_separator 
+ for (i=0; i<buf_size; i++)
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+ fprintf(stdout, "%s", buffer[i]);
+\newline 
+
+\protected_separator 
+ fprintf(stdout, " ...
+\backslash 
+n
+\backslash 
+nl.%d ...
+\backslash 
+n
+\backslash 
+n", error_line);
+\newline 
+}
+\newline 
+@
+\layout Scrap
+
+<<Function prototypes>>=
+\newline 
+void output_error (int buf_size, int error_line, char *tool);
+\newline 
+@
+\layout Section
+
+Functions Implementation
+\layout Standard
+
+Both noweave and notangle routines, always output one single line for each
+ error found, thus to scan the buffer for noweb error messages is enough
+ to exam one input line at a time.
+ Note that the noweb software does not provide a line error number, so all
+ errors boxes related to noweb messages will be displayed at the beginning
+ of the file.
+\layout Scrap
+
+<<Scan input for noweb error messages>>=
+\newline 
+{
+\newline 
+
+\protected_separator 
+ last_buf_line = 0;
+\newline 
+
+\protected_separator 
+ while (fgets(buffer[0], 200, stdin)) {
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+ if (noweb_try(0))
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+ output_error(1, 0, "noweb");
+\newline 
+
+\protected_separator 
+ }
+\newline 
+}
+\newline 
+@
+\layout Standard
+
+The examination itself is very inefficient.
+ Unfortunately noweb doesn't have any characteristic that would help to
+ identify one of its error messages.
+ The solution is to collect all possible output messages in an array of
+ strings, and turn the examination process into a linear search in this
+ array.
+\layout Scrap
+
+<<Global variables>>=
+\newline 
+char *noweb_msgs[] = {
+\newline 
+
+\protected_separator 
+ "couldn't open file",
+\newline 
+
+\protected_separator 
+ "couldn't open temporary file",
+\newline 
+
+\protected_separator 
+ "error writing temporary file",
+\newline 
+
+\protected_separator 
+ "ill-formed option",
+\newline 
+
+\protected_separator 
+ "unknown option",
+\newline 
+
+\protected_separator 
+ "Bad format sequence",
+\newline 
+
+\protected_separator 
+ "Can't open output file",
+\newline 
+
+\protected_separator 
+ "Can't open temporary file",
+\newline 
+
+\protected_separator 
+ "Capacity exceeded:",
+\newline 
+
+\protected_separator 
+ "Ignoring unknown option -",
+\newline 
+
+\protected_separator 
+ "This can't happen:",
+\newline 
+
+\protected_separator 
+ "non-numeric line number in" 
+\newline 
+};
+\newline 
+@
+\layout Standard
+
+A noweb error message can be any string that contains a matching pair of
+ < <
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+> >, or any of the above strings.
+\layout Scrap
+
+<<Function bodies>>=
+\newline 
+int
+\newline 
+noweb_try (int buf_line)
+\newline 
+{
+\newline 
+
+\protected_separator 
+ char
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+ *s, *b;
+\newline 
+
+\protected_separator 
+ int
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+ i;
+\newline 
+
+\protected_separator 
+
+\newline 
+
+\protected_separator 
+ b = buffer[buf_line];
+\newline 
+
+\protected_separator 
+ s = strstr(b, "<<");
+\newline 
+
+\protected_separator 
+ if (s != NULL) {
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+ s = strstr(s+2, ">>");
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+ if (s != NULL)
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+ return 1;
+\newline 
+
+\protected_separator 
+ } else {
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+ for (i=0; i<12; i++) {
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+ s = strstr (b, noweb_msgs[i]);
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+ if (s != NULL)
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+break;
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+ }
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+ if (s != NULL)
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+ return 1;
+\newline 
+
+\protected_separator 
+ }
+\newline 
+
+\protected_separator 
+ return 0;
+\newline 
+}
+\newline 
+@
+\layout Scrap
+
+<<Function prototypes>>=
+\newline 
+int noweb_try (int buf_line);
+\newline 
+@
+\layout Standard
+
+The xlc compiler always outputs one single line for each error found, thus
+ to scan the buffer for xlc error messages it is enough to exam one input
+ line at a time.
+\layout Scrap
+
+<<Scan input for xlc error messages>>=
+\protected_separator 
+
+\newline 
+{
+\newline 
+
+\protected_separator 
+ last_buf_line = 0;
+\newline 
+
+\protected_separator 
+ while (fgets(buffer[last_buf_line], 200, stdin)) {
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+ if (xlc_try(0))
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+ output_error(1, err_line, "xlc");
+\newline 
+
+\protected_separator 
+ }
+\newline 
+}
+\newline 
+@
+\layout Standard
+
+A xlc error message is easy to identify.
+ Every error message starts with a quoted string with no spaces, a comma,
+ a space, the word 
+\begin_inset Quotes eld
+\end_inset 
+
+line
+\begin_inset Quotes erd
+\end_inset 
+
+, a space, and some variable text.
+ The following routine tests if a given buffer line matches this criteria:
+\layout Scrap
+
+<<Function bodies>>=
+\newline 
+int 
+\newline 
+xlc_try (int buf_line)
+\newline 
+{
+\newline 
+
+\protected_separator 
+ char
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+ *s, *t;
+\newline 
+
+\protected_separator 
+
+\newline 
+
+\protected_separator 
+ t = buffer[buf_line];
+\newline 
+
+\protected_separator 
+ s = t+1;
+\newline 
+
+\protected_separator 
+ while (*s != '"' && *s != ' ' && *s != '
+\backslash 
+0')
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+ s++;
+\newline 
+
+\protected_separator 
+ if (*t != '"' || *s != '"' || strncmp(s+1, ", line ", 7) != 0)
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+ return 0;
+\newline 
+
+\protected_separator 
+ s += 8;
+\newline 
+
+\protected_separator 
+ err_line = atoi(s);
+\newline 
+
+\protected_separator 
+ return 1;
+\newline 
+}
+\newline 
+@
+\layout Scrap
+
+<<Function prototypes>>=
+\newline 
+int xlc_try (int buf_line);
+\newline 
+@
+\layout Standard
+
+The gcc compiler error messages are more complicated to scan.
+ Each error can span more than one line in the buffer.
+ The good news is that every buffer line on each error has the same pattern,
+ and share the same line number.
+ Thus the strategy will be to accumulate lines in the buffer while the reported
+ line number is still the same.
+ At the time they differ, all the accumulated lines, except the last one,
+ will belong to one single error message, which now can be output-ed to
+ LyX.
+\layout Standard
+
+Every gcc error message contains a string with no space followed by a 
+\begin_inset Quotes eld
+\end_inset 
+
+:
+\begin_inset Quotes eld
+\end_inset 
+
+.
+ If the next character is a space, then this line is a header of a error
+ message and the next line will detail the line number of the source code
+ where the error was found.
+ Otherwise, the next thing is a integer number followed by another 
+\begin_inset Quotes eld
+\end_inset 
+
+:
+\begin_inset Quotes eld
+\end_inset 
+
+.
+\layout Scrap
+
+<<Scan input for gcc error messages>>=
+\newline 
+{
+\newline 
+
+\protected_separator 
+ char
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+ *s, *t;
+\newline 
+
+\protected_separator 
+
+\newline 
+
+\protected_separator 
+ last_buf_line = 0;
+\newline 
+
+\protected_separator 
+ while (fgets(buffer[last_buf_line], 200, stdin)) {
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+ /****** Skip lines until I find an error */
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+ s = strpbrk(buffer[last_buf_line], " :");
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+ if (s == NULL || *s == ' ')
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+ continue; /* No gcc error found here */
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+ do {
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+<<gcc error message criteria is to find a "...:999:" or a "...: ">>
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+ /****** OK It is an error message, get line number */
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+ err_line = atoi(s+1);
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+ if (last_err_line == 0 || last_err_line == err_line) {
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+last_err_line = err_line;
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+continue; /* It's either a header or a continuation, don't output yet */
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+ }
+\newline 
+
+\protected_separator 
+ 
+\protected_separator 
+ 
+\protected_separator 
+ /****** Completed the scan of one error message, output it to LyX */
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+ discharge_buffer(1);
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+ break;
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+ } while (fgets(buffer[last_buf_line], 200, stdin));
+\newline 
+
+\protected_separator 
+ }
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+/****** EOF completes the scan of whatever was being scanned */
+\newline 
+
+\protected_separator 
+ discharge_buffer(0);
+\newline 
+}
+\newline 
+@
+\layout Scrap
+
+<<gcc error message criteria is to find a "...:999:" or a "...: ">>=
+\newline 
+/****** Search first ":" in the error number */
+\newline 
+s = strpbrk(buffer[last_buf_line], " :");
+\newline 
+last_buf_line++;
+\newline 
+if (s == NULL || *s == ' ') 
+\newline 
+
+\protected_separator 
+ <<No gcc error found here, but it might terminate the scanning of a previous
+ one>>
+\newline 
+/****** Search second ":" in the error number */
+\newline 
+t = strpbrk(s+1, " :");
+\newline 
+if (t == NULL || *t == ' ')
+\newline 
+
+\protected_separator 
+ <<No gcc error found here, but it might terminate the scanning of a previous
+ one>>
+\newline 
+/****** Verify if is all digits between ":" */
+\newline 
+if (t != s+1+strspn(s+1, "0123456789")) 
+\newline 
+
+\protected_separator 
+ <<No gcc error found here, but it might terminate the scanning of a previous
+ one>>
+\newline 
+@
+\layout Scrap
+
+<<No gcc error found here, but it might terminate the scanning of a previous
+ one>>=
+\newline 
+{
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+err_line = 0;
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+discharge_buffer(1);
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+continue;
+\newline 
+}
+\newline 
+@
+\layout Standard
+
+As we mentioned, when the scan of one gcc error message is completed everything
+ in the buffer except the last line is one single error message.
+ But if the scan terminates with a EOF or through finding one line that
+ does not match the gcc error message criteria, then there is no 
+\begin_inset Quotes eld
+\end_inset 
+
+last line
+\begin_inset Quotes erd
+\end_inset 
+
+ in the buffer to be concerned with.
+ In those cases we empty the buffer completely.
+\layout Scrap
+
+<<Function bodies>>=
+\newline 
+void
+\newline 
+discharge_buffer (int save_last)
+\newline 
+{
+\newline 
+
+\protected_separator 
+ if (last_err_line != 0) {
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+ if (save_last != 0) {
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+ output_error(last_buf_line-1, last_err_line, "gcc");
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+ strcpy (buffer[0], buffer[last_buf_line-1]);
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+ last_err_line = err_line;
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+ last_buf_line = 1;
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+ } else {
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+ output_error (last_buf_line, last_err_line, "gcc");
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+ last_err_line = 0;
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+ last_buf_line = 0;
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+ }
+\newline 
+
+\protected_separator 
+ }
+\newline 
+}
+\newline 
+@
+\layout Scrap
+
+<<Function prototypes>>=
+\newline 
+void discharge_buffer (int save_last);
+\newline 
+@
+\layout Standard
+
+To combine the scan of noweb error messages and xlc error messages is very
+ simple.
+ We just try each one for every input line:
+\layout Scrap
+
+<<AIX system using both noweb and xlc>>=
+\newline 
+{
+\newline 
+
+\protected_separator 
+ last_buf_line = 0;
+\newline 
+
+\protected_separator 
+ while (fgets(buffer[0], 200, stdin)) {
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+ if (noweb_try(0))
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+ output_error(1, 0, "noweb");
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+ else if (xlc_try(0))
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+ output_error(1, err_line, "xlc");
+\newline 
+
+\protected_separator 
+ }
+\newline 
+}
+\newline 
+@
+\layout Standard
+
+To combine the scan of noweb error messages and gcc error messages is simple
+ if we realize that it is not possible to find a noweb error message
+ in the middle of a gcc error message.
+ So we just repeat the gcc procedure and test for noweb error messages in
+ the beginning of the scan:
+\layout Scrap
+
+<<Solaris and Linux systems using both noweb and gcc>>=
+\newline 
+{
+\newline 
+
+\protected_separator 
+ char
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+ *s, *t;
+\newline 
+
+\protected_separator 
+
+\newline 
+
+\protected_separator 
+ last_buf_line = 0;
+\newline 
+
+\protected_separator 
+ while (fgets(buffer[last_buf_line], 200, stdin)) {
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+ /****** Skip lines until I find an error */
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+ if (last_buf_line == 0 && noweb_try(0)) {
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+ output_error(1, 0, "noweb");
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+ continue;
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+ }
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+ s = strpbrk(buffer[last_buf_line], " :");
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+ if (s == NULL || *s == ' ')
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+ continue; /* No gcc error found here */
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+ do {
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+<<gcc error message criteria is to find a "...:999:" or a "...: ">>
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+ /****** OK It is an error, get line number */
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+ err_line = atoi(s+1);
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+ if (last_err_line == 0 || last_err_line == err_line) {
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+last_err_line = err_line;
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+continue; /* It's either a header or a continuation, don't output yet */
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+ }
+\newline 
+
+\protected_separator 
+ 
+\protected_separator 
+ 
+\protected_separator 
+ /****** Completed the scan of one error message, output it to LyX */
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+ discharge_buffer(1);
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+ break;
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+
+\protected_separator 
+ } while (fgets(buffer[last_buf_line], 200, stdin));
+\newline 
+
+\protected_separator 
+ }
+\newline 
+
+\protected_separator 
+
+\protected_separator 
+/****** EOF completes the scan of whatever was being scanned */
+\newline 
+
+\protected_separator 
+ discharge_buffer(0);
+\newline 
+}
+\newline 
+@
+\layout Section
+
+Wrapping the code into a file
+\layout Scrap
+
+<<listerrors.c>>=
+\newline 
+#include <stdio.h>
+\newline 
+#include <strings.h> 
+\protected_separator 
+ 
+\protected_separator 
+ 
+\protected_separator 
+ 
+\newline 
+
+\protected_separator 
+
+\newline 
+<<Global variables>>
+\newline 
+<<Function prototypes>>
+\newline 
+<<Function bodies>>
+\newline 
+@
+\layout Standard
+
+To build this program, we want to add the 
+\begin_inset Quotes eld
+\end_inset 
+
+-L
+\begin_inset Quotes erd
+\end_inset 
+
+ option in the tangle command to force gdb to load the file 
+\family typewriter 
+Literate.nw
+\family default 
+ instead of 
+\family typewriter 
+listerrors.c
+\family default 
+.
+ In accordance with this, we pass the 
+\begin_inset Quotes eld
+\end_inset 
+
+-g
+\begin_inset Quotes erd
+\end_inset 
+
+ option to gcc.
+\layout Scrap
+
+<<build-script>>=
+\newline 
+#!/usr/local/bin/bash
+\newline 
+notangle -L -Rlisterrors.c Literate.nw > listerrors.c
+\newline 
+gcc -g -o listerrors listerrors.c
+\newline 
+@
+\layout Standard
+
+This project can be tangled and compiled from LyX if you set 
+\family typewriter 
+
+\backslash 
+build_command
+\family default 
+ to call a generic script that always extracts a scrap named 
+\family typewriter 
+build-script
+\family default 
+ and executes it.
+ Here is a example of such generic script:
+\layout LyX-Code
+
+#!/bin/sh
+\newline 
+notangle -Rbuild-script $1 | sh
+\the_end
+
+
+
+
+
+

@@ -1,0 +1,130 @@
+#!@PERL@
+# 
+# Copyright (C) 1999 Kayvan A. Sylvan <kayvan@sylvan.com>
+# You are free to use and modify this code under the terms of
+# the GNU General Public Licence version 2 or later.
+#
+# Written with assistance from:
+#   Edmar Wienskoski Jr. <edmar-w-jr@technologist.com>
+#   Amir Karger <karger@post.harvard.edu>
+#
+# $Id: noweb2lyx.in,v 1.1 1999/09/27 18:44:34 larsbj Exp $
+#
+# NOTE: This file was automatically generated from noweb2lyx.lyx using noweb.
+#
+&usage() if ($#ARGV < 1); # zero or one argument 
+if ($ARGV[0] eq "-pre") {
+  &usage unless ($#ARGV == 2);
+  $input_file = $ARGV[1]; $output_file = $ARGV[2]; $pre_only = 1;
+} elsif ($ARGV[0] eq "-post") {
+  &usage unless ($#ARGV == 2);
+  $input_file = $ARGV[1]; $output_file = $ARGV[2]; $post_only = 1;
+} else {
+  &usage unless ($#ARGV == 1);
+  $input_file = $ARGV[0]; $output_file = $ARGV[1];
+  $pre_only = 0; $post_only = 0;
+}
+sub setup_files {
+  my($in, $out) = @_;
+  open(INPUT, "<$in") || die "Can not read $in: $!\n";
+  open(OUTPUT, ">$out") || die "Can not write $out: $!\n";
+}
+sub usage() {
+  print "Usage: noweb2lyx [-pre | -post] input-file output-file
+
+If -pre is specified, only pre-processes the input-file for reLyX.
+Similarly, in the case of -post, post-processes reLyX output.
+In case of bugs, Email Kayvan Sylvan <kayvan\@sylvan.com>.\n";
+  exit;
+}
+if (!$post_only) {
+  if ($pre_only) {
+    &setup_files($input_file, $output_file);
+  } else {
+    $relyx_file = "temp$$";
+    &setup_files($input_file, $relyx_file);
+  }
+  inputline: while(<INPUT>)
+  {
+    if (/^\s*\<\<.*\>\>=/) { # Beginning of a noweb scrap
+      $savedScrap = $_;
+      $endLine = "";
+      scrapline: while (<INPUT>) {
+        last scrapline if /^@\s+/;
+        $savedScrap .= $_;
+      };
+      switch: {
+        if (/^@\s+$/) {$savedScrap .= $_; last switch; }
+        if (/^@\s+%def.*$/) {$savedScrap .= $_; last switch; }
+        if (/^@\s+(.*)$/) {$savedScrap .= "@\n"; $endLine = "$1\n"; }
+      }
+      print OUTPUT "\\begin{reLyXskip}\n";
+      print OUTPUT $savedScrap;
+      print OUTPUT "\\end{reLyXskip}\n\n";
+      print OUTPUT "$endLine";
+    } elsif (/^@\s+(.*)/) { # Beginning of a documentation chunk
+      print OUTPUT $1; # We do not need the ``@'' part
+    } elsif (/\[\[.+\]\]/) { # noweb quoted code
+      s/\[\[.+?\]{2,}/{$&}/g;
+      print OUTPUT;
+    } else {
+      print OUTPUT; # Just let the line pass through
+    }
+  }
+  close(INPUT);
+  close(OUTPUT);
+}
+if ((!$pre_only) && (!$post_only)) {
+  open(INPUT, "<$relyx_file") ||
+    die "Can not read $relyx_file: $!\n";
+  $class = "article"; # default if none found
+  parse: while(<INPUT>) {
+    if (/\\docu[m]entclass{(.*)}/) {
+      $class = $1;
+      last parse;
+    }
+  }
+  close(INPUT);
+  $doc_class = "literate-" . $class;
+  die "reLyX returned non-zero: $!\n"
+    if (system("reLyX -c $doc_class $relyx_file"));
+}
+if (!$pre_only) {
+  if ($post_only) {
+    &setup_files("$input_file", "$output_file");
+  } else {
+    &setup_files("$relyx_file.lyx", "$output_file");
+  }
+  line: while(<INPUT>)
+  {
+    if (/\\latex latex/) { # Beginning of some latex code
+      if (($line = <INPUT>) =~ /^\s*<</) { # code scrap
+        $savedScrap = "\\layout Scrap\n\n$line";
+        codeline: while (<INPUT>) {
+          $savedScrap .= $_;
+          last codeline if /^@\s+/;
+        };
+        print OUTPUT $savedScrap;
+        slurp: while (<INPUT>) {
+          last slurp if /\\latex /;
+          next slurp if /\\newline/;
+          next slurp if /^\s*$/;
+          warn "confused by line: $_";
+        }
+      } else {
+        # print the \latex latex line + next line
+        print OUTPUT "$_$line";
+      }
+      next line;
+    }
+    if (/\[\[.+\]\]/) { # special code for [[var]]
+      s/\[\[.+?\]{2,}/\n\\latex latex\n$&\n\\latex default\n/g;
+      print OUTPUT;
+      next line;
+    }
+    print OUTPUT; # default
+  } 
+  close(INPUT);
+  close(OUTPUT);
+}
+system("rm -f $relyx_file*") unless ($post_only || $pre_only);

@@ -1,0 +1,27 @@
+TODO file for reLyX
+
+SHORT TERM:
+- Bug fixes
+- translate common options from preamble (some \usepackage commands)
+- copy all unknown environments exactly, not just reLyXskip and verbatim
+- \url, especially \url||
+
+MEDIUM TERM:
+- support more stuff from preamble, like \newtheorem
+- full table support (i.e., longtable and sideways environment in tables)
+- minipages
+- list environments (like minipage) in syntax.default, along with the
+  number of arguments they take.
+- better understanding of when we're in math mode. Will (finally!) fix the
+  underscore bugs, allow macro translation and perhaps environment translation,
+  as well as translating \bf in math mode correctly.
+
+LONGER TERM:
+- graphicx? (in LyX 1.1 and later)
+- other LaTeX packages
+- "sloppy" and "fussy" translations. User chooses either to translate as much
+  as possible, which may cause incorrect translations, or to guarantee that
+  (dvi) output will be exactly the same as the TeX file, which may leave
+  more untranslated TeX (ERT).
+- macro expansion using "tme, a TeX macro expander" by Jonathan Thornburg
+- better handling of spaces and comments (involves fixing the parser)

@@ -1,0 +1,178 @@
+From 2.9.1.1 to 2.9.2.1
+- noweb documents, with -n option (Kayvan Aghaiepour Sylvan)
+
+From 2.9 to 2.9.1.1
+- translate text argument to \resizebox, \scalebox, \rotatebox
+- BUG: if syntax.default said to "translate" the third of three arguments to
+  a command, reLyX would actually translate the second.
+- handle \r, \k
+- Change a line to work in Windows
+
+From 2.8.1.2 to 2.9
+- Empty layouts (like slide and hollywood's fadein) are supported (reported
+  and pseudo-coded by Alain Castera)
+- \includegraphics -- graphics and graphicx forms, to the extent that LyX
+  supports them
+- Bug: bugfix in 2.6.1.3 meant \n in "\ERT{text\ntext}" was lost! (Now it's
+  converted to a space)
+- REfixed the bug where thebibliography environment created an extra paragraph
+- Handle \epsfig, \psfig
+- Handle \epsffile, \epsfbox
+- LyX now understands sqrt[]{}! Don't need to delete optional argument anymore.
+- BUG: "\layout Abstract " had extra space at end; LyX didn't recognize it!
+- BUG: tables with empty cells at end and no bottom line were mistranslated
+- BUG: one-column tables could be mistranslated (HACK)
+
+From 2.8.1.1 to 2.8.1.2
+- Cleaned up directory stuff. "reLyX foo/bar.tex" wouldn't work if foo/bar.tex
+  \include'd another file
+
+From 2.8 to 2.8.1.1
+- -o option allows you to create temp & LyX file(s) in a given output directory
+- support figure & figure* float
+- BUG: \input and \include support was broken
+- BUG: reLyX didn't notice if it was trying to write to a read-only directory,
+  causing bad errors. Now it dies politely.
+- support \index and \printindex
+- \^ and \~ are apparently legal LaTeX, so support them. Also \textless,
+  \textgreater, \textbar
+
+From 2.7.2.1 to 2.8
+- support \textbackslash, \listof[tables|figures|algorithms], \ensuremath
+- reLyXskip environment is magical; it doesn't get put into LyX file
+- support for verbatim environment and \verb command
+- _ in bibliographystyle filename works
+- some "kernel cleanup", including removing some hacks, and adding methods
+- -h option prints usage. So does dying due to missing options, filename, etc.
+- translate \sp, etc. to their LyX-supported equivalents, using new 'reLyXmt'
+  block in syntax.defaults file
+- translate certain arguments to untranslatable commmands (e.g., argument
+  to \mbox{}) as regular LaTeX
+
+From 2.7.1.1 to 2.7.2.1
+- Translate common optional args to \documentclass
+- support TeX style \input
+
+From 2.6.1.3 to 2.7.1.1
+- support \include{foo} and \input{foo} (but not TeX's "\input foo.tex")
+- -p option translates latex fragments
+- Whitespace is a lot closer to lyx
+- Correctly (?) translate layouts of LatexType Command found in layout files
+  even if the command isn't in syntax.default. E.g., \curradr, \lyxaddress
+
+From 2.6.1.2 to 2.6.1.3
+- table bug: \multicolumn could screw up where cells were placed
+- table bug: \\ \hline at end of table made broken LyX tables
+- Don't print leading C-Enter for strings in TeX mode (e.g. unknown tokens)
+- support optional argument to \cite
+- support \hfill
+- Bug: known but untranslatable tokens may need braces after them. Translate
+    {\oe} or \oe{} as TeX mode \oe{}.
+
+From 2.6 to 2.6.1.2
+- Bug: \@ wasn't being handled correctly.
+- BUG! An 's' coming right after a comment would be deleted!
+- correct support for List (won't work for things nested in List,
+    but that's OK because List is buggy anyway!) and (koma) Labeling layouts
+- support for \bibliography and \bibliographystyle commands (slightly kludged)
+- Buglet: needed to add a space after args in List, Description
+- Better handling of spaces for tokens and regular text
+- "Welcome message" with revision date
+- \LaTeXe -> "LaTeX2e"; support \underbar, \noun
+
+From 2.5.2.3 to 2.6
+- text after \end{center|right|left} automatically starts new paragraph
+- \bibitem and thebibliography (i.e., non-BibTeX bibliographies) support
+- Partial fix to '_' bug. Non-math mode _ will translate correctly as long as
+     it's not in an argument of an unknown command
+- Streamlined (non-debug) output to ~ 10 short lines
+- Allow comments in optional arguments to \documentclass
+- Handle @{} descriptions in tables
+- Added 'slide' as a regular environment in syntax.default
+- syntax file stuff broke \multicolumn & \cline. HACKED them back in.
+     (had to pretend in syntax file that they don't take arguments!)
+- Fixed bug: *'s in regular environments are now recognized
+- Buglet: font size changes in footnote caused crash
+- Buglet: print \n after align commands
+
+From 2.5.2.2 to 2.5.2.3
+- Read ~/.lyx/reLyX/syntax.default (if it exists) instead of system-wide file
+- Always put untranslatable text in TeX mode (never use LaTeX layout)
+- LaTeX command \newline is synonomous with \\, so support it
+
+From 2.5.1.1 to 2.5.2.2
+- Look in ~/.lyx/layouts OR $lyxdir/layouts for layout files
+- -s option allows user to read syntax files in addition to the default one
+- "regular environments" section in syntax file (partially obsoletes -r option)
+- Slight change to \latex block vs. LaTeX paragraph printing decision
+
+From 2.5 to 2.5.1.1
+- Fixed bug that made syntax.default useless in translation pass (thanks Jmarc!)
+- Fix to printing things in TeX mode (improvements & removing a couple buglets)
+- \thanks and \noindent supported
+
+From 2.4 to 2.5
+- Bug: \underline broke reLyX
+- Try to read "foo.tex" if input file "foo" doesn't exist
+- Read in a default LaTeX syntax file saying how many (required/optional)
+     arguments each LaTeX command takes
+- Ignore optional arguments to commands for which LyX can't handle them
+     (e.g., \sqrt, \\)
+- More intelligently add braces to (math) command args that are missing them
+     (e.g., x^\sqrt2 now works)
+
+From 2.3.1.1 to 2.4
+- Table support! (i.e., tabular environment, \hline, \cline, \multicolumn)
+- table environment (including \caption and a tabular environment, e.g.)
+- (mostly) removed extra spaces (which display in LyX, but not in dvi)
+- Added support for accents, including all accents in table 3.1 of Lamport,
+   plus \l \L ?` and !` (last two in LaTeX mode since LyX doesn't support 'em)
+- Added support for center, flushright, and flushleft environments
+- Add {} to end of unknown token if necessary
+- Fixed buglet: unknown token at end of paragraph didn't start new paragraph
+
+From 2.3 to 2.3.1.1
+- Don't bother translating '\ ', since ~ isn't equivalent
+- Description \item commands now handled correctly (except "{]}")
+- Added -c option to override the LyX file's textclass
+- Fixed bug which didn't allow unknown environment nested within itself
+- Ignore anything after the \end{document} command
+- Fixed bug where floats (like footnote) didn't print enough \n's (which could
+     lead to LyX ignoring text following the footnote up to the next \n!)
+
+From 2.2.3.1 to 2.3
+- Remove LyX-generated preamble matter (JAMatos)
+- read LyX layout files from LIBDIR/layouts/ (-t option no longer necessary)
+
+From 2.2.1.3 to 2.2.3.1
+- Added -r and -t options
+- deal with perl5.002 bug and fixed font commands at beginning of paragraph bug
+
+From 2.2.1.1 to 2.2.1.3
+- Added -d switch
+- Fixed bug: \end{environment} wasn't ending local commands
+- Add braces to \frac, plus better brace-adding for ^ and _ (still not perfect)
+- Wrote a man page
+
+From 2.2 to 2.2.1.1:
+- Got rid of *many* 'uninitialized value' errors due to $ or eof
+- Added abstract environment
+- Fixed support for {\em foo \em bar} + partial fix for {\cal A} in math mode
+- Fixed bug: math mode at beginning of a paragraph was mistranslated
+- Translate '\ ' as a protected space. This is probably wrong.
+- Major rewrite of CleanTeX. Only changes test.relyx2 + adds space to test.lyx
+     but in the future it will allow better verbatim copying
+
+From 2.1.1.1 to 2.2:
+- Major code rewrite/reorganization: should not change functionality (Karger)
+- CleanTeX is now a *subroutine*, not a separate executable (Karger)
+- Added -f option to clobber existing .lyx file (Karger)
+
+From 2.1 to 2.1.1.1
+- Many little bug fixes (Karger)
+
+2.1 Initial release 980118
+
+1.1 Initial version, checked in 971210
+
+pre1.1 work (mostly on CleanTeX) done by John Weiss.

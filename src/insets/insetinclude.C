@@ -1,0 +1,464 @@
+#include <config.h>
+
+#include <stdlib.h>
+
+#ifdef __GNUG__
+#pragma implementation
+#endif
+
+#include FORMS_H_LOCATION 
+#include "filedlg.h" 
+#include "insetinclude.h"
+#include "buffer.h"
+#include "bufferlist.h"
+#include "error.h"
+#include "filetools.h"
+#include "lyxrc.h"
+#include "LyXView.h"
+#include "LaTeXFeatures.h"
+#include "lyx_gui_misc.h" // CancelCloseBoxCB
+#include "gettext.h"
+#include "include_form.h"
+#include "FileInfo.h"
+
+extern BufferView *current_view;
+
+extern LyXRC *lyxrc;
+extern BufferList bufferlist;
+extern void UpdateInset(Inset* inset, bool mark_dirty = true);
+
+
+FD_include *create_form_include(void)
+{
+  FL_OBJECT *obj;
+  FD_include *fdui = (FD_include *) fl_calloc(1, sizeof(FD_include));
+
+  fdui->include = fl_bgn_form(FL_NO_BOX, 340, 210);
+  obj = fl_add_box(FL_UP_BOX,0,0,340,210,"");
+  obj = fl_add_frame(FL_ENGRAVED_FRAME,10,70,160,90,"");
+  fdui->browsebt = obj = fl_add_button(FL_NORMAL_BUTTON,230,30,100,30,idex(_("Browse|#B")));
+    fl_set_button_shortcut(obj,scex(_("Browse|#B")),1);
+    fl_set_object_lsize(obj,FL_NORMAL_SIZE);
+    fl_set_object_callback(obj,include_cb,0);
+  fdui->flag1 = obj = fl_add_checkbutton(FL_PUSH_BUTTON,180,70,150,30,idex(_("Don't typeset|#D")));
+    fl_set_button_shortcut(obj,scex(_("Don't typeset|#D")),1);
+    fl_set_object_lsize(obj,FL_NORMAL_SIZE);
+  obj = fl_add_button(FL_RETURN_BUTTON,120,170,100,30,_("OK"));
+    fl_set_object_lsize(obj,FL_NORMAL_SIZE);
+    fl_set_object_callback(obj,include_cb,1);
+  obj = fl_add_button(FL_NORMAL_BUTTON,230,170,100,30,idex(_("Cancel|^[")));
+    fl_set_button_shortcut(obj,scex(_("Cancel|^[")),1);
+    fl_set_object_lsize(obj,FL_NORMAL_SIZE);
+    fl_set_object_callback(obj,include_cb,2);
+  obj = fl_add_button(FL_NORMAL_BUTTON,230,130,100,30,idex(_("Load|#L")));
+    fl_set_button_shortcut(obj,scex(_("Load|#L")),1);
+    fl_set_object_lsize(obj,FL_NORMAL_SIZE);
+    fl_set_object_callback(obj,include_cb,5);
+  fdui->input = obj = fl_add_input(FL_NORMAL_INPUT,10,30,210,30,idex(_("File name:|#F")));
+    fl_set_input_shortcut(obj,scex(_("File name:|#F")),1);
+    fl_set_object_lsize(obj,FL_NORMAL_SIZE);
+    fl_set_object_lalign(obj,FL_ALIGN_TOP_LEFT);
+  fdui->flag41 = obj = fl_add_checkbutton(FL_PUSH_BUTTON,180,100,150,30,idex(_("Visible space|#s")));
+    fl_set_button_shortcut(obj,scex(_("Visible space|#s")),1);
+    fl_set_object_lsize(obj,FL_NORMAL_SIZE);
+
+  fdui->include_grp = fl_bgn_group();
+  fdui->flag4 = obj = fl_add_checkbutton(FL_RADIO_BUTTON,10,130,160,30,idex(_("Verbatim|#V")));
+    fl_set_button_shortcut(obj,scex(_("Verbatim|#V")),1);
+    fl_set_object_lsize(obj,FL_NORMAL_SIZE);
+    fl_set_object_callback(obj,include_cb,10);
+  fdui->flag2 = obj = fl_add_checkbutton(FL_RADIO_BUTTON,10,100,160,30,idex(_("Use input|#i")));
+    fl_set_button_shortcut(obj,scex(_("Use input|#i")),1);
+    fl_set_object_lsize(obj,FL_NORMAL_SIZE);
+    fl_set_object_callback(obj,include_cb,11);
+  fdui->flag3 = obj = fl_add_checkbutton(FL_RADIO_BUTTON,10,70,160,30,idex(_("Use include|#U")));
+    fl_set_button_shortcut(obj,scex(_("Use include|#U")),1);
+    fl_set_object_lsize(obj,FL_NORMAL_SIZE);
+    fl_set_object_callback(obj,include_cb,11);
+  fl_end_group();
+
+  fl_end_form();
+
+  //fdui->include->fdui = fdui;
+
+  return fdui;
+}
+/*---------------------------------------*/
+
+
+FD_include *form = 0;
+
+void include_cb(FL_OBJECT *, long arg)
+{
+    
+	InsetInclude *inset = (InsetInclude*)form->vdata;
+	switch (arg) {
+	case 0:
+	{
+		// Should browsing too be disabled in RO-mode?
+		LyXFileDlg fileDlg;
+		LString mpath = OnlyPath(inset->getMasterFilename());
+                LString ext;
+    
+		if (fl_get_button(form->flag2)) // Use Input Button
+			ext = "*.tex";
+		else if (fl_get_button(form->flag4)) // Verbatim all files
+			ext = "*";
+                else
+                        ext = "*.lyx";
+		// launches dialog
+		fileDlg.SetButton(0, _("Documents"), lyxrc->document_path);
+    
+		// Use by default the master's path
+		LString filename = fileDlg.Select(_("Select Child Document"),
+						  mpath, ext, 
+						  inset->getContents());
+		XFlush(fl_get_display());
+ 
+		// check selected filename
+		if (!filename.empty()) {
+			LString filename2 = MakeRelPath(filename,
+							mpath);
+			if (filename2.prefixIs(".."))
+				fl_set_input(form->input,
+					     filename.c_str());
+			else
+				fl_set_input(form->input,
+					     filename2.c_str());
+		}
+		break;
+	}
+
+	case 1:
+		if(!current_view->currentBuffer()->isReadonly()) {
+			inset->setContents(fl_get_input(form->input));
+			// don't typeset
+			inset->setNoLoad(fl_get_button(form->flag1));
+			if (fl_get_button(form->flag2))
+				inset->setInput();
+			else if (fl_get_button(form->flag3))
+				inset->setInclude();
+			else if (fl_get_button(form->flag4)) {
+				inset->setVerb();
+				inset->setVisibleSpace(fl_get_button(form->flag41));
+			}
+			
+			fl_hide_form(form->include);
+			UpdateInset(inset);
+			break;
+		} // fall through
+		
+	case 2:
+		fl_hide_form(form->include);
+		break;
+	case 5:
+		if(!current_view->currentBuffer()->isReadonly()) {
+			inset->setContents(fl_get_input(form->input));
+			inset->setNoLoad(fl_get_button(form->flag1));
+			if (fl_get_button(form->flag2))
+				inset->setInput();
+			else if (fl_get_button(form->flag3))
+				inset->setInclude();
+			else if (fl_get_button(form->flag4)) {
+				inset->setVerb();
+				inset->setVisibleSpace(fl_get_button(form->flag41));
+			}
+			
+			fl_hide_form(form->include);
+			UpdateInset(inset);
+			current_view->getOwner()->getLyXFunc()->Dispatch(LFUN_CHILDOPEN, inset->getContents().c_str());
+                }
+                break;
+		
+        case 10:
+                fl_activate_object(form->flag41);
+                fl_set_object_lcol(form->flag41, FL_BLACK); 
+                break;
+        case 11:
+                fl_deactivate_object(form->flag41);
+                fl_set_object_lcol(form->flag41, FL_INACTIVE);
+	        fl_set_button(form->flag41, 0);
+                break;
+	}
+}
+
+
+InsetInclude::InsetInclude(LString const & fname, Buffer *bf)
+	: InsetCommand("include") 
+{
+	master = bf;
+	setContents(fname);
+	flag = InsetInclude::INCLUDE;
+	noload = false;
+}
+
+
+InsetInclude::~InsetInclude()
+{
+	if (form && form->vdata == this) {
+		// this inset is in the popup so hide the popup 
+		// and remove the reference to this inset. ARRae
+		if (form->include) {
+			if (form->include->visible) {
+				fl_hide_form(form->include);
+			}
+			fl_free_form(form->include);
+		}
+		fl_free(form);
+		form = 0;
+	}
+}
+
+Inset * InsetInclude::Clone() 
+{ 
+	InsetInclude * ii = new InsetInclude (contents, master); 
+	ii->setNoLoad(isNoLoad());
+	// By default, the newly created inset is of `include' type,
+	// so we do not test this case.
+	if (isInput())
+		ii->setInput();
+	else if (isVerb()) {
+		ii->setVerb();
+		ii->setVisibleSpace(isVerbVisibleSpace());
+	}
+	return (Inset*)ii;
+}
+
+void InsetInclude::Edit(int, int)
+{
+	if(current_view->currentBuffer()->isReadonly())
+		WarnReadonly();
+
+	if (!form) {
+                form = create_form_include();
+		fl_set_form_atclose(form->include, IgnoreCloseBoxCB, NULL);
+	}
+        form->vdata = this;
+    
+        fl_set_input(form->input, contents.c_str());
+	fl_set_button(form->flag1, int(isNoLoad()));
+	fl_set_button(form->flag2, int(isInput()));
+	fl_set_button(form->flag3, int(isInclude()));
+	fl_set_button(form->flag4, int(isVerb()));
+        if (isVerb()) 
+            fl_set_button(form->flag41, int(isVerbVisibleSpace()));
+        else {
+	    fl_set_button(form->flag41, 0);
+            fl_deactivate_object(form->flag41);
+	    fl_set_object_lcol(form->flag41, FL_INACTIVE);
+	}
+	
+        if (form->include->visible) {
+		fl_raise_form(form->include);
+	} else {
+		fl_show_form(form->include,FL_PLACE_MOUSE, FL_FULLBORDER,
+			     _("Include"));
+	}
+}
+
+
+void InsetInclude::Write(FILE *file)
+{
+	fprintf(file, "Include %s\n", getCommand().c_str());
+}
+
+
+void InsetInclude::Read(LyXLex &lex)
+{
+	InsetCommand::Read(lex);
+    
+	if (getCmdName()=="include")
+		setInclude();
+	else if (getCmdName() == "input")
+		setInput();
+	else if (getCmdName().contains("verbatim")) {
+		setVerb();
+		if (getCmdName() == "verbatiminput*")
+			setVisibleSpace(true);
+	}
+}
+
+
+LString InsetInclude::getScreenLabel() const
+{
+	LString temp;
+	if (isInput())
+		temp += _("Input");
+	else if (isVerb()) {
+		temp += _("Verbatim Input");
+		if (isVerbVisibleSpace()) temp += '*';
+	} else temp += _("Include");
+	temp += ": ";
+	
+	if (contents.empty()) {
+		temp+="???";
+	} else {
+		temp+=contents;
+	}
+	return temp;
+}
+
+
+bool InsetInclude::loadIfNeeded() const
+{
+	if (isNoLoad() || isVerb()) return false;
+	if (!IsLyXFilename(getFileName())) return false;
+	
+	if (bufferlist.exists(getFileName())) return true;
+	
+	// the readonly flag can/will be wrong, not anymore I think.
+	FileInfo finfo(getFileName());
+	bool ro = !finfo.writable();
+	return ( bufferlist.readFile(getFileName(), ro) != NULL );
+}
+
+
+int InsetInclude::Latex(FILE *file, signed char /*fragile*/)
+{
+	LString include_file;
+	signed char dummy = 0;
+	Latex(include_file, dummy);
+	fprintf(file, "%s", include_file.c_str());
+	return 0;
+}
+
+
+int InsetInclude::Latex(LString &file, signed char /*fragile*/)
+{
+	LString writefile, incfile;
+
+	// Do nothing if no file name has been specified
+	if (contents.empty())
+		return 0;
+    
+	// Use += to force a copy of contents (JMarc)
+	incfile += contents;
+
+	if (loadIfNeeded()) {
+		Buffer *tmp = bufferlist.getBuffer(getFileName());
+
+		if (tmp->params.textclass != master->params.textclass) {
+			lyxerr.print("ERROR: Cannot handle include file `"
+				     + MakeDisplayPath(getFileName())
+				     + "' which has textclass `"
+				     + lyxstyle.NameOfClass(tmp->params.textclass)
+				     + "' instead of `"
+				     + lyxstyle.NameOfClass(master->params.textclass)
+				     + "'.");
+			return 0;
+		}
+		
+		// write it to a file (so far the complete file)
+		writefile = ChangeExtension(getFileName(), ".tex", false);
+		if (!master->tmppath.empty()
+		    && !master->niceFile) {
+			incfile.subst('/','@');
+			#ifdef __EMX__
+			incfile.subst(':', '$');
+			#endif
+			writefile = AddName(master->tmppath, incfile);
+		} else
+			writefile = getFileName();
+		writefile = ChangeExtension(writefile,".tex",false);
+		lyxerr.debug("incfile:" + incfile, Error::LATEX);
+		lyxerr.debug("writefile:" + writefile, Error::LATEX);
+		
+		tmp->markDepClean(master->tmppath);
+		
+		tmp->makeLaTeXFile(writefile,
+				   OnlyPath(getMasterFilename()), 
+				   master->niceFile, true);
+	} 
+
+	if (isVerb()) {
+		file += '\\';
+		file += command + '{';
+		file += incfile + '}';
+	} 
+	else if (isInput()) {
+		// \input wants file with extension (default is .tex)
+		if (!IsLyXFilename(getFileName())) {
+			file += '\\';
+			file += command + '{';
+			file += incfile + '}';
+		} else {
+			file += '\\';
+			file += command + '{';
+			file +=	ChangeExtension(incfile, ".tex", false)
+				+ '}';
+		}
+	} else {
+		// \include don't want extension and demands that the
+		// file really have .tex
+		file += '\\';
+		file += command + '{';
+		file +=	ChangeExtension(incfile, LString(), false)
+			+ '}';
+	}
+
+	return 0;
+}
+
+
+void InsetInclude::Validate(LaTeXFeatures& features) const
+{
+	if (isVerb())
+		features.verbatim = true;
+
+	// Here we must do the fun stuff...
+	// Load the file in the include if it needs
+	// to be loaded:
+	if (loadIfNeeded()) {
+		// a file got loaded
+		Buffer *tmp = bufferlist.getBuffer(getFileName());
+		tmp->validate(features);
+	}
+}
+
+
+LString InsetInclude::getLabel(int) const
+{
+    LString label;
+    LString parentname;
+	
+	
+    if (loadIfNeeded()) {
+	Buffer *tmp = bufferlist.getBuffer(getFileName());
+	tmp->setParentName(""); 
+	label =  tmp->getReferenceList('\n');
+	tmp->setParentName(getMasterFilename());
+    }
+
+    return label;
+}
+
+
+int InsetInclude::GetNumberOfLabels() const {
+    LString label;
+    int nl;
+
+    if (loadIfNeeded()) {
+	Buffer *tmp = bufferlist.getBuffer(getFileName());
+	tmp->setParentName("");    
+	label = tmp->getReferenceList('\n');
+	tmp->setParentName(getMasterFilename());
+    }
+	nl = (label.empty())? 0: 1;
+	
+    return nl;
+}
+
+
+LString InsetInclude::getKeys() const
+{
+	LString list;
+	
+	if (loadIfNeeded()) {
+		Buffer *tmp = bufferlist.getBuffer(getFileName());
+		tmp->setParentName(""); 
+		list =  tmp->getBibkeyList(',');
+		tmp->setParentName(getMasterFilename());
+	}
+	
+	return list;
+}

@@ -1,0 +1,82 @@
+% This is a test document for reLyX.pl
+\documentclass[11pt]{article} %some comments
+
+%comments
+\def\blah{\blahblah}
+% And more comments
+
+%more comments
+\begin{document}
+
+\title{Test Document}
+\maketitle
+\tableofcontents
+
+\section{First Section}
+This {\large a {\small b \tiny c} \huge d} is some text. %Midline comment
+\framebox[3in][s]{What are you doing \ldots Dave}. This is more text.
+
+\section*{MySection}
+\label{sec:mysection}This is some ``quoted'' text in a new section.
+I {\em am\footnote{This is a great footnote because:
+\begin{itemize}
+\item The footnote is not \emph{emphasized}.
+\item The text is
+\end{itemize}
+
+How cool is that!?} emphasizing ``text.
+
+I keep'' emphasizing}. This ~ is text in a new par\-agraph.\\ It has \ldots
+an $ \alpha $ in it, which is OK\@. I can type special
+characters\footnote{i.e., characters which must be escaped}
+like \& and \#.
+
+\_ is a neat token.
+% This line won't print!
+
+Now I \textsf{want \texttt{to} write} some math in a displayed equation.
+\begin{eqnarray*}
+q^{(i)}_O & = & q^{water}_{O}+dq_{O}\times (P_{deg}^{(i-1)}-P_{deg}^{(i)})\\
+q_{H}^{(i)} & = & q^{water}_{H}+dq_{H}\times (P_{deg}^{(i-1)}-P_{deg}^{(i)})\\
+q_{p}^{(i)} & = & q^{water}_{H}+dq_{H}\times (P_{deg}^{(i-1)}-P^{(i+1)}_{deg})
+\end{eqnarray*}
+
+Here's an itemized list
+\begin{itemize}
+\item this is an item
+\begin{enumerate}
+\item this is a numbered item
+
+But now I want to write some text.
+\item this is another numbered item
+
+More text
+\end{enumerate}
+Yet more text
+
+\item this is another unnumbered item
+
+Final text
+\end{itemize}
+
+\section[hi]{New Section}
+Here's a {\em quotation:
+\begin{quotation}
+Hello there how are you?
+
+I am fine. Thanks
+\end{quotation}
+
+This} is a reference to section \ref{sec:mysection} on page
+\pageref{sec:mysection}.
+
+\begin{tabular}{ll}
+foo & bar \\
+bar & foo
+\end{tabular}
+
+Final Text.
+\end{document}
+
+
+

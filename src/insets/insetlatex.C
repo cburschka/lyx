@@ -1,0 +1,156 @@
+/* This file is part of
+ * ======================================================
+ * 
+ *           LyX, The Document Processor
+ * 	 
+ *	    Copyright (C) 1995 Matthias Ettrich
+ *          Copyright (C) 1995-1998 The LyX Team.
+ *
+ *======================================================*/
+
+#include <config.h>
+
+#ifdef __GNUG__
+#pragma implementation
+#endif
+
+#include "definitions.h"
+#include "insetlatex.h"
+#include "lyxdraw.h"
+
+// 	$Id: insetlatex.C,v 1.1 1999/09/27 18:44:39 larsbj Exp $	
+
+#if !defined(lint) && !defined(WITH_WARNINGS)
+static char vcid[] = "$Id: insetlatex.C,v 1.1 1999/09/27 18:44:39 larsbj Exp $";
+#endif /* lint */
+
+/* Latex. Used to insert Latex-Code automatically */
+
+
+InsetLatex::InsetLatex()
+{
+}
+
+
+InsetLatex::InsetLatex(LString const & string)
+	: contents(string)
+{
+}
+
+
+InsetLatex::~InsetLatex()
+{
+}
+
+
+int InsetLatex::Ascent(LyXFont const &font) const
+{
+	return font.maxAscent() + 1;
+}
+
+
+int InsetLatex::Descent(LyXFont const &font) const
+{
+	return font.maxDescent() + 1;
+}
+
+
+int InsetLatex::Width(LyXFont const &font) const
+{
+	return 6 + font.stringWidth(contents);
+}
+
+
+void InsetLatex::Draw(LyXFont font, LyXScreen &scr,
+		      int baseline, float &x)
+{
+	// Latex-insets are always LaTeX, so just correct the font */ 
+	font.setLatex(LyXFont::ON);
+
+	// Draw it as a box with the LaTeX text
+	x += 1;
+
+	//scr.drawFilledRectangle(int(x), baseline - Ascent(font) + 1,
+	//	     Width(font)-2, Ascent(font) + Descent(font)-2,
+	//	     FL_GRAY80);
+	scr.fillRectangle(gc_lighted, int(x), baseline - Ascent(font) +1 ,
+			  Width(font) - 2, Ascent(font) + Descent(font) -2);
+	
+	//scr.drawRectangle(int(x), baseline - Ascent(font) + 1,
+	//	     Width(font)-2, Ascent(font)+Descent(font)-2,
+	//	     FL_RED);
+	scr.drawRectangle(gc_foot,int(x), baseline - Ascent(font) + 1,
+			  Width(font)-2, Ascent(font)+Descent(font)-2);
+	
+	scr.drawString(font, contents, baseline, int(x+2));
+	x +=  Width(font) - 1;
+}
+
+
+void InsetLatex::Write(FILE *file)
+{
+	fprintf(file, "Latex %s\n", contents.c_str());
+}
+
+
+void InsetLatex::Read(LyXLex &lex)
+{
+	FILE *file = lex.getFile();
+	int i = 0;
+	char c='\0';
+	char tmp[100];
+	while (!feof(file) && (c = fgetc(file)) != '\n') {
+		tmp[i]=c;
+		i++;
+	}
+	tmp[i]='\0';
+	contents = tmp;
+}
+
+
+int InsetLatex::Latex(FILE *file, signed char /*fragile*/)
+{
+	fprintf(file, "%s", contents.c_str());
+	return 0;
+}
+
+
+int InsetLatex::Latex(LString &file, signed char /*fragile*/)
+{
+	file += contents;
+	return 0;
+}
+
+
+int InsetLatex::Linuxdoc(LString &file)
+{
+	file += contents;
+	return 0;
+}
+
+
+int InsetLatex::DocBook(LString &file)
+{
+	file += contents;
+	return 0;
+}
+
+
+bool InsetLatex::Deletable() const
+{
+	return false;
+}
+
+
+Inset* InsetLatex::Clone()
+{
+	InsetLatex *result = new InsetLatex(contents);
+	return result;
+}
+
+
+Inset::Code InsetLatex::LyxCode() const
+{
+	if (contents == "\\tableofcontents") return Inset::TOC_CODE;
+	return Inset::NO_CODE;
+}

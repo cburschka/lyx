@@ -1,0 +1,13 @@
+1999-09-27  Lara Gullik Bjønnes  <larsbj@lyx.org>
+	* All over: Tried to clean everything up so that only the files
+	  that we really need are included in the cvs repository.
+	* Switched to use automake.
+	* Generaton of reLyX is not perfect, LYX_DIR does not get substituted.
+	* Install has not been checked.
+
+1999-09-22  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* po/pt.po: Three errors:
+	       l.533 and l.538 format specification error
+	       l. 402 duplicate entry, I just deleted it.
+

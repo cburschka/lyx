@@ -1,0 +1,135 @@
+#This file was created by <lasgoutt> Wed Mar 25 16:47:59 1998
+#LyX 0.12 (C) 1995-1998 Matthias Ettrich and the LyX Team
+\lyxformat 2.15
+\textclass foils
+\options dvips
+\language default
+\inputencoding default
+\fontscheme default
+\graphics default
+\paperfontsize default
+\spacing single 
+\papersize a4paper
+\paperpackage a4
+\use_geometry 0
+\use_amsmath 0
+\paperorientation landscape
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation skip
+\defskip medskip
+\quotes_language english
+\quotes_times 2
+\papercolumns 1
+\papersides 1
+\paperpagestyle foilheadings
+
+\layout Standard
+
+
+\latex latex 
+
+\backslash 
+MyLogo{HUT/ECDL Kimmo Koli 
+\backslash 
+today}
+\layout ShortFoilhead
+\line_bottom 
+Landscape slide example with a figure
+\layout Standard
+\pextra_type 2 \pextra_alignment 1 \pextra_start_minipage 1 \pextra_widthp 52
+
+It is possible to place text beside a figure (clipart platypus in this example)
+ using the minipage enviroment
+\layout Itemize
+\pextra_type 2 \pextra_alignment 1 \pextra_widthp 52
+
+The text can contain also item lists
+\layout TickList
+\pextra_type 2 \pextra_alignment 1 \pextra_widthp 52
+
+Also other lists like tick lists 
+\layout CrossList
+\pextra_type 2 \pextra_alignment 0 \pextra_widthp 52
+
+and cross lists can be entered
+\layout Standard
+\added_space_top 0.3cm \added_space_bottom 0.3cm \align center \pextra_type 2 \pextra_alignment 1 \pextra_hfill 1 \pextra_start_minipage 1 \pextra_widthp 45
+
+
+\begin_inset Figure size 283 208
+file ../clipart/platypus.eps
+width 1 10
+flags 1
+
+\end_inset 
+
+
+\layout Standard
+
+You can also add more text below below the minipages as you may have guessed.
+\layout ShortFoilhead
+\line_bottom 
+How it was done
+\layout Itemize
+
+
+\family roman 
+Just select with the mouse the text paragraphs you want to mark as minipages
+ and then select
+\emph on 
+ 
+\family default 
+\emph default 
+Layout->Paragraph:ExtraOpt
+\family roman 
+ and press the 
+\family default 
+Minipage
+\family roman 
+ button and add a minipage width.
+ 
+\layout Itemize
+
+
+\family roman 
+Then put cursor to the paragraph containing the figure and mark it also
+ a minipage, but add also the 
+\family default 
+HFill between the Minipage paragraphs
+\family roman 
+ and
+\emph on 
+ 
+\family default 
+\emph default 
+Start a new Minipage
+\family roman 
+ options
+\layout Itemize
+
+
+\family roman 
+You can also change the alignment in this
+\family default 
+ Extra options
+\family roman 
+ menu to middle for all minipage paragraphs for a better result.
+\layout Itemize
+
+
+\family roman 
+Somehow (correct this if you know how) the figure size set by the 
+\family default 
+% of the page
+\family roman 
+ doesn't scale the picture right but still the 
+\family default 
+cm
+\family roman 
+ and 
+\family default 
+inches
+\family roman 
+ entries will work.
+\the_end

@@ -1,0 +1,239 @@
+#! /bin/bash
+dnl Process with autoconf to generate configure script   -*- sh -*-
+
+AC_INIT(src/lyx.C)
+AC_PREREQ(2.13) dnl We want to use autoconf 2.13
+AM_CONFIG_HEADER(src/config.h)
+dnl This is a trick to make autoheader do the right thing
+dnl AM_CONFIG_HEADER(src/config.h)
+AC_CONFIG_AUX_DIR(config)
+LYX_GET_VERSION(${srcdir}/src/version.h)
+
+AC_CANONICAL_SYSTEM
+AC_VALIDATE_CACHE_SYSTEM_TYPE
+
+AM_INIT_AUTOMAKE(lyx, $VERSION)
+
+# The list of languages known to LyX
+# This is needed by GNU gettext
+ALL_LINGUAS="ca cs da de es fi fr hu it nl no pl pt ru sl sv tr wa"
+
+AC_PREFIX_PROGRAM(lyx)
+
+# fix the value of the prefixes.
+test "x$prefix" = xNONE && prefix=$ac_default_prefix
+test "x$exec_prefix" = xNONE && exec_prefix='${prefix}'
+
+### Set the execute permissions of the various scripts correctly
+for file in config/install-sh config/mkinstalldirs config/hack-gcc \
+            lib/configure ; do
+  chmod 755 ${srcdir}/${file}
+done
+
+### Check for programs
+AC_PROG_MAKE_SET
+AC_PROG_INSTALL
+AC_PROG_RANLIB
+
+### we will also need a C compiler to compile GNU gettext
+AC_PROG_CC
+
+### check for special systems
+AC_ISC_POSIX
+AC_AIX
+LYX_HPUX
+LYX_SUNOS4
+LYX_SCO
+
+### Check for program extensions (.exe or nothing)
+AC_EXEEXT
+
+### Check for a C++ compiler
+AC_LANG_CPLUSPLUS
+LYX_PROG_CXX
+AC_PROG_CXXCPP
+
+### Compiler Characteristics
+AC_C_CONST
+AC_C_INLINE
+
+### check the size of pointers and ints
+# the defaults are given for cross compilation.
+AC_CHECK_SIZEOF(void *, 4)
+AC_CHECK_SIZEOF(int, 4)
+LYX_CXX_MUTABLE
+LYX_CXX_PARTIAL
+LYX_CXX_EXPLICIT
+LYX_CXX_STL_STACK
+LYX_CXX_STL_STRING
+LYX_CXX_NAMESPACES
+LYX_CXX_RTTI
+
+### check for compiler brokenness
+LYX_GXX_STRENGTH_REDUCE
+
+### Libarary Files
+dnl by testing these we check if it is ok to have
+dnl -lc and -lm as args to the compiler
+AC_CHECK_LIB(m, sin)
+AC_CHECK_LIB(c, fopen)
+
+# A hack to work around gcc compiler errors
+AC_ARG_WITH(gcc-hack,[  --with-gcc-hack         add a wrapper around gcc])
+if test "x$with_gcc_hack" = xyes ; then
+  CXX_COMMAND='${top_srcdir}/config/hack-gcc ${CXX}'
+  lyx_flags="$lyx_flags gcc-hack"
+else
+  CXX_COMMAND='${CXX}'
+fi
+AC_SUBST(CXX_COMMAND)
+
+### Add extra directories to check for libraries.
+LYX_WITH_DIR([extra-lib],[extra library directory],extra_lib, NONE)
+LYX_LOOP_DIR($lyx_cv_extra_lib,LYX_ADD_LIB_DIR(lyx_ldflags,$dir))
+test ! x"$lyx_ldflags" = x && LDFLAGS="$lyx_ldflags $LDFLAGS"
+
+### Add extra directories to check for include files.
+LYX_WITH_DIR([extra-inc],[extra include directory],extra_inc, NONE)
+LYX_LOOP_DIR($lyx_cv_extra_inc,LYX_ADD_INC_DIR(lyx_cppflags,$dir))
+test ! x"$lyx_cppflags" = x && CPPFLAGS="$lyx_cppflags $CPPFLAGS"
+
+### Add both includes and libraries
+LYX_WITH_DIR([extra-prefix],[extra lib+include directory],extra_prefix, NONE, ${prefix})
+LYX_LOOP_DIR($lyx_cv_extra_prefix,[
+LYX_ADD_INC_DIR(CPPFLAGS,$dir/include)
+  LYX_ADD_LIB_DIR(LDFLAGS,$dir/lib)])
+ 
+### Check for the -liberty library
+test "x$GXX" = xyes && lyx_use_liberty=yes
+AC_ARG_WITH(liberty,
+  [  --without-liberty       do not try to link against libiberty.a],
+  [lyx_use_liberty=$withval])
+if test x$lyx_use_liberty = xyes; then
+  # AC_CHECK_LIB(iberty,main,LIBS="-liberty $LIBS")
+  AC_CHECK_LIB(iberty,main)
+fi
+
+### Check for X libraries
+# Check for the pt library (for SCO, needed for X)
+AC_CHECK_LIB(pt,ptsname,X_EXTRA_LIBS="-lpt $X_EXTRA_LIBS")
+# The real thing.
+AC_PATH_XTRA
+LIBS="$X_PRE_LIBS $LIBS $X_LIBS -lX11 $X_EXTRA_LIBS"
+CPPFLAGS="$CPPFLAGS $X_CFLAGS"
+
+## Check whether X is new enough to handle the input method stuff
+AC_CHECK_FUNC(XOpenIM)
+
+### Check for xforms and xpm (only if X has been found).
+if test "$have_x" = yes ; then
+# We surely need these two libraries and want to check carefully the
+# version numbers... 
+LYX_PATH_XPM
+LYX_PATH_XFORMS
+AC_SUBST(LYX_LIBS)
+else
+LYX_ERROR(dnl
+[Cannot find X window libraries and/or headers. Check your installation. 
+   If you use a Linux system, check that you have installed 
+   the development tools.])
+fi
+
+
+### Setup GNU gettext
+dnl GNU gettext is written in C
+AC_LANG_C
+AM_GNU_GETTEXT
+# a hack for those who try to change LyX, but do not have gettext installed 
+case  "${XGETTEXT}" in 
+ *:) XGETTEXT='cp ${srcdir}/lyx.pot ./${PACKAGE}.po ; :'
+esac
+
+AC_SUBST(LINGUAS)
+
+AC_LANG_CPLUSPLUS
+
+# some standard header files
+AC_HEADER_DIRENT
+AC_HEADER_MAJOR
+AC_CHECK_HEADERS(sys/time.h sys/types.h sys/select.h)
+
+# some standard structures
+AC_HEADER_STAT
+AC_HEADER_TIME
+AC_STRUCT_ST_BLKSIZE
+AC_STRUCT_ST_BLOCKS
+AC_STRUCT_ST_RDEV
+
+# some standard types
+AC_TYPE_MODE_T
+AC_TYPE_OFF_T
+AC_TYPE_PID_T
+AC_TYPE_SIGNAL
+AC_TYPE_SIZE_T
+AC_TYPE_UID_T
+
+# some functions we'd like to have
+AC_ARG_WITH(broken-headers,
+    [  --with-broken-headers      define some functions on SunOS4 and SCO],
+    [lyx_broken_headers=$withval])
+if test "x$lyx_broken_headers" = "xyes"; then
+  lyx_flags="$lyx_flags broken-headers"
+  AC_DEFINE(BROKEN_HEADERS, 1,
+    [Define on SunOS 4 and SCO, were some functions are missing from the headers])
+fi
+AC_CHECK_FUNCS(memmove memset strchr putenv setenv mkfifo)
+
+dnl Until this is fixed in autoconf we provide our own version
+LYX_FUNC_SELECT_ARGTYPES
+
+# SunOS 4.1.3 does not have strerror and atexit
+AC_REPLACE_FUNCS(strerror atexit)
+
+dnl This check should be removed. If the compiler does not understand
+dnl bool it is so broken that we should not support it. (Lgb)
+dnl AC_CACHE_CHECK([for bool type],lyx_cv_have_bool,[
+dnl AC_TRY_LINK(, [bool foo = true;], lyx_cv_have_bool=yes,lyx_cv_have_bool=no)])
+dnl if test $lyx_cv_have_bool = 'yes' ; then
+dnl    AC_DEFINE(HAVE_bool,1,
+dnl  [Define if the bool type is known to your compiler])
+dnl fi
+
+### and now some special lyx flags.
+AC_ARG_WITH(two-colors,[  --with-two-colors       use two color pixmaps],
+  [AC_DEFINE(TWO_COLOR_ICONS)
+   lyx_flags="$lyx_flags two-colors"])
+AC_ARG_WITH(debug,[  --with-debug            output debug information by default],
+  [AC_DEFINE(DEBUG_AS_DEFAULT,1,
+    [Define if you want debugging turned on as default.])
+   lyx_flags="$lyx_flags debug"])
+
+### Finish the work.
+AC_CONFIG_SUBDIRS(lib lib/reLyX)
+AC_OUTPUT([Makefile \
+       lib/Makefile \
+       intl/Makefile \
+       po/Makefile.in \
+       src/Makefile \
+       src/mathed/Makefile \
+       src/insets/Makefile \
+],  [sed -e "/POTFILES =/r po/POTFILES" po/Makefile.in > po/Makefile])
+
+
+cat <<EOF
+
+Configuration:
+  Source code location:       ${srcdir}
+  C++ Compiler:                   ${CXX}
+  C++ Compiler flags:             ${CXXFLAGS}
+  C   Compiler:                   ${CC}
+  C   Compiler flags:             ${CFLAGS}
+  LyX binary dir:             `eval "echo \`eval \"echo ${bindir}\"\`"`
+  LyX files dir:              `eval "echo \`eval \"echo ${datadir}/${PACKAGE}\"\`"`
+  Special flags:              ${lyx_flags}
+
+EOF
+
+# Display a final warning if there has been a LYX_ERROR
+LYX_CHECK_ERRORS
+

@@ -1,0 +1,605 @@
+// -*- C++ -*-
+/* This file is part of
+ * ======================================================
+ * 
+ *           LyX, The Document Processor
+ * 	 
+ *	    Copyright (C) 1995 Matthias Ettrich
+ *          Copyright (C) 1995-1998 The LyX Team.
+ *
+ *======================================================*/
+
+#include <config.h>
+
+#ifdef __GNUG__
+#pragma implementation "vspace.h"
+#endif
+
+#include "lyx_main.h"
+#include "buffer.h"
+#include "vspace.h"
+#include "lyxrc.h"
+#include "lyxtext.h"
+#include <stdio.h>
+#include <string.h>
+#include "BufferView.h"
+
+extern LyXRC * lyxrc;
+extern BufferView *current_view;
+
+// 	$Id: vspace.C,v 1.1 1999/09/27 18:44:38 larsbj Exp $	
+
+#if !defined(lint) && !defined(WITH_WARNINGS)
+static char vcid[] = "$Id: vspace.C,v 1.1 1999/09/27 18:44:38 larsbj Exp $";
+#endif /* lint */
+
+/*  length units
+ */
+
+static const int   num_units            = int(LyXLength::UNIT_NONE);
+
+// I am not sure if "mu" should be possible to select (Lgb)
+static char const* unit_name[num_units] = { "sp", "pt", "bp", "dd",
+					    "mm", "pc", "cc", "cm",
+					    "in", "ex", "em", "mu" }; 
+
+
+LyXLength::UNIT unitFromString (LString const & data)
+{
+	int i=0;
+	while ((i<num_units) && (data != unit_name[i])) i++;
+	return (LyXLength::UNIT)i;
+}
+
+/*  The following static items form a simple scanner for
+ *  length strings, used by isValid[Glue]Length.  See comments there.
+ */
+static float           number[4] = { 0, 0, 0, 0 };
+static LyXLength::UNIT unit[4]   = { LyXLength::UNIT_NONE,
+				     LyXLength::UNIT_NONE,
+				     LyXLength::UNIT_NONE,
+				     LyXLength::UNIT_NONE };
+//static int number_index, unit_index;
+int number_index, unit_index;
+
+static void advance (LString& data, const int n)
+{
+	if (data.length() <= n)
+		data.clean();
+	else
+		data.substring (n, data.length()-1);
+}
+
+static bool isEndOfData (LString& data)
+{
+	data.frontStrip (' ');
+	return data.empty();
+}
+
+static char nextToken (LString& data)
+{
+	data.frontStrip (' ');
+
+	if (data.empty())
+		return '\0';
+	else if (data[0] == '+') {
+		advance (data, 1);
+		return '+';
+	}
+	else if (data.prefixIs ("plus")) {
+		advance (data, 4);
+		return '+';
+	}
+	else if (data[0] == '-') {
+		advance (data, 1);
+		return '-';
+	}
+        else if (data.prefixIs ("minus")) {
+		advance (data, 5);
+		return '-';
+	}
+	else {
+		int      i;
+
+		// I really mean assignment ("=") below, not equality!
+
+		if ((i = strspn (data.c_str(), "0123456789."))) {
+			if (number_index > 3) return 'E';  // Error
+                        LString buffer = data;
+			buffer.substring (0, i-1);
+			if (sscanf (buffer.c_str(),
+				    "%f", &number[number_index]) == 1) {
+				advance (data, i);
+				number_index++;
+				return 'n';
+			} else 
+				return 'E';  // Error
+		} else if ((i = strspn (data.c_str(),
+				       "abcdefghijklmnopqrstuvwxyz"))) {
+			if (unit_index > 3) return 'E';  // Error
+			LString buffer = data; buffer.substring (0, i-1);
+			unit[unit_index] = unitFromString (buffer);
+			if (unit[unit_index] != LyXLength::UNIT_NONE) {
+				advance (data, i);
+				unit_index++;
+				return 'u';
+			} else
+				return 'E';  // Error
+		} else
+			return 'E';  // Error
+	}
+}
+
+static struct {
+	char const* pattern;
+	int   plus_val_index, minus_val_index,
+	      plus_uni_index, minus_uni_index;
+} table[] = { { "nu",       0, 0, 0, 0 },
+	      { "nu+nu",    2, 0, 2, 0 },
+	      { "nu+nu-nu", 2, 3, 2, 3 },
+	      { "nu+-nu",   2, 2, 2, 2 },
+	      { "nu-nu",    0, 2, 0, 2 },
+	      { "nu-nu+nu", 3, 2, 3, 2 },
+	      { "nu-+nu",   2, 2, 2, 2 },
+	      { "n+nu",     2, 0, 1, 0 },
+	      { "n+n-nu",   2, 3, 1, 1 },
+	      { "n+-nu",    2, 2, 1, 1 },
+	      { "n-nu",     0, 2, 0, 1 },
+	      { "n-n+nu",   3, 2, 1, 1 },
+	      { "n-+nu",    2, 2, 1, 1 },
+              { "",         0, 0, 0, 0 }   // sentinel, must be empty
+};
+
+bool isValidGlueLength (LString const & data, LyXGlueLength* result)
+{
+	// This parser is table-driven.  First, it constructs a "pattern"
+        // that describes the sequence of tokens in "data".  For example,
+	// "n-nu" means: number, minus sign, number, unit.  As we go along,
+        // numbers and units are stored into static arrays.  Then, "pattern"
+        // is searched in the "table".  If it is found, the associated
+        // table entries tell us which number and unit should go where
+        // in the LyXLength structure.  Example: if "data" has the "pattern"
+        // "nu+nu-nu", the associated table entries are "2, 3, 2, 3".  
+	// That means, "plus_val" is the second number that was seen
+	// in the input, "minus_val" is the third number, and "plus_uni"
+	// and "minus_uni" are the second and third units, respectively.
+	// ("val" and "uni" are always the first items seen in "data".)
+        //     This is the most elegant solution I could find -- a straight-
+        // forward approach leads to very long, tedious code that would be
+        // much harder to understand and maintain. (AS)
+
+	LString   buffer = data;
+	buffer.frontStrip(' ');
+
+	// To make isValidGlueLength recognize negative values as
+	// the first number this little hack is needed:
+	short val_sign = 1; // positive as default
+	switch(buffer[0]) {
+	case '-':
+		advance(buffer, 1);
+		val_sign = -1;
+		break;
+	case '+':
+		advance(buffer, 1);
+		// fall through
+	default:
+		// no action
+		break;
+	}
+	// end of hack
+	
+	int       pattern_index = 0, table_index = 0;
+	char      pattern[20];
+
+	number_index = unit_index = 1;  // entries at index 0 are sentinels
+
+	// construct "pattern" from "data"
+	while (!isEndOfData (buffer)) {
+		if (pattern_index > 20) return false;
+		pattern[pattern_index] = nextToken (buffer);
+		if (pattern[pattern_index] == 'E') return false;
+		pattern_index++;
+	}
+	pattern[pattern_index] = '\0';
+
+	// search "pattern" in "table"
+	table_index = 0;
+	while (strcmp (pattern, table[table_index].pattern)) {
+		table_index++;
+		if (!*table[table_index].pattern) return false;
+	}
+	
+	// Get the values from the appropriate places.  If an index
+	// is zero, the corresponding array value is zero or UNIT_NONE,
+	// so we needn't check this.
+	if (result) {
+	    result->val = number[1] * val_sign;
+	    result->uni = unit[1];
+	    result->plus_val  = number[table[table_index].plus_val_index];
+	    result->minus_val = number[table[table_index].minus_val_index];
+	    result->plus_uni  = unit  [table[table_index].plus_uni_index];
+	    result->minus_uni = unit  [table[table_index].minus_uni_index];
+	}
+	return true;
+}
+
+
+bool isValidLength(LString const & data, LyXLength* result)
+{
+	/// This is a trimmed down version of isValidGlueLength.
+	/// The parser may seem overkill for lengths without 
+	/// glue, but since we already have it, using it is
+	/// easier than writing something from scratch.
+
+        LString   buffer = data;
+	int       pattern_index = 0;
+	char      pattern[3];
+
+	// To make isValidLength recognize negative values
+	// this little hack is needed:
+	short val_sign = 1; // positive as default
+	switch(buffer[0]) {
+	case '-':
+		advance(buffer, 1);
+		val_sign = -1;
+		break;
+	case '+':
+		advance(buffer, 1);
+		// fall through
+	default:
+		// no action
+		break;
+	}
+	// end of hack
+	
+	number_index = unit_index = 1;  // entries at index 0 are sentinels
+
+	// construct "pattern" from "data"
+	while (!isEndOfData (buffer)) {
+		if (pattern_index > 2) return false;
+		pattern[pattern_index] = nextToken (buffer);
+		if (pattern[pattern_index] == 'E') return false;
+		pattern_index++;
+	}
+	pattern[pattern_index] = '\0';
+
+	// only the most basic pattern is accepted here
+	if (strcmp (pattern, "nu") != 0) return false;		
+	
+	// It _was_ a correct length string.  
+	// Store away the values we found.
+	if (result) {
+	    result->val = number[1]*val_sign;
+	    result->uni = unit[1];
+	}
+	return true;
+}
+
+/// LyXLength class
+
+LyXLength::LyXLength(LString const & data)
+{
+	LyXLength tmp;
+	
+	if (!isValidLength (data, &tmp))
+		return; // should raise an exception
+	else {
+		val = tmp.val;
+		uni = tmp.uni;
+	}
+}
+
+bool LyXLength::operator== (LyXLength other)
+{
+	return (this->val == other.val)
+	    && (this->uni == other.uni);
+}
+
+LString LyXLength::asString() const
+{
+	char buffer[20];
+
+	sprintf (buffer, "%g%s", val, unit_name[uni]);
+	return LString (buffer);
+}
+
+
+/*  LyXGlueLength class
+ */
+
+LyXGlueLength::LyXGlueLength (LString const & data)
+{
+	LyXGlueLength tmp(0.0, PT);
+
+	if (!isValidGlueLength (data, &tmp))
+		return; // should raise an exception
+	else {
+		val=tmp.val;
+		uni=tmp.uni;
+		plus_val =tmp.plus_val;
+		plus_uni =tmp.plus_uni;
+		minus_val=tmp.minus_val;
+		minus_uni=tmp.minus_uni;
+	}
+}
+
+
+bool LyXGlueLength::operator== (LyXGlueLength other)
+{
+	return (this->val == other.val) 
+	    && (this->uni == other.uni)
+	    && (this->plus_val  == other.plus_val)
+	    && (this->plus_uni  == other.plus_uni)
+	    && (this->minus_val == other.minus_val)
+	    && (this->minus_uni == other.minus_uni);
+}
+
+
+LString LyXGlueLength::asString () const
+{
+	char buffer[20];
+	
+	if (plus_val != 0.0)
+	    if (minus_val != 0.0)
+		if ((uni == plus_uni) && (uni == minus_uni))
+		    if (plus_val == minus_val)
+			sprintf (buffer, "%g+-%g%s",
+				 val, plus_val, unit_name[uni]);
+		    else
+			sprintf (buffer, "%g+%g-%g%s",
+				 val, plus_val, minus_val, 
+				 unit_name[uni]);
+		else
+		    if ((plus_uni == minus_uni) && (plus_val == minus_val))
+			sprintf (buffer, "%g%s+-%g%s",
+				 val, unit_name[uni],
+				 plus_val, unit_name[plus_uni]);
+		    else
+			sprintf (buffer, "%g%s+%g%s-%g%s",
+				 val,       unit_name[uni],
+				 plus_val,  unit_name[plus_uni],
+				 minus_val, unit_name[minus_uni]);
+	    else 
+		if (uni == plus_uni)
+		    sprintf (buffer, "%g+%g%s",
+			     val, plus_val, unit_name[uni]);
+		else
+		    sprintf (buffer, "%g%s+%g%s",
+			     val,      unit_name[uni],
+			     plus_val, unit_name[plus_uni]);
+	else
+	    if (minus_val != 0.0)
+		if (uni == minus_uni)
+		    sprintf (buffer, "%g-%g%s",
+			     val, minus_val, unit_name[uni]);
+		else
+		    sprintf (buffer, "%g%s-%g%s",
+			     val,       unit_name[uni],
+			     minus_val, unit_name[minus_uni]);
+	    else
+		sprintf (buffer, "%g%s", val, unit_name[uni]);
+	return LString (buffer);
+}
+
+
+LString LyXGlueLength::asLatexString() const
+{
+	char buffer[40];
+
+	if (plus_val != 0.0)
+		if (minus_val != 0.0)
+			sprintf (buffer, "%g%s plus %g%s minus %g%s",
+				 val, unit_name[uni],
+				 plus_val,  unit_name[plus_uni],
+				 minus_val, unit_name[minus_uni]);
+		else
+			sprintf (buffer, "%g%s plus %g%s",
+				 val,      unit_name[uni],
+				 plus_val, unit_name[plus_uni]);
+	else
+		if (minus_val != 0.0)
+			sprintf (buffer, "%g%s minus %g%s",
+				 val,       unit_name[uni],
+				 minus_val, unit_name[minus_uni]);
+		else
+			sprintf (buffer, "%g%s",
+				 val, unit_name[uni]);
+	return LString (buffer);
+}
+
+
+/*  VSpace class
+ */
+
+VSpace::VSpace (LString const & data)
+	: kin (NONE), len (0.0, LyXLength::PT) 
+{
+	float   value;
+	LString input  = data;
+
+	input.strip(' ');
+	int length = input.length();
+
+	if (length > 1 && input[length-1] == '*') {
+		kp = true;
+		input.substring (0, length-2);
+	} else
+		kp = false;
+
+	if      (input.prefixIs ("defskip"))   kin = DEFSKIP;
+	else if (input.prefixIs ("smallskip")) kin = SMALLSKIP;
+	else if (input.prefixIs ("medskip"))   kin = MEDSKIP;
+	else if (input.prefixIs ("bigskip"))   kin = BIGSKIP;
+	else if (input.prefixIs ("vfill"))     kin = VFILL;
+	else if (isValidGlueLength (input, &len))
+		kin = LENGTH;
+	else if (sscanf (input.c_str(), "%f", &value) == 1) {
+		// This last one is for reading old .lyx files
+		// without units in added_space_top/bottom.
+		// Let unit default to centimeters here.
+		kin = LENGTH;
+		len = LyXGlueLength (value, LyXLength::CM);
+	}
+}
+
+
+bool VSpace::operator== (VSpace other)
+{
+	if (this->kin == other.kin) 
+		if (this->kin == LENGTH)
+			if (this->len == other.len)
+				return this->kp == other.kp;
+			else
+				return false;
+		else
+			return this->kp == other.kp;
+	else
+		return false;
+}
+
+
+LString VSpace::asLyXCommand() const
+{
+        LString result;
+
+	switch (kin) {
+	case NONE:      break;
+	case DEFSKIP:   result = "defskip";      break;
+	case SMALLSKIP: result = "smallskip";    break;
+	case MEDSKIP:   result = "medskip";      break;
+	case BIGSKIP:   result = "bigskip";      break;
+	case VFILL:     result = "vfill";        break;
+	case LENGTH:    result = len.asString(); break;
+	}
+	if (kp && (kin != NONE) && (kin != DEFSKIP))
+		return result += '*';
+	else
+		return result;
+}
+
+
+LString VSpace::asLatexCommand() const
+{
+	switch (kin) {
+	case NONE:      return LString();
+	case DEFSKIP:   
+	  return current_view->currentBuffer()->params.getDefSkip().asLatexCommand();
+	case SMALLSKIP: return kp ? "\\vspace*{\\smallskipamount}"
+				  : "\\smallskip{}";
+	case MEDSKIP:   return kp ? "\\vspace*{\\medskipamount}"
+				  : "\\medskip{}";
+	case BIGSKIP:   return kp ? "\\vspace*{\\bigskipamount}"
+				  : "\\bigskip{}";
+	case VFILL:     return kp ? "\\vspace*{\\fill}"
+				  : "\\vfill{}";
+	case LENGTH:    return kp ? "\\vspace*{" + len.asLatexString() + '}'
+				  : "\\vspace{" + len.asLatexString() + '}';
+	}
+	return LString();  // should never be reached
+}
+
+
+int VSpace::inPixels() const
+{
+	// Height of a normal line in pixels (zoom factor considered)
+	int height = current_view->currentBuffer()->text->DefaultHeight(); // [pixels]
+
+	// Zoom factor specified by user in percent
+	float const zoom = lyxrc->zoom / 100.0; // [percent]
+
+	// DPI setting for monitor: pixels/inch
+	float const dpi = lyxrc->dpi; // screen resolution [pixels/inch]
+
+	// We want the result in pixels
+	float result, value;
+
+	switch (kin) {
+	case NONE: return 0;
+
+	case DEFSKIP:
+	  return current_view->currentBuffer()->params.getDefSkip().inPixels();
+
+	// This is how the skips are normally defined by
+	// LateX.  But there should be some way to change
+	// this per document.
+	case SMALLSKIP: return height/4;
+	case MEDSKIP:   return height/2;
+	case BIGSKIP:   return height;
+	case VFILL:     return 3*height;
+		        // leave space for the vfill symbol
+	case LENGTH:
+		// Pixel values are scaled so that the ratio
+		// between lengths and font sizes on the screen
+		// is the same as on paper.
+
+		// we don't care about sign of value, we
+		// can't display negative anyway
+		result = 0.0;
+		value = len.value();
+		short val_sign = value < 0.0 ? -1 : 1;
+		
+		switch (len.unit()) {
+		case LyXLength::SP:
+			// Scaled point: sp = 1/65536 pt
+			result = zoom * dpi * value
+				/ (72.27 * 65536); // 4736286.7
+			break;
+		case LyXLength::PT:
+			// Point: 1 pt = 1/72.27 inch
+			result = zoom * dpi * value
+				/ 72.27; // 72.27
+			break;
+		case LyXLength::BP:
+			// Big point: 1 bp = 1/72 inch
+			result = zoom * dpi * value
+				/ 72; // 72
+			break;
+		case LyXLength::DD:
+			// Didot: 1157dd = 1238 pt?
+			result = zoom * dpi * value
+				/ (72.27/(0.376 * 2.845)); // 67.559735
+			break;
+		case LyXLength::MM:
+			// Millimeter: 1 mm = 1/25.4 inch
+			result = zoom * dpi * value
+				/ 25.4; // 25.4
+			break;
+		case LyXLength::PC:
+			// Pica: 1 pc = 12 pt
+			result = zoom * dpi * value
+				/ (72.27/12); // 6.0225
+			break;
+		case LyXLength::CC:
+			// Cicero: 1 cc = 12 dd
+			result = zoom * dpi * value
+				/ (72.27/ (12*0.376*2.845)); // 5.6299779
+			break;
+		case LyXLength::CM:
+			// Centimeter: 1 cm = 1/2.54 inch
+			result = zoom * dpi * value
+				/ 2.54; // 2.54
+			break;
+		case LyXLength::IN:
+			// Inch
+			result = zoom * dpi * value;
+			break;
+		case LyXLength::EX:
+			// Ex: The height of an "x"
+			result = zoom * value * height / 2; // what to / width?
+			break;
+		case LyXLength::EM: // what to / width?
+			// Em: The width of an "m"
+			result = zoom * value * height / 2; // Why 2?
+			break;
+		case LyXLength::MU: // This is probably only allowed in
+			            // math mode
+			result = zoom * value * height;
+			break;
+		case LyXLength::UNIT_NONE:
+			result = 0;  // this cannot happen
+			break;  
+		}
+		return int (result * val_sign + 0.5);
+	}
+	return 0; // never reached
+}

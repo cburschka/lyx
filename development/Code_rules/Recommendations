@@ -1,0 +1,63 @@
+These are some rules for effective C++ programming. These are taken from 
+Scott Meyers, and is presented in their short form. These are not all the 
+rules Meyers presents, only the most important of them. LyX does not yet 
+follow these rules, but they should be the goal.
+
+- Use const and inline instead of #define
+
+- Use the same form in corresponding calls to new and delete,
+  i.e. write delete[] obj; if new obj[n]; was used to create
+  the object and write delete obj; if you wrote new obj;
+  Notice strings should be LString's instead of char *'s.
+
+- Define a copy constructor and an assignment operator for all
+  classes with dynamically allocated memory.
+
+- make destructors virtual in base classes.
+
+- assign to all data members in operator=.
+
+- strive for class interfaces that are complete and minimal
+
+- differentiate among member functions, global functions and friend
+  functions.
+
+- avoid data members in the public interface.
+
+- use const whenever possible
+
+- pass and return objects by reference instead of by value
+
+- choose carefully between function overloading and
+  parameter defaulting.
+
+- never return a reference to a local object or a dereferenced
+  pointer initialized by new within the function.
+
+- use enums for integral constants.
+
+- minimize compilation dependencies between files.
+
+- pay attention to compiler warnings
+
+- differentiate between inheritance of interface and
+  inheritance of implementation.
+
+- differentiate between inheritance and templates
+
+- know what functions C++ silently writes and calls.
+
+- ensure that global objects are initialized before they are used.
+
+--------
+
+S. Meyers. Effective C++, 50 Specific Ways to Improve Your Programs and 
+Design. Addison-Wesley, 1992
+
+==================================
+
+And one of mine: (Lgb)
+
+- When swiching on enums, refrain from using "default:" if possible.
+
+
