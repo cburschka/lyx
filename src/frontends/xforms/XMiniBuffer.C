@@ -12,16 +12,13 @@
 
 #include <config.h>
 
-
-#include "frontends/xforms/DropDown.h"
-#include "frontends/xforms/XFormsView.h"
-#include "frontends/controllers/ControlCommandBuffer.h"
-#include "frontends/Timeout.h"
-
 #include "XMiniBuffer.h"
+#include "DropDown.h"
+#include "ControlCommandBuffer.h"
+
 #include "gettext.h"
-#include "debug.h"
-#include "bufferview_funcs.h"
+
+#include "frontends/Timeout.h"
 
 #include <boost/bind.hpp>
 
@@ -35,12 +32,21 @@ using std::endl;
 using std::vector;
 
 
-XMiniBuffer::XMiniBuffer(XFormsView * v, ControlCommandBuffer & control,
-	FL_Coord x, FL_Coord y, FL_Coord h, FL_Coord w)
-	: controller_(control), view_(v),
-	info_shown_(false)
+namespace {
+
+/// This creates the input widget for the minibuffer
+FL_OBJECT * create_input_box(void * parent, int type,
+			     FL_Coord, FL_Coord, FL_Coord, FL_Coord);
+
+} // namespace anon
+
+
+XMiniBuffer::XMiniBuffer(ControlCommandBuffer & control,
+			 FL_Coord x, FL_Coord y, FL_Coord h, FL_Coord w)
+	: controller_(control),
+	  info_shown_(false)
 {
-	input_obj_ = create_input_box(FL_NORMAL_INPUT, x, y, h, w);
+	input_ = create_input_box(this, FL_NORMAL_INPUT, x, y, h, w);
 	info_timer_.reset(new Timeout(1500));
 	idle_timer_.reset(new Timeout(6000));
 	info_con = info_timer_->timeout.connect(boost::bind(&XMiniBuffer::info_timeout, this));
@@ -58,7 +64,7 @@ XMiniBuffer::~XMiniBuffer()
 // thanks for nothing, xforms (recursive creation not allowed)
 void XMiniBuffer::dd_init()
 {
-	dropdown_.reset(new DropDown(the_buffer_));
+	dropdown_.reset(new DropDown(input_));
 	result_con = dropdown_->result.connect(boost::bind(&XMiniBuffer::set_complete_input, this, _1));
 	keypress_con = dropdown_->keypress.connect(boost::bind(&XMiniBuffer::append_char, this, _1));
 }
@@ -134,14 +140,14 @@ int XMiniBuffer::peek_event(FL_OBJECT * ob, int event,
 			set_input(new_input);
 
 			int x,y,w,h;
-			fl_get_wingeometry(fl_get_real_object_window(the_buffer_),
+			fl_get_wingeometry(fl_get_real_object_window(input_),
 					   &x, &y, &w, &h);
 
 			// asynchronous completion
-			int const air = the_buffer_->x;
+			int const air = input_->x;
 			x += air;
-			y += h - (the_buffer_->h + air);
-			w = the_buffer_->w;
+			y += h - (input_->h + air);
+			w = input_->w;
 			dropdown_->select(comp, x, y, w);
 			return 1;
 		}
@@ -172,46 +178,11 @@ int XMiniBuffer::peek_event(FL_OBJECT * ob, int event,
 }
 
 
-extern "C" {
-
-	static
-	int C_XMiniBuffer_peek_event(FL_OBJECT * ob, int event,
-				     FL_Coord, FL_Coord,
-				     int key, void * xev)
-	{
-		XMiniBuffer * mini = static_cast<XMiniBuffer*>(ob->u_vdata);
-		return mini->peek_event(ob, event, key,
-					static_cast<XEvent *>(xev));
-	}
-}
-
-
-FL_OBJECT * XMiniBuffer::create_input_box(int type, FL_Coord x, FL_Coord y,
-					  FL_Coord w, FL_Coord h)
-{
-	FL_OBJECT * obj;
-
-	the_buffer_ = obj = fl_add_input(type, x, y, w, h, "");
-	fl_set_object_boxtype(obj, FL_DOWN_BOX);
-	fl_set_object_resize(obj, FL_RESIZE_ALL);
-	fl_set_object_gravity(obj, SouthWestGravity, SouthEastGravity);
-	fl_set_object_color(obj, FL_MCOL, FL_MCOL);
-	fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-
-	// To intercept Up, Down, Table for history
-	fl_set_object_prehandler(obj, C_XMiniBuffer_peek_event);
-	obj->u_vdata = this;
-	obj->wantkey = FL_KEY_TAB;
-
-	return obj;
-}
-
-
 void XMiniBuffer::freeze()
 {
 	// we must prevent peek_event, or we get an unfocus() when the
 	// containing form gets destroyed
-	fl_set_object_prehandler(input_obj_, 0);
+	fl_set_object_prehandler(input_, 0);
 }
 
 
@@ -229,7 +200,7 @@ void XMiniBuffer::show_info(string const & info, string const & input, bool appe
 
 void XMiniBuffer::idle_timeout()
 {
-	set_input(currentState(view_->view().get()));
+	set_input(controller_.getCurrentState());
 }
 
 
@@ -242,7 +213,7 @@ void XMiniBuffer::info_timeout()
 
 bool XMiniBuffer::isEditingMode() const
 {
-	return the_buffer_->focus;
+	return input_->focus;
 }
 
 
@@ -250,14 +221,14 @@ void XMiniBuffer::messageMode(bool on)
 {
 	set_input("");
 	if (!on) {
-		fl_activate_object(the_buffer_);
-		fl_set_focus_object(view_->getForm(), the_buffer_);
+		fl_activate_object(input_);
+		fl_set_focus_object(input_->form, input_);
 		redraw();
 		idle_timer_->stop();
 	} else {
 		if (isEditingMode()) {
 			// focus back to the workarea
-			fl_set_focus_object(view_->getForm(), 0);
+			fl_set_focus_object(input_->form, 0);
 			idle_timer_->start();
 		}
 	}
@@ -266,7 +237,7 @@ void XMiniBuffer::messageMode(bool on)
 
 void XMiniBuffer::redraw()
 {
-	fl_redraw_object(the_buffer_);
+	fl_redraw_object(input_);
 	XFlush(fl_display);
 }
 
@@ -276,12 +247,12 @@ void XMiniBuffer::append_char(char c)
 	if (!c || !isprint(c))
 		return;
 
-	char const * tmp = fl_get_input(the_buffer_);
+	char const * tmp = fl_get_input(input_);
 	string str = tmp ? tmp : "";
 
 	str += c;
 
-	fl_set_input(the_buffer_, str.c_str());
+	fl_set_input(input_, str.c_str());
 }
 
 
@@ -304,5 +275,38 @@ void XMiniBuffer::message(string const & str)
 
 void XMiniBuffer::set_input(string const & str)
 {
-	fl_set_input(the_buffer_, str.c_str());
+	fl_set_input(input_, str.c_str());
 }
+
+
+namespace {
+
+extern "C"
+int C_XMiniBuffer_peek_event(FL_OBJECT * ob, int event,
+			     FL_Coord, FL_Coord,
+			     int key, void * xev)
+{
+	XMiniBuffer * mini = static_cast<XMiniBuffer*>(ob->u_vdata);
+	return mini->peek_event(ob, event, key, static_cast<XEvent *>(xev));
+}
+
+
+FL_OBJECT * create_input_box(void * parent, int type,
+			     FL_Coord x, FL_Coord y, FL_Coord w, FL_Coord h)
+{
+	FL_OBJECT * obj = fl_add_input(type, x, y, w, h, "");
+	fl_set_object_boxtype(obj, FL_DOWN_BOX);
+	fl_set_object_resize(obj, FL_RESIZE_ALL);
+	fl_set_object_gravity(obj, SouthWestGravity, SouthEastGravity);
+	fl_set_object_color(obj, FL_MCOL, FL_MCOL);
+	fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+
+	// To intercept Up, Down, Table for history
+	fl_set_object_prehandler(obj, C_XMiniBuffer_peek_event);
+	obj->u_vdata = parent;
+	obj->wantkey = FL_KEY_TAB;
+
+	return obj;
+}
+
+} // namespace anon

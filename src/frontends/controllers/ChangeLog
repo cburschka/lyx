@@ -1,3 +1,10 @@
+2003-04-02  Angus Leeming  <leeming@lyx.org>
+
+	* ControlCommandBuffer.[Ch] (c-tor): passed a LyXView & rather than
+	a LyXFunc &. Ensuing changes elsewhere.
+	(getCurrentState): new method, returning bufferview_func's
+	currentState (needs the currently active BufferView).
+
 2003-03-31  John Levon  <levon@movementarian.org>
 
 	* ControlPrint.C:

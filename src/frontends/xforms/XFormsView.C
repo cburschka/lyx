@@ -151,7 +151,7 @@ void XFormsView::create_form_form_main(int width, int height)
 		width - 3 * air, workheight));
 	::current_view = bufferview_.get();
 
-	minibuffer_.reset(new XMiniBuffer(this, *controlcommand_,
+	minibuffer_.reset(new XMiniBuffer(*controlcommand_,
 		air, height - (25 + air), width - (2 * air), 25));
 
 	//  assign an icon to main form

@@ -19,7 +19,7 @@
 #include <vector>
 
 
-class LyXFunc;
+class LyXView;
 
 /**
  * ControlCommandBuffer
@@ -29,13 +29,16 @@ class LyXFunc;
  */
 class ControlCommandBuffer {
 public:
-	ControlCommandBuffer(LyXFunc & lf);
+	ControlCommandBuffer(LyXView & lv);
 
 	/// return the previous history entry if any
 	string const historyUp();
 
 	/// return the next history entry if any
 	string const historyDown();
+
+	/// return the font and depth in the active BufferView as a message.
+	string const getCurrentState() const;
 
 	/// return the possible completions
 	std::vector<string> const completions(string const & prefix,
@@ -44,8 +47,8 @@ public:
 	/// dispatch a command
 	void dispatch(string const & str);
 private:
-	/// controlling lyxfunc
-	LyXFunc & lyxfunc_;
+	/// controlling LyXView
+	LyXView & lv_;
 
 	/// available command names
 	std::vector<string> commands_;

@@ -1,3 +1,17 @@
+2003-04-02  Angus Leeming  <leeming@lyx.org>
+
+	* XFormsView.C (create_form_form_main): no longer pass this to the
+	XMinibuffer c-tor.
+
+	* XMiniBuffer.[Ch]: something of a clean-up.
+	(c-tor): no longer requires a XFormsView * in the argument list.
+	(create_input_box): moved out of the class.
+	(the_buffer_, input_obj_): replaced by a single input_. Having two
+	pointers to the same FL_OBJECT was clearly barmy.
+	(idle_timeout): don't access bufferview_func's currentState direct
+	but rather use the new controller method. Means that XMinibuffer
+	knows nothing about the LyX kernel.
+
 2003-04-01  John Levon  <levon@movementarian.org>
 
 	* Alert_pimpl.C: format error messages

@@ -16,9 +16,9 @@
 
 #include FORMS_H_LOCATION
 
+#include "LString.h"
 #include <boost/scoped_ptr.hpp>
 #include <boost/signals/connection.hpp>
-
 
 class DropDown;
 class ControlCommandBuffer;
@@ -28,7 +28,7 @@ class Timeout;
 class XMiniBuffer {
 public:
 	///
-	XMiniBuffer(XFormsView * o, ControlCommandBuffer & control,
+	XMiniBuffer(ControlCommandBuffer & control,
 		    FL_Coord x, FL_Coord y, FL_Coord h, FL_Coord w);
 
 	///
@@ -74,9 +74,6 @@ private:
 	/// set the minibuffer content in editing mode
 	void set_input(string const &);
 
-	/// This creates the input widget for the minibuffer
-	FL_OBJECT * create_input_box(int, FL_Coord, FL_Coord, FL_Coord, FL_Coord);
-
 	/// go into message mode
 	void messageMode(bool on = true);
 
@@ -100,17 +97,12 @@ private:
 	boost::signals::connection result_con;
 	///
 	boost::signals::connection keypress_con;
-	/// This is the input widget object
-	FL_OBJECT * the_buffer_;
 
-	/// the input box
-	FL_OBJECT * input_obj_;
+	/// This is the input widget object
+	FL_OBJECT * input_;
 
 	/// the controller we use
 	ControlCommandBuffer & controller_;
-
-	/// the lyx view
-	XFormsView * view_;
 
 	/// stored input when showing info
 	string stored_input_;

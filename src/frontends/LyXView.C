@@ -49,7 +49,7 @@ LyXView::LyXView()
 	  autosave_timeout_(new Timeout(5000)),
 	  lyxfunc_(new LyXFunc(this)),
 	  dialogs_(new Dialogs(*this)),
-	  controlcommand_(new ControlCommandBuffer(getLyXFunc()))
+	  controlcommand_(new ControlCommandBuffer(*this))
 {
 	lyxerr[Debug::INIT] << "Initializing LyXFunc" << endl;
 }

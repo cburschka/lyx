@@ -12,13 +12,14 @@
 
 #include <config.h>
 
-
 #include "ControlCommandBuffer.h"
+#include "bufferview_funcs.h"
+#include "debug.h"
+#include "lyxfunc.h"
+#include "LyXAction.h"
+#include "frontends/LyXView.h"
 #include "support/lyxalgo.h"
 #include "support/lstrings.h"
-#include "LyXAction.h"
-#include "lyxfunc.h"
-#include "debug.h"
 
 using std::vector;
 using std::back_inserter;
@@ -39,8 +40,8 @@ struct prefix_p {
 } // end of anon namespace
 
 
-ControlCommandBuffer::ControlCommandBuffer(LyXFunc & lf)
-	: lyxfunc_(lf), history_pos_(history_.end())
+ControlCommandBuffer::ControlCommandBuffer(LyXView & lv)
+	: lv_(lv), history_pos_(history_.end())
 {
 	transform(lyxaction.func_begin(), lyxaction.func_end(),
 		back_inserter(commands_), lyx::firster());
@@ -64,6 +65,12 @@ string const ControlCommandBuffer::historyDown()
 		return "";
 
 	return *(++history_pos_);
+}
+
+
+string const ControlCommandBuffer::getCurrentState() const
+{
+	return currentState(lv_.view().get());
 }
 
 
@@ -113,5 +120,5 @@ void ControlCommandBuffer::dispatch(string const & str)
 
 	history_.push_back(str);
 	history_pos_ = history_.end();
-	lyxfunc_.dispatch(str, true);
+	lv_.getLyXFunc().dispatch(str, true);
 }
