@@ -183,6 +183,12 @@ void InsetCollapsable::draw(PainterInfo & pi, int x, int y) const
 }
 
 
+void InsetCollapsable::drawSelection(PainterInfo & pi, int x, int y) const
+{
+	inset.drawSelection(pi, x, y);
+}
+
+
 InsetOld::EDITABLE InsetCollapsable::editable() const
 {
 	return status_ != Collapsed ? HIGHLY_EDITABLE : IS_EDITABLE;

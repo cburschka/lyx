@@ -121,6 +121,8 @@ public:
 	void metrics(MetricsInfo & mi, Dimension & dim);
 	/// draw text (only used for insets)
 	void draw(PainterInfo & pi, int x, int y) const;
+	/// draw textselection
+	void drawSelection(PainterInfo & pi, int x, int y) const;
 
 	/// try to handle that request
 	DispatchResult dispatch(LCursor & cur, FuncRequest const & cmd);

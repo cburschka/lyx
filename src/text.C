@@ -1626,6 +1626,13 @@ void LyXText::draw(PainterInfo & pi, int x, int y) const
 }
 
 
+// only used for inset right now. should also be used for main text
+void LyXText::drawSelection(PainterInfo & pi, int x, int y) const
+{
+	lyxerr << "LyXText::drawSelection at " << x << " " << y << endl;
+}
+
+
 bool LyXText::isLastRow(ParagraphList::iterator pit, Row const & row) const
 {
 	return row.endpos() >= pit->size()

@@ -975,7 +975,7 @@ bool BufferView::Pimpl::workAreaDispatch(FuncRequest const & cmd0)
 
 bool BufferView::Pimpl::dispatch(FuncRequest const & cmd)
 {
-	lyxerr << "*** BufferView::Pimpl: request: " << cmd << std::endl;
+	//lyxerr << "*** BufferView::Pimpl: request: " << cmd << std::endl;
 	// Make sure that the cached BufferView is correct.
 	lyxerr[Debug::ACTION] << "BufferView::Pimpl::Dispatch:"
 		<< " action[" << cmd.action << ']'

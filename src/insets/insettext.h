@@ -67,6 +67,8 @@ public:
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
+	/// draw inset selection
+	void drawSelection(PainterInfo & pi, int x, int y) const;
 	///
 	std::string const editMessage() const;
 	///

@@ -53,6 +53,8 @@ public:
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
 	///
+	void drawSelection(PainterInfo & pi, int x, int y) const;
+	///
 	bool hitButton(FuncRequest const &) const;
 	///
 	std::string const getNewLabel(std::string const & l) const;

@@ -137,8 +137,8 @@ RowPainter::RowPainter(BufferView const & bv, LyXText const & text,
 
 	// paint the selection background
 #warning look here for selection
-	//if (bv_.cursor().selection() && &text_ == bv_.cursor().innerText())
-	//	paintSelection();
+	if (bv_.cursor().selection() && &text_ == bv_.cursor().innerText())
+		paintSelection();
 
 	// vertical lines for appendix
 	paintAppendix();

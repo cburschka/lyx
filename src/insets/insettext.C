@@ -213,6 +213,12 @@ void InsetText::draw(PainterInfo & pi, int x, int y) const
 }
 
 
+void InsetText::drawSelection(PainterInfo & pi, int x, int y) const
+{
+	text_.drawSelection(pi, x, y);
+}
+
+
 void InsetText::drawFrame(Painter & pain, int x) const
 {
 	int const ttoD2 = TEXT_TO_INSET_OFFSET / 2;
