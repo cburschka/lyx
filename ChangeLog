@@ -1,5 +1,10 @@
 2000-12-06  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
+	* lib/layouts/lyxmacros.inc: do not use \verbatim@font in lyxcode.
+	It creates a lot of interesting problems.
+
+2000-12-06  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
 	* src/frontends/xforms/Menubar_pimpl.C (openByName): check that
 	the menu exists in the current menubar before opening it.
 

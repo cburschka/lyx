@@ -30,7 +30,7 @@ Style LyX-Code
       \raggedright
       \setlength{\itemsep}{0pt}
       \setlength{\parsep}{0pt}
-      \verbatim@font}%
+      \normalfont\ttfamily}%
      \item[]}
     {\end{list}}
   EndPreamble
