@@ -287,7 +287,8 @@ private:
 	InsetFormulaBase * formula_;
 	/// text code of last char entered
 	MathTextCodes lastcode_;
-	// Selection stuff
+	/// do we allow autocorrection
+	bool autocorrect_;
 	/// do we currently select
 	bool selection_;
 };

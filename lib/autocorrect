@@ -1,0 +1,352 @@
+
+#
+# Idea of "autocorrection" and parts of this file are shamelessly stolen
+# from TeXMacs (they give vdhoeven@texmacs.org as contact)
+#
+# We do it a bit differently and allow corrections only to combine a symbol
+# and a char to a new symbol.
+# 
+#
+                  
+|                 ,    \lfloor
+\lfloor           *    |,
+|                 '    \lceil
+\lceil            *    |'
+,                 |    \rfloor
+\rfloor           *    ,|
+'                 |    \rceil
+\rceil            *    '|
+\llbracket        *    [[*
+\rrbracket        *    ]]*
+                  
+\cap              *    \sqcap
+\cup              *    \sqcup
+\vee              *    \curlyvee
+\curlyvee         *    \curlyveeuparrow
+\curlyveeuparrow  *    \curlyveedownarrow
+                  
+<                 /    \nless
+>                 /    \ngtr
+<                 =    \leqslant
+>                 =    \geqslant
+\leqslant         /    \nleqslant
+\geqslant         /    \ngeqslant
+\leqslant         *    \leq
+\geslant          *    \geq
+\leq              /    \nleq
+\geq              /    \ngeq
+<                 <    \ll
+\ll               <    \lll
+>                 >    \gg
+\gg               >    \ggg
+\ll               =    \lleq
+\lll              =    \llleq
+\gg               =    \ggeq
+\ggg              =    \gggeq
+\ll               /    \nll
+\lll              /    \nlll
+\gg               /    \ngg
+\ggg              /    \nggg
+\lleq             /    \nlleq
+\llleq            /    \nllleq
+\ggeq             /    \nggeq
+\gggeq            /    \ngggeq
+<                 .    \lessdot
+.                 >    \gtrdot
+\leqslant         .    \lesseqdot
+\gtrdot           =    \gtreqdot
+                  
+<                 *    \prec
+>                 *    \succ
+\prec             /    \nprec
+\succ             /    \nsucc
+\prec             =    \preccurlyeq
+\succ             =    \succcurlyeq
+\preccurlyeq      /    \npreccurlyeq
+\succcurlyeq      /    \nsucccurlyeq
+\preccurlyeq      *    \preceq
+\succcurlyeq      *    \succeq
+\preceq           /    \npreceq
+\succeq           /    \nsucceq
+\npreceq          *    \precneqq
+\nsucceq          *    \succneqq
+\ll               *    \precprec
+\precprec         *    \precprecprec
+\gg               *    \succsucc
+\succsucc         *    \succsuccsucc
+\precprec         =    \precpreceq
+\lll              *    \precprecprec
+\precprecprec     =    \precprecpreceq
+\succsucc         =    \succsucceq
+\ggg              =    \succsuccsucc
+\succsuccsucc     =    \succsuccsucceq
+\precprec         /    \nprecprec
+\precprecprec     /    \nprecprecprec
+\succsucc         /    \nsuccsucc
+\succsuccsucc     /    \nsuccsuccsucc
+\precpreceq       /    \nprecpreceq
+\precprecpreceq   /    \nprecprecpreceq
+\succsucceq       /    \nsuccsucceq
+\succsuccsucceq   /    \nsuccsuccsucceq
+
+\prec             .    \precdot
+\succ             .    \dotsucc
+\precdot          .    \preceqdot
+\dotsucc          .    \dotsucceq
+\precprec         *    \llangle
+\succsucc         *    \rrangle
+
+<                 >    \lessgtr
+>                 <    \gtrless
+<                 ~    \lesssim
+\lesssim          ~    \lessapprox
+\prec             ~    \precsim
+\precsim          ~    \precapprox
+>                 ~    \gtrsim
+\gtrsim           ~    \gtrapprox
+\succ             ~    \gtrsim
+\gtrsim           ~    \gtrapprox
+\leq              *    \leqq
+\geq              *    \geqq
+\leq              >    \lesseqgtr
+\geq              <    \gtrqless
+
+-                 >    \rightarrow
+<                 -    \leftarrow
+\leftarrow        >    \leftrightarrow
+\rightarrow       -    \longrightarrow
+\leftarrow        -    \longleftarrow
+\longleftarrow    >    \longleftrightarrow
+=                 >    \Rightarrow
+
+
+@                 *    \circ
+\circ             /    \varnothing
+\circ             +    \oplus
+\circ             -    \ominus
+@                 x    \otimes
+\circ             :    \oover
+\circ             .    \odot
+@                 R    \circledR
+@                 S    \circledS
+\varnothing       *    \oslash
+@                 \    \obslash
+@                 @    \infty
+\circ             <    \olessthan
+\circ             >    \ogreaterthan
+\circ             &    \owedge
+\circ             |    \obar
+\obar             *    \ovee
+\circ             v    \ovee
+\circ             @    \infty
+@@                *    \varocircle
+-@                @    \infty
+\circ             *    \box
+\box              +    \boxplus
+\box              -    \boxminus
+\box              x    \boxtimes
+\box              .    \boxdot
+\box              /    \boxslash
+\box              \    \boxbslash
+\box              @    \boxcircle
+\boxcircle        *    \boxbox
+\box              |    \boxbar
+\box              *    \bullet
+\bullet           *    \blacksquare
+                  
+=                 *    \asymp
+\asymp            *    \equiv
+\equiv            *    \asympasymp
+\asympasymp       *    \simsim
+~                 *    \sim
+\sim              ~    \approx
+\approx           -    \approxeq
+\sim              -    \simeq
+\sim              =    \cong
+=                 /    \neq
+\asymp            /    \nasymp
+\equiv            /    \nequiv
+\asympasymp       /    \nasympasymp
+\simsim           /    \nsimsim
+\sim              /    \nsim
+\approx           /    \napprox
+\simeq            /    \nsimeq
+\cong             /    \ncong
+                  
+#|   \|           
+|                 *    \shortmid
+\shortmid         *    \varshortmid
+|                 |    \||
+\||               |    \interleave
+\||               *    \shortparallel
+|                 -    \vdash
+\vdash            -    \longvdash
+\||               -    \Vdash
+\Vdash            -    \longVdash
+\interleave       -    \Vvdash
+\Vvdash           -    \longVvdash
+-                 |    \dashv
+
+<                 |    \vartriangleleft
+\vartriangleleft  *    \blacktriangleleft
+\vartriangleleft  /    \ntriangleleft
+\vartriangleleft  =    \trianglelefteqslant
+\trianglelefteqslant / \ntrianglelefteqslant
+\trianglelefteqslant * \trianglelefteq
+\trianglelefteq   /    \ntriangleqleft
+|                 >    \vartriangleright
+\vartriangleright *    \blacktriangleright
+\vartriangleright /    \ntriangleright
+\vartriangleright =    \trianglerighteq
+\trianglerighteq  /    \ntriangleqright
+\trianglerighteq  *    \trianglerighteqslant
+\trianglerighteqslant  /    \ntrianglerighteqslant
+
+-                 *    \um
++                 -    \pm
+\pm               *    \upm
+-                 +    \mp
+\mp               *    \ump
+@                 =    \circeq
+=                 @    \eqcirc
+-                 @    \multimap
+.                 =    \doteq
+.                 .    \ldots
+\ldots            *    \cdots
+\cdots            *    \hdots
+\hdots            *    \vdots
+\ddots            *    \ddots
+\udots            *    \udots
+:                 =    \assign
++                 =    \plusassign
+-                 =    \minusassign
+/                 *    \div
+*                 *    \ast
+\ast              *    \times
+\times            *    \cdot
+                       
+<                 *    \subset
+\subset           *    \in
+\                 /    \nsubset
+\in               *    \sqsubset 
+\subset           =    \subseteq
+\subseteq         /    \nsubseteq
+\subseteq         *    \subseteqq
+\sqsubset         *    \langle
+\langle           *    \leftslice
+\leftslice        *    \subset
+                  
+\subseteq         /    \nsubseteq
+\subseteqq        /    \nsubseteqq
+\nsubseteqq       *    \subsetneq
+\subsetneq        *    \varsubsetneq
+\varsubsetneq     *    \subsetneqq
+\subsetneqq       *    \varsubsetneqq
+\subset           +    \subsetplus
+\subsetplus       =    \subsetpluseq
+\subseteq         +    \subsetpluseq
+\in               /    \nin
+>                 *    \supset
+\supset           /    \nsupset
+\supset           =    \supseteq
+\supseteq         /    \nsupseteq
+\supseteq         *    \supseteqq
+\supseteq         /    \nsupseteq
+                  
+                  
+\supseteqq        /    \nsupseteqq
+\supseteq         /    \supsetneq
+\supset           +    \supsetplus
+\supsetplus       =    \supsetpluseq
+\supseteq         +    \supsetpluseq
+\supset           *    \ni
+\ni               /    \nni
+
+#
+# The following is available in TeXMacs, but not (yet) in LyX
+#
+
+#--|    \longdashv
+#|           =    \vDash
+#\vDash      =    \longvDash
+#||=    \VDash
+#||==    \longVDash
+#|           /    \nmid
+#||/    \nparallel
+#|*/    \nshortmid
+#||*/    \nshortparallel
+#|-/    \nvdash
+#||-/    \nVdash
+#-|/    \ndashv
+#-||/    \ndashV
+#|=/    \nvDash
+#||=/    \nVDash
+#=|/    \nDashv
+#=||/    \nDashV
+#
+#<=**>    \lesseqqgtr
+#>=**<    \gtreqqless
+#<>/   \nlessgtr
+#></   \ngtrless
+#<~/   \nlesssim
+#<~/*    \lnsim
+#<~~/    \nlessapprox
+#<~~/*    \lnapprox
+#<*~/    \nprecsim
+#<*~/*    \precnsim
+#<*~~/    \nprecapprox
+#<*~~/*    \precnapprox
+#>~/   \ngtrsim
+#>~/*    \gnsim
+#>~~/    \ngtrapprox
+#>~~/*    \gnapprox
+#>*~/   \nsuccsim
+#>*~/*    \succnsim
+#>*~~/    \nsuccapprox
+#>*~~/*    \succnapprox
+#<=**/    \nleqq
+#>=**/    \ngeqq
+#<=*>/    \nlesseqgtr
+#>=*</    \ngtreqless
+#<=**>/    \nlesseqqgtr
+#>=**</    \ngtreqqless
+#<=*/*    \lneq
+#<=**/*    \lneqq
+#<=**/**    \lvertneqq
+#>=*/*    \gneq
+#>=**/*    \gneqq
+#>=**/**    \gvertneqq
+#[[                *    \llbracket
+#]]                *    \rrbracket
+#EE                a    \amalg
+#EE                d    \partial
+#EE                p    \wp
+#EE                n    \cap
+#EE                u    \cup
+#EE                w    \wedge
+#\wedge            *    \curlywedge
+#\curlywedge       *    \curlywedgeuparrow
+#\curlywedgeuparrow   * \curlywedgedownarrow
+#\curlywedgedownarrow * \wedges
+#EE                v    \vee
+#EE                x    \times
+
+# <***/    \nsqsubset
+# <***=    \sqsubseteq
+# <***=/    \nsqsubseteq
+# >*=/**    \varsupsetneq
+# >*=*/*    \supsetneqq
+# >*=*/**    \varsupsetneqq
+# >***    \sqsupset
+# >***/    \nsqsupset
+# >***=    \sqsupseteq
+# >***=/    \nsqsupseteq
+
+# >****    \rangle
+# \rangle  *     \rightslice
+
+# EE                l    \bigl
+# EE                m    \bigm
+# EE                r    \bigr
+# EE                @    \bigop
+# EE                L    \int

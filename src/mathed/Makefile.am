@@ -19,6 +19,8 @@ libmathed_la_SOURCES = \
 	math_arrayinset.h \
 	math_atom.C \
 	math_atom.h \
+	math_autocorrect.C \
+	math_autocorrect.h \
 	math_biginset.C \
 	math_biginset.h \
 	math_binominset.C \

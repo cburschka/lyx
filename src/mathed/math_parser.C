@@ -420,8 +420,10 @@ bool Parser::good() const
 
 char Parser::getChar()
 {
-	if (!good())
+	if (!good()) {
 		lyxerr << "The input stream is not well..." << endl;
+		dump();
+	}
 	return tokens_[pos_++].character();
 }
 
@@ -486,7 +488,7 @@ void Parser::tokenize(string const & buffer)
 
 	char c;
 	while (is.get(c)) {
-		//lyxerr << "reading c: " << c << "\n";
+		lyxerr << "reading c: " << c << "\n";
 
 		switch (catcode(c)) {
 			case catNewline: {
@@ -1030,8 +1032,8 @@ void Parser::parse_into1(MathArray & array, unsigned flags, MathTextCodes code)
 		else if (t.cat() == catEnd) {
 			if (flags & FLAG_BRACE_LAST)
 				return;
-			dump();
 			lyxerr << "found '}' unexpectedly, array: '" << array << "'\n";
+			dump();
 			//lyxerr << "found '}' unexpectedly\n";
 			//lyx::Assert(0);
 			//add(array, '}', LM_TC_TEX);
@@ -1039,6 +1041,7 @@ void Parser::parse_into1(MathArray & array, unsigned flags, MathTextCodes code)
 
 		else if (t.cat() == catAlign) {
 			lyxerr << "found tab unexpectedly, array: '" << array << "'\n";
+			dump();
 			//lyxerr << "found tab unexpectedly\n";
 			add(array, '&', LM_TC_TEX);
 		}

@@ -255,5 +255,6 @@ public:
 };
 
 std::ostream & operator<<(std::ostream &, MathInset const &);
+std::ostream & operator<<(std::ostream &, MathAtom const &);
 
 #endif

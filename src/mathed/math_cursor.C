@@ -29,6 +29,7 @@
 #include "frontends/Painter.h"
 #include "math_cursor.h"
 #include "formulabase.h"
+#include "math_autocorrect.h"
 #include "math_arrayinset.h"
 #include "math_braceinset.h"
 #include "math_boxinset.h"
@@ -182,7 +183,8 @@ Selection theSelection;
 
 
 MathCursor::MathCursor(InsetFormulaBase * formula, bool left)
-	: formula_(formula), lastcode_(LM_TC_MIN), selection_(false)
+	:	formula_(formula), lastcode_(LM_TC_MIN), 
+		autocorrect_(false), selection_(false)
 {
 	left ? first() : last();
 }
@@ -299,6 +301,7 @@ bool MathCursor::posRight()
 bool MathCursor::left(bool sel)
 {
 	dump("Left 1");
+	autocorrect_ = false;
 	if (inMacroMode()) {
 		macroModeClose();
 		lastcode_ = LM_TC_MIN;
@@ -319,6 +322,7 @@ bool MathCursor::left(bool sel)
 bool MathCursor::right(bool sel)
 {
 	dump("Right 1");
+	autocorrect_ = false;
 	if (inMacroMode()) {
 		macroModeClose();
 		lastcode_ = LM_TC_MIN;
@@ -351,7 +355,7 @@ void MathCursor::last()
 
 
 bool positionable(MathCursor::cursor_type const & cursor,
-		  MathCursor::cursor_type const & anchor)
+                  MathCursor::cursor_type const & anchor)
 {
 	// avoid deeper nested insets when selecting
 	if (cursor.size() > anchor.size())
@@ -386,6 +390,7 @@ void MathCursor::setPos(int x, int y)
 void MathCursor::home(bool sel)
 {
 	dump("home 1");
+	autocorrect_ = false;
 	selHandle(sel);
 	macroModeClose();
 	lastcode_ = LM_TC_MIN;
@@ -398,6 +403,7 @@ void MathCursor::home(bool sel)
 void MathCursor::end(bool sel)
 {
 	dump("end 1");
+	autocorrect_ = false;
 	selHandle(sel);
 	macroModeClose();
 	lastcode_ = LM_TC_MIN;
@@ -498,6 +504,7 @@ void MathCursor::paste(MathArray const & ar)
 
 void MathCursor::backspace()
 {
+	autocorrect_ = false;
 	if (pos() == 0) {
 		pullArg(false);
 		return;
@@ -523,6 +530,7 @@ void MathCursor::backspace()
 
 void MathCursor::erase()
 {
+	autocorrect_ = false;
 	if (inMacroMode())
 		return;
 
@@ -556,6 +564,7 @@ void MathCursor::erase()
 
 void MathCursor::delLine()
 {
+	autocorrect_ = false;
 	macroModeClose();
 
 	if (selection_) {
@@ -586,6 +595,7 @@ bool MathCursor::up(bool sel)
 	if (goUpDown(true))
 		return true;
 	Cursor_ = save;
+	autocorrect_ = false;
 	return selection_;
 }
 
@@ -599,6 +609,7 @@ bool MathCursor::down(bool sel)
 	if (goUpDown(false))
 		return true;
 	Cursor_ = save;
+	autocorrect_ = false;
 	return selection_;
 }
 
@@ -1490,6 +1501,12 @@ bool MathCursor::interpret(char c)
 		return true;
 	}
 
+	// leave autocorrect mode if necessary
+	if (autocorrect_ && c == ' ') {
+		autocorrect_ = false;
+		return true;
+	}
+
 	// just clear selection on pressing the space par
 	if (selection_ && c == ' ') {
 		selClear();
@@ -1563,9 +1580,14 @@ bool MathCursor::interpret(char c)
 		return true;
 	}
 
+	// try auto-correction
+	if (autocorrect_ && hasPrevAtom() && math_autocorrect(prevAtom(), c))
+		return true;
+
 	// no special circumstances, so insert the character without any fuss
 	insert(c, lastcode_ == LM_TC_MIN ? MathCharInset::nativeCode(c) : lastcode_);
 	lastcode_ = LM_TC_MIN;
+	autocorrect_ = true;  
 	return true;
 }
 
