@@ -22,14 +22,14 @@
 # Greek for only one character. "math-greek-toggle" is the persistent Greek
 # toggle which nobody really needs when typing math.
 # Sciword mnemonic.
-\bind "C-f"	"math-insert frac"
+\bind "C-f"	"math-insert \frac"
 \bind "C-g"	"math-greek"
 
 # Do we need this?
 #\bind "C-h"	"hyphenation-point-insert"
 
 # Sciword mnemonic.
-\bind "C-i"	"math-insert int"
+\bind "C-i"	"math-insert \int"
 
 #\bind "C-j"	"------"
 
@@ -49,7 +49,7 @@
 \bind "C-q"	"self-insert \""
 
 # Sciword mnemonic.
-\bind "C-r"	"math-insert sqrt"
+\bind "C-r"	"math-insert \sqrt"
 
 # This combination is now a gateway to math symbols (C-s ...)
 #\bind "C-s"	"------"
@@ -93,7 +93,7 @@
 # Some of them seem to work only in math mode?
 
 \bind "C-period"	"accent-dot"
-\bind "S-C-colon"	"math-insert ddot"
+\bind "S-C-colon"	"math-insert \ddot"
 \bind "C-quoteleft"	"accent-grave"
 \bind "S-C-asciitilde"	"accent-tilde"
 \bind "S-C-quotedbl"	"accent-umlaut"
@@ -101,7 +101,7 @@
 \bind "S-C-asciicircum" "accent-circumflex"
 \bind "C-equal"		"accent-vector"
 # Why is it not "accent-bar"?
-\bind "C-minus"	"math-insert bar"
+\bind "C-minus"	"math-insert \bar"
 # What is "accent-underbar"?
 #\bind "S-C-underscore"	"accent-underbar"
 
@@ -128,12 +128,12 @@
 # Math menu (unmodified)
 #
 
-\bind "M-m f"			"math-insert frac"
-\bind "M-m i"			"math-insert int"
-\bind "M-m o"			"math-insert oint"
-\bind "M-m p"                  "math-insert partial"
-\bind "M-m s"                  "math-insert sqrt"
-\bind "M-m S-S"                "math-insert sum"
+\bind "M-m f"			"math-insert \frac"
+\bind "M-m i"			"math-insert \int"
+\bind "M-m o"			"math-insert \oint"
+\bind "M-m p"                  "math-insert \partial"
+\bind "M-m s"                  "math-insert \sqrt"
+\bind "M-m S-S"                "math-insert \sum"
 \bind "M-m l"                  "math-limits"
 \bind "M-m n"                  "math-number"
 \bind "M-m v"                  "accent-vector"
@@ -141,29 +141,29 @@
 
 # Sciword mnemonics for math editing:
 
-\bind "M-apostrophe"	"math-insert prime"
+\bind "M-apostrophe"	"math-insert \prime"
 \bind "C-Up"		"math-insert ^"
 \bind "C-Down"		"math-insert _"
-\bind "C-s d"		"math-insert partial"
-\bind "C-s e"		"math-insert sum"
-\bind "C-s p"		"math-insert prod"
-\bind "C-s i"		"math-insert infty"
-\bind "C-s x"		"math-insert times"
+\bind "C-s d"		"math-insert \partial"
+\bind "C-s e"		"math-insert \sum"
+\bind "C-s p"		"math-insert \prod"
+\bind "C-s i"		"math-insert \infty"
+\bind "C-s x"		"math-insert \times"
 
 # My own embellishments for symbols I use often.
 
 #I'd like to combine math-insert ^ and math-insert prime, but don't know how.
 
-\bind "C-s apostrophe"	"math-insert prime"
-\bind "C-s S-plus"	"math-insert dagger"
-\bind "C-s equal"	"math-insert equiv"
-\bind "M-equal"		"math-insert approx"
-\bind "M-minus"		"math-insert sim"
-\bind "C-minus"		"math-insert rightarrow"
-\bind "S-M-less"	"math-insert leq"
-\bind "S-M-greater"	"math-insert geq"
-\bind "C-s S-less"	"math-insert ll"
-\bind "C-s S-greater"	"math-insert gg"
+\bind "C-s apostrophe"	"math-insert \prime"
+\bind "C-s S-plus"	"math-insert \dagger"
+\bind "C-s equal"	"math-insert \equiv"
+\bind "M-equal"		"math-insert \approx"
+\bind "M-minus"		"math-insert \sim"
+\bind "C-minus"		"math-insert \rightarrow"
+\bind "S-M-less"	"math-insert \leq"
+\bind "S-M-greater"	"math-insert \geq"
+\bind "C-s S-less"	"math-insert \ll"
+\bind "C-s S-greater"	"math-insert \gg"
 
 	############################
 ######### Almost no changes below. #########

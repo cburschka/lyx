@@ -26,26 +26,36 @@
 
 # These are defined for the math menu:
 
-\bind "M-m f"			"math-insert frac"
-\bind "M-m s"			"math-insert sqrt"
+\bind "M-m f"			"math-insert \frac"
+\bind "M-m s"			"math-insert \sqrt"
 \bind "M-m e"			"math-insert ^"
 \bind "M-m x"			"math-insert _"
-\bind "M-m u"			"math-insert sum"
-\bind "M-m i"			"math-insert int"
+\bind "M-m u"			"math-insert \sum"
+\bind "M-m i"			"math-insert \int"
 \bind "M-m m"			"math-mode"
 \bind "M-m d"			"math-display"
 
 \bind "M-m g"			"math-greek"
 \bind "M-m S-G"			"math-greek-toggle" 
-\bind "M-m o"			"math-insert oint"
-\bind "M-m p"			"math-insert partial"
-\bind "M-m r"			"math-insert root"
+#\bind "M-m o"			"math-insert \oint"
+\bind "M-m p"			"math-insert \partial"
+\bind "M-m r"			"math-insert \root"
 \bind "M-m l"			"math-limits"
 
 \bind "M-m n"			"math-number"
 \bind "M-m S-N"			"math-nonumber"
-\bind "M-m 8"			"math-insert infty"
+\bind "M-m 8"			"math-insert \infty"
 \bind "M-m v"			"accent-vector"
+
+\bind "M-m o 1"    "math-macro-arg 1"
+\bind "M-m o 2"    "math-macro-arg 2"
+\bind "M-m o 3"    "math-macro-arg 3"
+\bind "M-m o 4"    "math-macro-arg 4"
+\bind "M-m o 5"    "math-macro-arg 5"
+\bind "M-m o 6"    "math-macro-arg 6"
+\bind "M-m o 7"    "math-macro-arg 7"
+\bind "M-m o 8"    "math-macro-arg 8"
+\bind "M-m o 9"    "math-macro-arg 9"
 
 \bind "M-m t t"   "math-mutate dump"
 \bind "M-m t a"   "math-mutate align"
@@ -69,11 +79,11 @@
 # The accent-circumflex is 'h' for 'hat', which is what most math
 # folks call it verbally.
 
-\bind "M-m b"			"math-insert overline"
+\bind "M-m b"			"math-insert \overline"
 \bind "M-m h"			"accent-circumflex"
 \bind "M-m ~S-period"		"accent-dot"
 \bind "M-m ~S-asciitilde"	"accent-tilde"
-\bind "M-m ~S-apostrophe"	"math-insert prime"
+\bind "M-m ~S-apostrophe"	"math-insert \prime"
 \bind "M-m ~S-quotedbl" 	"accent-umlaut"
 
 
@@ -90,10 +100,10 @@
 # Note: it's easy to insert binary relations like \pm, \mp, \neq, \geq, 
 # and \leq just by typing them. However it's easier to remember these:
 
-\bind "M-m ~S-plus"    "math-insert pm" 
-\bind "M-m ~S-equal"   "math-insert neq"
+\bind "M-m ~S-plus"    "math-insert \pm" 
+\bind "M-m ~S-equal"   "math-insert \neq"
 
 \bind "Escape"         "escape"
 \bind "C-Tab"          "tab-insert"
 \bind "M-m space"      "math-space"
-
+\bind "M-m S-G"      "command-sequence math-mode ; math-greek-toggle ; "
