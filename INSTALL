@@ -1,3 +1,11 @@
+Note for CVS checkouts
+----------------------
+
+If you have checked this out from CVS, you need to have
+automake, autoconf, and gettext installed.  Then,
+type "./autogen.sh" to build the needed configuration
+files and proceed as stated below.
+
 Compiling and installing LyX
 ============================
 
