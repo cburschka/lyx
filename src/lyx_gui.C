@@ -80,8 +80,11 @@ extern "C" {
 static
 int LyX_XErrHandler(Display * display, XErrorEvent * xeev)
 {
+	// We don't abort on BadWindow
 	if (xeev->error_code == BadWindow) {
-		// We don't abort on BadWindow
+		lyxerr << "BadWindow received !" << endl;
+		lyxerr << "If you're using xforms 1.0 or greater, "
+			<< " please report this to lyx-devel@lists.lyx.org" << endl;
 		return 0;
 	}
 
