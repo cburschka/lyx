@@ -60,8 +60,7 @@ vector<string> const getVectorFromString(string const & str,
 	for(;;) {
 		string::size_type const idx = keys.find(delim);
 		if (idx == string::npos) {
-			string const key = frontStrip(keys);
-			vec.push_back(keys);
+			vec.push_back(frontStrip(keys));
 			break;
 		}
 
