@@ -37,16 +37,25 @@ FD_form_sendto *create_form_form_sendto(void)
     fl_set_object_callback(obj, SendtoCancelCB, 0);
 
   fdui->group_ftype = fl_bgn_group();
-  fdui->radio_ftype_dvi = obj = fl_add_checkbutton(FL_RADIO_BUTTON, 110, 30, 110, 30, idex(_("DVI|#D")));fl_set_button_shortcut(obj, scex(_("DVI|#D")), 1);
+  fdui->radio_ftype_dvi = obj = fl_add_round3dbutton(FL_RADIO_BUTTON, 110, 30, 110, 30, idex(_("DVI|#D")));fl_set_button_shortcut(obj, scex(_("DVI|#D")), 1);
+    fl_set_object_color(obj, FL_COL1, FL_YELLOW);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-  fdui->radio_ftype_ps = obj = fl_add_checkbutton(FL_RADIO_BUTTON, 110, 60, 110, 30, idex(_("Postscript|#P")));fl_set_button_shortcut(obj, scex(_("Postscript|#P")), 1);
+
+  fdui->radio_ftype_ps = obj = fl_add_round3dbutton(FL_RADIO_BUTTON, 110, 60, 110, 30, idex(_("Postscript|#P")));fl_set_button_shortcut(obj, scex(_("Postscript|#P")), 1);
+    fl_set_object_color(obj, FL_COL1, FL_YELLOW);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-  fdui->radio_ftype_latex = obj = fl_add_checkbutton(FL_RADIO_BUTTON, 10, 60, 100, 30, idex(_("LaTeX|#T")));fl_set_button_shortcut(obj, scex(_("LaTeX|#T")), 1);
+
+  fdui->radio_ftype_latex = obj = fl_add_round3dbutton(FL_RADIO_BUTTON, 10, 60, 100, 30, idex(_("LaTeX|#T")));fl_set_button_shortcut(obj, scex(_("LaTeX|#T")), 1);
+    fl_set_object_color(obj, FL_COL1, FL_YELLOW);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_button(obj, 1);
-  fdui->radio_ftype_lyx = obj = fl_add_checkbutton(FL_RADIO_BUTTON, 10, 30, 100, 30, idex(_("LyX|#L")));fl_set_button_shortcut(obj, scex(_("LyX|#L")), 1);
+
+  fdui->radio_ftype_lyx = obj = fl_add_round3dbutton(FL_RADIO_BUTTON, 10, 30, 100, 30, idex(_("LyX|#L")));fl_set_button_shortcut(obj, scex(_("LyX|#L")), 1);
+    fl_set_object_color(obj, FL_COL1, FL_YELLOW);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-  fdui->radio_ftype_ascii = obj = fl_add_checkbutton(FL_RADIO_BUTTON, 220, 30, 90, 30, idex(_("Ascii|#s")));fl_set_button_shortcut(obj, scex(_("Ascii|#s")), 1);
+
+  fdui->radio_ftype_ascii = obj = fl_add_round3dbutton(FL_RADIO_BUTTON, 220, 30, 90, 30, idex(_("Ascii|#s")));fl_set_button_shortcut(obj, scex(_("Ascii|#s")), 1);
+    fl_set_object_color(obj, FL_COL1, FL_YELLOW);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
   fl_end_group();
 
