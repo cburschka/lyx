@@ -1001,9 +1001,9 @@ void FormDocument::class_update(BufferParams const & params)
 		fl_set_button(class_->radio_doc_columns_two, 1);
 	else
 		fl_set_button(class_->radio_doc_columns_one, 1);
+ 
 	fl_set_input(class_->input_doc_spacing, "");
-
-	setEnabled(class_->input_doc_spacing, input_length);
+	setEnabled(class_->input_doc_spacing, false);
 
 	switch (params.spacing.getSpace()) {
 	case Spacing::Default: // nothing bad should happen with this
@@ -1025,6 +1025,7 @@ void FormDocument::class_update(BufferParams const & params)
 		char sval[20];
 		sprintf(sval,"%g",params.spacing.getValue()); 
 		fl_set_input(class_->input_doc_spacing, sval);
+		setEnabled(class_->input_doc_spacing, true);
 		break;
 	}
 	}
