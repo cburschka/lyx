@@ -82,7 +82,7 @@ string SpaceLess(string const & file)
 		"@!\"'()*+,-./0123456789:;<=>?[]`|");
 	
 	string::size_type pos = 0;
-	while ((pos = name.find_first_not_of(change, pos)) != string::npos) {
+	while ((pos = name.find_first_not_of(keep, pos)) != string::npos) {
 		name[pos] = '_';
 	}
 	return AddName(path, name);
