@@ -1125,10 +1125,16 @@ bool MathHullInset::getStatus(LCursor & cur, FuncRequest const & cmd,
 		if ((type_ == "simple" 
 		  || type_ == "equation" 
 		  || type_ == "none") &&
-		    (s == "add-hline-above" || s == "add-hline-below" ||
-		     s == "add-vline-left" || s == "add-vline-right")) {
+		    (s == "add-hline-above" || s == "add-hline-below")) {
 			flag.message(bformat(
-				N_("Can't add grid lines in '%1$s'"),
+				N_("Can't add horizontal grid lines in '%1$s'"),
+				type_));
+			flag.enabled(false);
+			return true;
+		}
+		if (s == "add-vline-left" || s == "add-vline-right") { 
+			flag.message(bformat(
+				N_("Can't add vertical grid lines in '%1$s'"),
 				type_));
 			flag.enabled(false);
 			return true;

@@ -14,8 +14,26 @@
 #include "math_data.h"
 #include "math_mathmlstream.h"
 #include "math_support.h"
+#include "FuncStatus.h"
 #include "LaTeXFeatures.h"
 #include "support/std_ostream.h"
+#include "cursor.h"
+#include "funcrequest.h"
+#include "gettext.h"
+#include "undo.h"
+
+#include "support/lstrings.h"
+
+#include <sstream>
+
+using lyx::support::bformat;
+
+using std::endl;
+using std::max;
+using std::min;
+using std::swap;
+using std::istringstream;
+using std::string;
 
 using std::auto_ptr;
 
@@ -44,6 +62,47 @@ void MathCasesInset::draw(PainterInfo & pi, int x, int y) const
 	mathed_draw_deco(pi, x + 1, y - dim_.ascent(), 6, dim_.height(), "{");
 	MathGridInset::draw(pi, x + 8, y);
 	setPosCache(pi, x, y);
+}
+
+
+void MathCasesInset::doDispatch(LCursor & cur, FuncRequest & cmd)
+{
+	//lyxerr << "*** MathCasesInset: request: " << cmd << endl;
+	switch (cmd.action) {
+	case LFUN_TABULAR_FEATURE: {
+		recordUndo(cur);
+		istringstream is(cmd.argument);
+		string s;
+		is >> s; 
+		if (s == "add-vline-left" || s == "add-vline-right") {
+			cur.undispatched();
+			break;
+		}
+	}
+	default:
+		MathGridInset::doDispatch(cur, cmd);
+	}
+}
+
+
+bool MathCasesInset::getStatus(LCursor & cur, FuncRequest const & cmd,
+		FuncStatus & flag) const
+{
+	switch (cmd.action) {
+	case LFUN_TABULAR_FEATURE: {
+		istringstream is(cmd.argument);
+		string s;
+		is >> s;
+		if (s == "add-vline-left" || s == "add-vline-right") {
+			flag.enabled(false);
+			flag.message(bformat(
+				N_("No vertical grid lines in '%1$s'"), s));
+			return true;
+		}
+	}
+	default:
+		return MathGridInset::getStatus(cur, cmd, flag);
+	}
 }
 
 

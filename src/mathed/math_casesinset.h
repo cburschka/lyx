@@ -25,6 +25,11 @@ public:
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
+	///
+	virtual void doDispatch(LCursor & cur, FuncRequest & cmd);
+	///
+	bool getStatus(LCursor & cur, FuncRequest const & cmd,
+		FuncStatus & flag) const;
 
 	///
 	void infoize(std::ostream & os) const;

@@ -1,4 +1,10 @@
 
+2005-03-24  Martin Vermeer  <martin.vermeer@hut.fi>
+
+	* math_hullinset.C:
+	* math_casesinset.[Ch]: more precise conditioning of
+	output of vertical grid lines
+
 2005-03-22  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* math_hullinset.C (getStatus): intercept and suppress the
