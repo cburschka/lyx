@@ -1095,6 +1095,17 @@ bool LyXFont::equalExceptLatex(LyXFont const & f) const
 }
 
 
+LyXDirection LyXFont::getFontDirection() const
+{
+	if (lyxrc->rtl_support 
+	    && direction() == LyXFont::RTL_DIR
+	    && latex() != LyXFont::ON)
+		return LYX_DIR_RIGHT_TO_LEFT;
+	else
+		return LYX_DIR_LEFT_TO_RIGHT;
+}
+
+
 ostream & operator<<(ostream & o, LyXFont::FONT_MISC_STATE fms)
 {
 	return o << int(fms);

@@ -179,5 +179,11 @@ struct pushpophelper {
 	}
 	LyXLex & lex;
 };
+// To avoid wrong usage:
+// pushpophelper(...); // wrong
+// pushpophelper pph(...); // right
+// we add this macro:
+#define pushpophelper(x, y, z) unnamed_pushpophelper;
+// Tip gotten from Bobby Schmidt's column in C/C++ Users Journal
 
 #endif

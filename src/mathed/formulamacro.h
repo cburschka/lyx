@@ -61,14 +61,14 @@ public:
 	/// what appears in the minibuffer when opening
 	char const * EditMessage() const {return _("Math macro editor mode");}
 	///
-	void Edit(int x, int y);
+	void Edit(BufferView *, int x, int y);
 	///
-	void InsetUnlock();
+	void InsetUnlock(BufferView *);
 	///
-	bool LocalDispatch(int, char const *);
+	bool LocalDispatch(BufferView *, int, char const *);
 protected:
 	///
-	void UpdateLocal();
+	//void UpdateLocal();
 private:
 	///
         bool opened;

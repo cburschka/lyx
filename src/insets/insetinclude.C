@@ -227,10 +227,10 @@ Inset * InsetInclude::Clone() const
 }
 
 
-void InsetInclude::Edit(int, int)
+void InsetInclude::Edit(BufferView * bv, int, int)
 {
-	if(current_view->buffer()->isReadonly())
-		WarnReadonly(current_view->buffer()->fileName());
+	if(bv->buffer()->isReadonly())
+		WarnReadonly(bv->buffer()->fileName());
 
 	if (!form) {
                 form = create_form_include();

@@ -528,7 +528,7 @@ string LyXFunc::Dispatch(int ac,
 				owner->view()->menuUndo();
 				inset = static_cast<UpdatableInset*>(owner->view()->text->cursor.par->GetInset(owner->view()->text->cursor.pos));
 				if (inset) 
-					inset->Edit(slx, sly);
+					inset->Edit(owner->view(), slx, sly);
 				return string();
 			} else 
 				if (action == LFUN_REDO) {
@@ -539,10 +539,11 @@ string LyXFunc::Dispatch(int ac,
 					owner->view()->menuRedo();
 					inset = static_cast<UpdatableInset*>(owner->view()->text->cursor.par->GetInset(owner->view()->text->cursor.pos));
 					if (inset)
-						inset->Edit(slx, sly);
+						inset->Edit(owner->view(),
+							    slx, sly);
 					return string();
 				} else
-					if (owner->view()->the_locking_inset->LocalDispatch(action, argument.c_str()))
+					if (owner->view()->the_locking_inset->LocalDispatch(owner->view(), action, argument.c_str()))
 						return string();
 					else {
 						setMessage(N_("Text mode"));
@@ -702,7 +703,16 @@ string LyXFunc::Dispatch(int ac,
 		break;
 		
 	case LFUN_MENUWRITE:
+		owner->getMiniBuffer()->Set(_("Saving document"),
+					    MakeDisplayPath(owner->buffer()->fileName()),
+					    "...");
 		MenuWrite(owner->buffer());
+		//owner->getMiniBuffer()->
+		//	Set(_("Document saved as"),
+		//	    MakeDisplayPath(owner->buffer()->fileName()));
+		//} else {
+		//owner->getMiniBuffer()->Set(_("Save failed!"));
+		//}
 		break;
 		
 	case LFUN_MENUWRITEAS:
@@ -1275,7 +1285,7 @@ string LyXFunc::Dispatch(int ac,
 		
 	case LFUN_SPELLCHECK:
 		if (lyxrc->isp_command != "none")
-			ShowSpellChecker();
+			ShowSpellChecker(owner->view());
 		break; // RVDK_PATCH_5
 		
 		// --- Cursor Movements -----------------------------
@@ -1296,7 +1306,7 @@ string LyXFunc::Dispatch(int ac,
 		    && tmptext->cursor.par->GetInset(tmptext->cursor.pos)->Editable() == 2){
 			Inset * tmpinset = tmptext->cursor.par->GetInset(tmptext->cursor.pos);
 			setMessage(tmpinset->EditMessage());
-			tmpinset->Edit(0, 0);
+			tmpinset->Edit(owner->view(), 0, 0);
 			break;
 		}
 		if (direction == LYX_DIR_LEFT_TO_RIGHT)
@@ -1324,7 +1334,8 @@ string LyXFunc::Dispatch(int ac,
 		    && txt->cursor.par->GetInset(txt->cursor.pos)->Editable() == 2) {
 			Inset * tmpinset = txt->cursor.par->GetInset(txt->cursor.pos);
 			setMessage(tmpinset->EditMessage());
-			tmpinset->Edit(tmpinset->width(owner->view()->painter(),
+			tmpinset->Edit(owner->view(),
+				       tmpinset->width(owner->view()->painter(),
 						       txt->GetFont(txt->cursor.par,
 								    txt->cursor.pos)), 0);
 			break;
@@ -1883,7 +1894,7 @@ string LyXFunc::Dispatch(int ac,
 		else
 			new_inset = new InsetUrl("url", "", "");
 		owner->view()->insertInset(new_inset);
-		new_inset->Edit(0, 0);
+		new_inset->Edit(owner->view(), 0, 0);
 	}
 	break;
 
@@ -1980,22 +1991,6 @@ string LyXFunc::Dispatch(int ac,
 
 		// Recenter screen
 		owner->view()->center();
-#if 0		
-		owner->view()->beforeChange();
-		if (owner->view()->text->cursor.y >
-		    owner->view()->getWorkArea()->height() / 2
-			) {
-			owner->view()->getScreen()->
-				Draw(owner->view()->text->cursor.y -
-				     owner->view()->getWorkArea()->height() / 2
-					);
-		} else { // <= 
-			owner->view()->getScreen()->
-				Draw(0);
-		}
-		owner->view()->update(0);
-		owner->view()->redraw();
-#endif
 	}
 	break;
 
@@ -2124,7 +2119,9 @@ string LyXFunc::Dispatch(int ac,
 			owner->view()->
 				open_new_inset(new InsetFormula(false));
 			owner->view()->
-				the_locking_inset->LocalDispatch(action, argument.c_str());
+				the_locking_inset->LocalDispatch(owner->view(),
+								 action,
+								 argument.c_str());
 		}
 	}	   
 	break;
@@ -2190,7 +2187,7 @@ string LyXFunc::Dispatch(int ac,
 			owner->view()->insertInset(new_inset);
 		} else {
 			owner->view()->insertInset(new_inset);
-			new_inset->Edit(0, 0);
+			new_inset->Edit(owner->view(), 0, 0);
 		}
 	}
 	break;
@@ -2211,7 +2208,7 @@ string LyXFunc::Dispatch(int ac,
 		
 		owner->view()->insertInset(new_inset);
 		if (lsarg.empty()) {
-			new_inset->Edit(0, 0);
+			new_inset->Edit(owner->view(), 0, 0);
 		}
 	}
 	break;
@@ -2277,7 +2274,7 @@ string LyXFunc::Dispatch(int ac,
 
 			//don't edit it if the call was to INSERT_LAST
 			if(action != LFUN_INDEX_INSERT_LAST) {
-				new_inset->Edit(0, 0);
+				new_inset->Edit(owner->view(), 0, 0);
 			} else {
 				//it looks blank on the screen unless
 				//we do  something.  put it here.
@@ -2315,7 +2312,7 @@ string LyXFunc::Dispatch(int ac,
 		Inset * new_inset = new InsetInclude(argument,
 						     owner->buffer());
 		owner->view()->insertInset(new_inset, "Standard", true);
-		new_inset->Edit(0, 0);
+		new_inset->Edit(owner->view(), 0, 0);
 	}
 	break;
 

@@ -38,14 +38,18 @@ extern "C" void bibitem_cb(FL_OBJECT *, long data)
 	switch (data) {
 	case 1: // OK, citation
         {
-		if(!current_view->buffer()->isReadonly()) {
-			InsetCommand * inset = static_cast<InsetCommand*>(citation_form->citation_form->u_vdata);
+		InsetCitation::Holder * holder =
+			static_cast<InsetCitation::Holder*>
+			(citation_form->citation_form->u_vdata);
+		if(!holder->view->buffer()->isReadonly()) {
+			
+			InsetCitation * inset = holder->inset;
 			inset->setContents(bibcombox->getline());
 			inset->setOptions(fl_get_input(citation_form->label));
 			fl_hide_form(citation_form->citation_form);
 			// shouldn't mark the buffer dirty unless something
 			// was actually altered
-			UpdateInset(current_view, inset);
+			UpdateInset(holder->view, inset);
 			break;
 		}
 		// fall through to Cancel on RO-mode
@@ -54,14 +58,18 @@ extern "C" void bibitem_cb(FL_OBJECT *, long data)
                 break;
 	case 3: // OK, bibitem
         {
-		if(!current_view->buffer()->isReadonly()) {
-			InsetCommand * inset = static_cast<InsetCommand*>(bibitem_form->bibitem_form->u_vdata);
+		InsetBibKey::Holder * holder =
+			static_cast<InsetBibKey::Holder*>
+			(bibitem_form->bibitem_form->u_vdata);
+		
+		if(!holder->view->buffer()->isReadonly()) {
+			InsetBibKey * inset = holder->inset;
 			inset->setContents(fl_get_input(bibitem_form->key));
 			inset->setOptions(fl_get_input(bibitem_form->label));
 			fl_hide_form(bibitem_form->bibitem_form);
 			// Does look like a hack? It is! (but will change at 0.13)
-			current_view->text->RedoParagraph();
-			current_view->update(1);
+			holder->view->text->RedoParagraph();
+			holder->view->update(1);
 			break;
 		} // fall through to Cancel on RO-mode
         }
@@ -144,22 +152,26 @@ InsetCitation::~InsetCitation()
 {
 	if(citation_form && citation_form->citation_form
 	   && citation_form->citation_form->visible
-	   && citation_form->citation_form->u_vdata == this)
+	   && citation_form->citation_form->u_vdata == &holder)
 		fl_hide_form(citation_form->citation_form);
 }
 
 
-void InsetCitation::Edit(int, int)
+void InsetCitation::Edit(BufferView * bv, int, int)
 {
-	if(current_view->buffer()->isReadonly())
-		WarnReadonly(current_view->buffer()->fileName());
+	if(bv->buffer()->isReadonly())
+		WarnReadonly(bv->buffer()->fileName());
 
 	if (!citation_form) {
 		citation_form = create_form_citation_form();
 		fl_set_form_atclose(citation_form->citation_form, 
 				    CancelCloseBoxCB, 0);
 	}
-	citation_form->citation_form->u_vdata = this;
+
+	holder.inset = this;
+	holder.view = bv;
+		
+	citation_form->citation_form->u_vdata = &holder;
 
 	BibitemUpdate(bibcombox);
 	if (!bibcombox->select_text(getContents().c_str()))
@@ -254,17 +266,21 @@ string InsetBibKey::getScreenLabel() const
   upwards?
   (Joacim 1998-03-04)
 */
-void InsetBibKey::Edit(int, int)
+void InsetBibKey::Edit(BufferView * bv, int, int)
 {
-	if(current_view->buffer()->isReadonly())
-		WarnReadonly(current_view->buffer()->fileName());
+	if(bv->buffer()->isReadonly())
+		WarnReadonly(bv->buffer()->fileName());
 	
 	if (!bibitem_form) {
 		bibitem_form = create_form_bibitem_form();
 		fl_set_form_atclose(bibitem_form->bibitem_form, 
 				    CancelCloseBoxCB, 0);
 	}
-	bibitem_form->bibitem_form->u_vdata = this;
+
+	holder.inset = this;
+	holder.view = bv;
+	
+	bibitem_form->bibitem_form->u_vdata = &holder;
 	// InsetBibtex uses the same form, with different labels
 	fl_set_object_label(bibitem_form->key, idex(_("Key:|#K")));
 	fl_set_button_shortcut(bibitem_form->key, scex(_("Key:|#K")), 1);
@@ -354,9 +370,13 @@ string InsetBibtex::getKeys(char delim)
 {
 	// This hack is copied from InsetBibtex::Latex.
 	// Is it still needed? Probably yes.
-	if (!owner) {
-		owner = current_view->buffer();
-	}
+	// Why is this needed here when it already is in Latex?
+	// Anyway we need a different way to get to the
+	// buffer the inset is in. (Lgb)
+	
+	//if (!owner) {
+	//	owner = current_view->buffer();
+	//}
 	
 	string tmp, keys;
 	string bibfiles = getContents();
@@ -400,7 +420,7 @@ string InsetBibtex::getKeys(char delim)
 
 
 // BibTeX should have its own dialog. This is provisional.
-void InsetBibtex::Edit(int, int)
+void InsetBibtex::Edit(BufferView *, int, int)
 {
 	if (!bibitem_form) {
 		bibitem_form = create_form_bibitem_form();

@@ -49,8 +49,7 @@
 #include "debug.h"
 #include "support/lstrings.h"
 
-extern LyXRC *lyxrc;
-extern BufferView *current_view;
+extern LyXRC * lyxrc;
 
 // Spellchecker status
 enum {
@@ -62,7 +61,7 @@ enum {
 	ISP_IGNORE
 };
 
-static bool RunSpellChecker(string const &);
+static bool RunSpellChecker(BufferView * bv);
 
 static FILE *in, *out;  /* streams to communicate with ispell */
 pid_t isp_pid = -1; // pid for the `ispell' process. Also used (RO) in
@@ -224,7 +223,7 @@ void SpellCheckerOptions()
 // Could also use a clean up. (Asger Alstrup)
 
 static
-void create_ispell_pipe(string const & lang)
+void create_ispell_pipe(BufferParams const & params, string const & lang)
 {
 	static char o_buf[BUFSIZ];  // jc: it could be smaller
 	int pipein[2], pipeout[2];
@@ -325,13 +324,13 @@ void create_ispell_pipe(string const & lang)
 			argv[argc++] = tmp;
 		}
 		if (lyxrc->isp_use_input_encoding &&
-        	    current_view->buffer()->params.inputenc != "default") {
+        	    params.inputenc != "default") {
 			tmp = new char[3];
 			string("-T").copy(tmp, 2); tmp[2] = '\0';
 			argv[argc++] = tmp; // Input encoding
-			tmp = new char[current_view->buffer()->params.inputenc.length() + 1];
-			current_view->buffer()->params.inputenc.copy(tmp, current_view->buffer()->params.inputenc.length());
-			tmp[current_view->buffer()->params.inputenc.length()] = '\0';
+			tmp = new char[params.inputenc.length() + 1];
+			params.inputenc.copy(tmp, params.inputenc.length());
+			tmp[params.inputenc.length()] = '\0';
 			argv[argc++] = tmp;
 		}
 
@@ -520,13 +519,13 @@ inline void ispell_store_replacement(char const *mis, string const & cor) {
 }
 
 
-void ShowSpellChecker()
+void ShowSpellChecker(BufferView * bv)
 {
-	FL_OBJECT *obj;
+	FL_OBJECT * obj;
 	int ret;
 
 	// Exit if we don't have a document open
-	if (!current_view->available())
+	if (!bv->available())
 		return;
 
 	if (fd_form_spell_check == 0) {
@@ -588,7 +587,7 @@ void ShowSpellChecker()
 			fl_set_object_lcol(fd_form_spell_check->input, FL_BLACK);
 			fl_set_object_lcol(fd_form_spell_check->browser, FL_BLACK);
 			// activate replace only if the file is not read-only
-			if (!current_view->buffer()->isReadonly()) { 
+			if (!bv->buffer()->isReadonly()) { 
 			  fl_activate_object(fd_form_spell_check->replace);
 			  fl_set_object_lcol(fd_form_spell_check->replace, FL_BLACK);
 			}
@@ -599,7 +598,7 @@ void ShowSpellChecker()
 			fl_set_object_lcol(fd_form_spell_check->options, FL_INACTIVE);
 			fl_set_object_lcol(fd_form_spell_check->start, FL_INACTIVE);
 
-			ret = RunSpellChecker(current_view->buffer()->GetLanguage());
+			ret = RunSpellChecker(bv);
 
 			// deactivate insert, accept, replace, and stop
 			fl_deactivate_object(fd_form_spell_check->insert);
@@ -629,29 +628,26 @@ void ShowSpellChecker()
 		if (obj == fd_form_spell_check->done) break;
 	}
 	fl_hide_form(fd_form_spell_check->form_spell_check);
-	current_view->endOfSpellCheck();
+	bv->endOfSpellCheck();
 	return;
 }
 
 
 // Perform an ispell session
 static
-bool RunSpellChecker(string const & lang)
+bool RunSpellChecker(BufferView * bv)
 {
-	isp_result *result;
-	char *word;
-	int i, oldval, clickline, newvalue;
-	float newval;
-	FL_OBJECT *obj;
-	unsigned int word_count = 0;
+	isp_result * result;
+	int i, newvalue;
+	FL_OBJECT * obj;
 
-	string tmp = (lyxrc->isp_use_alt_lang) ? lyxrc->isp_alt_lang:lang;
+	string tmp = (lyxrc->isp_use_alt_lang) ? lyxrc->isp_alt_lang : bv->buffer()->GetLanguage();
 
-	oldval = 0;  /* used for updating slider only when needed */
-	newval = 0.0;
+	int oldval = 0;  /* used for updating slider only when needed */
+	float newval = 0.0;
    
 	/* create ispell process */
-	create_ispell_pipe(tmp);
+	create_ispell_pipe(bv->buffer()->params, tmp);
 
 	if (isp_pid == -1) {
 		fl_show_message(
@@ -668,8 +664,9 @@ bool RunSpellChecker(string const & lang)
 	// Put ispell in terse mode to improve speed
 	ispell_terse_mode();
 
+	unsigned int word_count = 0;
 	while (true) {
-		word = current_view->nextWord(newval);
+		char * word = bv->nextWord(newval);
 		if (word == 0) break;
 		++word_count;
 		
@@ -703,7 +700,8 @@ bool RunSpellChecker(string const & lang)
 		switch (result->flag) {
 		case ISP_UNKNOWN:
 		case ISP_MISSED:
-			current_view->selectLastWord();
+		{
+			bv->selectLastWord();
 			fl_set_object_label(fd_form_spell_check->text, word);
 			fl_set_input(fd_form_spell_check->input, word);
 			fl_clear_browser(fd_form_spell_check->browser);
@@ -711,7 +709,7 @@ bool RunSpellChecker(string const & lang)
 				fl_add_browser_line(fd_form_spell_check->browser, result->misses[i]);
 			}
 
-			clickline = -1;
+			int clickline = -1;
 			while (true) {
 				obj = fl_do_forms();
 				if (obj == fd_form_spell_check->insert) {
@@ -728,7 +726,7 @@ bool RunSpellChecker(string const & lang)
 				if (obj == fd_form_spell_check->replace || 
 				    obj == fd_form_spell_check->input) {
 				        ispell_store_replacement(word, fl_get_input(fd_form_spell_check->input));
-					current_view->replaceWord(fl_get_input(fd_form_spell_check->input));
+					bv->replaceWord(fl_get_input(fd_form_spell_check->input));
 					break;
 				}
 				if (obj == fd_form_spell_check->browser) {
@@ -737,7 +735,7 @@ bool RunSpellChecker(string const & lang)
 					if (clickline == 
 					    fl_get_browser(fd_form_spell_check->browser)) {
 				                ispell_store_replacement(word, fl_get_input(fd_form_spell_check->input));
-						current_view->replaceWord(fl_get_input(fd_form_spell_check->input));
+						bv->replaceWord(fl_get_input(fd_form_spell_check->input));
 						break;
 					}
 					clickline = fl_get_browser(fd_form_spell_check->browser);
@@ -760,6 +758,7 @@ bool RunSpellChecker(string const & lang)
 					return false;
 				}
 			}
+		}
 		default:
 			delete result;
 			delete[] word;
@@ -787,19 +786,14 @@ bool RunSpellChecker(string const & lang)
 }
 
 
-//void sigchldhandler(int sig)
-void sigchldhandler(pid_t pid, int *status)
+void sigchldhandler(pid_t pid, int * status)
 { 
-	//int status ;
-
-	if (isp_pid>0)
-		//if (waitpid(isp_pid, &status, WNOHANG) == isp_pid) {
+	if (isp_pid > 0)
 		if (pid == isp_pid) {
 			isp_pid= -1;
 			fcntl(isp_fd, F_SETFL, O_NONBLOCK); /* set the file descriptor
 							       to nonblocking so we can 
 							       continue */
 		}
-	//sigchldchecker(sig);
 	sigchldchecker(pid, status);
 }

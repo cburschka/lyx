@@ -371,11 +371,11 @@ void math_insert_symbol(char const * s)
 	 current_view->beforeChange();
 	 current_view->insertInset(new_inset);
 //	 Update(1);//BUG
-	 new_inset->Edit(0, 0);
-	 new_inset->InsertSymbol(s);
+	 new_inset->Edit(current_view, 0, 0);
+	 new_inset->InsertSymbol(current_view, s);
       } else
 	if (current_view->the_locking_inset->LyxCode() == Inset::MATH_CODE)
-		static_cast<InsetFormula*>(current_view->the_locking_inset)->InsertSymbol(s);
+		static_cast<InsetFormula*>(current_view->the_locking_inset)->InsertSymbol(current_view, s);
         else 
 		lyxerr << "Math error: attempt to write on a wrong "
 			"class of inset." << endl;

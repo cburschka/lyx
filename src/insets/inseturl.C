@@ -14,8 +14,8 @@
 #include "LaTeXFeatures.h"
 #include "lyx_gui_misc.h" // CancelCloseBoxCB
 
-extern BufferView * current_view;
 extern void UpdateInset(BufferView *, Inset * inset, bool mark_dirty = true);
+
 
 InsetUrl::InsetUrl(string const & cmd)
 	: fd_form_url(0)
@@ -67,7 +67,11 @@ InsetUrl::~InsetUrl()
 
 void InsetUrl::CloseUrlCB(FL_OBJECT * ob, long)
 {
-	InsetUrl * inset = static_cast<InsetUrl*>(ob->u_vdata);
+	Holder * holder = static_cast<Holder*>(ob->u_vdata);
+	
+	InsetUrl * inset = holder->inset;
+	BufferView * bv = holder->view;
+	
 	string url = fl_get_input(inset->fd_form_url->url_name);
 	string name = fl_get_input(inset->fd_form_url->name_name);
 	string cmdname;
@@ -76,7 +80,7 @@ void InsetUrl::CloseUrlCB(FL_OBJECT * ob, long)
 	else
 		cmdname = "url";
 	
-	Buffer * buffer = current_view->buffer();
+	Buffer * buffer = bv->buffer();
 	
 	if ((url != inset->getContents() ||
 	     name != inset->getOptions() ||
@@ -90,7 +94,7 @@ void InsetUrl::CloseUrlCB(FL_OBJECT * ob, long)
 			inset->flag = InsetUrl::URL;
 		else
 			inset->flag = InsetUrl::HTML_URL;
-		UpdateInset(current_view, inset);
+		UpdateInset(bv, inset);
 	}
 	
 	if (inset->fd_form_url) {
@@ -107,19 +111,21 @@ extern "C" void C_InsetUrl_CloseUrlCB(FL_OBJECT * ob, long data)
 }
 
 
-void InsetUrl::Edit(int, int)
+void InsetUrl::Edit(BufferView * bv, int, int)
 {
 	static int ow = -1, oh;
 
-	if(current_view->buffer()->isReadonly())
-		WarnReadonly(current_view->buffer()->fileName());
+	if(bv->buffer()->isReadonly())
+		WarnReadonly(bv->buffer()->fileName());
 
 	if (!fd_form_url) {
 		fd_form_url = create_form_form_url();
-		fd_form_url->button_close->u_vdata = this;
+		holder.inset = this;
+		fd_form_url->button_close->u_vdata = &holder;
 		fl_set_form_atclose(fd_form_url->form_url,
 				    CancelCloseBoxCB, 0);
 	}
+	holder.view = bv;
 	fl_set_input(fd_form_url->url_name, getContents().c_str());
 	fl_set_input(fd_form_url->name_name, getOptions().c_str());
 	switch(flag) {

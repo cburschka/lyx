@@ -237,7 +237,7 @@ void BufferView::open_new_inset(UpdatableInset * new_inset)
 	insertInset(new_inset);
 	text->CursorLeft();
 	update(1);
-    	new_inset->Edit(0, 0);
+    	new_inset->Edit(this, 0, 0);
 }
 
 /* This is also a buffer property (ale) */
@@ -360,7 +360,7 @@ void BufferView::insertNote()
 {
 	InsetInfo * new_inset = new InsetInfo();
 	insertInset(new_inset);
-	new_inset->Edit(0, 0);
+	new_inset->Edit(this, 0, 0);
 }
 
 
@@ -727,7 +727,7 @@ void BufferView::fitLockedInsetCursor(long x, long y, int asc, int desc)
 int BufferView::unlockInset(UpdatableInset * inset)
 {
 	if (inset && the_locking_inset == inset) {
-		inset->InsetUnlock();
+		inset->InsetUnlock(this);
 		the_locking_inset = 0;
 		text->FinishUndo();
 		return 0;

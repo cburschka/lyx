@@ -25,9 +25,6 @@
 #include "commandtags.h"
 
 
-extern BufferView * current_view;
-
-
 InsetParent::InsetParent(string const & fn, Buffer * owner)
 	: InsetCommand("lyxparent")
 {
@@ -38,10 +35,10 @@ InsetParent::InsetParent(string const & fn, Buffer * owner)
 }
 
 
-void InsetParent::Edit(int, int)
+void InsetParent::Edit(BufferView * bv, int, int)
 {    
-	current_view->owner()->getLyXFunc()->Dispatch(LFUN_CHILDOPEN, 
-						      getContents().c_str());
+	bv->owner()->getLyXFunc()->Dispatch(LFUN_CHILDOPEN, 
+					    getContents().c_str());
 }
 
 

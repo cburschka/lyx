@@ -34,7 +34,7 @@ public:
     	///
 	string getScreenLabel() const { return _("Table of Contents"); }
 	/// On edit, we open the TOC pop-up
-	void Edit(int, int);
+	void Edit(BufferView *, int, int);
         ///
 	unsigned char Editable() const {
 		return 1;

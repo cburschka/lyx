@@ -180,12 +180,12 @@ extern "C" void C_InsetInfo_CloseInfoCB(FL_OBJECT * ob, long data)
 }
 
 
-void InsetInfo::Edit(int, int)
+void InsetInfo::Edit(BufferView * bv, int, int)
 {
 	static int ow = -1, oh;
 
-	if(current_view->buffer()->isReadonly())
-		WarnReadonly(current_view->buffer()->fileName());
+	if(bv->buffer()->isReadonly())
+		WarnReadonly(bv->buffer()->fileName());
 	
 	if (!form) {
 		FL_OBJECT *obj;

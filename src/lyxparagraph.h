@@ -131,7 +131,7 @@ public:
 	LyXDirection getLetterDirection(size_type pos) const;
 	
 	///
-	void writeFile(ostream &, BufferParams &, char, char);
+	void writeFile(ostream &, BufferParams const &, char, char) const;
 	///
 	void validate(LaTeXFeatures &) const;
 	

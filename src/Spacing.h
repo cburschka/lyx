@@ -78,7 +78,7 @@ public:
 		set(sp, fval);
 	}
 	///
-	void writeFile(ostream &);
+	void writeFile(ostream &) const;
 	///
 	friend bool operator!=(Spacing const & a, Spacing const & b) {
 		if (a.space == b.space && a.getValue() == b.getValue())

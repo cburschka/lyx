@@ -86,10 +86,10 @@ InsetIndex::~InsetIndex()
 }
 
 
-void InsetIndex::Edit(int, int)
+void InsetIndex::Edit(BufferView * bv, int, int)
 {
-	if(current_view->buffer()->isReadonly())
-		WarnReadonly(current_view->buffer()->fileName());
+	if(bv->buffer()->isReadonly())
+		WarnReadonly(bv->buffer()->fileName());
 
 	if (!index_form)
 		index_form = create_form_index_form();

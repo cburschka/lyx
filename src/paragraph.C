@@ -112,11 +112,10 @@ LyXParagraph::LyXParagraph(LyXParagraph * par)
 }
 
 
-void LyXParagraph::writeFile(ostream & os, BufferParams & params,
-			     char footflag, char dth)
+void LyXParagraph::writeFile(ostream & os, BufferParams const & params,
+			     char footflag, char dth) const
 {
 	LyXFont font1, font2;
-	Inset * inset;
 	int column = 0;
 	int h = 0;
 	char c = 0;
@@ -257,7 +256,8 @@ void LyXParagraph::writeFile(ostream & os, BufferParams & params,
 		c = GetChar(i);
 		switch (c) {
 		case META_INSET:
-			inset = GetInset(i);
+		{
+			Inset const * inset = GetInset(i);
 			if (inset)
 				if (inset->DirectWrite()) {
 					// international char, let it write
@@ -270,7 +270,8 @@ void LyXParagraph::writeFile(ostream & os, BufferParams & params,
 					os << "\n\\end_inset \n\n";
 					column = 0;
 				}
-			break;
+		}
+		break;
 		case META_NEWLINE: 
 			os << "\n\\newline \n";
 			column = 0;
@@ -1892,7 +1893,7 @@ LyXParagraph * LyXParagraph::TeXOnePar(string & file, TexRow & texrow,
 		further_blank_line = true;
 	}
 	if (added_space_top.kind() != VSpace::NONE) {
-		file += added_space_top.asLatexCommand();
+		file += added_space_top.asLatexCommand(current_view->buffer()->params);
 		further_blank_line = true;
 	}
       
@@ -2020,7 +2021,7 @@ LyXParagraph * LyXParagraph::TeXOnePar(string & file, TexRow & texrow,
 	}
 
 	if (added_space_bottom.kind() != VSpace::NONE) {
-		file += added_space_bottom.asLatexCommand();
+		file += added_space_bottom.asLatexCommand(current_view->buffer()->params);
 		further_blank_line = true;
 	}
       
@@ -3970,4 +3971,35 @@ bool LyXParagraph::IsLetter(LyXParagraph::size_type pos) const
 bool LyXParagraph::IsWord(size_type pos ) const
 {
 	return IsWordChar(GetChar(pos)) ;
+}
+
+
+LyXDirection LyXParagraph::getParDirection() const
+{
+	if (!lyxrc->rtl_support || table)
+		return LYX_DIR_LEFT_TO_RIGHT;
+
+	if (size() > 0)
+		return (getFont(0).direction() ==  LyXFont::RTL_DIR)
+			? LYX_DIR_RIGHT_TO_LEFT : LYX_DIR_LEFT_TO_RIGHT;
+	else
+		return current_view->buffer()->params.getDocumentDirection();
+}
+
+
+LyXDirection
+LyXParagraph::getLetterDirection(LyXParagraph::size_type pos) const
+{
+	if (!lyxrc->rtl_support)
+		return LYX_DIR_LEFT_TO_RIGHT;
+
+	LyXDirection direction = getFont(pos).getFontDirection();
+	if (IsLineSeparator(pos) && 0 < pos && pos < Last() - 1
+	    && !IsLineSeparator(pos + 1)
+	    && !(table && IsNewline(pos + 1))
+	    && (getFont(pos - 1).getFontDirection() != direction
+		|| getFont(pos + 1).getFontDirection() != direction))
+		return getParDirection();
+	else
+		return direction;
 }

@@ -108,7 +108,7 @@ public:
 	//@}
 
 	///
-	void writeFile(ostream &);
+	void writeFile(ostream &) const;
 
 	///
 	void useClassDefaults();

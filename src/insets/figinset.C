@@ -1253,7 +1253,7 @@ bool InsetFig::Deletable() const
 }
 
 
-void InsetFig::Edit(int, int)
+void InsetFig::Edit(BufferView * bv, int, int)
 {
 	lyxerr.debug() << "Editing InsetFig." << endl;
 	Regenerate();
@@ -1261,8 +1261,8 @@ void InsetFig::Edit(int, int)
 	// We should have RO-versions of the form instead.
 	// The actual prevention of altering a readonly doc
 	// is done in CallbackFig()
-	if(current_view->buffer()->isReadonly()) 
-		WarnReadonly(current_view->buffer()->fileName());
+	if(bv->buffer()->isReadonly()) 
+		WarnReadonly(bv->buffer()->fileName());
 
 	if (!form) {
 		form = create_form_Figure();

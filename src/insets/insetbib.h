@@ -38,11 +38,20 @@ public:
     	///
 	string getScreenLabel()const;
         ///
-	void Edit(int, int);
+	void Edit(BufferView *, int, int);
         ///
 	unsigned char Editable() const {
 		return 1;
 	}
+private:
+	///
+	struct Holder {
+		InsetCitation * inset;
+		BufferView * view;
+	};
+
+	///
+	Holder holder;
 };
 
 
@@ -68,7 +77,7 @@ public:
 	///
 	virtual string getScreenLabel() const;
         ///
-	void Edit(int, int);
+	void Edit(BufferView *, int, int);
 	///
 	unsigned char Editable() const {
 		return 1;
@@ -85,6 +94,14 @@ public:
  private:
 	///
         int counter;
+	///
+	struct Holder {
+		InsetBibKey * inset;
+		BufferView * view;
+	};
+
+	///
+	Holder holder;
 };
 
 
@@ -109,7 +126,7 @@ public:
 	///
 	string getScreenLabel() const;
 	///
-	void Edit(int, int);
+	void Edit(BufferView *, int, int);
 	/// 
 	int Latex(ostream &, signed char) const;
 	///

@@ -95,10 +95,10 @@ public:
 	}
 
 	/// Update window titles of all users
-	void updateTitles();
+	void updateTitles() const;
 
 	/// Reset autosave timers for all users
-	void resetAutosaveTimers();
+	void resetAutosaveTimers() const;
 
 	/** Adds the BufferView to the users list.
 	    Later this func will insert the BufferView into a real list,
@@ -131,8 +131,14 @@ public:
 	    If par is given, the file is inserted. */
 	bool readLyXformat2(LyXLex &, LyXParagraph * par = 0);
 
+	/** Save file
+	    Takes care of auto-save files and backup file if requested.
+	    Returns true if the save is successful, false otherwise.
+	*/
+	bool save(bool makeBackup) const;
+	
 	/// Write file. Returns false if unsuccesful.
-	bool writeFile(string const &, bool);
+	bool writeFile(string const &, bool) const;
 	
 	///
 	void writeFileAscii(string const & , int);
@@ -180,7 +186,7 @@ public:
 	bool isDepClean(string const & name) const;
 	
 	///
-	void markLyxClean() { 
+	void markLyxClean() const { 
 		if (!lyx_clean) {
 			lyx_clean = true; 
 			updateTitles();
@@ -360,10 +366,10 @@ private:
 	void RoffAsciiTable(ostream &, LyXParagraph * par);
 
 	/// is save needed
-	bool lyx_clean;
+	mutable bool lyx_clean;
 	
 	/// is autosave needed
-	bool bak_clean;
+	mutable bool bak_clean;
 	
 	/** do we need to run LaTeX, changed 23/03/98, Heinrich Bauer
 	    We have to distinguish between TeX-runs executed in the original

@@ -96,7 +96,9 @@ public:
 	bool empty() const;
 
 	/// Saves buffer. Returns false if unsuccesful.
+#if 0
 	bool write(Buffer *, bool makeBackup);
+#endif
 
 	///
         bool QwriteAll();

@@ -11,11 +11,9 @@
 #include "lyxfunc.h"
 #include "LyXView.h"
 
-extern BufferView * current_view;
-
-void InsetTOC::Edit(int, int)
+void InsetTOC::Edit(BufferView * bv, int, int)
 {
-	current_view->owner()->getLyXFunc()->Dispatch(LFUN_TOCVIEW);
+	bv->owner()->getLyXFunc()->Dispatch(LFUN_TOCVIEW);
 }
 
 int InsetTOC::Linuxdoc(string & file) const

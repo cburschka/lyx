@@ -22,6 +22,9 @@
 #include "debug.h"
 #include "support/lyxlib.h"
 #include "support/lstrings.h"
+#include "lyxrc.h"
+
+extern LyXRC * lyxrc;
 
 BufferParams::BufferParams()
 {
@@ -60,7 +63,7 @@ BufferParams::BufferParams()
 }
 
 
-void BufferParams::writeFile(ostream & os)
+void BufferParams::writeFile(ostream & os) const
 {
 	// The top of the file is written by the buffer.
 	// Prints out the buffer info into the .lyx file given by file
@@ -71,9 +74,9 @@ void BufferParams::writeFile(ostream & os)
 	// then the the preamble
 	if (!preamble.empty()) {
 		// remove '\n' from the end of preamble
-		preamble = strip(preamble, '\n');
+		string tmppreamble = strip(preamble, '\n');
 		os << "\\begin_preamble\n"
-		   << preamble
+		   << tmppreamble
 		   << "\n\\end_preamble\n";
 	}
       
@@ -243,4 +246,11 @@ void BufferParams::readGraphicsDriver(LyXLex & lex)
 			break;
 		}      
 	}
+}
+
+
+LyXDirection BufferParams::getDocumentDirection() const
+{
+	return (lyxrc->rtl_support && language == "hebrew")
+		? LYX_DIR_RIGHT_TO_LEFT : LYX_DIR_LEFT_TO_RIGHT;
 }

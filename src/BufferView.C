@@ -604,7 +604,8 @@ void BufferView::workAreaMotionNotify(int x, int y, unsigned int state)
 	if (the_locking_inset) {
 		LyXCursor cursor = text->cursor;
 		the_locking_inset->
-			InsetMotionNotify(x - cursor.x,
+			InsetMotionNotify(this,
+					  x - cursor.x,
 					  y - cursor.y,
 					  state);
 		return;
@@ -666,7 +667,8 @@ void BufferView::workAreaButtonPress(int xpos, int ypos, unsigned int button)
 		   otherwise give the event to the inset */
 		if (inset_hit) {
 			the_locking_inset->
-				InsetButtonPress(xpos, ypos,
+				InsetButtonPress(this,
+						 xpos, ypos,
 						 button);
 			return;
 		} else {
@@ -736,7 +738,7 @@ void BufferView::workAreaButtonPress(int xpos, int ypos, unsigned int button)
 		selection_possible = false;
 		owner_->updateLayoutChoice();
 		owner_->getMiniBuffer()->Set(inset_hit->EditMessage());
-		inset_hit->Edit(xpos, ypos);
+		inset_hit->Edit(this, xpos, ypos);
 		return;
 	} 
 	
@@ -788,7 +790,7 @@ void BufferView::workAreaButtonRelease(int x, int y, unsigned int button)
 		   Only a ButtonPress Event outside the inset will 
 		   force a InsetUnlock. */
 		the_locking_inset->
-			InsetButtonRelease(x, x, button);
+			InsetButtonRelease(this, x, y, button);
 		return;
 	}
 	
@@ -835,7 +837,7 @@ void BufferView::workAreaButtonRelease(int x, int y, unsigned int button)
 		}
 
 		owner_->getMiniBuffer()->Set(inset_hit->EditMessage());
-		inset_hit->Edit(x, y);
+		inset_hit->Edit(this, x, y);
 		return;
 	}
 
@@ -911,7 +913,7 @@ void BufferView::workAreaButtonRelease(int x, int y, unsigned int button)
 			    textclasslist
 			    .TextClass(buffer_->
 				       params.textclass).defaultfont())) {
-		text->cursor.par->bibkey->Edit(0, 0);
+		text->cursor.par->bibkey->Edit(this, 0, 0);
 	}
 
 	return;
@@ -1107,7 +1109,7 @@ void BufferView::cursorToggleCB(FL_OBJECT * ob, long)
 			view->screen->CursorToggle();
 		} else {
 			view->the_locking_inset->
-				ToggleInsetCursor();
+				ToggleInsetCursor(view);
 		}
 		goto set_timer_and_return;
 	} else {
@@ -1117,7 +1119,7 @@ void BufferView::cursorToggleCB(FL_OBJECT * ob, long)
 		} else {
 			if (!view->the_locking_inset->isCursorVisible())
 				view->the_locking_inset->
-					ToggleInsetCursor();
+					ToggleInsetCursor(view);
 		}
 		// This is only run when work_area_focus or lyx_focus is false.
 		Window tmpwin;
@@ -1383,7 +1385,7 @@ void BufferView::insetSleep()
 {
 	if (the_locking_inset && !inset_slept) {
 		the_locking_inset->GetCursorPos(slx, sly);
-		the_locking_inset->InsetUnlock();
+		the_locking_inset->InsetUnlock(this);
 		inset_slept = true;
 	}
 }
@@ -1392,7 +1394,7 @@ void BufferView::insetSleep()
 void BufferView::insetWakeup()
 {
 	if (the_locking_inset && inset_slept) {
-		the_locking_inset->Edit(slx, sly);
+		the_locking_inset->Edit(this, slx, sly);
 		inset_slept = false;
 	}
 }
@@ -1401,7 +1403,7 @@ void BufferView::insetWakeup()
 void BufferView::insetUnlock()
 {
 	if (the_locking_inset) {
-		if (!inset_slept) the_locking_inset->InsetUnlock();
+		if (!inset_slept) the_locking_inset->InsetUnlock(this);
 		the_locking_inset = 0;
 		text->FinishUndo();
 		inset_slept = false;

@@ -39,8 +39,6 @@
 
 #define FIX_DOUBLE_SPACE 1
 
-extern BufferView * current_view;
-
 using std::copy;
 
 LyXText::LyXText(BufferView * bv, int pw, Buffer * p)
@@ -342,9 +340,9 @@ void LyXText::ToggleFootnote()
 	if (par->next
 	    && par->next->footnoteflag == LyXParagraph::CLOSED_FOOTNOTE) {
 		OpenFootnote();
-		current_view->owner()->getMiniBuffer()->Set(_("Opened float"));
+		owner_->owner()->getMiniBuffer()->Set(_("Opened float"));
 	} else {
-		current_view->owner()->getMiniBuffer()->Set(_("Closed float"));
+		owner_->owner()->getMiniBuffer()->Set(_("Closed float"));
 		CloseFootnote();
 	}
 }
@@ -353,16 +351,16 @@ void LyXText::ToggleFootnote()
 void LyXText::OpenStuff()
 {
      	if (cursor.pos == 0 && cursor.par->bibkey){
-		cursor.par->bibkey->Edit(0, 0);
+		cursor.par->bibkey->Edit(owner_, 0, 0);
 	}
 	else if (cursor.pos < cursor.par->Last() 
 		 && cursor.par->GetChar(cursor.pos) == LyXParagraph::META_INSET
 		 && cursor.par->GetInset(cursor.pos)->Editable()) {
-		current_view->owner()->getMiniBuffer()
+		owner_->owner()->getMiniBuffer()
 			->Set(cursor.par->GetInset(cursor.pos)->EditMessage());
 		if (cursor.par->GetInset(cursor.pos)->Editable() != 2)
 			SetCursorParUndo();
-		cursor.par->GetInset(cursor.pos)->Edit(0, 0);
+		cursor.par->GetInset(cursor.pos)->Edit(owner_, 0, 0);
 	} else {
 		ToggleFootnote();
 	}
@@ -380,7 +378,7 @@ void LyXText::CloseFootnote()
       
 		if (!par->next ||
 		    par->next->footnoteflag != LyXParagraph::OPEN_FOOTNOTE) {
-			current_view->owner()->getMiniBuffer()
+			owner_->owner()->getMiniBuffer()
 				->Set(_("Nothing to do"));
 			return;
 		}
@@ -1071,7 +1069,7 @@ void LyXText::ToggleFree(LyXFont const & font, bool toggleall)
 	// If the mask is completely neutral, tell user
 	if (font == LyXFont(LyXFont::ALL_IGNORE)) {
 		// Could only happen with user style
-		current_view->owner()->getMiniBuffer()
+		owner_->owner()->getMiniBuffer()
 			->Set(_("No font change defined. Use Character under"
 				  " the Layout menu to define font change."));
 		return;
@@ -2963,7 +2961,7 @@ void LyXText::SetCursorIntern(LyXParagraph * par,
 			current_font = cursor.par->GetFontSettings(cursor.pos);
 			real_current_font = GetFont(cursor.par, cursor.pos);
 			if (pos == 0 && par->size() == 0 
-			    && current_view->buffer()->params.getDocumentDirection() == LYX_DIR_RIGHT_TO_LEFT) {
+			    && owner_->buffer()->params.getDocumentDirection() == LYX_DIR_RIGHT_TO_LEFT) {
 				current_font.setDirection(LyXFont::RTL_DIR);
 				real_current_font.setDirection(LyXFont::RTL_DIR);
 			}

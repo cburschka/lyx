@@ -45,7 +45,7 @@ public:
 	///
 	Inset::Code LyxCode() const { return Inset::REF_CODE; }
 	///
-	void Edit(int, int);
+	void Edit(BufferView *, int, int);
 	///
 	unsigned char Editable() const {
 		return 1;

@@ -3,6 +3,29 @@
 	* src/insets/insettoc.[Ch] (LinuxDoc, DocBook): mark the methods
 	as const.
 
+2000-02-20  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/bufferlist.C: get rid of current_view from this file
+
+	* src/spellchecker.C: get rid of current_view from this file
+
+	* src/vspace.C: get rid of current_view from this file
+	(inPixels): added BufferView parameter for this func
+	(asLatexCommand): added a BufferParams for this func
+
+	* src/text.C src/text2.C: get rid of current_view from these
+	files.
+	
+	* src/lyxfont.C (getFontDirection): move this function here from
+	text.C
+	
+	* src/bufferparams.C (getDocumentDirection): move this function
+	here from text.C
+
+	* src/paragraph.C (getParDirection): move this function here from
+	text.C 
+	(getLetterDirection): ditto
+	
 2000-02-18  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* WorkArea, Painter, LyXScreen: Fixed the crash that occured on

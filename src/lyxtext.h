@@ -24,7 +24,6 @@
 
 class Buffer;
 class BufferParams;
-//class LyXScreen;
 class Row;
 class BufferView;
 

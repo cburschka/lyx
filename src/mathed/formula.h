@@ -72,37 +72,37 @@ public:
 	/// what appears in the minibuffer when opening
 	char const * EditMessage() const {return _("Math editor mode");}
 	///
-	void Edit(int x, int y);
+	void Edit(BufferView *, int x, int y);
 	///
 	bool display() const { return (disp_flag) ? true: false; }
 	///
 	void display(bool);
 	///
-	void ToggleInsetCursor();
+	void ToggleInsetCursor(BufferView *);
 	///
-	void ShowInsetCursor();
+	void ShowInsetCursor(BufferView *);
 	///
-	void HideInsetCursor();
+	void HideInsetCursor(BufferView *);
 	///
 	void GetCursorPos(int &, int &) const;
 	///
-	void ToggleInsetSelection();
+	void ToggleInsetSelection(BufferView * bv);
 	///
-	void InsetButtonPress(int x, int y, int button);
+	void InsetButtonPress(BufferView *, int x, int y, int button);
 	///
-	void InsetButtonRelease(int x, int y, int button);
+	void InsetButtonRelease(BufferView *, int x, int y, int button);
 	///
 	void InsetKeyPress(XKeyEvent * ev);
 	///
-	void InsetMotionNotify(int x, int y, int state);
+	void InsetMotionNotify(BufferView *, int x, int y, int state);
 	///
-	void InsetUnlock();
+	void InsetUnlock(BufferView *);
    
 	///  To allow transparent use of math editing functions
-	virtual bool LocalDispatch(int, char const *);
+	virtual bool LocalDispatch(BufferView *, int, char const *);
     
 	///
-	void InsertSymbol(char const *);
+	void InsertSymbol(BufferView *, char const *);
 	///
 	bool SetNumber(bool);
 	///
@@ -111,9 +111,9 @@ public:
 	string getLabel(int) const;
    
 protected:
-	void UpdateLocal();
+	void UpdateLocal(BufferView * bv);
     	MathParInset * par;
-	static MathedCursor* mathcursor;
+	static MathedCursor * mathcursor;
     
 private:
 	bool disp_flag;

@@ -4,8 +4,8 @@
  * 
  *           LyX, The Document Processor
  * 	 
- *	    Copyright (C) 1995 1996 Matthias Ettrich
- *           and the LyX Team.
+ *           Copyright 1995 Matthias Ettrich
+ *           Copyright 1995-2000 The LyX Team.
  *
  * ====================================================== */
 
@@ -17,6 +17,9 @@
 #endif
 
 #include "LString.h"
+
+class BufferParams;
+class BufferView;
 
 ///  LyXLength Class
 class LyXLength {
@@ -197,9 +200,9 @@ public:
 	///
 	string asLyXCommand() const;  // how it goes into the LyX file
 	///
-	string asLatexCommand() const;
+	string asLatexCommand(BufferParams const & params) const;
 	///
-	int inPixels() const;
+	int inPixels(BufferView * bv) const;
 private:
 	///
 	vspace_kind  kin;

@@ -41,7 +41,7 @@ public:
 		return string(_("Parent:")) + getContents();
 	}
         ///
-	void Edit(int, int);
+	void Edit(BufferView *, int, int);
         ///
 	unsigned char Editable() const {
 		return 1;

@@ -155,7 +155,7 @@ extern "C" void C_InsetError_CloseErrorCB(FL_OBJECT * ob, long data)
 }
 
 
-void InsetError::Edit(int, int)
+void InsetError::Edit(BufferView *, int, int)
 {
 	static int ow = 400, oh = 240;
 

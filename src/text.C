@@ -37,7 +37,6 @@ using std::min;
 
 static const int LYX_PAPER_MARGIN = 20;
 
-extern BufferView * current_view;
 extern LyXRC * lyxrc;
 
 // ale070405
@@ -127,50 +126,7 @@ LyXParagraph::size_type LyXText::RowLast(Row const * row) const
 }
 
 
-LyXDirection BufferParams::getDocumentDirection() const
-{
-	return (lyxrc->rtl_support && language == "hebrew")
-		? LYX_DIR_RIGHT_TO_LEFT : LYX_DIR_LEFT_TO_RIGHT;
-}
 
-LyXDirection LyXParagraph::getParDirection() const
-{
-	if (!lyxrc->rtl_support || table)
-		return LYX_DIR_LEFT_TO_RIGHT;
-
-	if (size() > 0)
-		return (getFont(0).direction() ==  LyXFont::RTL_DIR)
-			? LYX_DIR_RIGHT_TO_LEFT : LYX_DIR_LEFT_TO_RIGHT;
-	else
-		return current_view->buffer()->params.getDocumentDirection();
-}
-
-LyXDirection LyXFont::getFontDirection() const
-{
-	if (lyxrc->rtl_support 
-	    && direction() == LyXFont::RTL_DIR
-	    && latex() != LyXFont::ON)
-		return LYX_DIR_RIGHT_TO_LEFT;
-	else
-		return LYX_DIR_LEFT_TO_RIGHT;
-}
-
-LyXDirection
-LyXParagraph::getLetterDirection(LyXParagraph::size_type pos) const
-{
-	if (!lyxrc->rtl_support)
-		return LYX_DIR_LEFT_TO_RIGHT;
-
-	LyXDirection direction = getFont(pos).getFontDirection();
-	if (IsLineSeparator(pos) && 0 < pos && pos < Last() - 1
-	    && !IsLineSeparator(pos + 1)
-	    && !(table && IsNewline(pos + 1))
-	    && (getFont(pos - 1).getFontDirection() != direction
-		|| getFont(pos + 1).getFontDirection() != direction))
-		return getParDirection();
-	else
-		return direction;
-}
 
 
 void LyXText::ComputeBidiTables(Row * row) const
@@ -633,7 +589,7 @@ int LyXText::LeftMargin(Row const * row) const
 			x += paperwidth *
 				atoi(row->par->pextra_widthp.c_str()) / 100;
 		} else if (!row->par->pextra_width.empty()) {
-			int xx = VSpace(row->par->pextra_width).inPixels();
+			int xx = VSpace(row->par->pextra_width).inPixels(owner_);
 			
 			if (xx > paperwidth)
 				xx = paperwidth * 80 / 100;
@@ -1259,13 +1215,13 @@ void LyXText::SetHeightOfRow(Row * row_ptr) const
 	 if (layout.isParagraph()
 	     && firstpar->GetDepth() == 0
 	     && firstpar->Previous())
-	    maxasc += parameters->getDefSkip().inPixels();
+	    maxasc += parameters->getDefSkip().inPixels(owner_);
 	 else if (firstpar->Previous()
 		  && textclasslist.Style(parameters->textclass,
 			   firstpar->Previous()->GetLayout()).isParagraph()
 		  && firstpar->Previous()->GetDepth() == 0)
 	   // is it right to use defskip here too? (AS)
-	   maxasc += parameters->getDefSkip().inPixels();
+	   maxasc += parameters->getDefSkip().inPixels(owner_);
       }
       
       /* the paper margins */ 
@@ -1274,7 +1230,7 @@ void LyXText::SetHeightOfRow(Row * row_ptr) const
       
       /* add the vertical spaces, that the user added */
       if (firstpar->added_space_top.kind() != VSpace::NONE)
-      	 maxasc += int(firstpar->added_space_top.inPixels());
+      	 maxasc += int(firstpar->added_space_top.inPixels(owner_));
       
       /* do not forget the DTP-lines! 
        * there height depends on the font of the nearest character */
@@ -1371,7 +1327,7 @@ void LyXText::SetHeightOfRow(Row * row_ptr) const
 	
 	  /* add the vertical spaces, that the user added */
 	  if (firstpar->added_space_bottom.kind() != VSpace::NONE)
-	    maxdesc += int(firstpar->added_space_bottom.inPixels());
+	    maxdesc += int(firstpar->added_space_bottom.inPixels(owner_));
 	  
 	  /* do not forget the DTP-lines! 
 	   * there height depends on the font of the nearest character */
@@ -1891,8 +1847,8 @@ void LyXText::TableFeatures(int feature) const
           return;
       }
       case LyXTable::DELETE_ROW:
-          if (current_view->the_locking_inset)
-              current_view->unlockInset(current_view->the_locking_inset);
+          if (owner_->the_locking_inset)
+              owner_->unlockInset(owner_->the_locking_inset);
           RemoveTableRow(&cursor);
           RedoParagraph();
           return;
@@ -1901,8 +1857,8 @@ void LyXText::TableFeatures(int feature) const
 	      LyXParagraph::size_type pos = 0;
           int cell_org = actCell;
           int cell = 0;
-          if (current_view->the_locking_inset)
-              current_view->unlockInset(current_view->the_locking_inset);
+          if (owner_->the_locking_inset)
+              owner_->unlockInset(owner_->the_locking_inset);
           do {
               if (!pos || (cursor.par->IsNewline(pos-1))){
                   if (cursor.par->table->DeleteCellIfColumnIsDeleted(cell, cell_org)){
@@ -2487,7 +2443,7 @@ void  LyXText::InsertChar(char c)
 			 * blank at the end of a row we have to force
 			 * a rebreak.*/ 
 	   
-			current_view->owner()->getMiniBuffer()
+			owner_->owner()->getMiniBuffer()
 				->Set(_("You cannot type two spaces this way. "
 					" Please read the Tutorial."));
 #if 1
@@ -2514,9 +2470,9 @@ void  LyXText::InsertChar(char c)
 			     && cursor.par->Previous()->footnoteflag
 			     == LyXParagraph::OPEN_FOOTNOTE))) {
 	   		if (cursor.pos == 0 )
-				current_view->owner()->getMiniBuffer()->Set(_("You cannot insert a space at the beginning of a paragraph.  Please read the Tutorial."));
+				owner_->owner()->getMiniBuffer()->Set(_("You cannot insert a space at the beginning of a paragraph.  Please read the Tutorial."));
 			else
-				current_view->owner()->getMiniBuffer()->Set(_("You cannot type two spaces this way.  Please read the Tutorial."));
+				owner_->owner()->getMiniBuffer()->Set(_("You cannot type two spaces this way.  Please read the Tutorial."));
 			charInserted();
 			return;
 		}
@@ -3742,7 +3698,7 @@ void LyXText::GetVisibleRow(int offset,
 		}
 		
 		/* think about user added space */ 
-		y_top += int(row_ptr->par->added_space_top.inPixels());
+		y_top += int(row_ptr->par->added_space_top.inPixels(owner_));
 		
 		/* think about the parskip */ 
 		/* some parskips VERY EASY IMPLEMENTATION */ 
@@ -3750,13 +3706,13 @@ void LyXText::GetVisibleRow(int offset,
 			if (layout.latextype == LATEX_PARAGRAPH
 			    && firstpar->GetDepth() == 0
 			    && firstpar->Previous())
-				y_top += parameters->getDefSkip().inPixels();
+				y_top += parameters->getDefSkip().inPixels(owner_);
 			else if (firstpar->Previous()
 				 && textclasslist.Style(parameters->textclass,
 							firstpar->Previous()->GetLayout()).latextype == LATEX_PARAGRAPH
 				 && firstpar->Previous()->GetDepth() == 0)
 				// is it right to use defskip here, too? (AS) 
-				y_top += parameters->getDefSkip().inPixels();
+				y_top += parameters->getDefSkip().inPixels(owner_);
 		}
 		
 		if (row_ptr->par->line_top) {      /* draw a top line  */
@@ -3894,7 +3850,7 @@ void LyXText::GetVisibleRow(int offset,
 		}
 		
 		/* think about user added space */ 
-		y_bottom -= int(firstpar->added_space_bottom.inPixels());
+		y_bottom -= int(firstpar->added_space_bottom.inPixels(owner_));
 		
 		if (firstpar->line_bottom) {
 			/* draw a bottom line */

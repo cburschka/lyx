@@ -18,11 +18,7 @@
 
 #include <config.h>
 
-#include <fstream>
 #include <algorithm>
-
-#include <sys/types.h>
-#include <utime.h>
 
 #include "bufferlist.h"
 #include "lyx_main.h"
@@ -40,12 +36,8 @@
 #include "vc-backend.h"
 #include "TextCache.h"
 
-extern BufferView * current_view;
 extern int RunLinuxDoc(int, string const &);
 
-using std::ifstream;
-using std::ofstream;
-using std::ios;
 using std::find;
 
 //
@@ -133,105 +125,6 @@ bool BufferList::QwriteAll()
 }
 
 
-// Should probably be moved to somewhere else: BufferView? LyXView?
-bool BufferList::write(Buffer * buf, bool makeBackup)
-{
-	if (buf->getUser())
-		buf->getUser()
-			->owner()
-			->getMiniBuffer()
-			->Set(_("Saving document"),
-			      MakeDisplayPath(buf->fileName()), "...");
-
-	// We don't need autosaves in the immediate future. (Asger)
-	buf->resetAutosaveTimers();
-
-	// make a backup
-	if (makeBackup) {
-		string s = buf->fileName() + '~';
-		// Rename is the wrong way of making a backup,
-		// this is the correct way.
-		/* truss cp fil fil2:
-		   lstat("LyXVC3.lyx", 0xEFFFF898)                 Err#2 ENOENT
-		   stat("LyXVC.lyx", 0xEFFFF688)                   = 0
-		   open("LyXVC.lyx", O_RDONLY)                     = 3
-		   open("LyXVC3.lyx", O_WRONLY|O_CREAT|O_TRUNC, 0600) = 4
-		   fstat(4, 0xEFFFF508)                            = 0
-		   fstat(3, 0xEFFFF508)                            = 0
-		   read(3, " # T h i s   f i l e   w".., 8192)     = 5579
-		   write(4, " # T h i s   f i l e   w".., 5579)    = 5579
-		   read(3, 0xEFFFD4A0, 8192)                       = 0
-		   close(4)                                        = 0
-		   close(3)                                        = 0
-		   chmod("LyXVC3.lyx", 0100644)                    = 0
-		   lseek(0, 0, SEEK_CUR)                           = 46440
-		   _exit(0)
-		*/
-
-		// Should proabaly have some more error checking here.
-		// Should be cleaned up in 0.13, at least a bit.
-		// Doing it this way, also makes the inodes stay the same.
-		// This is still not a very good solution, in particular we
-		// might loose the owner of the backup.
-		FileInfo finfo(buf->fileName());
-		if (finfo.exist()) {
-			mode_t fmode = finfo.getMode();
-			struct utimbuf * times = new struct utimbuf;
-
-			times->actime = finfo.getAccessTime();
-			times->modtime = finfo.getModificationTime();
-			ifstream ifs(buf->fileName().c_str());
-			ofstream ofs(s.c_str(), ios::out|ios::trunc);
-			if (ifs && ofs) {
-				ofs << ifs.rdbuf();
-				ifs.close();
-				ofs.close();
-				::chmod(s.c_str(), fmode);
-				
-				if (::utime(s.c_str(), times)) {
-					lyxerr << "utime error." << endl;
-				}
-			} else {
-				lyxerr << "LyX was not able to make "
-					"backupcopy. Beware." << endl;
-			}
-			delete times;
-		}
-	}
-	
-	if (buf->writeFile(buf->fileName(), false)) {
-		buf->markLyxClean();
-
-		current_view->owner()->getMiniBuffer()->
-			Set(_("Document saved as"),
-			MakeDisplayPath(buf->fileName()));
-
-		// now delete the autosavefile
-		string a = OnlyPath(buf->fileName());
-		a += '#';
-		a += OnlyFilename(buf->fileName());
-		a += '#';
-		FileInfo fileinfo(a);
-		if (fileinfo.exist()) {
-			if (::remove(a.c_str()) != 0) {
-				WriteFSAlert(_("Could not delete "
-					       "auto-save file!"), a);
-			}
-		}
-	} else {
-		// Saving failed, so backup is not backup
-		if (makeBackup) {
-			string s = buf->fileName() + '~';
-			::rename(s.c_str(), buf->fileName().c_str());
-		}
-		current_view->owner()->getMiniBuffer()->Set(_("Save failed!"));
-		return false;
-	}
-
-	return true;
-}
-
-
 void BufferList::closeAll()
 {
 	state_ = BufferList::CLOSING;
@@ -265,12 +158,21 @@ bool BufferList::close(Buffer * buf)
 				       MakeDisplayPath(buf->fileName(), 50),
 				       _("Save document?"))){
 		case 1: // Yes
+#if 0
 			if (write(buf, lyxrc->make_backup)) {
 				lastfiles->newFile(buf->fileName());
 			} else {
 				AllowInput();
 				return false;
 			}
+#else
+			if (buf->save(lyxrc->make_backup)) {
+				lastfiles->newFile(buf->fileName());
+			} else {
+				AllowInput();
+				return false;
+			}
+#endif
                         break;
 		case 3: // Cancel
                         AllowInput();
@@ -588,9 +490,11 @@ Buffer * BufferList::loadLyXFile(string const & filename, bool tolastfiles)
 	bool ro = false;
 	switch (IsFileWriteable(s)) {
 	case 0:
+#if 0
 		current_view->owner()->getMiniBuffer()->
 			Set(_("File `") + MakeDisplayPath(s, 50) +
 			    _("' is read-only."));
+#endif
 		ro = true;
 		// Fall through
 	case 1:

@@ -22,6 +22,8 @@
 
 class Painter;
 class Buffer;
+class BufferView;
+
 struct LaTeXFeatures;
 
 /// Insets
@@ -93,7 +95,7 @@ public:
 	/// what appears in the minibuffer when opening
 	virtual char const * EditMessage() const {return _("Opened inset");}
 	///
-	virtual void Edit(int, int);
+	virtual void Edit(BufferView *, int, int);
 	///
 	virtual unsigned char Editable() const;
 	///
@@ -178,23 +180,24 @@ public:
 	virtual unsigned char Editable() const;
    
 	/// may call ToggleLockedInsetCursor
-	virtual void ToggleInsetCursor();
+	virtual void ToggleInsetCursor(BufferView *);
 	///
 	virtual void GetCursorPos(int &, int &) const {}
 	///
-	virtual void InsetButtonPress(int x, int y, int button);
+	virtual void InsetButtonPress(BufferView *, int x, int y, int button);
 	///
-	virtual void InsetButtonRelease(int x, int y, int button);
+	virtual void InsetButtonRelease(BufferView *,
+					int x, int y, int button);
 	
 	///
 	virtual void InsetKeyPress(XKeyEvent * ev);
 	///
-	virtual void InsetMotionNotify(int x, int y, int state);
+	virtual void InsetMotionNotify(BufferView *, int x, int y, int state);
 	///
-	virtual void InsetUnlock();
+	virtual void InsetUnlock(BufferView *);
    
 	///  An updatable inset could handle lyx editing commands
-	virtual bool LocalDispatch(int, char const *) { return false; };
+	virtual bool LocalDispatch(BufferView *, int, char const *) { return false; };
 	//
 	bool isCursorVisible() const { return cursor_visible; }
 protected:

@@ -51,7 +51,7 @@ public:
 	///
 	string getText();
 	///
-	char const * c_str();
+	char const * c_str() const;
 	///
 	Bullet & operator = (Bullet const &);
 	///
@@ -244,7 +244,7 @@ inline Bullet & Bullet::operator=(Bullet const & b)
 }
 
 
-inline char const * Bullet::c_str()
+inline char const * Bullet::c_str() const
 {
 	return this->getText().c_str();
 }

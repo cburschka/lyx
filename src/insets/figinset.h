@@ -51,7 +51,7 @@ public:
 	/// what appears in the minibuffer when opening
 	char const * EditMessage() const { return _("Opened figure"); }
 	///
-	void Edit(int, int);
+	void Edit(BufferView *, int, int);
 	///
 	unsigned char Editable() const;
 	///

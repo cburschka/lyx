@@ -8,7 +8,7 @@ static
 char const * spacing_string[] = {"single", "onehalf", "double", "other"};
 
 
-void Spacing::writeFile(ostream & os)
+void Spacing::writeFile(ostream & os) const
 {
 	if (getSpace() == Spacing::Other) {
 		os.setf(ios::showpoint|ios::fixed);

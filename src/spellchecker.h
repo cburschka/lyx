@@ -4,6 +4,7 @@
 
 /* These functions are defined in lyx_cb.C */
 
+class BufferView;
 
 /** MarkLastWord should only be used immidiately after NextWord().
  If you give control back to the user, you _have_ to call EndOfSpellCheck()
@@ -15,7 +16,7 @@
 
 /** This function has to be implemented by the spell checker.
     It will show the spellcheker form*/ 
-void ShowSpellChecker();
+void ShowSpellChecker(BufferView *);
 ///
 void SpellCheckerOptions();
 

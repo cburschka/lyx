@@ -37,7 +37,7 @@ public:
 	///
 	Inset * Clone() const { return new InsetIndex(contents);}
 	///
-	void Edit(int, int);
+	void Edit(BufferView *, int, int);
 	///
 	unsigned char Editable() const
 	{
@@ -59,7 +59,7 @@ public:
 	/// Updates needed features for this inset.
 	void Validate(LaTeXFeatures & features) const;
 	///
-	void Edit(int, int) {}
+	void Edit(BufferView *, int, int) {}
 	///
 	unsigned char Editable() const{
 		return 1;

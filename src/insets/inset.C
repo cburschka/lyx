@@ -49,7 +49,7 @@ bool Inset::AutoDelete() const
 }
 
 
-void Inset::Edit(int, int)
+void Inset::Edit(BufferView *, int, int)
 {
 }
 
@@ -62,14 +62,14 @@ LyXFont Inset::ConvertFont(LyXFont font)
 
  /* some stuff for inset locking */
 
-void UpdatableInset::InsetButtonPress(int x, int y, int button)
+void UpdatableInset::InsetButtonPress(BufferView *, int x, int y, int button)
 {
 	lyxerr.debug() << "Inset Button Press x=" << x
 		       << ", y=" << y << ", button=" << button << endl;
 }
 
 
-void UpdatableInset::InsetButtonRelease(int x, int y, int button)
+void UpdatableInset::InsetButtonRelease(BufferView *, int x, int y, int button)
 {
 	lyxerr.debug() << "Inset Button Release x=" << x
 		       << ", y=" << y << ", button=" << button << endl;
@@ -82,14 +82,14 @@ void UpdatableInset::InsetKeyPress(XKeyEvent *)
 }
 
 
-void UpdatableInset::InsetMotionNotify(int x, int y, int state)
+void UpdatableInset::InsetMotionNotify(BufferView *, int x, int y, int state)
 {
 	lyxerr.debug() << "Inset Motion Notify x=" << x
 		       << ", y=" << y << ", state=" << state << endl;
 }
 
 
-void UpdatableInset::InsetUnlock()
+void UpdatableInset::InsetUnlock(BufferView *)
 {
 	lyxerr.debug() << "Inset Unlock" << endl;
 }
@@ -102,6 +102,6 @@ unsigned char UpdatableInset::Editable() const
 }
 
 
-void UpdatableInset::ToggleInsetCursor()
+void UpdatableInset::ToggleInsetCursor(BufferView *)
 {
 }

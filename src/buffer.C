@@ -34,6 +34,8 @@ using std::setw;
 
 #include <cstdlib>
 #include <unistd.h>
+#include <sys/types.h>
+#include <utime.h>
 
 #ifdef __GNUG__
 #pragma implementation "buffer.h"
@@ -174,7 +176,7 @@ bool Buffer::saveParamsAsDefaults()
 
 /// Update window titles of all users
 // Should work on a list
-void Buffer::updateTitles()
+void Buffer::updateTitles() const
 {
 	if (users) users->owner()->updateWindowTitle();
 }
@@ -182,7 +184,7 @@ void Buffer::updateTitles()
 
 /// Reset autosave timer of all users
 // Should work on a list
-void Buffer::resetAutosaveTimers()
+void Buffer::resetAutosaveTimers() const
 {
 	if (users) users->owner()->resetAutosaveTimer();
 }
@@ -966,8 +968,95 @@ bool Buffer::readFile(LyXLex & lex, LyXParagraph * par)
 }
 	    	    
 
+
+// Should probably be moved to somewhere else: BufferView? LyXView?
+bool Buffer::save(bool makeBackup) const
+{
+	// We don't need autosaves in the immediate future. (Asger)
+	resetAutosaveTimers();
+
+	// make a backup
+	if (makeBackup) {
+		string s = fileName() + '~';
+		// Rename is the wrong way of making a backup,
+		// this is the correct way.
+		/* truss cp fil fil2:
+		   lstat("LyXVC3.lyx", 0xEFFFF898)                 Err#2 ENOENT
+		   stat("LyXVC.lyx", 0xEFFFF688)                   = 0
+		   open("LyXVC.lyx", O_RDONLY)                     = 3
+		   open("LyXVC3.lyx", O_WRONLY|O_CREAT|O_TRUNC, 0600) = 4
+		   fstat(4, 0xEFFFF508)                            = 0
+		   fstat(3, 0xEFFFF508)                            = 0
+		   read(3, " # T h i s   f i l e   w".., 8192)     = 5579
+		   write(4, " # T h i s   f i l e   w".., 5579)    = 5579
+		   read(3, 0xEFFFD4A0, 8192)                       = 0
+		   close(4)                                        = 0
+		   close(3)                                        = 0
+		   chmod("LyXVC3.lyx", 0100644)                    = 0
+		   lseek(0, 0, SEEK_CUR)                           = 46440
+		   _exit(0)
+		*/
+
+		// Should proabaly have some more error checking here.
+		// Should be cleaned up in 0.13, at least a bit.
+		// Doing it this way, also makes the inodes stay the same.
+		// This is still not a very good solution, in particular we
+		// might loose the owner of the backup.
+		FileInfo finfo(fileName());
+		if (finfo.exist()) {
+			mode_t fmode = finfo.getMode();
+			struct utimbuf * times = new struct utimbuf;
+
+			times->actime = finfo.getAccessTime();
+			times->modtime = finfo.getModificationTime();
+			ifstream ifs(fileName().c_str());
+			ofstream ofs(s.c_str(), ios::out|ios::trunc);
+			if (ifs && ofs) {
+				ofs << ifs.rdbuf();
+				ifs.close();
+				ofs.close();
+				::chmod(s.c_str(), fmode);
+				
+				if (::utime(s.c_str(), times)) {
+					lyxerr << "utime error." << endl;
+				}
+			} else {
+				lyxerr << "LyX was not able to make "
+					"backupcopy. Beware." << endl;
+			}
+			delete times;
+		}
+	}
+	
+	if (writeFile(fileName(), false)) {
+		markLyxClean();
+
+		// now delete the autosavefile
+		string a = OnlyPath(fileName());
+		a += '#';
+		a += OnlyFilename(fileName());
+		a += '#';
+		FileInfo fileinfo(a);
+		if (fileinfo.exist()) {
+			if (::remove(a.c_str()) != 0) {
+				WriteFSAlert(_("Could not delete "
+					       "auto-save file!"), a);
+			}
+		}
+	} else {
+		// Saving failed, so backup is not backup
+		if (makeBackup) {
+			string s = fileName() + '~';
+			::rename(s.c_str(), fileName().c_str());
+		}
+		return false;
+	}
+	return true;
+}
+
+
 // Returns false if unsuccesful
-bool Buffer::writeFile(string const & fname, bool flag)
+bool Buffer::writeFile(string const & fname, bool flag) const
 {
 	// if flag is false writeFile will not create any GUI
 	// warnings, only cerr.
@@ -1365,9 +1454,6 @@ void Buffer::makeLaTeXFile(string const & fname,
 			   bool nice, bool only_body)
 {
 	lyxerr[Debug::LATEX] << "makeLaTeXFile..." << endl;
-	
-	// How the **** can this be needed?
-	//params.textclass = current_view->buffer()->params.textclass;
 	
 	niceFile = nice; // this will be used by Insetincludes.
 

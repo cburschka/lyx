@@ -52,7 +52,7 @@ public:
 	///
 	void Validate(LaTeXFeatures &) const;
 	///
-	void Edit(int, int);
+	void Edit(BufferView *, int, int);
 	///
 	unsigned char Editable() const {
 		return 1;
@@ -80,6 +80,14 @@ public:
 	///
 	static void CloseUrlCB(FL_OBJECT *, long data);
 private:
+	///
+	struct Holder {
+		InsetUrl * inset;
+		BufferView * view;
+	};
+	///
+	Holder holder;
+	
 	///
         Url_Flags flag;
 	///

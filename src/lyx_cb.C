@@ -279,7 +279,7 @@ void SetUpdateTimer(float time)
 void MenuWrite(Buffer * buffer)
 {
 	XFlush(fl_display);
-	if (!bufferlist.write(buffer, lyxrc->make_backup)) {
+	if (!buffer->save(lyxrc->make_backup)) {
 		string fname = buffer->fileName();
 		string s = MakeAbsPath(fname);
 		if (AskQuestion(_("Save failed. Rename and try again?"),
@@ -3142,7 +3142,7 @@ extern "C" void FigureApplyCB(FL_OBJECT *, long)
 		InsetFig * new_inset = new InsetFig(100, 20, buffer);
 		current_view->insertInset(new_inset);
 		current_view->owner()->getMiniBuffer()->Set(_("Figure inserted"));
-		new_inset->Edit(0, 0);
+		new_inset->Edit(current_view, 0, 0);
 		return;
 	}
 	
@@ -3191,7 +3191,7 @@ extern "C" void FigureApplyCB(FL_OBJECT *, long)
       
 	Inset * new_inset = new InsetFig(100, 100, buffer);
 	current_view->insertInset(new_inset);
-	new_inset->Edit(0, 0);
+	new_inset->Edit(current_view, 0, 0);
 	current_view->update(0);
 	current_view->owner()->getMiniBuffer()->Set(_("Figure inserted"));
 	current_view->text->UnFreezeUndo();
