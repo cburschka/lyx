@@ -67,13 +67,13 @@ Menuset
 	Item "Undo|U" "undo"
 	Item "Redo|d" "redo"
 	Separator
-	Item "Cut|C" "cut"
-	Item "Copy|o" "copy"
-	Item "Paste|a" "paste"
+	Item "Cut" "cut"
+	Item "Copy" "copy"
+	Item "Paste" "paste"
 	Item "Find & Replace...|F" "find-replace"
 	Separator
 	Item "Text Style...|S" "layout-character"
-	Item "Paragraph Settings...|a" "layout-paragraph"
+	Item "Paragraph Settings...|P" "layout-paragraph"
 	Separator
 # Mathed b0rkage means these don't work properly
 	OptSubmenu "Table|T" "edit_tabular"
@@ -86,11 +86,12 @@ Menuset
 # only appear when relevant (getStatus). Only stuff that needs
 # a right-click to bring up the dialog should appear here (it is not
 # obvious what the context is for the others)
-	OptItem "Table Settings..." "dialog-show-next-inset tabular"
-	OptItem "TeX Code Settings..." "dialog-show-next-inset ert"
-	OptItem "Float Settings..." "dialog-show-next-inset float"
-	OptItem "Minipage Settings..." "dialog-show-next-inset minipage"
-	OptItem "Text Wrap Settings..." "dialog-show-next-inset wrap"
+	OptItem "Table Settings...|a" "inset-settings tabular"
+	OptItem "TeX Code Settings...|C" "inset-settings ert"
+# 'a' shortcut to match Insert entry, shouldn't clash with Table Settings
+	OptItem "Float Settings...|a" "inset-settings float"
+	OptItem "Minipage Settings...|M" "inset-settings minipage"
+	OptItem "Text Wrap Settings...|W" "inset-settings wrap"
     End
 
 # not much we can do to help here
@@ -182,7 +183,8 @@ Menuset
 #
 
     Menu "view"
-	Item "Open Float|O" "inset-toggle"
+# FIXME: this must become Open Footnote, Close Margin Note etc. as appropriate
+#	Item "Open Float|O" "inset-toggle"
 # A common feature request JMarc wants to see
 #	Item "Open All Footnotes|F" "open-footnotes"
 #	Item "Close All Footnotes|C" "close-footnotes"
@@ -207,35 +209,30 @@ Menuset
 # Try and group things a little better, and percolate the most
 # commonly used to good positions (exception being mathed, but
 # most people using mathed learn key shortcuts quite quickly anyway)
-	Item "Citation Reference...|C" "dialog-show-new-inset citation"
-	Item "Cross Reference...|R" "dialog-show-new-inset ref"
-	Item "Label...|L" "label-insert"
-	Item "Index Entry|I" "index-insert"
-	Separator
 	Submenu "Math|h" "insert_math"
 	Submenu "Special Character|S" "insert_special"
 	Submenu "Float|a" "insert_float"
 	Submenu "List / TOC|O" "insert_toc"
 # YUCK
 	Submenu "File|e" "insert_file"
-	Submenu "Note|N" "insert_note"
 	Separator
+	Item "Citation Reference...|C" "dialog-show-new-inset citation"
+	Item "Cross Reference...|R" "dialog-show-new-inset ref"
+	Item "Label...|L" "label-insert"
+	Item "Index Entry|I" "index-insert"
 # I'm going to kill this dumb dialog, but for now ...
+	Separator
 	Item "Table...|T" "tabular-insert"
-	Item "Minipage|p" "minipage-insert"
 	Item "Graphics...|G" "dialog-show-new-inset graphics"
 	Item "URL...|U" "url-insert"
+	Item "Footnote|F" "footnote-insert"
+	Item "Marginal Note|M" "marginalnote-insert"
+	Item "Note|N" "note-insert"
+	Item "Minipage|p" "minipage-insert"
 	Item "Short Title" "optional-insert"
 	Item "TeX|X" "ert-insert"
 	Item "External Material...|x" "dialog-show-new-inset external"
 	Item "Child document...|d" "dialog-show-new-inset include"
-    End
-
-# Not great, but the main Insert menu is seriously unwieldly
-    Menu "insert_note"
-	Item "Footnote|F" "footnote-insert"
-	Item "Marginal Note|M" "marginalnote-insert"
-	Item "Note|N" "note-insert"
     End
 
     Menu "insert_special"

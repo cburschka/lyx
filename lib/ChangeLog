@@ -1,3 +1,10 @@
+2003-04-26  John Levon  <levon@movementarian.org>
+
+	* ui/stdmenus.ui: remove shortcuts for cut,copy,paste
+	to allow better shortcuts for the other options. Use
+	new inset-settings. Disable "inset-toggle" for now.
+	Re-organise Insert menu, and back out the Note submenu.
+
 2003-04-15  John Levon  <levon@movementarian.org>
 
 	* ui/stdtoolbars.ui:
