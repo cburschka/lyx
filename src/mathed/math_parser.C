@@ -88,6 +88,7 @@ using std::endl;
 using std::stack;
 using std::fill;
 using std::vector;
+using std::atoi;
 
 //#define FILEDEBUG
 

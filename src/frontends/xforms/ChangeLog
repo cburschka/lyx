@@ -1,3 +1,8 @@
+2002-05-28  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* FormDocument.C (input): set preamble too when saving default
+	template. 
+
 2002-05-15  John Levon  <moz@compsoc.man.ac.uk>
 
 	* FormCharacter.C: avoid mis-treating Combox as FL_OBJECT
