@@ -1918,8 +1918,10 @@ string const Buffer::asciiParagraph(Paragraph const * par,
 		{
 			Inset const * inset = par->getInset(i);
 			if (inset) {
-				if (linelen > 0)
+				if (linelen > 0) {
 					buffer << word.str();
+					word.str("");
+				}
 				if (inset->ascii(this, buffer, linelen)) {
 					// to be sure it breaks paragraph
 					currlinelen += linelen;
