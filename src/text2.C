@@ -1943,6 +1943,118 @@ void LyXText::setCurrentFont(BufferView * bview) const
 }
 
 
+// returns the column near the specified x-coordinate of the row
+// x is set to the real beginning of this column
+pos_type
+LyXText::getColumnNearX(BufferView * bview, Row * row, int & x,
+			bool & boundary) const
+{
+	float tmpx = 0.0;
+	float fill_separator;
+	float fill_hfill;
+	float fill_label_hfill;
+
+	prepareToPrint(bview, row, tmpx, fill_separator,
+		       fill_hfill, fill_label_hfill);
+
+	pos_type vc = row->pos();
+	pos_type last = row->lastPrintablePos();
+	pos_type c = 0;
+
+	LyXLayout_ptr const & layout = row->par()->layout();
+
+	bool left_side = false;
+
+	pos_type body_pos = row->par()->beginningOfBody();
+	float last_tmpx = tmpx;
+
+	if (body_pos > 0 &&
+	    (body_pos - 1 > last ||
+	     !row->par()->isLineSeparator(body_pos - 1)))
+		body_pos = 0;
+
+	// check for empty row
+	if (!row->par()->size()) {
+		x = int(tmpx);
+		return 0;
+	}
+
+	while (vc <= last && tmpx <= x) {
+		c = vis2log(vc);
+		last_tmpx = tmpx;
+		if (body_pos > 0 && c == body_pos-1) {
+			tmpx += fill_label_hfill +
+				font_metrics::width(layout->labelsep,
+					       getLabelFont(bview->buffer(), row->par()));
+			if (row->par()->isLineSeparator(body_pos - 1))
+				tmpx -= singleWidth(bview, row->par(), body_pos-1);
+		}
+
+		if (row->hfillExpansion(c)) {
+			tmpx += singleWidth(bview, row->par(), c);
+			if (c >= body_pos)
+				tmpx += fill_hfill;
+			else
+				tmpx += fill_label_hfill;
+		} else if (row->par()->isSeparator(c)) {
+			tmpx += singleWidth(bview, row->par(), c);
+			if (c >= body_pos)
+				tmpx+= fill_separator;
+		} else {
+			tmpx += singleWidth(bview, row->par(), c);
+		}
+		++vc;
+	}
+
+	if ((tmpx + last_tmpx) / 2 > x) {
+		tmpx = last_tmpx;
+		left_side = true;
+	}
+
+	if (vc > last + 1)  // This shouldn't happen.
+		vc = last + 1;
+
+	boundary = false;
+	bool const lastrow = lyxrc.rtl_support // This is not needed, but gives
+					 // some speedup if rtl_support=false
+		&& (!row->next() || row->next()->par() != row->par());
+	bool const rtl = (lastrow)
+		? row->par()->isRightToLeftPar(bview->buffer()->params)
+		: false; // If lastrow is false, we don't need to compute
+			 // the value of rtl.
+
+	if (lastrow &&
+		 ((rtl &&  left_side && vc == row->pos() && x < tmpx - 5) ||
+		   (!rtl && !left_side && vc == last + 1   && x > tmpx + 5)))
+		c = last + 1;
+	else if (vc == row->pos()) {
+		c = vis2log(vc);
+		if (bidi_level(c) % 2 == 1)
+			++c;
+	} else {
+		c = vis2log(vc - 1);
+		bool const rtl = (bidi_level(c) % 2 == 1);
+		if (left_side == rtl) {
+			++c;
+			boundary = isBoundary(bview->buffer(), row->par(), c);
+		}
+	}
+
+	if (row->pos() <= last && c > last
+	    && row->par()->isNewline(last)) {
+		if (bidi_level(last) % 2 == 0)
+			tmpx -= singleWidth(bview, row->par(), last);
+		else
+			tmpx += singleWidth(bview, row->par(), last);
+		c = last;
+	}
+
+	c -= row->pos();
+	x = int(tmpx);
+	return c;
+}
+
+
 void LyXText::setCursorFromCoordinates(BufferView * bview, int x, int y) const
 {
 	LyXCursor old_cursor = cursor;
