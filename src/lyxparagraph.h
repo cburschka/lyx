@@ -184,9 +184,15 @@ public:
 	    proof environment */
 	int GetEndLabel() const;
 
+	Inset * InInset() { return inset_owner; }
+	void SetInsetOwner(Inset *i) { inset_owner = i; }
+
 private:
 	///
 	TextContainer text;
+	///
+	Inset * inset_owner;
+
 public:
 	///
 	size_type size() const { return text.size(); }
@@ -401,6 +407,8 @@ public:
 	///
 	void InsertInset(size_type pos, Inset * inset);
 	///
+	bool InsertInsetAllowed(Inset * inset);
+	///
 	Inset * GetInset(size_type pos);
 	///
 	Inset const * GetInset(size_type pos) const;
@@ -415,7 +423,7 @@ public:
 	///
 	void CutIntoMinibuffer(size_type pos);
 	///
-	void InsertFromMinibuffer(size_type pos);
+	bool InsertFromMinibuffer(size_type pos);
 
 	///
 	bool IsHfill(size_type pos) const;

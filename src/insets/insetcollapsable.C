@@ -36,7 +36,7 @@ InsetCollapsable::InsetCollapsable(Buffer * bf)
 Inset * InsetCollapsable::Clone() const
 {
     InsetCollapsable * result = new InsetCollapsable(buffer);
-    result->init(buffer, par);
+    result->init(buffer, this);
 
     result->collapsed = collapsed;
     return result;

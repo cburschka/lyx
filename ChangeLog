@@ -1,3 +1,59 @@
+2000-04-10  Juergen Vigna  <jug@sad.it>
+
+	* src/insets/insetfoot.C (GetDrawFont): implemented this as the
+	footnote font should be decreased in size twice when displaying.
+
+	* src/insets/insettext.C (GetDrawFont): inserted this function as
+	the drawing-font may differ from the real paragraph font.
+
+	* src/lyxfunc.C (processKeyEvent): fixed Esc-handling when unlocking
+	insets (inset in inset!).
+
+	* src/insets/insetfoot.C (InsertInsetAllowed): implemented the below
+	function here because we don't want footnotes inside footnotes.
+
+	* src/insets/insettext.C (InsetText): forgot to set autoBreakRows for
+	Cloned insets.
+	(init): now set the inset_owner in paragraph.C
+	(LocalDispatch): added some resetPos() in the right position
+	(cutSelection): 
+	(copySelection): 
+	(pasteSelection): changed to use the new CutAndPaste-Class.
+
+	* src/insets/lyxinset.h: inserted new function InsertInsetAllowed
+	which tells if it is allowed to insert another inset inside this one.
+
+	* src/lyx_cb.C (DocumentApplyCB): Using CutAndPaste-Class for
+	SwitchLayoutsBetweenClasses.
+
+	* src/text2.C (InsertInset): checking of the new paragraph-function
+	InsertInsetAllowed.
+	(DeleteSimpleCutBuffer): removed (for now only with #ifdef) as this
+	is not needed anymore here!
+	(CutSelection): 
+	(CopySelection): 
+	(PasteSelection): redone (also with #ifdef) so that now this uses
+	the CutAndPaste-Class.
+	(SwitchLayoutsBetweenClasses): removed here and implemented in the
+	CutAndPaste-Class.
+	
+	* src/CutAndPaste.[Ch]: added this for clean handling of CutAndPaste
+	from/to text/insets.
+
+	* src/paragraph.C (LyXParagraph): inserted new inset_owner pointer
+	so that the paragraph knows if it is inside an (text)-inset.
+	(InsertFromMinibuffer): changed return-value to bool as now it
+	may happen that an inset is not inserted in the paragraph.
+	(InsertInsetAllowed): this checks if it is allowed to insert an
+	inset in this paragraph.
+	(PasteParagraph): 
+	(BreakParagraphConservative): 
+	(BreakParagraph) : small change for the above change of the return
+	value of InsertFromMinibuffer.
+
+	* src/lyxparagraph.h: added inset_owner and the functions to handle
+	this (SetInsetOwner(), InInset() and InsertInsetAllowed()).
+
 2000-04-10  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/BufferView.[Ch], src/BufferView_pimpl.[Ch]: move more

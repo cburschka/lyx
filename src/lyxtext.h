@@ -391,14 +391,6 @@ public:
 	/// just another feature :)
 	bool GotoNextNote() const;
 
-	/** needed to switch between different classes this works
-	  for a list of paragraphs beginning with the specified par 
-	  return value is the number of wrong conversions
-	  */ 
-	int SwitchLayoutsBetweenClasses(LyXTextClassList::size_type class1,
-					LyXTextClassList::size_type class2,
-					LyXParagraph * par);
-
 	/* for the greater insets */
   
 	/// returns 0 if inset wasn't found

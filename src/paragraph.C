@@ -77,6 +77,7 @@ LyXParagraph::LyXParagraph()
 	/* table stuff -- begin*/ 
 	table = 0;
 	/* table stuff -- end*/ 
+	inset_owner = 0;
 	id_ = paragraph_id++;
         bibkey = 0; // ale970302
 	Clear();
@@ -106,6 +107,7 @@ LyXParagraph::LyXParagraph(LyXParagraph * par)
 	/* table stuff -- begin*/ 
 	table = 0;
 	/* table stuff -- end*/ 
+	inset_owner = 0;
 	id_ = paragraph_id++;
 
         bibkey = 0; // ale970302        
@@ -442,12 +444,16 @@ void LyXParagraph::CutIntoMinibuffer(LyXParagraph::size_type pos)
 }
 
 
-void LyXParagraph::InsertFromMinibuffer(LyXParagraph::size_type pos)
+bool LyXParagraph::InsertFromMinibuffer(LyXParagraph::size_type pos)
 {
+	if ((minibuffer_char == LyXParagraph::META_INSET) &&
+	    !InsertInsetAllowed(minibuffer_inset))
+		return false;
 	InsertChar(pos, minibuffer_char);
 	SetFont(pos, minibuffer_font);
 	if (minibuffer_char == LyXParagraph::META_INSET)
 		InsertInset(pos, minibuffer_inset);
+	return true;
 }
 
 // end of minibuffer
@@ -635,6 +641,15 @@ void LyXParagraph::InsertInset(LyXParagraph::size_type pos,
 	}
 }
 
+
+bool LyXParagraph::InsertInsetAllowed(Inset *inset)
+{
+	if (inset_owner) {
+		printf("CODE:%d\n",inset->LyxCode());
+		return inset_owner->InsertInsetAllowed(inset);
+	}
+	return true;
+}
 
 Inset * LyXParagraph::GetInset(LyXParagraph::size_type pos)
 {
@@ -1335,7 +1350,7 @@ LyXParagraph const * LyXParagraph::Previous() const
 void LyXParagraph::BreakParagraph(LyXParagraph::size_type pos,
 				  int flag)
 {
-	size_type i, pos_end, pos_first;
+	size_type i, j, pos_end, pos_first;
 	// create a new paragraph
 	LyXParagraph * par = ParFromPos(pos);
 	LyXParagraph * firstpar = FirstPhysicalPar();
@@ -1380,9 +1395,10 @@ void LyXParagraph::BreakParagraph(LyXParagraph::size_type pos,
 		//if (pos_end > pos)
 		//	tmp->text.reserve(pos_end - pos);
 
-		for (i = pos; i <= pos_end; ++i) {
+		for (i = j = pos; i <= pos_end; ++i) {
 			par->CutIntoMinibuffer(i - pos_first);
-			tmp->InsertFromMinibuffer(i - pos);
+			if (tmp->InsertFromMinibuffer(j - pos))
+				++j;
 		}
 		tmp->text.resize(tmp->text.size());
 		for (i = pos_end; i >= pos; --i)
@@ -1472,6 +1488,8 @@ LyXParagraph * LyXParagraph::Clone() const
 	else
 		result->table = 0;
 	/* table stuff -- end*/ 
+
+	result->inset_owner = inset_owner;
    
         // ale970302
         result->bibkey = (bibkey) ? new InsetBibKey(bibkey): 0;
@@ -1551,9 +1569,11 @@ void LyXParagraph::BreakParagraphConservative(LyXParagraph::size_type pos)
 		//if (pos_end > pos)
 		//	tmp->text.reserve(pos_end - pos);
 
-		for (size_type i = pos; i <= pos_end; ++i) {
+		size_type i, j;
+		for (i = j = pos; i <= pos_end; ++i) {
 			par->CutIntoMinibuffer(i - pos_first);
-			tmp->InsertFromMinibuffer(i - pos);
+			if (tmp->InsertFromMinibuffer(j - pos))
+				++j;
 		}
 		tmp->text.resize(tmp->text.size());
 		for (size_type i = pos_end; i >= pos; --i)
@@ -1581,9 +1601,11 @@ void LyXParagraph::PasteParagraph()
 	size_type pos_insert = Last();
 
 	// ok, now copy the paragraph
-	for (size_type i = 0; i <= pos_end; ++i) {
+	size_type i, j;
+	for (i = j = 0; i <= pos_end; ++i) {
 		the_next->CutIntoMinibuffer(i);
-		InsertFromMinibuffer(pos_insert + i);
+		if (InsertFromMinibuffer(pos_insert + j))
+			++j;
 	}
    
 	// delete the next paragraph

@@ -20,6 +20,8 @@ lyx_SOURCES = \
 	Bullet.h \
 	Chktex.C \
 	Chktex.h \
+	CutAndPaste.C \
+	CutAndPaste.h \
 	DepTable.C \
 	DepTable.h \
 	FontInfo.C \

@@ -35,11 +35,13 @@
 #include "BufferView.h"
 #include "LyXView.h"
 #include "lyxrow.h"
+#include "CutAndPaste.h"
 #include "Painter.h"
 #include "font.h"
 #include "debug.h"
 
 #define FIX_DOUBLE_SPACE 1
+//#define USE_OLD_CUT_AND_PASTE 1
 
 using std::copy;
 using std::endl;
@@ -1843,6 +1845,8 @@ void LyXText::UpdateCounters(Row * row) const
 /* insets an inset. */ 
 void LyXText::InsertInset(Inset *inset)
 {
+	if (!cursor.par->InsertInsetAllowed(inset))
+		return;
 	SetUndo(Undo::INSERT, 
 		cursor.par->ParFromPos(cursor.pos)->previous, 
 		cursor.par->ParFromPos(cursor.pos)->next);
@@ -1854,6 +1858,7 @@ void LyXText::InsertInset(Inset *inset)
 }
 
 
+#ifdef USE_OLD_CUT_AND_PASTE
 // this is for the simple cut and paste mechanism
 static LyXParagraph * simple_cut_buffer = 0;
 static char simple_cut_buffer_textclass = 0;
@@ -1871,7 +1876,7 @@ void DeleteSimpleCutBuffer()
 	}
 	simple_cut_buffer = 0;
 }
-
+#endif
 
 void LyXText::copyEnvironmentType()
 {
@@ -1884,7 +1889,7 @@ void LyXText::pasteEnvironmentType()
 	SetLayout(copylayouttype);
 }
 
-
+#ifdef USE_OLD_CUT_AND_PASTE
 void LyXText::CutSelection(bool doclear)
 {
 	// This doesn't make sense, if there is no selection
@@ -2140,7 +2145,98 @@ void LyXText::CutSelection(bool doclear)
 	UpdateCounters(cursor.row);
 }
 
+#else ///////////////////////////////////////////////////////////////////
+
+void LyXText::CutSelection(bool doclear)
+{
+    // This doesn't make sense, if there is no selection
+    if (!selection)
+	return;
+   
+    // OK, we have a selection. This is always between sel_start_cursor
+    // and sel_end cursor
+    LyXParagraph * tmppar;
     
+    // Check whether there are half footnotes in the selection
+    if (sel_start_cursor.par->footnoteflag != LyXParagraph::NO_FOOTNOTE
+	|| sel_end_cursor.par->footnoteflag != LyXParagraph::NO_FOOTNOTE) {
+	tmppar = sel_start_cursor.par;
+	while (tmppar != sel_end_cursor.par){
+	    if (tmppar->footnoteflag != sel_end_cursor.par->footnoteflag) {
+		WriteAlert(_("Impossible operation"),
+			   _("Don't know what to do with half floats."),
+			   _("sorry."));
+		return;
+			}
+	    tmppar = tmppar->Next();
+	}
+    }
+    
+    /* table stuff -- begin */
+    if (sel_start_cursor.par->table || sel_end_cursor.par->table) {
+	if ( sel_start_cursor.par != sel_end_cursor.par) {
+	    WriteAlert(_("Impossible operation"),
+		       _("Don't know what to do with half tables."),
+		       _("sorry."));
+	    return;
+	}
+	sel_start_cursor.par->table->Reinit();
+    }
+    /* table stuff -- end */
+    
+    // make sure that the depth behind the selection are restored, too
+    LyXParagraph * endpar = sel_end_cursor.par->LastPhysicalPar()->Next();
+    LyXParagraph * undoendpar = endpar;
+    
+    if (endpar && endpar->GetDepth()) {
+	while (endpar && endpar->GetDepth()) {
+	    endpar = endpar->LastPhysicalPar()->Next();
+	    undoendpar = endpar;
+	}
+    } else if (endpar) {
+	endpar = endpar->Next(); // because of parindents etc.
+    }
+    
+    SetUndo(Undo::DELETE, sel_start_cursor
+	    .par->ParFromPos(sel_start_cursor.pos)->previous, undoendpar);
+    
+    CutAndPaste cap;
+
+    // there are two cases: cut only within one paragraph or
+    // more than one paragraph
+    if (sel_start_cursor.par->ParFromPos(sel_start_cursor.pos) 
+	== sel_end_cursor.par->ParFromPos(sel_end_cursor.pos)) {
+	// only within one paragraph
+	endpar = sel_start_cursor.par;
+	cap.cutSelection(sel_start_cursor.par, &endpar,
+			 sel_start_cursor.pos, sel_end_cursor.pos,
+			 parameters->textclass, doclear);
+    } else {
+	endpar = sel_end_cursor.par;
+
+	cap.cutSelection(sel_start_cursor.par, &endpar,
+			 sel_start_cursor.pos, sel_end_cursor.pos,
+			 parameters->textclass, doclear);
+	cursor.par = sel_end_cursor.par = endpar;
+	cursor.pos = sel_end_cursor.pos;
+    }
+    endpar = sel_end_cursor.par->Next();
+
+    // sometimes necessary
+    if (doclear)
+	sel_start_cursor.par->ClearParagraph();
+
+    RedoParagraphs(sel_start_cursor, endpar);
+   
+    ClearSelection();
+    cursor = sel_start_cursor;
+    SetCursor(cursor.par, cursor.pos);
+    sel_cursor = cursor;
+    UpdateCounters(cursor.row);
+}
+#endif
+    
+#ifdef USE_OLD_CUT_AND_PASTE
 void LyXText::CopySelection()
 {
 	// this doesnt make sense, if there is no selection
@@ -2245,8 +2341,65 @@ void LyXText::CopySelection()
 		}
 	}
 }
-          
 
+#else //////////////////////////////////////////////////////////////////////
+
+void LyXText::CopySelection()
+{
+	// this doesnt make sense, if there is no selection
+	if (!selection)
+		return;
+
+	// ok we have a selection. This is always between sel_start_cursor
+	// and sel_end cursor
+	LyXParagraph * tmppar;
+   
+	/* check wether there are half footnotes in the selection */
+	if (sel_start_cursor.par->footnoteflag != LyXParagraph::NO_FOOTNOTE
+	    || sel_end_cursor.par->footnoteflag != LyXParagraph::NO_FOOTNOTE) {
+		tmppar = sel_start_cursor.par;
+		while (tmppar != sel_end_cursor.par) {
+			if (tmppar->footnoteflag !=
+			    sel_end_cursor.par->footnoteflag) {
+				WriteAlert(_("Impossible operation"),
+					   _("Don't know what to do"
+					     " with half floats."),
+					   _("sorry."));
+				return;
+			}
+			tmppar = tmppar->Next();
+		}
+	}
+
+	/* table stuff -- begin */
+	if (sel_start_cursor.par->table || sel_end_cursor.par->table){
+		if ( sel_start_cursor.par != sel_end_cursor.par){
+			WriteAlert(_("Impossible operation"),
+				   _("Don't know what to do with half tables."),
+				   _("sorry."));
+			return;
+		}
+	}
+	/* table stuff -- end */
+   
+#ifdef FIX_DOUBLE_SPACE
+	// copy behind a space if there is one
+	while (sel_start_cursor.par->Last() > sel_start_cursor.pos
+	       && sel_start_cursor.par->IsLineSeparator(sel_start_cursor.pos)
+	       && (sel_start_cursor.par != sel_end_cursor.par
+		   || sel_start_cursor.pos < sel_end_cursor.pos))
+		sel_start_cursor.pos++; 
+#endif
+
+	CutAndPaste cap;
+
+	cap.copySelection(sel_start_cursor.par, sel_end_cursor.par,
+			  sel_start_cursor.pos, sel_end_cursor.pos,
+			  parameters->textclass);
+}
+#endif          
+
+#ifdef USE_OLD_CUT_AND_PASTE
 void LyXText::PasteSelection()
 {
 	// this does not make sense, if there is nothing to paste
@@ -2373,6 +2526,7 @@ void LyXText::PasteSelection()
 		endpar = tmpcursor.par->Next();
 	} else {
 		// many paragraphs
+		CutAndPaste cap;
 
 		// make a copy of the simple cut_buffer
 		tmppar = simple_cut_buffer;
@@ -2394,9 +2548,9 @@ void LyXText::PasteSelection()
 		}
      
 		// make sure there is no class difference
-		SwitchLayoutsBetweenClasses(simple_cut_buffer_textclass,
-					    parameters->textclass,
-					    simple_cut_buffer);
+		cap.SwitchLayoutsBetweenClasses(simple_cut_buffer_textclass,
+						parameters->textclass,
+						simple_cut_buffer);
      
 		// make the simple_cut_buffer exactly the same layout than
 		// the cursor paragraph
@@ -2512,7 +2666,38 @@ void LyXText::PasteSelection()
 	SetSelection();
 	UpdateCounters(cursor.row);
 }
+
+#else ////////////////////////////////////////////////////////////////////
+
+void LyXText::PasteSelection()
+{
+    CutAndPaste cap;
+
+    // this does not make sense, if there is nothing to paste
+    if (!cap.checkPastePossible(cursor.par, cursor.pos))
+	return;
+
+    SetUndo(Undo::INSERT, 
+	    cursor.par->ParFromPos(cursor.pos)->previous, 
+	    cursor.par->ParFromPos(cursor.pos)->next); 
+
+    LyXParagraph *endpar;
+    LyXParagraph *actpar = cursor.par;
+    int endpos = cursor.pos;
+
+    cap.pasteSelection(&actpar, &endpar, endpos, parameters->textclass);
+
+    RedoParagraphs(cursor, endpar);
+    
+    SetCursor(cursor.par, cursor.pos);
+    ClearSelection();
    
+    sel_cursor = cursor;
+    SetCursor(actpar, endpos);
+    SetSelection();
+    UpdateCounters(cursor.row);
+}
+#endif   
 
 // returns a pointer to the very first LyXParagraph
 LyXParagraph * LyXText::FirstParagraph() const
@@ -2673,9 +2858,13 @@ void LyXText::InsertStringA(string const & str)
 #if 1
 				InsetSpecialChar * new_inset =
 					new InsetSpecialChar(InsetSpecialChar::PROTECTED_SEPARATOR);
-				par->InsertChar(pos, LyXParagraph::META_INSET);
-				par->SetFont(pos, current_font);
-				par->InsertInset(pos, new_inset);
+				if (par->InsertInsetAllowed(new_inset)) {
+					par->InsertChar(pos, LyXParagraph::META_INSET);
+					par->SetFont(pos, current_font);
+					par->InsertInset(pos, new_inset);
+				} else {
+					delete new_inset;
+				}
 #else
 				par->InsertChar(pos, LyXParagraph::META_PROTECTED_SEPARATOR);
 				par->SetFont(pos, current_font);
@@ -2686,9 +2875,13 @@ void LyXText::InsertStringA(string const & str)
 #if 1
 				InsetSpecialChar * new_inset =
 					new InsetSpecialChar(InsetSpecialChar::PROTECTED_SEPARATOR);
-				par->InsertChar(pos, LyXParagraph::META_INSET);
-				par->SetFont(pos, current_font);
-				par->InsertInset(pos, new_inset);
+				if (par->InsertInsetAllowed(new_inset)) {
+					par->InsertChar(pos, LyXParagraph::META_INSET);
+					par->SetFont(pos, current_font);
+					par->InsertInset(pos, new_inset);
+				} else {
+					delete new_inset;
+				}
 #else
 					par->InsertChar(a, LyXParagraph::META_PROTECTED_SEPARATOR);
 					par->SetFont(a, current_font);
@@ -2730,9 +2923,13 @@ void LyXText::InsertStringA(string const & str)
 #if 1
 					InsetSpecialChar * new_inset =
 						new InsetSpecialChar(InsetSpecialChar::PROTECTED_SEPARATOR);
-					par->InsertChar(pos, LyXParagraph::META_INSET);
-					par->SetFont(pos, current_font);
-					par->InsertInset(pos, new_inset);
+					if (par->InsertInsetAllowed(new_inset)) {
+						par->InsertChar(pos, LyXParagraph::META_INSET);
+						par->SetFont(pos, current_font);
+						par->InsertInset(pos, new_inset);
+					} else {
+						delete new_inset;
+					}
 #else
                                         par->InsertChar(pos, LyXParagraph::META_PROTECTED_SEPARATOR);
 					par->SetFont(pos, current_font);
@@ -2835,45 +3032,6 @@ bool LyXText::GotoNextNote() const
 		return true;
 	}
 	return false;
-}
-
-
-int LyXText::SwitchLayoutsBetweenClasses(LyXTextClassList::size_type class1,
-					 LyXTextClassList::size_type class2,
-					 LyXParagraph * par)
-{
-	int ret = 0;
-	if (!par || class1 == class2)
-		return ret;
-	par = par->FirstPhysicalPar();
-	while (par) {
-		string name = textclasslist.NameOfLayout(class1, par->layout);
-		int lay = 0;
-		pair<bool, LyXTextClass::LayoutList::size_type> pp =
-			textclasslist.NumberOfLayout(class2, name);
-		if (pp.first) {
-			lay = pp.second;
-		} else { // layout not found
-			// use default layout "Standard" (0)
-			lay = 0;
-		}
-		par->layout = lay;
-      
-		if (name != textclasslist.NameOfLayout(class2, par->layout)) {
-			++ret;
-			string s = "Layout had to be changed from\n"
-				+ name + " to " + textclasslist.NameOfLayout(class2, par->layout)
-				+ "\nbecause of class conversion from\n"
-				+ textclasslist.NameOfClass(class1) + " to "
-				+ textclasslist.NameOfClass(class2);
-			InsetError * new_inset = new InsetError(s);
-			par->InsertChar(0, LyXParagraph::META_INSET);
-			par->InsertInset(0, new_inset);
-		}
-      
-		par = par->next;
-	}
-	return ret;
 }
 
 

@@ -200,13 +200,17 @@ int LyXFunc::processKeyEvent(XEvent * ev)
 	}
 	
 	// this function should be used always [asierra060396]
-	if (owner->view()->available() &&
-	    owner->view()->the_locking_inset &&
-	    keysym_return == XK_Escape) {
-		owner->view()->unlockInset(owner->view()->the_locking_inset);
-		owner->view()->text->CursorRight();
-		moveCursorUpdate(false);
-		owner->getMiniBuffer()->Set(CurrentState());
+	UpdatableInset * tli = owner->view()->the_locking_inset;
+	if (owner->view()->available() && tli && (keysym_return==XK_Escape)) {
+		if (tli == tli->GetLockingInset()) {
+			owner->view()->unlockInset(tli);
+			owner->view()->text->CursorRight();
+			moveCursorUpdate(false);
+			owner->getMiniBuffer()->Set(CurrentState());
+		} else {
+			tli->UnlockInsetInInset(owner->view(),
+						tli->GetLockingInset());
+		}
 		return 0;
 	}
 

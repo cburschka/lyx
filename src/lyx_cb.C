@@ -54,6 +54,7 @@
 #include "gettext.h"
 #include "layout.h"
 #include "language.h"
+#include "CutAndPaste.h"
 
 using std::ifstream;
 using std::copy;
@@ -2710,13 +2711,13 @@ extern "C" void DocumentApplyCB(FL_OBJECT *, long)
 		if (textclasslist.Load(new_class)) {
 			// successfully loaded
 			redo = true;
-			current_view->owner()->getMiniBuffer()->Set(_("Converting document to new document class..."));
-			int ret = current_view->text->
-				SwitchLayoutsBetweenClasses(current_view->buffer()->
-							    params.textclass,
-							    new_class,
-							    current_view->buffer()->
-							    paragraph);
+			current_view->owner()->getMiniBuffer()->
+				Set(_("Converting document to new document class..."));
+			CutAndPaste cap;
+			int ret = cap.SwitchLayoutsBetweenClasses(
+				current_view->buffer()->params.textclass,
+				new_class,
+				current_view->buffer()->paragraph);
 
 			if (ret) {
 				string s;

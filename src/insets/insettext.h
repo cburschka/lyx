@@ -100,7 +100,7 @@ public:
     ///
     void SetFont(BufferView *, LyXFont const &, bool toggleall = false);
     ///
-    void init(Buffer *, LyXParagraph * p = 0);
+    void init(Buffer *, InsetText const * ins = 0);
 
     LyXParagraph * par;
 
@@ -110,7 +110,7 @@ protected:
     ///
     void WriteParagraphData(std::ostream &) const;
     ///
-    void resetPos(BufferView *);
+    void resetPos(BufferView *, bool setfont=false);
     ///
     void drawSelection(Painter &, int pos, int baseline, float x);
     ///
@@ -120,6 +120,8 @@ protected:
     int SingleWidth(Painter &, LyXParagraph * par, int pos) const;
     ///
     LyXFont GetFont(LyXParagraph * par, int pos) const;
+    ///
+    virtual LyXFont GetDrawFont(LyXParagraph * par, int pos) const;
 
     Buffer * buffer;
     ///

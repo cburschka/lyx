@@ -771,6 +771,10 @@ int BufferView::unlockInset(UpdatableInset * inset)
 		the_locking_inset = 0;
 		text->FinishUndo();
 		return 0;
+	} else if (inset && the_locking_inset &&
+		   the_locking_inset->UnlockInsetInInset(this, inset)) {
+		text->FinishUndo();
+		return 0;
 	}
 	return bufferlist.unlockInset(inset);
 }

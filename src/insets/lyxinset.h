@@ -170,7 +170,8 @@ public:
 	}
 	///
 	virtual void init(BufferView *) {}
-
+	///
+	virtual bool InsertInsetAllowed(Inset *) const { return false; }
 };
 
 
@@ -259,6 +260,8 @@ public:
 			     bool toggleall = false);
 	///
 	virtual bool InsertInset(BufferView *, Inset *) { return false; }
+	///
+	virtual bool InsertInsetAllowed(Inset *) const { return true; }
 	///
 	virtual UpdatableInset * GetLockingInset() { return this; }
 	///
