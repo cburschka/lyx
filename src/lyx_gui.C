@@ -630,3 +630,8 @@ void LyXGUI::regBuf(Buffer * b)
 {
 	lyxViews->view()->buffer(b);
 }
+
+LyXView * LyXGUI::getLyXView() const
+{
+	return lyxViews;
+}

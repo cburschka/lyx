@@ -3843,28 +3843,28 @@ void Buffer::markDepClean(string const & name)
 }
 
 
-void Buffer::Dispatch(string const & command)
+bool Buffer::Dispatch(string const & command)
 {
 	// Split command string into command and argument
 	string cmd, line = frontStrip(command);
 	string arg = strip(frontStrip(split(line, cmd, ' ')));
 
-	Dispatch(lyxaction.LookupFunc(cmd.c_str()), arg.c_str());
+	return Dispatch(lyxaction.LookupFunc(cmd.c_str()), arg.c_str());
 }
 
 
-void Buffer::Dispatch(int action, string const & argument)
+bool Buffer::Dispatch(int action, string const & argument)
 {
+	bool dispatched = true;
 	switch (action) {
 		case LFUN_EXPORT: 
 			MenuExport(this, argument);
 			break;
 
 		default:
-			lyxerr << "A truly unknown func!" << endl;
-		break;
-
-	} // end of switch
+			dispatched = false;
+	}
+	return dispatched;
 }
 
 

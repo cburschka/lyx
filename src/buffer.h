@@ -80,10 +80,10 @@ public:
 	/** high-level interface to buffer functionality
 	    This function parses a command string and executes it
 	*/
-	void Dispatch(string const & command);
+	bool Dispatch(string const & command);
 
 	/// Maybe we know the function already by number...
-	void Dispatch(int ac, string const & argument);
+	bool Dispatch(int ac, string const & argument);
 
 	/// should be changed to work for a list.
 	void resize() {

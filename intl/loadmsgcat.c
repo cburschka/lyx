@@ -85,7 +85,11 @@ _nl_load_domain (domain_file)
     return;
 
   /* Try to open the addressed file.  */
+#ifdef CYGWIN32
+  fd = open (domain_file->filename, O_RDONLY | O_BINARY);
+#else
   fd = open (domain_file->filename, O_RDONLY);
+#endif
   if (fd == -1)
     return;
 

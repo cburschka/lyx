@@ -110,13 +110,9 @@ private:
 	void MenuOpen();
 
 	///
-	void doImportLaTeX(bool);
-
-	///
-	void doImportASCII(bool);
-
-	///
-	void doImportLinuxDoc();
+	void doImport(string const &);
+	void doImportHelper(string const &, string const &, string const &,
+		bool func(BufferView *, string const &) );
 
 	///
 	void MenuInsertLyXFile(string const &);

@@ -1,3 +1,33 @@
+2000-04-27  Claus Hentschel <claus.hentschel@mbau.fh-hannover.de>
+
+	* intl/loadmsgcat.c (_nl_load_domain): pass O_BINARY as flag to
+	open under CYGWIN 
+
+	* lib/lyxrc.example: smallish typo in description of
+	\view_dvi_paper_option 
+
+2000-04-26  André Pönitz <poenitz@mathematik.tu-chemnitz.de>
+
+	* src/lyxfunc.h:
+	* src/lyxfunc.C: doImportHelper to factor out common code of the
+	various import methods. New functions doImportASCIIasLines,
+	doImportASCIIasParagraphs, doImportLaTeX, doImportNoWeb,
+	doImportLinuxDoc  for the  format specific parts.
+
+	* buffer.h:
+	* buffer.C: Dispatch  returns now a bool to indicate success
+
+	* lyx_gui.h:
+	* lyx_gui.C: Add getLyXView() for member access
+
+	* lyx_main.C: Change logic for batch commands: First try
+	Buffer::Dispatch (possibly without GUI), if that fails, use
+	LyXFunc::Dispatch
+
+	* lyx_main.C: Add support for --import command line switch.
+	Now 'lyx --import ascii file.txt' opens the GUI with file.txt loaded.
+	Available Formats: Everything  accepted by 'buffer-import <format>'
+
 2000-04-27  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/lyx_gui.C (create_forms): small oneliner from Garst to have

@@ -744,7 +744,7 @@ string LyXFunc::Dispatch(int ac,
 					    MakeDisplayPath(owner->buffer()->fileName()),
 					    "...");
 		MenuWrite(owner->buffer());
-		//owner->getMiniBuffer()->
+		//owner->getMiniBuffer()-> {
 		//	Set(_("Document saved as"),
 		//	    MakeDisplayPath(owner->buffer()->fileName()));
 		//} else {
@@ -797,30 +797,8 @@ string LyXFunc::Dispatch(int ac,
 		break;
 
 	case LFUN_IMPORT:
-	{
-		//needs argument as string
-		string imtyp = argument;
-		
-		// latex
-		if (imtyp == "latex") {
-			doImportLaTeX(false);
-		}
-		// ascii
-		else if (imtyp == "ascii") {
-			doImportASCII(false);
-		} else if (imtyp == "asciiparagraph") {
-			doImportASCII(true);
-			// noweb
-		} else if (imtyp == "noweb") {
-			doImportLaTeX(true);
-		} else if (imtyp == "linuxdoc") {
-			doImportLinuxDoc();
-		} else {
-			setErrorMessage(string(N_("Unknown import type: "))
-					+ imtyp);
-		}
+		doImport(argument);
 		break;
-	}
 		
 	case LFUN_QUIT:
 		QuitLyX();
@@ -2880,53 +2858,66 @@ void LyXFunc::MenuOpen()
 	}
 }
 
+// returns filename if file must be imported,
+// empty string if either file not found or already loaded
+// checks for running without gui are missing.
 
-void LyXFunc::doImportASCII(bool linorpar)
+void LyXFunc::doImportHelper(
+	string const & file,          // filename (possibly empty)
+	string const & text,          // info when asking for filename
+	string const & pattern,       // filetype
+	bool func(BufferView *, string const &)     // the real import function
+)
 {
-	string initpath = lyxrc.document_path;
-	LyXFileDlg fileDlg;
-  
-	if (owner->view()->available()) {
-		string trypath = owner->buffer()->filepath;
-		// If directory is writeable, use this as default.
-		if (IsDirWriteable(trypath) == 1)
-			initpath = trypath;
+	string filename = file;
+
+	if (filename.empty()) { // need user interaction
+		string initpath = lyxrc.document_path;
+		LyXFileDlg fileDlg;
+		
+		if (owner->view()->available()) {
+			string trypath = owner->buffer()->filepath;
+			// If directory is writeable, use this as default.
+			if (IsDirWriteable(trypath) == 1)
+				initpath = trypath;
+		}
+
+		// launches dialog
+		ProhibitInput(owner->view());
+		fileDlg.SetButton(0, _("Documents"), lyxrc.document_path);
+		fileDlg.SetButton(1, _("Examples"), 
+					AddPath(system_lyxdir, "examples"));
+		filename = fileDlg.Select(text, initpath, pattern);
+		AllowInput(owner->view());
+ 
+		// check selected filename
+		if (filename.empty()) 
+			owner->getMiniBuffer()->Set(_("Canceled."));
 	}
 
-	// launches dialog
-	ProhibitInput(owner->view());
-	fileDlg.SetButton(0, _("Documents"), lyxrc.document_path);
-	fileDlg.SetButton(1, _("Examples"), 
-			  AddPath(system_lyxdir, "examples"));
-	string filename = fileDlg.Select(_("Select ASCII file to Import"),
-					 initpath, "*.txt");
-	AllowInput(owner->view());
- 
-	// check selected filename
-	if (filename.empty()) {
-		owner->getMiniBuffer()->Set(_("Canceled."));
+	// still no filename? abort
+	if (filename.empty()) 
 		return;
-	}
 
 	// get absolute path of file
 	filename = MakeAbsPath(filename);
 
-	string s = ChangeExtension(filename, ".lyx", false);
+	string lyxfile = ChangeExtension(filename, ".lyx", false);
 
 	// Check if the document already is open
-	if (bufferlist.exists(s)) {
+	if (bufferlist.exists(lyxfile)) {
 		switch(AskConfirmation(_("Document is already open:"), 
-				       MakeDisplayPath(s, 50),
+				       MakeDisplayPath(lyxfile, 50),
 				       _("Do you want to close that document now?\n"
 					 "('No' will just switch to the open version)")))
 			{
 			case 1: // Yes: close the document
-				if (!bufferlist.close(bufferlist.getBuffer(s)))
+				if (!bufferlist.close(bufferlist.getBuffer(lyxfile)))
 				// If close is canceled, we cancel here too.
 					return;
 				break;
 			case 2: // No: switch to the open document
-				owner->view()->buffer(bufferlist.getBuffer(s));
+				owner->view()->buffer(bufferlist.getBuffer(lyxfile));
 				return;
 			case 3: // Cancel: Do nothing
 				owner->getMiniBuffer()->Set(_("Canceled."));
@@ -2935,193 +2926,66 @@ void LyXFunc::doImportASCII(bool linorpar)
 	}
 
 	// Check if a LyX document by the same root exists in filesystem
-	FileInfo f(s, true);
+	FileInfo f(lyxfile, true);
 	if (f.exist() && !AskQuestion(_("A document by the name"), 
-				      MakeDisplayPath(s),
+				      MakeDisplayPath(lyxfile),
 				      _("already exists. Overwrite?"))) {
 		owner->getMiniBuffer()->Set(_("Canceled."));
 		return;
 	}
+	// filename should be valid now
 
-	owner->view()->buffer(bufferlist.newFile(s, string()));
-	owner->getMiniBuffer()->Set(_("Importing ASCII file"),
-				    MakeDisplayPath(filename), "...");
-	// Insert ASCII file
-	InsertAsciiFile(owner->view(), filename, linorpar);
-	owner->getMiniBuffer()->Set(_("ASCII file "),
-				    MakeDisplayPath(filename),
-				    _("imported."));
+	// notify user of import ahead
+	string displaypath = MakeDisplayPath(filename);
+	owner->view()->buffer(bufferlist.newFile(lyxfile, string()));
+	owner->getMiniBuffer()->Set(_("Importing"), displaypath, "...");
+
+	// call real importer
+	bool result = func(owner->view(), filename);
+
+	// we are done
+	if (result)
+		owner->getMiniBuffer()->Set(displaypath, _("imported."));
+	else
+		owner->getMiniBuffer()->Set(displaypath, _(": import failed."));
 }
 
-
-void LyXFunc::doImportLaTeX(bool isnoweb)
+static
+bool doImportASCIIasLines(BufferView * view, string const & filename)
 {
-	string initpath = lyxrc.document_path;
-	LyXFileDlg fileDlg;
-  
-	if (owner->view()->available()) {
-		string trypath = owner->buffer()->filepath;
-		// If directory is writeable, use this as default.
-		if (IsDirWriteable(trypath) == 1)
-			initpath = trypath;
-	}
-
-	// launches dialog
-	ProhibitInput(owner->view());
-	fileDlg.SetButton(0, _("Documents"), lyxrc.document_path);
-	fileDlg.SetButton(1, _("Examples"), 
-			  AddPath(system_lyxdir, "examples"));
-	string filename;
-	if (isnoweb) {
-		filename = fileDlg.Select(_("Select Noweb file to Import"),
-					  initpath, "*.nw");
-	} else {
-		filename = fileDlg.Select(_("Select LaTeX file to Import"),
-					  initpath, "*.tex");
-	}
-	
-	AllowInput(owner->view());
- 
-	// check selected filename
-	if (filename.empty()) {
-		owner->getMiniBuffer()->Set(_("Canceled."));
-		return;
-	}
-
-	// get absolute path of file
-	filename = MakeAbsPath(filename);
-
-	// Check if the document already is open
-	string LyXfilename = ChangeExtension(filename, ".lyx", false);
-	if (bufferlist.exists(LyXfilename)){
-		switch(AskConfirmation(_("Document is already open:"), 
-				       MakeDisplayPath(LyXfilename, 50),
-				       _("Do you want to close that document now?\n"
-					 "('No' will just switch to the open version)")))
-			{
-			case 1: // Yes: close the document
-				if (!bufferlist.close(bufferlist.getBuffer(LyXfilename)))
-				// If close is canceled, we cancel here too.
-					return;
-				break;
-			case 2: // No: switch to the open document
-				owner->view()->buffer(
-					bufferlist.getBuffer(LyXfilename));
-				return;
-			case 3: // Cancel: Do nothing
-				owner->getMiniBuffer()->Set(_("Canceled."));
-				return;
-			}
-	}
-
-	// Check if a LyX document by the same root exists in filesystem
-	FileInfo f(LyXfilename, true);
-	if (f.exist() && !AskQuestion(_("A document by the name"), 
-				      MakeDisplayPath(LyXfilename),
-				      _("already exists. Overwrite?"))) {
-		owner->getMiniBuffer()->Set(_("Canceled."));
-		return;
-	}
-
-	// loads document
-	Buffer * openbuf;
-	if (!isnoweb) {
-		owner->getMiniBuffer()->Set(_("Importing LaTeX file"),
-					    MakeDisplayPath(filename), "...");
-		ImportLaTeX myImport(filename);
-		openbuf = myImport.run();
-	} else {
-		owner->getMiniBuffer()->Set(_("Importing Noweb file"),
-					    MakeDisplayPath(filename), "...");
-		ImportNoweb myImport(filename);
-		openbuf = myImport.run();
-	}
-	if (openbuf) {
-		owner->view()->buffer(openbuf);
-		owner->getMiniBuffer()->Set(isnoweb ?
-					    _("Noweb file ") : _("LateX file "),
-					    MakeDisplayPath(filename),
-					    _("imported."));
-	} else {
-		owner->getMiniBuffer()->Set(isnoweb ?
-					    _("Could not import Noweb file") :
-					    _("Could not import LaTeX file"),
-					    MakeDisplayPath(filename));
-	}
+	InsertAsciiFile(view, filename, false);
+	return true;
 }
 
-
-void LyXFunc::doImportLinuxDoc()
+static
+bool doImportASCIIasParagraphs(BufferView * view, string const & filename)
 {
-	string initpath = lyxrc.document_path;
-	LyXFileDlg fileDlg;
-  
-	if (owner->view()->available()) {
-		string trypath = owner->buffer()->filepath;
-		// If directory is writeable, use this as default.
-		if (IsDirWriteable(trypath) == 1)
-			initpath = trypath;
-	}
+	InsertAsciiFile(view, filename, true);
+	return true;
+}
 
-	// launches dialog
-	ProhibitInput(owner->view());
-	fileDlg.SetButton(0, _("Documents"), lyxrc.document_path);
-	fileDlg.SetButton(1, _("Examples"), 
-			  AddPath(system_lyxdir, "examples"));
+static
+bool doImportLaTeX(BufferView *, string const & filename)
+{
+	ImportLaTeX myImport(filename);
+	Buffer * openbuf = myImport.run();
+	return openbuf != NULL;		
+}
 
-	string filename = fileDlg.Select(_("Select LinuxDoc file to Import"),
-					  initpath, "*.sgml");
-	
-	AllowInput(owner->view());
- 
-	// check selected filename
-	if (filename.empty()) {
-		owner->getMiniBuffer()->Set(_("Canceled."));
-		return;
-	}
+static
+bool doImportNoweb(BufferView *, string const & filename)
+{
+	ImportNoweb myImport(filename);
+	Buffer * openbuf = myImport.run();
+	return openbuf != NULL;		
+}
 
-	// get absolute path of file
-	filename = MakeAbsPath(filename);
-
-	// Check if the document already is open
-	string LyXfilename = ChangeExtension(filename, ".lyx", false);
-	if (bufferlist.exists(LyXfilename)){
-		switch(AskConfirmation(_("Document is already open:"), 
-				       MakeDisplayPath(LyXfilename, 50),
-				       _("Do you want to close that document now?\n"
-					 "('No' will just switch to the open version)")))
-			{
-			case 1: // Yes: close the document
-				if (!bufferlist.close(bufferlist.getBuffer(LyXfilename)))
-				// If close is canceled, we cancel here too.
-					return;
-				break;
-			case 2: // No: switch to the open document
-				owner->view()->buffer(
-					bufferlist.getBuffer(LyXfilename));
-				return;
-			case 3: // Cancel: Do nothing
-				owner->getMiniBuffer()->Set(_("Canceled."));
-				return;
-			}
-	}
-
-	// Check if a LyX document by the same root exists in filesystem
-	FileInfo f(LyXfilename, true);
-	if (f.exist() && !AskQuestion(_("A document by the name"), 
-				      MakeDisplayPath(LyXfilename),
-				      _("already exists. Overwrite?"))) {
-		owner->getMiniBuffer()->Set(_("Canceled."));
-		return;
-	}
-
-	// loads document
-	owner->getMiniBuffer()->Set(_("Importing LinuxDoc file"),
-				    MakeDisplayPath(filename), "...");
-
+static
+bool doImportLinuxDoc(BufferView *, string const & filename)
+{
 	// run sgml2lyx
 	string tmp = lyxrc.linuxdoc_to_lyx_command + filename;
-        Systemcalls one;
+	Systemcalls one;
 	Buffer * buf = 0;
 
 	int result = one.startscript(Systemcalls::System, tmp);
@@ -3129,14 +2993,9 @@ void LyXFunc::doImportLinuxDoc()
 		string filename = ChangeExtension(filename, ".lyx", false);
 		// File was generated without problems. Load it.
 		buf = bufferlist.loadLyXFile(filename);
-		owner->view()->buffer(buf);
-		owner->getMiniBuffer()->Set(_("LinuxDoc file "),
-					    MakeDisplayPath(filename),
-					    _("imported."));
-	} else {
-		owner->getMiniBuffer()->Set(_("Could not import LinuxDoc file"),
-					    MakeDisplayPath(filename));
 	}
+
+	return result == 0;
 }
 
 
@@ -3192,6 +3051,36 @@ void LyXFunc::MenuInsertLyXFile(string const & filen)
 	}
 }
 
+void LyXFunc::doImport(string const & argument)
+{
+	string type;
+	string filename = split(argument, type, ' ');
+	lyxerr.debug() << "LyXFunc::doImport: " << type 
+		       << " file: " << filename << endl;
+
+	if (type == "latex") 
+		doImportHelper(filename,
+			       _("Select LaTeX file to import"), "*.tex", 
+			       doImportLaTeX);
+	else if (type == "ascii") 
+		doImportHelper(filename,
+			       _("Select ASCII file to import"), "*.txt", 
+			       doImportASCIIasLines);
+	else if (type == "asciiparagraph") 
+		doImportHelper(filename,
+			       _("Select ASCII file to import"), "*.txt", 
+			       doImportASCIIasParagraphs);
+	else if (type == "noweb") 
+		doImportHelper(filename,
+			       _("Select NoWeb file to import"), "*.nw", 
+			       doImportNoweb);
+	else if (type == "linuxdoc") 
+		doImportHelper(filename,
+			       _("Select LinuxDoc file to import"), "*.doc", 
+			       doImportLinuxDoc);
+	else 
+		setErrorMessage(string(N_("Unknown import type: ")) + type);
+}
 
 void LyXFunc::reloadBuffer()
 {

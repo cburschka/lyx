@@ -100,7 +100,7 @@
 # not append the -paper option to the dvi command at all. This case is
 # especially useful when viewing your documents on Windows with yap,
 # because yap does not allow a command line option for the paper size.
-#\view_dvi_paper "" 
+#\view_dvi_paper_option "" 
 
 # LyX assumes that the default papersize should be usletter.  If this is not
 # true for your site, use the next line to specify usletter, legal,

@@ -16,6 +16,8 @@
 #include "version.h"
 #include "lyx_main.h"
 #include "lyx_gui.h"
+#include "LyXView.h"
+#include "lyxfunc.h"
 #include "lyx_gui_misc.h"
 #include "lyxrc.h"
 #include "support/path.h"
@@ -121,13 +123,28 @@ LyX::LyX(int * argc, char * argv[])
 	}
 
 	// Execute batch commands if available
-	if (!batch_command.empty() && last_loaded) {
+	if (!batch_command.empty()) {
 		lyxerr << "About to handle -x '" << batch_command << "'" << endl;
-		//Buffer buffer("Script Buffer");
-		//buffer.Dispatch(batch_command);
-		last_loaded->Dispatch(batch_command);
-		lyxerr << "We are done!" << endl;
-		return; // Maybe we could do something more clever than aborting..
+
+		// no buffer loaded, create one
+		if (!last_loaded)
+			last_loaded = bufferlist.newFile("tmpfile", string());
+
+		// try to dispatch to last loaded buffer first
+		bool dispatched	= last_loaded->Dispatch(batch_command);
+
+		// if this was successful, return. 
+		// Maybe we could do something more clever than aborting...
+		if (dispatched) {
+			lyxerr << "We are done!" << endl;
+			return;
+		}
+
+		// otherwise, let the GUI handle the batch command
+		lyxGUI->regBuf(last_loaded);
+		lyxGUI->getLyXView()->getLyXFunc()->Dispatch(batch_command);
+
+		// fall through...
 	}
 	
 	// Let the ball begin...
@@ -573,7 +590,27 @@ bool LyX::easyParse(int * argc, char * argv[])
 					    "ps...] after ")
 				       << arg << _(" switch!") << endl;
 		}
+
+		else if (arg == "--import") {
+			if (i + 1 < *argc) {
+				string type(argv[i+1]);
+				string file(argv[i+2]);
+
+				(*argc) -= 3;
+				for (int j = i; j < (*argc); ++j)
+					argv[j] = argv[j + 3];
+				--i; // After shift, check this number again.
+	
+				batch_command = "buffer-import " + type + " " + file;
+				cerr << "batch_command: " << batch_command << endl;
+
+			} else
+				lyxerr << _("Missing type [eg latex, "
+					    "ps...] after ")
+				       << arg << _(" switch!") << endl;
+		}
 	}
+
 	return gui;
 }
 

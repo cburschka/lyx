@@ -52,8 +52,12 @@ public:
 	  */
 	void init();
 
-	/// Register the buffer with the first fount LyXView in lyxViews
+	/// Register the buffer with the first found LyXView in lyxViews
 	void regBuf(Buffer*);
+
+	/// Access to (first?) LyXView
+	LyXView * getLyXView() const;
+	
 	//@}
 private:
 	/**@name Construcor */
