@@ -68,10 +68,11 @@ QCommandBuffer::QCommandBuffer(QtView * view, ControlCommandBuffer & control)
 {
 	setHorizontalStretchable(true);
 
-	QPixmap qp(LibFileSearch("images", "unknown", "xpm").c_str());
+	QPixmap qpup(LibFileSearch("images", "up", "xpm").c_str());
+	QPixmap qpdown(LibFileSearch("images", "down", "xpm").c_str());
 
-	(new QToolButton(qp, _("Up"), "", this, SLOT(up()), this))->show();
-	(new QToolButton(qp, _("Down"), "", this, SLOT(down()), this))->show();
+	(new QToolButton(qpup, _("Previous command"), "", this, SLOT(up()), this))->show();
+	(new QToolButton(qpdown, _("Next command"), "", this, SLOT(down()), this))->show();
 
 	edit_ = new QCommandEdit(this);
 	edit_->setMinimumSize(edit_->sizeHint());
