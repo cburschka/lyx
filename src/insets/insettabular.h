@@ -180,7 +180,7 @@ private:
 	///
 	void cutSelection(LCursor & cur);
 	///
-	bool isRightToLeft(LCursor & cur);
+	bool isRightToLeft(LCursor & cur) const;
 	///
 	void getSelection(LCursor & cur,
 		int & rs, int & re, int & cs, int & ce) const;

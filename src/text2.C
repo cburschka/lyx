@@ -712,13 +712,12 @@ void LyXText::setCounter(Buffer const & buf, par_type pit)
 	BufferParams const & bufparams = buf.params();
 	LyXTextClass const & textclass = bufparams.getLyXTextClass();
 	LyXLayout_ptr const & layout = par.layout();
-	par_type first_pit = 0;
 	Counters & counters = textclass.counters();
 
 	// Always reset
 	par.itemdepth = 0;
 
-	if (pit == first_pit) {
+	if (pit == 0) {
 		par.params().appendix(par.params().startOfAppendix());
 	} else {
 		par.params().appendix(pars_[pit - 1].params().appendix());
@@ -729,7 +728,7 @@ void LyXText::setCounter(Buffer const & buf, par_type pit)
 		}
 
 		// Maybe we have to increment the item depth.
-		incrementItemDepth(pars_, pit, first_pit);
+		incrementItemDepth(pars_, pit, 0);
 	}
 
 	// erase what was there before
@@ -774,7 +773,7 @@ void LyXText::setCounter(Buffer const & buf, par_type pit)
 		par.params().labelString(itemlabel);
 	} else if (layout->labeltype == LABEL_ENUMERATE) {
 		// Maybe we have to reset the enumeration counter.
-		resetEnumCounterIfNeeded(pars_, pit, first_pit, counters);
+		resetEnumCounterIfNeeded(pars_, pit, 0, counters);
 
 		// FIXME
 		// Yes I know this is a really, really! bad solution
@@ -823,13 +822,25 @@ void LyXText::setCounter(Buffer const & buf, par_type pit)
 				    in->lyxCode() == InsetBase::WRAP_CODE) {
 					isOK = true;
 					break;
-				} else {
+				} 
+#ifdef WITH_WARNINGS
+#warning replace this code by something that works
+// This code does not work because we have currently no way to move up
+// in the hierarchy of insets (JMarc 16/08/2004)
+#endif
+#if 0
+/* I think this code is supposed to be useful when one has a caption
+ * in a minipage in a figure inset. We need to go up to be able to see
+ * that the caption sould use "Figure" as label
+ */
+				else {
 					Paragraph const * owner = &ownerPar(buf, in);
-					tmppit = first_pit;
+					tmppit = 0;
 					for ( ; tmppit != end; ++tmppit)
 						if (&pars_[tmppit] == owner)
 							break;
 				}
+#endif
 			}
 
 			if (isOK) {
@@ -893,7 +904,7 @@ void LyXText::updateCounters()
 }
 
 
-// this really should just inset the inset and not move the cursor.
+// this really should just insert the inset and not move the cursor.
 void LyXText::insertInset(LCursor & cur, InsetBase * inset)
 {
 	BOOST_ASSERT(this == cur.text());

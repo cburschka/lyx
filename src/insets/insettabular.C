@@ -376,6 +376,7 @@ void InsetTabular::edit(LCursor & cur, bool left)
 	lyxerr << "InsetTabular::edit: " << this << endl;
 	finishUndo();
 	int cell;
+	cur.push(*this);
 	if (left) {
 		if (isRightToLeft(cur))
 			cell = tabular.getLastCellInRow(0);
@@ -391,7 +392,6 @@ void InsetTabular::edit(LCursor & cur, bool left)
 	// this accesses the position cache before it is initialized
 	//resetPos(cur);
 	//cur.bv().fitCursor();
-	cur.push(*this);
 	cur.idx() = cell;
 }
 
@@ -892,7 +892,7 @@ int InsetTabular::latex(Buffer const & buf, ostream & os,
 int InsetTabular::plaintext(Buffer const & buf, ostream & os,
 			OutputParams const & runparams) const
 {
-	int dp = runparams.linelen ? ownerPar(buf, this).params().depth() : 0;
+	int dp = runparams.linelen ? runparams.depth : 0;
 	return tabular.plaintext(buf, os, runparams, dp, false, 0);
 }
 
@@ -1562,9 +1562,13 @@ void InsetTabular::cutSelection(LCursor & cur)
 }
 
 
-bool InsetTabular::isRightToLeft(LCursor & cur)
+bool InsetTabular::isRightToLeft(LCursor & cur) const
 {
-	return cur.bv().getParentLanguage(this)->RightToLeft();
+	BOOST_ASSERT(cur.size() > 1);
+	Paragraph const & parentpar = cur[cur.size() - 2].paragraph();
+	LCursor::pos_type const parentpos = cur[cur.size() - 2].pos();
+	return parentpar.getFontSettings(cur.bv().buffer()->params(), 
+					 parentpos).language()->RightToLeft();
 }
 
 

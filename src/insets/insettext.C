@@ -273,18 +273,6 @@ string const InsetText::editMessage() const
 }
 
 
-void InsetText::sanitizeEmptyText(BufferView & bv)
-{
-	if (paragraphs().size() == 1
-	    && paragraphs().begin()->empty()
-	    && bv.getParentLanguage(this) != text_.current_font.language()) {
-		LyXFont font(LyXFont::ALL_IGNORE);
-		font.setLanguage(bv.getParentLanguage(this));
-		text_.setFont(bv.cursor(), font, false);
-	}
-}
-
-
 void InsetText::edit(LCursor & cur, bool left)
 {
 	//lyxerr << "InsetText: edit left/right" << endl;
@@ -295,7 +283,6 @@ void InsetText::edit(LCursor & cur, bool left)
 	text_.setCursor(cur.top(), par, pos);
 	cur.clearSelection();
 	finishUndo();
-	sanitizeEmptyText(cur.bv());
 #ifdef WITH_WARNINGS
 #warning can someone check if/when this is needed?
 #endif
@@ -321,16 +308,6 @@ void InsetText::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 	bool was_empty = paragraphs().begin()->empty() && paragraphs().size() == 1;
 	text_.dispatch(cur, cmd);
 
-	// If the action has deleted all text in the inset, we need
-	// to change the language to the language of the surronding
-	// text.
-	// Why this cleverness? (Andre')
-	if (!was_empty && paragraphs().begin()->empty() &&
-	    paragraphs().size() == 1) {
-		LyXFont font(LyXFont::ALL_IGNORE);
-		font.setLanguage(cur.bv().getParentLanguage(this));
-		text_.setFont(cur, font, false);
-	}
 }
 
 

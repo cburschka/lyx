@@ -75,9 +75,14 @@ struct OutputParams {
 	*/
 	bool mixed_content;
 
-	/** Line length to use with ascii export.
+	/** Line length to use with plaintext export.
 	*/
 	lyx::size_type linelen;
+
+	/** The depth of the current paragraph, set for plaintext
+	 *  export and used by InsetTabular
+	 */
+	int depth;
 
 	/** Export data filled in by the latex(), docbook() etc methods.
 	    This is a hack: Make it possible to add stuff to constant

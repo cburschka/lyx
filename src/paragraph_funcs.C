@@ -340,29 +340,6 @@ par_type outerPar(Buffer const & buf, InsetBase const * inset)
 }
 
 
-Paragraph const & ownerPar(Buffer const & buf, InsetBase const * inset)
-{
-	ParConstIterator pit = buf.par_iterator_begin();
-	ParConstIterator end = buf.par_iterator_end();
-	for ( ; pit != end; ++pit) {
-		LyXText * text;
-		// the second '=' below is intentional
-		for (int i = 0; (text = inset->getText(i)); ++i)
-			if (&text->paragraphs() == &pit.plist())
-				return *pit;
-
-		InsetList::const_iterator ii = pit->insetlist.begin();
-		InsetList::const_iterator iend = pit->insetlist.end();
-		for ( ; ii != iend; ++ii)
-			if (ii->inset == inset)
-				return *pit;
-	}
-	lyxerr << "ownerPar: should not happen" << endl;
-	BOOST_ASSERT(false);
-	return buf.paragraphs().front(); // shut up compiler
-}
-
-
 /// return the range of pars [beg, end[ owning the range of y [ystart, yend]
 void getParsInRange(ParagraphList & pars, int ystart, int yend,
 	par_type & beg, par_type & end)

@@ -108,9 +108,6 @@ public:
 	/// return the lyxtext we are using
 	LyXText * getLyXText() const;
 
-	/// return the parent language of the given inset
-	Language const * getParentLanguage(InsetOld * inset) const;
-
 	/// simple replacing. Use the font of the first selected character
 	void replaceSelectionWithString(std::string const & str);
 

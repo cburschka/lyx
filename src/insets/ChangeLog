@@ -1,3 +1,17 @@
+2004-08-16  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* insettabular.C (plaintext): do not use ownerPar to get the
+	paragraph depth
+
+	* insettext.C (sanitizeEmptyText): remove. Not sure what it does,
+	and it calls getParentLanguage (which calls ownerPar)
+	(edit): do not call sanitizeEmptyText
+	(priv_dispatch): remove code resetting font on empty inset, for
+	the same reasons as above.
+
+	* insettabular.C (isRightToLeft): instead of using
+	BufferView::getParentLanguage, use the data from the cursor
+
 2004-08-15  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
 	* pch.h: new file

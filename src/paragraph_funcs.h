@@ -61,9 +61,6 @@ LyXFont const outerFont(lyx::par_type par, ParagraphList const & plist);
 /// find outermost paragraph containing an inset
 lyx::par_type outerPar(Buffer const & buf, InsetBase const * inset);
 
-/// find owning paragraph containing an inset
-Paragraph const & ownerPar(Buffer const & buf, InsetBase const * inset);
-
 /// return the range of pars [beg, end[ owning the range of y [ystart, yend]
 void getParsInRange(ParagraphList & plist,
 				int ystart, int yend,

@@ -2341,7 +2341,8 @@ int LyXTabular::asciiTopHLine(ostream & os, int row,
 		}
 		int column = column_of_cell(i);
 		int len = clen[column];
-		while (isPartOfMultiColumn(row, ++column))
+		while (column < columns_ - 1  
+		       && isPartOfMultiColumn(row, ++column))
 			len += clen[column] + 4;
 		os << string(len, ch);
 		if (topLine(i)) {
@@ -2388,7 +2389,8 @@ int LyXTabular::asciiBottomHLine(ostream & os, int row,
 		}
 		int column = column_of_cell(i);
 		int len = clen[column];
-		while (isPartOfMultiColumn(row, ++column))
+		while (column < columns_ -1
+		       && isPartOfMultiColumn(row, ++column))
 			len += clen[column] + 4;
 		os << string(len, ch);
 		if (bottomLine(i)) {
@@ -2426,7 +2428,8 @@ int LyXTabular::asciiPrintCell(Buffer const & buf, ostream & os,
 
 	unsigned int len1 = sstr.str().length();
 	unsigned int len2 = clen[column];
-	while (isPartOfMultiColumn(row, ++column))
+	while (column < columns_ -1
+	       && isPartOfMultiColumn(row, ++column))
 		len2 += clen[column] + 4;
 	len2 -= len1;
 

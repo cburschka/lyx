@@ -150,9 +150,6 @@ private:
 	void updateLocal(LCursor &);
 	///
 	void init();
-	// If the inset is empty set the language of the current font to the
-	// language to the surronding text (if different).
-	void sanitizeEmptyText(BufferView &);
 	///
 	void setCharFont(Buffer const &, int pos, LyXFont const & font);
 	///

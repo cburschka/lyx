@@ -316,14 +316,6 @@ LyXText * BufferView::getLyXText() const
 }
 
 
-Language const * BufferView::getParentLanguage(InsetOld * inset) const
-{
-	Paragraph const & par = ownerPar(*buffer(), inset);
-	return par.getFontSettings(buffer()->params(),
-	                           par.getPositionOfInset(inset)).language();
-}
-
-
 void BufferView::haveSelection(bool sel)
 {
 	pimpl_->workarea().haveSelection(sel);

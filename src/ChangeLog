@@ -1,3 +1,20 @@
+2004-08-16  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* tabular.C (asciiBottomHLine, asciiPrintCell, asciiTopHLine): fix
+	crash
+
+	* output_plaintext.C (asciiParagraph): set depth correctly
+
+	* outputparams.h: add member depth
+
+	* paragraph_funcs.C (ownerPar): remove.
+
+	* text2.C (setCounter): remove first_pit; comment out some
+	non-working code that uses ownerPar
+
+	* BufferView.C (getParentLanguage): remove. Not used anymore, and
+	uses ownerPar
+
 2004-08-16  José Matos  <jamatos@lyx.org>
 
 	* text.C (readParToken, readParagraph, read): report all unknown tokens.

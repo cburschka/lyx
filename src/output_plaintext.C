@@ -206,7 +206,9 @@ void asciiParagraph(Buffer const & buf,
 				currlinelen += word.length();
 				word.erase();
 			}
-			if (inset->plaintext(buf, os, runparams)) {
+			OutputParams rp = runparams;
+			rp.depth = par.params().depth();
+			if (inset->plaintext(buf, os, rp)) {
 				// to be sure it breaks paragraph
 				currlinelen += runparams.linelen;
 			}
