@@ -59,7 +59,7 @@
 #ifndef BOOST_CONFIG_HPP
 #define BOOST_CONFIG_HPP
 
-#define BOOST_VERSION 102200
+#define BOOST_VERSION 102300
 
 //  BOOST_VERSION % 100 is the sub-minor version
 //  BOOST_VERSION / 100 % 1000 is the minor version
@@ -148,6 +148,23 @@
 //  BOOST_NO_AUTO_PTR: If the compiler / library supplies non-standard or broken
 //  std::auto_ptr.
 
+//  BOOST_WEAK_FUNCTION_TEMPLATE_ORDERING: The compiler does not perform 
+//  function template ordering or its function template ordering is incorrect.
+//  
+//  template<typename T> void f(T); // #1
+//  template<typename T, typename U> void f(T (*)(U)); // #2
+//  void bar(int);
+//  f(&bar); // should choose #2. 
+
+//  BOOST_NO_DEPENDENT_NESTED_DERIVATIONS: The compiler fails to compile
+//  a nested class that has a dependent base class:
+//  template<typename T>
+//  struct foo : public T {  
+//    template<typename U>
+//    struct bar : public T, public U {};
+//  };
+
+//  
 //  Compiler Control or Information Macros  ----------------------------------//
 //
 //  Compilers often supply features outside of the C++ Standard which need to be
@@ -222,7 +239,6 @@
 
 //  Edison Design Group front-ends
 # if defined(__EDG_VERSION__)
-
 #   if __EDG_VERSION__ <= 241
 #     define BOOST_NO_ARGUMENT_DEPENDENT_LOOKUP
 #   endif
@@ -230,87 +246,18 @@
 # endif
 
 //  Compiler-specific checks -------------------------------------------------//
-//  Compilers are listed in alphabetic order (except VC++ last - see below)---//
-
-//  GNU CC (also known as GCC and G++)  --------------------------------------//
-
-# if defined __GNUC__
-#   if __GNUC__ == 2 && __GNUC_MINOR__ == 91
-       // egcs 1.1 won't parse smart_ptr.hpp without this:
-#      define BOOST_NO_AUTO_PTR
-#   endif
-#   if __GNUC__ == 2 && __GNUC_MINOR__ <= 97
-#     include "LString.h"  // not sure this is the right way to do this -JGS
-#     if defined(__BASTRING__) && !defined(__GLIBCPP__) && !defined(_CXXRT_STD) && !defined(__SGI_STL) // need to ask Dietmar about this -JGS
-        // this should only detect the stdlibc++ that ships with gcc, and
-        // not any replacements that may be installed...
-#       define BOOST_NO_STD_ITERATOR
-#       define BOOST_NO_LIMITS
-#     endif
-#     if !defined(_CXXRT_STD) && !defined(__SGI_STL_OWN_IOSTREAMS)
-#       define BOOST_NO_STRINGSTREAM
-#     endif
-#     define BOOST_NO_MEMBER_TEMPLATE_FRIENDS
-#     define BOOST_NO_OPERATORS_IN_NAMESPACE
-#   endif
-#   if __GNUC__ == 2 && __GNUC_MINOR__ <= 8
-#     define BOOST_NO_MEMBER_TEMPLATES
-#   endif
-#   if (__GNUC__ == 2 && __GNUC_MINOR__ > 97) || __GNUC__ > 2
-      // upcoming gcc 3.0
-#     include <iterator>
-#     if defined(__GLIBCPP__)
-        // The new GNU C++ library has slist, hash_map, hash_set headers
-        // in <ext/*>, but client code assumes they're in <*> --- Jens M. 
-#       define BOOST_NO_SLIST
-#       define BOOST_NO_HASH
-#     endif
-#   endif
-
-//  Intel on Linux ---------------------------------------------------------
-
-#elif defined __ICC
-#   include <iterator>
-#   ifdef _CPPLIB_VER 
-      // shipped with Dinkumware 3.10, which has a different hash_map
-#     define BOOST_NO_HASH
-#   endif
-
-//  Kai C++ ----------------------------------------------------------------
-
-#elif defined __KCC
-#   define BOOST_NO_SLIST
-#   define BOOST_NO_HASH
-
-#   if __KCC_VERSION <= 4001
-      // at least on Sun, the contents of <cwchar> is not in namespace std
-#     define BOOST_NO_STDC_NAMESPACE
-#   endif
-
-//  SGI MIPSpro C++ --------------------------------------------------------
-
-#elif defined __sgi
-
-//  Compaq Tru64 Unix cxx ---------------------------------------------------
-
-#elif defined __DECCXX
-#   define BOOST_NO_SLIST
-#   define BOOST_NO_HASH
-
-//  Greenhills C++ -----------------------------------------------------------//
-
-#elif defined __ghs
-#   define BOOST_NO_SLIST
-#   define BOOST_NO_HASH
+//  Compilers are listed in alphabetic order by vendor name
+//  (except VC++ must be last - see below)
 
 //  Borland ------------------------------------------------------------------//
 
-#elif defined __BORLANDC__
+#if defined __BORLANDC__
 #   define BOOST_NO_SLIST
 #   define BOOST_NO_HASH
 // pull in standard library version:
 #   include <memory>
 #   if __BORLANDC__ <= 0x0551
+#     define BOOST_NO_DEPENDENT_NESTED_DERIVATIONS
 #     define BOOST_NO_INTEGRAL_INT64_T
 #     define BOOST_NO_PRIVATE_IN_AGGREGATE
 #   endif
@@ -342,9 +289,90 @@
 #   define BOOST_NO_CV_SPECIALIZATIONS
 #   define BOOST_NO_CV_VOID_SPECIALIZATIONS
 
+// Comeau C++ ----------------------------------------------------------------//
+
+# elif defined __COMO__
+#   if __COMO_VERSION__ <= 4245
+#     define BOOST_FUNCTION_USE_VIRTUAL_FUNCTIONS
+#   endif
+
+//  Compaq Tru64 Unix cxx ---------------------------------------------------
+
+# elif defined __DECCXX
+#   define BOOST_NO_SLIST
+#   define BOOST_NO_HASH
+
+//  GNU CC (also known as GCC and G++)  --------------------------------------//
+
+# elif defined __GNUC__
+#   if __GNUC__ == 2 && __GNUC_MINOR__ == 91
+       // egcs 1.1 won't parse smart_ptr.hpp without this:
+#      define BOOST_NO_AUTO_PTR
+#   endif
+#   if __GNUC__ == 2 && __GNUC_MINOR__ <= 97
+#     include "LString.h"  // not sure this is the right way to do this -JGS
+#     if defined(__BASTRING__) && !defined(__GLIBCPP__) && !defined(_CXXRT_STD) && !defined(__SGI_STL) // need to ask Dietmar about this -JGS
+        // this should only detect the stdlibc++ that ships with gcc, and
+        // not any replacements that may be installed...
+#       define BOOST_NO_STD_ITERATOR
+#       define BOOST_NO_LIMITS
+#     endif
+#     if !defined(_CXXRT_STD) && !defined(__SGI_STL_OWN_IOSTREAMS)
+#       define BOOST_NO_STRINGSTREAM
+#     endif
+#     define BOOST_NO_MEMBER_TEMPLATE_FRIENDS
+#     define BOOST_NO_OPERATORS_IN_NAMESPACE
+#     define BOOST_WEAK_FUNCTION_TEMPLATE_ORDERING
+#   endif
+#   if __GNUC__ == 2 && __GNUC_MINOR__ <= 8
+#     define BOOST_NO_MEMBER_TEMPLATES
+#   endif
+#   if __GNUC__ >= 3
+#     include <iterator>
+#     if defined(__GLIBCPP__)
+        // The new GNU C++ library has slist, hash_map, hash_set headers
+        // in <ext/*>, but client code assumes they're in <*> --- Jens M. 
+#       define BOOST_NO_SLIST
+#       define BOOST_NO_HASH
+#     endif
+#   endif
+
+//  Greenhills C++ -----------------------------------------------------------//
+
+#elif defined __ghs
+#   define BOOST_NO_SLIST
+#   define BOOST_NO_HASH
+
+//  HP aCC -------------------------------------------------------------------
+
+# elif defined __HP_aCC
+#    define BOOST_NO_SLIST
+#    define BOOST_NO_HASH
+#    define BOOST_NO_DEPENDENT_TYPES_IN_TEMPLATE_VALUE_PARAMETERS
+#    define BOOST_NO_OPERATORS_IN_NAMESPACE
+     // (support for HP aCC is not complete, see the regression test results)
+
+//  Intel on Linux -----------------------------------------------------------//
+
+#elif defined __ICC
+#   include <iterator>
+#   ifdef _CPPLIB_VER 
+      // shipped with Dinkumware 3.10, which has a different hash_map
+#     define BOOST_NO_HASH
+#   endif
+
 //  Intel on Windows --------------------------------------------------------//
 
 # elif defined __ICL
+#   if __ICL <= 500
+      // Intel C++ 5.0.1 uses EDG 2.45, but fails to activate Koenig lookup
+      // in the frontend even in "strict" mode.  (reported by Kirk Klobe)
+#     ifndef BOOST_NO_ARGUMENT_DEPENDENT_LOOKUP
+#       define BOOST_NO_ARGUMENT_DEPENDENT_LOOKUP
+#     endif
+#     define BOOST_WEAK_FUNCTION_TEMPLATE_ORDERING
+#     define BOOST_NO_INTRINSIC_WCHAR_T // tentative addition - required for VC6 compatibility? (added by JM 19 Feb 2001)
+#   endif
 #   include <iterator>  // not sure this is the right way to do this -JGS
 #   if __SGI_STL_PORT >= 0x400 || __SGI_STL_PORT >= 0x321 && defined(__STL_USE_NAMESPACES)
         // a perfectly good implementation of std::iterator is supplied
@@ -367,17 +395,32 @@
 #     define BOOST_NO_STD_ALLOCATOR
 #     define BOOST_NO_STD_MIN_MAX
 #   endif
-#   define BOOST_NO_INTRINSIC_WCHAR_T // tentative addition - required for VC6 compatibility? (added by JM 19 Feb 2001)
 
-//  Metrowerks CodeWarrior  --------------------------------------------------//
+//  Kai C++ ----------------------------------------------------------------
+
+#elif defined __KCC
+#   define BOOST_NO_SLIST
+#   define BOOST_NO_HASH
+
+#   if __KCC_VERSION <= 4001
+      // at least on Sun, the contents of <cwchar> is not in namespace std
+#     define BOOST_NO_STDC_NAMESPACE
+#   endif
+ 
+//  Metrowerks CodeWarrior  -------------------------------------------------//
 
 # elif defined  __MWERKS__
 #   if __MWERKS__ <= 0x2401  // 6.2
 #     define BOOST_NO_MEMBER_TEMPLATE_FRIENDS
+#     define BOOST_WEAK_FUNCTION_TEMPLATE_ORDERING
 #   endif
 #   if __MWERKS__ <= 0x2301  // 5.3
 #     define BOOST_NO_POINTER_TO_MEMBER_CONST
 #     define BOOST_NO_DEPENDENT_TYPES_IN_TEMPLATE_VALUE_PARAMETERS
+#     define BOOST_NO_HASH
+#   endif
+#   if __MWERKS__ >= 0x2400
+#     define BOOST_STD_EXTENSION_NAMESPACE Metrowerks
 #   endif
 #   if __MWERKS__ >= 0x2300
 #     define BOOST_SYSTEM_HAS_STDINT_H
@@ -393,20 +436,30 @@
 #     define BOOST_DECL
 #   endif
 
-#   define BOOST_STD_EXTENSION_NAMESPACE Metrowerks
+//  SGI MIPSpro C++ ---------------------------------------------------------//
 
-//  Sun Workshop Compiler C++ ------------------------------------------------
+# elif defined __sgi
+    // This is a generic STLport condition and could be moved elsewhere.
+#   include <iterator>
+#   if defined(__SGI_STL_PORT) && !defined(__STL_MEMBER_TEMPLATE_CLASSES) && !defined(_STLP_MEMBER_TEMPLATE_CLASSES)
+#     define BOOST_NO_STD_ALLOCATOR
+#   endif
+
+//  Sun Workshop Compiler C++ -----------------------------------------------//
 
 # elif defined  __SUNPRO_CC
 #    if __SUNPRO_CC <= 0x520
 #      define BOOST_NO_SLIST
 #      define BOOST_NO_HASH
 #      define BOOST_NO_STD_ITERATOR_TRAITS
+#      define BOOST_NO_STD_ALLOCATOR
+
        // although sunpro 5.1 supports the syntax for
        // inline initialization it often gets the value
        // wrong, especially where the value is computed
        // from other constants (J Maddock 6th May 2001)
 #      define BOOST_NO_INCLASS_MEMBER_INITIALIZATION
+
        // although sunpro 5.1 supports the syntax for
        // partial specialization, it often seems to
        // bind to the wrong specialization.  Better
@@ -418,16 +471,6 @@
 #      define BOOST_NO_MEMBER_TEMPLATES
 #      define BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION
 #    endif
-
-
-//  HP aCC -------------------------------------------------------------------
-
-# elif defined __HP_aCC
-#    define BOOST_NO_SLIST
-#    define BOOST_NO_HASH
-#    define BOOST_NO_DEPENDENT_TYPES_IN_TEMPLATE_VALUE_PARAMETERS
-#    define BOOST_NO_OPERATORS_IN_NAMESPACE
-     // (support for HP aCC is not complete, see the regression test results)
 
 //  Microsoft Visual C++ (excluding Intel/EDG front end)  --------------------
 //
@@ -459,10 +502,13 @@
 #     define BOOST_NO_MEMBER_TEMPLATE_FRIENDS
 #     define BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION
 #     define BOOST_NO_DEPENDENT_TYPES_IN_TEMPLATE_VALUE_PARAMETERS
-
+#     define BOOST_WEAK_FUNCTION_TEMPLATE_ORDERING
 #     include <iterator>  // not sure this is the right way to do this -JGS
 #     if __SGI_STL_PORT >= 0x400 || __SGI_STL_PORT >= 0x321 && defined(__STL_USE_NAMESPACES)
         // a perfectly good implementation of std::iterator is supplied
+        // A conforming allocator is supplied, but the compiler cannot cope
+        // when using "rebind".  (Douglas Gregor)
+#       define BOOST_NO_STD_ALLOCATOR
 #     elif defined(__SGI_STL_ITERATOR)
 #       define BOOST_NO_STD_ITERATOR // No std::iterator in this case
 #     elif defined(_CPPLIB_VER) && (_CPPLIB_VER >= 306)
@@ -472,8 +518,9 @@
 #       ifndef _GLOBAL_USING    // can be defined in yvals.h
 #         define BOOST_NO_STDC_NAMESPACE
 #       endif
+#       define BOOST_MSVC_STD_ITERATOR
 #     else
-#       define BOOST_MSVC_STD_ITERATOR 1
+#       define BOOST_MSVC_STD_ITERATOR
 #       define BOOST_NO_SLIST
 #       define BOOST_NO_HASH
 #       define BOOST_NO_TEMPLATED_ITERATOR_CONSTRUCTORS
@@ -601,6 +648,7 @@ namespace std {
 #endif
 
 #endif  // BOOST_CONFIG_HPP
+
 
 
 
