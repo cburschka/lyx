@@ -1623,7 +1623,9 @@ void LyXParagraph::PasteParagraph()
 	}
    
 	// delete the next paragraph
+	LyXParagraph *prev = the_next->previous;
 	delete the_next;
+	prev->next = 0;
 }
 
 

@@ -1,3 +1,8 @@
+2000-05-22  Juergen Vigna  <jug@sad.it>
+
+	* src/paragraph.C (PasteParagraph): Possibly a memory leak as
+	next was deleted but not set to 0.
+
 2000-05-21  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/language.C (initL): change the initialization of languages
