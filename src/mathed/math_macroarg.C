@@ -43,7 +43,7 @@ void MathMacroArgument::metrics(MathStyles st) const
 		ascent_  = xcell(0).ascent();
 		descent_ = xcell(0).descent();
 	} else
-		mathed_string_dim(LM_TC_TEX, size(), str_, width_, ascent_, descent_);
+		mathed_string_dim(LM_TC_TEX, size(), str_, ascent_, descent_, width_);
 }
 
 
