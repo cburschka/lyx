@@ -1,3 +1,7 @@
+2001-10-18  Juergen Vigna  <jug@sad.it>
+
+	* inset.C (getMaxWidth): use LyXText::workWidth(BufferView, Inset *).
+
 2001-10-15  José Matos  <jamatos@fep.up.pt>
 
 	* insetert.C: allow export for docbook and linuxdoc

@@ -64,6 +64,41 @@ int LyXText::workWidth(BufferView * bview) const
 }
 
 
+int LyXText::workWidth(BufferView * bview, Inset * inset) const
+{
+	Buffer::inset_iterator it;
+	Paragraph * par = 0;
+	Paragraph::size_type pos;
+
+	for(it=bview->buffer()->inset_iterator_begin();
+	    it != bview->buffer()->inset_iterator_end();
+	    ++it)
+	{
+		if (*it == inset) {
+			par = it.getPar();
+			pos = it.getPos();
+			break;
+		}
+	}
+	if (par) {
+		Row * row = firstrow;
+		for(; row; row = row->next()) {
+			if ((row->par() == par && row->pos() >= pos)) {
+				if (!row->next())
+					break;
+				else if ((row->next()->par() == par) &&
+						 (row->next()->pos() >= pos))
+					continue;
+			}
+		}
+		if (row) {
+			return workWidth(bview) - leftMargin(bview, row);
+		}
+	}
+	return workWidth(bview);
+}
+
+
 int LyXText::getRealCursorX(BufferView * bview) const
 {
 	int x = cursor.x();

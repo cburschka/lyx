@@ -466,6 +466,8 @@ public:
 	///
 	int workWidth(BufferView *) const;
 	///
+	int workWidth(BufferView *, Inset * inset) const;
+	///
 	void computeBidiTables(Buffer const *, Row * row) const;
 
 	/// Maps positions in the visual string to positions in logical string.
