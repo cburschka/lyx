@@ -199,11 +199,15 @@ AC_DEFUN(QT_DO_IT_ALL,
 	AC_SUBST(QT_INCLUDES)
 	AC_SUBST(QT_LDFLAGS)
  
-	QT_FIND_MOC
-	MOC=$ac_moc
+ 	if test -z "$MOC"; then
+		QT_FIND_MOC
+		MOC=$ac_moc
+	fi
 	AC_SUBST(MOC)
-	QT_FIND_UIC
-	UIC=$ac_uic
+ 	if test -z "$UIC"; then
+		QT_FIND_UIC
+		UIC=$ac_uic
+	fi
 	AC_SUBST(UIC)
 
 	QT_CHECK_COMPILE
