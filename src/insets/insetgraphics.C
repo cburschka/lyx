@@ -574,22 +574,21 @@ string findTargetFormat(string const & suffix)
 	// lyxrc.pdf_mode means:
 	// Are we creating a PDF or a PS file?
 	// (Should actually mean, are we using latex or pdflatex).
-	lyxerr[Debug::GRAPHICS] << "findTargetFormat: lyxrc.pdf_mode = "
-			    << lyxrc.pdf_mode << std::endl;
 	if (lyxrc.pdf_mode) {
+		lyxerr[Debug::GRAPHICS] << "findTargetFormat: PDF mode\n";
 		if (contains(suffix,"ps") || suffix == "pdf")
 			return "pdf";
-		else if (suffix == "jpg")
+		else if (suffix == "jpg")	// pdflatex can use jpeg
 			return suffix;
 		else
-			return "png";
+			return "png";		// and also png
 	}
 	// If it's postscript, we always do eps.
 	lyxerr[Debug::GRAPHICS] << "findTargetFormat: PostScript mode\n";
-	if (suffix != "ps")
-	    return "eps";
+	if (suffix != "ps")			// any other than ps
+	    return "eps";			// is changed to eps
 	else
-	    return "ps";
+	    return suffix;			// let ps untouched
 }
 
 } // Anon. namespace
@@ -602,14 +601,19 @@ string const InsetGraphics::prepareFile(Buffer const *buf) const
 	string const orig_file = params().filename;
 	string const orig_file_with_path =
 		MakeAbsPath(orig_file, buf->filePath());
+	lyxerr[Debug::GRAPHICS] << "prepareFile: " << orig_file << endl
+		    << "  with path: " << orig_file_with_path << endl;
 
 	if (!IsFileReadable(orig_file_with_path))
 		return orig_file;
 
 	// If the file is compressed and we have specified that it should not be
 	// uncompressed, then just return its name and let LaTeX do the rest!
-	bool const zipped = zippedFile(orig_file);
+	bool const zipped = zippedFile(orig_file_with_path);
+	if (zipped)
+		lyxerr[Debug::GRAPHICS] << "it's a zipped file\n";
 	if (zipped && params().noUnzip) {
+		lyxerr[Debug::GRAPHICS] << "pass file unzipped to LaTeX\n";
 		return orig_file;
 	}
 
@@ -627,9 +631,23 @@ string const InsetGraphics::prepareFile(Buffer const *buf) const
 
 	// Perform all these manipulations on a temporary file if possible.
 	// If we are not using a temp dir, then temp_file contains the
-	// original file.
-	string temp_file = MakeAbsPath(OnlyFilename(orig_file), buf->tmppath);
-
+	// original file. 
+	// to allow files with the same name in different dirs
+	// we manipulate the original file "any.dir/file.ext" 
+	// to "any_dir_file.ext"! changing the dots in the  
+	// dirname is important for the use of ChangeExtension
+	string temp_file(orig_file);
+	if (lyxrc.use_tempdir) {
+		string const ext_tmp = GetExtension(orig_file);
+		// without ext and /
+		temp_file = subst(		
+			ChangeExtension(temp_file, string()), "/", "_");
+		// without . and again with ext
+		temp_file = ChangeExtension(	
+			subst(temp_file, ".", "_"), ext_tmp);
+		// now we have any_dir_file.ext
+		temp_file = MakeAbsPath(temp_file, buf->tmppath);
+	}
 	lyxerr[Debug::GRAPHICS]
 		<< "InsetGraphics::prepareFile. The temp file is: "
 		<< temp_file << endl;
@@ -673,7 +691,11 @@ string const InsetGraphics::prepareFile(Buffer const *buf) const
 	}
 
 	// Ascertain the graphics format that LaTeX requires.
-	string const from = getExtFromContents(temp_file);
+	// Make again an absolute path, maybe that we have no
+	// tempdir. Than temp_file=orig_file
+	string const from = lyxrc.use_tempdir ?
+		getExtFromContents(temp_file) :
+		getExtFromContents(MakeAbsPath(temp_file, buf->filePath()));
 	string const to   = findTargetFormat(from);
 
 	// No conversion is needed. LaTeX can handle the graphics file as it is.
@@ -686,7 +708,7 @@ string const InsetGraphics::prepareFile(Buffer const *buf) const
 
 	lyxerr[Debug::GRAPHICS]
 		<< "InsetGraphics::prepareFile. The original file is "
-		<< orig_file << ".\n"
+		<< orig_file << "\n"
 		<< "A copy has been made and convert is to be called with:\n"
 		<< "\tfile to convert = " << temp_file << '\n'
 		<< "\toutfile_base = " << outfile_base << '\n'

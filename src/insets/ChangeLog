@@ -1,3 +1,11 @@
+2002-05-14  Herbert Voss  <voss@perce.de>
+
+	* insetgraphics.C (prepareFile): allow files with same name
+	in different dirs
+	(readFigInset): set the flags from old figinset in the right
+	manner
+	(findTargetFormat): more comments
+
 2002-05-14  Juergen Vigna  <jug@sad.it>
 
 	* insettext.C (edit): tell checkAndActivateInset() that we don't
