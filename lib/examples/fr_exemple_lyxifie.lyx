@@ -6,7 +6,7 @@
 \fontscheme default
 \graphics default
 \paperfontsize default
-\spacing single
+\spacing single 
 \papersize a4paper
 \paperpackage a4
 \use_geometry 0
@@ -35,10 +35,10 @@ collapsed true
 Informations de révision :
 \layout Standard
 
-Traduction : Mise à jour, Date: 2001/02/16
+Traduction : Mise à jour, Date: 07/07/2003
 \layout Standard
 
-Original : Révision: 1.4, Date: 2000/11/03
+Original : Révision: 1.6, Date: 17/01/2003
 \end_inset 
 
 
@@ -221,7 +221,7 @@ Si
 \layout Standard
 
 alors 
-\begin_inset Formula $x=\frac{-b\pm \sqrt{b^{2}-4ac}}{2a}$
+\begin_inset Formula $x=\frac{-b\pm\sqrt{b^{2}-4ac}}{2a}$
 \end_inset 
 
  (eq.
@@ -232,7 +232,7 @@ Une autre favorite, la base du calcul différentiel :
 \layout Standard
 
 
-\begin_inset Formula $f'(x)\equiv \lim _{\Delta x\rightarrow 0}\frac{f(x+\Delta x)-f(x)}{\Delta x}$
+\begin_inset Formula $f'(x)\equiv\lim_{\Delta x\rightarrow0}\frac{f(x+\Delta x)-f(x)}{\Delta x}$
 \end_inset 
 
  (eq.

@@ -9,7 +9,7 @@
 \fontscheme default
 \graphics default
 \paperfontsize 10
-\spacing single
+\spacing single 
 \papersize Default
 \paperpackage a4
 \use_geometry 0
@@ -27,20 +27,20 @@
 \papersides 1
 \paperpagestyle default
 \bulletLaTeX 0
-"\raise1pt\hbox{\small\(\blacktriangleright\)}"
+	"\raise1pt\hbox{\small\(\blacktriangleright\)}"
 \end_bullet
 \bulletLaTeX 1
-"\raise1pt\hbox{\(\leadsto\)}"
+	"\raise1pt\hbox{\(\leadsto\)}"
 \end_bullet
 \bullet 2
-4
-8
-3
+	4
+	8
+	3
 \end_bullet
 \bullet 3
-0
-8
--1
+	0
+	8
+	-1
 \end_bullet
 
 \layout Title
@@ -54,10 +54,10 @@ collapsed true
 Informations de révision :
 \layout Standard
 
-Traduction : Mise à jour, Date : 24/07/2002
+Traduction : Mise à jour, Date : 06/07/2003
 \layout Standard
 
-Original : Révision: 1.5, Date : 23/04/2001
+Original : Révision: 1.6, Date : 17/01/2003
 \end_inset 
 
 
@@ -89,9 +89,9 @@ Vous verrez vite que vous pouvez rendre le réglage des puces assez complexe.
 \layout Itemize
 
 
-\emph on 
-itemize
-\emph default 
+\family sans 
+ListePuces
+\family default 
  est l'environnement standard pour les listes à puces
 \begin_deeper 
 \layout Itemize
