@@ -29,6 +29,7 @@
 
 #include "support/lstrings.h"
 #include "support/os.h"
+#include "debug.h"
 
 // Dear Lord, deliver us from Evil, aka the Qt headers
 // Qt defines a macro 'signals' that clashes with a boost namespace.
@@ -50,6 +51,8 @@
 
 #include <qapplication.h>
 #include <qpaintdevicemetrics.h>
+#include <qtranslator.h>
+#include <qtextcodec.h>
 
 using lyx::support::ltrim;
 
@@ -152,7 +155,25 @@ bool use_gui = true;
 
 void parse_init(int & argc, char * argv[])
 {
-	static LQApplication a(argc, argv);
+	static LQApplication app(argc, argv);
+
+#if QT_VERSION >= 0x030200
+        // install translation file for Qt built-in dialogs
+	// These are only installed since Qt 3.2.x
+        static QTranslator qt_trans(0);
+        if (qt_trans.load(QString("qt_") + QTextCodec::locale(),
+			  qInstallPathTranslations())) {
+		app.installTranslator(&qt_trans);
+		// even if the language calls for RtL, don't do that
+		app.setReverseLayout(false);
+		lyxerr[Debug::GUI]
+			<< "Successfully installed Qt translations for locale "
+			<< QTextCodec::locale() << std::endl;
+	} else
+		lyxerr[Debug::GUI]
+			<< "Could not find  Qt translations for locale "
+			<< QTextCodec::locale() << std::endl;
+#endif
 
 	using namespace lyx::graphics;
 
