@@ -69,6 +69,37 @@ $$
 \bibliographystyle{}
 \c{}
 \cite[]{}
+
+% Natbib citations can usually have two optional args, but LyX currently
+% supports only one.
+\citet[]{}
+\Citet[]{}
+\citet*[]{}
+\Citet*[]{}
+
+\citealt[]{}
+\Citealt[]{}
+\citealt*[]{}
+\Citealt*[]{}
+
+\citep[]{}
+\Citep[]{}
+\citep*[]{}
+\Citep*[]{}
+
+\citealp[]{}
+\Citealp[]{}
+\citealp*[]{}
+\Citealp*[]{}
+
+\citeauthor[]{}
+\Citeauthor[]{}
+\citeauthor*[]{}
+\Citeauthor*[]{}
+
+\citeyear[]{}
+\citeyearpar[]{}
+
 \cline{ - }
 \d{}
 \documentclass[]{}[]

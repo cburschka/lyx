@@ -218,6 +218,32 @@ my $MathEnvironments = "(math|displaymath|xxalignat|(equation|eqnarray|align|ali
 # ListLayouts may have standard paragraphs nested inside them.
 my $ListLayouts = "Itemize|Enumerate|Description";
 
+# passed a string and an array
+# returns true if the string is an element of the array.
+sub foundIn {
+    my $name = shift;
+    return grep {$_ eq $name} @_;
+}
+
+my @NatbibCommands = map {"\\$_"} qw(citet citealt citep citealp citeauthor);
+
+# passed a string.
+# returns true if it is a valid natbib citation
+sub isNatbibCitation {
+    my $name = shift;
+
+    # These two have a single form
+    return 1 if ($name eq '\citeyear' or $name eq '\citeyearpar');
+
+    # Natbib citations can start with a 'C' or a 'c'
+    $name =~ s/^\\C/\\c/;
+    # The can end with a '*'
+    $name =~ s/\*$//;
+    # Is this doctored string found in the list of valid commands?
+    return foundIn($name, @NatbibCommands);
+    
+}
+
 #####################   PARSER INVOCATION   ##################################
 sub call_parser {
 # This subroutine calls the TeX parser & translator
@@ -381,7 +407,8 @@ sub basic_lyx {
 		} # end special handling for \@
 
 	    # Handle tokens that LyX translates as a "LatexCommand" inset
-	    } elsif (grep {$_ eq $name} @LatexCommands) {
+	    } elsif (foundIn($name, @LatexCommands) ||
+		     isNatbibCitation($name)){
 		&CheckForNewParagraph; #Start new paragraph if necessary
 	        print OUTFILE "$pre_space\n\\begin_inset LatexCommand ",
 		               $name,
@@ -537,7 +564,7 @@ sub basic_lyx {
 	    print "$name" if $debug_on;
 
 	    # Handle things that LyX translates as a "LatexCommand" inset
-	    if (grep {$_ eq $name} @LatexCommands) {
+	    if (foundIn($name, @LatexCommands) || isNatbibCitation($name)){
 		&CheckForNewParagraph; #Start new paragraph if necessary
 
 	        print OUTFILE "$pre_space\n\\begin_inset LatexCommand ";
@@ -772,7 +799,8 @@ sub basic_lyx {
 
 	    # Handle things that LyX translates as a "LatexCommand" inset
 	    # or "Include" insets
-	    if (grep {$_ eq $name} @LatexCommands, @IncludeCommands) {
+	    if (foundIn($name, @LatexCommands, @IncludeCommands) ||
+		isNatbibCitation($name)){
 	        print OUTFILE "\}\n\n\\end_inset \n\n";
 
 	    } elsif (exists $ReadCommands::ToLayout->{$name}) {

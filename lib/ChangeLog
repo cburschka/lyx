@@ -1,5 +1,14 @@
 2003-02-11  Angus Leeming  <leeming@lyx.org>
   
+	* BasicLyX.pm: enable reLyX to recognise natbib citations.
+
+	* MakePreamble.pm: if '\usepackage{natbib}' is found, activate
+	LyX's natbib support.
+
+	* reLyX/syntax.default: add natbib citation commands.
+
+2003-02-11  Angus Leeming  <leeming@lyx.org>
+  
 	* reLyX/MakePreamble.pm: Output an accurate decription of what created
 	the file.
 

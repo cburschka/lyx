@@ -300,6 +300,14 @@ sub translate_preamble {
 	}
     }
 
+    # Natbib is a little more complex than that.
+    if ($Latex_Preamble =~ s/\\usepackage(.*)\{natbib\}\s*//) {
+	$LyX_Preamble .= "\\use_natbib 1\n\\use_numerical_citations ";
+	$LyX_Preamble .= ($1 =~ /numbers/) ? "1\n" : "0\n";
+    } else {
+	$LyX_Preamble .= "\\use_natbib 0\n\\use_numerical_citations 0\n";
+    }
+
     ## Handle geometry options
     ## The custom paper missing from the options list since it involves two parameters
     my %Geometry_Options =(
