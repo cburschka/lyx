@@ -132,6 +132,10 @@ void Dialogs::showLogFile()
 }
 
 
+void Dialogs::showMathPanel()
+{}
+
+
 void Dialogs::showMinipage(InsetMinipage * im)
 {
 	pimpl_->minipage.controller().showInset(im);
