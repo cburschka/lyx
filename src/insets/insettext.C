@@ -1981,11 +1981,17 @@ RowList::iterator InsetText::crow(BufferView * bv) const
 LyXText * InsetText::getLyXText(BufferView const * bv,
 				bool const recursive) const
 {
-	if (bv)
-		text_.bv_owner = const_cast<BufferView *>(bv);
+	setViewCache(bv);
 	if (recursive && the_locking_inset)
 		return the_locking_inset->getLyXText(bv, true);
 	return &text_;
+}
+
+
+void InsetText::setViewCache(BufferView const * bv) const
+{
+	if (bv)
+		text_.bv_owner = const_cast<BufferView *>(bv);
 }
 
 
