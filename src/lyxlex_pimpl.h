@@ -4,6 +4,7 @@
 #define LYXLEX_PIMPL_H
 
 #include <fstream>
+#include <stack>
 
 #include "lyxlex.h"
 
@@ -12,7 +13,7 @@
 #endif
 
 ///
-struct LyXLex::Pimpl {
+struct LyXLex::Pimpl : public noncopyable {
 	///
 	enum {
 		///
@@ -20,23 +21,9 @@ struct LyXLex::Pimpl {
 	};
 	
 	///
-	struct pushed_table {
-		///
-		pushed_table(){
-			next = 0;
-			table_elem = 0;
-		}
-		///
-		pushed_table * next;
-		///
-		keyword_item * table_elem;
-		///
-		int table_siz;
-	};
-	///
 	Pimpl(keyword_item * tab, int num);
 	///
-	string GetString() const;
+	string const GetString() const;
 	///
 	void printError(string const & message) const;
 	///
@@ -61,7 +48,6 @@ struct LyXLex::Pimpl {
 	bool nextToken();
 	///
 	void pushToken(string const &);
-
 	/// fb__ is only used to open files, the stream is accessed through is
 	std::filebuf fb__;
 	/// the stream that we use.
@@ -77,10 +63,26 @@ struct LyXLex::Pimpl {
 	///
 	short status;
 	///
-	pushed_table * pushed;
-	///
 	int lineno;
 	///
 	string pushTok;
+private:
+	///
+	void verifyTable();
+	///
+	struct pushed_table {
+		///
+		pushed_table()
+			: table_elem(0), table_siz(0) {}
+		///
+		pushed_table(keyword_item * ki, int siz)
+			: table_elem(ki), table_siz(siz) {}
+		///
+		keyword_item * table_elem;
+		///
+		int table_siz;
+	};
+	///
+	std::stack<pushed_table> pushed;
 };
 #endif

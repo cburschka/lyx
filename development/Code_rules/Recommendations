@@ -8,10 +8,10 @@ follow these rules, but they should be the goal.
 - Use the same form in corresponding calls to new and delete,
   i.e. write delete[] obj; if new obj[n]; was used to create
   the object and write delete obj; if you wrote new obj;
-  Notice strings should be LString's instead of char *'s.
+  Notice strings should be std::string's instead of char *'s.
 
-- Define a copy constructor and an assignment operator for all
-  classes with dynamically allocated memory.
+- Define a default constructor, copy constructor and an assignment
+  operator for all classes with dynamically allocated memory.
 
 - make destructors virtual in base classes.
 

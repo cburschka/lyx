@@ -1,3 +1,82 @@
+2000-08-05  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/support/translator.h: move all typedefs to public section
+
+	* src/support/filetools.C (MakeLatexName): return string const
+	(QuoteName): ditto
+	(TmpFileName): ditto
+	(FileOpenSearch): ditto
+	(FileSearch): ditto
+	(LibFileSearch): ditto
+	(i18nLibFileSearch): ditto
+	(GetEnv): ditto
+	(GetEnvPath): ditto
+	(CreateTmpDir): ditto
+	(CreateBufferTmpDir): ditto
+	(CreateLyXTmpDir): ditto
+	(GetCWD): ditto
+	(OnlyPath): ditto
+	(MakeAbsPath): ditto
+	(AddName): ditto
+	(OnlyFilename): ditto
+	(ExpandPath): ditto
+	(NormalizePath): ditto
+	(CleanupPath): ditto
+	(GetFileContents): ditto
+	(ReplaceEnvironmentPath): ditto
+	(MakeRelPath): ditto
+	(AddPath): ditto
+	(ChangeExtension): ditto
+	(MakeDisplayPath): ditto
+	(do_popen): return cmdret const
+	(findtexfile): return string const
+
+	* src/support/DebugStream.h: add some /// to please doc++
+
+	* src/frontends/DialogBase.h (endif): add some /// to please doc++
+
+	* src/texrow.C (same_rownumber): functor to use with find_if
+	(getIdFromRow): rewritten to use find_if and to not update the
+	positions. return true if row is found
+	(increasePos): new method, use to update positions
+
+	* src/lyxlex_pimpl.h: make LyXLex::Pimpl noncopyable
+
+	* src/lyxlex_pimpl.C (verifyTable): new method
+	(pushTable): use it
+	(Pimpl): use it
+	(GetString): return string const
+	(pushTable): rewrite to use std::stack
+	(popTable): ditto
+	(setFile): better check
+	(setStream): ditto
+
+	* src/lyxlex.h: make LyXLex noncopyable
+
+	* src/lyxlex.C (text): return char const * const
+	(GetString): return string const
+	(getLongString): return string const
+
+	* src/lyx_gui_misc.C (askForText): return pair<...> const
+
+	* src/lastfiles.[Ch] (operator): return string const
+
+	* src/buffer.C (parseSingleLyXformat2Token): pass string to
+	istringstream not char const *. 
+	move token.end() out of loop.
+	(readFile): move initializaton of token
+
+	* src/BufferView2.C (insertErrors): run texrow.increasePos if
+	getIdFromRow is successful.
+
+	* lib/bind/emacs.bind: don't include menus bind
+
+	* development/Code_rules/Rules: the beginnings of making this
+	better and covering more of the unwritten rules that we have.
+
+	* development/Code_rules/Recommendations: a couple of wording
+	changes. 
+
 2000-08-04  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/support/strerror.c: remove C++ comment.

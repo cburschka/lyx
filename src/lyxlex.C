@@ -54,7 +54,8 @@ int LyXLex::GetLineNo() const
 	return pimpl_->lineno;
 }
 
-char const * LyXLex::text() const
+
+char const * const LyXLex::text() const
 {
 	return &pimpl_->buff[0];
 }
@@ -130,7 +131,7 @@ float LyXLex::GetFloat() const
 }
 
 
-string LyXLex::GetString() const
+string const LyXLex::GetString() const
 {
 	return pimpl_->GetString();
 }
@@ -139,7 +140,7 @@ string LyXLex::GetString() const
 // I would prefer to give a tag number instead of an explicit token
 // here, but it is not possible because Buffer::readLyXformat2 uses
 // explicit tokens (JMarc) 
-string LyXLex::getLongString(string const & endtoken)
+string const LyXLex::getLongString(string const & endtoken)
 {
 	string str, prefix;
 	bool firstline = true;

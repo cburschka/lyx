@@ -36,7 +36,7 @@ public:
 	void newline();
 
 	/// Returns paragraph id and position from a row number
-	void getIdFromRow(int row, int & id, int & pos) const;
+	bool getIdFromRow(int row, int & id, int & pos) const;
 
 	/// Appends another TexRow
 	TexRow & operator+= (TexRow const &);
@@ -44,7 +44,6 @@ public:
 	/// Returns the number of rows in this texrow
 	int rows() const { return count; }
 
-private:
 	/// Linked list of items
 	class RowItem {
 	public:
@@ -83,9 +82,12 @@ private:
 		int rownumber_;
 	};
 	///
-	unsigned int count;
-	///
 	typedef std::list<RowItem> RowList;
+	///
+	void increasePos(int id, int pos) const;
+private:
+	///
+	unsigned int count;
 	///
 	mutable RowList rowlist;
 	/// Last paragraph

@@ -3,7 +3,7 @@ Rules for the code in LyX
 [updated from the C++STYLE distrubuted with the GNU C++ Standard]
 
 The aim of this file is to serve as a guide for the developers, to aid us to
-get clean and uniform code. Still uncomplete.
+get clean and uniform code. This document is still uncomplete.
 
 We really like to have new developers joining the LyX Project. However
 since we have had problems in the past with developers leaving the
@@ -12,67 +12,158 @@ of this happened before that we really became aware of these issues,
 but still, we don't want it to happen again. So we have put together
 some guidelines and rules for the developers.
 
-In general, if you want to contribute to the main source, we expect at least 
-that you:
-
-- write good C++ code: Readable, well commented and taking advantage of the 
-  OO model.
-- adapt the code to the structures already existing in LyX, or in case that 
-  you have better ideas, discuss them on the developer's list before writing 
-  the code.
-- take advantage of the C++ standard library.
-
-- we use the preincrement operator whenever possible, it has potential
-  of beeing faster than postincrement. (same goes for decrement)
-- we try to give variables minimal scope.
+General
+-------
 
 These guidelines should save us a lot of work while cleaning up the code and 
 help us to have quality code. LyX has been haunted by problems coming from 
 unfinished projects by people who have left the team. Those problems will 
 hopefully disappear if the code is easy to hand over to somebody else.
 
-When you send in a patch or commit to the LyX cvs repository we expect
-you to add a ChangeLog entry. The entry should have this syntax:
+In general, if you want to contribute to the main source, we expect at least 
+that you:
+
+- the most important rule first: kiss (keep it simple stupid), always
+  use a simple implementation in favour of a more complicated one.
+  This eases maintenence a lot.
+- write good C++ code: Readable, well commented and taking advantage of the 
+  OO model. Follow the formatting guidelines. See Formatting.
+- adapt the code to the structures already existing in LyX, or in case that 
+  you have better ideas, discuss them on the developer's list before writing 
+  the code.
+- take advantage of the C++ standard library. especially don't use
+  custom containers when a standard container is usable, learn to use
+  the algorithms and functors in the standard library.
+- document all variables, methods, functions, classes etc. We are
+  using the source documentation program doc++, a program that handles
+  javadoc syntax, to document sources. See Source Documentation.
+- we have certain code constructs that we try to follow. See Code
+  Constructs.
+
+
+Submiting Code
+------------------
+
+It is implicitly understood that all patches contributed to The LyX
+Project is under the Gnu General Public Lisence, it you have a problem
+with that, don't contribute code.
+
+Also please don't just pup up out of the blue with a huge patch (or
+small) that changes something substantial in LyX. Always discuss your
+ideas with the developers on the developers mailinglist.
+
+When you create the patch, please use "diff -up" since we find that a
+lot easier to read than the other diff formats. Also please do not
+send patches that implements/fix several different things, several
+patches is a much better option.
+
+We also expect you to provide a ChangeLog entry with every patch, this
+describes shortly what the patch is doing. The ChangeLog entry follows
+this syntax:
 
 1999-12-13  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/support/lyxstring.C (find): assert bug fixed.
 
-* Pointers and references
-  char * p = "flop";
-  char & c = *p;
-      -NOT-
-  char *p = "flop"; // wrong
-  char &c = *p;     // wrong
 
- Some time ago we had a huge discusion on this subject and after
-convincing argumentation from Asger this is what we decided. Also note
-that we will have:
- char const * p;
-      -NOT-
- const char * p;
+Code Constructs
+---------------
+
+We have several guidelines on code constructs, some of these exists to
+make the code faster, others to make the code clearer. Yet others
+exists to make us able to take advantage of the strong type checking
+in C++.
+  
+- Declaration of variables should wait as long as possible. The rule
+  is: "Don't declare it until you need it." In C++ there are a lot of
+  user defined types, and these can very often be expensive to
+  initialize. This rule connects to the next rule too.
+
+- Make the scope of a variable as small as possible.
+
+- Prefere preincrement to postincrement whenever possible.
+  Preincrement has potential of beeing faster than postincrement. Just
+  thing about the obvious implementations of pre/post-increment. This
+  rule applies to decrement too.
+
+	++T;
+	--U;
+	-NOT-
+	T++; // wrong
+	U--; // wrong
+
+- Try to minimize evaluation of the same code over and over. This is
+  aimed especially at loops.
+
+	Container::iterator end = large.end();
+	for (Container::iterator it = large.begin(), it != end; ++it) {
+		...;
+	}
+	-NOT-
+	for (Container::iterator it = large.begin();
+	     it != large.end(); ++it) {
+		...;
+	}
+
+- For functions and metods that returns a non-POD type T, return T
+  const instead. This gives better type checking, and will give a
+  compiler warning when temporaries are used wrongly.
+
+	T const add(...);
+	-NOT-
+	T add(...);
+
+
+Formatting
+----------
+
+* Only one delaration on each line.
+	int a;
+	int b;
+	-NOT-
+	int a, b; // wrong
+  This is especially important when initialization is done at the same
+  time:
+	string a("Lars");
+	string b("Gullik");
+	-NOT-
+	string a("Lars"), b("Gullik"); // wrong
+
+* Pointers and references
+	char * p = "flop";
+	char & c = *p;
+	-NOT-
+	char *p = "flop"; // wrong
+	char &c = *p;     // wrong
+
+  Some time ago we had a huge discusion on this subject and after
+  convincing argumentation from Asger this is what we decided. Also note
+  that we will have:
+	char const * p;
+	-NOT-
+	const char * p; // wrong
 
 * Operator names and parentheses
-  operator==(type)
-       -NOT-
-  operator == (type)  // wrong
+	operator==(type)
+	-NOT-
+	operator == (type)  // wrong
 
   The == is part of the function name, separating it makes the
-declaration look like an expression.
+  declaration look like an expression.
 
 * Function names and parentheses
-  void mangle()
-       -NOT-
-  void mangle ()  // wrong
+	void mangle()
+	-NOT-
+	void mangle ()  // wrong
 
 * Enumerators
-  enum {
-	one = 1,
-	two = 2,
-	three = 3
-  };
-  -NOT-
-  enum { one = 1, two = 2, three 3 };
+	enum {
+		one = 1,
+		two = 2,
+		three = 3
+	};
+	-NOT-
+	enum { one = 1, two = 2, three 3 }; // wrong
 
 * Naming rules for classes
 
@@ -87,7 +178,7 @@ declaration look like an expression.
   - Long variables are named like thisLongVariableName.
 
   New types are capitalized, so this goes for typedefs,classes,structs
-and enums.
+  and enums.
 
 * Formatting
 
@@ -205,4 +296,4 @@ should also go through old code and apply this algorithm to the
 existing member functions. That will help maintainability in the
 future.
 
-(I'll feel in more from Scott Meyers article when time allows.)
+(I'll fill in more from Scott Meyers article when time allows.)

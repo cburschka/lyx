@@ -731,7 +731,7 @@ void LyXParagraph::InsertInset(LyXParagraph::size_type pos,
 
 bool LyXParagraph::InsertInsetAllowed(Inset * inset)
 {
-	lyxerr << "LyXParagraph::InsertInsetAllowed" << endl;
+	//lyxerr << "LyXParagraph::InsertInsetAllowed" << endl;
 	
 	if (inset_owner)
 		return inset_owner->InsertInsetAllowed(inset);

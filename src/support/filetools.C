@@ -75,7 +75,7 @@ bool IsLyXFilename(string const & filename)
 
 
 // Substitutes spaces with underscores in filename (and path)
-string MakeLatexName(string const & file)
+string const MakeLatexName(string const & file)
 {
 	string name = OnlyFilename(file);
 	string path = OnlyPath(file);
@@ -96,8 +96,9 @@ string MakeLatexName(string const & file)
 	return AddName(path, name);
 }
 
+
 // Substitutes spaces with underscores in filename (and path)
-string QuoteName(string const & name)
+string const QuoteName(string const & name)
 {
 	// CHECK Add proper emx support here!
 #ifndef __EMX__
@@ -108,15 +109,15 @@ string QuoteName(string const & name)
 }
 
 
-/// Returns an unique name to be used as a temporary file. 
-string TmpFileName(string const & dir, string const & mask)
+// Returns an unique name to be used as a temporary file. 
+string const TmpFileName(string const & dir, string const & mask)
 {// With all these temporary variables, it should be safe enough :-) (JMarc)
 	string tmpdir;	
 	if (dir.empty())
 		tmpdir = system_tempdir;
 	else
 		tmpdir = dir;
-	string tmpfl = AddName(tmpdir, mask);
+	string tmpfl(AddName(tmpdir, mask));
 
 	// find a uniq postfix for the filename...
 	// using the pid, and...
@@ -170,7 +171,7 @@ int IsFileWriteable (string const & path)
 //	 -1: error- couldn't find out
 int IsDirWriteable (string const & path)
 {
-        string tmpfl = TmpFileName(path);
+        string tmpfl(TmpFileName(path));
 
 	if (tmpfl.empty()) {
 		WriteFSAlert(_("LyX Internal Error!"), 
@@ -189,8 +190,8 @@ int IsDirWriteable (string const & path)
 // If path entry begins with $$LyX/, use system_lyxdir
 // If path entry begins with $$User/, use user_lyxdir
 // Example: "$$User/doc;$$LyX/doc"
-string FileOpenSearch (string const & path, string const & name, 
-		       string const & ext)
+string const FileOpenSearch (string const & path, string const & name, 
+			     string const & ext)
 {
 	string real_file, path_element;
 	bool notfound = true;
@@ -225,8 +226,8 @@ string FileOpenSearch (string const & path, string const & name,
 
 // Returns the real name of file name in directory path, with optional
 // extension ext.  
-string FileSearch(string const & path, string const & name, 
-		  string const & ext)
+string const FileSearch(string const & path, string const & name, 
+			string const & ext)
 {
 	// if `name' is an absolute path, we ignore the setting of `path'
 	// Expand Environmentvariables in 'name'
@@ -253,8 +254,8 @@ string FileSearch(string const & path, string const & name,
 //   1) user_lyxdir
 //   2) build_lyxdir (if not empty)
 //   3) system_lyxdir
-string LibFileSearch(string const & dir, string const & name, 
-		     string const & ext)
+string const LibFileSearch(string const & dir, string const & name, 
+			   string const & ext)
 {
         string fullname = FileSearch(AddPath(user_lyxdir, dir),
 				     name, ext); 
@@ -271,8 +272,9 @@ string LibFileSearch(string const & dir, string const & name,
 }
 
 
-string i18nLibFileSearch(string const & dir, string const & name, 
-			 string const & ext)
+string const
+i18nLibFileSearch(string const & dir, string const & name, 
+		  string const & ext)
 {
 	string lang = token(string(GetEnv("LANG")), '_', 0);
 	
@@ -289,7 +291,7 @@ string i18nLibFileSearch(string const & dir, string const & name,
 }
 
 
-string GetEnv(string const & envname)
+string const GetEnv(string const & envname)
 {
         // f.ex. what about error checking?
         char const * const ch = getenv(envname.c_str());
@@ -298,7 +300,7 @@ string GetEnv(string const & envname)
 }
 
 
-string GetEnvPath(string const & name)
+string const GetEnvPath(string const & name)
 {
 #ifndef __EMX__
         string pathlist = subst(GetEnv(name), ':', ';');
@@ -363,15 +365,17 @@ int DeleteAllFilesInDir (string const & path)
 	// library. Check out http://www.boost.org/
 	// For directory access we will then use the directory_iterator.
 	// Then the code will be something like:
-	// directory_iterator dit(path.c_str());
-	// if (<some way to detect failure>) {
+	// directory_iterator dit(path);
+	// directory_iterator dend;
+	// if (dit == dend) {
 	//         WriteFSAlert(_("Error! Cannot open directory:"), path);
 	//         return -1;
 	// }
-	// for (; dit != <someend>; ++dit) {
-	//         if ((*dit) == 2." || (*dit) == "..")
+	// for (; dit != dend; ++dit) {
+	//         string filename(*dit);
+	//         if (filename == "." || filename == "..")
 	//                 continue;
-	//         string unlinkpath = AddName(path, temp);
+	//         string unlinkpath(AddName(path, filename));
 	//         if (remove(unlinkpath.c_str()))
 	//                 WriteFSAlert(_("Error! Could not remove file:"),
 	//                              unlinkpath);
@@ -401,9 +405,9 @@ int DeleteAllFilesInDir (string const & path)
 
 
 static
-string CreateTmpDir (string const & tempdir, string const & mask)
+string const CreateTmpDir (string const & tempdir, string const & mask)
 {
-	string tmpfl = TmpFileName(tempdir, mask);
+	string tmpfl(TmpFileName(tempdir, mask));
 	
 	if ((tmpfl.empty()) || lyx::mkdir (tmpfl.c_str(), 0777)) {
 		WriteFSAlert(_("Error! Couldn't create temporary directory:"),
@@ -430,7 +434,7 @@ int DestroyTmpDir (string const & tmpdir, bool Allfiles)
 } 
 
 
-string CreateBufferTmpDir (string const & pathfor)
+string const CreateBufferTmpDir (string const & pathfor)
 {
 	return CreateTmpDir(pathfor, "lyx_bufrtmp");
 }
@@ -442,14 +446,14 @@ int DestroyBufferTmpDir (string const & tmpdir)
 }
 
 
-string CreateLyXTmpDir (string const & deflt)
+string const CreateLyXTmpDir (string const & deflt)
 {
 	if ((!deflt.empty()) && (deflt  != "/tmp")) {
 		if (lyx::mkdir(deflt.c_str(), 0777)) {
 #ifdef __EMX__
                         Path p(user_lyxdir);
 #endif
-			string t = CreateTmpDir (deflt.c_str(), "lyx_tmp");
+			string t(CreateTmpDir (deflt.c_str(), "lyx_tmp"));
                         return t;
 		} else
                         return deflt;
@@ -457,7 +461,7 @@ string CreateLyXTmpDir (string const & deflt)
 #ifdef __EMX__
 		Path p(user_lyxdir);
 #endif
-		string t = CreateTmpDir ("/tmp", "lyx_tmp");
+		string t(CreateTmpDir ("/tmp", "lyx_tmp"));
 		return t;
 	}
 }
@@ -472,7 +476,7 @@ int DestroyLyXTmpDir (string const & tmpdir)
 // Creates directory. Returns true if succesfull
 bool createDirectory(string const & path, int permission)
 {
-	string temp = strip(CleanupPath(path), '/');
+	string temp(strip(CleanupPath(path), '/'));
 
 	if (temp.empty()) {
 		WriteAlert(_("Internal error!"),
@@ -489,7 +493,7 @@ bool createDirectory(string const & path, int permission)
 
 
 // Returns current working directory
-string GetCWD ()
+string const GetCWD ()
 {
   	int n = 256;	// Assume path is less than 256 chars
 	char * err;
@@ -511,7 +515,7 @@ string GetCWD ()
 
 
 // Strip filename from path name
-string OnlyPath(string const & Filename)
+string const OnlyPath(string const & Filename)
 {
 	// If empty filename, return empty
 	if (Filename.empty()) return Filename;
@@ -527,7 +531,7 @@ string OnlyPath(string const & Filename)
 // Convert relative path into absolute path based on a basepath.
 // If relpath is absolute, just use that.
 // If basepath is empty, use CWD as base.
-string MakeAbsPath(string const & RelPath, string const & BasePath)
+string const MakeAbsPath(string const & RelPath, string const & BasePath)
 {
 	// checks for already absolute path
 	if (AbsolutePath(RelPath))
@@ -537,7 +541,7 @@ string MakeAbsPath(string const & RelPath, string const & BasePath)
 		return RelPath;
 
 	// Copies given paths
-	string TempRel = CleanupPath(RelPath);
+	string TempRel(CleanupPath(RelPath));
 
 	string TempBase;
 
@@ -562,7 +566,7 @@ string MakeAbsPath(string const & RelPath, string const & BasePath)
 		TempBase.erase(TempBase.length() - 2);
 
 	// processes relative path
-	string RTemp = TempRel;
+	string RTemp(TempRel);
 	string Temp;
 
 	while (!RTemp.empty()) {
@@ -601,10 +605,10 @@ string MakeAbsPath(string const & RelPath, string const & BasePath)
 // Correctly append filename to the pathname.
 // If pathname is '.', then don't use pathname.
 // Chops any path of filename.
-string AddName(string const & path, string const & fname)
+string const AddName(string const & path, string const & fname)
 {
 	// Get basename
-	string basename = OnlyFilename(fname);
+	string basename(OnlyFilename(fname));
 
 	string buf;
 
@@ -619,7 +623,7 @@ string AddName(string const & path, string const & fname)
 
 
 // Strips path from filename
-string OnlyFilename(string const & fname)
+string const OnlyFilename(string const & fname)
 {
 	if (fname.empty())
 		return fname;
@@ -646,10 +650,10 @@ bool AbsolutePath(string const & path)
 
 // Create absolute path. If impossible, don't do anything
 // Supports ./ and ~/. Later we can add support for ~logname/. (Asger)
-string ExpandPath(string const & path)
+string const ExpandPath(string const & path)
 {
 	// checks for already absolute path
-	string RTemp = ReplaceEnvironmentPath(path);
+	string RTemp(ReplaceEnvironmentPath(path));
 	if (AbsolutePath(RTemp))
 		return RTemp;
 
@@ -657,7 +661,7 @@ string ExpandPath(string const & path)
 	string copy(RTemp);
 
 	// Split by next /
-	RTemp= split(RTemp, Temp, '/');
+	RTemp = split(RTemp, Temp, '/');
 
 	if (Temp == ".") {
 		return GetCWD() + '/' + RTemp;
@@ -674,7 +678,7 @@ string ExpandPath(string const & path)
 // Normalize a path
 // Constracts path/../path
 // Can't handle "../../" or "/../" (Asger)
-string NormalizePath(string const & path)
+string const NormalizePath(string const & path)
 {
 	string TempBase;
 	string RTemp;
@@ -710,7 +714,8 @@ string NormalizePath(string const & path)
 	return TempBase;	
 }
 
-string CleanupPath(string const & path) 
+
+string const CleanupPath(string const & path) 
 {
 #ifdef __EMX__	  /* SMiyata: This should fix searchpath bug. */
 	string temppath = subst(path, '\\', '/');
@@ -721,7 +726,9 @@ string CleanupPath(string const & path)
 #endif
 }
 
-string GetFileContents(string const & fname) {
+
+string const GetFileContents(string const & fname)
+{
 	FileInfo finfo(fname);
 	if (finfo.exist()) {
 		ifstream ifs(fname.c_str());
@@ -757,7 +764,7 @@ string GetFileContents(string const & fname) {
 //  variable :=  '$' '{' [A-Za-z_]{[A-Za-z_0-9]*} '}'
 //
 
-string ReplaceEnvironmentPath(string const & path)
+string const ReplaceEnvironmentPath(string const & path)
 {
 // 
 // CompareChar: Environmentvariables starts with this character
@@ -828,7 +835,7 @@ string ReplaceEnvironmentPath(string const & path)
 			continue;
 		}
             
-		string env = GetEnv(res1_contents+1);
+		string env(GetEnv(res1_contents + 1));
 		if (!env.empty()) {
 			// Congratulations. Environmentvariable found
 			result1 += env;
@@ -844,7 +851,7 @@ string ReplaceEnvironmentPath(string const & path)
 
 
 // Make relative path out of two absolute paths
-string MakeRelPath(string const & abspath0, string const & basepath0)
+string const MakeRelPath(string const & abspath0, string const & basepath0)
 // Makes relative path out of absolute path. If it is deeper than basepath,
 // it's easy. If basepath and abspath share something (they are all deeper
 // than some directory), it'll be rendered using ..'s. If they are completely
@@ -856,8 +863,8 @@ string MakeRelPath(string const & abspath0, string const & basepath0)
 	if (abspath.empty())
 		return "<unknown_path>";
 
-	const int abslen = abspath.length();
-	const int baselen = basepath.length();
+	int const abslen = abspath.length();
+	int const baselen = basepath.length();
 	
 	// Find first different character
 	int i = 0;
@@ -904,7 +911,7 @@ string MakeRelPath(string const & abspath0, string const & basepath0)
 
 
 // Append sub-directory(ies) to a path in an intelligent way
-string AddPath(string const & path, string const & path_2)
+string const AddPath(string const & path, string const & path_2)
 {
 	string buf;
 	string path2 = CleanupPath(path_2);
@@ -932,7 +939,8 @@ string AddPath(string const & path, string const & path_2)
  Strips path off if no_path == true.
  If no extension on oldname, just appends.
  */
-string ChangeExtension(string const & oldname, string const & extension)
+string const
+ChangeExtension(string const & oldname, string const & extension)
 {
 	string::size_type last_slash = oldname.rfind('/');
 	string::size_type last_dot = oldname.rfind('.');
@@ -951,12 +959,13 @@ string ChangeExtension(string const & oldname, string const & extension)
 
 
 // Creates a nice compact path for displaying
-string MakeDisplayPath (string const & path, unsigned int threshold)
+string const
+MakeDisplayPath (string const & path, unsigned int threshold)
 {
-	const int l1 = path.length();
+	int const l1 = path.length();
 
 	// First, we try a relative path compared to home
-	string home = GetEnvPath("HOME");
+	string const home(GetEnvPath("HOME"));
 	string relhome = MakeRelPath(path, home);
 
 	unsigned int l2 = relhome.length();
@@ -1015,7 +1024,7 @@ bool LyXReadLink(string const & File, string & Link)
 
 typedef pair<int, string> cmdret;
 static
-cmdret do_popen(string const & cmd)
+cmdret const do_popen(string const & cmd)
 {
 	// One question is if we should use popen or
 	// create our own popen based on fork, exec, pipe
@@ -1034,7 +1043,8 @@ cmdret do_popen(string const & cmd)
 }
 
 
-string findtexfile(string const & fil, string const & /*format*/)
+string const
+findtexfile(string const & fil, string const & /*format*/)
 {
 	/* There is no problem to extend this function too use other
 	   methods to look for files. It could be setup to look
@@ -1070,9 +1080,9 @@ string findtexfile(string const & fil, string const & /*format*/)
 	// tfm - TFMFONTS, TEXFONTS
 	// This means that to use kpsewhich in the best possible way we
 	// should help it by setting additional path in the approp. envir.var.
-        string kpsecmd = "kpsewhich " + fil;
+        string const kpsecmd = "kpsewhich " + fil;
 
-        cmdret c = do_popen(kpsecmd);
+        cmdret const c = do_popen(kpsecmd);
 	
         lyxerr[Debug::LATEX] << "kpse status = " << c.first << "\n"
 			     << "kpse result = `" << strip(c.second, '\n') 

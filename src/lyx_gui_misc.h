@@ -60,8 +60,9 @@ int AskConfirmation(string const & s1, string const & s2 = string(),
 		    string const & s3 = string());
 
 /// returns a bool: false=cancelled, true=okay. string contains returned text
-std::pair<bool, string> askForText(string const & msg,
-				   string const & dflt = string());
+std::pair<bool, string> const
+askForText(string const & msg,
+	   string const & dflt = string());
 
 /// Informs the user that changes in the coming form will be ignored
 void WarnReadonly(string const & file);

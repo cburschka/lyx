@@ -39,8 +39,9 @@ public:
 	   Parameters are: name of file to read. Whether LastFiles should
 	   check for file existance, and the number of files to remember.
 	*/
-	explicit LastFiles(string const &,
-			   bool dostat = true, unsigned int num = 4);
+	explicit
+	LastFiles(string const &,
+		  bool dostat = true, unsigned int num = 4);
 	//@}
 	
 	/**@name Methods */
@@ -58,7 +59,7 @@ public:
 	*/
 	void writeFile(string const &) const;
 	///
-	string operator[](unsigned int) const;
+	string const operator[](unsigned int) const;
 	///
 	Files::const_iterator begin() const { return files.begin(); }
 	///

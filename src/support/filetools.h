@@ -21,13 +21,13 @@
 
 
 ///
-string CreateBufferTmpDir (string const & pathfor = string());
+string const CreateBufferTmpDir (string const & pathfor = string());
 
 /// Creates directory. Returns true on succes.
 bool createDirectory(string const & name, int permissions);
 
 ///
-string CreateLyXTmpDir (string const & deflt);
+string const CreateLyXTmpDir (string const & deflt);
 
 ///
 int DestroyBufferTmpDir (string const & tmpdir);
@@ -42,7 +42,7 @@ int DestroyLyXTmpDir (string const & tmpdir);
     If path entry begins with $$User/, use user_lyxdir.
     Example: "$$User/doc;$$LyX/doc".
 */
-string FileOpenSearch (string const & path, string const & name, 
+string const FileOpenSearch (string const & path, string const & name, 
 		       string const & ext = string());
 
 /** Returns the real name of file name in directory path, with optional
@@ -50,7 +50,7 @@ string FileOpenSearch (string const & path, string const & name,
   The file is searched in the given path (unless it is an absolute
   file name), first directly, and then with extension .ext (if given).
   */
-string FileSearch(string const & path, string const & name, 
+string const FileSearch(string const & path, string const & name, 
 		  string const & ext = string());
 
 /** Is directory read only?
@@ -86,21 +86,22 @@ bool IsLyXFilename(string const & filename);
   \end{enumerate}
     The third parameter `ext' is optional.
 */
-string LibFileSearch(string const & dir, string const & name, 
+string const LibFileSearch(string const & dir, string const & name, 
 		     string const & ext = string());
 
 /** Same as LibFileSearch(), but tries first to find an
   internationalized version of the file by prepending $LANG_ to the
   name 
   */
-string i18nLibFileSearch(string const & dir, string const & name, 
-			 string const & ext = string());
+string const
+i18nLibFileSearch(string const & dir, string const & name, 
+		  string const & ext = string());
 
 ///
-string GetEnv(string const & envname);
+string const GetEnv(string const & envname);
 
 /// A helper function.
-string GetEnvPath(string const & name);
+string const GetEnvPath(string const & name);
 
 ///
 bool PutEnv(string const & envstr);
@@ -109,51 +110,55 @@ bool PutEnv(string const & envstr);
 bool PutEnvPath(string const & envstr);
 
 /// Substitutes active latex characters with underscores in filename
-string MakeLatexName(string const & file);
+string const MakeLatexName(string const & file);
 
 /// Put the name in quotes suitable for the current shell
-string QuoteName(string const & file);
+string const QuoteName(string const & file);
 
 /** Returns an unique name to be used as a temporary file. If given,
   'mask' should the prefix to the temporary file, the rest of the
   temporary filename will be made from the pid and three letters.
   */
-string TmpFileName(string const & dir = string(), 
-		   string const & mask = "lyx_tmp");
+string const
+TmpFileName(string const & dir = string(), 
+	    string const & mask = "lyx_tmp");
 
 /// Is a filename/path absolute?
 bool AbsolutePath(string const & path);
 
 /// Add a filename to a path. Any path from filename is stripped first.
-string AddName(string const & path, string const & fname);
+string const AddName(string const & path, string const & fname);
 
 /// Append sub-directory(ies) to path in an intelligent way
-string AddPath(string const & path, string const & path2);
+string const AddPath(string const & path, string const & path2);
 
 /** Change extension of oldname to extension.
  If oldname does not have an extension, it is appended.
  If the extension is empty, any extension is removed from the name.
  */
-string ChangeExtension(string const & oldname, string const & extension);
+string const
+ChangeExtension(string const & oldname, string const & extension);
 
 /// Create absolute path. If impossible, don't do anything
-string ExpandPath(string const & path);
+string const ExpandPath(string const & path);
 
 /// gets current working directory
-string GetCWD();
+string const GetCWD();
 
 
 /** Convert relative path into absolute path based on a basepath.
   If relpath is absolute, just use that.
   If basepath doesn't exist use CWD.
   */
-string MakeAbsPath(string const & RelPath = string(), 
+string const MakeAbsPath(string const & RelPath = string(), 
 		   string const & BasePath = string());
 
 /** Creates a nice compact path for displaying. The parameter
   threshold, if given, specifies the maximal length of the path.
   */
-string MakeDisplayPath(string const & path, unsigned int threshold= 1000);
+string const
+MakeDisplayPath(string const & path,
+		unsigned int threshold = 1000);
 
 /** Makes relative path out of absolute path.
   If it is deeper than basepath,
@@ -162,35 +167,36 @@ string MakeDisplayPath(string const & path, unsigned int threshold= 1000);
   different, then the absolute path will be used as relative path
   WARNING: the absolute path and base path must really be absolute paths!!!
   */
-string MakeRelPath(string const & abspath, string const & basepath);
+string const
+MakeRelPath(string const & abspath, string const & basepath);
 
 /// Strip filename from path name
-string OnlyPath(string const & fname);
+string const OnlyPath(string const & fname);
 
 /// Normalize a path. Constracts path/../path
-string NormalizePath(string const & path);
+string const NormalizePath(string const & path);
 
 /// Strips path from filename
-string OnlyFilename(string const & fname);
+string const OnlyFilename(string const & fname);
 
 /// Get the contents of a file as a huge string
-string GetFileContents(string const & fname);
+string const GetFileContents(string const & fname);
 
 /// Cleanup a path if necessary. Currently only useful with OS/2
-string CleanupPath(string const & path) ;
+string const CleanupPath(string const & path);
 
 /** Check and Replace Environmentvariables ${NAME} in Path.
     Replaces all occurences of these, if they are found in the
     environment.
     Variables are defined by Var := '${' [a-zA-Z_][a-zA-Z_0-9]* '}'
 */
-string ReplaceEnvironmentPath(string const & path);
+string const ReplaceEnvironmentPath(string const & path);
 
 /* Set Link to the path file points to as a symbolic link.
    Returns true if successful */
 bool LyXReadLink(string const & file, string & Link);
 
 /* Uses kpsewhich to find tex files */
-string findtexfile(string const & fil, string const & format);
+string const findtexfile(string const & fil, string const & format);
 
 #endif

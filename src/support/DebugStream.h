@@ -20,6 +20,7 @@
 
 #ifdef TEST_DEBUGSTREAM
 #include <string>
+///
 struct Debug {
 	///
 	enum type {
@@ -49,9 +50,9 @@ struct Debug {
 };
 #endif
 
-/** DebugStream is a ostream intended for debug output. It has also support
-    for a logfile. Debug output is output to cerr and if the logfile is set,
-    to the logfile.
+/** DebugStream is a ostream intended for debug output.
+    It has also support for a logfile. Debug output is output to cerr
+    and if the logfile is set, to the logfile.
 
     Example of Usage:
     DebugStream debug;
@@ -91,8 +92,10 @@ struct Debug {
 // 1.0.x), which generates a compiler error when subclassing from
 // std::. (JMarc)
 #ifdef CXX_WORKING_NAMESPACES
+///
 class DebugStream : public std::ostream
 #else
+///
 class DebugStream : public ostream
 #endif
 {
@@ -159,8 +162,12 @@ private:
 	Debug::type dt;
 	/// The no-op stream.
 	std::ostream nullstream;
+	///
 	struct debugstream_internal;
+	///
 	debugstream_internal * internal;
 };
 
 #endif
+
+

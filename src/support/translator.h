@@ -57,6 +57,8 @@ class Translator {
 public:
     typedef T1 first_argument_type;
     typedef T2 second_argument_type;
+    typedef std::pair<T1, T2> MapPair;
+    typedef std::vector<MapPair> Map;
 
     /// c-tor.
     Translator(T1 const & t1, T2 const & t2) 
@@ -117,14 +119,10 @@ public:
     }
 
 private:
-    typedef std::pair<T1, T2> MapPair;
-    typedef std::vector<MapPair> Map;
-
     Map map;
 
-    const T1 default_t1;
-    const T2 default_t2;
-
+    T1 const default_t1;
+    T2 const default_t2;
 };
 
 #endif

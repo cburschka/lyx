@@ -34,8 +34,10 @@ using SigC::slot;
     details from the core of the program.
  */
 #ifdef SIGC_CXX_NAMESPACES
+///
 class DialogBase : public SigC::Object
 #else
+///
 class DialogBase : public Object
 #endif
 {

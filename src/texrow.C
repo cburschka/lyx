@@ -10,6 +10,8 @@
 
 #include <config.h>
 
+#include <algorithm>
+
 #ifdef __GNUG__
 #pragma implementation
 #endif
@@ -18,6 +20,7 @@
 #include "lyxparagraph.h"
 #include "debug.h"
 
+using std::find_if;
 
 // Delete linked list
 void TexRow::reset()
@@ -51,15 +54,29 @@ void TexRow::newline()
 }
 
 
-void TexRow::getIdFromRow(int row, int & id, int & pos) const
-{
-	RowList::iterator cit = rowlist.begin();
-	RowList::iterator end = rowlist.end();
-	for (; cit != end; ++cit) {
-		if ((*cit).rownumber() == row) break;
+class same_rownumber {
+public:
+	same_rownumber(TexRow::RowList::value_type const & v):vt(v){}
+	bool operator()(TexRow::RowList::value_type const & vt1) const {
+		return vt.rownumber() == vt1.rownumber();
 	}
-	if (cit != end) {
+private:
+	TexRow::RowList::value_type const & vt;
+};
+
+
+
+bool TexRow::getIdFromRow(int row, int & id, int & pos) const
+{
+	RowList::value_type vt;
+	vt.rownumber(row);
+	RowList::const_iterator cit =
+		find_if(rowlist.begin(), rowlist.end(), same_rownumber(vt));
+	
+	if (cit != rowlist.end()) {
+#if 0
 		RowList::iterator kit = rowlist.begin();
+		RowList::iterator end = rowlist.end();
 		// Increase the pos of all rows with the
 		// same id (and where the pos is larger)
 		// to avoid putting errorinsets at the
@@ -70,11 +87,40 @@ void TexRow::getIdFromRow(int row, int & id, int & pos) const
 			    && (*kit).pos() >= (*cit).pos())
 				(*kit).pos((*kit).pos() + 1);
 		}
+#endif
 		id = (*cit).id();
 		pos = (*cit).pos();
-	} else {
-		id = -1;
-		pos = 0;
+		return true;
+	}
+	id = -1;
+	pos = 0;
+	return false;
+}
+
+
+// should perhaps have a better name...
+// Increase the pos of all rows with the
+// same id (and where the pos is larger)
+// to avoid putting errorinsets at the
+// same pos.
+void TexRow::increasePos(int id, int pos) const
+{
+	RowList::iterator kit = rowlist.begin();
+	RowList::iterator end = rowlist.end();
+	for(; kit != end; ++kit) {
+		if (id == (*kit).id()
+		    && pos < (*kit).pos()) {
+			(*kit).pos((*kit).pos() + 1);
+			lyxerr << "TeXRow::increasePos: ideally this "
+				"should never happen..." << endl;
+		}
+		// When verified to work this clause should be deleted.
+		if (id == (*kit).id()
+		    && pos == (*kit).pos()) {
+			lyxerr << "TexRow::increasePos: this should happen "
+				"maximum one time for each run of "
+				"increasePos!" << endl;
+		}
 	}
 }
 

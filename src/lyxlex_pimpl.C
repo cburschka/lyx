@@ -30,24 +30,13 @@ struct compare_tags {
 
 LyXLex::Pimpl::Pimpl(keyword_item * tab, int num) 
 	: is(&fb__), table(tab), no_items(num),
-	  status(0), pushed(0), lineno(0)
+	  status(0), lineno(0)
 {
-	if (table && !sorted(table, table + no_items, compare_tags())) {
-		lyxerr << "The table passed to LyXLex is not sorted!!\n"
-		       << "Tell the developers to fix it!" << endl;
-		// We sort it anyway to avoid problems.
-		lyxerr << "\nUnsorted:\n";
-		printTable(lyxerr);
-		
-		sort(table, table + no_items,
-		     compare_tags());
-		lyxerr << "\nSorted:\n";
-		printTable(lyxerr);
-	}
+	verifyTable();
 }
 
 
-string LyXLex::Pimpl::GetString() const
+string const LyXLex::Pimpl::GetString() const
 {
 	return string(buff);
 }
@@ -72,49 +61,53 @@ void LyXLex::Pimpl::printTable(ostream & os)
 }
 
 
-void LyXLex::Pimpl::pushTable(keyword_item * tab, int num)
+void LyXLex::Pimpl::verifyTable()
 {
-	pushed_table * tmppu = new pushed_table;
-	tmppu->next = pushed;
-	tmppu->table_elem = table;
-	tmppu->table_siz = no_items;
-	pushed = tmppu;
-	table = tab;
-	no_items = num;
 	// Check if the table is sorted and if not, sort it.
 	if (table
 	    && !sorted(table, table + no_items, compare_tags())) {
-		lyxerr << "The table passed to LyXLex is not sorted!!\n"
+		lyxerr << "The table passed to LyXLex is not sorted!\n"
 		       << "Tell the developers to fix it!" << endl;
 		// We sort it anyway to avoid problems.
 		lyxerr << "\nUnsorted:\n";
 		printTable(lyxerr);
-		
+
 		sort(table, table + no_items, compare_tags());
 		lyxerr << "\nSorted:\n";
 		printTable(lyxerr);
 	}
 }
 
+
+void LyXLex::Pimpl::pushTable(keyword_item * tab, int num)
+{
+	pushed_table tmppu(table, no_items);
+	pushed.push(tmppu);
+
+	table = tab;
+	no_items = num;
+
+	verifyTable();
+}
+
 	
 void LyXLex::Pimpl::popTable()
 {
-	if (pushed == 0)
+	if (pushed.empty()) {
 		lyxerr << "LyXLex error: nothing to pop!" << endl;
+		return;
+	}
 	
-	pushed_table * tmp;
-	tmp = pushed;
-	table = tmp->table_elem;
-	no_items = tmp->table_siz;
-	tmp->table_elem = 0;
-	pushed = tmp->next;
-	delete tmp;
+	pushed_table tmp = pushed.top();
+	pushed.pop();
+	table = tmp.table_elem;
+	no_items = tmp.table_siz;
 }
 
 
 bool LyXLex::Pimpl::setFile(string const & filename)
 {
-	if (fb__.is_open())
+	if (fb__.is_open() || is.tellg() > 0)
 		lyxerr << "Error in LyXLex::setFile: "
 			"file or stream already set." << endl;
 	fb__.open(filename.c_str(), ios::in);
@@ -127,7 +120,7 @@ bool LyXLex::Pimpl::setFile(string const & filename)
 	
 void LyXLex::Pimpl::setStream(istream & i)
 {
-	if (fb__.is_open() || is.rdbuf()->in_avail())
+	if (fb__.is_open() || is.tellg() > 0)
 		lyxerr << "Error in LyXLex::setStream: "
 			"file or stream already set." << endl;
 	is.rdbuf(i.rdbuf());

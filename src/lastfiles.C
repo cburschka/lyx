@@ -94,7 +94,7 @@ void LastFiles::newFile(string const & file)
 }
 
 
-string LastFiles::operator[](unsigned int i) const
+string const LastFiles::operator[](unsigned int i) const
 {
 	if (i < files.size())
 		return files[i];

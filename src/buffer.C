@@ -459,7 +459,7 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, LyXParagraph *& par,
 		//lyxerr << "float body: " << old_float << endl;
 
 #ifdef HAVE_SSTREAM
-		istringstream istr(old_float.c_str());
+		istringstream istr(old_float);
 #else
 		istrstream istr(old_float.c_str());
 #endif
@@ -850,152 +850,7 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, LyXParagraph *& par,
 		// But insets should read it, it is a part of
 		// the inset isn't it? Lgb.
 	} else if (token == "\\begin_inset") {
-#if 1
 		readInset(lex, par, pos, font);
-#else
-		// Should be moved out into its own function/method. (Lgb)
-		lex.next();
-		string tmptok = lex.GetString();
-		last_inset_read = tmptok;
-		// test the different insets
-		if (tmptok == "Quotes") {
-			Inset * inset = new InsetQuotes;
-			inset->Read(this, lex);
-			par->InsertInset(pos, inset, font);
-			++pos;
-		} else if (tmptok == "External") {
-			Inset * inset = new InsetExternal;
-			inset->Read(this, lex);
-			par->InsertInset(pos, inset, font);
-			++pos;
-		} else if (tmptok == "FormulaMacro") {
-			Inset * inset = new InsetFormulaMacro;
-			inset->Read(this, lex);
-			par->InsertInset(pos, inset, font);
-			++pos;
-		} else if (tmptok == "Formula") {
-			Inset * inset = new InsetFormula;
-			inset->Read(this, lex);
-			par->InsertInset(pos, inset, font);
-			++pos;
-		} else if (tmptok == "Figure") {
-			Inset * inset = new InsetFig(100, 100, this);
-			inset->Read(this, lex);
-			par->InsertInset(pos, inset, font);
-			++pos;
-		} else if (tmptok == "Info") {
-			Inset * inset = new InsetInfo;
-			inset->Read(this, lex);
-			par->InsertInset(pos, inset, font);
-			++pos;
-		} else if (tmptok == "Include") {
-			InsetCommandParams p( "Include" );
-			Inset * inset = new InsetInclude(p, this);
-			inset->Read(this, lex);
-			par->InsertInset(pos, inset, font);
-			++pos;
-		} else if (tmptok == "ERT") {
-			Inset * inset = new InsetERT;
-			inset->Read(this, lex);
-			par->InsertInset(pos, inset, font);
-			++pos;
-		} else if (tmptok == "Tabular") {
-			Inset * inset = new InsetTabular(this);
-			inset->Read(this, lex);
-			par->InsertInset(pos, inset, font);
-			++pos;
-		} else if (tmptok == "Text") {
-			Inset * inset = new InsetText;
-			inset->Read(this, lex);
-			par->InsertInset(pos, inset, font);
-			++pos;
-		} else if (tmptok == "Foot") {
-			Inset * inset = new InsetFoot;
-			inset->Read(this, lex);
-			par->InsertInset(pos, inset, font);
-			++pos;
-		} else if (tmptok == "Marginal") {
-			Inset * inset = new InsetMarginal;
-			inset->Read(this, lex);
-			par->InsertInset(pos, inset, font);
-			++pos;
-		} else if (tmptok == "Minipage") {
-			Inset * inset = new InsetMinipage;
-			inset->Read(this, lex);
-			par->InsertInset(pos, inset, font);
-			++pos;
-		} else if (tmptok == "Float") {
-			lex.next();
-			string tmptok = lex.GetString();
-			Inset * inset = new InsetFloat(tmptok);
-			inset->Read(this, lex);
-			par->InsertInset(pos, inset, font);
-			++pos;
-		} else if (tmptok == "List") {
-			Inset * inset = new InsetList;
-			inset->Read(this, lex);
-			par->InsertInset(pos, inset, font);
-			++pos;
-		} else if (tmptok == "Theorem") {
-			Inset * inset = new InsetList;
-			inset->Read(this, lex);
-			par->InsertInset(pos, inset, font);
-			++pos;
-		} else if (tmptok == "Caption") {
-			Inset * inset = new InsetCaption;
-			inset->Read(this, lex);
-			par->InsertInset(pos, inset, font);
-			++pos;
-		} else if (tmptok == "Graphics") {
-			Inset * inset = new InsetGraphics;
-            inset->Read(this, lex);
-			par->InsertInset(pos, inset, font);
-            ++pos;
-		} else if (tmptok == "LatexCommand") {
-			InsetCommandParams inscmd;
-			inscmd.Read(lex);
-			Inset * inset = 0;
-			if (inscmd.getCmdName() == "cite") {
-				inset = new InsetCitation(inscmd);
-			} else if (inscmd.getCmdName() == "bibitem") {
-				lex.printError("Wrong place for bibitem");
-				inset = new InsetBibKey(inscmd);
-			} else if (inscmd.getCmdName() == "BibTeX") {
-				inset = new InsetBibtex(inscmd, this);
-			} else if (inscmd.getCmdName() == "index") {
-				inset = new InsetIndex(inscmd);
-			} else if (inscmd.getCmdName() == "include") {
-				inset = new InsetInclude(inscmd, this);
-			} else if (inscmd.getCmdName() == "label") {
-				inset = new InsetLabel(inscmd);
-			} else if (inscmd.getCmdName() == "url"
-				   || inscmd.getCmdName() == "htmlurl") {
-				inset = new InsetUrl(inscmd);
-			} else if (inscmd.getCmdName() == "ref"
-				   || inscmd.getCmdName() == "pageref"
-				   || inscmd.getCmdName() == "vref"
-				   || inscmd.getCmdName() == "vpageref"
-				   || inscmd.getCmdName() == "prettyref") {
-				if (!inscmd.getOptions().empty() || !inscmd.getContents().empty()) {
-					inset = new InsetRef(inscmd, this);
-				}
-			} else if (inscmd.getCmdName() == "tableofcontents"
-				   || inscmd.getCmdName() == "listofalgorithms"
-				   || inscmd.getCmdName() == "listoffigures"
-				   || inscmd.getCmdName() == "listoftables") {
-				inset = new InsetTOC(inscmd);
-			} else if (inscmd.getCmdName() == "printindex") {
-				inset = new InsetPrintIndex(inscmd);
-			} else if (inscmd.getCmdName() == "lyxparent") {
-				inset = new InsetParent(inscmd, this);
-			}
-			       
-			if (inset) {
-				par->InsertInset(pos, inset, font);
-				++pos;
-			}
-		}
-#endif
 	} else if (token == "\\SpecialChar") {
 		LyXLayout const & layout =
 			textclasslist.Style(params.textclass, 
@@ -1060,17 +915,18 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, LyXParagraph *& par,
 			par->bibkey = new InsetBibKey(p);
 		}
 		par->bibkey->Read(this, lex);		        
-	}else if (token == "\\backslash") {
+	} else if (token == "\\backslash") {
 		par->InsertChar(pos, '\\', font);
 		++pos;
-	}else if (token == "\\the_end") {
+	} else if (token == "\\the_end") {
 		the_end_read = true;
 	} else {
 		// This should be insurance for the future: (Asger)
 		lex.printError("Unknown token `$$Token'. "
 			       "Inserting as text.");
-		for(string::const_iterator cit = token.begin();
-		    cit != token.end(); ++cit) {
+		string::const_iterator cit = token.begin();
+		string::const_iterator end = token.end();
+		for(; cit != end; ++cit) {
 			par->InsertChar(pos, (*cit), font);
 			++pos;
 		}
@@ -1182,7 +1038,8 @@ void Buffer::readInset(LyXLex & lex, LyXParagraph *& par,
 		++pos;
 	} else if (tmptok == "GRAPHICS") {
 		Inset * inset = new InsetGraphics;
-				//inset->Read(this, lex);
+		inset->Read(this, lex);
+		++pos;
 		par->InsertInset(pos, inset, font);
 	} else if (tmptok == "LatexCommand") {
 		InsetCommandParams inscmd;
@@ -1234,11 +1091,9 @@ void Buffer::readInset(LyXLex & lex, LyXParagraph *& par,
 
 bool Buffer::readFile(LyXLex & lex, LyXParagraph * par)
 {
-	string token;
-
 	if (lex.IsOK()) {
 		lex.next();
-		token = lex.GetString();
+		string token(lex.GetString());
 		if (token == "\\lyxformat") { // the first token _must_ be...
 			lex.next();
 			format = lex.GetFloat();

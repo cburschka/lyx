@@ -401,7 +401,8 @@ int AskConfirmation(string const & s1, string const & s2, string const & s3)
 
 
 // Asks for a text
-pair<bool, string> askForText(string const & msg, string const & dflt)
+pair<bool, string> const
+askForText(string const & msg, string const & dflt)
 {
 	fl_set_resource("flInput.cancel.label", idex(_("Cancel|^[")));
 	fl_set_resource("flInput.ok.label", idex(_("OK|#O")));

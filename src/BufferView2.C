@@ -153,8 +153,10 @@ void BufferView::insertErrors(TeXErrors & terr)
 		int tmpid = -1; 
 		int tmppos = -1;
 
-		buffer()->texrow.getIdFromRow(errorrow, tmpid, tmppos);
-
+		if (buffer()->texrow.getIdFromRow(errorrow, tmpid, tmppos)) {
+			buffer()->texrow.increasePos(tmpid, tmppos);
+		}
+		
 		LyXParagraph * texrowpar = 0;
 
 		if (tmpid == -1) {

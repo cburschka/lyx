@@ -14,6 +14,7 @@
 #include <iosfwd>
 
 #include "LString.h"
+#include "support/utility.hpp"
 
 ///
 struct keyword_item {
@@ -29,7 +30,7 @@ struct keyword_item {
   texclass and others to come.
   See lyxrc.C for an example of usage.
   */
-class LyXLex { 
+class LyXLex : public noncopyable { 
 public:
 	///
 	LyXLex (keyword_item *, int);
@@ -84,7 +85,7 @@ public:
 	///
 	float GetFloat() const;
 	///
-	string GetString() const;
+	string const GetString() const;
 	
 	/**
 	 * Get a long string, ended by the tag `endtag'
@@ -94,7 +95,7 @@ public:
 	 * each following line. This mechanism does not work
 	 * perfectly if you use tabs.
 	 */
-	string getLongString(string const & endtag);
+	string const getLongString(string const & endtag);
 	
 	///
 	bool EatLine();
@@ -104,7 +105,7 @@ public:
 	int CheckToken(char const * str[], int print_error);
 
 	///
-	char const * text() const;
+	char const * const text() const;
 
 	/** Pushes a token list on a stack and replaces it with a new one.
 	 */
