@@ -15,25 +15,45 @@
 #include "frnt_lang.h"
 #include "gettext.h"
 #include "language.h"
+#include <iostream>
 
 using std::vector;
 
+namespace {
+
+struct Sorter {
+	bool operator()(frnt::LanguagePair const & lhs,
+			frnt::LanguagePair const & rhs) const
+        {
+                return lhs.first < rhs.first;
+        }
+};
+
+} // namespace anon
+
 namespace frnt {
 
-vector<LanguagePair> const getLanguageData()
+vector<LanguagePair> const getLanguageData(bool character_dlg)
 {
-	vector<LanguagePair> langs(languages.size() + 2);
+	vector<LanguagePair>::size_type const size = character_dlg ?
+		languages.size() + 2 : languages.size();
 
-	langs[0].first = N_("No change"); langs[0].second = "No change";
-	langs[1].first = N_("Reset");     langs[1].second = "Reset";
+	vector<LanguagePair> langs(size);
 
-	vector<string>::size_type i = 2;
+	if (character_dlg) {
+		langs[0].first = N_("No change"); langs[0].second = "No change";
+		langs[1].first = N_("Reset");     langs[1].second = "Reset";
+	}
+
+	vector<string>::size_type i = character_dlg ? 2 : 0;
 	for (Languages::const_iterator cit = languages.begin();
 	     cit != languages.end(); ++cit) {
-		langs[i].first  = cit->second.display();
+		langs[i].first  = _(cit->second.display());
 		langs[i].second = cit->second.lang();
 		++i;
 	}
+
+	std::sort(langs.begin(), langs.end(), Sorter());
 
 	return langs;
 }

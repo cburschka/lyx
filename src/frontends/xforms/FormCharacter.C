@@ -48,13 +48,13 @@ void FormCharacter::build()
 {
 	dialog_.reset(build_character());
 
-	vector<FamilyPair>   const family   = getFamilyData();
-	vector<SeriesPair>   const series   = getSeriesData();
-	vector<ShapePair>    const shape    = getShapeData();
-	vector<SizePair>     const size     = getSizeData();
-	vector<BarPair>      const bar      = getBarData();
-	vector<ColorPair>    const color    = getColorData();
-	vector<LanguagePair> const langs = getLanguageData();
+	vector<FamilyPair>   const family = getFamilyData();
+	vector<SeriesPair>   const series = getSeriesData();
+	vector<ShapePair>    const shape  = getShapeData();
+	vector<SizePair>     const size   = getSizeData();
+	vector<BarPair>      const bar    = getBarData();
+	vector<ColorPair>    const color  = getColorData();
+	vector<LanguagePair> const langs  = getLanguageData(true);
 
 	// Store the identifiers for later
 	family_ = getSecond(family);
@@ -103,7 +103,7 @@ void FormCharacter::build()
 	vector<LanguagePair>::const_iterator it  = langs.begin();
 	vector<LanguagePair>::const_iterator end = langs.end();
 	for (; it != end; ++it) {
-		combo_language2_->addto(_(it->first));
+		combo_language2_->addto(it->first);
 	}
 	combo_language2_->select(1);
 

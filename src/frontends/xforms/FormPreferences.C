@@ -1633,7 +1633,7 @@ void FormPreferences::Language::build()
 	fl_set_input_return(dialog_->input_command_end, FL_RETURN_CHANGED);
 
 	// Store the lang identifiers for later
-	vector<frnt::LanguagePair> const langs = frnt::getLanguageData();
+	vector<frnt::LanguagePair> const langs = frnt::getLanguageData(false);
 	lang_ = getSecond(langs);
 
 	// The default_language is a combo-box and has to be inserted manually
@@ -1652,7 +1652,7 @@ void FormPreferences::Language::build()
 	vector<frnt::LanguagePair>::const_iterator lit  = langs.begin();
 	vector<frnt::LanguagePair>::const_iterator lend = langs.end();
 	for (; lit != lend; ++lit) {
-		combo_default_lang->addto(_(lit->first));
+		combo_default_lang->addto(lit->first);
 	}
 	combo_default_lang->select(1);
 

@@ -1,3 +1,12 @@
+2002-04-30  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* frnt_lang.[Ch] (getLanguageData): passed a bool character_dlg.
+	If the the caller is the character dialog, add "No change" and "Reset"
+	to the vector, else don't.
+	Internationalise the GUI strings here rather than in the different
+	calling dialogs.
+	Sort the translated strings, albeit simply.
+
 2002-04-29  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* character.[Ch]: rename namespace character as namespace frnt.

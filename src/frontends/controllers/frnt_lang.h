@@ -23,8 +23,10 @@
 namespace frnt {
 	///
 	typedef std::pair<string, string> LanguagePair;
-	///
-	std::vector<LanguagePair> const getLanguageData();
+	/** If the caller is the character dialog, add "No change" and "Reset"
+	 *  to the vector.
+	 */
+	std::vector<LanguagePair> const getLanguageData(bool character_dlg);
 
 } // namespace frnt
 

@@ -1,3 +1,11 @@
+2002-04-30  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* FormCharacter.C:
+	* FormDocument.C:
+	* FormPreferences.C: use the bool flag to getLanguageData as
+	appropriate. No longer translate the strings as this is done in
+	getLanguageData.
+
 2002-04-29  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* FormCharacter.h:

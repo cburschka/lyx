@@ -242,7 +242,7 @@ void FormDocument::build()
 			"default|auto|latin1|latin2|latin3|latin4|latin5|latin9"
 			"|koi8-r|koi8-u|cp866|cp1251|iso88595");
 
-	vector<frnt::LanguagePair> const langs = frnt::getLanguageData();
+	vector<frnt::LanguagePair> const langs = frnt::getLanguageData(false);
 	// Store the identifiers for later
 	lang_ = getSecond(langs);
 
@@ -260,7 +260,7 @@ void FormDocument::build()
 	vector<frnt::LanguagePair>::const_iterator lit  = langs.begin();
 	vector<frnt::LanguagePair>::const_iterator lend = langs.end();
 	for (; lit != lend; ++lit) {
-		combo_language->addto(_(lit->first));
+		combo_language->addto(lit->first);
 	}
 	combo_language->select(1);
 
