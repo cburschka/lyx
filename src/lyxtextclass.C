@@ -39,7 +39,6 @@ struct compare_name {
 
 	bool operator()(boost::shared_ptr<LyXLayout> const & c)
 	{
-		//lyxerr << "comparing '" << name_ << "' to '" << c->name() << "'\n";
 		return c->name() == name_;
 	}
 
@@ -166,6 +165,7 @@ bool LyXTextClass::Read(string const & filename, bool merge)
 	// parsing
 	while (lexrc.isOK() && !error) {
 		int le = lexrc.lex();
+
 		switch (le) {
 		case LyXLex::LEX_FEOF:
 			continue;
@@ -174,9 +174,13 @@ bool LyXTextClass::Read(string const & filename, bool merge)
 			lexrc.printError("Unknown TextClass tag `$$Token'");
 			error = true;
 			continue;
-		default: break;
+
+		default:
+			break;
 		}
+
 		switch (static_cast<TextClassTags>(le)) {
+
 		case TC_OUTPUTTYPE:   // output type definition
 			readOutputType(lexrc);
 			break;
@@ -479,13 +483,16 @@ void LyXTextClass::readMaxCounter(LyXLex & lexrc)
 	};
 
 	pushpophelper pph(lexrc, maxCounterTags, MC_COUNTER_ENUMIV);
+
 	int le = lexrc.lex();
 	switch (le) {
 	case LyXLex::LEX_UNDEF:
 		lexrc.printError("Unknown MaxCounter tag `$$Token'");
 		return;
-	default: break;
+	default:
+		break;
 	}
+
 	switch (static_cast<MaxCounterTags>(le)) {
 	case MC_COUNTER_CHAPTER:
 		maxcounter_ = LABEL_COUNTER_CHAPTER;
