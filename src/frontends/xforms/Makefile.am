@@ -147,6 +147,7 @@ libxforms_la_SOURCES = \
 	FormVCLog.h \
 	LyXKeySymFactory.C \
 	LyXScreenFactory.C \
+	MathsCallbacks.h \
 	Menubar_pimpl.C \
 	Menubar_pimpl.h \
 	RadioButtonGroup.C \

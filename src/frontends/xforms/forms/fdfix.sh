@@ -123,7 +123,7 @@ fi
 # Angus 12 June, 2002.
 grep MM_ ${CIN} > /dev/null
 if [ $? -eq 0 ]; then
-    echo "#include \"MathsSymbols.h\"" >> ${COUT}
+    echo "#include \"MathsCallbacks.h\"" >> ${COUT}
 fi
 
 echo >> ${COUT}
