@@ -214,7 +214,7 @@ void InsetFormulaBase::getCursorPos(BufferView * bv, int & x, int & y) const
 	mathcursor->getPos(x, y);
 	//x -= xo_;
 	y -= yo_;
-	lyxerr << "getCursorPos: " << x << " " << y << "\n";
+	//lyxerr << "getCursorPos: " << x << " " << y << "\n";
 }
 
 
@@ -397,9 +397,9 @@ UpdatableInset::RESULT
 InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 			    string const & arg)
 {
-	lyxerr << "InsetFormulaBase::localDispatch: act: " << action
-		<< " arg: '" << arg
-		<< "' cursor: " << mathcursor << "\n";
+	//lyxerr << "InsetFormulaBase::localDispatch: act: " << action
+	//	<< " arg: '" << arg
+	//	<< "' cursor: " << mathcursor << "\n";
 
 	if (!mathcursor)
 		return UNDISPATCHED;
@@ -908,7 +908,7 @@ bool InsetFormulaBase::searchForward(BufferView * bv, string const & str,
 bool InsetFormulaBase::searchBackward(BufferView * bv, string const & what,
 				      bool a, bool b)
 {
-	lyxerr << "searching backward not implemented in mathed" << endl;
+	lyxerr[Debug::MATHED] << "searching backward not implemented in mathed\n";
 	return searchForward(bv, what, a, b);
 }
 
