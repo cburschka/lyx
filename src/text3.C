@@ -246,14 +246,15 @@ string const freefont2string()
 }
 
 
+//takes absolute x,y coordinates
 InsetBase * LyXText::checkInsetHit(int x, int y)
 {
 	ParagraphList::iterator pit;
 	ParagraphList::iterator end;
 
 	getParsInRange(paragraphs(),
-		       bv()->top_y(),
-		       bv()->top_y() + bv()->workHeight(),
+		       bv()->top_y() - yo_,
+		       bv()->top_y() - yo_ + bv()->workHeight(),
 		       pit, end);
 
 	lyxerr << "checkInsetHit: x: " << x << " y: " << y << endl;
@@ -269,7 +270,7 @@ InsetBase * LyXText::checkInsetHit(int x, int y)
 				<< " yo: " << inset->yo() - inset->ascent() << "..."
 				<< inset->yo() + inset->descent() << endl;
 #endif
-			if (inset->covers(x, y - bv()->top_y())) {
+			if (inset->covers(x, y)) {
 				lyxerr << "Hit inset: " << inset << endl;
 				return inset;
 			}
@@ -1228,7 +1229,8 @@ DispatchResult LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 			break;
 		}
 
-		setCursorFromCoordinates(cur.current(), cmd.x, cmd.y);
+		setCursorFromCoordinates(cur.current(), cmd.x - xo_,
+					 cmd.y - yo_);
 		cur.resetAnchor();
 		finishUndo();
 		cur.x_target() = cursorX(cur.current());

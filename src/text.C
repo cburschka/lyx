@@ -1414,9 +1414,12 @@ ParagraphList::iterator LyXText::getPar(int par) const
 }
 
 
+// y is relative to this LyXText's top
 RowList::iterator
 LyXText::getRowNearY(int y, ParagraphList::iterator & pit) const
 {
+	BOOST_ASSERT(!paragraphs().empty());
+	BOOST_ASSERT(!paragraphs().begin()->rows.empty());
 #if 1
 	ParagraphList::iterator const
 		pend = boost::prior(paragraphs().end());

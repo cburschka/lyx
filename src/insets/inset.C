@@ -21,7 +21,7 @@
 #include "gettext.h"
 #include "lyxtext.h"
 #include "LColor.h"
-
+#include "metricsinfo.h"
 
 using std::string;
 
@@ -87,9 +87,9 @@ int InsetOld::scroll(bool recursive) const
 }
 
 
-void InsetOld::setPosCache(PainterInfo const &, int x, int y) const
+void InsetOld::setPosCache(PainterInfo const & pi, int x, int y) const
 {
 	//lyxerr << "InsetOld:: position cache to " << x << " " << y << std::endl;
 	xo_ = x;
-	yo_ = y;
+	yo_ = y + pi.base.bv->top_y();
 }

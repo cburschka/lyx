@@ -170,8 +170,8 @@ void InsetCollapsable::draw(PainterInfo & pi, int x, int y) const
 		int const aa  = ascent();
 		button_dim.x1 = x + 0;
 		button_dim.x2 = x + dimc.width();
-		button_dim.y1 = y - aa;
-		button_dim.y2 = y - aa + dimc.height();
+		button_dim.y1 = y - aa + pi.base.bv->top_y();
+		button_dim.y2 = y - aa + pi.base.bv->top_y() + dimc.height();
 
 		draw_collapsed(pi, x, y);
 		if (status_ == Open) {
@@ -217,15 +217,17 @@ InsetCollapsable::lfunMouseRelease(LCursor & cur, FuncRequest const & cmd)
 		edit(cur, true);
 		return DispatchResult(true, true);
 
-	case Open:
-		if (hitButton(cmd)) {
+	case Open: {
+		FuncRequest cmd1 = cmd;
+//		cmd1.y -= cur.bv().top_y();
+		if (hitButton(cmd1)) {
 			lyxerr << "InsetCollapsable::lfunMouseRelease 2" << endl;
 			setStatus(Collapsed);
 			return DispatchResult(false, FINISHED_RIGHT);
 		}
 		lyxerr << "InsetCollapsable::lfunMouseRelease 3" << endl;
 		return inset.dispatch(cur, cmd);
-
+	}
 	case Inlined:
 		return inset.dispatch(cur, cmd);
 	}
@@ -310,10 +312,10 @@ void InsetCollapsable::edit(LCursor & cur, int x, int y)
 //we are not calling edit(x,y) because there are no coordinates in the
 //inset yet. I personally think it's ok. (ab)
 	} else {
-		if (y <= button_dim.y2)
-			y = 0;
-		else
-			y += inset.ascent() - height_collapsed();
+//		if (y <= yo() + inset.ascent() + button_dim.y2)
+//			y = yo();
+//		else
+//			y += inset.ascent() - height_collapsed();
 		
 		inset.edit(cur, x, y);
 	}
@@ -329,14 +331,16 @@ InsetCollapsable::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 		case LFUN_MOUSE_PRESS:
 			if (status_ == Inlined)
 				inset.dispatch(cur, cmd);
-			else if (status_ == Open && cmd.y > button_dim.y2)
+			else if (status_ == Open
+				 && cmd.y > button_dim.y2)
 				inset.dispatch(cur, cmd);
 			return DispatchResult(true, true);
 
 		case LFUN_MOUSE_MOTION:
 			if (status_ == Inlined)
 				inset.dispatch(cur, cmd);
-			else if (status_ == Open && cmd.y > button_dim.y2)
+			else if (status_ == Open
+				 && cmd.y > button_dim.y2)
 				inset.dispatch(cur, cmd);
 			return DispatchResult(true, true);
 

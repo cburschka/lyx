@@ -170,7 +170,7 @@ private:
 	///
 	void removeNewlines();
 	///
-	void drawFrame(Painter &, int x) const;
+	void drawFrame(Painter &, int x, int y) const;
 	///
 	void clearInset(Painter &, int x, int y) const;
 

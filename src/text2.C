@@ -1207,7 +1207,7 @@ void LyXText::setCurrentFont()
 	}
 }
 
-
+// x is an absolute screen coord
 // returns the column near the specified x-coordinate of the row
 // x is set to the real beginning of this column
 pos_type LyXText::getColumnNearX(ParagraphList::iterator pit,
@@ -1327,7 +1327,8 @@ void LyXText::setCursorFromCoordinates(CursorSlice & cur, int x, int y)
 	ParagraphList::iterator pit;
 	Row const & row = *getRowNearY(y, pit);
 	bool bound = false;
-	pos_type const pos = row.pos() + getColumnNearX(pit, row, x, bound);
+	int xx = x + xo_; // getRowNearX get absolute x coords
+	pos_type const pos = row.pos() + getColumnNearX(pit, row, xx, bound);
 	cur.par() = parOffset(pit);
 	cur.pos() = pos;
 	cur.boundary() = bound;
@@ -1337,10 +1338,11 @@ void LyXText::setCursorFromCoordinates(CursorSlice & cur, int x, int y)
 // x,y are absolute screen coordinates
 void LyXText::edit(LCursor & cur, int x, int y)
 {
-	int xx = x; // is modified by getColumnNearX
 	ParagraphList::iterator pit;
-	Row const & row = *getRowNearY(y, pit);
+	Row const & row = *getRowNearY(y - yo_, pit);
 	bool bound = false;
+
+	int xx = x; // is modified by getColumnNearX
 	pos_type const pos = row.pos() + getColumnNearX(pit, row, xx, bound);
 	cur.par() = parOffset(pit);
 	cur.pos() = pos;
@@ -1349,11 +1351,12 @@ void LyXText::edit(LCursor & cur, int x, int y)
 	// try to descend into nested insets
 	InsetBase * inset = checkInsetHit(x, y);
 	if (inset) {
-		// This should be just before or just behind the cursor position
-		// set above.
+		// This should be just before or just behind the
+		// cursor position set above.
 		BOOST_ASSERT((pos != 0 && inset == pit->getInset(pos - 1))
 		             || inset == pit->getInset(pos));
-		// Make sure the cursor points to the position before this inset.
+		// Make sure the cursor points to the position before
+		// this inset.
 		if (inset == pit->getInset(pos - 1))
 			--cur.pos();
 		inset->edit(cur, x, y);

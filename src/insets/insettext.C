@@ -191,6 +191,7 @@ void InsetText::metrics(MetricsInfo & mi, Dimension & dim) const
 
 void InsetText::draw(PainterInfo & pi, int x, int y) const
 {
+	BOOST_ASSERT(!text_.paragraphs().begin()->rows.empty());
 	// update our idea of where we are
 	setPosCache(pi, x, y);
 
@@ -209,7 +210,7 @@ void InsetText::draw(PainterInfo & pi, int x, int y) const
 	text_.draw(pi, x, y);
 
 	if (drawFrame_ == ALWAYS || drawFrame_ == LOCKED)
-		drawFrame(pi.pain, xo_);
+		drawFrame(pi.pain, xo_, yo_ - bv->top_y());
 }
 
 
@@ -219,11 +220,11 @@ void InsetText::drawSelection(PainterInfo & pi, int x, int y) const
 }
 
 
-void InsetText::drawFrame(Painter & pain, int x) const
+void InsetText::drawFrame(Painter & pain, int x, int y) const
 {
 	int const ttoD2 = TEXT_TO_INSET_OFFSET / 2;
 	int const frame_x = x + ttoD2;
-	int const frame_y = yo_ - dim_.asc + ttoD2;
+	int const frame_y = y - dim_.asc + ttoD2;
 	int const frame_w = dim_.wid - TEXT_TO_INSET_OFFSET;
 	int const frame_h = dim_.asc + dim_.des - TEXT_TO_INSET_OFFSET;
 	pain.rectangle(frame_x, frame_y, frame_w, frame_h, frameColor());
@@ -281,9 +282,6 @@ void InsetText::sanitizeEmptyText(BufferView & bv)
 		text_.setFont(font, false);
 	}
 }
-
-
-extern CursorBase theTempCursor;
 
 
 void InsetText::edit(LCursor & cur, bool left)

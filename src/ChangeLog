@@ -1,3 +1,9 @@
+2004-02-06  Alfredo Braunstein  <abraunst@lyx.org>
+
+	* text3.C (checkInsetHit): adjust coords
+	* text2.C (getColumnNearX): adjust coords
+	(edit): adjust coords
+	* text.C (getRowNearY): add two asserts
 
 2004-02-06  Martin Vermeer  <martin.vermeer@hut.fi>
 

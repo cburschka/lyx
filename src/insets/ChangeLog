@@ -1,4 +1,11 @@
 
+2004-02-06  Alfredo Braunstein  <abraunst@lyx.org>
+
+	* inset.C (setPosCache): switch to absolute coords in insets
+	* insettext.[Ch] (draw, drawFrame): adjust
+	* insetcollapsable.C (draw): adjust
+	(edit): adjust
+
 2004-02-04  Alfredo Braunstein  <abraunst@lyx.org>
 
 	* insettext.C (edit): 
