@@ -724,6 +724,14 @@ void LyXText::redoParagraphs(LyXCursor const & cur,
 
 void LyXText::fullRebreak()
 {
+	need_break_row = rows().begin();
+	partialRebreak();
+	setCursorIntern(cursor.par(), cursor.pos());
+}
+
+
+void LyXText::partialRebreak()
+{
 	if (rows().empty()) {
 		init(bv());
 		return;

@@ -452,10 +452,7 @@ Inset::RESULT InsetERT::localDispatch(FuncRequest const & cmd)
 		 * Open (needfullrow) to Inlined (only the space
 		 * taken by the text).
 		 */
-		LyXText * t = inset.getLyXText(cmd.view());
-		t->need_break_row = t->rows().begin();
-		t->fullRebreak();
-		t->setCursorIntern(t->cursor.par(), t->cursor.pos());
+		inset.getLyXText(cmd.view())->fullRebreak();
 		inset.update(cmd.view(), true);
 		bv->updateInset(this);
 		result = DISPATCHED;

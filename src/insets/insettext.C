@@ -524,7 +524,7 @@ void InsetText::updateLocal(BufferView * bv, int what, bool mark_dirty)
 		lt = getLyXText(bv);
 		clear = true;
 	}
-	lt->fullRebreak();
+	lt->partialRebreak();
 	setUpdateStatus(bv, what);
 	bool flag = mark_dirty ||
 		(((need_update != CURSOR) && (need_update != NONE)) ||

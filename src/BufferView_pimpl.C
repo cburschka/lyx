@@ -617,7 +617,7 @@ void BufferView::Pimpl::update(LyXText * text, BufferView::UpdateCodes f)
 		text->selection.cursor = text->cursor;
 	}
 
-	text->fullRebreak();
+	text->partialRebreak();
 
 	if (text->inset_owner) {
 		text->inset_owner->setUpdateStatus(bv_, InsetText::NONE);
@@ -636,7 +636,7 @@ void BufferView::Pimpl::update(BufferView::UpdateCodes f)
 		text->selection.cursor = text->cursor;
 	}
 
-	text->fullRebreak();
+	text->partialRebreak();
 
 	if (text->inset_owner) {
 		text->inset_owner->setUpdateStatus(bv_, InsetText::NONE);

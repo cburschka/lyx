@@ -180,7 +180,9 @@ public:
 	///
 	void insertInset(Inset * inset);
 
-	/// Completes the insertion with a full rebreak
+	/// Completes the insertion with a rebreak from 'need_break_row' on
+	void partialRebreak();
+	/// a full rebreak of the whole text
 	void fullRebreak();
 
 	///

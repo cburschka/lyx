@@ -1393,7 +1393,7 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 		// Clear the selection
 		bv->screen().toggleSelection(bv->text, bv);
 		bv->text->clearSelection();
-		bv->text->fullRebreak();
+		bv->text->partialRebreak();
 		bv->update();
 		bv->updateScrollbar();
 

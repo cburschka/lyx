@@ -636,7 +636,7 @@ bool BufferView::ChangeInsets(Inset::Code code,
 				text->setCursorIntern(it.pit(), 0);
 				text->redoParagraphs(text->cursor,
 						     boost::next(text->cursor.par()));
-				text->fullRebreak();
+				text->partialRebreak();
 			}
 		}
 	}

@@ -12,6 +12,10 @@
 	* text2.C:
 	* text3.C: remove LyXCursor::row_ member
 
+	* lyxtext.h:
+	* text.C: rename fullRebreak() to partialRebreak() and implement
+	  a fullRebreak() that really bereks fully
+
 2003-06-26  Alfredo Brauntein  <abraunst@lyx.org>
 
 	* lyx_main.C (LyX): get full path of document loaded on the 
