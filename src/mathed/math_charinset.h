@@ -38,9 +38,13 @@ public:
 	char getChar() const { return char_; }
 	///
 	bool isRelOp() const;
+	///
+	void handleFont(MathTextCodes t);
 
 private:
 	/// the character
 	char char_;
+	/// 
+	MathTextCodes code_;
 };
 #endif

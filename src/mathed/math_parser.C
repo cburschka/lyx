@@ -556,9 +556,6 @@ latexkeys const * Parser::read_delim()
 
 void Parser::parse_into(MathArray & array, unsigned flags)
 {
-	static int plevel = -1;
-
-	++plevel;
 	MathTextCodes yyvarcode   = LM_TC_VAR;
 
 	int  t      = yylex();
@@ -602,7 +599,7 @@ void Parser::parse_into(MathArray & array, unsigned flags)
 
 		case LM_TK_ARGUMENT: {
 			MathMacroArgument * p = new MathMacroArgument(ival_);
-			p->code(yyvarcode);
+			//p->code(yyvarcode);
 			array.push_back(p);
 			break;
 		}
@@ -670,7 +667,6 @@ void Parser::parse_into(MathArray & array, unsigned flags)
 		case '&':
 			if (flags & FLAG_AMPERSAND) {
 				flags &= ~FLAG_AMPERSAND;
-				--plevel;
 				return;
 			}
 			lyxerr[Debug::MATHED]
@@ -682,7 +678,6 @@ void Parser::parse_into(MathArray & array, unsigned flags)
 			curr_skip_ = lexArg('[');
 			if (flags & FLAG_NEWLINE) {
 				flags &= ~FLAG_NEWLINE;
-				--plevel;
 				return;
 			}
 			lyxerr[Debug::MATHED]
@@ -773,10 +768,8 @@ void Parser::parse_into(MathArray & array, unsigned flags)
 		}
 		
 		case LM_TK_RIGHT:
-			if (flags & FLAG_RIGHT) { 
-				--plevel;
+			if (flags & FLAG_RIGHT)
 				return;
-			}
 			error("Unmatched right delimiter");
 //	  panic = true;
 			break;
@@ -825,7 +818,6 @@ void Parser::parse_into(MathArray & array, unsigned flags)
 		
 		case LM_TK_MATH:
 		case LM_TK_END:
-			--plevel;
 			return;
 
 		case LM_TK_BEGIN:
@@ -881,7 +873,6 @@ void Parser::parse_into(MathArray & array, unsigned flags)
 			t = yylex();
 		}
 	}
-	--plevel;
 }
 
 

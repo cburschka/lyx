@@ -870,7 +870,8 @@ void MathCursor::drawSelection(Painter & pain) const
 
 MathTextCodes MathCursor::nextCode() const
 {
-	return (pos() == size()) ? LM_TC_MIN : nextInset()->code();
+	//return (pos() == size()) ? LM_TC_MIN : nextInset()->code();
+	return LM_TC_MIN;
 }
 
 
@@ -882,13 +883,8 @@ void MathCursor::handleFont(MathTextCodes t)
 		getSelection(i1, i2); 
 		if (i1.idx_ == i2.idx_) {
 			MathArray & ar = i1.cell();
-			for (int pos = i1.pos_; pos != i2.pos_; ++pos) {
-				MathInset * p = ar.nextInset(pos);	
-				if (isalnum(p->getChar())) { 
-					MathTextCodes c = (p->code() == t) ? LM_TC_VAR : t;
-					p->code(c);
-				}
-			}
+			for (int pos = i1.pos_; pos != i2.pos_; ++pos) 
+				ar.nextInset(pos)->handleFont(t);
 		}
 	} else 
 		lastcode_ = (lastcode_ == t) ? LM_TC_VAR : t;

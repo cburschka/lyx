@@ -192,22 +192,17 @@ public:
 
 	///
 	virtual void validate(LaTeXFeatures & features) const;
+	///
+	virtual void handleFont(MathTextCodes) {}
 
 	///
 	static int workwidth;
-
-	/// the inherited text style
-	virtual MathTextCodes code() const;
-	///
-	virtual void code(MathTextCodes t);
 
 protected:
 	/// _sets_ style
 	void size(MathStyles s) const;
 	/// the used font size
 	mutable MathStyles size_;
-	/// the inherited text style
-	mutable MathTextCodes code_;
 
 private:
 	/// the following are used for positioning the cursor with the mouse

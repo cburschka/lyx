@@ -27,7 +27,7 @@ int MathInset::workwidth;
 
 
 MathInset::MathInset()
-	: size_(LM_ST_DISPLAY), code_(LM_TC_MIN), xo_(0), yo_(0)
+	: size_(LM_ST_DISPLAY), xo_(0), yo_(0)
 {}
 
 
@@ -280,18 +280,6 @@ std::vector<int> MathInset::idxBetween(int from, int to) const
 	for (int i = from; i <= to; ++i)
 		res.push_back(i);
 	return res;
-}
-
-
-MathTextCodes MathInset::code() const
-{
-	return code_;
-}
-
-
-void MathInset::code(MathTextCodes t)
-{
-	code_ = t;
 }
 
 

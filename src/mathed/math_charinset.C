@@ -12,10 +12,8 @@
 
 
 MathCharInset::MathCharInset(char c, MathTextCodes t)
-	: char_(c)
-{
-	code(t);
-}
+	: char_(c), code_(t)
+{}
 
 
 MathInset * MathCharInset::clone() const
@@ -81,4 +79,10 @@ void MathCharInset::writeNormal(std::ostream & os) const
 bool MathCharInset::isRelOp() const
 {
 	return char_ == '=' || char_ == '<' || char_ == '>';
+}
+
+
+void MathCharInset::handleFont(MathTextCodes t)
+{
+	code_ = (code_ == t) ? LM_TC_VAR : t;
 }
