@@ -18,8 +18,6 @@
 #include "debug.h"
 #include "lyxrc.h"
 #include "BufferView.h"
-#include "frontends/LyXView.h"
-
  
 qfont_loader::qfont_loader()
 {

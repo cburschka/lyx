@@ -22,12 +22,9 @@
 #include <qfontmetrics.h>
 #include <qfont.h>
 
-// FIXME ?
-extern qfont_loader * global_fontloader;
- 
 namespace {
 	QFontMetrics const & metrics(LyXFont const & f) {
-		return global_fontloader->metrics(f);
+		return fontloader.metrics(f);
 	}
 };
 
@@ -86,8 +83,8 @@ int width(char const * s, size_t ls, LyXFont const & f)
 	LyXFont smallfont(f);
 	smallfont.decSize().decSize().setShape(LyXFont::UP_SHAPE);
 
-	QFontMetrics qm = global_fontloader->metrics(f);
-	QFontMetrics qsmallm = global_fontloader->metrics(smallfont);
+	QFontMetrics qm = fontloader.metrics(f);
+	QFontMetrics qsmallm = fontloader.metrics(smallfont);
 
 	int w = 0;
 

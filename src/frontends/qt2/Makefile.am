@@ -23,6 +23,7 @@ libqt2_la_SOURCES = \
 	Dialogs.C \
 	FileDialog.C \
 	FileDialog_private.C \
+	LyXKeySymFactory.C \
 	LyXScreenFactory.C \
 	Menubar_pimpl.C \
 	Menubar_pimpl.h \

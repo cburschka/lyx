@@ -1,5 +1,17 @@
 2002-06-19  John Levon  <moz@compsoc.man.ac.uk>
 
+	* LyXKeySymFactory.C: add
+
+	* Makefile.am:
+	* QContentPane.C:
+	* qlkey.h:
+	* QLyXKeySym.h:
+	* QLyXKeySym.C: get keyboard partly working
+
+	* qfont_metrics.C: fix compile 
+ 
+2002-06-19  John Levon  <moz@compsoc.man.ac.uk>
+
 	* Makefile.am: add the new files ...
  
 	* Dialogs.C:

@@ -1,0 +1,113 @@
+/**
+ * \file lyx_gui.C
+ * Copyright 2002 the LyX Team
+ * Read the file COPYING
+ *
+ * \author unknown
+ * \author John Levon <moz@compsoc.man.ac.uk>
+ */
+
+#include <config.h>
+ 
+#include "lyx_gui.h"
+ 
+#include "support/lyxlib.h"
+#include "support/os.h"
+#include "support/filetools.h"
+ 
+#include "debug.h"
+#include "gettext.h"
+ 
+#include "lyx_main.h"
+#include "lyxrc.h"
+
+// FIXME: move this stuff out again
+#include "bufferlist.h"
+#include "lyxfunc.h"
+#include "lyxserver.h"
+#include "BufferView.h"
+#include "QtView.h"
+ 
+#include <fcntl.h>
+
+#include <boost/bind.hpp>
+ 
+#include <qapplication.h>
+ 
+#ifndef CXX_GLOBAL_CSTD
+using std::exit;
+#endif
+
+using std::vector;
+using std::hex;
+using std::endl;
+ 
+extern bool finished;
+extern BufferList bufferlist;
+ 
+// FIXME: wrong place !
+LyXServer * lyxserver;
+ 
+void lyx_gui::parse_init(int & argc, char * argv[])
+{
+	static QApplication a(argc, argv);
+}
+ 
+
+void lyx_gui::parse_lyxrc()
+{
+	// FIXME !!!! 
+	lyxrc.dpi = 95;
+}
+
+ 
+void lyx_gui::start(string const & batch, vector<string> files)
+{
+	// initial geometry
+	int xpos = -1;
+	int ypos = -1;
+	unsigned int width = 690;
+	unsigned int height = 510;
+ 
+	QtView view(width, height);
+	view.show(xpos, ypos, "LyX");
+	view.init();
+
+	Buffer * last = 0;
+ 
+	// FIXME: some code below needs moving
+
+	lyxserver = new LyXServer(view.getLyXFunc(), lyxrc.lyxpipes);
+ 
+	vector<string>::const_iterator cit = files.begin();
+	vector<string>::const_iterator end = files.end();
+	for (; cit != end; ++cit) {
+		Buffer * b = bufferlist.loadLyXFile(*cit);
+		if (b) {
+			last = b;
+		}
+	}
+
+	// switch to the last buffer successfully loaded
+	if (last) {
+		view.view()->buffer(last);
+	}
+
+	// handle the batch commands the user asked for
+	if (!batch.empty()) {
+		view.getLyXFunc()->verboseDispatch(batch, false);
+	}
+
+	while (!finished) {
+		qApp->processEvents();
+	}
+		 
+	// FIXME 
+	delete lyxserver;
+}
+ 
+ 
+void lyx_gui::init_graphics()
+{
+	// FIXME
+}

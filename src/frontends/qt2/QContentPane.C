@@ -116,7 +116,9 @@ void QContentPane::keyPressEvent(QKeyEvent * e)
 	char const * tmp = e->text().latin1();
 	string const text = tmp ? tmp : "";
 	lyxerr[Debug::GUI] << "key text " << text << endl;
-	wa_->workAreaKeyPress(LyXKeySymPtr(new QLyXKeySym(*e)), q_key_state(e->state()));
+	QLyXKeySym * sym = new QLyXKeySym();
+	sym->set(e->key(), e->text());
+	wa_->workAreaKeyPress(LyXKeySymPtr(sym), q_key_state(e->state()));
 }
 
  
