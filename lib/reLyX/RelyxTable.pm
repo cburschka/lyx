@@ -283,65 +283,8 @@ sub parse_cols {
 	}
     } # end sub done_reading
 
+# Subroutines to print out the table once it's created
     sub print_info {
-    # Subroutine to print out the table once it's created
-	&print_info_221(@_);
-    }
-
-    sub write_string {
-	my ($name, $s) = @_;
-	if (!$s) {
-	    return '';
-	}
-	return ' ' . $name . '="' . $s . '"';
-    }
-
-    sub write_bool {
-	my ($name, $b) = @_;
-	if (!$b) {
-	    return '';
-	}
-	write_string $name, "true";
-    }
-
-    sub write_int {
-	my ($name, $i) = @_;
-	if (!$i) {
-	    return '';
-	}
-	write_string $name, $i;
-    }
-
-    sub print_info_221 {
-    # Subroutine to print out the table in \lyxformat 221
-	my $thistable = shift;
-        my $to_print = '';
-        # header line
-	$to_print .= "\n<lyxtabular" .
-	    write_int("version", 3) .
-	    write_int("rows", $thistable->numrows) .
-	    write_int("columns", $thistable->numcols) .
-	    ">\n";
-	# global longtable options
-	$to_print .= "<features" .
-	   write_int ("rotate", 0) .
-	   write_bool("islongtable", 0) .
-	   write_int ("firstHeadTopDL", 0) .
-	   write_int ("firstHeadBottomDL", 0) .
-	   write_bool("firstHeadEmpty", 0) .
-	   write_int ("headTopDL", 0) .
-	   write_int ("headBottomDL", 0) .
-	   write_int ("footTopDL", 0) .
-	   write_int ("footBottomDL", 0) .
-	   write_int ("lastFootTopDL", 0) .
-	   write_int ("lastFootBottomDL", 0) .
-	   write_bool("lastFootEmpty", 0) .
-	   ">\n";
-	    
-    }
-
-    sub print_info_215 {
-    # Subroutine to print out the table in \lyxformat 215
         # print the header information for this table
 	my $thistable = shift;
         my $to_print = "";
