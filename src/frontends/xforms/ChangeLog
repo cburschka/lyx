@@ -1,5 +1,10 @@
 2004-05-04  Angus Leeming  <leeming@lyx.org>
 
+	* FormRef.C (input): don't activate the Apply buttons when using
+	widgets that don't change the data.
+
+2004-05-04  Angus Leeming  <leeming@lyx.org>
+
 	* Dialogs.C: Remove "error" dialog identifier.
 
 2004-05-04  Angus Leeming  <leeming@lyx.org>
