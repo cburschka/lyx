@@ -28,7 +28,7 @@
 
 #include "frontends/Alert.h"
 #include "frontends/FileDialog.h"
-#include "frontends/GUIRunTime.h"
+#include <X11/Xlib.h>
 
 #include "support/FileInfo.h"
 #include "support/filetools.h"
@@ -81,9 +81,6 @@ void ShowMessage(Buffer const * buf,
 // should be moved to lyxfunc.C
 bool MenuWrite(BufferView * bv, Buffer * buffer)
 {
-	// FIXME: needed ?
-	XFlush(GUIRunTime::x11Display());
-
 	if (!buffer->save()) {
 		if (Alert::askQuestion(_("Save failed. Rename and try again?"),
 				MakeDisplayPath(buffer->fileName(), 50),

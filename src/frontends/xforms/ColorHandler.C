@@ -2,7 +2,7 @@
  * ======================================================
  *
  *           LyX, The Document Processor
- *
+ * 	
  *	    Copyright 1998-2001 The LyX Team
  *
  *======================================================*/
@@ -18,11 +18,9 @@
 #include "gettext.h"
 #include "debug.h"
 
-#include "frontends/GUIRunTime.h"
+#include <cmath>
 
 #include <boost/scoped_array.hpp>
-
-#include <cmath>
 
 #ifndef CXX_GLOBAL_CSTD
 using std::pow;
@@ -30,16 +28,16 @@ using std::pow;
 
 using std::endl;
 
+#include FORMS_H_LOCATION
 
 LyXColorHandler::LyXColorHandler()
 {
-	display = GUIRunTime::x11Display();
+	display = fl_get_display();
 	drawable = XCreatePixmap(display,
-				 RootWindow(display, GUIRunTime::x11Screen()),
-				 10, 10,
-				 GUIRunTime::x11VisualDepth());
-
-	colormap = GUIRunTime::x11Colormap();
+				 RootWindow(display, fl_screen),
+				 10, 10, fl_get_visual_depth());
+	
+	colormap = fl_state[fl_get_vclass()].colormap;
 	// Clear the GC cache
 	for (int i = 0; i <= LColor::ignore; ++i) {
 		colorGCcache[i] = 0;

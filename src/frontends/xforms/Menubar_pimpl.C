@@ -157,34 +157,30 @@ void Menubar::Pimpl::makeMenubar(Menu const & menu)
 
 void Menubar::Pimpl::set(string const & menu_name)
 {
-	lyxerr[Debug::GUI] << "Entering Menubar::Pimpl::set "
-			   << "for menu `" << menu_name << "'" << endl;
+	if (menu_name == current_menu_name_)
+		return;
+ 
+	MenubarMap::iterator mbit = menubarmap_.find(menu_name);
 
-	if (menu_name != current_menu_name_) {
-		MenubarMap::iterator mbit = menubarmap_.find(menu_name);
+	if (mbit == menubarmap_.end()) {
+		lyxerr << "ERROR:set: Unknown menu `" << menu_name
+		       << "'" << endl;
+		return;
+	}
 
-		if (mbit == menubarmap_.end()) {
-			lyxerr << "ERROR:set: Unknown menu `" << menu_name
-			       << "'" << endl;
-			return;
-		}
+	if (current_group_) {
+		lyxerr[Debug::GUI] << "  hiding group "
+				   << current_group_ << endl;
+		fl_hide_object(current_group_);
+	}
 
-		if (current_group_) {
-			lyxerr[Debug::GUI] << "  hiding group "
-					   << current_group_ << endl;
-			fl_hide_object(current_group_);
-		}
-
-		lyxerr[Debug::GUI] << "  showing group "
-				   << mbit->second << endl;
-		fl_show_object(mbit->second);
-		current_menu_name_ = menu_name;
-		current_group_ = mbit->second;
-		lyxerr[Debug::GUI] << "Menubar::Pimpl::set: Menubar set."
-				   << endl;
-	} else
-		lyxerr [Debug::GUI] << "Menubar::Pimpl::set: Nothing to do."
-				    << endl;
+	lyxerr[Debug::GUI] << "  showing group "
+			   << mbit->second << endl;
+	fl_show_object(mbit->second);
+	current_menu_name_ = menu_name;
+	current_group_ = mbit->second;
+	lyxerr[Debug::GUI] << "Menubar::Pimpl::set: Menubar set."
+			   << endl;
 }
 
 

@@ -1,16 +1,12 @@
-/* This file is part of
- * ======================================================
+/**
+ * \file kbsequence.C
+ * Copyright 1995-2002 the LyX Team
+ * Read the file COPYING
  *
- *           LyX, The Document Processor
- *
- *           Copyright 1995 Matthias Ettrich
- *           Copyright 1995-2001 The LyX Team.
- *
- * ====================================================== */
+ * \author John Levon <moz@compsoc.man.ac.uk>
+ */
 
 #include <config.h>
-//#include <cstring>
-#include <X11/Xlib.h>
 
 #include "gettext.h"
 
@@ -24,6 +20,7 @@
 #include "commandtags.h"
 #include "debug.h"
 
+#include <X11/Xlib.h>
 
 using std::make_pair;
 using std::vector;
@@ -67,6 +64,7 @@ string::size_type kb_sequence::parse(string const & s)
 	string::size_type i = 0;
 	key_modifier::state mod = key_modifier::none;
 	key_modifier::state nmod = key_modifier::none;
+ 
 	while (i < s.length()) {
 		if (s[i] == ' ')
 			++i;

@@ -16,7 +16,6 @@
 #include "FormBase.h"
 #include "xformsBC.h"
 #include "xforms_resize.h"
-#include "GUIRunTime.h"
 #include "Tooltips.h"
 #include "support/LAssert.h"
 
@@ -118,7 +117,6 @@ void FormBase::hide()
 	// So we try to clear out motion events in the queue before the
 	// DestroyNotify
 	XSync(fl_get_display(), false);
-	GUIRunTime::processEvents();
 
 	if (form() && form()->visible)
 		fl_hide_form(form());

@@ -1,15 +1,10 @@
-/* This file is part of
- * ======================================================
+/**
+ * \file intl.C
+ * Copyright 1995-2002 the LyX Team
+ * Read the file COPYING
  *
- *           LyX, The Document Processor
- *
- *           Copyright 1995 Matthias Ettrich
- *           Copyright 1995-2001 The LyX Team.
- *
- * ====================================================== */
-
-/*
- *	International support for LyX
+ * \author unknown
+ * \author John Levon <moz@compsoc.man.ac.uk>
  */
 
 #include <config.h>

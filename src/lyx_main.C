@@ -1,12 +1,10 @@
-/* This file is part of
- * ======================================================
+/**
+ * \file lyx_main.C
+ * Copyright 1995-2002 the LyX Team
+ * Read the file COPYING
  *
- *           LyX, The Document Processor
- *
- *           Copyright 1995 Matthias Ettrich
- *           Copyright 1995-2001 The LyX Team.
- *
- * ====================================================== */
+ * \author unknown
+ */
 
 #include <config.h>
 #include <version.h>
@@ -62,9 +60,8 @@ extern void QuitLyX();
 string system_lyxdir;
 string build_lyxdir;
 string system_tempdir;
-string user_lyxdir;	// Default $HOME/.lyx
+string user_lyxdir;
 
-// Should this be kept global? Asger says Yes.
 DebugStream lyxerr;
 
 boost::scoped_ptr<LastFiles> lastfiles;

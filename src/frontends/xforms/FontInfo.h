@@ -88,4 +88,5 @@ private:
 	/// Build newly sized font string
 	string const resize(string const &, int size) const;
 };
-#endif
+
+#endif // FONTINFO_H

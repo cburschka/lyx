@@ -16,7 +16,6 @@
 #include "FormBaseDeprecated.h"
 #include "xformsBC.h"
 #include "xforms_resize.h"
-#include "GUIRunTime.h"
 #include "Tooltips.h"
 #include "lyxrc.h"
 
@@ -140,7 +139,6 @@ void FormBaseDeprecated::hide()
 	// So we try to clear out motion events in the queue before the
 	// DestroyNotify
 	XSync(fl_get_display(), false);
-	GUIRunTime::processEvents();
 
 	if (form() && form()->visible) {
 		// some dialogs might do things to the form first
