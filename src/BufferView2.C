@@ -572,7 +572,7 @@ void BufferView::showLockedInsetCursor(int x, int y, int asc, int desc)
 			shape = (txt->real_current_font.isVisibleRightToLeft())
 				? LyXScreen::REVERSED_L_SHAPE
 				: LyXScreen::L_SHAPE;
-		y += cursor.y() + theLockingInset()->insetInInsetY();
+		y += cursor.iy() + theLockingInset()->insetInInsetY();
 		pimpl_->screen_->showManualCursor(text, x, y, asc, desc,
 						  shape);
 	}
@@ -590,7 +590,7 @@ void BufferView::hideLockedInsetCursor()
 bool BufferView::fitLockedInsetCursor(int x, int y, int asc, int desc)
 {
 	if (theLockingInset() && available()) {
-		y += text->cursor.y() + theLockingInset()->insetInInsetY();
+		y += text->cursor.iy() + theLockingInset()->insetInInsetY();
 		if (pimpl_->screen_->fitManualCursor(text, this, x, y, asc, desc)) {
 			updateScrollbar();
 			return true;

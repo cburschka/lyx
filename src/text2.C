@@ -2061,20 +2061,23 @@ void LyXText::setCursor(BufferView * bview, LyXCursor & cur, Paragraph * par,
 	cur.pos(pos);
 	cur.boundary(boundary);
 
-#if 0
-	if (pos && par->getChar(pos) == Paragraph::META_INSET &&
-		par->getInset(pos)) {
-		Inset * ins = par->getInset(pos);
-		if (ins->needFullRow() || ins->display()) {
-			--pos;
-			boundary = true;
-		}
-	}
-#endif
-
 	// get the cursor y position in text
 	int y = 0;
 	Row * row = getRow(par, pos, y);
+	Row * old_row = row;
+	// if we are before the first char of this row and are still in the
+	// same paragraph and there is a previous row then put the cursor on
+	// the end of the previous row
+	cur.iy(y + row->baseline());
+	Inset * ins;
+	if (pos && par->getChar(pos) == Paragraph::META_INSET &&
+		(ins=par->getInset(pos)) && (ins->needFullRow() || ins->display()))
+	{
+		row = row->previous();
+		y -= row->height();
+	}
+
+	cur.row(row);
 	// y is now the beginning of the cursor row
 	y += row->baseline();
 	// y is now the cursor baseline
@@ -2088,7 +2091,7 @@ void LyXText::setCursor(BufferView * bview, LyXCursor & cur, Paragraph * par,
 	prepareToPrint(bview, row, x, fill_separator, fill_hfill,
 		       fill_label_hfill);
 	pos_type cursor_vpos = 0;
-	pos_type last = rowLastPrintable(row);
+	pos_type last = rowLastPrintable(old_row);
 
 	if (pos > last + 1) {
 		// This shouldn't happen.
@@ -2149,7 +2152,6 @@ void LyXText::setCursor(BufferView * bview, LyXCursor & cur, Paragraph * par,
 
 	cur.x(int(x));
 	cur.x_fix(cur.x());
-	cur.row(row);
 }
 
 
@@ -2247,6 +2249,7 @@ void LyXText::setCursorFromCoordinates(BufferView * bview, LyXCursor & cur,
 	cur.pos(row->pos() + column);
 	cur.x(x);
 	cur.y(y + row->baseline());
+	cur.iy(cur.y());
 	cur.row(row);
 	cur.boundary(bound);
 }

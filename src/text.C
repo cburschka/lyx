@@ -254,10 +254,21 @@ pos_type LyXText::rowLast(Row const * row) const
 pos_type LyXText::rowLastPrintable(Row const * row) const
 {
 	pos_type const last = rowLast(row);
+	bool ignore_the_space_on_the_last_position = true;
+	Inset * ins;
+	// we have to consider a space on the last position in this case!
+	if (row->next() && row->par() == row->next()->par() &&
+	    row->next()->par()->getChar(last+1) == Paragraph::META_INSET &&
+	    (ins=row->next()->par()->getInset(last+1)) &&
+	    (ins->needFullRow() || ins->display()))
+	{
+		ignore_the_space_on_the_last_position = false;
+	}
 	if (last >= row->pos()
 	    && row->next()
 	    && row->next()->par() == row->par()
-	    && row->par()->isSeparator(last))
+	    && row->par()->isSeparator(last)
+		&& ignore_the_space_on_the_last_position)
 		return last - 1;
 	else
 		return last;
@@ -1134,10 +1145,11 @@ int LyXText::labelFill(BufferView * bview, Row const * row) const
 // on the very last column doesnt count
 int LyXText::numberOfSeparators(Buffer const * buf, Row const * row) const
 {
-	pos_type const last = rowLast(row);
+	pos_type last = rowLastPrintable(row);
 	pos_type p = max(row->pos(), beginningOfMainBody(buf, row->par()));
+		
 	int n = 0;
-	for (; p < last; ++p) {
+	for (; p <= last; ++p) {
 		if (row->par()->isSeparator(p)) {
 			++n;
 		}

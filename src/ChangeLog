@@ -1,3 +1,22 @@
+2002-04-11  Juergen Vigna  <jug@sad.it>
+
+	* BufferView2.C (showLockedInsetCursor): use iy
+	(fitLockedInsetCursor): ditto
+
+	* BufferView_pimpl.C (checkInset): use LyXCursor::iy for baseline of
+	locked insets as there we have the right value now.
+
+	* lyxcursor.C: added iy_ variable and iy functions to set to the
+	baseline of cursor-y of the locked inset.
+
+	* text2.C (setCursorFromCoordinates): set LyXCursor::iy.
+	(setCursor): fixed for insets which need a full row.
+
+	* text.C (rowLastPrintable): don't ignore the last space when before
+	an inset which needs a full row.
+	(numberOfSeparators): use rowLastPrintable and <= last to honor a space
+	as last character of a row when before a inset which needs a full row.
+
 2002-04-06  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* version.C.in: update date

@@ -951,7 +951,7 @@ Inset * BufferView::Pimpl::checkInset(LyXText const & text,
 
 	x -= b.x1;
 	// The origin of an inset is on the baseline
-	y -= (text.cursor.y());
+	y -= text.cursor.iy();
 
 	return inset;
 }

@@ -52,6 +52,10 @@ public:
 	///
 	int y() const;
 	///
+	void iy(int i);
+	///
+	int iy() const;
+	///
 	void row(Row * r);
 	///
 	Row * row() const;
@@ -68,6 +72,9 @@ private:
 	int x_fix_;
 	///
 	int y_;
+	/// the y position of the position before the inset when we put
+	/// the cursor on the end of the row before, otherwise equal to y.
+	int iy_;
 	///
 	Row * row_;
 };
