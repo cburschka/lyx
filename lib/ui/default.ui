@@ -254,7 +254,7 @@ Menuset
 	Item "Error|E" "error-next"
 	Item "Note|N" "note-next"
 	Item "Refs|R" "reference-next"
-	Submenu "Bookamrks|B" "navigate_bookmarks"
+	Submenu "Bookmarks|B" "navigate_bookmarks"
     End
 
     Menu "navigate_bookmarks"
@@ -264,7 +264,7 @@ Menuset
 	Separator
 	Item "Goto Bookmark 1|1" "bookmark-goto 1"
 	Item "Goto Bookmark 2|2" "bookmark-goto 2"
-	Item "Goto Bookmark 3|2" "bookmark-goto 3"
+	Item "Goto Bookmark 3|3" "bookmark-goto 3"
     End
 
 #
