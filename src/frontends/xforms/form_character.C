@@ -135,3 +135,4 @@ FD_form_character * FormCharacter::build_character()
   return fdui;
 }
 /*---------------------------------------*/
+
