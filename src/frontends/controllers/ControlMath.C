@@ -213,6 +213,9 @@ string const find_xpm(string const & name)
 	else if (xpm_name == "{") xpm_name = "lbrace";
 	else if (xpm_name == "}") xpm_name = "rbrace";
 	else if (xpm_name == "|") xpm_name = "bars";
+	else if (xpm_name == "_") xpm_name = "underscore";
+	else if (xpm_name == "textrm_Å") xpm_name = "textrm_A";
+	else if (xpm_name == "textrm_Ø") xpm_name = "textrm_0";
 	else if (xpm_name == "Bumpeq") xpm_name = "bumpeq2";
 	else if (xpm_name == "Cap") xpm_name = "cap2";
 	else if (xpm_name == "Cup") xpm_name = "cup2";
