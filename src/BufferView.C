@@ -764,10 +764,9 @@ bool BufferView::ChangeInsets(Inset::Code code,
 	ParIterator end = buffer()->par_iterator_end();
 	for (ParIterator it = buffer()->par_iterator_begin();
 	     it != end; ++it) {
-		Paragraph * par = &*(*it);
 		bool changed_inset = false;
-		for (InsetList::iterator it2 = par->insetlist.begin();
-		     it2 != par->insetlist.end(); ++it2) {
+		for (InsetList::iterator it2 = it->insetlist.begin();
+		     it2 != it->insetlist.end(); ++it2) {
 			if (it2.getInset()->lyxCode() == code) {
 				InsetCommand * inset = static_cast<InsetCommand *>(it2.getInset());
 				if (inset->getContents() == from) {
@@ -784,7 +783,7 @@ bool BufferView::ChangeInsets(Inset::Code code,
 			// The test it.size()==1 was needed to prevent crashes.
 			// How to set the cursor corretly when it.size()>1 ??
 			if (it.size() == 1) {
-				text->setCursorIntern(par, 0);
+				text->setCursorIntern(*it, 0);
 				text->redoParagraphs(text->cursor,
 						     boost::next(text->cursor.par()));
 				text->fullRebreak();

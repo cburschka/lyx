@@ -1,3 +1,13 @@
+2003-05-22  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* tabular.C (SetMultiColumn): ws changes
+
+	* rowpainter.C (paintFirst): get rid of a ->previous
+
+	* lyx_cb.C (getPossibleLabel): parlist simplification
+
+	* BufferView.C (ChangeInsets): simplify slightly.
+
 2003-05-20  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* LyXAction.C: new lfun space-insert, kill protected-space-insert
@@ -11,7 +21,7 @@
 
 	* BufferView.C:
 	* BufferView_pimpl.C:
-	* buffer.[Ch]:	
+	* buffer.[Ch]:
 	* lyxfunc.C:
 	* undo_funcs.C: return a ParIterator from getParFromID.
 

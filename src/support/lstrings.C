@@ -280,30 +280,6 @@ string const ascii_lowercase(string const & a)
 }
 
 
-bool prefixIs(string const & a, char const * pre)
-{
-	lyx::Assert(pre);
-
-	size_t const l = strlen(pre);
-	string::size_type const alen = a.length();
-
-	if (l > alen || a.empty())
-		return false;
-	else {
-#if !defined(USE_INCLUDED_STRING) && !defined(STD_STRING_IS_GOOD)
-		// Delete this code when the compilers get a bit better.
-		return ::strncmp(a.c_str(), pre, l) == 0;
-#else
-		// This is the code that we really want to use
-		// but until gcc ships with a basic_string that
-		// implements std::string correctly we have to
-		// use the code above.
-		return a.compare(0, l, pre, l) == 0;
-#endif
-	}
-}
-
-
 bool prefixIs(string const & a, string const & pre)
 {
 	string::size_type const prelen = pre.length();
@@ -325,31 +301,6 @@ bool suffixIs(string const & a, char c)
 {
 	if (a.empty()) return false;
 	return a[a.length() - 1] == c;
-}
-
-
-bool suffixIs(string const & a, char const * suf)
-{
-	lyx::Assert(suf);
-
-	size_t const suflen = strlen(suf);
-	string::size_type const alen = a.length();
-
-	if (suflen > alen)
-		return false;
-	else {
-#if !defined(USE_INCLUDED_STRING) && !defined(STD_STRING_IS_GOOD)
-		// Delete this code when the compilers get a bit better.
-		string tmp(a, alen - suflen);
-		return ::strncmp(tmp.c_str(), suf, suflen) == 0;
-#else
-		// This is the code that we really want to use
-		// but until gcc ships with a basic_string that
-		// implements std::string correctly we have to
-		// use the code above.
-		return a.compare(alen - suflen, suflen, suf) == 0;
-#endif
-	}
 }
 
 
@@ -459,23 +410,6 @@ string const subst(string const & a, char oldchar, char newchar)
 		if ((*lit) == oldchar)
 			(*lit) = newchar;
 	return tmp;
-}
-
-
-string const subst(string const & a,
-		   char const * oldstr, string const & newstr)
-{
-	lyx::Assert(oldstr);
-
-	string lstr(a);
-	string::size_type i = 0;
-	string::size_type olen = strlen(oldstr);
-	while ((i = lstr.find(oldstr, i)) != string::npos) {
-		lstr.replace(i, olen, newstr);
-		i += newstr.length(); // We need to be sure that we dont
-		// use the same i over and over again.
-	}
-	return lstr;
 }
 
 
@@ -704,7 +638,7 @@ string bformat(string const & fmt, string const & arg1, string const & arg2,
 		% STRCONV(arg3) % STRCONV(arg4)).str());
 }
 
-#else 
+#else
 
 string bformat(string const & fmt, string const & arg1)
 {

@@ -634,7 +634,7 @@ void RowPainter::paintFirst()
 	LyXLayout_ptr const & layout = pit_->layout();
 
 	if (buffer->params.paragraph_separation == BufferParams::PARSEP_SKIP) {
-		if (pit_->previous()) {
+		if (pit_ != text_.ownerParagraphs().begin()) {
 			if (layout->latextype == LATEX_PARAGRAPH
 				&& !pit_->getDepth()) {
 				y_top += buffer->params.getDefSkip().inPixels(bv_);

@@ -1337,14 +1337,14 @@ void LyXTabular::SetMultiColumn(Buffer * buffer, int cell, int number)
 	cellinfo_of_cell(cell)->right_line = column_info[column_of_cell(cell+number-1)].right_line;
 #if 1
 	for (int i = 1; i < number; ++i) {
-		cellinfo_of_cell(cell+i)->multicolumn = CELL_PART_OF_MULTICOLUMN;
+		cellinfo_of_cell(cell + i)->multicolumn = CELL_PART_OF_MULTICOLUMN;
 		cellinfo_of_cell(cell)->inset.appendParagraphs(buffer,
 			cellinfo_of_cell(cell+i)->inset.paragraphs);
-		cellinfo_of_cell(cell+i)->inset.clear(false);
+		cellinfo_of_cell(cell + i)->inset.clear(false);
 	}
 #else
 	for (number--; number > 0; --number) {
-		cellinfo_of_cell(cell+number)->multicolumn = CELL_PART_OF_MULTICOLUMN;
+		cellinfo_of_cell(cell + number)->multicolumn = CELL_PART_OF_MULTICOLUMN;
 	}
 #endif
 	set_row_column_number_info();

@@ -420,15 +420,18 @@ string getContentsOfAsciiFile(BufferView * bv, string const & f, bool asParagrap
 
 string const getPossibleLabel(BufferView const & bv)
 {
-	Paragraph * par = &*bv.getLyXText()->cursor.par();
-	LyXLayout_ptr layout = par->layout();
-	if (layout->latextype == LATEX_PARAGRAPH && par->previous()) {
-		Paragraph * par2 = par->previous();
+	ParagraphList::iterator pit = bv.getLyXText()->cursor.par();
+	ParagraphList & plist = bv.getLyXText()->ownerParagraphs();
 
-		LyXLayout_ptr const & layout2 = par2->layout();
+	LyXLayout_ptr layout = pit->layout();
+
+	if (layout->latextype == LATEX_PARAGRAPH && pit != plist.begin()) {
+		ParagraphList::iterator pit2 = boost::prior(pit);
+
+		LyXLayout_ptr const & layout2 = pit2->layout();
 
 		if (layout2->latextype != LATEX_PARAGRAPH) {
-			par = par2;
+			pit = pit2;
 			layout = layout2;
 		}
 	}
@@ -442,7 +445,7 @@ string const getPossibleLabel(BufferView const & bv)
 	    lyxrc.label_init_length < 0)
 		text.erase();
 
-	string par_text = par->asString(bv.buffer(), false);
+	string par_text = pit->asString(bv.buffer(), false);
 	for (int i = 0; i < lyxrc.label_init_length; ++i) {
 		if (par_text.empty())
 			break;

@@ -85,16 +85,10 @@ string const lowercase(string const &);
 string const uppercase(string const &);
 
 /// Does the string start with this prefix?
-bool prefixIs(string const &, char const *);
-
-/// Does the string start with this prefix?
 bool prefixIs(string const &, string const &);
 
 /// Does the string end with this char?
 bool suffixIs(string const &, char);
-
-/// Does the string end with this suffix?
-bool suffixIs(string const &, char const *);
 
 /// Does the string end with this suffix?
 bool suffixIs(string const &, string const &);
@@ -151,10 +145,6 @@ bool regexMatch(string const & a, string const & pattern);
 
 /// Substitute all \a oldchar with \a newchar
 string const subst(string const & a, char oldchar, char newchar);
-
-/// Substitutes all instances of \a oldstr with \a newstr
-string const subst(string const & a,
-	     char const * oldstr, string const & newstr);
 
 /// substitutes all instances of \a oldstr with \a newstr
 string const subst(string const & a,

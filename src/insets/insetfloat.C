@@ -365,16 +365,14 @@ void InsetFloat::addToToc(toc::TocList & toclist, Buffer const * buf) const
 	ParIterator pit(inset.paragraphs.begin(), inset.paragraphs);
 	ParIterator end(inset.paragraphs.end(), inset.paragraphs);
 
-	// Find a caption layout in one of the (child inset's) pars
+a	// Find a caption layout in one of the (child inset's) pars
 	for (; pit != end; ++pit) {
-		Paragraph * tmp = &*(*pit);
-
-		if (tmp->layout()->name() == caplayout) {
+		if (pit->layout()->name() == caplayout) {
 			string const name = floatname(params_.type, buf->params);
 			string const str =
 				tostr(toclist[name].size() + 1)
-				+ ". " + tmp->asString(buf, false);
-			toc::TocItem const item(tmp->id(), 0 , str);
+				+ ". " + pit->asString(buf, false);
+			toc::TocItem const item(pit->id(), 0 , str);
 			toclist[name].push_back(item);
 		}
 	}
