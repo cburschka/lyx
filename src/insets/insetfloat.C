@@ -30,6 +30,7 @@
 #include "frontends/LyXView.h"
 #include "frontends/Dialogs.h"
 #include "lyxlex.h"
+#include "iterators.h"
 
 using std::ostream;
 using std::endl;
@@ -339,11 +340,13 @@ bool InsetFloat::wide() const
 
 void InsetFloat::addToToc(toc::TocList & toclist, Buffer const * buf) const
 {
-	// Now find the caption in the float...
-	// We now tranverse the paragraphs of
-	// the inset...
-	Paragraph * tmp = inset.paragraph();
-	while (tmp) {
+	ParIterator pit(inset.paragraph());
+	ParIterator end;
+
+	// Find a caption layout in one of the (child inset's) pars
+	for (; pit != end; ++pit) {
+		Paragraph * tmp = *pit;
+ 
 		if (tmp->layout()->name() == caplayout) {
 			string const str =
 				tostr(toclist[type()].size() + 1)
@@ -351,6 +354,5 @@ void InsetFloat::addToToc(toc::TocList & toclist, Buffer const * buf) const
 			toc::TocItem const item(tmp, 0 , str);
 			toclist[type()].push_back(item);
 		}
-		tmp = tmp->next();
 	}
 }

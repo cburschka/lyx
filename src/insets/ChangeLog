@@ -1,3 +1,8 @@
+2002-10-30  John Levon  <levon@movementarian.org>
+
+	* insetfloat.C (addToTOC): recursively traverse all
+	  contents looking for captions (fix #568)
+ 
 2002-10-25  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* insetexternal.C (doSubstitution): do not try to replace
