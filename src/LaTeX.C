@@ -218,8 +218,7 @@ int LaTeX::run(TeXErrors & terr, MiniBuffer * minib)
 		// no checks for now
 		lyxerr[Debug::LATEX] << "Running BibTeX." << endl;
 		WriteStatus(minib, _("Running BibTeX."));
-		rerun = runBibTeX(OnlyFilename(ChangeExtension(file, ".aux")), 
-				  head);
+		rerun = runBibTeX(head);
 	}
 	
 	// 1
@@ -347,65 +346,20 @@ bool LaTeX::scanAux(DepTable & dep)
 	    || dep.extchanged(".bst")) return true;
 	
 	string aux = OnlyFilename(ChangeExtension(file, ".aux"));
-	ifstream ifs(aux.c_str());
-	string token;
-	LRegex reg1("\\\\bibdata\\{([^}]+)\\}");
-	LRegex reg2("\\\\bibstyle\\{([^}]+)\\}");
-	while (getline(ifs, token)) {
-		if (reg1.exact_match(token)) {
-			LRegex::SubMatches sub = reg1.exec(token);
-			string data = LSubstring(token, sub[1].first,
-						 sub[1].second);
-			string::size_type b;
-			do {
-				b = data.find_first_of(',', 0);
-				string l;
-				if (b == string::npos)
-					l = data;
-				else {
-					l = data.substr( 0, b - 0);
-					data.erase(0, b + 1);
-				}
-				string full_l =
-					findtexfile(
-						ChangeExtension(l, "bib"), "bib");
-				if (!full_l.empty()) {
-					if (!dep.exist(full_l))
-						return true;
-				}
-			} while (b != string::npos);
-		} else if (reg2.exact_match(token)) {
-			LRegex::SubMatches sub = reg2.exec(token);
-			string style = LSubstring(token, sub[1].first,
-						  sub[1].second);
-			// token is now the style file
-			// pass it to the helper
-			string full_l =
-				findtexfile(
-					ChangeExtension(style, "bst"),
-					"bst");
-			if (!full_l.empty()) {
-				if (!dep.exist(full_l))
-					return true;
-			}
-		}
-	}
-	return false;
+	return scanAux(aux, dep, false);
 }
 
 
-bool LaTeX::runBibTeX(string const & f, DepTable & dep)
+bool LaTeX::scanAux(string const & file, DepTable & dep, bool insert)
 {
-	// Since a run of Bibtex mandates more latex runs it is ok to
-	// remove all ".bib" and ".bst" files, it is also required to
-	// discover style and database changes.
-	dep.remove_files_with_extension(".bib");
-	dep.remove_files_with_extension(".bst");
-	ifstream ifs(f.c_str());
+	lyxerr[Debug::LATEX] << "Scanning aux file: " << file << endl;
+
+	ifstream ifs(file.c_str());
 	string token;
-	bool using_bibtex = false;
 	LRegex reg1("\\\\bibdata\\{([^}]+)\\}");
 	LRegex reg2("\\\\bibstyle\\{([^}]+)\\}");
+	LRegex reg3("\\\\@input\\{([^}]+)\\}");
+	bool using_bibtex = false;
 	while (getline(ifs, token)) {
 		if (reg1.exact_match(token)) {
 			using_bibtex = true;
@@ -414,27 +368,23 @@ bool LaTeX::runBibTeX(string const & f, DepTable & dep)
 						 sub[1].second);
 			// data is now all the bib files separated by ','
 			// get them one by one and pass them to the helper
-			string::size_type b;
-			do {
-				b = data.find_first_of(',', 0);
+			while (!data.empty()) {
 				string l;
-				if (b == string::npos)
-					l = data;
-				else {
-					l = data.substr(0, b - 0);
-					data.erase(0, b + 1);
-				}
+				data = split(data, l, ',');
 				string full_l = 
-					findtexfile(
-						ChangeExtension(l, "bib"),
-						"bib");
+					findtexfile(ChangeExtension(l, "bib"),
+						    "bib");
 				lyxerr[Debug::LATEX] << "Bibtex database: `"
 						     << full_l << "'" << endl;
 				if (!full_l.empty()) {
-					// add full_l to the dep file.
-					dep.insert(full_l, true);
+					if (insert)
+						// add full_l to the dep file.
+						dep.insert(full_l, true);
+					else
+						if (!dep.exist(full_l))
+							return true;
 				}
-			} while (b != string::npos);
+			}
 		} else if (reg2.exact_match(token)) {
 			using_bibtex = true;
 			LRegex::SubMatches const & sub = reg2.exec(token);
@@ -443,18 +393,45 @@ bool LaTeX::runBibTeX(string const & f, DepTable & dep)
 			// token is now the style file
 			// pass it to the helper
 			string full_l = 
-				findtexfile(
-					ChangeExtension(style, "bst"),
-					"bst");
+				findtexfile(ChangeExtension(style, "bst"),
+					    "bst");
 			lyxerr[Debug::LATEX] << "Bibtex style: `"
 					     << full_l << "'" << endl;
 			if (!full_l.empty()) {
-				// add full_l to the dep file.
-				dep.insert(full_l, true);
+				if (insert)
+					// add full_l to the dep file.
+					dep.insert(full_l, true);
+				else
+					if (!dep.exist(full_l))
+						return true;	
+			}
+		} else if (reg3.exact_match(token)) {
+			LRegex::SubMatches const & sub = reg3.exec(token);
+			string file2 = LSubstring(token, sub[1].first,
+						  sub[1].second);
+			if (scanAux(file2, dep, insert)) {
+				using_bibtex = true;
+				if (!insert)
+					return true;
 			}
 		}
 	}
-	if (using_bibtex) {
+	if (insert)
+		return using_bibtex;
+	else
+		return false;
+}
+
+
+bool LaTeX::runBibTeX(DepTable & dep)
+{
+	// Since a run of Bibtex mandates more latex runs it is ok to
+	// remove all ".bib" and ".bst" files, it is also required to
+	// discover style and database changes.
+	dep.remove_files_with_extension(".bib");
+	dep.remove_files_with_extension(".bst");
+	string aux = OnlyFilename(ChangeExtension(file, ".aux"));
+	if (scanAux(aux, dep, true)) {
 		// run bibtex and
 		string tmp = "bibtex ";
 		tmp += OnlyFilename(ChangeExtension(file, string()));

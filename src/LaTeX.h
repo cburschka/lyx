@@ -139,9 +139,11 @@ protected:
 
 	///
 	bool scanAux(DepTable &);
+	///
+	bool scanAux(string const &, DepTable &, bool);
 	
 	///
-	bool runBibTeX(string const &, DepTable &);
+	bool runBibTeX(DepTable &);
 
 	///
 	void deleteFilesOnError() const;

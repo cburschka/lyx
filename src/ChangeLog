@@ -1,5 +1,8 @@
 2001-01-20  Dekel Tsur  <dekelts@tau.ac.il>
 
+	* LaTeX.C (scanAux): Handle the \@input macro.
+	(runBibTeX): Use scanAux().
+
 	* language.C (latex_options_): New field.
 
 	* LaTeXFeatures.C (getMacros): Add language macros.
