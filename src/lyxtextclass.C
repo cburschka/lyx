@@ -512,6 +512,13 @@ LyXLayout const & LyXTextClass::operator[](string const & n) const
 		lyxerr << "Operator[] called with empty n" << endl;
 	
 	string const name = (n.empty() ? defaultLayoutName() : n);
+
+	static string lastLayoutName;
+	static LayoutList::difference_type lastLayoutIndex;
+
+	if (name == lastLayoutName)
+		return layoutlist[lastLayoutIndex];
+
 	
 	LayoutList::const_iterator cit =
 		find_if(layoutlist.begin(),
@@ -527,6 +534,9 @@ LyXLayout const & LyXTextClass::operator[](string const & n) const
 		lyx::Assert(false);
 	}
 
+	lastLayoutName = name;
+	lastLayoutIndex = std::distance(layoutlist.begin(), cit);
+	
 	return *cit;
 }
 
