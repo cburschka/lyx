@@ -1,3 +1,8 @@
+2001-06-13  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* lyxinset.h (resizeLyXText): shut off warning about unused
+	parameter "force" 
+
 2001-06-07  Juergen Vigna  <jug@sad.it>
 
 	* insettext.C (resizeLyXText): honor the new force flag.
