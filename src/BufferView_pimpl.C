@@ -757,6 +757,7 @@ void BufferView::Pimpl::doubleClick(int /*x*/, int /*y*/, unsigned int button)
 		/* This will fit the cursor on the screen
 		 * if necessary */
 		update(text, BufferView::SELECT|BufferView::FITCUR);
+		workarea_.haveSelection(bv_->getLyXText()->selection.set());
 	}
 }
 
@@ -787,6 +788,7 @@ void BufferView::Pimpl::tripleClick(int /*x*/, int /*y*/, unsigned int button)
 		/* This will fit the cursor on the screen
 		 * if necessary */
 		update(text, BufferView::SELECT|BufferView::FITCUR);
+		workarea_.haveSelection(bv_->getLyXText()->selection.set());
 	}
 }
 
