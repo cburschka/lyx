@@ -62,7 +62,6 @@ void QExternal::update_contents()
 	InsetExternal::Params const & params = controller().params();
 
 	dialog_->fileED->setText(toqstr(params.filename));
-	dialog_->paramsED->setText(toqstr(params.parameters));
 
 	dialog_->externalCO->setCurrentItem(controller().getTemplateNumber(params.templ.lyxName));
 	dialog_->externalTV->setText(toqstr(params.templ.helpText));
@@ -100,7 +99,6 @@ void QExternal::apply()
 	InsetExternal::Params params = controller().params();
 
 	params.filename = fromqstr(dialog_->fileED->text());
-	params.parameters = fromqstr(dialog_->paramsED->text());
 
 	params.templ = controller().getTemplate(dialog_->externalCO->currentItem());
 

@@ -11,7 +11,7 @@ SnapGrid: 5
 Name: form_external
 Width: 395
 Height: 375
-Number of Objects: 14
+Number of Objects: 13
 
 --------------------
 class: FL_BOX
@@ -64,24 +64,6 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_SouthEast FL_SouthEast
 name: button_browse
-callback: C_FormDialogView_InputCB
-argument: 0
-
---------------------
-class: FL_INPUT
-type: NORMAL_INPUT
-box: 90 230 195 25
-boxtype: FL_DOWN_BOX
-colors: FL_COL1 FL_MCOL
-alignment: FL_ALIGN_LEFT
-style: FL_NORMAL_STYLE
-size: FL_NORMAL_SIZE
-lcol: FL_BLACK
-label: Parameters:|#P
-shortcut: 
-resize: FL_RESIZE_ALL
-gravity: FL_SouthWest FL_SouthEast
-name: input_parameters
 callback: C_FormDialogView_InputCB
 argument: 0
 

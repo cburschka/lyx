@@ -40,12 +40,9 @@ void FormExternal::apply()
 	InsetExternal::Params params = controller().params();
 
 	params.filename = fl_get_input(dialog_->input_filename);
-	params.parameters = fl_get_input(dialog_->input_parameters);
 
 	int const choice = fl_get_choice(dialog_->choice_template) - 1;
 	params.templ = controller().getTemplate(choice);
-
-	params.parameters = fl_get_input(dialog_->input_parameters);
 
 	params.lyxscale = strToInt(getString(dialog_->input_lyxscale));
 	if (params.lyxscale == 0)
@@ -81,16 +78,13 @@ void FormExternal::build()
 	fl_addto_choice(dialog_->choice_template, choice.c_str());
 
 	fl_set_input_return (dialog_->input_filename,  FL_RETURN_CHANGED);
-	fl_set_input_return (dialog_->input_parameters, FL_RETURN_CHANGED);
 
 	// Disable for read-only documents.
 	bcview().addReadOnly(dialog_->input_filename);
 	bcview().addReadOnly(dialog_->button_browse);
-	bcview().addReadOnly(dialog_->input_parameters);
 
 	// Trigger an input event for cut&paste with middle mouse button.
 	setPrehandler(dialog_->input_filename);
-	setPrehandler(dialog_->input_parameters);
 
 	// Activate ok/apply immediately upon input.
 	fl_set_input_return(dialog_->input_filename, FL_RETURN_CHANGED);
@@ -125,7 +119,6 @@ void FormExternal::update()
 	InsetExternal::Params const & params = controller().params();
 
 	fl_set_input(dialog_->input_filename, params.filename.c_str());
-	fl_set_input(dialog_->input_parameters, params.parameters.c_str());
 
 	int ID = controller().getTemplateNumber(params.templ.lyxName);
 	if (ID < 0) ID = 0;
