@@ -13,12 +13,9 @@
 */
 
 #include <config.h>
-#include <fstream>
 
 #include "Lsstream.h"
 #include "support/LAssert.h"
-
-
 #include "formula.h"
 #include "formulamacro.h"
 #include "lyxrc.h"
@@ -53,14 +50,16 @@
 #include "intl.h"
 #include "ref_inset.h"
 
+#include <fstream>
+
 using std::endl;
 using std::ostream;
 using std::vector;
 using std::abs;
 using std::max;
 
-MathCursor * mathcursor = 0;
 
+MathCursor * mathcursor = 0;
 
 namespace {
 
@@ -68,15 +67,13 @@ namespace {
 int first_x;
 int first_y;
 
-
-
 bool openNewInset(BufferView * bv, UpdatableInset * new_inset)
 {
 	if (!bv->insertInset(new_inset)) {
 		delete new_inset;
 		return false;
 	}
-	new_inset->edit(bv, true);
+	new_inset->localDispatch(FuncRequest(bv, LFUN_INSET_EDIT, "left"));
 	return true;
 }
 
@@ -166,31 +163,6 @@ void InsetFormulaBase::metrics(BufferView * bv) const
 string const InsetFormulaBase::editMessage() const
 {
 	return _("Math editor mode");
-}
-
-
-void InsetFormulaBase::edit(BufferView * bv, int x, int y, mouse_button::state)
-{
-	if (!bv->lockInset(this))
-		lyxerr[Debug::MATHED] << "Cannot lock inset!!!" << endl;
-	releaseMathCursor(bv);
-	mathcursor = new MathCursor(this, true);
-	metrics(bv);
-	mathcursor->setPos(x + xo_, y + yo_);
-	// if that is removed, we won't get the magenta box when entering an
-	// inset for the first time
-	bv->updateInset(this);
-}
-
-
-void InsetFormulaBase::edit(BufferView * bv, bool front)
-{
-	if (!bv->lockInset(this))
-		lyxerr << "Cannot lock math inset in edit call!\n";
-	releaseMathCursor(bv);
-	mathcursor = new MathCursor(this, front);
-	metrics(bv);
-	bv->updateInset(this);
 }
 
 
@@ -369,10 +341,29 @@ dispatch_result InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 	//	<< " y: '" << cmd.y
 	//	<< "' button: " << cmd.button() << endl;
 
+	BufferView * bv = cmd.view();
+
 	// delete empty mathbox (LFUN_BACKSPACE and LFUN_DELETE)
 	bool remove_inset = false;
 
 	switch (cmd.action) {
+		case LFUN_INSET_EDIT:
+			if (!bv->lockInset(this))
+				lyxerr << "Cannot lock math inset in edit call!\n";
+			releaseMathCursor(bv);
+			if (!cmd.argument.empty()) {
+				mathcursor = new MathCursor(this, cmd.argument == "left");
+				metrics(bv);
+			} else {
+				mathcursor = new MathCursor(this, true);
+				metrics(bv);
+				mathcursor->setPos(cmd.x + xo_, cmd.y + yo_);
+			}
+			// if that is removed, we won't get the magenta box when entering an
+			// inset for the first time
+			bv->updateInset(this);
+			return DISPATCHED;
+
 		case LFUN_MOUSE_PRESS:
 			//lyxerr << "Mouse single press\n";
 			return lfunMousePress(cmd);
@@ -392,7 +383,6 @@ dispatch_result InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 	if (!mathcursor)
 		return UNDISPATCHED;
 
-	BufferView * bv    = cmd.view();
 	string argument    = cmd.argument;
 	RESULT result      = DISPATCHED;
 	bool sel           = false;

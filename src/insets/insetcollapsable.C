@@ -38,9 +38,6 @@ using std::endl;
 using std::max;
 
 
-class LyXText;
-
-
 InsetCollapsable::InsetCollapsable(BufferParams const & bp, bool collapsed)
 	: UpdatableInset(), collapsed_(collapsed), inset(bp),
 	  button_length(0), button_top_y(0), button_bottom_y(0),
@@ -232,65 +229,6 @@ void InsetCollapsable::draw(BufferView * bv, LyXFont const & f,
 }
 
 
-void InsetCollapsable::edit(BufferView * bv, int xp, int yp,
-			    mouse_button::state button)
-{
-#ifdef WITH_WARNINGS
-#warning Fix this properly in BufferView_pimpl::workAreaButtonRelease
-#endif
-	if (button == mouse_button::button3)
-		return;
-
-	UpdatableInset::edit(bv, xp, yp, button);
-
-	if (collapsed_) {
-		collapsed_ = false;
-		// set this only here as it should be recollapsed only if
-		// it was already collapsed!
-		first_after_edit = true;
-		if (!bv->lockInset(this))
-			return;
-		bv->updateInset(this);
-		bv->buffer()->markDirty();
-		inset.edit(bv);
-	} else {
-		if (!bv->lockInset(this))
-			return;
-		if (yp <= button_bottom_y) {
-			inset.edit(bv, xp, 0, button);
-		} else {
-			LyXFont font(LyXFont::ALL_SANE);
-			int yy = ascent(bv, font) + yp -
-				(ascent_collapsed() +
-				 descent_collapsed() +
-				 inset.ascent(bv, font));
-			inset.edit(bv, xp, yy, button);
-		}
-	}
-}
-
-
-void InsetCollapsable::edit(BufferView * bv, bool front)
-{
-	UpdatableInset::edit(bv, front);
-
-	if (collapsed_) {
-		collapsed_ = false;
-		if (!bv->lockInset(this))
-			return;
-		inset.setUpdateStatus(bv, InsetText::FULL);
-		bv->updateInset(this);
-		bv->buffer()->markDirty();
-		inset.edit(bv, front);
-		first_after_edit = true;
-	} else {
-		if (!bv->lockInset(this))
-			return;
-		inset.edit(bv, front);
-	}
-}
-
-
 Inset::EDITABLE InsetCollapsable::editable() const
 {
 	if (collapsed_)
@@ -425,7 +363,62 @@ void InsetCollapsable::update(BufferView * bv, bool reinit)
 
 Inset::RESULT InsetCollapsable::localDispatch(FuncRequest const & cmd)
 {
+	BufferView * bv = cmd.view();
 	switch (cmd.action) {
+		case LFUN_INSET_EDIT: {
+			if (!cmd.argument.empty()) {
+				UpdatableInset::localDispatch(cmd);
+				if (collapsed_) {
+					collapsed_ = false;
+					if (bv->lockInset(this)) {
+						inset.setUpdateStatus(bv, InsetText::FULL);
+						bv->updateInset(this);
+						bv->buffer()->markDirty();
+						inset.localDispatch(cmd);
+						first_after_edit = true;
+					}
+				} else {
+					if (bv->lockInset(this))
+						inset.localDispatch(cmd);
+				}
+				return DISPATCHED;
+			}
+
+#ifdef WITH_WARNINGS
+#warning Fix this properly in BufferView_pimpl::workAreaButtonRelease
+#endif
+			if (cmd.button() == mouse_button::button3)
+				return DISPATCHED;
+
+			UpdatableInset::localDispatch(cmd);
+
+			if (collapsed_) {
+				collapsed_ = false;
+				// set this only here as it should be recollapsed only if
+				// it was already collapsed!
+				first_after_edit = true;
+				if (!bv->lockInset(this))
+					return DISPATCHED;
+				bv->updateInset(this);
+				bv->buffer()->markDirty();
+				inset.localDispatch(cmd);
+			} else {
+				FuncRequest cmd1 = cmd;
+				if (!bv->lockInset(this))
+					return DISPATCHED;
+				if (cmd.y <= button_bottom_y) {
+					cmd1.y = 0;
+				} else {
+					LyXFont font(LyXFont::ALL_SANE);
+					cmd1.y = ascent(bv, font) + cmd.y -
+						(ascent_collapsed() +
+						descent_collapsed() +
+						inset.ascent(bv, font));
+				}
+				inset.localDispatch(cmd);
+			}
+			return DISPATCHED;
+		}
 
 		case LFUN_MOUSE_PRESS:
 			lfunMousePress(cmd);
@@ -442,11 +435,10 @@ Inset::RESULT InsetCollapsable::localDispatch(FuncRequest const & cmd)
 		default:
 			UpdatableInset::RESULT result = inset.localDispatch(cmd);
 			if (result >= FINISHED)
-				cmd.view()->unlockInset(this);
+				bv->unlockInset(this);
 			first_after_edit = false;
 			return result;
 	}
-	return UNDISPATCHED;
 }
 
 

@@ -34,7 +34,6 @@
 #include <cstdio>
 #include <utility>
 
-
 using std::ostream;
 using std::endl;
 
@@ -64,37 +63,30 @@ InsetExternal::Params const & InsetExternal::params() const
 
 dispatch_result InsetExternal::localDispatch(FuncRequest const & cmd)
 {
-	dispatch_result result = UNDISPATCHED;
-
 	switch (cmd.action) {
+
 	case LFUN_INSET_MODIFY: {
 		InsetExternal::Params p;
 		InsetExternalMailer::string2params(cmd.argument, p);
-		if (p.filename.empty())
-			break;
-
-		setFromParams(p);
-		cmd.view()->updateInset(this);
-		result = DISPATCHED;
+		if (!p.filename.empty()) {
+			setFromParams(p);
+			cmd.view()->updateInset(this);
+		}
+		return DISPATCHED;
 	}
-	break;
 
-	case LFUN_INSET_DIALOG_UPDATE: {
-		InsetExternalMailer mailer(*this);
-		mailer.updateDialog(cmd.view());
-	}
-	break;
+	case LFUN_INSET_DIALOG_UPDATE:
+		InsetExternalMailer(*this).updateDialog(cmd.view());
+		return DISPATCHED;
 
 	case LFUN_MOUSE_RELEASE:
-		edit(cmd.view(), cmd.x, cmd.y, cmd.button());
-		result = DISPATCHED;
-		break;
+	case LFUN_INSET_EDIT:
+		InsetExternalMailer(*this).showDialog(cmd.view());
+		return DISPATCHED;
 
 	default:
-		break;
+		return UNDISPATCHED;
 	}
-
-	return result;
 }
 
 
@@ -109,19 +101,6 @@ void InsetExternal::setFromParams(Params const & p)
 string const InsetExternal::editMessage() const
 {
 	return doSubstitution(0, params_.templ.guiName);
-}
-
-
-void InsetExternal::edit(BufferView * bv, int, int, mouse_button::state)
-{
-	InsetExternalMailer mailer(*this);
-	mailer.showDialog(bv);
-}
-
-
-void InsetExternal::edit(BufferView * bv, bool)
-{
-	edit(bv, 0, 0, mouse_button::none);
 }
 
 

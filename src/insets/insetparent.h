@@ -31,19 +31,17 @@ public:
 		return new InsetParent(params(), buffer, same_id);
 	}
 	///
+	dispatch_result localDispatch(FuncRequest const & cmd);
+	///
 	string const getScreenLabel(Buffer const *) const;
 	///
 	EDITABLE editable() const { return IS_EDITABLE; }
 	///
 	Inset::Code lyxCode() const { return Inset::PARENT_CODE; }
 	///
-	void edit(BufferView *, int, int, mouse_button::state);
-	///
-	void edit(BufferView * bv, bool front = true);
-	///
 	int latex(Buffer const *, std::ostream &,
 		  bool fragile, bool free_spc) const;
 	///
-	void setParent(string fn) { setContents(fn); }
+	void setParent(string const & fn) { setContents(fn); }
 };
 #endif

@@ -132,7 +132,5 @@ BufferView * InsetButton::view() const
 
 dispatch_result InsetButton::localDispatch(FuncRequest const & cmd)
 {
-	FuncRequest cmd1(cmd);
-	edit(cmd1.view(), cmd1.x, cmd1.y, cmd1.button());
-	return DISPATCHED;
+	return Inset::localDispatch(cmd);
 }

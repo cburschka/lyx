@@ -1366,7 +1366,8 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 		if (view()->theLockingInset())
 			view()->unlockInset(view()->theLockingInset());
 		if (par->inInset()) {
-			par->inInset()->edit(view());
+			FuncRequest cmd(view(), LFUN_INSET_EDIT, "left");
+			par->inInset()->localDispatch(cmd);
 		}
 		// Set the cursor
 		view()->getLyXText()->setCursor(par, 0);

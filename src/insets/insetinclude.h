@@ -12,7 +12,6 @@
 #ifndef INSET_INCLUDE_H
 #define INSET_INCLUDE_H
 
-
 #include "insetcommand.h"
 
 #include <boost/scoped_ptr.hpp>
@@ -82,10 +81,6 @@ public:
 	std::vector<string> const getLabelList() const;
 	/// This returns the list of bibkeys on the child buffer
 	void fillWithBibKeys(std::vector<std::pair<string,string> > & keys) const;
-	///
-	void edit(BufferView *, int x, int y, mouse_button::state button);
-	///
-	void edit(BufferView * bv, bool front = true);
 	///
 	EDITABLE editable() const
 	{

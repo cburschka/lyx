@@ -35,13 +35,11 @@ public:
 	///
 	Inset::Code lyxCode() const { return Inset::CITE_CODE; }
 	///
-	void edit(BufferView *, int, int, mouse_button::state);
-	///
-	void edit(BufferView * bv, bool front = true);
-	///
 	int ascii(Buffer const *, std::ostream &, int linelen) const;
 	///
 	int latex(Buffer const *, std::ostream &, bool, bool) const;
+	///
+	dispatch_result localDispatch(FuncRequest const & cmd);
 	///
 	void validate(LaTeXFeatures &) const;
 	/** Invoked by BufferView::Pimpl::dispatch when a new citation key

@@ -27,6 +27,7 @@ using std::max;
 int InsetBibitem::key_counter = 0;
 const string key_prefix = "key-";
 
+
 InsetBibitem::InsetBibitem(InsetCommandParams const & p)
 	: InsetCommand(p), counter(1)
 {
@@ -52,14 +53,17 @@ Inset * InsetBibitem::clone(Buffer const &, bool) const
 
 dispatch_result InsetBibitem::localDispatch(FuncRequest const & cmd)
 {
-	Inset::RESULT result = UNDISPATCHED;
-
 	switch (cmd.action) {
+
+	case LFUN_INSET_EDIT:
+		InsetCommandMailer("bibitem", *this).showDialog(cmd.view());
+		return DISPATCHED;
+
 	case LFUN_INSET_MODIFY: {
 		InsetCommandParams p;
 		InsetCommandMailer::string2params(cmd.argument, p);
 		if (p.getCmdName().empty())
-			break;
+			return DISPATCHED;
 
 		if (view() && p.getContents() != params().getContents()) {
 			view()->ChangeCitationsIfUnique(params().getContents(),
@@ -75,15 +79,12 @@ dispatch_result InsetBibitem::localDispatch(FuncRequest const & cmd)
 #warning and whether the repaint() is needed at all
 		cmd.view()->repaint();
 		cmd.view()->fitCursor();
-
-		result = DISPATCHED;
+		return DISPATCHED;
 	}
-	break;
+
 	default:
-		result = InsetCommand::localDispatch(cmd);
+		return InsetCommand::localDispatch(cmd);
 	}
-
-	return result;
 }
 
 
@@ -132,19 +133,6 @@ string const InsetBibitem::getBibLabel() const
 string const InsetBibitem::getScreenLabel(Buffer const *) const
 {
 	return getContents() + " [" + getBibLabel() + ']';
-}
-
-
-void InsetBibitem::edit(BufferView * bv, int, int, mouse_button::state)
-{
-	InsetCommandMailer mailer("bibitem", *this);
-	mailer.showDialog(bv);
-}
-
-
-void InsetBibitem::edit(BufferView * bv, bool)
-{
-	edit(bv, 0, 0, mouse_button::none);
 }
 
 

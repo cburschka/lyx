@@ -10,8 +10,8 @@
 
 #include <config.h>
 
-
 #include "insetlatexaccent.h"
+
 #include "debug.h"
 #include "lyxrc.h"
 #include "support/lstrings.h"
@@ -23,6 +23,7 @@
 
 using std::ostream;
 using std::endl;
+
 
 /* LatexAccent. Proper handling of accented characters */
 /* This part is done by Ivan Schreter, schreter@ccsun.tuke.sk */
@@ -95,7 +96,9 @@ void InsetLatexAccent::checkContents()
 
 	lyxerr[Debug::KEY] << "Decode: " << contents << endl;
 
-	remdot = false; plusasc = false; plusdesc = false;
+	remdot = false;
+	plusasc = false;
+	plusdesc = false;
 
 	switch (contents[1]) { // second char should be one of these
 	case '\'':  // acute

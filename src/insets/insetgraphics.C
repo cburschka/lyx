@@ -68,6 +68,7 @@ TODO
 #include "funcrequest.h"
 #include "gettext.h"
 #include "LaTeXFeatures.h"
+#include "Lsstream.h"
 #include "lyxlex.h"
 #include "lyxrc.h"
 #include "Lsstream.h"
@@ -218,38 +219,30 @@ InsetGraphics::~InsetGraphics()
 
 dispatch_result InsetGraphics::localDispatch(FuncRequest const & cmd)
 {
-	dispatch_result result = UNDISPATCHED;
-
 	switch (cmd.action) {
 	case LFUN_INSET_MODIFY: {
 		InsetGraphicsParams p;
 		InsetGraphicsMailer::string2params(cmd.argument, p);
-		if (p.filename.empty())
-			break;
-
-		string const filepath = cmd.view()->buffer()->filePath();
-		setParams(p, filepath);
-		cmd.view()->updateInset(this);
-		result = DISPATCHED;
+		if (!p.filename.empty()) {
+			string const filepath = cmd.view()->buffer()->filePath();
+			setParams(p, filepath);
+			cmd.view()->updateInset(this);
+		}
+		return DISPATCHED;
 	}
-	break;
 
-	case LFUN_INSET_DIALOG_UPDATE: {
-		InsetGraphicsMailer mailer(*this);
-		mailer.updateDialog(cmd.view());
-	}
-	break;
+	case LFUN_INSET_DIALOG_UPDATE: 
+		InsetGraphicsMailer(*this).updateDialog(cmd.view());
+		return DISPATCHED;
 
+	case LFUN_INSET_EDIT:
 	case LFUN_MOUSE_RELEASE:
-		edit(cmd.view(), cmd.x, cmd.y, cmd.button());
-		break;
+		InsetGraphicsMailer(*this).showDialog(cmd.view());
+		return DISPATCHED;
 
 	default:
-		result = DISPATCHED;
-		break;
+		return Inset::localDispatch(cmd);
 	}
-
-	return result;
 }
 
 
@@ -417,19 +410,6 @@ void InsetGraphics::draw(BufferView * bv, LyXFont const & font,
 			paint.text(old_x + TEXT_TO_INSET_OFFSET + 6, baseline - 4, msg, msgFont);
 		}
 	}
-}
-
-
-void InsetGraphics::edit(BufferView * bv, int, int, mouse_button::state)
-{
-	InsetGraphicsMailer mailer(*this);
-	mailer.showDialog(bv);
-}
-
-
-void InsetGraphics::edit(BufferView * bv, bool)
-{
-	edit(bv, 0, 0, mouse_button::none);
 }
 
 

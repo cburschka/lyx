@@ -62,10 +62,6 @@ public:
 	void setFont(BufferView *, LyXFont const &,
 			     bool toggleall = false, bool selectall = false);
 	///
-	void edit(BufferView *, int, int, mouse_button::state);
-	///
-	void edit(BufferView * bv, bool front = true);
-	///
 	EDITABLE editable() const;
 	///
 	int latex(Buffer const *, std::ostream &, bool fragile,

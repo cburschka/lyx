@@ -29,7 +29,6 @@
 
 using std::endl;
 
-// Insets default methods
 
 // Initialization of the counter for the inset id's,
 unsigned int Inset::inset_id = 0;
@@ -66,10 +65,6 @@ Inset::EDITABLE Inset::editable() const
 }
 
 
-void Inset::edit(BufferView *, int, int, mouse_button::state)
-{}
-
-
 void Inset::validate(LaTeXFeatures &) const
 {}
 
@@ -78,10 +73,6 @@ bool Inset::autoDelete() const
 {
 	return false;
 }
-
-
-void Inset::edit(BufferView *, bool)
-{}
 
 
 #if 0
@@ -143,10 +134,10 @@ void Inset::setFont(BufferView *, LyXFont const &, bool, bool)
 {}
 
 
-bool Inset::forceDefaultParagraphs(Inset const * in) const
+bool Inset::forceDefaultParagraphs(Inset const * inset) const
 {
 	if (owner())
-		return owner()->forceDefaultParagraphs(in);
+		return owner()->forceDefaultParagraphs(inset);
 	return false;
 }
 

@@ -12,7 +12,6 @@
 #ifndef INSET_EXTERNAL_H
 #define INSET_EXTERNAL_H
 
-
 #include "insetbutton.h"
 #include "ExternalTemplate.h"
 #include "LString.h"
@@ -41,10 +40,6 @@ public:
 	virtual dispatch_result localDispatch(FuncRequest const & cmd);	
 	/// what appears in the minibuffer when opening
 	virtual string const editMessage() const;
-	///
-	virtual void edit(BufferView *, int x, int y, mouse_button::state button);
-	///
-	virtual void edit(BufferView * bv, bool front = true);
 	///
 	virtual EDITABLE editable() const { return IS_EDITABLE; }
 	///

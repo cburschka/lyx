@@ -441,57 +441,6 @@ string const InsetTabular::editMessage() const
 }
 
 
-void InsetTabular::edit(BufferView * bv, int x, int y, mouse_button::state button)
-{
-	UpdatableInset::edit(bv, x, y, button);
-
-	if (!bv->lockInset(this)) {
-		lyxerr[Debug::INSETTEXT] << "InsetTabular::Cannot lock inset" << endl;
-		return;
-	}
-	locked = true;
-	the_locking_inset = 0;
-	inset_x = 0;
-	inset_y = 0;
-	setPos(bv, x, y);
-	clearSelection();
-	finishUndo();
-	if (insetHit(bv, x, y) && (button != mouse_button::button3)) {
-		activateCellInsetAbs(bv, x, y, button);
-	}
-}
-
-
-void InsetTabular::edit(BufferView * bv, bool front)
-{
-	UpdatableInset::edit(bv, front);
-
-	if (!bv->lockInset(this)) {
-		lyxerr[Debug::INSETTEXT] << "InsetTabular::Cannot lock inset" << endl;
-		return;
-	}
-	finishUndo();
-	locked = true;
-	the_locking_inset = 0;
-	inset_x = 0;
-	inset_y = 0;
-	if (front) {
-		if (isRightToLeft(bv))
-			actcell = tabular->GetLastCellInRow(0);
-		else
-			actcell = 0;
-	} else {
-		if (isRightToLeft(bv))
-			actcell = tabular->GetFirstCellInRow(tabular->rows()-1);
-		else
-			actcell = tabular->GetNumberOfCells() - 1;
-	}
-	clearSelection();
-	resetPos(bv);
-	bv->fitCursor();
-}
-
-
 void InsetTabular::insetUnlock(BufferView * bv)
 {
 	if (the_locking_inset) {
@@ -556,7 +505,7 @@ bool InsetTabular::lockInsetInInset(BufferView * bv, UpdatableInset * inset)
 			}
 			if (in->getInsetFromID(id)) {
 				actcell = i;
-				in->edit(bv);
+				in->localDispatch(FuncRequest(bv, LFUN_INSET_EDIT));
 				return the_locking_inset->lockInsetInInset(bv, inset);
 			}
 		}
@@ -777,8 +726,49 @@ Inset::RESULT InsetTabular::localDispatch(FuncRequest const & cmd)
 	// the_locking_inset->localDispatch might unlock it.
 	old_locking_inset = the_locking_inset;
 	RESULT result = UpdatableInset::localDispatch(cmd);
-
 	BufferView * bv = cmd.view();
+
+	if (cmd.action == LFUN_INSET_EDIT) {
+		
+		if (!bv->lockInset(this)) {
+			lyxerr[Debug::INSETTEXT] << "InsetTabular::Cannot lock inset" << endl;
+			return DISPATCHED;
+		}
+
+		finishUndo();
+		locked = true;
+		the_locking_inset = 0;
+		inset_x = 0;
+		inset_y = 0;
+
+		if (cmd.argument.size()) {
+			if (cmd.argument == "left") {
+				if (isRightToLeft(bv))
+					actcell = tabular->GetLastCellInRow(0);
+				else
+					actcell = 0;
+			} else {
+				if (isRightToLeft(bv))
+					actcell = tabular->GetFirstCellInRow(tabular->rows()-1);
+				else
+					actcell = tabular->GetNumberOfCells() - 1;
+			}
+			clearSelection();
+			resetPos(bv);
+			bv->fitCursor();
+		}
+
+		else {
+			setPos(bv, cmd.x, cmd.y);
+			clearSelection();
+			finishUndo();
+			if (insetHit(bv, cmd.x, cmd.y) && cmd.button() != mouse_button::button3) {
+				activateCellInsetAbs(bv, cmd.x, cmd.y, cmd.button());
+			}
+		}
+		return DISPATCHED;
+	}
+
 	if (result == DISPATCHED || result == DISPATCHED_NOUPDATE) {
 		resetPos(bv);
 		return result;
@@ -2082,7 +2072,7 @@ bool InsetTabular::activateCellInset(BufferView * bv, int x, int y, mouse_button
 	}
 	//inset_x = cursor.x() - top_x + tabular->GetBeginningOfTextInCell(actcell);
 	//inset_y = cursor.y();
-	inset->edit(bv, x,  y, button);
+	inset->localDispatch(FuncRequest(bv, LFUN_INSET_EDIT, x,  y, button));
 	if (!the_locking_inset)
 		return false;
 	updateLocal(bv, CELL);
@@ -2574,7 +2564,7 @@ InsetTabular::selectNextWordToSpellcheck(BufferView * bv, float & value) const
 	// otherwise we have to lock the next inset and ask for it's selecttion
 	UpdatableInset * inset =
 		static_cast<UpdatableInset*>(tabular->GetCellInset(actcell));
-	inset->edit(bv, 0,  0, mouse_button::none);
+	inset->localDispatch(FuncRequest(bv, LFUN_INSET_EDIT));
 	WordLangTuple word(selectNextWordInt(bv, value));
 	nodraw(false);
 	if (!word.word().empty())
@@ -2600,7 +2590,7 @@ WordLangTuple InsetTabular::selectNextWordInt(BufferView * bv, float & value) co
 	// otherwise we have to lock the next inset and ask for it's selecttion
 	UpdatableInset * inset =
 		static_cast<UpdatableInset*>(tabular->GetCellInset(++actcell));
-	inset->edit(bv);
+	inset->localDispatch(FuncRequest(bv, LFUN_INSET_EDIT));
 	return selectNextWordInt(bv, value);
 }
 

@@ -66,10 +66,6 @@ public:
 	///
 	virtual void insetUnlock(BufferView *);
 	///
-	virtual void edit(BufferView *, int x, int y, mouse_button::state button);
-	///
-	virtual void edit(BufferView *, bool front = true);
-	///
 	virtual void draw(BufferView *, LyXFont const &,
 			  int baseline, float & x) const;
 	///

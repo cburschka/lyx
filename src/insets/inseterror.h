@@ -12,7 +12,6 @@
 #ifndef INSET_ERROR_H
 #define INSET_ERROR_H
 
-
 #include "inset.h"
 #include "LString.h"
 
@@ -54,10 +53,6 @@ public:
 	bool autoDelete() const { return true; }
 	/// what appears in the minibuffer when opening
 	string const editMessage() const;
-	///
-	void edit(BufferView *, int, int, mouse_button::state);
-	///
-	void edit(BufferView * bv, bool front = true);
 	///
 	EDITABLE editable() const { return IS_EDITABLE; }
 	///

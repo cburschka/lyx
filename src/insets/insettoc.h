@@ -28,11 +28,9 @@ public:
 		return new InsetTOC(params(), same_id);
 	}
 	///
+	dispatch_result localDispatch(FuncRequest const & cmd);
+	///
 	string const getScreenLabel(Buffer const *) const;
-	///
-	void edit(BufferView * bv, int, int, mouse_button::state);
-	///
-	void edit(BufferView * bv, bool front = true);
 	///
 	EDITABLE editable() const { return IS_EDITABLE; }
 	///

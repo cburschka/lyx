@@ -385,8 +385,10 @@ void doInsertInset(LyXText * lt, FuncRequest const & cmd,
 			gotsel = true;
 		}
 		if (bv->insertInset(inset)) {
-			if (edit)
-				inset->edit(bv);
+			if (edit) {
+				FuncRequest cmd(bv, LFUN_INSET_EDIT, "left");
+				inset->localDispatch(cmd);
+			}
 			if (gotsel && pastesel)
 				bv->owner()->dispatch(FuncRequest(LFUN_PASTESELECTION));
 		}
@@ -606,7 +608,8 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 		    && isHighlyEditableInset(cursor.par()->getInset(cursor.pos()))) {
 			Inset * tmpinset = cursor.par()->getInset(cursor.pos());
 			cmd.message(tmpinset->editMessage());
-			tmpinset->edit(bv, !is_rtl);
+			FuncRequest cmd1(bv, LFUN_INSET_EDIT, is_rtl ? "left" : "right");
+			tmpinset->localDispatch(cmd1);
 			break;
 		}
 		if (!is_rtl)
@@ -631,7 +634,8 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 		    isHighlyEditableInset(cursor.par()->getInset(cursor.pos()))) {
 			Inset * tmpinset = cursor.par()->getInset(cursor.pos());
 			cmd.message(tmpinset->editMessage());
-			tmpinset->edit(bv, is_rtl);
+			FuncRequest cmd1(bv, LFUN_INSET_EDIT, is_rtl ? "right" : "left");
+			tmpinset->localDispatch(cmd1);
 			break;
 		}
 		if (is_rtl)

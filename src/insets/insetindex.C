@@ -12,6 +12,7 @@
 
 #include "insetindex.h"
 #include "BufferView.h"
+#include "funcrequest.h"
 #include "frontends/LyXView.h"
 #include "frontends/Dialogs.h"
 #include "LaTeXFeatures.h"
@@ -38,16 +39,16 @@ string const InsetIndex::getScreenLabel(Buffer const *) const
 }
 
 
-void InsetIndex::edit(BufferView * bv, int, int, mouse_button::state)
+dispatch_result InsetIndex::localDispatch(FuncRequest const & cmd)
 {
-	InsetCommandMailer mailer("index", *this);
-	mailer.showDialog(bv);
-}
-
-
-void InsetIndex::edit(BufferView * bv, bool)
-{
-	edit(bv, 0, 0, mouse_button::none);
+	switch (cmd.action) {
+		case LFUN_INSET_EDIT:
+			InsetCommandMailer("index", *this).showDialog(cmd.view());
+			return DISPATCHED;
+		
+		default:
+			return UNDISPATCHED;
+	}
 }
 
 
@@ -65,8 +66,13 @@ Inset::Code InsetIndex::lyxCode() const
 }
 
 
+
 InsetPrintIndex::InsetPrintIndex(InsetCommandParams const & p, bool)
 	: InsetCommand(p)
+{}
+
+
+InsetPrintIndex::~InsetPrintIndex()
 {}
 
 

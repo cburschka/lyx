@@ -44,15 +44,13 @@ public:
 		return new InsetRef(params(), buffer, same_id);
 	}
 	///
+	dispatch_result localDispatch(FuncRequest const & cmd);
+	///
 	string const getScreenLabel(Buffer const *) const;
 	///
 	EDITABLE editable() const { return IS_EDITABLE; }
 	///
 	Inset::Code lyxCode() const { return Inset::REF_CODE; }
-	///
-	void edit(BufferView *, int, int, mouse_button::state);
-	///
-	void edit(BufferView * bv, bool front = true);
 	///
 	bool display() const { return false; }
 	///

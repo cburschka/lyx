@@ -112,38 +112,31 @@ InsetInclude::~InsetInclude()
 
 dispatch_result InsetInclude::localDispatch(FuncRequest const & cmd)
 {
-	dispatch_result result = UNDISPATCHED;
-
 	switch (cmd.action) {
+
 	case LFUN_INSET_MODIFY: {
 		InsetInclude::Params p;
 		InsetIncludeMailer::string2params(cmd.argument, p);
-		if (p.cparams.getCmdName().empty())
-			break;
-
-		set(p);
-		params_.masterFilename_ = cmd.view()->buffer()->fileName();
-
-		cmd.view()->updateInset(this);
-		result = DISPATCHED;
+		if (!p.cparams.getCmdName().empty()) {
+			set(p);
+			params_.masterFilename_ = cmd.view()->buffer()->fileName();
+			cmd.view()->updateInset(this);
+		}
+		return DISPATCHED;
 	}
-	break;
 
-	case LFUN_INSET_DIALOG_UPDATE: {
-		InsetIncludeMailer mailer(*this);
-		mailer.updateDialog(cmd.view());
-	}
-	break;
+	case LFUN_INSET_DIALOG_UPDATE: 
+		InsetIncludeMailer(*this).updateDialog(cmd.view());
+		return DISPATCHED;
 
 	case LFUN_MOUSE_RELEASE:
-		edit(cmd.view(), cmd.x, cmd.y, cmd.button());
-		break;
+	case LFUN_INSET_EDIT:
+		InsetIncludeMailer(*this).showDialog(cmd.view());
+		return DISPATCHED;
 
 	default:
-		break;
+		return UNDISPATCHED;
 	}
-
-	return result;
 }
 
 
@@ -155,11 +148,8 @@ InsetInclude::Params const & InsetInclude::params() const
 
 bool InsetInclude::Params::operator==(Params const & o) const
 {
-	if (cparams == o.cparams && flag == o.flag &&
-	    masterFilename_ == o.masterFilename_)
-		return true;
-
-	return false;
+	return cparams == o.cparams && flag == o.flag &&
+	    masterFilename_ == o.masterFilename_;
 }
 
 
@@ -206,19 +196,6 @@ Inset * InsetInclude::clone(Buffer const & buffer, bool) const
 	p.masterFilename_ = buffer.fileName();
 
 	return new InsetInclude(p);
-}
-
-
-void InsetInclude::edit(BufferView * bv, int, int, mouse_button::state)
-{
-	InsetIncludeMailer mailer(*this);
-	mailer.showDialog(bv);
-}
-
-
-void InsetInclude::edit(BufferView * bv, bool)
-{
-	edit(bv, 0, 0, mouse_button::none);
 }
 
 

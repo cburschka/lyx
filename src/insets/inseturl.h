@@ -31,6 +31,8 @@ public:
 		return new InsetUrl(params(), same_id);
 	}
 	///
+	dispatch_result localDispatch(FuncRequest const & cmd);
+	///
 	Inset::Code lyxCode() const { return Inset::URL_CODE; }
 	///
 	void validate(LaTeXFeatures &) const;
@@ -38,10 +40,6 @@ public:
 	string const getScreenLabel(Buffer const *) const;
 	///
 	EDITABLE editable() const { return IS_EDITABLE; }
-	///
-	void edit(BufferView *, int, int, mouse_button::state);
-	///
-	void edit(BufferView * bv, bool front = true);
 	///
 	bool display() const { return false; }
 	///

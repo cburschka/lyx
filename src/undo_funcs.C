@@ -11,6 +11,7 @@
 
 #include "undo_funcs.h"
 #include "lyxtext.h"
+#include "funcrequest.h"
 #include "BufferView.h"
 #include "buffer.h"
 #include "insets/updatableinset.h"
@@ -218,7 +219,8 @@ bool textHandleUndo(BufferView * bv, Undo & undo)
 			it = static_cast<UpdatableInset*>(tmppar->inInset());
 			LyXText * t;
 			if (it) {
-				it->edit(bv);
+				FuncRequest cmd(bv, LFUN_INSET_EDIT, "left");
+				it->localDispatch(cmd);
 				t = it->getLyXText(bv);
 			} else {
 				t = bv->text;
@@ -242,7 +244,8 @@ bool textHandleUndo(BufferView * bv, Undo & undo)
 			LyXText * t;
 			Inset * it = tmppar->inInset();
 			if (it) {
-				it->edit(bv);
+				FuncRequest cmd(bv, LFUN_INSET_EDIT, "left");
+				it->localDispatch(cmd);
 				t = it->getLyXText(bv);
 			} else {
 				t = bv->text;

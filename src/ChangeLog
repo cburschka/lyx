@@ -1,4 +1,13 @@
 
+2003-05-16  André Pönitz  <poenitz@gmx.net>
+	
+	* BufferView.C:
+	* lyxfunc.C:
+	* text.C:
+	* text2.C:
+	* text3.C:
+	* undo_funcs.C: edit() -> LFUN_INSET_EDIT
+
 2003-05-14  Alfredo Braunstein  <abraunst@libero.it>
 
 	* lyx_main.C (init): remove spurious static_cast

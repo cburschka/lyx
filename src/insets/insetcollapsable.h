@@ -14,7 +14,6 @@
 #ifndef INSETCOLLAPSABLE_H
 #define INSETCOLLAPSABLE_H
 
-
 #include "inset.h"
 #include "insettext.h"
 #include "lyxfont.h"
@@ -57,10 +56,6 @@ public:
 	          int baseline, float & x, bool inlined) const;
 	///
 	void update(BufferView *, bool =false);
-	///
-	void edit(BufferView *, int, int, mouse_button::state);
-	///
-	void edit(BufferView *, bool front = true);
 	///
 	EDITABLE editable() const;
 	///

@@ -2203,7 +2203,8 @@ LyXText::selectNextWordToSpellcheck(float & value)
 	if (cursor.pos() < cursor.par()->size() &&
 	    cursor.par()->isInset(cursor.pos())) {
 		// lock the inset!
-		cursor.par()->getInset(cursor.pos())->edit(bv());
+		FuncRequest cmd(bv(), LFUN_INSET_EDIT, "left");
+		cursor.par()->getInset(cursor.pos())->localDispatch(cmd);
 		// now call us again to do the above trick
 		// but obviously we have to start from down below ;)
 		return bv()->text->selectNextWordToSpellcheck(value);

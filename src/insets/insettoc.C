@@ -12,6 +12,7 @@
 
 #include "gettext.h"
 #include "insettoc.h"
+#include "funcrequest.h"
 #include "BufferView.h"
 #include "frontends/LyXView.h"
 #include "frontends/Dialogs.h"
@@ -53,16 +54,15 @@ Inset::Code InsetTOC::lyxCode() const
 }
 
 
-void InsetTOC::edit(BufferView * bv, int, int, mouse_button::state)
+dispatch_result InsetTOC::localDispatch(FuncRequest const & cmd)
 {
-	InsetCommandMailer mailer("toc", *this);
-	mailer.showDialog(bv);
-}
-
-
-void InsetTOC::edit(BufferView * bv, bool)
-{
-	edit(bv, 0, 0, mouse_button::none);
+	switch (cmd.action) {
+	case LFUN_INSET_EDIT:
+		InsetCommandMailer("toc", *this).showDialog(cmd.view());
+		return DISPATCHED;
+	default:
+		return UNDISPATCHED;
+	}
 }
 
 

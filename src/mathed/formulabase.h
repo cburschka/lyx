@@ -59,10 +59,6 @@ public:
 	/// what appears in the minibuffer when opening
 	virtual string const editMessage() const;
 	///
-	virtual void edit(BufferView *, int x, int y, mouse_button::state button);
-	///
-	virtual void edit(BufferView *, bool front = true);
-	///
 	virtual void fitInsetCursor(BufferView *) const;
 	/// FIXME
 	virtual void getCursorPos(BufferView *, int &, int &) const;

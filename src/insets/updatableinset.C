@@ -52,14 +52,6 @@ void UpdatableInset::fitInsetCursor(BufferView *) const
 {}
 
 
-void UpdatableInset::edit(BufferView *, int, int, mouse_button::state)
-{}
-
-
-void UpdatableInset::edit(BufferView *, bool)
-{}
-
-
 void UpdatableInset::draw(BufferView *, LyXFont const &,
 			  int /* baseline */, float & x) const
 {

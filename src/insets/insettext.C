@@ -71,6 +71,7 @@ using std::for_each;
 using lyx::pos_type;
 using lyx::textclass_type;
 
+
 // These functions should probably go into bufferview_funcs somehow (Jug)
 
 void InsetText::saveLyXTextState(LyXText * t) const
@@ -598,109 +599,6 @@ string const InsetText::editMessage() const
 }
 
 
-void InsetText::edit(BufferView * bv, int x, int y, mouse_button::state button)
-{
-	UpdatableInset::edit(bv, x, y, button);
-
-	if (!bv->lockInset(this)) {
-		lyxerr[Debug::INSETS] << "Cannot lock inset" << endl;
-		return;
-	}
-	locked = true;
-	the_locking_inset = 0;
-	inset_pos = inset_x = inset_y = 0;
-	inset_boundary = false;
-	inset_par = 0;
-	old_par = 0;
-	int tmp_y = (y < 0) ? 0 : y;
-	bool clear = false;
-	if (!lt) {
-		lt = getLyXText(bv);
-		clear = true;
-	}
-	// we put here -1 and not button as now the button in the
-	// edit call should not be needed we will fix this in 1.3.x
-	// cycle hopefully (Jug 20020509)
-	// FIXME: GUII I've changed this to none: probably WRONG
-	if (!checkAndActivateInset(bv, x, tmp_y, mouse_button::none)) {
-		lt->setCursorFromCoordinates(x - drawTextXOffset,
-					    y + insetAscent);
-		lt->cursor.x_fix(lt->cursor.x());
-	}
-	lt->clearSelection();
-	finishUndo();
-	// If the inset is empty set the language of the current font to the
-	// language to the surronding text (if different).
-	if (paragraphs.begin()->empty() &&
-	    boost::next(paragraphs.begin()) == paragraphs.end()&&
-		bv->getParentLanguage(this) != lt->current_font.language())
-	{
-		LyXFont font(LyXFont::ALL_IGNORE);
-		font.setLanguage(bv->getParentLanguage(this));
-		setFont(bv, font, false);
-	}
-	if (clear)
-		lt = 0;
-
-	int code = CURSOR;
-	if (drawFrame_ == LOCKED)
-		code = CURSOR|DRAW_FRAME;
-	updateLocal(bv, code, false);
-
-	// Tell the paragraph dialog that we've entered an insettext.
-	bv->dispatch(FuncRequest(LFUN_PARAGRAPH_UPDATE));
-}
-
-
-void InsetText::edit(BufferView * bv, bool front)
-{
-	UpdatableInset::edit(bv, front);
-
-	if (!bv->lockInset(this)) {
-		lyxerr[Debug::INSETS] << "Cannot lock inset" << endl;
-		return;
-	}
-	locked = true;
-	the_locking_inset = 0;
-	inset_pos = inset_x = inset_y = 0;
-	inset_boundary = false;
-	inset_par = 0;
-	old_par = 0;
-	bool clear = false;
-	if (!lt) {
-		lt = getLyXText(bv);
-		clear = true;
-	}
-	if (front)
-		lt->setCursor(paragraphs.begin(), 0);
-	else {
-		ParagraphList::iterator it = paragraphs.begin();
-		ParagraphList::iterator end = paragraphs.end();
-		while (boost::next(it) != end)
-			++it;
-//		int const pos = (p->size() ? p->size()-1 : p->size());
-		lt->setCursor(it, it->size());
-	}
-	lt->clearSelection();
-	finishUndo();
-	// If the inset is empty set the language of the current font to the
-	// language to the surronding text (if different).
-	if (paragraphs.begin()->empty() &&
-	    boost::next(paragraphs.begin()) == paragraphs.end() &&
-		bv->getParentLanguage(this) != lt->current_font.language()) {
-		LyXFont font(LyXFont::ALL_IGNORE);
-		font.setLanguage(bv->getParentLanguage(this));
-		setFont(bv, font, false);
-	}
-	if (clear)
-		lt = 0;
-	int code = CURSOR;
-	if (drawFrame_ == LOCKED)
-		code = CURSOR|DRAW_FRAME;
-	updateLocal(bv, code, false);
-}
-
-
 void InsetText::insetUnlock(BufferView * bv)
 {
 	if (the_locking_inset) {
@@ -812,7 +710,7 @@ bool InsetText::lockInsetInInset(BufferView * bv, UpdatableInset * inset)
 				}
 				if (it.getInset()->getInsetFromID(id)) {
 					getLyXText(bv)->setCursorIntern(pit, it.getPos());
-					it.getInset()->edit(bv);
+					it.getInset()->localDispatch(FuncRequest(bv, LFUN_INSET_EDIT));
 					return the_locking_inset->lockInsetInInset(bv, inset);
 				}
 			}
@@ -1090,18 +988,91 @@ void InsetText::lfunMouseMotion(FuncRequest const & cmd)
 }
 
 
-Inset::RESULT InsetText::localDispatch(FuncRequest const & ev)
+Inset::RESULT InsetText::localDispatch(FuncRequest const & cmd)
 {
-	BufferView * bv = ev.view();
-	switch (ev.action) {
+	BufferView * bv = cmd.view();
+
+	if (cmd.action == LFUN_INSET_EDIT) {
+		UpdatableInset::localDispatch(cmd);
+
+		if (!bv->lockInset(this)) {
+			lyxerr[Debug::INSETS] << "Cannot lock inset" << endl;
+			return DISPATCHED;
+		}
+
+		locked = true;
+		the_locking_inset = 0;
+		inset_pos = inset_x = inset_y = 0;
+		inset_boundary = false;
+		inset_par = 0;
+		old_par = 0;
+
+		bool clear = false;
+		if (!lt) {
+			lt = getLyXText(bv);
+			clear = true;
+		}
+
+		if (cmd.argument.size()) {
+			if (cmd.argument == "left")
+				lt->setCursor(paragraphs.begin(), 0);
+			else {
+				ParagraphList::iterator it = paragraphs.begin();
+				ParagraphList::iterator end = paragraphs.end();
+				while (boost::next(it) != end)
+					++it;
+		//		int const pos = (p->size() ? p->size()-1 : p->size());
+				lt->setCursor(it, it->size());
+			}
+		} else {
+			int tmp_y = (cmd.y < 0) ? 0 : cmd.y;
+			// we put here -1 and not button as now the button in the
+			// edit call should not be needed we will fix this in 1.3.x
+			// cycle hopefully (Jug 20020509)
+			// FIXME: GUII I've changed this to none: probably WRONG
+			if (!checkAndActivateInset(bv, cmd.x, tmp_y, mouse_button::none)) {
+				lt->setCursorFromCoordinates(cmd.x - drawTextXOffset,
+									cmd.y + insetAscent);
+				lt->cursor.x_fix(lt->cursor.x());
+			}
+		}
+
+		lt->clearSelection();
+		finishUndo();
+
+		// If the inset is empty set the language of the current font to the
+		// language to the surronding text (if different).
+		if (paragraphs.begin()->empty() &&
+				boost::next(paragraphs.begin()) == paragraphs.end()&&
+			bv->getParentLanguage(this) != lt->current_font.language())
+		{
+			LyXFont font(LyXFont::ALL_IGNORE);
+			font.setLanguage(bv->getParentLanguage(this));
+			setFont(bv, font, false);
+		}
+
+		if (clear)
+			lt = 0;
+		int code = CURSOR;
+		if (drawFrame_ == LOCKED)
+			code = CURSOR | DRAW_FRAME;
+
+		updateLocal(bv, code, false);
+		// Tell the paragraph dialog that we've entered an insettext.
+		bv->dispatch(FuncRequest(LFUN_PARAGRAPH_UPDATE));
+		return DISPATCHED;
+	}
+
+
+	switch (cmd.action) {
 		case LFUN_MOUSE_PRESS:
-			lfunMousePress(ev);
+			lfunMousePress(cmd);
 			return DISPATCHED;
 		case LFUN_MOUSE_MOTION:
-			lfunMouseMotion(ev);
+			lfunMouseMotion(cmd);
 			return DISPATCHED;
 		case LFUN_MOUSE_RELEASE:
-			return lfunMouseRelease(ev) ? DISPATCHED : UNDISPATCHED;
+			return lfunMouseRelease(cmd) ? DISPATCHED : UNDISPATCHED;
 		default:
 			break;
 	}
@@ -1109,16 +1080,16 @@ Inset::RESULT InsetText::localDispatch(FuncRequest const & ev)
 	bool was_empty = (paragraphs.begin()->empty() &&
 			  boost::next(paragraphs.begin()) == paragraphs.end());
 	no_selection = false;
-	RESULT result = UpdatableInset::localDispatch(ev);
+	RESULT result = UpdatableInset::localDispatch(cmd);
 	if (result != UNDISPATCHED)
 		return DISPATCHED;
 
 	result = DISPATCHED;
-	if (ev.action < 0 && ev.argument.empty())
+	if (cmd.action < 0 && cmd.argument.empty())
 		return FINISHED;
 
 	if (the_locking_inset) {
-		result = the_locking_inset->localDispatch(ev);
+		result = the_locking_inset->localDispatch(cmd);
 		if (result == DISPATCHED_NOUPDATE)
 			return result;
 		else if (result == DISPATCHED) {
@@ -1167,7 +1138,7 @@ Inset::RESULT InsetText::localDispatch(FuncRequest const & ev)
 	if (lt->selection.set())
 		cursor_update = SELECTION;
 
-	switch (ev.action) {
+	switch (cmd.action) {
 
 	// Normal chars
 	case LFUN_SELFINSERT:
@@ -1175,7 +1146,7 @@ Inset::RESULT InsetText::localDispatch(FuncRequest const & ev)
 //	    setErrorMessage(N_("Document is read only"));
 			break;
 		}
-		if (!ev.argument.empty()) {
+		if (!cmd.argument.empty()) {
 			/* Automatically delete the currently selected
 			 * text and replace it with what is being
 			 * typed in now. Depends on lyxrc settings
@@ -1193,9 +1164,9 @@ Inset::RESULT InsetText::localDispatch(FuncRequest const & ev)
 				}
 			}
 			lt->clearSelection();
-			for (string::size_type i = 0; i < ev.argument.length(); ++i) {
+			for (string::size_type i = 0; i < cmd.argument.length(); ++i) {
 				bv->owner()->getIntl().getTransManager().
-					TranslateAndInsert(ev.argument[i], lt);
+					TranslateAndInsert(cmd.argument[i], lt);
 			}
 		}
 		lt->selection.cursor = lt->cursor;
@@ -1289,7 +1260,7 @@ Inset::RESULT InsetText::localDispatch(FuncRequest const & ev)
 
 		if (clip.empty())
 			break;
-		if (ev.argument == "paragraph") {
+		if (cmd.argument == "paragraph") {
 			lt->insertStringAsParagraphs(clip);
 		} else {
 			lt->insertStringAsLines(clip);
@@ -1362,7 +1333,7 @@ Inset::RESULT InsetText::localDispatch(FuncRequest const & ev)
 			// and current buffer's textclass (number). */
 			LyXTextClass const & tclass =
 				bv->buffer()->params.getLyXTextClass();
-			string layout = ev.argument;
+			string layout = cmd.argument;
 			bool hasLayout = tclass.hasLayout(layout);
 
 			// If the entry is obsolete, use the new one instead.
@@ -1375,7 +1346,7 @@ Inset::RESULT InsetText::localDispatch(FuncRequest const & ev)
 
 			// see if we found the layout number:
 			if (!hasLayout) {
-				FuncRequest lf(LFUN_MESSAGE, N_("Layout ") + ev.argument + N_(" not known"));
+				FuncRequest lf(LFUN_MESSAGE, N_("Layout ") + cmd.argument + N_(" not known"));
 				bv->owner()->dispatch(lf);
 				break;
 			}
@@ -1405,7 +1376,7 @@ Inset::RESULT InsetText::localDispatch(FuncRequest const & ev)
 			cur_value = pit->params().spacing().getValue();
 		}
 
-		istringstream istr(STRCONV(ev.argument));
+		istringstream istr(STRCONV(cmd.argument));
 		string tmp;
 		istr >> tmp;
 		Spacing::Space new_spacing = cur_spacing;
@@ -1430,7 +1401,7 @@ Inset::RESULT InsetText::localDispatch(FuncRequest const & ev)
 			new_spacing = Spacing::Default;
 		} else {
 			lyxerr << _("Unknown spacing argument: ")
-				   << ev.argument << endl;
+				   << cmd.argument << endl;
 		}
 		if (cur_spacing != new_spacing || cur_value != new_value) {
 			pit->params().spacing(Spacing(new_spacing, new_value));
@@ -1452,7 +1423,7 @@ Inset::RESULT InsetText::localDispatch(FuncRequest const & ev)
 	case LFUN_ENDBUF:
 	case LFUN_BEGINNINGBUF:
 		updwhat = cursor_update;
-		if (!bv->dispatch(ev))
+		if (!bv->dispatch(cmd))
 			result = UNDISPATCHED;
 		break;
 
@@ -1469,7 +1440,7 @@ Inset::RESULT InsetText::localDispatch(FuncRequest const & ev)
 		// fallthrough
 
 	default:
-		if (!bv->dispatch(ev))
+		if (!bv->dispatch(cmd))
 			result = UNDISPATCHED;
 		break;
 	}
@@ -1929,7 +1900,8 @@ bool InsetText::checkAndActivateInset(BufferView * bv, bool front)
 			static_cast<UpdatableInset*>(cpar(bv)->getInset(cpos(bv)));
 		if (!isHighlyEditableInset(inset))
 			return false;
-		inset->edit(bv, front);
+		FuncRequest cmd(bv, LFUN_INSET_EDIT, front ? "left" : "right");
+		inset->localDispatch(cmd);
 		if (!the_locking_inset)
 			return false;
 		updateLocal(bv, CURSOR, false);
@@ -1961,7 +1933,8 @@ bool InsetText::checkAndActivateInset(BufferView * bv, int x, int y,
 			y = insetDescent;
 		inset_x = cix(bv) - top_x + drawTextXOffset;
 		inset_y = ciy(bv) + drawTextYOffset;
-		inset->edit(bv, x - inset_x, y - inset_y, button);
+		FuncRequest cmd(bv, LFUN_INSET_EDIT, x - inset_x, y - inset_y, button);
+		inset->localDispatch(cmd);
 		if (!the_locking_inset)
 			return false;
 		updateLocal(bv, CURSOR, false);

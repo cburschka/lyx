@@ -41,10 +41,6 @@ public:
 	///
 	virtual string const getScreenLabel(Buffer const *) const;
 	///
-	void edit(BufferView *, int x, int y, mouse_button::state button);
-	///
-	void edit(BufferView * bv, bool front = true);
-	///
 	EDITABLE editable() const { return IS_EDITABLE; }
 	///
 	Inset::Code lyxCode() const { return Inset::BIBITEM_CODE; }
@@ -53,7 +49,7 @@ public:
 	///
 	void setCounter(int);
 	///
-	int  getCounter() const { return counter; }
+	int getCounter() const { return counter; }
 	///
 	string const getBibLabel() const;
 	///

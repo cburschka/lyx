@@ -34,10 +34,6 @@ public:
 	///
 	Inset::Code lyxCode() const { return Inset::LABEL_CODE; }
 	///
-	void edit(BufferView *, int, int, mouse_button::state);
-	///
-	void edit(BufferView * bv, bool front = true);
-	///
 	std::vector<string> const getLabelList() const;
 	///
 	int latex(Buffer const *, std::ostream &,

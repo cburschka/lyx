@@ -1231,7 +1231,7 @@ void LyXText::updateCounters()
 
 		string const oldLabel = pit->params().labelString();
 
-		int maxdepth = 0;
+		size_t maxdepth = 0;
 		if (pit != ownerParagraphs().begin())
 			maxdepth = boost::prior(pit)->getMaxDepthAfter();
 
@@ -2046,7 +2046,8 @@ void LyXText::cursorUp(bool selecting)
 		y -= topy;
 		Inset * inset_hit = checkInsetHit(x, y1);
 		if (inset_hit && isHighlyEditableInset(inset_hit)) {
-			inset_hit->edit(bv(), x, y - (y2 - y1), mouse_button::none);
+			inset_hit->localDispatch(
+				FuncRequest(bv(), LFUN_INSET_EDIT, x, y - (y2 - y1), mouse_button::none));
 		}
 	}
 #else
@@ -2070,7 +2071,8 @@ void LyXText::cursorDown(bool selecting)
 		y -= topy;
 		Inset * inset_hit = checkInsetHit(x, y1);
 		if (inset_hit && isHighlyEditableInset(inset_hit)) {
-			inset_hit->edit(bv(), x, y - (y2 - y1), mouse_button::none);
+			FuncRequest cmd(bv(), LFUN_INSET_EDIT, x, y - (y2 - y1), mouse_button::none);
+			inset_hit->localDispatch(cmd);
 		}
 	}
 #else

@@ -39,10 +39,6 @@ public:
 	///
 	Inset::Code lyxCode() const { return Inset::BIBTEX_CODE; }
 	///
-	void edit(BufferView *, int x, int y, mouse_button::state button);
-	///
-	void edit(BufferView * bv, bool front = true);
-	///
 	int latex(Buffer const *, std::ostream &,
 		  bool fragile, bool freespace) const;
 	///

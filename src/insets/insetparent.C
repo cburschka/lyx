@@ -13,10 +13,7 @@
 
 #include <config.h>
 
-
-
 #include "insetparent.h"
-#include "support/filetools.h"
 #include "BufferView.h"
 #include "frontends/LyXView.h"
 #include "support/LOstream.h"
@@ -24,7 +21,8 @@
 #include "buffer.h"
 #include "gettext.h"
 
-#include "support/BoostFormat.h"
+#include "support/filetools.h"
+#include "support/lstrings.h"
 
 using std::ostream;
 
@@ -39,24 +37,19 @@ InsetParent::InsetParent(InsetCommandParams const & p, Buffer const & bf, bool)
 
 string const InsetParent::getScreenLabel(Buffer const *) const
 {
-#if USE_BOOST_FORMAT
-	return STRCONV(boost::io::str(boost::format(_("Parent: %s"))
-		% STRCONV(getContents())));
-#else
-	return _("Parent: ") + getContents();
-#endif
+	return bformat(_("Parent: %1$s"), getContents());
 }
 
 
-void InsetParent::edit(BufferView * bv, int, int, mouse_button::state)
+dispatch_result InsetParent::localDispatch(FuncRequest const & cmd)
 {
-	bv->owner()->dispatch(FuncRequest(LFUN_CHILDOPEN, getContents()));
-}
-
-
-void InsetParent::edit(BufferView * bv, bool)
-{
-	edit(bv, 0, 0, mouse_button::none);
+	switch (cmd.action) {
+		case LFUN_INSET_EDIT:
+			cmd.view()->owner()->dispatch(FuncRequest(LFUN_CHILDOPEN, getContents()));
+			return DISPATCHED;
+		default:
+			return UNDISPATCHED;
+	}
 }
 
 

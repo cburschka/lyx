@@ -45,7 +45,6 @@
 #ifndef INSETTABULAR_H
 #define INSETTABULAR_H
 
-
 #include "inset.h"
 #include "tabular.h"
 #include "LString.h"
@@ -97,10 +96,6 @@ public:
 	void update(BufferView *, bool = false);
 	///
 	string const editMessage() const;
-	///
-	void edit(BufferView *, int x, int y, mouse_button::state);
-	///
-	void edit(BufferView * bv, bool front = true);
 	//
 	void insetUnlock(BufferView *);
 	///

@@ -26,7 +26,6 @@
 
 using std::ostream;
 
-/* Error, used for the LaTeX-Error Messages */
 
 InsetError::InsetError(string const & str, bool)
 	: contents(str)
@@ -44,15 +43,14 @@ dispatch_result InsetError::localDispatch(FuncRequest const & cmd)
 	dispatch_result result = UNDISPATCHED;
 
 	switch (cmd.action) {
-	case LFUN_MOUSE_RELEASE:
-		edit(cmd.view(), cmd.x, cmd.y, cmd.button());
-		break;
+	case LFUN_MOUSE_RELEASE: 
+	case LFUN_INSET_EDIT: 
+		cmd.view()->owner()->getDialogs().show("error", getContents(), this);
+		return DISPATCHED;
 
 	default:
-		break;
+		return Inset::localDispatch(cmd);
 	}
-
-	return result;
 }
 
 
@@ -110,16 +108,4 @@ void InsetError::draw(BufferView * bv, LyXFont const & font,
 string const InsetError::editMessage() const
 {
 	return _("Opened error");
-}
-
-
-void InsetError::edit(BufferView * bv, int, int, mouse_button::state)
-{
-	bv->owner()->getDialogs().show("error", getContents(), this);
-}
-
-
-void InsetError::edit(BufferView * bv, bool)
-{
-	edit(bv, 0, 0, mouse_button::none);
 }

@@ -7,10 +7,11 @@
  *
  * Full author contact details are available in file CREDITS
  */
+
 #include <config.h>
 
-
 #include "inseturl.h"
+#include "funcrequest.h"
 #include "BufferView.h"
 #include "LaTeXFeatures.h"
 #include "frontends/LyXView.h"
@@ -29,21 +30,19 @@ InsetUrl::InsetUrl(InsetCommandParams const & p, bool)
 
 InsetUrl::~InsetUrl()
 {
-	InsetCommandMailer mailer("url", *this);
-	mailer.hideDialog();
+	InsetCommandMailer("url", *this).hideDialog();
 }
 
 
-void InsetUrl::edit(BufferView * bv, int, int, mouse_button::state)
+dispatch_result InsetUrl::localDispatch(FuncRequest const & cmd)
 {
-	InsetCommandMailer mailer("url", *this);
-	mailer.showDialog(bv);
-}
-
-
-void InsetUrl::edit(BufferView * bv, bool)
-{
-	edit(bv, 0, 0, mouse_button::none);
+	switch (cmd.action) {
+		case LFUN_INSET_EDIT:
+			InsetCommandMailer("url", *this).showDialog(cmd.view());
+			return DISPATCHED;
+		default:
+			return InsetCommand::localDispatch(cmd);
+	}
 }
 
 

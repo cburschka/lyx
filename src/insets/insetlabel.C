@@ -45,18 +45,17 @@ vector<string> const InsetLabel::getLabelList() const
 }
 
 
-void InsetLabel::edit(BufferView * bv, int, int, mouse_button::state)
-{
-	InsetCommandMailer mailer("label", *this);
-	mailer.showDialog(bv);
-}
-
-
 dispatch_result InsetLabel::localDispatch(FuncRequest const & cmd)
 {
 	Inset::RESULT result = UNDISPATCHED;
 
 	switch (cmd.action) {
+
+	case LFUN_INSET_EDIT:
+		InsetCommandMailer("label", *this).showDialog(cmd.view());
+		result = DISPATCHED;
+		break;
+
 	case LFUN_INSET_MODIFY: {
 		InsetCommandParams p;
 		InsetCommandMailer::string2params(cmd.argument, p);
@@ -80,12 +79,6 @@ dispatch_result InsetLabel::localDispatch(FuncRequest const & cmd)
 	}
 
 	return result;
-}
-
-
-void InsetLabel::edit(BufferView * bv, bool)
-{
-	edit(bv, 0, 0, mouse_button::none);
 }
 
 

@@ -12,6 +12,7 @@
 #include <config.h>
 
 #include "insetcite.h"
+#include "funcrequest.h"
 #include "buffer.h"
 #include "BufferView.h"
 #include "LaTeXFeatures.h"
@@ -317,20 +318,20 @@ void InsetCitation::setLoadingBuffer(Buffer const * buffer, bool state) const
 }
 
 
-void InsetCitation::edit(BufferView * bv, int, int, mouse_button::state)
+dispatch_result InsetCitation::localDispatch(FuncRequest const & cmd)
 {
-	// A call to edit() indicates that we're no longer loading the
-	// buffer but doing some real work.
-	setLoadingBuffer(bv->buffer(), false);
+	switch (cmd.action) {
+		case LFUN_INSET_EDIT:
+			// A call to edit indicates that we're no longer loading the
+			// buffer but doing some real work.
+			setLoadingBuffer(cmd.view()->buffer(), false);
+			InsetCommandMailer("citation", *this).showDialog(cmd.view());
+			break;
 
-	InsetCommandMailer mailer("citation", *this);
-	mailer.showDialog(bv);
-}
-
-
-void InsetCitation::edit(BufferView * bv, bool)
-{
-	edit(bv, 0, 0, mouse_button::none);
+		default:
+			return UNDISPATCHED;
+	}
+	return DISPATCHED;
 }
 
 

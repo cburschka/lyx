@@ -15,6 +15,7 @@
 #include "LaTeXFeatures.h"
 #include "lyxlex.h"
 #include "BufferView.h"
+#include "funcrequest.h"
 #include "buffer.h"
 #include "toc.h"
 #include "gettext.h"
@@ -22,9 +23,6 @@
 #include "Lsstream.h"
 
 #include "support/lstrings.h"
-
-#include "frontends/Dialogs.h"
-#include "frontends/LyXView.h"
 
 using std::ostream;
 using std::endl;
@@ -97,16 +95,15 @@ void InsetFloatList::read(Buffer const * buf, LyXLex & lex)
 }
 
 
-void InsetFloatList::edit(BufferView * bv, int, int, mouse_button::state)
+dispatch_result InsetFloatList::localDispatch(FuncRequest const & cmd)
 {
-	InsetCommandMailer mailer("toc", *this);
-	mailer.showDialog(bv);
-}
-
-
-void InsetFloatList::edit(BufferView * bv, bool)
-{
-	edit(bv, 0, 0, mouse_button::none);
+	switch (cmd.action) {
+		case LFUN_INSET_EDIT:
+			InsetCommandMailer("toc", *this).showDialog(cmd.view());
+			return DISPATCHED;
+		default:
+			return InsetCommand::localDispatch(cmd);
+	}
 }
 
 

@@ -30,13 +30,11 @@ public:
 		return new InsetIndex(params(), same_id);
 	}
 	///
+	dispatch_result localDispatch(FuncRequest const & cmd);
+	///
 	string const getScreenLabel(Buffer const *) const;
 	///
 	EDITABLE editable() const { return IS_EDITABLE; }
-	///
-	void edit(BufferView *, int, int, mouse_button::state);
-	///
-	void edit(BufferView * bv, bool front = true);
 	///
 	Inset::Code lyxCode() const;
 	///
@@ -49,15 +47,15 @@ public:
 	///
 	InsetPrintIndex(InsetCommandParams const &, bool same_id = false);
 	///
-	virtual Inset * clone(Buffer const &, bool same_id = false) const {
+	~InsetPrintIndex();
+	///
+	Inset * clone(Buffer const &, bool same_id = false) const {
 		return new InsetPrintIndex(params(), same_id);
 	}
+	///
+	//dispatch_result localDispatch(FuncRequest const & cmd);
 	/// Updates needed features for this inset.
 	void validate(LaTeXFeatures & features) const;
-	///
-	void edit(BufferView *, int, int, mouse_button::state) {}
-	///
-	void edit(BufferView *, bool = true) {}
 	///
 	EDITABLE editable() const { return NOT_EDITABLE; }
 	///

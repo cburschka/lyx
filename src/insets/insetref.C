@@ -30,25 +30,26 @@ InsetRef::InsetRef(InsetCommandParams const & p, Buffer const & buf, bool)
 
 InsetRef::~InsetRef()
 {
-	InsetCommandMailer mailer("ref", *this);
-	mailer.hideDialog();
+	InsetCommandMailer("ref", *this).hideDialog();
 }
 
 
-void InsetRef::edit(BufferView * bv, int, int, mouse_button::state button)
+dispatch_result InsetRef::localDispatch(FuncRequest const & cmd)
 {
-	// FuncRequestually trigger dialog with button 3 not 1
-	if (button == mouse_button::button3)
-		bv->owner()->dispatch(FuncRequest(LFUN_REF_GOTO, getContents()));
-	else if (button == mouse_button::button1) {
-		InsetCommandMailer mailer("ref", *this);
-		mailer.showDialog(bv);
+	switch (cmd.action) {
+	case LFUN_INSET_EDIT:	
+		// Eventually trigger dialog with button 3 not 1
+		if (cmd.button() == mouse_button::button3)
+			cmd.view()->owner()->
+				dispatch(FuncRequest(LFUN_REF_GOTO, getContents()));
+		if (cmd.button() == mouse_button::button1)
+			InsetCommandMailer("ref", *this).showDialog(cmd.view());
+		return DISPATCHED;
+	
+	default:
+		return UNDISPATCHED;
 	}
 }
-
-
-void InsetRef::edit(BufferView *, bool)
-{}
 
 
 string const InsetRef::getScreenLabel(Buffer const *) const

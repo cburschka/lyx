@@ -67,38 +67,30 @@ int InsetCommand::docbook(Buffer const *, ostream &, bool) const
 
 dispatch_result InsetCommand::localDispatch(FuncRequest const & cmd)
 {
-	dispatch_result result = UNDISPATCHED;
-
+	lyxerr << "insetCommand::localDispatch\n";
 	switch (cmd.action) {
 	case LFUN_INSET_MODIFY: {
 		InsetCommandParams p;
 		InsetCommandMailer::string2params(cmd.argument, p);
 		if (p.getCmdName().empty())
-			break;
+			return UNDISPATCHED;
 
 		setParams(p);
 		cmd.view()->updateInset(this);
-		result = DISPATCHED;
+		return DISPATCHED;
 	}
-	break;
 
-	case LFUN_INSET_DIALOG_UPDATE: {
-		InsetCommandMailer mailer(cmd.argument, *this);
-		mailer.updateDialog(cmd.view());
-		result = DISPATCHED;
-	}
-	break;
+	case LFUN_INSET_DIALOG_UPDATE:
+		InsetCommandMailer(cmd.argument, *this).updateDialog(cmd.view());
+		return DISPATCHED;
 
 	case LFUN_MOUSE_RELEASE:
-		edit(cmd.view(), cmd.x, cmd.y, cmd.button());
-		result = DISPATCHED;
-		break;
+		return localDispatch(FuncRequest(cmd.view(), LFUN_INSET_EDIT));
 
 	default:
-		break;
+		return UNDISPATCHED;
 	}
 
-	return result;
 }
 
 

@@ -13,8 +13,6 @@
 #ifndef INSET_GRAPHICS_H
 #define INSET_GRAPHICS_H
 
-
-
 #include "insets/inset.h"
 #include "insets/insetgraphicsParams.h"
 
@@ -44,10 +42,6 @@ public:
 	int width(BufferView *, LyXFont const &) const;
 	///
 	void draw(BufferView *, LyXFont const &, int, float &) const;
-	///
-	void edit(BufferView *, int, int, mouse_button::state);
-	///
-	void edit(BufferView * bv, bool front = true);
 	///
 	EDITABLE editable() const;
 	///

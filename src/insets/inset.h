@@ -15,13 +15,13 @@
 #ifndef INSET_H
 #define INSET_H
 
-
-#include <vector>
 #include "LString.h"
 #include "LColor.h"
 #include "insetbase.h"
 #include "frontends/mouse_state.h"
 #include "support/types.h"
+
+#include <vector>
 
 class LyXFont;
 class Buffer;
@@ -169,10 +169,6 @@ public:
 		{}
 	/// what appears in the minibuffer when opening
 	virtual string const editMessage() const;
-	///
-	virtual void edit(BufferView *, int x, int y, mouse_button::state button);
-	///
-	virtual void edit(BufferView *, bool front = true);
 	///
 	virtual EDITABLE editable() const;
 	///

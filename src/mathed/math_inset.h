@@ -241,9 +241,6 @@ public:
 	/// identifies things that can get \limits or \nolimits
 	virtual bool takesLimits() const { return false; }
 
-	///
-	virtual void edit(BufferView *, int, int, mouse_button::state) {}
-
 	/// request "external features"
 	virtual void validate(LaTeXFeatures &) const {}
 	/// char char code if possible

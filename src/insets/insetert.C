@@ -266,36 +266,12 @@ void InsetERT::updateStatus(BufferView * bv, bool swap) const
 	}
 }
 
-void InsetERT::edit(BufferView * bv, int x, int y, mouse_button::state button)
-{
-	if (button == mouse_button::button3)
-		return;
-
-	if (status_ == Inlined) {
-		if (!bv->lockInset(this))
-			return;
-		inset.edit(bv, x, y, button);
-	} else {
-		InsetCollapsable::edit(bv, x, y, button);
-	}
-	set_latex_font(bv);
-	updateStatus(bv);
-}
-
 
 Inset::EDITABLE InsetERT::editable() const
 {
 	if (status_ == Collapsed)
 		return IS_EDITABLE;
 	return HIGHLY_EDITABLE;
-}
-
-
-void InsetERT::edit(BufferView * bv, bool front)
-{
-	InsetCollapsable::edit(bv, front);
-	updateStatus(0);
-	set_latex_font(bv);
 }
 
 
@@ -449,6 +425,21 @@ Inset::RESULT InsetERT::localDispatch(FuncRequest const & cmd)
 	}
 
 	switch (cmd.action) {
+
+	case LFUN_INSET_EDIT:
+		if (cmd.button() == mouse_button::button3)
+			break;
+		if (status_ == Inlined) {
+			if (!bv->lockInset(this))
+				break;
+			result = inset.localDispatch(cmd);
+		} else {
+			result = InsetCollapsable::localDispatch(cmd);
+		}
+		set_latex_font(bv);
+		updateStatus(bv);
+		break;
+
 	case LFUN_INSET_MODIFY: {
 		InsetERT::ERTStatus status_;
 		InsetERTMailer::string2params(cmd.argument, status_);

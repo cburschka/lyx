@@ -48,14 +48,17 @@ InsetBibtex::~InsetBibtex()
 
 dispatch_result InsetBibtex::localDispatch(FuncRequest const & cmd)
 {
-	Inset::RESULT result = UNDISPATCHED;
-
 	switch (cmd.action) {
+
+	case LFUN_INSET_EDIT:
+		InsetCommandMailer("bibtex", *this).showDialog(cmd.view());
+		return DISPATCHED;
+
 	case LFUN_INSET_MODIFY: {
 		InsetCommandParams p;
 		InsetCommandMailer::string2params(cmd.argument, p);
 		if (p.getCmdName().empty())
-			break;
+			return DISPATCHED;
 
 		if (view() && p.getContents() != params().getContents()) {
 			view()->ChangeCitationsIfUnique(params().getContents(),
@@ -64,14 +67,13 @@ dispatch_result InsetBibtex::localDispatch(FuncRequest const & cmd)
 
 		setParams(p);
 		cmd.view()->updateInset(this);
-		result = DISPATCHED;
-	}
-	break;
-	default:
-		result = InsetCommand::localDispatch(cmd);
+		return  DISPATCHED;
 	}
 
-	return result;
+	default:
+		return InsetCommand::localDispatch(cmd);
+	}
+
 }
 
 string const InsetBibtex::getScreenLabel(Buffer const *) const
@@ -215,19 +217,6 @@ void InsetBibtex::fillWithBibKeys
 			}
 		}
 	}
-}
-
-
-void InsetBibtex::edit(BufferView * bv, int, int, mouse_button::state)
-{
-	InsetCommandMailer mailer("bibtex", *this);
-	mailer.showDialog(bv);
-}
-
-
-void InsetBibtex::edit(BufferView * bv, bool)
-{
-	edit(bv, 0, 0, mouse_button::none);
 }
 
 

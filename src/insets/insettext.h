@@ -12,12 +12,12 @@
 #ifndef INSETTEXT_H
 #define INSETTEXT_H
 
-
 #include "updatableinset.h"
 #include "LString.h"
 #include "LColor.h"
 #include "ParagraphList.h"
 #include "RowList.h"
+#include "frontends/mouse_state.h"
 
 #include "support/types.h"
 
@@ -101,10 +101,6 @@ public:
 	void setUpdateStatus(BufferView *, int what) const;
 	///
 	string const editMessage() const;
-	///
-	void edit(BufferView *, int, int, mouse_button::state);
-	///
-	void edit(BufferView *, bool front = true);
 	///
 	bool isTextInset() const { return true; }
 	///
