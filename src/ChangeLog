@@ -1,3 +1,8 @@
+2001-07-20  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* BufferView_pimpl.C (updateScrollbar): Fix crash when reading in
+	a document of zero size.
+
 2001-07-19  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* LaTeXFeatures.[Ch]: add variable "bool natbib" and set it

@@ -377,7 +377,6 @@ void BufferView::Pimpl::updateScrollbar()
 	/* If the text is smaller than the working area, the scrollbar
 	 * maximum must be the working area height. No scrolling will 
 	 * be possible */
-
 	if (!bv_->text) {
 		workarea_.setScrollbar(0, 1.0);
 		return;
@@ -386,11 +385,12 @@ void BufferView::Pimpl::updateScrollbar()
 	long const text_height = bv_->text->height;
 
 	double const lineh = bv_->text->defaultHeight();
-	double const slider_size = 1.0 / double(text_height);
+	double const slider_size =
+		(text_height == 0) ? 1.0 : 1.0 / double(text_height);
 
-	static long old_text_height;
-	static double old_lineh;
-	static double old_slider_size;
+	static long old_text_height = 0;
+	static double old_lineh = 0;
+	static double old_slider_size = 0;
 
 	if (text_height != old_text_height) {
 		workarea_.setScrollbarBounds(0, text_height - workarea_.height());
