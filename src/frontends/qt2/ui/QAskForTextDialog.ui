@@ -132,7 +132,7 @@
                     <class>QPushButton</class>
                     <property stdset="1">
                         <name>name</name>
-                        <cstring>cancelPB</cstring>
+                        <cstring>closePB</cstring>
                     </property>
                     <property stdset="1">
                         <name>text</name>
@@ -155,7 +155,7 @@
         <slot>accept()</slot>
     </connection>
     <connection>
-        <sender>cancelPB</sender>
+        <sender>closePB</sender>
         <signal>clicked()</signal>
         <receiver>QAskForTextDialog</receiver>
         <slot>reject()</slot>

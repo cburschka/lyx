@@ -1,17 +1,19 @@
 <!DOCTYPE UI><UI>
-<class>QPrefLatexModuleBase</class>
+<class>QPrefLatexModule</class>
+<include location="global">config.h</include>
+<include location="global">gettext.h</include>
 <widget>
-    <class>QDialog</class>
+    <class>QWidget</class>
     <property stdset="1">
         <name>name</name>
-        <cstring>QPrefLatexModuleBase</cstring>
+        <cstring>QPrefLatexModule</cstring>
     </property>
     <property stdset="1">
         <name>geometry</name>
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>359</width>
+            <width>355</width>
             <height>237</height>
         </rect>
     </property>

@@ -77,6 +77,10 @@ PreambleModuleBase.C: PreambleModuleBase.h PreambleModuleBase.ui
 	$(UIC) -impl $^ | $(SED) '$(SEDREPLACETR);$(SEDREMOVEEMPTY)' > $@
 
 
+%Module.h: %Module.ui
+	$(UIC) $< -o $@
+%Module.C: %Module.h %Module.ui
+	$(UIC) -impl $^ | $(SED) '$(SEDREPLACETR);$(SEDREMOVEEMPTY)' > $@
 
 %Base.h: %.ui
 	$(UIC) $< -o $@

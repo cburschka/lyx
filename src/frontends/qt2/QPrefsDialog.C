@@ -20,34 +20,32 @@
 
 #include "QPrefsDialog.h"
 
-#include "ui/ClassModuleBase.h"
-#include "ui/PackagesModuleBase.h"
-#include "ui/PaperModuleBase.h"
-#include "ui/LanguageModuleBase.h"
-#include "ui/BulletsModuleBase.h"
-#include "BulletsModule.h"
-#include "ui/BiblioModuleBase.h"
-#include "ui/NumberingModuleBase.h"
-#include "ui/MarginsModuleBase.h"
-#include "ui/PreambleModuleBase.h"
+#include "ui/QPrefAsciiModule.h"
+#include "ui/QPrefDateModule.h"
+#include "ui/QPrefKeyboardModule.h"
+#include "ui/QPrefLatexModule.h"
+#include "ui/QPrefScreenFontsModule.h"
+#include "ui/QPrefColorsModule.h"
+#include "ui/QPrefDisplayModule.h"
+#include "ui/QPrefLNFMiscModule.h"
+#include "ui/QPrefPathsModule.h"
+#include "ui/QPrefSpellcheckerModule.h"
+#include "ui/QPrefConvertersModule.h"
+#include "ui/QPrefFileformatsModule.h"
+#include "ui/QPrefLanguageModule.h"
+#include "ui/QPrefPrinterModule.h"
+#include "ui/QPrefUIModule.h"
 
-#include "Spacing.h"
 #include "support/lstrings.h"
 #include "lyxrc.h"
-#include "buffer.h"
+#include "debug.h"
 
 #include <qwidgetstack.h>
-#include <qlistbox.h>
-#include <qlabel.h>
-#include <qmultilineedit.h>
-#include <qlineedit.h>
 #include <qpushbutton.h>
-#include <qcombobox.h>
-#include <qradiobutton.h>
-#include <qcheckbox.h>
-#include <qspinbox.h>
-#include "lengthcombo.h"
+#include <qlistview.h>
 
+using std::map;
+using std::endl;
 
 QPrefsDialog::QPrefsDialog(QPrefs * form)
 	: QPrefsDialogBase(0, 0, false, 0), form_(form)
@@ -61,6 +59,97 @@ QPrefsDialog::QPrefsDialog(QPrefs * form)
 		form, SLOT(slotClose()));
 	connect(restorePB, SIGNAL(clicked()),
 		form, SLOT(slotRestore()));
+ 
+	prefsLV->setSorting(-1);
+ 
+	// OK, Qt is REALLY broken. We have to hard
+	// code the menu structure here.
+
+	QListViewItem * adv(new QListViewItem(prefsLV, _("Advanced settings")));
+	adv->setSelectable(false);
+	QListViewItem * lan(new QListViewItem(prefsLV, _("Language settings")));
+	lan->setSelectable(false);
+	QListViewItem * lnf(new QListViewItem(prefsLV, _("Look and feel")));
+	lnf->setSelectable(false); 
+
+	asciiModule = new QPrefAsciiModule(prefsWS);
+	dateModule = new QPrefDateModule(prefsWS);
+	keyboardModule = new QPrefKeyboardModule(prefsWS);
+	latexModule = new QPrefLatexModule(prefsWS);
+	screenfontsModule = new QPrefScreenFontsModule(prefsWS);
+	colorsModule = new QPrefColorsModule(prefsWS);
+	displayModule = new QPrefDisplayModule(prefsWS);
+	lnfmiscModule = new QPrefLNFMiscModule(prefsWS);
+	pathsModule = new QPrefPathsModule(prefsWS);
+	spellcheckerModule = new QPrefSpellcheckerModule(prefsWS);
+	convertersModule = new QPrefConvertersModule(prefsWS);
+	fileformatsModule = new QPrefFileformatsModule(prefsWS);
+	languageModule = new QPrefLanguageModule(prefsWS);
+	printerModule = new QPrefPrinterModule(prefsWS);
+	uiModule = new QPrefUIModule(prefsWS);
+
+	prefsWS->addWidget(asciiModule, 0);
+	prefsWS->addWidget(dateModule, 1);
+	prefsWS->addWidget(keyboardModule, 2);
+	prefsWS->addWidget(latexModule, 3);
+	prefsWS->addWidget(screenfontsModule, 4);
+	prefsWS->addWidget(colorsModule, 5);
+	prefsWS->addWidget(displayModule, 6);
+	prefsWS->addWidget(lnfmiscModule, 7);
+	prefsWS->addWidget(pathsModule, 8);
+	prefsWS->addWidget(spellcheckerModule, 9);
+	prefsWS->addWidget(convertersModule, 10);
+	prefsWS->addWidget(fileformatsModule, 11);
+	prefsWS->addWidget(languageModule, 12);
+	prefsWS->addWidget(printerModule, 13);
+	prefsWS->addWidget(uiModule, 14);
+ 
+	QListViewItem * i;
+
+	// advanced settings
+ 
+	i = new QListViewItem(adv, _("Converters"));
+	pane_map_[i] = convertersModule;
+	i = new QListViewItem(adv, i, _("File formats"));
+	pane_map_[i] = fileformatsModule;
+	// language settings
+ 
+	i = new QListViewItem(lan, _("Language"));
+	pane_map_[i] = languageModule;
+	i = new QListViewItem(lan, i, _("Spellchecker"));
+	pane_map_[i] = spellcheckerModule;
+ 
+	// UI
+ 
+	i = new QListViewItem(lnf, _("User interface"));
+	pane_map_[i] = uiModule;
+	prefsLV->setCurrentItem(i);
+ 
+	i = new QListViewItem(lnf, i, _("Screen fonts"));
+	pane_map_[i] = screenfontsModule;
+	i = new QListViewItem(lnf, i, _("Colors"));
+	pane_map_[i] = colorsModule;
+	i = new QListViewItem(lnf, i, _("Display"));
+	pane_map_[i] = displayModule;
+	i = new QListViewItem(lnf, i, _("Miscellaneous")); // YUCK !
+	pane_map_[i] = lnfmiscModule;
+ 
+	// rag bag of crap
+ 
+	i = new QListViewItem(prefsLV, lan, _("Ascii"));
+	pane_map_[i] = asciiModule;
+	i = new QListViewItem(prefsLV, i, _("Date"));
+	pane_map_[i] = dateModule;
+	i = new QListViewItem(prefsLV, i, _("Keyboard"));
+	pane_map_[i] = keyboardModule;
+	i = new QListViewItem(prefsLV, i, _("LaTeX"));
+	pane_map_[i] = latexModule;
+	i = new QListViewItem(prefsLV, i, _("Paths"));
+	pane_map_[i] = pathsModule;
+	i = new QListViewItem(prefsLV, i, _("Printer"));
+	pane_map_[i] = printerModule;
+ 
+	prefsLV->setMinimumSize(prefsLV->sizeHint());
 }
 
 
@@ -73,4 +162,10 @@ void QPrefsDialog::closeEvent(QCloseEvent * e)
 {
 	form_->slotWMHide();
 	e->accept();
+}
+
+
+void QPrefsDialog::switchPane(QListViewItem * i)
+{
+	prefsWS->raiseWidget(pane_map_[i]);
 }

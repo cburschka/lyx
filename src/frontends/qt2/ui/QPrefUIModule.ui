@@ -1,7 +1,9 @@
 <!DOCTYPE UI><UI>
 <class>QPrefUIModule</class>
+<include location="global">config.h</include>
+<include location="local">gettext.h</include>
 <widget>
-    <class>QDialog</class>
+    <class>QWidget</class>
     <property stdset="1">
         <name>name</name>
         <cstring>QPrefUIModule</cstring>
@@ -11,7 +13,7 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>328</width>
+            <width>324</width>
             <height>191</height>
         </rect>
     </property>

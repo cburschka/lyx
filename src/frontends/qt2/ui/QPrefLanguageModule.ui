@@ -1,17 +1,19 @@
 <!DOCTYPE UI><UI>
-<class>QLanguageModuleBase</class>
+<class>QPrefLanguageModule</class>
+<include location="global">config.h</include>
+<include location="local">gettext.h</include>
 <widget>
-    <class>QDialog</class>
+    <class>QWidget</class>
     <property stdset="1">
         <name>name</name>
-        <cstring>QLanguageModuleBase</cstring>
+        <cstring>QPrefLanguageModule</cstring>
     </property>
     <property stdset="1">
         <name>geometry</name>
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>322</width>
+            <width>318</width>
             <height>258</height>
         </rect>
     </property>

@@ -1,17 +1,19 @@
 <!DOCTYPE UI><UI>
-<class>QPrefLNFMiscBase</class>
+<class>QPrefLNFMiscModule</class>
+<include location="global">config.h</include>
+<include location="local">gettext.h</include>
 <widget>
-    <class>QDialog</class>
+    <class>QWidget</class>
     <property stdset="1">
         <name>name</name>
-        <cstring>QPrefLNFMiscBase</cstring>
+        <cstring>QPrefLNFMiscModule</cstring>
     </property>
     <property stdset="1">
         <name>geometry</name>
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>248</width>
+            <width>244</width>
             <height>211</height>
         </rect>
     </property>

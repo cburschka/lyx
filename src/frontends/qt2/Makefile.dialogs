@@ -218,9 +218,24 @@ UIDIALOGS = \
 	NumberingModuleBase.h NumberingModuleBase.C \
 	BiblioModuleBase.h BiblioModuleBase.C \
 	PreambleModuleBase.h PreambleModuleBase.C \
-	BulletsModuleBase.h BulletsModuleBase.C
+	BulletsModuleBase.h BulletsModuleBase.C \
+	QPrefAsciiModule.h QPrefAsciiModule.C \
+	QPrefDateModule.h QPrefDateModule.C \
+	QPrefKeyboardModule.h QPrefKeyboardModule.C \
+	QPrefLatexModule.h QPrefLatexModule.C \
+	QPrefScreenFontsModule.h QPrefScreenFontsModule.C \
+	QPrefColorsModule.h QPrefColorsModule.C \
+	QPrefDisplayModule.h QPrefDisplayModule.C \
+	QPrefLNFMiscModule.h QPrefLNFMiscModule.C \
+	QPrefPathsModule.h QPrefPathsModule.C \
+	QPrefSpellcheckerModule.h QPrefSpellcheckerModule.C \
+	QPrefConvertersModule.h QPrefConvertersModule.C \
+	QPrefFileformatsModule.h QPrefFileformatsModule.C \
+	QPrefLanguageModule.h QPrefLanguageModule.C \
+	QPrefPrinterModule.h QPrefPrinterModule.C \
+	QPrefUIModule.h QPrefUIModule.C
  
-UIMOCDIALOGS = \
+ UIMOCDIALOGS = \
 	QAboutDialogBase_moc.C \
 	QAskForTextDialog_moc.C \
 	QBibitemDialogBase_moc.C \
@@ -264,4 +279,19 @@ UIMOCDIALOGS = \
 	NumberingModuleBase_moc.C \
 	BiblioModuleBase_moc.C \
 	PreambleModuleBase_moc.C \
-	BulletsModuleBase_moc.C
+	BulletsModuleBase_moc.C \
+	QPrefAsciiModule_moc.C \
+	QPrefDateModule_moc.C \
+	QPrefKeyboardModule_moc.C \
+	QPrefLatexModule_moc.C \
+	QPrefScreenFontsModule_moc.C \
+	QPrefColorsModule_moc.C \
+	QPrefDisplayModule_moc.C \
+	QPrefLNFMiscModule_moc.C \
+	QPrefPathsModule_moc.C \
+	QPrefSpellcheckerModule_moc.C \
+	QPrefConvertersModule_moc.C \
+	QPrefFileformatsModule_moc.C \
+	QPrefLanguageModule_moc.C \
+	QPrefPrinterModule_moc.C \
+	QPrefUIModule_moc.C

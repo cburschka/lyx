@@ -145,7 +145,7 @@ void QDocument::build_dialog()
 	// Manage the restore, ok, apply, restore and cancel/close buttons
 	bc().setOK(dialog_->okPB);
 	bc().setApply(dialog_->applyPB);
-	bc().setCancel(dialog_->cancelPB);
+	bc().setCancel(dialog_->closePB);
 	bc().setRestore(dialog_->restorePB);
 }
 

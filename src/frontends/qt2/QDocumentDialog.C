@@ -56,7 +56,7 @@ QDocumentDialog::QDocumentDialog(QDocument * form)
 		form, SLOT(slotOK()));
 	connect(applyPB, SIGNAL(clicked()),
 		form, SLOT(slotApply()));
-	connect(cancelPB, SIGNAL(clicked()),
+	connect(closePB, SIGNAL(clicked()),
 		form, SLOT(slotClose()));
 	connect(restorePB, SIGNAL(clicked()),
 		form, SLOT(slotRestore()));
@@ -84,15 +84,15 @@ QDocumentDialog::QDocumentDialog(QDocument * form)
 	biblioModule = new BiblioModuleBase(this);
 	preambleModule = new PreambleModuleBase(this);
 
-	moduleStack->addWidget(layoutModule,LAYOUT);
-	moduleStack->addWidget(paperModule,PAPER);
-	moduleStack->addWidget(marginsModule,MARGINS);
-	moduleStack->addWidget(packagesModule,PACKAGES);
-	moduleStack->addWidget(langModule,LANGUAGE);
-	moduleStack->addWidget(bulletsModule,BULLETS);
-	moduleStack->addWidget(numberingModule,NUMBERING);
-	moduleStack->addWidget(biblioModule,BIBLIOGRAPHY);
-	moduleStack->addWidget(preambleModule,PREAMBLE);
+	moduleStack->addWidget(layoutModule, LAYOUT);
+	moduleStack->addWidget(paperModule, PAPER);
+	moduleStack->addWidget(marginsModule, MARGINS);
+	moduleStack->addWidget(packagesModule, PACKAGES);
+	moduleStack->addWidget(langModule, LANGUAGE);
+	moduleStack->addWidget(bulletsModule, BULLETS);
+	moduleStack->addWidget(numberingModule, NUMBERING);
+	moduleStack->addWidget(biblioModule, BIBLIOGRAPHY);
+	moduleStack->addWidget(preambleModule, PREAMBLE);
 
 	moduleStack->raiseWidget(LAYOUT);
 	

@@ -1,17 +1,19 @@
 <!DOCTYPE UI><UI>
-<class>QPrefDateModuleBase</class>
+<class>QPrefDateModule</class>
+<include location="global">config.h</include>
+<include location="local">gettext.h</include>
 <widget>
-    <class>QDialog</class>
+    <class>QWidget</class>
     <property stdset="1">
         <name>name</name>
-        <cstring>QPrefDateModuleBase</cstring>
+        <cstring>QPrefDateModule</cstring>
     </property>
     <property stdset="1">
         <name>geometry</name>
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>291</width>
+            <width>287</width>
             <height>53</height>
         </rect>
     </property>

@@ -1,7 +1,9 @@
 <!DOCTYPE UI><UI>
 <class>QPrefColorsModule</class>
+<include location="global">config.h</include>
+<include location="local">gettext.h</include>
 <widget>
-    <class>QDialog</class>
+    <class>QWidget</class>
     <property stdset="1">
         <name>name</name>
         <cstring>QPrefColorsModule</cstring>
@@ -11,7 +13,7 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>317</width>
+            <width>309</width>
             <height>259</height>
         </rect>
     </property>
