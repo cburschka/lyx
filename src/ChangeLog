@@ -1,3 +1,7 @@
+2001-03-07  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* ShareContainer.h (get): add std:: qualifier
+
 2001-03-06  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* ShareContainer.h: define a proper ShareContainer::value_type

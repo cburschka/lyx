@@ -29,7 +29,7 @@ public:
 				break;
 		}
 #else
-		Params::iterator it = find_if(params.begin(),
+		Params::iterator it = std::find_if(params.begin(),
 					      params.end(),
 					      isEqual(ps));
 #endif
