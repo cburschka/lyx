@@ -68,8 +68,8 @@ public:
 	};
 
 	/** \param qt_style_filter a list of available file filters.
-	 *  Eg. "TeX documents (*.tex);;LyX Documents (*.lyx)"
-	 *  If empty, set to "All files (*)".
+	 *  Eg. "TeX documents (*.tex);;LyX Documents (*.lyx)".
+	 *  The "All files (*)" filter is always added to the list.
 	 */
 	explicit FileFilterList(std::string const & qt_style_filter = std::string());
 	std::vector<Filter> const & filters() const { return filters_; }
