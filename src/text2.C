@@ -592,22 +592,6 @@ void LyXText::setFont(LyXFont const & font, bool toggleall)
 }
 
 
-void LyXText::redoHeightOfParagraph()
-{
-	RowList::iterator tmprow = cursorRow();
-
-	setHeightOfRow(tmprow);
-
-	while (tmprow != rows().begin()
-	       && boost::prior(tmprow)->par() == tmprow->par()) {
-		--tmprow;
-		setHeightOfRow(tmprow);
-	}
-
-	setCursor(cursor.par(), cursor.pos(), false, cursor.boundary());
-}
-
-
 RowList::iterator LyXText::firstRow(ParagraphList::iterator pit)
 {
 	RowList::iterator rit;

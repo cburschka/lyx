@@ -145,12 +145,6 @@ public:
 	///
 	string getStringToIndex();
 
-	/** recalculates the heights of all previous rows of the
-	    specified paragraph.  needed, if the last characters font
-	    has changed.
-	    */
-	void redoHeightOfParagraph();
-
 	/** insert a character, moves all the following breaks in the
 	  same Paragraph one to the right and make a little rebreak
 	  */

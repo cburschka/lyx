@@ -5,7 +5,7 @@
 	with rebreak of full par
 
 	* lyxtext.h:
-	* text.C (breakAgainOneRow): removed
+	* text.C (breakAgainOneRow, redoHeightOfParagraph): removed
 
 2003-08-07  André Pönitz  <poenitz@gmx.net>
 
