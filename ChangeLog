@@ -39,7 +39,12 @@
 
 	* src/insets/figinset.C: patch posted to list by Andre Poenitz
 	applied. Changed to use iterators.
-	
+
+2000-03-11  Kayvan A. Sylvan  <kayvan@satyr.sylvan.com>
+
+	* development/lyx.spec.in: Fix to ``unset LINGUAS'' line for
+	systems that don't have LINGUAS set to begin with.
+
 2000-03-10  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/text2.C (DeleteEmptyParagraphMechanism): small fix posted to
