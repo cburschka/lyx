@@ -1,5 +1,7 @@
 2001-12-24  Juergen Vigna  <jug@sad.it>
 
+	* BufferView_pimpl.C (tripleClick): fixed for InsetText.
+
 	* buffer.C (parseSingleLyXformat2Token): fixed 2 compatibility read
 	problems. First check a minipage also if we have some ert-contents
 	(not only on par->size(), second set the right depth of the paragraph

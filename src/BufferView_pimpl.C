@@ -682,25 +682,25 @@ void BufferView::Pimpl::doubleClick(int /*x*/, int /*y*/, unsigned int button)
 {
 	// select a word
 	if (!buffer_)
-	    return;
+		return;
 
 	LyXText * text = bv_->getLyXText();
 
 	if (text->bv_owner && bv_->theLockingInset())
-	    return;
+		return;
 
 	if (screen_.get() && button == 1) {
-	    if (text->bv_owner) {
-		screen_->hideCursor();
-		screen_->toggleSelection(text, bv_);
-		text->selectWord(bv_, LyXText::WHOLE_WORD_STRICT);
-		screen_->toggleSelection(text, bv_, false);
-	    } else {
-		text->selectWord(bv_, LyXText::WHOLE_WORD_STRICT);
-	    }
-	    /* This will fit the cursor on the screen
-	     * if necessary */
-	    update(text, BufferView::SELECT|BufferView::FITCUR);
+		if (text->bv_owner) {
+			screen_->hideCursor();
+			screen_->toggleSelection(text, bv_);
+			text->selectWord(bv_, LyXText::WHOLE_WORD_STRICT);
+			screen_->toggleSelection(text, bv_, false);
+		} else {
+			text->selectWord(bv_, LyXText::WHOLE_WORD_STRICT);
+		}
+		/* This will fit the cursor on the screen
+		 * if necessary */
+		update(text, BufferView::SELECT|BufferView::FITCUR);
 	}
 }
 
@@ -717,13 +717,17 @@ void BufferView::Pimpl::tripleClick(int /*x*/, int /*y*/, unsigned int button)
 	    return;
 
 	if (screen_.get() && (button == 1)) {
-		screen_->hideCursor();
-		screen_->toggleSelection(text, bv_);
+		if (text->bv_owner) {
+			screen_->hideCursor();
+			screen_->toggleSelection(text, bv_);
+		}
 		text->cursorHome(bv_);
 		text->selection.cursor = text->cursor;
 		text->cursorEnd(bv_);
 		text->setSelection(bv_);
-		screen_->toggleSelection(text, bv_, false);
+		if (text->bv_owner) {
+			screen_->toggleSelection(text, bv_, false);
+		}
 		/* This will fit the cursor on the screen
 		 * if necessary */
 		update(text, BufferView::SELECT|BufferView::FITCUR);
