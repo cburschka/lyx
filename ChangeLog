@@ -1,3 +1,8 @@
+2005-03-05  Angus Leeming  <leeming@lyx.org>
+
+	* autogen.sh: remove test for gettext. Belongs in configure.
+	Return 1 if autogen.sh exits abnormally.
+
 2005-03-02  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
 	* configure.ac: dont setup gnome/Makefile
