@@ -124,5 +124,7 @@ private:
 
 ///
 bool operator==(InsetGraphicsParams const &, InsetGraphicsParams const &);
+///
+bool operator!=(InsetGraphicsParams const &, InsetGraphicsParams const &);
 
 #endif 

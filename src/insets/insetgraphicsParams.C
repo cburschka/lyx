@@ -198,6 +198,12 @@ bool operator==(InsetGraphicsParams const & left,
 	return false;
 }
 
+bool operator!=(InsetGraphicsParams const & left,
+                InsetGraphicsParams const & right)
+{
+	return 	!(left == right);
+}
+
 
 namespace {
 

@@ -1,3 +1,8 @@
+2001-03-27  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* insetgraphicsParams.C (operator!=): new function, needed by the
+	ControlGraphics class.
+
 2001-03-28  Juergen Vigna  <jug@sad.it>
 
 	* insettext.C (InsetButtonPress): only enter !inset if button == 2
