@@ -60,7 +60,7 @@ public:
 	/// fb_ is only used to open files, the stream is accessed through is.
 	std::filebuf fb_;
 
-#ifdef HAVE_COMPRESSION
+#ifdef USE_COMPRESSION
 	/// gz_ is only used to open files, the stream is accessed through is.
 	gz::gzstreambuf gz_;
 #endif
