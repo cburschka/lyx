@@ -1,18 +1,17 @@
-Public release of LyX version 1.3.4
+Public release of LyX version 1.3.5
 ===================================
 
-We are pleased to announce the release of LyX 1.3.4.
+We are pleased to announce the release of LyX 1.3.5.
 
-This is a maintenance release which improves upon 1.3.3 in
-five main areas:
-  * It adds support for old files from LyX 0.10.x or 0.12.x;
-  * Lyx documents can now be opened and edited even if
-    they use text classes not present in your latex installation;
-  * New Qt features have been added (improved selection,
-    drag-and-drop);
-  * Mac OS X support is much improved;
-  * The interface and documentation localization have
-    been polished.
+This is mainly a bugfix release, with few notable user-visible
+improvements. However, among notable fixes are 
+
+  - nested documents (with Insert>Include File...), which have been
+    broken since LyX 1.2.0, should now work properly, including the
+    case where the files are in different directories
+
+  - it is now possible to compile LyX with gcc 3.4
+
 
 The complete list of improvements and fixes can be found at the end of
 this message.
@@ -29,35 +28,35 @@ http://www.lyx.org/ has to say on the subject:
    (this port requires an X server). It can also run natively on Mac
    OS X, thanks to the Qt/Mac library.
 
-You can download LyX 1.3.4 here (the .bz2 are compressed with bzip2,
+You can download LyX 1.3.5 here (the .bz2 are compressed with bzip2,
 which yields smaller files) :
 
-	ftp://ftp.lyx.org/pub/lyx/stable/lyx-1.3.4.tar.gz
-	ftp://ftp.lyx.org/pub/lyx/stable/lyx-1.3.4.tar.bz2
-	ftp://ftp.devel.lyx.org/pub/lyx/lyx-1.3.4.tar.gz
-	ftp://ftp.devel.lyx.org/pub/lyx/lyx-1.3.4.tar.bz2
+	ftp://ftp.lyx.org/pub/lyx/stable/lyx-1.3.5.tar.gz
+	ftp://ftp.lyx.org/pub/lyx/stable/lyx-1.3.5.tar.bz2
+	ftp://ftp.devel.lyx.org/pub/lyx/lyx-1.3.5.tar.gz
+	ftp://ftp.devel.lyx.org/pub/lyx/lyx-1.3.5.tar.bz2
 
 and it should propagate shortly to the following mirrors (which will also host
 the .bz2 versions):
 
-        ftp://ftp.sdsc.edu/pub/other/lyx/stable/lyx-1.3.4.tar.gz
-        ftp://ftp.lip6.fr/pub/lyx/stable/lyx-1.3.4.tar.gz
-        ftp://gd.tuwien.ac.at/publishing/tex/lyx/stable/lyx-1.3.4.tar.gz
-        ftp://ftp.ntua.gr/pub/X11/LyX/stable/lyx-1.3.4.tar.gz
-        ftp://ftp.icm.edu.pl/vol/rzm0/lyx/stable/lyx-1.3.4.tar.gz
+        ftp://ftp.sdsc.edu/pub/other/lyx/stable/lyx-1.3.5.tar.gz
+        ftp://ftp.lip6.fr/pub/lyx/stable/lyx-1.3.5.tar.gz
+        ftp://gd.tuwien.ac.at/publishing/tex/lyx/stable/lyx-1.3.5.tar.gz
+        ftp://ftp.ntua.gr/pub/X11/LyX/stable/lyx-1.3.5.tar.gz
+        ftp://ftp.icm.edu.pl/vol/rzm0/lyx/stable/lyx-1.3.5.tar.gz
 
 
 Prebuilt binaries (mainly rpms for linux distributions) should soon be
 available at
-	ftp://ftp.lyx.org/pub/lyx/bin/1.3.4/
+	ftp://ftp.lyx.org/pub/lyx/bin/1.3.5/
 
-If you already have the LyX 1.3.3 sources, you may want to apply one
+If you already have the LyX 1.3.4 sources, you may want to apply one
 of the following patches instead
-	ftp://ftp.lyx.org/pub/lyx/stable/patch-1.3.4.gz
-	ftp://ftp.lyx.org/pub/lyx/stable/patch-1.3.4.bz2
+	ftp://ftp.lyx.org/pub/lyx/stable/patch-1.3.5.gz
+	ftp://ftp.lyx.org/pub/lyx/stable/patch-1.3.5.bz2
 
 
-If you find what you think is a bug in LyX 1.3.4, you may either
+If you find what you think is a bug in LyX 1.3.5, you may either
 e-mail the LyX developers' mailing list (lyx-devel@lists.lyx.org), or open
 a bug report at http://bugzilla.lyx.org
 
@@ -74,96 +73,96 @@ What's new
 
 ** Updates
 
-- it is now possible to open documents which use a textclass for
-  which no LaTeX support is installed. The documents can be normally
-  edited, but they can of course be neither previewed nor printed. Note
-  that the format of the file .lyx/textclasses.lst has changed as a
-  consequence and it is therefore not possible to use LyX 1.3.4 and an
-  earlier version with the same .lyx/ directory.
+- new textclass svglobal, needed for various Springer Verlag journals
+  for which no specific class exists
 
-- add support for drag-n-drop opening of lyx files from your favourite
-  file manager [Qt only]
+- add new bindings file mac.bind for LyX/Mac
 
-- add support for intelligent scrolling with the mouse cursor [Qt only]
+- the script used to control the generation of bitmap images for use
+  in 'Instant Preview' of math equations has been re-written in python.
+  Windows users now have some chance of getting Instant Preview to
+  work for them
 
-- improvements in LyX/Mac: support for opening files with LyX in
-  finder; the LyX.app bundle can now be moved around and is
-  self-contained with its own fonts (for math equations), support
-  files, and PATH
+- The built-in Qt dialogs are now correctly translated for the
+  languages that Qt supports [Qt >= 3.2 only]
 
-- add support for \boldsymbol in the math editor
+- add support for icelandic, latvian, lithuanian and nynorsk
 
-- enable lyx to read documents from versions 0.10 and 0.12
-
-- improve support for LaTeX documentclasses: new agums (generic style
-  for first-time submissions to AGU editors) and g-brief2 (a nice
-  letter class) textclasses; allow optional arguments in Author,
-  AuthorAdress and Thanks styles for the elsart layout; add
-  Affiliation layout to jgrga textclass
-
-- improve documentation for some languages: basque (new Extended
-  Manual and User Guide; updated Intro and Tutorial), german
-  (updated User Guide) and norwegian (new Intro)
-
-- update basque, danish, finnish, french, german, italian, nynorsk,
-  romanian, spanish and slovenian interface localizations
-
-- remove localization for the following languages, since they were too
-  incomplete to be useful: bulgarian, catalan, czech, hebrew,
-  hungarian, portuguese, swedish, turkish, walloon
-
+- updated basque, danish, german, italian and romanian localizations; 
+  updated basque and german documentations
 
 ** Bug fixes
 
-- fix a security problem where an evil .lyx file could cause
-  arbitrary commands to be executed during processing
+* Document input/output:
 
-- fix a crash when saving a file containing a table (only with some
-  compilers) [Bug #1415]
+- partly fix handling of included files; external insets are still not
+  working correctly [bug #605]
 
-- fix a crash in the math editor when selecting up/down close to
-  subscript insets
+- fix nesting of language change commands, especially important for
+  arabic [bug #1404]
 
-- several fixes related to old files: silence a bogus warning about
-  encoding; fix conversion of tables (out of range error)
+- fix missing line break in front of \end{...} in some cases [bug #1225]
 
-- fix warnings for docbook counters
+- fix running makeindex and bibtex when the file name contains some
+  special characters [bug #1526]
 
-- enable the file dialog to open files with non-latin filenames [Qt only]
+- prevent clashes with LaTeX packages defining "\boldsymbol" [bug #1498]
 
-- allow the use of some paper sizes (A3, B3, B4, and custom) without
-  custom margins [Qt problem only]
+- make import of the preamble of LaTeX files more robust [bug #1584]
 
-- fix a bug where changing the height unit in the graphics dialog did not
-  activate the ok/apply buttons [bug #1469, Qt only]
+- fix handling of floats and counters in  svjog and svprobth
+  textclasses [bug #1430]
+  
+- fix handling of counters in the scrlettr and scrlttr2 classes
 
-- fix a bug where some menu entries did not show the corresponding
-  keyboard binding [bug #1350, Qt only]
+- fix off-by-one-error which caused LyX to chose the wrong custom margin 
+  package
 
-- fix the language of the russian table of contents of the documentation
+- remove extra spaces around math insets in plain text output
 
-- remove non-ascii characters from translatable strings. This
-  simplifies the work of translators
+* User Interface:
 
-- output useful info on receipt of LFUN_GETLAYOUT.
+- use opening quotation marks after an opening square bracket
 
-- add debug output if unable to open an ofstream to output the graphics
-  conversion script.
+- fix toggling of short title inset in some cases
 
-- add debug output if unable to open preferences.xform for read/write.
+- when the autodetection of latex classes cannot be done for some
+  reason, provide a sensible list of textclasses
 
-- add a couple of forgotten MacOSX-related files
+- honor correctly the various locale-related environment variables when 
+  looking for translated help files
 
-- a better fix for badly placed math symbols with LyX/Mac
+- prevent activation of the Ok and Apply buttons in the reference
+  dialog when simply manipulating the list of references in the dialog
 
-- fix installation when program "makepsres" is not available on the
-  path [bug #1479]
+- set the default button in the print dialog, activated on Return, 
+  to be the Ok button rather than the Close button. [bug #1465, Qt only]
 
-- compilation fixes for MacOSX
+- enable instant preview to work on solaris machines
 
-- fix (some) problems when compiling with a non-GNU make program
+- fix an annoying "could not delete temp dir" warning
 
-- enable lyx to compile on Itanium machines
+- fix some math bindings like "M-m [" for german or french keyboards
 
-- add autoconf 2.59 as a supported version
+- don't allow the insertion of incomplete citation references, 
+  which led to a crash [bug 1617]
 
+- correct the spelling of the "Acknowledgements" style in the APA layout
+
+* Configuration/Installation:
+
+- when running under windows, configure correctly the ps and pdf
+  viewers [bug #1508]
+
+- the qt-related parts of the configure script honors the environment
+  variables MOC and UIC if they are set
+
+- fix compilation for OpenBSD
+
+- fix compilation with SGI C++ compiler
+
+- fix compilation with gcc 3.4
+
+- fix linking with Qt/Mac 3.3.1
+
+- fix warning with automake 1.7
