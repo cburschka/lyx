@@ -560,7 +560,7 @@ void LyXText::redoParagraph(ParagraphList::iterator pit)
 	InsetList::iterator iend = pit->insetlist.end();
 	for (; ii != iend; ++ii) {
 		Dimension dim;
-		MetricsInfo mi(bv(), getFont(pit, ii->pos), 0);
+		MetricsInfo mi(bv(), getFont(pit, ii->pos), workWidth());
 		ii->inset->metrics(mi, dim);
 	}
 
@@ -577,6 +577,7 @@ void LyXText::redoParagraph(ParagraphList::iterator pit)
 		rit->fill(fill(pit, rit, workWidth()));
 		prepareToPrint(pit, rit);
 		setHeightOfRow(pit, rit);
+		height += rit->height();
 	}
 
 	//lyxerr << "redoParagraph: " << pit->rows.size() << " rows\n";
@@ -598,8 +599,8 @@ void LyXText::metrics(MetricsInfo & mi, Dimension & dim)
 	//Assert(mi.base.textwidth);
 
 	// rebuild row cache
-	width = 0;
-	height = 0;
+	width  = 0;
+	///height = 0;
 
 	//anchor_y_ = 0;
 	redoParagraphs(ownerParagraphs().begin(), ownerParagraphs().end());

@@ -999,21 +999,9 @@ void LyXText::setHeightOfRow(ParagraphList::iterator pit, RowList::iterator rit)
 				if (par.isInset(pos)) {
 					InsetOld const * tmpinset = par.getInset(pos);
 					if (tmpinset) {
-#if 1 // this is needed for deep update on initialitation
-#warning inset->update FIXME
-						//tmpinset->update(bv());
-						LyXFont const tmpfont = getFont(pit, pos);
-						Dimension dim;
-						MetricsInfo mi(bv(), tmpfont, workWidth());
-						tmpinset->metrics(mi, dim);
-						maxwidth += dim.wid;
-						maxasc = max(maxasc, dim.asc);
-						maxdesc = max(maxdesc, dim.des);
-#else
 						maxwidth += tmpinset->width();
 						maxasc = max(maxasc, tmpinset->ascent());
 						maxdesc = max(maxdesc, tmpinset->descent());
-#endif
 					}
 				} else {
 					// Fall-back to normal case
@@ -1222,23 +1210,11 @@ void LyXText::setHeightOfRow(ParagraphList::iterator pit, RowList::iterator rit)
 	maxasc += int(layoutasc * 2 / (2 + pit->getDepth()));
 	maxdesc += int(layoutdesc * 2 / (2 + pit->getDepth()));
 
-	// calculate the new height of the text
-	height -= rit->height();
-
 	rit->height(maxasc + maxdesc + labeladdon);
 	rit->baseline(maxasc + labeladdon);
-
-	height += rit->height();
-
 	rit->top_of_text(rit->baseline() - font_metrics::maxAscent(font));
 
 	double x = 0;
-#if 0
-		// this IS needed
-		rit->width(maxwidth);
-		double dummy;
-		prepareToPrint(pit, rit, x, dummy, dummy, dummy, false);
-#endif
 	rit->width(int(maxwidth + x));
 	if (inset_owner) {
 		width = max(0, workWidth());
@@ -1984,7 +1960,7 @@ void LyXText::backspace()
 				cursorLeft(bv());
 
 				// the layout things can change the height of a row !
-				setHeightOfRow(cursor.par(), cursorRow());
+				redoParagraph();
 				return;
 			}
 		}
