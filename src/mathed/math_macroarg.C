@@ -29,12 +29,6 @@ MathedInset * MathMacroArgument::Clone()
 }
 
 
-void MathMacroArgument::setNumber(int n)
-{
-	number_ = n;
-}
-
-
 void MathMacroArgument::setExpand(bool e)
 {
 	expnd_mode_ = e;

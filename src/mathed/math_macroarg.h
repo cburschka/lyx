@@ -26,8 +26,6 @@ public:
 	void draw(Painter &, int x, int baseline);
 	///
 	void Write(std::ostream &, bool fragile);
-	///
-	void setNumber(int n);
 	/// Is expanded or not
 	void setExpand(bool e);
 	/// Is expanded or not

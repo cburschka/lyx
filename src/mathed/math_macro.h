@@ -35,12 +35,9 @@ class MathMacroTemplate;
  */
 class MathMacro : public MathParInset {
 public:
-	/// A macro can only be builded from an existing template
+	/// A macro can only be built from an existing template
 	explicit
 	MathMacro(boost::shared_ptr<MathMacroTemplate> const &);
-	/// or from another macro.
-	explicit
-	MathMacro(MathMacro const &);
 	///
 	void draw(Painter &, int, int);
 	///

@@ -20,9 +20,8 @@ MathMacroTemplate::MathMacroTemplate(string const & nm, int na):
 {
 	if (nargs_ > 0) {
 		tcode_ = LM_TC_ACTIVE_INSET;
-		args_.resize(nargs_);
 		for (int i = 0; i < nargs_; ++i) {
-			args_[i].setNumber(i + 1);
+			args_.push_back(MathMacroArgument(i + 1));
 		}
 	} else {
 		tcode_ = LM_TC_INSET;
