@@ -1,3 +1,19 @@
+2002-06-15  Michael A. Koziarski  <michael@koziarski.com>
+
+	* Dialogs.C
+	* Makefile.am: Necessary changes for the various new dialogs
+	* GERT.C
+	* GERT.h
+	* dialogs/GERT.glade: Make ERT Properties dialog follow the GNOME hig.
+	* GLog.C: use std::string, all the conversion is wasteful
+	* GFloat.C
+	* GFloat.h 
+	* dialogs/GFloat.glade: Implement the Float Properties Dialog
+	* dialogs/GAbout.glade 
+	* GAbout.C 
+	* GAbout.h: Temporary Aboutlyx implementation, waiting on some
+	gtkmm  bugs to finalise it.
+
 2002-06-10  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* gnomeBC.C: do not include ButtonController.tmpl

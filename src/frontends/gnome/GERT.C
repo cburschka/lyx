@@ -33,14 +33,8 @@ GERT::~GERT()
 void GERT::build()
 {
 	// Connect the buttons.
-	ok_btn()->signal_clicked().connect(SigC::slot(*this, &GERT::OKClicked));
-	cancel_btn()->signal_clicked().connect(SigC::slot(*this, &GERT::CancelClicked));
-	apply_btn()->signal_clicked().connect(SigC::slot(*this, &GERT::ApplyClicked));
+	close_btn()->signal_clicked().connect(SigC::slot(*this, &GERT::OKClicked));
 
-	// Manage the buttons state
-	bc().setOK(ok_btn());
-	bc().setCancel(cancel_btn());
-	bc().setApply(apply_btn());
 
 	// Make sure everything is in the correct state.
 	bc().refresh();
@@ -55,9 +49,15 @@ void GERT::build()
 
 void GERT::connect_signals()
 {
-	slot_open = open()->signal_clicked().connect(SigC::slot(*this, &GERT::InputChanged));
-	slot_collapsed = collapsed()->signal_clicked().connect(SigC::slot(*this, &GERT::InputChanged));
-	slot_inlined = inlined()->signal_clicked().connect(SigC::slot(*this, &GERT::InputChanged));
+	slot_open = open()->signal_clicked().connect(
+		SigC::slot(*this, &GERT::ApplyClicked)
+		);
+	slot_collapsed = collapsed()->signal_clicked().connect(
+		SigC::slot(*this, &GERT::ApplyClicked)
+		);
+	slot_inlined = inlined()->signal_clicked().connect(
+		SigC::slot(*this, &GERT::ApplyClicked)
+		);
 }
 
 
@@ -100,23 +100,9 @@ void GERT::update()
 
 }
 
-bool GERT::validate() const
+Gtk::Button * GERT::close_btn() const 
 {
-	return true;
-}
-
-
-Gtk::Button * GERT::ok_btn() const 
-{
-        return getWidget<Gtk::Button>("r_ok_btn");
-}
-Gtk::Button * GERT::apply_btn() const 
-{
-        return getWidget<Gtk::Button>("r_apply_btn");
-}
-Gtk::Button * GERT::cancel_btn() const 
-{
-        return getWidget<Gtk::Button>("r_cancel_btn");
+        return getWidget<Gtk::Button>("r_close_btn");
 }
 Gtk::RadioButton * GERT::open() const 
 {

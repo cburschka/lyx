@@ -71,7 +71,7 @@ void GLog::update()
 	while (getline(ifstr, line))
 		text += line + "\n";
 
-	log_text()->get_buffer()->set_text(text.c_str());
+	log_text()->get_buffer()->set_text(text);
 }
 
 
