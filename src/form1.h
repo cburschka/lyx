@@ -5,18 +5,18 @@
 
 /** Callbacks, globals and object handlers **/
 
-extern void GraphicsCB(FL_OBJECT *, long);
+extern "C" void GraphicsCB(FL_OBJECT *, long);
 
 
-extern void TableOKCB(FL_OBJECT *, long);
-extern void TableApplyCB(FL_OBJECT *, long);
-extern void TableCancelCB(FL_OBJECT *, long);
+extern "C" void TableOKCB(FL_OBJECT *, long);
+extern "C" void TableApplyCB(FL_OBJECT *, long);
+extern "C" void TableCancelCB(FL_OBJECT *, long);
 
-extern void SearchForwardCB(FL_OBJECT *, long);
-extern void SearchBackwardCB(FL_OBJECT *, long);
-extern void SearchReplaceCB(FL_OBJECT *, long);
-extern void SearchCancelCB(FL_OBJECT *, long);
-extern void SearchReplaceAllCB(FL_OBJECT *, long);
+extern "C" void SearchForwardCB(FL_OBJECT *, long);
+extern "C" void SearchBackwardCB(FL_OBJECT *, long);
+extern "C" void SearchReplaceCB(FL_OBJECT *, long);
+extern "C" void SearchCancelCB(FL_OBJECT *, long);
+extern "C" void SearchReplaceAllCB(FL_OBJECT *, long);
 
 
 /**** Forms and Objects ****/

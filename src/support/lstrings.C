@@ -10,6 +10,8 @@
 
 //#include "debug.h"
 
+using std::count;
+
 bool isStrInt(string const & str)
 {
 	if (str.empty()) return false;

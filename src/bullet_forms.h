@@ -4,14 +4,14 @@
 #define FD_form_bullet_h_
 
 /** Callbacks, globals and object handlers **/
-extern void ChoiceBulletSizeCB(FL_OBJECT *, long);
-extern void BulletOKCB(FL_OBJECT *, long);
-extern void BulletApplyCB(FL_OBJECT *, long);
-extern void BulletCancelCB(FL_OBJECT *, long);
-extern void InputBulletLaTeXCB(FL_OBJECT *, long);
-extern void BulletDepthCB(FL_OBJECT *, long);
-extern void BulletPanelCB(FL_OBJECT *, long);
-extern void BulletBMTableCB(FL_OBJECT *, long);
+extern "C" void ChoiceBulletSizeCB(FL_OBJECT *, long);
+extern "C" void BulletOKCB(FL_OBJECT *, long);
+extern "C" void BulletApplyCB(FL_OBJECT *, long);
+extern "C" void BulletCancelCB(FL_OBJECT *, long);
+extern "C" void InputBulletLaTeXCB(FL_OBJECT *, long);
+extern "C" void BulletDepthCB(FL_OBJECT *, long);
+extern "C" void BulletPanelCB(FL_OBJECT *, long);
+extern "C" void BulletBMTableCB(FL_OBJECT *, long);
 
 
 /**** Additional routines ****/

@@ -32,8 +32,8 @@ typedef struct   {
 } BMTABLE_SPEC;
                  
 
-static int handle_bitmaptable(FL_OBJECT *ob, int event, FL_Coord mx, 
-			      FL_Coord my, int key, void *xev);
+extern "C" int handle_bitmaptable(FL_OBJECT *ob, int event, FL_Coord mx, 
+				  FL_Coord my, int key, void *xev);
 
 
 FL_OBJECT *fl_create_bmtable(int type, FL_Coord x, FL_Coord y, 
@@ -165,8 +165,8 @@ static void draw_bitmaptable(FL_OBJECT *ob)
 }
 
 
-static int handle_bitmaptable(FL_OBJECT *ob, int event, FL_Coord mx, 
-			      FL_Coord my, int key, void */*xev*/)
+extern "C" int handle_bitmaptable(FL_OBJECT *ob, int event, FL_Coord mx, 
+				  FL_Coord my, int key, void */*xev*/)
 {
 	int i, j;
 	BMTABLE_SPEC *sp = (BMTABLE_SPEC *)ob->spec;

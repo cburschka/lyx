@@ -4,12 +4,12 @@
 #define FD_LaTeXOptions_h_
 
 /** Callbacks, globals and object handlers **/
-extern void LaTeXOptionsOK(FL_OBJECT *, long);
-extern void LaTeXOptionsApply(FL_OBJECT *, long);
-extern void LaTeXOptionsCancel(FL_OBJECT *, long);
+extern "C" void LaTeXOptionsOK(FL_OBJECT *, long);
+extern "C" void LaTeXOptionsApply(FL_OBJECT *, long);
+extern "C" void LaTeXOptionsCancel(FL_OBJECT *, long);
 
-extern void LatexLogClose(FL_OBJECT *, long);
-extern void LatexLogUpdate(FL_OBJECT *, long);
+extern "C" void LatexLogClose(FL_OBJECT *, long);
+extern "C" void LatexLogUpdate(FL_OBJECT *, long);
 
 
 /**** Forms and Objects ****/

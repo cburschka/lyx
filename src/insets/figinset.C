@@ -60,8 +60,8 @@ extern BufferView *current_view;
 static volatile bool alarmed;
 
 extern FL_OBJECT *figinset_canvas;
-inline
-void waitalarm(int)
+//inline
+extern "C" void waitalarm(int)
 {
 	alarmed = true;
 }
@@ -136,7 +136,7 @@ void addpidwait(int pid)
 }
 
 
-int GhostscriptMsg(FL_OBJECT *, Window, int, int,
+extern "C" int GhostscriptMsg(FL_OBJECT *, Window, int, int,
 		   XEvent *ev, void *)
 {
 	int i;

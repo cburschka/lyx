@@ -22,7 +22,7 @@
 #include <iostream>
 #endif
 
-#ifdef MODERN_STL
+//#ifdef MODERN_STL
 using std::ostream;
 using std::streambuf;
 using std::streamsize;
@@ -30,7 +30,7 @@ using std::filebuf;
 using std::cerr;
 using std::ios;
 using std::endl; 
-#endif
+//#endif
 
 #ifdef TEST_DEBUGSTREAM
 #include <string>

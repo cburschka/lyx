@@ -170,6 +170,11 @@ void InsetInfo::CloseInfoCB(FL_OBJECT *, long data)
 	}
 }
 
+// This is just a wrapper.
+extern "C" void C_InsetInfo_CloseInfoCB(FL_OBJECT *, long data) 
+{
+  	InsetInfo::CloseInfoCB(0, data);
+}
 
 void InsetInfo::Edit(int, int)
 {
@@ -186,7 +191,7 @@ void InsetInfo::Edit(int, int)
 		obj = fl_add_button(FL_NORMAL_BUTTON,130,140,120,30,idex(_("Close|#C^[")));
 		fl_set_object_resize(obj, FL_RESIZE_NONE);
 		fl_set_object_gravity(obj, SouthWestGravity, SouthEastGravity);
-		fl_set_object_callback(obj, CloseInfoCB, (long)this);
+		fl_set_object_callback(obj, C_InsetInfo_CloseInfoCB, (long)this);
 		fl_set_object_shortcut(obj, scex(_("Close|#C^[")), (long)this);
 		fl_end_form();
 		fl_set_form_atclose(form, CancelCloseBoxCB, 0);

@@ -4,9 +4,9 @@
 #define FD_form_spell_options_h_
 
 /** Callbacks, globals and object handlers **/
-extern void SpellOptionsOKCB(FL_OBJECT *, long);
-extern void SpellOptionsCancelCB(FL_OBJECT *, long);
-extern void SpellOptionsApplyCB(FL_OBJECT *, long);
+extern "C" void SpellOptionsOKCB(FL_OBJECT *, long);
+extern "C" void SpellOptionsCancelCB(FL_OBJECT *, long);
+extern "C" void SpellOptionsApplyCB(FL_OBJECT *, long);
 
 
 

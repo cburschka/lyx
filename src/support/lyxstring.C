@@ -23,6 +23,8 @@
 
 #include "LAssert.h"
 
+using std::min;
+
 // Reference count has been checked, empty_rep removed and
 // introduced again in a similar guise. Where is empty_rep _really_
 // needed?

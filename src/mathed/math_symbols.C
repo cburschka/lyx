@@ -23,6 +23,10 @@
 #endif
 
 #include <algorithm>
+#ifdef WITH_WARNINGS
+#warning Is it safe to use 'using' unconditionnally? 
+#endif
+using std::max;
 
 #include "lyx_main.h"
 #include "buffer.h"
@@ -132,7 +136,7 @@ static signed char Latin2Greek[] =  {
 }; 
 
 extern char** mathed_get_pixmap_from_icon(int d);
-static void math_cb(FL_OBJECT*, long);
+extern "C" void math_cb(FL_OBJECT*, long);
 static char** pixmapFromBitmapData(char const *, int, int);
 void math_insert_symbol(char const* s);
 Bool math_insert_greek(char const c);
@@ -216,7 +220,7 @@ void BitmapMenu::Create()
       bitmap[i]->u_vdata = this;
    }
    fl_end_form();
-   fl_register_raw_callback(form, KeyPressMask, peek_event);
+   fl_register_raw_callback(form, KeyPressMask, C_peek_event);
 }
 
 int BitmapMenu::GetIndex(FL_OBJECT* ob)
@@ -232,7 +236,6 @@ int BitmapMenu::GetIndex(FL_OBJECT* ob)
    return -1;
 }
 
-extern "C" {
 int peek_event(FL_FORM * /*form*/, void *xev)
 {
    if (BitmapMenu::active==0)
@@ -258,9 +261,14 @@ int peek_event(FL_FORM * /*form*/, void *xev)
    }
    return 0;  
 }
+
+// This is just a wrapper.
+extern "C" int C_peek_event(FL_FORM *form, void *ptr) {
+  return peek_event(form,ptr);
 }
 
-static void math_cb(FL_OBJECT* ob, long data)
+
+extern "C" void math_cb(FL_OBJECT* ob, long data)
 {
    BitmapMenu* menu = (BitmapMenu*)ob->u_vdata;
    int i = menu->GetIndex(ob);   

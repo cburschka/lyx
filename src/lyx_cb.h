@@ -16,7 +16,7 @@ extern bool quitting;
 extern bool BindFileSet;
 
 ///
-extern void FootCB(FL_OBJECT *, long);
+extern "C" void FootCB(FL_OBJECT *, long);
 ///
 extern void EmphCB();
 ///
@@ -24,17 +24,17 @@ extern void BoldCB();
 ///
 extern void NounCB();
 ///
-extern void MarginCB(FL_OBJECT *, long);
+extern "C" void MarginCB(FL_OBJECT *, long);
 ///
-extern void FigureCB(FL_OBJECT *, long);
+extern "C" void FigureCB(FL_OBJECT *, long);
 ///
-extern void TableCB(FL_OBJECT *, long);
+extern "C" void TableCB(FL_OBJECT *, long);
 ///
-extern void MeltCB(FL_OBJECT *, long);
+extern "C" void MeltCB(FL_OBJECT *, long);
 ///
 extern void TexCB();
 ///
-extern void DepthCB(FL_OBJECT *, long);
+extern "C" void DepthCB(FL_OBJECT *, long);
 ///
 extern void FreeCB();
 ///

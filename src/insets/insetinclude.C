@@ -88,7 +88,7 @@ FD_include *create_form_include(void)
 
 FD_include *form = 0;
 
-void include_cb(FL_OBJECT *, long arg)
+extern "C" void include_cb(FL_OBJECT *, long arg)
 {
     
 	InsetInclude *inset = (InsetInclude*)form->vdata;

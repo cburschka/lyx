@@ -54,7 +54,7 @@ struct binary_op_pair { short id, isrel; } binary_op_table[] = {
       { LM_ddagger, LMB_OPERATOR }
 };
 
-static int compara(const void *a, const void *b)
+extern "C" int compara(const void *a, const void *b)
 {
     int i = ((binary_op_pair const *)a)->id, j = ((binary_op_pair const*)b)->id;
     return i - j;

@@ -1206,7 +1206,7 @@ void MenuPasteSelection(char at)
 }
 
 
-void FootCB(FL_OBJECT*, long)
+extern "C" void FootCB(FL_OBJECT*, long)
 {
 	if (!current_view->available()) 
 		return;
@@ -2305,7 +2305,7 @@ void ToggleAndShow(LyXFont const & font)
 }
 
 
-void MarginCB(FL_OBJECT *, long)
+extern "C" void MarginCB(FL_OBJECT *, long)
 {
 	if (current_view->available()) {
 		minibuffer->Set(_("Inserting margin note..."));
@@ -2317,7 +2317,7 @@ void MarginCB(FL_OBJECT *, long)
 }
 
 
-void FigureCB(FL_OBJECT *, long)
+extern "C" void FigureCB(FL_OBJECT *, long)
 {
 	if (fd_form_figure->form_figure->visible) {
 		fl_raise_form(fd_form_figure->form_figure);
@@ -2329,7 +2329,7 @@ void FigureCB(FL_OBJECT *, long)
 }
 
 
-void TableCB(FL_OBJECT *, long)
+extern "C" void TableCB(FL_OBJECT *, long)
 {
 	if (fd_form_table->form_table->visible) {
 		fl_raise_form(fd_form_table->form_table);
@@ -2411,7 +2411,7 @@ void PasteCB()
 }
 
 
-void MeltCB(FL_OBJECT *, long)
+extern "C" void MeltCB(FL_OBJECT *, long)
 {
 	if (!current_view->available()) return;
 	
@@ -2428,7 +2428,7 @@ void MeltCB(FL_OBJECT *, long)
 // if decInc == 0, depth change taking mouse button number into account
 // if decInc == 1, increment depth
 // if decInc == -1, decrement depth
-void DepthCB(FL_OBJECT *ob, long decInc)
+extern "C" void DepthCB(FL_OBJECT *ob, long decInc)
 {
 	int button = 1;
 
@@ -2551,7 +2551,7 @@ void FreeCB()
 
 
 /* callbacks for form form_title */
-void TimerCB(FL_OBJECT *, long)
+extern "C" void TimerCB(FL_OBJECT *, long)
 {
 	// only if the form still exists
 	if (fd_form_title->form_title != 0) {
@@ -2566,7 +2566,7 @@ void TimerCB(FL_OBJECT *, long)
 
 /* callbacks for form form_paragraph */
 
-void ParagraphVSpaceCB(FL_OBJECT* obj, long )
+extern "C" void ParagraphVSpaceCB(FL_OBJECT* obj, long )
 {
 	// "Synchronize" the choices and input fields, making it
 	// impossible to commit senseless data.
@@ -2617,7 +2617,7 @@ void ParagraphVSpaceCB(FL_OBJECT* obj, long )
 }
 
 
-void ParagraphApplyCB(FL_OBJECT *, long)
+extern "C" void ParagraphApplyCB(FL_OBJECT *, long)
 {
 	if (!current_view->available())
 		return;
@@ -2693,13 +2693,13 @@ void ParagraphApplyCB(FL_OBJECT *, long)
 }
 
 
-void ParagraphCancelCB(FL_OBJECT *, long)
+extern "C" void ParagraphCancelCB(FL_OBJECT *, long)
 {
 	fl_hide_form(fd_form_paragraph->form_paragraph);
 }
 
 
-void ParagraphOKCB(FL_OBJECT *ob, long data)
+extern "C" void ParagraphOKCB(FL_OBJECT *ob, long data)
 {
 	ParagraphApplyCB(ob, data);
 	ParagraphCancelCB(ob, data);
@@ -2708,7 +2708,7 @@ void ParagraphOKCB(FL_OBJECT *ob, long data)
 
 /* callbacks for form form_character */
 
-void CharacterApplyCB(FL_OBJECT *, long)
+extern "C" void CharacterApplyCB(FL_OBJECT *, long)
 {
 	// we set toggleall locally here, since it should be true for
 	// all other uses of ToggleAndShow() (JMarc)
@@ -2718,13 +2718,13 @@ void CharacterApplyCB(FL_OBJECT *, long)
 }
 
 
-void CharacterCloseCB(FL_OBJECT *, long)
+extern "C" void CharacterCloseCB(FL_OBJECT *, long)
 {
 	fl_hide_form(fd_form_character->form_character);
 }
 
 
-void CharacterOKCB(FL_OBJECT *ob, long data)
+extern "C" void CharacterOKCB(FL_OBJECT *ob, long data)
 {
 	CharacterApplyCB(ob,data);
 	CharacterCloseCB(ob,data);
@@ -2755,7 +2755,7 @@ void UpdateDocumentButtons(BufferParams const &params)
 	
 }
 
-void ChoiceClassCB(FL_OBJECT *ob, long)
+extern "C" void ChoiceClassCB(FL_OBJECT *ob, long)
 {
 	ProhibitInput();
 	if (lyxstyle.Load(fl_get_choice(ob)-1)) {
@@ -2780,7 +2780,7 @@ void ChoiceClassCB(FL_OBJECT *ob, long)
 }
 
 
-void DocumentDefskipCB(FL_OBJECT *obj, long)
+extern "C" void DocumentDefskipCB(FL_OBJECT *obj, long)
 {
 	// "Synchronize" the choice and the input field, so that it
 	// is impossible to commit senseless data.
@@ -2809,7 +2809,7 @@ void DocumentDefskipCB(FL_OBJECT *obj, long)
 }
 
 
-void DocumentSpacingCB(FL_OBJECT *obj, long)
+extern "C" void DocumentSpacingCB(FL_OBJECT *obj, long)
 {
 	// "Synchronize" the choice and the input field, so that it
 	// is impossible to commit senseless data.
@@ -2831,7 +2831,7 @@ void DocumentSpacingCB(FL_OBJECT *obj, long)
 }
 
 
-void DocumentApplyCB(FL_OBJECT *, long)
+extern "C" void DocumentApplyCB(FL_OBJECT *, long)
 {
 	bool redo = false;
 	BufferParams *params = &(current_view->currentBuffer()->params);
@@ -2985,20 +2985,20 @@ void DocumentApplyCB(FL_OBJECT *, long)
 }
 
 
-void DocumentCancelCB(FL_OBJECT *, long)
+extern "C" void DocumentCancelCB(FL_OBJECT *, long)
 {
 	fl_hide_form(fd_form_document->form_document);
 }
 
 
-void DocumentOKCB(FL_OBJECT *ob, long data)
+extern "C" void DocumentOKCB(FL_OBJECT *ob, long data)
 {
 	DocumentCancelCB(ob,data);
 	DocumentApplyCB(ob,data);
 }
 
 
-void DocumentBulletsCB(FL_OBJECT *, long)
+extern "C" void DocumentBulletsCB(FL_OBJECT *, long)
 {
 	bulletForm();
 	// bullet callbacks etc. in bullet_panel.C -- ARRae
@@ -3056,7 +3056,7 @@ void InsertCorrectQuote()
 
 /* callbacks for form form_quotes */
 
-void QuotesApplyCB(FL_OBJECT *, long)
+extern "C" void QuotesApplyCB(FL_OBJECT *, long)
 {
 	if (!current_view->available())
 		return;
@@ -3095,13 +3095,13 @@ void QuotesApplyCB(FL_OBJECT *, long)
 }
 
 
-void QuotesCancelCB(FL_OBJECT *, long)
+extern "C" void QuotesCancelCB(FL_OBJECT *, long)
 {
 	fl_hide_form(fd_form_quotes->form_quotes);
 }
 
 
-void QuotesOKCB(FL_OBJECT *ob, long data)
+extern "C" void QuotesOKCB(FL_OBJECT *ob, long data)
 {
 	QuotesApplyCB(ob, data);
 	QuotesCancelCB(ob, data);
@@ -3111,13 +3111,13 @@ void QuotesOKCB(FL_OBJECT *ob, long data)
 
 /* callbacks for form form_preamble */
 
-void PreambleCancelCB(FL_OBJECT *, long)
+extern "C" void PreambleCancelCB(FL_OBJECT *, long)
 {
 	fl_hide_form(fd_form_preamble->form_preamble);
 }
 
 
-void PreambleApplyCB(FL_OBJECT *, long)
+extern "C" void PreambleApplyCB(FL_OBJECT *, long)
 {
 	if (!current_view->available())
 		return;
@@ -3129,7 +3129,7 @@ void PreambleApplyCB(FL_OBJECT *, long)
 }
 
    
-void PreambleOKCB(FL_OBJECT *ob, long data)
+extern "C" void PreambleOKCB(FL_OBJECT *ob, long data)
 {
 	PreambleApplyCB(ob, data);
 	PreambleCancelCB(ob, data);
@@ -3138,7 +3138,7 @@ void PreambleOKCB(FL_OBJECT *ob, long data)
 
 /* callbacks for form form_table */
 
-void TableApplyCB(FL_OBJECT *, long)
+extern "C" void TableApplyCB(FL_OBJECT *, long)
 {
 	int xsize,ysize;
 	if (!current_view->getScreen())
@@ -3216,13 +3216,13 @@ void TableApplyCB(FL_OBJECT *, long)
 }
 
 
-void TableCancelCB(FL_OBJECT *, long)
+extern "C" void TableCancelCB(FL_OBJECT *, long)
 {
 	fl_hide_form(fd_form_table->form_table);
 }
 
 
-void TableOKCB(FL_OBJECT *ob, long data)
+extern "C" void TableOKCB(FL_OBJECT *ob, long data)
 {
 	TableApplyCB(ob,data);
 	TableCancelCB(ob,data);
@@ -3231,7 +3231,7 @@ void TableOKCB(FL_OBJECT *ob, long data)
 
 /* callbacks for form form_print */
 
-void PrintCancelCB(FL_OBJECT *, long)
+extern "C" void PrintCancelCB(FL_OBJECT *, long)
 {
 	fl_hide_form(fd_form_print->form_print);
 }
@@ -3243,7 +3243,7 @@ static bool stringOnlyContains (string const & LStr, const char * cset)
 	return strspn(cstr,cset) == strlen(cstr) ;
 }
 
-void PrintApplyCB(FL_OBJECT *, long)
+extern "C" void PrintApplyCB(FL_OBJECT *, long)
 {
 	if (!current_view->available())
 		return;
@@ -3406,7 +3406,7 @@ void PrintApplyCB(FL_OBJECT *, long)
 }
 
 
-void PrintOKCB(FL_OBJECT *ob, long data)
+extern "C" void PrintOKCB(FL_OBJECT *ob, long data)
 {
 	PrintCancelCB(ob, data);  
 	PrintApplyCB(ob,data);
@@ -3415,7 +3415,7 @@ void PrintOKCB(FL_OBJECT *ob, long data)
 
 /* callbacks for form form_figure */
 
-void FigureApplyCB(FL_OBJECT *, long)
+extern "C" void FigureApplyCB(FL_OBJECT *, long)
 {
 	if (!current_view->available())
 		return;
@@ -3486,19 +3486,19 @@ void FigureApplyCB(FL_OBJECT *, long)
 }
 
    
-void FigureCancelCB(FL_OBJECT *, long)
+extern "C" void FigureCancelCB(FL_OBJECT *, long)
 {
 	fl_hide_form(fd_form_figure->form_figure);
 }
 
 
-void FigureOKCB(FL_OBJECT *ob, long data)
+extern "C" void FigureOKCB(FL_OBJECT *ob, long data)
 {
 	FigureApplyCB(ob,data);
 	FigureCancelCB(ob,data);
 }
 
-void ScreenApplyCB(FL_OBJECT *, long)
+extern "C" void ScreenApplyCB(FL_OBJECT *, long)
 {
 	lyxrc->roman_font_name = fl_get_input(fd_form_screen->input_roman);
 	lyxrc->sans_font_name = fl_get_input(fd_form_screen->input_sans);
@@ -3514,13 +3514,13 @@ void ScreenApplyCB(FL_OBJECT *, long)
 }
 
 
-void ScreenCancelCB(FL_OBJECT *, long)
+extern "C" void ScreenCancelCB(FL_OBJECT *, long)
 {
 	fl_hide_form(fd_form_screen->form_screen);
 }
 
 
-void ScreenOKCB(FL_OBJECT *ob, long data)
+extern "C" void ScreenOKCB(FL_OBJECT *ob, long data)
 {
 	ScreenCancelCB(ob,data);
 	ScreenApplyCB(ob,data);
@@ -3643,7 +3643,7 @@ struct TocList {
 static TocList* toclist = 0;
 
 
-void TocSelectCB(FL_OBJECT *ob, long)
+extern "C" void TocSelectCB(FL_OBJECT *ob, long)
 {
 	if (!current_view->available())
 		return;
@@ -3687,13 +3687,13 @@ void TocSelectCB(FL_OBJECT *ob, long)
 }
 
 
-void TocCancelCB(FL_OBJECT *, long)
+extern "C" void TocCancelCB(FL_OBJECT *, long)
 {
 	fl_hide_form(fd_form_toc->form_toc);
 }
 
 
-void TocUpdateCB(FL_OBJECT *, long)
+extern "C" void TocUpdateCB(FL_OBJECT *, long)
 {
 	static LyXParagraph* stapar = 0;
 	TocList *tmptoclist = 0;
@@ -3799,7 +3799,7 @@ void TocUpdateCB(FL_OBJECT *, long)
 
 
 /* callbacks for form form_ref */
-void RefSelectCB(FL_OBJECT *, long data)
+extern "C" void RefSelectCB(FL_OBJECT *, long data)
 {
 	if (!current_view->available())
 		return;
@@ -3834,7 +3834,7 @@ void RefSelectCB(FL_OBJECT *, long data)
 }
 
 
-void RefUpdateCB(FL_OBJECT *, long)
+extern "C" void RefUpdateCB(FL_OBJECT *, long)
 {
 	if (!current_view->available()) {
 		fl_clear_browser(fd_form_ref->browser_ref);
@@ -3903,7 +3903,7 @@ void RefUpdateCB(FL_OBJECT *, long)
 }
 
 
-void RefHideCB(FL_OBJECT *, long)
+extern "C" void RefHideCB(FL_OBJECT *, long)
 {
 	fl_hide_form(fd_form_ref->form_ref);
 }

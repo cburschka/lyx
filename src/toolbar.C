@@ -92,6 +92,7 @@
 #include "layout_std.xpm"
 #include "build.xpm"
 
+// this one is not "C" because combox callbacks are really C++ %-|
 extern void LayoutsCB(int, void*);
 extern char** get_pixmap_from_symbol(char const *arg, int, int);
 extern LyXAction lyxaction;

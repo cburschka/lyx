@@ -70,14 +70,14 @@ extern void TocUpdateCB();
 extern void HideFiguresPopups();
 
 // Prevents LyX from being killed when the close box is pressed in a popup.
-int CancelCloseBoxCB(FL_FORM *, void *)
+extern "C" int CancelCloseBoxCB(FL_FORM *, void *)
 {
 	return FL_CANCEL;
 }
 
 
 // Prevents LyX from being killed when the close box is pressed in a popup.
-int IgnoreCloseBoxCB(FL_FORM *, void *)
+extern "C" int IgnoreCloseBoxCB(FL_FORM *, void *)
 {
 	return FL_IGNORE;
 }

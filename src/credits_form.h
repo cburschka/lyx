@@ -4,9 +4,9 @@
 #define FD_form_credits_h_
 
 /** Callbacks, globals and object handlers **/
-extern void CreditsOKCB(FL_OBJECT *, long);
+extern "C" void CreditsOKCB(FL_OBJECT *, long);
 
-extern void CopyrightOKCB(FL_OBJECT *, long);
+extern "C" void CopyrightOKCB(FL_OBJECT *, long);
 
 
 /**** Forms and Objects ****/

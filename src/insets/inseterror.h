@@ -67,6 +67,8 @@ public:
 	Inset::Code LyxCode() const { return Inset::NO_CODE; }
 	/// We don't want "begin" and "end inset" in lyx-file
 	bool DirectWrite() const { return true; };
+	///
+	static void CloseErrorCB(FL_OBJECT *, long data);
 private:
 	///
 	string contents;
@@ -74,7 +76,5 @@ private:
 	FL_FORM *form;
 	///
 	FL_OBJECT *strobj;
-	///
-	static void CloseErrorCB(FL_OBJECT *, long data);
 };
 #endif

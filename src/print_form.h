@@ -4,13 +4,13 @@
 #define FD_form_print_h_
 
 /** Callbacks, globals and object handlers **/
-extern void PrintOKCB(FL_OBJECT *, long);
-extern void PrintApplyCB(FL_OBJECT *, long);
-extern void PrintCancelCB(FL_OBJECT *, long);
+extern "C" void PrintOKCB(FL_OBJECT *, long);
+extern "C" void PrintApplyCB(FL_OBJECT *, long);
+extern "C" void PrintCancelCB(FL_OBJECT *, long);
 
-extern void SendtoOKCB(FL_OBJECT *, long);
-extern void SendtoApplyCB(FL_OBJECT *, long);
-extern void SendtoCancelCB(FL_OBJECT *, long);
+extern "C" void SendtoOKCB(FL_OBJECT *, long);
+extern "C" void SendtoApplyCB(FL_OBJECT *, long);
+extern "C" void SendtoCancelCB(FL_OBJECT *, long);
 
 
 /**** Forms and Objects ****/

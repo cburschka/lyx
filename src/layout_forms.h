@@ -4,47 +4,47 @@
 #define FD_form_document_h_
 
 /** Callbacks, globals and object handlers **/
-extern void ChoiceClassCB(FL_OBJECT *, long);
-extern void DocumentCancelCB(FL_OBJECT *, long);
-extern void DocumentApplyCB(FL_OBJECT *, long);
-extern void DocumentOKCB(FL_OBJECT *, long);
-extern void DocumentDefskipCB(FL_OBJECT *, long);
-extern void DocumentSpacingCB(FL_OBJECT *, long);
-extern void DocumentBulletsCB(FL_OBJECT *, long);
+extern "C" void ChoiceClassCB(FL_OBJECT *, long);
+extern "C" void DocumentCancelCB(FL_OBJECT *, long);
+extern "C" void DocumentApplyCB(FL_OBJECT *, long);
+extern "C" void DocumentOKCB(FL_OBJECT *, long);
+extern "C" void DocumentDefskipCB(FL_OBJECT *, long);
+extern "C" void DocumentSpacingCB(FL_OBJECT *, long);
+extern "C" void DocumentBulletsCB(FL_OBJECT *, long);
 
-extern void CharacterApplyCB(FL_OBJECT *, long);
-extern void CharacterCloseCB(FL_OBJECT *, long);
+extern "C" void CharacterApplyCB(FL_OBJECT *, long);
+extern "C" void CharacterCloseCB(FL_OBJECT *, long);
 
-extern void ParagraphOKCB(FL_OBJECT *, long);
-extern void ParagraphApplyCB(FL_OBJECT *, long);
-extern void ParagraphCancelCB(FL_OBJECT *, long);
-extern void ParagraphVSpaceCB(FL_OBJECT *, long);
-extern void ParagraphExtraOpen(FL_OBJECT *, long);
+extern "C" void ParagraphOKCB(FL_OBJECT *, long);
+extern "C" void ParagraphApplyCB(FL_OBJECT *, long);
+extern "C" void ParagraphCancelCB(FL_OBJECT *, long);
+extern "C" void ParagraphVSpaceCB(FL_OBJECT *, long);
+extern "C" void ParagraphExtraOpen(FL_OBJECT *, long);
 
-extern void PreambleOKCB(FL_OBJECT *, long);
-extern void PreambleApplyCB(FL_OBJECT *, long);
-extern void PreambleCancelCB(FL_OBJECT *, long);
+extern "C" void PreambleOKCB(FL_OBJECT *, long);
+extern "C" void PreambleApplyCB(FL_OBJECT *, long);
+extern "C" void PreambleCancelCB(FL_OBJECT *, long);
 
-extern void QuotesOKCB(FL_OBJECT *, long);
-extern void QuotesApplyCB(FL_OBJECT *, long);
-extern void QuotesCancelCB(FL_OBJECT *, long);
+extern "C" void QuotesOKCB(FL_OBJECT *, long);
+extern "C" void QuotesApplyCB(FL_OBJECT *, long);
+extern "C" void QuotesCancelCB(FL_OBJECT *, long);
 
-extern void PaperMarginsCB(FL_OBJECT *, long);
-extern void PaperCancelCB(FL_OBJECT *, long);
-extern void PaperApplyCB(FL_OBJECT *, long);
-extern void PaperOKCB(FL_OBJECT *, long);
+extern "C" void PaperMarginsCB(FL_OBJECT *, long);
+extern "C" void PaperCancelCB(FL_OBJECT *, long);
+extern "C" void PaperApplyCB(FL_OBJECT *, long);
+extern "C" void PaperOKCB(FL_OBJECT *, long);
 
-extern void TableOptCloseCB(FL_OBJECT *, long);
-extern void TableOptionsCB(FL_OBJECT *, long);
-extern void SetPWidthCB(FL_OBJECT *, long);
+extern "C" void TableOptCloseCB(FL_OBJECT *, long);
+extern "C" void TableOptionsCB(FL_OBJECT *, long);
+extern "C" void SetPWidthCB(FL_OBJECT *, long);
 
-extern void CheckPExtraOptCB(FL_OBJECT *, long);
-extern void ParagraphExtraOKCB(FL_OBJECT *, long);
-extern void ParagraphExtraApplyCB(FL_OBJECT *, long);
-extern void ParagraphExtraCancelCB(FL_OBJECT *, long);
+extern "C" void CheckPExtraOptCB(FL_OBJECT *, long);
+extern "C" void ParagraphExtraOKCB(FL_OBJECT *, long);
+extern "C" void ParagraphExtraApplyCB(FL_OBJECT *, long);
+extern "C" void ParagraphExtraCancelCB(FL_OBJECT *, long);
 
-extern void TableOptionsCB(FL_OBJECT *, long);
-extern void TableSpeCloseCB(FL_OBJECT *, long);
+extern "C" void TableOptionsCB(FL_OBJECT *, long);
+extern "C" void TableSpeCloseCB(FL_OBJECT *, long);
 
 /* Additional Functions/Methods */
 

@@ -4,7 +4,7 @@
 
 /**** Callback routines ****/
 
-extern void include_cb(FL_OBJECT *, long);
+extern "C" void include_cb(FL_OBJECT *, long);
 
 
 /**** Forms and Objects ****/

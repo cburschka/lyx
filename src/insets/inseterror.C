@@ -150,6 +150,13 @@ void InsetError::CloseErrorCB(FL_OBJECT *, long data)
 	}
 }
 
+// A C wrapper
+extern "C" void C_InsetError_CloseErrorCB(FL_OBJECT *, long data)
+{
+        InsetError::CloseErrorCB(0,data);
+}
+
+
 void InsetError::Edit(int, int)
 {
 	if (!form) {
@@ -159,7 +166,7 @@ void InsetError::Edit(int, int)
 		fl_set_object_color(strobj,FL_MCOL,FL_MCOL);
 		fl_set_object_gravity(strobj, FL_NorthWest, FL_SouthEast);
 		obj = fl_add_button(FL_RETURN_BUTTON,140,200,120,30,_("Close"));
-		fl_set_object_callback(obj, CloseErrorCB, (long)this);
+		fl_set_object_callback(obj, C_InsetError_CloseErrorCB, (long)this);
 		fl_set_object_gravity(obj, FL_South, FL_South);
 		fl_set_object_resize(obj, FL_RESIZE_NONE);
 		fl_end_form();

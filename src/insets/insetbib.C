@@ -27,12 +27,11 @@ static Combox *bibcombox = 0;
 
 extern void UpdateInset(Inset* inset, bool mark_dirty = true);
 void BibitemUpdate(Combox *);
-void bibitem_cb(FL_OBJECT *, long);
 FD_citation_form * create_form_citation_form(void);
 FD_bibitem_form * create_form_bibitem_form(void);
 
 
-void bibitem_cb(FL_OBJECT *, long data)
+extern "C" void bibitem_cb(FL_OBJECT *, long data)
 {
 	switch (data) {
 //       case 0: fl_hide_form(citation_form->citation_form);

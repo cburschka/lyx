@@ -35,17 +35,13 @@ enum  {
 ///
 typedef FL_OBJECT* FL_OBJECTP;
 
-extern "C" {
-   int peek_event(FL_FORM *, void *);
-}
-
 /// Class to manage bitmap menu bars
 class BitmapMenu {
   ///
    static BitmapMenu *active;
    ///
    friend int peek_event(FL_FORM *, void *);
- protected:
+protected:
    ///
    BitmapMenu *next, *prev;
    ///
@@ -84,6 +80,9 @@ class BitmapMenu {
    ///
    int  GetIndex(FL_OBJECT* ob);
 };
+
+// This is just a wrapper around peek_event()
+extern "C" int C_peek_event(FL_FORM *form, void *ptr);
 
 
 inline

@@ -20,8 +20,7 @@ extern void UpdateInset(Inset* inset, bool mark_dirty = true);
 
 FD_index_form *index_form = 0;
 
-static
-void index_cb(FL_OBJECT *, long data)
+extern "C" void index_cb(FL_OBJECT *, long data)
 {
 	InsetIndex *inset = (InsetIndex*)index_form->vdata;
 	

@@ -65,6 +65,8 @@ public:
 	Inset::Code LyxCode() const;
 	///
 	Inset* Clone();
+	///
+	static void CloseInfoCB(FL_OBJECT *, long data);
 private:
 	///
 	string contents;
@@ -72,8 +74,6 @@ private:
 	FL_FORM *form;
 	///
 	FL_OBJECT *strobj;
-	///
-	static void CloseInfoCB(FL_OBJECT *, long data);
 };
 
 #endif

@@ -99,6 +99,10 @@ void InsetUrl::CloseUrlCB(FL_OBJECT *ob, long)
 	}
 }
 
+extern "C" void C_InsetUrl_CloseUrlCB(FL_OBJECT *ob, long)
+{
+	InsetUrl::CloseUrlCB(0,0);
+}
 
 void InsetUrl::Edit(int, int)
 {
@@ -116,7 +120,7 @@ void InsetUrl::Edit(int, int)
 		obj = fl_add_button(FL_RETURN_BUTTON,360,130,100,30,idex(_("Close|#C^[^M")));
 		fl_set_button_shortcut(obj,scex(_("Close|#C^[^M")),1);
 		obj->u_vdata = this;
-		fl_set_object_callback(obj,CloseUrlCB,0);
+		fl_set_object_callback(obj,C_InsetUrl_CloseUrlCB,0);
 		radio_html = obj = fl_add_checkbutton(FL_PUSH_BUTTON,50,130,240,30,idex(_("HTML type|#H")));
 		fl_set_button_shortcut(obj,scex(_("HTML type|#H")),1);
 		fl_set_object_lsize(obj,FL_NORMAL_SIZE);

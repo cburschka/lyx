@@ -4,23 +4,23 @@
 #define FD_form_title_h_
 
 /** Callbacks, globals and object handlers **/
-extern void TimerCB(FL_OBJECT *, long);
+extern "C" void TimerCB(FL_OBJECT *, long);
 
-extern void FigureOKCB(FL_OBJECT *, long);
-extern void FigureApplyCB(FL_OBJECT *, long);
-extern void FigureCancelCB(FL_OBJECT *, long);
+extern "C" void FigureOKCB(FL_OBJECT *, long);
+extern "C" void FigureApplyCB(FL_OBJECT *, long);
+extern "C" void FigureCancelCB(FL_OBJECT *, long);
 
-extern void ScreenOKCB(FL_OBJECT *, long);
-extern void ScreenApplyCB(FL_OBJECT *, long);
-extern void ScreenCancelCB(FL_OBJECT *, long);
+extern "C" void ScreenOKCB(FL_OBJECT *, long);
+extern "C" void ScreenApplyCB(FL_OBJECT *, long);
+extern "C" void ScreenCancelCB(FL_OBJECT *, long);
 
-extern void TocSelectCB(FL_OBJECT *, long);
-extern void TocCancelCB(FL_OBJECT *, long);
-extern void TocUpdateCB(FL_OBJECT *, long);
+extern "C" void TocSelectCB(FL_OBJECT *, long);
+extern "C" void TocCancelCB(FL_OBJECT *, long);
+extern "C" void TocUpdateCB(FL_OBJECT *, long);
 
-extern void RefUpdateCB(FL_OBJECT *, long);
-extern void RefHideCB(FL_OBJECT *, long);
-extern void RefSelectCB(FL_OBJECT *, long);
+extern "C" void RefUpdateCB(FL_OBJECT *, long);
+extern "C" void RefHideCB(FL_OBJECT *, long);
+extern "C" void RefSelectCB(FL_OBJECT *, long);
 
 
 /**** Forms and Objects ****/

@@ -144,7 +144,7 @@ FL_resource res[] =
 };
 
 
-static int LyX_XErrHandler(Display *display, XErrorEvent *xeev)
+extern "C" int LyX_XErrHandler(Display *display, XErrorEvent *xeev)
 {
 //#warning Please see if you can trigger this!
 	// emergency save

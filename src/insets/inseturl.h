@@ -74,6 +74,8 @@ public:
 	int Linuxdoc(string &file);
 	///
 	int DocBook(string &file);
+	///
+	static void CloseUrlCB(FL_OBJECT *, long data);
 private:
 	///
         Url_Flags flag;
@@ -85,8 +87,6 @@ private:
 	FL_OBJECT *name_name;
 	///
 	FL_OBJECT *radio_html;
-	///
-	static void CloseUrlCB(FL_OBJECT *, long data);
 };
 
 #endif

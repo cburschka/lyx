@@ -4,6 +4,7 @@
 #define FD_panel_h_
 
 /** Callbacks, globals and object handlers **/
+extern "C" {
 extern void button_cb(FL_OBJECT *, long);
 
 extern void delim_cb(FL_OBJECT *, long);
@@ -13,7 +14,7 @@ extern void matrix_cb(FL_OBJECT *, long);
 extern void deco_cb(FL_OBJECT *, long);
 
 extern void space_cb(FL_OBJECT *, long);
-
+}
 
 /**** Forms and Objects ****/
 typedef struct {

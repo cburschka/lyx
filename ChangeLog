@@ -1,3 +1,19 @@
+1999-10-19  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/mathed/math_symbols.C, src/support/lstrings.C,
+	src/support/lyxstring.C: add `using' directive to specify what
+	we need in <algorithm>. I do not think that we need to
+	conditionalize this, but any thought is appreciated.
+
+	* many files: change all callback functions to "C" linkage
+	functions to please strict C++ compilers like DEC cxx 6.1 in mode
+	strict_ansi. Those who were static are now global. 
+  	    The case of callbacks which are static class members is
+	trickier, since we have to make C wrappers around them (see
+	InsetError, InsetInfo and InsetUrl). The same holds for friends. I
+	did not finish this yet, since it defeats the purpose of
+	encapsulation, and I am not sure what the best route is.
+
 1999-10-19  Juergen Vigna  <jug@sad.it>
 
 	* src/support/lyxstring.C (lyxstring): we permit to have a null

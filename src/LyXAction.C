@@ -717,7 +717,7 @@ char const *LyXAction::helpText(kb_action action) const
 
 
 // Function to compare items from the attrib table.
-int actioncomp(const void *a, const void *b)
+extern "C" int actioncomp(const void *a, const void *b)
 {
     int const *ia=(int const*)a, *ib=(int const*)b;
     return (*ia)-(*ib);

@@ -244,7 +244,7 @@ void space_cb(FL_OBJECT *, long data)
    }
 }
 
-int align_filter(FL_OBJECT *, char const *, char const *cur, int c)
+extern "C" int align_filter(FL_OBJECT *, char const *, char const *cur, int c)
 {
    int n = (int)(fl_get_slider_value(fd_matrix->columns)+0.5) - strlen(cur);
    return ((c=='c'||c=='l'||c=='r') && n>=0) ? FL_VALID: FL_INVALID;
@@ -320,12 +320,11 @@ void free_symbols_form()
    }
 }
 
-int AtClose_symbols_form(FL_FORM *, void *)
+extern "C" int AtClose_symbols_form(FL_FORM *, void *)
 {
   free_symbols_form();
   return FL_IGNORE;
 }
-
 
 void show_symbols_form(LyXFunc *lf)
 {
@@ -333,7 +332,7 @@ void show_symbols_form(LyXFunc *lf)
     if (!fd_panel) {
 	fd_panel = create_math_panel();
 	fl_register_raw_callback(fd_panel->panel, 
-				 ButtonPressMask|KeyPressMask, peek_event);
+				 ButtonPressMask|KeyPressMask, C_peek_event);
 	create_symbol_menues(fd_panel);	
 	fl_set_form_atclose(fd_panel->panel, AtClose_symbols_form, 0);
     }

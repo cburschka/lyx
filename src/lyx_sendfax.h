@@ -4,17 +4,17 @@
 #define FD_xsendfax_h_
 
 /** Callbacks, globals and object handlers **/
-extern void FaxSendCB(FL_OBJECT *, long);
-extern void FaxCancelCB(FL_OBJECT *, long);
-extern void FaxApplyCB(FL_OBJECT *, long);
-extern void FaxOpenPhonebookCB(FL_OBJECT *, long);
-extern void cb_add_phoneno(FL_OBJECT *, long);
-extern void cb_delete_phoneno(FL_OBJECT *, long);
-extern void cb_save_phoneno(FL_OBJECT *, long);
+extern "C" void FaxSendCB(FL_OBJECT *, long);
+extern "C" void FaxCancelCB(FL_OBJECT *, long);
+extern "C" void FaxApplyCB(FL_OBJECT *, long);
+extern "C" void FaxOpenPhonebookCB(FL_OBJECT *, long);
+extern "C" void cb_add_phoneno(FL_OBJECT *, long);
+extern "C" void cb_delete_phoneno(FL_OBJECT *, long);
+extern "C" void cb_save_phoneno(FL_OBJECT *, long);
 
-extern void cb_select_phoneno(FL_OBJECT *, long);
+extern "C" void cb_select_phoneno(FL_OBJECT *, long);
 
-extern void FaxLogfileCloseCB(FL_OBJECT *, long);
+extern "C" void FaxLogfileCloseCB(FL_OBJECT *, long);
 
 
 /**** Forms and Objects ****/
