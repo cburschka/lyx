@@ -143,7 +143,7 @@ void Counters::newCounter(string const & newc, string const & masterc)
 
 	counterList[newc];
 	cit = counterList.find(newc);
-    cit->second.setMaster(masterc);
+	cit->second.setMaster(masterc);
 }
 
 
