@@ -664,10 +664,9 @@ void RowPainter::paintText()
 		// if we reach the end of a struck out range, paint it
 		// we also don't paint across things like tables
 		if (running_strikeout && (highly_editable_inset || !is_struckout)) {
-			// FIXME this should take real text height into account, not
-			// the whole row including padding whitespace
-			//int const middle = yo_ + (- row_.ascent() + row_.top_of_text()) / 2;
-			int const middle = yo_ - row_.ascent() / 2;
+			// calculate 1/3 height of the buffer's default font
+			int const middle =
+				yo_ - font_metrics::maxAscent(text_.defaultfont_) / 3;
 			pain_.line(last_strikeout_x, middle, int(x_), middle,
 				LColor::strikeout, Painter::line_solid, Painter::line_thin);
 			running_strikeout = false;
@@ -718,9 +717,9 @@ void RowPainter::paintText()
 
 	// if we reach the end of a struck out range, paint it
 	if (running_strikeout) {
-		//top_of_text = font_metrics::maxAscent(font);
-		//int const middle = yo_ - top_of_text() / 2;
-		int const middle = yo_ - row_.ascent() / 2;
+		// calculate 1/3 height of the buffer's default font
+		int const middle =
+			yo_ - font_metrics::maxAscent(text_.defaultfont_) / 3;
 		pain_.line(last_strikeout_x, middle, int(x_), middle,
 			LColor::strikeout, Painter::line_solid, Painter::line_thin);
 		running_strikeout = false;
