@@ -3186,9 +3186,9 @@ void LyXText::paintFirstRow(DrawRowParams & p)
 		
 		y_top += 3 * defaultHeight();
 	} else if (parparams.spaceTop().kind() == VSpace::LENGTH) {
-		string str(string(_("Space above")) + " ("
+		string str = string(_("Space above")) + " ("
 			+ parparams.spaceTop().asLyXCommand()
-			+ ")");
+			+ ")";
  
 		int const space = int(parparams.spaceTop().inPixels(p.bv));
 		int const y = p.yo + y_top + space / 2;
