@@ -724,6 +724,43 @@ void InsetTabular::doDispatch(LCursor & cur, FuncRequest & cmd)
 		cell(cur.idx())->dispatch(cur, cmd);
 		break;
 
+        case LFUN_EMPH:
+        case LFUN_BOLD:
+        case LFUN_ROMAN:
+        case LFUN_NOUN:
+        case LFUN_ITAL:
+        case LFUN_FRAK:
+        case LFUN_CODE:
+        case LFUN_SANS:
+		if (tablemode(cur)) {
+			row_type rs, re;
+			col_type cs, ce;
+			getSelection(cur, rs, re, cs, ce);
+			for (row_type i = rs; i <= re; ++i)
+				for (col_type j = cs; j <= ce; ++j) {
+					// cursor follows cell:
+					cur.idx() = tabular.getCellNumber(i, j);
+					// select this cell only:
+					cur.pos() = 0;
+				        cur.resetAnchor();
+					cur.pos() = cur.top().lastpos();
+				        cur.setCursor(cur);
+				        cur.setSelection();
+					cell(cur.idx())->dispatch(cur, cmd);
+				}
+			// Restore original selection
+			cur.idx() = tabular.getCellNumber(rs, cs);
+			cur.pos() = 0;
+			cur.resetAnchor();
+			cur.idx() = tabular.getCellNumber(re, ce);
+			cur.pos() = cur.top().lastpos();
+			cur.setCursor(cur);
+			cur.setSelection();
+			break;
+		} else {
+			cell(cur.idx())->dispatch(cur, cmd);
+			break;
+		}
 	default:
 		// we try to handle this event in the insets dispatch function.
 		cell(cur.idx())->dispatch(cur, cmd);
@@ -907,6 +944,24 @@ bool InsetTabular::getStatus(LCursor & cur, FuncRequest const & cmd,
 			break;
 		}
 		return true;
+	}
+
+	// disable these with multiple cells selected
+	case LFUN_INSERT_CHARSTYLE:
+	case LFUN_INSET_FLOAT:
+	case LFUN_INSET_WIDE_FLOAT:
+	case LFUN_INSET_FOOTNOTE:
+	case LFUN_INSET_MARGINAL:
+	case LFUN_INSERT_NOTE:
+	case LFUN_INSET_OPTARG:
+	case LFUN_INSERT_BOX:
+	case LFUN_INSERT_BRANCH:
+	case LFUN_INSET_WRAP:
+	case LFUN_INSET_ERT: {
+		if (tablemode(cur)) {
+			status.enabled(false);
+			return true;
+		}
 	}
 
 	default:

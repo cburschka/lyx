@@ -1,3 +1,10 @@
+2005-03-12  Martin Vermeer  <martin.vermeer@hut.fi>
+
+	* insettabular.C: make applying character attributes 
+	possible for multiple cells in tables. Disable collapsable
+	insets for multiple-cell selection in table (Jürgen S.)
+	Bug reported by Helge Hafting.
+
 2005-02-25  Andreas Vox  <avox@arcor.de>
 
 	* insetmarginal.[hC] (docbook): new method, render as <note>
