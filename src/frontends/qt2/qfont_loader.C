@@ -19,6 +19,8 @@
 #include "lyxrc.h"
 #include "BufferView.h"
  
+using std::endl;
+ 
 qfont_loader::qfont_loader()
 {
 }
@@ -44,6 +46,18 @@ void qfont_loader::update()
 			}
 		}
 	}
+}
+
+ 
+QFont const & qfont_loader::get(LyXFont const & f)
+{
+	QFont const & ret(getfontinfo(f)->font);
+ 
+	if (lyxerr.debugging(Debug::FONT)) {
+		lyxerr[Debug::FONT] << "Font '" << f.stateText(0)
+			<< "' matched by\n" << ret.rawName().latin1() << endl;
+	}
+	return ret;
 }
 
  

@@ -41,9 +41,7 @@ public:
 	bool available(LyXFont const & f);
  
 	/// get the QFont for this LyXFont
-	QFont const & get(LyXFont const & f) {
-		return getfontinfo(f)->font;
-	}
+	QFont const & get(LyXFont const & f);
 
 	/// get the QFont metrics for this LyXFont
 	QFontMetrics const & metrics(LyXFont const & f) {
