@@ -449,11 +449,16 @@ void FormCitation::update()
 	// Use the citation command to update the GUI
 	updateStyle(dialog_.get(), controller().params().getCmdName());
 
-	bool const natbib = controller().usingNatbib();
-	setEnabled(dialog_->check_full_author_list, natbib);
-	setEnabled(dialog_->check_force_uppercase, natbib);
-	setEnabled(dialog_->choice_style, natbib || controller().usingJurabib());
-	setEnabled(dialog_->input_before, natbib || controller().usingJurabib());
+	biblio::CiteEngine const engine = controller().getEngine();
+	bool const natbib_engine =
+		engine == biblio::ENGINE_NATBIB_AUTHORYEAR ||
+		engine == biblio::ENGINE_NATBIB_NUMERICAL;
+	bool const basic_engine = engine == biblio::ENGINE_BASIC;
+
+	setEnabled(dialog_->check_full_author_list, natbib_engine);
+	setEnabled(dialog_->check_force_uppercase, natbib_engine);
+	setEnabled(dialog_->choice_style, !basic_engine);
+	setEnabled(dialog_->input_before, !basic_engine);
 
 	// No keys have been selected yet, so...
 	fl_clear_browser(dialog_->browser_info);

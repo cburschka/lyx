@@ -20,8 +20,6 @@
 #include "funcrequest.h"
 #include "LaTeXFeatures.h"
 
-#include "frontends/controllers/biblio.h"
-
 #include "support/lstrings.h"
 
 using lyx::support::ascii_lowercase;
@@ -275,29 +273,10 @@ string const InsetCitation::generateLabel(Buffer const & buffer) const
 }
 
 
-InsetCitation::Cache::Style InsetCitation::getStyle(Buffer const & buffer) const
-{
-	Cache::Style style = Cache::BASIC;
-
-	if (buffer.params().use_natbib) {
-		if (buffer.params().use_numerical_citations) {
-			style = Cache::NATBIB_NUM;
-		} else {
-			style = Cache::NATBIB_AY;
-		}
-	}
-
-	if (buffer.params().use_jurabib)
-		style = Cache::JURABIB;
-
-	return style;
-}
-
-
 string const InsetCitation::getScreenLabel(Buffer const & buffer) const
 {
-	Cache::Style const style = getStyle(buffer);
-	if (cache.params == params() && cache.style == style)
+	biblio::CiteEngine const engine = biblio::getEngine(buffer);
+	if (cache.params == params() && cache.engine == engine)
 		return cache.screen_label;
 
 	// The label has changed, so we have to re-create it.
@@ -314,7 +293,7 @@ string const InsetCitation::getScreenLabel(Buffer const & buffer) const
 		label += "...";
 	}
 
-	cache.style  = style;
+	cache.engine  = engine;
 	cache.params = params();
 	cache.generated_label = glabel;
 	cache.screen_label = label;
@@ -325,7 +304,8 @@ string const InsetCitation::getScreenLabel(Buffer const & buffer) const
 
 int InsetCitation::plaintext(Buffer const & buffer, ostream & os, int) const
 {
-	if (cache.params == params() && cache.style == getStyle(buffer))
+	if (cache.params == params() &&
+	    cache.engine == biblio::getEngine(buffer))
 		os << cache.generated_label;
 	else
 		os << generateLabel(buffer);

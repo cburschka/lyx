@@ -16,10 +16,21 @@
 #include <string>
 #include <vector>
 
+class Buffer;
+
 /** Functions of use to citation and bibtex GUI controllers and views */
 namespace biblio {
 
-///
+enum CiteEngine {
+	ENGINE_BASIC,
+	ENGINE_NATBIB_AUTHORYEAR,
+	ENGINE_NATBIB_NUMERICAL,
+	ENGINE_JURABIB
+};
+
+CiteEngine getEngine(Buffer const &);
+
+
 enum CiteStyle {
 	CITE,
 	CITET,
@@ -31,19 +42,15 @@ enum CiteStyle {
 	CITEYEARPAR
 };
 
-///
+
 enum Search {
-	///
 	SIMPLE,
-	///
 	REGEX
 };
 
-///
+
 enum Direction {
-	///
 	FORWARD,
-	///
 	BACKWARD
 };
 
@@ -116,7 +123,7 @@ a flag forcing upper case, e.g. "della Casa" becomes "Della Case"
 std::string const getCiteCommand(CiteStyle, bool full, bool forceUCase);
 
 /// Returns a vector of available Citation styles.
-std::vector<CiteStyle> const getCiteStyles(bool usingNatbib, bool usingJurabib);
+std::vector<CiteStyle> const getCiteStyles(CiteEngine);
 
 /**
    "Translates" the available Citation Styles into strings for this key.

@@ -1,3 +1,8 @@
+2004-05-10  Angus Leeming  <leeming@lyx.org>
+
+	* FormCitation.C: simplified code to use the biblio::CiteEngine
+	enum rather than multiple bools, usingNatbib and using Jurabib.
+
 2004-05-04  Angus Leeming  <leeming@lyx.org>
 
 	* FormRef.C (input): don't activate the Apply buttons when using

@@ -13,7 +13,6 @@
 #include "ControlCitation.h"
 
 #include "buffer.h"
-#include "bufferparams.h"
 
 
 using std::string;
@@ -36,7 +35,9 @@ bool ControlCitation::initialiseParams(string const & data)
 	vector<pair<string, string> > blist;
 	kernel().buffer().fillWithBibKeys(blist);
 
-	bool use_styles = (usingNatbib() || usingJurabib());
+	biblio::CiteEngine const engine = biblio::getEngine(kernel().buffer());
+		
+	bool use_styles = engine != biblio::ENGINE_BASIC;
 
 	typedef std::map<string, string>::value_type InfoMapValue;
 
@@ -47,12 +48,11 @@ bool ControlCitation::initialiseParams(string const & data)
 	}
 
 	if (citeStyles_.empty())
-		citeStyles_ = biblio::getCiteStyles(usingNatbib(), usingJurabib());
+		citeStyles_ = biblio::getCiteStyles(engine);
 	else {
 		if ((use_styles && citeStyles_.size() == 1) ||
 		    (!use_styles && citeStyles_.size() != 1))
-			citeStyles_ = biblio::getCiteStyles(usingNatbib(),
-				usingJurabib());
+			citeStyles_ = biblio::getCiteStyles(engine);
 	}
 
 	return true;
@@ -73,15 +73,9 @@ biblio::InfoMap const & ControlCitation::bibkeysInfo() const
 }
 
 
-bool ControlCitation::usingNatbib() const
+biblio::CiteEngine ControlCitation::getEngine() const
 {
-    return kernel().buffer().params().use_natbib;
-}
-
-
-bool ControlCitation::usingJurabib() const
-{
-    return kernel().buffer().params().use_jurabib;
+	return biblio::getEngine(kernel().buffer());
 }
 
 
@@ -89,10 +83,10 @@ vector<string> const ControlCitation::getCiteStrings(string const & key) const
 {
 	vector<string> styles;
 
-	vector<biblio::CiteStyle> const cs =
-		biblio::getCiteStyles(usingNatbib(), usingJurabib());
+	biblio::CiteEngine const engine = biblio::getEngine(kernel().buffer());
+	vector<biblio::CiteStyle> const cs = biblio::getCiteStyles(engine);
 
-	if (kernel().buffer().params().use_numerical_citations)
+	if (engine == biblio::ENGINE_NATBIB_NUMERICAL)
 		styles = biblio::getNumericalStrings(key, bibkeysInfo_, cs);
 	else
 		styles = biblio::getAuthorYearStrings(key, bibkeysInfo_, cs);

@@ -13,10 +13,12 @@
 
 #include "biblio.h"
 
-#include "support/std_sstream.h"
-#include "gettext.h" // for _()
+#include "buffer.h"
+#include "bufferparams.h"
+#include "gettext.h"
 
 #include "support/lstrings.h"
+#include "support/std_sstream.h"
 
 #include <boost/regex.hpp>
 
@@ -560,24 +562,53 @@ string const getCiteCommand(CiteStyle command, bool full, bool forceUCase)
 }
 
 
-vector<CiteStyle> const getCiteStyles(bool usingNatbib, bool usingJurabib)
+CiteEngine getEngine(Buffer const & buffer)
 {
-	unsigned int nStyles = 1;
+	CiteEngine engine = ENGINE_BASIC;
+
+	if (buffer.params().use_natbib) {
+		if (buffer.params().use_numerical_citations) {
+			engine = ENGINE_NATBIB_NUMERICAL;
+		} else {
+			engine = ENGINE_NATBIB_AUTHORYEAR;
+		}
+	}
+
+	if (buffer.params().use_jurabib)
+		engine = ENGINE_JURABIB;
+
+	return engine;
+}
+
+
+vector<CiteStyle> const getCiteStyles(CiteEngine engine)
+{
+	unsigned int nStyles = 0;
 	unsigned int start = 0;
-	if (usingNatbib) {
+
+	switch (engine) {
+	case ENGINE_BASIC:
+		nStyles = 1;
+		start = 0;
+		break;
+	case ENGINE_NATBIB_AUTHORYEAR:
+	case ENGINE_NATBIB_NUMERICAL:
 		nStyles = nCiteStyles - 1;
 		start = 1;
-	}
-	if (usingJurabib)
+		break;
+	case ENGINE_JURABIB:
 		nStyles = nCiteStyles;
-
-	vector<CiteStyle> styles(nStyles);
-
-	vector<CiteStyle>::size_type i = 0;
-	int j = start;
-	for (; i != styles.size(); ++i, ++j) {
-		styles[i] = citeStyles[j];
+		start = 0;
+		break;
 	}
+
+	typedef vector<CiteStyle> cite_vec;
+
+	cite_vec styles(nStyles);
+	cite_vec::size_type i = 0;
+	int j = start;
+	for (; i != styles.size(); ++i, ++j)
+		styles[i] = citeStyles[j];
 
 	return styles;
 }

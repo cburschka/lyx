@@ -125,10 +125,11 @@ void QCitation::fillStyles()
 
 	vector<string> const & sty = controller().getCiteStrings(key);
 
-	bool const use_styles = (controller().usingNatbib() ||
-		controller().usingJurabib());
-	dialog_->citationStyleCO->setEnabled(!sty.empty() && use_styles);
-	dialog_->citationStyleLA->setEnabled(!sty.empty() && use_styles);
+	biblio::CiteEngine const engine = controller().getEngine();
+	bool const basic_engine = engine == biblio::ENGINE_BASIC;
+
+	dialog_->citationStyleCO->setEnabled(!sty.empty() && !basic_engine);
+	dialog_->citationStyleLA->setEnabled(!sty.empty() && !basic_engine);
 
 	for (vector<string>::const_iterator it = sty.begin();
 		it != sty.end(); ++it) {
@@ -142,12 +143,15 @@ void QCitation::fillStyles()
 
 void QCitation::updateStyle()
 {
-	bool const natbib = controller().usingNatbib();
+	biblio::CiteEngine const engine = controller().getEngine();
+	bool const natbib_engine =
+		engine == biblio::ENGINE_NATBIB_AUTHORYEAR ||
+		engine == biblio::ENGINE_NATBIB_NUMERICAL;
+	bool const basic_engine = engine == biblio::ENGINE_BASIC;
 
-	dialog_->fulllistCB->setEnabled(natbib);
-	dialog_->forceuppercaseCB->setEnabled(natbib);
-	dialog_->textBeforeED->setEnabled(natbib ||
-		controller().usingJurabib());
+	dialog_->fulllistCB->setEnabled(natbib_engine);
+	dialog_->forceuppercaseCB->setEnabled(natbib_engine);
+	dialog_->textBeforeED->setEnabled(!basic_engine);
 
 	string const & command = controller().params().getCmdName();
 

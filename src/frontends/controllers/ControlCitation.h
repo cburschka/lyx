@@ -37,9 +37,8 @@ public:
 	biblio::InfoMap const & bibkeysInfo() const;
 
 	///
-	bool usingNatbib() const;
-	///
-	bool usingJurabib() const;
+	biblio::CiteEngine getEngine() const;
+
 	/// Possible citations based on this key
 	std::vector<std::string> const getCiteStrings(std::string const & key) const;
 

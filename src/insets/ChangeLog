@@ -1,3 +1,8 @@
+2004-05-10  Angus Leeming  <leeming@lyx.org>
+
+	* insetcite.[Ch]: move the Cache::Style enum to biblio::CiteEngine.
+	Ditto with getStyle, moved to biblio::getEngine.
+
 2004-05-07  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* insetgraphics.C (validate): remove pre 233 file format stuff,

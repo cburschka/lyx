@@ -1,3 +1,8 @@
+2004-05-10  Angus Leeming  <leeming@lyx.org>
+
+	* QCitation.C: simplified code to use the biblio::CiteEngine
+	enum rather than multiple bools, usingNatbib and using Jurabib.
+
 2004-05-05  Angus Leeming  <leeming@lyx.org>
 
 	* QIndexDialog.[Ch] (reject): overload the QDialog::reject function

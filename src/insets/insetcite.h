@@ -15,6 +15,7 @@
 
 
 #include "insetcommand.h"
+#include "frontends/controllers/biblio.h"
 
 /** Used to insert citations
  */
@@ -39,23 +40,16 @@ public:
 		  OutputParams const &) const;
 	///
 	void validate(LaTeXFeatures &) const;
+
 private:
+	/// This function does the donkey work of creating the pretty label
+	std::string const generateLabel(Buffer const &) const;
+
 	struct Cache {
 		///
-		enum Style {
-			///
-			BASIC,
-			///
-			NATBIB_AY,
-			///
-			NATBIB_NUM,
-			///
-			JURABIB
-		};
+		Cache() : engine(biblio::ENGINE_BASIC) {}
 		///
-		Cache() : style(BASIC) {}
-		///
-		Style style;
+		biblio::CiteEngine engine;
 		///
 		InsetCommandParams params;
 		///
@@ -63,12 +57,6 @@ private:
 		///
 		std::string screen_label;
 	};
-
-	/// This function does the donkey work of creating the pretty label
-	std::string const generateLabel(Buffer const &) const;
-	///
-	Cache::Style getStyle(Buffer const & buffer) const;
-
 	///
 	mutable Cache cache;
 };
