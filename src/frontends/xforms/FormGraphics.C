@@ -35,12 +35,18 @@
 
 #include "lyx_forms.h"
 
+#include <cmath>
+
 using lyx::support::bformat;
 using lyx::support::float_equal;
 using lyx::support::getStringFromVector;
 using lyx::support::strToDbl;
 using lyx::support::strToInt;
 using lyx::support::token;
+
+#ifndef CXX_GLOBAL_CSTD
+using std::floor;
+#endif
 
 using std::endl;
 

@@ -1,3 +1,7 @@
+2004-05-02  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* FormGraphics.C: #include <cmath> (STLport compile fix for floor())
+
 2004-04-30  Angus Leeming  <leeming@lyx.org>
 
 	* XFormsToolbar.[Ch]: add code to generate an 'inactive' version
