@@ -27,19 +27,19 @@ using std::endl;
 
 void warning_pimpl(string const &, string const & message)
 {
-	fl_show_messages(message.c_str());
+	fl_show_messages(formatted(message, 300).c_str());
 }
 
 
 void error_pimpl(string const &, string const & message)
 {
-	fl_show_messages(message.c_str());
+	fl_show_messages(formatted(message, 300).c_str());
 }
 
 
 void information_pimpl(string const &, string const & message)
 {
-	fl_show_messages(message.c_str());
+	fl_show_messages(formatted(message, 300).c_str());
 }
 
 
@@ -56,11 +56,11 @@ int prompt_pimpl(string const &, string const & question,
 
 	if (b3.empty()) {
 		fl_set_choices_shortcut(b1sc.c_str(), b2sc.c_str(), "");
-		return fl_show_choices(question.c_str(),
+		return fl_show_choices(formatted(question, 300).c_str(),
 			2, b1label.c_str(), b2label.c_str(), "", default_button + 1) - 1;
 	} else {
 		fl_set_choices_shortcut(b1sc.c_str(), b2sc.c_str(), b3sc.c_str());
-		return fl_show_choices(question.c_str(),
+		return fl_show_choices(formatted(question, 300).c_str(),
 			3, b1label.c_str(), b2label.c_str(), b3label.c_str(),
 			default_button + 1) - 1;
 	}
