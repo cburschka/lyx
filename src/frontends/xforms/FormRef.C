@@ -136,6 +136,28 @@ void FormRef::update()
 }
 
 
+namespace {
+
+void updateHighlight(FL_OBJECT * browser,
+		     vector<string> const & keys,
+		     string const & ref)
+{
+	vector<string>::const_iterator cit = (ref.empty())
+		? keys.end()
+		: find(keys.begin(), keys.end(), ref);
+
+	if (cit == keys.end()) {
+		fl_deselect_browser(browser);
+	} else {
+		int const i = static_cast<int>(cit - keys.begin());
+		fl_set_browser_topline(browser, max(i-5, 1));
+		fl_select_browser_line(browser, i+1);
+	}
+}
+ 
+} // namespace anon
+
+
 void FormRef::updateBrowser(vector<string> const & akeys) const
 {
 	vector<string> keys(akeys);
@@ -144,8 +166,11 @@ void FormRef::updateBrowser(vector<string> const & akeys) const
 
 	vector<string> browser_keys = getVector(dialog_->browser_refs);
 
-	if (browser_keys == keys)
+	if (browser_keys == keys) {
+		updateHighlight(dialog_->browser_refs, keys,
+				getString(dialog_->input_ref));
 		return;
+	}
 
 	fl_clear_browser(dialog_->browser_refs);
 	for (vector<string>::const_iterator it = keys.begin();
@@ -164,20 +189,8 @@ void FormRef::updateBrowser(vector<string> const & akeys) const
 		setEnabled(dialog_->browser_refs, true);
 		setEnabled(dialog_->check_sort,   true);
 
-		string ref = fl_get_input(dialog_->input_ref);
-		vector<string>::const_iterator cit = (ref.empty())
-			? keys.begin()
-			: find(keys.begin(), keys.end(), ref);
-		if (cit == keys.end()) {
-			fl_deselect_browser(dialog_->browser_refs);
-		} else {
-			if (ref.empty())
-				fl_set_input(dialog_->input_ref, cit->c_str());
-
-			int const i = static_cast<int>(cit - keys.begin());
-			fl_set_browser_topline(dialog_->browser_refs, max(i-5, 1));
-			fl_select_browser_line(dialog_->browser_refs, i+1);
-		}
+		updateHighlight(dialog_->browser_refs, keys,
+				getString(dialog_->input_ref));
 	}
 }
 
@@ -187,8 +200,8 @@ void FormRef::apply()
 	int const type = fl_get_choice(dialog_->choice_format) - 1;
 	controller().params().setCmdName(InsetRef::getName(type));
 
-	controller().params().setOptions(fl_get_input(dialog_->input_name));
-	controller().params().setContents(fl_get_input(dialog_->input_ref));
+	controller().params().setOptions(getString(dialog_->input_name));
+	controller().params().setContents(getString(dialog_->input_ref));
 }
 
 
@@ -204,7 +217,7 @@ ButtonPolicy::SMInput FormRef::input(FL_OBJECT * ob, long)
 
 		at_ref_ = !at_ref_;
 		if (at_ref_) {
-			controller().gotoRef(fl_get_input(dialog_->input_ref));
+			controller().gotoRef(getString(dialog_->input_ref));
 		} else {
 			controller().gotoBookmark();
 		}

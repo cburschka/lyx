@@ -1,3 +1,10 @@
+2002-10-24  Angus Leeming  <leeming@lyx.org>
+
+	* FormRef.C (updateBrowser): invoke updateHighlight
+	(updateHighlight): don't select a browser item if there is no
+	reference selected.
+	(apply, input): use getString not fl_get_input.
+
 2002-10-23  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* FormExternal.C (apply): 
