@@ -9,15 +9,10 @@
 
 #include <fstream>
 #include <stack>
+#include <vector>
 
 ///
 struct LyXLex::Pimpl : boost::noncopyable {
-	///
-	enum {
-		///
-		LEX_MAX_BUFF = 2048
-	};
-
 	///
 	Pimpl(keyword_item * tab, int num);
 	///
@@ -59,7 +54,7 @@ struct LyXLex::Pimpl : boost::noncopyable {
 	///
 	int no_items;
 	///
-	char buff[LEX_MAX_BUFF];
+	std::vector<char> buff;
 	///
 	int status;
 	///

@@ -54,7 +54,7 @@ int LyXLex::getLineNo() const
 
 string const LyXLex::text() const
 {
-	return &pimpl_->buff[0];
+	return pimpl_->getString();
 }
 
 
@@ -191,9 +191,9 @@ string const LyXLex::getLongString(string const & endtoken)
 
 bool LyXLex::getBool() const
 {
-	if (compare(pimpl_->buff, "true") == 0) {
+	if (pimpl_->getString() == "true") {
 		return true;
-	} else if (compare(pimpl_->buff, "false") != 0) {
+	} else if (pimpl_->getString() != "false") {
 		pimpl_->printError("Bad boolean `$$Token'. Use \"false\" or \"true\"");
 	}
 	return false;
@@ -233,8 +233,10 @@ int LyXLex::findToken(char const * str[])
 
 	int i = 0;
 
-	if (compare(pimpl_->buff, "default")) {
-		while (str[i][0] && compare(str[i], pimpl_->buff)) {
+	string const search_token = pimpl_->getString();
+
+	if (search_token != "default") {
+		while (str[i][0] && str[i] != search_token) {
 			++i;
 		}
 		if (!str[i][0]) {

@@ -15,6 +15,8 @@ using std::ios;
 using std::istream;
 using std::endl;
 using std::lower_bound;
+using std::vector;
+using std::getline;
 
 // namespace {
 struct compare_tags {
@@ -40,7 +42,7 @@ LyXLex::Pimpl::Pimpl(keyword_item * tab, int num)
 
 string const LyXLex::Pimpl::getString() const
 {
-	return string(buff);
+	return string(buff.begin(), buff.end());
 }
 
 
@@ -132,6 +134,7 @@ void LyXLex::Pimpl::setStream(istream & i)
 	lineno = 0;
 }
 
+
 void LyXLex::Pimpl::setCommentChar(char c)
 {
 	commentChar = c;
@@ -147,12 +150,10 @@ bool LyXLex::Pimpl::next(bool esc /* = false */)
 		if (pushTok.find(' ') != string::npos && pushTok[0] == '\\') {
 			string tmp;
 			pushTok = split(pushTok, tmp, ' ');
-			tmp.copy(buff, string::npos);
-			buff[tmp.length()] = '\0';
+			buff.assign(tmp.begin(), tmp.end());
 			return true;
 		} else {
-			pushTok.copy(buff, string::npos);
-			buff[pushTok.length()] = '\0';
+			buff.assign(pushTok.begin(), pushTok.end());
 			pushTok.erase();
 			return true;
 		}
@@ -166,11 +167,13 @@ bool LyXLex::Pimpl::next(bool esc /* = false */)
 			c = cc;
 			if (c == commentChar) {
 				// Read rest of line (fast :-)
-				// That is not fast... (Lgb)
 #if 1
-				is.getline(buff, sizeof(buff));
+				// That is not fast... (Lgb)
+				string dummy;
+				getline(is, dummy);
+				
 				lyxerr[Debug::LYXLEX] << "Comment read: `" << c
-						      << buff << '\'' << endl;
+						      << dummy << '\'' << endl;
 #else
 				// unfortunately ignore is buggy (Lgb)
 				is.ignore(100, '\n');
@@ -180,20 +183,14 @@ bool LyXLex::Pimpl::next(bool esc /* = false */)
 			}
 
 			if (c == '\"') {
-				int i = -1;
+				buff.clear();
+				
 				do {
 					is.get(cc);
 					c = cc;
 					if (c != '\r')
-						buff[++i] = c;
-				} while (c != '\"' && c != '\n' && is &&
-					 i != (LEX_MAX_BUFF - 2));
-
-				if (i == (LEX_MAX_BUFF - 2)) {
-					printError("Line too long");
-					c = '\"'; // Pretend we got a "
-					++i;
-				}
+						buff.push_back(c);
+				} while (c != '\"' && c != '\n' && is);
 
 				if (c != '\"') {
 					printError("Missing quote");
@@ -201,7 +198,7 @@ bool LyXLex::Pimpl::next(bool esc /* = false */)
 						++lineno;
 				}
 
-				buff[i] = '\0';
+				buff.pop_back();
 				status = LEX_DATA;
 				break;
 			}
@@ -214,17 +211,14 @@ bool LyXLex::Pimpl::next(bool esc /* = false */)
 				// the type _have_ to be unsigned. It usually a
 				// lot better to use the functions from cctype
 			if (c > ' ' && is)  {
-				int i = 0;
+				buff.clear();
+				
 				do {
-					buff[i++] = c;
+					buff.push_back(c);
 					is.get(cc);
 					c = cc;
-				} while (c > ' ' && c != ',' && is
-					 && (i != LEX_MAX_BUFF - 1));
-				if (i == LEX_MAX_BUFF - 1) {
-					printError("Line too long");
-				}
-				buff[i] = '\0';
+				} while (c > ' ' && c != ',' && is);
+
 				status = LEX_TOKEN;
 			}
 
@@ -244,7 +238,7 @@ bool LyXLex::Pimpl::next(bool esc /* = false */)
 		if (status) return true;
 
 		status = is.eof() ? LEX_FEOF: LEX_UNDEF;
-		buff[0] = '\0';
+		buff.clear();
 		return false;
 	} else {
 		unsigned char c = 0; // getc() returns an int
@@ -260,33 +254,32 @@ bool LyXLex::Pimpl::next(bool esc /* = false */)
 
 			if (c == '\\') {
 				// escape
-				int i = 0;
+				buff.clear();
+				
 				do {
 					if (c == '\\') {
 						// escape the next char
 						is.get(cc);
 						c = cc;
 					}
-					buff[i++] = c;
+					buff.push_back(c);
 					is.get(cc);
 					c = cc;
-				} while (c > ' ' && c != ',' && is
-					 && (i != LEX_MAX_BUFF - 1));
-				if (i == LEX_MAX_BUFF - 1) {
-					printError("Line too long");
-				}
-				buff[i] = '\0';
+				} while (c > ' ' && c != ',' && is);
+
 				status = LEX_TOKEN;
 				continue;
 			}
 
 			if (c == commentChar) {
 				// Read rest of line (fast :-)
-				// That is still not fast... (Lgb)
 #if 1
-				is.getline(buff, sizeof(buff));
+				// That is still not fast... (Lgb)
+				string dummy;
+				getline(is, dummy);
+				
 				lyxerr[Debug::LYXLEX] << "Comment read: `" << c
-						      << buff << '\'' << endl;
+						      << dummy << '\'' << endl;
 #else
 				// but ignore is also still buggy (Lgb)
 				// This is fast (Lgb)
@@ -298,7 +291,8 @@ bool LyXLex::Pimpl::next(bool esc /* = false */)
 
 			// string
 			if (c == '\"') {
-				int i = -1;
+				buff.clear();
+				
 				bool escaped = false;
 				do {
 					escaped = false;
@@ -312,19 +306,12 @@ bool LyXLex::Pimpl::next(bool esc /* = false */)
 						if (c == '\"' || c == '\\')
 							escaped = true;
 						else
-							buff[++i] = '\\';
+							buff.push_back('\\');
 					}
-					buff[++i] = c;
+					buff.push_back(c);
 
 					if (!escaped && c == '\"') break;
-				} while (c != '\n' && is &&
-					 i != (LEX_MAX_BUFF - 2));
-
-				if (i == (LEX_MAX_BUFF - 2)) {
-					printError("Line too long");
-					c = '\"'; // Pretend we got a "
-					++i;
-				}
+				} while (c != '\n' && is);
 
 				if (c != '\"') {
 					printError("Missing quote");
@@ -332,13 +319,14 @@ bool LyXLex::Pimpl::next(bool esc /* = false */)
 						++lineno;
 				}
 
-				buff[i] = '\0';
+				buff.pop_back();
 				status = LEX_DATA;
 				break;
 			}
 
 			if (c > ' ' && is) {
-				int i = 0;
+				buff.clear();
+				
 				do {
 					if (c == '\\') {
 						// escape the next char
@@ -346,15 +334,11 @@ bool LyXLex::Pimpl::next(bool esc /* = false */)
 						c = cc;
 						//escaped = true;
 					}
-					buff[i++] = c;
+					buff.push_back(c);
 					is.get(cc);
 					c = cc;
-				} while (c > ' ' && c != ',' && is
-					 && (i != LEX_MAX_BUFF - 1));
-				if (i == LEX_MAX_BUFF - 1) {
-					printError("Line too long");
-				}
-				buff[i] = '\0';
+				} while (c > ' ' && c != ',' && is);
+
 				status = LEX_TOKEN;
 			}
 			// new line
@@ -365,7 +349,7 @@ bool LyXLex::Pimpl::next(bool esc /* = false */)
 		if (status) return true;
 
 		status = is.eof() ? LEX_FEOF : LEX_UNDEF;
-		buff[0] = '\0';
+		buff.clear();
 		return false;
 	}
 }
@@ -390,39 +374,34 @@ int LyXLex::Pimpl::search_kw(char const * const tag) const
 int LyXLex::Pimpl::lex()
 {
 	//NOTE: possible bug.
-	if (next() && status == LEX_TOKEN)
-		return search_kw(buff);
-	else
+	if (next() && status == LEX_TOKEN) {
+		return search_kw(getString().c_str());
+	} else
 		return status;
 }
 
 
 bool LyXLex::Pimpl::eatLine()
 {
-	int i = 0;
+	buff.clear();
+	
 	unsigned char c = '\0';
 	char cc = 0;
-	while (is && c != '\n' && i != (LEX_MAX_BUFF - 1)) {
+	while (is && c != '\n') {
 		is.get(cc);
 		c = cc;
 		//lyxerr[Debug::LYXLEX] << "LyXLex::EatLine read char: `"
 		//		      << c << '\'' << endl;
 		if (c != '\r')
-			buff[i++] = c;
+			buff.push_back(c);
 	}
-	if (i == (LEX_MAX_BUFF - 1) && c != '\n') {
-		printError("Line too long");
-		c = '\n'; // Pretend we had an end of line
-		--lineno; // but don't increase line counter (netto effect)
-		++i; // and preserve last character read.
-	}
+
 	if (c == '\n') {
 		++lineno;
-		buff[--i] = '\0'; // i can never be 0 here, so no danger
+		buff.pop_back();
 		status = LEX_DATA;
 		return true;
 	} else {
-		buff[i] = '\0';
 		return false;
 	}
 }
@@ -437,12 +416,10 @@ bool LyXLex::Pimpl::nextToken()
 		if (pushTok.find(' ') != string::npos && pushTok[0] == '\\') {
 			string tmp;
 			pushTok = split(pushTok, tmp, ' ');
-			tmp.copy(buff, string::npos);
-			buff[tmp.length()] = '\0';
+			buff.assign(tmp.begin(), tmp.end());
 			return true;
 		} else {
-			pushTok.copy(buff, string::npos);
-			buff[pushTok.length()] = '\0';
+			buff.assign(pushTok.begin(), pushTok.end());
 			pushTok.erase();
 			return true;
 		}
@@ -455,29 +432,23 @@ bool LyXLex::Pimpl::nextToken()
 		is.get(cc);
 		c = cc;
 		if (c >= ' ' && is) {
-			int i = 0;
+			buff.clear();
+			
 			if (c == '\\') { // first char == '\\'
 				do {
-					buff[i++] = c;
+					buff.push_back(c);
 					is.get(cc);
 					c = cc;
-				} while (c > ' ' && c != '\\' && is
-					 && i != (LEX_MAX_BUFF - 1));
+				} while (c > ' ' && c != '\\' && is);
 			} else {
 				do {
-					buff[i++] = c;
+					buff.push_back(c);
 					is.get(cc);
 					c = cc;
-				} while (c >= ' ' && c != '\\' && is
-					 && i != (LEX_MAX_BUFF - 1));
-			}
-
-			if (i == (LEX_MAX_BUFF - 1)) {
-				printError("Line too long");
+				} while (c >= ' ' && c != '\\' && is);
 			}
 
 			if (c == '\\') is.putback(c); // put it back
-			buff[i] = '\0';
 			status = LEX_TOKEN;
 		}
 
@@ -488,7 +459,7 @@ bool LyXLex::Pimpl::nextToken()
 	if (status)  return true;
 
 	status = is.eof() ? LEX_FEOF: LEX_UNDEF;
-	buff[0] = '\0';
+	buff.clear();
 	return false;
 }
 

@@ -1,5 +1,20 @@
 2003-04-14  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
+	* lyxlex_pimpl.h: get rid of LEX_MAX_BUFF, change buff to be a
+	vector<char> instead of a char[].
+
+	* lyxlex_pimpl.C (getString): adjust
+	(next): adjust
+	(lex): use getString
+	(eatLine): adjust
+	(nextToken): adjust
+
+	* lyxlex.C (text): use pimpl_->getString()
+	(getBool): ditto
+	(findToken): ditto
+
+2003-04-14  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
 	* text2.C (getInset): temp vars for cursor.par() and cursor.pos()
 	(makeFontEntriesLayoutSpecific): temp var for par.size()
 	(setLayout): temp var for ownerParagraphs().end()
