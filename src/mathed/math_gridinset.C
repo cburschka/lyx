@@ -27,7 +27,7 @@ public:
 	///
 	virtual string const inset2string() const
 	{
-		lyxerr << "inset2string called" << endl;
+		lyxerr << "inset2string called" << std::endl;
 		return "whatever"; //(inset_);
 	}
 
