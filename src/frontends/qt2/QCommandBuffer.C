@@ -35,6 +35,15 @@ public:
 	}
  
 protected:
+	void mouseReleaseEvent(QMouseEvent * e) {
+		if (e->x() < 0 || e->y() < 0
+			|| e->x() > width() || e->y() > height()) {
+			hide();
+		} else {
+			emit selected(currentText());
+		}
+	}
+ 
 	void keyPressEvent(QKeyEvent * e) {
 		if (e->key() == Key_Escape) {
 			hide();
@@ -116,14 +125,14 @@ void QCommandBuffer::complete()
 	edit_->setText(new_input.c_str());
 
 	QTempListBox * list = new QTempListBox();
+
+	// For some reason the scrollview's contents are larger
+	// than the number of actual items... 
 	vector<string>::const_iterator cit = comp.begin();
 	vector<string>::const_iterator end = comp.end();
 	for (; cit != end; ++cit) {
 		list->insertItem(cit->c_str());
 	}
-
-	// For some reason we get lots of empty entries and the 
-	// scrollbar is wrong as a result. No fix. Qt Sucks.
  
 	// width() is not big enough by a few pixels. Qt Sucks.
 	list->setMinimumWidth(list->sizeHint().width() + 10);
@@ -138,13 +147,6 @@ void QCommandBuffer::complete()
 	connect(list, SIGNAL(selected(const QString &)),
 		this, SLOT(complete_selected(const QString &))); 
  
-	// Note we *cannot* make a single click popup, because
-	// events get generated for outside the popup on Qt 2.3.1
-	// and even gives valid QListBoxItem *'s. We have no way
-	// to work past this. Qt Sucks. 
-	//connect(list, SIGNAL(clicked(QListBoxItem *)),
-	//	this, SLOT(complete_selected2(QListBoxItem *)));
-
 	list->show();
 	list->setFocus();
 }
