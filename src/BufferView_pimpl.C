@@ -547,10 +547,10 @@ void BufferView::Pimpl::workAreaButtonPress(int xpos, int ypos,
 	if (button == 4 || button == 5) {
 		switch (button) {
 		case 4:
-			scrollUp(100); // This number is only temporary
+			scrollUp(lyxrc.wheel_jump); // default=100, set in lyxrc
 			break;
 		case 5:
-			scrollDown(100);
+			scrollDown(lyxrc.wheel_jump);
 			break;
 		}
 	}

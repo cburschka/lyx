@@ -1,3 +1,13 @@
+2000-07-05  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+ 	* src/LaTeX.C: Patch from Baruch to add hebrew table of
+	contents to the extension list.
+
+2000-07-04  edscott  <edscott@imp.mx>
+
+	* src/lyxrc.C, src/lyxrc.h, src/BufferView_pimpl.C,
+	lib/lyxrc.example: added option \wheel_jump
+
 2000-06-29  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/version.h: set version in cvs to 1.1.5fixcvs, to avoid

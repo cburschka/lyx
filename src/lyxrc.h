@@ -138,6 +138,8 @@ public:
 	string backupdir_path;
 	/// Zoom factor for screen fonts
 	unsigned int zoom;
+	/// parameter for button_4 and button_5
+	unsigned int wheel_jump;
 	/// Screen font sizes in points for each font size
 	float font_sizes[10];
 	/// Allow the use of scalable fonts? Default is yes.

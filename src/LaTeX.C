@@ -69,6 +69,7 @@ const texfile_struct all_files[] = {
 	{ LaTeX::LOG, ".log"},
 	{ LaTeX::LOT, ".lot"},
 	{ LaTeX::TOC, ".toc"},
+	{ LaTeX::TOC, ".cot"}, // Hebrew TOC
 	{ LaTeX::LTX, ".ltx"},
 	{ LaTeX::TEX, ".tex"}
 };

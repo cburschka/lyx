@@ -207,6 +207,10 @@
 # is 150%.
 #\screen_zoom 100
 
+#The wheel movement factor (for mice with wheels or five button mice)
+#Default is 100, about a page down. A value of 10 give me about a line and a half
+#\wheel_jump 10
+
 # LyX normally doesn't update the cursor position if you move the scrollbar.
 # If you scroll the cursor off the screen and then start typing LyX will
 # move you back to where the cursor was. If you'd prefer to always have the 

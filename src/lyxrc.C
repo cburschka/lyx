@@ -154,6 +154,7 @@ enum LyXRCTags {
 	RC_DOCBOOK_TO_DVI_COMMAND,
 	RC_DOCBOOK_TO_HTML_COMMAND,
 	RC_DOCBOOK_TO_PDF_COMMAND,
+	RC_WHEEL_JUMP,
 	RC_LAST
 };
 
@@ -266,7 +267,8 @@ keyword_item lyxrcTags[] = {
 	{ "\\view_dvi_paper_option", RC_VIEWDVI_PAPEROPTION },
 	{ "\\view_pdf_command", RC_VIEWPDF_COMMAND },
 	{ "\\view_ps_command", RC_VIEWPS_COMMAND },
-        { "\\view_pspic_command", RC_VIEWPSPIC_COMMAND }
+        { "\\view_pspic_command", RC_VIEWPSPIC_COMMAND },
+	{ "\\wheel_jump", RC_WHEEL_JUMP }
 };
 
 /* Let the range depend of the size of lyxrcTags.  Alejandro 240596 */
@@ -325,6 +327,7 @@ void LyXRC::setDefaults() {
 	dpi = 75;
 	// Because a screen typically is wider than a piece of paper:
 	zoom = 150;
+	wheel_jump=100;
 	// Default LaTeX font size:
 	font_sizes[LyXFont::SIZE_TINY] = 5.0;
 	font_sizes[LyXFont::SIZE_SCRIPT] = 7.0;
@@ -724,6 +727,11 @@ int LyXRC::read(string const & filename)
 		case RC_SCREEN_ZOOM:
 			if (lexrc.next())
 				zoom = lexrc.GetInteger();
+			break;
+			
+		case RC_WHEEL_JUMP:
+			if (lexrc.next())
+				wheel_jump = lexrc.GetInteger();
 			break;
 			
 		case RC_SCREEN_FONT_SIZES:
@@ -1213,6 +1221,8 @@ void LyXRC::output(ostream & os) const
 		os << "\\screen_dpi " << dpi << "\n";
 	case RC_SCREEN_ZOOM:
 		os << "\\screen_zoom " << zoom << "\n";
+	case RC_WHEEL_JUMP:
+		os << "\\wheel_jump " << wheel_jump << "\n";
 	case RC_SCREEN_FONT_SIZES:
 		os.setf(ios::fixed);
 		os.precision(2);
