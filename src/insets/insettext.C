@@ -143,6 +143,12 @@ void InsetText::clear()
 		delete (*cit).second;
 		(*cit).second = 0;
 	}
+	// now also delete all caches this should be safe, hopefully
+	for (Cache::iterator cit = cache.begin(); cit != cache.end();
+		 cit = cache.begin())
+	{
+		cache.erase((*cit).first);
+	}
 
 	while (par) {
 		Paragraph * tmp = par->next();
@@ -1505,6 +1511,12 @@ void InsetText::setParagraphData(Paragraph * p)
 	for (Cache::iterator cit = cache.begin(); cit != cache.end(); ++cit){
 		delete (*cit).second;
 		(*cit).second = 0;
+	}
+	// now also delete all caches this should be safe, hopefully
+	for (Cache::iterator cit = cache.begin(); cit != cache.end();
+		 cit = cache.begin())
+	{
+		cache.erase((*cit).first);
 	}
 
 	while (par) {

@@ -1,3 +1,8 @@
+2001-07-05  Juergen Vigna  <jug@sad.it>
+
+	* insettext.C (clear): deleted also the cache not only LyXText.
+	(setParagraphData): ditto.
+
 2001-07-04  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* insetfloat.C (latex): let the specific placement take presedence
