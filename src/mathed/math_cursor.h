@@ -115,6 +115,8 @@ public:
 	/// size of current cell
 	size_type size() const;
 	///
+	bool script(bool);
+	///
 	bool interpret(string const &);
 	///
 	bool interpret(char);

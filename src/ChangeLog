@@ -1,3 +1,14 @@
+2001-12-12	Martin Vermeer <martin.vermeer@hut.fi>
+
+	* commandtags.h:
+	* LyXAction.C:
+	* lyx_main.C:
+	* lyxfunc.C:
+	* mathed/formulabase.C:
+	* mathed/math_cursor.[Ch]:
+	make sub/superscript into functions LFUN_SUB/SUPERSCRIPT.
+
+
 2001-12-12  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* lyxlength.[Ch] (operator!=): new function

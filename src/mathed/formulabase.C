@@ -556,7 +556,16 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 		updateLocal(bv, true);
 		break;
 	}
-
+	
+	case LFUN_SUPERSCRIPT:
+	case LFUN_SUBSCRIPT:
+	{
+		bv->lockedInsetStoreUndo(Undo::EDIT);
+		mathcursor->script((action == LFUN_SUPERSCRIPT));
+		updateLocal(bv, true);
+		break;
+	}
+	
 	case LFUN_MATH_DELIM:
 	{
 		lyxerr << "formulabase::LFUN_MATH_DELIM, arg: '" << arg << "'\n";

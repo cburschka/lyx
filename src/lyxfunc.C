@@ -573,6 +573,8 @@ func_status::value_type LyXFunc::getStatus(int ac,
 	case LFUN_MATH_LIMITS: 
 	case LFUN_MATH_NONUMBER: 
 	case LFUN_MATH_NUMBER:
+	case LFUN_SUBSCRIPT:
+	case LFUN_SUPERSCRIPT:
 		disable = !mathcursor;
 		break;
 
@@ -1438,6 +1440,8 @@ string const LyXFunc::dispatch(int ac,
 	case LFUN_MATH_NUMBER:
 	case LFUN_MATH_NONUMBER:
 	case LFUN_MATH_LIMITS:
+	case LFUN_SUBSCRIPT:
+	case LFUN_SUPERSCRIPT:
 	{
 		setErrorMessage(N_("This is only allowed in math mode!"));
 	}

@@ -1221,36 +1221,40 @@ bool MathCursor::interpret(string const & s)
 	return true;
 }
 
+bool MathCursor::script(bool up)
+{
+	macroModeClose();
+	lyxerr << "script 2: '" << up << "'\n";
+	selCut();
+	if (hasPrevAtom() && prevAtom()->asScriptInset()) {
+		prevAtom()->asScriptInset()->ensure(up);
+		pushRight(prevAtom());
+		idx() = up;
+		pos() = size();
+	} else if (hasNextAtom() && nextAtom()->asScriptInset()) {
+		nextAtom()->asScriptInset()->ensure(up);
+		pushLeft(nextAtom());
+		idx() = up;
+		pos() = 0;
+	} else {
+		plainInsert(MathAtom(new MathScriptInset(up)));
+		prevAtom()->asScriptInset()->ensure(up);
+		pushRight(prevAtom());
+		idx() = up;
+		pos() = 0;
+	}
+	selPaste();
+	dump("1");
+	return true;
+}
+
 
 bool MathCursor::interpret(char c)
 {
-	//lyxerr << "interpret 2: '" << c << "'\n";
-	if (c == '^' || c == '_') {
-		macroModeClose();
-		const bool up = (c == '^');
-		selCut();
-		if (hasPrevAtom() && prevAtom()->asScriptInset()) {
-			prevAtom()->asScriptInset()->ensure(up);
-			pushRight(prevAtom());
-			idx() = up;
-			pos() = size();
-		} else if (hasNextAtom() && nextAtom()->asScriptInset()) {
-			nextAtom()->asScriptInset()->ensure(up);
-			pushLeft(nextAtom());
-			idx() = up;
-			pos() = 0;
-		} else {
-			plainInsert(MathAtom(new MathScriptInset(up)));
-			prevAtom()->asScriptInset()->ensure(up);
-			pushRight(prevAtom());
-			idx() = up;
-			pos() = 0;
-		}
-		selPaste();
-		dump("1");
-		return true;
-	}
 
+	lyxerr << "interpret 2: '" << c << "'\n";
+
+	// Removed super/subscript handling from here  to ::script -MV
 
 	// handle macroMode
 	if (inMacroMode()) {

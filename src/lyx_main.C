@@ -523,6 +523,10 @@ void LyX::defaultKeyBindings(kb_keymap  * kbmap)
 	
 	kbmap->bind("Delete", LFUN_DELETE);
 	kbmap->bind("BackSpace", LFUN_BACKSPACE);
+
+	// sub- and superscript -MV
+	kbmap->bind("~S-underscore", LFUN_SUBSCRIPT);
+	kbmap->bind("~S-asciicircum", LFUN_SUPERSCRIPT);
 	
 	// kbmap->bindings to enable the use of the numeric keypad
 	// e.g. Num Lock set
