@@ -4,6 +4,8 @@
 
 2002-03-28  Juergen Vigna  <jug@sad.it>
 
+	* screen.C (toggleToggle): fix for insettexts y_offset on drawing.
+
 	* tabular.C (OldFormatRead): fix ert compatibility read inside cells.
 
 2002-03-27  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
