@@ -125,17 +125,11 @@ void InsetFormulaBase::handleFont
 	// this whole function is a hack and won't work for incremental font
 	// changes...
 	bv->lockedInsetStoreUndo(Undo::EDIT);
-	if (mathcursor->par()->name() == font) {
+	if (mathcursor->par()->name() == font)
 		mathcursor->handleFont(font);
-		bv->updateInset(this);
-	} else {
-		bool sel = mathcursor->selection();
-		if (sel)
-			bv->updateInset(this);
+	else {
 		mathcursor->handleNest(createMathInset(font));
 		mathcursor->insert(arg);
-		if (!sel)
-			bv->updateInset(this);
 	}
 }
 
@@ -466,7 +460,6 @@ dispatch_result InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 	case LFUN_MATH_LIMITS:
 		bv->lockedInsetStoreUndo(Undo::EDIT);
 		mathcursor->dispatch(cmd);
-		bv->updateInset(this);
 		break;
 
 	case LFUN_RIGHTSEL:
@@ -475,7 +468,6 @@ dispatch_result InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 		result = mathcursor->right(sel) ? DISPATCHED : FINISHED_RIGHT;
 		//lyxerr << "calling scroll 20\n";
 		//scroll(bv, 20);
-		bv->updateInset(this);
 		// write something to the minibuffer
 		//bv->owner()->message(mathcursor->info());
 		break;
@@ -484,27 +476,23 @@ dispatch_result InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 		sel = true; // fall through
 	case LFUN_LEFT:
 		result = mathcursor->left(sel) ? DISPATCHED : FINISHED;
-		bv->updateInset(this);
 		break;
 
 	case LFUN_UPSEL:
 		sel = true; // fall through
 	case LFUN_UP:
 		result = mathcursor->up(sel) ? DISPATCHED : FINISHED_UP;
-		bv->updateInset(this);
 		break;
 
 	case LFUN_DOWNSEL:
 		sel = true; // fall through
 	case LFUN_DOWN:
 		result = mathcursor->down(sel) ? DISPATCHED : FINISHED_DOWN;
-		bv->updateInset(this);
 		break;
 
 	case LFUN_WORDSEL:
 		mathcursor->home(false);
 		mathcursor->end(true);
-		bv->updateInset(this);
 		break;
 
 	case LFUN_UP_PARAGRAPHSEL:
@@ -512,7 +500,6 @@ dispatch_result InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 	case LFUN_DOWN_PARAGRAPHSEL:
 	case LFUN_DOWN_PARAGRAPH:
 		result = FINISHED;
-		bv->updateInset(this);
 		break;
 
 	case LFUN_HOMESEL:
@@ -521,7 +508,6 @@ dispatch_result InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 	case LFUN_HOME:
 	case LFUN_WORDLEFT:
 		result = mathcursor->home(sel) ? DISPATCHED : FINISHED;
-		bv->updateInset(this);
 		break;
 
 	case LFUN_ENDSEL:
@@ -530,7 +516,6 @@ dispatch_result InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 	case LFUN_END:
 	case LFUN_WORDRIGHT:
 		result = mathcursor->end(sel) ? DISPATCHED : FINISHED_RIGHT;
-		bv->updateInset(this);
 		break;
 
 	case LFUN_PRIORSEL:
@@ -538,7 +523,6 @@ dispatch_result InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 	case LFUN_BEGINNINGBUFSEL:
 	case LFUN_BEGINNINGBUF:
 		result = FINISHED;
-		bv->updateInset(this);
 		break;
 
 	case LFUN_NEXTSEL:
@@ -546,41 +530,32 @@ dispatch_result InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 	case LFUN_ENDBUFSEL:
 	case LFUN_ENDBUF:
 		result = FINISHED_RIGHT;
-		bv->updateInset(this);
 		break;
 
 	case LFUN_TAB:
 		mathcursor->idxNext();
-		bv->updateInset(this);
 		break;
 
 	case LFUN_SHIFT_TAB:
 		mathcursor->idxPrev();
-		bv->updateInset(this);
 		break;
 
 	case LFUN_DELETE_WORD_BACKWARD:
 	case LFUN_BACKSPACE:
 		bv->lockedInsetStoreUndo(Undo::EDIT);
-		if (mathcursor->backspace()) {
-			result = DISPATCHED;
-		} else {
+		if (!mathcursor->backspace()) {
 			result = FINISHED;
 			remove_inset = true;
 		}
-		bv->updateInset(this);
 		break;
 
 	case LFUN_DELETE_WORD_FORWARD:
 	case LFUN_DELETE:
 		bv->lockedInsetStoreUndo(Undo::EDIT);
-		if (mathcursor->erase()) {
-			result = DISPATCHED;
-		} else {
+		if (!mathcursor->erase()) {
 			result = FINISHED;
 			remove_inset = true;
 		}
-		bv->updateInset(this);
 		break;
 
 	//    case LFUN_GETXY:
@@ -594,7 +569,6 @@ dispatch_result InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 		istringstream is(cmd.argument.c_str());
 		is >> x >> y;
 		mathcursor->setPos(x, y);
-		bv->updateInset(this);
 		break;
 	}
 
@@ -603,13 +577,11 @@ dispatch_result InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 			mathcursor->macroModeClose();
 		bv->lockedInsetStoreUndo(Undo::EDIT);
 		mathcursor->selPaste();
-		bv->updateInset(this);
 		break;
 
 	case LFUN_CUT:
 		bv->lockedInsetStoreUndo(Undo::DELETE);
 		mathcursor->selCut();
-		bv->updateInset(this);
 		break;
 
 	case LFUN_COPY:
@@ -625,7 +597,6 @@ dispatch_result InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 			// deadkeys
 			bv->lockedInsetStoreUndo(Undo::EDIT);
 			mathcursor->script(true);
-			bv->updateInset(this);
 		}
 		break;
 
@@ -646,7 +617,6 @@ dispatch_result InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 		break;
 
 	//  Math fonts
-	//case LFUN_GREEK_TOGGLE: handleFont(bv, cmd.argument, "lyxgreek"); break;
 	case LFUN_BOLD:         handleFont(bv, cmd.argument, "mathbf"); break;
 	case LFUN_SANS:         handleFont(bv, cmd.argument, "mathsf"); break;
 	case LFUN_EMPH:         handleFont(bv, cmd.argument, "mathcal"); break;
@@ -658,19 +628,11 @@ dispatch_result InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 	case LFUN_FREEFONT_APPLY:  handleFont(bv, cmd.argument, "textrm"); break;
 	case LFUN_DEFAULT:      handleFont(bv, cmd.argument, "textnormal"); break;
 
-	//case LFUN_GREEK:
-	//	handleFont(bv, cmd.argument, "lyxgreek1");
-	//	if (cmd.argument.size())
-	//		mathcursor->insert(asArray(cmd.argument));
-	//	break;
-
 	case LFUN_MATH_MODE:
-		if (mathcursor->currentMode() == MathInset::TEXT_MODE) {
+		if (mathcursor->currentMode() == MathInset::TEXT_MODE)
 			mathcursor->niceInsert(MathAtom(new MathHullInset("simple")));
-			bv->updateInset(this);
-		} else {
+		else
 			handleFont(bv, cmd.argument, "textrm");
-		}
 		//bv->owner()->message(_("math text mode toggled"));
 		break;
 
@@ -679,7 +641,6 @@ dispatch_result InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 		if (!arg.empty()) {
 			bv->lockedInsetStoreUndo(Undo::EDIT);
 			mathcursor->setSize(arg);
-			bv->updateInset(this);
 		}
 #endif
 		break;
@@ -697,7 +658,6 @@ dispatch_result InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 		v_align += 'c';
 		mathcursor->niceInsert(
 			MathAtom(new MathArrayInset("array", m, n, v_align[0], h_align)));
-			bv->updateInset(this);
 		break;
 	}
 
@@ -706,7 +666,6 @@ dispatch_result InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 	{
 		bv->lockedInsetStoreUndo(Undo::EDIT);
 		mathcursor->script(cmd.action == LFUN_SUPERSCRIPT);
-		bv->updateInset(this);
 		break;
 	}
 
@@ -723,7 +682,6 @@ dispatch_result InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 
 		bv->lockedInsetStoreUndo(Undo::EDIT);
 		mathcursor->handleNest(MathAtom(new MathDelimInset(ls, rs)));
-		bv->updateInset(this);
 		break;
 	}
 
@@ -731,7 +689,6 @@ dispatch_result InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 	case LFUN_MATH_SPACE:
 		bv->lockedInsetStoreUndo(Undo::EDIT);
 		mathcursor->insert(MathAtom(new MathSpaceInset(",")));
-		bv->updateInset(this);
 		break;
 
 	case LFUN_UNDO:
@@ -747,7 +704,6 @@ dispatch_result InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 		// interpret this as if a backslash was typed
 		bv->lockedInsetStoreUndo(Undo::EDIT);
 		mathcursor->interpret('\\');
-		bv->updateInset(this);
 		break;
 
 	case LFUN_BREAKPARAGRAPH:
@@ -762,7 +718,6 @@ dispatch_result InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 	case LFUN_INSERT_MATH:
 		bv->lockedInsetStoreUndo(Undo::EDIT);
 		mathcursor->niceInsert(argument);
-		bv->updateInset(this);
 		break;
 
 	case -1:
@@ -773,7 +728,6 @@ dispatch_result InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 				result = mathcursor->interpret(argument[0]) ? DISPATCHED : FINISHED_RIGHT;
 			else
 				mathcursor->insert(asArray(argument));
-			bv->updateInset(this);
 		}
 		break;
 
@@ -790,7 +744,6 @@ dispatch_result InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 
 	case LFUN_INSET_TOGGLE:
 		mathcursor->insetToggle();
-		bv->updateInset(this);
 		break;
 
 	case LFUN_DIALOG_SHOW_NEW_INSET: {
@@ -826,14 +779,15 @@ dispatch_result InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 				result = UNDISPATCHED;
 			}
 		}
-		if (result == DISPATCHED)
-			bv->updateInset(this);
 	}
 	break;
 
 	default:
 		result = UNDISPATCHED;
 	}
+
+	if (result == DISPATCHED)
+		bv->updateInset(this);
 
 	mathcursor->normalize();
 	mathcursor->touch();
@@ -1079,6 +1033,7 @@ void mathDispatch(FuncRequest const & cmd)
 			}
 			break;
 		}
+
 		default:
 			break;
 	}
