@@ -1,3 +1,9 @@
+
+2003-05-25  Alfredo Braunstein  <abraunst@libero.it>
+
+	* FormErrorList.C: make the error description read-only but
+	selectable. Fix a bug on the initial state.
+
 2003-05-23  Angus Leeming  <leeming@lyx.org>
 
 	* FormExternal.C (update): the default template is the first one

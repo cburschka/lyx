@@ -30,10 +30,16 @@ FormErrorList::FormErrorList(Dialog & parent)
 {}
 
 
+int dumb_validator(FL_OBJECT *, const char *, const char *, int)
+{
+	return FL_INVALID;
+}
+
+
 void FormErrorList::build()
 {
 	dialog_.reset(build_errorlist(this));
-	setEnabled(dialog_->input_description, false);
+	fl_set_input_filter(dialog_->input_description, dumb_validator);
 }
 
 
@@ -50,7 +56,6 @@ ButtonPolicy::SMInput FormErrorList::input(FL_OBJECT * ob, long)
 		//xforms return values 1..n
 		int const choice = int(fl_get_browser(dialog_->browser_errors)) - 1;
 		goTo(choice);
-		return ButtonPolicy::SMI_VALID;
 	}
 
 	return ButtonPolicy::SMI_VALID;
@@ -65,7 +70,7 @@ void FormErrorList::goTo(int where)
 		controller().goTo(where);
 		fl_set_input(dialog_->input_description,
 			     errors[where].description.c_str());
-		setEnabled(dialog_->input_description, false);
+		fl_set_input_topline(dialog_->input_description, 1);
 	}
 }
 
@@ -93,5 +98,5 @@ void FormErrorList::updateContents()
 	}
 
 	fl_select_browser_line(dialog_->browser_errors, 1);
-	goTo(1);
+	goTo(0);
 }
