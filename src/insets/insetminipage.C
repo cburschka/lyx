@@ -176,7 +176,7 @@ void InsetMinipage::Read(Buffer const * buf, LyXLex & lex)
 Inset * InsetMinipage::Clone(Buffer const &) const
 {
 	InsetMinipage * result = new InsetMinipage;
-	result->inset->init(inset);
+	result->inset.init(&inset);
 	
 	result->collapsed = collapsed;
 	result->pos_ = pos_;
@@ -259,7 +259,7 @@ int InsetMinipage::Latex(Buffer const * buf,
 	os << "\\begin{minipage}[" << s_pos << "]{"
 	   << LyXLength(width_).asLatexString() << "}%\n";
 	
-	int i = inset->Latex(buf, os, fragile, fp);
+	int i = inset.Latex(buf, os, fragile, fp);
 
 	os << "\\end{minipage}%\n";
 	return i + 2;
@@ -326,7 +326,7 @@ void InsetMinipage::width(string const & ll)
 
 bool InsetMinipage::ShowInsetDialog(BufferView * bv) const
 {
-    if (!inset->ShowInsetDialog(bv))
+    if (!inset.ShowInsetDialog(bv))
 	bv->owner()->getDialogs()->showMinipage(const_cast<InsetMinipage *>(this));
     return true;
 }

@@ -60,7 +60,7 @@ void InsetList::Write(Buffer const * buf, ostream & os) const
 Inset * InsetList::Clone(Buffer const &) const
 {
 	InsetList * result = new InsetList;
-	result->inset->init(inset);
+	result->inset.init(&inset);
 	
 	result->collapsed = collapsed;
 	return result;
@@ -78,7 +78,7 @@ int InsetList::Latex(Buffer const * buf,
 {
 	os << "\\footnote{%\n";
 	
-	int i = inset->Latex(buf, os, fragile, fp);
+	int i = inset.Latex(buf, os, fragile, fp);
 	os << "}%\n";
 	
 	return i + 2;

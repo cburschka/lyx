@@ -47,7 +47,7 @@ void InsetERT::Write(Buffer const * buf, ostream & os) const
 Inset * InsetERT::Clone(Buffer const &) const
 {
     InsetERT * result = new InsetERT;
-    result->inset->init(inset);
+    result->inset.init(&inset);
 
     result->collapsed = collapsed;
     return result;

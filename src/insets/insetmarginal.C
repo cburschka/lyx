@@ -38,7 +38,7 @@ InsetMarginal::InsetMarginal()
 Inset * InsetMarginal::Clone(Buffer const &) const
 {
 	InsetMarginal * result = new InsetMarginal;
-	result->inset->init(inset);
+	result->inset.init(&inset);
 	
 	result->collapsed = collapsed;
 	return result;
@@ -56,7 +56,7 @@ int InsetMarginal::Latex(Buffer const * buf,
 {
 	os << "\\marginpar{%\n";
 	
-	int i = inset->Latex(buf, os, fragile, fp);
+	int i = inset.Latex(buf, os, fragile, fp);
 	os << "}%\n";
 	
 	return i + 2;

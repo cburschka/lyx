@@ -74,7 +74,7 @@ int InsetTheorem::Latex(Buffer const * buf,
 {
 	os << "\\begin{theorem}%\n";
 	
-	int i = inset->Latex(buf, os, fragile, fp);
+	int i = inset.Latex(buf, os, fragile, fp);
 	os << "\\end{theorem}%\n";
 	
 	return i + 2;

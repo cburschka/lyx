@@ -154,7 +154,7 @@ void InsetFloat::Validate(LaTeXFeatures & features) const
 Inset * InsetFloat::Clone(Buffer const &) const
 {
 	InsetFloat * result = new InsetFloat(floatType_);
-	result->inset->init(inset);
+	result->inset.init(&inset);
 
 	result->collapsed = collapsed;
 	return result;
@@ -176,7 +176,7 @@ int InsetFloat::Latex(Buffer const * buf,
 		os << "[" << floatPlacement_ << "]";
 	os << "%\n";
     
-	int const i = inset->Latex(buf, os, fragile, fp);
+	int const i = inset.Latex(buf, os, fragile, fp);
 	os << "\\end{" << floatType_ << "}%\n";
 	
 	return i + 2;
@@ -186,7 +186,7 @@ int InsetFloat::Latex(Buffer const * buf,
 int InsetFloat::DocBook(Buffer const * buf, ostream & os) const
 {
 	os << "<" << floatType_ << ">";
-	int const i = inset->DocBook(buf, os);
+	int const i = inset.DocBook(buf, os);
 	os << "</" << floatType_ << ">";
 
 	return i;

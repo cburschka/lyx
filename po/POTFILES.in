@@ -18,9 +18,13 @@ src/frontends/controllers/character.C
 src/frontends/controllers/ControlCharacter.C
 src/frontends/controllers/ControlCopyright.C
 src/frontends/controllers/ControlCredits.C
+src/frontends/controllers/ControlExternal.C
+src/frontends/controllers/ControlGraphics.C
+src/frontends/controllers/ControlInclude.C
 src/frontends/controllers/ControlPreamble.C
 src/frontends/controllers/ControlPrint.C
 src/frontends/controllers/ControlSearch.C
+src/frontends/controllers/helper_funcs.C
 src/frontends/gnome/FormCitation.C
 src/frontends/gnome/FormCopyright.C
 src/frontends/gnome/FormError.C

@@ -37,7 +37,7 @@ InsetFoot::InsetFoot()
 Inset * InsetFoot::Clone(Buffer const &) const
 {
     InsetFoot * result = new InsetFoot;
-    result->inset->init(inset);
+    result->inset.init(&inset);
 
     result->collapsed = collapsed;
     return result;
@@ -55,7 +55,7 @@ int InsetFoot::Latex(Buffer const * buf,
 {
     os << "\\footnote{%\n";
     
-    int const i = inset->Latex(buf, os, fragile, fp);
+    int const i = inset.Latex(buf, os, fragile, fp);
     os << "}%\n";
     
     return i + 2;

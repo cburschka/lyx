@@ -18,6 +18,7 @@
 #endif
 
 #include "lyxinset.h"
+#include "insettext.h"
 #include "lyxfont.h"
 #include "LColor.h"
 #if 1 // NEW_INSETS
@@ -25,7 +26,6 @@
 #endif
 
 class Painter;
-class InsetText;
 class LyXText;
 
 /** A colapsable text inset
@@ -151,9 +151,7 @@ protected:
 public:
 #endif
     ///
-    InsetText * inset;
-    // Instead of making these ints protected we could have a
-    // protected method "clickInButton" (Lgb)
+    InsetText inset;
 protected:
     ///
     mutable int button_length;
