@@ -249,9 +249,16 @@ void InsetTabular::read(Buffer const * buf, LyXLex & lex)
 }
 
 
-void InsetTabular::metrics(MetricsInfo &,
-	Dimension & dim) const
+void InsetTabular::metrics(MetricsInfo & mi, Dimension & dim) const
 {
+	if (mi.base.bv) {
+		//lyxerr << "InsetTabular::metrics, bv: " << mi.base.bv << endl;
+		for (int i = 0; i < tabular.getNumberOfCells(); ++i) {
+			tabular.cellinfo_of_cell(i)->inset.text_.bv_owner = mi.base.bv;
+			tabular.cellinfo_of_cell(i)->inset.reinitLyXText();
+		}
+	}
+			
 	dim.asc = tabular.getAscentOfRow(0);
 	dim.des = tabular.getHeightOfTabular() - tabular.getAscentOfRow(0) + 1;
 	dim.wid = tabular.getWidthOfTabular() + 2 * ADD_TO_TABULAR_WIDTH;

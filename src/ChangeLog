@@ -1,3 +1,12 @@
+
+2003-07-10  André Pönitz  <poenitz@gmx.net>
+
+	* BufferView_pimpl.C:
+	* tabular.h:
+	* tabular_funcs.C:
+	* text.C:
+	* text2.C: remove InsetText::InnerCache, clean up consequences
+
 2003-07-07  Adrien Rebollo  <adrien.rebollo@gmx.fr>
 
 	* ispell.C: fix two typos in error messages

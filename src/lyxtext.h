@@ -223,9 +223,11 @@ private:
 
 	refresh_status refresh_status_;
 
+public:
 	/// only the top-level LyXText has this non-zero
 	BufferView * bv_owner;
 
+private:
 	/// returns a pointer to a specified row.
 	RowList::iterator
 	getRow(ParagraphList::iterator pit, lyx::pos_type pos) const;

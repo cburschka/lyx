@@ -19,12 +19,13 @@
 #include "ParagraphList.h"
 #include "RowList.h"
 #include "dimension.h"
-#include "frontends/mouse_state.h"
+#include "lyxtext.h"
 
 #include "support/types.h"
 
+#include "frontends/mouse_state.h"
+
 #include <boost/shared_ptr.hpp>
-#include <map>
 
 class Painter;
 class BufferView;
@@ -269,19 +270,6 @@ private:
 	void lfunMouseMotion(FuncRequest const &);
 
 	///
-	struct InnerCache {
-		///
-		InnerCache(boost::shared_ptr<LyXText>);
-		///
-		boost::shared_ptr<LyXText> text;
-		///
-		bool remove;
-	};
-	///
-	typedef std::map<BufferView *, InnerCache> Cache;
-	///
-	typedef Cache::value_type value_type;
-	///
 	RESULT moveRight(BufferView *,
 					 bool activate_inset = true,
 					 bool selecting = false);
@@ -336,8 +324,6 @@ private:
 	///
 	void restoreLyXTextState(LyXText *) const;
 	///
-	void reinitLyXText() const;
-	///
 	void collapseParagraphs(BufferView *);
 
 	/* Private structures and variables */
@@ -365,22 +351,12 @@ private:
 	UpdatableInset * the_locking_inset;
 	///
 	mutable ParagraphList::iterator old_par;
-	/// The cache.
-	mutable Cache cache;
 	///
 	mutable int last_drawn_width;
-	///
-	mutable BufferView * cached_bview;
-	///
-	mutable boost::shared_ptr<LyXText> cached_text;
 
 	/// some funny 'temporarily saved state'
 	mutable TextCursor sstate;
 
-	///
-	// this is needed globally so we know that we're using it actually and
-	// so the LyXText-Cache is not erased until used!
-	mutable LyXText * lt;
 	///
 	// to remember old painted frame dimensions to clear it on the right spot!
 	///
@@ -390,13 +366,16 @@ private:
 	mutable int frame_h;
 	///
 	bool in_update; /* as update is not reentrant! */
-	mutable BufferView * do_resize;
-	mutable bool do_reinit;
 	mutable bool in_insetAllowed;
 	///
 	// these are used to check for mouse movement in Motion selection code
 	///
 	int mouse_x;
 	int mouse_y;
+public:
+	///
+	void reinitLyXText() const;
+	///
+	mutable LyXText text_;
 };
 #endif

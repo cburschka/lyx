@@ -83,6 +83,7 @@ LyXText::LyXText(BufferView * bv, InsetText * inset)
 
 void LyXText::init(BufferView * bview, bool reinit)
 {
+	bv_owner = bview;
 	if (reinit) {
 		rowlist_.clear();
 		need_break_row = rows().end();

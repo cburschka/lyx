@@ -386,7 +386,8 @@ public:
 	///
 	/// recalculate the widths/heights only!
 	void reinit();
-private:
+	///
+//private:
 	///
 	mutable int cur_cell;
 	///
@@ -422,6 +423,7 @@ private:
 		///
 		InsetText inset;
 	};
+	cellstruct * cellinfo_of_cell(int cell) const;
 	///
 	typedef std::vector<cellstruct> cell_vector;
 	///
@@ -531,8 +533,6 @@ private:
 	bool calculate_width_of_column_NMC(int column); // no multi cells
 	///
 	void calculate_width_of_tabular();
-	///
-	cellstruct * cellinfo_of_cell(int cell) const;
 	///
 	void delete_column(int column);
 	///

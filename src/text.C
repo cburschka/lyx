@@ -156,7 +156,10 @@ int LyXText::workWidth(Inset const * inset) const
 	ParagraphList::iterator par = std::find(ownerParagraphs().begin(),
 						ownerParagraphs().end(),
 						*inset->parOwner());
-	//Assert(par);
+	if (par == ownerParagraphs().end()) {
+		lyxerr[Debug::GUI] << "LyXText::workWidth: unexpected\n";
+		return -1;
+	}
 
 	pos_type pos = par->getPositionOfInset(inset);
 	Assert(pos != -1);

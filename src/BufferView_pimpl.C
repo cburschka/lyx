@@ -382,16 +382,14 @@ int BufferView::Pimpl::resizeCurrentBuffer()
 		mark_set = bv_->text->selection.mark();
 		the_locking_inset = bv_->theLockingInset();
 		buffer_->resizeInsets(bv_);
-		// I don't think the delete and new are necessary here we
-		// just could call only init! (Jug 20020419)
-		delete bv_->text;
-		bv_->text = new LyXText(bv_);
 		bv_->text->init(bv_);
 	} else {
+		lyxerr << "text not available!\n";
 		// See if we have a text in TextCache that fits
 		// the new buffer_ with the correct width.
 		bv_->text = textcache.findFit(buffer_, workarea().workWidth());
 		if (bv_->text) {
+			lyxerr << "text in cache!\n";
 			if (lyxerr.debugging()) {
 				lyxerr << "Found a LyXText that fits:\n";
 				textcache.show(lyxerr, make_pair(buffer_, make_pair(workarea().workWidth(), bv_->text)));
@@ -403,9 +401,10 @@ int BufferView::Pimpl::resizeCurrentBuffer()
 
 			buffer_->resizeInsets(bv_);
 		} else {
+			lyxerr << "no text in cache!\n";
 			bv_->text = new LyXText(bv_);
+			buffer_->resizeInsets(bv_);
 			bv_->text->init(bv_);
-			//buffer_->resizeInsets(bv_);
 		}
 
 		par = bv_->text->ownerParagraphs().end();
