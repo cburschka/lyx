@@ -1,3 +1,7 @@
+2002-09-24  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* Makefile.am (INCLUDES): loose SIGC_INCLUDES
+
 2002-09-24  Angus Leeming  <leeming@lyx.org>
 
 	* ControlConnections.h: remove trailing whitespace.
@@ -12,25 +16,25 @@
 
 	* ControlInclude.C: fix file masks. Get rid of noload,
 	remove stupid warning
- 
+
 2002-09-09  John Levon  <levon@movementarian.org>
 
 	* ControlMath.h:
 	* ControlMath.C: add latex_deco
- 
+
 2002-09-06  John Levon  <levon@movementarian.org>
 
 	* ControlMath.C: terminate dots
- 
+
 2002-09-05  Angus Leeming  <leeming@lyx.org>
 
 	* all files: modify the headers as discussed on the list.
 
 2002-08-30  John Levon  <levon@movementarian.org>
 
-	* ControlMath.h: 
+	* ControlMath.h:
 	* ControlMath.C: moved from MathsSymbols.C
- 
+
 2002-08-27  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* ControlFloat.C (applyParamsToInset): wide() now has two arguments
@@ -124,7 +128,7 @@
 2002-08-08  John Levon  <levon@movementarian.org>
 
 	* ControlCommandBuffer.C: LyXAction cleanup
- 
+
 2002-08-07  John Levon  <levon@movementarian.org>
 
 	* ControlSpellchecker.C: fix crash when spellchecker doesn't
@@ -133,19 +137,19 @@
 2002-08-06  John Levon  <levon@movementarian.org>
 
 	* ControlSpellchecker.C:
-	* ControlSpellchecker.h: use WordLangTuple 
- 
+	* ControlSpellchecker.h: use WordLangTuple
+
 2002-08-06  John Levon  <levon@movementarian.org>
 
 	* ControlSpellchecker.C: show an alert with the
 	  error message on initialisation failure
- 
+
 2002-08-04  John Levon  <levon@movementarian.org>
 
 	* ControlSpellchecker.h:
 	* ControlSpellchecker.C: some cleanups
- 
-	* ControlTabularCreate.C: s/LFUN_INSET_TABULAR/LFUN_TABULAR_INSERT/ 
+
+	* ControlTabularCreate.C: s/LFUN_INSET_TABULAR/LFUN_TABULAR_INSERT/
  <
 2002-08-02  Edwin Leuven <leuven@fee.uva.nl>
 
