@@ -25,20 +25,19 @@ What's new
 - add Proof layout to elsart class and get sections to be numbered
 
 - add a bit of documentation of the AGU journals support in the
-  Extended manual; french documentation and examples update
+  Extended manual; french documentation and examples update; small
+  tweaks to the english documentation
 
 - completely new italian localization; french localization update
 
 ** Bug fixes
 
-- fix loading of symbol fonts when using Qt 3.2
-
 - fix possible crash when changing text class [bug #1050]
+
+- fix language setting when switching textclass
 
 - fix math bug where formulas containing for example a \prettyref
   would not be parsed correctly [bug #1126]
-
-- fix language setting when switching textclass
 
 - fix bad conversion of tables from LyX 1.0 [bug #1045]
 
@@ -63,6 +62,8 @@ What's new
 
 - do not write in preference file the colors which are still at their
   default value [bug #1069, Qt only]
+
+- fix loading of symbol fonts [Qt 3.2.0 only]
 
 - fix the math panel symbols [Qt 3.2.0 only]
 
