@@ -1,4 +1,3 @@
-
 2003-12-22  Michael Schmitt  <michael.schmitt@teststep.org>
 
 	* insetbox.C: Use term "Box" in button label
@@ -20,11 +19,11 @@
 	(isBranchSelected): new function, used to decide whether to
 	print each output format. Also used by InsetList.
 	(read, string2params): repair my own breakage ;-)
-	
+
 2003-12-14  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* insetminipage.[Ch]: remove from repository.
-	
+
 2003-12-12  Michael Schmitt  <michael.schmitt@teststep.org>
 
 	* insetert.[Ch]:
@@ -59,7 +58,7 @@
 	* insettoc.[Ch] (d-tor):
 	* inseturl.[Ch] (d-tor): removed.
 	Hiding the dialog is handled by InsetCommand.
-	
+
 	* insetbibtex.[Ch] (draw, metrics):
 	* insetfloatlist.[Ch] (draw, metrics):
 	* insetindex.[Ch] (draw, metrics): removed.
@@ -86,7 +85,7 @@
 	* insetnote.C (string2params):
 	* insetvspace.C (string2params):
 	* insetwrap.C (string2params): over-hauled.
-	
+
 2003-12-10  Angus Leeming  <leeming@lyx.org>
 
 	* insetexternal.[Ch]: add a draft option and respect it when
@@ -178,7 +177,7 @@
 
 	* insetcollapsable.[Ch]:
 	* insetert.[Ch]:
-	* insetcharstyle.C: place inset content on the button when 
+	* insetcharstyle.C: place inset content on the button when
 	collapsed.
 
 2003-12-01  Michael Schmitt  <michael.schmitt@teststep.org>
@@ -244,7 +243,7 @@
 
 2003-11-27  Alfredo Braunstein  <abraunst@lyx.org>
 
-	* insettext.[Ch]: 
+	* insettext.[Ch]:
 	* inset.[Ch]:
 	* insetcollapsable.[Ch]:
 	* insetert.[Ch]:
@@ -266,7 +265,7 @@
 
 	* inset.h:
 	* insetcollapsable.[Ch]:
-	* insetert.[Ch]: remove bufferview parameter in methods 
+	* insetert.[Ch]: remove bufferview parameter in methods
 	open, close, status, and updateStatus.
 
 2003-11-21  Michael Schmitt  <michael.schmitt@teststep.org>
@@ -294,7 +293,7 @@
 
 2003-11-17  Alfredo Braunstein  <abraunst@lyx.org>
 
-	* insetcollapsable.C: 
+	* insetcollapsable.C:
 	* insettext.C:
 	* insettext.h: hand on MOUSE_* events to the LyXText when appropriate
 	remove mouse_x mouse_y etc.
@@ -307,7 +306,7 @@
 
 2003-11-13  André Pönitz  <poenitz@gmx.net>
 
-	* inset.h: 
+	* inset.h:
 	* insetcollapsable.[Ch]:
 	* insettabular.[Ch]:
 	* insettext.[Ch] (deleteLyXText): remove
@@ -335,7 +334,7 @@
 
 2003-11-11  Alfredo Braunstein  <abraunst@libero.it>
 
-	* insettext.C (updateLocal, insertInset, setFont): remove 
+	* insettext.C (updateLocal, insertInset, setFont): remove
 	fitCursor calls
 
 2003-11-10  André Pönitz  <poenitz@gmx.net>
@@ -362,7 +361,7 @@
 
 	* inset.h (allowSpellCheck): add (return true)
 	* insetert.h (allowSpellCheck): add (return false)
-	
+
 2003-11-05  José Matos  <jamatos@lyx.org>
 
 	* inset.h:
