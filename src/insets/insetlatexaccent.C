@@ -731,7 +731,7 @@ void InsetLatexAccent::draw(Painter & pain, LyXFont const & font,
 }
 
 
-void InsetLatexAccent::Write(ostream & os)
+void InsetLatexAccent::Write(ostream & os) const
 {
 	os << "\\i " << contents << "\n";
 }
@@ -745,28 +745,28 @@ void InsetLatexAccent::Read(LyXLex & lex)
 }
 
 
-int InsetLatexAccent::Latex(ostream & os, signed char /*fragile*/)
+int InsetLatexAccent::Latex(ostream & os, signed char /*fragile*/) const
 {
 	os << contents;
 	return 0;
 }
 
 
-int InsetLatexAccent::Latex(string & file, signed char /*fragile*/)
+int InsetLatexAccent::Latex(string & file, signed char /*fragile*/) const
 {
 	file += contents;
 	return 0;
 }
 
 
-int InsetLatexAccent::Linuxdoc(string & file)
+int InsetLatexAccent::Linuxdoc(string & file) const
 {
 	file += contents;
 	return 0;
 }
 
 
-int InsetLatexAccent::DocBook(string & file)
+int InsetLatexAccent::DocBook(string & file) const
 {
 	file += contents;
 	return 0;

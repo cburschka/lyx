@@ -164,7 +164,7 @@ void InsetCommand::draw(Painter & pain, LyXFont const &,
 
 
 // In lyxf3 this will be just LaTeX
-void InsetCommand::Write(ostream & os)
+void InsetCommand::Write(ostream & os) const
 {
 	os << "LatexCommand " << getCommand() << "\n";
 }
@@ -244,27 +244,27 @@ void InsetCommand::Read(LyXLex & lex)
 }
 
 
-int InsetCommand::Latex(ostream & os, signed char /*fragile*/)
+int InsetCommand::Latex(ostream & os, signed char /*fragile*/) const
 {
 	os << getCommand();
 	return 0;
 }
 
 
-int InsetCommand::Latex(string & file, signed char /*fragile*/)
+int InsetCommand::Latex(string & file, signed char /*fragile*/) const
 {
 	file += getCommand();
 	return 0;
 }
 
 
-int InsetCommand::Linuxdoc(string &/*file*/)
+int InsetCommand::Linuxdoc(string &/*file*/) const
 {
 	return 0;
 }
 
 
-int InsetCommand::DocBook(string &/*file*/)
+int InsetCommand::DocBook(string &/*file*/) const
 {
 	return 0;
 }

@@ -32,6 +32,7 @@ using std::for_each;
 #include "LyXView.h"
 #include "lyxfunc.h"
 #include "insets/lyxinset.h"
+#include "insets/insetbib.h"
 #include "minibuffer.h"
 #include "lyxscreen.h"
 
@@ -70,8 +71,8 @@ BufferView::BufferView(LyXView * o, int xpos, int ypos,
 {
 	buffer_ = 0;
 	text = 0;
-	screen = 0;
 	workarea = new WorkArea(this, xpos, ypos, width, height);
+	screen = 0;
 	timer_cursor = 0;
 	create_view();
 	current_scrollbar_value = 0;
@@ -170,14 +171,7 @@ void BufferView::updateScreen()
 {
 	// Regenerate the screen.
 	delete screen;
-	screen = new LyXScreen(this,
-			       workarea->getWin(),
-			       workarea->getPixmap(),
-			       workarea->workWidth(),
-			       workarea->height(),
-			       workarea->xpos(),
-			       workarea->ypos(),
-			       text);
+	screen = new LyXScreen(*workarea, text);
 }
 
 

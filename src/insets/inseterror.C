@@ -91,7 +91,7 @@ void InsetError::draw(Painter & pain, LyXFont const & font,
 }
 
 
-void InsetError::Write(ostream &)
+void InsetError::Write(ostream &) const
 {
 }
 
@@ -101,25 +101,25 @@ void InsetError::Read(LyXLex &)
 }
 
 
-int InsetError::Latex(ostream &, signed char /*fragile*/)
+int InsetError::Latex(ostream &, signed char /*fragile*/) const
 {
 	return 0;
 }
 
 
-int InsetError::Latex(string &, signed char /*fragile*/)
+int InsetError::Latex(string &, signed char /*fragile*/) const
 {
 	return 0;
 }
 
 
-int InsetError::Linuxdoc(string &)
+int InsetError::Linuxdoc(string &) const
 {
 	return 0;
 }
 
 
-int InsetError::DocBook(string &)
+int InsetError::DocBook(string &) const
 {
 	return 0;
 }

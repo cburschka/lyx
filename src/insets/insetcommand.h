@@ -41,19 +41,19 @@ public:
 	///
 	void draw(Painter &, LyXFont const &, int baseline, float & x) const;
 	///
-	void Write(ostream &);
+	void Write(ostream &) const;
 	/// Parse the command.
 	void scanCommand(string const & cmd);
 	/// Will not be used when lyxf3
 	void Read(LyXLex & lex);
 	/// 
-	virtual int Latex(ostream &, signed char fragile);
+	virtual int Latex(ostream &, signed char fragile) const;
 	///
-	virtual int Latex(string & file, signed char fragile);
+	virtual int Latex(string & file, signed char fragile) const;
 	///
-	virtual int Linuxdoc(string & file);
+	virtual int Linuxdoc(string & file) const;
 	///
-	virtual int DocBook(string & file);
+	virtual int DocBook(string & file) const;
 	///
 	Inset * Clone() const;
 	///  

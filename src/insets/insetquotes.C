@@ -204,7 +204,7 @@ void InsetQuotes::draw(Painter & pain, LyXFont const & font,
 }
 
 
-void InsetQuotes::Write(ostream & os)
+void InsetQuotes::Write(ostream & os) const
 {
 	string text;
 	text += language_char[language];
@@ -221,7 +221,7 @@ void InsetQuotes::Read(LyXLex & lex)
 }
 
 
-int InsetQuotes::Latex(ostream & os, signed char /*fragile*/)
+int InsetQuotes::Latex(ostream & os, signed char /*fragile*/) const
 {
 	string quote;
 	int res = Latex(quote, 0);
@@ -230,7 +230,7 @@ int InsetQuotes::Latex(ostream & os, signed char /*fragile*/)
 }
 
 
-int InsetQuotes::Latex(string & file, signed char /*fragile*/)
+int InsetQuotes::Latex(string & file, signed char /*fragile*/) const
 {
 	string doclang = 
 		current_view->buffer()->GetLanguage();
@@ -264,7 +264,7 @@ int InsetQuotes::Latex(string & file, signed char /*fragile*/)
 }
 
 
-int InsetQuotes::Linuxdoc(string & file)
+int InsetQuotes::Linuxdoc(string & file) const
 {
 	file += "\"";
 
@@ -272,7 +272,7 @@ int InsetQuotes::Linuxdoc(string & file)
 }
 
 
-int InsetQuotes::DocBook(string & file)
+int InsetQuotes::DocBook(string & file) const
 {
 	if(times == InsetQuotes::DoubleQ) {
 		if (side == InsetQuotes::LeftQ)

@@ -29,6 +29,7 @@ using std::ios;
 #include "debug.h"
 #include "LaTeXFeatures.h"
 #include "insets/insetinclude.h"
+#include "insets/insetbib.h"
 #include "support/filetools.h"
 #include "lyx_gui_misc.h"
 #include "texrow.h"

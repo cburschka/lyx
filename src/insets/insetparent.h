@@ -31,9 +31,9 @@ public:
 	///
         InsetParent(string const & fn, Buffer * owner = 0);
 	/// 
-	int Latex(ostream &, signed char fragile);
+	int Latex(ostream &, signed char fragile) const;
 	///
-	int Latex(string & file, signed char fragile);
+	int Latex(string & file, signed char fragile) const;
         ///
         Inset * Clone() const { return new InsetParent(getContents()); }
     	///

@@ -110,7 +110,7 @@ void InsetSpecialChar::draw(Painter & pain, LyXFont const & f,
 
 
 // In lyxf3 this will be just LaTeX
-void InsetSpecialChar::Write(ostream & os)
+void InsetSpecialChar::Write(ostream & os) const
 {
 	string command;
 	switch (kind) {
@@ -142,7 +142,7 @@ void InsetSpecialChar::Read(LyXLex & lex)
 }
 
 
-int InsetSpecialChar::Latex(ostream & os, signed char /*fragile*/)
+int InsetSpecialChar::Latex(ostream & os, signed char /*fragile*/) const
 {
 	string command;
 	signed char dummy = 0;
@@ -152,7 +152,7 @@ int InsetSpecialChar::Latex(ostream & os, signed char /*fragile*/)
 }
 
 
-int InsetSpecialChar::Latex(string & file, signed char /*fragile*/)
+int InsetSpecialChar::Latex(string & file, signed char /*fragile*/) const
 {
 	switch (kind) {
 	case HYPHENATION:	file += "\\-";	break;
@@ -164,7 +164,7 @@ int InsetSpecialChar::Latex(string & file, signed char /*fragile*/)
 }
 
 
-int InsetSpecialChar::Linuxdoc(string & file)
+int InsetSpecialChar::Linuxdoc(string & file) const
 {
 	switch (kind) {
 	case HYPHENATION:	file += "";	break;
@@ -176,7 +176,7 @@ int InsetSpecialChar::Linuxdoc(string & file)
 }
 
 
-int InsetSpecialChar::DocBook(string & file)
+int InsetSpecialChar::DocBook(string & file) const
 {
 	switch (kind) {
 	case HYPHENATION:	file += "";	break;

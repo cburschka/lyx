@@ -39,13 +39,13 @@ public:
 	///
 	unsigned char Editable() const { return 0; }
 	///
-	int Latex(ostream &, signed char fragile);
+	int Latex(ostream &, signed char fragile) const;
 	///
-	int Latex(string & file, signed char fragile);
+	int Latex(string & file, signed char fragile) const;
 	///
-	int Linuxdoc(string & file);
+	int Linuxdoc(string & file) const;
 	///
-	int DocBook(string & file);
+	int DocBook(string & file) const;
 private:
 	/// This function escapes 8-bit characters
 	string escape(string const &) const;

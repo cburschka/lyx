@@ -64,14 +64,14 @@ Inset * InsetFormulaMacro::Clone() const
 }
 
 
-void InsetFormulaMacro::Write(ostream & os)
+void InsetFormulaMacro::Write(ostream & os) const
 {
 	os << "FormulaMacro ";
 	Latex(os, 0);
 }
 
 
-int InsetFormulaMacro::Latex(ostream & os, signed char /*fragile*/)
+int InsetFormulaMacro::Latex(ostream & os, signed char /*fragile*/) const
 {
     int ret = 1;
     tmacro->WriteDef(os);
@@ -79,7 +79,7 @@ int InsetFormulaMacro::Latex(ostream & os, signed char /*fragile*/)
 }
 
 
-int InsetFormulaMacro::Latex(string &file, signed char /*fragile*/)
+int InsetFormulaMacro::Latex(string &file, signed char /*fragile*/) const
 {
     int ret = 1;
     tmacro->WriteDef(file);
@@ -87,13 +87,13 @@ int InsetFormulaMacro::Latex(string &file, signed char /*fragile*/)
 }
 
 
-int InsetFormulaMacro::Linuxdoc(string &/*file*/)
+int InsetFormulaMacro::Linuxdoc(string &/*file*/) const
 {
     return 0;
 }
 
 
-int InsetFormulaMacro::DocBook(string &/*file*/)
+int InsetFormulaMacro::DocBook(string &/*file*/) const
 {
     return 0;
 }

@@ -21,6 +21,7 @@
 #include "LString.h"
 #include "lyxparagraph.h"
 #include "insets/inseterror.h"
+#include "insets/insetbib.h"
 #include "layout.h"
 #include "LyXView.h"
 #include "support/textutils.h"

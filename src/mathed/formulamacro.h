@@ -46,15 +46,15 @@ public:
 	///
 	void Read(LyXLex & lex);
         ///
-	void Write(ostream & os);
+	void Write(ostream & os) const;
 	///
-	int Latex(ostream & os, signed char fragile);
+	int Latex(ostream & os, signed char fragile) const;
 	///
-	int Latex(string & file, signed char fragile);
+	int Latex(string & file, signed char fragile) const;
 	///
-	int Linuxdoc(string & file);
+	int Linuxdoc(string & file) const;
 	///
-	int DocBook(string & file);
+	int DocBook(string & file) const;
 	///
 	Inset * Clone() const;
 

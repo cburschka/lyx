@@ -162,7 +162,7 @@ string InsetUrl::getScreenLabel() const
 }
 
 
-int InsetUrl::Latex(ostream & os, signed char fragile)
+int InsetUrl::Latex(ostream & os, signed char fragile) const
 {
 	string latex_output;
 	int res = Latex(latex_output, fragile);
@@ -172,7 +172,7 @@ int InsetUrl::Latex(ostream & os, signed char fragile)
 }
 
 
-int InsetUrl::Latex(string & file, signed char fragile)
+int InsetUrl::Latex(string & file, signed char fragile) const
 {
 	if (!getOptions().empty())
 		file += getOptions() + ' ';
@@ -185,7 +185,7 @@ int InsetUrl::Latex(string & file, signed char fragile)
 }
 
 
-int InsetUrl::Linuxdoc(string & file)
+int InsetUrl::Linuxdoc(string & file) const
 {
 	file +=  "<"+ getCmdName() +
 		 " url=\""  + getContents()+"\"" +
@@ -195,7 +195,7 @@ int InsetUrl::Linuxdoc(string & file)
 }
 
 
-int InsetUrl::DocBook(string & file)
+int InsetUrl::DocBook(string & file) const
 {
 	file +=  "<ulink url=\""  + getContents() + "\">" +
 		 getOptions() +"</ulink>";

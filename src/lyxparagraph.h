@@ -20,7 +20,6 @@
 #include <list>
 
 #include "insets/lyxinset.h"
-#include "insets/insetbib.h"
 #include "table.h"
 #include "vspace.h"
 #include "layout.h"
@@ -31,6 +30,7 @@ class BufferParams;
 class LyXBuffer;
 class TexRow;
 struct LaTeXFeatures;
+class InsetBibKey;
 
 using std::list;
 

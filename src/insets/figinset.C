@@ -1097,7 +1097,7 @@ void InsetFig::draw(Painter & pain, LyXFont const & f,
 }
 
 
-void InsetFig::Write(ostream & os)
+void InsetFig::Write(ostream & os) const
 {
 	Regenerate();
 	os << "Figure size " << wid << " " << hgh << "\n";
@@ -1200,7 +1200,7 @@ void InsetFig::Read(LyXLex & lex)
 }
 
 
-int InsetFig::Latex(ostream & os, signed char /* fragile*/ )
+int InsetFig::Latex(ostream & os, signed char /* fragile*/ ) const
 {
 	Regenerate();
 	if (!cmd.empty()) os << cmd << " ";
@@ -1208,7 +1208,7 @@ int InsetFig::Latex(ostream & os, signed char /* fragile*/ )
 }
 
 
-int InsetFig::Latex(string & file, signed char /* fragile*/ )
+int InsetFig::Latex(string & file, signed char /* fragile*/ ) const
 {
 	Regenerate();
 	file += cmd + ' ';
@@ -1216,13 +1216,13 @@ int InsetFig::Latex(string & file, signed char /* fragile*/ )
 }
 
 
-int InsetFig::Linuxdoc(string &/*file*/)
+int InsetFig::Linuxdoc(string &/*file*/) const
 {
 	return 0;
 }
 
 
-int InsetFig::DocBook(string & file)
+int InsetFig::DocBook(string & file) const
 {
 	string figurename = fname;
 
@@ -1330,7 +1330,7 @@ Inset::Code InsetFig::LyxCode() const
 }
 
 
-void InsetFig::Regenerate()
+void InsetFig::Regenerate() const
 {
 	string cmdbuf;
 	string resizeW, resizeH;

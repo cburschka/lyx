@@ -23,7 +23,7 @@ class LyXText;
 struct Row;
 typedef unsigned short Dimension;
 
-class BufferView;
+class WorkArea;
 
 /** The class LyXScreen is used for the main Textbody.
     Concretely, the screen is held in a pixmap.  This pixmap is kept up to
@@ -33,15 +33,7 @@ class BufferView;
 class LyXScreen {
 public:
 	///
-	LyXScreen(BufferView *, Window window,
-		  Pixmap p,
-		  Dimension width, 
-		  Dimension height,
-		  Dimension offset_x,
-		  Dimension offset_y,
-		  LyXText * text_ptr);
-	///
-	~LyXScreen();
+	LyXScreen(WorkArea &, LyXText * text_ptr);
 
 	/** Draws the screen form textposition y. Uses as much of
 	    the already printed pixmap as possible */
@@ -62,8 +54,6 @@ public:
 	void CursorToggle();
 	///
 	void ShowManualCursor(long x, long y, int asc, int desc);
-	///
-	void HideManualCursor();
 	/// returns 1 if first has changed, otherwise 0
 	int  FitManualCursor(long, long, int, int);
 	///
@@ -98,13 +88,11 @@ private:
 	void DrawOneRow(Row * row, long & y_text);
 
 	///
-	BufferView * owner;
+	WorkArea & owner;
 	
 	///
 	LyXText * text;
 
-	///
-	Pixmap foreground;
 	///
 	Pixmap cursor_pixmap;
 	///
@@ -115,16 +103,6 @@ private:
 	int cursor_pixmap_w;
 	///
 	int cursor_pixmap_h;
-	///
-	Window _window;
-        ///
-	Dimension _width;
-	///
-	Dimension _height;
-        ///
-	Dimension _offset_x;
-	///
-	Dimension _offset_y;
 	///
 	long screen_refresh_y;
 	///

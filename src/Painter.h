@@ -109,9 +109,6 @@ protected:
 	///
 	PainterBase & setDisplay(Display * d) { display = d; return *this; }
 	
-	///
-	PainterBase & setDrawable(Drawable d) { drawable = d; return *this; }
-	
 	/// Get foreground color in ordinary GC
 	GC getGCForeground(LColor::color c);
 	
@@ -124,8 +121,10 @@ protected:
 	/**@Low level X parameters */
 	///
 	Display * display;
+
 	///
-	Drawable drawable;
+	Drawable drawable() const;
+		
 	///
 	Colormap colormap;
 	

@@ -67,7 +67,7 @@ string InsetRef::getScreenLabel() const
 }
 
 
-int InsetRef::Latex(ostream & os, signed char /*fragile*/)
+int InsetRef::Latex(ostream & os, signed char /*fragile*/) const
 {
 	if(getOptions().empty())
 		os << escape(getCommand());
@@ -81,7 +81,7 @@ int InsetRef::Latex(ostream & os, signed char /*fragile*/)
 }
 
 
-int InsetRef::Latex(string & file, signed char /*fragile*/)
+int InsetRef::Latex(string & file, signed char /*fragile*/) const
 {
 	if(getOptions().empty())
 		file += escape(getCommand());
@@ -95,7 +95,7 @@ int InsetRef::Latex(string & file, signed char /*fragile*/)
 }
 
 
-int InsetRef::Linuxdoc(string & file)
+int InsetRef::Linuxdoc(string & file) const
 {
 	file += "<ref id=\"" + getContents()
 		+ "\" name=\""+ getOptions() +"\" >" ;
@@ -104,7 +104,7 @@ int InsetRef::Linuxdoc(string & file)
 }
 
 
-int InsetRef::DocBook(string & file)
+int InsetRef::DocBook(string & file) const
 {
 	file += "<link linkend=\"" + getContents()
 		+ "\">"+ getOptions() +"</link>" ;

@@ -192,7 +192,7 @@ public:
 			     int & width = PainterBase::dummy1,
 			     int & ascent = PainterBase::dummy2, 
 			     int & descent = PainterBase::dummy3);
-private:
+protected:
 	WorkArea & owner;
 };
 

@@ -70,13 +70,13 @@ public:
         ///
         void gotoLabel();
 	///
-	int Latex(ostream &, signed char fragile);
+	int Latex(ostream &, signed char fragile) const;
 	///
-	int Latex(string & file, signed char fragile);
+	int Latex(string & file, signed char fragile) const;
 	///
-	int Linuxdoc(string & file);
+	int Linuxdoc(string & file) const;
 	///
-	int DocBook(string & file);
+	int DocBook(string & file) const;
 	///
 	static void CloseUrlCB(FL_OBJECT *, long data);
 private:

@@ -43,28 +43,28 @@ string InsetLabel::getLabel(int) const
 }
 
 
-int InsetLabel::Latex(ostream & os, signed char /*fragile*/)
+int InsetLabel::Latex(ostream & os, signed char /*fragile*/) const
 {
 	os << escape(getCommand());
 	return 0;
 }
 
 
-int InsetLabel::Latex(string & file, signed char /*fragile*/)
+int InsetLabel::Latex(string & file, signed char /*fragile*/) const
 {
 	file += escape(getCommand());
 	return 0;
 }
 
 
-int InsetLabel::Linuxdoc(string & file)
+int InsetLabel::Linuxdoc(string & file) const
 {
 	file += "<label id=\"" + getContents() +"\" >";
 	return 0;
 }
 
 
-int InsetLabel::DocBook(string & file)
+int InsetLabel::DocBook(string & file) const
 {
 	file += "<anchor id=\"" + getContents() +"\" >";
 	return 0;

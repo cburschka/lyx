@@ -49,17 +49,17 @@ public:
 	///
 	void draw(Painter &, LyXFont const &, int baseline, float & x) const;
 	///
-	void Write(ostream &);
+	void Write(ostream &) const;
 	/// Will not be used when lyxf3
 	void Read(LyXLex & lex);
 	/// 
-	int Latex(ostream &, signed char fragile);
+	int Latex(ostream &, signed char fragile) const;
 	///
-	int Latex(string & file, signed char fragile);
+	int Latex(string & file, signed char fragile) const;
 	///
-	int Linuxdoc(string & file);
+	int Linuxdoc(string & file) const;
 	///
-	int DocBook(string & file);
+	int DocBook(string & file) const;
 	///
 	Inset * Clone() const;
 	///  

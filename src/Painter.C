@@ -27,6 +27,7 @@
 #include "lyxfont.h"
 #include "support/LAssert.h"
 #include "support/lstrings.h"
+#include "WorkArea.h"
 
 Painter::Painter(WorkArea & wa)
 	: PainterBase(wa)
@@ -54,6 +55,12 @@ Painter::~Painter() {
 }
 
 
+Drawable Painter::drawable() const 
+{
+	return owner.getPixmap();
+}
+
+
 /* Basic drawing routines */
 
 extern bool Lgb_bug_find_hack;
@@ -64,10 +71,10 @@ PainterBase & Painter::point(int x, int y, LColor::color c)
 		if (!Lgb_bug_find_hack)
 			lyxerr << "point not called from "
 				"workarea::workhandler\n";
-		lyxerr.debug() << "Painter drawable: " << drawable << endl;
+		lyxerr.debug() << "Painter drawable: " << drawable() << endl;
 	}
 	
-	XDrawPoint(display, drawable, getGCForeground(c), x, y);
+	XDrawPoint(display, drawable(), getGCForeground(c), x, y);
 	return *this;
 }
 
@@ -81,10 +88,10 @@ PainterBase & Painter::line(int x1, int y1, int x2, int y2,
 		if (!Lgb_bug_find_hack)
 			lyxerr << "line not called from "
 				"workarea::workhandler\n";
-		lyxerr.debug() << "Painter drawable: " << drawable << endl;
+		lyxerr.debug() << "Painter drawable: " << drawable() << endl;
 	}
 	
-	XDrawLine(display, drawable, 
+	XDrawLine(display, drawable(), 
 		  getGCLinepars(ls, lw, col), x1, y1, x2, y2);
 	return *this;
 }
@@ -99,7 +106,7 @@ PainterBase & Painter::lines(int const * xp, int const * yp, int np,
 		if (!Lgb_bug_find_hack)
 			lyxerr << "lines not called from "
 				"workarea::workhandler\n";
-		lyxerr.debug() << "Painter drawable: " << drawable << endl;
+		lyxerr.debug() << "Painter drawable: " << drawable() << endl;
 	}
 	
 #ifndef HAVE_AUTO_PTR
@@ -112,7 +119,7 @@ PainterBase & Painter::lines(int const * xp, int const * yp, int np,
 		points[i].y = yp[i];
 	}
 
-        XDrawLines(display, drawable, getGCLinepars(ls, lw, col), 
+        XDrawLines(display, drawable(), getGCLinepars(ls, lw, col), 
 		   points, np, CoordModeOrigin);
 
 #ifndef HAVE_AUTO_PTR
@@ -131,10 +138,10 @@ PainterBase & Painter::rectangle(int x, int y, int w, int h,
 		if (!Lgb_bug_find_hack)
 			lyxerr << "rectangle not called from "
 				"workarea::workhandler\n";
-		lyxerr << "Painter drawable: " << drawable << endl;
+		lyxerr << "Painter drawable: " << drawable() << endl;
 	}
 	
-	XDrawRectangle(display, drawable, getGCLinepars(ls, lw, col), 
+	XDrawRectangle(display, drawable(), getGCLinepars(ls, lw, col), 
 		       x, y, w, h);
 	return *this;
 }
@@ -147,10 +154,10 @@ PainterBase & Painter::fillRectangle(int x, int y, int w, int h,
 		if (!Lgb_bug_find_hack)
 			lyxerr << "fillrectangle not called from "
 				"workarea::workhandler\n";
-		lyxerr << "Painter drawable: " << drawable << endl;
+		lyxerr << "Painter drawable: " << drawable() << endl;
 	}
 	
-	XFillRectangle(display, drawable, getGCForeground(col), x, y, w, h);
+	XFillRectangle(display, drawable(), getGCForeground(col), x, y, w, h);
 	return *this;
 }
 
@@ -162,7 +169,7 @@ PainterBase & Painter::fillPolygon(int const * xp, int const * yp, int np,
 		if (!Lgb_bug_find_hack)
 			lyxerr <<"fillpolygon not called from "
 				"workarea::workhandler\n";
-		lyxerr << "Painter drawable: " << drawable << endl;
+		lyxerr << "Painter drawable: " << drawable() << endl;
 	}
 	
 #ifndef HAVE_AUTO_PTR
@@ -175,7 +182,7 @@ PainterBase & Painter::fillPolygon(int const * xp, int const * yp, int np,
 		points[i].y = yp[i];
 	}
 
-	XFillPolygon(display, drawable, getGCForeground(col), points, np, 
+	XFillPolygon(display, drawable(), getGCForeground(col), points, np, 
 		     Nonconvex, CoordModeOrigin);
 #ifndef HAVE_AUTO_PTR
 	delete[] points;
@@ -192,10 +199,10 @@ PainterBase & Painter::arc(int x, int y,
 		if (!Lgb_bug_find_hack)
 			lyxerr << "arc not called from "
 				"workarea::workhandler\n";
-		lyxerr << "Painter drawable: " << drawable << endl;
+		lyxerr << "Painter drawable: " << drawable() << endl;
 	}
 	
-        XDrawArc(display, drawable, getGCForeground(col),
+        XDrawArc(display, drawable(), getGCForeground(col),
                  x, y, w, h, a1, a2);
 	return *this;
 }     
@@ -211,7 +218,7 @@ PainterBase & Painter::segments(int const * x1, int const * y1,
 		if (!Lgb_bug_find_hack)
 			lyxerr << "segments not called from "
 				"workarea::workhandler\n";
-		lyxerr << "Painter drawable: " << drawable << endl;
+		lyxerr << "Painter drawable: " << drawable() << endl;
 	}
 	
 #ifndef HAVE_AUTO_PTR
@@ -225,7 +232,7 @@ PainterBase & Painter::segments(int const * x1, int const * y1,
 		s[i].x2 = x2[i];
 		s[i].y2 = y2[i];
 	}
-	XDrawSegments(display, drawable, getGCLinepars(ls, lw, col), s, ns);
+	XDrawSegments(display, drawable(), getGCLinepars(ls, lw, col), s, ns);
 
 #ifndef HAVE_AUTO_PTR
 	delete [] s;
@@ -240,14 +247,14 @@ PainterBase & Painter::pixmap(int x, int y, int w, int h, Pixmap bitmap)
 		if (!Lgb_bug_find_hack)
 			lyxerr << "workAreaExpose not called from "
 				"workarea::workhandler\n";
-		lyxerr << "Painter drawable: " << drawable << endl;
+		lyxerr << "Painter drawable: " << drawable() << endl;
 	}
 	
 	XGCValues val;
 	val.function = GXcopy;
-	GC gc = XCreateGC(display, drawable,
+	GC gc = XCreateGC(display, drawable(),
 			  GCFunction, &val);
-	XCopyArea(display, bitmap, drawable, gc,
+	XCopyArea(display, bitmap, drawable(), gc,
 		  0, 0, w, h, x, y);
 	XFreeGC(display, gc);
 	return *this;
@@ -274,12 +281,12 @@ PainterBase & Painter::text(int x, int y, char const * s, int ls,
 		if (!Lgb_bug_find_hack)
 			lyxerr << "text not called from "
 				"workarea::workhandler\n";
-		lyxerr << "Painter drawable: " << drawable << endl;
+		lyxerr << "Painter drawable: " << drawable() << endl;
 	}
 	
 	GC gc = getGCForeground(f.realColor());
 	XSetFont(display, gc, f.getFontID());
-	XDrawString(display, drawable, gc, x, y, s, ls);
+	XDrawString(display, drawable(), gc, x, y, s, ls);
 	underline(f, x, y, this->width(s, ls, f));
 	return *this;
 }
@@ -303,7 +310,7 @@ void Painter::underline(LyXFont const & f, int x, int y, int width)
 GC Painter::getGCForeground(LColor::color c)
 {
 	if (lyxerr.debugging()) {
-		lyxerr << "Painter drawable: " << drawable << endl;
+		lyxerr << "Painter drawable: " << drawable() << endl;
 	}
 	
     	if (colorGCcache[c] != 0) return colorGCcache[c];
@@ -387,7 +394,7 @@ GC Painter::getGCForeground(LColor::color c)
 	}
 
 	val.function = GXcopy;
-	return colorGCcache[c] = XCreateGC(display, drawable,
+	return colorGCcache[c] = XCreateGC(display, drawable(),
 				    GCForeground | GCFunction, &val);
 }
 
@@ -397,7 +404,7 @@ GC Painter::getGCLinepars(enum line_style ls,
 			  enum line_width lw, LColor::color c)
 {
 	if (lyxerr.debugging()) {
-		lyxerr << "Painter drawable: " << drawable << endl;
+		lyxerr << "Painter drawable: " << drawable() << endl;
 	}
 	
 	int index = lw + (ls << 1) + (c << 3);
@@ -425,7 +432,7 @@ GC Painter::getGCLinepars(enum line_style ls,
 	val.function = GXcopy;
 
 	return lineGCcache[index] =
-		XCreateGC(display, drawable, 
+		XCreateGC(display, drawable(), 
 			  GCForeground | GCLineStyle | GCLineWidth | 
 			  GCCapStyle | GCJoinStyle | GCFunction, &val);
 }

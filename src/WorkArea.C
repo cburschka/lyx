@@ -164,7 +164,6 @@ WorkArea::WorkArea(BufferView * o, int xpos, int ypos, int width, int height)
 
 	// setup the painter
 	painter_.setDisplay(fl_display);
-	painter_.setDrawable(workareapixmap);
 	
 	// We add this object as late as possible to avoit problems
 	// with drawing.
@@ -223,9 +222,6 @@ void WorkArea::resize(int xpos, int ypos, int width, int height)
 	// Create the workarea pixmap
 	createPixmap(width - 15 - 2 * bw, height - 2 * bw);
 
-	// reset the painter
-	painter_.setDrawable(workareapixmap);
-	
 	// the free object
 	fl_set_object_geometry(work_area, xpos + bw, ypos + bw,
 			       width - 15 - 2 * bw,

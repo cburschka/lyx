@@ -226,7 +226,7 @@ void InsetBibKey::setCounter(int c)
 // as a LyX 2.x command, and lyxlex is not enough smart to understand
 // real LaTeX commands. Yes, that could be fixed, but would be a waste 
 // of time cause LyX3 won't use lyxlex anyway.  (ale)
-void InsetBibKey::Write(ostream & os)
+void InsetBibKey::Write(ostream & os) const
 {
 	string s;
 	if (!options.empty()) {
@@ -296,7 +296,7 @@ string InsetBibtex::getScreenLabel() const
 }
 
 
-int InsetBibtex::Latex(ostream & os, signed char /*fragile*/)
+int InsetBibtex::Latex(ostream & os, signed char /*fragile*/) const
 {
 	string bib;
 	signed char dummy = 0;
@@ -306,7 +306,7 @@ int InsetBibtex::Latex(ostream & os, signed char /*fragile*/)
 }
 
 
-int InsetBibtex::Latex(string & file, signed char /*fragile*/)
+int InsetBibtex::Latex(string & file, signed char /*fragile*/) const
 {
 	// this looks like an horrible hack and it is :) The problem
 	// is that owner is not initialized correctly when the bib

@@ -93,7 +93,7 @@ void InsetInfo::draw(Painter & pain, LyXFont const & f,
 }
 
 
-void InsetInfo::Write(ostream & os)
+void InsetInfo::Write(ostream & os) const
 {
 	os << "Info " << contents;
 }
@@ -126,25 +126,25 @@ void InsetInfo::Read(LyXLex & lex)
 }
       
 
-int InsetInfo::Latex(ostream &, signed char /*fragile*/)
+int InsetInfo::Latex(ostream &, signed char /*fragile*/) const
 {
 	return 0;
 }
 
 
-int InsetInfo::Latex(string &, signed char /*fragile*/)
+int InsetInfo::Latex(string &, signed char /*fragile*/) const
 {
 	return 0;
 }
 
 
-int InsetInfo::Linuxdoc(string &)
+int InsetInfo::Linuxdoc(string &) const
 {
 	return 0;
 }
 
 
-int InsetInfo::DocBook(string &)
+int InsetInfo::DocBook(string &) const
 {
 	return 0;
 }

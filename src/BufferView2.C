@@ -709,7 +709,7 @@ void BufferView::showLockedInsetCursor(long x, long y, int asc, int desc)
 void BufferView::hideLockedInsetCursor()
 {
 	if (the_locking_inset && available()) {
-		screen->HideManualCursor();
+		screen->HideCursor();
 	}
 }
 

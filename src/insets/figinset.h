@@ -34,17 +34,17 @@ public:
 	void draw(Painter &, LyXFont const & font,
 		  int baseline, float & x) const;
 	///
-	void Write(ostream &);
+	void Write(ostream &) const;
 	///
 	void Read(LyXLex & lex);
 	///
-	int Latex(ostream &, signed char fragile);
+	int Latex(ostream &, signed char fragile) const;
 	///
-	int Latex(string & file, signed char fragile);
+	int Latex(string & file, signed char fragile) const;
 	///
-	int Linuxdoc(string & file);
+	int Linuxdoc(string & file) const;
 	///
-	int DocBook(string & file);
+	int DocBook(string & file) const;
 	/// Updates needed features for this inset.
 	void Validate(LaTeXFeatures & features) const;
 
@@ -117,7 +117,7 @@ public:
 	float angle;
 	
 	/// graphics command, latex version
-	string cmd;
+	mutable string cmd;
 	
 	/// Caption for subfigure package
 	string subcaption;
@@ -139,7 +139,7 @@ private:
 	/// recompute screen params
 	void Recompute();
 	/// regenerate \includegraphics{} command
-	void Regenerate();
+	void Regenerate() const;
 	/// regenerate \inlcudegraphics{} command in temporary buffer
 	void TempRegenerate();
 	/// get sizes from .eps file

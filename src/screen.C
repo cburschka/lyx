@@ -14,12 +14,16 @@
 #pragma implementation "lyxscreen.h"
 #endif
 
+#include <algorithm>
+
 #include "lyxscreen.h"
 #include "lyxtext.h"
 #include "lyxrow.h"
-#include "BufferView.h"
 #include "Painter.h"
+#include "WorkArea.h"
 
+using std::max;
+using std::min;
 
 static
 GC createGC()
@@ -39,25 +43,14 @@ GC createGC()
 
 
 // Constructor
-LyXScreen::LyXScreen(BufferView * o, Window window,
-		     Pixmap p,
-		     Dimension width, 
-		     Dimension height,
-		     Dimension offset_x,
-		     Dimension offset_y,
-		     LyXText *text_ptr)
-	: owner(o), text(text_ptr), _window(window), 
-	_width(width), _height(height),
-	_offset_x(offset_x), _offset_y(offset_y)
+LyXScreen::LyXScreen(WorkArea & o, LyXText * text_ptr)
+	: owner(o), text(text_ptr)
 {
 	first = 0;
    
 	/* the cursor isnt yet visible */ 
 	cursor_visible = false;
 	screen_refresh_y = -1;
-
-	/* create the foreground pixmap */
-	foreground = p;
 
 	cursor_pixmap = 0;
 	cursor_pixmap_x = 0;
@@ -70,15 +63,11 @@ LyXScreen::LyXScreen(BufferView * o, Window window,
 }
 
 
-// Destructor
-LyXScreen::~LyXScreen() {}
-
-
 void LyXScreen::Redraw()
 {
-	DrawFromTo(0, _height);
+	DrawFromTo(0, owner.height());
 	screen_refresh_y = -1;
-	expose(0, 0, _width, _height);
+	expose(0, 0, owner.workWidth(), owner.height());
 	if (cursor_visible) {
 		cursor_visible = false;
 		ShowCursor();
@@ -89,12 +78,13 @@ void LyXScreen::Redraw()
 void LyXScreen::expose(int x, int y, int exp_width, int exp_height)
 {
 	XCopyArea(fl_display,
-		  foreground,
-		  _window,
+		  owner.getPixmap(),
+		  owner.getWin(),
 		  gc_copy,
 		  x, y,
 		  exp_width, exp_height,
-		  x+_offset_x, y+_offset_y);
+		  x + owner.xpos(),
+		  y + owner.ypos());
 }
 
 
@@ -110,16 +100,16 @@ void LyXScreen::DrawFromTo(int y1, int y2)
 	/* y1 is now the real beginning of row on the screen */
 	
 	while (row != 0 && y < y2) {
-
 		text->GetVisibleRow(y, row, y + first);
 		y += row->height;
-		row = row -> next;
-
+		row = row->next;
 	}
    
 	/* maybe we have to clear the screen at the bottom */ 
 	if (y < y2) {
-		owner->painter().fillRectangle(0, y, _width, y2 - y,
+		owner.getPainter().fillRectangle(0, y,
+						 owner.workWidth(),
+						 y2 - y,
 					       LColor::bottomarea);
 	}
 }
@@ -129,11 +119,11 @@ void LyXScreen::DrawOneRow(Row * row, long & y_text)
 {
 	long y = y_text - first;
       
-	if (y + row->height > 0 && y - row->height <= _height) {
+	if (y + row->height > 0 && y - row->height <= owner.height()) {
 		/* ok there is something visible */
 		text->GetVisibleRow(y, row, y + first);
 	}
-	y_text+= row->height;
+	y_text += row->height;
 }
 
 
@@ -148,55 +138,63 @@ void LyXScreen::Draw(long  y)
 	first = y;
 
 	/* is any optimiziation possible? */ 
-	if ((y - old_first) < _height 
-	    && (old_first - y) < _height) {
+	if ((y - old_first) < owner.height()
+	    && (old_first - y) < owner.height()) {
 		if (first < old_first) {
 			DrawFromTo(0, old_first - first);
 			XCopyArea (fl_display,
-				   _window,
-				   _window,
+				   owner.getWin(),
+				   owner.getWin(),
 				   gc_copy,
-				   _offset_x, _offset_y, 
-				   _width , _height - old_first + first,
-				   _offset_x, _offset_y + old_first - first);
+				   owner.xpos(),
+				   owner.ypos(),
+				   owner.workWidth(),
+				   owner.height() - old_first + first,
+				   owner.xpos(),
+				   owner.ypos() + old_first - first
+				);
 			// expose the area drawn
-			expose(0, 0, _width, old_first - first);
+			expose(0, 0,
+			       owner.workWidth(),
+			       old_first - first);
 		} else  {
-			DrawFromTo(_height + old_first - first, _height);
+			DrawFromTo(
+				owner.height() + old_first - first,
+				   owner.height());
 			XCopyArea (fl_display,
-				   _window,
-				   _window,
+				   owner.getWin(),
+				   owner.getWin(),
 				   gc_copy,
-				   _offset_x, _offset_y + first - old_first, 
-				   _width , _height + old_first - first, 
-				   _offset_x, _offset_y);
+				   owner.xpos(),
+				   owner.ypos() + first - old_first,
+				   owner.workWidth(),
+				   owner.height() + old_first - first,
+				   owner.xpos(),
+				   owner.ypos());
 			// expose the area drawn
-			expose(0, _height + old_first - first, 
-			       _width, first - old_first);
+			expose(0, owner.height() + old_first - first,
+			       owner.workWidth(), first - old_first);
 		}
 	} else {
 		/* make a dumb new-draw */ 
-		DrawFromTo(0, _height);
-		expose(0, 0, _width, _height);
+		DrawFromTo(0, owner.height());
+		expose(0, 0, owner.workWidth(), owner.height());
 	}
 }
 
 
 void LyXScreen::ShowCursor()
 {
-	long x = 0;
-	long y1 = 0;
-	long y2 = 0;
-   
 	if (cursor_visible) return;
    
-	x = text->cursor.x;
+	long x = text->cursor.x;
 	
-	y1 = text->cursor.y - text->real_current_font.maxAscent() - first;
-	if (y1 < 0) y1 = 0;
+	long y1 = max(text->cursor.y -
+		      text->real_current_font.maxAscent() - first, 0L);
 	
-	y2 = text->cursor.y + text->real_current_font.maxDescent() - first;
-	if (y2 > _height) y2 = _height;
+	long y2 = min(text->cursor.y +
+		      text->real_current_font.maxDescent() - first,
+		      long(owner.height()));
 
 	// Secure against very strange situations
 	if (y2 < y1) y2 = y1;
@@ -206,7 +204,7 @@ void LyXScreen::ShowCursor()
 		cursor_pixmap = 0;
 	}
    
-	if (y2 > 0 && y1 < _height) {
+	if (y2 > 0 && y1 < owner.height()) {
 		cursor_pixmap_w = 1;
 		cursor_pixmap_h = y2 - y1 + 1;
 		cursor_pixmap_x = x;
@@ -218,19 +216,20 @@ void LyXScreen::ShowCursor()
 				      cursor_pixmap_h,
 				      fl_get_visual_depth());
 		XCopyArea(fl_display,
-			  _window,
+			  owner.getWin(),
 			  cursor_pixmap,
 			  gc_copy,
-			  _offset_x + cursor_pixmap_x, 
-			  _offset_y + cursor_pixmap_y,
+			  owner.xpos() + cursor_pixmap_x,
+			  owner.ypos() + cursor_pixmap_y,
 			  cursor_pixmap_w, cursor_pixmap_h,
 			  0, 0);
 		XDrawLine(fl_display,
-			  _window, gc_copy,
-			  x + _offset_x,
-			  y1 + _offset_y,
-			  x + _offset_x,
-			  y2 + _offset_y);
+			  owner.getWin(),
+			  gc_copy,
+			  x + owner.xpos(),
+			  y1 + owner.ypos(),
+			  x + owner.xpos(),
+			  y2 + owner.ypos());
 		cursor_visible = true;
 	}
 }
@@ -241,11 +240,11 @@ int LyXScreen::FitManualCursor(long /*x*/, long y, int asc, int desc)
 {
 	long  newtop = first;
   
-	if (y + desc  - first >= _height)
-		newtop = y - 3*_height / 4;   /* the scroll region must be so big!! */
+	if (y + desc  - first >= owner.height())
+		newtop = y - 3 * owner.height() / 4;   /* the scroll region must be so big!! */
 	else if (y - asc < first 
 		 && first > 0) {
-		newtop = y - _height / 4;
+		newtop = y - owner.height() / 4;
 	}
 	if (newtop < 0)
 		newtop = 0;
@@ -259,30 +258,18 @@ int LyXScreen::FitManualCursor(long /*x*/, long y, int asc, int desc)
 }
 
 
-void  LyXScreen::HideManualCursor()
-{
-	HideCursor();
-}
-
-
 void  LyXScreen::ShowManualCursor(long x, long y, int asc, int desc)
 {
-	long y1 = 0;
-	long y2 = 0;
-	
-	y1 = y - first - asc;
-	if (y1 < 0)
-		y1 = 0;
-	y2 = y -first + desc;
-	if (y2 > _height)
-		y2 = _height;
+	long y1 = max(y - first - asc, 0L);
+	long y2 = min(y - first + desc, long(owner.height()));
 
 	if (cursor_pixmap){
 		XFreePixmap(fl_display, cursor_pixmap);
 		cursor_pixmap = 0;
 	}
 		
-	if (y2 > 0 && y1 < _height) {
+	if (y2 > 0 && y1 <
+	    owner.height()) {
 		cursor_pixmap_w = 1;
 		cursor_pixmap_h = y2 - y1 + 1;
 		cursor_pixmap_x = x,
@@ -294,20 +281,21 @@ void  LyXScreen::ShowManualCursor(long x, long y, int asc, int desc)
 				       cursor_pixmap_h,
 				       fl_get_visual_depth());
 		XCopyArea (fl_display,
-			   _window,
+			   owner.getWin(),
 			   cursor_pixmap,
 			   gc_copy,
-			   _offset_x + cursor_pixmap_x,
-			   _offset_y + cursor_pixmap_y,
+			   owner.xpos() + cursor_pixmap_x,
+			   owner.ypos() + cursor_pixmap_y,
 			   cursor_pixmap_w,
 			   cursor_pixmap_h,
 			   0, 0);
 		XDrawLine(fl_display,
-			  _window, gc_copy,
-			  x+_offset_x,
-			  y1+_offset_y,
-			  x+_offset_x,
-			  y2+_offset_y);
+			  owner.getWin(),
+			  gc_copy,
+			  x + owner.xpos(),
+			  y1 + owner.ypos(),
+			  x + owner.xpos(),
+			  y2 + owner.ypos());
 	}
 	cursor_visible = true;
 }
@@ -320,12 +308,12 @@ void LyXScreen::HideCursor()
 	if (cursor_pixmap){
 		XCopyArea (fl_display, 
 			   cursor_pixmap,
-			   _window,
+			   owner.getWin(),
 			   gc_copy,
 			   0, 0, 
 			   cursor_pixmap_w, cursor_pixmap_h,
-			   cursor_pixmap_x + _offset_x,
-			   cursor_pixmap_y + _offset_y);
+			   cursor_pixmap_x + owner.xpos(),
+			   cursor_pixmap_y + owner.ypos());
 	}
 	cursor_visible = false;
 }
@@ -348,22 +336,22 @@ long LyXScreen::TopCursorVisible()
 	if (text->cursor.y
 	    - text->cursor.row->baseline
 	    + text->cursor.row->height
-	    - first >= _height) {
-		if (text->cursor.row->height < _height
-		    && text->cursor.row->height > _height/4)
+	    - first >= owner.height()) {
+		if (text->cursor.row->height < owner.height()
+		    && text->cursor.row->height > owner.height() / 4)
 			newtop = text->cursor.y
 				+ text->cursor.row->height
-				- text->cursor.row->baseline - _height;
+				- text->cursor.row->baseline - owner.height();
 		else
 			newtop = text->cursor.y
-				- 3*_height / 4;   /* the scroll region must be so big!! */
+				- 3 * owner.height() / 4;   /* the scroll region must be so big!! */
 	} else if (text->cursor.y - text->cursor.row->baseline < first 
 		   && first > 0) {
-		if (text->cursor.row->height < _height
-		    && text->cursor.row->height > _height/4)
+		if (text->cursor.row->height < owner.height()
+		    && text->cursor.row->height > owner.height() / 4)
 			newtop = text->cursor.y - text->cursor.row->baseline;
 		else {
-			newtop = text->cursor.y - _height / 4;
+			newtop = text->cursor.y - owner.height() / 4;
 			if (newtop > first)
 				newtop = first;
 		}
@@ -390,10 +378,9 @@ int LyXScreen::FitCursor()
    
 void LyXScreen::Update()
 {
-	long y = 0;
-
 	if (text->status == LyXText::NEED_MORE_REFRESH
 	    || screen_refresh_y > -1 ) {
+		long y = 0;
 		if (screen_refresh_y > -1
 		    && screen_refresh_y < text->refresh_y)
 			y = screen_refresh_y;
@@ -402,40 +389,39 @@ void LyXScreen::Update()
 		
 		if (y < first) y = first;
 		
-		DrawFromTo(y - first, _height);
+		DrawFromTo(y - first, owner.height());
 		text->refresh_y = 0;
 		text->status = LyXText::UNCHANGED;
 		screen_refresh_y = -1;
-		expose(0, y-first, _width, _height - (y - first));
+		expose(0, y - first,
+		       owner.workWidth(), owner.height() - (y - first));
 	} else if (text->status == LyXText::NEED_VERY_LITTLE_REFRESH) {
 		/* ok I will update the current cursor row */
-		y = text->refresh_y;
+		long y = text->refresh_y;
 		DrawOneRow(text->refresh_row, y);
 		text->status = LyXText::UNCHANGED;
-		expose(0, text->refresh_y-first,
-		       _width, text->refresh_row->height);
+		expose(0, text->refresh_y - first,
+		       owner.workWidth(), text->refresh_row->height);
 	}
 }
 
 
 void LyXScreen::SmallUpdate()
 {
-	Row * row = 0;
-	long y = 0;
-	long y2 = 0;
-	
-	if (text->status == LyXText::NEED_MORE_REFRESH){
+	if (text->status == LyXText::NEED_MORE_REFRESH) {
 		/* ok I will update till the current cursor row */
-		row = text->refresh_row;
-		y = text->refresh_y;
-		y2 = y;
+		Row * row = text->refresh_row;
+		long y = text->refresh_y;
+		long y2 = y;
       
 		if (y > text->cursor.y) {
 			Update();
 			return;
 		}
 	 
-		while (row && row != text->cursor.row && y < first + _height) {
+		while (row
+		       && row != text->cursor.row
+		       && y < first + owner.height()) {
 			DrawOneRow(row, y);
 			row = row->next;
 		}
@@ -445,15 +431,15 @@ void LyXScreen::SmallUpdate()
 		screen_refresh_row = row->next;
 		text->status = LyXText::UNCHANGED;
 		// Is the right regin exposed?
-		expose(0, y2-first, _width, y-y2);
+		expose(0, y2 - first,
+		       owner.workWidth(), y - y2);
 	} else if (text->status == LyXText::NEED_VERY_LITTLE_REFRESH) {
 		/* ok I will update the current cursor row */
-		row = text->refresh_row;
-		y = text->refresh_y;
-		DrawOneRow(row, y);
+		long y = text->refresh_y;
+		DrawOneRow(text->refresh_row, y);
 		text->status = LyXText::UNCHANGED;
 		expose(0, text->refresh_y - first,
-		       _width, row->height);
+		       owner.workWidth(), text->refresh_row->height);
 	}
 }
 
@@ -461,29 +447,30 @@ void LyXScreen::SmallUpdate()
 void LyXScreen::ToggleSelection(bool kill_selection)
 {
 	/* only if there is a selection */ 
-	if (!text->selection)
-		return;
+	if (!text->selection) return;
 
 	long top = text->sel_start_cursor.y
 		- text->sel_start_cursor.row->baseline;
 	long bottom = text->sel_end_cursor.y
 		- text->sel_end_cursor.row->baseline 
 		+ text->sel_end_cursor.row->height;
+
+	if (top < first)
+		top = max(top, first);
+        if (bottom < first)
+		bottom = max(bottom, first);
 	
-	if (top - first < 0)
-		top = first;
-	if (bottom - first < 0)
-		bottom = first;
-	
-	if (bottom - first > _height)
-		bottom = first + _height;
-	if (top - first > _height)
-		top = first + _height;
-	
+	if (bottom > first + owner.height())
+		bottom = first + owner.height();
+	if (top > first + owner.height())
+		top = first + owner.height();
+
 	if (kill_selection)
 		text->selection = 0;
 	DrawFromTo(top - first, bottom - first);
-	expose(0, top - first, _width, bottom - first - (top - first));
+	expose(0, top - first,
+	       owner.workWidth(),
+	       bottom - first - (top - first));
 }
   
    
@@ -504,11 +491,12 @@ void LyXScreen::ToggleToggle()
 	if (bottom - first < 0)
 		bottom = first;
 	
-	if (bottom - first > _height)
-		bottom = first + _height;
-	if (top - first > _height)
-		top = first + _height;
+	if (bottom - first > owner.height())
+		bottom = first + owner.height();
+	if (top - first > owner.height())
+		top = first + owner.height();
 	
 	DrawFromTo(top - first, bottom - first);
-	expose(0, top - first, _width, bottom - first - (top - first));
+	expose(0, top - first, owner.workWidth(),
+	       bottom - first - (top - first));
 }

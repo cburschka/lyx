@@ -99,20 +99,20 @@ public:
 	///
 	virtual bool AutoDelete() const;
 	///
-	virtual void Write(ostream &) = 0;
+	virtual void Write(ostream &) const = 0;
 	///
 	virtual void Read(LyXLex & lex) = 0;
 	/** returns the number of rows (\n's) of generated tex code.
 	 fragile != 0 means, that the inset should take care about
 	 fragile commands by adding a \protect before.
 	 */
-	virtual int Latex(ostream &, signed char fragile) = 0;
+	virtual int Latex(ostream &, signed char fragile) const = 0;
 	///
-	virtual int Latex(string & file, signed char fragile) = 0;
+	virtual int Latex(string & file, signed char fragile) const = 0;
 	///
-	virtual int Linuxdoc(string & /*file*/) = 0;
+	virtual int Linuxdoc(string & /*file*/) const = 0;
 	///
-	virtual int DocBook(string & /*file*/) = 0;
+	virtual int DocBook(string & /*file*/) const = 0;
 	/// Updates needed features for this inset.
 	virtual void Validate(LaTeXFeatures & features) const;
 	///

@@ -185,7 +185,7 @@ dnl Check the version of g++
     case $gxx_version in
       2.7*) CXXFLAGS="$lyx_opt";;
       2.95.1) CXXFLAGS="-g $lyx_opt -fpermissive -fno-rtti";;
-      2.95.*) CXXFLAGS="-g $lyx_opt -fno-rtti -fno-exceptions";;
+      2.95.*) CXXFLAGS="-g $lyx_opt -Woverloaded-virtual -fno-rtti -fno-exceptions";;
       *2.91.*) CXXFLAGS="-g $lyx_opt -Wno-return-type -fno-exceptions -fno-rtti";;
       *)    CXXFLAGS="-g $lyx_opt -fno-exceptions -fno-rtti";;
     esac

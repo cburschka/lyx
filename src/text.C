@@ -20,6 +20,7 @@
 #include "lyxparagraph.h"
 #include "lyxtext.h"
 #include "support/textutils.h"
+#include "insets/insetbib.h"
 #include "lyx_gui_misc.h"
 #include "gettext.h"
 #include "bufferparams.h"

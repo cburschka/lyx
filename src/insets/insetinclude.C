@@ -260,7 +260,7 @@ void InsetInclude::Edit(int, int)
 }
 
 
-void InsetInclude::Write(ostream & os)
+void InsetInclude::Write(ostream & os) const
 {
 	os << "Include " << getCommand() << "\n";
 }
@@ -316,7 +316,7 @@ bool InsetInclude::loadIfNeeded() const
 }
 
 
-int InsetInclude::Latex(ostream & os, signed char /*fragile*/)
+int InsetInclude::Latex(ostream & os, signed char /*fragile*/) const
 {
 	string include_file;
 	signed char dummy = 0;
@@ -326,7 +326,7 @@ int InsetInclude::Latex(ostream & os, signed char /*fragile*/)
 }
 
 
-int InsetInclude::Latex(string & file, signed char /*fragile*/)
+int InsetInclude::Latex(string & file, signed char /*fragile*/) const
 {
 	string writefile, incfile;
 

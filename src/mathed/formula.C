@@ -298,14 +298,14 @@ Inset * InsetFormula::Clone() const
 }
 
 
-void InsetFormula::Write(ostream & os)
+void InsetFormula::Write(ostream & os) const
 {
 	os << "Formula ";
 	Latex(os, 0);
 }
 
 
-int InsetFormula::Latex(ostream & os, signed char fragile)
+int InsetFormula::Latex(ostream & os, signed char fragile) const
 {
     int ret = 0;      
 //#warning Alejandro, the number of lines is not returned in this case
@@ -317,7 +317,7 @@ int InsetFormula::Latex(ostream & os, signed char fragile)
 }
 
 
-int InsetFormula::Latex(string & file, signed char fragile)
+int InsetFormula::Latex(string & file, signed char fragile) const
 {
     int ret = 0;
 //#warning Alejandro, the number of lines is not returned in this case
@@ -330,13 +330,13 @@ int InsetFormula::Latex(string & file, signed char fragile)
 }
 
 
-int InsetFormula::Linuxdoc(string &/*file*/)
+int InsetFormula::Linuxdoc(string &/*file*/) const
 {
     return 0;
 }
 
 
-int InsetFormula::DocBook(string &/*file*/)
+int InsetFormula::DocBook(string &/*file*/) const
 {
     return 0;
 }

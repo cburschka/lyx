@@ -180,7 +180,7 @@ public:
 	LyXFont(LyXFont::FONT_INIT3);
 
 	/// LyXFont x, y; x = y;
-	LyXFont& operator=(LyXFont const & x);
+	LyXFont & operator=(LyXFont const & x);
  
 	/// Decreases font size by one
 	LyXFont & decSize();

@@ -44,17 +44,17 @@ public:
 	void draw(Painter &, LyXFont const & font,
 		  int baseline, float & x) const;
 	///
-	void Write(ostream &);
+	void Write(ostream &) const;
 	///
 	void Read(LyXLex & lex);
 	///
-	int Latex(ostream &, signed char fragile);
+	int Latex(ostream &, signed char fragile) const;
 	///
-	int Latex(string & file, signed char fragile);
+	int Latex(string & file, signed char fragile) const;
 	///
-	int Linuxdoc(string & file);
+	int Linuxdoc(string & file) const;
 	///
-	int DocBook(string & file);
+	int DocBook(string & file) const;
 	///
 	bool AutoDelete() const;
 	/// what appears in the minibuffer when opening

@@ -46,7 +46,7 @@ void InsetParent::Edit(int, int)
 
 
 // LaTeX must just ignore this command
-int InsetParent::Latex(ostream & os, signed char fragile)
+int InsetParent::Latex(ostream & os, signed char fragile) const
 {
 	os << "%%#{lyx}";
 	InsetCommand::Latex(os, fragile);
@@ -55,7 +55,7 @@ int InsetParent::Latex(ostream & os, signed char fragile)
 
 
 // LaTeX must just ignore this command
-int InsetParent::Latex(string & file, signed char fragile)
+int InsetParent::Latex(string & file, signed char fragile) const
 {
 	file += "%%#{lyx}";
 	InsetCommand::Latex(file, fragile);
