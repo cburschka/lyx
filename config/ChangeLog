@@ -1,3 +1,10 @@
+2003-01-08  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* lyxinclude.m4 (LYX_CHECK_ERRORS): do not delete $cache_file if
+	there has been an error in configuration. With autoconf 2.5x,
+	$cache_file is often set to /dev/null, and deleting that is not a
+	good idea...
+
 2002-12-18  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* configure.ac (AC_CONFIG_FILES): add sourcedoc/Makefile

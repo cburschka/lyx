@@ -81,9 +81,7 @@ cat <<EOF
 **** (see the section 'Problems' in the INSTALL file)
 $lyx_error_txt
 $lyx_warning_txt
-deleting cache $cache_file
 EOF
-  rm -f $cache_file
 else
 
 if test x$lyx_warning = xyes; then
