@@ -64,7 +64,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: button_close
-callback: C_FormBaseDeprecatedCancelCB
+callback: C_FormBaseDeprecatedInputCB
 argument: 0
 
 --------------------

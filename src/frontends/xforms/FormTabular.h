@@ -90,6 +90,8 @@ private:
 	int actCell_;
 	/// The ButtonController
 	ButtonController<OkCancelReadOnlyPolicy, xformsBC> bc_;
+	/// if we are applying stuff during a close of the dialog
+	bool closing_;
 };
 
 

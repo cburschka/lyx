@@ -362,39 +362,45 @@ void InsetTabular::draw(BufferView * bv, LyXFont const & font, int baseline,
 		float dx = nx + tabular->GetBeginningOfTextInCell(cell);
 		float cx = dx;
 		tabular->GetCellInset(cell)->draw(bv, font, baseline, dx, false);
+		//
+		// Here we use rectangular backgroundColor patches to clean up
+		// within a cell around the cell's red inset box. As follows:
+		//
+		//  +---+            +---+
+		//  |   |            |   |   The rectangles are A, B and C
+		//  | A |------------| B |   below, origin top left (tx, ty), 
+		//  |   |  inset box |   |   dimensions w(idth), h(eight).
+		//  +---+------------+---+   x grows rightward, y downward
+		//  |         D          |
+		//  +--------------------+
+		//
 		// clear only if we didn't have a change
 		if (bv->text->status() != LyXText::CHANGED_IN_DRAW) {
 			// clear before the inset
-			pain.fillRectangle(
-				nx + 1,
-				baseline - tabular->GetAscentOfRow(i) + 1,
-				int(cx - nx - 1),
-				tabular->GetAscentOfRow(i) +
-				tabular->GetDescentOfRow(i) - 1,
-				backgroundColor());
+			int tx, ty, w, h;
+			tx = nx + 1; 
+			ty = baseline - tabular->GetAscentOfRow(i) + 1;
+			w = int(cx - nx - 1);
+			h = tabular->GetAscentOfRow(i) + 
+				tabular->GetDescentOfRow(i) - 1;
+			pain.fillRectangle(tx, ty, w, h, backgroundColor());
 			// clear behind the inset
-			pain.fillRectangle(
-				int(cx + the_locking_inset->width(bv,font) + 1),
-				baseline - tabular->GetAscentOfRow(i) + 1,
-				tabular->GetWidthOfColumn(cell) -
+			tx = int(cx + the_locking_inset->width(bv,font) + 1);
+			ty = baseline - tabular->GetAscentOfRow(i) + 1;
+			w = tabular->GetWidthOfColumn(cell) -
 				tabular->GetBeginningOfTextInCell(cell) -
 				the_locking_inset->width(bv,font) -
-				tabular->GetAdditionalWidth(cell) - 1,
-				tabular->GetAscentOfRow(i) +
-				tabular->GetDescentOfRow(i) - 1,
-				backgroundColor());
+				tabular->GetAdditionalWidth(cell) - 1;
+			h = tabular->GetAscentOfRow(i) + tabular->GetDescentOfRow(i) - 1;
+			pain.fillRectangle(tx, ty, w, h, backgroundColor());
 			// clear below the inset
-			pain.fillRectangle(
-				nx + 1,
-				baseline + the_locking_inset->descent(bv, font) + 1,
-				tabular->GetWidthOfColumn(cell) -
-				tabular->GetAdditionalWidth(cell) - 1,
-				tabular->GetAscentOfRow(i) +
-				tabular->GetDescentOfRow(i) -
-				the_locking_inset->ascent(bv, font) -
-				the_locking_inset->descent(bv, font) -
-				TEXT_TO_INSET_OFFSET - 1,
-				backgroundColor());
+			tx = nx + 1;
+			ty = baseline + the_locking_inset->descent(bv, font) + 1;
+			w = tabular->GetWidthOfColumn(cell) -
+				tabular->GetAdditionalWidth(cell) - 1;
+			h = tabular->GetDescentOfRow(i) -
+				the_locking_inset->descent(bv, font) - 1;
+			pain.fillRectangle(tx, ty, w, h, backgroundColor());
 		}
 	}
 	x -= ADD_TO_TABULAR_WIDTH;

@@ -33,7 +33,7 @@ FD_form_tabular * FormTabular::build_tabular()
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-    fl_set_object_callback(obj, C_FormBaseDeprecatedCancelCB, 0);
+    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
   fdui->input_tabular_column = obj = fl_add_input(FL_NORMAL_INPUT, 65, 260, 60, 30, "");
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_lalign(obj, FL_ALIGN_TOP_LEFT);

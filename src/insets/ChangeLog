@@ -1,3 +1,7 @@
+2002-01-07  Juergen Vigna  <jug@sad.it>
+
+	* insettabular.C (draw): fixed clearing of cell around inset.
+
 2002-01-05  Juergen Vigna  <jug@sad.it>
 
 	* insettext.C (draw): move the calls so that insetWidth/Asc/Desc

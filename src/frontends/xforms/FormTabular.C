@@ -153,6 +153,9 @@ void FormTabular::build()
 
 void FormTabular::update()
 {
+	if (closing_)
+		return;
+ 
 	if (!inset_ || !inset_->tabular.get())
 		return;
 
@@ -479,7 +482,20 @@ bool FormTabular::input(FL_OBJECT * ob, long)
     string special;;
 
     int cell = inset_->getActCell();
-	
+
+    // ugly hack to auto-apply the stuff that hasn't been
+    // yet. don't let this continue to exist ...
+    if (ob == dialog_->button_close) {
+        closing_ = true;
+        input(column_options_->input_column_width, 0);
+        input(cell_options_->input_mcolumn_width, 0);
+        input(column_options_->input_special_alignment, 0);
+        input(cell_options_->input_special_multialign, 0);
+        closing_ = false;
+	ok();
+        return true;
+    }
+ 
     if (actCell_ != cell) {
         update();
         fl_set_object_label(dialog_->text_warning,

@@ -1034,7 +1034,6 @@ LyXText::nextBreakPoint(BufferView * bview, Row const * row, int width) const
 	if (main_body && last_separator < main_body)
 		last_separator = main_body - 1;
 	
-	lyxerr << last_separator << ":" << pos << endl;
 	return last_separator;
 }
 
