@@ -409,15 +409,6 @@ public:
 	void setSelection();
 	///
 	void clearSelection();
-	///
-	CursorSlice & selStart();
-	///
-	CursorSlice const & selStart() const;
-	///
-	CursorSlice & selEnd();
-	///
-	CursorSlice const & selEnd() const;
-
 
 public:
 	///

@@ -333,8 +333,8 @@ void LyXText::setLayout(string const & layout)
 		return;
 	}
 
-	ParagraphList::iterator start = getPar(selStart().par());
-	ParagraphList::iterator end = boost::next(getPar(selEnd().par()));
+	ParagraphList::iterator start = getPar(bv()->selStart().par());
+	ParagraphList::iterator end = boost::next(getPar(bv()->selEnd().par()));
 	ParagraphList::iterator endpit = setLayout(start, end, layout);
 
 	redoParagraphs(start, endpit);
@@ -353,8 +353,8 @@ void getSelectionSpan(LyXText & text,
 		beg = text.cursorPar();
 		end = boost::next(beg);
 	} else {
-		beg = text.getPar(text.selStart());
-		end = boost::next(text.getPar(text.selEnd()));
+		beg = text.getPar(text.bv()->selStart());
+		end = boost::next(text.getPar(text.bv()->selEnd()));
 	}
 }
 
@@ -448,14 +448,14 @@ void LyXText::setFont(LyXFont const & font, bool toggleall)
 	}
 
 	// ok we have a selection.
-	recUndo(selStart().par(), selEnd().par());
+	recUndo(bv()->selStart().par(), bv()->selEnd().par());
 	freezeUndo();
 
-	ParagraphList::iterator beg = getPar(selStart().par());
-	ParagraphList::iterator end = getPar(selEnd().par());
+	ParagraphList::iterator beg = getPar(bv()->selStart().par());
+	ParagraphList::iterator end = getPar(bv()->selEnd().par());
 	
-	PosIterator pos(&paragraphs(), beg, selStart().pos());
-	PosIterator posend(&paragraphs(), end, selEnd().pos());
+	PosIterator pos(&paragraphs(), beg, bv()->selStart().pos());
+	PosIterator posend(&paragraphs(), end, bv()->selEnd().pos());
 
 	BufferParams const & params = bv()->buffer()->params();
 
@@ -549,7 +549,7 @@ string LyXText::getStringToIndex()
 	string idxstring;
 	if (!bv()->selection().set())
 		bv()->owner()->message(_("Nothing to index!"));
-	else if (selStart().par() != selEnd().par())
+	else if (bv()->selStart().par() != bv()->selEnd().par())
 		bv()->owner()->message(_("Cannot index more than one paragraph!"));
 	else
 		idxstring = selectionAsString(*bv()->buffer(), false);
@@ -576,11 +576,11 @@ void LyXText::setParagraph(Spacing const & spacing, LyXAlignment align,
 	string const & labelwidthstring, bool noindent)
 {
 	// make sure that the depth behind the selection are restored, too
-	ParagraphList::iterator undopit = undoSpan(getPar(selEnd()));
-	recUndo(selStart().par(), parOffset(undopit) - 1);
+	ParagraphList::iterator undopit = undoSpan(getPar(bv()->selEnd()));
+	recUndo(bv()->selStart().par(), parOffset(undopit) - 1);
 
-	ParagraphList::reverse_iterator pit(getPar(selEnd().par()));
-	ParagraphList::reverse_iterator beg(getPar(selStart().par()));
+	ParagraphList::reverse_iterator pit(getPar(bv()->selEnd().par()));
+	ParagraphList::reverse_iterator beg(getPar(bv()->selStart().par()));
 
 	for (--pit; pit != beg; ++pit) {
 		ParagraphParameters & params = pit->params();
@@ -601,7 +601,7 @@ void LyXText::setParagraph(Spacing const & spacing, LyXAlignment align,
 		params.noindent(noindent);
 	}
 
-	redoParagraphs(getPar(selStart()), undopit);
+	redoParagraphs(getPar(bv()->selStart()), undopit);
 }
 
 
@@ -932,29 +932,29 @@ void LyXText::cutSelection(bool doclear, bool realcut)
 	if (!bv()->selection().set())
 		return;
 
-	// OK, we have a selection. This is always between selStart()
-	// and selEnd()
+	// OK, we have a selection. This is always between bv()->selStart()
+	// and bv()->selEnd()
 
 	// make sure that the depth behind the selection are restored, too
-	ParagraphList::iterator begpit = getPar(selStart().par());
-	ParagraphList::iterator endpit = getPar(selEnd().par());
+	ParagraphList::iterator begpit = getPar(bv()->selStart().par());
+	ParagraphList::iterator endpit = getPar(bv()->selEnd().par());
 	ParagraphList::iterator undopit = undoSpan(endpit);
-	recUndo(selStart().par(), parOffset(undopit) - 1);
+	recUndo(bv()->selStart().par(), parOffset(undopit) - 1);
 
-	int endpos = selEnd().pos();
+	int endpos = bv()->selEnd().pos();
 
 	BufferParams const & bufparams = bv()->buffer()->params();
 	boost::tie(endpit, endpos) = realcut ?
 		CutAndPaste::cutSelection(bufparams,
 					  paragraphs(),
 					  begpit , endpit,
-					  selStart().pos(), endpos,
+					  bv()->selStart().pos(), endpos,
 					  bufparams.textclass,
 					  doclear)
 		: CutAndPaste::eraseSelection(bufparams,
 					      paragraphs(),
 					      begpit, endpit,
-					      selStart().pos(), endpos,
+					      bv()->selStart().pos(), endpos,
 					      doclear);
 	// sometimes necessary
 	if (doclear)
@@ -982,20 +982,20 @@ void LyXText::copySelection()
 	if (!bv()->selection().set())
 		return;
 
-	// ok we have a selection. This is always between selStart()
+	// ok we have a selection. This is always between bv()->selStart()
 	// and sel_end cursor
 
 	// copy behind a space if there is one
-	while (getPar(selStart())->size() > selStart().pos()
-	       && getPar(selStart())->isLineSeparator(selStart().pos())
-	       && (selStart().par() != selEnd().par()
-		   || selStart().pos() < selEnd().pos()))
-		selStart().pos(selStart().pos() + 1);
+	while (getPar(bv()->selStart())->size() > bv()->selStart().pos()
+	       && getPar(bv()->selStart())->isLineSeparator(bv()->selStart().pos())
+	       && (bv()->selStart().par() != bv()->selEnd().par()
+		   || bv()->selStart().pos() < bv()->selEnd().pos()))
+		bv()->selStart().pos(bv()->selStart().pos() + 1);
 
-	CutAndPaste::copySelection(getPar(selStart().par()),
-				   getPar(selEnd().par()),
-				   selStart().pos(), 
-				   selEnd().pos(),
+	CutAndPaste::copySelection(getPar(bv()->selStart().par()),
+				   getPar(bv()->selEnd().par()),
+				   bv()->selStart().pos(), 
+				   bv()->selEnd().pos(),
 				   bv()->buffer()->params().textclass);
 }
 
@@ -1052,16 +1052,16 @@ void LyXText::replaceSelectionWithString(string const & str)
 	freezeUndo();
 
 	// Get font setting before we cut
-	pos_type pos = selEnd().pos();
-	LyXFont const font = getPar(selStart())
+	pos_type pos = bv()->selEnd().pos();
+	LyXFont const font = getPar(bv()->selStart())
 		->getFontSettings(bv()->buffer()->params(),
-				  selStart().pos());
+				  bv()->selStart().pos());
 
 	// Insert the new string
 	string::const_iterator cit = str.begin();
 	string::const_iterator end = str.end();
 	for (; cit != end; ++cit) {
-		getPar(selEnd())->insertChar(pos, (*cit), font);
+		getPar(bv()->selEnd())->insertChar(pos, (*cit), font);
 		++pos;
 	}
 

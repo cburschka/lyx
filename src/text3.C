@@ -1073,10 +1073,10 @@ DispatchResult LyXText::dispatch(FuncRequest const & cmd)
 		bool change_layout = (current_layout != layout);
 
 		if (!change_layout && bv->selection().set() &&
-			selStart().par() != selEnd().par())
+			bv->selStart().par() != bv->selEnd().par())
 		{
-			ParagraphList::iterator spit = getPar(selStart());
-			ParagraphList::iterator epit = boost::next(getPar(selEnd()));
+			ParagraphList::iterator spit = getPar(bv->selStart());
+			ParagraphList::iterator epit = boost::next(getPar(bv->selEnd()));
 			while (spit != epit) {
 				if (spit->layout()->name() != current_layout) {
 					change_layout = true;

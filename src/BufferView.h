@@ -233,6 +233,14 @@ public:
 	Selection & selection();
 	///
 	Selection const & selection() const;
+	///
+	CursorSlice & selStart();
+	///
+	CursorSlice const & selStart() const;
+	///
+	CursorSlice & selEnd();
+	///
+	CursorSlice const & selEnd() const;
 
 	///
 	Selection selection_;

@@ -518,3 +518,36 @@ void BufferView::resetAnchor()
 {
 	return fullCursor().resetAnchor();
 }
+
+
+CursorSlice const & BufferView::selStart() const
+{
+	if (!selection().set())
+		return cursor();
+	// can't use std::min as this creates a new object
+	return anchor() < cursor() ? anchor() : cursor();
+}
+
+
+CursorSlice const & BufferView::selEnd() const
+{
+	if (!selection().set())
+		return cursor();
+	return anchor() > cursor() ? anchor() : cursor();
+}
+
+
+CursorSlice & BufferView::selStart()
+{
+	if (!selection().set())
+		return cursor();
+	return anchor() < cursor() ? anchor() : cursor();
+}
+
+
+CursorSlice & BufferView::selEnd()
+{
+	if (selection().set())
+		return cursor();
+	return anchor() > cursor() ? anchor() : cursor();
+}

@@ -395,10 +395,10 @@ void BufferView::Pimpl::resizeCurrentBuffer()
 
 	par = bv_->cursor().par();
 	pos = bv_->cursor().pos();
-	selstartpar = text->selStart().par();
-	selstartpos = text->selStart().pos();
-	selendpar = text->selEnd().par();
-	selendpos = text->selEnd().pos();
+	selstartpar = bv_->selStart().par();
+	selstartpos = bv_->selStart().pos();
+	selendpar = bv_->selEnd().par();
+	selendpos = bv_->selEnd().pos();
 	sel = bv_->selection().set();
 	mark_set = bv_->selection().mark();
 	text->textwidth_ = bv_->workWidth();
@@ -637,8 +637,8 @@ Change const BufferView::Pimpl::getCurrentChange()
 	if (!bv_->selection().set())
 		return Change(Change::UNCHANGED);
 
-	return text->getPar(text->selStart())
-		->lookupChangeFull(text->selStart().pos());
+	return text->getPar(bv_->selStart())
+		->lookupChangeFull(bv_->selStart().pos());
 }
 
 

@@ -1127,9 +1127,9 @@ void LyXText::acceptChange()
 	if (!bv()->selection().set() && cursorPar()->size())
 		return;
 
-	if (selStart().par() == selEnd().par()) {
-		CursorSlice const & startc = selStart();
-		CursorSlice const & endc = selEnd();
+	if (bv()->selStart().par() == bv()->selEnd().par()) {
+		CursorSlice const & startc = bv()->selStart();
+		CursorSlice const & endc = bv()->selEnd();
 		recordUndo(Undo::INSERT, this, startc.par());
 		getPar(startc)->acceptChange(startc.pos(), endc.pos());
 		finishUndo();
@@ -1146,9 +1146,9 @@ void LyXText::rejectChange()
 	if (!bv()->selection().set() && cursorPar()->size())
 		return;
 
-	if (selStart().par() == selEnd().par()) {
-		CursorSlice const & startc = selStart();
-		CursorSlice const & endc = selEnd();
+	if (bv()->selStart().par() == bv()->selEnd().par()) {
+		CursorSlice const & startc = bv()->selStart();
+		CursorSlice const & endc = bv()->selEnd();
 		recordUndo(Undo::INSERT, this, startc.par());
 		getPar(startc)->rejectChange(startc.pos(), endc.pos());
 		finishUndo();
@@ -1225,8 +1225,8 @@ void LyXText::changeCase(LyXText::TextCase action)
 	CursorSlice to;
 
 	if (bv()->selection().set()) {
-		from = selStart();
-		to = selEnd();
+		from = bv()->selStart();
+		to = bv()->selEnd();
 	} else {
 		from = cursor();
 		getWord(from, to, lyx::PARTIAL_WORD);
@@ -1511,10 +1511,10 @@ string LyXText::selectionAsString(Buffer const & buffer, bool label) const
 		return string();
 
 	// should be const ...
-	ParagraphList::iterator startpit = getPar(selStart());
-	ParagraphList::iterator endpit = getPar(selEnd());
-	size_t const startpos = selStart().pos();
-	size_t const endpos = selEnd().pos();
+	ParagraphList::iterator startpit = getPar(bv()->selStart());
+	ParagraphList::iterator endpit = getPar(bv()->selEnd());
+	size_t const startpos = bv()->selStart().pos();
+	size_t const endpos = bv()->selEnd().pos();
 
 	if (startpit == endpit)
 		return startpit->asString(buffer, startpos, endpos, label);
@@ -1956,39 +1956,6 @@ CursorSlice & LyXText::anchor()
 CursorSlice const & LyXText::anchor() const
 {
 	return bv()->anchor();
-}
-
-
-CursorSlice const & LyXText::selStart() const
-{
-	if (!bv()->selection().set())
-		return cursor();
-	// can't use std::min as this creates a new object
-	return anchor() < cursor() ? anchor() : cursor();
-}
-
-
-CursorSlice const & LyXText::selEnd() const
-{
-	if (!bv()->selection().set())
-		return cursor();
-	return anchor() > cursor() ? anchor() : cursor();
-}
-
-
-CursorSlice & LyXText::selStart()
-{
-	if (!bv()->selection().set())
-		return cursor();
-	return anchor() < cursor() ? anchor() : cursor();
-}
-
-
-CursorSlice & LyXText::selEnd()
-{
-	if (!bv()->selection().set())
-		return cursor();
-	return anchor() > cursor() ? anchor() : cursor();
 }
 
 
