@@ -325,8 +325,7 @@ findPos(std::vector<A> const & vec, A const & val)
 	return std::distance(vec.begin(), it);
 }
 
-void setComboxFont(QComboBox * cb, string const & family,
-		string const & foundry, QFont::StyleHint hint)
+void setComboxFont(QComboBox * cb, string const & family, string const & foundry)
 {
 	string const name = makeFontName(family, foundry);
 	for (int i = 0; i < cb->count(); ++i) {
@@ -506,11 +505,11 @@ void QPrefs::update_contents()
 	QPrefScreenFontsModule * fontmod(dialog_->screenfontsModule);
 
 	setComboxFont(fontmod->screenRomanCO, rc.roman_font_name,
-			rc.roman_font_foundry, QFont::Serif);
+			rc.roman_font_foundry);
 	setComboxFont(fontmod->screenSansCO, rc.sans_font_name,
-			rc.sans_font_foundry, QFont::SansSerif);
+			rc.sans_font_foundry);
 	setComboxFont(fontmod->screenTypewriterCO, rc.typewriter_font_name,
-			rc.typewriter_font_foundry, QFont::TypeWriter);
+			rc.typewriter_font_foundry);
 
 	dialog_->select_roman(fontmod->screenRomanCO->currentText());
 	dialog_->select_sans(fontmod->screenSansCO->currentText());
