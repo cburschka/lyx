@@ -119,7 +119,7 @@ void LyX::exec(int & argc, char * argv[])
 	// Start the real execution loop.
 	singleton_->priv_exec(argc, argv);
 }
- 
+
 
 LyX & LyX::ref()
 {
@@ -258,34 +258,45 @@ extern "C" {
 
 static void error_handler(int err_sig)
 {
+	// Throw away any signals other than the first one received.
+	static sig_atomic_t handling_error = false;
+	if (handling_error)
+		return;
+	handling_error = true;
+
+	// We have received a signal indicating a fatal error, so
+	// try and save the data ASAP.
+	LyX::cref().emergencyCleanup();
+
+	// These lyxerr calls may or may not work:
+
+	// Signals are asynchronous, so the main program may be in a very
+	// fragile state when a signal is processed and thus while a signal
+	// handler function executes.
+	// In general, therefore, we should avoid performing any
+	// I/O operations or calling most library and system functions from
+	// signal handlers.
+
+	// This shouldn't matter here, however, as we've already invoked
+	// emergencyCleanup.
 	switch (err_sig) {
 	case SIGHUP:
-		lyxerr << "\nlyx: SIGHUP signal caught" << endl;
-		break;
-	case SIGINT:
-		// no comments
+		lyxerr << "\nlyx: SIGHUP signal caught\nBye." << endl;
 		break;
 	case SIGFPE:
-		lyxerr << "\nlyx: SIGFPE signal caught" << endl;
+		lyxerr << "\nlyx: SIGFPE signal caught\nBye." << endl;
 		break;
 	case SIGSEGV:
-		lyxerr << "\nlyx: SIGSEGV signal caught" << endl;
-		lyxerr <<
-			"Sorry, you have found a bug in LyX. "
-			"Please read the bug-reporting instructions "
-			"in Help->Introduction and send us a bug report, "
-			"if necessary. Thanks !" << endl;
+		lyxerr << "\nlyx: SIGSEGV signal caught\n"
+		          "Sorry, you have found a bug in LyX. "
+		          "Please read the bug-reporting instructions "
+		          "in Help->Introduction and send us a bug report, "
+		          "if necessary. Thanks !\nBye." << endl;
 		break;
+	case SIGINT:
 	case SIGTERM:
 		// no comments
 		break;
-	case SIGPIPE:
-		// This will be received if lyx tries to write to a socket
-		// whose reading end was closed. It can safely be ignored,
-		// as in this case the ::write() system call will return -1
-		// and errno will be set to EPIPE
-		return;
-		//break;
 	}
 
 	// Deinstall the signal handlers
@@ -294,13 +305,9 @@ static void error_handler(int err_sig)
 	signal(SIGFPE, SIG_DFL);
 	signal(SIGSEGV, SIG_DFL);
 	signal(SIGTERM, SIG_DFL);
-	signal(SIGPIPE, SIG_DFL);
 
-	LyX::cref().emergencyCleanup();
-
-	lyxerr << "Bye." << endl;
-	if (err_sig!= SIGHUP &&
-	   (!GetEnv("LYXDEBUG").empty() || err_sig == SIGSEGV))
+	if (err_sig == SIGSEGV ||
+	    (err_sig != SIGHUP && !GetEnv("LYXDEBUG").empty()))
 		lyx::support::abort();
 	exit(0);
 }
@@ -323,7 +330,7 @@ void LyX::init(bool gui)
 	signal(SIGSEGV, error_handler);
 	signal(SIGINT, error_handler);
 	signal(SIGTERM, error_handler);
-	signal(SIGPIPE, error_handler);
+	// SIGPIPE can be safely ignored.
 
 	bool const explicit_userdir = setLyxPaths();
 

@@ -1,3 +1,8 @@
+2004-03-22  Angus Leeming  <leeming@lyx.org>
+
+	* lyx_main.C (error_handler, init): remove handler for SIGPIPE.
+	Ensure that error_handler is processed once only and that all data
+	is saved before attempting to output any warning messages.
 
 2004-03-21  Alfredo Braunstein  <abraunst@lyx.org>
 
@@ -12,11 +17,11 @@
 
         * paragraph.[Ch]: fix completely broken operator=()
 
-
 2004-03-16  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* LColor.C (getFromLyXName): make sure that the color name is used
 	as lowercase.
+
 2004-03-17  Angus Leeming  <leeming@lyx.org>
 
 	* lfuns.h:
@@ -36,7 +41,7 @@
 
 2004-03-11  André Pönitz  <poenitz@gmx.net>
 
-	* buffer.[Ch]: use InsetText instead of LyXText as container for 
+	* buffer.[Ch]: use InsetText instead of LyXText as container for
 	the main lyx text.
 
 	* dociterator.[Ch]: drop the BufferView * member which is not needed
@@ -102,7 +107,7 @@
 	* text.C:
 	* text2.C:
 	* rowpainter.C:
-	* BufferView_pimpl.C: rename textwidth -> maxwidth, 
+	* BufferView_pimpl.C: rename textwidth -> maxwidth,
 	prepareToPrint -> computeRowMetrics and remove textWidth accessor.
 
 2004-03-01  Alfredo Braunstein  <abraunst@lyx.org>
@@ -119,11 +124,11 @@
 
 2004-03-01  Alfredo Braunstein  <abraunst@lyx.org>
 
-	* FontIterator.[Ch]: move FontIterator from lyxtext.h/text.C to here 
+	* FontIterator.[Ch]: move FontIterator from lyxtext.h/text.C to here
 
 2004-03-01  Alfredo Braunstein  <abraunst@lyx.org>
 
-	* lyxtext.h: add FontIterator class 
+	* lyxtext.h: add FontIterator class
 
 	* text.C (FontIterator, operator*, operator->, operator++): add
 	(rowBreakPoint, setRowWidth): adjust (fixing a
@@ -274,16 +279,16 @@
 2004-02-04  André Pönitz  <poenitz@gmx.net>
 
 	* BufferView.[Ch] (insertInset):
-	* BufferView_pimpl.[Ch] (insertInset): remove unneeded return value 
+	* BufferView_pimpl.[Ch] (insertInset): remove unneeded return value
 
 	* text2.C:
 	* text3.C: adjust
 
 2004-02-03  Alfredo Braunstein  <abraunst@lyx.org>
 
-	* BufferView_pimpl.C (dispatch): remove call to LCursor::dispatch 
+	* BufferView_pimpl.C (dispatch): remove call to LCursor::dispatch
 	on the default clause of the switch
-	* lyxfunc.C (dispatch): call BufferView::dispatch if the event 
+	* lyxfunc.C (dispatch): call BufferView::dispatch if the event
 	wasn't catched by LCursor::dispatch
 
 2004-02-03  André Pönitz  <poenitz@gmx.net>
@@ -295,7 +300,7 @@
 
 	* lyxfunc.C: adjust
 
-	* lyxtext.h (firstPar, lastPar): remove dead functions 
+	* lyxtext.h (firstPar, lastPar): remove dead functions
 
 	* text.C:
 	* text2.C:
