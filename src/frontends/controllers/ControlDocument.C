@@ -45,11 +45,6 @@ ControlDocument::~ControlDocument()
 {}
 
 
-void ControlDocument::showPreamble()
-{
-}
-
-
 BufferParams & ControlDocument::params()
 {
 	lyx::Assert(bp_.get());

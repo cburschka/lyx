@@ -42,6 +42,8 @@
 #include <qstringlist.h>
 #include "lengthcombo.h"
 
+#include "QBrowseBox.h"
+
 #include <vector>
 
 using std::vector;
@@ -140,9 +142,6 @@ void QDocument::build_dialog()
 	// margins
 	dialog_->setMargins(0);
 
-	string const bmtablefile = LibFileSearch("images", "standard", "xpm");
-	QString s = bmtablefile.c_str();
-
 	// Manage the restore, ok, apply, restore and cancel/close buttons
 	bc().setOK(dialog_->okPB);
 	bc().setApply(dialog_->applyPB);
@@ -203,6 +202,12 @@ void QDocument::apply()
 		dialog_->numberingModule->tocDepthSB->value();
 	params.tocdepth =
 		dialog_->numberingModule->sectionnrDepthSB->value();
+
+	// bullets
+	//BufferParams & param = lv_.buffer()->params;
+	//param.temp_bullets[current_bullet_depth].
+	//	setText(getString(bullets_->input_bullet_latex));
+	
 
 	// packages
 	switch (dialog_->packagesModule->lspacingCO->currentItem()) {
@@ -422,6 +427,31 @@ void QDocument::update_contents()
 	dialog_->numberingModule->sectionnrDepthSB->setValue(
 		params.tocdepth);
 
+	// bullets
+	QString s = params.user_defined_bullets[0].getText().c_str();
+	dialog_->bulletsModule->bullet1LE->setText(s);
+	
+	s = params.user_defined_bullets[1].getText().c_str();
+	dialog_->bulletsModule->bullet2LE->setText(s);
+	
+	s = params.user_defined_bullets[2].getText().c_str();
+	dialog_->bulletsModule->bullet3LE->setText(s);
+	
+	s = params.user_defined_bullets[3].getText().c_str();
+	dialog_->bulletsModule->bullet4LE->setText(s);
+	
+	dialog_->bulletsModule->bulletsize1CO->setCurrentItem(
+		params.user_defined_bullets[0].getSize() + 1);
+	
+	dialog_->bulletsModule->bulletsize2CO->setCurrentItem(
+		params.user_defined_bullets[1].getSize() + 1);
+	
+	dialog_->bulletsModule->bulletsize3CO->setCurrentItem(
+		params.user_defined_bullets[2].getSize() + 1);
+	
+	dialog_->bulletsModule->bulletsize4CO->setCurrentItem(
+		params.user_defined_bullets[3].getSize() + 1);
+	
 	// packages
 	QStringList enc;
 	enc <<  "default" << "auto" << "latin1" << "latin2" << "latin3" <<

@@ -27,9 +27,11 @@ public:
 	BulletsModule(QWidget* parent = 0, const char* name = 0,
 		      WFlags fl = 0);
 	~BulletsModule();
+	
 public slots:
-   void checkThis(int,int);
-   void setLevel1();
+	void checkThis(int,int);
+	void setLevel1();
+	
 private:
 	QBrowseBox * standard;
 	QBrowseBox * maths;

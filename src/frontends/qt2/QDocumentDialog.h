@@ -39,19 +39,14 @@ public:
 	friend class QDocument;
 
 	QDocumentDialog(QDocument *);
-
 	~QDocumentDialog();
 
-	void showPreamble();
-
 	void updateFontsize(string const & , string const &);
-
 	void updatePagestyle(string const & , string const &);
 public slots:
 	void setTitle(int);
 	void change_adaptor();
 	void saveDefaultClicked();
-	void restore();
 	void useDefaultsClicked();
 protected slots:
 	void setLSpacing(int);

@@ -105,6 +105,7 @@ QDocumentDialog::QDocumentDialog( QDocument * form)
 	moduleStack->addWidget(preambleModule,PREAMBLE);
 
 	moduleStack->raiseWidget(LAYOUT);
+	
 
 	//QPixmap image("standard.xpm");
 	//bulletsModule->bulletsBB->insertItem(image);
@@ -252,14 +253,6 @@ QDocumentDialog::QDocumentDialog( QDocument * form)
 }
 
 
-void QDocumentDialog::showPreamble()
-{
-	moduleStack->raiseWidget(PREAMBLE);
-	setTitle(PREAMBLE);
-	QDocumentDialogBase::show();
-}
-
-
 /*
  *  Destroys the object and frees any allocated resources
  */
@@ -313,15 +306,6 @@ void QDocumentDialog::setTitle(int item)
 void QDocumentDialog::saveDefaultClicked()
 {
 	form_->saveDocDefault();
-}
-
-
-/*
- * public slot
- */
-void QDocumentDialog::restore()
-{
-    qWarning( "DocumentDialog::restore() not yet implemented!" );
 }
 
 

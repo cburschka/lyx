@@ -13,8 +13,8 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>311</width>
-            <height>210</height>
+            <width>291</width>
+            <height>176</height>
         </rect>
     </property>
     <property stdset="1">
@@ -34,13 +34,6 @@
             <name>spacing</name>
             <number>6</number>
         </property>
-        <widget row="1"  column="2" >
-            <class>QComboBox</class>
-            <property stdset="1">
-                <name>name</name>
-                <cstring>bulletsize1CO</cstring>
-            </property>
-        </widget>
         <widget row="1"  column="1" >
             <class>QLineEdit</class>
             <property stdset="1">
@@ -98,13 +91,6 @@
                 </size>
             </property>
         </spacer>
-        <widget row="3"  column="2" >
-            <class>QComboBox</class>
-            <property stdset="1">
-                <name>name</name>
-                <cstring>bulletsize3CO</cstring>
-            </property>
-        </widget>
         <widget row="3"  column="1" >
             <class>QLineEdit</class>
             <property stdset="1">
@@ -112,39 +98,11 @@
                 <cstring>bullet3LE</cstring>
             </property>
         </widget>
-        <widget row="4"  column="2" >
-            <class>QComboBox</class>
-            <property stdset="1">
-                <name>name</name>
-                <cstring>bulletsize4CO</cstring>
-            </property>
-        </widget>
         <widget row="4"  column="1" >
             <class>QLineEdit</class>
             <property stdset="1">
                 <name>name</name>
                 <cstring>bullet4LE</cstring>
-            </property>
-        </widget>
-        <widget row="5"  column="2" >
-            <class>QComboBox</class>
-            <property stdset="1">
-                <name>name</name>
-                <cstring>bulletsize5CO</cstring>
-            </property>
-        </widget>
-        <widget row="5"  column="1" >
-            <class>QLineEdit</class>
-            <property stdset="1">
-                <name>name</name>
-                <cstring>bullet5LE</cstring>
-            </property>
-        </widget>
-        <widget row="2"  column="2" >
-            <class>QComboBox</class>
-            <property stdset="1">
-                <name>name</name>
-                <cstring>bulletsize2CO</cstring>
             </property>
         </widget>
         <widget row="2"  column="1" >
@@ -162,11 +120,11 @@
             </property>
             <property stdset="1">
                 <name>text</name>
-                <string>Set Level 2:</string>
+                <string>Set Level 2</string>
             </property>
             <property stdset="1">
                 <name>popupDelay</name>
-                <number>0</number>
+                <number>1</number>
             </property>
         </widget>
         <widget row="3"  column="0" >
@@ -177,11 +135,11 @@
             </property>
             <property stdset="1">
                 <name>text</name>
-                <string>Set Level 3:</string>
+                <string>Set Level 3</string>
             </property>
             <property stdset="1">
                 <name>popupDelay</name>
-                <number>0</number>
+                <number>1</number>
             </property>
         </widget>
         <widget row="4"  column="0" >
@@ -192,22 +150,11 @@
             </property>
             <property stdset="1">
                 <name>text</name>
-                <string>Set Level 4:</string>
+                <string>Set Level 4</string>
             </property>
             <property stdset="1">
                 <name>popupDelay</name>
                 <number>1</number>
-            </property>
-        </widget>
-        <widget row="5"  column="0" >
-            <class>QToolButton</class>
-            <property stdset="1">
-                <name>name</name>
-                <cstring>setbullet5TB</cstring>
-            </property>
-            <property stdset="1">
-                <name>text</name>
-                <string>Set Level 5:</string>
             </property>
         </widget>
         <widget row="1"  column="0" >
@@ -218,11 +165,303 @@
             </property>
             <property stdset="1">
                 <name>text</name>
-                <string>Set Level 1:</string>
+                <string>Set Level 1</string>
             </property>
             <property stdset="1">
                 <name>popupDelay</name>
-                <number>0</number>
+                <number>1</number>
+            </property>
+        </widget>
+        <widget row="1"  column="2" >
+            <class>QComboBox</class>
+            <item>
+                <property>
+                    <name>text</name>
+                    <string>default</string>
+                </property>
+            </item>
+            <item>
+                <property>
+                    <name>text</name>
+                    <string>tiny</string>
+                </property>
+            </item>
+            <item>
+                <property>
+                    <name>text</name>
+                    <string>script</string>
+                </property>
+            </item>
+            <item>
+                <property>
+                    <name>text</name>
+                    <string>footnote</string>
+                </property>
+            </item>
+            <item>
+                <property>
+                    <name>text</name>
+                    <string>small</string>
+                </property>
+            </item>
+            <item>
+                <property>
+                    <name>text</name>
+                    <string>normal</string>
+                </property>
+            </item>
+            <item>
+                <property>
+                    <name>text</name>
+                    <string>large</string>
+                </property>
+            </item>
+            <item>
+                <property>
+                    <name>text</name>
+                    <string>Large</string>
+                </property>
+            </item>
+            <item>
+                <property>
+                    <name>text</name>
+                    <string>LARGE</string>
+                </property>
+            </item>
+            <item>
+                <property>
+                    <name>text</name>
+                    <string>huge</string>
+                </property>
+            </item>
+            <item>
+                <property>
+                    <name>text</name>
+                    <string>Huge</string>
+                </property>
+            </item>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>bulletsize1CO</cstring>
+            </property>
+        </widget>
+        <widget row="2"  column="2" >
+            <class>QComboBox</class>
+            <item>
+                <property>
+                    <name>text</name>
+                    <string>default</string>
+                </property>
+            </item>
+            <item>
+                <property>
+                    <name>text</name>
+                    <string>tiny</string>
+                </property>
+            </item>
+            <item>
+                <property>
+                    <name>text</name>
+                    <string>script</string>
+                </property>
+            </item>
+            <item>
+                <property>
+                    <name>text</name>
+                    <string>footnote</string>
+                </property>
+            </item>
+            <item>
+                <property>
+                    <name>text</name>
+                    <string>small</string>
+                </property>
+            </item>
+            <item>
+                <property>
+                    <name>text</name>
+                    <string>normal</string>
+                </property>
+            </item>
+            <item>
+                <property>
+                    <name>text</name>
+                    <string>large</string>
+                </property>
+            </item>
+            <item>
+                <property>
+                    <name>text</name>
+                    <string>Large</string>
+                </property>
+            </item>
+            <item>
+                <property>
+                    <name>text</name>
+                    <string>LARGE</string>
+                </property>
+            </item>
+            <item>
+                <property>
+                    <name>text</name>
+                    <string>huge</string>
+                </property>
+            </item>
+            <item>
+                <property>
+                    <name>text</name>
+                    <string>Huge</string>
+                </property>
+            </item>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>bulletsize2CO</cstring>
+            </property>
+        </widget>
+        <widget row="3"  column="2" >
+            <class>QComboBox</class>
+            <item>
+                <property>
+                    <name>text</name>
+                    <string>default</string>
+                </property>
+            </item>
+            <item>
+                <property>
+                    <name>text</name>
+                    <string>tiny</string>
+                </property>
+            </item>
+            <item>
+                <property>
+                    <name>text</name>
+                    <string>script</string>
+                </property>
+            </item>
+            <item>
+                <property>
+                    <name>text</name>
+                    <string>footnote</string>
+                </property>
+            </item>
+            <item>
+                <property>
+                    <name>text</name>
+                    <string>small</string>
+                </property>
+            </item>
+            <item>
+                <property>
+                    <name>text</name>
+                    <string>normal</string>
+                </property>
+            </item>
+            <item>
+                <property>
+                    <name>text</name>
+                    <string>large</string>
+                </property>
+            </item>
+            <item>
+                <property>
+                    <name>text</name>
+                    <string>Large</string>
+                </property>
+            </item>
+            <item>
+                <property>
+                    <name>text</name>
+                    <string>LARGE</string>
+                </property>
+            </item>
+            <item>
+                <property>
+                    <name>text</name>
+                    <string>huge</string>
+                </property>
+            </item>
+            <item>
+                <property>
+                    <name>text</name>
+                    <string>Huge</string>
+                </property>
+            </item>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>bulletsize3CO</cstring>
+            </property>
+        </widget>
+        <widget row="4"  column="2" >
+            <class>QComboBox</class>
+            <item>
+                <property>
+                    <name>text</name>
+                    <string>default</string>
+                </property>
+            </item>
+            <item>
+                <property>
+                    <name>text</name>
+                    <string>tiny</string>
+                </property>
+            </item>
+            <item>
+                <property>
+                    <name>text</name>
+                    <string>script</string>
+                </property>
+            </item>
+            <item>
+                <property>
+                    <name>text</name>
+                    <string>footnote</string>
+                </property>
+            </item>
+            <item>
+                <property>
+                    <name>text</name>
+                    <string>small</string>
+                </property>
+            </item>
+            <item>
+                <property>
+                    <name>text</name>
+                    <string>normal</string>
+                </property>
+            </item>
+            <item>
+                <property>
+                    <name>text</name>
+                    <string>large</string>
+                </property>
+            </item>
+            <item>
+                <property>
+                    <name>text</name>
+                    <string>Large</string>
+                </property>
+            </item>
+            <item>
+                <property>
+                    <name>text</name>
+                    <string>LARGE</string>
+                </property>
+            </item>
+            <item>
+                <property>
+                    <name>text</name>
+                    <string>huge</string>
+                </property>
+            </item>
+            <item>
+                <property>
+                    <name>text</name>
+                    <string>Huge</string>
+                </property>
+            </item>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>bulletsize4CO</cstring>
             </property>
         </widget>
     </grid>

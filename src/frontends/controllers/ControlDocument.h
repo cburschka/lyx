@@ -34,8 +34,6 @@ public:
 	ControlDocument(LyXView &, Dialogs &);
 	///
 	~ControlDocument();
-	/// show latex preamble
-	void showPreamble();
 	///
 	void setLanguage();
 	///

@@ -3,9 +3,8 @@
  * \file QBrowseBox.h
  *
  * Original file taken from klyx 0.10 sources:
- * $Id: QBrowseBox.h,v 1.4 2002/10/20 01:48:27 larsbj Exp $
  *
- * \author Kalle Dalheimer ?
+ * \author Kalle Dalheimer
  *
  * Full author contact details are available in file CREDITS
  */
@@ -27,22 +26,22 @@ class QBrowseBox : public QGridView
 {
 	Q_OBJECT
 public:
-	QBrowseBox(int rows, int cols);
+	QBrowseBox(int rows, int cols, QWidget* parent=0, char const * name=0, WFlags f=0);
 	~QBrowseBox();
 	
-	void insertItem(QString const & text, int x, int y);
-	void insertItem(char const * text, int x, int y);
-	void insertItem(QPixmap pixmap, int x, int y);
+	void insertItem(QString const & text, int row, int col);
+	void insertItem(char const * text, int row, int col);
+	void insertItem(QPixmap pixmap, int row, int col);
 	void insertItem(QPixmap pixmap);
-	void removeItem(int x, int y);
+	void removeItem(int row, int col);
 	void clear();
 	
-	QString text(int x, int y);
-	QPixmap pixmap(int x, int y);
+	QString text(int row, int col);
+	QPixmap pixmap(int row, int col);
 	
-	//  int exec(QPoint const & pos);
-	//  int exec(int x, int y);
-	//  int exec(QWidget * trigger);
+	int exec(QPoint const & pos);
+	int exec(int x, int y);
+	int exec(QWidget const * trigger);
 	
 signals:
         void selected(int, int);
@@ -51,9 +50,9 @@ protected:
 	virtual void keyPressEvent(QKeyEvent * e);
 	virtual void resizeEvent(QResizeEvent * e);
 	virtual void mouseReleaseEvent(QMouseEvent * e);
-	//  virtual void closeEvent(QCloseEvent * e);
+	virtual void closeEvent(QCloseEvent * e);
 	virtual void mouseMoveEvent(QMouseEvent * e);
-	virtual void paintCell(QPainter *, int x, int y);
+	virtual void paintCell(QPainter *, int row, int col);
 	
 private:
 	// make sure the automatically generated one is not used
@@ -64,10 +63,13 @@ private:
 	void moveUp();
 	void moveDown();
 	
-	int coordsToIndex(int x, int y);
+	int coordsToIndex(int row, int col);
 	
 	QString * texts_;
 	QPixmap* pixmaps_;
 	QPoint activecell_;
+	bool firstrelease_;
+	bool inloop;
+	
 };
 #endif
