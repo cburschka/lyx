@@ -1,5 +1,9 @@
 2003-04-26  John Levon  <levon@movementarian.org>
 
+	* ui/stdmenus.ui: Make table settings use old layout-tabular LFUN
+
+2003-04-26  John Levon  <levon@movementarian.org>
+
 	* ui/stdmenus.ui: remove shortcuts for cut,copy,paste
 	to allow better shortcuts for the other options. Use
 	new inset-settings. Disable "inset-toggle" for now.

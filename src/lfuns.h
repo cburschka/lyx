@@ -10,6 +10,7 @@
  * - add a new enum constant immediately before LFUN_LASTACTION
  * - add an appropriate line in LyXAction.C
  * - add a branch to the suitable ::dispatch() methods
+ * - add correct test in LyXFunc::getStatus()
  */
 
 #ifndef LFUNS_H
@@ -333,6 +334,7 @@ enum kb_action {
 	LFUN_INSET_MODIFY,
 	// 255
 	LFUN_INSET_DIALOG_UPDATE,
+	LFUN_INSET_SETTINGS,
 	LFUN_PARAGRAPH_APPLY,
 	LFUN_PARAGRAPH_UPDATE,
 

@@ -324,6 +324,7 @@ void LyXAction::init()
 		{ LFUN_INSET_INSERT, "inset-insert", Noop },
 		{ LFUN_INSET_MODIFY, "", Noop },
 		{ LFUN_INSET_DIALOG_UPDATE, "", Noop },
+		{ LFUN_INSET_SETTINGS, "inset-settings", ReadOnly },
 		{ LFUN_PARAGRAPH_APPLY, "paragraph-params-apply", Noop },
 		{ LFUN_PARAGRAPH_UPDATE, "", Noop },
 		{ LFUN_NOACTION, "", Noop }

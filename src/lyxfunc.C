@@ -430,13 +430,17 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 			if (tli->lyxCode() == Inset::TABULAR_CODE) {
 				ret = static_cast<InsetTabular *>(tli)
 					->getStatus(ev.argument);
+				flag |= ret;
+				disable = false;
 			} else if (tli->getFirstLockingInsetOfType(Inset::TABULAR_CODE)) {
 				ret = static_cast<InsetTabular *>
 					(tli->getFirstLockingInsetOfType(Inset::TABULAR_CODE))
 					->getStatus(ev.argument);
+				flag |= ret;
+				disable = false;
+			} else {
+				disable = true;
 			}
-			flag |= ret;
-			disable = false;
 		} else {
 			static InsetTabular inset(*owner->buffer(), 1, 1);
 			FuncStatus ret;
@@ -484,6 +488,45 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 				&& lt->inset_owner->owner()->isOpen()));
 		break;
 	}
+
+	case LFUN_INSET_SETTINGS: {
+		disable = true;
+		UpdatableInset * inset = view()->theLockingInset();
+		
+		if (!inset)
+			break;
+
+		// get the innermost inset
+		inset = inset->getLockingInset();
+
+		// jump back to owner if an InsetText, so
+		// we get back to the InsetTabular or whatever
+		if (inset->lyxCode() == Inset::TEXT_CODE)
+			inset = static_cast<UpdatableInset*>(inset->owner());
+
+		Inset::Code code = inset->lyxCode();
+		switch (code) {
+			case Inset::TABULAR_CODE:
+				disable = ev.argument != "tabular";
+				break;
+			case Inset::ERT_CODE:
+				disable = ev.argument != "ert";
+				break;
+			case Inset::FLOAT_CODE:
+				disable = ev.argument != "float";
+				break;
+			case Inset::MINIPAGE_CODE:
+				disable = ev.argument != "minipage";
+				break;
+			case Inset::WRAP_CODE:
+				disable = ev.argument != "wrap";
+				break;
+			default:
+				break;
+		}
+		break;
+	}
+
 	case LFUN_LATEX_LOG:
 		disable = !IsFileReadable(buf->getLogName().second);
 		break;

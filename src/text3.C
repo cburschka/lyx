@@ -917,6 +917,11 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 		break;
 	}
 
+	case LFUN_INSET_SETTINGS:
+		lyx::Assert(bv->theLockingInset());
+		bv->theLockingInset()->getLockingInset()->showInsetDialog(bv);
+		break;
+
 	case LFUN_INSET_TOGGLE:
 		bv->hideCursor();
 		bv->beforeChange(this);

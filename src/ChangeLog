@@ -1,5 +1,15 @@
 2003-04-26  John Levon  <levon@movementarian.org>
 
+	* text3.C:
+	* lyxfunc.C:
+	* lfuns.h:
+	* LyXAction.C: add LFUN_INSET_SETTINGS
+
+	* lyxfunc.C: don't enable tabular-feature when there's
+	just any locking inset
+	
+2003-04-26  John Levon  <levon@movementarian.org>
+
 	* bufferlist.C: re-add Cancel to buffer close question
 
 	* lyxfunc.C: fix import UI a bit

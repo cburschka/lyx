@@ -86,12 +86,15 @@ Menuset
 # only appear when relevant (getStatus). Only stuff that needs
 # a right-click to bring up the dialog should appear here (it is not
 # obvious what the context is for the others)
-	OptItem "Table Settings...|a" "inset-settings tabular"
 	OptItem "TeX Code Settings...|C" "inset-settings ert"
 # 'a' shortcut to match Insert entry, shouldn't clash with Table Settings
 	OptItem "Float Settings...|a" "inset-settings float"
 	OptItem "Minipage Settings...|M" "inset-settings minipage"
 	OptItem "Text Wrap Settings...|W" "inset-settings wrap"
+# Hey, guess what's broken ? Surprise surprise, it's tabular stuff
+# This is in the Table submenu instead for now.
+#	OptItem "Table Settings...|a" "inset-settings tabular"
+	OptItem "Table Settings...|a" "layout-tabular"
     End
 
 # not much we can do to help here
@@ -112,7 +115,6 @@ Menuset
 	Item "Left aligned|e" "tabular-feature align-left"
 	Item "Centered|C" "tabular-feature align-center"
 	Item "Right aligned|i" "tabular-feature align-right"
-	Separator
 	Item "Top aligned|o" "tabular-feature valign-top"
 	Item "Vertically Centered|V" "tabular-feature valign-center"
 	Item "Bottom aligned|g" "tabular-feature valign-bottom"
