@@ -24,8 +24,6 @@ public:
 	///
 	InsetIndex(InsetCommandParams const &);
 	///
-	~InsetIndex();
-	///
 	virtual std::auto_ptr<InsetBase> clone() const {
 		return std::auto_ptr<InsetBase>(new InsetIndex(params()));
 	}
@@ -38,9 +36,6 @@ public:
 	///
 	int docbook(Buffer const &, std::ostream &,
 		    OutputParams const &) const;
-	///
-	DispatchResult priv_dispatch(FuncRequest const & cmd,
-		idx_type & idx, pos_type & pos);
 };
 
 
@@ -48,8 +43,6 @@ class InsetPrintIndex : public InsetCommand {
 public:
 	///
 	InsetPrintIndex(InsetCommandParams const &);
-	///
-	~InsetPrintIndex();
 	///
 	virtual std::auto_ptr<InsetBase> clone() const {
 		return std::auto_ptr<InsetBase>(new InsetPrintIndex(params()));
@@ -64,13 +57,6 @@ public:
 	bool display() const { return true; }
 	///
 	std::string const getScreenLabel(Buffer const &) const;
-	///
-	void metrics(MetricsInfo &, Dimension &) const;
-	///
-	void draw(PainterInfo & pi, int x, int y) const;
-private:
-	///
-	mutable unsigned int center_indent_;
 };
 
 #endif

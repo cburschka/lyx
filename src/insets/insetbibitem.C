@@ -38,16 +38,10 @@ string const key_prefix = "key-";
 
 
 InsetBibitem::InsetBibitem(InsetCommandParams const & p)
-	: InsetCommand(p), counter(1)
+	: InsetCommand(p, "bibitem"), counter(1)
 {
 	if (getContents().empty())
 		setContents(key_prefix + tostr(++key_counter));
-}
-
-
-InsetBibitem::~InsetBibitem()
-{
-	InsetCommandMailer("bibitem", *this).hideDialog();
 }
 
 
@@ -65,13 +59,9 @@ InsetBibitem::priv_dispatch(FuncRequest const & cmd,
 {
 	switch (cmd.action) {
 
-	case LFUN_MOUSE_PRESS:
-		InsetCommandMailer("bibitem", *this).showDialog(cmd.view());
-		return DispatchResult(true, true);
-
 	case LFUN_INSET_MODIFY: {
 		InsetCommandParams p;
-		InsetCommandMailer::string2params(cmd.argument, p);
+		InsetCommandMailer::string2params("bibitem", cmd.argument, p);
 		if (p.getCmdName().empty())
 			return DispatchResult(true, true);
 		setParams(p);

@@ -418,7 +418,6 @@ void InsetFloatMailer::string2params(string const & in,
 				     InsetFloatParams & params)
 {
 	params = InsetFloatParams();
-
 	if (in.empty())
 		return;
 
@@ -426,25 +425,19 @@ void InsetFloatMailer::string2params(string const & in,
 	LyXLex lex(0,0);
 	lex.setStream(data);
 
-	if (lex.isOK()) {
-		lex.next();
-		string const token = lex.getString();
-		if (token != name_)
-			return;
-	}
+	string name;
+	lex >> name;
+	if (!lex || name != name_)
+		return print_mailer_error("InsetFloatMailer", in, 1, name_);
 
 	// This is part of the inset proper that is usually swallowed
-	// by Buffer::readInset
-	if (lex.isOK()) {
-		lex.next();
-		string const token = lex.getString();
-		if (token != "Float" || !lex.eatLine())
-			return;
-	}
+	// by LyXText::readInset
+	string id;
+	lex >> id;
+	if (!lex || id != "Float")
+		return print_mailer_error("InsetBoxMailer", in, 2, "Float");
 
-	if (lex.isOK()) {
-		params.read(lex);
-	}
+	params.read(lex);
 }
 
 

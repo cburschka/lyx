@@ -424,7 +424,6 @@ void InsetBoxMailer::string2params(string const & in,
 				   InsetBoxParams & params)
 {
 	params = InsetBoxParams(string());
-
 	if (in.empty())
 		return;
 
@@ -434,18 +433,15 @@ void InsetBoxMailer::string2params(string const & in,
 
 	string name;
 	lex >> name;
-	if (!lex || name != name_) {
-		lyxerr << "InsetBoxMailer::string2params(" << in << ")\n"
-		       << "Missing identifier \"" << name_ << '"' << std::endl;
-		return;
-	}
+	if (!lex || name != name_)
+		return print_mailer_error("InsetBoxMailer", in, 1, name_);
 
 	// This is part of the inset proper that is usually swallowed
 	// by LyXText::readInset
-	string inset_id;
-	lex >> inset_id;
-	if (!lex || inset_id != "Box")
-		return;
+	string id;
+	lex >> id;
+	if (!lex || id != "Box")
+		return print_mailer_error("InsetBoxMailer", in, 2, "Box");
 
 	params.read(lex);
 }

@@ -23,8 +23,6 @@ public:
 	///
 	InsetCitation(InsetCommandParams const &);
 	///
-	~InsetCitation();
-	///
 	std::auto_ptr<InsetBase> clone() const {
 		return std::auto_ptr<InsetBase>(new InsetCitation(params()));
 	}
@@ -41,11 +39,6 @@ public:
 		  OutputParams const &) const;
 	///
 	void validate(LaTeXFeatures &) const;
-protected:
-	///
-	virtual
-	DispatchResult
-	priv_dispatch(FuncRequest const & cmd, idx_type &, pos_type &);
 private:
 	struct Cache {
 		///

@@ -26,14 +26,8 @@ using std::ostream;
 
 
 InsetTOC::InsetTOC(InsetCommandParams const & p)
-	: InsetCommand(p)
+	: InsetCommand(p, "toc")
 {}
-
-
-InsetTOC::~InsetTOC()
-{
-	InsetCommandMailer("toc", *this).hideDialog();
-}
 
 
 std::auto_ptr<InsetBase> InsetTOC::clone() const
@@ -55,22 +49,6 @@ InsetOld::Code InsetTOC::lyxCode() const
 	if (getCmdName() == "tableofcontents")
 		return InsetOld::TOC_CODE;
 	return InsetOld::NO_CODE;
-}
-
-
-DispatchResult
-InsetTOC::priv_dispatch(FuncRequest const & cmd,
-			idx_type & idx, pos_type & pos)
-{
-	switch (cmd.action) {
-	case LFUN_MOUSE_RELEASE:
-	case LFUN_INSET_DIALOG_SHOW:
-		InsetCommandMailer("toc", *this).showDialog(cmd.view());
-		return DispatchResult(true, true);
-
-	default:
-		return InsetCommand::priv_dispatch(cmd, idx, pos);
-	}
 }
 
 

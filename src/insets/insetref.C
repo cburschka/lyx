@@ -30,20 +30,13 @@ using std::ostream;
 
 
 InsetRef::InsetRef(InsetCommandParams const & p, Buffer const & buf)
-	: InsetCommand(p), isLatex(buf.isLatex())
+	: InsetCommand(p, "ref"), isLatex(buf.isLatex())
 {}
 
 
 InsetRef::InsetRef(InsetRef const & ir)
 	: InsetCommand(ir), isLatex(ir.isLatex)
-{
-}
-
-
-InsetRef::~InsetRef()
-{
-	InsetCommandMailer("ref", *this).hideDialog();
-}
+{}
 
 
 DispatchResult

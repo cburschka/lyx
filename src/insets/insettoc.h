@@ -21,8 +21,6 @@ public:
 	///
 	explicit InsetTOC(InsetCommandParams const &);
 	///
-	~InsetTOC();
-	///
 	std::auto_ptr<InsetBase> clone() const;
 	///
 	std::string const getScreenLabel(Buffer const &) const;
@@ -41,11 +39,6 @@ public:
 	///
 	int docbook(Buffer const &, std::ostream &,
 		    OutputParams const &) const;
-protected:
-	///
-	virtual
-	DispatchResult
-	priv_dispatch(FuncRequest const & cmd, idx_type &, pos_type &);
 };
 
 #endif

@@ -18,7 +18,7 @@ using std::ostream;
 
 
 InsetHFill::InsetHFill()
-	: InsetCommand(InsetCommandParams("hfill"))
+	: InsetCommand(InsetCommandParams("hfill"), std::string())
 {}
 
 

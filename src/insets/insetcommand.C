@@ -28,10 +28,19 @@ using std::ostream;
 using std::ostringstream;
 
 
-InsetCommand::InsetCommand(InsetCommandParams const & p)
+InsetCommand::InsetCommand(InsetCommandParams const & p,
+			   string const & mailer_name)
 	: p_(p.getCmdName(), p.getContents(), p.getOptions()),
+	  mailer_name_(mailer_name),
 	  set_label_(false)
 {}
+
+
+InsetCommand::~InsetCommand()
+{
+	if (!mailer_name_.empty())
+		InsetCommandMailer(mailer_name_, *this).hideDialog();
+}
 
 
 void InsetCommand::metrics(MetricsInfo & mi, Dimension & dim) const
@@ -96,7 +105,7 @@ InsetCommand::priv_dispatch(FuncRequest const & cmd, idx_type &, pos_type &)
 	switch (cmd.action) {
 	case LFUN_INSET_MODIFY: {
 		InsetCommandParams p;
-		InsetCommandMailer::string2params(cmd.argument, p);
+		InsetCommandMailer::string2params(mailer_name_, cmd.argument, p);
 		if (p.getCmdName().empty())
 			return DispatchResult(false);
 
@@ -109,9 +118,13 @@ InsetCommand::priv_dispatch(FuncRequest const & cmd, idx_type &, pos_type &)
 		InsetCommandMailer(cmd.argument, *this).updateDialog(cmd.view());
 		return DispatchResult(true, true);
 
-	case LFUN_MOUSE_RELEASE:
-		edit(cmd.view(), true);
+	case LFUN_INSET_DIALOG_SHOW:
+	case LFUN_MOUSE_RELEASE: {
+		if (!mailer_name_.empty())
+			InsetCommandMailer(mailer_name_, *this).
+				showDialog(cmd.view());
 		return DispatchResult(true);
+	}
 
 	default:
 		return DispatchResult(false);
@@ -132,11 +145,11 @@ string const InsetCommandMailer::inset2string(Buffer const &) const
 }
 
 
-void InsetCommandMailer::string2params(string const & in,
+void InsetCommandMailer::string2params(string const & name,
+				       string const & in,
 				       InsetCommandParams & params)
 {
 	params = InsetCommandParams();
-
 	if (in.empty())
 		return;
 
@@ -144,26 +157,24 @@ void InsetCommandMailer::string2params(string const & in,
 	LyXLex lex(0,0);
 	lex.setStream(data);
 
-	if (lex.isOK()) {
-		lex.next();
-		string const name = lex.getString();
-	}
+	string n;
+	lex >> n;
+	if (!lex || n != name)
+		return print_mailer_error("InsetCommandMailer", in, 1, name);
 
 	// This is part of the inset proper that is usually swallowed
-	// by Buffer::readInset
-	if (lex.isOK()) {
-		lex.next();
-		string const token = lex.getString();
-		if (token != "LatexCommand")
-			return;
-	}
-	if (lex.isOK()) {
-		params.read(lex);
-	}
+	// by LyXText::readInset
+	string id;
+	lex >> id;
+	if (!lex || id != "LatexCommand")
+		return print_mailer_error("InsetCommandMailer", in, 2, "LatexCommand");
+
+	params.read(lex);
 }
 
 
-string const InsetCommandMailer::params2string(string const & name,
+string const
+InsetCommandMailer::params2string(string const & name,
 				  InsetCommandParams const & params)
 {
 	ostringstream data;

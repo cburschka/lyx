@@ -836,7 +836,6 @@ void InsetExternalMailer::string2params(string const & in,
 					InsetExternalParams & params)
 {
 	params = InsetExternalParams();
-
 	if (in.empty())
 		return;
 
@@ -844,25 +843,19 @@ void InsetExternalMailer::string2params(string const & in,
 	LyXLex lex(0,0);
 	lex.setStream(data);
 
-	if (lex.isOK()) {
-		lex.next();
-		string const token = lex.getString();
-		if (token != name_)
-			return;
-	}
+	string name;
+	lex >> name;
+	if (!lex || name != name_)
+		return print_mailer_error("InsetExternalMailer", in, 1, name_);
 
 	// This is part of the inset proper that is usually swallowed
-	// by Buffer::readInset
-	if (lex.isOK()) {
-		lex.next();
-		string const token = lex.getString();
-		if (token != "External")
-			return;
-	}
+	// by LyXText::readInset
+	string id;
+	lex >> id;
+	if (!lex || id != "External")
+		return print_mailer_error("InsetBoxMailer", in, 2, "External");
 
-	if (lex.isOK()) {
-		params.read(buffer, lex);
-	}
+	params.read(buffer, lex);
 }
 
 

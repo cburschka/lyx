@@ -55,36 +55,13 @@ using std::vector;
 
 
 InsetBibtex::InsetBibtex(InsetCommandParams const & p)
-	: InsetCommand(p)
+	: InsetCommand(p, "bibtex")
 {}
-
-
-InsetBibtex::~InsetBibtex()
-{
-	InsetCommandMailer("bibtex", *this).hideDialog();
-}
 
 
 std::auto_ptr<InsetBase> InsetBibtex::clone() const
 {
 	return std::auto_ptr<InsetBase>(new InsetBibtex(*this));
-}
-
-
-void InsetBibtex::metrics(MetricsInfo & mi, Dimension & dim) const
-{
-	InsetCommand::metrics(mi, dim);
-	int center_indent = (mi.base.textwidth - dim.wid) / 2;
-	Box b(center_indent, center_indent + dim.wid, -dim.asc, dim.des);
-	button().setBox(b);
-	dim.wid = mi.base.textwidth;
-	dim_ = dim;
-}
-
-
-void InsetBibtex::draw(PainterInfo & pi, int x, int y) const
-{
-	InsetCommand::draw(pi, x + button().box().x1, y);
 }
 
 
@@ -96,20 +73,9 @@ InsetBibtex::priv_dispatch(FuncRequest const & cmd,
 	
 	switch (cmd.action) {
 
-	case LFUN_INSET_DIALOG_SHOW:
-		InsetCommandMailer("bibtex", *this).showDialog(cmd.view());
-		result.dispatched(true);
-		break;
-		
-	case LFUN_MOUSE_RELEASE:
-		if (button().box().contains(cmd.x, cmd.y))
-			InsetCommandMailer("bibtex", *this).showDialog(cmd.view());
-		result.dispatched(true);
-		break;
-		
 	case LFUN_INSET_MODIFY: {
 		InsetCommandParams p;
-		InsetCommandMailer::string2params(cmd.argument, p);
+		InsetCommandMailer::string2params("bibtex", cmd.argument, p);
 		if (!p.getCmdName().empty())
 			setParams(p);
 		result.dispatched(true);

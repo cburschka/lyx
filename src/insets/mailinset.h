@@ -40,5 +40,9 @@ protected:
 	virtual std::string const & name() const = 0;
 };
 
+void print_mailer_error(std::string const & class_name,
+			std::string const & data,
+			int arg_id, std::string const & arg);
+
 
 #endif // MAILINSET_H

@@ -303,7 +303,6 @@ void InsetMinipageMailer::string2params(string const & in,
 					InsetMinipage::Params & params)
 {
 	params = InsetMinipage::Params();
-
 	if (in.empty())
 		return;
 
@@ -311,25 +310,19 @@ void InsetMinipageMailer::string2params(string const & in,
 	LyXLex lex(0, 0);
 	lex.setStream(data);
 
-	if (lex.isOK()) {
-		lex.next();
-		string const token = lex.getString();
-		if (token != "minipage")
-			return;
-	}
+	string name;
+	lex >> name;
+	if (!lex || name != name_)
+		return print_mailer_error("InsetMinipageMailer", in, 1, name_);
 
 	// This is part of the inset proper that is usually swallowed
-	// by Buffer::readInset
-	if (lex.isOK()) {
-		lex.next();
-		string const token = lex.getString();
-		if (token != "Minipage")
-			return;
-	}
+	// by LyXText::readInset
+	string id;
+	lex >> id;
+	if (!lex || id != "Minipage")
+		return print_mailer_error("InsetBoxMailer", in, 2, "Minipage");
 
-	if (lex.isOK()) {
-		params.read(lex);
-	}
+	params.read(lex);
 }
 
 

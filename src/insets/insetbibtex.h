@@ -23,13 +23,7 @@ public:
 	///
 	InsetBibtex(InsetCommandParams const &);
 	///
-	~InsetBibtex();
-	///
 	std::auto_ptr<InsetBase> clone() const;
-	///
-	void metrics(MetricsInfo &, Dimension &) const;
-	///
-	void draw(PainterInfo & pi, int x, int y) const;
 	///
 	std::string const getScreenLabel(Buffer const &) const;
 	///

@@ -239,15 +239,20 @@ string const InsetVSpaceMailer::inset2string(Buffer const &) const
 void InsetVSpaceMailer::string2params(string const & in, VSpace & vspace)
 {
 	vspace = VSpace();
-
 	if (in.empty())
 		return;
 
 	istringstream data(in);
 	LyXLex lex(0,0);
 	lex.setStream(data);
-	string name, vsp;
-	lex >> name >> vsp;
+
+	string name;
+	lex >> name;
+	if (!lex || name != name_)
+		return print_mailer_error("InsetVSpaceMailer", in, 1, name_);
+
+	string vsp;
+	lex >> vsp;
 	if (lex)
 		vspace = VSpace(vsp);
 }

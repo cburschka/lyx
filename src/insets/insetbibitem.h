@@ -27,8 +27,6 @@ public:
 	///
 	InsetBibitem(InsetCommandParams const &);
 	///
-	~InsetBibitem();
-	///
 	std::auto_ptr<InsetBase> clone() const;
 	/** Currently \bibitem is used as a LyX2.x command,
 	    so we need this method.

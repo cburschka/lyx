@@ -25,8 +25,6 @@ public:
 	explicit
 	InsetUrl(InsetCommandParams const &);
 	///
-	~InsetUrl();
-	///
 	virtual std::auto_ptr<InsetBase> clone() const {
 		return std::auto_ptr<InsetBase>(new InsetUrl(params()));
 	}
@@ -52,11 +50,6 @@ public:
 	///
 	int docbook(Buffer const &, std::ostream &,
 		    OutputParams const &) const;
-protected:
-	///
-	virtual
-	DispatchResult
-	priv_dispatch(FuncRequest const & cmd, idx_type &, pos_type &);
 };
 
 #endif

@@ -24,7 +24,7 @@ using std::ostream;
 
 
 InsetIndex::InsetIndex(InsetCommandParams const & p)
-	: InsetCommand(p)
+	: InsetCommand(p, "index")
 {}
 
 
@@ -33,44 +33,9 @@ InsetIndex::InsetIndex(InsetCommandParams const & p)
 // {}
 
 
-InsetIndex::~InsetIndex()
-{
-	InsetCommandMailer("index", *this).hideDialog();
-}
-
-
 string const InsetIndex::getScreenLabel(Buffer const &) const
 {
 	return _("Idx");
-}
-
-
-void InsetPrintIndex::metrics(MetricsInfo & mi, Dimension & dim) const
-{
-	InsetCommand::metrics(mi, dim);
-	center_indent_ = (mi.base.textwidth - dim.wid) / 2;
-	dim.wid = mi.base.textwidth;
-	dim_ = dim;
-}
-
-
-void InsetPrintIndex::draw(PainterInfo & pi, int x, int y) const
-{
-	InsetCommand::draw(pi, x + center_indent_, y);
-}
-
-
-DispatchResult InsetIndex::priv_dispatch(FuncRequest const & cmd,
-	idx_type & idx, pos_type & pos)
-{
-	switch (cmd.action) {
-		case LFUN_MOUSE_RELEASE:
-			InsetCommandMailer("index", *this).showDialog(cmd.view());
-			return DispatchResult(true, true);
-
-		default:
-			return InsetCommand::priv_dispatch(cmd, idx, pos);
-	}
 }
 
 
@@ -91,17 +56,13 @@ InsetOld::Code InsetIndex::lyxCode() const
 
 
 InsetPrintIndex::InsetPrintIndex(InsetCommandParams const & p)
-	: InsetCommand(p)
+	: InsetCommand(p, string())
 {}
 
 
 // InsetPrintIndex::InsetPrintIndex(InsetCommandParams const & p, bool)
 //	: InsetCommand(p, false)
 // {}
-
-
-InsetPrintIndex::~InsetPrintIndex()
-{}
 
 
 string const InsetPrintIndex::getScreenLabel(Buffer const &) const

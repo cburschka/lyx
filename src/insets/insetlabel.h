@@ -19,8 +19,6 @@ public:
 	///
 	InsetLabel(InsetCommandParams const &);
 	///
-	~InsetLabel();
-	///
 	std::auto_ptr<InsetBase> clone() const;
 	///
 	std::string const getScreenLabel(Buffer const &) const;

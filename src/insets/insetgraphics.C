@@ -716,7 +716,6 @@ void InsetGraphicsMailer::string2params(string const & in,
 					InsetGraphicsParams & params)
 {
 	params = InsetGraphicsParams();
-
 	if (in.empty())
 		return;
 
@@ -724,18 +723,14 @@ void InsetGraphicsMailer::string2params(string const & in,
 	LyXLex lex(0,0);
 	lex.setStream(data);
 
-	if (lex.isOK()) {
-		lex.next();
-		string const token = lex.getString();
-		if (token != name_)
-			return;
-	}
+	string name;
+	lex >> name;
+	if (!lex || name != name_)
+		return print_mailer_error("InsetGraphicsMailer", in, 1, name_);
 
-	if (lex.isOK()) {
-		InsetGraphics inset;
-		inset.readInsetGraphics(lex, buffer.filePath());
-		params = inset.params();
-	}
+	InsetGraphics inset;
+	inset.readInsetGraphics(lex, buffer.filePath());
+	params = inset.params();
 }
 
 

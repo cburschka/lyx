@@ -644,7 +644,6 @@ void InsetIncludeMailer::string2params(string const & in,
 				       InsetCommandParams & params)
 {
 	params = InsetCommandParams();
-
 	if (in.empty())
 		return;
 
@@ -652,27 +651,21 @@ void InsetIncludeMailer::string2params(string const & in,
 	LyXLex lex(0,0);
 	lex.setStream(data);
 
-	if (lex.isOK()) {
-		lex.next();
-		string const token = lex.getString();
-		if (token != name_)
-			return;
-	}
+	string name;
+	lex >> name;
+	if (!lex || name != name_)
+		return print_mailer_error("InsetIncludeMailer", in, 1, name_);
 
 	// This is part of the inset proper that is usually swallowed
-	// by Buffer::readInset
-	if (lex.isOK()) {
-		lex.next();
-		string const token = lex.getString();
-		if (token != "Include")
-			return;
-	}
+	// by LyXText::readInset
+	string id;
+	lex >> id;
+	if (!lex || id != "Include")
+		return print_mailer_error("InsetBoxMailer", in, 2, "Include");
 
-	if (lex.isOK()) {
-		InsetInclude inset(params);
-		inset.read(lex);
-		params = inset.params();
-	}
+	InsetInclude inset(params);
+	inset.read(lex);
+	params = inset.params();
 }
 
 

@@ -24,15 +24,9 @@ public:
 	///
 	InsetFloatList(std::string const & type);
 	///
-	~InsetFloatList();
-	///
 	virtual std::auto_ptr<InsetBase> clone() const {
 		return std::auto_ptr<InsetBase>(new InsetFloatList(getCmdName()));
 	}
-	///
-	void metrics(MetricsInfo &, Dimension &) const;
-	///
-	void draw(PainterInfo & pi, int x, int y) const;
 	///
 	std::string const getScreenLabel(Buffer const &) const;
 	///
@@ -59,11 +53,6 @@ public:
 		  OutputParams const & runparams) const;
 	///
 	void validate(LaTeXFeatures & features) const;
-protected:
-	///
-	virtual
-	DispatchResult
-	priv_dispatch(FuncRequest const & cmd, idx_type &, pos_type &);
 };
 
 #endif

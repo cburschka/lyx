@@ -27,7 +27,9 @@ ControlCommand::ControlCommand(Dialog & dialog, string const & lfun_name)
 
 bool ControlCommand::initialiseParams(string const & data)
 {
-	InsetCommandMailer::string2params(data, params_);
+	// The name passed with LFUN_INSET_APPLY is also the name
+	// used to identify the mailer.
+	InsetCommandMailer::string2params(lfun_name_, data, params_);
 	return true;
 }
 

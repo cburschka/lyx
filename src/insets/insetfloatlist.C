@@ -35,20 +35,14 @@ using std::ostream;
 
 
 InsetFloatList::InsetFloatList()
-	: InsetCommand(InsetCommandParams())
+	: InsetCommand(InsetCommandParams(), "toc")
 {}
 
 
 InsetFloatList::InsetFloatList(string const & type)
-	: InsetCommand(InsetCommandParams())
+	: InsetCommand(InsetCommandParams(), "toc")
 {
 	setCmdName(type);
-}
-
-
-InsetFloatList::~InsetFloatList()
-{
-	InsetCommandMailer("toc", *this).hideDialog();
 }
 
 
@@ -96,44 +90,6 @@ void InsetFloatList::read(Buffer const & buf, LyXLex & lex)
 	if (token != "\\end_inset") {
 		lex.printError("Missing \\end_inset at this point. "
 			       "Read: `$$Token'");
-	}
-}
-
-
-void InsetFloatList::metrics(MetricsInfo & mi, Dimension & dim) const
-{
-	InsetCommand::metrics(mi, dim);
-	int center_indent = (mi.base.textwidth - dim.wid) / 2;
-    Box b(center_indent, center_indent + dim.wid, -dim.asc, dim.des);
-	button().setBox(b);
-
-	dim.wid = mi.base.textwidth;
-	dim_ = dim;
-}
-
-
-void InsetFloatList::draw(PainterInfo & pi, int x, int y) const
-{
-	InsetCommand::draw(pi, x + button().box().x1, y);
-}
-
-
-DispatchResult
-InsetFloatList::priv_dispatch(FuncRequest const & cmd,
-			      idx_type & idx, pos_type & pos)
-{
-	switch (cmd.action) {
-		case LFUN_MOUSE_RELEASE:
-			if (button().box().contains(cmd.x, cmd.y))
-				InsetCommandMailer("toc", *this).showDialog(cmd.view());
-			return DispatchResult(true, true);
-
-		case LFUN_INSET_DIALOG_SHOW:
-			InsetCommandMailer("toc", *this).showDialog(cmd.view());
-			return DispatchResult(true, true);
-
-		default:
-			return InsetCommand::priv_dispatch(cmd, idx, pos);
 	}
 }
 

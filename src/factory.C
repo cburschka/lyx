@@ -217,17 +217,20 @@ InsetOld * createInset(FuncRequest const & cmd)
 
 		if (name == "bibitem") {
 			InsetCommandParams icp;
-			InsetCommandMailer::string2params(cmd.argument, icp);
+			InsetCommandMailer::string2params(name, cmd.argument,
+							  icp);
 			return new InsetBibitem(icp);
 
 		} else if (name == "bibtex") {
 			InsetCommandParams icp;
-			InsetCommandMailer::string2params(cmd.argument, icp);
+			InsetCommandMailer::string2params(name, cmd.argument,
+							  icp);
 			return new InsetBibtex(icp);
 
 		} else if (name == "citation") {
 			InsetCommandParams icp;
-			InsetCommandMailer::string2params(cmd.argument, icp);
+			InsetCommandMailer::string2params(name, cmd.argument,
+							  icp);
 			return new InsetCitation(icp);
 
 		} else if (name == "ert") {
@@ -260,27 +263,32 @@ InsetOld * createInset(FuncRequest const & cmd)
 
 		} else if (name == "index") {
 			InsetCommandParams icp;
-			InsetCommandMailer::string2params(cmd.argument, icp);
+			InsetCommandMailer::string2params(name, cmd.argument,
+							  icp);
 			return new InsetIndex(icp);
 
 		} else if (name == "label") {
 			InsetCommandParams icp;
-			InsetCommandMailer::string2params(cmd.argument, icp);
+			InsetCommandMailer::string2params(name, cmd.argument,
+							  icp);
 			return new InsetLabel(icp);
 
 		} else if (name == "ref") {
 			InsetCommandParams icp;
-			InsetCommandMailer::string2params(cmd.argument, icp);
+			InsetCommandMailer::string2params(name, cmd.argument,
+							  icp);
 			return new InsetRef(icp, *bv->buffer());
 
 		} else if (name == "toc") {
 			InsetCommandParams icp;
-			InsetCommandMailer::string2params(cmd.argument, icp);
+			InsetCommandMailer::string2params(name, cmd.argument,
+							  icp);
 			return new InsetTOC(icp);
 
 		} else if (name == "url") {
 			InsetCommandParams icp;
-			InsetCommandMailer::string2params(cmd.argument, icp);
+			InsetCommandMailer::string2params(name, cmd.argument,
+							  icp);
 			return new InsetUrl(icp);
 
 		} else if (name == "vspace") {

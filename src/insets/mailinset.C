@@ -13,9 +13,12 @@
 #include "mailinset.h"
 
 #include "BufferView.h"
+#include "debug.h"
 
 #include "frontends/Dialogs.h"
 #include "frontends/LyXView.h"
+
+using std::string;
 
 
 void MailInset::showDialog(BufferView * bv) const
@@ -38,4 +41,13 @@ void MailInset::updateDialog(BufferView * bv) const
 void MailInset::hideDialog() const
 {
 	Dialogs::hide(name(), &inset());
+}
+
+
+void print_mailer_error(string const & class_name,
+			string const & data, int arg_id, string const & arg)
+{
+	lyxerr << class_name << "::string2params(" << data << ")\n"
+	       << "Expected arg " << arg_id << "to be \"" << arg << '"'
+	       << std::endl;
 }

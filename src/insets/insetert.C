@@ -482,6 +482,8 @@ void InsetERTMailer::string2params(string const & in,
 				   InsetCollapsable::CollapseStatus & status)
 {
 	status = InsetCollapsable::Collapsed;
+	if (in.empty())
+		return;
 
 	istringstream data(in);
 	LyXLex lex(0,0);
@@ -489,11 +491,8 @@ void InsetERTMailer::string2params(string const & in,
 
 	string name;
 	lex >> name;
-	if (name != name_) {
-		lyxerr << "InsetERTMailer::string2params(" << in << ")\n"
-		       << "Missing identifier \"" << name_ << '"' << std::endl;
-		return;
-	}
+	if (name != name_)
+		return print_mailer_error("InsetERTMailer", in, 1, name_);
 
 	int s;
 	lex >> s;

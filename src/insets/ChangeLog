@@ -1,3 +1,49 @@
+2003-12-11  Angus Leeming  <leeming@lyx.org>
+
+	* mailinset.[Ch] (print_mailer_error): new helper function.
+
+	* insetcommand.[Ch]: add a mailer_name_ variable and use it when
+	calling InsetCommandMailer.
+	(InsetCommandMailer::string2params): pass the name of the dialog.
+
+	* insetbibitem.[Ch] (d-tor):
+	* insetbibtex.[Ch] (d-tor):
+	* insetcite.[Ch] (d-tor):
+	* insetfloatlist.[Ch] (d-tor):
+	* insetindex.[Ch] (d-tor):
+	* insetlabel.[Ch] (d-tor):
+	* insetref.[Ch] (d-tor):
+	* insettoc.[Ch] (d-tor):
+	* inseturl.[Ch] (d-tor): removed.
+	Hiding the dialog is handled by InsetCommand.
+	
+	* insetbibtex.[Ch] (draw, metrics):
+	* insetfloatlist.[Ch] (draw, metrics):
+	* insetindex.[Ch] (draw, metrics): removed.
+	Drawing is handled by InsetCommand.
+
+	* insetbibitem.[Ch] (priv_dispatch):
+	* insetbibtex.[Ch] (priv_dispatch):
+	* insetcite.[Ch] (priv_dispatch):
+	* insetfloatlist.[Ch] (priv_dispatch):
+	* insetindex.[Ch] (priv_dispatch):
+	* insetlabel.[Ch] (priv_dispatch):
+	* insettoc.[Ch] (priv_dispatch):
+	* inseturl.[Ch] (priv_dispatch): removed or simplified.
+	let InsetCommand handle LFUN_MOUSE_PRESS, LFUN_MOUSE_RELEASE,
+	LFUN_INSET_DIALOG_SHOW.
+
+	* insetbox.C (string2params):
+	* insetbranch.C (string2params):
+	* insetert.C (string2params):
+	* insetexternal.C (string2params):
+	* insetfloat.C (string2params):
+	* insetinclude.C (string2params):
+	* insetminipage.C (string2params):
+	* insetnote.C (string2params):
+	* insetvspace.C (string2params):
+	* insetwrap.C (string2params): over-hauled.
+	
 2003-12-10  Angus Leeming  <leeming@lyx.org>
 
 	* insetexternal.[Ch]: add a draft option and respect it when

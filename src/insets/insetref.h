@@ -40,7 +40,6 @@ public:
 
 	InsetRef(InsetRef const &);
 
-	~InsetRef();
 	///
 	virtual std::auto_ptr<InsetBase> clone() const {
 		return std::auto_ptr<InsetBase>(new InsetRef(*this));

@@ -31,7 +31,10 @@ class InsetCommand : public InsetOld {
 public:
 	///
 	explicit
-	InsetCommand(InsetCommandParams const &);
+	InsetCommand(InsetCommandParams const &,
+		     std::string const & mailer_name);
+	///
+	~InsetCommand();
 	///
 	void metrics(MetricsInfo &, Dimension &) const;
 	///
@@ -91,6 +94,7 @@ protected:
 private:
 	///
 	InsetCommandParams p_;
+	std::string mailer_name_;
 	mutable bool set_label_;
 	mutable RenderButton button_;
 };
@@ -107,10 +111,11 @@ public:
 	///
 	virtual std::string const inset2string(Buffer const &) const;
 	///
-	static void string2params(std::string const &, InsetCommandParams &);
+	static void string2params(std::string const &, std::string const & name,
+				  InsetCommandParams &);
 	///
 	static std::string const params2string(std::string const & name,
-					  InsetCommandParams const &);
+					       InsetCommandParams const &);
 private:
 	///
 	std::string const name_;

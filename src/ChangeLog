@@ -1,3 +1,8 @@
+2003-12-11  Angus Leeming  <leeming@lyx.org>
+
+	* factory.C (createInset): changes due to the changed interface to
+	InsetCommandMailer::string2params.
+
 2003-12-10  Angus Leeming  <leeming@lyx.org>
 
 	* lyxfunc.C (dispatch): enable all inset dialogs to be opened with

@@ -29,33 +29,8 @@ using std::ostream;
 
 
 InsetUrl::InsetUrl(InsetCommandParams const & p)
-		: InsetCommand(p)
+	: InsetCommand(p, "url")
 {}
-
-
-// InsetUrl::InsetUrl(InsetCommandParams const & p, bool)
-//		: InsetCommand(p, false)
-// {}
-
-
-InsetUrl::~InsetUrl()
-{
-	InsetCommandMailer("url", *this).hideDialog();
-}
-
-
-DispatchResult
-InsetUrl::priv_dispatch(FuncRequest const & cmd,
-			idx_type & idx, pos_type & pos)
-{
-	switch (cmd.action) {
-		case LFUN_MOUSE_PRESS:
-			InsetCommandMailer("url", *this).showDialog(cmd.view());
-			return DispatchResult(true, true);
-		default:
-			return InsetCommand::priv_dispatch(cmd, idx, pos);
-	}
-}
 
 
 string const InsetUrl::getScreenLabel(Buffer const &) const

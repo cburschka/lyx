@@ -215,19 +215,8 @@ string const getBasicLabel(string const & keyList, string const & after)
 
 
 InsetCitation::InsetCitation(InsetCommandParams const & p)
-	: InsetCommand(p)
+	: InsetCommand(p, "citation")
 {}
-
-
-// InsetCitation::InsetCitation(InsetCommandParams const & p, bool)
-//	: InsetCommand(p, false)
-// {}
-
-
-InsetCitation::~InsetCitation()
-{
-	InsetCommandMailer("citation", *this).hideDialog();
-}
 
 
 string const InsetCitation::generateLabel(Buffer const & buffer) const
@@ -307,22 +296,6 @@ string const InsetCitation::getScreenLabel(Buffer const & buffer) const
 	return label;
 }
 
-
-DispatchResult
-InsetCitation::priv_dispatch(FuncRequest const & cmd,
-			    idx_type & idx, pos_type & pos)
-{
-	switch (cmd.action) {
-
-	case LFUN_MOUSE_PRESS:
-		InsetCommandMailer("citation", *this).showDialog(cmd.view());
-		return DispatchResult(true, true);
-
-	default:
-		return InsetCommand::priv_dispatch(cmd, idx, pos);
-	}
-}
-		
 
 int InsetCitation::plaintext(Buffer const & buffer, ostream & os, int) const
 {

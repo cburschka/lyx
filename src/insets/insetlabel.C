@@ -29,14 +29,8 @@ using std::ostream;
 
 
 InsetLabel::InsetLabel(InsetCommandParams const & p)
-	: InsetCommand(p)
+	: InsetCommand(p, "label")
 {}
-
-
-InsetLabel::~InsetLabel()
-{
-	InsetCommandMailer("label", *this).hideDialog();
-}
 
 
 std::auto_ptr<InsetBase> InsetLabel::clone() const
@@ -66,13 +60,9 @@ InsetLabel::priv_dispatch(FuncRequest const & cmd,
 
 	switch (cmd.action) {
 
-	case LFUN_MOUSE_RELEASE:
-		InsetCommandMailer("label", *this).showDialog(bv);
-		return DispatchResult(true, true);
-
 	case LFUN_INSET_MODIFY: {
 		InsetCommandParams p;
-		InsetCommandMailer::string2params(cmd.argument, p);
+		InsetCommandMailer::string2params("label", cmd.argument, p);
 		if (p.getCmdName().empty())
 			return DispatchResult(false);
 

@@ -231,7 +231,6 @@ void InsetBranchMailer::string2params(string const & in,
 				      InsetBranchParams & params)
 {
 	params = InsetBranchParams();
-
 	if (in.empty())
 		return;
 
@@ -242,7 +241,7 @@ void InsetBranchMailer::string2params(string const & in,
 	string name;
 	lex >> name;
 	if (name != name_)
-		return;
+		return print_mailer_error("InsetBranchMailer", in, 1, name_);
 
 	params.read(lex);
 	// Process all_branches here:
