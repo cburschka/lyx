@@ -40,6 +40,7 @@
 #include "ParagraphParameters.h"
 #include "undo_funcs.h"
 #include "funcrequest.h"
+#include "language.h"
 
 #include "insets/insetbib.h"
 #include "insets/insettext.h"
@@ -3239,7 +3240,9 @@ void BufferView::Pimpl::smartQuote()
 	LyXLayout_ptr const & style = par->layout();
 
 	if (style->pass_thru ||
-		(!insertInset(new InsetQuotes(c, bv_->buffer()->params))))
+	    par->getFontSettings(buffer_->params,
+				 pos).language()->lang() == "hebrew" ||
+		(!insertInset(new InsetQuotes(c, buffer_->params))))
 		bv_->owner()->dispatch(FuncRequest(LFUN_SELFINSERT, "\""));
 }
 
