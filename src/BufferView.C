@@ -46,6 +46,7 @@
 #include "BoostFormat.h"
 
 #include <fstream>
+#include <cerrno>
 
 extern BufferList bufferlist;
 
