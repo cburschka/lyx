@@ -2128,26 +2128,41 @@ LyXText * InsetText::getLyXText(BufferView const * lbv,
 	Cache::iterator it = cache.find(bv);
 
 	if (it != cache.end()) {
-		if (do_reinit)
+		if (do_reinit) {
 			reinitLyXText();
-		else if (do_resize)
+		} else if (do_resize) {
 			resizeLyXText(do_resize);
-		if (lt || !it->second.remove) {
-			lyx::Assert(it->second.text.get());
-			cached_text = it->second.text;
-			if (recursive && the_locking_inset) {
-				return the_locking_inset->getLyXText(bv, true);
+		} else {
+			if (lt || !it->second.remove) {
+				lyx::Assert(it->second.text.get());
+				cached_text = it->second.text;
+				if (recursive && the_locking_inset) {
+					return the_locking_inset->getLyXText(bv, true);
+				}
+				return cached_text.get();
+			} else if (it->second.remove) {
+				if (locked) {
+					saveLyXTextState(it->second.text.get());
+				} else {
+					sstate.lpar = 0;
+				}
 			}
-			return cached_text.get();
-		} else if (it->second.remove) {
-			if (locked) {
-				saveLyXTextState(it->second.text.get());
-			} else {
-				sstate.lpar = 0;
-			}
+			//
+			// when we have to reinit the existing LyXText!
+			//
+			it->second.text->init(bv);
+			restoreLyXTextState(bv, it->second.text.get());
+			it->second.remove = false;
 		}
+		cached_text = it->second.text;
+		if (the_locking_inset && recursive) {
+			return the_locking_inset->getLyXText(bv);
+		}
+		return cached_text.get();
 	}
-	
+	///
+	// we are here only if we don't have a BufferView * in the cache!!!
+	///
 	cached_text.reset(new LyXText(const_cast<InsetText *>(this)));
 	cached_text->init(bv);
 	restoreLyXTextState(bv, cached_text.get());

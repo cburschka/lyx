@@ -1,3 +1,8 @@
+2002-01-07  Juergen Vigna  <jug@sad.it>
+
+	* insettext.C (getLyXText): Fixed this function. An insert into the
+	map is only done if we REALLY have a new BufferView.
+
 2002-01-07  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* insettext.C: fix bug illustrated by attachment #37 of bug #59
