@@ -830,7 +830,7 @@ InsetOld::RESULT InsetText::localDispatch(FuncRequest const & cmd)
 		break;
 
 	case LFUN_PRIOR:
-		if (crow() == text_.rows().begin())
+		if (crow() == text_.firstRow())
 			result = FINISHED_UP;
 		else {
 			text_.cursorPrevious();
@@ -840,7 +840,7 @@ InsetOld::RESULT InsetText::localDispatch(FuncRequest const & cmd)
 		break;
 
 	case LFUN_NEXT:
-		if (boost::next(crow()) == text_.rows().end())
+		if (crow() == text_.lastRow())
 			result = FINISHED_DOWN;
 		else {
 			text_.cursorNext();
@@ -1293,7 +1293,7 @@ InsetText::moveLeftIntern(BufferView * bv, bool front,
 
 InsetOld::RESULT InsetText::moveUp(BufferView * bv)
 {
-	if (crow() == text_.rows().begin())
+	if (crow() == text_.firstRow())
 		return FINISHED_UP;
 	text_.cursorUp(bv);
 	text_.clearSelection();
@@ -1303,7 +1303,7 @@ InsetOld::RESULT InsetText::moveUp(BufferView * bv)
 
 InsetOld::RESULT InsetText::moveDown(BufferView * bv)
 {
-	if (boost::next(crow()) == text_.rows().end())
+	if (crow() == text_.lastRow())
 		return FINISHED_DOWN;
 	text_.cursorDown(bv);
 	text_.clearSelection();
