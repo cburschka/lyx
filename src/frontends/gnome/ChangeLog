@@ -1,3 +1,10 @@
+2001-04-29  Baruch Even  <baruch@lyx.org>
+
+	* Dialogs.C: Added an include for ControlSplash which is required
+	in GUI.h but is not included there.
+
+	* GnomeBase.C: Changed an Assert to lyx::Assert.
+
 2001-04-17  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* FormIndex.C: delete duplicate include files
