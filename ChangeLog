@@ -1,3 +1,9 @@
+2001-12-15  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* src/CutAndPaste.C (SwitchLayoutsBetweenClasses): Use buffer language 
+	when inserting error insets.
+	* src/buffer.C (parseSingleLyXformat2Token): Ditto.
+
 2001-12-13  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* src/text2.C (TextHandleUndo): remove previous leak fix, as it
