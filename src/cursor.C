@@ -67,12 +67,12 @@ void region(CursorSlice const & i1, CursorSlice const & i2,
 	LCursor::col_type & c1, LCursor::col_type & c2)
 {
 	InsetBase & p = i1.inset();
-	c1 = p.col(i1.idx_);
-	c2 = p.col(i2.idx_);
+	c1 = p.col(i1.idx());
+	c2 = p.col(i2.idx());
 	if (c1 > c2)
 		swap(c1, c2);
-	r1 = p.row(i1.idx_);
-	r2 = p.row(i2.idx_);
+	r1 = p.row(i1.idx());
+	r2 = p.row(i2.idx());
 	if (r1 > r2)
 		swap(r1, r2);
 }
@@ -418,10 +418,10 @@ string LCursor::grabSelection()
 	CursorSlice i1 = selBegin();
 	CursorSlice i2 = selEnd();
 
-	if (i1.idx_ == i2.idx_) {
+	if (i1.idx() == i2.idx()) {
 		if (i1.inset().asMathInset()) {
 			MathArray::const_iterator it = i1.cell().begin();
-			return asString(MathArray(it + i1.pos_, it + i2.pos_));
+			return asString(MathArray(it + i1.pos(), it + i2.pos()));
 		} else {
 			return "unknown selection 1";
 		}
@@ -456,8 +456,8 @@ void LCursor::eraseSelection()
 	CursorSlice const & i2 = selEnd();
 #warning FIXME
 	if (i1.inset().asMathInset()) {
-		if (i1.idx_ == i2.idx_) {
-			i1.cell().erase(i1.pos_, i2.pos_);
+		if (i1.idx() == i2.idx()) {
+			i1.cell().erase(i1.pos(), i2.pos());
 		} else {
 			MathInset * p = i1.asMathInset();
 			row_type r1, r2;
@@ -895,8 +895,8 @@ void LCursor::adjust(pos_type from, int diff)
 {
 	if (pos() > from)
 		pos() += diff;
-	if (anchor().pos_ > from)
-		anchor().pos_ += diff;
+	if (anchor().pos() > from)
+		anchor().pos() += diff;
 	// just to be on the safe side
 	// theoretically unecessary
 	normalize();
@@ -932,7 +932,7 @@ MathGridInset * LCursor::enclosingGrid(idx_type & idx) const
 			return 0;
 		MathGridInset * p = m->asGridInset();
 		if (p) {
-			idx = operator[](i).idx_;
+			idx = operator[](i).idx();
 			return p;
 		}
 	}
@@ -1100,7 +1100,7 @@ bool LCursor::bruteFind(int x, int y, int xlow, int xhigh, int ylow, int yhigh)
 	BOOST_ASSERT(text);
 	getParsInRange(text->paragraphs(), ylow, yhigh, beg, end);
 
-	DocumentIterator it = insetBegin(bv().buffer()->inset());
+	DocumentIterator it(bv().buffer()->inset());
 	DocumentIterator et;
 	lyxerr << "x: " << x << " y: " << y << endl;
 	lyxerr << "xlow: " << xlow << " ylow: " << ylow << endl;
@@ -1146,7 +1146,7 @@ void LCursor::bruteFind2(int x, int y)
 	DocumentIterator it = *this;
 	it.back().pos() = 0;
 	DocumentIterator et = *this;
-	et.back().pos() = et.back().asMathInset()->cell(et.back().idx_).size();
+	et.back().pos() = et.back().asMathInset()->cell(et.back().idx()).size();
 	for (int i = 0; ; ++i) {
 		int xo, yo;
 		CursorSlice & cur = it.back();

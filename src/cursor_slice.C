@@ -37,7 +37,7 @@ CursorSlice::CursorSlice()
 CursorSlice::CursorSlice(InsetBase & p)
 	: inset_(&p), idx_(0), par_(0), pos_(0), boundary_(false)
 {
-	///BOOST_ASSERT(inset_);
+	BOOST_ASSERT(inset_);
 }
 
 
@@ -177,34 +177,34 @@ Paragraph const & CursorSlice::paragraph() const
 
 bool operator==(CursorSlice const & p, CursorSlice const & q)
 {
-	return p.inset_ == q.inset_
-	       && p.idx_ == q.idx_
-	       && p.par_ == q.par_
-	       && p.pos_ == q.pos_;
+	return &p.inset() == &q.inset()
+	       && p.idx() == q.idx()
+	       && p.par() == q.par()
+	       && p.pos() == q.pos();
 }
 
 
 bool operator!=(CursorSlice const & p, CursorSlice const & q)
 {
-	return p.inset_ != q.inset_
-	       || p.idx_ != q.idx_
-	       || p.par_ != q.par_
-	       || p.pos_ != q.pos_;
+	return &p.inset() != &q.inset()
+	       || p.idx() != q.idx()
+	       || p.par() != q.par()
+	       || p.pos() != q.pos();
 }
 
 
 bool operator<(CursorSlice const & p, CursorSlice const & q)
 {
-	if (p.inset_ != q.inset_) {
+	if (&p.inset() != &q.inset()) {
 		lyxerr << "can't compare cursor and anchor in different insets\n"
 		       << "p: " << p << '\n' << "q: " << q << endl;
 		return true;
 	}
-	if (p.idx_ != q.idx_)
-		return p.idx_ < q.idx_;
-	if (p.par_ != q.par_)
-		return p.par_ < q.par_;
-	return p.pos_ < q.pos_;
+	if (p.idx() != q.idx())
+		return p.idx() < q.idx();
+	if (p.par() != q.par())
+		return p.par() < q.par();
+	return p.pos() < q.pos();
 }
 
 
@@ -217,12 +217,12 @@ bool operator>(CursorSlice const & p, CursorSlice const & q)
 std::ostream & operator<<(std::ostream & os, CursorSlice const & item)
 {
 	return os
-	   << "inset: " << item.inset_
+	   << "inset: " << &item.inset()
 //	   << " text: " << item.text()
-	   << " idx: " << item.idx_
-	   << " par: " << item.par_
-	   << " pos: " << item.pos_
-//	   << " x: " << item.inset_->x()
-//	   << " y: " << item.inset_->y()
+	   << " idx: " << item.idx()
+	   << " par: " << item.par()
+	   << " pos: " << item.pos()
+//	   << " x: " << item.inset().x()
+//	   << " y: " << item.inset().y()
 ;
 }

@@ -17,10 +17,12 @@
 #ifndef CURSORSLICE_H
 #define CURSORSLICE_H
 
-#include <cstddef>
-#include <iosfwd>
+#include "ParagraphList_fwd.h"
 
 #include "support/types.h"
+
+#include <cstddef>
+#include <iosfwd>
 
 class BufferView;
 class InsetBase;
@@ -66,8 +68,12 @@ public:
 	idx_type lastidx() const { return nargs() - 1; }
 	/// return the paragraph this cursor is in
 	par_type par() const;
-	/// return the paragraph this cursor is in
+	/// set the paragraph this cursor is in
 	par_type & par();
+	/// increments the paragraph this cursor is in
+	void incrementPar();
+	/// increments the paragraph this cursor is in
+	void decrementPar();
 	/// return the position within the paragraph
 	pos_type pos() const;
 	/// return the position within the paragraph
@@ -112,12 +118,15 @@ public:
 	///
 	friend std::ostream & operator<<(std::ostream &, CursorSlice const &);
 public:
-	/// pointer to 'owning' inset
+	/// pointer to 'owning' inset. This is some kind of cache.
 	InsetBase * inset_;
+private:
 	/// cell index of a position in this inset
 	idx_type idx_;
 	/// paragraph in this cell (used by texted)
 	par_type par_;
+	/// true of 'pit' was properly initialized
+	bool pit_valid_;
 	/// position in this cell
 	pos_type pos_;
 	/**

@@ -695,6 +695,14 @@ void LyXFunc::dispatch(FuncRequest const & cmd, bool verbose)
 			break;
 
 		case LFUN_QUIT:
+#if 0
+			// test speed of DocumentIterator
+			lyxerr << "start" << endl;
+			for (DocumentIterator it(owner->buffer()->inset()), end;
+				it != end; it.forwardPos())
+				;
+			lyxerr << "end" << endl;
+#endif
 			QuitLyX();
 			break;
 

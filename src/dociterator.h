@@ -49,6 +49,11 @@ public:
 	typedef CursorSlice::col_type col_type;
 
 public:
+	///
+	DocumentIterator();
+	///
+	explicit DocumentIterator(InsetBase & inset);
+
 	//
 	// access to slice at tip
 	//
@@ -162,12 +167,6 @@ public:
 	friend std::ostream &
 	operator<<(std::ostream & os, DocumentIterator const & cur);
 };
-
-
-///
-DocumentIterator insetBegin(InsetBase & inset);
-///
-DocumentIterator insetEnd();
 
 
 // The difference to a ('non stable') DocumentIterator is the removed

@@ -32,9 +32,6 @@ using lyx::paroffset_type;
 
 namespace {
 
-/// Whether actions are not added to the undo stacks.
-bool undo_frozen;
-
 /// The flag used by finishUndo().
 bool undo_finished;
 
@@ -153,32 +150,28 @@ bool textUndoOrRedo(BufferView & bv,
 	finishUndo();
 
 	// this implements redo
-	if (!undo_frozen) {
-		otherstack.push(undo);
-		DocumentIterator dit =
-			undo.cursor.asDocumentIterator(&bv.buffer()->inset());
-		if (dit.inMathed()) {
-			// not much to be done
-		} else {
-			otherstack.top().pars.clear();
-			LyXText * text = dit.text();
-			BOOST_ASSERT(text);
-			ParagraphList & plist = text->paragraphs();
-			if (undo.from + undo.end <= int(plist.size())) {
-				ParagraphList::iterator first = plist.begin();
-				advance(first, undo.from);
-				ParagraphList::iterator last = plist.begin();
-				advance(last, plist.size() - undo.end);
-				otherstack.top().pars.insert(otherstack.top().pars.begin(), first, last);
-			}
+	otherstack.push(undo);
+	DocumentIterator dit =
+		undo.cursor.asDocumentIterator(&bv.buffer()->inset());
+	if (dit.inMathed()) {
+		// not much to be done
+	} else {
+		otherstack.top().pars.clear();
+		LyXText * text = dit.text();
+		BOOST_ASSERT(text);
+		ParagraphList & plist = text->paragraphs();
+		if (undo.from + undo.end <= int(plist.size())) {
+			ParagraphList::iterator first = plist.begin();
+			advance(first, undo.from);
+			ParagraphList::iterator last = plist.begin();
+			advance(last, plist.size() - undo.end);
+			otherstack.top().pars.insert(otherstack.top().pars.begin(), first, last);
 		}
-		otherstack.top().cursor = bv.cursor();
-		//lyxerr << " undo other: " << otherstack.top() << std::endl;
 	}
+	otherstack.top().cursor = bv.cursor();
+	//lyxerr << " undo other: " << otherstack.top() << std::endl;
 
-	undo_frozen = true;
 	performUndoOrRedo(bv, undo);
-	undo_frozen = false;
 	return true;
 }
 
@@ -209,8 +202,6 @@ bool textRedo(BufferView & bv)
 void recordUndo(Undo::undo_kind kind,
 	LCursor & cur, paroffset_type first, paroffset_type last)
 {
-	if (undo_frozen)
-		return;
 	Buffer * buf = cur.bv().buffer();
 	recordUndo(kind, cur, first, last, buf->undostack());
 	buf->redostack().clear();

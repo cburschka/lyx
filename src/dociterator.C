@@ -12,6 +12,16 @@
 #include <boost/assert.hpp>
 
 
+DocumentIterator::DocumentIterator()
+{}
+
+
+DocumentIterator::DocumentIterator(InsetBase & inset)
+{
+	push_back(CursorSlice(inset));
+}
+
+
 InsetBase * DocumentIterator::nextInset()
 {
 	if (pos() == lastpos())
@@ -270,7 +280,7 @@ void DocumentIterator::forwardPos()
 	pop_back();
 	// 'top' is invalid now...
 	if (size())
-		++back().pos_;
+		++back().pos();
 	//else
 	//	lyxerr << "... no slice left" << std::endl;
 }
@@ -332,21 +342,7 @@ void DocumentIterator::forwardPar()
 	pop_back();
 	// 'top' is invalid now...
 	if (size())
-		++back().pos_;
-}
-
-
-DocumentIterator insetBegin(InsetBase & inset)
-{
-	DocumentIterator it;
-	it.push_back(CursorSlice(inset));
-	return it;
-}
-
-
-DocumentIterator insetEnd()
-{
-	return DocumentIterator();
+		++back().pos();
 }
 
 
