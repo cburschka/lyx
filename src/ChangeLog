@@ -1,3 +1,7 @@
+2003-09-12  Juergen Spitzmueller  <j.spitzmueller@gmx.de>
+
+	* aspell.C: include <boost/assert.cpp> (compile fix)
+
 2003-09-10  Rob Lahaye  <lahaye@snu.ac.kr>
 
 	* boost.C (assertion_failed): use lyx::support::abort instead of

@@ -20,6 +20,8 @@
 #include "aspell_local.h"
 #include "WordLangTuple.h"
 
+#include <boost/assert.hpp>
+
 
 ASpell::ASpell(BufferParams const &, string const & lang)
 	: els(0), spell_error_object(0)
