@@ -133,10 +133,12 @@ void UpdatableInset::SetFont(LyXFont const &, bool )
 
 ///  An updatable inset could handle lyx editing commands
 #ifdef SCROLL_INSET
-UpdatableInset::RESULT UpdatableInset::LocalDispatch(BufferView *, 
-						     int action, string arg) 
+UpdatableInset::RESULT
+UpdatableInset::LocalDispatch(BufferView *, 
+			      int action, string const & arg) 
 #else
-UpdatableInset::RESULT UpdatableInset::LocalDispatch(BufferView *, int, string)
+UpdatableInset::RESULT
+UpdatableInset::LocalDispatch(BufferView *, int, string const &)
 #endif
 {
 #ifdef SCROLL_INSET

@@ -3,7 +3,7 @@
  * 
  *           LyX, The Document Processor
  * 	 
- *          Copyright (C) 1998 The LyX Team.
+ *          Copyright 1998 The LyX Team.
  *
  *======================================================*/
 
@@ -20,7 +20,8 @@
 #include "lyx_gui_misc.h"
 
 
-InsetERT::InsetERT(Buffer * bf): InsetText(bf)
+InsetERT::InsetERT(Buffer * bf)
+	: InsetText(bf)
 {
 	closed = true;
 	nomotion = false;
@@ -121,7 +122,8 @@ void InsetERT::draw_closed(Painter & pain, LyXFont const & f,
 }
 
 
-void InsetERT::draw(Painter & pain, LyXFont const & f, int baseline, float & x) const
+void InsetERT::draw(Painter & pain, LyXFont const & f,
+		    int baseline, float & x) const
 {
     if (closed) {
 	top_x = int(x);

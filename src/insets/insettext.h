@@ -4,7 +4,7 @@
  * 
  *           LyX, The Document Processor
  *
- *           Copyright (C) 1998 The LyX Team.
+ *           Copyright 1998 The LyX Team.
  *
  *======================================================
  */
@@ -56,15 +56,15 @@ public:
     ///
     int getMaxWidth(UpdatableInset *) const;
     ///
-    void draw(Painter & pain, const LyXFont &, int , float &) const;
+    void draw(Painter & pain, LyXFont const &, int , float &) const;
     ///
-    const char * EditMessage() const;
+    char const * EditMessage() const;
     ///
     void Edit(BufferView *, int, int, unsigned int);
     ///
     void InsetUnlock(BufferView *);
     ///
-    bool UnlockInsetInInset(BufferView *, Inset *, bool lr=false);
+    bool UnlockInsetInInset(BufferView *, Inset *, bool lr = false);
     ///
     //void UpdateLocal(bool flag=true);
     ///
@@ -78,15 +78,15 @@ public:
     ///
     void InsetKeyPress(XKeyEvent *);
     ///
-    UpdatableInset::RESULT LocalDispatch(BufferView *, int, string);
+    UpdatableInset::RESULT LocalDispatch(BufferView *, int, string const &);
     ///
     int Latex(ostream &, signed char) const;
     ///
     int Latex(string &, signed char) const;
     ///
-    int Linuxdoc(class string &) const { return true; }
+    int Linuxdoc(string &) const { return 0; }
     ///
-    int DocBook(class string &) const { return true; }
+    int DocBook(string &) const { return 0; }
     ///
     void Validate(LaTeXFeatures & features) const;
     ///
@@ -155,7 +155,7 @@ private:
     ///
     void HideInsetCursor(BufferView *);
     ///
-    void setPos(BufferView *, int x, int y, bool activate_inset=true);
+    void setPos(BufferView *, int x, int y, bool activate_inset = true);
     ///
     bool moveRight(BufferView *, bool activate_inset = true);
     bool moveLeft(BufferView *, bool activate_inset = true);
@@ -163,9 +163,9 @@ private:
     bool moveDown(BufferView *, bool activate_inset = true);
     bool Delete();
     ///
-    bool hasSelection() const {return (selection_start != selection_end);}
+    bool hasSelection() const { return selection_start != selection_end; }
     ///
-    void SetCharFont(int pos, LyXFont font);
+    void SetCharFont(int pos, LyXFont const & font);
     ///
     string getText(int);
 	

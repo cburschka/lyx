@@ -548,7 +548,7 @@ string LyXFunc::Dispatch(int ac,
 					inset->Edit(owner->view(),slx,sly,0); 
 				return string();
 			} else if (owner->view()->the_locking_inset->
-				   LocalDispatch(owner->view(),action,
+				   LocalDispatch(owner->view(), action,
 						 argument) ==
 				   UpdatableInset::DISPATCHED)
 				return string();
@@ -2128,10 +2128,11 @@ string LyXFunc::Dispatch(int ac,
 		if (owner->view()->available()) { 
 			owner->view()->
 				open_new_inset(new InsetFormula(false));
-			owner->view()->
-				the_locking_inset->LocalDispatch(owner->view(),
-								 action,
-								 argument.c_str());
+			owner->view()
+				->the_locking_inset
+				->LocalDispatch(owner->view(),
+						action,
+						argument);
 		}
 	}	   
 	break;

@@ -190,7 +190,7 @@ public:
 	                   dispatched by lower level insets
 	*/ 
 	enum RESULT {
-	    UNDISPATCHED=0,
+	    UNDISPATCHED = 0,
 	    DISPATCHED,
 	    FINISHED
 	};
@@ -234,17 +234,18 @@ public:
 	///
 	virtual int InsetInInsetY() { return 0; }
 	///
-	virtual bool UpdateInsetInInset(BufferView *, Inset *) {return false;}
+	virtual bool UpdateInsetInInset(BufferView *, Inset *)
+		{ return false; }
 	///
-	virtual bool UnlockInsetInInset(BufferView *,Inset *,bool /*lr*/=false)
-		{return false;}
+	virtual bool UnlockInsetInInset(BufferView *, Inset *,
+					bool /*lr*/=false)
+		{ return false; }
 	///  An updatable inset could handle lyx editing commands
-	virtual RESULT LocalDispatch(BufferView *, int, string);
+	virtual RESULT LocalDispatch(BufferView *, int, string const &);
 	///
 	virtual bool isCursorVisible() const { return cursor_visible; }
 	///
 	virtual int getMaxWidth(UpdatableInset *) const { return -1; }
-
 protected:
 	///
 	// virtual void UpdateLocal(bool flag=true);

@@ -99,7 +99,7 @@ public:
 	void InsetUnlock(BufferView *);
    
 	///  To allow transparent use of math editing functions
-	virtual RESULT LocalDispatch(BufferView *, int, string);
+	virtual RESULT LocalDispatch(BufferView *, int, string const &);
     
 	///
 	void InsertSymbol(BufferView *, char const *);

@@ -712,8 +712,9 @@ bool InsetFormula::SetNumber(bool numbf)
 }
 
 
-UpdatableInset::RESULT InsetFormula::LocalDispatch(BufferView * bv,
-						   int action, string arg)
+UpdatableInset::RESULT
+InsetFormula::LocalDispatch(BufferView * bv,
+			    int action, string const & arg)
 {
 //   extern char *dispatch_result;
     MathedTextCodes varcode = LM_TC_MIN;       

@@ -4,7 +4,7 @@
  * 
  *           LyX, The Document Processor
  *
- *           Copyright (C) 1998 The LyX Team.
+ *           Copyright 1998 The LyX Team.
  *
  *======================================================
  */
@@ -74,13 +74,13 @@ protected:
     ///
     int width_closed(Painter &, LyXFont const & f) const;
     ///
-    void draw_closed(Painter & pain, const LyXFont &, int , float &) const;
+    void draw_closed(Painter & pain, LyXFont const &, int , float &) const;
 
 private:
-    ///
-    bool
-        closed,
-	nomotion;
+	///
+	bool closed;
+	///
+	bool nomotion;
 };
 
 #endif

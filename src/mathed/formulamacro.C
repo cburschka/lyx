@@ -193,8 +193,9 @@ void InsetFormulaMacro::InsetUnlock(BufferView * bv)
 }
 
 
-UpdatableInset::RESULT InsetFormulaMacro::LocalDispatch(BufferView * bv,
-							int action, string arg)
+UpdatableInset::RESULT
+InsetFormulaMacro::LocalDispatch(BufferView * bv,
+				 int action, string const & arg)
 {
     if (action == LFUN_MATH_MACROARG) {
 	int i = atoi(arg.c_str()) - 1;

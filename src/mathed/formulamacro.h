@@ -65,7 +65,7 @@ public:
 	///
 	void InsetUnlock(BufferView *);
 	///
-	RESULT LocalDispatch(BufferView *, int, string);
+	RESULT LocalDispatch(BufferView *, int, string const &);
 
 protected:
 	///
