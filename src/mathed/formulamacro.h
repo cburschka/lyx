@@ -49,8 +49,6 @@ public:
 	///
 	void read(LyXLex & lex);
 	///
-	void write(std::ostream & os) const;
-	///
 	int ascii(std::ostream &, int linelen) const;
 	///
 	int latex(std::ostream & os, bool fragile, bool free_spc) const;
@@ -76,6 +74,8 @@ private:
 	MathMacroTemplate const & tmacro() const;
 	/// prefix in inset
 	string prefix() const;
+	///
+	void write(std::ostream & os) const;
 };
 
 #endif

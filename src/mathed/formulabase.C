@@ -60,13 +60,6 @@ int sel_x;
 int sel_y;
 bool sel_flag;
 
-void mathed_init_fonts();
-
-string nicelabel(string const & label)
-{
-	return "(" + (label.empty() ? "#" : label) + ")";
-}
-
 void handleFont(BufferView * bv, MathTextCodes t) 
 {
 	if (mathcursor->selection())

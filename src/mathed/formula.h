@@ -57,8 +57,7 @@ public:
 	///
 	void read(LyXLex & lex);
 	///
-	int latex(std::ostream &,
-		  bool fragile, bool free_spc) const;
+	int latex(std::ostream &, bool fragile, bool free_spc) const;
 	///
 	int ascii(std::ostream &, int linelen) const;
 	///

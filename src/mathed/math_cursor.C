@@ -171,16 +171,15 @@ MathInset * MathCursor::parInset(int i) const
 
 void MathCursor::dump(char const * what) const
 {
-	return;
-
+#if 0
 	lyxerr << "MC: " << what << "\n";
 	for (unsigned i = 0; i < Cursor_.size(); ++i)
 		lyxerr << "  i: " << i 
 			<< " pos: " << Cursor_[i].pos_
 			<< " idx: " << Cursor_[i].idx_
 			<< " par: " << Cursor_[i].par_ << "\n";
-
 	//lyxerr	<< " sel: " << selection_ << " data: " << array() << "\n";
+#endif
 }
 
 

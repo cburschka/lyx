@@ -98,7 +98,7 @@ void MathMacro::draw(Painter & pain, int x, int y) const
 
 	metrics(size());
 
-	LColor::color col;
+	//LColor::color col;
 
 	if (mathcursor && mathcursor->isInside(this)) {
 
@@ -123,10 +123,10 @@ void MathMacro::draw(Painter & pain, int x, int y) const
 			drawStr(pain, LM_TC_TEX, size(), x + 3, h, str);
 			h += std::max(c.descent(), ldes) + 5;
 		}
-		col = LColor::red;
+		//col = LColor::red;
 	} else {
 		expanded_.draw(pain, x + 3, y);
-		col = LColor::black;
+		//col = LColor::black;
 	}
 
 	//if (nargs() > 0)

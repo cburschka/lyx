@@ -354,3 +354,292 @@ Tuukka:
 :: Not a bug. It's allowed by LaTeX and there might be other reasons for
 :: putting labels there. I won't add extra code to disable this.
 
+
+Jean-Marc:
+
+
+// cxx: Info: ../../../lyx-devel/src/mathed/array.C, line 98: conversion to
+//           integral type of smaller size could lose data (D:intconlosbit)
+// 	return bf_.size();
+// ---------------^
+
+// cxx: Info: ../../../lyx-devel/src/mathed/formula.h, line 56: 
+//           "void InsetFormula::write(std::ostream &) const" does not match
+//           "Inset::write" -- virtual function override intended? (D:nonfundec)
+// 	void write(std::ostream &) const;
+// -------------^
+:: not a bug
+
+// cxx: Info: ../../../lyx-devel/src/mathed/formula.h, line 58: 
+//           "void InsetFormula::read(LyXLex &)" does not match "Inset::read" --
+//           virtual function override intended? (D:nonfundec)
+// 	void read(LyXLex & lex);
+// -------------^
+:: not a bug
+:: etc.
+
+cxx: Info: ../../../lyx-devel/src/mathed/math_gridinset.h, line 94: 
+          conversion to integral type of smaller size could lose data
+          (D:intconlosbit)
+	int ncols() const { return colinfo_.size(); }
+-----------------------------------^
+cxx: Info: ../../../lyx-devel/src/mathed/math_gridinset.h, line 96: 
+          conversion to integral type of smaller size could lose data
+          (D:intconlosbit)
+	int nrows() const { return rowinfo_.size(); }
+-----------------------------------^
+
+// cxx: Info: ../../../lyx-devel/src/mathed/formulabase.C, line 63: function
+//           "<unnamed>::mathed_init_fonts" was declared but never referenced
+//           (D:declbutnotref)
+// void mathed_init_fonts();
+// -----^
+
+//cxx: Info: ../../../lyx-devel/src/mathed/formulabase.C, line 65: function
+//          "<unnamed>::nicelabel" was declared but never referenced
+//          (D:declbutnotref)
+//string nicelabel(string const & label)
+//-------^
+
+-----------------------------------^
+cxx: Info: ../../../lyx-devel/src/mathed/math_gridinset.h, line 94: 
+          conversion to integral type of smaller size could lose data
+          (D:intconlosbit)
+	int ncols() const { return colinfo_.size(); }
+-----------------------------------^
+cxx: Info: ../../../lyx-devel/src/mathed/math_gridinset.h, line 96: 
+          conversion to integral type of smaller size could lose data
+          (D:intconlosbit)
+	int nrows() const { return rowinfo_.size(); }
+-----------------------------------^
+cxx: Info: ../../../lyx-devel/src/mathed/math_cursor.C, line 176: 
+          label "__Unreachable1" was declared but never referenced
+          (D:declbutnotref)
+	lyxerr << "MC: " << what << "\n";
+--------^
+cxx: Warning: ../../../lyx-devel/src/mathed/math_cursor.C, line 193: statement
+          is unreachable (D:codeunreachable)
+	lyxerr << "\n\n\n=================vvvvvvvvvvvvv=======================   "
+--------^
+cxx: Info: ../../../lyx-devel/src/mathed/math_cursor.C, line 193: 
+          label "__Unreachable2" was declared but never referenced
+          (D:declbutnotref)
+	lyxerr << "\n\n\n=================vvvvvvvvvvvvv=======================   "
+--------^
+cxx: Info: ../../../lyx-devel/src/mathed/math_cursor.C, line 351: 
+          controlling expression is constant (D:boolexprconst)
+	while (1) {
+---------------^
+cxx: Info: ../../../lyx-devel/src/mathed/math_cursor.C, line 597: conversion
+          to integral type of smaller size could lose data (D:intconlosbit)
+		pos() = pos() - s.size();
+----------------------^
+cxx: Info: ../../../lyx-devel/src/mathed/math_cursor.C, line 828: conversion
+          to integral type of smaller size could lose data (D:intconlosbit)
+	for (int i = Cursor_.size() - 1; i >= 0; --i) {
+---------------------^
+cxx: Info: ../../../lyx-devel/src/mathed/math_cursor.C, line 1049: 
+          conversion to integral type of smaller size could lose data
+          (D:intconlosbit)
+	return p ? p->valign() : 0;
+---------------^
+cxx: Info: ../../../lyx-devel/src/mathed/math_cursor.C, line 1057: 
+          conversion to integral type of smaller size could lose data
+          (D:intconlosbit)
+	return p ? p->halign(idx % p->ncols()) : 0;
+---------------^
+cxx: Info: ../../../lyx-devel/src/mathed/math_cursor.C, line 109: function
+          "<unnamed>::operator<<" was declared but never referenced
+          (D:declbutnotref)
+std::ostream & operator<<(std::ostream & os, MathCursorPos const & p)
+---------------^
+cxx: Info: ../../../lyx-devel/src/mathed/math_fracinset.h, line 30: type
+          qualifier on return type is meaningless (D:nousetypqualret)
+	char const name() const;
+-------------------^
+cxx: Info: ../../../lyx-devel/src/mathed/math_macro.h, line 54: 
+          "void MathMacro::dump(std::ostream &) const" does not match
+          "MathInset::dump" -- virtual function override intended?
+          (D:nonfundec)
+	void dump(std::ostream & os) const;
+-------------^
+cxx: Info: ../../../lyx-devel/src/mathed/math_macro.h, line 54: 
+          "void MathMacro::dump(std::ostream &) const" does not match
+          "MathNestInset::dump" -- virtual function override intended?
+          (D:nonfundec)
+	void dump(std::ostream & os) const;
+-------------^
+cxx: Info: ../../../lyx-devel/src/mathed/math_factory.C, line 29: conversion
+          to integral type of smaller size could lose data (D:intconlosbit)
+		return new MathSpecialCharInset(l->id);
+------------------------------------------------^
+cxx: Info: ../../../lyx-devel/src/mathed/math_fracinset.h, line 30: type
+          qualifier on return type is meaningless (D:nousetypqualret)
+	char const name() const;
+-------------------^
+cxx: Info: ../../../lyx-devel/src/mathed/math_gridinset.h, line 94: 
+          conversion to integral type of smaller size could lose data
+          (D:intconlosbit)
+	int ncols() const { return colinfo_.size(); }
+-----------------------------------^
+cxx: Info: ../../../lyx-devel/src/mathed/math_gridinset.h, line 96: 
+          conversion to integral type of smaller size could lose data
+          (D:intconlosbit)
+	int nrows() const { return rowinfo_.size(); }
+-----------------------------------^
+cxx: Info: ../../../lyx-devel/src/mathed/math_gridinset.C, line 71: 
+          conversion to integral type of smaller size could lose data
+          (D:intconlosbit)
+	int n = hh.size();
+----------------^
+cxx: Info: ../../../lyx-devel/src/mathed/../lyxlex.h, line 32: access
+          control not specified ("private" by default) (D:misaccspe)
+class LyXLex : boost::noncopyable { 
+---------------^
+cxx: Info: ../../../lyx-devel/src/mathed/math_hash.C, line 177: conversion
+          to integral type of smaller size could lose data (D:intconlosbit)
+			tmp.token = tokenEnum(lex.getString());
+----------------------------------^
+cxx: Info: ../../../lyx-devel/src/mathed/math_hash.C, line 179: conversion
+          to integral type of smaller size could lose data (D:intconlosbit)
+			tmp.latex_font_id = lex.getInteger();
+------------------------------------------^
+cxx: Info: ../../../lyx-devel/src/mathed/math_macro.h, line 54: 
+          "void MathMacro::dump(std::ostream &) const" does not match
+          "MathInset::dump" -- virtual function override intended?
+          (D:nonfundec)
+	void dump(std::ostream & os) const;
+-------------^
+cxx: Info: ../../../lyx-devel/src/mathed/math_macro.h, line 54: 
+          "void MathMacro::dump(std::ostream &) const" does not match
+          "MathNestInset::dump" -- virtual function override intended?
+          (D:nonfundec)
+	void dump(std::ostream & os) const;
+-------------^
+cxx: Info: ../../../lyx-devel/src/mathed/../layout.h, line 554: access
+          control not specified ("private" by default) (D:misaccspe)
+class LyXTextClassList : boost::noncopyable {
+-------------------------^
+cxx: Info: ../../../lyx-devel/src/mathed/math_macro.C, line 122: conversion
+          to integral type of smaller size could lose data (D:intconlosbit)
+			str[1] += i;
+------------------------^
+cxx: Info: ../../../lyx-devel/src/mathed/math_macro.C, line 101: 
+          variable "col" was set but never used (D:setbutnotused)
+	LColor::color col;
+----------------------^
+cxx: Info: ../../../lyx-devel/src/mathed/math_macro.h, line 54: 
+          "void MathMacro::dump(std::ostream &) const" does not match
+          "MathInset::dump" -- virtual function override intended?
+          (D:nonfundec)
+	void dump(std::ostream & os) const;
+-------------^
+cxx: Info: ../../../lyx-devel/src/mathed/math_macro.h, line 54: 
+          "void MathMacro::dump(std::ostream &) const" does not match
+          "MathNestInset::dump" -- virtual function override intended?
+          (D:nonfundec)
+	void dump(std::ostream & os) const;
+-------------^
+cxx: Info: ../../../lyx-devel/src/mathed/math_macroarg.C, line 21: 
+          conversion to integral type of smaller size could lose data
+          (D:intconlosbit)
+	str_[1] = '0' + n;
+----------------^
+cxx: Info: ../../../lyx-devel/src/mathed/math_macro.h, line 54: 
+          "void MathMacro::dump(std::ostream &) const" does not match
+          "MathInset::dump" -- virtual function override intended?
+          (D:nonfundec)
+	void dump(std::ostream & os) const;
+-------------^
+cxx: Info: ../../../lyx-devel/src/mathed/math_macro.h, line 54: 
+          "void MathMacro::dump(std::ostream &) const" does not match
+          "MathNestInset::dump" -- virtual function override intended?
+          (D:nonfundec)
+	void dump(std::ostream & os) const;
+-------------^
+cxx: Info: ../../../lyx-devel/src/mathed/math_gridinset.h, line 94: 
+          conversion to integral type of smaller size could lose data
+          (D:intconlosbit)
+	int ncols() const { return colinfo_.size(); }
+-----------------------------------^
+cxx: Info: ../../../lyx-devel/src/mathed/math_gridinset.h, line 96: 
+          conversion to integral type of smaller size could lose data
+          (D:intconlosbit)
+	int nrows() const { return rowinfo_.size(); }
+-----------------------------------^
+cxx: Info: ../../../lyx-devel/src/mathed/../layout.h, line 554: access
+          control not specified ("private" by default) (D:misaccspe)
+class LyXTextClassList : boost::noncopyable {
+-------------------------^
+cxx: Info: ../../../lyx-devel/src/mathed/math_matrixinset.C, line 40: 
+          conversion to integral type of smaller size could lose data
+          (D:intconlosbit)
+			return it - array.begin();
+-------------------------------^
+cxx: Info: ../../../lyx-devel/src/mathed/math_nestinset.C, line 16: 
+          conversion to integral type of smaller size could lose data
+          (D:intconlosbit)
+	return cells_.size();
+---------------^
+cxx: Info: ../../../lyx-devel/src/mathed/math_gridinset.h, line 94: 
+          conversion to integral type of smaller size could lose data
+          (D:intconlosbit)
+	int ncols() const { return colinfo_.size(); }
+-----------------------------------^
+cxx: Info: ../../../lyx-devel/src/mathed/math_gridinset.h, line 96: 
+          conversion to integral type of smaller size could lose data
+          (D:intconlosbit)
+	int nrows() const { return rowinfo_.size(); }
+-----------------------------------^
+cxx: Info: ../../../lyx-devel/src/mathed/math_macro.h, line 54: 
+          "void MathMacro::dump(std::ostream &) const" does not match
+          "MathInset::dump" -- virtual function override intended?
+          (D:nonfundec)
+	void dump(std::ostream & os) const;
+-------------^
+cxx: Info: ../../../lyx-devel/src/mathed/math_macro.h, line 54: 
+          "void MathMacro::dump(std::ostream &) const" does not match
+          "MathNestInset::dump" -- virtual function override intended?
+          (D:nonfundec)
+	void dump(std::ostream & os) const;
+-------------^
+cxx: Info: ../../../lyx-devel/src/mathed/../lyxlex.h, line 32: access
+          control not specified ("private" by default) (D:misaccspe)
+class LyXLex : boost::noncopyable { 
+---------------^
+cxx: Info: ../../../lyx-devel/src/mathed/math_parser.C, line 60: conversion
+          to integral type of smaller size could lose data (D:intconlosbit)
+	unsigned n = s.size();
+---------------------^
+cxx: Info: ../../../lyx-devel/src/mathed/math_parser.C, line 437: 
+          controlling expression is constant (D:boolexprconst)
+	for (int row = 0; true; ++row) {
+--------------------------^
+cxx: Info: ../../../lyx-devel/src/mathed/math_parser.C, line 786: conversion
+          to integral type of smaller size could lose data (D:intconlosbit)
+				MathArrayInset * m = new MathArrayInset(halign.size(), 1);
+------------------------------------------------------------------------^
+cxx: Info: ../../../lyx-devel/src/mathed/math_parser.C, line 804: 
+          controlling expression is constant (D:boolexprconst)
+			while (1) {
+-------------------------------^
+cxx: Info: ../../../lyx-devel/src/mathed/math_gridinset.h, line 94: 
+          conversion to integral type of smaller size could lose data
+          (D:intconlosbit)
+	int ncols() const { return colinfo_.size(); }
+-----------------------------------^
+cxx: Info: ../../../lyx-devel/src/mathed/math_gridinset.h, line 96: 
+          conversion to integral type of smaller size could lose data
+          (D:intconlosbit)
+	int nrows() const { return rowinfo_.size(); }
+-----------------------------------^
+cxx: Info: ../../../lyx-devel/src/mathed/math_symbolinset.C, line 75: 
+          conversion to integral type of smaller size could lose data
+          (D:intconlosbit)
+		mathed_char_dim(code2(), size_, sym_->id,
+------------------------------------------------^
+cxx: Info: ../../../lyx-devel/src/mathed/math_symbolinset.C, line 92: 
+          conversion to integral type of smaller size could lose data
+          (D:intconlosbit)
+		drawChar(pain, code2(), size_, x, y, sym_->id);
+-----------------------------------------------------^
