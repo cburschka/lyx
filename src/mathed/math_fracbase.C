@@ -57,23 +57,19 @@ bool MathFracbaseInset::idxLastDown(idx_type & idx, pos_type & pos) const
 }
 
 
-bool MathFracbaseInset::idxUp(MathInset::idx_type & idx,
-			      MathInset::pos_type & pos) const
+bool MathFracbaseInset::idxUp(idx_type & idx) const
 {
 	if (idx == 0)
 		return false;
 	idx = 0;
-	pos = std::min(pos, cell(idx).size());
 	return true;
 }
 
 
-bool MathFracbaseInset::idxDown(MathInset::idx_type & idx,
-				MathInset::pos_type & pos) const
+bool MathFracbaseInset::idxDown(idx_type & idx) const
 {
 	if (idx == 1)
 		return false;
 	idx = 1;
-	pos = std::min(pos, cell(idx).size());
 	return true;
 }

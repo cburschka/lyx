@@ -162,14 +162,16 @@ void MathMacro::dump() const
 }
 
 
-bool MathMacro::idxUp(idx_type & idx, pos_type & pos) const
+bool MathMacro::idxUp(idx_type & idx) const
 {
+	pos_type pos;
 	return MathNestInset::idxLeft(idx, pos);
 }
 
 
-bool MathMacro::idxDown(idx_type & idx, pos_type & pos) const
+bool MathMacro::idxDown(idx_type & idx) const
 {
+	pos_type pos;
 	return MathNestInset::idxRight(idx, pos);
 }
 

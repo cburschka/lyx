@@ -70,22 +70,20 @@ void MathRootInset::normalize(NormalStream & os) const
 }
 
 
-bool MathRootInset::idxUp(idx_type & idx, pos_type & pos) const
+bool MathRootInset::idxUp(idx_type & idx) const
 {
 	if (idx == 0)
 		return false;
 	idx = 0;
-	pos = cell(0).size();
 	return true;
 }
 
 
-bool MathRootInset::idxDown(idx_type & idx, pos_type & pos) const
+bool MathRootInset::idxDown(idx_type & idx) const
 {
 	if (idx == 1)
 		return false;
 	idx = 1;
-	pos = 0;
 	return true;
 }
 

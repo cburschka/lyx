@@ -106,13 +106,13 @@ bool MathInset::idxLeft(idx_type &, pos_type &) const
 }
 
 
-bool MathInset::idxUp(idx_type &, pos_type &) const
+bool MathInset::idxUp(idx_type &) const
 {
 	return false;
 }
 
 
-bool MathInset::idxDown(idx_type &, pos_type &) const
+bool MathInset::idxDown(idx_type &) const
 {
 	return false;
 }

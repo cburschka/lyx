@@ -156,11 +156,9 @@ bool MathCursor::popLeft()
 	//cerr << "Leaving atom "; par()->write(cerr, false); cerr << " left\n";
 	if (Cursor_.size() <= 1)
 		return false;
-	//if (nextInset())
-	//	nextInset()->removeEmptyScripts();
+	if (par()->asScriptInset())
+		par()->asScriptInset()->removeEmptyScripts();
 	Cursor_.pop_back();
-	//if (nextAtom())
-	//	nextAtom()->removeEmptyScripts();
 	return true;
 }
 
@@ -170,11 +168,9 @@ bool MathCursor::popRight()
 	//cerr << "Leaving atom "; par()->write(cerr, false); cerr << " right\n";
 	if (Cursor_.size() <= 1)
 		return false;
-	//if (nextInset())
-	//	nextInset()->removeEmptyScripts();
+	if (par()->asScriptInset())
+		par()->asScriptInset()->removeEmptyScripts();
 	Cursor_.pop_back();
-	//if (nextInset())
-	//	nextInset()->removeEmptyScripts();
 	posRight();
 	return true;
 }
@@ -1141,10 +1137,10 @@ bool MathCursor::goUpDown(bool up)
 	while (1) {
 		// we found a cell that think something "below" us.
 		if (up) {
-			if (par()->idxUp(idx(), pos()))
+			if (par()->idxUp(idx()))
 				break;
 		} else {
-			if (par()->idxDown(idx(), pos()))
+			if (par()->idxDown(idx()))
 				break;
 		}
 

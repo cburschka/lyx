@@ -110,9 +110,9 @@ public:
 	int cellYOffset(idx_type idx) const;
 
 	///
-	bool idxUp(idx_type &, pos_type &) const;
+	bool idxUp(idx_type &) const;
 	///
-	bool idxDown(idx_type &, pos_type &) const;
+	bool idxDown(idx_type &) const;
 	///
 	bool idxLeft(idx_type &, pos_type &) const;
 	///
