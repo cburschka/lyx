@@ -1,3 +1,22 @@
+2002-08-27  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* factory.C (createInset): use LyXTextClass::floats
+
+	* MenuBackend.C (expandFloatListInsert): 
+	(expandFloatInsert): 
+	(expandToc): 
+
+	* text2.C (setCounter): 
+
+	* LaTeXFeatures.C (useFloat): 
+	(getFloatDefinitions): 
+
+	* BufferView_pimpl.C (dispatch): use LyXTextClass::floats()
+
+	* lyxtextclass.[Ch]: rename layoutlist to layoutlist_; add
+	floatlist_, with accessor floats().
+
+	* FloatList.h: remove global FloatList
 
 2002-08-26  André Pönitz <poenitz@gmx.net>
 

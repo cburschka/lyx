@@ -11,6 +11,7 @@
 #include "frontends/Dialogs.h"
 #include "frontends/LyXView.h"
 #include "BufferView.h"
+#include "buffer.h"
 #include "toc.h"
 #include "gettext.h"
 #include "debug.h"
@@ -33,10 +34,11 @@ InsetFloatList::InsetFloatList(string const & type)
 }
 
 
-string const InsetFloatList::getScreenLabel(Buffer const *) const
+string const InsetFloatList::getScreenLabel(Buffer const * buf) const
 {
-	FloatList::const_iterator it = floatList[getCmdName()];
-	if (it != floatList.end())
+	FloatList const & floats = buf->params.getLyXTextClass().floats();
+	FloatList::const_iterator it = floats[getCmdName()];
+	if (it != floats.end())
 		return _(it->second.listName());
 	else
 		return _("ERROR: Nonexistent float type!");
@@ -55,14 +57,15 @@ void InsetFloatList::write(Buffer const *, ostream & os) const
 }
 
 
-void InsetFloatList::read(Buffer const *, LyXLex & lex)
+void InsetFloatList::read(Buffer const * buf, LyXLex & lex)
 {
+	FloatList const & floats = buf->params.getLyXTextClass().floats();
 	string token;
 
 	if (lex.eatLine()) {
 		setCmdName(lex.getString());
 		lyxerr[Debug::INSETS] << "FloatList::float_type: " << getCmdName() << endl;
-		if (!floatList.typeExist(getCmdName()))
+		if (!floats.typeExist(getCmdName()))
 			lex.printError("InsetFloatList: Unknown float type: `$$Token'");
 	} else
 		lex.printError("InsetFloatList: Parse error: `$$Token'");
@@ -91,11 +94,12 @@ void InsetFloatList::edit(BufferView * bv, bool)
 }
 
 
-int InsetFloatList::latex(Buffer const *, ostream & os, bool, bool) const
+int InsetFloatList::latex(Buffer const * buf, ostream & os, bool, bool) const
 {
-	FloatList::const_iterator cit = floatList[getCmdName()];
+	FloatList const & floats = buf->params.getLyXTextClass().floats();
+	FloatList::const_iterator cit = floats[getCmdName()];
 
-	if (cit != floatList.end()) {
+	if (cit != floats.end()) {
 		if (cit->second.builtin()) {
 			// Only two different types allowed here:
 			string const type = cit->second.type();

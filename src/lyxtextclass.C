@@ -204,7 +204,7 @@ bool LyXTextClass::Read(string const & filename, bool merge)
 					LyXLayout lay;
 					lay.setName(name);
 					if (!(error = do_readStyle(lexrc, lay)))
-						layoutlist.push_back(boost::shared_ptr<LyXLayout>(new LyXLayout(lay)));
+						layoutlist_.push_back(boost::shared_ptr<LyXLayout>(new LyXLayout(lay)));
 					if (defaultlayout_.empty()) {
 						// We do not have a default
 						// layout yet, so we choose
@@ -517,9 +517,9 @@ bool LyXTextClass::hasLayout(string const & n) const
 {
 	string const name = (n.empty() ? defaultLayoutName() : n);
 
-	return find_if(layoutlist.begin(), layoutlist.end(),
+	return find_if(layoutlist_.begin(), layoutlist_.end(),
 		       compare_name(name))
-		!= layoutlist.end();
+		!= layoutlist_.end();
 }
 
 
@@ -536,14 +536,14 @@ LyXLayout_ptr const & LyXTextClass::operator[](string const & n) const
 	static LayoutList::difference_type lastLayoutIndex;
 
 	if (name == lastLayoutName)
-		return layoutlist[lastLayoutIndex];
+		return layoutlist_[lastLayoutIndex];
 
 	LayoutList::const_iterator cit =
-		find_if(layoutlist.begin(),
-			layoutlist.end(),
+		find_if(layoutlist_.begin(),
+			layoutlist_.end(),
 			compare_name(name));
 
-	if (cit == layoutlist.end()) {
+	if (cit == layoutlist_.end()) {
 		lyxerr << "We failed to find the layout '" << name
 		       << "' in the layout list. You MUST investigate!"
 		       << endl;
@@ -553,7 +553,7 @@ LyXLayout_ptr const & LyXTextClass::operator[](string const & n) const
 	}
 
 	lastLayoutName = name;
-	lastLayoutIndex = std::distance(layoutlist.begin(), cit);
+	lastLayoutIndex = std::distance(layoutlist_.begin(), cit);
 
 	return (*cit);
 }
@@ -565,12 +565,12 @@ bool LyXTextClass::delete_layout(string const & name)
 		return false;
 
 	LayoutList::iterator it =
-		remove_if(layoutlist.begin(), layoutlist.end(),
+		remove_if(layoutlist_.begin(), layoutlist_.end(),
 			  compare_name(name));
 
-	LayoutList::iterator end = layoutlist.end();
+	LayoutList::iterator end = layoutlist_.end();
 	bool const ret = (it != end);
-	layoutlist.erase(it, end);
+	layoutlist_.erase(it, end);
 	return ret;
 }
 
@@ -594,6 +594,18 @@ bool LyXTextClass::load() const
 	}
 	loaded = true;
 	return loaded;
+}
+
+
+FloatList & LyXTextClass::floats()
+{
+	return floatlist_;
+}
+
+
+FloatList const & LyXTextClass::floats() const
+{
+	return floatlist_;
 }
 
 
@@ -703,7 +715,7 @@ int LyXTextClass::maxcounter() const
 
 int LyXTextClass::size() const
 {
-	return layoutlist.size();
+	return layoutlist_.size();
 }
 
 

@@ -106,10 +106,11 @@ namespace {
 // of the float (JMarc)
 string const caplayout("Caption");
 
-string floatname(string const & type)
+string floatname(string const & type, BufferParams const & bp)
 {
-	FloatList::const_iterator it = floatList[type];
-	if (it == floatList.end())
+	FloatList const & floats = bp.getLyXTextClass().floats();
+	FloatList::const_iterator it = floats[type];
+	if (it == floats.end())
 		return type;
 
 	return _(it->second.name());
@@ -122,7 +123,7 @@ InsetFloat::InsetFloat(BufferParams const & bp, string const & type)
 	: InsetCollapsable(bp), wide_(false)
 {
 	string lab(_("float: "));
-	lab += floatname(type);
+	lab += floatname(type, bp);
 	setLabel(lab);
 	LyXFont font(LyXFont::ALL_SANE);
 	font.decSize();
@@ -185,9 +186,9 @@ void InsetFloat::read(Buffer const * buf, LyXLex & lex)
 			lex.next();
 			string const tmptoken = lex.getString();
 			if (tmptoken == "true")
-				wide(true);
+				wide(true, buf->params);
 			else
-				wide(false);
+				wide(false, buf->params);
 		} else {
 			lyxerr << "InsetFloat::Read:: Missing wide!"
 			       << endl;
@@ -225,6 +226,7 @@ string const InsetFloat::editMessage() const
 int InsetFloat::latex(Buffer const * buf,
 		      ostream & os, bool fragile, bool fp) const
 {
+	FloatList const & floats = buf->params.getLyXTextClass().floats();
 	string const tmptype = (wide_ ? floatType_ + "*" : floatType_);
 	// Figure out the float placement to use.
 	// From lowest to highest:
@@ -233,7 +235,7 @@ int InsetFloat::latex(Buffer const * buf,
 	// - specific float placement
 	string placement;
 	string const buf_placement = buf->params.float_placement;
-	string const def_placement = floatList.defaultPlacement(floatType_);
+	string const def_placement = floats.defaultPlacement(floatType_);
 	if (!floatPlacement_.empty()
 	    && floatPlacement_ != def_placement) {
 		placement = floatPlacement_;
@@ -313,12 +315,12 @@ string const & InsetFloat::placement() const
 }
 
 
-void InsetFloat::wide(bool w)
+void InsetFloat::wide(bool w, BufferParams const & bp)
 {
 	wide_ = w;
 
 	string lab(_("float:"));
-	lab += floatname(floatType_);
+	lab += floatname(floatType_, bp);
 
 	if (wide_)
 		lab += "*";

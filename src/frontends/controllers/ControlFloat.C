@@ -17,6 +17,7 @@
 
 #include "ControlFloat.h"
 #include "BufferView.h"
+#include "buffer.h"
 
 
 ControlFloat::ControlFloat(LyXView & lv, Dialogs & d)
@@ -27,7 +28,7 @@ ControlFloat::ControlFloat(LyXView & lv, Dialogs & d)
 void ControlFloat::applyParamsToInset()
 {
 	inset()->placement(params().placement);
-	inset()->wide(params().wide);
+	inset()->wide(params().wide, bufferview()->buffer()->params);
 	bufferview()->updateInset(inset(), true);
 
 }

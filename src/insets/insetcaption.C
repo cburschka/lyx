@@ -18,6 +18,7 @@
 #include "frontends/Painter.h"
 #include "frontends/font_metrics.h"
 #include "BufferView.h"
+#include "buffer.h"
 #include "FloatList.h"
 #include "insets/insetfloat.h"
 #include "debug.h"
@@ -79,7 +80,9 @@ void InsetCaption::draw(BufferView * bv, LyXFont const & f,
 	Inset * i1 = owner();
 	Inset * i2 = i1 ? i1->owner() : 0;
 	string const type = static_cast<InsetFloat *>(i2)->type();
-	string const fl = i2 ? floatList.getType(type).name() : N_("Float");
+	FloatList const & floats =
+		bv->buffer()->params.getLyXTextClass().floats();
+	string const fl = i2 ? floats.getType(type).name() : N_("Float");
 
 	// Discover the number...
 	// ...

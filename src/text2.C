@@ -1351,7 +1351,7 @@ void LyXText::setCounter(Buffer const * buf, Paragraph * par) const
 
 			if (isOK) {
 				Floating const & fl
-					= floatList.getType(static_cast<InsetFloat*>(in)->type());
+					= textclass.floats().getType(static_cast<InsetFloat*>(in)->type());
 
 				buf->counters().step(fl.name());
 

@@ -49,7 +49,4 @@ private:
 	List list;
 };
 
-///
-extern FloatList floatList;
-
 #endif

@@ -24,6 +24,7 @@
 #include "lastfiles.h"
 #include "lyx_main.h" // for lastfiles
 #include "bufferlist.h"
+#include "buffer.h"
 #include "converter.h"
 #include "exporter.h"
 #include "importer.h"
@@ -386,10 +387,17 @@ void expandFormats(MenuItem::Kind kind, Menu & tomenu, Buffer const * buf)
 }
 
 
-void expandFloatListInsert(Menu & tomenu)
+void expandFloatListInsert(Menu & tomenu, Buffer const * buf)
 {
-	FloatList::const_iterator cit = floatList.begin();
-	FloatList::const_iterator end = floatList.end();
+	if (!buf) {
+		tomenu.add(MenuItem(MenuItem::Command,
+				    _("No Documents Open!"), LFUN_NOACTION));
+		return;
+	}
+
+	FloatList const & floats = buf->params.getLyXTextClass().floats();
+	FloatList::const_iterator cit = floats.begin();
+	FloatList::const_iterator end = floats.end();
 	for (; cit != end; ++cit) {
 		int const action =  lyxaction
 			.getPseudoAction(LFUN_FLOAT_LIST, cit->second.type());
@@ -400,10 +408,17 @@ void expandFloatListInsert(Menu & tomenu)
 }
 
 
-void expandFloatInsert(Menu & tomenu)
+void expandFloatInsert(Menu & tomenu, Buffer const * buf)
 {
-	FloatList::const_iterator cit = floatList.begin();
-	FloatList::const_iterator end = floatList.end();
+	if (!buf) {
+		tomenu.add(MenuItem(MenuItem::Command,
+				    _("No Documents Open!"), LFUN_NOACTION));
+		return;
+	}
+
+	FloatList const & floats = buf->params.getLyXTextClass().floats();
+	FloatList::const_iterator cit = floats.begin();
+	FloatList::const_iterator end = floats.end();
 	for (; cit != end; ++cit) {
 		// normal float
 		int const action =
@@ -465,6 +480,7 @@ void expandToc2(Menu & tomenu, toc::Toc const & toc_list,
 
 void expandToc(Menu & tomenu, Buffer const * buf)
 {
+	FloatList const & floats = buf->params.getLyXTextClass().floats();
 	toc::TocList toc_list = toc::getTocList(buf);
 	toc::TocList::const_iterator cit = toc_list.begin();
 	toc::TocList::const_iterator end = toc_list.end();
@@ -482,7 +498,7 @@ void expandToc(Menu & tomenu, Buffer const * buf)
 					   label, ccit->action()));
 		}
 		MenuItem item(MenuItem::Submenu,
-			      floatList[cit->first]->second.name());
+			      floats[cit->first]->second.name());
 		item.submenu(menu);
 		tomenu.add(item);
 	}
@@ -523,11 +539,11 @@ void MenuBackend::expand(Menu const & frommenu, Menu & tomenu,
 			break;
 
 		case MenuItem::FloatListInsert:
-			expandFloatListInsert(tomenu);
+			expandFloatListInsert(tomenu, buf);
 			break;
 
 		case MenuItem::FloatInsert:
-			expandFloatInsert(tomenu);
+			expandFloatInsert(tomenu, buf);
 			break;
 
 		case MenuItem::Toc:

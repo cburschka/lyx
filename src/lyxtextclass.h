@@ -19,6 +19,7 @@
 #include "lyxlayout.h"
 #include "LString.h"
 #include "lyxlayout_ptr_fwd.h"
+#include "FloatList.h"
 
 #include "support/types.h"
 
@@ -40,9 +41,9 @@ public:
 		      string const & = string());
 
 	///
-	const_iterator begin() const { return layoutlist.begin(); }
+	const_iterator begin() const { return layoutlist_.begin(); }
 	///
-	const_iterator end() const { return layoutlist.end(); }
+	const_iterator end() const { return layoutlist_.end(); }
 
 	///
 	bool Read(string const & filename, bool merge = false);
@@ -60,6 +61,11 @@ public:
 
 	/// Sees to that the textclass structure has been loaded
 	bool load() const;
+
+	/// the list of floats defined in the class
+	FloatList & floats();
+	/// the list of floats defined in the class
+	FloatList const & floats() const;
 
 	///
 	string const defaultLayoutName() const;
@@ -179,7 +185,10 @@ private:
 	int maxcounter_; // add approp. signedness
 
 	///
-	LayoutList layoutlist;
+	LayoutList layoutlist_;
+
+	///
+	FloatList floatlist_;
 
 	/// Has this layout file been loaded yet?
 	mutable bool loaded;

@@ -104,6 +104,3 @@ FloatList::const_iterator FloatList::operator[](string const & t) const
 	return list.find(t);
 }
 
-
-// The global floatlist
-FloatList floatList;

@@ -110,7 +110,7 @@ void LaTeXFeatures::useFloat(string const & name)
 	// We only need float.sty if we use non builtin floats, or if we
 	// use the "H" modifier. This includes modified table and
 	// figure floats. (Lgb)
-	Floating const & fl = floatList.getType(name);
+	Floating const & fl = params.getLyXTextClass().floats().getType(name);
 	if (!fl.type().empty() && !fl.builtin()) {
 		require("float");
 	}
@@ -425,6 +425,8 @@ BufferParams const & LaTeXFeatures::bufferParams() const
 
 void LaTeXFeatures::getFloatDefinitions(ostream & os) const
 {
+	FloatList const & floats = params.getLyXTextClass().floats();
+	
 	// Here we will output the code to create the needed float styles.
 	// We will try to do this as minimal as possible.
 	// \floatstyle{ruled}
@@ -434,7 +436,7 @@ void LaTeXFeatures::getFloatDefinitions(ostream & os) const
 	UsedFloats::const_iterator end = usedFloats.end();
 	// ostringstream floats;
 	for (; cit != end; ++cit) {
-		Floating const & fl = floatList.getType((*cit));
+		Floating const & fl = floats.getType((*cit));
 
 		// For builtin floats we do nothing.
 		if (fl.builtin()) continue;

@@ -46,17 +46,17 @@ Inset * createInset(FuncRequest const & cmd)
 			return new InsetOptArg(params);
 
 		case LFUN_INSET_FLOAT:
-			// check if the float type exist
-			if (floatList.typeExist(cmd.argument))
+			// check if the float type exists
+			if (params.getLyXTextClass().floats().typeExist(cmd.argument))
 				return new InsetFloat(params, cmd.argument);
 			lyxerr << "Non-existent float type: " << cmd.argument << endl;
 			return 0;
 
 		case LFUN_INSET_WIDE_FLOAT:
-			// check if the float type exist
-			if (floatList.typeExist(cmd.argument)) {
+			// check if the float type exists
+			if (params.getLyXTextClass().floats().typeExist(cmd.argument)) {
 				InsetFloat * p = new InsetFloat(params, cmd.argument);
-				p->wide(true);
+				p->wide(true, params);
 			}
 			lyxerr << "Non-existent float type: " << cmd.argument << endl;
 			return 0;

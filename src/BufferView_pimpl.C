@@ -1725,7 +1725,7 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev)
 	break;
 
 	case LFUN_FLOAT_LIST:
-		if (floatList.typeExist(ev.argument)) {
+		if (tclass.floats().typeExist(ev.argument)) {
 			Inset * inset = new InsetFloatList(ev.argument);
 			if (!insertInset(inset, tclass.defaultLayoutName()))
 				delete inset;

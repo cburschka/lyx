@@ -63,7 +63,7 @@ public:
 	///
 	string const & placement() const;
 	///
-	void wide(bool w);
+	void wide(bool w, BufferParams const &);
 	///
 	bool wide() const;
 	///
