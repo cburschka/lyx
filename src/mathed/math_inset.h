@@ -84,9 +84,9 @@ struct MathWriteInfo {
 
 	///
 	template <class T>
-	MathWriteInfo & operator<<(T const & T)
+	MathWriteInfo & operator<<(T const & t)
 	{
-		os << T;
+		os << t;
 		return *this;
 	}
 	///
