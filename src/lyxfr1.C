@@ -32,6 +32,7 @@
 #include "LyXView.h"
 #include "lyx_gui_misc.h"
 #include "minibuffer.h"
+#include "support/lstrings.h"
 
 extern BufferView *current_view; // called too many times in this file...
 extern MiniBuffer *minibuffer;
@@ -234,8 +235,7 @@ void LyXFindReplace1::SearchReplaceAllCB()
 		if( replace_count == 1 ) {
 			minibuffer->Set(_("1 string has been replaced."));
 		} else {
-			string str;
-			str += replace_count;
+			string str = tostr(replace_count);
 			str += _(" strings have been replaced.");
 			minibuffer->Set(str);
 		}

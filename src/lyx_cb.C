@@ -465,7 +465,7 @@ int MenuRunLaTeX(Buffer *buffer)
 			s = _("One error detected");
 			t = _("You should try to fix it.");
 		} else {
-			s += ret;
+			s += tostr(ret);
 			s += _(" errors detected.");
 			t = _("You should try to fix them.");
 		}
@@ -497,7 +497,7 @@ int MenuBuildProg(Buffer *buffer)
                        s = _("One error detected");
                        t = _("You should try to fix it.");
                } else {
-                       s += ret;
+                       s += tostr(ret);
                        s += _(" errors detected.");
                        t = _("You should try to fix them.");
                }
@@ -526,7 +526,7 @@ int MenuRunChktex(Buffer *buffer)
 			s = _("One warning found.");
 			t = _("Use 'Edit->Go to Error' to find it.");
 		} else {
-			s += ret;
+			s += tostr(ret);
 			s += _(" warnings found.");
 			t = _("Use 'Edit->Go to Error' to find them.");
 		}
@@ -2886,7 +2886,7 @@ extern "C" void DocumentApplyCB(FL_OBJECT *, long)
 				if (ret==1)
 					s= _("One paragraph couldn't be converted");
 				else {
-					s += ret;
+					s += tostr(ret);
 					s += _(" paragraphs couldn't be converted");
 				}
 				WriteAlert(_("Conversion Errors!"),s,

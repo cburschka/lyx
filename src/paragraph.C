@@ -3526,7 +3526,7 @@ LyXParagraph* LyXParagraph::TeXEnvironment(string &file, TexRow &texrow,
 			if (foot_count >= 1) {
 				if (foot_count > 1) {
 					file += "\\addtocounter{footnote}{-";
-					file += foot_count - 1;
+					file += tostr(foot_count - 1);
 					file += '}';
 				}
 				file += foot;

@@ -231,7 +231,7 @@ void InsetBibKey::setCounter(int c)
 	counter = c; 
     
 	if (contents.empty())
-		contents += counter;
+		contents += tostr(counter);
 }
 
 

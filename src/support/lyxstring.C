@@ -342,7 +342,7 @@ lyxstring::lyxstring(value_type const * s, size_type n)
 {
 	Assert(s); // we don't allow null pointers
 	static Srep empty_rep(0, "");
-	if (s && *s && n) { // s is not empty string and n > 0
+	if (*s && n) { // s is not empty string and n > 0
 		rep = new Srep(min(strlen(s), n), s);
 	} else {
 		++empty_rep.ref;
@@ -353,10 +353,9 @@ lyxstring::lyxstring(value_type const * s, size_type n)
 
 lyxstring::lyxstring(value_type const * s)
 {
-	// yes we allow them just don't initalize them
-	// Assert(s); // we don't allow null pointers
+	Assert(s); // we don't allow null pointers
 	static Srep empty_rep(0, "");
-	if (s && *s) { // s is not empty string
+	if (*s) { // s is not empty string
 		rep = new Srep(strlen(s), s);
 	} else {
 		++empty_rep.ref;

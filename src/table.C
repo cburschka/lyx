@@ -15,6 +15,7 @@
 #include "table.h"
 #include "vspace.h"
 #include "layout.h"
+#include "support/lstrings.h"
 
 #ifdef __GNUG__
 #pragma implementation
@@ -1010,9 +1011,9 @@ int LyXTable::TexEndOfCell(string& file, int cell)
             for (i=0; i < NumberOfCellsInRow(fcell); i++){
                 if (BottomLine(fcell+i)){
 		    file += "\\cline{";
-		    file += column_of_cell(fcell+i)+1;
+		    file += tostr(column_of_cell(fcell+i)+1);
 		    file += '-';
-		    file += right_column_of_cell(fcell+i)+1;
+		    file += tostr(right_column_of_cell(fcell+i)+1);
 		    file += "} ";
                     tmp = 1;
                 }
@@ -1083,9 +1084,9 @@ int LyXTable::TexEndOfCell(string& file, int cell)
                     for (i=0; i < NumberOfCellsInRow(fcell); i++){
                         if (TopLine(fcell+i)){
 			    file += "\\cline{";
-			    file += column_of_cell(fcell+i)+1;
+			    file += tostr(column_of_cell(fcell+i)+1);
 			    file += '-';
-			    file += right_column_of_cell(fcell+i)+1;
+			    file += tostr(right_column_of_cell(fcell+i)+1);
 			    file += "} ";
                             tmp = 1;
                         }
@@ -1151,14 +1152,14 @@ int LyXTable::TexEndOfCell(string& file, int cell)
                     for (i=0; i < NumberOfCellsInRow(fcell); i++){
                         if (BottomLine(fcell+i)){
                             file += "\\cline{";
-                            file += column_of_cell(fcell+i)+1;
+                            file += tostr(column_of_cell(fcell+i)+1);
                             file += '-';
-                            file += right_column_of_cell(fcell+i)+1;
+                            file += tostr(right_column_of_cell(fcell+i)+1);
                             file += "} ";
                             hline1 += "\\cline{";
-                            hline1 += column_of_cell(fcell+i)+1;
+                            hline1 += tostr(column_of_cell(fcell+i)+1);
                             hline1 += '-';
-                            hline1 += right_column_of_cell(fcell+i)+1;
+                            hline1 += tostr(right_column_of_cell(fcell+i)+1);
                             hline1 += "} ";
                             tmp = 1;
                         }
@@ -1209,15 +1210,15 @@ int LyXTable::TexEndOfCell(string& file, int cell)
                             if (TopLine(fcell+i)){
                                 if (print_hline) {
 				    file += "\\cline{";
-				    file += column_of_cell(fcell+i)+1;
+				    file += tostr(column_of_cell(fcell+i)+1);
 				    file += '-';
-				    file += right_column_of_cell(fcell+i)+1;
+				    file += tostr(right_column_of_cell(fcell+i)+1);
 				    file += "} ";
 				}
                                 hline2 += "\\cline{";
-                                hline2 += column_of_cell(fcell+i)+1;
+                                hline2 += tostr(column_of_cell(fcell+i)+1);
                                 hline2 += '-';
-                                hline2 += right_column_of_cell(fcell+i)+1;
+                                hline2 += tostr(right_column_of_cell(fcell+i)+1);
                                 hline2 += "} ";
                                 tmp = 1;
                             }
@@ -1279,7 +1280,7 @@ int LyXTable::TexEndOfCell(string& file, int cell)
         }
         if (nvcell < numberofcells && IsMultiColumn(nvcell)) {
             file += "\\multicolumn{";
-	    file += cells_in_multicolumn(nvcell);
+	    file += tostr(cells_in_multicolumn(nvcell));
 	    file += "}{";
             if (!cellinfo_of_cell(cell+1)->align_special.empty()) {
                 file += cellinfo_of_cell(cell+1)->align_special;
@@ -1535,7 +1536,7 @@ int LyXTable::DocBookEndOfCell(string& file, int cell, int &depth)
             else
                 file += "<TGROUP ";
             file += "COLS='";
-            file += columns;
+            file += tostr(columns);
             file += "' COLSEP='1' ROWSEP='1'>";
            addNewlineAndDepth(file,++depth);
             ret++;
@@ -1543,9 +1544,9 @@ int LyXTable::DocBookEndOfCell(string& file, int cell, int &depth)
                 file += "<COLSPEC ALIGN='";
                file += getDocBookAlign(i, true);
                file += "' COLNAME='col";
-                file += i+1;
+                file += tostr(i+1);
                 file += "' COLNUM='";
-                file += i+1;
+                file += tostr(i+1);
                file += "' COLSEP='";
                if (i == (columns-1)) {
                     file += '1';
@@ -1606,7 +1607,7 @@ int LyXTable::DocBookEndOfCell(string& file, int cell, int &depth)
            file += "'";
            if (IsMultiColumn(0)) {
                file += " NAMEST='col1' NAMEEND='col";
-               file += cells_in_multicolumn(0);
+               file += tostr(cells_in_multicolumn(0));
                file += "'";
            }
             file += ">";
@@ -1638,10 +1639,10 @@ int LyXTable::DocBookEndOfCell(string& file, int cell, int &depth)
                 file += "' VALIGN='middle'";
                if (IsMultiColumn(cell+1)) {
                    file += " NAMEST='col";
-                   file += column_of_cell(cell+1) + 1;
+                   file += tostr(column_of_cell(cell+1) + 1);
                    file += "' NAMEEND='col";
-                   file += column_of_cell(cell+1) +
-                       cells_in_multicolumn(cell+1);
+                   file += tostr(column_of_cell(cell+1) +
+                       cells_in_multicolumn(cell+1));
                    file += "'";
                }
                file += ">";
@@ -1807,10 +1808,10 @@ int LyXTable::DocBookEndOfCell(string& file, int cell, int &depth)
                 file += "' VALIGN='middle'";
                if (IsMultiColumn(cell+1)) {
                    file += " NAMEST='col";
-                   file += column_of_cell(cell+1) + 1;
+                   file += tostr(column_of_cell(cell+1) + 1);
                    file += "' NAMEEND='col";
-                   file += column_of_cell(cell+1) +
-                       cells_in_multicolumn(cell+1);
+                   file += tostr(column_of_cell(cell+1) +
+                       cells_in_multicolumn(cell+1));
                    file += "'";
                }
                file += ">";

@@ -1,3 +1,40 @@
+1999-10-19  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/chset.C (encodeString): use a char temporary instead
+
+	* src/table.C (TexEndOfCell): added tostr around
+	column_of_cell(fcell+i)+1 and around right_column_of_cell(fcell+i)+1
+	(TexEndOfCell): ditto
+	(TexEndOfCell): ditto
+	(TexEndOfCell): ditto
+	(DocBookEndOfCell): ditto
+	(DocBookEndOfCell): ditto
+	(DocBookEndOfCell): ditto
+	(DocBookEndOfCell): ditto
+
+	* src/paragraph.C (TeXEnvironment): added tostr around foot_count -1
+
+	* src/lyxfr1.C (SearchReplaceAllCB): added tostr around replace_count
+
+	* src/lyx_cb.C (MenuRunLaTeX): added tostr around ret
+	(MenuBuildProg): added tostr around ret
+	(MenuRunChktex): added tostr around ret
+	(DocumentApplyCB): added tostr around ret
+
+	* src/chset.C (encodeString): added tostr around t->ic
+
+	* src/buffer.C (makeLaTeXFile): added tostr around secnumdepth
+	(makeLaTeXFile): added tostr around tocdepth
+	(makeLaTeXFile): added tostr around ftcound - 1
+
+	* src/insets/insetbib.C (setCounter): added tostr around counter.
+
+	* src/support/lyxstring.h: added an operator+=(int) to catch more
+	mistakes. 
+
+	* src/support/lyxstring.C (lyxstring): We DON'T allow NULL pointers.
+	(lyxstring): We DON'T allow NULL pointers.
+
 1999-10-19  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/mathed/math_macro.C (MathMacroArgument::Write,

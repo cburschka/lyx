@@ -510,6 +510,8 @@ private:
 	lyxstring & operator+(int);
 	///
 	lyxstring & operator=(int);
+	///
+	lyxstring & operator+=(int);
 	
 	/// A string representation
 	struct Srep {

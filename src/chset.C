@@ -98,15 +98,14 @@ bool CharacterSet::loadFile(const string& fname)
 }
 
 
-bool CharacterSet::encodeString(string& str)
+bool CharacterSet::encodeString(string & str)
 {
 	Cdef *t=map_;
     
 	while(t) {
 		if (t->str==str) {
-			str.erase();
-			str += t->ic;
-			//str = tostr(t->ic);
+			// Can this fail? Why is ic an unsigned char?
+			str = char(t->ic);
 			break;
 		}
 		t=t->next;

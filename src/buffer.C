@@ -1832,13 +1832,13 @@ void Buffer::makeLaTeXFile(string const & filename,
 
 		if (params.secnumdepth != tclass->secnumdepth) {
 			LFile += "\\setcounter{secnumdepth}{";
-			LFile += params.secnumdepth;
+			LFile += tostr(params.secnumdepth);
 			LFile += "}\n";
 			texrow.newline();
 		}
 		if (params.tocdepth != tclass->tocdepth) {
 			LFile += "\\setcounter{tocdepth}{";
-			LFile += params.tocdepth;
+			LFile += tostr(params.tocdepth);
 			LFile += "}\n";
 			texrow.newline();
 		}
@@ -1995,7 +1995,7 @@ void Buffer::makeLaTeXFile(string const & filename,
 		if (ftcount >= 1) {
 			if (ftcount > 1) {
 				LFile += "\\addtocounter{footnote}{-";
-				LFile += ftcount - 1;
+				LFile += tostr(ftcount - 1);
 				LFile += '}';
 			}
 			LFile += ftnote;
