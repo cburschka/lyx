@@ -87,8 +87,6 @@ public:
 	bool has(bool up) const;
 	/// remove script
 	void removeScript(bool up);
-	/// remove script
-	void removeEmptyScripts();
 	/// make sure a script is accessible
 	void ensure(bool up);
 	///
@@ -115,6 +113,8 @@ private:
 	int ndes() const;
 	/// where do we have to draw the scripts?
 	bool hasLimits() const;
+	/// clean up empty cells
+	void notifyCursorLeaves(idx_type idx);
 
 	/// possible subscript (index 0) and superscript (index 1)
 	bool script_[2];

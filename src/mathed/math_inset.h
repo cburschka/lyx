@@ -53,6 +53,7 @@ class MathCharInset;
 class MathDelimInset;
 class MathGridInset;
 class MathFracInset;
+class MathFontInset;
 class MathHullInset;
 class MathMatrixInset;
 class MathNestInset;
@@ -200,6 +201,8 @@ public:
 	virtual MathDelimInset const    * asDelimInset() const    { return 0; }
 	virtual MathFracInset           * asFracInset()           { return 0; }
 	virtual MathFracInset const     * asFracInset() const     { return 0; }
+	virtual MathFontInset           * asFontInset()           { return 0; }
+	virtual MathFontInset const     * asFontInset() const     { return 0; }
 	virtual MathGridInset           * asGridInset()           { return 0; }
 	virtual MathGridInset const     * asGridInset() const     { return 0; }
 	virtual MathHullInset           * asHullInset()           { return 0; }
@@ -228,7 +231,7 @@ public:
 	/// is the a relational operator (used for splitting equations)
 	virtual bool isRelOp() const { return false; }
 	/// -1: text mode, 1: math mode, 0 undecided
-	enum mode_type {UNDECIDED_MODE, TEXT_MODE, MATH_MODE, VERBATIM_MODE};
+	enum mode_type {UNDECIDED_MODE, TEXT_MODE, MATH_MODE};
 	/// Dispatch result codes, see inset/inset.h
 	enum result_type {
 		UNDISPATCHED = 0, DISPATCHED, DISPATCHED_NOUPDATE,
@@ -263,7 +266,7 @@ public:
 	/// access to the lock (only nest array have one)
 	virtual void lock(bool) {}
 	/// get notification when the cursor leaves this inset
-	virtual void notifyCursorLeaves() {}
+	virtual void notifyCursorLeaves(idx_type) {}
 
 	/// write LaTeX and Lyx code
 	virtual void write(WriteStream & os) const;

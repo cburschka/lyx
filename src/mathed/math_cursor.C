@@ -35,6 +35,7 @@
 #include "math_charinset.h"
 #include "math_extern.h"
 #include "math_factory.h"
+#include "math_fontinset.h"
 #include "math_gridinset.h"
 #include "math_iterator.h"
 #include "math_macroarg.h"
@@ -107,10 +108,10 @@ bool MathCursor::popLeft()
 	//cerr << "Leaving atom to the left\n";
 	if (depth() <= 1) {
 		if (depth() == 1)
-			par()->notifyCursorLeaves();
+			par()->notifyCursorLeaves(idx());
 		return false;
 	}
-	par()->notifyCursorLeaves();
+	par()->notifyCursorLeaves(idx());
 	Cursor_.pop_back();
 	return true;
 }
@@ -121,10 +122,10 @@ bool MathCursor::popRight()
 	//cerr << "Leaving atom "; par()->write(cerr, false); cerr << " right\n";
 	if (depth() <= 1) {
 		if (depth() == 1)
-			par()->notifyCursorLeaves();
+			par()->notifyCursorLeaves(idx());
 		return false;
 	}
-	par()->notifyCursorLeaves();
+	par()->notifyCursorLeaves(idx());
 	Cursor_.pop_back();
 	posRight();
 	return true;
@@ -665,6 +666,18 @@ MathCursor::pos_type MathCursor::pos() const
 }
 
 
+void MathCursor::adjust(pos_type from, size_type size)
+{
+	if (cursor().pos_ > from)
+		cursor().pos_ += size;
+	if (Anchor_.back().pos_ > from)
+		Anchor_.back().pos_ += size;
+	// just to be on the safe side
+	// theoretically unecessary
+	normalize();
+}
+
+
 MathCursor::pos_type & MathCursor::pos()
 {
 	return cursor().pos_;
@@ -779,21 +792,6 @@ void MathCursor::normalize()
 		lyxerr << "\n";
 		dump("error 4");
 	}
-	pos() = min(pos(), size());
-
-	// remove empty scripts if possible
-	if (1) {
-		for (pos_type i = 0; i < size(); ++i) {
-			MathScriptInset * p = array()[i].nucleus()->asScriptInset();
-			if (p) {
-				p->removeEmptyScripts();
-				if (!p->hasUp() && !p->hasDown() && p->nuc().size() == 1)
-					array()[i] = p->nuc()[0];
-			}
-		}
-	}
-
-	// fix again position
 	pos() = min(pos(), size());
 }
 
@@ -1430,6 +1428,40 @@ MathInset::mode_type MathCursor::currentMode() const
 			return res;
 	}
 	return MathInset::UNDECIDED_MODE;
+}
+
+
+void MathCursor::handleFont(string const & font)
+{
+	string safe;
+	if (selection()) {
+		macroModeClose();
+		safe = grabAndEraseSelection();
+	}
+
+	if (array().size()) {
+		// something left in the cell
+		if (pos() == 0) {
+			// cursor in first position
+			popLeft();
+		} else if (pos() == array().size()) {
+			// cursor in last position
+			popRight();
+		} else {
+			// cursor in between. split cell
+			MathArray::iterator bt = array().begin();
+			MathAtom at = createMathInset(font);
+			at.nucleus()->cell(0) = MathArray(bt, bt + pos());
+			cursor().cell().erase(bt, bt + pos());
+			popLeft();
+			plainInsert(at);
+		}
+	} else {
+		// nothing left in the cell
+		pullArg();
+		plainErase();
+	}
+	insert(safe);
 }
 
 

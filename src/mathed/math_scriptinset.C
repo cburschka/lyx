@@ -273,16 +273,6 @@ bool MathScriptInset::hasLimits() const
 }
 
 
-void MathScriptInset::removeEmptyScripts()
-{
-	for (int i = 0; i <= 1; ++i)
-		if (script_[i] && cell(i).size() == 0) {
-			cell(i).clear();
-			script_[i] = false;
-		}
-}
-
-
 void MathScriptInset::removeScript(bool up)
 {
 	cell(up).clear();
@@ -484,6 +474,18 @@ void MathScriptInset::infoize(std::ostream & os) const
 	os << "Scripts";
 	if (limits_)
 		os << (limits_ == 1 ? ", Displayed limits" : ", Inlined limits");
+}
+
+
+void MathScriptInset::notifyCursorLeaves(idx_type idx)
+{
+	MathNestInset::notifyCursorLeaves(idx);
+
+	// remove empty scripts if possible
+	if (idx != 2 && script_[idx] && cell(idx).empty()) {
+		cell(idx).clear();
+		script_[idx] = false;
+	}
 }
 
 

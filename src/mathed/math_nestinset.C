@@ -311,8 +311,10 @@ void MathNestInset::normalize(NormalStream & os) const
 }
 
 
-void MathNestInset::notifyCursorLeaves()
-{}
+void MathNestInset::notifyCursorLeaves(idx_type idx)
+{
+	cell(idx).notifyCursorLeaves();
+}
 
 
 MathInset::result_type MathNestInset::dispatch

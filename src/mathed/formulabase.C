@@ -126,14 +126,21 @@ void InsetFormulaBase::mutateToText()
 void InsetFormulaBase::handleFont
 	(BufferView * bv, string const & arg, string const & font)
 {
+	// this whole function is a hack and won't work for incremental font
+	// changes...
 	bv->lockedInsetStoreUndo(Undo::EDIT);
-	bool sel = mathcursor->selection();
-	if (sel)
+	if (mathcursor->par()->name() == font) {
+		mathcursor->handleFont(font);
 		updateLocal(bv, true);
-	mathcursor->handleNest(createMathInset(font));
-	mathcursor->insert(arg);
-	if (!sel)
-		updateLocal(bv, false);
+	} else {
+		bool sel = mathcursor->selection();
+		if (sel)
+			updateLocal(bv, true);
+		mathcursor->handleNest(createMathInset(font));
+		mathcursor->insert(arg);
+		if (!sel)
+			updateLocal(bv, false);
+	}
 }
 
 
@@ -627,11 +634,11 @@ Inset::RESULT InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 		break;
 
 	case LFUN_MATH_MODE:
-		if (mathcursor->currentMode())
-			handleFont(bv, cmd.argument, "textrm");
-		else {
+		if (mathcursor->currentMode() == MathInset::TEXT_MODE) {
 			mathcursor->niceInsert(MathAtom(new MathHullInset("simple")));
 			updateLocal(bv, true);
+		} else {
+			handleFont(bv, cmd.argument, "textrm");
 		}
 		//bv->owner()->message(_("math text mode toggled"));
 		break;

@@ -6,11 +6,10 @@
 
 #include "math_data.h"
 #include "math_inset.h"
+#include "math_cursor.h"
 #include "math_deliminset.h"
-#include "math_charinset.h"
+#include "math_fontinset.h"
 #include "math_scriptinset.h"
-#include "math_stringinset.h"
-#include "math_matrixinset.h"
 #include "math_mathmlstream.h"
 #include "math_support.h"
 #include "math_replace.h"
@@ -384,4 +383,33 @@ void MathArray::setXY(int x, int y) const
 {
 	xo_ = x;
 	yo_ = y;
+}
+
+
+void MathArray::notifyCursorLeaves()
+{
+	// do not recurse!
+
+	// remove base-only "scripts"
+	for (pos_type i = 0; i + 1 < size(); ++i) {
+		MathScriptInset * p = operator[](i).nucleus()->asScriptInset();
+		if (p && p->cell(0).empty() && p->cell(1).empty()) {
+			MathArray ar = p->nuc();
+			erase(i);
+			insert(i, ar);
+			mathcursor->adjust(i, ar.size() - 1);
+		}
+	}
+		
+	// glue adjacent font insets of the same kind
+	for (pos_type i = 0; i + 1 < size(); ++i) {
+		MathFontInset * p = operator[](i).nucleus()->asFontInset();
+		MathFontInset const * q = operator[](i + 1)->asFontInset();
+		if (p && q && p->name() == q->name()) {
+			p->cell(0).append(q->cell(0));
+			erase(i + 1);
+		}
+		mathcursor->adjust(i, -1);
+	}
+
 }

@@ -22,6 +22,10 @@ public:
 	explicit MathFontInset(latexkeys const * key);
 	///
 	MathInset * clone() const;
+	///
+	MathFontInset * asFontInset() { return this; }
+	///
+	MathFontInset const * asFontInset() const { return this; }
 	/// are we in math mode, text mode, or unsure?
 	mode_type currentMode() const;
 	///

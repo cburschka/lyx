@@ -114,6 +114,8 @@ public:
 	void popToEnclosingHull();
 	/// go up to the hull inset
 	void popToHere(MathInset const * p);
+	/// adjust position after deletion/insertion
+	void adjust(pos_type from, size_type size);
 	///
 	InsetFormulaBase * formula() const;
 	/// current offset in the current cell
@@ -238,11 +240,12 @@ public:
 	/// hack for reveal codes
 	void markInsert();
 	void markErase();
-	//void handleExtern(string const & arg);
-
-private:
 	/// injects content of a cell into parent
 	void pullArg();
+	/// split font inset etc
+	void handleFont(string const & font);
+
+private:
 	/// moves cursor index one cell to the left
 	bool idxLeft();
 	/// moves cursor index one cell to the right
