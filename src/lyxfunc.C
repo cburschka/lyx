@@ -334,7 +334,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 		break;
 	case LFUN_CUT:
 	case LFUN_COPY:
-		disable = !view()->getLyXText()->selection.set();
+		disable = !mathcursor && !view()->getLyXText()->selection.set();
 		break;
 #ifndef HAVE_LIBAIKSAURUS
 	case LFUN_THESAURUS_ENTRY:
