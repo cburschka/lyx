@@ -26,6 +26,7 @@
 #include "qlabel.h"
 #include "qgroupbox.h"
 
+using std::endl;
 
 ParagraphDlgImpl::ParagraphDlgImpl(FormParagraph *form, QWidget* parent,  const char* name, bool modal, WFlags fl )
     : ParagraphDlg( parent, name, modal, fl ), form_(form)

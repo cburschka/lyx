@@ -34,7 +34,7 @@ FormCopyrightDialogBase::FormCopyrightDialogBase( QWidget* parent,  const char* 
     FormCopyrightDialogBaseLayout->setMargin( 11 );
 
     TextLabel5 = new QLabel( this, "TextLabel5" );
-    TextLabel5->setText( tr( "KLyX is Copyright (C) 1995 by Matthias Ettrich,\n1995-2001 by LyX Team" ) );
+    TextLabel5->setText( tr( "LyX is Copyright (C) 1995 by Matthias Ettrich,\n1995-2001 LyX Team" ) );
     TextLabel5->setFrameShape( QLabel::Box );
     TextLabel5->setFrameShadow( QLabel::Sunken );
     TextLabel5->setMargin( 6 );
@@ -51,7 +51,7 @@ FormCopyrightDialogBase::FormCopyrightDialogBase( QWidget* parent,  const char* 
     FormCopyrightDialogBaseLayout->addWidget( TextLabel5_2 );
 
     TextLabel5_2_2 = new QLabel( this, "TextLabel5_2_2" );
-    TextLabel5_2_2->setText( tr( "KLyX is distributed in the hope that it will be\nuseful, but WITHOUT ANY WARRANTY, \nwithout even the implied warranty of \nMERCHANTABILITY or FITNESS FOR A \nPARTICULAR PURPOSE. See the GNU General \nPublic License for more details.\nYou should have received a copy of the GNU \nGeneral Public License along with this program; \nif not, write to thee Free Software Foundation, Inc., \n675 Mass Ave, Cambridge, MA 02139, USA." ) );
+    TextLabel5_2_2->setText( tr( "LyX is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA." ) );
     TextLabel5_2_2->setFrameShape( QLabel::Box );
     TextLabel5_2_2->setFrameShadow( QLabel::Sunken );
     TextLabel5_2_2->setMargin( 6 );
