@@ -653,7 +653,7 @@ void Parser::parse_into(MathArray & array, unsigned flags, MathTextCodes code)
 		}
 
 		if (flags & FLAG_BLOCK) {
-			if (t.cat() == catAlign || t.cs() == "\\" || t.cs() == "right")
+			if (t.cat() == catAlign || t.cs() == "\\")
 				return;
 			if (t.cs() == "end") {
 				getArg('{', '}');
@@ -845,14 +845,23 @@ void Parser::parse_into(MathArray & array, unsigned flags, MathTextCodes code)
 				if (array.at(pos)->nucleus()->getChar() == '{')
 					break;
 			if (pos >= 0) {
-				// found it -> use the part after '{' as "numerator", erase the '{'
+				// found it -> use the part after '{' as "numerator"
 				p->cell(0) = MathArray(array, pos + 1, array.size());
+				parse_into(p->cell(1), FLAG_BRACE_LAST);
+				// delete denominator and the '{'
 				array.erase(pos, array.size());
+			} else if (flags & FLAG_RIGHT) {
+				// we are inside a \left ... \right block
+				//lyxerr << "found '" << t.cs() << "' enclosed by \\left .. \\right\n";
+				p->cell(0).swap(array);
+				parse_into(p->cell(1), FLAG_RIGHT);
+				// handle the right delimiter properly
+				putback();
 			} else {
 				// not found -> use everything as "numerator"
 				p->cell(0).swap(array);
+				parse_into(p->cell(1), FLAG_BLOCK);
 			}
-			parse_into(p->cell(1), FLAG_BLOCK);
 			array.push_back(p);
 		}
 	
