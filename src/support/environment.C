@@ -89,10 +89,11 @@ void setEnvPath(string const & name, vector<string> const & env)
 {
 	char const separator(os::path_separator());
 	std::ostringstream ss;
-	vector<string>::const_iterator it = env.begin();
+	vector<string>::const_iterator const begin = env.begin();
 	vector<string>::const_iterator const end = env.end();
+	vector<string>::const_iterator it = begin;
 	for (; it != end; ++it) {
-		if (ss.tellp() > 0)
+		if (it != begin)
 			ss << separator;
 		ss << os::external_path(*it);
 	}

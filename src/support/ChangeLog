@@ -1,6 +1,7 @@
 2005-02-15  Angus Leeming  <leeming@lyx.org>
 
 	* environment.C: add missing #include.
+	(setEnvPath): compare iterators rather than use tellp().
 
 2005-02-15  Angus Leeming  <leeming@lyx.org>
 
