@@ -60,6 +60,7 @@ extern unsigned char getCurrentTextClass(Buffer *);
 InsetText::InsetText(Buffer * buf)
 {
     par = new LyXParagraph();
+    widthOffset = 0;
     init(buf);
 }
 
@@ -67,6 +68,7 @@ InsetText::InsetText(Buffer * buf)
 InsetText::InsetText(InsetText const & ins, Buffer * buf)
 {
     par = 0;
+    widthOffset = 0;
     init(buf, ins.par);
 }
 
@@ -75,15 +77,7 @@ void InsetText::init(Buffer * buf, LyXParagraph *p)
     if (p) {
 	if (par)
 	    delete par;
-	par = new LyXParagraph(p);
-	for(int pos = 0; pos < p->Last(); ++pos) {
-	    par->InsertChar(pos, p->GetChar(pos));
-	    par->SetFont(pos, p->GetFontSettings(pos));
-	    if ((p->GetChar(pos) == LyXParagraph::META_INSET) &&
-		p->GetInset(pos)) {
-		par->InsertInset(pos, p->GetInset(pos)->Clone());
-	    }
-	}
+	par = p->Clone();
     }
     the_locking_inset = 0;
     buffer = buf;
@@ -93,7 +87,7 @@ void InsetText::init(Buffer * buf, LyXParagraph *p)
     interline_space = 1;
     no_selection = false;
     init_inset = true;
-    maxAscent = maxDescent = insetWidth = widthOffset = 0;
+    maxAscent = maxDescent = insetWidth = 0;
     autoBreakRows = false;
     xpos = 0.0;
 }

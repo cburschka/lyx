@@ -41,6 +41,13 @@ Inset::EDITABLE Inset::Editable() const
   return NOT_EDITABLE;
 }
 
+bool Inset::IsTextInset() const
+{
+	return ((LyxCode() == TEXT_CODE) ||
+		(LyxCode() == ERT_CODE) ||
+		(LyxCode() == FOOT_CODE) ||
+		(LyxCode() == MARGIN_CODE));
+}
 
 void Inset::Validate(LaTeXFeatures &) const
 {

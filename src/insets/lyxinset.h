@@ -83,6 +83,8 @@ public:
 		///
 		TEXT_CODE,
 		///
+		ERT_CODE,
+		///
 		FOOT_CODE,
 		///
 		MARGIN_CODE,
@@ -116,6 +118,8 @@ public:
 	///
 	virtual EDITABLE Editable() const;
 	///
+	bool IsTextInset() const;
+	///
 	virtual bool AutoDelete() const;
 	///
 	virtual void Write(ostream &) const = 0;
@@ -140,7 +144,7 @@ public:
 	virtual bool Deletable() const;
 
 	/// returns LyX code associated with the inset. Used for TOC, ...)
-	virtual Inset::Code LyxCode() const = 0;
+	virtual Inset::Code LyxCode() const { return NO_CODE; }
   
 	/// Get the label that appears at screen
 	virtual string getLabel(int) const {

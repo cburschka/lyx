@@ -230,6 +230,19 @@ void BufferView::insertInset(Inset * inset, string const & lout,
 	}
 	
 	text->InsertInset(inset);
+#if 1
+	// if we enter a text-inset the cursor should be to the left side
+	// of it! This couldn't happen before as Undo was not handled inside
+	// inset now after the Undo LyX tries to call inset->Edit(...) again
+	// and cannot do this as the cursor is behind the inset and GetInset
+	// does not return the inset!
+	if (inset->IsTextInset()) {
+		if (text->cursor.par->getParDirection()==LYX_DIR_LEFT_TO_RIGHT)
+			text->CursorLeft();
+		else
+			text->CursorRight();
+	}
+#endif
 	update(-1);
 
 	text->UnFreezeUndo();	

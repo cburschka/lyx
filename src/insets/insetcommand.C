@@ -89,7 +89,7 @@ int InsetCommand::width(Painter & pain, LyXFont const &) const
 			      LColor::commandbg, LColor::commandframe,
 			      false, width, ascent, descent);
 	}
-	return width+4;
+	return width + 4;
 }
 
 
@@ -111,7 +111,7 @@ void InsetCommand::draw(Painter & pain, LyXFont const &,
 			      true, width);
 	}
 
-	x += width;
+	x += width + 4;
 }
 
 

@@ -20,7 +20,8 @@
 #include "Painter.h"
 
 
-InsetCollapsable::InsetCollapsable(Buffer * bf): InsetText(bf)
+InsetCollapsable::InsetCollapsable(Buffer * bf)
+		: InsetText(bf)
 {
     collapsed = true;
     label = "Label";
@@ -37,6 +38,7 @@ Inset * InsetCollapsable::Clone() const
     InsetCollapsable * result = new InsetCollapsable(buffer);
     result->init(buffer, par);
 
+    result->collapsed = collapsed;
     return result;
 }
 

@@ -21,7 +21,8 @@
 #include "Painter.h"
 
 
-InsetFoot::InsetFoot(Buffer * bf): InsetCollapsable(bf)
+InsetFoot::InsetFoot(Buffer * bf)
+		: InsetCollapsable(bf)
 {
     setLabel(_("foot"));
     LyXFont font(LyXFont::ALL_SANE);
@@ -38,6 +39,7 @@ Inset * InsetFoot::Clone() const
     InsetFoot * result = new InsetFoot(buffer);
     result->init(buffer, par);
 
+    result->collapsed = collapsed;
     return result;
 }
 

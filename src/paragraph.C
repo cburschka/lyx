@@ -659,7 +659,7 @@ Inset * LyXParagraph::GetInset(LyXParagraph::size_type pos)
 	}
 	lyxerr << "ERROR (LyXParagraph::GetInset): "
 		"Inset does not exist: " << pos << endl;
-	text[pos] = ' '; // WHY!!! does this set the pos to ' '????
+	// text[pos] = ' '; // WHY!!! does this set the pos to ' '????
 	// Did this commenting out introduce a bug? So far I have not
 	// see any, please enlighten me. (Lgb)
 	// My guess is that since the inset does not exist, we might
@@ -1477,11 +1477,27 @@ LyXParagraph * LyXParagraph::Clone() const
                
     
 	// copy everything behind the break-position to the new paragraph
-   
+
+	// IMO this is not correct. Here we should not use the Minibuffer to
+	// copy stuff, as the Minibuffer is global and we could be in a
+	// situation where we copy a paragraph inside a paragraph (this now
+	// is possible think of Text-Insets!). So I'm changing this so that
+	// then inside the Text-Inset I can use par->Clone() to copy the
+	// paragraph data from one inset to the other!
+#if 0
 	for (size_type i = 0; i < size(); ++i) {
 		CopyIntoMinibuffer(i);
 		result->InsertFromMinibuffer(i);
 	}
+#else
+	for(size_type i = 0; i < size(); ++i) {
+	    result->InsertChar(i, GetChar(i));
+	    result->SetFont(i, GetFontSettings(i));
+	    if ((GetChar(i) == LyXParagraph::META_INSET) && GetInset(i)) {
+		result->InsertInset(i, GetInset(i)->Clone());
+	    }
+	}
+#endif
 	result->text.resize(result->text.size());
 	return result;
 }
