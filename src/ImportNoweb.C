@@ -18,13 +18,15 @@
 #endif
 
 #include <fstream>
-using std::ifstream;
-using std::getline;
+#include <cstdlib>
 
 #include "ImportNoweb.h"
 #include "lyxrc.h"
 #include "support/syscall.h"
 #include "bufferlist.h"
+
+using std::ifstream;
+using std::getline;
 
 extern BufferList bufferlist;
 

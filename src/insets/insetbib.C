@@ -1,9 +1,6 @@
 #include <config.h>
 
 #include <fstream>
-using std::ifstream;
-using std::getline;
-
 #include <cstdlib>
 
 #ifdef __GNUG__
@@ -23,6 +20,8 @@ using std::getline;
 #include "support/filetools.h"
 
 using std::ostream;
+using std::ifstream;
+using std::getline;
 using std::endl;
 
 extern BufferView * current_view;

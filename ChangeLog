@@ -1,3 +1,10 @@
+2000-05-05  Juergen Vigna  <jug@sad.it>
+
+	* src/insets/insetbib.C: moved using directive
+
+	* src/ImportNoweb.C: small fix for being able to compile (missing
+	include cstdlib)
+
 2000-05-04  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* config/lyxinclude.m4 (LYX_CXX_STL_STRING): change the test not
