@@ -275,7 +275,7 @@ latexkeys const * in_word_set(string const & str)
 
 MathAtom createMathInset(string const & s)
 {
-	cerr << "creating inset with name: '" << s << "'\n";
+	lyxerr[Debug::MATHED] << "creating inset with name: '" << s << "'\n";
 	if (s.size() == 2 && s[0] == '#' && s[1] >= '1' && s[1] <= '9')
 		return MathAtom(new MathMacroArgument(s[1] - '0'));
 
@@ -319,7 +319,7 @@ MathAtom createMathInset(string const & s)
 	latexkeys const * l = in_word_set(s);
 	if (l) {
 		string const & inset = l->inset;
-		cerr << " fount inset: '" << inset << "'\n";
+		lyxerr[Debug::MATHED] << " fount inset: '" << inset << "'\n";
 		if (inset == "funclim")
 			return MathAtom(new MathFuncLimInset(s));
 		if (inset == "special")
@@ -357,6 +357,6 @@ MathAtom createMathInset(string const & s)
 	if (MathMacroTable::has(s))
 		return MathAtom(new MathMacro(s));
 
-	//cerr << "creating inset 2 with name: '" << s << "'\n";
+	//lyxerr[Debug::MATHED] << "creating inset 2 with name: '" << s << "'\n";
 	return MathAtom(new MathUnknownInset(s));
 }
