@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: lyx-1.1.6fix1\n"
-"POT-Creation-Date: 2002-04-23 19:08+0200\n"
+"POT-Creation-Date: 2002-04-24 17:37+0200\n"
 "PO-Revision-Date: 2001-04-17 12:19+02:00\n"
 "Last-Translator: Iñaki Larrañaga<>\n"
 "Language-Team: Euskara <linux-eu@chanae.alphanet.ch>\n"
@@ -370,24 +370,24 @@ msgstr "Beste ("
 msgid ", Paragraph: "
 msgstr "Parrafoa"
 
-#: src/BufferView_pimpl.C:317
+#: src/BufferView_pimpl.C:321
 msgid "Formatting document..."
 msgstr "Idazkia egituratzen..."
 
-#: src/BufferView_pimpl.C:1320
+#: src/BufferView_pimpl.C:1341
 msgid "Saved bookmark"
 msgstr ""
 
-#: src/BufferView_pimpl.C:1352
+#: src/BufferView_pimpl.C:1373
 msgid "Moved to bookmark"
 msgstr ""
 
-#: src/BufferView_pimpl.C:1582
+#: src/BufferView_pimpl.C:1605
 #, fuzzy
 msgid "Select LyX document to insert"
 msgstr "Sartu beharreko Idazkia Hautatu"
 
-#: src/BufferView_pimpl.C:1584 src/frontends/controllers/ControlBibtex.C:68
+#: src/BufferView_pimpl.C:1607 src/frontends/controllers/ControlBibtex.C:68
 #: src/frontends/controllers/ControlExternal.C:166
 #: src/frontends/controllers/ControlGraphics.C:154
 #: src/frontends/controllers/ControlInclude.C:71 src/lyx_cb.C:113
@@ -396,90 +396,90 @@ msgstr "Sartu beharreko Idazkia Hautatu"
 msgid "Documents|#o#O"
 msgstr "Idazkiak|d"
 
-#: src/BufferView_pimpl.C:1586 src/lyxfunc.C:1865 src/lyxfunc.C:1942
+#: src/BufferView_pimpl.C:1609 src/lyxfunc.C:1865 src/lyxfunc.C:1942
 #, fuzzy
 msgid "Examples|#E#e"
 msgstr "Adibideak"
 
-#: src/BufferView_pimpl.C:1591 src/frontends/controllers/ControlInclude.C:67
+#: src/BufferView_pimpl.C:1614 src/frontends/controllers/ControlInclude.C:67
 msgid "*.lyx| LyX Documents (*.lyx)"
 msgstr ""
 
 #. Cancel: Do nothing
-#: src/BufferView_pimpl.C:1600 src/lyxfunc.C:1749 src/lyxfunc.C:1776
+#: src/BufferView_pimpl.C:1623 src/lyxfunc.C:1749 src/lyxfunc.C:1776
 #: src/lyxfunc.C:1879 src/lyxfunc.C:1959 src/lyxfunc.C:1987
 msgid "Canceled."
 msgstr "Ezeztatua."
 
-#: src/BufferView_pimpl.C:1612
+#: src/BufferView_pimpl.C:1635
 msgid "Inserting document"
 msgstr "Idazkia sartzen"
 
-#: src/BufferView_pimpl.C:1618 src/ext_l10n.h:637
+#: src/BufferView_pimpl.C:1641 src/ext_l10n.h:637
 #: src/frontends/xforms/FormDocument.C:320 src/lyxfunc.C:1797
 #: src/lyxfunc.C:1907
 msgid "Document"
 msgstr "Idazkia"
 
-#: src/BufferView_pimpl.C:1619
+#: src/BufferView_pimpl.C:1642
 msgid "inserted."
 msgstr "sartuta."
 
-#: src/BufferView_pimpl.C:1623
+#: src/BufferView_pimpl.C:1646
 msgid "Could not insert document"
 msgstr "Idazkia ezin da sartu"
 
-#: src/BufferView_pimpl.C:1797 src/insets/insettext.C:1455
+#: src/BufferView_pimpl.C:1820 src/insets/insettext.C:1455
 msgid "Layout "
 msgstr "Itxura "
 
-#: src/BufferView_pimpl.C:1798 src/insets/insettext.C:1455
+#: src/BufferView_pimpl.C:1821 src/insets/insettext.C:1455
 msgid " not known"
 msgstr " ezezaguna"
 
-#: src/BufferView_pimpl.C:1994 src/insets/inseterror.C:55
+#: src/BufferView_pimpl.C:2017 src/insets/inseterror.C:55
 #: src/insets/inseterror.C:77 src/lyxfunc.C:1889
 msgid "Error"
 msgstr "Akatsa"
 
-#: src/BufferView_pimpl.C:1995
+#: src/BufferView_pimpl.C:2018
 msgid "Couldn't find this label"
 msgstr "Txartel hau ezin izan da aurkitu"
 
-#: src/BufferView_pimpl.C:1996
+#: src/BufferView_pimpl.C:2019
 msgid "in current document."
 msgstr "oraingo idazkian."
 
-#: src/BufferView_pimpl.C:2492
+#: src/BufferView_pimpl.C:2515
 msgid "Mark removed"
 msgstr "Kakotx ezabatua"
 
-#: src/BufferView_pimpl.C:2499
+#: src/BufferView_pimpl.C:2522
 msgid "Mark set"
 msgstr "Kakotx ezarria"
 
-#: src/BufferView_pimpl.C:2630
+#: src/BufferView_pimpl.C:2653
 msgid "Mark off"
 msgstr "Kakotx itzalia"
 
-#: src/BufferView_pimpl.C:2643
+#: src/BufferView_pimpl.C:2666
 msgid "Mark on"
 msgstr "Kakotx piztua"
 
-#: src/BufferView_pimpl.C:2817 src/insets/insettext.C:1508
+#: src/BufferView_pimpl.C:2840 src/insets/insettext.C:1508
 msgid "Unknown spacing argument: "
 msgstr "Argumentu hedaketa ezezaguna: "
 
-#: src/BufferView_pimpl.C:3178
+#: src/BufferView_pimpl.C:3201
 msgid "Word `"
 msgstr ""
 
-#: src/BufferView_pimpl.C:3334
+#: src/BufferView_pimpl.C:3357
 #, fuzzy
 msgid "Unknown function!"
 msgstr "Ekitaldi ezezaguna"
 
-#: src/BufferView_pimpl.C:3597 src/BufferView_pimpl.C:3600
+#: src/BufferView_pimpl.C:3620 src/BufferView_pimpl.C:3623
 #, fuzzy
 msgid "No more insets"
 msgstr "Ohar gehiagorik ez"
@@ -3232,7 +3232,7 @@ msgid "&Apply"
 msgstr "&Eragin"
 
 #: src/ext_l10n.h:601 src/frontends/qt2/QCitation.C:45
-#: src/frontends/xforms/FormCitation.C:111
+#: src/frontends/xforms/FormCitation.C:117
 msgid "Citation"
 msgstr "Aipamena"
 
@@ -5233,24 +5233,14 @@ msgstr "Algoritmoa"
 msgid "Loading font into X-Server..."
 msgstr "Hizki mota X zerbitzarian bereganatzen..."
 
-#: src/frontends/controllers/biblio.C:197
+#: src/frontends/controllers/biblio.C:213
 #, fuzzy
 msgid " and "
 msgstr "Lurra"
 
-#: src/frontends/controllers/biblio.C:199
+#: src/frontends/controllers/biblio.C:215
 msgid " et al."
 msgstr ""
-
-#: src/frontends/controllers/biblio.C:204
-msgid "Caesar et al."
-msgstr ""
-
-#: src/frontends/controllers/biblio.C:525
-#: src/frontends/controllers/biblio.C:581
-#, fuzzy
-msgid "No database"
-msgstr "Datu Basea:"
 
 #: src/frontends/controllers/character.C:34
 #: src/frontends/controllers/character.C:54
@@ -5705,7 +5695,7 @@ msgid "Select a BibTeX database to add"
 msgstr "Datu Basea:"
 
 #: src/frontends/qt2/QCitationDialog.C:48
-#: src/frontends/xforms/FormCitation.C:465
+#: src/frontends/xforms/FormCitation.C:476
 #, fuzzy
 msgid "Not yet supported"
 msgstr "Matematika eran Berregin oraindik ez dabil"
@@ -6276,80 +6266,80 @@ msgid "Restore|#R"
 msgstr "Berrezarri|#r"
 
 #. set up the tooltip mechanism
-#: src/frontends/xforms/FormCitation.C:176
+#: src/frontends/xforms/FormCitation.C:187
 #, fuzzy
 msgid "Add the selected entry to the current citation reference."
 msgstr "_Aipamen berria sartu"
 
-#: src/frontends/xforms/FormCitation.C:179
+#: src/frontends/xforms/FormCitation.C:190
 msgid "Delete the selected entry from the current citation reference."
 msgstr ""
 
-#: src/frontends/xforms/FormCitation.C:182
+#: src/frontends/xforms/FormCitation.C:193
 msgid "Move the selected entry upwards (in the current list)."
 msgstr ""
 
-#: src/frontends/xforms/FormCitation.C:185
+#: src/frontends/xforms/FormCitation.C:196
 msgid "Move the selected entry downwards (in the current list)."
 msgstr ""
 
-#: src/frontends/xforms/FormCitation.C:188
+#: src/frontends/xforms/FormCitation.C:199
 msgid ""
 "The entries which will be cited. Select them with the arrow buttons from the "
 "right browser window."
 msgstr ""
 
-#: src/frontends/xforms/FormCitation.C:191
+#: src/frontends/xforms/FormCitation.C:202
 msgid ""
 "All entries in the database you have loaded (via \"Insert->Lists&TOC->BibTex "
 "Reference\"). Move the ones you want to cite with the arrow buttons into the "
 "left browser window."
 msgstr ""
 
-#: src/frontends/xforms/FormCitation.C:194
+#: src/frontends/xforms/FormCitation.C:205
 msgid "Information about the selected entry"
 msgstr ""
 
-#: src/frontends/xforms/FormCitation.C:197
+#: src/frontends/xforms/FormCitation.C:208
 msgid ""
 "Here you may select how the citation label should look inside the text "
 "(Natbib)."
 msgstr ""
 
-#: src/frontends/xforms/FormCitation.C:200
+#: src/frontends/xforms/FormCitation.C:211
 msgid ""
 "Activate if you want to print all authors in a reference with more than "
 "three authors, and not \"<First Author> et.al.\" (Natbib)."
 msgstr ""
 
-#: src/frontends/xforms/FormCitation.C:203
+#: src/frontends/xforms/FormCitation.C:214
 msgid ""
 "Activate if you want to print the first character of the author name as "
 "uppercase (\"Van Gogh\", not \"van Gogh\"). Useful at the beginning of "
 "sentences (Natbib)."
 msgstr ""
 
-#: src/frontends/xforms/FormCitation.C:206
+#: src/frontends/xforms/FormCitation.C:217
 msgid ""
 "Optional text which appears before the citation reference, e.g. \"see <Ref>\""
 msgstr ""
 
-#: src/frontends/xforms/FormCitation.C:209
+#: src/frontends/xforms/FormCitation.C:220
 msgid ""
 "Optional text which appears after the citation reference, e.g. \"pp. 12\""
 msgstr ""
 
-#: src/frontends/xforms/FormCitation.C:212
+#: src/frontends/xforms/FormCitation.C:223
 msgid "Search your database (all fields will be searched)."
 msgstr ""
 
-#: src/frontends/xforms/FormCitation.C:215
+#: src/frontends/xforms/FormCitation.C:226
 msgid ""
 "Activate if you want to have case sensitive search: \"bibtex\" finds \"bibtex"
 "\", but not \"BibTeX\"."
 msgstr ""
 
-#: src/frontends/xforms/FormCitation.C:218
+#: src/frontends/xforms/FormCitation.C:229
 msgid "Activate if you want to enter Regular Expressions."
 msgstr ""
 
@@ -8908,58 +8898,68 @@ msgstr "oina"
 msgid "Opened Footnote Inset"
 msgstr "Oineko Ohar Multzoa Irekita"
 
-#: src/insets/insetgraphics.C:180
+#: src/insets/insetgraphics.C:181
 msgid "Waiting for draw request to start loading..."
 msgstr ""
 
-#: src/insets/insetgraphics.C:183
+#: src/insets/insetgraphics.C:184
 msgid "Loading..."
 msgstr "Bereganatzen..."
 
-#: src/insets/insetgraphics.C:186
+#: src/insets/insetgraphics.C:187
 #, fuzzy
 msgid "Converting to loadable format..."
 msgstr "Egitura \"honetara\" bihurtu"
 
-#: src/insets/insetgraphics.C:189
+#: src/insets/insetgraphics.C:190
 #, fuzzy
 msgid "Loaded. Scaling etc..."
 msgstr "Bereganatzen..."
 
-#: src/insets/insetgraphics.C:192
+#: src/insets/insetgraphics.C:193
 #, fuzzy
 msgid "No file found!"
 msgstr "LaTeX-en Erregistro Artxiboarik ez da aurkitu"
 
-#: src/insets/insetgraphics.C:195
+#: src/insets/insetgraphics.C:196
 msgid "Error loading file into memory"
 msgstr ""
 
-#: src/insets/insetgraphics.C:198
+#: src/insets/insetgraphics.C:199
 #, fuzzy
 msgid "Error converting to loadable format"
 msgstr "Egitura \"honetara\" bihurtu"
 
-#: src/insets/insetgraphics.C:201
+#: src/insets/insetgraphics.C:202
 #, fuzzy
 msgid "Error scaling etc"
 msgstr "Akatsa irakurtzerakoan"
 
-#: src/insets/insetgraphics.C:204
+#: src/insets/insetgraphics.C:205
 #, fuzzy
 msgid "No image"
 msgstr "Aldatu gabe"
 
-#: src/insets/insetgraphics.C:207
+#: src/insets/insetgraphics.C:208
 msgid "Loaded but not displaying"
 msgstr ""
+
+#: src/insets/insetgraphics.C:645
+#, fuzzy
+msgid "Cannot copy file"
+msgstr "Fitxategian ezin ikusi"
+
+#: src/insets/insetgraphics.C:646
+#, fuzzy
+msgid "into tempdir"
+msgstr "Aldibateko direktorioa"
 
 #. No graphics in ascii output. Possible to use gifscii to convert
 #. images to ascii approximation.
 #. 1. Convert file to ascii using gifscii
 #. 2. Read ascii output file and add it to the output stream.
 #. at least we send the filename
-#: src/insets/insetgraphics.C:715
+#: src/insets/insetgraphics.C:768
 #, fuzzy
 msgid "Graphic file:"
 msgstr "Grafiko Fitxategia|#F"
@@ -10031,7 +10031,7 @@ msgstr "Ekitaldi ezezaguna"
 msgid "Saving document"
 msgstr "Idazkia gordetzen"
 
-#: src/lyxfunc.C:1268 src/mathed/formulabase.C:922
+#: src/lyxfunc.C:1268 src/mathed/formulabase.C:940
 msgid "Missing argument"
 msgstr "Argumentoa galdua"
 
@@ -10904,11 +10904,11 @@ msgstr "Oraindik hori egitea nahi?"
 msgid " (read only)"
 msgstr " (irakur era)"
 
-#: src/mathed/formulabase.C:151 src/mathed/formulabase.C:896
+#: src/mathed/formulabase.C:151 src/mathed/formulabase.C:914
 msgid "Math editor mode"
 msgstr "Matematika argitatze era"
 
-#: src/mathed/formulabase.C:639
+#: src/mathed/formulabase.C:657
 msgid "Invalid action in math mode!"
 msgstr "Matematika eran ekimen baliakaitza!"
 
@@ -11069,6 +11069,10 @@ msgstr "Orri Jauzia (azpikaldea)"
 #, fuzzy
 msgid "Space below"
 msgstr "&Azpiko Hutsunea"
+
+#, fuzzy
+#~ msgid "No database"
+#~ msgstr "Datu Basea:"
 
 #, fuzzy
 #~ msgid "' indexed."

@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: lyx 1.2.0\n"
-"POT-Creation-Date: 2002-04-23 19:08+0200\n"
+"POT-Creation-Date: 2002-04-24 17:37+0200\n"
 "PO-Revision-Date: 2002-04-16 23:55+0200\n"
 "Last-Translator: Lars Gullik Bjønnes <larsbj@lyx.org>\n"
 "Language-Team: norsk <no@li.org>\n"
@@ -355,23 +355,23 @@ msgstr "Annet ("
 msgid ", Paragraph: "
 msgstr ", Avsnitt: "
 
-#: src/BufferView_pimpl.C:317
+#: src/BufferView_pimpl.C:321
 msgid "Formatting document..."
 msgstr "Formaterer dokument..."
 
-#: src/BufferView_pimpl.C:1320
+#: src/BufferView_pimpl.C:1341
 msgid "Saved bookmark"
 msgstr "Lagret bokmerke"
 
-#: src/BufferView_pimpl.C:1352
+#: src/BufferView_pimpl.C:1373
 msgid "Moved to bookmark"
 msgstr "Flyttet til bokmerke"
 
-#: src/BufferView_pimpl.C:1582
+#: src/BufferView_pimpl.C:1605
 msgid "Select LyX document to insert"
 msgstr "Velg LyX dokument som skal settes inn"
 
-#: src/BufferView_pimpl.C:1584 src/frontends/controllers/ControlBibtex.C:68
+#: src/BufferView_pimpl.C:1607 src/frontends/controllers/ControlBibtex.C:68
 #: src/frontends/controllers/ControlExternal.C:166
 #: src/frontends/controllers/ControlGraphics.C:154
 #: src/frontends/controllers/ControlInclude.C:71 src/lyx_cb.C:113
@@ -379,88 +379,88 @@ msgstr "Velg LyX dokument som skal settes inn"
 msgid "Documents|#o#O"
 msgstr "Dokumenter|#o#O"
 
-#: src/BufferView_pimpl.C:1586 src/lyxfunc.C:1865 src/lyxfunc.C:1942
+#: src/BufferView_pimpl.C:1609 src/lyxfunc.C:1865 src/lyxfunc.C:1942
 msgid "Examples|#E#e"
 msgstr "Eksempler|#E#e"
 
-#: src/BufferView_pimpl.C:1591 src/frontends/controllers/ControlInclude.C:67
+#: src/BufferView_pimpl.C:1614 src/frontends/controllers/ControlInclude.C:67
 msgid "*.lyx| LyX Documents (*.lyx)"
 msgstr "*.lyx| LyX Dokumenter (*.lyx)"
 
 #. Cancel: Do nothing
-#: src/BufferView_pimpl.C:1600 src/lyxfunc.C:1749 src/lyxfunc.C:1776
+#: src/BufferView_pimpl.C:1623 src/lyxfunc.C:1749 src/lyxfunc.C:1776
 #: src/lyxfunc.C:1879 src/lyxfunc.C:1959 src/lyxfunc.C:1987
 msgid "Canceled."
 msgstr "Avbrutt."
 
-#: src/BufferView_pimpl.C:1612
+#: src/BufferView_pimpl.C:1635
 msgid "Inserting document"
 msgstr "Setter inn dokumentet"
 
-#: src/BufferView_pimpl.C:1618 src/ext_l10n.h:637
+#: src/BufferView_pimpl.C:1641 src/ext_l10n.h:637
 #: src/frontends/xforms/FormDocument.C:320 src/lyxfunc.C:1797
 #: src/lyxfunc.C:1907
 msgid "Document"
 msgstr "Dokumentet"
 
-#: src/BufferView_pimpl.C:1619
+#: src/BufferView_pimpl.C:1642
 msgid "inserted."
 msgstr "satt inn."
 
-#: src/BufferView_pimpl.C:1623
+#: src/BufferView_pimpl.C:1646
 msgid "Could not insert document"
 msgstr "Kunne ikke sette inn dokumentet"
 
-#: src/BufferView_pimpl.C:1797 src/insets/insettext.C:1455
+#: src/BufferView_pimpl.C:1820 src/insets/insettext.C:1455
 msgid "Layout "
 msgstr "Stil "
 
-#: src/BufferView_pimpl.C:1798 src/insets/insettext.C:1455
+#: src/BufferView_pimpl.C:1821 src/insets/insettext.C:1455
 msgid " not known"
 msgstr " ukjent"
 
-#: src/BufferView_pimpl.C:1994 src/insets/inseterror.C:55
+#: src/BufferView_pimpl.C:2017 src/insets/inseterror.C:55
 #: src/insets/inseterror.C:77 src/lyxfunc.C:1889
 msgid "Error"
 msgstr "Feil"
 
-#: src/BufferView_pimpl.C:1995
+#: src/BufferView_pimpl.C:2018
 msgid "Couldn't find this label"
 msgstr "Klarte ikke å finne dette referansemerket"
 
-#: src/BufferView_pimpl.C:1996
+#: src/BufferView_pimpl.C:2019
 msgid "in current document."
 msgstr "i gjeldende dokument."
 
-#: src/BufferView_pimpl.C:2492
+#: src/BufferView_pimpl.C:2515
 msgid "Mark removed"
 msgstr "Fjernet merke"
 
-#: src/BufferView_pimpl.C:2499
+#: src/BufferView_pimpl.C:2522
 msgid "Mark set"
 msgstr "Merke satt"
 
-#: src/BufferView_pimpl.C:2630
+#: src/BufferView_pimpl.C:2653
 msgid "Mark off"
 msgstr "Merke slått av"
 
-#: src/BufferView_pimpl.C:2643
+#: src/BufferView_pimpl.C:2666
 msgid "Mark on"
 msgstr "Merke på"
 
-#: src/BufferView_pimpl.C:2817 src/insets/insettext.C:1508
+#: src/BufferView_pimpl.C:2840 src/insets/insettext.C:1508
 msgid "Unknown spacing argument: "
 msgstr "Ukjent argument til linjeavstand: "
 
-#: src/BufferView_pimpl.C:3178
+#: src/BufferView_pimpl.C:3201
 msgid "Word `"
 msgstr "Ord `"
 
-#: src/BufferView_pimpl.C:3334
+#: src/BufferView_pimpl.C:3357
 msgid "Unknown function!"
 msgstr "Ukjent operasjon!"
 
-#: src/BufferView_pimpl.C:3597 src/BufferView_pimpl.C:3600
+#: src/BufferView_pimpl.C:3620 src/BufferView_pimpl.C:3623
 msgid "No more insets"
 msgstr "Ingen flere insets"
 
@@ -3091,7 +3091,7 @@ msgid "&Apply"
 msgstr "&Bruk"
 
 #: src/ext_l10n.h:601 src/frontends/qt2/QCitation.C:45
-#: src/frontends/xforms/FormCitation.C:111
+#: src/frontends/xforms/FormCitation.C:117
 msgid "Citation"
 msgstr "Sitering"
 
@@ -4813,22 +4813,13 @@ msgstr "List over algoritmer"
 msgid "Loading font into X-Server..."
 msgstr "Laster font inn i X-serveren..."
 
-#: src/frontends/controllers/biblio.C:197
+#: src/frontends/controllers/biblio.C:213
 msgid " and "
 msgstr " og "
 
-#: src/frontends/controllers/biblio.C:199
+#: src/frontends/controllers/biblio.C:215
 msgid " et al."
 msgstr " et al."
-
-#: src/frontends/controllers/biblio.C:204
-msgid "Caesar et al."
-msgstr "Caesar et al."
-
-#: src/frontends/controllers/biblio.C:525
-#: src/frontends/controllers/biblio.C:581
-msgid "No database"
-msgstr "Ingen database"
 
 #: src/frontends/controllers/character.C:34
 #: src/frontends/controllers/character.C:54
@@ -5243,7 +5234,7 @@ msgid "Select a BibTeX database to add"
 msgstr "Select a BibTeX database to add"
 
 #: src/frontends/qt2/QCitationDialog.C:48
-#: src/frontends/xforms/FormCitation.C:465
+#: src/frontends/xforms/FormCitation.C:476
 msgid "Not yet supported"
 msgstr "Not yet supported"
 
@@ -5777,23 +5768,23 @@ msgid "Restore|#R"
 msgstr "Sett tilbake|#S"
 
 #. set up the tooltip mechanism
-#: src/frontends/xforms/FormCitation.C:176
+#: src/frontends/xforms/FormCitation.C:187
 msgid "Add the selected entry to the current citation reference."
 msgstr "Add the selected entry to the current citation reference."
 
-#: src/frontends/xforms/FormCitation.C:179
+#: src/frontends/xforms/FormCitation.C:190
 msgid "Delete the selected entry from the current citation reference."
 msgstr "Delete the selected entry from the current citation reference."
 
-#: src/frontends/xforms/FormCitation.C:182
+#: src/frontends/xforms/FormCitation.C:193
 msgid "Move the selected entry upwards (in the current list)."
 msgstr "Move the selected entry upwards (in the current list)."
 
-#: src/frontends/xforms/FormCitation.C:185
+#: src/frontends/xforms/FormCitation.C:196
 msgid "Move the selected entry downwards (in the current list)."
 msgstr "Move the selected entry downwards (in the current list)."
 
-#: src/frontends/xforms/FormCitation.C:188
+#: src/frontends/xforms/FormCitation.C:199
 msgid ""
 "The entries which will be cited. Select them with the arrow buttons from the "
 "right browser window."
@@ -5801,7 +5792,7 @@ msgstr ""
 "The entries which will be cited. Select them with the arrow buttons from the "
 "right browser window."
 
-#: src/frontends/xforms/FormCitation.C:191
+#: src/frontends/xforms/FormCitation.C:202
 msgid ""
 "All entries in the database you have loaded (via \"Insert->Lists&TOC->BibTex "
 "Reference\"). Move the ones you want to cite with the arrow buttons into the "
@@ -5811,11 +5802,11 @@ msgstr ""
 "Reference\"). Move the ones you want to cite with the arrow buttons into the "
 "left browser window."
 
-#: src/frontends/xforms/FormCitation.C:194
+#: src/frontends/xforms/FormCitation.C:205
 msgid "Information about the selected entry"
 msgstr "Information about the selected entry"
 
-#: src/frontends/xforms/FormCitation.C:197
+#: src/frontends/xforms/FormCitation.C:208
 msgid ""
 "Here you may select how the citation label should look inside the text "
 "(Natbib)."
@@ -5823,7 +5814,7 @@ msgstr ""
 "Here you may select how the citation label should look inside the text "
 "(Natbib)."
 
-#: src/frontends/xforms/FormCitation.C:200
+#: src/frontends/xforms/FormCitation.C:211
 msgid ""
 "Activate if you want to print all authors in a reference with more than "
 "three authors, and not \"<First Author> et.al.\" (Natbib)."
@@ -5831,7 +5822,7 @@ msgstr ""
 "Activate if you want to print all authors in a reference with more than "
 "three authors, and not \"<First Author> et.al.\" (Natbib)."
 
-#: src/frontends/xforms/FormCitation.C:203
+#: src/frontends/xforms/FormCitation.C:214
 msgid ""
 "Activate if you want to print the first character of the author name as "
 "uppercase (\"Van Gogh\", not \"van Gogh\"). Useful at the beginning of "
@@ -5841,23 +5832,23 @@ msgstr ""
 "uppercase (\"Van Gogh\", not \"van Gogh\"). Useful at the beginning of "
 "sentences (Natbib)."
 
-#: src/frontends/xforms/FormCitation.C:206
+#: src/frontends/xforms/FormCitation.C:217
 msgid ""
 "Optional text which appears before the citation reference, e.g. \"see <Ref>\""
 msgstr ""
 "Optional text which appears before the citation reference, e.g. \"see <Ref>\""
 
-#: src/frontends/xforms/FormCitation.C:209
+#: src/frontends/xforms/FormCitation.C:220
 msgid ""
 "Optional text which appears after the citation reference, e.g. \"pp. 12\""
 msgstr ""
 "Optional text which appears after the citation reference, e.g. \"pp. 12\""
 
-#: src/frontends/xforms/FormCitation.C:212
+#: src/frontends/xforms/FormCitation.C:223
 msgid "Search your database (all fields will be searched)."
 msgstr "Search your database (all fields will be searched)."
 
-#: src/frontends/xforms/FormCitation.C:215
+#: src/frontends/xforms/FormCitation.C:226
 msgid ""
 "Activate if you want to have case sensitive search: \"bibtex\" finds \"bibtex"
 "\", but not \"BibTeX\"."
@@ -5865,7 +5856,7 @@ msgstr ""
 "Activate if you want to have case sensitive search: \"bibtex\" finds \"bibtex"
 "\", but not \"BibTeX\"."
 
-#: src/frontends/xforms/FormCitation.C:218
+#: src/frontends/xforms/FormCitation.C:229
 msgid "Activate if you want to enter Regular Expressions."
 msgstr "Activate if you want to enter Regular Expressions."
 
@@ -8305,52 +8296,62 @@ msgstr "fot"
 msgid "Opened Footnote Inset"
 msgstr "Åpnet fotnote"
 
-#: src/insets/insetgraphics.C:180
+#: src/insets/insetgraphics.C:181
 msgid "Waiting for draw request to start loading..."
 msgstr "Waiting for draw request to start loading..."
 
-#: src/insets/insetgraphics.C:183
+#: src/insets/insetgraphics.C:184
 msgid "Loading..."
 msgstr "Leser..."
 
-#: src/insets/insetgraphics.C:186
+#: src/insets/insetgraphics.C:187
 msgid "Converting to loadable format..."
 msgstr "Converting to loadable format..."
 
-#: src/insets/insetgraphics.C:189
+#: src/insets/insetgraphics.C:190
 msgid "Loaded. Scaling etc..."
 msgstr "Loaded. Scaling etc..."
 
-#: src/insets/insetgraphics.C:192
+#: src/insets/insetgraphics.C:193
 msgid "No file found!"
 msgstr "No file found!"
 
-#: src/insets/insetgraphics.C:195
+#: src/insets/insetgraphics.C:196
 msgid "Error loading file into memory"
 msgstr "Error loading file into memory"
 
-#: src/insets/insetgraphics.C:198
+#: src/insets/insetgraphics.C:199
 msgid "Error converting to loadable format"
 msgstr "Error converting to loadable format"
 
-#: src/insets/insetgraphics.C:201
+#: src/insets/insetgraphics.C:202
 msgid "Error scaling etc"
 msgstr "Error scaling etc"
 
-#: src/insets/insetgraphics.C:204
+#: src/insets/insetgraphics.C:205
 msgid "No image"
 msgstr "No image"
 
-#: src/insets/insetgraphics.C:207
+#: src/insets/insetgraphics.C:208
 msgid "Loaded but not displaying"
 msgstr "Loaded but not displaying"
+
+#: src/insets/insetgraphics.C:645
+#, fuzzy
+msgid "Cannot copy file"
+msgstr "Kan ikke åpne fil"
+
+#: src/insets/insetgraphics.C:646
+#, fuzzy
+msgid "into tempdir"
+msgstr "Temp dir"
 
 #. No graphics in ascii output. Possible to use gifscii to convert
 #. images to ascii approximation.
 #. 1. Convert file to ascii using gifscii
 #. 2. Read ascii output file and add it to the output stream.
 #. at least we send the filename
-#: src/insets/insetgraphics.C:715
+#: src/insets/insetgraphics.C:768
 msgid "Graphic file:"
 msgstr "Grafikkfil"
 
@@ -9379,7 +9380,7 @@ msgstr "Unknown function ("
 msgid "Saving document"
 msgstr "Lagrer dokument"
 
-#: src/lyxfunc.C:1268 src/mathed/formulabase.C:922
+#: src/lyxfunc.C:1268 src/mathed/formulabase.C:940
 msgid "Missing argument"
 msgstr "Mangler argument"
 
@@ -10231,11 +10232,11 @@ msgstr "Ønsker du fortsatt å gjøre det?"
 msgid " (read only)"
 msgstr " (skrivebeskyttet)"
 
-#: src/mathed/formulabase.C:151 src/mathed/formulabase.C:896
+#: src/mathed/formulabase.C:151 src/mathed/formulabase.C:914
 msgid "Math editor mode"
 msgstr "Matte editerings modus"
 
-#: src/mathed/formulabase.C:639
+#: src/mathed/formulabase.C:657
 msgid "Invalid action in math mode!"
 msgstr "Ugyldig operasjon i matte modus!"
 
@@ -10393,3 +10394,9 @@ msgstr "Ny side (bunn)"
 #: src/text.C:3528
 msgid "Space below"
 msgstr "Space below"
+
+#~ msgid "Caesar et al."
+#~ msgstr "Caesar et al."
+
+#~ msgid "No database"
+#~ msgstr "Ingen database"
