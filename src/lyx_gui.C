@@ -173,6 +173,7 @@ LyXGUI::LyXGUI(LyX * owner, int * argc, char * argv[], bool GUI)
 	static const int num_res = sizeof(res)/sizeof(FL_resource);
 	fl_initialize(argc, argv, "LyX", cmdopt, num_res);
 	fl_get_app_resources(res, num_res);
+
 	Display * display = fl_get_display();
 	if (!display) {
 		lyxerr << "LyX: unable to access X display, exiting" << endl;

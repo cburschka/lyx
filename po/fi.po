@@ -6,14 +6,14 @@
 # Terminology and spelling should be quite correct now, and the
 # finnish is now more fluent. Keyboard shortcuts (in menus and
 # dialogs) are mostly working.
-#	-- Pauli Virtanen, 25 December 1999
+#	-- Pauli Virtanen, 20 January 2000
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: lyx-1.1.3\n"
+"Project-Id-Version: lyx-1.1.4pre2\n"
 "POT-Creation-Date: 2000-01-20 02:44+0100\n"
-"PO-Revision-Date: 2000-01-20 02:56+01:00\n"
-"Last-Translator: Pauli Virtanen <pauli.virtanen@saunalahti.fi>\n"
+"PO-Revision-Date: 2000-01-07 22:24+02:00\n"
+"Last-Translator: pauli.virtanen@saunalahti.fi\n"
 "Language-Team: Finnish, out-of-team\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=ISO-8859-1\n"
@@ -71,7 +71,7 @@ msgstr "Varoitus!"
 
 #: src/buffer.C:1144
 msgid "Reading of document is not complete"
-msgstr "Asiakirjan lukeminen ei ole vielä valmis"
+msgstr "Asiakirjan luku ei ole vielä valmis"
 
 #: src/buffer.C:1145
 msgid "Maybe the document is truncated"
@@ -84,7 +84,7 @@ msgstr "VIRHE!"
 
 #: src/buffer.C:1152
 msgid "Old LyX file format found. Use LyX 0.10.x to read this!"
-msgstr "Vanha LyX-formaatti tunnistetty. Lue version 0.10.x avulla!"
+msgstr "Vanha LyX-formaatti tunnistettu. Lue version 0.10.x avulla!"
 
 #: src/buffer.C:1158
 msgid "Not a LyX file!"
@@ -116,7 +116,7 @@ msgstr "Virhe: Väliaikaistiedostoa ei voi avata:"
 
 #: src/buffer.C:1576
 msgid "Error: Cannot open file: "
-msgstr "Virhe: Tiedostoa ei voitu avata:"
+msgstr "Virhe: Tiedostoa ei voi avata:"
 
 #: src/buffer.C:2133 src/buffer.C:2719 src/buffer.C:3480 src/buffer.C:3502
 #: src/paragraph.C:3588
@@ -125,7 +125,7 @@ msgstr "LYX_VIRHE:"
 
 #: src/buffer.C:2133 src/buffer.C:2719
 msgid "Cannot write file"
-msgstr "Tiedostoon ei voitu kirjoittaa"
+msgstr "Tiedostoon ei voi kirjoittaa"
 
 #: src/buffer.C:2205 src/buffer.C:2798
 msgid "Error : Wrong depth for LatexType Command.\n"
@@ -179,7 +179,7 @@ msgstr "chktex ei toiminut!"
 
 #: src/buffer.C:3383
 msgid "Could not run with file:"
-msgstr "Tiedoston kanssa ei voitu ajaa:"
+msgstr "Ohjelma ei voinut käsitellä tiedostoa:"
 
 #: src/buffer.C:3481 src/buffer.C:3503 src/paragraph.C:3589
 msgid "Cannot open temporary file:"
@@ -234,7 +234,7 @@ msgstr "Asiakirja tallennettiin nimellä"
 
 #: src/bufferlist.C:216
 msgid "Could not delete auto-save file!"
-msgstr "Automaattista tallennustiedostoa ei voitu poistaa!"
+msgstr "Automaattista tallennustiedostoa ei voi poistaa!"
 
 #: src/bufferlist.C:226
 msgid "Save failed!"
@@ -258,11 +258,11 @@ msgstr "  Tallennus epäonnistui! Yritetään..."
 
 #: src/bufferlist.C:396
 msgid "  Save failed! Bummer. Document is lost."
-msgstr "  Tallennus epäonnistui! Dokumenttia ei voitu palauttaa."
+msgstr "  Tallennus epäonnistui! Asiakirjaa ei voitu palauttaa."
 
 #: src/bufferlist.C:425
 msgid "An emergency save of this document exists!"
-msgstr "Dokumentin hätätallennusversio on olemassa!"
+msgstr "Asiakirjasta on olemassa hätätallennusversio!"
 
 #: src/bufferlist.C:427
 msgid "Try to load that instead?"
@@ -278,11 +278,11 @@ msgstr "Ladataanko se mieluummin?"
 
 #: src/bufferlist.C:516
 msgid "Unable to open template"
-msgstr "Mallitiedostoa ei voitu avata"
+msgstr "Mallitiedostoa ei voi avata"
 
 #: src/bufferlist.C:547
 msgid "Could not convert file"
-msgstr "Tiedostoa ei voitu muuntaa"
+msgstr "Tiedostoa ei voi muuntaa"
 
 #: src/bufferlist.C:560 src/lyxfunc.C:2477 src/lyxfunc.C:2616
 #: src/lyxfunc.C:2695
@@ -304,9 +304,8 @@ msgstr "' on kirjoitussuojattu."
 #. Ask if the file should be checked out for
 #. viewing/editing, if so: load it.
 #: src/bufferlist.C:594
-#, fuzzy
 msgid "Do you want to retrive file under version control?"
-msgstr "Rekisteröi asiakirja versionhallintaan"
+msgstr "Haluatko rekisteröidä asiakirjan versionhallintaan?"
 
 #: src/bufferlist.C:602
 msgid "Cannot open specified file:"
@@ -946,7 +945,7 @@ msgstr "Asiakirjat"
 #. Use by default the master's path
 #: src/insets/insetinclude.C:114
 msgid "Select Child Document"
-msgstr "Valitse alidokumentti"
+msgstr "Valitse aliasiakirja"
 
 #: src/insets/insetinclude.C:258 src/insets/insetinclude.C:293
 msgid "Include"
@@ -969,7 +968,6 @@ msgid "Index"
 msgstr "Hakusana"
 
 #: src/insets/insetindex.C:111
-#, fuzzy
 msgid "Idx"
 msgstr "Hakusana"
 
@@ -1071,7 +1069,7 @@ msgstr "Ajetaan BibTeX:iä."
 
 #: src/LaTeXLog.C:44
 msgid "Unable to show log file!"
-msgstr "Lokitiedostoa ei voitu näyttää!"
+msgstr "Lokitiedostoa ei voi näyttää!"
 
 #: src/LaTeXLog.C:47
 msgid "NO LATEX LOG FILE!"
@@ -2074,7 +2072,7 @@ msgstr "Peruttu."
 
 #: src/lyx_cb.C:340
 msgid "Same name as document already has:"
-msgstr "Sama nimi kuin dokumentilla on jo:"
+msgstr "Sama nimi kuin asiakirjalla jo on:"
 
 #: src/lyx_cb.C:342
 msgid "Save anyway?"
@@ -2130,7 +2128,7 @@ msgstr "Väärä asiakirjatyyppi"
 
 #: src/lyx_cb.C:420
 msgid "The Build operation is not allowed in this document"
-msgstr "Toiminto `Build' ei ole sallittu tässä dokumentissa"
+msgstr "Toiminto `Build' ei ole sallittu tälle asiakirjalle"
 
 #: src/lyx_cb.C:421 src/lyx_cb.C:436
 msgid "There were errors during the Build process."
@@ -2314,11 +2312,11 @@ msgstr "Haluatko tallentaa tämänhetkiset tyyliasetukset"
 
 #: src/lyx_cb.C:2080
 msgid "for Character, Document, Paper and Quotes"
-msgstr "merkille, dokumentille, paperille ja lainausmerkeille"
+msgstr "merkille, asiakirjalle, paperille ja lainausmerkeille"
 
 #: src/lyx_cb.C:2081
 msgid "as default for new documents?"
-msgstr "dokumentin oletusarvoiksi?"
+msgstr "uusien asiakirjojen oletusarvoiksi?"
 
 #: src/lyx_cb.C:2097 src/lyx_cb.C:2110
 msgid "Open/Close..."
@@ -2395,7 +2393,7 @@ msgstr "Yhtä kappaletta ei voitu muuntaa"
 
 #: src/lyx_cb.C:2944
 msgid " paragraphs couldn't be converted"
-msgstr " kappaletta ei voitu muunnetaa"
+msgstr " kappaletta ei voitu muuntaa"
 
 #: src/lyx_cb.C:2947
 msgid "into chosen document class"
@@ -2503,7 +2501,7 @@ msgstr "*** Ei asiakirjaa ***"
 
 #: src/lyx_cb.C:3923
 msgid "*** No labels found in document ***"
-msgstr "*** Ei nimikkeitä asiakirjassa ***"
+msgstr "*** Asiakirjassa ei ole nimikkeitä ***"
 
 #: src/lyxfont.C:39
 msgid "Roman"
@@ -2856,9 +2854,8 @@ msgid "Unknown kind of footnote"
 msgstr "Tuntematon alaviitetyyppi"
 
 #: src/lyxfunc.C:2360
-#, fuzzy
 msgid "No document open"
-msgstr "* Ei ole avoimia dokumentteja *"
+msgstr "Avoimia asiakirjoja ei ole"
 
 #: src/lyxfunc.C:2366
 msgid "Document is read only"
@@ -2907,7 +2904,7 @@ msgstr "Valitse avattava asiakirja"
 
 #: src/lyxfunc.C:2576
 msgid "Could not open document"
-msgstr "Asiakirjaa ei voitu avata"
+msgstr "Asiakirjaa ei voi avata"
 
 #: src/lyxfunc.C:2599
 msgid "Select ASCII file to Import"
@@ -2959,11 +2956,11 @@ msgstr "LaTeX-tiedosto"
 
 #: src/lyxfunc.C:2745
 msgid "Could not import Noweb file"
-msgstr "Noweb-tiedostoa ei voitu tuoda"
+msgstr "Noweb-tiedostoa ei voi tuoda"
 
 #: src/lyxfunc.C:2746
 msgid "Could not import LaTeX file"
-msgstr "LaTeX-tiedostoa ei voitu tuoda"
+msgstr "LaTeX-tiedostoa ei voi tuoda"
 
 #: src/lyxfunc.C:2773
 msgid "Select Document to Insert"
@@ -2980,7 +2977,7 @@ msgstr "lisätty."
 
 #: src/lyxfunc.C:2799
 msgid "Could not insert document"
-msgstr "Asiakirjaa ei voitu lisätä"
+msgstr "Asiakirjaa ei voi lisätä"
 
 #: src/lyx_gui.C:381 src/lyx_gui.C:384
 msgid " None | Defskip | Smallskip | Medskip | Bigskip | VFill | Length "
@@ -3319,7 +3316,7 @@ msgstr "Puhelinluettelo"
 
 #: src/LyXSendto.C:38
 msgid "Send Document to Command"
-msgstr "Lähetä dokumentti komentoon"
+msgstr "Lähetä asiakirja komentoon"
 
 #: src/lyxvc.C:93 src/lyxvc.C:125
 msgid "Save document and proceed?"
@@ -3347,7 +3344,7 @@ msgstr "LyX VC: Lokiviesti"
 
 #: src/lyxvc.C:140
 msgid "(no log message)"
-msgstr ""
+msgstr "(ei lokiviestejä)"
 
 #: src/lyxvc.C:155
 msgid "Ignore changes and proceed with check out?"
@@ -4430,7 +4427,7 @@ msgstr "OM|uU#u#U"
 
 #: src/menus.C:1569
 msgid "No Documents Open!%t"
-msgstr "Ei ole avoimia asiakirjoja!%t"
+msgstr "Avoimia asiakirjoja ei ole!%t"
 
 #: src/menus.C:1603
 msgid ""
@@ -4503,9 +4500,8 @@ msgid "User directory: "
 msgstr "Käyttäjän hakemisto:"
 
 #: src/menus.C:1666
-#, fuzzy
 msgid "Could not find requested Documentation file"
-msgstr "Asiakirjaa ei voitu lisätä"
+msgstr "Haluttua asiakirjaa ei voitu lyötää."
 
 #: src/menus.C:1670
 msgid "Opening help file"
@@ -4522,7 +4518,7 @@ msgstr "Tervetuloa LyXiin!"
 #. this is a hack
 #: src/minibuffer.C:221
 msgid "* No document open *"
-msgstr "* Ei ole avoimia dokumentteja *"
+msgstr "* Avoimia asiakirjoja ei ole *"
 
 #: src/PaperLayout.C:153
 msgid "Document is read-only.  No changes to layout permitted."
@@ -4662,7 +4658,7 @@ msgstr ""
 "\n"
 "\n"
 "ispell-prosessi kuoli jostakin syystä. Olettehan asentanut\n"
-"tämän dokumentin kielen sanastoon? Tarkista /usr/lib/ispell, tai\n"
+"tämän asiakirjan kielen sanastoon? Tarkista /usr/lib/ispell, tai\n"
 "valitse toinen sanasto oikoluku-valikosta."
 
 #: src/spellchecker.C:774
@@ -4765,7 +4761,7 @@ msgstr "100 %"
 
 #: src/sp_form.C:113
 msgid "Replace word|#R"
-msgstr "r Korvaa sana|#R"
+msgstr "Korvaa sana|#R"
 
 #: src/support/filetools.C:174
 msgid "LyX Internal Error!"
@@ -4809,7 +4805,7 @@ msgstr "tuntematon"
 
 #: src/support/path.h:21 src/support/path.h:43
 msgid "Error: Could not change to directory: "
-msgstr "Virhe: Ei voitu siirtyä hakemistoon: "
+msgstr "Virhe: Hakemistoon ei voitu siirtyä: "
 
 #: src/support/path.h:37
 msgid "Error: Dir already popped: "
@@ -4883,8 +4879,7 @@ msgstr "Sarakkeiden yhdistäminen toimii vain vaakasuuntaan."
 
 #: src/text.C:2292 src/text.C:2320
 msgid "You cannot type two spaces this way.  Please read the Tutorial."
-msgstr ""
-"Kahta perättäistä välilyöntiä ei voi laittaa tällä tavoin. Ks. Opastus."
+msgstr "Kahta perättäistä välilyöntiä ei voi lisätä näin. Ks. Opastus."
 
 #: src/text.C:2318
 msgid ""
@@ -4894,11 +4889,11 @@ msgstr "Kappaleen alkuun ei voi laittaa välilöyntiä. Ks. Opastus."
 
 #: src/text.C:3947
 msgid "You can't insert a float in a float!"
-msgstr "Ei voi laittaa irrallista osaa irrallisen sisään!"
+msgstr "Irrallista osaa ei voi laittaa irrallisen sisään!"
 
 #: src/text.C:3955
 msgid "You can't insert a marginpar in a minipage!"
-msgstr "Ei voi laittaa marginpar:ia pienoissivun sisään!"
+msgstr "Marginpar:ia ei voi laittaa pienoissivun sisään!"
 
 #: src/text.C:3971
 msgid "Cannot cut table."

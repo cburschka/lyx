@@ -179,10 +179,14 @@ bool BufferList::write(Buffer * buf, bool makeBackup)
 			ifstream ifs(buf->fileName().c_str());
 			ofstream ofs(s.c_str(), ios::out|ios::trunc);
 			if (ifs && ofs) {
+#if 1
+				ofs << ifs.rdbuf();
+#else
 				char c = 0;
 				while (ifs.get(c)) {
 					ofs.put(c);
 				}
+#endif
 				ifs.close();
 				ofs.close();
 				chmod(s.c_str(), fmode);

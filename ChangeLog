@@ -1,5 +1,8 @@
 2000-01-21  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
+	* src/bufferlist.C (write): use blinding fast file copy instead of
+	"a char at a time", now we are doing it the C++ way.
+
 	* src/insets/figinset.C: get rid of struct pidwaitpit, use a
 	std::list<int> instead.
 	(addpidwait): reflect move to std::list<int>
