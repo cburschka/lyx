@@ -74,7 +74,7 @@ string const convert_brace_glob(string const & glob)
 
 	return pattern;
 }
- 
+
 } // namespace anon
 
 
@@ -98,7 +98,7 @@ FileFilterList::Filter::Filter(std::string const & description,
 	globs_ = vector<string>(tokens.begin(), tokens.end());
 }
 
-		
+
 FileFilterList::FileFilterList(string const & qt_style_filter)
 {
 	string const filter = qt_style_filter
@@ -171,7 +171,7 @@ string const FileFilterList::as_string() const
 				ss << ' ';
 			ss << *git;
 		}
-		
+
 		if (has_description)
 			ss << ')';
 	}

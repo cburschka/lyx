@@ -19,11 +19,16 @@ namespace lyx {
 namespace support {
 
 /** A wrapper for the Posix function 'glob'.
+ *  \param matches files found to match \c pattern are appended.
  *  \param pattern the glob to be expanded. Eg "*.[Ch]".
+ *  \param working_dir the starting directory from which \c pattern
+ *  is to be expanded. Used only if \c pattern is a relative path.
  *  \param flags flags to be passed to the system function. See 'man glob'.
- *  \returns a vector of the files found to match \c pattern.
  */
-std::vector<std::string> const glob(std::string const & pattern, int flags = 0);
+void glob(std::vector<std::string> & matches,
+	  std::string const & pattern,
+	  std::string const & working_dir,
+	  int flags = 0);
 
 } // namespace support
 } // namespace lyx

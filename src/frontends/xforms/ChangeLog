@@ -1,5 +1,10 @@
 2004-11-26  Angus Leeming  <leeming@lyx.org>
 
+	* FormFiledialog.C (expand_globs): changes due to the changed
+	lyx::support::glob API.
+
+2004-11-26  Angus Leeming  <leeming@lyx.org>
+
 	* FileDialog.C:
 	* FormFiledialog.C: changes due to the changed FileFilterList API.
 

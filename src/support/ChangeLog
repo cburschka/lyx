@@ -1,5 +1,12 @@
 2004-11-26  Angus Leeming  <leeming@lyx.org>
 
+	* globbing.[Ch] (glob): change API to:
+	1. Append matches to the input container.
+	2. Require a working_dir parameter. The function invokes chdir
+	internally (through use of Path).
+
+2004-11-26  Angus Leeming  <leeming@lyx.org>
+
 	* filefilterlist.C (convert_brace_glob): moved here from
 	globbing.[Ch].
 

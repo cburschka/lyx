@@ -25,7 +25,6 @@
 #include "support/globbing.h"
 #include "support/lstrings.h"
 #include "support/lyxlib.h"
-#include "support/path.h"
 #include "support/tostr.h"
 
 #include "lyx_forms.h"
@@ -70,7 +69,6 @@ using lyx::support::GetEnvPath;
 using lyx::support::LyXReadLink;
 using lyx::support::MakeAbsPath;
 using lyx::support::OnlyFilename;
-using lyx::support::Path;
 using lyx::support::split;
 using lyx::support::subst;
 using lyx::support::suffixIs;
@@ -99,8 +97,6 @@ namespace {
 vector<string> const expand_globs(string const & mask,
 				  string const & directory)
 {
-	Path p(directory);
-
 	// Split into individual globs and then call 'glob' on each one.
 	typedef boost::tokenizer<boost::char_separator<char> > Tokenizer;
 	boost::char_separator<char> const separator(" ");
@@ -109,10 +105,9 @@ vector<string> const expand_globs(string const & mask,
 	Tokenizer const tokens(mask, separator);
 	Tokenizer::const_iterator it = tokens.begin();
 	Tokenizer::const_iterator const end = tokens.end();
-	for (; it != end; ++it) {
-		vector<string> const tmp = lyx::support::glob(*it);
-		matches.insert(matches.end(), tmp.begin(), tmp.end());
-	}
+	for (; it != end; ++it)
+		lyx::support::glob(matches, *it, directory);
+
 	return matches;
 }
 
@@ -455,7 +450,7 @@ void FileDialog::Private::SetFilters(FileFilterList const & filters)
 			ss << ' ';
 		ss << *it;
 	}
-		
+
 	mask_ = ss.str();
 	fl_set_input(file_dlg_form_->PatBox, mask_.c_str());
 }
