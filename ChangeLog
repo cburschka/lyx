@@ -1,3 +1,9 @@
+2001-01-15  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* INSTALL (Problems): add tip about using --with-included-string
+	on solaris 2.6 with gcc 2.95.2 (ld does not like long symbol
+	names). 
+
 2001-01-12  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* ChangeLog: store old and begin new

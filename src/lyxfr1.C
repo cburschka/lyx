@@ -187,7 +187,6 @@ void LyXFindReplace::SearchReplaceAllCB()
 		}
 	} while (SearchCB(true));
 	if (replace_count == 0) {
-		LyXBell();	
 		bv->owner()->getMiniBuffer()->Set(
 			_("String not found!"));
 	} else {
@@ -235,7 +234,6 @@ bool LyXFindReplace::SearchCB(bool fForward)
 		bv->owner()->getMiniBuffer()->Set(_("Found."));
 		result = true;
 	} else {
-		LyXBell();
 		bv->owner()->getMiniBuffer()->Set(_("String not found!"));
 		result = false;
 	}

@@ -78,11 +78,4 @@ void WarnReadonly(string const & file);
 /// Get the dpi setting of the current screen
 float getScreenDPI();
 
-/// rings the audio bell.
-inline
-void LyXBell() {
-	// if (audio()) ON/OFF switch yet to be implemented
-	//fl_ringbell(20);
-}
-
 #endif

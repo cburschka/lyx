@@ -252,7 +252,6 @@ int LyXFunc::processKeySym(KeySym keysym, unsigned int state)
 	if (action == -1) {
 		if (keyseq.length < -1) { // unknown key sequence...
 			string buf;
-			LyXBell();
 			keyseq.print(buf);
 			owner->getMiniBuffer()->Set(_("Unknown sequence:"), buf);
 			return 0;
@@ -711,8 +710,7 @@ string const LyXFunc::Dispatch(int ac,
 			// set the new selection 
 			// SetSelectionOverLenChars(owner->view()->currentBuffer()->text, iLenSelected);
 			owner->view()->toggleSelection(false);
-		} else 
-			LyXBell();	
+		}
 	 
 		// REMOVED : if (owner->view()->getWorkArea()->focus)
 		owner->view()->showCursor();
@@ -2915,7 +2913,6 @@ string const LyXFunc::Dispatch(int ac,
 		string lyx_name;
 		string const x11_name = split(argument, lyx_name, ' ');
 		if (lyx_name.empty() || x11_name.empty()) {
-			LyXBell();
 			setErrorMessage(N_("Syntax: set-color <lyx_name>"
 						" <x11_name>"));
 			break;
@@ -2926,7 +2923,6 @@ string const LyXFunc::Dispatch(int ac,
 			static string const err2 (
 				N_("\" failed - color is undefined "
 				   "or may not be redefined"));
-			LyXBell();
 			setErrorMessage(_(err1) + lyx_name + _(err2));
 			break;
 		}
@@ -2938,13 +2934,11 @@ string const LyXFunc::Dispatch(int ac,
 	case LFUN_UNKNOWN_ACTION:
 	{
 		if (!owner->buffer()) {
-			LyXBell();
 			setErrorMessage(N_("No document open"));
 			break;
 		}
 
 		if (owner->buffer()->isReadonly()) {
-			LyXBell();
 			setErrorMessage(N_("Document is read only"));
 			break;
 		}
@@ -2999,7 +2993,6 @@ string const LyXFunc::Dispatch(int ac,
 			// why is an "Unknown action" with empty
 			// argument even dispatched in the first
 			// place? I`ll probably change that. (Lgb)
-			LyXBell();
 			setErrorMessage(N_("Unknown action"));
 		}
 		break;

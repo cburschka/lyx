@@ -1,3 +1,10 @@
+2000-01-17  John Levon  <moz@compsoc.man.ac.uk>
+
+	* BufferView2.C:
+	* lyx_gui_misc.h:
+	* lyxfr1.C:
+	* lyxfunc.C: kill LyXBell.
+
 2001-01-17  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* WorkArea.C (work_area_handler): Decrease keyboard purge thershold.

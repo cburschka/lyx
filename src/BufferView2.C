@@ -644,11 +644,9 @@ void BufferView::gotoInset(std::vector<Inset::Code> const & codes,
 				if (!text->GotoNextInset(this, codes, contents)) {
 					text->cursor = tmp;
 					owner()->getMiniBuffer()->Set(_("No more insets"));
-					LyXBell();
 				}
 			} else {
 				owner()->getMiniBuffer()->Set(_("No more insets"));
-				LyXBell();
 			}
 	}
 	update(BufferView::SELECT|BufferView::FITCUR);

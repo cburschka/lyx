@@ -783,7 +783,6 @@ InsetText::LocalDispatch(BufferView * bv,
 	// Normal chars
     case LFUN_UNKNOWN_ACTION:
 	if (bv->buffer()->isReadonly()) {
-	    LyXBell();
 //	    setErrorMessage(N_("Document is read only"));
 	    break;
 	}
