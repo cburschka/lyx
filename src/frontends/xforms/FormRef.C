@@ -85,26 +85,37 @@ void FormRef::build()
 	bc_.setUndoAll(dialog_->button_restore);
 	bc_.refresh();
 
-	bc_.addReadOnly(dialog_->type);
-	bc_.addReadOnly(dialog_->name);
+#warning I had to uncomment this so the buttons could be disabled in update() (dekel)
+	//bc_.addReadOnly(dialog_->type);
+	//bc_.addReadOnly(dialog_->name);
 }
 
 
 void FormRef::update()
 {
-	fl_set_input(dialog_->ref,  params.getContents().c_str());
-	fl_set_input(dialog_->name, params.getOptions().c_str());
-
-	if (inset_)
+	if (inset_) {
+		fl_set_input(dialog_->ref,  params.getContents().c_str());
+		fl_set_input(dialog_->name, params.getOptions().c_str());
 		fl_set_choice(dialog_->type, getType()+1);
+	}
 
 	toggle = GOBACK;
 	fl_set_object_label(dialog_->button_go, _("Goto reference"));
 
-	// Name is irrelevant to LaTeX documents
-	if (lv_->buffer()->isLatex()) {
+	// Name is irrelevant to LaTeX/Literate documents, while
+	// type is irrelevant to LinuxDoc/DocBook.
+	if (lv_->buffer()->isLatex() || lv_->buffer()->isLatex()) {
 		fl_deactivate_object(dialog_->name);
 		fl_set_object_lcol(dialog_->name, FL_INACTIVE);
+		fl_activate_object(dialog_->type);
+		fl_set_object_lcol(dialog_->type, FL_BLACK);
+	} else {
+		fl_set_choice(dialog_->type, REF+1);
+
+		fl_activate_object(dialog_->name);
+		fl_set_object_lcol(dialog_->name, FL_BLACK);
+		fl_deactivate_object(dialog_->type);
+		fl_set_object_lcol(dialog_->type, FL_INACTIVE);
 	}
 
 	refs = lv_->buffer()->getLabelList();
@@ -130,29 +141,24 @@ void FormRef::updateBrowser(vector<string> const & akeys) const
 				    _("*** No labels found in document ***"));
 
 		fl_deactivate_object(dialog_->browser);
-		fl_deactivate_object(dialog_->button_update);
 		fl_deactivate_object(dialog_->sort);
 		fl_set_object_lcol(dialog_->browser, FL_INACTIVE);
-		fl_set_object_lcol(dialog_->button_update, FL_INACTIVE);
 		fl_set_object_lcol(dialog_->sort, FL_INACTIVE);
 	} else {
-		fl_set_browser_topline(dialog_->browser, 1);
 		fl_activate_object(dialog_->browser);
 		fl_set_object_lcol(dialog_->browser, FL_BLACK);
-		fl_activate_object(dialog_->button_update);
-		fl_set_object_lcol(dialog_->button_update, FL_BLACK);
 		fl_activate_object(dialog_->sort);
 		fl_set_object_lcol(dialog_->sort, FL_BLACK);
 
 		string ref = fl_get_input(dialog_->ref);
 		vector<string>::const_iterator cit =
 			find(keys.begin(), keys.end(), ref);
+		if (cit == keys.end())
+			cit = keys.begin();
 
-		if (cit != keys.end()) {
-			int const i = static_cast<int>(cit - keys.begin());
-			fl_set_browser_topline(dialog_->browser, max(i-5, 1));
-			fl_select_browser_line(dialog_->browser, i+1);
-		}
+		int const i = static_cast<int>(cit - keys.begin());
+		fl_set_browser_topline(dialog_->browser, max(i-5, 1));
+		fl_select_browser_line(dialog_->browser, i+1);
 	}
 }
 
