@@ -25,6 +25,7 @@
 #include "math_parser.h"
 #include "math_scriptinset.h"
 #include "math_spaceinset.h"
+#include "math_symbolinset.h"
 #include "math_support.h"
 #include "math_unknowninset.h"
 
@@ -1006,6 +1007,9 @@ bool MathNestInset::interpret(LCursor & cur, char c)
 			} else if (c == '{') {
 				cur.backspace();
 				cur.niceInsert(MathAtom(new MathBraceInset));
+			} else if (c == '%') {
+				cur.backspace();
+				cur.niceInsert(MathAtom(new MathSymbolInset("%")));
 			} else if (c == '#') {
 				lyxerr << "setting name to " << name + c << endl;
 				BOOST_ASSERT(cur.activeMacro());
@@ -1088,15 +1092,15 @@ bool MathNestInset::interpret(LCursor & cur, char c)
 		return true;
 	}
 
-	if (c == '{' || c == '}' || c == '&' || c == '$' || c == '#') {
+	if (c == '{' || c == '}' || c == '&' || c == '$' || c == '#' || c == '%') {
 		cur.niceInsert(createMathInset(string(1, c)));
 		return true;
 	}
 
-	if (c == '%') {
-		cur.niceInsert(MathAtom(new MathCommentInset));
-		return true;
-	}
+	//if (c == '%') {
+	//	cur.niceInsert(MathAtom(new MathCommentInset));
+	//	return true;
+	//}
 
 	// try auto-correction
 	//if (autocorrect() && hasPrevAtom() && math_autocorrect(prevAtom(), c))

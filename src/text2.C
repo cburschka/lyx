@@ -854,13 +854,13 @@ void LyXText::updateCounters()
 }
 
 
+// this really should just inset the inset and not move the cursor.
 void LyXText::insertInset(LCursor & cur, InsetBase * inset)
 {
 	BOOST_ASSERT(this == cur.text());
 	BOOST_ASSERT(inset);
 	cur.paragraph().insertInset(cur.pos(), inset);
 	redoParagraph(cur);
-	setCursor(cur, cur.par(), cur.pos() + 1, false, cur.boundary());
 }
 
 

@@ -137,7 +137,9 @@ namespace {
 		lyxerr << "selection is: '" << sel << "'" << endl;
 
 		if (sel.empty()) {
+			const int old_pos = cur.pos();
 			cur.insert(new MathHullInset);
+			BOOST_ASSERT(old_pos == cur.pos());
 			cur.nextInset()->edit(cur, true);
 			cur.dispatch(FuncRequest(LFUN_MATH_MUTATE, "simple"));
 			// don't do that also for LFUN_MATH_MODE unless you want end up with
@@ -351,8 +353,10 @@ void doInsertInset(LCursor & cur, LyXText * text,
 		gotsel = true;
 	}
 	text->insertInset(cur, inset);
+
 	if (edit)
 		inset->edit(cur, true);
+
 	if (gotsel && pastesel)
 		cur.bv().owner()->dispatch(FuncRequest(LFUN_PASTE));
 }
@@ -792,8 +796,10 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 	case LFUN_INSET_INSERT: {
 		recordUndo(cur);
 		InsetBase * inset = createInset(bv, cmd);
-		if (inset)
+		if (inset) {
 			insertInset(cur, inset);
+			cur.posRight();
+		}
 		break;
 	}
 
@@ -1031,8 +1037,9 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 				cur.insert(new InsetQuotes(c,
 				    bufparams.quotes_language,
 				    InsetQuotes::DoubleQ));
-			else
+			else 
 				cur.insert(new InsetQuotes(c, bufparams));
+			cur.posRight();
 		}
 		else
 			bv->owner()->dispatch(FuncRequest(LFUN_SELFINSERT, "\""));
@@ -1275,11 +1282,13 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		// Open the inset, and move the current selection
 		// inside it.
 		doInsertInset(cur, this, cmd, true, true);
+		cur.posRight();
 		break;
 
 	case LFUN_INDEX_INSERT:
 		// Just open the inset
 		doInsertInset(cur, this, cmd, true, false);
+		cur.posRight();
 		break;
 
 	case LFUN_INDEX_PRINT:
@@ -1289,6 +1298,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 	case LFUN_INSERT_PAGEBREAK:
 		// do nothing fancy
 		doInsertInset(cur, this, cmd, false, false);
+		cur.posRight();
 		break;
 
 	case LFUN_DEPTH_MIN:
