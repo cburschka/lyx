@@ -16,7 +16,7 @@
 #include "ControlGraphics.h"
 #include "forms/form_graphics.h"
 
-#include "controllers/helper_funcs.h" // for getStringFromVector
+#include "controllers/helper_funcs.h"
 
 #include "checkedwidgets.h"
 #include "input_validators.h"

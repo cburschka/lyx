@@ -35,10 +35,10 @@ argument:
 class: FL_TABFOLDER
 type: TOP_TABFOLDER
 box: 0 5 395 260
-boxtype: FL_FRAME_BOX
+boxtype: FL_FLAT_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_TOP_LEFT
-style: FL_NORMAL_STYLE
+style: FL_BOLD_STYLE
 size: FL_NORMAL_SIZE
 lcol: FL_BLACK
 label: Tabbed folder
