@@ -1,3 +1,8 @@
+2002-07-01  Claus Hentschel  <claus.hentschel@mbau.fh-hannover.de>
+
+	* insetgraphics.C (latex): make sure file name is in os native
+	form
+
 2002-05-17  Herbert Voss  <voss@lyx.org>
 
 	* insetgraphics.C: add the forgotten vertical relative Lengths

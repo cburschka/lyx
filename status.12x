@@ -36,6 +36,9 @@ What's new
 
 - fix bug where error insets were not correctly removed
 
+- fix bug where using case changing commands on the last word of a
+  paragraph would change the whole document (without any undo possible!)
+
 - in commands that operate on words (Insert>Index...), make sure not
   to include insets in words
 
@@ -93,6 +96,9 @@ What's new
 - fix use of alignment commands in moving arguments (for LaTeX output)
 
 - fix interaction between sixpack and LyX via lyxserver
+
+- merge patches for win32 that were in 1.2.0 release from Claus
+  Hentschel 
 
 - fix command line crash and give useful exit status on some errors
 

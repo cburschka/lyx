@@ -101,6 +101,7 @@ TODO Before initial production release:
 #include "support/filetools.h"
 #include "support/lyxalgo.h" // lyx::count
 #include "support/path.h"
+#include "support/os.h"
 
 #include <algorithm> // For the std::max
 
@@ -789,7 +790,7 @@ int InsetGraphics::latex(Buffer const *buf, ostream & os,
 	// and remove the extension so the LaTeX will use whatever is
 	// appropriate (when there are several versions in different formats)
 	string const latex_str = message.empty() ?
-		(before + '{' + prepareFile(buf) + '}' + after) :
+		(before + '{' + os::external_path(prepareFile(buf)) + '}' + after) :
 		(before + '{' + params().filename + " not found!}" + after);
 	os << latex_str;
 

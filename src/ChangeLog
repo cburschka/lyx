@@ -1,3 +1,8 @@
+2002-06-20  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* text.C (changeRegionCase): do not change case of all the
+	document when region ends at paragraph end (bug #461)
+
 2002-07-01  André Pönitz <poenitz@gmx.net>
 
 	* lyxfunc.C (getStatus):  fix menu feedback for alignat, xalignat

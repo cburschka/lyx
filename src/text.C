@@ -2610,6 +2610,11 @@ void LyXText::changeRegionCase(BufferView * bview,
 	Paragraph * par = from.par();
 
 	while (par && (pos != to.pos() || par != to.par())) {
+		if (pos == par->size()) {
+			par = par->next();
+			pos = 0;
+			continue;
+		}
 		unsigned char c = par->getChar(pos);
 		if (!IsInsetChar(c) && !IsHfillChar(c)) {
 			switch (action) {
@@ -2629,10 +2634,6 @@ void LyXText::changeRegionCase(BufferView * bview,
 		checkParagraph(bview, par, pos);
 
 		++pos;
-		if (pos == par->size()) {
-			par = par->next();
-			pos = 0;
-		}
 	}
 	if (to.row() != from.row()) {
 		refresh_y = from.y() - from.row()->baseline();
