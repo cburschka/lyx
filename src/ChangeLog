@@ -1,3 +1,7 @@
+2001-10-15  Herbert Voss  <voss@perce.de>
+
+	* vspace.C (asLatexString): fix bug in output of string for l% and p%.
+
 2001-10-11  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* lyxfunc.C (getStatus): disable thesaurus when aiksaurus library
