@@ -1,5 +1,12 @@
 2004-12-14  Angus Leeming  <leeming@lyx.org>
 
+	* qgridview.h (class QGridView): remove invalid Q_EXPORT declaration
+	as it breaks compilation of the generated qgridview_moc.C on
+	Windows machines. Has no effect on *nix machines where Q_EXPORT expands
+	to an empty string.
+
+2004-12-14  Angus Leeming  <leeming@lyx.org>
+
 	* Makefile.am (AM_CPPFLAGS):
 	* moc/Makefile.am (AM_CPPFLAGS): Remove trailing slash from -Ifoo/
 	to overcome bug in the MinGW port of g++ 3.4.2.
