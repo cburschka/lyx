@@ -1,3 +1,8 @@
+2001-01-23  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* FormPreferences.C (LoadBrowserLyX): convert unsigned short to
+	unsigned char correctly and so fix 2 bugs loading/changing colors.
+
 2001-01-21  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* FormRef.C (update): Do not update dialog_->{ref,name,type}
