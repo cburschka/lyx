@@ -28,6 +28,7 @@
 #include "ControlError.h"
 #include "ControlInclude.h"
 #include "ControlLog.h"
+#include "ControlUrl.h"
 #include "ControlVCLog.h"
 
 #include "GUI.h"
@@ -42,6 +43,7 @@
 #include "form_credits.h"
 #include "form_error.h"
 #include "form_include.h"
+#include "form_url.h"
 
 #include "FormBibitem.h"
 #include "FormBibtex.h"
@@ -52,6 +54,7 @@
 #include "FormError.h"
 #include "FormInclude.h"
 #include "FormLog.h"
+#include "FormUrl.h"
 #include "FormVCLog.h"
 
 #include "FormDocument.h"
@@ -69,7 +72,6 @@
 #include "FormTabular.h"
 #include "FormTabularCreate.h"
 #include "FormToc.h"
-#include "FormUrl.h"
 #include "FormMinipage.h"
 
 // Signal enabling all visible popups to be redrawn if so desired.
@@ -89,6 +91,7 @@ Dialogs::Dialogs(LyXView * lv)
 	add(new GUIError<FormError, xformsBC>(*lv, *this));
 	add(new GUIInclude<FormInclude, xformsBC>(*lv, *this));
 	add(new GUILog<FormLog, xformsBC>(*lv, *this));
+	add(new GUIUrl<FormUrl, xformsBC>(*lv, *this));
 	add(new GUIVCLog<FormVCLog, xformsBC>(*lv, *this));
 
 	add(new FormDocument(lv, this));
@@ -106,7 +109,6 @@ Dialogs::Dialogs(LyXView * lv)
 	add(new FormTabular(lv, this));
 	add(new FormTabularCreate(lv, this));
 	add(new FormToc(lv, this));
-	add(new FormUrl(lv, this));
 	add(new FormMinipage(lv, this));
 	
 	// reduce the number of connections needed in

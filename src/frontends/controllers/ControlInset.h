@@ -72,10 +72,6 @@ private:
 	void show(Params const &);
 	/// Connect signals
 	void connectInset(Inset * = 0);
-	/// Disconnect signals
-	virtual void disconnect();
-	///
-	void disconnectInset();
 
 	/// pointer to the inset passed through connectInset
 	Inset * inset_;	
@@ -140,9 +136,11 @@ void ControlInset<Inset, Params>::hide()
 		delete params_;
 		params_ = 0;
 	}
+	inset_ = 0;
 
 	clearDaughterParams();
 
+	ih_.disconnect();
 	disconnect();
 	view().hide();
 }
@@ -171,9 +169,9 @@ void ControlInset<Inset, Params>::apply()
 
 	view().apply();
 
-	if (inset_ && params() != getParams(*inset_))
-		applyParamsToInset();
-	else if (!inset_)
+	if (inset_) {
+		if (params() != getParams(*inset_)) applyParamsToInset();
+	} else
 		applyParamsNoInset();
 }
 
@@ -205,15 +203,6 @@ void ControlInset<Inset, Params>::updateSlot(bool switched)
 
 
 template <class Inset, class Params>
-void ControlInset<Inset, Params>::disconnect()
-{
-	inset_ = 0;
-	ih_.disconnect();
-	ControlConnectBD::disconnect();
-}
-
-
-template <class Inset, class Params>
 void ControlInset<Inset, Params>::connectInset(Inset * inset)
 {
 	// If connected to another inset, disconnect from it.
@@ -229,13 +218,4 @@ void ControlInset<Inset, Params>::connectInset(Inset * inset)
 	}
 	connect();
 }
-
-
-template <class Inset, class Params>
-void ControlInset<Inset, Params>::disconnectInset()
-{
-	ih_.disconnect();
-}
-
-
 #endif // CONTROLINSET_H

@@ -1,55 +1,33 @@
-// -*- C++ -*-
-/* This file is part of
+/* \file FormUrl.C
+ * This file is part of
  * ====================================================== 
  *
  *           LyX, The Document Processor
  *
- *           Copyright 2000 The LyX Team.
+ *           Copyright 2000-2001 The LyX Team.
  *
  * ======================================================
+ * 
+ * \author Angus Leeming, a.leeming@ic.ac.uk 
  */
 
 #include <config.h>
-
-#include FORMS_H_LOCATION
 
 #ifdef __GNUG__
 #pragma implementation
 #endif
 
-#include "Dialogs.h"
+#include "xformsBC.h"
+#include "ControlUrl.h"
 #include "FormUrl.h"
-#include "LyXView.h"
-#include "buffer.h"
 #include "form_url.h"
-#include "lyxfunc.h"
 
-using SigC::slot;
+typedef FormCB<ControlUrl, FormDB<FD_form_url> > base_class;
 
-FormUrl::FormUrl(LyXView * lv, Dialogs * d)
-	: FormCommand(lv, d, _("Url"))
-{
-	// let the dialog be shown
-	// These are permanent connections so we won't bother
-	// storing a copy because we won't be disconnecting.
-	d->showUrl.connect(slot(this, &FormUrl::showInset));
-	d->createUrl.connect(slot(this, &FormUrl::createInset));
-}
+FormUrl::FormUrl(ControlUrl & c)
+	: base_class(c, _("Url"))
+{}
 
-
-FL_FORM * FormUrl::form() const
-{
-	if (dialog_.get()) return dialog_->form;
-	return 0;
-}
-
-
-void FormUrl::connect()
-{
-	fl_set_form_maxsize(form(), 2 * minw_, minh_);
-	FormCommand::connect();
-}
-	
 
 void FormUrl::build()
 {
@@ -73,38 +51,25 @@ void FormUrl::build()
 
 void FormUrl::update()
 {
-	fl_set_input(dialog_->url,  params.getContents().c_str());
-	fl_set_input(dialog_->name, params.getOptions().c_str());
+	fl_set_input(dialog_->url,
+		     controller().params().getContents().c_str());
+	fl_set_input(dialog_->name,
+		     controller().params().getOptions().c_str());
 
-	if (params.getCmdName() == "url")
+	if (controller().params().getCmdName() == "url")
 		fl_set_button(dialog_->radio_html, 0);
 	else
 		fl_set_button(dialog_->radio_html, 1);
-
-	bc().readOnly(lv_->buffer()->isReadonly());
 }
 
 
 void FormUrl::apply()
 {
-	if (lv_->buffer()->isReadonly()) return;
-
-	params.setContents(fl_get_input(dialog_->url));
-	params.setOptions(fl_get_input(dialog_->name));
+	controller().params().setContents(fl_get_input(dialog_->url));
+	controller().params().setOptions(fl_get_input(dialog_->name));
 
 	if (fl_get_button(dialog_->radio_html))
-		params.setCmdName("htmlurl");
+		controller().params().setCmdName("htmlurl");
 	else
-		params.setCmdName("url");
-
-	if (inset_ != 0) {
-		// Only update if contents have changed
-		if (params != inset_->params()) {
-			inset_->setParams(params);
-			lv_->view()->updateInset(inset_, true);
-		}
-	} else {
-		lv_->getLyXFunc()->Dispatch(LFUN_INSERT_URL,
-					    params.getAsString());
-	}
+		controller().params().setCmdName("url");
 }

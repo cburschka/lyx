@@ -14,8 +14,9 @@
 	* lots of files. Moved protected stuff into private where possible.
 
 	* ControlError.[Ch]:
-	* ControlInclude.[Ch]: new files; controllers for the LaTeX error and
-	Include popups, respectively.
+	* ControlInclude.[Ch]:
+	* ControlUrl.[Ch]: new files; controllers for the LaTeX error,
+	Include and Url popups, respectively.
 
 	* GUI.h:
 	* Makefile.am: associated changes.

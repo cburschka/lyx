@@ -1,58 +1,44 @@
-// -*- C++ -*-
-/* This file is part of
+/* \file FormUrl.h
+ * This file is part of
  * ====================================================== 
  *
  *           LyX, The Document Processor
  *
- *           Copyright 2000 The LyX Team.
+ *           Copyright 2000-2001 The LyX Team.
  *
  * ======================================================
+ *
+ * \author Angus Leeming, a.leeming@.ac.uk
  */
 
 #ifndef FORMURL_H
 #define FORMURL_H
 
-#include <boost/smart_ptr.hpp>
-
 #ifdef __GNUG__
 #pragma interface
 #endif
 
-#include "FormInset.h"
+#include "FormBase.h"
 
+class ControlUrl;
 struct FD_form_url;
 
-/** This class provides an XForms implementation of the FormUrl Dialog.
+/** This class provides an XForms implementation of the Url Dialog.
  */
-class FormUrl : public FormCommand {
+class FormUrl : public FormCB<ControlUrl, FormDB<FD_form_url> > {
 public:
 	///
-	FormUrl(LyXView *, Dialogs *);
+	FormUrl(ControlUrl &);
+
 private:
-	/// Pointer to the actual instantiation of the ButtonController.
-	virtual xformsBC & bc();
-	/// Connect signals etc. Set form's max size.
-	virtual void connect();
+	/// Apply from dialog (modify or create inset)
+	virtual void apply();
 	/// Build the dialog
 	virtual void build();
 	/// Update dialog before showing it
 	virtual void update();
-	/// Apply from dialog (modify or create inset)
-	virtual void apply();
-	/// Pointer to the actual instantiation of the xforms form
-	virtual FL_FORM * form() const;
-	///
+	/// Filter the inputs on callback from xforms
 	FD_form_url * build_url();
-	/// Real GUI implementation.
-	boost::scoped_ptr<FD_form_url> dialog_;
-	/// The ButtonController
-	ButtonController<NoRepeatedApplyReadOnlyPolicy, xformsBC> bc_;
 };
 
-
-inline
-xformsBC & FormUrl::bc()
-{
-	return bc_;
-}
-#endif
+#endif // FORMURL_H

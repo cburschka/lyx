@@ -151,6 +151,20 @@ public:
 };
 
 
+/** Specialization for Url dialog
+ */
+class ControlUrl;
+
+template <class GUIview, class GUIbc>
+class GUIUrl :
+	public GUI<ControlUrl, GUIview, NoRepeatedApplyReadOnlyPolicy, GUIbc> {
+public:
+	///
+	GUIUrl(LyXView & lv, Dialogs & d)
+	    : GUI<ControlUrl, GUIview, NoRepeatedApplyReadOnlyPolicy, GUIbc>(lv, d) {}
+};
+
+
 /** Specialization for VCLog dialog
  */
 class ControlVCLog;

@@ -49,8 +49,12 @@ void ControlCommand::applyParamsToInset()
 
 void ControlCommand::applyParamsNoInset()
 {
+	std::cerr << "1" << std::endl;
 	if (action_ == LFUN_NOACTION) return;
 
+	std::cerr << "2" << std::endl;
+	
 	lv_.getLyXFunc()->Dispatch(action_, params().getAsString());
+	std::cerr << "3" << std::endl;
 }
 

@@ -7,13 +7,12 @@
  *
  * ======================================================
  *
- * \file ControlBibitem.h
- * \author John Levon, moz@compsoc.man.ac.uk
+ * \file ControlUrl.h
  * \author Angus Leeming <a.leeming@ic.ac.uk>
  */
 
-#ifndef CONTROLBIBITEM_H
-#define CONTROLBIBITEM_H
+#ifndef CONTROLURL_H
+#define CONTROLURL_H
 
 #ifdef __GNUG__
 #pragma interface
@@ -21,21 +20,17 @@
 
 #include "ControlCommand.h"
 
-/** A controller for Bibitem dialogs.
+/** This class provides an XForms implementation of the FormUrl Dialog.
  */
-class ControlBibitem : public ControlCommand
+class ControlUrl : public ControlCommand 
 {
 public:
 	///
-	ControlBibitem(LyXView &, Dialogs &);
+	ControlUrl(LyXView &, Dialogs &);
 
 private:
-	/// Dispatch the changed parameters to the kernel.
-	virtual void applyParamsToInset();
-	/// not needed.
-	virtual void applyParamsNoInset() {}
 	/// not needed.
 	virtual void clearDaughterParams() {}
 };
 
-#endif // CONTROLBIBITEM_H
+#endif // CONTROLURL_H

@@ -39,6 +39,8 @@ libcontrollers_la_SOURCES=\
 	ControlInset.h \
 	ControlLog.C \
 	ControlLog.h \
+	ControlUrl.C \
+	ControlUrl.h \
 	ControlVCLog.C \
 	ControlVCLog.h \
 	GUI.h \
