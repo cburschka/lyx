@@ -311,7 +311,10 @@ bool LyXLex::Pimpl::next(bool esc /* = false */)
 						// escape the next char
 						is.get(cc);
 						c = cc;
-						escaped = true;
+						if (c == '\"' || c == '\\')
+							escaped = true;
+						else
+							buff[++i] = '\\';
 					}
 					buff[++i] = c;
 					

@@ -1,3 +1,8 @@
+2001-08-15  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* lyxlex_pimpl.C (next): Treat \ as normal char if not followed by
+	" or \.
+
 2001-08-16  Juergen Vigna  <jug@sad.it>
 
 	* lyxfunc.C (dispatch): implemented the new FINISHED states.
