@@ -1,3 +1,8 @@
+2002-06-12  Angus Leeming  <leeming@lyx.org>
+
+	* FormParagraph.C: include ParagraphParameters.h now that
+	ParagraphParameters is forward declared in ControlParagraph.h.
+
 2002-05-24  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* FormMathsDelim.C: fix delimiter pre-display rendering 

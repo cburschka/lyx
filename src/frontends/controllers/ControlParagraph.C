@@ -16,6 +16,7 @@
 #include "ViewBase.h"
 #include "ButtonControllerBase.h"
 #include "ControlParagraph.h"
+#include "ParagraphParameters.h"
 #include "Dialogs.h"
 #include "Liason.h"
 #include "LyXView.h"
@@ -37,21 +38,29 @@ ControlParagraph::ControlParagraph(LyXView & lv, Dialogs & d)
 	d_.showParagraph = boost::bind(&ControlParagraph::show, this);
 }
 
+
+ControlParagraph::~ControlParagraph()
+{}
+
+
 ParagraphParameters & ControlParagraph::params()
 {
 	lyx::Assert(pp_.get());
 	return *pp_;
 }
 
+
 bool ControlParagraph::inInset() const
 {
 	return ininset_;
 }
 
+
 LyXAlignment ControlParagraph::alignPossible() const
 {
 	return alignpos_;
 }
+
 
 void ControlParagraph::apply()
 {
@@ -83,6 +92,7 @@ void ControlParagraph::apply()
 	
 	setMinibuffer(&lv_, _("Paragraph layout set"));
 }
+
 
 void ControlParagraph::setParams()
 {

@@ -17,6 +17,7 @@
 #include "FormParagraph.h"
 #include "form_paragraph.h"
 #include "ControlParagraph.h"
+#include "ParagraphParameters.h"
 #include "xforms_helpers.h"
 #include "lyxrc.h" // to set the deafult length values
 #include "input_validators.h"

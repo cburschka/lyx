@@ -17,7 +17,9 @@
 #endif
 
 #include "ControlDialog_impl.h"
-#include "ParagraphParameters.h"
+#include "layout.h" // for LyXAlignment
+
+class ParagraphParameters;
 
 /** A controller for Paragraph dialogs.
  */
@@ -26,6 +28,9 @@ class ControlParagraph : public ControlDialogBD
 public:
 	///
 	ControlParagraph(LyXView &, Dialogs &);
+	/** Declaring this out of line allows us to forward declare
+	    ParagraphParameters without upsetting boost::scoped_ptr. */
+	~ControlParagraph();
 
 	///
 	ParagraphParameters & params();
