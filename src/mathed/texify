@@ -1,0 +1,60 @@
+#!/usr/bin/tclsh
+
+# Script built on an idea of Jules Bean to extract "what TeX would do" from
+# a given macro.
+#
+# Call it with  texify '\macro' [...] to get a line per item giving ascent,
+# descent, width and the primitives that TeX would use to typeset the item
+
+# Original script:
+#\batchmode
+#\def\entails{$1}
+#\edef\temp{\entails}
+#\message{\string\meaning\temp}
+#\setbox5=\box{$\entails$}
+#\showbox5
+#\bye
+
+set filebase texifytmp
+set hboxexp {^\\hbox.([0-9.]+)\+([0-9.]+).x([0-9.]+)}
+set fontexp {^\.+\\ten([a-z]+) (.*)$}
+
+foreach item $::argv {
+	set font    unknown
+	set char    {}
+	set value   0
+	set ascent  0
+	set descent 0
+	set widht   0
+
+	set f [open $filebase.tex w 0600]
+	puts $f "\\nonstopmode"
+	puts $f "\\setbox5=\\hbox\{\$$item\$\}"
+	puts $f "\\showbox5"
+	puts $f ""
+	puts $f "\\end"
+	close $f
+
+	if {[catch {exec tex $filebase.tex} err]} {
+		#puts "Error: '$err'"
+	}
+
+	set f [open $filebase.log r]
+	while {![eof $f]} {
+		gets $f line
+		regexp $hboxexp $line dummy ascent descent width
+		regexp $fontexp $line dummy font char
+	}
+	close $f
+
+	if {![string equal $font "unknown"]} {
+		if {[string equal -length 2 $char {^^}]} {
+			scan $char "%c%c%c" dummy1 dummy2 value
+			set value [expr {$value - 64}]
+		} else {
+			scan $char "%c" value
+		}
+	}
+
+	puts [list $ascent $descent $width $font $value $char]
+}
