@@ -75,11 +75,11 @@ const char * known_languages[] = { "austrian", "babel", "bahasa", "basque",
 
 char const * known_fontsizes[] = { "10pt", "11pt", "12pt", 0 };
 
-char const * known_headings[] = { "caption", "title", "author",
+char const * known_headings[] = { "caption", "title", "author", "date",
 "paragraph", "chapter", "section", "subsection", "subsubsection", 0 };
 
-char const * known_math_envs[] = { "equation", "eqnarray", "eqnarray*",
-"align", "align*", 0};
+char const * known_math_envs[] = { "equation", "equation*",
+"eqnarray", "eqnarray*", "align", "align*", 0};
 
 char const * known_latex_commands[] = { "ref", "cite", "label", "index",
 "printindex", 0 };
@@ -217,7 +217,7 @@ void begin_inset(ostream & os, string const & name)
 
 void end_inset(ostream & os)
 {
-	os << "\n\\end_inset\n";
+	os << "\n\\end_inset\n\n";
 }
 
 
@@ -240,6 +240,16 @@ void handle_ert(ostream & os, string const & s)
 	end_inset(os);
 }
 
+
+void handle_tex(ostream & os, string const & s)
+{
+	//os << "handle_tex(" << s << ")\n";
+	if (in_preamble)
+		h_preamble << s;
+	else
+		handle_ert(os, s);
+}
+		
 
 void handle_par(ostream & os)
 {
@@ -353,7 +363,8 @@ void handle_tabular(Parser & p, ostream & os, mode_type mode)
 				 << ">";
 			begin_inset(os, "Text");
 			os << "\n\n\\layout Standard\n\n";
-			os << parts.back();
+			if (parts.size())
+				os << parts.back();
 			end_inset(os);
 			os << "</cell>\n";
 		}
@@ -525,7 +536,7 @@ void parse(Parser & p, ostream & os, unsigned flags, mode_type mode)
 			if (mode == MATH_MODE)
 				os << '{';
 			else
-				handle_ert(os, "{");
+				handle_tex(os, "{");
 		}
 
 		else if (t.cat() == catEnd) {
@@ -534,7 +545,7 @@ void parse(Parser & p, ostream & os, unsigned flags, mode_type mode)
 			if (mode == MATH_MODE)
 				os << '}';
 			else
-				handle_ert(os, "}");
+				handle_tex(os, "}");
 		}
 
 		else if (t.cat() == catAlign) {
@@ -584,22 +595,42 @@ void parse(Parser & p, ostream & os, unsigned flags, mode_type mode)
 		else if (t.cs() == "lyxlock")
 			; // ignored
 
-		else if (t.cs() == "newcommand" || t.cs() == "providecommand") {
+		else if (t.cs() == "makeatletter") {
+			p.setCatCode('@', catLetter);
+			handle_tex(os, "\\makeatletter\n");
+		}
+			
+		else if (t.cs() == "makeatother") {
+			p.setCatCode('@', catOther);
+			handle_tex(os, "\\makeatother\n");
+		}
+
+		else if (t.cs() == "newcommand" || t.cs() == "renewcommand"
+			    || t.cs() == "providecommand") {
 			string const name = p.verbatimItem();
-			string const opts = p.getArg('[', ']');
+			string const opts = p.getOpt();
 			string const body = p.verbatimItem();
 			// only non-lyxspecific stuff
 			if (name != "\\noun " && name != "\\tabularnewline ") {
 				ostream & out = in_preamble ? h_preamble : os;
 				if (!in_preamble)
 					begin_inset(os, "FormulaMacro\n");
-				out << "\\" << t.cs() << "{" << name << "}";
-				if (opts.size()) 
-					out << "[" << opts << "]";
-				out << "{" << body << "}";
+				out << "\\" << t.cs() << "{" << name << "}"
+				    << opts << "{" << body << "}\n";
 				if (!in_preamble)
 					end_inset(os);
 			}
+		}
+
+		else if (t.cs() == "newtheorem") {
+			ostringstream ss;
+			ss << "\\newtheorem";
+			ss << '{' << p.verbatimItem() << '}';
+			ss << p.getOpt();
+			ss << '{' << p.verbatimItem() << '}';
+			ss << p.getOpt();
+			ss << '\n';
+			handle_tex(os, ss.str());
 		}
 
 		else if (t.cs() == "(") {
@@ -638,7 +669,13 @@ void parse(Parser & p, ostream & os, unsigned flags, mode_type mode)
 				os << "\\end{" << name << "}";
 				end_inset(os);	
 			} else if (name == "tabular") {
-				handle_tabular(p, os, mode);
+				if (mode == TEXT_MODE)
+					handle_tabular(p, os, mode);
+				else {
+					os << "\\begin{" << name << "}";
+					parse(p, os, FLAG_END, MATHTEXT_MODE);
+					os << "\\end{" << name << "}";
+				}
 			} else if (name == "table") {
 				begin_inset(os, "Float table\n");	
 				os << "wide false\n"
@@ -716,13 +753,34 @@ void parse(Parser & p, ostream & os, unsigned flags, mode_type mode)
 
 		else if (t.cs() == "newenvironment") {
 			string const name = p.getArg('{', '}');
-			p.skipSpaces();
-			string const begin = p.verbatimItem();
-			p.skipSpaces();
-			string const end = p.verbatimItem();
-			// ignore out mess
-			if (name != "lyxcode") 
-				os << wrap("newenvironment", begin + end); 
+			if (name != "lyxcode") {
+				ostringstream ss;
+				ss << "\\newenvironment{" << name << "}";
+				ss << p.getOpt();
+				ss << p.getOpt();
+				ss << '{' << p.verbatimItem() << '}';
+				ss << '{' << p.verbatimItem() << '}';
+				ss << '\n';
+				handle_tex(os, ss.str());
+			}
+		}
+
+		else if (t.cs() == "newfont") {
+			ostringstream ss;
+			ss << "\\newfont";
+			ss << '{' << p.verbatimItem() << '}';
+			ss << '{' << p.verbatimItem() << '}';
+			ss << '\n';
+			handle_tex(os, ss.str());
+		}
+
+		else if (t.cs() == "newcounter") {
+			ostringstream ss;
+			ss << "\\newcounter";
+			ss << '{' << p.verbatimItem() << '}';
+			ss << p.getOpt();
+			ss << '\n';
+			handle_tex(os, ss.str());
 		}
 
 		else if (t.cs() == "def") {
@@ -744,14 +802,14 @@ void parse(Parser & p, ostream & os, unsigned flags, mode_type mode)
 		}
 
 		else if (t.cs() == "setlength") {
-			string const name = p.getToken().cs();
-			string const content = p.getArg('{', '}');
-			if (name == "parskip")
+			string const name = p.verbatimItem();
+			string const content = p.verbatimItem();
+			if (in_preamble && name == "parskip")
 				h_paragraph_separation = "skip";
-			else if (name == "parindent")
+			else if (in_preamble && name == "parindent")
 				h_paragraph_separation = "skip";
-			else
-				h_preamble << "\\setlength{" << name << "}{" << content << "}\n";
+			else 
+				handle_tex(os, "\\setlength{" + name + "}{" + content + "}\n");
 		}
 	
 		else if (t.cs() == "par")
@@ -763,7 +821,7 @@ void parse(Parser & p, ostream & os, unsigned flags, mode_type mode)
 				p.getToken();
 				name += "*";
 			}
-			os << "\\layout " << cap(name) << "\n\n";
+			os << "\n\n\\layout " << cap(name) << "\n\n";
 			parse(p, os, FLAG_ITEM, mode);
 		}
 
@@ -825,8 +883,19 @@ void parse(Parser & p, ostream & os, unsigned flags, mode_type mode)
 		else if (t.cs() == "&" && mode == TEXT_MODE)
 			os << '&';
 
+		else if (t.cs() == "input")
+			handle_tex(os, "\\input{" + p.verbatimItem() + "}\n");
+
 		else if (t.cs() == "pagestyle" && in_preamble)
 			h_paperpagestyle == p.getArg('{','}');
+
+		else if (t.cs() == "fancyhead") {
+			ostringstream ss;
+			ss << "\\fancyhead";
+			ss << p.getOpt();
+			ss << '{' << p.verbatimItem() << "}\n";
+			handle_tex(os, ss.str());
+		}
 
 		else {
 			if (mode == MATH_MODE)

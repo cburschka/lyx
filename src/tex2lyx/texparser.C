@@ -39,14 +39,14 @@ void catInit()
 	theCatcode['}']  = catEnd;
 	theCatcode['$']  = catMath;
 	theCatcode['&']  = catAlign;
-	theCatcode['\n'] = catNewline;
+	theCatcode[10]   = catNewline;
 	theCatcode['#']  = catParameter;
 	theCatcode['^']  = catSuper;
 	theCatcode['_']  = catSub;
 	theCatcode[''] = catIgnore;
 	theCatcode[' ']  = catSpace;
 	theCatcode['\t'] = catSpace;
-	theCatcode['\r'] = catNewline;
+	theCatcode[13]   = catIgnore;
 	theCatcode['~']  = catActive;
 	theCatcode['%']  = catComment;
 }
@@ -191,6 +191,13 @@ string Parser::getArg(char left, char right)
 }
 
 
+string Parser::getOpt()
+{
+	string res = getArg('[', ']');
+	return res.size() ? '[' + res + ']' : string();
+}
+
+
 void Parser::tokenize(istream & is)
 {
 	static bool init_done = false;
@@ -252,7 +259,8 @@ void Parser::tokenize(istream & is)
 			}
 
 			case catIgnore: {
-				cerr << "ignoring a char: " << int(c) << "\n";
+				if (c != 13)
+					cerr << "ignoring a char: " << int(c) << "\n";
 				break;
 			}
 
@@ -320,3 +328,14 @@ string Parser::verbatimItem()
 	return getToken().asInput();
 }
 
+
+void Parser::setCatCode(char c, CatCode cat)
+{
+	theCatcode[c] = cat;	
+}
+
+
+CatCode Parser::getCatCode(char c) const
+{
+	return theCatcode[c];
+}

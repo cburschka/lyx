@@ -106,6 +106,8 @@ public:
 
 	///
 	string getArg(char left, char right);
+	/// getArg('[', ']') including the brackets
+	string getOpt();
 	///
 	char getChar();
 	///
@@ -132,6 +134,11 @@ public:
 	string verbatimItem();
 	///
 	string verbatimOption();
+
+	///
+	void setCatCode(char c, CatCode cat);
+	///
+	CatCode getCatCode(char c) const;
 
 //private:
 	///
