@@ -591,10 +591,10 @@ string const get_default_user_support_dir(string const & home_dir)
 	if (error_code != 0)
 		return string();
 
-	char store[PATH_MAX + 1];
+	char store[PATH_MAX + 1];
 	OSStatus const status_code =
 		FSRefMakePath(&fsref,
-			      reinterpret_cast<UInt8*>(store), PATH_MAX);
+			      reinterpret_cast<UInt8*>(store), PATH_MAX);
 	if (status_code != 0)
 		return string();
 
