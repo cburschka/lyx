@@ -6,9 +6,10 @@ To compile using MicroSoft Visual Studio 2003.NET, do this:
 2) Make sure QTDIR is set in your global environment, and QTDIR\bin
    is in your path. Control panel, system, advanced, environment
    variables in your friend on Windows XP.
-3) Apply the lyx-devel.patch using GNU patch. Download from
+3) Apply the win32_kludge.diff using GNU patch. Download from
    http://gnuwin32.sourceforge.net/packages/patch.htm
-   and type "patch -p0 development\win32\lyx-devel.patch"   in cmd box with current working directory right outside
+   and type "patch -p0 < development\win32\win32_kludge.diff"
+   in cmd box with current working directory right outside
    lyx-devel
 4) Open the development\win32\lyx.sln file in Visual Studio,
    compile and run. You can probably also use the free version
