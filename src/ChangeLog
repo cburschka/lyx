@@ -1,3 +1,9 @@
+2004-04-05  Angus Leeming  <leeming@lyx.org>
+
+	* lyxrc.[Ch] (write): now takes a 'bool ignore_system_lyxrc' arg
+	to enable the frontends to export changes to lyxrc correctly.
+
+	* lyxfunc.C (dispatch): output lyxrc.write("preferences", false).
 
 2004-04-05  André Pönitz  <poenitz@gmx.net>
 

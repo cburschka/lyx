@@ -1,5 +1,10 @@
 2004-04-05  Angus Leeming  <leeming@lyx.org>
 
+	* ControlPrefs.C (dispatchParams): ignore system_lyxrc when writing
+	the contents of rc_ to the stringstream.
+
+2004-04-05  Angus Leeming  <leeming@lyx.org>
+
 	* ControlErrorList.C: wrap #warning calls inside #ifdef
 	WITH_WARNINGS blocks.
 

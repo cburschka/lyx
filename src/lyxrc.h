@@ -148,9 +148,11 @@ private:
 	int read(LyXLex &);
 public:
 	///
-	void write(std::string const & filename) const;
+	void write(std::string const & filename,
+		   bool ignore_system_lyxrc) const;
 	///
-	void write(std::ostream & os) const;
+	void write(std::ostream & os,
+		   bool ignore_system_lyxrc) const;
 	///
 	void print() const;
 	///

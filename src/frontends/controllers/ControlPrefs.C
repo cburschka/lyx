@@ -63,7 +63,7 @@ bool ControlPrefs::initialiseParams(std::string const &)
 void ControlPrefs::dispatchParams()
 {
 	ostringstream ss;
-	rc_.write(ss);
+	rc_.write(ss, true);
 	kernel().dispatch(FuncRequest(LFUN_LYXRC_APPLY, ss.str()));
 
 	// FIXME: these need lfuns

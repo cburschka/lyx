@@ -1189,7 +1189,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd, bool verbose)
 
 		case LFUN_SAVEPREFERENCES: {
 			Path p(user_lyxdir());
-			lyxrc.write("preferences");
+			lyxrc.write("preferences", false);
 			break;
 		}
 
