@@ -11,11 +11,11 @@ the procedure should be relatively easy:
 1) Getting ready
 
 Get and install gettext (available from ftp://alpha.gnu.org). Read the
-documentation for gettext. Then get the latest LyX distribution including 
+documentation for gettext. Then get the latest LyX distribution including
 patches, and unpack it in your home directory. It is yet better if you checkout
 the CVS version of LyX.
 Read the README in the LyX distribution.
-Check the mailing list archives to learn what is going on at the moment. 
+Check the mailing list archives to learn what is going on at the moment.
 Consider subscribing to the developer's mailing list, lyx-devel@lists.lyx.org.
 
 2) Preparing a patch
@@ -23,13 +23,13 @@ Consider subscribing to the developer's mailing list, lyx-devel@lists.lyx.org.
 Now do (where XX stands for the code of your language):
 
         cp -R lyx-*.*.* lyx.new
-			(Which makes a copy of the source distribution for 
+			(Which makes a copy of the source distribution for
 			 you to change, but you should work in a CVS workarea)
  	 	cd lyx.new/po/
 
 		make XX.pox
 			(It merges the po file into the temporary file XX.pox)
-        emacs XX.pox                           
+        emacs XX.pox
 			(Using po-mode. Emacs is convenient for po editing, but not
 			 mandatory.)
 	    (Make all necessary changes in XX.pox, and save.)

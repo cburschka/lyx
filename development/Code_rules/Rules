@@ -15,18 +15,18 @@ some guidelines and rules for the developers.
 General
 -------
 
-These guidelines should save us a lot of work while cleaning up the code and 
-help us to have quality code. LyX has been haunted by problems coming from 
-unfinished projects by people who have left the team. Those problems will 
+These guidelines should save us a lot of work while cleaning up the code and
+help us to have quality code. LyX has been haunted by problems coming from
+unfinished projects by people who have left the team. Those problems will
 hopefully disappear if the code is easy to hand over to somebody else.
 
-In general, if you want to contribute to the main source, we expect at least 
+In general, if you want to contribute to the main source, we expect at least
 that you:
 
 - the most important rule first: kiss (keep it simple stupid), always
   use a simple implementation in favor of a more complicated one.
   This eases maintenance a lot.
-- write good C++ code: Readable, well commented and taking advantage of the 
+- write good C++ code: Readable, well commented and taking advantage of the
   OO model. Follow the formatting guidelines. See Formatting.
 - adapt the code to the structures already existing in LyX, or in the case
   that you have better ideas, discuss them on the developer's list before
@@ -49,7 +49,7 @@ Submitting Code
 ---------------
 
 It is implicitly understood that all patches contributed to The LyX
-Project is under the Gnu General Public License, version 2 or later. 
+Project is under the Gnu General Public License, version 2 or later.
 If you have a problem with that, don't contribute code.
 
 Also please don't just pop up out of the blue with a huge patch (or
@@ -79,7 +79,7 @@ We have several guidelines on code constructs, some of these exist to
 make the code faster, others to make the code clearer. Yet others
 exist to allow us to take advantage of the strong type checking
 in C++.
-  
+
 - Declaration of variables should wait as long as possible. The rule
   is: "Don't declare it until you need it." In C++ there are a lot of
   user defined types, and these can very often be expensive to
@@ -127,7 +127,7 @@ in C++.
 
 - Avoid using the default cases in switch statements unless you have
   too. Use the correct type for the switch expression and let the
-  compiler ensure that all cases are exhausted. 
+  compiler ensure that all cases are exhausted.
 
 	enum Foo {
 		foo,
@@ -183,7 +183,7 @@ Sutter's book[ExC++]
 
 	In addition to these two guarantees, there is one more
 	guarantee that certain functions must provide in order to make
-	overall exception safety possible: 
+	overall exception safety possible:
 
 3. Nothrow guarantee: The function will not emit an exception under any
    	circumstances.
@@ -191,7 +191,7 @@ Sutter's book[ExC++]
 	functions are guaranteed not to throw. In particular, we've
 	seen that this is true for destructors; later in this
 	miniseries, we'll see that it's also needed in certain helper
-	functions, such as Swap(). 
+	functions, such as Swap().
 "
 
 For all cases where we might be able to write exception safe functions
@@ -261,7 +261,7 @@ Formatting
 		TWO = 2,
 		THREE = 3
 	};
- 
+
 * Naming rules for classes
 
   - Use descriptive but simple and short names. For stuff specific to LyX
@@ -300,18 +300,18 @@ Formatting
 
 
 * Declarations
-  
+
   - Use this order for the access sections of your class: public,
     protected, private. The public section is interesting for every
     user of the class. The private section is only of interest for the
     implementors of the class (you). [Obviously not true since this is
     for developers, and we do not want one developer only to be able to
     read and understand the implementation of class internals. Lgb]
-  
-  - Avoid declaring global objects in the declaration file of the class. 
+
+  - Avoid declaring global objects in the declaration file of the class.
     If the same variable is used for all objects, use a static member.
 
-  - Avoid global or static variables. An exception to this rule is 
+  - Avoid global or static variables. An exception to this rule is
     very private stuff like the math stack.
 
 
@@ -341,10 +341,10 @@ Formatting
 
 
 * NAMING RULES FOR USER-COMMANDS
-   
+
   Here's the set of rules to apply when a new command name is introduced:
- 
-  1) Use the object.event order. That is, use `word-forward' instead of 
+
+  1) Use the object.event order. That is, use `word-forward' instead of
      `forward-word'.
   2) Don't introduce an alias for an already named object. Same for events.
   3) Forward movement or focus is called `forward' (not `right').
@@ -383,7 +383,7 @@ deciding what kind of function to add to a class interface:
 		make f a non-member function;
 	else
 		make f a member function of C;
- 
+
 (I'll fill in more from Scott Meyers article when time allows.)
 
 References

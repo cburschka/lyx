@@ -5,9 +5,9 @@
 %% revtex.sty is. Continue to use \documentstyle{revtex}
 %% (with the correct options) and REVTeX will run normally
 %% in compatibility mode. Thanks to David Carlisle for
-%% pointing out this fix. 
-		  
-\ifx\every@math@size\undefined\else		 
+%% pointing out this fix.
+
+\ifx\every@math@size\undefined\else
   \let\old@expast\@expast
   \def\@expast#1{\old@expast{#1}\let\@tempa\reserved@a}
 \fi

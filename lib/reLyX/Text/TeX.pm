@@ -18,7 +18,7 @@ package Text::TeX;
 # names by default without a very good reason. Use EXPORT_OK instead.
 # Do not simply export all your public functions/methods/constants.
 @EXPORT = qw(
-	
+
 );
 $VERSION = '0.01';
 
@@ -50,7 +50,7 @@ $VERSION = '0.01';
 #    SelfMatch    - e.g., '$'. Matches itself, but otherwise like a Begin::Group
 #    Separator    - e.g., '&' (not used in reLyX)
 #    Comment      - (not used in reLyX)
-# 
+#
 # The main package is TT::OpenFile. It contains the subroutines that do
 #    most of the parsing work. TT::GetParagraph does some stuff too, but
 #    it's not a token you'd expect the code to return
@@ -172,7 +172,7 @@ for (qw(Text::TeX::ArgToken Text::TeX::BegArgsToken Text::TeX::EndArgsToken )) {
     return undef unless defined $self->[0];
     my $txt = shift;
     my $type;
-    if (defined ($tok = $txt->{tokens}->{$self->[0]}) 
+    if (defined ($tok = $txt->{tokens}->{$self->[0]})
 	and defined $tok->{class}) {
       bless $self, $tok->{class};
     }
@@ -217,7 +217,7 @@ for (qw(Text::TeX::ArgToken Text::TeX::BegArgsToken Text::TeX::EndArgsToken )) {
 
   sub next_args {
   # Return the next argument(s) expected by this token.
-  # For regular Tokens: /^o*$/. 
+  # For regular Tokens: /^o*$/.
   # For BegArgsTokens and ArgTokens: /^o*[rR]$/
   # For EndArgsTokens: /^o*/. (in case opt args come after last required arg)
     my ($eaten,$fileobject) = (shift,shift);
@@ -258,7 +258,7 @@ for (qw(Text::TeX::ArgToken Text::TeX::BegArgsToken Text::TeX::EndArgsToken )) {
       my $tok = shift->base_token;
       return $tok->exact_print;
   }
-  
+
   # How many arguments we've read already.
   # Obviously zero before we've begun to read the arguments
   sub args_done {return 0}
@@ -364,7 +364,7 @@ for (qw(Text::TeX::ArgToken Text::TeX::BegArgsToken Text::TeX::EndArgsToken )) {
     return if $_[1]->check_presynthetic($_[0]);	# May change $_[0]
     my $wa = $_[1]->curwaitforaction;
     my $w = $_[1]->popwait;
-    warn "Expecting `$w', got `$_[0][0]'=`$_[0][0][0]' in `$ {$_[1]->{paragraph}}'" 
+    warn "Expecting `$w', got `$_[0][0]'=`$_[0][0][0]' in `$ {$_[1]->{paragraph}}'"
       if $w ne $_[0]->[0];
     &$wa if defined $wa; # i.e., do $txt->{waitforactions}[-1] if it exists
   }
@@ -403,7 +403,7 @@ for (qw(Text::TeX::ArgToken Text::TeX::BegArgsToken Text::TeX::EndArgsToken )) {
     my $wa = $_[1]->curwaitforaction;
     my $w = $_[1]->popwait;
     # If you got '}' when you wanted '\end'
-    warn "Expecting `$w', got $_[0]->[0] in `$ {$_[1]->{paragraph}}'" 
+    warn "Expecting `$w', got $_[0]->[0] in `$ {$_[1]->{paragraph}}'"
       if $w ne $_[0]->[0];
     # If you got \end{foo} when you wanted \end{bar}
     if ($Token->{selfmatch} and $s->environment ne $_[0]->environment) {
@@ -521,7 +521,7 @@ for (qw(Text::TeX::ArgToken Text::TeX::BegArgsToken Text::TeX::EndArgsToken )) {
   #    it to SelfMatch, but then SelfMatch::refine is never called! -Ak
   sub digest {			# XXXX Should not be needed?
     # curwait returns undefined if not waiting for anything
-    if (defined ($cwt = $_[1]->curwait) && $cwt eq $_[0]->[0]) { 
+    if (defined ($cwt = $_[1]->curwait) && $cwt eq $_[0]->[0]) {
       bless $_[0], Text::TeX::End::Group;
       $_[0]->Text::TeX::End::Group::digest($_[1]);
     } else {
@@ -543,7 +543,7 @@ for (qw(Text::TeX::ArgToken Text::TeX::BegArgsToken Text::TeX::EndArgsToken )) {
   # Get a new paragraph from the LaTeX file
   # Get stuff until a non-empty line which follows an empty line
   sub new {
-    shift; 
+    shift;
     my $file = shift;
     my $fh;
     $fh = $ {$file->{fhs}}[-1] if @{$file->{fhs}};
@@ -583,7 +583,7 @@ for (qw(Text::TeX::ArgToken Text::TeX::BegArgsToken Text::TeX::EndArgsToken )) {
 
   sub new {
 # Description of OpenFile object:
-# readahead - every time we read a paragraph we read one extra token. This 
+# readahead - every time we read a paragraph we read one extra token. This
 #             token goes into 'readahead' and is prepended to the next paragraph
 #             we read
 # paragraph - stores the paragraph we're currently parsing
@@ -611,10 +611,10 @@ for (qw(Text::TeX::ArgToken Text::TeX::BegArgsToken Text::TeX::EndArgsToken )) {
        die "End of file `$file' during opening" if eof("::$refgen");
     }
     my $fhs = defined $file ? ["::$refgen"] : [];
-    bless {  fhs => $fhs, 
-	     readahead => ($opt{string} || ""), 
+    bless {  fhs => $fhs,
+	     readahead => ($opt{string} || ""),
 	     files => [$file],
-	     "paragraph" => undef, 
+	     "paragraph" => undef,
 	     "tokens" => ($opt{tokens} || \%Text::TeX::Tokens),
 	     waitfors => [], options => \%opt,
 	     waitforactions => [],
@@ -622,8 +622,8 @@ for (qw(Text::TeX::ArgToken Text::TeX::BegArgsToken Text::TeX::EndArgsToken )) {
                                                 # the default action
                                                 # for next deeper
                                                 # level
-	     actions => [defined $opt{action} ? 
-			 $opt{action} : 
+	     actions => [defined $opt{action} ?
+			 $opt{action} :
 			 $opt{defaultact}],
 	     waitargcounts => [0],
 	     pending_out => [],
@@ -675,7 +675,7 @@ for (qw(Text::TeX::ArgToken Text::TeX::BegArgsToken Text::TeX::EndArgsToken )) {
   sub pushwait {		# 0: text object, 1: token, 2: ????
     push(@{ $_[0]->{starttoken} }, $_[1]);
     push(@{ $_[0]->{waitfors} }, $_[0]->{tokens}{$_[1]->[0]}{waitfor});
-    push(@{ $_[0]->{actions} }, 
+    push(@{ $_[0]->{actions} },
 	 defined $_[2] ? $_[2] : $_[0]->{defaultacts}[-1]);
     push(@{ $_[0]->{waitforactions} }, $_[3]);
     push(@{ $_[0]->{synthetic} }, []);
@@ -703,7 +703,7 @@ for (qw(Text::TeX::ArgToken Text::TeX::BegArgsToken Text::TeX::EndArgsToken )) {
     my $rest = $ { $_[0]->{synthetic} }[-1];
     if (@$rest) {
       push @{ $_[0]->{pending_out} }, reverse @{ pop @$rest };
-    } 
+    }
   }
 
   sub pushsynthetic {		# Add new list of events to do *after* the
@@ -739,7 +739,7 @@ for (qw(Text::TeX::ArgToken Text::TeX::BegArgsToken Text::TeX::EndArgsToken )) {
       return 1;
     }
   }
-  
+
 
   sub curwait {
   # return what we're currently waiting for. Returns undef if not waiting
@@ -769,7 +769,7 @@ for (qw(Text::TeX::ArgToken Text::TeX::BegArgsToken Text::TeX::EndArgsToken )) {
       warn "No optional argument found";
       if ($comment) {new Text::TeX::Token undef, $comment}
       else {undef}
-    } 
+    }
   }
 
 # eat {blah} when it's an argument to a BegArgsToken.
@@ -795,7 +795,7 @@ for (qw(Text::TeX::ArgToken Text::TeX::BegArgsToken Text::TeX::EndArgsToken )) {
       warn "String `$str' expected, not found";
       if ($comment) {new Text::TeX::Token undef, $comment}
       else {undef}
-    } 
+    }
   }
 
 # Eat '{blah}'. Braces aren't returned. Stuff is returned as a Group,
@@ -814,7 +814,7 @@ for (qw(Text::TeX::ArgToken Text::TeX::BegArgsToken Text::TeX::EndArgsToken )) {
     my ($count,$in,@in) = (1);
   EAT:
     {
-      warn "Unfinished balanced next", last EAT 
+      warn "Unfinished balanced next", last EAT
 	unless defined ($in = $txt->eatMultiToken) && defined $in->[0];
       push(@in,$in);
       $count++,redo if $in->[0] eq '{';
@@ -854,7 +854,7 @@ for (qw(Text::TeX::ArgToken Text::TeX::BegArgsToken Text::TeX::EndArgsToken )) {
   }
 
   sub eatUntil {		# We suppose that the text to match
-				# fits in a paragraph 
+				# fits in a paragraph
     my $txt = shift;
     my $m = shift;
     my ($in,@in);
@@ -873,7 +873,7 @@ for (qw(Text::TeX::ArgToken Text::TeX::BegArgsToken Text::TeX::EndArgsToken )) {
     my $in = $txt->paragraph;
     return '' unless $in;	# To be able to match without warnings
     my $comment = undef;
-    if ($$in =~ 
+    if ($$in =~
 	/^(?:\s*)(?:$Text::TeX::commentpattern)?($Text::TeX::tokenpattern)/o) {
       if (defined $2) {return $1} #if 1 usualtokenclass char, return it ($1==$2)
       elsif (defined $3) {return "\\$3"} # Multiletter (\[a-zA-Z]+)
@@ -881,7 +881,7 @@ for (qw(Text::TeX::ArgToken Text::TeX::BegArgsToken Text::TeX::EndArgsToken )) {
     }
     return '';
   }
-  
+
 # This is the main subroutine for eating a token.
 # It returns a token as either TT::Text or TT::Token.
 # Or it returns TT::Paragraph if it had to read a new paragraph in the TeX file.
@@ -934,7 +934,7 @@ for (qw(Text::TeX::ArgToken Text::TeX::BegArgsToken Text::TeX::EndArgsToken )) {
       my $out = pop @{ $txt->{pending_out} };
       # E.g., if you have x^\sqrt2 -- when you pop and return the \sqrt
       # EndArgsToken, you need to make sure the ^ EndArgsToken falls out next.
-      #    But if pending_out is an ArgToken, *don't* pop the next thing 
+      #    But if pending_out is an ArgToken, *don't* pop the next thing
       # (next ArgToken or EndArgsToken) out of synthetic yet
       # Most often, synthetic will be empty, so popsynthetic will do nothing
       $txt->popsynthetic if ref($out) eq 'Text::TeX::EndArgsToken';
@@ -947,7 +947,7 @@ for (qw(Text::TeX::ArgToken Text::TeX::BegArgsToken Text::TeX::EndArgsToken )) {
                                         # token needs to be eaten in
                                         # the style `multi', like \left.
 	  # Put it at beginning of pending_in so we do E.g., EndLocals first
-	  splice @{ $txt->{pending_in} }, 
+	  splice @{ $txt->{pending_in} },
 	    0, 0, (bless \$in, 'Text::TeX::LookedAhead');
 	  return $out;
 	} else {
@@ -965,7 +965,7 @@ for (qw(Text::TeX::ArgToken Text::TeX::BegArgsToken Text::TeX::EndArgsToken )) {
     if (defined $in) {
       # after_lookahead is true if we got a LookedAhead token from pending_out
       #    because we looked ahead when there was a LookAhead token
-      $in = $$in, $after_lookahead = 1 
+      $in = $$in, $after_lookahead = 1
 	if ref $in eq 'Text::TeX::LookedAhead';
     } else {
       my $one;
@@ -982,7 +982,7 @@ for (qw(Text::TeX::ArgToken Text::TeX::BegArgsToken Text::TeX::EndArgsToken )) {
     $in->digest($txt);
     my ($Token, $type, @arr);
     unless (defined $in
-            && defined $in->[0] 
+            && defined $in->[0]
 	    && $in->[0] =~ /$Text::TeX::active/o
 	    && defined ( $Token = $txt->{tokens}->{$in->[0]} )
 	    && exists ($Token->{"Type"})
@@ -1012,7 +1012,7 @@ for (qw(Text::TeX::ArgToken Text::TeX::BegArgsToken Text::TeX::EndArgsToken )) {
 	$txt->pushsynthetic(new Text::TeX::LookAhead [$in, $count, $res]);
       } else {
 	# This will fall out after we read all the args this token needs
-	$txt->pushsynthetic(new Text::TeX::EndArgsToken [$in, $count]);	
+	$txt->pushsynthetic(new Text::TeX::EndArgsToken [$in, $count]);
       }
       # One of these tokens will fall out after we finish each arg (except last)
       # Push on 3,2,1, so that when we *popsynthetic*, 1 will come off first
@@ -1028,11 +1028,11 @@ for (qw(Text::TeX::ArgToken Text::TeX::BegArgsToken Text::TeX::EndArgsToken )) {
 	$out = new Text::TeX::BegArgsToken [$in, $count];
       }
     } else {
-      warn "Format of token data unknown for `", $in->[0], "'"; 
+      warn "Format of token data unknown for `", $in->[0], "'";
     }
     return $out;
   }
-  
+
   sub report_arg {
     my $n = shift;
     my $max = shift;
@@ -1048,15 +1048,15 @@ for (qw(Text::TeX::ArgToken Text::TeX::BegArgsToken Text::TeX::EndArgsToken )) {
   sub eatDefine {
     my $txt = shift;
     my ($args, $body);
-    warn "No `{' found after defin", return undef 
+    warn "No `{' found after defin", return undef
       unless $args = $txt->eatUntil('{');
-    warn "Argument list @$args too complicated", return undef 
+    warn "Argument list @$args too complicated", return undef
       unless @$args == 1 && $$args[0] =~ /^(\ \#\d)*$/;
-    warn "No `}' found after defin", return undef 
+    warn "No `}' found after defin", return undef
       unless $body = $txt->eatBalancedRest;
     #my @args=split(/(\#[\d\#])/,$$);       # lipa
   }
-  
+
 # This is the main subroutine called by parsing programs. Basically, it
 #     keeps eating tokens, then calling $txt->actions on that token
   sub process {
@@ -1080,10 +1080,10 @@ for (qw(Text::TeX::ArgToken Text::TeX::BegArgsToken Text::TeX::EndArgsToken )) {
   '}' => {'class' => 'Text::TeX::End::Group'},
   "\$" => {'class' => 'Text::TeX::SelfMatch', waitfor => "\$"},
   '$$' => {'class' => 'Text::TeX::SelfMatch', waitfor => '$$'},
-  '\begin' => {class => 'Text::TeX::Begin::Group::Args', 
+  '\begin' => {class => 'Text::TeX::Begin::Group::Args',
 	       eatargs => 1, 'waitfor' => '\end', selfmatch => 1},
   '\end' => {class => 'Text::TeX::End::Group::Args', eatargs => 1, selfmatch => 1},
-  '\left' => {class => 'Text::TeX::Begin::Group::Args', 
+  '\left' => {class => 'Text::TeX::Begin::Group::Args',
 	       eatargs => 1, 'waitfor' => '\right'},
   '\right' => {class => 'Text::TeX::End::Group::Args', eatargs => 1},
   '\frac' => {Type => 'report_args', count => 2},
@@ -1091,9 +1091,9 @@ for (qw(Text::TeX::ArgToken Text::TeX::BegArgsToken Text::TeX::EndArgsToken )) {
   '\text' => {Type => 'report_args', count => 1},
   '\operatorname' => {Type => 'report_args', count => 1},
   '\operatornamewithlimits' => {Type => 'report_args', count => 1},
-  '^' => {Type => 'report_args', count => 1, 
+  '^' => {Type => 'report_args', count => 1,
 	  lookahead => \%super_sub_lookahead },
-  '_' => {Type => 'report_args', count => 1, 
+  '_' => {Type => 'report_args', count => 1,
 	  lookahead => \%super_sub_lookahead },
   '\em' => {Type => 'local'},
   '\bold' => {Type => 'local'},
@@ -1118,12 +1118,12 @@ for (qw(Text::TeX::ArgToken Text::TeX::BegArgsToken Text::TeX::EndArgsToken )) {
        (undef) x 8,
        (undef) x 8,     # 4th: numbers and symbols
        (undef) x 8,
-       '\???', ( map {"\\$_"} 
-		 qw(Alpha Beta Chi Delta Epsilon Phi Gamma 
-		 Eta Iota vartheta Kappa Lambda Mu Nu Omicron 
+       '\???', ( map {"\\$_"}
+		 qw(Alpha Beta Chi Delta Epsilon Phi Gamma
+		 Eta Iota vartheta Kappa Lambda Mu Nu Omicron
 		 Pi Theta Rho Sigma Tau Ypsilon varsigma Omega
 		 Xi Psi Zeta)), undef, '\therefore', undef, '\perp', undef,
-       undef, ( map {"\\$_"} 
+       undef, ( map {"\\$_"}
 	        qw(alpha beta chi delta varepsilon phi gamma
 		   eta iota varphi kappa lambda mu nu omicron
 		   pi theta rho sigma tau ypsilon varpi omega
@@ -1409,7 +1409,7 @@ undone at the end of enclosing block. At the end of the block an
 output event C<Text::TeX::EndLocal> is delivered, with C<$token->[0]>
 being the output token for the I<local> event starting.
 
-Useful for font switching. 
+Useful for font switching.
 
 =back
 

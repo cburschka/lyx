@@ -1,7 +1,10 @@
 .rn '' }`
-''' $RCSfile: reLyX.man,v $$Revision: 1.3 $$Date: 2002/10/28 09:52:39 $
+''' $RCSfile: reLyX.man,v $$Revision: 1.4 $$Date: 2004/10/28 14:35:19 $
 '''
 ''' $Log: reLyX.man,v $
+''' Revision 1.4  2004/10/28 14:35:19  leeming
+''' Whitespace, only whitespace. Part II.
+'''
 ''' Revision 1.3  2002/10/28 09:52:39  poenitz
 ''' the relyx changes
 '''
@@ -85,9 +88,9 @@
 'br\}
 .\"	If the F register is turned on, we'll generate
 .\"	index entries out stderr for the following things:
-.\"		TH	Title 
+.\"		TH	Title
 .\"		SH	Header
-.\"		Sh	Subsection 
+.\"		Sh	Subsection
 .\"		Ip	Item
 .\"		X<>	Xref  (embedded
 .\"	Of course, you have to process the output yourself
@@ -290,14 +293,14 @@ Run \fBreLyX\fR.
 .Sp
 \fBreLyX\fR will inform you of its progress and give any warnings to stderr, so if
 you don't want any output at all, try (in csh) \*(L'reLyX foo.tex >& /dev/null\*(R'.
-You should \s-1NOT\s0 redirect standard output to \fIfoo.lyx\fR. 
+You should \s-1NOT\s0 redirect standard output to \fIfoo.lyx\fR.
 .Ip "\(bu" 4
 Run LyX (version 0.12 or 1.0 or later) on the resulting .lyx file.
 .Sp
 In theory, most of the file will have been translated, and anything that's
 untranslatable will be highlighted in red (TeX mode). In theory, LyX will be
 able to read in the file, and to create printed documents from it, because all
-that untranslated red stuff will be passed directly back to LaTeX, which LyX 
+that untranslated red stuff will be passed directly back to LaTeX, which LyX
 uses as a backend. Unfortunately, reality doesn't always reflect theory. If
 \fBreLyX\fR crashes, or LyX cannot read the generated LyX file, see the \f(CWBUGS\fR entry elsewhere in this document or the \fI\s-1BUGS\s0\fR file.
 .Ip "\(bu" 4
@@ -363,14 +366,14 @@ thebibliography environment and \f(CW\ebibitem\fR command, as well as BibTeX's
 .Ip "\(bu" 4
 miscellaneous commands: \f(CW\ehfill\fR, \f(CW\e\fR\f(CW\e\fR, \f(CW\enoindent\fR, \f(CW\eldots\fR...
 .Ip "\(bu" 4
-documentclass-specific environments (and some commands) which can be 
+documentclass-specific environments (and some commands) which can be
 translated to LyX layouts
 .Ip "\(bu" 4
 arguments to certain untranslatable commands (e.g. \f(CW\embox\fR)
 .PP
 Some of this support may not be 100% yet. See below for details
 .PP
-\fBreLyX\fR copies math (almost) verbatim from your LaTeX file. Luckily, LyX reads 
+\fBreLyX\fR copies math (almost) verbatim from your LaTeX file. Luckily, LyX reads
 in LaTeX math, so (almost) any math which is supported by LyX should work just
 fine. A few math commands which are not supported by LyX will be replaced with
 their equivalents, e.g., \f(CW\eto\fR is converted to \f(CW\erightarrow\fR. See
@@ -426,7 +429,7 @@ skip blocks.
 [one|two]side, landscape, and [one|two]column.) Other options are placed in
 the \*(L"options\*(R" field in the Layout->Document popup.
 .Sp
-More importantly, \fBreLyX\fR doesn't translate \f(CW\eusepackage\fR commands, margin 
+More importantly, \fBreLyX\fR doesn't translate \f(CW\eusepackage\fR commands, margin
 commands, \f(CW\enewcommands\fR, or, in fact, anything else from the preamble. It
 simply copies them into the LaTeX preamble. If you have margin commands in
 your preamble, then the LyX file will generate the right margins. However,

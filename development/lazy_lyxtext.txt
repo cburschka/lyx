@@ -66,7 +66,7 @@
      this is 16 * 10 * 50 = 8000 bytes, we have however some
      additional overhead: the RowPars one for each paragraph if we
      assume 5 lines per paragraph and 20 bytes for each RowPar we get:
-     10 * 50 / 5 * 20 = 2000. This is a sum of 10000 on the new scheme. 
+     10 * 50 / 5 * 20 = 2000. This is a sum of 10000 on the new scheme.
 
      Speed: some operations will most likely be somewhat faster since
      they now can operate on the number of paragraph instead of the
@@ -80,8 +80,8 @@
      If we want to operate on rows only it is easy to create iterators
      that can handle this. (This means that a way to force the
      evaluation of the rows might be something like:
-		
-		// traverse all the rows and generate the missing ones. 
+
+		// traverse all the rows and generate the missing ones.
 		for_each(rowlist.begin(), rowlist.end(), dummy_func);
 
      Note about the buffer structure in the lyx repository: LyXText
@@ -119,4 +119,3 @@ from the middle.
 ² Number of CPUs f.ex.
 
 
-     

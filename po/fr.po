@@ -5,25 +5,25 @@
 # Faucheux Olivier <olivier.faucheux@depinfo.enseeiht.fr> 2000
 #
 # Création initiale par Emmanuel GUREGHIAN
-# point en suspens et choix effectués: 
+# point en suspens et choix effectués:
 # - utilisation du mot impossible pour unable et cannot : cela peut
 #   induire en erreur entre ce que lyx ne PEUT pas faire et ce que lyx ne
 #   VEUT pas faire.
 # - toggle traduit par (Dés)Activer ?
-# - quotes = guillemet 
+# - quotes = guillemet
 # - emphasis=mise en évidence
-# - quelle différence entre noun et small caps ? 
+# - quelle différence entre noun et small caps ?
 # -----------------------------------------------------------------------
 # Modifs :
 # - Sauver -> Enregistrer (à la Word)
 #   car sauver c'est la sauvergarde d'urgence
-# - unification keymap = réaffectation clavier 
+# - unification keymap = réaffectation clavier
 # - des espaces ont été ajoutés pour la taille de caractères
 # - Diminuer et augmenter ont de + été munis de <>
 # - noun = majuscules
 # - Small caps = petites capitales
 # ------------------------------------------------------------------------
-# revue de la messagerie par J.P. Chrétien (chretien@cert.fr) 8/12/99 
+# revue de la messagerie par J.P. Chrétien (chretien@cert.fr) 8/12/99
 # fr.po cvs du 1/12/99, lyx.pot de lyx-1.1.3
 #  - unable et cannot : remplacement des impossibilités par des interdictions
 # quand c'est l'utilisateur qui ne peut pas faire ce que LyX ne veut pas
@@ -32,9 +32,9 @@
 #      espace avant :, ?, !
 #      pas de majuscules dans le corps des messages
 #  - modifications
-#     Nouveau Fichier -> NouveauFichier 
+#     Nouveau Fichier -> NouveauFichier
 #     Mise en garde -> Avertissement
-#     Noun -> nom propre 
+#     Noun -> nom propre
 #     Sans sérif -> sans empattement
 #     Machine à écrire -> à chasse fixe
 #     Roman(e) -> Romain(e)
@@ -57,7 +57,7 @@
 #     lisible/illisible éditable/en lecture seule exécutable/non exécutable
 #  pour un fichier
 #     idem              modifiable/non modifiable consultable/non
-# pour un répertoire 
+# pour un répertoire
 #
 # marquer en fuzzzy pour transmettre un doute sur la traduction
 # n'est pas possible, les messages marqués de la sorte sont ignorés
@@ -91,9 +91,9 @@
 # -------------------------------------------------------------------------
 # EG 14 Juin 2000
 # Quelques corrections + que mineures
-# J'ai traduit Include par inclure et input par incorporer, en espérant 
+# J'ai traduit Include par inclure et input par incorporer, en espérant
 # que la différence sémantique entre les 2 soit + forte que les 2 termes
-# anglais. Mais après réflexion je suis d'un avis mitigé. 
+# anglais. Mais après réflexion je suis d'un avis mitigé.
 # -------------------------------------------------------------------------
 # JPC 20 Juin 2000
 # correction confusion entre One/Two de Pagination et One/Two de Colonnes
@@ -102,7 +102,7 @@
 # raccourcissement titre "Base de données" tronqué dans la fenêtre
 # -------------------------------------------------------------------------
 # JPC 3 dec 2000 version 1.1.6pre2
-#   - patch de Angus Leeming 
+#   - patch de Angus Leeming
 #     (corrigeant un certain nombre d'erreurs de raccourcis)
 #   - correction des «fuzzzy» crées pas msgmerge -> ligne 1178
 #     (les raccourcis menus sont totalement découplés des bindings, ce qui
@@ -122,7 +122,7 @@
 # Vus les fichiers ext_l10n.h et MenuBackend.C
 # ---------------------------------------------------------------------------
 # JPC + AR 17 avr 2001 version 1.1.6fix1
-# JPC : Revue des « fuzzzy » restants sur 42% du fichier 
+# JPC : Revue des « fuzzzy » restants sur 42% du fichier
 # (traité 200 fuzzzy sur 513 + quelques traductions non encore faites
 # vues en passant)
 # Quelques interrogations:

@@ -3,7 +3,7 @@
 %% preferred format for submission of "spec" scripts
 %% It is a pretty dull and uninteresting format, but it sells
 %% Derived from report.cls. There is probably still a lot of stuff
-%% that could be deleted. 
+%% that could be deleted.
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{hollywood} [2001/9/10 v1.2 uses hollywood.layout]
 \usepackage{fancyhdr}
@@ -177,7 +177,7 @@
 \newlength{\bmargin}%
 \setlength{\bmargin}{.75in}%
 \setlength{\textheight}%
-{\paperheight -\bmargin -\topmargin -\headheight -\headsep }% 
+{\paperheight -\bmargin -\topmargin -\headheight -\headsep }%
 
 
 %%\pagestyle{fancy}
@@ -208,7 +208,7 @@
 {\filbreak
 \vspace{\lnspace}
 \raggedright
-\par INT. 
+\par INT.
 \uppercase{#1}
 }%
 
@@ -216,7 +216,7 @@
 {\filbreak
 \vspace{\lnspace}
 \raggedright
-\par EXT. 
+\par EXT.
 \uppercase{#1}
 \vspace{\lnspace}
 }%
@@ -225,7 +225,7 @@
 {\filbreak
 \vspace{4bp}
 \raggedright
-\par 
+\par
 \uppercase{#1}
 }%
 \newlength{\dialogLength}

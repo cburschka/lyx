@@ -75,10 +75,10 @@ rm -rf ${RPM_BUILD_ROOT}
 texhash
 
 # Before configuring lyx for the local system
-# PATH needs to be imported 
-if [ -f /etc/profile ]; then 
+# PATH needs to be imported
+if [ -f /etc/profile ]; then
     . /etc/profile
-fi 
+fi
 #
 # Now configure LyX
 #
@@ -99,7 +99,7 @@ texhash
 
 %files
 %defattr(-,root,root)
-%doc ABOUT-NLS ANNOUNCE COPYING 
+%doc ABOUT-NLS ANNOUNCE COPYING
 %doc README UPGRADING ChangeLog NEWS
 %doc lib/CREDITS README.reLyX
 %{_bindir}/*

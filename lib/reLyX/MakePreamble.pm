@@ -1,4 +1,4 @@
-# This file is part of reLyX. 
+# This file is part of reLyX.
 # Copyright (c) 1998-9 Amir Karger karger@post.harvard.edu
 # You are free to use and modify this code under the terms of
 # the GNU General Public Licence version 2 or later.
@@ -26,8 +26,8 @@ sub split_preamble {
     $debug_on = (defined($main::opt_d) && $main::opt_d);
     # -c option?
     $true_class = defined($main::opt_c) ? $main::opt_c : "";
-    my $zzz = $debug_on 
-        ? " from LaTeX file $InFileName into $PreambleName and $OutFileName" 
+    my $zzz = $debug_on
+        ? " from LaTeX file $InFileName into $PreambleName and $OutFileName"
 	: "";
     warn "Splitting Preamble$zzz\n";
 
@@ -165,7 +165,7 @@ sub translate_preamble {
     warn "Uncommented text before \\documentclass command ignored!\n"if $ignore;
     print "Ignored text was\n------\n$ignore------\n" if $debug_on && $ignore;
 
-    # concatenate all the extra options until the required argument to 
+    # concatenate all the extra options until the required argument to
     # \documentclass, which will be in braces
     until (eof(PREAMBLE) || /\{/) {
         my $instr = <PREAMBLE>;
@@ -351,7 +351,7 @@ sub translate_preamble {
     }
 
     ## Paragraph skip or indentation
-    if ( $Latex_Preamble =~ 
+    if ( $Latex_Preamble =~
 	 s/\\setlength\\parskip\{\\(.*)amount\}\s*\\setlength\\parindent\{0pt\}//) {
 	$LyX_Preamble .= "\\paragraph_separation skip\n";
 	$LyX_Preamble .= "\\defskip $1\n";

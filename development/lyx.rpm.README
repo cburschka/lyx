@@ -14,7 +14,7 @@ tetex, tetex-latex) from your RH distribution.
 
 4) Copy lyx-1.0.0.tar.gz to /usr/src/redhat/SOURCES
 
-5) Issue the command 
+5) Issue the command
 
 	rpm -bb /usr/src/redhat/SPECS/lyx.spec
 
@@ -32,6 +32,6 @@ rpm form):
         rpm -Uvh --nodeps /usr/src/redhat/RPMS/i386/lyx-1.0.0-1.i386.rpm
 
 You should not get any more errors.
-	
+
 mw@moni.msci.memphis.edu
 

@@ -7,7 +7,7 @@ package ReadCommands;
 # Read a file containing LaTeX commands and their syntax
 # Also, read a file containing LyX layouts and their LaTeX equivalents
 
-use strict; 
+use strict;
 
 # Variables needed by other modules
 # ToLayout is a ref to a hash which contains LyX layouts & LaTeX equivalents
@@ -59,7 +59,7 @@ sub read_syntax_files {
                      '\begin' => $Text::TeX::Tokens{'\begin'},
                      '\end' => $Text::TeX::Tokens{'\end'},
     );
-    
+
     my $InFileName;
     foreach $InFileName (@syntaxfiles) {
 	die "could not find syntax file $InFileName" unless -e $InFileName;
@@ -129,7 +129,7 @@ sub read_commands {
 		my @vals = $fileobject->eatBalanced->contents;
 		my $val = join ("", map {$_->exact_print} @vals);
 		$math_trans{$key} = $val;
-	    
+
 	    } else { # regular portion of syntax file
 		my ($dum2);
 		my $args = "";
@@ -243,7 +243,7 @@ sub read_layout_files {
 # TODO: We need to store ToLayout s.t. we can have > 1 layout per command.
 # Maybe by default just have one layout, but if (ref(layout)) then read
 # more args & thereby figure out which layout?
-# 
+#
 # Arg0 is the name of the documentclass
     use FileHandle;
     use File::Basename;
@@ -382,7 +382,7 @@ sub read_layout_files {
 		    } elsif (/^Paragraph$/) {
 		        $skip = 1;
 		    } else {
-			warn "unknown LatexType $latextype" . 
+			warn "unknown LatexType $latextype" .
 			     "for $latexname (layout $lyxname)!\n";
 		    }
 	    # Handle latexparam, if any
@@ -410,7 +410,7 @@ sub read_layout_files {
 		$lyxname = "";
 	    } # end if ($latextype and $latexname)
 	} # end if on $line
-	    
+
     } #end while
 
 ## Print every known layout

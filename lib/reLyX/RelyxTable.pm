@@ -176,7 +176,7 @@ sub parse_cols {
 	push @RelyxTable::table_array, $thistable;
 
 
-	# Now that it's blessed, put the 0th row into the table 
+	# Now that it's blessed, put the 0th row into the table
 	$thistable->addrow;
 
 	return $thistable;
@@ -313,7 +313,7 @@ sub parse_cols {
 	foreach $col (@{$thistable->{"columns"}}) {
 	    $to_print .= $col->print_info;
 	}
-		   
+
 	# Print cell info
 	my $cell;
 	foreach $row (@{$thistable->{"rows"}}) {
@@ -369,7 +369,7 @@ package RelyxTable::Column;
 	my $description = shift;
 	my $col;
 
-	# Initially zero everything, since we set different 
+	# Initially zero everything, since we set different
 	# fields for @ and non-@ columns
 	$col->{"alignment"} = "c";  # default
 	$col->{"left_line"} = 0;
@@ -424,7 +424,7 @@ package RelyxTable::Column;
 		    );
 	$to_print .= join(" ",@arr);
 	$to_print .= "\n";
-		   
+
 	return $to_print;
     }
 } # end package RelyxTable::Column
@@ -519,7 +519,7 @@ package RelyxTable::Row;
 		    );
 	$to_print .= join(" ",@arr);
 	$to_print .= "\n";
-		   
+
 	return $to_print;
     } # end sub print_info
 
@@ -534,7 +534,7 @@ package RelyxTable::Cell;
 #    alignment   - alignment of this cell
 #    top_line    - does the cell have a line on the top?
 #    bottom_line - does the cell have a line on the bottom?
-#    has_cont_row- 
+#    has_cont_row-
 #    rotate      - rotate cell?
 #    line_breaks - cell has line breaks in it (???)
 #    special     - does this multicol have a special description (@ commands?)
@@ -595,7 +595,7 @@ package RelyxTable::Cell;
 		    );
 	$to_print .= join(" ",@arr);
 	$to_print .= "\n";
-		   
+
 	return $to_print;
     }
 } # end package RelyxTable::Cell

@@ -140,7 +140,7 @@ Run B<reLyX>.
 
 B<reLyX> will inform you of its progress and give any warnings to stderr, so if
 you don't want any output at all, try (in csh) 'reLyX foo.tex >& /dev/null'.
-You should NOT redirect standard output to F<foo.lyx>. 
+You should NOT redirect standard output to F<foo.lyx>.
 
 =item *
 
@@ -149,7 +149,7 @@ Run LyX (version 0.12 or 1.0 or later) on the resulting .lyx file.
 In theory, most of the file will have been translated, and anything that's
 untranslatable will be highlighted in red (TeX mode). In theory, LyX will be
 able to read in the file, and to create printed documents from it, because all
-that untranslated red stuff will be passed directly back to LaTeX, which LyX 
+that untranslated red stuff will be passed directly back to LaTeX, which LyX
 uses as a backend. Unfortunately, reality doesn't always reflect theory. If
 B<reLyX> crashes, or LyX cannot read the generated LyX file, see L</BUGS>,
 or the F<BUGS> file.
@@ -222,7 +222,7 @@ C<\footnote> and C<\margin>
 font-changing commands including C<\em>, C<\emph>, C<\textit>, and
 corresponding commands to change family, size, series, and shape
 
-=item * 
+=item *
 
 C<\input{foo}> (or C<\input{foo.blah}>) and C<\include{foo}>. Plain TeX
 C<\input> command "C<\input foo.tex>" is also supported.
@@ -256,7 +256,7 @@ miscellaneous commands: C<\hfill>, C<\>C<\>, C<\noindent>, C<\ldots>...
 
 =item *
 
-documentclass-specific environments (and some commands) which can be 
+documentclass-specific environments (and some commands) which can be
 translated to LyX layouts
 
 =item *
@@ -267,7 +267,7 @@ arguments to certain untranslatable commands (e.g. C<\mbox>)
 
 Some of this support may not be 100% yet. See below for details
 
-B<reLyX> copies math (almost) verbatim from your LaTeX file. Luckily, LyX reads 
+B<reLyX> copies math (almost) verbatim from your LaTeX file. Luckily, LyX reads
 in LaTeX math, so (almost) any math which is supported by LyX should work just
 fine. A few math commands which are not supported by LyX will be replaced with
 their equivalents, e.g., C<\to> is converted to C<\rightarrow>. See
@@ -348,7 +348,7 @@ B<reLyX> translates only a few options to the C<\documentclass> command.
 [one|two]side, landscape, and [one|two]column.) Other options are placed in
 the "options" field in the Layout->Document popup.
 
-More importantly, B<reLyX> doesn't translate C<\usepackage> commands, margin 
+More importantly, B<reLyX> doesn't translate C<\usepackage> commands, margin
 commands, C<\newcommands>, or, in fact, anything else from the preamble. It
 simply copies them into the LaTeX preamble. If you have margin commands in
 your preamble, then the LyX file will generate the right margins. However,

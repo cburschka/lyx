@@ -41,7 +41,7 @@
 \def\MemberA#1#2#3#4%
    {#1{#2}{#3}%
      {\True}%
-     {\Member{#1}{#2}{#4}}} 
+     {\Member{#1}{#2}{#4}}}
 
 % Explode: string -> char list
 \def\Explode#1{\EqStr{Z}{#1}{\Nil}{\ExplodeA#1Z}}
@@ -53,7 +53,7 @@
 #1{True}{False}}
 
 % the basic manipulation of the board
-\def\Set#1#2{% square -> piece -> unit 
+\def\Set#1#2{% square -> piece -> unit
 \expandafter\xdef\csname#1\endcsname{#2}}
 \def\Get#1{% square -> piece
 \csname#1\endcsname}
@@ -197,19 +197,19 @@
 \edef\pst@arrowtable{\pst@arrowtable,<|-|>}
 \def\tx@ArrowTriangleA{ArrowTriangleA }
 \def\tx@ArrowTriangleB{ArrowTriangleB }
-\@namedef{psas@|>}{% 
-  /ArrowTriangleA { CLW dup 3.5 div SLW mul add dup 2 div /w ED mul dup 
-    /h ED mul /a ED 
-    0 h a sub moveto w h L 0 0 L w neg h L 0 h a sub L 
+\@namedef{psas@|>}{%
+  /ArrowTriangleA { CLW dup 3.5 div SLW mul add dup 2 div /w ED mul dup
+    /h ED mul /a ED
+    0 h a sub moveto w h L 0 0 L w neg h L 0 h a sub L
     gsave 1 setgray fill grestore gsave
-    stroke grestore } def 
+    stroke grestore } def
   \psk@arrowinset \psk@arrowlength \psk@arrowsize
   \tx@ArrowTriangleA}
 \@namedef{psas@<|}{%
-  /ArrowTriangle { CLW dup 2 div SLW mul add dup 2 div 
-    /w ED mul dup /h ED mul /a ED 
+  /ArrowTriangle { CLW dup 2 div SLW mul add dup 2 div
+    /w ED mul dup /h ED mul /a ED
     { 0 h T 1 -1 scale } if w neg h moveto 0 0 L w h L w neg a neg
-    rlineto w neg a rlineto w 0 rmoveto gsave stroke grestore } def 
+    rlineto w neg a rlineto w 0 rmoveto gsave stroke grestore } def
   true \psk@arrowinset \psk@arrowlength \psk@arrowsize
   \tx@ArrowTriangleB}
 % end of PSTricks addon
@@ -217,11 +217,11 @@
 {}
 
 \newcounter{ps@knightangle} \newcounter{ps@inverse}
-\def\printknightmove#1#2{% 
+\def\printknightmove#1#2{%
   \setcounter{ps@knightangle}{\get@fileangle{\First#1}{\First#2}+%
     \get@rankangle{\Second#1}{\Second#2} + \value{ps@inverse}}%
   \ncdiagg[style=psskak,angleA=\arabic{ps@knightangle}]{-|>}{#1}{#2}}
- 
+
 \def\printarrow#1#2{\ncline[style=psskak]{-|>}{#1}{#2}}
 
 \def\ps@highlightsquare#1{%
@@ -281,7 +281,7 @@
       \def\PieceNames{%
         \Listize[\uc@king,\uc@queen,\uc@rook,\uc@bishop,\uc@knight]}}}
 
-  
+
 \def\showskaklanguage{%
   (\uc@king)(\uc@queen)(\uc@rook)(\uc@bishop)(\uc@knight)(\uc@pawn)}
 
@@ -306,7 +306,7 @@
 {\EqStr{#1}{O}}
 
 \def\File#1% file -> square list, eg. a -> [a1,a2,...,a8]
-{\Map{\Glue{#1}}{\RankNames}} 
+{\Map{\Glue{#1}}{\RankNames}}
 \def\Rank#1% rank -> square list, eg. 1 -> [a1,b1,...,h1]
 {\Map{\Twiddle\Glue{#1}}{\FileNames}}
 
@@ -314,7 +314,7 @@
 % Compose: ('b -> 'c) -> ('a -> 'b) -> ('a -> c')
 % Second:  'a -> 'b  -> 'b
 % f: 'a -> unit
-% Compose Second f: 'a -> ('a -> 'b -> unit)    
+% Compose Second f: 'a -> ('a -> 'b -> unit)
 % \def\Apply#1#2% ('a -> unit) -> ('a list -> unit)
 % {\Force{\Map{#1}{#2}}}
 % \def\Force#1{#1\ForceA{}}
@@ -357,7 +357,7 @@
               {\EqStr{1}{#1}%
                 {E}%
                 {#1}}}}}}}}}
-       
+
 
 \def\ParseFenRank#1{\ParseFenRankA(#1Z)}
 \def\ParseFenRankA(#1#2){%
@@ -386,7 +386,7 @@
 \def\SetRank#1#2{% rank -> fenrank -> unit
   \edef\pap{\ParseFenRank{#2}}%
   \expandafter\InitRank\pap#1}
- 
+
 
 \def\InitBoard(#1/#2/#3/#4/#5/#6/#7/#8){%
   \SetRank{8}{#1}%
@@ -742,7 +742,7 @@
 \def\StringToTokens#1%
 {\skak@ifthenelse{\equal{#1}{}}{\Nil}{\StrToTokens(#1 )}}
 \def\StrToTokens (#1 #2){%
-  \EqStr{#1}{}% 
+  \EqStr{#1}{}%
     {\Nil}%
     \Cons{#1}{\EqStr{#2}{} {\Nil} {\StrToTokens(#2)}}}
 
@@ -774,7 +774,7 @@
 \def\ParseMove#1{% string -> unit
   \ParseMoveA(#1)}
 
-\def\ParseMoveA(#1#2){% char -> string -> unit 
+\def\ParseMoveA(#1#2){% char -> string -> unit
   \IsPieceName{#1}%
   {\gdef\PieceNameToMove{\skak@pieceToEnglish{#1}}%
     \gdef\PieceToMove{\PieceNameToPiece{\PieceNameToMove}{\WhiteToMove}}%
@@ -809,7 +809,7 @@
       {\IsPromotion{#1}%
         {\def\Promotion{\True}%
           \gdef\PromotionPieceName{\skak@pieceToEnglish{\FirstChar(#2)}}}}%
-      {}% no more information is of interest   
+      {}% no more information is of interest
       }}}}
 
 % help for \ParseCastling
@@ -897,7 +897,7 @@
 
 
 % relies on the info gathered by ParseMove
-\def\FindPieceSquares#1#2{% bool -> square -> square list 
+\def\FindPieceSquares#1#2{% bool -> square -> square list
   \EqPiece{\PieceNameToMove}{R}%
   {\ScanDirections%
     {\EqPiece{\PieceToMove}}{#2}{\Listize[up,down,left,right]}}%
@@ -1162,7 +1162,7 @@
       {\WhiteToMove%
         {\errmessage{mainline: white, not black, to move}}%
         {\MakeMove{#1}\gdef\NumberNext{\True}}}}}
-  
+
 
 \def\Mainline(#1 #2){%
   \EqStr{Z}{#1}%
@@ -1171,7 +1171,7 @@
     {\typeset@eatcomment#1#2WXWX}%
     {\NumberNext%
       {\EatNumber{#1}% sets \NumberOK, \ExpectedColour
-                                % executes a move not separated from the 
+                                % executes a move not separated from the
                                 % number with a space, eg, 1.e4
         \NumberOK%
         {\gdef\NumberNext{\False}%
@@ -1264,7 +1264,7 @@
 
 
 \def\mainlinestyle{\bfseries}%\let\Fig=\Figb}% could also contain
-                                           % definitions of the 
+                                           % definitions of the
                                 % various style options
 \def\variationstyle{}%\let\Fig=\Fign}   % as with mainlinestyle
 
@@ -1286,7 +1286,7 @@
   {\typeset@numberStripMove(#1)}}
 \def\typeset@numberStripMove(#1W){%
   \typeset@A@move{#1}}
-  
+
 \def\typeset@A@move#1{%
   \TypeSetColour%
   {\beforewhite\mbox{\typeset@A@moveA(#1Z)}\gdef\TypeSetColour{\False}}%
@@ -1381,7 +1381,7 @@
                   {\EqPiece{Q}{#1}{L}%
                     {\EqPiece{q}{#1}{l}%
                       {\EqPiece{K}{#1}{J}{j}}}}}}}}}}}}}
-                          
+
 \def\FilterShowOnly#1{% piece -> piece, shows only the pieces in
                       % ShowOnlyList
   \Member{\EqStr}{#1}{\ShowOnlyList}%
@@ -1395,7 +1395,7 @@
   \ToggleWhiteSquare%
   % ps stuff
   \ps@on{\expandafter\pnode\ps@squarecenter{#1}}{}}
-  
+
 \def\Showrank#1{% rank -> drawn rank
 \Skak\Apply{\Showchar}{\Rank{#1}}}
 
@@ -1426,7 +1426,7 @@
 \def\show@board{%
   \def\WhiteSquare{\True}
   \vbox{\offinterlineskip
-   \hrule height1pt 
+   \hrule height1pt
    \hbox{\vrule width1pt
          \vbox{\hbox{\Showrank{8}}\ToggleWhiteSquare
                \hbox{\Showrank{7}}\ToggleWhiteSquare
@@ -1490,7 +1490,7 @@
 \def\show@board@notation{%
   \def\WhiteSquare{\True}%
   \vbox{\offinterlineskip%
-    \hrule height1pt 
+    \hrule height1pt
     \hbox{\ShowrankWithNumber{8}}\ToggleWhiteSquare
     \hbox{\ShowrankWithNumber{7}}\ToggleWhiteSquare
     \hbox{\ShowrankWithNumber{6}}\ToggleWhiteSquare
@@ -1513,7 +1513,7 @@
 \def\show@board@notation@inverse{%
   \def\WhiteSquare{\True}%
   \vbox{\offinterlineskip%
-    \hrule height1pt 
+    \hrule height1pt
     \hbox{\ShowrankInverseWithNumber{1}}\ToggleWhiteSquare
     \hbox{\ShowrankInverseWithNumber{2}}\ToggleWhiteSquare
     \hbox{\ShowrankInverseWithNumber{3}}\ToggleWhiteSquare

@@ -8,7 +8,7 @@
 #
 # This code usually gets called by the reLyX wrapper executable
 #
-# $Id: reLyXmain.pl,v 1.5 2003/01/20 19:38:50 jamatos Exp $
+# $Id: reLyXmain.pl,v 1.6 2004/10/28 14:35:19 leeming Exp $
 #
 
 require 5.002; # Perl 5.001 doesn't work. Perl 4 REALLY doesn't work.
@@ -50,7 +50,7 @@ if (!defined($lyxdir)) {$lyxdir = "/usr/local/share/lyx"}
 if (!defined($lyxname)) {$lyxname = "lyx"}
 # there's a use vars in the wrapper, so we only need these if running w/out it
 use vars qw($lyxdir $lyxname);
- 
+
 # variables that a user might want to change
 @Suffix_List = '\.(ltx|latex|tex)'; # allowed suffixes for LaTeX file
 $LyXFormat = "2.15"; #What to print in \lyxformat command in .lyx file
@@ -65,7 +65,7 @@ BEGIN{$Success = 0}
 #
 
 # Print welcome message including version info
-my $version_info = '$Date: 2003/01/20 19:38:50 $'; # RCS puts checkin date here
+my $version_info = '$Date: 2004/10/28 14:35:19 $'; # RCS puts checkin date here
 $version_info =~ s&.*?(\d+/\d+/\d+).*&$1&; # take out just the date info
 warn "reLyX, the LaTeX to LyX translator. Revision date $version_info\n\n";
 
@@ -342,7 +342,7 @@ sub abs_file_name {
     my ($basename, $path, $suffix) = fileparse($File, @Suffix_List);
     my $realpath = &my_fast_abs_path($path);
     # add / at end
-    $realpath .= '/' unless $realpath =~ /\/$/; 
+    $realpath .= '/' unless $realpath =~ /\/$/;
     my $name = "$realpath$basename$suffix";
     return $name;
 }

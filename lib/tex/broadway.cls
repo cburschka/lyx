@@ -2,7 +2,7 @@
 %% This is file `broadway.cls', which provides a format for writing
 %% plays.
 %% Derived from report.cls. There is probably still a lot of stuff
-%% that could be deleted. 
+%% that could be deleted.
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{broadway} [1999/02/09 v1.0 uses broadway.layout]
 \renewcommand{\ref}[1]{#1}

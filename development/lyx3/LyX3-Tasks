@@ -14,7 +14,7 @@ there are three major tasks to be done:
 		bigger.
 		The LyXText class does not necessarily need to change
 		a lot, it could be per-view. However all the special
-		code in it needs to be (re)moved. Also a lot of the 
+		code in it needs to be (re)moved. Also a lot of the
 		functionality needs to be relocated.
 	o GUI independence.
 		Should be a compile time switch what gui (toolkit)
@@ -26,7 +26,7 @@ there are three major tasks to be done:
 		no view being able to coexist with other views or alone)
 		We will do this by providing an interface all the
 		toolkits will need to follow. Functions that the LyX
-		core will expect to be there. 
+		core will expect to be there.
 
 When these three is finished, we will probably declare a code freeze
 and try to release a new version. Hopefully other features has also
@@ -45,7 +45,7 @@ towards code quality:
 		should make it easier to move to threads later. Albeit
 	        this is not a huge goal we have some parts of the code
 	        that would benefit from threads. (forking is not that
-	        nice...) 
+	        nice...)
 	o signal slot mechanism
 	        We are going to use the signal/slot implementation
 	        found in libsigc++. This will hopefully give us better
@@ -56,7 +56,7 @@ towards code quality:
 	  possible, without too much hassle.
 		- get rid of most of the global variables. In
 	          perticular current_view is a problem.
-		- non shared variables in shared structures 
+		- non shared variables in shared structures
 	o make source documentation better. Remember that the better
 	  we document LyX internals the easier is it for new
 	  developers to begin working on LyX.
@@ -70,7 +70,7 @@ Some other things related to structure and services in the code:
 		- ensure that not too many commands are executed at
 		  the same time.
 		- ensure that non-compatible commands are running at
-		  the same time. 
+		  the same time.
 		- to setup file descriptors where communicating with
 		  the processes can take place.
 	o pass an inforeceiver around in the object structure.
@@ -96,7 +96,7 @@ to make it into 0.14:
 	o better version control (both document and file wise)
 		- version.sty
 		- cvs
-		- sccs 
+		- sccs
 	o character styles (similar to emph and noun)
 		Will make a lot of small things conceptual instead of
 		specific. Will be alot easier to change the
@@ -112,7 +112,7 @@ to make it into 0.14:
 		- replace & find next
 		- replace & find previous
 		We should perhaps try to make the interface a bit
-		emacs like, that should at least give us the 
+		emacs like, that should at least give us the
 		features we want.
 	o improved template support.
 	o collapse "New" and "New from Template" into one item.
@@ -130,7 +130,7 @@ to make it into 0.14:
 
 	o picture support
 		 A special insets with some basic drawing
-		 capabilities. 
+		 capabilities.
 
 	o better graphics support
 		 I have begun doing something about this. There are
@@ -143,7 +143,7 @@ to make it into 0.14:
 	  parameters set and get a handle to the finished
 	  transformation of the graphics. Hopefully this should make
 	  it quite easy for LyX to support several/many graphics
-	  formats, both on screen and on hard copy. 
+	  formats, both on screen and on hard copy.
 
 	o rotating and scaling of text
 	o PSTricks (we should be able to support some of this package)
@@ -167,7 +167,7 @@ to make it into 0.14:
 		T1-lib font renderer.
 	o better latex code quality
 		This means reading LaTeX books to get an better idea
-		on how things are done in the latex world. 
+		on how things are done in the latex world.
 	o perhaps find better names for the paragraph styles
 	  "paragraph" and "subparagraph"
 	o support for filecontents
@@ -186,7 +186,7 @@ to make it into 0.14:
 	o better babel support
 		- make it possible to tune the language strings
 		- the possibility for several languages in the same
-		  document. 
+		  document.
 	o title page support
 	o draft copy
 		- draftcopy.sty

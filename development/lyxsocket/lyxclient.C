@@ -70,7 +70,7 @@ bool prefixIs(string const & a, string const & pre)
 		++p_a;
 		++p_pre;
 	}
-	if (*p_pre == '\0') return true; 
+	if (*p_pre == '\0') return true;
 	return false;
 }
 
@@ -150,7 +150,7 @@ int connect(string const & name)
 
 
 // Class IOWatch ------------------------------------------------------------
-class IOWatch 
+class IOWatch
 {
 public:
 	IOWatch();
@@ -159,7 +159,7 @@ public:
 	bool wait(double);
 	bool wait();
 	bool isset(int fd);
-			
+
 private:
 	fd_set des;
 	fd_set act;
@@ -204,7 +204,7 @@ public:
 	int fd() const;
 	// Connection status
 	bool connected() const;
-	// Line buffered input from the socket	
+	// Line buffered input from the socket
 	bool readln(string &);
 	// Write the string + '\n' to the socket
 	void writeln(string const &);
@@ -354,7 +354,7 @@ bool CmdLineParser::parse(int argc, char * argv[])
 
 namespace cmdline
 {
-void usage() 
+void usage()
 {
 	cerr << "Usage: lyxclient [options]" << endl
 	     << "Options are:" << endl
@@ -505,9 +505,9 @@ int main(int argc, char * argv[])
 		}
 		cerr << "lyxclient: " << "Connected to " << *addr << endl;
 	}
-	
+
 	int const serverfd = server->fd();
-	
+
 	IOWatch iowatch;
 	iowatch.addfd(serverfd);
 
@@ -541,7 +541,7 @@ int main(int argc, char * argv[])
 			return 1;
 		}
 	}
-	
+
 	// Take commands from stdin
 	iowatch.addfd(0); // stdin
 	bool saidbye = false;

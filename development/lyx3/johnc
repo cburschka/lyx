@@ -1,4 +1,4 @@
-This is part of a private discussion I had with John Collins, the author 
+This is part of a private discussion I had with John Collins, the author
 of the first LaTeX2LyX conversor. Attached is also a document describing his
 ideas about the subject. Such ideas could be useful for our project.
 
@@ -12,7 +12,7 @@ Subject: Re: TeX2LyX document
 
 [Removed non-related stuff, AAS]
 
-I am not convinced devising a lyx format as a subset of latex is ideal. 
+I am not convinced devising a lyx format as a subset of latex is ideal.
 It would take some time to explain my thoughts.  But the problem I see
 with latex is that its syntax is not pleasant, so that it is relatively
 time-consuming and/or memory intensive to parse it.  Most importantly from
@@ -23,10 +23,10 @@ with a suitably rational subset of latex.  Is your format supposed to be
 just a file format, or will it also be used for the representation of a
 document in memory?  If the latter is true, then I would particularly stay
 away from a directly latex based format.  A file format could be closer to
-latex, since it might need to read by humans. 
+latex, since it might need to read by humans.
 
 But you have obviously thought about the issue and have come to different
-conclusions.  
+conclusions.
 
 My experience in writing ET convinced me that a good internal format is
 important to speed and to robustness.  ET will run with good speed on an

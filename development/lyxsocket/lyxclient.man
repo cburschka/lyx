@@ -28,7 +28,7 @@ commands are to be sent. The following options are used to specify the server.
 .TP 6
 .TP
 .BI \-p " pid"
-specify the \fIpid\fR of the running LyX process to which \fBlyxclient\fR 
+specify the \fIpid\fR of the running LyX process to which \fBlyxclient\fR
 should send commands.
 .TP
 .BI \-a " socket_address"
@@ -40,13 +40,13 @@ directory. There is one per running LyX process.
 if LyX is configured to use a temporary directory other than /tmp, you must
 inform \fBlyxclient\fR of this.
 .PP
-If neither \fB-a\fR nor \fB-p\fR are invoked, \fBlyxclient\fR will search for 
+If neither \fB-a\fR nor \fB-p\fR are invoked, \fBlyxclient\fR will search for
 sockets in /tmp (or \fItmp_dir\fR if the \fB-t\fR option is used) and use
 the first socket to which it can connect.
 This is safe if you are running only one LyX process at any one time.
 .SH COMMAND MODE OPTIONS
 \fBlyxclient\fR can send commands to LyX from both the command-line
-and from standard input. 
+and from standard input.
 LyX commands are documented in <fixme>.
 .TP 6
 .BI \-c " command"
@@ -55,7 +55,7 @@ send a single \fIcommand\fR, print LyX information to standard output and exit.
 .BI \-g " file line"
 this is simply a wrapper for the command 'server-goto-file-row \fIfile\fR \fIline\fR'. It is used by the DVI previewer to elicit inverse DVI search.
 .PP
-If neither \fB-c\fR nor \fB-g\fR are used, \fBlyxclient\fR will regard any 
+If neither \fB-c\fR nor \fB-g\fR are used, \fBlyxclient\fR will regard any
 standard input as commands to be sent to LyX, printing LyX's responses to
 standard output. Commands are
 separated by newlines (the '\\n' character). To finish communication
@@ -64,8 +64,8 @@ and terminate the \fBlyxclient\fR process, send the command 'BYE:'.
 .TP 6
 .BI \-n " name"
 when starting communication, \fBlyxclient\fR sends an idenfifier
-string to LyX. By default, this string is "PPID>PID", where PPID is 
-\fBlyxclient\fR's parent pid and pid is \fBlyxclient\fR's pid. 
+string to LyX. By default, this string is "PPID>PID", where PPID is
+\fBlyxclient\fR's parent pid and pid is \fBlyxclient\fR's pid.
 Use this option to override this default.
 .TP
 .BI \-h

@@ -25,14 +25,14 @@
 % Version: 1.1 (17 Nov 1990)
 %    Improvements over version 1.0:
 %     -TeX code cleaned up (thanks to TeX-wizzard Victor Eijkhout)
-%     -moving a King does not generate a castling move when this 
+%     -moving a King does not generate a castling move when this
 %      King already moved
 %     -renamed internal macro `\\' because LaTeX uses that
 %     -better hooks for foreign languages (look for lines marked with
 %      %%FOREIGN%%)
 %    Torture test:
-%      If you change something in the chess.sty style check if everything 
-%      else is still working with torture-test.ltx (LaTeX) or 
+%      If you change something in the chess.sty style check if everything
+%      else is still working with torture-test.ltx (LaTeX) or
 %      torture-test.tex (plain TeX).
 %    Known problems:
 %     -The analysis mode can not be used within arguments of macros
@@ -163,7 +163,7 @@
 }
 
 %
-% The next part defines a user friendly notation for chess moves. 
+% The next part defines a user friendly notation for chess moves.
 % Some examples:  |21. Nf3-e5, Ke8*f8 22. 0-0-0+, Bh8*a1|
 %              :  |21.: Ke8*f8 22. Bh8*a1, 0-0|
 %              :  |21 Nfe5 K*f8 22 0-0-0! B*a1|
@@ -221,7 +221,7 @@
       \define@Black@pieces{r}{d}{t}{f}{c}{p}}
 % Define here your language and choose an unique set of uppercase letters
 % for the White pieces (KING, QUEEN, etc.) and the corresponding lowercase
-% letters for the Black pieces (king, queen, etc.). 
+% letters for the Black pieces (king, queen, etc.).
 %  \ifcurrentlanguage{FOREIGN}{%
 %     \define@White@pieces{KING}{QUEEN}{ROOK}{BISHOP}{KNIGHT}{PAWN}
 %     \define@Black@pieces{king}{queen}{rook}{bishop}{knight}{pawn}}
@@ -248,7 +248,7 @@
  \gdef\@notation{\begingroup\let|=\endgroup\trigger@pieces}%
 %
 % Provide a `nochess' environment in which the `|' character becomes
-% inactive for situations where the `|' is already in use (like in 
+% inactive for situations where the `|' is already in use (like in
 % the LaTeX `tabular' environment for example).
 %
  \gdef\nochess{\begingroup\let|=\relax\catcode`\|=12\relax
@@ -365,9 +365,9 @@
    \fi}
 
 %
-% Promovendus: treat first char of argument as promotion piece if queen, 
+% Promovendus: treat first char of argument as promotion piece if queen,
 % rook, knight or bishop; otherwise consider it as comment and take queen
-% as default promotion. Leave in \PROM White promoting piece (Q|R|B|N) 
+% as default promotion. Leave in \PROM White promoting piece (Q|R|B|N)
 % and in \prom Black's version (q|r|b|n).
 %
 
@@ -487,7 +487,7 @@
 % If you add symbols realize that the macros should be usable by plain TeX
 % and LaTeX and that the (La)TeX names should be suggestive and clear!
 % But don't use uppercase letters or existing names (center)!
-% Thanks go to John Saba (saba@ccit.arizona.edu) and Henry Thomas 
+% Thanks go to John Saba (saba@ccit.arizona.edu) and Henry Thomas
 % (hthomas@irisa.fr) for their help in defining next symbols.
 \font\symbolten=cmsy10 \font\smrm=cmr6 \font\symbolsix=cmsy6
 \def\wbetter{\mbox{\baselineskip0pt$\vcenter{\vbox{\hbox{+}\hbox{=}}}$}}

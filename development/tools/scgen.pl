@@ -22,7 +22,7 @@
 % together.
 %
 % The labels are supposed to be entered at "LABELS" below,
-% and you get one solution (hopefully) with "go.". 
+% and you get one solution (hopefully) with "go.".
 % If there are no solutions, the Prolog-interpretator will reply with a
 % "No."
 %
@@ -78,7 +78,7 @@ uppercase(L,U):-
 possible_char(_/Label,Char):-
   member(Char,Label). 		% the character is part of the label
 
-% prepare_labels/2: Prepares all labels. Constructs a new list of pairs 
+% prepare_labels/2: Prepares all labels. Constructs a new list of pairs
 % where the original string is coupled with the prepared string.
 prepare_labels([], []).
 prepare_labels([H1|T1], [H1/H2|T2]):-

@@ -62,7 +62,7 @@ sub convert_length {
     # Return empty list on error
     my $size = shift;
 
-    # A length can be (optional plus followed by) (num)(unit) where 
+    # A length can be (optional plus followed by) (num)(unit) where
     # num is a float number (possibly with European command) and unit
     # is a size unit, either in,cm,pt etc. or \textwidth etc.
     my %unit_convert = (  # 1 inch = 25.4 mm
@@ -177,7 +177,7 @@ sub parse_keyval {
 		return 0 if $optarg1->print; # bounding box was given. Panic!
 		$filename = &recursive_print($reqarg);
 		# fighash key shouldn't exist if no size was given
-		$fighash{'height'} = $RelyxFigure::EpsfYsize 
+		$fighash{'height'} = $RelyxFigure::EpsfYsize
 		    if $RelyxFigure::EpsfYsize;
 		$fighash{'width'} = $RelyxFigure::EpsfXsize
 		    if $RelyxFigure::EpsfXsize;
@@ -189,7 +189,7 @@ sub parse_keyval {
 		# "silent" key doesn't do anything
 		@known_keys = qw(file figure rotate angle height width silent);
 		$keyval_string = &recursive_print($reqarg);
-		my $fighashref = 
+		my $fighashref =
 		        &RelyxFigure::parse_keyval($keyval_string, @known_keys);
 		return 0 unless defined $fighashref; # found unknown key...
 		%fighash = %$fighashref;
@@ -272,18 +272,18 @@ sub parse_keyval {
 
 	$to_print .= "file $self->{'file'}\n";
 	my ($size, $type) = ("","");
-	($size, $type) = ($self->{'width'}, 
+	($size, $type) = ($self->{'width'},
 	                  $RelyxFigure::HW_types{$self->{'width_type'}});
 	$to_print .= "width $type $size\n" if $size;
 	($size, $type) = ("","");
-	($size, $type) = ($self->{'height'}, 
+	($size, $type) = ($self->{'height'},
 	                  $RelyxFigure::HW_types{$self->{'height_type'}});
 	$to_print .= "height $type $size\n" if $size;
 	$to_print .= "angle $self->{'angle'}\n" if $self->{'angle'};
 	$to_print .= "flags $self->{'flags'}\n";
 
 	$to_print .= "\n\\end_inset \n\n";
-        
+
     } # end sub RelyxFigure::Figure::print
 
 } # end of package RelyxFigure::Figure

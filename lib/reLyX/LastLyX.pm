@@ -53,7 +53,7 @@ sub last_lyx {
 
 	} elsif (/$BasicLyX::bibstyle_insert_string/o) {
 	    # Replace the "insert bibstyle file here" with the actual file name
-	    
+
 	    my $ins = $BasicLyX::bibstyle_insert_string;
 	    my $fil = $BasicLyX::bibstyle_file;
 	    if ($fil) {
@@ -114,7 +114,7 @@ sub print_table {
     # know while reading the table that the last row was empty, so we
     # couldn't pop the last row then. So do it now. Yuck.
     if ($thistable->numcols==1) {
-	$to_print =~ s/\\newline(?=\s*$)// && pop @{$thistable->{"rows"}} 
+	$to_print =~ s/\\newline(?=\s*$)// && pop @{$thistable->{"rows"}}
     } elsif ($thistable->{"rows"}[$thistable->numrows -1]->{"bottom_line"}) {
 	$to_print =~ s/\\newline(?=\s*$)//;
     }

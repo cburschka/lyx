@@ -1,13 +1,13 @@
 /*
  * LyXServer monitor. To send command to a running instance of LyX
  * and receive information from LyX.
- * 
+ *
  * To build it type:
  * > gcc -g server_monitor.c -o monitor -lforms -L/usr/X11/lib -lX11 -lm
  * > ./monitor
  * Before you run lyx uncomment the line "\serverpipe" from your
  * ~/.lyx/lyxrc file, according with your home path.
- * 
+ *
  * Created: 970531
  * Copyright (C) 1997 Alejandro Aguilar Sierra (asierra@servidor.unam.mx)
  * Updated: 980104
@@ -23,11 +23,11 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 #include <unistd.h>
-#include <stdio.h>    
+#include <stdio.h>
 
 int lyx_listen = 0;
 int  pipein=-1, pipeout=-1;
-char pipename[100];        
+char pipename[100];
 char const *clientname = "monitor";
 
 /**** Forms and Objects ****/
@@ -140,12 +140,12 @@ void io_cb(int fd, void *data)
 	    fprintf(stderr, "monitor: LyX is listening!\n");
 	    fl_set_object_lcol(fd_server->submit,FL_BLACK);
 	    fl_activate_object(fd_server->submit);
-	}                            
+	}
     }
     if (s[0]=='I')
       fl_set_object_label(fd_server->info, s);
     else
-      fl_set_object_label(fd_server->notify, s); 
+      fl_set_object_label(fd_server->notify, s);
 }
 
 void openpipe()
@@ -173,25 +173,25 @@ void openpipe()
 	    return;
 	}
 	fl_add_io_callback(pipeout, FL_READ, io_cb, 0);
-	
+
 	// greet LyX
 	sprintf(buf, "LYXSRV:%s:hello\n", clientname);
 	write(pipein, buf, strlen(buf));
 	free(pipename);
-    } else 
+    } else
         fprintf(stderr, "monitor: Pipes already opened, close them first\n");
-}             
+}
 
 
 void closepipe()
 {
     char buf[100];
-    
+
     if (pipein==-1 && pipeout==-1) {
 	fprintf(stderr, "monitor: Pipes are not opened\n");
 	return;
     }
-	
+
     if (pipein>=0) {
 	if (lyx_listen) {
 	    lyx_listen = 0;
@@ -201,28 +201,28 @@ void closepipe()
 	}
 	close(pipein);
     }
-	      
+
     if (pipeout>=0) {
 	close(pipeout);
 	fl_remove_io_callback(pipeout, FL_READ, io_cb);
-    }     
+    }
     pipein = pipeout = -1;
     fl_set_object_lcol(fd_server->submit,FL_INACTIVE);
-    fl_deactivate_object(fd_server->submit);    
+    fl_deactivate_object(fd_server->submit);
 }
 
 
 void submit()
 {
     char s[255];
- 
+
     const char *clientname = fl_get_input(fd_server->client);
     const char *argument = fl_get_input(fd_server->arg);
     const char *command = fl_get_input(fd_server->command);
-    
+
     sprintf(s, "LYXCMD:%s:%s:%s\n", clientname, command, argument);
     fprintf(stderr, "monitor: command: %s\n", s);
-    if (pipein>=0) 
+    if (pipein>=0)
       write(pipein, s, strlen(s));
     else
       fprintf(stderr, "monitor: Pipe is not opened\n");
@@ -257,13 +257,13 @@ int main(int argc, char *argv[])
 
     strcpy(pipename, getenv("HOME"));
     strcat(pipename, "/.lyxpipe"),
-    
+
     /* fill-in form initialization code */
     fl_set_input(fd_server->pipename, pipename);
     fl_set_input(fd_server->client, clientname);
     fl_deactivate_object(fd_server->submit);
     fl_set_object_lcol(fd_server->submit,FL_INACTIVE);
-    
+
     /* show the first form */
     fl_show_form(fd_server->server,FL_PLACE_MOUSE,FL_FULLBORDER,"LyX Server Monitor");
     fl_do_forms();

@@ -1,5 +1,5 @@
 #######################  VERBATIM COPYING SUBROUTINES  ########################
-# This file is part of reLyX. 
+# This file is part of reLyX.
 # Copyright (c) 1998-9 Amir Karger karger@post.harvard.edu
 # You are free to use and modify this code under the terms of
 # the GNU General Public Licence version 2 or later.

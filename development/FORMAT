@@ -31,7 +31,7 @@ LyX file-format changes
 	* format incremented to 235.
 	* \paperpackage had an off-by-one error. Translation table:
 
-	  234: a4    a4wide  widemarginsa4 
+	  234: a4    a4wide  widemarginsa4
 	  235: none  a4      a4wide         widemarginsa4
 
 	  The "widemarginsa4" setting of 235 has no equivalent in 234.
@@ -58,7 +58,7 @@ LyX file-format changes
 2004-03-29  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* format incremented to 232.
-	
+
 	* Support for bibtopic (sectioned bibliographies).
 	  - bufferparam \use_bibtopic [1|0]
 	  - the bibtex inset has a second argument for bibtopic's
@@ -78,11 +78,11 @@ LyX file-format changes
 2004-03-29  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* format incremented to 231.
-	
+
 	* Support for sidewaysfigure/sidewaystable (rotating package).
 	insetfloat has now a param \sideways [true|false] (default is false).
-	The param should be erased on downwards conversion, if it was true, 
-	the inset should be replaced by 
+	The param should be erased on downwards conversion, if it was true,
+	the inset should be replaced by
 	\begin{sidewaysfigure} <content> \end{sidewaysfigure}
 	resp.
 	\begin{sidewaystable} <content> \end{sidewaystable}
@@ -91,13 +91,13 @@ LyX file-format changes
 2004-02-23  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* format incremented to 230.
-	
+
 	* Support for a second optional argument in insetcommand.
 	currently, citation uses this to support natbibs second
 	optional argument \cite[before][after]{key}.
-	I think there's nothing to convert upwards. Downwards, the 
+	I think there's nothing to convert upwards. Downwards, the
 	commands with 2 optional args need to be converted to ERT.
-	
+
 	* Support for jurabib (param \use_jurabib [1|0], default is 0).
 	When converting downwards, \usepackage{jurabib} has to be added
 	to the preamble and, if babel is used, \usepackage{babel} before
@@ -148,7 +148,7 @@ LyX file-format changes
 
 2003-11-28  André Pönitz
 
-	* Remove space_above/space_below from Paragraph. 
+	* Remove space_above/space_below from Paragraph.
     This is now handled by InsetVSpace.
 
 2003-10-07  Angus Leeming  <leeming@lyx.org>
@@ -170,11 +170,11 @@ LyX file-format changes
 	rotateOrigin bottomleft         Rotation origin.
 	                                Output for non-zero rotation and
 	                                non-default origin (center) only.
-	scale 50                        
+	scale 50
 	width 2cm                       Output only if the image is resized.
 	height 2cm
 	keepAspectRatio
-	
+
 2003-10-07  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* Added box inset. File format:
@@ -201,7 +201,7 @@ LyX file-format changes
 
 	\end_inset
 
-	This box (Frameless, has_inner_box=1, use_parbox=0) replaces 
+	This box (Frameless, has_inner_box=1, use_parbox=0) replaces
 	the pre-existing Minipage inset. Parameters translate as follows:
 	position                        0/1/2   -> t/c/b
 	inner_position                  0/1/2/3 -> inner_pos c/t/b/s
@@ -246,7 +246,7 @@ LyX file-format changes
 			display <display_type>
 			lyxscale <scale>
 
-		\end_inset 
+		\end_inset
 
 	throwing away the final arg (here "", more generally "<string>") that holds
 	the parameters variable.
@@ -373,7 +373,7 @@ The LyX file now contains:
  \begin_inset Include \input{snapshot_t=40.tex}
 +preview true
 
- \end_inset 
+ \end_inset
 
 Earlier versions of LyX just swallow this extra token silently.
 
@@ -393,5 +393,5 @@ renamed as "size_kind" and "lyxsize_kind" respectively.
 +	lyxsize_type original
 	lyxwidth 4cm
 
- \end_inset 
+ \end_inset
 

@@ -1,4 +1,4 @@
-#! /usr/bin/perl -w 
+#! /usr/bin/perl -w
 
 # file pocheck.pl
 #
@@ -11,8 +11,8 @@
 #
 #   1. Uniform translation of messages that are identical except
 #      for capitalization, shortcuts, and shortcut notation.
-#   2. Usage of the following elements in both the original and 
-#      the translated message (or no usage at all): 
+#   2. Usage of the following elements in both the original and
+#      the translated message (or no usage at all):
 #      shortcuts ("&" and "|..."), trailing space, trailing colon
 #
 # Invocation:
@@ -22,7 +22,7 @@ foreach $pofilename ( @ARGV )
 {
   print "Processing po file '$pofilename'...\n";
 
-  open( INPUT, "<$pofilename" ) 
+  open( INPUT, "<$pofilename" )
     || die "Cannot read po file '$pofilename'";
   @pofile = <INPUT>;
   close( INPUT );
@@ -31,9 +31,9 @@ foreach $pofilename ( @ARGV )
   keys( %trans ) = 10000;
 
   $noOfLines = $#pofile;
- 
+
   $warn = 0;
- 
+
   $i = 0;
   while ($i <= $noOfLines) {
     if ( ( $msgid ) = ( $pofile[$i] =~ m/^msgid "(.*)"/ ) ) {
@@ -45,7 +45,7 @@ foreach $pofilename ( @ARGV )
 
       until ( ( $msgstr ) = ( $pofile[$i] =~ m/^msgstr "(.*)"/ ) ) { $i++; };
       $i++;
-      while ( ( $i <= $noOfLines ) && 
+      while ( ( $i <= $noOfLines ) &&
               ( ( $more ) = $pofile[$i] =~ m/^"(.*)"/ ) ) {
         $msgstr = $msgstr . $more;
         $i++;
@@ -87,14 +87,14 @@ foreach $pofilename ( @ARGV )
           print( "  '$msgid' => '$msgstr'\n" );
           $warn++;
         }
- 
+
         $msgid_clean  = lc($msgid);
         $msgstr_clean = lc($msgstr);
 
         $msgid_clean  =~ s/(.*)\|.*?$/$1/;  # strip xforms shortcuts
         $msgstr_clean =~ s/(.*)\|.*?$/$1/;
         $msgid_clean  =~ s/&([^ ])/$1/;     # strip Qt shortcuts
-        $msgstr_clean =~ s/&([^ ])/$1/; 
+        $msgstr_clean =~ s/&([^ ])/$1/;
 
         $trans{$msgid_clean}{$msgstr_clean} = [ $msgid, $msgstr ];
       }

@@ -68,7 +68,7 @@ autoheader
 automake --add-missing --foreign
 autoconf
 EOF
-  chmod a+x autogen.sh 
+  chmod a+x autogen.sh
 )
 
 
@@ -122,7 +122,7 @@ echo "Creating custom sigc++/configure.in"
 ## Note that you have to be very careful about quoting.  Look at the second
 ## script for example: '\'', \\\ and \$
 ##
-## Now for some explanation of what each script is supposed to change: 
+## Now for some explanation of what each script is supposed to change:
 ##
 #       -e 's/\(Nelson\)/\1\
 ### Modified by makeLyXsigc.sh (Allan Rae)/'
@@ -151,7 +151,7 @@ echo "Creating custom sigc++/configure.in"
 #
 #    -e 's%\(AUX_DIR(\)scripts%\1../config%'
 #
-# Use the applications auxilliary directory. Assumed to be ../config. 
+# Use the applications auxilliary directory. Assumed to be ../config.
 #
 #    -e 's%config/\(sigc++config\.h\)%\1%'
 #

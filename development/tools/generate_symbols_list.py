@@ -28,7 +28,7 @@ def process(file):
 	if i+1 < n:
 	    next_line = lines[i+1]
 
-	# some entries are spread over two lines so we join the next line 
+	# some entries are spread over two lines so we join the next line
 	# to the current one, (if current line contains a comment, we remove it)
 	line = string.split(line,'%')[0]+next_line
 
@@ -49,7 +49,7 @@ def process(file):
 		type = "mathord"
 		font = mo.group(2)
 		code = mo.group(3)
-	    
+
 	if mo != None and symbol not in ignore_list:
 	    mo2 = re.match(r'\s*\\def\\(.*?)\{', next_line)
 	    if mo2 != None and symbol == mo2.group(1)+"op":
@@ -109,7 +109,7 @@ for x in exceptions:
 
 print """
 lyxbar             cmsy 161   0 mathord
-lyxeq              cmr   61   0 mathord      
+lyxeq              cmr   61   0 mathord
 lyxdabar           msa   57   0 mathord
 lyxright           msa   75   0 mathord
 lyxleft            msa   76   0 mathord

@@ -1,6 +1,6 @@
 %%%% This is the cv document class, intended to provide a simple way
 %%%% to write your curriculum vitaes (resume)
-%%%% Author: Jean-Marc Lasgouttes (Jean-Marc.Lasgouttes@inria.fr) 
+%%%% Author: Jean-Marc Lasgouttes (Jean-Marc.Lasgouttes@inria.fr)
 %%%%   (with lot of help from Amir Karger <karger@bead.aecom.yu.edu>,
 %%%%                      Reuben Thomas <rrt@dcs.gla.ac.uk>
 %%%%                      and Dekel Tsur <dekelts@tau.ac.il>)
@@ -14,33 +14,33 @@
 %%      the first page
 %% \title{text} : defines a title, will will appear centered below the
 %%                headers (or above, if the `titleabove' option is used)
-%% \maketitle: actually typesets the header. 
+%% \maketitle: actually typesets the header.
 %%
-%% \section{text} : gives a title for a new topic of the CV. 
+%% \section{text} : gives a title for a new topic of the CV.
 %%
 %% `topic' environment: begins an itemize-like environment where the
 %%   argument of \item[] is typeset in font \itemfont. A line break is
 %%   automatically inserted if the label is too long to fit in the
-%%   margin (this can be controlled by option `notopicbreak'). 
+%%   margin (this can be controlled by option `notopicbreak').
 %%
-%% The cv document class also has some support for bibliography. 
+%% The cv document class also has some support for bibliography.
 %% You can use the `thebibliography' environment as usual, in
-%% particular wih BibTeX . The output is similar to the `topic' 
+%% particular wih BibTeX . The output is similar to the `topic'
 %% environment. If you separate your bibliography into several
 %% sections, you may want to use the `contbibnum' document class
-%% option. 
+%% option.
 %%
 %% Note that this class also has support for right-to-left languages,
 %% such as hebrew (courtesy Dekel Tsur).
 %%
 %% The document class accepts some options (along with the usual
-%% article.cls options): 
+%% article.cls options):
 %%   sf            (default) produce title and headers in sans serif fonts
-%%   plain         produce all output in roman fonts. 
+%%   plain         produce all output in roman fonts.
 %%   notopicbreak  do not add a line break after longtopic labels.
 %%   contbibnum    let the numbering of bibliography items be
 %%                 continuous when there are several thebibliography
-%%                 environments 
+%%                 environments
 %%   titleabove    output the title above the left and right headers,
 %%                 not below
 %%
@@ -54,7 +54,7 @@
 %% \sectionfont: the font used by \section when beginning a new topic.
 %%              Defaults to sans-serif semi bold condensed.
 %% \subsectionfont: the font used by \subsection when beginning a new
-%%              topic. 
+%%              topic.
 %%              Defaults to sans-serif semi bold condensed.
 %% \itemfont:   the font used in descriptions of items.
 %%              Defaults to sans-serif slanted.
@@ -68,11 +68,11 @@
 %% - 1.1 1998/11/06: Better documentation, in order to release it for
 %%   LyX ,added \refname, disabled all sectionning commands other that
 %%   \section, disabled numbering of sections.
-%% - 1.2 1998/12/01: 
+%% - 1.2 1998/12/01:
 %%      * Refined the algorithm to display the headers. In
 %%        particular, \leftheader and \rightheader do not exist
-%%        anymore. 
-%%	* Changed the justification of items labels 
+%%        anymore.
+%%	* Changed the justification of items labels
 %%   [Thanks to Amir Karger <karger@bead.aecom.yu.edu> for the two
 %%    changes above]
 %%	* Added command \title
@@ -86,7 +86,7 @@
 %%        [Thanks to Reuben Thomas for the idea]
 %%      * Added support for subsections (with associated font command
 %%        \subsectionfont).
-%%      * Added class options `sf' and `plain'. 
+%%      * Added class options `sf' and `plain'.
 %% - 1.4 2001/05/04
 %%      * Added `notopicbreak' class option.
 %% - 1.5 2001/06/18
@@ -98,8 +98,8 @@
 
 
 %% Basic definition to have a real LaTeX document class
-\NeedsTeXFormat{LaTeX2e} 
-\ProvidesClass{cv}[2001/06/18 Curriculum vitae version 1.5] 
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesClass{cv}[2001/06/18 Curriculum vitae version 1.5]
 
 %% The fonts used in the layout
 \newcommand{\sectionfont}[1]{\def\cv@sec@fnt{#1}}
@@ -182,7 +182,7 @@
        {-3.5ex \@plus -1ex \@minus -.2ex}
        {2.3ex \@plus .2ex}{\cv@ssec@fnt}}
 % the other ones do not exist.
-\let\subsubsection=\relax 
+\let\subsubsection=\relax
 \let\paragraph=\relax  \let\subparagraph=\relax
 % we do not want any numbering
 \setcounter{secnumdepth}{0}

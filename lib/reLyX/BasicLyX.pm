@@ -241,7 +241,7 @@ sub isNatbibCitation {
     $name =~ s/\*$//;
     # Is this doctored string found in the list of valid commands?
     return foundIn($name, @NatbibCommands);
-    
+
 }
 
 #####################   PARSER INVOCATION   ##################################
@@ -264,7 +264,7 @@ sub call_parser {
     #    Type=>report_args and count=>1
     # Note that we don't have to bother putting in tokens which will be simply
     #    translated (e.g., from %TextTokenTransTable).
-    my %MyTokens = ( 
+    my %MyTokens = (
 	'{' => $Text::TeX::Tokens{'{'},
 	'}' => $Text::TeX::Tokens{'}'},
 	'\begin' => $Text::TeX::Tokens{'\begin'},
@@ -290,7 +290,7 @@ sub call_parser {
 	# Just pretend they actually ARE new paragraph markers!
 	'\maketitle' => {'class' => 'Text::TeX::Paragraph'},
     );
-    
+
     # Now add to MyTokens all of the commands that were read from the
     #    commands file by package ReadCommands
     &ReadCommands::Merge(\%MyTokens);
@@ -380,7 +380,7 @@ sub regularizeLatexLength {
     $LatexLength = $val . $unit;
     return $LatexLength;
 }
-    
+
 
 sub getAsLyXLength {
     # Straight translation of LaTeX lengths to LyX ones.
@@ -463,7 +463,7 @@ sub basic_lyx {
 	# If, e.g., there's just a comment in this token, don't do anything
 	# This actually shouldn't happen if CleanTeX has already removed them
 	last TYPESW if !defined $eaten->print;
-        
+
         # Handle LaTeX tokens
         if (/^Token$/o) {
 
@@ -523,7 +523,7 @@ sub basic_lyx {
 
 	    # Items in list environments
 	    } elsif ($name eq '\item') {
-		
+
 		# What if we had a nested "Standard" paragraph?
 		# Then write \end_deeper to finish the standard layout
 		#     before we write the new \layout ListEnv command
@@ -534,7 +534,7 @@ sub basic_lyx {
 		          if $debug_on;
 		} # end deeper if
 
-		# Upcoming text (the item) will be a new paragraph, 
+		# Upcoming text (the item) will be a new paragraph,
 		#    requiring a new layout command based on whichever
 		#    kind of list environment we're in
 		$IsNewParagraph = 1;
@@ -625,7 +625,7 @@ sub basic_lyx {
 		$length =~ s/\s*$//; # may have \n at end
 
 		# If we can't parse the command, print it in tex mode
-		&RelyxFigure::parse_epsfsize($name, $length) or 
+		&RelyxFigure::parse_epsfsize($name, $length) or
 		    &print_tex_mode("$name=$length");
 
 	    # Miscellaneous...
@@ -647,7 +647,7 @@ sub basic_lyx {
 
             last TYPESW;
         }
-        
+
 	# Handle tokens that take arguments, like \section{},\section*{}
 	if (/^BegArgsToken$/) {
 	    my $name = $eaten->token_name;
@@ -714,7 +714,7 @@ sub basic_lyx {
 	        ($dummy, $dum2) = ($command =~ /(\S+)\s+(\w+)/);
 
 		# HACK so that "\emph{hi \emph{bye}}" yields unemph'ed "bye"
-		if ( ($dummy eq "\\emph") && 
+		if ( ($dummy eq "\\emph") &&
 		     ($CurrentFontStatus->{$dummy}->[-1] eq "on")) {
 		       $dum2 = "default"; # "on" instead of default?
 		       $command =~ s/on/default/;
@@ -732,7 +732,7 @@ sub basic_lyx {
 
 
 	    # Handle footnotes and margin notes
-	    # Make a new font table & layout stack which will be local to the 
+	    # Make a new font table & layout stack which will be local to the
 	    #    footnote or marginpar
 	    } elsif (exists $FloatTransTable{$name}) {
 	        my $command = $FloatTransTable{$name};
@@ -755,7 +755,7 @@ sub basic_lyx {
 		$CurrentLayoutStack = ["Standard"];
 
 		# Store whether we're at the end of a paragraph or not
-		#    for when we get to end of footnote AND 
+		#    for when we get to end of footnote AND
 		# Note that the footnote text will be starting a new paragraph
 		# Also store the current alignment (justification)
 		$OldINP = $IsNewParagraph; $OldMBD = $MayBeDeeper;
@@ -769,7 +769,7 @@ sub basic_lyx {
 		&CheckForNewParagraph; # may be at the beginning of a par
 
 		print OUTFILE "$pre_space\n",'\i ',$name,'{'
-	    
+
 	    # Included Postscript Figures
 	    # Currently, all postscript including commands take one
 	    # required argument and 0 to 2 optional args, so we can
@@ -872,7 +872,7 @@ sub basic_lyx {
 	    if ($eaten->base_token == $tok) {
 		&copy_latex_known($eaten,$fileobject);
 	    }
-        
+
 	    last TYPESW;
 	}
 
@@ -929,7 +929,7 @@ sub basic_lyx {
 
 	    } elsif ($name =~ m/^$AccentTokens$/) {
 		print OUTFILE "}\n";
-	    
+
 	    } elsif ($name eq "\\bibitem") {
 	        print OUTFILE "}\n";
 	    } # End if on $name
@@ -981,7 +981,7 @@ sub basic_lyx {
         if (/^Begin::Group::Args$/) {
 	    print $eaten->print," " if $debug_on; # the string "\begin{foo}"
 	    my $env = $eaten->environment;
-	    
+
 	    # Any environment found in the layouts files
 	    if (exists $ReadCommands::ToLayout->{$env}) {
 	        &ConvertToLayout($env);
@@ -1138,14 +1138,14 @@ sub basic_lyx {
 		$tex_mode_string = "";
 		# print "\begin{env}
 		# For reLyXskip env, don't print the \begin & \end commands!
-		$tex_mode_string .= $eaten->exact_print 
+		$tex_mode_string .= $eaten->exact_print
 		                unless $env eq "reLyXskip";
 		$tex_mode_string .=&Verbatim::copy_verbatim($fileobject,$eaten);
 	    }
 
             last TYPESW;
         }
-        
+
         # Handle \end{foo}
         if (/^End::Group::Args$/) {
 	    print $eaten->print," " if $debug_on; # the string "\end{foo}"
@@ -1518,7 +1518,7 @@ sub CheckForNewParagraph {
 # If $CurrentAlignment is set, it prints the alignment command for this par.
 # If $MayBeDeeper==1 and we're currently within a list environment,
 #    it starts a "deeper" Standard paragraph
-    my $dummy; 
+    my $dummy;
     my $layout = $$CurrentLayoutStack[-1];
 
     return if &RelyxTable::in_table;
@@ -1673,7 +1673,7 @@ sub fixmath {
 	        ( ([^A-Za-z] \*?) |    # non-letter (and *) ($4) OR
 		  ([A-Za-z]+ \*?)   )  # letters (and *) ($5)
 	    )//xs) # /x to allow whitespace/comments, /s to copy \n's
-    { 
+    {
 	$output .= $1;
 	my $tok = $2;
 	if (exists $ReadCommands::math_trans{$tok}) {

@@ -55,7 +55,7 @@ sub call_parser {
     my @LocalTokens = qw (em rm bf tt sf sc sl it
 			 rmfamily ttfamily sffamily mdseries bfseries
 			upshape itshape slshape scshape cal
-			); 
+			);
     foreach (@LocalTokens) {
 	$MyTokens{"\\$_"} = $Text::TeX::Tokens{'\em'}
     }
@@ -63,7 +63,7 @@ sub call_parser {
     &ReadCommands::Merge(\%MyTokens);
 
 # Create the fileobject
-    my $file = new Text::TeX::OpenFile 
+    my $file = new Text::TeX::OpenFile
 	   $InFileName,
 	   'defaultact' => \&clean_tex,
 	   'tokens' => \%MyTokens;
@@ -124,14 +124,14 @@ sub clean_tex {
 	       $printstr = '}';
 	       last SWITCH;
 	   }
-	   
+
 	   # $eaten->exact_print is undefined for previous environments
 	   $outstr = $eaten->exact_print;
 	   if (! defined $outstr) { # comment at end of paragraph
 	       warn "Weird undefined token $eaten!" unless $eaten->comment;
 	       last SWITCH;
 	    }
-	   
+
 	   # Handle LaTeX tokens
 	   if (/^Token$/) {
 	       my $realtok = $eaten->print; # w/out whitespace
@@ -193,7 +193,7 @@ sub clean_tex {
 	   }
 
 	   # End of tokens taking arguments, like '^'
-	   #     ADD '}' if there isn't one after the last argument, i.e., 
+	   #     ADD '}' if there isn't one after the last argument, i.e.,
 	   # if the previous token *wasn't* a '}'
 	   #     Kludge: for TeX style \input command ("\input foo" with no
 	   # braces) we need to read the whole filename, but parser will have
@@ -224,13 +224,13 @@ sub clean_tex {
 	       # required arg: they'll just be copied as text
 	       last SWITCH;
 	   }
-	   
+
 	   # Handle opening groups, like '{' and '$'.
 	   if (/Begin::Group$/) {
 	       $printstr = $outstr;
 	       last SWITCH;
 	   }
-	   
+
 	   # Handle closing groups, like '}' and '$'.
 	   if (/End::Group$/) {
 	       $printstr = $outstr;
@@ -246,7 +246,7 @@ sub clean_tex {
 	       }
 	       last SWITCH;
 	   }
-	   
+
 	   if  (/End::Group::Args/) {
 	       $printstr = $outstr;
 	       last SWITCH;
@@ -260,9 +260,9 @@ sub clean_tex {
 	   # The default action - print the string.
 	   $printstr = $outstr;
     } # end SWITCH:for ($type)
-    
+
     # Actually print the string
-    if (defined $printstr) { 
+    if (defined $printstr) {
 	print OUTFILE $printstr;
 	$last_eaten = $eaten; #save for next time
     } else {warn "Undefined printstr";}
