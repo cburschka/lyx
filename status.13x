@@ -22,6 +22,18 @@ What's new
 
 ** Updates
 
+- The spell-checking system has been over-hauled, including the following
+  changes :
+
+  o start spell-checking immediately on pressing F7
+  o xform's broken start/stop button removed
+  o better spell progress feedback
+  o long hang on ispell error changed
+  o infinite hang on ispell error fixed
+  o reports ispell errors back to the user
+  o the personal dictionaries are always correctly written out
+  o "Accept" button became "Ignore All" for clarity
+
 - updated russian interface localisation
 
 ** Bug fixes

@@ -11,7 +11,7 @@ SnapGrid: 5
 Name: form_spellchecker
 Width: 385
 Height: 375
-Number of Objects: 13
+Number of Objects: 12
 
 --------------------
 class: FL_BOX
@@ -124,24 +124,6 @@ argument: 0
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 280 25 100 25
-boxtype: FL_UP_BOX
-colors: FL_COL1 FL_COL1
-alignment: FL_ALIGN_CENTER
-style: FL_NORMAL_STYLE
-size: FL_NORMAL_SIZE
-lcol: FL_BLACK
-label: Start|#S
-shortcut: 
-resize: FL_RESIZE_NONE
-gravity: FL_NorthEast FL_NorthEast
-name: button_start
-callback: C_FormBaseInputCB
-argument: 0
-
---------------------
-class: FL_BUTTON
-type: NORMAL_BUTTON
 box: 280 195 100 25
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
@@ -185,7 +167,7 @@ alignment: FL_ALIGN_CENTER
 style: FL_NORMAL_STYLE
 size: FL_NORMAL_SIZE
 lcol: FL_BLACK
-label: Accept|#A
+label: Ignore All|#g
 shortcut: 
 resize: FL_RESIZE_X
 gravity: FL_NorthEast FL_NorthEast

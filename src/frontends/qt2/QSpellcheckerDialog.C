@@ -29,25 +29,13 @@ QSpellcheckerDialog::QSpellcheckerDialog(QSpellchecker * form)
 	form_(form)
 {
 	connect(closePB, SIGNAL(clicked()),
-		this, SLOT(stop()));
-}
-
-
-void QSpellcheckerDialog::stop()
-{
-	form_->stop();
+		form, SLOT(slotClose()));
 }
 
 
 void QSpellcheckerDialog::acceptClicked()
 {
 	form_->accept();
-}
-
-
-void QSpellcheckerDialog::spellcheckClicked()
-{
-	form_->spellcheck();
 }
 
 
@@ -98,7 +86,6 @@ void QSpellcheckerDialog::replaceChanged(QString const & str)
 
 void QSpellcheckerDialog::closeEvent(QCloseEvent * e)
 {
-	form_->stop();
 	form_->slotWMHide();
 	e->accept();
 }

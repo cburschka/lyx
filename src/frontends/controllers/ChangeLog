@@ -1,3 +1,11 @@
+2003-02-17  John Levon  <levon@movementarian.org>
+
+	* ControlDialog.tmpl: do build before  setParams for
+	spellchecker's sake 
+
+	* ControlSpellchecker.h:
+	* ControlSpellchecker.C: rework
+
 2003-02-25  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* ControlDocument.C (apply): Call to setLanguage() after updating bp_;

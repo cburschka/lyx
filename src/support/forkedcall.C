@@ -147,6 +147,24 @@ int ForkedProcess::runNonBlocking()
 	return retval_;
 }
 
+
+bool ForkedProcess::running() const
+{
+	if (!pid())
+		return false;
+
+	// Un-UNIX like, but we don't have much use for
+	// knowing if a zombie exists, so just reap it first.
+	int waitstatus;
+	waitpid(pid(), &waitstatus, WNOHANG);
+
+	// Racy of course, but it will do.
+	if (::kill(pid(), 0) && errno == ESRCH)
+		return false;
+	return true;
+}
+
+
 void ForkedProcess::kill(int tol)
 {
 	lyxerr << "ForkedProcess::kill(" << tol << ')' << endl;

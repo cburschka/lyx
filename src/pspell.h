@@ -37,14 +37,8 @@ public:
 	 */
 	virtual bool alive() { return true; }
 
-	/// clean up on messy exit
-	virtual void cleanUp();
-
 	/// check the given word and return the result
 	virtual enum Result check(WordLangTuple const &);
-
-	/// finish this spellchecker instance
-	virtual void close();
 
 	/// insert the given word into the personal dictionary
 	virtual void insert(WordLangTuple const &);

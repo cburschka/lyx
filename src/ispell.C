@@ -13,35 +13,6 @@
 #pragma implementation
 #endif
 
-#include <sys/types.h>
-#include <sys/wait.h>
-#include <unistd.h>
-#include <fcntl.h>
-#include <cstdio>
-
-// FIXME: do we need any of this horrible gook ?
-#if TIME_WITH_SYS_TIME
-# include <sys/time.h>
-# include <ctime>
-#else
-# if HAVE_SYS_TIME_H
-#  include <sys/time.h>
-# else
-#  include <ctime>
-# endif
-#endif
-
-#ifdef HAVE_SYS_SELECT_H
-# ifdef HAVE_STRINGS_H
-   // <strings.h> is needed at least on AIX because FD_ZERO uses bzero().
-   // BUT we cannot include both string.h and strings.h on Irix 6.5 :(
-#  ifdef _AIX
-#   include <strings.h>
-#  endif
-# endif
-#include <sys/select.h>
-#endif
-
 #include "LString.h"
 #include "lyxrc.h"
 #include "language.h"
@@ -49,9 +20,12 @@
 #include "encoding.h"
 #include "ispell.h"
 #include "WordLangTuple.h"
+#include "gettext.h"
 
 #include "support/forkedcall.h"
 #include "support/lstrings.h"
+
+#include <sys/select.h>
 
 #ifndef CXX_GLOBAL_CSTD
 using std::strcpy;
@@ -61,18 +35,16 @@ using std::strstr;
 #endif
 
 using std::endl;
+using std::max;
 
 namespace {
-
-/// pid for the `ispell' process.
-pid_t isp_pid = -1;
 
 class LaunchIspell : public ForkedProcess {
 public:
 	///
 	LaunchIspell(BufferParams const & p, string const & l,
-		     int * in, int * out)
-		: params(p), lang(l), pipein(in), pipeout(out) {}
+		     int * in, int * out, int * err)
+		: params(p), lang(l), pipein(in), pipeout(out), pipeerr(err) {}
 	///
 	virtual ForkedProcess * clone() const {
 		return new LaunchIspell(*this);
@@ -88,6 +60,7 @@ private:
 	string const & lang;
 	int * const pipein;
 	int * const pipeout;
+	int * const pipeerr;
 };
 
 
@@ -100,7 +73,7 @@ int LaunchIspell::start()
 
 int LaunchIspell::generateChild()
 {
-	isp_pid = fork();
+	pid_t isp_pid = fork();
 
 	if (isp_pid != 0) {
 		// failed (-1) or parent process (>0)
@@ -110,10 +83,13 @@ int LaunchIspell::generateChild()
 	// child process
 	dup2(pipein[0], STDIN_FILENO);
 	dup2(pipeout[1], STDOUT_FILENO);
-	::close(pipein[0]);
-	::close(pipein[1]);
-	::close(pipeout[0]);
-	::close(pipeout[1]);
+	dup2(pipeerr[1], STDERR_FILENO);
+	close(pipein[0]);
+	close(pipein[1]);
+	close(pipeout[0]);
+	close(pipeout[1]);
+	close(pipeerr[0]);
+	close(pipeerr[1]);
 
 	char * argv[14];
 	int argc = 0;
@@ -204,122 +180,161 @@ int LaunchIspell::generateChild()
 
 
 ISpell::ISpell(BufferParams const & params, string const & lang)
-	: str(0)
+	: in(0), out(0), inerr(0), str(0)
 {
-	static char o_buf[BUFSIZ];  // jc: it could be smaller
-	int pipein[2];
-	int pipeout[2];
+	lyxerr[Debug::GUI] << "Created ispell" << endl;
 
-	isp_pid = -1;
+	// static due to the setvbuf. Ugly.
+	static char o_buf[BUFSIZ];
+	
+	// We need to throw an exception not do this
+	pipein[0] = pipein[1] = pipeout[0] = pipeout[1]
+		= pipeerr[0] = pipeerr[1] = -1;
 
-	if (pipe(pipein) == -1 || pipe(pipeout) == -1) {
-		lyxerr << "LyX: Can't create pipe for spellchecker!" << endl;
-		setError();
+	// This is what happens when goto gets banned.
+
+	if (pipe(pipein) == -1) {
+		error_ = _("Can't create pipe for spellchecker.");
+		return;
+	}
+
+	if (pipe(pipeout) == -1) {
+		close(pipein[0]);
+		close(pipein[1]);
+		error_ = _("Can't create pipe for spellchecker.");
+		return;
+	}
+
+	if (pipe(pipeerr) == -1) {
+		close(pipein[0]);
+		close(pipein[1]);
+		close(pipeout[0]);
+		close(pipeout[1]);
+		error_ = _("Can't create pipe for spellchecker.");
 		return;
 	}
 
 	if ((out = fdopen(pipein[1], "w")) == 0) {
-		lyxerr << "LyX: Can't create stream for pipe for spellchecker!"
-		       << endl;
-		setError();
+		error_ = _("Can't open pipe for spellchecker.");
 		return;
 	}
 
 	if ((in = fdopen(pipeout[0], "r")) == 0) {
-		lyxerr <<"LyX: Can't create stream for pipe for spellchecker!"
-		       << endl;
-		setError();
+		error_ = _("Can't open pipe for spellchecker.");
+		return;
+	}
+
+	if ((inerr = fdopen(pipeerr[0], "r")) == 0) {
+		error_ = _("Can't open pipe for spellchecker.");
 		return;
 	}
 
 	setvbuf(out, o_buf, _IOLBF, BUFSIZ);
 
-	isp_fd = pipeout[0];
-
-	LaunchIspell childprocess(params, lang, pipein, pipeout);
-	isp_pid = childprocess.start();
-	if (isp_pid == -1) {
-		lyxerr << "LyX: Can't create child process for spellchecker!"
-		       << endl;
-		setError();
+	LaunchIspell * li = new LaunchIspell(params, lang, pipein, pipeout, pipeerr);
+	child_.reset(li);
+	if (li->start() == -1) {
+		error_ = _("Could not create an ispell process.\nYou may not have "
+			" the right languages installed.");	
+		child_.reset(0);
 		return;
 	}
 
-	setError();
 	/* Parent process: Read ispells identification message */
-	// Hmm...what are we using this id msg for? Nothing? (Lgb)
-	// Actually I used it to tell if it's truly Ispell or if it's
-	// aspell -- (kevinatk@home.com)
-	// But no code actually used the results for anything useful
-	// so I removed it again. Perhaps we can remove this code too.
-	// - jbl
-	char buf[2048];
-	fd_set infds;
-	struct timeval tv;
-	int retval = 0;
-	FD_ZERO(&infds);
-	FD_SET(pipeout[0], &infds);
-	tv.tv_sec = 15; // fifteen second timeout. Probably too much,
-	// but it can't really hurt.
-	tv.tv_usec = 0;
 
-	// Configure provides us with macros which are supposed to do
-	// the right typecast.
-	retval = select(SELECT_TYPE_ARG1 (pipeout[0]+1),
-			SELECT_TYPE_ARG234 (&infds),
-			0,
-			0,
-			SELECT_TYPE_ARG5 (&tv));
+	bool err_read;
+	bool error = select(err_read);
 
-	if (retval > 0) {
-		// Ok, do the reading. We don't have to FD_ISSET since
-		// there is only one fd in infds.
-		fgets(buf, 2048, in);
+	if (!error) {
+		if (!err_read) {
+			// Set terse mode (silently accept correct words)
+			fputs("!\n", out);
+			return;
+		}
 
-		fputs("!\n", out); // Set terse mode (silently accept correct words)
-
-	} else if (retval == 0) {
-		// timeout. Give nice message to user.
-		lyxerr << "Ispell read timed out, what now?" << endl;
-		// This probably works but could need some thought
-		isp_pid = -1;
-		::close(pipeout[0]);
-		::close(pipeout[1]);
-		::close(pipein[0]);
-		::close(pipein[1]);
-		isp_fd = -1;
+		/* must have read something from stderr */
+		error_ = buf;
 	} else {
-		// Select returned error
-		lyxerr << "Select on ispell returned error, what now?" << endl;
+		// select returned error
+		error_ = _("The spell process returned an error.\nPerhaps "
+				"it has been configured wrongly ?");
 	}
+
+	close(pipein[0]);
+	close(pipein[1]);
+	close(pipeout[0]);
+	close(pipeout[1]);
+	close(pipeerr[0]);
+	close(pipeerr[1]);
+	child_->kill();
+	child_.reset(0);
 }
 
 
 ISpell::~ISpell()
 {
-	delete[] str;
+	lyxerr[Debug::GUI] << "Killing ispell" << endl;
+
+	if (in)
+		fclose(in);
+
+	if (inerr)
+		fclose(inerr);
+
+	if (out) {
+		fputs("#\n", out); // Save personal dictionary
+
+		fflush(out);
+		fclose(out);
+	}
+
+	close(pipein[0]);
+	close(pipein[1]);
+	close(pipeout[0]);
+	close(pipeout[1]);
+	close(pipeerr[0]);
+	close(pipeerr[1]);
+	delete [] str;
 }
 
 
-void ISpell::setError()
+bool ISpell::select(bool & err_read)
 {
-	if (isp_pid == -1) {
-		error_ =
-			"\n\n"
-			"The spellcheck-process has died for some reason.\n"
-			"*One* possible reason could be that you do not have\n"
-			"a dictionary file for the language of this document\n"
-			"installed.\n"
-			"Check your spellchecker or set another dictionary\n"
-			"in the Spellchecker Options menu.\n\n";
-	} else {
-		error_ = 0;
+	fd_set infds;
+	struct timeval tv;
+	int retval = 0;
+	FD_ZERO(&infds);
+	FD_SET(pipeout[0], &infds);
+	FD_SET(pipeerr[0], &infds);
+	tv.tv_sec = 2;
+	tv.tv_usec = 0;
+
+	retval = ::select(SELECT_TYPE_ARG1 (max(pipeout[0], pipeerr[0]) + 1),
+			SELECT_TYPE_ARG234 (&infds),
+			0,
+			0,
+			SELECT_TYPE_ARG5 (&tv));
+
+	// error
+	if (retval <= 0)
+		return true;
+
+	if (FD_ISSET(pipeerr[0], &infds)) {
+		fgets(buf, BUFSIZ, inerr);
+		err_read = true;
+		return false;
 	}
+
+	fgets(buf, BUFSIZ, in);
+	err_read = false;
+	return false;
 }
 
 
 string const ISpell::nextMiss()
 {
+	// Well, somebody is a sick fuck.
+
 	if (str == 0 || *(e+1) == '\0')
 		return "";
 	char * b = e + 2;
@@ -333,13 +348,7 @@ string const ISpell::nextMiss()
 
 bool ISpell::alive()
 {
-	return isp_pid != -1;
-}
-
-
-void ISpell::cleanUp()
-{
-	::fclose(out);
+	return child_.get() && child_->running();
 }
 
 
@@ -352,8 +361,18 @@ enum ISpell::Result ISpell::check(WordLangTuple const & word)
 	::fputs(word.word().c_str(), out);
 	::fputc('\n', out);
 
-	char buf[1024];
-	::fgets(buf, 1024, in);
+	bool err_read;
+	bool error = select(err_read);
+
+	if (error) {
+		error_ = _("Could not communicate with the spell-checker program");
+		return UNKNOWN;
+	}
+
+	if (err_read) {
+		error_ = buf;
+		return UNKNOWN;
+	}
 
 	// I think we have to check if ispell is still alive here because
 	// the signal-handler could have disabled blocking on the fd
@@ -400,20 +419,6 @@ enum ISpell::Result ISpell::check(WordLangTuple const & word)
 }
 
 
-void ISpell::close()
-{
-	// Note: If you decide to optimize this out when it is not
-	// needed please note that when Aspell is used this command
-	// is also needed to save the replacement dictionary.
-	// -- Kevin Atkinson (kevinatk@home.com)
-
-	fputs("#\n", out); // Save personal dictionary
-
-	fflush(out);
-	fclose(out);
-}
-
-
 void ISpell::insert(WordLangTuple const & word)
 {
 	::fputc('*', out); // Insert word in personal dictionary
@@ -432,7 +437,5 @@ void ISpell::accept(WordLangTuple const & word)
 
 string const ISpell::error()
 {
-	if (error_)
-		return error_;
-	return "";
+	return error_;
 }
