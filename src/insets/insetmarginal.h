@@ -31,7 +31,7 @@ public:
 	///
 	~InsetMarginal() {}
 	///
-	void Write(Buffer const * buf, ostream & os) const;
+	void Write(Buffer const * buf, std::ostream & os) const;
 	///
 	Inset * Clone() const;
 	///

@@ -1,3 +1,15 @@
+2000-06-28  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/insets/insetindex.C (Edit): add a callback when popup is
+	closed by the WM.
+
+	* src/insets/insettext.C (LocalDispatch): 
+	* src/insets/insetmarginal.h: 
+	* src/insets/insetlist.h: 
+	* src/insets/insetfoot.h: 
+	* src/insets/insetfloat.h: 
+	* src/insets/insetert.h: add a missing std:: qualifier.
+
 2000-06-28  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/support/lyxsum.C (sum): '\0' teminate file read when using

@@ -31,7 +31,7 @@ public:
 	///
 	~InsetFloat() {}
 	///
-	void Write(Buffer const * buf, ostream & os) const;
+	void Write(Buffer const * buf, std::ostream & os) const;
 	///
 	void Read(Buffer const * buf, LyXLex & lex);
 	///
