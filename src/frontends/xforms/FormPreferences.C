@@ -806,9 +806,9 @@ void FormPreferences::Colors::LoadBrowserLyX()
 		// Note that X stores the RGB values in the range 0 - 65535
 		// whilst we require them in the range 0 - 255.
 		RGBColor col;
-		col.r = static_cast<unsigned char>(xcol.red);
-		col.g = static_cast<unsigned char>(xcol.green);
-		col.b = static_cast<unsigned char>(xcol.blue);
+		col.r = xcol.red   / 256;
+		col.g = xcol.green / 256;
+		col.b = xcol.blue  / 256;
 
 		// Create a valid X11 name of the form "#rrggbb" and change the
 		// LColor X11name to this. Don't want to trigger a redraw,
