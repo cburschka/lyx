@@ -1,3 +1,17 @@
+2000-10-25  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/frontends/ButtonPolicies.h: remove the LOstream and remove
+	the two recently added operator<< for SMInput and State.
+
+	* src/frontends/ButtonPolicies.C (PreferencesPolicy): cast
+	SMI_TOTAL to int.
+	(OkCancelPolicy): ditto
+	(OkCancelReadOnlyPolicy): ditto
+	(NoRepeatedApplyReadOnlyPolicy): ditto
+	(OkApplyCancelReadOnlyPolicy): ditto
+	(OkApplyCancelPolicy): ditto
+	(NoRepeatedApplyPolicy): ditto
+
 2000-10-25  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/frontends/ButtonPolicies.h: include "support/LOstream.h" and

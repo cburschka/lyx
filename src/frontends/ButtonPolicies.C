@@ -50,7 +50,7 @@ PreferencesPolicy::PreferencesPolicy()
 	: state_(INITIAL),
 	  outputs_(APPLIED + 1, ButtonPolicy::ALL_BUTTONS),
 	  state_machine_(APPLIED + 1,
-			 StateArray(SMI_TOTAL, ButtonPolicy::BOGUS))
+			 StateArray(int(SMI_TOTAL), ButtonPolicy::BOGUS))
 {
 	// Build the state output map
 	outputs_[INITIAL] = CLOSE;
@@ -123,7 +123,7 @@ OkCancelPolicy::OkCancelPolicy()
 	: state_(INITIAL),
 	  outputs_(INVALID + 1, ButtonPolicy::ALL_BUTTONS),
 	  state_machine_(INVALID + 1,
-			 StateArray(SMI_TOTAL, ButtonPolicy::BOGUS))
+			 StateArray(int(SMI_TOTAL), ButtonPolicy::BOGUS))
 {
 	// Build the state output map
 	outputs_[INITIAL] = CLOSE;
@@ -176,7 +176,7 @@ OkCancelReadOnlyPolicy::OkCancelReadOnlyPolicy()
 	: state_(INITIAL),
 	  outputs_(RO_INVALID + 1, ButtonPolicy::ALL_BUTTONS),
 	  state_machine_(RO_INVALID + 1,
-			 StateArray(SMI_TOTAL, ButtonPolicy::BOGUS))
+			 StateArray(int(SMI_TOTAL), ButtonPolicy::BOGUS))
 {
 	// Build the state output map
 	outputs_[INITIAL] = CLOSE;
@@ -251,7 +251,7 @@ NoRepeatedApplyReadOnlyPolicy::NoRepeatedApplyReadOnlyPolicy()
 	: state_(INITIAL),
 	  outputs_(RO_INVALID + 1, ButtonPolicy::ALL_BUTTONS),
 	  state_machine_(RO_INVALID + 1,
-			 StateArray(SMI_TOTAL, ButtonPolicy::BOGUS))
+			 StateArray(int(SMI_TOTAL), ButtonPolicy::BOGUS))
 {
 	// Build the state output map
 	outputs_[INITIAL] = CLOSE;
@@ -327,7 +327,7 @@ OkApplyCancelReadOnlyPolicy::OkApplyCancelReadOnlyPolicy()
 	: state_(INITIAL),
 	  outputs_(RO_APPLIED + 1, ButtonPolicy::ALL_BUTTONS),
 	  state_machine_(RO_APPLIED + 1,
-			 StateArray(SMI_TOTAL, ButtonPolicy::BOGUS))
+			 StateArray(int(SMI_TOTAL), ButtonPolicy::BOGUS))
 {
 	// Build the state output map
 	outputs_[INITIAL] = CLOSE;
@@ -417,7 +417,7 @@ OkApplyCancelPolicy::OkApplyCancelPolicy()
 	: state_(INITIAL),
 	  outputs_(APPLIED + 1, ButtonPolicy::ALL_BUTTONS),
 	  state_machine_(APPLIED + 1,
-			 StateArray(SMI_TOTAL, ButtonPolicy::BOGUS))
+			 StateArray(int(SMI_TOTAL), ButtonPolicy::BOGUS))
 {
 	// Build the state output map
 	outputs_[INITIAL] = CLOSE;
@@ -481,7 +481,7 @@ NoRepeatedApplyPolicy::NoRepeatedApplyPolicy()
 	: state_(INITIAL),
 	  outputs_(INVALID + 1, ButtonPolicy::ALL_BUTTONS),
 	  state_machine_(INVALID + 1,
-			 StateArray(SMI_TOTAL, ButtonPolicy::BOGUS))
+			 StateArray(int(SMI_TOTAL), ButtonPolicy::BOGUS))
 {
 	// Build the state output map
 	outputs_[INITIAL] = CLOSE;
