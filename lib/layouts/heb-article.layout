@@ -10,7 +10,7 @@ Preamble
 \usepackage{theorem}
 \theorembodyfont{\upshape}
 \newtheorem{theorem}{\R{משפט}}[section]
-\make@lr\thetheorem
+\AtBeginDocument{\make@lr\thetheorem}
 EndPreamble
 
 Style Comment
