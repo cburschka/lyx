@@ -3034,7 +3034,7 @@ bool LyXText::paintRowBackground(DrawRowParams & p)
 
 	pos_type const last = rowLastPrintable(p.row);
 
-	if (!p.bv->screen()->forceClear() && last == p.row->pos()
+	if (!p.bv->screen().forceClear() && last == p.row->pos()
 		&& p.row->par()->isInset(p.row->pos())) {
 		inset = p.row->par()->getInset(p.row->pos());
 		if (inset) {

@@ -486,21 +486,21 @@ void InsetText::draw(BufferView * bv, LyXFont const & f,
 		}
 	} else if (!locked) {
 		if (need_update & CURSOR) {
-			bv->screen()->toggleSelection(lt, bv, true, y_offset,int(x));
+			bv->screen().toggleSelection(lt, bv, true, y_offset,int(x));
 			lt->clearSelection();
 			lt->selection.cursor = lt->cursor;
 		}
-		bv->screen()->update(lt, bv, y_offset, int(x));
+		bv->screen().update(lt, bv, y_offset, int(x));
 	} else {
 		locked = false;
 		if (need_update & SELECTION) {
-			bv->screen()->toggleToggle(lt, bv, y_offset, int(x));
+			bv->screen().toggleToggle(lt, bv, y_offset, int(x));
 		} else if (need_update & CURSOR) {
-			bv->screen()->toggleSelection(lt, bv, true, y_offset,int(x));
+			bv->screen().toggleSelection(lt, bv, true, y_offset,int(x));
 			lt->clearSelection();
 			lt->selection.cursor = lt->cursor;
 		}
-		bv->screen()->update(lt, bv, y_offset, int(x));
+		bv->screen().update(lt, bv, y_offset, int(x));
 		locked = true;
 	}
 
@@ -2374,9 +2374,7 @@ void InsetText::resizeLyXText(BufferView * bv, bool force) const
 		inset_y = ciy(bv) + drawTextYOffset;
 	}
 
-	if (bv->screen()) {
-		t->first_y = bv->screen()->topCursorVisible(t);
-	}
+	t->first_y = bv->screen().topCursorVisible(t);
 	if (!owner()) {
 		updateLocal(bv, FULL, false);
 		// this will scroll the screen such that the cursor becomes visible
@@ -2414,9 +2412,7 @@ void InsetText::reinitLyXText() const
 			inset_x = cix(bv) - top_x + drawTextXOffset;
 			inset_y = ciy(bv) + drawTextYOffset;
 		}
-		if (bv->screen()) {
-			t->first_y = bv->screen()->topCursorVisible(t);
-		}
+		t->first_y = bv->screen().topCursorVisible(t);
 		if (!owner()) {
 			updateLocal(bv, FULL, false);
 			// this will scroll the screen such that the cursor becomes visible
@@ -2677,7 +2673,7 @@ void InsetText::toggleSelection(BufferView * bv, bool kill_selection)
 
 	if (need_update & SELECTION)
 		need_update = NONE;
-	bv->screen()->toggleSelection(lt, bv, kill_selection, y_offset, x);
+	bv->screen().toggleSelection(lt, bv, kill_selection, y_offset, x);
 	if (clear)
 		lt = 0;
 }

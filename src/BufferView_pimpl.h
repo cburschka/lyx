@@ -21,7 +21,7 @@
 
 class LyXView;
 class WorkArea;
-class LyXScreen;
+class LScreen;
 
 // FIXME: remove
 #include <X11/Xlib.h>
@@ -35,6 +35,8 @@ struct BufferView::Pimpl : public boost::signals::trackable {
 	Painter & painter();
 	/// return the work area for this bview
 	WorkArea & workarea() const;
+	/// return the screen for this bview
+	LScreen & screen() const;
 	///
 	void buffer(Buffer *);
 	///
@@ -175,7 +177,7 @@ private:
 	///
 	Buffer * buffer_;
 	///
-	boost::scoped_ptr<LyXScreen> screen_;
+	boost::scoped_ptr<LScreen> screen_;
 	///
 	boost::scoped_ptr<WorkArea> workarea_;
 	///

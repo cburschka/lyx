@@ -25,12 +25,12 @@ class BufferView;
 
 struct Row;
 
-/** The class LyXScreen is used for the main Textbody.
+/** The class LScreen is used for the main Textbody.
     Concretely, the screen is held in a pixmap.  This pixmap is kept up to
     date and used to optimize drawing on the screen.
     This class also handles the drawing of the cursor and partly the selection.
  */
-class LyXScreen {
+class LScreen {
 public:
 	///
 	enum Cursor_Shape {
@@ -43,11 +43,13 @@ public:
 	};
 
 	///
-	LyXScreen(WorkArea &);
+	LScreen(WorkArea &);
 
 	///
-	~LyXScreen();
+	~LScreen();
 
+	void reset();
+ 
 	/// Sets the cursor color to LColor::cursor.
 	void setCursorColor();
 

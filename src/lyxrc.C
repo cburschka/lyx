@@ -149,7 +149,6 @@ keyword_item lyxrcTags[] = {
 	{ "\\wheel_jump", LyXRC::RC_WHEEL_JUMP }
 };
 
-/* Let the range depend of the size of lyxrcTags.  Alejandro 240596 */
 const int lyxrcCount = sizeof(lyxrcTags) / sizeof(keyword_item);
 
 } // namespace anon

@@ -25,7 +25,7 @@ class LyXView;
 class LyXText;
 class TeXErrors;
 class Buffer;
-class LyXScreen;
+class LScreen;
 class Language;
 class Painter;
 class UpdatableInset;
@@ -54,7 +54,7 @@ public:
 	///
 	Painter & painter();
 	///
-	LyXScreen * screen() const;
+	LScreen & screen() const;
 	///
 	void buffer(Buffer * b);
 	///

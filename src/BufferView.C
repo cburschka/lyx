@@ -42,9 +42,9 @@ Buffer * BufferView::buffer() const
 }
 
 
-LyXScreen * BufferView::screen() const
+LScreen & BufferView::screen() const
 {
-	return pimpl_->screen_.get();
+	return pimpl_->screen();
 }
 
 

@@ -564,7 +564,7 @@ void BufferView::showLockedInsetCursor(int x, int y, int asc, int desc)
 		     locking_inset))
 			text->setCursor(this, cursor,
 					cursor.par(), cursor.pos() - 1);
-		LyXScreen::Cursor_Shape shape = LyXScreen::BAR_SHAPE;
+		LScreen::Cursor_Shape shape = LScreen::BAR_SHAPE;
 		LyXText * txt = getLyXText();
 		if (locking_inset->isTextInset() &&
 		    locking_inset->lyxCode() != Inset::ERT_CODE &&
@@ -573,8 +573,8 @@ void BufferView::showLockedInsetCursor(int x, int y, int asc, int desc)
 		     || txt->real_current_font.isVisibleRightToLeft()
 		     != buffer()->params.language->RightToLeft()))
 			shape = (txt->real_current_font.isVisibleRightToLeft())
-				? LyXScreen::REVERSED_L_SHAPE
-				: LyXScreen::L_SHAPE;
+				? LScreen::REVERSED_L_SHAPE
+				: LScreen::L_SHAPE;
 		y += cursor.iy() + theLockingInset()->insetInInsetY();
 		pimpl_->screen_->showManualCursor(text, x, y, asc, desc,
 						  shape);

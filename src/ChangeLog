@@ -1,3 +1,14 @@
+2002-06-12  John Levon  <moz@compsoc.man.ac.uk>
+
+	* BufferView.h:
+	* BufferView.C:
+	* BufferView2.C:
+	* BufferView_pimpl.h:
+	* BufferView_pimpl.C: only construct screen once,
+	  rename
+
+	* lyxrc.C: remove pointless comment
+ 
 2002-06-11  John Levon  <moz@compsoc.man.ac.uk>
 
 	* BufferView.h: 

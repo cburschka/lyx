@@ -33,7 +33,6 @@ class Buffer;
 class BufferParams;
 class LyXCursor;
 class LyXText;
-class LyXScreen;
 class Row;
 
 /**

@@ -52,7 +52,7 @@ GC createGC()
 
 
 // Constructor
-LyXScreen::LyXScreen(WorkArea & o)
+LScreen::LScreen(WorkArea & o)
 	: owner(o), force_clear(true)
 {
 	// the cursor isnt yet visible
@@ -68,13 +68,29 @@ LyXScreen::LyXScreen(WorkArea & o)
 }
 
 
-LyXScreen::~LyXScreen()
+LScreen::~LScreen()
 {
 	XFreeGC(fl_get_display(), gc_copy);
 }
 
 
-void LyXScreen::setCursorColor()
+void LScreen::reset()
+{
+	XFreeGC(fl_get_display(), gc_copy);
+	// the cursor isnt yet visible
+	cursor_visible = false;
+	cursor_pixmap = 0;
+	cursor_pixmap_x = 0;
+	cursor_pixmap_y = 0;
+	cursor_pixmap_w = 0;
+	cursor_pixmap_h = 0;
+
+	// We need this GC
+	gc_copy = createGC();
+}
+ 
+ 
+void LScreen::setCursorColor()
 {
 	if (!lyxColorHandler.get()) return;
 
@@ -87,7 +103,7 @@ void LyXScreen::setCursorColor()
 }
 
 
-void LyXScreen::redraw(LyXText * text, BufferView * bv)
+void LScreen::redraw(LyXText * text, BufferView * bv)
 {
 	drawFromTo(text, bv, 0, owner.height(), 0, 0, text == bv->text);
 	expose(0, 0, owner.workWidth(), owner.height());
@@ -98,7 +114,7 @@ void LyXScreen::redraw(LyXText * text, BufferView * bv)
 }
 
 
-void LyXScreen::expose(int x, int y, int exp_width, int exp_height)
+void LScreen::expose(int x, int y, int exp_width, int exp_height)
 {
 	XCopyArea(fl_get_display(),
 		  owner.getPixmap(),
@@ -111,7 +127,7 @@ void LyXScreen::expose(int x, int y, int exp_width, int exp_height)
 }
 
 
-void LyXScreen::drawFromTo(LyXText * text, BufferView * bv,
+void LScreen::drawFromTo(LyXText * text, BufferView * bv,
 			   int y1, int y2, int y_offset, int x_offset,
 			   bool internal)
 {
@@ -158,7 +174,7 @@ void LyXScreen::drawFromTo(LyXText * text, BufferView * bv,
 }
 
 
-void LyXScreen::drawOneRow(LyXText * text, BufferView * bv, Row * row,
+void LScreen::drawOneRow(LyXText * text, BufferView * bv, Row * row,
 			   int y_text, int y_offset, int x_offset)
 {
 	int const y = y_text - text->first_y + y_offset;
@@ -174,7 +190,7 @@ void LyXScreen::drawOneRow(LyXText * text, BufferView * bv, Row * row,
 
 /* draws the screen, starting with textposition y. uses as much already
  * printed pixels as possible */
-void LyXScreen::draw(LyXText * text, BufferView * bv, unsigned int y)
+void LScreen::draw(LyXText * text, BufferView * bv, unsigned int y)
 {
 	if (cursor_visible) hideCursor();
 
@@ -230,7 +246,7 @@ void LyXScreen::draw(LyXText * text, BufferView * bv, unsigned int y)
 }
 
 
-void LyXScreen::showCursor(LyXText const * text, BufferView const * bv)
+void LScreen::showCursor(LyXText const * text, BufferView const * bv)
 {
 	if (!cursor_visible) {
 		Cursor_Shape shape = BAR_SHAPE;
@@ -249,7 +265,7 @@ void LyXScreen::showCursor(LyXText const * text, BufferView const * bv)
 
 
 /* returns true if first has changed, otherwise false */
-bool LyXScreen::fitManualCursor(LyXText * text, BufferView * bv,
+bool LScreen::fitManualCursor(LyXText * text, BufferView * bv,
 				int /*x*/, int y, int asc, int desc)
 {
 	int newtop = text->first_y;
@@ -272,7 +288,7 @@ bool LyXScreen::fitManualCursor(LyXText * text, BufferView * bv,
 }
 
 
-void LyXScreen::showManualCursor(LyXText const * text, int x, int y,
+void LScreen::showManualCursor(LyXText const * text, int x, int y,
 				 int asc, int desc, Cursor_Shape shape)
 {
 	// Update the cursor color.
@@ -351,7 +367,7 @@ void LyXScreen::showManualCursor(LyXText const * text, int x, int y,
 }
 
 
-void LyXScreen::hideCursor()
+void LScreen::hideCursor()
 {
 	if (!cursor_visible) return;
 
@@ -369,7 +385,7 @@ void LyXScreen::hideCursor()
 }
 
 
-void LyXScreen::cursorToggle(BufferView * bv) const
+void LScreen::cursorToggle(BufferView * bv) const
 {
 	if (cursor_visible)
 		bv->hideCursor();
@@ -379,7 +395,7 @@ void LyXScreen::cursorToggle(BufferView * bv) const
 
 
 /* returns a new top so that the cursor is visible */
-unsigned int LyXScreen::topCursorVisible(LyXText const * text)
+unsigned int LScreen::topCursorVisible(LyXText const * text)
 {
 	int newtop = text->first_y;
 
@@ -422,7 +438,7 @@ unsigned int LyXScreen::topCursorVisible(LyXText const * text)
 
 /* scrolls the screen so that the cursor is visible, if necessary.
 * returns true if a change was made, otherwise false */
-bool LyXScreen::fitCursor(LyXText * text, BufferView * bv)
+bool LScreen::fitCursor(LyXText * text, BufferView * bv)
 {
 	// Is a change necessary?
 	int const newtop = topCursorVisible(text);
@@ -433,7 +449,7 @@ bool LyXScreen::fitCursor(LyXText * text, BufferView * bv)
 }
 
 
-void LyXScreen::update(LyXText * text, BufferView * bv,
+void LScreen::update(LyXText * text, BufferView * bv,
 		       int y_offset, int x_offset)
 {
 	switch (text->status()) {
@@ -474,7 +490,7 @@ void LyXScreen::update(LyXText * text, BufferView * bv,
 }
 
 
-void LyXScreen::toggleSelection(LyXText * text, BufferView * bv,
+void LScreen::toggleSelection(LyXText * text, BufferView * bv,
 				bool kill_selection,
 				int y_offset, int x_offset)
 {
@@ -503,7 +519,7 @@ void LyXScreen::toggleSelection(LyXText * text, BufferView * bv,
 }
 
 
-void LyXScreen::toggleToggle(LyXText * text, BufferView * bv,
+void LScreen::toggleToggle(LyXText * text, BufferView * bv,
 			     int y_offset, int x_offset)
 {
 	if (text->toggle_cursor.par() == text->toggle_end_cursor.par()
