@@ -40,13 +40,11 @@ string const getLabel(MenuItem const & mi)
 	string const shortcut = mi.shortcut();
 	string label = subst(mi.label(), "&", "&&");
 
-	if (shortcut.empty())
-		return label;
-
-	string::size_type pos = label.find(shortcut);
-	if (pos == string::npos)
-		return label;
-	label.insert(pos, 1, '&');
+	if (!shortcut.empty()) {
+		string::size_type pos = label.find(shortcut);
+		if (pos != string::npos)
+			label.insert(pos, 1, '&');
+	}
 
 	if (mi.kind() == MenuItem::Command) {
 		// FIXME: backend should do this

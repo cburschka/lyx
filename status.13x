@@ -61,10 +61,13 @@ What's new
 - enable the file dialog to open files with non-latin filenames [Qt only]
 
 - allow to use some paper sizes (A3, B3, B4, and custom) without
-  custom margins [Qt problem only]. 
+  custom margins [Qt problem only]
 
 - fix bug where changing the height unit in the graphics dialog did not
-  activate the ok/apply buttons [bug #1469, Qt only].
+  activate the ok/apply buttons [bug #1469, Qt only]
+
+- fix bug where some menu entries did not show the corresponding
+  keyboard binding [bug #1350, Qt only]
 
 - fix the language of the russian table of contents of the documentation
 

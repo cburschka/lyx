@@ -1,3 +1,9 @@
+2004-01-22  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* QLPopupMenu.C (getLabel): fix bug #1350. The menu entry did not
+	get a binding shown, because it did not have an accelerator
+	(example was 'Save Bookmark 2')
+
 2004-01-15  Ronald Florence  <ron@18james.com>
 
 	* qfont_loader.C, lyx_gui.C, Menubar_pimpl.C: changed Q_WS_MAC
