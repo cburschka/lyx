@@ -112,11 +112,10 @@
 # JPC 04 Juillet 2000
 # correction menus Edit (manque les listes)
 # + revue des menus déroulants principaux, quelques manques corrigés
-
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.1.4\n"
-"POT-Creation-Date: 2000-06-30 05:33+0200\n"
+"POT-Creation-Date: 2000-07-04 17:46+0200\n"
 "PO-Revision-Date: 2000-03-10 02:56+01:00\n"
 "Last-Translator:  Jean-Pierre Chrétien <chretien@cert.fr>\n"
 "Language-Team: lyxfr <http://www.bde.enseeiht.fr/~faucheo/lyxfr.html>\n"
@@ -1488,15 +1487,15 @@ msgstr "Finois"
 
 #: src/language.C:65
 msgid "Francais"
-msgstr "Français"
+msgstr "Français(français)"
 
 #: src/language.C:66
 msgid "French"
-msgstr ""
+msgstr "Français(french)"
 
 #: src/language.C:67
 msgid "Frenchb"
-msgstr ""
+msgstr "Français(frenchb)"
 
 #: src/language.C:68
 msgid "Galician"
@@ -4727,9 +4726,9 @@ msgstr ""
 "Annuler|Refaire %l|Couper|Copier|Coller%l|Rechercher & "
 "Remplacer...|Atteindre Erreur|Atteindre Note|Flottants & "
 "Inserts%m|Tableau%m|Correcteur orthographique....|Vérification syntaxe "
-"TeX|Table des matières...%l|Liste des figures...|Liste des tables...|List des "
-"algorithmes...%l|Contrôle de version%m%l|Examiner journal LaTeX"
-"%l|Copier sélection en lignes|Copier sélection en paragraphes"
+"TeX|Table des matières...%l|Liste des figures...|Liste des tables...|List "
+"des algorithmes...%l|Contrôle de version%m%l|Examiner journal LaTeX%l|Copier "
+"sélection en lignes|Copier sélection en paragraphes"
 
 #: src/menus.C:1147
 msgid "EM|Uu#u#U"
