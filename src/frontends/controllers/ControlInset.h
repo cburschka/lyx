@@ -195,6 +195,12 @@ void ControlInset<Inset, Params>::apply()
 		applyParamsToInset();
 	else
 		applyParamsNoInset();
+
+	*params_ = getParams(string());
+	inset_ = 0;
+	ih_.disconnect();
+
+	view().update();
 }
 
 
