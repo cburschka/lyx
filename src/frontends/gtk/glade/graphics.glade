@@ -380,7 +380,7 @@
 			      <property name="max_length">0</property>
 			      <property name="text" translatable="yes"></property>
 			      <property name="has_frame">True</property>
-			      <property name="invisible_char">*</property>
+			      <property name="invisible_char" translatable="yes">*</property>
 			      <property name="activates_default">False</property>
 			    </widget>
 			    <packing>
@@ -613,6 +613,7 @@ Do not display</property>
 			  <child>
 			    <widget class="GtkSpinButton" id="Width">
 			      <property name="visible">True</property>
+			      <property name="sensitive">False</property>
 			      <property name="can_focus">True</property>
 			      <property name="climb_rate">1</property>
 			      <property name="digits">0</property>
@@ -634,6 +635,7 @@ Do not display</property>
 			  <child>
 			    <widget class="GtkCheckButton" id="MaintainAspectRatio">
 			      <property name="visible">True</property>
+			      <property name="sensitive">False</property>
 			      <property name="can_focus">True</property>
 			      <property name="label" translatable="yes">_Maintain aspect ratio</property>
 			      <property name="use_underline">True</property>
@@ -798,6 +800,7 @@ Do not display</property>
 			  <child>
 			    <widget class="GtkComboBox" id="WidthUnits">
 			      <property name="visible">True</property>
+			      <property name="sensitive">False</property>
 			    </widget>
 			    <packing>
 			      <property name="left_attach">3</property>
@@ -812,6 +815,7 @@ Do not display</property>
 			  <child>
 			    <widget class="GtkComboBox" id="HeightUnits">
 			      <property name="visible">True</property>
+			      <property name="sensitive">False</property>
 			    </widget>
 			    <packing>
 			      <property name="left_attach">3</property>
@@ -862,6 +866,7 @@ Do not display</property>
 			  <child>
 			    <widget class="GtkSpinButton" id="Height">
 			      <property name="visible">True</property>
+			      <property name="sensitive">False</property>
 			      <property name="can_focus">True</property>
 			      <property name="climb_rate">1</property>
 			      <property name="digits">0</property>
@@ -1541,7 +1546,7 @@ Do not display</property>
 		      <property name="max_length">0</property>
 		      <property name="text" translatable="yes"></property>
 		      <property name="has_frame">True</property>
-		      <property name="invisible_char">*</property>
+		      <property name="invisible_char" translatable="yes">*</property>
 		      <property name="activates_default">False</property>
 		    </widget>
 		    <packing>
@@ -1594,7 +1599,7 @@ Do not display</property>
 		      <property name="max_length">0</property>
 		      <property name="text" translatable="yes"></property>
 		      <property name="has_frame">True</property>
-		      <property name="invisible_char">*</property>
+		      <property name="invisible_char" translatable="yes">*</property>
 		      <property name="activates_default">False</property>
 		    </widget>
 		    <packing>

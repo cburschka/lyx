@@ -402,11 +402,12 @@ void GGraphics::update() {
 	updateComboFromLength(heightunitscombo_, igp.height);
 
 	if (!float_equal(igp.scale, 0.0, 0.05)) {
-		//scaling sizing mode
+		// scaling sizing mode
 		setscalingradio_->set_active(true);
 	} else {
 		setsizeradio_->set_active(true);
 	}
+	onSizingModeChange();
 
 	aspectcheck_->set_active(igp.keepAspectRatio);
 	draftcheck_->set_active(igp.draft);
@@ -439,6 +440,7 @@ void GGraphics::update() {
 	if (igp.filename.empty()) {
 		notebook_->set_current_page(0);
 	}
+
 
 	bc().input(ButtonPolicy::SMI_INVALID);
 }
