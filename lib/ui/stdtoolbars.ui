@@ -1,0 +1,144 @@
+# A Toolbar starts like :
+#
+# Toolbar "Name" "on" 
+#
+# The second parameter are the flags :
+#
+# on: the toolbar is visible
+# off: the toolbar is not visible
+# math: the toolbar is visible only when in math
+# table: the toolbar is visible only when in a table
+# top: the toolbar should be at the top of the window
+# bottom: the toolbar should be at the bottom of the window
+# left: the toolbar should be at the left of the window
+# right: the toolbar should be at the right of the window
+#
+# Only four commands are allowed inside the begin_toolbar and end_toolbar
+# directives: 
+#   Item "The tooltip" "<action> [<parameter>]" adds an icon to the toolbar performing
+#          "<action> <parameter>"
+#      Examples:
+#      Item "Small font" "font-size small"
+#      Item Emphasized set-emph
+#
+#   Layouts adds the layouts combo-box to the toolbar
+#
+#   Separator adds some spacing to the toolbar
+#
+#   Minibuffer adds the command buffer (Qt only, only one may exist)
+#
+# The icons are found in the lib/image direcory under the name
+# action.xpm or action_parameter.xpm, except for math-insert, which
+# is e.g. lib/image/math/sum.xpm. Note that some characters are
+# replaced (e.g. ')' -> rbracket).
+#
+#  All other lyx commands will get a "unknown" icon.
+#
+# This is the default toolbar:
+
+# slight rationalisations here
+
+Toolbar "Standard" "on,top"
+    Layouts
+    Item "New document" "buffer-new"
+    Item "Open document" "file-open"
+    Item "Save document" "buffer-write"
+    Item "Print document" "buffer-print"
+    Separator
+    Item "Undo" "undo"
+    Item "Redo" "redo"
+    Item "Cut" "cut"
+    Item "Copy" "copy"
+    Item "Paste" "paste"
+    Item "Find and replace" "find-replace"
+    Separator
+    Item "Toggle emphasis style" "font-emph"
+    Item "Toggle noun style" "font-noun"
+    Item "Toggle user style" "font-free-apply"
+    Separator
+    Item "Insert math" "math-mode"
+    Item "Insert graphics" "dialog-show-new-inset graphics"
+    Item "Insert table" "tabular-insert 4 4"
+End
+
+Toolbar "Extra" "off,top"
+    Item "Numbered list" "layout Enumerate"
+    Item "Itemized list" "layout Itemize"
+    Item "List" "layout List"
+    Item "Description" "layout Description"
+    Item "Increase depth" "depth-increment"
+    Item "Decrease depth" "depth-decrement"
+    Separator
+    Item "Insert figure float" "float-insert figure"
+    Item "Insert table float" "float-insert table"
+    Item "Insert label" "label-insert"
+    Item "Insert cross-reference" "dialog-show-new-inset ref"
+    Item "Insert citation" "dialog-show-new-inset citation"
+    Item "Insert index entry" "index-insert"
+    Separator
+    Item "Insert footnote" "footnote-insert"
+    Item "Insert margin note" "marginalnote-insert"
+    Item "Insert note" "note-insert"
+    Item "Insert URL" "url-insert"
+    Item "Insert TeX" "ert-insert"
+    Item "Include file" "dialog-show-new-inset include"
+    Separator
+    Item "Text Style" "layout-character"
+    Item "Paragraph Style" "layout-paragraph"
+    Item "Table of contents" "toc-view"
+    Item "Check spelling" "spellchecker"
+    Item "Thesaurus" "thesaurus-entry"
+End
+
+Toolbar "Table" "off,bottom"
+    Item "Add row" "tabular-feature append-row"
+    Item "Add column" "tabular-feature append-column"
+    Item "Delete row" "tabular-feature delete-row"
+    Item "Delete column" "tabular-feature delete-column"
+    Separator
+    Item "Set top line" "tabular-feature toggle-line-top"
+    Item "Set bottom line" "tabular-feature toggle-line-bottom"
+    Item "Set left line" "tabular-feature toggle-line-left"
+    Item "Set right line" "tabular-feature toggle-line-right"
+    Item "Set all lines" "tabular-feature set-all-lines"
+    Item "Unset all lines" "tabular-feature unset-all-lines"
+    Separator
+    Item "Left aligned" "tabular-feature align-left"
+    Item "Centered" "tabular-feature align-center"
+    Item "Right aligned" "tabular-feature align-right"
+    Item "Top aligned" "tabular-feature valign-top"
+    Item "Vertically centered" "tabular-feature valign-center"
+    Item "Bottom aligned" "tabular-feature valign-bottom"
+    Separator
+    Item "Rotate cell" "tabular-feature set-rotate-cell"
+    Item "Rotate table" "tabular-feature set-rotate-tabular"
+    Item "Set multi-column" "tabular-feature multicolumn"
+End
+
+Toolbar "Math" "off,bottom"
+    Item "Show math panel" "math-panel"
+    Item "Set display mode" "math-display"
+    Item "Subscript" "math-subscript"
+    Item "Superscript" "math-superscript"
+    Item "Insert root" "math-insert \sqrt"
+    Item "Insert square root" "math-insert \root"
+    Item "Insert sum" "math-insert \sum"
+    Item "Insert integral" "math-insert \int"
+    Item "Insert product" "math-insert \prod"
+    Separator
+    Item "Insert fraction" "math-insert \frac"
+    Item "Insert ( )" "math-delim ( )"
+    Item "Insert [ ]" "math-delim [ ]"
+    Item "Insert { }" "math-delim { }"
+    Separator
+    Item "Insert matrix" "math-matrix 2 2"
+    Item "Insert cases" "math-insert \cases"
+    Item "Add row" "tabular-feature append-row"
+    Item "Add column" "tabular-feature append-column"
+    Item "Delete row" "tabular-feature delete-row"
+    Item "Delete column" "tabular-feature delete-column"
+End
+
+Toolbar "Command Buffer" "off,bottom"
+    Minibuffer
+End

@@ -1,5 +1,12 @@
 2003-04-15  John Levon  <levon@movementarian.org>
 
+	* ui/stdtoolbars.ui:
+	* ui/stdmenus.ui: split out from new.ui
+
+	* ui/new.ui: use Include
+
+2003-04-15  John Levon  <levon@movementarian.org>
+
 	* ui/new.ui: add new ui for testing
 
 2003-04-15  John Levon  <levon@movementarian.org>
