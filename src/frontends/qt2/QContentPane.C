@@ -133,6 +133,12 @@ void QContentPane::mouseMoveEvent(QMouseEvent * e)
 }
 
 
+void QContentPane::wheelEvent(QWheelEvent * e)
+{
+	wa_->scrollbar_->setValue(wa_->scrollbar_->value() - e->delta());
+}
+
+
 void QContentPane::keyPressEvent(QKeyEvent * e)
 {
 	lyxerr[Debug::KEY] << "Press key " << e->key()

@@ -69,7 +69,8 @@ protected:
 	void mouseDoubleClickEvent(QMouseEvent * e);
 	/// mouse motion
 	void mouseMoveEvent(QMouseEvent * e);
-
+	/// wheel event
+	void wheelEvent(QWheelEvent * e);
 	/// key press
 	void keyPressEvent(QKeyEvent * e);
 public slots:
