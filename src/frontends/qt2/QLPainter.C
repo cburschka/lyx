@@ -138,6 +138,7 @@ Painter & QLPainter::rectangle(int x, int y,
 	line_style ls,
 	line_width lw)
 {
+	//lyxerr << "rectangle " << x<<","<<y << " " <<w<<","<<h<<endl; 
 	setPen(col, ls, lw).drawRect(x, y, w, h);
 	return *this;
 }
@@ -147,6 +148,7 @@ Painter & QLPainter::fillRectangle(int x, int y,
 	int w, int h,
 	LColor::color col)
 {
+	//lyxerr << "fillRectangle " << x<<","<<y << " " <<w<<","<<h<<endl; 
 	qp_->fillRect(x, y, w, h, QColor(lcolor.getX11Name(col).c_str()));
 	return *this;
 }
@@ -155,11 +157,10 @@ Painter & QLPainter::fillRectangle(int x, int y,
 Painter & QLPainter::fillPolygon(int const * xp, int const * yp, 
 	int np, LColor::color col)
 {
-	// FIXME ?
- 
 	// Must use new as np is not known at compile time.
 	boost::scoped_array<QCOORD> points(new QCOORD[np * 2]);
 
+	//if (1) return *this; 
 	int j = 0;
  
 	for (int i = 0; i < np; ++i) {
@@ -167,7 +168,10 @@ Painter & QLPainter::fillPolygon(int const * xp, int const * yp,
 		points[j++] = yp[i];
 	}
 
-	setPen(col).drawPolygon(QPointArray(np, points.get()));
+	setPen(col);
+	qp_->setBrush(lcolor.getX11Name(col).c_str()); 
+	qp_->drawPolygon(QPointArray(np, points.get()));
+	qp_->setBrush(Qt::NoBrush);
 
 	return *this;
 }

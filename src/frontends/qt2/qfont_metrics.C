@@ -112,9 +112,11 @@ void rectText(string const & str, LyXFont const & f,
 {
 	QFontMetrics const & m(metrics(f));
  
-	w = width(str, f);
-	ascent = m.ascent();
-	descent = m.descent();
+	static int const d = 2;
+ 
+	w = width(str, f) + d * 2 + 2;
+	ascent = m.ascent() + d;
+	descent = m.descent() + d;
 }
 
 
