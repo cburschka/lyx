@@ -10,3 +10,7 @@
 Style LaTeX_Title
   ObsoletedBy		Title
 End
+
+Style LaTeX
+  ObsoletedBy   Standard
+End
