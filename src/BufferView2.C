@@ -571,7 +571,7 @@ void BufferView::pasteEnvironment()
 void BufferView::copy()
 {
 	if (available()) {
-		text->CopySelection(buffer());
+		text->CopySelection(this);
 		// clear the selection, even if mark_set
 		toggleSelection();
 		text->ClearSelection();

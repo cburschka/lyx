@@ -35,6 +35,7 @@ ExternalTemplate::ExternalTemplate()
 	: viewCommand("true"), editCommand("true")
 {}
 
+
 ExternalTemplate::FormatTemplate::FormatTemplate()
 	: updateCommand("true") {}
 
@@ -96,6 +97,7 @@ void ExternalTemplate::dumpFormats(ostream & os) const
 {
 	for_each(formats.begin(), formats.end(), dumpFormat(os));
 }
+
 
 void ExternalTemplateManager::dumpTemplates() const 
 {

@@ -351,7 +351,7 @@ public:
 	///
 	void CutSelection(BufferView *, bool = true);
 	///
-	void CopySelection(Buffer const *);
+	void CopySelection(BufferView *);
 	///
 	void PasteSelection(BufferView *);
 	///

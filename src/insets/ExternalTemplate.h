@@ -65,6 +65,7 @@ struct ExternalTemplate {
 		
 };
 
+
 /**
  * A singleton class that manages the external inset templates
  */

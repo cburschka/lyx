@@ -1111,16 +1111,6 @@ void LyXText::SetSelection(BufferView * bview)
 	if (sel_start_cursor.par() == sel_end_cursor.par() && 
 	    sel_start_cursor.pos() == sel_end_cursor.pos())
 		selection = false;
-
-	// Stuff what we got on the clipboard. Even if there is no selection.
-
-	// There is a problem with having the stuffing here in that the
-	// larger the selection the slower LyX will get. This can be
-	// solved by running the line below only when the selection has
-	// finished. The solution used currently just works, to make it
-	// faster we need to be more clever and probably also have more
-	// calls to stuffClipboard. (Lgb)
-	bview->stuffClipboard(selectionAsString(bview->buffer()));
 }
 
 
@@ -2061,9 +2051,20 @@ void LyXText::pasteEnvironmentType(BufferView * bview)
 	SetLayout(bview, copylayouttype);
 }
 
-#ifdef USE_OLD_CUT_AND_PASTE
-void LyXText::CutSelection(Buffer const * buf, bool doclear)
+
+void LyXText::CutSelection(BufferView * bview, bool doclear)
 {
+
+	// Stuff what we got on the clipboard. Even if there is no selection.
+
+	// There is a problem with having the stuffing here in that the
+	// larger the selection the slower LyX will get. This can be
+	// solved by running the line below only when the selection has
+	// finished. The solution used currently just works, to make it
+	// faster we need to be more clever and probably also have more
+	// calls to stuffClipboard. (Lgb)
+	bview->stuffClipboard(selectionAsString(bview->buffer()));
+
 	// This doesn't make sense, if there is no selection
 	if (!selection)
 		return;
@@ -2071,7 +2072,7 @@ void LyXText::CutSelection(Buffer const * buf, bool doclear)
 	// OK, we have a selection. This is always between sel_start_cursor
 	// and sel_end cursor
 	LyXParagraph * tmppar;
-   
+    
 	// Check whether there are half footnotes in the selection
 	if (sel_start_cursor.par()->footnoteflag != LyXParagraph::NO_FOOTNOTE
 	    || sel_end_cursor.par()->footnoteflag != LyXParagraph::NO_FOOTNOTE) {
@@ -2100,11 +2101,11 @@ void LyXText::CutSelection(Buffer const * buf, bool doclear)
 	}
 	/* table stuff -- end */
 #endif
-	
+    
 	// make sure that the depth behind the selection are restored, too
 	LyXParagraph * endpar = sel_end_cursor.par()->LastPhysicalPar()->Next();
 	LyXParagraph * undoendpar = endpar;
-
+    
 	if (endpar && endpar->GetDepth()) {
 		while (endpar && endpar->GetDepth()) {
 			endpar = endpar->LastPhysicalPar()->Next();
@@ -2113,362 +2114,63 @@ void LyXText::CutSelection(Buffer const * buf, bool doclear)
 	} else if (endpar) {
 		endpar = endpar->Next(); // because of parindents etc.
 	}
-   
-	SetUndo(bview->buffer(), Undo::DELETE, 
-		sel_start_cursor
-		.par->ParFromPos(sel_start_cursor.pos())->previous, 
-		undoendpar);
-   
-	// clear the simple_cut_buffer
-	DeleteSimpleCutBuffer();
-   
-	// set the textclass
-	simple_cut_buffer_textclass = buf->params.textclass;
-
-#ifdef WITH_WARNINGS
-#warning Asger: Make cut more intelligent here.
-#endif
-	/* 
-	   White paper for "intelligent" cutting:
-	   
-	   Example: "This is our text."
-	   Using " our " as selection, cutting will give "This istext.".
-	   Using "our" as selection, cutting will give "This is text.".
-	   Using " our" as selection, cutting will give "This is text.".
-	   Using "our " as selection, cutting will give "This is text.".
-	   
-	   All those four selections will (however) paste identically:
-	   Pasting with the cursor right after the "is" will give the
-	   original text with all four selections.
-	   
-	   The rationale is to be intelligent such that words are copied,
-	   cut and pasted in a functional manner.
-	   
-	   This is not implemented yet. (Asger)
-
-	   The changes below sees to do a lot of what you want. However
-	   I have not verified that all cases work as they should:
-	             - cut in single row
-		     - cut in multiple row
-		     - cut with insets
-		     - cut across footnotes and paragraph
-	   My simplistic tests show that the idea are basically sound but
-	   there are some items to fix up...we only need to find them
-	   first.
-
-	   As do redo Asger's example above (with | beeing the cursor in the
-	   result after cutting.):
-	   
-	   Example: "This is our text."
-	   Using " our " as selection, cutting will give "This is|text.".
-	   Using "our"   as selection, cutting will give "This is | text.".
-	   Using " our"  as selection, cutting will give "This is| text.".
-	   Using "our "  as selection, cutting will give "This is |text.".
-
-	   (Lgb)
-	*/
+    
+	SetUndo(bview->buffer(), Undo::DELETE, sel_start_cursor
+		.par()->ParFromPos(sel_start_cursor.pos())->previous, undoendpar);
+    
+	CutAndPaste cap;
 
 	// there are two cases: cut only within one paragraph or
 	// more than one paragraph
-   
 	if (sel_start_cursor.par()->ParFromPos(sel_start_cursor.pos()) 
 	    == sel_end_cursor.par()->ParFromPos(sel_end_cursor.pos())) {
 		// only within one paragraph
-		simple_cut_buffer = new LyXParagraph;
-		LyXParagraph::size_type i =
-			sel_start_cursor.pos();
-		for (; i < sel_end_cursor.pos(); ++i) {
-#ifndef NEW_TABULAR
-			/* table stuff -- begin */
-			if (sel_start_cursor.par()->table
-			    && sel_start_cursor.par()->IsNewline(sel_start_cursor.pos())) {
-				sel_start_cursor.par()->CopyIntoMinibuffer(sel_start_cursor.pos());
-				sel_start_cursor.pos()++;
-			} else {
-				/* table stuff -- end */
-#endif
-				sel_start_cursor.par()->CopyIntoMinibuffer(sel_start_cursor.pos());
-				sel_start_cursor.par()->Erase(sel_start_cursor.pos());
-#ifndef NEW_TABULAR
-			}
-#endif
-			simple_cut_buffer->InsertFromMinibuffer(simple_cut_buffer->Last());
-		}
-		endpar = sel_end_cursor.par()->Next();
+		endpar = sel_start_cursor.par();
+		int pos = sel_end_cursor.pos();
+		cap.cutSelection(sel_start_cursor.par(), &endpar,
+				 sel_start_cursor.pos(), pos,
+				 bview->buffer()->params.textclass, doclear);
+		sel_end_cursor.pos(pos);
 	} else {
-		// cut more than one paragraph
-   
-		sel_end_cursor.par()
-			->BreakParagraphConservative(sel_end_cursor.pos());
-		sel_end_cursor.par() = sel_end_cursor.par()->Next();
-		sel_end_cursor.pos() = 0;
-   
-		cursor = sel_end_cursor;
+		endpar = sel_end_cursor.par();
 
-		sel_start_cursor.par()
-			->BreakParagraphConservative(sel_start_cursor.pos());
-		// store the endparagraph for redoing later
-		endpar = sel_end_cursor.par()->Next(); /* needed because
-							the sel_end_
-							cursor.par()
-							will be pasted! */
-   
-		// store the selection
-		simple_cut_buffer = sel_start_cursor.par()
-			->ParFromPos(sel_start_cursor.pos())->next;
-		simple_cut_buffer->previous = 0;
-		sel_end_cursor.par()->previous->next = 0;
-
-		// cut the selection
-		sel_start_cursor.par()->ParFromPos(sel_start_cursor.pos())->next 
-			= sel_end_cursor.par();
-   
-		sel_end_cursor.par()->previous 
-			= sel_start_cursor.par()->ParFromPos(sel_start_cursor.pos());
-
-		// care about footnotes
-		if (simple_cut_buffer->footnoteflag) {
-			LyXParagraph * tmppar = simple_cut_buffer;
-			while (tmppar){
-				tmppar->footnoteflag = LyXParagraph::NO_FOOTNOTE;
-				tmppar = tmppar->next;
-			}
-		}
-
-		// the cut selection should begin with standard layout
-		simple_cut_buffer->Clear(); 
-   
-		// paste the paragraphs again, if possible
-		if (doclear)
-			sel_start_cursor.par()->Next()->StripLeadingSpaces(simple_cut_buffer_textclass);
-		if (sel_start_cursor.par()->FirstPhysicalPar()->HasSameLayout(sel_start_cursor.par()->Next())
-		    || 
-		    !sel_start_cursor.par()->Next()->Last())
-			sel_start_cursor.par()->ParFromPos(sel_start_cursor.pos())->PasteParagraph();
+		int pos = sel_end_cursor.pos();
+		cap.cutSelection(sel_start_cursor.par(), &endpar,
+				 sel_start_cursor.pos(), pos,
+				 bview->buffer()->params.textclass, doclear);
+		cursor.par(endpar);
+		sel_end_cursor.par(endpar);
+		sel_end_cursor.pos(pos);
+		cursor.pos(sel_end_cursor.pos());
 	}
+	endpar = endpar->Next();
 
 	// sometimes necessary
 	if (doclear)
-		sel_start_cursor.par()->StripLeadingSpaces(simple_cut_buffer_textclass);
+		sel_start_cursor.par()->StripLeadingSpaces(bview->buffer()->params.textclass);
 
-	RedoParagraphs(sel_start_cursor, endpar);
+	RedoParagraphs(bview, sel_start_cursor, endpar);
    
 	ClearSelection();
 	cursor = sel_start_cursor;
-	SetCursor(cursor.par(), cursor.pos());
+	SetCursor(bview, cursor.par(), cursor.pos());
 	sel_cursor = cursor;
-	UpdateCounters(cursor.row());
+	UpdateCounters(bview, cursor.row());
 }
+    
 
-#else ///////////////////////////////////////////////////////////////////
-
-void LyXText::CutSelection(BufferView * bview, bool doclear)
+void LyXText::CopySelection(BufferView * bview)
 {
-    // This doesn't make sense, if there is no selection
-    if (!selection)
-	return;
-   
-    // OK, we have a selection. This is always between sel_start_cursor
-    // and sel_end cursor
-    LyXParagraph * tmppar;
-    
-    // Check whether there are half footnotes in the selection
-    if (sel_start_cursor.par()->footnoteflag != LyXParagraph::NO_FOOTNOTE
-	|| sel_end_cursor.par()->footnoteflag != LyXParagraph::NO_FOOTNOTE) {
-	tmppar = sel_start_cursor.par();
-	while (tmppar != sel_end_cursor.par()){
-	    if (tmppar->footnoteflag != sel_end_cursor.par()->footnoteflag) {
-		WriteAlert(_("Impossible operation"),
-			   _("Don't know what to do with half floats."),
-			   _("sorry."));
-		return;
-			}
-	    tmppar = tmppar->Next();
-	}
-    }
+	// Stuff what we got on the clipboard. Even if there is no selection.
 
-#ifndef NEW_TABULAR
-    /* table stuff -- begin */
-    if (sel_start_cursor.par()->table || sel_end_cursor.par()->table) {
-	if ( sel_start_cursor.par() != sel_end_cursor.par()) {
-	    WriteAlert(_("Impossible operation"),
-		       _("Don't know what to do with half tables."),
-		       _("sorry."));
-	    return;
-	}
-	sel_start_cursor.par()->table->Reinit();
-    }
-    /* table stuff -- end */
-#endif
-    
-    // make sure that the depth behind the selection are restored, too
-    LyXParagraph * endpar = sel_end_cursor.par()->LastPhysicalPar()->Next();
-    LyXParagraph * undoendpar = endpar;
-    
-    if (endpar && endpar->GetDepth()) {
-	while (endpar && endpar->GetDepth()) {
-	    endpar = endpar->LastPhysicalPar()->Next();
-	    undoendpar = endpar;
-	}
-    } else if (endpar) {
-	endpar = endpar->Next(); // because of parindents etc.
-    }
-    
-    SetUndo(bview->buffer(), Undo::DELETE, sel_start_cursor
-	    .par()->ParFromPos(sel_start_cursor.pos())->previous, undoendpar);
-    
-    CutAndPaste cap;
+	// There is a problem with having the stuffing here in that the
+	// larger the selection the slower LyX will get. This can be
+	// solved by running the line below only when the selection has
+	// finished. The solution used currently just works, to make it
+	// faster we need to be more clever and probably also have more
+	// calls to stuffClipboard. (Lgb)
+	bview->stuffClipboard(selectionAsString(bview->buffer()));
 
-    // there are two cases: cut only within one paragraph or
-    // more than one paragraph
-    if (sel_start_cursor.par()->ParFromPos(sel_start_cursor.pos()) 
-	== sel_end_cursor.par()->ParFromPos(sel_end_cursor.pos())) {
-	// only within one paragraph
-	endpar = sel_start_cursor.par();
-	int pos = sel_end_cursor.pos();
-	cap.cutSelection(sel_start_cursor.par(), &endpar,
-			 sel_start_cursor.pos(), pos,
-			 bview->buffer()->params.textclass, doclear);
-	sel_end_cursor.pos(pos);
-    } else {
-	endpar = sel_end_cursor.par();
-
-	int pos = sel_end_cursor.pos();
-	cap.cutSelection(sel_start_cursor.par(), &endpar,
-			 sel_start_cursor.pos(), pos,
-			 bview->buffer()->params.textclass, doclear);
-	cursor.par(endpar);
-	sel_end_cursor.par(endpar);
-	sel_end_cursor.pos(pos);
-	cursor.pos(sel_end_cursor.pos());
-    }
-    endpar = endpar->Next();
-
-    // sometimes necessary
-    if (doclear)
-	sel_start_cursor.par()->StripLeadingSpaces(bview->buffer()->params.textclass);
-
-    RedoParagraphs(bview, sel_start_cursor, endpar);
-   
-    ClearSelection();
-    cursor = sel_start_cursor;
-    SetCursor(bview, cursor.par(), cursor.pos());
-    sel_cursor = cursor;
-    UpdateCounters(bview, cursor.row());
-}
-#endif
-    
-#ifdef USE_OLD_CUT_AND_PASTE
-void LyXText::CopySelection(Buffer const * buf)
-{
-	// this doesnt make sense, if there is no selection
-	if (!selection)
-		return;
-
-	// ok we have a selection. This is always between sel_start_cursor
-	// and sel_end cursor
-	LyXParagraph * tmppar;
-   
-	/* check wether there are half footnotes in the selection */
-	if (sel_start_cursor.par()->footnoteflag != LyXParagraph::NO_FOOTNOTE
-	    || sel_end_cursor.par()->footnoteflag != LyXParagraph::NO_FOOTNOTE) {
-		tmppar = sel_start_cursor.par();
-		while (tmppar != sel_end_cursor.par()) {
-			if (tmppar->footnoteflag !=
-			    sel_end_cursor.par()->footnoteflag) {
-				WriteAlert(_("Impossible operation"),
-					   _("Don't know what to do"
-					     " with half floats."),
-					   _("sorry."));
-				return;
-			}
-			tmppar = tmppar->Next();
-		}
-	}
-
-#ifndef NEW_TABULAR
-	/* table stuff -- begin */
-	if (sel_start_cursor.par()->table || sel_end_cursor.par()->table){
-		if ( sel_start_cursor.par() != sel_end_cursor.par()){
-			WriteAlert(_("Impossible operation"),
-				   _("Don't know what to do with half tables."),
-				   _("sorry."));
-			return;
-		}
-	}
-	/* table stuff -- end */
-#endif
-	
-	// delete the simple_cut_buffer
-	DeleteSimpleCutBuffer();
-
-	// set the textclass
-	simple_cut_buffer_textclass = buf->params.textclass;
-
-	// copy behind a space if there is one
-	while (sel_start_cursor.par()->Last() > sel_start_cursor.pos()
-	       && sel_start_cursor.par()->IsLineSeparator(sel_start_cursor.pos())
-	       && (sel_start_cursor.par() != sel_end_cursor.par()
-		   || sel_start_cursor.pos() < sel_end_cursor.pos()))
-		sel_start_cursor.pos()++; 
-
-	// there are two cases: copy only within one paragraph
-	// or more than one paragraph
-	if (sel_start_cursor.par()->ParFromPos(sel_start_cursor.pos()) 
-	    == sel_end_cursor.par()->ParFromPos(sel_end_cursor.pos())) {
-		// only within one paragraph
-		simple_cut_buffer = new LyXParagraph;
-		LyXParagraph::size_type i = 0;
-		for (i = sel_start_cursor.pos(); i < sel_end_cursor.pos(); ++i){
-			sel_start_cursor.par()->CopyIntoMinibuffer(i);
-			simple_cut_buffer->InsertFromMinibuffer(i - sel_start_cursor.pos());
-		}
-	} else {
-		// copy more than one paragraph
-		// clone the paragraphs within the selection
-		tmppar =
-			sel_start_cursor.par()->ParFromPos(sel_start_cursor.pos());
-		simple_cut_buffer = tmppar->Clone();
-		LyXParagraph *tmppar2 = simple_cut_buffer;
-     
-		while (tmppar != sel_end_cursor.par()->ParFromPos(sel_end_cursor.pos())
-		       && tmppar->next) {
-			tmppar = tmppar->next;
-			tmppar2->next = tmppar->Clone();
-			tmppar2->next->previous = tmppar2;
-			tmppar2 = tmppar2->next;
-		}
-		tmppar2->next = 0;
-
-		// care about footnotes
-		if (simple_cut_buffer->footnoteflag) {
-			tmppar = simple_cut_buffer;
-			while (tmppar){
-				tmppar->footnoteflag =
-					LyXParagraph::NO_FOOTNOTE;
-				tmppar = tmppar->next;
-			}
-		}
-		
-		// the simple_cut_buffer paragraph is too big
-		LyXParagraph::size_type tmpi2 =
-			sel_start_cursor.par()->PositionInParFromPos(sel_start_cursor.pos());
-		for (; tmpi2; --tmpi2)
-			simple_cut_buffer->Erase(0);
-		
-		// now tmppar 2 is too big, delete all after sel_end_cursor.pos()
-     
-		tmpi2 = sel_end_cursor.par()->PositionInParFromPos(sel_end_cursor.pos());
-		while (tmppar2->size() > tmpi2) {
-			tmppar2->Erase(tmppar2->size() - 1);
-		}
-	}
-}
-
-#else //////////////////////////////////////////////////////////////////////
-
-void LyXText::CopySelection(Buffer const * buf)
-{
 	// this doesnt make sense, if there is no selection
 	if (!selection)
 		return;
@@ -2518,222 +2220,9 @@ void LyXText::CopySelection(Buffer const * buf)
 
 	cap.copySelection(sel_start_cursor.par(), sel_end_cursor.par(),
 			  sel_start_cursor.pos(), sel_end_cursor.pos(),
-			  buf->params.textclass);
-}
-#endif          
-
-#ifdef USE_OLD_CUT_AND_PASTE
-void LyXText::PasteSelection(Buffer const * buf)
-{
-	// this does not make sense, if there is nothing to paste
-	if (!simple_cut_buffer)
-		return;
-
-	LyXParagraph * tmppar;
-	LyXParagraph * endpar;
-
-	LyXCursor tmpcursor;
-
-	// be carefull with footnotes in footnotes
-	if (cursor.par()->footnoteflag != LyXParagraph::NO_FOOTNOTE) {
-      
-		// check whether the cut_buffer includes a footnote
-		tmppar = simple_cut_buffer;
-		while (tmppar
-		       && tmppar->footnoteflag == LyXParagraph::NO_FOOTNOTE)
-			tmppar = tmppar->next;
-      
-		if (tmppar) {
-			WriteAlert(_("Impossible operation"),
-				   _("Can't paste float into float!"),
-				   _("Sorry."));
-			return;
-		}
-	}
-
-#ifndef NEW_TABULAR
-	/* table stuff -- begin */
-	if (cursor.par()->table) {
-		if (simple_cut_buffer->next) {
-			WriteAlert(_("Impossible operation"),
-				   _("Table cell cannot include more than one paragraph!"),
-				   _("Sorry."));
-			return;
-		}
-	}
-	/* table stuff -- end */
-#endif
-   
-	SetUndo(bview->buffer(), Undo::INSERT, 
-		cursor.par()->ParFromPos(cursor.pos())->previous, 
-		cursor.par()->ParFromPos(cursor.pos())->next); 
-
-	tmpcursor = cursor;
-
-	// There are two cases: cutbuffer only one paragraph or many
-	if (!simple_cut_buffer->next) {
-		// only within a paragraph
-
-		tmppar = simple_cut_buffer->Clone();
-#ifndef NEW_TABULAR
-		/* table stuff -- begin */
-		bool table_too_small = false;
-		if (tmpcursor.par()->table) {
-			while (simple_cut_buffer->size()
-			       && !table_too_small) {
-				if (simple_cut_buffer->IsNewline(0)){
-					while(tmpcursor.pos() < tmpcursor.par()->Last() && !tmpcursor.par()->IsNewline(tmpcursor.pos()))
-						tmpcursor.pos()++;
-					simple_cut_buffer->Erase(0);
-					if (tmpcursor.pos() < tmpcursor.par()->Last())
-						tmpcursor.pos()++;
-					else
-						table_too_small = true;
-				} else {
-					// This is an attempt to fix the
-					// "never insert a space at the
-					// beginning of a paragraph" problem.
-					if (tmpcursor.pos() == 0
-					    && simple_cut_buffer->IsLineSeparator(0)) {
-						simple_cut_buffer->Erase(0);
-					} else {
-						simple_cut_buffer->CutIntoMinibuffer(0);
-						simple_cut_buffer->Erase(0);
-						tmpcursor.par()->InsertFromMinibuffer(tmpcursor.pos());
-						tmpcursor.pos()++;
-					}
-				}
-			}
-		} else {
-#endif
-			/* table stuff -- end */
-			// Some provisions should be done here for checking
-			// if we are inserting at the beginning of a
-			// paragraph. If there are a space at the beginning
-			// of the text to insert and we are inserting at
-			// the beginning of the paragraph the space should
-			// be removed.
-			while (simple_cut_buffer->size()) {
-				// This is an attempt to fix the
-				// "never insert a space at the
-				// beginning of a paragraph" problem.
-				if (tmpcursor.pos() == 0
-				    && simple_cut_buffer->IsLineSeparator(0)) {
-					simple_cut_buffer->Erase(0);
-				} else {
-					simple_cut_buffer->CutIntoMinibuffer(0);
-					simple_cut_buffer->Erase(0);
-					tmpcursor.par()->InsertFromMinibuffer(tmpcursor.pos());
-					tmpcursor.pos()++;
-				}
-			}
-#ifndef NEW_TABULAR
-		}
-#endif
-		delete simple_cut_buffer;
-		simple_cut_buffer = tmppar;
-		endpar = tmpcursor.par()->Next();
-	} else {
-		// many paragraphs
-		CutAndPaste cap;
-
-		// make a copy of the simple cut_buffer
-		tmppar = simple_cut_buffer;
-		LyXParagraph * simple_cut_clone = tmppar->Clone();
-		LyXParagraph * tmppar2 = simple_cut_clone;
-		if (cursor.par()->footnoteflag){
-			tmppar->footnoteflag = cursor.par()->footnoteflag;
-			tmppar->footnotekind = cursor.par()->footnotekind;
-		}
-		while (tmppar->next) {
-			tmppar = tmppar->next;
-			tmppar2->next = tmppar->Clone();
-			tmppar2->next->previous = tmppar2;
-			tmppar2 = tmppar2->next;
-			if (cursor.par()->footnoteflag){
-				tmppar->footnoteflag = cursor.par()->footnoteflag;
-				tmppar->footnotekind = cursor.par()->footnotekind;
-			}
-		}
-     
-		// make sure there is no class difference
-		cap.SwitchLayoutsBetweenClasses(simple_cut_buffer_textclass,
-						buf->params.textclass,
-						simple_cut_buffer);
-     
-		// make the simple_cut_buffer exactly the same layout than
-		// the cursor paragraph
-		simple_cut_buffer->MakeSameLayout(cursor.par());
-     
-		// find the end of the buffer
-		LyXParagraph * lastbuffer = simple_cut_buffer;
-		while (lastbuffer->Next())
-			lastbuffer = lastbuffer->Next();
-     
-		bool paste_the_end = false;
-
-		// open the paragraph for inserting the simple_cut_buffer
-		// if necessary
-		if (cursor.par()->Last() > cursor.pos() || !cursor.par()->Next()){
-			cursor.par()->BreakParagraphConservative(cursor.pos());
-			paste_the_end = true;
-		}
-
-		// set the end for redoing later
-		endpar = cursor.par()->ParFromPos(cursor.pos())->next->Next();
-     
-		// paste it!
-		lastbuffer->ParFromPos(lastbuffer->Last())->next =
-			cursor.par()->ParFromPos(cursor.pos())->next;
-		cursor.par()->ParFromPos(cursor.pos())->next->previous =
-			lastbuffer->ParFromPos(lastbuffer->Last());
-     
-		cursor.par()->ParFromPos(cursor.pos())->next = simple_cut_buffer;
-		simple_cut_buffer->previous =
-			cursor.par()->ParFromPos(cursor.pos());
-   
-		if (cursor.par()->ParFromPos(cursor.pos())->Next() == lastbuffer)
-			lastbuffer = cursor.par();
-     
-		cursor.par()->ParFromPos(cursor.pos())->PasteParagraph();
-     
-		// store the new cursor position
-		tmpcursor.par() = lastbuffer;
-		tmpcursor.pos() = lastbuffer->Last();
-     
-		// maybe some pasting
-		if (lastbuffer->Next() && paste_the_end) {
-			if (lastbuffer->Next()->HasSameLayout(lastbuffer)) {
-				lastbuffer->ParFromPos(lastbuffer->Last())->PasteParagraph();
-	 
-			} else if (!lastbuffer->Next()->Last()) {
-				lastbuffer->Next()->MakeSameLayout(lastbuffer);
-				lastbuffer->ParFromPos(lastbuffer->Last())->PasteParagraph();
-	 
-			} else if (!lastbuffer->Last()) {
-				lastbuffer->MakeSameLayout(lastbuffer->next);
-				lastbuffer->ParFromPos(lastbuffer->Last())->PasteParagraph();
-	 
-			} else
-				lastbuffer->Next()->StripLeadingSpaces(buffer->params.textclass);
-		}
-
-		// restore the simple cut buffer
-		simple_cut_buffer = simple_cut_clone;
-	}
-
-	RedoParagraphs(cursor, endpar);
-    
-	SetCursor(cursor.par(), cursor.pos());
-	ClearSelection();
-   
-	sel_cursor = cursor;
-	SetCursor(tmpcursor.par(), tmpcursor.pos());
-	SetSelection();
-	UpdateCounters(cursor.row());
+			  bview->buffer()->params.textclass);
 }
 
-#else ////////////////////////////////////////////////////////////////////
 
 void LyXText::PasteSelection(BufferView * bview)
 {
@@ -2763,7 +2252,7 @@ void LyXText::PasteSelection(BufferView * bview)
 	SetSelection(bview);
 	UpdateCounters(bview, cursor.row());
 }
-#endif   
+
 
 // returns a pointer to the very first LyXParagraph
 LyXParagraph * LyXText::FirstParagraph() const

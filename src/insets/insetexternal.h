@@ -19,15 +19,17 @@
 #include "insetbutton.h"
 #include "LString.h"
 #include "../lyx.h"
+
 struct ExternalTemplate;
 
+///
 class InsetExternal : public InsetButton {
 public:
 	InsetExternal();
 	///
 	virtual ~InsetExternal();
 	/// what appears in the minibuffer when opening
-	virtual const char * EditMessage() const;
+	virtual char const * EditMessage() const;
 	///
 	virtual void Edit(BufferView *, int x, int y, unsigned int button);
 	///
