@@ -1,5 +1,9 @@
 2001-01-31  Dekel Tsur  <dekelts@tau.ac.il>
 
+	* BufferView2.C (ChangeInsets): Renamed from ChangeRefs. Accept a
+	new argument (code).
+	(ChangeCitationsIfUnique): New method.
+
 	* paragraph.C (GetPositionOfInset): Handle bibkey.
 
 2001-01-29  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>

@@ -107,7 +107,9 @@ public:
 		///
 		MATHMACRO_CODE,
 		///
-		ERROR_CODE
+		ERROR_CODE,
+		///
+		CITE_CODE
 	};
 
 	///

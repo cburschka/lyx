@@ -257,9 +257,12 @@ public:
 	void leaveView();
 #endif
 	///
-	bool ChangeRefs(string const & from, string const & to);
+	bool ChangeInsets(Inset::Code code, string const & from, 
+			  string const & to);
 	///
 	bool ChangeRefsIfUnique(string const & from, string const & to);
+	///
+	bool ChangeCitationsIfUnique(string const & from, string const & to);
 	///
 	void pasteClipboard(bool asPara);
 	///

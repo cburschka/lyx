@@ -1,5 +1,9 @@
 2001-01-31  Dekel Tsur  <dekelts@tau.ac.il>
 
+	* insetbib.C (callback): Update citations if the key has changed.
+
+2001-01-31  Dekel Tsur  <dekelts@tau.ac.il>
+
 	* insetbib.C (InsetBibKey): Better computation of default key.
 	(getScreenLabel) Show both the key and the label.
 	(getBibLabel): New method.

@@ -31,6 +31,7 @@
 #include "LaTeX.h"
 #include "BufferView_pimpl.h"
 #include "insets/insetcommand.h" //ChangeRefs
+#include "support/lyxfunctional.h" //equal_1st_in_pair
 
 extern BufferList bufferlist;
 
@@ -40,6 +41,7 @@ using std::ifstream;
 using std::vector;
 using std::find;
 using std::count;
+using std::count_if;
 
 // Inserts a file into current document
 bool BufferView::insertLyXFile(string const & filen)
@@ -879,7 +881,7 @@ void BufferView::updateInset(Inset * inset, bool mark_dirty)
 }
 
 
-bool BufferView::ChangeRefs(string const & from, string const & to)
+bool BufferView::ChangeInsets(Inset::Code code, string const & from, string const & to)
 {
 	bool flag = false;
 	LyXParagraph * par = buffer()->paragraph;
@@ -897,7 +899,7 @@ bool BufferView::ChangeRefs(string const & from, string const & to)
 		bool flag2 = false;
 		for (LyXParagraph::inset_iterator it = par->inset_iterator_begin();
 		     it != par->inset_iterator_end(); ++it) {
-			if ((*it)->LyxCode() == Inset::REF_CODE) {
+			if ((*it)->LyxCode() == code) {
 				InsetCommand * inset = static_cast<InsetCommand *>(*it);
 				if (inset->getContents() == from) {
 					inset->setContents(to);
@@ -934,9 +936,21 @@ bool BufferView::ChangeRefsIfUnique(string const & from, string const & to)
 	if (count(labels.begin(), labels.end(), from) > 1)
 		return false;
 
-	return ChangeRefs(from, to);
+	return ChangeInsets(Inset::REF_CODE, from, to);
 }
 
+
+bool BufferView::ChangeCitationsIfUnique(string const & from, string const & to)
+{
+
+	vector<pair<string,string> > keys = buffer()->getBibkeyList();	
+	if (count_if(keys.begin(), keys.end(), 
+		     equal_1st_in_pair<string,string>(from)) 
+	    > 1)
+		return false;
+
+	return ChangeInsets(Inset::CITE_CODE, from, to);
+}
 
 UpdatableInset * BufferView::theLockingInset() const
 {

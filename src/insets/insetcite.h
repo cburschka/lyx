@@ -31,6 +31,8 @@ public:
 	string const getScreenLabel() const;
 	///
 	EDITABLE Editable() const { return IS_EDITABLE; }
+	///
+	Inset::Code LyxCode() const { return Inset::CITE_CODE; }
         ///
 	void Edit(BufferView *, int, int, unsigned int);
 };

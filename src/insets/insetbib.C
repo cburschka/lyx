@@ -110,19 +110,31 @@ void InsetBibKey::callback( FD_bibitem_form * form, long data )
 {
 	switch (data) {
 	case 1:
+	{
 		// Do NOT change this to
 		// holder.view->buffer() as this code is used by both
 		// InsetBibKey and InsetBibtex! Ughhhhhhh!!!!
-		if (!current_view->buffer()->isReadonly()) {
-			setContents(fl_get_input(form->key));
-			setOptions(fl_get_input(form->label));
-			// shouldn't mark the buffer dirty unless
-			// something was actually altered
-			current_view->updateInset( this, true );
+		if (current_view->buffer()->isReadonly()) {
+			WarnReadonly(current_view->buffer()->fileName());
+			break;
+		}
+
+		string key = fl_get_input(form->key);
+		string label = fl_get_input(form->label);
+		if (key != getContents())
+			current_view->ChangeCitationsIfUnique(getContents(),
+							      key);
+
+		if (key != getContents() || label != getOptions()) {
+			setContents(key);
+			setOptions(label);
+			current_view->updateInset(this, true);
 			// We need to do a redraw becuase the maximum 
 			// InsetBibKey width could have changed.
 			current_view->redraw();
+			current_view->fitCursor(getLyXText(current_view));
 		} // fall through to Cancel
+	}
 	case 0:
 		fl_hide_form(form->bibitem_form);
 		break;
