@@ -80,11 +80,6 @@ InsetWrap::InsetWrap(InsetWrap const & in)
 {}
 
 
-// InsetWrap::InsetWrap(InsetWrap const & in, bool same_id)
-//	: InsetCollapsable(in, same_id), params_(in.params_)
-// {}
-
-
 InsetWrap::~InsetWrap()
 {
 	InsetWrapMailer mailer(*this);
@@ -187,14 +182,8 @@ void InsetWrap::validate(LaTeXFeatures & features) const
 
 Inset * InsetWrap::clone(Buffer const &) const
 {
-	return new InsetWrap(*const_cast<InsetWrap *>(this));
+	return new InsetWrap(*this);
 }
-
-
-// Inset * InsetWrap::clone(Buffer const &, bool same_id) const
-// {
-//	return new InsetWrap(*const_cast<InsetWrap *>(this), same_id);
-// }
 
 
 string const InsetWrap::editMessage() const

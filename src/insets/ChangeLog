@@ -1,3 +1,21 @@
+2003-05-29  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* insetwrap.C (clone): remove const_cast
+
+	* insetnote.C (clone): remove const_cast
+
+	* insetminipage.C (clone): remove const_cast
+
+	* insetmarginal.C (clone): remove const_cast
+
+	* insetfoot.C (clone): remove const_cast
+
+	* insetfloat.C (clone): remove const_cast
+
+	* insetert.C (clone): remove const_cast
+
+	* delete commented same_id functions from a lot of files. 
+
 2003-05-28  John Levon  <levon@movementarian.org>
 
 	* insetcite.C:

@@ -160,8 +160,6 @@ public:
 	///
 	Inset(Inset const & in);
 	///
-	//Inset(Inset const & in, bool same_id);
-	///
 	virtual void dimension(BufferView *, LyXFont const &, Dimension &) const = 0;
 	///
 	int ascent(BufferView *, LyXFont const &) const;
@@ -212,8 +210,6 @@ public:
 
 	///
 	virtual Inset * clone(Buffer const &) const = 0;
-	///
-	//virtual Inset * clone(Buffer const &, bool same_ids) const = 0;
 
 	/// returns true to override begin and end inset in file
 	virtual bool directWrite() const;

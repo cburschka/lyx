@@ -25,11 +25,7 @@ public:
 	///
 	InsetNote(InsetNote const &);
 	///
-	//InsetNote(InsetNote const &, bool same_id);
-	///
 	Inset * clone(Buffer const &) const;
-	///
-	//Inset * clone(Buffer const &, bool same_id) const;
 	///
 	string const editMessage() const;
 	///

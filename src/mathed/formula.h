@@ -56,8 +56,6 @@ public:
 	///
 	Inset * clone(Buffer const &) const;
 	///
-	//Inset * clone(Buffer const &, bool same_id) const;
-	///
 	void validate(LaTeXFeatures & features) const;
 	///
 	Inset::Code lyxCode() const;

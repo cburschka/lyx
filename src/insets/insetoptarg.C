@@ -47,26 +47,10 @@ InsetOptArg::InsetOptArg(InsetOptArg const & in)
 }
 
 
-// InsetOptArg::InsetOptArg(InsetOptArg const & in, bool same_id)
-//	: InsetCollapsable(in, same_id)
-// {
-//	LyXFont font(LyXFont::ALL_SANE);
-//	font.setColor(LColor::collapsable);
-//	setLabelFont(font);
-//	setLabel(_("opt"));
-// }
-
-
 Inset * InsetOptArg::clone(Buffer const &) const
 {
 	return new InsetOptArg(*this);
 }
-
-
-// Inset * InsetOptArg::clone(Buffer const &, bool same_id) const
-// {
-//	return new InsetOptArg(*this, same_id);
-// }
 
 
 string const InsetOptArg::editMessage() const

@@ -23,17 +23,11 @@ public:
 	///
 	InsetCitation(InsetCommandParams const &);
 	///
-	//InsetCitation(InsetCommandParams const &, bool same_id);
-	///
 	~InsetCitation();
 	///
 	Inset * clone(Buffer const &) const {
 		return new InsetCitation(params());
 	}
-	///
-	//Inset * clone(Buffer const &, bool same_id) const {
-	//	return new InsetCitation(params(), same_id);
-	//}
 	///
 	string const getScreenLabel(Buffer const *) const;
 	///

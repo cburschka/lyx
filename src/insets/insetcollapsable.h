@@ -41,8 +41,6 @@ public:
 	///
 	InsetCollapsable(InsetCollapsable const & in);
 	///
-	//InsetCollapsable(InsetCollapsable const & in, bool same_id);
-	///
 	void read(Buffer const *, LyXLex &);
 	///
 	void write(Buffer const *, std::ostream &) const;

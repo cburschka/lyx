@@ -93,21 +93,10 @@ InsetMinipage::InsetMinipage(InsetMinipage const & in)
 {}
 
 
-// InsetMinipage::InsetMinipage(InsetMinipage const & in, bool same_id)
-//	: InsetCollapsable(in, same_id), params_(in.params_)
-// {}
-
-
 Inset * InsetMinipage::clone(Buffer const &) const
 {
-	return new InsetMinipage(*const_cast<InsetMinipage *>(this));
+	return new InsetMinipage(*this);
 }
-
-
-// Inset * InsetMinipage::clone(Buffer const &, bool same_id) const
-// {
-//	return new InsetMinipage(*const_cast<InsetMinipage *>(this), same_id);
-// }
 
 
 InsetMinipage::~InsetMinipage()

@@ -78,13 +78,9 @@ public:
 	///
 	InsetTabular(InsetTabular const &, Buffer const &);
 	///
-	//InsetTabular(InsetTabular const &, Buffer const &, bool same_id);
-	///
 	~InsetTabular();
 	///
 	Inset * clone(Buffer const &) const;
-	///
-	//Inset * clone(Buffer const &, bool same_id) const;
 	///
 	void read(Buffer const *, LyXLex &);
 	///

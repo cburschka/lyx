@@ -40,21 +40,10 @@ InsetEnvironment::InsetEnvironment(InsetEnvironment const & in)
 {}
 
 
-// InsetEnvironment::InsetEnvironment(InsetEnvironment const & in, bool same_id)
-//	: InsetText(in, same_id), layout_(in.layout_)
-// {}
-
-
 Inset * InsetEnvironment::clone(Buffer const &) const
 {
 	return new InsetEnvironment(*this);
 }
-
-
-// Inset * InsetEnvironment::clone(Buffer const &, bool same_id) const
-// {
-//	return new InsetEnvironment(*this, same_id);
-// }
 
 
 void InsetEnvironment::write(Buffer const * buf, ostream & os) const

@@ -70,9 +70,6 @@ public:
 	///
 	Inset * clone(Buffer const &) const;
 	///
-	//Inset * clone(Buffer const &, bool same_id) const;
-
-	///
 	void dimension(BufferView *, LyXFont const &, Dimension &) const;
 	///
 	void draw(BufferView *, LyXFont const &, int, float &) const;

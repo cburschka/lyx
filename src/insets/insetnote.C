@@ -53,23 +53,10 @@ InsetNote::InsetNote(InsetNote const & in)
 }
 
 
-// InsetNote::InsetNote(InsetNote const & in, bool same_id)
-//	: InsetCollapsable(in, same_id)
-// {
-//	init();
-// }
-
-
 Inset * InsetNote::clone(Buffer const &) const
 {
-	return new InsetNote(*const_cast<InsetNote *>(this));
+	return new InsetNote(*this);
 }
-
-
-// Inset * InsetNote::clone(Buffer const &, bool same_id) const
-// {
-//	return new InsetNote(*const_cast<InsetNote *>(this), same_id);
-// }
 
 
 string const InsetNote::editMessage() const

@@ -47,18 +47,6 @@ Inset::Inset(Inset const & in)
 }
 
 
-// Inset::Inset(Inset const & in, bool same_id)
-//	: InsetBase(),
-//	top_x(0), top_baseline(0), scx(0), owner_(0),
-//	name_(in.name_), background_color_(in.background_color_)
-// {
-//	if (same_id)
-//		id_ = in.id();
-//	else
-//		id_ = inset_id++;
-// }
-
-
 bool Inset::directWrite() const
 {
 	return false;

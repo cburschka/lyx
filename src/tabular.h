@@ -182,18 +182,12 @@ public:
 	LyXTabular(BufferParams const &,
 		   InsetTabular *, LyXTabular const &);
 	///
-	//LyXTabular(BufferParams const &,
-	//	   InsetTabular *, LyXTabular const &, bool same_id = false);
-	///
 	explicit
 	LyXTabular(Buffer const *, InsetTabular *, LyXLex & lex);
 	///
 	LyXTabular & operator=(LyXTabular const &);
 	///
 	LyXTabular * clone(BufferParams const &, InsetTabular *);
-	///
-	//LyXTabular * clone(BufferParams const &,
-	//		   InsetTabular *, bool same_id = false);
 
 	/// Returns true if there is a topline, returns false if not
 	bool TopLine(int cell, bool onlycolumn = false) const;

@@ -58,8 +58,6 @@ public:
 	///
 	InsetMinipage(InsetMinipage const &);
 	///
-	//InsetMinipage(InsetMinipage const &, bool same_id);
-	///
 	~InsetMinipage();
 	///
 	virtual dispatch_result localDispatch(FuncRequest const & cmd);
@@ -69,8 +67,6 @@ public:
 	void read(Buffer const * buf, LyXLex & lex);
 	///
 	Inset * clone(Buffer const &) const;
-	///
-	//Inset * clone(Buffer const &, bool same_id) const;
 	///
 	void dimension(BufferView *, LyXFont const &, Dimension &) const;
 	///

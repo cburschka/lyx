@@ -70,8 +70,6 @@ public:
 
 	///
 	virtual Inset * clone(Buffer const &) const;
-	///
-	//virtual Inset * clone(Buffer const &, bool same_id) const;
 
 	/// returns the text of the button
 	virtual string const getScreenLabel(Buffer const *) const;

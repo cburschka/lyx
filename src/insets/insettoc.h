@@ -22,17 +22,11 @@ public:
 	///
 	InsetTOC(InsetCommandParams const &);
 	///
-	//InsetTOC(InsetCommandParams const &, bool same_id);
-	///
 	~InsetTOC();
 	///
 	virtual Inset * clone(Buffer const &) const {
 		return new InsetTOC(params());
 	}
-	///
-	//virtual Inset * clone(Buffer const &, bool same_id) const {
-	//	return new InsetTOC(params(), same_id);
-	//}
 	///
 	dispatch_result localDispatch(FuncRequest const & cmd);
 	///

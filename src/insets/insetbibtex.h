@@ -25,17 +25,11 @@ public:
 	///
 	InsetBibtex(InsetCommandParams const &);
 	///
-	//InsetBibtex(InsetCommandParams const &, bool same_id);
-	///
 	~InsetBibtex();
 	///
 	Inset * clone(Buffer const &) const {
 		return new InsetBibtex(params());
 	}
-	///
-	//Inset * clone(Buffer const &, bool same_id) const {
-	//	return new InsetBibtex(params(), same_id);
-	//}
 	/// small wrapper for the time being
 	virtual dispatch_result localDispatch(FuncRequest const & cmd);
 	///

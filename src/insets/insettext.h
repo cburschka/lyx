@@ -75,14 +75,9 @@ public:
 	explicit
 	InsetText(InsetText const &);
 	///
-	//explicit
-	//InsetText(InsetText const &, bool same_id);
-	///
 	~InsetText();
 	///
 	Inset * clone(Buffer const &) const;
-	///
-	//Inset * clone(Buffer const &, bool same_id) const;
 	///
 	InsetText & operator=(InsetText const & it);
 	/// empty inset to empty par, or just mark as erased
@@ -154,13 +149,9 @@ public:
 	///
 	void init(InsetText const * ins);
 	///
-	//void init(InsetText const * ins, bool same_id);
-	///
 	void writeParagraphData(Buffer const *, std::ostream &) const;
 	///
 	void setParagraphData(ParagraphList const &);
-	///
-	//void setParagraphData(ParagraphList const &, bool same_id);
 	///
 	void setText(string const &, LyXFont const &);
 	///

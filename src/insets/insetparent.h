@@ -27,15 +27,9 @@ public:
 	///
 	InsetParent(InsetCommandParams const &, Buffer const &);
 	///
-	//InsetParent(InsetCommandParams const &, Buffer const &, bool same_id);
-	///
 	virtual Inset * clone(Buffer const & buffer) const {
 		return new InsetParent(params(), buffer);
 	}
-	///
-	//virtual Inset * clone(Buffer const & buffer, bool same_id) const {
-	//	return new InsetParent(params(), buffer, same_id);
-	//}
 	///
 	dispatch_result localDispatch(FuncRequest const & cmd);
 	///

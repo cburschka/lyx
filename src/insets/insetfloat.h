@@ -43,8 +43,6 @@ public:
 	///
 	InsetFloat(InsetFloat const &);
 	///
-	//InsetFloat(InsetFloat const &, bool same_id);
-	///
 	~InsetFloat();
 	///
 	virtual dispatch_result localDispatch(FuncRequest const & cmd);
@@ -56,8 +54,6 @@ public:
 	void validate(LaTeXFeatures & features) const;
 	///
 	Inset * clone(Buffer const &) const;
-	///
-	//Inset * clone(Buffer const &, bool same_id) const;
 	///
 	Inset::Code lyxCode() const { return Inset::FLOAT_CODE; }
 	///

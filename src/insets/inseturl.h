@@ -25,18 +25,11 @@ public:
 	explicit
 	InsetUrl(InsetCommandParams const &);
 	///
-	//explicit
-	//InsetUrl(InsetCommandParams const &, bool same_id);
-	///
 	~InsetUrl();
 	///
 	virtual Inset * clone(Buffer const &) const {
 		return new InsetUrl(params());
 	}
-	///
-	//virtual Inset * clone(Buffer const &, bool same_id) const {
-	//	return new InsetUrl(params(), same_id);
-	//}
 	///
 	dispatch_result localDispatch(FuncRequest const & cmd);
 	///

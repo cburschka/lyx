@@ -71,21 +71,6 @@ InsetCollapsable::InsetCollapsable(InsetCollapsable const & in)
 }
 
 
-// InsetCollapsable::InsetCollapsable(InsetCollapsable const & in, bool same_id)
-//	: UpdatableInset(in, same_id), collapsed_(in.collapsed_),
-//	  framecolor(in.framecolor), labelfont(in.labelfont), inset(in.inset),
-//	  button_length(0), button_top_y(0), button_bottom_y(0),
-//	  label(in.label),
-// #if 0
-//	  autocollapse(in.autocollapse),
-// #endif
-//	  oldWidth(0), in_update(false), first_after_edit(false)
-// {
-//	inset.init(&(in.inset), same_id);
-//	inset.setOwner(this);
-// }
-
-
 bool InsetCollapsable::insertInset(BufferView * bv, Inset * in)
 {
 	if (!insetAllowed(in->lyxCode())) {

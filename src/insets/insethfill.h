@@ -21,12 +21,8 @@ public:
 	InsetHFill();
 	///
 	virtual Inset * clone(Buffer const &) const {
-		return new InsetHFill();
+		return new InsetHFill;
 	}
-	///
-	//virtual Inset * clone(Buffer const &, bool /*same_id*/) const {
-	//	return new InsetHFill();
-	//}
 	///
 	string const getScreenLabel(Buffer const *) const { return getContents(); }
 	///

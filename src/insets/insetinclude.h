@@ -76,8 +76,6 @@ public:
 	///
 	virtual Inset * clone(Buffer const &) const;
 	///
-	//virtual Inset * clone(Buffer const &, bool same_id) const;
-	///
 	Inset::Code lyxCode() const { return Inset::INCLUDE_CODE; }
 	/// This returns the list of labels on the child buffer
 	std::vector<string> const getLabelList() const;

@@ -24,11 +24,6 @@ public:
 		return new InsetNewline;
 	}
 
-
-	//virtual Inset * clone(Buffer const &, bool same_id) const {
-	//	return new InsetNewline;
-	//}
-
 	Inset::Code lyxCode() const { return Inset::NEWLINE_CODE; }
 
 	void dimension(BufferView *, LyXFont const &, Dimension &) const;

@@ -27,11 +27,7 @@ public:
 	///
 	InsetFoot(InsetFoot const &);
 	///
-	//InsetFoot(InsetFoot const &, bool same_id);
-	///
 	Inset * clone(Buffer const &) const;
-	///
-	//Inset * clone(Buffer const &, bool same_id) const;
 	///
 	Inset::Code lyxCode() const { return Inset::FOOT_CODE; }
 	///

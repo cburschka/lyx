@@ -24,8 +24,6 @@ public:
 	///
 	InsetFootlike(InsetFootlike const &);
 	///
-	//InsetFootlike(InsetFootlike const &, bool same_id);
-	///
 	void write(Buffer const * buf, std::ostream & os) const;
 	///
 	bool insetAllowed(Inset::Code) const;

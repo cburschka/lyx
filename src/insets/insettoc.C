@@ -28,11 +28,6 @@ InsetTOC::InsetTOC(InsetCommandParams const & p)
 {}
 
 
-// InsetTOC::InsetTOC(InsetCommandParams const & p, bool same_id)
-//	: InsetCommand(p, same_id)
-// {}
-
-
 InsetTOC::~InsetTOC()
 {
 	InsetCommandMailer mailer("toc", *this);

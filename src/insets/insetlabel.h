@@ -20,17 +20,11 @@ public:
 	///
 	InsetLabel(InsetCommandParams const &);
 	///
-	//InsetLabel(InsetCommandParams const &, bool same_id);
-	///
 	~InsetLabel();
 	///
 	virtual Inset * clone(Buffer const &) const {
 		return new InsetLabel(params());
 	}
-	///
-	//virtual Inset * clone(Buffer const &, bool same_id) const {
-	//	return new InsetLabel(params(), same_id);
-	//}
 	///
 	virtual dispatch_result localDispatch(FuncRequest const & cmd);
 	///

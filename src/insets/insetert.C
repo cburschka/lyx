@@ -70,23 +70,10 @@ InsetERT::InsetERT(InsetERT const & in)
 }
 
 
-// InsetERT::InsetERT(InsetERT const & in, bool same_id)
-//	: InsetCollapsable(in, same_id), status_(in.status_)
-// {
-//	init();
-// }
-
-
 Inset * InsetERT::clone(Buffer const &) const
 {
-	return new InsetERT(*const_cast<InsetERT *>(this));
+	return new InsetERT(*this);
 }
-
-
-// Inset * InsetERT::clone(Buffer const &, bool same_id) const
-// {
-//	return new InsetERT(*const_cast<InsetERT *>(this), same_id);
-// }
 
 
 InsetERT::InsetERT(BufferParams const & bp,

@@ -30,9 +30,6 @@ public:
 	///
 	InsetGraphics(InsetGraphics const &, string const & filepath);
 	///
-	//InsetGraphics(InsetGraphics const &, string const & filepath,
-	//	      bool same_id);
-	///
 	~InsetGraphics();
 	///
 	virtual dispatch_result localDispatch(FuncRequest const & cmd);
@@ -70,8 +67,6 @@ public:
 
 	///
 	virtual Inset * clone(Buffer const &) const;
-	///
-	//virtual Inset * clone(Buffer const &, bool same_id) const;
 
 	/** Set the inset parameters, used by the GUIndependent dialog.
 	    Return true of new params are different from what was so far.

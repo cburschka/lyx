@@ -50,8 +50,6 @@ public:
 	UpdatableInset();
 	///
 	UpdatableInset(UpdatableInset const & in);
-	///
-	//UpdatableInset(UpdatableInset const & in, bool same_id);
 
 	/// check if the font of the char we want inserting is correct
 	/// and modify it if it is not.

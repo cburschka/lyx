@@ -22,15 +22,11 @@ public:
 	///
 	InsetEnvironment(InsetEnvironment const &);
 	///
-	//InsetEnvironment(InsetEnvironment const &, bool same_id);
-	///
 	void write(Buffer const * buf, std::ostream & os) const;
 	///
 	void read(Buffer const * buf, LyXLex & lex);
 	///
 	Inset * clone(Buffer const &) const;
-	///
-	//Inset * clone(Buffer const &, bool same_id) const;
 	///
 	Inset::Code lyxCode() const { return Inset::ENVIRONMENT_CODE; }
 	///

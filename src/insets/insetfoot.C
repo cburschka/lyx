@@ -46,24 +46,10 @@ InsetFoot::InsetFoot(InsetFoot const & in)
 }
 
 
-// InsetFoot::InsetFoot(InsetFoot const & in, bool same_id)
-//	: InsetFootlike(in, same_id)
-// {
-//	setLabel(_("foot"));
-//	setInsetName("Foot");
-// }
-
-
 Inset * InsetFoot::clone(Buffer const &) const
 {
-	return new InsetFoot(*const_cast<InsetFoot *>(this));
+	return new InsetFoot(*this);
 }
-
-
-// Inset * InsetFoot::clone(Buffer const &, bool same_id) const
-// {
-//	return new InsetFoot(*const_cast<InsetFoot *>(this), same_id);
-// }
 
 
 string const InsetFoot::editMessage() const

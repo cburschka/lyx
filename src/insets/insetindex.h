@@ -24,17 +24,11 @@ public:
 	///
 	InsetIndex(InsetCommandParams const &);
 	///
-	//InsetIndex(InsetCommandParams const &, bool same_id);
-	///
 	~InsetIndex();
 	///
 	virtual Inset * clone(Buffer const &) const {
 		return new InsetIndex(params());
 	}
-	///
-	//virtual Inset * clone(Buffer const &, bool same_id) const {
-	//	return new InsetIndex(params(), same_id);
-	//}
 	///
 	dispatch_result localDispatch(FuncRequest const & cmd);
 	///
@@ -53,17 +47,11 @@ public:
 	///
 	InsetPrintIndex(InsetCommandParams const &);
 	///
-	//InsetPrintIndex(InsetCommandParams const &, bool same_id);
-	///
 	~InsetPrintIndex();
 	///
 	Inset * clone(Buffer const &) const {
 		return new InsetPrintIndex(params());
 	}
-	///
-	//Inset * clone(Buffer const &, bool same_id) const {
-	//	return new InsetPrintIndex(params(), same_id);
-	//}
 	///
 	//dispatch_result localDispatch(FuncRequest const & cmd);
 	/// Updates needed features for this inset.

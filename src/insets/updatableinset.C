@@ -35,11 +35,6 @@ UpdatableInset::UpdatableInset(UpdatableInset const & in)
 {}
 
 
-// UpdatableInset::UpdatableInset(UpdatableInset const & in, bool same_id)
-//	: Inset(in, same_id), block_drawing_(false)
-// {}
-
-
 void UpdatableInset::insetUnlock(BufferView *)
 {
 	lyxerr[Debug::INFO] << "Inset Unlock" << std::endl;
