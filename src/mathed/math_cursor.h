@@ -148,6 +148,8 @@ public:
 	void selStart();
 	///
 	void selClear();
+	/// clears or deletes selection depending on lyxrc setting
+	void selClearOrDel();
 	///
 	void selGet(MathArray & ar);
 	///

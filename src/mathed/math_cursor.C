@@ -16,6 +16,7 @@
  */
 
 #include <config.h>
+#include <lyxrc.h>
 
 #ifdef __GNUG__
 #pragma implementation
@@ -436,6 +437,7 @@ void MathCursor::plainInsert(MathAtom const & t)
 void MathCursor::insert(char c, MathTextCodes t)
 {
 	//lyxerr << "inserting '" << c << "'\n";
+	selClearOrDel();	
 	plainInsert(MathAtom(new MathCharInset(c, t)));
 }
 
@@ -454,7 +456,7 @@ void MathCursor::insert(MathAtom const & t)
 		if (t->nargs())
 			selCut();
 		else
-			selDel();
+			selClearOrDel();
 	}
 
 	plainInsert(t);
@@ -653,7 +655,7 @@ void MathCursor::selCopy()
 	dump("selCopy");
 	if (selection_) {
 		theSelection.grab(*this);
-		selClear();
+		//selClear();
 	}
 }
 
@@ -686,6 +688,7 @@ void MathCursor::selDel()
 void MathCursor::selPaste()
 {
 	dump("selPaste");
+	selClearOrDel();
 	theSelection.paste(*this);
 	//theSelection.grab(*this);
 	//selClear();
@@ -717,6 +720,15 @@ void MathCursor::selClear()
 	dump("selClear 1");
 	selection_ = false;
 	dump("selClear 2");
+}
+
+
+void MathCursor::selClearOrDel()
+{
+	if (lyxrc.auto_region_delete)
+		selDel();
+	else
+		selClear();
 }
 
 
@@ -1478,12 +1490,13 @@ bool MathCursor::interpret(char c)
 		return true;
 	}
 
-	if (selection_) {
+	// just clear selection on pressing the space par
+	if (selection_ && c == ' ') {
 		selClear();
-		if (c == ' ')
-			return true;
-		// fall through in the other cases
+		return true;
 	}
+
+	selClearOrDel();
 
 	if (lastcode_ == LM_TC_TEXTRM || par()->asBoxInset()) {
 		// suppress direct insertion of two spaces in a row
