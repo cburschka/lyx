@@ -59,11 +59,11 @@ void WriteFSAlert(string const & s1, string const & s2 = string());
 
 /// Asks "Yes" or "No". Returns true for yes, false for no
 bool AskQuestion(string const & s1, string const & s2 = string(),
-		 string const & s3 = string());
+		 string const & s3 = string(), bool default_value = true);
 
 /// Asks "Yes", "No" or "Cancel". Returns 1 for yes, 2 for no, 3 for cancel
 int AskConfirmation(string const & s1, string const & s2 = string(), 
-		    string const & s3 = string());
+		    string const & s3 = string(), int default_value = 1);
 
 /// returns a bool: false=cancelled, true=okay. string contains returned text
 std::pair<bool, string> const

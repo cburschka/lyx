@@ -18,6 +18,7 @@
 #include "lyxtext.h"
 #include "support/filetools.h"
 #include "support/path.h"
+#include "lyxrc.h"
 
 using std::ostream;
 using std::ifstream;
@@ -378,11 +379,12 @@ int bibitemMaxWidth(BufferView * bv, LyXFont const & font)
 
 
 // ale070405
-string const bibitemWidest(BufferView * bv)
+string const bibitemWidest(Buffer const * buffer)
 {
 	int w = 0;
 	// Does look like a hack? It is! (but will change at 0.13)
-	LyXParagraph * par = bv->buffer()->paragraph;
+	LyXParagraph * par = buffer->paragraph;
+	BufferView * bv = buffer->getUser();
 	InsetBibKey * bkey = 0;
 	LyXFont font;
       

@@ -428,7 +428,7 @@ void BufferView::Pimpl::scrollCB(double value)
 
 	if (cursor_follows_scrollbar) {
 		LyXText * vbt = bv_->text;
-		unsigned int height = vbt->DefaultHeight();
+		int height = vbt->DefaultHeight();
 		
 		if (vbt->cursor.y() < (int)(bv_->text->first + height)) {
 			vbt->SetCursorFromCoordinates(bv_, 0,
@@ -884,7 +884,8 @@ Inset * BufferView::Pimpl::checkInsetHit(LyXText * text, int & x, int & y,
 		LyXFont font = text->GetFont(bv_->buffer(),
 						  cursor.par(), cursor.pos());
 		bool is_rtl = font.isVisibleRightToLeft();
-		int start_x, end_x;
+		int start_x;
+		int end_x;
 
 		if (is_rtl) {
 			start_x = cursor.x() - tmpinset->width(bv_, font) + tmpinset->scroll();
@@ -913,7 +914,8 @@ Inset * BufferView::Pimpl::checkInsetHit(LyXText * text, int & x, int & y,
 		LyXFont font = text->GetFont(bv_->buffer(), cursor.par(),
 						  cursor.pos()-1);
 		bool is_rtl = font.isVisibleRightToLeft();
-		int start_x, end_x;
+		int start_x;
+		int end_x;
 
 		if (!is_rtl) {
 			start_x = cursor.x() - tmpinset->width(bv_, font) +

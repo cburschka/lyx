@@ -186,8 +186,9 @@ SEARCH_PROG([for reLyX LaTeX-to-LyX translator],RELYX,reLyX)
 PATH=${save_PATH}
 
 # Search something to process a literate document
-SEARCH_PROG([for a Literate programming processor],LITERATE,"noweave -delay -index \$\$FName > \$\$OutName")
-if test "$LITERATE" = "none"; then LITERATE_EXT="none"; else LITERATE_EXT="nw"; fi
+SEARCH_PROG([for a Literate programming processor],LITERATE,noweave)
+test $LITERATE = "noweave" && LITERATE="noweave -delay -index \$\$FName > \$\$OutName"
+LITERATE_EXT="nw"
 
 # Search for a Postscript interpreter
 SEARCH_PROG([for a Postscript interpreter],GS, gs)

@@ -35,6 +35,7 @@
 #include "LyXView.h"
 #include "bufferview_funcs.h"
 #include "support/filetools.h"
+#include "lyxrc.h"
 
 using std::pair;
 using std::make_pair;
@@ -305,8 +306,23 @@ void WriteFSAlert(string const & s1, string const & s2)
 }
 
 
-bool AskQuestion(string const & s1, string const & s2, string const & s3)
+bool AskQuestion(string const & s1, string const & s2, string const & s3,
+		 bool default_value)
 {
+	if (!lyxrc.use_gui) {
+		lyxerr << "----------------------------------------" << endl
+		       << s1 << endl;
+		if (!s2.empty())
+			lyxerr << s2 << endl;
+		if (!s3.empty())
+			lyxerr << s3 << endl;
+		lyxerr << "Assuming answer is "
+		       << (default_value ? "yes" : "no")
+		       << endl
+		       << "----------------------------------------" << endl;
+		return default_value;
+	}
+
 	fl_set_resource("flQuestion.yes.label", idex(_("Yes|Yy#y")));
 	fl_set_resource("flQuestion.no.label", idex(_("No|Nn#n")));
 	return fl_show_question((s1 + "\n" + s2 + "\n" + s3).c_str(), 0);
@@ -314,8 +330,28 @@ bool AskQuestion(string const & s1, string const & s2, string const & s3)
 
 
 // Returns 1 for yes, 2 for no, 3 for cancel.
-int AskConfirmation(string const & s1, string const & s2, string const & s3)
+int AskConfirmation(string const & s1, string const & s2, string const & s3,
+		    int default_value)
 {
+	if (!lyxrc.use_gui) {
+		lyxerr << "----------------------------------------" << endl
+		       << s1 << endl;
+		if (!s2.empty())
+			lyxerr << s2 << endl;
+		if (!s3.empty())
+			lyxerr << s3 << endl;
+		lyxerr << "Assuming answer is ";
+		if (default_value == 1)
+			lyxerr << "yes";
+		else if (default_value == 2)
+			lyxerr << "no";
+		else
+			lyxerr << "cancel";
+		lyxerr << endl
+		       << "----------------------------------------" << endl;
+		return default_value;
+	}
+
 	fl_set_choices_shortcut(scex(_("Yes|Yy#y")),
 				scex(_("No|Nn#n")),
 				scex(_("Cancel|^[")));
@@ -330,6 +366,14 @@ int AskConfirmation(string const & s1, string const & s2, string const & s3)
 pair<bool, string> const
 askForText(string const & msg, string const & dflt)
 {
+	if (!lyxrc.use_gui) {
+		lyxerr << "----------------------------------------" << endl
+		       << msg << endl
+		       << "Assuming answer is " << dflt
+		       << "----------------------------------------" << endl;
+		return make_pair<bool, string>(true, dflt);
+	}
+
 	fl_set_resource("flInput.cancel.label", idex(_("Cancel|^[")));
 	fl_set_resource("flInput.ok.label", idex(_("OK|#O")));
 	fl_set_resource("flInput.clear.label", idex(_("Clear|#e")));

@@ -98,7 +98,7 @@ string const QuoteName(string const & name)
 {
 	// CHECK Add proper emx support here!
 #ifndef __EMX__
-	return '\'' + name + '\'';
+	return "\'" + name + "\'";
 #else
 	return name; 
 #endif
@@ -940,7 +940,7 @@ ChangeExtension(string const & oldname, string const & extension)
 	string ext;
 	// Make sure the extension starts with a dot
 	if (!extension.empty() && extension[0] != '.')
-		ext= '.' + extension;
+		ext= "." + extension;
 	else
 		ext = extension;
 

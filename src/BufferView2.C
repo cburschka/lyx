@@ -197,8 +197,9 @@ void BufferView::setCursorFromRow(int row)
 	text->SetCursor(this, texrowpar, tmppos);
 }
 
+
 bool BufferView::insertInset(Inset * inset, string const & lout,
-			 bool no_table)
+			     bool /*no_table*/)
 {
 	// if we are in a locking inset we should try to insert the
 	// inset there otherwise this is a illegal function now

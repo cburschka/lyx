@@ -1,3 +1,33 @@
+2000-10-03  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+
+	* src/insets/insettabular.C (setPos): change for loop to not use
+	sequencing operator. Please check this Jürgen.
+
+	* src/frontends/xforms/Menubar_pimpl.C (makeMenubar): use "c"
+	instead of 'c'
+	* src/insets/insetcite.C (getScreenLabel): ditto
+	* src/support/filetools.C (QuoteName): ditto
+	(ChangeExtension): ditto
+
+	* src/BufferView_pimpl.C (scrollCB): make heigt int
+
+	* src/BufferView2.C (insertInset): comment out unused arg
+
+	* boost/Makefile.am (EXTRADIST): new variable
+
+2000-10-03  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* src/exporter.C (IsExportable): Fixed
+	
+	* lib/configure.m4: Small fix
+
+2000-10-03  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* src/insets/insetbutton.C (width): Changed to work with no GUI.
+	* src/insets/insetbib.C (bibitemWidest): ditto.
+	* src/lyx_gui_misc.C (AskQuestion,AskConfirmation,askForText): ditto.
+            
 2000-10-03  Juergen Vigna  <jug@sad.it>
 
 	* src/BufferView2.C (theLockingInset): removed const because of

@@ -103,6 +103,7 @@ public:
 	int workWidth() const;
 	///
 	UpdatableInset * theLockingInset() const;
+	///
 	void theLockingInset(UpdatableInset * inset); 
 	///
 	void updateInset(Inset * inset, bool mark_dirty);

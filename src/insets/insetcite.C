@@ -53,7 +53,7 @@ string const InsetCitation::getScreenLabel() const
 	if (!getOptions().empty())
 		label += ", " + getOptions();
 
-	return '[' + label + ']';
+	return "[" + label + "]";
 }
 
 
