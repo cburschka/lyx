@@ -35,9 +35,13 @@ string const getStringFromVector(vector<string> const & vec,
 				 string const & delim)
 {
 	string str;
-	for (vector<string>::size_type i=0; i<vec.size(); ++i) {
-		if (i > 0) str += delim;
-		str += vec[i];
+	int i = 0;
+	for (vector<string>::const_iterator it = vec.begin();
+	     it != vec.end(); ++it) {
+		if (it->empty()) continue;
+
+		if (i++ > 0) str += delim;
+		str += *it;
 	}
 	return str;
 }
@@ -51,8 +55,10 @@ vector<string> const getVectorFromString(string const & str,
 	for(;;) {
 		string::size_type const idx = keys.find(delim);
 		if (idx == string::npos) break;
-		
-		vec.push_back(keys.substr(0, idx));
+
+		string const key = keys.substr(0, idx);
+		if (!key.empty())
+			vec.push_back(key);
 
 		string::size_type const start = idx + delim.size();
 		keys = keys.substr(start);
