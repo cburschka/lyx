@@ -117,8 +117,8 @@ void InsetFormulaMacro::read(Buffer const *, LyXLex & lex)
 void InsetFormulaMacro::read(std::istream & is)
 {
 	MathMacroTemplate * p = new MathMacroTemplate(is);
-	MathMacroTable::create(MathAtom(p));
 	setInsetName(p->name());
+	MathMacroTable::create(MathAtom(p));
 	metrics();
 }
 
