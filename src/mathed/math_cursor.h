@@ -221,10 +221,6 @@ private:
 	///
 	bool prevIsInset() const;
 	///
-	bool IsFont() const;
-	///
-	bool IsScript() const;
-	///
 	void merge(MathArray const & arr);
 	///
 	MathInset * nextInset() const;

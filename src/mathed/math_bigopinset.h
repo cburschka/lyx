@@ -26,7 +26,7 @@ public:
 	///
 	void limits(int);
 	///
-	bool idxDelete(int idx);
+	void idxDelete(int & idx, bool & popit, bool & deleteit);
 private:
 	/// 1: \limits, -1: \nolimits, 0: use default
 	int lims_;

@@ -121,8 +121,9 @@ public:
 	virtual bool idxEnd(int & idx, int & pos) const;
 
 	/// Delete a cell and move cursor
-	// a return value true indicates that the whole inset should be deleted
-	virtual bool idxDelete(int idx);
+	// the return value indicates whether the cursor should leave the inset
+	// and/or the whole inset should be deleted
+	virtual void idxDelete(int & idx, bool & popit, bool & deleteit);
 
 	///
 	int nargs() const;

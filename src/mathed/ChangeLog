@@ -1,3 +1,12 @@
+2001-07-04 André Pönitz  <poenitz@htwm.de>
+
+	* math_grid.C: <Delete> in the first cell of a completely empty row
+	  deletes that row, <C-Return> places the cursor in the first of the
+	  new empty cells.
+
+	* math_grid.C: try to split cell nicely when mutating from single-cell
+	  to multi-cell environment
+
 2001-07-09  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* math_matrixinset.C (mutate): Use only the first label when
@@ -13,7 +22,7 @@
 	* formulabase.C (mathDispatchInsertMath): remove bogus return
 	statement. 
 
-2001-07-04 André Pönitz  <poenitz@htwm.de>
+2001-07-09 André Pönitz  <poenitz@htwm.de>
 
 	* math_*inset.C: Change order of arguments in MathInset constructor 
 

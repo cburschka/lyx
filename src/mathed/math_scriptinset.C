@@ -185,13 +185,12 @@ bool MathScriptInset::idxLastDown(int & idx, int & pos) const
 }
 
 
-bool MathScriptInset::idxDelete(int idx)
+void MathScriptInset::idxDelete(int & idx, bool & popit, bool & deleteit)
 {
-	if (idx == 0) {
+	if (idx == 0) 
 		up(false);
-		return !down();
-	} else {
+	else
 		down(false);
-		return !up();
-	}
+	popit = true;
+	deleteit = !(up() || down());
 }

@@ -143,9 +143,12 @@ bool MathBigopInset::hasLimits() const
 }
 
 
-bool MathBigopInset::idxDelete(int idx)
+void MathBigopInset::idxDelete(int & idx, bool & popit, bool & deleteit)
 {
-	// ignore the return value, we do not want the inset to be deleted
-	MathScriptInset::idxDelete(idx);
-	return false;
+	if (idx == 0)
+		up(false);
+	else
+		down(false);
+	popit    = true;
+	deleteit = true;
 }

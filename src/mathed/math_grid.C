@@ -365,6 +365,32 @@ bool MathGridInset::idxLast(int & idx, int & pos) const
 }
 
 
+void MathGridInset::idxDelete(int & idx, bool & popit, bool & deleteit)
+{
+	popit    = false;
+	deleteit = false;
+
+	// delete entire row if in first cell of empty row
+	if (col(idx) == 0 && nrows() > 1) {
+		bool deleterow = true;
+		for (int i = idx; i < idx + ncols(); ++i)
+			if (cell(i).size()) {
+				deleterow = false;
+				break;
+			}
+		if (deleterow) 
+			delRow(row(idx));
+
+		if (idx >= nargs())
+			idx = nargs() - 1;
+		return;
+	}
+
+	// undo effect of Ctrl-Tab (i.e. pull next cell)
+	//if (idx != nargs() - 1) 
+	//	cell(idx).swap(cell(idx + 1));
+}
+
 
 MathGridInset::RowInfo const & MathGridInset::rowinfo(int i) const
 {

@@ -50,23 +50,12 @@ MathStyles smallerStyleFrac(MathStyles st);
 enum MathTextCodes  {
 	/// This must be >= 0
 	LM_TC_MIN = 0,
-	/// Open and Close group
-	LM_TC_OPEN,
-	///
-	LM_TC_CLOSE,
 	/// Math Inset
 	LM_TC_INSET,
-	/// Super and sub scripts
-	LM_TC_UP,
-	///
-	LM_TC_DOWN,
-	/// Editable Math Inset
-	LM_TC_ACTIVE_INSET,
-	/// Editable Text Inset
-	LM_TC_TEXT_INSET,
+
 	///
 	LM_FONT_BEGIN,
-	/// Internal code for constants  11
+	/// Internal code for constants  4
 	LM_TC_CONST,
 	/// Internal code for variables
 	LM_TC_VAR,
@@ -125,8 +114,6 @@ enum MathInsetTypes  {
 	/// An array
 	LM_OT_MATRIX,
 
-	/// A big operator
-	LM_OT_BIGOP,
 	/// A LaTeX macro
 	LM_OT_UNDEF,
 	///

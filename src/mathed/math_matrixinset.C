@@ -69,6 +69,17 @@ int getCols(short int type)
 	return col;
 }
 
+// returns position of first relation operator in the array
+// used for "intelligent splitting"
+int firstRelOp(MathArray const & array)
+{
+	for (int pos = 0; pos < array.size(); array.next(pos))
+		if (!array.isInset(pos) &&
+				MathIsRelOp(array.GetChar(pos), array.GetCode(pos)))
+			return pos;
+	return array.size();
+}
+
 }
 
 MathMatrixInset::MathMatrixInset(MathInsetTypes t)
@@ -456,15 +467,36 @@ void MathMatrixInset::mutate(short newtype)
 					SetType(LM_OT_SIMPLE);
 					break;
 
-				case LM_OT_ALIGN:
+				case LM_OT_ALIGN: {
 					MathGridInset::addCol(1);
+
+					// split it "nicely"
+					int pos = firstRelOp(cell(0));	
+					cell(1) = cell(0);
+					cell(0).erase(pos, cell(0).size());
+					cell(1).erase(0, pos);
+
 					halign("rl");
 					SetType(LM_OT_ALIGN);
 					break;
+				}
 
+				case LM_OT_EQNARRAY:
 				default:
 					MathGridInset::addCol(1);
 					MathGridInset::addCol(1);
+
+					// split it "nicely" on the firest relop
+					int pos1 = firstRelOp(cell(0));	
+					cell(1) = cell(0);
+					cell(0).erase(pos1, cell(0).size());
+					cell(1).erase(0, pos1);
+					int pos2 = 0;
+					cell(1).next(pos2);
+					cell(2) = cell(1);
+					cell(1).erase(pos2, cell(1).size());
+					cell(2).erase(0, pos2);
+
 					halign("rcl");
 					SetType(LM_OT_EQNARRAY);
 					mutate(newtype);
@@ -476,12 +508,15 @@ void MathMatrixInset::mutate(short newtype)
 			switch (newtype) {
 				case LM_OT_SIMPLE:
 				case LM_OT_EQUATION: {
+					// set correct (no)numbering
 					bool allnonum = true;
 					for (int r = 0; r < nrows(); ++r) {
 						if (!nonum_[r])
 							allnonum = false;
 					}
+					nonum_[0] = allnonum;
 
+					// set first non-empty label
 					string label;
 					for (int r = 0; r < nrows(); ++r) {
 						if (!label_[r].empty()) {
@@ -489,16 +524,15 @@ void MathMatrixInset::mutate(short newtype)
 							break;
 						}
 					}
+					label_[0] = label;
 
 					glueall();
 					mutate(newtype);
-					label_[0] = label;
-					nonum_[0] = allnonum;
 					break;
 				}
 
 				case LM_OT_ALIGN:
-				default:
+				default: {
 					for (int row = 0; row < nrows(); ++row) {
 						int c = 3 * row + 1;
 						cell(c).push_back(cell(c + 1));
@@ -508,6 +542,7 @@ void MathMatrixInset::mutate(short newtype)
 					halign("rl");
 					mutate(newtype);
 					break;
+				}
 			}
 			break;
 

@@ -469,7 +469,6 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 {
 	//lyxerr << "InsetFormulaBase::LocalDispatch: act: " << action
 	//	<< " arg: '" << arg << "' cursor: " << mathcursor << "\n";
-	//   extern char *dispatch_result;
 
 	if (!mathcursor) 
 		return UNDISPATCHED;
@@ -970,8 +969,7 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 		}
 	}
 
-	if (mathcursor)
-		mathcursor->normalize();
+	mathcursor->normalize();
 
 	if (mathcursor && was_macro != mathcursor->InMacroMode()
 				&& action >= 0

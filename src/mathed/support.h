@@ -4,6 +4,7 @@
 #define MATH_SUPPORT_H
 
 #include "lyxfont.h"
+#include "math_defs.h"
 
 #ifndef byte
 #define byte unsigned char
@@ -39,14 +40,11 @@ int mathed_string_width(short type, int size, string const & s);
 math_deco_struct const * search_deco(int code);
 
 bool MathIsInset(short x);
-bool MathIsFont(short x);
 bool MathIsAlphaFont(short x);
-bool MathIsUp(short x);
-bool MathIsDown(short x);
-bool MathIsScript(short x);
 bool MathIsBOPS(short x);
 bool MathIsBinary(short x);
 bool MathIsSymbol(short x);
+bool MathIsRelOp(byte c, MathTextCodes f);
 
 void drawStr(Painter & pain, short type, int siz,
 	int x, int y, string const & s);

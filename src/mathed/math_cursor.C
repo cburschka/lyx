@@ -415,11 +415,13 @@ void MathCursor::Delete()
 	if (cursor_ < array().size())
 		array().erase(cursor_);
 
-	// delete empty cells parts if necessary
+	// delete empty cells if necessary
 	if (cursor_ == 0 && array().size() == 0) {
-		bool removeit = par_->idxDelete(idx_);
-		if (pop() && removeit)
-				Delete();
+		bool popit;
+		bool removeit;
+		par_->idxDelete(idx_, popit, removeit);
+		if (popit && pop() && removeit)
+			Delete();
 	}
 
 #ifdef WITH_WARNINGS
@@ -1176,19 +1178,6 @@ bool MathCursor::prevIsInset() const
 }
 
 
-bool MathCursor::IsFont() const
-{
-	return MathIsFont(nextCode());
-}
-
-
-bool MathCursor::IsScript() const
-{
-	normalize();
-	return MathIsScript(nextCode());
-}
-
-
 int MathCursor::xpos() const 
 {
 	normalize();
@@ -1225,24 +1214,27 @@ void MathCursor::splitCell()
 void MathCursor::breakLine()
 {
 	MathMatrixInset * p = static_cast<MathMatrixInset *>(formula()->par());
-	if (p->GetType() == LM_OT_SIMPLE || p->GetType() == LM_OT_EQUATION)
+	if (p->GetType() == LM_OT_SIMPLE || p->GetType() == LM_OT_EQUATION) {
 		p->mutate(LM_OT_EQNARRAY);
-	p->addRow(row());
+		p->addRow(row());
+		idx_ = p->nrows();
+		cursor_ = 0;
+	} else {
+		p->addRow(row());
 
-	// split line
-	const int r = row();
-	for (int c = col() + 1; c < p->ncols(); ++c) {
-		const int i1 = p->index(r, c);
-		const int i2 = p->index(r + 1, c);	
-		lyxerr << "swapping cells " << i1 << " and " << i2 << "\n";
-		p->cell(i1).swap(p->cell(i2));
+		// split line
+		const int r = row();
+		for (int c = col() + 1; c < p->ncols(); ++c) {
+			const int i1 = p->index(r, c);
+			const int i2 = p->index(r + 1, c);	
+			lyxerr << "swapping cells " << i1 << " and " << i2 << "\n";
+			p->cell(i1).swap(p->cell(i2));
+		}
+
+		// split cell
+		splitCell();
+		p->cell(idx_).swap(p->cell(idx_ + p->ncols() - 1));
 	}
-
-	// split cell
-	splitCell();
-	MathArray & halfcell = array();
-	idx_ += p->ncols() - 1;
-	halfcell.swap(array());
 }
 
 char MathCursor::valign() const

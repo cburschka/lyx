@@ -61,7 +61,7 @@ public:
 	/// Identifies ScriptInsets
 	bool isScriptInset() const { return true; }
 	///
-	bool idxDelete(int idx);
+	void idxDelete(int & idx, bool & popit, bool & deleteit);
 private:
 	///
 	bool up_;

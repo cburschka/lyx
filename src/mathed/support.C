@@ -6,6 +6,7 @@
 #include "lyxfont.h"
 #include "font.h"
 #include "math_defs.h"
+#include "math_parser.h"
 #include "Painter.h"
 #include "matriz.h"
 #include "symbol_def.h"
@@ -468,26 +469,6 @@ void mathed_draw_deco(Painter & pain, int x, int y, int w, int h, int code)
 }
 
 
-#define USE_EXCEPTIONS 0
-#if USE_EXCEPTIONS
-struct deco_not_found {};
-
-
-math_deco_struct const & search_deco(int code)
-{
-	math_deco_struct const * res =
-		lower_bound(math_deco_table,
-			    math_deco_table + math_deco_table_size,
-			    code, math_deco_compare());
-	if (res != math_deco_table + math_deco_table_size &&
-	    res->code == code)
-		return *res;
-	throw deco_not_found();
-}
-
-#else
-
-
 math_deco_struct const * search_deco(int code)
 {
 	math_deco_struct search_elem = { code, 0, 0 };
@@ -501,42 +482,17 @@ math_deco_struct const * search_deco(int code)
 		return res;
 	return 0;
 }
-#endif
 
 
 bool MathIsInset(short x)
 {
-	return LM_TC_INSET <= x && x <= LM_TC_ACTIVE_INSET;
-}
-
-
-bool MathIsFont(short x)
-{
-	return LM_TC_CONST <= x && x <= LM_TC_BSYM;
+	return LM_TC_INSET == x;
 }
 
 
 bool MathIsAlphaFont(short x)
 {
 	return LM_TC_VAR <= x && x <= LM_TC_TEXTRM;
-}
-
-
-bool MathIsUp(short x)
-{
-	return x == LM_TC_UP;
-}
-
-
-bool MathIsDown(short x)
-{
-	return x == LM_TC_DOWN;
-}
-
-
-bool MathIsScript(short x)
-{
-	return x == LM_TC_DOWN || x == LM_TC_UP;
 }
 
 
@@ -554,7 +510,7 @@ bool MathIsBinary(short x)
 
 bool MathIsSymbol(short x)
 {
-	return LM_TC_SYMB <= x && x <= LM_TC_BSYM;
+	return x == LM_TC_SYMB || x == LM_TC_BOPS || x == LM_TC_BSYM;
 }
      
 
@@ -609,4 +565,16 @@ MathStyles smallerStyleFrac(MathStyles st)
 		default:            st = LM_ST_SCRIPTSCRIPT;
 	}
 	return st;
+}
+
+bool MathIsRelOp(byte c, MathTextCodes f)
+{
+	if (f == LM_TC_BOP && (c == '=' || c == '<' || c == '>'))
+		return true;
+#ifndef WITH_WARNINGS
+#warning implement me properly
+#endif
+	if (f == LM_TC_SYMB && (c == LM_leq || c == LM_geq))
+		return true;
+	return false;
 }

@@ -294,9 +294,10 @@ bool MathInset::idxFirstDown(int &, int &) const
 	return false;
 }
 
-bool MathInset::idxDelete(int)
+void MathInset::idxDelete(int &, bool & popit, bool & deleteit)
 {
-	return false;
+	popit    = false;
+	deleteit = false;
 }
 
 

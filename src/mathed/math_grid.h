@@ -99,6 +99,8 @@ public:
 	bool idxFirst(int &, int &) const;
 	///
 	bool idxLast(int &, int &) const;
+	///
+	void idxDelete(int &, bool &, bool &);
 			
 	///
 	void addRow(int);

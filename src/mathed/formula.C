@@ -176,13 +176,6 @@ InsetFormula::localDispatch(BufferView * bv, kb_action action,
 			updateLocal(bv);
 			break;
 
-
-		case LFUN_DELETE_LINE_FORWARD:
-			bv->lockedInsetStoreUndo(Undo::DELETE);
-			mathcursor->DelLine();
-			updateLocal(bv);
-			break;
-
 		case LFUN_MATH_NUMBER:
 		{
 			//lyxerr << "toggling all numbers\n";
