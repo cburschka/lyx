@@ -1,3 +1,15 @@
+2000-10-04  Allan Rae  <rae@lyx.org>
+
+	* lib/Makefile.am (listerrors):
+	* lib/build-listerrors: make $builddir != $srcdir compiles work again.
+	I haven't got notangle installed so Kayvan please test. The output
+	should end up in $builddir.  This also allows people who don't have
+	noweb installed to complete the make process without error.
+
+	* src/frontends/xforms/FormCommand.[Ch] (showInset):
+	* src/frontends/xforms/FormError.[Ch] (showInset): fix warnings found
+	by JMarc's picky compiler.
+
 2000-10-03  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 

@@ -32,7 +32,7 @@ protected:
 	/// Slot launching dialog to (possibly) create a new inset
 	void createInset( string const & );
 	/// Slot launching dialog to an existing inset
-	void showInset( InsetCommand * const );
+	void showInset( InsetCommand * );
 
 	/// pointer to the inset passed through showInset (if any)
 	InsetCommand * inset_;

@@ -53,7 +53,7 @@ void FormError::clearStore()
 }
 
 
-void FormError::showInset( InsetError * const inset )
+void FormError::showInset( InsetError * inset )
 {
 	if ( dialogIsOpen || inset == 0 ) return;
 

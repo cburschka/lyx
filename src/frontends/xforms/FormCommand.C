@@ -28,7 +28,7 @@ FormCommand::FormCommand( LyXView * lv, Dialogs * d, string const & t,
 {}
 
 
-void FormCommand::showInset( InsetCommand * const inset )
+void FormCommand::showInset( InsetCommand * inset )
 {
 	if ( dialogIsOpen || inset == 0 ) return;
 

@@ -59,4 +59,4 @@ dist-hook:
 	  echo "WARNING: Unable to get LyX Documentation from CVS!" ; true ; }
 
 listerrors: examples/Literate.lyx
-	${srcdir}/build-listerrors
+	${srcdir}/build-listerrors ${srcdir}

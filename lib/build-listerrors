@@ -6,6 +6,13 @@
 #
 # Assume notangle is on the path
 
+if [ $# -eq 1 ]
+then
+    dir=$1
+else
+    dir=.
+fi
+
 if [ -r ../src/lyx ]
 then
     lyx=../src/lyx
@@ -14,6 +21,10 @@ else
     lyx=lyx 
 fi
 
-$lyx --export nw examples/Literate.lyx
-mv examples/Literate.nw Literate.nw
-notangle -Rbuild-script Literate.nw | sh
+$lyx --export nw $dir/examples/Literate.lyx
+# if no literate support stuff is installed nothing will be output
+if [ -f $dir/examples/Literate.nw ]
+then
+   mv $dir/examples/Literate.nw Literate.nw
+   which notangle 2>/dev/null && notangle -Rbuild-script Literate.nw | sh
+fi
