@@ -29,13 +29,6 @@ public:
 	///
 	QCitation(Dialog &);
 private:
-	///
-	enum State {
-		///
-		ON,
-		///
-		OFF
-	};
 
 	/// Set the Params variable for the Controller.
 	virtual void apply();
@@ -53,14 +46,10 @@ private:
 	void updateStyle();
 
 	void updateBrowser(QListBox *, std::vector<string> const &) const;
-	///
-	void setBibButtons(State) const;
-	///
-	void setCiteButtons(State) const;
 
-	///
+	/// selected keys
 	std::vector<string> citekeys;
-	///
+	/// available bib keys
 	std::vector<string> bibkeys;
 };
 

@@ -21,6 +21,7 @@
 #include <qlistbox.h>
 #include <qmultilineedit.h>
 #include <qpushbutton.h>
+#include <qlabel.h>
 
 #include "QtLyXView.h"
 #include "Qt2BC.h"
@@ -103,24 +104,45 @@ void QCitation::build_dialog()
 
 void QCitation::fillStyles()
 {
-	// style
-	string key;
+	if (citekeys.empty()) {
+		dialog_->citationStyleCO->setEnabled(false);
+		dialog_->citationStyleLA->setEnabled(false);
+		return;
+	}
 
-	if (!citekeys.empty())
-		key = citekeys[0];
+	int const orig = dialog_->citationStyleCO->currentItem();
 
 	dialog_->citationStyleCO->clear();
+
+	int curr = dialog_->selectedLB->currentItem();
+	if (curr < 0)
+		curr = 0;
+
+	string key = citekeys[curr];
+
 	vector<string> const & sty = controller().getCiteStrings(key);
+
+	bool const natbib = controller().usingNatbib();
+	dialog_->citationStyleCO->setEnabled(!sty.empty() && natbib);
+	dialog_->citationStyleLA->setEnabled(!sty.empty() && natbib);
 
 	for (vector<string>::const_iterator it = sty.begin();
 		it != sty.end(); ++it) {
 		dialog_->citationStyleCO->insertItem(toqstr(*it));
 	}
+
+	if (orig != -1 && orig < dialog_->citationStyleCO->count())
+		dialog_->citationStyleCO->setCurrentItem(orig);
 }
 
 
 void QCitation::updateStyle()
 {
+	bool const natbib = controller().usingNatbib();
+
+	dialog_->fulllistCB->setEnabled(natbib);
+	dialog_->forceuppercaseCB->setEnabled(natbib);
+
 	string const & command = controller().params().getCmdName();
 
 	// Find the style of the citekeys
@@ -141,11 +163,6 @@ void QCitation::updateStyle()
 		dialog_->fulllistCB->setChecked(cs.full);
 		dialog_->forceuppercaseCB->setChecked(cs.forceUCase);
 	}
-
-	bool const natbib = controller().usingNatbib();
-	dialog_->citationStyleCO->setEnabled(natbib);
-	dialog_->fulllistCB->setEnabled(natbib);
-	dialog_->forceuppercaseCB->setEnabled(natbib);
 }
 
 
@@ -153,27 +170,25 @@ void QCitation::update_contents()
 {
 	// Make the list of all available bibliography keys
 	bibkeys = biblio::getKeys(controller().bibkeysInfo());
-	updateBrowser(dialog_->bibLB, bibkeys);
+	updateBrowser(dialog_->availableLB, bibkeys);
 
 	// Ditto for the keys cited in this inset
 	citekeys = getVectorFromString(controller().params().getContents());
-	updateBrowser(dialog_->citeLB, citekeys);
+	updateBrowser(dialog_->selectedLB, citekeys);
 
 	// No keys have been selected yet, so...
 	dialog_->infoML->clear();
-	setBibButtons(OFF);
-	setCiteButtons(OFF);
+	dialog_->setButtons();
 
 	dialog_->textAfterED->setText(toqstr(controller().params().getOptions()));
 
 	fillStyles();
-
 	updateStyle();
 }
 
 
 void QCitation::updateBrowser(QListBox * browser,
-				  vector<string> const & keys) const
+                              vector<string> const & keys) const
 {
 	browser->clear();
 
@@ -184,24 +199,4 @@ void QCitation::updateBrowser(QListBox * browser,
 		if (!key.empty())
 			browser->insertItem(toqstr(key));
 	}
-}
-
-
-void QCitation::setBibButtons(State status) const
-{
-	dialog_->addPB->setEnabled((status == ON));
-}
-
-
-void QCitation::setCiteButtons(State status) const
-{
-	int const sel = dialog_->citeLB->currentItem();
-	int const maxline = dialog_->citeLB->count() - 1;
-	bool const activate = (status == ON);
-	bool const activate_up = (activate && sel != 0);
-	bool const activate_down = (activate && sel != maxline);
-
-	dialog_->delPB->setEnabled(activate);
-	dialog_->upPB->setEnabled(activate_up);
-	dialog_->downPB->setEnabled(activate_down);
 }

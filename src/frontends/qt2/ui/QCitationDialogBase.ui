@@ -13,9 +13,16 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>609</width>
-            <height>416</height>
+            <width>533</width>
+            <height>372</height>
         </rect>
+    </property>
+    <property stdset="1">
+        <name>sizePolicy</name>
+        <sizepolicy>
+            <hsizetype>1</hsizetype>
+            <vsizetype>1</vsizetype>
+        </sizepolicy>
     </property>
     <property stdset="1">
         <name>caption</name>
@@ -34,7 +41,7 @@
             <name>spacing</name>
             <number>6</number>
         </property>
-        <widget row="11"  column="0"  rowspan="1"  colspan="6" >
+        <widget row="10"  column="0"  rowspan="1"  colspan="6" >
             <class>QLayoutWidget</class>
             <property stdset="1">
                 <name>name</name>
@@ -89,7 +96,7 @@
                     </property>
                     <property stdset="1">
                         <name>text</name>
-                        <string>OK</string>
+                        <string>&amp;OK</string>
                     </property>
                     <property stdset="1">
                         <name>autoDefault</name>
@@ -206,10 +213,14 @@
             </property>
             <property stdset="1">
                 <name>text</name>
-                <string>Search</string>
+                <string>Fin&amp;d:</string>
+            </property>
+            <property>
+                <name>buddy</name>
+                <cstring>searchED</cstring>
             </property>
         </widget>
-        <widget row="1"  column="2"  rowspan="5"  colspan="1" >
+        <widget row="1"  column="2"  rowspan="4"  colspan="1" >
             <class>QListBox</class>
             <item>
                 <property>
@@ -219,7 +230,15 @@
             </item>
             <property stdset="1">
                 <name>name</name>
-                <cstring>bibLB</cstring>
+                <cstring>availableLB</cstring>
+            </property>
+            <property stdset="1">
+                <name>vScrollBarMode</name>
+                <enum>AlwaysOn</enum>
+            </property>
+            <property stdset="1">
+                <name>hScrollBarMode</name>
+                <enum>AlwaysOff</enum>
             </property>
             <property>
                 <name>toolTip</name>
@@ -355,10 +374,14 @@
             </property>
             <property stdset="1">
                 <name>text</name>
-                <string>Available</string>
+                <string>A&amp;vailable</string>
+            </property>
+            <property>
+                <name>buddy</name>
+                <cstring>availableLB</cstring>
             </property>
         </widget>
-        <widget row="1"  column="0"  rowspan="5"  colspan="1" >
+        <widget row="1"  column="0"  rowspan="4"  colspan="1" >
             <class>QListBox</class>
             <item>
                 <property>
@@ -368,7 +391,15 @@
             </item>
             <property stdset="1">
                 <name>name</name>
-                <cstring>citeLB</cstring>
+                <cstring>selectedLB</cstring>
+            </property>
+            <property stdset="1">
+                <name>vScrollBarMode</name>
+                <enum>AlwaysOn</enum>
+            </property>
+            <property stdset="1">
+                <name>hScrollBarMode</name>
+                <enum>AlwaysOff</enum>
             </property>
             <property stdset="1">
                 <name>selectionMode</name>
@@ -387,42 +418,14 @@
             </property>
             <property stdset="1">
                 <name>text</name>
-                <string>Selected</string>
-            </property>
-        </widget>
-        <spacer row="5"  column="1" >
-            <property>
-                <name>name</name>
-                <cstring>Spacer5</cstring>
-            </property>
-            <property stdset="1">
-                <name>orientation</name>
-                <enum>Vertical</enum>
-            </property>
-            <property stdset="1">
-                <name>sizeType</name>
-                <enum>Expanding</enum>
+                <string>&amp;Selected</string>
             </property>
             <property>
-                <name>sizeHint</name>
-                <size>
-                    <width>20</width>
-                    <height>20</height>
-                </size>
-            </property>
-        </spacer>
-        <widget row="6"  column="0"  rowspan="1"  colspan="3" >
-            <class>QLabel</class>
-            <property stdset="1">
-                <name>name</name>
-                <cstring>infoLA</cstring>
-            </property>
-            <property stdset="1">
-                <name>text</name>
-                <string>Info</string>
+                <name>buddy</name>
+                <cstring>selectedLB</cstring>
             </property>
         </widget>
-        <widget row="7"  column="0"  rowspan="4"  colspan="3" >
+        <widget row="7"  column="0"  rowspan="3"  colspan="3" >
             <class>QMultiLineEdit</class>
             <property stdset="1">
                 <name>name</name>
@@ -445,7 +448,7 @@
                 <string>Citation entry</string>
             </property>
         </widget>
-        <widget row="10"  column="3"  rowspan="1"  colspan="3" >
+        <widget row="9"  column="3"  rowspan="1"  colspan="3" >
             <class>QLayoutWidget</class>
             <property stdset="1">
                 <name>name</name>
@@ -513,7 +516,7 @@
                 </widget>
             </hbox>
         </widget>
-        <widget row="9"  column="4"  rowspan="1"  colspan="2" >
+        <widget row="8"  column="4"  rowspan="1"  colspan="2" >
             <class>QLineEdit</class>
             <property stdset="1">
                 <name>name</name>
@@ -531,7 +534,7 @@
                 <string>Text to place after citation</string>
             </property>
         </widget>
-        <widget row="9"  column="3" >
+        <widget row="8"  column="3" >
             <class>QLabel</class>
             <property stdset="1">
                 <name>name</name>
@@ -539,48 +542,11 @@
             </property>
             <property stdset="1">
                 <name>text</name>
-                <string>Text after:</string>
-            </property>
-        </widget>
-        <widget row="8"  column="4"  rowspan="1"  colspan="2" >
-            <class>QLineEdit</class>
-            <property stdset="1">
-                <name>name</name>
-                <cstring>textBeforeED</cstring>
-            </property>
-            <property stdset="1">
-                <name>enabled</name>
-                <bool>false</bool>
-            </property>
-            <property stdset="1">
-                <name>sizePolicy</name>
-                <sizepolicy>
-                    <hsizetype>5</hsizetype>
-                    <vsizetype>0</vsizetype>
-                </sizepolicy>
-            </property>
-            <property stdset="1">
-                <name>text</name>
-                <string>Not yet supported</string>
+                <string>&amp;Text after:</string>
             </property>
             <property>
-                <name>toolTip</name>
-                <string>Text to place before citation</string>
-            </property>
-        </widget>
-        <widget row="8"  column="3" >
-            <class>QLabel</class>
-            <property stdset="1">
-                <name>name</name>
-                <cstring>textBeforeLA</cstring>
-            </property>
-            <property stdset="1">
-                <name>enabled</name>
-                <bool>false</bool>
-            </property>
-            <property stdset="1">
-                <name>text</name>
-                <string>Text before:</string>
+                <name>buddy</name>
+                <cstring>textAfterED</cstring>
             </property>
         </widget>
         <widget row="7"  column="4"  rowspan="1"  colspan="2" >
@@ -601,18 +567,7 @@
                 <string>Natbib citation style to use</string>
             </property>
         </widget>
-        <widget row="7"  column="3" >
-            <class>QLabel</class>
-            <property stdset="1">
-                <name>name</name>
-                <cstring>citationStyleLA</cstring>
-            </property>
-            <property stdset="1">
-                <name>text</name>
-                <string>Citation style:</string>
-            </property>
-        </widget>
-        <spacer row="4"  column="4"  rowspan="2"  colspan="1" >
+        <spacer row="4"  column="4" >
             <property>
                 <name>name</name>
                 <cstring>Spacer5_2</cstring>
@@ -633,6 +588,39 @@
                 </size>
             </property>
         </spacer>
+        <widget row="6"  column="0"  rowspan="1"  colspan="3" >
+            <class>QLabel</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>infoLA</cstring>
+            </property>
+            <property stdset="1">
+                <name>sizePolicy</name>
+                <sizepolicy>
+                    <hsizetype>1</hsizetype>
+                    <vsizetype>0</vsizetype>
+                </sizepolicy>
+            </property>
+            <property stdset="1">
+                <name>text</name>
+                <string>Info</string>
+            </property>
+        </widget>
+        <widget row="7"  column="3" >
+            <class>QLabel</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>citationStyleLA</cstring>
+            </property>
+            <property stdset="1">
+                <name>text</name>
+                <string>C&amp;itation style:</string>
+            </property>
+            <property>
+                <name>buddy</name>
+                <cstring>citationStyleCO</cstring>
+            </property>
+        </widget>
     </grid>
 </widget>
 <images>
@@ -655,76 +643,28 @@
 </images>
 <connections>
     <connection>
-        <sender>addPB</sender>
-        <signal>clicked()</signal>
+        <sender>searchED</sender>
+        <signal>returnPressed()</signal>
         <receiver>QCitationDialogBase</receiver>
-        <slot>slotAddClicked()</slot>
-    </connection>
-    <connection>
-        <sender>delPB</sender>
-        <signal>clicked()</signal>
-        <receiver>QCitationDialogBase</receiver>
-        <slot>slotDelClicked()</slot>
-    </connection>
-    <connection>
-        <sender>downPB</sender>
-        <signal>clicked()</signal>
-        <receiver>QCitationDialogBase</receiver>
-        <slot>slotDownClicked()</slot>
-    </connection>
-    <connection>
-        <sender>previousPB</sender>
-        <signal>clicked()</signal>
-        <receiver>QCitationDialogBase</receiver>
-        <slot>slotPreviousClicked()</slot>
+        <slot>next()</slot>
     </connection>
     <connection>
         <sender>nextPB</sender>
         <signal>clicked()</signal>
         <receiver>QCitationDialogBase</receiver>
-        <slot>slotNextClicked()</slot>
+        <slot>next()</slot>
     </connection>
     <connection>
-        <sender>upPB</sender>
+        <sender>previousPB</sender>
         <signal>clicked()</signal>
         <receiver>QCitationDialogBase</receiver>
-        <slot>slotUpClicked()</slot>
+        <slot>previous()</slot>
     </connection>
     <connection>
-        <sender>textBeforeED</sender>
+        <sender>citationStyleCO</sender>
         <signal>textChanged(const QString&amp;)</signal>
         <receiver>QCitationDialogBase</receiver>
         <slot>changed_adaptor()</slot>
-    </connection>
-    <connection>
-        <sender>textAfterED</sender>
-        <signal>textChanged(const QString&amp;)</signal>
-        <receiver>QCitationDialogBase</receiver>
-        <slot>changed_adaptor()</slot>
-    </connection>
-    <connection>
-        <sender>citeLB</sender>
-        <signal>highlighted(int)</signal>
-        <receiver>QCitationDialogBase</receiver>
-        <slot>slotCiteHighlighted(int)</slot>
-    </connection>
-    <connection>
-        <sender>citeLB</sender>
-        <signal>selected(int)</signal>
-        <receiver>QCitationDialogBase</receiver>
-        <slot>slotBibHighlighted(int)</slot>
-    </connection>
-    <connection>
-        <sender>bibLB</sender>
-        <signal>highlighted(int)</signal>
-        <receiver>QCitationDialogBase</receiver>
-        <slot>slotBibHighlighted(int)</slot>
-    </connection>
-    <connection>
-        <sender>bibLB</sender>
-        <signal>selected(int)</signal>
-        <receiver>QCitationDialogBase</receiver>
-        <slot>slotBibSelected(int)</slot>
     </connection>
     <connection>
         <sender>fulllistCB</sender>
@@ -739,43 +679,76 @@
         <slot>changed_adaptor()</slot>
     </connection>
     <connection>
-        <sender>citationStyleCO</sender>
-        <signal>activated(int)</signal>
+        <sender>textAfterED</sender>
+        <signal>textChanged(const QString&amp;)</signal>
         <receiver>QCitationDialogBase</receiver>
         <slot>changed_adaptor()</slot>
     </connection>
     <connection>
-        <sender>searchED</sender>
-        <signal>returnPressed()</signal>
+        <sender>addPB</sender>
+        <signal>clicked()</signal>
         <receiver>QCitationDialogBase</receiver>
-        <slot>slotNextClicked()</slot>
+        <slot>add()</slot>
     </connection>
+    <connection>
+        <sender>delPB</sender>
+        <signal>clicked()</signal>
+        <receiver>QCitationDialogBase</receiver>
+        <slot>del()</slot>
+    </connection>
+    <connection>
+        <sender>upPB</sender>
+        <signal>clicked()</signal>
+        <receiver>QCitationDialogBase</receiver>
+        <slot>up()</slot>
+    </connection>
+    <connection>
+        <sender>downPB</sender>
+        <signal>clicked()</signal>
+        <receiver>QCitationDialogBase</receiver>
+        <slot>down()</slot>
+    </connection>
+    <connection>
+        <sender>selectedLB</sender>
+        <signal>currentChanged(QListBoxItem*)</signal>
+        <receiver>QCitationDialogBase</receiver>
+        <slot>selectedChanged()</slot>
+    </connection>
+    <connection>
+        <sender>availableLB</sender>
+        <signal>currentChanged(QListBoxItem*)</signal>
+        <receiver>QCitationDialogBase</receiver>
+        <slot>availableChanged()</slot>
+    </connection>
+    <connection>
+        <sender>availableLB</sender>
+        <signal>selected(int)</signal>
+        <receiver>QCitationDialogBase</receiver>
+        <slot>add()</slot>
+    </connection>
+    <slot access="protected">add()</slot>
+    <slot access="public">availableChanged()</slot>
     <slot access="public">changed_adaptor()</slot>
-    <slot access="public">slotBibSelected(int)</slot>
-    <slot access="protected">slotAddClicked()</slot>
-    <slot access="public">slotBibHighlighted(int)</slot>
-    <slot access="public">slotCiteHighlighted(int)</slot>
-    <slot access="protected">slotDelClicked()</slot>
-    <slot access="protected">slotDownClicked()</slot>
-    <slot access="protected">slotNextClicked()</slot>
-    <slot access="protected">slotPreviousClicked()</slot>
-    <slot access="protected">slotSearchTypeSelected(bool)</slot>
-    <slot access="protected">slotUpClicked()</slot>
+    <slot access="protected">del()</slot>
+    <slot access="protected">down()</slot>
+    <slot access="public">previous()</slot>
+    <slot access="public">next()</slot>
+    <slot access="public">selectedChanged()</slot>
+    <slot access="public">up()</slot>
 </connections>
 <tabstops>
     <tabstop>addPB</tabstop>
     <tabstop>delPB</tabstop>
     <tabstop>upPB</tabstop>
     <tabstop>downPB</tabstop>
-    <tabstop>citeLB</tabstop>
-    <tabstop>bibLB</tabstop>
+    <tabstop>selectedLB</tabstop>
+    <tabstop>availableLB</tabstop>
     <tabstop>searchED</tabstop>
     <tabstop>searchTypeCB</tabstop>
     <tabstop>searchCaseCB</tabstop>
     <tabstop>previousPB</tabstop>
     <tabstop>nextPB</tabstop>
     <tabstop>citationStyleCO</tabstop>
-    <tabstop>textBeforeED</tabstop>
     <tabstop>textAfterED</tabstop>
     <tabstop>restorePB</tabstop>
     <tabstop>okPB</tabstop>

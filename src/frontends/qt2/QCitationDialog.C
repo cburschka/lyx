@@ -15,8 +15,7 @@
 
 #include "qt_helpers.h"
 #include "controllers/ControlCitation.h"
-#include "LyXView.h"
-#include "buffer.h"
+#include "debug.h"
 
 #include <qcheckbox.h>
 #include <qcombobox.h>
@@ -24,6 +23,7 @@
 #include <qlistbox.h>
 #include <qmultilineedit.h>
 #include <qpushbutton.h>
+#include <qlabel.h>
 
 #include "QCitationDialog.h"
 #include "QCitation.h"
@@ -32,6 +32,7 @@
 using std::vector;
 using std::find;
 using std::max;
+using std::endl;
 
 
 QCitationDialog::QCitationDialog(QCitation * form)
@@ -46,14 +47,6 @@ QCitationDialog::QCitationDialog(QCitation * form)
 		form, SLOT(slotApply()));
 	connect(closePB, SIGNAL(clicked()),
 		form, SLOT(slotClose()));
-	connect(searchED, SIGNAL(returnPressed()),
-		this, SLOT(slotNextClicked()));
-
-	textBeforeED->setText(qt_("Not yet supported"));
-	textBeforeED->setReadOnly(true);
-	textBeforeED->setFocusPolicy(QWidget::NoFocus);
-	citationStyleCO->setEnabled(false);
-	citationStyleCO->setFocusPolicy(QWidget::NoFocus);
 }
 
 
@@ -62,192 +55,157 @@ QCitationDialog::~QCitationDialog()
 }
 
 
-void QCitationDialog::slotBibSelected(int sel)
+void QCitationDialog::setButtons()
 {
-	slotBibHighlighted(sel);
-
 	if (form_->readOnly())
 		return;
 
-	slotAddClicked();
+	int const sel_nr = selectedLB->currentItem();
+	int const avail_nr = availableLB->currentItem();
+
+	addPB->setEnabled(avail_nr >= 0);
+	delPB->setEnabled(sel_nr >= 0);
+	upPB->setEnabled(sel_nr > 0);
+	downPB->setEnabled(sel_nr >= 0 && sel_nr < int(selectedLB->count() - 1));
 }
 
 
-void QCitationDialog::slotBibHighlighted(int sel)
+void QCitationDialog::selectedChanged()
 {
+	form_->fillStyles();
 	biblio::InfoMap const & theMap = form_->controller().bibkeysInfo();
-
-	citeLB->clearSelection();
-
-	// FIXME: why would this happen ?
-	if (sel < 0 || sel >= (int)form_->bibkeys.size()) {
-		return;
-	}
-
-	// Put into browser_info the additional info associated with
-	// the selected browser_bib key
 	infoML->clear();
 
-	infoML->setText(toqstr(biblio::getInfo(theMap, form_->bibkeys[sel])));
-
-	// Highlight the selected browser_bib key in browser_cite if
-	// present
-	vector<string>::const_iterator cit =
-		std::find(form_->citekeys.begin(), form_->citekeys.end(),
-			  form_->bibkeys[sel]);
-
-	if (cit != form_->citekeys.end()) {
-		int const n = int(cit - form_->citekeys.begin());
-		citeLB->setSelected(n, true);
-		citeLB->setTopItem(n);
-	}
-
-	if (!form_->readOnly()) {
-		if (cit != form_->citekeys.end()) {
-			form_->setBibButtons(QCitation::OFF);
-			form_->setCiteButtons(QCitation::ON);
-		} else {
-			form_->setBibButtons(QCitation::ON);
-			form_->setCiteButtons(QCitation::OFF);
-		}
-	}
-}
-
-
-void QCitationDialog::slotCiteHighlighted(int sel)
-{
-	biblio::InfoMap const & theMap = form_->controller().bibkeysInfo();
-
-	// FIXME: why would this happen ?
-	if (sel < 0 || sel >= (int)form_->citekeys.size()) {
+	int const sel = selectedLB->currentItem();
+	if (sel < 0) {
+		setButtons();
 		return;
 	}
 
-	if (!form_->readOnly()) {
-		form_->setBibButtons(QCitation::OFF);
-		form_->setCiteButtons(QCitation::ON);
-	}
+	infoML->setText(toqstr(biblio::getInfo(theMap, form_->citekeys[sel])));
 
-	// Highlight the selected browser_cite key in browser_bib
 	vector<string>::const_iterator cit =
 		std::find(form_->bibkeys.begin(),
 		form_->bibkeys.end(), form_->citekeys[sel]);
 
 	if (cit != form_->bibkeys.end()) {
 		int const n = int(cit - form_->bibkeys.begin());
-		bibLB->setSelected(n, true);
-		bibLB->setTopItem(n);
-
-		// Put into browser_info the additional info associated
-		// with the selected browser_cite key
-		infoML->clear();
-		infoML->setText(toqstr(biblio::getInfo(theMap, form_->citekeys[sel])));
+		availableLB->setSelected(n, true);
+		availableLB->ensureCurrentVisible();
 	}
+	setButtons();
 }
 
 
-void QCitationDialog::slotAddClicked()
+void QCitationDialog::availableChanged()
 {
-	int const sel = bibLB->currentItem();
+	biblio::InfoMap const & theMap = form_->controller().bibkeysInfo();
+	selectedLB->clearSelection();
+	infoML->clear();
 
-	// FIXME: why ?
-	if (sel < 0 || sel >= (int)form_->bibkeys.size()) {
+	int const sel = availableLB->currentItem();
+	if (sel < 0) {
+		setButtons();
 		return;
 	}
 
+	infoML->setText(toqstr(biblio::getInfo(theMap, form_->bibkeys[sel])));
+
+	vector<string>::const_iterator cit =
+		std::find(form_->citekeys.begin(), form_->citekeys.end(),
+			  form_->bibkeys[sel]);
+
+	if (cit != form_->citekeys.end()) {
+		int const n = int(cit - form_->citekeys.begin());
+		selectedLB->setSelected(n, true);
+		selectedLB->ensureCurrentVisible();
+	}
+	setButtons();
+}
+
+
+void QCitationDialog::add()
+{
+	int const sel = availableLB->currentItem();
+
 	// Add the selected browser_bib key to browser_cite
-	citeLB->insertItem(toqstr(form_->bibkeys[sel]));
+	selectedLB->insertItem(toqstr(form_->bibkeys[sel]));
 	form_->citekeys.push_back(form_->bibkeys[sel]);
 
 	int const n = int(form_->citekeys.size());
-	citeLB->setSelected(n - 1, true);
+	selectedLB->setSelected(n - 1, true);
 
-	slotBibHighlighted(sel);
-	form_->setBibButtons(QCitation::OFF);
-	form_->setCiteButtons(QCitation::ON);
 	form_->changed();
 	form_->fillStyles();
+	setButtons();
 }
 
 
-void QCitationDialog::slotDelClicked()
+void QCitationDialog::del()
 {
-	int const sel = citeLB->currentItem();
-
-	// FIXME: why ?
-	if (sel < 0 || sel >= (int)form_->citekeys.size()) {
-		return;
-	}
+	int const sel = selectedLB->currentItem();
 
 	// Remove the selected key from browser_cite
-	citeLB->removeItem(sel);
+	selectedLB->removeItem(sel);
 	form_->citekeys.erase(form_->citekeys.begin() + sel);
 
-	form_->setBibButtons(QCitation::ON);
-	form_->setCiteButtons(QCitation::OFF);
 	form_->changed();
 	form_->fillStyles();
-	form_->updateStyle();
+	setButtons();
 }
 
 
-void QCitationDialog::slotUpClicked()
+void QCitationDialog::up()
 {
-	int const sel = citeLB->currentItem();
-
-	// FIXME: why ?
-	if (sel < 1 || sel >= (int)form_->citekeys.size()) {
-		return;
-	}
+	int const sel = selectedLB->currentItem();
 
 	// Move the selected key up one line
 	vector<string>::iterator it = form_->citekeys.begin() + sel;
 	string const tmp = *it;
 
-	citeLB->removeItem(sel);
+	selectedLB->removeItem(sel);
 	form_->citekeys.erase(it);
 
-	citeLB->insertItem(toqstr(tmp), sel - 1);
-	citeLB->setSelected(sel - 1, true);
+	selectedLB->insertItem(toqstr(tmp), sel - 1);
+	selectedLB->setSelected(sel - 1, true);
 	form_->citekeys.insert(it - 1, tmp);
-	form_->setCiteButtons(QCitation::ON);
+
 	form_->changed();
 	form_->fillStyles();
+	availableLB->clearSelection();
+	setButtons();
 }
 
 
-void QCitationDialog::slotDownClicked()
+void QCitationDialog::down()
 {
-	int const sel = citeLB->currentItem();
-
-	// FIXME: ?
-	if (sel < 0 || sel >= (int)form_->citekeys.size() - 1) {
-		return;
-	}
+	int const sel = selectedLB->currentItem();
 
 	// Move the selected key down one line
 	vector<string>::iterator it = form_->citekeys.begin() + sel;
 	string const tmp = *it;
 
-	citeLB->removeItem(sel);
+	selectedLB->removeItem(sel);
 	form_->citekeys.erase(it);
 
-	citeLB->insertItem(toqstr(tmp), sel + 1);
-	citeLB->setSelected(sel + 1, true);
+	selectedLB->insertItem(toqstr(tmp), sel + 1);
+	selectedLB->setSelected(sel + 1, true);
 	form_->citekeys.insert(it + 1, tmp);
-	form_->setCiteButtons(QCitation::ON);
+
 	form_->changed();
 	form_->fillStyles();
+	availableLB->clearSelection();
+	setButtons();
 }
 
 
-void QCitationDialog::slotPreviousClicked()
+void QCitationDialog::previous()
 {
 	doFind(biblio::BACKWARD);
 }
 
 
-void QCitationDialog::slotNextClicked()
+void QCitationDialog::next()
 {
 	doFind(biblio::FORWARD);
 }
@@ -269,7 +227,7 @@ void QCitationDialog::doFind(biblio::Direction dir)
 		biblio::REGEX : biblio::SIMPLE;
 
 	vector<string>::const_iterator start = form_->bibkeys.begin();
-	int const sel = bibLB->currentItem();
+	int const sel = availableLB->currentItem();
 	if (sel >= 0 && sel <= int(form_->bibkeys.size()-1))
 		start += sel;
 
@@ -305,8 +263,6 @@ void QCitationDialog::doFind(biblio::Direction dir)
 	}
 
 	// Update the display
-	int const top = max(found - 5, 1);
-	bibLB->setTopItem(top);
-	bibLB->setSelected(found, true);
-	slotBibHighlighted(found);
+	availableLB->setSelected(found, true);
+	availableLB->ensureCurrentVisible();
 }

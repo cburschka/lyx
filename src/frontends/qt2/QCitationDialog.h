@@ -20,22 +20,29 @@ class QCitation;
 
 class QCitationDialog : public QCitationDialogBase {
 	Q_OBJECT
+
 public:
 	QCitationDialog(QCitation * form);
+
 	~QCitationDialog();
+
+	void setButtons();
+
 protected slots:
-	virtual void slotBibHighlighted(int sel);
-	virtual void slotBibSelected(int sel);
-	virtual void slotCiteHighlighted(int sel);
-	virtual void slotAddClicked();
-	virtual void slotDelClicked();
-	virtual void slotUpClicked();
-	virtual void slotDownClicked();
-	virtual void slotPreviousClicked();
-	virtual void slotNextClicked();
+
+	virtual void availableChanged();
+	virtual void selectedChanged();
+	virtual void next();
+	virtual void previous();
+	virtual void up();
+	virtual void down();
+	virtual void del();
+	virtual void add();
 	virtual void changed_adaptor();
+
 private:
 	void doFind(biblio::Direction dir);
+
 private:
 	QCitation * form_;
 };
