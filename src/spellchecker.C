@@ -286,13 +286,13 @@ void SpellCheckerOptions()
 	}
 }
 
+namespace {
+
 #ifndef USE_PSPELL
 
 /***** Spellchecker *****/
 
 // Could also use a clean up. (Asger Alstrup)
-
-namespace {
 
 void init_spell_checker(BufferParams const & params, string const & lang)
 {
