@@ -1,3 +1,8 @@
+2002-10-10  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* formulabase.C (localDispatch): support the WORD movement lfuns
+	(bug #571)
+
 2002-09-11  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* math_parser.C (parse_into1): fix reading labels containing

@@ -468,17 +468,21 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 		break;
 
 	case LFUN_HOMESEL:
+	case LFUN_WORDLEFTSEL:
 		sel = true;
 
 	case LFUN_HOME:
+	case LFUN_WORDLEFT:
 		mathcursor->home(sel);
 		updateLocal(bv, false);
 		break;
 
 	case LFUN_ENDSEL:
+	case LFUN_WORDRIGHTSEL:
 		sel = true;
 
 	case LFUN_END:
+	case LFUN_WORDRIGHT:
 		mathcursor->end(sel);
 		updateLocal(bv, false);
 		break;
@@ -550,10 +554,6 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 
 	case LFUN_COPY:
 		mathcursor->selCopy();
-		break;
-
-	case LFUN_WORDRIGHTSEL:
-	case LFUN_WORDLEFTSEL:
 		break;
 
 	// Special casing for superscript in case of LyX handling
