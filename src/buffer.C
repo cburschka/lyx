@@ -298,6 +298,7 @@ ErtComp ert_comp;
 } // anon
 
 
+set<string> unknown_layouts;
 
 // candidate for move to BufferView
 // (at least some parts in the beginning of the func)
@@ -309,6 +310,7 @@ ErtComp ert_comp;
 // Returns false if "\the_end" is not read for formats >= 2.13. (Asger)
 bool Buffer::readLyXformat2(LyXLex & lex, Paragraph * par)
 {
+	unknown_layouts.clear();
 #ifdef NO_LATEX
 	ert_comp.contents.erase();
 	ert_comp.active = false;
@@ -363,7 +365,20 @@ bool Buffer::readLyXformat2(LyXLex & lex, Paragraph * par)
 		first_par = par;
 
 	paragraph = first_par;
-	
+
+	if (!unknown_layouts.empty()) {
+		string list;
+		for (set<string>::const_iterator it = unknown_layouts.begin();
+		     it != unknown_layouts.end(); ++it) {
+			if (it != unknown_layouts.begin())
+				list += ", ";
+			list += *it;
+		}
+		WriteAlert(_("Textclass Loading Error!"),
+			   _("The following layouts are undefined:"),
+			   list+".");
+	}	
+
 	return the_end_read;
 }
 
@@ -505,6 +520,7 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 				// layout not found
 				// use default layout "Standard" (0)
 				par->layout = 0;
+				unknown_layouts.insert(layoutname);
 			}
 			// Test whether the layout is obsolete.
 			LyXLayout const & layout =

@@ -1,3 +1,8 @@
+2001-07-13  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* buffer.C (readLyXformat2): Generate an error dialog if there are
+	unknown layouts.
+
 2001-07-16  Juergen Vigna  <jug@sad.it>
 
 	* sp_spell.C: always compile ISpell part.
