@@ -1681,7 +1681,10 @@ bool Paragraph::isLetter(pos_type pos) const
 
 bool Paragraph::isWord(pos_type pos) const
 {
-	return IsWordChar(getChar(pos)) ;
+	if (isInset(pos))
+		return getInset(pos)->isLetter();
+	else
+		return IsWordChar(getChar(pos)) ;
 }
 
 

@@ -24,6 +24,13 @@ What's new
   Ctrl-PageDown and Control-PageUp (except with mac bindings, where
   <cmd>-tab and <cmd>-backtab are used) [bugs 515 and 1639].
 
+- LaTeX-type accents (which are used when converting from 7bit latex
+  documents or when a given accented letter does not exist in the
+  document encoding) are now considered as part of words; the same
+  holds for ligature breaks and hyphenation marks. This impacts word
+  level operation like selection by double-click or index entry
+  defaults.
+
 
 ** Bug fixes
 

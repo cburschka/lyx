@@ -2287,25 +2287,16 @@ void LyXText::cursorLeftOneWord(LyXCursor & cur) const
 {
 	// treat HFills, floats and Insets as words
 	cur = cursor;
-	while (cur.pos()
-	       && (cur.par()->isSeparator(cur.pos() - 1)
-		   || cur.par()->isKomma(cur.pos() - 1))
-	       && !(cur.par()->isHfill(cur.pos() - 1)
-		    || cur.par()->isInset(cur.pos() - 1)))
+	while (cur.pos() && !cur.par()->isWord(cur.pos() - 1))
 		cur.pos(cur.pos() - 1);
 
-	if (cur.pos()
-	    && (cur.par()->isInset(cur.pos() - 1)
-		|| cur.par()->isHfill(cur.pos() - 1))) {
-		cur.pos(cur.pos() - 1);
-	} else if (!cur.pos()) {
+	if (!cur.pos()) {
 		if (cur.par()->previous()) {
 			cur.par(cur.par()->previous());
 			cur.pos(cur.par()->size());
 		}
 	} else {		// Here, cur != 0
-		while (cur.pos() > 0 &&
-		       cur.par()->isWord(cur.pos() - 1))
+		while (cur.pos() > 0 && cur.par()->isWord(cur.pos() - 1))
 			cur.pos(cur.pos() - 1);
 	}
 }
@@ -2316,45 +2307,39 @@ void LyXText::cursorLeftOneWord(LyXCursor & cur) const
 void LyXText::getWord(LyXCursor & from, LyXCursor & to,
 		      word_location const loc) const
 {
-	// first put the cursor where we wana start to select the word
+	// first put the cursor where we wanna start to select the word
 	from = cursor;
 	switch (loc) {
 	case WHOLE_WORD_STRICT:
 		if (cursor.pos() == 0 || cursor.pos() == cursor.par()->size()
-		    || cursor.par()->isSeparator(cursor.pos())
-		    || cursor.par()->isKomma(cursor.pos())
-		    || cursor.par()->isSeparator(cursor.pos() - 1)
-		    || cursor.par()->isKomma(cursor.pos() - 1)) {
+		    || !cursor.par()->isWord(cursor.pos())
+		    || !cursor.par()->isWord(cursor.pos() - 1)) {
 			to = from;
 			return;
 		}
 		// no break here, we go to the next
 
 	case WHOLE_WORD:
-		// Move cursor to the beginning, when not already there.
-		if (from.pos() && !from.par()->isSeparator(from.pos() - 1)
-		    && !from.par()->isKomma(from.pos() - 1))
-			cursorLeftOneWord(from);
-		break;
+		// If we are already at the beginning of a word, do nothing
+		if (!from.pos() || !from.par()->isWord(from.pos() - 1))
+			break;
+		// no break here, we go to the next
+
 	case PREVIOUS_WORD:
 		// always move the cursor to the beginning of previous word
-		cursorLeftOneWord(from);
+		while (from.pos() && from.par()->isWord(from.pos() - 1))
+			from.pos(from.pos() - 1);
 		break;
 	case NEXT_WORD:
 		lyxerr << "LyXText::getWord: NEXT_WORD not implemented yet\n";
 		break;
 	case PARTIAL_WORD:
+		// no need to move the 'from' cursor
 		break;
 	}
 	to = from;
-	while (to.pos() < to.par()->size()
-	       && !to.par()->isSeparator(to.pos())
-	       && !to.par()->isKomma(to.pos())
-	       && !to.par()->isHfill(to.pos())
-	       && !to.par()->isInset(to.pos()))
-	{
+	while (to.pos() < to.par()->size() && to.par()->isWord(to.pos()))
 		to.pos(to.pos() + 1);
-	}
 }
 
 

@@ -76,6 +76,8 @@ public:
 	inline bool canDisplay();
 	// should this inset be handled like a normal charater
 	bool isChar() const { return true; }
+	/// is this equivalent to a letter?
+	bool isLetter() const { return candisp; }
 
 	/// all the accent types
 	enum ACCENT_TYPES{

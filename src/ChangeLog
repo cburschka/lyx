@@ -1,4 +1,11 @@
 2004-11-15  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+  
+	* text.C (cursorLeftOneWord): 
+	(getWord): simplify by using Paragraph::isWord
+
+	* paragraph.C (isWord): invoke Inset::isLetter on insets
+
+2004-11-15  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* paragraph.C (TeXOnePar): use LyXStyle::needprotect and pass it
 	to InsetOptArg::latexOptional as needed (bug 1739)
