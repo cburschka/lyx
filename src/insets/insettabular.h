@@ -236,6 +236,10 @@ public:
 	///
 	boost::signal0<void> hideDialog;
 
+	/// are some cells selected ?
+	bool hasSelection() const {
+		return has_selection;
+	}
 private:
 	///
 	void lfunMousePress(FuncRequest const &);
@@ -284,10 +288,6 @@ private:
 	void resetPos(BufferView *) const;
 	///
 	void removeTabularRow();
-	///
-	bool hasSelection() const {
-		return has_selection;
-	}
 	///
 	void clearSelection() const {
 		sel_cell_start = sel_cell_end = 0;
