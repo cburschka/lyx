@@ -1238,6 +1238,82 @@ MathCursorPos const & MathCursor::cursor() const
 }
 
 
+int MathCursor::cellXOffset() const
+{
+	return par()->cellXOffset(idx());
+}
+
+
+int MathCursor::cellYOffset() const
+{
+	return par()->cellYOffset(idx());
+}
+
+
+int MathCursor::xpos() const
+{
+	return cellXOffset() + xarray().pos2x(pos());
+}
+
+
+int MathCursor::ypos() const
+{
+	return cellYOffset();
+}
+
+
+
+void MathCursor::gotoX(int x) 
+{
+	pos() = xarray().x2pos(x - cellXOffset());
+}
+
+
+bool MathCursor::idxUp()
+{
+	int x = par()->xo() + xpos();
+	do {
+		if (par()->idxUp(idx(), pos())) {
+			gotoX(x - par()->xo());
+			return true;
+		}
+	} while (popLeft());
+	gotoX(x - par()->xo());
+	return true;
+}
+
+
+bool MathCursor::idxDown()
+{
+	int x = par()->xo() + xpos();
+	do {
+		if (par()->idxDown(idx(), pos())) {
+			gotoX(x - par()->xo());
+			return true;
+		}
+	} while (popLeft());
+	gotoX(x - par()->xo());
+	return true;
+}
+
+
+bool MathCursor::idxLeft()
+{
+	return par()->idxLeft(idx(), pos());
+}
+
+
+bool MathCursor::idxRight()
+{
+	return par()->idxRight(idx(), pos());
+}
+
+
+MathMatrixInset * MathCursor::outerPar() const
+{
+	return
+		static_cast<MathMatrixInset *>(const_cast<MathInset *>(formula_->par()));
+}
 
 ////////////////////////////////////////////////////////////////////////
 
@@ -1292,74 +1368,4 @@ MathCursorPos MathCursor::normalAnchor() const
 		++normal.pos_;
 	}
 	return normal;
-}
-
-
-int MathCursor::cellXOffset() const
-{
-	return par()->cellXOffset(idx());
-}
-
-
-int MathCursor::cellYOffset() const
-{
-	return par()->cellYOffset(idx());
-}
-
-
-int MathCursor::xpos() const
-{
-	return cellXOffset() + xarray().pos2x(pos());
-}
-
-
-int MathCursor::ypos() const
-{
-	return cellYOffset();
-}
-
-
-
-void MathCursor::gotoX(int x) 
-{
-	pos() = xarray().x2pos(x - cellXOffset());
-}
-
-
-bool MathCursor::idxUp()
-{
-	int x = xpos();
-	if (!par()->idxUp(idx(), pos()))
-		return false;
-	gotoX(x);
-	return true;
-}
-
-
-bool MathCursor::idxDown()
-{
-	int x = xpos();
-	if (!par()->idxDown(idx(), pos()))
-		return false;
-	gotoX(x);
-	return true;
-}
-
-
-bool MathCursor::idxLeft()
-{
-	return par()->idxLeft(idx(), pos());
-}
-
-
-bool MathCursor::idxRight()
-{
-	return par()->idxRight(idx(), pos());
-}
-
-
-MathMatrixInset * MathCursor::outerPar() const
-{
-	return
-		static_cast<MathMatrixInset *>(const_cast<MathInset *>(formula_->par()));
 }
