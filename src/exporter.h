@@ -20,7 +20,7 @@
 #include "LString.h"
 
 class Buffer;
-class FormatPair;
+class Format;
 
 class Exporter {
 public:
@@ -40,12 +40,14 @@ public:
 	bool IsExportable(Buffer const * buffer, string const & format);
 	///
 	static
-	std::vector<FormatPair> const
+	std::vector<Format const *> const
 	GetExportableFormats(Buffer const * buffer, bool only_viewable);
 	///
-	
-	///
+private:
 	static
 	string const BufferFormat(Buffer const * buffer);
+	///
+	static
+	std::vector<string> const Backends(Buffer const * buffer);
 };
 #endif

@@ -42,6 +42,7 @@
 #include "language.h"
 #include "ColorHandler.h"
 #include "frontends/GUIRunTime.h"
+#include "frontends/xforms/Color.h"
 
 using std::endl;
 
@@ -58,6 +59,7 @@ extern LyXServer * lyxserver;
 extern bool finished;	// flag, that we are quitting the program
 extern BufferList bufferlist;
 extern GUIRunTime guiruntime;
+extern string user_lyxdir;
 
 FL_CMD_OPT cmdopt[] =
 {
@@ -368,6 +370,13 @@ void LyXGUI::create_forms()
 	fl_set_form_atclose(fd_latex_log->LaTeXLog,
 			    CancelCloseBoxCB, 0);
 
+	// This is probably as good a time as any to map the xform colours,
+	// should a mapping exist.
+	{
+		string filename = user_lyxdir + "/preferences.xform";
+		XformColor::read( filename );
+	}
+	
 	// Show the main & title form
 	int main_placement = FL_PLACE_CENTER | FL_FREE_SIZE;
 	int title_placement = FL_PLACE_CENTER;

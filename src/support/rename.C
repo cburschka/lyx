@@ -7,6 +7,10 @@
 bool lyx::rename(string const & from, string const & to)
 {
 	if (::rename(from.c_str(), to.c_str()) == -1)
-		return lyx::copy(from, to);
+		if (lyx::copy(from, to)) {
+			lyx::unlink(from);
+			return true;
+		} else
+			return false;
 	return true;
 }

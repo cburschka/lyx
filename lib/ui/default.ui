@@ -45,11 +45,11 @@ Menuset
 	Item "Close|C" "buffer-close"
 	Item "Save|S" "buffer-write"
 	Item "Save As...|A" "buffer-write-as"
-	Item "Revert to saved|R" "buffer-reload"
+	Item "Revert to saved|d" "buffer-reload"
 	Submenu "Version control|V" "file_vc"
 	Separator
-	Submenu "Import|m" "file_import"
-	Submenu "Insert|I" "file_insert"
+	Submenu "Import|I" "file_import"
+	Submenu "Insert|r" "file_insert"
 	Separator
 	Submenu "Export|E" "file_export"
 	Item "Print...|P" "buffer-print"
@@ -70,8 +70,6 @@ Menuset
     End
 
     Menu "file_import"
-	Item "Ascii text as lines...|A" "buffer-import text"
-	Item "Ascii text as paragraphs...|p" "buffer-import textparagraph"
 	ImportFormats
     End
 
@@ -98,23 +96,23 @@ Menuset
 
     Menu "edit"
 	Item "Undo|U" "undo"
-	Item "Redo|R" "redo"
+	Item "Redo|d" "redo"
 	Separator
 	Item "Cut|C" "cut"
 	Item "Copy|o" "copy"
-	Item "Paste|P" "paste"
+	Item "Paste|a" "paste"
 	Submenu "Paste external selection|x" "edit_paste"
 	Separator
 	Item "Find & Replace...|F" "find-replace"
-	Separator
 	Submenu "Tabular|T" "edit_tabular"
 	Submenu "Floats & Insets|I" "edit_floats"
+	Separator
 	Item "Spellchecker...|S" "spellchecker"
 	Item "Check TeX|h" "buffer-chktex"
 	Item "Remove all Error boxes|E" "error-remove-all"
 	Separator
-	Item "Preferences...|n" "dialog-preferences"
-	Item "Reconfigure|g" "reconfigure"
+	Item "Preferences...|P" "dialog-preferences"
+	Item "Reconfigure|R" "reconfigure"
     End
 
     Menu "edit_paste"
@@ -158,7 +156,7 @@ Menuset
 # INSERT MENU
 #
     Menu "insert"
-	Item "Math text|M" "math-mode"
+	Item "Math text|t" "math-mode"
 	Item "Math display|d" "math-display"
 	Item "Math panel...|p" "math-panel"
 	Separator
@@ -167,17 +165,17 @@ Menuset
 	Item "Cross reference...|r" "reference-insert"
 	Item "Label...|L" "label-insert"
 	Item "Footnote|F" "footnote-insert"
-	Item "Marginal note|n" "marginpar-insert"
-	Item "Index entry...|x" "index-insert"
+	Item "Marginal note|M" "marginpar-insert"
+	Item "Index entry...|I" "index-insert"
 	Item "Index entry of last word|w" "index-insert-last"
 	Item "URL...|U" "url-insert"
-	Item "Note...|o" "note-insert"
+	Item "Note...|N" "note-insert"
 	Separator
 	Item "Figure...|g" "figure-insert"
-	Item "Tabular...|T" "dialog-tabular-insert"
+	Item "Tabular...|b" "dialog-tabular-insert"
 	Submenu "Floats|a" "insert_floats"
 	Separator
-	Submenu "Lists & TOC|i" "insert_toc"
+	Submenu "Lists & TOC|O" "insert_toc"
     End
 
     Menu "insert_special"

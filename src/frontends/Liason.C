@@ -103,7 +103,7 @@ bool printBuffer(Buffer * buffer, PrinterParams const & pp)
 		command += lyxrc.print_extra_options + ' ';
 	}
 
-	command += Converter::dvips_options(buffer) + ' ';
+	command += converters.dvips_options(buffer) + ' ';
 
 	if (!Exporter::Export(buffer, "dvi", true))
 		return false;

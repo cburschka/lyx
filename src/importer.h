@@ -16,17 +16,29 @@
 #pragma interface
 #endif
 
+#include <vector>
 #include "LString.h"
 
 class LyXView;
+class Format;
 
 class Importer {
 public:
 	///
 	static
-	void Import(LyXView * lv, string const & filename, 
+	bool Import(LyXView * lv, string const & filename, 
 		    string const & format);
+#if 0
+	///
 	static
         bool IsImportable(string const & format);
+#endif
+	///
+	static
+	std::vector<Format const *> const GetImportableFormats();
+private:
+	///
+	static
+	std::vector<string> const Loaders();
 };
 #endif

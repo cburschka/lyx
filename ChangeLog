@@ -1,3 +1,59 @@
+2000-11-13  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/converter.C: add "using" directive.
+
+	* src/frontends/xforms/FormPreferences.C: add "using" directive.
+	(compare_converter): add "int" as return type.
+
+	* src/frontends/xforms/Color.C: comment out FL_LIGHTER_COL1 here
+	too. 
+
+2000-11-11  Angus Leeming <a.leeming@ic.ac.uk>
+
+	* src/lyx_gui.C (create_forms): map the xform colours, should a
+	mapping exist. Ie, call XformColor::read().
+
+	* src/frontends/xforms/Color.[Ch] renamed struct RGB as RGBColor
+	and struct HSV as HSVColor.	
+	(XformColor::read, XformColor::write) : new methods that
+	input/output any changes to the cform GUI colors.
+
+	* src/frontends/xforms/Dialogs.C: FORMS_H_LOCATION no longer
+	included.
+
+	* src/frontends/xforms/FormPreferences.C Lots of little changes
+	associated with the changed name of the RGB and HSV structs. Can
+	now save changes to xforms GUI to file. Commented out
+	FL_LIGHTER_COL1 to allow compilation with xforms 0.88. It isn't
+	used currently anyway.
+
+2000-11-11  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* src/converter.C: A lot of changes:
+	- It is no longer possible to choose between two or more ways to 
+	export to some format (the new code uses only the shortest path).
+	However, it is still possible to choose between pdflatex/ps2pdf
+	for  creating a PDF file, by defining two PDF formats: pdf & pdf2.
+	- Added several methods that makes  the FormPreferences code simpler.
+	- Changed the tokens $$FName and $$OutName to $$i and $$o.
+
+	* src/exporter.C (Export): lyxrc.use_pdf is set before
+	makeLaTeXFile is called. This works but not very nice.
+
+	* src/frontends/xforms/FormPreferences.C: The formats/converters
+	tabs are now fully functional.
+
+	* src/buffer.C (getTocList): Add numbers to the captions. 
+
+	* lib/lyxrc.example: Removed fax section
+
+	* src/support/rename.C (rename): Delete the old file if lyx::copy
+	is called.
+
+2000-11-13  Rob Lahaye <lahaye@postech.edu>
+
+	* lib/ui/default.ui: minor polishing.
+
 2000-11-10  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/frontends/xforms/Color.C: include <algorithm> and <cmath>
@@ -105,7 +161,7 @@
 
 2000-11-08  Dekel Tsur  <dekelts@tau.ac.il>
 
-	* src/frontends/xforms/FormParagraph.C (updateLanguage): Check
+	* src/frontends/xforms/FormPreferences.C (updateLanguage): Check
 	iterators to prevent crash.
 
 2000-11-08  Angus Leeming <a.leeming@ic.ac.uk>

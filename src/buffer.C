@@ -3547,6 +3547,9 @@ vector<string> const Buffer::getLabelList()
 
 vector<vector<Buffer::TocItem> > const Buffer::getTocList()
 {
+	int figs = 0;
+	int tables = 0;
+	int algs = 0;
 	vector<vector<TocItem> > l(4);
 	LyXParagraph * par = paragraph;
 	while (par) {
@@ -3562,13 +3565,19 @@ vector<vector<Buffer::TocItem> > const Buffer::getTocList()
 				switch (par->footnotekind) {
 				case LyXParagraph::FIG:
 				case LyXParagraph::WIDE_FIG:
+					tmp.str = tostr(++figs) + ". "
+						+ tmp.str;
 					l[TOC_LOF].push_back(tmp);
 					break;
 				case LyXParagraph::TAB:
 				case LyXParagraph::WIDE_TAB:
+					tmp.str = tostr(++tables) + ". "
+						+ tmp.str;
 					l[TOC_LOT].push_back(tmp);
 					break;
 				case LyXParagraph::ALGORITHM:
+					tmp.str = tostr(++algs) + ". "
+						+ tmp.str;
 					l[TOC_LOA].push_back(tmp);
 					break;
 				case LyXParagraph::FOOTNOTE:

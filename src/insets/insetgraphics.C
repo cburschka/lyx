@@ -657,13 +657,13 @@ int InsetGraphics::Latex(Buffer const *buf, ostream & os,
 
 	// How do we decide to what format should we export?
 	string extension = GetExtension(params.filename);
-	//if (pdf) {
+	if (lyxrc.pdf_mode) {
 		if (extension != "jpg")
-			Converter::Convert(buf,
+			converters.Convert(buf,
 					   params.filename, params.filename,
 					   extension, "png");
-	//} else
-		Converter::Convert(buf, params.filename, params.filename,
+	} else
+		converters.Convert(buf, params.filename, params.filename,
 				   extension, "eps");
 
 	return 1;

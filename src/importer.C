@@ -14,6 +14,8 @@
 #pragma implementation
 #endif
 
+#include <algorithm>
+
 #include "importer.h"
 #include "converter.h"
 #include "LyXView.h"
@@ -21,12 +23,16 @@
 #include "minibuffer.h"
 #include "bufferlist.h"
 #include "support/filetools.h"
+#include "lyx_gui_misc.h" //WriteAlert
+
+using std::vector;
+using std::find;
 
 extern BufferList bufferlist;
 extern void InsertAsciiFile(BufferView *, string const &, bool);
 
 
-void Importer::Import(LyXView * lv, string const & filename, 
+bool Importer::Import(LyXView * lv, string const & filename, 
 		      string const & format)
 {
 	string displaypath = MakeDisplayPath(filename);
@@ -34,36 +40,80 @@ void Importer::Import(LyXView * lv, string const & filename,
 
 	string lyxfile = ChangeExtension(filename, ".lyx");
 
-	bool result = true;
-	if (format == "text" || format == "textparagraph") {
-		lv->view()->buffer(bufferlist.newFile(lyxfile, string(), true));
-		bool as_paragraphs = format == "textparagraph";
-		InsertAsciiFile(lv->view(), filename, as_paragraphs);
-		lv->getLyXFunc()->Dispatch(LFUN_MARK_OFF);
-	} else {
-		result = Converter::Convert(0, filename, filename, format, "lyx");
-		if (result) {
-			Buffer * buffer = bufferlist.loadLyXFile(lyxfile);
-			if (buffer)
-				lv->view()->buffer(buffer);
-			else
-				result = false;
+	string loader_format;
+	vector<string> loaders = Loaders();
+	if (find(loaders.begin(), loaders.end(), format) == loaders.end()) {
+		for (vector<string>::const_iterator it = loaders.begin();
+		     it != loaders.end(); ++it) {
+			if (converters.IsReachable(format, *it)) {
+				if (!converters.Convert(0, filename, filename,
+							format, *it))
+					return false;
+				loader_format = *it;
+				break;
+			}
 		}
+		if (loader_format.empty()) {
+			WriteAlert(_("Can not import file"),
+				   _("No information for importing from ")
+				   + formats.PrettyName(format));
+			return false;
+		}
+	} else
+		loader_format = format;
+
+
+	if (loader_format == "lyx") {
+		Buffer * buffer = bufferlist.loadLyXFile(lyxfile);
+		if (buffer)
+			lv->view()->buffer(buffer);
+	} else {
+		lv->view()->buffer(bufferlist.newFile(lyxfile, string(), true));
+		bool as_paragraphs = loader_format == "textparagraph";
+		string filename2 = (loader_format == format) ? filename
+			: ChangeExtension(filename,
+					  formats.Extension(loader_format));
+		InsertAsciiFile(lv->view(), filename2, as_paragraphs);
+		lv->getLyXFunc()->Dispatch(LFUN_MARK_OFF);
 	}
 
 	// we are done
-	if (result)
-		lv->getMiniBuffer()->Set(displaypath, _("imported."));
-	else
-		lv->getMiniBuffer()->Set(displaypath, _(": import failed."));
+	lv->getMiniBuffer()->Set(displaypath, _("imported."));
+	return true;
+}
 
+#if 0
+bool Importer::IsImportable(string const & format)
+{
+	vector<string> loaders = Loaders();
+	for (vector<string>::const_iterator it = loaders.begin();
+	     it != loaders.end(); ++it)
+		if (converters.IsReachable(format, *it))
+			return true;
+	return false;
+}
+#endif
+
+vector<Format const *> const Importer::GetImportableFormats()
+{
+	vector<string> loaders = Loaders();
+	vector<Format const *> result = 
+		converters.GetReachableTo(loaders[0], true);
+	for (vector<string>::const_iterator it = loaders.begin() + 1;
+	     it != loaders.end(); ++it) {
+		vector<Format const *> r =
+			converters.GetReachableTo(*it, false);
+		result.insert(result.end(), r.begin(), r.end());
+	}
+	return result;
 }
 
 
-bool Importer::IsImportable(string const & format)
+vector<string> const Importer::Loaders()
 {
-	if (format == "text" || format == "textparagraph")
-		return true;
-	else
-		return Converter::IsReachable(format, "lyx");
+	vector<string> v;
+	v.push_back("lyx");
+	v.push_back("text");
+	v.push_back("textparagraph");
+	return v;
 }

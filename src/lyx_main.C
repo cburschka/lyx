@@ -401,6 +401,7 @@ void LyX::init(int */*argc*/, char **argv, bool gui)
 	ReadRcFile("lyxrc.defaults");
 	system_lyxrc = lyxrc;
 	system_formats = formats;
+	system_converters = converters;
 
 	// If there is a preferences file we read that instead
 	// of the old lyxrc file.
@@ -408,7 +409,8 @@ void LyX::init(int */*argc*/, char **argv, bool gui)
 	    ReadRcFile("lyxrc");
 
 	/// Init Converter
-	Converter::init();
+	converters.Update(formats);
+	converters.BuildGraph();
 
 	// Read encodings
 	ReadEncodingsFile("encodings");

@@ -222,7 +222,7 @@ if test -z "$tex_to_lyx_command" ; then
 fi
 
 PATH=${save_PATH}
-test $tex_to_lyx_command = "reLyX" && tex_to_lyx_command="reLyX -f \$\$FName"
+test $tex_to_lyx_command = "reLyX" && tex_to_lyx_command="reLyX -f \$\$i"
 
 echo $ac_n "checking for a Noweb -> LyX converter""... $ac_c"
 echo "$ac_t""(noweb2lyx)"
@@ -258,7 +258,7 @@ if test -z "$literate_to_lyx_command" ; then
   literate_to_lyx_command=none
 fi
 
-test $literate_to_lyx_command = "noweb2lyx" && literate_to_lyx_command="noweb2lyx \$\$FName \$\$OutName"
+test $literate_to_lyx_command = "noweb2lyx" && literate_to_lyx_command="noweb2lyx \$\$i \$\$o"
 
 # Search something to process a literate document
 echo $ac_n "checking for a Noweb -> LaTeX converter""... $ac_c"
@@ -295,7 +295,7 @@ if test -z "$literate_to_tex_command" ; then
   literate_to_tex_command=none
 fi
 
-test $literate_to_tex_command = "noweave" && literate_to_tex_command="noweave -delay -index \$\$FName > \$\$OutName"
+test $literate_to_tex_command = "noweave" && literate_to_tex_command="noweave -delay -index \$\$i > \$\$o"
 
 echo $ac_n "checking for a HTML -> Latex converter""... $ac_c"
 echo "$ac_t""(html2latex)"
@@ -331,7 +331,7 @@ if test -z "$html_to_latex_command" ; then
   html_to_latex_command=none
 fi
 
-test $html_to_latex_command = "html2latex" && html_to_latex_command="html2latex \$\$FName"
+test $html_to_latex_command = "html2latex" && html_to_latex_command="html2latex \$\$i"
 
 echo $ac_n "checking for a MSWord -> Latex converter""... $ac_c"
 echo "$ac_t""(wvCleanLatex word2x)"
@@ -367,8 +367,8 @@ if test -z "$word_to_latex_command" ; then
   word_to_latex_command=none
 fi
 
-test $word_to_latex_command = "wvCleanLatex" && word_to_latex_command="wvCleanLatex \$\$FName \$\$OutName"
-test $word_to_latex_command = "word2x" && word_to_latex_command="word2x -f latex \$\$FName"
+test $word_to_latex_command = "wvCleanLatex" && word_to_latex_command="wvCleanLatex \$\$i \$\$o"
+test $word_to_latex_command = "word2x" && word_to_latex_command="word2x -f latex \$\$i"
 
 echo $ac_n "checking for Image converter""... $ac_c"
 echo "$ac_t""(convert)"
@@ -404,7 +404,7 @@ if test -z "$image_command" ; then
   image_command=none
 fi
 
-test $image_command = "convert" && image_command="convert \$\$FName \$\$OutName"
+test $image_command = "convert" && image_command="convert \$\$i \$\$o"
 
 # Search for a Postscript interpreter
 echo $ac_n "checking for a Postscript interpreter""... $ac_c"
@@ -621,7 +621,7 @@ if test -z "$ps_to_pdf_command" ; then
   ps_to_pdf_command=none
 fi
 
-test $ps_to_pdf_command = "ps2pdf" && ps_to_pdf_command="ps2pdf \$\$FName"
+test $ps_to_pdf_command = "ps2pdf" && ps_to_pdf_command="ps2pdf \$\$i"
 
 # Search for a program to convert dvi to ps
 echo $ac_n "checking for a DVI to PS converter""... $ac_c"
@@ -658,7 +658,7 @@ if test -z "$dvi_to_ps_command" ; then
   dvi_to_ps_command=none
 fi
 
-test $dvi_to_ps_command = "dvips" && dvi_to_ps_command="dvips -o \$\$OutName \$\$FName"
+test $dvi_to_ps_command = "dvips" && dvi_to_ps_command="dvips -o \$\$o \$\$i"
 
 # Search a *roff program (used to translate tables in ASCII export)
 echo $ac_n "checking for a *roff formatter""... $ac_c"
@@ -809,7 +809,7 @@ if test -z "$fax_command" ; then
   fax_command=none
 fi
 
-test $fax_command = "ksendfax" && fax_command="ksendfax \$\$FName"
+test $fax_command = "ksendfax" && fax_command="ksendfax \$\$i"
 
 # Search for LinuxDoc support
 echo $ac_n "checking for SGML-tools 1.x (LinuxDoc)""... $ac_c"
@@ -854,10 +854,10 @@ fi
 
 case $LINUXDOC in
   sgml2lyx)
-    linuxdoc_to_latex_command="sgml2latex \$\$FName"
-    linuxdoc_to_dvi_command="sgml2latex -o dvi \$\$FName"
-    linuxdoc_to_html_command="sgml2html \$\$FName"
-    linuxdoc_to_lyx_command="sgml2lyx \$\$FName";;
+    linuxdoc_to_latex_command="sgml2latex \$\$i"
+    linuxdoc_to_dvi_command="sgml2latex -o dvi \$\$i"
+    linuxdoc_to_html_command="sgml2html \$\$i"
+    linuxdoc_to_lyx_command="sgml2lyx \$\$i";;
   none)
     linuxdoc_to_latex_command="none"
     linuxdoc_to_dvi_command="none"
@@ -908,11 +908,11 @@ fi
 
 case $DOCBOOK in
   sgmltools)
-    docbook_to_dvi_command="sgmltools -b dvi \$\$FName"
-    docbook_to_html_command="sgmltools -b html \$\$FName";;
+    docbook_to_dvi_command="sgmltools -b dvi \$\$i"
+    docbook_to_html_command="sgmltools -b html \$\$i";;
   db2dvi)
-    docbook_to_dvi_command="db2dvi \$\$FName"
-    docbook_to_html_command="db2html \$\$FName";;
+    docbook_to_dvi_command="db2dvi \$\$i"
+    docbook_to_html_command="db2html \$\$i";;
   none)
     docbook_to_dvi_command="none"
     docbook_to_html_command="none";;
@@ -997,9 +997,9 @@ fi
 
 latex_to_html_command=$TOHTML
 case $TOHTML in
-	tth) latex_to_html_command="tth -t -e2 -L\$\$BaseName < \$\$FName > \$\$OutName";;
- latex2html) latex_to_html_command="latex2html -no_subdir -split 0 -show_section_numbers \$\$FName";;
-      hevea) latex_to_html_command="hevea -s \$\$FName";;
+	tth) latex_to_html_command="tth -t -e2 -L\$\$b < \$\$i > \$\$o";;
+ latex2html) latex_to_html_command="latex2html -no_subdir -split 0 -show_section_numbers \$\$i";;
+      hevea) latex_to_html_command="hevea -s \$\$i";;
 esac
 
 #### Explore the LaTeX configuration
@@ -1085,23 +1085,30 @@ cat >lyxrc.defaults <<EOF
 # want to customize LyX, make a copy of the file LYXDIR/lyxrc as
 # ~/.lyx/lyxrc and edit this file instead. Any setting in lyxrc will
 # override the values given here.
-\\Format latex	tex	LaTeX		L
-\\Format dvi	dvi	DVI		D
-\\Format ps	ps	Postscript	t
-\\Format pdf	pdf	PDF		P
-\\Format html	html	HTML		H
-\\Format text	txt	ASCII		A
-\\Format word	doc	Word		W
-\\Format literate nw	NoWeb		N
-\\Format linuxdoc sgml	LinuxDoc	x
+\\Format text	  txt	ASCII		A
+\\Format textparagraph txt ASCII(paragraphs)	""
 \\Format docbook  sgml	DocBook		B
-\\Format program  ""	Program		""
+\\Format dvi	  dvi	DVI		D
+\\Format eps	  eps	EPS		""
 \\Format fax	  ""	Fax		""
+\\Format gif      gif	GIF		""
+\\Format html	  html	HTML		H
+\\Format jpg      jpg	JPEG		""
+\\Format latex	  tex	LaTeX		L
+\\Format linuxdoc sgml	LinuxDoc	x
+\\Format lyx      lyx	LyX		""
+\\Format literate nw	NoWeb		N
+\\Format pdf	  pdf	PDF		P
+\\Format pdf2	  pdf  "PDF (pdflatex)"	F
+\\Format png	  png	PNG		""
+\\Format ps	  ps	Postscript	t
+\\Format program  ""	Program		""
+\\Format word	  doc	Word		W
 
-\\converter latex dvi "$LATEX" "latex,disable=linuxdoc&docbook"
-\\converter latex pdf "$PDFLATEX" "latex,disable=linuxdoc&docbook"
-\\converter latex html "$latex_to_html_command"
-	"originaldir,needaux,disable=linuxdoc&docbook"
+
+\\converter latex dvi "$LATEX \$\$i" "latex"
+\\converter latex pdf2 "$PDFLATEX \$\$i" "latex"
+\\converter latex html "$latex_to_html_command" "originaldir,needaux"
 \\converter literate latex "$literate_to_tex_command" ""
 \\converter dvi ps "$dvi_to_ps_command" ""
 \\converter ps pdf "$ps_to_pdf_command" ""
@@ -1113,10 +1120,10 @@ cat >lyxrc.defaults <<EOF
 \\converter docbook dvi "$docbook_to_dvi_command" ""
 \\converter docbook html "$docbook_to_html_command" ""
 
-\\converter latex lyx "$tex_to_lyx_command" "importer"
-\\converter literate lyx "$literate_to_lyx_command" "importer"
-\\converter html latex "$html_to_latex_command" "importer"
-\\converter word latex "$word_to_latex_command" "importer"
+\\converter latex lyx "$tex_to_lyx_command" ""
+\\converter literate lyx "$literate_to_lyx_command" ""
+\\converter html latex "$html_to_latex_command" ""
+\\converter word latex "$word_to_latex_command" ""
 
 \converter gif eps "$image_command" ""
 \converter png eps "$image_command" ""

@@ -16,9 +16,10 @@
 #pragma interface
 #endif
 
-#include <map>
 #include <vector>
+#include <queue>
 #include "LString.h"
+#include "support/lstrings.h"
 
 class Buffer;
 
@@ -26,48 +27,131 @@ class Buffer;
 class Format {
 public:
 	///
-	Format() {}
-	///
 	Format(string const & n, string const & e, string const & p,
 	       string const & s, string const & v) :
-		name(n), extension(e), prettyname(p), shortcut(s),
-		viewer(v) {};
-	///
-	string name;
-	///
-	string extension;
-	///
-	string prettyname;
-	///
-	string shortcut;
-	///
-	string viewer;
+		name_(n), extension_(e), prettyname_(p), shortcut_(s),
+		viewer_(v) {};
 	///
 	bool dummy() const;
 	///
-	string const getname() const {
-		return name;
+	bool IsChildFormat() const;
+	///
+	string const ParentFormat() const;
+	///
+	string const & name() const {
+		return name_;
 	}
 	///
-	string const getprettyname() const {
-		return prettyname;
+	string const & extension() const {
+		return extension_;
 	}
+	///
+	string const & prettyname() const {
+		return prettyname_;
+	}
+	///
+	string const & shortcut() const {
+		return shortcut_;
+	}
+	///
+	string const & viewer() const {
+		return viewer_;
+	}
+	///
+	void setViewer(string const & v) {
+		viewer_ = v;
+	}
+	friend bool operator<(Format const & a, Format const & b) {
+		return compare_no_case(a.prettyname(),b.prettyname()) < 0;
+	}
+private:
+	string name_;
+	///
+	string extension_;
+	///
+	string prettyname_;
+	///
+	string shortcut_;
+	///
+	string viewer_;
 };
 
+
 ///
-struct Command {
+class Formats {
+public:
+        ///
+        typedef std::vector<Format> FormatList;
 	///
-	Command(Format const * f, Format const * t, string const & c)
-		: from(f), to(t), command(c), importer(false), 
+	typedef FormatList::const_iterator const_iterator;
+	///
+	Format const & Get(int i) const {
+		return formatlist[i];
+	}
+	///
+	Format const * GetFormat(string const & name) const;
+	///
+	int GetNumber(string const & name) const;
+	///
+	void Add(string const & name);
+	///
+	void Add(string const & name, string const & extension, 
+		 string const & prettyname, string const & shortcut);
+	///
+	void Delete(string const & name);
+	///
+	void Sort();
+	///
+	void SetViewer(string const & name, string const & command);
+	///
+	bool View(Buffer const * buffer, string const & filename,
+		  string const & format_name) const;
+	///
+	string const PrettyName(string const & name) const;
+	///
+	string const Extension(string const & name) const;
+	///
+	const_iterator begin() const {
+		return formatlist.begin();
+	}
+	///
+	const_iterator end() const {
+		return formatlist.end();
+	}
+	///
+	FormatList::size_type size() const {
+		return formatlist.size();
+	}
+private:
+	///
+	FormatList formatlist;
+};
+
+///////////////////////////////////////////////////////////////////////
+
+///
+class Converter {
+public:
+	///
+	Converter(string const & f, string const & t, string const & c,
+		  string const & l)
+		: from(f), to(t), command(c), flags(l), From(0), To(0),
 		  latex(false), original_dir(false), need_aux(false) {}
 	///
-	Format const * from;
+	void ReadFlags();
 	///
-	Format const * to;
+	string from;
+	///
+	string to;
 	///
 	string command;
-	/// The converter is used for importing
-	bool importer;
+	///
+	string flags;
+	///
+	Format const * From;
+	///
+	Format const * To;
+
 	/// The converter is latex or its derivatives
 	bool latex;
 	/// Do we need to run the converter in the original directory?
@@ -82,123 +166,104 @@ struct Command {
 	string result_file;
 	/// Command to convert the program output to a LaTeX log file format
 	string parselog;
-	/// Backends in which the converter is not used
-	std::vector<string> disable;
+};
 
-	/// Used by the BFS algorithm
-	bool visited;
-	/// Used by the BFS algorithm
-	std::vector<Command>::iterator previous;
+
+///
+class Converters {
+public:
+        typedef std::vector<Converter> ConverterList;
 	///
-	std::pair<string, string> const getFromToPrettyname() const {
-		return std::pair<string, string>(from->prettyname,
-						 to->prettyname);
+	typedef ConverterList::const_iterator const_iterator;
+	///
+	typedef std::vector<int> EdgePath;
+	///
+	Converter const & Get(int i) const {
+		return converterlist[i];
 	}
-};
-
-class FormatPair {
-public:
 	///
-	Format const * format;
+	Converter const * GetConverter(string const & from, string const & to);
 	///
-	Format const * from;
+	int GetNumber(string const & from, string const & to);
 	///
-	string command;
-	///
-	FormatPair(Format const * f1, Format const * f2, string c)
-		: format(f1), from(f2), command(c) {}
-};
-
-///
-class Formats {
-public:
-        ///
-        typedef std::map<string, Format> FormatList;
-	///
-	void Add(string const & name);
-	///
-	void Add(string const & name, string const & extension, 
-		 string const & prettyname, string const & shortcut);
-	///
-	void SetViewer(string const & name, string const & command);
-	///
-	bool View(Buffer const * buffer, string const & filename,
-		  string const & format_name);
-	///
-	Format * GetFormat(string const & name);
-	///
-	string const PrettyName(string const & name);
-	///
-	string const Extension(string const & name);
-	///
-	std::vector<Format> const GetAllFormats() const;
-private:
-	///
-	FormatList formats;
-};
-
-///
-class Converter {
-public:
-	///
-	static
 	void Add(string const & from, string const & to,
 		 string const & command, string const & flags);
+	//
+	void Delete(string const & from, string const & to);
 	///
-	static
-	std::vector<FormatPair> const GetReachableTo(string const & target);
+	void Sort();
 	///
-	static
-	std::vector<FormatPair> const
-	GetReachable(string const & from, bool only_viewable);
+	std::vector<Format const *> const
+	GetReachableTo(string const & target, bool clear_visited);
 	///
-	static
+	std::vector<Format const *> const
+	GetReachable(string const & from, bool only_viewable,
+		     bool clear_visited);
+	///
 	bool IsReachable(string const & from, string const & to);
 	///
-	static
+	EdgePath const GetPath(string const & from, string const & to);
+	///
+	bool UsePdflatex(EdgePath const & path);
+	///
 	bool Convert(Buffer const * buffer,
 		     string const & from_file, string const & to_file_base,
 		     string const & from_format, string const & to_format,
-		     string const & using_format, string & to_file);
+		     string & to_file);
 	///
-	static
 	bool Convert(Buffer const * buffer,
 		     string const & from_file, string const & to_file_base,
-		     string const & from_format, string const & to_format,
-		     string const & using_format = string());
+		     string const & from_format, string const & to_format);
 	///
-	static
-	string const SplitFormat(string const & str, string & format);
-	///
-	static
 	string const dvi_papersize(Buffer const * buffer);
 	///
-	static
 	string const dvips_options(Buffer const * buffer);
 	///
-	static
-	void init();
+	void Update(Formats const & formats);
 	///
-	static
-	std::vector<Command> const GetAllCommands();
+	void UpdateLast(Formats const & formats);
+	///
+	void BuildGraph();
+	///
+	bool FormatIsUsed(string const & format);
+	///
+	const_iterator begin() const {
+		return converterlist.begin();
+	}
+	const_iterator end() const {
+		return converterlist.end();
+	}
 private:
 	///
-	static
 	bool scanLog(Buffer const * buffer, string const & command, 
 		     string const & filename);
 	///
-	static
 	bool runLaTeX(Buffer const * buffer, string const & command);
 	///
-	static
-	std::vector<Command> commands;
+	ConverterList converterlist;
+	///
+	string latex_command;
+	///
+	struct Vertex {
+		std::vector<int> in_vertices;
+		std::vector<int> out_vertices;
+		std::vector<int> out_edges;
+	};
 	///
 	static
-	string latex_command;
+	std::vector<Vertex> vertices;
+	///
+	std::vector<bool> visited;
+	///
+	std::queue<int> Q;
+	///
+	int BFS_init(string const & start, bool clear_visited = true);
 };
 
 extern Formats formats;
-extern Formats system_formats;
+extern Converters converters;
 
+extern Formats system_formats;
+extern Converters system_converters;
 
 #endif

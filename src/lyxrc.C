@@ -859,7 +859,10 @@ int LyXRC::read(string const & filename)
 				command = lexrc.GetString();
 			if (lexrc.next())
 				flags = lexrc.GetString();
-			Converter::Add(from, to, command, flags);
+			if (command.empty() || command == "none")
+				converters.Delete(from, to);
+			else
+				converters.Add(from, to, command, flags);
 			break;
 		}
 		case RC_VIEWER: {
@@ -881,7 +884,16 @@ int LyXRC::read(string const & filename)
 				prettyname = lexrc.GetString();
 			if (lexrc.next())
 				shortcut = lexrc.GetString();
-			formats.Add(format, extension, prettyname, shortcut);
+			if (prettyname.empty()) {
+				if (converters.FormatIsUsed(format))
+					lyxerr << "Can't delete format "
+					       << format << endl;
+				else
+					formats.Delete(format);
+
+			} else
+				formats.Add(format, extension, prettyname,
+					    shortcut);
 			break;
 		}
 		case RC_DEFAULT_LANGUAGE:
@@ -1475,39 +1487,65 @@ void LyXRC::output(ostream & os) const
 		   << "# FORMATS SECTION ##########################\n"
 		   << "#\n\n";
 
-	case RC_FORMAT: {
-		vector<Format> formats_vec = formats.GetAllFormats();
-		vector<Format> sys_formats_vec = system_formats.GetAllFormats();
-		for (vector<Format>::const_iterator it = formats_vec.begin();
-		     it != formats_vec.end(); ++it) {
-			Format const * format = system_formats.GetFormat(it->name);
-			if (!format || format->extension != it->extension ||
-			    format->prettyname != it->prettyname ||
-			    format->shortcut != it->shortcut)
-				os << "\\format \"" << it->name << "\" \""
-				   << it->extension << "\" \""
-				   << it->prettyname << "\" \""
-				   << it->shortcut << "\"\n";
+	case RC_FORMAT:
+		// Look for deleted formats
+		for (Formats::const_iterator cit = formats.begin();
+		     cit != formats.end(); ++cit) {
+			Format const * format =
+				system_formats.GetFormat(cit->name());
+			if (!format ||
+			    format->extension() != cit->extension() ||
+			    format->prettyname() != cit->prettyname() ||
+			    format->shortcut() != cit->shortcut())
+				os << "\\format \"" << cit->name() << "\" \""
+				   << cit->extension() << "\" \""
+				   << cit->prettyname() << "\" \""
+				   << cit->shortcut() << "\"\n";
 		}
 
-		for (vector<Format>::const_iterator it = sys_formats_vec.begin();
-		     it != sys_formats_vec.end(); ++it)
-			if (!formats.GetFormat(it->name))
-				os << "\\format \"" << it->name 
+		// New/modifed formats
+		for (Formats::const_iterator cit = system_formats.begin();
+		     cit != system_formats.end(); ++cit)
+			if (!formats.GetFormat(cit->name()))
+				os << "\\format \"" << cit->name() 
 				   << "\" \"\" \"\" \"\"\n";
-	}
-	case RC_VIEWER: {
-		vector<Format> formats_vec = formats.GetAllFormats();
-		for (vector<Format>::const_iterator it = formats_vec.begin();
-		     it != formats_vec.end(); ++it) {
-			Format const * format = system_formats.GetFormat(it->name);
-			if ((!format || format->viewer != it->viewer) &&
-			    (format || !it->viewer.empty()))
-				os << "\\viewer \"" << it->name << "\" \""
-				   << it->viewer << "\"\n";
+	case RC_VIEWER:
+		for (Formats::const_iterator cit = formats.begin();
+		     cit != formats.end(); ++cit) {
+			Format const * format = 
+				system_formats.GetFormat(cit->name());
+			if ((!format || format->viewer() != cit->viewer()) &&
+			    (format || !cit->viewer().empty()))
+				os << "\\viewer \"" << cit->name() << "\" \""
+				   << cit->viewer() << "\"\n";
 		}
-	}
 
+		os << "\n#\n"
+		   << "# CONVERTERS SECTION ##########################\n"
+		   << "#\n\n";
+
+	case RC_CONVERTER:
+		// Look for new converters
+		for (Converters::const_iterator cit = converters.begin();
+		     cit != converters.end(); ++cit) {
+			Converter const * converter =
+				system_converters.GetConverter(cit->from,
+							       cit->to);
+			if (!converter ||
+			    converter->command != cit->command ||
+			    converter->flags != cit->flags)
+				os << "\\converter \"" << cit->from << "\" \""
+				   << cit->to << "\" \""
+				   << cit->command << "\" \""
+				   << cit->flags << "\"\n";
+		}
+
+		// New/modifed converters
+		for (Converters::const_iterator cit = system_converters.begin();
+		     cit != system_converters.end(); ++cit)
+			if (!converters.GetConverter(cit->from, cit->to))
+				os << "\\converter \"" << cit->from 
+				   << "\" \"" << cit->to << "\" \"\" \"\"\n";
 	}
 	os.flush();
 }

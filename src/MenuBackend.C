@@ -25,6 +25,7 @@
 #include "bufferlist.h"
 #include "converter.h"
 #include "exporter.h"
+#include "importer.h"
 #include "support/filetools.h"
 #include "support/lyxfunctional.h"
 
@@ -199,11 +200,6 @@ Menu & Menu::read(LyXLex & lex)
 	return *this;
 }
 
-struct compare_formatpair {
-	bool operator()(FormatPair const & a, FormatPair const & b) {
-		return a.format->prettyname < b.format->prettyname; 
-	}
-};
 
 void Menu::checkShortcuts() const
 {
@@ -273,66 +269,45 @@ void Menu::expand(Menu & tomenu, Buffer * buf) const
 		}
 		break;
 
+		case MenuItem::ImportFormats:
 		case MenuItem::ViewFormats:
 		case MenuItem::UpdateFormats:
 		case MenuItem::ExportFormats: {
-			vector<FormatPair> names;
+			vector<Format const *> formats;
 			kb_action action;
-			if ((*cit).kind() == MenuItem::ViewFormats) {
-				names = Exporter::GetExportableFormats(buf, true);
+			switch ((*cit).kind()) {
+			case MenuItem::ImportFormats:
+				formats = Importer::GetImportableFormats();
+				action = LFUN_IMPORT;
+				break;
+			case MenuItem::ViewFormats:
+				formats = Exporter::GetExportableFormats(buf, true); 
 				action = LFUN_PREVIEW;
-			} else if ((*cit).kind() == MenuItem::UpdateFormats) {
-				names = Exporter::GetExportableFormats(buf, true);
+				break;
+			case MenuItem::UpdateFormats:
+				formats = Exporter::GetExportableFormats(buf, true); 
 				action = LFUN_UPDATE;
-			} else {
-				names = Exporter::GetExportableFormats(buf, false);
+				break;
+			default:
+				formats = Exporter::GetExportableFormats(buf, false); 
 				action = LFUN_EXPORT;
 			}
-			sort(names.begin(), names.end(), compare_formatpair());
+			sort(formats.begin(), formats.end());
 
-			for (vector<FormatPair>::const_iterator fit = names.begin();
-			     fit != names.end() ; ++fit) {
-				if ((*fit).format->dummy())
+			for (vector<Format const *>::const_iterator fit = formats.begin();
+			     fit != formats.end() ; ++fit) {
+				if ((*fit)->dummy())
 					continue;
-				string fmt = (*fit).format->name;
-				string label = (*fit).format->prettyname;
-				bool same_before = 
-					fit != names.begin() &&
-					(*fit).format == (*(fit-1)).format;
-				bool same_after = 
-					fit+1 != names.end() &&
-					(*fit).format == (*(fit+1)).format;
-				if ((*fit).from &&
-				    (same_before || same_after)) {
-					fmt += ":" + (*fit).from->name;
-					string head;
-					split((*fit).command, head, ' ');
-					label += _(" (using ") + head + ")";
-					if (!(*fit).format->shortcut.empty() &&
-					    !same_before)
-						label += "|" + (*fit).format->shortcut;
-				} else if (!(*fit).format->shortcut.empty())
-					label += "|" + (*fit).format->shortcut;
-				int action2 = lyxaction.getPseudoAction(action, fmt);
-				tomenu.add(MenuItem(MenuItem::Command,
-						    label, action2));
-			}
-		}
-		break;
-
-		case MenuItem::ImportFormats: {
-			vector<FormatPair> names = Converter::GetReachableTo("lyx");
-			sort(names.begin(), names.end(), compare_formatpair());
-
-			for (vector<FormatPair>::const_iterator fit = names.begin();
-			     fit != names.end() ; ++fit) {
-				if ((*fit).format->dummy())
-					continue;
-				string fmt = (*fit).format->name;
-				string label = (*fit).format->prettyname;
-				if (!(*fit).format->shortcut.empty())
-					label += "|" + (*fit).format->shortcut;
-				int action2 = lyxaction.getPseudoAction(LFUN_IMPORT, fmt);
+				string label = (*fit)->prettyname();
+				if ((*cit).kind() == MenuItem::ImportFormats)
+					if ((*fit)->name() == "text")
+						label = _("Ascii text as lines");
+					else if ((*fit)->name() == "textparagraph")
+						label = _("Ascii text as paragraphs");
+				if (!(*fit)->shortcut().empty())
+					label += "|" + (*fit)->shortcut();
+				int action2 = lyxaction.
+					getPseudoAction(action, (*fit)->name());
 				tomenu.add(MenuItem(MenuItem::Command,
 						    label, action2));
 			}

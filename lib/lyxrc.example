@@ -340,13 +340,12 @@
 # The converter command has 4 arguments: The source format, the target format,
 # the command, and additional flags.
 # For example, the following defines a DVI->Postscript converter:
-#\converter dvi ps "dvips -o $$OutName $$FName" ""
-# The variable name $$FName is replaced with the name of the source file,
-# and $$OutName is replaced with the name of the target file.
+#\converter dvi ps "dvips -o $$o $$i" ""
+# The variable name $$i is replaced with the name of the source file,
+# and $$o is replaced with the name of the target file.
 # The flags argument is a list of comma separated flags.
 # Known flags are
 # - * : copy the previously defined flags
-# - importer : The converter is used for importing.
 # - latex : The converter is latex or its derivatives (pdflatex).
 # - originaldir : The converter must be invoked in the directory of the lyx
 #   file and not in the temporary directory. This is needed for tex->html
@@ -354,26 +353,24 @@
 # - needaux : The converted uses the .aux file, so we need to call latex
 #   before running the converter.
 # - resultdir=dir : The converter put all the files in dir.
-#   Using "resultdir" is same as "resultdir=$$Basename".
+#   Using "resultdir" is same as "resultdir=$$b".
 #   Note: When exporting, the whole directory will be moved from the temporary
 #   directory to the target directory.
 # - resultfile=file : Name of main file in the result directory, for example
-#  "index.html" or "$$BaseName.html"
+#  "index.html" or "$$b.html"
 #   If "resultfile" is omitted, the name of this file is assumed to be
 #   "index.format"
 # - parselog=filtername : filtername is a name of a filter command that takes
 #   the converter error log (from stderr), and converts it to a fake latex .log
 #   file.
-#  - disable=backends : A list of & seperated backend in which the converter
-#   should not be used.
 # For example:
-#\converter latex html "latex2html -split 0 $$FName"
-#           "originaldir,needaux,resultdir,disable=linuxdoc&docbook"
+#\converter latex html "latex2html -split 0 $$i"
+#           "originaldir,needaux,resultdir"
 #
 # For literate programming, use something like
-#\converter literate latex "noweave -delay -index $$FName >$$OutName"
+#\converter literate latex "noweave -delay -index $$i >$$o"
 #                          "parselog=listerrors g"
-#\converter literate program "build-script $$FName"
+#\converter literate program "build-script $$i"
 #                            "originaldir,parselog=listerrors g"
 
 # The format command is used to define file formats. It has 4 arguments:
@@ -458,28 +455,6 @@
 # store the backup file in the same directory of the original file.
 # Default is "".
 #\backupdir_path "~/Desktop/Trash/"
-
-
-#
-# FAX SECTION #############################################################
-#
-
-# In the following, the <$$something> strings are substituted by
-# reasonable values by LyX. The 's are important as there may be spaces in 
-# the string. The default is auto-detected.
-# This one is what is used with HylaFax:
-#\fax_command "sendfax -n -h '$$Host' -c '$$Comment' -x '$$Enterprise' -d '$$Name'@'$$Phone' '$$FName'"
-# Use this for the efax-command:
-#\fax_command "faxsend '$$Phone' '$$FName'"
-
-# This is the name of your phone book. It's per default situated in ~/.lyx/,
-# but you can override that with an absolute path.
-#\phone_book phonebook
-
-# This is how to call an external FAX-program instead of the built-in.
-# You may also insert $$FName to reference the PostScript file.
-#\fax_program "myfaxprg '$$FName'"
-#\fax_program tkhylafax
 
 #
 # ASCII EXPORT SECTION ###################################################

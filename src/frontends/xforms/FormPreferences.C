@@ -1,3 +1,13 @@
+// -*- C++ -*-
+/* This file is part of
+ * ======================================================
+ * 
+ *           LyX, The Document Processor
+ * 	 
+ *	    Copyright 1995 Matthias Ettrich
+ *          Copyright 1995-2000 The LyX Team.
+ *
+ *======================================================*/
 /* FormPreferences.C
  * FormPreferences Interface Class Implementation
  */
@@ -40,34 +50,23 @@ using SigC::slot;
 using std::find;
 using std::find_if;
 using std::pair;
+using std::max;
 using std::sort;
 using std::vector;
+using std::endl;
 
 extern string fmt(char const * fmtstr ...);
 extern string system_lyxdir;
+extern string user_lyxdir;
 extern Languages languages;
 
 static string const colorFile("/usr/lib/X11/rgb.txt");
 vector<X11Color> FormPreferences::colorDB;
-vector<XFormColor> FormPreferences::xformColorDB;
+vector<XformColor> FormPreferences::xformColorDB;
 pair<vector<string>, vector<string> > FormPreferences::dirlist;
 
-// Two functions used to help sort a vector<Command> and a vector<Format>.
-// Only used in this file, so no need to declare them globally.
-bool CommandsCompare( Command const & a, Command const & b )
-{
-	if( a.from->prettyname == b.from->prettyname )
-		return( a.to->prettyname < b.to->prettyname );
-	else
-		return( a.from->prettyname < b.from->prettyname );
-}
-
-
-bool FormatsCompare( Format const & a, Format const & b )
-{
-	return( a.name < b.name );
-}
-
+Formats local_formats;
+Converters local_converters;
 
 FormPreferences::FormPreferences(LyXView * lv, Dialogs * d)
 	: FormBaseBI(lv, d, _("Preferences"), new PreferencesPolicy),
@@ -78,7 +77,8 @@ FormPreferences::FormPreferences(LyXView * lv, Dialogs * d)
 	  interface_(0), language_(0), lnf_misc_(0), outputs_misc_(0),
 	  paths_(0), printer_(0), screen_fonts_(0), spellchecker_(0),
 	  combo_default_lang(0), combo_kbmap_1(0), combo_kbmap_2(0),
-	  warningPosted(false)
+	  warningPosted(false), modifiedXformPrefs(false)
+
 {
 	// let the dialog be shown
 	// This is a permanent connection so we won't bother
@@ -118,37 +118,33 @@ FormPreferences::~FormPreferences()
 
 void FormPreferences::redraw()
 {
-	if( form() && form()->visible )
-		fl_redraw_form( form() );
-	else
+	if( !(form() && form()->visible) )
 		return;
+	fl_redraw_form( form() );
 
-	FL_FORM * outer_form = fl_get_active_folder(dialog_->tabfolder_prefs);
-	if (outer_form && outer_form->visible)
-		fl_redraw_form( outer_form );
-	else
+	FL_FORM * form2 = fl_get_active_folder(dialog_->tabfolder_prefs);
+	if( !(form2 && form2->visible) )
 		return;
+	fl_redraw_form( form2 );
 
-	if( outer_form == converters_tab_->form )
-		outer_form =
-			fl_get_active_folder(converters_tab_->tabfolder_outer);
+	FL_FORM * form3 = 0;
+	if( form2 == converters_tab_->form )
+		form3 = fl_get_active_folder(converters_tab_->tabfolder_outer);
 
-	else if( outer_form == look_n_feel_tab_->form )
-		outer_form =
-			fl_get_active_folder(look_n_feel_tab_->tabfolder_outer);
+	else if( form2 == look_n_feel_tab_->form )
+		form3 = fl_get_active_folder(look_n_feel_tab_->tabfolder_outer);
 
-	else if( outer_form == inputs_tab_->form )
-		outer_form = fl_get_active_folder(inputs_tab_->tabfolder_outer);
+	else if( form2 == inputs_tab_->form )
+		form3 = fl_get_active_folder(inputs_tab_->tabfolder_outer);
 
-	else if( outer_form == outputs_tab_->form )
-		outer_form = 
-			fl_get_active_folder(outputs_tab_->tabfolder_outer);
+	else if( form2 == outputs_tab_->form )
+		form3 = fl_get_active_folder(outputs_tab_->tabfolder_outer);
 
-	else if( outer_form == usage_tab_->form )
-		outer_form = fl_get_active_folder(usage_tab_->tabfolder_outer);
+	else if( form2 == usage_tab_->form )
+		form3 = fl_get_active_folder(usage_tab_->tabfolder_outer);
 
-	if (outer_form && outer_form->visible)
-		fl_redraw_form( outer_form );
+	if (form3 && form3->visible)
+		fl_redraw_form( form3 );
 }
 
 
@@ -162,6 +158,12 @@ FL_FORM * FormPreferences::form() const
 void FormPreferences::ok()
 {
 	FormBase::ok();
+
+	if( modifiedXformPrefs ) {
+		string filename = user_lyxdir + "/preferences.xform";
+		modifiedXformPrefs = ! XformColor::write( filename );
+	}
+	
 	lv_->getLyXFunc()->Dispatch(LFUN_SAVEPREFERENCES);
 }
 
@@ -296,8 +298,8 @@ void FormPreferences::apply()
 	// and other stuff which may cost us a lot on slower/high-load machines.
 
 	applyColors();
+	applyFormats();    /// Must be before applyConverters()
 	applyConverters();
-	applyFormats();
 	applyInputsMisc();
 	applyInterface();
 	applyLanguage();
@@ -383,8 +385,8 @@ void FormPreferences::update()
     
 	// read lyxrc entries
 	updateColors();
+	updateFormats();   /// Must be before updateConverters()
 	updateConverters();
-	updateFormats();
 	updateInputsMisc();
 	updateInterface();
 	updateLanguage();
@@ -397,18 +399,17 @@ void FormPreferences::update()
 }
 
 
-void FormPreferences::applyColors() const
+void FormPreferences::applyColors()
 {
-	bool modifiedXForms = false;
 	bool modifiedText = false;
 	bool modifiedBackground = false;
 
-	for( vector<XFormColor>::const_iterator cit = xformColorDB.begin();
+	for( vector<XformColor>::const_iterator cit = xformColorDB.begin();
 	     cit != xformColorDB.end(); ++cit ) {
-		RGB col;
+		RGBColor col;
 		fl_getmcolor((*cit).colorID, &col.r, &col.g, &col.b);
 		if( col != (*cit).col ) {
-			modifiedXForms = true;
+			modifiedXformPrefs = true;
 			if( (*cit).colorID == FL_BLACK )
 				modifiedText = true;
 			if( (*cit).colorID == FL_COL1 )
@@ -416,8 +417,8 @@ void FormPreferences::applyColors() const
 		}
 	}
 
-	if( modifiedXForms ) {
-		vector<XFormColor>::const_iterator cit;
+	if( modifiedXformPrefs ) {
+		vector<XformColor>::const_iterator cit;
 		for( cit = xformColorDB.begin(); 
 		     cit != xformColorDB.end(); ++cit ) {
 			fl_mapcolor((*cit).colorID,
@@ -472,10 +473,6 @@ void FormPreferences::buildColors()
 
 	ColorsLoadBrowserLyX();
 
-	// deactivate the browse button because it isn't implemented
-	fl_deactivate_object(colors_->button_browse);
-	fl_set_object_lcol(colors_->button_browse, FL_INACTIVE);
-
 	// set up the feedback mechanism
 	setPreHandler( colors_->browser_x11 );
 	setPreHandler( colors_->input_name );
@@ -527,6 +524,9 @@ bool FormPreferences::inputColors( FL_OBJECT const * const ob )
 	} else if (ob == colors_->input_name) {
 		return ColorsDatabase();
 
+	} else if (ob == colors_->button_browse) {
+		return ColorsBrowseDatabase();
+
 	} else if (ob == colors_->browser_lyx_objs) {
 		return ColorsBrowserLyX();
 		
@@ -541,17 +541,17 @@ bool FormPreferences::inputColors( FL_OBJECT const * const ob )
 void FormPreferences::ColorsAdjustVal( int colAdjust, int colParent,
 				       double addVal ) const
 {
-	RGB rgb;
+	RGBColor rgb;
 	fl_getmcolor( colParent, &rgb.r, &rgb.g, &rgb.b);
 
-	HSV hsv = HSV( rgb );
+	HSVColor hsv = HSVColor( rgb );
 	hsv.v += addVal;
 	if( hsv.v > 1.0 )
 		hsv.v = 1.0;
 	else if( hsv.v < 0.0 )
 		hsv.v = 0.0;
 
-	rgb = RGB( hsv );
+	rgb = RGBColor( hsv );
 	fl_mapcolor( colAdjust, rgb.r, rgb.g, rgb.b );
 }
 
@@ -564,9 +564,9 @@ bool FormPreferences::ColorsBrowserLyX() const
 
 	string name = fl_get_browser_line( colors_->browser_lyx_objs, i );
 
-	vector<XFormColor>::const_iterator cit =
+	vector<XformColor>::const_iterator cit =
 		find_if(xformColorDB.begin(), xformColorDB.end(),
-			compare_memfun(&XFormColor::getname, name));
+			compare_memfun(&XformColor::getname, name));
 
 	if( cit != xformColorDB.end() ) {
 		fl_freeze_form( colors_->form );
@@ -594,7 +594,7 @@ bool FormPreferences::ColorsBrowserX11() const
 
 	fl_freeze_form( colors_->form );
 
-	RGB col = colorDB[i-1].second;
+	RGBColor col = colorDB[i-1].second;
     
 	fl_mapcolor( FL_FREE_COL4 + i, col.r, col.g, col.b );
 	fl_mapcolor( FL_FREE_COL4, col.r, col.g, col.b );
@@ -621,6 +621,12 @@ bool FormPreferences::ColorsBrowserX11() const
 }
 
 
+bool FormPreferences::ColorsBrowseDatabase() const
+{
+	return true;
+}
+
+
 bool FormPreferences::ColorsDatabase() const
 {
 	string file = fl_get_input(colors_->input_name);
@@ -636,7 +642,8 @@ bool FormPreferences::ColorsDatabase() const
 
 void FormPreferences::ColorsLoadBrowserLyX()
 {
-	XFormColor xcol;
+	// First, define the modifiable xform colors
+	XformColor xcol;
 
 	xcol.name = "GUI background";
 	xcol.colorID = FL_COL1;
@@ -650,11 +657,12 @@ void FormPreferences::ColorsLoadBrowserLyX()
 
 	xformColorDB.push_back( xcol );
 
-	xcol.name = "GUI active tab";
-	xcol.colorID = FL_LIGHTER_COL1;
-	fl_getmcolor(FL_LIGHTER_COL1, &xcol.col.r, &xcol.col.g, &xcol.col.b);
+ 	// FL_LIGHTER_COL1 does not exist in xforms 0.88
+//  	xcol.name = "GUI active tab";
+//  	xcol.colorID = FL_LIGHTER_COL1;
+//  	fl_getmcolor(FL_LIGHTER_COL1, &xcol.col.r, &xcol.col.g, &xcol.col.b);
 
-	xformColorDB.push_back( xcol );
+//  	xformColorDB.push_back( xcol );
 
 	xcol.name = "GUI push button";
 	xcol.colorID = FL_YELLOW;
@@ -664,12 +672,15 @@ void FormPreferences::ColorsLoadBrowserLyX()
 
 	FL_OBJECT * colbr = colors_->browser_lyx_objs;
 	fl_clear_browser( colbr );
-	for( vector<XFormColor>::const_iterator cit = xformColorDB.begin();
+	for( vector<XformColor>::const_iterator cit = xformColorDB.begin();
 	     cit != xformColorDB.end(); ++cit ) {
 		fl_addto_browser(colbr, (*cit).name.c_str() );
 	}
 
-	fl_deselect_browser(colors_->browser_lyx_objs);
+	// Now load the LyX LColors
+
+	// just to be safe...
+	fl_deselect_browser( colors_->browser_lyx_objs );
 	fl_deactivate_object( colors_->button_modify );
 	fl_set_object_lcol( colors_->button_modify, FL_INACTIVE );
 }
@@ -683,11 +694,11 @@ bool FormPreferences::ColorsLoadBrowserX11(string const & filename) const
 	if (!lex.setFile(filename))
 		return true;
 
-	vector<RGB> cols;
+	vector<RGBColor> cols;
 	vector<string> names;
 	
 	while (lex.next()) {
-		RGB col;
+		RGBColor col;
 		col.r = lex.GetInteger();
 		lex.next();
 		col.g = lex.GetInteger();
@@ -699,20 +710,21 @@ bool FormPreferences::ColorsLoadBrowserX11(string const & filename) const
 		// remove redundant entries on the fly
 		bool add = cols.empty();
 		if (!add) {
-			vector<RGB>::const_iterator cit = 
+			vector<RGBColor>::const_iterator cit = 
 				find( cols.begin(), cols.end(), col );
 			add = (cit == cols.end());
 		}
 		
 		if (add) {
-			if( col == RGB(0,0,0) )
+			if( col == RGBColor(0,0,0) )
 				name = "black";
-			else if( col == RGB(255,255,255) )
+			else if( col == RGBColor(255,255,255) )
 				name = "white";
 			else
 				name = lowercase( name );
 
-			if ( col == RGB(0,0,0) || col == RGB(255,255,255) ) {
+			if ( col == RGBColor(0,0,0) ||
+			     col == RGBColor(255,255,255) ) {
 				cols.insert(cols.begin(), col);
 				names.insert(names.begin(), name);
 			} else {
@@ -727,7 +739,7 @@ bool FormPreferences::ColorsLoadBrowserX11(string const & filename) const
 	fl_clear_browser( colbr );
 
 	vector<string>::const_iterator sit = names.begin();
-	for (vector<RGB>::const_iterator iit = cols.begin();
+	for (vector<RGBColor>::const_iterator iit = cols.begin();
 	     iit != cols.end(); ++iit, ++sit) {
 		colorDB.push_back( X11Color(*sit, *iit) );
 		fl_addto_browser(colbr, (*sit).c_str());
@@ -750,9 +762,9 @@ bool FormPreferences::ColorsModify() const
 
 	string name = fl_get_browser_line( colors_->browser_lyx_objs, i );
 
-	vector<XFormColor>::iterator it = // non-const; it's modified below
+	vector<XformColor>::iterator it = // non-const; it's modified below
 		find_if(xformColorDB.begin(), xformColorDB.end(),
-			compare_memfun(&XFormColor::getname, name));
+			compare_memfun(&XformColor::getname, name));
 
 	if( it == xformColorDB.end() )
 		return true;
@@ -777,7 +789,7 @@ bool FormPreferences::ColorsRGB() const
 {
 	fl_freeze_form(colors_->form);
 
-	RGB col;
+	RGBColor col;
 	col.r = int(fl_get_slider_value(colors_->valslider_red));
 	col.g = int(fl_get_slider_value(colors_->valslider_green));
 	col.b = int(fl_get_slider_value(colors_->valslider_blue));
@@ -814,15 +826,15 @@ bool FormPreferences::ColorsRGB() const
 }
 
 
-int FormPreferences::ColorsSearchEntry(RGB const & col) const
+int FormPreferences::ColorsSearchEntry(RGBColor const & col) const
 {
 	int mindiff = 0x7fffffff;
 	vector<X11Color>::const_iterator mincit = colorDB.begin();
 
 	for (vector<X11Color>::const_iterator cit = colorDB.begin();
 	     cit != colorDB.end(); ++cit) {
-		RGB colDB = (*cit).second;
-		RGB diff;
+		RGBColor colDB = (*cit).second;
+		RGBColor diff;
 		diff.r = col.r - colDB.r;
 		diff.g = col.g - colDB.g;
 		diff.b = col.b - colDB.b;
@@ -846,33 +858,9 @@ void FormPreferences::updateColors()
 
 void FormPreferences::applyConverters() const
 {
-	/* Uncomment once Converter is a "real" class.
-
-	vector<Command> old = Converter::GetAllCommands();
-	for (vector<Command>::const_iterator cit = old.begin();
-	     cit != old.end(); ++cit) {
-		pair<string, string> FromTo =
-			pair<string, string>((*cit).from->prettyname,
-					     (*cit).to->prettyname);
-	
-		vector<Command>::const_iterator cit2 =
-			find_if(commands_vec.begin(), commands_vec.end(),
-				compare_memfun(&Command::getFromToPrettyname,
-					       FromTo));
-
-		// Ie, converter exists in old, but is removed now.
-		// Can't actually Delete it, because old will contain
-		// system defauts.
-		if (cit2 == commands_vec.end())
-			commands.Add((*cit).from, (*cit).to, string());
-	}
-
-	// Add new converters.
-	for (vector<Command>::const_iterator cit = commands_vec.begin();
-	     cit != commands_vec.end(); ++cit) {
-		commands.Add((*cit).from, (*cit).to, (*cit).command);
-	}
-	*/
+	converters = local_converters;
+	converters.Update(formats);
+	converters.BuildGraph();
 }
 
 
@@ -906,9 +894,9 @@ FormPreferences::feedbackConverters( FL_OBJECT const * const ob ) const
 	} else if (ob == converters_->choice_to) {
 		str = N_("Convert \"to\" this format");
 	} else if (ob == converters_->input_converter) {
-		str = N_("The conversion command. \"$$FName\" is the input file name, \"$$BaseName\" is the file name without its extension and $$OutName is the name of the output file.");
+		str = N_("The conversion command. $$i is the input file name, $$b is the file name without its extension and $$o is the name of the output file.");
 	} else if (ob == converters_->input_flags) {
-		str = N_("I have no idea what this field is to be used for!");
+		str = N_("Flags that control the converter behavior");
 	} else if (ob == converters_->button_delete) {
 		str = N_("Remove the current converter from the list of available converters.");
 	} else if (ob == converters_->button_add) {
@@ -943,46 +931,58 @@ bool FormPreferences::inputConverters( FL_OBJECT const * const ob )
 
 void FormPreferences::updateConverters()
 {
-	commands_vec = Converter::GetAllCommands();
-	sort( commands_vec.begin(), commands_vec.end(), &CommandsCompare );
+	local_converters = converters;
+	local_converters.Update(local_formats);
+	ConvertersUpdateBrowser();
+}
 
-	ConvertersClear();
+
+struct compare_converter {
+	int operator()(Converter const & a, Converter const & b) {
+		int i = compare_no_case(a.From->prettyname(),
+					b.From->prettyname());
+		if (i == 0)
+			return compare_no_case(a.To->prettyname(),
+					       b.To->prettyname()) < 0;
+		else
+			return i < 0;
+	}
+};
+
+
+void FormPreferences::ConvertersUpdateBrowser()
+{
+	local_converters.Sort();
+
+	fl_freeze_form(converters_->form);
+	fl_clear_browser(converters_->browser_all);
+	for (Converters::const_iterator cit = local_converters.begin();
+	     cit != local_converters.end(); ++cit) {
+		string name = (*cit).From->prettyname() + " -> "
+			+ (*cit).To->prettyname();
+		fl_addto_browser(converters_->browser_all, name.c_str());
+	}
+	ConvertersInput();
+	fl_unfreeze_form(converters_->form);
 }
 
 
 bool FormPreferences::ConvertersAdd()
 {
-	Command command( 0, 0, "" );
-	if( !ConvertersSetCommand( command ) )
-		return false;
+	string from = ConverterGetFrom();
+	string to = ConverterGetTo();
+	string command = fl_get_input(converters_->input_converter);
+	string flags = fl_get_input(converters_->input_flags);
 
-	string from = command.from->prettyname;
-	string to   = command.to->prettyname;
-	pair<string, string> FromTo = pair<string, string>(from, to);
-	
-	vector<Command>::iterator it = // non-const; it's modified below
-		find_if(commands_vec.begin(), commands_vec.end(),
-			compare_memfun(&Command::getFromToPrettyname, FromTo));
-
-	fl_freeze_form(converters_->form);
-
-	if (it == commands_vec.end()) {
-		// Unable to find command. Add to list.
-		commands_vec.push_back(command);
-		sort( commands_vec.begin(), commands_vec.end(), 
-		      &CommandsCompare );
-
-	} else {
-		// Command found. Modify it.
-		(*it).from = command.from;
-		(*it).to   = command.to;
-		(*it).command = command.command;
+	Converter const * old = local_converters.GetConverter(from, to);
+	local_converters.Add(from, to, command, flags);
+	if (!old) {
+		local_converters.UpdateLast(local_formats);
+		ConvertersUpdateBrowser();
 	}
-	
-	// Clear input
-	ConvertersClear();
-			
-	fl_unfreeze_form(converters_->form);
+	fl_deactivate_object(converters_->button_add);
+	fl_set_object_lcol(converters_->button_add, FL_INACTIVE);
+
 	return true;
 }
 
@@ -994,41 +994,17 @@ bool FormPreferences::ConvertersBrowser()
 
 	fl_freeze_form( converters_->form );
 
-	Command const & c = commands_vec[i-1];
+	Converter const & c = local_converters.Get(i-1);
+	int j = local_formats.GetNumber(c.from);
+	if (j >= 0)
+		fl_set_choice(converters_->choice_from, j+1);
 
-	int sel = 0;
-	for( i = 1;
-	     i <= fl_get_choice_maxitems( converters_->choice_from ); ++i ) {
-		string str =
-			fl_get_choice_item_text( converters_->choice_from, i );
-		str = strip( frontStrip( str ) );
-		
-		if( str == c.from->prettyname ) {
-			sel = i;
-			break;
-		}
-	}
+	j = local_formats.GetNumber(c.to);
+	if (j >= 0)
+		fl_set_choice(converters_->choice_to, j+1);
 
-	if( sel != 0 )
-		fl_set_choice( converters_->choice_from, sel );
-
-	sel = 0;
-	for( int i = 1;
-	     i <= fl_get_choice_maxitems( converters_->choice_to ); ++i ) {
-		string str =
-			fl_get_choice_item_text( converters_->choice_to, i );
-		str = strip( frontStrip( str ) );
-
-		if( str == c.to->prettyname ) {
-			sel = i;
-			break;
-		}
-	}
-
-	if( sel != 0 )
-		fl_set_choice( converters_->choice_to, sel );
-
-	fl_set_input( converters_->input_converter, c.command.c_str() );
+	fl_set_input(converters_->input_converter, c.command.c_str());
+	fl_set_input(converters_->input_flags, c.flags.c_str());
 
 	fl_set_object_label( converters_->button_add, idex(_("Modify|#M")) );
 	fl_set_button_shortcut( converters_->button_add,
@@ -1045,119 +1021,30 @@ bool FormPreferences::ConvertersBrowser()
 }
 
 
-void FormPreferences::ConvertersClear() const
-{
-	// Re-create browser
-	fl_clear_browser( converters_->browser_all );
-	for (vector<Command>::const_iterator cit = commands_vec.begin();
-	     cit != commands_vec.end(); ++cit) {
-		string from = (*cit).from->prettyname;
-		string to   = (*cit).to->prettyname;
-		string name = from + " -> " + to;
-		fl_addto_browser( converters_->browser_all, name.c_str() );
-	}
-
-	fl_set_input(converters_->input_converter, "");
-	fl_set_input(converters_->input_flags, "");
-
-	fl_deselect_browser(formats_->browser_all);
-
-	fl_set_object_label( converters_->button_add, idex(_("Add|#A")) );
-	fl_set_button_shortcut( converters_->button_add, scex(_("Add|#A")), 1);
-
-	fl_deactivate_object(converters_->button_add);
-	fl_set_object_lcol(converters_->button_add, FL_INACTIVE);
-
-	fl_deactivate_object(converters_->button_delete);
-	fl_set_object_lcol(converters_->button_delete, FL_INACTIVE);
-}
-
-
-bool FormPreferences::ConvertersContainFormat( Format const & format ) const
-{
-	for( vector<Command>::const_iterator cit = commands_vec.begin();
-	     cit != commands_vec.end(); ++cit ) {
-		if( format.name == (*cit).from->name ) return true;
-		if( format.name == (*cit).to->name )   return true;
-	}
-	return false;
-}
-
-
 bool FormPreferences::ConvertersDelete()
 {
-	Command command( 0, 0, "" );
-	if( !ConvertersSetCommand( command ) )
-		return false;
+	string from = ConverterGetFrom();
+	string to = ConverterGetTo();
 
-	string from = command.from->prettyname;
-	string to   = command.to->prettyname;
-	pair<string, string> FromTo = pair<string, string>(from, to);
-	
-	vector<Command>::iterator it = // non-const; it's modified below
-		find_if(commands_vec.begin(), commands_vec.end(),
-			compare_memfun(&Command::getFromToPrettyname, FromTo));
-
-	fl_freeze_form(converters_->form);
-
-	if (it == commands_vec.end()) {
-		fl_deactivate_object(converters_->button_delete);
-		fl_set_object_lcol(converters_->button_delete, FL_INACTIVE);
-	
-		fl_unfreeze_form(converters_->form);
-		return false;
-	}
-
-	commands_vec.erase(it);
-	ConvertersClear();
-	
-	fl_unfreeze_form(converters_->form);
+	local_converters.Delete(from, to);
+	ConvertersUpdateBrowser();
 	return true;
 }
 
 
 bool FormPreferences::ConvertersInput()
 {
-	string from = fl_get_choice_text( converters_->choice_from );
-	from = strip( frontStrip( from ) );
-	
-	string to = fl_get_choice_text( converters_->choice_to );
-	to = strip( frontStrip( to ) );
-
-	string name;
-	if( !from.empty() && !to.empty() )
-		name = from + " -> " + to;
-
-	int sel = 0;
-	if( !name.empty() ) {
-		for( int i = 0;
-		     i < fl_get_browser_maxline(converters_->browser_all); 
-		     ++i ) {
-			string str =
-				fl_get_browser_line( converters_->browser_all, 
-						     i+1 );
-			if( str == name ) {
-				sel = i+1;
-				break;
-			}
-		}
-	}
+	string from = ConverterGetFrom();
+	string to = ConverterGetTo();
+	int sel = local_converters.GetNumber(from, to);
 	
 	fl_freeze_form(converters_->form);
 
-	if( sel == 0 ) {
+	if (sel < 0) {
 		fl_set_object_label( converters_->button_add,
 				     idex(_("Add|#A")) );
 		fl_set_button_shortcut( converters_->button_add,
 					scex(_("Add|#A")), 1);
-
-		if( name.empty() ) {
-			fl_deactivate_object(converters_->button_add);
-			fl_set_object_lcol(converters_->button_add, FL_INACTIVE);
-		} else {
-			fl_activate_object(converters_->button_add);
-			fl_set_object_lcol(converters_->button_add, FL_BLACK);
-		}
 
 		fl_deselect_browser(converters_->browser_all);
 
@@ -1170,68 +1057,62 @@ bool FormPreferences::ConvertersInput()
 		fl_set_button_shortcut( converters_->button_add,
 					scex(_("Modify|#M")), 1);
 		
-		int top = sel-6;
-		if( top < 1 ) top = 0;
+		int top = max(sel-5, 0);
 		fl_set_browser_topline(converters_->browser_all, top);
-		fl_select_browser_line(converters_->browser_all, sel);
+		fl_select_browser_line(converters_->browser_all, sel+1);
 		
-		fl_activate_object(converters_->button_add);
-		fl_set_object_lcol(converters_->button_add, FL_BLACK);
-
 		fl_activate_object(converters_->button_delete);
 		fl_set_object_lcol(converters_->button_delete, FL_BLACK);
 	}
 
+	string command = fl_get_input(converters_->input_converter);
+	if (command.empty() || from == to) {
+		fl_deactivate_object(converters_->button_add);
+		fl_set_object_lcol(converters_->button_add, FL_INACTIVE);
+	} else {
+		fl_activate_object(converters_->button_add);
+		fl_set_object_lcol(converters_->button_add, FL_BLACK);
+	}
+
 	fl_unfreeze_form(converters_->form);
-	return true;
+	return false;
 }
 
 
-bool FormPreferences::ConvertersSetCommand( Command & command ) const
+string const FormPreferences::ConverterGetFrom() const
 {
-	string from = fl_get_choice_text( converters_->choice_from );
-	from = strip( frontStrip( from ) );
-	if( from.empty() )
-	    return false;
-	
-	vector<Format>::const_iterator fit =
-		find_if(formats_vec.begin(), formats_vec.end(),
-			compare_memfun(&Format::getprettyname, from));
-	if( fit == formats_vec.end() )
-	    return false;
-
-	string to = fl_get_choice_text( converters_->choice_to );
-	to = strip( frontStrip( to ) );
-	if( to.empty() )
-	    return false;
-
-	vector<Format>::const_iterator tit =
-		find_if(formats_vec.begin(), formats_vec.end(),
-			compare_memfun(&Format::getprettyname, to));
-	if( tit == formats_vec.end() )
-	    return false;
-
-	string converter = fl_get_input( converters_->input_converter );
-	string flags = fl_get_input( converters_->input_flags );
-
-	command.from = fit;
-	command.to   = tit;
-	command.command = converter;
-
-	return true;
+	int i = fl_get_choice(converters_->choice_from);
+	if (i > 0)
+		return local_formats.Get(i-1).name();
+	else {
+		lyxerr << "FormPreferences::ConvertersGetFrom: No choice!" << endl;
+		return "???";
+	}
 }
 
 
-void FormPreferences::ConvertersUpdateChoices()
+string const FormPreferences::ConverterGetTo() const
+{
+	int i = fl_get_choice(converters_->choice_to);
+	if (i > 0)
+		return local_formats.Get(i-1).name();
+	else {
+		lyxerr << "FormPreferences::ConvertersGetTo: No choice!" << endl;
+		return "???";
+	}
+}
+
+
+void FormPreferences::ConvertersUpdateChoices() const
 {
 	string choice;
-	for( vector<Format>::iterator cit = formats_vec.begin();
-	     cit != formats_vec.end(); ++cit ) {
-		if( !choice.empty() )
+	for (Formats::const_iterator cit = local_formats.begin();
+	     cit != local_formats.end(); ++cit ) {
+		if (!choice.empty())
 			choice += " | ";
 		else
 			choice += " ";
-		choice += (*cit).prettyname;
+		choice += (*cit).prettyname();
 	}
 	choice += " ";
 
@@ -1245,28 +1126,7 @@ void FormPreferences::ConvertersUpdateChoices()
 
 void FormPreferences::applyFormats() const
 {
-	vector<Format> old = formats.GetAllFormats();
-	for (vector<Format>::const_iterator cit = old.begin();
-	     cit != old.end(); ++cit) {
-
-		vector<Format>::const_iterator cit2 =
-			find_if(formats_vec.begin(),formats_vec.end(),
-				compare_memfun(&Format::getname, (*cit).name));
-
-		// Ie, format exists in old, but is removed now.
-		// Can't actually Delete it, because old will contain
-		// system defauts.
-		if (cit2 == formats_vec.end())
-			formats.Add((*cit).name, string(), string(), string());
-	}
-
-	// Add new formats.
-	for (vector<Format>::const_iterator cit = formats_vec.begin();
-	     cit != formats_vec.end(); ++cit) {
-		formats.Add((*cit).name, (*cit).extension, (*cit).prettyname, 
-			    (*cit).shortcut);
-		formats.SetViewer((*cit).name, (*cit).viewer);
-	}
+	formats = local_formats;
 }
 
 
@@ -1310,7 +1170,7 @@ FormPreferences::feedbackFormats( FL_OBJECT const * const ob ) const
 	} else if (ob == formats_->input_extension) {
 		str = N_("Used to recognize the file. E.g., ps, pdf, tex.");
 	} else if (ob == formats_->input_viewer) {
-		str = N_("The command used to launch the viwer application\nE.g. \"netscape $$FName\" where $$FName is the name of the file.");
+		str = N_("The command used to launch the viewer application.");
 	} else if (ob == formats_->button_delete) {
 		str = N_("Remove the current format from the list of available formats.");
 	} else if (ob == formats_->button_add) {
@@ -1346,13 +1206,29 @@ bool FormPreferences::inputFormats(FL_OBJECT const * const ob)
 
 void FormPreferences::updateFormats()
 {
-	formats_vec = formats.GetAllFormats();
-	sort( formats_vec.begin(), formats_vec.end(), &FormatsCompare );
+	local_formats = formats;
+	FormatsUpdateBrowser();
+}
+
+
+void FormPreferences::FormatsUpdateBrowser()
+{
+	local_formats.Sort();
+
+	fl_freeze_form(formats_->form);
+	fl_deselect_browser(formats_->browser_all);
+	fl_clear_browser(formats_->browser_all);
+	for (Formats::const_iterator cit = local_formats.begin();
+	     cit != local_formats.end(); ++cit)
+		fl_addto_browser(formats_->browser_all,
+				 (*cit).prettyname().c_str());
+
+	FormatsInput();
+	fl_unfreeze_form(formats_->form);
 
 	// Mustn't forget to update the Formats available to the converters
 	ConvertersUpdateChoices();
-
-	FormatsClear();
+	local_converters.Update(local_formats);
 }
 
 
@@ -1363,44 +1239,19 @@ bool FormPreferences::FormatsAdd()
 	string extension = fl_get_input(formats_->input_extension);
 	string shortcut =  fl_get_input(formats_->input_shrtcut);
 	string viewer =  fl_get_input(formats_->input_viewer);
-	if (prettyname.empty())
-		return false;
 
-	Format format(name, extension, prettyname, shortcut, viewer);
-	vector<Format>::iterator it = // non-const; it's modified below
-		find_if(formats_vec.begin(), formats_vec.end(),
-			compare_memfun(&Format::getname, name));
-
-	fl_freeze_form(formats_->form);
-
-	if (it == formats_vec.end()) {
-		// Unable to find format. Add to list.
-		formats_vec.push_back(format);
-		sort( formats_vec.begin(), formats_vec.end(), &FormatsCompare );
-
-		// Mustn't forget to update the Formats available to the
-		// converters
-		ConvertersUpdateChoices();
-
-		// Re-create browser
-		fl_clear_browser( formats_->browser_all );
-		for (vector<Format>::const_iterator cit = formats_vec.begin();
-		     cit != formats_vec.end(); ++cit)
-			fl_addto_browser(formats_->browser_all,
-					 (*cit).name.c_str()); 
-	} else {		
-		// Format found. Modify it.
-		(*it).name = name;
-		(*it).prettyname = prettyname;
-		(*it).extension = extension;
-		(*it).shortcut = shortcut;
-		(*it).viewer = viewer;
+	Format const * old = local_formats.GetFormat(name);
+	string old_prettyname = old ? old->prettyname() : string();
+	local_formats.Add(name, extension, prettyname, shortcut);
+	local_formats.SetViewer(name, viewer);
+	if (!old || prettyname != old_prettyname) {
+		FormatsUpdateBrowser();
+		if (old)
+			ConvertersUpdateBrowser();
 	}
+	fl_deactivate_object(formats_->button_add);
+	fl_set_object_lcol(formats_->button_add, FL_INACTIVE);
 
-	// Clear input
-	FormatsClear();
-			
-	fl_unfreeze_form(formats_->form);
 	return true;
 }
 
@@ -1412,13 +1263,13 @@ bool FormPreferences::FormatsBrowser()
 
 	fl_freeze_form(formats_->form);
 
-	Format const & f = formats_vec[i-1];
+	Format const & f = local_formats.Get(i-1);
 
-	fl_set_input(formats_->input_format, f.name.c_str());
-	fl_set_input(formats_->input_gui_name, f.prettyname.c_str());
-	fl_set_input(formats_->input_shrtcut, f.shortcut.c_str());
-	fl_set_input(formats_->input_extension, f.extension.c_str());
-	fl_set_input(formats_->input_viewer, f.viewer.c_str());
+	fl_set_input(formats_->input_format, f.name().c_str());
+	fl_set_input(formats_->input_gui_name, f.prettyname().c_str());
+	fl_set_input(formats_->input_shrtcut, f.shortcut().c_str());
+	fl_set_input(formats_->input_extension, f.extension().c_str());
+	fl_set_input(formats_->input_viewer, f.viewer().c_str());
 
 	fl_set_object_label( formats_->button_add, idex(_("Modify|#M")) );
 	fl_set_button_shortcut( formats_->button_add, scex(_("Modify|#M")), 1);
@@ -1434,63 +1285,19 @@ bool FormPreferences::FormatsBrowser()
 }
 
 
-void FormPreferences::FormatsClear() const
-{
-	// Re-create browser
-	fl_clear_browser(formats_->browser_all);
-	for (vector<Format>::const_iterator cit = formats_vec.begin();
-	     cit != formats_vec.end(); ++cit)
-		fl_addto_browser( formats_->browser_all, (*cit).name.c_str() );
-
-	fl_deselect_browser(formats_->browser_all);
-
-	fl_set_input(formats_->input_format, "");
-	fl_set_input(formats_->input_gui_name, "");
-	fl_set_input(formats_->input_shrtcut, "");
-	fl_set_input(formats_->input_extension, "");
-	fl_set_input(formats_->input_viewer, "");
-
-	fl_set_object_label( formats_->button_add, idex(_("Add|#A")) );
-	fl_set_button_shortcut( formats_->button_add, scex(_("Add|#A")), 1);
-
-	fl_deactivate_object(formats_->button_add);
-	fl_set_object_lcol(formats_->button_add, FL_INACTIVE);
-
-	fl_deactivate_object(formats_->button_delete);
-	fl_set_object_lcol(formats_->button_delete, FL_INACTIVE);
-}
-
-
 bool FormPreferences::FormatsDelete()
 {
 	string name = fl_get_input(formats_->input_format);
-	vector<Format>::iterator it = // non-const; it's modified below
-		find_if(formats_vec.begin(), formats_vec.end(),
-			compare_memfun(&Format::getname, name));
 
-	fl_freeze_form(formats_->form);
-
-	bool warning = ConvertersContainFormat( *it );
-	if( warning ) {
-		string str = N_("WARNING! Cannot remove a Format used by a Converter. Remove the converter first.");
-		printWarning( str );
-	}
-	
-	if (it == formats_vec.end() || warning) {
+	if (local_converters.FormatIsUsed(name)) {
+		printWarning(_("WARNING! Cannot remove a Format used by a Converter. Remove the converter first."));
 		fl_deactivate_object(formats_->button_delete);
 		fl_set_object_lcol(formats_->button_delete, FL_INACTIVE);
-	
-		fl_unfreeze_form(formats_->form);
 		return false;
 	}
 
-	formats_vec.erase(it);
-	FormatsClear();
-	
-	// Mustn't forget to update the Formats available to the converters
-	ConvertersUpdateChoices();
-		
-	fl_unfreeze_form(formats_->form);
+	local_formats.Delete(name);
+	FormatsUpdateBrowser();
 	return true;
 }
 
@@ -1498,36 +1305,14 @@ bool FormPreferences::FormatsDelete()
 bool FormPreferences::FormatsInput()
 {
 	string name = fl_get_input(formats_->input_format);
-
-	int sel = 0;
-	if( !name.empty() ) {
-		for( int i = 0;
-		     i < fl_get_browser_maxline(formats_->browser_all); ++i ) {
-			string str =
-				fl_get_browser_line( formats_->browser_all,
-						     i+1 );
-			if( str == name ) {
-				sel = i+1;
-				break;
-			}
-		}
-	}
-	
+	int sel = local_formats.GetNumber(name);
 	fl_freeze_form(formats_->form);
 
-	if( sel == 0 ) {
+	if (sel < 0) {
 		fl_set_object_label( formats_->button_add,
 				     idex(_("Add|#A")) );
 		fl_set_button_shortcut( formats_->button_add,
 					scex(_("Add|#A")), 1);
-
-		if( name.empty() ) {
-			fl_deactivate_object(formats_->button_add);
-			fl_set_object_lcol(formats_->button_add, FL_INACTIVE);
-		} else {
-			fl_activate_object(formats_->button_add);
-			fl_set_object_lcol(formats_->button_add, FL_BLACK);
-		}
 
 		fl_deselect_browser(formats_->browser_all);
 
@@ -1540,10 +1325,9 @@ bool FormPreferences::FormatsInput()
 		fl_set_button_shortcut( formats_->button_add,
 					scex(_("Modify|#M")), 1);
 
-		int top = sel-6;
-		if( top < 1 ) top = 0;
+		int top = max(sel-5, 0);
 		fl_set_browser_topline(formats_->browser_all, top);
-		fl_select_browser_line(formats_->browser_all, sel);
+		fl_select_browser_line(formats_->browser_all, sel+1);
 		
 		fl_activate_object(formats_->button_add);
 		fl_set_object_lcol(formats_->button_add, FL_BLACK);
@@ -1552,8 +1336,17 @@ bool FormPreferences::FormatsInput()
 		fl_set_object_lcol(formats_->button_delete, FL_BLACK);
 	}
 
+	string prettyname = fl_get_input(formats_->input_gui_name);
+	if (name.empty() || prettyname.empty()) {
+		fl_deactivate_object(formats_->button_add);
+		fl_set_object_lcol(formats_->button_add, FL_INACTIVE);
+	} else {
+		fl_activate_object(formats_->button_add);
+		fl_set_object_lcol(formats_->button_add, FL_BLACK);
+	}
+
 	fl_unfreeze_form(formats_->form);
-	return true;
+	return false;
 }
 
 

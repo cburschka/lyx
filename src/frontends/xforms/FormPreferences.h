@@ -46,6 +46,7 @@ struct FD_form_printer;
 struct FD_form_screen_fonts;
 struct FD_form_spellchecker;
 
+
 /** This class provides an XForms implementation of the FormPreferences Dialog.
     The preferences dialog allows users to set/save their preferences.
  */
@@ -88,7 +89,7 @@ private:
 	 */
 	
 	///
-	void applyColors() const;
+	void applyColors(); // not const as modifies modifiedXformPrefs.
 	///
 	void applyConverters() const;
 	///
@@ -224,6 +225,8 @@ private:
 	///
 	bool ColorsBrowserX11() const;
 	///
+	bool ColorsBrowseDatabase() const;
+	///
 	bool ColorsDatabase() const;
 	///
 	void ColorsLoadBrowserLyX();
@@ -234,30 +237,30 @@ private:
 	///
 	bool ColorsRGB() const;
 	///
-	int ColorsSearchEntry(RGB const &) const;
+	int ColorsSearchEntry(RGBColor const &) const;
 
 	///
 	bool ConvertersAdd();
 	///
 	bool ConvertersBrowser();
 	///
-	void ConvertersClear() const;
-	///
-	bool ConvertersContainFormat( Format const &) const;
+	void ConvertersUpdateBrowser();
 	///
 	bool ConvertersDelete();
 	///
 	bool ConvertersInput();
 	///
-	bool ConvertersSetCommand( Command & ) const;
+	string const ConverterGetFrom() const;
 	///
-	void ConvertersUpdateChoices();
+	string const ConverterGetTo() const;
+	///
+	void ConvertersUpdateChoices() const;
 
 	bool FormatsAdd();
 	///
 	bool FormatsBrowser();
 	///
-	void FormatsClear() const;
+	void FormatsUpdateBrowser();
 	///
 	bool FormatsDelete();
 	///
@@ -347,22 +350,21 @@ private:
 	///
 	Combox * combo_kbmap_2;
 
-	/// A vector of Formats, to be manipulated in the Format browser.
-	std::vector<Format> formats_vec;
-	/// A vector of Commands, to be manipulated in the Converter browser.
-	std::vector<Command> commands_vec;
 	/// A vector of RGB colors and associated name.
 	static std::vector<X11Color> colorDB;
 	/// A vector of xform RGB colors and associated name.
-	static std::vector<XFormColor> xformColorDB;
+	static std::vector<XformColor> xformColorDB;
 	/** A collection of kmap files.
 	    First entry is the file name, full path.
 	    Second entry is the shorthand, as appears in the fl_choice.
 	    Eg, system_lyxdir/kbd/american2.kmap, american2
 	*/
 	static std::pair<std::vector<string>, std::vector<string> > dirlist;
-	///
+	/** Flag whether a warning has been posted to the text window.
+	    If so, don't redraw the window when the mouse leaves an object. */
 	bool warningPosted;
+	/// Flag whether Xforms colors have been changed since last file save.
+	bool modifiedXformPrefs;
 };
 
 #endif

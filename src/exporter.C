@@ -14,24 +14,43 @@
 #pragma implementation
 #endif
 
+#include <algorithm>
+
 #include "exporter.h"
 #include "buffer.h"
 #include "lyx_cb.h" //ShowMessage()
 #include "support/filetools.h"
 #include "lyxrc.h"
 #include "converter.h"
+#include "lyx_gui_misc.h" //WriteAlert
 
 using std::vector;
+using std::find;
 
-bool Exporter::Export(Buffer * buffer, string const & format0,
+bool Exporter::Export(Buffer * buffer, string const & format,
 		      bool put_in_tempdir, string & result_file)
 {
-	string format;
-	string using_format = Converter::SplitFormat(format0, format);
-
-	string backend_format = (format == "text") 
-		? format : BufferFormat(buffer);
-	bool only_backend = backend_format == format;
+	string backend_format;
+	vector<string> backends = Backends(buffer);
+	if (find(backends.begin(), backends.end(), format) == backends.end()) {
+		for (vector<string>::const_iterator it = backends.begin();
+		     it != backends.end(); ++it) {
+			Converters::EdgePath p =
+				converters.GetPath(*it,	format);
+			if (!p.empty()) {
+				lyxrc.pdf_mode = converters.UsePdflatex(p);
+				backend_format = *it;
+				break;
+			}
+		}
+		if (backend_format.empty()) {
+			WriteAlert(_("Can not export file"),
+				   _("No information for exporting to ")
+				   + formats.PrettyName(format));
+			return false;
+		}
+	} else
+		backend_format = format;
 
 	string filename = buffer->getLatexName(false);
 	if (!buffer->tmppath.empty())
@@ -49,7 +68,7 @@ bool Exporter::Export(Buffer * buffer, string const & format0,
 	else if (buffer->isDocBook())
 		buffer->makeDocBookFile(filename, true);
 	// LaTeX backend
-	else if (only_backend)
+	else if (backend_format == format)
 		buffer->makeLaTeXFile(filename, string(), true);
 	else
 		buffer->makeLaTeXFile(filename, buffer->filepath, false);
@@ -57,9 +76,8 @@ bool Exporter::Export(Buffer * buffer, string const & format0,
 	string outfile_base = (put_in_tempdir)
 		? filename : buffer->getLatexName(false);
 
-	if (!Converter::Convert(buffer, filename, outfile_base,
-				backend_format, format, using_format,
-				result_file))
+	if (!converters.Convert(buffer, filename, outfile_base,
+				backend_format, format, result_file))
 		return false;
 
 	if (!put_in_tempdir)
@@ -78,32 +96,38 @@ bool Exporter::Export(Buffer * buffer, string const & format,
 	return Export(buffer, format, put_in_tempdir, result_file);
 }
 
-bool Exporter::Preview(Buffer * buffer, string const & format0)
+bool Exporter::Preview(Buffer * buffer, string const & format)
 {
 	string result_file;
-	if (!Export(buffer, format0, true, result_file))
+	if (!Export(buffer, format, true, result_file))
 		return false;
-	string format;
-	Converter::SplitFormat(format0, format);
 	return formats.View(buffer, result_file, format);
 }
 
 
 bool Exporter::IsExportable(Buffer const * buffer, string const & format)
 {
-	return format == "text" ||
-		Converter::IsReachable(BufferFormat(buffer), format);
+	vector<string> backends = Backends(buffer);
+	for (vector<string>::const_iterator it = backends.begin();
+	     it != backends.end(); ++it)
+		if (converters.IsReachable(*it, format))
+			return true;
+	return false;
 }
 
 
-vector<FormatPair> const
+vector<Format const *> const
 Exporter::GetExportableFormats(Buffer const * buffer, bool only_viewable)
 {
-	vector<FormatPair> result = 
-		Converter::GetReachable(BufferFormat(buffer), only_viewable);
-	Format * format = formats.GetFormat("text");
-	if (format && (!only_viewable || !format->viewer.empty()))
-		result.push_back(FormatPair(format , 0, ""));
+	vector<string> backends = Backends(buffer);
+	vector<Format const *> result = 
+		converters.GetReachable(backends[0], only_viewable, true);
+	for (vector<string>::const_iterator it = backends.begin() + 1;
+	     it != backends.end(); ++it) {
+		vector<Format const *>  r =
+			converters.GetReachable(*it, only_viewable, false);
+		result.insert(result.end(), r.begin(), r.end());
+	}
 	return result;
 }
 
@@ -118,4 +142,12 @@ string const Exporter::BufferFormat(Buffer const * buffer)
 		return "literate";
 	else
 		return "latex";
+}
+
+vector<string> const Exporter::Backends(Buffer const * buffer)
+{
+	vector<string> v;
+	v.push_back(BufferFormat(buffer));
+	v.push_back("text");
+	return v;
 }
