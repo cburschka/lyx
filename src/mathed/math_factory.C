@@ -10,6 +10,7 @@
 #include "math_kerninset.h"
 #include "math_macro.h"
 #include "math_macrotable.h"
+#include "math_macroarg.h"
 #include "math_notinset.h"
 #include "math_rootinset.h"
 #include "math_spaceinset.h"
@@ -66,6 +67,9 @@ MathInset * createMathInset(latexkeys const * l)
 MathInset * createMathInset(string const & s)
 {
 	//cerr << "creating inset with name: '" << s << "'\n";
+	if (s.size() == 2 && s[0] == '#' && s[1] >= '1' && s[1] <= '9')
+		return new MathMacroArgument(s[1] - '0');
+
 	latexkeys const * l = in_word_set(s);
 	if (l)
 		return createMathInset(l);

@@ -27,6 +27,8 @@ public:
 	void writeNormal(std::ostream &) const;
 	///
 	void substitute(MathMacro const & macro);
+	///
+	bool isActive() const { return false; }
 
 private:
 	/// A number between 1 and 9
