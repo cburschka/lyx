@@ -20,11 +20,6 @@
 ##    the Free Software Foundation, Inc., 59 Temple Place - Suite 330,
 ##    Boston, MA 02111-1307, USA.       
 
-## ------------------------------------------------------------------------
-## Find a file (or one of more files in a list of dirs)
-## ------------------------------------------------------------------------
-##
-
 AC_DEFUN(QT2_MOC_ERROR_MESSAGE,
 [
     AC_MSG_ERROR([No Qt meta object compiler (moc) found!
@@ -103,8 +98,16 @@ AC_DEFUN(QT2_AC_PATH_MOC,
 [
    QT2_FIND_PATH(moc, MOC, [$ac_qt2_bindir $QTDIR/bin \
             /usr/bin /usr/X11R6/bin /usr/lib/qt2/bin \
-            /usr/local/qt2/bin /usr/local/qt/bin /usr/lib/qt/bin], [QT2_MOC_ERROR_MESSAGE])
+            /usr/local/qt2/bin /usr/local/qt/bin /usr/lib/qt/bin],)
 
+   QT2_FIND_PATH(moc2, MOC2, [$ac_qt2_bindir $QTDIR/bin \
+            /usr/bin /usr/X11R6/bin /usr/lib/qt2/bin \
+            /usr/local/qt2/bin /usr/local/qt/bin /usr/lib/qt/bin],)
+ 
+   if ! test -z "$MOC2"; then
+     MOC="$MOC2";
+   fi 
+ 
    if test -z "$MOC"; then
      if test -n "$ac_cv_path_qt2moc"; then
        output=`eval "$ac_cv_path_qt2moc --help 2>&1 | sed -e '1q' | grep Qt"`
@@ -113,7 +116,7 @@ AC_DEFUN(QT2_AC_PATH_MOC,
      echo "configure:__oline__: moc output: $output" >&AC_FD_CC
 
      if test -z "$output"; then
-       MOC_ERROR_MESSAGE
+       QT2_MOC_ERROR_MESSAGE
     fi
    fi
 
@@ -135,31 +138,23 @@ int main() {
 EOF
 ])
 
-AC_DEFUN(QT2_CHECK_DIRECT,
+dnl check for -lqt2 not -lqt
+AC_DEFUN(QT2_CHECK_LIB_NAME,
 [
-AC_MSG_CHECKING([if Qt2 compiles without flags])
-AC_CACHE_VAL(cv_qt2_direct,
-[
-ac_LD_LIBRARY_PATH_safe=$LD_LIBRARY_PATH
-ac_LIBRARY_PATH="$LIBRARY_PATH"
 ac_cxxflags_safe="$CXXFLAGS"
 ac_ldflags_safe="$LDFLAGS"
 ac_libs_safe="$LIBS"
 
-CXXFLAGS="$CXXFLAGS -I$qt2_includes"
-LDFLAGS="$X_LDFLAGS"
-LIBS="-lqt -lXext -lX11 $LIBSOCKET"
-LD_LIBRARY_PATH=
-export LD_LIBRARY_PATH
-LIBRARY_PATH=
-export LIBRARY_PATH
+CXXFLAGS="$CXXFLAGS -I$qt2_incdir"
+LDFLAGS="-L$qt2_libdir $X_LDFLAGS"
+LIBS="$LIBS -lqt2 -lXext -lX11 $LIBSOCKET"
 
 QT2_PRINT_PROGRAM
 
 if AC_TRY_EVAL(ac_link) && test -s conftest; then
-  cv_qt2_direct="yes"
+  rm -f conftest*
+  ac_qt2_name="-lqt2"
 else
-  cv_qt2_direct="no"
   echo "configure: failed program was:" >&AC_FD_CC
   cat conftest.$ac_ext >&AC_FD_CC
 fi
@@ -167,20 +162,6 @@ rm -f conftest*
 CXXFLAGS="$ac_cxxflags_safe"
 LDFLAGS="$ac_ldflags_safe"
 LIBS="$ac_libs_safe"
-
-LD_LIBRARY_PATH="$ac_LD_LIBRARY_PATH_safe"
-export LD_LIBRARY_PATH
-LIBRARY_PATH="$ac_LIBRARY_PATH"
-export LIBRARY_PATH
-])
-
-if test "$cv_qt2_direct" = "yes"; then
-  AC_MSG_RESULT(yes)
-  $1
-else
-  AC_MSG_RESULT(no)
-  $2
-fi
 ])
 
 ## ------------------------------------------------------------------------
@@ -198,22 +179,22 @@ qt2_includes=""
  
 AC_ARG_WITH(qt2-dir,
     [  --with-qt2-dir           where the root of Qt2 is installed ],
-    [  ac_qt2_includes="$withval"/include
-       ac_qt2_libraries="$withval"/lib
-       ac_qt2_bindir="$withval"/bin
+    [  ac_qt2_includes=`eval echo "$withval"/include`
+       ac_qt2_libraries=`eval echo "$withval"/lib`
+       ac_qt2_bindir=`eval echo "$withval"/bin`
     ])
 
 AC_ARG_WITH(qt2-includes,
     [  --with-qt2-includes      where the Qt2 includes are. ],
     [ 
-       ac_qt2_includes="$withval"
+       ac_qt2_includes=`eval echo "$withval"`
     ])
    
 qt2_libs_given=no
 
 AC_ARG_WITH(qt2-libraries,
     [  --with-qt2-libraries     where the Qt2 library is installed.],
-    [  ac_qt2_libraries="$withval"
+    [  ac_qt2_libraries=`eval echo "$withval"`
        qt2_libs_given=yes
     ])
 
@@ -241,30 +222,39 @@ for dir in $qt2_libdirs; do
   if test=`eval $try 2> /dev/null`; then qt2_libdir=$dir; break; else echo "tried $dir" >&AC_FD_CC ; fi
 done
 
-dnl AC_FIND_FILE(libqt.so.2.2.3 libqt.so.2.2 libqt.so.2 libqt2.so libqt.a libqt.sl, $qt2_libdirs, qt2_libdir)
+ac_qt2_name="-lqt"
+ 
+AC_FIND_FILE(libqt.so.2.2.3 libqt.so.2.2 libqt.so.2 libqt2.so libqt.a libqt.sl, $qt2_libdirs, qt2_libdir)
+ 
 ac_qt2_libraries="$qt2_libdir"
 
-ac_cxxflags_safe="$CXXFLAGS"
-ac_ldflags_safe="$LDFLAGS"
-ac_libs_safe="$LIBS"
+QT2_CHECK_LIB_NAME
 
-CXXFLAGS="$CXXFLAGS -I$qt2_incdir"
-LDFLAGS="-L$qt2_libdir $X_LDFLAGS"
-LIBS="$LIBS -lqt -lXext -lX11 $LIBSOCKET"
+if test "$ac_qt2_name" = "-lqt"; then
+  ac_qt2_libraries="$qt2_libdir"
 
-QT2_PRINT_PROGRAM
+  ac_cxxflags_safe="$CXXFLAGS"
+  ac_ldflags_safe="$LDFLAGS"
+  ac_libs_safe="$LIBS"
 
-if AC_TRY_EVAL(ac_link) && test -s conftest; then
+  CXXFLAGS="$CXXFLAGS -I$qt2_incdir"
+  LDFLAGS="-L$qt2_libdir $X_LDFLAGS"
+  LIBS="$LIBS -lqt -lXext -lX11 $LIBSOCKET"
+
+  QT2_PRINT_PROGRAM
+
+  if AC_TRY_EVAL(ac_link) && test -s conftest; then
+    rm -f conftest*
+  else
+      echo "configure: failed program was:" >&AC_FD_CC
+      cat conftest.$ac_ext >&AC_FD_CC
+      ac_qt2_libraries="NO"
+  fi
   rm -f conftest*
-else
-  echo "configure: failed program was:" >&AC_FD_CC
-  cat conftest.$ac_ext >&AC_FD_CC
-  ac_qt2_libraries="NO"
+  CXXFLAGS="$ac_cxxflags_safe"
+  LDFLAGS="$ac_ldflags_safe"
+  LIBS="$ac_libs_safe"
 fi
-rm -f conftest*
-CXXFLAGS="$ac_cxxflags_safe"
-LDFLAGS="$ac_ldflags_safe"
-LIBS="$ac_libs_safe"
 
 if test "$ac_qt2_includes" = NO || test "$ac_qt2_libraries" = NO; then
   ac_cv_have_qt2="have_qt2=no"
@@ -285,6 +275,10 @@ else
 fi
 ])
 else
+  dnl libs and headers supplied. Need to check lib name
+  qt2_incdir="$ac_qt2_includes"
+  qt2_libdir="$ac_qt2_libraries" 
+  QT2_CHECK_LIB_NAME
   have_qt2="yes"
 fi
 
@@ -293,16 +287,12 @@ eval "$ac_cv_have_qt2"
 if test "$have_qt2" != yes; then
   AC_MSG_RESULT([$have_qt2]);
 else
-  ac_cv_have_qt2="have_qt2=yes \
+  ac_cv_have_qt2="have_qt2=yes ac_qt2_name=$ac_qt2_name \
     ac_qt2_includes=$ac_qt2_includes ac_qt2_libraries=$ac_qt2_libraries"
   AC_MSG_RESULT([libraries $ac_qt2_libraries, headers $ac_qt2_includes])
  
   qt2_libraries="$ac_qt2_libraries"
   qt2_includes="$ac_qt2_includes"
-fi
-
-if test ! "$qt2_libs_given" = "yes"; then
-QT2_CHECK_DIRECT(qt2_libraries= ,[])
 fi
 
 dnl check it is Qt2
@@ -342,7 +332,7 @@ else
  all_libraries="$QT2_LDFLAGS $all_libraries"
 fi
 
-QT2_LIBS="-lqt"
+QT2_LIBS="$ac_qt2_name"
  
 AC_SUBST(QT2_INCLUDES)
 AC_SUBST(QT2_LDFLAGS)
