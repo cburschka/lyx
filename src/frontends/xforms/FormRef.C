@@ -107,10 +107,9 @@ void FormRef::update()
 
 		fl_clear_choice(dialog_->choice_buffer);
 		fl_addto_choice(dialog_->choice_buffer, choice.c_str());
-
-		fl_set_choice(dialog_->choice_buffer,
-			      controller().getBufferNum() + 1);
 	}
+
+	fl_set_choice(dialog_->choice_buffer, controller().getBufferNum() + 1);
 
 	string const name = controller().getBufferName(fl_get_choice(dialog_->choice_buffer) - 1);
 	refs_ = controller().getLabelList(name);
