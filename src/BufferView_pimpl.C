@@ -908,12 +908,12 @@ bool BufferView::Pimpl::workAreaDispatch(FuncRequest const & cmd)
 			cmd1.y += bv_->top_y();
 			res = bv_->cursor().innerText()->dispatch(cmd1);
 		}
-			
+
 		if (bv_->fitCursor() || res.update()) {
 			bv_->update();
 			bv_->cursor().updatePos();
 		}
-		
+
 		return true;
 	}
 
@@ -937,14 +937,14 @@ bool BufferView::Pimpl::workAreaDispatch(FuncRequest const & cmd)
 		// handle this event.
 
 		// built temporary path to inset
-		InsetOld * inset = insetFromCoords(bv_, cmd.x, cmd.y); 
+		InsetOld * inset = insetFromCoords(bv_, cmd.x, cmd.y);
 		FuncRequest cmd1(cmd, bv_);
 		DispatchResult res;
 
 		// try to dispatch to that inset
 		if (inset) {
 			FuncRequest cmd2 = cmd1;
-			lyxerr << "dispatching action " << cmd2.action 
+			lyxerr << "dispatching action " << cmd2.action
 			       << " to inset " << inset << endl;
 			cmd2.x -= inset->x();
 			cmd2.y -= inset->y();
@@ -957,7 +957,7 @@ bool BufferView::Pimpl::workAreaDispatch(FuncRequest const & cmd)
 			switch (res.val()) {
 				case FINISHED:
 				case FINISHED_RIGHT:
-				case FINISHED_UP: 
+				case FINISHED_UP:
 				case FINISHED_DOWN:
 					theTempCursor.pop();
 					bv_->cursor() = theTempCursor;
@@ -982,7 +982,7 @@ bool BufferView::Pimpl::workAreaDispatch(FuncRequest const & cmd)
 			res = bv_->cursor().innerText()->dispatch(cmd1);
 			if (bv_->fitCursor() || res.update())
 				bv_->update();
-			
+
 			//return DispatchResult(true, true);
 		}
 		// see workAreaKeyPress
@@ -1350,5 +1350,3 @@ void BufferView::Pimpl::updateParagraphDialog()
 	data = "update " + tostr(accept) + '\n' + data;
 	bv_->owner()->getDialogs().update("paragraph", data);
 }
-
-

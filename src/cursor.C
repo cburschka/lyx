@@ -88,7 +88,7 @@ DispatchResult LCursor::dispatch(FuncRequest const & cmd0)
 				pop(i);
 				cmd = FuncRequest(bv_, LFUN_FINISHED_RIGHT);
 				break;
-			case FINISHED_UP: 
+			case FINISHED_UP:
 				pop(i);
 				cmd = FuncRequest(bv_, LFUN_FINISHED_UP);
 				break;
@@ -174,7 +174,7 @@ void LCursor::updatePos()
 void LCursor::getDim(int & asc, int & desc) const
 {
 	LyXText * txt = innerText();
-	
+
 	if (txt) {
 		Row const & row = *txt->cursorRow();
 		asc = row.baseline();
@@ -217,7 +217,7 @@ UpdatableInset * LCursor::innerInsetOfType(int code) const
 	return 0;
 }
 
-	
+
 InsetTabular * LCursor::innerInsetTabular() const
 {
 	return static_cast<InsetTabular *>

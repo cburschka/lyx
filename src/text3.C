@@ -263,7 +263,7 @@ InsetOld * LyXText::checkInsetHit(int x, int y)
 		       bv()->top_y() - yo_,
 		       bv()->top_y() - yo_ + bv()->workHeight(),
 		       pit, end);
-	
+
 	lyxerr << "checkInsetHit: x: " << x << " y: " << y << endl;
 	for ( ; pit != end; ++pit) {
 		InsetList::iterator iit = pit->insetlist.begin();
@@ -394,7 +394,7 @@ void LyXText::cursorNext()
 		// simplest solution is to move to the next row instead.
 		cursorDown(true);
 	}
-	
+
 	bv()->updateScrollbar();
 	finishUndo();
 }
@@ -679,7 +679,7 @@ DispatchResult LyXText::dispatch(FuncRequest const & cmd)
 		if (!selection.mark())
 			clearSelection();
 		finishChange(bv, false);
-		if (cursorRow() == firstRow())
+		if (cursorPar() == firstPar() && cursorRow() == firstRow())
 			return DispatchResult(false, FINISHED_UP);
 		cursorPrevious();
 		break;
@@ -688,7 +688,7 @@ DispatchResult LyXText::dispatch(FuncRequest const & cmd)
 		if (!selection.mark())
 			clearSelection();
 		finishChange(bv, false);
-		if (cursorRow() == lastRow())
+		if (cursorPar() == lastPar() && cursorRow() == lastRow())
 			return DispatchResult(false, FINISHED_DOWN);
 		cursorNext();
 		break;
@@ -1285,7 +1285,7 @@ DispatchResult LyXText::dispatch(FuncRequest const & cmd)
 
 		// Clear the selection
 		clearSelection();
-	
+
 		// Right click on a footnote flag opens float menu
 		if (cmd.button() == mouse_button::button3) {
 			selection_possible = false;
@@ -1323,7 +1323,7 @@ DispatchResult LyXText::dispatch(FuncRequest const & cmd)
 			return DispatchResult(true, false);
 
 		selection_possible = false;
-		
+
 		if (cmd.button() == mouse_button::button2)
 			break;
 
@@ -1521,7 +1521,7 @@ DispatchResult LyXText::dispatch(FuncRequest const & cmd)
 	case LFUN_FREEFONT_UPDATE:
 		update_and_apply_freefont(bv, this, cmd.argument);
 		break;
-	
+
 	case LFUN_FINISHED_LEFT:
 		lyxerr << "swallow LFUN_FINISHED_LEFT" << endl;
 		if (rtl())

@@ -42,7 +42,7 @@ void InsetCharStyle::init()
 }
 
 
-InsetCharStyle::InsetCharStyle(BufferParams const & bp, 
+InsetCharStyle::InsetCharStyle(BufferParams const & bp,
 				CharStyles::iterator cs)
 	: InsetCollapsable(bp)
 {
@@ -212,4 +212,3 @@ void InsetCharStyleParams::read(LyXLex & lex)
 		type = lex.getString();
 	}
 }
-

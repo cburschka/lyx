@@ -368,7 +368,7 @@ ParIterator::ParIterator(PosIterator const & pos)
 	: pimpl_(new Pimpl)
 {
 	int const size = pos.stack_.size();
-	
+
 	for (int i = 0; i < size; ++i) {
 		PosIteratorItem const & it = pos.stack_[i];
 		ParPosition pp(it.pit, *it.pl);

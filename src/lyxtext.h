@@ -49,23 +49,16 @@ class VSpace;
 // The inheritance from TextCursor should go. It's just there to ease
 // transition...
 class LyXText : public TextCursor {
+	// Public Functions
 public:
 	/// Constructor
 	LyXText(BufferView *, InsetText *, bool ininset, ParagraphList & plist);
 
+	// Copy assignment
+	LyXText & operator=(LyXText const &);
+
 	void init(BufferView *);
-	///
-	int height;
-	///
-	unsigned int width;
-	/// the current font settings
-	LyXFont current_font;
-	/// the current font
-	LyXFont real_current_font;
-	/// our buffer's default layout font
-	LyXFont defaultfont_;
-	///
-	InsetText * inset_owner;
+
 
 	/// update all cached row positions
 	void updateRowPositions();
@@ -120,10 +113,6 @@ public:
 
 	/// rebreaks the cursor par
 	void redoParagraph();
-private:
-	/// rebreaks the given par
-	void redoParagraphInternal(ParagraphList::iterator pit);
-public:
 
 	///
 	void toggleFree(LyXFont const &, bool toggleall = false);
@@ -151,10 +140,6 @@ public:
 	BufferView * bv() const;
 
 	friend class LyXScreen;
-
-public:
-	/// only the top-level LyXText has this non-zero
-	BufferView * bv_owner;
 
 	/// returns an iterator pointing to a cursor paragraph
 	ParagraphList::iterator getPar(LyXCursor const & cursor) const;
@@ -320,24 +305,6 @@ public:
 	///
 	int workWidth() const;
 
-private:
-	///
-	float getCursorX(ParagraphList::iterator pit,
-	     Row const & row, lyx::pos_type pos, bool boundary) const;
-	/// used in setlayout
-	void makeFontEntriesLayoutSpecific(BufferParams const &, Paragraph & par);
-
-	/// Calculate and set the height of the row
-	void setHeightOfRow(ParagraphList::iterator, Row & row);
-
-	// fix the cursor `cur' after a characters has been deleted at `where'
-	// position. Called by deleteEmptyParagraphMechanism
-	void fixCursorAfterDelete(LyXCursor & cur, LyXCursor const & where);
-
-	/// delete double space (false) or empty paragraphs (true) around old_cursor
-	bool deleteEmptyParagraphMechanism(LyXCursor const & old_cursor);
-
-public:
 	/** Updates all counters starting BEHIND the row. Changed paragraphs
 	 * with a dynamic left margin will be rebroken. */
 	void updateCounters();
@@ -369,46 +336,6 @@ public:
 	 * the cursor and when creating a visible row */
 	void prepareToPrint(ParagraphList::iterator pit, Row & row) const;
 
-private:
-	///
-	void setCounter(Buffer const &, ParagraphList::iterator pit);
-	///
-	void deleteWordForward();
-	///
-	void deleteWordBackward();
-	///
-	void deleteLineForward();
-
-	/// sets row.end to the pos value *after* which a row should break.
-	/// for example, the pos after which isNewLine(pos) == true
-	void rowBreakPoint(ParagraphList::iterator pit, Row & row) const;
-
-	/// sets row.witdh to the minimum space a row needs on the screen in pixel
-	void fill(ParagraphList::iterator pit, Row & row, int workwidth) const;
-
-	/**
-	 * returns the minimum space a manual label needs on the
-	 * screen in pixels
-	 */
-	int labelFill(ParagraphList::iterator pit, Row const & row) const;
-
-	/// FIXME
-	int labelEnd(ParagraphList::iterator pit, Row const & row) const;
-
-	///
-	void charInserted();
-	/// set 'number' font property
-	void number();
-	/// is the cursor paragraph right-to-left?
-	bool rtl() const;
-
-public:
-	///
-	mutable Bidi bidi;
-	///
-	bool in_inset_;
-	///
-	ParagraphList * paragraphs_;
 	//
 	// special owner functions
 	///
@@ -417,6 +344,13 @@ public:
 	/// return true if this is owned by an inset.
 	bool isInInset() const;
 
+	///
+	ParagraphList::iterator firstPar() const;
+	///
+	ParagraphList::iterator lastPar() const;
+	///
+	ParagraphList::iterator endPar() const;
+	
 	/// return first row of text
 	RowList::iterator firstRow() const;
 	/// return last row of text
@@ -461,6 +395,91 @@ public:
 	///
 	bool checkAndActivateInset(bool front);
 
+
+	// Public Variables
+public:
+	///
+	int height;
+	///
+	unsigned int width;
+	/// the current font settings
+	LyXFont current_font;
+	/// the current font
+	LyXFont real_current_font;
+	/// our buffer's default layout font
+	LyXFont defaultfont_;
+	///
+	InsetText * inset_owner;
+
+	/// only the top-level LyXText has this non-zero
+	BufferView * bv_owner;
+
+	///
+	mutable Bidi bidi;
+	///
+	bool in_inset_;
+	///
+	ParagraphList * paragraphs_;
+
+	/// absolute document pixel coordinates of this LyXText
+	int xo_;
+	int yo_;
+
+
+	// Private Functions
+private:
+	/// rebreaks the given par
+	void redoParagraphInternal(ParagraphList::iterator pit);
+
+	///
+	float getCursorX(ParagraphList::iterator pit,
+	     Row const & row, lyx::pos_type pos, bool boundary) const;
+	/// used in setlayout
+	void makeFontEntriesLayoutSpecific(BufferParams const &, Paragraph & par);
+
+	/// Calculate and set the height of the row
+	void setHeightOfRow(ParagraphList::iterator, Row & row);
+
+	// fix the cursor `cur' after a characters has been deleted at `where'
+	// position. Called by deleteEmptyParagraphMechanism
+	void fixCursorAfterDelete(LyXCursor & cur, LyXCursor const & where);
+
+	/// delete double space (false) or empty paragraphs (true) around old_cursor
+	bool deleteEmptyParagraphMechanism(LyXCursor const & old_cursor);
+
+	///
+	void setCounter(Buffer const &, ParagraphList::iterator pit);
+	///
+	void deleteWordForward();
+	///
+	void deleteWordBackward();
+	///
+	void deleteLineForward();
+
+	/// sets row.end to the pos value *after* which a row should break.
+	/// for example, the pos after which isNewLine(pos) == true
+	void rowBreakPoint(ParagraphList::iterator pit, Row & row) const;
+
+	/// sets row.witdh to the minimum space a row needs on the screen in pixel
+	void fill(ParagraphList::iterator pit, Row & row, int workwidth) const;
+
+	/**
+	 * returns the minimum space a manual label needs on the
+	 * screen in pixels
+	 */
+	int labelFill(ParagraphList::iterator pit, Row const & row) const;
+
+	/// FIXME
+	int labelEnd(ParagraphList::iterator pit, Row const & row) const;
+
+	///
+	void charInserted();
+	/// set 'number' font property
+	void number();
+	/// is the cursor paragraph right-to-left?
+	bool rtl() const;
+
+	// Private Variables
 private:
 
 	/// prohibit this as long as there are back pointers...
@@ -469,11 +488,6 @@ private:
 	// cache for cursorPar()
 	mutable ParagraphList::iterator cache_par_;
 	mutable int cache_pos_;
-
-public:
-	/// absolute document pixel coordinates of this LyXText
-	int xo_;
-	int yo_;
 };
 
 /// return the default height of a row in pixels, considering font zoom

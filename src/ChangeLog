@@ -1,3 +1,22 @@
+2003-11-22  Lars Gullik Bjonnes  <larsbj@gullik.net>
+
+	* text3.C (dispatch): [PRIOR] make sure that we do not compare
+	iterators from different ParagraphList containers.
+	[NEXT] ditto
+
+	* text2.C (LyXText): change order of initialization slightly
+	(operator=): new function. copy all variables except cache_par_
+	(moveUp): make sure that we do not compare iterators from
+	different ParagraphList constainers.
+	(moveDown): ditto
+
+	* text.C (firstPar): new function
+	(lastPar): new function
+	(endPar): new function
+
+	* lyxtext.h: move things around and group public functions, public
+	variables, private functions, private variables
+
 2003-11-21  Michael Schmitt  <michael.schmitt@teststep.org>
 
 	* factory.C: change call to InsetERT constructor to avoid
@@ -17,7 +36,7 @@
 
 2003-11-21  Alfredo Braunstein  <abraunst@lyx.org>
 
-	* lyxtext.h: x0_,y0_ -> xo_,yo_ 
+	* lyxtext.h: x0_,y0_ -> xo_,yo_
 	* text2.C (cursorUp, cursorDown): adjust + some cursorRow use
 	* text3.C (checkInsetHit): fix coordinates using absolute xo_,yo_
 	* rowpainter.C (paintRows): paint full paragraphs
@@ -67,8 +86,8 @@
 
 2003-11-14  Martin Vermeer  <martin.vermeer@hut.fi>
 
-	* lyxlayout.[Ch]: 
-	* output_docbook.C: XML sanitation: new layout 
+	* lyxlayout.[Ch]:
+	* output_docbook.C: XML sanitation: new layout
 	parameters InnerTag and CommandDepth
 
 2003-11-13  Martin Vermeer  <martin.vermeer@hut.fi>
@@ -123,7 +142,7 @@
 
 	* cursor.[Ch] (updatePos): new function for updating the y
 	position of the tip inset
-	* bufferview_funcs.C (put_selection_at): 
+	* bufferview_funcs.C (put_selection_at):
 	* BufferView_pimpl.C (workAreaDispatch): rationalise update calls
 
 2003-11-11  André Pönitz  <poenitz@gmx.net>
@@ -182,7 +201,7 @@
 
 2003-11-07  Alfredo Braunstein  <abraunst@libero.it>
 
-	* PosIterator.[Ch]: replace the stack with a vector, add inset 
+	* PosIterator.[Ch]: replace the stack with a vector, add inset
 	accesor
 	* iterators.[C]: adjust
 
@@ -204,9 +223,9 @@
 
 2003-11-05  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
-	* output_linuxdoc.h: 
-	* output_plaintext.h: 
-	* output.h: 
+	* output_linuxdoc.h:
+	* output_plaintext.h:
+	* output.h:
 	* output_docbook.h: add #include statements
 
 2003-11-05  José Matos  <jamatos@lyx.org>
@@ -232,12 +251,12 @@
 	* paragraph_pimpl.[Ch]:
 	* tabular.[Ch]: rename ascii to plaintext
 	and LatexRunParams to OutputParams.
-	
+
 2003-11-05  Alfredo Braunstein  <abraunst@libero.it>
 
 	* iterators.[Ch] (text): require bv argument
-	* undo.C (recordUndo): 
-	* lyxfunc.C (dispatch): 
+	* undo.C (recordUndo):
+	* lyxfunc.C (dispatch):
 	* bufferview_funcs.C (put_selection_at): adjust
 
 2003-11-05  João Luis M. Assirati  <assirati@fma.if.usp.br>
@@ -278,7 +297,7 @@
 	* BufferView.[Ch]:
 	* lyxtext.h:
 	* text.C: remove dead spellcheck code
-	
+
 2003-11-04  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* dispatchresult.h: add a val setter

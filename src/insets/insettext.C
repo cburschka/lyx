@@ -261,7 +261,7 @@ void InsetText::draw(PainterInfo & pi, int x, int y) const
 
 	text_.xo_ = x;
 	text_.yo_ = y + bv->top_y();
-	
+
 	paintTextInset(*bv, text_, x, y);
 
 	if (drawFrame_ == ALWAYS || drawFrame_ == LOCKED)
@@ -310,7 +310,7 @@ string const InsetText::editMessage() const
 void InsetText::sanitizeEmptyText(BufferView * bv)
 {
 	if (paragraphs.size() == 1
-			&& paragraphs.begin()->empty() 
+			&& paragraphs.begin()->empty()
 			&& bv->getParentLanguage(this) != text_.current_font.language()) {
 		LyXFont font(LyXFont::ALL_IGNORE);
 		font.setLanguage(bv->getParentLanguage(this));
@@ -360,7 +360,7 @@ DispatchResult InsetText::priv_dispatch(FuncRequest const & cmd,
 {
 	lyxerr << "InsetText::priv_dispatch (begin), act: "
 	       << cmd.action << " " << endl;
-	
+
 	BufferView * bv = cmd.view();
 	setViewCache(bv);
 

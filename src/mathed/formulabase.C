@@ -313,7 +313,7 @@ void InsetFormulaBase::edit(BufferView * bv, bool left)
 	lyxerr << "Called FormulaBase::edit" << endl;
 	releaseMathCursor(bv);
 	mathcursor = new MathCursor(this, left);
-	bv->cursor().push(this); 
+	bv->cursor().push(this);
 	// if that is removed, we won't get the magenta box when entering an
 	// inset for the first time
 	bv->update();
@@ -327,7 +327,7 @@ void InsetFormulaBase::edit(BufferView * bv, int x, int y)
 	mathcursor = new MathCursor(this, true);
 	//metrics(bv);
 	mathcursor->setPos(x + xo_, y + yo_);
-	bv->cursor().push(this); 
+	bv->cursor().push(this);
 	// if that is removed, we won't get the magenta box when entering an
 	// inset for the first time
 	bv->update();

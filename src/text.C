@@ -1479,7 +1479,7 @@ LyXText::getRowNearY(int y, ParagraphList::iterator & pit) const
 	do {
 		--rit;
 	} while (rit != rbegin && int(pit->y + rit->y_offset()) > y);
-	
+
 	return rit;
 #else
 	pit = boost::prior(ownerParagraphs().end());
@@ -1507,15 +1507,33 @@ RowList::iterator LyXText::firstRow() const
 }
 
 
+ParagraphList::iterator LyXText::firstPar() const
+{
+	return ownerParagraphs().begin();
+}
+
+
 RowList::iterator LyXText::lastRow() const
 {
 	return boost::prior(endRow());
 }
 
 
+ParagraphList::iterator LyXText::lastPar() const
+{
+	return boost::prior(endPar());
+}
+
+
 RowList::iterator LyXText::endRow() const
 {
 	return ownerParagraphs().back().rows.end();
+}
+
+
+ParagraphList::iterator LyXText::endPar() const
+{
+	return ownerParagraphs().end();
 }
 
 

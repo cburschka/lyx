@@ -73,9 +73,35 @@ using std::string;
 LyXText::LyXText(BufferView * bv, InsetText * inset, bool ininset,
 	  ParagraphList & paragraphs)
 	: height(0), width(0), inset_owner(inset), bv_owner(bv),
-	  in_inset_(ininset), paragraphs_(&paragraphs),
-	  cache_pos_(-1), xo_(0), yo_(0)
+	  in_inset_(ininset), paragraphs_(&paragraphs), xo_(0), yo_(0),
+	  cache_pos_(-1)
 {}
+
+
+LyXText & LyXText::operator=(LyXText const & lt)
+{
+	// Copy all public variables
+	height = lt.height;
+	width = lt.width;
+	current_font = lt.current_font;
+	real_current_font = lt.real_current_font;
+	defaultfont_ = lt.defaultfont_;
+	inset_owner = lt.inset_owner;
+	bv_owner = lt.bv_owner;
+	bidi = lt.bidi;
+	in_inset_ = lt.in_inset_;
+	paragraphs_ = lt.paragraphs_;
+	xo_ = lt.xo_;
+	yo_ = lt.yo_;
+
+	// Copy all the private variables
+
+	// we cannot initailize a iterator with a singular iterator.
+	//cache_par_ = lt.cache_par_;
+	cache_pos_ = lt.cache_pos_;
+
+	return *this;
+}
 
 
 void LyXText::init(BufferView * bview)
@@ -275,7 +301,7 @@ void LyXText::toggleInset()
 }
 
 
-// used in setLayout 
+// used in setLayout
 // Asger is not sure we want to do this...
 void LyXText::makeFontEntriesLayoutSpecific(BufferParams const & params,
 					    Paragraph & par)
@@ -1029,7 +1055,7 @@ void LyXText::insertInset(InsetOld * inset)
 	// does not return the inset!
 	if (isHighlyEditableInset(inset))
 		cursorLeft(true);
-	
+
 	unFreezeUndo();
 }
 
@@ -1642,7 +1668,7 @@ DispatchResult LyXText::moveLeftIntern(bool front,
 
 DispatchResult LyXText::moveUp()
 {
-	if (cursorRow() == firstRow())
+	if (cursorPar() == firstPar() && cursorRow() == firstRow())
 		return DispatchResult(false, FINISHED_UP);
 	cursorUp(false);
 	clearSelection();
@@ -1652,7 +1678,7 @@ DispatchResult LyXText::moveUp()
 
 DispatchResult LyXText::moveDown()
 {
-	if (cursorRow() == lastRow())
+	if (cursorPar() == lastPar() && cursorRow() == lastRow())
 		return DispatchResult(false, FINISHED_DOWN);
 	cursorDown(false);
 	clearSelection();
@@ -1711,7 +1737,7 @@ void LyXText::cursorUp(bool selecting)
 	int x = bv()->x_target() - xo_;
 	int y = cursor.y() - row.baseline() - 1;
 	setCursorFromCoordinates(x, y);
-	
+
 	if (!selecting) {
 		int y_abs = y + yo_ - bv()->top_y();
 		InsetOld * inset_hit = checkInsetHit(bv()->x_target(), y_abs);

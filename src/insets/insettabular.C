@@ -445,7 +445,7 @@ void InsetTabular::lfunMouseMotion(FuncRequest const & cmd)
 void InsetTabular::edit(BufferView * bv, bool left)
 {
 	lyxerr << "InsetTabular::edit: " << this
-		<< " first text: " << tabular.cell_info[0][0].inset.getText(0) 
+		<< " first text: " << tabular.cell_info[0][0].inset.getText(0)
 		<< " first cell: " << &tabular.cell_info[0][0].inset << endl;
 
 	finishUndo();
@@ -1897,7 +1897,7 @@ bool InsetTabular::copySelection(BufferView * bv)
 				    true, true);
 
 	ostringstream os;
-	OutputParams const runparams;	
+	OutputParams const runparams;
 	paste_tabular->plaintext(*bv->buffer(), os, runparams,
 				 ownerPar(*bv->buffer(), this).params().depth(), true, '\t');
 	bv->stuffClipboard(os.str());
