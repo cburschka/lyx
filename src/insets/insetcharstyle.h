@@ -13,12 +13,11 @@
 #ifndef INSETCHARSTYLE_H
 #define INSETCHARSTYLE_H
 
-
 #include "insetcollapsable.h"
 #include "lyxtextclass.h"
 
 
- struct InsetCharStyleParams {
+struct InsetCharStyleParams {
 	///
 	void write(std::ostream & os) const;
 	///
@@ -44,8 +43,6 @@
 class InsetCharStyle : public InsetCollapsable {
 public:
 	///
-
-
 	InsetCharStyle(BufferParams const &, CharStyles::iterator);
 	/// Copy constructor
 	InsetCharStyle(InsetCharStyle const &);
@@ -88,6 +85,7 @@ protected:
 	virtual void priv_dispatch(LCursor & cur, FuncRequest & cmd);
 
 private:
+	///
 	friend class InsetCharStyleParams;
 
 	/// used by the constructors

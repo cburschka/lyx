@@ -62,58 +62,10 @@ size_t CursorSlice::ncols() const
 }
 
 
-CursorSlice::idx_type CursorSlice::idx() const
-{
-	return idx_;
-}
-
-
-CursorSlice::idx_type & CursorSlice::idx()
-{
-	return idx_;
-}
-
-
-CursorSlice::par_type CursorSlice::par() const
-{
-	return par_;
-}
-
-
-CursorSlice::par_type & CursorSlice::par()
-{
-	return par_;
-}
-
-
-CursorSlice::pos_type CursorSlice::pos() const
-{
-	return pos_;
-}
-
-
-CursorSlice::pos_type & CursorSlice::pos()
-{
-	return pos_;
-}
-
-
 CursorSlice::pos_type CursorSlice::lastpos() const
 {
 	BOOST_ASSERT(inset_);
 	return inset_->asMathInset() ? cell().size() : paragraph().size();
-}
-
-
-bool CursorSlice::boundary() const
-{
-	return boundary_;
-}
-
-
-bool & CursorSlice::boundary()
-{
-	return boundary_;
 }
 
 
@@ -163,7 +115,7 @@ Paragraph & CursorSlice::paragraph()
 {
 	// access to the main lyx text must be handled in the cursor
 	BOOST_ASSERT(text());
-	return *text()->getPar(par_);
+	return text()->getPar(par_);
 }
 
 
@@ -171,7 +123,7 @@ Paragraph const & CursorSlice::paragraph() const
 {
 	// access to the main lyx text must be handled in the cursor
 	BOOST_ASSERT(text());
-	return *text()->getPar(par_);
+	return text()->getPar(par_);
 }
 
 

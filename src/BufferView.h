@@ -23,6 +23,7 @@
 
 class Buffer;
 class Change;
+class DocumentIterator;
 class Encoding;
 class ErrorList;
 class FuncRequest;
@@ -35,7 +36,6 @@ class LyXScreen;
 class LyXView;
 class Painter;
 class ParIterator;
-class PosIterator;
 class TeXErrors;
 class UpdatableInset;
 
@@ -173,7 +173,8 @@ public:
 	///
 	void setCursor(ParIterator const & par, lyx::pos_type pos);
 	///
-	void putSelectionAt(PosIterator const & cur, int length, bool backwards);
+	void putSelectionAt(DocumentIterator const & cur,
+		int length, bool backwards);
 
 private:
 	///

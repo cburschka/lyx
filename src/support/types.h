@@ -28,7 +28,7 @@ namespace lyx {
 	/// a type for paragraph offsets
 	// FIXME: should be unsigned as well.
 	// however, simply changing it breaks a downward loop somewhere...
-	typedef ptrdiff_t  paroffset_type;
+	typedef ptrdiff_t  par_type;
 
 	/// a type for the nesting depth of a paragraph
 	typedef size_t     depth_type;

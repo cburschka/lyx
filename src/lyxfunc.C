@@ -389,14 +389,6 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 		if (!inset)
 			break;
 
-		// jump back to owner if an InsetText, so
-		// we get back to the InsetTabular or whatever
-		if (inset->lyxCode() == InsetOld::TEXT_CODE)
-			inset = inset->owner();
-		lyxerr << "inset 2: " << inset << endl;
-		if (!inset)
-			break;
-
 		InsetOld::Code code = inset->lyxCode();
 		switch (code) {
 			case InsetOld::TABULAR_CODE:
@@ -431,6 +423,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 		if (!buf)
 			enable = name == "aboutlyx"
 				|| name == "file"
+				|| name == "forks"
 				|| name == "preferences"
 				|| name == "texinfo";
 		else if (name == "print")
@@ -586,7 +579,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd, bool verbose)
 			bool const fw = action == LFUN_WORDFINDFORWARD;
 			string const data =
 				lyx::find::find2string(searched_string, true, false, fw);
-			view()->dispatch(FuncRequest(LFUN_WORD_FIND, data));
+			lyx::find::find(view(), FuncRequest(LFUN_WORD_FIND, data));
 			break;
 		}
 
@@ -694,13 +687,21 @@ void LyXFunc::dispatch(FuncRequest const & cmd, bool verbose)
 			break;
 
 		case LFUN_QUIT:
-#if 0
+#if 1
 			// test speed of DocumentIterator
 			lyxerr << "start" << endl;
 			for (DocumentIterator it(owner->buffer()->inset()), end;
 				it != end; it.forwardPos())
 				;
 			lyxerr << "end" << endl;
+#endif
+#if 1
+			// show some sizes
+			lyxerr << "sizeof Paragraph: " << sizeof(Paragraph) << endl;
+			lyxerr << "sizeof Spacing: " << sizeof(Spacing) << endl;
+			lyxerr << "sizeof LyXLength: " << sizeof(LyXLength) << endl;
+			lyxerr << "sizeof LyXFont: " << sizeof(LyXFont) << endl;
+			lyxerr << "sizeof LyXAlignment: " << sizeof(LyXAlignment) << endl;
 #endif
 			QuitLyX();
 			break;
@@ -1108,6 +1109,10 @@ void LyXFunc::dispatch(FuncRequest const & cmd, bool verbose)
 			break;
 		}
 
+		case LFUN_BREAKLINE: {
+#warning swallow 'Return' if the minibuffer is focused. But how?
+		}
+
 		default: {
 			DispatchResult res = view()->cursor().dispatch(cmd);
 			if (!res.dispatched());
@@ -1115,22 +1120,22 @@ void LyXFunc::dispatch(FuncRequest const & cmd, bool verbose)
 			break;
 		}
 		}
-	}
 
-	if (view()->available()) {
-		view()->fitCursor();
-		view()->update();
-		view()->cursor().updatePos();
-		// if we executed a mutating lfun, mark the buffer as dirty
-		if (getStatus(cmd).enabled()
-		    && !lyxaction.funcHasFlag(cmd.action, LyXAction::NoBuffer)
-		    && !lyxaction.funcHasFlag(cmd.action, LyXAction::ReadOnly))
-			view()->buffer()->markDirty();
-	}
+		if (view()->available()) {
+			view()->fitCursor();
+			view()->update();
+			view()->cursor().updatePos();
+			// if we executed a mutating lfun, mark the buffer as dirty
+			if (getStatus(cmd).enabled()
+					&& !lyxaction.funcHasFlag(cmd.action, LyXAction::NoBuffer)
+					&& !lyxaction.funcHasFlag(cmd.action, LyXAction::ReadOnly))
+				view()->buffer()->markDirty();
+		}
 
-	if (view()->cursor().inTexted()) {
-		view()->owner()->updateLayoutChoice();
-		sendDispatchMessage(getMessage(), cmd, verbose);
+		if (view()->cursor().inTexted()) {
+			view()->owner()->updateLayoutChoice();
+			sendDispatchMessage(getMessage(), cmd, verbose);
+		}
 	}
 }
 

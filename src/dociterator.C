@@ -11,6 +11,8 @@
 
 #include <boost/assert.hpp>
 
+using std::endl;
+
 
 DocumentIterator::DocumentIterator()
 {}
@@ -24,6 +26,7 @@ DocumentIterator::DocumentIterator(InsetBase & inset)
 
 InsetBase * DocumentIterator::nextInset()
 {
+	BOOST_ASSERT(!empty());
 	if (pos() == lastpos())
 		return 0;
 	if (inMathed()) 
@@ -34,6 +37,7 @@ InsetBase * DocumentIterator::nextInset()
 
 InsetBase * DocumentIterator::prevInset()
 {
+	BOOST_ASSERT(!empty());
 	if (pos() == 0)
 		return 0;
 	if (inMathed()) 
@@ -44,6 +48,7 @@ InsetBase * DocumentIterator::prevInset()
 
 InsetBase const * DocumentIterator::prevInset() const
 {
+	BOOST_ASSERT(!empty());
 	if (pos() == 0)
 		return 0;
 	if (inMathed()) 
@@ -54,6 +59,7 @@ InsetBase const * DocumentIterator::prevInset() const
 
 MathAtom const & DocumentIterator::prevAtom() const
 {
+	BOOST_ASSERT(!empty());
 	BOOST_ASSERT(pos() > 0);
 	return cell()[pos() - 1];
 }
@@ -61,6 +67,7 @@ MathAtom const & DocumentIterator::prevAtom() const
 
 MathAtom & DocumentIterator::prevAtom()
 {
+	BOOST_ASSERT(!empty());
 	BOOST_ASSERT(pos() > 0);
 	return cell()[pos() - 1];
 }
@@ -68,6 +75,7 @@ MathAtom & DocumentIterator::prevAtom()
 
 MathAtom const & DocumentIterator::nextAtom() const
 {
+	BOOST_ASSERT(!empty());
 	BOOST_ASSERT(pos() < lastpos());
 	return cell()[pos()];
 }
@@ -75,6 +83,7 @@ MathAtom const & DocumentIterator::nextAtom() const
 
 MathAtom & DocumentIterator::nextAtom()
 {
+	BOOST_ASSERT(!empty());
 	BOOST_ASSERT(pos() < lastpos());
 	return cell()[pos()];
 }
@@ -82,6 +91,7 @@ MathAtom & DocumentIterator::nextAtom()
 
 LyXText * DocumentIterator::text() const
 {
+	BOOST_ASSERT(!empty());
 	return top().text();
 }
 
@@ -225,11 +235,15 @@ InsetBase * DocumentIterator::innerInsetOfType(int code) const
 void DocumentIterator::forwardPos()
 {
 	CursorSlice & top = back();
-	//lyxerr << "XXX\n" << *this << std::endl;
+	//lyxerr << "XXX\n" << *this << endl;
+
+	// this is used twice and shows up in the profiler!
+	pos_type const lastp = lastpos();
 
 	// move into an inset to the right if possible
 	InsetBase * n = 0;
-	if (top.pos() != lastpos()) {
+
+	if (top.pos() != lastp) {
 		// this is impossible for pos() == size()
 		if (inMathed()) {
 			n = (top.cell().begin() + top.pos())->nucleus();
@@ -240,56 +254,65 @@ void DocumentIterator::forwardPos()
 	}
 
 	if (n && n->isActive()) {
-		//lyxerr << "... descend" << std::endl;
+		//lyxerr << "... descend" << endl;
 		push_back(CursorSlice(*n));
 		return;
 	}
 
-	// otherwise move on one cell back if possible
-	if (top.pos() < lastpos()) {
-		//lyxerr << "... next pos" << std::endl;
+	// otherwise move on one position if possible
+	if (top.pos() < lastp) {
+		//lyxerr << "... next pos" << endl;
 		++top.pos();
 		return;
 	}
-	//lyxerr << "... no next pos" << std::endl;
+	//lyxerr << "... no next pos" << endl;
 
-	// otherwise move on one cell back if possible
+	// otherwise move on one paragraph if possible
 	if (top.par() < lastpar()) {
-		//lyxerr << "... next par" << std::endl;
+		//lyxerr << "... next par" << endl;
 		++top.par();
 		top.pos() = 0;
 		return;
 	}
-	//lyxerr << "... no next par" << std::endl;
+	//lyxerr << "... no next par" << endl;
 
 	// otherwise try to move on one cell if possible
-	// [stupid hack for necessary for MathScriptInset]
-	while (top.idx() < lastidx()) {
-		//lyxerr << "... next idx" << std::endl;
+	if (top.idx() < lastidx()) {
+		//lyxerr << "... next idx" << endl;
 		++top.idx();
 		top.par() = 0;
 		top.pos() = 0;
-		if (top.inset().validCell(top.idx())) {
-			//lyxerr << "     ... ok" << std::endl;
-			return;
-		}
+		return;
 	}
-	//lyxerr << "... no next idx" << std::endl;
+	//lyxerr << "... no next idx" << endl;
 
-	// otherwise leave inset an jump over inset as a whole
+	// otherwise leave inset and jump over inset as a whole
 	pop_back();
 	// 'top' is invalid now...
 	if (size())
 		++back().pos();
-	//else
-	//	lyxerr << "... no slice left" << std::endl;
+}
+
+
+void DocumentIterator::forwardChar()
+{
+	forwardPos(); 
+	while (size() != 0 && pos() == lastpos())
+		forwardPos();
+}
+
+
+void DocumentIterator::backwardChar()
+{
+	lyxerr << "not implemented" << endl;
+	BOOST_ASSERT(false);
 }
 
 
 void DocumentIterator::forwardPar()
 {
 	CursorSlice & top = back();
-	lyxerr << "XXX " << *this << std::endl;
+	lyxerr << "XXX " << *this << endl;
 
 	// move into an inset to the right if possible
 	InsetBase * n = 0;
@@ -304,38 +327,34 @@ void DocumentIterator::forwardPar()
 	}
 
 	if (n && n->isActive()) {
-		lyxerr << "... descend" << std::endl;
+		lyxerr << "... descend" << endl;
 		push_back(CursorSlice(*n));
 		return;
 	}
 
 	// otherwise move on one cell back if possible
 	if (top.pos() < lastpos()) {
-		lyxerr << "... next pos" << std::endl;
+		lyxerr << "... next pos" << endl;
 		++top.pos();
 		return;
 	}
 
 	// otherwise move on one cell back if possible
 	if (top.par() < lastpar()) {
-		lyxerr << "... next par" << std::endl;
+		lyxerr << "... next par" << endl;
 		++top.par();
 		top.pos() = 0;
 		return;
 	}
 
 	// otherwise try to move on one cell if possible
-	// [stupid hack for necessary for MathScriptInset]
 	while (top.idx() < top.lastidx()) {
 		lyxerr << "... next idx" 
-			<< " was: " << top.idx() << " max: " << top.lastidx() << std::endl;
+			<< " was: " << top.idx() << " max: " << top.lastidx() << endl;
 		++top.idx();
 		top.par() = 0;
 		top.pos() = 0;
-		if (top.inset().validCell(top.idx())) {
-			lyxerr << "     ... ok" << std::endl;
-			return;
-		}
+		return;
 	}
 
 	// otherwise leave inset an jump over inset as a whole
@@ -369,7 +388,7 @@ DocumentIterator
 StableDocumentIterator::asDocumentIterator(InsetBase * inset) const
 {
 	// this function re-creates the cache of inset pointers
-	//lyxerr << "converting:\n" << *this << std::endl;
+	//lyxerr << "converting:\n" << *this << endl;
 	DocumentIterator dit;
 	for (size_t i = 0, n = data_.size(); i != n; ++i) {
 		dit.push_back(data_[i]);
@@ -377,7 +396,7 @@ StableDocumentIterator::asDocumentIterator(InsetBase * inset) const
 		if (i + 1 != n)
 			inset = dit.nextInset();
 	}
-	//lyxerr << "convert:\n" << *this << " to:\n" << dit << std::endl;
+	//lyxerr << "convert:\n" << *this << " to:\n" << dit << endl;
 	return dit;
 }
 

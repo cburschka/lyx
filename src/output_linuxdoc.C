@@ -17,6 +17,7 @@
 #include "bufferparams.h"
 #include "paragraph.h"
 #include "paragraph_funcs.h"
+#include "ParagraphList_fwd.h"
 #include "ParagraphParameters.h"
 #include "sgml.h"
 
@@ -134,7 +135,8 @@ void linuxdocParagraphs(Buffer const & buf,
 			break;
 		}
 
-		pit->simpleLinuxDocOnePar(buf, os, outerFont(pit, paragraphs),
+		pit->simpleLinuxDocOnePar(buf, os,
+			outerFont(pit - const_cast<ParagraphList&>(paragraphs).begin(), paragraphs),
 					  runparams, depth);
 
 		os << "\n";

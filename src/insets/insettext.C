@@ -107,7 +107,6 @@ void InsetText::init()
 	for (; pit != end; ++pit)
 		pit->setInsetOwner(this);
 	old_par = -1;
-	in_insetAllowed = false;
 }
 
 
@@ -201,8 +200,7 @@ void InsetText::draw(PainterInfo & pi, int x, int y) const
 	BufferView * bv = pi.base.bv;
 	bv->hideCursor();
 
-	if (!owner())
-		x += scroll();
+	x += scroll();
 	y += bv->top_y() - text_.ascent();
 
 	text_.draw(pi, x, y);
@@ -220,11 +218,10 @@ void InsetText::drawSelection(PainterInfo & pi, int x, int y) const
 
 void InsetText::drawFrame(Painter & pain, int x, int y) const
 {
-	int const ttoD2 = TEXT_TO_INSET_OFFSET / 2;
-	int const frame_x = x + ttoD2;
-	int const frame_y = y - dim_.asc + ttoD2;
-	int const frame_w = dim_.wid - TEXT_TO_INSET_OFFSET;
-	int const frame_h = dim_.asc + dim_.des - TEXT_TO_INSET_OFFSET;
+	int const frame_x = x + TEXT_TO_INSET_OFFSET / 2;
+	int const frame_y = y - dim_.asc + TEXT_TO_INSET_OFFSET / 2;
+	int const frame_w = text_.width();
+	int const frame_h = text_.height();
 	pain.rectangle(frame_x, frame_y, frame_w, frame_h, frameColor());
 }
 
@@ -246,7 +243,7 @@ void InsetText::updateLocal(LCursor & cur)
 			}
 
 			cur.clearSelection();
-			mergeParagraph(cur.bv().buffer()->params(), paragraphs(), first);
+			mergeParagraph(cur.bv().buffer()->params(), paragraphs(), 0);
 		}
 	}
 
@@ -258,7 +255,7 @@ void InsetText::updateLocal(LCursor & cur)
 	lv->updateMenubar();
 	lv->updateToolbar();
 	if (old_par != cur.par()) {
-		lv->setLayout(text_.getPar(cur.par())->layout()->name());
+		lv->setLayout(text_.getPar(cur.par()).layout()->name());
 		old_par = cur.par();
 	}
 }
@@ -309,9 +306,7 @@ InsetBase * InsetText::editXY(LCursor & cur, int x, int y)
 
 void InsetText::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 {
-	//lyxerr << "InsetText::priv_dispatch (begin), act: "
-	//      << cmd.action << " " << endl;
-
+	//lyxerr << "InsetText::priv_dispatch: " << cmd.action << " " << endl;
 	setViewCache(&cur.bv());
 
 	bool was_empty = paragraphs().begin()->empty() && paragraphs().size() == 1;
@@ -327,8 +322,6 @@ void InsetText::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 		font.setLanguage(cur.bv().getParentLanguage(this));
 		text_.setFont(cur, font, false);
 	}
-
-	//lyxerr << "InsetText::priv_dispatch (end)" << endl;
 }
 
 
@@ -389,21 +382,6 @@ void InsetText::getCursorPos(CursorSlice const & cur, int & x, int & y) const
 {
 	x = text_.cursorX(cur);
 	y = text_.cursorY(cur);
-}
-
-
-bool InsetText::insetAllowed(InsetOld::Code code) const
-{
-	// in_insetAllowed is a really gross hack,
-	// to allow us to call the owner's insetAllowed
-	// without stack overflow, which can happen
-	// when the owner uses InsetCollapsable::insetAllowed()
-	if (in_insetAllowed)
-		return true;
-	in_insetAllowed = true;
-	bool const ret = owner() && owner()->insetAllowed(code);
-	in_insetAllowed = false;
-	return ret;
 }
 
 
@@ -499,12 +477,6 @@ void InsetText::removeNewlines()
 }
 
 
-int InsetText::scroll(bool /*recursive*/) const
-{
-	return UpdatableInset::scroll(false);
-}
-
-
 void InsetText::clearInset(Painter & pain, int x, int y) const
 {
 	int w = dim_.wid;
@@ -537,7 +509,8 @@ void InsetText::appendParagraphs(Buffer * buffer, ParagraphList & plist)
 	ParagraphList::iterator pit = plist.begin();
 	ParagraphList::iterator ins = paragraphs().insert(paragraphs().end(), *pit);
 	++pit;
-	mergeParagraph(buffer->params(), paragraphs(), boost::prior(ins));
+	mergeParagraph(buffer->params(), paragraphs(),
+		ins - paragraphs().begin() - 1);
 
 	ParagraphList::iterator pend = plist.end();
 	for (; pit != pend; ++pit)

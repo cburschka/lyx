@@ -75,7 +75,7 @@ TocList const getTocList(Buffer const & buf)
 	for (; pit != end; ++pit) {
 
 		int const toclevel = pit->layout()->toclevel;
-		if (toclevel > 0 &&  toclevel <= bufparams.tocdepth) {
+		if (toclevel > 0 && toclevel <= bufparams.tocdepth) {
 			// insert this into the table of contents
 			TocItem const item(pit->id(), toclevel - 1, pit->asString(buf, true));
 			toclist["TOC"].push_back(item);
@@ -87,14 +87,11 @@ TocList const getTocList(Buffer const & buf)
 		InsetList::const_iterator end = pit->insetlist.end();
 		for (; it != end; ++it) {
 			if (it->inset->lyxCode() == InsetOld::FLOAT_CODE) {
-				InsetFloat * il =
-					static_cast<InsetFloat*>(it->inset);
-				il->addToToc(toclist, buf);
+				static_cast<InsetFloat*>(it->inset)
+					->addToToc(toclist, buf);
 			} else if (it->inset->lyxCode() == InsetOld::WRAP_CODE) {
-				InsetWrap * il =
-					static_cast<InsetWrap*>(it->inset);
-
-				il->addToToc(toclist, buf);
+				static_cast<InsetWrap*>(it->inset)
+					->addToToc(toclist, buf);
 			}
 		}
 	}

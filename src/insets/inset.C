@@ -28,7 +28,7 @@ using std::string;
 
 InsetOld::InsetOld()
 	: InsetBase(),
-	  xo_(0), yo_(0), scx(0), owner_(0),
+	  xo_(0), yo_(0), scx(0),
 	  //background_color_(LColor::inherit)
 	  background_color_(LColor::background)
 {}
@@ -36,7 +36,7 @@ InsetOld::InsetOld()
 
 InsetOld::InsetOld(InsetOld const & in)
 	: InsetBase(),
-	  xo_(0), yo_(0), scx(0), owner_(0), name_(in.name_),
+	  xo_(0), yo_(0), scx(0), name_(in.name_),
 	  background_color_(in.background_color_)
 {}
 
@@ -53,10 +53,8 @@ LColor_color InsetOld::backgroundColor() const
 }
 
 
-bool InsetOld::forceDefaultParagraphs(InsetBase const * inset) const
+bool InsetOld::forceDefaultParagraphs(InsetBase const *) const
 {
-	if (owner())
-		return owner()->forceDefaultParagraphs(inset);
 	return false;
 }
 
@@ -79,11 +77,9 @@ int InsetOld::width() const
 }
 
 
-int InsetOld::scroll(bool recursive) const
+int InsetOld::scroll(bool) const
 {
-	if (!recursive || !owner_)
-		return scx;
-	return 0;
+	return scx;
 }
 
 

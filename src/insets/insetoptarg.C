@@ -73,7 +73,7 @@ int InsetOptArg::latexOptional(Buffer const & buf, ostream & os,
 			       OutputParams const & runparams) const
 {
 	os << '[';
-	int const i = inset.latex(buf, os, runparams);
+	int const i = InsetText::latex(buf, os, runparams);
 	os << ']';
 	return i + 2;
 }

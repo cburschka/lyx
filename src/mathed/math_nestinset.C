@@ -200,8 +200,8 @@ void MathNestInset::drawSelection(PainterInfo & pi, int, int) const
 		return;
 	if (!ptr_cmp(&cur.inset(), this))
 		return;
-	CursorSlice & s1 = cur.selBegin();
-	CursorSlice & s2 = cur.selEnd();
+	CursorSlice s1 = cur.selBegin();
+	CursorSlice s2 = cur.selEnd();
 	if (s1.idx() == s2.idx()) {
 		MathArray const & c = cell(s1.idx());
 		int x1 = c.xo() + c.pos2x(s1.pos());
@@ -1146,29 +1146,31 @@ bool MathNestInset::script(LCursor & cur, bool up)
 
 	cur.macroModeClose();
 	string safe = cur.grabAndEraseSelection();
-	if (asScriptInset() && cur.idx() == 2) {
+	if (asScriptInset() && cur.idx() == 0) {
 		// we are in a nucleus of a script inset, move to _our_ script
-		asScriptInset()->ensure(up);
-		cur.idx() = up;
+		MathScriptInset * inset = asScriptInset();
+		lyxerr << " going to cell " << inset->idxOfScript(up) << endl;
+		inset->ensure(up);
+		cur.idx() = inset->idxOfScript(up);
 		cur.pos() = 0;
 	} else if (cur.pos() != 0 && cur.prevAtom()->asScriptInset()) {
 		--cur.pos();
-		cur.nextAtom().nucleus()->asScriptInset()->ensure(up);
-		cur.push(*cur.nextInset());
-		cur.idx() = up;
+		MathScriptInset * inset = cur.nextAtom().nucleus()->asScriptInset();
+		cur.push(*inset);
+		cur.idx() = inset->idxOfScript(up);
 		cur.pos() = cur.lastpos();
-	} else if (cur.pos() != 0) {
-		--cur.pos();
-		cur.cell()[cur.pos()] = MathAtom(new MathScriptInset(cur.nextAtom(), up));
-		cur.push(*cur.nextInset());
-		cur.idx() = up;
-		cur.pos() = 0;
 	} else {
-		cur.plainInsert(MathAtom(new MathScriptInset(up)));
-		--cur.pos();
-		cur.nextAtom().nucleus()->asScriptInset()->ensure(up);
-		cur.push(*cur.nextInset());
-		cur.idx() = up;
+		// convert the thing to our left to a scriptinset or create a new
+		// one if in the very first position of the array
+		if (cur.pos() == 0) {
+			cur.insert(new MathScriptInset(up));
+		} else {
+			--cur.pos();
+			cur.cell()[cur.pos()] = MathAtom(new MathScriptInset(cur.nextAtom(), up));
+		}
+		MathScriptInset * inset = cur.nextAtom().nucleus()->asScriptInset();
+		cur.push(*inset);
+		cur.idx() = 1;
 		cur.pos() = 0;
 	}
 	cur.paste(safe);

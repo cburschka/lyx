@@ -162,7 +162,7 @@ int InsetBranch::latex(Buffer const & buf, ostream & os,
 		       OutputParams const & runparams) const
 {
 	return isBranchSelected(buf.params().branchlist()) ?
-		inset.latex(buf, os, runparams) : 0;
+		InsetText::latex(buf, os, runparams) : 0;
 }
 
 
@@ -170,7 +170,7 @@ int InsetBranch::linuxdoc(Buffer const & buf, std::ostream & os,
 			  OutputParams const & runparams) const
 {
 	return isBranchSelected(buf.params().branchlist()) ?
-		inset.linuxdoc(buf, os, runparams) : 0;
+		InsetText::linuxdoc(buf, os, runparams) : 0;
 }
 
 
@@ -178,7 +178,7 @@ int InsetBranch::docbook(Buffer const & buf, std::ostream & os,
 			 OutputParams const & runparams) const
 {
 	return isBranchSelected(buf.params().branchlist()) ?
-		inset.docbook(buf, os, runparams) : 0;
+		InsetText::docbook(buf, os, runparams) : 0;
 }
 
 
@@ -186,18 +186,18 @@ int InsetBranch::plaintext(Buffer const & buf, std::ostream & os,
 			   OutputParams const & runparams) const
 {
 	return isBranchSelected(buf.params().branchlist()) ?
-		inset.plaintext(buf, os, runparams): 0;
+		InsetText::plaintext(buf, os, runparams): 0;
 }
 
 
 void InsetBranch::validate(LaTeXFeatures & features) const
 {
-	inset.validate(features);
+	InsetText::validate(features);
 }
 
 
 
-string const InsetBranchMailer:: name_("branch");
+string const InsetBranchMailer::name_("branch");
 
 InsetBranchMailer::InsetBranchMailer(InsetBranch & inset)
 	: inset_(inset)

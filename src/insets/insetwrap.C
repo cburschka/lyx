@@ -70,7 +70,7 @@ InsetWrap::InsetWrap(BufferParams const & bp, string const & type)
 	setInsetName(type);
 	LyXTextClass const & tclass = bp.getLyXTextClass();
 	if (tclass.hasLayout(caplayout))
-		inset.paragraphs().begin()->layout(tclass[caplayout]);
+		paragraphs().begin()->layout(tclass[caplayout]);
 }
 
 
@@ -180,13 +180,10 @@ int InsetWrap::latex(Buffer const & buf, ostream & os,
 		     OutputParams const & runparams) const
 {
 	os << "\\begin{floating" << params_.type << '}';
-	if (!params_.placement.empty()) {
+	if (!params_.placement.empty())
 		os << '[' << params_.placement << ']';
-	}
-	os  << '{' << params_.width.asLatexString() << "}%\n";
-
-	int const i = inset.latex(buf, os, runparams);
-
+	os << '{' << params_.width.asLatexString() << "}%\n";
+	int const i = InsetText::latex(buf, os, runparams);
 	os << "\\end{floating" << params_.type << "}%\n";
 	return i + 2;
 }
@@ -196,9 +193,8 @@ int InsetWrap::docbook(Buffer const & buf, ostream & os,
 		       OutputParams const & runparams) const
 {
 	os << '<' << params_.type << '>';
-	int const i = inset.docbook(buf, os, runparams);
+	int const i = InsetText::docbook(buf, os, runparams);
 	os << "</" << params_.type << '>';
-
 	return i;
 }
 
@@ -218,7 +214,7 @@ bool InsetWrap::insetAllowed(InsetOld::Code code) const
 
 bool InsetWrap::showInsetDialog(BufferView * bv) const
 {
-	if (!inset.showInsetDialog(bv))
+	if (!InsetText::showInsetDialog(bv))
 		InsetWrapMailer(const_cast<InsetWrap &>(*this)).showDialog(bv);
 	return true;
 }
@@ -227,8 +223,8 @@ bool InsetWrap::showInsetDialog(BufferView * bv) const
 void InsetWrap::addToToc(lyx::toc::TocList & toclist, Buffer const & buf) const
 {
 	// Now find the caption in the float...
-	ParagraphList::iterator tmp = inset.paragraphs().begin();
-	ParagraphList::iterator end = inset.paragraphs().end();
+	ParagraphList::iterator tmp = paragraphs().begin();
+	ParagraphList::iterator end = paragraphs().end();
 
 	for (; tmp != end; ++tmp) {
 		if (tmp->layout()->name() == caplayout) {

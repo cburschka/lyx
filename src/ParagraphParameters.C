@@ -23,7 +23,6 @@
 #include "lyxlex.h"
 #include "lyxtext.h"
 #include "paragraph.h"
-#include "ParameterStruct.h"
 #include "tex-strings.h"
 
 #include "frontends/LyXView.h"
@@ -39,169 +38,133 @@ using std::ostringstream;
 using std::string;
 
 
-// Initialize static member var.
-ShareContainer<ParameterStruct> ParagraphParameters::container;
-
 ParagraphParameters::ParagraphParameters()
-{
-	ParameterStruct tmp;
-	set_from_struct(tmp);
-}
+	: noindent_(false),
+		start_of_appendix_(false), appendix_(false),
+	  align_(LYX_ALIGN_LAYOUT), depth_(0)
+{}
 
 
 void ParagraphParameters::clear()
 {
-	ParameterStruct tmp(*param);
-	tmp.spacing.set(Spacing::Default);
-	tmp.align = LYX_ALIGN_LAYOUT;
-	tmp.depth = 0;
-	tmp.noindent = false;
-	tmp.labelstring.erase();
-	tmp.labelwidthstring.erase();
-	tmp.start_of_appendix = false;
-	set_from_struct(tmp);
+	operator=(ParagraphParameters());
 }
 
 
 ParagraphParameters::depth_type ParagraphParameters::depth() const
 {
-	return param->depth;
+	return depth_;
 }
 
 
 bool ParagraphParameters::sameLayout(ParagraphParameters const & pp) const
 {
-	return param->align == pp.param->align &&
-		param->spacing == pp.param->spacing &&
-		param->noindent == pp.param->noindent &&
-		param->depth == pp.param->depth;
-}
-
-
-void ParagraphParameters::set_from_struct(ParameterStruct const & ps)
-{
-	// get new param from container with tmp as template
-	param = container.get(ps);
+	return align_ == pp.align_
+		&& spacing_ == pp.spacing_
+		&& noindent_ == pp.noindent_
+		&& depth_ == pp.depth_;
 }
 
 
 Spacing const & ParagraphParameters::spacing() const
 {
-	return param->spacing;
+	return spacing_;
 }
 
 
 void ParagraphParameters::spacing(Spacing const & s)
 {
-	ParameterStruct tmp(*param);
-	tmp.spacing = s;
-	set_from_struct(tmp);
+	spacing_ = s;
 }
 
 
 bool ParagraphParameters::noindent() const
 {
-	return param->noindent;
+	return noindent_;
 }
 
 
 void ParagraphParameters::noindent(bool ni)
 {
-	ParameterStruct tmp(*param);
-	tmp.noindent = ni;
-	set_from_struct(tmp);
+	noindent_ = ni;
 }
 
 
 LyXAlignment ParagraphParameters::align() const
 {
-	return param->align;
+	return align_;
 }
 
 
 void ParagraphParameters::align(LyXAlignment la)
 {
-	ParameterStruct tmp(*param);
-	tmp.align = la;
-	set_from_struct(tmp);
+	align_ = la;
 }
 
 
 void ParagraphParameters::depth(depth_type d)
 {
-	ParameterStruct tmp(*param);
-	tmp.depth = d;
-	set_from_struct(tmp);
+	depth_ = d;
 }
 
 
 bool ParagraphParameters::startOfAppendix() const
 {
-	return param->start_of_appendix;
+	return start_of_appendix_;
 }
 
 
 void ParagraphParameters::startOfAppendix(bool soa)
 {
-	ParameterStruct tmp(*param);
-	tmp.start_of_appendix = soa;
-	set_from_struct(tmp);
+	start_of_appendix_ = soa;
 }
 
 
 bool ParagraphParameters::appendix() const
 {
-	return param->appendix;
+	return appendix_;
 }
 
 
 void ParagraphParameters::appendix(bool a)
 {
-	ParameterStruct tmp(*param);
-	tmp.appendix = a;
-	set_from_struct(tmp);
+	appendix_ = a;
 }
 
 
 string const & ParagraphParameters::labelString() const
 {
-	return param->labelstring;
+	return labelstring_;
 }
 
 
 void ParagraphParameters::labelString(string const & ls)
 {
-	ParameterStruct tmp(*param);
-	tmp.labelstring = ls;
-	set_from_struct(tmp);
+	labelstring_ = ls;
 }
 
 
 string const & ParagraphParameters::labelWidthString() const
 {
-	return param->labelwidthstring;
+	return labelwidthstring_;
 }
 
 
 void ParagraphParameters::labelWidthString(string const & lws)
 {
-	ParameterStruct tmp(*param);
-	tmp.labelwidthstring = lws;
-	set_from_struct(tmp);
+	labelwidthstring_ = lws;
 }
 
 
 LyXLength const & ParagraphParameters::leftIndent() const
 {
-	return param->leftindent;
+	return leftindent_;
 }
 
 
 void ParagraphParameters::leftIndent(LyXLength const & li)
 {
-	ParameterStruct tmp(*param);
-	tmp.leftindent = li;
-	set_from_struct(tmp);
+	leftindent_ = li;
 }
 
 
@@ -323,3 +286,22 @@ void params2string(Paragraph const & par, string & data)
 
 	data = os.str();
 }
+
+
+/*
+bool operator==(ParagraphParameeters const & ps1,
+		ParagraphParameeters const & ps2)
+{
+	return
+		   ps1.spacing == ps2.spacing
+		&& ps1.noindent == ps2.noindent
+		&& ps1.align == ps2.align
+		&& ps1.depth == ps2.depth
+		&& ps1.start_of_appendix == ps2.start_of_appendix
+		&& ps1.appendix == ps2.appendix
+		&& ps1.labelstring == ps2.labelstring
+		&& ps1.labelwidthstring == ps2.labelwidthstring
+		&& ps1.leftindent == ps2.leftindent;
+}
+*/
+

@@ -20,31 +20,38 @@
 #ifndef FONTITERATOR_H
 #define FONTITERATOR_H
 
-
 #include "lyxfont.h"
-#include "ParagraphList_fwd.h"
 
 #include "support/types.h"
 
 class LyXText;
 
+
 class FontIterator : std::iterator<std::forward_iterator_tag, LyXFont>
 {
 public:
-	FontIterator(LyXText const & text, ParagraphList::iterator pit,
-		     lyx::pos_type pos);
-	
+	///
+	FontIterator(LyXText const & text, lyx::par_type pit, lyx::pos_type pos);
+	///	
 	LyXFont operator*() const;
+	///
 	FontIterator & operator++();
+	///
 	LyXFont * operator->();
 
 private:
+	///
 	LyXText const & text_;
-	ParagraphList::iterator pit_;
+	///
+	lyx::par_type pit_;
+	///
 	lyx::pos_type pos_;
+	///
 	LyXFont font_;
+	///
 	lyx::pos_type endspan_;
+	///
 	lyx::pos_type bodypos_;
 };
 
-#endif //FONTITERATOR_H
+#endif // FONTITERATOR_H

@@ -227,8 +227,9 @@ void docbookParagraphs(Buffer const & buf,
 			break;
 		}
 
-		par->simpleDocBookOnePar(buf, os, outerFont(par, paragraphs),
-					 runparams, depth + 1 + command_depth, labelid);
+		par->simpleDocBookOnePar(buf, os,
+			outerFont(par - const_cast<ParagraphList&>(paragraphs).begin(), paragraphs),
+			runparams, depth + 1 + command_depth, labelid);
 
 		// write closing SGML tags
 		switch (style->latextype) {

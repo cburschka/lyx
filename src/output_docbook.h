@@ -13,15 +13,13 @@
 #ifndef OUTPUT_DOCBOOK_H
 #define OUTPUT_DOCBOOK_H
 
-#include "ParagraphList_fwd.h"
-
 #include <iosfwd>
 
 class Buffer;
 class OutputParams;
+class ParagraphList;
 
 ///
-
 void docbookParagraphs(Buffer const & buf,
 		       ParagraphList const & paragraphs,
 		       std::ostream & os,

@@ -61,6 +61,10 @@ public:
 	CursorSlice & top() { return back(); }
 	/// access to tip
 	CursorSlice const & top() const { return back(); }
+	/// access to outermost slice 
+	CursorSlice & bottom() { return front(); }
+	/// access to  outermost slicetip
+	CursorSlice const & bottom() const { return front(); }
 	/// how many nested insets do we have?
 	size_t depth() const { return size(); }
 	/// the containing inset
@@ -155,14 +159,27 @@ public:
 	//
 	// elementary moving
 	//
-	/// move on one position
+	/// move on one logical position
 	void forwardPos();
+	/// move on one physical character or inset
+	void forwardChar();
 	/// move on one paragraph
 	void forwardPar();
 	/// move on one cell
 	void forwardIdx();
 	/// move on one inset
 	void forwardInset();
+	/// move backward one logical position
+	void backwardPos();
+	/// move backward one physical character or inset
+	void backwardChar();
+	/// move backward one paragraph
+	void backwardPar();
+	/// move backward one cell
+	void backwardIdx();
+	/// move backward one inset
+	void backwardInset();
+
 	/// output
 	friend std::ostream &
 	operator<<(std::ostream & os, DocumentIterator const & cur);

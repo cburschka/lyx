@@ -14,60 +14,45 @@
 #ifndef CUTANDPASTE_H
 #define CUTANDPASTE_H
 
-#include "ParagraphList_fwd.h"
 #include "support/types.h"
 
 #include <string>
 #include <vector>
 
 class Buffer;
-class BufferParams;
 class ErrorList;
 class LyXTextClass;
-class Paragraph;
+class LCursor;
+class ParagraphList;
 
 ///
-namespace CutAndPaste {
+namespace lyx {
+namespace cap {
 
 ///
 std::vector<std::string> const availableSelections(Buffer const & buffer);
 
 ///
-PitPosPair cutSelection(BufferParams const & params,
-			ParagraphList & pars,
-			ParagraphList::iterator startpit,
-			ParagraphList::iterator endpit,
-			int start, int end, lyx::textclass_type tc,
-			bool doclear = false);
-///
-PitPosPair eraseSelection(BufferParams const & params,
-			  ParagraphList & pars,
-			  ParagraphList::iterator startpit,
-			  ParagraphList::iterator endpit,
-			  int start, int end, bool doclear = false);
-///
-bool copySelection(ParagraphList::iterator startpit,
-		   ParagraphList::iterator endpit,
-		   int start, int end, lyx::textclass_type tc);
-///
-std::pair<PitPosPair, ParagraphList::iterator>
-pasteSelection(Buffer const & buffer,
-	       ParagraphList & pars,
-	       ParagraphList::iterator pit, int pos,
-	       lyx::textclass_type tc, ErrorList &);
+void cutSelection(LCursor & cur, bool doclear, bool realcut);
+
+/**
+ * Sets the selection from the current cursor position to length
+ * characters to the right. No safety checks.
+ */
+void setSelectionRange(LCursor & cur, lyx::pos_type length);
+/// simply replace using the font of the first selected character
+void replaceSelectionWithString(LCursor & cur, std::string const & str);
+/// replace selection helper
+void replaceSelection(LCursor & cur);
 
 ///
-std::pair<PitPosPair, ParagraphList::iterator>
-pasteSelection(Buffer const & buffer,
-	       ParagraphList & pars,
-	       ParagraphList::iterator pit, int pos,
-	       lyx::textclass_type tc,
-	       size_t cuts_indexm, ErrorList &);
-
+void cutSelection(LCursor & cur, bool doclear = true, bool realcut = true);
 ///
-int nrOfParagraphs();
+void copySelection(LCursor & cur);
+///
+void pasteSelection(LCursor & cur, size_t sel_index = 0);
 
-/** Needed to switch between different classes this works
+/** Needed to switch between different classes. This works
     for a list of paragraphs beginning with the specified par
     return value is the number of wrong conversions.
 */
@@ -78,6 +63,10 @@ int SwitchLayoutsBetweenClasses(lyx::textclass_type c1,
 ///
 bool checkPastePossible();
 
-} // end of CutAndPaste
+// only used by the spellchecker
+void replaceWord(LCursor & cur, std::string const & replacestring);
+
+} // namespace cap
+} // namespce lyx
 
 #endif

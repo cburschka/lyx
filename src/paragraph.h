@@ -294,8 +294,8 @@ public:
 
 	///
 	bool isHfill(lyx::pos_type pos) const;
-	///
-	bool isInset(lyx::pos_type pos) const;
+	/// hinted by profiler
+	bool isInset(lyx::pos_type pos) const { return getChar(pos) == META_INSET; }
 	///
 	bool isNewline(lyx::pos_type pos) const;
 	///

@@ -296,7 +296,7 @@ int InsetBox::latex(Buffer const & buf, ostream & os,
 		i += 1;
 	}
 
-	i += inset.latex(buf, os, runparams);
+	i += InsetText::latex(buf, os, runparams);
 
 	if (params_.inner_box) {
 		if (params_.use_parbox)
@@ -331,14 +331,14 @@ int InsetBox::latex(Buffer const & buf, ostream & os,
 int InsetBox::linuxdoc(Buffer const & buf, std::ostream & os,
 		       OutputParams const & runparams) const
 {
-	return inset.linuxdoc(buf, os, runparams);
+	return InsetText::linuxdoc(buf, os, runparams);
 }
 
 
 int InsetBox::docbook(Buffer const & buf, std::ostream & os,
 		      OutputParams const & runparams) const
 {
-	return inset.docbook(buf, os, runparams);
+	return InsetText::docbook(buf, os, runparams);
 }
 
 
@@ -356,7 +356,7 @@ int InsetBox::plaintext(Buffer const & buf, std::ostream & os,
 		case Doublebox: os << "[["; break;
 	}
 
-	int i = inset.plaintext(buf, os, runparams);
+	int i = InsetText::plaintext(buf, os, runparams);
 
 	switch (btype) {
 		case Frameless: break;
@@ -386,14 +386,13 @@ void InsetBox::validate(LaTeXFeatures & features) const
 		features.require("fancybox");
 		break;
 	}
-	inset.validate(features);
+	InsetText::validate(features);
 }
 
 
 InsetBoxMailer::InsetBoxMailer(InsetBox & inset)
 	: inset_(inset)
-{
-}
+{}
 
 
 string const InsetBoxMailer::name_ = "box";

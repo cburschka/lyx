@@ -31,6 +31,7 @@ struct ErrorItem {
 	ErrorItem();
 };
 
+
 class ErrorList : private std::vector<ErrorItem>
 {
 public:
@@ -45,7 +46,5 @@ public:
 	using std::vector<ErrorItem>::empty;
 	using std::vector<ErrorItem>::const_iterator;
 };
-
-
 
 #endif

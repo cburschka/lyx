@@ -154,7 +154,7 @@ void ControlDocument::classApply()
 	lv_.message(_("Converting document to new document class..."));
 
 	ErrorList el;
-	CutAndPaste::SwitchLayoutsBetweenClasses(old_class, new_class,
+	lyx::cap::SwitchLayoutsBetweenClasses(old_class, new_class,
 						 lv_.buffer()->paragraphs(),
 						 el);
 	bufferErrors(*buffer(), el);

@@ -15,7 +15,10 @@
 #include "math_nestinset.h"
 
 
-/// An inset for super- and subscripts.
+// An inset for super- and subscripts or both.  The 'nucleus' is always
+// cell 0.  If there is just one script, it's cell 1 and cell_1_is_up_
+// is set accordingly.  If both are used, cell 1 is up and cell 2 is down.
+
 class MathScriptInset : public MathNestInset {
 public:
 	/// create inset without scripts
@@ -45,8 +48,6 @@ public:
 	bool idxFirst(LCursor & cur) const;
 	/// Target pos when we enter the inset from the right by pressing "Left"
 	bool idxLast(LCursor & cur) const;
-	/// can we enter this cell?
-	bool validCell(idx_type i) const { return i == 2 || script_[i]; }
 
 	/// write LaTeX and Lyx code
 	void write(WriteStream & os) const;
@@ -88,6 +89,8 @@ public:
 	bool hasDown() const;
 	/// do we have a script?
 	bool has(bool up) const;
+	/// what idx has super/subscript?
+	idx_type idxOfScript(bool up) const;
 	/// remove script
 	void removeScript(bool up);
 	/// make sure a script is accessible
@@ -122,7 +125,7 @@ private:
 	void notifyCursorLeaves(idx_type idx);
 
 	/// possible subscript (index 0) and superscript (index 1)
-	bool script_[2];
+	bool cell_1_is_up_;
 	/// 1 - "limits", -1 - "nolimits", 0 - "default"
 	int limits_;
 };

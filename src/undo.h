@@ -17,7 +17,7 @@
 #define UNDO_H
 
 #include "dociterator.h"
-#include "ParagraphList_fwd.h"
+#include "ParagraphList_fwd.h" 
 
 #include "support/types.h"
 
@@ -54,9 +54,9 @@ struct Undo {
 	/// the position of the cursor
 	StableDocumentIterator cursor;
 	/// counted from begin of buffer
-	lyx::paroffset_type from;
+	lyx::par_type from;
 	/// complement to end of this cell
-	lyx::paroffset_type end;
+	lyx::par_type end;
 	/// the contents of the saved paragraphs (for texted)
 	ParagraphList pars;
 	/// the contents of the saved matharray (for mathed)
@@ -83,10 +83,10 @@ void finishUndo();
 
 /// the common case: prepare undo for an arbitrary range
 void recordUndo(LCursor & cur, Undo::undo_kind kind,
-	lyx::paroffset_type from, lyx::paroffset_type to);
+	lyx::par_type from, lyx::par_type to);
 
 /// convienience: prepare undo for the range between 'from' and cursor.
-void recordUndo(LCursor & cur, Undo::undo_kind kind, lyx::paroffset_type from);
+void recordUndo(LCursor & cur, Undo::undo_kind kind, lyx::par_type from);
 
 /// convienience: prepare undo for the single paragraph containing the cursor
 void recordUndo(LCursor & cur, Undo::undo_kind kind = Undo::ATOMIC);

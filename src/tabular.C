@@ -387,17 +387,6 @@ void LyXTabular::fixCellNums()
 }
 
 
-void LyXTabular::setOwner(InsetTabular * inset)
-{
-	for (int i = 0; i < rows_; ++i) {
-		for (int j = 0; j < columns_; ++j) {
-			cell_info[i][j].inset.setOwner(inset);
-			cell_info[i][j].inset.setDrawFrame(InsetText::LOCKED);
-		}
-	}
-}
-
-
 void LyXTabular::appendRow(BufferParams const & bp, int cell)
 {
 	++rows_;
@@ -2007,9 +1996,9 @@ int LyXTabular::TeXRow(ostream & os, int i, Buffer const & buf,
 		ret += TeXCellPreamble(os, cell);
 		InsetText & inset = getCellInset(cell);
 
-		Paragraph const & par = inset.paragraphs().front();
+		Paragraph & par = inset.paragraphs().front();
 		bool rtl = par.isRightToLeftPar(buf.params())
-			&& !inset.paragraphs().begin()->empty()
+			&& !par.empty()
 			&& getPWidth(cell).zero();
 
 		if (rtl)

@@ -87,19 +87,28 @@ void InsetCaption::draw(PainterInfo & pi, int x, int y) const
 
 	// See if we can find the name of the float this caption
 	// belongs to.
+#if 0
 	InsetOld * i1 = owner();
 	InsetOld * i2 = i1 ? i1->owner() : 0;
 	string type;
 	if (i2->lyxCode() == FLOAT_CODE)
+#warning Now, what happens for i2 == 0?
 		type = static_cast<InsetFloat *>(i2)->params().type;
 	else if (i2->lyxCode() == WRAP_CODE)
 		type = static_cast<InsetWrap *>(i2)->params().type;
 	else
 		BOOST_ASSERT(false);
+#else
+	string type = "float";
+#endif
 
 	FloatList const & floats =
 		pi.base.bv->buffer()->params().getLyXTextClass().floats();
+#if 0
 	string const fl = i2 ? floats.getType(type).name() : N_("Float");
+#else
+	string const fl = N_("Float");
+#endif
 
 	// Discover the number...
 	string const num = "#";

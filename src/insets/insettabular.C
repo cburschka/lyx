@@ -156,17 +156,13 @@ bool InsetTabular::hasPasteBuffer() const
 InsetTabular::InsetTabular(Buffer const & buf, int rows, int columns)
 	: tabular(buf.params(), max(rows, 1), max(columns, 1)),
 	  buffer_(&buf), cursorx_(0)
-{
-	tabular.setOwner(this);
-}
+{}
 
 
 InsetTabular::InsetTabular(InsetTabular const & tab)
 	: UpdatableInset(tab), tabular(tab.tabular),
 		buffer_(tab.buffer_), cursorx_(0)
-{
-	tabular.setOwner(this);
-}
+{}
 
 
 InsetTabular::~InsetTabular()
@@ -265,9 +261,7 @@ void InsetTabular::draw(PainterInfo & pi, int x, int y) const
 	BufferView * bv = pi.base.bv;
 	setPosCache(pi, x, y);
 
-	if (!owner())
-		x += scroll();
-
+	x += scroll();
 	x += ADD_TO_TABULAR_WIDTH;
 
 	int idx = 0;
@@ -463,7 +457,6 @@ void InsetTabular::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 			scroll(cur.bv(), static_cast<float>(strToDbl(cmd.argument)));
 		else
 			scroll(cur.bv(), strToInt(cmd.argument));
-		cur.update();
 		break;
 
 	case LFUN_RIGHTSEL:
@@ -802,13 +795,16 @@ int InsetTabular::docbook(Buffer const & buf, ostream & os,
 			  OutputParams const & runparams) const
 {
 	int ret = 0;
-	InsetOld * master;
+	InsetOld * master = 0;
 
+#warning Why not pass a proper DocIterator here?
+#if 0
 	// if the table is inside a float it doesn't need the informaltable
 	// wrapper. Search for it.
 	for (master = owner(); master; master = master->owner())
 		if (master->lyxCode() == InsetOld::FLOAT_CODE)
 			break;
+#endif
 
 	if (!master) {
 		os << "<informaltable>";
@@ -1100,13 +1096,11 @@ void InsetTabular::tabularFeatures(LCursor & cur,
 	case LyXTabular::APPEND_ROW:
 		// append the row into the tabular
 		tabular.appendRow(bv.buffer()->params(), actcell);
-		tabular.setOwner(this);
 		break;
 
 	case LyXTabular::APPEND_COLUMN:
 		// append the column into the tabular
 		tabular.appendColumn(bv.buffer()->params(), actcell);
-		tabular.setOwner(this);
 		actcell = tabular.getCellNumber(row, column);
 		break;
 
@@ -1553,7 +1547,6 @@ bool InsetTabular::copySelection(LCursor & cur)
 	getSelection(cur, rs, re, cs, ce);
 
 	paste_tabular.reset(new LyXTabular(tabular));
-	paste_tabular->setOwner(this);
 
 	for (int i = 0; i < rs; ++i)
 		paste_tabular->deleteRow(0);
@@ -1611,7 +1604,6 @@ bool InsetTabular::pasteSelection(LCursor & cur)
 			}
 			InsetText & inset = tabular.getCellInset(r2, c2);
 			inset = paste_tabular->getCellInset(r1, c1);
-			inset.setOwner(this);
 			inset.markNew();
 		}
 	}
@@ -1642,8 +1634,8 @@ bool InsetTabular::isRightToLeft(LCursor & cur)
 void InsetTabular::getSelection(LCursor & cur,
 	int & rs, int & re, int & cs, int & ce) const
 {
-	CursorSlice & beg = cur.selBegin();
-	CursorSlice & end = cur.selEnd();
+	CursorSlice const & beg = cur.selBegin();
+	CursorSlice const & end = cur.selEnd();
 	cs = tabular.column_of_cell(beg.idx());
 	ce = tabular.column_of_cell(end.idx());
 	if (cs > ce) {
@@ -1738,7 +1730,6 @@ bool InsetTabular::insertAsciiString(BufferView & bv, string const & buf,
 	if (usePaste) {
 		paste_tabular.reset(
 			new LyXTabular(bv.buffer()->params(), rows, maxCols));
-		paste_tabular->setOwner(this);
 		loctab = paste_tabular.get();
 		cols = 0;
 	} else {
@@ -1765,8 +1756,7 @@ bool InsetTabular::insertAsciiString(BufferView & bv, string const & buf,
 			// we can only set this if we are not too far right
 			if (cols < columns) {
 				InsetText & inset = loctab->getCellInset(cell);
-				LyXFont const font = inset.text_.
-					getFont(inset.paragraphs().begin(), 0);
+				LyXFont const font = inset.text_.getFont(0, 0);
 				inset.setText(buf.substr(op, p - op), font);
 				++cols;
 				++cell;
@@ -1776,8 +1766,7 @@ bool InsetTabular::insertAsciiString(BufferView & bv, string const & buf,
 			// we can only set this if we are not too far right
 			if (cols < columns) {
 				InsetText & inset = tabular.getCellInset(cell);
-				LyXFont const font = inset.text_.
-					getFont(inset.paragraphs().begin(), 0);
+				LyXFont const font = inset.text_.getFont(0, 0);
 				inset.setText(buf.substr(op, p - op), font);
 			}
 			cols = ocol;
@@ -1792,7 +1781,7 @@ bool InsetTabular::insertAsciiString(BufferView & bv, string const & buf,
 	// check for the last cell if there is no trailing '\n'
 	if (cell < cells && op < len) {
 		InsetText & inset = loctab->getCellInset(cell);
-		LyXFont const font = inset.text_.getFont(inset.paragraphs().begin(), 0);
+		LyXFont const font = inset.text_.getFont(0, 0);
 		inset.setText(buf.substr(op, len - op), font);
 	}
 	return true;

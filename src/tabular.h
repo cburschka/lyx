@@ -172,8 +172,6 @@ public:
 
 	/// constructor
 	LyXTabular(BufferParams const &, int columns_arg, int rows_arg);
-	///
-	void setOwner(InsetTabular * inset);
 
 	/// Returns true if there is a topline, returns false if not
 	bool topLine(int cell, bool onlycolumn = false) const;

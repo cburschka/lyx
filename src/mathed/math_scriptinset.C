@@ -30,27 +30,19 @@ using std::endl;
 
 
 MathScriptInset::MathScriptInset()
-	: MathNestInset(3), limits_(0)
-{
-	script_[0] = false;
-	script_[1] = false;
-}
+	: MathNestInset(1), cell_1_is_up_(false), limits_(0)
+{}
 
 
 MathScriptInset::MathScriptInset(bool up)
-	: MathNestInset(3), limits_(0)
-{
-	script_[0] = !up;
-	script_[1] = up;
-}
+	: MathNestInset(2), cell_1_is_up_(up), limits_(0)
+{}
 
 
 MathScriptInset::MathScriptInset(MathAtom const & at, bool up)
-	: MathNestInset(3), limits_(0)
+	: MathNestInset(2), cell_1_is_up_(up), limits_(0)
 {
-	script_[0] = !up;
-	script_[1] = up;
-	cell(2).push_back(at);
+	cell(0).push_back(at);
 }
 
 
@@ -75,7 +67,7 @@ MathScriptInset * MathScriptInset::asScriptInset()
 
 bool MathScriptInset::idxFirst(LCursor & cur) const
 {
-	cur.idx() = 2;
+	cur.idx() = 0;
 	cur.pos() = 0;
 	return true;
 }
@@ -83,7 +75,7 @@ bool MathScriptInset::idxFirst(LCursor & cur) const
 
 bool MathScriptInset::idxLast(LCursor & cur) const
 {
-	cur.idx() = 2;
+	cur.idx() = 0;
 	cur.pos() = nuc().size();
 	return true;
 }
@@ -91,13 +83,13 @@ bool MathScriptInset::idxLast(LCursor & cur) const
 
 MathArray const & MathScriptInset::down() const
 {
-	return cell(0);
+	return nargs() == 2 ? cell(2) : cell(1);
 }
 
 
 MathArray & MathScriptInset::down()
 {
-	return cell(0);
+	return nargs() == 2 ? cell(2) : cell(1);
 }
 
 
@@ -115,19 +107,30 @@ MathArray & MathScriptInset::up()
 
 void MathScriptInset::ensure(bool up)
 {
-	script_[up] = true;
+	if (nargs() == 1) {
+		// just nucleus so far
+		cells_.push_back(MathArray());
+		cell_1_is_up_ = up;
+	} else if (nargs() == 2 && !has(up)) { 
+		if (up) {
+			cells_.push_back(cell(1));
+			cell(1).clear();
+		} else {
+			cells_.push_back(MathArray());
+		}
+	}
 }
 
 
 MathArray const & MathScriptInset::nuc() const
 {
-	return cell(2);
+	return cell(0);
 }
 
 
 MathArray & MathScriptInset::nuc()
 {
-	return cell(2);
+	return cell(0);
 }
 
 
@@ -200,10 +203,12 @@ int MathScriptInset::ndes() const
 
 void MathScriptInset::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	cell(2).metrics(mi);
-	ScriptChanger dummy(mi.base);
 	cell(0).metrics(mi);
-	cell(1).metrics(mi);
+	ScriptChanger dummy(mi.base);
+	if (nargs() > 1)
+		cell(1).metrics(mi);
+	if (nargs() > 2)
+		cell(2).metrics(mi);
 	dim.wid = 0;
 	if (hasLimits()) {
 		dim.wid = nwid();
@@ -291,26 +296,51 @@ bool MathScriptInset::hasLimits() const
 
 void MathScriptInset::removeScript(bool up)
 {
-	cell(up).clear();
-	script_[up] = false;
+	if (nargs() == 2) {
+		if (up == cell_1_is_up_)
+			cells_.pop_back();
+	} else if (nargs() == 3) {
+		if (up == true) {
+			swap(cells_[1], cells_[2]);
+			cell_1_is_up_ = false;
+		} else {
+			cell_1_is_up_ = true;
+		}
+	}
 }
 
 
 bool MathScriptInset::has(bool up) const
 {
-	return script_[up];
+	return idxOfScript(up);
 }
 
 
 bool MathScriptInset::hasUp() const
 {
-	return script_[1];
+	//lyxerr << "hasUp: " << bool(idxOfScript(true)) << endl;
+	//lyxerr << "1up: " << bool(cell_1_is_up_) << endl;
+	return idxOfScript(true);
 }
 
 
 bool MathScriptInset::hasDown() const
 {
-	return script_[0];
+	//lyxerr << "hasDown: " << bool(idxOfScript(false)) << endl;
+	//lyxerr << "1up: " << bool(cell_1_is_up_) << endl;
+	return idxOfScript(false);
+}
+
+
+InsetBase::idx_type MathScriptInset::idxOfScript(bool up) const
+{
+	if (nargs() == 1)
+		return 0;
+	if (nargs() == 2)
+		return cell_1_is_up_ == up ? 1 : 0;
+	if (nargs() == 3)
+		return up ? 1 : 2;
+	BOOST_ASSERT(false);
 }
 
 
@@ -328,38 +358,44 @@ bool MathScriptInset::idxLeft(LCursor &) const
 
 bool MathScriptInset::idxUpDown(LCursor & cur, bool up) const
 {
-	if (cur.idx() == 1) {
-		// if we are 'up' we can't go further up
-		if (up)
-			return false;
-		// otherwise go to last base position
-		cur.idx() = 2;
-		cur.pos() = cur.lastpos();
-	}
-
-	else if (cur.idx() == 0) {
-		// if we are 'down' we can't go further down
-		if (!up)
-			return false;
-		cur.idx() = 2;
-		cur.pos() = cur.lastpos();
-	}
-
-	else {
-		// in nucleus
-		// don't go up/down if there is no cell.
+	// in nucleus?
+	if (cur.idx() == 0) {
+		// don't go up/down if there is no cell in this direction
 		if (!has(up))
 			return false;
 		// go up/down only if in the last position
 		// or in the first position of something with displayed limits
 		if (cur.pos() == cur.lastpos() || (cur.pos() == 0 && hasLimits())) {
-			cur.idx() = up;
+			cur.idx() = idxOfScript(up);
 			cur.pos() = 0;
 			return true;
 		}
 		return false;
 	}
-	return true;
+
+	// Are we 'up'?
+	if (cur.idx() == idxOfScript(true)) {
+		// can't go further up
+		if (up)
+			return false;
+		// otherwise go to last position in the nucleus
+		cur.idx() = 0;
+		cur.pos() = cur.lastpos();
+		return true;
+	}
+
+	// Are we 'down'?
+	if (cur.idx() == idxOfScript(false)) {
+		// can't go further down
+		if (!up)
+			return false;
+		// otherwise go to last position in the nucleus
+		cur.idx() = 0;
+		cur.pos() = cur.lastpos();
+		return true;
+	}
+
+	return false;
 }
 
 
@@ -506,9 +542,16 @@ void MathScriptInset::notifyCursorLeaves(idx_type idx)
 	MathNestInset::notifyCursorLeaves(idx);
 
 	// remove empty scripts if possible
-	if (idx != 2 && script_[idx] && cell(idx).empty()) {
-		cell(idx).clear();
-		script_[idx] = false;
+	if (idx == 2 && cell(2).empty()) {
+		removeScript(false); // must be a subscript...
+	} else if (idx == 1 && cell(1).empty()) {
+		if (nargs() == 2) {
+			cell_1_is_up_ = false;
+			cell(1) = cell(2);
+			cells_.pop_back();
+		} else if (nargs() == 1) {
+			cells_.pop_back();
+		}
 	}
 }
 

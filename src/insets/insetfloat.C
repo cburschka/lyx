@@ -133,9 +133,7 @@ string floatname(string const & type, BufferParams const & bp)
 InsetFloat::InsetFloat(BufferParams const & bp, string const & type)
 	: InsetCollapsable(bp)
 {
-	string lab(_("float: "));
-	lab += floatname(type, bp);
-	setLabel(lab);
+	setLabel(_("float: ") + floatname(type, bp));
 	LyXFont font(LyXFont::ALL_SANE);
 	font.decSize();
 	font.decSize();
@@ -145,7 +143,7 @@ InsetFloat::InsetFloat(BufferParams const & bp, string const & type)
 	setInsetName(type);
 	LyXTextClass const & tclass = bp.getLyXTextClass();
 	if (tclass.hasLayout(caplayout))
-		inset.paragraphs().begin()->layout(tclass[caplayout]);
+		paragraphs().begin()->layout(tclass[caplayout]);
 }
 
 
@@ -294,7 +292,7 @@ int InsetFloat::latex(Buffer const & buf, ostream & os,
 	}
 	os << '\n';
 
-	int const i = inset.latex(buf, os, runparams);
+	int const i = InsetText::latex(buf, os, runparams);
 
 	// The \n is used to force \end{<floatname>} to appear in a new line.
 	// In this case, we do not case if the current output line is empty.
@@ -335,7 +333,7 @@ int InsetFloat::linuxdoc(Buffer const & buf, ostream & os,
 	}
 	os << ">";
 
-	int const i = inset.linuxdoc(buf, os, runparams);
+	int const i = InsetText::linuxdoc(buf, os, runparams);
 	os << "</" << tmptype << ">\n";
 
 	return i;
@@ -346,7 +344,7 @@ int InsetFloat::docbook(Buffer const & buf, ostream & os,
 			OutputParams const & runparams) const
 {
 	os << '<' << params_.type << '>';
-	int const i = inset.docbook(buf, os, runparams);
+	int const i = InsetText::docbook(buf, os, runparams);
 	os << "</" << params_.type << '>';
 
 	return i;
@@ -363,7 +361,7 @@ bool InsetFloat::insetAllowed(InsetOld::Code code) const
 
 bool InsetFloat::showInsetDialog(BufferView * bv) const
 {
-	if (!inset.showInsetDialog(bv))
+	if (!InsetText::showInsetDialog(bv))
 		InsetFloatMailer(const_cast<InsetFloat &>(*this)).showDialog(bv);
 	return true;
 }
@@ -381,8 +379,8 @@ void InsetFloat::wide(bool w, BufferParams const & bp)
 
 void InsetFloat::addToToc(lyx::toc::TocList & toclist, Buffer const & buf) const
 {
-	ParIterator pit(inset.paragraphs().begin(), inset.paragraphs());
-	ParIterator end(inset.paragraphs().end(), inset.paragraphs());
+	ParIterator pit(0, paragraphs());
+	ParIterator end(paragraphs().size(), paragraphs());
 
 	// Find a caption layout in one of the (child inset's) pars
 	for (; pit != end; ++pit) {

@@ -1,3 +1,26 @@
+
+2004-03-25  André Pönitz  <poenitz@gmx.net>
+
+	* inset.[Ch]: remover owner
+
+	* insetcollapsable.[Ch]: derive from InsetText instead having such a
+	member
+
+	* insettext.[Ch]:
+	* insetbibitem.C:
+	* insetbox.C:
+	* insetbranch.C:
+	* insetcaption.C:
+	* insetcharstyle.[Ch]:
+	* insetert.C:
+	* insetfloat.C:
+	* insetfoot.C:
+	* insetmarginal.C:
+	* insetnote.C:
+	* insetoptarg.C:
+	* insettabular.C:
+	* insetwrap.C: adjust
+
 2004-03-16  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* insetquote.C: use opening quote after '[' char.

@@ -17,29 +17,15 @@
 
 #include "debug.h"
 #include "encoding.h"
-#include "errorlist.h"
-#include "factory.h"
 #include "gettext.h"
 #include "iterators.h"
 #include "language.h"
-#include "lyxlex.h"
-#include "lyxrc.h"
+#include "lyxtext.h"
 #include "outputparams.h"
 #include "paragraph_pimpl.h"
 #include "sgml.h"
 #include "texrow.h"
 #include "vspace.h"
-
-#include "insets/insetbibitem.h"
-#include "insets/insethfill.h"
-#include "insets/insetlatexaccent.h"
-#include "insets/insetline.h"
-#include "insets/insetnewline.h"
-#include "insets/insetpagebreak.h"
-#include "insets/insetoptarg.h"
-#include "insets/insetspace.h"
-#include "insets/insetspecialchar.h"
-#include "insets/insettabular.h"
 
 #include "support/filetools.h"
 #include "support/lstrings.h"
@@ -49,6 +35,7 @@
 #include <vector>
 
 using lyx::pos_type;
+using lyx::par_type;
 
 using lyx::support::ascii_lowercase;
 using lyx::support::atoi;
@@ -98,20 +85,17 @@ bool moveItem(Paragraph & from, Paragraph & to,
 
 
 void breakParagraph(BufferParams const & bparams,
-		    ParagraphList & paragraphs,
-		    ParagraphList::iterator par,
-		    pos_type pos,
-		    int flag)
+	ParagraphList & pars, par_type par, pos_type pos, int flag)
 {
 	// create a new paragraph, and insert into the list
-	ParagraphList::iterator tmp = paragraphs.insert(boost::next(par),
-							Paragraph());
+	ParagraphList::iterator tmp =
+		pars.insert(pars.begin() + par + 1, Paragraph());
 
 	// without doing that we get a crash when typing <Return> at the
 	// end of a paragraph
 	tmp->layout(bparams.getLyXTextClass().defaultLayout());
 	// remember to set the inset_owner
-	tmp->setInsetOwner(par->inInset());
+	tmp->setInsetOwner(pars[par].inInset());
 
 	if (bparams.tracking_changes)
 		tmp->trackChanges();
@@ -121,19 +105,19 @@ void breakParagraph(BufferParams const & bparams,
 
 	// layout stays the same with latex-environments
 	if (flag) {
-		tmp->layout(par->layout());
-		tmp->setLabelWidthString(par->params().labelWidthString());
+		tmp->layout(pars[par].layout());
+		tmp->setLabelWidthString(pars[par].params().labelWidthString());
 	}
 
-	bool const isempty = (par->allowEmpty() && par->empty());
+	bool const isempty = (pars[par].allowEmpty() && pars[par].empty());
 
-	if (!isempty && (par->size() > pos || par->empty() || flag == 2)) {
-		tmp->layout(par->layout());
-		tmp->params().align(par->params().align());
-		tmp->setLabelWidthString(par->params().labelWidthString());
+	if (!isempty && (pars[par].size() > pos || pars[par].empty() || flag == 2)) {
+		tmp->layout(pars[par].layout());
+		tmp->params().align(pars[par].params().align());
+		tmp->setLabelWidthString(pars[par].params().labelWidthString());
 
-		tmp->params().depth(par->params().depth());
-		tmp->params().noindent(par->params().noindent());
+		tmp->params().depth(pars[par].params().depth());
+		tmp->params().noindent(pars[par].params().noindent());
 
 		// copy everything behind the break-position
 		// to the new paragraph
@@ -145,40 +129,40 @@ void breakParagraph(BufferParams const & bparams,
 		 * here with size() == 0. So pos_end becomes - 1. Why
 		 * doesn't this cause problems ???
 		 */
-		pos_type pos_end = par->size() - 1;
+		pos_type pos_end = pars[par].size() - 1;
 		pos_type i = pos;
 		pos_type j = pos;
 
 		for (; i <= pos_end; ++i) {
-			Change::Type change = par->lookupChange(i);
-			if (moveItem(*par, *tmp, bparams, i, j - pos)) {
+			Change::Type change = pars[par].lookupChange(i);
+			if (moveItem(pars[par], *tmp, bparams, i, j - pos)) {
 				tmp->setChange(j - pos, change);
 				++j;
 			}
 		}
 
 		for (i = pos_end; i >= pos; --i)
-			par->eraseIntern(i);
+			pars[par].eraseIntern(i);
 	}
 
 	if (pos)
 		return;
 
-	par->params().clear();
+	pars[par].params().clear();
 
-	par->layout(bparams.getLyXTextClass().defaultLayout());
+	pars[par].layout(bparams.getLyXTextClass().defaultLayout());
 
 	// layout stays the same with latex-environments
 	if (flag) {
-		par->layout(tmp->layout());
-		par->setLabelWidthString(tmp->params().labelWidthString());
-		par->params().depth(tmp->params().depth());
+		pars[par].layout(tmp->layout());
+		pars[par].setLabelWidthString(tmp->params().labelWidthString());
+		pars[par].params().depth(tmp->params().depth());
 	}
 
 	// subtle, but needed to get empty pars working right
 	if (bparams.tracking_changes) {
-		if (!par->size()) {
-			par->cleanChanges();
+		if (!pars[par].size()) {
+			pars[par].cleanChanges();
 		} else if (!tmp->size()) {
 			tmp->cleanChanges();
 		}
@@ -187,371 +171,121 @@ void breakParagraph(BufferParams const & bparams,
 
 
 void breakParagraphConservative(BufferParams const & bparams,
-				ParagraphList & paragraphs,
-				ParagraphList::iterator par,
-				pos_type pos)
+	ParagraphList & pars, par_type par, pos_type pos)
 {
 	// create a new paragraph
-	ParagraphList::iterator tmp = paragraphs.insert(boost::next(par),
-							Paragraph());
-	tmp->makeSameLayout(*par);
+	Paragraph & tmp = *pars.insert(pars.begin() + par + 1, Paragraph());
+	tmp.makeSameLayout(pars[par]);
 
 	// When can pos > size()?
 	// I guess pos == size() is possible.
-	if (par->size() > pos) {
+	if (pars[par].size() > pos) {
 		// copy everything behind the break-position to the new
 		// paragraph
-		pos_type pos_end = par->size() - 1;
+		pos_type pos_end = pars[par].size() - 1;
 
 		for (pos_type i = pos, j = pos; i <= pos_end; ++i)
-			if (moveItem(*par, *tmp, bparams, i, j - pos))
+			if (moveItem(pars[par], tmp, bparams, i, j - pos))
 				++j;
 
 		for (pos_type k = pos_end; k >= pos; --k)
-			par->erase(k);
+			pars[par].erase(k);
 	}
 }
 
 
 void mergeParagraph(BufferParams const & bparams,
-		    ParagraphList & paragraphs,
-		    ParagraphList::iterator par)
+	ParagraphList & pars, par_type par)
 {
-	ParagraphList::iterator the_next = boost::next(par);
+	Paragraph & next = pars[par + 1];
 
-	pos_type pos_end = the_next->size() - 1;
-	pos_type pos_insert = par->size();
+	pos_type pos_end = next.size() - 1;
+	pos_type pos_insert = pars[par].size();
 
 	// ok, now copy the paragraph
 	for (pos_type i = 0, j = 0; i <= pos_end; ++i)
-		if (moveItem(*the_next, *par, bparams, i, pos_insert + j))
+		if (moveItem(next, pars[par], bparams, i, pos_insert + j))
 			++j;
 
-	paragraphs.erase(the_next);
+	pars.erase(pars.begin() + par + 1);
 }
 
 
-ParagraphList::iterator depthHook(ParagraphList::iterator pit,
-				  ParagraphList const & plist,
-				  Paragraph::depth_type depth)
+par_type depthHook(par_type pit,
+	ParagraphList const & pars, Paragraph::depth_type depth)
 {
-	ParagraphList::iterator newpit = pit;
-	ParagraphList::iterator beg = const_cast<ParagraphList&>(plist).begin();
+	par_type newpit = pit;
 
-	if (newpit != beg)
+	if (newpit != 0)
 		--newpit;
 
-	while (newpit != beg && newpit->getDepth() > depth) {
+	while (newpit != 0 && pars[newpit].getDepth() > depth)
 		--newpit;
-	}
 
-	if (newpit->getDepth() > depth)
+	if (pars[newpit].getDepth() > depth)
 		return pit;
 
 	return newpit;
 }
 
 
-ParagraphList::iterator outerHook(ParagraphList::iterator pit,
-				  ParagraphList const & plist)
+par_type outerHook(par_type par, ParagraphList const & pars)
 {
-	if (!pit->getDepth())
-		return const_cast<ParagraphList&>(plist).end();
-	return depthHook(pit, plist,
-			 Paragraph::depth_type(pit->getDepth() - 1));
+	if (pars[par].getDepth() == 0)
+		return pars.size();
+	return depthHook(par, pars, Paragraph::depth_type(pars[par].getDepth() - 1));
 }
 
 
-bool isFirstInSequence(ParagraphList::iterator pit,
-		       ParagraphList const & plist)
+bool isFirstInSequence(par_type pit, ParagraphList const & pars)
 {
-	ParagraphList::iterator dhook = depthHook(pit, plist, pit->getDepth());
-	return (dhook == pit
-		|| dhook->layout() != pit->layout()
-		|| dhook->getDepth() != pit->getDepth());
+	par_type dhook = depthHook(pit, pars, pars[pit].getDepth());
+	return dhook == pit
+		|| pars[dhook].layout() != pars[pit].layout()
+		|| pars[dhook].getDepth() != pars[pit].getDepth();
 }
 
 
-int getEndLabel(ParagraphList::iterator p, ParagraphList const & plist)
+int getEndLabel(par_type p, ParagraphList const & pars)
 {
-	ParagraphList::iterator pit = p;
-	Paragraph::depth_type par_depth = p->getDepth();
-	while (pit != const_cast<ParagraphList&>(plist).end()) {
-		LyXLayout_ptr const & layout = pit->layout();
+	par_type pit = p;
+	Paragraph::depth_type par_depth = pars[p].getDepth();
+	while (pit != pars.size()) {
+		LyXLayout_ptr const & layout = pars[pit].layout();
 		int const endlabeltype = layout->endlabeltype;
 
 		if (endlabeltype != END_LABEL_NO_LABEL) {
-			if (boost::next(p) == const_cast<ParagraphList&>(plist).end())
+			if (p + 1 == pars.size())
 				return endlabeltype;
 
-			Paragraph::depth_type const next_depth = boost::next(p)->getDepth();
+			Paragraph::depth_type const next_depth =
+				pars[p + 1].getDepth();
 			if (par_depth > next_depth ||
-			    (par_depth == next_depth &&
-			     layout != boost::next(p)->layout()))
+			    (par_depth == next_depth && layout != pars[p + 1].layout()))
 				return endlabeltype;
 			break;
 		}
 		if (par_depth == 0)
 			break;
-		pit = outerHook(pit, plist);
-		if (pit != const_cast<ParagraphList&>(plist).end())
-			par_depth = pit->getDepth();
+		pit = outerHook(pit, pars);
+		if (pit != pars.size())
+			par_depth = pars[pit].getDepth();
 	}
 	return END_LABEL_NO_LABEL;
 }
 
 
-namespace {
-
-int readParToken(Buffer const & buf, Paragraph & par, LyXLex & lex,
-	string const & token)
+LyXFont const outerFont(par_type pit, ParagraphList const & pars)
 {
-	static LyXFont font;
-	static Change change;
-
-	BufferParams const & bp = buf.params();
-
-	if (token[0] != '\\') {
-		string::const_iterator cit = token.begin();
-		for (; cit != token.end(); ++cit) {
-			par.insertChar(par.size(), (*cit), font, change);
-		}
-	} else if (token == "\\begin_layout") {
-		lex.eatLine();
-		string layoutname = lex.getString();
-
-		font = LyXFont(LyXFont::ALL_INHERIT, bp.language);
-		change = Change();
-
-		LyXTextClass const & tclass = bp.getLyXTextClass();
-
-		if (layoutname.empty()) {
-			layoutname = tclass.defaultLayoutName();
-		}
-
-		bool hasLayout = tclass.hasLayout(layoutname);
-
-		if (!hasLayout) {
-			lyxerr << "Layout '" << layoutname << "' does not"
-			       << " exist in textclass '" << tclass.name()
-			       << "'." << endl;
-			lyxerr << "Trying to use default layout instead."
-			       << endl;
-			layoutname = tclass.defaultLayoutName();
-		}
-
-		par.layout(bp.getLyXTextClass()[layoutname]);
-
-		// Test whether the layout is obsolete.
-		LyXLayout_ptr const & layout = par.layout();
-		if (!layout->obsoleted_by().empty())
-			par.layout(bp.getLyXTextClass()[layout->obsoleted_by()]);
-
-		par.params().read(lex);
-
-	} else if (token == "\\end_layout") {
-		lyxerr << "Solitary \\end_layout in line " << lex.getLineNo() << "\n"
-		       << "Missing \\begin_layout?.\n";
-	} else if (token == "\\end_inset") {
-		lyxerr << "Solitary \\end_inset in line " << lex.getLineNo() << "\n"
-		       << "Missing \\begin_inset?.\n";
-	} else if (token == "\\begin_inset") {
-		InsetBase * inset = readInset(lex, buf);
-		if (inset)
-			par.insertInset(par.size(), inset, font, change);
-		else {
-			lex.eatLine();
-			string line = lex.getString();
-			buf.error(ErrorItem(_("Unknown Inset"), line,
-					    par.id(), 0, par.size()));
-			return 1;
-		}
-	} else if (token == "\\family") {
-		lex.next();
-		font.setLyXFamily(lex.getString());
-	} else if (token == "\\series") {
-		lex.next();
-		font.setLyXSeries(lex.getString());
-	} else if (token == "\\shape") {
-		lex.next();
-		font.setLyXShape(lex.getString());
-	} else if (token == "\\size") {
-		lex.next();
-		font.setLyXSize(lex.getString());
-	} else if (token == "\\lang") {
-		lex.next();
-		string const tok = lex.getString();
-		Language const * lang = languages.getLanguage(tok);
-		if (lang) {
-			font.setLanguage(lang);
-		} else {
-			font.setLanguage(bp.language);
-			lex.printError("Unknown language `$$Token'");
-		}
-	} else if (token == "\\numeric") {
-		lex.next();
-		font.setNumber(font.setLyXMisc(lex.getString()));
-	} else if (token == "\\emph") {
-		lex.next();
-		font.setEmph(font.setLyXMisc(lex.getString()));
-	} else if (token == "\\bar") {
-		lex.next();
-		string const tok = lex.getString();
-
-		if (tok == "under")
-			font.setUnderbar(LyXFont::ON);
-		else if (tok == "no")
-			font.setUnderbar(LyXFont::OFF);
-		else if (tok == "default")
-			font.setUnderbar(LyXFont::INHERIT);
-		else
-			lex.printError("Unknown bar font flag "
-				       "`$$Token'");
-	} else if (token == "\\noun") {
-		lex.next();
-		font.setNoun(font.setLyXMisc(lex.getString()));
-	} else if (token == "\\color") {
-		lex.next();
-		font.setLyXColor(lex.getString());
-	} else if (token == "\\InsetSpace" || token == "\\SpecialChar") {
-
-		// Insets don't make sense in a free-spacing context! ---Kayvan
-		if (par.isFreeSpacing()) {
-			if (token == "\\InsetSpace")
-				par.insertChar(par.size(), ' ', font, change);
-			else if (lex.isOK()) {
-				lex.next();
-				string const next_token = lex.getString();
-				if (next_token == "\\-")
-					par.insertChar(par.size(), '-', font, change);
-				else {
-					lex.printError("Token `$$Token' "
-						       "is in free space "
-						       "paragraph layout!");
-				}
-			}
-		} else {
-			auto_ptr<InsetBase> inset;
-			if (token == "\\SpecialChar" )
-				inset.reset(new InsetSpecialChar);
-			else
-				inset.reset(new InsetSpace);
-			inset->read(buf, lex);
-			par.insertInset(par.size(), inset.release(),
-					font, change);
-		}
-	} else if (token == "\\i") {
-		auto_ptr<InsetBase> inset(new InsetLatexAccent);
-		inset->read(buf, lex);
-		par.insertInset(par.size(), inset.release(), font, change);
-	} else if (token == "\\backslash") {
-		par.insertChar(par.size(), '\\', font, change);
-	} else if (token == "\\newline") {
-		auto_ptr<InsetBase> inset(new InsetNewline);
-		inset->read(buf, lex);
-		par.insertInset(par.size(), inset.release(), font, change);
-	} else if (token == "\\LyXTable") {
-		auto_ptr<InsetBase> inset(new InsetTabular(buf));
-		inset->read(buf, lex);
-		par.insertInset(par.size(), inset.release(), font, change);
-	} else if (token == "\\bibitem") {
-		InsetCommandParams p("bibitem", "dummy");
-		auto_ptr<InsetBibitem> inset(new InsetBibitem(p));
-		inset->read(buf, lex);
-		par.insertInset(par.size(), inset.release(), font, change);
-	} else if (token == "\\hfill") {
-		par.insertInset(par.size(), new InsetHFill, font, change);
-	} else if (token == "\\lyxline") {
-		par.insertInset(par.size(), new InsetLine, font, change);
-	} else if (token == "\\newpage") {
-		par.insertInset(par.size(), new InsetPagebreak, font, change);
-	} else if (token == "\\change_unchanged") {
-		// Hack ! Needed for empty paragraphs :/
-		// FIXME: is it still ??
-		if (!par.size())
-			par.cleanChanges();
-		change = Change(Change::UNCHANGED);
-	} else if (token == "\\change_inserted") {
-		lex.nextToken();
-		istringstream is(lex.getString());
-		int aid;
-		lyx::time_type ct;
-		is >> aid >> ct;
-		change = Change(Change::INSERTED, bp.author_map[aid], ct);
-	} else if (token == "\\change_deleted") {
-		lex.nextToken();
-		istringstream is(lex.getString());
-		int aid;
-		lyx::time_type ct;
-		is >> aid >> ct;
-		change = Change(Change::DELETED, bp.author_map[aid], ct);
-	} else {
-		lex.eatLine();
-		string const s = bformat(_("Unknown token: %1$s %2$s\n"),
-			token, lex.getString());
-
-		buf.error(ErrorItem(_("Unknown token"), s,
-				    par.id(), 0, par.size()));
-		return 1;
-	}
-	return 0;
-}
-
-}
-
-
-int readParagraph(Buffer const & buf, Paragraph & par, LyXLex & lex)
-{
-	int unknown = 0;
-
-	lex.nextToken();
-	string token = lex.getString();
-
-	while (lex.isOK()) {
-
-		unknown += readParToken(buf, par, lex, token);
-
-		lex.nextToken();
-		token = lex.getString();
-
-		if (token.empty())
-			continue;
-
-		if (token == "\\end_layout") {
-			//Ok, paragraph finished
-			break;
-		}
-
-		lyxerr[Debug::PARSER] << "Handling paragraph token: `"
-				      << token << '\'' << endl;
-		if (token == "\\begin_layout" || token == "\\end_document"
-		    || token == "\\end_inset" || token == "\\begin_deeper"
-		    || token == "\\end_deeper") {
-			lex.pushToken(token);
-			lyxerr << "Paragraph ended in line "
-			       << lex.getLineNo() << "\n"
-			       << "Missing \\end_layout.\n";
-			break;
-		}
-	}
-
-	return unknown;
-}
-
-
-LyXFont const outerFont(ParagraphList::iterator pit,
-			ParagraphList const & plist)
-{
-	Paragraph::depth_type par_depth = pit->getDepth();
+	Paragraph::depth_type par_depth = pars[pit].getDepth();
 	LyXFont tmpfont(LyXFont::ALL_INHERIT);
 
 	// Resolve against environment font information
-	while (pit != const_cast<ParagraphList&>(plist).end() &&
-	       par_depth && !tmpfont.resolved()) {
-		pit = outerHook(pit, plist);
-		if (pit != const_cast<ParagraphList&>(plist).end()) {
-			tmpfont.realize(pit->layout()->font);
-			par_depth = pit->getDepth();
+	while (pit != pars.size() && par_depth && !tmpfont.resolved()) {
+		pit = outerHook(pit, pars);
+		if (pit != pars.size()) {
+			tmpfont.realize(pars[pit].layout()->font);
+			par_depth = pars[pit].getDepth();
 		}
 	}
 
@@ -559,7 +293,7 @@ LyXFont const outerFont(ParagraphList::iterator pit,
 }
 
 
-ParagraphList::iterator outerPar(Buffer const & buf, InsetBase const * inset)
+par_type outerPar(Buffer const & buf, InsetBase const * inset)
 {
 	ParIterator pit = const_cast<Buffer &>(buf).par_iterator_begin();
 	ParIterator end = const_cast<Buffer &>(buf).par_iterator_end();
@@ -578,7 +312,7 @@ ParagraphList::iterator outerPar(Buffer const & buf, InsetBase const * inset)
 	}
 	lyxerr << "outerPar: should not happen" << endl;
 	BOOST_ASSERT(false);
-	return const_cast<Buffer &>(buf).paragraphs().end(); // shut up compiler
+	return buf.paragraphs().size(); // shut up compiler
 }
 
 
@@ -591,13 +325,13 @@ Paragraph const & ownerPar(Buffer const & buf, InsetBase const * inset)
 		// the second '=' below is intentional
 		for (int i = 0; (text = inset->getText(i)); ++i)
 			if (&text->paragraphs() == &pit.plist())
-				return *pit.pit();
+				return *pit;
 
 		InsetList::const_iterator ii = pit->insetlist.begin();
 		InsetList::const_iterator iend = pit->insetlist.end();
 		for ( ; ii != iend; ++ii)
 			if (ii->inset == inset)
-				return *pit.pit();
+				return *pit;
 	}
 	lyxerr << "ownerPar: should not happen" << endl;
 	BOOST_ASSERT(false);
@@ -606,20 +340,16 @@ Paragraph const & ownerPar(Buffer const & buf, InsetBase const * inset)
 
 
 /// return the range of pars [beg, end[ owning the range of y [ystart, yend] 
-void getParsInRange(ParagraphList & pl,
-				int ystart, int yend,
-				ParagraphList::iterator & beg,
-				ParagraphList::iterator & end)
+void getParsInRange(ParagraphList & pars, int ystart, int yend,
+	par_type & beg, par_type & end)
 {
-	ParagraphList::iterator const endpar = pl.end();
-	ParagraphList::iterator const begpar = pl.begin();
+	BOOST_ASSERT(!pars.empty());
+	par_type const endpar = pars.size();
+	par_type const begpar = 0;
 
-	BOOST_ASSERT(begpar != endpar);
-
-	beg = endpar;
-	for (--beg; beg != begpar && beg->y > ystart; --beg)
+	for (beg = endpar - 1; beg != begpar && pars[beg].y > ystart; --beg)
 		;
 
-	for (end = beg ; end != endpar && end->y <= yend; ++end)
+	for (end = beg ; end != endpar && pars[end].y <= yend; ++end)
 		;
 }

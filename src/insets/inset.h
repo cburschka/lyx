@@ -47,10 +47,6 @@ public:
 	///
 	std::string const & getInsetName() const { return name_; }
 	///
-	void setOwner(UpdatableInset * inset) { owner_ = inset; }
-	///
-	UpdatableInset * owner() const { return owner_; }
-	///
 	virtual void setBackgroundColor(LColor_color);
 	///
 	LColor_color backgroundColor() const;
@@ -76,8 +72,6 @@ protected:
 	mutable Dimension dim_;
 
 private:
-	///
-	UpdatableInset * owner_;
 	///
 	std::string name_;
 	/** We store the LColor::color value as an int to get LColor.h out

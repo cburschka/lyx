@@ -28,7 +28,7 @@ class CursorSlice;
 /** A collapsable text inset
 
 */
-class InsetCollapsable : public UpdatableInset {
+class InsetCollapsable : public InsetText {
 public:
 	///
 	static int const TEXT_TO_TOP_OFFSET = 2;
@@ -36,14 +36,12 @@ public:
 	static int const TEXT_TO_BOTTOM_OFFSET = 2;
 	///
 	enum CollapseStatus {
-		Open,
 		Collapsed,
-		Inlined
+		Inlined,
+		Open
 	};
 	///
 	InsetCollapsable(BufferParams const &, CollapseStatus status = Open);
-	///
-	InsetCollapsable(InsetCollapsable const & in);
 	///
 	void read(Buffer const &, LyXLex &);
 	///
@@ -53,8 +51,6 @@ public:
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
 	///
-	void drawSelection(PainterInfo & pi, int x, int y) const;
-	///
 	bool hitButton(FuncRequest &) const;
 	///
 	std::string const getNewLabel(std::string const & l) const;
@@ -63,43 +59,19 @@ public:
 	/// can we go further down on mouse click?
 	bool descendable() const;
 	///
-	bool insetAllowed(InsetOld::Code code) const;
-	///
 	bool isTextInset() const { return true; }
-	///
-	int latex(Buffer const &, std::ostream &,
-		  OutputParams const &) const;
-	///
-	int plaintext(Buffer const &, std::ostream &,
-		  OutputParams const &) const;
-	///
-	int linuxdoc(Buffer const &, std::ostream &,
-		     OutputParams const &) const;
-	///
-	int docbook(Buffer const &, std::ostream &,
-		    OutputParams const & runparams) const;
-	///
-	void validate(LaTeXFeatures & features) const;
-	/// get the screen x,y of the cursor
-	void getCursorPos(CursorSlice const & cur, int & x, int & y) const;
 	///
 	void setLabel(std::string const & l);
 	///
 	virtual void setButtonLabel() {}
  	///
 	void setLabelFont(LyXFont & f);
-	/// Appends \c list with all labels found within this inset.
-	void getLabelList(Buffer const &, std::vector<std::string> & list) const;
 	///
 	int scroll(bool recursive = true) const;
 	///
 	void scroll(BufferView & bv, float sx) const;
 	///
 	void scroll(BufferView & bv, int offset) const;
-	///
-	size_t nargs() const;
-	///
-	LyXText * getText(int) const;
 	///
 	bool isOpen() const { return status_ == Open || status_ == Inlined; }
 	///
@@ -111,21 +83,13 @@ public:
 	///
 	void close();
 	///
-	void markErased();
-	///
-	void addPreview(lyx::graphics::PreviewLoader &) const;
-	///
-	void setBackgroundColor(LColor_color);
-	///
-	void setStatus(CollapseStatus st);
-	///
 	bool allowSpellCheck() const { return true; }
 
 protected:
 	///
-	void priv_dispatch(LCursor & cur, FuncRequest & cmd);
+	void setStatus(CollapseStatus st);
 	///
-	bool getStatus(LCursor & cur, FuncRequest const & cmd, FuncStatus &) const;
+	void priv_dispatch(LCursor & cur, FuncRequest & cmd);
 	///
 	void dimension_collapsed(Dimension &) const;
 	///
@@ -139,13 +103,6 @@ protected:
 	///
 	InsetBase * editXY(LCursor & cur, int x, int y);
 
-private:
-	///
-	void lfunMouseRelease(LCursor & cur, FuncRequest & cmd);
-
-public:
-	///
-	mutable InsetText inset;
 protected:
 	///
 	LyXFont labelfont_;

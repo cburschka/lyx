@@ -96,7 +96,6 @@ lyx_SOURCES = \
 	ParagraphList_fwd.h \
 	ParagraphParameters.C \
 	ParagraphParameters.h \
-	ParameterStruct.h \
 	PrinterParams.C \
 	PrinterParams.h \
 	RowList_fwd.h \
@@ -242,8 +241,6 @@ lyx_SOURCES = \
 	paragraph_funcs.h \
 	paragraph_pimpl.C \
 	paragraph_pimpl.h \
-	PosIterator.h \
-	PosIterator.C \
 	SpellBase.h \
 	ispell.C \
 	ispell.h \

@@ -32,6 +32,7 @@
 #include "lyxrow.h"
 #include "outputparams.h"
 #include "paragraph_funcs.h"
+#include "ParagraphList_fwd.h"
 #include "sgml.h"
 #include "texrow.h"
 #include "vspace.h"
@@ -64,10 +65,15 @@ using std::ostream;
 using std::ostringstream;
 
 
+ParagraphList::ParagraphList()
+{}
+
+
 Paragraph::Paragraph()
 	: y(0), height(0), begin_of_body_(0),
 	  pimpl_(new Paragraph::Pimpl(this))
 {
+	//lyxerr << "sizeof Paragraph::Pimpl: " << sizeof(Paragraph::Pimpl) << endl;
 	itemdepth = 0;
 	params().clear();
 }
@@ -717,8 +723,8 @@ namespace {
 
 bool noTrivlistCentering(UpdatableInset const * inset)
 {
-	if (inset && inset->owner()) {
-		InsetBase::Code const code = inset->owner()->lyxCode();
+	if (inset) {
+		InsetBase::Code const code = inset->lyxCode();
 		return code == InsetBase::FLOAT_CODE ||
 			code == InsetBase::WRAP_CODE;
 	}
@@ -1459,21 +1465,15 @@ bool IsInsetChar(char c)
 
 bool Paragraph::isHfill(pos_type pos) const
 {
-	return IsInsetChar(getChar(pos))
-	       && getInset(pos)->lyxCode() == InsetBase::HFILL_CODE;
-}
-
-
-bool Paragraph::isInset(pos_type pos) const
-{
-	return IsInsetChar(getChar(pos));
+	return
+		isInset(pos) && getInset(pos)->lyxCode() == InsetBase::HFILL_CODE;
 }
 
 
 bool Paragraph::isNewline(pos_type pos) const
 {
-	return IsInsetChar(getChar(pos))
-	       && getInset(pos)->lyxCode() == InsetBase::NEWLINE_CODE;
+	return
+		isInset(pos) && getInset(pos)->lyxCode() == InsetBase::NEWLINE_CODE;
 }
 
 
@@ -1535,8 +1535,7 @@ bool Paragraph::isRightToLeftPar(BufferParams const & bparams) const
 {
 	return lyxrc.rtl_support
 		&& getParLanguage(bparams)->RightToLeft()
-		&& !(inInset() && inInset()->owner() &&
-		     inInset()->owner()->lyxCode() == InsetBase::ERT_CODE);
+		&& !(inInset() && inInset()->lyxCode() == InsetBase::ERT_CODE);
 }
 
 
@@ -1641,11 +1640,6 @@ string const Paragraph::asString(Buffer const & buffer,
 void Paragraph::setInsetOwner(UpdatableInset * inset)
 {
 	pimpl_->inset_owner = inset;
-	InsetList::iterator it = insetlist.begin();
-	InsetList::iterator end = insetlist.end();
-	for (; it != end; ++it)
-		if (it->inset)
-			it->inset->setOwner(inset);
 }
 
 
@@ -1802,8 +1796,8 @@ bool Paragraph::isFreeSpacing() const
 
 	// for now we just need this, later should we need this in some
 	// other way we can always add a function to InsetBase too.
-	if (pimpl_->inset_owner && pimpl_->inset_owner->owner())
-		return pimpl_->inset_owner->owner()->lyxCode() == InsetBase::ERT_CODE;
+	if (pimpl_->inset_owner)
+		return pimpl_->inset_owner->lyxCode() == InsetBase::ERT_CODE;
 	return false;
 }
 
@@ -1812,8 +1806,8 @@ bool Paragraph::allowEmpty() const
 {
 	if (layout()->keepempty)
 		return true;
-	if (pimpl_->inset_owner && pimpl_->inset_owner->owner())
-		return pimpl_->inset_owner->owner()->lyxCode() == InsetBase::ERT_CODE;
+	if (pimpl_->inset_owner)
+		return pimpl_->inset_owner->lyxCode() == InsetBase::ERT_CODE;
 	return false;
 }
 
@@ -1887,3 +1881,5 @@ unsigned char Paragraph::transformChar(unsigned char c, pos_type pos) const
 			return Encodings::TransformChar(c, Encodings::FORM_ISOLATED);
 	}
 }
+
+

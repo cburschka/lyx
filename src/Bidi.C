@@ -61,8 +61,7 @@ void Bidi::computeTables(Paragraph const & par,
 	}
 
 	InsetOld * inset = par.inInset();
-	if (inset && inset->owner() &&
-	    inset->owner()->lyxCode() == InsetOld::ERT_CODE) {
+	if (inset && inset->lyxCode() == InsetOld::ERT_CODE) {
 		start_ = -1;
 		return;
 	}

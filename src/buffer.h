@@ -13,7 +13,6 @@
 #define BUFFER_H
 
 #include "InsetList.h"
-#include "ParagraphList_fwd.h"
 
 #include "support/limited_stack.h"
 #include "support/types.h"
@@ -42,9 +41,9 @@ class LaTeXFeatures;
 class Language;
 class Messages;
 class OutputParams;
-class ParIterator;
-class PosIterator;
+class ParagraphList;
 class ParConstIterator;
+class ParIterator;
 class TeXErrors;
 class TexRow;
 class Undo;
@@ -87,7 +86,7 @@ public:
 	/// load a new file
 	bool readFile(std::string const & filename);
 
-	bool readFile(std::string const & filename, ParagraphList::iterator pit);
+	bool readFile(std::string const & filename, lyx::par_type pit);
 
 	/// read the header, returns number of unknown tokens
 	int readHeader(LyXLex & lex);
@@ -99,8 +98,9 @@ public:
 	bool readBody(LyXLex &);
 
 	///
-	void insertStringAsLines(ParagraphList::iterator &, lyx::pos_type &,
-				 LyXFont const &, std::string const &);
+	void insertStringAsLines(ParagraphList & plist,
+		lyx::par_type &, lyx::pos_type &,
+		LyXFont const &, std::string const &);
 	///
 	ParIterator getParFromID(int id) const;
 	/// do we have a paragraph with this id?
@@ -288,14 +288,10 @@ public:
 		typedef ptrdiff_t difference_type;
 		typedef InsetBase * pointer;
 		typedef InsetBase & reference;
-		typedef ParagraphList::iterator base_type;
+		typedef lyx::par_type base_type;
 
 		///
-		inset_iterator();
-		///
-		inset_iterator(base_type p, base_type e);
-		///
-		inset_iterator(base_type p, lyx::pos_type pos, base_type e);
+		inset_iterator(ParagraphList & pars, base_type p);
 
 		/// prefix ++
 		inset_iterator & operator++();
@@ -307,7 +303,7 @@ public:
 		pointer operator->();
 
 		///
-		ParagraphList::iterator getPar() const;
+		lyx::par_type getPar() const;
 		///
 		lyx::pos_type getPos() const;
 		///
@@ -318,11 +314,11 @@ public:
 		///
 		void setParagraph();
 		///
-		ParagraphList::iterator pit;
-		///
-		ParagraphList::iterator pend;
+		lyx::par_type pit;
 		///
 		InsetList::iterator it;
+	public:
+		ParagraphList * pars_;
 	};
 
 	/// return an iterator to all *top-level* insets in the buffer
@@ -337,10 +333,6 @@ public:
 	/// return the const end of all *top-level* insets in the buffer
 	inset_iterator inset_const_iterator_end() const;
 
-	///
-	PosIterator pos_iterator_begin();
-	///
-	PosIterator pos_iterator_end();
 	///
 	ParIterator par_iterator_begin();
 	///
@@ -369,7 +361,7 @@ private:
 	    \return \c false if method fails.
 	*/
 	bool readFile(LyXLex &, std::string const & filename,
-		      ParagraphList::iterator pit);
+		      lyx::par_type pit);
 
 	bool do_writeFile(std::ostream & ofs) const;
 

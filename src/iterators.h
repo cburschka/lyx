@@ -12,8 +12,8 @@
 #ifndef ITERATORS_H
 #define ITERATORS_H
 
-#include "ParagraphList_fwd.h"
 #include "InsetList.h"
+#include "ParagraphList_fwd.h"  // only for ParagraphList::value_type
 
 #include "support/types.h"
 
@@ -21,19 +21,19 @@
 
 #include <vector>
 
-class LyXText;
-class InsetBase;
-class Cursor;
 class Buffer;
-class PosIterator;
+class Cursor;
+class InsetBase;
+class LyXText;
+class DocumentIterator;
 
 
 class ParPosition {
 public:
 	///
-	ParPosition(ParagraphList::iterator p, ParagraphList const & pl);
+	ParPosition(lyx::par_type p, ParagraphList const & pl);
 	///
-	ParagraphList::iterator pit;
+	lyx::par_type pit;
 	///
 	ParagraphList const * plist;
 	///
@@ -48,13 +48,13 @@ class ParIterator  : public std::iterator<
 	ParagraphList::value_type> {
 public:
 	///
-	ParIterator(ParagraphList::iterator pit, ParagraphList const & pl);
+	ParIterator(lyx::par_type pit, ParagraphList const & pl);
 	///
 	~ParIterator();
 	///
 	ParIterator(ParIterator const &);
 	///
-	ParIterator(PosIterator const &);
+	ParIterator(DocumentIterator const &);
 	///
 	void operator=(ParIterator const &);
 	///
@@ -62,11 +62,11 @@ public:
 	///
 	Paragraph & operator*() const;
 	///
-	ParagraphList::iterator operator->() const;
+	Paragraph * operator->() const;
 	/// This gives us the top-most parent paragraph
-	ParagraphList::iterator outerPar() const;
+	lyx::par_type outerPar() const;
 	///
-	ParagraphList::iterator pit() const;
+	lyx::par_type pit() const;
 	///
 	ParagraphList & plist() const;
 	/// returns 'innermost' LyXText
@@ -99,7 +99,7 @@ class ParConstIterator : public std::iterator<
 	ParagraphList::value_type> {
 public:
 	///
-	ParConstIterator(ParagraphList::iterator pit, ParagraphList const & pl);
+	ParConstIterator(lyx::par_type pit, ParagraphList const & pl);
 	///
 	~ParConstIterator();
 	///
@@ -107,22 +107,23 @@ public:
 	///
 	ParConstIterator & operator++();
 	///
-	ParagraphList::const_iterator pit() const;
+	lyx::par_type pit() const;
 	///
 	Paragraph const & operator*() const;
 	///
-	ParagraphList::const_iterator operator->() const;
+	Paragraph const * operator->() const;
 	///
 	ParagraphList const & plist() const;
 
 	/// depth of nesting
 	size_t size() const;
+	///
 	typedef std::vector<ParPosition> PosHolder;
-	PosHolder const & positions() const
-	{
-		return positions_;
-	}
+	///
+	PosHolder const & positions() const { return positions_; }
+
 private:
+	///
 	PosHolder positions_;
 };
 

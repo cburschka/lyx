@@ -13,7 +13,6 @@
 #define INSETTEXT_H
 
 #include "updatableinset.h"
-#include "ParagraphList_fwd.h"
 #include "RowList_fwd.h"
 #include "lyxfont.h"
 #include "lyxtext.h"
@@ -29,7 +28,7 @@ class Dimension;
 class LColor_color;
 class CursorSlice;
 class Painter;
-class Paragraph;
+class ParagraphList;
 class Row;
 
 
@@ -91,8 +90,6 @@ public:
 	/// FIXME, document
 	void getCursorPos(CursorSlice const & cur, int & x, int & y) const;
 	///
-	bool insetAllowed(InsetOld::Code) const;
-	///
 	void setFont(BufferView *, LyXFont const &,
 		     bool toggleall = false,
 		     bool selectall = false);
@@ -115,22 +112,12 @@ public:
 	/// Appends \c list with all labels found within this inset.
 	void getLabelList(Buffer const &, std::vector<std::string> & list) const;
 	///
-	int scroll(bool recursive = true) const;
-	///
-	void scroll(BufferView & bv, float sx) const {
-		UpdatableInset::scroll(bv, sx);
-	}
-	///
-	void scroll(BufferView & bv, int offset) const {
-		UpdatableInset::scroll(bv, offset);
-	}
-	///
 	LyXText * getText(int) const;
 	///
 	bool getStatus(LCursor & cur, FuncRequest const & cmd, FuncStatus &) const;
 
 	/// mark as erased for change tracking
-	void markErased() { clear(true); };
+	void markErased() { clear(true); }
 	/**
 	 * Mark as new. Used when pasting in tabular, and adding rows
 	 * or columns. Note that pasting will ensure that tracking already
@@ -156,9 +143,10 @@ public:
 	///
 	ParagraphList & paragraphs() const;
 
-private:
+protected:
 	///
 	void priv_dispatch(LCursor & cur, FuncRequest & cmd);
+private:
 	///
 	void updateLocal(LCursor &);
 	///
@@ -184,12 +172,7 @@ private:
 	 */
 	int frame_color_;
 	///
-	mutable lyx::paroffset_type old_par;
-
-	/** to remember old painted frame dimensions to clear it on
-	 *  the right spot!
-	 */
-	mutable bool in_insetAllowed;
+	mutable lyx::par_type old_par;
 public:
 	///
 	mutable LyXText text_;

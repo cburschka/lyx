@@ -20,10 +20,12 @@
 #include "changes.h"
 #include "lyxfont.h"
 #include "ParagraphParameters.h"
+#include "ShareContainer.h"
 
 #include <boost/scoped_ptr.hpp>
 
 class LyXLayout;
+
 
 struct Paragraph::Pimpl {
 	///

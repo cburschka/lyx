@@ -13,7 +13,6 @@
 
 #include "iterators.h"
 #include "paragraph.h"
-#include "PosIterator.h"
 #include "cursor.h"
 #include "buffer.h"
 #include "BufferView.h"
@@ -25,6 +24,8 @@
 
 #include <boost/next_prior.hpp>
 
+using lyx::par_type;
+
 using boost::next;
 
 ///
@@ -32,12 +33,11 @@ using boost::next;
 ///
 
 
-ParPosition::ParPosition(ParagraphList::iterator p, ParagraphList const & pl)
+ParPosition::ParPosition(par_type p, ParagraphList const & pl)
 	: pit(p), plist(&pl)
 {
-	if (p != const_cast<ParagraphList&>(pl).end()) {
-		it.reset(p->insetlist.begin());
-	}
+	if (p != pl.size())
+		it.reset(const_cast<InsetList&>(pl[p].insetlist).begin());
 }
 
 
@@ -57,7 +57,7 @@ bool operator!=(ParPosition const & pos1, ParPosition const & pos2)
 /// ParIterator
 ///
 
-ParIterator::ParIterator(ParagraphList::iterator pit, ParagraphList const & pl)
+ParIterator::ParIterator(par_type pit, ParagraphList const & pl)
 {
 	positions_.push_back(ParPosition(pit, pl));
 }
@@ -75,7 +75,7 @@ ParIterator::ParIterator(ParIterator const & pi)
 void ParIterator::operator=(ParIterator const & pi)
 {
 	ParIterator tmp(pi);
-	swap(positions_ , tmp.positions_);
+	swap(positions_, tmp.positions_);
 }
 
 
@@ -90,7 +90,7 @@ ParIterator & ParIterator::operator++()
 			if (LyXText * text = (*p.it)->inset->getText(*p.index)) {
 				ParagraphList & plist = text->paragraphs();
 				if (!plist.empty()) {
-					positions_.push_back(ParPosition(plist.begin(), plist));
+					positions_.push_back(ParPosition(0, plist));
 					return *this;
 				}
 			}
@@ -99,29 +99,28 @@ ParIterator & ParIterator::operator++()
 			// The following line is needed because the value of
 			// p.it may be invalid if inset was added/removed to
 			// the paragraph pointed by the iterator
-			p.it.reset(p.pit->insetlist.begin());
+			p.it.reset(const_cast<InsetList&>((*p.plist)[p.pit].insetlist).begin());
 		}
 
 		// Try to find the next inset that contains paragraphs
-		InsetList::iterator end = p.pit->insetlist.end();
+		InsetList::iterator end =
+			const_cast<InsetList&>((*p.plist)[p.pit].insetlist).end();
 		for (; *p.it != end; ++(*p.it)) {
 			if (LyXText * text = (*p.it)->inset->getText(0)) {
 				ParagraphList & plist = text->paragraphs();
 				if (!plist.empty()) {
 					p.index.reset(0);
-					positions_.push_back(ParPosition(plist.begin(), plist));
+					positions_.push_back(ParPosition(0, plist));
 					return *this;
 				}
 			}
 		}
 
 		// Try to go to the next paragarph
-		if (next(p.pit) != const_cast<ParagraphList*>(p.plist)->end()
-		    || positions_.size() == 1) {
+		if (p.pit + 1 != p.plist->size() || positions_.size() == 1) {
 			++p.pit;
 			p.index.reset();
 			p.it.reset();
-
 			return *this;
 		}
 
@@ -165,23 +164,23 @@ int ParIterator::index() const
 
 Paragraph & ParIterator::operator*() const
 {
-	return *positions_.back().pit;
+	return plist()[positions_.back().pit];
 }
 
 
-ParagraphList::iterator ParIterator::pit() const
+par_type ParIterator::pit() const
 {
 	return positions_.back().pit;
 }
 
 
-ParagraphList::iterator ParIterator::operator->() const
+Paragraph * ParIterator::operator->() const
 {
-	return positions_.back().pit;
+	return &plist()[positions_.back().pit];
 }
 
 
-ParagraphList::iterator ParIterator::outerPar() const
+par_type ParIterator::outerPar() const
 {
 	return positions_[0].pit;
 }
@@ -199,22 +198,23 @@ ParagraphList & ParIterator::plist() const
 }
 
 
-ParIterator::ParIterator(PosIterator const & pos)
+ParIterator::ParIterator(DocumentIterator const & cur)
 {
-	int const size = pos.stack_.size();
+	int const size = cur.size();
 
 	for (int i = 0; i < size; ++i) {
-		PosIteratorItem const & it = pos.stack_[i];
-		ParPosition pp(it.pit, *it.pl);
+		CursorSlice sl = cur[i];
+		ParPosition pp(sl.par(), sl.text()->paragraphs());
 		if (i < size - 1) {
-			InsetBase * inset = it.pit->getInset(it.pos);
+			Paragraph & par = sl.text()->paragraphs()[sl.par()];
+			InsetBase * inset = par.getInset(sl.pos());
 			BOOST_ASSERT(inset);
-			InsetList::iterator beg = it.pit->insetlist.begin();
-			InsetList::iterator end = it.pit->insetlist.end();
+			InsetList::iterator beg = par.insetlist.begin();
+			InsetList::iterator end = par.insetlist.end();
 			for ( ; beg != end && beg->inset != inset; ++beg)
 				;
 			pp.it.reset(beg);
-			pp.index.reset(it.index - 1);
+			pp.index.reset(sl.idx() - 1);
 		}
 		positions_.push_back(pp);
 	}
@@ -238,8 +238,7 @@ bool operator!=(ParIterator const & iter1, ParIterator const & iter2)
 ///
 
 
-ParConstIterator::ParConstIterator(ParagraphList::iterator pit,
-				   ParagraphList const & pl)
+ParConstIterator::ParConstIterator(par_type pit, ParagraphList const & pl)
 {
 	positions_.push_back(ParPosition(pit, pl));
 }
@@ -265,7 +264,7 @@ ParConstIterator & ParConstIterator::operator++()
 			if (LyXText * text = (*p.it)->inset->getText(*p.index)) {
 				ParagraphList & plist = text->paragraphs();
 				if (!plist.empty()) {
-					positions_.push_back(ParPosition(plist.begin(), plist));
+					positions_.push_back(ParPosition(0, plist));
 					return *this;
 				}
 			}
@@ -274,29 +273,28 @@ ParConstIterator & ParConstIterator::operator++()
 			// The following line is needed because the value of
 			// p.it may be invalid if inset was added/removed to
 			// the paragraph pointed by the iterator
-			p.it.reset(p.pit->insetlist.begin());
+			p.it.reset(const_cast<InsetList&>((*p.plist)[p.pit].insetlist).begin());
 		}
 
 		// Try to find the next inset that contains paragraphs
-		InsetList::iterator end = p.pit->insetlist.end();
+		InsetList::iterator end =
+			const_cast<InsetList&>((*p.plist)[p.pit].insetlist).end();
 		for (; *p.it != end; ++(*p.it)) {
 			if (LyXText * text = (*p.it)->inset->getText(0)) {
 				ParagraphList & plist = text->paragraphs();
 				if (!plist.empty()) {
 					p.index.reset(0);
-					positions_.push_back(ParPosition(plist.begin(), plist));
+					positions_.push_back(ParPosition(0, plist));
 					return *this;
 				}
 			}
 		}
 
 		// Try to go to the next paragarph
-		if (next(p.pit) != const_cast<ParagraphList*>(p.plist)->end()
-		    || positions_.size() == 1) {
+		if (p.pit + 1 != p.plist->size() || positions_.size() == 1) {
 			++p.pit;
 			p.index.reset();
 			p.it.reset();
-
 			return *this;
 		}
 
@@ -310,19 +308,19 @@ ParConstIterator & ParConstIterator::operator++()
 
 Paragraph const & ParConstIterator::operator*() const
 {
-	return *positions_.back().pit;
+	return plist()[positions_.back().pit];
 }
 
 
-ParagraphList::const_iterator ParConstIterator::pit() const
+par_type ParConstIterator::pit() const
 {
 	return positions_.back().pit;
 }
 
 
-ParagraphList::const_iterator ParConstIterator::operator->() const
+Paragraph const * ParConstIterator::operator->() const
 {
-	return positions_.back().pit;
+	return &plist()[positions_.back().pit];
 }
 
 

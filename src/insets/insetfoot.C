@@ -65,7 +65,7 @@ int InsetFoot::latex(Buffer const & buf, ostream & os,
 
 	os << "%\n\\footnote{";
 
-	int const i = inset.latex(buf, os, runparams);
+	int const i = InsetText::latex(buf, os, runparams);
 	os << "%\n}";
 
 	return i + 2;
@@ -76,7 +76,7 @@ int InsetFoot::docbook(Buffer const & buf, ostream & os,
 		       OutputParams const & runparams) const
 {
 	os << "<footnote>";
-	int const i = inset.docbook(buf, os, runparams);
+	int const i = InsetText::docbook(buf, os, runparams);
 	os << "</footnote>";
 
 	return i;

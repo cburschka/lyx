@@ -27,7 +27,7 @@
 
 #include <algorithm>
 
-using lyx::paroffset_type;
+using lyx::par_type;
 
 
 namespace {
@@ -45,7 +45,7 @@ std::ostream & operator<<(std::ostream & os, Undo const & undo)
 
 
 void recordUndo(Undo::undo_kind kind,
-	LCursor & cur, paroffset_type first_par, paroffset_type last_par,
+	LCursor & cur, par_type first_par, par_type last_par,
 	limited_stack<Undo> & stack)
 {
 	BOOST_ASSERT(first_par <= cur.lastpar());
@@ -200,14 +200,14 @@ bool textRedo(BufferView & bv)
 
 
 void recordUndo(Undo::undo_kind kind,
-	LCursor & cur, paroffset_type first, paroffset_type last)
+	LCursor & cur, par_type first, par_type last)
 {
 	Buffer * buf = cur.bv().buffer();
 	recordUndo(kind, cur, first, last, buf->undostack());
 	buf->redostack().clear();
-	lyxerr << "undostack:\n";
-	for (size_t i = 0, n = buf->undostack().size(); i != n && i < 6; ++i)
-		lyxerr << "  " << i << ": " << buf->undostack()[i] << std::endl;
+	//lyxerr << "undostack:\n";
+	//for (size_t i = 0, n = buf->undostack().size(); i != n && i < 6; ++i)
+	//	lyxerr << "  " << i << ": " << buf->undostack()[i] << std::endl;
 }
 
 
@@ -223,14 +223,14 @@ void recordUndoSelection(LCursor & cur, Undo::undo_kind kind)
 }
 
 
-void recordUndo(LCursor & cur, Undo::undo_kind kind, paroffset_type from)
+void recordUndo(LCursor & cur, Undo::undo_kind kind, par_type from)
 {
 	recordUndo(kind, cur, cur.par(), from);
 }
 
 
 void recordUndo(LCursor & cur, Undo::undo_kind kind,
-	paroffset_type from, paroffset_type to)
+	par_type from, par_type to)
 {
 	recordUndo(kind, cur, from, to);
 }

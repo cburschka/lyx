@@ -15,7 +15,8 @@
 #define PARAGRAPHPARAMETERS_H
 
 #include "layout.h"
-#include "ShareContainer.h"
+#include "lyxlength.h"
+#include "Spacing.h"
 
 #include "support/types.h"
 
@@ -26,7 +27,6 @@ class BufferView;
 class LyXLength;
 class LyXLex;
 class Paragraph;
-class ParameterStruct;
 class Spacing;
 
 
@@ -84,14 +84,30 @@ public:
 	/// write out the parameters to a stream
 	void write(std::ostream & os) const;
 
+	//friend bool operator==(ParameterStruct const & ps1,
+	//ParameterStruct const & ps2);
+
 private:
 	///
-	void set_from_struct(ParameterStruct const &);
+	Spacing spacing_;
 	///
-	boost::shared_ptr<ParameterStruct> param;
+	bool noindent_;
 	///
-	static ShareContainer<ParameterStruct> container;
+	bool start_of_appendix_;
+	///
+	bool appendix_;
+	///
+	LyXAlignment align_;
+	///
+	depth_type depth_;
+	///
+	std::string labelstring_;
+	///
+	std::string labelwidthstring_;
+	///
+	LyXLength leftindent_;
 };
+
 
 
 /** Generate a string \param data from \param par's ParagraphParameters.

@@ -109,33 +109,30 @@ void InsetCharStyle::draw(PainterInfo & pi, int x, int y) const
 
 	// FIXME: setStatus(Inlined); this is not a const operation
 	LyXFont tmpfont = pi.base.font;
-	inset.setDrawFrame(InsetText::NEVER);
+	//setDrawFrame(InsetText::NEVER);
 	getDrawFont(pi.base.font);
-	inset.draw(pi, x, y);
+	InsetText::draw(pi, x, y);
 	pi.base.font = tmpfont;
 
-	pi.pain.line(x + 2, y + inset.descent() - 4, x + 2,
-		y + inset.descent(), params_.labelfont.color());
-	pi.pain.line(x + 2, y + inset.descent(), x + dim_.wid - 2,
-		y + inset.descent(), params_.labelfont.color());
-	pi.pain.line(x + dim_.wid - 2, y + inset.descent(), x + dim_.wid - 2,
-		y + inset.descent() - 4, params_.labelfont.color());
+	pi.pain.line(x + 2, y + InsetText::descent() - 4, x + 2,
+		y + InsetText::descent(), params_.labelfont.color());
+	pi.pain.line(x + 2, y + InsetText::descent(), x + dim_.wid - 2,
+		y + InsetText::descent(), params_.labelfont.color());
+	pi.pain.line(x + dim_.wid - 2, y + InsetText::descent(), x + dim_.wid - 2,
+		y + InsetText::descent() - 4, params_.labelfont.color());
 
 	if (has_label_) {
-		if (!owner())
-			x += scroll();
-
-	LyXFont font(params_.labelfont);
-	font.realize(LyXFont(LyXFont::ALL_SANE));
-	font.decSize();
-	font.decSize();
-	int w = 0;
-	int a = 0;
-	int d = 0;
-	font_metrics::rectText(params_.type, font, w, a, d);
-	pi.pain.rectText(x + (dim_.wid - w) / 2, 
-		y + inset.descent() + a,
-		params_.type, font, LColor::none, LColor::none);
+		LyXFont font(params_.labelfont);
+		font.realize(LyXFont(LyXFont::ALL_SANE));
+		font.decSize();
+		font.decSize();
+		int w = 0;
+		int a = 0;
+		int d = 0;
+		font_metrics::rectText(params_.type, font, w, a, d);
+		pi.pain.rectText(x + (dim_.wid - w) / 2, 
+			y + InsetText::descent() + a,
+			params_.type, font, LColor::none, LColor::none);
 	}
 }
 
@@ -154,7 +151,7 @@ void InsetCharStyle::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 			if (cmd.button() == mouse_button::button3)
 				has_label_ = !has_label_;
 			else
-				inset.dispatch(cur, cmd);
+				InsetText::dispatch(cur, cmd);
 			break;
 
 		default:
@@ -166,7 +163,7 @@ void InsetCharStyle::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 
 namespace {
 
-int outputVerbatim(std::ostream & os, InsetText inset)
+int outputVerbatim(std::ostream & os, InsetText const & inset)
 {
 	int lines = 0;
 	ParagraphList::iterator par = inset.paragraphs().begin();
@@ -200,7 +197,7 @@ int InsetCharStyle::latex(Buffer const &, ostream & os,
 	if (!params_.latexparam.empty())
 		os << params_.latexparam;
 	os << "{";
-	int i = outputVerbatim(os, inset);
+	int i = outputVerbatim(os, *this);
 	os << "}%\n";
 		i += 2;
 	return i;
@@ -214,7 +211,7 @@ int InsetCharStyle::linuxdoc(Buffer const &, std::ostream & os,
 	if (!params_.latexparam.empty())
 		os << " " << params_.latexparam;
 	os << ">";
-	int const i = outputVerbatim(os, inset);
+	int const i = outputVerbatim(os, *this);
 	os << "</" << params_.latexname << ">";
 	return i;
 }
@@ -227,7 +224,7 @@ int InsetCharStyle::docbook(Buffer const &, std::ostream & os,
 	if (!params_.latexparam.empty())
 		os << " " << params_.latexparam;
 	os << ">";
-	int const i = outputVerbatim(os, inset);
+	int const i = outputVerbatim(os, *this);
 	os << "</" << params_.latexname << ">";
 	return i;
 }
@@ -236,7 +233,7 @@ int InsetCharStyle::docbook(Buffer const &, std::ostream & os,
 int InsetCharStyle::plaintext(Buffer const &, std::ostream & os,
 			      OutputParams const & /*runparams*/) const
 {
-	return outputVerbatim(os, inset);
+	return outputVerbatim(os, *this);
 }
 
 

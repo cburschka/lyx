@@ -20,8 +20,8 @@
 #include "lyxfont.h"
 #include "layout.h"
 #include "lyxlayout_ptr_fwd.h"
-#include "ParagraphList_fwd.h"
 #include "RowList_fwd.h"
+#include "ParagraphList_fwd.h"
 
 #include <iosfwd>
 
@@ -39,12 +39,10 @@ class LCursor;
 class LyXTextClass;
 class MetricsInfo;
 class PainterInfo;
-class Paragraph;
 class Row;
 class RowMetrics;
 class Spacing;
-class UpdatableInset;
-class VSpace;
+
 
 /// This class encapsulates the main text data and operations in LyX
 class LyXText {
@@ -52,7 +50,7 @@ public:
 	///
 	typedef lyx::pos_type pos_type;
 	///
-	typedef lyx::paroffset_type par_type;
+	typedef lyx::par_type par_type;
 	
 	/// constructor
 	explicit LyXText(BufferView *);
@@ -62,36 +60,32 @@ public:
 	/// update y coordinate cache of all paragraphs
 	void updateParPositions();
 	///
-	LyXFont getFont(ParagraphList::iterator pit, pos_type pos) const;
+	LyXFont getFont(par_type pit, pos_type pos) const;
 	///
-	LyXFont getLayoutFont(ParagraphList::iterator pit) const;
+	LyXFont getLayoutFont(par_type pit) const;
 	///
-	LyXFont getLabelFont(ParagraphList::iterator pit) const;
+	LyXFont getLabelFont(par_type pit) const;
 	///
-	void setCharFont(ParagraphList::iterator pit,
-			 pos_type pos, LyXFont const & font);
-	void setCharFont(ParagraphList::iterator pit,
-			 pos_type pos, LyXFont const & font, bool toggleall);
+	void setCharFont(par_type pit, pos_type pos, LyXFont const & font);
+	///
+	void setCharFont(par_type pit, pos_type pos, LyXFont const & font,
+		bool toggleall);
 
 	/// what you expect when pressing <enter> at cursor position
 	void breakParagraph(LCursor & cur, char keep_layout = 0);
 
-	/** set layout over selection and make a total rebreak of
-	  those paragraphs
-	  */
-	ParagraphList::iterator
-	setLayout(ParagraphList::iterator start,
-		  ParagraphList::iterator end,
-		  std::string const & layout);
+	/// set layout over selection
+	par_type setLayout(par_type start, par_type end,
+		std::string const & layout);
 	///
 	void setLayout(LCursor & cur, std::string const & layout);
 
-	/// Increase or decrease the nesting depth of the selected paragraph(s)
 	/// what type of depth change to make
 	enum DEPTH_CHANGE {
 		INC_DEPTH,
 		DEC_DEPTH
 	};
+	/// Increase or decrease the nesting depth of the selected paragraph(s)
 	void changeDepth(LCursor & cur, DEPTH_CHANGE type);
 
 	/// Returns whether something would be changed by changeDepth
@@ -101,10 +95,9 @@ public:
 	void setFont(LCursor & cur, LyXFont const &, bool toggleall = false);
 
 	/// rebreaks all paragaphs between the given pars.
-	void redoParagraphs(ParagraphList::iterator begin,
-			    ParagraphList::iterator end);
+	void redoParagraphs(par_type begin, par_type end);
 	/// rebreaks the given par
-	void redoParagraph(ParagraphList::iterator pit);
+	void redoParagraph(par_type pit);
 	/// rebreaks the cursor par
 	void redoParagraph(LCursor & cur);
 
@@ -142,12 +135,8 @@ public:
 	/// access to out BufferView. This should go...
 	BufferView * bv() const;
 
-	/// returns an iterator pointing to a cursor paragraph
-	ParagraphList::iterator getPar(CursorSlice const & cursor) const;
-	///
-	ParagraphList::iterator getPar(par_type par) const;
-	///
-	int parOffset(ParagraphList::iterator pit) const;
+	/// access to individual paragraphs
+	Paragraph & getPar(par_type par) const;
 	// Returns the current font and depth as a message.
 	std::string LyXText::currentState(LCursor & cur);
 
@@ -155,13 +144,12 @@ public:
 	  * y-coordinate (relative to the whole text). y is set to the
 	  * real beginning of this row
 	  */
-	RowList::iterator getRowNearY(int y,
-		ParagraphList::iterator & pit) const;
+	RowList::iterator getRowNearY(int y, par_type & pit) const;
 
 	/** returns the column near the specified x-coordinate of the row
 	 x is set to the real beginning of this column
 	 */
-	pos_type getColumnNearX(ParagraphList::iterator pit,
+	pos_type getColumnNearX(par_type pit,
 		Row const & row, int & x, bool & boundary) const;
 
 	/** Find the word under \c from in the relative location
@@ -243,15 +231,8 @@ public:
 	};
 	/// Change the case of the word at cursor position.
 	void changeCase(LCursor & cur, TextCase action);
-
 	/// returns success
 	bool toggleInset(LCursor & cur);
-	///
-	void cutSelection(LCursor & cur, bool doclear = true, bool realcut = true);
-	///
-	void copySelection(LCursor & cur);
-	///
-	void pasteSelection(LCursor & cur, size_t sel_index = 0);
 
 	/** the DTP switches for paragraphs. LyX will store the top settings
 	 always in the first physical paragraph, the bottom settings in the
@@ -265,16 +246,6 @@ public:
 			  bool noindent);
 
 	/* these things are for search and replace */
-
-	/**
-	 * Sets the selection from the current cursor position to length
-	 * characters to the right. No safety checks.
-	 */
-	void setSelectionRange(LCursor & cur, pos_type length);
-	/// simply replace using the font of the first selected character
-	void replaceSelectionWithString(LCursor & cur, std::string const & str);
-	/// replace selection helper
-	void replaceSelection(LCursor & cur);
 
 	/// needed to insert the selection
 	void insertStringAsLines(LCursor & cur, std::string const & str);
@@ -303,9 +274,9 @@ public:
 	InsetBase * checkInsetHit(int x, int y);
 
 	///
-	int singleWidth(ParagraphList::iterator pit, pos_type pos) const;
+	int singleWidth(par_type pit, pos_type pos) const;
 	///
-	int singleWidth(ParagraphList::iterator pit,
+	int singleWidth(par_type pit,
 		pos_type pos, char c, LyXFont const & Font) const;
 
 	/// return the color of the canvas
@@ -317,15 +288,14 @@ public:
 	 * in LaTeX the beginning of the text fits in some cases
 	 * (for example sections) exactly the label-width.
 	 */
-	int leftMargin(ParagraphList::iterator pit, pos_type pos) const;
-	int leftMargin(ParagraphList::iterator pit) const;
+	int leftMargin(par_type pit, pos_type pos) const;
+	int leftMargin(par_type pit) const;
 	///
 	int rightMargin(Paragraph const & par) const;
 
 	/** this calculates the specified parameters. needed when setting
 	 * the cursor and when creating a visible row */
-	RowMetrics
-	computeRowMetrics(ParagraphList::iterator pit, Row const & row) const;
+	RowMetrics computeRowMetrics(par_type pit, Row const & row) const;
 
 	/// access to our paragraphs
 	ParagraphList & paragraphs() const;
@@ -339,16 +309,14 @@ public:
 	/// return row "behind" last row of text
 	RowList::iterator endRow() const;
 	/// return next row crossing paragraph boundaries
-	void nextRow(ParagraphList::iterator & pit,
-		RowList::iterator & rit) const;
+	void nextRow(par_type & pit, RowList::iterator & rit) const;
 	/// return previous row crossing paragraph boundaries
-	void previousRow(ParagraphList::iterator & pit,
-		RowList::iterator & rit) const;
+	void previousRow(par_type & pit, RowList::iterator & rit) const;
 
 	/// is this row the last in the text?
-	bool isLastRow(ParagraphList::iterator pit, Row const & row) const;
+	bool isLastRow(par_type pit, Row const & row) const;
 	/// is this row the first in the text?
-	bool isFirstRow(ParagraphList::iterator pit, Row const & row) const;
+	bool isFirstRow(par_type pit, Row const & row) const;
 
 	///
 	double spacing(Paragraph const & par) const;
@@ -376,13 +344,13 @@ public:
 	///
 	friend class LyXScreen;
 
+public:
 	///
 	unsigned int width_;
 	///
 	int maxwidth_;
 	///
 	int height_;
-public:
 	/// the current font settings
 	LyXFont current_font;
 	/// the current font
@@ -398,7 +366,7 @@ public:
 	///
 	mutable Bidi bidi;
 	///
-	ParagraphList paragraphs_;
+	ParagraphList pars_;
 
 	/// absolute document pixel coordinates of this LyXText
 	mutable int xo_;
@@ -407,38 +375,28 @@ public:
 	/// our 'outermost' Font
 	LyXFont font_;
 
-	///
-	double fill_separator(Row const & row) const;
-	///
-	double fill_hfill(Row const & row) const;
-	///
-	double
-	fill_label_hfill(ParagraphList::iterator pit, Row const & row) const;
-
 private:
 	/// return past-the-last paragraph influenced by a layout
 	/// change on pit
-	ParagraphList::iterator undoSpan(ParagraphList::iterator pit);
+	par_type undoSpan(par_type pit);
 	
 	/// rebreaks the given par
-	void redoParagraphInternal(ParagraphList::iterator pit);
+	void redoParagraphInternal(par_type pit);
 	/// used in setlayout
 	void makeFontEntriesLayoutSpecific(BufferParams const &, Paragraph & par);
 
 	/// Calculate and set the height of the row
-	void setHeightOfRow(ParagraphList::iterator, Row & row);
+	void setHeightOfRow(par_type, Row & row);
 
 	// fix the cursor `cur' after a characters has been deleted at `where'
 	// position. Called by deleteEmptyParagraphMechanism
 	void fixCursorAfterDelete(CursorSlice & cur, CursorSlice const & where);
 
-	/// delete double space (false) or empty paragraphs (true) around old_cursor
-	bool deleteEmptyParagraphMechanism(
-		CursorSlice & cur,
-		CursorSlice const & old_cursor);
+	/// delete double space or empty paragraphs around old cursor
+	bool deleteEmptyParagraphMechanism(LCursor & cur, LCursor const & old);
 
 	///
-	void setCounter(Buffer const &, ParagraphList::iterator pit);
+	void setCounter(Buffer const &, par_type pit);
 	///
 	void deleteWordForward(LCursor & cur);
 	///
@@ -448,13 +406,13 @@ private:
 
 	/// sets row.end to the pos value *after* which a row should break.
 	/// for example, the pos after which isNewLine(pos) == true
-	void rowBreakPoint(ParagraphList::iterator pit, Row & row) const;
+	void rowBreakPoint(par_type pit, Row & row) const;
 	/// sets row.width to the minimum space a row needs on the screen in pixel
-	void setRowWidth(ParagraphList::iterator pit, Row & row) const;
+	void setRowWidth(par_type pit, Row & row) const;
 	/// the minimum space a manual label needs on the screen in pixels
-	int labelFill(ParagraphList::iterator pit, Row const & row) const;
+	int labelFill(par_type pit, Row const & row) const;
 	/// FIXME
-	int labelEnd(ParagraphList::iterator pit) const;
+	int labelEnd(par_type pit) const;
 
 	///
 	void charInserted();

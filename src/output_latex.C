@@ -320,7 +320,7 @@ TeXOnePar(Buffer const & buf,
 
 	os << everypar;
 	bool need_par = pit->simpleTeXOnePar(buf, bparams,
-					     outerFont(pit, paragraphs),
+			outerFont(pit - const_cast<ParagraphList&>(paragraphs).begin(), paragraphs),
 					     os, texrow, runparams);
 
 	// Make sure that \\par is done with the font of the last
@@ -332,7 +332,9 @@ TeXOnePar(Buffer const & buf,
 	// Is this really needed ? (Dekel)
 	// We do not need to use to change the font for the last paragraph
 	// or for a command.
-	LyXFont const outerfont = outerFont(pit, paragraphs);
+	LyXFont const outerfont =
+			outerFont(pit - const_cast<ParagraphList&>(paragraphs).begin(),
+paragraphs);
 
 	LyXFont const font =
 		(pit->empty()

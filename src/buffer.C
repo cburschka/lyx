@@ -43,7 +43,6 @@
 #include "paragraph.h"
 #include "paragraph_funcs.h"
 #include "ParagraphParameters.h"
-#include "PosIterator.h"
 #include "sgml.h"
 #include "texrow.h"
 #include "undo.h"
@@ -76,10 +75,8 @@
 
 #include <utime.h>
 
-#ifdef HAVE_LOCALE
-#endif
-
 using lyx::pos_type;
+using lyx::par_type;
 
 using lyx::support::AddName;
 using lyx::support::atoi;
@@ -202,7 +199,6 @@ Buffer::Buffer(string const & file, bool ronly)
 	: pimpl_(new Impl(*this, file, ronly))
 {
 	lyxerr[Debug::INFO] << "Buffer::Buffer()" << endl;
-	lyxerr << "Buffer::Buffer()" << endl;
 }
 
 
@@ -426,8 +422,6 @@ int Buffer::readHeader(LyXLex & lex)
 // Returns false if "\end_document" is not read (Asger)
 bool Buffer::readBody(LyXLex & lex)
 {
-	bool the_end_read = false;
-
 	if (paragraphs().empty()) {
 		readHeader(lex);
 		if (!params().getLyXTextClass().load()) {
@@ -446,30 +440,28 @@ bool Buffer::readBody(LyXLex & lex)
 		tmpbuf.readHeader(lex);
 	}
 
-	if (text().read(*this, lex))
-		the_end_read = true;
-
-	return the_end_read;
+	return text().read(*this, lex);
 }
 
 
 // needed to insert the selection
-void Buffer::insertStringAsLines(ParagraphList::iterator & par, pos_type & pos,
-				 LyXFont const & fn, string const & str)
+void Buffer::insertStringAsLines(ParagraphList & pars,
+	par_type & par, pos_type & pos,
+	LyXFont const & fn, string const & str)
 {
-	LyXLayout_ptr const & layout = par->layout();
+	LyXLayout_ptr const & layout = pars[par].layout();
 
 	LyXFont font = fn;
 
-	par->checkInsertChar(font);
+	pars[par].checkInsertChar(font);
 	// insert the string, don't insert doublespace
 	bool space_inserted = true;
-	bool autobreakrows = !par->inInset() ||
-		static_cast<InsetText *>(par->inInset())->getAutoBreakRows();
+	bool autobreakrows = !pars[par].inInset() ||
+		static_cast<InsetText *>(pars[par].inInset())->getAutoBreakRows();
 	for(string::const_iterator cit = str.begin();
 	    cit != str.end(); ++cit) {
 		if (*cit == '\n') {
-			if (autobreakrows && (!par->empty() || par->allowEmpty())) {
+			if (autobreakrows && (!pars[par].empty() || pars[par].allowEmpty())) {
 				breakParagraph(params(), paragraphs(), par, pos,
 					       layout->isEnvironment());
 				++par;
@@ -480,18 +472,18 @@ void Buffer::insertStringAsLines(ParagraphList::iterator & par, pos_type & pos,
 			}
 			// do not insert consecutive spaces if !free_spacing
 		} else if ((*cit == ' ' || *cit == '\t') &&
-			   space_inserted && !par->isFreeSpacing()) {
+			   space_inserted && !pars[par].isFreeSpacing()) {
 			continue;
 		} else if (*cit == '\t') {
-			if (!par->isFreeSpacing()) {
+			if (!pars[par].isFreeSpacing()) {
 				// tabs are like spaces here
-				par->insertChar(pos, ' ', font);
+				pars[par].insertChar(pos, ' ', font);
 				++pos;
 				space_inserted = true;
 			} else {
 				const pos_type n = 8 - pos % 8;
 				for (pos_type i = 0; i < n; ++i) {
-					par->insertChar(pos, ' ', font);
+					pars[par].insertChar(pos, ' ', font);
 					++pos;
 				}
 				space_inserted = true;
@@ -501,7 +493,7 @@ void Buffer::insertStringAsLines(ParagraphList::iterator & par, pos_type & pos,
 			continue;
 		} else {
 			// just insert the character
-			par->insertChar(pos, *cit, font);
+			pars[par].insertChar(pos, *cit, font);
 			++pos;
 			space_inserted = (*cit == ' ');
 		}
@@ -520,7 +512,7 @@ bool Buffer::readFile(string const & filename)
 
 	// remove dummy empty par
 	paragraphs().clear();
-	bool ret = readFile(filename, paragraphs().end());
+	bool ret = readFile(filename, paragraphs().size());
 
 	// After we have read a file, we must ensure that the buffer
 	// language is set and used in the gui.
@@ -531,7 +523,7 @@ bool Buffer::readFile(string const & filename)
 }
 
 
-bool Buffer::readFile(string const & filename, ParagraphList::iterator pit)
+bool Buffer::readFile(string const & filename, par_type pit)
 {
 	LyXLex lex(0, 0);
 	lex.setFile(filename);
@@ -551,8 +543,7 @@ void Buffer::fully_loaded(bool value)
 }
 
 
-bool Buffer::readFile(LyXLex & lex, string const & filename,
-		      ParagraphList::iterator pit)
+bool Buffer::readFile(LyXLex & lex, string const & filename, par_type pit)
 {
 	BOOST_ASSERT(!filename.empty());
 
@@ -1300,9 +1291,9 @@ bool Buffer::isMultiLingual() const
 
 void Buffer::inset_iterator::setParagraph()
 {
-	while (pit != pend) {
-		it = pit->insetlist.begin();
-		if (it != pit->insetlist.end())
+	while (pit != pars_->size()) {
+		it = (*pars_)[pit].insetlist.begin();
+		if (it != (*pars_)[pit].insetlist.end())
 			return;
 		++pit;
 	}
@@ -1349,41 +1340,27 @@ bool Buffer::hasParWithID(int id) const
 }
 
 
-PosIterator Buffer::pos_iterator_begin()
-{
-	return PosIterator(&paragraphs(), paragraphs().begin(), 0);
-}
-
-
-PosIterator Buffer::pos_iterator_end()
-{
-	return PosIterator(&paragraphs(), paragraphs().end(), 0);
-}
-
-
 ParIterator Buffer::par_iterator_begin()
 {
-	return ParIterator(paragraphs().begin(), paragraphs());
+	return ParIterator(0, paragraphs());
 }
 
 
 ParIterator Buffer::par_iterator_end()
 {
-	return ParIterator(paragraphs().end(), paragraphs());
+	return ParIterator(paragraphs().size(), paragraphs());
 }
 
 
 ParConstIterator Buffer::par_iterator_begin() const
 {
-	ParagraphList const & pars = paragraphs();
-	return ParConstIterator(const_cast<ParagraphList&>(pars).begin(), pars);
+	return ParConstIterator(0, paragraphs());
 }
 
 
 ParConstIterator Buffer::par_iterator_end() const
 {
-	ParagraphList const & pars = paragraphs();
-	return ParConstIterator(const_cast<ParagraphList&>(pars).end(), pars);
+	return ParConstIterator(paragraphs().size(), paragraphs());
 }
 
 
@@ -1486,13 +1463,8 @@ void Buffer::setParentName(string const & name)
 }
 
 
-Buffer::inset_iterator::inset_iterator()
-	: pit(), pend()
-{}
-
-
-Buffer::inset_iterator::inset_iterator(base_type p, base_type e)
-	: pit(p), pend(e)
+Buffer::inset_iterator::inset_iterator(ParagraphList & pars, base_type p)
+	: pit(p), pars_(&pars)
 {
 	setParagraph();
 }
@@ -1500,35 +1472,35 @@ Buffer::inset_iterator::inset_iterator(base_type p, base_type e)
 
 Buffer::inset_iterator Buffer::inset_iterator_begin()
 {
-	return inset_iterator(paragraphs().begin(), paragraphs().end());
+	return inset_iterator(paragraphs(), 0);
 }
 
 
 Buffer::inset_iterator Buffer::inset_iterator_end()
 {
-	return inset_iterator(paragraphs().end(), paragraphs().end());
+	return inset_iterator(paragraphs(), paragraphs().size());
 }
 
 
 Buffer::inset_iterator Buffer::inset_const_iterator_begin() const
 {
 	ParagraphList & pars = const_cast<ParagraphList&>(paragraphs());
-	return inset_iterator(pars.begin(), pars.end());
+	return inset_iterator(pars, 0);
 }
 
 
 Buffer::inset_iterator Buffer::inset_const_iterator_end() const
 {
 	ParagraphList & pars = const_cast<ParagraphList&>(paragraphs());
-	return inset_iterator(pars.end(), pars.end());
+	return inset_iterator(pars, pars.size());
 }
 
 
 Buffer::inset_iterator & Buffer::inset_iterator::operator++()
 {
-	if (pit != pend) {
+	if (pit != pars_->size()) {
 		++it;
-		if (it == pit->insetlist.end()) {
+		if (it == (*pars_)[pit].insetlist.end()) {
 			++pit;
 			setParagraph();
 		}
@@ -1557,7 +1529,7 @@ Buffer::inset_iterator::pointer Buffer::inset_iterator::operator->()
 }
 
 
-ParagraphList::iterator Buffer::inset_iterator::getPar() const
+lyx::par_type Buffer::inset_iterator::getPar() const
 {
 	return pit;
 }
@@ -1572,8 +1544,7 @@ lyx::pos_type Buffer::inset_iterator::getPos() const
 bool operator==(Buffer::inset_iterator const & iter1,
 		Buffer::inset_iterator const & iter2)
 {
-	return iter1.pit == iter2.pit
-		&& (iter1.pit == iter1.pend || iter1.it == iter2.it);
+	return iter1.pit == iter2.pit && iter1.it == iter2.it;
 }
 
 

@@ -147,8 +147,6 @@ public:
 	virtual int cellXOffset(idx_type) const { return 0; }
 	/// any additional y-offset when drawing a cell?
 	virtual int cellYOffset(idx_type) const { return 0; }
-	/// can we enter this cell?
-	virtual bool validCell(idx_type) const { return true; }
  	/// number of embedded cells
  	virtual size_t nargs() const { return 0; }
  	/// number of rows in gridlike structures
@@ -360,11 +358,6 @@ public:
 	enum mode_type {UNDECIDED_MODE, TEXT_MODE, MATH_MODE};
 	/// return text or mathmode if that is possible to determine
 	virtual mode_type currentMode() const { return UNDECIDED_MODE; }
-
-	/// FIXME: This ought to die.
-	virtual void setOwner(UpdatableInset *) {}
-	///
-	virtual UpdatableInset * owner() const { return 0; }
 
 	/// is this inset allowed within a font change?
 	virtual bool noFontChange() const { return false; }

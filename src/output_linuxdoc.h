@@ -13,11 +13,10 @@
 #ifndef OUTPUT_LINUXDOC_H
 #define OUTPUT_LINUXDOC_H
 
-#include "ParagraphList_fwd.h"
-
 #include <iosfwd>
 
 class Buffer;
+class ParagraphList;
 class OutputParams;
 
 ///

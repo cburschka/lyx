@@ -24,5 +24,5 @@ ErrorItem::ErrorItem(string const & error_, string const & description_,
 
 
 ErrorItem::ErrorItem()
-	: par_id(-1),  pos_start(0),  pos_end(0)
+	: par_id(-1), pos_start(0), pos_end(0)
 {}

@@ -17,11 +17,11 @@
 #include "bufferparams.h"
 #include "BufferView.h"
 #include "cursor.h"
+#include "CutAndPaste.h"
 #include "debug.h"
 #include "gettext.h"
 #include "language.h"
 #include "lyxrc.h"
-#include "PosIterator.h"
 #include "paragraph.h"
 
 #include "ispell.h"
@@ -149,41 +149,40 @@ void ControlSpellchecker::endSession()
 
 namespace {
 
-
-bool isLetter(PosIterator & cur)
+bool isLetter(DocumentIterator const & cur)
 {
-	return !cur.at_end()
-		&& cur.pit()->isLetter(cur.pos())
-		&& !isDeletedText(*cur.pit(), cur.pos())
-		&& (!cur.inset() || cur.inset()->allowSpellCheck());
+	return !cur.empty()
+		&& cur.paragraph().isLetter(cur.pos())
+		&& !isDeletedText(cur.paragraph(), cur.pos());
+		//&& (!cur.nextInset() || cur.nextInset()->allowSpellCheck());
 }
 
 
-WordLangTuple nextWord(PosIterator & cur, PosIterator const & end,
-		       PosIterator::difference_type & progress, 
-		       BufferParams & bp)
+WordLangTuple nextWord(DocumentIterator & cur, ptrdiff_t & progress,
+	BufferParams & bp)
 {
 	// skip until we have real text (will jump paragraphs)
-	for (; cur != end && !isLetter(cur); ++cur, ++progress);
+	for (; cur.size() && !isLetter(cur); cur.forwardChar());
+		++progress;
 
-	if (cur == end)
+	// hit end
+	if (cur.empty())
 		return WordLangTuple(string(), string());
 
-	string lang_code = cur.pit()->getFontSettings(bp, cur.pos()).language()->code();
+	string lang_code = cur.paragraph().
+		getFontSettings(bp, cur.pos()).language()->code();
 	string str;
 	// and find the end of the word (insets like optional hyphens
 	// and ligature break are part of a word)
-	for (; cur != end && isLetter(cur); ++cur, ++progress) {
-		if (!cur.pit()->isInset(cur.pos()))
-			str += cur.pit()->getChar(cur.pos());
+	for (; cur.size() && isLetter(cur); cur.forwardChar(), ++progress) {
+		if (!cur.paragraph().isInset(cur.pos()))
+			str += cur.paragraph().getChar(cur.pos());
 	}
 
 	return WordLangTuple(str, lang_code);
 }
 
-
-} //namespace anon
-
+} // namespace anon
 
 
 
@@ -193,18 +192,25 @@ void ControlSpellchecker::check()
 
 	SpellBase::Result res = SpellBase::OK;
 
-	PosIterator cur(*bufferview());
-	PosIterator const beg = buffer()->pos_iterator_begin();
-	PosIterator const end = buffer()->pos_iterator_end();
+	DocumentIterator cur = bufferview()->cursor();
 
-	PosIterator::difference_type start = distance(beg, cur);
-	PosIterator::difference_type const total = start + distance(cur, end);
+	// a rough estimate should be sufficient:
+	//DocumentIterator::difference_type start = distance(beg, cur);
+	//DocumentIterator::difference_type const total = start + distance(cur, end);
 
-	if (cur != buffer()->pos_iterator_begin())
-		for (; cur != end && isLetter(cur); ++cur, ++start);
+	ptrdiff_t start = 0, total = 0;
+	DocumentIterator it = DocumentIterator(buffer()->inset());
+	for (start = 0; it != cur; it.forwardPos())
+		++start; 	
+
+	for (total = start; it.size(); it.forwardPos())
+		++total; 	
+
+	for (; cur.size() && isLetter(cur); cur.forwardPos())
+		++start;
 
 	while (res == SpellBase::OK || res == SpellBase::IGNORE) {
-		word_ = nextWord(cur, end, start, buffer()->params());
+		word_ = nextWord(cur, start, buffer()->params());
 
 		// end of document
 		if (word_.word().empty())
@@ -242,9 +248,13 @@ void ControlSpellchecker::check()
 	}
 
 	int const size = word_.word().size();
+#if 0
 	advance(cur, -size);
 	bufferview()->putSelectionAt(cur, size, false);
 	advance(cur, size);
+#else
+	bufferview()->putSelectionAt(cur, size, true);
+#endif
 
 	// set suggestions
 	if (res != SpellBase::OK && res != SpellBase::IGNORE) {
@@ -292,7 +302,7 @@ void ControlSpellchecker::showSummary()
 
 void ControlSpellchecker::replace(string const & replacement)
 {
-	bufferview()->cursor().replaceWord(replacement);
+	lyx::cap::replaceWord(bufferview()->cursor(), replacement);
 	bufferview()->buffer()->markDirty();
 	bufferview()->update();
 	// fix up the count

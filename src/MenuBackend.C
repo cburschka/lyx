@@ -684,11 +684,11 @@ void expandPasteRecent(Menu & tomenu, LyXView const * view)
 	if (!view || !view->buffer())
 		return;
 
-	vector<string> const selL =
-		CutAndPaste::availableSelections(*view->buffer());
+	vector<string> const sel =
+		lyx::cap::availableSelections(*view->buffer());
 
-	vector<string>::const_iterator cit = selL.begin();
-	vector<string>::const_iterator end = selL.end();
+	vector<string>::const_iterator cit = sel.begin();
+	vector<string>::const_iterator end = sel.end();
 
 	for (unsigned int index = 0; cit != end; ++cit, ++index) {
 		tomenu.add(MenuItem(MenuItem::Command, *cit,

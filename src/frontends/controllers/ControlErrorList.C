@@ -17,8 +17,6 @@
 #include "iterators.h"
 #include "lyxtext.h"
 #include "paragraph.h"
-#include "PosIterator.h"
-
 
 using std::endl;
 using std::string;
@@ -73,6 +71,9 @@ void ControlErrorList::goTo(int item)
 	lyx::pos_type const range = end - start;
 
 	// Now make the selection.
+#warning FIXME (goto error)
+#if 0
 	PosIterator const pos(pit, start);
 	kernel().bufferview()->putSelectionAt(pos, range, false);
+#endif
 }

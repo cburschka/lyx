@@ -85,9 +85,9 @@ InsetERT::InsetERT(BufferParams const & bp,
 	string::const_iterator cit = contents.begin();
 	string::const_iterator end = contents.end();
 	pos_type pos = 0;
-	for (; cit != end; ++cit) {
-		inset.paragraphs().begin()->insertChar(pos++, *cit, font);
-	}
+	for (; cit != end; ++cit)
+		paragraphs().begin()->insertChar(pos++, *cit, font);
+
 	// the init has to be after the initialization of the paragraph
 	// because of the label settings (draw_label for ert insets).
 	init();
@@ -116,8 +116,8 @@ string const InsetERT::editMessage() const
 int InsetERT::latex(Buffer const &, ostream & os,
 		    OutputParams const &) const
 {
-	ParagraphList::iterator par = inset.paragraphs().begin();
-	ParagraphList::iterator end = inset.paragraphs().end();
+	ParagraphList::iterator par = paragraphs().begin();
+	ParagraphList::iterator end = paragraphs().end();
 
 	int lines = 0;
 	while (par != end) {
@@ -153,10 +153,10 @@ int InsetERT::plaintext(Buffer const &, ostream &,
 
 
 int InsetERT::linuxdoc(Buffer const &, ostream & os,
-		       OutputParams const &)const
+		       OutputParams const &) const
 {
-	ParagraphList::iterator par = inset.paragraphs().begin();
-	ParagraphList::iterator end = inset.paragraphs().end();
+	ParagraphList::iterator par = paragraphs().begin();
+	ParagraphList::iterator end = paragraphs().end();
 
 	int lines = 0;
 	while (par != end) {
@@ -183,8 +183,8 @@ int InsetERT::linuxdoc(Buffer const &, ostream & os,
 int InsetERT::docbook(Buffer const &, ostream & os,
 		      OutputParams const &) const
 {
-	ParagraphList::iterator par = inset.paragraphs().begin();
-	ParagraphList::iterator end = inset.paragraphs().end();
+	ParagraphList::iterator par = paragraphs().begin();
+	ParagraphList::iterator end = paragraphs().end();
 
 	int lines = 0;
 	while (par != end) {

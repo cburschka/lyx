@@ -1,3 +1,83 @@
+
+2004-03-25  André Pönitz  <poenitz@gmx.net>
+
+	* Makefile.am:
+	* iterators.[Ch]:
+	* PosIterator.[Ch]: drop PosIterator, replaced by DocumentIterator
+
+	* ParagraphList_fwd.h: change ParagraphList to a std::vector
+
+	* CutAndPaste.[Ch]: simpler interface by moving some stuff from
+	text*.C over here. Rename namespace CutAndPaste to lyx::cap
+
+	* ParameterStruct.h: merge with ParagraphParameters
+
+	* lyxtext.h: remove LyXText::parOffset() and getPar()
+
+	* text3.C: Remove all 'manual' update calls. We do now one per user
+	interaction which is completely sufficient.
+
+	* Bidi.C:
+	* BufferView.[Ch]:
+	* BufferView_pimpl.C:
+	* FontIterator.[Ch]:
+	* MenuBackend.C:
+	* ParagraphParameters.[Ch]:
+	* buffer.C:
+	* buffer.h:
+	* bufferlist.C:
+	* cursor.[Ch]:
+	* cursor_slice.[Ch]:
+	* dociterator.[Ch]:
+	* errorlist.[Ch]:
+	* factory.C:
+	* lfuns.h:
+	* lyxfind.C:
+	* lyxfunc.C:
+	* output_docbook.[Ch]:
+	* output_latex.[Ch]:
+	* output_linuxdoc.[Ch]:
+	* output_plaintext.[Ch]:
+	* paragraph.[Ch]:
+	* paragraph_funcs.[Ch]:
+	* paragraph_pimpl.[Ch]:
+	* rowpainter.C:
+	* tabular.[Ch]:
+	* text.C:
+	* text2.C:
+	* toc.C:
+	* undo.[Ch]: adjust
+
+	* frontends/controllers/ControlDocument.C:
+	* frontends/controllers/ControlErrorList.C:
+	* frontends/controllers/ControlSpellchecker.C:
+	* insets/inset.C:
+	* insets/inset.h:
+	* insets/insetbase.h:
+	* insets/insetbibitem.C:
+	* insets/insetbox.C:
+	* insets/insetbranch.C:
+	* insets/insetcaption.C:
+	* insets/insetcharstyle.C:
+	* insets/insetcharstyle.h:
+	* insets/insetcollapsable.C:
+	* insets/insetcollapsable.h:
+	* insets/insetert.C:
+	* insets/insetfloat.C:
+	* insets/insetfoot.C:
+	* insets/insetmarginal.C:
+	* insets/insetnote.C:
+	* insets/insetoptarg.C:
+	* insets/insettabular.C:
+	* insets/insettext.C:
+	* insets/insettext.h:
+	* insets/insetwrap.C:
+	* mathed/math_mboxinset.C:
+	* mathed/math_nestinset.C:
+	* mathed/math_scriptinset.C:
+	* mathed/math_scriptinset.h:
+	* support/types.h:
+
 2004-03-24  Angus Leeming  <leeming@lyx.org>
 
 	* BufferView_pimpl.C (cursorToggle): use the cursor toggle to

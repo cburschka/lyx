@@ -28,10 +28,11 @@ using std::endl;
 MathMBoxInset::MathMBoxInset(BufferView & bv)
 	: text_(&bv), bv_(&bv)
 {
+	text_.paragraphs().clear();
 	text_.paragraphs().push_back(Paragraph());
 	text_.paragraphs().back().
 		layout(bv.buffer()->params().getLyXTextClass().defaultLayout());
-	text_.redoParagraph(text_.paragraphs().begin());
+	text_.redoParagraph(0);
 }
 
 

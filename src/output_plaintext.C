@@ -19,6 +19,7 @@
 #include "output.h"
 #include "outputparams.h"
 #include "paragraph.h"
+#include "ParagraphList_fwd.h"
 #include "ParagraphParameters.h"
 
 #include "support/gzstream.h"
@@ -51,9 +52,8 @@ void writeFileAscii(Buffer const & buf,
 }
 
 
-void writeFileAscii(Buffer const & buf,
-		    ostream & os,
-		    OutputParams const & runparams)
+void writeFileAscii(Buffer const & buf, ostream & os,
+	OutputParams const & runparams)
 {
 	Buffer & tmp = const_cast<Buffer &>(buf);
 	ParagraphList par = const_cast<ParagraphList&>(tmp.paragraphs());

@@ -17,8 +17,6 @@
 #ifndef CURSORSLICE_H
 #define CURSORSLICE_H
 
-#include "ParagraphList_fwd.h"
-
 #include "support/types.h"
 
 #include <cstddef>
@@ -45,7 +43,7 @@ public:
 	/// type for cell number in inset
 	typedef size_t idx_type;
 	/// type for paragraph numbers positions within a cell
-	typedef lyx::paroffset_type par_type;
+	typedef lyx::par_type par_type;
 	/// type for cursor positions within a cell
 	typedef lyx::pos_type pos_type;
 	/// type for row indices
@@ -61,23 +59,23 @@ public:
 	/// the current inset
 	InsetBase & inset() const { return *inset_; }
 	/// return the cell this cursor is in
-	idx_type idx() const;
+	idx_type idx() const { return idx_; }
 	/// return the cell this cursor is in
-	idx_type & idx();
+	idx_type & idx() { return idx_; }
 	/// return the last cell in this inset
 	idx_type lastidx() const { return nargs() - 1; }
 	/// return the paragraph this cursor is in
-	par_type par() const;
+	par_type par() const { return par_; }
 	/// set the paragraph this cursor is in
-	par_type & par();
+	par_type & par() { return par_; }
 	/// increments the paragraph this cursor is in
 	void incrementPar();
 	/// increments the paragraph this cursor is in
 	void decrementPar();
 	/// return the position within the paragraph
-	pos_type pos() const;
+	pos_type pos() const { return pos_; }
 	/// return the position within the paragraph
-	pos_type & pos();
+	pos_type & pos() { return pos_; }
 	/// return the last position within the paragraph
 	pos_type lastpos() const;
 	/// return the number of embedded cells
@@ -95,9 +93,9 @@ public:
 	/// texted specific stuff
 	///
 	/// see comment for the member
-	bool boundary() const;
+	bool boundary() const { return boundary_; }
 	/// see comment for the member
-	bool & boundary();
+	bool & boundary() { return boundary_; }
 	///
 	LyXText * text() const;
 	///

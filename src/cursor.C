@@ -15,6 +15,7 @@
 #include "BufferView.h"
 #include "buffer.h"
 #include "cursor.h"
+#include "CutAndPaste.h"
 #include "debug.h"
 #include "dispatchresult.h"
 #include "encoding.h"
@@ -44,6 +45,8 @@
 #include "frontends/LyXView.h"
 
 #include <boost/assert.hpp>
+
+using lyx::par_type;
 
 using std::string;
 using std::vector;
@@ -91,7 +94,6 @@ void LCursor::reset(InsetBase & inset)
 	clear();
 	push_back(CursorSlice(inset));
 	anchor_.clear();
-	anchor_.push_back(CursorSlice(inset));
 	cached_y_ = 0;
 	clearTargetX();
 	selection_ = false;
@@ -109,10 +111,10 @@ void LCursor::setCursor(DocumentIterator const & cur, bool sel)
 
 DispatchResult LCursor::dispatch(FuncRequest const & cmd0)
 {
+	lyxerr << "\nLCursor::dispatch: cmd: " << cmd0 << endl << *this << endl;
 	if (empty())
 		return DispatchResult();
 
-	//lyxerr << "\nLCursor::dispatch: cmd: " << cmd0 << endl << *this << endl;
 	FuncRequest cmd = cmd0;
 	LCursor safe = *this;
 
@@ -133,15 +135,21 @@ DispatchResult LCursor::dispatch(FuncRequest const & cmd0)
 	}
 	// it completely to get a 'bomb early' behaviour in case this
 	// object will be used again.
-	if (!disp_.dispatched())
+	if (!disp_.dispatched()) {
+		lyxerr << "RESTORING OLD CURSOR!" << endl;
 		operator=(safe);
+	}
 	return disp_;
 }
 
 
 bool LCursor::getStatus(FuncRequest const & cmd, FuncStatus & status)
 {
+	// This is, of course, a mess. Better create a new doc iterator and use
+	// this in Inset::getStatus. This might require an additional
+	// BufferView * arg, though (which should be avoided)
 	LCursor safe = *this;
+	bool res = false;
 	for ( ; size(); pop()) {
 		//lyxerr << "\nLCursor::getStatus: cmd: " << cmd << endl << *this << endl;
 		BOOST_ASSERT(pos() <= lastpos());
@@ -152,11 +160,13 @@ bool LCursor::getStatus(FuncRequest const & cmd, FuncStatus & status)
 		// a definitive decision on whether it want to handle the
 		// request or not. The result of this decision is put into
 		// the 'status' parameter.
-		if (inset().getStatus(*this, cmd, status))
+		if (inset().getStatus(*this, cmd, status)) {
+			res = true;
 			break;
+		}
 	}
 	operator=(safe);
-	return true;
+	return res;
 }
 
 
@@ -170,7 +180,6 @@ void LCursor::pop()
 {
 	BOOST_ASSERT(size() >= 1);
 	pop_back();
-	anchor_.pop_back();
 }
 
 
@@ -306,12 +315,14 @@ bool LCursor::posRight()
 
 CursorSlice & LCursor::anchor()
 {
+	BOOST_ASSERT(!anchor_.empty());
 	return anchor_.back();
 }
 
 
 CursorSlice const & LCursor::anchor() const
 {
+	BOOST_ASSERT(!anchor_.empty());
 	return anchor_.back();
 }
 
@@ -324,15 +335,6 @@ CursorSlice const & LCursor::selBegin() const
 }
 
 
-CursorSlice & LCursor::selBegin()
-{
-	if (!selection())
-		return back();
-	// can't use std::min as this returns a const ref
-	return anchor() < back() ? anchor() : back();
-}
-
-
 CursorSlice const & LCursor::selEnd() const
 {
 	if (!selection())
@@ -341,12 +343,19 @@ CursorSlice const & LCursor::selEnd() const
 }
 
 
-CursorSlice & LCursor::selEnd()
+DocumentIterator LCursor::selectionBegin() const
 {
 	if (!selection())
-		return back();
-	// can't use std::min as this returns a const ref
-	return anchor() > back() ? anchor() : back();
+		return *this;
+	return anchor() < back() ? anchor_ : *this;
+}
+
+
+DocumentIterator LCursor::selectionEnd() const
+{
+	if (!selection())
+		return *this;
+	return anchor() > back() ? anchor_ : *this;
 }
 
 
@@ -551,9 +560,19 @@ void LCursor::selClearOrDel()
 
 std::ostream & operator<<(std::ostream & os, LCursor const & cur)
 {
-	for (size_t i = 0, n = cur.size(); i != n; ++i)
-		os << " " << cur.operator[](i) << " | " << cur.anchor_[i] << "\n";
-	os << " selection: " << cur.selection_ << endl;
+	for (size_t i = 0, n = cur.size(); i != n; ++i) {
+		os << " " << cur.operator[](i) << " | ";
+		if (i < cur.anchor_.size())
+			os << cur.anchor_[i];
+		else
+			os << "-------------------------------";
+		os << "\n";
+	}
+	for (size_t i = cur.size(), n = cur.anchor_.size(); i < n; ++i) {
+		os << "------------------------------- | " << cur.anchor_[i] << "\n";
+	}
+	os << " selection: " << cur.selection_
+	   << " x_target: " << cur.x_target_ << endl;
 	return os;
 }
 
@@ -602,7 +621,7 @@ bool LCursor::openable(MathAtom const & t) const
 		return true;
 
 	// we can't move into anything new during selection
-	if (depth() == anchor_.size())
+	if (depth() >= anchor_.size())
 		return false;
 	if (!ptr_cmp(t.nucleus(), &anchor_[depth()].inset()))
 		return false;
@@ -1092,8 +1111,7 @@ bool LCursor::goUpDown(bool up)
 bool LCursor::bruteFind(int x, int y, int xlow, int xhigh, int ylow, int yhigh)
 {
 	BOOST_ASSERT(!empty());
-	ParagraphList::iterator beg;
-	ParagraphList::iterator end;
+	par_type beg, end;
 	CursorSlice bottom = operator[](0); 
 	LyXText * text = bottom.text();
 	BOOST_ASSERT(text);
@@ -1101,11 +1119,11 @@ bool LCursor::bruteFind(int x, int y, int xlow, int xhigh, int ylow, int yhigh)
 
 	DocumentIterator it(bv().buffer()->inset());
 	DocumentIterator et;
-	lyxerr << "x: " << x << " y: " << y << endl;
-	lyxerr << "xlow: " << xlow << " ylow: " << ylow << endl;
-	lyxerr << "xhigh: " << xhigh << " yhigh: " << yhigh << endl;
+	//lyxerr << "x: " << x << " y: " << y << endl;
+	//lyxerr << "xlow: " << xlow << " ylow: " << ylow << endl;
+	//lyxerr << "xhigh: " << xhigh << " yhigh: " << yhigh << endl;
 
-	it.par() = text->parOffset(beg);
+	it.par() = beg;
 	//et.par() = text->parOffset(end);
 
 	double best_dist = 10e10;
@@ -1119,11 +1137,11 @@ bool LCursor::bruteFind(int x, int y, int xlow, int xhigh, int ylow, int yhigh)
 			cur.inset().getCursorPos(cur, xo, yo);
 			if (xlow <= xo && xo <= xhigh && ylow <= yo && yo <= yhigh) {
 				double d = (x - xo) * (x - xo) + (y - yo) * (y - yo);
-				lyxerr << "xo: " << xo << " yo: " << yo << " d: " << d << endl;
+				//lyxerr << "xo: " << xo << " yo: " << yo << " d: " << d << endl;
 				// '<=' in order to take the last possible position
 				// this is important for clicking behind \sum in e.g. '\sum_i a'
 				if (d <= best_dist) {
-					lyxerr << "*" << endl;
+					//lyxerr << "*" << endl;
 					best_dist   = d;
 					best_cursor = it;
 				}
@@ -1131,7 +1149,7 @@ bool LCursor::bruteFind(int x, int y, int xlow, int xhigh, int ylow, int yhigh)
 		}
 	}
 
-	lyxerr << "best_dist: " << best_dist << " cur:\n" << best_cursor << endl;
+	//lyxerr << "best_dist: " << best_dist << " cur:\n" << best_cursor << endl;
 	if (best_dist < 1e10)
 		setCursor(best_cursor, false);
 	return best_dist < 1e10;
@@ -1238,27 +1256,29 @@ string LCursor::selectionAsString(bool label) const
 
 	if (inTexted()) {
 		Buffer const & buffer = *bv().buffer();
+		ParagraphList & pars = text()->paragraphs();
 
 		// should be const ...
-		ParagraphList::iterator startpit = text()->getPar(selBegin());
-		ParagraphList::iterator endpit = text()->getPar(selEnd());
+		par_type startpit = selBegin().par();
+		par_type endpit = selEnd().par();
 		size_t const startpos = selBegin().pos();
 		size_t const endpos = selEnd().pos();
 
 		if (startpit == endpit)
-			return startpit->asString(buffer, startpos, endpos, label);
+			return pars[startpit].asString(buffer, startpos, endpos, label);
 
 		// First paragraph in selection
-		string result =
-			startpit->asString(buffer, startpos, startpit->size(), label) + "\n\n";
+		string result = pars[startpit].
+			asString(buffer, startpos, pars[startpit].size(), label) + "\n\n";
 
 		// The paragraphs in between (if any)
-		ParagraphList::iterator pit = startpit;
-		for (++pit; pit != endpit; ++pit)
-			result += pit->asString(buffer, 0, pit->size(), label) + "\n\n";
+		for (par_type pit = startpit + 1; pit != endpit; ++pit) {
+			Paragraph & par = pars[pit];
+			result += par.asString(buffer, 0, par.size(), label) + "\n\n";
+		}
 
 		// Last paragraph in selection
-		result += endpit->asString(buffer, 0, endpos, label);
+		result += pars[endpit].asString(buffer, 0, endpos, label);
 
 		return result;
 	}
@@ -1283,27 +1303,6 @@ string LCursor::currentState()
 }
 
 
-// only used by the spellchecker
-void LCursor::replaceWord(string const & replacestring)
-{
-	LyXText * t = text();
-	BOOST_ASSERT(t);
-
-	t->replaceSelectionWithString(*this, replacestring);
-	t->setSelectionRange(*this, replacestring.length());
-
-	// Go back so that replacement string is also spellchecked
-	for (string::size_type i = 0; i < replacestring.length() + 1; ++i)
-		t->cursorLeft(*this);
-}
-
-
-void LCursor::update()
-{
-	bv().update();
-}
-
-
 string LCursor::getPossibleLabel()
 {
 	return inMathed() ? "eq:" : text()->getPossibleLabel(*this);
@@ -1324,9 +1323,8 @@ Encoding const * LCursor::getEncoding() const
 			break;
 	CursorSlice const & sl = operator[](s);
 	LyXText & text = *sl.text();
-	ParagraphList::iterator pit = text.getPar(sl.par());
-	LyXFont font = pit->getFont(
-		bv().buffer()->params(), sl.pos(), outerFont(pit, text.paragraphs()));	
+	LyXFont font = text.getPar(sl.par()).getFont(
+		bv().buffer()->params(), sl.pos(), outerFont(sl.par(), text.paragraphs()));	
 	return font.language()->encoding();
 }
 

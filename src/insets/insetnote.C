@@ -226,7 +226,7 @@ int InsetNote::latex(Buffer const & buf, ostream & os,
 
 	ostringstream ss;
 	ss << "%\n\\begin{" << type << "}\n";
-	inset.latex(buf, ss, runparams);
+	InsetText::latex(buf, ss, runparams);
 	ss << "%\n\\end{" << type << "}\n";
 
 	string const str = ss.str();
@@ -246,7 +246,7 @@ int InsetNote::linuxdoc(Buffer const & buf, std::ostream & os,
 	if (params_.type == InsetNoteParams::Comment)
 		ss << "<comment>\n";
 
-	inset.linuxdoc(buf, ss, runparams);
+	InsetText::linuxdoc(buf, ss, runparams);
 
 	if (params_.type == InsetNoteParams::Comment)
 		ss << "\n</comment>\n";
@@ -268,7 +268,7 @@ int InsetNote::docbook(Buffer const & buf, std::ostream & os,
 	if (params_.type == InsetNoteParams::Comment)
 		ss << "<remark>\n";
 
-	inset.docbook(buf, ss, runparams);
+	InsetText::docbook(buf, ss, runparams);
 
 	if (params_.type == InsetNoteParams::Comment)
 		ss << "\n</remark>\n";
@@ -288,7 +288,7 @@ int InsetNote::plaintext(Buffer const & buf, std::ostream & os,
 
 	ostringstream ss;
 	ss << "[";
-	inset.plaintext(buf, ss, runparams);
+	InsetText::plaintext(buf, ss, runparams);
 	ss << "]";
 
 	string const str = ss.str();
@@ -306,12 +306,12 @@ void InsetNote::validate(LaTeXFeatures & features) const
 		features.require("color");
 		features.require("lyxgreyedout");
 	}
-	inset.validate(features);
+	InsetText::validate(features);
 }
 
 
 
-string const InsetNoteMailer:: name_("note");
+string const InsetNoteMailer::name_("note");
 
 InsetNoteMailer::InsetNoteMailer(InsetNote & inset)
 	: inset_(inset)

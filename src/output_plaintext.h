@@ -12,16 +12,18 @@
 #ifndef OUTPUT_PLAINTEXT_H
 #define OUTPUT_PLAINTEXT_H
 
-#include "ParagraphList_fwd.h"
-
 #include <iosfwd>
 #include <string>
 
 class Buffer;
 class OutputParams;
+class Paragraph;
+
 
 ///
-void writeFileAscii(Buffer const & buf, std::string const &, OutputParams const &);
+void writeFileAscii(Buffer const & buf, std::string const &,
+	OutputParams const &);
+
 ///
 void writeFileAscii(Buffer const & buf, std::ostream &, OutputParams const &);
 

@@ -73,13 +73,13 @@ public:
 	///
 	void clearSelection();
 	/// access start of selection
-	CursorSlice & selBegin();
-	/// access start of selection
 	CursorSlice const & selBegin() const;
 	/// access end of selection
-	CursorSlice & selEnd();
-	/// access end of selection
 	CursorSlice const & selEnd() const;
+	/// access start of selection
+	DocumentIterator selectionBegin() const;
+	/// access start of selection
+	DocumentIterator selectionEnd() const;
 	///
 	std::string grabSelection();
 	///

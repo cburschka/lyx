@@ -20,6 +20,7 @@
 #include "bufferlist.h"
 #include "bufferparams.h"
 #include "BufferView_pimpl.h"
+#include "CutAndPaste.h"
 #include "debug.h"
 #include "funcrequest.h"
 #include "gettext.h"
@@ -30,7 +31,6 @@
 #include "lyxtextclass.h"
 #include "paragraph.h"
 #include "paragraph_funcs.h"
-#include "PosIterator.h"
 #include "texrow.h"
 #include "undo.h"
 #include "WordLangTuple.h"
@@ -50,6 +50,8 @@
 
 using lyx::support::bformat;
 using lyx::support::MakeAbsPath;
+
+using lyx::cap::setSelectionRange;
 
 using std::distance;
 using std::find;
@@ -268,8 +270,7 @@ bool BufferView::insertLyXFile(string const & filen)
 	text()->breakParagraph(cursor());
 
 	BOOST_ASSERT(cursor().inTexted());
-	LyXText * text = cursor().text();
-	bool res = buffer()->readFile(fname, text->getPar(cursor().par()));
+	bool res = buffer()->readFile(fname, cursor().par());
 	resize();
 	return res;
 }
@@ -302,8 +303,7 @@ void BufferView::setCursorFromRow(int row)
 	if (tmpid == -1)
 		text()->setCursor(cursor(), 0, 0);
 	else
-		text()->setCursor(cursor(),
-			text()->parOffset(buffer()->getParFromID(tmpid).pit()),
+		text()->setCursor(cursor(), buffer()->getParFromID(tmpid).pit(),
 			tmppos);
 }
 
@@ -316,9 +316,7 @@ void BufferView::gotoLabel(string const & label)
 		it->getLabelList(*buffer(), labels);
 		if (find(labels.begin(),labels.end(),label) != labels.end()) {
 			cursor().clearSelection();
-			text()->setCursor(cursor(), 
-				distance(text()->paragraphs().begin(), it.getPar()),
-				it.getPos());
+			text()->setCursor(cursor(), it.getPar(), it.getPos());
 			cursor().resetAnchor();
 			update();
 			return;
@@ -376,8 +374,7 @@ void BufferView::setCursor(ParIterator const & par, lyx::pos_type pos)
 	for (int i = 0; i < last; ++i)
 		(*positions[i].it)->inset->edit(cur, true);
 	cur.resetAnchor();
-	LyXText & text = *par.text(*buffer());
-	text.setCursor(cur, text.parOffset(par.pit()), pos);
+	par.text(*buffer())->setCursor(cur, par.pit(), pos);
 }
 
 
@@ -395,7 +392,7 @@ this is solved in putSelectionAt with:
 Ab.
 */
 
-void BufferView::putSelectionAt(PosIterator const & cur,
+void BufferView::putSelectionAt(DocumentIterator const & cur,
 		      int length, bool backwards)
 {
 	ParIterator par(cur);
@@ -407,22 +404,18 @@ void BufferView::putSelectionAt(PosIterator const & cur,
 	
 	// hack for the chicken and egg problem
 	if (par.inset())
-		top_y(par.outerPar()->y);
+		top_y(text->getPar(par.outerPar()).y);
 	update();
-	text->setCursor(cursor(), text->parOffset(cur.pit()), cur.pos());
+	text->setCursor(cursor(), cur.par(), cur.pos());
 	cursor().updatePos();
 
 	if (length) {
-		text->setSelectionRange(cursor(), length);
+		setSelectionRange(cursor(), length);
 		cursor().setSelection();
 		if (backwards) {
-#if 0
-			swap(cursor().cursor_, cursor().anchor_);
-#else
-			DocumentIterator it = cursor();
+			DocumentIterator const it = cursor();
 			cursor().setCursor(cursor().anchor_, false);
 			cursor().anchor_ = it;
-#endif
 		}
 	}
 
