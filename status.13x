@@ -105,3 +105,6 @@ What's new
 - enable the lyx2lyx debug level to be set
 
 - squash a potential bug in the PreviewLoader before it bites.
+
+- don't cause a warning message to complain about starting an already running
+  timer. Don't start it ;-)

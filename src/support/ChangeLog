@@ -1,3 +1,7 @@
+2003-02-25  Angus Leeming  <leeming@lyx.org>
+
+	* forkedcontr.C (timer): don't start a running timer.
+
 2002-12-04  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* filetools.C (getExtFromContents): remove detection of epsi
@@ -14,7 +18,7 @@
 
 	* lyxsum.C: an ugly hack to compile with non-gnu linkers
 
-2002-11-12  Angus Leeming  <aleem@pneumon.bg.ic.ac.uk>
+2002-11-12  Angus Leeming  <leeming@lyx.org>
 
 	* lstrings.C (getVectorFromString): #if 0 -> #if 1 until Lars devises
 	a solution that he likes and which actually works.

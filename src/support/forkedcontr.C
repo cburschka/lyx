@@ -146,7 +146,7 @@ void ForkedcallsController::timer()
 		}
 	}
 
-	if (!forkedCalls.empty()) {
+	if (!forkedCalls.empty() && !timeout_->running()) {
 		timeout_->start();
 	}
 
