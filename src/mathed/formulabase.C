@@ -209,16 +209,17 @@ void InsetFormulaBase::showInsetCursor(BufferView * bv, bool)
 	if (isCursorVisible())
 		return;
 	if (mathcursor) {
+		metrics(bv);
 		int x;
 		int y;
 		mathcursor->getPos(x, y);
+		y -= yo_;
 		int asc = 0;
 		int des = 0;
 		MathMetricsInfo mi(bv, font_, display() ? LM_ST_DISPLAY : LM_ST_TEXT);
 		math_font_max_dim(LM_TC_TEXTRM, mi, asc, des);
-		//bv->fitLockedInsetCursor(x, y, asc, des);
-		//metrics(bv);
-		//lyxerr << "showInsetCursor: " << x << " " << y << "\n";
+		bv->fitLockedInsetCursor(x, y, asc, des);
+		//lyxerr << "showInsetCursor: x: " << x << " y: " << y << "\n";
 	}
 	toggleInsetCursor(bv);
 }
