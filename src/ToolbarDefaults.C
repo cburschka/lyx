@@ -75,11 +75,7 @@ void ToolbarDefaults::init()
 	add(SEPARATOR);
 
 	add(LFUN_FIGURE);
-#ifndef NEW_TABULAR
-	add(LFUN_TABLE);
-#else
-	add(LFUN_INSET_TABULAR);
-#endif
+	add(LFUN_DIALOG_TABULAR_INSERT);
 	//add(LFUN_MELT);
 }
 

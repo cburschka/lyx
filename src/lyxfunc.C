@@ -572,6 +572,7 @@ LyXFunc::func_status LyXFunc::getStatus(int ac) const
 					getStatus(argument);
 			}
 			flag |= ret;
+			disable = false;
 		} else {
 		    static InsetTabular inset(owner->buffer(), 1, 1);
 		    func_status ret;
@@ -1048,7 +1049,7 @@ string LyXFunc::Dispatch(int ac,
 		break;
 	}
 		
-	case LFUN_TABLE:
+	case LFUN_DIALOG_TABULAR_INSERT:
 #ifndef NEW_TABULAR
 		Table();
 #else

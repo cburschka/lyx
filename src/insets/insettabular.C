@@ -1668,6 +1668,7 @@ LyXFunc::func_status InsetTabular::getStatus(string what) const
     case LyXTabular::DELETE_COLUMN:
     case LyXTabular::SET_ALL_LINES:
     case LyXTabular::UNSET_ALL_LINES:
+	status |= LyXFunc::OK;
 	return status;
 
     case LyXTabular::MULTICOLUMN:

@@ -90,7 +90,7 @@ Menuset
 	Item "Go to Error|E" "error-next"
 	Item "Go to Note|N" "note-next"
 	Submenu "Floats & Insets|I" "edit_floats"
-	Submenu "Table" "edit_table"
+	Submenu "Tabular" "edit_tabular"
 	Item "Spellchecker...|S" "spellchecker"
 	Item "Check TeX|h" "buffer-chktex"
 	Item "Table of Contents|b" "toc-view"
@@ -105,7 +105,7 @@ Menuset
     Menu "edit_floats"
     End
 
-    Menu "edit_table"
+    Menu "edit_tabular"
     	Item "Multicolumn|M" "tabular-feature multicolumn"
 	Separator
 	Item "Line Top|T" "tabular-feature toggle-line-top"
@@ -164,7 +164,7 @@ Menuset
 
     Menu "insert"
 	Item "Figure...|F" "figure-insert"
-	Item "Tabular...|T" "table-insert"
+	Item "Tabular...|T" "dialog-tabular-insert"
 	Separator
 	Item "Include File...|I" "buffer-child-insert"
 	Submenu "Import ascii file|a" "insert_ascii"
@@ -310,6 +310,6 @@ Toolbar
     Icon "math-mode"
     Separator
     Icon "figure-insert"
-    Icon "table-insert"
+    Icon "dialog-tabular-insert"
 End
 

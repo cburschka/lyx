@@ -142,7 +142,6 @@ enum kb_action {
 	LFUN_MATH_MACROARG,  // ale970510
 	LFUN_MATH_PANEL,
 	LFUN_FIGURE,
-	LFUN_TABLE, // schedule for deletion
 	LFUN_MELT,
 	LFUN_DELETE_WORD_FORWARD,
 	LFUN_DELETE_WORD_BACKWARD,
@@ -276,6 +275,7 @@ enum kb_action {
 	LFUN_INDEX_INSERT,              // Angus 20000803
 	LFUN_REF_CREATE,                // Angus 20000807
 	LFUN_SCREEN_FONT_UPDATE,	// ARRae 20000813
+	LFUN_DIALOG_TABULAR_INSERT,     // Jug 20000825 (old table-insert)
 	LFUN_LASTACTION  /* this marks the end of the table */
 };
 

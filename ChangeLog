@@ -1,5 +1,10 @@
 2000-08-25  Juergen Vigna  <jug@sad.it>
 
+	* src/LyXAction.C (init): renamed LFUN_TABLE to
+	LFUN_DIALOG_TABULAR_INSERT and fixed all it's occurences.
+
+	* src/lyxfunc.C (getStatus): fix for disabled Edit->Table entries.
+
 	* src/lyxscreen.h: add force_clear variable and fuction to force
 	a clear area when redrawing in LyXText.
 

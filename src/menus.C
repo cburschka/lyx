@@ -1193,7 +1193,7 @@ void Menus::ShowEditMenu(FL_OBJECT * ob, long)
 	case 26: men->currentView()->allFloats(0, 1); break;
 	case 27: tmpfunc->Dispatch(LFUN_REMOVEERRORS); break;
 #endif
-	case 31: tmpfunc->Dispatch(LFUN_TABLE); break;
+	case 31: tmpfunc->Dispatch(LFUN_DIALOG_TABULAR_INSERT); break;
 		// this is really temporary. We need new function in keybind.C
 		// These should set the minibuffer, too.
 	case 32: case 33: case 34:
@@ -1776,7 +1776,7 @@ void Menus::ShowInsertMenu(FL_OBJECT * ob, long)
 		men->currentView()->hideCursor();
 		switch (choice) {
 		case 1: tmpfunc->Dispatch(LFUN_FIGURE); break;
-		case 2: tmpfunc->Dispatch(LFUN_TABLE); break;
+		case 2: tmpfunc->Dispatch(LFUN_DIALOG_TABULAR_INSERT); break;
 		case 3: tmpfunc->Dispatch(LFUN_CHILDINSERT); break;
 		case 4: // Insert ASCII file submenu
 			break;
