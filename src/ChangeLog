@@ -1,3 +1,8 @@
+2004-04-18  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* LaTeX.C (runMakeIndex, runBibTeX): quote correctly file name
+	(bug 1526)
+
 2004-04-19  Angus Leeming  <leeming@lyx.org>
 
 	* BufferView_pimpl.C (setBuffer): changed preview interface.

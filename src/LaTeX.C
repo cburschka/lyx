@@ -404,7 +404,7 @@ bool LaTeX::runMakeIndex(string const & f)
 	// to be able to make style files from within LyX. This has
 	// to come for a later time.
 	string tmp = "makeindex -c -q ";
-	tmp += f;
+	tmp += QuoteName(f);
 	Systemcall one;
 	one.startscript(Systemcall::Wait, tmp);
 	return true;
@@ -528,7 +528,7 @@ bool LaTeX::runBibTeX(vector<Aux_Info> const & bibtex_info)
 		result = true;
 
 		string tmp = lyxrc.bibtex_command + " ";
-		tmp += OnlyFilename(ChangeExtension(it->aux_file, string()));
+		tmp += QuoteName(OnlyFilename(ChangeExtension(it->aux_file, string())));
 		Systemcall one;
 		one.startscript(Systemcall::Wait, tmp);
 	}
