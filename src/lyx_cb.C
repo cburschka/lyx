@@ -748,7 +748,9 @@ LyXFont const UserFreeFont(BufferParams const & params)
 extern "C" void TimerCB(FL_OBJECT *, long)
 {
 	// only if the form still exists
-	if (lyxrc.show_banner && fd_form_title->form_title != 0) {
+	if (lyxrc.show_banner
+	    && fd_form_title
+	    && fd_form_title->form_title) {
 		if (fd_form_title->form_title->visible) {
 			fl_hide_form(fd_form_title->form_title);
 		}

@@ -1,3 +1,11 @@
+2000-10-11  Allan Rae  <rae@lyx.org>
+
+	* src/lyx_cb.C (TimerCB): cleaned up Angus's patch.
+
+2000-10-10  Angus Leeming <a.leeming@ic.ac.uk>
+
+	* src/lyx_cb.C (TimerCB): fix crash when fd_form_title doesn't exist.
+
 2000-10-10  Allan Rae <rae@lyx.org>
 
 	* src/lyxrc.[Ch]:
