@@ -12,10 +12,10 @@
 #include <cmath>	// fabs()
 
 #ifdef __GNUG__
-#pragma implementation "FontLoader.h"
+#pragma implementation
 #endif
 
-#include "FontLoader.h"
+#include "xfont_loader.h"
 #include "FontInfo.h"
 #include "gettext.h"
 #include "debug.h"

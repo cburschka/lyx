@@ -16,7 +16,7 @@
 
 #include "support/lstrings.h"
 #include "xfont_metrics.h"
-#include "FontLoader.h"
+#include "xfont_loader.h"
 #include "lyxrc.h"
 #include "encoding.h"
 #include "language.h"

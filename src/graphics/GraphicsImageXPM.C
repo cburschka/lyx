@@ -15,7 +15,7 @@
 
 #include "GraphicsImageXPM.h"
 #include "GraphicsParams.h"
-#include "ColorHandler.h"
+#include "frontends/xforms/ColorHandler.h"
 #include "debug.h"
 #include "frontends/GUIRunTime.h" // x11Display, x11Screen
 #include "support/filetools.h"    // IsFileReadable

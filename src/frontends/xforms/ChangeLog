@@ -1,3 +1,16 @@
+2002-05-24  John Levon  <moz@compsoc.man.ac.uk>
+
+	* ColorHandler.h:
+	* ColorHandler.C:
+	* FontInfo.h:
+	* FontInfo.C: moved here
+
+	* xfont_loader.h:
+	* xfont_loader.C: moved here
+
+	* Makefile.am:
+	* xfont_metrics.C: changes from above
+ 
 2002-05-23  John Levon  <moz@compsoc.man.ac.uk>
 
 	* Makefile.am:

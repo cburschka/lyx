@@ -25,7 +25,7 @@
 #include "BufferView.h"
 #include "font_metrics.h"
 #include "insets/insettext.h"
-#include "ColorHandler.h"
+#include "frontends/xforms/ColorHandler.h"
 #include "language.h"
 
 using std::max;

@@ -30,7 +30,7 @@
 #include "frontends/xforms/lyxlookup.h"
 #endif
 #include "bufferlist.h"
-#include "ColorHandler.h"
+#include "frontends/xforms/ColorHandler.h"
 
 #include "frontends/GUIRunTime.h"
 #include "frontends/xforms/xforms_helpers.h" // for XformColor

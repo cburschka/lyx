@@ -4,7 +4,7 @@
 
 #include "math_support.h"
 #include "lyxfont.h"
-#include "FontLoader.h"
+#include "frontends/font_loader.h"
 #include "frontends/font_metrics.h"
 #include "math_cursor.h"
 #include "math_defs.h"

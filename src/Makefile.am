@@ -50,8 +50,6 @@ lyx_SOURCES = \
 	Bullet.h \
 	Chktex.C \
 	Chktex.h \
-	ColorHandler.C \
-	ColorHandler.h \
 	CutAndPaste.C \
 	CutAndPaste.h \
 	DepTable.C \
@@ -60,10 +58,6 @@ lyx_SOURCES = \
 	FloatList.h \
 	Floating.C \
 	Floating.h \
-	FontInfo.C \
-	FontInfo.h \
-	FontLoader.C \
-	FontLoader.h \
 	FuncStatus.C \
 	FuncStatus.h \
 	LColor.C \

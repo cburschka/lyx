@@ -23,6 +23,8 @@ libxforms_la_SOURCES = \
 	bmtable.h \
 	Color.C \
 	Color.h \
+	ColorHandler.C \
+	ColorHandler.h \
 	combox.C \
 	combox.h \
 	Dialogs.C \
@@ -31,6 +33,8 @@ libxforms_la_SOURCES = \
 	FeedbackController.C \
 	FeedbackController.h \
 	FileDialog.C \
+	FontInfo.C \
+	FontInfo.h \
 	FormFiledialog.h \
 	FormFiledialog.C \
 	form_filedialog.C \
@@ -214,6 +218,8 @@ libxforms_la_SOURCES = \
 	XFormsView.h \
 	XPainter.C \
 	XPainter.h \
+	xfont_loader.C \
+	xfont_loader.h \
 	xfont_metrics.C \
 	xfont_metrics.h \
 	xforms_helpers.C \

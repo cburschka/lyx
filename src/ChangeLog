@@ -1,5 +1,20 @@
 2002-05-24  John Levon  <moz@compsoc.man.ac.uk>
 
+	* ColorHandler.h:
+	* ColorHandler.C:
+	* FontInfo.h:
+	* FontInfo.C: moved to frontends/xforms/
+
+	* FontLoader.h:
+	* FontLoader.C: moved into frontends for GUIIzation
+
+	* Makefile.am:
+	* lyx_gui.C:
+	* lyxfont.C: 
+	* lyxfunc.C: changes from above
+ 
+2002-05-24  John Levon  <moz@compsoc.man.ac.uk>
+
 	* LColor.C: remove spurious X include
  
 	* BufferView_pimpl.C:
