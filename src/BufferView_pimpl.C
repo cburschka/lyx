@@ -1292,7 +1292,7 @@ void BufferView::Pimpl::cursorNext(LyXText * text)
 		// span several workarea-heights) we'll move to the top again, but this
 		// is better than just jump down and only display part of the row.
 		new_y = bv_->text->first_y + workarea_.height();
-	} else {		
+	} else {
 		if (text->inset_owner) {
 			new_y = bv_->text->cursor.iy()
 				+ bv_->theLockingInset()->insetInInsetY()

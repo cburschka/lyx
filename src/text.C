@@ -1159,7 +1159,7 @@ int LyXText::numberOfSeparators(Buffer const * buf, Row const * row) const
 {
 	pos_type last = rowLastPrintable(row);
 	pos_type p = max(row->pos(), beginningOfMainBody(buf, row->par()));
-		
+
 	int n = 0;
 	for (; p <= last; ++p) {
 		if (row->par()->isSeparator(p)) {
@@ -1955,10 +1955,10 @@ void LyXText::insertChar(BufferView * bview, char c)
 	// Is there a break one row above
 	if (row->previous() && row->previous()->par() == row->par()
 	    && (cursor.par()->isLineSeparator(cursor.pos())
-	        || cursor.par()->isNewline(cursor.pos())
-	        || ((cursor.pos() < cursor.par()->size()) &&
-	            cursor.par()->isInset(cursor.pos()+1))
-	        || cursor.row()->fill() == -1))
+		|| cursor.par()->isNewline(cursor.pos())
+		|| ((cursor.pos() < cursor.par()->size()) &&
+		    cursor.par()->isInset(cursor.pos()+1))
+		|| cursor.row()->fill() == -1))
 	{
 		pos_type z = nextBreakPoint(bview,
 							   row->previous(),
