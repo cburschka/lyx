@@ -48,6 +48,8 @@
 #include "support/filetools.h"
 #include "support/LAssert.h"
 
+#include "graphics/GraphicsCache.h"
+
 using std::endl;
 using std::pair;
 using std::make_pair;
@@ -1836,6 +1838,7 @@ void FormPreferences::LnFmisc::apply() const
 	lyxrc.wheel_jump = static_cast<unsigned int>
 		(fl_get_counter_value(dialog_->counter_wm_jump));
 
+	string const old_value = lyxrc.display_graphics;
 	if (fl_get_button(dialog_->radio_display_monochrome)) {
 		lyxrc.display_graphics = "mono";
 	} else if (fl_get_button(dialog_->radio_display_grayscale)) {
@@ -1844,6 +1847,10 @@ void FormPreferences::LnFmisc::apply() const
 		lyxrc.display_graphics = "color";
 	} else {
 		lyxrc.display_graphics = "no";
+	}
+	if (old_value != lyxrc.display_graphics) {
+		grfx::GCache & gc = grfx::GCache::get();
+		gc.changeDisplay();
 	}
 }
 

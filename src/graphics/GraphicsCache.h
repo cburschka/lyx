@@ -1,13 +1,18 @@
 // -*- C++ -*-
-/* This file is part of
- * =================================================
- * 
- *          LyX, The Document Processor
- *          Copyright 1995 Matthias Ettrich.
- *          Copyright 1995-2001 The LyX Team.
+/**
+ *  \file GraphicsCache.h
+ *  Copyright 2002 the LyX Team
+ *  Read the file COPYING
  *
- *          This file Copyright 2000 Baruch Even
- * ================================================= */
+ * \author Baruch Even <baruch.even@writeme.com>
+ * \author Angus Leeming <a.leeming@ic.ac.uk>
+ *
+ *  grfx::GCache is the manager of the image cache.
+ *  It is responsible for creating the grfx::GCacheItem's and maintaining them.
+ *  
+ *  grfx::GCache is a singleton class. It is possible to have only one
+ *  instance of it at any moment.
+ */
 
 #ifndef GRAPHICSCACHE_H
 #define GRAPHICSCACHE_H
@@ -16,48 +21,80 @@
 #pragma interface
 #endif
 
+#include "GraphicsTypes.h"
 #include <map>
-
 #include "LString.h"
-#include "GraphicsCacheItem.h"
 #include <boost/utility.hpp>
-#include <boost/smart_ptr.hpp>
 
-class GraphicsCacheItem;
+class InsetGraphics;
 
-/** GraphicsCache is the manager of the image cache.
-    It is responsible of create the GraphicsCacheItem's and maintain them.
-    
-    GraphicsCache is a singleton class, there should be only one instance of
-    it at any moment.
-*/
-class GraphicsCache : boost::noncopyable {
+namespace grfx {
+
+class GCacheItem;
+
+class GCache : boost::noncopyable {
 public:
-	/// Get the instance of the class.
-	static GraphicsCache & getInstance();
-	/// Public destructor due to compiler warnings.
-	~GraphicsCache();
 
-	typedef boost::shared_ptr<GraphicsCacheItem> shared_ptr_item;
+	/// This is a singleton class. Get the instance.
+	static GCache & get();
 
-	/// Add a file to the cache.
-	shared_ptr_item addFile(string const & filename);
+	///
+	~GCache();
+
+	/// Add a file to the cache (or modify an existing image).
+	void update(InsetGraphics const &);
+
+	/** Remove the data associated with this inset.
+	 *  Called from the InsetGraphics d-tor.
+	 */
+	void remove(InsetGraphics const &);
+
+	/** No processing of the image will take place until this call is
+	 *  received.
+	 */
+	void startLoading(InsetGraphics const &);
+
+	/** If (changed_background == true), then the background color of the
+	 *  graphics inset has changed. Update all images.
+	 *  Else, the preferred display type has changed.
+	 *  Update the view of all insets whose display type is DEFAULT.
+	 */
+	void changeDisplay(bool changed_background = false);
+
+	/// Get the image referenced by a particular inset.
+	ImagePtr const image(InsetGraphics const &) const;
+
+	/// How far have we got in loading the image?
+	ImageStatus status(InsetGraphics const &) const;
 
 private:
-	/// Remove a cache item if it's count has gone to zero.
-	void removeFile(string const & filename);
-	
-	/// Private c-tor so we can control how many objects are instantiated.
-	GraphicsCache() {}
-	
+	/** Make the c-tor private so we can control how many objects
+	 *  are instantiated.
+	 */
+	GCache();
+
+	/// The cache contains data of this type.
+	typedef boost::shared_ptr<GCacheItem> CacheItemType;
+
+	/** The cache contains one item per file, so use a map to find the
+	 *  cache item quickly by filename.
+	 *  Note that each cache item can have multiple views, potentially one
+	 *  per inset that references the original file.
+	 */
+	typedef std::map<string, CacheItemType> CacheType;
+
+	/// Search the cache by inset.
+	CacheType::const_iterator find(InsetGraphics const &) const;
 	///
-	typedef std::map<string, shared_ptr_item> CacheType;
-	///
-	CacheType cache;
-	
-	/** We need this so that an Item can tell the cache that it should be
-	    deleted. (to call removeFile).
-	    It also helps removing a warning gcc emits. */
-	friend class GraphicsCacheItem;
+	CacheType::iterator find(InsetGraphics const &);
+
+	/** Store a pointer to the cache so that we can forward declare
+	 *  GCacheItem.
+	 */
+	CacheType * cache;
 };
-#endif
+ 
+} // namespace grfx
+
+
+#endif // GRAPHICSCACHE_H

@@ -19,18 +19,14 @@
 #pragma interface
 #endif 
 
+#include "graphics/GraphicsTypes.h"
 #include "insets/inset.h"
 #include "insets/insetgraphicsParams.h"
-#include "graphics/GraphicsCacheItem.h"
-#include <boost/smart_ptr.hpp>
-
-#include "LaTeXFeatures.h"
-
 // We need a signal here to hide an active dialog when we are deleted.
 #include "sigc++/signal_system.h"
 
 class Dialogs;
-class LyXImage;
+class LaTeXFeatures;
 
 ///
 class InsetGraphics : public Inset, public SigC::Object {
@@ -92,7 +88,7 @@ public:
 	bool setParams(InsetGraphicsParams const & params);
 
 	/// Get the inset parameters, used by the GUIndependent dialog.
-	InsetGraphicsParams getParams() const;
+	InsetGraphicsParams const & params() const;
 
 	/** This signal is connected by our dialog and called when the inset
 	    is deleted.
@@ -100,6 +96,11 @@ public:
 	SigC::Signal0<void> hideDialog;
 
 private:
+	/// Set the cached variables
+	void setCache() const;
+	/// Is the image ready to draw, or should we display a message instead?
+	bool drawImage() const;
+
 	/// Read the inset native format
 	void readInsetGraphics(Buffer const * buf, LyXLex & lex);
 	/// Read the FigInset file format
@@ -113,14 +114,19 @@ private:
 	string const createLatexOptions() const;
 	/// Convert the file if needed, and return the location of the file.
 	string const prepareFile(Buffer const * buf) const;
-	/// The graphics cache handle.
-	mutable boost::shared_ptr<GraphicsCacheItem> cacheHandle;
-	/// is the pixmap initialized?
-	mutable bool imageLoaded;
-	/// the parameters
-	InsetGraphicsParams params;
+
+	///
+	InsetGraphicsParams params_;
+
 	/// holds the entity name that defines the graphics location (SGML).
 	string const graphic_label;
+
+	/// The cached variables
+	mutable grfx::ImageStatus cached_status_;
+	///
+	mutable grfx::ImagePtr cached_image_;
+	///
+	mutable bool cache_filled_;
 };
 
 #endif 

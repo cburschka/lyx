@@ -1,3 +1,12 @@
+2002-02-20  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* lyxfunc.C (dispatch): act on LFUN_FORKS_SHOW and LFUN_FORKS_KILL.
+	also call grfx::GCache::changeDisplay if the graphicsbg color changes.
+
+	* PainterBase.h (image):
+	* Painter.[Ch] (image): now accepts a grfx::GImage const & rather than
+	a LyXImage const *.
+
 2002-02-26  John Levon  <moz@compsoc.man.ac.uk>
 
 	* Makefile.am:

@@ -1,12 +1,11 @@
-/* This file is part of
- * =================================================
- * 
- *          LyX, The Document Processor
- *          Copyright 1995 Matthias Ettrich.
- *          Copyright 1995-2001 The LyX Team.
+/*
+ * \file GraphicsCache.C
+ * Copyright 2002 the LyX Team
+ * Read the file COPYING
  *
- *          This file Copyright 2000 Baruch Even
- * ================================================= */
+ * \author Baruch Even <baruch.even@writeme.com>
+ * \author Angus Leeming <a.leeming@ic.ac.uk>
+ */
 
 #include <config.h>
 
@@ -16,51 +15,174 @@
 
 #include "GraphicsCache.h"
 #include "GraphicsCacheItem.h"
+#include "GraphicsImage.h"
+#include "GraphicsParams.h"
+#include "insets/insetgraphics.h"
 
-#include "support/LAssert.h"
+// I think that graphicsInit should become Dialogs::graphicsInit.
+// These #includes would then be moved there.
+// Angus 25 Feb 2002
+#include "GraphicsImageXPM.h"
+//#include "xformsGraphicsImage.h"
 
-GraphicsCache &
-GraphicsCache::getInstance()
+namespace {
+
+void graphicsInit() 
 {
-	static GraphicsCache singleton;
+	using namespace grfx;
+	using SigC::slot;
+    
+	// connect the image loader based on the XPM library
+	GImage::newImage.connect(slot(&GImageXPM::newImage));
+	GImage::loadableFormats.connect(slot(&GImageXPM::loadableFormats));
+	// connect the image loader based on the xforms library
+//	GImage::newImage.connect(slot(&xformsGImage::newImage));
+//	GImage::loadableFormats.connect(slot(&xformsGImage::loadableFormats));
+}
+    
+} // namespace anon
+ 
+
+namespace grfx {
+
+GCache & GCache::get()
+{
+	static bool start = true;
+	if (start) {
+		start = false;
+		graphicsInit();
+	}
+
+	// Now return the cache
+	static GCache singleton;
 	return singleton;
 }
 
 
-GraphicsCache::~GraphicsCache()
+GCache::GCache()
 {
-	// All elements are destroyed by the shared_ptr's in the map.
+	cache = new CacheType;
 }
 
 
-GraphicsCache::shared_ptr_item
-GraphicsCache::addFile(string const & filename)
+// all elements are destroyed by the shared_ptr's in the map.
+GCache::~GCache()
 {
-	CacheType::iterator it = cache.find(filename);
-	
-	if (it != cache.end()) {
-		return it->second;
+	delete cache;
+}
+
+
+void GCache::update(InsetGraphics const & inset)
+{
+	// A subset only of InsetGraphicsParams is needed for display purposes.
+	// The GraphicsParams c-tor also interrogates lyxrc to ascertain whether
+	// to display or not.
+	GParams params(inset.params());
+
+	// Each inset can reference only one file, so check the cache for any
+	// graphics files referenced by inset. If the name of this file is
+	// different from that in params, then remove the reference.
+	CacheType::iterator it = find(inset);
+
+	if (it != cache->end()) {
+		CacheItemType item = it->second;
+		if (item->filename() != params.filename) {
+			item->remove(inset);
+			if (item->empty())
+				cache->erase(it);
+		}
+	}
+
+	// Are we adding a new file or modifying the display of an existing one?
+	it = cache->find(params.filename);
+
+	if (it != cache->end()) {
+		it->second->modify(inset, params);
+		return;
+	}
+
+	CacheItemType item(new GCacheItem(inset, params));
+	if (item.get() != 0)
+		(*cache)[params.filename] = item;
+}
+
+
+void GCache::remove(InsetGraphics const & inset)
+{
+	CacheType::iterator it = find(inset);
+	if (it == cache->end())
+		return;
+
+	CacheItemType item = it->second;
+	item->remove(inset);
+	if (item->empty()) {
+		cache->erase(it);
+	}
+}
+
+
+void GCache::startLoading(InsetGraphics const & inset)
+{
+	CacheType::iterator it = find(inset);
+	if (it == cache->end())
+		return;
+
+	it->second->startLoading(inset);
+}
+
+
+ImagePtr const GCache::image(InsetGraphics const & inset) const
+{
+	CacheType::const_iterator it = find(inset);
+	if (it == cache->end())
+		return ImagePtr();
+
+	return it->second->image(inset);
+}
+
+
+ImageStatus GCache::status(InsetGraphics const & inset) const
+{
+	CacheType::const_iterator it = find(inset);
+	if (it == cache->end())
+		return ErrorUnknown;
+
+	return it->second->status(inset);
+}
+
+
+void GCache::changeDisplay(bool changed_background)
+{
+	CacheType::iterator it = cache->begin();
+	CacheType::iterator end = cache->end();
+	for(; it != end; ++it)
+		it->second->changeDisplay(changed_background);
+}
+
+
+GCache::CacheType::iterator
+GCache::find(InsetGraphics const & inset)
+{
+	CacheType::iterator it = cache->begin();
+	for (; it != cache->end(); ++it) {
+		if (it->second->referencedBy(inset))
+			return it;
 	}
 	
-	shared_ptr_item cacheItem(new GraphicsCacheItem(filename));
-	if (cacheItem.get() == 0)
-		return cacheItem;
-	
-	cache[filename] = cacheItem;
-
-	// GraphicsCacheItem_ptr is a shared_ptr and thus reference counted,
-	// it is safe to return it directly.
-	return cacheItem;
+	return cache->end();
 }
 
 
-void
-GraphicsCache::removeFile(string const & filename)
+GCache::CacheType::const_iterator
+GCache::find(InsetGraphics const & inset) const
 {
-	// We do not destroy the GraphicsCacheItem since we are here because
-	// the last copy of it is being erased.
-
-	CacheType::iterator it = cache.find(filename);
-	if (it != cache.end())
-		cache.erase(it);
+	CacheType::const_iterator it = cache->begin();
+	for (; it != cache->end(); ++it) {
+		if (it->second->referencedBy(inset))
+			return it;
+	}
+	
+	return cache->end();
 }
+
+} // namespace grfx

@@ -1,3 +1,19 @@
+2002-02-20  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* FormForks.[Ch]:
+	* forms/form_forks.fd: new files. A view for the Forked Child
+	processes dialog, enabling the user to see what forked processes
+	are running, and, if he so desires, to kill them.
+
+	* Dialogs.C: add the class Forked Child dialog.
+
+	* Makefile.am: add FormForks.[Ch], form_forks.[Ch].
+
+	* forms/makefile: add form_forks.fd.
+
+	* FormPreferences.C (LnFmisc::apply): rather ugly: call
+	grfx::GCache::changeDisplay if the lyxrc.display_graphics changes.
+
 2002-02-24  Juergen Spitzmueller  <j.spitzmueller@gmx.de>
 
 	* forms/form_graphics.fd: Enlarge Restore button.

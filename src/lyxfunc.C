@@ -84,10 +84,13 @@
 #include "frontends/Menubar.h"
 #include "frontends/Alert.h"
 
+#include "graphics/GraphicsCache.h"
+
 #include "support/lyxalgo.h"
 #include "support/LAssert.h"
 #include "support/filetools.h"
 #include "support/FileInfo.h"
+#include "support/forkedcontr.h"
 #include "support/lstrings.h"
 #include "support/path.h"
 #include "support/lyxfunctional.h"
@@ -968,7 +971,7 @@ string const LyXFunc::dispatch(kb_action action, string argument)
 	}
 
 	switch (action) {
-		
+
 	case LFUN_ESCAPE:
 	{
 		if (!owner->view()->available()) break;
@@ -1603,6 +1606,10 @@ string const LyXFunc::dispatch(kb_action action, string argument)
 			break;
 			}
 
+		bool const graphicsbg_changed =
+			(lyx_name == lcolor.getLyXName(LColor::graphicsbg) &&
+			 x11_name != lcolor.getX11Name(LColor::graphicsbg));
+
 		if (!lcolor.setColor(lyx_name, x11_name)) {
 			static string const err1 (N_("Set-color \""));
 			static string const err2 (
@@ -1611,7 +1618,14 @@ string const LyXFunc::dispatch(kb_action action, string argument)
 			setErrorMessage(_(err1) + lyx_name + _(err2));
 			break;
 		}
+
 		lyxColorHandler->updateColor(lcolor.getFromLyXName(lyx_name));
+
+		if (graphicsbg_changed) {
+			grfx::GCache & gc = grfx::GCache::get();
+			gc.changeDisplay(true);
+		}
+		
 		owner->view()->redraw();
 		break;
 	}
@@ -1627,6 +1641,21 @@ string const LyXFunc::dispatch(kb_action action, string argument)
 	case LFUN_MESSAGE_POP:
 		owner->messagePop();
 		break;
+
+	case LFUN_FORKS_SHOW:
+		owner->getDialogs()->showForks();
+		break;
+
+	case LFUN_FORKS_KILL:
+	{
+		if (!isStrInt(argument))
+			break;
+
+		pid_t const pid = strToInt(argument);
+		ForkedcallsController & fcc = ForkedcallsController::get();
+		fcc.kill(pid);
+		break;
+	}
 
 	default:
 		// Then if it was none of the above

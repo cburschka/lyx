@@ -40,16 +40,18 @@ libcontrollers_la_SOURCES= \
 	ControlDialog.h \
 	ControlDialog_impl.C \
 	ControlDialog_impl.h \
-	ControlError.h \
 	ControlError.C \
-	ControlERT.h \
+	ControlError.h \
 	ControlERT.C \
-	ControlExternal.h \
+	ControlERT.h \
 	ControlExternal.C \
-	ControlFloat.h \
+	ControlExternal.h \
 	ControlFloat.C \
-	ControlGraphics.h \
+	ControlFloat.h \
+	ControlForks.C \
+	ControlForks.h \
 	ControlGraphics.C \
+	ControlGraphics.h \
 	ControlInclude.C \
 	ControlInclude.h \
 	ControlIndex.C \

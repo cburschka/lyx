@@ -1,0 +1,660 @@
+/*
+ * \file GraphicsImageXPM.C
+ * Copyright 2002 the LyX Team
+ * Read the file COPYING
+ *
+ * \author Baruch Even <baruch.even@writeme.com>
+ * \author Angus Leeming <a.leeming@ic.ac.uk>
+ */
+
+#include <config.h>
+
+#ifdef __GNUG__
+#pragma implementation
+#endif
+
+#include "GraphicsImageXPM.h"
+#include "GraphicsParams.h"
+#include "ColorHandler.h"
+#include "debug.h"
+#include "frontends/GUIRunTime.h" // x11Display
+#include "support/filetools.h"    // IsFileReadable
+#include "support/lstrings.h"
+#include "Lsstream.h"
+#include <iomanip>                // std::setfill, etc
+#include <cmath>                  // cos, sin
+#include <cstdlib>                // malloc, free
+
+namespace grfx {
+
+/// Access to this class is through this static method.
+ImagePtr GImageXPM::newImage()
+{
+	ImagePtr ptr;
+	ptr.reset(new GImageXPM());
+	return ptr;
+}
+	
+
+/// Return the list of loadable formats.
+GImage::FormatList GImageXPM::loadableFormats()
+{
+	FormatList formats(1);
+	formats[0] = "xpm";
+	return formats;
+}
+ 
+
+GImageXPM::GImageXPM()
+	: pixmap_(0),
+	  pixmap_status_(PIXMAP_UNINITIALISED)
+{}
+	
+
+GImageXPM::GImageXPM(GImageXPM const & other)
+	: GImage(other),
+	  image_(other.image_),
+	  pixmap_(other.pixmap_),
+	  pixmap_status_(other.pixmap_status_)
+{}
+	
+
+GImageXPM::~GImageXPM()
+{
+	if (pixmap_status_ == PIXMAP_SUCCESS)
+		XFreePixmap(GUIRunTime::x11Display(), pixmap_);
+}
+	
+
+GImage * GImageXPM::clone() const
+{
+	return new GImageXPM(*this);
+}
+
+
+unsigned int GImageXPM::getWidth() const
+{
+	return image_.width();
+}
+
+
+unsigned int GImageXPM::getHeight() const
+{
+	return image_.height();
+}
+
+
+Pixmap GImageXPM::getPixmap() const
+{
+	if (!pixmap_status_ == PIXMAP_SUCCESS)
+		return 0;
+	return pixmap_;
+}
+
+
+void GImageXPM::load(string const & filename, GImage::SignalTypePtr on_finish)
+{
+	if (filename.empty()) {
+		on_finish->emit(false);
+		return;
+	}
+
+	if (!image_.empty()) {
+		lyxerr[Debug::GRAPHICS]
+			<< "Image is loaded already!" << std::endl;
+		on_finish->emit(false);
+		return;
+	}
+
+	XpmImage * xpm_image = new XpmImage;
+
+	int const success =
+		XpmReadFileToXpmImage(const_cast<char *>(filename.c_str()),
+				      xpm_image, 0);
+
+	switch (success) {
+	case XpmOpenFailed:
+		lyxerr[Debug::GRAPHICS]
+			<< "No XPM image file found." << std::endl;
+		break;
+
+	case XpmFileInvalid:
+		lyxerr[Debug::GRAPHICS]
+			<< "File format is invalid" << std::endl;
+		break;
+
+	case XpmNoMemory:
+		lyxerr[Debug::GRAPHICS] 
+			<< "Insufficient memory to read in XPM file"
+			<< std::endl;
+		break;
+	}
+
+	if (success != XpmSuccess) {
+		XpmFreeXpmImage(xpm_image);
+		delete xpm_image;
+
+		lyxerr[Debug::GRAPHICS]
+			<< "Error reading XPM file '" 
+			<< XpmGetErrorString(success) << "'"
+			<< std::endl;
+	} else {
+		image_.reset(*xpm_image);
+	}
+
+	on_finish->emit(success == XpmSuccess);
+}
+
+
+bool GImageXPM::setPixmap(GParams const & params)
+{
+	if (image_.empty() || params.display == GParams::NONE) {
+		return false;
+	}
+
+	if (pixmap_status_ == PIXMAP_FAILED) {
+		return false;
+	}
+
+	if (pixmap_status_ == PIXMAP_SUCCESS) {
+		return true;
+	}
+
+	using namespace grfx;
+	Display * display = GUIRunTime::x11Display();
+
+	//(BE 2000-08-05)
+	// This might be a dirty thing, but I dont know any other solution.
+	Screen * screen = ScreenOfDisplay(display, GUIRunTime::x11Screen());
+
+	Pixmap pixmap;
+	Pixmap mask;
+
+	XpmAttributes attrib;
+
+	// Allow libXPM lots of leeway when trying to allocate colors.
+	attrib.closeness = 10000;
+	attrib.valuemask = XpmCloseness;
+
+	// The XPM file format allows multiple pixel colours to be defined
+	// as c_color, g_color or m_color.
+	switch (params.display) {
+	case GParams::MONOCHROME:
+		attrib.color_key = XPM_MONO;
+		break;
+	case GParams::GRAYSCALE:
+		attrib.color_key = XPM_GRAY;
+		break;
+	case GParams::COLOR:
+	default: // NONE cannot happen!
+		attrib.color_key = XPM_COLOR;
+		break;
+	}
+
+	attrib.valuemask |= XpmColorKey;
+
+	// Set the color "none" entry to the color of the background.
+	XpmColorSymbol xpm_col;
+	xpm_col.name = 0;
+	xpm_col.value = "none";
+	xpm_col.pixel = lyxColorHandler->colorPixel(LColor::graphicsbg);
+
+	attrib.numsymbols = 1;
+	attrib.colorsymbols = &xpm_col;
+	attrib.valuemask |= XpmColorSymbols;
+
+	// Load up the pixmap
+	XpmImage xpm_image = image_.get();
+	int const status =
+		XpmCreatePixmapFromXpmImage(display, 
+					    XRootWindowOfScreen(screen), 
+					    &xpm_image, 
+					    &pixmap, &mask, &attrib);
+
+	XpmFreeAttributes(&attrib);
+
+	if (status != XpmSuccess) {
+		lyxerr << "Error creating pixmap from xpm_image '" 
+		       << XpmGetErrorString(status) << "'"
+		       << std::endl;
+		pixmap_status_ = PIXMAP_FAILED;
+		return false;
+	}
+
+	pixmap_ = pixmap;
+	pixmap_status_ = PIXMAP_SUCCESS;
+	return true;
+}
+
+
+void GImageXPM::clip(GParams const & params)
+{
+	if (image_.empty())
+		return;
+
+	if (params.bb.empty())
+		// No clipping is necessary.
+		return;
+
+	int const new_width  = params.bb.xr - params.bb.xl;
+	int const new_height = params.bb.yt - params.bb.yb;
+
+	if (new_width > image_.width() || new_height > image_.height())
+		// Bounds are invalid.
+		return;
+
+	if (new_width  == image_.width() && new_height == image_.height())
+		// Bounds are unchanged.
+		return;
+
+	unsigned int * new_data = image_.initialisedData(new_width, new_height);
+	unsigned int const * old_data = image_.data();
+
+	unsigned int * it = new_data;
+	unsigned int const * start_row = old_data;
+	for (int row = params.bb.yb; row < params.bb.yt; ++row) {
+		unsigned int const * begin = start_row + params.bb.xl;
+		unsigned int const * end   = start_row + params.bb.xr;
+		it = std::copy(begin, end, it);
+		start_row += image_.width();
+	}
+
+	image_.resetData(new_width, new_height, new_data);
+}
+
+
+void GImageXPM::rotate(GParams const & params)
+{
+	if (image_.empty())
+		return ;
+
+	if (!params.angle)
+		// No rotation is necessary.
+		return;
+
+	// Ascertain the bounding box of the rotated image
+	// Rotate about the bottom-left corner
+	static double const pi = 3.14159265358979323846;
+	double const angle = double(params.angle) * pi / 180.0;
+	double const cos_a = cos(angle);
+	double const sin_a = sin(angle);
+
+	// (0, 0)
+	double max_x = 0; double min_x = 0;
+	double max_y = 0; double min_y = 0;
+
+	// (old_xpm->width, 0)
+	double x_rot = cos_a * image_.width();
+	double y_rot = sin_a * image_.width();
+	max_x = std::max(max_x, x_rot); min_x = std::min(min_x, x_rot);
+	max_y = std::max(max_y, y_rot); min_y = std::min(min_y, y_rot);
+
+	// (image_.width, image_.height)
+	x_rot = cos_a * image_.width() - sin_a * image_.height();
+	y_rot = sin_a * image_.width() + cos_a * image_.height();
+	max_x = std::max(max_x, x_rot); min_x = std::min(min_x, x_rot);
+	max_y = std::max(max_y, y_rot); min_y = std::min(min_y, y_rot);
+
+	// (0, image_.height)
+	x_rot = - sin_a * image_.height();
+	y_rot =   cos_a * image_.height();
+	max_x = std::max(max_x, x_rot); min_x = std::min(min_x, x_rot);
+	max_y = std::max(max_y, y_rot); min_y = std::min(min_y, y_rot);
+
+	int const new_width  = 1 + int(max_x - min_x); // round up!
+	int const new_height = 1 + int(max_y - min_y);
+
+	unsigned int * new_data = image_.initialisedData(new_width, new_height);
+	unsigned int const * old_data = image_.data();
+	
+	// rotate the data
+	for (int y_old = 0; y_old < image_.height(); ++y_old) {
+		for (int x_old = 0; x_old < image_.width(); ++x_old) {
+			int x_new = int(cos_a * x_old - sin_a * y_old - min_x);
+			int y_new = int(sin_a * x_old + cos_a * y_old - min_y);
+
+			// ensure that there are no rounding errors
+			y_new = std::min(int(new_height - 1), y_new);
+			y_new = std::max(0, y_new);
+			x_new = std::min(int(new_width  - 1), x_new);
+			x_new = std::max(0, x_new);
+
+			int const old_id = x_old + image_.width() * y_old;
+			int const new_id = x_new + new_width * y_new;
+
+			new_data[new_id] = old_data[old_id];
+		}
+	}
+
+	image_.resetData(new_width, new_height, new_data);
+}
+
+
+void GImageXPM::scale(GParams const & params)
+{
+	if (image_.empty())
+		return;
+
+	// boost::tie produces horrible compilation errors on my machine
+	// Angus 25 Feb 2002
+	std::pair<unsigned int, unsigned int> d = getScaledDimensions(params);
+	int const new_width  = d.first;
+	int const new_height = d.second;
+	if (new_width == getWidth() && new_height == getHeight())
+		// No scaling needed
+		return;
+
+	unsigned int * new_data = image_.initialisedData(new_width, new_height);
+	unsigned int const * old_data = image_.data();
+	
+	double const x_scale = double(image_.width())  / double(new_width);
+	double const y_scale = double(image_.height()) / double(new_height);
+
+	// A very simple scaling routine.
+	// Ascertain the old pixel corresponding to the new one.
+	// There is no dithering at all here.
+	for (int x_new = 0; x_new < new_width; ++x_new) {
+		int x_old = int(x_new * x_scale);
+		for (int y_new = 0; y_new < new_height; ++y_new) {
+			int y_old = int(y_new * y_scale);
+
+			int const old_id = x_old + image_.width() * y_old;
+			int const new_id = x_new + new_width * y_new;
+
+			new_data[new_id] = old_data[old_id];
+		}
+	}
+	
+	image_.resetData(new_width, new_height, new_data);
+}
+
+} // namespace grfx
+
+
+namespace {
+
+void free_color_table(XpmColor * colorTable, int ncolors);
+
+void copy_color_table(XpmColor const * in, int size, XpmColor * out);
+	
+bool contains_color_none(XpmImage const & image);
+
+string const unique_color_string(XpmImage const & image);
+ 
+// create a copy (using malloc and strcpy). If (!in) return 0; 
+char * clone_c_string(char const * in);
+ 
+// Given a string of the form #ff0571 create a string for the appropriate
+// grayscale or monochrome color.
+char * mapcolor(char * color, bool toGray);
+
+} // namespace anon
+
+
+namespace grfx {
+
+
+GImageXPM::Data::Data()
+	: width_(0), height_(0), cpp_(0), ncolors_(0)
+{}
+
+
+GImageXPM::Data::~Data()
+{
+	if (colorTable_.unique())
+		free_color_table(colorTable_.get(), ncolors_);
+}
+
+
+void GImageXPM::Data::reset(XpmImage & image)
+{
+	width_ = image.width;
+	height_ = image.height;
+	cpp_ = image.cpp;
+
+	// Move the data ptr into this store and free up image.data
+	data_.reset(image.data);
+	image.data = 0;
+
+	// Don't just store the color table, but check first that it contains
+	// all that we require of it.
+	// The idea is to store the color table in a shared_ptr and for all
+	// modified images to use the same table.
+	// It must, therefore, have a c_color "none" entry and g_color and
+	// m_color entries corresponding to each and every c_color entry
+	// (except "none"!)
+
+	// 1. Create a copy of the color table.
+	// Add a c_color "none" entry to the table if it isn't already there.
+	bool const add_color = !contains_color_none(image);
+	
+	if (add_color) {
+
+		ncolors_ = 1 + image.ncolors;
+		size_t const mem_size = sizeof(XpmColor) * ncolors_;
+		XpmColor * table = static_cast<XpmColor *>(malloc(mem_size));
+
+		copy_color_table(image.colorTable, image.ncolors, table);
+
+		XpmColor & color = table[ncolors_ - 1];
+		color.symbolic = 0;
+		color.m_color  = 0;
+		color.g_color  = 0;
+		color.g4_color = 0;
+		color.string =
+			clone_c_string(unique_color_string(image).c_str());
+		color.c_color = clone_c_string("none");
+
+		free_color_table(image.colorTable, image.ncolors);
+		colorTable_.reset(table);
+
+	} else {
+
+		// Just move the pointer across
+		ncolors_ = image.ncolors;
+		colorTable_.reset(image.colorTable);
+		image.colorTable = 0;
+	}
+
+	// Clean-up the remaining entries of image.
+	image.width = 0;
+	image.height = 0;
+	image.cpp = 0;
+	image.ncolors = 0;
+
+	// 2. Ensure that the color table has g_color and m_color entries
+	XpmColor * table = colorTable_.get();
+
+	for (int i = 0; i < ncolors_; ++i) {
+		// If the c_color is defined and the equivalent
+		// grayscale one is not, then define it.
+		if (table[i].c_color && !table[i].g_color)
+			table[i].g_color = mapcolor(table[i].c_color, true);
+
+		// If the c_color is defined and the equivalent
+		// monochrome one is not, then define it.
+		if (table[i].c_color && !table[i].m_color)
+			table[i].m_color = mapcolor(table[i].c_color, false);
+	}
+}
+
+
+XpmImage GImageXPM::Data::get() const
+{
+	XpmImage image;
+	image.width = width_;
+	image.height = height_;
+	image.cpp = cpp_;
+	image.ncolors = ncolors_;
+	image.data = data_.get();
+	image.colorTable = colorTable_.get();
+	return image;
+}
+
+
+void GImageXPM::Data::resetData(int w, int h, unsigned int * d)
+{
+	width_  = w;
+	height_ = h;
+	data_.reset(d);
+}
+
+unsigned int * GImageXPM::Data::initialisedData(int w, int h) const
+{
+	size_t const data_size = w * h;
+
+	size_t const mem_size  = sizeof(unsigned int) * data_size;
+	unsigned int * ptr = static_cast<unsigned int *>(malloc(mem_size));
+
+	unsigned int none_id = color_none_id();
+	std::fill(ptr, ptr + data_size, none_id);
+
+	return ptr;
+}
+
+
+unsigned int GImageXPM::Data::color_none_id() const
+{
+	XpmColor * table = colorTable_.get();
+	for (int i = 0; i < ncolors_; ++i) {
+		char const * const color = table[i].c_color;
+		if (color && lowercase(color) == "none")
+			return i;
+	}
+	return 0;
+}
+
+} // namespace grfx
+
+namespace {
+
+// Given a string of the form #ff0571 create a string for the appropriate
+// grayscale or monochrome color.
+char * mapcolor(char * color, bool toGray)
+{
+	if (!color)
+		return 0;
+	
+	Display * display = GUIRunTime::x11Display();
+	Colormap cmap     = GUIRunTime::x11Colormap();
+	XColor xcol;
+	XColor ccol;
+	if (XLookupColor(display, cmap, color, &xcol, &ccol) == 0)
+		return 0;
+
+	// Note that X stores the RGB values in the range 0 - 65535
+	// whilst we require them in the range 0 - 255.
+	int const r = xcol.red   / 256;
+	int const g = xcol.green / 256;
+	int const b = xcol.blue  / 256;
+
+	// This gives a good match to a human's RGB to luminance conversion.
+	// (From xv's Postscript code --- Mike Ressler.)
+	int mapped_color = int((0.32 * r) + (0.5 * g) + (0.18 * b));
+	if (!toGray) // monochrome
+		mapped_color = (mapped_color < 128) ? 0 : 255;
+
+	ostringstream ostr;
+
+	ostr << "#" << std::setbase(16) << std::setfill('0')
+	     << std::setw(2) << mapped_color
+	     << std::setw(2) << mapped_color
+	     << std::setw(2) << mapped_color;
+
+	// This string is going into an XpmImage struct, so create a copy that
+	// libXPM can free successfully.
+	return clone_c_string(ostr.str().c_str());
+}
+
+
+void copy_color_table(XpmColor const * in, int size, XpmColor * out)
+{
+	for (int i = 0; i < size; ++i) {
+		out[i].string   = clone_c_string(in[i].string);
+		out[i].symbolic = clone_c_string(in[i].symbolic);
+		out[i].m_color  = clone_c_string(in[i].m_color);
+		out[i].g_color  = clone_c_string(in[i].g_color);
+		out[i].g4_color = clone_c_string(in[i].g4_color);
+		out[i].c_color  = clone_c_string(in[i].c_color);
+	}
+}
+
+
+void free_color_table(XpmColor * table, int size)
+{
+	for (int i = 0; i < size; ++i) {
+		free(table[i].string);
+		free(table[i].symbolic);
+		free(table[i].m_color);
+		free(table[i].g_color);
+		free(table[i].g4_color);
+		free(table[i].c_color);
+	}
+	free(table);
+}
+
+
+char * clone_c_string(char const * in)
+{
+	if (!in)
+		return 0;
+
+        // Don't forget the '\0'
+	char * out = static_cast<char *>(malloc(strlen(in) + 1));
+	return strcpy(out, in);
+}
+
+
+bool contains_color_none(XpmImage const & image)
+{
+	for (int i = 0; i < image.ncolors; ++i) {
+		char const * const color = image.colorTable[i].c_color;
+		if (color && lowercase(color) == "none")
+			return true;
+	}
+	return false;
+}
+
+
+string const unique_color_string(XpmImage const & image)
+{
+	string id;
+	for (int i = 0; i < image.cpp; ++i) {
+		id.push_back('A');
+	}
+
+	for(;;) {
+		bool found_it = false;
+		for (int i = 0; i < image.ncolors; ++i) {
+			string const c_id = image.colorTable[i].string;
+			if (c_id == id) {
+				found_it = true;
+				break;
+			}
+		}
+
+		if (!found_it)
+			return id;
+
+		// A base 57 counter!
+		// eg AAAz+1 = AABA, AABz+1 = AACA, AAzz+1 = ABAA
+		int current_index = int(id.size() - 1);
+		bool continue_loop = true;
+		while(continue_loop && current_index >= 0) {
+			continue_loop = false;
+			
+			if (id[current_index] == 'z') {
+				id[current_index] = 'A';
+				current_index -= 1;
+				continue_loop = true;
+			} else {
+				id[current_index] += 1;
+			}
+		}
+		if (current_index < 0)
+			// Unable to find a unique string
+			return string();
+	}
+}
+
+} // namespace anon

@@ -1,3 +1,21 @@
+2002-02-15  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* ImageLoader.[Ch]:
+	* ImageLoaderXPM.[Ch]: removed.
+
+	* GraphicsConverter.[Ch]:
+	* GraphicsImage.[Ch]:
+	* GraphicsImageXPM.[Ch]:
+	* GraphicsParams.[Ch]:
+	* GraphicsTypes.h: new files.
+
+	* All files. A total re-write of the graphics cache. The cache now
+	supports asynchronous file conversion and file loading. Images
+	can be cropped, rotated and scaled for display on the LyX screen.
+	The old LyXImage and ImageLoader have been combined in a new class
+	GImage. Ditto, ImageLoaderXPM's functionality has been moved into
+	GImageXPM.
+
 2002-02-07  Herbert Voss  <voss@lyx.org>
 
 	* GraphicsCacheItem.C: use unzipFile() from support/filetools

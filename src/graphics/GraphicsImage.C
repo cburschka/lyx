@@ -1,0 +1,59 @@
+/*
+ * \file GraphicsImage.C
+ * Copyright 2002 the LyX Team
+ * Read the file COPYING
+ *
+ * \author Baruch Even <baruch.even@writeme.com>
+ * \author Angus Leeming <a.leeming@ic.ac.uk>
+ */
+
+#include <config.h>
+
+#ifdef __GNUG__
+#pragma implementation
+#endif
+
+#include "GraphicsImage.h"
+#include "GraphicsParams.h"
+#include <iostream>
+
+namespace grfx {
+
+// This will be connected to a function that will return whichever
+// whichever derived class we desire.
+SigC::Signal0<ImagePtr> GImage::newImage;
+
+/// Return the list of loadable formats.
+SigC::Signal0<GImage::FormatList> GImage::loadableFormats;
+
+std::pair<unsigned int, unsigned int>
+GImage::getScaledDimensions(GParams const & params) const
+{
+	if (params.scale == 0 && params.width == 0 && params.height == 0)
+		// No scaling
+		return std::make_pair(getWidth(), getHeight());
+
+	unsigned int width  = 0;
+	unsigned int height = 0;
+	if (params.scale != 0) {
+		width  = getWidth()  * params.scale / 100.0;
+		height = getHeight() * params.scale / 100.0;
+	} else {
+		width  = params.width;
+		height = params.height;
+
+		if (width == 0) {
+			width = height * getWidth() / getHeight();
+		} else if (height == 0) {
+			height = width * getHeight() / getWidth();
+		}
+	}
+	
+	if (width == 0 || height == 0)
+		// Something is wrong!
+		return std::make_pair(getWidth(), getHeight());
+
+	return std::make_pair(width, height);
+}
+} // namespace grfx
+

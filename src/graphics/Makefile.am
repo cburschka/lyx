@@ -12,10 +12,14 @@ libgraphics_la_SOURCES = \
 	GraphicsCache.C \
 	GraphicsCacheItem.h \
 	GraphicsCacheItem.C \
-	ImageLoaderXPM.h \
-	ImageLoaderXPM.C \
-	ImageLoader.h \
-	ImageLoader.C 
+	GraphicsConverter.h \
+	GraphicsConverter.C \
+	GraphicsImage.h \
+	GraphicsImage.C \
+	GraphicsImageXPM.h \
+	GraphicsImageXPM.C \
+	GraphicsParams.C \
+	GraphicsParams.h
 
 libgraphics.la: libgraphics.o
 

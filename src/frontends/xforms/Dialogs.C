@@ -31,6 +31,7 @@
 #include "form_ert.h"
 #include "form_external.h"
 #include "form_float.h"
+#include "form_forks.h"
 #include "form_graphics.h"
 #include "form_include.h"
 #include "form_index.h"
@@ -55,6 +56,7 @@
 #include "FormERT.h"
 #include "FormExternal.h"
 #include "FormFloat.h"
+#include "FormForks.h"
 #include "FormGraphics.h"
 #include "FormInclude.h"
 #include "FormIndex.h"
@@ -93,6 +95,7 @@ Dialogs::Dialogs(LyXView * lv)
 	add(new GUIError<FormError, xformsBC>(*lv, *this));
 	add(new GUIERT<FormERT, xformsBC>(*lv, *this));
 	add(new GUIExternal<FormExternal, xformsBC>(*lv, *this));
+	add(new GUIForks<FormForks, xformsBC>(*lv, *this));
 	add(new GUIGraphics<FormGraphics, xformsBC>(*lv, *this));
 	add(new GUIInclude<FormInclude, xformsBC>(*lv, *this));
 	add(new GUIIndex<FormIndex, xformsBC>(*lv, *this));

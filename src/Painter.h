@@ -76,7 +76,8 @@ public:
 				    LColor::color);
 	
 	/// For the graphics inset.
-	PainterBase & image(int x, int y, int w, int h, LyXImage const * image);
+	PainterBase & image(int x, int y, int w, int h,
+			    grfx::GImage const & image);
 	
 	/// For the figinset
 	PainterBase & pixmap(int x, int y, int w, int h, Pixmap bitmap);

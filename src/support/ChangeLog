@@ -1,3 +1,14 @@
+2002-02-19  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* forkedcall.[Ch]:
+	* forkedcontr.[Ch]: new files. Asger's forked call controller is
+	re-born, with a working timer and a modified interface. The
+	startscript method is now passed a Signal rather than a pointer
+	to a callback function. This enables us to connect to the method of
+	a C++ class, if we so desire.
+
+	* Makefile.am: add forkedcall.[Ch], forkedcontr.[Ch].
+
 2002-02-26  John Levon  <moz@compsoc.man.ac.uk>
 
 	* Makefile.am:

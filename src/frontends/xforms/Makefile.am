@@ -76,6 +76,10 @@ libxforms_la_SOURCES = \
 	FormFloat.h \
 	form_float.C \
 	form_float.h \
+	FormForks.C \
+	FormForks.h \
+	form_forks.C \
+	form_forks.h \
 	FormGraphics.C \
 	FormGraphics.h \
 	form_graphics.C \
@@ -178,10 +182,10 @@ libxforms_la_SOURCES = \
 	form_url.h \
 	FormVCLog.C \
 	FormVCLog.h \
-	input_validators.h \
 	input_validators.C \
-	MathsSymbols.h \
+	input_validators.h \
 	MathsSymbols.C \
+	MathsSymbols.h \
 	Menubar_pimpl.C \
 	Menubar_pimpl.h \
 	RadioButtonGroup.C \

@@ -5,7 +5,8 @@ noinst_LTLIBRARIES = libsupport.la
 LIBS =
 ETAGS_ARGS = --lang=c++
 BOOST_INCLUDES = -I$(top_srcdir)/boost
-INCLUDES = -I${srcdir}/../ $(BOOST_INCLUDES)
+SIGC_INCLUDES = -I$(top_srcdir)
+INCLUDES = -I${srcdir}/../ $(SIGC_INCLUDES) $(BOOST_INCLUDES)
 
 EXTRA_DIST = lyxstring.C lyxstring.h regex.c lyxregex.h \
              os_unix.C os_win32.C os_os2.C
@@ -42,6 +43,10 @@ libsupport_la_SOURCES = \
 	filetools.C \
 	filetools.h \
 	fmt.C \
+	forkedcall.C \
+	forkedcall.h \
+	forkedcontr.C \
+	forkedcontr.h \
 	getUserName.C \
 	getcwd.C \
 	kill.C \

@@ -20,7 +20,9 @@
 
 class WorkArea;
 class LyXFont;
-class LyXImage;
+namespace grfx {
+	class GImage;
+}
 
 /** A painter class to encapsulate all graphics parameters and operations
    
@@ -147,8 +149,8 @@ public:
 	
 	
 	// For the figure inset
-	virtual PainterBase & image(int x, int y, int w, int h, LyXImage const * image) = 0;
-
+	virtual PainterBase & image(int x, int y, int w, int h,
+				    grfx::GImage const & image) = 0;
 	
 	/// Draw a string at position x, y (y is the baseline)
 	virtual PainterBase & text(int x, int y,

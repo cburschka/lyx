@@ -225,7 +225,7 @@ void LyXRC::setDefaults() {
 	make_backup = true;
 	backupdir_path.erase();
 	exit_confirmation = true;
-	display_graphics = "mono";
+	display_graphics = "color";
 	display_shortcuts = true;
 	// Spellchecker settings:
 #ifdef USE_PSPELL	

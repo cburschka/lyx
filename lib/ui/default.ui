@@ -31,6 +31,7 @@ Menuset
 	Item "Open...|O" "file-open"
 	Separator
 	Submenu "Import|I" "file_import"
+	Item "Child processes|h" "show-forks"
 	Separator
 	Item "Exit|x" "lyx-quit"
 	Separator
@@ -52,6 +53,7 @@ Menuset
 	Submenu "Export|E" "file_export"
 	Item "Print...|P" "buffer-print"
 	OptItem "Fax...|F" "buffer-export fax"
+	Item "Child processes|h" "show-forks"
 	Separator
 	Item "Exit|x" "lyx-quit"
 	Separator

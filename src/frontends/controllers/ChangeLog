@@ -1,3 +1,16 @@
+2002-02-20  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* ControlForks.[Ch]: new files. A controller for the Forked Child
+	processes dialog, enabling the user to see what forked processes
+	are running, and, if he so desires, to kill them.
+
+	* GUI.h: add class GUIForks.
+
+	* Makefile.am: add ControlForks.[Ch].
+
+	* ControlGraphics.C (getParams): small change due to change in
+	insetgraphics.
+
 2002-02-21  Herbert Voss  <voss@lyx.org>
 
 	* biblio.C: fix bug with commentlines in a bibentry
@@ -8,7 +21,7 @@
 
 2002-02-18  Herbert Voss  <voss@lyx.org>
 
-	* ControlGraphics.[C]: remove help-file call
+	* ControlGraphics.[Ch]: remove help-file call
 
 2002-02-18  Angus Leeming  <a.leeming@ic.ac.uk>
 

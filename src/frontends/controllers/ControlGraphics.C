@@ -58,7 +58,7 @@ InsetGraphicsParams const ControlGraphics::getParams(string const &)
 InsetGraphicsParams const
 ControlGraphics::getParams(InsetGraphics const & inset)
 {
-	return inset.getParams();
+	return inset.params();
 }
 
 

@@ -25,7 +25,7 @@
 #include "language.h"
 
 #include "frontends/GUIRunTime.h"
-#include "frontends/support/LyXImage.h"
+#include "graphics/GraphicsImage.h"
 
 #include "support/LAssert.h"
 #include "support/lstrings.h"
@@ -171,11 +171,10 @@ PainterBase & Painter::pixmap(int x, int y, int w, int h, Pixmap bitmap)
 }
 
 
-PainterBase & Painter::image(int x, int y, int w, int h, LyXImage const * image)
+PainterBase & Painter::image(int x, int y, int w, int h,
+			    grfx::GImage const & image)
 {
-	Pixmap bitmap = image->getPixmap();
-
-	return pixmap(x, y, w, h, bitmap);
+	return pixmap(x, y, w, h, image.getPixmap());
 }
 
 

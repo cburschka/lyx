@@ -22,6 +22,7 @@
 #include "ControlERT.h"
 #include "ControlExternal.h"
 #include "ControlFloat.h"
+#include "ControlForks.h"
 #include "ControlGraphics.h"
 #include "insets/insetgraphicsParams.h"
 #include "ControlInclude.h"
@@ -160,6 +161,17 @@ public:
 		: GUI<ControlExternal, GUIview, OkApplyCancelReadOnlyPolicy, GUIbc>(lv, d) {}
 };
 
+
+/** Specialization for Forks dialog
+ */
+template <class GUIview, class GUIbc>
+class GUIForks :
+	public GUI<ControlForks, GUIview, OkApplyCancelPolicy, GUIbc> {
+public:
+	///
+	GUIForks(LyXView & lv, Dialogs & d)
+		: GUI<ControlForks, GUIview, OkApplyCancelPolicy, GUIbc>(lv, d) {}
+};
 
 /** Specialization for Graphics dialog
  */

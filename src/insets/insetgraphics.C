@@ -93,46 +93,39 @@ TODO Before initial production release:
 #include "insets/insetgraphicsParams.h"
 
 #include "graphics/GraphicsCache.h"
-#include "graphics/GraphicsCacheItem.h"
+#include "graphics/GraphicsImage.h"
 
 #include "LyXView.h"
 #include "buffer.h"
 #include "BufferView.h"
 #include "converter.h"
 #include "Painter.h"
-#include "lyx_gui_misc.h"
-#include "lyxtext.h"
 #include "lyxrc.h"
-#include "font.h"
+#include "font.h"    // For the lyxfont class.
 #include "debug.h"
 #include "gettext.h"
+#include "LaTeXFeatures.h"
 
 #include "frontends/Dialogs.h"
 #include "frontends/Alert.h"
-#include "frontends/controllers/helper_funcs.h"
-#include "frontends/support/LyXImage.h"
+#include "frontends/controllers/helper_funcs.h" // getVectorFromString
 
-#include "support/FileInfo.h"
+#include "support/LAssert.h"
 #include "support/filetools.h"
-#include "support/lyxlib.h"
-#include "support/lyxmanip.h"
-#include "support/lyxalgo.h"
+#include "support/lyxalgo.h" // lyx::count
 
-#include <fstream>
-#include <algorithm>
+#include <algorithm> // For the std::max
 
 extern string system_tempdir;
 
-using std::ifstream;
 using std::ostream;
 using std::endl;
-using std::max;
-using std::vector;
-
 
 ///////////////////////////////////////////////////////////////////////////
 int const VersionNumber = 1;
 ///////////////////////////////////////////////////////////////////////////
+
+namespace {
 
 // This function is a utility function
 // ... that should be with ChangeExtension ...
@@ -141,6 +134,8 @@ string const RemoveExtension(string const & filename)
 {
 	return ChangeExtension(filename, string());
 }
+ 
+} // namespace anon
 
 
 namespace {
@@ -159,19 +154,17 @@ string const unique_id()
 } // namespace anon
 
 
-// Initialize only those variables that do not have a constructor.
 InsetGraphics::InsetGraphics()
-	: cacheHandle(0), imageLoaded(false), graphic_label(unique_id())
+	: cached_status_(grfx::ErrorUnknown), cache_filled_(false),
+	  graphic_label(unique_id())
 {}
 
 
 InsetGraphics::InsetGraphics(InsetGraphics const & ig, bool same_id)
-	: Inset(), SigC::Object()
-	, cacheHandle(ig.cacheHandle)
-	, imageLoaded(ig.imageLoaded)
-	, graphic_label(unique_id())
+	: cached_status_(grfx::ErrorUnknown), cache_filled_(false),
+	  graphic_label(unique_id())
 {
-	setParams(ig.getParams());
+	setParams(ig.params());
 	if (same_id)
 		id_ = ig.id_;
 }
@@ -179,6 +172,10 @@ InsetGraphics::InsetGraphics(InsetGraphics const & ig, bool same_id)
 
 InsetGraphics::~InsetGraphics()
 {
+	cached_image_.reset(0);
+	grfx::GCache & gc = grfx::GCache::get();
+	gc.remove(*this);
+
 	// Emits the hide signal to the dialog connected (if any)
 	hideDialog();
 }
@@ -187,37 +184,70 @@ InsetGraphics::~InsetGraphics()
 string const InsetGraphics::statusMessage() const
 {
 	string msg;
-	if (cacheHandle.get()) {
-		switch (cacheHandle->getImageStatus()) {
-		case GraphicsCacheItem::UnknownError:
-			msg = _("Unknown Error");
-			break;
-		case GraphicsCacheItem::Loading:
-			msg = _("Loading...");
-			break;
-		case GraphicsCacheItem::ErrorReading:
-			msg = _("Error reading");
-			break;
-		case GraphicsCacheItem::Converting:
-			msg = _("Converting Image");
-			break;
-		case GraphicsCacheItem::ErrorConverting:
-			msg = _("Error converting");
-			break;
-		case GraphicsCacheItem::Loaded:
-			// No message to write.
-			break;
-		}
+
+	switch (cached_status_) {
+	case grfx::WaitingToLoad:
+		msg = _("Waiting for draw request to start loading...");
+		break;
+	case grfx::Loading:
+		msg = _("Loading...");
+		break;
+	case grfx::Converting:
+		msg = _("Converting to loadable format...");
+		break;
+	case grfx::ScalingEtc:
+		msg = _("Loaded. Scaling etc...");
+		break;
+	case grfx::ErrorNoFile:
+		msg = _("No file found!");
+		break;
+	case grfx::ErrorLoading:
+		msg = _("Error loading file into memory");
+		break;
+	case grfx::ErrorConverting:
+		msg = _("Error converting to loadable format");
+		break;
+	case grfx::ErrorScalingEtc:
+		msg = _("Error scaling etc");
+		break;
+	case grfx::ErrorUnknown:
+		msg = _("No image associated with this inset is in the cache!");
+		break;
+	case grfx::Loaded:
+		msg = _("Loaded but not displaying");
+		break;
 	}
+
 	return msg;
 }
 
 
+void InsetGraphics::setCache() const
+{
+	if (cache_filled_)
+		return;
+
+	grfx::GCache & gc = grfx::GCache::get();
+	cached_status_ = gc.status(*this);
+	cached_image_  = gc.image(*this);
+}
+
+
+bool InsetGraphics::drawImage() const
+{
+	setCache();
+	Pixmap const pixmap =
+		(cached_status_ == grfx::Loaded && cached_image_.get() != 0) ?
+		cached_image_->getPixmap() : 0;
+
+	return pixmap != 0;
+}
+
+	
 int InsetGraphics::ascent(BufferView *, LyXFont const &) const
 {
-	LyXImage * pixmap = 0;
-	if (cacheHandle.get() && (pixmap = cacheHandle->getImage()))
-		return pixmap->getHeight();
+	if (drawImage())
+		return cached_image_->getHeight();
 	else
 		return 50;
 }
@@ -225,24 +255,21 @@ int InsetGraphics::ascent(BufferView *, LyXFont const &) const
 
 int InsetGraphics::descent(BufferView *, LyXFont const &) const
 {
-	// this is not true if viewport is used and clip is not.
 	return 0;
 }
 
 
 int InsetGraphics::width(BufferView *, LyXFont const & font) const
 {
-	LyXImage * pixmap = 0;
-	
-	if (cacheHandle.get() && (pixmap = cacheHandle->getImage()))
-		return pixmap->getWidth();
+	if (drawImage())
+		return cached_image_->getWidth();
 	else {
 		int font_width = 0;
 
 		LyXFont msgFont(font);
 		msgFont.setFamily(LyXFont::SANS_FAMILY);
 
-		string const justname = OnlyFilename (params.filename);
+		string const justname = OnlyFilename (params().filename);
 		if (!justname.empty()) {
 			msgFont.setSize(LyXFont::SIZE_FOOTNOTE);
 			font_width = lyxfont::width(justname, msgFont);
@@ -252,10 +279,10 @@ int InsetGraphics::width(BufferView *, LyXFont const & font) const
 		if (!msg.empty()) {
 			msgFont.setSize(LyXFont::SIZE_TINY);
 			int const msg_width = lyxfont::width(msg, msgFont);
-			font_width = max(font_width, msg_width);
+			font_width = std::max(font_width, msg_width);
 		}
 		
-		return max(50, font_width + 15);
+		return std::max(50, font_width + 15);
 	}
 }
 
@@ -263,49 +290,47 @@ int InsetGraphics::width(BufferView *, LyXFont const & font) const
 void InsetGraphics::draw(BufferView * bv, LyXFont const & font,
                          int baseline, float & x, bool) const
 {
-	Painter & paint = bv->painter();
-
 	int ldescent = descent(bv, font);
-	int lascent = ascent(bv, font);
-	int lwidth = width(bv, font);
+	int lascent  = ascent(bv, font);
+	int lwidth   = width(bv, font);
 
-	// Make sure x is updated upon exit from this routine
+	// Make sure now that x is updated upon exit from this routine
 	int old_x = int(x);
 	x += lwidth;
 
+	// Initiate the loading of the graphics file
+	if (cached_status_ == grfx::WaitingToLoad) {
+		grfx::GCache & gc = grfx::GCache::get();
+		gc.startLoading(*this);
+	}
+
 	// This will draw the graphics. If the graphics has not been loaded yet,
 	// we draw just a rectangle.
-	if (imageLoaded) {
+	Painter & paint = bv->painter();
+
+	if (drawImage()) {
 
 		paint.image(old_x + 2, baseline - lascent,
 		            lwidth - 4, lascent + ldescent,
-		            cacheHandle->getImage());
+			    *cached_image_.get());
+
 	} else {	
-		// Get the image status, default to unknown error.
-		GraphicsCacheItem::ImageStatus status = GraphicsCacheItem::UnknownError;
-		if (lyxrc.use_gui && params.display != InsetGraphicsParams::NONE &&
-		    cacheHandle.get())
-			status = cacheHandle->getImageStatus();
-		// Check if the image is now ready.
-		if (status == GraphicsCacheItem::Loaded) {
-			imageLoaded = true;
-			// Tell BufferView we need to be updated!
-			bv->text->status(bv, LyXText::CHANGED_IN_DRAW);
-			return;
-		}
+
 		paint.rectangle(old_x + 2, baseline - lascent,
 		                lwidth - 4,
 		                lascent + ldescent);
+
 		// Print the file name.
 		LyXFont msgFont(font);
 		msgFont.setFamily(LyXFont::SANS_FAMILY);
-		string const justname = OnlyFilename (params.filename);
+		string const justname = OnlyFilename (params().filename);
 		if (!justname.empty()) {
 			msgFont.setSize(LyXFont::SIZE_FOOTNOTE);
 			paint.text(old_x + 8, 
 				   baseline - lyxfont::maxAscent(msgFont) - 4,
 				   justname, msgFont);
 		}
+
 		// Print the message.
 		string const msg = statusMessage();
 		if (!msg.empty()) {
@@ -313,6 +338,21 @@ void InsetGraphics::draw(BufferView * bv, LyXFont const & font,
 			paint.text(old_x + 8, baseline - 4, msg, msgFont);
 		}
 	}
+
+	// Reset the cache, ready for the next draw request
+	cached_status_ = grfx::ErrorUnknown;
+	cached_image_.reset(0);
+	cache_filled_ = false;
+}
+
+
+// Update the inset after parameters changed (read from file or changed in
+// dialog. The grfx::GCache makes the decisions about whether or not to draw
+// (interogates lyxrc, ascertains whether file exists etc)
+void InsetGraphics::updateInset() const
+{
+	grfx::GCache & gc = grfx::GCache::get();
+	gc.update(*this);
 }
 
 
@@ -337,7 +377,7 @@ Inset::EDITABLE InsetGraphics::editable() const
 void InsetGraphics::write(Buffer const * buf, ostream & os) const
 {
 	os << "Graphics FormatVersion " << VersionNumber << '\n';
-	params.Write(buf, os);
+	params().Write(buf, os);
 }
 
 
@@ -364,7 +404,7 @@ void InsetGraphics::readInsetGraphics(Buffer const * buf, LyXLex & lex)
 
 		string const token = lex.getString();
 		lyxerr[Debug::GRAPHICS] << "Token: '" << token << '\'' 
-				    << endl;
+				    << std::endl;
 
 		if (token.empty()) {
 			continue;
@@ -378,13 +418,13 @@ void InsetGraphics::readInsetGraphics(Buffer const * buf, LyXLex & lex)
 				<< "This document was created with a newer Graphics widget"
 				", You should use a newer version of LyX to read this"
 				" file."
-				<< endl;
+				<< std::endl;
 			// TODO: Possibly open up a dialog?
 		}
 		else {
-			if (! params.Read(buf, lex, token))
+			if (! params_.Read(buf, lex, token))
 				lyxerr << "Unknown token, " << token << ", skipping." 
-					<< endl;
+					<< std::endl;
 		}
 	}
 }
@@ -392,18 +432,18 @@ void InsetGraphics::readInsetGraphics(Buffer const * buf, LyXLex & lex)
 // FormatVersion < 1.0  (LyX < 1.2)
 void InsetGraphics::readFigInset(Buffer const * buf, LyXLex & lex)
 {
-	vector<string> const oldUnits =
+	std::vector<string> const oldUnits =
 		getVectorFromString("pt,cm,in,p%,c%");
 	bool finished = false;
 	// set the display default	
 	if (lyxrc.display_graphics == "mono") 
-	    params.display = InsetGraphicsParams::MONOCHROME;
+	    params_.display = InsetGraphicsParams::MONOCHROME;
 	else if (lyxrc.display_graphics == "gray") 
-	    params.display = InsetGraphicsParams::GRAYSCALE;
+	    params_.display = InsetGraphicsParams::GRAYSCALE;
 	else if (lyxrc.display_graphics == "color") 
-	    params.display = InsetGraphicsParams::COLOR;
+	    params_.display = InsetGraphicsParams::COLOR;
 	else
-	    params.display = InsetGraphicsParams::NONE;
+	    params_.display = InsetGraphicsParams::NONE;
 	while (lex.isOK() && !finished) {
 		lex.next();
 
@@ -418,49 +458,49 @@ void InsetGraphics::readFigInset(Buffer const * buf, LyXLex & lex)
 			if (lex.next()) {
 				string const name = lex.getString();
 				string const path = buf->filePath();
-				params.filename = MakeAbsPath(name, path);
+				params_.filename = MakeAbsPath(name, path);
 			}
 		} else if (token == "extra") {
 			if (lex.next());
 			// kept for backwards compability. Delete in 0.13.x
 		} else if (token == "subcaption") {
 			if (lex.eatLine())
-				params.subcaptionText = lex.getString();
-			params.subcaption = true;
+				params_.subcaptionText = lex.getString();
+			params_.subcaption = true;
 		} else if (token == "label") {
 			if (lex.next());
 			// kept for backwards compability. Delete in 0.13.x
 		} else if (token == "angle") {
 			if (lex.next())
-				params.rotate = true;
-				params.rotateAngle = lex.getFloat();
+				params_.rotate = true;
+				params_.rotateAngle = lex.getFloat();
 		} else if (token == "size") {
 			if (lex.next())
-				params.lyxwidth = LyXLength(lex.getString()+"pt");
+				params_.lyxwidth = LyXLength(lex.getString()+"pt");
 			if (lex.next())
-				params.lyxheight = LyXLength(lex.getString()+"pt");
+				params_.lyxheight = LyXLength(lex.getString()+"pt");
 		} else if (token == "flags") {
 			if (lex.next())
 				switch (lex.getInteger()) {
-				case 1: params.display = InsetGraphicsParams::MONOCHROME; 
+				case 1: params_.display = InsetGraphicsParams::MONOCHROME; 
 				    break;
-				case 2: params.display = InsetGraphicsParams::GRAYSCALE; 
+				case 2: params_.display = InsetGraphicsParams::GRAYSCALE; 
 				    break;
-				case 3: params.display = InsetGraphicsParams::COLOR; 
+				case 3: params_.display = InsetGraphicsParams::COLOR; 
 				    break;
 				}
 		} else if (token == "subfigure") {
-			params.subcaption = true;
+			params_.subcaption = true;
 		} else if (token == "width") {
 		    if (lex.next()) {
 			int i = lex.getInteger();
 			if (lex.next()) {
 			    if (i == 5) {
-				params.scale = lex.getInteger();
-				params.size_type = InsetGraphicsParams::SCALE;
+				params_.scale = lex.getInteger();
+				params_.size_type = InsetGraphicsParams::SCALE;
 			    } else {
-				params.width = LyXLength(lex.getString()+oldUnits[i]);
-				params.size_type = InsetGraphicsParams::WH;
+				params_.width = LyXLength(lex.getString()+oldUnits[i]);
+				params_.size_type = InsetGraphicsParams::WH;
 			    }
 			}
 		    }
@@ -468,8 +508,8 @@ void InsetGraphics::readFigInset(Buffer const * buf, LyXLex & lex)
 		    if (lex.next()) {
 			int i = lex.getInteger();
 			if (lex.next()) {
-			    params.height = LyXLength(lex.getString()+oldUnits[i]);
-			    params.size_type = InsetGraphicsParams::WH;
+			    params_.height = LyXLength(lex.getString()+oldUnits[i]);
+			    params_.size_type = InsetGraphicsParams::WH;
 			}
 		    }
 		}
@@ -482,51 +522,52 @@ string const InsetGraphics::createLatexOptions() const
 	// stream since we might have a trailing comma that we would like to remove
 	// before writing it to the output stream.
 	ostringstream options;
-	if (!params.bb.empty())
-	    options << "  bb=" << strip(params.bb) << ",\n";
-	if (params.draft)
+	if (!params().bb.empty())
+	    options << "  bb=" << strip(params().bb) << ",\n";
+	if (params().draft)
 	    options << "  draft,\n";
-	if (params.clip)
+	if (params().clip)
 	    options << "  clip,\n";
-	if (params.size_type == InsetGraphicsParams::WH) {
-	    if (!params.width.zero())
-		options << "  width=" << params.width.asLatexString() << ",\n";
-	    if (!params.height.zero())
-		options << "  height=" << params.height.asLatexString() << ",\n";
-	} else if (params.size_type == InsetGraphicsParams::SCALE) {
-	    if (params.scale > 0)
-		options << "  scale=" << double(params.scale)/100.0 << ",\n";
+	if (params().size_type == InsetGraphicsParams::WH) {
+	    if (!params().width.zero())
+		options << "  width=" << params().width.asLatexString() << ",\n";
+	    if (!params().height.zero())
+		options << "  height=" << params().height.asLatexString() << ",\n";
+	} else if (params().size_type == InsetGraphicsParams::SCALE) {
+	    if (params().scale > 0)
+		options << "  scale=" << double(params().scale)/100.0 << ",\n";
 	}
-	if (params.keepAspectRatio)
+	if (params().keepAspectRatio)
 	    options << "  keepaspectratio,\n";
 	// Make sure it's not very close to zero, a float can be effectively
 	// zero but not exactly zero.
-	if (!lyx::float_equal(params.rotateAngle, 0, 0.001) && params.rotate) {
-	    options << "  angle=" << params.rotateAngle << ",\n";
-	    if (!params.rotateOrigin.empty()) {
-		options << "  origin=" << params.rotateOrigin[0];
-		if (contains(params.rotateOrigin,"Top"))
+	if (!lyx::float_equal(params().rotateAngle, 0, 0.001) && params().rotate) {
+	    options << "  angle=" << params().rotateAngle << ",\n";
+	    if (!params().rotateOrigin.empty()) {
+		options << "  origin=" << params().rotateOrigin[0];
+		if (contains(params().rotateOrigin,"Top"))
 		    options << 't';
-		else if (contains(params.rotateOrigin,"Bottom"))
+		else if (contains(params().rotateOrigin,"Bottom"))
 		    options << 'b';
-		else if (contains(params.rotateOrigin,"Baseline"))
+		else if (contains(params().rotateOrigin,"Baseline"))
 		    options << 'B';
 		options << ",\n";
 	    }
 	}
-	if (!params.special.empty())
-	    options << params.special << ",\n";
+	if (!params().special.empty())
+	    options << params().special << ",\n";
 	string opts = options.str().c_str();
 	return opts.substr(0,opts.size()-2);	// delete last ",\n"
 }
 
 namespace {
-string decideOutputImageFormat(string const & suffix)
+string findTargetFormat(string const & suffix)
 {
 	// lyxrc.pdf_mode means:
 	// Are we creating a PDF or a PS file?
 	// (Should actually mean, are we using latex or pdflatex).	
-	lyxerr[Debug::GRAPHICS] << "decideOutput::lyxrc.pdf_mode = " << lyxrc.pdf_mode << "\n";
+	lyxerr[Debug::GRAPHICS] << "decideOutput: lyxrc.pdf_mode = "
+			    << lyxrc.pdf_mode << std::endl;
 	if (lyxrc.pdf_mode) {
 		if (contains(suffix,"ps") || suffix == "pdf")
 			return "pdf";
@@ -545,6 +586,7 @@ string decideOutputImageFormat(string const & suffix)
 
 } // Anon. namespace
 
+
 string const InsetGraphics::prepareFile(Buffer const *buf) const
 {
 	// do_convert = Do we need to convert the file?
@@ -560,38 +602,36 @@ string const InsetGraphics::prepareFile(Buffer const *buf) const
 	//   return original filename without the extension
 	//
 	// if it's a zipped one, than let LaTeX do the rest!!!
-	if ((zippedFile(params.filename) && params.noUnzip) || buf->niceFile) {
-	    lyxerr[Debug::GRAPHICS] << "don't unzip file or export latex" 
-		    << params.filename << endl;
-	    return params.filename;
-	}
-	string filename_ = params.filename;
-	if (zippedFile(filename_))
-	    filename_ = unzipFile(filename_);
-	// now we have unzipped files
-	// Get the extension (format) of the original file.
-	// we handle it like a virtual one, so we can have
-	// different extensions with the same type.
-	string const extension = getExtFromContents(filename_);
-	// are we usind latex ((e)ps) or pdflatex (pdf,jpg,png)
-	string const image_target = decideOutputImageFormat(extension);
-	if (extension == image_target)		// :-)
+	string filename_  = params().filename;
+	bool const zipped = zippedFile(filename_);
+
+	if ((zipped && params().noUnzip) || buf->niceFile) {
+		lyxerr[Debug::GRAPHICS] << "don't unzip file or export latex" 
+				    << filename_ << endl;
 		return filename_;
-//	commented out to check if the "not exist"bug is fixed.
-//	if (!IsFileReadable(filename_)) {	// :-(
-//		Alert::alert(_("File") + params.filename,
-//			   _("isn't readable or doesn't exists!"));
-//		return filename_;
-//	}
-	string outfile;
+	}
+
+	if (zipped)
+		filename_ = unzipFile(filename_);
+
+	string const from = getExtFromContents(filename_);
+	string const to   = findTargetFormat(from);
+
+	if (from == to) {
+		// No conversion needed!
+		return filename_;
+	}
+
 	string const temp = AddName(buf->tmppath, filename_);
-	outfile = RemoveExtension(temp);
+	string const outfile_base = RemoveExtension(temp);
+
 	lyxerr[Debug::GRAPHICS] << "tempname = " << temp << "\n";
 	lyxerr[Debug::GRAPHICS] << "buf::tmppath = " << buf->tmppath << "\n";
 	lyxerr[Debug::GRAPHICS] << "filename_ = " << filename_ << "\n";
-	lyxerr[Debug::GRAPHICS] << "outfile = " << outfile << endl;
-	converters.convert(buf, filename_, outfile, extension, image_target);
-	return outfile;
+	lyxerr[Debug::GRAPHICS] << "outfile_base = " << outfile_base << endl;
+
+	converters.convert(buf, filename_, outfile_base, from, to);
+	return outfile_base;
 }
 
 
@@ -600,7 +640,7 @@ int InsetGraphics::latex(Buffer const *buf, ostream & os,
 {
 	// If there is no file specified, just output a message about it in
 	// the latex output.
-	if (params.filename.empty()) {
+	if (params().filename.empty()) {
 		os  << "\\fbox{\\rule[-0.5in]{0pt}{1in}"
 			<< _("empty figure path") << "}\n";
 		return 1; // One end of line marker added to the stream.
@@ -610,8 +650,8 @@ int InsetGraphics::latex(Buffer const *buf, ostream & os,
 	string before;
 	string after;
 	// Do we want subcaptions?
-	if (params.subcaption) {
-		before += "\\subfigure[" + params.subcaptionText + "]{";
+	if (params().subcaption) {
+		before += "\\subfigure[" + params().subcaptionText + "]{";
 		after = '}';
 	}
 	// We never use the starred form, we use the "clip" option instead.
@@ -626,9 +666,11 @@ int InsetGraphics::latex(Buffer const *buf, ostream & os,
 	// appropriate (when there are several versions in different formats)
 	string const latex_str = before + '{' + prepareFile(buf) + '}' + after;
 	os << latex_str;
+
 	// Return how many newlines we issued.
 	int const newlines =
 		int(lyx::count(latex_str.begin(), latex_str.end(),'\n') + 1);
+		
 	// lyxerr << "includegraphics: " << newlines << " lines of text"
 	//        << endl; 
 	return newlines;
@@ -642,7 +684,7 @@ int InsetGraphics::ascii(Buffer const *, ostream & os, int) const
 	// 1. Convert file to ascii using gifscii
 	// 2. Read ascii output file and add it to the output stream.
 	// at least we send the filename
-	os << '<' << _("Graphicfile:") << params.filename << ">\n";
+	os << '<' << _("Graphicfile:") << params().filename << ">\n";
 	return 0;
 }
 
@@ -670,59 +712,27 @@ int InsetGraphics::docbook(Buffer const *, ostream & os) const
 void InsetGraphics::validate(LaTeXFeatures & features) const
 {
 	// If we have no image, we should not require anything.
-	if (params.filename.empty())
+	if (params().filename.empty())
 		return ;
 
-	features.includeFile(graphic_label, RemoveExtension(params.filename));
+	features.includeFile(graphic_label, RemoveExtension(params_.filename));
 
 	features.require("graphicx");
 
-	if (params.subcaption)
+	if (params().subcaption)
 		features.require("subfigure");
-}
-
-
-// Update the inset after parameters changed (read from file or changed in
-// dialog.
-void InsetGraphics::updateInset() const
-{
-	GraphicsCache & gc = GraphicsCache::getInstance();
-	boost::shared_ptr<GraphicsCacheItem> temp(0);
-
-	// We do it this way so that in the face of some error, we will still
-	// be in a valid state.
-	InsetGraphicsParams::DisplayType local_display = params.display;
-	if (local_display == InsetGraphicsParams::DEFAULT) {
-		if (lyxrc.display_graphics == "mono")
-			local_display = InsetGraphicsParams::MONOCHROME;
-		else if (lyxrc.display_graphics == "gray")
-			local_display = InsetGraphicsParams::GRAYSCALE;
-		else if (lyxrc.display_graphics == "color")
-			local_display = InsetGraphicsParams::COLOR;
-		else
-			local_display = InsetGraphicsParams::NONE;
-	}
-
-	if (!params.filename.empty() && lyxrc.use_gui &&
-	    local_display != InsetGraphicsParams::NONE) {
-		temp = gc.addFile(params.filename);
-	}
-
-	// Mark the image as unloaded so that it gets updated.
-	imageLoaded = false;
-
-	cacheHandle = temp;
 }
 
 
 bool InsetGraphics::setParams(InsetGraphicsParams const & p)
 {
 	// If nothing is changed, just return and say so.
-	if (params == p)
+	if (params() == p && !p.filename.empty()) {
 		return false;
+	}
 
 	// Copy the new parameters.
-	params = p;
+	params_ = p;
 
 	// Update the inset with the new parameters.
 	updateInset();
@@ -732,9 +742,9 @@ bool InsetGraphics::setParams(InsetGraphicsParams const & p)
 }
 
 
-InsetGraphicsParams InsetGraphics::getParams() const
+InsetGraphicsParams const & InsetGraphics::params() const
 {
-	return params;
+	return params_;
 }
 
 
@@ -742,4 +752,3 @@ Inset * InsetGraphics::clone(Buffer const &, bool same_id) const
 {
 	return new InsetGraphics(*this, same_id);
 }
-
