@@ -581,7 +581,7 @@ string const LyXFont::stateText(BufferParams * params) const
 // Set family according to lyx format string
 LyXFont & LyXFont::setLyXFamily(string const & fam)
 {
-	string const s = lowercase(fam);
+	string const s = ascii_lowercase(fam);
 
 	int i = 0;
 	while (s != LyXFamilyNames[i] && LyXFamilyNames[i] != "error") ++i;
@@ -597,7 +597,7 @@ LyXFont & LyXFont::setLyXFamily(string const & fam)
 // Set series according to lyx format string
 LyXFont & LyXFont::setLyXSeries(string const & ser)
 {
-	string const s = lowercase(ser);
+	string const s = ascii_lowercase(ser);
 
 	int i = 0;
 	while (s != LyXSeriesNames[i] && LyXSeriesNames[i] != "error") ++i;
@@ -613,7 +613,7 @@ LyXFont & LyXFont::setLyXSeries(string const & ser)
 // Set shape according to lyx format string
 LyXFont & LyXFont::setLyXShape(string const & sha)
 {
-	string const s = lowercase(sha);
+	string const s = ascii_lowercase(sha);
 
 	int i = 0;
 	while (s != LyXShapeNames[i] && LyXShapeNames[i] != "error") ++i;
@@ -629,7 +629,7 @@ LyXFont & LyXFont::setLyXShape(string const & sha)
 // Set size according to lyx format string
 LyXFont & LyXFont::setLyXSize(string const & siz)
 {
-	string const s = lowercase(siz);
+	string const s = ascii_lowercase(siz);
 	int i = 0;
 	while (s != LyXSizeNames[i] && LyXSizeNames[i] != "error") ++i;
 	if (s == LyXSizeNames[i]) {
@@ -644,7 +644,7 @@ LyXFont & LyXFont::setLyXSize(string const & siz)
 // Set size according to lyx format string
 LyXFont::FONT_MISC_STATE LyXFont::setLyXMisc(string const & siz)
 {
-	string const s = lowercase(siz);
+	string const s = ascii_lowercase(siz);
 	int i = 0;
 	while (s != LyXMiscNames[i] && LyXMiscNames[i] != "error") ++i;
 	if (s == LyXMiscNames[i])
@@ -678,7 +678,7 @@ LyXFont & LyXFont::lyxRead(LyXLex & lex)
 	bool finished = false;
 	while (!finished && lex.isOK() && !error) {
 		lex.next();
-		string const tok = lowercase(lex.getString());
+		string const tok = ascii_lowercase(lex.getString());
 
 		if (tok.empty()) {
 			continue;
@@ -702,7 +702,7 @@ LyXFont & LyXFont::lyxRead(LyXLex & lex)
 			setLyXSize(ttok);
 		} else if (tok == "misc") {
 			lex.next();
-			string const ttok = lowercase(lex.getString());
+			string const ttok = ascii_lowercase(lex.getString());
 
 			if (ttok == "no_bar") {
 				setUnderbar(OFF);

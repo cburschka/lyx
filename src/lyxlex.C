@@ -168,7 +168,7 @@ string const LyXLex::getLongString(string const & endtoken)
 
 		// We do a case independent comparison, like search_kw
 		// does.
-		if (compare_no_case(token, endtoken) != 0) {
+		if (compare_ascii_no_case(token, endtoken) != 0) {
 			string tmpstr = getString();
 			if (firstline) {
 				unsigned int i = 0;

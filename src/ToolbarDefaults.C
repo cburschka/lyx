@@ -98,7 +98,7 @@ void ToolbarDefaults::init()
 void ToolbarDefaults::read(LyXLex & lex)
 {
 	//consistency check
-	if (compare_no_case(lex.getString(), "toolbar")) {
+	if (compare_ascii_no_case(lex.getString(), "toolbar")) {
 		lyxerr << "Toolbar::read: ERROR wrong token:`"
 		       << lex.getString() << '\'' << endl;
 	}

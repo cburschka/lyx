@@ -80,6 +80,9 @@ char lowercase(char c);
 ///
 char uppercase(char c);
 
+/// same as lowercase(), but ignores locale
+string const ascii_lowercase(string const &);
+
 ///
 string const lowercase(string const &);
 

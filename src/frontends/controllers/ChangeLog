@@ -1,3 +1,13 @@
+2002-07-15  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* biblio.C (parseBibTeX): use ascii_lowercase instead of lowercase
+
+2002-07-15  Mike Fabian  <mfabian@suse.de>
+
+	* biblio.C (compareNoCase): use the compare_ascii_no_case instead
+	of compare_no_case, because in turkish, 'i' is not the lowercase
+	version of 'I', and thus turkish locale breaks parsing of tags.
+
 2002-06-27  Juergen Spitzmueller <j.spitzmueller@gmx.de>
 
 	* ControlInclude.C: Add warning if absolute path name and

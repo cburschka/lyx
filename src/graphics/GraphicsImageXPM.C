@@ -550,7 +550,7 @@ unsigned int GImageXPM::Data::color_none_id() const
 	XpmColor * table = colorTable_.get();
 	for (size_t i = 0; i < ncolors_; ++i) {
 		char const * const color = table[i].c_color;
-		if (color && lowercase(color) == "none")
+		if (color && ascii_lowercase(color) == "none")
 			return uint(i);
 	}
 	return 0;
@@ -697,7 +697,7 @@ bool contains_color_none(XpmImage const & image)
 {
 	for (size_t i = 0; i < image.ncolors; ++i) {
 		char const * const color = image.colorTable[i].c_color;
-		if (color && lowercase(color) == "none")
+		if (color && ascii_lowercase(color) == "none")
 			return true;
 	}
 	return false;

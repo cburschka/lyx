@@ -506,7 +506,7 @@ int LyXRC::read(string const & filename)
 		case RC_DEFAULT_PAPERSIZE:
 			if (lexrc.next()) {
 				string const size =
-					lowercase(lexrc.getString());
+					ascii_lowercase(lexrc.getString());
 				if (size == "usletter")
 					default_papersize =
 						BufferParams::PAPER_USLETTER;

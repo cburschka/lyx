@@ -237,7 +237,7 @@ void Menu::checkShortcuts() const
 			       << "\" does not contain shortcut `"
 			       << shortcut << '\'' << endl;
 		for (const_iterator it2 = begin(); it2 != it1 ; ++it2) {
-			if (!compare_no_case(it2->shortcut(), shortcut)) {
+			if (!compare_ascii_no_case(it2->shortcut(), shortcut)) {
 				lyxerr << "Menu warning: menu entries "
 				       << '"' << it1->fulllabel()
 				       << "\" and \"" << it2->fulllabel()
@@ -451,7 +451,7 @@ void MenuBackend::read(LyXLex & lex)
 	};
 
 	//consistency check
-	if (compare_no_case(lex.getString(), "menuset")) {
+	if (compare_ascii_no_case(lex.getString(), "menuset")) {
 		lyxerr << "Menubackend::read: ERROR wrong token:`"
 		       << lex.getString() << '\'' << endl;
 	}

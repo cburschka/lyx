@@ -1,3 +1,8 @@
+2002-07-15  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* insetcite.C (getNatbibLabel): 
+	* insetbib.C (getKeys): use ascii_lowercase instead of lowercase
+
 2002-07-03  Herbert Voss  <voss@lyx.org>
 
 	* insetgraphics.C (prepareFile): fix several bugs with returning

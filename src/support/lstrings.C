@@ -247,6 +247,12 @@ struct local_uppercase {
 	}
 };
 
+struct local_ascii_lowercase {
+	char operator()(char c) const {
+		return ascii_tolower(c);
+	}
+};
+
 } // end of anon namespace
 
 string const lowercase(string const & a)
@@ -260,6 +266,15 @@ string const uppercase(string const & a)
 {
 	string tmp(a);
 	transform(tmp.begin(), tmp.end(), tmp.begin(), local_uppercase());
+	return tmp;
+}
+
+
+string const ascii_lowercase(string const & a)
+{
+	string tmp(a);
+	transform(tmp.begin(), tmp.end(), tmp.begin(),
+		  local_ascii_lowercase());
 	return tmp;
 }
 

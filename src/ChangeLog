@@ -1,3 +1,30 @@
+2002-07-15  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* lyxfont.C (setLyXFamily): 
+	(setLyXSeries): 
+	(setLyXShape): 
+	(setLyXSize): 
+	(setLyXMisc): 
+	(lyxRead): 
+	* debug.C (value): 
+	* buffer.C (asciiParagraph): use ascii_lowercase
+
+2002-07-15  Mike Fabian  <mfabian@suse.de>
+
+	* lyxlex_pimpl.C (search_kw): 
+	* lyxlex.C (getLongString): 
+	* converter.h (operator<): 
+	* converter.C (operator<): 
+	* buffer.C (parseSingleLyXformat2Token): 
+	(asciiParagraph): 
+	* ToolbarDefaults.C (read): 
+	* MenuBackend.C (checkShortcuts): 
+	(read): 
+	* LColor.C (getFromGUIName):
+	(getFromLyXName): use the compare_ascii_no_case instead of
+	compare_no_case, because in turkish, 'i' is not the lowercase
+	version of 'I', and thus turkish locale breaks parsing of tags.
+
 2002-07-10  Andrew Zabolotny  <zap@cobra.ru>
 
 	* minibuffer.C (peek_event): support keypad keys

@@ -1,3 +1,8 @@
+2002-07-15  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* filetools.C (IsLyXFilename):
+	(IsSGMLFilename): use ascii_lowercase instead of lowercase
+
 2002-06-13  Angus Leeming  <leeming@lyx.org>
 
 	Fixes needed to compile with Compaq cxx 6.3.
