@@ -68,7 +68,7 @@
 #include "support/path.h"
 #include "support/lyxfunctional.h"
 
-#include "BoostFormat.h"
+#include "support/BoostFormat.h"
 
 #include <ctime>
 #include <clocale>

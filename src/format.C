@@ -15,7 +15,7 @@
 #include "lyx_cb.h" // for ShowMessage() ... to be removed?
 #include "gettext.h"
 #include "LString.h"
-#include "BoostFormat.h"
+#include "support/BoostFormat.h"
 
 #include "frontends/Alert.h" //to be removed?
 

@@ -1,6 +1,6 @@
 #include <config.h>
 
-#include "BoostFormat.h"
+#include "support/BoostFormat.h"
 
 #if USE_BOOST_FORMAT
 

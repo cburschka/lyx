@@ -33,7 +33,7 @@
 #include "support/lstrings.h"
 #include "support/filetools.h"
 
-#include "BoostFormat.h"
+#include "support/BoostFormat.h"
 
 using std::endl;
 

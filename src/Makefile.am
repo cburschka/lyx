@@ -36,7 +36,6 @@ localedir = $(datadir)/locale
 BUILT_SOURCES = version.C
 
 lyx_SOURCES = \
-	BoostFormat.h \
 	BufferView.C \
 	BufferView.h \
 	BufferView_pimpl.C \
@@ -94,7 +93,6 @@ lyx_SOURCES = \
 	author.C \
 	author.h \
 	boost.C \
-	boost-inst.C \
 	box.h \
 	box.C \
 	broken_headers.h \

@@ -25,7 +25,7 @@
 
 #include "insets/inseterror.h"
 
-#include "BoostFormat.h"
+#include "support/BoostFormat.h"
 
 using std::endl;
 using std::pair;

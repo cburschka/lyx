@@ -36,7 +36,7 @@
 #include "support/systemcall.h"
 #include "support/lstrings.h"
 
-#include "BoostFormat.h"
+#include "support/BoostFormat.h"
 
 #include <fstream>
 #include <algorithm>

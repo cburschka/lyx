@@ -20,7 +20,7 @@
 #include "support/LAssert.h"
 
 #include <boost/regex.hpp>
-#include "BoostFormat.h"
+#include "support/BoostFormat.h"
 
 #include <algorithm>
 

@@ -21,7 +21,7 @@
 #include "xforms_helpers.h" // formatted
 
 #include "gettext.h"        // _()
-#include "BoostFormat.h"
+#include "support/BoostFormat.h"
 
 #include "support/LAssert.h"
 #include "support/filetools.h" //  LibFileSearch

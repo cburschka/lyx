@@ -89,7 +89,7 @@ TODO
 #include <boost/weak_ptr.hpp>
 #include <boost/bind.hpp>
 #include <boost/signals/trackable.hpp>
-#include "BoostFormat.h"
+#include "support/BoostFormat.h"
 
 #include <algorithm> // For the std::max
 

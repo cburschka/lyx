@@ -17,7 +17,7 @@
 #include "debug.h"
 
 #include <boost/scoped_array.hpp>
-#include "BoostFormat.h"
+#include "support/BoostFormat.h"
 
 #include <cmath>
 

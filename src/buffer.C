@@ -65,7 +65,7 @@
 
 #include <boost/bind.hpp>
 #include <boost/tuple/tuple.hpp>
-#include "BoostFormat.h"
+#include "support/BoostFormat.h"
 
 #include <fstream>
 #include <iomanip>

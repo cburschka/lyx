@@ -36,7 +36,7 @@
 #include "support/lyxlib.h"  // for float_equal
 #include "support/filetools.h"  // for MakeAbsPath etc
 
-#include "BoostFormat.h"
+#include "support/BoostFormat.h"
 
 #include FORMS_H_LOCATION
 

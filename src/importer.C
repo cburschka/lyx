@@ -22,7 +22,7 @@
 #include "gettext.h"
 #include "BufferView.h"
 
-#include "BoostFormat.h"
+#include "support/BoostFormat.h"
 
 #include <algorithm>
 

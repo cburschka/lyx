@@ -23,7 +23,7 @@
 #include "Alert.h"
 #include "Alert_pimpl.h"
 
-#include "BoostFormat.h"
+#include "support/BoostFormat.h"
 #include "gettext.h"
 
 using std::pair;

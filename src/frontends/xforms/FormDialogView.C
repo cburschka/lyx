@@ -22,7 +22,7 @@
 
 #include "gettext.h"        // _()
 #include "lyxrc.h"
-#include "BoostFormat.h"
+#include "support/BoostFormat.h"
 
 #include "support/LAssert.h"
 #include "support/filetools.h" //  LibFileSearch

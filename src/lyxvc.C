@@ -13,7 +13,7 @@
 
 #include "support/filetools.h"
 #include "support/lyxlib.h"
-#include "BoostFormat.h"
+#include "support/BoostFormat.h"
 
 #include <unistd.h>
 

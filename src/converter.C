@@ -30,7 +30,7 @@
 #include "support/path.h"
 #include "support/systemcall.h"
 
-#include "BoostFormat.h"
+#include "support/BoostFormat.h"
 
 #include <cctype>
 

@@ -43,7 +43,7 @@
 #include "support/lyxfunctional.h" // equal_1st_in_pair
 #include "support/types.h"
 #include "support/lyxalgo.h" // lyx_count
-#include "BoostFormat.h"
+#include "support/BoostFormat.h"
 
 #include <fstream>
 

@@ -39,7 +39,7 @@
 #include "frontends/Alert.h"
 #include "frontends/lyx_gui.h"
 
-#include "BoostFormat.h"
+#include "support/BoostFormat.h"
 #include <boost/function.hpp>
 
 #include <cstdlib>

@@ -21,7 +21,7 @@
 #include "encoding.h"
 #include "lyxrc.h"
 #include "lyxlex.h"
-#include "BoostFormat.h"
+#include "support/BoostFormat.h"
 #include "factory.h"
 #include "support/lstrings.h"
 #include "insets/insetoptarg.h"

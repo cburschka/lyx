@@ -28,7 +28,7 @@
 #include "support/path.h"
 
 #include <boost/regex.hpp>
-#include "BoostFormat.h"
+#include "support/BoostFormat.h"
 
 #include <fstream>
 #include <cstdio>  // sscanf

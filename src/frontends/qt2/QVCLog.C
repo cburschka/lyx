@@ -23,7 +23,7 @@
 #include <qtextview.h>
 #include <qpushbutton.h>
 
-#include "BoostFormat.h"
+#include "support/BoostFormat.h"
 
 typedef QController<ControlVCLog, QView<QVCLogDialog> > base_class;
 

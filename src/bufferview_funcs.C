@@ -35,7 +35,7 @@
 
 #include "insets/updatableinset.h"
 
-#include "BoostFormat.h"
+#include "support/BoostFormat.h"
 
 namespace {
 LyXFont freefont(LyXFont::ALL_IGNORE);

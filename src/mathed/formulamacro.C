@@ -37,7 +37,7 @@
 
 #include "Lsstream.h"
 
-#include "BoostFormat.h"
+#include "support/BoostFormat.h"
 
 using std::ostream;
 

@@ -32,7 +32,7 @@
 
 #include "frontends/Alert.h"
 
-#include "BoostFormat.h"
+#include "support/BoostFormat.h"
 
 using std::endl;
 

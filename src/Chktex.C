@@ -25,7 +25,7 @@
 #include "support/path.h"
 #include "support/lstrings.h"
 
-#include "BoostFormat.h"
+#include "support/BoostFormat.h"
 
 #include <fstream>
 

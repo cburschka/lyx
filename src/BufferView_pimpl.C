@@ -57,7 +57,7 @@
 
 #include <boost/bind.hpp>
 #include <boost/signals/connection.hpp>
-#include "BoostFormat.h"
+#include "support/BoostFormat.h"
 
 #include <unistd.h>
 #include <sys/wait.h>

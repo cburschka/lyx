@@ -41,7 +41,7 @@
 #include "support/textutils.h"
 #include "support/lstrings.h"
 
-#include "BoostFormat.h"
+#include "support/BoostFormat.h"
 
 using std::vector;
 using std::copy;

@@ -12,6 +12,7 @@ LYXSTRING = lyxstring.C lyxstring.h
 endif
 
 libsupport_la_SOURCES = \
+	BoostFormat.h \
 	DebugStream.C \
 	DebugStream.h \
 	FileInfo.C \
@@ -26,6 +27,7 @@ libsupport_la_SOURCES = \
 	os.h \
 	abort.C \
 	atoi.C \
+	boost-inst.C \
 	chdir.C \
 	copy.C \
 	filetools.C \

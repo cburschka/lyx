@@ -34,7 +34,7 @@
 #include "support/LAssert.h"
 
 #include <boost/bind.hpp>
-#include "BoostFormat.h"
+#include "support/BoostFormat.h"
 
 #include <cassert>
 #include <algorithm>
