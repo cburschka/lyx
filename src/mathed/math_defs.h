@@ -426,6 +426,9 @@ struct MathedRowSt {
     /// 
     MathedRowSt(int n) {
 	    w = new int[n + 1]; // this leaks
+	    asc = desc = y = 0;
+	    for (int i = 0 ; i < n + 1 ; ++i)
+	      w[i] = 0;
 	    next = 0;
 	    label = 0;
 	    numbered = true;

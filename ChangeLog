@@ -1,3 +1,10 @@
+2000-01-05  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/mathed/math_defs.h (MathedRowSt): make sure that all
+	members of the struct are correctly initialized to 0 (detected by
+	purify) 
+	* src/lyxrc.C (LyXRC): ditto for print_adapt_output.
+
 2000-01-04  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/lyx_gui_misc.C: add a 'using std::make_pair;' statement.

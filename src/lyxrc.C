@@ -233,6 +233,7 @@ LyXRC::LyXRC()
 	// Get printer from the environment. If fail, use default "",
 	// assuming that everything is set up correctly.
 	printer = GetEnv("PRINTER");
+	print_adapt_output = false;
 	print_command = "dvips";
 	print_evenpage_flag = "-B";
 	print_oddpage_flag = "-A";
