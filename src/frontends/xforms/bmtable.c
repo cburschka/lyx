@@ -330,9 +330,15 @@ void fl_set_bmtable_pixmap_file(FL_OBJECT *ob, int nx, int ny, char const *filen
 		sp->maxi = sp->nx * sp->ny;
 		sp->bdata = 0;
 
+		XpmColorSymbol xpm_col;
+		xpm_col.name = NULL;
+		xpm_col.value = "None";
+		xpm_col.pixel = fl_get_flcolor(ob->col1);
 		dumb_attributes.colormap = fl_state[fl_get_vclass()].colormap;
+		dumb_attributes.numsymbols = 1;
+		dumb_attributes.colorsymbols = &xpm_col;
 		dumb_attributes.closeness = 30000;
-		dumb_attributes.valuemask = XpmColormap | XpmCloseness;
+		dumb_attributes.valuemask = XpmColormap | XpmCloseness | XpmColorSymbols;
 
 		if (XReadPixmapFile(fl_get_display(), fl_winget(), (char *)filename,
 				    &(sp->pix), &dummy_shapemask,
