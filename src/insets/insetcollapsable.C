@@ -319,15 +319,14 @@ InsetOld::RESULT InsetCollapsable::localDispatch(FuncRequest const & cmd)
 				bv->buffer()->markDirty();
 				inset.localDispatch(cmd);
 			} else {
-				FuncRequest cmd1 = cmd;
 				if (!bv->lockInset(this))
 					return DISPATCHED;
 				if (cmd.y <= button_dim.y2) {
+					FuncRequest cmd1 = cmd;
 					cmd1.y = 0;
-				} else {
-					cmd1.y = ascent() + cmd.y - (height_collapsed() + inset.ascent());
-				}
-				inset.localDispatch(cmd);
+					inset.localDispatch(cmd1);
+				} else
+					inset.localDispatch(adjustCommand(cmd));
 			}
 			return DISPATCHED;
 		}
