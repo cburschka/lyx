@@ -1,3 +1,8 @@
+2002-03-18  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* insetgraphics.C: Clean up Baruch's comments a little.
+	(c-tor): remove code setting id_, as it's set in the Inset c-tor.
+
 2002-03-18  Juergen Vigna  <jug@sad.it>
 
 	* insettabular.C (unlockInsetInInset): removed unneeded showCursor

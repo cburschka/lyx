@@ -13,52 +13,38 @@
 Known BUGS:
     
     * If the image is from the clipart, and the document is moved to another
-       directory, the user is screwed. Need a way to handle it.
-       This amounts to a problem of when to use relative or absolute file paths
-       We should probably use what the user asks to use... but when he chooses
-       by the file dialog we normally get an absolute path and this may not be 
-       what the user meant.
-       [Note that browseRelFile in helper_funcs.* provides a file name
-        which is relative if it is at reference path (here puffer path)
-        level or below, and an absolute path if the file name is not a
-        `natural' relative file name. In any case,
-            MakeAbsPath(filename, buf->filePath())
-        is guaranteed to provide the correct absolute path. This is what is
-        done know for include insets. Feel free to ask me -- JMarc
-	14/01/2002]
+      directory, the user is screwed. Need a way to handle it.
+      This amounts to a problem of when to use relative or absolute file paths
+      We should probably use what the user asks to use... but when he chooses
+      by the file dialog we normally get an absolute path and this may not be 
+      what the user meant.
+
+      Note that browseRelFile in helper_funcs.* provides a file name
+      which is relative if it is at reference path (here puffer path)
+      level or below, and an absolute path if the file name is not a
+      `natural' relative file name. In any case,
+              MakeAbsPath(filename, buf->filePath())
+      is guaranteed to provide the correct absolute path. This is what is
+      done know for include insets. Feel free to ask me -- JMarc
+      14/01/2002
 	
-	* If we are trying to create a file in a read-only directory and there
-		are graphics that need converting, the converting will fail because
-		it is done in-place, into the same directory as the original image.
-		This needs to be fixed in the src/converter.C file
-		[ This is presumed to be fixed, needs testing.]
-
-	* We do not dither or resize the image in a WYSIWYM way, we load it at
-		its original size and color, resizing is done in the final output,
-		but not in the LyX window.
-
 TODO Before initial production release:
-    * Replace insetfig everywhere
-        * Search for comments of the form
-            // INSET_GRAPHICS: remove this when InsetFig is thrown.
-          And act upon them. Make sure not to remove InsetFig code for the 
-		  1.2.0 release, only afterwards, after deployment shows InsetGraphics
-		  to be ok.
-        * What advanced features the users want to do?
-            Implement them in a non latex dependent way, but a logical way.
-            LyX should translate it to latex or any other fitting format.
+    
+    * What advanced features the users want to do?
+      Implement them in a non latex dependent way, but a logical way.
+      LyX should translate it to latex or any other fitting format.
     * Add a way to roll the image file into the file format.
     * When loading, if the image is not found in the expected place, try
-       to find it in the clipart, or in the same directory with the image.
+      to find it in the clipart, or in the same directory with the image.
     * Keep a tab on the image file, if it changes, update the lyx view.
-	* The image choosing dialog could show thumbnails of the image formats
-	  it knows of, thus selection based on the image instead of based on
-	  filename.
-	* Add support for the 'picins' package.
-	* Add support for the 'picinpar' package.
-	* Improve support for 'subfigure' - Allow to set the various options
-		that are possible.
- */
+    * The image choosing dialog could show thumbnails of the image formats
+      it knows of, thus selection based on the image instead of based on
+      filename.
+    * Add support for the 'picins' package.
+    * Add support for the 'picinpar' package.
+    * Improve support for 'subfigure' - Allow to set the various options
+      that are possible.
+*/
 
 /* NOTES:
  * Fileformat:
@@ -168,8 +154,6 @@ InsetGraphics::InsetGraphics(InsetGraphics const & ig, bool same_id)
 	  cached_status_(grfx::ErrorUnknown), cache_filled_(false), old_asc(0)
 {
 	setParams(ig.params());
-	if (same_id)
-		id_ = ig.id_;
 }
 
 
