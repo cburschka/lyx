@@ -60,6 +60,8 @@ What's new
 - it was not possible to view the french versions of the Extended and
   Customization manual.
 
+- the lib/configure script now works correctly with zsh [bug #977]
+
 - add missing c_str.sed file in the distribution
 
 - hopefully really fix problems with patch requiring aclocal-1.6
