@@ -1,3 +1,20 @@
+2002-01-15  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* xforms_helpers.C: modify getLengthFromWidgets to ignore the unit
+	choice if the input field contains a LyXGlueLength.
+
+	* FormParagraph.C: Allow to insert and display gluelengths in VSpace
+
+	* FormParagraph.C
+	* FormDocument.C
+	* FormTabular.C: Change input filter to allow inserting
+	gluelengths/lyxlength or numbers with unit choices.
+
+	* FormMinipage.C: Use getLengthFromWidgets instead of the code there,
+	which was more or less duplicated.
+
+	* FormGraphics.C: set default units, dependent on US/other paper.
+
 2002-01-16  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* Dialogs.C: no longer need to #include the Controller classes, as this

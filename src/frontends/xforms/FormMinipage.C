@@ -24,6 +24,7 @@
 #include "support/lstrings.h"
 #include "helper_funcs.h"
 #include "debug.h"
+#include "xforms_helpers.h"
 
 typedef FormCB<ControlMinipage, FormDB<FD_form_minipage> > base_class;
 
@@ -58,11 +59,9 @@ void FormMinipage::build()
 
 void FormMinipage::apply()
 {
-	string const units = fl_get_choice_text(dialog_->choice_width_units);
-	double const val = strToDbl(fl_get_input(dialog_->input_width));
-
 	controller().params().pageWidth =
-		tostr(val) + frontStrip(strip(subst(units,"%%","%")));
+		getLengthFromWidgets(dialog_->input_width,
+			dialog_->choice_width_units);
 
 	if (fl_get_button(dialog_->radio_top))
 		controller().params().pos = InsetMinipage::top;

@@ -262,7 +262,13 @@ void FormGraphics::update()
 		fl_set_input(dialog_->input_width, number.c_str());
 
 		int pos = 1;
+		//use inch as default with US papersizes in lyxrc
+		if (lyxrc.default_papersize < 3)
+			pos = 2;
 		switch (igp.widthResize) {
+		case InsetGraphicsParams::CM:
+			pos = 1; break;
+
 		case InsetGraphicsParams::INCH:
 			pos = 2; break;
 
@@ -284,7 +290,13 @@ void FormGraphics::update()
 		fl_set_input(dialog_->input_height, number.c_str());
 
 		pos = 1;
+		//use inch as default with US papersizes in lyxrc
+		if (lyxrc.default_papersize < 3)
+			pos = 2;
 		switch (igp.heightResize) {
+		case InsetGraphicsParams::CM:
+			pos = 1; break;
+
 		case InsetGraphicsParams::INCH:
 			pos = 2; break;
 

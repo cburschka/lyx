@@ -24,6 +24,7 @@
 #include "insets/insettabular.h"
 #include "buffer.h"
 #include "xforms_helpers.h"
+#include "lyxrc.h" // to set the default length values
 #include "helper_funcs.h"
 #include "input_validators.h"
 #include "support/lstrings.h"
@@ -220,7 +221,8 @@ void FormTabular::update()
 		setEnabled(cell_options_->radio_valign_center, true);
 		special = tabular->GetAlignSpecial(cell, LyXTabular::SET_SPECIAL_MULTI);
 		fl_set_input(cell_options_->input_special_multialign, special.c_str());
-		string const default_unit = "cm";
+		bool const metric = lyxrc.default_papersize > 3;
+        	string const default_unit = metric ? "cm" : "in";
 		updateWidgetsFromLength(cell_options_->input_mcolumn_width,
 					cell_options_->choice_value_mcolumn_width,
 					pwidth, default_unit);
@@ -305,7 +307,8 @@ void FormTabular::update()
 	setEnabled(column_options_->input_special_alignment, !isReadonly);
 
 	pwidth = tabular->GetColumnPWidth(cell);
-	string const default_unit = "cm";
+	bool const metric = lyxrc.default_papersize > 3;
+	string const default_unit = metric ? "cm" : "in";
 	updateWidgetsFromLength(column_options_->input_column_width,
 				column_options_->choice_value_column_width,
 				pwidth, default_unit);
@@ -512,20 +515,40 @@ bool FormTabular::input(FL_OBJECT * ob, long)
     if ((ob == column_options_->input_column_width) ||
 		(ob == column_options_->choice_value_column_width))
 	{
-	    string const str =
-		    getLengthFromWidgets(column_options_->input_column_width,
-					 column_options_->choice_value_column_width);
-        inset_->tabularFeatures(lv_->view(), LyXTabular::SET_PWIDTH, str);
+	string const str =
+		getLengthFromWidgets(column_options_->input_column_width,
+				 column_options_->choice_value_column_width);
+       	inset_->tabularFeatures(lv_->view(), LyXTabular::SET_PWIDTH, str);
+
+	//check if the input is valid
+	string const input =
+			fl_get_input(column_options_->input_column_width);
+	if (!input.empty() && !isValidLength(input) && !isStrDbl(input)) {
+		fl_set_object_label(dialog_->text_warning,
+			_("Warning: Invalid Length (valid example: 10mm)"));
+		fl_show_object(dialog_->text_warning);
+		return false;
+	}
         update(); // update for alignment
         return true;
     }
     if ((ob == cell_options_->input_mcolumn_width) ||
 		(ob == cell_options_->choice_value_mcolumn_width))
 	{
-	    string const str =
-		    getLengthFromWidgets(cell_options_->input_mcolumn_width,
-					 cell_options_->choice_value_mcolumn_width);
-        inset_->tabularFeatures(lv_->view(), LyXTabular::SET_MPWIDTH, str);
+	string const str =
+		getLengthFromWidgets(cell_options_->input_mcolumn_width,
+				 cell_options_->choice_value_mcolumn_width);
+	inset_->tabularFeatures(lv_->view(), LyXTabular::SET_MPWIDTH, str);
+
+	//check if the input is valid
+	string const input =
+		fl_get_input(cell_options_->input_mcolumn_width);
+	if (!input.empty() && !isValidLength(input) && !isStrDbl(input)) {
+		fl_set_object_label(dialog_->text_warning,
+			_("Warning: Invalid Length (valid example: 10mm)"));
+		fl_show_object(dialog_->text_warning);
+		return false;
+	}
         update(); // update for alignment
         return true;
     }

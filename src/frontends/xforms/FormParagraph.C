@@ -33,7 +33,7 @@
 #include "input_validators.h"
 #include "helper_funcs.h"
 
-#include "support/lstrings.h" 
+#include "support/lstrings.h"
 
 using Liason::setMinibuffer;
 using SigC::slot;
@@ -123,8 +123,6 @@ void FormParagraph::build()
     fl_set_input_return(dialog_->input_labelwidth, FL_RETURN_CHANGED);
     fl_set_input_return(dialog_->input_linespacing, FL_RETURN_CHANGED);
     fl_set_input_filter(dialog_->input_linespacing, fl_unsigned_float_filter);
-    fl_set_input_filter(dialog_->input_space_above, fl_float_filter);
-    fl_set_input_filter(dialog_->input_space_below, fl_float_filter);
 
     // Create the contents of the unit choices
     // Don't include the "%" terms...
@@ -249,7 +247,7 @@ void FormParagraph::apply()
     case 7:
 	string const length =
 		getLengthFromWidgets(dialog_->input_space_below,
-		dialog_->choice_value_space_below);
+				     dialog_->choice_value_space_below);
 	space_bottom = VSpace(LyXGlueLength(length));
 	break;
     }
@@ -414,10 +412,15 @@ void FormParagraph::update()
         bool const metric = lyxrc.default_papersize > 3;
         string const default_unit = metric ? "cm" : "in";
         string const length = par_->params().spaceTop().length().asString();
-        updateWidgetsFromLengthString(dialog_->input_space_above,
-                	  dialog_->choice_value_space_above,
-                	  length, default_unit);
-	    break;
+	//check if there's a stretch or shrink factor
+	if (!isValidLength(length) && !isStrDbl(length))
+		fl_set_input(dialog_->input_space_above, length.c_str());
+	else {
+		updateWidgetsFromLengthString(dialog_->input_space_above,
+					      dialog_->choice_value_space_above,
+                			      length, default_unit);
+	}
+	break;
     }
     }
     
@@ -455,10 +458,15 @@ void FormParagraph::update()
         string const default_unit = metric ? "cm" : "in";
         string const length =
         	par_->params().spaceBottom().length().asString();
-        updateWidgetsFromLengthString(dialog_->input_space_below,
-                	  dialog_->choice_value_space_below,
-                	  length, default_unit);
-	    break;
+ 	//check if there's a stretch or shrink factor
+ 	if (!isValidLength(length) && !isStrDbl(length))
+		fl_set_input(dialog_->input_space_below, length.c_str());
+ 	else {
+		updateWidgetsFromLengthString(dialog_->input_space_below,
+					      dialog_->choice_value_space_below,
+					      length, default_unit);
+ 	}
+	break;
     }
     }
 
@@ -512,6 +520,33 @@ bool FormParagraph::input(FL_OBJECT * ob, long)
         }
     }
  
+    //
+    // warnings if input is senseless
+    //
+    string input = fl_get_input (dialog_->input_space_above);
+    bool invalid = false;
+
+    if (fl_get_choice(dialog_->choice_space_above)==7)
+        invalid = !input.empty() && !isValidGlueLength(input) && !isStrDbl(input);
+
+    input = fl_get_input (dialog_->input_space_below);
+
+    if (fl_get_choice(dialog_->choice_space_below)==7)
+        invalid = invalid
+		|| (!input.empty() && !isValidGlueLength(input) && !isStrDbl(input));
+
+    if (ob == dialog_->input_space_above || ob == dialog_->input_space_below) {
+	if (invalid) {
+            fl_set_object_label(dialog_->text_warning,
+                _("Warning: Invalid Length (valid example: 10mm)"));
+            fl_show_object(dialog_->text_warning);
+            return false;
+        } else {
+            fl_hide_object(dialog_->text_warning);
+            return true;
+        }
+    }
+
     if (fl_get_choice (dialog_->choice_linespacing) == 5)
         setEnabled (dialog_->input_linespacing, true);
     else {

@@ -20,6 +20,7 @@
 #include "gettext.h"
 #include "support/LAssert.h"
 #include "lyxlength.h"
+#include "lyxgluelength.h"
 
 using std::ofstream;
 using std::pair;
@@ -157,6 +158,10 @@ string getLengthFromWidgets(FL_OBJECT * input, FL_OBJECT * choice)
 	string const length = strip(frontStrip(fl_get_input(input)));
 	if (length.empty())
 		return string();
+
+	//don't return unit-from-choice if the input(field) contains a unit
+	if (isValidGlueLength(length))
+		return length;
 
 	string unit = strip(frontStrip(fl_get_choice_text(choice)));
 	unit = subst(unit, "%%", "%");

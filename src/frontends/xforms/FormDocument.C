@@ -119,26 +119,6 @@ void FormDocument::build()
 	fl_set_input_return(paper_->input_head_sep,      FL_RETURN_CHANGED);
 	fl_set_input_return(paper_->input_foot_skip,     FL_RETURN_CHANGED);
 
-	// Set input filters on width and height to make them accept only
-	// unsigned numbers.
-	fl_set_input_filter(paper_->input_custom_width,
-			    fl_unsigned_float_filter);
-	fl_set_input_filter(paper_->input_custom_height,
-			    fl_unsigned_float_filter);
-	fl_set_input_filter(paper_->input_top_margin,
-			    fl_unsigned_float_filter);
-	fl_set_input_filter(paper_->input_bottom_margin,
-			    fl_unsigned_float_filter);
-	fl_set_input_filter(paper_->input_inner_margin,
-			    fl_unsigned_float_filter);
-	fl_set_input_filter(paper_->input_outer_margin,
-			    fl_unsigned_float_filter);
-	fl_set_input_filter(paper_->input_head_height,
-			    fl_unsigned_float_filter);
-	fl_set_input_filter(paper_->input_head_sep,
-			    fl_unsigned_float_filter);
-	fl_set_input_filter(paper_->input_foot_skip,
-			    fl_unsigned_float_filter);
 
 	// Create the contents of the unit choices
 	// Don't include the "%" terms...
@@ -210,10 +190,9 @@ void FormDocument::build()
 	fl_set_input_return(class_->input_doc_skip, FL_RETURN_CHANGED);
 	fl_set_input_return(class_->input_doc_spacing, FL_RETURN_CHANGED);
 
-	// Set input filters on doc skip to make it accept only
+	// Set input filters on doc spacing to make it accept only
 	// unsigned numbers.
-	fl_set_input_filter(class_->input_doc_skip,
-			    fl_unsigned_float_filter);
+	fl_set_input_filter(class_->input_doc_spacing, fl_unsigned_float_filter);
 
 	bc().addReadOnly (class_->radio_doc_indent);
 	bc().addReadOnly (class_->radio_doc_skip);
@@ -1223,11 +1202,57 @@ void FormDocument::checkReadOnly()
 }
 
 
-bool FormDocument::CheckDocumentInput(FL_OBJECT *, long)
+bool FormDocument::CheckDocumentInput(FL_OBJECT * ob, long)
 {
 	string str;
 	bool ok = true;
 	char const * input;
+
+	// this has to be all out of if/elseif because it has to deactivate
+	// the document buttons and so the whole stuff has to be tested again.
+	// disable OK/Apply if input is not valid
+	str = fl_get_input(class_->input_doc_skip);
+	ok = ok && (str.empty() || isValidLength(str) || isStrDbl(str));
+	str = fl_get_input(paper_->input_custom_width);
+	ok = ok && (str.empty() || isValidLength(str) || isStrDbl(str));
+	str = fl_get_input(paper_->input_custom_height);
+	ok = ok && (str.empty() || isValidLength(str) || isStrDbl(str));
+	str = fl_get_input(paper_->input_outer_margin);
+	ok = ok && (str.empty() || isValidLength(str) || isStrDbl(str));
+	str = fl_get_input(paper_->input_inner_margin);
+	ok = ok && (str.empty() || isValidLength(str) || isStrDbl(str));
+	str = fl_get_input(paper_->input_top_margin);
+	ok = ok && (str.empty() || isValidLength(str) || isStrDbl(str));
+	str = fl_get_input(paper_->input_bottom_margin);
+	ok = ok && (str.empty() || isValidLength(str) || isStrDbl(str));
+	str = fl_get_input(paper_->input_head_height);
+	ok = ok && (str.empty() || isValidLength(str) || isStrDbl(str));
+	str = fl_get_input(paper_->input_head_sep);
+	ok = ok && (str.empty() || isValidLength(str) || isStrDbl(str));
+	str = fl_get_input(paper_->input_foot_skip);
+	ok = ok && (str.empty() || isValidLength(str) || isStrDbl(str));
+
+	//display warning if input is not valid
+	if (ob == class_->input_doc_skip
+			|| ob == paper_->input_custom_width
+			|| ob == paper_->input_custom_height
+			|| ob == paper_->input_outer_margin
+			|| ob == paper_->input_inner_margin
+			|| ob == paper_->input_top_margin
+			|| ob == paper_->input_bottom_margin
+			|| ob == paper_->input_head_height
+			|| ob == paper_->input_head_sep
+			|| ob == paper_->input_foot_skip) {
+		if (!ok) {
+			fl_set_object_label(dialog_->text_warning,
+                		_("Warning: Invalid Length (valid example: 10mm)"));
+			fl_show_object(dialog_->text_warning);
+			return false;
+        	} else {
+			fl_hide_object(dialog_->text_warning);
+			return true;
+		}
+	}
 
 	// "Synchronize" the choice and the input field, so that it
 	// is impossible to commit senseless data.
