@@ -17,6 +17,12 @@ enum value_type {
 		///
 		ToggleOff = 8
 	};
+
+	inline
+	void toggle(value_type & flag, bool b)
+	{
+		flag = static_cast<value_type>(flag | (b ? ToggleOn : ToggleOff));
+	}
 }
 
 ///

@@ -336,7 +336,7 @@ case $DOCBOOK in
 esac
 
 # Search for a spool command
-LYXRC_PROG([for a spool command], \printspool_command, lp lpr)
+LYXRC_PROG([for a spool command], \print_spool_command, lp lpr)
 case $prog in
   lp) print_spool_printerprefix="-d ";;
  lpr) print_spool_printerprefix="-P";;

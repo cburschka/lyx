@@ -348,7 +348,6 @@ func_status::value_type LyXFunc::getStatus(int ac) const
 	return getStatus(ac, string());
 }
 
-
 func_status::value_type LyXFunc::getStatus(int ac,
 					   string const & not_to_use_arg) const
 {
@@ -506,10 +505,7 @@ func_status::value_type LyXFunc::getStatus(int ac,
 				disable = true;
 				break;
 			}
-			if (argument[0] == align) 
-				flag |= func_status::ToggleOn;
-			else
-				flag |= func_status::ToggleOff;
+			func_status::toggle(flag, argument[0] == align);
 		} else
 			disable = true;
 		break;
@@ -532,10 +528,7 @@ func_status::value_type LyXFunc::getStatus(int ac,
 				disable = true;
 				break;
 			}
-			if (argument[0] == align) 
-				flag |= func_status::ToggleOn;
-			else
-				flag |= func_status::ToggleOff;
+			func_status::toggle(flag, argument[0] == align);
 		} else
 			disable = true;
 		break;
@@ -544,24 +537,17 @@ func_status::value_type LyXFunc::getStatus(int ac,
 		Inset * tli = owner->view()->theLockingInset();
 		if (tli && (tli->lyxCode() == Inset::MATH_CODE)) {
 			MathInsetTypes type = mathcursor->formula()->getType();
-			func_status::value_type box = func_status::ToggleOff;
 			if (argument == "inline") {
-				if (type == LM_OT_SIMPLE)
-					box = func_status::ToggleOn;
+				func_status::toggle(flag, type == LM_OT_SIMPLE);
 			} else if (argument == "display") {
-				if (type == LM_OT_EQUATION)
-					box = func_status::ToggleOn;
+				func_status::toggle(flag, type == LM_OT_EQUATION);
 			} else if (argument == "eqnarray") {
-				if (type == LM_OT_EQNARRAY)
-					box = func_status::ToggleOn;
+				func_status::toggle(flag, type == LM_OT_EQNARRAY);
 			} else if (argument == "align") {
-				if (type == LM_OT_ALIGN)
-					box = func_status::ToggleOn;
+				func_status::toggle(flag, type == LM_OT_ALIGN);
 			} else {
-				box = func_status::OK;
 				disable = true;
 			}
-			flag |= box;
 		} else
 			disable = true;
 		break;
@@ -701,37 +687,75 @@ func_status::value_type LyXFunc::getStatus(int ac,
 	if (disable)
 	        flag |= func_status::Disabled;
 	
-	// the font related functions (and a few others)
-	func_status::value_type box = func_status::ToggleOff;
-	LyXFont const & font =
-		TEXT(false)->real_current_font;
+	// A few general toggles
 	switch (action) {
-	case LFUN_EMPH:
-		if (font.emph() == LyXFont::ON)
-			box = func_status::ToggleOn;
-		break;
-	case LFUN_NOUN:
-		if (font.noun() == LyXFont::ON)
-			box = func_status::ToggleOn;
-		break;
-	case LFUN_BOLD:
-		if (font.series() == LyXFont::BOLD_SERIES)
-			box = func_status::ToggleOn;
-		break;
 	case LFUN_READ_ONLY_TOGGLE:
-		if (buf->isReadonly())
-			box = func_status::ToggleOn;
+		func_status::toggle(flag, buf->isReadonly());
 		break;
 	case LFUN_APPENDIX:
-		if (TEXT(false)->cursor.par()->params().startOfAppendix())
-			box = func_status::ToggleOn;
+		func_status::toggle(flag, TEXT(false)->cursor.par()->params().startOfAppendix());
 		break;
 	default:
-		box = func_status::OK;
 		break;
 	}
-	flag |= box;
 
+	// the font related toggles
+	if (!mathcursor) {
+		LyXFont const & font = TEXT(false)->real_current_font;
+		switch (action) {
+		case LFUN_EMPH:
+			func_status::toggle(flag, font.emph() == LyXFont::ON);
+			break;
+		case LFUN_NOUN:
+			func_status::toggle(flag, font.noun() == LyXFont::ON);
+			break;
+		case LFUN_BOLD:
+			func_status::toggle(flag, font.series() == LyXFont::BOLD_SERIES);
+			break;
+		case LFUN_SANS:
+			func_status::toggle(flag, font.family() == LyXFont::SANS_FAMILY);
+			break;
+		case LFUN_ROMAN:
+			func_status::toggle(flag, font.family() == LyXFont::ROMAN_FAMILY);
+			break;
+		case LFUN_CODE:
+			func_status::toggle(flag, font.family() == LyXFont::TYPEWRITER_FAMILY);
+			break;
+		default:
+			break;
+		}
+	}
+#if 0
+	else {
+		MathTextCodes tc = mathcursor->getLastCode();
+		switch (action) {
+		case LFUN_BOLD:
+			func_status::toggle(flag, tc == LM_TC_BF);
+			break;
+		case LFUN_SANS:
+			func_status::toggle(flag, tc == LM_TC_SF);
+			break;
+		case LFUN_EMPH:
+			func_status::toggle(flag, tc == LM_TC_CAL);
+			break;
+		case LFUN_ROMAN:
+			func_status::toggle(flag, tc == LM_TC_RM);
+			break;
+		case LFUN_CODE:
+			func_status::toggle(flag, tc == LM_TC_TT);
+			break;
+		case LFUN_NOUN:
+			func_status::toggle(flag, tc == LM_TC_BB);
+			break;
+		case LFUN_DEFAULT:
+			func_status::toggle(flag, tc == LM_TC_VAR);
+			break;
+		default:
+			break;
+		}
+	}
+	#endif
+	
 	return flag;
 }
 

@@ -1,3 +1,13 @@
+2001-12-21  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* lyxfunc.C (getStatus): use func_status::toggle to simplify the
+	code. Support all font-changing funcs (even those which are not in
+	menu currently). Support for reporting font settings in 
+	mathed (disabled until Andre provides a function on mathed's side).
+
+	* func_status.h (toggle): small helper function to set toggle
+	state on a flag.
+
 2001-12-21  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* tabular_funcs.C: getline -> std::getline

@@ -1002,7 +1002,7 @@ if test -z "$prog" ; then
 fi
 
 rc_entries="$rc_entries
-\printspool_command \"$prog\""
+\print_spool_command \"$prog\""
 case $prog in
   lp) print_spool_printerprefix="-d ";;
  lpr) print_spool_printerprefix="-P";;
