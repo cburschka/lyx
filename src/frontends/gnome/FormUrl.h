@@ -21,7 +21,7 @@
 #include "support/utility.hpp"
 #include "insets/insetcommand.h"
 
-#include <gtk--/widget.h>
+#include <gtk--/container.h>
 #include <gtk--/checkbutton.h>
 #include <gnome--/entry.h>
 #include <gtk--/button.h>
@@ -76,7 +76,7 @@ private:
   Connection ih_;
 
   /// Real GUI implementation.
-  Gtk::Widget * dialog_;
+  Gtk::Container * dialog_;
 
   Gtk::CheckButton * html_type_;
 

@@ -24,6 +24,8 @@
 #include "formrefdialog.h"
 #include "debug.h"
 
+using std::endl;
+
 FormRef::FormRef(LyXView *v, Dialogs *d)
 	: dialog_(0), lv_(v), d_(d), inset_(0), h_(0), u_(0), ih_(0),
 	sort(0), gotowhere(GOTOREF), type(REF), refs(0)

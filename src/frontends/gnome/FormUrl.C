@@ -23,12 +23,20 @@
 #include "buffer.h"
 #include "lyxfunc.h"
 
-extern "C" {
-#include "diainserturl_interface.h"
-#include "support.h"
-}
-
+#include <gtk--/label.h>
+#include <gtk--/table.h>
+#include <gtk--/box.h>
+#include <gtk--/buttonbox.h>
 #include <gtk--/base.h>
+#include <gtk--/separator.h>
+
+// temporary solution for LyXView
+#include "mainapp.h"
+extern GLyxAppWin * mainAppWin;
+
+// configuration keys
+static string const CONF_ENTRY_URL("FormUrl_url");
+static string const CONF_ENTRY_NAME("FormUrl_name");
 
 FormUrl::FormUrl(LyXView * lv, Dialogs * d)
 	: lv_(lv), d_(d), u_(0), h_(0), ih_(0), inset_(0), dialog_(NULL)
@@ -70,32 +78,75 @@ void FormUrl::show()
 {
   if (!dialog_)
     {
-      GtkWidget * pd = create_DiaInsertUrl();
+      using namespace Gtk::Box_Helpers;
 
-      dialog_ = Gtk::wrap(pd);
-      url_ = Gtk::wrap( GNOME_ENTRY( lookup_widget(pd, "url") ) );
-      name_ = Gtk::wrap( GNOME_ENTRY( lookup_widget(pd, "name") ) );
-      html_type_ = Gtk::wrap( GTK_CHECK_BUTTON( lookup_widget(pd, "html_type") ) );
+      Gtk::Label * label;
+      Gtk::Table * table = manage( new Gtk::Table(2, 2, FALSE) );
+      Gtk::Box * mbox = manage( new Gtk::HBox() );
+      Gtk::ButtonBox * bbox = manage( new Gtk::VButtonBox() );
+      Gtk::Separator * sep = manage( new Gtk::VSeparator() );
+
+      url_ = manage( new Gnome::Entry() );
+      name_ = manage( new Gnome::Entry() );
+      html_type_ = manage( new Gtk::CheckButton(N_("HTML type")) );
       
-      b_ok = Gtk::wrap( GTK_BUTTON( lookup_widget(pd, "button_ok") ) );
-      b_cancel = Gtk::wrap( GTK_BUTTON( lookup_widget(pd, "button_cancel") ) );
+      b_ok = Gtk::wrap( GTK_BUTTON( gnome_stock_button(GNOME_STOCK_BUTTON_OK) ) );
+      b_cancel = Gtk::wrap( GTK_BUTTON( gnome_stock_button(GNOME_STOCK_BUTTON_CANCEL) ) );
+      
+      // set up spacing
+      table->set_row_spacings(2);
+      table->set_col_spacings(2);
+      mbox->set_spacing(2);
+      bbox->set_spacing(4);
 
+      // configure entries
+      url_->set_history_id(CONF_ENTRY_URL);
+      url_->set_max_saved(10);
+      url_->load_history();
+      url_->set_use_arrows_always(true);
+      
+      name_->set_history_id(CONF_ENTRY_NAME);
+      name_->set_max_saved(10);
+      name_->load_history();
+      name_->set_use_arrows_always(true);
+      
+      // pack widgets
+      bbox->children().push_back(Element(*b_ok, false, false));
+      bbox->children().push_back(Element(*b_cancel, false, false));
+      
+      label = manage( new Gtk::Label(N_("URL")) );
+      table->attach( *label, 0, 1, 0, 1, 0, 0 );
+      label = manage( new Gtk::Label(N_("Name")) );
+      table->attach( *label, 0, 1, 1, 2, 0, 0 );
+      table->attach( *url_, 1, 2, 0, 1 );
+      table->attach( *name_, 1, 2, 1, 2 );
+
+      mbox->children().push_back(Element(*table));
+      mbox->children().push_back(Element(*html_type_, false, false));
+      mbox->children().push_back(Element(*sep, false, false));
+      mbox->children().push_back(Element(*bbox, false, false));
+      
+      // packing dialog to main window
+      dialog_ = mbox;
+      mainAppWin->add_action(*dialog_, N_(" URL "));
+
+      // setting focus
+      GTK_WIDGET_SET_FLAGS (GTK_WIDGET(url_->get_entry()->gtkobj()), GTK_CAN_DEFAULT);
+      gtk_widget_grab_focus (GTK_WIDGET(url_->get_entry()->gtkobj()));
+      gtk_widget_grab_default (GTK_WIDGET(url_->get_entry()->gtkobj()));
+
+      // connecting signals
       b_ok->clicked.connect(slot(this, &FormUrl::apply));
-      b_ok->clicked.connect(dialog_->destroy.slot());
-      b_cancel->clicked.connect(dialog_->destroy.slot());
+      name_->get_entry()->activate.connect(slot(this, &FormUrl::apply));
+
+      b_cancel->clicked.connect(slot(mainAppWin, &GLyxAppWin::remove_action));
+
       dialog_->destroy.connect(slot(this, &FormUrl::free));
 
       u_ = d_->updateBufferDependent.connect(slot(this, &FormUrl::update));
       h_ = d_->hideBufferDependent.connect(slot(this, &FormUrl::hide));
 
-      if (!dialog_->is_visible()) dialog_->show_all();
-
       update();  // make sure its up-to-date
-    }
-  else
-    {
-      Gdk_Window dialog_win(dialog_->get_window());
-      dialog_win.raise();
     }
 }
 
@@ -120,7 +171,7 @@ void FormUrl::update()
 
 void FormUrl::hide()
 {
-  if (dialog_!=NULL) dialog_->destroy();
+  if (dialog_!=NULL) mainAppWin->remove_action();
 }
 
 void FormUrl::free()
@@ -160,4 +211,11 @@ void FormUrl::apply()
       lv_->getLyXFunc()->Dispatch( LFUN_INSERT_URL,
 				   params.getAsString().c_str() );
     }
+
+  // save history
+  url_->save_history();
+  name_->save_history();
+
+  // hide the dialog
+  hide();
 }

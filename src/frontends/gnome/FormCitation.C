@@ -27,13 +27,19 @@
 #include "support/filetools.h"
 #include "support/LRegex.h"
 
-extern "C" {
-#include "diainsertcitation_interface.h"
-#include "support.h"
-}
-
 #include <gtk--/scrolledwindow.h>
 #include <gnome--/pixmap.h>
+#include <gtk--/label.h>
+#include <gtk--/box.h>
+#include <gtk--/buttonbox.h>
+#include <gnome--/entry.h>
+#include <gnome--/stock.h>
+#include <gtk--/separator.h>
+#include <libgnome/gnome-config.h>
+
+// temporary solution for LyXView
+#include "mainapp.h"
+extern GLyxAppWin * mainAppWin;
 
 using std::vector;
 using std::pair;
@@ -46,27 +52,30 @@ using SigC::slot;
 using SigC::bind;
 #endif
 
-// gnome configuration file keys
-#define LOCAL_CONFIGURE_PREFIX "FormCitation"
 
-#define CONF_DIALOG_WIDTH 		"width"
-#define CONF_DIALOG_WIDTH_DEFAULT 	"=550"
+// configuration keys
+static string const  LOCAL_CONFIGURE_PREFIX("FormCitation");
 
-#define CONF_DIALOG_HEIGTH		"heigth"
-#define CONF_DIALOG_HEIGTH_DEFAULT	"=550"
+static string const  CONF_DIALOG_WIDTH("width");
+static string const  CONF_DIALOG_WIDTH_DEFAULT("=550");
 
-#define CONF_PANE_INFO			"paneinfo"
-#define CONF_PANE_INFO_DEFAULT		"=300"
+static string const  CONF_DIALOG_HEIGTH("heigth");
+static string const  CONF_DIALOG_HEIGTH_DEFAULT("=550");
 
-#define CONF_PANE_KEY			"panekey"
-#define CONF_PANE_KEY_DEFAULT		"=225"
+static string const  CONF_PANE_INFO("paneinfo");
+static string const  CONF_PANE_INFO_DEFAULT("=300");
 
-#define CONF_COLUMN			"column"
-#define CONF_COLUMN_DEFAULT		"=50"
+static string const  CONF_PANE_KEY("panekey");
+static string const  CONF_PANE_KEY_DEFAULT("=225");
 
-#define CONF_REGEXP			"regexp"
-#define CONF_REGEXP_DEFAULT		"=0"
+static string const  CONF_COLUMN("column");
+static string const  CONF_COLUMN_DEFAULT("=50");
 
+static string const  CONF_REGEXP("regexp");
+static string const  CONF_REGEXP_DEFAULT("=0");
+
+static string const CONF_SEARCH("FormCitation_search");
+static string const CONF_TEXTAFTER("FormCitation_textafter");
 
 FormCitation::FormCitation(LyXView * lv, Dialogs * d)
 	: lv_(lv), d_(d), u_(0), h_(0), ih_(0), inset_(0), dialog_(NULL)
@@ -90,9 +99,12 @@ void FormCitation::showInset( InsetCommand * const inset )
   
   inset_ = inset;
   ih_ = inset_->hide.connect(slot(this, &FormCitation::hide));
+
+  u_ = d_->updateBufferDependent.connect(slot(this, &FormCitation::update));
+  h_ = d_->hideBufferDependent.connect(slot(this, &FormCitation::hide));
   
   params = inset->params();
-  show();
+  //showStageEdit();
 }
 
 
@@ -100,9 +112,13 @@ void FormCitation::createInset( string const & arg )
 {
   if( dialog_!=NULL ) return;
   
+  u_ = d_->updateBufferDependent.connect(slot(this, &FormCitation::update));
+  h_ = d_->hideBufferDependent.connect(slot(this, &FormCitation::hide));
+  
   params.setFromString( arg );
-  show();
+  showStageSearch();
 }
+
 
 static
 void parseBibTeX(string data,
@@ -195,7 +211,202 @@ void parseBibTeX(string data,
     }
 }
 
-void FormCitation::show()
+void FormCitation::showStageSearch()
+{
+  if (!dialog_)
+    {
+      using namespace Gtk::Box_Helpers;
+
+      Gtk::Box * mbox = manage( new Gtk::HBox() );
+      Gtk::ButtonBox * bbox = manage( new Gtk::HButtonBox() );
+      Gtk::Separator * sep = manage( new Gtk::VSeparator() );
+      
+      search_text_ = manage( new Gnome::Entry() );
+      
+      button_regexp_ = manage( new Gtk::CheckButton(N_("Use Regular Expression")) );
+
+      b_ok = manage( new Gtk::Button(N_("Search")) );
+      b_cancel = Gtk::wrap( GTK_BUTTON( gnome_stock_button(GNOME_STOCK_BUTTON_CANCEL) ) );
+      
+      // set up spacing
+      mbox->set_spacing(4);
+      bbox->set_spacing(4);
+
+      search_text_->set_history_id(CONF_SEARCH);
+      search_text_->set_max_saved(10);
+      search_text_->load_history();
+      search_text_->set_use_arrows_always(true);
+      
+      // packing
+      bbox->children().push_back(Element(*b_ok, false, false));
+      bbox->children().push_back(Element(*b_cancel, false, false));
+
+      mbox->children().push_back(Element(*search_text_, true, true));
+      mbox->children().push_back(Element(*button_regexp_, false, false));
+      mbox->children().push_back(Element(*sep, false, false));
+      mbox->children().push_back(Element(*bbox, false, false));
+
+      // packing dialog to main window
+      dialog_ = mbox;
+      mainAppWin->add_action(*dialog_, N_(" Insert Citation: Enter keyword(s) or regular expression "));
+
+      // setting focus
+      GTK_WIDGET_SET_FLAGS (GTK_WIDGET(search_text_->get_entry()->gtkobj()), GTK_CAN_DEFAULT);
+      gtk_widget_grab_focus (GTK_WIDGET(search_text_->get_entry()->gtkobj()));
+      gtk_widget_grab_default (GTK_WIDGET(search_text_->get_entry()->gtkobj()));
+
+      // restoring regexp setting
+      string path = PACKAGE "/" + LOCAL_CONFIGURE_PREFIX;
+      string w;
+      w = path + "/" + CONF_REGEXP + CONF_REGEXP_DEFAULT;
+      button_regexp_->set_active( (gnome_config_get_int(w.c_str()) > 0) );
+
+      // connecting signals
+      b_ok->clicked.connect(slot(this, &FormCitation::moveFromSearchToSelect));
+      search_text_->get_entry()->activate.connect(slot(this, &FormCitation::moveFromSearchToSelect));
+
+      b_cancel->clicked.connect(slot(mainAppWin, &GLyxAppWin::remove_action));
+
+      dialog_->destroy.connect(slot(this, &FormCitation::free));
+    }
+}
+
+void FormCitation::moveFromSearchToSelect()
+{
+  search_string_ = search_text_->get_entry()->get_text();
+  use_regexp_ = button_regexp_->get_active();
+  
+  // saving configuration
+  search_text_->save_history();
+
+  string path = PACKAGE "/" + LOCAL_CONFIGURE_PREFIX;
+  string w;
+  w = path + "/" + CONF_REGEXP;
+  gnome_config_set_int(w.c_str(), button_regexp_->get_active());
+  gnome_config_sync();
+  
+  // moves to stage "select"
+  dialog_ = NULL;
+  mainAppWin->remove_action();
+  showStageSelect();
+}
+
+void FormCitation::showStageSelect()
+{
+  if (!dialog_)
+    {
+      using namespace Gtk::Box_Helpers;
+
+      Gtk::Box * mbox = manage( new Gtk::VBox() );
+      Gtk::Box * tbox = manage( new Gtk::HBox() );
+      Gtk::ButtonBox * bbox = manage( new Gtk::HButtonBox() );
+      Gtk::Separator * sep = manage( new Gtk::HSeparator() );
+      Gtk::ScrolledWindow * sw = manage( new Gtk::ScrolledWindow() );
+
+      info_ = manage( new Gnome::Less() );
+      paned_info_ = manage( new Gtk::HPaned() );
+      text_after_ = manage( new Gnome::Entry() );
+      
+      b_ok = Gtk::wrap( GTK_BUTTON( gnome_stock_button(GNOME_STOCK_BUTTON_OK) ) );
+      b_cancel = Gtk::wrap( GTK_BUTTON( gnome_stock_button(GNOME_STOCK_BUTTON_CANCEL) ) );
+
+      // setup text_after_
+      text_after_->set_history_id(CONF_TEXTAFTER);
+      text_after_->set_max_saved(10);
+      text_after_->load_history();
+      text_after_->set_use_arrows_always(true);
+
+      sw->set_policy(GTK_POLICY_AUTOMATIC, GTK_POLICY_AUTOMATIC);
+
+      // constructing CList
+      vector<string> colnames;
+      colnames.push_back("INVISIBLE");
+      colnames.push_back(N_("Key"));
+      colnames.push_back(N_("Author(s)"));
+      colnames.push_back(N_("Title"));
+      colnames.push_back(N_("Year"));
+      colnames.push_back(N_("Journal"));
+      clist_bib_ = manage( new Gtk::CList(colnames) );
+      clist_bib_->column(0).set_visiblity(false);
+
+      bbox->set_layout(GTK_BUTTONBOX_END);
+      
+      // set up spacing
+      mbox->set_spacing(4);
+      bbox->set_spacing(4);
+      tbox->set_spacing(4);
+
+      // packing widgets
+      sw->add(*clist_bib_);
+      paned_info_->add1(*sw);
+      paned_info_->add2(*info_);
+
+      bbox->children().push_back(Element(*b_ok, false, false));
+      bbox->children().push_back(Element(*b_cancel, false, false));
+
+      tbox->children().push_back(Element(*manage(new Gtk::Label(N_("Text after"))), false, false));
+      tbox->children().push_back(Element(*text_after_, true, true));
+      tbox->children().push_back(Element(*manage(new Gtk::VSeparator()), false, false));
+      tbox->children().push_back(Element(*bbox, false, false));
+
+      mbox->children().push_back(Element(*paned_info_,true,true));
+      mbox->children().push_back(Element(*sep, false, false));
+      mbox->children().push_back(Element(*tbox, false, false));
+      
+      // packing dialog to main window
+      dialog_ = mbox;
+      mainAppWin->add_action(*dialog_, N_(" Insert Citation: Select citation "), true);
+
+      // setting focus
+      GTK_WIDGET_SET_FLAGS (GTK_WIDGET(b_ok->gtkobj()), GTK_CAN_DEFAULT);
+      GTK_WIDGET_SET_FLAGS (GTK_WIDGET(b_cancel->gtkobj()), GTK_CAN_DEFAULT);
+      GTK_WIDGET_SET_FLAGS (GTK_WIDGET(clist_bib_->gtkobj()), GTK_CAN_DEFAULT);
+      gtk_widget_grab_focus (GTK_WIDGET(clist_bib_->gtkobj()));
+      gtk_widget_grab_default (GTK_WIDGET(b_ok->gtkobj()));
+
+      // setting sizes of the widgets
+      string path;
+      string w, h;
+      path = PACKAGE "/" + LOCAL_CONFIGURE_PREFIX;
+
+      w = path + "/" + CONF_PANE_INFO + CONF_PANE_INFO_DEFAULT;
+      paned_info_->set_position( gnome_config_get_int(w.c_str()) );
+
+      int i, sz;
+      for (i = 0, sz = clist_bib_->columns().size(); i < sz; ++i)
+	{
+	  w = path + "/" + CONF_COLUMN + "_" + tostr(i) + CONF_COLUMN_DEFAULT;
+	  clist_bib_->column(i).set_width( gnome_config_get_int(w.c_str()) );
+	}
+
+      // connecting signals
+      b_ok->clicked.connect(slot(this, &FormCitation::applySelect));
+      b_cancel->clicked.connect(slot(mainAppWin, &GLyxAppWin::remove_action));
+
+      dialog_->destroy.connect(slot(this, &FormCitation::free));
+
+      clist_bib_->click_column.connect(slot(this, &FormCitation::sortBibList));
+      clist_bib_->select_row.connect(bind(slot(this, &FormCitation::selection_toggled),
+					  true, false));
+      clist_bib_->unselect_row.connect(bind(slot(this, &FormCitation::selection_toggled),
+					    false, false));
+      // retrieving data
+      vector<pair<string,string> > blist = lv_->buffer()->getBibkeyList();
+      
+      for ( i = 0, sz = blist.size(); i < sz; ++i )
+	{
+	  bibkeys.push_back(blist[i].first);
+	  bibkeysInfo.push_back(blist[i].second);
+	}
+      
+      blist.clear();      
+      
+      // updating list
+      search();
+    }
+}
+
+/*void FormCitation::show()
 {
   if (!dialog_)
     {
@@ -313,6 +524,7 @@ void FormCitation::show()
       dialog_win.raise();
     }
 }
+*/
 
 void FormCitation::addItemToBibList(int i)
 {
@@ -340,6 +552,8 @@ void FormCitation::addItemToBibList(int i)
 
 void FormCitation::update()
 {
+  return;
+  
   bibkeys.clear();
   bibkeysInfo.clear();
 
@@ -442,7 +656,6 @@ void FormCitation::selection_toggled(gint            row,
     {
       info_->show_string("");
     }
-  updateButtons();
 }
 
 void FormCitation::removeCitation()
@@ -479,7 +692,7 @@ void FormCitation::newCitation()
 
 void FormCitation::hide()
 {
-  if (dialog_!=NULL) dialog_->destroy();
+  if (dialog_!=NULL) mainAppWin->remove_action();
 }
 
 void FormCitation::free()
@@ -487,32 +700,32 @@ void FormCitation::free()
   if (dialog_!=NULL)
     {
       // storing configuration
-      string path;
-      string w, h;
-      path  = PACKAGE "/" LOCAL_CONFIGURE_PREFIX;
-      w = path + "/" + CONF_DIALOG_WIDTH;
-      h = path + "/" + CONF_DIALOG_HEIGTH;
+//        string path;
+//        string w, h;
+//        path  = PACKAGE "/" LOCAL_CONFIGURE_PREFIX;
+//        w = path + "/" + CONF_DIALOG_WIDTH;
+//        h = path + "/" + CONF_DIALOG_HEIGTH;
 
-      gnome_config_set_int(w.c_str(), dialog_->width());
-      gnome_config_set_int(h.c_str(), dialog_->height());
+//        gnome_config_set_int(w.c_str(), dialog_->width());
+//        gnome_config_set_int(h.c_str(), dialog_->height());
 
-      w = path + "/" + CONF_PANE_INFO;
-      gnome_config_set_int(w.c_str(), paned_key_->height());
+//        w = path + "/" + CONF_PANE_INFO;
+//        gnome_config_set_int(w.c_str(), paned_key_->height());
 
-      w = path + "/" + CONF_PANE_KEY;
-      gnome_config_set_int(w.c_str(), box_keys_->width());
+//        w = path + "/" + CONF_PANE_KEY;
+//        gnome_config_set_int(w.c_str(), box_keys_->width());
 
-      int i, sz;
-      for (i = 0, sz = clist_bib_->columns().size(); i < sz; ++i)
-	{
-	  w = path + "/" + CONF_COLUMN + "_" + tostr(i);
-	  gnome_config_set_int(w.c_str(), clist_bib_->get_column_width(i));
-	}
+//        int i, sz;
+//        for (i = 0, sz = clist_bib_->columns().size(); i < sz; ++i)
+//  	{
+//  	  w = path + "/" + CONF_COLUMN + "_" + tostr(i);
+//  	  gnome_config_set_int(w.c_str(), clist_bib_->get_column_width(i));
+//  	}
 
-      w = path + "/" + CONF_REGEXP;
-      gnome_config_set_int(w.c_str(), button_regexp_->get_active());
+//        w = path + "/" + CONF_REGEXP;
+//        gnome_config_set_int(w.c_str(), button_regexp_->get_active());
 
-      gnome_config_sync();
+//        gnome_config_sync();
 
       // cleaning up
       dialog_ = NULL;
@@ -521,6 +734,63 @@ void FormCitation::free()
       inset_ = 0;
       ih_.disconnect();
     }
+}
+
+void FormCitation::applySelect()
+{
+  if( lv_->buffer()->isReadonly() ) return;
+
+  string contents;
+  int i, sz;
+
+  contents = frontStrip( strip(params.getContents()) );
+  if (!contents.empty()) contents += ", ";
+  
+  sz = clist_bib_->selection().size();
+  for (i=0; i < sz; ++i)
+    {
+      if (i > 0) contents += ", ";
+      contents += clist_bib_->selection().operator[](i).operator[](1).get_text();
+    }
+  
+  params.setContents( contents );
+  params.setOptions( text_after_->get_entry()->get_text() );
+
+  if( inset_ != 0 )
+    {
+      // Only update if contents have changed
+      if( params != inset_->params() )
+	{
+	  inset_->setParams( params );
+	  lv_->view()->updateInset( inset_, true );
+	}
+    }
+  else
+    {
+      lv_->getLyXFunc()->Dispatch( LFUN_CITATION_INSERT,
+				   params.getAsString().c_str() );
+    }
+
+  // save config
+  text_after_->save_history();
+
+  string path;
+  string w, h;
+  path  = PACKAGE "/" + LOCAL_CONFIGURE_PREFIX;
+
+  w = path + "/" + CONF_PANE_INFO;
+  gnome_config_set_int(w.c_str(), paned_info_->width() - info_->width());
+  
+  for (i = 0, sz = clist_bib_->columns().size(); i < sz; ++i)
+    {
+      w = path + "/" + CONF_COLUMN + "_" + tostr(i);
+      gnome_config_set_int(w.c_str(), clist_bib_->get_column_width(i));
+    }
+  
+  gnome_config_sync();
+  
+  // close dialog
+  hide();
 }
 
 void FormCitation::apply()
@@ -561,14 +831,14 @@ void FormCitation::sortBibList(gint col)
 
 void FormCitation::search()
 {
-  if (button_regexp_->get_active()) searchReg();
+  if (use_regexp_) searchReg();
   else searchSimple();
 }
 
 // looking for entries which match regexp
 void FormCitation::searchReg()
 {
-  string tmp, rexptxt( search_text_->get_entry()->get_text() );
+  string tmp, rexptxt( search_string_ );
   rexptxt = frontStrip( strip( rexptxt ) );
   
   LRegex reg(rexptxt);
@@ -592,15 +862,13 @@ void FormCitation::searchReg()
 
   clist_bib_->sort();
   clist_bib_->thaw();
-  // clist_bib_: done
-  updateButtons();
 }
 
 // looking for entries which contain all the words specified in search_text entry
 void FormCitation::searchSimple()
 {
   vector<string> searchwords;
-  string tmp, stext( search_text_->get_entry()->get_text() );
+  string tmp, stext( search_string_ );
   stext = frontStrip( strip( stext ) );
   stext = frontStrip( split(stext, tmp, ' ') );
   while( !tmp.empty() )
@@ -633,6 +901,4 @@ void FormCitation::searchSimple()
 
   clist_bib_->sort();
   clist_bib_->thaw();
-  // clist_bib_: done
-  updateButtons();
 }

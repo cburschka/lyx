@@ -107,6 +107,7 @@ bool CutAndPaste::cutSelection(LyXParagraph * startpar, LyXParagraph ** endpar,
 #endif
 	    buf->InsertFromMinibuffer(buf->Last());
 	}
+	end = start-1;
     } else {
 	// more than one paragraph
 	(*endpar)->BreakParagraphConservative(current_view->buffer()->params,

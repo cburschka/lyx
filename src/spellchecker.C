@@ -593,7 +593,7 @@ void sc_store_replacement(string const & mis, string const & cor) {
 PspellCanHaveError * spell_error_object;
 
 static
-void init_spell_checker(BufferParams const &, string const & lang)
+void init_spell_checker(BufferParams const &, string const & /* lang */)
 {
 	PspellConfig * config = new_pspell_config();
 	spell_error_object = new_pspell_manager(config);
@@ -630,7 +630,6 @@ isp_result * sc_check_word(string const & word)
 	if (word_ok) {
 		result->flag = ISP_OK;
 	} else {
-
 		PspellWordList const * sugs =
 			pspell_manager_suggest(sc, word.c_str());
 		Assert(sugs != 0);

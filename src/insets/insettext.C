@@ -46,6 +46,7 @@
 #include "intl.h"
 #include "trans_mgr.h"
 #include "lyxscreen.h"
+#include "WorkArea.h"
 
 using std::ostream;
 using std::ifstream;
@@ -596,12 +597,26 @@ void InsetText::InsetButtonPress(BufferView * bv, int x, int y, int button)
 	}
     }
     if (!inset) {
+	bool paste_internally = false;
+	if ((button == 2) && TEXT(bv)->selection) {
+	    LocalDispatch(bv, LFUN_COPY, "");
+	    paste_internally = true;
+	}
 	TEXT(bv)->SetCursorFromCoordinates(bv, x-drawTextXOffset,
 					   y+TEXT(bv)->first+insetAscent);
 	TEXT(bv)->sel_cursor = TEXT(bv)->cursor;
 	UpdateLocal(bv, CURSOR, false);
 	bv->owner()->setLayout(cpar(bv)->GetLayout());
 	old_par = cpar(bv);
+	// Insert primary selection with middle mouse
+	// if there is a local selection in the current buffer,
+	// insert this
+	if (button == 2) {
+	    if (paste_internally)
+		LocalDispatch(bv, LFUN_PASTE, "");
+	    else
+		LocalDispatch(bv, LFUN_PASTESELECTION, "paragraph");
+	}
     }
     ShowInsetCursor(bv);
 }
@@ -800,7 +815,10 @@ InsetText::LocalDispatch(BufferView * bv,
 	  bv->text->cursor.par()->next
 #endif
 		);
-	TEXT(bv)->Backspace(bv);
+	if (TEXT(bv)->selection)
+	    TEXT(bv)->CutSelection(bv);
+	else
+	    TEXT(bv)->Backspace(bv);
 	UpdateLocal(bv, CURSOR_PAR, true);
 	break;
     case LFUN_DELETE:
@@ -813,7 +831,10 @@ InsetText::LocalDispatch(BufferView * bv,
 	  bv->text->cursor.par()->next
 #endif
 		);
-	TEXT(bv)->Delete(bv);
+	if (TEXT(bv)->selection)
+	    TEXT(bv)->CutSelection(bv);
+	else
+	    TEXT(bv)->Delete(bv);
 	UpdateLocal(bv, CURSOR_PAR, true);
 	break;
     case LFUN_CUT:
@@ -834,6 +855,20 @@ InsetText::LocalDispatch(BufferView * bv,
 	TEXT(bv)->CopySelection(bv);
 	UpdateLocal(bv, CURSOR_PAR, false);
 	break;
+    case LFUN_PASTESELECTION:
+    {
+	string clip(bv->workarea()->getClipboard());
+	
+	if (clip.empty())
+	    break;
+	if (arg == "paragraph") {
+		TEXT(bv)->InsertStringB(bv, clip);
+	} else {
+		TEXT(bv)->InsertStringA(bv, clip);
+	}
+	UpdateLocal(bv, CURSOR_PAR, true);
+	break;
+    }
     case LFUN_PASTE:
 	if (!autoBreakRows) {
 	    CutAndPaste cap;
@@ -1368,14 +1403,16 @@ void InsetText::resizeLyXText(BufferView * bv) const
 
 //    ProhibitInput(bv);
 
-    lpar = TEXT(bv)->cursor.par();
-    pos = TEXT(bv)->cursor.pos();
-    selstartpar = TEXT(bv)->sel_start_cursor.par();
-    selstartpos = TEXT(bv)->sel_start_cursor.pos();
-    selendpar = TEXT(bv)->sel_end_cursor.par();
-    selendpos = TEXT(bv)->sel_end_cursor.pos();
-    selection = TEXT(bv)->selection;
-    mark_set = TEXT(bv)->mark_set;
+    if (locked) {
+	lpar = TEXT(bv)->cursor.par();
+	pos = TEXT(bv)->cursor.pos();
+	selstartpar = TEXT(bv)->sel_start_cursor.par();
+	selstartpos = TEXT(bv)->sel_start_cursor.pos();
+	selendpar = TEXT(bv)->sel_end_cursor.par();
+	selendpos = TEXT(bv)->sel_end_cursor.pos();
+	selection = TEXT(bv)->selection;
+	mark_set = TEXT(bv)->mark_set;
+    }
     deleteLyXText(bv, (the_locking_inset == 0));
 
     if (lpar) {

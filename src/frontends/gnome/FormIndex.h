@@ -21,7 +21,7 @@
 #include "support/utility.hpp"
 #include "insets/insetcommand.h"
 
-#include <gtk--/widget.h>
+#include <gtk--/container.h>
 #include <gnome--/entry.h>
 #include <gtk--/label.h>
 
@@ -71,7 +71,7 @@ private:
   Connection ih_;
 
   /// Real GUI implementation.
-  Gtk::Widget * dialog_;
+  Gtk::Container * dialog_;
   Gnome::Entry * keyword_;
   Gtk::Button * b_ok;
   Gtk::Button * b_cancel;

@@ -787,7 +787,7 @@ char LyXTable::GetAlignment(int cell)
 		return column_info[column_of_cell(cell)].alignment;
 }
 
-string LyXTable::GetPWidth(int cell)
+string const LyXTable::GetPWidth(int cell)
 {
 	int fvcell = FirstVirtualCell(cell);
 	
@@ -796,7 +796,7 @@ string LyXTable::GetPWidth(int cell)
 	return column_info[column_of_cell(fvcell)].p_width;
 }
 
-string LyXTable::GetAlignSpecial(int cell, int what)
+string const LyXTable::GetAlignSpecial(int cell, int what)
 {
     if (what == SET_SPECIAL_MULTI)
         return cellinfo_of_cell(cell)->align_special;

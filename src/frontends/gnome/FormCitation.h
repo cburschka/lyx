@@ -21,7 +21,7 @@
 #include "support/utility.hpp"
 #include "insets/insetcommand.h"
 
-#include <gtk--/widget.h>
+#include <gtk--/container.h>
 #include <gtk--/clist.h>
 #include <gnome--/entry.h>
 #include <gnome--/less.h>
@@ -48,13 +48,21 @@ private:
   virtual void update();
   /// Apply from dialog (modify or create inset)
   virtual void apply();
+  /// Apply from dialog (modify or create inset)
+  virtual void applySelect();
   /// Explicitly free the dialog.
   void free();
-  /// Create the dialog if necessary, update it and display it.
-  void show();
   /// Hide the dialog.
   void hide();
-
+  /// Create the dialog if necessary, update it and display it. Not used in this dialog
+  void show() { }
+  /// Ask user for regexp or keyword(s)
+  void showStageSearch();
+  /// Ask user to select the citation in the list
+  void showStageSelect();
+  /// moves from Search to Select "stage"
+  void moveFromSearchToSelect();
+  
   /// sort biblist
   void sortBibList(gint);
   /// update state of the buttons
@@ -102,20 +110,21 @@ private:
   Connection ih_;
 
   /// Real GUI implementation.
-  Gtk::Widget * dialog_;
+  Gtk::Container * dialog_;
   Gtk::Button * b_ok;
   Gtk::Button * b_cancel;
 
+  Gnome::Entry * search_text_;
+  string search_string_;
+  bool use_regexp_;
+
   Gnome::Less * info_;
   Gnome::Entry * text_after_;
-
-  Gnome::Entry * search_text_;
 
   Gtk::Button * button_select_;
   Gtk::Button * button_unselect_;
   Gtk::Button * button_up_;
   Gtk::Button * button_down_;
-  Gtk::Button * button_search_;
   Gtk::CheckButton * button_regexp_;
   
   Gtk::CList * clist_selected_;

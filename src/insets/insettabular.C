@@ -38,6 +38,12 @@
 
 const int ADD_TO_HEIGHT = 2;
 const int ADD_TO_TABULAR_WIDTH = 2;
+///
+static LyXTabular * paste_tabular = 0;
+bool InsetTabular::hasPasteBuffer() const
+{
+    return (paste_tabular != 0);
+}
 
 using std::ostream;
 using std::ifstream;
@@ -128,7 +134,6 @@ InsetTabular::InsetTabular(Buffer * buf, int rows, int columns)
     cursor.pos(0);
     sel_pos_start = sel_pos_end = sel_cell_start = sel_cell_end = 0;
     dialogs_ = 0;
-    paste_tabular = 0;
     need_update = INIT;
 }
 
@@ -145,7 +150,6 @@ InsetTabular::InsetTabular(InsetTabular const & tab, Buffer * buf)
     cursor.pos(0);
     sel_pos_start = sel_pos_end = sel_cell_start = sel_cell_end = 0;
     dialogs_ = 0;
-    paste_tabular = 0;
     need_update = INIT;
 }
 
@@ -590,8 +594,9 @@ void InsetTabular::InsetButtonPress(BufferView * bv, int x, int y, int button)
     }
     the_locking_inset = 0;
     if (inset_hit && bv->the_locking_inset) {
-	ActivateCellInset(bv, x, y, button);
-	the_locking_inset->InsetButtonPress(bv, x-inset_x, y-inset_y, button);
+	if (ActivateCellInset(bv, x, y, button))
+	    the_locking_inset->InsetButtonPress(bv, x-inset_x,
+						y-inset_y, button);
 	return;
     }
     ShowInsetCursor(bv);
@@ -1532,7 +1537,7 @@ bool InsetTabular::ActivateCellInset(BufferView * bv, int x, int y, int button,
     if (!the_locking_inset)
 	return false;
     UpdateLocal(bv, CELL, false);
-    return true;
+    return (the_locking_inset != 0);
 }
 
 
@@ -1913,8 +1918,36 @@ bool InsetTabular::cutSelection()
 {
     if (!hasSelection())
 	return false;
-    for(int i=sel_cell_start; i < sel_cell_end; ++i) {
-	tabular->GetCellInset(i)->clear();
+
+    int sel_col_start, sel_col_end;
+    int sel_row_start, sel_row_end;
+
+    sel_col_start = tabular->column_of_cell(sel_cell_start);
+    sel_col_end = tabular->column_of_cell(sel_cell_end);
+    if (sel_col_start > sel_col_end) {
+	sel_col_start = sel_col_end;
+	sel_col_end = tabular->right_column_of_cell(sel_cell_start);
+    } else {
+	sel_col_end = tabular->right_column_of_cell(sel_cell_end);
+    }
+    sel_row_start = tabular->row_of_cell(sel_cell_start);
+    sel_row_end = tabular->row_of_cell(sel_cell_end);
+    if (sel_row_start > sel_row_end) {
+	int tmp;
+	tmp = sel_row_start;
+	sel_row_start = sel_row_end;
+	sel_row_end = tmp;
+    }
+    if (sel_cell_start > sel_cell_end) {
+	int tmp = sel_cell_start;
+	sel_cell_start = sel_cell_end;
+	sel_cell_end = tmp;
+    }
+    int i, j;
+    for(i=sel_row_start; i <= sel_row_end; ++i) {
+	for(j=sel_col_start; j <= sel_col_end; ++j) {
+	    tabular->GetCellInset(tabular->GetCellNumber(i, j))->clear();
+	}
     }
     return true;
 }

@@ -336,7 +336,7 @@ bool FormDocument::class_apply()
 	params.pagestyle = fl_get_choice_text(class_->choice_doc_pagestyle);
 
 #ifdef USE_CLASS_COMBO   
-	unsigned int new_class = combo_doc_class->get();
+	unsigned int new_class = combo_doc_class->get() - 1;
 #else
 	unsigned int new_class = fl_get_choice(class_->choice_doc_class) - 1;
 #endif
@@ -369,7 +369,7 @@ bool FormDocument::class_apply()
 				   _("Errors loading new document class."),
 				   _("Reverting to original document class."));
 #ifdef USE_CLASS_COMBO
-			combo_doc_class->select(params.textclass);
+			combo_doc_class->select(params.textclass + 1);
 #else
 			fl_set_choice(class_->choice_doc_class,
 				      params.textclass + 1);
@@ -1168,7 +1168,7 @@ void FormDocument::CheckChoiceClass(FL_OBJECT * ob, long)
     string tct;
 
 #ifdef USE_CLASS_COMBO
-    tc = combo_doc_class->get();
+    tc = combo_doc_class->get() - 1;
     tct = combo_doc_class->getline();
 #else
     tc = fl_get_choice(ob) - 1;
@@ -1189,7 +1189,7 @@ void FormDocument::CheckChoiceClass(FL_OBJECT * ob, long)
 		   _("Unable to switch to new document class."),
 		   _("Reverting to original document class."));
 #ifdef USE_CLASS_COMBO
-	combo_doc_class->select(lv_->buffer()->params.textclass);
+	combo_doc_class->select(lv_->buffer()->params.textclass + 1);
 #else
 	fl_set_choice(class_->choice_doc_class, 
 		      lv_->buffer()->params.textclass + 1);

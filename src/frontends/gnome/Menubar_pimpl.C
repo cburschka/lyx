@@ -29,8 +29,12 @@
 #include "LyXView.h"
 #include "MenuBackend.h"
 #include "Menubar_pimpl.h"
+#include "lyxtext.h"
+#include "exporter.h"
 
 #include "mainapp.h"
+
+#include <gtk--/menu.h>
 
 using SigC::slot;
 using SigC::bind;
@@ -51,12 +55,12 @@ extern LastFiles * lastfiles;
 Menubar::Pimpl::Pimpl(LyXView * view, MenuBackend const & mb) 
   : owner_(view), menubackend_(&mb), ignore_action_(false)
 {
-	// Should we do something here?
+  
 }
 
 Menubar::Pimpl::~Pimpl() 
 {
-	// Should we do something here?
+  if (utoc_.connected()) utoc_.disconnect();
 }
 
 void Menubar::Pimpl::set(string const & menu_name) 
@@ -64,9 +68,14 @@ void Menubar::Pimpl::set(string const & menu_name)
   // if (current_menu_name_ != menu_name)  // disabled until Lastfiles and Documents are added dynamically to menu
     {
       current_menu_name_ = menu_name;
+
+      // clean up the lists
+      toc_.clear();
+      if (utoc_.connected()) utoc_.disconnect();
+      
       // compose new menu
       vector<Gnome::UI::Info> menus;
-      composeUIInfo(current_menu_name_, menus);
+      composeUIInfo(current_menu_name_, menus, "");
 
       // set menu
       Menu_ = menus;
@@ -80,6 +89,48 @@ void Menubar::Pimpl::set(string const & menu_name)
 
       // update state of the items
       update();
+      updateAllLists();
+    }
+}
+
+void Menubar::Pimpl::updateAllLists()
+{
+  // update lists
+  if (toc_.size() > 0)
+    {
+      vector<Buffer::TocItem> toclist = (owner_->view()->buffer()->getTocList())[Buffer::TOC_TOC];
+      updateList(&toclist, &toc_);
+    }
+}
+
+void Menubar::Pimpl::updateList(vector<Buffer::TocItem> * toclist, vector<ListsHolder> * pgui) 
+{
+  vector<ListsHolder> & gui = *pgui;
+  int szGui = gui.size();
+  int i;
+  for (i=0; i < szGui; ++i)
+    {
+      int oldsz = gui[i].lst.size();
+      vector<Gnome::UI::Info> menu;
+      string label;
+
+      menu.push_back(Gnome::UI::Item(Gnome::UI::Icon(GNOME_STOCK_MENU_REFRESH),
+				     N_("Refresh"), slot(this, &Menubar::Pimpl::updateAllLists)));
+      
+      vector<Buffer::TocItem>::const_iterator end = toclist->end();
+      for (vector<Buffer::TocItem>::const_iterator it = toclist->begin();
+	   it != end; ++it)
+
+	{
+	  label = string(4*(*it).depth,' ')+(*it).str;
+	  
+	  menu.push_back(Gnome::UI::Item(label,
+					 bind<Buffer::TocItem>(slot(this, &Menubar::Pimpl::callbackToc), (*it)),
+					 label));
+	}
+
+      gui[i].lst = menu;
+      mainAppWin->update_menu(gui[i].path, oldsz, gui[i].lst);
     }
 }
 
@@ -93,8 +144,20 @@ void Menubar::Pimpl::callback(int action)
       action_ = action;
 }
 
-void Menubar::Pimpl::composeUIInfo(string const & menu_name, vector<Gnome::UI::Info> & Menus)
+void Menubar::Pimpl::callbackToc(Buffer::TocItem tg)
 {
+  if (!owner_->view()->available()) return;
+  
+  owner_->view()->beforeChange();
+  owner_->view()->text->SetCursor( owner_->view(), tg.par, 0 );
+  owner_->view()->text->sel_cursor = owner_->view()->text->cursor;
+  owner_->view()->update(BufferView::SELECT|BufferView::FITCUR);
+}
+
+void Menubar::Pimpl::composeUIInfo(string const & menu_name, vector<Gnome::UI::Info> & Menus, string rootpath)
+{
+  string path = rootpath;
+    
   if (!menubackend_->hasMenu(menu_name))
     {
       cout << "ERROR:composeUIInfo: Unknown menu `" << menu_name
@@ -111,6 +174,9 @@ void Menubar::Pimpl::composeUIInfo(string const & menu_name, vector<Gnome::UI::I
 
       case MenuItem::Command: {
 	string label = item.label();
+
+	path = rootpath + label;
+	
 	if (label.find(item.shortcut()) != string::npos)
 	  label.insert(label.find(item.shortcut()), "_");
 
@@ -204,14 +270,20 @@ void Menubar::Pimpl::composeUIInfo(string const & menu_name, vector<Gnome::UI::I
       case MenuItem::Submenu: {
 	vector<Gnome::UI::Info> submenu;
 	string label = item.label();
+
+	path = rootpath + label;
+	
 	if (label.find(item.shortcut()) != string::npos)
 	  label.insert(label.find(item.shortcut()), "_");
-	composeUIInfo(item.submenu(), submenu);
+	composeUIInfo(item.submenu(), submenu, path + "/");
 	Menus.push_back(Gnome::UI::Menu(label,submenu,label));
 	break;
       }
 
       case MenuItem::Separator: {
+
+	path = rootpath + "<Separator>";
+	
 	Menus.push_back(Gnome::UI::Separator());
 	break;
       }
@@ -222,8 +294,11 @@ void Menubar::Pimpl::composeUIInfo(string const & menu_name, vector<Gnome::UI::I
 	     cit != lastfiles->end() && ii < 10; ++cit, ++ii)
 	  {
 	    int action = lyxaction.getPseudoAction(LFUN_FILE_OPEN, (*cit));
-	    string label = "_" + tostr(ii) + ". " + MakeDisplayPath((*cit),30);
+	    string label = tostr(ii) + ". " + MakeDisplayPath((*cit),30);
 
+	    path = rootpath + label;
+	    label = "_" + label;
+	    
 	    Menus.push_back(Gnome::UI::Item(label,
 					    bind<int>(slot(this, &Menubar::Pimpl::callback), action),
 					    label));
@@ -240,6 +315,8 @@ void Menubar::Pimpl::composeUIInfo(string const & menu_name, vector<Gnome::UI::I
 	    int action = lyxaction.getPseudoAction(LFUN_SWITCHBUFFER, *cit);
 	    string label = MakeDisplayPath(*cit, 30);
 
+	    path = rootpath + label;
+	    
 	    Menus.push_back(Gnome::UI::Item(label,
 					    bind<int>(slot(this, &Menubar::Pimpl::callback), action),
 					    label));
@@ -247,16 +324,57 @@ void Menubar::Pimpl::composeUIInfo(string const & menu_name, vector<Gnome::UI::I
 	  }
 	break;
       }
+
+      case MenuItem::Toc: {
+	ListsHolder t;
+	t.path = path;
+	toc_.push_back(t);
+	break;
+      }
+      
+      case MenuItem::ViewFormats: {
+	add_formats(Menus, LFUN_PREVIEW, true);
+	break;
+      }
+	
+      case MenuItem::UpdateFormats: {
+	add_formats(Menus, LFUN_UPDATE, true);
+	break;  
+      }
+	
+      case MenuItem::ExportFormats: {
+	add_formats(Menus, LFUN_EXPORT, false);
+	break;
+      }
       }
     }
+}
+
+void Menubar::Pimpl::add_formats(vector<Gnome::UI::Info> & Menus, kb_action action, bool viewable)
+{
+  vector<pair<string,string> > names = 
+    viewable
+    ? Exporter::GetViewableFormats(owner_->buffer())
+    : Exporter::GetExportableFormats(owner_->buffer());
+  
+  for (vector<pair<string,string> >::const_iterator cit = names.begin();
+       cit != names.end() ; ++cit) {
+    int action2 = lyxaction.getPseudoAction(action, (*cit).first);
+    string label = (*cit).second;
+
+    Menus.push_back(Gnome::UI::Item(label,
+				    bind<int>(slot(this, &Menubar::Pimpl::callback), action2),
+				    label));
+  }
 }
 
 void Menubar::Pimpl::connectWidgetToAction(GnomeUIInfo * guinfo)
 {
   for (; guinfo->type !=  GnomeUIInfoType(GNOME_APP_UI_ENDOFINFO); ++guinfo)
     {
-      if ( guinfo->type == GnomeUIInfoType(GNOME_APP_UI_ITEM) ||
-	   guinfo->type == GnomeUIInfoType(GNOME_APP_UI_TOGGLEITEM) )
+      if ( ( guinfo->type == GnomeUIInfoType(GNOME_APP_UI_ITEM) ||
+	     guinfo->type == GnomeUIInfoType(GNOME_APP_UI_TOGGLEITEM) ) &&
+	   guinfo->moreinfo != NULL )
 	{
 	  (*((void(*)(void *, void *))(guinfo->moreinfo)))(NULL, guinfo->user_data);
 	  wid_act_.push_back( GtkWidgetToAction( guinfo->widget, action_ ) );

@@ -1,3 +1,63 @@
+2000-09-18  Juergen Vigna  <jug@sad.it>
+
+	* src/insets/insettext.C (LocalDispatch): fixed Backspace/Delete
+	problems with selection. Inserted new LFUN_PASTESELECTION.
+	(InsetButtonPress): inserted handling of middle mouse-button paste.
+
+	* src/spellchecker.C: changed word to word.c_str().
+
+2000-09-16  Kayvan A. Sylvan  <kayvan@sylvan.com>
+
+	* src/Makefile.am: Add sources to lyx_SOURCES so they will be
+	  included in the ``make dist'' tarball.
+
+2000-09-15  Juergen Vigna  <jug@sad.it>
+
+	* src/CutAndPaste.C (cutSelection): small fix return the right
+	end position after cut inside one paragraph only.
+
+	* src/insets/insettext.C (resizeLyXText): only reset the cursor if
+	we are locked as otherwise we don't have a valid cursor position!
+
+	* src/insets/figinset.C (draw): small bugfix but why is this needed???
+
+2000-09-19  Angus Leeming <a.leeming@ic.ac.uk>
+
+	* src/frontends/kde/FormRef.C: added using directive.
+	* src/frontends/kde/FormToc.C: ditto
+
+	* src/frontends/kde/formtocdialog.h: changed endl to std::endl.
+
+	* src/frontends/kde/FormRef.h: removed trailing comma from enums.
+
+
+2000-09-19  Marko Vendelin <markov@ioc.ee>
+	
+	* src/frontends/gnome/Menubar_pimpl.C
+	* src/frontends/gnome/Menubar_pimpl.h: Gnome menus show now
+	Toc, ViewFormats, UpdateFormats, and ExportFormats.
+
+	* src/frontends/gnome/mainapp.C
+	* src/frontends/gnome/mainapp.h: support for menu update used 
+	by Toc menu.
+
+	* src/frontends/gnome/mainapp.C
+	* src/frontends/gnome/mainapp.h: support for "action" area in the
+	main window. This area is used by small simple dialogs, such as
+	FormUrl.
+
+	* src/frontends/gnome/FormIndex.C
+	* src/frontends/gnome/FormIndex.h
+	* src/frontends/gnome/FormUrl.C
+	* src/frontends/gnome/FormUrl.h: rewrite to use main window action
+	area
+
+	* src/frontends/gnome/FormCitation.C
+	* src/frontends/gnome/FormCitation.h: rewrite to use main window
+	action area. Only "Insert new citation" is implemented.
+
+
+
 2000-09-19  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/buffer.C (Dispatch): fix call to Dispatch

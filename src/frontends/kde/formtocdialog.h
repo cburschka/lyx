@@ -90,7 +90,7 @@ private slots:
 				form_->set_type(Buffer::TOC_LOA);
 				break;
 			default:
-				lyxerr[Debug::GUI] << "Unknown TOC combo selection." << endl;
+				lyxerr[Debug::GUI] << "Unknown TOC combo selection." << std::endl;
 				break;
 		}
 	}

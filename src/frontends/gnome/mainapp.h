@@ -30,6 +30,16 @@ class GLyxAppWin: public Gnome::App
 
   /// set menu of the window
   void set_menu(Gnome::UI::Array &);
+  /// update menu
+  void update_menu(string path,
+		   int noelms,
+		   Gnome::UI::Array &);
+  /// add action area
+  void add_action(Gtk::Container &, string title, bool expand=false);
+  /// remove action area
+  void remove_action();
+  /// clears action area if Escape is pressed
+  gint key_pressed(GdkEventKey * e);
   
  protected:
   /// init window widgets
@@ -38,8 +48,11 @@ class GLyxAppWin: public Gnome::App
  protected:
   // widgets
   Gnome::AppBar status_;
-  Gtk::Frame frame_;
+  Gtk::VBox box_;
+  Gtk::Widget *view_;
 
+  bool action_mode;
+  
   // menu size
   int menusize_;
 };

@@ -31,7 +31,8 @@
 using std::vector;
 using std::pair;
 using std::stack;
-
+using std::endl;
+ 
 FormToc::FormToc(LyXView *v, Dialogs *d)
 	: dialog_(0), lv_(v), d_(d), inset_(0), h_(0), u_(0), ih_(0),
 	toclist(0), type(Buffer::TOC_TOC), depth(1)

@@ -1010,7 +1010,7 @@ void InsetFig::draw(BufferView * bv, LyXFont const & f,
 	} else {
 		char * msg = 0;
 		string lfname = fname;
-		if (GetExtension(fname).empty())
+		if (!fname.empty() && GetExtension(fname).empty())
 		    lfname += ".eps";
 		// draw frame
 		pain.rectangle(int(x), baseline - hgh - 1, wid + 1, hgh + 1);

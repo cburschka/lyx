@@ -53,11 +53,11 @@ public:
  
 private: 
 	enum Type {
-		REF, PAGEREF, VREF, VPAGEREF, PRETTYREF,
+		REF, PAGEREF, VREF, VPAGEREF, PRETTYREF
 	}; 
 
 	enum GotoType {
-		GOTOREF, GOTOBACK,
+		GOTOREF, GOTOBACK
 	};
  
 	/// Create the dialog if necessary, update it and display it.

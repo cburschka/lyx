@@ -218,7 +218,7 @@ private:
     ///
     int GetMaxWidthOfCell(Painter &, int cell) const;
     ///
-    bool hasPasteBuffer() const { return (paste_tabular != 0); }
+    bool hasPasteBuffer() const;
     ///
     bool copySelection();
     ///
@@ -266,7 +266,5 @@ private:
     mutable UpdateCodes need_update;
     ///
     mutable Dialogs * dialogs_;
-    ///
-    LyXTabular * paste_tabular;
 };
 #endif
