@@ -46,6 +46,13 @@ floats = {
 		 "collapsed false"]
 }
 
+font_tokens = ["\\family", "\\series", "\\shape", "\\size", "\\emph",
+	       "\\bar", "\\noun", "\\color", "\\lang"]
+
+#
+# Change \begin_float .. \end_float into \begin_inset Float .. \end_inset
+#
+
 def remove_oldfloat(lines, language):
     i = 0
     while 1:
@@ -66,22 +73,24 @@ def remove_oldfloat(lines, language):
 	    j2 = find_token(lines, "\\layout", j+1)
 	    lines[j2:j2] = ["\\end_deeper "]*(i2-(i+1))
 
-	start = floats[floattype]+[""]
-	mid = lines[i2:j]
-	end = ["\\end_inset ",
-	       "\\family default ",
-	       "\\series default ",
-	       "\\shape default ",
-	       "\\size default ",
-	       "\\emph default ",
-#	       "\\numeric default ",
-	       "\\bar default ",
-	       "\\noun default ",
-	       "\\color default "
-	       "\\lang %s " % language]
-	# It isn't nice to always put all the '\xxx default' statements,
-	# but it doesn't hurt
-	lines[i:j+1]= start+mid+end
+	new = floats[floattype]+[""]
+	new = new+lines[i2:j]
+	new.append("\\end_inset ")
+	# After a float, all font attribute are reseted.
+	# We need to output '\foo default' for every attribute foo
+	# whose value is not default before the float.
+	# The check here is not accurate, but it doesn't matter
+	# as extra '\foo default' commands are ignored.
+	# In fact, it might be safer to output '\foo default' for all 
+	# font attributes.
+	k = get_paragraph(lines, i)
+	for token in font_tokens:
+	    if find_token(lines, token, k, i) != -1:
+		if token == "\\lang":
+		    new.append(token+" "+language+" ")
+		else:
+		    new.append(token+" default ")
+	lines[i:j+1]= new
 
 	i = i+1
 

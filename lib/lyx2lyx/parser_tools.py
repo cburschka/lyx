@@ -59,11 +59,35 @@ def find_token_backwards(lines, token, start):
 	    return i
     return -1
 
+def find_tokens_backwards(lines, tokens, start):
+    for i in xrange(start, -1, -1):
+	line = lines[i]
+	for token in tokens:
+	    if line[:len(token)] == token:
+		return i
+    return -1
+
 def get_value(lines, token, start, end = 0):
     i = find_token(lines, token, start, end)
     if i == -1:
 	return ""
     return string.split(lines[i])[1]
+
+# Finds the paragraph that contains line i.
+def get_paragraph(lines, i):
+    while 1:
+	i = find_tokens_backwards(lines, ["\\end_inset", "\\layout"], i)
+	if check_token(lines[i], "\\layout"):
+	    return i
+	count = 1
+	while count > 0:
+	    i = find_tokens_backwards(lines, ["\\end_inset", "\\begin_inset"], i)
+	    if check_token(lines[i], "\\end_inset"):
+		count = count+1
+	    else:
+		count = count-1
+	i = i-1
+
 
 def is_nonempty_line(line):
     line = line[:-1]
