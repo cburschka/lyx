@@ -32,6 +32,7 @@ using std::ostringstream;
 void InsetBranch::init()
 {
 	setInsetName("Branch");
+	setButtonLabel();
 }
 
 
@@ -98,10 +99,9 @@ void InsetBranch::setButtonLabel()
 
 	setLabel("Branch: " + params_.branch);
 	font.setColor(LColor::foreground);
-	string const color = params_.branchlist.getColor(params_.branch);
-	if (!color.empty()) {
+	if (!params_.branch.empty())
 		setBackgroundColor(lcolor.getFromLyXName(params_.branch));
-	} else
+	else
 		setBackgroundColor(LColor::background);
 	setLabelFont(font);
 }

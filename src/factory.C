@@ -370,7 +370,7 @@ InsetOld * readInset(LyXLex & lex, Buffer const & buf)
 				|| tmptok == "Greyedout") {
 			inset = new InsetNote(buf.params(), tmptok);
 		} else if (tmptok == "Branch") {
-			inset = new InsetBranch(buf.params(), tmptok);
+			inset = new InsetBranch(buf.params(), string());
 		} else if (tmptok == "Include") {
 			InsetCommandParams p("Include");
 			inset = new InsetInclude(p);
