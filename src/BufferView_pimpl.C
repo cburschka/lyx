@@ -327,8 +327,17 @@ void BufferView::Pimpl::setBuffer(Buffer * b)
 	if (buffer_)
 		disconnectBuffer();
 
-	// set current buffer
-	buffer_ = b;
+	// if we are closing current buffer, switch to the first in
+	// buffer list.
+	if (!b) {
+		lyxerr[Debug::INFO] << "  No Buffer!" << endl;
+		// we are closing the buffer, use the first buffer as current
+		buffer_ = bufferlist.first();
+		owner_->getDialogs().hideBufferDependent();
+	} else {
+		// set current buffer
+		buffer_ = b;
+	}
 
 	// reset old cursor
 	top_y_ = 0;
@@ -355,12 +364,7 @@ void BufferView::Pimpl::setBuffer(Buffer * b)
 		// hidden. This should go here because some dialogs (eg ToC)
 		// require bv_->text.
 		owner_->getDialogs().updateBufferDependent(true);
-	} else {
-		lyxerr[Debug::INFO] << "  No Buffer!" << endl;
-		// we are closing the buffer, use the first buffer as current
-		buffer_ = bufferlist.first();
-		owner_->getDialogs().hideBufferDependent();
-	}
+	} 
 
 	update();
 	updateScrollbar();
