@@ -1,4 +1,3 @@
-// -*- C++ -*-
 /**
  * \file FormSplash.C
  * Copyright 2001 the LyX Team

@@ -1,4 +1,3 @@
-// -*- C++ -*-
 /* input_validators.C
  * A collection of input filtering and validating functions for use in
  * XForms dialogs.  Mainly meant for filtering input boxes although may

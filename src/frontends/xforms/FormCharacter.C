@@ -1,4 +1,3 @@
-// -*- C++ -*-
 /**
  * \file FormCharacter.C
  * Copyright 2001 The LyX Team.

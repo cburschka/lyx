@@ -1,4 +1,3 @@
-// -*- C++ -*-
 /**
  * \file ControlCredits.C
  * Copyright 2001 The LyX Team.

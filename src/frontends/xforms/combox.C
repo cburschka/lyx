@@ -1,4 +1,3 @@
-// -*- C++ -*-
 /*
  *  Combox: A combination of two objects (a button and a browser) is
  *          encapsulated to get a combobox-like object. All XForms 

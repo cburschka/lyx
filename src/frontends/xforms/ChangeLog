@@ -1,6 +1,7 @@
 2001-06-13  Angus Leeming  <a.leeming@ic.ac.uk>
 
-	* *.[Ch]: added // -*- C++ -*-
+	* *.[h]: added // -*- C++ -*-
+	* *.[C]: removed // -*- C++ -*-
 
 	* FormCharacter.C (update): now uses contents of font_, stored
 	permanently by the controller to update() the dialog.

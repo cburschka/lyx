@@ -1,4 +1,3 @@
-// -*- C++ -*-
 /*
  * \file FormPrint.C
  * Copyright 2000-2001 The LyX Team.

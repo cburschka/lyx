@@ -1,4 +1,3 @@
-// -*- C++ -*-
 /**
  * \file FormBibtex.C
  * Copyright 2001 the LyX Team

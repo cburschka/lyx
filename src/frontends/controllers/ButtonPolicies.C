@@ -1,4 +1,3 @@
-// -*- C++ -*-
 /* ButtonPolicies.C
  * Provides a state machine implementation of the various button policies
  * used by the dialogs.

@@ -1,4 +1,3 @@
-// -*- C++ -*-
 /** Collection of some useful xform helper functions
  */
 

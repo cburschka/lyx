@@ -1,4 +1,3 @@
-// -*- C++ -*-
 /**
  * \file FormPreamble.C
  * Copyright 2001 The LyX Team.
