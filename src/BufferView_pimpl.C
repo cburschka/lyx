@@ -1067,18 +1067,6 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev)
 	}
 	break;
 
-	case LFUN_HTMLURL:
-	case LFUN_URL:
-	{
-		InsetCommandParams p;
-		if (ev.action == LFUN_HTMLURL)
-			p.setCmdName("htmlurl");
-		else
-			p.setCmdName("url");
-		owner_->getDialogs().createUrl(p.getAsString());
-	}
-	break;
-
 	// --- accented characters ---------------------------
 
 	case LFUN_UMLAUT:

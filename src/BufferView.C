@@ -86,12 +86,6 @@ LyXScreen & BufferView::screen() const
 }
 
 
-WorkArea & BufferView::workarea() const
-{
-	return pimpl_->workarea();
-}
-
-
 LyXView * BufferView::owner() const
 {
 	return pimpl_->owner_;
@@ -936,4 +930,16 @@ Language const * BufferView::getParentLanguage(Inset * inset) const
 	LyXText * text = getParentText(inset);
 	return text->cursor.par()->getFontSettings(buffer()->params,
 						   text->cursor.pos()).language();
+}
+
+
+void BufferView::haveSelection(bool sel)
+{
+	pimpl_->workarea().haveSelection(sel);
+}
+
+
+int BufferView::workHeight() const
+{
+	return pimpl_->workarea().workHeight();
 }

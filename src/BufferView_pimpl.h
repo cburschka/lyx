@@ -35,8 +35,6 @@ struct BufferView::Pimpl : public boost::signals::trackable {
 	      int xpos, int ypos, int width, int height);
 	///
 	Painter & painter() const;
-	/// return the work area for this bview
-	WorkArea & workarea() const;
 	/// return the screen for this bview
 	LyXScreen & screen() const;
 	///
@@ -142,5 +140,7 @@ private:
 	Inset * getInsetByCode(Inset::Code code);
 	///
 	void MenuInsertLyXFile(string const & filen);
+	/// our workarea
+	WorkArea & Pimpl::workarea() const;
 };
 #endif // BUFFERVIEW_PIMPL_H

@@ -4,6 +4,20 @@
 	* lyxtext.h:
 	* text2.C: remove unused member number_of_rows
 
+	* Makefile.am:
+	* BufferView2.C: remove file, move contents to...
+	* BufferView.C: ... here
+
+	* BufferView_pimpl.C:
+	* factory.C: move more inset creation to factory
+
+	* vspace.C: avoid direct usage of LyXText, ws changes
+
+	* BufferView.[Ch]:
+		don't provide direct access to WorkArea, use two simple
+		acessors haveSelction() and workHeight() instead
+
+
 2002-08-29  John Levon  <levon@movementarian.org>
 
 	* BufferView_pimpl.C (dispatch): do not continue when

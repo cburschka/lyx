@@ -28,7 +28,7 @@
 #include "support/lstrings.h"
 #include "frontends/LyXView.h"
 #include "frontends/screen.h"
-#include "frontends/WorkArea.h"
+#include "frontends/Dialogs.h"
 #include "insets/insetspecialchar.h"
 #include "insets/insettext.h"
 #include "insets/insetbib.h"
@@ -75,7 +75,7 @@ namespace {
 		}
 
 		if (!lt->selection.set())
-			bv->workarea().haveSelection(false);
+			bv->haveSelection(false);
 
 		bv->switchKeyMap();
 	}
@@ -240,7 +240,7 @@ void LyXText::cursorPrevious(BufferView * bv)
 {
 	if (!cursor.row()->previous()) {
 		if (first_y > 0) {
-			int new_y = bv->text->first_y - bv->workarea().workHeight();
+			int new_y = bv->text->first_y - bv->workHeight();
 			bv->screen().draw(bv->text, bv, new_y < 0 ? 0 : new_y);
 			bv->updateScrollbar();
 		}
@@ -260,18 +260,18 @@ void LyXText::cursorPrevious(BufferView * bv)
 		// as we move the cursor or do something while inside the row (it may
 		// span several workarea-heights) we'll move to the top again, but this
 		// is better than just jump down and only display part of the row.
-		new_y = bv->text->first_y - bv->workarea().workHeight();
+		new_y = bv->text->first_y - bv->workHeight();
 	} else {
 		if (inset_owner) {
 			new_y = bv->text->cursor.iy()
 				+ bv->theLockingInset()->insetInInsetY() + y
 				+ cursor.row()->height()
-				- bv->workarea().workHeight() + 1;
+				- bv->workHeight() + 1;
 		} else {
 			new_y = cursor.y()
 				- cursor.row()->baseline()
 				+ cursor.row()->height()
-				- bv->workarea().workHeight() + 1;
+				- bv->workHeight() + 1;
 		}
 	}
 	bv->screen().draw(bv->text, bv, new_y < 0 ? 0 : new_y);
@@ -292,15 +292,15 @@ void LyXText::cursorNext(BufferView * bv)
 	if (!cursor.row()->next()) {
 		int y = cursor.y() - cursor.row()->baseline() +
 			cursor.row()->height();
-		if (y > int(first_y + bv->workarea().workHeight())) {
+		if (y > int(first_y + bv->workHeight())) {
 			bv->screen().draw(bv->text, bv,
-						  bv->text->first_y + bv->workarea().workHeight());
+						  bv->text->first_y + bv->workHeight());
 			bv->updateScrollbar();
 		}
 		return;
 	}
 
-	int y = first_y + bv->workarea().workHeight();
+	int y = first_y + bv->workHeight();
 	if (inset_owner && !first_y) {
 		y -= (bv->text->cursor.iy()
 			  - bv->text->first_y
@@ -311,7 +311,7 @@ void LyXText::cursorNext(BufferView * bv)
 
 	Row * cursorrow = cursor.row();
 	setCursorFromCoordinates(bv, cursor.x_fix(), y);
-	// + workarea().workHeight());
+	// + bv->workHeight());
 	finishUndo();
 
 	int new_y;
@@ -321,7 +321,7 @@ void LyXText::cursorNext(BufferView * bv)
 		// as we move the cursor or do something while inside the row (it may
 		// span several workarea-heights) we'll move to the top again, but this
 		// is better than just jump down and only display part of the row.
-		new_y = bv->text->first_y + bv->workarea().workHeight();
+		new_y = bv->text->first_y + bv->workHeight();
 	} else {
 		if (inset_owner) {
 			new_y = bv->text->cursor.iy()
@@ -336,7 +336,7 @@ void LyXText::cursorNext(BufferView * bv)
 		LyXCursor cur;
 		setCursor(bv, cur, cursor.row()->next()->par(),
 						cursor.row()->next()->pos(), false);
-		if (cur.y() < int(first_y + bv->workarea().workHeight())) {
+		if (cur.y() < int(first_y + bv->workHeight())) {
 			cursorDown(bv, true);
 		}
 	}
@@ -1111,7 +1111,7 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 		// this was originally a beforeChange(bv->text), i.e
 		// the outermost LyXText!
 		bv->beforeChange(this);
-		string const clip = bv->workarea().getClipboard();
+		string const clip = bv->getClipboard();
 		if (!clip.empty()) {
 			if (cmd.argument == "paragraph")
 				insertStringAsParagraphs(bv, clip);
@@ -1201,7 +1201,7 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 			if (bv_owner)
 				bv->screen().toggleSelection(this, bv, false);
 			update(bv, false);
-			bv->workarea().haveSelection(selection.set());
+			bv->haveSelection(selection.set());
 		}
 		break;
 
@@ -1220,7 +1220,7 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 				selectWord(bv, LyXText::WHOLE_WORD_STRICT);
 			}
 			update(bv, false);
-			bv->workarea().haveSelection(selection.set());
+			bv->haveSelection(selection.set());
 		}
 		break;
 
@@ -1273,7 +1273,7 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 	#endif
 		// This is to allow jumping over large insets
 		if (cursorrow == bv->text->cursor.row()) {
-			if (cmd.y >= int(bv->workarea().workHeight()))
+			if (cmd.y >= int(bv->workHeight()))
 				bv->text->cursorDown(bv, false);
 			else if (cmd.y < 0)
 				bv->text->cursorUp(bv, false);
@@ -1430,7 +1430,7 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 
 		// finish selection
 		if (cmd.button() == mouse_button::button1)
-			bv->workarea().haveSelection(selection.set());
+			bv->haveSelection(selection.set());
 
 		bv->switchKeyMap();
 		bv->owner()->view_state_changed();
@@ -1524,7 +1524,7 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 				cutSelection(bv, false, false);
 				update(bv);
 			}
-			bv->workarea().haveSelection(false);
+			bv->haveSelection(false);
 		}
 
 		bv->beforeChange(this);
@@ -1546,6 +1546,19 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 			bv->owner()->view_state_changed();
 		break;
 	}
+
+	case LFUN_HTMLURL: {
+		InsetCommandParams p("htmlurl");
+		bv->owner()->getDialogs().createUrl(p.getAsString());
+		break;
+	}
+
+	case LFUN_URL: {
+		InsetCommandParams p("url");
+		bv->owner()->getDialogs().createUrl(p.getAsString());
+		break;
+	}
+
 
 #if 0
 	case LFUN_INSET_LIST:

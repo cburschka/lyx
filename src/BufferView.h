@@ -30,7 +30,6 @@ class Language;
 class Painter;
 class UpdatableInset;
 class WordLangTuple;
-class WorkArea;
 
 ///
 class BufferView : boost::noncopyable {
@@ -57,8 +56,6 @@ public:
 	Painter & painter() const;
 	///
 	LyXScreen & screen() const;
-	/// return the work area for this bview
-	WorkArea & workarea() const;
 	///
 	void buffer(Buffer * b);
 	///
@@ -192,6 +189,10 @@ public:
 	bool dispatch(FuncRequest const & argument);
 	/// height of a normal line in pixels (zoom factor considered)
 	int defaultHeight() const;
+	/// 
+	void haveSelection(bool sel);
+	///
+	int workHeight() const;
 
 private:
 	///
