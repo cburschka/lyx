@@ -273,7 +273,11 @@ public:
 		string str;
 	};
 	///
-	std::map<string, std::vector<TocItem> > const getTocList() const;
+	typedef std::vector<TocItem> SingleList;
+	///
+	typedef std::map<string, SingleList> Lists;
+	///
+	Lists const getLists() const;
 	///
 	std::vector<string> const getLabelList();
 

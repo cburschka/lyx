@@ -21,9 +21,7 @@
 #include "lyx_cb.h"
 #include "insets/insetlabel.h"
 #include "insets/figinset.h"
-#include "lyxfunc.h"
 #include "minibuffer.h"
-#include "combox.h"
 #include "bufferlist.h"
 #include "frontends/FileDialog.h"
 #include "lyx_gui_misc.h"
@@ -37,36 +35,23 @@
 #include "lyxrc.h"
 #include "lyxtext.h"
 
+using std::vector;
 using std::ifstream;
 using std::copy;
-using std::back_inserter;
 using std::endl;
-using std::cout;
-using std::ios;
+using std::back_inserter;
 using std::istream_iterator;
 using std::pair;
 using std::make_pair;
-using std::vector;
-using std::sort;
-using std::equal;
 
 extern BufferList bufferlist;
-extern void show_symbols_form();
 extern FD_form_figure * fd_form_figure;
 
 extern BufferView * current_view; // called too many times in this file...
 
-extern void DeleteSimpleCutBuffer(); /* for the cleanup when exiting */
-
-extern void MenuSendto();
-
 // this should be static, but I need it in buffer.C
 bool quitting;	// flag, that we are quitting the program
 extern bool finished; // all cleanup done just let it run through now.
-
-char ascii_type; /* for selection notify callbacks */
-
-bool scrolling = false;
 
 /* 
    This is the inset locking stuff needed for mathed --------------------
@@ -179,15 +164,21 @@ bool WriteAs(BufferView * bv, Buffer * buffer, string const & filename)
 
 	if (filename.empty()) {
 
-		FileDialog fileDlg(bv->owner(), _("Choose a filename to save document as"),
+		FileDialog fileDlg(bv->owner(),
+				   _("Choose a filename to save document as"),
 			LFUN_WRITEAS,
-			make_pair(string(_("Documents")), string(lyxrc.document_path)),
-			make_pair(string(_("Templates")), string(lyxrc.template_path)));
+			make_pair(string(_("Documents")),
+				  string(lyxrc.document_path)),
+			make_pair(string(_("Templates")),
+				  string(lyxrc.template_path)));
 
 		if (!IsLyXFilename(fname))
 			fname += ".lyx";
 
-		FileDialog::Result result = fileDlg.Select(OnlyPath(fname), _("*.lyx|LyX Documents (*.lyx)"), OnlyFilename(fname));
+		FileDialog::Result result =
+			fileDlg.Select(OnlyPath(fname),
+				       _("*.lyx|LyX Documents (*.lyx)"),
+				       OnlyFilename(fname));
 
 		if (result.first == FileDialog::Later)
 			return false;
@@ -203,7 +194,6 @@ bool WriteAs(BufferView * bv, Buffer * buffer, string const & filename)
 			fname += ".lyx";
 	} else
 		fname = filename;
-
 
 	// Same name as we have already?
 	if (!buffer->isUnnamed() && fname == oldname) {
@@ -670,13 +660,15 @@ void FigureApplyCB(FL_OBJECT *, long)
 }
 
 
-extern "C" void FigureCancelCB(FL_OBJECT *, long)
+extern "C"
+void FigureCancelCB(FL_OBJECT *, long)
 {
 	fl_hide_form(fd_form_figure->form_figure);
 }
 
 
-extern "C" void FigureOKCB(FL_OBJECT * ob, long data)
+extern "C"
+void FigureOKCB(FL_OBJECT * ob, long data)
 {
 	FigureApplyCB(ob, data);
 	FigureCancelCB(ob, data);

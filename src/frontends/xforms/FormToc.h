@@ -50,7 +50,7 @@ private:
 	/// Real GUI implementation.
 	FD_form_toc * dialog_;
 	///
-	std::vector<Buffer::TocItem> toclist;
+	Buffer::SingleList toclist;
 };
 
 #endif

@@ -3599,14 +3599,10 @@ vector<string> const Buffer::getLabelList()
 }
 
 
-map<string, vector<Buffer::TocItem> > const Buffer::getTocList() const
+Buffer::Lists const Buffer::getLists() const
 {
-#ifndef NEW_INSETS
-	int figs = 0;
-	int tables = 0;
-	int algs = 0;
-#endif
-	map<string, vector<TocItem> > l;
+	map<string, int> count;
+	Lists l;
 	LyXParagraph * par = paragraph;
 	while (par) {
 #ifndef NEW_INSETS
@@ -3622,11 +3618,12 @@ map<string, vector<Buffer::TocItem> > const Buffer::getTocList() const
 				case LyXParagraph::FIG:
 				case LyXParagraph::WIDE_FIG:
 				{
-					tmp.str = tostr(++figs) + ". "
+					count["figs"]++;
+					tmp.str = tostr(count["figs"]) + ". "
 						+ tmp.str;
-					map<string, vector<TocItem> >::iterator it = l.find("LOF");
+					Lists::iterator it = l.find("LOF");
 					if (it == l.end()) {
-						vector<TocItem> vti;
+						SingleList vti;
 						vti.push_back(tmp);
 						l["LOF"] = vti;
 					} else {
@@ -3638,11 +3635,12 @@ map<string, vector<Buffer::TocItem> > const Buffer::getTocList() const
 				case LyXParagraph::TAB:
 				case LyXParagraph::WIDE_TAB:
 				{
-					tmp.str = tostr(++tables) + ". "
+					count["tables"]++;
+					tmp.str = tostr(count["tables"]) + ". "
 						+ tmp.str;
-					map<string, vector<TocItem> >::iterator it = l.find("LOT");
+					Lists::iterator it = l.find("LOT");
 					if (it == l.end()) {
-						vector<TocItem> vti;
+						SingleList vti;
 						vti.push_back(tmp);
 						l["LOT"] = vti;
 					} else {
@@ -3653,11 +3651,12 @@ map<string, vector<Buffer::TocItem> > const Buffer::getTocList() const
 				
 				case LyXParagraph::ALGORITHM:
 				{
-					tmp.str = tostr(++algs) + ". "
+					count["algs"]++;
+					tmp.str = tostr(count["algs"]) + ". "
 						+ tmp.str;
-					map<string, vector<TocItem> >::iterator it = l.find("LOA");
+					Lists::iterator it = l.find("LOA");
 					if (it == l.end()) {
-						vector<TocItem> vti;
+						SingleList vti;
 						vti.push_back(tmp);
 						l["LOA"] = vti;
 					} else {
@@ -3686,9 +3685,9 @@ map<string, vector<Buffer::TocItem> > const Buffer::getTocList() const
 						labeltype - 
 						textclasslist.TextClass(params.textclass).maxcounter());
 				tmp.str =  par->String(this, true);
-				map<string, vector<TocItem> >::iterator it = l.find("TOC");
+				Lists::iterator it = l.find("TOC");
 				if (it == l.end()) {
-					vector<TocItem> vti;
+					SingleList vti;
 					vti.push_back(tmp);
 					l["TOC"] = vti;
 				} else {
@@ -3698,6 +3697,7 @@ map<string, vector<Buffer::TocItem> > const Buffer::getTocList() const
 #ifdef NEW_INSETS
 			// For each paragrph, traverse its insets and look for
 			// FLOAT_CODE
+			
 			LyXParagraph::inset_iterator it =
 				par->inset_iterator_begin();
 			LyXParagraph::inset_iterator end =
@@ -3712,21 +3712,22 @@ map<string, vector<Buffer::TocItem> > const Buffer::getTocList() const
 						InsetFloat * il =
 							static_cast<InsetFloat*>(*it);
 						
-						//lyxerr << "Found a float!" << endl;
 						string const type = il->type();
+						
 						// Now find the caption in the float...
 						// We now tranverse the paragraphs of
 						// the inset...
 						LyXParagraph * tmp = il->inset->par;
 						while (tmp) {
 							if (tmp->layout == cap) {
+								count[type]++;
 								TocItem ti;
 								ti.par = tmp;
 								ti.depth = 0;
-								ti.str = tmp->String(this, false);
-								map<string, vector<TocItem> >::iterator it = l.find(type);
+								ti.str = tostr(count[type]) + ". " + tmp->String(this, false);
+								Lists::iterator it = l.find(type);
 								if (it == l.end()) {
-									vector<TocItem> vti;
+									SingleList vti;
 									vti.push_back(ti);
 									l[type] = vti;
 								} else {
@@ -3735,7 +3736,6 @@ map<string, vector<Buffer::TocItem> > const Buffer::getTocList() const
 							}
 							tmp = tmp->next();
 						}
-						
 					}
 				}
 			} else {
@@ -3755,7 +3755,7 @@ map<string, vector<Buffer::TocItem> > const Buffer::getTocList() const
 
 
 // This is also a buffer property (ale)
-vector<pair<string,string> > const Buffer::getBibkeyList()
+vector<pair<string, string> > const Buffer::getBibkeyList()
 {
 	/// if this is a child document and the parent is already loaded
 	/// Use the parent's list instead  [ale990412]

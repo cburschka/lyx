@@ -3,21 +3,13 @@
 #define LYX_CB_H
 
 #include "LString.h"
-#include "lyxfont.h"
 
-class BufferParams;
+class Buffer;
 class BufferView;
-class Combox;
 
 ///
 extern bool quitting;
-///
-extern bool toggleall;
 
-// When still false after reading lyxrc, warn user
-//about failing \bind_file command. RVDK_PATCH_5
-///
-extern bool BindFileSet;
 ///
 void ShowMessage(Buffer const * buf,
 		 string const & msg1,
@@ -26,7 +18,8 @@ void ShowMessage(Buffer const * buf,
 ///
 bool MenuWrite(BufferView * bv, Buffer * buffer);
 /// write the given file, or ask if no name given
-bool WriteAs(BufferView * bv, Buffer * buffer, const string & filename = string());
+bool WriteAs(BufferView * bv, Buffer * buffer,
+	     string const & filename = string());
 ///
 int MenuRunChktex(Buffer * buffer);
 ///
@@ -40,14 +33,10 @@ void InsertAsciiFile(BufferView * bv, string const & f, bool asParagraph);
 ///
 void MenuInsertLabel(BufferView * bv, string const & arg);
 ///
-void MenuLayoutCharacter();
-///
 void MenuLayoutSave(BufferView * bv);
 ///
 void Figure();
 ///
 void Reconfigure(BufferView * bv);
-
-	
 #endif
 

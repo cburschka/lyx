@@ -1,3 +1,18 @@
+2001-03-12  Lars Gullik Bjønnes  <larsbj@trylle.birdstep.com>
+
+	* buffer.h: add some typedefs
+	* buffer.C (getLists): use them
+	(getLists): renamed from getTocList.
+	add a counter for the different float types and use it in the
+	generated string.
+	(getLists): use the same counter for the NEW_INSETS and the "non"
+	NEW_INSETS
+
+	* lyx_cb.h: remove unused items, includes, using etc.
+
+	* ShareContainer.h: remove some commented code, add more comments
+	and "documentation".
+
 2001-03-11  Lars Gullik Bjønnes  <larsbj@trylle.birdstep.com>
 
 	* buffer.C (getTocList): make the list also when NEW_INSETS is

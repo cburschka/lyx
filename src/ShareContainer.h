@@ -9,7 +9,13 @@
 #include <boost/utility.hpp>
 #include <boost/smart_ptr.hpp>
 
-///
+/// Share objects between several users.
+/**
+   This class can be used to reduce memory consuption when you have a lot
+   of equal objects used all over you code.
+
+   \author Lars Gullik Bjønnes
+*/
 template<class Share>
 class ShareContainer : public noncopyable {
 public:
@@ -17,7 +23,7 @@ public:
 	typedef std::vector<boost::shared_ptr<Share> > Params;
 	///
 	typedef typename Params::value_type value_type;
-	///
+	/// Return a shared_ptr that points to a element equal to ps.
 	value_type
 	get(Share const & ps) const {
 		// First see if we already have this ps in the container
@@ -34,18 +40,18 @@ public:
 			// some (one) unique elemements some times
 			// but we should gain a lot in speed.
 			clean();
-			//std::sort(params.rbegin(), params.rend(), comp());
 		} else {
 			// yes we have it already
 			tmp = *it;
-			// move it forward
+			// move it forward - optimization
+			// makes the next find faster.
 			if (it != params.begin())
 				swap(*it, *(it - 1));
 		}
 		return tmp;
 	}
 private:
-	///
+	/// A functor returning true if the elements are equal.
 	struct isEqual {
 		isEqual(Share const & s) : p_(s) {}
 		bool operator()(value_type const & p1) const {
@@ -54,32 +60,26 @@ private:
 	private:
 		Share const & p_;
 	};
-	///
-	//struct comp {
-	//	int operator()(value_type const & p1,
-	//		       value_type const & p2) const {
-	//		return p1.use_count() < p2.use_count();
-	//	}
-	//};
-	///
+	/// A functor returning true if the element is unque.
 	struct isUnique {
 		bool operator()(value_type const & p) const {
 			return p.unique();
 		}
 	};
 	
-	///
+	/** Remove all unique items.
+	    This removes all elements from params that is only referenced
+	    from the private container. This can be considered a memory
+	    optimizaton.
+	*/
 	void clean() const {
-		// Remove all unique items. (i.e. entries that only
-		// exists in the conatainer and does not have a
-		// corresponding paragrah.
 		Params::iterator it = std::remove_if(params.begin(),
 						     params.end(),
 						     isUnique());
 		params.erase(it, params.end());
 	}
 	
-	///
+	/// The actual container.
 	mutable Params params;
 };
 #endif

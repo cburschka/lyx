@@ -1,3 +1,11 @@
+2001-03-12  Lars Gullik Bjønnes  <larsbj@trylle.birdstep.com>
+
+	* FormToc.h: use Buffer::typedef
+
+	* Menubar_pimpl.C (add_toc): use the Buffer::typedefs
+	* FormToc.C (build): ditto
+	(updateToc): ditto
+
 2001-03-11  Lars Gullik Bjønnes  <larsbj@trylle.birdstep.com>
 
 	* FormToc.C (build): implement for dynamic number of lists

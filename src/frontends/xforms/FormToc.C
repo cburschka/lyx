@@ -71,11 +71,9 @@ void FormToc::build()
 	fl_addto_choice(dialog_->choice_toc_type,
 			_(" TOC | LOF | LOT | LOA "));
 #else
-	map<string, vector<Buffer::TocItem> > tmp =
-		lv_->view()->buffer()->getTocList();
-	string types;
-	map<string, vector<Buffer::TocItem> >::const_iterator cit = tmp.begin();
-	map<string, vector<Buffer::TocItem> >::const_iterator end = tmp.end();
+	Buffer::Lists const tmp = lv_->view()->buffer()->getLists();
+	Buffer::Lists::const_iterator cit = tmp.begin();
+	Buffer::Lists::const_iterator end = tmp.end();
 	for (; cit != end; ++cit) {
 		fl_addto_choice(dialog_->choice_toc_type, cit->first.c_str());
 	}
@@ -174,13 +172,12 @@ void FormToc::updateToc()
 		return;
 	}
 
-	map<string, vector<Buffer::TocItem> > tmp =
-		lv_->view()->buffer()->getTocList();
-	//int type = fl_get_choice( dialog_->choice_toc_type ) - 1;
-	string type = fl_get_choice_item_text(dialog_->choice_toc_type,
-					      fl_get_choice(dialog_->choice_toc_type));
+	Buffer::Lists tmp = lv_->view()->buffer()->getLists();
+	string const type =
+		fl_get_choice_item_text(dialog_->choice_toc_type,
+					fl_get_choice(dialog_->choice_toc_type));
 
-	map<string, vector<Buffer::TocItem> >::iterator it = tmp.find(type);
+	Buffer::Lists::iterator it = tmp.find(type);
 
 	if (it != tmp.end()) {
 		// Check if all elements are the same.
@@ -209,8 +206,8 @@ void FormToc::updateToc()
 
 	fl_clear_browser(dialog_->browser_toc);
 
-	vector<Buffer::TocItem>::const_iterator cit = toclist.begin();
-	vector<Buffer::TocItem>::const_iterator end = toclist.end();
+	Buffer::SingleList::const_iterator cit = toclist.begin();
+	Buffer::SingleList::const_iterator end = toclist.end();
 	
 	for (; cit != end; ++cit) {
 		string const line = string(4 * cit->depth, ' ') + cit->str;

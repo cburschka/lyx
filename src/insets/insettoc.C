@@ -84,15 +84,12 @@ int InsetTOC::Ascii(Buffer const * buffer, ostream & os, int) const
 	else 
 		type = "LOT";
 
-	map<string, vector<Buffer::TocItem> > const toc_list =
-                buffer->getTocList();
-	map<string, vector<Buffer::TocItem> >::const_iterator cit =
+	Buffer::Lists const toc_list = buffer->getLists();
+	Buffer::Lists::const_iterator cit =
 		toc_list.find(type);
 	if (cit != toc_list.end()) {
-		vector<Buffer::TocItem>::const_iterator ccit =
-			cit->second.begin();
-		vector<Buffer::TocItem>::const_iterator end =
-			cit->second.end();
+		Buffer::SingleList::const_iterator ccit = cit->second.begin();
+		Buffer::SingleList::const_iterator end = cit->second.end();
 		for (; ccit != end; ++ccit)
 			os << string(4 * ccit->depth, ' ')
 			   << ccit->str << endl;

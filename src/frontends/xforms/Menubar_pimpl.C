@@ -361,24 +361,21 @@ void Menubar::Pimpl::add_toc(int menu, string const & extra_label,
 		 toc_list[0], 0, toc_list[0].size(), 0);
 #else
 #warning Fix Me! (Lgb)
-	map<string, vector<Buffer::TocItem> > toc_list =
-		owner_->buffer()->getTocList();
-
-	map<string, vector<Buffer::TocItem> >::const_iterator cit =
-		toc_list.begin();
-	map<string, vector<Buffer::TocItem> >::const_iterator end =
-		toc_list.end();
+	Buffer::Lists toc_list = owner_->buffer()->getLists();
+	Buffer::Lists::const_iterator cit = toc_list.begin();
+	Buffer::Lists::const_iterator end = toc_list.end();
 	for (; cit != end; ++cit) {
 		// Handle this elsewhere
 		if (cit->first == "TOC") continue;
 		
 		int menu2 = get_new_submenu(smn, win);
-		vector<Buffer::TocItem>::const_iterator ccit =
-			cit->second.begin();
-		vector<Buffer::TocItem>::const_iterator eend =
-			cit->second.end();
+		Buffer::SingleList::const_iterator ccit = cit->second.begin();
+		Buffer::SingleList::const_iterator eend = cit->second.end();
 		for (; ccit != eend; ++ccit) {
-			int const action = lyxaction.getPseudoAction(LFUN_GOTO_PARAGRAPH, tostr(ccit->par->id()));
+			int const action =
+				lyxaction
+				.getPseudoAction(LFUN_GOTO_PARAGRAPH,
+						 tostr(ccit->par->id()));
 			string label = fixlabel(ccit->str);
 			label = limit_string_length(label);
 			label += "%x" + tostr(action + action_offset);
