@@ -1,6 +1,6 @@
 
 #include <config.h>
-#include <sstream>
+#include "Lsstream.h"
 
 #include "debug.h"
 #include "support.h"
