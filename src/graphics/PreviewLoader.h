@@ -9,8 +9,8 @@
  *  grfx::PreviewLoader collects latex snippets together. Then, on a
  *  startLoading() call, these are dumped to file and processed, converting
  *  each snippet to a separate bitmap image file. Once a bitmap file is ready
- *  to be loaded back into LyX, the PreviewLoader emits a readyToDisplay signal
- *  to inform the initiating process.
+ *  to be loaded back into LyX, the PreviewLoader emits a signal to inform
+ *  the initiating process.
  */
 
 #ifndef PREVIEWLOADER_H

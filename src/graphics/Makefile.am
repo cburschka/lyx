@@ -11,6 +11,8 @@ GRAPHICSIMAGEXPM = GraphicsImageXPM.C GraphicsImageXPM.h
 endif
 
 libgraphics_la_SOURCES = \
+	FileMonitor.h \
+	FileMonitor.C \
 	GraphicsCache.h \
 	GraphicsCache.C \
 	GraphicsCacheItem.h \

@@ -6,7 +6,7 @@
  *
  *  \author Angus Leeming <leeming@lyx.org>
  *
- *  Used internally by the GraphicsCache.
+ *  Used internally by the grfx::Image.
  */
 
 #ifndef GRAPHICSPARAMS_H

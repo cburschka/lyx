@@ -1,3 +1,8 @@
+2002-07-17  Angus Leeming  <leeming@lyx.org>
+
+	* insetgraphics.C (Cache c-tor): bind to the GraphicsLoader through
+	a method rather than to the signal directly.
+
 2002-07-17  John Levon  <moz@compsoc.man.ac.uk>
 
 	* insettext.C: use view_state_changed, switchKeyMap

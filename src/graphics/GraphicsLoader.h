@@ -11,9 +11,10 @@
  *  * The user supplies an image file and the display parameters.
  *  * He can change the file or the display parameters through a reset() method.
  *  * He must start the loading process explicitly with startLoading().
- *  * He receives a statusChanged signal when the loading status changes.
- *  * When (status() == Ready), he uses image() to access the loaded image
- *    and passes it to the Painter.
+ *  * If he is connected through the connect() method, then he'll be informed
+ *    when the loading status changes.
+ *  * When (status() == Ready), he can use image() to access the loaded image
+ *    and pass it to the Painter.
  *
  *  What could be simpler?
  */
