@@ -16,6 +16,8 @@
 #pragma interface
 #endif
 
+#include "LString.h"
+
 #include <vector>
 #include <list>
 #include <boost/array.hpp>

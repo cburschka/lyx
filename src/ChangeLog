@@ -1,3 +1,9 @@
+2001-03-08  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* BufferView.h: 
+	* lyxparagraph.h: Add '#include "LString.h"' to fix compilation
+	problem.
+
 2001-03-08  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* main.C (main): pass lyx_localedir to gettext_init().
