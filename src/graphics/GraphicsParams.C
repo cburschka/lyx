@@ -12,10 +12,13 @@
 #pragma implementation
 #endif
 
+#include <cstdlib>
+
 #include "GraphicsParams.h"
 #include "Lsstream.h"
 #include "lyxlength.h"
 
+using std::abs;
 
 namespace grfx {
 

@@ -30,6 +30,7 @@
 #include <map>
 
 class LyXView;
+class XFormsView;
 
 /** The LyX GUI independent menubar class
   The GUI interface is implemented in the corresponding Menubar_pimpl class.
@@ -53,7 +54,7 @@ public:
 	void add_references(int menu, string const & extra_label,
 			    std::vector<int> & smn, Window win);
 	///
-	int create_submenu(Window win, LyXView * view,
+	int create_submenu(Window win, XFormsView * view,
 			   string const & menuname,
 			   std::vector<int> & smn);
 
@@ -64,7 +65,7 @@ private:
 	void makeMenubar(Menu const &menu);
 
 	///
-	LyXView * owner_;
+	XFormsView * owner_;
 	///
 	MenuBackend const * menubackend_;
 	///

@@ -3772,19 +3772,20 @@ Buffer::Lists const Buffer::getLists() const
 	string const layout("Caption");
 
 	while (par) {
+#ifdef WITH_WARNINGS
 #warning bogus type (Lgb)
+#endif
 		char const labeltype = par->layout()->labeltype;
 
 		if (labeltype >= LABEL_COUNTER_CHAPTER
 		    && labeltype <= LABEL_COUNTER_CHAPTER + params.tocdepth) {
 				// insert this into the table of contents
 			SingleList & item = l["TOC"];
-			int depth = max(0,
-					labeltype -
-					textclass.maxcounter());
-			item.push_back(TocItem(par, depth, par->asString(this, true)));
+			int depth = max(0, labeltype - textclass.maxcounter());
+			item.push_back(TocItem(par, depth,
+					       par->asString(this, true)));
 		}
-		// For each paragrph, traverse its insets and look for
+		// For each paragraph, traverse its insets and look for
 		// FLOAT_CODE
 
 		if (found) {

@@ -1,3 +1,8 @@
+2002-07-20  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* lyxstring.C (operator>>): replace code which works only with
+	_some_ versions of GNU STL with generic one
+
 2002-07-18  Angus Leeming  <leeming@lyx.org>
 
 	* FileMonitor.[Ch]: new files. Monitor a file for any change and emit a

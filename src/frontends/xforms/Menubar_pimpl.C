@@ -87,7 +87,8 @@ extern "C" {
 
 
 Menubar::Pimpl::Pimpl(LyXView * view, MenuBackend const & mb)
-	: owner_(view), menubackend_(&mb), current_group_(0)
+	: owner_(static_cast<XFormsView*>(view)), menubackend_(&mb),
+	  current_group_(0)
 {
 	for (MenuBackend::const_iterator menu = menubackend_->begin();
 	     menu != menubackend_->end() ; ++menu) {
@@ -108,7 +109,7 @@ Menubar::Pimpl::Pimpl(LyXView * view, MenuBackend const & mb)
 
 void Menubar::Pimpl::makeMenubar(Menu const & menu)
 {
-	FL_FORM * form = static_cast<XFormsView *>(owner_)->getForm();
+	FL_FORM * form = owner_->getForm();
 	int moffset = 0;
 
 	// Create menu frame if there is non yet.
@@ -331,6 +332,8 @@ void add_toc2(int menu, string const & extra_label,
 void Menubar::Pimpl::add_toc(int menu, string const & extra_label,
 			     vector<int> & smn, Window win)
 {
+	if (!owner_->buffer())
+		return;
 	Buffer::Lists toc_list = owner_->buffer()->getLists();
 	Buffer::Lists::const_iterator cit = toc_list.begin();
 	Buffer::Lists::const_iterator end = toc_list.end();
@@ -381,7 +384,7 @@ void Menubar::Pimpl::add_toc(int menu, string const & extra_label,
 }
 
 
-int Menubar::Pimpl::create_submenu(Window win, LyXView * view,
+int Menubar::Pimpl::create_submenu(Window win, XFormsView * view,
 				   string const & menu_name,
 				   vector<int> & smn)
 {
@@ -548,7 +551,7 @@ void Menubar::Pimpl::MenuCallback(FL_OBJECT * ob, long button)
 //	       << ", item_=" << iteminfo->item_
 //	       << ", obj_=" << iteminfo->obj_ << ")" <<endl;
 
-	LyXView * view = iteminfo->pimpl_->owner_;
+	XFormsView * view = iteminfo->pimpl_->owner_;
 	MenuItem const * item = iteminfo->item_.get();
 
 	if (button == 1) {
@@ -569,8 +572,8 @@ void Menubar::Pimpl::MenuCallback(FL_OBJECT * ob, long button)
 			       item->submenu(), submenus);
 	if (menu != -1) {
 		// place popup
-		fl_setpup_position(static_cast<XFormsView *>(view)->getForm()->x + ob->x,
-				   static_cast<XFormsView *>(view)->getForm()->y + ob->y + ob->h + 10);
+		fl_setpup_position(view->getForm()->x + ob->x,
+				   view->getForm()->y + ob->y + ob->h + 10);
 		int choice = fl_dopup(menu);
 
 		if (button == 1) {

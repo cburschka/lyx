@@ -1,3 +1,10 @@
+2002-07-20  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* Menubar_pimpl.C (add_toc): avoid crash when there is no document
+	open 
+
+	* Menubar_pimpl.[Ch]: turn owner_ into a XFormsView, to avoid casting
+
 2002-04-28  Herbert Voss  <voss@perce.de>
 
 	* FormGraphics.C:
