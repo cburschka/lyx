@@ -175,6 +175,7 @@ char const * MathHullInset::standardFont() const
 {
 	if (type_ == "none")
 		return "lyxnochange";
+	lyxerr << "standard font: mathnormal\n";
 	return "mathnormal";
 }
 

@@ -305,7 +305,7 @@ dispatch_result InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 {
 	lyxerr << "InsetFormulaBase::localDispatch: act: " << cmd.action
 		<< " arg: '" << cmd.argument
-		<< " x: '" << cmd.x
+		<< "' x: '" << cmd.x
 		<< " y: '" << cmd.y
 		<< "' button: " << cmd.button() << endl;
 

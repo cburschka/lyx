@@ -64,8 +64,8 @@ void MathCharInset::metrics(MetricsInfo & mi, Dimension & dim) const
 	} else if ((char_ == '>' || char_ == '<') && has_math_fonts) {
 		FontSetChanger dummy(mi.base, "cmm");
 		mathed_char_dim(mi.base.font, char_, dim);
-	} else if (slanted(char_) && mi.base.fontname == "mathnormal") {
-		ShapeChanger dummy(mi.base.font, LyXFont::ITALIC_SHAPE);
+	} else if (!slanted(char_) && mi.base.fontname == "mathnormal") {
+		ShapeChanger dummy(mi.base.font, LyXFont::UP_SHAPE);
 		mathed_char_dim(mi.base.font, char_, dim);
 	} else {
 		mathed_char_dim(mi.base.font, char_, dim);
@@ -100,8 +100,8 @@ void MathCharInset::draw(PainterInfo & pi, int x, int y) const
 	} else if ((char_ == '>' || char_ == '<') && has_math_fonts) {
 		FontSetChanger dummy(pi.base, "cmm");
 		pi.draw(x, y, char_);
-	} else if (slanted(char_) && pi.base.fontname == "mathnormal") {
-		ShapeChanger dummy(pi.base.font, LyXFont::ITALIC_SHAPE);
+	} else if (!slanted(char_) && pi.base.fontname == "mathnormal") {
+		ShapeChanger dummy(pi.base.font, LyXFont::UP_SHAPE);
 		pi.draw(x, y, char_);
 	} else {
 		pi.draw(x, y, char_);

@@ -1,38 +1,37 @@
 // -*- C++ -*-
 /**
- * \file math_makeboxinset.h
+ * \file math_colorinset.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
- * \author Ling Li
+ * \author André Pönitz
  *
  * Full author contact details are available in file CREDITS.
  */
 
-#ifndef MATH_MAKEBOXINSET_H
-#define MATH_MAKEBOXINSET_H
+#ifndef MATH_COLORINSET_H
+#define MATH_COLORINSET_H
 
 #include "math_nestinset.h"
 
-/// Extra nesting: \\makebox.
-// consolidate with MathFrameboxInset?
+/// Change colours.
 
-class MathMakeboxInset : public MathNestInset {
+class MathColorInset : public MathNestInset {
 public:
 	///
-	MathMakeboxInset();
+	MathColorInset();
 	///
 	virtual std::auto_ptr<InsetBase> clone() const;
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
+	/// we need package color
+	void validate(LaTeXFeatures & features) const;
 	///
 	void write(WriteStream & os) const;
 	/// write normalized content
 	void normalize(NormalStream & ns) const;
-	///
-	mode_type currentMode() const { return TEXT_MODE; }
 	///
 	void infoize(std::ostream & os) const;
 private:

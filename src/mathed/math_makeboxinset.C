@@ -15,6 +15,8 @@
 #include "math_mathmlstream.h"
 #include "math_support.h"
 
+#include "support/std_ostream.h"
+
 using std::auto_ptr;
 
 
@@ -79,4 +81,11 @@ void MathMakeboxInset::write(WriteStream & os) const
 void MathMakeboxInset::normalize(NormalStream & os) const
 {
 	os << "[makebox " << cell(0) << ' ' << cell(1) << ' ' << cell(2) << ']';
+}
+
+
+void MathMakeboxInset::infoize(std::ostream & os) const
+{
+	os << "Makebox (width: " << cell(0)
+	    << " pos: " << cell(1) << ")";
 }

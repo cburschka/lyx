@@ -534,7 +534,7 @@ LyXFont::FONT_SHAPE  const inh_shape  = LyXFont::INHERIT_SHAPE;
 fontinfo fontinfos[] = {
 	// math fonts
 	{"mathnormal",    inh_family, LyXFont::MEDIUM_SERIES,
-	                  LyXFont::UP_SHAPE, LColor::math},
+	                  LyXFont::ITALIC_SHAPE, LColor::math},
 	{"mathbf",        inh_family, LyXFont::BOLD_SERIES,
 	                  inh_shape, LColor::math},
 	{"mathcal",       LyXFont::CMSY_FAMILY, inh_series,
