@@ -526,17 +526,6 @@ bool MathCursor::down(bool sel)
 }
 
 
-bool MathCursor::toggleLimits()
-{
-	if (!hasNextAtom() || !nextAtom()->asScriptInset())
-		return false;
-	MathScriptInset * t = nextAtom().nucleus()->asScriptInset();
-	int old = t->limits();
-	t->limits(old < 0 ? 1 : -1);
-	return old != t->limits();
-}
-
-
 void MathCursor::macroModeClose()
 {
 	if (!inMacroMode())

@@ -127,8 +127,6 @@ public:
 	bool interpret(string const &);
 	/// 
 	bool interpret(char);
-	///
-	bool toggleLimits();
 	/// interpret name a name of a macro
 	void macroModeClose();
 	/// are we currently typing the name of a macro?

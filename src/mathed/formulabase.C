@@ -423,6 +423,7 @@ Inset::RESULT InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 	case LFUN_MATH_EXTERN:
 	case LFUN_TABULAR_FEATURE:
 	case LFUN_PASTESELECTION:
+	case LFUN_MATH_LIMITS:
 		bv->lockedInsetStoreUndo(Undo::EDIT);
 		mathcursor->dispatch(cmd);
 		updateLocal(bv, true);
@@ -601,12 +602,6 @@ Inset::RESULT InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 			updateLocal(bv, true);
 		}
 		//bv->owner()->message(_("math text mode toggled"));
-		break;
-
-	case LFUN_MATH_LIMITS:
-		bv->lockedInsetStoreUndo(Undo::EDIT);
-		if (mathcursor->toggleLimits())
-			updateLocal(bv, true);
 		break;
 
 	case LFUN_MATH_SIZE:

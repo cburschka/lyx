@@ -550,7 +550,7 @@ void Parser::parse2(MathAtom & at, unsigned flags, mode_type mode,
 void Parser::parse1(MathGridInset & grid, unsigned flags,
 	mode_type mode, bool numbered)
 {
-	int  limits = 0;
+	int limits = 0;
 	MathGridInset::row_type cellrow = 0;
 	MathGridInset::col_type cellcol = 0;
 	MathArray * cell = &grid.cell(grid.index(cellrow, cellcol));
@@ -710,14 +710,16 @@ void Parser::parse1(MathGridInset & grid, unsigned flags,
 				else
 					cell->back() = MathAtom(new MathScriptInset(cell->back(), up));
 				MathScriptInset * p = cell->back().nucleus()->asScriptInset();
-				parse(p->cell(up), FLAG_ITEM, mode);
-				p->limits(limits);
-				limits = 0;
 				// special handling of {}-bases
 				// is this always correct?
 				if (p->nuc().size() == 1 && p->nuc().back()->asNestInset() &&
 						p->nuc().back()->extraBraces())
 					p->nuc() = p->nuc().back()->asNestInset()->cell(0);
+				parse(p->cell(up), FLAG_ITEM, mode);
+				if (limits) {
+					p->limits(limits);
+					limits = 0;
+				}
 			}
 		}
 

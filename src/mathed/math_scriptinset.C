@@ -6,6 +6,7 @@
 #include "math_support.h"
 #include "math_symbolinset.h"
 #include "math_mathmlstream.h"
+#include "funcrequest.h"
 #include "support/LAssert.h"
 #include "debug.h"
 
@@ -480,4 +481,16 @@ void MathScriptInset::infoize(std::ostream & os) const
 	os << "Scripts";
 	if (limits_)
 		os << (limits_ == 1 ? ", Displayed limits" : ", Inlined limits");
+}
+
+
+MathInset::result_type MathScriptInset::dispatch
+	(FuncRequest const & cmd, idx_type & idx, pos_type & pos)
+{
+	if (cmd.action == LFUN_MATH_LIMITS) {
+		limits_ = limits_ < 0 ? 1 : -1;
+		return DISPATCHED;
+	}
+
+	return MathNestInset::dispatch(cmd, idx, pos);
 }

@@ -91,6 +91,8 @@ public:
 	void ensure(bool up);
 	///
 	void infoize(std::ostream & os) const;
+	/// local dispatcher
+	result_type dispatch(FuncRequest const & cmd, idx_type & idx, pos_type & pos);
 
 private:
 	/// returns x offset for main part
