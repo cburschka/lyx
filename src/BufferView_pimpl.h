@@ -127,10 +127,6 @@ struct BufferView::Pimpl {
 	///
 	long current_scrollbar_value;
 	///
-	bool lyx_focus;
-	///
-	bool work_area_focus;
-	///
 	FL_OBJECT * figinset_canvas;
 	///
 	FL_OBJECT * timer_cursor;

@@ -80,8 +80,6 @@ BufferView::Pimpl::Pimpl(BufferView * b, LyXView * o,
 	current_scrollbar_value = 0;
 	fl_set_timer(timer_cursor, 0.4);
 	workarea->setFocus();
-	work_area_focus = true;
-	lyx_focus = false;
 	using_xterm_cursor = false;
 }
 
@@ -1248,53 +1246,15 @@ void BufferView::Pimpl::cursorToggle()
 		goto set_timer_and_return;
 	}
 
-	if (lyx_focus && work_area_focus) {
-		if (!bv_->the_locking_inset) {
-			screen->CursorToggle();
-		} else {
-			bv_->the_locking_inset->
-				ToggleInsetCursor(bv_);
-		}
-		goto set_timer_and_return;
+	if (!bv_->the_locking_inset) {
+		screen->CursorToggle();
 	} else {
-		// Make sure that the cursor is visible.
-		if (!bv_->the_locking_inset) {
-			screen->ShowCursor();
-		} else {
-			if (!bv_->the_locking_inset->isCursorVisible())
-				bv_->the_locking_inset->
-					ToggleInsetCursor(bv_);
-		}
-		// This is only run when work_area_focus or lyx_focus is false.
-		Window tmpwin;
-		int tmp;
-		XGetInputFocus(fl_display, &tmpwin, &tmp);
-		// Commenting this out, we have not had problems with this
-		// for a long time. We will probably work on this code later
-		// and we can reenable this debug code then. Now it only
-		// anoying when debugging. (Lgb)
-		//if (lyxerr.debugging(Debug::INFO)) {
-		//	lyxerr << "tmpwin: " << tmpwin
-		//	       << "\nwindow: " << view->owner_->getForm()->window
-		//	       << "\nwork_area_focus: " << view->work_area_focus
-		//	       << "\nlyx_focus      : " << view->lyx_focus
-		//	       << endl;
-		//}
-		if (tmpwin != owner_->getForm()->window) {
-			lyx_focus = false;
-			goto skip_timer;
-		} else {
-			lyx_focus = true;
-			if (!work_area_focus)
-				goto skip_timer;
-			else
-				goto set_timer_and_return;
-		}
+		bv_->the_locking_inset->
+			ToggleInsetCursor(bv_);
 	}
 
   set_timer_and_return:
 	fl_set_timer(timer_cursor, 0.4);
-  skip_timer:
 	return;
 }
 

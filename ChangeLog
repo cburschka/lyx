@@ -1,3 +1,12 @@
+2000-06-28  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/BufferView_pimpl.h: remove member variables lyx_focus and
+	work_area_focus
+
+	* src/BufferView_pimpl.C (Pimpl): delete init of work_area_focus
+	and lyx_focus
+	(cursorToggle): remove special handling of lyx focus.
+
 2000-06-28  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/insets/insetindex.C (Edit): add a callback when popup is
