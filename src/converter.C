@@ -721,12 +721,12 @@ bool Converters::move(string const & from, string const & to, bool copy)
 	for (vector<string>::const_iterator it = files.begin();
 	     it != files.end(); ++it)
 		if (prefixIs(*it, base)) {
-			string from2 = path + *it;
+			string const from2 = path + *it;
 			string to2 = to_base + it->substr(base.length());
 			to2 = ChangeExtension(to2, to_extension);
 			lyxerr[Debug::FILES] << "moving " << from2
 					     << " to " << to2 << endl;
-			bool moved = (copy)
+			bool const moved = (copy)
 				? lyx::copy(from2, to2)
 				: lyx::rename(from2, to2);
 			if (!moved && no_errors) {
