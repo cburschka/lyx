@@ -196,3 +196,28 @@ fi
 FILES=`ls ${BASE}* | sed -e "/${BASE}.metrics/d" \
 			 -e "/${BASE}\([0-9]*\).${GSSUFFIX}/d"`
 rm -f ${FILES} texput.log
+
+# The bitmap files can have large amounts of whitespace to the left and
+# right. This can be cropped if so desired.
+CROP=1
+
+which pnmcrop > /dev/null
+if [ $? -ne 0 ]; then
+	CROP=0
+fi
+
+# There's no point cropping the image if using PNG images. If you want to
+# crop, use PPM.
+# Apparently dvipng will support cropping at some stage in the future...
+if [ ${CROP} -eq 1 -a "${GSDEVICE}" = "pnmraw" ]; then
+	for FILE in ${BASE}*.${GSSUFFIX}
+	do
+		pnmcrop -left ${FILE} | pnmcrop -right ${FILE} > ${BASE}.tmp
+		if [ $? -eq 0 ]; then
+			mv ${BASE}.tmp ${FILE}
+		else
+			rm -f ${BASE}.tmp
+		fi
+	done
+	rm -f ${BASE}.tmp
+fi
