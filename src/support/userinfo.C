@@ -17,20 +17,20 @@
 #include <pwd.h>
 #include <unistd.h>
 #include <sys/types.h>
- 
+
 namespace lyx {
 
 string const user_name()
 {
 	struct passwd * pw(getpwuid(geteuid()));
 	lyx::Assert(pw);
- 
+
 	string name = pw->pw_gecos;
 	if (name.empty())
 		name = pw->pw_name;
 	return name;
 }
- 
+
 
 string const user_email()
 {

@@ -30,12 +30,12 @@ LoaderQueue & LoaderQueue::get()
 }
 
 
-void LoaderQueue::loadNext() 
+void LoaderQueue::loadNext()
 {
 	emptyBucket();
 	lyxerr[Debug::GRAPHICS] << "LoaderQueue: "
 				<< cache_queue_.size()
-				<< " items in the queue" << endl; 
+				<< " items in the queue" << endl;
 	int counter = s_numimages_;
 	while (cache_queue_.size() && counter--) {
 		if(cache_queue_.front()->status() == WaitingToLoad)
@@ -57,21 +57,21 @@ void LoaderQueue::setPriority(int numimages , int millisecs)
 	s_millisecs_ = millisecs;
 	lyxerr[Debug::GRAPHICS] << "LoaderQueue:  priority set to "
 				<< s_numimages_ << " images at a time, "
-				<< s_millisecs_ << " milliseconds between calls" 
+				<< s_millisecs_ << " milliseconds between calls"
 				<< endl;
 }
-	
 
-LoaderQueue::LoaderQueue() : timer(s_millisecs_, Timeout::ONETIME), 
+
+LoaderQueue::LoaderQueue() : timer(s_millisecs_, Timeout::ONETIME),
 			     running_(false)
 {
 	timer.timeout.connect(boost::bind(&LoaderQueue::loadNext, this));
 }
 
-	
+
 void LoaderQueue::emptyBucket()
 {
-	lyxerr[Debug::GRAPHICS] << "LoaderQueue: emptying bucket" 
+	lyxerr[Debug::GRAPHICS] << "LoaderQueue: emptying bucket"
 				<< endl;
 	while (! bucket_.empty()) {
 		addToQueue(bucket_.front());
@@ -114,15 +114,15 @@ void LoaderQueue::touch(Cache::ItemPtr const & item)
 void LoaderQueue::addToQueue(Cache::ItemPtr const & item)
 {
 	if (! cache_set_.insert(item).second) {
-		list<Cache::ItemPtr>::iterator 
+		list<Cache::ItemPtr>::iterator
 			it = cache_queue_.begin();
-		list<Cache::ItemPtr>::iterator 
+		list<Cache::ItemPtr>::iterator
 			end = cache_queue_.end();
-		
+
 		it = std::find(it, end, item);
 		if (it != end)
 			cache_queue_.erase(it);
-	} 
+	}
 	cache_queue_.push_front(item);
 }
 

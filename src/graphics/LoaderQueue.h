@@ -6,11 +6,11 @@
  *
  *  \author Alfredo Braunstein
  *
- * Full author contact details are available in file CREDITS. 
+ * Full author contact details are available in file CREDITS.
  *
  * This implements a threaded service queue which loads images on background.
  * In order to request an image loading you call touch() with the pointer to
- * the cached image. Then it will try to satisfy the request as soon as 
+ * the cached image. Then it will try to satisfy the request as soon as
  * posible (that's it: after finishing an eventual loading on progress)
  * touch() returns inmediately, in order not tu disrupt the flow of the main
  * thread.

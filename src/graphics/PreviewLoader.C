@@ -543,9 +543,9 @@ void PreviewLoader::Impl::finishedGenerating(pid_t pid, int retval)
 	in_progress_.erase(git);
 
 	// Tell the outside world
-	std::list<PreviewImagePtr>::const_reverse_iterator 
+	std::list<PreviewImagePtr>::const_reverse_iterator
 		nit  = newimages.rbegin();
-	std::list<PreviewImagePtr>::const_reverse_iterator 
+	std::list<PreviewImagePtr>::const_reverse_iterator
 		nend = newimages.rend();
 	for (; nit != nend; ++nit) {
 		imageReady(*nit->get());
