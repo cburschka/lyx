@@ -43,6 +43,7 @@
 using std::endl;
 using std::find;
 using std::vector;
+using lyx::pos_type;
 
 extern string current_layout;
 extern int bibitemMaxWidth(BufferView *, LyXFont const &);
@@ -170,28 +171,29 @@ Inset * LyXText::checkInsetHit(int & x, int & y)
 bool LyXText::gotoNextInset(vector<Inset::Code> const & codes,
 			    string const & contents)
 {
-	LyXCursor res = cursor;
+	ParagraphList::iterator end = ownerParagraphs().end();
+	ParagraphList::iterator pit = cursor.par();
+	pos_type pos = cursor.pos();
+
 	Inset * inset;
 	do {
-		if (res.pos() < res.par()->size() - 1) {
-			res.pos(res.pos() + 1);
+		if (pos + 1 < pit->size()) {
+			++pos;
 		} else  {
-			res.par(boost::next(res.par()));
-			res.pos(0);
+			++pit;
+			pos = 0;
 		}
 
-	} while (res.par() != ownerParagraphs().end()&&
-		 !(res.par()->isInset(res.pos())
-		   && (inset = res.par()->getInset(res.pos())) != 0
-		   && find(codes.begin(), codes.end(), inset->lyxCode())
-		   != codes.end()
-		   && (contents.empty() ||
-		       static_cast<InsetCommand *>(
-							res.par()->getInset(res.pos()))->getContents()
-		       == contents)));
+	} while (pit != end &&
+		 !(pit->isInset(pos) &&
+		   (inset = pit->getInset(pos)) != 0 &&
+		   find(codes.begin(), codes.end(), inset->lyxCode()) != codes.end() &&
+		   (contents.empty() ||
+		    static_cast<InsetCommand *>(pit->getInset(pos))->getContents()
+		    == contents)));
 
-	if (res.par() != ownerParagraphs().end()) {
-		setCursor(res.par(), res.pos(), false);
+	if (pit != end) {
+		setCursor(pit, pos, false);
 		return true;
 	}
 	return false;

@@ -1,3 +1,7 @@
+2003-04-14  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* text3.C (gotoNextInset): use separate tmp vars for par and pos.
+
 2003-04-14  Angus Leeming  <leeming@lyx.org>
 
 	* LColor.[Ch]: scrap LColor mathcursor.
