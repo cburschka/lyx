@@ -1,3 +1,8 @@
+2001-08-23  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* converter.C (Formats::view): only output the -paper option
+	if the dvi viewer is xdvi, thereby fixing bug #233429.
+
 2001-08-23  Herbert Voss  <voss@perce>
 
 	* BufferView_pimpl.C: small fix for LFUN_INSERT_BIBTEX
