@@ -237,6 +237,7 @@ int Menubar::Pimpl::create_submenu(Window win, XFormsView * view,
 
 	it = extra_labels.begin();
 	size_type count = 0;
+	all_disabled = true;
 	int curmenuid = menuid;
 	for (Menu::const_iterator i = menu.begin(); i != end; ++i, ++it) {
 		MenuItem const & item = (*i);
@@ -318,14 +319,16 @@ int Menubar::Pimpl::create_submenu(Window win, XFormsView * view,
 		}
 
 		case MenuItem::Submenu: {
+			bool sub_all_disabled;
 			int submenuid = create_submenu(win, view,
 						       *item.submenu(), smn,
-						       all_disabled);
+						       sub_all_disabled);
+			all_disabled &= sub_all_disabled;
 			if (submenuid == -1)
 				return -1;
 			string label = fixlabel(item.label());
 			label += extra_label + "%m";
-			if (all_disabled)
+			if (sub_all_disabled)
 				label += "%i";
 			string shortcut = item.shortcut();
 			if (!shortcut.empty()) {
