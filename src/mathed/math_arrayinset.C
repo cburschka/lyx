@@ -67,6 +67,7 @@ void MathArrayInset::metrics(MetricsInfo & mi) const
 {
 	ArrayChanger dummy(mi.base);
 	MathGridInset::metrics(mi);
+	metricsMarkers2();
 }
 
 
@@ -74,6 +75,7 @@ void MathArrayInset::draw(PainterInfo & pi, int x, int y) const
 {
 	ArrayChanger dummy(pi.base);
 	MathGridInset::draw(pi, x, y);
+	drawMarkers2(pi, x, y);
 }
 
 
@@ -94,6 +96,12 @@ void MathArrayInset::write(WriteStream & os) const
 	os << "\\end{" << name_ << '}';
 	// adding a \n here is bad if the array is the last item
 	// in an \eqnarray...
+}
+
+
+void MathArrayInset::infoize(std::ostream & os) const
+{
+	os << "Array";
 }
 
 
