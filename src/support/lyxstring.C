@@ -23,6 +23,8 @@
 
 #include "LAssert.h"
 
+#include "debug.h"
+
 using std::min;
 using std::istream;
 using std::ostream;
@@ -1027,11 +1029,13 @@ lyxstring::size_type lyxstring::rfind(value_type c, size_type i) const
 {
 	TestlyxstringInvariant(this);
 
-	size_type ii = min(rep->sz - 1, i);
-        for (size_type t = ii; t >= 0; --t) {
-	        if (rep->s[t] == c) return t;
-	}
-        return npos;
+	size_type const sz = rep->sz;
+	if (sz < 1) return npos;
+	size_type ii = min(sz - 1, i);
+	do {
+		if (rep->s[ii] == c) return ii;
+	} while (ii-- > 0);
+	return npos;
 }
 
 

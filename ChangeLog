@@ -1,3 +1,9 @@
+2001-01-10  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/support/lyxstring.C (rfind): better fix (from Dekel).
+
+	* src/tabular.h: add a couple std:: qualifiers.
+
 2001-01-10  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/support/lyxstring.C (rfind): also test the first char in the
