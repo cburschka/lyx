@@ -24,8 +24,6 @@ class BufferView;
 
 struct PosIteratorItem 
 {
-	PosIteratorItem(ParagraphList * pl): pl(pl), pit(pl->begin()),
-					     pos(0), index(0) {};
 	PosIteratorItem(ParagraphList * pl,
 			ParagraphList::iterator pit,
 			lyx::pos_type pos,
@@ -43,7 +41,6 @@ class PosIterator
 public:
 	PosIterator(BufferView & bv);
 	PosIterator(ParIterator & par, lyx::pos_type pos);
-	PosIterator(ParagraphList * pl);
 	PosIterator(ParagraphList * pl, ParagraphList::iterator pit,
 		    lyx::pos_type pos);
 	PosIterator(ParIterator const & parit, lyx::pos_type p);

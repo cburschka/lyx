@@ -38,7 +38,7 @@ PosIterator & PosIterator::operator++()
 				ParagraphList * pl = inset->getParagraphs(p.index);
 				if (pl) {
 					p.index++;
-					stack_.push(PosIteratorItem(pl));
+					stack_.push(PosIteratorItem(pl, pl->begin(), 0));
 					return *this;
 				}
 			}
@@ -123,12 +123,6 @@ PosIterator::PosIterator(ParagraphList * pl, ParagraphList::iterator pit,
 			 lyx::pos_type pos)
 {
 	stack_.push(PosIteratorItem(pl, pit, pos));
-}
-
-
-PosIterator::PosIterator(ParagraphList * pl)
-{
-	stack_.push(PosIteratorItem(pl, pl->begin(), 0));
 }
 
 
