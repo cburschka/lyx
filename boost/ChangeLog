@@ -1,3 +1,10 @@
+2002-06-18  Angus Leeming  <leeming@lyx.org>
+
+	Reapplied:
+	* boost/signals/connection.hpp:
+	* libs/signals/src/connection.cpp: c-assert expects an int, so don't
+	pass it a pointer.
+
 2002-06-16  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* update boost. (prev commit lost).
