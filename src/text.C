@@ -2360,7 +2360,8 @@ void LyXText::getWord(LyXCursor & from, LyXCursor & to,
 	while (to.pos() < to.par()->size()
 	       && !to.par()->isSeparator(to.pos())
 	       && !to.par()->isKomma(to.pos())
-	       && !to.par()->isHfill(to.pos()))
+	       && !to.par()->isHfill(to.pos())
+	       && !to.par()->isInset(to.pos()))
 	{
 		to.pos(to.pos() + 1);
 	}
