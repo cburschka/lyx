@@ -1377,31 +1377,14 @@ void MathCursor::interpret(char c)
 		return;
 	}
 
-	if (isalpha(c) && (lastcode_ == LM_TC_GREEK || lastcode_ == LM_TC_GREEK1)) {
-		static char const greekl[][26] =
-			{"alpha", "beta", "chi", "delta", "epsilon", "phi",
-			 "gamma", "eta", "iota", "epsilon", "kappa", "lambda", "mu",
-			 "nu", "omega", "pi", "vartheta", "rho", "sigma",
-			 "tau", "upsilon", "theta", "omega", "xi", "varphi", "zeta"};
-		static char const greeku[][26] =
-			{"alpha", "beta", "chi", "Delta", "varepsilon", "Phi",
-			 "Gamma", "varepsilon", "varepsilon", "epsilon", "kappa", "Lambda", "mu",
-			 "Nu", "Omega", "Pi", "vartheta", "varrho", "Sigma", "varsigma",
-			 "Upsilon", "Theta", "Omega", "Xi", "Varphi", "zeta"};
-	
-		latexkeys const * l = 0;	
-		if ('a' <= c && c <= 'z')
-			l = in_word_set(greekl[c - 'a']);
-		if ('A' <= c && c <= 'Z')
-			l = in_word_set(greeku[c - 'A']);
-	
-		if (l)
-			insert(createMathInset(l));
-		else
-			insert(c, LM_TC_VAR);
+	if (isalpha(c) && lastcode_ == LM_TC_GREEK) {
+		insert(c, LM_TC_VAR);
+		return;	
+	}
 
-		if (lastcode_ == LM_TC_GREEK1)
-			lastcode_ = LM_TC_VAR;
+	if (isalpha(c) && lastcode_ == LM_TC_GREEK1) {
+		insert(c, LM_TC_VAR);
+		lastcode_ = LM_TC_VAR;
 		return;	
 	}
 

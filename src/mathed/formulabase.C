@@ -488,7 +488,7 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 	case LFUN_GREEK: 
 		handleFont(bv, LM_TC_GREEK1);
 		if (arg.size())
-			mathcursor->interpret(arg[0]);
+			mathcursor->interpret(arg);
 		break;
 
 	case LFUN_MATH_MODE:
