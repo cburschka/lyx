@@ -328,6 +328,7 @@ def main(argv):
         os.chdir(dir)
 
     dpi = string.atoi(argv[2])
+
     output_format = argv[3]
     if output_format != "ppm":
         error("This script will generate ppm format images only.")
