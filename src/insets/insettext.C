@@ -140,8 +140,7 @@ InsetText::InsetText(BufferParams const & bp)
 	  do_reinit(false)
 {
 	par = new Paragraph;
-	par->layout(textclasslist[bp.textclass].defaultLayoutName());
-
+	par->layout(textclasslist[bp.textclass].defaultLayout());
 	init();
 }
 
@@ -219,7 +218,7 @@ InsetText::~InsetText()
 void InsetText::clear()
 {
 	// This is a gross hack...
-	string old_layout = par->layout();
+	LyXLayout_ptr old_layout = par->layout();
 
 	while (par) {
 		Paragraph * tmp = par->next();
@@ -663,7 +662,7 @@ void InsetText::updateLocal(BufferView * bv, int what, bool mark_dirty) const
 	bv->owner()->updateMenubar();
 	bv->owner()->updateToolbar();
 	if (old_par != cpar(bv)) {
-		bv->owner()->setLayout(cpar(bv)->layout());
+		bv->owner()->setLayout(cpar(bv)->layout()->name());
 		old_par = cpar(bv);
 	}
 }
@@ -807,9 +806,9 @@ void InsetText::insetUnlock(BufferView * bv)
 		code = FULL;
 	} else if (owner()) {
 		bv->owner()->setLayout(owner()->getLyXText(bv)
-				       ->cursor.par()->layout());
+				       ->cursor.par()->layout()->name());
 	} else
-		bv->owner()->setLayout(bv->text->cursor.par()->layout());
+		bv->owner()->setLayout(bv->text->cursor.par()->layout()->name());
 	// hack for deleteEmptyParMech
 	if (par->size()) {
 		lt->setCursor(bv, par, 0);
@@ -1086,7 +1085,9 @@ void InsetText::insetButtonPress(BufferView * bv,
 				lt = 0;
 			updateLocal(bv, CURSOR, false);
 		}
-		bv->owner()->setLayout(cpar(bv)->layout());
+
+		bv->owner()->setLayout(cpar(bv)->layout()->name());
+
 		// we moved the view we cannot do mouse selection in this case!
 		if (getLyXText(bv)->first_y != old_first_y)
 			no_selection = true;
@@ -1443,7 +1444,7 @@ InsetText::localDispatch(BufferView * bv,
 	case LFUN_LAYOUT:
 		// do not set layouts on non breakable textinsets
 		if (autoBreakRows) {
-			string cur_layout = cpar(bv)->layout();
+			string cur_layout = cpar(bv)->layout()->name();
 
 			// Derive layout number from given argument (string)
 			// and current buffer's textclass (number). */
@@ -1454,7 +1455,7 @@ InsetText::localDispatch(BufferView * bv,
 			// If the entry is obsolete, use the new one instead.
 			if (hasLayout) {
 				string const & obs =
-					textclasslist[tclass][layout].
+					textclasslist[tclass][layout]->
 					obsoleted_by();
 				if (!obs.empty())
 					layout = obs;
@@ -1470,13 +1471,13 @@ InsetText::localDispatch(BufferView * bv,
 			if (cur_layout != layout) {
 				cur_layout = layout;
 				lt->setLayout(bv, layout);
-				bv->owner()->setLayout(cpar(bv)->layout());
+				bv->owner()->setLayout(cpar(bv)->layout()->name());
 				updwhat = CURSOR_PAR;
 				updflag = true;
 			}
 		} else {
 			// reset the layout box
-			bv->owner()->setLayout(cpar(bv)->layout());
+			bv->owner()->setLayout(cpar(bv)->layout()->name());
 		}
 		break;
 	case LFUN_PARAGRAPH_SPACING:
@@ -1593,8 +1594,7 @@ int InsetText::docbook(Buffer const * buf, ostream & os, bool mixcont) const
 		string sgmlparam;
 		int desc_on = 0; // description mode
 
-		LyXLayout const & style =
-			textclasslist[buf->params.textclass][p->layout()];
+		LyXLayout_ptr const & style = p->layout();
 
 		// environment tag closing
 		for (; depth > p->params().depth(); --depth) {
@@ -1610,7 +1610,7 @@ int InsetText::docbook(Buffer const * buf, ostream & os, bool mixcont) const
 		}
 
 		if (depth == p->params().depth()
-		   && environment_stack[depth] != style.latexname()
+		   && environment_stack[depth] != style->latexname()
 		   && !environment_stack[depth].empty()) {
 			if (environment_inner[depth] != "!-- --") {
 				item_name= "listitem";
@@ -1626,9 +1626,9 @@ int InsetText::docbook(Buffer const * buf, ostream & os, bool mixcont) const
 		}
 
 		// Write opening SGML tags.
-		switch (style.latextype) {
+		switch (style->latextype) {
 		case LATEX_PARAGRAPH:
-			lines += buf->sgmlOpenTag(os, depth + command_depth, mixcont, style.latexname());
+			lines += buf->sgmlOpenTag(os, depth + command_depth, mixcont, style->latexname());
 			break;
 
 		case LATEX_COMMAND:
@@ -1643,12 +1643,12 @@ int InsetText::docbook(Buffer const * buf, ostream & os, bool mixcont) const
 				environment_stack[depth].erase();
 			}
 
-			if (environment_stack[depth] != style.latexname()) {
+			if (environment_stack[depth] != style->latexname()) {
 				if (environment_stack.size() == depth + 1) {
 					environment_stack.push_back("!-- --");
 					environment_inner.push_back("!-- --");
 				}
-				environment_stack[depth] = style.latexname();
+				environment_stack[depth] = style->latexname();
 				environment_inner[depth] = "!-- --";
 				lines += buf->sgmlOpenTag(os, depth + command_depth, mixcont, environment_stack[depth]);
 			} else {
@@ -1660,17 +1660,17 @@ int InsetText::docbook(Buffer const * buf, ostream & os, bool mixcont) const
 				}
 			}
 
-			if (style.latextype == LATEX_ENVIRONMENT) {
-				if (!style.latexparam().empty()) {
-					if (style.latexparam() == "CDATA")
+			if (style->latextype == LATEX_ENVIRONMENT) {
+				if (!style->latexparam().empty()) {
+					if (style->latexparam() == "CDATA")
 						os << "<![CDATA[";
 					else
-					  lines += buf->sgmlOpenTag(os, depth + command_depth, mixcont, style.latexparam());
+					  lines += buf->sgmlOpenTag(os, depth + command_depth, mixcont, style->latexparam());
 				}
 				break;
 			}
 
-			desc_on = (style.labeltype == LABEL_MANUAL);
+			desc_on = (style->labeltype == LABEL_MANUAL);
 
 			environment_inner[depth] = desc_on?"varlistentry":"listitem";
 			lines += buf->sgmlOpenTag(os, depth + 1 + command_depth, mixcont, environment_inner[depth]);
@@ -1680,7 +1680,7 @@ int InsetText::docbook(Buffer const * buf, ostream & os, bool mixcont) const
 
 			break;
 		default:
-			lines += buf->sgmlOpenTag(os, depth + command_depth, mixcont, style.latexname());
+			lines += buf->sgmlOpenTag(os, depth + command_depth, mixcont, style->latexname());
 			break;
 		}
 
@@ -1689,13 +1689,13 @@ int InsetText::docbook(Buffer const * buf, ostream & os, bool mixcont) const
 
 		string end_tag;
 		// write closing SGML tags
-		switch (style.latextype) {
+		switch (style->latextype) {
 		case LATEX_ENVIRONMENT:
-			if (!style.latexparam().empty()) {
-				if (style.latexparam() == "CDATA")
+			if (!style->latexparam().empty()) {
+				if (style->latexparam() == "CDATA")
 					os << "]]>";
 				else
-					lines += buf->sgmlCloseTag(os, depth + command_depth, mixcont, style.latexparam());
+					lines += buf->sgmlCloseTag(os, depth + command_depth, mixcont, style->latexparam());
 			}
 			break;
 		case LATEX_ITEM_ENVIRONMENT:
@@ -1704,10 +1704,10 @@ int InsetText::docbook(Buffer const * buf, ostream & os, bool mixcont) const
 			lines += buf->sgmlCloseTag(os, depth + 1 + command_depth, mixcont, end_tag);
 			break;
 		case LATEX_PARAGRAPH:
-			lines += buf->sgmlCloseTag(os, depth + command_depth, mixcont, style.latexname());
+			lines += buf->sgmlCloseTag(os, depth + command_depth, mixcont, style->latexname());
 			break;
 		default:
-			lines += buf->sgmlCloseTag(os, depth + command_depth, mixcont, style.latexname());
+			lines += buf->sgmlCloseTag(os, depth + command_depth, mixcont, style->latexname());
 			break;
 		}
 	}
@@ -1740,9 +1740,9 @@ void InsetText::validate(LaTeXFeatures & features) const
 }
 
 
-int InsetText::beginningOfMainBody(Buffer const * buf, Paragraph * p) const
+int InsetText::beginningOfMainBody(Paragraph * p) const
 {
-	if (textclasslist[buf->params.textclass][p->layout()].labeltype != LABEL_MANUAL)
+	if (p->layout()->labeltype != LABEL_MANUAL)
 		return 0;
 	else
 		return p->beginningOfMainBody();

@@ -137,12 +137,12 @@ bool CutAndPaste::cutSelection(Paragraph * startpar, Paragraph ** endpar,
 		if (realcut) {
 			buf->params().clear();
 			buf->bibkey = 0;
-			buf->layout(textclasslist[current_view->buffer()->params.textclass].defaultLayoutName());
+			buf->layout(textclasslist[current_view->buffer()->params.textclass].defaultLayout());
 		}
 
 		// paste the paragraphs again, if possible
 		if (doclear)
-			startpar->next()->stripLeadingSpaces(textclass);
+			startpar->next()->stripLeadingSpaces();
 		if (startpar->hasSameLayout(startpar->next()) ||
 		    !startpar->next()->size()) {
 			startpar->pasteParagraph(current_view->buffer()->params);
@@ -288,7 +288,7 @@ bool CutAndPaste::pasteSelection(Paragraph ** par, Paragraph ** endpar,
 		SwitchLayoutsBetweenClasses(textclass, tc, tmpbuf,
 					    current_view->buffer()->params);
 
-		Paragraph::depth_type max_depth = (*par)->getMaxDepthAfter(current_view->buffer());
+		Paragraph::depth_type max_depth = (*par)->getMaxDepthAfter();
 
 		while(tmpbuf) {
 			// if we have a negative jump so that the depth would go below
@@ -304,7 +304,7 @@ bool CutAndPaste::pasteSelection(Paragraph ** par, Paragraph ** endpar,
 			// only set this from the 2nd on as the 2nd depends for maxDepth
 			// still on *par
 			if (tmpbuf->previous() != (*par))
-				max_depth = tmpbuf->getMaxDepthAfter(current_view->buffer());
+				max_depth = tmpbuf->getMaxDepthAfter();
 			// set the inset owner of this paragraph
 			tmpbuf->setInsetOwner((*par)->inInset());
 			for(pos_type i = 0; i < tmpbuf->size(); ++i) {
@@ -374,7 +374,7 @@ bool CutAndPaste::pasteSelection(Paragraph ** par, Paragraph ** endpar,
 				lastbuffer->makeSameLayout(lastbuffer->next());
 				lastbuffer->pasteParagraph(current_view->buffer()->params);
 			} else
-				lastbuffer->next()->stripLeadingSpaces(tc);
+				lastbuffer->next()->stripLeadingSpaces();
 		}
 		// restore the simple cut buffer
 		buf = simple_cut_clone;
@@ -413,17 +413,17 @@ int CutAndPaste::SwitchLayoutsBetweenClasses(textclass_type c1,
 	ParIterator end = ParIterator();
 	for (ParIterator it = ParIterator(par); it != end; ++it) {
 		par = *it;
-		string const name = par->layout();
+		string const name = par->layout()->name();
 		bool hasLayout = tclass2.hasLayout(name);
 
 		if (!hasLayout)
-			par->layout(tclass2.defaultLayoutName());
+			par->layout(tclass2.defaultLayout());
 
 		if (!hasLayout && name != tclass1.defaultLayoutName()) {
 			++ret;
 			string const s = _("Layout had to be changed from\n")
 				+ name + _(" to ")
-				+ par->layout()
+				+ par->layout()->name()
 				+ _("\nbecause of class conversion from\n")
 				+ textclasslist[c1].name() + _(" to ")
 				+ textclasslist[c2].name();

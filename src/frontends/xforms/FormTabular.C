@@ -43,13 +43,6 @@ FormTabular::FormTabular(LyXView & lv, Dialogs & d)
 	: FormInset(&lv, &d, _("Tabular Layout")),
 	  inset_(0), actCell_(-1), closing_(false)
 {
-#if 0
-	// let the dialog be shown
-	// This is a permanent connection so we won't bother
-	// storing a copy because we won't be disconnecting.
-	d->showTabular = boost::bind(&FormTabular::showInset, this, _1);
-	d->updateTabular = boost::bind(&FormTabular::updateInset, this, _1);
-#endif
 }
 
 
@@ -154,18 +147,10 @@ void FormTabular::build()
 	// Create the contents of the unit choices
 	// Don't include the "%" terms...
 	vector<string> units_vec = getLatexUnits();
-#if 0
-	for (vector<string>::iterator it = units_vec.begin();
-	     it != units_vec.end(); ++it) {
-		if (contains(*it, "%"))
-			it = units_vec.erase(it, it + 1) - 1;
-	}
-#else
 	vector<string>::iterator ret =
 		remove_if(units_vec.begin(), units_vec.end(),
 			  bind2nd(contains_functor(), "%"));
 	units_vec.erase(ret, units_vec.end());
-#endif
 
 	string units = getStringFromVector(units_vec, "|");
 

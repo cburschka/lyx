@@ -15,6 +15,7 @@
 
 #include "LString.h"
 
+#include "lyxlayout_ptr_fwd.h"
 #include "insets/inset.h" // Just for Inset::Code
 #include "lyxfont.h" // Just for LyXFont::FONT_SIZE
 #include "support/types.h"
@@ -146,7 +147,7 @@ public:
 
 	/** Check if the current paragraph is the last paragraph in a
 	    proof environment */
-	int getEndLabel(BufferParams const &) const;
+	int getEndLabel() const;
 	///
 	Inset * inInset() const;
 	///
@@ -164,9 +165,9 @@ public:
 	void clearContents();
 
 	///
-	string const & layout() const;
+	LyXLayout_ptr const & layout() const;
 	///
-	void layout(string const & new_layout);
+	void layout(LyXLayout_ptr const & new_layout);
 
 	///
 	void setCounter(int i, int v);
@@ -221,9 +222,9 @@ public:
 	/// The nesting depth of a paragraph
 	depth_type getDepth() const;
 	/// The maximal possible depth of a paragraph after this one
-	depth_type getMaxDepthAfter(Buffer const *) const;
+	depth_type getMaxDepthAfter() const;
 	///
-	void applyLayout(string const & new_layout);
+	void applyLayout(LyXLayout_ptr const & new_layout);
 	///
 	int getFirstCounter(int i) const;
 	///
@@ -318,7 +319,7 @@ public:
 	Paragraph * getParFromID(int id) const;
 
 	///
-	int stripLeadingSpaces(lyx::textclass_type tclass);
+	int stripLeadingSpaces();
 
 #ifndef NO_PEXTRA_REALLY
 	/* If I set a PExtra Indent on one paragraph of a ENV_LIST-TYPE
@@ -338,7 +339,7 @@ public:
 	ParagraphParameters const & params() const;
 private:
 	///
-	string layout_;
+	LyXLayout_ptr layout_;
 public:
 	/** Both these definitions must be made public to keep Compaq cxx 6.5
 	 *  happy.

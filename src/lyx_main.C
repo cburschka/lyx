@@ -14,7 +14,7 @@
 #endif
 
 #include "lyx_main.h"
- 
+
 #include "support/filetools.h"
 #include "support/lyxlib.h"
 #include "support/os.h"
@@ -23,7 +23,7 @@
 #include "debug.h"
 #include "gettext.h"
 #include "lyxlex.h"
- 
+
 #include "bufferlist.h"
 #include "lyxtextclasslist.h"
 #include "lyxserver.h"
@@ -55,7 +55,7 @@ extern void LoadLyXFile(string const &);
 extern void QuitLyX();
 
 extern LyXServer * lyxserver;
- 
+
 string system_lyxdir;
 string build_lyxdir;
 string system_tempdir;
@@ -118,7 +118,7 @@ LyX::LyX(int & argc, char * argv[])
 	if (first_start) {
 		files.push_back(i18nLibFileSearch("examples", "splash.lyx"));
 	}
- 
+
 #if 0 // FIXME: GUII
 	// Execute batch commands if available
 	if (!batch_command.empty()) {
@@ -130,7 +130,7 @@ LyX::LyX(int & argc, char * argv[])
 			last_loaded = bufferlist.newFile("tmpfile", string());
 
 		bool success = false;
- 
+
 		// try to dispatch to last loaded buffer first
 		bool const dispatched = last_loaded->dispatch(batch_command, &success);
 
@@ -145,7 +145,7 @@ LyX::LyX(int & argc, char * argv[])
 	lyx_gui::start(batch_command, files);
 }
 
- 
+
 extern "C" {
 
 static
@@ -819,7 +819,7 @@ bool LyX::easyParse(int & argc, char * argv[])
 			commandLineVersionInfo();
 			exit(0);
 		}
-		// FIXME: why is this commented out ? 
+		// FIXME: why is this commented out ?
 		// Check for "-nw": No XWindows as for emacs this should
 		// give a LyX that could be used in a terminal window.
 		//else if (arg == "-nw") {
@@ -836,7 +836,7 @@ bool LyX::easyParse(int & argc, char * argv[])
 				lyxerr << _("Missing command string after  -x switch!") << endl;
 
 			// Argh. Setting gui to false segfaults..
-			// FIXME: when ? how ? 
+			// FIXME: when ? how ?
 			// gui = false;
 		}
 
@@ -859,11 +859,11 @@ bool LyX::easyParse(int & argc, char * argv[])
 					lyxerr << _("Missing filename for --import") << endl;
 					exit(1);
 				}
- 
+
 				string const file(argv[i+2]);
 				string const type(argv[i+1]);
 				removeargs = 3;
- 
+
 				batch_command = "buffer-import " + type + " " + file;
 				lyxerr << "batch_command: "
 				       << batch_command << endl;

@@ -40,7 +40,7 @@ public:
 	}
 	///
 	Window getWin() const { return work_area->form->window; }
-        ///
+	///
 	virtual void setScrollbarParams(int height, int pos, int line_height);
 	///
 	Pixmap getPixmap() const { return workareapixmap; }
@@ -48,12 +48,12 @@ public:
 	static int work_area_handler(FL_OBJECT *, int event,
 				     FL_Coord, FL_Coord,
 				     int /*key*/, void * xev);
- 
+
 	/// return x position of window
 	int xpos() const { return work_area->x; }
 	/// return y position of window
 	int ypos() const { return work_area->y; }
- 
+
 	/// xforms callback from scrollbar
 	void scroll_cb();
 	/// a selection exists
@@ -84,5 +84,5 @@ private:
 	/// the current document's height (for scrollbar)
 	int doc_height_;
 };
- 
+
 #endif // XWORKAREA_H

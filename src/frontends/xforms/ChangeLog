@@ -1,3 +1,7 @@
+2002-06-24  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* Toolbar_pimpl.C: layout as layout
+
 2002-06-21  Angus Leeming  <leeming@lyx.org>
 
 	* xscreen.C: add a using std::endl directive.
@@ -6,84 +10,84 @@
 
 	* FormPreferences.h:
 	* FormPreferences.C:
-	* forms/form_preferences.fd: remove show_banner, display_shortcuts 
- 
+	* forms/form_preferences.fd: remove show_banner, display_shortcuts
+
 2002-06-21  John Levon  <moz@compsoc.man.ac.uk>
 
 	* XWorkArea.h:
 	* XWorkArea.C: remove splash, should be handled in
 	  LyXScreen::greyOut()
- 
+
 2002-06-21  John Levon  <moz@compsoc.man.ac.uk>
 
 	* forms/form_texinfo.fd: "Update List" not "Rescan"
- 
+
 2002-06-20  John Levon  <moz@compsoc.man.ac.uk>
 
 	* guiapi.C: createIndex() changed
- 
+
 2002-06-20  John Levon  <moz@compsoc.man.ac.uk>
 
 	* FormBibtex.C: use new lyx::eliminate_duplicates
 
 2002-06-20 Herbert Voss  <voss@perce.de>
- 
-  	* FormBibtex.C:
-  	* forms/form_bibtex.fd: give better support for choosing the
-  	bibstyle (new browserfield with the available bibstyles). 
-  	move some code of ControlTexinfo into a helper
-  	file support/tex-helpers to use some of the functions
- 
+
+	* FormBibtex.C:
+	* forms/form_bibtex.fd: give better support for choosing the
+	bibstyle (new browserfield with the available bibstyles).
+	move some code of ControlTexinfo into a helper
+	file support/tex-helpers to use some of the functions
+
 2002-06-20  John Levon  <moz@compsoc.man.ac.uk>
 
 	* XWorkArea.h:
 	* XWorkArea.C: remove unused code, name change
- 
+
 2002-06-20  John Levon  <moz@compsoc.man.ac.uk>
 
 	* XLyXKeySym.h:
 	* XLyXKeySym.C: whitespace
- 
+
 2002-06-20  John Levon  <moz@compsoc.man.ac.uk>
 
 	* XWorkArea.h: remove focus stuff, greyOut()
- 
+
 2002-06-19  John Levon  <moz@compsoc.man.ac.uk>
 
 	* XWorkArea.C: remove focus/unfocus events
- 
+
 2002-06-19  John Levon  <moz@compsoc.man.ac.uk>
 
 	* XWorkArea.h: remove unused methods
- 
+
 2002-06-15  Martin Vermeer  <martin.vermeer@hut.fi>
 
-        * FormMathsDelim.C: Redesign of Delimiters dialogue in mathed.
+	* FormMathsDelim.C: Redesign of Delimiters dialogue in mathed.
 	  Cleaner, smaller.
 
 2002-06-19  John Levon  <moz@compsoc.man.ac.uk>
 
 	* XWorkArea.h: remove unused width()
- 
+
 2002-06-18  John Levon  <moz@compsoc.man.ac.uk>
 
 	* guiapi.C: fix compile with libAiksaurus
- 
+
 2002-06-17  Herbert Voss  <voss@perce.de>
- 
- 	* forms/.cvsignore: ignore the *.lo files
+
+	* forms/.cvsignore: ignore the *.lo files
 
 2002-06-18  John Levon  <moz@compsoc.man.ac.uk>
- 
+
 	* FormSearch.h:
- 	* FormSearch.C: focus and select search string on open (bug #77)
+	* FormSearch.C: focus and select search string on open (bug #77)
 
 2002-06-16  Lars Gullik Bjønnes  <larsbj@birdstep.com>
- 
+
 	* changes to let the function setup happen in frontends
 
 	* guiapi.C: new file
- 
+
 2002-06-16    <alstrup@diku.dk>
 
 	* xscreen.C (draw): After drawing, we wait for X with XSync..

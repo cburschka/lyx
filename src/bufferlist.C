@@ -482,11 +482,11 @@ Buffer * BufferList::newFile(string const & name, string tname, bool isNamed)
 				   MakeDisplayPath(tname));
 			// no template, start with empty buffer
 			b->paragraph = new Paragraph;
-			b->paragraph->layout(textclasslist[b->params.textclass].defaultLayoutName());
+			b->paragraph->layout(textclasslist[b->params.textclass].defaultLayout());
 		}
 	} else {  // start with empty buffer
 		b->paragraph = new Paragraph;
-			b->paragraph->layout(textclasslist[b->params.textclass].defaultLayoutName());
+			b->paragraph->layout(textclasslist[b->params.textclass].defaultLayout());
 	}
 
 	if (!lyxrc.new_ask_filename && !isNamed) {

@@ -1,7 +1,12 @@
+#include <config.h>
 
 #include "button_inset.h"
 #include "math_support.h"
 #include "frontends/Painter.h"
+
+#include <algorithm>
+
+using std::max;
 
 
 ButtonInset::ButtonInset()
@@ -38,4 +43,3 @@ void ButtonInset::draw(MathPainterInfo & pi, int x, int y) const
 			pi.base.font);
 	}
 }
-

@@ -40,14 +40,14 @@ namespace {
 GC createGC()
 {
 	XGCValues val;
-	val.foreground = BlackPixel(fl_get_display(), 
+	val.foreground = BlackPixel(fl_get_display(),
 				    DefaultScreen(fl_get_display()));
-	
+
 	val.function = GXcopy;
 	val.graphics_exposures = false;
 	val.line_style = LineSolid;
 	val.line_width = 0;
-	return XCreateGC(fl_get_display(), RootWindow(fl_get_display(), 0), 
+	return XCreateGC(fl_get_display(), RootWindow(fl_get_display(), 0),
 			 GCForeground | GCFunction | GCGraphicsExposures
 			 | GCLineWidth | GCLineStyle , &val);
 }
@@ -76,13 +76,13 @@ XScreen::~XScreen()
 	XFreeGC(fl_get_display(), gc_copy);
 }
 
- 
-void XScreen::setCursorColor() 
+
+void XScreen::setCursorColor()
 {
 	if (!lyxColorHandler.get()) return;
 
 	GC gc = lyxColorHandler->getGCForeground(LColor::cursor);
-	
+
 	XGCValues val;
 	XGetGCValues(fl_get_display(),
 		     gc, GCForeground, &val);
@@ -95,14 +95,14 @@ void XScreen::showManualCursor(LyXText const * text, int x, int y,
 {
 	// Update the cursor color.
 	setCursorColor();
-	
+
 	int const y1 = max(y - text->first_y - asc, 0);
 	int const y_tmp = min(y - text->first_y + desc,
 			      static_cast<int>(owner_.workHeight()));
 
 	// Secure against very strange situations
 	int const y2 = max(y_tmp, y1);
-	
+
 	if (cursor_pixmap) {
 		XFreePixmap(fl_get_display(), cursor_pixmap);
 		cursor_pixmap = 0;
@@ -127,7 +127,7 @@ void XScreen::showManualCursor(LyXText const * text, int x, int y,
 			break;
 		}
 
-		cursor_pixmap = 
+		cursor_pixmap =
 			XCreatePixmap (fl_get_display(),
 				       fl_root,
 				       cursor_pixmap_w,
@@ -174,11 +174,11 @@ void XScreen::hideCursor()
 	if (!cursor_visible_) return;
 
 	if (cursor_pixmap) {
-		XCopyArea (fl_get_display(), 
+		XCopyArea (fl_get_display(),
 			   cursor_pixmap,
 			   owner_.getWin(),
 			   gc_copy,
-			   0, 0, 
+			   0, 0,
 			   cursor_pixmap_w, cursor_pixmap_h,
 			   cursor_pixmap_x + owner_.xpos(),
 			   cursor_pixmap_y + owner_.ypos());
@@ -186,7 +186,7 @@ void XScreen::hideCursor()
 	cursor_visible_ = false;
 }
 
- 
+
 void XScreen::expose(int x, int y, int w, int h)
 {
 	lyxerr[Debug::GUI] << "expose " << w << "x" << h
@@ -233,8 +233,8 @@ void XScreen::draw(LyXText * text, BufferView * bv, unsigned int y)
 			       old_first - text->first_y);
 		} else  {
 			drawFromTo(text, bv,
-			           owner_.workHeight() + old_first - text->first_y,
-			           owner_.workHeight(), 0, 0, internal);
+				   owner_.workHeight() + old_first - text->first_y,
+				   owner_.workHeight(), 0, 0, internal);
 			XCopyArea (fl_get_display(),
 				   owner_.getWin(),
 				   owner_.getWin(),
@@ -250,7 +250,7 @@ void XScreen::draw(LyXText * text, BufferView * bv, unsigned int y)
 			       owner_.workWidth(), text->first_y - old_first);
 		}
 	} else {
-		// make a dumb new-draw 
+		// make a dumb new-draw
 		drawFromTo(text, bv, 0, owner_.workHeight(), 0, 0, internal);
 		expose(0, 0, owner_.workWidth(), owner_.workHeight());
 	}

@@ -94,7 +94,7 @@ struct InsetGraphicsParams
 	void Write(std::ostream & os) const;
 	/// If the token belongs to our parameters, read it.
 	bool Read(LyXLex & lex, string const & token);
-	/// convert 
+	/// convert
   // Only a subset of InsetGraphicsParams is needed for display purposes.
   // This function also interrogates lyxrc to ascertain whether
   // to display or not.

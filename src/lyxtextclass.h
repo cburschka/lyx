@@ -17,22 +17,20 @@
 #endif
 
 #include "lyxlayout.h"
+#include "LString.h"
+#include "lyxlayout_ptr_fwd.h"
 
 #include "support/types.h"
-
-#include "LString.h"
 
 #include <vector>
 
 class LyXLex;
 
-
-
 ///
 class LyXTextClass {
 public:
 	///
-	typedef std::vector<LyXLayout> LayoutList;
+	typedef std::vector<LyXLayout_ptr> LayoutList;
 	///
 	typedef LayoutList::const_iterator const_iterator;
 	///
@@ -58,7 +56,7 @@ public:
 	bool hasLayout(string const & name) const;
 
 	///
-	LyXLayout const & operator[](string const & vname) const;
+	LyXLayout_ptr const & operator[](string const & vname) const;
 
 	/// Sees to that the textclass structure has been loaded
 	bool load() const;
@@ -66,7 +64,7 @@ public:
 	///
 	string const defaultLayoutName() const;
 	///
-	LyXLayout const & defaultLayout() const;
+	LyXLayout_ptr const & defaultLayout() const;
 	///
 	string const & name() const;
 	///

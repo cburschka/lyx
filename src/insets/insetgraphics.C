@@ -601,8 +601,8 @@ string const InsetGraphics::prepareFile(Buffer const *buf) const
 	string const orig_file = params().filename;
 	string orig_file_with_path =
 		MakeAbsPath(orig_file, buf->filePath());
-	lyxerr[Debug::GRAPHICS] << "[InsetGraphics::prepareFile] orig_file = " 
-		    << orig_file << "\n\twith path: " 
+	lyxerr[Debug::GRAPHICS] << "[InsetGraphics::prepareFile] orig_file = "
+		    << orig_file << "\n\twith path: "
 		    << orig_file_with_path << endl;
 
 	if (!IsFileReadable(orig_file_with_path))
@@ -627,13 +627,13 @@ string const InsetGraphics::prepareFile(Buffer const *buf) const
 		lyxerr[Debug::GRAPHICS] << "\twe have a zipped file ("
 			<< getExtFromContents(orig_file_with_path) << ")\n";
 	if (params().noUnzip && zipped) {
-		lyxerr[Debug::GRAPHICS] 
+		lyxerr[Debug::GRAPHICS]
 			<< "\tpass file unzipped to LaTeX but with full path.\n";
 		// latex needs an absolue path, otherwise the coresponding
 		// *.eps.bb file isn't found
 		return orig_file_with_path;
 	}
-	
+
 	string temp_file(orig_file);
 	// Uncompress the file if necessary. If it has been uncompressed in
 	// a previous call to prepareFile, do nothing.
@@ -649,7 +649,7 @@ string const InsetGraphics::prepareFile(Buffer const *buf) const
 				<< (success ? " succeeded\n" : " failed\n");
 		} else
 			lyxerr[Debug::GRAPHICS]
-				<< "\tzipped file " << temp_file 
+				<< "\tzipped file " << temp_file
 				<< " exists! Maybe no tempdir ...\n";
 		orig_file_with_path = unzipFile(temp_file);
 		lyxerr[Debug::GRAPHICS]
@@ -691,12 +691,12 @@ string const InsetGraphics::prepareFile(Buffer const *buf) const
 		temp_file = MakeAbsPath(temp_file, buf->tmppath);
 		lyxerr[Debug::GRAPHICS]
 			<< "\tchanged to: " << temp_file << endl;
-			
+
 		// if the file doen't exists, copy it into the tempdi
 		if (!IsFileReadable(temp_file)) {
 			bool const success = lyx::copy(orig_file_with_path, temp_file);
 			lyxerr[Debug::GRAPHICS]
-				<< "\tcopying from " << orig_file_with_path << " to " 
+				<< "\tcopying from " << orig_file_with_path << " to "
 				<< temp_file
 				<< (success ? " succeeded\n" : " failed\n");
 			if (!success) {
@@ -716,7 +716,7 @@ string const InsetGraphics::prepareFile(Buffer const *buf) const
 		// the orig_file_with_path, maybe it is a zipped one
 		return lyxrc.use_tempdir ? temp_file : orig_file_with_path;
 	}
-	
+
 	string const outfile_base = RemoveExtension(temp_file);
 	lyxerr[Debug::GRAPHICS]
 		<< "\tThe original file is " << orig_file << "\n"
@@ -728,21 +728,21 @@ string const InsetGraphics::prepareFile(Buffer const *buf) const
 	// if no special converter defined, than we take the default one
 	// from ImageMagic: convert from:inname.from to:outname.to
 	if (!converters.convert(buf, temp_file, outfile_base, from, to)) {
-		string const command = 
+		string const command =
 			"convert " +
 			from + ':' + temp_file + ' ' +
 			to + ':' + outfile_base + '.' + to;
-		lyxerr[Debug::GRAPHICS] 
+		lyxerr[Debug::GRAPHICS]
 			<< "No converter defined! I use convert from ImageMagic:\n\t"
 			<< command << endl;
 		Systemcall one;
 		one.startscript(Systemcall::Wait, command);
 		if (!IsFileReadable(ChangeExtension(outfile_base, to)))
-			Alert::alert(_("Cannot convert Image (not existing file??)"),
+			Alert::alert(_("Cannot convert Image (not existing file?)"),
 				_("No information for converting from ")
 				+ from + _(" to ") + to);
 	}
-	
+
 	return RemoveExtension(temp_file);
 }
 
@@ -838,7 +838,8 @@ int InsetGraphics::linuxdoc(Buffer const *, ostream &) const
 // For explanation on inserting graphics into DocBook checkout:
 // http://linuxdoc.org/LDP/LDP-Author-Guide/inserting-pictures.html
 // See also the docbook guide at http://www.docbook.org/
-int InsetGraphics::docbook(Buffer const *, ostream & os, bool mixcont) const
+int InsetGraphics::docbook(Buffer const *, ostream & os,
+			   bool /*mixcont*/) const
 {
 	// In DocBook v5.0, the graphic tag will be eliminated from DocBook, will
 	// need to switch to MediaObject. However, for now this is sufficient and

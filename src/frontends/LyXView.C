@@ -68,7 +68,7 @@ void LyXView::init()
 {
 	updateLayoutChoice();
 	updateMenubar();
-	
+
 	// Start autosave timer
 	if (lyxrc.autosave) {
 		autosave_timeout_->setTimeout(lyxrc.autosave * 1000);
@@ -194,7 +194,7 @@ void LyXView::updateLayoutChoice()
 	}
 
 	string const & layout =
-		bufferview_->getLyXText()->cursor.par()->layout();
+		bufferview_->getLyXText()->cursor.par()->layout()->name();
 
 	if (layout != current_layout) {
 		toolbar_->setLayout(layout);

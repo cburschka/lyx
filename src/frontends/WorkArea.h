@@ -23,7 +23,7 @@
 #include <utility>
 
 class Painter;
- 
+
 /**
  * The work area class represents the widget that provides the
  * view onto a document. It is owned by the BufferView, and
@@ -37,15 +37,15 @@ public:
 	WorkArea() {}
 
 	virtual ~WorkArea() {}
- 
+
 	/// return the painter object for this work area
 	virtual Painter & getPainter() = 0;
- 
+
 	/// return the width of the work area in pixels
 	virtual int workWidth() const = 0;
 	/// return the height of the work area in pixels
 	virtual int workHeight() const = 0;
-  
+
 	/**
 	 * Update the scrollbar.
 	 * @param height the total document height in pixels
@@ -53,7 +53,7 @@ public:
 	 * @param line_height the line-scroll amount, in pixels
 	 */
 	virtual void setScrollbarParams(int height, int pos, int line_height) = 0;
- 
+
 	// FIXME: this is an odd place to have it, but xforms needs it here ...
 	/// a selection exists
 	virtual void haveSelection(bool) const = 0;
@@ -61,7 +61,7 @@ public:
 	virtual string const getClipboard() const = 0;
 	/// fill the clipboard
 	virtual void putClipboard(string const &) const = 0;
- 
+
 	/// work area dimensions have changed
 	boost::signal0<void> workAreaResize;
 	/// the scrollbar has changed
@@ -83,5 +83,5 @@ public:
 	/// emitted when another X client has stolen our selection
 	boost::signal0<void> selectionLost;
 };
- 
+
 #endif // WORKAREA_H

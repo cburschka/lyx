@@ -272,7 +272,7 @@ void InsetFormulaBase::fitInsetCursor(BufferView * bv) const
 {
 	if (!mathcursor)
 		return;
-	
+
 	int const asc = font_metrics::maxAscent(font_);
 	int const desc = font_metrics::maxDescent(font_);
 	int x, y;

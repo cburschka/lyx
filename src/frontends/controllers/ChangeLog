@@ -1,3 +1,7 @@
+2002-06-24  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* ControlParagraph.C: layout as layout
+
 2002-06-21  Angus Leeming  <leeming@lyx.org>
 
 	* tex_helpers.C: Use <vector> not <vector.h>. Reorder header files.
@@ -7,7 +11,7 @@
 
 	* ControlBibtex.C:
 	* ControlBibitem.C: use repaint()
- 
+
 2002-06-21  John Levon  <moz@compsoc.man.ac.uk>
 
 	* ControlTexinfo.C: do the same for Texinfo
@@ -15,14 +19,14 @@
 	* tex_helpers.C: don't try to read a file that isn't there
 
 2002-06-21  Herbert Voss  <voss@perce.de>
- 
- 	* ControlBibtex.C: do an automatic update, when no bst-list
- 	exists
- 
+
+	* ControlBibtex.C: do an automatic update, when no bst-list
+	exists
+
 2002-06-20  John Levon  <moz@compsoc.man.ac.uk>
 
 	* GUI.h: createIndex() changed
- 
+
 2002-06-18  Herbert Voss  <voss@perce.de>
 
 	* tex_helpers.[Ch]: move functions from ControlTexinfo into this
@@ -31,7 +35,7 @@
 2002-06-18  John Levon  <moz@compsoc.man.ac.uk>
 
 	* ControlGraphics.C: just make the mask *.*
- 
+
 2002-06-16  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* changes to simplify function setup, removal of a lot of includes.

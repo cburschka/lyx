@@ -43,7 +43,7 @@ LyXCursor const & undoCursor(BufferView * bv)
 		return bv->theLockingInset()->cursor(bv);
 	return bv->text->cursor;
 }
- 
+
 /**
  * returns a pointer to the very first Paragraph depending of where we are
  * so it will return the first paragraph of the buffer or the first paragraph
@@ -73,13 +73,13 @@ void finishNoUndo(BufferView * bv)
 	bv->text->status(bv, LyXText::NEED_MORE_REFRESH);
 	unFreezeUndo();
 }
- 
- 
+
+
 // returns false if no undo possible
 bool textHandleUndo(BufferView * bv, Undo & undo)
 {
 	Buffer * b = bv->buffer();
- 
+
 	Paragraph * before =
 		b->getParFromID(undo.number_of_before_par);
 	Paragraph * behind =
@@ -128,9 +128,9 @@ bool textHandleUndo(BufferView * bv, Undo & undo)
 	}
 
 	vector<Paragraph *> deletelist;
- 
+
 	Paragraph * deletepar;
- 
+
 	// now add old paragraphs to be deleted
 	if (before != behind || (!behind && !before)) {
 		if (before)
@@ -142,7 +142,7 @@ bool textHandleUndo(BufferView * bv, Undo & undo)
 			deletelist.push_back(deletepar);
 			tmppar = deletepar;
 			deletepar = deletepar->next();
- 
+
 			// a memory optimization for edit:
 			// Only layout information
 			// is stored in the undo. So restore
@@ -215,7 +215,7 @@ bool textHandleUndo(BufferView * bv, Undo & undo)
 			// clear any selection and set the selection cursor
 			// for an evt. new selection.
 			t->clearSelection();
-			t->selection.cursor = t->cursor; 
+			t->selection.cursor = t->cursor;
 			t->updateCounters(bv, t->cursor.row());
 			bv->fitCursor();
 		}
@@ -237,7 +237,7 @@ bool textHandleUndo(BufferView * bv, Undo & undo)
 			// clear any selection and set the selection cursor
 			// for an evt. new selection.
 			t->clearSelection();
-			t->selection.cursor = t->cursor; 
+			t->selection.cursor = t->cursor;
 			t->updateCounters(bv, t->cursor.row());
 		}
 	}
@@ -251,13 +251,13 @@ bool textHandleUndo(BufferView * bv, Undo & undo)
 				delete (*pit);
 			}
 		}
- 
+
 	finishUndo();
 	bv->text->status(bv, LyXText::NEED_MORE_REFRESH);
 	return true;
 }
 
- 
+
 bool createUndo(BufferView * bv, Undo::undo_kind kind,
 	Paragraph const * first, Paragraph const * behind, shared_ptr<Undo> & u)
 {
@@ -275,7 +275,7 @@ bool createUndo(BufferView * bv, Undo::undo_kind kind,
 		inset_id = first->inInset()->id();
 
 	Buffer * b = bv->buffer();
- 
+
 	// Undo::EDIT  and Undo::FINISH are
 	// always finished. (no overlapping there)
 	// overlapping only with insert and delete inside one paragraph:
@@ -293,7 +293,7 @@ bool createUndo(BufferView * bv, Undo::undo_kind kind,
 			return false;
 		}
 	}
- 
+
 	// create a new Undo
 	Paragraph * undopar;
 
@@ -382,16 +382,16 @@ void unFreezeUndo()
 bool textUndo(BufferView * bv)
 {
 	Buffer * b = bv->buffer();
- 
+
 	if (b->undostack.empty()) {
 		finishNoUndo(bv);
 		return false;
 	}
- 
+
 	shared_ptr<Undo> undo = b->undostack.top();
 	b->undostack.pop();
 	finishUndo();
- 
+
 	if (!undo_frozen) {
 		Paragraph * first = b->getParFromID(undo->number_of_before_par);
 		if (first && first->next())
@@ -405,7 +405,7 @@ bool textUndo(BufferView * bv)
 				b->redostack.push(u);
 		}
 	}
- 
+
 	// now we can unlock the inset for saftey because the inset pointer could
 	// be changed during the undo-function. Anyway if needed we have to lock
 	// the right inset/position if this is requested.
@@ -426,11 +426,11 @@ bool textRedo(BufferView * bv)
 		finishNoUndo(bv);
 		return false;
 	}
- 
+
 	shared_ptr<Undo> undo = b->redostack.top();
 	b->redostack.pop();
 	finishUndo();
- 
+
 	if (!undo_frozen) {
 	Paragraph * first = bv->buffer()->getParFromID(undo->number_of_before_par);
 		if (first && first->next())
@@ -444,7 +444,7 @@ bool textRedo(BufferView * bv)
 				bv->buffer()->undostack.push(u);
 		}
 	}
- 
+
 	// now we can unlock the inset for saftey because the inset pointer could
 	// be changed during the undo-function. Anyway if needed we have to lock
 	// the right inset/position if this is requested.

@@ -45,25 +45,25 @@ void LyXScreen::showCursor(LyXText const * text, BufferView const * bv)
 {
 	if (cursor_visible_)
 		return;
- 
+
 	workarea().getPainter().start();
- 
+
 	Cursor_Shape shape = BAR_SHAPE;
 	BufferParams const & bp(bv->buffer()->params);
 	LyXFont const & realfont(text->real_current_font);
 
 	if (realfont.language() != bp.language
-		|| realfont.isVisibleRightToLeft() 
+		|| realfont.isVisibleRightToLeft()
 		!= bp.language->RightToLeft()) {
 		shape = (realfont.isVisibleRightToLeft())
 			? REVERSED_L_SHAPE : L_SHAPE;
 	}
- 
+
 	showManualCursor(text, text->cursor.x(), text->cursor.y(),
 		font_metrics::maxAscent(realfont),
 		font_metrics::maxDescent(realfont),
 		shape);
- 
+
 	workarea().getPainter().end();
 }
 
@@ -73,7 +73,7 @@ bool LyXScreen::fitManualCursor(BufferView * bv, LyXText * text,
 {
 	int const vheight = workarea().workHeight();
 	int newtop = text->first_y;
- 
+
 	if (y + desc - text->first_y >= vheight)
 		newtop = y - 3 * vheight / 4;  // the scroll region must be so big!!
 	else if (y - asc < text->first_y
@@ -82,7 +82,7 @@ bool LyXScreen::fitManualCursor(BufferView * bv, LyXText * text,
 	}
 
 	newtop = max(newtop, 0); // can newtop ever be < 0? (Lgb)
- 
+
 	if (newtop != text->first_y) {
 		draw(text, bv, newtop);
 		text->first_y = newtop;
@@ -111,7 +111,7 @@ unsigned int LyXScreen::topCursorVisible(LyXCursor const & cursor, int top_y)
 	// Is this a hack? Yes, probably... (Lgb)
 	if (!row)
 		return max(newtop, 0);
-	
+
 	if (cursor.y() - row->baseline() + row->height()
 	    - top_y >= vheight) {
 		if (row->height() < vheight
@@ -124,7 +124,7 @@ unsigned int LyXScreen::topCursorVisible(LyXCursor const & cursor, int top_y)
 			newtop = cursor.y()
 				- vheight / 2;   /* the scroll region must be so big!! */
 		}
-		
+
 	} else if (static_cast<int>((cursor.y()) - row->baseline()) <
 		   top_y && top_y > 0) {
 		if (row->height() < vheight
@@ -153,7 +153,7 @@ bool LyXScreen::fitCursor(LyXText * text, BufferView * bv)
 	return result;
 }
 
-  
+
 void LyXScreen::update(LyXText * text, BufferView * bv,
 	int yo, int xo)
 {
@@ -161,7 +161,7 @@ void LyXScreen::update(LyXText * text, BufferView * bv,
 	int const vheight = workarea().workHeight();
 
 	workarea().getPainter().start();
- 
+
 	switch (text->status()) {
 	case LyXText::NEED_MORE_REFRESH:
 	{
@@ -197,7 +197,7 @@ void LyXScreen::update(LyXText * text, BufferView * bv,
 		// Nothing needs done
 		break;
 	}
- 
+
 	workarea().getPainter().end();
 }
 
@@ -223,32 +223,32 @@ void LyXScreen::toggleSelection(LyXText * text, BufferView * bv,
 
 	if (kill_selection)
 		text->selection.set(false);
- 
+
 	workarea().getPainter().start();
- 
+
 	drawFromTo(text, bv, top - text->first_y, bottom - text->first_y,
 		   yo, xo);
 	expose(0, top - text->first_y,
 	       workarea().workWidth(),
- 	       bottom - text->first_y - (top - text->first_y));
- 
+	       bottom - text->first_y - (top - text->first_y));
+
 	workarea().getPainter().end();
 }
- 
-  
+
+
 void LyXScreen::toggleToggle(LyXText * text, BufferView * bv,
 			     int yo, int xo)
 {
 	if (text->toggle_cursor.par() == text->toggle_end_cursor.par()
 	    && text->toggle_cursor.pos() == text->toggle_end_cursor.pos())
 		return;
-	
+
 	int const top_tmp = text->toggle_cursor.y()
 		- text->toggle_cursor.row()->baseline();
 	int const bottom_tmp = text->toggle_end_cursor.y()
 		- text->toggle_end_cursor.row()->baseline()
 		+ text->toggle_end_cursor.row()->height();
-	
+
 	int const offset = yo < 0 ? yo : 0;
 	int const bottom = min(max(bottom_tmp, text->first_y),
 		static_cast<int>(text->first_y + workarea().workHeight())) - offset;
@@ -262,7 +262,7 @@ void LyXScreen::toggleToggle(LyXText * text, BufferView * bv,
 		   xo);
 	expose(0, top - text->first_y, workarea().workWidth(),
 	       bottom - text->first_y - (top - text->first_y));
- 
+
 	workarea().getPainter().end();
 }
 
@@ -280,9 +280,9 @@ void LyXScreen::redraw(LyXText * text, BufferView * bv)
 
 	drawFromTo(text, bv, 0, workarea().workHeight(), 0, 0, text == bv->text);
 	expose(0, 0, workarea().workWidth(), workarea().workHeight());
- 
+
 	workarea().getPainter().end();
- 
+
 	if (cursor_visible_) {
 		cursor_visible_ = false;
 		bv->showCursor();
@@ -341,20 +341,20 @@ void LyXScreen::drawFromTo(LyXText * text, BufferView * bv,
 	bool internal)
 {
 	lyxerr[Debug::GUI] << "screen: drawFromTo " << y1 << "-" << y2 << endl;
- 
+
 	int y_text = text->first_y + y1;
-  
+
 	// get the first needed row
 	Row * row = text->getRowNearY(y_text);
 	// y_text is now the real beginning of the row
-  
+
 	int y = y_text - text->first_y;
 	// y1 is now the real beginning of row on the screen
-	
+
 	while (row != 0 && y < y2) {
 		LyXText::text_status st = text->status();
 		text->getVisibleRow(bv, y + yo,
-		                    xo, row, y + text->first_y);
+				    xo, row, y + text->first_y);
 		internal = internal && (st != LyXText::CHANGED_IN_DRAW);
 		while (internal && text->status() == LyXText::CHANGED_IN_DRAW) {
 			text->fullRebreak(bv);
@@ -362,7 +362,7 @@ void LyXScreen::drawFromTo(LyXText * text, BufferView * bv,
 			text->setCursor(bv, text->cursor.par(), text->cursor.pos());
 			text->status(bv, st);
 			text->getVisibleRow(bv, y + yo,
-			                    xo, row, y + text->first_y);
+					    xo, row, y + text->first_y);
 		}
 		y += row->height();
 		row = row->next();

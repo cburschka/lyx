@@ -19,7 +19,7 @@
 #include "BufferView.h"
 #include "support/lstrings.h"
 #include "frontends/Painter.h"
-#include "frontends/mouse_state.h" 
+#include "frontends/mouse_state.h"
 #include "commandtags.h"
 #include "support/lstrings.h"
 #include "gettext.h"

@@ -31,6 +31,20 @@ using std::find_if;
 using std::remove_if;
 using std::ostream;
 
+namespace { // anon
+
+struct compare_name {
+	compare_name(string const & name)
+		: name_(name) {}
+	template <class C>
+	bool operator()(C & c) {
+		return c->name() == name_;
+	}
+	string name_;
+};
+
+} // anon
+
 
 LyXTextClass::LyXTextClass(string const & fn, string const & cln,
 			   string const & desc)
@@ -183,14 +197,14 @@ bool LyXTextClass::Read(string const & filename, bool merge)
 				string const name = subst(lexrc.getString(),
 						    '_', ' ');
 				if (hasLayout(name)) {
-					LyXLayout & lay =
-						const_cast<LyXLayout &>(operator[](name));
-					error = do_readStyle(lexrc, lay);
+					LyXLayout * lay =
+						operator[](name).get();
+					error = do_readStyle(lexrc, *lay);
 				} else {
 					LyXLayout lay;
 					lay.setName(name);
 					if (!(error = do_readStyle(lexrc, lay)))
-						layoutlist.push_back(lay);
+						layoutlist.push_back(boost::shared_ptr<LyXLayout>(new LyXLayout(lay)));
 					if (defaultlayout_.empty()) {
 						// We do not have a default
 						// layout yet, so we choose
@@ -504,12 +518,12 @@ bool LyXTextClass::hasLayout(string const & n) const
 	string const name = (n.empty() ? defaultLayoutName() : n);
 
 	return find_if(layoutlist.begin(), layoutlist.end(),
-		       lyx::compare_memfun(&LyXLayout::name, name))
+		       compare_name(name))
 		!= layoutlist.end();
 }
 
 
-LyXLayout const & LyXTextClass::operator[](string const & n) const
+LyXLayout_ptr const & LyXTextClass::operator[](string const & n) const
 {
 	lyx::Assert(!n.empty());
 
@@ -527,7 +541,7 @@ LyXLayout const & LyXTextClass::operator[](string const & n) const
 	LayoutList::const_iterator cit =
 		find_if(layoutlist.begin(),
 			layoutlist.end(),
-			lyx::compare_memfun(&LyXLayout::name, name));
+			compare_name(name));
 
 	if (cit == layoutlist.end()) {
 		lyxerr << "We failed to find the layout '" << name
@@ -541,7 +555,7 @@ LyXLayout const & LyXTextClass::operator[](string const & n) const
 	lastLayoutName = name;
 	lastLayoutIndex = std::distance(layoutlist.begin(), cit);
 
-	return *cit;
+	return (*cit);
 }
 
 
@@ -552,7 +566,8 @@ bool LyXTextClass::delete_layout(string const & name)
 
 	LayoutList::iterator it =
 		remove_if(layoutlist.begin(), layoutlist.end(),
-			  lyx::compare_memfun(&LyXLayout::name, name));
+			  compare_name(name));
+
 	LayoutList::iterator end = layoutlist.end();
 	bool const ret = (it != end);
 	layoutlist.erase(it, end);
@@ -589,7 +604,7 @@ string const LyXTextClass::defaultLayoutName() const
 }
 
 
-LyXLayout const & LyXTextClass::defaultLayout() const
+LyXLayout_ptr const & LyXTextClass::defaultLayout() const
 {
 	return operator[](defaultLayoutName());
 }

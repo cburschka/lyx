@@ -183,15 +183,20 @@ bool LyXLayout::Read (LyXLex & lexrc, LyXTextClass const & tclass)
 
 				if (tclass.hasLayout(style)) {
 					string const tmpname = name_;
-					this->operator=(tclass[style]);
+					this->operator=(*tclass[style]);
 					name_ = tmpname;
 				} else {
-					lyxerr << "Cannot copy unknown style `" << style << "'" << endl;
-					LyXTextClass::const_iterator it = tclass.begin();
-					LyXTextClass::const_iterator end = tclass.end();
-					lyxerr << "All layouts so far:" << endl;
+					lyxerr << "Cannot copy unknown style `"
+					       << style << "'\n"
+					       << "All layouts so far:"
+					       << endl;
+					LyXTextClass::const_iterator it =
+						tclass.begin();
+					LyXTextClass::const_iterator end =
+						tclass.end();
 					for (; it != end; ++it) {
-						lyxerr << it->name() << endl;
+						lyxerr << (*it)->name()
+						       << endl;
 					}
 
 					//lexrc.printError("Cannot copy known "
@@ -206,7 +211,7 @@ bool LyXLayout::Read (LyXLex & lexrc, LyXTextClass const & tclass)
 
 				if (tclass.hasLayout(style)) {
 					string const tmpname = name_;
-					this->operator=(tclass[style]);
+					this->operator=(*tclass[style]);
 					name_ = tmpname;
 					if (obsoleted_by().empty())
 						obsoleted_by_ = style;

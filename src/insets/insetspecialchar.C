@@ -53,7 +53,7 @@ int InsetSpecialChar::width(BufferView *, LyXFont const & font) const
 	case HYPHENATION:
 	{
 		int w = font_metrics::width('-', font);
-		if (w > 5) 
+		if (w > 5)
 			w -= 2; // to make it look shorter
 		return w;
 	}

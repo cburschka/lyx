@@ -341,7 +341,7 @@ string const LaTeXFeatures::getTClassPreamble() const
 	set<string>::const_iterator cit = layout.begin();
 	set<string>::const_iterator end = layout.end();
 	for (; cit != end; ++cit) {
-		tcpreamble << tclass[*cit].preamble();
+		tcpreamble << tclass[*cit]->preamble();
 	}
 
 	return tcpreamble.str().c_str();

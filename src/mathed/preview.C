@@ -1,4 +1,3 @@
-
 #include <config.h>
 
 #include "formula.h"
@@ -60,7 +59,7 @@ grfx::ImagePtr preview(string const & str)
 	// do we already have access to a rendered version?
 	previews_map::const_iterator it = thePreviews.find(str);
 	if (it != thePreviews.end())
-		return it->second;	
+		return it->second;
 
 	// constructing new item
 	//grfx::ImagePtr & im = thePreviews[str];
@@ -130,4 +129,3 @@ grfx::ImagePtr preview(string const & str)
 #endif
 	return it->second;	
 }
-

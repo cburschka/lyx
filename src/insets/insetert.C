@@ -309,7 +309,7 @@ void InsetERT::insetButtonPress(BufferView * bv,
 }
 
 
-bool InsetERT::insetButtonRelease(BufferView * bv, int x, int y, 
+bool InsetERT::insetButtonRelease(BufferView * bv, int x, int y,
 	mouse_button::state button)
 {
 	if (button == mouse_button::button3) {
@@ -454,7 +454,7 @@ InsetERT::localDispatch(BufferView * bv, kb_action action, string const & arg)
 
 	switch (action) {
 	case LFUN_LAYOUT:
-		bv->owner()->setLayout(inset.paragraph()->layout());
+		bv->owner()->setLayout(inset.paragraph()->layout()->name());
 		break;
 	default:
 		result = InsetCollapsable::localDispatch(bv, action, arg);
@@ -712,7 +712,7 @@ int InsetERT::getMaxWidth(BufferView * bv, UpdatableInset const * in) const
 
 
 void InsetERT::update(BufferView * bv, LyXFont const & font,
-                      bool reinit)
+		      bool reinit)
 {
 	if (inset.need_update & InsetText::INIT ||
 		inset.need_update & InsetText::FULL)

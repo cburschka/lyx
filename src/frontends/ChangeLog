@@ -1,46 +1,50 @@
+2002-06-24  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* LyXView.C: layout as layout
+
 2002-06-21  John Levon  <moz@compsoc.man.ac.uk>
 
 	* screen.C: add FIXME
- 
+
 2002-06-21  John Levon  <moz@compsoc.man.ac.uk>
 
 	* WorkArea.h: remove redraw()
- 
+
 2002-06-20  John Levon  <moz@compsoc.man.ac.uk>
 
 	* guiapi.h:
 	* Dialogs.h:
 	* Dialogs.C: createIndex() doesn't take string
- 
+
 2002-06-20  John Levon  <moz@compsoc.man.ac.uk>
 
 	* WorkArea.h: remove unused resize(..) and change name
- 
+
 2002-06-20  John Levon  <moz@compsoc.man.ac.uk>
 
 	* LyXKeySym.h:
 	* LyXKeySym.C: remove un-needed file
- 
+
 	* WorkArea.h:
 	* WorkArea.C: remove un-needed file. Add back
 	  comments. Remove focus management, greyOut()
- 
+
 2002-06-19  John Levon  <moz@compsoc.man.ac.uk>
 
 	* WorkArea.h: remove focus/unfocus events
- 
+
 2002-06-19  John Levon  <moz@compsoc.man.ac.uk>
 
 	* WorkArea.h: remove unused methods
- 
+
 2002-06-19  John Levon  <moz@compsoc.man.ac.uk>
 
 	* Toolbar.C: add missing header
- 
+
 2002-06-19  John Levon  <moz@compsoc.man.ac.uk>
 
 	* WorkArea.h: remove unused method width()
- 
+
 2002-06-16  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* add a nother layer of inderection for calling gui specific

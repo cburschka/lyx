@@ -13,9 +13,9 @@
 #pragma implementation
 #endif
 
+#include "FormAboutlyx.h"
 #include "xformsBC.h"
 #include "ControlAboutlyx.h"
-#include "FormAboutlyx.h"
 #include "forms/form_aboutlyx.h"
 #include "xforms_helpers.h"
 #include FORMS_H_LOCATION

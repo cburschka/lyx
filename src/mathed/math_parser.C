@@ -572,7 +572,7 @@ bool Parser::parse_macro(string & name)
 	MathMacroTable::create(name, nargs, ar1, ar2);
 	return true;
 }
- 
+
 
 bool Parser::parse_normal(MathAtom & at)
 {
@@ -722,7 +722,7 @@ void Parser::parse_into1(MathGridInset & grid, unsigned flags,
 		else if (t.cat() == catAlign) {
 			++cellcol;
 			//lyxerr << " column now " << cellcol << " max: " << grid.ncols() << "\n";
-			if (cellcol == grid.ncols()) { 
+			if (cellcol == grid.ncols()) {
 				lyxerr << "adding column " << cellcol << "\n";
 				grid.addCol(cellcol - 1);
 			}
@@ -811,7 +811,7 @@ void Parser::parse_into1(MathGridInset & grid, unsigned flags,
 			// resize the table if necessary
 			for (int i = 0; i < cols; ++i) {
 				++cellcol;
-				if (cellcol == grid.ncols()) { 
+				if (cellcol == grid.ncols()) {
 					lyxerr << "adding column " << cellcol << "\n";
 					grid.addCol(cellcol - 1);
 				}

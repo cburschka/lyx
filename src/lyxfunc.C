@@ -1906,7 +1906,7 @@ void LyXFunc::doImport(string const & argument)
 
 	lyxerr[Debug::INFO] << "LyXFunc::doImport: " << format
 			    << " file: " << filename << endl;
- 
+
 	// need user interaction
 	if (filename.empty()) {
 		string initpath = lyxrc.document_path;
@@ -1974,7 +1974,7 @@ void LyXFunc::doImport(string const & argument)
 			}
 	}
 
-	// if the file exists already, and we didn't do 
+	// if the file exists already, and we didn't do
 	// -i lyx thefile.lyx, warn
 	if (FileInfo(lyxfile, true).exist() && filename != lyxfile) {
 		if (!Alert::askQuestion(_("A document by the name"),

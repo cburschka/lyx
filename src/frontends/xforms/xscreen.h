@@ -20,7 +20,7 @@
 #include "screen.h"
 
 #include "XWorkArea.h"
- 
+
 /** The class XScreen is used for the main Textbody.
     Concretely, the screen is held in a pixmap.  This pixmap is kept up to
     date and used to optimize drawing on the screen.
@@ -42,7 +42,7 @@ public:
 	virtual void showManualCursor(LyXText const *, int x, int y,
 			      int asc, int desc,
 			      Cursor_Shape shape);
-	
+
 	/** Draws the screen form textposition y. Uses as much of
 	    the already printed pixmap as possible */
 	virtual void draw(LyXText *, BufferView *, unsigned int y);
@@ -50,14 +50,14 @@ public:
 protected:
 	/// get the work area
 	virtual WorkArea & workarea() const { return owner_; }
- 
+
 	/// Copies specified area of pixmap to screen
-	virtual void expose(int x, int y, int w, int h); 
- 
+	virtual void expose(int x, int y, int w, int h);
+
 private:
 	/// our owning widget
 	XWorkArea & owner_;
- 
+
 	///
 	Pixmap cursor_pixmap;
 	///

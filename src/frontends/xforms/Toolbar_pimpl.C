@@ -180,8 +180,8 @@ void Toolbar::Pimpl::layoutSelected()
 	LyXTextClass::const_iterator end = tc.end();
 	for (LyXTextClass::const_iterator cit = tc.begin();
 	     cit != end; ++cit) {
-		if (_(cit->name()) == layoutguiname) {
-			owner->getLyXFunc()->dispatch(LFUN_LAYOUT, cit->name());
+		if (_((*cit)->name()) == layoutguiname) {
+			owner->getLyXFunc()->dispatch(LFUN_LAYOUT, (*cit)->name());
 			return;
 		}
 	}
@@ -195,7 +195,7 @@ void Toolbar::Pimpl::setLayout(string const & layout)
 	if (combox) {
 		LyXTextClass const & tc =
 			textclasslist[owner->buffer()->params.textclass];
-		combox->select(_(tc[layout].name()));
+		combox->select(_(tc[layout]->name()));
 	}
 }
 
@@ -214,8 +214,8 @@ void Toolbar::Pimpl::updateLayoutList(bool force)
 		for (LyXTextClass::const_iterator cit = tc.begin();
 		     cit != end; ++cit) {
 			// ignore obsolete entries
-			if (cit->obsoleted_by().empty())
-				combox->addline(_(cit->name()));
+			if ((*cit)->obsoleted_by().empty())
+				combox->addline(_((*cit)->name()));
 		}
 	}
 	// we need to do this.

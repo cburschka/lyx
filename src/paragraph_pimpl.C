@@ -278,7 +278,7 @@ void Paragraph::Pimpl::simpleTeXBlanks(ostream & os, TexRow & texrow,
 bool Paragraph::Pimpl::isTextAt(string const & str, pos_type pos)
 {
 	pos_type const len = str.length();
-	
+
 	// is the paragraph large enough?
 	if (pos + len > size())
 		return false;
@@ -384,7 +384,7 @@ void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const * buf,
 			break;
 
 		case '±': case '²': case '³':
-		case '×': case '÷': case '¹': 
+		case '×': case '÷': case '¹':
 		case '¬': case 'µ':
 			if ((bparams.inputenc == "latin1" ||
 			     bparams.inputenc == "latin9") ||
@@ -544,7 +544,7 @@ Paragraph * Paragraph::Pimpl::TeXDeeper(Buffer const * buf,
 	Paragraph * par = owner_;
 
 	while (par && par->params().depth() == owner_->params().depth()) {
-		if (textclasslist[bparams.textclass][par->layout()].isEnvironment()) {
+		if (par->layout()->isEnvironment()) {
 			par = par->TeXEnvironment(buf, bparams,
 						  os, texrow);
 		} else {
@@ -584,7 +584,7 @@ LyXFont const Paragraph::Pimpl::realizeFont(LyXFont const & font,
 	while (par && par->getDepth() && !tmpfont.resolved()) {
 		par = par->outerHook();
 		if (par) {
-			tmpfont.realize(tclass[par->layout()].font
+			tmpfont.realize(par->layout()->font
 #ifdef INHERIT_LANGUAGE
 					, bparams.language
 #endif

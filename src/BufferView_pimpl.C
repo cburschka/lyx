@@ -130,7 +130,7 @@ BufferView::Pimpl::Pimpl(BufferView * b, LyXView * o,
 {
 	workarea_.reset(WorkAreaFactory::create(xpos, ypos, width, height));
 	screen_.reset(LyXScreenFactory::create(workarea()));
- 
+
 	// Setup the signals
 	workarea().scrollDocView.connect(boost::bind(&BufferView::Pimpl::scrollDocView, this, _1));
 	workarea().workAreaResize
@@ -163,7 +163,7 @@ WorkArea & BufferView::Pimpl::workarea() const
 	return *workarea_.get();
 }
 
- 
+
 LyXScreen & BufferView::Pimpl::screen() const
 {
 	return *screen_.get();
@@ -207,7 +207,7 @@ void BufferView::Pimpl::buffer(Buffer * b)
 	if (buffer_) {
 		lyxerr[Debug::INFO] << "Buffer addr: " << buffer_ << endl;
 		buffer_->addUser(bv_);
- 
+
 		// If we don't have a text object for this, we make one
 		if (bv_->text == 0) {
 			resizeCurrentBuffer();
@@ -215,7 +215,7 @@ void BufferView::Pimpl::buffer(Buffer * b)
 
 		// FIXME: needed when ?
 		bv_->text->first_y = screen().topCursorVisible(bv_->text->cursor, bv_->text->first_y);
- 
+
 		// Similarly, buffer-dependent dialogs should be updated or
 		// hidden. This should go here because some dialogs (eg ToC)
 		// require bv_->text.
@@ -231,7 +231,7 @@ void BufferView::Pimpl::buffer(Buffer * b)
 			textcache.show(lyxerr, "buffer delete all");
 		textcache.clear();
 	}
- 
+
 	repaint();
 	updateScrollbar();
 	owner_->updateMenubar();
@@ -372,7 +372,7 @@ void BufferView::Pimpl::updateScrollbar()
 	}
 
 	LyXText const & t = *bv_->text;
- 
+
 	workarea().setScrollbarParams(t.height, t.first_y, t.defaultHeight());
 }
 
@@ -408,10 +408,10 @@ int BufferView::Pimpl::scroll(long time)
 		return 0;
 
 	LyXText const * t = bv_->text;
- 
-	double const diff = t->defaultHeight() 
+
+	double const diff = t->defaultHeight()
 		+ double(time) * double(time) * 0.125;
- 
+
 	scrollDocView(int(diff));
 	workarea().setScrollbarParams(t->height, t->first_y, t->defaultHeight());
 	return 0;
@@ -896,7 +896,7 @@ void BufferView::Pimpl::workAreaResize()
 	// update from work area
 	work_area_width = workarea().workWidth();
 	work_area_height = workarea().workHeight();
- 
+
 	if (buffer_ != 0) {
 		if (widthChange) {
 			// The visible LyXView need a resize
@@ -911,7 +911,7 @@ void BufferView::Pimpl::workAreaResize()
 			if (lyxerr.debugging())
 				textcache.show(lyxerr, "Expose delete all");
 			textcache.clear();
-			// FIXME: this is aalready done in resizeCurrentBuffer() ?? 
+			// FIXME: this is aalready done in resizeCurrentBuffer() ??
 			buffer_->resizeInsets(bv_);
 		} else if (heightChange) {
 			// fitCursor() ensures we don't jump back
@@ -924,7 +924,7 @@ void BufferView::Pimpl::workAreaResize()
 	if (widthChange || heightChange) {
 		repaint();
 	}
- 
+
 	// always make sure that the scrollbar is sane.
 	updateScrollbar();
 	owner_->updateLayoutChoice();
@@ -1360,7 +1360,7 @@ void BufferView::Pimpl::moveCursorUpdate(bool selecting, bool fitcur)
 
 	if (!lt->selection.set())
 		workarea().haveSelection(false);
-	
+
 	/* ---> Everytime the cursor is moved, show the current font state. */
 	// should this too me moved out of this func?
 	//owner->showState();
@@ -1614,7 +1614,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 
 		// If the entry is obsolete, use the new one instead.
 		if (hasLayout) {
-			string const & obs = tclass[layout].obsoleted_by();
+			string const & obs = tclass[layout]->obsoleted_by();
 			if (!obs.empty())
 				layout = obs;
 		}
@@ -1634,7 +1634,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 			Paragraph * spar = lt->selection.start.par();
 			Paragraph * epar = lt->selection.end.par()->next();
 			while(spar != epar) {
-				if (spar->layout() != current_layout) {
+				if (spar->layout()->name() != current_layout) {
 					change_layout = true;
 					break;
 				}
@@ -2292,10 +2292,9 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 	case LFUN_PROTECTEDSPACE:
 	{
 		LyXText * lt = bv_->getLyXText();
+		LyXLayout_ptr const & style = lt->cursor.par()->layout();
 
-		LyXLayout const & style = tclass[lt->cursor.par()->layout()];
-
-		if (style.free_spacing) {
+		if (style->free_spacing) {
 			lt->insertChar(bv_, ' ');
 			update(lt,
 			       BufferView::SELECT
@@ -2983,7 +2982,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		}
 
 		InsetIndex * inset = new InsetIndex(InsetCommandParams("index", entry));
-	
+
 		if (!insertInset(inset)) {
 			delete inset;
 		} else {
@@ -3217,10 +3216,9 @@ void BufferView::Pimpl::smartQuote()
 
 	hideCursor();
 
-	LyXLayout const & style =
-		textclasslist[bv_->buffer()->params.textclass][par->layout()];
+	LyXLayout_ptr const & style = par->layout();
 
-	if (style.pass_thru ||
+	if (style->pass_thru ||
 		(!insertInset(new InsetQuotes(c, bv_->buffer()->params))))
 		bv_->owner()->getLyXFunc()->dispatch(LFUN_SELFINSERT, "\"");
 }

@@ -98,7 +98,7 @@ int LyXReplace(BufferView * bv,
 
 	return replace_count;
 }
- 
+
 
 bool LyXFind(BufferView * bv,
 	     string const & searchstr, bool forward,
@@ -135,7 +135,7 @@ bool LyXFind(BufferView * bv,
 
 	bv->toggleSelection();
 	text->clearSelection();
-	
+
 	SearchResult result = forward ?
 		SearchForward(bv, text, searchstr, casesens, matchwrd) :
 		SearchBackward(bv, text, searchstr, casesens, matchwrd);
@@ -158,7 +158,7 @@ bool LyXFind(BufferView * bv,
 
 	return found;
 }
- 
+
 
 SearchResult LyXFind(BufferView * bv, LyXText * text,
 		     string const & searchstr, bool forward,

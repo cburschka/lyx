@@ -1,3 +1,4 @@
+#include <config.h>
 
 #include "ref_inset.h"
 #include "math_cursor.h"
@@ -10,6 +11,8 @@
 #include "lyxfunc.h"
 #include "gettext.h"
 #include "LaTeXFeatures.h"
+#include "debug.h"
+
 
 RefInset::RefInset()
 	: CommandInset("ref")
@@ -33,17 +36,17 @@ void RefInset::infoize(std::ostream & os) const
 }
 
 
-int RefInset::dispatch(string const & cmd, idx_type, pos_type) 
+int RefInset::dispatch(string const & cmd, idx_type, pos_type)
 {
 	if (cmd == "mouse 3") {
-		cerr << "trying to goto ref" << cell(0) << "\n";
+		lyxerr << "trying to goto ref" << cell(0) << "\n";
 		mathcursor->formula()->view()->owner()->getLyXFunc()->
 			dispatch(LFUN_REF_GOTO, asString(cell(0)));
 		return 1; // dispatched
 	}
-	
+
 	if (cmd == "mouse 1") {
-		cerr << "trying to open ref" << cell(0) << "\n";
+		lyxerr << "trying to open ref" << cell(0) << "\n";
 		// Eventually trigger dialog with button 3 not 1
 //		mathcursor->formula()->view()->owner()->getDialogs()
 //			->showRef(this);
@@ -107,6 +110,7 @@ int RefInset::docbook(std::ostream & os, bool) const
 
 	return 0;
 }
+
 
 RefInset::type_info RefInset::types[] = {
 	{ "ref",	N_("Standard"),			N_("Ref: ")},

@@ -10,6 +10,8 @@
 #include "math_mathmlstream.h"
 #include "math_streamstr.h"
 
+#include <ostream>
+
 
 MathDecorationInset::MathDecorationInset(string const & name)
 	: MathNestInset(1), name_(name)

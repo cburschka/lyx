@@ -22,7 +22,6 @@
 #include "gettext.h"
 #include "buffer.h"
 #include "lyxtext.h"
-#include "lyxtextclasslist.h"
 #include "support/LAssert.h"
 
 using Liason::setMinibuffer;
@@ -103,13 +102,12 @@ void ControlParagraph::setParams()
 	pp_->labelWidthString(par_->getLabelWidthString());
 
 	/// alignment
-	LyXTextClass const & tclass =
-		textclasslist[lv_.view()->buffer()->params.textclass];
+	LyXLayout_ptr const & layout = par_->layout();
 	if (pp_->align() == LYX_ALIGN_LAYOUT)
-		pp_->align(tclass[par_->layout()].align);
+		pp_->align(layout->align);
 
 	/// is alignment possible
-	alignpos_ = tclass[par_->layout()].alignpossible;
+	alignpos_ = layout->alignpossible;
 
 	/// is paragraph in inset
 	ininset_ = par_->inInset();

@@ -37,7 +37,7 @@ using std::bind2nd;
 using std::remove_if;
 
 typedef FormCB<ControlParagraph, FormDB<FD_paragraph> > base_class;
-  
+
 FormParagraph::FormParagraph(ControlParagraph & c)
 	: base_class(c, _("Paragraph Layout"), false)
 {}
@@ -74,19 +74,11 @@ void FormParagraph::build()
 	// Create the contents of the unit choices
 	// Don't include the "%" terms...
 	vector<string> units_vec = getLatexUnits();
-#if 0
-	for (vector<string>::iterator it = units_vec.begin();
-	     it != units_vec.end(); ++it) {
-		if (contains(*it, "%"))
-			it = units_vec.erase(it, it+1) - 1;
-	}
-#else
-	// Something similar to this is a better way to erase
+
 	vector<string>::iterator del =
 		remove_if(units_vec.begin(), units_vec.end(),
 			  bind2nd(contains_functor(), "%"));
 	units_vec.erase(del, units_vec.end());
-#endif
 
 	string units = getStringFromVector(units_vec, "|");
 
@@ -195,15 +187,15 @@ void FormParagraph::apply()
 	// the input field, reset the kind to "None".
 	validateVSpaceWidgets(dialog_->choice_space_above,
 			      dialog_->input_space_above);
-	
+
 	VSpace const space_top =
 		setVSpaceFromWidgets(dialog_->choice_space_above,
 				     dialog_->input_space_above,
 				     dialog_->choice_value_space_above,
 				     dialog_->check_space_above);
-	
+
 	controller().params().spaceTop(space_top);
-	
+
 	validateVSpaceWidgets(dialog_->choice_space_below,
 			      dialog_->input_space_below);
 
@@ -212,7 +204,7 @@ void FormParagraph::apply()
 				     dialog_->input_space_below,
 				     dialog_->choice_value_space_below,
 				     dialog_->check_space_below);
-	
+
 	controller().params().spaceBottom(space_bottom);
 
 	/* lines and pagebreaks */
@@ -224,10 +216,10 @@ void FormParagraph::apply()
 
 	bool const pagebreak_top = fl_get_button(dialog_->check_pagebreaks_top);
 	controller().params().pagebreakTop(pagebreak_top);
-	
+
 	bool const pagebreak_bottom = fl_get_button(dialog_->check_pagebreaks_bottom);
 	controller().params().pagebreakBottom(pagebreak_bottom);
-	
+
 
 	/* alignment */
 	LyXAlignment align;
@@ -240,7 +232,7 @@ void FormParagraph::apply()
 	else
 		align = LYX_ALIGN_BLOCK;
 	controller().params().align(align);
-	
+
 	/* label width */
 	string const labelwidthstring =
 		getStringFromInput(dialog_->input_labelwidth);
@@ -274,7 +266,7 @@ void FormParagraph::apply()
 
 	Spacing const spacing(linespacing, other);
 	controller().params().spacing(spacing);
-	
+
 }
 
 namespace {
@@ -352,7 +344,7 @@ void FormParagraph::update()
 	fl_set_button(dialog_->radio_align_left, 0);
 	fl_set_button(dialog_->radio_align_center, 0);
 	fl_set_button(dialog_->radio_align_block, 0);
-	
+
 	LyXAlignment align = controller().params().align();
 
 	switch (align) {
@@ -531,5 +523,3 @@ ButtonPolicy::SMInput FormParagraph::input(FL_OBJECT * ob, long)
 
 	return ButtonPolicy::SMI_VALID;
 }
-
-

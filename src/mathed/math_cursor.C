@@ -340,7 +340,7 @@ void MathCursor::insert(string const & str)
 void MathCursor::insert(char c)
 {
 	//lyxerr << "inserting '" << c << "'\n";
-	selClearOrDel();	
+	selClearOrDel();
 	plainInsert(MathAtom(new MathCharInset(c)));
 }
 
@@ -907,7 +907,7 @@ MathCursor::col_type MathCursor::hullCol() const
 {
 	idx_type idx = 0;
 	MathHullInset * p = enclosingHull(idx);
- 	return p->col(idx);
+	return p->col(idx);
 }
 
 
@@ -915,7 +915,7 @@ MathCursor::row_type MathCursor::hullRow() const
 {
 	idx_type idx = 0;
 	MathHullInset * p = enclosingHull(idx);
- 	return p->row(idx);
+	return p->row(idx);
 }
 
 
@@ -1109,7 +1109,7 @@ bool MathCursor::goUpDown(bool up)
 	// check if we had something else in mind, if not, this is the future goal
 	if (targetx_ == -1)
 		targetx_ = xo;
-	else	
+	else
 		xo = targetx_;
 
 	// try neigbouring script insets
@@ -1522,7 +1522,7 @@ bool MathCursor::interpret(char c)
 
 	// no special circumstances, so insert the character without any fuss
 	insert(c);
-	autocorrect_ = true;  
+	autocorrect_ = true;
 	return true;
 }
 
@@ -1557,7 +1557,7 @@ string MathCursor::info() const
 		Cursor_[i].par_->infoize(os);
 		os << "  ";
 	}
-	//if (pos() > 0) 
+	//if (pos() > 0)
 	//	prevAtom()->infoize(os);
 	os << "                ";
 	return os.str().c_str(); // .c_str() needed for lyxstring
@@ -1675,7 +1675,7 @@ void MathCursor::handleExtern(const string & arg)
 	iss >> lang >> extra;
 	if (extra.empty())
 		extra = "noextra";
-	
+
 
 	if (selection()) {
 		MathArray ar;
@@ -1710,7 +1710,7 @@ void MathCursor::handleExtern(const string & arg)
 		insert(pipeThroughExtern(lang, extra, ar));
 		return;
 	}
-	
+
 	if (hull->getType() == LM_OT_EQUATION) {
 		lyxerr << "use equation inset\n";
 		hull->mutate(LM_OT_EQNARRAY);
@@ -1722,8 +1722,8 @@ void MathCursor::handleExtern(const string & arg)
 		cursor().cell() = pipeThroughExtern(lang, extra, ar);
 		idxLineLast();
 		return;
-	} 
-	
+	}
+
 	{
 		lyxerr << "use eqnarray\n";
 		idxLineLast();

@@ -80,12 +80,6 @@ FormPreferences::FormPreferences(LyXView & lv, Dialogs & d)
 	// let the dialog be shown
 	// This is a permanent connection so we won't bother
 	// storing a copy because we won't be disconnecting.
-#if 0
-	d->showPreferences = boost::bind(&FormPreferences::show, this);
-#endif
-#if 0
-	d->showSpellcheckerPreferences = boost::bind(&FormPreferences::showSpellPref, this);
-#endif
 }
 
 

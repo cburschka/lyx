@@ -1449,7 +1449,8 @@ void LyXTabular::OldFormatRead(BufferParams const & bp,
 	Paragraph * par = new Paragraph;
 	Paragraph * return_par = 0;
 
-	par->layout(textclasslist[bp.textclass].defaultLayoutName());
+	par->layout(textclasslist[bp.textclass].defaultLayout());
+
 	string tmptok;
 	int pos = 0;
 	Paragraph::depth_type depth = 0;
@@ -2371,7 +2372,8 @@ int LyXTabular::docbookRow(Buffer const * buf, ostream & os, int row) const
 }
 
 
-int LyXTabular::docbook(Buffer const * buf, ostream & os, bool mixcont) const
+int LyXTabular::docbook(Buffer const * buf, ostream & os,
+			bool /*mixcont*/) const
 {
 	int ret = 0;
 

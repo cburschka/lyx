@@ -342,7 +342,8 @@ int InsetInclude::linuxdoc(Buffer const * buffer, ostream & os) const
 }
 
 
-int InsetInclude::docbook(Buffer const * buffer, ostream & os, bool mixcont) const
+int InsetInclude::docbook(Buffer const * buffer, ostream & os,
+			  bool /*mixcont*/) const
 {
 	string incfile(params_.cparams.getContents());
 

@@ -454,7 +454,7 @@ public:
 	// if that one has one!
 	///
 	virtual bool insetButtonRelease(BufferView *,
-	                                int x, int y, mouse_button::state button);
+					int x, int y, mouse_button::state button);
 	///
 	virtual void insetMotionNotify(BufferView *, int x, int y, mouse_button::state state);
 	///

@@ -152,9 +152,6 @@ FormMathsPanel::FormMathsPanel(LyXView * lv, Dialogs * d)
 	ams_ops_.reset(new FormMathsBitmap(lv, d, *this, _("AMS Operators"), latex));
 
 	//showUnderMouse(false);
-#if 0
-	d->showMathPanel = boost::bind(&FormMathsPanel::show, this);
-#endif
 }
 
 

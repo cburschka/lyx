@@ -611,7 +611,7 @@ int BufferView::unlockInset(UpdatableInset * inset)
 		inset->insetUnlock(this);
 		theLockingInset(0);
 		// make sure we update the combo !
-		owner()->setLayout(getLyXText()->cursor.par()->layout());
+		owner()->setLayout(getLyXText()->cursor.par()->layout()->name());
 		// Tell the paragraph dialog that we changed paragraph
 		owner()->getDialogs()->updateParagraph();
 		finishUndo();

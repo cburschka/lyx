@@ -1,3 +1,67 @@
+2002-06-24  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* text2.C: layout as layout
+
+	* text.C: layout as layout
+
+	* tabular.C (OldFormatRead): layout as layout
+
+	* paragraph_pimpl.C (TeXDeeper): layout as layout
+	(realizeFont): layout as layout
+
+	* paragraph.C (writeFile): layout as layout
+	(validate): layout as layout
+	(getFont): layout as layout
+	(getLabelFont): layout as layout
+	(getLayoutFont): layout as layout
+	(breakParagraph): layout as layout
+	(stripLeadingSpaces): layout as layout
+	(getEndLabel): layout as layout
+	(getMaxDepthAfter): layout as layout
+	(applyLayout): layout as layout
+	(TeXOnePar): layout as layout
+	(simpleTeXOnePar): layout as layout
+	(TeXEnvironment): layout as layout
+	(layout): layout as layout
+	(layout): layout as layout
+
+	* lyxtextclass.C (compare_name): new functor to work with
+	shared_ptr, layout as layout
+	(Read): layout as layout
+	(hasLayout): layout as layout
+	(operator): layout as layout
+	(delete_layout): layout as layout
+	(defaultLayout): layout as layout
+
+	* lyxlayout_ptr_fwd.h: new file
+
+	* lyxlayout.C (Read): layout as layout
+
+	* lyx_cb.C (MenuInsertLabel): layout as layout
+
+	* bufferlist.C (newFile): layout as layout
+
+	* buffer.C (readLyXformat2): layout as layout
+	(parseSingleLyXformat2Token): layout as layout
+	(insertStringAsLines): layout as layout
+	(asciiParagraph): layout as layout
+	(latexParagraphs): layout as layout
+	(makeLinuxDocFile): layout as layout
+	(simpleLinuxDocOnePar): layout as layout
+	(makeDocBookFile): layout as layout
+	(simpleDocBookOnePar): layout as layout
+	(getLists): layout as layout
+
+	* LaTeXFeatures.C (getTClassPreamble): layout as layout
+
+	* CutAndPaste.C (cutSelection): layout as layout
+	(pasteSelection): layout as layout
+	(SwitchLayoutsBetweenClasses): layout as layout
+
+	* BufferView_pimpl.C (Dispatch): layout as layout
+	(smartQuote): layout as layout
+
+	* BufferView2.C (unlockInset): layout as layout
 
 2002-06-24  André Pönitz <poenitz@gmx.net>
 
@@ -6,19 +70,19 @@
 2002-06-21  John Levon  <moz@compsoc.man.ac.uk>
 
 	* lyxrc.h:
-	* lyxrc.C: 
+	* lyxrc.C:
 	* lyxfunc.C: remove display_shortcuts, show_banner
- 
+
 2002-06-21  John Levon  <moz@compsoc.man.ac.uk>
 
 	* Buffer_pimpl.C: oops, update on resize
- 
+
 2002-06-21  John Levon  <moz@compsoc.man.ac.uk>
 
-	* buffer.C: 
-	* converter.C: 
+	* buffer.C:
+	* converter.C:
 	* exporter.C:
-	* lyxfunc.C: 
+	* lyxfunc.C:
 	* BufferView.h:
 	* BufferView.C: use repaint()
 
@@ -26,13 +90,13 @@
 	* BufferView_pimpl.C: s/updateScreen()/repaint()/
 	  as it's a clearer description. Remove superfluous
 	  redraws.
- 
+
 2002-06-21  John Levon  <moz@compsoc.man.ac.uk>
 
 	* text.C: fix bug 488. Not ideal, but getting
 	  getWord() to work properly for the insets that
 	  matter is more difficult ...
- 
+
 2002-06-20  John Levon  <moz@compsoc.man.ac.uk>
 
 	* BufferView_pimpl.C:
@@ -48,7 +112,7 @@
 	* BufferView_pimpl.h:
 	* BufferView_pimpl.C: clean up resize() stuff,
 	  and unnecessary updateScreen()s
- 
+
 2002-06-20  John Levon  <moz@compsoc.man.ac.uk>
 
 	* BufferView.h:
@@ -56,19 +120,19 @@
 	* BufferView_pimpl.h:
 	* BufferView_pimpl.C:
 	* lyxfind.h:
-	* lyxfind.C: 
+	* lyxfind.C:
 	* minibuffer.C: remove focus management of workarea,
 	  not needed. Use screen's greyOut()
- 
+
 2002-06-17  Herbert Voss  <voss@lyx.org>
- 
- 	* converter.C: (convert) do not post a message, when converting
- 	fails, let the calling function decide what to do in this case
- 
+
+	* converter.C: (convert) do not post a message, when converting
+	fails, let the calling function decide what to do in this case
+
 2002-06-18  John Levon  <moz@compsoc.man.ac.uk>
 
 	* lyxfunc.C: tidy up a little
- 
+
 2002-06-16    <alstrup@diku.dk>
 
 	* BufferView_pimpl.C (Pimpl): Use WorkAreaFactory.
@@ -94,7 +158,7 @@
 
 2002-06-15  Lyx Development team  <larsbj@birdstep.com>
 
-	* lyxfunc.[Ch]: Use LyXKeySym instead of KeySym, 
+	* lyxfunc.[Ch]: Use LyXKeySym instead of KeySym,
 	so it's X11 independent.
 
 	* kb*.[Ch]: ditto.
@@ -129,27 +193,27 @@
 	* BufferView_pimpl.h:
 	* BufferView_pimpl.C: move bogus scrolling logic
 	  to xforms
- 
+
 2002-06-12  John Levon  <moz@compsoc.man.ac.uk>
 
 	* lyxfunc.C:
 	* BufferView_pimpl.C: view->resize() change
- 
+
 2002-06-12  John Levon  <moz@compsoc.man.ac.uk>
 
 	* BufferView_pimpl.C: topCursorVisible
 	  prototype change
- 
+
 2002-06-12  John Levon  <moz@compsoc.man.ac.uk>
 
 	* Makefile.am:
 	* lyx_gui.h:
 	* lyx_gui.C: move to frontends/
- 
+
 	* main.C:
 	* lyx_main.h:
 	* lyx_main.C: changes from above
- 
+
 2002-06-12  John Levon  <moz@compsoc.man.ac.uk>
 
 	* intl.C:
@@ -158,7 +222,7 @@
 	* kbsequence.C:
 	* lyx_cb.C:
 	* lyx_main.C: minor tidy
- 
+
 2002-06-12  John Levon  <moz@compsoc.man.ac.uk>
 
 	* BufferView_pimpl.h:
@@ -166,18 +230,18 @@
 	* BufferView.h:
 	* BufferView.C: make painter() const,
 	  remove dead code
- 
+
 	* BufferView2.C: use screen() accessor
- 
+
 	* lyx_main.h:
 	* lyx_main.C: some minor cleanup
- 
+
 2002-06-12  John Levon  <moz@compsoc.man.ac.uk>
 
 	* BufferView_pimpl.h:
 	* BufferView_pimpl.C: remove enter/leaveView,
 	  use workHeight()
- 
+
 2002-06-12  John Levon  <moz@compsoc.man.ac.uk>
 
 	* BufferView.h:
@@ -188,10 +252,10 @@
 	  rename
 
 	* lyxrc.C: remove pointless comment
- 
+
 2002-06-11  John Levon  <moz@compsoc.man.ac.uk>
 
-	* BufferView.h: 
+	* BufferView.h:
 	* BufferView.C: remove active() and belowMouse()
 
 	* BufferView_pimpl.h:
@@ -201,7 +265,7 @@
 2002-06-11  John Levon  <moz@compsoc.man.ac.uk>
 
 	* lyx_gui.C: add debug message on BadWindow
- 
+
 2002-06-10  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* sp_spell.C: fdopen is not part of the C++ standard.

@@ -341,7 +341,7 @@ bool Buffer::readLyXformat2(LyXLex & lex, Paragraph * par)
 
 	if (!par) {
 		par = new Paragraph;
-		par->layout(textclasslist[params.textclass].defaultLayoutName());
+		par->layout(textclasslist[params.textclass].defaultLayout());
 	} else {
 		// We are inserting into an existing document
 		users->text->breakParagraph(users);
@@ -621,15 +621,14 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 				first_par = par;
 			else {
 				par = new Paragraph(par);
-				par->layout(textclasslist[params.textclass].defaultLayoutName());
+				par->layout(textclasslist[params.textclass].defaultLayout());
 			}
 			pos = 0;
-			par->layout(layoutname);
+			par->layout(textclasslist[params.textclass][layoutname]);
 			// Test whether the layout is obsolete.
-			LyXLayout const & layout =
-				textclasslist[params.textclass][par->layout()];
-			if (!layout.obsoleted_by().empty())
-				par->layout(layout.obsoleted_by());
+			LyXLayout_ptr const & layout = par->layout();
+			if (!layout->obsoleted_by().empty())
+				par->layout(textclasslist[params.textclass][layout->obsoleted_by()]);
 			par->params().depth(depth);
 #ifndef NO_COMPABILITY
 		} else {
@@ -637,10 +636,10 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 			// the code then of NO_COMPATIBILITY
 			par->layout(layoutname);
 			// Test whether the layout is obsolete.
-			LyXLayout const & layout =
+			LyXLayout_ptr const & layout =
 				textclasslist[params.textclass][par->layout()];
-			if (!layout.obsoleted_by().empty())
-				par->layout(layout.obsoleted_by());
+			if (!layout->obsoleted_by().empty())
+				par->layout(layout->obsoleted_by());
 			par->params().depth(depth);
 		}
 #endif
@@ -734,11 +733,10 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 		lex.next();
 		font.setLyXColor(lex.getString());
 	} else if (token == "\\SpecialChar") {
-		LyXLayout const & layout =
-			textclasslist[params.textclass][par->layout()];
+		LyXLayout_ptr const & layout = par->layout();
 
 		// Insets don't make sense in a free-spacing context! ---Kayvan
-		if (layout.free_spacing || par->isFreeSpacing()) {
+		if (layout->free_spacing || par->isFreeSpacing()) {
 			if (lex.isOK()) {
 				lex.next();
 				string next_token = lex.getString();
@@ -1195,7 +1193,7 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 		// only add the length when value > 0 or
 		// with option keep
 		if ((value.length().len().value() != 0) ||
-                   value.keep() ||
+		   value.keep() ||
 		    (value.kind() != VSpace::LENGTH))
 			par->params().spaceBottom(value);
 #ifndef NO_COMPABILITY
@@ -1256,10 +1254,9 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 		// This is a backward compability thingie. (Lgb)
 		// Remove it later some time...introduced with fileformat
 		// 2.16. (Lgb)
-		LyXLayout const & layout =
-			textclasslist[params.textclass][par->layout()];
+		LyXLayout_ptr const & layout = par->layout();
 
-		if (layout.free_spacing || par->isFreeSpacing()) {
+		if (layout->free_spacing || par->isFreeSpacing()) {
 			par->insertChar(pos, ' ', font);
 		} else {
 			Inset * inset = new InsetSpecialChar(InsetSpecialChar::PROTECTED_SEPARATOR);
@@ -1500,8 +1497,8 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 void Buffer::insertStringAsLines(Paragraph *& par, pos_type & pos,
 				 LyXFont const & fn,string const & str) const
 {
-	LyXLayout const & layout =
-		textclasslist[params.textclass][par->layout()];
+	LyXLayout_ptr const & layout = par->layout();
+
 	LyXFont font = fn;
 
 	par->checkInsertChar(font);
@@ -1512,9 +1509,9 @@ void Buffer::insertStringAsLines(Paragraph *& par, pos_type & pos,
 	for(string::const_iterator cit = str.begin();
 	    cit != str.end(); ++cit) {
 		if (*cit == '\n') {
-			if (autobreakrows && (par->size() || layout.keepempty)) {
+			if (autobreakrows && (par->size() || layout->keepempty)) {
 				par->breakParagraph(params, pos,
-						    layout.isEnvironment());
+						    layout->isEnvironment());
 				par = par->next();
 				pos = 0;
 				space_inserted = true;
@@ -1523,12 +1520,12 @@ void Buffer::insertStringAsLines(Paragraph *& par, pos_type & pos,
 			}
 			// do not insert consecutive spaces if !free_spacing
 		} else if ((*cit == ' ' || *cit == '\t') &&
-			   space_inserted && !layout.free_spacing &&
+			   space_inserted && !layout->free_spacing &&
 				   !par->isFreeSpacing())
 		{
 			continue;
 		} else if (*cit == '\t') {
-			if (!layout.free_spacing && !par->isFreeSpacing()) {
+			if (!layout->free_spacing && !par->isFreeSpacing()) {
 				// tabs are like spaces here
 				par->insertChar(pos, ' ', font);
 				++pos;
@@ -1952,7 +1949,7 @@ string const Buffer::asciiParagraph(Paragraph const * par,
 #endif
 
 	// First write the layout
-	string const & tmp = par->layout();
+	string const & tmp = par->layout()->name();
 	if (compare_no_case(tmp, "itemize") == 0) {
 		ltype = 1;
 		ltype_depth = depth + 1;
@@ -2680,10 +2677,9 @@ void Buffer::latexParagraphs(ostream & ofs, Paragraph * par,
 		// any special options in the paragraph and also we don't allow
 		// any environment other then "Standard" to be valid!
 		if ((in == 0) || !in->forceDefaultParagraphs(in)) {
-			LyXLayout const & layout =
-				textclasslist[params.textclass][par->layout()];
+			LyXLayout_ptr const & layout = par->layout();
 
-			if (layout.intitle) {
+			if (layout->intitle) {
 				if (already_title) {
 					lyxerr <<"Error in latexParagraphs: You"
 						" should not mix title layouts"
@@ -2697,7 +2693,7 @@ void Buffer::latexParagraphs(ostream & ofs, Paragraph * par,
 				was_title = false;
 			}
 
-			if (layout.isEnvironment() ||
+			if (layout->isEnvironment() ||
 				!par->params().leftIndent().zero())
 			{
 				par = par->TeXEnvironment(this, params, ofs, texrow);
@@ -2755,7 +2751,7 @@ int Buffer::sgmlOpenTag(ostream & os, Paragraph::depth_type depth, bool mixcont,
 	if (!latexname.empty() && latexname != "!-- --") {
 		if (!mixcont)
 			os << string(" ",depth);
- 		os << "<" << latexname << ">";
+		os << "<" << latexname << ">";
 	}
 
 	if (!mixcont)
@@ -2836,8 +2832,7 @@ void Buffer::makeLinuxDocFile(string const & fname, bool nice, bool body_only)
 	vector<string> environment_stack(5);
 
 	while (par) {
-		LyXLayout const & style = tclass[par->layout()];
-
+		LyXLayout_ptr const & style = par->layout();
 		// treat <toc> as a special case for compatibility with old code
 		if (par->isInset(0)) {
 			Inset * inset = par->getInset(0);
@@ -2858,7 +2853,7 @@ void Buffer::makeLinuxDocFile(string const & fname, bool nice, bool body_only)
 		}
 
 		// write opening SGML tags
-		switch (style.latextype) {
+		switch (style->latextype) {
 		case LATEX_PARAGRAPH:
 			if (depth == par->params().depth()
 			   && !environment_stack[depth].empty()) {
@@ -2869,7 +2864,7 @@ void Buffer::makeLinuxDocFile(string const & fname, bool nice, bool body_only)
 				else
 					ofs << "</p>";
 			}
-			sgmlOpenTag(ofs, depth, false, style.latexname());
+			sgmlOpenTag(ofs, depth, false, style->latexname());
 			break;
 
 		case LATEX_COMMAND:
@@ -2884,45 +2879,51 @@ void Buffer::makeLinuxDocFile(string const & fname, bool nice, bool body_only)
 			}
 
 			environment_stack[depth].erase();
-			sgmlOpenTag(ofs, depth, false, style.latexname());
+			sgmlOpenTag(ofs, depth, false, style->latexname());
 			break;
 
 		case LATEX_ENVIRONMENT:
 		case LATEX_ITEM_ENVIRONMENT:
+		{
+			string const & latexname = style->latexname();
+
 			if (depth == par->params().depth()
-			    && environment_stack[depth] != style.latexname()) {
-				sgmlCloseTag(ofs, depth, false, environment_stack[depth]);
+			    && environment_stack[depth] != latexname) {
+				sgmlCloseTag(ofs, depth, false,
+					     environment_stack[depth]);
 				environment_stack[depth].erase();
 			}
 			if (depth < par->params().depth()) {
 			       depth = par->params().depth();
 			       environment_stack[depth].erase();
 			}
-			if (environment_stack[depth] != style.latexname()) {
+			if (environment_stack[depth] != latexname) {
 				if (depth == 0) {
 					sgmlOpenTag(ofs, depth, false, "p");
 				}
-				sgmlOpenTag(ofs, depth, false, style.latexname());
+				sgmlOpenTag(ofs, depth, false, latexname);
 
 				if (environment_stack.size() == depth + 1)
 					environment_stack.push_back("!-- --");
-				environment_stack[depth] = style.latexname();
+				environment_stack[depth] = latexname;
 			}
 
-			if (style.latexparam() == "CDATA")
+			if (style->latexparam() == "CDATA")
 				ofs << "<![CDATA[";
 
-			if (style.latextype == LATEX_ENVIRONMENT) break;
+			if (style->latextype == LATEX_ENVIRONMENT) break;
 
-			if (style.labeltype == LABEL_MANUAL)
+			if (style->labeltype == LABEL_MANUAL)
 				item_name = "tag";
 			else
 				item_name = "item";
 
 			sgmlOpenTag(ofs, depth + 1, false, item_name);
-			break;
+		}
+		break;
+
 		default:
-			sgmlOpenTag(ofs, depth, false, style.latexname());
+			sgmlOpenTag(ofs, depth, false, style->latexname());
 			break;
 		}
 
@@ -2932,22 +2933,22 @@ void Buffer::makeLinuxDocFile(string const & fname, bool nice, bool body_only)
 
 		ofs << "\n";
 		// write closing SGML tags
-		switch (style.latextype) {
+		switch (style->latextype) {
 		case LATEX_COMMAND:
 			break;
 		case LATEX_ENVIRONMENT:
 		case LATEX_ITEM_ENVIRONMENT:
-			if (style.latexparam() == "CDATA")
+			if (style->latexparam() == "CDATA")
 				ofs << "]]>";
 			break;
 		default:
-			sgmlCloseTag(ofs, depth, false, style.latexname());
+			sgmlCloseTag(ofs, depth, false, style->latexname());
 			break;
 		}
 	}
 
 	// Close open tags
-	for (int i=depth; i >= 0; --i)
+	for (int i = depth; i >= 0; --i)
 		sgmlCloseTag(ofs, depth, false, environment_stack[i]);
 
 	if (!body_only) {
@@ -3023,18 +3024,18 @@ void Buffer::simpleLinuxDocOnePar(ostream & os,
 	Paragraph * par,
 	Paragraph::depth_type /*depth*/)
 {
-	LyXLayout const & style =
-		textclasslist[params.textclass][par->layout()];
+	LyXLayout_ptr const & style = par->layout();
+
 	string::size_type char_line_count = 5;     // Heuristic choice ;-)
 
 	// gets paragraph main font
 	LyXFont font_old;
 	bool desc_on;
-	if (style.labeltype == LABEL_MANUAL) {
-		font_old = style.labelfont;
+	if (style->labeltype == LABEL_MANUAL) {
+		font_old = style->labelfont;
 		desc_on = true;
 	} else {
-		font_old = style.font;
+		font_old = style->font;
 		desc_on = false;
 	}
 
@@ -3168,7 +3169,7 @@ void Buffer::simpleLinuxDocOnePar(ostream & os,
 			continue;
 		}
 
-		if (style.latexparam() == "CDATA") {
+		if (style->latexparam() == "CDATA") {
 			// "TeX"-Mode on == > SGML-Mode on.
 			if (c != '\0')
 				os << c;
@@ -3176,7 +3177,7 @@ void Buffer::simpleLinuxDocOnePar(ostream & os,
 		} else {
 			string sgml_string;
 			if (par->sgmlConvertChar(c, sgml_string)
-			    && !style.free_spacing && !par->isFreeSpacing())
+			    && !style->free_spacing && !par->isFreeSpacing())
 			{
 				// in freespacing mode, spaces are
 				// non-breaking characters
@@ -3302,7 +3303,7 @@ void Buffer::makeDocBookFile(string const & fname, bool nice, bool only_body)
 		string c_params;
 		int desc_on = 0; // description mode
 
-		LyXLayout const & style = tclass[par->layout()];
+		LyXLayout_ptr const & style = par->layout();
 
 		// environment tag closing
 		for (; depth > par->params().depth(); --depth) {
@@ -3318,7 +3319,7 @@ void Buffer::makeDocBookFile(string const & fname, bool nice, bool only_body)
 		}
 
 		if (depth == par->params().depth()
-		   && environment_stack[depth] != style.latexname()
+		   && environment_stack[depth] != style->latexname()
 		   && !environment_stack[depth].empty()) {
 			if (environment_inner[depth] != "!-- --") {
 				item_name= "listitem";
@@ -3334,9 +3335,10 @@ void Buffer::makeDocBookFile(string const & fname, bool nice, bool only_body)
 		}
 
 		// Write opening SGML tags.
-		switch (style.latextype) {
+		switch (style->latextype) {
 		case LATEX_PARAGRAPH:
-			sgmlOpenTag(ofs, depth + command_depth, false, style.latexname());
+			sgmlOpenTag(ofs, depth + command_depth,
+				    false, style->latexname());
 			break;
 
 		case LATEX_COMMAND:
@@ -3345,9 +3347,9 @@ void Buffer::makeDocBookFile(string const & fname, bool nice, bool only_body)
 					  _("Error : Wrong depth for "
 					    "LatexType Command.\n"));
 
-			command_name = style.latexname();
+			command_name = style->latexname();
 
-			sgmlparam = style.latexparam();
+			sgmlparam = style->latexparam();
 			c_params = split(sgmlparam, c_depth,'|');
 
 			cmd_depth = lyx::atoi(c_depth);
@@ -3405,12 +3407,12 @@ void Buffer::makeDocBookFile(string const & fname, bool nice, bool only_body)
 				environment_stack[depth].erase();
 			}
 
-			if (environment_stack[depth] != style.latexname()) {
+			if (environment_stack[depth] != style->latexname()) {
 				if (environment_stack.size() == depth + 1) {
 					environment_stack.push_back("!-- --");
 					environment_inner.push_back("!-- --");
 				}
-				environment_stack[depth] = style.latexname();
+				environment_stack[depth] = style->latexname();
 				environment_inner[depth] = "!-- --";
 				sgmlOpenTag(ofs, depth + command_depth, false, environment_stack[depth]);
 			} else {
@@ -3422,45 +3424,50 @@ void Buffer::makeDocBookFile(string const & fname, bool nice, bool only_body)
 				}
 			}
 
-			if (style.latextype == LATEX_ENVIRONMENT) {
-				if (!style.latexparam().empty()) {
-					if (style.latexparam() == "CDATA")
+			if (style->latextype == LATEX_ENVIRONMENT) {
+				if (!style->latexparam().empty()) {
+					if (style->latexparam() == "CDATA")
 						ofs << "<![CDATA[";
 					else
-						sgmlOpenTag(ofs, depth + command_depth, false, style.latexparam());
+						sgmlOpenTag(ofs, depth + command_depth, false, style->latexparam());
 				}
 				break;
 			}
 
-			desc_on = (style.labeltype == LABEL_MANUAL);
+			desc_on = (style->labeltype == LABEL_MANUAL);
 
-			environment_inner[depth] = desc_on?"varlistentry": "listitem";
-			sgmlOpenTag(ofs, depth + 1 + command_depth, false, environment_inner[depth]);
+			environment_inner[depth] = desc_on ? "varlistentry" : "listitem";
+			sgmlOpenTag(ofs, depth + 1 + command_depth,
+				    false, environment_inner[depth]);
 
-			item_name = desc_on? "term": "para";
-			sgmlOpenTag(ofs, depth + 1 + command_depth, false, item_name);
+			item_name = desc_on ? "term" : "para";
+			sgmlOpenTag(ofs, depth + 1 + command_depth,
+				    false, item_name);
 			break;
 		default:
-			sgmlOpenTag(ofs, depth + command_depth, false, style.latexname());
+			sgmlOpenTag(ofs, depth + command_depth,
+				    false, style->latexname());
 			break;
 		}
 
-		simpleDocBookOnePar(ofs, par, desc_on, depth+1+command_depth);
+		simpleDocBookOnePar(ofs, par, desc_on,
+				    depth + 1 + command_depth);
 		par = par->next();
 
 		string end_tag;
 		// write closing SGML tags
-		switch (style.latextype) {
+		switch (style->latextype) {
 		case LATEX_COMMAND:
-			end_tag = c_params.empty()?"title":c_params;
-			sgmlCloseTag(ofs, depth + command_depth, false, end_tag);
+			end_tag = c_params.empty() ? "title" : c_params;
+			sgmlCloseTag(ofs, depth + command_depth,
+				     false, end_tag);
 			break;
 		case LATEX_ENVIRONMENT:
-			if (!style.latexparam().empty()) {
-				if (style.latexparam() == "CDATA")
+			if (!style->latexparam().empty()) {
+				if (style->latexparam() == "CDATA")
 					ofs << "]]>";
 				else
-					sgmlCloseTag(ofs, depth + command_depth, false, style.latexparam());
+					sgmlCloseTag(ofs, depth + command_depth, false, style->latexparam());
 			}
 			break;
 		case LATEX_ITEM_ENVIRONMENT:
@@ -3469,10 +3476,10 @@ void Buffer::makeDocBookFile(string const & fname, bool nice, bool only_body)
 			sgmlCloseTag(ofs, depth + 1 + command_depth, false, end_tag);
 			break;
 		case LATEX_PARAGRAPH:
-			sgmlCloseTag(ofs, depth + command_depth, false, style.latexname());
+			sgmlCloseTag(ofs, depth + command_depth, false, style->latexname());
 			break;
 		default:
-			sgmlCloseTag(ofs, depth + command_depth, false, style.latexname());
+			sgmlCloseTag(ofs, depth + command_depth, false, style->latexname());
 			break;
 		}
 	}
@@ -3514,9 +3521,9 @@ void Buffer::simpleDocBookOnePar(ostream & os,
 {
 	bool emph_flag = false;
 
-	LyXLayout const & style = textclasslist[params.textclass][par->layout()];
+	LyXLayout_ptr const & style = par->layout();
 
-	LyXFont font_old = style.labeltype == LABEL_MANUAL ? style.labelfont : style.font;
+	LyXFont font_old = (style->labeltype == LABEL_MANUAL ? style->labelfont : style->font);
 
 	int char_line_count = depth;
 	//if (!style.free_spacing)
@@ -3529,17 +3536,17 @@ void Buffer::simpleDocBookOnePar(ostream & os,
 		// handle <emphasis> tag
 		if (font_old.emph() != font.emph()) {
 			if (font.emph() == LyXFont::ON) {
-				if(style.latexparam() == "CDATA")
+				if (style->latexparam() == "CDATA")
 					os << "]]>";
 				os << "<emphasis>";
-				if(style.latexparam() == "CDATA")
+				if (style->latexparam() == "CDATA")
 					os << "<![CDATA[";
 				emph_flag = true;
 			} else if (i) {
-				if(style.latexparam() == "CDATA")
+				if (style->latexparam() == "CDATA")
 					os << "]]>";
 				os << "</emphasis>";
-				if(style.latexparam() == "CDATA")
+				if (style->latexparam() == "CDATA")
 					os << "<![CDATA[";
 				emph_flag = false;
 			}
@@ -3549,11 +3556,11 @@ void Buffer::simpleDocBookOnePar(ostream & os,
 		if (par->isInset(i)) {
 			Inset * inset = par->getInset(i);
 			// don't print the inset in position 0 if desc_on == 3 (label)
-			if ( i || desc_on != 3) {
-				if(style.latexparam() == "CDATA")
+			if (i || desc_on != 3) {
+				if (style->latexparam() == "CDATA")
 					os << "]]>";
 				inset->docbook(this, os, false);
-				if(style.latexparam() == "CDATA")
+				if (style->latexparam() == "CDATA")
 					os << "<![CDATA[";
 			}
 		} else {
@@ -3561,9 +3568,9 @@ void Buffer::simpleDocBookOnePar(ostream & os,
 			string sgml_string;
 			par->sgmlConvertChar(c, sgml_string);
 
-			if (style.pass_thru) {
+			if (style->pass_thru) {
 				os << c;
-			} else if (style.free_spacing || par->isFreeSpacing() || c != ' ') {
+			} else if (style->free_spacing || par->isFreeSpacing() || c != ' ') {
 					os << sgml_string;
 			} else if (desc_on ==1) {
 				++char_line_count;
@@ -3577,10 +3584,10 @@ void Buffer::simpleDocBookOnePar(ostream & os,
 	}
 
 	if (emph_flag) {
-		if(style.latexparam() == "CDATA")
+		if (style->latexparam() == "CDATA")
 			os << "]]>";
 		os << "</emphasis>";
-		if(style.latexparam() == "CDATA")
+		if (style->latexparam() == "CDATA")
 			os << "<![CDATA[";
 	}
 
@@ -3589,7 +3596,8 @@ void Buffer::simpleDocBookOnePar(ostream & os,
 		// <term> not closed...
 		os << "</term>\n<listitem><para>&nbsp;</para>";
 	}
-	if (style.free_spacing) os << '\n';
+	if (style->free_spacing)
+		os << '\n';
 }
 
 
@@ -3748,7 +3756,8 @@ Buffer::Lists const Buffer::getLists() const
 	string const layout("Caption");
 
 	while (par) {
-		char const labeltype = textclass[par->layout()].labeltype;
+#warning bogus type (Lgb)
+		char const labeltype = par->layout()->labeltype;
 
 		if (labeltype >= LABEL_COUNTER_CHAPTER
 		    && labeltype <= LABEL_COUNTER_CHAPTER + params.tocdepth) {
@@ -3780,7 +3789,7 @@ Buffer::Lists const Buffer::getLists() const
 					// the inset...
 					Paragraph * tmp = il->inset.paragraph();
 					while (tmp) {
-						if (tmp->layout() == layout) {
+						if (tmp->layout()->name() == layout) {
 							SingleList & item = l[type];
 							string const str =
 								tostr(item.size()+1) + ". " + tmp->asString(this, false);
@@ -3894,7 +3903,7 @@ bool Buffer::dispatch(string const & command, bool * result)
 bool Buffer::dispatch(int action, string const & argument, bool * result)
 {
 	bool dispatched = true;
- 
+
 	switch (action) {
 		case LFUN_EXPORT: {
 			bool const tmp = Exporter::Export(this, argument, false);

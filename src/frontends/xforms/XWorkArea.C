@@ -33,7 +33,7 @@
 // xforms doesn't define this (but it should be in <forms.h>).
 extern "C"
 FL_APPEVENT_CB fl_set_preemptive_callback(Window, FL_APPEVENT_CB, void *);
- 
+
 using std::endl;
 using std::abs;
 using std::hex;
@@ -59,7 +59,7 @@ void setXtermCursor(Window win)
 	XDefineCursor(fl_get_display(), win, cursor);
 	XFlush(fl_get_display());
 }
- 
+
 
 // FIXME !
 mouse_button::state x_button_state(unsigned int button)
@@ -178,9 +178,9 @@ XWorkArea::XWorkArea(int x, int y, int w, int h)
 	fl_set_scrollbar_bounds(scrollbar, 0.0, 0.0);
 	fl_set_scrollbar_value(scrollbar, 0.0);
 	fl_set_scrollbar_size(scrollbar, scrollbar->h);
-	
+
 	int const bw = int(abs(fl_get_border_width()));
- 
+
 	// Create the workarea pixmap
 	createPixmap(w - 15 - 2 * bw, h - 2 * bw);
 
@@ -200,7 +200,7 @@ XWorkArea::XWorkArea(int x, int y, int w, int h)
 				      C_XWorkArea_work_area_handler);
 	obj->wantkey = FL_KEY_ALL;
 	obj->u_vdata = this;
- 
+
 	fl_set_object_boxtype(obj,FL_DOWN_BOX);
 	fl_set_object_resize(obj, FL_RESIZE_ALL);
 	fl_set_object_gravity(obj, NorthWestGravity, SouthEastGravity);
@@ -278,7 +278,7 @@ void XWorkArea::setScrollbarParams(int height, int pos, int line_height)
 
 	lyxerr[Debug::GUI] << "scroll: height now " << height << endl;
 	lyxerr[Debug::GUI] << "scroll: work_height " << work_height << endl;
- 
+
 	/* If the text is smaller than the working area, the scrollbar
 	 * maximum must be the working area height. No scrolling will
 	 * be possible */
@@ -335,6 +335,7 @@ int XWorkArea::work_area_handler(FL_OBJECT * ob, int event,
 		lyxerr[Debug::WORKAREA] << "Workarea event: DRAW" << endl;
 		area->createPixmap(area->workWidth(), area->workHeight());
 		area->workAreaResize();
+		area->redraw();
 		break;
 	case FL_PUSH:
 		if (!ev || ev->xbutton.button == 0) break;
@@ -389,7 +390,7 @@ int XWorkArea::work_area_handler(FL_OBJECT * ob, int event,
 //		lyxerr << "We have " << num_keys << " keys in the returned buffer" << endl;
 //		lyxerr << "Our dummy string is " << dummy << endl;
 #endif
-		
+
 		if (lyxerr.debugging(Debug::KEY)) {
 			char const * tmp = XKeysymToString(key);
 			char const * tmp2 = XKeysymToString(keysym);
@@ -477,7 +478,7 @@ int XWorkArea::work_area_handler(FL_OBJECT * ob, int event,
 
 		XLyXKeySym * xlk = new XLyXKeySym;
 		xlk->initFromKeySym(ret_key);
-		
+
 		area->workAreaKeyPress(LyXKeySymPtr(xlk),
 				       x_key_state(ret_state));
 	}

@@ -62,12 +62,6 @@ FormDocument::FormDocument(LyXView * lv, Dialogs * d)
 	  ActCell(0), Confirmed(0),
 	  current_bullet_panel(0), current_bullet_depth(0), fbullet(0)
 {
-#if 0
-	// let the dialog be shown
-	// This is a permanent connection so we won't bother
-	// storing a copy because we won't be disconnecting.
-	d->showDocument = boost::bind(&FormDocument::show, this);
-#endif
 }
 
 
@@ -143,19 +137,12 @@ void FormDocument::build()
 	// Create the contents of the unit choices
 	// Don't include the "%" terms...
 	vector<string> units_vec = getLatexUnits();
-#if 0
-	for (vector<string>::iterator it = units_vec.begin();
-	     it != units_vec.end(); ++it) {
-		if (contains(*it, "%"))
-			it = units_vec.erase(it, it+1) - 1;
-	}
-#else
 	vector<string>::iterator ret =
 		std::remove_if(units_vec.begin(),
 			       units_vec.end(),
 			       bind2nd(contains_functor(), "%"));
 	units_vec.erase(ret, units_vec.end());
-#endif
+
 	string units = getStringFromVector(units_vec, "|");
 
 	fl_addto_choice(paper_->choice_custom_width_units,  units.c_str());

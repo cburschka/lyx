@@ -193,7 +193,7 @@ void InsetFormula::draw(BufferView * bv, LyXFont const & font,
 	if (grfx::ImagePtr image = preview(os.str()))
 		pain.image(x, y, w, h, *image);
 #endif
-	
+
 	xx += par_->width();
 	xo_ = x;
 	yo_ = y;

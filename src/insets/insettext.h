@@ -286,7 +286,7 @@ private:
 	///
 	typedef Cache::value_type value_type;
 	///
-	int beginningOfMainBody(Buffer const *, Paragraph * par) const;
+	int beginningOfMainBody(Paragraph * par) const;
 	///
 	UpdatableInset::RESULT moveRight(BufferView *,
 					 bool activate_inset = true,

@@ -25,7 +25,6 @@
 // the following are needed just to get the layout of the enclosing
 // paragraph. This seems a bit too much to me (JMarc)
 #include "lyxlayout.h"
-#include "lyxtextclasslist.h"
 #include "buffer.h"
 #include "paragraph.h"
 
@@ -65,9 +64,8 @@ int InsetFoot::latex(Buffer const * buf,
 		     ostream & os, bool fragile, bool fp) const
 {
 	if (buf && parOwner()) {
-		LyXLayout const & layout =
-			textclasslist[buf->params.textclass][parOwner()->layout()];
-		fragile |= layout.intitle;
+		LyXLayout_ptr const & layout = parOwner()->layout();
+		fragile |= layout->intitle;
 	}
 
 	os << "%\n\\footnote{";

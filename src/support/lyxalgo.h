@@ -54,7 +54,7 @@ struct firster {
 
 
 /**
- * copy elements in the given range to the output iterator 
+ * copy elements in the given range to the output iterator
  * if the predicate evaluates as true
  */
 template <class InputIter, class OutputIter, class Func>
