@@ -1,3 +1,8 @@
+2002-08-29  John Levon  <levon@movementarian.org>
+
+	* BufferView_pimpl.C (dispatch): do not continue when
+	  no buffer
+ 
 2002-08-28  André Pönitz <poenitz@gmx.net>
 
 	* commandtags.h: new LFUN_MOUSE_DOUBLE, LFUN_MOUSE_TRIPLE

@@ -903,6 +903,10 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev)
 		<< " button[" << ev.button() << "]"
 		<< endl;
 
+	// e.g. Qt mouse press when no buffer
+	if (!buffer_)
+		return false;
+ 
 	LyXTextClass const & tclass = buffer_->params.getLyXTextClass();
 
 	switch (ev.action) {
