@@ -16,6 +16,8 @@ User-visible changes:
 
 - New Refs menu item for quick insertion of cross-references.
 
+- multilingual documents (preliminary support)
+
 - Right-to-Left support for Hebrew and Arabic, this is a first attempt
   only and is likely to improve in future versions.
 
@@ -32,6 +34,8 @@ User-visible changes:
 
 - Better definition for LyXList style.
 
+- End-of-proof box, for layouts where it makes sense.
+
 - A couple of changes to the LyX format, so that files written with
   1.1.5 will not be parsed correctly by older LyX versions if protected
   spaces or the new per-paragraph spacing are used. Also the RtL
@@ -42,13 +46,22 @@ User-visible changes:
 - Some command-line options and X resources are not supported anymore
   (The color ones, and -mono -fastselection, -reverse)
 
+- New command-line options '-userdir' which so that you can choose to
+  use another dir than .lyx for user configurations. (Or have many.)
+
 - new lyxrc variables: \show_banner [true|false] to remove the banner
   screen, \backupdir_path to tell where the backup files created
   by lyx should be stored, and \override_x_deadkeys to tell whether 
   lyx should provide its own accent keys handling (default is true). 
 
+- the hollywood.layout has improved.
 
+- support for varioref and pretty ref (preliminary support)
 
+- The parsing of the LaTex log has improved flagging more errors that
+  earlier versions of LyX did not see at all. So if you suddenly have
+  errors in documents that used to have none, this might be the casue.
+  (And you probably had the error always.)
 
 What's new in LyX version 1.1.4?
 --------------------------------

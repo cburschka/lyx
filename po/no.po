@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx 1.1.5\n"
 "POT-Creation-Date: 2000-05-21 02:28+0200\n"
-"PO-Revision-Date: 2000-04-28 23:40+02:00\n"
+"PO-Revision-Date: 2000-06-01 01:32+02:00\n"
 "Last-Translator: Lars Gullik Bjønnes <larsbj@lyx.org>\n"
 "Language-Team: norsk <no@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -2464,27 +2464,24 @@ msgid "Insert list of algorithms"
 msgstr "Sett in liste over algoritmer"
 
 #: src/LyXAction.C:266
-#, fuzzy
 msgid "View list of algorithms"
-msgstr "Sett in liste over algoritmer"
+msgstr "Se på liste over algoritmer"
 
 #: src/LyXAction.C:268
 msgid "Insert list of figures"
 msgstr "Sett inn figurliste"
 
 #: src/LyXAction.C:270
-#, fuzzy
 msgid "View list of figures"
-msgstr "Sett inn figurliste"
+msgstr "Se på figurliste"
 
 #: src/LyXAction.C:272
 msgid "Insert list of tables"
 msgstr "Sett inn liste over tabeller"
 
 #: src/LyXAction.C:274
-#, fuzzy
 msgid "View list of tables"
-msgstr "Sett inn liste over tabeller"
+msgstr "Se på liste over tabeller"
 
 #: src/LyXAction.C:275
 msgid "Exit"
@@ -2615,7 +2612,6 @@ msgid "Update|Uu#u"
 msgstr "Oppdater"
 
 #: src/lyx.C:133
-#, fuzzy
 msgid "Type|Tt#t"
 msgstr "Slag:|#l"
 
@@ -3483,7 +3479,7 @@ msgstr " ``tekst'' | ,,tekst`` | ,,tekst'' | «tekst» | »tekst« | ''tekst'' "
 
 #: src/lyx_gui.C:562
 msgid " TOC | LOF | LOT | LOA "
-msgstr ""
+msgstr " TOC | LOF | LOT | LOA "
 
 #: src/lyx_gui.C:602
 msgid "LyX Banner"
@@ -4465,19 +4461,13 @@ msgid "EMV|Hh#h#H"
 msgstr "EMV|Hh#H#h"
 
 #: src/menus.C:1124
-#, fuzzy
 msgid ""
 "Undo|Redo %l|Cut|Copy|Paste%l|Find & Replace...|Go to Error|Go to "
 "Note|Floats & Insets%m|Table%m|Spellchecker....|Check TeX|Table of "
 "Contents...|List of Figures...|List of Tables...|List of "
 "Algorithms...%l|Version Control%m%l|View LaTeX log file%l|Paste Primary "
 "Selection as Lines|Paste Primary Selection as Paragraphs"
-msgstr ""
-"Angre|Gjør om%l|Klipp|Kopier|Lim inn%l|Find & Erstatt...|Gå til Feil|Gå til "
-"Notis|Floats & Insets%m|Tabell%m|Stavekontroll...|Sjekk "
-"TeX||Innholdsfortegnelse...%l|Versjons Kontroll%m%l|Se på LaTeX' logg "
-"fil%l|Lim inn primær seleksjon som linjer|Lim inn primær seleksjon som "
-"avsnitt"
+msgstr "Angre|Gjør om%l|Klipp|Kopier|Lim inn%l|Find & Erstatt...|Gå til Feil|Gå til Notis|Floats & Insets%m|Tabell%m|Stavekontroll...|Sjekk TeX||Innholdsfortegnelse...|Liste over figurer...|Liste over tabeller...|Liste over algoritmer...%l|Versjons Kontroll%m%l|Se på LaTeX' logg fil%l|Lim inn primær seleksjon som linjer|Lim inn primær seleksjon som avsnitt"
 
 #: src/menus.C:1146
 msgid "EM|Uu#u#U"
@@ -5413,6 +5403,3 @@ msgstr "Kan ikke klippe tabell."
 #: src/text.C:4624
 msgid "Float would include float!"
 msgstr "Float ville inkludert float!"
-
-#~ msgid "EM|aA#a#A"
-#~ msgstr "EM|hH#h#H"
