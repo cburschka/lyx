@@ -6,7 +6,7 @@
 \fontscheme default
 \graphics dvips
 \paperfontsize 12
-\spacing single
+\spacing single 
 \papersize a4paper
 \paperpackage a4
 \use_geometry 0
@@ -16,9 +16,9 @@
 \paperorientation portrait
 \secnumdepth 3
 \tocdepth 3
-\paragraph_separation indent
+\paragraph_separation skip
 \defskip medskip
-\quotes_language english
+\quotes_language german
 \quotes_times 2
 \papercolumns 1
 \papersides 1
@@ -150,7 +150,7 @@ haben wollten?
 \layout Standard
 
 
-\begin_inset Quotes eld
+\begin_inset Quotes gld
 \end_inset 
 
 Der Sinn des typographischen Entwurfs ist, daß der Leser die Ideen des Autors
@@ -163,7 +163,7 @@ Der Sinn des typographischen Entwurfs ist, daß der Leser die Ideen des Autors
  durch Spezialbefehle kennzeichnen....
  Während Sie Ihr Dokument schreiben, sollten Sie sich auf die logische Struktur
  konzentrieren, nicht auf sein Aussehen.
-\begin_inset Quotes erd
+\begin_inset Quotes grd
 \end_inset 
 
 
@@ -186,11 +186,11 @@ LyX kann mehr Menschen nützen als LaTeX.
  ist im Prinzip eine Programmiersprache).
  LyX ist im Prinzip wie andere WYSIWYG-Textverarbeitungen, aber LyX ist
  WYSIWYM 
-\begin_inset Quotes eld
+\begin_inset Quotes gld
 \end_inset 
 
 What you see is what you mean
-\begin_inset Quotes erd
+\begin_inset Quotes grd
 \end_inset 
 
 .
@@ -259,7 +259,7 @@ Neulich schrieb ich ein Programm.
  Es sah so aus:
 \layout Standard
 
-5 BEACHTET MEIN TOLLES PROGRAMM
+5 REM BEACHTET MEIN TOLLES PROGRAMM
 \layout Standard
 
 10 PRINT 
