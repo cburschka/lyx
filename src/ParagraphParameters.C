@@ -470,7 +470,7 @@ void params2string(Paragraph const & par, string & data)
 	os << "\\aligndefault " << layout->align << '\n';
 
 	/// is paragraph in inset
-	os << "\\ininset " << par.inInset() << '\n';
+	os << "\\ininset " << (par.inInset()?1:0) << '\n';
 
 	data = STRCONV(os.str());
 }
