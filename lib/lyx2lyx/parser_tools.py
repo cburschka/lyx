@@ -144,6 +144,21 @@ def find_beginning_of_inset(lines, i):
 def find_end_of_tabular(lines, i):
     return find_end_of(lines, i, "<lyxtabular", "</lyxtabular")
 
+def get_tabular_lines(lines, i):
+    result = []
+    i = i+1
+    j = find_end_of_tabular(lines, i)
+    if j == -1:
+	return []
+
+    while i <= j:
+	if check_token(lines[i], "\\begin_inset"):
+	    i = find_end_of_inset(lines, i)+1
+	else:
+	    result.append(i)
+	    i = i+1
+    return result
+
 def is_nonempty_line(line):
     return line != " "*len(line)
 

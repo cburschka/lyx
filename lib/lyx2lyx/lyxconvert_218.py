@@ -404,11 +404,7 @@ def update_tabular(lines):
         if i == -1:
             break
 
-	j = find_end_of_tabular(lines, i+1)
-        if j == -1:
-            break
-
-	for k in xrange(i+1,j):
+	for k in get_tabular_lines(lines, i):
 	    if check_token(lines[k], "<lyxtabular"):
 		lines[k] = string.replace(lines[k], 'version="2"', 'version="3"')
 	    elif check_token(lines[k], "<column"):
@@ -417,7 +413,7 @@ def update_tabular(lines):
 	    if line_re.match(lines[k]):
 		lines[k] = re.sub(attr_re, "", lines[k])
 
-	i = j+1
+	i = i+1
 
 def change_preamble(lines):
     i = find_token(lines, "\\use_amsmath", 0)

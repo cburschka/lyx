@@ -1,3 +1,8 @@
+2002-09-03  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* lyx2lyx/lyxconvert_218.py (update_tabular): Prevent changing
+	of non-tabular lines.
+
 2002-09-03  Angus Leeming  <leeming@lyx.org>
 
 	* scripts/lyxpreview2ppm.sh: re-written to make use of the "lyx"
