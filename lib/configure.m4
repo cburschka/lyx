@@ -489,6 +489,14 @@ EOF
 ### the graphic converter part with the predefined ones
 #### Search for tne nonstandard converting progs
 #
+SEARCH_PROG([for an FIG -> EPS/XPM converter], FIG2DEV, fig2dev)
+if test "$FIG2DEV" = "fig2dev"; then
+cat >>$outfile <<EOF
+\\converter fig eps "fig2dev -L eps \$\$i \$\$o" ""
+\\converter fig xpm "fig2dev -L xpm \$\$i \$\$o" ""
+EOF
+fi
+
 SEARCH_PROG([for an TIFF -> PS converter], TIFF2PS, tiff2ps)
 if test "$TIFF2PS" = "tiff2ps"; then
 cat >>$outfile <<EOF
@@ -510,7 +518,15 @@ SEARCH_PROG([for an EPS -> PDF converter], EPSTOPDF, epstopdf)
 if test "$EPSTOPDF" = "epstopdf"; then
 cat >>$outfile <<EOF
 \\converter eps pdf "epstopdf --outfile=\$\$o \$\$i" ""
+EOF
+fi
+
+SEARCH_PROG([for an EPSI ->  EPS/XPM converter], EPS2EPS, eps2eps)
+if test "$EPS2EPS" = "eps2eps"; then
+cat >>$outfile <<EOF
 \\converter epsi pdf "epstopdf --outfile=\$\$o \$\$i" ""
+\\converter epsi eps "eps2eps \$\$i $$o" ""
+\\converter epsi xpm "eps2eps -sOutputFile=- \$\$i dummy.eps | convert - \$\$o" ""
 EOF
 fi
 

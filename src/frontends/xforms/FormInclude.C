@@ -52,6 +52,9 @@ void FormInclude::build()
 
 void FormInclude::update()
 {
+	#if 0
+	// I believe this is not needed.
+	// Anyway, it is plain wrong (JSpitzm 3/7/02)
 	if (controller().params().noload) {
 		fl_set_input(dialog_->input_filename, "");
 		fl_set_button(dialog_->check_typeset, 0);
@@ -63,6 +66,7 @@ void FormInclude::update()
 		fl_set_object_lcol(dialog_->check_visiblespace, FL_INACTIVE);
 		return;
 	}
+	#endif
 
 	fl_set_input(dialog_->input_filename,
 		     controller().params().cparams.getContents().c_str());

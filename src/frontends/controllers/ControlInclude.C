@@ -78,10 +78,21 @@ void ControlInclude::load(string const & file)
 
 bool ControlInclude::fileExists(string const & file)
 {
-    string const fileWithAbsPath = MakeAbsPath(file, OnlyPath(params().masterFilename_));
-    if (IsFileReadable(fileWithAbsPath))
-	return true;
-    else
-	Alert::alert(_("Specified file doesn't exist !"));
-    return false;
+	string const fileWithAbsPath = MakeAbsPath(file, OnlyPath(params().masterFilename_));
+
+	if (params().noload){
+
+		if (prefixIs(file, "../") || prefixIs(file, "/"))
+			Alert::alert(_("Warning!"),
+				_("On some systems, with this options only relative path names"),
+				_("inside the master file dir are allowed. You might get a LaTeX error!"));
+	}
+
+	if (IsFileReadable(fileWithAbsPath))
+		return true;
+	
+	else
+		Alert::alert(_("Warning!"),
+			_("Specified file doesn't exist"));
+		return false;
 }
