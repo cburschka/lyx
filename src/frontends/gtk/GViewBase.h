@@ -32,6 +32,7 @@ public:
 	void setApply(Gtk::Button * apply);
 	void setOK(Gtk::Button * ok);
 	void setRestore(Gtk::Button * restore);
+	bool readOnly() const;
 protected:
 	// Build the dialog
 	virtual void build();

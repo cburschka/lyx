@@ -102,6 +102,12 @@ void GViewBase::setRestore(Gtk::Button * restore)
 }
 
 
+bool GViewBase::readOnly() const
+{
+	return kernel().isBufferReadonly();
+}
+
+
 void GViewBase::onApply()
 {
 	dialog().ApplyButton();
