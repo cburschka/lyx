@@ -29,6 +29,11 @@ class Timeout;
 
 class ForkedcallsController : public SigC::Object {
 public:
+	/** This d-tor should really be private, but making it public
+	 *   allows egcs 1.1 to compile the class.
+	 */
+	~ForkedcallsController();
+
 	/// Get hold of the only controller that can exist inside the process.
         static ForkedcallsController & get();
 
@@ -62,8 +67,6 @@ private:
 	ForkedcallsController();
 	///
 	ForkedcallsController(ForkedcallsController const &);
-	///
-	~ForkedcallsController();
 
 	/// The child processes
 	typedef std::list<Forkedcall *> ListType;

@@ -1,6 +1,8 @@
-2002-02-19  Angus Leeming  <a.leeming@ic.ac.uk>
+2002-03-01  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* filetools.C (getExtFromContents): cleanup.
+
+	* forkedcontr.h (d-tor): make it public for Dekel's crappy compiler.
 
 2002-02-27  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
