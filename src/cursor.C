@@ -390,7 +390,7 @@ void LCursor::selHandle(bool sel)
 		//	noUpdate();
 		return;
 	}
-	
+
 	resetAnchor();
 	selection() = sel;
 }
@@ -718,7 +718,7 @@ void LCursor::macroModeClose()
 	if (macro && macro->getInsetName() == name)
 		lyxerr << "can't enter recursive macro" << endl;
 
-	niceInsert(createMathInset(name));	
+	niceInsert(createMathInset(name));
 }
 
 

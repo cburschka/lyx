@@ -885,7 +885,7 @@ bool BufferView::Pimpl::workAreaDispatch(FuncRequest const & cmd0)
 		inset->dispatch(cur, cmd);
 
 	// Now dispatch to the temporary cursor. If the real cursor should
-	// be modified, the inset's dispatch has to do so explicitly. 
+	// be modified, the inset's dispatch has to do so explicitly.
 	if (!res.dispatched())
 		res = cur.dispatch(cmd);
 

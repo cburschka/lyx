@@ -287,7 +287,7 @@ bool InsetBase::editing(BufferView * bv) const
 
 bool InsetBase::covers(int x, int y) const
 {
-	//lyxerr << "InsetBase::covers, x: " << x << " y: " << y 
+	//lyxerr << "InsetBase::covers, x: " << x << " y: " << y
 	//	<< " xo: " << xo() << " yo: " << yo()
 	//	<< " x1: " << xo() << " x2: " << xo() + width()
 	//	<< " y1: " << yo() - ascent() << " y2: " << yo() + descent()

@@ -190,7 +190,7 @@ bool setLyxPaths()
 	}
 
 	// Path of binary/../Resources/
-	searchpath += NormalizePath(AddPath(binpath, "../Resources/") + 
+	searchpath += NormalizePath(AddPath(binpath, "../Resources/") +
 				    OnlyFilename(binname)) + ';';
 
 	string fullbinpath = binpath;
@@ -288,7 +288,7 @@ bool setLyxPaths()
 				    << system_lyxdir_ << '\'' << endl;
 
 	//
-	// Set PATH for LyX/Mac 
+	// Set PATH for LyX/Mac
 	// LyX/Mac is a relocatable application bundle; here we add to
 	// the PATH so it can find binaries like reLyX inside its own
 	// application bundle, and also append PATH elements that it

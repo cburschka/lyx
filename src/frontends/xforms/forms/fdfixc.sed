@@ -97,7 +97,7 @@ s/CHOICE/COMBOX/
 /fl_/ s/".[^|]*"/_(&).c_str()/
 
 
-#  For all lines containing "_shortcut" and a string containing |, 
+#  For all lines containing "_shortcut" and a string containing |,
 #  replace the string with scex(_(string)).c_str()
 /_shortcut/ s/".*[|].*"/scex(_(&)).c_str()/
 

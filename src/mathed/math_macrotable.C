@@ -31,7 +31,7 @@ using std::string;
 using std::vector;
 
 
-MacroData::MacroData() 
+MacroData::MacroData()
 	: numargs_(0)
 {}
 

@@ -455,7 +455,7 @@ void cutSelection(LCursor & cur, bool doclear, bool realcut)
 				bp.textclass);
 		}
 
-		boost::tie(endpit, endpos) = 
+		boost::tie(endpit, endpos) =
 			eraseSelectionHelper(bp,
 				text->paragraphs(),
 				begpit, endpit,

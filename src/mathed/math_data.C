@@ -220,7 +220,7 @@ void MathArray::metrics(MetricsInfo & mi, Dimension & dim) const
 
 namespace {
 
-bool isInside(DocIterator const & it, MathArray const & ar, 
+bool isInside(DocIterator const & it, MathArray const & ar,
 	lyx::pos_type p1, lyx::pos_type p2)
 {
 	for (size_t i = 0; i != it.size(); ++i) {

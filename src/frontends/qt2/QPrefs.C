@@ -192,7 +192,7 @@ void QPrefs::apply()
 		rc.preview = LyXRC::PREVIEW_ON;
 		break;
 	}
-	
+
 	lyx::graphics::DisplayType dtype(lyx::graphics::ColorDisplay);
 
 	switch (displaymod->displayGraphicsCO->currentItem()) {
@@ -511,7 +511,7 @@ void QPrefs::update_contents()
 		displaymod->instantPreviewCO->setCurrentItem(2);
 		break;
 	}
-	
+
 	int item = 2;
 
 	switch (rc.display_graphics) {

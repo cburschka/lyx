@@ -83,19 +83,19 @@
 
 2004-02-07  Huang Ying <hying_caritas@163.com>
 
-	* GViewBase.C : add addCancel, addOK, addApply, add Restore to 
+	* GViewBase.C : add addCancel, addOK, addApply, add Restore to
 	facilitate setup buttons signal.
 	* GAboutLyx.C : using addxxx series functions.
 	* GTableCreate.C : using addxxx series functions.
 	* GText.C : using addxxx series functions.
 	* GUrl.C : using addxxx series functions.
-	
+
 2004-02-02  Huang Ying <hying_caritas@163.com>
 
-	* GAboutLyx.C : the "CREDITS" is in "ISO8859-1" charset not locale 
+	* GAboutLyx.C : the "CREDITS" is in "ISO8859-1" charset not locale
 	charset, so change the convert function from Glib::locale_to_utf8
 	to Glib::convert(credit, "UTF-8", "ISO8859-1").
-	
+
 2003-12-20  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* Dialogs.C:
@@ -112,7 +112,7 @@
 	fronetends to prevent layouts widget from disable always.
 
 2003-10-28  Huang Ying  <hying_caritas@163.com>
-	
+
         * codeConvert.h (etc): Change FcChar to XftChar according to the libxft
         interface changing.
 	* FileDialogPrivate.C : get rid of button support in FileDialog

@@ -1027,7 +1027,7 @@ void MathGridInset::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 
 	// insert file functions
 	case LFUN_DELETE_LINE_FORWARD:
-		recordUndo(cur);	
+		recordUndo(cur);
 		//autocorrect_ = false;
 		//macroModeClose();
 		//if (selection_) {
@@ -1043,12 +1043,12 @@ void MathGridInset::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 		break;
 
 	case LFUN_CELL_SPLIT:
-		recordUndo(cur);	
+		recordUndo(cur);
 		splitCell(cur);
 		break;
 
 	case LFUN_BREAKLINE: {
-		recordUndo(cur);	
+		recordUndo(cur);
 		row_type const r = cur.row();
 		addRow(r);
 
@@ -1069,7 +1069,7 @@ void MathGridInset::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 	}
 
 	case LFUN_TABULAR_FEATURE: {
-		recordUndo(cur);	
+		recordUndo(cur);
 		//lyxerr << "handling tabular-feature " << cmd.argument << endl;
 		istringstream is(cmd.argument);
 		string s;
@@ -1129,7 +1129,7 @@ void MathGridInset::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 	}
 
 	case LFUN_PASTE: {
-		recordUndo(cur);	
+		recordUndo(cur);
 		lyxerr << "MathGridInset: PASTE: " << cmd << std::endl;
 		istringstream is(cmd.argument);
 		int n = 0;

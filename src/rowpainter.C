@@ -878,7 +878,7 @@ int paintPars(BufferView const & bv, Painter & pain,
 
 void refreshPar(BufferView const & bv, LyXText const & text, par_type pit)
 {
-	
+
 	static NullPainter nop;
 	paintPars(bv, nop, text, pit, pit + 1);
 }

@@ -19,7 +19,7 @@ using std::string;
 
 namespace {
 
-string const printState(ButtonPolicy::State const & state) 
+string const printState(ButtonPolicy::State const & state)
 {
 	string output;
 

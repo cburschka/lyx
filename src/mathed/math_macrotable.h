@@ -37,7 +37,7 @@ public:
 
 private:
 	///
-	std::string def_;	
+	std::string def_;
 	///
 	int numargs_;
 	///

@@ -80,7 +80,7 @@ bool displayGraphic(graphics::Params const & params)
 	return params.display != graphics::NoDisplay &&
 		lyxrc.display_graphics != graphics::NoDisplay;
 }
-	
+
 
 string const statusMessage(graphics::Params const & params,
 			   graphics::ImageStatus status)

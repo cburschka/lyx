@@ -56,13 +56,13 @@ s/extern \(.*\) create_form_form_\(.*\)[(]void[)]/\1 build_\2(void *)/
 # typedef struct {              struct FD_xxx : public FD_base {
 # 	FL_FORM *form_xxx;              FL_OBJECT * some_obj;
 # 	void *vdata;                    ...
-# 	char *cdata;            };      
+# 	char *cdata;            };
 # 	long  ldata;
 #       FL_OBJECT *some_obj;
 #       ...
 # } FD_xxx;
 #
-# This is detailed more closely below 
+# This is detailed more closely below
 
 # We retain only those lines in the struct that start "	FL_OBJECT *",
 # placing them in the hold space until the end of the struct is reached

@@ -21,7 +21,7 @@ class NullPainter : public Painter {
 public:
 	///
 	NullPainter() {}
-	
+
 	virtual ~NullPainter() {}
 
 	/// begin painting
@@ -29,11 +29,11 @@ public:
 	/// end painting
 	void end() {}
 
-	/// 
+	///
 	int paperWidth() const { return 0; }
-	/// 
+	///
 	int paperHeight() const;
-	
+
 	///
 	void line(int, int, int, int, LColor_color,
 		       line_style = line_solid, line_width = line_thin) {}
@@ -43,20 +43,20 @@ public:
 	///
 	void rectangle(int, int, int, int,	LColor_color,
 		line_style = line_solid, line_width = line_thin) {}
-	/// 
+	///
 	void fillRectangle(int, int, int, int, LColor_color) {}
-	/// 
+	///
 	void fillPolygon(int const *, int const *, int, LColor_color) {}
-	/// 
+	///
 	void arc(int, int,	unsigned int, unsigned int,
 		int, int, LColor_color) {}
-	/// 
+	///
 	void point(int, int, LColor_color) {}
-	/// 
+	///
 	void button(int, int, int, int) {}
-	/// 
+	///
 	void image(int, int, int, int, lyx::graphics::Image const &) {}
-	/// 
+	///
 	void text(int, int, std::string const &, LyXFont const &) {}
 	///
 	void text(int, int, char const *, size_t, LyXFont const &) {}

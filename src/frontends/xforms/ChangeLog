@@ -83,10 +83,10 @@
 	* FormDocument.[Ch]:
 	* forms/form_bibtex.fd: bibtopic support.
 	* forms/form_document.fd: radio default/natbib/jurabib.
-	
+
 	* FormPreferences.C:
 	* forms/form_preferences.fd: customize bibtex call.
-	
+
 	* FormFloat.C:
 	* forms/form_float.fd:
 	add support for sidewaysfloats
@@ -111,7 +111,7 @@
 2004-03-26  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* XLyXKeySym.C (print): new method; print a keysym using
-	kb_keymap::printKeySym. 
+	kb_keymap::printKeySym.
 
 2004-03-17  Angus Leeming  <leeming@lyx.org>
 
@@ -140,7 +140,7 @@
 2004-02-20  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* FormDocument.C:
-	* forms/form_document.fd: get rid of the single/double 
+	* forms/form_document.fd: get rid of the single/double
 	quote toggle (accessible via lfuns now).
 
 2004-02-01  Lars Gullik Bjonnes  <larsbj@gullik.net>

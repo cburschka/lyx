@@ -787,9 +787,9 @@ int LyXRC::read(LyXLex & lexrc)
 				break;
 			}
 
-			LColor::color const col = 
+			LColor::color const col =
 				lcolor.getFromLyXName(lyx_name);
-			if (col == LColor::none || 
+			if (col == LColor::none ||
 			    col == LColor::inherit ||
 			    col == LColor::ignore)
 				break;

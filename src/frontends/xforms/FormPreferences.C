@@ -1619,7 +1619,7 @@ void FormPreferences::LnFmisc::apply(LyXRC & rc) const
 		rc.preview = LyXRC::PREVIEW_ON;
 		break;
 	}
-	
+
 	rc.autosave = static_cast<unsigned int>
 		(fl_get_counter_value(dialog_->counter_autosave));
 	rc.wheel_jump = static_cast<unsigned int>

@@ -64,20 +64,20 @@ string const LyXLength::asLatexString() const
 	switch (unit_) {
 	case PTW:
 		snprintf(buffer, 78, "%.2f\\textwidth", val_/100.0);
-		break;                    
-	case PCW:                   
+		break;
+	case PCW:
 		snprintf(buffer, 78, "%.2f\\columnwidth", val_/100.0);
-		break;                    
-	case PPW:                   
+		break;
+	case PPW:
 		snprintf(buffer, 78, "%.2f\\paperwidth", val_/100.0);
-		break;                    
-	case PLW:                   
+		break;
+	case PLW:
 		snprintf(buffer, 78, "%.2f\\linewidth", val_/100.0);
-		break;                    
-	case PPH:                   
+		break;
+	case PPH:
 		snprintf(buffer, 78, "%.2f\\paperheight", val_/100.0);
-		break;                    
-	case PTH:                   
+		break;
+	case PTH:
 		snprintf(buffer, 78, "%.2f\\textheight", val_/100.0);
 		break;
 	default:

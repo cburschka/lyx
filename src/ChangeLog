@@ -52,11 +52,11 @@
 
 	* LaTeXFeatures.[Ch]: change buffer_ to a pointer and add accessor
 	setBuffer()
-	
+
 2004-04-07  Alfredo Braunstein  <abraunst@lyx.org>
 
 	* BufferView.C (setCursor): call redoParagraph (some insets could
-	have been opened) 
+	have been opened)
 	(putSelectionAt): remove the 'double update' trick
 
 	* BufferView_pimpl.C (fitCursor): call refreshPar
@@ -67,12 +67,12 @@
 	(selHandle): set noUpdate when appropriate
 
 	* lyxfunc.C (dispatch): track if we need an update
-	
+
 	* metricsinfo.[Ch]: PainterInfo receive a Painter & on construction
 
 	* rowpainter.[Ch] (RowPainter): remove superfluous xo_ parameter
 	(paintSelection): cheap optimization, do not call cursorX when not
-	needed 
+	needed
 	(paintPars): change signature
 	(refreshPar): add
 	(paintText): adjust
@@ -107,7 +107,7 @@
 	* cursor_slice.C: more agressive assert
 
 	* lyxfunc.C:
-	* BufferView_pimpl.C: rework mouse event dispatch 
+	* BufferView_pimpl.C: rework mouse event dispatch
 
 	* dociterator.C:
 	* paragraph.C:
@@ -145,7 +145,7 @@
 	* BufferView_pimpl.[Ch] (getStatus)
 	* BufferView.[Ch] (getStatus): add
 	* lyxfunc.C (getStatus): move lfuns handled in
-	BufferView::dispatch to te function above 
+	BufferView::dispatch to te function above
 	* Cursor.C (setSelection): set selection() = true
 
 2004-04-01  Alfredo Braunstein  <abraunst@lyx.org>
@@ -211,7 +211,7 @@
 
 	* lyxfunc.C (dispatch): the specialization Dialogs::showDocument
 	has died. Fall through to the generic Dialogs::show("document").
-	
+
 2004-03-30  Angus Leeming  <leeming@lyx.org>
 
 	* lfuns.h:
@@ -253,13 +253,13 @@
 
 2004-03-30  Alfredo Braunstein  <abraunst@lyx.org>
 
-	* dociterator.[Ch]: add an inset_ member 
+	* dociterator.[Ch]: add an inset_ member
 	(backwardPos): implemented
 	(backwardPos, forwardPos): use inset_ when the stack is empty.
 	(doc_iterator_begin, doc_iterator_end): implemented
 	* pariterator.[Ch]: adjust, add begin, end
 	* insetiterator.[Ch]: adjust, add begin, end
-	* cursor.C: 
+	* cursor.C:
 	* document.C:
 	* BufferView.C:
 	* BufferView_pimpl.C:
@@ -270,10 +270,10 @@
 	* buffer.C: increment file format to 232.
 	* LaTeXFeatures.C: add bibtopic package.
 	* bufferparams.[Ch]: param \use_bibtopic.
-	
+
 	* lyxrc.[Ch]: add lyxrc bibtex_command
 	* LaTeX.C: use rc.bibtex_command instead of hardcoded string.
-	
+
 	* buffer.C: increment file format to 231.
 
 2004-03-28  Alfredo Braunstein  <abraunst@lyx.org>
@@ -290,7 +290,7 @@
 	* lyxfind.C
 	* lyxfunc.C
 	* paragraph_funcs.C
-	* toc.C:  
+	* toc.C:
 	* Makefile.am: adjust
 
 2004-03-28  Alfredo Braunstein  <abraunst@lyx.org>
@@ -345,7 +345,7 @@
 
 2004-03-26  Alfredo Braunstein  <abraunst@lyx.org>
 
-	* buffer_funcs.C (readFile): add cancel button to two prompt dialogs 
+	* buffer_funcs.C (readFile): add cancel button to two prompt dialogs
 
 2004-03-26  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
@@ -366,8 +366,8 @@
 2004-03-25  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
             Martin Vermeer  <martin.vermeer@hut.fi>
 
-	* lyxfunc.C (dispatch): 
-	* bufferparams.C (readToken): use the new LColor::setColor 
+	* lyxfunc.C (dispatch):
+	* bufferparams.C (readToken): use the new LColor::setColor
 
 	* LColor.[Ch] (setColor): new version that takes two strings as
 	argument and creates a new color entry if necessary

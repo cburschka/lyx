@@ -5,7 +5,7 @@
 2004-04-07  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* ControlDocument.C: 'assign' for opening/closing branch insets
-	according to selection 
+	according to selection
 
 2004-04-05  Angus Leeming  <leeming@lyx.org>
 
@@ -15,7 +15,7 @@
 	state machine on receipt of SMI_CANCEL/SMI_HIDE if the existing
 	state is APPLIED, then let this state persist. Next time that the
 	dialog is opened, the user will be able to press 'Save'.
-	
+
 2004-04-05  Angus Leeming  <leeming@lyx.org>
 
 	* ControlPrefs.C (dispatchParams): ignore system_lyxrc when writing

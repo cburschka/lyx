@@ -588,7 +588,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd, bool verbose)
 	selection_possible = false;
 
 	bool update = true;
-	
+
 	// We cannot use this function here
 	if (!getStatus(cmd).enabled()) {
 		lyxerr[Debug::ACTION] << "LyXFunc::dispatch: "
@@ -1371,7 +1371,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd, bool verbose)
 				update |= res.update();
 			else
 				update |= view()->dispatch(cmd);
-			
+
 			break;
 		}
 		}

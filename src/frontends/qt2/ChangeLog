@@ -48,7 +48,7 @@
 
 2004-04-01  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
-	* floatplacement.[Ch]: correct fix for enabling of placement 
+	* floatplacement.[Ch]: correct fix for enabling of placement
 	values (bug 1016)
 
 2004-03-31  Angus Leeming  <leeming@lyx.org>
@@ -96,11 +96,11 @@
 	* QDocument.C:
 	* QDocumentDialog.C:
 	* ui/BiblioModuleBase.ui: bibtopic support.
-	
+
 	* QPrefs.C:
 	* QPrefsDialog.C:
 	* ui/QPrefsLaTeXModule.ui: customize bibtex call.
-	
+
 	* QFloat.C:
 	* QFloatDialog.C:
 	* floatplacement.[Ch]: add support for sidewaysfloats
@@ -139,10 +139,10 @@
 
 	* QCitation.C:
 	* ui/QCitationDialogBase.ui: Support second \cite option.
-	
+
 	* QDocumentDialog.C (branches): Don't deselect branch
 	after button press.
-	* QBranch.C: fix off-by-one-error. 
+	* QBranch.C: fix off-by-one-error.
 
 2004-02-21  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
@@ -152,8 +152,8 @@
 2004-02-20  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* QDocument.C:
-	* QDocumentDialog.C: 
-	* ui/LanguageModuleBase.ui: get rid of the single/double 
+	* QDocumentDialog.C:
+	* ui/LanguageModuleBase.ui: get rid of the single/double
 	quote toggle (accessible via lfuns now).
 
 2004-02-19  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
@@ -164,11 +164,11 @@
 2004-02-18  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* QCitation.[Ch]:
-	* QCitationDialog.[Ch]: open the find dialog if an inset is 
+	* QCitationDialog.[Ch]: open the find dialog if an inset is
 	new (new method openFind()). Fixes bug 1146.
-	
+
 	* QCitation.C: restore the chosen natbib style.
-	
+
 	* QRef.C: Disable goto button if there is no ref (bug 1037)
 	Restore setting of the buffer combo (bug 1511)
 

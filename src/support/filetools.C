@@ -1176,7 +1176,7 @@ cmd_ret const RunCommand(string const & cmd)
 	// FIXME: replace all calls to RunCommand with ForkedCall
 	// (if the output is not needed) or the code in ispell.C
 	// (if the output is needed).
-	
+
 	// One question is if we should use popen or
 	// create our own popen based on fork, exec, pipe
 	// of course the best would be to have a
@@ -1190,7 +1190,7 @@ cmd_ret const RunCommand(string const & cmd)
 
 	// Block the SIGCHLD signal.
 	sigprocmask(SIG_BLOCK, &newMask, &oldMask);
-	
+
 	FILE * inf = ::popen(cmd.c_str(), os::popen_read_mode());
 
 	// (Claus Hentschel) Check if popen was succesful ;-)

@@ -56,7 +56,7 @@ private:
 	void updateExpansion() const;
 	///
 	void expand() const;
-	
+
 	/// name of macro
 	std::string name_;
 	/// the unexpanded macro defintition
