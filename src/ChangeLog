@@ -1,3 +1,17 @@
+2003-03-08  John Levon  <levon@movementarian.org>
+
+	* lyxfunc.h:
+	* lyxfunc.C: move reloadBuffer()
+
+	* BufferView.h:
+	* BufferView.C: to here
+
+	* lyxvc.C: add comment
+
+	* vc-backend.h:
+	* vc-backend.C: call bv->reload() to avoid
+	  getStatus() check on MENURELOAD
+
 2003-03-07  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* LaTeX.C (run): Fix a bug where the DVI file was not updated due

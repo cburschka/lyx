@@ -20,6 +20,7 @@
 #include "LString.h"
 #include "WordLangTuple.h"
 
+
 class SpellBase;
 
 /** A controller for Spellchecker dialogs.

@@ -119,8 +119,6 @@ private:
 	///
 	void closeBuffer();
 	///
-	void reloadBuffer();
-	///
 	//  This return or directly text (default) of getLyXText()
 	///
 	LyXText * TEXT(bool) const;
