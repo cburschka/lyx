@@ -1,3 +1,9 @@
+2001-04-06  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* lyx_main.C: include language.h
+
+	* Makefile.am (lyx_main.o): add language.h
+
 2001-04-05  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* exporter.C: 

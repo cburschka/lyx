@@ -40,6 +40,7 @@
 #include "lyxlex.h"
 #include "encoding.h"
 #include "converter.h"
+#include "language.h"
 
 using std::endl;
 
