@@ -938,8 +938,6 @@ string const LyXFunc::dispatch(int ac,
 		}
 	}
 
-	lyx::Assert(action != LFUN_SELECT_FILE_SYNC);
-
 	switch (action) {
 		
 	case LFUN_ESCAPE:
@@ -1892,7 +1890,7 @@ void LyXFunc::open(string const & fname)
 		owner->message(str.str().c_str());
 	} else {
 		ostringstream str;
-		str << _("Could not open docuent") << ' ' << disp_fn;
+		str << _("Could not open document") << ' ' << disp_fn;
 		owner->message(str.str().c_str());
 	}
 }

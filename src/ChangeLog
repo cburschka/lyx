@@ -9,6 +9,18 @@
 	* lyxtext.h:
 	* text2.C: setParagraph takes linespacing now
  
+2001-08-15  John Levon  <moz@compsoc.man.ac.uk>
+
+	* LyxAction.C: add internal LFUN_CITATION_INSERT
+
+	* LyXView.C: actually apply fix
+
+	* bufferlist.C: fix open non-existent file
+ 
+	* lyxfind.C: fix indentation
+ 
+	* lyxfunc.C: remove unneeded assert, fix typo
+ 
 2001-08-14  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* buffer.C (parseSingleLyXformat2Token): Do not generate errors

@@ -235,6 +235,7 @@ void LyXView::updateWindowTitle()
 		setWindowTitle(title);
 		last_title = title;
 	}
+	last_title = title;
 }
 
 

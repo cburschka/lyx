@@ -104,7 +104,7 @@ int LyXReplace(BufferView * bv,
 		bv->update(bv->getLyXText(), BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 		++replace_count;
 		if (!once)
-		  found = LyXFind(bv, searchstr, fw, false, casesens, matchwrd);
+			found = LyXFind(bv, searchstr, fw, false, casesens, matchwrd);
 	} while (!once && replaceall && found);
    
 	if (bv->focus())

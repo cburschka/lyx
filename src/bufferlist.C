@@ -350,6 +350,12 @@ Buffer * BufferList::readFile(string const & s, bool ronly)
 	// File information about normal file
 	FileInfo fileInfo2(s);
 
+	if (!fileInfo2.exist()) {
+		WriteAlert(_("Error!"), _("Cannot open file"), 
+			MakeDisplayPath(s));
+		return 0;
+	}
+ 
 	// Check if emergency save file exists and is newer.
 	e += OnlyFilename(s) + ".emergency";
 	FileInfo fileInfoE(e);

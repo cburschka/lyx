@@ -153,6 +153,7 @@ void LyXAction::init()
 		  ReadOnly },
 		{ LFUN_CITATION_CREATE, "citation-insert",
 		  N_("Insert citation"), Noop },
+		{ LFUN_CITATION_INSERT, "", "internal only", Noop },
 		{ LFUN_EXEC_COMMAND, "command-execute", "", NoBuffer },
 		{ LFUN_PREFIX, "command-prefix",
 		  N_("Execute command"), NoBuffer },
