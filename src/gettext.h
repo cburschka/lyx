@@ -32,21 +32,19 @@
 
 #include "LString.h"
 
-#ifdef ENABLE_NLS
+//#ifdef ENABLE_NLS
 
 ///
 char const * _(char const *);
 ///
 string const _(string const &);
 
-#else // ENABLE_NLS
+//#else // ENABLE_NLS
 
 ///
-#  define _(str) (str)
-///
-#  define S_(str) (str)
+//#  define _(str) (str)
 
-#endif
+//#endif
 
 #  define N_(str) (str)              // for detecting static strings
 

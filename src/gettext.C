@@ -10,48 +10,52 @@
 
 #include <config.h>
 
+#include "messages.h"
+#include "LString.h"
+#include "support/LAssert.h"
+
+#include <boost/scoped_ptr.hpp>
+
 #ifdef HAVE_LOCALE_H
 #  include <locale.h>
 #endif
 
-#include "LString.h"
+namespace {
 
-#include <boost/scoped_array.hpp>
+boost::scoped_ptr<Messages> lyx_messages;
 
-#ifdef ENABLE_NLS
+} // anon namespace
 
-#  if HAVE_GETTEXT
-#    include <libintl.h>      // use the header already in the system *EK*
-#  else
-#    include "../intl/libintl.h"
-#  endif
 
 char const * _(char const * str)
 {
-	// I'd rather have an Assert on str, we should not allow
-	// null pointers here. Lgb
-	// Assert(str);
-	if (str && str[0])
-		return gettext(str);
-	else
-		return "";
+	lyx::Assert(str && str[0]);
+
+	if (!lyx_messages.get())
+		return str;
+
+	return lyx_messages->get(str).c_str();
 }
 
 
 string const _(string const & str)
 {
-	if (!str.empty()) {
-		int const s = str.length();
-		boost::scoped_array<char> tmp(new char[s + 1]);
-		str.copy(tmp.get(), s);
-		tmp[s] = '\0';
-		string const ret(gettext(tmp.get()));
-		return ret;
-	} else {
-		return string();
-	}
+	lyx::Assert(!str.empty());
+
+	if (!lyx_messages.get())
+		return str;
+
+	return lyx_messages->get(str);
 }
 
+
+void gettext_init(string const & localedir)
+{
+	lyx_messages.reset(new Messages("", localedir));
+}
+
+
+#ifdef ENABLE_NLS
 
 void locale_init()
 {
@@ -62,14 +66,6 @@ void locale_init()
 	setlocale(LC_NUMERIC, "C");
 }
 
-
-void gettext_init(string const & localedir)
-{
-	bindtextdomain(PACKAGE, localedir.c_str());
-	textdomain(PACKAGE);
-}
-
-
 #else // ENABLE_NLS
 
 void locale_init()
@@ -77,8 +73,4 @@ void locale_init()
 	setlocale(LC_NUMERIC, "C");
 }
 
-
-void gettext_init(string const &)
-{
-}
 #endif

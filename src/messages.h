@@ -13,38 +13,20 @@
 
 #include "LString.h"
 
-#include <locale>
+#include <boost/scoped_ptr.hpp>
 
 ///
 class Messages {
 public:
-	///
-	typedef std::messages<char>::catalog catalog;
 	///
 	Messages(string const & l, string const & dir);
 	///
 	~Messages();
 	///
 	string const get(string const & msg) const;
-	///
-	string const & lang() const {
-		return lang_;
-	}
-	///
-	string const & localedir() const {
-		return localedir_;
-	}
 private:
-	///
-	string lang_;
-	///
-	string localedir_;
-	///
-	std::locale loc_gl;
-	///
-	std::messages<char> const & mssg_gl;
-	///
-	catalog cat_gl;
+	class Pimpl;
+	boost::scoped_ptr<Pimpl> pimpl_;
 };
 
 #endif
