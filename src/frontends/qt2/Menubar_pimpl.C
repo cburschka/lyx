@@ -47,16 +47,10 @@ extern LyXAction lyxaction;
 Menubar::Pimpl::Pimpl(LyXView * view, MenuBackend const & mbe) 
 	: owner_(static_cast<QtView*>(view)), menubackend_(mbe)
 {
-	MenuBackend::const_iterator mb = menubackend_.begin(); 
-	MenuBackend::const_iterator mbend = menubackend_.end();
-	for (; mb != mbend; ++mb) {
-		if (mb->menubar() && mb->name() == "main") {
-			Menu::const_iterator m = mb->begin();
-			Menu::const_iterator end = mb->end();
-			for (; m != end; ++m) {
-				makeMenu(owner_->menuBar(), *m);
-			}
-		}
+	Menu::const_iterator m = mbe.getMenubar().begin();
+	Menu::const_iterator end = mbe.getMenubar().end();
+	for (; m != end; ++m) {
+		makeMenu(owner_->menuBar(), *m);
 	}
 }
 

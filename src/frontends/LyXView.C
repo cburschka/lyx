@@ -72,6 +72,7 @@ void LyXView::init()
 
 	// Start autosave timer
 	if (lyxrc.autosave) {
+		autosave_timeout_->timeout.connect(boost::bind(&LyXView::autoSave, this));
 		autosave_timeout_->setTimeout(lyxrc.autosave * 1000);
 		autosave_timeout_->start();
 	}

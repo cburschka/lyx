@@ -160,9 +160,6 @@ void XFormsView::create_form_form_main(Dialogs & dia, int width, int height)
 	minibuffer_.reset(new XMiniBuffer(this, *controlcommand_,
 		air, height - (25 + air), width - (2 * air), 25));
 
-	// FIXME: why do this in xforms/ ?
-	autosave_timeout_->timeout.connect(boost::bind(&XFormsView::autoSave, this));
-
 	//  assign an icon to main form
 	string iconname = LibFileSearch("images", "lyx", "xpm");
 	if (!iconname.empty()) {

@@ -77,9 +77,6 @@ QtView::QtView(unsigned int width, unsigned int height)
  
 	addToolBar(commandbuffer_, Bottom, true);
  
-	// FIXME: move 
-	// FIXME autosave_timeout_->timeout.connect(SigC::slot(this, &QtView::autoSave));
-	
         //  assign an icon to main form
 	string const iconname = LibFileSearch("images", "lyx", "xpm");
  
@@ -99,6 +96,8 @@ QtView::~QtView()
 void QtView::message(string const & str)
 {
 	statusBar()->message(str.c_str()); 
+	idle_timer_.stop();
+	idle_timer_.start(3000);
 }
 
  
@@ -110,13 +109,13 @@ void QtView::focus_command_widget()
 
 void QtView::update_view_state_qt()
 {
-	message(currentState(view()));
+	statusBar()->message(currentState(view()).c_str());
 }
 
  
 void QtView::update_view_state()
 {
-	message(currentState(view()));
+	statusBar()->message(currentState(view()).c_str());
 }
 
  
