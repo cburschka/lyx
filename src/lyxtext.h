@@ -470,11 +470,12 @@ public:
 	Inset * checkInsetHit(int & x, int & y);
 
 	///
-	int singleWidth(ParagraphList::iterator pit,
-		lyx::pos_type pos) const;
+	int singleWidth(ParagraphList::iterator pit, lyx::pos_type pos) const;
 	///
 	int singleWidth(ParagraphList::iterator pit,
 		lyx::pos_type pos, char c) const;
+	/// rebuild row cache
+	void rebuildRows();
 
 	/// return the color of the canvas
 	LColor::color backgroundColor() const;

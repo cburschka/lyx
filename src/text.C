@@ -311,7 +311,7 @@ int LyXText::singleWidth(ParagraphList::iterator pit,
 				// Because of the representation as vertical lines
 				return 3;
 			}
-#if 1
+#if 0
 #warning inset->update FIXME
 			// this IS needed otherwise on initialitation we don't get the fill
 			// of the row right (ONLY on initialization if we read a file!)
@@ -1079,7 +1079,7 @@ void LyXText::setHeightOfRow(RowList::iterator rit)
 				tmpfont = getFont(bv()->buffer(), pit, pos);
 				tmpinset = pit->getInset(pos);
 				if (tmpinset) {
-#if 0 // this is needed for deep update on initialitation
+#if 1 // this is needed for deep update on initialitation
 #warning inset->update FIXME
 					//tmpinset->update(bv());
 					Dimension dim;

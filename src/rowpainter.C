@@ -21,6 +21,7 @@
 
 #include "insets/insettext.h"
 #include "ParagraphParameters.h"
+#include "debug.h"
 #include "BufferView.h"
 #include "buffer.h"
 #include "gettext.h"
@@ -178,10 +179,6 @@ void RowPainter::paintInset(pos_type const pos)
 
 	Assert(inset);
 
-	//MetricsInfo mi(perv(bv_), getFont(pos), text_.workWidth());
-	//Dimension dim; 
-	//inset->metrics(mi, dim);
-
 	PainterInfo pi(perv(bv_));
 	pi.base.font = getFont(pos);
 #warning metrics?
@@ -309,6 +306,8 @@ void RowPainter::paintChars(pos_type & vpos, bool hebrew, bool arabic)
 	}
 
 	// Draw text and set the new x position
+	lyxerr << "paint row: yo_ " << yo_ << " baseline: " << row_->baseline()
+		<< "\n";
 	pain_.text(int(x_), yo_ + row_->baseline(), str, orig_font);
 	x_ += font_metrics::width(str, orig_font);
 }
@@ -949,8 +948,7 @@ void RowPainter::paintText()
 			int const lwidth = font_metrics::width(layout->labelsep,
 				getLabelFont());
 
-			x_ += label_hfill_ + lwidth
-				- singleWidth(body_pos - 1);
+			x_ += label_hfill_ + lwidth - singleWidth(body_pos - 1);
 		}
 
 		if (pit_->isHfill(pos)) {
@@ -959,8 +957,7 @@ void RowPainter::paintText()
 			int const y0 = yo_ + row_->baseline();
 			int const y1 = y0 - defaultRowHeight() / 2;
 
-			pain_.line(x_, y1, x_, y0,
-				     LColor::added_space);
+			pain_.line(x_, y1, x_, y0, LColor::added_space);
 
 			if (hfillExpansion(text_, row_, pos)) {
 				int const y2 = (y0 + y1) / 2;
@@ -1075,6 +1072,34 @@ int getLengthMarkerHeight(BufferView const & bv, VSpace const & vsp)
 void paintRows(BufferView const & bv, LyXText const & text,
 	RowList::iterator rit, int y_offset, int x_offset, int y)
 {
+	// fix up missing metrics() call for main LyXText
+	// calling metrics() directly is (a) slow and (b) crashs
+	if (&text == bv.text) {
+#if 1
+		lyxerr << "paintRows, global...\n";
+		// make sure all insets are updated
+		ParagraphList::iterator pit = text.ownerParagraphs().begin();
+		ParagraphList::iterator end = text.ownerParagraphs().end();
+
+		// compute inset metrics
+		for (; pit != end; ++pit) {
+			for (int pos = 0; pos != pit->size(); ++pos) {
+				if (pit->isInset(pos)) {
+					Dimension dim;
+					LyXFont font;
+					MetricsInfo mi(perv(bv), font, text.workWidth());
+					pit->getInset(pos)->metrics(mi, dim);
+				}
+			}
+		}
+#else
+		LyXFont font;
+		Dimension dim;
+		MetricsInfo mi(perv(bv), font, text.workWidth());
+		const_cast<LyXText&>(text).metrics(mi, dim);
+#endif
+	}
+
 	RowPainter painter(bv, text, rit, y_offset, x_offset, y);
 	painter.paint();
 }
