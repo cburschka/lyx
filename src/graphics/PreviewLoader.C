@@ -449,7 +449,11 @@ void PreviewLoader::Impl::startLoading()
 	lyxerr[Debug::GRAPHICS] << "PreviewLoader::startLoading()" << endl;
 
 	// As used by the LaTeX file and by the resulting image files
-	string const filename_base(unique_filename(buffer_.tmppath));
+	string directory = buffer_.tmppath;
+	if (directory.empty())
+		directory = buffer_.filePath();
+	
+	string const filename_base(unique_filename(directory));
 
 	// Create an InProgress instance to place in the map of all
 	// such processes if it starts correctly.
