@@ -1,3 +1,11 @@
+2000-07-26  Juergen Vigna  <jug@sad.it>
+	* renamed frontend from gtk to gnome as it is that what is realized
+	and did the necessary changes in the files.
+	
+2000-07-26  Marko Vendelin <markov@ioc.ee>
+	* autogen.sh
+	* configure.in: cleaning up gnome configuration scripts
+
 2000-07-26  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/frontends/xforms/Menubar_pimpl.C (set): fix the disappearing

@@ -1,7 +1,7 @@
 AUTOMAKE_OPTIONS = foreign 1.4
 DISTCLEANFILES= *.orig *.rej *~ *.bak core
 MAINTAINERCLEANFILES = $(srcdir)/Makefile.in
-noinst_LTLIBRARIES = libgtk.la
+noinst_LTLIBRARIES = libgnome.la
 INCLUDES = ${FRONTEND_INCLUDES} -I${top_srcdir}/src/ \
 	-I${top_srcdir}/src/frontends/ \
 	${SIGC_CFLAGS}
@@ -9,10 +9,14 @@ LIBS=
 LDFLAGS=
 LYXDATADIRS = 
 ETAGS_ARGS = --lang=c++
-libgtk_la_SOURCES = \
+libgnome_la_SOURCES = \
 	Dialogs.C \
 	FormCopyright.C \
-	FormCopyright.h 
+	FormCopyright.h \
+	Menubar_pimpl.C \
+	Menubar_pimpl.h \
+	Toolbar_pimpl.C \
+	Toolbar_pimpl.h
 
 # These still have to be added. Sooner or later. ARRae-20000411
 #	GUI_defaults.C \
