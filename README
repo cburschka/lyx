@@ -3,10 +3,10 @@ Preamble: LyX version scheme
 	In September of 1999 the LyX Team decided that we could no
 	longer successfully use the two strand development process
 	like the Linux kernel. The idea was to to switch to a
-	development model similar to that used by Fetchmail where only
-	we would will only make small stable changes between releases
+	development model similar to that used by Fetchmail where 
+	we would make only small stable changes between releases
 	and release more often.  This lead to the 1.1.x series of LyX
-	releases where the inhards of the program have been rewritten 
+	releases during which the inhards of the program were rewritten 
 	to make use of the C++ Standard Library features, establish
 	the foundations of GUI/system independence, and generally
 	clean up the data structures used in the core of LyX.
@@ -19,18 +19,18 @@ Preamble: LyX version scheme
 	feature/modification has proved stable it will be merged into
 	the main releases.
 
-	LyX still uses a continuous numbering scheme where odd or
-	even numbering is not significant. Prereleases are
-	labeled with a "pre" suffix and any fixes required between
-	stable releases have a "fix" suffix. Thus there are three
-	possible file names:
+	LyX still uses a continuous numbering scheme in which odd or
+	even numbering is not significant. Instead a number '1.x.y'
+	indicates stable release '1.x', fix level 'y'. Prereleases 
+	are labeled with a "pre" suffix. Thus there are three possible
+	file names:
 
 	   lyx-1.2.0.tar.gz       -- stable release
 	   lyx-1.2.2.tar.gz       -- second maintenance release of the
 	                             1.2.0 stable release 
 	   lyx-1.2.0pre1.tar.gz   -- potentially unstable test release
 
-	The maintenance releases are designed mainly to fix bugs. The
+	The maintenance releases are designed primarily to fix bugs. The
 	goal here is not to have parallel development as for the linux
 	kernel (the team is too small to afford that), but rather to
 	include all the simple (so that the maintenance burden on us
@@ -65,10 +65,10 @@ What is LyX not?
 What do I need to run LyX?
 
 	A Unix-like system or Windows with cygwin, OS/2 with XFree
-	At least X11 Release 5
+	At least X11 Release 5.
 	A decent LaTeX2e installation (e.g. teTeX or NTeX) not older
-	   than 1995/12/01
-	Perl5.002 or later to import LaTeX files into LyX
+	   than 1995/12/01.
+	Perl5.002 or later to import LaTeX files into LyX.
 
 What's new?
 
@@ -96,12 +96,16 @@ How do I upgrade from an earlier LyX version?
 
 What do I need to compile LyX from the source distribution?
 
-	1. A good c++ compiler.  Development is being done mainly on
-	   gcc/g++, but some others work. As of LyX 1.2.0, you need at
-	   least gcc 2.95.X (or egcs 1.1.x). Another compiler known to
-	   work is compaq cxx 6.1.
-	2. The Xforms library version 0.89.6 (recommended) or 0.88.1.
-	3. LibXpm version 4.7 (or newer).
+	* A good c++ compiler.  Development is being done mainly on
+	  gcc/g++, but some others work. As of LyX 1.3.0, you need at
+	  least gcc 2.95.X (or egcs 1.1.x). Another compiler known to
+	  work is compaq cxx 6.1.
+	Either:
+	* The Xforms library, version 0.89.5 or newer. We recommend
+	  the LGPL version 1.0.
+	* LibXpm, version 4.7 or newer.
+	Or:
+	* The Qt library, version 2.x or 3.0.x.
 
 	Read the file "INSTALL" for more information on compiling.
 
