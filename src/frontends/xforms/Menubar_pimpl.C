@@ -4,18 +4,15 @@
  * Licence details can be found in the file COPYING.
  *
  * \author  Lars Gullik Bjønnes
+ * \author Jean-Marc Lasgouttes
  *
  * Full author contact details are available in file CREDITS
  */
 
 #include <config.h>
 
-
 #include "Menubar_pimpl.h"
 #include "MenuBackend.h"
-#include "LyXAction.h"
-#include "kbmap.h"
-#include "Dialogs.h"
 #include "XFormsView.h"
 #include "lyxfunc.h"
 #include "support/lstrings.h"
@@ -24,7 +21,7 @@
 #include "debug.h"
 #include FORMS_H_LOCATION
 
-#include <boost/scoped_ptr.hpp>
+//#include <boost/scoped_ptr.hpp>
 
 #include <algorithm>
 
@@ -35,8 +32,6 @@ using std::min;
 using std::for_each;
 
 typedef vector<int>::size_type size_type;
-
-extern boost::scoped_ptr<kb_keymap> toplevel_keymap;
 
 namespace {
 
@@ -177,8 +172,6 @@ int get_new_submenu(vector<int> & smn, Window win)
 	int menu = fl_newpup(win);
 	fl_setpup_softedge(menu, true);
 	fl_setpup_bw(menu, -1);
-	lyxerr[Debug::GUI] << "Adding menu " << menu
-			   << " in deletion list" << endl;
 	smn.push_back(menu);
 	return menu;
 }
@@ -196,8 +189,7 @@ string const fixlabel(string const & str)
 
 
 int Menubar::Pimpl::create_submenu(Window win, XFormsView * view,
-				   Menu const & menu, vector<int> & smn,
-				   bool & all_disabled)
+				   Menu const & menu, vector<int> & smn)
 {
 	const int menuid = get_new_submenu(smn, win);
 	lyxerr[Debug::GUI] << "Menubar::Pimpl::create_submenu: creating "
@@ -220,32 +212,13 @@ int Menubar::Pimpl::create_submenu(Window win, XFormsView * view,
 		}
 	}
 	lyxerr[Debug::GUI] << "max_width=" << max_width
-			   << ", widest_label=`" << widest_label
-			   << '\'' << endl;
+			   << ", widest_label=\"" << widest_label
+			   << '"' << endl;
 
-	// Compute where to put separators
-	vector<string> extra_labels(menu.size());
-	vector<string>::iterator it = extra_labels.begin();
-	vector<string>::iterator last = it;
-	for (Menu::const_iterator i = menu.begin(); i != end; ++i, ++it) {
-		if (i->kind() == MenuItem::Separator)
-			*last = "%l";
-		else if (i->kind() == MenuItem::Command) {
-			FuncStatus flag
-				= view->getLyXFunc().getStatus(i->action());
-			if (!(i->optional() && flag.disabled())
-			    && ! flag.unknown())
-				last = it;
-		}
-	}
-
-	it = extra_labels.begin();
 	size_type count = 0;
-	all_disabled = true;
 	int curmenuid = menuid;
-	for (Menu::const_iterator i = menu.begin(); i != end; ++i, ++it) {
+	for (Menu::const_iterator i = menu.begin(); i != end; ++i) {
 		MenuItem const & item = (*i);
-		string & extra_label = *it;
 
 		++count;
 		// add a More... submenu if the menu is too long (but
@@ -257,101 +230,90 @@ int Menubar::Pimpl::create_submenu(Window win, XFormsView * view,
 			string label = _("More");
 			label += "...%m";
 			fl_addtopup(curmenuid, label.c_str(), tmpmenuid);
-			count = 1;
+			count = 0;
 			curmenuid = tmpmenuid;
 		}
 
 		switch (item.kind()) {
-		case MenuItem::Command: {
-			FuncStatus const flag =
-				view->getLyXFunc().getStatus(item.action());
-			// handle optional or unknown entries.
-			if (flag.unknown()
-			    || (item.optional() && flag.disabled())) {
-				lyxerr[Debug::GUI]
-					<< "Skipping item "
-					<< item.label() << endl;
-				break;
-			}
-
-			// Get the keys bound to this action, but keep only the
-			// first one later
-			string const accel =
-				toplevel_keymap->findbinding(item.action());
+		case MenuItem::Command:
+		case MenuItem::Submenu:
+		{
 			// Build the menu label from all the info
 			string label = fixlabel(item.label());
+			FuncStatus const flag = item.status();
+			int submenuid;
 
-			if (!accel.empty()) {
+			// Is there a key binding?
+			string const binding = item.binding();
+			if (!binding.empty()) {
 				// Try to be clever and add  just enough
 				// tabs to align shortcuts.
 				do
 					label += '\t';
 				while (string_width(label) < max_width + 5);
-				label += accel.substr(1,accel.find(']') - 1);
+				label += binding;
 			}
-			label += "%x" + tostr(item.action() + action_offset)
-				+ extra_label;
+
+			// Is there a separator after the item?
+			if ((i+1) != end
+			    && (i + 1)->kind() == MenuItem::Separator)
+				label += "%l";
 
 			// Modify the entry using the function status
-			string pupmode;
 			if (flag.onoff(true))
-				pupmode += "%B";
+				label += "%B";
 			if (flag.onoff(false))
-				pupmode += "%b";
+				label += "%b";
 			if (flag.disabled())
-				pupmode += "%i";
-			else
-				all_disabled = false;
-			label += pupmode;
-
-			// Finally the menu shortcut
-			string shortcut = item.shortcut();
-
-			if (!shortcut.empty()) {
-				shortcut += lowercase(shortcut[0]);
-				label += "%h";
-				fl_addtopup(curmenuid, label.c_str(),
-					    shortcut.c_str());
-			} else
-				fl_addtopup(curmenuid, label.c_str());
-
-			lyxerr[Debug::GUI] << "Command: \""
-					   << lyxaction.getActionName(item.action())
-					   << "\", binding \"" << accel
-					   << "\", shortcut \"" << shortcut
-					   << "\" (added to menu"
-					   << curmenuid << ')' << endl;
-			break;
-		}
-
-		case MenuItem::Submenu: {
-			bool sub_all_disabled;
-			int submenuid = create_submenu(win, view,
-						       *item.submenu(), smn,
-						       sub_all_disabled);
-			all_disabled &= sub_all_disabled;
-			if (submenuid == -1)
-				return -1;
-			string label = fixlabel(item.label());
-			label += extra_label + "%m";
-			if (sub_all_disabled)
 				label += "%i";
+
+			// Add the shortcut
 			string shortcut = item.shortcut();
 			if (!shortcut.empty()) {
 				shortcut += lowercase(shortcut[0]);
 				label += "%h";
-				fl_addtopup(curmenuid, label.c_str(),
-					    submenuid, shortcut.c_str());
+			} 
+
+			// Finally add the action/submenu
+			if (item.kind() == MenuItem::Submenu) {
+				// create the submenu
+				submenuid =
+					create_submenu(win, view,
+						       *item.submenu(), smn);
+				if (submenuid == -1)
+					return -1;
+				label += "%x" + tostr(smn.size());
+				lyxerr[Debug::GUI]
+					<< "Menu: " << submenuid
+					<< " (at index " << smn.size()
+					<< "), ";
 			} else {
-				fl_addtopup(curmenuid, label.c_str(),
-					    submenuid);
+				// Add the action
+				label += "%x" + tostr(item.action()
+						      + action_offset);
+				lyxerr[Debug::GUI] << "Action: \""
+						   << item.action() << "\", ";
 			}
+
+			// Add everything to the menu
+			fl_addtopup(curmenuid, label.c_str(),
+				    shortcut.c_str());
+			if (item.kind() == MenuItem::Submenu)
+				fl_setpup_submenu(curmenuid, smn.size(),
+						  submenuid);
+
+			lyxerr[Debug::GUI] << "label \"" << label
+					   << "\", binding \"" << binding
+					   << "\", shortcut \"" << shortcut
+					   << "\" (added to menu "
+					   << curmenuid << ')' << endl;
 			break;
 		}
 
 		case MenuItem::Separator:
 			// already done, and if it was the first one,
 			// we just ignore it.
+			--count;
 			break;
 
 
@@ -387,12 +349,10 @@ void Menubar::Pimpl::MenuCallback(FL_OBJECT * ob, long button)
 	MenuBackend const * menubackend_ = iteminfo->pimpl_->menubackend_;
 	Menu tomenu;
 	Menu const frommenu = menubackend_->getMenu(item->submenuname());
-	menubackend_->expand(frommenu, tomenu, view->buffer());
+	menubackend_->expand(frommenu, tomenu, view);
 	vector<int> submenus;
-	bool all_disabled = true;
-	int menu = iteminfo->pimpl_->
-		create_submenu(FL_ObjWin(ob), view, tomenu,
-			       submenus, all_disabled);
+	int menu = iteminfo->pimpl_->create_submenu(FL_ObjWin(ob), view,
+						    tomenu, submenus);
 	if (menu != -1) {
 		// place popup
 		fl_setpup_position(view->getForm()->x + ob->x,

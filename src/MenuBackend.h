@@ -20,8 +20,10 @@
 
 #include <vector>
 
+#include "FuncStatus.h"
+
 class LyXLex;
-class Buffer;
+class LyXView;
 class Menu;
 
 ///
@@ -86,9 +88,17 @@ public:
 	int action() const { return action_; }
 	/// returns true if the entry should be ommited when disabled
 	bool optional() const { return optional_; }
+	/// returns the status of the lfun associated with this entry
+	FuncStatus const & status() const { return status_; }	
+	/// returns the status of the lfun associated with this entry
+	FuncStatus & status() { return status_; }	
+	/// returns the status of the lfun associated with this entry
+	void status(FuncStatus const & status) { status_ = status; }	
+	/// returns the binding associated to this action
+	string const binding() const;
 	/// the description of the  submenu (if relevant)
 	string const & submenuname() const { return submenuname_; }
-	/// the description of the  submenu (if relevant)
+	/// set the description of the  submenu
 	void submenuname(string const & name) { submenuname_ = name; }
 	///
 	Menu * submenu() const { return submenu_.get(); }
@@ -108,6 +118,8 @@ private:
 	///
 	bool optional_;
 	///
+	FuncStatus status_;
+	///
 	boost::shared_ptr<Menu> submenu_;
 };
 
@@ -125,7 +137,7 @@ public:
 	explicit Menu(string const & name = string())
 		: name_(name) {}
 	///
-	Menu & add(MenuItem const &);
+	Menu & add(MenuItem const &, LyXView const * view = 0);
 	///
 	Menu & read(LyXLex &);
 	///
@@ -149,6 +161,7 @@ public:
 	void checkShortcuts() const;
 
 private:
+	friend class MenuBackend;
 	///
 	ItemList items_;
 	///
@@ -185,7 +198,7 @@ public:
 	    ViewFormats, ExportFormats, UpdateFormats
 	*/
 	void expand(Menu const & frommenu, Menu & tomenu,
-		    Buffer const *) const;
+		    LyXView const *) const;
 	///
 	const_iterator begin() const {
 		return menulist_.begin();

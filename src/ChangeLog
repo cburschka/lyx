@@ -1,3 +1,12 @@
+2003-02-15  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* MenuBackend.C (binding): returns the binding associated to this
+	action 
+	(add): sets the status of each item by calling getStatus. Adds
+	some intelligence.
+	(read): add support for OptSubMenu
+	(expand): remove extra separator at the end of expanded menu
+
 2003-02-15  John Levon  <levon@movementarian.org>
 
 	* BufferView.C:

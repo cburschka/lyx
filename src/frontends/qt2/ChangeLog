@@ -1,3 +1,9 @@
+2003-02-15  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* QLPopupMenu.C (populate): adapt to menubackend change. In
+	particular, unknown and optional+disabled elements are never seen.
+	(disabled): remove. This is done in backend now.
+
 2003-02-15  John Levon  <levon@movementarian.org>
 
 	* QPrefs.C: fix silly typo that screwed up the print

@@ -59,8 +59,7 @@ private:
 			    std::vector<int> & smn, Window win);
 	///
 	int create_submenu(Window win, XFormsView * view,
-			   Menu const & menu,
-			   std::vector<int> & smn, bool & all_disabled);
+			   Menu const & menu, std::vector<int> & smn);
 
 	//
 	void makeMenubar(Menu const & menu);

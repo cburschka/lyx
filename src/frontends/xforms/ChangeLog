@@ -1,3 +1,10 @@
+2003-02-15  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* Menubar_pimpl.C (create_submenu): Some code moved to
+	Menubackend: use MenuItem::binding(); remove code to disable
+	menus; remove code that looks for optional+disabled or unknown
+	actions
+
 2003-02-15  John Levon  <levon@movementarian.org>
 
 	* forms/form_graphics.fd: 'a' shortcut was used twice

@@ -43,9 +43,6 @@ public slots:
 	/// populate the toplevel menu and all children
 	void showing();
 private:
-	/// return true if the given submenu is disabled
-	bool disabled(Menu * menu);
-
 	/// our owning menubar
 	Menubar::Pimpl * owner_;
 
