@@ -36,9 +36,18 @@ using std::max;
 InsetCollapsable::InsetCollapsable(bool collapsed)
 	: UpdatableInset(), collapsed_(collapsed), 
 	  button_length(0), button_top_y(0), button_bottom_y(0),
-	  label("Label"), draw_label(label), autocollapse(false), 
+	  label("Label"),
+#if 0
+	draw_label(label),
+#endif
+#if 0
+	autocollapse(false),
+#endif
 	  oldWidth(0), need_update(FULL),
-	  inlined(false), change_label_with_text(false)
+	  inlined(false)
+#if 0
+	, change_label_with_text(false)
+#endif
 {
 	inset.setOwner(this);
 	inset.setAutoBreakRows(true);
@@ -52,9 +61,18 @@ InsetCollapsable::InsetCollapsable(InsetCollapsable const & in, bool same_id)
 	: UpdatableInset(in, same_id), collapsed_(in.collapsed_), 
 	  framecolor(in.framecolor), labelfont(in.labelfont),
 	  button_length(0), button_top_y(0), button_bottom_y(0),
-	  label(in.label), draw_label(label), autocollapse(in.autocollapse), 
+	  label(in.label),
+#if 0
+	draw_label(label),
+#endif
+#if 0
+	autocollapse(in.autocollapse),
+#endif
 	  oldWidth(0), need_update(FULL),
-	  inlined(in.inlined), change_label_with_text(in.change_label_with_text)
+	  inlined(in.inlined)
+#if 0
+	, change_label_with_text(in.change_label_with_text)
+#endif
 {
 	inset.init(&(in.inset), same_id);
 	inset.setOwner(this);
@@ -101,16 +119,18 @@ void InsetCollapsable::read(Buffer const * buf, LyXLex & lex)
 		}
 	}
 	inset.read(buf, lex);
+#if 0
 	if (collapsed_ && change_label_with_text) {
 		draw_label = get_new_label();
 	} else {
 		draw_label = label;
 	}
+#endif
 }
 
 
 //int InsetCollapsable::ascent_collapsed(Painter & pain) const
-int InsetCollapsable::ascent_collapsed(Painter & /*pain*/) const
+int InsetCollapsable::ascent_collapsed() const
 {
 	int width = 0;
 	int ascent = 0;
@@ -119,14 +139,14 @@ int InsetCollapsable::ascent_collapsed(Painter & /*pain*/) const
 	pain.buttonText(0, 0, draw_label, labelfont, false, 
 			width, ascent, descent);
 #else
-	lyxfont::buttonText(draw_label, labelfont, width, ascent, descent);
+	lyxfont::buttonText(label, labelfont, width, ascent, descent);
 #endif
 	return ascent;
 }
 
 
 //int InsetCollapsable::descent_collapsed(Painter & pain) const
-int InsetCollapsable::descent_collapsed(Painter & /*pain*/) const
+int InsetCollapsable::descent_collapsed() const
 {
 	int width = 0;
 	int ascent = 0;
@@ -135,14 +155,14 @@ int InsetCollapsable::descent_collapsed(Painter & /*pain*/) const
 	pain.buttonText(0, 0, draw_label, labelfont, false, 
 			width, ascent, descent);
 #else
-	lyxfont::buttonText(draw_label, labelfont, width, ascent, descent);
+	lyxfont::buttonText(label, labelfont, width, ascent, descent);
 #endif
 	return descent;
 }
 
 
 //int InsetCollapsable::width_collapsed(Painter & pain) const
-int InsetCollapsable::width_collapsed(Painter & /*pain*/) const
+int InsetCollapsable::width_collapsed() const
 {
 	int width;
 	int ascent;
@@ -151,24 +171,24 @@ int InsetCollapsable::width_collapsed(Painter & /*pain*/) const
 	pain.buttonText(TEXT_TO_INSET_OFFSET, 0, draw_label, labelfont, false,
 			width, ascent, descent);
 #else
-	lyxfont::buttonText(draw_label, labelfont, width, ascent, descent);
+	lyxfont::buttonText(label, labelfont, width, ascent, descent);
 #endif
 	return width + (2*TEXT_TO_INSET_OFFSET);
 }
 
 
-int InsetCollapsable::ascent(BufferView * bv, LyXFont const &) const
+int InsetCollapsable::ascent(BufferView * /*bv*/, LyXFont const &) const
 {
-	return ascent_collapsed(bv->painter());
+	return ascent_collapsed();
 }
 
 
 int InsetCollapsable::descent(BufferView * bv, LyXFont const & font) const
 {
 	if (collapsed_) 
-		return descent_collapsed(bv->painter());
+		return descent_collapsed();
 
-	return descent_collapsed(bv->painter())
+	return descent_collapsed()
 		+ inset.descent(bv, font)
 		+ inset.ascent(bv, font)
 		+ TEXT_TO_BOTTOM_OFFSET;
@@ -178,9 +198,9 @@ int InsetCollapsable::descent(BufferView * bv, LyXFont const & font) const
 int InsetCollapsable::width(BufferView * bv, LyXFont const & font) const
 {
 	if (collapsed_) 
-		return width_collapsed(bv->painter());
+		return width_collapsed();
 
-	int widthCollapsed = width_collapsed(bv->painter());
+	int widthCollapsed = width_collapsed();
 
 	return (inset.width(bv, font) > widthCollapsed) ?
 		inset.width(bv, font) : widthCollapsed;
@@ -193,14 +213,11 @@ void InsetCollapsable::draw_collapsed(Painter & pain, int baseline, float & x) c
 	int width = 0;
 	pain.buttonText(int(x) + TEXT_TO_INSET_OFFSET,
 			baseline, draw_label, labelfont, true, width);
-#else
-	pain.buttonText(int(x) + TEXT_TO_INSET_OFFSET,
-			baseline, draw_label, labelfont);
-#endif
-#if 0
 	x += width + TEXT_TO_INSET_OFFSET;
 #else
-	x += width_collapsed(pain) + TEXT_TO_INSET_OFFSET;
+	pain.buttonText(int(x) + TEXT_TO_INSET_OFFSET,
+			baseline, label, labelfont);
+	x += width_collapsed();
 #endif
 }
 
@@ -213,10 +230,10 @@ void InsetCollapsable::draw(BufferView * bv, LyXFont const & f,
 
 	Painter & pain = bv->painter();
 
-	button_length = width_collapsed(pain);
+	button_length = width_collapsed();
 	button_top_y = -ascent(bv, f);
-	button_bottom_y = -ascent(bv, f) + ascent_collapsed(pain) +
-		descent_collapsed(pain);
+	button_bottom_y = -ascent(bv, f) + ascent_collapsed() +
+		descent_collapsed();
 
 	if (collapsed_) {
 		draw_collapsed(pain, baseline, x);
@@ -263,11 +280,11 @@ void InsetCollapsable::draw(BufferView * bv, LyXFont const & f,
 	top_x = int(x);
 	top_baseline = baseline;
 
-	int const bl = baseline - ascent(bv, f) + ascent_collapsed(pain);
+	int const bl = baseline - ascent(bv, f) + ascent_collapsed();
 
 	draw_collapsed(pain, bl, old_x);
 	inset.draw(bv, f, 
-		   bl + descent_collapsed(pain) + inset.ascent(bv, f),
+		   bl + descent_collapsed() + inset.ascent(bv, f),
 		   x, cleared);
 	need_update = NONE;
 }
@@ -279,7 +296,9 @@ void InsetCollapsable::edit(BufferView * bv, int xp, int yp,
 	UpdatableInset::edit(bv, xp, yp, button);
 
 	if (collapsed_) {
+#if 0
 		draw_label = label;
+#endif
 		collapsed_ = false;
 		if (!bv->lockInset(this))
 			return;
@@ -293,8 +312,8 @@ void InsetCollapsable::edit(BufferView * bv, int xp, int yp,
 		} else {
 			LyXFont font(LyXFont::ALL_SANE);
 			int yy = ascent(bv, font) + yp -
-				(ascent_collapsed(bv->painter()) +
-				 descent_collapsed(bv->painter()) +
+				(ascent_collapsed() +
+				 descent_collapsed() +
 				 inset.ascent(bv, font));
 			inset.edit(bv, xp, yy, button);
 		}
@@ -307,7 +326,9 @@ void InsetCollapsable::edit(BufferView * bv, bool front)
 	UpdatableInset::edit(bv, front);
 
 	if (collapsed_) {
+#if 0
 		draw_label = label;
+#endif
 		collapsed_ = false;
 		if (!bv->lockInset(this))
 			return;
@@ -332,6 +353,7 @@ Inset::EDITABLE InsetCollapsable::editable() const
 
 void InsetCollapsable::insetUnlock(BufferView * bv)
 {
+#if 0
 	if (autocollapse) {
 		if (change_label_with_text) {
 			draw_label = get_new_label();
@@ -340,6 +362,7 @@ void InsetCollapsable::insetUnlock(BufferView * bv)
 		}
 		collapsed_ = true;
 	}
+#endif
 	inset.insetUnlock(bv);
 	if (scroll())
 		scroll(bv, 0.0F);
@@ -353,8 +376,8 @@ void InsetCollapsable::insetButtonPress(BufferView * bv, int x, int y,
 	if (!collapsed_ && (y > button_bottom_y)) {
 		LyXFont font(LyXFont::ALL_SANE);
 		int yy = ascent(bv, font) + y -
-		    (ascent_collapsed(bv->painter()) +
-		     descent_collapsed(bv->painter()) +
+		    (ascent_collapsed() +
+		     descent_collapsed() +
 		     inset.ascent(bv, font));
 		inset.insetButtonPress(bv, x, yy, button);
 	}
@@ -367,17 +390,21 @@ void InsetCollapsable::insetButtonRelease(BufferView * bv,
 	if ((x >= 0)  && (x < button_length) &&
 	    (y >= button_top_y) &&  (y <= button_bottom_y)) {
 		if (collapsed_) {
+#if 0
 			draw_label = label;
+#endif
 			collapsed_ = false;
 			inset.insetButtonRelease(bv, 0, 0, button);
 			inset.setUpdateStatus(bv, InsetText::FULL);
 			bv->updateInset(this, false);
 		} else {
+#if 0
 			if (change_label_with_text) {
 				draw_label = get_new_label();
 			} else {
 				draw_label = label;
 			}
+#endif
 			collapsed_ = true;
 			bv->unlockInset(this);
 			bv->updateInset(this, false);
@@ -385,8 +412,8 @@ void InsetCollapsable::insetButtonRelease(BufferView * bv,
 	} else if (!collapsed_ && (y > button_bottom_y)) {
 		LyXFont font(LyXFont::ALL_SANE);
 		int yy = ascent(bv, font) + y -
-		    (ascent_collapsed(bv->painter()) +
-		     descent_collapsed(bv->painter()) +
+		    (ascent_collapsed() +
+		     descent_collapsed() +
 		     inset.ascent(bv, font));
 		inset.insetButtonRelease(bv, x, yy, button);
 	}
@@ -399,8 +426,8 @@ void InsetCollapsable::insetMotionNotify(BufferView * bv,
 	if (y > button_bottom_y) {
 		LyXFont font(LyXFont::ALL_SANE);
 		int yy = ascent(bv, font) + y -
-		    (ascent_collapsed(bv->painter()) +
-		     descent_collapsed(bv->painter()) +
+		    (ascent_collapsed() +
+		     descent_collapsed() +
 		     inset.ascent(bv, font));
 		inset.insetMotionNotify(bv, x, yy, state);
 	}
@@ -431,7 +458,7 @@ int InsetCollapsable::getMaxWidth(BufferView * bv,
 		return w;
 	}
 	// should be at least 30 pixels !!!
-	return max(30, w - width_collapsed(bv->painter()));
+	return max(30, w - width_collapsed());
 }
 
 
@@ -615,20 +642,43 @@ Inset * InsetCollapsable::getInsetFromID(int id_arg) const
 	return inset.getInsetFromID(id_arg);
 }
 
+
+#if 0
 void InsetCollapsable::open(BufferView * bv, bool flag)
 {
 	if (flag == !collapsed_)
 		return;
 	collapsed_ = !flag;
+#if 0
 	if (collapsed_ && change_label_with_text) {
 		draw_label = get_new_label();
 	} else {
 		draw_label = label;
 	}
+#endif
+	bv->updateInset(this, false);
+}
+#else
+void InsetCollapsable::open(BufferView * bv)
+{
+	if (!collapsed_) return;
+	
+	collapsed_ = false;
 	bv->updateInset(this, false);
 }
 
 
+void InsetCollapsable::close(BufferView * bv)
+{
+	if (collapsed_) return;
+	
+	collapsed_ = true;
+	bv->updateInset(this, false);
+}
+#endif
+
+
+#if 0
 void InsetCollapsable::setLabel(string const & l, bool flag)
 {
 	label = l;
@@ -639,16 +689,24 @@ void InsetCollapsable::setLabel(string const & l, bool flag)
 		draw_label = label;
 	}
 }
+#else
+void InsetCollapsable::setLabel(string const & l)
+{
+	label = l;
+}
+#endif
 
 
-string InsetCollapsable::get_new_label() const
+#if 0
+string const InsetCollapsable::get_new_label() const
 {
 	string la;
 	Paragraph::size_type const max_length = 15;
 
 	int n = std::min(max_length, inset.paragraph()->size());
-	int i,j;
-	for(i=0,j=0; i < n && j < inset.paragraph()->size(); ++j) {
+	int i = 0;
+	int j = 0;
+	for(; i < n && j < inset.paragraph()->size(); ++j) {
 		if (inset.paragraph()->isInset(j))
 			continue;
 		la += inset.paragraph()->getChar(j);
@@ -660,3 +718,4 @@ string InsetCollapsable::get_new_label() const
 		la = label;
 	return la;
 }
+#endif

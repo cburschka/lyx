@@ -1279,6 +1279,7 @@ void InsetTabular::setPos(BufferView * bv, int x, int y) const
 		     tabular->GetAdditionalWidth(actcell - 1));
 #else
 	// Jürgen, you should check that this is correct. (Lgb)
+#warning Jürgen, please check. (Lgb)
 	for (; !tabular->IsLastCellInRow(actcell) && lx < x; ++actcell) {
 		lx += tabular->GetWidthOfColumn(actcell + 1)
 			+ tabular->GetAdditionalWidth(actcell);
@@ -1502,10 +1503,8 @@ bool InsetTabular::movePrevCell(BufferView * bv, bool lock)
 }
 
 
-bool InsetTabular::Delete()
+bool InsetTabular::deletable()
 {
-#warning Is this func correctly named? Or should it be "deletable"? (Lgb?)
-#warning I guess this could be 'deletable'! (Jug)
 	return true;
 }
 
@@ -2029,6 +2028,7 @@ void InsetTabular::openLayoutDialog(BufferView * bv) const
 		const_cast<InsetTabular *>(this));
 }
 
+
 //
 // functions returns:
 // 0 ... disabled
@@ -2340,11 +2340,6 @@ bool InsetTabular::cutSelection()
 	if (!hasSelection())
 		return false;
 
-	//int sel_col_start;
-	//int sel_col_end;
-	//int sel_row_start;
-	//int sel_row_end;
-
 	int sel_col_start = tabular->column_of_cell(sel_cell_start);
 	int sel_col_end = tabular->column_of_cell(sel_cell_end);
 	if (sel_col_start > sel_col_end) {
@@ -2356,15 +2351,9 @@ bool InsetTabular::cutSelection()
 	int sel_row_start = tabular->row_of_cell(sel_cell_start);
 	int sel_row_end = tabular->row_of_cell(sel_cell_end);
 	if (sel_row_start > sel_row_end) {
-		//int tmp = sel_row_start;
-		//sel_row_start = sel_row_end;
-		//sel_row_end = tmp;
 		swap(sel_row_start, sel_row_end);
 	}
 	if (sel_cell_start > sel_cell_end) {
-		//int tmp = sel_cell_start;
-		//sel_cell_start = sel_cell_end;
-		//sel_cell_end = tmp;
 		swap(sel_cell_start, sel_cell_end);
 	}
 	for (int i = sel_row_start; i <= sel_row_end; ++i) {
@@ -2422,6 +2411,7 @@ void InsetTabular::getSelection(int & srow, int & erow, int & scol, int & ecol) 
 			ecol = tabular->right_column_of_cell(sel_cell_end);
 }
 
+
 Paragraph * InsetTabular::getParFromID(int id) const
 {
 	Paragraph * result;
@@ -2434,12 +2424,14 @@ Paragraph * InsetTabular::getParFromID(int id) const
 	return 0;
 }
 
+
 Paragraph * InsetTabular::firstParagraph() const
 {
 	if (the_locking_inset)
 		return the_locking_inset->firstParagraph();
 	return 0;
 }
+
 
 LyXCursor const & InsetTabular::cursor(BufferView * bv) const
 {
@@ -2465,11 +2457,10 @@ Inset * InsetTabular::getInsetFromID(int id_arg) const
 }
 
 
-string InsetTabular::selectNextWord(BufferView * bv, float & value) const
+string const InsetTabular::selectNextWord(BufferView * bv, float & value) const
 {
 	if (the_locking_inset) {
-		string str;
-		str = the_locking_inset->selectNextWord(bv, value);
+		string const str(the_locking_inset->selectNextWord(bv, value));
 		if (!str.empty())
 			return str;
 		if (tabular->IsLastCell(actcell)) {
@@ -2483,19 +2474,19 @@ string InsetTabular::selectNextWord(BufferView * bv, float & value) const
 	UpdatableInset * inset =
 		static_cast<UpdatableInset*>(tabular->GetCellInset(actcell));
 	inset->edit(bv, 0,  0, 0);
-	string str = selectNextWordInt(bv, value);
+	string const str(selectNextWordInt(bv, value));
 	if (!str.empty())
 		resetPos(bv);
 	return str;
 }
+
 
 string InsetTabular::selectNextWordInt(BufferView * bv, float & value) const
 {
 	// when entering this function the inset should be ALWAYS locked!
 	lyx::Assert(the_locking_inset);
 
-	string str;
-	str = the_locking_inset->selectNextWord(bv, value);
+	string const str(the_locking_inset->selectNextWord(bv, value));
 	if (!str.empty())
 		return str;
 
@@ -2520,6 +2511,7 @@ void InsetTabular::selectSelectedWord(BufferView * bv)
 	}
 	return;
 }
+
 
 void InsetTabular::toggleSelection(BufferView * bv, bool kill_selection)
 {
@@ -2546,12 +2538,13 @@ bool InsetTabular::searchForward(BufferView * bv, string const & str,
 	UpdatableInset * inset =
 		static_cast<UpdatableInset*>(tabular->GetCellInset(actcell));
 	inset->edit(bv);
-	bool res = searchForward(bv, str, cs, mw);
+	bool const res = searchForward(bv, str, cs, mw);
 	updateLocal(bv, NONE, false);
 	nodraw(false);
 	bv->updateInset(const_cast<InsetTabular *>(this), false);
 	return res;
 }
+
 
 bool InsetTabular::searchBackward(BufferView * bv, string const & str,
                                bool const & cs, bool const & mw)
@@ -2570,7 +2563,7 @@ bool InsetTabular::searchBackward(BufferView * bv, string const & str,
 	UpdatableInset * inset =
 		static_cast<UpdatableInset*>(tabular->GetCellInset(actcell));
 	inset->edit(bv, false);
-	bool res = searchBackward(bv, str, cs, mw);
+	bool const res = searchBackward(bv, str, cs, mw);
 	nodraw(false);
 	bv->updateInset(const_cast<InsetTabular *>(this), false);
 	return res;

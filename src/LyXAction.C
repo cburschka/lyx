@@ -275,7 +275,9 @@ void LyXAction::init()
 		{ LFUN_END, "line-end", N_("Go to end of line"), ReadOnly },
 		{ LFUN_ENDSEL, "line-end-select",
 		  N_("Select to end of line"), ReadOnly },
+#if 0
 		{ LFUN_INSET_LIST, "list-insert", "", Noop },
+#endif
 		{ LFUN_QUIT, "lyx-quit", N_("Exit"), NoBuffer },
 		{ LFUN_INSET_MARGINAL, "marginalnote-insert",
 		  N_("Insert Marginalnote"), Noop },
@@ -378,7 +380,9 @@ void LyXAction::init()
 #endif
 		{ LFUN_INSET_TEXT, "text-insert",
 		  N_("Insert a new Text Inset"), Noop },
+#if 0
 		{ LFUN_INSET_THEOREM, "theorem-insert", "", Noop },
+#endif
 		{ LFUN_TOC_INSERT, "toc-insert",
 		  N_("Insert table of contents"), Noop },
 		{ LFUN_TOCVIEW, "toc-view",

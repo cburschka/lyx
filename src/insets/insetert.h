@@ -20,7 +20,7 @@
 
 #include "insetcollapsable.h"
 
-/** A colapsable text inset
+/** A collapsable text inset for LaTeX insertions.
   
   To write full ert (including styles and other insets) in a given
   space. 
@@ -31,6 +31,8 @@ public:
 	InsetERT();
 	///
 	InsetERT(string const & contents, bool collapsed);
+	///
+	void read(Buffer const * buf, LyXLex & lex);
 	///
 	void write(Buffer const * buf, std::ostream & os) const;
 	///
@@ -47,8 +49,10 @@ public:
 	///
 	void edit(BufferView * bv, bool front = true);
 	///
+	void insetButtonRelease(BufferView * bv, int x, int y, int button);
+	///
 	int latex(Buffer const *, std::ostream &, bool fragile,
-	                  bool free_spc) const;
+		  bool free_spc) const;
 	///
 	int ascii(Buffer const *,
 	                  std::ostream &, int linelen = 0) const;
@@ -62,6 +66,8 @@ public:
 private:
 	///
 	void init();
+	///
+	string const get_new_label() const;
 };
 
 #endif

@@ -12,8 +12,14 @@
 
 #include "Lsstream.h"
 
+#if 0
 #include <time.h>
 #include <locale.h>
+#else
+#include <ctime>
+#include <clocale>
+#endif
+
 #include <utility> 
 #include <algorithm> 
 
@@ -53,9 +59,11 @@
 #include "insets/insetmarginal.h"
 #include "insets/insetminipage.h"
 #include "insets/insetfloat.h"
+#if 0
 #include "insets/insetlist.h"
-#include "insets/insettabular.h"
 #include "insets/insettheorem.h"
+#endif
+#include "insets/insettabular.h"
 #include "insets/insetcaption.h"
 #include "mathed/formulamacro.h"
 #include "mathed/math_cursor.h"
@@ -631,10 +639,10 @@ func_status::value_type LyXFunc::getStatus(int ac,
 	case LFUN_INSET_LIST:
 		code = Inset::LIST_CODE;
 		break;
-#endif
 	case LFUN_INSET_THEOREM:
 		code = Inset::THEOREM_CODE;
 		break;
+#endif
 	case LFUN_INSET_CAPTION:
 		code = Inset::CAPTION_CODE;
 		break;
@@ -797,9 +805,13 @@ string const LyXFunc::dispatch(int ac,
 		owner->view()->hideCursor();
 
 	// We cannot use this function here
-	if (getStatus(ac, do_not_use_this_arg) & func_status::Disabled)
+	if (getStatus(ac, do_not_use_this_arg) & func_status::Disabled) {
+		lyxerr << "LyXFunc::Dispatch: "
+		       << lyxaction.getActionName(ac)
+		       << " [" << ac << "] is disabled ad this location"
+		       << endl;
 		goto exit_with_message;
-
+	}
 
 	if (owner->view()->available() && owner->view()->theLockingInset()) {
 		UpdatableInset::RESULT result;

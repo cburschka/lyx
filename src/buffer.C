@@ -74,9 +74,11 @@
 #include "insets/insetmarginal.h"
 #include "insets/insetminipage.h"
 #include "insets/insetfloat.h"
-#include "insets/insetlist.h"
 #include "insets/insettabular.h"
+#if 0
 #include "insets/insettheorem.h"
+#include "insets/insetlist.h"
+#endif
 #include "insets/insetcaption.h"
 #include "insets/insetfloatlist.h"
 #include "support/textutils.h"
@@ -1469,10 +1471,12 @@ void Buffer::readInset(LyXLex & lex, Paragraph *& par,
 			lex.next();
 			string tmptok = lex.GetString();
 			inset = new InsetFloat(tmptok);
+#if 0
 		} else if (tmptok == "List") {
 			inset = new InsetList;
 		} else if (tmptok == "Theorem") {
 			inset = new InsetList;
+#endif
 		} else if (tmptok == "Caption") {
 			inset = new InsetCaption;
 		} else if (tmptok == "GRAPHICS") {

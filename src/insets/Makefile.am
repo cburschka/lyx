@@ -52,8 +52,6 @@ libinsets_la_SOURCES = \
 	insetlabel.h \
 	insetlatexaccent.C \
 	insetlatexaccent.h \
-	insetlist.C \
-	insetlist.h \
 	insetmarginal.h \
 	insetmarginal.C \
 	insetminipage.C \
@@ -66,17 +64,19 @@ libinsets_la_SOURCES = \
 	insetquotes.h \
 	insetref.C \
 	insetref.h \
-	insetsection.h \
-	insetsection.C \
 	insetspecialchar.C \
 	insetspecialchar.h \
 	insettabular.C \
 	insettabular.h \
 	insettext.C \
 	insettext.h \
-	insettheorem.C \
-	insettheorem.h \
 	insettoc.C \
 	insettoc.h \
 	inseturl.C \
 	inseturl.h
+#	insetlist.C \
+#	insetlist.h \
+#	insetsection.h \
+#	insetsection.C \
+#	insettheorem.C \
+#	insettheorem.h \

@@ -27,7 +27,11 @@ using std::ostream;
 
 void InsetERT::init()
 {
+#if 0
 	setLabel(_("666"), true);
+#else
+	setLabel(_("666"));
+#endif
 	labelfont = LyXFont(LyXFont::ALL_SANE);
 	labelfont.decSize();
 	labelfont.decSize();
@@ -69,6 +73,17 @@ InsetERT::InsetERT(string const & contents, bool collapsed)
 	// the init has to be after the initialization of the paragraph
 	// because of the label settings (draw_label for ert insets).
 	init();
+}
+
+
+void InsetERT::read(Buffer const * buf, LyXLex & lex)
+{
+	InsetCollapsable::read(buf, lex);
+	if (collapsed_) {
+		setLabel(get_new_label());
+	} else {
+		setLabel(_("666"));
+	}
 }
 
 
@@ -120,6 +135,21 @@ void InsetERT::edit(BufferView * bv, int x, int y, unsigned int button)
 void InsetERT::edit(BufferView * bv, bool)
 {
 	edit(bv, 0, 0, 0);
+}
+
+
+void InsetERT::insetButtonRelease(BufferView * bv,
+				  int x, int y, int button)
+{
+	if ((x >= 0)  && (x < button_length) &&
+	    (y >= button_top_y) &&  (y <= button_bottom_y)) {
+		if (collapsed_) {
+			setLabel(_("666"));
+		} else {
+			setLabel(get_new_label());
+		}
+	}
+	InsetCollapsable::insetButtonRelease(bv, x, y, button);
 }
 
 
@@ -180,7 +210,8 @@ InsetERT::localDispatch(BufferView * bv, kb_action action, string const & arg)
 	}
 	switch(action) {
 	case LFUN_BREAKPARAGRAPH:
-	case LFUN_BREAKPARAGRAPHKEEPLAYOUT: {
+	case LFUN_BREAKPARAGRAPHKEEPLAYOUT:
+	{
 #ifndef NO_LATEX
 		LyXFont font(LyXFont::ALL_SANE);
 		font.setLatex (LyXFont::ON);
@@ -191,9 +222,32 @@ InsetERT::localDispatch(BufferView * bv, kb_action action, string const & arg)
 #endif
 		inset.setFont(bv, font);
 	}
-		break;
+	break;
+	
 	default:
 		break;
 	}
 	return result;
+}
+
+
+string const InsetERT::get_new_label() const
+{
+	string la;
+	Paragraph::size_type const max_length = 15;
+
+	int const n = std::min(max_length, inset.paragraph()->size());
+	int i = 0;
+	int j = 0;
+	for(; i < n && j < inset.paragraph()->size(); ++j) {
+		if (inset.paragraph()->isInset(j))
+			continue;
+		la += inset.paragraph()->getChar(j);
+		++i;
+	}
+	if ((i > 0) && (j < inset.paragraph()->size()))
+		la += "...";
+	if (la.empty())
+		la = _("666");
+	return la;
 }

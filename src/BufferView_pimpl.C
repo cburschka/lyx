@@ -51,9 +51,11 @@
 #include "insets/insetmarginal.h"
 #include "insets/insetminipage.h"
 #include "insets/insetfloat.h"
-#include "insets/insetlist.h"
 #include "insets/insettabular.h"
+#if 0
 #include "insets/insettheorem.h"
+#include "insets/insetlist.h"
+#endif
 #include "insets/insetcaption.h"
 #include "insets/insetfloatlist.h"
 #include "insets/insetspecialchar.h"
@@ -2744,6 +2746,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 	}
 	break;
 
+#if 0
 	case LFUN_INSET_LIST:
 		insertAndEditInset(new InsetList);
 		break;
@@ -2751,7 +2754,8 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 	case LFUN_INSET_THEOREM:
 		insertAndEditInset(new InsetTheorem);
 		break;
-
+#endif
+		
 	case LFUN_INSET_CAPTION:
 	{
 		// Do we have a locking inset...

@@ -225,7 +225,7 @@ public:
 	///
 	void paragraph(Paragraph *);
 	///
-	string selectNextWord(BufferView *, float & value) const;
+	string const selectNextWord(BufferView *, float & value) const;
 	void selectSelectedWord(BufferView *);
 	void toggleSelection(BufferView *, bool kill_selection);
 	///

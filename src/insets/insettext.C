@@ -2028,7 +2028,7 @@ Inset * InsetText::getInsetFromID(int id_arg) const
 }
 
 
-string InsetText::selectNextWord(BufferView * bv, float & value) const
+string const InsetText::selectNextWord(BufferView * bv, float & value) const
 {
 	bool clear = false;
 	string str;

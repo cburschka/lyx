@@ -1,3 +1,22 @@
+2001-07-25  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* text2.C (toggleInset): call open/close
+
+2001-07-24  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* lyxfunc.C (dispatch): add debug for the disabled case
+
+	* font.C (buttonText): make similar to rectText
+
+	* buffer.C (readInset): comment out parsing of insetlist and
+	insttheorem 
+
+	* PainterBase.C (rectText): small correction
+
+	* BufferView_pimpl.C: comment out insettheorem and insetlist
+	* LyXAction.C: ditto
+	* commandtags.h: ditto
+
 2001-07-24  Juergen Vigna  <jug@sad.it>
 
 	* text.C (draw): honor the ignore_language.

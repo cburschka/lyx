@@ -40,7 +40,7 @@ Inset::Inset()
 
 
 Inset::Inset(Inset const & in, bool same_id)
-	: top_x(0), top_baseline(0), scx(0), owner_(0), name(in.name),
+	: top_x(0), top_baseline(0), scx(0), owner_(0), name_(in.name_),
 	  background_color_(in.background_color_)
 {
 	if (same_id)
@@ -311,18 +311,22 @@ int UpdatableInset::getMaxWidth(BufferView * bv, UpdatableInset const *) const
 	return bv->workWidth();
 }
 
+
 LyXCursor const & Inset::cursor(BufferView * bv) const
 {
 	return bv->text->cursor;
 }
 
-string UpdatableInset::selectNextWord(BufferView *bv, float & value) const
+
+string const UpdatableInset::selectNextWord(BufferView *bv,
+					    float & value) const
 {
 	// we have to unlock ourself in this function by default!
 	bv->unlockInset(const_cast<UpdatableInset *>(this));
 	value = 0;
 	return string();
 }
+
 
 bool UpdatableInset::searchForward(BufferView * bv, string const &,
                                    bool const &, bool const &)
@@ -331,6 +335,7 @@ bool UpdatableInset::searchForward(BufferView * bv, string const &,
 	bv->unlockInset(const_cast<UpdatableInset *>(this));
 	return false;
 }
+
 
 bool UpdatableInset::searchBackward(BufferView * bv, string const &,
                                     bool const &, bool const &)

@@ -42,7 +42,9 @@ InsetTheorem::InsetTheorem()
 	font.decSize();
 	font.setColor(LColor::collapsable);
 	setLabelFont(font);
+#if 0
 	setAutoCollapse(false);
+#endif
 	setInsetName("Theorem");
 }
 

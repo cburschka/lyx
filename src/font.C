@@ -224,9 +224,11 @@ void lyxfont::rectText(string const & str, LyXFont const & font,
 void lyxfont::buttonText(string const & str, LyXFont const & font,
 		int & width, int & ascent, int & descent)
 {
-	width = lyxfont::width(str, font) + 8;
-	ascent = lyxfont::maxAscent(font) + 3;
-	descent = lyxfont::maxDescent(font) + 3;
+	static int const d = 3;
+	
+	width = lyxfont::width(str, font) + d * 2 + 2;
+	ascent = lyxfont::maxAscent(font) + d;
+	descent = lyxfont::maxDescent(font) + d;
 }
 
 

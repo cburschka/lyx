@@ -212,7 +212,7 @@ public:
 	///
 	LyXCursor const & cursor(BufferView *) const;
 	///
-	string selectNextWord(BufferView *, float & value) const;
+	string const selectNextWord(BufferView *, float & value) const;
 	void selectSelectedWord(BufferView *);
 	void toggleSelection(BufferView *, bool kill_selection);
 	///
@@ -256,8 +256,8 @@ private:
 	bool moveNextCell(BufferView *, bool lock = false);
 	///
 	bool movePrevCell(BufferView *, bool lock = false);
-	/// Delete what?
-	bool Delete();
+	///
+	bool deletable();
 	///
 	int getCellXPos(int cell) const;
 	///
@@ -294,7 +294,8 @@ private:
 	///
 	bool isRightToLeft(BufferView *);
 	///
-	void getSelection(int & scol, int & ecol, int & srow, int & erow) const;
+	void getSelection(int & scol, int & ecol,
+			  int & srow, int & erow) const;
 	///
 	string selectNextWordInt(BufferView *, float & value) const;
 

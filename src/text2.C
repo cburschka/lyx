@@ -372,6 +372,7 @@ void LyXText::insertParagraph(BufferView * bview, Paragraph * par,
 	}
 }
 
+
 Inset * LyXText::getInset() const
 {
 	Inset * inset = 0;
@@ -384,6 +385,7 @@ Inset * LyXText::getInset() const
 	return inset;
 }
 
+
 void LyXText::toggleInset(BufferView * bview)
 {
 	Inset * inset = getInset();
@@ -394,7 +396,15 @@ void LyXText::toggleInset(BufferView * bview)
 	// do we want to keep this?? (JMarc)
 	if (inset->editable() != Inset::HIGHLY_EDITABLE)
 		setCursorParUndo(bview);
+
+	if (inset->isOpen()) {
+		inset->close(bview);
+	} else {
+		inset->open(bview);
+	}
+#if 0
 	inset->open(bview, !inset->isOpen());
+#endif
 }
 
 

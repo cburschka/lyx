@@ -153,7 +153,7 @@ PainterBase & PainterBase::rectText(int x, int baseline,
 	rectangle(x, baseline - ascent, width, ascent + descent, frame);
 	fillRectangle(x + 1, baseline - ascent + 1, width - 1, 
 		      ascent + descent - 1, back);
-	text(x + 2, baseline, str, font);
+	text(x + 3, baseline, str, font);
 	return *this;
 }
 

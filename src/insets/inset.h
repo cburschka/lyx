@@ -96,8 +96,10 @@ public:
 		TABULAR_CODE,
 		///
 		EXTERNAL_CODE,
+#if 0
 		///
 		THEOREM_CODE,
+#endif
 		///
 		CAPTION_CODE,
 		///
@@ -220,9 +222,9 @@ public:
 	///
 	virtual bool needFullRow() const { return false; }
 	///
-	void setInsetName(string const & s) { name = s; }
+	void setInsetName(string const & s) { name_ = s; }
 	///
-	string const getInsetName() const { return name; }
+	string const & getInsetName() const { return name_; }
 	///
 	void setOwner(Inset * inset) { owner_ = inset; }
 	///
@@ -276,8 +278,16 @@ public:
 	/// used to toggle insets
 	// is the inset open?
 	virtual bool isOpen() const { return false; }
-	// open or close the inset, depending on the bool
+#if 0
+	/// open or close the inset, depending on the bool
 	virtual void open(BufferView *, bool) {}
+#else
+	/// open the inset
+	virtual void open(BufferView *) {}
+#endif
+	/// close the inset
+	virtual void close(BufferView *) {}
+	
 protected:
 	///
 	mutable int top_x;
@@ -294,7 +304,7 @@ private:
 	///
 	Inset * owner_;
 	///
-	string name;
+	string name_;
 	///
 	LColor::color background_color_;
 };
@@ -437,7 +447,7 @@ public:
 	///
 	// needed for spellchecking text
 	///
-	virtual string selectNextWord(BufferView *, float & value) const;
+	virtual string const selectNextWord(BufferView *, float & value) const;
 	virtual void selectSelectedWord(BufferView *) { return; }
 	virtual void toggleSelection(BufferView *, bool /*kill_selection*/) {
 		return;

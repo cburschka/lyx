@@ -1,3 +1,17 @@
+2001-07-25  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* insetcollapsable.h: remove autocollapsable (no users), remove
+	draw_label, change_label_with_text and companion code. Remove args
+	from some methods.
+	* insetert.[Ch]: move here instead (only user)
+
+	* inset.h: rename private variable name to name_, make
+	selectNextWord return a const string. make getInsetName return a
+	string const &. Remove bool from open, add close.
+
+	* Makefile.am: don't compile insetlist, insetsection
+	and insettheorem
+
 2001-07-24  Juergen Vigna  <jug@sad.it>
 
 	* insetert.C (InsetERT): put init after the paragraph initialization,

@@ -33,8 +33,9 @@ void InsetNote::init()
 	font.decSize();
 	font.setColor(LColor::note);
 	setLabelFont(font);
-
+#if 0
 	setAutoCollapse(false);
+#endif
 	setBackgroundColor(LColor::note);
 
 	setLabel(_("note"));

@@ -68,7 +68,9 @@ InsetMinipage::InsetMinipage()
 	font.decSize();
 	font.setColor(LColor::collapsable);
 	setLabelFont(font);
+#if 0
 	setAutoCollapse(false);
+#endif
 	// just for experimentation :)
 	setBackgroundColor(LColor::red);
 	setInsetName("Minipage");
@@ -173,7 +175,7 @@ void InsetMinipage::read(Buffer const * buf, LyXLex & lex)
 int InsetMinipage::ascent(BufferView * bv, LyXFont const & font) const
 {
 	if (collapsed_)
-		return ascent_collapsed(bv->painter());
+		return ascent_collapsed();
 	else {
 		// Take placement into account.
 		int i = 0;
@@ -197,7 +199,7 @@ int InsetMinipage::ascent(BufferView * bv, LyXFont const & font) const
 int InsetMinipage::descent(BufferView * bv, LyXFont const & font) const
 {
 	if (collapsed_)
-		return descent_collapsed(bv->painter());
+		return descent_collapsed();
 	else {
 		// Take placement into account.
 		int i = 0;
