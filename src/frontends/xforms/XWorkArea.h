@@ -34,11 +34,6 @@ public:
 	///
 	virtual int workHeight() const { return work_area->h; }
 	///
-	virtual void redraw() const {
-		//fl_redraw_object(work_area);
-		//fl_redraw_object(scrollbar);
-	}
-	///
 	Window getWin() const { return work_area->form->window; }
 	///
 	virtual void setScrollbarParams(int height, int pos, int line_height);
@@ -66,18 +61,22 @@ public:
 	/// handles SelectionRequest X Event, to fill the clipboard
 	int event_cb(XEvent * xev);
 private:
-	///
-	void createPixmap(int, int);
+	/// generate the pixmap, and copy backing pixmap to it,
+	/// and send resize event if needed
+	void redraw(int, int);
 
+	/// GC used for copying to the screen
+	GC copy_gc;
+ 
 	///
 	FL_OBJECT * backgroundbox;
-	///
+	/// the workarea free object
 	FL_OBJECT * work_area;
-	///
+	/// the scrollbar objcet
 	FL_OBJECT * scrollbar;
 	/// The pixmap overlay on the workarea
 	Pixmap workareapixmap;
-	///
+	/// the xforms-specific painter
 	XPainter painter_;
 	/// if we call redraw with true needed for locking-insets
 	bool screen_cleared;

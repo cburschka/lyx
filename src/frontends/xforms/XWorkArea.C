@@ -61,7 +61,6 @@ void setXtermCursor(Window win)
 }
 
 
-// FIXME !
 mouse_button::state x_button_state(unsigned int button)
 {
 	mouse_button::state b = mouse_button::none;
@@ -88,7 +87,6 @@ mouse_button::state x_button_state(unsigned int button)
 }
 
 
-// FIXME
 mouse_button::state x_motion_state(unsigned int state)
 {
 	mouse_button::state b = mouse_button::none;
@@ -182,7 +180,7 @@ XWorkArea::XWorkArea(int x, int y, int w, int h)
 	int const bw = int(abs(fl_get_border_width()));
 
 	// Create the workarea pixmap
-	createPixmap(w - 15 - 2 * bw, h - 2 * bw);
+	// FIXME remove redraw(w - 15 - 2 * bw, h - 2 * bw);
 
 	if (lyxerr.debugging(Debug::WORKAREA))
 		lyxerr << "\tfree object: +"
@@ -210,11 +208,18 @@ XWorkArea::XWorkArea(int x, int y, int w, int h)
 	fl_register_raw_callback(fl_current_form, FL_ALL_EVENT, C_XWorkAreaEventCB);
 
 	fl_unfreeze_all_forms();
+
+	XGCValues val;
+
+	val.function = GXcopy;
+	copy_gc = XCreateGC(fl_get_display(), RootWindow(fl_get_display(), 0),
+		GCFunction, &val);
 }
 
 
 XWorkArea::~XWorkArea()
 {
+	XFreeGC(fl_get_display(), copy_gc);
 	if (workareapixmap)
 		XFreePixmap(fl_get_display(), workareapixmap);
 }
@@ -235,31 +240,37 @@ void destroy_object(FL_OBJECT * obj)
 } // namespace anon
 
 
-void XWorkArea::createPixmap(int width, int height)
+void XWorkArea::redraw(int width, int height)
 {
 	static int cur_width = -1;
 	static int cur_height = -1;
 
-	if (cur_width == width && cur_height == height && workareapixmap)
+	if (cur_width == width && cur_height == height && workareapixmap) {
+		XCopyArea(fl_get_display(),
+			getPixmap(), getWin(), copy_gc,
+			0, 0, width, height, xpos(), ypos());
 		return;
+	}
 
 	cur_width = width;
 	cur_height = height;
 
-	if (workareapixmap)
-		XFreePixmap(fl_get_display(), workareapixmap);
-
-	if (lyxerr.debugging(Debug::WORKAREA))
-		lyxerr << "Creating pixmap ("
+	if (lyxerr.debugging(Debug::WORKAREA)) {
+		lyxerr << "(Re)creating pixmap ("
 		       << width << 'x' << height << ")" << endl;
+	}
+
+	if (workareapixmap) {
+		XFreePixmap(fl_get_display(), workareapixmap);
+	}
 
 	workareapixmap = XCreatePixmap(fl_get_display(),
 				       RootWindow(fl_get_display(), 0),
 				       width,
 				       height,
 				       fl_get_visual_depth());
-	if (lyxerr.debugging(Debug::WORKAREA))
-		lyxerr << "\tpixmap=" << workareapixmap << endl;
+ 
+	workAreaResize();
 }
 
 
@@ -333,9 +344,7 @@ int XWorkArea::work_area_handler(FL_OBJECT * ob, int event,
 		    !area->work_area->form->visible)
 			return 1;
 		lyxerr[Debug::WORKAREA] << "Workarea event: DRAW" << endl;
-		area->createPixmap(area->workWidth(), area->workHeight());
-		area->workAreaResize();
-		area->redraw();
+		area->redraw(area->workWidth(), area->workHeight());
 		break;
 	case FL_PUSH:
 		if (!ev || ev->xbutton.button == 0) break;

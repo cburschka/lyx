@@ -1,3 +1,8 @@
+2002-07-11  John Levon  <moz@compsoc.man.ac.uk>
+
+	* XWorkArea.h:
+	* XWorkArea.C: do a copy area on redraw when no geometry change
+ 
 2002-07-11  Herbert Voss  <voss@perce.de>
  
  	* FormGraphics.C (input): test also the height for %-value, when

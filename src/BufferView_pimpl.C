@@ -929,8 +929,7 @@ void BufferView::Pimpl::workAreaResize()
 		}
 	}
 
-	// FIXME: GUII temporarily we always repaint for xforms' benefit 
-	if (1 || widthChange || heightChange) {
+	if (widthChange || heightChange) {
 		repaint();
 	}
 
