@@ -38,10 +38,6 @@ public:
 	MathArray const & cell() const;
 
 private:	
-	/// read access to top most item
-	MathXArray const & xcell() const;
-	/// write access to top most item
-	MathInset * nextInset() const;
 	/// own level down
 	void push(MathInset *);
 	/// own level up

@@ -39,24 +39,12 @@ MathInset * MathIterator::par()
 }
 
 
-MathXArray const & MathIterator::xcell() const
-{
-	return par()->xcell(position().idx_);
-}
-
-
 MathArray const & MathIterator::cell() const
 {
-	return par()->xcell(position().idx_).data_;
+	MathCursorPos const & top = position();
+	return top.par_->cell(top.idx_);
 }
 
-
-MathInset * MathIterator::nextInset() const
-{
-	if (position().pos_ == xcell().data_.size())
-		return 0;
-	return (xcell().begin() + position().pos_)->nucleus();
-}
 
 
 void MathIterator::push(MathInset * p)
@@ -88,24 +76,29 @@ MathCursorPos const & MathIterator::operator->() const
 
 void MathIterator::goEnd()
 {
-	position().idx_ = par()->nargs() - 1;
-	position().pos_ = xcell().data_.size();
+	MathCursorPos & top = position();
+	top.idx_ = top.par_->nargs() - 1;
+	top.pos_ = cell().size();
 }
 
 
 void MathIterator::operator++()
 {
+	MathCursorPos   & top = position();
+	MathArray const & ar  = top.par_->cell(top.idx_);
+
 	// move into the current inset if possible
 	// it is impossible for pos() == size()!
-	MathInset * n = nextInset();
+	MathInset * n = 0;
+	if (top.pos_ != ar.size())
+		n = (ar.begin() + top.pos_)->nucleus();
 	if (n && n->isActive()) {
 		push(n);
 		return;
 	}
 
 	// otherwise move on one cell position if possible
-	MathCursorPos & top = position();
-	if (top.pos_ < top.par_->cell(top.idx_).size()) {
+	if (top.pos_ < ar.size()) {
 		// pos() == size() is valid!
 		++top.pos_;
 		return;
@@ -121,8 +114,8 @@ void MathIterator::operator++()
 
 	// otherwise leave array, move on one position
 	// this might yield pos() == size(), but that's a ok.
-	// it certainly invalidates top
 	pop(); 
+	// it certainly invalidates top
 	++position().pos_;
 }
 
