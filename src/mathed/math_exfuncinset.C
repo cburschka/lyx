@@ -44,7 +44,10 @@ void MathExFuncInset::normalize(NormalStream & os) const
 
 void MathExFuncInset::maplize(MapleStream & os) const
 {
-	os << name_ << '(' << cell(0) << ')';
+	if (name_ == "det")
+		os << "linalg[det](" << cell(0) << ')';
+	else
+		os << name_ << '(' << cell(0) << ')';
 }
 
 
