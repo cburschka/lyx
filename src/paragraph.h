@@ -19,7 +19,6 @@
 #include "changes.h"
 #include "InsetList.h"
 #include "lyxlayout_ptr_fwd.h"
-#include "lyxfont.h" // Just for LyXFont::FONT_SIZE
 #include "RowList_fwd.h"
 
 #include "insets/inset.h" // Just for InsetOld::Code
@@ -36,6 +35,7 @@ class InsetBibitem;
 class Language;
 class LaTeXFeatures;
 class LatexRunParams;
+class LyXFont_size;
 class ParagraphParameters;
 class TexRow;
 class UpdatableInset;
@@ -243,10 +243,9 @@ public:
 	/// pos <= size() (there is a dummy font change at the end of each par)
 	void setFont(lyx::pos_type pos, LyXFont const & font);
 	/// Returns the height of the highest font in range
-	LyXFont::FONT_SIZE
-	highestFontInRange(lyx::pos_type startpos,
-			   lyx::pos_type endpos,
-			   LyXFont::FONT_SIZE const def_size) const;
+	LyXFont_size highestFontInRange(lyx::pos_type startpos,
+					lyx::pos_type endpos,
+					LyXFont_size def_size) const;
 	///
 	void insertChar(lyx::pos_type pos, value_type c);
 	///

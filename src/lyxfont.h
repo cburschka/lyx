@@ -357,6 +357,19 @@ private:
 };
 
 
+/** \c LyXFont_size is a wrapper for LyXFont::FONT_SIZE.
+ *  It can be forward-declared andpassed as a function argument without
+ *  having to expose lyxfont.h.
+ */
+class LyXFont_size {
+        LyXFont::FONT_SIZE val_;
+public:
+	LyXFont_size(LyXFont::FONT_SIZE val) : val_(val) {}
+        operator LyXFont::FONT_SIZE() const{ return val_; }
+};
+
+
+
 inline
 LyXFont::FONT_SHAPE LyXFont::shape() const
 {

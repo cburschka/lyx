@@ -406,9 +406,9 @@ LyXFont const Paragraph::getLayoutFont(BufferParams const & bparams,
 
 
 /// Returns the height of the highest font in range
-LyXFont::FONT_SIZE
+LyXFont_size
 Paragraph::highestFontInRange(pos_type startpos, pos_type endpos,
-			      LyXFont::FONT_SIZE const def_size) const
+			      LyXFont_size def_size) const
 {
 	if (pimpl_->fontlist.empty())
 		return def_size;

@@ -1,5 +1,14 @@
 2003-09-16  Angus Leeming  <leeming@lyx.org>
 
+	* lyxfont.h (LyXFont_size): a wrapper class for LyXFont::FONT_SIZE.
+
+	* paragraph.[Ch] (highestFontInRange): use LyXFont_size as function
+	arg/return type.
+
+	* paragraph.h: remove #include "lyxfont.h". Forward declare LyXFont_size.
+
+2003-09-16  Angus Leeming  <leeming@lyx.org>
+
 	* paragraph.C (IsInsetChar): new function in namespace anon, moved out of
 	support/textutils.h.
 	(isWord): move the contents of support/textutils.h's IsWordChar here.

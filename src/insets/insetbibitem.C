@@ -14,6 +14,7 @@
 #include "buffer.h"
 #include "BufferView.h"
 #include "funcrequest.h"
+#include "lyxfont.h"
 #include "lyxlex.h"
 #include "paragraph.h"
 
