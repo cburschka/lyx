@@ -1008,7 +1008,7 @@ def convert_frameless_box(lines, opt):
 	    if j == -1:
 		opt.warning("Malformed LyX file: Missing '\\end_inset'.")
 		break
-	    lines[j-1:j-1] += ['\\begin_inset ERT', 'status ' + params['collapsed'],
+            lines[j-1:j-1] = ['\\begin_inset ERT', 'status ' + params['collapsed'],
 	                       '', '\\layout Standard', '']
 	    j = j + 4
 	    if params['use_parbox'] == '1':
