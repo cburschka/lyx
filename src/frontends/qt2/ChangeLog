@@ -1,4 +1,9 @@
+2002-02-06  John Levon  <moz@compsoc.man.ac.uk>
+
+	* QToc.C: fix crash
+ 
 2002-02-06  Edwin Leuven  <leuven@fee.uva.nl>
+ 
 	* QGraphics.C: compilation fix
 	* QTexinfoDialog.C:
 	* QTexinfoDialog.h:
@@ -6,11 +11,11 @@
 
 2002-01-31  Edwin Leuven  <leuven@fee.uva.nl>
 
-	* qt2/QGraphics.C
-	* qt2/QGraphics.h
-	* qt2/QGraphicsDialog.C
-	* qt2/QGraphicsDialog.h
-	* qt2/lengthcombo.C
+	* qt2/QGraphics.C:
+	* qt2/QGraphics.h:
+	* qt2/QGraphicsDialog.C:
+	* qt2/QGraphicsDialog.h:
+	* qt2/lengthcombo.C:
 	* qt2/ui/QGraphicsDialog.ui: new dialog
 	* qt2/QAbout.C:
 	* qt2/ui/QAboutDialog.ui: reduce size

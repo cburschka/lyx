@@ -76,7 +76,8 @@ void QToc::update_contents()
  
 void QToc::updateToc(int newdepth)
 {
-	string const type = dialog_->typeCO->currentText().latin1();
+	char const * str = dialog_->typeCO->currentText().latin1();
+	string type (str ? str : "");
  
 	Buffer::SingleList const & contents = controller().getContents(type);
  
