@@ -1,6 +1,10 @@
 2000-01-25  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
-	* src/table.C (calculate_width_of_column): add using std::max
+	* INSTALL: update xforms home page URL.
+
+	* lib/configure.m4: fix a bug with unreadable layout files.
+
+	* src/table.C (calculate_width_of_column): add "using std::max"
 	directive. 
 
 2000-01-25  Lars Gullik Bjønnes  <larsbj@lyx.org>

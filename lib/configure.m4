@@ -285,7 +285,7 @@ EOF
   for file in ./layouts/*.layout ${srcdir}/layouts/*.layout ; do 
     case $file in
       */\*.layout) ;;
-      *) echo $file ;;
+      *) test -r "$file" && echo $file ;;
     esac
   done | sed -e 's%^.*layouts/\(.*\)\.layout$%\\TestDocClass{\1}%'\
              > chklayouts.tex
