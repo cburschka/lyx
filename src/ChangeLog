@@ -1,5 +1,10 @@
 2002-01-07  Angus Leeming  <a.leeming@ic.ac.uk>
 
+	* box.C: New file. Move the Box methods and functions out of box.h,
+	following Lars' suggestion.
+
+2002-01-07  Angus Leeming  <a.leeming@ic.ac.uk>
+
 	* box.h: #include "support/LOstream.h", needed for inlined function.
 
 	* lyxtextclass.C:

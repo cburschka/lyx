@@ -1,3 +1,4 @@
+// -*- C++ -*-
 /**
  * \file box.h
  * Copyright 2001 the LyX Team
@@ -9,7 +10,7 @@
 #ifndef BOX_H
 #define BOX_H
 
-#include "support/LOstream.h"
+#include <iosfwd>
 
 /**
  * A simple class representing rectangular regions.
@@ -25,27 +26,18 @@ struct Box {
 	int y1;
 	int y2;
 
-	Box(int x1_, int x2_,
-		int y1_, int y2_) :
-		x1(x1_), x2(x2_), y1(y1_), y2(y2_) {}
+	/// Initialise the member variables.
+	Box(int x1_, int x2_, int y1_, int y2_);
 
 	/**
 	 * Returns true if the given co-ordinates are within
 	 * the box. Check is exclusive (point on a border
 	 * returns false).
 	 */
-	bool contained(int x, int y) {
-		return (x1 < x && x2 > x &&
-			y1 < y && y2 > y);
-	}
-
-	 
+	bool contained(int x, int y);
 };
  
-inline std::ostream & operator<<(std::ostream & o, Box & b)
-{
-	return o << "x1,y1: " << b.x1 << "," << b.y1
-		<< " x2,y2: " << b.x2 << "," << b.y2 << std::endl;
-}
+
+std::ostream & operator<<(std::ostream &, Box &);
  
 #endif // BOX_H
