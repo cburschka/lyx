@@ -283,14 +283,14 @@ private:
 
 
 Parser::Parser(LyXLex & lexer)
-	: lineno_(lexer.getLineNo()), pos_(0)
+	: lineno_(lexer.getLineNo()), pos_(0), curr_num_(false)
 {
 	tokenize(lexer.getStream());
 }
 
 
 Parser::Parser(istream & is)
-	: lineno_(0), pos_(0)
+	: lineno_(0), pos_(0), curr_num_(false)
 {
 	tokenize(is);
 }
