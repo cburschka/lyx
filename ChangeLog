@@ -1,3 +1,8 @@
+2001-03-26  Baruch Even  <baruch@lyx.org>
+
+	* configure.in: Added libglade detection and libraries for the gnome
+	build. The gnome build will now depend on libglade libraries.
+
 2001-03-14  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* Merging changes from BRANCH_MVC back into HEAD.

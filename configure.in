@@ -177,11 +177,23 @@ case "$lyx_use_frontend" in
         AC_MSG_ERROR(Cannot find GTK--: Please install Version 1.2.1+))
     AM_PATH_GNOMEMM
 
+dnl ******************************
+dnl LibGlade checking
+dnl ******************************
+dnl Ensure gnome-config is available...
+	AC_PATH_PROG(GNOME_CONFIG, gnome-config, no)
+	AC_MSG_CHECKING(for Glade libraries)
+	if $GNOME_CONFIG --libs libglade > /dev/null 2>&1; then 
+    	AC_MSG_RESULT(found)
+	else
+	    AC_MSG_ERROR(Did not find libGlade installed)
+	fi
+		
     FRONTEND="gnome"
     FRONTEND_GUILIB="\${top_builddir}/src/frontends/gnome/libgnome.la"
     FRONTEND_LDFLAGS="\$(GNOMEMM_LIBDIR)"
     FRONTEND_INCLUDES="-I\${srcdir}/gnome \$(GNOMEMM_INCLUDEDIR) \$(GTKMM_CFLAGS)"
-    FRONTEND_LIBS="\$(GNOMEMM_LIBS) \$(GTKMM_LIBS)";;
+    FRONTEND_LIBS="\$(GNOMEMM_LIBS) \$(GTKMM_LIBS) `gnome-config --libs libglade`";;
   qt2)
     QT2_DO_IT_ALL
     FRONTEND="qt2"
