@@ -642,6 +642,49 @@ string const InsetGraphics::prepareFile(Buffer const *buf) const
 }
 
 
+namespace {
+
+string const latexify(string const str)
+{
+	ostringstream out;
+
+	string::const_iterator it  = str.begin();
+	string::const_iterator end = str.end();
+
+	for (; it != end; ++it) {
+		switch (*it) {
+			
+		case ('$'):
+		case ('&'):
+		case ('%'):
+		case ('#'):
+		case ('_'):
+		case ('{'):
+		case ('}'):
+			out << '\\' << *it;
+			break;
+
+		case ('~'):
+		case ('^'):
+			out << '\\' << *it << "{}";
+			break;
+
+		case ('\\'):
+			out << "$\backslash$";
+			break;
+
+		default:
+			out << *it;
+			break;
+		}
+	}
+	
+	return out.str().c_str();
+}
+ 
+} // namespace anon
+
+
 int InsetGraphics::latex(Buffer const *buf, ostream & os,
 			 bool /*fragile*/, bool/*fs*/) const
 {
@@ -655,7 +698,8 @@ int InsetGraphics::latex(Buffer const *buf, ostream & os,
 	// Ditto if the file is not there.
 	if (!IsFileReadable(MakeAbsPath(params().filename, buf->filePath()))) {
 		os  << "\\fbox{\\rule[-0.5in]{0pt}{1in}"
-		    << _("file not found") << "}\n";
+		    << latexify(MakeRelPath(params().filename, buf->filePath()))
+		    << _(" not found") << "}\n";
 		return 1; // One end-of-line marker added to the stream.
 	}
 	// These variables collect all the latex code that should be before and
