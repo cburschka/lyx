@@ -1,3 +1,8 @@
+2005-03-25  Stephan Witt  <stephan.witt@beusen.de>
+
+	* vc-backend.C: use QuoteName to protect file names wherever
+	necessary. 
+
 2005-03-27  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* buffer.[Ch]:

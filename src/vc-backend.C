@@ -31,6 +31,7 @@ using lyx::support::contains;
 using lyx::support::OnlyFilename;
 using lyx::support::OnlyPath;
 using lyx::support::Path;
+using lyx::support::QuoteName;
 using lyx::support::rtrim;
 using lyx::support::split;
 using lyx::support::Systemcall;
@@ -99,8 +100,7 @@ string const RCS::find_file(string const & file)
 void RCS::retrieve(string const & file)
 {
 	lyxerr[Debug::LYXVC] << "LyXVC::RCS: retrieve.\n\t" << file << endl;
-	VCS::doVCCommand("co -q -r \""
-			 + file + '"',
+	VCS::doVCCommand("co -q -r " + QuoteName(file),
 			 string());
 }
 
@@ -173,17 +173,16 @@ void RCS::registrer(string const & msg)
 {
 	string cmd = "ci -q -u -i -t-\"";
 	cmd += msg;
-	cmd += "\" \"";
-	cmd += OnlyFilename(owner_->fileName());
-	cmd += '"';
+	cmd += "\" ";
+	cmd += QuoteName(OnlyFilename(owner_->fileName()));
 	doVCCommand(cmd, owner_->filePath());
 }
 
 
 void RCS::checkIn(string const & msg)
 {
-	doVCCommand("ci -q -u -m\"" + msg + "\" \""
-		    + OnlyFilename(owner_->fileName()) + '"',
+	doVCCommand("ci -q -u -m\"" + msg + "\" "
+		    + QuoteName(OnlyFilename(owner_->fileName())),
 		    owner_->filePath());
 }
 
@@ -191,16 +190,15 @@ void RCS::checkIn(string const & msg)
 void RCS::checkOut()
 {
 	owner_->markClean();
-	doVCCommand("co -q -l \""
-		    + OnlyFilename(owner_->fileName()) + '"',
+	doVCCommand("co -q -l " + QuoteName(OnlyFilename(owner_->fileName())),
 		    owner_->filePath());
 }
 
 
 void RCS::revert()
 {
-	doVCCommand("co -f -u" + version() + " \""
-		    + OnlyFilename(owner_->fileName()) + '"',
+	doVCCommand("co -f -u" + version() + " "
+		    + QuoteName(OnlyFilename(owner_->fileName())),
 		    owner_->filePath());
 	// We ignore changes and just reload!
 	owner_->markClean();
@@ -210,17 +208,17 @@ void RCS::revert()
 void RCS::undoLast()
 {
 	lyxerr[Debug::LYXVC] << "LyXVC: undoLast" << endl;
-	doVCCommand("rcs -o" + version() + " \""
-		    + OnlyFilename(owner_->fileName()) + '"',
+	doVCCommand("rcs -o" + version() + " "
+		    + QuoteName(OnlyFilename(owner_->fileName())),
 		    owner_->filePath());
 }
 
 
 void RCS::getLog(string const & tmpf)
 {
-	doVCCommand("rlog \""
-		    + OnlyFilename(owner_->fileName()) + "\" > "
-		    + tmpf, owner_->filePath());
+	doVCCommand("rlog " + QuoteName(OnlyFilename(owner_->fileName())) 
+		    + " > " + tmpf, 
+		    owner_->filePath());
 }
 
 
@@ -304,16 +302,16 @@ void CVS::scanMaster()
 
 void CVS::registrer(string const & msg)
 {
-	doVCCommand("cvs -q add -m \"" + msg + "\" \""
-		    + OnlyFilename(owner_->fileName()) + '"',
+	doVCCommand("cvs -q add -m \"" + msg + "\" "
+		    + QuoteName(OnlyFilename(owner_->fileName())),
 		    owner_->filePath());
 }
 
 
 void CVS::checkIn(string const & msg)
 {
-	doVCCommand("cvs -q commit -m \"" + msg + "\" \""
-		    + OnlyFilename(owner_->fileName()) + '"',
+	doVCCommand("cvs -q commit -m \"" + msg + "\" "
+		    + QuoteName(OnlyFilename(owner_->fileName())),
 		    owner_->filePath());
 }
 
@@ -329,9 +327,9 @@ void CVS::revert()
 {
 	// Reverts to the version in CVS repository and
 	// gets the updated version from the repository.
-	string const fil = OnlyFilename(owner_->fileName());
+	string const fil = QuoteName(OnlyFilename(owner_->fileName()));
 
-	doVCCommand("rm -f \"" + fil + "\"; cvs update \"" + fil + '"',
+	doVCCommand("rm -f " + fil + "; cvs update " + fil,
 		    owner_->filePath());
 	owner_->markClean();
 }
@@ -348,7 +346,7 @@ void CVS::undoLast()
 
 void CVS::getLog(string const & tmpf)
 {
-	doVCCommand("cvs log \""
-		    + OnlyFilename(owner_->fileName()) + "\" > " + tmpf,
+	doVCCommand("cvs log " + QuoteName(OnlyFilename(owner_->fileName())) 
+		    + " > " + tmpf,
 		    owner_->filePath());
 }
