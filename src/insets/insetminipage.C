@@ -173,14 +173,17 @@ Inset * InsetMinipage::Clone(Buffer const &) const
 	result->inset->init(inset);
 	
 	result->collapsed = collapsed;
+	result->pos_ = pos_;
+	result->inner_pos_ = inner_pos_;
+	result->height_ = height_;
+	result->width_ = width_;
+	result->widthp_ = widthp_;
 	return result;
 }
 
 
 int InsetMinipage::ascent(BufferView * bv, LyXFont const & font) const
 {
-	lyxerr << "InsetMinipage::ascent" << endl;
-	
 	if (collapsed)
 		return ascent_collapsed(bv->painter(), font);
 	else {
@@ -356,6 +359,7 @@ void InsetMinipage::InsetButtonRelease(BufferView * bv, int x, int y,
     }
     InsetCollapsable::InsetButtonRelease(bv, x, y, button);
 }
+
 
 int InsetMinipage::getMaxWidth(Painter & pain, UpdatableInset const * inset)
     const

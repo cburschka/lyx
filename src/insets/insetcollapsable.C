@@ -132,10 +132,7 @@ int InsetCollapsable::width_collapsed(Painter & pain, LyXFont const &) const
 
 int InsetCollapsable::ascent(BufferView * bv, LyXFont const & font) const
 {
-    if (collapsed) 
-	return ascent_collapsed(bv->painter(), font);
-    else 
-	return inset->ascent(bv, font) + TEXT_TO_TOP_OFFSET;
+    return ascent_collapsed(bv->painter(), font);
 }
 
 
@@ -143,8 +140,9 @@ int InsetCollapsable::descent(BufferView * bv, LyXFont const & font) const
 {
     if (collapsed) 
 	return descent_collapsed(bv->painter(), font);
-    else 
-	return inset->descent(bv, font) + TEXT_TO_BOTTOM_OFFSET;
+
+    return descent_collapsed(bv->painter(), font) + inset->descent(bv, font) +
+	inset->ascent(bv, font) + TEXT_TO_BOTTOM_OFFSET;
 }
 
 
@@ -153,7 +151,8 @@ int InsetCollapsable::width(BufferView * bv, LyXFont const & font) const
     if (collapsed) 
 	return widthCollapsed;
 
-    return inset->width(bv, font) + widthCollapsed;
+    return (inset->width(bv, font) > widthCollapsed) ?
+	inset->width(bv, font) : widthCollapsed;
 }
 
 
@@ -173,8 +172,9 @@ void InsetCollapsable::draw(BufferView * bv, LyXFont const & f,
     Painter & pain = bv->painter();
 
     button_length = widthCollapsed;
-    button_top_y = -ascent_collapsed(pain, f);
-    button_bottom_y = descent_collapsed(pain, f);
+    button_top_y = -ascent(bv, f);
+    button_bottom_y = -ascent(bv, f) + ascent_collapsed(pain,f) +
+	descent_collapsed(pain, f);
     if (collapsed) {
 	draw_collapsed(pain, f, baseline, x);
 	x += TEXT_TO_INSET_OFFSET;
@@ -202,19 +202,20 @@ void InsetCollapsable::draw(BufferView * bv, LyXFont const & f,
     top_x = int(x);
     top_baseline = baseline;
 
-    draw_collapsed(pain, f,
-		   baseline - ascent(bv, f) + ascent_collapsed(pain, f),
-		   x);
+    float dummy = x;
+    int bl = baseline - ascent(bv, f) + ascent_collapsed(pain, f);
+
+    draw_collapsed(pain, f, bl, dummy);
     inset->draw(bv, f, 
-		baseline - ascent(bv, f) + ascent_collapsed(pain, f),
+		bl + descent_collapsed(pain, f) + inset->ascent(bv, f),
 		x, cleared);
     need_update = NONE;
 }
 
 
-void InsetCollapsable::Edit(BufferView * bv, int x, int y, unsigned int button)
+void InsetCollapsable::Edit(BufferView * bv, int xp, int yp, unsigned int button)
 {
-    UpdatableInset::Edit(bv, x, y, button);
+    UpdatableInset::Edit(bv, xp, yp, button);
 
     if (collapsed && autocollapse) {
 	collapsed = false;
@@ -225,7 +226,7 @@ void InsetCollapsable::Edit(BufferView * bv, int x, int y, unsigned int button)
     } else if (!collapsed) {
 	if (!bv->lockInset(this))
 	    return;
-	inset->Edit(bv, x - widthCollapsed, y, button);
+	inset->Edit(bv, xp, yp+(top_baseline - inset->y()), button);
     }
 }
 
@@ -250,10 +251,8 @@ void InsetCollapsable::InsetUnlock(BufferView * bv)
 
 void InsetCollapsable::InsetButtonPress(BufferView * bv,int x,int y,int button)
 {
-    if (!collapsed && (x >= button_length)) {
-	inset->InsetButtonPress(bv, x - widthCollapsed,
-				y + (top_baseline - inset->y()),
-				button);
+    if (!collapsed && (y > button_bottom_y)) {
+	inset->InsetButtonPress(bv, x, y+(top_baseline - inset->y()), button);
     }
 }
 
@@ -262,7 +261,7 @@ void InsetCollapsable::InsetButtonRelease(BufferView * bv,
 					  int x, int y, int button)
 {
     if ((x >= 0)  && (x < button_length) &&
-	(y >= button_top_y) &&  (y < button_bottom_y)) {
+	(y >= button_top_y) &&  (y <= button_bottom_y)) {
 	if (collapsed) {
 	    collapsed = false;
 	    inset->InsetButtonRelease(bv, 0, 0, button);
@@ -272,10 +271,8 @@ void InsetCollapsable::InsetButtonRelease(BufferView * bv,
 	    bv->unlockInset(this);
 	    bv->updateInset(this, false);
 	}
-    } else if (!collapsed && (x >= button_length) && (y >= button_top_y)) {
-	inset->InsetButtonRelease(bv, x - widthCollapsed,
-				  y + (top_baseline - inset->y()),
-				  button);
+    } else if (!collapsed && (y > button_top_y)) {
+	inset->InsetButtonRelease(bv, x, y+(top_baseline-inset->y()), button);
     }
 }
 
@@ -283,10 +280,8 @@ void InsetCollapsable::InsetButtonRelease(BufferView * bv,
 void InsetCollapsable::InsetMotionNotify(BufferView * bv,
 					 int x, int y, int state)
 {
-    if (x >= button_length) {
-	inset->InsetMotionNotify(bv, x-widthCollapsed,
-				 y + (top_baseline - inset->y()),
-				 state);
+    if (x > button_bottom_y) {
+	inset->InsetMotionNotify(bv, x, y+(top_baseline - inset->y()), state);
     }
 }
 
@@ -311,20 +306,12 @@ int InsetCollapsable::getMaxWidth(Painter & pain,
 
     if (w < 0) {
 	// What does a negative max width signify? (Lgb)
+	// Use the max width of the draw-area (Jug)
 	return w;
     }
     // should be at least 30 pixels !!!
     return max(30, w - widthCollapsed);
 }
-
-
-#if 0
-int InsetCollapsable::getMaxTextWidth(Painter & pain,
-				      UpdatableInset const * inset) const
-{
-    return getMaxWidth(pain, inset) - widthCollapsed;
-}
-#endif
 
 
 void InsetCollapsable::update(BufferView * bv, LyXFont const & font,

@@ -712,7 +712,7 @@ void InsetText::InsetButtonPress(BufferView * bv, int x, int y, int button)
 	    return;
 	}
     }
-    if (!inset) {
+    if (!inset && (button == 2)) {
 	bool paste_internally = false;
 	if ((button == 2) && TEXT(bv)->selection) {
 	    LocalDispatch(bv, LFUN_COPY, "");
@@ -1494,9 +1494,11 @@ bool InsetText::checkAndActivateInset(BufferView * bv, bool behind)
 bool InsetText::checkAndActivateInset(BufferView * bv, int x, int y,
 				      int button)
 {
-    x = x - drawTextXOffset;
-    y = y + insetAscent;
-    Inset * inset = bv->checkInsetHit(TEXT(bv), x, y, button);
+    int dummyx, dummyy;
+
+    dummyx = x = x - drawTextXOffset;
+    dummyy = y + insetAscent;
+    Inset * inset = bv->checkInsetHit(TEXT(bv), dummyx, dummyy, button);
 
     if (inset) {
 	if (x < 0)

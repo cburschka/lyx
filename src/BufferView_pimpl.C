@@ -921,6 +921,8 @@ Inset * BufferView::Pimpl::checkInsetHit(LyXText * text, int & x, int & y,
   
 	LyXCursor cursor;
 	text->SetCursorFromCoordinates(bv_, cursor, x, y_tmp);
+	text->SetCursor(bv_, cursor, cursor.par(),cursor.pos(),true);
+
 
 #ifndef NEW_INSETS
 	if (cursor.pos() < cursor.par()->Last()
@@ -943,7 +945,8 @@ Inset * BufferView::Pimpl::checkInsetHit(LyXText * text, int & x, int & y,
 
 		if (x > start_x && x < end_x
 		    && y_tmp > cursor.y() - tmpinset->ascent(bv_, font)
-		    && y_tmp < cursor.y() + tmpinset->descent(bv_, font)) {
+		    && y_tmp < cursor.y() + tmpinset->descent(bv_, font))
+		{
 			text->SetCursor(bv_, cursor.par(),cursor.pos(),true);
 			x = x - start_x;
 			// The origin of an inset is on the baseline

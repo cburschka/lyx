@@ -8,7 +8,7 @@
  * ======================================================
  *
  * \file FormMinipage.C
- * \author Juergen Vigna, jug@sad.it
+ * \author Jürgen Vigna, jug@sad.it
  */
 
 #include <config.h>

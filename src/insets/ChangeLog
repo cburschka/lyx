@@ -1,3 +1,21 @@
+2001-03-28  Juergen Vigna  <jug@sad.it>
+
+	* insettext.C (InsetButtonPress): only enter !inset if button == 2
+	(checkAndActivateInset): don't use the values returned from
+	call to bv->checkInsetHit.
+
+	* insetminipage.C (Clone): set special minipage values.
+
+	* insetcollapsable.C (draw): changed to draw the button in the
+	upper left corner outside the textinset.
+	(ascent): changed because of different drawing 
+	(descent): ditto
+	(width): ditto
+	(Edit): ditto
+	(InsetButtonPress): ditto
+	(InsetButtonRelease): ditto
+	(InsetMotionNotify): ditto
+
 2001-03-27  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* figinset.C (GetPSSizes): Fix for the case when filename doesn't
