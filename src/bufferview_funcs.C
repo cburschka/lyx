@@ -76,77 +76,77 @@ bool string2font(string const & data, LyXFont & font, bool & toggle)
 	LyXLex lex(0,0);
 	lex.setStream(is);
 
-	int Int = 0;
-	bool Bool = false;
-	string String;
-
 	int nset = 0;
 	while (lex.isOK()) {
-		lex.next();
-		string const token = lex.getString();
+		string token;
+		if (lex.next())
+			token = lex.getString();
 
-		if (token == "family" ||
-		    token == "series" ||
-		    token == "shape" ||
-		    token == "size" ||
-		    token == "emph" ||
-		    token == "underbar" ||
-		    token == "noun" ||
-		    token == "number" ||
-		    token == "color") {
-			lex.next();
-			Int = lex.getInteger();
+		if (token.empty() || !lex.next())
+			break;
+
+		if (token == "family") {
+			int const next = lex.getInteger();
+			LyXFont::FONT_FAMILY const family =
+				static_cast<LyXFont::FONT_FAMILY>(next);
+			font.setFamily(family);
+
+		} else if (token == "series") {
+			int const next = lex.getInteger();
+			LyXFont::FONT_SERIES const series =
+				static_cast<LyXFont::FONT_SERIES>(next);
+			font.setSeries(series);
+
+		} else if (token == "shape") {
+			int const next = lex.getInteger();
+			LyXFont::FONT_SHAPE const shape =
+				static_cast<LyXFont::FONT_SHAPE>(next);
+			font.setShape(shape);
+
+		} else if (token == "size") {
+			int const next = lex.getInteger();
+			LyXFont::FONT_SIZE const size =
+				static_cast<LyXFont::FONT_SIZE>(next);
+			font.setSize(size);
+
+		} else if (token == "emph" || token == "underbar" ||
+			   token == "noun" || token == "number") {
+
+			int const next = lex.getInteger();
+			LyXFont::FONT_MISC_STATE const misc =
+				static_cast<LyXFont::FONT_MISC_STATE>(next);
+
+			if (token == "emph")
+			    font.setEmph(misc);
+			else if (token == "underbar")
+				font.setUnderbar(misc);
+			else if (token == "noun")
+				font.setNoun(misc);
+			else if (token == "number")
+				font.setNumber(misc);
+
+		} else if (token == "color") {
+			int const next = lex.getInteger();
+			LColor::color const color =
+				static_cast<LColor::color>(next);
+			font.setColor(color);
+
 		} else if (token == "language") {
-			lex.next();
-			String = lex.getString();
+			string const next = lex.getString();
+			if (next == "ignore")
+				font.setLanguage(ignore_language);
+			else
+				font.setLanguage(languages.getLanguage(next));
+
 		} else if (token == "toggleall") {
-			lex.next();
-			Bool = lex.getBool();
+			toggle = lex.getBool();
+
 		} else {
 			// Unrecognised token
 			break;
 		}
 
-		if (!lex.isOK())
-			break;
 		++nset;
-
-		if (token == "family") {
-			font.setFamily(static_cast<LyXFont::FONT_FAMILY>(Int));
-
-		} else if (token == "series") {
-			font.setSeries(static_cast<LyXFont::FONT_SERIES>(Int));
-
-		} else if (token == "shape") {
-			font.setShape(static_cast<LyXFont::FONT_SHAPE>(Int));
-
-		} else if (token == "size") {
-			font.setSize(static_cast<LyXFont::FONT_SIZE>(Int));
-
-		} else if (token == "emph") {
-			font.setEmph(static_cast<LyXFont::FONT_MISC_STATE>(Int));
-
-		} else if (token == "underbar") {
-			font.setUnderbar(static_cast<LyXFont::FONT_MISC_STATE>(Int));
-
-		} else if (token == "noun") {
-			font.setNoun(static_cast<LyXFont::FONT_MISC_STATE>(Int));
-
-		} else if (token == "number") {
-			font.setNumber(static_cast<LyXFont::FONT_MISC_STATE>(Int));
-
-		} else if (token == "color") {
-			font.setColor(static_cast<LColor::color>(Int));
-
-		} else if (token == "language") {
-			if (String == "ignore")
-				font.setLanguage(ignore_language);
-			else
-				font.setLanguage(languages.getLanguage(String));
-
-		} else if (token == "toggleall") {
-			toggle = Bool;
-		}
 	}
 	return (nset > 0);
 }

@@ -1,3 +1,8 @@
+2003-04-01  Angus Leeming  <leeming@lyx.org>
+
+	* bufferview_funcs.C (string2font): rewrite so that it no longer uses
+	stuff like bool Bool.
+
 2003-04-01  Alfredo Braunstein  <abraunst@libero.it>
 
 	* text2.C (redoParagraphs): fix a bug (introduced by myself) and
