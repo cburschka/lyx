@@ -1,7 +1,12 @@
+2003-07-07  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* Menubar_pimpl.C (Pimpl): when creating a top-level menu, make
+	sure that it is initialized to some reasonable value, so that the
+	(ugly) Qt/Mac code can do its magic
+
 2003-06-01  John Levon  <levon@movementarian.org>
   	 
-	* QGraphicsDialog.C: use relative file browsing
-	(bug 1028)
+	* QGraphicsDialog.C: use relative file browsing (bug 1028)
 
 2003-04-29  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 

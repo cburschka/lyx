@@ -136,18 +136,24 @@ CHECK_WITH_PSPELL
 CHECK_WITH_CYGWIN
 
 ### Check for X libraries
-# The real thing.
 AC_PATH_XTRA
-LIBS="$X_PRE_LIBS $LIBS $X_LIBS -lX11 $X_EXTRA_LIBS"
-# Since solaris X headers use int as implicit return type and modern
-# gcc's do not like that, let's use -isystem instead of -I.
-# We should test for gcc version and see whether it supports -isystem,
-# but since at least gcc 2.6.x supports it and it is still too old for
-# us, it seems we are safe.
-if test -n "$GXX" ; then
-  X_CFLAGS=`echo ${X_CFLAGS} | sed -e 's/-I/-isystem /'`
-fi
-CPPFLAGS="$CPPFLAGS $X_CFLAGS"
+case $have_x in
+  yes) LIBS="$X_PRE_LIBS $LIBS $X_LIBS -lX11 $X_EXTRA_LIBS"
+       # Since solaris X headers use int as implicit return type and modern
+       # gcc's do not like that, let's use -isystem instead of -I.
+       # We should test for gcc version and see whether it supports -isystem,
+       # but since at least gcc 2.6.x supports it and it is still too old for
+       # us, it seems we are safe.
+       if test -n "$GXX" ; then
+         X_CFLAGS=`echo ${X_CFLAGS} | sed -e 's/-I/-isystem /'`
+       fi
+       CPPFLAGS="$CPPFLAGS $X_CFLAGS";;
+  no) LYX_ERROR(dnl
+[Cannot find X window libraries and/or headers. Check your installation.
+   If you use a Linux system, check that you have installed
+   the development tools.]);;
+  disable) ;;
+esac
 
 ### check which frontend we want to use
 
@@ -196,14 +202,6 @@ dnl	;;
   *)
     LYX_ERROR(Unknown frontend $lyx_use_frontend);;
 esac
-
-### Check for xforms and xpm (only if X has been found).
-if test "$have_x" = no ; then
-LYX_ERROR(dnl
-[Cannot find X window libraries and/or headers. Check your installation.
-   If you use a Linux system, check that you have installed
-   the development tools.])
-fi
 
 ### Setup GNU gettext
 dnl GNU gettext is written in C
