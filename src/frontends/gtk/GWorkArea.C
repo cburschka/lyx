@@ -344,7 +344,7 @@ void GWorkArea::setScrollbarParams(int height, int pos, int line_height)
 		adjustment->changed();
 		return;
 	}
-	adjustment->set_step_increment(line_height);
+	adjustment->set_step_increment(line_height * 3);
 	adjustment->set_page_increment(workAreaHeight - line_height);
 	// Allow the user half a screen of blank at the end
 	// to make scrollbar consistant with centering the cursor
