@@ -1,0 +1,29 @@
+#
+# Polish keyboard definition for LyX
+#
+# (C)by Tomasz £uczak, tlu@technodat.com.pl
+#
+# The keymap assumes that you have a non-Polish keyboard, Polish
+# letters are produced by prepending / to the corresponding
+# Latin letters.
+#
+\kmod / acute  aAcCeElLnNoOsSzZxXu
+\kxmod acute a "±"
+\kxmod acute A "¡"
+\kxmod acute c "æ"
+\kxmod acute C "Æ"
+\kxmod acute e "ê"
+\kxmod acute E "Ê"
+\kxmod acute l "³"
+\kxmod acute L "£"
+\kxmod acute n "ñ"
+\kxmod acute N "Ñ"
+\kxmod acute o "ó"
+\kxmod acute O "Ó"
+\kxmod acute s "¶"
+\kxmod acute S "¦"
+\kxmod acute z "¿"
+\kxmod acute Z "¯"
+\kxmod acute x "¼"
+\kxmod acute X "¬"
+\kxmod acute u "\\euro{}"	# wymaga pakietu eurosym
