@@ -25,6 +25,8 @@
 #include "gettext.h"
 #include "support/lstrings.h"
 
+#include "BoostFormat.h"
+
 using std::ostream;
 using std::endl;
 
@@ -86,10 +88,10 @@ void InsetCaption::draw(BufferView * bv, LyXFont const & f,
 
 	// Discover the number...
 	// ...
-	string const num = "#";
+	string const num("#");
 
 	// Generate the label
-	string const label = _(fl) + " " + num + ":";
+	string const label = boost::io::str(boost::format("%1$s %2$s:") % _(fl) % num);
 
 	Painter & pain = bv->painter();
 	int const w = font_metrics::width(label, f);

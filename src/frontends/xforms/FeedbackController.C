@@ -3,7 +3,7 @@
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
- * \author Angus Leeming 
+ * \author Angus Leeming
  *
  * Full author contact details are available in file CREDITS
  */
@@ -24,6 +24,9 @@
 #include "gettext.h"        // _()
 #include "xforms_helpers.h" // formatted
 #include "support/LAssert.h"
+
+#include "BoostFormat.h"
+
 #include FORMS_H_LOCATION
 
 FeedbackController::FeedbackController()
@@ -110,7 +113,7 @@ void FeedbackController::PrehandlerCB(FL_OBJECT * ob, int event, int key)
 			fl_get_winorigin(folder->window,
 					 &(folder->x), &(folder->y));
 		}
-		
+
 	}
 
 	if (message_widget_) {
@@ -162,14 +165,13 @@ void FeedbackController::postMessage(string const & message)
 {
 	lyx::Assert(message_widget_);
 
-	string str;
-	if (warning_posted_)
-		str = _("WARNING! ") + message;
-	else
-		str = message;
+	boost::format fmter = warning_posted_ ?
+		boost::format(_("WARNING! %1$s")) :
+		boost::format("%1$s");
 
 	int const width = message_widget_->w - 10;
-	str = formatted(str, width, FL_NORMAL_SIZE);
+	string const str = formatted(boost::io::str(fmter % message),
+				     width, FL_NORMAL_SIZE);
 
 	fl_set_object_label(message_widget_, str.c_str());
 	FL_COLOR const label_color = warning_posted_ ? FL_RED : FL_LCOL;

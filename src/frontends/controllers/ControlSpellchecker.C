@@ -22,14 +22,17 @@
 #include "language.h"
 #include "lyxrc.h"
 #include "lyxtext.h"
-#include "frontends/Alert.h"
-#include "support/lstrings.h"
 
 #include "ispell.h"
 #ifdef USE_PSPELL
 # include "pspell.h"
 #endif
 
+#include "frontends/Alert.h"
+
+#include "support/lstrings.h"
+
+#include "BoostFormat.h"
 
 ControlSpellchecker::ControlSpellchecker(LyXView & lv, Dialogs & d)
 	: ControlDialogBD(lv, d),
@@ -42,25 +45,25 @@ void ControlSpellchecker::setParams()
 {
 	if (speller_)
 		return;
-	
+
 	// create spell object
 	string tmp;
 #ifdef USE_PSPELL
 	if (lyxrc.use_pspell) {
 		tmp = (lyxrc.isp_use_alt_lang) ?
 			lyxrc.isp_alt_lang : buffer()->params.language->code();
-		
+
 		speller_ = new PSpell(buffer()->params, tmp);
 	} else {
 #endif
 		tmp = (lyxrc.isp_use_alt_lang) ?
 			lyxrc.isp_alt_lang : buffer()->params.language->lang();
-		
+
 		speller_ = new ISpell(buffer()->params, tmp);
 #ifdef USE_PSPELL
 	}
 #endif
-	
+
 	if (lyxrc.isp_use_alt_lang) {
 		Language const * lang = languages.getLanguage(tmp);
 		if (lang)
@@ -68,7 +71,7 @@ void ControlSpellchecker::setParams()
 	} else {
 		rtl_ = buffer()->params.language->RightToLeft();
 	}
-	
+
 	if (!speller_->error().empty()) {
 		emergency_exit_ = true;
 		Alert::alert("The spellchecker has failed", speller_->error());
@@ -189,15 +192,14 @@ void ControlSpellchecker::clearParams()
 
 	if (speller_->alive()) {
 		speller_->close();
-		message_ = tostr(count_);
-		if (count_ != 1) {
-			message_ += _(" words checked.");
-		} else {
-			message_ += _(" word checked.");
-		}
-		message_ = "\n" + message_;
-		message_ = _("Spellchecking completed! ") + message_;
 
+		boost::format fmter("");
+		if (count_ != 1) {
+			fmter = boost::format(_("Spellchecking completed!\n%1$d words checked."));
+		} else {
+			fmter = boost::format(_("Spellchecking completed!\n%1$d word checked."));
+		}
+		message_ = boost::io::str(fmter % count_);
 	} else {
 		message_ = speller_->error();
 		speller_->cleanUp();

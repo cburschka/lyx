@@ -14,25 +14,27 @@
 #pragma implementation
 #endif
 
-#include <cctype>
-
 #include "converter.h"
 #include "lyxrc.h"
 #include "buffer.h"
 #include "bufferview_funcs.h"
 #include "LaTeX.h"
-#include "frontends/LyXView.h"
 #include "lyx_cb.h" // ShowMessage()
 #include "gettext.h"
 #include "BufferView.h"
 #include "debug.h"
 
 #include "frontends/Alert.h"
+#include "frontends/LyXView.h"
 
 #include "support/filetools.h"
 #include "support/lyxfunctional.h"
 #include "support/path.h"
 #include "support/systemcall.h"
+
+#include "BoostFormat.h"
+
+#include <cctype>
 
 #ifndef CXX_GLOBAL_CSTD
 using std::isdigit;
@@ -176,8 +178,8 @@ bool Formats::view(Buffer const * buffer, string const & filename,
 		format = getFormat(format->parentFormat());
 	if (!format || format->viewer().empty()) {
 		Alert::alert(_("Cannot view file"),
-			   _("No information for viewing ")
-			   + prettyName(format_name));
+			     boost::io::str(boost::format(_("No information for viewing %1$s"))
+			   % prettyName(format_name)));
 			   return false;
 	}
 
@@ -682,7 +684,7 @@ bool Converters::convert(Buffer const * buffer,
 						   _("You should try to fix them."));
 				else
 					Alert::alert(_("Cannot convert file"),
-						   "Error while executing",
+						   _("Error while executing"),
 						   command.substr(0, 50));
 				return false;
 			}
@@ -705,7 +707,7 @@ bool Converters::convert(Buffer const * buffer,
 					  token_base, to_base);
 			if (!lyx::rename(from, to)) {
 				Alert::alert(_("Error while trying to move directory:"),
-					   from, ("to ") + to);
+					   from, boost::io::str(boost::format(_("to %1$s")) % to));
 				return false;
 			}
 		}
@@ -741,7 +743,7 @@ bool Converters::move(string const & from, string const & to, bool copy)
 				: lyx::rename(from2, to2);
 			if (!moved && no_errors) {
 				Alert::alert(_("Error while trying to move file:"),
-					   from2, _("to ") + to2);
+					   from2, boost::io::str(boost::format(_("to %1$s")) % to2));
 				no_errors = false;
 			}
 		}
@@ -827,7 +829,7 @@ bool Converters::scanLog(Buffer const * buffer, string const & command,
 		}
 		string head;
 		split(command, head, ' ');
-		Alert::alert(_("There were errors during running of ") + head,
+		Alert::alert(boost::io::str(boost::format(_("There were errors during running of %1$s")) % head),
 			   s, t);
 		return false;
 	} else if (result & LaTeX::NO_OUTPUT) {

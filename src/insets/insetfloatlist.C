@@ -25,6 +25,7 @@
 #include "gettext.h"
 #include "debug.h"
 
+#include "BoostFormat.h"
 
 using std::ostream;
 using std::endl;
@@ -124,8 +125,11 @@ int InsetFloatList::latex(Buffer const * buf, ostream & os, bool, bool) const
 			   << cit->second.listName() << "}\n";
 		}
 	} else {
-		os << "%%\\listof{" << getCmdName() << "}{"
-		   << _("List of ") << cit->second.name() << "}\n";
+		os << "%%\\listof{"
+		   << getCmdName()
+		   << "}{"
+		   << boost::format(_("List of %1$s")) % cit->second.name()
+		   << "}\n";
 	}
 	return 1;
 }

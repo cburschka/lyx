@@ -40,6 +40,8 @@
 
 #include "Lsstream.h"
 
+#include "BoostFormat.h"
+
 using std::ostream;
 
 extern MathCursor * mathcursor;
@@ -126,7 +128,7 @@ void InsetFormulaMacro::read(std::istream & is)
 
 string InsetFormulaMacro::prefix() const
 {
-	return string(" ") + _("Macro: ") + getInsetName() + ": ";
+	return boost::io::str(boost::format(_(" Macro: %1$s: ")) % getInsetName());
 }
 
 

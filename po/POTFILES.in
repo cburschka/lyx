@@ -20,6 +20,7 @@ src/frontends/controllers/ControlGraphics.C
 src/frontends/controllers/ControlInclude.C
 src/frontends/controllers/ControlParagraph.C
 src/frontends/controllers/ControlPreamble.C
+src/frontends/controllers/ControlPrefs.C
 src/frontends/controllers/ControlPrint.C
 src/frontends/controllers/ControlSearch.C
 src/frontends/controllers/ControlSpellchecker.C
@@ -49,6 +50,7 @@ src/frontends/qt2/QExternal.C
 src/frontends/qt2/QExternalDialog.C
 src/frontends/qt2/QFloat.C
 src/frontends/qt2/QGraphics.C
+src/frontends/qt2/QGraphicsDialog.C
 src/frontends/qt2/QInclude.C
 src/frontends/qt2/QIndex.C
 src/frontends/qt2/QLog.C
@@ -59,12 +61,15 @@ src/frontends/qt2/QMinipage.C
 src/frontends/qt2/QParagraph.C
 src/frontends/qt2/QPreamble.C
 src/frontends/qt2/QPreambleDialog.C
+src/frontends/qt2/QPrefs.C
+src/frontends/qt2/QPrefsDialog.C
 src/frontends/qt2/QPrint.C
 src/frontends/qt2/QRef.C
 src/frontends/qt2/QSearch.C
 src/frontends/qt2/QSendto.C
 src/frontends/qt2/QShowFile.C
 src/frontends/qt2/QSpellchecker.C
+src/frontends/qt2/QTabular.C
 src/frontends/qt2/QTabularCreate.C
 src/frontends/qt2/QTexinfo.C
 src/frontends/qt2/QThesaurus.C
@@ -154,6 +159,7 @@ src/kbsequence.C
 src/language.C
 src/LaTeX.C
 src/LColor.C
+src/lengthcommon.C
 src/LyXAction.C
 src/lyx_cb.C
 src/lyxfind.C

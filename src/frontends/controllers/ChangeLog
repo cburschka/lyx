@@ -1,21 +1,27 @@
+2002-11-21  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* biblio.C (getAbbreviatedAuthor): use boost::format
+
+	* ControlSpellchecker.C (clearParams): use boost::format
+
 2002-11-20  John Levon  <levon@movementarian.org>
 
 	* ControlMath.C: couple more manglings
- 
+
 2002-11-20  John Levon  <levon@movementarian.org>
 
 	* ControlMath.h:
 	* ControlMath.C: add find_xpm mangler
- 
+
 2002-11-17  John Levon  <levon@movementarian.org>
 
 	* helper_funcs.C and users: specify save/open in file dialog
- 
+
 2002-11-15  John Levon  <levon@movementarian.org>
 
 	* ControlPrefs.h:
 	* ControlPrefs.C: use setParams()
- 
+
 2002-11-15  John Levon  <levon@movementarian.org>
 
 	* ControlButtons.h: make OKButton() virtual for prefs
@@ -23,10 +29,10 @@
 	* ControlPrefs.h:
 	* ControlPrefs.C: updates for xforms port to MVC
 
-	* Makefile.am: 
+	* Makefile.am:
 	* ControlTabular.h:
 	* ControlTabular.C: add simple MVC port
- 
+
 2002-11-14  Juergen Spitzmueller <j.spitzmueller@gmx.de>
 
 	* ControlInclude.C: fix file format masks for qt's use
@@ -36,11 +42,11 @@
 	* Makefile.am:
 	* ControlPrefs.h:
 	* ControlPrefs.C: add skeleton controller
- 
+
 2002-11-12  John Levon  <levon@movementarian.org>
 
 	* biblio.C: fix warnings
- 
+
 2002-11-12  Angus Leeming  <leeming@lyx.org>
 
 	* ControlSpellchecker.C (check): fix crash

@@ -1,3 +1,10 @@
+2002-11-21  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* boost/format/format_implementation.hpp (clear_bind): use
+	io::out_of_range 
+
+	* boost/config/user.hpp (BOOST_FUNCTION_NO_DEPRECATED): define it.
+
 2002-11-20  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* Boost.Format: add files so that this boost lib can be used.

@@ -152,7 +152,7 @@ basic_format<Ch,Tr>& basic_format<Ch,Tr> ::clear_bind(int argN)
     if(argN<1 || argN > num_args_ || bound_.size()==0 || !bound_[argN-1] )
       {
 	if( exceptions() & out_of_range_bit )
-	  boost::throw_exception(out_of_range()); // arg not in range.
+	  boost::throw_exception(io::out_of_range()); // arg not in range.
 	else return *this;
       }
     bound_[argN-1]=false;

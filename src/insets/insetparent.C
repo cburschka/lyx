@@ -27,6 +27,8 @@
 #include "buffer.h"
 #include "gettext.h"
 
+#include "BoostFormat.h"
+
 using std::ostream;
 
 
@@ -40,12 +42,12 @@ InsetParent::InsetParent(InsetCommandParams const & p, Buffer const & bf, bool)
 
 string const InsetParent::getScreenLabel(Buffer const *) const
 {
-	return string(_("Parent:")) + getContents();
+	return boost::io::str(boost::format(_("Parent: %1$s")) % getContents());
 }
 
 
 void InsetParent::edit(BufferView * bv, int, int, mouse_button::state)
-{    
+{
 	bv->owner()->dispatch(FuncRequest(LFUN_CHILDOPEN, getContents()));
 }
 

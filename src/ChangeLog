@@ -1,3 +1,46 @@
+2002-11-21  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* lyxfunc.C (dispatch): use boost::format
+	(open): ditto
+	(doImport): ditto
+
+	* lyxfont.C (stateText): use boost::format
+
+	* lyx_main.C (LyX): use boost::format
+	(init): ditto
+	(queryUserLyXDir): ditto
+	(readRcFile): ditto
+	(parse_dbg): ditto
+	(typedef boost::function): use the recommened syntax.
+
+	* importer.C (Import): use boost::format
+
+	* debug.C (showLevel): use boost::format
+
+	* converter.C (view): use boost::format
+	(convert): ditto
+	(move): ditto
+	(scanLog): ditto
+
+	* bufferview_funcs.C (currentState): use boost::format
+
+	* bufferlist.C (emergencyWrite): use boost::format
+
+	* buffer.C (readLyXformat2): use boost::format
+	(parseSingleLyXformat2Token): ditto
+
+	* Makefile.am (lyx_SOURCES): add BoostFormat.h and boost-inst.C
+
+	* LaTeX.C (run): use boost::format
+
+	* Chktex.C (scanLogFile): use boost::format
+
+	* BufferView_pimpl.C (savePosition): use boost::format
+	(restorePosition): ditto
+	(MenuInsertLyXFile): ditto
+
+	* BoostFormat.h: help file for explicit instation.
+
 2002-11-21  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* tabular.C (latex): Support for block alignment in fixed width
@@ -8,7 +51,7 @@
 	* BufferView_pimpl.C:
 	* lyx_cb.C:
 	* lyxfunc.C: split filedialog into open/save
- 
+
 2002-11-08  Juergen Vigna  <jug@sad.it>
 
 	* undo_funcs.C (textHandleUndo): fixed problems with undo introduced
@@ -24,24 +67,24 @@
 	* paragraph.C:
 	* toc.h:
 	* toc.C: ParConstIterator, and use it (from Lars)
- 
+
 2002-11-07  Ben Stanley  <bds02@uow.edu.au>
 
 	* lyxtextclass.[Ch]: revise and add doxygen comments
 
 2002-11-07  John Levon  <levon@movementarian.org>
 
-	* text.C: fix progress value for spellchecker 
- 
+	* text.C: fix progress value for spellchecker
+
 	* toc.C: fix navigate menu for insetwrap inside minipage
 
 	* paragraph_funcs.C: added FIXME for suspect code
- 
+
 2002-11-07  John Levon  <levon@movementarian.org>
 
 	* BufferView_pimpl.C: fix redrawing of insets
 	  on buffer switch
- 
+
 2002-11-05  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* text2.C (updateCounters): fix bug 668

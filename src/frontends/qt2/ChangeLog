@@ -1,17 +1,21 @@
+2002-11-21  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* QVCLog.C (update_contents): use boost::format
+
 2002-11-21  John Levon  <levon@movementarian.org>
 
 	* qscreen.C: show content pane cursor even when
 	  focus is on dialog, command buffer etc.
- 
+
 2002-11-20  John Levon  <levon@movementarian.org>
 
 	* QMathDialog.C: don't pass empty commands to math
 	  on menu tear-off
- 
+
 2002-11-20  John Levon  <levon@movementarian.org>
 
 	* QLPopupMenu.C: only check .disabled() on Commands
- 
+
 2002-11-20  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* QLPopupMenu.C (getLabel): show labels for menu entries
@@ -21,27 +25,27 @@
 2002-11-20  John Levon  <levon@movementarian.org>
 
 	* ui/QDelimiterDialog.ui: geometry fix
- 
+
 2002-11-20  John Levon  <levon@movementarian.org>
 
 	* Toolbar_pimpl.C:
 	* QDelimiterDialog.C:
 	* QMathDialog.C: use find_xpm to mangle name
- 
+
 2002-11-20  John Levon  <levon@movementarian.org>
 
 	* QDelimiterDialog.h:
 	* QDelimiterDialog.C: fix delimiter connect()
- 
+
 2002-11-20  John Levon  <levon@movementarian.org>
 
 	* QDocument.C:
 	* QDocumentDialog.C: fix my sillies
- 
+
 2002-11-20  John Levon  <levon@movementarian.org>
 
 	* QLPainter.C: use realColor not color for the font
- 
+
 2002-11-18  John Levon  <levon@movementarian.org>
 
 	* Makefile.am:
@@ -49,10 +53,10 @@
 	* qfontexample.C:
 	* QPrefs.C:
 	* QPrefsDialog.h:
-	* QPrefsDialog.C: 
+	* QPrefsDialog.C:
 	* ui/QPrefScreenFontsModule.ui: show an example
 	  of the chosen font
- 
+
 2002-11-18  John Levon  <levon@movementarian.org>
 
 	* ui/Makefile.am:
@@ -61,7 +65,7 @@
 	* Makefile.am: define no translation
 
 	* QDocument.C: avoid QBloatList
- 
+
 2002-11-17  John Levon  <levon@movementarian.org>
 
 	* ui/QPrefScreenFontsModule.ui:
@@ -70,34 +74,34 @@
 	* QPrefs.C: use font families properly
 
 	* qfont_loader.C: and obey them
- 
+
 2002-11-17  John Levon  <levon@movementarian.org>
 
 	* QPrefsDialog.C: partial fonts fix
- 
+
 2002-11-17  John Levon  <levon@movementarian.org>
 
 	* QPrefsDialog.h:
 	* QPrefsDialog.C: implement browse slots. Also
 	  try to do something with fonts for Qt 3 (untested)
- 
+
 2002-11-17  John Levon  <levon@movementarian.org>
 
 	* QGraphics.C: some fixes from Herbert & me
- 
+
 2002-11-15  Juergen Spitzmueller  <j.spitzmueller@gmx.de>
- 
- 	* FileDialog.C: fix empty mask string
- 
+
+	* FileDialog.C: fix empty mask string
+
 2002-11-17  John Levon  <levon@movementarian.org>
 
 	* QLImage.C: implement monochrome, and fake grayscale
- 
+
 2002-11-17  John Levon  <levon@movementarian.org>
 
 	* qfont_loader.h:
 	* qfont_loader.C: fix totally broken update code
- 
+
 2002-11-17  John Levon  <levon@movementarian.org>
 
 	* Makefile.am:
@@ -107,22 +111,22 @@
 	* QPrefs.C:
 	* QPrefsDialog.h:
 	* QPrefsDialog.C: implement colors. We're done !
- 
+
 2002-11-17  John Levon  <levon@movementarian.org>
 
 	* FileDialog.C:  split into open/save so open
 	  no longer says "Save" !
- 
+
 2002-11-17  John Levon  <levon@movementarian.org>
 
 	* QPrefsDialog.h:
 	* QPrefsDialog.C: implement converters
- 
+
 2002-11-17  John Levon  <levon@movementarian.org>
 
 	* QPrefsDialog.C:
 	* QPrefs.C: implement formats
- 
+
 2002-11-17  John Levon  <levon@movementarian.org>
 
 	* fontloader.C: disable crashing code for now
@@ -130,43 +134,43 @@
 	* QPrefs.h:
 	* QPrefs.C:
 	* QPrefsDialog.C: implement most prefs load/save
- 
+
 2002-11-17  John Levon  <levon@movementarian.org>
 
 	* ui/QPref*:
 	* QPrefsDialog.C:
 	* QPrefs.C: more work
- 
+
 2002-11-15  Edwin Leuven  <leuven@fee.uva.nl>
 
 	* QTabular.C: compile fixes
-	
+
 2002-11-15  Edwin Leuven  <leuven@fee.uva.nl>
 
 	* ui/QTabularDialog.ui: some relabelling
-	
+
 2002-11-15  John Levon  <levon@movementarian.org>
 
 	* QPrefs.h:
 	* QPrefs.C: some update() work
- 
+
 2002-11-15  John Levon  <levon@movementarian.org>
 
 	* QPrefs.C: add #if 0 xforms code for working on
 
 	* QTabular.C: remove some handled #if 0 code
- 
+
 2002-11-15  John Levon  <levon@movementarian.org>
 
 	* qsetborder.h:
 	* qsetborder.C: fix ws
- 
+
 2002-11-15  John Levon  <levon@movementarian.org>
 
 	* QTabularDialog.h:
 	* QTabularDialog.C:
 	* QTabular.C: add some stuff
- 
+
 2002-11-15  John Levon  <levon@movementarian.org>
 
 	* Makefile.dialogs:
@@ -179,19 +183,19 @@
 	* QTabular.C:
 	* QTabularDialog.h:
 	* QTabularDialog.C: add skeleton
- 
+
 2002-11-14  John Levon  <levon@movementarian.org>
 
 	* ui/QTabularDialog.ui: label for cell pos
- 
+
 2002-11-13  Herbert Voss  <voss@perce.de>
-  
+
 	* QBibtex.C: (apply, isValid) small changes
-  
+
 2002-11-13  John Levon  <levon@movementarian.org>
 
 	* all pref files: make the stack work
-	 
+
 2002-11-13  John Levon  <levon@movementarian.org>
 
 	* Dialogs.C:
@@ -202,7 +206,7 @@
 	* QPrefs.C:
 	* QPrefsDialog.h:
 	* QPrefsDialog.C: add skeleton dialog
- 
+
 2002-11-13  John Levon  <levon@movementarian.org>
 
 	* ui/QBibtexDialog.ui: add some change_adaptors()
@@ -210,11 +214,11 @@
 	* QBibtex.C: fix duplicate entries in style CB, and
 	  alphasort it again, but still allow empty/user-defined
 	  style
- 
+
 2002-11-12  Herbert Voss  <voss@perce.de>
-  
- 	* QBibtex.[Ch]: fix bugs in the apply-part
-  
+
+	* QBibtex.[Ch]: fix bugs in the apply-part
+
 2002-11-13  John Levon  <levon@movementarian.org>
 
 	* QDocument.h:
@@ -223,7 +227,7 @@
 	* QDocumentDialog.C:
 	* ui/QDocumentDialog.ui:
 	* ui/BulletsModuleBase.ui: some UI fixes
- 
+
 2002-11-12  Edwin Leuven  <leuven@fee.uva.nl>
 
 	* QDocumentDialog.C: enable apply on change
@@ -243,7 +247,7 @@
 2002-11-12  Edwin Leuven  <leuven@fee.uva.nl>
 
 	* QBrowseBox: Juergen Spitzmueller's mouse focus fix
-	
+
 2002-11-08  Edwin Leuven  <leuven@fee.uva.nl>
 
 	* Dialogs2.C: compile fix
@@ -257,7 +261,7 @@
 	* ui/BulletsModuleBase.ui: idem
 	* ui/QTabularDialog.ui: new tabular dialog
 	* qsetborder.[Ch]: new small qt widget to set table borders
-	
+
 2002-11-08  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* lyx_gui.C:
@@ -267,34 +271,34 @@
 
 	* ui/QIncludeDialog.ui:
 	* QInclude.C: fix setting of combobox
- 
+
 2002-11-07  John Levon  <levon@movementarian.org>
 
 	* ui/QPref*: add initial prefs ui from Juergen S
- 
+
 2002-11-27  Juergen Spitzmueller  <j.spitzmueller@gmx.de>
 
 	* ui/QDocument.ui:
 	* QDocumentDialog.C:
-	* QDocument.[Ch]: 
+	* QDocument.[Ch]:
 	Implement "Save as default" and "Use class defaults"
-	
+
 	* QDocumentDialog.C: Fix dialog update on class change
 	implement lyxrc.auto_reset_options
 
 2002-11-07  John Levon  <levon@movementarian.org>
 
- 	* QGraphics.[Ch]:
- 	* QGraphicsDialog.[Ch]:
- 	* ui/QGraphicsDialog.ui: various fixes so it actually
+	* QGraphics.[Ch]:
+	* QGraphicsDialog.[Ch]:
+	* ui/QGraphicsDialog.ui: various fixes so it actually
 	works
- 
+
 2002-11-01  Herbert Voss  <voss@perce.de>
- 
- 	* QGraphics.[Ch]:
- 	* QGraphicsDialog.[Ch]:
- 	* ui/QGraphicsDialog.ui: get scale/rotate working
- 
+
+	* QGraphics.[Ch]:
+	* QGraphicsDialog.[Ch]:
+	* ui/QGraphicsDialog.ui: get scale/rotate working
+
 2002-11-04  Angus Leeming  <leeming@lyx.org>
 
 	* QGraphics.C (update_contents): controller.getUnits() ->

@@ -13,11 +13,13 @@
 
 #include <config.h>
 
-#include <iomanip>
-
 #include "debug.h"
 #include "gettext.h"
 #include "support/lstrings.h"
+
+#include "BoostFormat.h"
+
+#include <iomanip>
 
 using std::ostream;
 using std::setw;
@@ -107,8 +109,11 @@ void Debug::showLevel(ostream & o, Debug::type level)
 		if (errorTags[i].level != Debug::ANY
 		    && errorTags[i].level != Debug::NONE
 		    && errorTags[i].level & level)
-			o << _("Debugging `") << errorTags[i].name
-			  << "' (" << _(errorTags[i].desc) << ')' << endl;
+			o << boost::format(
+				_("Debugging `%1$s' (%2$s)"))
+				% errorTags[i].name
+				% _(errorTags[i].desc)
+			  << endl;
 }
 
 

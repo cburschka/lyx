@@ -29,6 +29,8 @@
 #include "support/path.h"
 #include "support/lstrings.h"
 
+#include "BoostFormat.h"
+
 #include <fstream>
 
 using std::ifstream;
@@ -81,7 +83,7 @@ int Chktex::scanLogFile(TeXErrors & terr)
 		token = split(token, warning, ':');
 
 		int lineno = lyx::atoi(line);
-		warno = _("ChkTeX warning id #") + warno;
+		warno = boost::io::str(boost::format(_("ChkTeX warning id # %1$d")) % warno);
 		terr.insertError(lineno, warno, warning);
 		++retval;
 	}

@@ -1,3 +1,7 @@
+2002-11-21  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* formulamacro.C (prefix): use boost::format
+
 2002-11-04  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* formulabase.C (lfunMouseRelease): Do not make the buffer dirty

@@ -39,6 +39,8 @@
 #include "support/lyxlib.h"  // for float_equal
 #include "support/filetools.h"  // for MakeAbsPath etc
 
+#include "BoostFormat.h"
+
 #include FORMS_H_LOCATION
 
 using std::endl;
@@ -89,7 +91,7 @@ void FormGraphics::build()
 	file_.reset(build_graphics_file(this));
 
 	// disable for read-only documents
-	bc().addReadOnly(file_->button_browse);   
+	bc().addReadOnly(file_->button_browse);
 	bc().addReadOnly(file_->check_aspectratio);
 	bc().addReadOnly(file_->check_draft);
 	bc().addReadOnly(file_->check_nounzip);
@@ -116,12 +118,12 @@ void FormGraphics::build()
 	// width default is scaling: use unsigned float filter
 	fl_set_input_filter(file_->input_width, fl_unsigned_float_filter);
 	fl_set_input_maxchars(file_->input_height, SIZE_MAXDIGITS);
-	
+
 	string const display_List =
 		_("Default|Monochrome|Grayscale|Color|Do not display");
 	fl_addto_choice(file_->choice_display, display_List.c_str());
-	
-	string const width_list = _("Scale%%|") + choice_Length_All;
+
+	string const width_list = boost::io::str(boost::format(_("Scale%%|%1$s")) % choice_Length_All);
 	fl_addto_choice(file_->choice_width, width_list.c_str());
 
 	fl_addto_choice(file_->choice_height, choice_Length_All.c_str());
@@ -145,8 +147,8 @@ void FormGraphics::build()
 	tooltips().init(file_->input_height, str);
 	str = _("Select unit for height.");
 	tooltips().init(file_->choice_height, str);
-	str = _("Do not distort the image. " 
-                "Keep image within \"width\" by \"height\" and obey "
+	str = _("Do not distort the image. "
+		"Keep image within \"width\" by \"height\" and obey "
 		"aspect ratio.");
 	tooltips().init(file_->check_aspectratio, str);
 	str = _("Pass a filename like \"file.eps.gz\" to the LaTeX output. "
@@ -239,7 +241,7 @@ void FormGraphics::build()
 
 	// set up the tooltips for the extra section
 	str = _("Insert the rotation angle in degrees. "
-	        "Positive value rotates anti-clockwise, "
+		"Positive value rotates anti-clockwise, "
 		"negative value clockwise.");
 	tooltips().init(extra_->input_rotate_angle, str);
 	str = _("Insert the point of origin for rotation.");
@@ -249,7 +251,7 @@ void FormGraphics::build()
 	str = _("Insert the optional subfigure caption.");
 	tooltips().init(extra_->input_subcaption, str);
 	str = _("Add any additional latex option, which is defined in the "
-                "graphicx-package and not mentioned in the gui's tabfolders.");
+		"graphicx-package and not mentioned in the gui's tabfolders.");
 	tooltips().init(extra_->input_special, str);
 
 	// add the different tabfolders
@@ -286,7 +288,7 @@ void FormGraphics::apply()
 	if (igp.lyxscale == 0) {
 		igp.lyxscale = 100;
 	}
-	
+
 	switch (fl_get_choice(file_->choice_display)) {
 	case 5:
 		igp.display = grfx::NoDisplay;
@@ -325,7 +327,7 @@ void FormGraphics::apply()
 
 	// the bb section
 	if (!controller().bbChanged) {
-		// don't write anything		
+		// don't write anything
 		igp.bb.erase();
 	} else {
 		// allow length + unit input only for x1 input field
@@ -375,7 +377,7 @@ void FormGraphics::apply()
 			bb += "0";
 		else
 			bb += getLengthFromWidgets(bbox_->input_bb_y1,
-						   bbox_->choice_bb_units); 
+						   bbox_->choice_bb_units);
 
 		igp.bb = bb;
 	}
@@ -383,7 +385,7 @@ void FormGraphics::apply()
 
 	// the extra section
 	igp.rotateAngle = strToDbl(getString(extra_->input_rotate_angle));
-	
+
 	// map angle into -360 (clock-wise) to +360 (counter clock-wise)
 	while (igp.rotateAngle <= -360.0) {
 		igp.rotateAngle += 360.0;
@@ -452,7 +454,7 @@ void FormGraphics::update() {
 	bool const disable_height = !lyx::float_equal(igp.scale, 0.0, 0.05);
 	setEnabled(file_->input_height, !disable_height);
 	setEnabled(file_->choice_height, !disable_height);
-	
+
 	fl_set_button(file_->check_aspectratio, igp.keepAspectRatio);
 	fl_set_button(file_->check_draft, igp.draft);
 	fl_set_button(file_->check_nounzip, igp.noUnzip);
@@ -579,7 +581,7 @@ ButtonPolicy::SMInput FormGraphics::input(FL_OBJECT * ob, long)
 		bool const scaling = fl_get_choice(file_->choice_width) == 1;
 		setEnabled(file_->input_height, !scaling);
 		setEnabled(file_->choice_height, !scaling);
-		
+
 		// allow only integer intput for scaling; float otherwise
 		if (scaling) {
 			fl_set_input_filter(file_->input_width, fl_unsigned_float_filter);

@@ -26,6 +26,8 @@
 #include "support/lstrings.h"
 #include "bufferparams.h" // stateText
 
+#include "BoostFormat.h"
+
 using std::ostream;
 using std::endl;
 
@@ -525,22 +527,24 @@ string const LyXFont::stateText(BufferParams * params) const
 	if (color() != LColor::inherit)
 		ost << lcolor.getGUIName(color()) << ", ";
 	if (emph() != INHERIT)
-		ost << _("Emphasis ")
-		    << _(GUIMiscNames[emph()]) << ", ";
+		ost << boost::format(_("Emphasis %1$s, "))
+			% _(GUIMiscNames[emph()]);
 	if (underbar() != INHERIT)
-		ost << _("Underline ")
-		    << _(GUIMiscNames[underbar()]) << ", ";
+		ost << boost::format(_("Underline %1$s, "))
+			% _(GUIMiscNames[underbar()]);
 	if (noun() != INHERIT)
-		ost << _("Noun ") << _(GUIMiscNames[noun()]) << ", ";
+		ost << boost::format(_("Noun %1$s, "))
+			% _(GUIMiscNames[noun()]);
 	if (bits == inherit)
 		ost << _("Default") << ", ";
 	if (!params || (language() != params->language))
-		ost << _("Language: ") << _(language()->display()) << ", ";
+		ost << boost::format(_("Language: %1$s, "))
+			% _(language()->display());
 	if (number() != OFF)
-		ost << _("  Number ") << _(GUIMiscNames[number()]);
+		ost << boost::format(_("  Number %1$s"))
+			% _(GUIMiscNames[number()]);
 
-	string buf(STRCONV(ost.str()));
-	buf = rtrim(buf, ", ");
+	string const buf = rtrim(STRCONV(ost.str()), ", ");
 	return buf;
 }
 

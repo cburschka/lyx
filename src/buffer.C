@@ -100,6 +100,7 @@
 
 #include <boost/bind.hpp>
 #include <boost/tuple/tuple.hpp>
+#include "BoostFormat.h"
 
 #include <fstream>
 #include <iomanip>
@@ -360,7 +361,7 @@ bool Buffer::readLyXformat2(LyXLex & lex, Paragraph * par)
 			s += _(" paragraphs");
 		}
 		Alert::alert(_("Textclass Loading Error!"), s,
-			   _("When reading " + fileName()));
+			   boost::io::str(boost::format(_("When reading %1$s")) % fileName()));
 	}
 
 	if (unknown_tokens > 0) {
@@ -372,7 +373,7 @@ bool Buffer::readLyXformat2(LyXLex & lex, Paragraph * par)
 			s += _(" unknown tokens");
 		}
 		Alert::alert(_("Textclass Loading Error!"), s,
-			   _("When reading " + fileName()));
+			   boost::io::str(boost::format(_("When reading %1$s")) % fileName()));
 	}
 
 	return the_end_read;
@@ -607,10 +608,9 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 		if (pp.first) {
 			params.textclass = pp.second;
 		} else {
-			Alert::alert(string(_("Textclass error")),
-				string(_("The document uses an unknown textclass \"")) +
-				lex.getString() + string("\"."),
-				string(_("LyX will not be able to produce output correctly.")));
+			Alert::alert(_("Textclass error"),
+				boost::io::str(boost::format(_("The document uses an unknown textclass \"%1$s\".")) % lex.getString()),
+				_("LyX will not be able to produce output correctly."));
 			params.textclass = 0;
 		}
 		if (!params.getLyXTextClass().load()) {
@@ -620,8 +620,8 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 			// I can substitute but I don't see how I can
 			// stop loading... ideas??  ARRae980418
 			Alert::alert(_("Textclass Loading Error!"),
-				   string(_("Can't load textclass ")) +
-				   params.getLyXTextClass().name(),
+				   boost::io::str(boost::format(_("Can't load textclass %1$s")) %
+				   params.getLyXTextClass().name()),
 				   _("-- substituting default"));
 			params.textclass = 0;
 		}
@@ -926,8 +926,8 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 		// This should be insurance for the future: (Asger)
 		++unknown_tokens;
 		lex.eatLine();
-		string const s = _("Unknown token: ") + token
-			+ " " + lex.text()  + "\n";
+		string const s = boost::io::str(boost::format(_("Unknown token: %1$s %2$s\n")) % token
+			% lex.text());
 		// we can do this here this way because we're actually reading
 		// the buffer and don't care about LyXText right now.
 		InsetError * new_inset = new InsetError(s);

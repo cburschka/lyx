@@ -79,9 +79,8 @@ TocList const getTocList(Buffer const * buf)
 	ParConstIterator pit = buf->par_iterator_begin();
 	ParConstIterator end = buf->par_iterator_end();
 	for (; pit != end; ++pit) {
- 
 		Paragraph const * par = *pit;
- 
+
 #ifdef WITH_WARNINGS
 #warning bogus type (Lgb)
 #endif

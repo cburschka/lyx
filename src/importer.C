@@ -14,8 +14,6 @@
 #pragma implementation
 #endif
 
-#include <algorithm>
-
 #include "importer.h"
 #include "converter.h"
 #include "frontends/LyXView.h"
@@ -26,6 +24,10 @@
 #include "frontends/Alert.h"
 #include "gettext.h"
 #include "BufferView.h"
+
+#include "BoostFormat.h"
+
+#include <algorithm>
 
 using std::vector;
 using std::find;
@@ -39,7 +41,7 @@ bool Importer::Import(LyXView * lv, string const & filename,
 {
 	string const displaypath = MakeDisplayPath(filename);
 	ostringstream s1;
-	s1 << _("Importing") << ' ' << displaypath << "...";
+	s1 << boost::format(_("Importing %1$s...")) % displaypath;
 	lv->message(STRCONV(s1.str()));
 
 	string const lyxfile = ChangeExtension(filename, ".lyx");
@@ -59,8 +61,8 @@ bool Importer::Import(LyXView * lv, string const & filename,
 		}
 		if (loader_format.empty()) {
 			Alert::alert(_("Cannot import file"),
-				   _("No information for importing from ")
-				   + formats.prettyName(format));
+				     boost::io::str(boost::format(_("No information for importing from %1$s"))
+				   % formats.prettyName(format)));
 			return false;
 		}
 	} else

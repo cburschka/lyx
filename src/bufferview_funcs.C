@@ -30,6 +30,8 @@
 
 #include "support/lstrings.h"
 
+#include "BoostFormat.h"
+
 void emph(BufferView * bv)
 {
 	LyXFont font(LyXFont::ALL_IGNORE);
@@ -157,12 +159,12 @@ string const currentState(BufferView * bv)
 		buffer->params.getLyXTextClass().defaultfont();
 	font.reduce(defaultfont);
 
-	state << _("Font:") << ' ' << font.stateText(&buffer->params);
+	state << boost::format(_("Font: %1$s")) % font.stateText(&buffer->params);
 
 	// The paragraph depth
 	int depth = text->getDepth();
 	if (depth > 0)
-		state << _(", Depth: ") << depth;
+		state << boost::format(_(", Depth: %1$d")) % depth;
 
 	// The paragraph spacing, but only if different from
 	// buffer spacing.

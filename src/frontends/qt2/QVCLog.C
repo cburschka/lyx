@@ -26,6 +26,8 @@
 #include <qtextview.h>
 #include <qpushbutton.h>
 
+#include "BoostFormat.h"
+
 typedef Qt2CB<ControlVCLog, Qt2DB<QVCLogDialog> > base_class;
 
 
@@ -45,7 +47,7 @@ void QVCLog::build_dialog()
 
 void QVCLog::update_contents()
 {
-	dialog_->setCaption(string(_("Version control log for ") + controller().getBufferFileName()).c_str());
+	dialog_->setCaption(boost::io::str(boost::format(_("Version control log for %1$s")) % controller().getBufferFileName()).c_str());
 
 	dialog_->vclogTV->setText("");
 

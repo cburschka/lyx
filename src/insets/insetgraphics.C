@@ -92,6 +92,7 @@ TODO
 #include <boost/weak_ptr.hpp>
 #include <boost/bind.hpp>
 #include <boost/signals/trackable.hpp>
+#include "BoostFormat.h"
 
 #include <algorithm> // For the std::max
 
@@ -666,8 +667,8 @@ string const InsetGraphics::prepareFile(Buffer const * buf) const
 		one.startscript(Systemcall::Wait, command);
 		if (!IsFileReadable(ChangeExtension(outfile_base, to)))
 			Alert::alert(_("Cannot convert Image (not existing file?)"),
-				_("No information for converting from ")
-				+ from + _(" to ") + to);
+				     boost::io::str(boost::format(_("No information for converting from %1$s to %2$s"))
+				% from % to));
 	}
 
 	return RemoveExtension(temp_file);
@@ -756,7 +757,9 @@ int InsetGraphics::ascii(Buffer const *, ostream & os, int) const
 	// 1. Convert file to ascii using gifscii
 	// 2. Read ascii output file and add it to the output stream.
 	// at least we send the filename
-	os << '<' << _("Graphic file:") << params().filename << ">\n";
+	os << '<'
+	   << boost::format(_("Graphic file: %1$s")) % params().filename
+	   << ">\n";
 	return 0;
 }
 

@@ -64,6 +64,7 @@
 
 #include <boost/bind.hpp>
 #include <boost/signals/connection.hpp>
+#include "BoostFormat.h"
 
 #include <unistd.h>
 #include <sys/wait.h>
@@ -297,7 +298,7 @@ int BufferView::Pimpl::resizeCurrentBuffer()
 			//	bv_->text->owner(bv_);
 			if (lyxerr.debugging())
 				textcache.show(lyxerr, "resizeCurrentBuffer");
- 
+
 			buffer_->resizeInsets(bv_);
 		} else {
 			bv_->text = new LyXText(bv_);
@@ -639,7 +640,7 @@ void BufferView::Pimpl::savePosition(unsigned int i)
 				      bv_->text->cursor.pos());
 	if (i > 0) {
 		ostringstream str;
-		str << _("Saved bookmark") << ' ' << i;
+		str << boost::format(_("Saved bookmark %1$d")) % i;
 		owner_->message(STRCONV(str.str()));
 	}
 }
@@ -671,7 +672,7 @@ void BufferView::Pimpl::restorePosition(unsigned int i)
 	update(bv_->text, BufferView::SELECT | BufferView::FITCUR);
 	if (i > 0) {
 		ostringstream str;
-		str << _("Moved to bookmark") << ' ' << i;
+		str << boost::format(_("Moved to bookmark %1$d")) % i;
 		owner_->message(STRCONV(str.str()));
 	}
 }
@@ -879,19 +880,16 @@ void BufferView::Pimpl::MenuInsertLyXFile(string const & filen)
 	string const disp_fn(MakeDisplayPath(filename));
 
 	ostringstream s1;
-	s1 << _("Inserting document") << ' '
-	   << disp_fn << " ...";
+	s1 << boost::format(_("Inserting document %1$s ...")) % disp_fn;
 	owner_->message(STRCONV(s1.str()));
 	bool const res = bv_->insertLyXFile(filename);
 	if (res) {
 		ostringstream str;
-		str << _("Document") << ' ' << disp_fn
-		    << ' ' << _("inserted.");
+		str << boost::format(_("Document %1$s inserted.")) % disp_fn;
 		owner_->message(STRCONV(str.str()));
 	} else {
 		ostringstream str;
-		str << _("Could not insert document") << ' '
-		    << disp_fn;
+		str << boost::format(_("Could not insert document %1$s")) % disp_fn;
 		owner_->message(STRCONV(str.str()));
 	}
 }

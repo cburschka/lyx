@@ -1,3 +1,14 @@
+2002-11-21  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* insetparent.C (getScreenLabel): use boost::format
+
+	* insetgraphics.C (prepareFile): use boost::format
+	(ascii): ditto
+
+	* insetfloatlist.C (latex): use boost::format
+
+	* insetcaption.C (draw): use boost::format
+
 2002-11-21  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* insettabular.C (tabularFeatures): Support for block alignment in fixed width

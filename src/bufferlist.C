@@ -42,6 +42,7 @@
 #include "support/LAssert.h"
 
 #include <boost/bind.hpp>
+#include "BoostFormat.h"
 
 #include <cassert>
 #include <algorithm>
@@ -308,8 +309,10 @@ void BufferList::emergencyWrite(Buffer * buf)
 
 	string const doc = buf->isUnnamed()
 		? OnlyFilename(buf->fileName()) : buf->fileName();
- 
-	lyxerr << _("LyX: Attempting to save document ") << doc << endl;
+
+	lyxerr << boost::format(_("LyX: Attempting to save document %1$s"))
+		% doc
+	       << endl;
 
 	// We try to save three places:
 

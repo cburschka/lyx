@@ -19,10 +19,11 @@
 #include "gettext.h"
 #include "debug.h"
 
+#include <boost/scoped_array.hpp>
+#include "BoostFormat.h"
+
 #include <cmath>
 
-#include <boost/scoped_array.hpp>
- 
 #ifndef CXX_GLOBAL_CSTD
 using std::pow;
 #endif
@@ -37,7 +38,7 @@ LyXColorHandler::LyXColorHandler()
 	drawable = XCreatePixmap(display,
 				 RootWindow(display, fl_screen),
 				 10, 10, fl_get_visual_depth());
-	
+
 	colormap = fl_state[fl_get_vclass()].colormap;
 	// Clear the GC cache
 	for (int i = 0; i <= LColor::ignore; ++i) {
@@ -85,24 +86,23 @@ GC LyXColorHandler::getGCForeground(LColor::color c)
 	// Look up the RGB values for the color, and an approximate
 	// color that we can hope to get on this display.
 	if (XLookupColor(display, colormap, s.c_str(), &xcol, &ccol) == 0) {
-		lyxerr << _("LyX: Unknown X11 color ") << s
-		       << _(" for ") << lcolor.getGUIName(c) << '\n'
-		       << _("     Using black instead, sorry!") << endl;
+		lyxerr << boost::format(_("LyX: Unknown X11 color %1$s for %2$s\n"
+					  "     Using black instead, sorry!"))
+			% s % lcolor.getGUIName(c) << endl;
 		unsigned long bla = BlackPixel(display,
 					       DefaultScreen(display));
 		val.foreground = bla;
 	// Try the exact RGB values first, then the approximate.
 	} else if (XAllocColor(display, colormap, &xcol) != 0) {
 		if (lyxerr.debugging(Debug::GUI)) {
-			lyxerr << _("LyX: X11 color ") << s
-			       << _(" allocated for ")
-			       << lcolor.getGUIName(c) << endl;
+			lyxerr << boost::format(_("LyX: X11 color %1$s allocated for %2$s"))
+				% s % lcolor.getGUIName(c)
+			       << endl;
 		}
 		val.foreground = xcol.pixel;
 	} else if (XAllocColor(display, colormap, &ccol)) {
-		lyxerr << _("LyX: Using approximated X11 color ") << s
-		       << _(" allocated for ")
-		       << lcolor.getGUIName(c) << endl;
+		lyxerr << boost::format(_("LyX: Using approximated X11 color %1$s allocated for %2$s"))
+			% s % lcolor.getGUIName(c) << endl;
 		val.foreground = xcol.pixel;
 	} else {
 		// Here we are traversing the current colormap to find
@@ -141,24 +141,28 @@ GC LyXColorHandler::getGCForeground(LColor::color c)
 				closest_pixel = t;
 			}
 		}
-		lyxerr << _("LyX: Couldn't allocate '") << s
-		       << _("' for ") << lcolor.getGUIName(c)
-		       << _(" with (r,g,b)=(")
-		       << xcol.red << "," << xcol.green << ","
-		       << xcol.blue << ").\n"
-		       << _("     Using closest allocated "
-			    "color with (r,g,b)=(")
-		       << cmap[closest_pixel].red << ","
-		       << cmap[closest_pixel].green << ","
-		       << cmap[closest_pixel].blue << _(") instead.\n")
-		       << _("Pixel [") << closest_pixel << _("] is used.")
+
+		lyxerr << boost::format(
+			_("LyX: Couldn't allocate '%1$s' for %2$s"
+			  " with (r,g,b)=(%3$d,%4$d,%5$d).\n"
+			  "     Using closest allocated color"
+			  " with (r,g,b)=(%6$d,%7$d,%8$d) instead.\n"
+			  "Pixel [%9$d] is used."))
+			% s
+			% lcolor.getGUIName(c)
+			% xcol.red % xcol.green % xcol.blue
+			% cmap[closest_pixel].red
+			% cmap[closest_pixel].green
+			% cmap[closest_pixel].blue
+			% closest_pixel
 		       << endl;
+
 		val.foreground = cmap[closest_pixel].pixel;
 	}
 
 	val.function = GXcopy;
 	return colorGCcache[c] = XCreateGC(display, drawable,
-				    GCForeground | GCFunction, &val);
+					   GCForeground | GCFunction, &val);
 }
 
 
@@ -169,7 +173,7 @@ GC LyXColorHandler::getGCLinepars(Painter::line_style ls,
 	//if (lyxerr.debugging()) {
 	//	lyxerr << "Painter drawable: " << drawable() << endl;
 	//}
-	
+
 	int index = lw + (ls << 1) + (c << 6);
 
 	LineGCCache::iterator it = lineGCcache.find(index);
@@ -178,7 +182,7 @@ GC LyXColorHandler::getGCLinepars(Painter::line_style ls,
 
 	XGCValues val;
 	XGetGCValues(display, getGCForeground(c), GCForeground, &val);
-	
+
 	switch (lw) {
 	case Painter::line_thin:
 		val.line_width = 0;
@@ -187,7 +191,7 @@ GC LyXColorHandler::getGCLinepars(Painter::line_style ls,
 		val.line_width = 2;
 		break;
 	}
-	
+
 	switch (ls) {
 	case Painter::line_solid:
 		val.line_style = LineSolid;
@@ -234,8 +238,8 @@ void LyXColorHandler::updateColor (LColor::color c)
 					      Painter::line_width(lw), c);
 			}
 		}
-
 }
+
 
 //
 boost::scoped_ptr<LyXColorHandler> lyxColorHandler;

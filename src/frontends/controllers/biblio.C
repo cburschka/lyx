@@ -23,6 +23,7 @@
 #include "support/LAssert.h"
 
 #include <boost/regex.hpp>
+#include "BoostFormat.h"
 
 #include <algorithm>
 
@@ -94,13 +95,15 @@ string const getAbbreviatedAuthor(InfoMap const & map, string const & key)
 	if (authors.empty())
 		return author;
 
-	author = familyName(authors[0]);
+	boost::format fmter("");
 	if (authors.size() == 2)
-		author += _(" and ") + familyName(authors[1]);
+		fmter = boost::format(_("%1$s and %2$s"))
+			% familyName(authors[0]) % familyName(authors[1]);
 	else if (authors.size() > 2)
-		author += _(" et al.");
-
-	return author;
+		fmter = boost::format(_("%1$s et al.")) % familyName(authors[0]);
+	else
+		fmter = boost::format("%1$s") % familyName(authors[0]);
+	return boost::io::str(fmter);
 }
 
 
@@ -244,16 +247,16 @@ namespace {
 string const escape_special_chars(string const & expr)
 {
 	// Search for all chars '.|*?+(){}[^$]\'
-	// Note that '[', ']' and '\' must be escaped.
+	// Note that '[' and '\' must be escaped.
 	// This is a limitation of boost::regex, but all other chars in BREs
 	// are assumed literal.
-        boost::RegEx reg("[.|*?+(){}^$\\[\\]\\\\]");
+	boost::RegEx reg("[].|*?+(){}^$\\[\\\\]");
 
 	// $& is a perl-like expression that expands to all of the current match
 	// The '$' must be prefixed with the escape character '\' for
 	// boost to treat it as a literal.
 	// Thus, to prefix a matched expression with '\', we use:
-        string const fmt("\\\\$&");
+	string const fmt("\\\\$&");
 
 	return reg.Merge(expr, fmt);
 }
