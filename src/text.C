@@ -3838,7 +3838,7 @@ Row * LyXText::getRowNearY(int & y) const
 	
 	y = tmpy;   // return the real y
 
-	lyxerr << "returned y = " << y << endl;
+	//lyxerr << "returned y = " << y << endl;
 	
 	return tmprow;
 #else
