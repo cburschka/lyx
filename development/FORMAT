@@ -1,6 +1,15 @@
 LyX file-format changes
 -----------------------
 
+2004-10-10  José Matos  <jamatos@lyx.org>
+
+	* format up to 237.
+	* In the header, the following statments use now booleans values,
+	instead of 0, 1:
+		- \use_geometry
+		- \use_bibtopic
+		- \tracking_changes
+
 2004-08-15  José Matos  <jamatos@lyx.org>
 
 	* format incremented to 236.
