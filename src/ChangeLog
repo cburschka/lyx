@@ -8,6 +8,9 @@
 
 	* paragraph_funcs.C (moveItem): ... here.
 
+	* text.C:
+	  lyxtext.h (LyXText::workWidth(InsetOld*)) remove. unused.
+
 2003-07-30  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* LColor.[Ch]: Add comment and greyedout logical colors.

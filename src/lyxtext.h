@@ -398,8 +398,6 @@ public:
 	void checkParagraph(ParagraphList::iterator pit, lyx::pos_type pos);
 	///
 	int workWidth() const;
-	/// returns width of row containing inset
-	int workWidth(InsetOld const * inset) const;
 
 	///
 	void computeBidiTables(Buffer const *, RowList::iterator row) const;

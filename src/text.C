@@ -148,50 +148,6 @@ int LyXText::workWidth() const
 }
 
 
-int LyXText::workWidth(InsetOld const * inset) const
-{
-	ParagraphList::iterator par = ownerParagraphs().begin();
-	ParagraphList::iterator end = ownerParagraphs().end();
-	for ( ; par != end; ++par)
-		if (&*par == inset->parOwner())
-			break;
-
-	if (par == ownerParagraphs().end()) {
-		lyxerr << "LyXText::workWidth: unexpected\n";
-		return -1;
-	}
-
-	pos_type pos = par->getPositionOfInset(inset);
-	Assert(pos != -1);
-
-	LyXLayout_ptr const & layout = par->layout();
-
-	if (layout->margintype != MARGIN_RIGHT_ADDRESS_BOX) {
-		// Optimization here: in most cases, the real row is
-		// not needed, but only the par/pos values. So we just
-		// construct a dummy row for leftMargin. (JMarc)
-		return workWidth() - leftMargin(Row(par, pos));
-	}
-
-	RowList::iterator row = getRow(par, pos);
-	RowList::iterator frow = row;
-	RowList::iterator beg = rowlist_.begin();
-
-	while (frow != beg && frow->par() == boost::prior(frow)->par())
-		--frow;
-
-	// FIXME: I don't understand this code - jbl
-
-	unsigned int maxw = 0;
-	while (!isParEnd(*this, frow)) {
-		if (frow != row && maxw < frow->width())
-			maxw = frow->width();
-		++frow;
-	}
-	return maxw ? maxw : workWidth();
-}
-
-
 int LyXText::getRealCursorX() const
 {
 	int x = cursor.x();
