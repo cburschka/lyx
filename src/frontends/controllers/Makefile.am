@@ -7,7 +7,6 @@ INCLUDES = -I${top_srcdir}/src/ \
 	-I${top_srcdir}/src/frontends/ \
 	${SIGC_CFLAGS} $(BOOST_INCLUDES)
 LIBS =
-SUBDIRS = 
 ETAGS_ARGS = --lang=c++
 libcontrollers_la_SOURCES=\
 	biblio.C \
@@ -81,17 +80,3 @@ libcontrollers_la_SOURCES=\
 	ViewBase.h \
 	helper_funcs.C \
 	helper_funcs.h
-
-# just copied from old lyx repository
-dist-hook:
-	for subdir in $(LYXDATADIRS) ; do \
-	test -d $(distdir)/$$subdir \
-	|| mkdir $(distdir)/$$subdir \
-	|| exit 1; \
-	chmod 777 $(distdir)/$$subdir; \
-	list=`(cd $(srcdir)/$$subdir && ls -1 | grep -v CVS)`; \
-	echo $$list ; \
-	for fil in $$list ; do \
-	cp -p $(srcdir)/$$subdir/$$fil $(distdir)/$$subdir ; \
-	done ; \
-	done
