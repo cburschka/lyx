@@ -1546,10 +1546,10 @@ InsetText::localDispatch(BufferView * bv,
 }
 
 
-int InsetText::latex(Buffer const * buf, ostream & os, bool, bool) const
+int InsetText::latex(Buffer const * buf, ostream & os, bool moving_arg, bool) const
 {
 	TexRow texrow;
-	buf->latexParagraphs(os, par, 0, texrow);
+	buf->latexParagraphs(os, par, 0, texrow, moving_arg);
 	return texrow.rows();
 }
 

@@ -1,3 +1,12 @@
+2002-05-11  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* insettext.C (latex): Honor the moving_arg argument.
+
+2002-04-22  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* insetfoot.C (latex): if a footnote is in a title layout, then it
+	is a \thanks. And then, its contents is a moving argument.
+
 2002-05-14  Juergen Vigna  <jug@sad.it>
 
 	* insetcollapsable.C (InsetCollapsable): forgot to initialize

@@ -1,3 +1,7 @@
+2002-05-11  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* buffer.C (latexParagraphs): Add new argument (moving_arg).
+
 2002-05-14  Juergen Vigna  <jug@sad.it>
 
 	* text.C (breakParagraph): fixed function to honor the keepempty

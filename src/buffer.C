@@ -2644,7 +2644,8 @@ void Buffer::makeLaTeXFile(string const & fname,
 // LaTeX all paragraphs from par to endpar, if endpar == 0 then to the end
 //
 void Buffer::latexParagraphs(ostream & ofs, Paragraph * par,
-			     Paragraph * endpar, TexRow & texrow) const
+			     Paragraph * endpar, TexRow & texrow,
+			     bool moving_arg) const
 {
 	bool was_title = false;
 	bool already_title = false;
@@ -2679,10 +2680,10 @@ void Buffer::latexParagraphs(ostream & ofs, Paragraph * par,
 			{
 				par = par->TeXEnvironment(this, params, ofs, texrow);
 			} else {
-				par = par->TeXOnePar(this, params, ofs, texrow, false);
+				par = par->TeXOnePar(this, params, ofs, texrow, moving_arg);
 			}
 		} else {
-			par = par->TeXOnePar(this, params, ofs, texrow, false);
+			par = par->TeXOnePar(this, params, ofs, texrow, moving_arg);
 		}
 	}
 	// It might be that we only have a title in this document
