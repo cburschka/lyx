@@ -135,7 +135,7 @@ void InsetERT::insetButtonRelease(BufferView * bv,
 	if ((x >= 0)  && (x < button_length) &&
 	    (y >= button_top_y) &&  (y <= button_bottom_y)) {
 		if (collapsed_) {
-			setLabel(_("666"));
+			setLabel(_("ERT"));
 		} else {
 			setLabel(get_new_label());
 		}
@@ -236,7 +236,7 @@ string const InsetERT::get_new_label() const
 		la += "...";
 	}
 	if (la.empty()) {
-		la = _("666");
+		la = _("ERT");
 	}
 	return la;
 }
@@ -247,7 +247,7 @@ void InsetERT::setButtonLabel()
 	if (collapsed_) {
 		setLabel(get_new_label());
 	} else {
-		setLabel(_("666"));
+		setLabel(_("ERT"));
 	}
 }
 

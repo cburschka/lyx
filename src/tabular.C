@@ -935,6 +935,7 @@ int LyXTabular::right_column_of_cell(int cell) const
 
 
 // Perfect case for a template... (Lgb)
+// or perhaps not...
 #if 1
 template<class T>
 string const write_attribute(string const & name, T const & t)
