@@ -6,6 +6,14 @@
 
 2003-10-13  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
+	* LaTeX.C (handleFoundFile): move the static to smaller scope,
+	move the onlyfile, use onlyfile instead of foundfile in a couple
+	of places.
+
+	* DepTable.C (update): flush the error stream a bit more
+
+2003-10-13  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
 	* lyxserver.C (callback): adjust
 
 	* lyxfunc.C (getStatus): add a missing brace in commented code
