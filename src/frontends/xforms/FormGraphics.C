@@ -402,7 +402,7 @@ void FormGraphics::apply()
 	fl_set_input(extra_->input_rotate_angle, tostr(igp.rotateAngle).c_str());
 
 	int const origin_pos = fl_get_choice(extra_->choice_origin);
-	if (origin_pos == 1) {
+	if (origin_pos == 0) {
 		igp.rotateOrigin.erase();
 	} else {
 		igp.rotateOrigin = origins_[origin_pos - 1];
@@ -486,7 +486,7 @@ void FormGraphics::update() {
 	if (igp.rotateOrigin.empty()) {
 		origin_pos = 1;
 	} else {
-		origin_pos = 2 + findPos(origins_, igp.rotateOrigin);
+		origin_pos = 1 + findPos(origins_, igp.rotateOrigin);
 	}
 	fl_set_choice(extra_->choice_origin, origin_pos);
 
