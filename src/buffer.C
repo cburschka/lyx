@@ -124,6 +124,8 @@ using std::stack;
 using std::list;
 
 using lyx::pos_type;
+using lyx::layout_type;
+using lyx::textclass_type;
 
 // all these externs should eventually be removed.
 extern BufferList bufferlist;
@@ -447,11 +449,10 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 		// Do the insetert.
 		insertErtContents(par, pos, font);
 #endif
-                lex.eatLine();
-                string const layoutname = lex.getString();
-                pair<bool, LyXTextClass::LayoutList::size_type> pp
-                        = textclasslist.NumberOfLayout(params.textclass,
-                                                       layoutname);
+		lex.eatLine();
+		string const layoutname = lex.getString();
+		pair<bool, layout_type> pp
+		  = textclasslist.NumberOfLayout(params.textclass, layoutname);
 
 #ifndef NO_COMPABILITY
 		if (compare_no_case(layoutname, "latex") == 0) {
@@ -662,7 +663,7 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 		params.readPreamble(lex);
 	} else if (token == "\\textclass") {
 		lex.eatLine();
-		pair<bool, LyXTextClassList::size_type> pp = 
+		pair<bool, textclass_type> pp = 
 			textclasslist.NumberOfClass(lex.getString());
 		if (pp.first) {
 			params.textclass = pp.second;
@@ -2777,7 +2778,7 @@ void Buffer::simpleLinuxDocOnePar(ostream & os,
 {
 	LyXLayout const & style = textclasslist.Style(params.textclass,
 						      par->getLayout());
-        string::size_type char_line_count = 5;     // Heuristic choice ;-) 
+	string::size_type char_line_count = 5;     // Heuristic choice ;-) 
 
 	// gets paragraph main font
 	LyXFont font_old;
@@ -3494,16 +3495,16 @@ Buffer::Lists const Buffer::getLists() const
 	Paragraph * par = paragraph;
 
 #if 1
-	std::pair<bool, LyXTextClassList::size_type> const tmp =
+	std::pair<bool, textclass_type> const tmp =
 		textclasslist.NumberOfLayout(params.textclass, "Caption");
 	bool const found = tmp.first;
-	LyXTextClassList::size_type const cap = tmp.second;
+	textclass_type const cap = tmp.second;
 	
 #else
 	// This is the prefered way to to this, but boost::tie can break
 	// some compilers
 	bool found;
-	LyXTextClassList::size_type cap;
+	textclass_type cap;
 	boost::tie(found, cap) = textclasslist
 		.NumberOfLayout(params.textclass, "Caption");
 #endif

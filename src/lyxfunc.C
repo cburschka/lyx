@@ -117,8 +117,6 @@ extern LyXAction lyxaction;
 // (alkis)
 extern tex_accent_struct get_accent(kb_action action);
 
-extern LyXTextClass::size_type current_layout;
-
 extern void ShowLatexLog();
 
 

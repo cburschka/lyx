@@ -12,7 +12,7 @@
 
 #include "LString.h"
 #include "frontends/Timeout.h"
-#include "layout.h" // Just for LyXTextClass::size_type (sic)
+#include "support/types.h"
 
 class Buffer;
 class Toolbar;
@@ -53,7 +53,7 @@ public:
 	Toolbar * getToolbar() const;
 
 	/// sets the layout in the toolbar layout combox
-	void setLayout(LyXTextClass::size_type layout);
+	void setLayout(lyx::layout_type layout);
 
 	/// update the toolbar
 	void updateToolbar();

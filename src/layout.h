@@ -18,10 +18,12 @@
 #pragma interface
 #endif
 
-class LyXLeX;
 #include "lyxfont.h"
 #include "Spacing.h"
+#include "support/types.h"
 #include <boost/utility.hpp>
+
+class LyXLeX;
 
 /// Reads the style files
 extern void LyXSetStyle();
@@ -386,8 +388,6 @@ public:
 	///
 	typedef LayoutList::const_iterator const_iterator;
 	///
-	typedef LayoutList::size_type size_type;
-	///
 	explicit
 	LyXTextClass (string const & = string(), 
 		      string const & = string(), 
@@ -479,9 +479,9 @@ public:
         ///
 	int maxcounter() const { return maxcounter_; }
 	///
-	size_type numLayouts() const { return layoutlist.size(); }
+	lyx::layout_type numLayouts() const { return layoutlist.size(); }
 	///
-	LyXLayout const & operator[](size_type i) const {
+	LyXLayout const & operator[](lyx::layout_type i) const {
 		return layoutlist[i];
 	}
 private:
@@ -558,43 +558,39 @@ public:
 	///
 	typedef ClassList::const_iterator const_iterator;
 	///
-	typedef ClassList::size_type size_type;
-	///
 	const_iterator begin() const { return classlist.begin(); }
 	///
 	const_iterator end() const { return classlist.end(); }
 	
 	/// Gets layout structure from layout number and textclass number
-	LyXLayout const & Style(size_type textclass,
-				LyXTextClass::size_type layout) const;
+	LyXLayout const & Style(lyx::textclass_type textclass,
+	                        lyx::layout_type layout) const;
 
 	/// Gets layout number from textclass number and layout name
-	std::pair<bool, LyXTextClass::size_type> const
-	NumberOfLayout(size_type textclass,
-		       string const & name) const;
+	std::pair<bool, lyx::layout_type> const
+	NumberOfLayout(lyx::textclass_type textclass, string const & name) const;
 
 	/// Gets a layout name from layout number and textclass number
 	string const &
-	NameOfLayout(size_type textclass,
-		     LyXTextClass::size_type layout) const;
+	NameOfLayout(lyx::textclass_type textclass, lyx::layout_type layout) const;
 
 	/** Gets textclass number from name.
 	    Returns -1 if textclass name does not exist
 	*/
-	std::pair<bool, size_type> const
+	std::pair<bool, lyx::textclass_type> const
 	NumberOfClass(string const & textclass) const;
 
 	///
-	string const & NameOfClass(size_type number) const;
+	string const & NameOfClass(lyx::textclass_type number) const;
 
 	///
-	string const & LatexnameOfClass(size_type number) const;
+	string const & LatexnameOfClass(lyx::textclass_type number) const;
 
 	///
-	string const & DescOfClass(size_type number) const;
+	string const & DescOfClass(lyx::textclass_type number) const;
 
 	///
-	LyXTextClass const & TextClass(size_type textclass) const;
+	LyXTextClass const & TextClass(lyx::textclass_type textclass) const;
 
 	/** Read textclass list.
 	    Returns false if this fails
@@ -604,7 +600,7 @@ public:
 	/** Load textclass.
 	    Returns false if this fails
 	*/
-	bool Load(size_type number) const;
+	bool Load(lyx::textclass_type number) const;
 private:
 	///
 	mutable ClassList classlist;

@@ -43,9 +43,9 @@ public:
 	    return value is the number of wrong conversions
 	*/
 	static
-	int SwitchLayoutsBetweenClasses(LyXTextClassList::size_type class1,
-                                    LyXTextClassList::size_type class2,
-                                    Paragraph * par);
+	int SwitchLayoutsBetweenClasses(lyx::textclass_type class1,
+	                                lyx::textclass_type class2,
+	                                Paragraph * par);
 	///
 	static
 	bool checkPastePossible(Paragraph *);

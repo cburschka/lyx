@@ -20,6 +20,7 @@
 #include <vector>
 
 #include "lyxlex.h"
+#include "layout.h"
 #include "LString.h"
 #include "insets/insettext.h"
 

@@ -255,10 +255,12 @@ void MathGridInset::metrics(MathMetricsInfo const & mi) const
 			break;
 		default:
 			h = rowinfo_[nrows()].offset_ / 2;
-			//lyxerr << "\nnrows: " << nrows() << ' ' << ncols() << '\n';
 	}
-	for (row_type row = 0; row <= nrows(); ++row)
+	//lyxerr << "\nnrows: " << nrows() << " h: " << h << '\n';
+	for (row_type row = 0; row <= nrows(); ++row) {
 		rowinfo_[row].offset_ -= h;
+		//lyxerr << "row: " << row << " off: " << rowinfo_[row].offset_  << '\n';
+	}
 
 	
 	// adjust horizontal structure

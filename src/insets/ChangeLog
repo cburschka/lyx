@@ -1,3 +1,10 @@
+
+2001-11-29  André Pönitz <poenitz@gmx.net>
+	
+	* inseterror.C:
+	* insettext.C: further reduction of header dependencies by using
+	lyx::layout_type and lyx::textclass_type from support/types.h
+
 2001-11-29  Juergen Vigna  <jug@sad.it>
 
 	* insettext.C: inserted a reinitLyXText function everywhere I delete

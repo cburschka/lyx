@@ -30,11 +30,12 @@
 using std::endl;
 using std::set;
 
-LaTeXFeatures::LaTeXFeatures(BufferParams const & p, LyXTextClass::size_type n)
+using lyx::layout_type;
+using lyx::textclass_type;
+
+LaTeXFeatures::LaTeXFeatures(BufferParams const & p, layout_type n)
 	: layout(n, false), params(p)
-{
-	
-}
+{}
 
 
 void LaTeXFeatures::require(string const & name)
@@ -45,50 +46,56 @@ void LaTeXFeatures::require(string const & name)
 		features.push_back("graphics");
 	} else
 		features.push_back(name);
-
 }
+
 
 void LaTeXFeatures::useLayout(std::vector<bool>::size_type const & idx)
 {
 	layout[idx] = true;
 }
 
+
 bool LaTeXFeatures::isRequired(string const & name) const
 {
 	FeaturesList::const_iterator i = std::find(features.begin(), 
 						   features.end(),
 						   name);
-	return i!= features.end();
+	return i != features.end();
 }
+
 
 void LaTeXFeatures::addExternalPreamble(string const & pream)
 {
 	externalPreambles += pream;
 }
 
+
 void LaTeXFeatures::useFloat(string const & name)
 {
 	usedFloats.insert(name);
 }
+
 
 void LaTeXFeatures::useLanguage(Language const * lang)
 {
 	UsedLanguages.insert(lang);
 }
 
+
 void LaTeXFeatures::includeFile(string const & key, string const & name) 
 {
 	IncludedFiles[key] = name;
 }
+
 
 bool LaTeXFeatures::hasLanguages() 
 {
 	return !UsedLanguages.empty();
 }
 
+
 string LaTeXFeatures::getLanguages() const 
 {
-
 	ostringstream languages;
 
 	for (LanguageList::const_iterator cit =
@@ -100,6 +107,7 @@ string LaTeXFeatures::getLanguages() const
 	return languages.str().c_str();
 }
 
+
 set<string> LaTeXFeatures::getEncodingSet(string const & doc_encoding) 
 {
 	set<string> encodings;
@@ -110,6 +118,7 @@ set<string> LaTeXFeatures::getEncodingSet(string const & doc_encoding)
 			encodings.insert((*it)->encoding()->LatexName());
 	return encodings;
 }
+
 
 string const LaTeXFeatures::getPackages() const
 {
@@ -123,7 +132,7 @@ string const LaTeXFeatures::getPackages() const
 	 *  packages which we just \usepackage{package}
 	 **/
 
-// array-package
+	// array-package
 	if (isRequired("array"))
 		packages << "\\usepackage{array}\n";
 
@@ -282,7 +291,6 @@ string const LaTeXFeatures::getPackages() const
 	packages << externalPreambles;
 
 	return packages.str().c_str();
-
 }
 
 
@@ -297,13 +305,11 @@ string const LaTeXFeatures::getMacros() const
 	if (isRequired("lyxline")) 
 		macros << lyxline_def << '\n';
 
-	if (isRequired("noun")) {
+	if (isRequired("noun"))
 		macros << noun_def << '\n';
-	}
 
-	if (isRequired("lyxarrow")) {
+	if (isRequired("lyxarrow"))
 		macros << lyxarrow_def << '\n';
-	}
 
 	// quotes. 
 	if (isRequired("quotesinglbase"))
@@ -326,11 +332,11 @@ string const LaTeXFeatures::getMacros() const
 		macros << binom_def << '\n';
 
 	// other
-        if (isRequired("NeedLyXMinipageIndent"))
+	if (isRequired("NeedLyXMinipageIndent"))
 		macros << minipageindent_def;
-        if (isRequired("ParagraphIndent")) 
+	if (isRequired("ParagraphIndent")) 
 		macros << paragraphindent_def;
-        if (isRequired("NeedLyXFootnoteCode")) 
+	if (isRequired("NeedLyXFootnoteCode")) 
 		macros << floatingfootnote_def;
 
 	// floats
@@ -350,13 +356,12 @@ string const LaTeXFeatures::getMacros() const
 string const LaTeXFeatures::getTClassPreamble() const
 {
 	// the text class specific preamble 
-	LyXTextClass const & tclass =
-		textclasslist.TextClass(params.textclass);
+	LyXTextClass const & tclass = textclasslist.TextClass(params.textclass);
 	ostringstream tcpreamble;
 	
 	tcpreamble << tclass.preamble();
 
-	for (LyXTextClass::size_type i = 0; i < tclass.numLayouts(); ++i) {
+	for (layout_type i = 0; i < tclass.numLayouts(); ++i) {
 		if (layout[i]) {
 			tcpreamble  << tclass[i].preamble();
 		}
@@ -372,8 +377,7 @@ string const LaTeXFeatures::getLyXSGMLEntities() const
 	ostringstream entities;
 
 	if (isRequired("lyxarrow")) {
-		entities << "<!ENTITY lyxarrow \"-&gt;\">"
-			 << '\n';
+		entities << "<!ENTITY lyxarrow \"-&gt;\">" << '\n';
 	}
 
 	return entities.str().c_str();

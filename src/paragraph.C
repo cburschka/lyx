@@ -76,9 +76,10 @@ extern BufferView * current_view;
 
 
 Paragraph::Paragraph()
-		: pimpl_(new Paragraph::Pimpl(this))
+	: layout(0), pimpl_(new Paragraph::Pimpl(this))
 {
-	for (int i = 0; i < 10; ++i) setCounter(i , 0);
+	for (int i = 0; i < 10; ++i)
+		setCounter(i, 0);
 	next_ = 0;
 	previous_ = 0;
 	enumdepth = 0;
@@ -88,9 +89,9 @@ Paragraph::Paragraph()
 }
 
 
-// This konstruktor inserts the new paragraph in a list.
+// This construktor inserts the new paragraph in a list.
 Paragraph::Paragraph(Paragraph * par)
-		: pimpl_(new Paragraph::Pimpl(this))
+	: layout(0), pimpl_(new Paragraph::Pimpl(this))
 {
 	for (int i = 0; i < 10; ++i)
 		setCounter(i, 0);
@@ -112,7 +113,7 @@ Paragraph::Paragraph(Paragraph * par)
 
 
 Paragraph::Paragraph(Paragraph const & lp, bool same_ids)
-	: pimpl_(new Paragraph::Pimpl(*lp.pimpl_, this, same_ids))
+	: layout(0), pimpl_(new Paragraph::Pimpl(*lp.pimpl_, this, same_ids))
 {
 	for (int i = 0; i < 10; ++i)
 		setCounter(i, 0);
@@ -926,7 +927,7 @@ void Paragraph::makeSameLayout(Paragraph const * par)
 }
 
 
-int Paragraph::stripLeadingSpaces(LyXTextClassList::size_type tclass) 
+int Paragraph::stripLeadingSpaces(lyx::textclass_type tclass) 
 {
 	if (textclasslist.Style(tclass, getLayout()).free_spacing ||
 		isFreeSpacing())
@@ -935,8 +936,7 @@ int Paragraph::stripLeadingSpaces(LyXTextClassList::size_type tclass)
 	}
 	
 	int i = 0;
-	while (size()
-	       && (isNewline(0) || isLineSeparator(0))){
+	while (size() && (isNewline(0) || isLineSeparator(0))) {
 		erase(0);
 		++i;
 	}

@@ -1,3 +1,9 @@
+2001-11-28  André Pönitz <poenitz@gmx.net>
+
+	* all the files from the change on 2001/11/26:
+	use lyx::layout_type instead of LyXTextClass::size_type
+	use lyx::textclass_type instead of LyXTextClassList::size_type
+
 2001-11-29  Juergen Vigna  <jug@sad.it>
 
 	* text.C: added support for paragraph::isFreeSpacing()
@@ -71,7 +77,8 @@
 2001-11-28  André Pönitz <poenitz@gmx.net>
 
 	* paragraph.C: whitespace changes
-	* files form the 26th: change *::pos_type into lyx::pos_type
+	* all the other files from the change on 2001/11/26:
+	change *::pos_type into lyx::pos_type
 	
 2001-11-27  Dekel Tsur  <dekelts@tau.ac.il>
 

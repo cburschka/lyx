@@ -24,6 +24,8 @@
 
 using std::pair;
 using lyx::pos_type;
+using lyx::layout_type;
+using lyx::textclass_type;
 
 extern BufferView * current_view;
 
@@ -49,7 +51,7 @@ extern BufferView * current_view;
 namespace {
 
 Paragraph * buf = 0;
-LyXTextClassList::size_type textclass = 0;
+textclass_type textclass = 0;
 
 // for now here this should be in another Cut&Paste Class!
 // Jürgen, I moved this out of CutAndPaste since it does not operate on any
@@ -335,19 +337,17 @@ int CutAndPaste::nrOfParagraphs()
 }
 
 
-int CutAndPaste::SwitchLayoutsBetweenClasses(LyXTextClassList::size_type c1,
-					     LyXTextClassList::size_type c2,
-					     Paragraph * par)
+int CutAndPaste::SwitchLayoutsBetweenClasses(textclass_type c1,
+					     textclass_type c2, Paragraph * par)
 {
 	int ret = 0;
 	if (!par || c1 == c2)
 		return ret;
 	
 	while (par) {
-		string const name = textclasslist.NameOfLayout(c1,
-							       par->layout);
+		string const name = textclasslist.NameOfLayout(c1, par->layout);
 		int lay = 0;
-		pair<bool, LyXTextClass::LayoutList::size_type> pp =
+		pair<bool, layout_type> pp =
 			textclasslist.NumberOfLayout(c2, name);
 		if (pp.first) {
 			lay = pp.second;

@@ -78,7 +78,10 @@ using std::endl;
 using std::make_pair;
 using std::min;
 using SigC::slot;
+
 using lyx::pos_type;
+using lyx::layout_type;
+using lyx::textclass_type;
 
 /* the selection possible is needed, that only motion events are 
  * used, where the bottom press event was on the drawing area too */
@@ -1596,10 +1599,8 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		break;
 
 	case LFUN_FILE_INSERT:
-	{
 		MenuInsertLyXFile(argument);
-	}
-	break;
+		break;
 	
 	case LFUN_FILE_INSERT_ASCII_PARA:
 		InsertAsciiFile(bv_, argument, true);
@@ -1616,18 +1617,16 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		
 		// Derive layout number from given argument (string)
 		// and current buffer's textclass (number). */    
-		LyXTextClassList::ClassList::size_type tclass =
-			buffer_->params.textclass;
-		pair <bool, LyXTextClass::size_type> layout = 
+		textclass_type tclass = buffer_->params.textclass;
+		pair <bool, layout_type> layout = 
 			textclasslist.NumberOfLayout(tclass, argument);
 
 		// If the entry is obsolete, use the new one instead.
 		if (layout.first) {
-			string obs = textclasslist.Style(tclass,layout.second)
+			string obs = textclasslist.Style(tclass, layout.second)
 				.obsoleted_by();
 			if (!obs.empty()) 
-				layout = 
-					textclasslist.NumberOfLayout(tclass, obs);
+				layout = textclasslist.NumberOfLayout(tclass, obs);
 		}
 
 		// see if we found the layout number:
@@ -3320,10 +3319,9 @@ bool BufferView::Pimpl::insertInset(Inset * inset, string const & lout)
 			update(bv_->text, BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 		}
 
-		pair<bool, LyXTextClass::size_type> lres =
-			textclasslist.NumberOfLayout(buffer_->params
-						     .textclass, lout);
-		LyXTextClass::size_type lay;
+		pair<bool, layout_type> lres =
+			textclasslist.NumberOfLayout(buffer_->params .textclass, lout);
+		layout_type lay = 0;
 		if (lres.first != false) {
 			// layout found
 			lay = lres.second;

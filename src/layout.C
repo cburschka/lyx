@@ -34,6 +34,10 @@ using std::endl;
 using std::find_if;
 using std::remove_if;
 
+using lyx::layout_type;
+using lyx::textclass_type;
+
+
 // Global variable: textclass table.
 LyXTextClassList textclasslist;
 
@@ -1233,22 +1237,22 @@ void LyXTextClass::load()
 //////////////////////////////////////////
 
 // Gets textclass number from name
-pair<bool, LyXTextClassList::size_type> const
+pair<bool, textclass_type> const
 LyXTextClassList::NumberOfClass(string const & textclass) const
 {
 	ClassList::const_iterator cit =
 		find_if(classlist.begin(), classlist.end(),
 			lyx::compare_memfun(&LyXTextClass::name, textclass));
 	return cit != classlist.end() ?
-		make_pair(true, size_type(cit - classlist.begin())) :
-		make_pair(false, size_type(0));
+		make_pair(true, textclass_type(cit - classlist.begin())) :
+		make_pair(false, textclass_type(0));
 }
 
 
 // Gets layout structure from style number and textclass number
 LyXLayout const &
-LyXTextClassList::Style(LyXTextClassList::size_type textclass,
-			LyXTextClass::size_type layout) const
+LyXTextClassList::Style(textclass_type textclass,
+			layout_type layout) const
 {
 	classlist[textclass].load();
 	if (layout < classlist[textclass].numLayouts())
@@ -1258,8 +1262,8 @@ LyXTextClassList::Style(LyXTextClassList::size_type textclass,
 
 
 // Gets layout number from name and textclass number
-pair<bool, LyXTextClass::size_type> const
-LyXTextClassList::NumberOfLayout(LyXTextClassList::size_type textclass,
+pair<bool, layout_type> const
+LyXTextClassList::NumberOfLayout(textclass_type textclass,
 				 string const & name) const
 {
 	classlist[textclass].load();
@@ -1268,15 +1272,15 @@ LyXTextClassList::NumberOfLayout(LyXTextClassList::size_type textclass,
 			return make_pair(true, i);
 	}
 	if (name == "dummy")
-		return make_pair(true, LyXTextClassList::size_type(LYX_DUMMY_LAYOUT));
-	return make_pair(false, LyXTextClass::size_type(0)); // not found
+		return make_pair(true, layout_type(LYX_DUMMY_LAYOUT));
+	return make_pair(false, layout_type(0)); // not found
 }
 
 
 // Gets a layout (style) name from layout number and textclass number
 string const &
-LyXTextClassList::NameOfLayout(LyXTextClassList::size_type textclass,
-			       LyXTextClass::size_type layout) const
+LyXTextClassList::NameOfLayout(textclass_type textclass,
+			  layout_type layout) const
 {
 	static string const dummy("dummy");
 	classlist[textclass].load();
@@ -1288,7 +1292,7 @@ LyXTextClassList::NameOfLayout(LyXTextClassList::size_type textclass,
 
 // Gets a textclass name from number
 string const &
-LyXTextClassList::NameOfClass(LyXTextClassList::size_type number) const
+LyXTextClassList::NameOfClass(textclass_type number) const
 {
 	static string const dummy("dummy");
 	if (classlist.empty()) {
@@ -1301,7 +1305,7 @@ LyXTextClassList::NameOfClass(LyXTextClassList::size_type number) const
 
 // Gets a textclass latexname from number
 string const &
-LyXTextClassList::LatexnameOfClass(LyXTextClassList::size_type number) const
+LyXTextClassList::LatexnameOfClass(textclass_type number) const
 {
 	static string const dummy("dummy");
 	classlist[number].load();
@@ -1315,7 +1319,7 @@ LyXTextClassList::LatexnameOfClass(LyXTextClassList::size_type number) const
 
 // Gets a textclass description from number
 string const &
-LyXTextClassList::DescOfClass(LyXTextClassList::size_type number) const
+LyXTextClassList::DescOfClass(textclass_type number) const
 {
 	static string const dummy("dummy");
 	if (classlist.empty()) {
@@ -1328,7 +1332,7 @@ LyXTextClassList::DescOfClass(LyXTextClassList::size_type number) const
 
 // Gets a textclass structure from number
 LyXTextClass const &
-LyXTextClassList::TextClass(LyXTextClassList::size_type textclass) const
+LyXTextClassList::TextClass(textclass_type textclass) const
 {
 	classlist[textclass].load();
 	if (textclass < classlist.size())
@@ -1444,8 +1448,7 @@ bool LyXTextClassList::Read ()
 /* Load textclass
    Returns false if this fails
 */
-bool
-LyXTextClassList::Load (LyXTextClassList::size_type number) const
+bool LyXTextClassList::Load(textclass_type number) const
 {
 	bool result = true;
 	if (number < classlist.size()) {

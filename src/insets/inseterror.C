@@ -16,6 +16,7 @@
 
 #include "BufferView.h"
 #include "font.h"
+#include "lyxfont.h"
 #include "gettext.h"
 #include "inseterror.h"
 #include "LyXView.h"

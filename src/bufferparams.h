@@ -130,45 +130,45 @@ public:
 	  */
   	PARSEP paragraph_separation;
 	///
-  	InsetQuotes::quote_language quotes_language;
+	InsetQuotes::quote_language quotes_language;
 	///
-  	InsetQuotes::quote_times quotes_times;
+	InsetQuotes::quote_times quotes_times;
 	///
-  	string fontsize; 
+	string fontsize; 
 	///
- 	LyXTextClassList::size_type textclass;
+ 	lyx::textclass_type textclass;
 
 	/* this are for the PaperLayout */
 	/// the general papersize (papersize2 or paperpackage
-  	char papersize; // add apprip. signedness 
-        ///  the selected Geometry papersize
-        char papersize2; // add approp. signedness
-        /// a special paperpackage .sty-file
-        char paperpackage; // add approp. signedness
-        ///
+	char papersize; // add apprip. signedness 
+	///  the selected Geometry papersize
+	char papersize2; // add approp. signedness
+	/// a special paperpackage .sty-file
+	char paperpackage; // add approp. signedness
+	///
 	PAPER_ORIENTATION orientation; // add approp. signedness
 	///
-        bool use_geometry;
-        ///
-        string paperwidth;
-        ///
-        string paperheight;
-        ///
-        string leftmargin;
-        ///
-        string topmargin;
-        ///
-        string rightmargin;
-        ///
-        string bottommargin;
-        ///
-        string headheight;
-        ///
-        string headsep;
-        ///
-        string footskip;
-        
-        /* some LaTeX options */
+	bool use_geometry;
+	///
+	string paperwidth;
+	///
+	string paperheight;
+	///
+	string leftmargin;
+	///
+	string topmargin;
+	///
+	string rightmargin;
+	///
+	string bottommargin;
+	///
+	string headheight;
+	///
+	string headsep;
+	///
+	string footskip;
+
+	/* some LaTeX options */
 	/// The graphics driver
 	string graphicsDriver;
 	///
@@ -206,13 +206,13 @@ public:
 	///
 	void readGraphicsDriver(LyXLex &);
 	///
-        bool use_amsmath;
+	bool use_amsmath;
 	///
-        bool use_natbib;
+	bool use_natbib;
 	///
-        bool use_numerical_citations;
+	bool use_numerical_citations;
 	/// Time ago we agreed that this was a buffer property [ale990407]
-        string parentname;
+	string parentname;
 private:
 	///
 	friend class Buffer;

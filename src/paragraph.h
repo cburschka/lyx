@@ -19,13 +19,13 @@
 #include "LString.h"
 
 #include "insets/inset.h" // Just for Inset::Code
-#include "layout.h"
+#include "lyxfont.h" // Just for LyXFont::FONT_SIZE
 #include "support/types.h"
 
 class ParagraphParameters;
 class BufferParams;
 class TexRow;
-struct LaTeXFeatures;
+class LaTeXFeatures;
 class InsetBibKey;
 class BufferView;
 class Language;
@@ -321,7 +321,7 @@ public:
 	Paragraph * getParFromID(int id) const;
 
 	///
-	int stripLeadingSpaces(LyXTextClassList::size_type tclass); 
+	int stripLeadingSpaces(lyx::textclass_type tclass); 
 
 #ifndef NO_PEXTRA_REALLY
 	/* If I set a PExtra Indent on one paragraph of a ENV_LIST-TYPE

@@ -44,7 +44,7 @@ class LaTeXFeatures {
 
 public:
 	///
-	LaTeXFeatures(BufferParams const &, LyXTextClass::size_type n) ;
+	LaTeXFeatures(BufferParams const &, lyx::layout_type n) ;
 	/// The packages needed by the document
 	string const getPackages() const;
 	/// The macros definitions needed by the document

@@ -29,26 +29,26 @@ using std::ostream;
 using std::endl;
 
 BufferParams::BufferParams()
+	// Initialize textclass to point to article. if `first' is
+	// true in the returned pair, then `second' is the textclass
+	// number; if it is false, second is 0. In both cases, second
+	// is what we want.
+	: textclass(textclasslist.NumberOfClass("article").second)
 {
 	paragraph_separation = PARSEP_INDENT;
 	defskip = VSpace(VSpace::MEDSKIP); 
 	quotes_language = InsetQuotes::EnglishQ;
 	quotes_times = InsetQuotes::DoubleQ;
 	fontsize = "default";
-	// Initialize textclass to point to article. if `first' is
-	// true in the returned pair, then `second' is the textclass
-	// number; if it is false, second is 0. In both cases, second
-	// is what we want.
-	textclass = textclasslist.NumberOfClass("article").second;
 
-        /*  PaperLayout */
+	/*  PaperLayout */
 	papersize = PAPER_DEFAULT;
-        papersize2 = VM_PAPER_DEFAULT; /* DEFAULT */
-        paperpackage = PACKAGE_NONE;
+	papersize2 = VM_PAPER_DEFAULT; /* DEFAULT */
+	paperpackage = PACKAGE_NONE;
 	orientation = ORIENTATION_PORTRAIT;
-        use_geometry = false;
-        use_amsmath = false;
-        use_natbib = false;
+	use_geometry = false;
+	use_amsmath = false;
+	use_natbib = false;
 	use_numerical_citations = false;
 	secnumdepth = 3;
 	tocdepth = 3;
@@ -60,8 +60,8 @@ BufferParams::BufferParams()
 	columns = 1;
 	pagestyle = "default";
 	for (int iter = 0; iter < 4; ++iter) {
-		user_defined_bullets[iter] = temp_bullets[iter] 
-			                   = ITEMIZE_DEFAULTS[iter];
+		user_defined_bullets[iter] = ITEMIZE_DEFAULTS[iter];
+		temp_bullets[iter] = ITEMIZE_DEFAULTS[iter];
 	}
 }
 

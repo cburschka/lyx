@@ -37,11 +37,12 @@
 #include "BufferView.h"
 
 using std::endl;
+using lyx::layout_type;
 
 extern void AutoSave(BufferView *);
 extern void QuitLyX();
 
-LyXTextClass::size_type current_layout = 0;
+layout_type current_layout = 0;
 
 
 LyXView::LyXView()
@@ -99,7 +100,7 @@ Toolbar * LyXView::getToolbar() const
 }
 
 
-void LyXView::setLayout(LyXTextClass::size_type layout)
+void LyXView::setLayout(layout_type layout)
 {
 	toolbar->setLayout(layout);
 }
@@ -205,8 +206,7 @@ void LyXView::updateLayoutChoice()
 		toolbar->updateLayoutList(false);
 	}
 	
-	LyXTextClass::size_type layout =
-		bufferview->text->cursor.par()->getLayout();
+	layout_type layout = bufferview->text->cursor.par()->getLayout();
 
 	if (layout != current_layout){
 		toolbar->setLayout(layout);

@@ -62,6 +62,8 @@ using std::make_pair;
 using std::vector;
 
 using lyx::pos_type;
+using lyx::layout_type;
+using lyx::textclass_type;
 
 extern unsigned char getCurrentTextClass(Buffer *);
 extern bool math_insert_greek(BufferView *, char);
@@ -1239,13 +1241,12 @@ InsetText::localDispatch(BufferView * bv,
 	case LFUN_LAYOUT:
 		// do not set layouts on non breakable textinsets
 		if (autoBreakRows) {
-			LyXTextClass::size_type cur_layout = cpar(bv)->layout;
+			layout_type cur_layout = cpar(bv)->layout;
 	  
 			// Derive layout number from given argument (string)
 			// and current buffer's textclass (number). */    
-			LyXTextClassList::ClassList::size_type tclass =
-				bv->buffer()->params.textclass;
-			std::pair <bool, LyXTextClass::size_type> layout = 
+			textclass_type tclass = bv->buffer()->params.textclass;
+			std::pair <bool, layout_type> layout = 
 				textclasslist.NumberOfLayout(tclass, arg);
 
 			// If the entry is obsolete, use the new one instead.
