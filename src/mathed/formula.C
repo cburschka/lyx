@@ -448,8 +448,11 @@ int InsetFormula::ascent(BufferView *, LyXFont const &) const
 
 int InsetFormula::descent(BufferView *, LyXFont const &) const
 {
-	return preview_->usePreview() ?
-		preview_->pimage_->descent() : 1 + par_->descent();
+	if (!preview_->usePreview())
+		return 1 + par_->descent();
+
+  	int const descent = preview_->pimage_->descent();
+  	return display() ? descent + 12 : descent;
 }
 
 

@@ -1,3 +1,8 @@
+2002-07-23  Angus Leeming  <leeming@lyx.org>
+
+	* formula.C (descent): add an arbitrary 12 pixels to the descent when
+	previewing a display mode equation, analogous to André's code elsewhere.
+
 2002-07-22  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* math_support.C (mathed_draw_deco): fix rounding bug for rotated
