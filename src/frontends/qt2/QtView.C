@@ -47,9 +47,6 @@ int const statusbar_timer_value = 3000;
 
 } // namespace anon
 
-#warning FIXME Current_view is used here!
-BufferView * current_view;
-
 qfont_loader fontloader;
 
 
@@ -61,8 +58,6 @@ QtView::QtView(unsigned int width, unsigned int height)
 	qApp->setMainWidget(this);
 
 	bufferview_.reset(new BufferView(this, 0, 0, width, height));
-#warning FIXME Current_view is used here!
-	::current_view = bufferview_.get();
 
 	menubar_.reset(new Menubar(this, menubackend));
 	toolbar_.reset(new Toolbar(this, 0, 0));
