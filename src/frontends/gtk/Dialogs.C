@@ -84,7 +84,7 @@
 #include "GPrint.h"
 #include "FormRef.h"
 #include "GSearch.h"
-#include "FormSendto.h"
+#include "GSendto.h"
 #include "FormTabular.h"
 #include "GTexinfo.h"
 #include "GShowFile.h"
@@ -489,8 +489,9 @@ Dialogs::DialogPtr Dialogs::build(string const & name)
 		dialog->setView(new FormRef(*dialog));
 		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
 	} else if (name == "sendto") {
+		dialog->bc().view(new GBC(dialog->bc()));
 		dialog->setController(new ControlSendto(*dialog));
-		dialog->setView(new FormSendto(*dialog));
+		dialog->setView(new GSendto(*dialog));
 		dialog->bc().bp(new OkApplyCancelPolicy);
 	} else if (name == "spellchecker") {
 		dialog->bc().view(new GBC(dialog->bc()));
