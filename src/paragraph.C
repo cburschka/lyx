@@ -35,7 +35,6 @@ using std::ios;
 
 
 extern void addNewlineAndDepth(string & file, int const depth); // Jug 990923
-extern unsigned char GetCurrentTextClass(); // this should be fixed/removed
 int tex_code_break_column = 72;  // needs non-zero initialization. set later.
 // this is a bad idea, but how can LyXParagraph find its buffer to get
 // parameters? (JMarc)
@@ -329,7 +328,7 @@ void LyXParagraph::writeFile(ostream & os, BufferParams & params,
 void LyXParagraph::validate(LaTeXFeatures & features)
 {
 	// this will be useful later
-	LyXLayout const & layout = textclasslist.Style(GetCurrentTextClass(), 
+	LyXLayout const & layout = textclasslist.Style(current_view->buffer()->params.textclass, 
 						       GetLayout());
 	
 	// check the params.
@@ -954,7 +953,7 @@ LyXFont LyXParagraph::GetFontSettings(LyXParagraph::size_type pos) const
 LyXFont LyXParagraph::getFont(LyXParagraph::size_type pos) const
 {
 	LyXFont tmpfont;
-	LyXLayout const & layout = textclasslist.Style(GetCurrentTextClass(), 
+	LyXLayout const & layout = textclasslist.Style(current_view->buffer()->params.textclass, 
 						       GetLayout());
 	LyXParagraph::size_type main_body = 0;
 	if (layout.labeltype == LABEL_MANUAL)
@@ -983,13 +982,13 @@ LyXFont LyXParagraph::getFont(LyXParagraph::size_type pos) const
 		par = par->DepthHook(par_depth - 1);
 		if (par) {
 			tmpfont.realize(textclasslist.
-					Style(GetCurrentTextClass(),
+					Style(current_view->buffer()->params.textclass,
 					      par->GetLayout()).font);
 			par_depth = par->GetDepth();
 		}
 	}
 
-	tmpfont.realize(textclasslist.TextClass(GetCurrentTextClass()).defaultfont());
+	tmpfont.realize(textclasslist.TextClass(current_view->buffer()->params.textclass).defaultfont());
 	return tmpfont;
 }
 
@@ -2243,7 +2242,7 @@ LyXParagraph * LyXParagraph::TeXOnePar(string & file, TexRow & texrow,
 {
 	lyxerr[Debug::LATEX] << "TeXOnePar...     " << this << endl;
 	LyXParagraph * par = next;
-	LyXLayout const & style = textclasslist.Style(GetCurrentTextClass(),
+	LyXLayout const & style = textclasslist.Style(current_view->buffer()->params.textclass,
 						      layout);
 
 	bool further_blank_line = false;
@@ -2323,7 +2322,7 @@ LyXParagraph * LyXParagraph::TeXOnePar(string & file, TexRow & texrow,
 			file += ' ';
 		}
 		file += "\\par}";
-	} else if (textclasslist.Style(GetCurrentTextClass(),
+	} else if (textclasslist.Style(current_view->buffer()->params.textclass,
 				       GetLayout()).isCommand()){
 		if (style.resfont.size() != font.size()) {
 			file += '\\';
@@ -2412,7 +2411,7 @@ bool LyXParagraph::SimpleTeXOnePar(string & file, TexRow & texrow)
 	
 	bool return_value = false;
 
-	LyXLayout const & style = textclasslist.Style(GetCurrentTextClass(), GetLayout());
+	LyXLayout const & style = textclasslist.Style(current_view->buffer()->params.textclass, GetLayout());
 	LyXFont basefont;
 
 	/* maybe we have to create a optional argument */ 
@@ -2591,7 +2590,7 @@ bool LyXParagraph::SimpleTeXOneTablePar(string & file, TexRow & texrow)
 	int current_cell_number = -1;
 
 	LyXLayout const & style = 
-		textclasslist.Style(GetCurrentTextClass(), GetLayout());
+		textclasslist.Style(current_view->buffer()->params.textclass, GetLayout());
 	LyXFont basefont = getFont(-1); // Get layout font
 	// Which font is currently active?
 	LyXFont running_font = basefont;
@@ -2752,7 +2751,7 @@ bool LyXParagraph::TeXContTableRows(string & file,
 	char c;
    
 	bool return_value = false;
-	LyXLayout const & style = textclasslist.Style(GetCurrentTextClass(),
+	LyXLayout const & style = textclasslist.Style(current_view->buffer()->params.textclass,
 						      GetLayout());
 	LyXFont basefont;
 
@@ -2927,7 +2926,7 @@ void LyXParagraph::SimpleDocBookOneTablePar(string & file, string & extra,
 	string emph = "emphasis";
 	bool emph_flag = false;
 	
-	LyXLayout const & style = textclasslist.Style(GetCurrentTextClass(),
+	LyXLayout const & style = textclasslist.Style(current_view->buffer()->params.textclass,
 						      GetLayout());
 	
 	if (style.labeltype != LABEL_MANUAL)
@@ -3099,7 +3098,7 @@ void LyXParagraph::DocBookContTableRows(string & file, string & extra,
 	bool emph_flag= false;
 	int char_line_count= 0;
 	
-	LyXLayout const & style = textclasslist.Style(GetCurrentTextClass(),
+	LyXLayout const & style = textclasslist.Style(current_view->buffer()->params.textclass,
 						      GetLayout());
 	
 	if (style.labeltype != LABEL_MANUAL)
@@ -3599,7 +3598,7 @@ LyXParagraph * LyXParagraph::TeXDeeper(string & file, TexRow & texrow,
 	while (par && par->depth == depth) {
 		if (par->IsDummy())
 			lyxerr << "ERROR (LyXParagraph::TeXDeeper)" << endl;
-		if (textclasslist.Style(GetCurrentTextClass(), 
+		if (textclasslist.Style(current_view->buffer()->params.textclass, 
 					par->layout).isEnvironment()
 		    || par->pextra_type != PEXTRA_NONE) 
 			{
@@ -3633,7 +3632,7 @@ LyXParagraph * LyXParagraph::TeXEnvironment(string & file, TexRow & texrow,
 	if (IsDummy())
 		lyxerr << "ERROR (LyXParagraph::TeXEnvironment)" << endl;
 
-	LyXLayout const & style = textclasslist.Style(GetCurrentTextClass(),
+	LyXLayout const & style = textclasslist.Style(current_view->buffer()->params.textclass,
 						      layout);
        
 	if (pextra_type == PEXTRA_INDENT) {
@@ -3771,7 +3770,7 @@ LyXParagraph * LyXParagraph::TeXEnvironment(string & file, TexRow & texrow,
 			minipage_open = false;
                 }
 		if (par && par->depth > depth) {
-			if (textclasslist.Style(GetCurrentTextClass(),
+			if (textclasslist.Style(current_view->buffer()->params.textclass,
 						par->layout).isParagraph()
 			    && !par->table
 			    && !suffixIs(file, "\n\n")) {
@@ -3905,7 +3904,7 @@ LyXParagraph * LyXParagraph::TeXFootnote(string & file, TexRow & texrow,
 			"No footnote!" << endl;
 
 	LyXParagraph * par = this;
-	LyXLayout const & style = textclasslist.Style(GetCurrentTextClass(), 
+	LyXLayout const & style = textclasslist.Style(current_view->buffer()->params.textclass, 
 						      previous->GetLayout());
 	
 	if (style.needprotect && footnotekind != LyXParagraph::FOOTNOTE){
@@ -4022,7 +4021,7 @@ LyXParagraph * LyXParagraph::TeXFootnote(string & file, TexRow & texrow,
 		// Process text for all floats except footnotes in body
 		do {
 			LyXLayout const & style =
-				textclasslist.Style(GetCurrentTextClass(),
+				textclasslist.Style(current_view->buffer()->params.textclass,
 						    par->layout);
 			if (par->IsDummy())
 				lyxerr << "ERROR (LyXParagraph::TeXFootnote)"
@@ -4057,7 +4056,7 @@ LyXParagraph * LyXParagraph::TeXFootnote(string & file, TexRow & texrow,
 		int dummy_count = 0;
 		do {
 			LyXLayout const & style =
-				textclasslist.Style(GetCurrentTextClass(),
+				textclasslist.Style(current_view->buffer()->params.textclass,
 						    par->layout);
 			if (par->IsDummy())
 				lyxerr << "ERROR (LyXParagraph::TeXFootnote)"
@@ -4148,7 +4147,7 @@ void LyXParagraph::SetPExtraType(int type, char const * width,
 	pextra_width = width;
 	pextra_widthp = widthp;
 
-	if (textclasslist.Style(GetCurrentTextClass(), 
+	if (textclasslist.Style(current_view->buffer()->params.textclass, 
 				layout).isEnvironment()) {
 		LyXParagraph
 			* par = this,
@@ -4191,7 +4190,7 @@ void LyXParagraph::UnsetPExtraType()
 	pextra_width.clear();
 	pextra_widthp.clear();
 
-	if (textclasslist.Style(GetCurrentTextClass(), 
+	if (textclasslist.Style(current_view->buffer()->params.textclass, 
 				layout).isEnvironment()) {
 		LyXParagraph
 			* par = this,

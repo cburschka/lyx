@@ -57,7 +57,6 @@ extern void MenuLayoutSave();
 extern void ShowCredits();
 extern void ShowCopyright();
 extern void show_symbols_form(LyXFunc *);
-extern void BeforeChange();
 extern void ProhibitInput();
 extern void AllowInput();
 extern void OpenStuff();
@@ -1087,7 +1086,7 @@ void Menus::ShowEditMenu(FL_OBJECT * ob, long)
      		if (men->currentView()->available()){
 			men->currentView()->getScreen()->HideCursor();
 			if (!men->currentView()->text->selection){
-				BeforeChange(); 
+				men->currentView()->beforeChange(); 
 				men->currentView()->update(-2);
 			}
 			men->currentView()->text->

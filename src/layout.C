@@ -1389,8 +1389,8 @@ bool LyXTextClassList::Read ()
 {
 	LyXLex lex(0, 0);
 	string real_file = LibFileSearch("", "textclass.lst");
-	lyxerr[Debug::TCLASS] << "Reading textclasses from "
-			      << real_file << endl;
+	lyxerr[Debug::TCLASS] << "Reading textclasses from `"
+			      << real_file << "'" << endl;
 
 	if (real_file.empty()) {
 		lyxerr << "LyXTextClassList::Read: unable to find "
@@ -1424,7 +1424,9 @@ bool LyXTextClassList::Read ()
 	bool finished = false;
 	string fname, clname, desc;
 	// Parse config-file
+	lyxerr[Debug::TCLASS] << "Starting parsing of textclass.lst" << endl;
 	while (lex.IsOK() && !finished) {
+		lyxerr[Debug::TCLASS] << "\tline by line" << endl;
 		switch (lex.lex()) {
 		case LyXLex::LEX_FEOF:
 			finished = true;
@@ -1454,9 +1456,10 @@ bool LyXTextClassList::Read ()
 			}
 		}
 	}
-	
+	lyxerr[Debug::TCLASS] << "End of parsing of textclass.lst" << endl;
+
 	if (classlist.size() == 0) {
-		lyxerr << "LyXTextClassList::Read: no textclass found!"
+		lyxerr << "LyXTextClassList::Read: no textclasses found!"
 		       << endl;
 		WriteAlert(_("LyX wasn't able to find any layout description!"),
 			   _("Check the contents of  the file \"textclass.lst\""),

@@ -16,7 +16,6 @@
 
 extern FD_form_paragraph_extra * fd_form_paragraph_extra;
 extern BufferView * current_view;
-extern void BeforeChange();
 static bool CheckInputWidth();
 
 inline void DeactivateParagraphExtraButtons ()

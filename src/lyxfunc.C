@@ -78,7 +78,6 @@ extern bool selection_possible;
 
 extern kb_keymap * toplevel_keymap;
 
-extern void BeforeChange();
 extern void MenuWrite(Buffer *);
 extern void MenuWriteAs(Buffer *);
 extern int  MenuRunLaTeX(Buffer *);
@@ -89,7 +88,7 @@ extern void MenuPrint(Buffer *);
 extern void MenuSendto();
 extern void QuitLyX();
 extern void MenuFax(Buffer *);
-extern void MenuExport(Buffer *,string const &);
+extern void MenuExport(Buffer *, string const &);
 extern void MenuPasteSelection(char at);
 extern LyXAction lyxaction;
 // (alkis)
@@ -208,9 +207,9 @@ int LyXFunc::processKeyEvent(XEvent * ev)
 	
 	// this function should be used always [asierra060396]
 	if (owner->view()->available() &&
-	    owner->buffer()->the_locking_inset &&
+	    owner->view()->the_locking_inset &&
 	    keysym_return == XK_Escape) {
-		UnlockInset(owner->buffer()->the_locking_inset);
+		UnlockInset(owner->view()->the_locking_inset);
 		owner->view()->text->CursorRight();
 		return 0;
 	}
@@ -521,7 +520,7 @@ string LyXFunc::Dispatch(int ac,
 	// If in math mode pass the control to
 	// the math inset [asierra060396]
 	if (owner->view()->available() &&
-	    owner->buffer()->the_locking_inset) {
+	    owner->view()->the_locking_inset) {
 		if (action > 1
 		    || (action == LFUN_UNKNOWN_ACTION
 			&& keyseq.length >= -1)) {
@@ -533,7 +532,7 @@ string LyXFunc::Dispatch(int ac,
 		        if (action == LFUN_UNDO) {
 				int slx, sly;
 				UpdatableInset * inset = 
-					owner->buffer()->the_locking_inset;
+					owner->view()->the_locking_inset;
 				inset->GetCursorPos(slx, sly);
 				UnlockInset(inset);
 				MenuUndo();
@@ -544,7 +543,7 @@ string LyXFunc::Dispatch(int ac,
 			} else 
 				if (action == LFUN_REDO) {
 					int slx, sly;
-					UpdatableInset * inset = owner->buffer()->the_locking_inset;
+					UpdatableInset * inset = owner->view()->the_locking_inset;
 					inset->GetCursorPos(slx, sly);
 					UnlockInset(inset);
 					MenuRedo();
@@ -553,7 +552,7 @@ string LyXFunc::Dispatch(int ac,
 						inset->Edit(slx, sly);
 					return string();
 				} else
-					if (owner->buffer()->the_locking_inset->LocalDispatch(action, argument.c_str()))
+					if (owner->view()->the_locking_inset->LocalDispatch(action, argument.c_str()))
 						return string();
 					else {
 						setMessage(N_("Text mode"));
@@ -658,7 +657,7 @@ string LyXFunc::Dispatch(int ac,
 		break;
 		
 	case LFUN_CENTER: // this is center and redraw.
-		BeforeChange();
+		owner->view()->beforeChange();
 		if (owner->view()->text->cursor.y >
 		    owner->view()->getWorkArea()->h / 2)	{
 			owner->view()->getScreen()->
@@ -1014,7 +1013,7 @@ string LyXFunc::Dispatch(int ac,
 		// it is the LyXView or the BufferView that should
 		// remember the previous buffer, not bufferlist.
 // 			if (owner->view()->available()){	  
-// 				BeforeChange();
+// 				owner->view()->beforeChange();
 // 				owner->buffer()->update(-2);
 // 			}
 // 			owner->view()->setBuffer(bufferlist.prev());
@@ -1275,7 +1274,7 @@ string LyXFunc::Dispatch(int ac,
 	{
 		LyXText * tmptext = owner->view()->text;
 		if(!tmptext->mark_set)
-			BeforeChange();
+			owner->view()->beforeChange();
 		owner->view()->update(-2);
 		if (tmptext->cursor.pos < tmptext->cursor.par->Last()
 		    && tmptext->cursor.par->GetChar(tmptext->cursor.pos)
@@ -1299,7 +1298,7 @@ string LyXFunc::Dispatch(int ac,
 		// This is soooo ugly. Isn`t it possible to make
 		// it simpler? (Lgb)
 		LyXText * txt = owner->view()->text;
-		if(!txt->mark_set) BeforeChange();
+		if(!txt->mark_set) owner->view()->beforeChange();
 		owner->view()->update(-2);
 		txt->CursorLeft();
 		if (txt->cursor.pos < txt->cursor.par->Last()
@@ -1320,7 +1319,7 @@ string LyXFunc::Dispatch(int ac,
 	break;
 		
 	case LFUN_UP:
-		if(!owner->view()->text->mark_set) BeforeChange();
+		if(!owner->view()->text->mark_set) owner->view()->beforeChange();
 		owner->view()->update(-3);
 		owner->view()->text->CursorUp();
 		owner->view()->text->FinishUndo();
@@ -1330,7 +1329,7 @@ string LyXFunc::Dispatch(int ac,
 		
 	case LFUN_DOWN:
 		if(!owner->view()->text->mark_set)
-			BeforeChange();
+			owner->view()->beforeChange();
 		owner->view()->update(-3);
 		owner->view()->text->CursorDown();
 		owner->view()->text->FinishUndo();
@@ -1340,7 +1339,7 @@ string LyXFunc::Dispatch(int ac,
 
 	case LFUN_UP_PARAGRAPH:
 		if(!owner->view()->text->mark_set)
-			BeforeChange();
+			owner->view()->beforeChange();
 		owner->view()->update(-3);
 		owner->view()->text->CursorUpParagraph();
 		owner->view()->text->FinishUndo();
@@ -1350,7 +1349,7 @@ string LyXFunc::Dispatch(int ac,
 		
 	case LFUN_DOWN_PARAGRAPH:
 		if(!owner->view()->text->mark_set)
-			BeforeChange();
+			owner->view()->beforeChange();
 		owner->view()->update(-3);
 		owner->view()->text->CursorDownParagraph();
 		owner->view()->text->FinishUndo();
@@ -1360,7 +1359,7 @@ string LyXFunc::Dispatch(int ac,
 		
 	case LFUN_PRIOR:
 		if(!owner->view()->text->mark_set)
-			BeforeChange();
+			owner->view()->beforeChange();
 		owner->view()->update(-3);
 		owner->view()->cursorPrevious();
 		owner->view()->text->FinishUndo();
@@ -1370,7 +1369,7 @@ string LyXFunc::Dispatch(int ac,
 		
 	case LFUN_NEXT:
 		if(!owner->view()->text->mark_set)
-			BeforeChange();
+			owner->view()->beforeChange();
 		owner->view()->update(-3);
 		owner->view()->cursorNext();
 		owner->view()->text->FinishUndo();
@@ -1380,7 +1379,7 @@ string LyXFunc::Dispatch(int ac,
 		
 	case LFUN_HOME:
 		if(!owner->view()->text->mark_set)
-			BeforeChange();
+			owner->view()->beforeChange();
 		owner->view()->update(-2);
 		owner->view()->text->CursorHome();
 		owner->view()->text->FinishUndo();
@@ -1390,7 +1389,7 @@ string LyXFunc::Dispatch(int ac,
 		
 	case LFUN_END:
 		if(!owner->view()->text->mark_set)
-			BeforeChange();
+			owner->view()->beforeChange();
 		owner->view()->update(-2);
 		owner->view()->text->CursorEnd();
 		owner->view()->text->FinishUndo();
@@ -1400,7 +1399,7 @@ string LyXFunc::Dispatch(int ac,
 		
 	case LFUN_TAB:
 		if(!owner->view()->text->mark_set)
-			BeforeChange();
+			owner->view()->beforeChange();
 		owner->view()->update(-2);
 		owner->view()->text->CursorTab();
 		owner->view()->text->FinishUndo();
@@ -1410,7 +1409,7 @@ string LyXFunc::Dispatch(int ac,
 		
 	case LFUN_WORDRIGHT:
 		if(!owner->view()->text->mark_set)
-			BeforeChange();
+			owner->view()->beforeChange();
 		owner->view()->update(-2);
 		owner->view()->text->CursorRightOneWord();
 		owner->view()->text->FinishUndo();
@@ -1420,7 +1419,7 @@ string LyXFunc::Dispatch(int ac,
 		
 	case LFUN_WORDLEFT:
 		if(!owner->view()->text->mark_set)
-			BeforeChange();
+			owner->view()->beforeChange();
 		owner->view()->update(-2);
 		owner->view()->text->CursorLeftOneWord();
 		owner->view()->text->FinishUndo();
@@ -1430,7 +1429,7 @@ string LyXFunc::Dispatch(int ac,
 		
 	case LFUN_BEGINNINGBUF:
 		if(!owner->view()->text->mark_set)
-			BeforeChange();
+			owner->view()->beforeChange();
 		owner->view()->update(-2);
 		owner->view()->text->CursorTop();
 		owner->view()->text->FinishUndo();
@@ -1440,7 +1439,7 @@ string LyXFunc::Dispatch(int ac,
 		
 	case LFUN_ENDBUF:
 		if(!owner->view()->text->mark_set)
-			BeforeChange();
+			owner->view()->beforeChange();
 		owner->view()->update(-2);
 		owner->view()->text->CursorBottom();
 		owner->view()->text->FinishUndo();
@@ -1564,7 +1563,7 @@ string LyXFunc::Dispatch(int ac,
 
 		// --- text changing commands ------------------------
 	case LFUN_BREAKLINE:
-		BeforeChange();
+		owner->view()->beforeChange();
 		owner->view()->text->InsertChar(LyXParagraph::META_NEWLINE);
 		owner->view()->smallUpdate(1);
 		SetUpdateTimer(0.01);
@@ -1572,7 +1571,7 @@ string LyXFunc::Dispatch(int ac,
 		break;
 		
 	case LFUN_PROTECTEDSPACE:
-		BeforeChange();
+		owner->view()->beforeChange();
 		owner->view()->text->
 			InsertChar(LyXParagraph::META_PROTECTED_SEPARATOR);
 		owner->view()->smallUpdate(1);
@@ -1582,11 +1581,11 @@ string LyXFunc::Dispatch(int ac,
 		
 	case LFUN_SETMARK:
 		if(owner->view()->text->mark_set) {
-			BeforeChange();
+			owner->view()->beforeChange();
 			owner->view()->update(0);
 			setMessage(N_("Mark removed"));
 		} else {
-			BeforeChange();
+			owner->view()->beforeChange();
 			owner->view()->text->mark_set = 1;
 			owner->view()->update(0);
 			setMessage(N_("Mark set"));
@@ -1688,7 +1687,7 @@ string LyXFunc::Dispatch(int ac,
 		
 		/* -------> Set mark off. */
 	case LFUN_MARK_OFF:
-		BeforeChange();
+		owner->view()->beforeChange();
 		owner->view()->update(0);
 		owner->view()->text->sel_cursor = 
 			owner->view()->text->cursor;
@@ -1697,7 +1696,7 @@ string LyXFunc::Dispatch(int ac,
 
 		/* -------> Set mark on. */
 	case LFUN_MARK_ON:
-		BeforeChange();
+		owner->view()->beforeChange();
 		owner->view()->text->mark_set = 1;
 		owner->view()->update( 0 );
 		owner->view()->text->sel_cursor = 
@@ -1759,7 +1758,7 @@ string LyXFunc::Dispatch(int ac,
 
 	case LFUN_BREAKPARAGRAPH:
 	{
-		BeforeChange();
+		owner->view()->beforeChange();
 		owner->view()->text->BreakParagraph(0);
 		owner->view()->smallUpdate(1);
 		SetUpdateTimer(0.01);
@@ -1770,7 +1769,7 @@ string LyXFunc::Dispatch(int ac,
 
 	case LFUN_BREAKPARAGRAPHKEEPLAYOUT:
 	{
-		BeforeChange();
+		owner->view()->beforeChange();
 		owner->view()->text->BreakParagraph(1);
 		owner->view()->smallUpdate(1);
 		SetUpdateTimer(0.01);
@@ -1787,7 +1786,7 @@ string LyXFunc::Dispatch(int ac,
 		
 		LyXCursor cursor = owner->view()->text->cursor;
 		
-		BeforeChange();
+		owner->view()->beforeChange();
 		if (cursor.pos == 0) {
 			if (cursor.par->added_space_top == VSpace(VSpace::NONE)) {
 				owner->view()->text->SetParagraph
@@ -1811,7 +1810,7 @@ string LyXFunc::Dispatch(int ac,
 	break;
 	
 	case LFUN_QUOTE:
-		BeforeChange();
+		owner->view()->beforeChange();
 		owner->view()->text->InsertChar('\"');  // This " matches the single quote in the code
 		owner->view()->smallUpdate(1);
 		SetUpdateTimer();
@@ -1923,7 +1922,7 @@ string LyXFunc::Dispatch(int ac,
 		owner->buffer()->setCursorFromRow(row);
 
 		// Recenter screen
-		BeforeChange();
+		owner->view()->beforeChange();
 		if (owner->view()->text->cursor.y >
 		    owner->view()->getWorkArea()->h / 2)	{
 			owner->view()->getScreen()->
@@ -2069,7 +2068,7 @@ string LyXFunc::Dispatch(int ac,
 		if (owner->view()->available()) { 
 			owner->buffer()->
 				open_new_inset(new InsetFormula(false));
-			owner->buffer()->
+			owner->view()->
 				the_locking_inset->LocalDispatch(action, argument.c_str());
 		}
 	}	   
@@ -2396,7 +2395,7 @@ string LyXFunc::Dispatch(int ac,
 				}
 			}
 			
-			BeforeChange();
+			owner->view()->beforeChange();
 			for (string::size_type i = 0;
 			     i < argument.length(); ++i) {
 				if (greek_kb_flag) {

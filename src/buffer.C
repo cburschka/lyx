@@ -101,8 +101,6 @@ using std::setw;
 
 // all these externs should eventually be removed.
 extern BufferList bufferlist;
-extern unsigned char GetCurrentTextClass();
-extern void BeforeChange();
 
 extern void MenuExport(Buffer *, string const &);
 extern LyXAction lyxaction;
@@ -121,14 +119,12 @@ Buffer::Buffer(string const & file, LyXRC * lyxrc, bool ronly)
 	filename = file;
 	filepath = OnlyPath(file);
 	paragraph = 0;
-	the_locking_inset = 0;
 	lyx_clean = true;
 	bak_clean = true;
 	dvi_clean_orgd = false;  // Heinrich Bauer, 23/03/98
 	dvi_clean_tmpd = false;  // Heinrich Bauer, 23/03/98
 	dep_clean = 0;
 	read_only = ronly;
-	inset_slept = false;
 	users = 0;
 	lyxvc.buffer(this);
 	if (read_only || (lyxrc && lyxrc->use_tempdir)) {
@@ -205,18 +201,6 @@ void Buffer::fileName(string const & newfile)
 
 
 // candidate for move to BufferView
-void Buffer::InsetUnlock()
-{
-	if (the_locking_inset) {
-		if (!inset_slept) the_locking_inset->InsetUnlock();
-		the_locking_inset = 0;
-		users->text->FinishUndo();
-		inset_slept = false;
-	}
-}
-
-
-// candidate for move to BufferView
 // Inserts a file into current document
 bool Buffer::insertLyXFile(string const & filen)
 	//
@@ -241,7 +225,7 @@ bool Buffer::insertLyXFile(string const & filen)
 		return false;
 	}
 	
-	BeforeChange();
+	users->beforeChange();
 
 	ifstream ifs(fname.c_str());
 	if (!ifs) {
@@ -1577,7 +1561,10 @@ void Buffer::makeLaTeXFile(string const & fname,
 			   bool nice, bool only_body)
 {
 	lyxerr[Debug::LATEX] << "makeLaTeXFile..." << endl;
-	params.textclass = GetCurrentTextClass();
+	
+	// How the **** can this be needed?
+	//params.textclass = current_view->buffer()->params.textclass;
+	
 	niceFile = nice; // this will be used by Insetincludes.
 
 	tex_code_break_column = lyxrc->ascii_linelen;
@@ -2191,7 +2178,7 @@ void Buffer::makeLinuxDocFile(string const & fname, int column)
 	while (par) {
 		int desc_on = 0;            /* description mode*/
 		LyXLayout const & style =
-			textclasslist.Style(GetCurrentTextClass(),
+			textclasslist.Style(users->buffer()->params.textclass,
 					    par->layout);
 		par->AutoDeleteInsets();
 
@@ -2774,7 +2761,7 @@ void Buffer::makeDocBookFile(string const & fname, int column)
 
 	while (par) {
 		int desc_on= 0;            /* description mode*/
-		LyXLayout const & style = textclasslist.Style(GetCurrentTextClass(),
+		LyXLayout const & style = textclasslist.Style(users->buffer()->params.textclass,
 						   par->layout);
 		par->AutoDeleteInsets();
 
@@ -3766,7 +3753,7 @@ void Buffer::insertInset(Inset * inset, string const & lout,
 	users->text->SetCursorParUndo();
 	users->text->FreezeUndo();
 	
-	BeforeChange();
+	users->beforeChange();
 	if (!lout.empty()) {
 		users->update(-2);
 		users->text->BreakParagraph();
@@ -3809,7 +3796,7 @@ void Buffer::insertInset(Inset * inset, string const & lout,
 // candidate for move to BufferView
 void Buffer::open_new_inset(UpdatableInset * new_inset)
 {
-	BeforeChange();
+	users->beforeChange();
 	users->text->FinishUndo();
 	insertInset(new_inset);
 	users->text->CursorLeft();
@@ -3950,7 +3937,7 @@ bool Buffer::gotoLabel(string const & label)
                 while ((inset = par->ReturnNextInsetPointer(pos))){     
                         for (int i = 0; i < inset->GetNumberOfLabels(); i++) {
 				if (label == inset->getLabel(i)) {
-					BeforeChange();
+					users->beforeChange();
 					users->text->SetCursor(par, pos);
 					users->text->sel_cursor = users->text->cursor;
 					users->update(0);

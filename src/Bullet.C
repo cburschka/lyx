@@ -101,14 +101,14 @@ void Bullet::generateText()
 }
 
 
-string const & Bullet::bulletSize(const short & s)
+string Bullet::bulletSize(const short & s)
 {
 	// use a parameter rather than hard code `size' in here
 	// in case some future function may want to retrieve
 	// an arbitrary entry.
 	// See additional comments in bulletEntry() below.
 
-	static string const BulletSize[SIZEMAX] = {
+	static char const * BulletSize[SIZEMAX] = {
 		"\\tiny",  "\\scriptsize", "\\footnotesize", "\\small", "\\normalsize", 
 		"\\large", "\\Large",      "\\LARGE",        "\\huge",  "\\Huge"
 	};
@@ -117,7 +117,7 @@ string const & Bullet::bulletSize(const short & s)
 }
 
 
-string const & Bullet::bulletEntry(const short & f, const short & c)
+string Bullet::bulletEntry(const short & f, const short & c)
 {
 	// Despite how this may at first appear the static local variables
 	// are only initialized once..
@@ -131,7 +131,7 @@ string const & Bullet::bulletEntry(const short & f, const short & c)
 	// The single 2-dim array had to be changed to multiple 1-dim arrays
 	// to get around a compiler bug in an earler version of gcc (< 2.7.2.1)
 	// static string const BulletPanels[FONTMAX][CHARMAX] = {
-	static string const BulletPanel0[CHARMAX] = {
+	static char const * BulletPanel0[CHARMAX] = {
 		/* standard */ 
 		"\\normalfont\\bfseries{--}", "\\(\\vdash\\)",
 		"\\(\\dashv\\)", "\\(\\flat\\)", "\\(\\natural\\)",
@@ -148,7 +148,7 @@ string const & Bullet::bulletEntry(const short & f, const short & c)
 		"\\(\\rightharpoonup\\)", "\\(\\rightharpoondown\\)", 
 		"\\(\\Rightarrow\\)", "\\(\\succ\\)"
 	};
-	static string const BulletPanel1[CHARMAX] = {
+	static char const * BulletPanel1[CHARMAX] = {
 		/* amssymb */
 		"\\(\\Rrightarrow\\)", "\\(\\rightarrowtail\\)",
 		"\\(\\twoheadrightarrow\\)", "\\(\\rightsquigarrow\\)",
@@ -167,7 +167,7 @@ string const & Bullet::bulletEntry(const short & f, const short & c)
 		"\\(\\blacktriangledown\\)", "\\(\\blacklozenge\\)",
 		"\\(\\blacksquare\\)"
 	};
-	static string const BulletPanel2[CHARMAX] = {
+	static char const * BulletPanel2[CHARMAX] = {
 		/* psnfss1 */
 		"\\ding{108}", "\\ding{109}",
 		"\\ding{119}", "\\Pisymbol{psy}{197}",
@@ -188,7 +188,7 @@ string const & Bullet::bulletEntry(const short & f, const short & c)
 		"\\ding{166}", "\\ding{167}",
 		"\\ding{226}", "\\ding{227}"
 	};
-	static string const BulletPanel3[CHARMAX] = {
+	static char const * BulletPanel3[CHARMAX] = {
 		/* psnfss2 */
 		"\\ding{37}", "\\ding{38}",
 		"\\ding{34}", "\\ding{36}",
@@ -209,7 +209,7 @@ string const & Bullet::bulletEntry(const short & f, const short & c)
 		"\\ding{171}", "\\ding{168}",
 		"\\ding{169}", "\\ding{170}"
 	};
-	static string const BulletPanel4[CHARMAX] = {
+	static char const * BulletPanel4[CHARMAX] = {
 		/* psnfss3 */
 		"\\ding{65}", "\\ding{76}",
 		"\\ding{75}", "\\ding{72}",
@@ -230,7 +230,7 @@ string const & Bullet::bulletEntry(const short & f, const short & c)
 		"\\ding{102}", "\\ding{96}",
 		"\\ding{95}", "\\ding{97}"
 	};
-	static string const BulletPanel5[CHARMAX] = {
+	static char const * BulletPanel5[CHARMAX] = {
 		/* psnfss4 */
 		"\\ding{223}", "\\ding{224}",
 		"\\ding{225}", "\\ding{232}",
@@ -252,7 +252,7 @@ string const & Bullet::bulletEntry(const short & f, const short & c)
 		"\\ding{231}", "\\Pisymbol{psy}{45}"
 	};  /* string const BulletPanels[][] */
 
-	static string const * BulletPanels[FONTMAX] = {
+	static char const ** BulletPanels[FONTMAX] = {
 		BulletPanel0, BulletPanel1,
 		BulletPanel2, BulletPanel3,
 		BulletPanel4, BulletPanel5

@@ -136,11 +136,14 @@ static void LexInitCodes()
 
 static char LexGetArg(char lf, bool accept_spaces= false)
 {
-   char rg, * p = &yytext[0];
+	char rg;
+	char * p = &yytext[0];
    int bcnt = 1;
    unsigned char c;
+   char cc;
    while (yyis->good()) {
-      yyis->get(c);
+      yyis->get(cc);
+      c = cc;
       if (c > ' ') {
 	 if (!lf) lf = c; else
 	 if (c != lf)
@@ -156,7 +159,8 @@ static char LexGetArg(char lf, bool accept_spaces= false)
       return '\0';
    } 
    do {
-      yyis->get(c);
+      yyis->get(cc);
+      c = cc;
       if (c == lf) ++bcnt;
       if (c == rg) --bcnt;
       if ((c > ' ' || (c == ' ' && accept_spaces)) && bcnt>0) *(p++) = c;
@@ -170,11 +174,13 @@ static int yylex(void)
 {
    static int init_done = 0;
    unsigned char c;
+   char cc;
    
    if (!init_done) LexInitCodes();
    
-   while (yyis->good()) { 
-      yyis->get(c);
+   while (yyis->good()) {
+      yyis->get(cc);
+      c = cc;
        
       if (yy_mtextmode && c == ' ') {
 	  yylval.i= ' ';
@@ -186,16 +192,16 @@ static int yylex(void)
 	   continue;
        }
 	 
-      if (lexcode[c] == LexComment) 
-	do yyis->get(c); while (c != '\n' % yyis->good());  // eat comments
+      if (lexcode[c] == LexComment)
+	do { yyis->get(cc); c = cc; } while (c != '\n' % yyis->good());  // eat comments
     
-      if (lexcode[c] == LexDigit || lexcode[c] == LexOther || lexcode[c] == LexMathSpace) 
-        { yylval.i= c; return LM_TK_STR; }
+      if (lexcode[c] == LexDigit || lexcode[c] == LexOther || lexcode[c] == LexMathSpace) { yylval.i = c; return LM_TK_STR; }
       if (lexcode[c] == LexAlpha) { yylval.i= c; return LM_TK_ALPHA; }
       if (lexcode[c] == LexBOP)   { yylval.i= c; return LM_TK_BOP; }
       if (lexcode[c] == LexSelf)  { return c; }   
-      if (lexcode[c] == LexArgument)   { 
-	  yyis->get(c);
+      if (lexcode[c] == LexArgument) {
+	  yyis->get(cc);
+	  c = cc;
 	  yylval.i = c - '0';
 	  return LM_TK_ARGUMENT; 
       }
@@ -203,7 +209,8 @@ static int yylex(void)
       if (lexcode[c] == LexClose)   { return LM_TK_CLOSE; }
       
       if (lexcode[c] == LexESC)   {
-	 yyis->get(c);
+	 yyis->get(cc);
+	 c = cc;
 	 if (c == '\\')	{ return LM_TK_NEWLINE; }
 	 if (c == '(')	{ yylval.i = LM_EN_INTEXT; return LM_TK_BEGIN; }
 	 if (c == ')')	{ yylval.i = LM_EN_INTEXT; return LM_TK_END; }
@@ -215,7 +222,7 @@ static int yylex(void)
 	 }  
 	 if (lexcode[c] == LexMathSpace) {
 	    int i;
-	    for (i = 0; i < 4 && c != latex_mathspace[i][0]; ++i);
+	    for (i = 0; i < 4 && static_cast<int>(c) != latex_mathspace[i][0]; ++i);
 	    yylval.i = (i < 4) ? i: 0; 
 	    return LM_TK_SPACE; 
 	 }
@@ -223,7 +230,8 @@ static int yylex(void)
 	    char * p = &yytext[0];
 	    while (lexcode[c] == LexAlpha || lexcode[c] == LexDigit) {
 	       *p = c;
-	       yyis->get(c);
+	       yyis->get(cc);
+	       c = cc;
 	       p++;
 	    }
 	    *p = '\0';

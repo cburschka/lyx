@@ -72,6 +72,8 @@ public:
 		fl_set_timer(timer_cursor, 0.4);
 		return screen;
 	}
+	///
+	void beforeChange();
         ///
         void savePosition();
         ///
@@ -80,6 +82,20 @@ public:
 	    This should be private...but not yet. (Lgb)
 	*/
 	LyXText * text;
+	///
+	UpdatableInset * the_locking_inset;
+	///
+	bool inset_slept;
+	///
+	int slx;
+	///
+	int sly;
+	///
+	void insetUnlock();
+	///
+	void insetSleep();
+	///
+	void insetWakeup();
 private:
 	/// Update pixmap of screen
 	void updateScreen();

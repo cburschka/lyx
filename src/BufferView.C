@@ -53,7 +53,6 @@ void sigchldhandler(pid_t pid, int * status);
 extern void SetXtermCursor(Window win);
 extern bool input_prohibited;
 extern bool selection_possible;
-extern void BeforeChange();
 extern char ascii_type;
 extern int UnlockInset(UpdatableInset * inset);
 extern void ToggleFloat();
@@ -85,6 +84,8 @@ BufferView::BufferView(LyXView * o, int xpos, int ypos,
 	fl_set_focus_object(owner_->getForm(), work_area);
 	work_area_focus = true;
 	lyx_focus = false;
+	the_locking_inset = 0;
+	inset_slept = false;
 }
 
 
@@ -208,7 +209,7 @@ void BufferView::buffer(Buffer * b)
 {
 	lyxerr[Debug::INFO] << "Setting buffer in BufferView" << endl;
 	if (buffer_) {
-		buffer_->InsetSleep();
+		insetSleep();
 		buffer_->delUser(this);
 		// Put the old text into the TextCache.
 		textcache.push_back(text);
@@ -247,7 +248,7 @@ void BufferView::buffer(Buffer * b)
 		screen->first = screen->TopCursorVisible();
 		redraw();
 		updateAllVisibleBufferRelatedPopups();
-	        buffer_->InsetWakeup();
+		insetWakeup();
 	} else {
 		lyxerr[Debug::INFO] << "  No Buffer!" << endl;
 		owner_->getMenus()->hideMenus();
@@ -477,7 +478,7 @@ void BufferView::gotoError()
 		return;
    
 	screen->HideCursor();
-	BeforeChange();
+	beforeChange();
 	update(-2);
 	LyXCursor tmp;
 
@@ -927,8 +928,8 @@ int BufferView::work_area_handler(FL_OBJECT * ob, int event,
 		fl_set_timer(view->timer_cursor, 0.4); // 0.4 sec blink
 		break;
 	case FL_DBLCLICK: 
-		// select a word 
-		if (view->buffer_ && !view->buffer_->the_locking_inset) {
+		// select a word
+		if (!view->the_locking_inset) {
 			if (view->screen && ev->xbutton.button == 1) {
 				view->screen->HideCursor();
 				view->screen->ToggleSelection();
@@ -972,16 +973,16 @@ int BufferView::WorkAreaMotionNotify(FL_OBJECT * ob, Window,
 	if (!screen) return 0;
 
 	// Check for inset locking
-	if (buffer_->the_locking_inset) {
+	if (the_locking_inset) {
 		LyXCursor cursor = text->cursor;
-		buffer_->the_locking_inset->
+		the_locking_inset->
 			InsetMotionNotify(ev->xbutton.x - ob->x - cursor.x,
 					  ev->xbutton.y - ob->y -
 					  (cursor.y),
 					  ev->xbutton.state);
 		return 0;
 	}
-   
+
 	// Only use motion with button 1
 	if (!ev->xmotion.state & Button1MotionMask)
 		return 0; 
@@ -1035,22 +1036,21 @@ int BufferView::WorkAreaButtonPress(FL_OBJECT * ob, Window,
 	if (button == 4 || button == 5) goto wheel;
 
 	{
-		
-		if (buffer_->the_locking_inset) {
+		if (the_locking_inset) {
 			// We are in inset locking mode
 		
 			/* Check whether the inset was hit. If not reset mode,
 			   otherwise give the event to the inset */
 			if (inset_hit != 0) {
-				buffer_->the_locking_inset->
+				the_locking_inset->
 					InsetButtonPress(inset_x, inset_y,
 							 button);
 				return 0;
 			} else {
-				UnlockInset(buffer_->the_locking_inset);
+				UnlockInset(the_locking_inset);
 			}
 		}
-	
+
 		selection_possible = true;
 		screen->HideCursor();
 	
@@ -1194,18 +1194,18 @@ int BufferView::WorkAreaButtonRelease(FL_OBJECT * ob, Window ,
 	int inset_y = y;
 	Inset * inset_hit = checkInsetHit(inset_x, inset_y);
 
-	if (buffer_->the_locking_inset) {
+	if (the_locking_inset) {
 		// We are in inset locking mode.
 
 		/* LyX does a kind of work-area grabbing for insets.
 		   Only a ButtonPress Event outside the inset will 
 		   force a InsetUnlock. */
-		buffer_->the_locking_inset->
+		the_locking_inset->
 			InsetButtonRelease(inset_x, inset_y, 
 					   ev->xbutton.button);
 		return 0;
 	}
-  
+	
 	selection_possible = false;
         if (text->cursor.par->table) {
                 int cell = text->
@@ -1497,23 +1497,22 @@ void BufferView::CursorToggleCB(FL_OBJECT * ob, long)
 	}
 
 	if (view->lyx_focus && view->work_area_focus) {
-		if (!view->buffer_->the_locking_inset) {
+		if (!view->the_locking_inset) {
 			view->screen->CursorToggle();
 		} else {
-			view->buffer_->the_locking_inset->
+			view->the_locking_inset->
 				ToggleInsetCursor();
 		}
 		goto set_timer_and_return;
 	} else {
 		// Make sure that the cursor is visible.
-		if (!view->buffer_->the_locking_inset) {
+		if (!view->the_locking_inset) {
 			view->screen->ShowCursor();
 		} else {
-			if (!view->buffer_->the_locking_inset->isCursorVisible())
-				view->buffer_->the_locking_inset->
+			if (!view->the_locking_inset->isCursorVisible())
+				view->the_locking_inset->
 					ToggleInsetCursor();
 		}
-
 		// This is only run when work_area_focus or lyx_focus is false.
 		Window tmpwin;
 		int tmp;
@@ -1558,7 +1557,7 @@ int BufferView::WorkAreaSelectionNotify(FL_OBJECT *, Window win,
 	unsigned char * uc = 0;
 	int tmpint;
 	screen->HideCursor();
-	BeforeChange();
+	beforeChange();
 	if (event->xselection.type == XA_STRING
 	    && event->xselection.property) {
     
@@ -1665,6 +1664,14 @@ bool BufferView::available() const
 }
 
 
+void BufferView::beforeChange()
+{
+	getScreen()->ToggleSelection();
+	text->ClearSelection();
+	FreeUpdateTimer();
+}
+
+
 void BufferView::savePosition()
 {
 	backstack.push(buffer()->fileName(),
@@ -1680,7 +1687,7 @@ void BufferView::restorePosition()
 	int  x, y;
 	string fname = backstack.pop(&x, &y);
 	
-	BeforeChange();
+	beforeChange();
 	Buffer * b = bufferlist.exists(fname) ?
 		bufferlist.getBuffer(fname) :
 		bufferlist.loadLyXFile(fname); // don't ask, just load it
@@ -1740,5 +1747,35 @@ void BufferView::smallUpdate(signed char f)
 		} else {
 			buffer()->markDirty();
 		}
+	}
+}
+
+
+void BufferView::insetSleep()
+{
+	if (the_locking_inset && !inset_slept) {
+		the_locking_inset->GetCursorPos(slx, sly);
+		the_locking_inset->InsetUnlock();
+		inset_slept = true;
+	}
+}
+
+
+void BufferView::insetWakeup()
+{
+	if (the_locking_inset && inset_slept) {
+		the_locking_inset->Edit(slx, sly);
+		inset_slept = false;
+	}
+}
+
+
+void BufferView::insetUnlock()
+{
+	if (the_locking_inset) {
+		if (!inset_slept) the_locking_inset->InsetUnlock();
+		the_locking_inset = 0;
+		text->FinishUndo();
+		inset_slept = false;
 	}
 }

@@ -198,9 +198,12 @@ bool LyXLex::EatLine()
 {
 	int i = 0;
 	unsigned char c = '\0';
-
+	char cc = 0;
 	while(is && c != '\n' && i != (LEX_MAX_BUFF - 1)) {
-		is.get(c);
+		is.get(cc);
+		c = cc;
+		lyxerr[Debug::LYXLEX] << "LyXLex::EatLine read char: `"
+				      << c << "'" << endl;
 		if (c != '\r')
 			buff[i++] = c;
 	}
@@ -250,15 +253,17 @@ int LyXLex::search_kw(char const * const tag) const
 bool LyXLex::next(bool esc)
 {
 	if (!esc) {
-		unsigned char c; // getc() returns an int
-		
+		unsigned char c = 0; // getc() returns an int
+		char cc = 0;
 		status = 0;
-		while (is && !status) { 
-			is.get(c);
+		while (is && !status) {
+			is.get(cc);
+			c = cc;
 			if (c == '#') {
 				// Read rest of line (fast :-)
 				is.get(buff, sizeof(buff));
-				lyxerr[Debug::LYXLEX] << "Comment read: " << c << buff << endl;
+				lyxerr[Debug::LYXLEX] << "Comment read: " << c
+						      << buff << endl;
 				++lineno;
 				continue;
 			}
@@ -266,7 +271,8 @@ bool LyXLex::next(bool esc)
 			if (c == '\"') {
 				int i = -1;
 				do {
-					is.get(c);
+					is.get(cc);
+					c = cc;
 					if (c != '\r')
 						buff[++i] = c;
 				} while (c != '\"' && c != '\n' && is &&
@@ -297,15 +303,12 @@ bool LyXLex::next(bool esc)
 			// the type _have_ to be unsigned. It usually a
 			// lot better to use the functions from cctype
 			if (c > ' ' && is)  {
-#warning Verify this! (Lgb)
-				//if (isalnum(static_cast<unsigned char>(c)) && is) {
 				int i = 0;
 				do {
 					buff[i++] = c;
-					is.get(c);
+					is.get(cc);
+					c = cc;
 				} while (c > ' ' && c != ',' && is
-				//} while (isalnum(static_cast<unsigned char>(c))
-					 //&& c != ',' && is
 					 && (i != LEX_MAX_BUFF - 1) );
 				if (i == LEX_MAX_BUFF - 1) {
 					printError("Line too long");
@@ -319,7 +322,8 @@ bool LyXLex::next(bool esc)
 				// possibility of "\r\n" at the end of
 				// a line.  This will stop LyX choking
 				// when it expected to find a '\n'
-				is.get(c);
+				is.get(cc);
+				c = cc;
 			}
 
 			if (c == '\n')
@@ -332,11 +336,13 @@ bool LyXLex::next(bool esc)
 		buff[0] = '\0';
 		return false;
 	} else {
-		unsigned char c; // getc() returns an int
+		unsigned char c = 0; // getc() returns an int
+		char cc = 0;
 		
 		status = 0;
 		while (is && !status) {
-			is.get(c);
+			is.get(cc);
+			c = cc;
 
 			// skip ','s
 			if (c == ',') continue;
@@ -347,13 +353,13 @@ bool LyXLex::next(bool esc)
 				do {
 					if (c == '\\') {
 						// escape the next char
-						is.get(c);
+						is.get(cc);
+						c = cc;
 					}
 					buff[i++] = c;
-					is.get(c);
+					is.get(cc);
+					c = cc;
 				} while (c > ' ' && c != ',' && is
-				//} while (isalnum(static_cast<unsigned char>(c))
-					 //&& c != ',' && is
 					 && (i != LEX_MAX_BUFF - 1) );
 				if (i == LEX_MAX_BUFF - 1) {
 					printError("Line too long");
@@ -366,7 +372,8 @@ bool LyXLex::next(bool esc)
 			if (c == '#') {
 				// Read rest of line (fast :-)
 				is.get(buff, sizeof(buff));
-				lyxerr[Debug::LYXLEX] << "Comment read: " << c << buff << endl;
+				lyxerr[Debug::LYXLEX] << "Comment read: " << c
+						      << buff << endl;
 				++lineno;
 				continue;
 			}
@@ -377,11 +384,13 @@ bool LyXLex::next(bool esc)
 				bool escaped = false;
 				do {
 					escaped = false;
-					is.get(c);
+					is.get(cc);
+					c = cc;
 					if (c == '\r') continue;
 					if (c == '\\') {
 						// escape the next char
-						is.get(c);
+						is.get(cc);
+						c = cc;
 						escaped = true;
 					}
 					buff[++i] = c;
@@ -408,19 +417,18 @@ bool LyXLex::next(bool esc)
 			}
 			
 			if (c > ' ' && is) {
-				//if (isalnum(static_cast<unsigned char>(c)) && is) {
 				int i = 0;
 				do {
 					if (c == '\\') {
 						// escape the next char
-						is.get(c);
+						is.get(cc);
+						c = cc;
 						//escaped = true;
 					}
 					buff[i++] = c;
-					is.get(c);
+					is.get(cc);
+					c = cc;
 				} while (c > ' ' && c != ',' && is
-				//} while (isalnum(static_cast<unsigned char>(c))
-					 //!= ',' && is
 					 && (i != LEX_MAX_BUFF-1) );
 				if (i == LEX_MAX_BUFF-1) {
 					printError("Line too long");
@@ -437,7 +445,7 @@ bool LyXLex::next(bool esc)
 		
 		status = is.eof() ? LEX_FEOF: LEX_UNDEF;
 		buff[0] = '\0';
-		return false;	
+		return false;
 	}
 }
 
@@ -445,28 +453,26 @@ bool LyXLex::next(bool esc)
 bool LyXLex::nextToken()
 {
         status = 0;
-	while (is && !status) { 
-		unsigned char c;
-		is.get(c);
-	   
+	while (is && !status) {
+		unsigned char c = 0;
+		char cc = 0;
+		is.get(cc);
+		c = cc;
 		if (c >= ' ' && is) {
-			//if (isprint(static_cast<unsigned char>(c)) && is) {
 			int i = 0;
 			if (c == '\\') { // first char == '\\'
 				do {
 					buff[i++] = c;
-					is.get(c);
+					is.get(cc);
+					c = cc;
 				} while (c > ' ' && c != '\\' && is
-				//} while (isalnum(static_cast<unsigned char>(c))
-				//	 && c != '\\' && is
 					 && i != (LEX_MAX_BUFF-1));
 			} else {
 				do {
 					buff[i++] = c;
-					is.get(c);
+					is.get(cc);
+					c = cc;
 				} while (c >= ' ' && c != '\\' && is
-				//} while (isprint(static_cast<unsigned char>(c))
-					 // && c != '\\' && is
 					 && i != (LEX_MAX_BUFF-1));
 			}
 

@@ -39,7 +39,6 @@ using std::max;
 #include "math_panel.h"                 
 #include "math_parser.h"
 
-extern void BeforeChange();
 extern void Update(signed char);
 extern int UnlockInset(UpdatableInset *);
 extern short greek_kb_flag;
@@ -356,7 +355,7 @@ Bool math_insert_greek(char const c)
       math_insert_symbol(s);
       if (greek_kb_flag<2) {
 	 greek_kb_flag = 0;
-	 UnlockInset(current_view->buffer()->the_locking_inset);
+	 UnlockInset(current_view->the_locking_inset);
       }
       return True;
    } else
@@ -366,16 +365,16 @@ Bool math_insert_greek(char const c)
 void math_insert_symbol(char const* s)
 {
    if (current_view->available())   {
-      if (!current_view->buffer()->the_locking_inset) {
+      if (!current_view->the_locking_inset) {
 	 InsetFormula * new_inset = new InsetFormula();
-	 BeforeChange();
+	 current_view->beforeChange();
 	 current_view->buffer()->insertInset(new_inset);
 //	 Update(1);//BUG
 	 new_inset->Edit(0, 0);
 	 new_inset->InsertSymbol(s);
       } else
-	if (current_view->buffer()->the_locking_inset->LyxCode() == Inset::MATH_CODE)
-		static_cast<InsetFormula*>(current_view->buffer()->the_locking_inset)->InsertSymbol(s);
+	if (current_view->the_locking_inset->LyxCode() == Inset::MATH_CODE)
+		static_cast<InsetFormula*>(current_view->the_locking_inset)->InsertSymbol(s);
         else 
 		lyxerr << "Math error: attempt to write on a wrong "
 			"class of inset." << endl;

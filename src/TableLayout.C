@@ -17,7 +17,6 @@
 #include "lyxtext.h"
 #include "layout.h"
 
-extern void BeforeChange();
 
 // Prototypes
 extern FD_form_table_options * fd_form_table_options;
@@ -423,7 +422,7 @@ void TableOptionsCB(FL_OBJECT * ob, long)
     if (current_view->available()) {
         current_view->getScreen()->HideCursor();
         if (!current_view->text->selection){
-            BeforeChange(); 
+            current_view->beforeChange();
             current_view->update(-2);
         }
         if ((num == LyXTable::SET_SPECIAL_COLUMN) ||
@@ -474,7 +473,7 @@ void SetPWidthCB(FL_OBJECT * ob, long)
         if (current_view->available()){
             current_view->getScreen()->HideCursor();
             if (!current_view->text->selection) {
-                BeforeChange(); 
+                current_view->beforeChange(); 
                 current_view->update(-2);
             }
             current_view->text->TableFeatures(LyXTable::SET_PWIDTH, str);

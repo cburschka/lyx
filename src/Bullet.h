@@ -33,9 +33,6 @@ public:
 	Bullet(string const &);
 
 	///
-	~Bullet();
-
-	///
 	void setCharacter(const int);
 	///
 	void setFont(const int);
@@ -116,9 +113,9 @@ private:
 	///
 	void generateText();
 	///
-	static string const & bulletSize(const short &);
+	static string bulletSize(const short &);
 	///
-	static string const & bulletEntry(const short &, const short &);
+	static string bulletEntry(const short &, const short &);
 
 	///
 	short font;
@@ -156,10 +153,6 @@ inline Bullet::Bullet(string const & t)
 	testInvariant();
 #endif
 }
-
-
-inline Bullet::~Bullet()
-{}
 
 
 inline void Bullet::setCharacter(const int c)

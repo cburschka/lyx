@@ -333,9 +333,6 @@ public:
 	 */
 	LyXParagraph * paragraph;
 
-	/// per view not per buffer?
-	UpdatableInset * the_locking_inset;
-
 	/// RCS object
 	LyXVC lyxvc;
 
@@ -349,22 +346,6 @@ public:
 	    doing a 'nice' LaTeX file */
 	bool niceFile;
 
-	///
-        void InsetUnlock();
-	
-	///
-        inline void InsetSleep();
-	
-	///
-        inline void InsetWakeup();
-	
-	///
-        bool inset_slept;
-	
-	///
-        int  slx;
-	///
-	int sly;
 private:
 	///
 	void insertErrors(TeXErrors &);
@@ -447,27 +428,6 @@ private:
 	/// Used when typesetting to place errorboxes.
 	TexRow texrow;
 };
-
-
-inline  
-void Buffer::InsetSleep()
-{
-	if (the_locking_inset && !inset_slept) {
-		the_locking_inset->GetCursorPos(slx, sly);
-		the_locking_inset->InsetUnlock();
-		inset_slept = true;
-	}
-}
-
-
-inline  
-void Buffer::InsetWakeup()
-{
-	if (the_locking_inset && inset_slept) {
-		the_locking_inset->Edit(slx, sly);
-		inset_slept = false;
-	}	
-}
 
 
 inline  

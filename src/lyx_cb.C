@@ -195,14 +195,6 @@ void MenuWriteAs(Buffer * buffer);
 void MenuReload(Buffer * buf);
 void MenuLayoutSave();
 
-unsigned char GetCurrentTextClass()
-	// Who are we asking?
-	// Shouldn't this question be directed to the buffer?
-	// Indeed it should. Asger.
-{
-	return current_view->buffer()->params.textclass;
-}
-
 
 // How should this actually work? Should it prohibit input in all BufferViews,
 // or just in the current one? If "just the current one", then it should be
@@ -294,15 +286,6 @@ void SetUpdateTimer(float time)
 }
 
 
-// candidate for move to BufferView
-void BeforeChange()
-{
-	current_view->getScreen()->ToggleSelection();
-	current_view->text->ClearSelection();
-	FreeUpdateTimer();
-}
-
-
 //
 // Menu callbacks
 //
@@ -312,27 +295,30 @@ void BeforeChange()
 //
 
 // should be moved to lyxfunc.C
-void MenuWrite(Buffer * buf)
+void MenuWrite(Buffer * buffer)
 {
 	XFlush(fl_display);
-	if (!bufferlist.write(buf)) {
-		string fname = buf->fileName();
+	if (!bufferlist.write(buffer)) {
+		string fname = buffer->fileName();
 		string s = MakeAbsPath(fname);
 		if (AskQuestion(_("Save failed. Rename and try again?"),
 				MakeDisplayPath(s, 50),
 				_("(If not, document is not saved.)"))) {
-			MenuWriteAs(buf);
+			MenuWriteAs(buffer);
 		}
 	} else {
-		lastfiles->newFile(buf->fileName());
+		lastfiles->newFile(buffer->fileName());
 	}
 }
 
 
 // should be moved to BufferView.C
+// Half of this func should be in LyXView, the rest in BufferView.
 void MenuWriteAs(Buffer * buffer)
 {
-	if (!current_view->text) return;
+	// Why do we require BufferView::text to be able to write a
+	// document? I see no point in that. (Lgb)
+	//if (!bv->text) return;
 
 	string fname = buffer->fileName();
 	string oldname = fname;
@@ -352,10 +338,12 @@ void MenuWriteAs(Buffer * buffer)
 	AllowInput();
 
 	if (fname.empty()) {
-		current_view->owner()->getMiniBuffer()->Set(_("Canceled."));
+		// Can we do without this one?
+#if 0
+		buffer->getUser()->owner()->getMiniBuffer()->Set(_("Canceled."));
+#endif
 		return;
 	}
-
 	// Make sure the absolute filename ends with appropriate suffix
 	string s = MakeAbsPath(fname);
 	if (!IsLyXFilename(s))
@@ -381,7 +369,7 @@ void MenuWriteAs(Buffer * buffer)
 				buffer->fileName(s);
 				buffer->markDirty();
 
-				current_view->owner()->getMiniBuffer()->Set(_("Document renamed to '"),
+				buffer->getUser()->owner()->getMiniBuffer()->Set(_("Document renamed to '"),
 						MakeDisplayPath(s),
 						_("', but not saved..."));
 			}
@@ -498,8 +486,9 @@ int MenuRunChktex(Buffer * buffer)
  
 int MakeDVIOutput(Buffer * buffer)
 {
-	if (!(current_view->text))
-		return 1;
+	// Who cares?
+	//if (!bv->text)
+	//	return 1;
 
 	int ret = 0;
 
@@ -576,24 +565,25 @@ bool RunScript(Buffer * buffer, bool wait,
 #ifdef WITH_WARNINGS
 #warning What should we do here?
 #endif		
-		current_view->owner()->getMiniBuffer()->Set(
+		buffer->getUser()->owner()->getMiniBuffer()->Set(
 			_("Executing command:"), cmd);
 		result = one.startscript(Systemcalls::System, cmd);
 	} else {
-		current_view->owner()->getMiniBuffer()->Set(
+		buffer->getUser()->owner()->getMiniBuffer()->Set(
 			_("Executing command:"), cmd);
 		result = one.startscript(wait ? Systemcalls::Wait
 					 : Systemcalls::DontWait, cmd);
 	}
-	return (result == 0);
+	return result == 0;
 }
 
 
 // Returns false if we fail
 bool MenuRunDvips(Buffer * buffer, bool wait = false)
 {
-	if (!current_view->text)
-		return false;
+	// Who cares?
+	//if (!bv->text)
+	//	return false;
 
 	ProhibitInput();
 
@@ -607,7 +597,8 @@ bool MenuRunDvips(Buffer * buffer, bool wait = false)
 					 ".ps_tmp", true);
 
 	string paper;
-	
+
+	// Wrong type
 	char real_papersize = buffer->params.papersize;
 	if (real_papersize == BufferParams::PAPER_DEFAULT)
 		real_papersize = lyxrc->default_papersize;
@@ -678,8 +669,9 @@ bool MenuRunDvips(Buffer * buffer, bool wait = false)
 // Returns false if we fail
 bool MenuPreviewPS(Buffer * buffer)
 {
-	if (!current_view->text)
-		return false;
+	// Who cares?
+	//if (!bv->text)
+	//	return false;
 
 	// Generate postscript file
 	if (!MenuRunDvips(buffer, true)) {
@@ -704,8 +696,9 @@ bool MenuPreviewPS(Buffer * buffer)
 
 void MenuFax(Buffer * buffer)
 {
-	if (!current_view->text)
-		return;
+	// Who cares?
+	//if (!bv->text)
+	//	return;
 
 	// Generate postscript file
 	if (!MenuRunDvips(buffer, true)) {
@@ -731,11 +724,13 @@ void MenuFax(Buffer * buffer)
 // Returns false if we fail
 bool MenuPreview(Buffer * buffer)
 {
-	if (!current_view->text)
-		return false;
+	// Who cares?
+	//if (!bv->text)
+	//	return false;
 
 	string paper;
-	
+
+	// wrong type
 	char real_papersize = buffer->params.papersize;
 	if (real_papersize == BufferParams::PAPER_DEFAULT)
 		real_papersize = lyxrc->default_papersize;
@@ -792,8 +787,9 @@ bool MenuPreview(Buffer * buffer)
 
 void MenuMakeLaTeX(Buffer * buffer)
 {
-	if (!current_view->text)
-		return;
+	// Why care about this?
+	//if (!bv->text)
+	//	return;
 	
 	// Get LaTeX-Filename
 	string s = buffer->getLatexName(false);
@@ -803,19 +799,19 @@ void MenuMakeLaTeX(Buffer * buffer)
 	    !AskQuestion(_("File already exists:"), 
 			 MakeDisplayPath(s, 50),
 			 _("Do you want to overwrite the file?"))) {
-		current_view->owner()->getMiniBuffer()->Set(_("Canceled"));
+		buffer->getUser()->owner()->getMiniBuffer()->Set(_("Canceled"));
 		return;
 	}
 	
 	if (buffer->isDocBook())
-		current_view->owner()->getMiniBuffer()->Set(
+		buffer->getUser()->owner()->getMiniBuffer()->Set(
 			_("DocBook does not have a latex backend"));
 	else {
 		if (buffer->isLinuxDoc())
 			RunLinuxDoc(0, buffer->fileName());
 		else
 			buffer->makeLaTeXFile(s, string(), true);
-		current_view->owner()->getMiniBuffer()->Set(
+		buffer->getUser()->owner()->getMiniBuffer()->Set(
 			_("Nice LaTeX file saved as"), MakeDisplayPath(s));
 		buffer->markDviDirty();
 	}
@@ -824,7 +820,8 @@ void MenuMakeLaTeX(Buffer * buffer)
 
 void MenuMakeLinuxDoc(Buffer * buffer)
 {
-	if (!current_view->text) return;
+	// Who cares?
+	//if (!bv->text) return;
 	
 	if (!buffer->isLinuxDoc()) {
 		WriteAlert(_("Error!"), _("Document class must be linuxdoc."));
@@ -832,31 +829,32 @@ void MenuMakeLinuxDoc(Buffer * buffer)
 	}
 	
 	// Get LinuxDoc-Filename
-	string s = ChangeExtension (buffer->fileName(), 
-				    ".sgml", false);
+	string s = ChangeExtension(buffer->fileName(), 
+				   ".sgml", false);
 	
 	FileInfo fi(s);
 	if (fi.readable() &&
 	    !AskQuestion(_("File already exists:"), 
 			 MakeDisplayPath(s, 50),
 			 _("Do you want to overwrite the file?"))) {
-		current_view->owner()->getMiniBuffer()->Set(_("Canceled"));
+		buffer->getUser()->owner()->getMiniBuffer()->Set(_("Canceled"));
 		return;
 	}
 	
-	current_view->owner()->getMiniBuffer()->Set(
-		_("Building LinuxDoc SGML file `"), MakeDisplayPath(s),"'...");
+	buffer->getUser()->owner()->getMiniBuffer()->Set(_("Building LinuxDoc SGML file `"),
+					  MakeDisplayPath(s),"'...");
 	
 	buffer->makeLinuxDocFile(s, 65);
 	buffer->redraw();
-	current_view->owner()->getMiniBuffer()->Set(
-		_("LinuxDoc SGML file save as"), MakeDisplayPath(s)); 
+	buffer->getUser()->owner()->getMiniBuffer()->Set(_("LinuxDoc SGML file save as"),
+					  MakeDisplayPath(s)); 
 }
 
 
 void MenuMakeDocBook(Buffer * buffer)
 {
-	if (!current_view->text) return;
+	// Who cares?
+	//if (!bv->text) return;
 	
 	if (!buffer->isDocBook()) {
 		WriteAlert(_("Error!"),
@@ -865,31 +863,32 @@ void MenuMakeDocBook(Buffer * buffer)
 	}
 	
 	// Get DocBook-Filename
-	string s = ChangeExtension (buffer->fileName(), 
-				    ".sgml", false);
+	string s = ChangeExtension(buffer->fileName(), 
+				   ".sgml", false);
 	
 	FileInfo fi(s);
 	if (fi.readable() &&
 	    !AskQuestion(_("File already exists:"), 
 			 MakeDisplayPath(s, 50),
 			 _("Do you want to overwrite the file?"))) {
-		current_view->owner()->getMiniBuffer()->Set(_("Canceled"));
+		buffer->getUser()->owner()->getMiniBuffer()->Set(_("Canceled"));
 		return;
 	}
 	
-	current_view->owner()->getMiniBuffer()->Set(_("Building DocBook SGML file `"),
-			MakeDisplayPath(s), "'..."); 
+	buffer->getUser()->owner()->getMiniBuffer()->Set(_("Building DocBook SGML file `"),
+					  MakeDisplayPath(s), "'..."); 
 	
 	buffer->makeDocBookFile(s, 65);
 	buffer->redraw();
-	current_view->owner()->getMiniBuffer()->Set(_("DocBook SGML file save as"),
-			MakeDisplayPath(s)); 
+	buffer->getUser()->owner()->getMiniBuffer()->Set(_("DocBook SGML file save as"),
+					  MakeDisplayPath(s)); 
 }
 
 
 void MenuMakeAscii(Buffer * buffer)
 {
-	if (!current_view->text) return;
+	// Who cares?
+	//if (!bv->text) return;
 	
 	/* get LaTeX-Filename */
 	string s = ChangeExtension (buffer->fileName(),
@@ -900,20 +899,21 @@ void MenuMakeAscii(Buffer * buffer)
 	    !AskQuestion(_("File already exists:"), 
 			 MakeDisplayPath(s, 50),
 			 _("Do you want to overwrite the file?"))) {
-		current_view->owner()->getMiniBuffer()->Set(_("Canceled"));
+		buffer->getUser()->owner()->getMiniBuffer()->Set(_("Canceled"));
 		return;
 	}
 	
 	buffer->writeFileAscii(s, lyxrc->ascii_linelen);
 	
-	current_view->owner()->getMiniBuffer()->Set(_("Ascii file saved as"), MakeDisplayPath(s));
+	buffer->getUser()->owner()->getMiniBuffer()->Set(_("Ascii file saved as"), MakeDisplayPath(s));
 }
 
 
 void MenuPrint(Buffer * buffer)
 {
-	if (!current_view->text)
-		return;
+	// Who cares?
+	//if (!bv->text)
+	//	return;
 
 	string input_file = ChangeExtension(buffer->fileName(),
 					    lyxrc->print_file_extension,
@@ -949,12 +949,12 @@ void MenuMakeHTML(Buffer * buffer)
 	Systemcalls one;
 	int res = one.startscript(Systemcalls::System, tmp);
 	if (res == 0) {
-		current_view->owner()->getMiniBuffer()->Set(_("Document exported as HTML to file `")
-				+ MakeDisplayPath(result) +'\'');
+		buffer->getUser()->owner()->getMiniBuffer()->Set(_("Document exported as HTML to file `")
+						  + MakeDisplayPath(result) +'\'');
 	} else {
-		current_view->owner()->getMiniBuffer()->Set(_("Unable to convert to HTML the file `")
-				+ MakeDisplayPath(infile) 
-				+ '\'');
+		buffer->getUser()->owner()->getMiniBuffer()->Set(_("Unable to convert to HTML the file `")
+						  + MakeDisplayPath(infile) 
+						  + '\'');
 	}
 
 }
@@ -995,6 +995,7 @@ void MenuExport(Buffer * buffer, string const & extyp)
 		// Since the MenuPrint is a pop-up, we can't use
 		// the same trick as above. (Asger)
 		// MISSING: Move of ps-file :-(
+		// And MenuPrint should not be used for this at all...
 	}
 	// ascii
 	else if (extyp == "ascii") {
@@ -1008,7 +1009,7 @@ void MenuExport(Buffer * buffer, string const & extyp)
 		MenuMakeHTML(buffer);
 	}
 	else {
-		current_view->owner()->getMiniBuffer()->Set(_("Unknown export type: ")+ extyp);
+		buffer->getUser()->owner()->getMiniBuffer()->Set(_("Unknown export type: ") + extyp);
 	}
 }
 
@@ -1184,7 +1185,7 @@ void InsertAsciiFile(string const & f, bool asParagraph)
 	current_view->getScreen()->HideCursor();
 	
 	// clear the selection
-	BeforeChange();
+	current_view->beforeChange();
 	if (!asParagraph)
 		current_view->text->InsertStringA(tmppar->text);
 	else
@@ -1450,7 +1451,7 @@ void AllFloats(char flag, char figmar)
 		    && cursor.par->footnotekind != LyXParagraph::ALGORITHM)))
 		ToggleFloat();
 	else
-		BeforeChange();
+		current_view->beforeChange();
 
 	LyXCursor tmpcursor = cursor;
 	cursor.par = tmpcursor.par->ParFromPos(tmpcursor.pos);
@@ -2116,7 +2117,7 @@ void OpenStuff()
 	if (current_view->available()) {
 		current_view->owner()->getMiniBuffer()->Set(_("Open/Close..."));
 		current_view->getScreen()->HideCursor();
-		BeforeChange();
+		current_view->beforeChange();
 		current_view->update(-2);
 		current_view->text->OpenStuff();
 		current_view->update(0);
@@ -2130,7 +2131,7 @@ void ToggleFloat()
 	if (current_view->available()) {
 		current_view->owner()->getMiniBuffer()->Set(_("Open/Close..."));
 		current_view->getScreen()->HideCursor();
-		BeforeChange();
+		current_view->beforeChange();
 		current_view->update(-2);
 		current_view->text->ToggleFootnote();
 		current_view->update(0);
@@ -2149,7 +2150,7 @@ void MenuUndo()
 	if (current_view->available()) {
 		current_view->owner()->getMiniBuffer()->Set(_("Undo"));
 		current_view->getScreen()->HideCursor();
-		BeforeChange();
+		current_view->beforeChange();
 		current_view->update(-2);
 		if (!current_view->text->TextUndo())
 			current_view->owner()->getMiniBuffer()->Set(_("No further undo information"));
@@ -2162,7 +2163,7 @@ void MenuUndo()
 // candidate for move to BufferView
 void MenuRedo()
 {
-	if (current_view->buffer()->the_locking_inset) {
+	if (current_view->the_locking_inset) {
 		current_view->owner()->getMiniBuffer()->Set(_("Redo not yet supported in math mode"));
 		return;
 	}    
@@ -2170,7 +2171,7 @@ void MenuRedo()
 	if (current_view->available()) {
 		current_view->owner()->getMiniBuffer()->Set(_("Redo"));
 		current_view->getScreen()->HideCursor();
-		BeforeChange();
+		current_view->beforeChange();
 		current_view->update(-2);
 		if (!current_view->text->TextRedo())
 			current_view->owner()->getMiniBuffer()->Set(_("No further redo information"));
@@ -2518,7 +2519,7 @@ extern "C" void MeltCB(FL_OBJECT *, long)
 	
 	current_view->owner()->getMiniBuffer()->Set(_("Melt"));
 	current_view->getScreen()->HideCursor();
-	BeforeChange();
+	current_view->beforeChange();
 	current_view->update(-2);
 	current_view->text->MeltFootnoteEnvironment();
 	current_view->update(1);
@@ -2873,7 +2874,7 @@ extern "C" void ChoiceClassCB(FL_OBJECT * ob, long)
 			   _("Unable to switch to new document class."),
 			   _("Reverting to original document class."));
 		fl_set_choice(fd_form_document->choice_class, 
-			      GetCurrentTextClass() + 1);
+			      current_view->buffer()->params.textclass + 1);
 	}
 	AllowInput();
 }
@@ -3110,7 +3111,7 @@ void GotoNote()
 		return;
    
 	current_view->getScreen()->HideCursor();
-	BeforeChange();
+	current_view->beforeChange();
 	current_view->update(-2);
 	LyXCursor tmp;
    
@@ -3258,7 +3259,7 @@ extern "C" void TableApplyCB(FL_OBJECT *, long)
    
    
 	current_view->getScreen()->HideCursor();
-	BeforeChange();
+	current_view->beforeChange();
 	current_view->update(-2);
    
 	current_view->text->SetCursorParUndo(); 
@@ -3532,7 +3533,7 @@ extern "C" void FigureApplyCB(FL_OBJECT *, long)
 	
 	current_view->getScreen()->HideCursor();
 	current_view->update(-2);
-	BeforeChange();
+	current_view->beforeChange();
       
 	current_view->text->SetCursorParUndo(); 
 	current_view->text->FreezeUndo();
@@ -3682,7 +3683,7 @@ void SelectLastWord()
 		return;
    
 	current_view->getScreen()->HideCursor();
-	BeforeChange();
+	current_view->beforeChange();
 	current_view->text->SelectSelectedWord();
 	current_view->getScreen()->ToggleSelection(false);
 	current_view->update(0);
@@ -3696,7 +3697,7 @@ void EndOfSpellCheck()
 		return;
    
 	current_view->getScreen()->HideCursor();
-	BeforeChange();
+	current_view->beforeChange();
 	current_view->text->SelectSelectedWord();
 	current_view->text->ClearSelection();
 	current_view->update(0);
@@ -3774,7 +3775,7 @@ extern "C" void TocSelectCB(FL_OBJECT * ob, long)
 	}
    
 	if (par) {
-		BeforeChange();
+		current_view->beforeChange();
 		current_view->text->SetCursor(par, 0);
 		current_view->text->sel_cursor = 
 			current_view->text->cursor;
@@ -4015,7 +4016,7 @@ void UpdateInset(Inset * inset, bool mark_dirty)
 		return;
 
 	/* very first check for locking insets*/
-	if (current_view->buffer()->the_locking_inset == inset){
+	if (current_view->the_locking_inset == inset) {
 		if (current_view->text->UpdateInset(inset)){
 			current_view->update();
 			if (mark_dirty){
@@ -4052,8 +4053,8 @@ void UpdateInset(Inset * inset, bool mark_dirty)
    otherwise 0 */
 int LockInset(UpdatableInset * inset)
 {
-	if (!current_view->buffer()->the_locking_inset && inset){
-		current_view->buffer()->the_locking_inset = inset;
+	if (!current_view->the_locking_inset && inset){
+		current_view->the_locking_inset = inset;
 		return 0;
 	}
 	return 1;
@@ -4063,7 +4064,7 @@ int LockInset(UpdatableInset * inset)
 // candidate for move to BufferView
 void ShowLockedInsetCursor(long x, long y, int asc, int desc)
 {
-	if (current_view->buffer()->the_locking_inset &&
+	if (current_view->the_locking_inset &&
 	    current_view->getScreen()){
 		y += current_view->text->cursor.y;
 		current_view->getScreen()->ShowManualCursor(x, y,
@@ -4075,7 +4076,7 @@ void ShowLockedInsetCursor(long x, long y, int asc, int desc)
 // candidate for move to BufferView
 void HideLockedInsetCursor(long x, long y, int asc, int desc)
 {
-	if (current_view->buffer()->the_locking_inset &&
+	if (current_view->the_locking_inset &&
 	    current_view->getScreen()){
 		y += current_view->text->cursor.y;
 		current_view->getScreen()->HideManualCursor(x, y,
@@ -4087,7 +4088,7 @@ void HideLockedInsetCursor(long x, long y, int asc, int desc)
 // candidate for move to BufferView
 void FitLockedInsetCursor(long x, long y, int asc, int desc)
 {
-	if (current_view->buffer()->the_locking_inset &&
+	if (current_view->the_locking_inset &&
 	    current_view->getScreen()){
 		y += current_view->text->cursor.y;
 		if (current_view->getScreen()->FitManualCursor(x, y, asc, desc))
@@ -4100,9 +4101,9 @@ void FitLockedInsetCursor(long x, long y, int asc, int desc)
 int UnlockInset(UpdatableInset * inset)
 {
 	if (inset &&
-	    current_view->buffer()->the_locking_inset == inset){
+	    current_view->the_locking_inset == inset){
 		inset->InsetUnlock();
-		current_view->buffer()->the_locking_inset = 0;
+		current_view->the_locking_inset = 0;
 		current_view->text->FinishUndo();
 		return 0;
 	}
@@ -4113,7 +4114,7 @@ int UnlockInset(UpdatableInset * inset)
 // candidate for move to BufferView
 void LockedInsetStoreUndo(Undo::undo_kind kind)
 {
-	if (!current_view->buffer()->the_locking_inset)
+	if (!current_view->the_locking_inset)
 		return; // shouldn't happen
 	if (kind == Undo::EDIT) // in this case insets would not be stored!
 		kind = Undo::FINISH;
@@ -4127,12 +4128,11 @@ void LockedInsetStoreUndo(Undo::undo_kind kind)
 
 void PutInsetIntoInsetUpdateList(Inset * inset)
 {
-	if (inset) {
-		InsetUpdateStruct * tmp = new InsetUpdateStruct();
-		tmp->inset = inset;
-		tmp->next = InsetUpdateList;
-		InsetUpdateList = tmp;
-	}
+	Assert(inset);
+	InsetUpdateStruct * tmp = new InsetUpdateStruct();
+	tmp->inset = inset;
+	tmp->next = InsetUpdateList;
+	InsetUpdateList = tmp;
 }
 
 

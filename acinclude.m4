@@ -673,6 +673,52 @@ dnl Usage: LYX_ADD_INC_DIR(var-name,dir) Adds a -I directive to variable
 dnl var-name. 
 AC_DEFUN(LYX_ADD_INC_DIR,[$1="${$1} -I$2 "])
 
+### Check for a headers existence and location iff it exists
+## This is supposed to be a generalised version of LYX_STL_STRING_FWD
+## It almost works.  I've tried a few variations but they give errors
+## of one sort or other: bad substitution or file not found etc.  The
+## actual header _is_ found though and the cache variable is set however
+## the reported setting (on screen) is equal to $ac_safe for some unknown
+## reason.
+AC_DEFUN(LYX_PATH_HEADER,
+[ AC_CHECK_HEADER($1,[
+  ac_tr_safe=PATH_`echo $ac_safe | sed 'y%abcdefghijklmnopqrstuvwxyz./-%ABCDEFGHIJKLMNOPQRSTUVWXYZ___%'`
+  AC_CACHE_CHECK([path to $1],lyx_cv_path_$ac_safe,
+  [ cat > conftest.$ac_ext <<EOF
+#line __oline__ "configure"
+#include "confdefs.h"
+
+#include <$1>
+EOF
+lyx_cv_path_$ac_safe=`(eval "$ac_cpp conftest.$ac_ext") 2>&5 | \
+  grep $1  2>/dev/null | \
+  sed -e 's/.*\(".*$1"\).*/\1/' -e "1q"`
+rm -f conftest*])
+  AC_DEFINE_UNQUOTED(${ac_tr_safe},${lyx_cv_path_$ac_safe})])
+])
+### end of LYX_PATH_HEADER
+
+### Check for stl_string_fwd.h existence and location if it exists
+AC_DEFUN(LYX_STL_STRING_FWD,
+[ AC_CHECK_HEADER(stl_string_fwd.h,[
+  AC_CACHE_CHECK([path to stl_string_fwd.h],lyx_cv_path_stl_string_fwd_h,
+  [ cat > conftest.$ac_ext <<EOF
+#line __oline__ "configure"
+#include "confdefs.h"
+
+#include <stl_string_fwd.h>
+EOF
+lyx_cv_path_stl_string_fwd_h=`(eval "$ac_cpp conftest.$ac_ext") 2>&5 | \
+  grep 'stl_string_fwd.h'  2>/dev/null | \
+  sed -e 's/.*\(".*stl_string_fwd.h"\).*/\1/' -e "1q"`
+rm -f conftest*])
+  AC_DEFINE_UNQUOTED(STL_STRING_FWD_H_LOCATION,$lyx_cv_path_stl_string_fwd_h,
+[define this to the location of stl_string_fwd.h to be used with #include,
+  NOTE: Do not set it to <stl_string_fwd.h> as that will find the LyX
+  	supplied version of the header.
+  e.g. <../include/stl_string_fwd.h> or better yet use an absolute path])])
+])
+
 
 dnl AC_VALIDATE_CACHE_SYSTEM_TYPE[(cmd)]
 dnl if the cache file is inconsistent with the current host,
@@ -738,6 +784,7 @@ extern int select ($ac_cv_func_select_arg1,$ac_cv_func_select_arg234,$ac_cv_func
  AC_DEFINE_UNQUOTED(SELECT_TYPE_ARG5,($ac_cv_func_select_arg5))
 ])
 
+### BEGIN libtool.m4
 ## libtool.m4 - Configure libtool for the target system. -*-Shell-script-*-
 ## Copyright (C) 1996-1999 Free Software Foundation, Inc.
 ## Originally by Gordon Matzigkeit <gord@gnu.ai.mit.edu>, 1996
@@ -774,7 +821,7 @@ LD="$LD" LDFLAGS="$LDFLAGS" LIBS="$LIBS" \
 LN_S="$LN_S" NM="$NM" RANLIB="$RANLIB" \
 DLLTOOL="$DLLTOOL" AS="$AS" OBJDUMP="$OBJDUMP" \
 ${CONFIG_SHELL-/bin/sh} $ac_aux_dir/ltconfig --no-reexec \
-$libtool_flags --no-verify $ac_aux_dir/ltmain.sh $host \
+$libtool_flags --no-verify $ac_aux_dir/ltmain.sh $lt_target \
 || AC_MSG_ERROR([libtool configure failed])
 
 # Reload cache, that may have been modified by ltconfig
@@ -806,13 +853,13 @@ AC_REQUIRE([AC_PROG_NM])dnl
 AC_REQUIRE([AC_PROG_LN_S])dnl
 dnl
 
+case "$target" in
+NONE) lt_target="$host" ;;
+*) lt_target="$target" ;;
+esac
+
 # Check for any special flags to pass to ltconfig.
-#
-# the following will cause an existing older ltconfig to fail, so
-# we ignore this at the expense of the cache file... Checking this 
-# will just take longer ... bummer!
-#libtool_flags="--cache-file=$cache_file"
-#
+libtool_flags="--cache-file=$cache_file"
 test "$enable_shared" = no && libtool_flags="$libtool_flags --disable-shared"
 test "$enable_static" = no && libtool_flags="$libtool_flags --disable-static"
 test "$enable_fast_install" = no && libtool_flags="$libtool_flags --disable-fast-install"
@@ -829,7 +876,7 @@ test x"$silent" = xyes && libtool_flags="$libtool_flags --silent"
 
 # Some flags need to be propagated to the compiler or linker for good
 # libtool support.
-case "$host" in
+case "$lt_target" in
 *-*-irix6*)
   # Find out which ABI we are using.
   echo '[#]line __oline__ "configure"' > conftest.$ac_ext
@@ -1045,7 +1092,6 @@ else
   AC_MSG_RESULT(no)
 fi
 test -z "$LD" && AC_MSG_ERROR([no acceptable ld found in \$PATH])
-AC_SUBST(LD)
 AC_PROG_LD_GNU
 ])
 
@@ -1091,14 +1137,13 @@ else
 fi])
 NM="$ac_cv_path_NM"
 AC_MSG_RESULT([$NM])
-AC_SUBST(NM)
 ])
 
 # AC_CHECK_LIBM - check for math library
 AC_DEFUN(AC_CHECK_LIBM,
 [AC_REQUIRE([AC_CANONICAL_HOST])dnl
 LIBM=
-case "$host" in
+case "$lt_target" in
 *-*-beos* | *-*-cygwin*)
   # These system don't have libm
   ;;
@@ -1111,54 +1156,6 @@ case "$host" in
   ;;
 esac
 ])
-
-
-### Check for a headers existence and location iff it exists
-## This is supposed to be a generalised version of LYX_STL_STRING_FWD
-## It almost works.  I've tried a few variations but they give errors
-## of one sort or other: bad substitution or file not found etc.  The
-## actual header _is_ found though and the cache variable is set however
-## the reported setting (on screen) is equal to $ac_safe for some unknown
-## reason.
-AC_DEFUN(LYX_PATH_HEADER,
-[ AC_CHECK_HEADER($1,[
-  ac_tr_safe=PATH_`echo $ac_safe | sed 'y%abcdefghijklmnopqrstuvwxyz./-%ABCDEFGHIJKLMNOPQRSTUVWXYZ___%'`
-  AC_CACHE_CHECK([path to $1],lyx_cv_path_$ac_safe,
-  [ cat > conftest.$ac_ext <<EOF
-#line __oline__ "configure"
-#include "confdefs.h"
-
-#include <$1>
-EOF
-lyx_cv_path_$ac_safe=`(eval "$ac_cpp conftest.$ac_ext") 2>&5 | \
-  grep $1  2>/dev/null | \
-  sed -e 's/.*\(".*$1"\).*/\1/' -e "1q"`
-rm -f conftest*])
-  AC_DEFINE_UNQUOTED(${ac_tr_safe},${lyx_cv_path_$ac_safe})])
-])
-### end of LYX_PATH_HEADER
-
-### Check for stl_string_fwd.h existence and location if it exists
-AC_DEFUN(LYX_STL_STRING_FWD,
-[ AC_CHECK_HEADER(stl_string_fwd.h,[
-  AC_CACHE_CHECK([path to stl_string_fwd.h],lyx_cv_path_stl_string_fwd_h,
-  [ cat > conftest.$ac_ext <<EOF
-#line __oline__ "configure"
-#include "confdefs.h"
-
-#include <stl_string_fwd.h>
-EOF
-lyx_cv_path_stl_string_fwd_h=`(eval "$ac_cpp conftest.$ac_ext") 2>&5 | \
-  grep 'stl_string_fwd.h'  2>/dev/null | \
-  sed -e 's/.*\(".*stl_string_fwd.h"\).*/\1/' -e "1q"`
-rm -f conftest*])
-  AC_DEFINE_UNQUOTED(STL_STRING_FWD_H_LOCATION,$lyx_cv_path_stl_string_fwd_h,
-[define this to the location of stl_string_fwd.h to be used with #include,
-  NOTE: Do not set it to <stl_string_fwd.h> as that will find the LyX
-  	supplied version of the header.
-  e.g. <../include/stl_string_fwd.h> or better yet use an absolute path])])
-])
-
 
 # AC_LIBLTDL_CONVENIENCE[(dir)] - sets LIBLTDL to the link flags for
 # the libltdl convenience library, adds --enable-ltdl-convenience to
@@ -1218,6 +1215,8 @@ AC_DEFUN(AM_PROG_NM, [indir([AC_PROG_NM])])dnl
 
 dnl This is just to silence aclocal about the macro not being used
 ifelse([AC_DISABLE_FAST_INSTALL])dnl
+
+### END libtool.m4
 
 # Macro to add for using GNU gettext.
 # Ulrich Drepper <drepper@cygnus.com>, 1995.
