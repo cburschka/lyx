@@ -1,3 +1,11 @@
+2005-01-04  Angus Leeming  <leeming@lyx.org>
+
+	* lyx_cb.C (Reconfigure):
+	* lyx_main.C (queryUserLyXDir):
+	to run the <system_lyxdir>/configure correctly on Windows, prefix
+	the path to the script with "sh " when generating the string that
+	is passed to system().
+
 2005-01-04  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* text3.C: reintroduce LFUN_{SUB|SUPER}SCRIPT.
