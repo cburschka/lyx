@@ -176,7 +176,7 @@ bool isAvailable(LyXFont const & f)
 	QString const family(toqstr(tmp));
 
 	lyxerr[Debug::FONT] << "Family " << tmp
-	       << " isAvailable ?" << endl;
+	       << " isAvailable ?";
 
 	QFontDatabase db;
 	// pass false for match-locale: LaTeX fonts
@@ -185,16 +185,15 @@ bool isAvailable(LyXFont const & f)
 	QStringList sl(db.families(false));
 
 	for (QStringList::Iterator it = sl.begin(); it != sl.end(); ++it) {
-
 		// Case-insensitive for Cmmi10 vs. cmmi10
-		if ((*it).contains(family, false)) {
+		if ((*it).lower().startsWith(family.lower())) {
 			lyxerr[Debug::FONT]
 				<< "found family "
 				<< fromqstr(*it) << endl;
 			return true;
 		}
 	}
-
+	lyxerr[Debug::FONT] << " no." << endl;
 	return false;
 }
 
@@ -357,8 +356,5 @@ bool qfont_loader::available(LyXFont const & f)
 	if (!lyxrc.use_gui)
 		return false;
 
-	bool const is_available(isAvailable(f));
-	lyxerr[Debug::FONT] << "font_loader::available returning "
-		<< is_available << endl;
-	return is_available;
+	return isAvailable(f);
 }
