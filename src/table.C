@@ -977,7 +977,8 @@ void LyXTable::Read(istream & is)
 	int h = 0;
 	
 	string s;
-	getline(is, s);
+	while(!s.length())
+	    getline(is, s);
 	if (s.length() > 8)
 		version = atoi(s.c_str() + 8);
 	else
