@@ -10,6 +10,8 @@
 #include "math_support.h"
 #include "debug.h"
 #include "Painter.h"
+#include "textpainter.h"
+#include "Lsstream.h"
 #include "LaTeXFeatures.h"
 #include "support/LAssert.h"
 
@@ -199,21 +201,39 @@ void MathHullInset::draw(Painter & pain, int x, int y) const
 	}
 }
 
-/*
-void MathHullInset::metricsT(TextMetricsInfo const & mi) const
+
+void MathHullInset::metricsT(TextMetricsInfo const &) const
 {
-	ascent_  = 1;
-	descent_ = 0;
-	width_   = normalName(objtype_).size();
+#if 0
+	if (display()) {
+		MathGridInset::metricsT(mi);
+	} else
+#endif
+	{
+		ostringstream os;
+		WriteStream wi(os, false, true);
+		write(wi);
+		width_   = os.str().size();
+		ascent_  = 1;
+		descent_ = 0;
+	}
 }
 
 
 void MathHullInset::drawT(TextPainter & pain, int x, int y) const
 {
-	pain.draw(x, y, normalName(objtype_).c_str());
-	MathGridInset::draw(pain, x, y);
+#if 0
+	if (display()) {
+		MathGridInset::drawT(pain, x, y);
+	} else
+#endif
+	{
+		ostringstream os;
+		WriteStream wi(os, false, true);
+		write(wi);
+		pain.draw(x, y, os.str().c_str());
+	}
 }
-*/
 
 
 string MathHullInset::label(row_type row) const

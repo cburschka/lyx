@@ -294,7 +294,7 @@ int InsetFormula::latex(Buffer const *, ostream & os, bool fragile, bool) const
 
 int InsetFormula::ascii(Buffer const *, ostream & os, int) const
 {
-#if 1
+#if 0
 	TextMetricsInfo mi;
 	par()->metricsT(mi);
 	TextPainter tpain(par()->width(), par()->height());
@@ -304,7 +304,7 @@ int InsetFormula::ascii(Buffer const *, ostream & os, int) const
 	metrics();
 	return tpain.textheight();
 #else
-	WriteStream wi(os, false);
+	WriteStream wi(os, false, true);
 	par_->write(wi);
 	return wi.line();
 #endif
