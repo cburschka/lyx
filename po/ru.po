@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 1.0.1\n"
-"POT-Creation-Date: 1999-11-02 06:41+0100\n"
+"POT-Creation-Date: 1999-11-03 14:56+0100\n"
 "PO-Revision-Date: 1999-10-28 06:57+02:00\n"
 "Last-Translator: Victor Lavrenko <lyx@lavrenko.pp.ru>\n"
 "Language-Team: Russian <ru@li.org>\n"
@@ -173,7 +173,7 @@ msgstr "Сохранить"
 msgid "Save As"
 msgstr "Сохранить как"
 
-#: src/LyXAction.C:615 src/lyxfunc.C:555
+#: src/LyXAction.C:615 src/lyxfunc.C:556
 msgid "Cancel"
 msgstr "Отмена"
 
@@ -773,8 +773,8 @@ msgstr "Невозможно открыть шаблон"
 msgid "Could not convert file"
 msgstr "Невозможно сконвертировать файл"
 
-#: src/bufferlist.C:621 src/lyxfunc.C:2469 src/lyxfunc.C:2608
-#: src/lyxfunc.C:2687
+#: src/bufferlist.C:621 src/lyxfunc.C:2476 src/lyxfunc.C:2615
+#: src/lyxfunc.C:2694
 msgid "Document is already open:"
 msgstr "Документ уже открыт:"
 
@@ -1265,8 +1265,8 @@ msgstr "Пустой путь к рисунку"
 msgid "Clipart"
 msgstr "Картинка"
 
-#: src/insets/figinset.C:2151 src/lyxfunc.C:2501 src/lyxfunc.C:2564
-#: src/lyxfunc.C:2787
+#: src/insets/figinset.C:2151 src/lyxfunc.C:2508 src/lyxfunc.C:2571
+#: src/lyxfunc.C:2794
 msgid "Document"
 msgstr "Документ"
 
@@ -1402,8 +1402,8 @@ msgid "Use include|#U"
 msgstr "Через include"
 
 #. launches dialog
-#: src/insets/insetinclude.C:110 src/lyx_cb.C:363 src/lyxfunc.C:2449
-#: src/lyxfunc.C:2539 src/lyxfunc.C:2588 src/lyxfunc.C:2661 src/lyxfunc.C:2762
+#: src/insets/insetinclude.C:110 src/lyx_cb.C:363 src/lyxfunc.C:2456
+#: src/lyxfunc.C:2546 src/lyxfunc.C:2595 src/lyxfunc.C:2668 src/lyxfunc.C:2769
 #: src/menus.C:170 src/menus.C:297 src/menus.C:298 src/menus.C:299
 msgid "Documents"
 msgstr "Документы"
@@ -1504,7 +1504,7 @@ msgid "Ref: "
 msgstr "Ссылка: "
 
 #. /
-#: src/insets/insettoc.h:35 src/lyxfunc.C:773
+#: src/insets/insettoc.h:35 src/lyxfunc.C:780
 msgid "Table of Contents"
 msgstr "Содержание"
 
@@ -2135,7 +2135,7 @@ msgstr "Сохранить не удалось. Переименовать и попытаться еще раз?"
 msgid "(If not, document is not saved.)"
 msgstr "(Если нет, документ не будет сохранен.)"
 
-#: src/lyx_cb.C:364 src/lyxfunc.C:2450
+#: src/lyx_cb.C:364 src/lyxfunc.C:2457
 msgid "Templates"
 msgstr "Шаблоны"
 
@@ -2144,9 +2144,9 @@ msgid "Enter Filename to Save Document as"
 msgstr "Введите имя файла для сохранения документа как"
 
 #. Cancel: Do nothing
-#: src/lyx_cb.C:376 src/lyxfunc.C:2456 src/lyxfunc.C:2483 src/lyxfunc.C:2548
-#: src/lyxfunc.C:2597 src/lyxfunc.C:2622 src/lyxfunc.C:2632 src/lyxfunc.C:2677
-#: src/lyxfunc.C:2702 src/lyxfunc.C:2712 src/lyxfunc.C:2771
+#: src/lyx_cb.C:376 src/lyxfunc.C:2463 src/lyxfunc.C:2490 src/lyxfunc.C:2555
+#: src/lyxfunc.C:2604 src/lyxfunc.C:2629 src/lyxfunc.C:2639 src/lyxfunc.C:2684
+#: src/lyxfunc.C:2709 src/lyxfunc.C:2719 src/lyxfunc.C:2778
 msgid "Canceled."
 msgstr "Отменено."
 
@@ -2273,7 +2273,7 @@ msgid "Executing command:"
 msgstr "Исполняю команду:"
 
 #: src/lyx_cb.C:841 src/lyx_cb.C:878 src/lyx_cb.C:911 src/lyx_cb.C:938
-#: src/lyxfunc.C:2492
+#: src/lyxfunc.C:2499
 msgid "File already exists:"
 msgstr "Файл уже присутствует:"
 
@@ -3154,124 +3154,125 @@ msgstr ""
 msgid "Found."
 msgstr "открыт."
 
-#: src/lyxfunc.C:280
+#: src/lyxfunc.C:281
 msgid "Unknown sequence:"
 msgstr "Неизвестная последовательность:"
 
-#: src/lyxfunc.C:372 src/lyxfunc.C:2399
+#: src/lyxfunc.C:373 src/lyxfunc.C:2406
 msgid "Unknown action"
 msgstr "Неизвестная команда"
 
-#: src/lyxfunc.C:375
+#: src/lyxfunc.C:376
 msgid "Command not allowed without any document open"
 msgstr "Команда недопустима без открытых документов"
 
-#: src/lyxfunc.C:434
+#: src/lyxfunc.C:435
 msgid "Document is read-only"
 msgstr "Документ доступен только для чтения"
 
-#: src/lyxfunc.C:474
+#: src/lyxfunc.C:475
 msgid "Text mode"
 msgstr "Текстовая мода"
 
-#: src/lyxfunc.C:723
-msgid "Document exported as HTML to file: "
+#: src/lyxfunc.C:728
+msgid "Document exported as HTML to file `"
 msgstr ""
 
-#: src/lyxfunc.C:726
-msgid "An unexpected error occured while converting document to HTML in file:"
-msgstr ""
+#: src/lyxfunc.C:731
+#, fuzzy
+msgid "Unable to convert to HTML the file `"
+msgstr "Невозможно прочитать файл!"
 
-#: src/lyxfunc.C:730
+#: src/lyxfunc.C:737
 msgid "Unknown export type: "
 msgstr "Неизвестный тип экспорта: "
 
-#: src/lyxfunc.C:754
+#: src/lyxfunc.C:761
 msgid "Unknown import type: "
 msgstr "Неизвестный тип импорта: "
 
-#: src/lyxfunc.C:1094
+#: src/lyxfunc.C:1101
 msgid "Layout "
 msgstr "Формат "
 
-#: src/lyxfunc.C:1095
+#: src/lyxfunc.C:1102
 msgid " not known"
 msgstr " не известно"
 
-#: src/lyxfunc.C:1237
+#: src/lyxfunc.C:1244
 msgid "No cross-reference to toggle"
 msgstr "Нет перекрестных ссылок на переключатель"
 
-#: src/lyxfunc.C:1590
+#: src/lyxfunc.C:1597
 msgid "Mark removed"
 msgstr "Метка удалена"
 
-#: src/lyxfunc.C:1595
+#: src/lyxfunc.C:1602
 msgid "Mark set"
 msgstr "Метка установлена"
 
-#: src/lyxfunc.C:1698
+#: src/lyxfunc.C:1705
 msgid "Mark off"
 msgstr "Метка выключена"
 
-#: src/lyxfunc.C:1708
+#: src/lyxfunc.C:1715
 msgid "Mark on"
 msgstr "Метка включена"
 
-#: src/lyxfunc.C:2008
+#: src/lyxfunc.C:2015
 msgid "Push-toolbar needs argument > 0"
 msgstr "Push-панель требует аргумент > 0"
 
-#: src/lyxfunc.C:2026
+#: src/lyxfunc.C:2033
 msgid "Usage: toolbar-add-to <LyX command>"
 msgstr "Синтаксис: toolbar-add-to <команда LyX>"
 
-#: src/lyxfunc.C:2050 src/mathed/formula.C:852
+#: src/lyxfunc.C:2057 src/mathed/formula.C:852
 msgid "Math greek mode on"
 msgstr "Включить математическую греческую моду"
 
-#: src/lyxfunc.C:2061 src/mathed/formula.C:863
+#: src/lyxfunc.C:2068 src/mathed/formula.C:863
 msgid "Math greek keyboard on"
 msgstr "Математическая греческая клавиатура включена"
 
-#: src/lyxfunc.C:2063 src/mathed/formula.C:865
+#: src/lyxfunc.C:2070 src/mathed/formula.C:865
 msgid "Math greek keyboard off"
 msgstr "Математическая греческая клавиатура выключена"
 
-#: src/lyxfunc.C:2098
+#: src/lyxfunc.C:2105
 msgid "Missing argument"
 msgstr "Отсутствует аргумент"
 
 #. / what appears in the minibuffer when opening
-#: src/lyxfunc.C:2114 src/mathed/formula.h:74
+#: src/lyxfunc.C:2121 src/mathed/formula.h:74
 msgid "Math editor mode"
 msgstr "Редактор математической моды"
 
-#: src/lyxfunc.C:2121
+#: src/lyxfunc.C:2128
 msgid "This is only allowed in math mode!"
 msgstr "Это допустимо только в математической моде!"
 
-#: src/lyxfunc.C:2276
+#: src/lyxfunc.C:2283
 msgid "Opening child document "
 msgstr "Открываю подчиненный документ "
 
-#: src/lyxfunc.C:2308
+#: src/lyxfunc.C:2315
 msgid "Unknown kind of footnote"
 msgstr "Неизвестный тип сносок"
 
-#: src/lyxfunc.C:2359
+#: src/lyxfunc.C:2366
 msgid "Document is read only"
 msgstr "Документ доступен только для чтения"
 
-#: src/lyxfunc.C:2451
+#: src/lyxfunc.C:2458
 msgid "Enter Filename for new document"
 msgstr "Введите имя файла для нового документа"
 
-#: src/lyxfunc.C:2452
+#: src/lyxfunc.C:2459
 msgid "newfile"
 msgstr "newfile"
 
-#: src/lyxfunc.C:2471 src/lyxfunc.C:2610 src/lyxfunc.C:2689
+#: src/lyxfunc.C:2478 src/lyxfunc.C:2617 src/lyxfunc.C:2696
 msgid ""
 "Do you want to close that document now?\n"
 "('No' will just switch to the open version)"
@@ -3279,105 +3280,105 @@ msgstr ""
 "Вы хотите закрыть этот документ сейчас?\n"
 "('Нет' просто переключит к открытой версии)"
 
-#: src/lyxfunc.C:2494
+#: src/lyxfunc.C:2501
 msgid "Do you want to open the document?"
 msgstr "Вы хотите открыть документ?"
 
 #. loads document
-#: src/lyxfunc.C:2496 src/lyxfunc.C:2559
+#: src/lyxfunc.C:2503 src/lyxfunc.C:2566
 msgid "Opening document"
 msgstr "Открываю документ"
 
-#: src/lyxfunc.C:2503 src/lyxfunc.C:2566
+#: src/lyxfunc.C:2510 src/lyxfunc.C:2573
 msgid "opened."
 msgstr "открыт."
 
-#: src/lyxfunc.C:2512
+#: src/lyxfunc.C:2519
 msgid "Choose template"
 msgstr "Выберите шаблон"
 
-#: src/lyxfunc.C:2540 src/lyxfunc.C:2589 src/lyxfunc.C:2662 src/lyxfunc.C:2763
+#: src/lyxfunc.C:2547 src/lyxfunc.C:2596 src/lyxfunc.C:2669 src/lyxfunc.C:2770
 msgid "Examples"
 msgstr "Примеры"
 
-#: src/lyxfunc.C:2542
+#: src/lyxfunc.C:2549
 msgid "Select Document to Open"
 msgstr "Выберите документ для открытия"
 
-#: src/lyxfunc.C:2568
+#: src/lyxfunc.C:2575
 msgid "Could not open document"
 msgstr "Ошибка открытия документа"
 
-#: src/lyxfunc.C:2591
+#: src/lyxfunc.C:2598
 msgid "Select ASCII file to Import"
 msgstr "Выберите ASCII-файл для импорта"
 
-#: src/lyxfunc.C:2629 src/lyxfunc.C:2709
+#: src/lyxfunc.C:2636 src/lyxfunc.C:2716
 msgid "A document by the name"
 msgstr "Документ по имени"
 
-#: src/lyxfunc.C:2631 src/lyxfunc.C:2711
+#: src/lyxfunc.C:2638 src/lyxfunc.C:2718
 msgid "already exists. Overwrite?"
 msgstr "уже существует. Перезаписывать?"
 
-#: src/lyxfunc.C:2637
+#: src/lyxfunc.C:2644
 msgid "Importing ASCII file"
 msgstr "Импортирую ASCII-файл"
 
-#: src/lyxfunc.C:2641
+#: src/lyxfunc.C:2648
 msgid "ASCII file "
 msgstr "ASCII-файл "
 
-#: src/lyxfunc.C:2643 src/lyxfunc.C:2734
+#: src/lyxfunc.C:2650 src/lyxfunc.C:2741
 msgid "imported."
 msgstr "импортирован."
 
-#: src/lyxfunc.C:2666
+#: src/lyxfunc.C:2673
 msgid "Select Noweb file to Import"
 msgstr "Выберете Noweb-файл для импорта"
 
-#: src/lyxfunc.C:2669
+#: src/lyxfunc.C:2676
 msgid "Select LaTeX file to Import"
 msgstr "Выберете LaTeX-файл для импорта"
 
-#: src/lyxfunc.C:2719
+#: src/lyxfunc.C:2726
 msgid "Importing LaTeX file"
 msgstr "Импортирую LaTeX-файл"
 
-#: src/lyxfunc.C:2724
+#: src/lyxfunc.C:2731
 msgid "Importing Noweb file"
 msgstr "Импортирую Noweb-файл"
 
-#: src/lyxfunc.C:2732
+#: src/lyxfunc.C:2739
 msgid "Noweb file "
 msgstr "Noweb-файл "
 
-#: src/lyxfunc.C:2732
+#: src/lyxfunc.C:2739
 msgid "LateX file "
 msgstr "LaTeX-файл "
 
-#: src/lyxfunc.C:2737
+#: src/lyxfunc.C:2744
 msgid "Could not import Noweb file"
 msgstr "Невозможно импортировать Noweb-файл"
 
-#: src/lyxfunc.C:2738
+#: src/lyxfunc.C:2745
 msgid "Could not import LaTeX file"
 msgstr "Невозможно импортировать LaTeX-файл"
 
-#: src/lyxfunc.C:2765
+#: src/lyxfunc.C:2772
 msgid "Select Document to Insert"
 msgstr "Выберите документ для вставки"
 
 #. Inserts document
-#: src/lyxfunc.C:2783
+#: src/lyxfunc.C:2790
 msgid "Inserting document"
 msgstr "Вставляю документ"
 
-#: src/lyxfunc.C:2789
+#: src/lyxfunc.C:2796
 msgid "inserted."
 msgstr "вставлен."
 
-#: src/lyxfunc.C:2791
+#: src/lyxfunc.C:2798
 msgid "Could not insert document"
 msgstr "Ошибка вставки документа"
 
@@ -3624,19 +3625,19 @@ msgstr ""
 "Импорт%t|LaTeX...%x30|Ascii-текст как строки...%x31|Ascii-текст как "
 "абзацы%x32|Noweb%x33"
 
-#: src/menus.C:464 src/menus.C:700
+#: src/menus.C:464 src/menus.C:706
 msgid "FIM|Ll#l#L"
 msgstr ""
 
-#: src/menus.C:465 src/menus.C:701
+#: src/menus.C:465 src/menus.C:707
 msgid "FIM|Aa#a#A"
 msgstr ""
 
-#: src/menus.C:466 src/menus.C:702
+#: src/menus.C:466 src/menus.C:708
 msgid "FIM|Pp#p#P"
 msgstr ""
 
-#: src/menus.C:467 src/menus.C:703
+#: src/menus.C:467 src/menus.C:709
 msgid "FIM|Nn#n#N"
 msgstr ""
 
@@ -3700,15 +3701,15 @@ msgstr ""
 "как...|Вернуться к сохраненному%l|Просмотр dvi|Просмотр PostScript|Обновить "
 "dvi|Обновить PostScript|Создать программу%l|Печать...|Факс..."
 
-#: src/menus.C:523 src/menus.C:719
+#: src/menus.C:523 src/menus.C:725
 msgid "FM|Nn#n#N"
 msgstr ""
 
-#: src/menus.C:524 src/menus.C:720
+#: src/menus.C:524 src/menus.C:726
 msgid "FM|tT#t#T"
 msgstr ""
 
-#: src/menus.C:525 src/menus.C:721
+#: src/menus.C:525 src/menus.C:727
 msgid "FM|Oo#o#O"
 msgstr ""
 
@@ -3756,34 +3757,34 @@ msgstr ""
 msgid "FM|Ff#f#F"
 msgstr ""
 
-#: src/menus.C:576
+#: src/menus.C:582
 #, no-c-format
 msgid "|Import%m"
 msgstr "|Импорт%m"
 
-#: src/menus.C:578
+#: src/menus.C:584
 #, no-c-format
 msgid "|Export%m%l"
 msgstr "|Экспорт%m%l"
 
-#: src/menus.C:580
+#: src/menus.C:586
 #, no-c-format
 msgid "|Exit%l"
 msgstr "|Выход%l"
 
-#: src/menus.C:581 src/menus.C:722
+#: src/menus.C:587 src/menus.C:728
 msgid "FM|Ii#i#I"
 msgstr ""
 
-#: src/menus.C:582
+#: src/menus.C:588
 msgid "FM|Ee#e#E"
 msgstr ""
 
-#: src/menus.C:583 src/menus.C:723
+#: src/menus.C:589 src/menus.C:729
 msgid "FM|xX#x#X"
 msgstr ""
 
-#: src/menus.C:695
+#: src/menus.C:701
 msgid ""
 "Import%t|LaTeX...%x15|Ascii Text as Lines...%x16|Ascii Text as "
 "Paragraphs...%x17|Noweb...%x18"
@@ -3791,11 +3792,11 @@ msgstr ""
 "Импорт%t|LaTeX...%x15|Ascii-текст как строки...%x16|Ascii-текст как "
 "абзацы...%x17|Noweb...%x18"
 
-#: src/menus.C:714
+#: src/menus.C:720
 msgid "New...|New from template...|Open...%l|Import%m%l|Exit%l"
 msgstr "Новый...|Новый по шаблону...|Открыть...%l|Импорт%m%l|Выход%l"
 
-#: src/menus.C:804
+#: src/menus.C:810
 msgid ""
 "Floats & Insets%t|Open/Close%x21|Melt%x22|Open All Footnotes/Margin "
 "Notes%x23|Close All Footnotes/Margin Notes%x24|Open All "
@@ -3806,265 +3807,265 @@ msgstr ""
 "все рисунки/таблицы%x25|Закрыть все рисунки/таблицы%x26%l|Удалить все "
 "сообщения об ошибках%x27"
 
-#: src/menus.C:813
+#: src/menus.C:819
 msgid "EMF|Oo#o#O"
 msgstr ""
 
-#: src/menus.C:814
+#: src/menus.C:820
 msgid "EMF|Mm#m#M"
 msgstr ""
 
-#: src/menus.C:815
+#: src/menus.C:821
 msgid "EMF|Aa#a#A"
 msgstr ""
 
-#: src/menus.C:816
+#: src/menus.C:822
 msgid "EMF|Cc#c#C"
 msgstr ""
 
-#: src/menus.C:817
+#: src/menus.C:823
 msgid "EMF|Ff#f#F"
 msgstr ""
 
-#: src/menus.C:818
+#: src/menus.C:824
 msgid "EMF|Tt#t#T"
 msgstr ""
 
-#: src/menus.C:819
+#: src/menus.C:825
 msgid "EMF|Rr#r#R"
 msgstr ""
 
-#: src/menus.C:827 src/menus.C:925
+#: src/menus.C:833 src/menus.C:931
 msgid "Table%t"
 msgstr "Таблица%t"
 
-#: src/menus.C:835
+#: src/menus.C:841
 msgid "|Multicolumn%B%x44%l"
 msgstr "|Многоколоночный%B%x44%l"
 
-#: src/menus.C:837
+#: src/menus.C:843
 msgid "|Multicolumn%b%x44%l"
 msgstr "|Многоколоночный%b%x44%l"
 
-#: src/menus.C:838
+#: src/menus.C:844
 msgid "EMT|Mm#m#M"
 msgstr ""
 
-#: src/menus.C:846
+#: src/menus.C:852
 msgid "|Line Top%B%x36"
 msgstr "|Верх строки%B%x36"
 
-#: src/menus.C:848
+#: src/menus.C:854
 msgid "|Line Top%b%x36"
 msgstr "|Верх строки%b%x36"
 
-#: src/menus.C:849
+#: src/menus.C:855
 msgid "EMT|Tt#t#T"
 msgstr ""
 
-#: src/menus.C:857
+#: src/menus.C:863
 msgid "|Line Bottom%B%x37"
 msgstr "|Низ строки%B%x37"
 
-#: src/menus.C:859
+#: src/menus.C:865
 msgid "|Line Bottom%b%x37"
 msgstr "|Низ строки%b%x37"
 
-#: src/menus.C:860
+#: src/menus.C:866
 msgid "EMT|Bb#b#B"
 msgstr ""
 
-#: src/menus.C:868
+#: src/menus.C:874
 msgid "|Line Left%B%x38"
 msgstr "|Левая часть строки%B%x38"
 
-#: src/menus.C:870
+#: src/menus.C:876
 msgid "|Line Left%b%x38"
 msgstr "|Левая часть строки%b%x38"
 
-#: src/menus.C:871
+#: src/menus.C:877
 msgid "EMT|Ll#l#L"
 msgstr ""
 
-#: src/menus.C:879
+#: src/menus.C:885
 msgid "|Line Right%B%x39%l"
 msgstr "|Правая часть строки%B%x39%l"
 
-#: src/menus.C:881
+#: src/menus.C:887
 msgid "|Line Right%b%x39%l"
 msgstr "|Правая часть строки%b%x39%l"
 
-#: src/menus.C:882
+#: src/menus.C:888
 msgid "EMT|Rr#r#R"
 msgstr ""
 
-#: src/menus.C:891
+#: src/menus.C:897
 msgid "|Align Left%R%x40"
 msgstr "|Выравнивание влево%R%x40"
 
-#: src/menus.C:893
+#: src/menus.C:899
 msgid "|Align Left%r%x40"
 msgstr "|Выравнивание влево%r%x40"
 
-#: src/menus.C:894
+#: src/menus.C:900
 msgid "EMT|eE#e#E"
 msgstr ""
 
-#: src/menus.C:897
+#: src/menus.C:903
 msgid "|Align Right%R%x41"
 msgstr "|Выравнивание вправо%R%x41"
 
-#: src/menus.C:899
+#: src/menus.C:905
 msgid "|Align Right%r%x41"
 msgstr "|Выравнивание вправо%r%x41"
 
-#: src/menus.C:900
+#: src/menus.C:906
 msgid "EMT|iI#i#I"
 msgstr ""
 
-#: src/menus.C:903
+#: src/menus.C:909
 msgid "|Align Center%R%x42%l"
 msgstr "|Центровка%R%x42%l"
 
-#: src/menus.C:905
+#: src/menus.C:911
 msgid "|Align Center%r%x42%l"
 msgstr "|Центровка%r%x42%l"
 
-#: src/menus.C:906
-msgid "EMT|Cc#c#C"
-msgstr ""
-
-#: src/menus.C:909
-#, no-c-format
-msgid "|Append Row%x32"
-msgstr "|Добавить строку%x32"
-
-#: src/menus.C:910
-msgid "EMT|oO#o#O"
-msgstr ""
-
 #: src/menus.C:912
-#, no-c-format
-msgid "|Append Column%x33%l"
-msgstr "|Добавить колонку%x33%l"
-
-#: src/menus.C:913
-msgid "EMT|uU#u#U"
+msgid "EMT|Cc#c#C"
 msgstr ""
 
 #: src/menus.C:915
 #, no-c-format
-msgid "|Delete Row%x34"
-msgstr "|Удалить строку%x34"
+msgid "|Append Row%x32"
+msgstr "|Добавить строку%x32"
 
 #: src/menus.C:916
-msgid "EMT|wW#w#W"
+msgid "EMT|oO#o#O"
 msgstr ""
 
 #: src/menus.C:918
 #, no-c-format
-msgid "|Delete Column%x35%l"
-msgstr "|Удалить колонку%x35%l"
+msgid "|Append Column%x33%l"
+msgstr "|Добавить колонку%x33%l"
 
 #: src/menus.C:919
-msgid "EMT|nN#n#N"
+msgid "EMT|uU#u#U"
 msgstr ""
 
 #: src/menus.C:921
 #, no-c-format
-msgid "|Delete Table%x43"
-msgstr "|Удалить таблицу%x43"
+msgid "|Delete Row%x34"
+msgstr "|Удалить строку%x34"
 
 #: src/menus.C:922
-msgid "EMT|Dd#d#D"
+msgid "EMT|wW#w#W"
+msgstr ""
+
+#: src/menus.C:924
+#, no-c-format
+msgid "|Delete Column%x35%l"
+msgstr "|Удалить колонку%x35%l"
+
+#: src/menus.C:925
+msgid "EMT|nN#n#N"
 msgstr ""
 
 #: src/menus.C:927
 #, no-c-format
+msgid "|Delete Table%x43"
+msgstr "|Удалить таблицу%x43"
+
+#: src/menus.C:928
+msgid "EMT|Dd#d#D"
+msgstr ""
+
+#: src/menus.C:933
+#, no-c-format
 msgid "|Insert table%x31"
 msgstr "|Вставить таблицу%x31"
 
-#: src/menus.C:928
+#: src/menus.C:934
 msgid "EMT|Ii#i#I"
 msgstr ""
 
-#: src/menus.C:932
+#: src/menus.C:938
 msgid "Version Control%t"
 msgstr "Контроль версий%t"
 
-#: src/menus.C:935
+#: src/menus.C:941
 #, no-c-format
 msgid "|Register%d%x51"
 msgstr "|Зарегистрировать%d%x51"
 
 #. signifies that the file is not checked out
-#: src/menus.C:939
+#: src/menus.C:945
 #, no-c-format
 msgid "|Check In Changes%d%x52"
 msgstr "|Влить изменения%d%x52"
 
-#: src/menus.C:941
+#: src/menus.C:947
 #, no-c-format
 msgid "|Check Out for Edit%x53"
 msgstr "|Захватить на редакцию%x53"
 
 #. signifies that the file is checked out
-#: src/menus.C:945
+#: src/menus.C:951
 #, no-c-format
 msgid "|Check In Changes%x52"
 msgstr "|Влить изменения%x52"
 
-#: src/menus.C:947
+#: src/menus.C:953
 #, no-c-format
 msgid "|Check Out for Edit%d%x53"
 msgstr "|Захватить на редакцию%d%x53"
 
-#: src/menus.C:950
+#: src/menus.C:956
 #, no-c-format
 msgid "|Revert to last version%x54"
 msgstr "|Откатиться к последней версии%x54"
 
-#: src/menus.C:952
+#: src/menus.C:958
 #, no-c-format
 msgid "|Undo last check in%x55"
 msgstr "|Отменить последнюю заливку%x55"
 
-#: src/menus.C:954
+#: src/menus.C:960
 #, no-c-format
 msgid "|Show History%x56"
 msgstr "|Показать историю%x56"
 
-#: src/menus.C:957
+#: src/menus.C:963
 #, no-c-format
 msgid "|Register%x51"
 msgstr "|Зарегистрировать%x51"
 
 #. the shortcuts are not good.
-#: src/menus.C:960
+#: src/menus.C:966
 msgid "EMV|Rr#r#R"
 msgstr ""
 
-#: src/menus.C:961
+#: src/menus.C:967
 msgid "EMV|Ii#i#I"
 msgstr ""
 
-#: src/menus.C:962
+#: src/menus.C:968
 msgid "EMV|Oo#o#O"
 msgstr ""
 
-#: src/menus.C:963
+#: src/menus.C:969
 msgid "EMV|lL#l#l"
 msgstr ""
 
-#: src/menus.C:964
+#: src/menus.C:970
 msgid "EMV|Uu#u#U"
 msgstr ""
 
-#: src/menus.C:965
+#: src/menus.C:971
 msgid "EMV|Hh#h#H"
 msgstr ""
 
-#: src/menus.C:968
+#: src/menus.C:974
 msgid ""
 "Undo|Redo %l|Cut|Copy|Paste%l|Find & Replace...|Go to Error|Go to "
 "Note|Floats & Insets%m|Table%m|Spellchecker....|Check TeX|Table of "
@@ -4078,75 +4079,75 @@ msgstr ""
 "версий%m%l|Посмотреть журнал LaTeX%l|Вставить первичное выделение как "
 "строки|Вставить первичное выделение как абзацы"
 
-#: src/menus.C:987
+#: src/menus.C:993
 msgid "EM|Uu#u#U"
 msgstr ""
 
-#: src/menus.C:988
+#: src/menus.C:994
 msgid "EM|Rr#r#R"
 msgstr ""
 
-#: src/menus.C:989
+#: src/menus.C:995
 msgid "EM|Cc#c#C"
 msgstr ""
 
-#: src/menus.C:990
+#: src/menus.C:996
 msgid "EM|oO#o#O"
 msgstr ""
 
-#: src/menus.C:991
+#: src/menus.C:997
 msgid "EM|Pp#p#P"
 msgstr ""
 
-#: src/menus.C:992
+#: src/menus.C:998
 msgid "EM|Ff#f#F"
 msgstr ""
 
-#: src/menus.C:993
+#: src/menus.C:999
 msgid "EM|Ee#e#E"
 msgstr ""
 
-#: src/menus.C:994
+#: src/menus.C:1000
 msgid "EM|Nn#n#N"
 msgstr ""
 
-#: src/menus.C:995
+#: src/menus.C:1001
 msgid "EM|Ii#i#I"
 msgstr ""
 
-#: src/menus.C:996
+#: src/menus.C:1002
 msgid "EM|Tt#t#T"
 msgstr ""
 
-#: src/menus.C:997
+#: src/menus.C:1003
 msgid "EM|Ss#s#S"
 msgstr ""
 
-#: src/menus.C:998
+#: src/menus.C:1004
 msgid "EM|hH#h#H"
 msgstr ""
 
-#: src/menus.C:999
+#: src/menus.C:1005
 msgid "EM|aA#a#A"
 msgstr ""
 
-#: src/menus.C:1000
+#: src/menus.C:1006
 msgid "EM|Vv#v#V"
 msgstr ""
 
-#: src/menus.C:1001
+#: src/menus.C:1007
 msgid "EM|wW#w#W"
 msgstr ""
 
-#: src/menus.C:1002
+#: src/menus.C:1008
 msgid "EM|Ll#l#L"
 msgstr ""
 
-#: src/menus.C:1003
+#: src/menus.C:1009
 msgid "EM|gG#g#G"
 msgstr ""
 
-#: src/menus.C:1128
+#: src/menus.C:1134
 msgid ""
 "Character...|Paragraph...|Document...|Paper...|Table...|Quotes...%l|Emphasize"
 " Style%b|Noun Style%b|Bold Style%b|TeX Style%b|Change Environment "
@@ -4156,71 +4157,71 @@ msgstr ""
 "акцента%b|Стиль выделения%b|Полужирный стиль%b|Стиль TeX%b|Изменить уровень "
 "окружения|Преамбула LaTeX...%l|Сохранить формат как по умолчанию"
 
-#: src/menus.C:1141
+#: src/menus.C:1147
 msgid "LM|Cc#c#C"
 msgstr ""
 
-#: src/menus.C:1142
+#: src/menus.C:1148
 msgid "LM|Pp#p#P"
 msgstr ""
 
-#: src/menus.C:1143
+#: src/menus.C:1149
 msgid "LM|Dd#d#D"
 msgstr ""
 
-#: src/menus.C:1144
+#: src/menus.C:1150
 msgid "LM|aA#a#A"
 msgstr ""
 
-#: src/menus.C:1145
+#: src/menus.C:1151
 msgid "LM|eE#e#E"
 msgstr ""
 
-#: src/menus.C:1146
+#: src/menus.C:1152
 msgid "LM|Qq#q#Q"
 msgstr ""
 
-#: src/menus.C:1147
+#: src/menus.C:1153
 msgid "LM|mM#m#M"
 msgstr ""
 
-#: src/menus.C:1148
+#: src/menus.C:1154
 msgid "LM|Nn#n#N"
 msgstr ""
 
-#: src/menus.C:1149
+#: src/menus.C:1155
 msgid "LM|Bb#b#B"
 msgstr ""
 
-#: src/menus.C:1150
+#: src/menus.C:1156
 msgid "LM|Tt#t#T"
 msgstr ""
 
-#: src/menus.C:1151
+#: src/menus.C:1157
 msgid "LM|vV#v#V"
 msgstr ""
 
-#: src/menus.C:1152
+#: src/menus.C:1158
 msgid "LM|Ll#l#L"
 msgstr ""
 
-#: src/menus.C:1153
+#: src/menus.C:1159
 msgid "LM|Ss#s#S"
 msgstr ""
 
-#: src/menus.C:1223
+#: src/menus.C:1229
 msgid "Import ASCII file%t|As Lines%x41|As Paragraphs%x42"
 msgstr "Импортировать ASCII-файл%t|Как строки%x41|Как абзацы%x42"
 
-#: src/menus.C:1226
+#: src/menus.C:1232
 msgid "IMA|Ll#l#L"
 msgstr ""
 
-#: src/menus.C:1227
+#: src/menus.C:1233
 msgid "IMA|Pp#p#P"
 msgstr ""
 
-#: src/menus.C:1230
+#: src/menus.C:1236
 msgid ""
 "Lists & TOC%t|Table of Contents%x21|List of Figures%x22|List of "
 "Tables%x23|List of Algorithms%x24|Index List%x25|BibTeX Reference%x26"
@@ -4228,31 +4229,31 @@ msgstr ""
 "Списки и содержание%t|Содержание%x21|Список рисунков%x22|Список "
 "таблиц%x23|Список алгоритмов%x24|Список индексов%x25|Ссылки BibTeX%x26"
 
-#: src/menus.C:1237
+#: src/menus.C:1243
 msgid "IMT|Cc#c#C"
 msgstr ""
 
-#: src/menus.C:1238
+#: src/menus.C:1244
 msgid "IMT|Ff#f#F"
 msgstr ""
 
-#: src/menus.C:1239
+#: src/menus.C:1245
 msgid "IMT|Tt#t#T"
 msgstr ""
 
-#: src/menus.C:1240
+#: src/menus.C:1246
 msgid "IMT|Aa#a#A"
 msgstr ""
 
-#: src/menus.C:1241
+#: src/menus.C:1247
 msgid "IMT|Ii#i#I"
 msgstr ""
 
-#: src/menus.C:1242
+#: src/menus.C:1248
 msgid "IMT|Bb#b#B"
 msgstr ""
 
-#: src/menus.C:1254
+#: src/menus.C:1260
 msgid ""
 "Floats%t|Figure Float%x71|Table Float%x72|Wide Figure Float%x73|Wide Table "
 "Float%l%x74|Algorithm Float%x75"
@@ -4261,27 +4262,27 @@ msgstr ""
 "кадр-таблица%l%x74|Кадр-алгоритм%x75"
 
 #. }
-#: src/menus.C:1261
+#: src/menus.C:1267
 msgid "IMF|gG#g#G"
 msgstr ""
 
-#: src/menus.C:1262
+#: src/menus.C:1268
 msgid "IMF|Tt#t#T"
 msgstr ""
 
-#: src/menus.C:1263
+#: src/menus.C:1269
 msgid "IMF|Ww#w#W"
 msgstr ""
 
-#: src/menus.C:1264
+#: src/menus.C:1270
 msgid "IMF|iI#i#I"
 msgstr ""
 
-#: src/menus.C:1265
+#: src/menus.C:1271
 msgid "IMF|Aa#a#A"
 msgstr ""
 
-#: src/menus.C:1268
+#: src/menus.C:1274
 msgid ""
 "Special Character%t|HFill%x31|Hyphenation Point%x32|Protected "
 "Blank%x33|Linebreak%x34|Ellipsis (...)%x35|End of sentence "
@@ -4291,39 +4292,39 @@ msgstr ""
 "пробел%x33|Разрыв строки%x34|Скобки (...)%x35|Точка конца "
 "предложения%x36|Обычная кавычка (\")%x37|Разделитель меню"
 
-#: src/menus.C:1278
+#: src/menus.C:1284
 msgid "IMS|Hh#h#H"
 msgstr ""
 
-#: src/menus.C:1279
+#: src/menus.C:1285
 msgid "IMS|Pp#p#P"
 msgstr ""
 
-#: src/menus.C:1280
+#: src/menus.C:1286
 msgid "IMS|Bb#b#B"
 msgstr ""
 
-#: src/menus.C:1281
+#: src/menus.C:1287
 msgid "IMS|Ll#l#L"
 msgstr ""
 
-#: src/menus.C:1282
+#: src/menus.C:1288
 msgid "IMS|iI#i#I"
 msgstr ""
 
-#: src/menus.C:1283
+#: src/menus.C:1289
 msgid "IMS|Ee#e#E"
 msgstr ""
 
-#: src/menus.C:1284
+#: src/menus.C:1290
 msgid "IMS|Qq#q#Q"
 msgstr ""
 
-#: src/menus.C:1285
+#: src/menus.C:1291
 msgid "IMS|Mm#m#M"
 msgstr ""
 
-#: src/menus.C:1288
+#: src/menus.C:1294
 msgid ""
 "Figure...|Table...%l|Include File...|Import ASCII File%m|Insert LyX "
 "File...%l|Footnote|Margin Note|Floats%m%l|Lists & TOC%m%l|Special "
@@ -4335,79 +4336,79 @@ msgstr ""
 "содержания%m%l|Спецсимвол%m%l|Примечание...|Метка...|Перекрестная "
 "ссылка...|Ссылка на цитату...|Элемент индекса...|Последнее слово индекса"
 
-#: src/menus.C:1309
+#: src/menus.C:1315
 msgid "IM|gG#g#G"
 msgstr ""
 
-#: src/menus.C:1310
+#: src/menus.C:1316
 msgid "IM|bB#b#B"
 msgstr ""
 
-#: src/menus.C:1311
+#: src/menus.C:1317
 msgid "IM|cC#c#C"
 msgstr ""
 
-#: src/menus.C:1312
+#: src/menus.C:1318
 msgid "IM|Aa#a#A"
 msgstr ""
 
-#: src/menus.C:1313
+#: src/menus.C:1319
 msgid "IM|Xx#x#X"
 msgstr ""
 
-#: src/menus.C:1314
+#: src/menus.C:1320
 msgid "IM|Ff#f#F"
 msgstr ""
 
-#: src/menus.C:1315
+#: src/menus.C:1321
 msgid "IM|Mm#m#M"
 msgstr ""
 
-#: src/menus.C:1316
+#: src/menus.C:1322
 msgid "IM|oO#o#O"
 msgstr ""
 
-#: src/menus.C:1317
+#: src/menus.C:1323
 msgid "IM|Tt#t#T"
 msgstr ""
 
-#: src/menus.C:1318
+#: src/menus.C:1324
 msgid "IM|Ss#s#S"
 msgstr ""
 
-#: src/menus.C:1319
+#: src/menus.C:1325
 msgid "IM|Nn#n#N"
 msgstr ""
 
-#: src/menus.C:1320
+#: src/menus.C:1326
 msgid "IM|Ll#l#L"
 msgstr ""
 
-#: src/menus.C:1321
+#: src/menus.C:1327
 msgid "IM|rR#r#R"
 msgstr ""
 
-#: src/menus.C:1322
+#: src/menus.C:1328
 msgid "IM|iI#i#I"
 msgstr ""
 
-#: src/menus.C:1323
+#: src/menus.C:1329
 msgid "IM|dD#d#D"
 msgstr ""
 
-#: src/menus.C:1324
+#: src/menus.C:1330
 msgid "IM|wW#w#W"
 msgstr ""
 
-#: src/menus.C:1330
+#: src/menus.C:1336
 msgid "|URL..."
 msgstr "|Ссылка в Интернет (URL)"
 
-#: src/menus.C:1331
+#: src/menus.C:1337
 msgid "IM|Uu#u#U"
 msgstr ""
 
-#: src/menus.C:1445
+#: src/menus.C:1451
 msgid ""
 "Fraction|Square root|Exponent|Index|Sum|Integral%l|Math mode|Display%l|Math "
 "Panel..."
@@ -4415,70 +4416,70 @@ msgstr ""
 "Дробь|Квадратный корень|Экспонента|Индекс|Сумма|Интеграл%l|Математическая "
 "мода|Выделить%l|Математическая панель..."
 
-#: src/menus.C:1455
+#: src/menus.C:1461
 msgid "MM|Ff#f#F"
 msgstr ""
 
-#: src/menus.C:1456
+#: src/menus.C:1462
 msgid "MM|Ss#s#S"
 msgstr ""
 
-#: src/menus.C:1457
+#: src/menus.C:1463
 msgid "MM|Ee#e#E"
 msgstr ""
 
-#: src/menus.C:1458
+#: src/menus.C:1464
 msgid "MM|xX#x#X"
 msgstr ""
 
-#: src/menus.C:1459
+#: src/menus.C:1465
 msgid "MM|uU#u#U"
 msgstr ""
 
-#: src/menus.C:1460
+#: src/menus.C:1466
 msgid "MM|Ii#i#I"
 msgstr ""
 
-#: src/menus.C:1461
+#: src/menus.C:1467
 msgid "MM|Mm#m#M"
 msgstr ""
 
-#: src/menus.C:1462
+#: src/menus.C:1468
 msgid "MM|Dd#d#D"
 msgstr ""
 
-#: src/menus.C:1463
+#: src/menus.C:1469
 msgid "MM|Pp#p#P"
 msgstr ""
 
-#: src/menus.C:1529
+#: src/menus.C:1535
 msgid ""
 "Screen Fonts...|Spellchecker Options...|Keyboard...|LaTeX...%l|Reconfigure"
 msgstr ""
 "Экранные шрифты...|Параметры "
 "орфографии...|Клавиатура...|LaTeX...%l|Переконфигурировать"
 
-#: src/menus.C:1535
+#: src/menus.C:1541
 msgid "OM|Ff#f#F"
 msgstr ""
 
-#: src/menus.C:1536
+#: src/menus.C:1542
 msgid "OM|Ss#s#S"
 msgstr ""
 
-#: src/menus.C:1537
+#: src/menus.C:1543
 msgid "OM|Kk#k#K"
 msgstr ""
 
-#: src/menus.C:1538
+#: src/menus.C:1544
 msgid "OM|Ll#l#L"
 msgstr ""
 
-#: src/menus.C:1539
+#: src/menus.C:1545
 msgid "OM|Rr#r#R"
 msgstr ""
 
-#: src/menus.C:1608
+#: src/menus.C:1614
 msgid ""
 "Introduction|Tutorial|User's Guide|Extended Features|Customization|Reference "
 "Manual|Known Bugs|LaTeX Configuration%l|Copyright and "
@@ -4488,67 +4489,67 @@ msgstr ""
 "возможности|Настройка|Список ссылок|Известные ошибки|Конфигурация "
 "LaTeX%l|Авторские права и гарантии...|Авторы...|Версия..."
 
-#: src/menus.C:1620
+#: src/menus.C:1626
 msgid "HM|Ii#I#i"
 msgstr ""
 
-#: src/menus.C:1621
+#: src/menus.C:1627
 msgid "HM|Tt#T#t"
 msgstr ""
 
-#: src/menus.C:1622
+#: src/menus.C:1628
 msgid "HM|Uu#U#u"
 msgstr ""
 
-#: src/menus.C:1623
+#: src/menus.C:1629
 msgid "HM|xX#x#X"
 msgstr ""
 
-#: src/menus.C:1624
+#: src/menus.C:1630
 msgid "HM|Cc#C#c"
 msgstr ""
 
-#: src/menus.C:1625
+#: src/menus.C:1631
 msgid "HM|Rr#R#r"
 msgstr ""
 
-#: src/menus.C:1626
+#: src/menus.C:1632
 msgid "HM|Kk#K#k"
 msgstr ""
 
-#: src/menus.C:1627
+#: src/menus.C:1633
 msgid "HM|Ll#L#l"
 msgstr ""
 
-#: src/menus.C:1628
+#: src/menus.C:1634
 msgid "HM|oO#o#O"
 msgstr ""
 
-#: src/menus.C:1629
+#: src/menus.C:1635
 msgid "HM|eE#e#E"
 msgstr ""
 
-#: src/menus.C:1630
+#: src/menus.C:1636
 msgid "HM|Vv#v#V"
 msgstr ""
 
-#: src/menus.C:1653
+#: src/menus.C:1659
 msgid "LyX Version "
 msgstr "LyX версии "
 
-#: src/menus.C:1654
+#: src/menus.C:1660
 msgid " of "
 msgstr " от "
 
-#: src/menus.C:1655
+#: src/menus.C:1661
 msgid "Library directory: "
 msgstr "Каталог библиотек: "
 
-#: src/menus.C:1657
+#: src/menus.C:1663
 msgid "User directory: "
 msgstr "Пользовательский каталог: "
 
-#: src/menus.C:1669
+#: src/menus.C:1675
 msgid "Opening help file"
 msgstr "Открываю файл помощи"
 
@@ -4777,48 +4778,48 @@ msgstr ""
 "Процесс ispell почему-то умер.\n"
 "Возможно, кто-то его убил."
 
-#: src/support/filetools.C:159 src/support/filetools.C:168
-#: src/support/filetools.C:175
+#: src/support/filetools.C:162 src/support/filetools.C:171
+#: src/support/filetools.C:178
 msgid "LyX Internal Error!"
 msgstr "Внутренняя ошибка LyX!"
 
-#: src/support/filetools.C:160
+#: src/support/filetools.C:163
 msgid "Could not test if directory is writeable"
 msgstr "Невозможно проверить каталог на запись"
 
-#: src/support/filetools.C:169
+#: src/support/filetools.C:172
 msgid "Cannot open directory test file"
 msgstr "Невозможно открыть тестовый файл в каталоге"
 
-#: src/support/filetools.C:176
+#: src/support/filetools.C:179
 msgid "Created test file but cannot remove it?"
 msgstr "Созданный тестовый файл невозможно удалить"
 
-#: src/support/filetools.C:343
+#: src/support/filetools.C:346
 msgid "Error! Cannot open directory:"
 msgstr "Ошибка открытия каталога "
 
-#: src/support/filetools.C:355
+#: src/support/filetools.C:358
 msgid "Error! Could not remove file:"
 msgstr "Ошибка удаления файла "
 
-#: src/support/filetools.C:369
+#: src/support/filetools.C:372
 msgid "Error! Couldn't create temporary directory:"
 msgstr "Ошибка создания временного каталога "
 
-#: src/support/filetools.C:385
+#: src/support/filetools.C:388
 msgid "Error! Couldn't delete temporary directory:"
 msgstr "Ошибка удаления временного каталога "
 
-#: src/support/filetools.C:440
+#: src/support/filetools.C:443
 msgid "Internal error!"
 msgstr "Внутренняя ошибка!"
 
-#: src/support/filetools.C:441
+#: src/support/filetools.C:444
 msgid "Call to createDirectory with invalid name"
 msgstr "Вызов createDirectory с неверным именем"
 
-#: src/support/filetools.C:446
+#: src/support/filetools.C:449
 msgid "Error! Couldn't create directory:"
 msgstr "Ошибка создания каталога "
 
