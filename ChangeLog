@@ -1,3 +1,15 @@
+2001-12-12  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* src/FontLoader.C (getFontinfo): only use symbol fonts with encoding
+	-adobe-fontspecific. At least Mandrake and Redhat have a symbol
+	font in urw-fonts package which is marked as -urw-fontspecific and
+	does not work (incidentally, changing the encoding in the
+	fonts.dir of this package to -adobe-fontspecific fixes the
+	problem).
+
+	* src/text2.C (TextHandleUndo): fix memory leak where undo
+	information was never released.
+
 2001-11-30  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* lib/examples/de_splash.lyx: update from Hartmut Haase.

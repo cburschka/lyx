@@ -3343,13 +3343,15 @@ bool LyXText::TextHandleUndo(BufferView * bview, Undo * undo)
 			while (tmppar5 && tmppar5 != behind){
 				tmppar = tmppar5;
 				tmppar5 = tmppar5->next;
-				// a memory optimization for edit: Only layout information
-				// is stored in the undo. So restore the text informations.
+				// a memory optimization for edit:
+				// Only layout information is stored
+				// in the undo. So restore the text
+				// informations.
 				if (undo->kind == Undo::EDIT) {
 					tmppar2->setContentsFromPar(tmppar);
-					tmppar->clearContents();
 					tmppar2 = tmppar2->next;
 				}
+				delete tmppar;
 			}
 		}
     

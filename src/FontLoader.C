@@ -101,7 +101,7 @@ void FontLoader::getFontinfo(LyXFont::FONT_FAMILY family,
 
 	// Special code for the symbol family
 	if (family == LyXFont::SYMBOL_FAMILY){
-		fontinfo[family][series][shape] = new FontInfo("-*-symbol-*");
+		fontinfo[family][series][shape] = new FontInfo("-*-symbol-*-adobe-fontspecific");
 		return;
 	}
 
