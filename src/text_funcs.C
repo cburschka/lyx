@@ -77,7 +77,8 @@ void cursorLeftOneWord(LyXCursor & cursor, ParagraphList const & pars)
 	     pit->isHfill(pos - 1))) {
 		--pos;
 	} else if (!pos) {
-		if (pit != pars.begin()) {
+		// cast only for BSD's g++ 2.95
+		if (pit != const_cast<ParagraphList &>(pars).begin()) {
 			--pit;
 			pos = pit->size();
 		}
@@ -99,7 +100,9 @@ void cursorRightOneWord(LyXCursor & cursor, ParagraphList const & pars)
 
 	// CHECK See comment on top of text.C
 
-	if (pos == pit->size() && boost::next(pit) != pars.end()) {
+	// cast only for BSD's g++ 2.95
+	if (pos == pit->size() &&
+		boost::next(pit) != const_cast<ParagraphList &>(pars).end()) {
 		++pit;
 		pos = 0;
 	} else {
