@@ -61,7 +61,7 @@ int string_to_qkey(string const & str)
 	if (str == "Shift_L") return Qt::Key_Shift;
 	if (str == "Control_L") return Qt::Key_Control;
 	if (str == "Alt_L") return Qt::Key_Meta; // correct ?
-	if (str == "Alt_L") return Qt::Key_Alt;
+	if (str == "Alt_R") return Qt::Key_Alt;
 	if (str == "Caps_Lock") return Qt::Key_CapsLock;
 	if (str == "Num_Lock") return Qt::Key_NumLock;
 	if (str == "Scroll_Lock") return Qt::Key_ScrollLock;
@@ -332,7 +332,7 @@ string const qkey_to_string(int lkey)
 	case Qt::Key_Shift: return "Shift_L";
 	case Qt::Key_Control: return "Control_L";
 	case Qt::Key_Meta: return "Alt_L"; // correct ?
-	case Qt::Key_Alt: return "Alt_L";
+	case Qt::Key_Alt: return "Alt_R";
 	case Qt::Key_CapsLock: return "Caps_Lock";
 	case Qt::Key_NumLock: return "Num_Lock";
 	case Qt::Key_ScrollLock: return "Scroll_Lock";
