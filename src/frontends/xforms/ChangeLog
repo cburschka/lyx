@@ -1,3 +1,8 @@
+2004-11-08  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* forms/Makefile.am (SUFFIXES): use +=, since SUFFIXES is already
+	set in config/common.am
+
 2004-11-05  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* XFormsToolbar.C (C_ToolbarCB, selected): 
