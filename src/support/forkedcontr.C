@@ -103,7 +103,6 @@ void ForkedcallsController::timer()
 
 		} else if (waitrpid == 0) {
 			// Still running. Move on to the next child.
-			continue;
 
 		} else if (WIFEXITED(stat_loc)) {
 			// Ok, the return value goes into retval.
