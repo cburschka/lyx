@@ -191,9 +191,7 @@ bool CutAndPaste::copySelection(Paragraph * startpar, Paragraph * endpar,
 			Paragraph * newpar = new Paragraph(*tmppar, false);
 			// reset change info
 			newpar->cleanChanges();
-#if 1
 			newpar->setInsetOwner(0);
-#endif
 
 			paragraphs.push_back(newpar);
 			tmppar = tmppar->next();
@@ -211,14 +209,6 @@ bool CutAndPaste::copySelection(Paragraph * startpar, Paragraph * endpar,
 		while (back.size() > tmpi2) {
 			back.erase(back.size() - 1);
 		}
-
-#if 0
-		// this paragraph's are of noone's owner!
-		ParagraphList::iterator it = paragraphs.begin();
-		ParagraphList::iterator end = paragraphs.end();
-		for (; it != end; ++it)
-			it->setInsetOwner(0);
-#endif
 	}
 	return true;
 }
@@ -233,171 +223,134 @@ bool CutAndPaste::pasteSelection(Paragraph ** par, Paragraph ** endpar,
 	if (pos > (*par)->size())
 		pos = (*par)->size();
 
-#if 0
-	// Paragraph * tmpbuf;
-	Paragraph * tmppar = *par;
-	int tmppos = pos;
-
-	// There are two cases: cutbuffer only one paragraph or many
-	if (!buf->next()) {
-		// only within a paragraph
-		Paragraph * tmpbuf = new Paragraph(*buf, false);
-
-		// Some provisions should be done here for checking
-		// if we are inserting at the beginning of a
-		// paragraph. If there are a space at the beginning
-		// of the text to insert and we are inserting at
-		// the beginning of the paragraph the space should
-		// be removed.
-		while (buf->size()) {
-			// This is an attempt to fix the
-			// "never insert a space at the
-			// beginning of a paragraph" problem.
-			if (!tmppos && buf->isLineSeparator(0)) {
-				buf->erase(0);
-			} else {
-				buf->cutIntoMinibuffer(current_view->buffer()->params, 0);
-				buf->erase(0);
-				if (tmppar->insertFromMinibuffer(tmppos))
-					++tmppos;
-			}
-		}
-		delete buf;
-		buf = tmpbuf;
-		*endpar = tmppar->next();
-		pos = tmppos;
-	} else
-#endif
-	{
-		// many paragraphs
-
-		// make a copy of the simple cut_buffer
+	// many paragraphs
+	
+	// make a copy of the simple cut_buffer
 #if 1
-		ParagraphList::iterator it = paragraphs.begin();
+	ParagraphList::iterator it = paragraphs.begin();
+	
+	ParagraphList simple_cut_clone;
+	simple_cut_clone.insert(simple_cut_clone.begin(),
+				new Paragraph(*it, false));
 
-		ParagraphList simple_cut_clone;
-		simple_cut_clone.insert(simple_cut_clone.begin(),
+	ParagraphList::iterator end = paragraphs.end();
+	while (boost::next(it) != end) {
+		++it;
+		simple_cut_clone.insert(simple_cut_clone.end(),
 					new Paragraph(*it, false));
-
-		ParagraphList::iterator end = paragraphs.end();
-		while (boost::next(it) != end) {
-			++it;
-			simple_cut_clone.insert(simple_cut_clone.end(),
-						new Paragraph(*it, false));
-		}
+	}
 #else
-		// Later we want it done like this:
-		ParagraphList simple_cut_clone(paragraphs.begin(),
-					       paragraphs.end());
+	// Later we want it done like this:
+	ParagraphList simple_cut_clone(paragraphs.begin(),
+				       paragraphs.end());
 #endif
-		// now remove all out of the buffer which is NOT allowed in the
-		// new environment and set also another font if that is required
-		ParagraphList::iterator tmpbuf = paragraphs.begin();
-		int depth_delta = (*par)->params().depth() - tmpbuf->params().depth();
-		// Temporary set *par as previous of tmpbuf as we might have
-		// to realize the font.
-		tmpbuf->previous(*par);
-
-		// make sure there is no class difference
-		SwitchLayoutsBetweenClasses(textclass, tc, &*tmpbuf,
-					    current_view->buffer()->params);
-
-		Paragraph::depth_type max_depth = (*par)->getMaxDepthAfter();
-
-		while (tmpbuf != paragraphs.end()) {
-			// If we have a negative jump so that the depth would
-			// go below 0 depth then we have to redo the delta to
-			// this new max depth level so that subsequent
-			// paragraphs are aligned correctly to this paragraph
-			// at level 0.
-			if ((int(tmpbuf->params().depth()) + depth_delta) < 0)
-				depth_delta = 0;
-			// set the right depth so that we are not too deep or shallow.
-			tmpbuf->params().depth(tmpbuf->params().depth() + depth_delta);
-			if (tmpbuf->params().depth() > max_depth)
-				tmpbuf->params().depth(max_depth);
-			// only set this from the 2nd on as the 2nd depends for maxDepth
-			// still on *par
-			if (tmpbuf->previous() != (*par))
-				max_depth = tmpbuf->getMaxDepthAfter();
-			// set the inset owner of this paragraph
-			tmpbuf->setInsetOwner((*par)->inInset());
-			for (pos_type i = 0; i < tmpbuf->size(); ++i) {
-				if (tmpbuf->getChar(i) == Paragraph::META_INSET) {
-					if (!(*par)->insetAllowed(tmpbuf->getInset(i)->lyxCode()))
-					{
-						tmpbuf->erase(i--);
-					}
-				} else {
-					LyXFont f1 = tmpbuf->getFont(current_view->buffer()->params,i);
-					LyXFont f2 = f1;
-					if (!(*par)->checkInsertChar(f1)) {
-						tmpbuf->erase(i--);
-					} else if (f1 != f2) {
-						tmpbuf->setFont(i, f1);
-					}
+	// now remove all out of the buffer which is NOT allowed in the
+	// new environment and set also another font if that is required
+	ParagraphList::iterator tmpbuf = paragraphs.begin();
+	int depth_delta = (*par)->params().depth() - tmpbuf->params().depth();
+	// Temporary set *par as previous of tmpbuf as we might have
+	// to realize the font.
+	tmpbuf->previous(*par);
+	
+	// make sure there is no class difference
+	SwitchLayoutsBetweenClasses(textclass, tc, &*tmpbuf,
+				    current_view->buffer()->params);
+	
+	Paragraph::depth_type max_depth = (*par)->getMaxDepthAfter();
+	
+	while (tmpbuf != paragraphs.end()) {
+		// If we have a negative jump so that the depth would
+		// go below 0 depth then we have to redo the delta to
+		// this new max depth level so that subsequent
+		// paragraphs are aligned correctly to this paragraph
+		// at level 0.
+		if ((int(tmpbuf->params().depth()) + depth_delta) < 0)
+			depth_delta = 0;
+		// set the right depth so that we are not too deep or shallow.
+		tmpbuf->params().depth(tmpbuf->params().depth() + depth_delta);
+		if (tmpbuf->params().depth() > max_depth)
+			tmpbuf->params().depth(max_depth);
+		// only set this from the 2nd on as the 2nd depends for maxDepth
+		// still on *par
+		if (tmpbuf->previous() != (*par))
+			max_depth = tmpbuf->getMaxDepthAfter();
+		// set the inset owner of this paragraph
+		tmpbuf->setInsetOwner((*par)->inInset());
+		for (pos_type i = 0; i < tmpbuf->size(); ++i) {
+			if (tmpbuf->getChar(i) == Paragraph::META_INSET) {
+				if (!(*par)->insetAllowed(tmpbuf->getInset(i)->lyxCode())) {
+					tmpbuf->erase(i--);
+				}
+			} else {
+				LyXFont f1 = tmpbuf->getFont(current_view->buffer()->params,i);
+				LyXFont f2 = f1;
+				if (!(*par)->checkInsertChar(f1)) {
+					tmpbuf->erase(i--);
+				} else if (f1 != f2) {
+					tmpbuf->setFont(i, f1);
 				}
 			}
-			tmpbuf = tmpbuf->next();
 		}
-		// now reset it to 0
-		paragraphs.begin()->previous(0);
-
-		// make the buf exactly the same layout than
-		// the cursor paragraph
-		paragraphs.begin()->makeSameLayout(*par);
-
-		// find the end of the buffer
-		ParagraphList::iterator lastbuffer = paragraphs.begin();
-		while (boost::next(lastbuffer) != paragraphs.end())
-			++lastbuffer;
-
-		bool paste_the_end = false;
-
-		// open the paragraph for inserting the buf
-		// if necessary
-		if (((*par)->size() > pos) || !(*par)->next()) {
-			breakParagraphConservative(
-				current_view->buffer()->params, current_view->buffer()->paragraphs, *par, pos);
-			paste_the_end = true;
-		}
-		// set the end for redoing later
-		*endpar = (*par)->next()->next();
-
-		// paste it!
-		lastbuffer->next((*par)->next());
-		(*par)->next()->previous(&*lastbuffer);
-
-		(*par)->next(&*paragraphs.begin());
-		paragraphs.begin()->previous(*par);
-
-		if ((*par)->next() == lastbuffer)
-			lastbuffer = *par;
-
-		mergeParagraph(current_view->buffer()->params,
-			       current_view->buffer()->paragraphs, *par);
-		// store the new cursor position
-		*par = &*lastbuffer;
-		pos = lastbuffer->size();
-		// maybe some pasting
-		if (lastbuffer->next() && paste_the_end) {
-			if (lastbuffer->next()->hasSameLayout(&*lastbuffer)) {
-				mergeParagraph(current_view->buffer()->params,
-					       current_view->buffer()->paragraphs, lastbuffer);
-			} else if (!lastbuffer->next()->size()) {
-				lastbuffer->next()->makeSameLayout(&*lastbuffer);
-				mergeParagraph(current_view->buffer()->params, current_view->buffer()->paragraphs, lastbuffer);
-			} else if (!lastbuffer->size()) {
-				lastbuffer->makeSameLayout(lastbuffer->next());
-				mergeParagraph(current_view->buffer()->params,
-					       current_view->buffer()->paragraphs, lastbuffer);
-			} else
-				lastbuffer->next()->stripLeadingSpaces();
-		}
-		// restore the simple cut buffer
-		paragraphs = simple_cut_clone;
+		tmpbuf = tmpbuf->next();
 	}
 
+	// now reset it to 0
+	paragraphs.begin()->previous(0);
+
+	// make the buf exactly the same layout than
+	// the cursor paragraph
+	paragraphs.begin()->makeSameLayout(*par);
+	
+	// find the end of the buffer
+	ParagraphList::iterator lastbuffer = paragraphs.begin();
+	while (boost::next(lastbuffer) != paragraphs.end())
+		++lastbuffer;
+	
+	bool paste_the_end = false;
+	
+	// open the paragraph for inserting the buf
+	// if necessary
+	if (((*par)->size() > pos) || !(*par)->next()) {
+		breakParagraphConservative(
+			current_view->buffer()->params, current_view->buffer()->paragraphs, *par, pos);
+		paste_the_end = true;
+	}
+	// set the end for redoing later
+	*endpar = (*par)->next()->next();
+	
+	// paste it!
+	lastbuffer->next((*par)->next());
+	(*par)->next()->previous(&*lastbuffer);
+	
+	(*par)->next(&*paragraphs.begin());
+	paragraphs.begin()->previous(*par);
+	
+	if ((*par)->next() == lastbuffer)
+		lastbuffer = *par;
+	
+	mergeParagraph(current_view->buffer()->params,
+		       current_view->buffer()->paragraphs, *par);
+	// store the new cursor position
+	*par = &*lastbuffer;
+	pos = lastbuffer->size();
+	// maybe some pasting
+	if (lastbuffer->next() && paste_the_end) {
+		if (lastbuffer->next()->hasSameLayout(&*lastbuffer)) {
+			mergeParagraph(current_view->buffer()->params,
+				       current_view->buffer()->paragraphs, lastbuffer);
+		} else if (!lastbuffer->next()->size()) {
+			lastbuffer->next()->makeSameLayout(&*lastbuffer);
+			mergeParagraph(current_view->buffer()->params, current_view->buffer()->paragraphs, lastbuffer);
+		} else if (!lastbuffer->size()) {
+			lastbuffer->makeSameLayout(lastbuffer->next());
+			mergeParagraph(current_view->buffer()->params,
+				       current_view->buffer()->paragraphs, lastbuffer);
+		} else
+			lastbuffer->next()->stripLeadingSpaces();
+	}
+	// restore the simple cut buffer
+	paragraphs = simple_cut_clone;
+	
 	return true;
 }
 
