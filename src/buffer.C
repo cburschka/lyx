@@ -1143,7 +1143,7 @@ void Buffer::readInset(LyXLex & lex, Paragraph *& par,
 }
 
 
-bool Buffer::readFile(LyXLex & lex, Paragraph * par)
+bool Buffer::readFile(LyXLex & lex, string const & filename, Paragraph * par)
 {
 	if (lex.isOK()) {
 		lex.next();
@@ -1174,7 +1174,7 @@ bool Buffer::readFile(LyXLex & lex, Paragraph * par)
 						   _("Old LyX file format found. "
 						     "Use LyX 0.10.x to read this!"));
 					return false;
-				} else {
+				} else if (!filename.empty()) {
 					string command =
 						LibFileSearch("lyx2lyx", "lyx2lyx");
 					if (command.empty()) {
@@ -1184,7 +1184,9 @@ bool Buffer::readFile(LyXLex & lex, Paragraph * par)
 					}
 					command += " -t"
 						+tostr(LYX_FORMAT)+" "
-						+ QuoteName(filename_);
+						+ QuoteName(filename);
+					lyxerr[Debug::INFO] << "Running '"
+							    << command << "'" << endl;
 					cmd_ret const ret = RunCommand(command);
 					if (ret.first) {
 						Alert::alert(_("ERROR!"),
@@ -1195,7 +1197,13 @@ bool Buffer::readFile(LyXLex & lex, Paragraph * par)
 					istringstream is(ret.second);
 					LyXLex tmplex(0, 0);
 					tmplex.setStream(is);
-					return readFile(tmplex);
+					return readFile(tmplex, string());
+				} else {
+					// This code is reached if lyx2lyx failed (for
+					// some reason) to change the file format of
+					// the file.
+					lyx::Assert(false);
+					return false;
 				}
 			}
 			bool the_end = readLyXformat2(lex, par);

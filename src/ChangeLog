@@ -1,3 +1,8 @@
+2002-09-25  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* buffer.h (readFile): Add a new argument to the method, to allow
+	reading of old-format templates.
+
 2002-09-24  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* toc.C (getTocList): Get TOC from InsetWrap.

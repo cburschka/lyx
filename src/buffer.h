@@ -108,7 +108,7 @@ public:
 	    \param par if != 0 insert the file.
 	    \return \c false if method fails.
 	*/
-	bool readFile(LyXLex &, Paragraph * par = 0);
+	bool readFile(LyXLex &, string const &, Paragraph * par = 0);
 
 	/** Reads a file without header.
 	    \param par if != 0 insert the file.

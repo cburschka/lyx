@@ -421,7 +421,7 @@ Buffer * BufferList::readFile(string const & s, bool ronly)
 	// not sure if this is the correct place to begin LyXLex
 	LyXLex lex(0, 0);
 	lex.setFile(ts);
-	if (b->readFile(lex))
+	if (b->readFile(lex, ts))
 		return b;
 	else {
 		bstore.release(b);
@@ -471,7 +471,7 @@ Buffer * BufferList::newFile(string const & name, string tname, bool isNamed)
 		LyXLex lex(0, 0);
 		lex.setFile(tname);
 		if (lex.isOK()) {
-			if (b->readFile(lex)) {
+			if (b->readFile(lex, tname)) {
 				templateok = true;
 			}
 		}

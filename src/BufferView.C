@@ -315,7 +315,7 @@ bool BufferView::insertLyXFile(string const & filen)
 
 	if (c == '#') {
 		lyxerr[Debug::INFO] << "Will insert file with header" << endl;
-		res = buffer()->readFile(lex, text->cursor.par());
+		res = buffer()->readFile(lex, fname, text->cursor.par());
 	} else {
 		lyxerr[Debug::INFO] << "Will insert file without header"
 				    << endl;
