@@ -55,7 +55,7 @@ void GCache::update(InsetGraphics const & inset, string const & filepath)
 	// A subset only of InsetGraphicsParams is needed for display purposes.
 	// The GraphicsParams c-tor also interrogates lyxrc to ascertain whether
 	// to display or not.
-	GParams params(inset.params(), filepath);
+	GParams params = inset.params().asGParams(filepath);
 
 	// Each inset can reference only one file, so check the cache for any
 	// graphics files referenced by inset. If the name of this file is

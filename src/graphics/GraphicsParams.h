@@ -22,7 +22,6 @@
 #include "LString.h"
 #include "lyxlength.h"
 
-class InsetGraphicsParams;
 
 namespace grfx {
 
@@ -49,7 +48,7 @@ bool operator!=(BoundingBox const &, BoundingBox const &);
 
 struct GParams
 {
-	GParams(InsetGraphicsParams const &, string const &);
+	GParams();
 
 	/// How is the image to be displayed on the LyX screen?
 	enum DisplayType {

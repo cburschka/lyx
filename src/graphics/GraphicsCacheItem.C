@@ -631,7 +631,7 @@ struct Params_Changed {
 	bool operator()(InsetGraphics const * inset)
 	{
 		string const path = OnlyPath(p_.filename);
-		return GParams(inset->params(), path) != p_;
+		return inset->params().asGParams(path) != p_;
 	}
 
 private:
@@ -669,7 +669,7 @@ ModifiedItemPtr ModifiedItem::changeDisplay()
 
 	ModifiedItemPtr new_item(new ModifiedItem(*this));
 	new_item->insets = new_insets;
-	*(new_item->p_)  = GParams((*new_insets.begin())->params(), path);
+	*(new_item->p_) = (*new_insets.begin())->params().asGParams(path);
 
 	new_item->setPixmap();
 	return new_item;

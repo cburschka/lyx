@@ -22,6 +22,9 @@
 #include "buffer.h"
 #include "lyxlex.h"
 
+#include "graphics/GraphicsParams.h"
+
+
 /// This struct holds all the parameters needed by insetGraphics.
 struct InsetGraphicsParams
 {
@@ -91,6 +94,8 @@ struct InsetGraphicsParams
 	void Write(std::ostream & os) const;
 	/// If the token belongs to our parameters, read it.
 	bool Read(LyXLex & lex, string const & token);
+	/// convert 
+	grfx::GParams asGParams(string const & filepath) const;
 
 private:
 	/// Initialize the object to a default status.

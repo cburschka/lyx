@@ -13,107 +13,17 @@
 #endif
 
 #include "GraphicsParams.h"
-#include "insets/insetgraphicsParams.h"
-#include "lyxrc.h"
-#include "debug.h"
-#include "support/filetools.h"
-#include "support/lstrings.h"
-#include "support/LAssert.h"
+#include "Lsstream.h"
+
 
 namespace grfx {
 
-GParams::GParams(InsetGraphicsParams const & iparams, string const & filepath)
+GParams::GParams()
 	: width(0),
 	  height(0),
 	  scale(0),
 	  angle(0)
-{
-	filename = iparams.filename;
-	if (!filepath.empty()) {
-		filename = MakeAbsPath(filename, filepath);
-	}
-
-	if (iparams.clip) {
-		bb = iparams.bb;
-
-		// Get the original Bounding Box from the file
-		string const tmp = readBB_from_PSFile(filename);
-		lyxerr[Debug::GRAPHICS] << "BB_from_File: " << tmp << std::endl;
-		if (!tmp.empty()) {
-			int const bb_orig_xl = strToInt(token(tmp, ' ', 0));
-			int const bb_orig_yb = strToInt(token(tmp, ' ', 1));
-
-			bb.xl -= bb_orig_xl;
-			bb.xr -= bb_orig_xl;
-			bb.yb -= bb_orig_yb;
-			bb.yt -= bb_orig_yb;
-		}
-
-		bb.xl = std::max(0, bb.xl);
-		bb.xr = std::max(0, bb.xr);
-		bb.yb = std::max(0, bb.yb);
-		bb.yt = std::max(0, bb.yt);
-
-		// Paranoia check.
-		int const width  = bb.xr - bb.xl;
-		int const height = bb.yt - bb.yb;
-
-		if (width  < 0 || height < 0) {
-			bb.xl = 0;
-			bb.xr = 0;
-			bb.yb = 0;
-			bb.yt = 0;
-		}
-	}
-	
-	if (iparams.rotate)
-		angle = int(iparams.rotateAngle);
-
-	if (iparams.display == InsetGraphicsParams::DEFAULT) {
-
-		if (lyxrc.display_graphics == "mono")
-			display = MONOCHROME;
-		else if (lyxrc.display_graphics == "gray")
-			display = GRAYSCALE;
-		else if (lyxrc.display_graphics == "color")
-			display = COLOR;
-		else
-			display = NONE;
-
-	} else if (iparams.display == InsetGraphicsParams::NONE) {
-		display = NONE;
-
-	} else if (iparams.display == InsetGraphicsParams::MONOCHROME) {
-		display = MONOCHROME;
-
-	} else if (iparams.display == InsetGraphicsParams::GRAYSCALE) {
-		display = GRAYSCALE;
-
-	} else if (iparams.display == InsetGraphicsParams::COLOR) {
-		display = COLOR;
-	}
-
-	// Override the above if we're not using a gui
-	if (!lyxrc.use_gui) {
-		display = NONE;
-	}
-
-	if (iparams.lyxsize_type == InsetGraphicsParams::SCALE) {
-		scale = iparams.lyxscale;
-
-	} else if (iparams.lyxsize_type == InsetGraphicsParams::WH) {
-		if (!iparams.lyxwidth.zero())
-			width  = iparams.lyxwidth.inPixels(1, 1);
-		if (!iparams.lyxheight.zero())
-			height = iparams.lyxheight.inPixels(1, 1);
-
-		// inPixels returns a value scaled by lyxrc.zoom.
-		// We want, therefore, to undo this.
-		double const scaling_factor = 100.0 / double(lyxrc.zoom);
-		width  = uint(scaling_factor * width);
-		height = uint(scaling_factor * height);
-	}
-}
+{}
 
 
 bool operator==(GParams const & a, GParams const & b)

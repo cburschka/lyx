@@ -23,6 +23,9 @@
 #include "support/lyxlib.h"
 #include "support/LOstream.h"
 #include "support/LAssert.h"
+#include "support/lstrings.h"
+#include "lyxrc.h"
+#include "debug.h"
 
 
 using std::ostream;
@@ -301,4 +304,101 @@ bool InsetGraphicsParams::Read(LyXLex & lex, string const & token)
 		return false;
 	}
 	return true;
+}
+
+
+grfx::GParams InsetGraphicsParams::asGParams(string const & filepath) const
+{
+	grfx::GParams pars;
+	pars.width    = 0;
+	pars.height   = 0;
+	pars.scale    = 0;
+	pars.angle    = 0;
+	pars.filename = filename;
+
+	if (!filepath.empty()) {
+		pars.filename = MakeAbsPath(pars.filename, filepath);
+	}
+
+	if (clip) {
+		pars.bb = bb;
+
+		// Get the original Bounding Box from the file
+		string const tmp = readBB_from_PSFile(filename);
+		lyxerr[Debug::GRAPHICS] << "BB_from_File: " << tmp << std::endl;
+		if (!tmp.empty()) {
+			int const bb_orig_xl = strToInt(token(tmp, ' ', 0));
+			int const bb_orig_yb = strToInt(token(tmp, ' ', 1));
+
+			pars.bb.xl -= bb_orig_xl;
+			pars.bb.xr -= bb_orig_xl;
+			pars.bb.yb -= bb_orig_yb;
+			pars.bb.yt -= bb_orig_yb;
+		}
+
+		pars.bb.xl = std::max(0, pars.bb.xl);
+		pars.bb.xr = std::max(0, pars.bb.xr);
+		pars.bb.yb = std::max(0, pars.bb.yb);
+		pars.bb.yt = std::max(0, pars.bb.yt);
+
+		// Paranoia check.
+		int const width  = pars.bb.xr - pars.bb.xl;
+		int const height = pars.bb.yt - pars.bb.yb;
+
+		if (width  < 0 || height < 0) {
+			pars.bb.xl = 0;
+			pars.bb.xr = 0;
+			pars.bb.yb = 0;
+			pars.bb.yt = 0;
+		}
+	}
+	
+	if (rotate)
+		pars.angle = int(rotateAngle);
+
+	if (display == InsetGraphicsParams::DEFAULT) {
+
+		if (lyxrc.display_graphics == "mono")
+			pars.display = grfx::GParams::MONOCHROME;
+		else if (lyxrc.display_graphics == "gray")
+			pars.display = grfx::GParams::GRAYSCALE;
+		else if (lyxrc.display_graphics == "color")
+			pars.display = grfx::GParams::COLOR;
+		else
+			pars.display = grfx::GParams::NONE;
+
+	} else if (display == InsetGraphicsParams::NONE) {
+		pars.display = grfx::GParams::NONE;
+
+	} else if (display == InsetGraphicsParams::MONOCHROME) {
+		pars.display = grfx::GParams::MONOCHROME;
+
+	} else if (display == InsetGraphicsParams::GRAYSCALE) {
+		pars.display = grfx::GParams::GRAYSCALE;
+
+	} else if (display == InsetGraphicsParams::COLOR) {
+		pars.display = grfx::GParams::COLOR;
+	}
+
+	// Override the above if we're not using a gui
+	if (!lyxrc.use_gui) {
+		pars.display = grfx::GParams::NONE;
+	}
+
+	if (lyxsize_type == InsetGraphicsParams::SCALE) {
+		pars.scale = lyxscale;
+
+	} else if (lyxsize_type == InsetGraphicsParams::WH) {
+		if (!lyxwidth.zero())
+			pars.width  = lyxwidth.inPixels(1, 1);
+		if (!lyxheight.zero())
+			pars.height = lyxheight.inPixels(1, 1);
+
+		// inPixels returns a value scaled by lyxrc.zoom.
+		// We want, therefore, to undo this.
+		double const scaling_factor = 100.0 / double(lyxrc.zoom);
+		pars.width  = uint(scaling_factor * pars.width);
+		pars.height = uint(scaling_factor * pars.height);
+	}
+	return pars;
 }
