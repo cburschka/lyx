@@ -704,4 +704,7 @@ void LaTeX::deplog(DepTable & head)
 				<< "Not a file or we are unable to find it."
 				<< endl;
 	}
+
+	// Make sure that the main .tex file is in the dependancy file.
+	head.insert(OnlyFilename(file), true);
 }
