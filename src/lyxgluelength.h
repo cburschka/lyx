@@ -19,9 +19,6 @@
 
 #include "LString.h"
 
-class BufferParams;
-class BufferView;
-
 
 class LyXGlueLength {
 public:

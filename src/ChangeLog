@@ -1,3 +1,8 @@
+2002-10-24  Angus Leeming  <leeming@lyx.org>
+
+	* lyxgluelength.h: no need to forward declare BufferParams
+	or BufferView, so don't.
+
 2002-10-21  John Levon  <levon@movementarian.org>
 
 	* BufferView.C: menuUndo ->undo, redo
