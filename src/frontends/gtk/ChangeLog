@@ -1,5 +1,8 @@
 2004-07-24  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
+	* GPainter.C (text): sue boost::scoped_array to store the
+	temporary wchar_t pointer
+
 	* lyx_gui.C: change "support/std_sstream.h" to <sstream>
 
 2004-07-22  Lars Gullik Bjonnes  <larsbj@gullik.net>

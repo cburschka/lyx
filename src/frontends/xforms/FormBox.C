@@ -160,7 +160,7 @@ void FormBox::update()
 				gui_names_spec_[i].c_str());
 		}
 	// Special width unit must be default for general units to be enabled
-	if(controller().params().special != "none")
+	if (controller().params().special != "none")
 		setEnabled(dialog_->choice_width_unit, false);
 	setEnabled(dialog_->choice_special, !controller().params().inner_box);
 
@@ -177,7 +177,7 @@ void FormBox::update()
 	setEnabled(dialog_->choice_height_unit, controller().params().inner_box);
 	setEnabled(dialog_->choice_height_special, controller().params().inner_box);
 	// Same here
-	if(height_special != "none")
+	if (height_special != "none")
 		setEnabled(dialog_->choice_height_unit, false);
 }
 

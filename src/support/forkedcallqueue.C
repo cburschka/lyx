@@ -64,7 +64,7 @@ void ForkedCallQueue::callNext()
 
 void ForkedCallQueue::callback(pid_t, int)
 {
-	if(callQueue_.empty()) {
+	if (callQueue_.empty()) {
 		stopCaller();
 	} else {
 		callNext();

@@ -188,9 +188,9 @@ void GPainter::image(int x, int y, int w, int h,
 void GPainter::text(int x, int y, std::string const & s, LyXFont const & f)
 {
 	size_t size = s.length() + 1;
-	wchar_t * wcs = (wchar_t *) alloca(size * sizeof(wchar_t));
-	size = mbstowcs(wcs, s.c_str(), size);
-	return text(x, y, wcs, size, f);
+	boost::scoped_array<wchar_t> wcs(new wchar_t[size]);
+	size = mbstowcs(wcs.get(), s.c_str(), size);
+	return text(x, y, wcs.get(), size, f);
 }
 
 
@@ -224,9 +224,9 @@ void GPainter::text(int x, int y, wchar_t const * s, int ls, LyXFont const & f)
 		XftFont * fontS = getXftFont(smallfont);
 		wchar_t c;
 		int tmpx = x;
-		for(int i = 0; i < ls; ++i) {
-			c = support::uppercase(s[i]);
-			if(c != s[i]) {
+		for (int i = 0; i < ls; ++i) {
+			c = lyx::support::uppercase(s[i]);
+			if (c != s[i]) {
 				XftDrawString32(draw, xftClr, fontS, tmpx, y,
 						wcsToXftChar32StrFast(&c), 1);
 				tmpx += font_metrics::width(c, smallfont);
