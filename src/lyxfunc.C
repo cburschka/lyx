@@ -2277,6 +2277,10 @@ string LyXFunc::Dispatch(int ac,
 	case LFUN_INDEX_INSERT:
 	case LFUN_INDEX_INSERT_LAST:
 	{
+	  	// Can't do that at the beginning of a paragraph.
+	  	if (owner->buffer()->text->cursor.pos - 1 <0)
+			break;
+
 		InsetIndex * new_inset = new InsetIndex();
 		if (!argument.empty()) {
   			string lsarg(argument);
@@ -2285,18 +2289,11 @@ string LyXFunc::Dispatch(int ac,
 		} else {
 		  //reh 98/09/21
 		  //get the current word for an argument
-		  
-		  
-		  // grab a word
-
 		  LyXParagraph::size_type lastpos = 
 			  owner->buffer()->text->cursor.pos - 1;
-		  // If this can't happen, let's make sure that it really don't
-		  Assert(owner->buffer()->text->cursor.pos - 1 >= 0);
-		  // get the current word
-		  // note that this must be done before 
-		  // inserting the inset, or the inset will break
-		  // the word
+		  // Get the current word. note that this must be done
+		  // before inserting the inset, or the inset will
+		  // break the word
 		  string curstring(owner->buffer()
 				   ->text->cursor.par->GetWord(lastpos));
 

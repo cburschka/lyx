@@ -58,7 +58,7 @@ public:
 		return 1;
 	}
 	///
-	char const * EditMessage() {return "Opened Url";}
+	char const * EditMessage() const {return _("Opened Url");}
         ///
 	bool display() const { return false; }
 	///

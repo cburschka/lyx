@@ -7,6 +7,9 @@
 #endif
 
 #include <map>
+using std::map;
+using std::less;
+
 #include "commandtags.h"
 #include "LString.h"
 

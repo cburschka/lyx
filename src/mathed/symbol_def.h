@@ -20,7 +20,7 @@
 #define LM_beta 0x62
 #define LM_gamma 0x67
 #define LM_delta 0x64
-#define LM_epsilon 0x65
+#define LM_varepsilon 0x65
 #define LM_eta 0x68
 #define LM_theta 0x71
 #define LM_vartheta 0x4a
@@ -115,7 +115,7 @@
 // Symbols that don't exist in X11 symbol font
 enum Math_Symbols_enum {
   LM_NoFont = 256,
-  LM_varepsilon,  
+  LM_epsilon,  
   LM_hookleftarrow,  LM_hookrightarrow,  LM_updownarrow,  LM_leftharpoonup,
   LM_rightharpoonup,  LM_rightleftharpoons,  LM_Updownarrow,
   LM_leftharpoondown,  LM_rightharpoondown,  LM_mapsto,  LM_Longleftarrow,

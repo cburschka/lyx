@@ -101,7 +101,7 @@ MathMacro::~MathMacro()
 }
 
 
-MathMacro * MathMacro::Clone()
+MathedInset * MathMacro::Clone()
 {
 #if 0
     MathMacro *m = new MathMacro(this);

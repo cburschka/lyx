@@ -59,7 +59,7 @@ public:
 	Inset * Clone() const;
 
 	/// what appears in the minibuffer when opening
-	char const * EditMessage() {return "Math macro editor mode";}
+	char const * EditMessage() const {return _("Math macro editor mode");}
 	///
 	void Edit(int x, int y);
 	///

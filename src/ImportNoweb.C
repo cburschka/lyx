@@ -18,6 +18,7 @@
 #endif
 
 #include <fstream>
+using std::ifstream;
 
 #include "ImportNoweb.h"
 #include "lyxrc.h"

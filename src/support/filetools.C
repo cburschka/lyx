@@ -17,7 +17,9 @@
 #include <config.h>
 
 #include <cctype>
-#include <pair.h>
+#include <utility>
+using std::make_pair;
+using std::pair;
 
 #ifdef __GNUG__
 #pragma implementation "filetools.h"
@@ -48,8 +50,6 @@
 #  include <ndir.h>
 # endif
 #endif
-
-using std::make_pair;
 
 extern string system_lyxdir;
 extern string build_lyxdir;

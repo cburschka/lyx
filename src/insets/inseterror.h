@@ -56,7 +56,7 @@ public:
 	///
 	bool AutoDelete() const;
 	/// what appears in the minibuffer when opening
-	char const * EditMessage() {return _("Opened error");}
+	char const * EditMessage() const {return _("Opened error");}
 	///
 	void Edit(int, int);
 	///

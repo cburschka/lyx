@@ -35,7 +35,7 @@ MathRootInset::~MathRootInset()
 }
 
 
-MathRootInset * MathRootInset::Clone()
+MathedInset * MathRootInset::Clone()
 {
    MathRootInset * p = new MathRootInset(GetStyle());
    MathedIter it(array), itr(uroot->GetData());

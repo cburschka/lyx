@@ -47,7 +47,7 @@ public:
 	void Validate(LaTeXFeatures & features) const;
 
 	/// what appears in the minibuffer when opening
-	char const * EditMessage() { return "Opened figure"; }
+	char const * EditMessage() const { return _("Opened figure"); }
 	///
 	void Edit(int, int);
 	///

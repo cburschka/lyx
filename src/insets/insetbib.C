@@ -2,6 +2,8 @@
 #include <config.h>
 
 #include <fstream>
+using std::ifstream;
+
 #include <cstdlib>
 
 #ifdef __GNUG__

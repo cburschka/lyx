@@ -1,3 +1,29 @@
+1999-11-25  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* NEWS: updated for the future 1.1.3 release.
+
+	* src/mathed/symbol_def.h: swap the definitions of \varepsilon and
+	\epsilon. Now \epsilon shows as red text, and \varepsilon shows as
+	it should. This is of course a controversial change (since many
+	people will find that their lyx workscreen is suddenly full of
+	red), but done for the sake of correctness.
+
+	* src/mathed/formulamacro.h, src/mathed/math_macro.[Ch],
+	  src/mathed/math_root.[Ch] (Clone): return a MathedInset*  
+
+	* src/insets/inseterror.h, src/insets/inseturl.h,
+	  src/insets/insetinfo.h, src/insets/figinset.h,
+	  src/mathed/formulamacro.h, src/mathed/math_macro.h
+	  (EditMessage): add a missing const and add _() to make sure that
+	translation happens
+
+	* src/ImportNoweb.C, src/LyXAction.h, src/insets/figinset.C,
+	  src/insets/insetbib.C, src/support/filetools.C: add `using'
+	directives for cxx.  
+
+	* src/lyxfunc.C (Dispatch): make sure nothing bad happens when
+	doing 'Insert index of last word' at the beginning of a paragraph.
+
 1999-11-24  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* several files: white-space changes.
@@ -161,7 +187,7 @@
 
 1999-11-17  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
-	* src/buffer.C (writeFile): Do not output a comment givinf user
+	* src/buffer.C (writeFile): Do not output a comment giving user
 	and date at the beginning of a .lyx file. This is useless and
 	annoys cvs anyway; update version number to 1.1.
 
@@ -328,7 +354,7 @@
 	not a pointer to one, some changes because of this.
 
 	* src/LaTeXFeatures.C (getTClassPreamble): also use the
-	information in layout when addint he layouts preamble to the
+	information in layout when adding the layouts preamble to the
 	textclass preamble.
 
 	* src/LaTeXFeatures.h: use a vector<bool> to store the layout

@@ -40,6 +40,7 @@ extern long int background_pixels;
 #include <cctype>
 #include <cmath>
 #include <fstream>
+using std::ofstream;
 
 #include "form1.h"
 #include "figinset.h"
