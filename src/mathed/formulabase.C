@@ -53,7 +53,7 @@
 #include "textpainter.h"
 #include "frontends/Dialogs.h"
 #include "intl.h"
-#include "../insets/insetcommandparams.h"
+#include "insets/insetcommandparams.h"
 
 #include "ref_inset.h"
 
@@ -777,9 +777,9 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 			InsetCommandParams p("ref");
 			bv->owner()->getDialogs()->createRef(p.getAsString());
 		} else {
-			//mathcursor->handleNest(new RefInset);
+			//mathcursor->handleNest(new InsetRef2);
 			//mathcursor->insert(arg);
-			mathcursor->insert(MathAtom(new RefInset(arg)));
+			mathcursor->insert(MathAtom(new InsetRef2(arg)));
 		}
 		updateLocal(bv, true);
 		break;
