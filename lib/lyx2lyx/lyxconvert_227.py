@@ -1,4 +1,5 @@
 # This file is part of lyx2lyx
+# -*- coding: iso-8859-1 -*-
 # Copyright (C) 2003 José Matos <jamatos@fep.up.pt>
 #
 # This program is free software; you can redistribute it and/or
