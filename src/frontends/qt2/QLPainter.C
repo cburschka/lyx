@@ -22,7 +22,9 @@
 #include "lyxrc.h"
 #include "debug.h"
 #include "LyXView.h"
- 
+#include "encoding.h"
+#include "language.h"
+
 #include "QWorkArea.h"
 #include "qfont_loader.h"
 #include "QLPainter.h"
@@ -217,8 +219,7 @@ Painter & QLPainter::text(int x, int y,
 
 
 void QLPainter::smallCapsText(int x, int y,
-	char const * s, size_t ls,
-	LyXFont const & f)
+	QString const & s, LyXFont const & f)
 {
 	LyXFont smallfont(f);
 	smallfont.decSize().decSize().setShape(LyXFont::UP_SHAPE);
@@ -229,16 +230,17 @@ void QLPainter::smallCapsText(int x, int y,
 	QFontMetrics const & qsmallfontm = QFontMetrics(qsmallfont);
  
 	int tmpx = x;
+	size_t ls = s.length();
 	for (size_t i = 0; i < ls; ++i) {
-		char const c = uppercase(s[i]);
+		QChar const c = s[i].upper();
 		if (c != s[i]) {
 			qp_->setFont(qsmallfont);
-			qp_->drawText(tmpx, y, &c, 1);
-			tmpx += qsmallfontm.width(&c, 1);
+			qp_->drawText(tmpx, y, c);
+			tmpx += qsmallfontm.width(c);
 		} else {
 			qp_->setFont(qfont);
-			qp_->drawText(tmpx, y, &c, 1);
-			tmpx += qfontm.width(&c, 1);
+			qp_->drawText(tmpx, y, c);
+			tmpx += qfontm.width(c);
 		}
 	}
 }
@@ -250,11 +252,32 @@ Painter & QLPainter::text(int x, int y,
 {
 	setPen(f.color());
 
+	Encoding const * encoding = f.language()->encoding();
+	if (f.isSymbolFont())
+		encoding = encodings.symbol_encoding();
+
+	QString str;
+	str.setLength(ls);
+	for (size_t i = 0; i < ls; ++i)
+		str[i] = QChar(encoding->ucs(s[i]));
+
+#if QT_VERSION >= 0x030000
+	// HACK: QT3 refuses to show single compose characters
+	if (ls = 1 && str[0].unicode() >= 0x05b0 && str[0].unicode() <= 0x05c2)
+		str = ' '+str;
+#endif
+
 	if (f.realShape() != LyXFont::SMALLCAPS_SHAPE) {
 		qp_->setFont(fontloader.get(f));
-		qp_->drawText(x, y, s, ls);
+#if QT_VERSION >= 0x030000
+		// We need to draw the text as LTR as we use our own bidi
+		// code.
+		qp_->drawText(x, y, str, -1, QPainter::LTR);
+#else
+		qp_->drawText(x, y, str);
+#endif
 	} else {
-		smallCapsText(x, y, s, ls, f);
+		smallCapsText(x, y, str, f);
 	}
 
 	if (f.underbar() == LyXFont::ON) {

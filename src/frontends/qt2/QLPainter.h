@@ -25,6 +25,7 @@
 class LyXFont;
 class QWorkArea;
 class QPainter;
+class QString;
 
 /**
  * QLPainter - a painter implementation for Xlib
@@ -122,8 +123,7 @@ public:
 private:
 	/// draw small caps text
 	void smallCapsText(int x, int y,
-		char const * str, size_t l,
-		LyXFont const & f);
+		QString const & str, LyXFont const & f);
 
 	/// set pen parameters
 	QPainter & setPen(LColor::color c,

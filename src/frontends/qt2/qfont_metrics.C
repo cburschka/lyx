@@ -20,6 +20,8 @@
 #include "font_metrics.h"
 #include "qfont_loader.h"
 #include "debug.h"
+#include "encoding.h"
+#include "language.h"
 
 #include <qfontmetrics.h>
 #include <qfont.h>
@@ -78,8 +80,17 @@ int rbearing(char c, LyXFont const & f)
 
 int width(char const * s, size_t ls, LyXFont const & f)
 {
+	Encoding const * encoding = f.language()->encoding();
+	if (f.isSymbolFont())
+		encoding = encodings.symbol_encoding();
+
+	QString str;
+	str.setLength(ls);
+	for (size_t i = 0; i < ls; ++i)
+		str[i] = QChar(encoding->ucs(s[i]));
+
 	if (f.realShape() != LyXFont::SMALLCAPS_SHAPE) {
-		return metrics(f).width(s, ls);
+		return metrics(f).width(str);
 	}
 
 	// handle small caps ourselves ...
@@ -93,11 +104,11 @@ int width(char const * s, size_t ls, LyXFont const & f)
 	int w = 0;
 
 	for (size_t i = 0; i < ls; ++i) {
-		char const c = uppercase(s[i]);
-		if (c != s[i])
-			w += qsmallm.width(&c, 1);
+		QChar const c = str[i].upper();
+		if (c != str[i])
+			w += qsmallm.width(c);
 		else
-			w += qm.width(&c, 1);
+			w += qm.width(c);
 	}
 	return w;
 }
