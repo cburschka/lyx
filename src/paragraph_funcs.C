@@ -15,6 +15,7 @@
 #include "buffer.h"
 #include "ParagraphParameters.h"
 #include "lyxtextclasslist.h"
+#include "latexrunparams.h"
 #include "debug.h"
 #include "gettext.h"
 #include "language.h"
@@ -443,7 +444,6 @@ TeXOnePar(Buffer const * buf,
 	  ParagraphList::iterator pit,
 	  ostream & os, TexRow & texrow,
 	  LatexRunParams const & runparams,
-	  bool moving_arg,
 	  string const & everypar)
 {
 	lyxerr[Debug::LATEX] << "TeXOnePar...     " << &*pit << " '" << everypar
@@ -572,7 +572,8 @@ TeXOnePar(Buffer const * buf,
 	os << everypar;
 	bool need_par = pit->simpleTeXOnePar(buf, bparams,
 					     outerFont(pit, paragraphs),
-					     os, texrow, runparams, moving_arg);
+					     os, texrow, runparams,
+					     runparams.fragile);
 
 	// Make sure that \\par is done with the font of the last
 	// character if this has another size as the default.
