@@ -175,7 +175,6 @@ char const * MathHullInset::standardFont() const
 {
 	if (type_ == "none")
 		return "lyxnochange";
-	lyxerr << "standard font: mathnormal\n";
 	return "mathnormal";
 }
 
@@ -430,6 +429,18 @@ void MathHullInset::addRow(row_type row)
 	nonum_.insert(nonum_.begin() + row + 1, !numberedType());
 	label_.insert(label_.begin() + row + 1, string());
 	MathGridInset::addRow(row);
+}
+
+
+void MathHullInset::swapRow(row_type row)
+{
+	if (nrows() == 1)
+		return;
+	if (row + 1 == nrows())
+		--row;
+	std::swap(nonum_[row], nonum_[row + 1]);
+	std::swap(label_[row], label_[row + 1]);
+	MathGridInset::swapRow(row);
 }
 
 

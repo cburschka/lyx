@@ -12,9 +12,11 @@
 #include <config.h>
 
 #include "math_charinset.h"
-#include "dimension.h"
 #include "math_support.h"
 #include "math_mathmlstream.h"
+
+#include "debug.h"
+#include "dimension.h"
 #include "textpainter.h"
 
 using std::auto_ptr;

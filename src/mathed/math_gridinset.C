@@ -1169,7 +1169,7 @@ dispatch_result MathGridInset::dispatch
 				for (row_type r = 0; r < numrows; ++r) {
 					for (col_type c = 0; c < numcols; ++c) {
 						idx_type i = index(r + row(idx), c + col(idx));
-						cell(i).append(grid.cell(grid.index(r, c)));
+						cell(i).insert(0, grid.cell(grid.index(r, c)));
 					}
 					// append the left over horizontal cells to the last column
 					idx_type i = index(r + row(idx), ncols() - 1);

@@ -533,7 +533,7 @@ LyXFont::FONT_SHAPE  const inh_shape  = LyXFont::INHERIT_SHAPE;
 // does not work
 fontinfo fontinfos[] = {
 	// math fonts
-	{"mathnormal",    inh_family, LyXFont::MEDIUM_SERIES,
+	{"mathnormal",    LyXFont::ROMAN_FAMILY, LyXFont::MEDIUM_SERIES,
 	                  LyXFont::ITALIC_SHAPE, LColor::math},
 	{"mathbf",        inh_family, LyXFont::BOLD_SERIES,
 	                  inh_shape, LColor::math},
@@ -542,7 +542,7 @@ fontinfo fontinfos[] = {
 	{"mathfrak",      LyXFont::EUFRAK_FAMILY, inh_series,
 	                  inh_shape, LColor::math},
 	{"mathrm",        LyXFont::ROMAN_FAMILY, inh_series,
-	                  inh_shape, LColor::math},
+	                  LyXFont::UP_SHAPE, LColor::math},
 	{"mathsf",        LyXFont::SANS_FAMILY, inh_series,
 	                  inh_shape, LColor::math},
 	{"mathbb",        LyXFont::MSB_FAMILY, inh_series,
@@ -598,15 +598,13 @@ fontinfo fontinfos[] = {
 
 	// LyX internal usage
 	{"lyxtex",        inh_family, inh_series,
-	                  inh_shape, LColor::latex},
+	                  LyXFont::UP_SHAPE, LColor::latex},
 	{"lyxert",        LyXFont::TYPEWRITER_FAMILY, inh_series,
-	                  inh_shape, LColor::latex},
+	                  LyXFont::UP_SHAPE, LColor::latex},
 	{"lyxsymbol",     LyXFont::SYMBOL_FAMILY, inh_series,
 	                  inh_shape, LColor::math},
 	{"lyxboldsymbol", LyXFont::SYMBOL_FAMILY, LyXFont::BOLD_SERIES,
 	                  inh_shape, LColor::math},
-	{"lyxitsymbol",   LyXFont::SYMBOL_FAMILY, inh_series,
-                    LyXFont::ITALIC_SHAPE, LColor::math},
 	{"lyxblacktext",  LyXFont::ROMAN_FAMILY, LyXFont::MEDIUM_SERIES,
                     LyXFont::UP_SHAPE, LColor::foreground},
 	{"lyxnochange",   inh_family, inh_series,

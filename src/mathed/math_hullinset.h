@@ -66,6 +66,8 @@ public:
 	void addRow(row_type row);
 	/// delete a row
 	void delRow(row_type row);
+	///
+	void swapRow(row_type row);
 	/// add a column
 	void addCol(col_type col);
 	/// delete a column
