@@ -117,7 +117,7 @@ public:
 	/// go up to the hull inset
 	void popToEnclosingHull();
 	///
-	InsetFormulaBase * formula();
+	InsetFormulaBase * formula() const;
 	/// current offset in the current cell
 	pos_type pos() const;
 	/// current cell

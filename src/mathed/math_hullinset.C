@@ -189,13 +189,17 @@ void MathHullInset::metrics(MathMetricsInfo & mi) const
 	math_font_max_dim(mi.base.font, asc, des);
 	ascent_  = max(ascent_,  asc);
 	descent_ = max(descent_, des);
+
+	// for markers
+	width_   += 2;
+	descent_ += 1;
 }
 
 
 void MathHullInset::draw(MathPainterInfo & pi, int x, int y) const
 {
 	MathFontSetChanger dummy(pi.base, standardFont());
-	MathGridInset::draw(pi, x, y);
+	MathGridInset::draw(pi, x + 1, y);
 
 	if (numberedType()) {
 		int const xx = x + colinfo_.back().offset_ + colinfo_.back().width_ + 20;
@@ -205,6 +209,8 @@ void MathHullInset::draw(MathPainterInfo & pi, int x, int y) const
 			drawStr(pi, pi.base.font, xx, yy, nicelabel(row));
 		}
 	}
+
+	drawMarkers(pi, x, y);
 }
 
 
@@ -286,7 +292,7 @@ bool MathHullInset::display() const
 }
 
 
-vector<string> const MathHullInset::getLabelList() const
+vector<string> MathHullInset::getLabelList() const
 {
 	vector<string> res;
 	for (row_type row = 0; row < nrows(); ++row)

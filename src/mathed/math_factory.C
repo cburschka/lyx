@@ -31,6 +31,7 @@
 #include "math_xymatrixinset.h"
 #include "math_xyarrowinset.h"
 
+//#include "insets/insetref.h"
 #include "ref_inset.h"
 
 #include "math_metricsinfo.h"
@@ -121,10 +122,13 @@ key_type wordlist_array[] =
 	{"overline",  "decoration", ""},
 	{"overrightarrow",  "decoration", ""},
 	{"overleftrightarrow", "decoration", ""},
+	{"pageref",  "ref", ""},
 	{"pmatrix",  "matrix", ""},
+	{"prettyref",  "ref", ""},
 	{"protect",  "protect", ""},
 	{"qquad",  "space", ""},
 	{"quad",  "space", ""},
+	{"ref",  "ref", ""},
 	{"right",  "right", ""},
 	{"rm",  "oldfont", ""},
 	{"scriptscriptstyle",  "style", ""},
@@ -149,6 +153,8 @@ key_type wordlist_array[] =
 	{"vdots",  "dots", ""},
 	{"vec",  "decoration", ""},
 	{"vmatrix",  "matrix", ""},
+	{"vpageref",  "ref", ""},
+	{"vref",  "ref", ""},
 	{"widehat",  "decoration", ""},
 	{"widetilde",  "decoration", ""}
 };
@@ -307,14 +313,13 @@ MathAtom createMathInset(string const & s)
 		return MathAtom(new MathNotInset);
 	if (s == "lefteqn")
 		return MathAtom(new MathLefteqnInset);
-	if (s == "ref")
-		return MathAtom(new RefInset);
-
 
 	latexkeys const * l = in_word_set(s);
 	if (l) {
 		string const & inset = l->inset;
 		lyxerr[Debug::MATHED] << " found inset: '" << inset << "'\n";
+		if (inset == "ref")
+			return MathAtom(new RefInset(l->name));
 		if (inset == "underset")
 			return MathAtom(new MathUndersetInset);
 		if (inset == "decoration")

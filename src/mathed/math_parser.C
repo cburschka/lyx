@@ -58,6 +58,7 @@ following hack as starting point to write some macros:
 #include "math_support.h"
 #include "math_xyarrowinset.h"
 
+//#include "insets/insetref.h"
 #include "ref_inset.h"
 
 #include "lyxlex.h"
@@ -579,13 +580,13 @@ bool Parser::parse_normal(MathAtom & at)
 	skipSpaces();
 	MathArray ar;
 	parse_into(ar, false, false);
-	if (ar.size() != 1) {
-		lyxerr << "Unusual contents found: " << ar << endl;
+	if (ar.size() != 1 || ar.front()->getType() == "none") {
+		lyxerr << "unusual contents found: " << ar << endl;
 		at.reset(new MathParInset);
 		if (at->nargs() > 0)
 			at->cell(0) = ar;
 		else
-			lyxerr << "Unusual contents found: " << ar << endl;
+			lyxerr << "unusual contents found: " << ar << endl;
 		return true;
 	}
 	at = ar[0];

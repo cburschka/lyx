@@ -54,7 +54,6 @@
 #include "frontends/Dialogs.h"
 #include "intl.h"
 #include "insets/insetcommandparams.h"
-
 #include "ref_inset.h"
 
 using std::endl;
@@ -309,21 +308,34 @@ void InsetFormulaBase::updateLocal(BufferView * bv, bool dirty)
 bool InsetFormulaBase::insetButtonRelease(BufferView * bv,
 	int /*x*/, int /*y*/, mouse_button::state button)
 {
-	//lyxerr << "insetButtonRelease: " << x << " " << y << "\n";
-
 	if (!mathcursor)
 		return false;
+
+	//lyxerr << "insetButtonRelease: " << x << " " << y << "\n";
 	hideInsetCursor(bv);
 	showInsetCursor(bv);
 	bv->updateInset(this, false);
 
 	if (button == mouse_button::button3) {
 		// try to dispatch to enclosed insets first
-		if (mathcursor->dispatch("mouse 3"))
+		if (mathcursor->dispatch("mouse-3-release"))
 			return true;
 
 		// launch math panel for right mouse button
 		bv->owner()->getDialogs()->showMathPanel();
+		return true;
+	}
+
+	if (button == mouse_button::button1) {
+		// try to dispatch to enclosed insets first
+		if (mathcursor->dispatch("mouse-1-release"))
+			return true;
+
+		// try to set the cursor
+		//delete mathcursor;
+		//mathcursor = new MathCursor(this, x == 0);
+		//metrics(bv);
+		//mathcursor->setPos(x + xo_, y + yo_);
 		return true;
 	}
 	return false;
@@ -333,69 +345,52 @@ bool InsetFormulaBase::insetButtonRelease(BufferView * bv,
 void InsetFormulaBase::insetButtonPress(BufferView * bv,
 					int x, int y, mouse_button::state button)
 {
-	//lyxerr << "insetButtonPress: "
-	//	<< x << " " << y << " but: " << button << "\n";
-#if 0
-	switch (button) {
-		default:
-		case 1:
-			// left click
-			delete mathcursor;
-			mathcursor = new MathCursor(this, x == 0);
-			metrics(bv);
-			first_x = x;
-			first_y = y;
-			mathcursor->selClear();
-			mathcursor->setPos(x + xo_, y + yo_);
-			break;
-/*
-		case 2:
-			lyxerr << "insetButtonPress: 2\n";
-			// insert stuff
-			if (mathcursor) {
-				bv->lockedInsetStoreUndo(Undo::EDIT);
-				MathArray ar;
-				mathcursor->selGet(ar);
-				mathcursor->setPos(x + xo_, y + yo_);
-				string sel =
-					bv->getLyXText()->selectionAsString(bv->buffer(), false);
-				mathed_parse_cell(ar, sel);
-				mathcursor->insert(ar);
-			}
-			break;
-*/
-		case 3:
-			// launch math panel for right mouse button
-			bv->owner()->getDialogs()->showMathPanel();
-			break;
-	}
-#else
-	if (button == mouse_button::button1 || !mathcursor) {
-		delete mathcursor;
-		mathcursor = new MathCursor(this, x == 0);
+	lyxerr << "insetButtonPress: "
+		<< x << " " << y << " but: " << button << "\n";
+	lyxerr << "formula: ";
+	par()->dump();
+
+	delete mathcursor;
+	mathcursor = new MathCursor(this, x == 0);
+
+	if (button == mouse_button::button1) {
+		// just set the cursor here
+		lyxerr << "setting cursor\n";
 		metrics(bv);
 		first_x = x;
 		first_y = y;
 		mathcursor->selClear();
 		mathcursor->setPos(x + xo_, y + yo_);
+
+		if (mathcursor->dispatch("mouse-1-press")) {
+			//delete mathcursor;
+			return;
+		}
+	
 	}
-#if 0
-#warning Never launch a Dialog on "Press" event ONLY on "Release" event!
-	if (button == 3) {
-		// launch math panel for right mouse button
-		bv->owner()->getDialogs()->showMathPanel();
+	if (button == mouse_button::button3) { 
+		if (mathcursor->dispatch("mouse-3-press")) {
+			//delete mathcursor;
+			return;
+		}
 	}
-#endif
-#endif
 	bv->updateInset(this, false);
 }
 
 
 void InsetFormulaBase::insetMotionNotify(BufferView * bv,
-	int x, int y, mouse_button::state)
+	int x, int y, mouse_button::state button)
 {
 	if (!mathcursor)
 		return;
+
+	if (button == mouse_button::button1) 
+		if (mathcursor->dispatch("mouse-1-motion"))
+			return;
+
+	if (button == mouse_button::button3) 
+		if (mathcursor->dispatch("mouse-3-motion"))
+			return;
 
 	if (abs(x - first_x) < 2 && abs(y - first_y) < 2) {
 		//lyxerr << "insetMotionNotify: ignored\n";
@@ -421,7 +416,9 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 			    string const & arg)
 {
 	//lyxerr << "InsetFormulaBase::localDispatch: act: " << action
-	//	<< " arg: '" << arg << "' cursor: " << mathcursor << "\n";
+	//	<< " arg: '" << arg
+	//	<< "' cursor: " << mathcursor
+	//	<< "\n";
 
 	if (!mathcursor)
 		return UNDISPATCHED;

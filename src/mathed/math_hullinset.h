@@ -49,7 +49,7 @@ public:
 	///
 	bool ams() const;
 	///
-	std::vector<string> const getLabelList() const;
+	std::vector<string> getLabelList() const;
 	///
 	void validate(LaTeXFeatures & features) const;
 	/// identifies MatrixInsets

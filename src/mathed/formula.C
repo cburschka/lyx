@@ -139,8 +139,8 @@ Inset * InsetFormula::clone(Buffer const &, bool) const
 
 void InsetFormula::write(Buffer const *, ostream & os) const
 {
-	os << "Formula ";
 	WriteStream wi(os, false, false);
+	os << par_->fileInsetLabel() << " ";
 	par_->write(wi);
 }
 
@@ -238,10 +238,10 @@ void InsetFormula::draw(BufferView * bv, LyXFont const & font,
 				const_cast<InsetFormulaBase const *>(mathcursor->formula()) == this)
 		{
 			mathcursor->drawSelection(pi);
-			pi.pain.rectangle(x, y - a, w, h, LColor::mathframe);
+			//pi.pain.rectangle(x, y - a, w, h, LColor::mathframe);
 		}
 
-		par_->draw(pi, x, y);
+		par_->draw(pi, x + 1, y);
 	}
 
 	xx += w;
@@ -254,7 +254,7 @@ void InsetFormula::draw(BufferView * bv, LyXFont const & font,
 
 vector<string> const InsetFormula::getLabelList() const
 {
-	return hull()->getLabelList();
+	return par()->getLabelList();
 }
 
 
@@ -278,7 +278,7 @@ InsetFormula::localDispatch(BufferView * bv, kb_action action,
 			//lyxerr << "toggling all numbers\n";
 			if (display()) {
 				bv->lockedInsetStoreUndo(Undo::INSERT);
-				bool old = hull()->numberedType();
+				bool old = par()->numberedType();
 				for (MathInset::row_type row = 0; row < par_->nrows(); ++row)
 					hull()->numbered(row, !old);
 				bv->owner()->message(old ? _("No number") : _("Number"));
@@ -461,14 +461,13 @@ int InsetFormula::width(BufferView * bv, LyXFont const & font) const
 
 string InsetFormula::hullType() const
 {
-	return hull() ? hull()->getType() : "none";
+	return par()->getType();
 }
 
 
-void InsetFormula::mutate(string const & type )
+void InsetFormula::mutate(string const & type)
 {
-	if (hull())
-		hull()->mutate(type);
+	par()->mutate(type);
 }
 
 

@@ -736,7 +736,7 @@ MathInset * MathCursor::par() const
 }
 
 
-InsetFormulaBase * MathCursor::formula()
+InsetFormulaBase * MathCursor::formula() const
 {
 	return formula_;
 }
@@ -1759,9 +1759,18 @@ void MathCursor::handleExtern(const string & arg)
 
 int MathCursor::dispatch(string const & cmd)
 {
+	// try to dispatch to adajcent items if they are not editable
+	// actually, this should only happen for mouse clicks...
+	if (hasNextAtom() && !openable(nextAtom(), false))
+		if (int res = nextAtom()->dispatch(cmd, 0, 0))
+			return res;
+	if (hasPrevAtom() && !openable(prevAtom(), false))
+		if (int res = prevAtom()->dispatch(cmd, 0, 0))
+			return res;
+
 	for (int i = Cursor_.size() - 1; i >= 0; --i) {
 		MathCursorPos & pos = Cursor_[i];
-		if (int res = pos.par_-> dispatch(cmd, pos.idx_, pos.pos_))
+		if (int res = pos.par_->dispatch(cmd, pos.idx_, pos.pos_))
 			return res;
 	}
 	return 0;

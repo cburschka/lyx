@@ -26,7 +26,13 @@
 #include "math_scriptinset.h"
 #include "math_charinset.h"
 #include "math_mathmlstream.h"
+#include "math_cursor.h"
 #include "debug.h"
+
+#include "frontends/LyXView.h"
+#include "frontends/Dialogs.h"
+#include "BufferView.h"
+#include "formulabase.h"
 
 
 using std::ostream;
@@ -278,6 +284,19 @@ int MathInset::dispatch(string const &, idx_type, pos_type)
 }
 
 
+std::vector<string> MathInset::getLabelList() const
+{
+	return std::vector<string>();
+}
+
+
+string const & MathInset::getType() const
+{
+	static string t("none");
+	return t;
+}
+
+
 string asString(MathArray const & ar)
 {
 	string res;
@@ -294,4 +313,16 @@ MathArray asArray(string const & str)
 	for (string::const_iterator it = str.begin(); it != str.end(); ++it)
 		ar.push_back(MathAtom(new MathCharInset(*it)));
 	return ar;
+}
+
+
+Dialogs * getDialogs()
+{
+	return mathcursor->formula()->view()->owner()->getDialogs();
+}
+
+
+LyXFunc * getLyXFunc()
+{
+	return mathcursor->formula()->view()->owner()->getLyXFunc();
 }

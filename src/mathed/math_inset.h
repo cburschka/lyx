@@ -67,6 +67,9 @@ class MathSpaceInset;
 class MathSymbolInset;
 class MathUnknownInset;
 class MathXYMatrixInset;
+class MathXYMatrixInset;
+
+class InsetRef;
 
 class NormalStream;
 class OctaveStream;
@@ -213,6 +216,7 @@ public:
 	virtual MathUnknownInset       * asUnknownInset()       { return 0; }
 	virtual MathUnknownInset const * asUnknownInset() const { return 0; }
 	virtual MathXYMatrixInset const* asXYMatrixInset() const{ return 0; }
+	virtual InsetRef               * asInsetRef()           { return 0; }
 
 	/// identifies things that can get scripts
 	virtual bool isScriptable() const { return false; }
@@ -271,6 +275,17 @@ public:
 	virtual void dump() const;
 	/// local dispatcher
 	virtual int dispatch(string const & cmd, idx_type idx, pos_type pos);
+
+	/// LyXInset stuff
+	virtual std::vector<string> getLabelList() const;
+	/// LyXInset stuff
+	virtual bool numberedType() const { return false; }
+	/// hull type
+	virtual string const & getType() const;
+	/// change type
+	virtual void mutate(string const &) {}
+	/// how is the inset called in the .lyx file?
+	virtual string fileInsetLabel() const { return "Formula"; }
 };
 
 std::ostream & operator<<(std::ostream &, MathInset const &);
@@ -278,5 +293,12 @@ std::ostream & operator<<(std::ostream &, MathAtom const &);
 
 string asString(MathArray const & ar);
 MathArray asArray(string const & str);
+
+/// here to ssave a few includes in the insets
+class Dialogs;
+class LyXFunc;
+
+Dialogs * getDialogs();
+LyXFunc * getLyXFunc();
 
 #endif
