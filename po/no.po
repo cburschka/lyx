@@ -1150,9 +1150,8 @@ msgid "Close|#C^["
 msgstr "Lukk|#L^["
 
 #: src/insets/insetlabel.C:56
-#, fuzzy
 msgid "Enter label:"
-msgstr "Sett inn referanse merke"
+msgstr "Sett inn referanse merke:"
 
 #: src/insets/insetloa.C:31
 msgid "List of Algorithms"
@@ -1179,19 +1178,16 @@ msgid "Page: "
 msgstr "Side: "
 
 #: src/insets/insetref.C:86
-#, fuzzy
 msgid "vRef: "
-msgstr "Ref: "
+msgstr "vRef: "
 
 #: src/insets/insetref.C:86
-#, fuzzy
 msgid "vPage: "
-msgstr "Side: "
+msgstr "vSide: "
 
 #: src/insets/insetref.C:87
-#, fuzzy
 msgid "PrettyRef: "
-msgstr "Ref: "
+msgstr "PrettyRef: "
 
 #: src/insets/insettabular.C:235
 msgid "Opened Tabular Inset"
@@ -2620,24 +2616,20 @@ msgid "Go to Reference|#G"
 msgstr "Gå til kryssreferansse|#G"
 
 #: src/lyx.C:174
-#, fuzzy
 msgid "Sort keys|#S"
-msgstr "Serie:"
+msgstr "Sorter nøkler|#S"
 
 #: src/lyx.C:178
-#, fuzzy
 msgid "Insert vReference|#V"
-msgstr "Sett inn referanse"
+msgstr "Sett inn vreferanse|#V"
 
 #: src/lyx.C:182
-#, fuzzy
 msgid "Insert vPage Number|#N"
-msgstr "Sett inn side tall"
+msgstr "Sett inn vsidetall|#N"
 
 #: src/lyx.C:186
-#, fuzzy
 msgid "Insert Pretty Ref|#T"
-msgstr "Sett inn side tall"
+msgstr "Sett inn pretty ref|#T"
 
 #: src/lyx_cb.C:221
 msgid "Save failed. Rename and try again?"
@@ -3931,12 +3923,11 @@ msgstr "Rediger"
 
 #: src/menus.C:186 src/menus.C:274 src/menus.C:275 src/menus.C:276
 msgid "TOC"
-msgstr ""
+msgstr "TOC"
 
 #: src/menus.C:188 src/menus.C:288 src/menus.C:289 src/menus.C:290
-#, fuzzy
 msgid "Refs"
-msgstr "Ref: "
+msgstr "Refs"
 
 #: src/menus.C:190 src/menus.C:302 src/menus.C:303 src/menus.C:304
 msgid "Layout"
@@ -3964,14 +3955,12 @@ msgid "MB|#E"
 msgstr "MB|#R"
 
 #: src/menus.C:278
-#, fuzzy
 msgid "MB|#T"
-msgstr "MB|#F"
+msgstr "MB|#T"
 
 #: src/menus.C:292
-#, fuzzy
 msgid "MB|#R"
-msgstr "MB|#F"
+msgstr "MB|#R"
 
 #: src/menus.C:306
 msgid "MB|#L"
@@ -4533,49 +4522,49 @@ msgid "EM|gG#g#G"
 msgstr "EM|gG#g#G"
 
 #: src/menus.C:1332
-#, fuzzy, c-format
+#, c-format
 msgid "List of Figures%m%l"
-msgstr "Figurliste"
+msgstr "Figurliste%m%l"
 
 #: src/menus.C:1333
-#, fuzzy, c-format
+#, c-format
 msgid "List of Tables%m%l"
-msgstr "Liste over tabeller"
+msgstr "Liste over tabeller%m%l"
 
 #: src/menus.C:1334
-#, fuzzy, c-format
+#, c-format
 msgid "List of Algorithms%m%l"
-msgstr "Liste over algoritmer"
+msgstr "Liste over algoritmer%m%l"
 
 #: src/menus.C:1421
-#, fuzzy, c-format
+#, c-format
 msgid "Insert Page Number%m"
-msgstr "Sett inn side tall"
+msgstr "Sett inn sidetall%m"
 
 #: src/menus.C:1422
-#, fuzzy, c-format
+#, c-format
 msgid "Insert vref%m"
-msgstr "Sett inn Url"
+msgstr "Sett inn vref%m"
 
 #: src/menus.C:1423
-#, fuzzy, c-format
+#, c-format
 msgid "Insert vpageref%m"
-msgstr "Sett inn figur"
+msgstr "Sett inn vpageref%m"
 
 #: src/menus.C:1424
-#, fuzzy, c-format
+#, c-format
 msgid "Insert Pretty Ref%m"
-msgstr "Sett inn indeks"
+msgstr "Sett inn pretty ref%m"
 
 #: src/menus.C:1425
-#, fuzzy, c-format
+#, c-format
 msgid "Goto Reference%m%l"
-msgstr "Gå til kryssreferansse|#G"
+msgstr "Gå til kryssreferansse%m%l"
 
 #: src/menus.C:1434
-#, fuzzy, c-format
+#, c-format
 msgid "Insert Reference:%d%x0"
-msgstr "Sett inn referanse"
+msgstr "Sett inn referanse:%d%x0"
 
 #: src/menus.C:1488
 msgid ""
@@ -5327,7 +5316,6 @@ msgid "Confirm: press Delete-Button again"
 msgstr "Bekreft: trykk sletteknapp igjen"
 
 #: src/TabularLayout.C:56
-#, fuzzy
 msgid "Tabular Layout"
 msgstr "Tabell stil"
 

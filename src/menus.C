@@ -1329,8 +1329,11 @@ void Menus::ShowTocMenu(FL_OBJECT * ob, long)
 	vector<vector<Buffer::TocItem> > toclist =
 		men->currentView()->buffer()->getTocList();
 
+	//xgettext:no-c-format
 	static char const * MenuNames[3] = { N_("List of Figures%m%l"),
+	//xgettext:no-c-format
 					     N_("List of Tables%m%l"),
+	//xgettext:no-c-format
 					     N_("List of Algorithms%m%l") };
 	for (int j = 1; j <= 3; ++j)
 		if (!toclist[j].empty()) {
@@ -1418,10 +1421,15 @@ void Menus::ShowRefsMenu(FL_OBJECT * ob, long)
 	vector<string> label_list = buffer->getLabelList();
 	sort(label_list.begin(), label_list.end());
 
+	//xgettext:no-c-format
 	static char const * MenuNames[5] = { N_("Insert Page Number%m"),
+	//xgettext:no-c-format
 					     N_("Insert vref%m"),
+	//xgettext:no-c-format
 					     N_("Insert vpageref%m"),
+	//xgettext:no-c-format
 					     N_("Insert Pretty Ref%m"),
+	//xgettext:no-c-format
 					     N_("Goto Reference%m%l") };
 
 	for (int j = 1; j <= 5; ++j) {

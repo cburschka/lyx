@@ -8,17 +8,16 @@
 # this one is not finished: the menus are done. The messages and forms 
 # are partially done.
 #
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: LyX ??\n"
 "POT-Creation-Date: 2000-05-19 21:52+0200\n"
 "PO-Revision-Date: 2000-05-07 17:14+2\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Last-Translator: anon <anon@anon>\n"
 "Language-Team: he <he@li.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=CHARSET\n"
-"Content-Transfer-Encoding: ENCODING\n"
+"Content-Type: text/plain; charset=unknown\n"
+"Content-Transfer-Encoding: unknown\n"
 
 #. if the textclass wasn't loaded properly
 #. we need to either substitute another
@@ -5376,48 +5375,3 @@ msgstr ".הלבט רוזגל לוכי אל"
 #: src/text.C:4624
 msgid "Float would include float!"
 msgstr "!ףצ םצע לולכל לוכי אל ףצ םצע"
-
-#~ msgid "Warning: Ignoring Old Inset"
-#~ msgstr "ןשי Inset מ םלעתמ :הרהזא"
-
-#~ msgid "Error: Cannot open temporary file:"
-#~ msgstr "ינמזה ץבוקה תא חותפל לוכי אל !האיגש - "
-
-#~ msgid "Document saved as"
-#~ msgstr "ךמסמה רמשנ ובש םשה - "
-
-#~ msgid "Save failed!"
-#~ msgstr "!הלשכנ הרימש"
-
-#~ msgid "Could not convert file"
-#~ msgstr "ץבוק רימהל חילצמ אל"
-
-#~ msgid "Switch to previous document"
-#~ msgstr "םדוקה ךמסמל רבעמ"
-
-#~ msgid "Importing ASCII file"
-#~ msgstr "ASCII ץבוק אביימ"
-
-#~ msgid "ASCII file "
-#~ msgstr "ASCII ץבוק "
-
-#~ msgid "Importing LaTeX file"
-#~ msgstr "LaTeX ץבוק אביימ"
-
-#~ msgid "Importing Noweb file"
-#~ msgstr "NoWeb ץבוק אביימ"
-
-#~ msgid "Noweb file "
-#~ msgstr "NoWeb ץבוק "
-
-#~ msgid "LateX file "
-#~ msgstr "LaTeX ץבוק "
-
-#~ msgid "Could not import Noweb file"
-#~ msgstr "NoWeb ץבוק אבייל יתחלצה אל"
-
-#~ msgid "Could not import LaTeX file"
-#~ msgstr "LaTeX ץבוק אבייל יתחלצה אל"
-
-#~ msgid "Error: Could not change to directory: "
-#~ msgstr "רודמל רובעל לוכי אל !האיגש - "
