@@ -50,9 +50,9 @@ void GPrint::apply()
 	pp.all_pages = all_->get_active();
 	pp.from_page = pp.to_page = 0;
 	if (!fromEntry_->get_text().empty()) {
-		pp.from_page = convert<int>(fromEntry_->get_text());
+		pp.from_page = convert<int, string>(fromEntry_->get_text());
 		if (!toEntry_->get_text().empty())
-			pp.to_page = convert<int>(toEntry_->get_text());
+			pp.to_page = convert<int, string>(toEntry_->get_text());
 	}
 	pp.odd_pages = odd_->get_active();
 	pp.even_pages = even_->get_active();

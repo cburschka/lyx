@@ -1,5 +1,10 @@
 2005-01-29  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
+	* GPrint.C (apply): use convert<int, string> to avoid undefined
+	reference to convert<int, Glib::ustring>
+
+2005-01-29  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
 	* *.C: make ugly concept check hack work with gcc 3.4 and above
 	(fixes bug 1745)
 	* GMenubar.C (onSubMenuActivate): use Glib::ustring::npos instead of
