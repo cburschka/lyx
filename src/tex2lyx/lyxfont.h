@@ -1,0 +1,33 @@
+// -*- C++ -*-
+/**
+ *  \file lyxfont.h
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
+ *
+ *  \author Angus Leeming
+ *
+ *  Full author contact details are available in file CREDITS
+ */
+
+#ifndef LYXFONT_H
+#define LYXFONT_H
+
+class LyXLex;
+
+class LyXFont {
+public:
+	/// Trick to overload constructor and make it megafast
+	enum FONT_INIT1 { ALL_INHERIT };
+	enum FONT_INIT3 { ALL_SANE };
+
+	LyXFont() {}
+	explicit LyXFont(LyXFont::FONT_INIT1) {}
+	explicit LyXFont(LyXFont::FONT_INIT3) {}
+
+	LyXFont & lyxRead(LyXLex &);
+
+	LyXFont & realize(LyXFont const &) { return *this; }
+	bool resolved() const { return true; }
+};
+
+#endif // NOT LYXFONT_H
