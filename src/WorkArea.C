@@ -344,10 +344,12 @@ int WorkArea::work_area_handler(FL_OBJECT * ob, int event,
 		break;
 	case FL_OTHER:
 		if (!ev) break;
+#ifndef XFORMS_CLIPBOARD
 		if (ev->type == SelectionNotify) {
 			lyxerr.debug() << "Workarea event: SELECTION" << endl;
 			area->owner->workAreaSelectionNotify(area->work_area->form->window, ev);
 		} else
+#endif
 			lyxerr.debug() << "Workarea event: OTHER" << endl;
 
 		break;
@@ -355,3 +357,52 @@ int WorkArea::work_area_handler(FL_OBJECT * ob, int event,
   
 	return 1;
 }
+
+
+#ifdef XFORMS_CLIPBOARD
+static string clipboard_selection;
+static bool clipboard_read = false;
+
+static
+int request_clipboard_cb(FL_OBJECT * /*ob*/, long /*type*/,
+			void const * data, long size) 
+{
+	clipboard_selection.erase();
+	if (size == 0) return 0; // no selection
+	 
+	clipboard_selection.reserve(size);
+	for (int i = 0; i < size; ++i) {
+		clipboard_selection.push_back(static_cast<char*>(data)[i]);
+	}
+	clipboard_read = true;
+	return 0;
+}
+
+
+string WorkArea::getClipboard() const 
+{
+	clipboard_read = false;
+	
+	if (fl_request_clipboard(work_area, 0, request_clipboard_cb) == -1)
+		return string();
+
+	XEvent ev;
+	
+	while (!clipboard_read) {
+		if (fl_check_forms() == FL_EVENT) {
+			lyxerr << "LyX: This shouldn't happen..." << endl;
+			fl_XNextEvent(&ev);
+		}
+	}
+	return clipboard_selection;
+}
+
+	
+void WorkArea::putClipboard(string const & s) const
+{
+	static string hold;
+	hold = s;
+	
+	fl_stuff_clipboard(work_area, 0, hold.c_str(), hold.size(), 0);
+}
+#endif

@@ -23,6 +23,8 @@
 
 class BufferView;
 
+#define XFORMS_CLIPBOARD 1
+
 class WorkArea {
 public:
 	///
@@ -90,6 +92,12 @@ public:
 				     int /*key*/, void * xev);
 	/// xforms callback
 	static void scroll_cb(FL_OBJECT *, long);
+#ifdef XFORMS_CLIPBOARD
+	///
+	string getClipboard() const;
+	///
+	void putClipboard(string const &) const;
+#endif
 private:
 	///
 	void createPixmap(int, int);

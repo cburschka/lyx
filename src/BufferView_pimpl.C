@@ -26,8 +26,10 @@
 #include "lyxrc.h"
 #include "intl.h"
 #include "support/LAssert.h"
+
 using std::pair;
 using std::endl;
+using std::vector;
 
 /* the selection possible is needed, that only motion events are 
  * used, where the bottom press event was on the drawing area too */
@@ -1021,6 +1023,7 @@ void BufferView::Pimpl::workAreaExpose()
 }
 
 
+#ifndef XFORMS_CLIPBOARD
 static
 string fromClipboard(Window win, XEvent * event)
 {
@@ -1094,6 +1097,7 @@ void BufferView::Pimpl::workAreaSelectionNotify(Window win, XEvent * event)
 		update(1);
 	}
 }
+#endif
 
 
 void BufferView::Pimpl::update()
@@ -1486,3 +1490,25 @@ void BufferView::Pimpl::center()
 	update(0);
 	redraw();
 }
+
+
+#ifdef XFORMS_CLIPBOARD
+void BufferView::Pimpl::pasteSelection(bool asPara) 
+{
+	if (buffer_ == 0) return;
+
+	screen->HideCursor();
+	bv_->beforeChange();
+	
+	string clip(workarea->getClipboard());
+	
+	if (clip.empty()) return;
+
+	if (asPara) {
+		bv_->text->InsertStringB(clip);
+	} else {
+		bv_->text->InsertStringA(clip);
+	}
+	update(1);
+}
+#endif

@@ -62,8 +62,10 @@ struct BufferView::Pimpl {
 	void workAreaButtonPress(int x, int y, unsigned int button);
 	///
 	void workAreaButtonRelease(int x, int y, unsigned int button);
+#ifndef XFORMS_CLIPBOARD
 	///
 	void workAreaSelectionNotify(Window win, XEvent * event);
+#endif
 	///
 	void doubleClick(int x, int y, unsigned int button);
 	///
@@ -138,6 +140,10 @@ struct BufferView::Pimpl {
 	WorkArea * workarea;
 	///
 	UpdateInset updatelist;
+#ifdef XFORMS_CLIPBOARD
+	///
+	void pasteSelection(bool asPara);
+#endif
 private:
 	bool using_xterm_cursor;
 };

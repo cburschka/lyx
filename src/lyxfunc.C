@@ -107,7 +107,13 @@ extern void MenuSendto();
 extern void QuitLyX();
 extern void MenuFax(Buffer *);
 extern void MenuExport(Buffer *, string const &);
+
+#define XFORMS_CLIPBOARD 1
+
+#ifndef XFORMS_CLIPBOARD
 extern void MenuPasteSelection(char at);
+#endif
+
 extern LyXAction lyxaction;
 // (alkis)
 extern tex_accent_struct get_accent(kb_action action);
@@ -890,8 +896,7 @@ string LyXFunc::Dispatch(int ac,
 		static LyXFindReplace FR_;
 		FR_.StartSearch(owner->view());
 	}
-	
-		break;
+	break;
 		
 	case LFUN_PASTE:
 		owner->view()->paste();
@@ -902,10 +907,14 @@ string LyXFunc::Dispatch(int ac,
 	{
 	        bool asPara = false;
 		if (argument == "paragraph") asPara = true;
+#ifdef XFORMS_CLIPBOARD
+		owner->view()->pasteSelection(asPara);
+#else
 		MenuPasteSelection(asPara);
-		break;
+#endif
 	}
-
+	break;
+	
 	case LFUN_CUT:
 		owner->view()->cut();
 		break;

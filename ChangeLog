@@ -1,3 +1,15 @@
+2000-05-20  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/BufferView.C (pasteSelection): new method
+
+	* src/BufferView_pimpl.C (pasteSelection): new method
+
+	* src/lyxfunc.C (Dispatch): use the new clipboard functions.
+
+	* src/WorkArea.C (request_clipboard_cb): new static function
+	(getClipboard): new method
+	(putClipboard): new method
+
 2000-05-19  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* LyX 1.1.5pre2 released

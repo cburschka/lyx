@@ -193,10 +193,12 @@ void BufferView::cursorToggleCB(FL_OBJECT * ob, long )
 }
 
 
+#ifndef XFORMS_CLIPBOARD
 void BufferView::workAreaSelectionNotify(Window win, XEvent * event)
 {
 	pimpl_->workAreaSelectionNotify(win, event);
 }
+#endif
 
 
 void BufferView::cursorPrevious()
@@ -323,3 +325,11 @@ void BufferView::center()
 {
 	pimpl_->center();
 }
+
+
+#ifdef XFORMS_CLIPBOARD
+void BufferView::pasteSelection(bool asPara)
+{
+	pimpl_->pasteSelection(asPara);
+}
+#endif

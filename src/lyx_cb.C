@@ -77,6 +77,8 @@ extern FD_form_ref * fd_form_ref;
 extern FD_LaTeXOptions * fd_latex_options;
 extern FD_form_bullet * fd_form_bullet;
 
+#define XFORMS_CLIPBOARD 1
+
 extern BufferView * current_view; // called too many times in this file...
 
 extern void DeleteSimpleCutBuffer(); /* for the cleanup when exiting */
@@ -1222,11 +1224,11 @@ void MenuInsertRef()
 }
 
 
+#ifndef XFORMS_CLIPBOARD
 void MenuPasteSelection(char at)
 {
 	if (!current_view->available())
 		return;
-
 	ascii_type = at;
   
 	Atom data_prop = XInternAtom(fl_display, 
@@ -1238,8 +1240,9 @@ void MenuPasteSelection(char at)
 			  XA_PRIMARY, XA_STRING, data_prop, 
 			  current_view->owner()->getForm()->window, 0);
 	XFlush(fl_display);
-}
 
+}
+#endif
 
 
 
