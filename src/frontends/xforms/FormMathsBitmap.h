@@ -13,7 +13,8 @@
 #define FORM_MATHSBITMAP_H
 
 #include <vector>
-#include <boost/smart_ptr.hpp>
+//#include <boost/smart_ptr.hpp>
+#include "support/smart_ptr.h"
 
 #ifdef __GNUG__
 #pragma interface
@@ -30,7 +31,7 @@ class FormMathsBitmap : public FormMathsSub {
 
   public:
 	///
-	typedef boost::shared_ptr<FL_OBJECT> bm_ptr;
+	typedef lyx::shared_c_ptr<FL_OBJECT> bm_ptr;
 	///
 	FormMathsBitmap(LyXView *, Dialogs * d, FormMathsPanel const &,
 			std::vector<string> const &);
