@@ -2,6 +2,8 @@
 2003-06-27  André Pönitz  <poenitz@gmx.net>
 
 	* insettext.C: take care of removed LyXCursor::row_ member
+	
+	* insettext.[Ch]: use new TextCursor struct for sstate
 
 2003-06-21  Alfredo Braunstein  <abraunst@libero.it>
 
