@@ -1,3 +1,10 @@
+2001-12-19  Juergen Vigna  <jug@sad.it>
+
+	* undo_funcs.C (textHandleUndo): fixed setting of inset_owner of
+	the paragraphs if the replaced paragraph is not the first one!
+	Tried to delete not used paragraphs but does not work yet so for
+	now it's inside #ifdef's and by default off!
+
 2001-12-18  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* MenuBackend.C: include "lyx_main.h" instead of declaring

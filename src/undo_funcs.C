@@ -21,6 +21,13 @@
 #include "debug.h"
 #include "support/LAssert.h"
 
+#include "iterators.h"
+
+//#define DELETE_UNUSED_PARAGRAPHS 1
+#ifdef DELETE_UNUSED_PARAGRAPHS
+#include <vector>
+#endif
+
 /// the flag used by FinishUndo();
 bool undo_finished;
 /// a flag
@@ -121,17 +128,29 @@ bool textHandleUndo(BufferView * bv, Undo * undo)
 		// replace the paragraphs with the undo informations
 
 		Paragraph * tmppar3 = undo->par;
-		undo->par = 0; 	// otherwise the undo destructor would
-				// delete the paragraph 
+		undo->par = 0; 	/* otherwise the undo destructor would
+		                   delete the paragraph */
 
-		// get last undo par
+		// get last undo par and set the right(new) inset-owner of the
+		// paragraph if there is any. This is not needed if we don't have
+		// a paragraph before because then in is automatically done in the
+		// function which assigns the first paragraph to an InsetText. (Jug)
 		Paragraph * tmppar4 = tmppar3;
 		if (tmppar4) {
-			while (tmppar4->next())
+			Inset * in = 0;
+			if (before)
+				in = before->inInset();
+			tmppar4->setInsetOwner(in);
+			while (tmppar4->next()) {
 				tmppar4 = tmppar4->next();
-		} 
+				tmppar4->setInsetOwner(in);
+			}
+		}
     
 		// now remove the old text if there is any
+#ifdef DELETE_UNUSED_PARAGRAPHS
+		std::vector<Paragraph *> vvpar;
+#endif
 		if (before != behind || (!behind && !before)) {
 			if (before)
 				tmppar5 = before->next();
@@ -139,6 +158,9 @@ bool textHandleUndo(BufferView * bv, Undo * undo)
 				tmppar5 = firstUndoParagraph(bv, undo->number_of_inset_id);
 			tmppar2 = tmppar3;
 			while (tmppar5 && tmppar5 != behind) {
+#ifdef DELETE_UNUSED_PARAGRAPHS
+				vvpar.push_back(tmppar5);
+#endif
 				tmppar = tmppar5;
 				tmppar5 = tmppar5->next();
 				// a memory optimization for edit:
@@ -147,7 +169,9 @@ bool textHandleUndo(BufferView * bv, Undo * undo)
 				// the text informations. 
 				if (undo->kind == Undo::EDIT) {
 					tmppar2->setContentsFromPar(tmppar);
+#ifndef DELETE_UNUSED_PARAGRAPHS
 					tmppar->clearContents();
+#endif
 					tmppar2 = tmppar2->next();
 				}
 			}
@@ -215,16 +239,35 @@ bool textHandleUndo(BufferView * bv, Undo * undo)
 			if (tmppar) {
 				LyXText * t;
 				Inset * it = tmppar->inInset();
-				if (it)
+				if (it) {
+					it->edit(bv);
 					t = it->getLyXText(bv);
-				else
+				} else {
 					t = bv->text;
+				}
 				t->setCursorIntern(bv, tmppar, undo->cursor_pos);
 				t->updateCounters(bv, t->cursor.row());
 			}
 		}
 		result = true;
 		delete undo;
+#ifdef DELETE_UNUSED_PARAGRAPHS
+		// And here it's save enough to delete all removed paragraphs
+		std::vector<Paragraph *>::iterator pit = vvpar.begin();
+		if (pit != vvpar.end()) {
+			lyxerr << "DEL: ";
+			for(;pit != vvpar.end(); ++pit) {
+				lyxerr << *pit << " ";
+				delete (*pit);
+			}
+			lyxerr << endl << "PARS:";
+			ParIterator end = bv->buffer()->par_iterator_end();
+			ParIterator it = bv->buffer()->par_iterator_begin();
+			for (; it != end; ++it)
+				lyxerr << *it << " ";
+			lyxerr << endl;
+		}
+#endif
 	}
 	finishUndo();
 	bv->text->status(bv, LyXText::NEED_MORE_REFRESH);
