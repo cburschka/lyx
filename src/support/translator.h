@@ -1,13 +1,11 @@
 // -*- C++ -*-
-/* This file is part of
- * =================================================
+/**
+ * \file translator.h
+ * Copyright 1995-2002 the LyX Team
+ * Read the file COPYING
  *
- *          LyX, The Document Processor
- *          Copyright 1995 Matthias Ettrich.
- *          Copyright 1995-2001 The LyX Team.
- *
- *          This file Copyright 2000 Baruch Even
- * ================================================= */
+ * \author Baruch Even <baruch@lyx.org>
+ */
 
 #ifndef TRANSLATOR_H
 #define TRANSLATOR_H
@@ -19,12 +17,13 @@
 
 #include "support/LAssert.h"
 #include "support/lyxfunctional.h"
-/** This class template is used to translate between two elements, specifically
-    it was worked out to translate between an enum and strings when reading
-    the lyx file.
-
-    The two template arguments should be of different types.
-*/
+/**
+ * This class template is used to translate between two elements, specifically
+ * it was worked out to translate between an enum and strings when reading
+ * the lyx file.
+ *
+ * The two template arguments should be of different types.
+ */
 template<typename T1, typename T2>
 class Translator {
 public:
@@ -99,4 +98,4 @@ private:
 	T2 const default_t2;
 };
 
-#endif
+#endif // TRANSLATOR_H

@@ -1,52 +1,53 @@
 // -*- C++ -*-
-/* This file is part of
- * ======================================================
+/**
+ * \file textutils.h
+ * Copyright 1995-2002 the LyX Team
+ * Read the file COPYING
  *
- *           LyX, The Document Processor
- *
- *           Copyright 1995 Matthias Ettrich
- *           Copyright 1995-2001 The LyX Team.
- *
- * ====================================================== */
+ * \author unknown
+ */
 
+// FIXME: I can think of a better name for this file ...
+ 
 #ifndef TEXTUTILS_H
 #define TEXTUTILS_H
 
-///
+/// return true if the char is a meta-character newline
 inline
 bool IsNewlineChar(char c) {
 	return (c == Paragraph::META_NEWLINE);
 }
 
 
-///
+/// return true if the char is a word separator
 inline
 bool IsSeparatorChar(char c) {
 	return (c == ' ');
 }
 
 
-///
+/// return true if the char is a line separator
+inline
+bool IsLineSeparatorChar(char c) {
+	return (c == ' ');
+}
+ 
+
+/// return true if the char is a meta-character for hfill
 inline
 bool IsHfillChar(char c) {
 	return (c == Paragraph::META_HFILL);
 }
 
 
-///
+/// return true if the char is a meta-character for an inset
 inline
 bool IsInsetChar(char c) {
 	return (c == Paragraph::META_INSET);
 }
 
 
-///
-inline
-bool IsLineSeparatorChar(char c) {
-	return (c == ' ');
-}
-
-///
+/// return true if the char is "punctuation"
 inline
 bool IsKommaChar(char c) {
 	return (c == ','
@@ -77,7 +78,7 @@ bool IsKommaChar(char c) {
 }
 
 
-///
+/// return true if a char is alphabetical (including accented chars)
 inline
 bool IsLetterChar(unsigned char c) {
 	return ((c >= 'A' && c <= 'Z')
@@ -86,21 +87,21 @@ bool IsLetterChar(unsigned char c) {
 }
 
 
-///
+/// return true if the char is printable (masked to 7-bit ASCII)
 inline
 bool IsPrintable(unsigned char c) {
 	return ((c & 127) >= ' ');
 }
 
 
-///
+/// return true if the char is printable and not a space (masked to 7-bit ASCII) 
 inline
 bool IsPrintableNonspace(unsigned char c) {
 	return IsPrintable(c) && (c != ' ');
 }
 
 
-/// Word is not IsSeparator or IsKomma or IsHfill or IsFloat or IsInset.
+/// return true if the char forms part of a word
 inline
 bool IsWordChar(unsigned char c) {
 	return !(IsSeparatorChar(c)
@@ -110,7 +111,7 @@ bool IsWordChar(unsigned char c) {
 }
 
 
-///
+/// completely pointless FIXME
 inline
 bool IsDigit(unsigned char ch)
 {
@@ -118,10 +119,11 @@ bool IsDigit(unsigned char ch)
 }
 
 
-///
+/// return true if the char is alphanumeric
 inline
 bool IsLetterCharOrDigit(unsigned char ch)
 {
 	return IsLetterChar(ch) || IsDigit(ch);
 }
-#endif
+ 
+#endif // TEXTUTILS_H

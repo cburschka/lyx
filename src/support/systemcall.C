@@ -7,13 +7,6 @@
  *
  * Interface cleaned up by
  * \author Angus Leeming <a.leeming@ic.ac.uk>
- *
- * Class Systemcall uses "system" to launch the child process.
- * The user can choose to wait or not wait for the process to complete, but no
- * callback is invoked upon completion of the child.
- *
- * The child process is not killed when the Systemcall instance goes out of
- * scope.
  */
 
 #include <config.h>
@@ -25,15 +18,7 @@
 #include "systemcall.h"
 #include "os.h"
 
-#include <cstdlib> //for ::system
-
-
-#if 0
-Systemcall::Systemcall(Starttype how, string const & what)
-{
-	startscript(how, what);
-}
-#endif
+#include <cstdlib>
 
 
 // Reuse of instance

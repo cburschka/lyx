@@ -1,4 +1,15 @@
 // -*- C++ -*-
+/**
+ * \file lyxalgo.h
+ * Copyright 1995-2002 the LyX Team
+ * Read the file COPYING
+ *
+ * A variety of useful templates.
+ *
+ * \author unknown
+ */
+
+ 
 
 #ifndef LYX_ALGO_H
 #define LYX_ALGO_H
@@ -44,6 +55,10 @@ struct firster {
 };
 
 
+/**
+ * copy elements in the given range to the output iterator 
+ * if the predicate evaluates as true
+ */
 template <class InputIter, class OutputIter, class Func>
 OutputIter copy_if(InputIter first, InputIter last,
 	       OutputIter result, Func func)
@@ -74,4 +89,4 @@ count (Iterator first, Iterator last, T const & value)
 
 } // namespace lyx
 
-#endif
+#endif // LYX_ALGO_H

@@ -1,10 +1,17 @@
+/**
+ * \file types.h
+ * Copyright 2002 the LyX Team
+ * Read the file COPYING
+ *
+ * Provide a set of typedefs for commonly used things like sizes and
+ * indices wile trying to stay compatible with types used
+ * by the standard containers.
+ *
+ * \author André Pönitz
+ */
+
 #ifndef LYX_TYPES_H
 #define LYX_TYPES_H
-
-// provide a set of typedefs for commonly used things like sizes and
-// indices while trying to stay compatible with types used by the standard
-// containers.
-
 
 // this probably could be improved by using <cstddef>...
 #include <vector>
@@ -62,4 +69,4 @@ namespace lyx
 
 }
 
-#endif
+#endif // LYX_TYPES_H
