@@ -35,6 +35,8 @@ private:
 	bool upper() const;
 	///
 	bool protect() const;
+	/// is it a wide decoration?
+	bool wide() const;
 
 	///
 	string const name_;

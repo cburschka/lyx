@@ -19,8 +19,8 @@ int mathed_char_width(MathTextCodes type, MathStyles size, unsigned char c);
 int mathed_char_ascent(MathTextCodes type, MathStyles size, unsigned char c);
 int mathed_char_descent(MathTextCodes type, MathStyles size, unsigned char c);
 
-void mathed_draw_deco
-	(Painter & pain, int x, int y, int w, int h, string const & name);
+void mathed_draw_deco(Painter & pain, int x, int y, int w, int h,
+	string const & name);
 
 void mathed_string_dim(MathTextCodes type, MathStyles size, string const & s,
   int & asc, int & des, int & wid);

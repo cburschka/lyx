@@ -48,6 +48,18 @@ bool MathDecorationInset::protect() const
 }
 
 
+bool MathDecorationInset::wide() const
+{
+	return
+			name_ == "overbrace" ||
+			name_ == "underbrace" ||
+			name_ == "overleftarrow" ||
+			name_ == "overrightarrow" ||
+			name_ == "widehat" ||
+			name_ == "widetilde";
+}
+
+
 void MathDecorationInset::metrics(MathStyles st) const
 {
 	xcell(0).metrics(st);
@@ -73,7 +85,12 @@ void MathDecorationInset::draw(Painter & pain, int x, int y) const
 	xo(x);
 	yo(x);
 	xcell(0).draw(pain, x, y);
-	mathed_draw_deco(pain, x, y + dy_, width_, dh_, name_);
+	if (wide()) 
+		mathed_draw_deco(pain, x, y + dy_, width_, dh_, name_);
+	else {
+		int w = 2 + mathed_char_width(LM_TC_VAR, size(), 'x'); 
+		mathed_draw_deco(pain, x + (width_ - w) / 2, y + dy_, w, dh_, name_);
+	}
 }
 
 

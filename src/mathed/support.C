@@ -26,15 +26,15 @@ bool isBinaryOp(char c, MathTextCodes type)
 class Matrix {
 public:
 	///
-	typedef float matriz_data[2][2];
+	typedef double matriz_data[2][2];
 	///
 	Matrix();
 	///
 	void rotate(int);
 	///
-	void escalate(float, float);
+	void escalate(double, double);
 	///
-	void transform(float, float, float &, float &);
+	void transform(double, double, double &, double &);
 private:
 	///
 	matriz_data m_;
@@ -57,8 +57,8 @@ void Matrix::rotate(int code)
 	r[0][1] = 0;
 	r[1][0] = 0;
 	r[1][1] = 1;
-	float const cs = (code & 1) ? 0 : (1 - code);
-	float const sn = (code & 1) ? (2 - code) : 0;
+	double const cs = (code & 1) ? 0 : (1 - code);
+	double const sn = (code & 1) ? (2 - code) : 0;
 	r[0][0] = cs;
 	r[0][1] = sn;
 	r[1][0] = -r[0][1];
@@ -66,7 +66,7 @@ void Matrix::rotate(int code)
 	multiply(r);
 }
 
-void Matrix::escalate(float x, float y)
+void Matrix::escalate(double x, double y)
 {
 	matriz_data s;
 	s[0][0] = x;
@@ -89,7 +89,7 @@ void Matrix::multiply(matriz_data & a)
 	m_[1][1] = c[1][1];	
 }
 
-void Matrix::transform(float xp, float yp, float & x, float & y)
+void Matrix::transform(double xp, double yp, double & x, double & y)
 {
 	x = m_[0][0] * xp + m_[0][1] * yp;
 	y = m_[1][0] * xp + m_[1][1] * yp;
@@ -291,7 +291,7 @@ namespace {
  */
 
 
-float const parenthHigh[] = {
+double const parenthHigh[] = {
 	2.0, 13.0,
 	0.9840, 0.0014, 0.7143, 0.0323, 0.4603, 0.0772,
 	0.2540, 0.1278, 0.1746, 0.1966, 0.0952, 0.3300,
@@ -302,7 +302,7 @@ float const parenthHigh[] = {
 };
 
 
-float const parenth[] = {
+double const parenth[] = {
 	2.0, 13.0,
 	0.9930, 0.0071, 0.7324, 0.0578, 0.5141, 0.1126,
 	0.3380, 0.1714, 0.2183, 0.2333, 0.0634, 0.3621,
@@ -313,7 +313,7 @@ float const parenth[] = {
 };
 
 
-float const brace[] = {
+double const brace[] = {
 	2.0, 21.0,
 	0.9492, 0.0020, 0.9379, 0.0020, 0.7458, 0.0243,
 	0.5819, 0.0527, 0.4859, 0.0892, 0.4463, 0.1278,
@@ -327,7 +327,7 @@ float const brace[] = {
 
 
 // Is this correct? (Lgb)
-float const arrow[] = {
+double const arrow[] = {
 	4, 7,
 	0.0150, 0.7500, 0.2000, 0.6000, 0.3500, 0.3500,
 	0.5000, 0.0500, 0.6500, 0.3500, 0.8000, 0.6000,
@@ -338,7 +338,7 @@ float const arrow[] = {
 
 
 // Is this correct? (Lgb)
-float const Arrow[] = {
+double const Arrow[] = {
 	4, 7,
 	0.0150, 0.7500, 0.2000, 0.6000, 0.3500, 0.3500,
 	0.5000, 0.0500, 0.6500, 0.3500, 0.8000, 0.6000,
@@ -349,7 +349,7 @@ float const Arrow[] = {
 };
 
 
-float const udarrow[] = {
+double const udarrow[] = {
 	2, 3,
 	0.015, 0.25,  0.5, 0.05, 0.95, 0.25,
 	2, 3,
@@ -359,7 +359,7 @@ float const udarrow[] = {
 };
 
 
-float const Udarrow[] = {
+double const Udarrow[] = {
 	2, 3,
 	0.015, 0.25,  0.5, 0.05, 0.95, 0.25,
 	2, 3,
@@ -370,47 +370,47 @@ float const Udarrow[] = {
 };
 
 
-float const brack[] = {
+double const brack[] = {
 	2.0, 4,
 	0.95, 0.05,  0.05, 0.05,  0.05, 0.95,  0.95, 0.95,
 	0.0
 };
 
 
-float const corner[] = {
+double const corner[] = {
 	2.0, 3,
 	0.95, 0.05,  0.05, 0.05,  0.05, 0.95,
 	0.0
 };
 
 
-float const angle[] = {
+double const angle[] = {
 	2.0, 3,
 	1, 0,  0.05, 0.5,  1, 1,
 	0.0
 };
 
 
-float const slash[] = {
+double const slash[] = {
 	1, 0.95, 0.05,  0.05, 0.95, 
 	0.0
 };
 
 
-float const hline[] = {
+double const hline[] = {
 	1, 0.05, 0.5,  0.95, 0.5, 
 	0.0
 };
 
 
-float const hline2[] = {
+double const hline2[] = {
    1, 0.1, 0.5,  0.3, 0.5,
    1, 0.7, 0.5,  0.9, 0.5,
    0.0
 }; 
 
 
-float const hline3[] = {
+double const hline3[] = {
 	1, 0.1, 0,  0.15, 0,
 	1, 0.475, 0,  0.525, 0,
 	1, 0.85, 0,  0.9, 0,  
@@ -418,7 +418,7 @@ float const hline3[] = {
 };
 
 
-float const dline3[] = {
+double const dline3[] = {
 	1, 0.1, 0.1,  0.15, 0.15,
 	1, 0.475, 0.475,  0.525, 0.525,
 	1, 0.85, 0.85,  0.9, 0.9,
@@ -426,26 +426,26 @@ float const dline3[] = {
 };     
 
 
-float const hlinesmall[] = {
+double const hlinesmall[] = {
 	1, 0.4, 0.5,  0.6, 0.5, 
 	0.0
 };
 
 
-float const vert[] = {
+double const vert[] = {
 	1, 0.5, 0.05,  0.5, 0.95, 
 	0.0
 };
 
 
-float const  Vert[] = {
+double const  Vert[] = {
 	1, 0.3, 0.05,  0.3, 0.95, 
 	1, 0.7, 0.05,  0.7, 0.95,
 	0.0
 };
 
 
-float const tilde[] = {
+double const tilde[] = {
 	2.0, 4,
 	0.05, 0.8,  0.25, 0.2,  0.75, 0.8,  0.95, 0.2,
 	0.0
@@ -453,13 +453,13 @@ float const tilde[] = {
 
 
 struct deco_struct {
-	float const * data;
+	double const * data;
 	int angle;
 };
 
 struct named_deco_struct {
 	char const * name;
-	float const * data;
+	double const * data;
 	int angle;
 };
 
@@ -632,10 +632,6 @@ int mathed_string_width(MathTextCodes type, MathStyles size, string const & s)
 void mathed_draw_deco(Painter & pain, int x, int y, int w, int h,
 	const string & name)
 {
-	Matrix mt;
-	Matrix sqmt;
-	int i = 0;
-
 	if (name == ".") {
 		pain.line(x + w/2, y, x + w/2, y + h,
 			  LColor::mathcursor, Painter::line_onoffdash);
@@ -650,11 +646,14 @@ void mathed_draw_deco(Painter & pain, int x, int y, int w, int h,
 	}
 	
 	int const r = mds->angle;
-	float const * d = mds->data;
+	double const * d = mds->data;
 	
 	if (h > 70 && (name == "(" || name == ")"))
 		d = parenthHigh;
 	
+	Matrix mt;
+	Matrix sqmt;
+
 	mt.rotate(r);
 	mt.escalate(w, h);
 	
@@ -669,39 +668,28 @@ void mathed_draw_deco(Painter & pain, int x, int y, int w, int h,
 	if (r >= 2)
 		x += w;   
 
-	int code;
-	do {
-		float xx;
-		float yy;
-		float x2;
-		float y2;
-
-		code = int(d[i++]);
-		switch (code) {
-		case 0: break;
-		case 1: 
-		case 3:
-		{
-			xx = d[i++]; yy = d[i++];
-			x2 = d[i++]; y2 = d[i++];
+	for (int i = 0; d[i]; ) {
+		int code = int(d[i++]);
+		if (code & 1) {  // code == 1 || code == 3
+			double xx = d[i++];
+			double yy = d[i++];
+			double x2 = d[i++];
+			double y2 = d[i++];
 			if (code == 3) 
 				sqmt.transform(xx, yy, xx, yy);
 			else
 				mt.transform(xx, yy, xx, yy);
 			mt.transform(x2, y2, x2, y2);
 			pain.line(x + int(xx), y + int(yy),
-				  x + int(x2), y + int(y2),
-				  LColor::mathline);
-			break;
-		}	 
-		case 2: 
-		case 4:
-		{
+					x + int(x2), y + int(y2),
+					LColor::mathline);
+		}	else {
 			int xp[32];
 			int yp[32];
 			int const n = int(d[i++]);
 			for (int j = 0; j < n; ++j) {
-				xx = d[i++]; yy = d[i++];
+				double xx = d[i++];
+				double yy = d[i++];
 //	     lyxerr << " " << xx << " " << yy << " ";
 				if (code == 4) 
 					sqmt.transform(xx, yy, xx, yy);
@@ -713,8 +701,7 @@ void mathed_draw_deco(Painter & pain, int x, int y, int w, int h,
 			}
 			pain.lines(xp, yp, n, LColor::mathline);
 		}
-		}
-	} while (code);
+	}
 }
 
 
