@@ -95,7 +95,7 @@ private:
     ///
     mutable int
         top_baseline, top_x,
-	button_x;
+	button_x, button_top_y, button_bottom_y;
 };
 
 #endif

@@ -995,10 +995,10 @@ Inset * BufferView::checkInsetHit(int & x, int & y)
 		}
 	}
 
-	if (cursor.pos - 1 >= 0
-		   && cursor.par->GetChar(cursor.pos - 1) == LyXParagraph::META_INSET
-		   && cursor.par->GetInset(cursor.pos - 1)
-		   && cursor.par->GetInset(cursor.pos - 1)->Editable()) {
+	if ((cursor.pos - 1 >= 0) &&
+	    (cursor.par->GetChar(cursor.pos-1) == LyXParagraph::META_INSET) &&
+	    (cursor.par->GetInset(cursor.pos - 1)) &&
+	    (cursor.par->GetInset(cursor.pos - 1)->Editable())) {
 		text->CursorLeft();
 		Inset * tmpinset = cursor.par->GetInset(cursor.pos);
 		LyXFont font = text->GetFont(cursor.par, cursor.pos);

@@ -5,7 +5,7 @@
 
 #include <algorithm>
 
-using std::less;
+// using std::less;
 
 // Both these functions should ideally be placed into namespace lyx.
 // Also the using std::less should not be used.

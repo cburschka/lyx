@@ -1,3 +1,23 @@
+2000-03-09  Juergen Vigna  <jug@sad.it>
+
+	* src/insets/insettext.C (setPos): fixed various cursor positioning
+	problems (via mouse and cursor-keys)
+	(LocalDispatch): added posibility to add a Ctrl-Enter inside a text
+	inset (still a small display problem but it works ;)
+
+	* src/insets/insetcollapsable.C (draw): added button_top_y and
+	button_bottom_y to have correct values for clicking on the inset.
+
+	* src/support/lyxalgo.h: commented out 'using std::less'
+
+2000-03-08  Juergen Vigna  <jug@sad.it>
+
+	* src/insets/insetcollapsable.C (InsetButtonRelease): Now a
+	Button-Release event closes as it is alos the Release-Event
+	which opens it.
+
+	* src/lyxfunc.C (Dispatch): forgot a break in the LFUN_INSET_ERT
+
 2000-03-07  Kayvan A. Sylvan  <kayvan@camel.internal.sylvan.com>
 
 	* lib/layouts/literate-scrap.inc: Fixed initial comment. Now we
@@ -122,10 +142,6 @@
 	checking if sorted, sorting and lower_bound.
 	(search_kw): use lower_bound instead of manually implemented
 	binary search.
-
-2000-03-08  Juergen Vigna  <jug@sad.it>
-
-	* src/lyxfunc.C (Dispatch): forgot a break in the LFUN_INSET_ERT
 
 2000-03-08  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 

@@ -27,7 +27,8 @@ InsetCollapsable::InsetCollapsable(Buffer * bf): InsetText(bf)
     autocolapse = true;
     autoBreakRows = true;
     framecolor = LColor::footnoteframe;
-    widthOffset = 7;
+    widthOffset = 10;
+    button_x = button_top_y = button_bottom_y = top_x = -1;
 }
 
 
@@ -87,7 +88,7 @@ int InsetCollapsable::width(Painter & pain, LyXFont const & font) const
     if (collapsed) 
 	return width_collapsed(pain, font);
 
-    return getMaxWidth(pain);
+    return getMaxWidth(pain) - widthOffset + 2;
 }
 
 
@@ -111,7 +112,9 @@ void InsetCollapsable::draw(Painter & pain, LyXFont const & f,
     top_x = int(x);
     top_baseline = baseline;
     draw_collapsed(pain, f, baseline, x);
-    button_x = int(x - top_x);
+    button_x = int(x);
+    button_top_y = -ascent_collapsed(pain, f);
+    button_bottom_y = descent_collapsed(pain, f);
     
     maxWidth = getMaxWidth(pain) - button_x;
     x += 2;
@@ -171,12 +174,7 @@ void InsetCollapsable::UpdateLocal(BufferView *bv, bool flag)
 
 void InsetCollapsable::InsetButtonPress(BufferView *bv,int x,int y,int button)
 {
-    if ((x < button_x)  &&
-	(y < (labelfont.maxDescent()+labelfont.maxAscent()))) {
-	collapsed = true;
-	UpdateLocal(bv, false);
-        bv->unlockInset(this);
-    } else if (x >= button_x) {
+    if ((x >= button_x) && (y >= button_top_y)) {
 	InsetText::InsetButtonPress(bv, x-top_x, y, button);
     }
 }
@@ -184,13 +182,19 @@ void InsetCollapsable::InsetButtonPress(BufferView *bv,int x,int y,int button)
 
 void InsetCollapsable::InsetButtonRelease(BufferView *bv, int x, int y, int button)
 {
-    if (x >= button_x)
+    if ((x < button_x)  && (y >= button_top_y) && (y <= button_bottom_y)) {
+	collapsed = true;
+	UpdateLocal(bv, false);
+        bv->unlockInset(this);
+    } else if ((x >= button_x) && (y >= button_top_y)) {
 	InsetText::InsetButtonRelease(bv, x-top_x, y, button);
+    }
 }
 
 
 void InsetCollapsable::InsetMotionNotify(BufferView *bv, int x, int y, int button)
 {
-    if (x >= button_x)
+    if ((x >= button_x) && (y >= button_top_y)) {
 	InsetText::InsetMotionNotify(bv, x-top_x, y, button);
+    }
 }
