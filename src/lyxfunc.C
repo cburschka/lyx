@@ -426,6 +426,11 @@ func_status::value_type LyXFunc::getStatus(int ac,
 	case LFUN_SPELLCHECK:
 		disable = lyxrc.isp_command == "none";
 		break;
+#ifndef HAVE_LIBAIKSAURUS
+	case LFUN_THESAURUS_ENTRY:
+		disable = true;
+		break;
+#endif
 	case LFUN_RUNCHKTEX:
 		disable = lyxrc.chktex_command == "none";
 		break;
