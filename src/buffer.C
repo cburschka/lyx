@@ -625,10 +625,6 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 			return false; // no end read yet
 		}
 
-		// we have to reset the font as in the old format after a float
-		// the font was automatically reset!
-		font = LyXFont(LyXFont::ALL_INHERIT, params.language);
-
 		// Here we need to check for \end_deeper and handle that
 		// before we do the footnote parsing.
 		// This _is_ a hack! (Lgb)
@@ -658,6 +654,12 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 		LyXLex nylex(0, 0);
 		nylex.setStream(istr);
 		inset->read(this, nylex);
+
+		// we have to reset the font as in the old format after a float
+		// the font was automatically reset!
+		//font = LyXFont(LyXFont::ALL_INHERIT, params.language);
+		// This is not true (Dekel).
+
 		par->insertInset(pos, inset, font);
 		++pos;
 		insertErtContents(par, pos);
@@ -2189,7 +2191,7 @@ void Buffer::makeLaTeXFile(string const & fname,
 
 		if (lyxrc.language_use_babel ||
 		    params.language->lang() != lyxrc.default_language ||
-		    !features.hasLanguages()) {
+		    features.hasLanguages()) {
 			use_babel = true;
 			language_options << features.getLanguages();
 			language_options << params.language->babel();
