@@ -1,3 +1,12 @@
+2001-07-06  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* BufferView_pimpl.C (resizeCurrentBuffer): init the new LyXText
+
+	* text2.C (LyXText): use initialization lists.
+
+	* lyxtext.h (Selection): initialize set_ and mark_
+	(init): remove method
+
 2001-07-05  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* LaTeX.C (scanLogFile): Parse rerun messages from latex packages.

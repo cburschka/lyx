@@ -223,6 +223,9 @@ public:
 
 	/** The structrue that keeps track of the selections set. */
 	struct Selection {
+		Selection() 
+			: set_(false), mark_(false)
+			{}
 		bool set() const {
 			return set_;
 		}
@@ -511,8 +514,6 @@ public:
 			(bidi_start <= pos && pos <= bidi_end);
 	}
 private:
-	///
-	void init();
 	///
 	mutable Row * firstrow;
 	///

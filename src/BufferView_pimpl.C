@@ -305,6 +305,7 @@ int BufferView::Pimpl::resizeCurrentBuffer()
 		the_locking_inset = bv_->theLockingInset();
 		delete bv_->text;
 		bv_->text = new LyXText(bv_);
+		bv_->text->init(bv_);
 	} else {
 		// See if we have a text in TextCache that fits
 		// the new buffer_ with the correct width.
@@ -320,6 +321,7 @@ int BufferView::Pimpl::resizeCurrentBuffer()
 				textcache.show(lyxerr, "resizeCurrentBuffer");
 		} else {
 			bv_->text = new LyXText(bv_);
+			bv_->text->init(bv_);
 		}
 	}
 	updateScreen();

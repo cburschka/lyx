@@ -49,78 +49,21 @@ using std::pair;
 
 
 LyXText::LyXText(BufferView * bv)
-{
-	bv_owner = bv;
-	inset_owner = 0;
-	init();
-}
+	: number_of_rows(0), height(0), width(0), first(0),
+	  bv_owner(bv), inset_owner(0), the_locking_inset(0),
+	  need_break_row(0), refresh_y(0), status(LyXText::UNCHANGED),
+	  undo_finished(true), undo_frozen(false), firstrow(0), lastrow(0),
+	  copylayouttype(0)
+{}
 
 
 LyXText::LyXText(InsetText * inset)
-{
-	inset_owner = inset;
-	bv_owner = 0;
-	init();
-}
-
-
-void LyXText::init()
-{
-	the_locking_inset = 0;
-	firstrow = 0;
-	lastrow = 0;
-	number_of_rows = 0;
-	refresh_y = 0;
-	height = 0;
-	width = 0;
-	first = 0;
-	status = LyXText::UNCHANGED;
-
-	// set cursor at the very top position
-	selection.set(true);	    /* these setting is necessary 
-				       because of the delete-empty-
-				       paragraph mechanism in
-				       SetCursor */
-	if (bv_owner) {
-		Paragraph * par = ownerParagraph();
-		current_font = getFont(bv_owner->buffer(), par, 0);
-		while (par) {
-			insertParagraph(bv_owner, par, lastrow);
-			par = par->next();
-		}
-		setCursor(bv_owner, firstrow->par(), 0);
-	} else
-		current_font = LyXFont(LyXFont::ALL_SANE);
-
-	selection.cursor = cursor;
-	selection.set(false);
-	selection.mark(false);
-	
-	// no rebreak necessary
-	need_break_row = 0;
-   
-	undo_finished = true;
-	undo_frozen = false;
-
-	// Default layouttype for copy environment type
-	copylayouttype = 0;
-
-#if 0
-	// Dump all rowinformation:
-	Row * tmprow = firstrow;
-	lyxerr << "Baseline Paragraph Pos Height Ascent Fill\n";
-	while (tmprow) {
-		lyxerr << tmprow->baseline() << '\t'
-		       << tmprow->par << '\t'
-		       << tmprow->pos() << '\t'
-		       << tmprow->height << '\t'
-		       << tmprow->ascent_of_text << '\t'
-		       << tmprow->fill << '\n';
-		tmprow = tmprow->next();
-	}
-	lyxerr.flush();
-#endif
-}
+	:  number_of_rows(0),  height(0), width(0), first(0),
+	   bv_owner(0), inset_owner(inset), the_locking_inset(0),
+	   need_break_row(0), refresh_y(0), status(LyXText::UNCHANGED),
+	   undo_finished(true), undo_frozen(false), firstrow(0), lastrow(0),
+	   copylayouttype(0)
+{}
 
 
 void LyXText::init(BufferView * bview)
@@ -136,24 +79,8 @@ void LyXText::init(BufferView * bview)
 	}
 	setCursorIntern(bview, firstrow->par(), 0);
 	selection.cursor = cursor;
-#if 0
-	printf("TP = %x\n",inset_owner->owner());
-	// Dump all rowinformation:
-	Row * tmprow = firstrow;
-	lyxerr << "Width = " << width << endl;
-	lyxerr << "Baseline Paragraph Pos Height Ascent Fill\n";
-	while (tmprow) {
-		lyxerr << tmprow->baseline() << '\t'
-		       << tmprow->par() << '\t'
-		       << tmprow->pos() << '\t'
-		       << tmprow->height() << '\t'
-		       << tmprow->ascent_of_text() << '\t'
-		       << tmprow->fill() << '\n';
-		tmprow = tmprow->next();
-	}
-	lyxerr.flush();
-#endif
 }
+
 
 LyXText::~LyXText()
 {
@@ -297,6 +224,7 @@ void LyXText::setCharFont(BufferView * bv, Paragraph * par,
 
 	par->setFont(pos, font);
 }
+
 
 void LyXText::setCharFont(Buffer const * buf, Paragraph * par,
                           Paragraph::size_type pos, LyXFont const & fnt)
