@@ -462,7 +462,7 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 		insertErtContents(par, pos);
 #endif
 		lex.eatLine();
-		string const layoutname = lex.getString();
+		string const layoutname = lowercase(lex.getString());
 		//lyxerr << "Looking for layout '"
 		// << layoutname << "'!" << endl;
 
