@@ -233,7 +233,7 @@ public:
 	  (relative to the whole text). y is set to the real beginning
 	  of this row
 	  */
-	Row * getRowNearY(int & y) const;
+	RowList::iterator getRowNearY(int & y) const;
 
 	/** returns the column near the specified x-coordinate of the row
 	 x is set to the real beginning of this column
@@ -244,7 +244,8 @@ public:
 	/** returns a pointer to a specified row. y is set to the beginning
 	 of the row
 	 */
-	Row * getRow(Paragraph * par, lyx::pos_type pos, int & y) const;
+	RowList::iterator
+	getRow(Paragraph * par, lyx::pos_type pos, int & y) const;
 
 	RowList & rows() {
 		return rowlist_;

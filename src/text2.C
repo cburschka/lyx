@@ -733,7 +733,7 @@ void LyXText::redoParagraphs(LyXCursor const & cur,
 			} else {
 				insertParagraph(tmppar, tmprow->next());
 			}
-			
+
 
 			if (!tmprow) {
 				tmprow = &*rows().begin();
@@ -1558,24 +1558,25 @@ void LyXText::insertStringAsParagraphs(string const & str)
 }
 
 
-void LyXText::checkParagraph(Paragraph * par,
-			     pos_type pos)
+void LyXText::checkParagraph(Paragraph * par, pos_type pos)
 {
 	LyXCursor tmpcursor;
 
 	int y = 0;
 	pos_type z;
-	Row * row = getRow(par, pos, y);
+	RowList::iterator row = getRow(par, pos, y);
+	RowList::iterator beg = rows().begin();
 
 	// is there a break one row above
-	if (row->previous() && row->previous()->par() == row->par()) {
-		z = rowBreakPoint(*row->previous());
+	if (row != beg
+	    && boost::prior(row)->par() == row->par()) {
+		z = rowBreakPoint(*boost::prior(row));
 		if (z >= row->pos()) {
 			// set the dimensions of the row above
-			y -= row->previous()->height();
+			y -= boost::prior(row)->height();
 			postPaint(y);
 
-			breakAgain(row->previous());
+			breakAgain(&*boost::prior(row));
 
 			// set the cursor again. Otherwise
 			// dangling pointers are possible
@@ -1589,9 +1590,9 @@ void LyXText::checkParagraph(Paragraph * par,
 	int const tmpheight = row->height();
 	pos_type const tmplast = row->lastPos();
 
-	breakAgain(row);
+	breakAgain(&*row);
 	if (row->height() == tmpheight && row->lastPos() == tmplast) {
-		postRowPaint(row, y);
+		postRowPaint(&*row, y);
 	} else {
 		postPaint(y);
 	}
@@ -1599,7 +1600,7 @@ void LyXText::checkParagraph(Paragraph * par,
 	// check the special right address boxes
 	if (par->layout()->margintype == MARGIN_RIGHT_ADDRESS_BOX) {
 		tmpcursor.par(par);
-		tmpcursor.row(row);
+		tmpcursor.row(&*row);
 		tmpcursor.y(y);
 		tmpcursor.x(0);
 		tmpcursor.x_fix(0);
@@ -1681,25 +1682,27 @@ void LyXText::setCursor(LyXCursor & cur, Paragraph * par,
 
 	// get the cursor y position in text
 	int y = 0;
-	Row * row = getRow(par, pos, y);
-	Row * old_row = row;
-	cur.irow(row);
+	RowList::iterator row = getRow(par, pos, y);
+	RowList::iterator beg = rows().begin();
+
+	RowList::iterator old_row = row;
+	cur.irow(&*row);
 	// if we are before the first char of this row and are still in the
 	// same paragraph and there is a previous row then put the cursor on
 	// the end of the previous row
 	cur.iy(y + row->baseline());
 	Inset * ins;
-	if (row->previous() && pos &&
-		row->previous()->par() == row->par() &&
+	if (row != beg && pos &&
+		boost::prior(row)->par() == row->par() &&
 	    pos < par->size() &&
 		par->getChar(pos) == Paragraph::META_INSET &&
 		(ins = par->getInset(pos)) && (ins->needFullRow() || ins->display()))
 	{
-		row = row->previous();
+		--row;
 		y -= row->height();
 	}
 
-	cur.row(row);
+	cur.row(&*row);
 	// y is now the beginning of the cursor row
 	y += row->baseline();
 	// y is now the cursor baseline
@@ -1724,18 +1727,18 @@ void LyXText::setCursor(LyXCursor & cur, Paragraph * par,
 	}
 
 	// now get the cursors x position
-	float x = getCursorX(row, pos, last, boundary);
+	float x = getCursorX(&*row, pos, last, boundary);
 	cur.x(int(x));
 	cur.x_fix(cur.x());
 	if (old_row != row) {
-		x = getCursorX(old_row, pos, last, boundary);
+		x = getCursorX(&*old_row, pos, last, boundary);
 		cur.ix(int(x));
 	} else
 		cur.ix(cur.x());
 	//if the cursor is in a visible row, anchor to it
 	int topy = top_y();
 	if (topy < y && y < topy + bv()->workHeight())
-		anchor_row(row);
+		anchor_row(&*row);
 }
 
 
@@ -2019,19 +2022,18 @@ namespace {
 }
 
 
-void LyXText::setCursorFromCoordinates(LyXCursor & cur,
-				       int x, int y)
+void LyXText::setCursorFromCoordinates(LyXCursor & cur, int x, int y)
 {
 	// Get the row first.
 
-	Row * row = getRowNearY(y);
+	RowList::iterator row = getRowNearY(y);
 	bool bound = false;
-	pos_type const column = getColumnNearX(row, x, bound);
+	pos_type const column = getColumnNearX(&*row, x, bound);
 	cur.par(row->par());
 	cur.pos(row->pos() + column);
 	cur.x(x);
 	cur.y(y + row->baseline());
-	cur.row(row);
+	cur.row(&*row);
 
 	if (beforeFullRowInset(*row, cur)) {
 		pos_type last = row->lastPrintablePos();
@@ -2042,7 +2044,7 @@ void LyXText::setCursorFromCoordinates(LyXCursor & cur,
 	} else {
 		cur.iy(cur.y());
 		cur.ix(cur.x());
-		cur.irow(row);
+		cur.irow(&*row);
 	}
 	cur.boundary(bound);
 }

@@ -95,14 +95,14 @@ void LyXText::top_y(int newy)
 	lyxerr[Debug::GUI] << "setting top y = " << newy << endl;
 
 	int y = newy;
-	Row * row = getRowNearY(y);
+	RowList::iterator rit = getRowNearY(y);
 
-	if (row == anchor_row_ && anchor_row_offset_ == newy - y) {
+	if (rit == anchor_row_ && anchor_row_offset_ == newy - y) {
 		lyxerr[Debug::GUI] << "top_y to same value, skipping update" << endl;
 		return;
 	}
 
-	anchor_row_ = row;
+	anchor_row_ = &*rit;
 	anchor_row_offset_ = newy - y;
 	lyxerr[Debug::GUI] << "changing reference to row: " << anchor_row_
 	       << " offset: " << anchor_row_offset_ << endl;
@@ -152,10 +152,12 @@ int LyXText::workWidth(Inset * inset) const
 		return workWidth() - leftMargin(&dummyrow);
 	} else {
 		int dummy_y;
-		Row * row = getRow(par, pos, dummy_y);
-		Row * frow = row;
-		while (frow->previous() && frow->par() == frow->previous()->par())
-			frow = frow->previous();
+		RowList::iterator row = getRow(par, pos, dummy_y);
+		RowList::iterator frow = row;
+		RowList::iterator beg = rows().begin();
+
+		while (frow != beg && frow->par() == boost::prior(frow)->par())
+			--frow;
 
 		// FIXME: I don't understand this code - jbl
 
@@ -163,7 +165,7 @@ int LyXText::workWidth(Inset * inset) const
 		while (!frow->isParEnd()) {
 			if ((frow != row) && (maxw < frow->width()))
 				maxw = frow->width();
-			frow = frow->next();
+			++frow;
 		}
 		if (maxw)
 			return maxw;
@@ -2770,10 +2772,11 @@ void LyXText::backspace()
 
 
 // returns pointer to a specified row
-Row * LyXText::getRow(Paragraph * par, pos_type pos, int & y) const
+RowList::iterator
+LyXText::getRow(Paragraph * par, pos_type pos, int & y) const
 {
 	if (rows().empty())
-		return 0;
+		return rows().end();
 
 	y = 0;
 
@@ -2794,11 +2797,11 @@ Row * LyXText::getRow(Paragraph * par, pos_type pos, int & y) const
 		++rit;
 	}
 
-	return &*rit;
+	return rit;
 }
 
 
-Row * LyXText::getRowNearY(int & y) const
+RowList::iterator LyXText::getRowNearY(int & y) const
 {
 	// If possible we should optimize this method. (Lgb)
 	int tmpy = 0;
@@ -2806,7 +2809,7 @@ Row * LyXText::getRowNearY(int & y) const
 	RowList::iterator rit = rows().begin();
 	RowList::iterator end = rows().end();
 
-	while (boost::next(rit) != end && tmpy + rit->height() <= y) {
+	while (rit != end && boost::next(rit) != end && tmpy + rit->height() <= y) {
 		tmpy += rit->height();
 		++rit;
 	}
@@ -2815,7 +2818,7 @@ Row * LyXText::getRowNearY(int & y) const
 
 	//lyxerr << "returned y = " << y << endl;
 
-	return &*rit;
+	return rit;
 }
 
 

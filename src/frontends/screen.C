@@ -413,18 +413,20 @@ void LyXScreen::drawFromTo(LyXText * text, BufferView * bv,
 	int y_text = text->top_y() + y1;
 
 	// get the first needed row
-	Row * row = text->getRowNearY(y_text);
+	RowList::iterator row = text->getRowNearY(y_text);
+	RowList::iterator end = text->rows().end();
+
 	// y_text is now the real beginning of the row
 
 	int y = y_text - text->top_y();
 	// y1 is now the real beginning of row on the screen
 
 
-	while (row != 0 && y < y2) {
+	while (row != end && y < y2) {
 		RowPainter rp(*bv, *text, *row);
 		rp.paint(y + yo, xo, y + text->top_y());
 		y += row->height();
-		row = row->next();
+		++row;
 	}
 
 	// maybe we have to clear the screen at the bottom

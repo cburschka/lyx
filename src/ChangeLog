@@ -1,5 +1,16 @@
 2003-03-30  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
+	* text3.C (dispatch): adjust
+
+	* text2.C (checkParagraph): adjust
+	(setCursor): adjust
+	(setCursorFromCoordinates): adjust
+
+	* text.C (top_y): adjust
+	(workWidth): adjust
+	(getRow): make it return a RowList::iterator, adjust
+	(getRowNearY): make it return a RowList::iterator, adjust
+
 	* text2.C (init): adjust
 	(insertRow): remove function
 	(insertParagraph): adjust
