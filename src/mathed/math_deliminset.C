@@ -4,7 +4,6 @@
 
 #include "math_deliminset.h"
 #include "math_parser.h"
-#include "Painter.h"
 #include "mathed/support.h"
 #include "support/LOstream.h"
 
