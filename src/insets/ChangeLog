@@ -1,3 +1,13 @@
+2004-03-31  Angus Leeming  <leeming@lyx.org>
+
+	* insetcollapsable.[Ch] (getOutOfInset): new function which pushes
+	the cursor out of an inset.
+
+	* insetbranch.C (priv_dispatch):
+	* insetcollapsable.C (priv_dispatch): in the LFUN_INSET_TOGGLE code,
+	use getOutOfInset to push the cursor out of the inset when
+	collapsing it.
+
 2004-03-30  Angus Leeming  <leeming@lyx.org>
 
 	* insetbase.[Ch] (translate): new static member function, returns

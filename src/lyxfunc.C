@@ -1270,12 +1270,8 @@ void LyXFunc::dispatch(FuncRequest const & cmd, bool verbose)
 			InsetIterator const end = inset_iterator_end(inset);
 			for (; it != end; ++it) {
 				if (inset_code == InsetBase::NO_CODE
-				    || inset_code == it->lyxCode()) {
+				    || inset_code == it->lyxCode())
 					it->dispatch(cur, fr);
-					if (&cur.inset() == &*it
-					    && cur.disp_.dispatched())
-						cur.pop();
-				}
 			}
 			break;
 		}

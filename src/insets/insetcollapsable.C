@@ -39,6 +39,17 @@ using std::min;
 using std::ostream;
 
 
+void getOutOfInset(LCursor & cur, InsetBase const & in)
+{
+	for (unsigned int i = 0; i != cur.size(); ++i) {
+		if (&cur[i].inset() == &in) {
+			cur.resize(i);
+			return;
+		}
+	}
+}
+
+
 InsetCollapsable::InsetCollapsable(BufferParams const & bp,
 	CollapseStatus status)
 	: InsetText(bp), label("Label"), status_(status), openinlined_(false)
@@ -302,13 +313,15 @@ void InsetCollapsable::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 	case LFUN_INSET_TOGGLE:
 		if (cmd.argument == "open")
 			setStatus(Open);
-		else if (cmd.argument == "close")
+		else if (cmd.argument == "close") {
 			setStatus(Collapsed);
-		else if (cmd.argument == "toggle"
-			 || cmd.argument.empty()) {
-			if (isOpen())
+			getOutOfInset(cur, *this);
+		} else if (cmd.argument == "toggle"
+			   || cmd.argument.empty()) {
+			if (isOpen()) {
 				setStatus(Collapsed);
-			else
+				getOutOfInset(cur, *this);
+			} else
 				setStatus(Open);
 		}
 		cur.dispatched();

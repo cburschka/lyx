@@ -147,12 +147,13 @@ void InsetBranch::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 
 		if (cmd.argument == "open")
 			setStatus(Open);
-		else if (cmd.argument == "close")
+		else if (cmd.argument == "close") {
 			setStatus(Collapsed);
+			getOutOfInset(cur, *this);
 
 		// The branch inset specialises its behaviour on "toggle".
-		else if (cmd.argument == "toggle"
-			 || cmd.argument.empty()) {
+		} else if (cmd.argument == "toggle"
+			   || cmd.argument.empty()) {
 			BranchList const & branchlist =
 				cur.bv().buffer()->params().branchlist();
 			if (isBranchSelected(branchlist)) {
@@ -161,9 +162,10 @@ void InsetBranch::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 				else
 					cur.undispatched();
 			} else {
-				if (status() != Collapsed)
+				if (status() != Collapsed) {
 					setStatus(Collapsed);
-				else
+					getOutOfInset(cur, *this);
+				} else
 					cur.undispatched();
 			}
 		}
