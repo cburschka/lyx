@@ -232,6 +232,10 @@ test $ps_to_pdf_command = "ps2pdf" && ps_to_pdf_command="ps2pdf \$\$i"
 SEARCH_PROG([for a DVI to PS converter],dvi_to_ps_command,dvips)
 test $dvi_to_ps_command = "dvips" && dvi_to_ps_command="dvips -o \$\$o \$\$i"
 
+# Search for a program to convert dvi to pdf
+SEARCH_PROG([for a DVI to PDF converter],dvi_to_pdf_command,dvipdfm)
+test $dvi_to_pdf_command = "dvipdfm" && dvi_to_pdf_command="dvipdfm \$\$i"
+
 # Search a *roff program (used to translate tables in ASCII export)
 SEARCH_PROG([for a *roff formatter],ROFF,groff nroff)
 ascii_roff_command=$ROFF
@@ -407,6 +411,7 @@ cat >lyxrc.defaults <<EOF
 \\Format literate nw	NoWeb		N
 \\Format pdf	  pdf	PDF		P
 \\Format pdf2	  pdf  "PDF (pdflatex)"	F
+\\Format pdf3	  pdf  "PDF (dvipdfm)"	m
 \\Format png	  png	PNG		""
 \\Format ps	  ps	Postscript	t
 \\Format program  ""	Program		""
@@ -417,6 +422,7 @@ cat >lyxrc.defaults <<EOF
 \\converter latex pdf2 "$PDFLATEX \$\$i" "latex"
 \\converter latex html "$latex_to_html_command" "originaldir,needaux"
 \\converter literate latex "$literate_to_tex_command" ""
+\\converter dvi pdf3 "$dvi_to_pdf_command" ""
 \\converter dvi ps "$dvi_to_ps_command" ""
 \\converter ps pdf "$ps_to_pdf_command" ""
 \\converter ps fax "$fax_command" ""

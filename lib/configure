@@ -666,6 +666,43 @@ fi
 
 test $dvi_to_ps_command = "dvips" && dvi_to_ps_command="dvips -o \$\$o \$\$i"
 
+# Search for a program to convert dvi to pdf
+echo $ac_n "checking for a DVI to PDF converter""... $ac_c"
+echo "$ac_t""(dvipdfm)"
+dvi_to_pdf_command=
+for ac_prog in dvipdfm
+do
+# Extract the first word of "$ac_prog", so it can be a program name with args.
+set dummy $ac_prog ; ac_word=$2
+if test -n "$ac_word"; then
+  echo $ac_n "+checking for \"$ac_word\"""... $ac_c"
+  IFS="${IFS= 	}"; ac_save_ifs="$IFS"; IFS=":"
+  for ac_dir in $PATH; do
+    test -z "$ac_dir" && ac_dir=.
+    if test -x $ac_dir/$ac_word; then
+      dvi_to_pdf_command="$ac_prog"
+      break
+    fi
+  done
+  IFS="$ac_save_ifs"
+
+  if test -n "$dvi_to_pdf_command"; then
+    ac_result=yes
+  else
+    ac_result=no
+  fi
+  
+  echo "$ac_t""$ac_result"
+  test -n "$dvi_to_pdf_command" && break
+fi
+done
+
+if test -z "$dvi_to_pdf_command" ; then
+  dvi_to_pdf_command=none
+fi
+
+test $dvi_to_pdf_command = "dvipdfm" && dvi_to_pdf_command="dvipdfm \$\$i"
+
 # Search a *roff program (used to translate tables in ASCII export)
 echo $ac_n "checking for a *roff formatter""... $ac_c"
 echo "$ac_t""(groff nroff)"
@@ -1106,6 +1143,7 @@ cat >lyxrc.defaults <<EOF
 \\Format literate nw	NoWeb		N
 \\Format pdf	  pdf	PDF		P
 \\Format pdf2	  pdf  "PDF (pdflatex)"	F
+\\Format pdf3	  pdf  "PDF (dvipdfm)"	m
 \\Format png	  png	PNG		""
 \\Format ps	  ps	Postscript	t
 \\Format program  ""	Program		""
@@ -1116,6 +1154,7 @@ cat >lyxrc.defaults <<EOF
 \\converter latex pdf2 "$PDFLATEX \$\$i" "latex"
 \\converter latex html "$latex_to_html_command" "originaldir,needaux"
 \\converter literate latex "$literate_to_tex_command" ""
+\\converter dvi pdf3 "$dvi_to_pdf_command" ""
 \\converter dvi ps "$dvi_to_ps_command" ""
 \\converter ps pdf "$ps_to_pdf_command" ""
 \\converter ps fax "$fax_command" ""
