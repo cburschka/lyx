@@ -2627,7 +2627,9 @@ void Buffer::makeLinuxDocFile(string const & fname, bool nice, bool body_only)
 		ofs << "<!doctype linuxdoc system";
 
 		string preamble = params.preamble;
-		preamble += features.getIncludedFiles(fname);
+		const string name = nice ? ChangeExtension(filename_, ".sgml")
+			 : fname;
+		preamble += features.getIncludedFiles(name);
 		preamble += features.getLyXSGMLEntities();
 
 		if (!preamble.empty()) {
@@ -3066,7 +3068,9 @@ void Buffer::makeDocBookFile(string const & fname, bool nice, bool only_body)
 		    << "  PUBLIC \"-//OASIS//DTD DocBook V4.1//EN\"";
 
 		string preamble = params.preamble;
-		preamble += features.getIncludedFiles(fname);
+		const string name = nice ? ChangeExtension(filename_, ".sgml")
+			 : fname;
+		preamble += features.getIncludedFiles(name);
 		preamble += features.getLyXSGMLEntities();
 
 		if (!preamble.empty()) {

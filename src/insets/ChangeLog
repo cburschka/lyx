@@ -1,3 +1,9 @@
+2002-03-05  José Abílio Oliveira Matos  <jamatos@novalis.fc.up.pt>
+
+	* insetnote.h (linuxdoc, docbook): add empty methods.
+	* insetinclude.C (validate): fix a case where buffer->niceFile was used
+	before being initialized.
+
 2002-03-05  Juergen Vigna  <jug@sad.it>
 
 	* insettext.C (insetButtonPress): don't call exit on a InsetButtonPress

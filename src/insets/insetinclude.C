@@ -407,9 +407,12 @@ void InsetInclude::validate(LaTeXFeatures & features) const
 	// to be loaded:
 	if (loadIfNeeded()) {
 		// a file got loaded
-		Buffer const * const tmp = bufferlist.getBuffer(getFileName());
-		if (tmp)
+		Buffer * const tmp = bufferlist.getBuffer(getFileName());
+		if (tmp) {
+			if (b)
+				tmp->niceFile = b->niceFile;
 			tmp->validate(features);
+		}
 	}
 }
 

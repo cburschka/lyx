@@ -12,6 +12,7 @@ Columns			1
 Sides			1
 SecNumDepth		3
 TocDepth		3
+DefaultStyle		Standard
 
 # This is just to show how to declare the default font.
 # The defaults are exactly those shown here.

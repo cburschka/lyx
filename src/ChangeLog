@@ -1,3 +1,8 @@
+2002-03-05  José Abílio Oliveira Matos  <jamatos@novalis.fc.up.pt>
+
+	* buffer.C (makeLinuxDocFile, makeDocBookFile): take in account the
+	final location of file, for the included files, and graphics.
+
 2002-03-05  Juergen Vigna  <jug@sad.it>
 
 	* CutAndPaste.C (pasteSelection): fix the depth level on paste.

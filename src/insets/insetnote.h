@@ -41,6 +41,12 @@ public:
 	int latex(Buffer const *, std::ostream &, bool, bool) const
 		{ return 0; }
 	///
+	int linuxdoc(Buffer const *, std::ostream &) const
+		{ return 0; }
+	///
+	int docbook(Buffer const *, std::ostream &) const
+		{ return 0; }
+	///
 	void validate(LaTeXFeatures &) const {}
 private:
 	/// used by the constructors
