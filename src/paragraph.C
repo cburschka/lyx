@@ -245,7 +245,7 @@ void LyXParagraph::writeFile(Buffer const * buf, ostream & os,
 		os << "\n\\end_float ";
 		footflag = LyXParagraph::NO_FOOTNOTE;
 	}
-
+#endif
 #ifndef NEW_TABULAR
 	// It might be a table.
 	if (table){
@@ -329,7 +329,6 @@ void LyXParagraph::writeFile(Buffer const * buf, ostream & os,
 			break;
 		}
 	}
-#endif
 	
 	// now write the next paragraph
 	if (next)
