@@ -1,3 +1,11 @@
+
+2004-03-31  Alfredo Braunstein  <abraunst@lyx.org>
+
+	* BufferView.C (setCursor, putSelectionAt): call edit to open the
+	insets where we are putting the cursor.
+	* ControlSpellchecker.C (isLetter, nextWord): check for inTextEd,
+	use forwardPos.
+
 2004-03-31  Angus Leeming  <leeming@lyx.org>
 
 	* lfuns.h:

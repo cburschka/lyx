@@ -294,7 +294,9 @@ void InsetText::edit(LCursor & cur, bool left)
 	cur.clearSelection();
 	finishUndo();
 	sanitizeEmptyText(cur.bv());
-	updateLocal(cur);
+#warning can someone check if/when this is needed?
+//Andre?
+//	updateLocal(cur);
 }
 
 

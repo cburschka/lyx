@@ -148,6 +148,8 @@ public:
 	ParagraphList const & paragraphs() const;
 	///
 	bool insetAllowed(Code) const { return true; }
+	///
+	bool allowSpellCheck() const { return true; }
 	
 protected:
 	///

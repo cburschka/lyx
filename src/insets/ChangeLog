@@ -1,3 +1,8 @@
+2004-03-31  Alfredo Braunstein  <abraunst@lyx.org>
+
+	* insettext.C (edit): comment the call to updateLocal (dangling now)
+	* insettext.h: add allowSpellCheck() returning true
+
 2004-03-31  Angus Leeming  <angus@localhost.localdomain>
 
 	* insetcollapsable.[Ch]: (leaveInset): renaming of getOutOfInset.

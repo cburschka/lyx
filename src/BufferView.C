@@ -367,8 +367,11 @@ LyXText * BufferView::text() const
 
 void BufferView::setCursor(ParIterator const & par, lyx::pos_type pos)
 {
-	LCursor & cur = cursor();
-	cur.setCursor(makeDocumentIterator(par, pos), false);
+	int const last = par.size();
+	for (int i = 0; i < last; ++i)
+		par[i].inset().edit(cursor(), true);
+
+	cursor().setCursor(makeDocumentIterator(par, pos), false);
 }
 
 
@@ -393,24 +396,24 @@ void BufferView::putSelectionAt(DocumentIterator const & cur,
 
 	cursor().clearSelection();
 
-	LyXText & text = *par.text();
+	LyXText & text = *cur[0].text();
 	setCursor(par, cur.pos());
 	
 	// hack for the chicken and egg problem
 	top_y(text.getPar(par.outerPar()).y);
 
 	update();
-	text.setCursor(cursor(), cur.par(), cur.pos());
+	//text.setCursor(cursor(), cur.par(), cur.pos());
 	cursor().updatePos();
 
 	if (length) {
-		setSelectionRange(cursor(), length);
-		cursor().setSelection();
 		if (backwards) {
+			cursor().setSelection(cursor(), -length);
 			DocumentIterator const it = cursor();
-			cursor().setCursor(cursor().anchor_, false);
+			cursor().setCursor(cursor().anchor_, true);
 			cursor().anchor_ = it;
-		}
+		} else
+			cursor().setSelection(cursor(), length);
 	}
 
 	fitCursor();

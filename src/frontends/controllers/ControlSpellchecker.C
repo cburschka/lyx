@@ -151,10 +151,11 @@ namespace {
 
 bool isLetter(DocumentIterator const & cur)
 {
-	return !cur.empty()
+	return cur.inTexted()
+		&& cur.inset().allowSpellCheck()
+		&& cur.pos() != cur.lastpos()
 		&& cur.paragraph().isLetter(cur.pos())
 		&& !isDeletedText(cur.paragraph(), cur.pos());
-		//&& (!cur.nextInset() || cur.nextInset()->allowSpellCheck());
 }
 
 
@@ -162,7 +163,7 @@ WordLangTuple nextWord(DocumentIterator & cur, ptrdiff_t & progress,
 	BufferParams & bp)
 {
 	// skip until we have real text (will jump paragraphs)
-	for (; cur.size() && !isLetter(cur); cur.forwardChar());
+	for (; cur.size() && !isLetter(cur); cur.forwardPos());
 		++progress;
 
 	// hit end
@@ -174,7 +175,7 @@ WordLangTuple nextWord(DocumentIterator & cur, ptrdiff_t & progress,
 	string str;
 	// and find the end of the word (insets like optional hyphens
 	// and ligature break are part of a word)
-	for (; cur.size() && isLetter(cur); cur.forwardChar(), ++progress) {
+	for (; cur && isLetter(cur); cur.forwardPos(), ++progress) {
 		if (!cur.paragraph().isInset(cur.pos()))
 			str += cur.paragraph().getChar(cur.pos());
 	}
@@ -203,10 +204,10 @@ void ControlSpellchecker::check()
 	for (start = 0; it != cur; it.forwardPos())
 		++start; 	
 
-	for (total = start; it.size(); it.forwardPos())
+	for (total = start; it; it.forwardPos())
 		++total; 	
 
-	for (; cur.size() && isLetter(cur); cur.forwardPos())
+	for (; cur && isLetter(cur); cur.forwardPos())
 		++start;
 
 	while (res == SpellBase::OK || res == SpellBase::IGNORE) {
