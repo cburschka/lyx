@@ -291,11 +291,9 @@ void LyXText::setLayout(string const & layout)
 		bv()->owner()->dispatch(FuncRequest(LFUN_ENDSEL));
 		bv()->owner()->dispatch(FuncRequest(LFUN_CUT));
 		InsetBase * inset = new InsetEnvironment(params, layout);
-		if (bv()->insertInset(inset)) {
-			//inset->edit(bv());
-			//bv()->owner()->dispatch(FuncRequest(LFUN_PASTE));
-		} else
-			delete inset;
+		bv()->insertInset(inset);
+		//inset->edit(bv());
+		//bv()->owner()->dispatch(FuncRequest(LFUN_PASTE));
 		return;
 	}
 

@@ -1,4 +1,12 @@
 
+2004-02-04  André Pönitz  <poenitz@gmx.net>
+
+	* BufferView.[Ch] (insertInset):
+	* BufferView_pimpl.[Ch] (insertInset): remove unneeded return value 
+
+	* text2.C:
+	* text3.C: adjust
+
 2004-02-03  Alfredo Braunstein  <abraunst@lyx.org>
 
 	* BufferView_pimpl.C (dispatch): remove call to LCursor::dispatch 

@@ -1077,20 +1077,10 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & cmd)
 		}
 		break;
 
-	case LFUN_INSET_INSERT: {
-		// Same as above.
-		BOOST_ASSERT(false);
-		InsetBase * inset = createInset(bv_, cmd);
-		if (!inset || !insertInset(inset))
-			delete inset;
-		break;
-	}
-
 	case LFUN_FLOAT_LIST:
 		if (tclass.floats().typeExist(cmd.argument)) {
 			InsetBase * inset = new InsetFloatList(cmd.argument);
-			if (!insertInset(inset, tclass.defaultLayoutName()))
-				delete inset;
+			bv_->insertInset(inset, tclass.defaultLayoutName());
 		} else {
 			lyxerr << "Non-existent float type: "
 			       << cmd.argument << endl;
@@ -1214,34 +1204,6 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & cmd)
 		return false;
 	}
 
-	return true;
-}
-
-
-bool BufferView::Pimpl::insertInset(InsetBase * inset, string const & lout)
-{
-	// not quite sure if we want this...
-	bv_->text()->recUndo(bv_->text()->cursor().par());
-	freezeUndo();
-
-	bv_->cursor().clearSelection();
-	if (!lout.empty()) {
-		bv_->text()->breakParagraph(bv_->buffer()->paragraphs());
-
-		if (!bv_->text()->cursorPar()->empty()) {
-			bv_->text()->cursorLeft(bv_);
-			bv_->text()->breakParagraph(bv_->buffer()->paragraphs());
-		}
-
-		string lres = lout;
-		LyXTextClass const & tclass = buffer_->params().getLyXTextClass();
-		bool hasLayout = tclass.hasLayout(lres);
-
-		bv_->text()->setLayout(hasLayout ? lres : tclass.defaultLayoutName());
-		bv_->text()->setParagraph(Spacing(), LYX_ALIGN_LAYOUT, string(), 0);
-	}
-	bv_->cursor().innerText()->insertInset(inset);
-	unFreezeUndo();
 	return true;
 }
 

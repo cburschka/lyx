@@ -140,11 +140,9 @@ public:
 	/// set the cursor based on the given TeX source row
 	void setCursorFromRow(int row);
 
-	/**
-	 * Insert an inset into the buffer.
-	 * Place it in a layout of lout,
-	 */
-	bool insertInset(InsetBase * inset, std::string const & lout = std::string());
+	/// Insert an inset into the buffer, in a layout of lout.
+	void insertInset(InsetBase * inset,
+		std::string const & lout = std::string());
 
 	/// Inserts a lyx file at cursor position. return false if it fails
 	bool insertLyXFile(std::string const & file);

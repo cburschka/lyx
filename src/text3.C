@@ -400,10 +400,8 @@ void specialChar(LyXText * text, BufferView * bv, InsetSpecialChar::Kind kind)
 	bv->update();
 	InsetSpecialChar * new_inset = new InsetSpecialChar(kind);
 	replaceSelection(text);
-	if (!bv->insertInset(new_inset))
-		delete new_inset;
-	else
-		bv->update();
+	bv->insertInset(new_inset);
+	bv->update();
 }
 
 
@@ -419,14 +417,11 @@ void doInsertInset(BufferView * bv, FuncRequest const & cmd,
 		bv->owner()->dispatch(FuncRequest(LFUN_CUT));
 		gotsel = true;
 	}
-	if (bv->insertInset(inset)) {
-		if (edit)
-			inset->edit(bv->cursor(), true);
-		if (gotsel && pastesel)
-			bv->owner()->dispatch(FuncRequest(LFUN_PASTE));
-	} else {
-		delete inset;
-	}
+	bv->insertInset(inset);
+	if (edit)
+		inset->edit(bv->cursor(), true);
+	if (gotsel && pastesel)
+		bv->owner()->dispatch(FuncRequest(LFUN_PASTE));
 }
 
 } // anon namespace
@@ -867,8 +862,8 @@ DispatchResult LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 
 	case LFUN_INSET_INSERT: {
 		InsetBase * inset = createInset(bv, cmd);
-		if (inset && !bv->insertInset(inset))
-			delete inset;
+		if (inset)
+			bv->insertInset(inset);
 		break;
 	}
 
@@ -1112,8 +1107,9 @@ DispatchResult LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 
 		BufferParams const & bufparams = bv->buffer()->params();
 		if (style->pass_thru ||
-		    pit->getFontSettings(bufparams,pos).language()->lang() == "hebrew" ||
-		    !bv->insertInset(new InsetQuotes(c, bufparams)))
+		    pit->getFontSettings(bufparams,pos).language()->lang() == "hebrew")
+		  bv->insertInset(new InsetQuotes(c, bufparams));
+		else
 			bv->owner()->dispatch(FuncRequest(LFUN_SELFINSERT, "\""));
 		break;
 	}

@@ -101,8 +101,6 @@ struct BufferView::Pimpl : public boost::signals::trackable {
 	void switchKeyMap();
 	///
 	void center();
-	///
-	bool insertInset(InsetBase * inset, std::string const & lout = std::string());
 	/// a function should be executed from the workarea
 	bool workAreaDispatch(FuncRequest const & ev);
 	/// a function should be executed

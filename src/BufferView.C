@@ -18,6 +18,7 @@
 
 #include "buffer.h"
 #include "bufferlist.h"
+#include "bufferparams.h"
 #include "BufferView_pimpl.h"
 #include "debug.h"
 #include "funcrequest.h"
@@ -26,6 +27,7 @@
 #include "language.h"
 #include "lyxlayout.h"
 #include "lyxtext.h"
+#include "lyxtextclass.h"
 #include "paragraph.h"
 #include "paragraph_funcs.h"
 #include "PosIterator.h"
@@ -301,9 +303,30 @@ void BufferView::setCursorFromRow(int row)
 }
 
 
-bool BufferView::insertInset(InsetBase * inset, string const & lout)
+void BufferView::insertInset(InsetBase * inset, string const & lout)
 {
-	return pimpl_->insertInset(inset, lout);
+	// not quite sure if we want this...
+	text()->recUndo(text()->cursor().par());
+	freezeUndo();
+
+	cursor().clearSelection();
+	if (!lout.empty()) {
+		text()->breakParagraph(buffer()->paragraphs());
+
+		if (!text()->cursorPar()->empty()) {
+			text()->cursorLeft(true);
+			text()->breakParagraph(buffer()->paragraphs());
+		}
+
+		string lres = lout;
+		LyXTextClass const & tclass = buffer()->params().getLyXTextClass();
+		bool hasLayout = tclass.hasLayout(lres);
+
+		text()->setLayout(hasLayout ? lres : tclass.defaultLayoutName());
+		text()->setParagraph(Spacing(), LYX_ALIGN_LAYOUT, string(), 0);
+	}
+	cursor().innerText()->insertInset(inset);
+	unFreezeUndo();
 }
 
 

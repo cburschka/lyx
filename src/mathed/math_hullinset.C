@@ -1328,10 +1328,7 @@ namespace {
 
 bool openNewInset(LCursor & cur, InsetBase * inset)
 {
-	if (!cur.bv().insertInset(inset)) {
-		delete inset;
-		return false;
-	}
+	cur.bv().insertInset(inset);
 	inset->edit(cur, true);
 	return true;
 }
