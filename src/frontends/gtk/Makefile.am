@@ -11,7 +11,7 @@ INCLUDES = -I$(top_srcdir)/images -I$(top_srcdir)/src \
 	-I$(top_srcdir)/src/frontends/xforms \
 	$(BOOST_INCLUDES) @GTK_FRONTEND_CFLAGS@
 
-libgtk_la_LIBADD = xforms.lo @GTK_FRONTEND_LIBS@ @XFORMS_LIBS@
+libgtk_la_LIBADD = $(xforms_objects) ../xforms/forms/*.lo @GTK_FRONTEND_LIBS@ @XFORMS_LIBS@
 
 # Alphabetical order please.  It makes it easier to figure out what's missing.
 libgtk_la_SOURCES = \
@@ -137,6 +137,3 @@ xforms_objects = \
 #	../xforms/FormUrl.lo
 #	../xforms/FormTabularCreate.lo
 #	../xforms/FormMathsPanel.lo
-
-xforms.lo: $(xforms_objects) ../xforms/forms/*.lo
-	$(CXXLINK) $(xforms_objects) ../xforms/forms/*.lo

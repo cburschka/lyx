@@ -1,3 +1,8 @@
+2004-05-26  Lars Gullik Bjonnes  <larsbj@gullik.net>
+
+	* Makefile.am: dont create a separate xforms.lo use he files
+	directly when building libgtk instead.
+
 2004-05-19  Angus Leeming  <leeming@lyx.org>
 
 	* Most files: wrap code up inside namespace lyx::frontend.
