@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: lyx-1.1.6fix1\n"
-"POT-Creation-Date: 2003-02-17 17:39+0100\n"
+"POT-Creation-Date: 2003-03-07 16:45+0100\n"
 "PO-Revision-Date: 2002-12-19 19:00+0100\n"
 "Last-Translator: Iñaki Larrañaga<>\n"
 "Language-Team: Euskara <linux-eu@chanae.alphanet.ch>\n"
@@ -289,7 +289,7 @@ msgid "@2->"
 msgstr ""
 
 #: ../src/frontends/xforms/forms/form_citation.fd:188
-#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:205
+#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:209
 #: src/frontends/qt2/QSearch.C:34
 msgid "Search"
 msgstr "Aurkitu"
@@ -789,7 +789,7 @@ msgstr "Ikuspegia"
 
 #: ../src/frontends/xforms/forms/form_graphics.fd:230
 #, fuzzy
-msgid "Draft mode|#a"
+msgid "Draft mode|#o"
 msgstr "Matematika Era"
 
 #: ../src/frontends/xforms/forms/form_graphics.fd:248
@@ -2551,17 +2551,17 @@ msgstr "Copyright"
 
 #: ../src/frontends/qt2/ui/QAboutDialogBase.ui:213
 #: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:204
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:508
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:516
 #: ../src/frontends/qt2/ui/QDelimiterDialogBase.ui:414
 #: ../src/frontends/qt2/ui/QERTDialogBase.ui:162
 #: ../src/frontends/qt2/ui/QErrorDialogBase.ui:92
 #: ../src/frontends/qt2/ui/QExternalDialogBase.ui:141
-#: ../src/frontends/qt2/ui/QFloatDialogBase.ui:310
+#: ../src/frontends/qt2/ui/QFloatDialogBase.ui:318
 #: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:371
 #: ../src/frontends/qt2/ui/QLogDialogBase.ui:107
 #: ../src/frontends/qt2/ui/QMathDialogBase.ui:733
-#: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:312
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:722
+#: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:320
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:742
 #: ../src/frontends/qt2/ui/QPreambleDialogBase.ui:149
 #: ../src/frontends/qt2/ui/QPrefsDialogBase.ui:133
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:308
@@ -2588,7 +2588,7 @@ msgid "&Dummy"
 msgstr "Laburpena"
 
 #: ../src/frontends/qt2/ui/QAskForTextDialog.ui:139
-#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:121
+#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:125
 #: src/frontends/qt2/Alert_pimpl.C:53
 msgid "&Cancel"
 msgstr "&Etsi"
@@ -2626,11 +2626,11 @@ msgstr "Egituraren izena era berdinean aukera zerrendatan agertuko da."
 #: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:486
 #: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:99
 #: ../src/frontends/qt2/ui/QExternalDialogBase.ui:111
-#: ../src/frontends/qt2/ui/QFloatDialogBase.ui:288
+#: ../src/frontends/qt2/ui/QFloatDialogBase.ui:292
 #: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:356
 #: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:250
-#: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:274
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:700
+#: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:278
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:708
 #: ../src/frontends/qt2/ui/QPreambleDialogBase.ui:111
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:293
 #: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:280
@@ -2706,7 +2706,7 @@ msgid "The BibTeX style"
 msgstr "TeX itxura txandatu"
 
 #: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:205
-#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:290
+#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:294
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:119
 #: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:90
 #: ../src/frontends/qt2/ui/QPrintDialogBase.ui:461
@@ -2720,20 +2720,20 @@ msgid "Choose a style file"
 msgstr "Eredua aukeratu"
 
 #. /
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:275
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:279
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:122
 #: ../src/frontends/qt2/ui/QIndexDialogBase.ui:143
 #: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:120 src/LyXAction.C:152
-#: src/frontends/controllers/ButtonController.h:72 src/lyxfunc.C:942
+#: src/frontends/controllers/ButtonController.h:72 src/lyxfunc.C:945
 msgid "Cancel"
 msgstr "Etsi"
 
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:288
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:296
 #, fuzzy
 msgid "Add bibliography to &TOC"
 msgstr "Bibliografi elementua"
 
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:292
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:300
 #, fuzzy
 msgid "Add bibliography to the table of contents"
 msgstr "Aurkibide Orokorra Ikusi"
@@ -2847,14 +2847,14 @@ msgstr "&Eragin"
 msgid "Apply each change automatically"
 msgstr ""
 
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:497
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:501
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:111
-#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:110
+#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:114
 #: ../src/frontends/qt2/ui/QExternalDialogBase.ui:126
-#: ../src/frontends/qt2/ui/QFloatDialogBase.ui:299
+#: ../src/frontends/qt2/ui/QFloatDialogBase.ui:307
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:1164
-#: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:293
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:711
+#: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:297
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:727
 #: ../src/frontends/qt2/ui/QPreambleDialogBase.ui:130
 #: ../src/frontends/qt2/ui/QPrefsDialogBase.ui:118
 #: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:109
@@ -2878,40 +2878,40 @@ msgstr "Aipamena"
 msgid "&Restore"
 msgstr "&Berrezarri"
 
-#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:142
+#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:146
 msgid "Search the available citations"
 msgstr ""
 
-#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:153
+#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:157
 #, fuzzy
 msgid "Regular E&xpression"
 msgstr "Expresio Erregularrak Erabili"
 
-#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:157
+#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:161
 #, fuzzy
 msgid "Interpret search entry as a regular expression"
 msgstr "Aipamena sartu: Giltza(k) edo expresio erregularra idatzi"
 
-#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:168
+#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:172
 #, fuzzy
 msgid "&Case sensitive"
 msgstr "Larri/Xehea|#M"
 
-#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:172
+#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:176
 msgid "Make the search case-sensitive"
 msgstr ""
 
-#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:183
+#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:187
 #, fuzzy
 msgid "&Next"
 msgstr "testua"
 
-#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:194
+#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:198
 msgid "&Previous"
 msgstr ""
 
-#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:213
-#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:362
+#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:217
+#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:366
 #: ../src/frontends/qt2/ui/QPrefConvertersModule.ui:83
 #: ../src/frontends/qt2/ui/QPrefFileformatsModule.ui:94
 #: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:176
@@ -2919,102 +2919,102 @@ msgstr ""
 msgid "New Item"
 msgstr ""
 
-#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:222
+#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:226
 #, fuzzy
 msgid "Available citation keys"
 msgstr "Tekla Eskuragarriak"
 
-#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:263
+#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:267
 #, fuzzy
 msgid "Add the selected citation"
 msgstr "_Aipamen berria sartu"
 
-#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:289
+#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:293
 msgid "Remove the selected citation"
 msgstr ""
 
-#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:315
+#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:319
 #, fuzzy
 msgid "Move the selected citation up"
 msgstr "Aipamena Sartu: Aipamena hautatu"
 
-#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:341
+#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:345
 msgid "Move the selected citation down"
 msgstr ""
 
-#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:354
+#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:358
 #, fuzzy
 msgid "Available"
 msgstr "Tekla Eskuragarriak"
 
-#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:375
+#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:379
 #, fuzzy
 msgid "Citations currently selected"
 msgstr "Orain hautatutako teklak"
 
-#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:386
+#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:390
 #, fuzzy
 msgid "Selected"
 msgstr "Hautatu"
 
-#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:418 src/lyxvc.C:131
+#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:422 src/lyxvc.C:131
 msgid "Info"
 msgstr "Info"
 
-#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:441
+#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:445
 #, fuzzy
 msgid "Citation entry"
 msgstr "Aipamen itxura|#t"
 
-#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:488
+#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:492
 #, fuzzy
 msgid "&Full author list"
 msgstr "Mugikorra:|#F"
 
-#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:492
+#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:496
 msgid "List all authors"
 msgstr ""
 
-#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:503
+#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:507
 msgid "Force &upper case"
 msgstr ""
 
-#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:507
+#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:511
 msgid "Force upper case in citation"
 msgstr ""
 
-#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:527
+#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:531
 #, fuzzy
 msgid "Text to place after citation"
 msgstr "Testua, aipamenaren ondoren kokatzeko"
 
-#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:538
+#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:542
 #, fuzzy
 msgid "Text after:"
 msgstr "Testu ondoren"
 
-#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:560
+#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:564
 #: src/frontends/qt2/QCitationDialog.C:55
 #: src/frontends/xforms/FormCitation.C:461
 #, fuzzy
 msgid "Not yet supported"
 msgstr "Matematika eran Berregin oraindik ez dabil"
 
-#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:564
+#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:568
 msgid "Text to place before citation"
 msgstr ""
 
-#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:579
+#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:583
 #, fuzzy
 msgid "Text before:"
 msgstr "Testu aurretik|#T"
 
-#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:597
+#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:601
 #, fuzzy
 msgid "Natbib citation style to use"
 msgstr "Aipamen itxura|#t"
 
-#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:608
+#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:612
 #, fuzzy
 msgid "Citation style:"
 msgstr "Aipamen itxura|#t"
@@ -3048,27 +3048,27 @@ msgstr "Sartu|S"
 msgid "Insert the delimiters"
 msgstr "Azken aurkibide elementua Sartu"
 
-#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:170
+#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:178
 #, fuzzy
 msgid "title here"
 msgstr "Izenburua"
 
-#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:266
+#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:274
 #, fuzzy
 msgid "Use Class Defaults"
 msgstr "Azken fitxategiak egiztatu|#e"
 
-#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:270
+#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:278
 #, fuzzy
 msgid "Reset default params of the current class"
 msgstr "idazki mota honetako jatorrizko balioentzat?"
 
-#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:288
+#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:296
 #, fuzzy
 msgid "Save as Document Defaults"
 msgstr "Aurkezpena Jatorrizkoa bezala Gorde|J"
 
-#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:292
+#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:300
 msgid "Save settings as LyX's default template"
 msgstr ""
 
@@ -3115,7 +3115,7 @@ msgid "LaTeX Error"
 msgstr "LaTeX-eko Akatsa"
 
 #: ../src/frontends/qt2/ui/QErrorDialogBase.ui:45
-#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:219
+#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:223
 #, fuzzy
 msgid "LaTeX error messages"
 msgstr "LaTeX-eko Akatsa"
@@ -3138,53 +3138,53 @@ msgstr "&Fitxategia"
 msgid "Filename"
 msgstr "Fitxategia:|#F"
 
-#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:180
+#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:184
 #, fuzzy
 msgid "&View Result"
 msgstr "Emaitza Ikusi|#I"
 
-#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:184
+#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:188
 #, fuzzy
 msgid "View the file"
 msgstr "Taulen Zerrenda Ikusi"
 
-#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:202
+#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:206
 #, fuzzy
 msgid "&Update Result"
 msgstr "Emaitza eguneratu|#g"
 
-#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:206
+#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:210
 msgid "Update the material"
 msgstr ""
 
-#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:230
-#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:249
+#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:234
+#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:253
 #, fuzzy
 msgid "Available templates"
 msgstr "Tekla Eskuragarriak"
 
-#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:241
+#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:245
 #, fuzzy
 msgid "&Template:"
 msgstr "Ereduak"
 
-#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:260
-#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:279
+#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:264
+#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:283
 #, fuzzy
 msgid "Parameters"
 msgstr "Agerbideak|#g"
 
-#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:271
+#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:275
 #, fuzzy
 msgid "&Parameters:"
 msgstr "Agerbideak|#g"
 
-#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:301
+#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:305
 #, fuzzy
 msgid "&Edit file"
 msgstr "Fitxategia argitatu|#a"
 
-#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:305
+#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:309
 #, fuzzy
 msgid "Edit the file externally"
 msgstr "Kanpo fitxategi multzoa"
@@ -3887,7 +3887,7 @@ msgstr "Lerrokaketa"
 
 #: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:183
 #, fuzzy
-msgid "No &indent"
+msgid "&Don't indent"
 msgstr "Oharra"
 
 #: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:196
@@ -4541,7 +4541,7 @@ msgstr "Beste hizkuntza erabili:|#B"
 
 #: ../src/frontends/qt2/ui/QPrefSpellcheckerModule.ui:132
 #, fuzzy
-msgid "Escape Cha&racters:"
+msgid "Escape cha&racters:"
 msgstr "Ihesbide ikurrak erabili|#e"
 
 #: ../src/frontends/qt2/ui/QPrefSpellcheckerModule.ui:175
@@ -5361,7 +5361,7 @@ msgstr "URL"
 
 #: ../src/frontends/qt2/ui/QURLDialogBase.ui:53
 #: ../src/frontends/qt2/ui/QURLDialogBase.ui:94 ../lib/layouts/amsdefs.inc:223
-#: src/frontends/qt2/QURL.C:33
+#: ../lib/layouts/scrlttr2.layout:217 src/frontends/qt2/QURL.C:33
 msgid "URL"
 msgstr "URL"
 
@@ -5412,13 +5412,13 @@ msgstr "Mugikorren Kokapena:|#M"
 
 #: ../lib/layouts/mwart.layout:25 ../lib/layouts/article.layout:20
 #: ../lib/layouts/db_stdsections.inc:11 ../lib/layouts/paper.layout:33
-#: ../lib/layouts/scrartcl.layout:17 ../lib/layouts/scrclass.inc:52
+#: ../lib/layouts/scrartcl.layout:19 ../lib/layouts/scrclass.inc:54
 #: ../lib/layouts/seminar.layout:26 ../lib/layouts/stdsections.inc:11
 msgid "Part"
 msgstr "Zatia"
 
 #: ../lib/layouts/mwart.layout:36 ../lib/layouts/article.layout:31
-#: ../lib/layouts/scrartcl.layout:29 ../lib/layouts/seminar.layout:37
+#: ../lib/layouts/scrartcl.layout:31 ../lib/layouts/seminar.layout:37
 #: ../lib/layouts/stdstarsections.inc:12
 msgid "Part*"
 msgstr "Zatia*"
@@ -5431,15 +5431,16 @@ msgstr "Zatia*"
 #: ../lib/layouts/cv.layout:14 ../lib/layouts/db_stdclass.inc:28
 #: ../lib/layouts/dtk.layout:30 ../lib/layouts/egs.layout:17
 #: ../lib/layouts/foils.layout:28 ../lib/layouts/hollywood.layout:350
-#: ../lib/layouts/kluwer.layout:34 ../lib/layouts/linuxdoc.layout:17
+#: ../lib/layouts/kluwer.layout:35 ../lib/layouts/linuxdoc.layout:17
 #: ../lib/layouts/llncs.layout:23 ../lib/layouts/ltugboat.layout:30
 #: ../lib/layouts/manpage.layout:17 ../lib/layouts/paper.layout:15
 #: ../lib/layouts/revtex.layout:24 ../lib/layouts/revtex4.layout:24
-#: ../lib/layouts/scrclass.inc:11 ../lib/layouts/scrlettr.layout:7
+#: ../lib/layouts/scrclass.inc:13 ../lib/layouts/scrlettr.layout:7
 #: ../lib/layouts/siamltex.layout:18 ../lib/layouts/slides.layout:72
 #: ../lib/layouts/stdclass.inc:27 ../lib/layouts/stdletter.inc:21
-#: ../lib/layouts/svjour.inc:26 ../lib/layouts/elsart.layout:44
-#: src/insets/insetref.C:118 src/mathed/ref_inset.C:127
+#: ../lib/layouts/svjour.inc:26 ../lib/layouts/scrlttr2.layout:7
+#: ../lib/layouts/elsart.layout:44 src/insets/insetref.C:118
+#: src/mathed/ref_inset.C:127
 msgid "Standard"
 msgstr "Arrunta"
 
@@ -5450,7 +5451,7 @@ msgstr "AzalkizunEredua"
 #: ../lib/layouts/IEEEtran.layout:82 ../lib/layouts/amsdefs.inc:27
 #: ../lib/layouts/foils.layout:301 ../lib/layouts/heb-article.layout:97
 #: ../lib/layouts/llncs.layout:404 ../lib/layouts/siamltex.layout:234
-#: ../lib/layouts/svjour.inc:470
+#: ../lib/layouts/svjour.inc:470 ../lib/layouts/ijmpd.layout:141
 msgid "Proof"
 msgstr "Saiakera"
 
@@ -5459,6 +5460,7 @@ msgstr "Saiakera"
 #: ../lib/layouts/foils.layout:232 ../lib/layouts/heb-article.layout:24
 #: ../lib/layouts/llncs.layout:440 ../lib/layouts/siamltex.layout:189
 #: ../lib/layouts/svjour.inc:506 ../lib/layouts/elsart.layout:257
+#: ../lib/layouts/ijmpd.layout:125
 msgid "Theorem"
 msgstr "Azalkizuna"
 
@@ -5581,14 +5583,14 @@ msgstr "Kutxa"
 #: ../lib/layouts/aastex.layout:141 ../lib/layouts/aguplus.inc:23
 #: ../lib/layouts/amsart.layout:40 ../lib/layouts/amsbook.layout:41
 #: ../lib/layouts/cv.layout:26 ../lib/layouts/db_stdsections.inc:25
-#: ../lib/layouts/egs.layout:29 ../lib/layouts/kluwer.layout:51
+#: ../lib/layouts/egs.layout:29 ../lib/layouts/kluwer.layout:55
 #: ../lib/layouts/latex8.layout:39 ../lib/layouts/linuxdoc.layout:68
 #: ../lib/layouts/llncs.layout:44 ../lib/layouts/ltugboat.layout:46
 #: ../lib/layouts/manpage.layout:41 ../lib/layouts/paper.layout:46
 #: ../lib/layouts/revtex.layout:42 ../lib/layouts/revtex4.layout:45
-#: ../lib/layouts/scrclass.inc:68 ../lib/layouts/siamltex.layout:38
+#: ../lib/layouts/scrclass.inc:70 ../lib/layouts/siamltex.layout:38
 #: ../lib/layouts/spie.layout:23 ../lib/layouts/stdsections.inc:63
-#: ../lib/layouts/svjour.inc:41
+#: ../lib/layouts/svjour.inc:41 ../lib/layouts/ijmpd.layout:86
 msgid "Section"
 msgstr "Atala"
 
@@ -5598,13 +5600,13 @@ msgstr "Atala"
 #: ../lib/layouts/aastex.layout:154 ../lib/layouts/aguplus.inc:35
 #: ../lib/layouts/amsart.layout:53 ../lib/layouts/amsbook.layout:54
 #: ../lib/layouts/cv.layout:49 ../lib/layouts/db_stdsections.inc:32
-#: ../lib/layouts/egs.layout:55 ../lib/layouts/kluwer.layout:60
+#: ../lib/layouts/egs.layout:55 ../lib/layouts/kluwer.layout:64
 #: ../lib/layouts/latex8.layout:46 ../lib/layouts/linuxdoc.layout:94
 #: ../lib/layouts/llncs.layout:57 ../lib/layouts/ltugboat.layout:70
 #: ../lib/layouts/paper.layout:54 ../lib/layouts/revtex.layout:55
-#: ../lib/layouts/revtex4.layout:58 ../lib/layouts/scrclass.inc:75
+#: ../lib/layouts/revtex4.layout:58 ../lib/layouts/scrclass.inc:77
 #: ../lib/layouts/siamltex.layout:56 ../lib/layouts/stdsections.inc:88
-#: ../lib/layouts/svjour.inc:51
+#: ../lib/layouts/svjour.inc:51 ../lib/layouts/ijmpd.layout:104
 msgid "Subsection"
 msgstr "Azpiatala"
 
@@ -5613,18 +5615,19 @@ msgstr "Azpiatala"
 #: ../lib/layouts/aapaper.layout:135 ../lib/layouts/aastex.layout:72
 #: ../lib/layouts/aastex.layout:167 ../lib/layouts/amsart.layout:62
 #: ../lib/layouts/amsbook.layout:63 ../lib/layouts/db_stdsections.inc:39
-#: ../lib/layouts/kluwer.layout:69 ../lib/layouts/linuxdoc.layout:121
+#: ../lib/layouts/kluwer.layout:73 ../lib/layouts/linuxdoc.layout:121
 #: ../lib/layouts/llncs.layout:66 ../lib/layouts/ltugboat.layout:93
 #: ../lib/layouts/paper.layout:62 ../lib/layouts/revtex.layout:64
-#: ../lib/layouts/revtex4.layout:67 ../lib/layouts/scrclass.inc:82
+#: ../lib/layouts/revtex4.layout:67 ../lib/layouts/scrclass.inc:84
 #: ../lib/layouts/siamltex.layout:62 ../lib/layouts/stdsections.inc:113
-#: ../lib/layouts/svjour.inc:60
+#: ../lib/layouts/svjour.inc:60 ../lib/layouts/ijmpd.layout:114
 msgid "Subsubsection"
 msgstr "Azpiazpiatala"
 
 #: ../lib/layouts/IEEEtran.layout:327 ../lib/layouts/aguplus.inc:29
 #: ../lib/layouts/egs.layout:686 ../lib/layouts/siamltex.layout:78
 #: ../lib/layouts/spie.layout:33 ../lib/layouts/stdstarsections.inc:29
+#: ../lib/layouts/ijmpd.layout:95
 msgid "Section*"
 msgstr "Atala*"
 
@@ -5643,14 +5646,15 @@ msgstr "Azpiazpiatala*"
 #: ../lib/layouts/cl2emult.layout:82 ../lib/layouts/db_stdstruct.inc:11
 #: ../lib/layouts/foils.layout:160 ../lib/layouts/heb-article.layout:20
 #: ../lib/layouts/linuxdoc.layout:346 ../lib/layouts/paper.layout:132
-#: ../lib/layouts/scrclass.inc:222 ../lib/layouts/siamltex.layout:134
-#: ../lib/layouts/spie.layout:74 src/buffer.C:1504
+#: ../lib/layouts/scrclass.inc:230 ../lib/layouts/siamltex.layout:134
+#: ../lib/layouts/spie.layout:74 ../lib/layouts/ijmpd.layout:75
+#: src/buffer.C:1504
 msgid "Abstract"
 msgstr "Laburpena"
 
 #: ../lib/layouts/IEEEtran.layout:382 ../lib/layouts/aastex.layout:98
 #: ../lib/layouts/aastex.layout:256 ../lib/layouts/amsdefs.inc:241
-#: ../lib/layouts/kluwer.layout:279 ../lib/layouts/paper.layout:165
+#: ../lib/layouts/kluwer.layout:283 ../lib/layouts/paper.layout:165
 #: ../lib/layouts/revtex4.layout:243 ../lib/layouts/siamltex.layout:159
 #: ../lib/layouts/spie.layout:42 ../lib/layouts/elsart.layout:59
 msgid "Keywords"
@@ -5664,15 +5668,17 @@ msgstr "Giltza"
 #: ../lib/layouts/egs.layout:643 ../lib/layouts/foils.layout:224
 #: ../lib/layouts/latex8.layout:121 ../lib/layouts/llncs.layout:289
 #: ../lib/layouts/report.layout:12 ../lib/layouts/scrbook.layout:13
-#: ../lib/layouts/scrclass.inc:229 ../lib/layouts/scrreprt.layout:10
+#: ../lib/layouts/scrclass.inc:237 ../lib/layouts/scrreprt.layout:10
 #: ../lib/layouts/siamltex.layout:171 ../lib/layouts/stdstruct.inc:43
 #: ../lib/layouts/svjour.inc:353 ../lib/layouts/mwbk.layout:23
-#: ../lib/layouts/mwrep.layout:12 src/frontends/qt2/QDocumentDialog.C:72
+#: ../lib/layouts/mwrep.layout:12 ../lib/layouts/ijmpd.layout:157
+#: src/frontends/qt2/QDocumentDialog.C:72
 msgid "Bibliography"
 msgstr "Bibliografia"
 
 #: ../lib/layouts/IEEEtran.layout:415 ../lib/layouts/aastex.layout:102
-#: ../lib/layouts/aastex.layout:382 ../lib/layouts/kluwer.layout:320
+#: ../lib/layouts/aastex.layout:382 ../lib/layouts/kluwer.layout:324
+#: ../lib/layouts/ijmpd.layout:166
 msgid "Appendix"
 msgstr "Eranskina"
 
@@ -5720,8 +5726,9 @@ msgstr "Zenbakitua"
 #: ../lib/layouts/aastex.layout:80 ../lib/layouts/db_stdlists.inc:23
 #: ../lib/layouts/egs.layout:218 ../lib/layouts/hollywood.layout:131
 #: ../lib/layouts/linuxdoc.layout:228 ../lib/layouts/manpage.layout:104
-#: ../lib/layouts/paper.layout:102 ../lib/layouts/scrclass.inc:23
+#: ../lib/layouts/paper.layout:102 ../lib/layouts/scrclass.inc:25
 #: ../lib/layouts/scrlettr.layout:16 ../lib/layouts/stdlists.inc:45
+#: ../lib/layouts/scrlttr2.layout:16
 msgid "Description"
 msgstr "Deskribaketa"
 
@@ -5741,20 +5748,21 @@ msgstr "Zerrenda"
 #: ../lib/layouts/docbook-chapter.layout:12
 #: ../lib/layouts/docbook-section.layout:12 ../lib/layouts/egs.layout:286
 #: ../lib/layouts/entcs.layout:13 ../lib/layouts/foils.layout:138
-#: ../lib/layouts/hollywood.layout:336 ../lib/layouts/kluwer.layout:101
+#: ../lib/layouts/hollywood.layout:336 ../lib/layouts/kluwer.layout:105
 #: ../lib/layouts/latex8.layout:32 ../lib/layouts/linuxdoc.layout:40
 #: ../lib/layouts/llncs.layout:106 ../lib/layouts/ltugboat.layout:151
 #: ../lib/layouts/paper.layout:110 ../lib/layouts/revtex.layout:104
-#: ../lib/layouts/revtex4.layout:120 ../lib/layouts/scrclass.inc:150
+#: ../lib/layouts/revtex4.layout:120 ../lib/layouts/scrclass.inc:158
 #: ../lib/layouts/scrlettr.layout:204 ../lib/layouts/siamltex.layout:103
 #: ../lib/layouts/stdtitle.inc:11 ../lib/layouts/svjour.inc:138
-#: ../lib/layouts/svprobth.layout:37 ../lib/layouts/elsart.layout:90
+#: ../lib/layouts/svprobth.layout:37 ../lib/layouts/scrlttr2.layout:281
+#: ../lib/layouts/elsart.layout:90 ../lib/layouts/ijmpd.layout:39
 msgid "Title"
 msgstr "Izenburua"
 
 #: ../lib/layouts/aa.layout:62 ../lib/layouts/aa.layout:101
 #: ../lib/layouts/aapaper.inc:8 ../lib/layouts/aapaper.layout:67
-#: ../lib/layouts/kluwer.layout:119 ../lib/layouts/llncs.layout:132
+#: ../lib/layouts/kluwer.layout:123 ../lib/layouts/llncs.layout:132
 #: ../lib/layouts/svjour.inc:164 ../lib/layouts/svprobth.layout:47
 msgid "Subtitle"
 msgstr "Azpiizenburua"
@@ -5766,13 +5774,14 @@ msgstr "Azpiizenburua"
 #: ../lib/layouts/broadway.layout:203 ../lib/layouts/cl2emult.layout:59
 #: ../lib/layouts/db_stdtitle.inc:18 ../lib/layouts/egs.layout:336
 #: ../lib/layouts/entcs.layout:22 ../lib/layouts/foils.layout:146
-#: ../lib/layouts/hollywood.layout:323 ../lib/layouts/kluwer.layout:157
+#: ../lib/layouts/hollywood.layout:323 ../lib/layouts/kluwer.layout:161
 #: ../lib/layouts/linuxdoc.layout:296 ../lib/layouts/llncs.layout:192
 #: ../lib/layouts/ltugboat.layout:172 ../lib/layouts/paper.layout:121
 #: ../lib/layouts/revtex.layout:114 ../lib/layouts/revtex4.layout:130
-#: ../lib/layouts/scrclass.inc:158 ../lib/layouts/siamltex.layout:119
+#: ../lib/layouts/scrclass.inc:166 ../lib/layouts/siamltex.layout:119
 #: ../lib/layouts/stdtitle.inc:33 ../lib/layouts/svjour.inc:197
 #: ../lib/layouts/svprobth.layout:57 ../lib/layouts/elsart.layout:111
+#: ../lib/layouts/ijmpd.layout:48
 msgid "Author"
 msgstr "Egilea"
 
@@ -5780,9 +5789,10 @@ msgstr "Egilea"
 #: ../lib/layouts/aapaper.inc:31 ../lib/layouts/aapaper.layout:71
 #: ../lib/layouts/amsdefs.inc:167 ../lib/layouts/egs.layout:273
 #: ../lib/layouts/entcs.layout:31 ../lib/layouts/g-brief-en.layout:452
-#: ../lib/layouts/kluwer.layout:175 ../lib/layouts/lyxmacros.inc:78
+#: ../lib/layouts/kluwer.layout:179 ../lib/layouts/lyxmacros.inc:78
 #: ../lib/layouts/revtex.layout:135 ../lib/layouts/revtex4.layout:170
-#: ../lib/layouts/scrlettr.layout:155
+#: ../lib/layouts/scrlettr.layout:155 ../lib/layouts/scrlttr2.layout:48
+#: ../lib/layouts/ijmpd.layout:58
 msgid "Address"
 msgstr "Helbidea"
 
@@ -5801,11 +5811,12 @@ msgstr "Gutuna"
 #: ../lib/layouts/aastex.layout:94 ../lib/layouts/aastex.layout:207
 #: ../lib/layouts/amsdefs.inc:111 ../lib/layouts/db_stdtitle.inc:57
 #: ../lib/layouts/egs.layout:548 ../lib/layouts/foils.layout:153
-#: ../lib/layouts/g-brief-en.layout:474 ../lib/layouts/kluwer.layout:140
+#: ../lib/layouts/g-brief-en.layout:474 ../lib/layouts/kluwer.layout:144
 #: ../lib/layouts/linuxdoc.layout:321 ../lib/layouts/revtex.layout:123
-#: ../lib/layouts/revtex4.layout:139 ../lib/layouts/scrclass.inc:165
+#: ../lib/layouts/revtex4.layout:139 ../lib/layouts/scrclass.inc:173
 #: ../lib/layouts/scrlettr.layout:176 ../lib/layouts/siamltex.layout:129
 #: ../lib/layouts/stdtitle.inc:55 ../lib/layouts/svjour.inc:250
+#: ../lib/layouts/scrlttr2.layout:249
 msgid "Date"
 msgstr "Eguna"
 
@@ -5813,7 +5824,7 @@ msgstr "Eguna"
 #: ../lib/layouts/aapaper.layout:81 ../lib/layouts/aapaper.layout:178
 #: ../lib/layouts/aastex.layout:96 ../lib/layouts/aastex.layout:219
 #: ../lib/layouts/amsdefs.inc:138 ../lib/layouts/egs.layout:565
-#: ../lib/layouts/entcs.layout:56 ../lib/layouts/kluwer.layout:255
+#: ../lib/layouts/entcs.layout:56 ../lib/layouts/kluwer.layout:259
 #: ../lib/layouts/latex8.layout:98 ../lib/layouts/llncs.layout:264
 #: ../lib/layouts/ltugboat.layout:190 ../lib/layouts/revtex.layout:154
 #: ../lib/layouts/revtex4.layout:205 ../lib/layouts/stdstruct.inc:12
@@ -5844,10 +5855,10 @@ msgstr "LaTeX"
 
 #: ../lib/layouts/aastex.layout:74 ../lib/layouts/aguplus.inc:48
 #: ../lib/layouts/db_stdsections.inc:46 ../lib/layouts/egs.layout:76
-#: ../lib/layouts/kluwer.layout:78 ../lib/layouts/linuxdoc.layout:146
+#: ../lib/layouts/kluwer.layout:82 ../lib/layouts/linuxdoc.layout:146
 #: ../lib/layouts/llncs.layout:75 ../lib/layouts/ltugboat.layout:117
 #: ../lib/layouts/paper.layout:70 ../lib/layouts/revtex.layout:73
-#: ../lib/layouts/revtex4.layout:76 ../lib/layouts/scrclass.inc:89
+#: ../lib/layouts/revtex4.layout:76 ../lib/layouts/scrclass.inc:91
 #: ../lib/layouts/siamltex.layout:68 ../lib/layouts/stdsections.inc:138
 #: ../lib/layouts/svjour.inc:70
 msgid "Paragraph"
@@ -5864,13 +5875,13 @@ msgid "And"
 msgstr "Eta"
 
 #: ../lib/layouts/aastex.layout:100 ../lib/layouts/aastex.layout:300
-#: ../lib/layouts/egs.layout:588 ../lib/layouts/kluwer.layout:299
+#: ../lib/layouts/egs.layout:588 ../lib/layouts/kluwer.layout:303
 #: ../lib/layouts/svjour.inc:318
 msgid "Acknowledgements"
 msgstr "Eskerbideak"
 
 #: ../lib/layouts/aastex.layout:104 ../lib/layouts/aastex.layout:415
-#: ../lib/layouts/kluwer.layout:341 src/buffer.C:1515
+#: ../lib/layouts/kluwer.layout:345 src/buffer.C:1515
 msgid "References"
 msgstr "Erreferentziak"
 
@@ -6284,14 +6295,14 @@ msgid "Quotation"
 msgstr "Parrafo Sakona"
 
 #: ../lib/layouts/db_stdsections.inc:18 ../lib/layouts/llncs.layout:38
-#: ../lib/layouts/scrclass.inc:59 ../lib/layouts/stdsections.inc:37
+#: ../lib/layouts/scrclass.inc:61 ../lib/layouts/stdsections.inc:37
 msgid "Chapter"
 msgstr "Alea"
 
 #: ../lib/layouts/db_stdsections.inc:53 ../lib/layouts/egs.layout:103
-#: ../lib/layouts/kluwer.layout:87 ../lib/layouts/linuxdoc.layout:170
+#: ../lib/layouts/kluwer.layout:91 ../lib/layouts/linuxdoc.layout:170
 #: ../lib/layouts/llncs.layout:85 ../lib/layouts/paper.layout:78
-#: ../lib/layouts/scrclass.inc:96 ../lib/layouts/stdsections.inc:163
+#: ../lib/layouts/scrclass.inc:98 ../lib/layouts/stdsections.inc:163
 #: ../lib/layouts/svjour.inc:80
 msgid "Subparagraph"
 msgstr "Azpiparrafoa"
@@ -6335,19 +6346,19 @@ msgstr "Helbidera_Bidali"
 
 #: ../lib/layouts/dinbrief.layout:48 ../lib/layouts/g-brief-en.layout:517
 #: ../lib/layouts/heb-letter.layout:16 ../lib/layouts/scrlettr.layout:70
-#: ../lib/layouts/stdletter.inc:59
+#: ../lib/layouts/stdletter.inc:59 ../lib/layouts/scrlttr2.layout:100
 msgid "Opening"
 msgstr "Irekitzen"
 
 #: ../lib/layouts/dinbrief.layout:61 ../lib/layouts/g-brief-en.layout:73
 #: ../lib/layouts/heb-letter.layout:24 ../lib/layouts/scrlettr.layout:148
-#: ../lib/layouts/stdletter.inc:83
+#: ../lib/layouts/stdletter.inc:83 ../lib/layouts/scrlttr2.layout:176
 msgid "Signature"
 msgstr "Zinadura"
 
 #: ../lib/layouts/dinbrief.layout:74 ../lib/layouts/g-brief-en.layout:591
 #: ../lib/layouts/heb-letter.layout:20 ../lib/layouts/scrlettr.layout:81
-#: ../lib/layouts/stdletter.inc:106
+#: ../lib/layouts/stdletter.inc:106 ../lib/layouts/scrlttr2.layout:122
 msgid "Closing"
 msgstr "Itxitzen"
 
@@ -6457,7 +6468,7 @@ msgid "Brieftext"
 msgstr "Testu Laburra"
 
 #: ../lib/layouts/g-brief-de.layout:53 ../lib/layouts/g-brief-en.layout:53
-#: ../lib/layouts/scrlettr.layout:126
+#: ../lib/layouts/scrlettr.layout:126 ../lib/layouts/scrlttr2.layout:153
 msgid "Name"
 msgstr "Izena"
 
@@ -6518,6 +6529,7 @@ msgid "HTTP"
 msgstr "HTTP"
 
 #: ../lib/layouts/g-brief-de.layout:363 ../lib/layouts/g-brief-en.layout:363
+#: ../lib/layouts/scrlttr2.layout:225
 msgid "Bank"
 msgstr "Bankua"
 
@@ -6669,16 +6681,16 @@ msgstr "Bidali"
 msgid "FADE_OUT:"
 msgstr "IRTEERA:"
 
-#: ../lib/layouts/kluwer.layout:191
+#: ../lib/layouts/kluwer.layout:195
 msgid "AddressForOffprints"
 msgstr ""
 
-#: ../lib/layouts/kluwer.layout:210
+#: ../lib/layouts/kluwer.layout:214
 #, fuzzy
 msgid "RunningTitle"
 msgstr "LaTeX_Izenburua_Lantzen"
 
-#: ../lib/layouts/kluwer.layout:233
+#: ../lib/layouts/kluwer.layout:237
 #, fuzzy
 msgid "RunningAuthor"
 msgstr "Egilea"
@@ -6743,107 +6755,131 @@ msgstr "Egilearen URL"
 msgid "PACS"
 msgstr "SORTAK"
 
-#: ../lib/layouts/scrclass.inc:33 ../lib/layouts/scrlettr.layout:26
+#: ../lib/layouts/scrclass.inc:35 ../lib/layouts/scrlettr.layout:26
+#: ../lib/layouts/scrlttr2.layout:26
 msgid "Labeling"
 msgstr "Txarteketa"
 
-#: ../lib/layouts/scrclass.inc:106
+#: ../lib/layouts/scrclass.inc:108
+#, fuzzy
+msgid "Addpart"
+msgstr "Gehitu"
+
+#: ../lib/layouts/scrclass.inc:114
 msgid "Addchap"
 msgstr "Alea Gehitu"
 
-#: ../lib/layouts/scrclass.inc:112
+#: ../lib/layouts/scrclass.inc:120
 msgid "Addsec"
 msgstr "Atala Gehitu"
 
-#: ../lib/layouts/scrclass.inc:118
+#: ../lib/layouts/scrclass.inc:126
 msgid "Addchap*"
 msgstr "Alea* Gehitu"
 
-#: ../lib/layouts/scrclass.inc:124
+#: ../lib/layouts/scrclass.inc:132
 msgid "Addsec*"
 msgstr "Atala* Gehitu"
 
-#: ../lib/layouts/scrclass.inc:130
+#: ../lib/layouts/scrclass.inc:138
 msgid "Minisec"
 msgstr "Ataltxoa"
 
-#: ../lib/layouts/scrclass.inc:172 ../lib/layouts/scrlettr.layout:211
+#: ../lib/layouts/scrclass.inc:180 ../lib/layouts/scrlettr.layout:211
+#: ../lib/layouts/scrlttr2.layout:289
 msgid "Subject"
 msgstr "Gaia"
 
-#: ../lib/layouts/scrclass.inc:178
+#: ../lib/layouts/scrclass.inc:186
 msgid "Publishers"
 msgstr "Argitatzaileak"
 
-#: ../lib/layouts/scrclass.inc:184 ../lib/layouts/svjour.inc:130
+#: ../lib/layouts/scrclass.inc:192 ../lib/layouts/svjour.inc:130
 msgid "Dedication"
 msgstr "Eskeintza"
 
-#: ../lib/layouts/scrclass.inc:190
+#: ../lib/layouts/scrclass.inc:198
 msgid "Titlehead"
 msgstr "Izenburua"
 
-#: ../lib/layouts/scrclass.inc:202
+#: ../lib/layouts/scrclass.inc:210
 msgid "Uppertitleback"
 msgstr "GoiIzenburuAtzea"
 
-#: ../lib/layouts/scrclass.inc:208
+#: ../lib/layouts/scrclass.inc:216
 msgid "Lowertitleback"
 msgstr "Atze Izenburutxoa"
 
-#: ../lib/layouts/scrclass.inc:214
+#: ../lib/layouts/scrclass.inc:222
 msgid "Extratitle"
 msgstr "Izenburuordea"
 
-#: ../lib/layouts/scrlettr.layout:93
+#: ../lib/layouts/scrclass.inc:246
+#, fuzzy
+msgid "Captionabove"
+msgstr "Azalpena"
+
+#: ../lib/layouts/scrclass.inc:252
+#, fuzzy
+msgid "Captionbelow"
+msgstr "Azalpena"
+
+#: ../lib/layouts/scrclass.inc:258
+#, fuzzy
+msgid "Dictum"
+msgstr "Datu"
+
+#: ../lib/layouts/scrlettr.layout:93 ../lib/layouts/scrlttr2.layout:130
 msgid "PS"
 msgstr "PS"
 
-#: ../lib/layouts/scrlettr.layout:104
+#: ../lib/layouts/scrlettr.layout:104 ../lib/layouts/scrlttr2.layout:138
 msgid "CC"
 msgstr "Kopia Nori"
 
-#: ../lib/layouts/scrlettr.layout:119
+#: ../lib/layouts/scrlettr.layout:119 ../lib/layouts/scrlttr2.layout:146
 msgid "Encl"
 msgstr "Erantsia"
 
 #: ../lib/layouts/scrlettr.layout:162 ../lib/layouts/stdletter.inc:179
+#: ../lib/layouts/scrlttr2.layout:192
 msgid "Telephone"
 msgstr "Telefonoa"
 
-#: ../lib/layouts/scrlettr.layout:169
+#: ../lib/layouts/scrlettr.layout:169 ../lib/layouts/scrlttr2.layout:241
 msgid "Place"
 msgstr "Jarri"
 
-#: ../lib/layouts/scrlettr.layout:183
+#: ../lib/layouts/scrlettr.layout:183 ../lib/layouts/scrlttr2.layout:257
 msgid "Backaddress"
 msgstr "Itzulketa helbidea"
 
-#: ../lib/layouts/scrlettr.layout:190
+#: ../lib/layouts/scrlettr.layout:190 ../lib/layouts/scrlttr2.layout:265
 msgid "Specialmail"
 msgstr "Gutunberezia"
 
 #: ../lib/layouts/scrlettr.layout:197 ../lib/layouts/stdletter.inc:162
+#: ../lib/layouts/scrlttr2.layout:273
 msgid "Location"
 msgstr "Kokapena"
 
-#: ../lib/layouts/scrlettr.layout:218
+#: ../lib/layouts/scrlettr.layout:218 ../lib/layouts/scrlttr2.layout:297
 msgid "Yourref"
 msgstr "ZureErref"
 
-#: ../lib/layouts/scrlettr.layout:233
+#: ../lib/layouts/scrlettr.layout:233 ../lib/layouts/scrlttr2.layout:313
 msgid "Yourmail"
 msgstr "ZurePostaKutxa"
 
-#: ../lib/layouts/scrlettr.layout:240
+#: ../lib/layouts/scrlettr.layout:240 ../lib/layouts/scrlttr2.layout:321
 msgid "Myref"
 msgstr "Nere Erref"
 
-#: ../lib/layouts/scrlettr.layout:247
+#: ../lib/layouts/scrlettr.layout:247 ../lib/layouts/scrlttr2.layout:329
 msgid "Customer"
 msgstr "Bezeroa"
 
-#: ../lib/layouts/scrlettr.layout:254
+#: ../lib/layouts/scrlettr.layout:254 ../lib/layouts/scrlttr2.layout:337
 msgid "Invoice"
 msgstr "Ordain Agiria"
 
@@ -6938,6 +6974,29 @@ msgstr ""
 #, fuzzy
 msgid " Keywords"
 msgstr "Giltza"
+
+#: ../lib/layouts/scrlttr2.layout:77
+#, fuzzy
+msgid "NextAddress"
+msgstr "Helbidea"
+
+#: ../lib/layouts/scrlttr2.layout:184
+#, fuzzy
+msgid "SenderAddress"
+msgstr "Helbidera_Bidali"
+
+#: ../lib/layouts/scrlttr2.layout:200
+msgid "Fax"
+msgstr ""
+
+#: ../lib/layouts/scrlttr2.layout:209
+#, fuzzy
+msgid "E-Mail"
+msgstr "e-Gutuna"
+
+#: ../lib/layouts/scrlttr2.layout:233
+msgid "Logo"
+msgstr ""
 
 #: ../lib/layouts/elsart.layout:131
 #, fuzzy
@@ -8085,23 +8144,23 @@ msgstr "Sartu beharreko Idazkia Hautatu"
 #: src/frontends/controllers/ControlExternal.C:154
 #: src/frontends/controllers/ControlGraphics.C:93
 #: src/frontends/controllers/ControlInclude.C:70 src/lyx_cb.C:110
-#: src/lyxfunc.C:1643 src/lyxfunc.C:1682 src/lyxfunc.C:1787
+#: src/lyxfunc.C:1646 src/lyxfunc.C:1685 src/lyxfunc.C:1790
 #, fuzzy
 msgid "Documents|#o#O"
 msgstr "Idazkiak|d"
 
-#: src/BufferView_pimpl.C:865 src/lyxfunc.C:1684 src/lyxfunc.C:1789
+#: src/BufferView_pimpl.C:865 src/lyxfunc.C:1687 src/lyxfunc.C:1792
 #, fuzzy
 msgid "Examples|#E#e"
 msgstr "Adibideak"
 
-#: src/BufferView_pimpl.C:870 src/lyx_cb.C:120 src/lyxfunc.C:1650
-#: src/lyxfunc.C:1689
+#: src/BufferView_pimpl.C:870 src/lyx_cb.C:120 src/lyxfunc.C:1653
+#: src/lyxfunc.C:1692
 msgid "*.lyx| LyX Documents (*.lyx)"
 msgstr ""
 
-#: src/BufferView_pimpl.C:879 src/lyxfunc.C:1698 src/lyxfunc.C:1718
-#: src/lyxfunc.C:1806 src/lyxfunc.C:1833 src/lyxfunc.C:1843
+#: src/BufferView_pimpl.C:879 src/lyxfunc.C:1701 src/lyxfunc.C:1721
+#: src/lyxfunc.C:1809 src/lyxfunc.C:1836 src/lyxfunc.C:1846
 msgid "Canceled."
 msgstr "Ezeztatua."
 
@@ -8115,8 +8174,8 @@ msgstr "Idazkia sartzen"
 msgid "Inserting document "
 msgstr "Idazkia sartzen"
 
-#: src/BufferView_pimpl.C:894 src/importer.C:47 src/lyxfunc.C:987
-#: src/lyxfunc.C:1150 src/lyxfunc.C:1731
+#: src/BufferView_pimpl.C:894 src/importer.C:47 src/lyxfunc.C:990
+#: src/lyxfunc.C:1153 src/lyxfunc.C:1734
 msgid "..."
 msgstr ""
 
@@ -8125,7 +8184,7 @@ msgstr ""
 msgid "Document %1$s inserted."
 msgstr "Idazkia kanporatua "
 
-#: src/BufferView_pimpl.C:903 src/lyxfunc.C:1743
+#: src/BufferView_pimpl.C:903 src/lyxfunc.C:1746
 #, fuzzy
 msgid "Document "
 msgstr "Idazkia"
@@ -9183,7 +9242,7 @@ msgstr "Honen ordez bereganatu?"
 msgid "Unable to open template"
 msgstr "Eredua irekitzea ezinezkoa da"
 
-#: src/bufferlist.C:518 src/lyxfunc.C:1819
+#: src/bufferlist.C:518 src/lyxfunc.C:1822
 msgid "Document is already open:"
 msgstr "Idazkia jadanik irekita:"
 
@@ -9574,57 +9633,57 @@ msgstr "Erabiltzailearen direktorioa:"
 msgid "Character set"
 msgstr "Hizki-jokoa:|#J"
 
-#: src/frontends/controllers/ControlDocument.C:81
+#: src/frontends/controllers/ControlDocument.C:80
 #, fuzzy
 msgid "Document settings applied"
 msgstr "Idazkiak"
 
-#: src/frontends/controllers/ControlDocument.C:121
+#: src/frontends/controllers/ControlDocument.C:120
 msgid "Converting document to new document class..."
 msgstr "Idazkia idazki mota berrira bihurtzen..."
 
-#: src/frontends/controllers/ControlDocument.C:129
+#: src/frontends/controllers/ControlDocument.C:128
 msgid "One paragraph couldn't be converted"
 msgstr "Parrafo bat ezin izan da bihurtu"
 
-#: src/frontends/controllers/ControlDocument.C:132
+#: src/frontends/controllers/ControlDocument.C:131
 #, fuzzy, c-format
 msgid "%1$s paragraphs couldn't be converted"
 msgstr " parrafoak ezin izan dira bihurtu"
 
-#: src/frontends/controllers/ControlDocument.C:137
+#: src/frontends/controllers/ControlDocument.C:136
 msgid " paragraphs couldn't be converted"
 msgstr " parrafoak ezin izan dira bihurtu"
 
 #. problem changing class
 #. -- warn user (to retain old style)
-#: src/frontends/controllers/ControlDocument.C:140
-#: src/frontends/controllers/ControlDocument.C:152
+#: src/frontends/controllers/ControlDocument.C:139
+#: src/frontends/controllers/ControlDocument.C:151
 msgid "Conversion Errors!"
 msgstr "Bihurketa Akatsak!"
 
-#: src/frontends/controllers/ControlDocument.C:141
+#: src/frontends/controllers/ControlDocument.C:140
 msgid "into chosen document class"
 msgstr "aukeratutako idazki mota barruan"
 
-#: src/frontends/controllers/ControlDocument.C:153
+#: src/frontends/controllers/ControlDocument.C:152
 msgid "Errors loading new document class."
 msgstr "Idazki mota berriak bereganatzean akatsak."
 
-#: src/frontends/controllers/ControlDocument.C:154
+#: src/frontends/controllers/ControlDocument.C:153
 msgid "Reverting to original document class."
 msgstr "Jatorrizko Idazki motara itzultzen"
 
-#: src/frontends/controllers/ControlDocument.C:162
+#: src/frontends/controllers/ControlDocument.C:161
 msgid "Do you want to save the current settings"
 msgstr "Oraingo aukerak gordetzea nahi?"
 
-#: src/frontends/controllers/ControlDocument.C:163
+#: src/frontends/controllers/ControlDocument.C:162
 #, fuzzy
 msgid "for the document layout as default?"
 msgstr "Idazkiaren aurkezpena ezarria"
 
-#: src/frontends/controllers/ControlDocument.C:164
+#: src/frontends/controllers/ControlDocument.C:163
 #, fuzzy
 msgid "(they will be valid for any new document)"
 msgstr "Idazki berriaren fitxategi izena idatzi"
@@ -11505,11 +11564,11 @@ msgstr "Babes kopiaren ibilbidea"
 msgid "LyX server pipes"
 msgstr "LyX Zerbitzariaren tutuak"
 
-#: src/frontends/xforms/FormPreferences.C:2673
+#: src/frontends/xforms/FormPreferences.C:2674
 msgid "Fonts must be positive!"
 msgstr "Hizkimotak positiboak izan behar dute!"
 
-#: src/frontends/xforms/FormPreferences.C:2696
+#: src/frontends/xforms/FormPreferences.C:2697
 #, fuzzy
 msgid ""
 "Fonts must be input in the order Tiny > Smallest > Smaller > Small > Normal "
@@ -11519,7 +11578,7 @@ msgstr ""
 "oin oharra > txikia > arrunta  > handia > galanta > egundokoa > \n"
 "erraldoia > izutzekoa."
 
-#: src/frontends/xforms/FormPreferences.C:2825
+#: src/frontends/xforms/FormPreferences.C:2826
 #, fuzzy
 msgid " ispell | aspell "
 msgstr " ezer | ispell | aspell"
@@ -12037,8 +12096,9 @@ msgid "Opened Footnote Inset"
 msgstr "Oineko Ohar Multzoa Irekita"
 
 #: src/insets/insetgraphics.C:225
-msgid "Waiting for draw request to start loading..."
-msgstr ""
+#, fuzzy
+msgid "Not shown."
+msgstr " ezezaguna"
 
 #: src/insets/insetgraphics.C:228
 msgid "Loading..."
@@ -12087,37 +12147,37 @@ msgstr "Egitura \"honetara\" bihurtu"
 msgid "No image"
 msgstr "Aldatu gabe"
 
-#: src/insets/insetgraphics.C:640
+#: src/insets/insetgraphics.C:643
 #, fuzzy
 msgid "Cannot copy file"
 msgstr "Fitxategian ezin ikusi"
 
-#: src/insets/insetgraphics.C:641
+#: src/insets/insetgraphics.C:644
 #, fuzzy
 msgid "into tempdir"
 msgstr "Aldibateko direktorioa"
 
-#: src/insets/insetgraphics.C:678 src/insets/insetgraphics.C:682
+#: src/insets/insetgraphics.C:681 src/insets/insetgraphics.C:685
 #, fuzzy
 msgid "Cannot convert Image (not existing file?)"
 msgstr "Fitxategia ezin bihurtu"
 
-#: src/insets/insetgraphics.C:679
+#: src/insets/insetgraphics.C:682
 #, fuzzy, c-format
 msgid "No information for converting from %1$s to %2$s"
 msgstr "Bihurketa nondik hasteko informaziorik ez"
 
-#: src/insets/insetgraphics.C:683
+#: src/insets/insetgraphics.C:686
 #, fuzzy
 msgid "No information for converting from "
 msgstr "Bihurketa nondik hasteko informaziorik ez"
 
-#: src/insets/insetgraphics.C:775
+#: src/insets/insetgraphics.C:778
 #, fuzzy, c-format
 msgid "Graphics file: %1$s"
 msgstr "Grafiko Fitxategia|#F"
 
-#: src/insets/insetgraphics.C:779
+#: src/insets/insetgraphics.C:782
 #, fuzzy
 msgid "Graphics file: "
 msgstr "Grafiko Fitxategia|#F"
@@ -12386,7 +12446,7 @@ msgstr "(Bestela, idazkia ez da gordeko.)"
 msgid "Choose a filename to save document as"
 msgstr "Idazkia gordetzeko fitxategiaren izena idatzi"
 
-#: src/lyx_cb.C:112 src/lyxfunc.C:1645
+#: src/lyx_cb.C:112 src/lyxfunc.C:1648
 #, fuzzy
 msgid "Templates|#T#t"
 msgstr "Eredua|#r"
@@ -12854,139 +12914,139 @@ msgstr "Idazkia irakur-soilekoa da"
 msgid "Command not allowed without any document open"
 msgstr "Idazkirik ireki gabe agindu hau erabilkaitza da"
 
-#: src/lyxfunc.C:702
+#: src/lyxfunc.C:705
 #, fuzzy, c-format
 msgid "Unknown function (%1$s)"
 msgstr "Ekitaldi ezezaguna"
 
-#: src/lyxfunc.C:706
+#: src/lyxfunc.C:709
 #, fuzzy
 msgid "Unknown function ("
 msgstr "Ekitaldi ezezaguna"
 
-#: src/lyxfunc.C:982
+#: src/lyxfunc.C:985
 #, fuzzy, c-format
 msgid "Saving document %1$s..."
 msgstr "Idazkia gordetzen"
 
-#: src/lyxfunc.C:985
+#: src/lyxfunc.C:988
 #, fuzzy
 msgid "Saving document "
 msgstr "Idazkia gordetzen"
 
-#: src/lyxfunc.C:991
+#: src/lyxfunc.C:994
 #, fuzzy
 msgid " done."
 msgstr "Beheruntz joan"
 
-#: src/lyxfunc.C:1133 src/mathed/formulabase.C:1036
+#: src/lyxfunc.C:1136 src/mathed/formulabase.C:1036
 msgid "Missing argument"
 msgstr "Argumentoa galdua"
 
-#: src/lyxfunc.C:1146
+#: src/lyxfunc.C:1149
 #, fuzzy, c-format
 msgid "Opening help file %1$s..."
 msgstr "Laguntza fitxategia irekitzen"
 
-#: src/lyxfunc.C:1149
+#: src/lyxfunc.C:1152
 #, fuzzy
 msgid "Opening help file "
 msgstr "Laguntza fitxategia irekitzen"
 
-#: src/lyxfunc.C:1355
+#: src/lyxfunc.C:1358
 msgid "This is only allowed in math mode!"
 msgstr "Hau Matematika eran soilik baimendua dago!"
 
-#: src/lyxfunc.C:1397
+#: src/lyxfunc.C:1400
 msgid "Opening child document "
 msgstr "Idazki semea irekitzen "
 
-#: src/lyxfunc.C:1471
+#: src/lyxfunc.C:1474
 msgid "Syntax: set-color <lyx_name> <x11_name>"
 msgstr "Sintaxia: set-color <lyx_izena> <x11_izena>"
 
-#: src/lyxfunc.C:1485
+#: src/lyxfunc.C:1488
 #, fuzzy, c-format
 msgid "Set-color \"%1$s\" failed - color is undefined or may not be redefined"
 msgstr ""
 "\" kale egin du - kolorea zehaztu gabe edo ez dauka zer ber-zehaztu beharrik"
 
-#: src/lyxfunc.C:1490
+#: src/lyxfunc.C:1493
 msgid "Set-color "
 msgstr ""
 
-#: src/lyxfunc.C:1491
+#: src/lyxfunc.C:1494
 #, fuzzy
 msgid " failed - color is undefined or may not be redefined"
 msgstr ""
 "\" kale egin du - kolorea zehaztu gabe edo ez dauka zer ber-zehaztu beharrik"
 
-#: src/lyxfunc.C:1641
+#: src/lyxfunc.C:1644
 #, fuzzy
 msgid "Select template file"
 msgstr "Irteerako fitxategi izena hautatu"
 
-#: src/lyxfunc.C:1680
+#: src/lyxfunc.C:1683
 #, fuzzy
 msgid "Select document to open"
 msgstr "Ireki beharreko Idazkia Hautatu"
 
-#: src/lyxfunc.C:1716
+#: src/lyxfunc.C:1719
 #, fuzzy
 msgid "No such file"
 msgstr "Azken fitxategia"
 
-#: src/lyxfunc.C:1717
+#: src/lyxfunc.C:1720
 #, fuzzy
 msgid "Start a new document with this filename ?"
 msgstr "Izen honekin idazki berri bat sortzea nahi?"
 
-#: src/lyxfunc.C:1729
+#: src/lyxfunc.C:1732
 #, fuzzy, c-format
 msgid "Opening document %1$s..."
 msgstr "Idazkia irekitzen"
 
-#: src/lyxfunc.C:1731
+#: src/lyxfunc.C:1734
 #, fuzzy
 msgid "Opening document "
 msgstr "Idazki semea irekitzen "
 
-#: src/lyxfunc.C:1741
+#: src/lyxfunc.C:1744
 #, fuzzy, c-format
 msgid "Document %1$s opened."
 msgstr "Irekitako Idazkirik ez dago!"
 
-#: src/lyxfunc.C:1743
+#: src/lyxfunc.C:1746
 #, fuzzy
 msgid " opened."
 msgstr "Beheruntz joan"
 
-#: src/lyxfunc.C:1747
+#: src/lyxfunc.C:1750
 #, fuzzy, c-format
 msgid "Could not open document %1$s"
 msgstr "Idazkia ezin izan da ireki"
 
-#: src/lyxfunc.C:1750
+#: src/lyxfunc.C:1753
 #, fuzzy
 msgid "Could not open document "
 msgstr "Idazkia ezin izan da ireki"
 
-#: src/lyxfunc.C:1777
+#: src/lyxfunc.C:1780
 #, fuzzy, c-format
 msgid "Select %1$s file to import"
 msgstr "Sartu beharreko Idazkia Hautatu"
 
-#: src/lyxfunc.C:1781
+#: src/lyxfunc.C:1784
 #, fuzzy
 msgid "Select "
 msgstr "Hautatu"
 
-#: src/lyxfunc.C:1782
+#: src/lyxfunc.C:1785
 #, fuzzy
 msgid " file to import"
 msgstr "Sartu beharreko Idazkia Hautatu"
 
-#: src/lyxfunc.C:1821
+#: src/lyxfunc.C:1824
 msgid ""
 "Do you want to close that document now?\n"
 "('No' will just switch to the open version)"
@@ -12994,15 +13054,15 @@ msgstr ""
 "Idazki hau orain itxi eraztea nahi duzu?\n"
 "('Ez' batek irekitako bertsiora aldatuko du soilik)"
 
-#: src/lyxfunc.C:1841
+#: src/lyxfunc.C:1844
 msgid "A document by the name"
 msgstr "Izen honetako idazki bat"
 
-#: src/lyxfunc.C:1842
+#: src/lyxfunc.C:1845
 msgid "already exists. Overwrite?"
 msgstr "badago. Gainidatzi?"
 
-#: src/lyxfunc.C:1914
+#: src/lyxfunc.C:1917
 msgid "Welcome to LyX!"
 msgstr "Ongietorria LyX-era!"
 
@@ -13648,21 +13708,21 @@ msgstr ""
 msgid "You cannot type two spaces this way. Please read the Tutorial."
 msgstr "Ezin duzu era honetan bi hutsune idazti. Tutoretza irakurri mesedez."
 
-#: src/text.C:3369
+#: src/text.C:3363
 msgid "Page Break (top)"
 msgstr "Orri Jauzia (goikaldea)"
 
 #. draw the additional space if needed:
-#: src/text.C:3374
+#: src/text.C:3368
 #, fuzzy
 msgid "Space above"
 msgstr "&Goiko Hutsunea"
 
-#: src/text.C:3533
+#: src/text.C:3527
 msgid "Page Break (bottom)"
 msgstr "Orri Jauzia (azpikaldea)"
 
-#: src/text.C:3540
+#: src/text.C:3534
 #, fuzzy
 msgid "Space below"
 msgstr "&Azpiko Hutsunea"
