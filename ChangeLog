@@ -1,3 +1,10 @@
+2000-09-22  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* lib/doc/LaTeXConfig.lyx.in: updated.
+
+	* src/language.C (initL): remove language "francais" and change a
+	bit the names of the two other french variations.
+
 2000-09-14  Garst Reese    <reese@isn.net>
 
 	* lib/tex/hollywood.cls changed length of parenthicals to 1.5in
