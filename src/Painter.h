@@ -26,7 +26,6 @@ class LyXFont;
 class WorkArea;
 
 /** An inplementation for the X Window System. Xlib.
-    
     Classes similar to this one can be made for gtk+, Qt, etc.
 */
 class Painter : public PainterBase {
@@ -79,9 +78,6 @@ public:
 	PainterBase & image(int x, int y, int w, int h,
 			    grfx::GImage const & image);
 	
-	/// For the figinset
-	PainterBase & pixmap(int x, int y, int w, int h, Pixmap bitmap);
-	
 	/// Draw a string at position x, y (y is the baseline)
 	PainterBase & text(int x, int y,
 			   string const & str, LyXFont const & f);
@@ -93,16 +89,13 @@ public:
 	
 	/// Draw a char at position x, y (y is the baseline)
 	PainterBase & text(int x, int y, char c, LyXFont const & f);
-
+	
 	/// Draw a wide string at position x, y
 	PainterBase & text(int x, int y, XChar2b const * str, int l,
-		   LyXFont const & f);	
+			   LyXFont const & f);	
 private:
 	/// Check the font, and if set, draw an underline
 	void underline(LyXFont const & f, int x, int y, int width);
-	
-	///
-	Display * display;
 };
 
 #endif

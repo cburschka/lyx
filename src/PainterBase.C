@@ -18,9 +18,6 @@
 #include "WorkArea.h"
 #include "font.h"
 
-int PainterBase::dummy1 = 0;
-int PainterBase::dummy2 = 0;
-int PainterBase::dummy3 = 0;
 
 int PainterBase::paperMargin() const
 {
@@ -67,23 +64,23 @@ PainterBase & PainterBase::buttonFrame(int x, int y, int w, int h)
 {
 	//  Width of a side of the button
 	int d = 2;
-
+	
 	fillRectangle(x, y, w, d, LColor::top);
 	fillRectangle(x, (y+h-d), w, d, LColor::bottom);
- 
+	
 	// Now a couple of trapezoids
 	int x1[4], y1[4];
- 
-	x1[0] = x+d;   y1[0] = y+d;
-	x1[1] = x+d;   y1[1] = (y+h-d);
-	x1[2] = x;     y1[2] = y+h;
+	
+	x1[0] = x + d;   y1[0] = y + d;
+	x1[1] = x + d;   y1[1] = (y + h - d);
+	x1[2] = x;     y1[2] = y + h;
 	x1[3] = x;     y1[3] = y;
 	fillPolygon(x1, y1, 4, LColor::left);
 
-	x1[0] = (x+w-d); y1[0] = y+d;
-	x1[1] = (x+w-d); y1[1] = (y+h-d);
-	x1[2] = x+w; y1[2] = (y+h-d);
-	x1[3] = x+w; y1[3] = y;
+	x1[0] = (x + w - d); y1[0] = y + d;
+	x1[1] = (x + w - d); y1[1] = (y + h - d);
+	x1[2] = x + w; y1[2] = (y + h - d);
+	x1[3] = x + w; y1[3] = y;
 	fillPolygon(x1, y1, 4, LColor::right);
 
 	return *this;

@@ -1,3 +1,13 @@
+2002-03-13  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* Painter.C (display): anon helper function, adjust code for this
+	change.
+	(pixmap): remove function.
+
+	* Painter.h: remove private display variable.
+	
+	* PainterBase.[Ch]: remove dummy[123] cruft, ws changes
+
 2002-03-13  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* WorkArea.[Ch]: remove figinset_canvas cruft.

@@ -36,13 +36,6 @@ namespace grfx {
  
  */
 class PainterBase {
-protected:
-        ///
-	static int dummy1;
-	///
-	static int dummy2;
-	///
-	static int dummy3;
 public:
 	///
 	enum line_width {
@@ -51,7 +44,7 @@ public:
 		///
 		line_thick
 	};
-
+	
 	///
 	enum line_style {
 		///
@@ -61,13 +54,13 @@ public:
 		///
 		line_onoffdash
 	};
-
+	
 	///
 	explicit PainterBase(WorkArea & wa) : owner(wa) {}
 	
 	///
 	virtual ~PainterBase() {}
-
+	
 	/* Screen geometry */
 	///
 	int paperMargin() const;
@@ -82,7 +75,7 @@ public:
 		LColor::color = LColor::foreground,
 		enum line_style = line_solid,
 		enum line_width = line_thin) = 0;
-
+	
 	/** Draw the lines between the lines in xp and yp.
 	    xp and yp are arrays of points, and np is the
 	    number of them. */
@@ -91,13 +84,13 @@ public:
 		LColor::color = LColor::foreground,
 		enum line_style = line_solid,
 		enum line_width = line_thin) = 0;
-
+	
 	/// Here xp and yp are arrays of points
 	virtual PainterBase & fillPolygon(
 		int const * xp, int const * yp,
 		int np,
 		LColor::color = LColor::foreground) = 0;
-
+	
 	/// Draw lines from x1,y1 to x2,y2. They are arrays
         virtual PainterBase & segments(
 		int const * x1, int const * y1, 
@@ -117,7 +110,7 @@ public:
 	virtual PainterBase & circle(
 		int x, int y, unsigned int d,
 		LColor::color = LColor::foreground);
-
+	
 	/// Draw an ellipse
 	virtual PainterBase & ellipse(
 		int x, int y,
@@ -143,7 +136,7 @@ public:
 	
 	/// A filled rectangle with the shape of a 3D button
 	virtual PainterBase & button(int x, int y, int w, int h);
-
+	
 	/// 
         virtual PainterBase & buttonFrame(int x, int y, int w, int h);
 	
@@ -155,22 +148,22 @@ public:
 	/// Draw a string at position x, y (y is the baseline)
 	virtual PainterBase & text(int x, int y,
 				   string const & str, LyXFont const & f) = 0;
-
+	
 	/** Draw a string at position x, y (y is the baseline)
 	    This is just for fast drawing */
 	virtual PainterBase & text(int x, int y, char const * str, size_t l,
-		       LyXFont const & f) = 0;
-
+				   LyXFont const & f) = 0;
+	
 	/// Draw a char at position x, y (y is the baseline)
 	virtual PainterBase & text(int x, int y, char c, LyXFont const & f)=0;
-
+	
 	/** Draws a string and encloses it inside a rectangle. */
 	PainterBase & rectText(int x, int baseline, 
 			       string const & string, 
 			       LyXFont const & font,
 			       LColor::color back,
 			       LColor::color frame);
-
+	
 	/** Draw a string and encloses it inside a button frame. */
 	PainterBase & buttonText(int x, int baseline, string const & s,
 				 LyXFont const & font);
