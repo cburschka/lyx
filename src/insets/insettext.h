@@ -22,6 +22,7 @@
 #include "inset.h"
 #include "LString.h"
 #include "lyxcursor.h"
+#include <boost/smart_ptr.hpp>
 
 class Painter;
 class BufferView;
@@ -221,7 +222,7 @@ protected:
 
 private:
 	///
-	typedef std::map<BufferView *, LyXText *> Cache;
+	typedef std::map<BufferView *, boost::shared_ptr<LyXText> > Cache;
 	///
 	typedef Cache::value_type value_type;
 	///
@@ -324,6 +325,7 @@ private:
 	mutable bool frame_is_visible;
 	///
 	mutable BufferView * cached_bview;
-	mutable LyXText * cached_text;
+	///
+	mutable boost::shared_ptr<LyXText> cached_text;
 };
 #endif

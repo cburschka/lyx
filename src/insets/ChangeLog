@@ -1,3 +1,8 @@
+2001-07-05  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* insettext.[hC]: make cached_text a shared_ptr, make Cache be a map
+	of BufferView * and shared_ptr<LyXText>
+
 2001-07-05  Juergen Vigna  <jug@sad.it>
 
 	* insettext.C (clear): deleted also the cache not only LyXText.

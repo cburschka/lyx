@@ -118,14 +118,10 @@ void InsetText::init(InsetText const * ins)
 
 InsetText::~InsetText()
 {
-	// delete all instances of LyXText before deleting the paragraps used
-	// by it.
 	cached_bview = 0;
-	for (Cache::iterator cit = cache.begin(); cit != cache.end(); ++cit) {
-		delete (*cit).second;
-		(*cit).second = 0;
-	}
 
+	// NOTE
+	
 	while (par) {
 		Paragraph * tmp = par->next();
 		delete par;
@@ -136,19 +132,10 @@ InsetText::~InsetText()
 
 void InsetText::clear()
 {
-	// delete all instances of LyXText before deleting the paragraps used
-	// by it.
 	cached_bview = 0;
-	for (Cache::iterator cit = cache.begin(); cit != cache.end(); ++cit) {
-		delete (*cit).second;
-		(*cit).second = 0;
-	}
+
 	// now also delete all caches this should be safe, hopefully
-	for (Cache::iterator cit = cache.begin(); cit != cache.end();
-		 cit = cache.begin())
-	{
-		cache.erase((*cit).first);
-	}
+	cache.clear();
 
 	while (par) {
 		Paragraph * tmp = par->next();
@@ -231,7 +218,7 @@ int InsetText::ascent(BufferView * bv, LyXFont const &) const
 
 int InsetText::descent(BufferView * bv, LyXFont const &) const
 {
-		LyXText * t = getLyXText(bv);
+	LyXText * t = getLyXText(bv);
 	int y_temp = 0;
 	Row * row = t->getRowNearY(y_temp);
 	insetDescent = t->height - row->ascent_of_text() +
@@ -429,7 +416,7 @@ void InsetText::clearFrame(Painter & pain, bool cleared) const
 
 void InsetText::update(BufferView * bv, LyXFont const & font, bool reinit)
 {
-		LyXText * t = getLyXText(bv);
+	LyXText * t = getLyXText(bv);
 		
 #if 0
 	int ww = t->width;
@@ -496,7 +483,7 @@ void InsetText::setUpdateStatus(BufferView * bv, int what) const
 
 void InsetText::updateLocal(BufferView * bv, int what, bool mark_dirty)
 {
-		LyXText * t = getLyXText(bv);
+	LyXText * t = getLyXText(bv);
 	t->fullRebreak(bv);
 	setUpdateStatus(bv, what);
 	if (need_update != CURSOR || t->status != LyXText::UNCHANGED ||
@@ -1505,19 +1492,10 @@ int InsetText::getMaxWidth(BufferView * bv, UpdatableInset const * inset) const
 
 void InsetText::setParagraphData(Paragraph * p)
 {
-	// delete all instances of LyXText before deleting the paragraps used
-	// by it.
 	cached_bview = 0;
-	for (Cache::iterator cit = cache.begin(); cit != cache.end(); ++cit){
-		delete (*cit).second;
-		(*cit).second = 0;
-	}
+
 	// now also delete all caches this should be safe, hopefully
-	for (Cache::iterator cit = cache.begin(); cit != cache.end();
-		 cit = cache.begin())
-	{
-		cache.erase((*cit).first);
-	}
+	cache.clear();
 
 	while (par) {
 		Paragraph * tmp = par->next();
@@ -1627,10 +1605,10 @@ Row * InsetText::crow(BufferView * bv) const
 
 
 LyXText * InsetText::getLyXText(BufferView const * lbv,
-				bool const recursive) const
+					  bool const recursive) const
 {
 	if (!recursive && (cached_bview == lbv))
-		return cached_text;
+		return cached_text.get();
 	
 	// Super UGLY! (Lgb)
 	BufferView * bv = const_cast<BufferView *>(lbv);
@@ -1639,15 +1617,15 @@ LyXText * InsetText::getLyXText(BufferView const * lbv,
 	Cache::iterator it = cache.find(bv);
 	
 	if (it != cache.end()) {
-		lyx::Assert(it->second);
+		lyx::Assert(it->second.get());
 			
 		cached_text = it->second;
 		if (recursive && the_locking_inset) {
 			return the_locking_inset->getLyXText(bv);
 		}
-		return cached_text;
+		return cached_text.get();
 	}
-	cached_text = new LyXText(const_cast<InsetText *>(this));
+	cached_text.reset(new LyXText(const_cast<InsetText *>(this)));
 	cached_text->init(bv);
 
 	cache.insert(make_pair(bv, cached_text));
@@ -1659,7 +1637,7 @@ LyXText * InsetText::getLyXText(BufferView const * lbv,
 			return the_locking_inset->getLyXText(bv);
 		}
 	}
-	return cached_text;
+	return cached_text.get();
 }
 
 
@@ -1673,9 +1651,8 @@ void InsetText::deleteLyXText(BufferView * bv, bool recursive) const
 		return;
 	}
 
-	lyx::Assert(it->second);
-	
-	delete it->second;
+	lyx::Assert(it->second.get());
+
 	cache.erase(bv);
 	if (recursive) {
 		/// then remove all LyXText in text-insets
@@ -1699,7 +1676,7 @@ void InsetText::resizeLyXText(BufferView * bv, bool force) const
 	if (it == cache.end()) {
 		return;
 	}
-	lyx::Assert(it->second);
+	lyx::Assert(it->second.get());
 	
 	Paragraph * lpar = 0;
 	Paragraph * selstartpar = 0;
