@@ -59,7 +59,6 @@
 #include <fstream>
 #include <algorithm>
 #include <cstdlib>
-//#include <csignal>
 
 using std::ostream;
 using std::ifstream;
@@ -80,45 +79,45 @@ namespace grfx = lyx::graphics;
 
 // These functions should probably go into bufferview_funcs somehow (Jug)
 
-void InsetText::saveLyXTextState(LyXText * t) const
+void InsetText::saveLyXTextState() const
 {
 	// check if my paragraphs are still valid
 	ParagraphList::iterator it = const_cast<ParagraphList&>(paragraphs).begin();
 	ParagraphList::iterator end = const_cast<ParagraphList&>(paragraphs).end();
 	for (; it != end; ++it) {
-		if (it == t->cursor.par())
+		if (it == text_.cursor.par())
 			break;
 	}
 
-	if (it != end && t->cursor.pos() <= it->size())
-		sstate = *t; // slicing intended
+	if (it != end && text_.cursor.pos() <= it->size())
+		sstate = text_; // slicing intended
 	else
 		sstate.cursor.par(end);
 }
 
 
-void InsetText::restoreLyXTextState(LyXText * t) const
+void InsetText::restoreLyXTextState() const
 {
 	if (sstate.cursor.par() == const_cast<ParagraphList&>(paragraphs).end())
 		return;
 
-	t->selection.set(true);
+	text_.selection.set(true);
 	// at this point just to avoid the DEPM when setting the cursor
-	t->selection.mark(sstate.selection.mark());
+	text_.selection.mark(sstate.selection.mark());
 	if (sstate.selection.set()) {
-		t->setCursor(sstate.selection.start.par(),
+		text_.setCursor(sstate.selection.start.par(),
 			sstate.selection.start.pos(),
 			true, sstate.selection.start.boundary());
-		t->selection.cursor = t->cursor;
-		t->setCursor(sstate.selection.end.par(), sstate.selection.end.pos(),
+		text_.selection.cursor = text_.cursor;
+		text_.setCursor(sstate.selection.end.par(), sstate.selection.end.pos(),
 			true, sstate.selection.end.boundary());
-		t->setSelection();
-		t->setCursor(sstate.cursor.par(), sstate.cursor.pos());
+		text_.setSelection();
+		text_.setCursor(sstate.cursor.par(), sstate.cursor.pos());
 	} else {
-		t->setCursor(sstate.cursor.par(), sstate.cursor.pos(),
+		text_.setCursor(sstate.cursor.par(), sstate.cursor.pos(),
 			true, sstate.cursor.boundary());
-		t->selection.cursor = t->cursor;
-		t->selection.set(false);
+		text_.selection.cursor = text_.cursor;
+		text_.selection.set(false);
 	}
 }
 
@@ -2008,9 +2007,9 @@ void InsetText::resizeLyXText(BufferView * bv, bool force) const
 	if (paragraphs.size() == 1 && paragraphs.begin()->empty()) {
 		// no data, resize not neccessary!
 		// we have to do this as a fixed width may have changed!
-		saveLyXTextState(&text_);
+		saveLyXTextState();
 		text_.init(bv, true);
-		restoreLyXTextState(&text_);
+		restoreLyXTextState();
 		return;
 	}
 
@@ -2024,22 +2023,21 @@ void InsetText::resizeLyXText(BufferView * bv, bool force) const
 	if (!force && getMaxWidth(bv, this) < 0)
 		return;
 
-	LyXText * t = &text_;
-	saveLyXTextState(t);
+	saveLyXTextState();
 
 	for_each(const_cast<ParagraphList&>(paragraphs).begin(),
 		 const_cast<ParagraphList&>(paragraphs).end(),
 		 boost::bind(&Paragraph::resizeInsetsLyXText, _1, bv));
 
-	t->init(bv, true);
-	restoreLyXTextState(t);
+	text_.init(bv, true);
+	restoreLyXTextState();
 
 	if (the_locking_inset) {
 		inset_x = cix(bv) - top_x + drawTextXOffset;
 		inset_y = ciy(bv) + drawTextYOffset;
 	}
 
-	t->top_y(bv->screen().topCursorVisible(t));
+	text_.top_y(bv->screen().topCursorVisible(&text_));
 	if (!owner()) {
 		const_cast<InsetText*>(this)->updateLocal(bv, FULL, false);
 		// this will scroll the screen such that the cursor becomes visible
@@ -2052,25 +2050,24 @@ void InsetText::resizeLyXText(BufferView * bv, bool force) const
 
 void InsetText::reinitLyXText() const
 {
-	LyXText * t = &text_;
 	BufferView * bv = text_.bv_owner;
 
 	if (!bv)
 		return;
 
-	saveLyXTextState(t);
+	saveLyXTextState();
 
 	for_each(const_cast<ParagraphList&>(paragraphs).begin(),
 		 const_cast<ParagraphList&>(paragraphs).end(),
 		 boost::bind(&Paragraph::resizeInsetsLyXText, _1, bv));
 
-	t->init(bv, true);
-	restoreLyXTextState(t);
+	text_.init(bv, true);
+	restoreLyXTextState();
 	if (the_locking_inset) {
 		inset_x = cix(bv) - top_x + drawTextXOffset;
 		inset_y = ciy(bv) + drawTextYOffset;
 	}
-	t->top_y(bv->screen().topCursorVisible(t));
+	text_.top_y(bv->screen().topCursorVisible(&text_));
 	if (!owner()) {
 		const_cast<InsetText*>(this)->updateLocal(bv, FULL, false);
 		// this will scroll the screen such that the cursor becomes visible

@@ -322,9 +322,9 @@ private:
 	///
 	void clearInset(BufferView *, int start_x, int baseline) const;
 	///
-	void saveLyXTextState(LyXText *) const;
+	void saveLyXTextState() const;
 	///
-	void restoreLyXTextState(LyXText *) const;
+	void restoreLyXTextState() const;
 	///
 	void collapseParagraphs(BufferView *);
 
