@@ -113,37 +113,37 @@ void FontLoader::getFontinfo(LyXFont::FONT_FAMILY family,
 
 		case LyXFont::CMR_FAMILY:
 			fontinfo[family][series][shape] =
-				new FontInfo("-*-cmr-medium-*-*-*-*-*-*-*-*-*-*-*");
+				new FontInfo("-*-cmr10-medium-*-*-*-*-*-*-*-*-*-*-*");
 			return;
 
 		case LyXFont::CMSY_FAMILY:
 			fontinfo[family][series][shape] =
-				new FontInfo("-*-cmsy-*-*-*-*-*-*-*-*-*-*-*-*");
+				new FontInfo("-*-cmsy10-*-*-*-*-*-*-*-*-*-*-*-*");
 			return;
 
 		case LyXFont::CMM_FAMILY:
 			fontinfo[family][series][shape] =
-				new FontInfo("-*-cmmi-medium-*-*-*-*-*-*-*-*-*-*-*");
+				new FontInfo("-*-cmmi10-medium-*-*-*-*-*-*-*-*-*-*-*");
 			return;
 
 		case LyXFont::CMEX_FAMILY:
 			fontinfo[family][series][shape] =
-				new FontInfo("-*-cmex-*-*-*-*-*-*-*-*-*-*-*-*");
+				new FontInfo("-*-cmex10-*-*-*-*-*-*-*-*-*-*-*-*");
 			return;
 
 		case LyXFont::MSA_FAMILY:
 			fontinfo[family][series][shape] =
-				new FontInfo("-*-msam-*-*-*-*-*-*-*-*-*-*-*-*");
+				new FontInfo("-*-msam10-*-*-*-*-*-*-*-*-*-*-*-*");
 			return;
 
 		case LyXFont::MSB_FAMILY:
 			fontinfo[family][series][shape] = 
-				new FontInfo("-*-msbm-*-*-*-*-*-*-*-*-*-*-*-*");
+				new FontInfo("-*-msbm10-*-*-*-*-*-*-*-*-*-*-*-*");
 			return;
 
 		case LyXFont::EUFRAK_FAMILY:
 			fontinfo[family][series][shape] = 
-				new FontInfo("-*-eufrak-medium-*-*-*-*-*-*-*-*-*-*-*");
+				new FontInfo("-*-eufm10-medium-*-*-*-*-*-*-*-*-*-*-*");
 			return;
 
 		default:

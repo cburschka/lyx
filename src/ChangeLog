@@ -1,3 +1,8 @@
+2002-01-26  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* FontLoader.C (getFontinfo): Change the latex font names in order
+	to match the names of type1inst.
+
 2002-01-21  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* WorkArea.C (WorkArea): initialize the scrollbar bounds.
