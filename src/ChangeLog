@@ -1,3 +1,8 @@
+2003-02-18  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* lyxrc.C (output): enclose user email in quotes (in case there are
+	several words)
+
 2003-02-18  John Levon  <levon@movementarian.org>
 
 	* buffer.h: add std::

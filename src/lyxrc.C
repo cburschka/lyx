@@ -1280,7 +1280,7 @@ void LyXRC::output(ostream & os) const
 		os << "\\user_name \"" << user_name << "\"\n";
 
 	case RC_USER_EMAIL:
-		os << "\\user_email " << user_email << "\n";
+		os << "\\user_email \"" << user_email << "\"\n";
 
 	case RC_SHOW_BANNER:
 		if (show_banner != system_lyxrc.show_banner) {

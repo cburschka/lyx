@@ -1,3 +1,22 @@
+2003-02-18  John Levon  <levon@movementarian.org>
+
+	* config/qt.m4: prefer -lqt-mt - test this...
+
+2003-02-17  John Levon  <levon@movementarian.org>
+
+	* config/pspell.m4: turn on pspell by default
+
+2003-02-17  John Levon  <levon@movementarian.org>
+
+	* config/configure.ac:
+	* config/configure.in: remove the -isystem fiddling. Let's see
+	  if Solaris people complain...
+
+2003-02-07  John Levon  <levon@movementarian.org>
+
+	* config/configure.ac:
+	* config/configure.in: fix bug 874 by adding strerror check
+
 2003-01-12  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* xforms.m4 (LYX_CHECK_XFORMS_IMAGE_LOADER): include forms.h in
