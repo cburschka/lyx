@@ -245,7 +245,6 @@ string const InsetExternal::doSubstitution(Buffer const * buffer,
 	result = subst(result, "$$FPath", filepath);
 	result = subst(result, "$$Tempname", tempname_);
 	result = subst(result, "$$Sysdir", system_lyxdir);
-	result = ReplaceEnvironmentPath(result);
 
 	// Handle the $$Contents(filename) syntax
 	if (contains(result, "$$Contents(\"")) {

@@ -1,3 +1,8 @@
+2002-10-25  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* insetexternal.C (doSubstitution): do not try to replace
+	environment variables, this is done when executing the command
+
 2002-10-24  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* insetexternal.C (doSubstitution): change order of substitution
