@@ -1,3 +1,8 @@
+2004-08-03  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* Makefile.in.in (POTFILES.in): fix portability problem with Mac
+	OS X (basic regexps do not understand \|)
+
 2004-08-02  Michael Schmitt  <michael.schmitt@teststep.org>
 
 	* de.po: big update
