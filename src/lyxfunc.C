@@ -609,9 +609,6 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 	case LFUN_INSET_MARGINAL:
 		code = InsetOld::MARGIN_CODE;
 		break;
-	case LFUN_INSET_MINIPAGE:
-		code = InsetOld::BOX_CODE;
-		break;
 	case LFUN_INSET_FLOAT:
 	case LFUN_INSET_WIDE_FLOAT:
 		code = InsetOld::FLOAT_CODE;

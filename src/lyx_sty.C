@@ -107,11 +107,6 @@ string const floatingfootnote_def =
 	"  \\expandafter\\noexpand\\csname SF@gobble@opt \\endcsname}\n"
 	"\\def\\SF@gobble@twobracket[#1]#2{}\n";
 
-string const minipageindent_def =
-	"%% This length is the backup for minipages of the \\parindent\n"
-	"\\newlength{\\LyXMinipageIndent}\n"
-	"\\setlength{\\LyXMinipageIndent}{\\parindent}\n";
-
 string const boldsymbol_def =
 	"%% Bold symbol macro for standard LaTeX users\n"
 	"\\newcommand{\\boldsymbol}[1]{\\mbox{\\boldmath $#1$}}\n";

@@ -139,11 +139,11 @@ void InsetBox::setButtonLabel()
 	BoxType btype = boxtranslator().find(params_.type);
 	if (btype == Frameless) {
 		if (params_.use_parbox)
-			setLabel(_("Parbox"));
+			setLabel(_("Box") + " (" + _("Parbox") + ")");
 		else
-			setLabel(_("Minipage"));
+			setLabel(_("Box") + " (" + _("Minipage") + ")");
 	} else
-		setLabel(boxtranslator_loc().find(btype));
+		setLabel(_("Box") + " (" + boxtranslator_loc().find(btype) + ")");
 
 	font.setColor(LColor::foreground);
 	setBackgroundColor(LColor::background);

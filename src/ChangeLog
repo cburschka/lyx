@@ -1,3 +1,14 @@
+2003-12-28  Michael Schmitt  <michael.schmitt@teststep.org>
+
+	* LaTeXFeatures.C:
+	* lyx_sty.[Ch]: remove minipageindent_def
+
+	* LyXAction.C:
+	* factory.C:
+	* lfuns.h:
+	* lyxfunc.C:
+	* text3.C: remove LFUN_INSET_MINIPAGE
+
 2003-12-28  Angus Leeming  <leeming@lyx.org>
 
 	* text3.C (dispatch): output useful info on receipt of LFUN_GETLAYOUT.

@@ -1387,7 +1387,6 @@ DispatchResult LyXText::dispatch(FuncRequest const & cmd)
 	case LFUN_INSET_FLOAT:
 	case LFUN_INSET_FOOTNOTE:
 	case LFUN_INSET_MARGINAL:
-	case LFUN_INSET_MINIPAGE:
 	case LFUN_INSET_OPTARG:
 	case LFUN_INSET_WIDE_FLOAT:
 	case LFUN_INSET_WRAP:

@@ -43,8 +43,6 @@ extern std::string const paragraphleftindent_def;
 ///
 extern std::string const floatingfootnote_def;
 ///
-extern std::string const minipageindent_def;
-///
 extern std::string const boldsymbol_def;
 ///
 extern std::string const binom_def;

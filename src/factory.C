@@ -84,9 +84,6 @@ InsetOld * createInset(FuncRequest const & cmd)
 	case LFUN_INSERT_PAGEBREAK:
 		return new InsetPagebreak;
 
-	case LFUN_INSET_MINIPAGE:
-		return new InsetBox(params, "Frameless");
-
 	case LFUN_INSERT_CHARSTYLE: {
 		string s = cmd.getArg(0);
 		CharStyles::iterator found_cs = params.getLyXTextClass().charstyle(s);
@@ -443,8 +440,6 @@ InsetOld * readInset(LyXLex & lex, Buffer const & buf)
 			inset.reset(new InsetMarginal(buf.params()));
 		} else if (tmptok == "OptArg") {
 			inset.reset(new InsetOptArg(buf.params()));
-		} else if (tmptok == "Minipage") {
-			inset.reset(new InsetBox(buf.params(), "Frameless"));
 		} else if (tmptok == "Float") {
 			lex.next();
 			string tmptok = lex.getString();

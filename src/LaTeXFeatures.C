@@ -357,8 +357,6 @@ string const LaTeXFeatures::getMacros() const
 		macros << mathcircumflex_def << '\n';
 
 	// other
-	if (isRequired("NeedLyXMinipageIndent"))
-		macros << minipageindent_def;
 	if (isRequired("ParagraphLeftIndent"))
 		macros << paragraphleftindent_def;
 	if (isRequired("NeedLyXFootnoteCode"))
