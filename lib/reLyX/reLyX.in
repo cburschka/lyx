@@ -18,7 +18,7 @@ my $mainscript = "reLyXmain.pl";
 # Do this in a BEGIN block so it's done before the 'use lib' below
 BEGIN{
 # This points to LyX library dir, e.g. /usr/local/share/lyx
-$lyxdir = "@pkgdatadir@";
+$lyxdir = "@LYX_DIR@";
 # This is just "." if you compiled from the source directory
 my $srcdir = "@srcdir@";
 # This is the name of the program, usually just "lyx"

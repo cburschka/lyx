@@ -1,5 +1,11 @@
 2000-01-26  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
+	* lib/reLyX/reLyX.in: use variable @LYX_DIR@ as built-in data
+	directory. 
+
+	* lib/reLyX/configure.in (LYX_DIR): re-introduce this variable
+	that I removed earlier... It is really needed.
+
 	* lib/examples/multicol.lyx: new file, splitted from Extended.lyx. 
 
 2000-01-25  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
