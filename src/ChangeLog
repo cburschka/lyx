@@ -1,5 +1,9 @@
 2003-04-08  Alfredo Braunstein  <abraunst@libero.it>
 
+	* BufferView.C (lockInset): another bad getchar crunched
+
+2003-04-08  Alfredo Braunstein  <abraunst@libero.it>
+
 	* text2.C (changeDepth): do not setUndo on test_only (make undo work
 	again)
  

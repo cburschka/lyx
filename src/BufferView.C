@@ -712,8 +712,9 @@ bool BufferView::lockInset(UpdatableInset * inset)
 	if (!theLockingInset()) {
 		// first check if it's the inset under the cursor we want lock
 		// should be most of the time
-		char const c = text->cursor.par()->getChar(text->cursor.pos());
-		if (c == Paragraph::META_INSET) {
+		if (text->cursor.pos() < text->cursor.par()->size() 
+		    && text->cursor.par()->getChar(text->cursor.pos()) ==
+		    Paragraph::META_INSET) {
 			Inset * in = text->cursor.par()->getInset(text->cursor.pos());
 			if (inset == in) {
 				theLockingInset(inset);
