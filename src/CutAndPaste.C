@@ -17,7 +17,6 @@
 #include "BufferView.h"
 #include "buffer.h"
 #include "paragraph.h"
-#include "lyx_gui_misc.h"
 #include "lyxcursor.h"
 #include "gettext.h"
 #include "iterators.h"

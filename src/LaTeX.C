@@ -21,7 +21,6 @@
 #include "LaTeX.h"
 #include "bufferlist.h"
 #include "gettext.h"
-#include "lyx_gui_misc.h"
 #include "lyxfunc.h"
 #include "debug.h"
 #include "support/filetools.h"

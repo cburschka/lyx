@@ -24,7 +24,6 @@
 #include "Painter.h"
 #include "font.h"
 #include "lyxtext.h"
-#include "lyx_gui_misc.h"
 #include "LyXView.h"
 #include "insets/insettext.h"
 #include "debug.h"

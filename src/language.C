@@ -18,7 +18,6 @@
 #include "gettext.h"
 #include "encoding.h"
 #include "lyxrc.h"
-#include "lyx_gui_misc.h"
 #include "lyxlex.h"
 #include "debug.h"
 

@@ -21,7 +21,6 @@
 #include "buffer.h"
 #include "bufferlist.h"
 #include "lyx_main.h"
-#include "lyx_gui_misc.h"
 #include "LyXAction.h"
 #include "lyxrc.h"
 #include "lyxlex.h"

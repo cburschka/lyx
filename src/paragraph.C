@@ -24,7 +24,6 @@
 #include "bufferparams.h"
 #include "debug.h"
 #include "LaTeXFeatures.h"
-#include "lyx_gui_misc.h"
 #include "texrow.h"
 #include "BufferView.h"
 #include "encoding.h"

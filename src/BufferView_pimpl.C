@@ -18,7 +18,6 @@
 #include "bufferview_funcs.h"
 #include "TextCache.h"
 #include "bufferlist.h"
-#include "lyx_gui_misc.h"
 #include "lyxrc.h"
 #include "intl.h"
 // added for Dispatch functions

@@ -10,7 +10,6 @@
 #include "lyxvc.h"
 #include "vc-backend.h"
 #include "debug.h"
-#include "lyx_gui_misc.h"
 #include "buffer.h"
 #include "BufferView.h"
 #include "gettext.h"

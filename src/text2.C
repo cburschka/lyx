@@ -22,7 +22,6 @@
 #include "undo_funcs.h"
 #include "buffer.h"
 #include "bufferparams.h"
-#include "lyx_gui_misc.h"
 #include "gettext.h"
 #include "BufferView.h"
 #include "LyXView.h"

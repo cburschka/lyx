@@ -18,7 +18,6 @@
 #include "lyxfont.h"
 #include "language.h"
 #include "buffer.h"
-#include "lyx_gui_misc.h"
 #include "BufferView.h"
 #include "LyXView.h"
 #include "lyxtext.h"

@@ -6,7 +6,6 @@
 #include "lyxrc.h"
 #include "LString.h"
 #include "buffer.h"
-#include "lyx_gui_misc.h"
 #include "gettext.h"
 #include "bufferview_funcs.h"
 #include "exporter.h"

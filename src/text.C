@@ -14,7 +14,6 @@
 #include "lyxrow.h"
 #include "lyxtextclasslist.h"
 #include "paragraph.h"
-#include "lyx_gui_misc.h"
 #include "gettext.h"
 #include "bufferparams.h"
 #include "buffer.h"
