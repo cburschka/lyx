@@ -1,3 +1,7 @@
+2004-12-05  Angus Leeming  <leeming@lyx.org>
+
+	* pch.h: s@<X11/forms.h>@"lyx_forms.h"@
+
 2004-12-02  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* FormTabular.[Ch], FormTabularCreate.C: use size_t-like types for
