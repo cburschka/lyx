@@ -43,6 +43,11 @@ public:
 	int latex(Buffer const *, std::ostream &, bool, bool) const;
 	///
 	void validate(LaTeXFeatures &) const;
+	/** Invoked by BufferView::Pimpl::dispatch when a new citation key
+	    is inserted. Tells us that the buffer is no longer being loaded
+	    and that the cache of BibTeX keys should be reloaded in the future.
+	*/
+	void setLoadingBuffer(Buffer const * buffer, bool state) const;
 private:
 	struct Cache {
 		///

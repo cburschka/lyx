@@ -3139,8 +3139,11 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		InsetCitation * inset = new InsetCitation(p);
 		if (!insertInset(inset))
 			delete inset;
-		else
+		else {
+			inset->setLoadingBuffer(bv_->buffer(), false);
 			updateInset(inset, true);
+		}
+		
 	}
 	break;
 
