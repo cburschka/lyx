@@ -1,6 +1,10 @@
 
 2004-04-01  Alfredo Braunstein  <abraunst@lyx.org>
 
+	* text3.C (getStatus): add LFUN_BEGINNINGBUF
+
+2004-04-01  Alfredo Braunstein  <abraunst@lyx.org>
+
 	* lyxfind.C: add a couple of inTexted() tests + other small fixes
 	* BufferView_pimpl.[Ch] (getStatus)
 	* BufferView.[Ch] (getStatus): add

@@ -1789,6 +1789,7 @@ bool LyXText::getStatus(LCursor & cur, FuncRequest const & cmd,
 	case LFUN_WORDRIGHT:
 	case LFUN_WORDLEFT:
 	case LFUN_ENDBUF:
+	case LFUN_BEGINNINGBUF:
 	case LFUN_RIGHT:
 	case LFUN_RIGHTSEL:
 	case LFUN_LEFT:
