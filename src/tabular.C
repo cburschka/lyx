@@ -2519,9 +2519,8 @@ void LyXTabular::Validate(LaTeXFeatures & features) const
 	if (NeedRotating())
 		features.require("rotating");
 	for (int cell = 0; cell < numberofcells; ++cell) {
-		if ( (GetVAlignment(cell) != LYX_VALIGN_TOP) ||
-		     ( !(GetPWidth(cell).zero())&&!(IsMultiColumn(cell)) )
-		   )
+		if ((GetVAlignment(cell) != LYX_VALIGN_TOP) ||
+		     (!(GetPWidth(cell).zero())&&!(IsMultiColumn(cell))))
 			features.require("array");
 		GetCellInset(cell)->validate(features);
 	}
