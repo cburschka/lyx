@@ -19,18 +19,6 @@ MathInset * MathExFuncInset::clone() const
 }
 
 
-void MathExFuncInset::write(WriteStream & os) const
-{
-	os << '\\' << name_.c_str() << '{' << cell(0) << '}';
-}
-
-
-void MathExFuncInset::normalize(NormalStream & os) const
-{
-	os << '[' << name_.c_str() << ' ' << cell(0) << ']';
-}
-
-
 void MathExFuncInset::metrics(MathMetricsInfo const & mi) const
 {
 	mi_ = mi;
@@ -44,7 +32,33 @@ void MathExFuncInset::draw(Painter & pain, int x, int y) const
 }
 
 
+void MathExFuncInset::normalize(NormalStream & os) const
+{
+	os << '[' << name_.c_str() << ' ' << cell(0) << ']';
+}
+
+
+void MathExFuncInset::maplize(MapleStream & os) const
+{
+	os << name_.c_str() << '(' << cell(0) << ')';
+}
+
+
+void MathExFuncInset::mathmlize(MathMLStream & os) const
+{
+	os << MTag(name_.c_str()) << cell(0) << ETag(name_.c_str());
+}
+
+
 void MathExFuncInset::octavize(OctaveStream & os) const
 {
 	os << name_.c_str() << '(' << cell(0) << ')';
 }
+
+
+void MathExFuncInset::write(WriteStream & os) const
+{
+	os << '\\' << name_.c_str() << '{' << cell(0) << '}';
+}
+
+

@@ -15,10 +15,10 @@
 #include "debug.h"
 
 
-std::ostream & operator<<(ostream & os, MathArray const & ar)
+std::ostream & operator<<(std::ostream & os, MathArray const & ar)
 {
-	NormalStream ws(os);	
-	ws << ar;
+	NormalStream ns(os);	
+	ns << ar;
 	return os;
 }
 
@@ -55,8 +55,9 @@ string charSequence(MathArray::const_iterator it, MathArray::const_iterator end)
 }
 
 
-void glueChars(MathArray & dat)
+void extractStrings(MathArray & dat)
 {
+	//lyxerr << "\nStrings from: " << ar << "\n";
 	MathArray ar;
 	MathArray::const_iterator it = dat.begin();
 	while (it != dat.end()) {
@@ -71,6 +72,7 @@ void glueChars(MathArray & dat)
 		}
 	}
 	ar.swap(dat);
+	//lyxerr << "\nStrings to: " << ar << "\n";
 }
 
 
@@ -110,6 +112,7 @@ MathInset * singleItem(MathArray & ar)
 
 void extractMatrices(MathArray & ar)
 {
+	lyxerr << "\nMatrices from: " << ar << "\n";
 	for (MathArray::iterator it = ar.begin(); it != ar.end(); ++it) {
 		if (!it->nucleus())
 			continue;	
@@ -120,39 +123,59 @@ void extractMatrices(MathArray & ar)
 		if (!arr || !arr->asArrayInset())
 			continue;
 		*it = MathAtom(new MathMatrixInset(*(arr->asArrayInset())));
+		lyxerr << "\nMatrices to: " << ar << "\n";
 	}
 } 
 
+// convert this inset somehow to a string
+string extractString(MathInset * p)
+{
+	if (p && p->getChar())
+		return string(1, p->getChar());
+	if (p && p->asStringInset())
+		return p->asStringInset()->str();
+	return string();
+}
 
+
+// replace '('...')' sequences by a real MathDelimInset
 void extractDelims(MathArray & ar) {
 	// use indices rather than iterators for the loop  because we are going
 	// to modify the array.
+	lyxerr << "\nDelims from: " << ar << "\n";
 	for (MathArray::size_type i = 0; i < ar.size(); ++i) {
 		MathArray::iterator it = ar.begin() + i;
-		if (!it->nucleus())
-			continue;	
-		if ((*it)->getChar() != '(')
+		if (extractString(it->nucleus()) != "(")
 			continue;
 
-		// search last closing paranthesis
-		MathArray::iterator et = ar.end();
-		for (MathArray::iterator jt = it + 1; jt != ar.end(); ++jt)
-			if ((*jt)->getChar() == ')')
-				et = jt;
-		if (et == ar.end())
+		// search matching closing paranthesis
+		int level = 1;
+		MathArray::iterator jt = it + 1;
+		for (; jt != ar.end(); ++jt) {
+			string s = extractString(jt->nucleus());
+			if (s == "(")
+				++level;
+			if (s == ")")
+				--level;
+			if (level == 0)
+				break;
+		}
+		if (jt == ar.end())
 			continue;
 
 		// create a proper deliminset
 		MathAtom at(new MathDelimInset("(", ")"));
-		at->cell(0) = MathArray(it + 1, et);
+		at->cell(0) = MathArray(it + 1, jt);
 
 		// replace the original stuff by the new inset
-		ar.erase(it + 1, et + 1);
+		ar.erase(it + 1, jt + 1);
 		*it = at;
+		lyxerr << "\nDelims to: " << ar << "\n";
 	}
 } 
 
 
+// replace 'f' '(...)' and 'f' '^n' '(...)' sequences by a real MathExFuncInset
 // assume 'extractDelims' ran before
 void extractFunctions(MathArray & ar)
 {
@@ -160,6 +183,7 @@ void extractFunctions(MathArray & ar)
 	if (ar.size() <= 1)
 		return;
 
+	lyxerr << "\nFunctions from: " << ar << "\n";
 	for (MathArray::size_type i = 0; i < ar.size() - 1; ++i) {
 		MathArray::iterator it = ar.begin() + i;
 
@@ -197,13 +221,14 @@ void extractFunctions(MathArray & ar)
 		
 		// remove the source of the argument from the array
 		ar.erase(jt);
+		lyxerr << "\nFunctions to: " << ar << "\n";
 	}
 } 
 
 
 void extractStructure(MathArray & ar)
 {
-	glueChars(ar);
+	extractStrings(ar);
 	extractMatrices(ar);
 	extractDelims(ar);
 	extractFunctions(ar);
@@ -213,7 +238,7 @@ void extractStructure(MathArray & ar)
 void write(MathArray const & dat, WriteStream & wi)
 {
 	MathArray ar = dat;
-	glueChars(ar);
+	extractStrings(ar);
 	for (MathArray::const_iterator it = ar.begin(); it != ar.end(); ++it) {
 		MathInset const * p = it->nucleus();
 		if (it + 1 != ar.end()) {
@@ -228,21 +253,10 @@ void write(MathArray const & dat, WriteStream & wi)
 }
 
 
-void normalize(MathArray const & dat, NormalStream & os)
+void normalize(MathArray const & ar, NormalStream & os)
 {
-	MathArray ar = dat;
-	glueChars(ar);
-	for (MathArray::const_iterator it = ar.begin(); it != ar.end(); ++it) {
-		MathInset const * p = it->nucleus();
-		if (it + 1 != ar.end()) {
-			if (MathScriptInset const * q = asScript(it)) {
-				q->normalize(p, os);
-				++it;	
-				continue;
-			}
-		}
-		p->normalize(os);
-	}
+	for (MathArray::const_iterator it = ar.begin(); it != ar.end(); ++it)
+		(*it)->normalize(os);
 }
 
 

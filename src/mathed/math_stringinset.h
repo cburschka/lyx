@@ -22,10 +22,6 @@ public:
 	void metrics(MathMetricsInfo const & st) const;
 	///
 	void draw(Painter &, int x, int y) const;
-	///
-	void write(WriteStream & os) const;
-	///
-	void normalize(NormalStream &) const;
 	/// 
 	int ascent() const;
 	///
@@ -33,11 +29,20 @@ public:
 	///
 	int width() const;
 	///
+	string str() const { return str_; }
+	///
+	MathStringInset * asStringInset() { return this; }
+
+	///
+	void normalize(NormalStream &) const;
+	///
 	void octavize(OctaveStream &) const;
 	///
 	void maplize(MapleStream &) const;
 	///
 	void mathmlize(MathMLStream &) const;
+	///
+	void write(WriteStream & os) const;
 
 private:
 	/// the string

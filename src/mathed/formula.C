@@ -124,7 +124,7 @@ namespace {
 			if (pos == string::npos || pos < 15)
 				break; // caret position not found
 			pos -= 15; // skip the "on line ..." part
-			if (expr[pos] == '*')
+			if (expr[pos] == '*' || (pos > 0 && expr[pos - 1] == '*'))
 				break; // two '*' in a row are definitely bad
 			expr.insert(pos,  "*");
 		}
