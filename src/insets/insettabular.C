@@ -1186,10 +1186,31 @@ InsetTabular::localDispatch(BufferView * bv, kb_action action,
 		}
 		// ATTENTION: the function above has to be PASTE and PASTESELECTION!!!
 	default:
+		// handle font changing stuff on selection before we lock the inset
+		// in the default part!
+		result = UNDISPATCHED;
+		if (hs) {
+			switch(action) {
+			case LFUN_LANGUAGE:
+			case LFUN_EMPH:
+			case LFUN_BOLD:
+			case LFUN_NOUN:
+			case LFUN_CODE:
+			case LFUN_SANS:
+			case LFUN_ROMAN:
+			case LFUN_DEFAULT:
+			case LFUN_UNDERLINE:
+			case LFUN_FONT_SIZE:
+				if (bv->Dispatch(action, arg))
+					result = DISPATCHED;
+				break;
+			default:
+				break;
+			}
+		}
 		// we try to activate the actual inset and put this event down to
 		// the insets dispatch function.
-		result = UNDISPATCHED;
-		if (the_locking_inset)
+		if ((result == DISPATCHED) || the_locking_inset)
 			break;
 		nodraw(true);
 		if (activateCellInset(bv)) {

@@ -2,6 +2,9 @@
 
 	* insettabular.C (localDispatch): force a SELECTION update if we
 	had a selection and we passed the event down to the inset (fix #213)
+	(localDispatch): handle font changing stuff when we have a cell
+	selection so that the selection is not rewoked. I don't really like
+	this fix, but it's the only way I see to do it right now.
 
 2002-02-22  Juergen Vigna  <jug@sad.it>
 
