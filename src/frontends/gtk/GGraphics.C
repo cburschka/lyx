@@ -28,6 +28,7 @@
 
 #include "support/lyxlib.h"  // for float_equal
 #include "support/lstrings.h"
+#include "support/tostr.h"
 
 #include "debug.h"
 
@@ -37,6 +38,7 @@ using std::string;
 namespace lyx {
 
 using support::float_equal;
+using support::strToDbl;
 using support::token;
 
 namespace frontend {
@@ -265,12 +267,13 @@ void GGraphics::apply()
 	}
 
 	if (setscalingradio_->get_active()) {
-		igp.scale = outputscalespin_->get_adjustment()->get_value();
-		if (float_equal(igp.scale, 0.0, 0.05))
-			igp.scale = 100.0;
+		float scaleValue = outputscalespin_->get_adjustment()->get_value();
+		igp.scale = tostr(scaleValue);
+		if (float_equal(scaleValue, 0.0, 0.05))
+			igp.scale = string();
 		igp.width = LyXLength();
 	} else {
-		igp.scale = 0.0;
+		igp.scale = string();
 		Glib::ustring const widthunit =
 			(*widthunitscombo_->get_active())[stringcol_];
 		igp.width = LyXLength(widthspin_->get_text() + widthunit);
@@ -326,7 +329,7 @@ void GGraphics::apply()
 	igp.clip = clipcheck_->get_active();
 
 	// the extra section
-	igp.rotateAngle = anglespin_->get_adjustment()->get_value();
+	igp.rotateAngle = tostr(anglespin_->get_adjustment()->get_value());
 
 	int const origin_pos = origincombo_->get_active_row_number();
 	igp.rotateOrigin = origins_[origin_pos];
@@ -369,7 +372,7 @@ void GGraphics::update() {
 		displaycombo_->set_active(0);
 	}
 
-	outputscalespin_->get_adjustment()->set_value(igp.scale);
+	outputscalespin_->get_adjustment()->set_value(strToDbl(igp.scale));
 	widthspin_->get_adjustment()->set_value(igp.width.value());
 	unitsComboFromLength(widthunitscombo_, stringcol_,
 	                     igp.width, defaultUnit);
@@ -377,7 +380,7 @@ void GGraphics::update() {
 	unitsComboFromLength(heightunitscombo_, stringcol_,
 	                     igp.height, defaultUnit);
 
-	if (!float_equal(igp.scale, 0.0, 0.05)) {
+	if (!igp.scale.empty() && igp.scale != "0") {
 		// scaling sizing mode
 		setscalingradio_->set_active(true);
 	} else {
@@ -396,7 +399,7 @@ void GGraphics::update() {
 	clipcheck_->set_active(igp.clip);
 
 	// the extra section
-	anglespin_->get_adjustment()->set_value(igp.rotateAngle);
+	anglespin_->get_adjustment()->set_value(strToDbl(igp.rotateAngle));
 
 	int origin_pos;
 	if (igp.rotateOrigin.empty()) {

@@ -256,9 +256,8 @@ void QGraphics::update_contents()
 	for (int i = 0; i < num_units; i++)
 		dialog_->widthUnit->insertItem(unit_name_gui[i], -1);
 
-	if (!float_equal(igp.scale, 0.0, 0.05)) {
-		// there is a scale value > 0.05
-		dialog_->width->setText(toqstr(tostr(igp.scale)));
+	if (!igp.scale.empty() && igp.scale != "0") {
+		dialog_->width->setText(toqstr(igp.scale));
 		dialog_->widthUnit->setCurrentItem(0);
 	} else {
 		// no scale means default width/height
@@ -280,7 +279,7 @@ void QGraphics::update_contents()
 
 	dialog_->aspectratio->setChecked(igp.keepAspectRatio);
 
-	dialog_->angle->setText(toqstr(tostr(igp.rotateAngle)));
+	dialog_->angle->setText(toqstr(igp.rotateAngle));
 
 	dialog_->origin->clear();
 
@@ -364,10 +363,10 @@ void QGraphics::apply()
 		// width/height combination
 		igp.width = 
 			widgetsToLength(dialog_->width, dialog_->widthUnit);
-		igp.scale = 0.0;
+		igp.scale = string();
 	} else {
 		// scaling instead of a width
-		igp.scale = strToDbl(value);
+		igp.scale = value;
 		igp.width = LyXLength();
 	}
 	value = fromqstr(dialog_->height->text());
@@ -380,10 +379,13 @@ void QGraphics::apply()
 
 	igp.lyxscale = strToInt(fromqstr(dialog_->displayscale->text()));
 
-	igp.rotateAngle = strToDbl(fromqstr(dialog_->angle->text()));
+	igp.rotateAngle = fromqstr(dialog_->angle->text());
 
-	if (std::abs(igp.rotateAngle) > 360.0)
-		igp.rotateAngle -= 360.0 * floor(igp.rotateAngle / 360.0);
+	float rotAngle = strToDbl(igp.rotateAngle);
+	if (std::abs(rotAngle) > 360.0) {
+		rotAngle -= 360.0 * floor(rotAngle / 360.0);
+		igp.rotateAngle = tostr(rotAngle);
+	}
 
 	// save the latex name for the origin. If it is the default
 	// then origin_ltx returns ""
