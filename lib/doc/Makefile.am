@@ -7,6 +7,7 @@ EXTRA_DIST = Depend.pl Doc_toc.pl LaTeXConfig.lyx.in LyXConfig.lyx.in README.Doc
 docfiles = \
 	cs_TOC.lyx \
 	cs_Tutorial.lyx \
+	Customization.lyx \
 	da_Intro.lyx \
 	da_TOC.lyx \
 	de_Customization.lyx \
