@@ -149,9 +149,6 @@ void InsetCollapsable::draw(PainterInfo & pi, int x, int y, bool inlined) const
 	Assert(pi.base.bv);
 	cache(pi.base.bv);
 
-	if (nodraw())
-		return;
-
 	Dimension dim_collapsed;
 	dimension_collapsed(dim_collapsed);
 
@@ -471,12 +468,6 @@ void InsetCollapsable::resizeLyXText(BufferView * bv, bool force) const
 void InsetCollapsable::getLabelList(std::vector<string> & list) const
 {
 	inset.getLabelList(list);
-}
-
-
-bool InsetCollapsable::nodraw() const
-{
-	return inset.nodraw();
 }
 
 

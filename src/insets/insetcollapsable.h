@@ -120,8 +120,6 @@ public:
 	///
 	void getLabelList(std::vector<string> &) const;
 	///
-	bool nodraw() const;
-	///
 	int scroll(bool recursive=true) const;
 	///
 	void scroll(BufferView *bv, float sx) const {

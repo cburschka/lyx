@@ -27,12 +27,12 @@ using namespace lyx::support;
 // some stuff for inset locking
 
 UpdatableInset::UpdatableInset()
-	: InsetOld(), block_drawing_(false)
+	: InsetOld()
 {}
 
 
 UpdatableInset::UpdatableInset(UpdatableInset const & in)
-	: InsetOld(in), block_drawing_(false)
+	: InsetOld(in)
 {}
 
 

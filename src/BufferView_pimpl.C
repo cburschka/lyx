@@ -647,10 +647,9 @@ void BufferView::Pimpl::workAreaResize()
 
 void BufferView::Pimpl::update()
 {
-	if (!bv_->theLockingInset() || !bv_->theLockingInset()->nodraw()) {
-		screen().update(*bv_);
-		bv_->text->clearPaint();
-	}
+	lyxerr << "BufferView::update()\n";
+	screen().update(*bv_);
+	bv_->text->clearPaint();
 }
 
 

@@ -298,9 +298,6 @@ int InsetText::textWidth() const
 
 void InsetText::draw(PainterInfo & pi, int x, int baseline) const
 {
-	if (nodraw())
-		return;
-
 	// update our idea of where we are. Clearly, we should
 	// not have to know this information.
 	top_x = x;
@@ -2016,14 +2013,6 @@ void InsetText::removeNewlines()
 }
 
 
-bool InsetText::nodraw() const
-{
-	if (the_locking_inset)
-		return the_locking_inset->nodraw();
-	return UpdatableInset::nodraw();
-}
-
-
 int InsetText::scroll(bool recursive) const
 {
 	int sx = UpdatableInset::scroll(false);
@@ -2052,9 +2041,9 @@ void InsetText::clearInset(BufferView * bv, int start_x, int baseline) const
 		h += ty;
 		ty = 0;
 	}
-	if ((ty + h) > pain.paperHeight())
+	if (ty + h > pain.paperHeight())
 		h = pain.paperHeight();
-	if ((top_x + drawTextXOffset + w) > pain.paperWidth())
+	if (top_x + drawTextXOffset + w > pain.paperWidth())
 		w = pain.paperWidth();
 	pain.fillRectangle(start_x + 1, ty + 1, w - 3, h - 1, backgroundColor());
 	need_update = FULL;

@@ -53,7 +53,7 @@ public:
 
 	/// check if the font of the char we want inserting is correct
 	/// and modify it if it is not.
-	virtual bool checkInsertChar(LyXFont &);
+	virtual bool checkInsertChar(LyXFont &) { return true; }
 	///
 	virtual EDITABLE editable() const;
 
@@ -70,9 +70,8 @@ public:
 	///
 	virtual bool insertInset(BufferView *, InsetOld *) { return false; }
 	///
-	virtual UpdatableInset * getLockingInset() const {
-		return const_cast<UpdatableInset *>(this);
-	}
+	virtual UpdatableInset * getLockingInset() const
+		{ return const_cast<UpdatableInset *>(this); }
 	///
 	virtual UpdatableInset * getFirstLockingInsetOfType(InsetOld::Code c)
 		{ return (c == lyxCode()) ? this : 0; }
@@ -90,21 +89,11 @@ public:
 		{ return false; }
 	///  An updatable inset could handle lyx editing commands
 	virtual RESULT localDispatch(FuncRequest const & cmd);
-	///
-	int scroll(bool recursive = true) const {
-		// We need this method to not clobber the real method in Inset
-		return InsetOld::scroll(recursive);
-	}
+	// We need this method to not clobber the real method in Inset
+	int scroll(bool recursive = true) const
+		{ return InsetOld::scroll(recursive); }
 	///
 	virtual bool showInsetDialog(BufferView *) const { return false; }
-	///
-	virtual void nodraw(bool b) const {
-		block_drawing_ = b;
-	}
-	///
-	virtual bool nodraw() const {
-		return block_drawing_;
-	}
 	///
 	// needed for spellchecking text
 	///
@@ -134,16 +123,6 @@ protected:
 	void scroll(BufferView *, float sx) const;
 	/// scrolls offset pixels
 	void scroll(BufferView *, int offset) const;
-
-private:
-	///
-	mutable bool block_drawing_;
 };
-
-inline
-bool UpdatableInset::checkInsertChar(LyXFont &)
-{
-	return true;
-}
 
 #endif

@@ -2609,7 +2609,7 @@ int LyXTabular::getCellFromInset(InsetOld const * inset, int maybe_cell) const
 {
 	// is this inset part of the tabular?
 	if (!inset || inset->owner() != owner_) {
-		//lyxerr << "Abort::this is not a cell of the tabular!" << endl;
+		lyxerr << "Error: this is not a cell of the tabular!" << endl;
 		return -1;
 	}
 
@@ -2617,16 +2617,15 @@ int LyXTabular::getCellFromInset(InsetOld const * inset, int maybe_cell) const
 	int cell = cur_cell;
 	if (&getCellInset(cell) != inset) {
 		cell = maybe_cell;
-		if (cell == -1 || &getCellInset(cell) != inset) {
+		if (cell == -1 || &getCellInset(cell) != inset)
 			cell = -1;
-		}
 	}
 
 	if (cell == -1) {
-		for (cell = getNumberOfCells(); cell >= 0; --cell) {
+		for (cell = getNumberOfCells(); cell >= 0; --cell)
 			if (&getCellInset(cell) == inset)
 				break;
-		}
+
 		lyxerr[Debug::INSETTEXT]
 			 << "LyXTabular::getCellFromInset: "
 				    << "cell=" << cell

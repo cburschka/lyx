@@ -160,11 +160,6 @@ public:
 	///
 	void getLabelList(std::vector<string> &) const;
 	///
-	void nodraw(bool b) const {
-		UpdatableInset::nodraw(b);
-	}
-	bool nodraw() const;
-	///
 	int scroll(bool recursive=true) const;
 	///
 	void scroll(BufferView *bv, float sx) const {
