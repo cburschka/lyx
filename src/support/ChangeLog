@@ -1,3 +1,13 @@
+2001-10-08  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* filetools.C (AbsolutePath): Use os::is_absolute_path() (also in
+	several methods)
+	(findtexfile): oops! the change from last friday was wrong...
+
+	* os_win32.C (is_absolute_path): 
+	* os_unix.C (is_absolute_path): 
+	* os_os2.C (is_absolute_path): new method	
+
 2001-10-05  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* filetools.C (findtexfile): apply os::internal_path to the result.

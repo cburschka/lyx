@@ -116,9 +116,6 @@ string const MakeLatexName(string const & file);
 /// Put the name in quotes suitable for the current shell
 string const QuoteName(string const & file);
 
-/// Is a filename/path absolute?
-bool AbsolutePath(string const & path);
-
 /// Add a filename to a path. Any path from filename is stripped first.
 string const AddName(string const & path, string const & fname);
 
@@ -134,6 +131,9 @@ ChangeExtension(string const & oldname, string const & extension);
 
 /// Return the extension of the file (not including the .)
 string const GetExtension(string const & name);
+
+/// Returns true is path is absolute
+bool AbsolutePath(string const & path);
 
 /// Create absolute path. If impossible, don't do anything
 string const ExpandPath(string const & path);

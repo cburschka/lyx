@@ -23,7 +23,7 @@ void os::init(int * /*argc*/, char ** argv[]) /* :cp_(0), _shell(os::UNIX) */ {
 	string tmp = *argv[0];
 	binname_ = OnlyFilename(tmp);
 	tmp = ExpandPath(tmp); // This expands ./ and ~/
-	if (!AbsolutePath(tmp)) {
+	if (!os::is_absolute_path(tmp)) {
 		string binsearchpath = GetEnvPath("PATH");
 		// This will make "src/lyx" work always :-)
 		binsearchpath += ";.";
@@ -34,7 +34,7 @@ void os::init(int * /*argc*/, char ** argv[]) /* :cp_(0), _shell(os::UNIX) */ {
 
 	// In case we are running in place and compiled with shared libraries
 	if (suffixIs(tmp, "/.libs/"))
-		tmp.erase(tmp.length()-6, string::npos);
+		tmp.erase(tmp.length() - 6, string::npos);
 	binpath_ = tmp;
 }
 
@@ -64,10 +64,15 @@ string os::slashify_path(string p) {
 	return p;
 }
 
-string os::external_path(string p) {
+string os::external_path(string const &p) {
 	return p;
 }
 
-string os::internal_path(string p) {
+string os::internal_path(string const &p) {
 	return p;
+}
+
+bool os::is_absolute_path(string const & p)
+{
+	return (!p.empty() && p[0] == '/');
 }

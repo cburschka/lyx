@@ -25,7 +25,7 @@ void os::init(int * argc, char ** argv[]) {
 	binname_ = OnlyFilename(tmp);
 	tmp = ExpandPath(tmp); // This expands ./ and ~/
 
-	if (!AbsolutePath(tmp)) {
+	if (!is_absolute_path(tmp)) {
 		string binsearchpath = GetEnvPath("PATH");
 		// This will make "src/lyx" work always :-)
 		binsearchpath += ";.";
@@ -68,9 +68,9 @@ string os::slashify_path(string p) {
 		return subst(p, '\\', '/');
 }
 
-string os::external_path(string p) {
+string os::external_path(string const & p) {
 	string dos_path=p;
-	if (AbsolutePath(p)) {
+	if (is_absolute_path(p)) {
 		char dp[255];
 		cygwin_conv_to_full_win32_path(p.c_str(), dp);
 		dos_path=subst(dp,'\\','/');
@@ -82,11 +82,12 @@ string os::external_path(string p) {
 	return dos_path;
 }
 
+
 // (Claus H.) Parsing the latex log file in an Win32 environment all
 // files are mentioned in Win32/DOS syntax. Because LyX uses the dep file
 // entries to check if any file has been changed we must retranslate
 // the Win32/DOS pathnames into Cygwin pathnames.
-string os::internal_path(string p) {
+string os::internal_path(string const &p) {
 	char pp[256];
 	cygwin_conv_to_posix_path(p.c_str(), pp);
 	string const posix_path = MakeLatexName(pp);
@@ -95,4 +96,21 @@ string os::internal_path(string p) {
 		<< p << "]->>["
 		<< posix_path << "]" << endl;
 	return posix_path;
+}
+
+// (Claus H.) On Win32 both Unix and Win32/DOS pathnames are used.
+// Therefore an absolute path could be either a pathname starting
+// with a slash (Unix) or a pathname starting with a drive letter
+// followed by a colon. Because a colon is not valid in pathes in Unix
+// and at another location in Win32 testing just for the existance
+// of the colon in the 2nd position seems to be enough!
+bool os::is_absolute_path(string const & p)
+{
+	if (p.empty())
+		return false;
+
+	bool isDosPath = (path.length() > 1 && path[1] == ':');
+	bool isUnixPath = (path[0] == '/');
+
+	return isDosPath | isUnixPath;
 }

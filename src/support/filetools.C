@@ -6,7 +6,7 @@
         Parts Copyright 1985, 1990, 1993 Free Software Foundation, Inc.
 	Parts Copyright 1996 Asger Alstrup
 	
-	See also filetools.H.
+	See also filetools.h.
 
 	lyx-filetool.C : tools functions for file/path handling
 	this file is part of LyX, the High Level Word Processor
@@ -557,7 +557,7 @@ string const OnlyPath(string const & Filename)
 string const MakeAbsPath(string const & RelPath, string const & BasePath)
 {
 	// checks for already absolute path
-	if (AbsolutePath(RelPath))
+	if (os::is_absolute_path(RelPath))
 		return RelPath;
 
 	// Copies given paths
@@ -567,7 +567,7 @@ string const MakeAbsPath(string const & RelPath, string const & BasePath)
 
 	string TempBase;
 
-	if (AbsolutePath(BasePath))
+	if (os::is_absolute_path(BasePath))
 		TempBase = BasePath;
 	else
 		TempBase = AddPath(lyx::getcwd(), BasePath);
@@ -651,15 +651,12 @@ string const OnlyFilename(string const & fname)
 }
 
 
-// Is a filename/path absolute?
+/// Returns true is path is absolute
 bool AbsolutePath(string const & path)
 {
-#ifndef __EMX__
-	return (!path.empty() && path[0] == '/');
-#else
-	return (!path.empty() && isalpha(static_cast<unsigned char>(path[0])) && path.length() > 1 && path[1] == ':');
-#endif
+	return os::is_absolute_path(path);
 }
+
 
 
 // Create absolute path. If impossible, don't do anything
@@ -668,7 +665,7 @@ string const ExpandPath(string const & path)
 {
 	// checks for already absolute path
 	string RTemp(ReplaceEnvironmentPath(path));
-	if (AbsolutePath(RTemp))
+	if (os::is_absolute_path(RTemp))
 		return RTemp;
 
 	string Temp;
@@ -698,7 +695,7 @@ string const NormalizePath(string const & path)
 	string RTemp;
 	string Temp;
 
-	if (AbsolutePath(path))
+	if (os::is_absolute_path(path))
 		RTemp = path;
 	else
 		// Make implicit current directory explicit
@@ -958,7 +955,7 @@ MakeDisplayPath (string const & path, unsigned int threshold)
 
 	// If we backup from home or don't have a relative path,
 	// this try is no good
-	if (prefixIs(relhome, "../") || AbsolutePath(relhome)) {
+	if (prefixIs(relhome, "../") || os::is_absolute_path(relhome)) {
 		// relative path was no good, just use the original path
 		relhome = path;
 		l2 = l1;
@@ -1076,11 +1073,8 @@ findtexfile(string const & fil, string const & /*format*/)
         lyxerr[Debug::LATEX] << "kpse status = " << c.first << "\n"
 			     << "kpse result = `" << strip(c.second, '\n') 
 			     << "'" << endl;
-	string fullpath;
 	if (c.first != -1) 
-		fullpath = os::internal_path(strip(strip(c.second,
-							 '\n'),
-						   '\r'));
+		return os::internal_path(strip(strip(c.second, '\n'), '\r'));
 	else
 		return string();
 }

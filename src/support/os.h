@@ -41,14 +41,19 @@ public:
 	static os::shell_type shell() {return _shell;};
 
 	// DBCS aware!
-	static string::size_type common_path(string const &p1, string const &p2);
+	static string::size_type common_path(string const &p1,
+					     string const &p2);
 
 	// no-op on UNIX, '\\'->'/' on OS/2 and Win32, ':'->'/' on MacOS, etc.
 	static string slashify_path(string p);
 	// converts a host OS path to unix style
-	static string external_path(string p);
+	static string external_path(string const &p);
 	// converts a unix path to host OS style
-	static string internal_path(string p);
+	static string internal_path(string const &p);
+	// is path absolute?
+	static bool is_absolute_path(string const & p);
+	
+	//
 	static void warn(string mesg);
 private:
 	static string binpath_;

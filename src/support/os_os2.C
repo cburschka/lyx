@@ -155,10 +155,20 @@ string os::slashify_path(string p) {
 	return p;
 }
 
-string os::external_path(string p) {
+
+string os::external_path(string const &p) {
 	return p;
 }
 
-string os::internal_path(string p) {
+
+string os::internal_path(string const &p) {
 	return p;
+}
+
+
+bool os::is_absolute_path(string const & p)
+{
+	return (p.length() > 1
+		&& isalpha(static_cast<unsigned char>(p[0]))
+		&& p[1] == ':');
 }
