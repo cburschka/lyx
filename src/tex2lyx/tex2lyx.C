@@ -19,6 +19,7 @@
 #include "lyxtextclass.h"
 #include "support/path_defines.h"
 #include "support/filetools.h"
+#include "support/lstrings.h"
 #include "support/lyxlib.h"
 #include "support/os.h"
 
@@ -46,6 +47,10 @@ using std::string;
 using std::vector;
 using std::map;
 
+using lyx::support::isStrUnsignedInt;
+using lyx::support::ltrim;
+using lyx::support::rtrim;
+using lyx::support::strToUnsignedInt;
 using lyx::support::system_lyxdir;
 using lyx::support::user_lyxdir;
 using lyx::support::IsFileReadable;
@@ -117,6 +122,34 @@ string active_environment()
 
 
 map<string, vector<ArgumentType> > known_commands;
+
+
+void add_known_command(string const & command, string const & o1,
+                       bool o2)
+{
+	// We have to handle the following cases:
+	// definition                      o1    o2    invocation result
+	// \newcommand{\foo}{bar}          ""    false \foo       bar
+	// \newcommand{\foo}[1]{bar #1}    "[1]" false \foo{x}    bar x
+	// \newcommand{\foo}[1][]{bar #1}  "[1]" true  \foo       bar 
+	// \newcommand{\foo}[1][]{bar #1}  "[1]" true  \foo[x]    bar x
+	// \newcommand{\foo}[1][x]{bar #1} "[1]" true  \foo[x]    bar x
+	unsigned int nargs = 0;
+	vector<ArgumentType> arguments;
+	string const opt1 = rtrim(ltrim(o1, "["), "]");
+	if (isStrUnsignedInt(opt1)) {
+		// The command has arguments
+		nargs = strToUnsignedInt(opt1);
+		if (nargs > 0 && o2) {
+			// The first argument is optional
+			arguments.push_back(optional);
+			--nargs;
+		}
+	}
+	for (unsigned int i = 0; i < nargs; ++i)
+		arguments.push_back(required);
+	known_commands[command] = arguments;
+}
 
 
 namespace {

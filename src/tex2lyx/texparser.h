@@ -14,6 +14,7 @@
 
 #include <vector>
 #include <string>
+#include <utility>
 
 
 enum mode_type {UNDECIDED_MODE, TEXT_MODE, MATH_MODE, MATHTEXT_MODE, TABLE_MODE};
@@ -127,8 +128,27 @@ public:
 	void dump() const;
 
 	///
+	typedef std::pair<bool, std::string> Arg;
+	/*!
+	 * Get an argument enclosed by \p left and \p right.
+	 * \returns wether an argument was found in \p Arg.first and the
+	 * argument in \p Arg.second. \see getArg().
+	 */
+	Arg getFullArg(char left, char right);
+	/*!
+	 * Get an argument enclosed by \p left and \p right.
+	 * \returns the argument (without \p left and \p right) or the empty
+	 * string if the next non-space token is not \p left. Use
+	 * getFullArg() if you need to know wether there was an empty
+	 * argument or no argument at all.
+	 */
 	std::string getArg(char left, char right);
-	/// getArg('[', ']') including the brackets
+	/*!
+	 * \returns getFullArg('[', ']') including the brackets or the
+	 * empty string if no argument was found.
+	 */
+	std::string getFullOpt();
+	/// \returns getArg('[', ']') including the brackets
 	std::string getOpt();
 	/// Returns the character of the current token and increments the token position.
 	char getChar();

@@ -271,21 +271,22 @@ char Parser::getChar()
 }
 
 
-string Parser::getArg(char left, char right)
+Parser::Arg Parser::getFullArg(char left, char right)
 {
 	skip_spaces(true);
 
 	// This is needed if a partial file ends with a command without arguments,
 	// e. g. \medskip
 	if (! good())
-		return string();
+		return std::make_pair(false, string());
 
 	string result;
 	char c = getChar();
 
-	if (c != left)
+	if (c != left) {
 		putback();
-	else
+		return std::make_pair(false, string());
+	} else
 		while ((c = getChar()) != right && good()) {
 			// Ignore comments
 			if (curr_token().cat() == catComment) {
@@ -296,14 +297,29 @@ string Parser::getArg(char left, char right)
 				result += curr_token().asInput();
 		}
 
-	return result;
+	return std::make_pair(true, result);
+}
+
+
+string Parser::getArg(char left, char right)
+{
+	return getFullArg(left, right).second;
+}
+
+
+string Parser::getFullOpt()
+{
+	Arg arg = getFullArg('[', ']');
+	if (arg.first)
+		return '[' + arg.second + ']';
+	return arg.second;
 }
 
 
 string Parser::getOpt()
 {
 	string const res = getArg('[', ']');
-	return res.size() ? '[' + res + ']' : string();
+	return res.empty() ? string() : '[' + res + ']';
 }
 
 

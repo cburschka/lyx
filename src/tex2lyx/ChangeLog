@@ -1,3 +1,17 @@
+2005-01-04  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* preamble.C (parse_preamble): handle second optional arg of
+	\newcommand etc. and add the command to the known commands (fixes
+	bug 1750)
+	* texparser.[Ch] (getFullArg): new, like getArg but distinguish
+	between empty arguments and no argument found
+	* texparser.[Ch] (getFullOpt): new, like getOpt but distinguish
+	between empty arguments and no argument found
+	* tex2lyx.[Ch]: (add_known_command): new
+	* text.C (parse_text): handle \newcommand etc. (see above)
+	* text.C (parse_text): add comment about \underline
+	* text.C (getCiteArguments): use getFullOpt
+
 2004-12-15  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* table.C (ColInfo, LTRowType, RowInfo, CellInfo, verbose_align):

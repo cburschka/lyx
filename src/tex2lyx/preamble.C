@@ -329,7 +329,8 @@ LyXTextClass const parse_preamble(Parser & p, ostream & os, string const & force
 				star = true;
 			}
 			string const name = p.verbatim_item();
-			string const opts = p.getOpt();
+			string const opt1 = p.getOpt();
+			string const opt2 = p.getFullOpt();
 			string const body = p.verbatim_item();
 			// only non-lyxspecific stuff
 			if (   name != "\\noun"
@@ -345,8 +346,12 @@ LyXTextClass const parse_preamble(Parser & p, ostream & os, string const & force
 				ss << '\\' << t.cs();
 				if (star)
 					ss << '*';
-				ss << '{' << name << '}' << opts << '{' << body << "}";
+				ss << '{' << name << '}' << opt1 << opt2
+				   << '{' << body << "}";
 				h_preamble << ss.str();
+
+				// Add the command to the known commands
+				add_known_command(name, opt1, !opt2.empty());
 /*
 				ostream & out = in_preamble ? h_preamble : os;
 				out << "\\" << t.cs() << "{" << name << "}"

@@ -848,29 +848,19 @@ void parse_text_attributes(Parser & p, ostream & os, unsigned flags, bool outer,
 
 
 /// get the arguments of a natbib or jurabib citation command
-std::pair<string, string> getCiteArguments(Parser & p, ostream & os,
-					   Context & context, bool natbibOrder)
+std::pair<string, string> getCiteArguments(Parser & p, bool natbibOrder)
 {
 	// We need to distinguish "" and "[]", so we can't use p.getOpt().
 
 	// text before the citation
 	string before;
 	// text after the citation
-	string after;
+	string after = p.getFullOpt();
 
-	eat_whitespace(p, os, context, false);
-	if (p.next_token().asInput() == "[") {
-		after = '[' + p.getArg('[', ']') + ']';
-		eat_whitespace(p, os, context, false);
-		if (natbibOrder) {
-			if (p.next_token().asInput() == "[") {
-				before = after;
-				after = '[' + p.getArg('[', ']') + ']';
-			}
-		} else {
-			if (p.next_token().asInput() == "[")
-				before = '[' + p.getArg('[', ']') + ']';
-		}
+	if (!after.empty()) {
+		before = p.getFullOpt();
+		if (natbibOrder && !before.empty())
+			std::swap(before, after);
 	}
 	return std::make_pair(before, after);
 }
@@ -1445,6 +1435,9 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		}
 
 		else if (t.cs() == "underbar") {
+			// Do NOT handle \underline.
+			// \underbar cuts through y, g, q, p etc.,
+			// \underline does not.
 			context.check_layout(os);
 			os << "\n\\bar under\n";
 			parse_text_snippet(p, os, FLAG_ITEM, outer, context);
@@ -1484,8 +1477,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			// text after the citation
 			string after;
 
-			boost::tie(before, after) =
-				getCiteArguments(p, os, context, true);
+			boost::tie(before, after) = getCiteArguments(p, true);
 			if (command == "\\cite") {
 				// \cite without optional argument means
 				// \citet, \cite with at least one optional
@@ -1528,8 +1520,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			string after;
 
 			boost::tie(before, after) =
-				getCiteArguments(p, os, context,
-				                 argumentOrder != 'j');
+				getCiteArguments(p, argumentOrder != 'j');
 			string const citation = p.verbatim_item();
 			if (!before.empty() && argumentOrder == '\0') {
 				cerr << "Warning: Assuming argument order "
@@ -1849,6 +1840,27 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			os << t.cs();
 			end_inset(os);
 			skip_braces(p);
+		}
+
+		else if (t.cs() == "newcommand" ||
+		         t.cs() == "providecommand" ||
+		         t.cs() == "renewcommand") {
+			// these could be handled by parse_command(), but
+			// we need to call add_known_command() here.
+			string name = t.asInput();
+			if (p.next_token().asInput() == "*") {
+				// Starred form. Eat '*'
+				p.get_token();
+				name += '*';
+			}
+			string const command = p.verbatim_item();
+			string const opt1 = p.getOpt();
+			string const opt2 = p.getFullOpt();
+			add_known_command(command, opt1, !opt2.empty());
+			string const ert = name + '{' + command + '}' +
+			                   opt1 + opt2 +
+			                   '{' + p.verbatim_item() + '}';
+			handle_ert(os, ert, context);
 		}
 
 		else if (t.cs() == "vspace") {
