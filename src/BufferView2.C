@@ -336,40 +336,35 @@ bool BufferView::gotoLabel(string const & label)
 
 void BufferView::menuUndo()
 {
-	if (available()) {
-		owner()->message(_("Undo"));
-		hideCursor();
-		beforeChange(text);
-		update(text, BufferView::SELECT|BufferView::FITCUR);
-		if (!textUndo(this))
-			owner()->message(_("No further undo information"));
-		else
-			update(text, BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
-		switchKeyMap();
-	}
+	if (!available())
+		return;
+ 
+	owner()->message(_("Undo"));
+	hideCursor();
+	beforeChange(text);
+	update(text, BufferView::SELECT|BufferView::FITCUR);
+	if (!textUndo(this))
+		owner()->message(_("No further undo information"));
+	else
+		update(text, BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
+	switchKeyMap();
 }
 
 
 void BufferView::menuRedo()
 {
-#if 0 // this should not be here (Jug 20011206)
-	if (theLockingInset()) {
-		owner()->message(_("Redo not yet supported in math mode"));
+	if (!available())
 		return;
-	}
-#endif
-
-	if (available()) {
-		owner()->message(_("Redo"));
-		hideCursor();
-		beforeChange(text);
-		update(text, BufferView::SELECT|BufferView::FITCUR);
-		if (!textRedo(this))
-			owner()->message(_("No further redo information"));
-		else
-			update(text, BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
-		switchKeyMap();
-	}
+ 
+	owner()->message(_("Redo"));
+	hideCursor();
+	beforeChange(text);
+	update(text, BufferView::SELECT|BufferView::FITCUR);
+	if (!textRedo(this))
+		owner()->message(_("No further redo information"));
+	else
+		update(text, BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
+	switchKeyMap();
 }
 
 

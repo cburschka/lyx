@@ -7,9 +7,9 @@
 #endif
 
 #include "LString.h"
-#include "paragraph.h"
 
 class BufferView;
+class LyXText;
 
 namespace lyxfind {
 
