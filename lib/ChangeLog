@@ -1,5 +1,8 @@
 2001-12-19  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
+	* doc/LaTeXConfig.lyx.in: more updates: checked and fixed all the
+	CTAN references.
+
 	* configure.m4: add new macros LYXRC_VAR and LYXRC_PROG. These are
 	used for checking for a program and add the corresponding entry in
 	lyxrc.defaults. Used this for various checks (not finished yet).

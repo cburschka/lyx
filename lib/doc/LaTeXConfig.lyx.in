@@ -259,7 +259,7 @@ Found: @chk_psnfss@
 
 CTAN: 
 \family typewriter 
-macros/latex/packages/psnfss/
+macros/latex/required/psnfss/
 \layout Description
 
 Notes: The package 
@@ -399,7 +399,7 @@ Found: @chk_amsart@
 
 CTAN: 
 \family typewriter 
-fonts/ams/amslatex/inputs/
+macros/latex/required/amslatex/classes/
 \layout Description
 
 Notes: The document class 
@@ -620,7 +620,7 @@ extarticle
 \family sans 
 extbook
 \family default 
-:@chk_extbook@, 
+: @chk_extbook@, 
 \family sans 
 extreport
 \family default 
@@ -876,12 +876,15 @@ kluwer
 Found: @chk_kluwer@
 \layout Description
 
-CTAN: N/A (available from the Kluwer Academic Publishers site 
+CTAN: N/A
+\layout Description
+
+WWW: available from the Kluwer Academic Publishers site 
 \begin_inset LatexCommand \url{http://www.wkap.nl/kaphtml.htm/STYLEFILES}
 
 \end_inset 
 
-).
+.
 \layout Description
 
 Notes: The document class 
@@ -1094,14 +1097,14 @@ Found: @chk_revtex4@
 
 CTAN: 
 \family typewriter 
-macros/latex/contrib/supported/revtex4-beta/
+macros/latex/contrib/supported/revtex/
 \layout Description
 
 Notes: REVTeX 4 is a class used for submitting manuscripts to journals including
  APS (Physical Review A-E and Letters, Reviews in Modern Physics, Special
  Topics---Accelerators and Beams), the American Institute of Physics, the
  Optical Society of America, and the Society for Exploration Geophysicists.
- [It is in BETA release as of July, 2000.] Also see 
+ Also see 
 \begin_inset LatexCommand \url{http://publish.aps.org/revtex4/}
 
 \end_inset 
@@ -1131,7 +1134,9 @@ Springer Journal of Geodesy
 Found: @chk_svjog@
 \layout Description
 
-CTAN: N/A
+CTAN: 
+\family typewriter 
+macros/latex/contrib/supported/springer/svjour/jog
 \layout Description
 
 WWW: 
@@ -1195,7 +1200,7 @@ Found: @chk_array@
 
 CTAN: 
 \family typewriter 
-macros/latex/required/tools/array.dtx
+macros/latex/required/tools/
 \layout Description
 
 Notes: The package array is needed by LyX to be able to output vertical
@@ -1210,7 +1215,7 @@ Found: @chk_babel@
 
 CTAN: 
 \family typewriter 
-macros/latex/packages/babel/
+macros/latex/required/babel/
 \layout Description
 
 Notes: The package 
@@ -1255,7 +1260,7 @@ Found: @chk_color@
 
 CTAN: 
 \family typewriter 
-macros/latex/packages/graphics/
+macros/latex/required/graphics/
 \layout Description
 
 Notes: The package 
@@ -1269,12 +1274,7 @@ color
 \family sans 
 graphics
 \family default 
- package (see 
-\begin_inset LatexCommand \ref{ssec:graphics}
-
-\end_inset 
-
-).
+ package.
 \layout Subsection
 
 
@@ -1290,7 +1290,7 @@ Found: @chk_graphics@
 
 CTAN: 
 \family typewriter 
-macros/latex/packages/graphics/
+macros/latex/required/graphics/
 \layout Description
 
 Notes: The package 
@@ -1345,7 +1345,7 @@ Found: @chk_graphicx@
 
 CTAN: 
 \family typewriter 
-macros/latex/packages/graphics/
+macros/latex/required/graphics/
 \layout Description
 
 Notes: The package 
@@ -1488,7 +1488,7 @@ Found: @chk_geometry@
 
 CTAN: 
 \family typewriter 
-macros/latex/contrib/supported/geometry
+macros/latex/contrib/supported/geometry/
 \layout Description
 
 Notes: The package 
@@ -1529,11 +1529,11 @@ algorithm
 \begin_inset Quotes eld
 \end_inset 
 
-algorithm-floats
+algorithm
 \begin_inset Quotes erd
 \end_inset 
 
-.
+ floats.
  These are useful in placing short algorithms across pagebreaks and support
  an 
 \begin_inset Quotes eld
@@ -1573,7 +1573,7 @@ fancy
 \begin_inset Quotes erd
 \end_inset 
 
-  page style in the document layout popup.
+ page style in the document layout popup.
  It provides alternate headers and footers to your pages.
 \layout Subsection
 
@@ -1613,7 +1613,7 @@ Found: @chk_natbib@
 
 CTAN: 
 \family typewriter 
-macros/latex/contrib/supported/natbib/natbib.dtx
+macros/latex/contrib/supported/natbib/
 \layout Description
 
 Notes: The package 
