@@ -12,6 +12,7 @@
 #include "math_exfuncinset.h"
 #include "math_exintinset.h"
 #include "math_fracinset.h"
+#include "math_liminset.h"
 #include "math_matrixinset.h"
 #include "math_mathmlstream.h"
 #include "math_numberinset.h"
@@ -442,7 +443,7 @@ void extractDelims(MathArray & ar)
 void extractFunctions(MathArray & ar)
 {
 	// we need at least two items...
-	if (ar.size() <= 1)
+	if (ar.size() < 2)
 		return;
 
 	//lyxerr << "\nFunctions from: " << ar << "\n";
@@ -522,7 +523,7 @@ bool testIntDiff(MathInset * p)
 void extractIntegrals(MathArray & ar)
 {
 	// we need at least three items...
-	if (ar.size() <= 2)
+	if (ar.size() < 3)
 		return;
 
 	//lyxerr << "\nIntegrals from: " << ar << "\n";
@@ -579,11 +580,6 @@ void extractIntegrals(MathArray & ar)
 // search sums
 //
 
-bool testSumSymbol(MathInset * p)
-{
-	return testSymbol(p, "sum");
-}
-
 
 bool testEqualSign(MathAtom const & at)
 {
@@ -597,15 +593,15 @@ bool testEqualSign(MathAtom const & at)
 void extractSums(MathArray & ar)
 {
 	// we need at least two items...
-	if (ar.size() <= 1)
+	if (ar.size() < 2)
 		return;
 
 	//lyxerr << "\nSums from: " << ar << "\n";
-	for (MathArray::size_type i = 0; i + 1< ar.size(); ++i) {
+	for (MathArray::size_type i = 0; i + 1 < ar.size(); ++i) {
 		MathArray::iterator it = ar.begin() + i;
 
 		// is this a sum name?
-		if (!testSumSymbol(it->nucleus()))
+		if (!testSymbol(it->nucleus(), "sum"))
 			continue;
 
 		// create a proper inset as replacement
@@ -761,6 +757,65 @@ void extractDiff(MathArray & ar)
 }
 
 
+//
+// search limits
+//
+
+
+bool testRightArrow(MathAtom const & at)
+{
+	return
+		testSymbol(at.nucleus(), "to") ||
+		testSymbol(at.nucleus(), "rightarrow");
+}
+
+
+
+// replace '\lim_{x->x0} f(x)' sequences by a real MathLimInset
+// assume 'extractDelims' ran before
+void extractLims(MathArray & ar)
+{
+	// we need at least three items...
+	if (ar.size() < 3)
+		return;
+
+	//lyxerr << "\nLimits from: " << ar << "\n";
+	for (MathArray::size_type i = 0; i + 2 < ar.size(); ++i) {
+		MathArray::iterator it = ar.begin() + i;
+
+		// is this a limit function?
+		if (!testSymbol(it->nucleus(), "lim")) 
+			continue;
+
+		// the next one must be a subscript (without superscript)
+		MathScriptInset * sub = (*(it + 1))->asScriptInset();
+		if (!sub || !sub->hasDown() || sub->hasUp())
+			continue;
+
+		// and it must contain a -> symbol
+		MathArray & s = sub->down().data();
+		MathArray::iterator st = find_if(s.begin(), s.end(), &testRightArrow);
+		if (st == s.end())
+			continue;
+
+		// the -> splits the subscript int x and x0
+		MathArray x  = MathArray(s, 0, st - s.begin());
+		MathArray x0 = MathArray(s, st - s.begin() + 1, s.size());
+		
+		// use something behind the script as core
+		MathArray f;
+		MathArray::iterator tt = extractArgument(f, it + 2, ar.end());
+
+		// create a proper inset as replacement
+		MathLimInset * p = new MathLimInset(f, x, x0);
+
+		// cleanup
+		ar.erase(it + 1, tt);
+		(*it).reset(p);
+	}
+	//lyxerr << "\nLimits to: " << ar << "\n";
+}
+
 
 //
 // combine searches
@@ -778,6 +833,7 @@ void extractStructure(MathArray & ar)
 	extractSums(ar);
 	extractDiff(ar);
 	extractExps(ar);
+	extractLims(ar);
 	extractStrings(ar);
 }
 

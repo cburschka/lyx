@@ -93,17 +93,6 @@ void MathMacroTable::builtinMacros()
 
 	// fontmath.ltx
 
-	define("\\def\\lnot{\\neg}");
-	define("\\def\\land{\\wedge}");
-	define("\\def\\lor{\\vee}");
-	define("\\def\\ne{\\neq}");
-	define("\\def\\le{\\leq}");
-	define("\\def\\ge{\\geq}");
-	define("\\def\\owns{\\ni}");
-	define("\\def\\gets{\\leftarrow}");
-	define("\\def\\to{\\rightarrow}");
-	define("\\def\\|{\\Vert}");
-
 	define("\\def\\longleftrightarrow{\\leftarrow\\kern-8mu\\rightarrow}");
 	define("\\def\\Longleftrightarrow{\\Leftarrow\\kern-8mu\\Rightarrow}");
 	define("\\def\\doteq{\\stackrel{\\cdot}{\\=}}");
@@ -133,8 +122,6 @@ void MathMacroTable::builtinMacros()
 		define("\\def\\dashrightarrow{\\lyxdabar\\lyxdabar\\lyxright}");
 		define("\\def\\dashleftarrow{\\lyxleft\\lyxdabar\\lyxdabar}");
 		define("\\def\\dasharrow{\\dashrightarrow}");
-		define("\\def\\Box{\\square}");
-		define("\\def\\Diamond{\\lozenge}");
 		define("\\def\\leadsto{\\rightsquigarrow}");
 
 		// amssymb.sty
@@ -143,8 +130,6 @@ void MathMacroTable::builtinMacros()
 		define("\\def\\Doteq{\\doteqdot}");
 		define("\\def\\doublecup{\\Cup}");
 		define("\\def\\doublecap{\\Cap}");
-		define("\\def\\llless{\\lll}");
-		define("\\def\\gggtr{\\ggg}");
 	//}
 
 	//if (math_font_available(LM_TC_MSB)) {
