@@ -1,6 +1,14 @@
 2001-02-28  Lars Gullik Bjønnes  <larsbj@trylle.birdstep.com>
 
+	* math_macrotemplate.h: remove default arg on update
+
+	* math_macrotemplate.C (update): add assert and remove noop case.
+
 	* formulamacro.C (Read): add comment.
+	(ascent): remove noop call to MathMacroTemplate
+	(descent): ditto
+	(width): ditto
+	(draw): ditto
 
 	* math_parser.C (mathed_parse): fix another potential problem by
 	passing a freestanding mathedarray.

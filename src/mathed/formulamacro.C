@@ -128,7 +128,6 @@ void InsetFormulaMacro::Read(Buffer const *, LyXLex & lex)
 int InsetFormulaMacro::ascent(BufferView * pain, LyXFont const & f) const
 {
 	if (opened_) {
-		tmacro_->update();
 		return InsetFormula::ascent(pain, f);
 	}
 	return lyxfont::maxAscent(f) + 3;
@@ -138,7 +137,6 @@ int InsetFormulaMacro::ascent(BufferView * pain, LyXFont const & f) const
 int InsetFormulaMacro::descent(BufferView * pain, LyXFont const & f) const
 {
 	if (opened_) {
-		tmacro_->update();
 		return InsetFormula::descent(pain, f);
 	}
 	return lyxfont::maxDescent(f) + 1;
@@ -148,7 +146,6 @@ int InsetFormulaMacro::descent(BufferView * pain, LyXFont const & f) const
 int InsetFormulaMacro::width(BufferView * bv, LyXFont const & f) const
 {
 	if (opened_) {
-		tmacro_->update();
 		return InsetFormula::width(bv, f);
 	}
 	string ilabel(_("Macro: "));
@@ -162,7 +159,6 @@ void InsetFormulaMacro::draw(BufferView * bv, LyXFont const & f,
 {
 	Painter & pain = bv->painter();
 	LyXFont font(f);
-	tmacro_->update();
 	if (opened_) {
 		tmacro_->setEditMode(true);
 		InsetFormula::draw(bv, font, baseline, x, cleared);

@@ -8,6 +8,7 @@
 #include "math_macro.h"
 #include "macro_support.h"
 #include "support/LOstream.h"
+#include "support/LAssert.h"
 
 using std::ostream;
 
@@ -115,17 +116,15 @@ void MathMacroTemplate::Metrics()
 
 void MathMacroTemplate::update(MathMacro * macro)
 {
-	int idx = (macro) ? macro->getArgumentIdx() : 0;
+	Assert(macro);
+	int idx = macro->getArgumentIdx();
 	for (int i = 0; i < nargs_; ++i) {
-		if (macro) {
 			macro->setArgumentIdx(i);
 			args_[i].setData(macro->GetData());
 			MathedRowSt * row = macro->getRowSt();
 			args_[i].setRowSt(row);
-		}
 	}	
-	if (macro)
-		macro->setArgumentIdx(idx);
+	macro->setArgumentIdx(idx);
 }
 
 

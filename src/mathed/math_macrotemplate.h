@@ -45,7 +45,7 @@ public:
 	void setEditMode(bool);
 	
 	/// Replace the appropriate arguments with a specific macro's data
-	void update(MathMacro * m = 0);
+	void update(MathMacro * m);
 	///
 	short flags() const;
 private:
