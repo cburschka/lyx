@@ -1,3 +1,8 @@
+2003-09-15  Angus Leeming  <leeming@lyx.org>
+
+	* bufferparams.C (BufferParams): reorder member initializers to avoid
+	compiler warning.
+
 2003-09-15  Alfredo Braunstein  <abraunst@libero.it>
 
 	* CutAndPaste.C (pasteSelection): remove an outdated #warning

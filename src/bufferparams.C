@@ -80,12 +80,12 @@ BufferParams::Impl::Impl()
 
 
 BufferParams::BufferParams()
-	: pimpl_(new Impl),
-	  // Initialize textclass to point to article. if `first' is
+	: // Initialize textclass to point to article. if `first' is
 	  // true in the returned pair, then `second' is the textclass
 	  // number; if it is false, second is 0. In both cases, second
 	  // is what we want.
-	  textclass(textclasslist.NumberOfClass("article").second)
+	textclass(textclasslist.NumberOfClass("article").second),
+	pimpl_(new Impl)
 {
 	paragraph_separation = PARSEP_INDENT;
 	quotes_language = InsetQuotes::EnglishQ;
