@@ -998,8 +998,7 @@ LyXText::nextBreakPoint(BufferView * bview, Row const * row, int width) const
 		}
 	} else {
 		// Last position is an invariant
-		pos_type const last =
-			par->size();
+		pos_type const last = par->size();
 		// this is the usual handling
 		int x = leftMargin(bview, row);
 		bool doitonetime = true;
