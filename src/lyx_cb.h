@@ -33,7 +33,7 @@ void InsertAsciiFile(BufferView * bv, string const & f, bool asParagraph);
 ///
 string getContentsOfAsciiFile(BufferView * bv, string const & f, bool asParagraph);
 ///
-void MenuInsertLabel(BufferView * bv, string const & arg);
+string const getPossibleLabel(BufferView const & bv);
 ///
 void Reconfigure(BufferView * bv);
 #endif

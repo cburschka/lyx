@@ -1090,9 +1090,15 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev_in)
 		owner_->getLyXFunc().setMessage(currentState(bv_));
 		break;
 
-	case LFUN_INSERT_LABEL:
-		MenuInsertLabel(bv_, ev.argument);
-		break;
+	case LFUN_INSERT_LABEL: {
+		// Try and generate a valid label
+		string const contents = ev.argument.empty() ?
+			getPossibleLabel(*bv_) : ev.argument;
+		InsetCommandParams icp("label", contents);
+		string data = InsetCommandMailer::params2string("label", icp);
+		owner_->getDialogs().show("label", data, 0);
+	}
+	break;
 
 	case LFUN_BOOKMARK_SAVE:
 		savePosition(strToUnsignedInt(ev.argument));

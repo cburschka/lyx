@@ -27,6 +27,7 @@
 #include "insets/insetfloat.h"
 #include "insets/insetfoot.h"
 #include "insets/insetindex.h"
+#include "insets/insetlabel.h"
 #include "insets/insetmarginal.h"
 #include "insets/insetminipage.h"
 #include "insets/insetnote.h"
@@ -197,6 +198,11 @@ Inset * createInset(FuncRequest const & cmd)
 			InsetCommandParams icp;
 			InsetCommandMailer::string2params(cmd.argument, icp);
 			return new InsetIndex(icp);
+
+		} else if (name == "label") {
+			InsetCommandParams icp;
+			InsetCommandMailer::string2params(cmd.argument, icp);
+			return new InsetLabel(icp);
 
 		} else if (name == "ref") {
 			InsetCommandParams icp;

@@ -12,25 +12,31 @@
 
 
 #include "insetlabel.h"
-#include "support/LOstream.h"
-#include "frontends/Alert.h"
-#include "support/lstrings.h" //frontStrip, strip
-#include "lyxtext.h"
 #include "buffer.h"
-#include "gettext.h"
 #include "BufferView.h"
+#include "funcrequest.h"
+#include "gettext.h"
+#include "lyxtext.h"
+
 #include "support/lstrings.h"
+#include "support/LOstream.h"
+#include "support/lstrings.h" //frontStrip, strip
 
 using std::ostream;
 using std::vector;
 using std::pair;
 
-/* Label. Used to insert a label automatically */
-
 
 InsetLabel::InsetLabel(InsetCommandParams const & p, bool)
 	: InsetCommand(p)
 {}
+
+
+InsetLabel::~InsetLabel()
+{
+	InsetCommandMailer mailer("label", *this);
+	mailer.hideDialog();
+}
 
 
 vector<string> const InsetLabel::getLabelList() const
@@ -39,29 +45,45 @@ vector<string> const InsetLabel::getLabelList() const
 }
 
 
-void InsetLabel::edit(BufferView * bv, int, int, mouse_button::state)
+void InsetLabel::edit(BufferView *, int, int, mouse_button::state)
 {
-	pair<bool, string> result = Alert::askForText(_("Enter label:"), getContents());
-	if (result.first) {
-		string new_contents = trim(result.second);
-		if (!new_contents.empty() &&
-		    getContents() != new_contents) {
-			bv->buffer()->markDirty();
-			bool flag = bv->ChangeRefsIfUnique(getContents(),
-							   new_contents);
-			setContents(new_contents);
-#if 0
-			bv->text->redoParagraph(bv);
-			if (flag) {
-				bv->redraw();
-				bv->fitCursor();
-			} else
-				bv->update(bv->text, BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
-#else
-			bv->updateInset(this, !flag);
-#endif
-		}
+	InsetCommandMailer mailer("label", *this);
+	mailer.showDialog();
+}
+
+
+dispatch_result InsetLabel::localDispatch(FuncRequest const & cmd)
+{
+	if (cmd.action != LFUN_INSET_APPLY)
+		return UNDISPATCHED;
+
+	InsetCommandParams p;
+	InsetCommandMailer::string2params(cmd.argument, p);
+	if (p.getCmdName().empty())
+		return UNDISPATCHED;
+
+	bool clean = true;
+	if (view() && p.getContents() != params().getContents()) {
+		clean = view()->ChangeCitationsIfUnique(params().getContents(),
+							p.getContents());
 	}
+
+	setParams(p);
+	if (view())
+		view()->updateInset(this, !clean);
+
+	return DISPATCHED;
+// 	if (result.first) {
+// 		string new_contents = trim(result.second);
+// 		if (!new_contents.empty() &&
+// 		    getContents() != new_contents) {
+// 			bv->buffer()->markDirty();
+// 			bool flag = bv->ChangeRefsIfUnique(getContents(),
+// 							   new_contents);
+// 			setContents(new_contents);
+// 			bv->updateInset(this, !flag);
+// 		}
+// 	}
 }
 
 

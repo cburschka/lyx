@@ -20,9 +20,13 @@ public:
 	///
 	InsetLabel(InsetCommandParams const &, bool same_id = false);
 	///
+	~InsetLabel();
+	///
 	virtual Inset * clone(Buffer const &, bool same_id = false) const {
 		return new InsetLabel(params(), same_id);
 	}
+	///
+	virtual dispatch_result localDispatch(FuncRequest const & cmd);
 	///
 	string const getScreenLabel(Buffer const *) const { return getContents(); }
 	///

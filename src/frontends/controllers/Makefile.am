@@ -67,6 +67,8 @@ libcontrollers_la_SOURCES= \
 	ControlIndex.C \
 	ControlIndex.h \
 	ControlInset.h \
+	ControlLabel.C \
+	ControlLabel.h \
 	ControlLog.C \
 	ControlLog.h \
 	ControlMath.C \

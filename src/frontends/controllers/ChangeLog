@@ -1,5 +1,11 @@
 2003-02-27  Angus Leeming  <leeming@lyx.org>
 
+	* ControlLabel.[Ch]: new files. A controller for the Label dialog.
+
+	* Makefile.am: add the new files.
+
+2003-02-27  Angus Leeming  <leeming@lyx.org>
+
 	* ControlBibitem.C (c-tor):
 	* ControlBibtex.C (c-tor):
 	* ControlCitation.C (c-tor):

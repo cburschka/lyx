@@ -1,5 +1,15 @@
 2003-02-27  Angus Leeming  <leeming@lyx.org>
 
+	* BufferView_pimpl.C (dispatch): call a real, LyX dialog to insert
+	a label.
+
+	* factory.C (createInset): add "label" to the factory.
+
+	* lyx_cb.[Ch] (getPossibleLabel): rewrite MenuInsertLabel to return the
+	string and do no more.
+
+2003-02-27  Angus Leeming  <leeming@lyx.org>
+
 	* commandtags.h:
 	* LyXAction.C (init):
 	* factory.C (createInset):
