@@ -34,7 +34,8 @@ void ControlCitation::clearDaughterParams()
 
 void ControlCitation::setDaughterParams()
 {
-	vector<pair<string,string> > blist = buffer()->getBibkeyList();
+	vector<pair<string,string> > blist;
+	buffer()->fillWithBibKeys(blist);
 
 	typedef std::map<string, string>::value_type InfoMapValue;
 

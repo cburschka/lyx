@@ -71,11 +71,10 @@ void InsetBibKey::setCounter(int c)
 // of time cause LyX3 won't use lyxlex anyway.  (ale)
 void InsetBibKey::write(Buffer const *, ostream & os) const
 {
-	os << "\n\\layout Bibliography\n\\bibitem ";
-	if (! getOptions().empty())
+	os << "\n\\bibitem ";
+	if (!getOptions().empty())
 		os << '[' << getOptions() << ']';
-	os << '{'
-	   << getContents() << "}\n";
+	os << '{' << getContents() << "}\n";
 }
 
 
@@ -84,8 +83,7 @@ void InsetBibKey::write(Buffer const *, ostream & os) const
 void InsetBibKey::read(Buffer const *, LyXLex & lex)
 {
 	if (lex.eatLine()) {
-		string const token = lex.getString();
-		scanCommand(token);
+		scanCommand(lex.getString());
 	} else {
 		lex.printError("InsetCommand: Parse error: `$$Token'");
 	}
@@ -200,7 +198,7 @@ int InsetBibtex::latex(Buffer const * buffer, ostream & os,
 			 adb = os::external_path(MakeAbsPath(adb, buffer->filePath()));
 		db_out += adb;
 		db_out += ',';
-		db_in= split(db_in, adb,',');
+		db_in = split(db_in, adb,',');
 	}
 	db_out = rtrim(db_out, ",");
 	os   << "\\bibliography{" << db_out << "}\n";
@@ -235,11 +233,9 @@ vector<string> const InsetBibtex::getFiles(Buffer const & buffer) const
 
 
 // This method returns a comma separated list of Bibtex entries
-vector<pair<string, string> > const
-	InsetBibtex::getKeys(Buffer const * buffer) const
+void InsetBibtex::fillWithBibKeys
+	(Buffer const * buffer, vector<pair<string, string> > & keys) const
 {
-	vector<pair<string,string> > keys;
-
 	lyx::Assert(buffer);
 	vector<string> const files = getFiles(*buffer);
 	for (vector<string>::const_iterator it = files.begin();
@@ -271,7 +267,6 @@ vector<pair<string, string> > const
 			}
 		}
 	}
-	return keys;
 }
 
 

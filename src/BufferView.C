@@ -865,12 +865,12 @@ bool BufferView::ChangeRefsIfUnique(string const & from, string const & to)
 }
 
 
-bool BufferView::ChangeCitationsIfUnique(string const & from,
-					 string const & to)
+bool BufferView::ChangeCitationsIfUnique(string const & from, string const & to)
 {
 	typedef pair<string, string> StringPair;
 
-	vector<StringPair> keys = buffer()->getBibkeyList();
+	vector<StringPair> keys;
+	buffer()->fillWithBibKeys(keys);
 	if (count_if(keys.begin(), keys.end(),
 		     lyx::equal_1st_in_pair<StringPair>(from))
 	    > 1)

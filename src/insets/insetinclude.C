@@ -483,18 +483,14 @@ vector<string> const InsetInclude::getLabelList() const
 }
 
 
-vector<pair<string,string> > const InsetInclude::getKeys() const
+void InsetInclude::fillWithBibKeys(vector<pair<string,string> > & keys) const
 {
-	vector<pair<string,string> > keys;
-
 	if (loadIfNeeded()) {
 		Buffer * tmp = bufferlist.getBuffer(getFileName());
 		tmp->setParentName("");
-		keys = tmp->getBibkeyList();
+		tmp->fillWithBibKeys(keys);
 		tmp->setParentName(getMasterFilename());
 	}
-
-	return keys;
 }
 
 

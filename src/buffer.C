@@ -130,7 +130,6 @@ using std::pair;
 using std::make_pair;
 using std::vector;
 using std::map;
-using std::max;
 using std::stack;
 using std::list;
 using std::for_each;
@@ -923,7 +922,8 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 		params.float_placement = lex.getString();
 	} else if (token == "\\align") {
 		int tmpret = lex.findToken(string_align);
-		if (tmpret == -1) ++tmpret;
+		if (tmpret == -1)
+			++tmpret;
 		int const tmpret2 = int(pow(2.0, tmpret));
 		par->params().align(LyXAlignment(tmpret2));
 	} else if (token == "\\added_space_top") {
@@ -1586,7 +1586,7 @@ string const Buffer::asciiParagraph(Paragraph const & par,
 
 	// this is to change the linebreak to do it by word a bit more
 	// intelligent hopefully! (only in the case where we have a
-	// max linelenght!) (Jug)
+	// max linelength!) (Jug)
 
 	string word;
 
@@ -2872,40 +2872,33 @@ vector<string> const Buffer::getLabelList() const
 
 
 // This is also a buffer property (ale)
-vector<pair<string, string> > const Buffer::getBibkeyList() const
+void Buffer::fillWithBibKeys(vector<pair<string, string> > & keys) const
 {
-	typedef pair<string, string> StringPair;
 	/// if this is a child document and the parent is already loaded
-	/// Use the parent's list instead  [ale990412]
+	/// use the parent's list instead  [ale990412]
 	if (!params.parentname.empty() && bufferlist.exists(params.parentname)) {
 		Buffer const * tmp = bufferlist.getBuffer(params.parentname);
-		if (tmp)
-			return tmp->getBibkeyList();
+		if (tmp) {
+			tmp->fillWithBibKeys(keys);
+			return;
+		}
 	}
 
-	vector<StringPair> keys;
 	for (inset_iterator it = inset_const_iterator_begin();
 		it != inset_const_iterator_end(); ++it) {
-		// Search for Bibtex or Include inset
-		if (it->lyxCode() == Inset::BIBTEX_CODE) {
-			vector<StringPair> tmp =
-				static_cast<InsetBibtex &>(*it).getKeys(this);
-			keys.insert(keys.end(), tmp.begin(), tmp.end());
-		} else if (it->lyxCode() == Inset::INCLUDE_CODE) {
-			vector<StringPair> const tmp =
-				static_cast<InsetInclude &>(*it).getKeys();
-			keys.insert(keys.end(), tmp.begin(), tmp.end());
-		} else if (it->lyxCode() == Inset::BIBKEY_CODE) {
+		if (it->lyxCode() == Inset::BIBTEX_CODE)
+			static_cast<InsetBibtex &>(*it).fillWithBibKeys(this, keys);
+		else if (it->lyxCode() == Inset::INCLUDE_CODE)
+			static_cast<InsetInclude &>(*it).fillWithBibKeys(keys);
+		else if (it->lyxCode() == Inset::BIBKEY_CODE) {
 			InsetBibKey & bib = static_cast<InsetBibKey &>(*it);
 			string const key = bib.getContents();
 			string const opt = bib.getOptions();
 			string const ref; // = pit->asString(this, false);
 			string const info = opt + "TheBibliographyRef" + ref;
-			keys.push_back(StringPair(key, info));
+			keys.push_back(pair<string, string>(key, info));
 		}
 	}
-
-	return keys;
 }
 
 

@@ -93,7 +93,8 @@ public:
 	int latex(Buffer const *, std::ostream &,
 		  bool fragile, bool freespace) const;
 	///
-	std::vector<std::pair<string,string> > const getKeys(Buffer const *) const;
+	void fillWithBibKeys(Buffer const *,
+		std::vector<std::pair<string,string> > &) const;
 	///
 	std::vector<string> const getFiles(Buffer const &) const;
 	///

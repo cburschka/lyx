@@ -1264,14 +1264,13 @@ void LyXText::setCounter(Buffer const * buf, Paragraph * par) const
 		textclass.counters().step("bibitem");
 		int number = textclass.counters().value("bibitem");
 		//if (!par->bibkey()) {
+		//	Inset * inset = new InsetBibKey(InsetCommandParams("bibitem"));
+		//	//par->insertInset(0, inset);
+		//}
 		if (par->bibkey()) {
 			par->bibkey()->setCounter(number);
 			par->params().labelString(layout->labelstring());
 		}
-		// else {
-		//	InsetCommandParams p("bibitem");
-		//	par->bibkey() = new InsetBibKey(p);
-		//}
 		// In biblio should't be following counters but...
 	} else {
 		string s = layout->labelstring();

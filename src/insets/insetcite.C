@@ -66,7 +66,8 @@ string const getNatbibLabel(Buffer const * buffer,
 	if (loadkeys) {
 		// build the keylist
 		typedef vector<std::pair<string, string> > InfoType;
-		InfoType bibkeys = buffer->getBibkeyList();
+		InfoType bibkeys;
+		buffer->fillWithBibKeys(bibkeys);
 
 		InfoType::const_iterator bit  = bibkeys.begin();
 		InfoType::const_iterator bend = bibkeys.end();
