@@ -13,63 +13,44 @@ else
 XFORMSGIMAGE = ../xforms/xformsGImage.lo
 endif
 
+# alphabetised
 xforms_objects = \
-	../xforms/xforms_helpers.lo \
-	../xforms/Toolbar_pimpl.lo \
+	../xforms/Alert_pimpl.lo \
+	../xforms/bmtable.lo \
 	../xforms/combox.lo \
-	../xforms/MathsSymbols.lo \
+	../xforms/Color.lo \
+	../xforms/DropDown.lo \
+	../xforms/FeedbackController.lo \
+	../xforms/FormBaseDeprecated.lo \
 	../xforms/FormMathsBitmap.lo \
 	../xforms/FormMathsDeco.lo \
+	../xforms/form_maths_deco.lo \
 	../xforms/FormMathsDelim.lo \
+	../xforms/form_maths_delim.lo \
 	../xforms/FormMathsMatrix.lo \
+	../xforms/form_maths_matrix.lo \
 	../xforms/FormMathsPanel.lo \
+	../xforms/form_maths_panel.lo \
 	../xforms/FormMathsSpace.lo \
-	../xforms/DropDown.lo \
-	../xforms/Alert_pimpl.lo \
-	$(XFORMSGIMAGE) ../xforms/Menubar_pimpl.lo
+	../xforms/form_maths_space.lo \
+	../xforms/FormMathsStyle.lo \
+	../xforms/form_maths_style.lo \
+	../xforms/MathsSymbols.lo \
+	../xforms/Menubar_pimpl.lo \
+	../xforms/Toolbar_pimpl.lo \
+	../xforms/Tooltips.lo \
+	../xforms/xforms_helpers.lo \
+	../xforms/xformsBC.lo \
+	$(XFORMSGIMAGE) 
 
 libgnome.la: xforms.lo $(libgnome_la_OBJECTS) $(libgnome_la_DEPENDENCIES)
 
 xforms.lo: $(xforms_objects)
 	$(CXXLINK) $(xforms_objects)
 
-#	../xforms/FileDialog.lo \
-#	../xforms/FormFiledialog.lo \
-#	../xforms/form_filedialog.lo 
-#	../xforms/Timeout_pimpl.lo \
-#	../xforms/Color.lo \
-#	../xforms/FormFiledialog.lo \
-#	../xforms/form_filedialog.lo \
-#	../xforms/FormBase.lo \
-#	../xforms/FormCitation.lo \
-#	../xforms/form_citation.lo \
-#	../xforms/FormCopyright.lo \
-#	../xforms/form_copyright.lo \
-#	../xforms/FormDocument.lo \
-#	../xforms/form_document.lo \
-#	../xforms/FormError.lo \
-#	../xforms/form_error.lo \
-#	../xforms/FormGraphics.lo \
-#	../xforms/form_graphics.lo \
-#	../xforms/FormIndex.lo \
-#	../xforms/form_index.lo \
-#	../xforms/FormInset.lo \
-#	../xforms/FormParagraph.lo \
-#	../xforms/form_paragraph.lo \
-#	../xforms/FormPreferences.lo \
-#	../xforms/form_preferences.lo \
-#	../xforms/FormPrint.lo \
-#	../xforms/form_print.lo \
-#	../xforms/FormRef.lo \
-#	../xforms/form_ref.lo \
-#	../xforms/FormTabular.lo \
-#	../xforms/form_tabular.lo \
-#	../xforms/FormTabularCreate.lo \
-#	../xforms/form_tabular_create.lo \
-#	../xforms/FormToc.lo \
-#	../xforms/form_toc.lo \
-#	../xforms/input_validators.lo \
-#	../xforms/RadioButtonGroup.lo \
+###
+# KOZ 20020315 Large commented out removed.
+###
 
 #LDFLAGS= $(libgnome_la_OBJADD)
 LYXDATADIRS = 

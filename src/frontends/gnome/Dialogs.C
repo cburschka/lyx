@@ -19,7 +19,7 @@
 #include "Dialogs.h"
 #include "BufferView.h"
 #include "gnomeBC.h"
-
+#include "Tooltips.h"
 #include "ControlBibitem.h"
 #include "ControlBibtex.h"
 #include "ControlCharacter.h"
@@ -63,7 +63,10 @@
 #include "FormUrl.h"
 #include "FormMinipage.h"
 */
-
+bool Dialogs::tooltipsEnabled()
+{
+	return Tooltips::enabled();
+}
 Dialogs::Dialogs(LyXView * lv)
 {
 	add(new GUIUrl<FormUrl, gnomeBC>(*lv, *this));

@@ -1,9 +1,14 @@
+2002-03-16  Michael A. Koziarski  <michael@koziarski.com>
+
+	* Makefile.am: Cleanup and linking fix.  
+	* README: Added procedure for adding a new dialog.
+	* Dialogs.C (tooltipsEnable): new method.
+
 2002-03-14  Michael A. Koziarski  <michael@koziarski.org>
 
 	* Timeout_pimpl.C
 	* Timeout_pimpl.h: implemented running to fix compilation, linking 
 	fix still to come 
- 	
 
 2002-03-11  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
