@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: lyx 0.12.1\n"
-"POT-Creation-Date: 2001-01-31 17:06+0100\n"
+"POT-Creation-Date: 2001-07-24 15:15+0200\n"
 "PO-Revision-Date: 2000-01-20 02:50+01:00\n"
 "Last-Translator: F. Kaðan Gürkaynak <kgf@wpi.edu>\n"
 "Language-Team: turkish <tr@li.org>\n"
@@ -13,130 +13,159 @@ msgstr ""
 "Content-Type: text/plain; charset=ISO-8859-9\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/buffer.C:506
+#: src/buffer.C:321
+msgid "Couldn't set the layout for "
+msgstr ""
+
+#: src/buffer.C:323
 #, fuzzy
-msgid "Textclass error"
-msgstr "Textclass Yükleme Hatasý!"
+msgid "one paragraph"
+msgstr "Bir paragraf yukarý git"
 
-#: src/buffer.C:507
-msgid "The document uses an unknown textclass \""
-msgstr ""
-
-#: src/buffer.C:509
-msgid "LyX will not be able to produce output correctly."
-msgstr ""
+#: src/buffer.C:326
+#, fuzzy
+msgid " paragraphs"
+msgstr "Paragraf düzeni ayarlandý"
 
 #. if the textclass wasn't loaded properly
 #. we need to either substitute another
 #. or stop loading the file.
 #. I can substitute but I don't see how I can
 #. stop loading... ideas??  ARRae980418
-#: src/buffer.C:518
+#: src/buffer.C:328 src/buffer.C:545
 msgid "Textclass Loading Error!"
 msgstr "Textclass Yükleme Hatasý!"
 
-#: src/buffer.C:519
+#: src/buffer.C:329
+#, fuzzy
+msgid "When reading "
+msgstr "Okuma sýrasýnda hata oluþtu "
+
+#: src/CutAndPaste.C:447 src/buffer.C:383
+msgid "Layout had to be changed from\n"
+msgstr ""
+
+#: src/CutAndPaste.C:448 src/CutAndPaste.C:451 src/buffer.C:384
+#: src/converter.C:554
+#, fuzzy
+msgid " to "
+msgstr " Tarih: "
+
+#: src/buffer.C:533
+#, fuzzy
+msgid "Textclass error"
+msgstr "Textclass Yükleme Hatasý!"
+
+#: src/buffer.C:534
+msgid "The document uses an unknown textclass \""
+msgstr ""
+
+#: src/buffer.C:536
+msgid "LyX will not be able to produce output correctly."
+msgstr ""
+
+#: src/buffer.C:546
 msgid "Can't load textclass "
 msgstr "Yazý sýnýfý yüklenemedi "
 
-#: src/buffer.C:521
+#: src/buffer.C:548
 msgid "-- substituting default"
 msgstr "-- öntanýmlar kullanýlýyor"
 
 # , c-format
-#: src/buffer.C:1078
+#: src/buffer.C:1105
 #, fuzzy, c-format
 msgid "Warning: need lyxformat %.2f but found %.2f"
 msgstr "Uyarý: lyx %.2f formatý beklerken %.2f bulundu\n"
 
 # , c-format
-#: src/buffer.C:1082
+#: src/buffer.C:1109
 #, fuzzy, c-format
 msgid "ERROR: need lyxformat %.2f but found %.2f"
 msgstr "Hata: lyx %.2f formatý beklerken %.2f bulundu\n"
 
 #. future format
-#: src/buffer.C:1093 src/buffer.C:1120 src/buffer.C:1140
+#: src/buffer.C:1120 src/buffer.C:1147 src/buffer.C:1167
 msgid "Warning!"
 msgstr "Uyarý!"
 
-#: src/buffer.C:1094 src/buffer.C:1141
+#: src/buffer.C:1121 src/buffer.C:1168
 msgid "Reading of document is not complete"
 msgstr "Belgenin okunmasý tamamlanamadý"
 
-#: src/buffer.C:1095 src/buffer.C:1142
+#: src/buffer.C:1122 src/buffer.C:1169
 msgid "Maybe the document is truncated"
 msgstr "Belgeniz kýrpýlmýþ olabilir"
 
 #. "\\lyxformat" not found
-#: src/buffer.C:1101 src/buffer.C:1127 src/buffer.C:1146 src/buffer.C:1149
+#: src/buffer.C:1128 src/buffer.C:1154 src/buffer.C:1173 src/buffer.C:1176
 msgid "ERROR!"
 msgstr "HATA!"
 
-#: src/buffer.C:1102 src/buffer.C:1128
+#: src/buffer.C:1129 src/buffer.C:1155
 msgid "Old LyX file format found. Use LyX 0.10.x to read this!"
 msgstr "Eski LyX dosya formatý, okumak için LyX 0.10.x kullanýn!"
 
-#: src/buffer.C:1121
+#: src/buffer.C:1148
 msgid "LyX file format is newer that what"
 msgstr ""
 
-#: src/buffer.C:1122
+#: src/buffer.C:1149
 msgid "is supported in this LyX version. Expect some problems."
 msgstr ""
 
-#: src/buffer.C:1146
+#: src/buffer.C:1173
 msgid "Not a LyX file!"
 msgstr "LyX dosyasý deðil!"
 
-#: src/buffer.C:1149
+#: src/buffer.C:1176
 msgid "Unable to read file!"
 msgstr "Dosya okunamadý!"
 
-#: src/buffer.C:1243 src/buffer.C:1246
+#: src/buffer.C:1270 src/buffer.C:1273
 msgid "Error! Document is read-only: "
 msgstr "Hata! Belge sadece okunabilir: "
 
-#: src/buffer.C:1256 src/buffer.C:1259
+#: src/buffer.C:1283 src/buffer.C:1286
 msgid "Error! Cannot write file: "
 msgstr "Hata! Dosya yazýlamadý: "
 
-#: src/buffer.C:1267 src/buffer.C:1270
+#: src/buffer.C:1294 src/buffer.C:1297
 #, fuzzy
 msgid "Error! Cannot open file: "
 msgstr "Hata! Dosya yazýlamadý: "
 
-#: src/buffer.C:1566
+#: src/buffer.C:1593
 msgid "Error: Cannot write file:"
 msgstr "Hata: Dosya yazýlamadý:"
 
-#: src/buffer.C:1599
+#: src/buffer.C:1627
 #, fuzzy
 msgid "Error: Cannot open file: "
 msgstr "Hata: Dosya yazýlamadý:"
 
-#: src/buffer.C:2226 src/buffer.C:2875
+#: src/buffer.C:2263 src/buffer.C:2912
 msgid "LYX_ERROR:"
 msgstr "LYX_HATASI:"
 
-#: src/buffer.C:2226 src/buffer.C:2875
+#: src/buffer.C:2263 src/buffer.C:2912
 msgid "Cannot write file"
 msgstr "Dosya yazýlamadý"
 
-#: src/buffer.C:2313 src/buffer.C:2957
+#: src/buffer.C:2350 src/buffer.C:2996
 msgid "Error : Wrong depth for LatexType Command.\n"
 msgstr "Hata: LatexType komutu için hatalý derinlik.\n"
 
 #. path to LaTeX file
-#: src/buffer.C:3266
+#: src/buffer.C:3317
 msgid "Running chktex..."
 msgstr "chktex çalýþtýrýlýyor..."
 
-#: src/buffer.C:3279
+#: src/buffer.C:3330
 msgid "chktex did not work!"
 msgstr "chktex çalýþmadý!"
 
-#: src/buffer.C:3280
+#: src/buffer.C:3331
 msgid "Could not run with file:"
 msgstr "Aþaðýdaki dosya ile çalýþtýrýlamadý:"
 
@@ -199,7 +228,7 @@ msgstr "Hata!"
 msgid "Unable to open template"
 msgstr "Hazýr biçimli dosya açýlamadý"
 
-#: src/bufferlist.C:476 src/lyxfunc.C:3072 src/lyxfunc.C:3235
+#: src/bufferlist.C:476 src/lyxfunc.C:3074 src/lyxfunc.C:3237
 msgid "Document is already open:"
 msgstr "Belge zaten açýk:"
 
@@ -437,11 +466,6 @@ msgstr "Dosya yazýlamadý"
 msgid "No information for converting from "
 msgstr ""
 
-#: src/CutAndPaste.C:448 src/CutAndPaste.C:451 src/converter.C:554
-#, fuzzy
-msgid " to "
-msgstr " Tarih: "
-
 #: src/converter.C:642
 #, fuzzy
 msgid "There were errors during the Build process."
@@ -532,7 +556,7 @@ msgid "Credits"
 msgstr "Teþekkürler"
 
 #: src/credits_form.C:19 src/form1.C:43 src/form1.C:117 src/form1.C:261
-#: src/frontends/xforms/form_citation.C:99
+#: src/frontends/xforms/form_citation.C:85
 #: src/frontends/xforms/form_document.C:46
 #: src/frontends/xforms/form_index.C:41
 #: src/frontends/xforms/form_paragraph.C:330
@@ -552,18 +576,14 @@ msgstr "Matthias"
 msgid "All these people have contributed to the LyX project. Thanks,"
 msgstr "LyX projesine katkýda bulunan herkese teþekkürler."
 
-#: src/CutAndPaste.C:447
-msgid "Layout had to be changed from\n"
-msgstr ""
-
 #: src/CutAndPaste.C:450
 msgid ""
 "\n"
 "because of class conversion from\n"
 msgstr ""
 
-#: src/CutAndPaste.C:476 src/insets/insettext.C:970 src/text.C:3957
-#: src/text.C:3965 src/text.C:3992 src/text2.C:2197 src/text2.C:2310
+#: src/CutAndPaste.C:476 src/insets/insettext.C:969 src/text.C:3961
+#: src/text.C:3969 src/text.C:3996 src/text2.C:2197 src/text2.C:2310
 msgid "Impossible operation"
 msgstr "Geçersiz iþlem"
 
@@ -572,8 +592,8 @@ msgid "Can't paste float into float!"
 msgstr "Tek-parça içine baþka tek-parça yapýþtýrýlamaz!"
 
 #: src/CutAndPaste.C:478 src/insets/insetert.C:67
-#: src/insets/insettabular.C:1700 src/insets/insettext.C:972 src/text.C:3959
-#: src/text.C:3967 src/text.C:3994
+#: src/insets/insettabular.C:1702 src/insets/insettext.C:971 src/text.C:3963
+#: src/text.C:3971 src/text.C:3998
 msgid "Sorry."
 msgstr "Üzgünüm."
 
@@ -683,12 +703,21 @@ msgstr "Dosya yazýlamadý"
 msgid "No information for exporting to "
 msgstr ""
 
-#: src/exporter.C:85
+#: src/exporter.C:74
+#, fuzzy
+msgid "Cannot run latex."
+msgstr "Dosya yazýlamadý"
+
+#: src/exporter.C:75
+msgid "The path to the lyx file cannot contain spaces."
+msgstr ""
+
+#: src/exporter.C:89
 #, fuzzy
 msgid "Document exported as "
 msgstr "Belge HTML olarak dosyaya yazýldý `"
 
-#: src/exporter.C:87
+#: src/exporter.C:91
 #, fuzzy
 msgid " to file `"
 msgstr "[dosya yok]"
@@ -1369,39 +1398,39 @@ msgid "Version...|V"
 msgstr ""
 
 #: src/ext_l10n.h:150
-msgid "A&A"
+msgid "\t\t\tAbstract"
 msgstr ""
 
 #: src/ext_l10n.h:151
-msgid "Abstract"
+msgid "ACT"
 msgstr ""
 
 #: src/ext_l10n.h:152
-msgid "Accepted"
+msgid "AMS"
 msgstr ""
 
 #: src/ext_l10n.h:153
-msgid "Acknowledgement"
+msgid "AT_RISE:"
 msgstr ""
 
 #: src/ext_l10n.h:154
-msgid "Acknowledgement*"
+msgid "Abstract"
 msgstr ""
 
 #: src/ext_l10n.h:155
-msgid "Acknowledgement-numbered"
+msgid "Accepted"
 msgstr ""
 
 #: src/ext_l10n.h:156
-msgid "Acknowledgements"
+msgid "Acknowledgement"
 msgstr ""
 
 #: src/ext_l10n.h:157
-msgid "Acknowledgement(s)"
+msgid "Acknowledgement*"
 msgstr ""
 
 #: src/ext_l10n.h:158
-msgid "Acknowledgement-unnumbered"
+msgid "Acknowledgements"
 msgstr ""
 
 #: src/ext_l10n.h:159
@@ -1409,1707 +1438,1377 @@ msgid "Acknowledgments"
 msgstr ""
 
 #: src/ext_l10n.h:160
-#, fuzzy
-msgid "Acnowledgement"
-msgstr "Hizalama"
-
-#: src/ext_l10n.h:161
-msgid "ACT"
-msgstr ""
-
-#: src/ext_l10n.h:162
 msgid "Addchap"
 msgstr ""
 
-#: src/ext_l10n.h:163
+#: src/ext_l10n.h:161
 msgid "Addchap*"
 msgstr ""
 
-#: src/ext_l10n.h:164
+#: src/ext_l10n.h:162
 #, fuzzy
 msgid "Addition"
 msgstr "Gönderme"
 
-#: src/ext_l10n.h:165
+#: src/ext_l10n.h:163
 msgid "Address"
 msgstr ""
 
-#: src/ext_l10n.h:166
+#: src/ext_l10n.h:164
 msgid "Addsec"
 msgstr ""
 
-#: src/ext_l10n.h:167
+#: src/ext_l10n.h:165
 msgid "Addsec*"
 msgstr ""
 
-#: src/ext_l10n.h:168
+#: src/ext_l10n.h:166
 msgid "Adresse"
 msgstr ""
 
-#: src/ext_l10n.h:169
+#: src/ext_l10n.h:167
 msgid "Affil"
 msgstr ""
 
-#: src/ext_l10n.h:170
+#: src/ext_l10n.h:168
 #, fuzzy
 msgid "Affiliation"
 msgstr "Gönderme"
 
-#: src/ext_l10n.h:171
+#: src/ext_l10n.h:169
 #, fuzzy
 msgid "Algorithm"
 msgstr "Algoritma listesi"
 
-#: src/ext_l10n.h:172
-msgid "Algorithm-numbered"
-msgstr ""
-
-#: src/ext_l10n.h:173
-msgid "Algorithm-plain"
-msgstr ""
-
-#: src/ext_l10n.h:174
-msgid "AMS"
-msgstr ""
-
-#: src/ext_l10n.h:175
+#: src/ext_l10n.h:170
 msgid "And"
 msgstr ""
 
-#: src/ext_l10n.h:176
+#: src/ext_l10n.h:171
 #, fuzzy
 msgid "Anlagen"
 msgstr "Hizalama"
 
-#: src/ext_l10n.h:177
+#: src/ext_l10n.h:172
 #, fuzzy
 msgid "Anrede"
 msgstr "Kýrmýzý"
 
-#: src/ext_l10n.h:178
+#: src/ext_l10n.h:173
 #, fuzzy
 msgid "Appendices"
 msgstr "Inset açýldý"
 
-#: src/ext_l10n.h:179
+#: src/ext_l10n.h:174
 #, fuzzy
 msgid "Appendix"
 msgstr "Inset açýldý"
 
-#: src/ext_l10n.h:180
-msgid "AT_RISE:"
-msgstr ""
-
-#: src/ext_l10n.h:181
+#: src/ext_l10n.h:175
 msgid "Author"
 msgstr ""
 
-#: src/ext_l10n.h:182
+#: src/ext_l10n.h:176
 msgid "Author_Email"
 msgstr ""
 
-#: src/ext_l10n.h:183
-msgid "AuthorRunning"
-msgstr ""
-
-#: src/ext_l10n.h:184
+#: src/ext_l10n.h:177
 msgid "Author_Running"
 msgstr ""
 
-#: src/ext_l10n.h:185
+#: src/ext_l10n.h:178
 msgid "Author_URL"
 msgstr ""
 
-#: src/ext_l10n.h:186
+#: src/ext_l10n.h:179
 msgid "Axiom"
 msgstr ""
 
-#: src/ext_l10n.h:187
-#, fuzzy
-msgid "Axiom-numbered"
-msgstr "Numarasýz"
-
-#: src/ext_l10n.h:188
-msgid "Axiom-plain"
+#: src/ext_l10n.h:180
+msgid "BLZ"
 msgstr ""
 
-#: src/ext_l10n.h:189
+#: src/ext_l10n.h:181
 msgid "Backaddress"
 msgstr ""
 
-#: src/ext_l10n.h:190
+#: src/ext_l10n.h:182
 msgid "Bank"
 msgstr ""
 
-#: src/ext_l10n.h:191
+#: src/ext_l10n.h:183
 msgid "BankAccount"
 msgstr ""
 
-#: src/ext_l10n.h:192
+#: src/ext_l10n.h:184
 msgid "BankCode"
 msgstr ""
 
-#: src/ext_l10n.h:193
+#: src/ext_l10n.h:185
 msgid "Betreff"
 msgstr ""
 
-#: src/ext_l10n.h:194
+#: src/ext_l10n.h:186
 #, fuzzy
 msgid "Bibliography"
 msgstr "Kaynakça elemaný"
 
-#: src/ext_l10n.h:195
+#: src/ext_l10n.h:187
 #, fuzzy
 msgid "Biography"
 msgstr "Kaynakça elemaný"
 
-#: src/ext_l10n.h:196
-msgid "BLZ"
-msgstr ""
-
-#: src/ext_l10n.h:197
+#: src/ext_l10n.h:188
 msgid "Brieftext"
 msgstr ""
 
-#: src/ext_l10n.h:198
+#: src/ext_l10n.h:189
+msgid "CC"
+msgstr ""
+
+#: src/ext_l10n.h:190
+msgid "CURTAIN"
+msgstr ""
+
+#: src/ext_l10n.h:191
 #, fuzzy
 msgid "Caption"
 msgstr "Altbaþlýk|#k"
 
-#: src/ext_l10n.h:199
+#: src/ext_l10n.h:192
 #, fuzzy
 msgid "Case"
 msgstr "Yapýþtýr"
 
-#: src/ext_l10n.h:200
-msgid "Case-numbered"
-msgstr ""
-
-#: src/ext_l10n.h:201
-msgid "cc"
-msgstr ""
-
-#: src/ext_l10n.h:202
-msgid "CC"
-msgstr ""
-
-#: src/ext_l10n.h:203
+#: src/ext_l10n.h:193
 #, fuzzy
 msgid "CenteredCaption"
 msgstr "Yön"
 
-#: src/ext_l10n.h:204
+#: src/ext_l10n.h:194
 msgid "Chapter"
 msgstr ""
 
-#: src/ext_l10n.h:205
+#: src/ext_l10n.h:195
 msgid "Chapter*"
 msgstr ""
 
-#: src/ext_l10n.h:206
+#: src/ext_l10n.h:196
 msgid "Chapter_Exercises"
 msgstr ""
 
-#: src/ext_l10n.h:207
+#: src/ext_l10n.h:197
 #, fuzzy
 msgid "Citta"
 msgstr "Gönderme"
 
-#: src/ext_l10n.h:208
+#: src/ext_l10n.h:198
 msgid "Claim"
 msgstr ""
 
-#: src/ext_l10n.h:209
+#: src/ext_l10n.h:199
 msgid "Claim*"
 msgstr ""
 
-#: src/ext_l10n.h:210
-msgid "Claim-numbered"
-msgstr ""
-
-#: src/ext_l10n.h:211
-msgid "Claim-plain"
-msgstr ""
-
-#: src/ext_l10n.h:212
-msgid "Claim-unnumbered"
-msgstr ""
-
-#: src/ext_l10n.h:213
+#: src/ext_l10n.h:200
 #, fuzzy
 msgid "Closing"
 msgstr "Kapat"
 
-#: src/ext_l10n.h:214
+#: src/ext_l10n.h:201
 #, fuzzy
 msgid "Code"
 msgstr "Kapat"
 
-#: src/ext_l10n.h:215
+#: src/ext_l10n.h:202
 #, fuzzy
 msgid "Comment"
 msgstr "Not:"
 
-#: src/ext_l10n.h:216
+#: src/ext_l10n.h:203
 #, fuzzy
 msgid "Conclusion"
 msgstr "Sütun"
 
-#: src/ext_l10n.h:217
+#: src/ext_l10n.h:204
 msgid "Conclusion*"
 msgstr ""
 
-#: src/ext_l10n.h:218
-msgid "Conclusion-numbered"
-msgstr ""
-
-#: src/ext_l10n.h:219
-msgid "Conclusion-unnumbered"
-msgstr ""
-
-#: src/ext_l10n.h:220
+#: src/ext_l10n.h:205
 #, fuzzy
 msgid "Condition"
 msgstr "Gönderme"
 
-#: src/ext_l10n.h:221
-msgid "Condition-numbered"
-msgstr ""
-
-#: src/ext_l10n.h:222
-msgid "Condition-plain"
-msgstr ""
-
-#: src/ext_l10n.h:223
+#: src/ext_l10n.h:206
 msgid "Conjecture"
 msgstr ""
 
-#: src/ext_l10n.h:224
+#: src/ext_l10n.h:207
 msgid "Conjecture*"
 msgstr ""
 
-#: src/ext_l10n.h:225
-msgid "Conjecture-numbered"
-msgstr ""
-
-#: src/ext_l10n.h:226
-msgid "Conjecture-plain"
-msgstr ""
-
-#: src/ext_l10n.h:227
-msgid "Conjecture-unnumbered"
-msgstr ""
-
-#: src/ext_l10n.h:228
+#: src/ext_l10n.h:208
 #, fuzzy
 msgid "CopNum"
 msgstr "Sütun"
 
-#: src/ext_l10n.h:229
+#: src/ext_l10n.h:209
 #, fuzzy
 msgid "Copyright"
 msgstr "Dik"
 
-#: src/ext_l10n.h:230
+#: src/ext_l10n.h:210
 msgid "Corollary"
 msgstr ""
 
-#: src/ext_l10n.h:231
+#: src/ext_l10n.h:211
 msgid "Corollary*"
 msgstr ""
 
-#: src/ext_l10n.h:232
-msgid "Corollary-numbered"
-msgstr ""
-
-#: src/ext_l10n.h:233
-msgid "Corollary-plain"
-msgstr ""
-
-#: src/ext_l10n.h:234
-msgid "Corollary-unnumbered"
-msgstr ""
-
-#: src/ext_l10n.h:235
-msgid "Correspondence"
-msgstr ""
-
-#: src/ext_l10n.h:236
+#: src/ext_l10n.h:212
 #, fuzzy
 msgid "Criterion"
 msgstr "Gönderme"
 
-#: src/ext_l10n.h:237
-msgid "Criterion-numbered"
-msgstr ""
-
-#: src/ext_l10n.h:238
-msgid "Criterion-plain"
-msgstr ""
-
-#: src/ext_l10n.h:239
+#: src/ext_l10n.h:213
 msgid "CrossList"
 msgstr ""
 
-#: src/ext_l10n.h:240
-#, fuzzy
-msgid "Current"
-msgstr "Not:"
-
-#: src/ext_l10n.h:241
+#: src/ext_l10n.h:214
 msgid "Current_Address"
 msgstr ""
 
-#: src/ext_l10n.h:242
-msgid "CURTAIN"
-msgstr ""
-
-#: src/ext_l10n.h:243
+#: src/ext_l10n.h:215
 #, fuzzy
 msgid "Customer"
 msgstr "Özel kaðýt boyu"
 
-#: src/ext_l10n.h:244
+#: src/ext_l10n.h:216
 #, fuzzy
 msgid "Data"
 msgstr "Veri tabaný:"
 
-#: src/ext_l10n.h:245
+#: src/ext_l10n.h:217
 #, fuzzy
 msgid "Date"
 msgstr "Yapýþtýr"
 
-#: src/ext_l10n.h:246
+#: src/ext_l10n.h:218
 msgid "Datum"
 msgstr ""
 
-#: src/ext_l10n.h:247
+#: src/ext_l10n.h:219
 #, fuzzy
 msgid "Dedication"
 msgstr "Üst/alt süsler"
 
-#: src/ext_l10n.h:248
+#: src/ext_l10n.h:220
 #, fuzzy
 msgid "Dedicatory"
 msgstr "Sözlük"
 
-#: src/ext_l10n.h:249
+#: src/ext_l10n.h:221
 #, fuzzy
 msgid "Definition"
 msgstr "Gideceði yer:"
 
-#: src/ext_l10n.h:250
+#: src/ext_l10n.h:222
 #, fuzzy
 msgid "Definition*"
 msgstr "Gideceði yer:"
 
-#: src/ext_l10n.h:251
-#, fuzzy
-msgid "Definition-numbered"
-msgstr "Bölüm numaralandýrma derinliði"
-
-#: src/ext_l10n.h:252
-msgid "Definition-plain"
-msgstr ""
-
-#: src/ext_l10n.h:253
-msgid "Definition-unnumbered"
-msgstr ""
-
-#: src/ext_l10n.h:254
+#: src/ext_l10n.h:223
 #, fuzzy
 msgid "Description"
 msgstr "Üst/alt süsler"
 
-#: src/ext_l10n.h:255
+#: src/ext_l10n.h:224
 msgid "Dialogue"
 msgstr ""
 
-#: src/ext_l10n.h:256
+#: src/ext_l10n.h:225
+msgid "EMail"
+msgstr ""
+
+#: src/ext_l10n.h:226
+msgid "EXT."
+msgstr ""
+
+#: src/ext_l10n.h:227
 #, fuzzy
 msgid "Email"
 msgstr "Küçük"
 
-#: src/ext_l10n.h:257
-msgid "EMail"
-msgstr ""
-
-#: src/ext_l10n.h:258
-#, fuzzy
-msgid "encl"
-msgstr "Vazgeç"
-
-#: src/ext_l10n.h:259
+#: src/ext_l10n.h:228
 #, fuzzy
 msgid "Encl"
 msgstr "Vazgeç"
 
-#: src/ext_l10n.h:260
+#: src/ext_l10n.h:229
 msgid "Encl."
 msgstr ""
 
-#: src/ext_l10n.h:261
+#: src/ext_l10n.h:230
 msgid "End_All_Slides"
 msgstr ""
 
-#: src/ext_l10n.h:262
+#: src/ext_l10n.h:231
 msgid "Enumerate"
 msgstr ""
 
-#: src/ext_l10n.h:263
+#: src/ext_l10n.h:232
 #, fuzzy
 msgid "Example"
 msgstr "Örnekler"
 
-#: src/ext_l10n.h:264
+#: src/ext_l10n.h:233
 #, fuzzy
 msgid "Example*"
 msgstr "Örnekler"
 
-#: src/ext_l10n.h:265
-msgid "Example-numbered"
-msgstr ""
-
-#: src/ext_l10n.h:266
-#, fuzzy
-msgid "Example-plain"
-msgstr "Örnekler"
-
-#: src/ext_l10n.h:267
-msgid "Example-unnumbered"
-msgstr ""
-
-#: src/ext_l10n.h:268
+#: src/ext_l10n.h:234
 msgid "Exercise"
 msgstr ""
 
-#: src/ext_l10n.h:269
-msgid "Exercise-numbered"
-msgstr ""
-
-#: src/ext_l10n.h:270
-msgid "Exercise-plain"
-msgstr ""
-
-#: src/ext_l10n.h:271
-msgid "EXT."
-msgstr ""
-
-#: src/ext_l10n.h:272
+#: src/ext_l10n.h:235
 #, fuzzy
 msgid "Extratitle"
 msgstr "Ek seçenekler"
 
-#: src/ext_l10n.h:273
+#: src/ext_l10n.h:236
+msgid "FADE_IN:"
+msgstr ""
+
+#: src/ext_l10n.h:237
+msgid "FADE_OUT:"
+msgstr ""
+
+#: src/ext_l10n.h:238
 #, fuzzy
 msgid "Fact"
 msgstr "Üstbelge:"
 
-#: src/ext_l10n.h:274
+#: src/ext_l10n.h:239
 msgid "Fact*"
 msgstr ""
 
-#: src/ext_l10n.h:275
-msgid "Fact-numbered"
-msgstr ""
-
-#: src/ext_l10n.h:276
-msgid "Fact-plain"
-msgstr ""
-
-#: src/ext_l10n.h:277
-msgid "Fact-unnumbered"
-msgstr ""
-
-#: src/ext_l10n.h:278
-msgid "FADE_IN:"
-msgstr ""
-
-#: src/ext_l10n.h:279
-msgid "FADE_OUT:"
-msgstr ""
-
-#: src/ext_l10n.h:280
+#: src/ext_l10n.h:240
 #, fuzzy
 msgid "FigCaption"
 msgstr "Altbaþlýk|#k"
 
-#: src/ext_l10n.h:281
-#, fuzzy
-msgid "first"
-msgstr "Inset"
-
-#: src/ext_l10n.h:282
+#: src/ext_l10n.h:241
 msgid "FirstAuthor"
 msgstr ""
 
-#: src/ext_l10n.h:283
+#: src/ext_l10n.h:242
 #, fuzzy
 msgid "FirstName"
 msgstr "Ýlk Baþlýk"
 
-#: src/ext_l10n.h:284
+#: src/ext_l10n.h:243
 msgid "FitBitmap"
 msgstr ""
 
-#: src/ext_l10n.h:285
+#: src/ext_l10n.h:244
 #, fuzzy
 msgid "FitFigure"
 msgstr "Þekil"
 
-#: src/ext_l10n.h:286
-msgid "foilhead"
-msgstr ""
-
-#: src/ext_l10n.h:287
+#: src/ext_l10n.h:245
 #, fuzzy
 msgid "Foilhead"
 msgstr "Dosya"
 
-#: src/ext_l10n.h:288
+#: src/ext_l10n.h:246
 #, fuzzy
 msgid "Footernote"
 msgstr "Dipnot ekle"
 
-#: src/ext_l10n.h:289
+#: src/ext_l10n.h:247
 msgid "FourAffiliations"
 msgstr ""
 
-#: src/ext_l10n.h:290
+#: src/ext_l10n.h:248
 msgid "FourAuthors"
 msgstr ""
 
-#: src/ext_l10n.h:291
+#: src/ext_l10n.h:249
+msgid "FrontMatter"
+msgstr ""
+
+#: src/ext_l10n.h:250
 msgid "Gruss"
 msgstr ""
 
-#: src/ext_l10n.h:292
+#: src/ext_l10n.h:251
+msgid "HTTP"
+msgstr ""
+
+#: src/ext_l10n.h:252
 #, fuzzy
 msgid "Headnote"
 msgstr "Baþlýk"
 
-#: src/ext_l10n.h:293
-msgid "HTTP"
+#: src/ext_l10n.h:253
+msgid "INT."
 msgstr ""
 
-#: src/ext_l10n.h:294
-#, fuzzy
-msgid "Idea"
-msgstr "Dizin"
-
-#: src/ext_l10n.h:295
+#: src/ext_l10n.h:254
 msgid "IhrSchreiben"
 msgstr ""
 
-#: src/ext_l10n.h:296
+#: src/ext_l10n.h:255
 msgid "IhrZeichen"
 msgstr ""
 
-#: src/ext_l10n.h:297
+#: src/ext_l10n.h:256
 #, fuzzy
 msgid "Institute"
 msgstr "Alýntý ekle"
 
-#: src/ext_l10n.h:298
+#: src/ext_l10n.h:257
 #, fuzzy
 msgid "Institution"
 msgstr "Gönderme ekle"
 
-#: src/ext_l10n.h:299
-msgid "INT."
-msgstr ""
-
-#: src/ext_l10n.h:300
+#: src/ext_l10n.h:258
 msgid "InvisibleText"
 msgstr ""
 
-#: src/ext_l10n.h:301
+#: src/ext_l10n.h:259
 #, fuzzy
 msgid "Invoice"
 msgstr "Aldýrma"
 
-#: src/ext_l10n.h:302
+#: src/ext_l10n.h:260
 msgid "Itemize"
 msgstr ""
 
-#: src/ext_l10n.h:303
-#, fuzzy
-msgid "journal"
-msgstr "Normal"
-
-#: src/ext_l10n.h:304 src/frontends/gnome/FormCitation.C:531
+#: src/ext_l10n.h:261 src/frontends/gnome/FormCitation.C:531
 #, fuzzy
 msgid "Journal"
 msgstr "Normal"
 
-#: src/ext_l10n.h:305
+#: src/ext_l10n.h:262 src/frontends/gnome/FormIndex.C:89
+#: src/frontends/xforms/form_index.C:28
+#, fuzzy
+msgid "Keyword"
+msgstr "Tuþ:|#K"
+
+#: src/ext_l10n.h:263
 #, fuzzy
 msgid "Keywords"
 msgstr "Tuþ:|#K"
 
-#: src/ext_l10n.h:306
+#: src/ext_l10n.h:264
 msgid "Konto"
 msgstr ""
 
-#: src/ext_l10n.h:307
-#, fuzzy
-msgid "Labeling"
-msgstr "Tablo eklendi"
-
-#: src/ext_l10n.h:308
-msgid "Land"
-msgstr ""
-
-#: src/ext_l10n.h:309 src/frontends/xforms/form_preferences.C:920
-#, fuzzy
-msgid "landscape"
-msgstr "Enine|#L"
-
-#: src/ext_l10n.h:310
-#, fuzzy
-msgid "LandscapeSlide"
-msgstr "Enine|#L"
-
-#: src/ext_l10n.h:311
+#: src/ext_l10n.h:265
 #, fuzzy
 msgid "LaTeX"
 msgstr "LaTeX|#L"
 
-#: src/ext_l10n.h:312
+#: src/ext_l10n.h:266
 #, fuzzy
 msgid "LaTeX_Title"
 msgstr "LaTeX|#T"
 
-#: src/ext_l10n.h:313
+#: src/ext_l10n.h:267
+#, fuzzy
+msgid "Labeling"
+msgstr "Tablo eklendi"
+
+#: src/ext_l10n.h:268
+msgid "Land"
+msgstr ""
+
+#: src/ext_l10n.h:269
+#, fuzzy
+msgid "LandscapeSlide"
+msgstr "Enine|#L"
+
+#: src/ext_l10n.h:270
+#, fuzzy
+msgid "Left_Header"
+msgstr "Baþlýk"
+
+#: src/ext_l10n.h:271
 msgid "Lemma"
 msgstr ""
 
-#: src/ext_l10n.h:314
+#: src/ext_l10n.h:272
 msgid "Lemma*"
 msgstr ""
 
-#: src/ext_l10n.h:315
-msgid "Lemma-numbered"
-msgstr ""
-
-#: src/ext_l10n.h:316
-msgid "Lemma-plain"
-msgstr ""
-
-#: src/ext_l10n.h:317
-#, fuzzy
-msgid "Lemma-unnumbered"
-msgstr "LaTeX Önyazý"
-
-#: src/ext_l10n.h:318
+#: src/ext_l10n.h:273
 #, fuzzy
 msgid "Letter"
 msgstr "Sol|#e"
 
-#: src/ext_l10n.h:319
+#: src/ext_l10n.h:274
 #, fuzzy
 msgid "List"
 msgstr "Satýrlar"
 
-#: src/ext_l10n.h:320
+#: src/ext_l10n.h:275
 #, fuzzy
 msgid "ListOfSlides"
 msgstr "Tablo listesi"
 
-#: src/ext_l10n.h:321
+#: src/ext_l10n.h:276
 msgid "Literal"
 msgstr ""
 
-#: src/ext_l10n.h:322
+#: src/ext_l10n.h:277
 #, fuzzy
 msgid "Location"
 msgstr "Dönüþ açýsý"
 
-#: src/ext_l10n.h:323
+#: src/ext_l10n.h:278
 msgid "Lowertitleback"
 msgstr ""
 
-#: src/ext_l10n.h:324
-msgid "Lyx-Code"
-msgstr ""
-
-#: src/ext_l10n.h:325
+#: src/ext_l10n.h:279
 msgid "LyX-Code"
 msgstr ""
 
-#: src/ext_l10n.h:326
+#: src/ext_l10n.h:280
 #, fuzzy
 msgid "Mail"
 msgstr "Matris"
 
-#: src/ext_l10n.h:327
+#: src/ext_l10n.h:281
 #, fuzzy
 msgid "MarkBoth"
 msgstr "Ýþaretleme seçildi"
 
-#: src/ext_l10n.h:328
+#: src/ext_l10n.h:282
 msgid "MathLetters"
 msgstr ""
 
-#: src/ext_l10n.h:329
+#: src/ext_l10n.h:283
 #, fuzzy
 msgid "MeinZeichen"
 msgstr "inç|#n"
 
-#: src/ext_l10n.h:330
+#: src/ext_l10n.h:284
 #, fuzzy
 msgid "Minisec"
 msgstr "Diðer"
 
-# , c-format
-#: src/ext_l10n.h:331
-#, fuzzy
-msgid "modying"
-msgstr "Dýþyazým%m%l"
-
-#: src/ext_l10n.h:332
-#, fuzzy
-msgid "msnumber"
-msgstr "Numara"
-
-#: src/ext_l10n.h:333
-msgid "My_Address"
-msgstr ""
-
-#: src/ext_l10n.h:334
-msgid "Myref"
-msgstr ""
-
-#: src/ext_l10n.h:335
+#: src/ext_l10n.h:285
 #, fuzzy
 msgid "MyRef"
 msgstr "Ref: "
 
-#: src/ext_l10n.h:336 src/frontends/gnome/FormUrl.C:119
+#: src/ext_l10n.h:286
+msgid "My_Address"
+msgstr ""
+
+#: src/ext_l10n.h:287
+msgid "Myref"
+msgstr ""
+
+#: src/ext_l10n.h:288 src/frontends/gnome/FormUrl.C:119
 #, fuzzy
 msgid "Name"
 msgstr "Alýcý Adý"
 
-#: src/ext_l10n.h:337
+#: src/ext_l10n.h:289
 #, fuzzy
 msgid "Narrative"
 msgstr "Negatif|#N"
 
-#: src/ext_l10n.h:338
+#: src/ext_l10n.h:290
 #, fuzzy
 msgid "Notation"
 msgstr "Dönüþ açýsý"
 
-#: src/ext_l10n.h:339
-#, fuzzy
-msgid "Notation-numbered"
-msgstr "Numarasýz"
-
-#: src/ext_l10n.h:340 src/insets/insetinfo.C:77 src/insets/insetinfo.C:102
+#: src/ext_l10n.h:291 src/insets/insetinfo.C:77 src/insets/insetinfo.C:102
 #: src/insets/insetinfo.C:231
 msgid "Note"
 msgstr "Not"
 
-#: src/ext_l10n.h:341
+#: src/ext_l10n.h:292
 #, fuzzy
 msgid "Note*"
 msgstr "Not"
 
-#: src/ext_l10n.h:342
-#, fuzzy
-msgid "Note-numbered"
-msgstr "Numarasýz"
-
-#: src/ext_l10n.h:343
-msgid "Note-plain"
-msgstr ""
-
-#: src/ext_l10n.h:344
-msgid "Notetoeditor"
-msgstr ""
-
-#: src/ext_l10n.h:345
+#: src/ext_l10n.h:293
 msgid "NoteToEditor"
 msgstr ""
 
-#: src/ext_l10n.h:346
-#, fuzzy
-msgid "Note-unnumbered"
-msgstr "Numarasýz"
-
-#: src/ext_l10n.h:347
+#: src/ext_l10n.h:294
 #, fuzzy
 msgid "Offprint"
 msgstr "Bastýr"
 
-#: src/ext_l10n.h:348
+#: src/ext_l10n.h:295
 #, fuzzy
 msgid "Offprints"
 msgstr "Seçenekler"
 
-#: src/ext_l10n.h:349
-msgid "offsets"
-msgstr ""
-
-#: src/ext_l10n.h:350
+#: src/ext_l10n.h:296
 #, fuzzy
 msgid "Offsets"
 msgstr "Kapalý"
 
-#: src/ext_l10n.h:351
+#: src/ext_l10n.h:297
 msgid "Oggetto"
 msgstr ""
 
-#: src/ext_l10n.h:352
+#: src/ext_l10n.h:298
 #, fuzzy
 msgid "Opening"
 msgstr "Aç"
 
-#: src/ext_l10n.h:353
+#: src/ext_l10n.h:299
 #, fuzzy
 msgid "Ort"
 msgstr "Ekle"
 
-#: src/ext_l10n.h:354
+#: src/ext_l10n.h:300
 msgid "Overlay"
 msgstr ""
 
-#: src/ext_l10n.h:355
+#: src/ext_l10n.h:301
 msgid "PACS"
 msgstr ""
 
-#: src/ext_l10n.h:356
+#: src/ext_l10n.h:302
+msgid "PS"
+msgstr ""
+
+#: src/ext_l10n.h:303
 #, fuzzy
 msgid "Paragraph"
 msgstr "Paragraf düzeni ayarlandý"
 
-#: src/ext_l10n.h:357
+#: src/ext_l10n.h:304
 #, fuzzy
 msgid "Paragraph*"
 msgstr "Paragraf düzeni ayarlandý"
 
-#: src/ext_l10n.h:358
-#, fuzzy
-msgid "Paragraph-numbered"
-msgstr "Paragraf Ortamý"
-
-#: src/ext_l10n.h:359
-#, fuzzy
-msgid "Parenthetical"
-msgstr "Üstbelge:"
-
-#: src/ext_l10n.h:360
+#: src/ext_l10n.h:305
 #, fuzzy
 msgid "Part"
 msgstr "Üstbelge:"
 
-#: src/ext_l10n.h:361
+#: src/ext_l10n.h:306
 #, fuzzy
 msgid "Part*"
 msgstr "Üstbelge:"
 
-#: src/ext_l10n.h:362
+#: src/ext_l10n.h:307
 #, fuzzy
 msgid "Petit"
 msgstr "Bastýr"
 
-#: src/ext_l10n.h:363
+#: src/ext_l10n.h:308
 #, fuzzy
 msgid "Phone"
 msgstr "Telefon rehberi"
 
-#: src/ext_l10n.h:364
+#: src/ext_l10n.h:309
 #, fuzzy
 msgid "Place"
 msgstr "Deðiþtir"
 
-#: src/ext_l10n.h:365
-#, fuzzy
-msgid "Placefigure"
-msgstr "Yeniden yapýlandýr"
-
-#: src/ext_l10n.h:366
+#: src/ext_l10n.h:310
 #, fuzzy
 msgid "PlaceFigure"
 msgstr "Þekil"
 
-#: src/ext_l10n.h:367
-msgid "Placetable"
-msgstr ""
-
-#: src/ext_l10n.h:368
+#: src/ext_l10n.h:311
 msgid "PlaceTable"
 msgstr ""
 
-#: src/ext_l10n.h:369
+#: src/ext_l10n.h:312
 #, fuzzy
 msgid "PortraitSlide"
 msgstr "Boyuna|#o"
 
-#: src/ext_l10n.h:370
+#: src/ext_l10n.h:313
 msgid "PostalCommend"
 msgstr ""
 
-#: src/ext_l10n.h:371
+#: src/ext_l10n.h:314
 msgid "Postvermerk"
 msgstr ""
 
-#: src/ext_l10n.h:372
+#: src/ext_l10n.h:315
 #, fuzzy
 msgid "Preprint"
 msgstr "Bastýr"
 
-#: src/ext_l10n.h:373
+#: src/ext_l10n.h:316
 #, fuzzy
 msgid "Problem"
 msgstr "Çift|#D"
 
-#: src/ext_l10n.h:374
-msgid "Problem-numbered"
-msgstr ""
-
-#: src/ext_l10n.h:375
-msgid "Problem-plain"
-msgstr ""
-
-#: src/ext_l10n.h:376
+#: src/ext_l10n.h:317
 msgid "ProgressContents"
 msgstr ""
 
-#: src/ext_l10n.h:377
+#: src/ext_l10n.h:318
 msgid "Proof"
 msgstr ""
 
-#: src/ext_l10n.h:378
+#: src/ext_l10n.h:319
 msgid "Property"
 msgstr ""
 
-#: src/ext_l10n.h:379
+#: src/ext_l10n.h:320
 msgid "Proposition"
 msgstr ""
 
-#: src/ext_l10n.h:380
+#: src/ext_l10n.h:321
 msgid "Proposition*"
 msgstr ""
 
-#: src/ext_l10n.h:381
-msgid "Proposition-numbered"
-msgstr ""
-
-#: src/ext_l10n.h:382
-msgid "Proposition-plain"
-msgstr ""
-
-#: src/ext_l10n.h:383
-msgid "Proposition-unnumbered"
-msgstr ""
-
-#: src/ext_l10n.h:384
-msgid "ps"
-msgstr ""
-
-#: src/ext_l10n.h:385
-msgid "PS"
-msgstr ""
-
-#: src/ext_l10n.h:386
+#: src/ext_l10n.h:322
 msgid "Publishers"
 msgstr ""
 
-#: src/ext_l10n.h:387
+#: src/ext_l10n.h:323
 #, fuzzy
 msgid "Question"
 msgstr "Gideceði yer:"
 
-#: src/ext_l10n.h:388
+#: src/ext_l10n.h:324
 #, fuzzy
 msgid "Quotation"
 msgstr "Dönüþ açýsý"
 
-#: src/ext_l10n.h:389
+#: src/ext_l10n.h:325
 #, fuzzy
 msgid "Quote"
 msgstr "Alýntýlar"
 
-#: src/ext_l10n.h:390
+#: src/ext_l10n.h:326
+msgid "REVTEX_Title"
+msgstr ""
+
+#: src/ext_l10n.h:327
 msgid "Received"
 msgstr ""
 
-#: src/ext_l10n.h:391
-msgid "Recieved"
-msgstr ""
-
-#: src/ext_l10n.h:392
-msgid "Recieved/Accepted"
-msgstr ""
-
-#: src/ext_l10n.h:393 src/frontends/kde/refdlg.C:62
+#: src/ext_l10n.h:328 src/frontends/kde/refdlg.C:62
 #: src/frontends/xforms/FormRef.C:36
 #, fuzzy
 msgid "Reference"
 msgstr "Kaynak ekleniyor"
 
-#: src/ext_l10n.h:394
+#: src/ext_l10n.h:329
 #, fuzzy
 msgid "References"
 msgstr "Kaynak ekleniyor"
 
-#: src/ext_l10n.h:395
+#: src/ext_l10n.h:330
 #, fuzzy
 msgid "Remark"
 msgstr "Not:|#R"
 
-#: src/ext_l10n.h:396
+#: src/ext_l10n.h:331
 #, fuzzy
 msgid "Remark*"
 msgstr "Not:|#R"
 
-#: src/ext_l10n.h:397
-msgid "Remark-numbered"
-msgstr ""
-
-#: src/ext_l10n.h:398
-msgid "Remark-plain"
-msgstr ""
-
-#: src/ext_l10n.h:399
+#: src/ext_l10n.h:332
 #, fuzzy
 msgid "Remarks"
 msgstr "Not:|#R"
 
-#: src/ext_l10n.h:400
-msgid "Remark-unnumbered"
-msgstr ""
-
-#: src/ext_l10n.h:401
+#: src/ext_l10n.h:333
 msgid "RetourAdresse"
 msgstr ""
 
-#: src/ext_l10n.h:402
+#: src/ext_l10n.h:334
 msgid "ReturnAddress"
 msgstr ""
 
-#: src/ext_l10n.h:403
-msgid "REVTEX_Title"
-msgstr ""
-
-#: src/ext_l10n.h:404
-msgid "Right_Address"
-msgstr ""
-
-#: src/ext_l10n.h:405
+#: src/ext_l10n.h:335
 msgid "RightHeader"
 msgstr ""
 
-#: src/ext_l10n.h:406
+#: src/ext_l10n.h:336
+msgid "Right_Address"
+msgstr ""
+
+#: src/ext_l10n.h:337
+#, fuzzy
+msgid "Right_Header"
+msgstr "Baþlýk"
+
+#: src/ext_l10n.h:338
 msgid "Rotatefoilhead"
 msgstr ""
 
-#: src/ext_l10n.h:407
+#: src/ext_l10n.h:339
 #, fuzzy
 msgid "Running_LaTeX_Title"
 msgstr "LaTex çalýþtýrýlýyor..."
 
-#: src/ext_l10n.h:408
+#: src/ext_l10n.h:340
 msgid "SCENE"
 msgstr ""
 
-#: src/ext_l10n.h:409
+#: src/ext_l10n.h:341
 msgid "SCENE*"
 msgstr ""
 
-#: src/ext_l10n.h:410
+#: src/ext_l10n.h:342
+msgid "SGML"
+msgstr ""
+
+#: src/ext_l10n.h:343
 msgid "Scrap"
 msgstr ""
 
-#: src/ext_l10n.h:411
+#: src/ext_l10n.h:344
 #, fuzzy
 msgid "Section"
 msgstr "Üst/alt süsler"
 
-#: src/ext_l10n.h:412
+#: src/ext_l10n.h:345
 #, fuzzy
 msgid "Section*"
 msgstr "Üst/alt süsler"
 
-#: src/ext_l10n.h:413
-#, fuzzy
-msgid "Section-numbered"
-msgstr "Bölüm numaralandýrma derinliði"
-
-#: src/ext_l10n.h:414
-#, fuzzy
-msgid "Send"
-msgstr "Ýkincil"
-
-#: src/ext_l10n.h:415
+#: src/ext_l10n.h:346
 msgid "Send_To_Address"
 msgstr ""
 
-#: src/ext_l10n.h:416
+#: src/ext_l10n.h:347
 #, fuzzy
 msgid "Seriate"
 msgstr "Ekle"
 
-#: src/ext_l10n.h:417
-msgid "SGML"
-msgstr ""
-
-#: src/ext_l10n.h:418
-msgid "Shortfoilhead"
-msgstr ""
-
-#: src/ext_l10n.h:419
+#: src/ext_l10n.h:348
 msgid "ShortFoilhead"
 msgstr ""
 
-#: src/ext_l10n.h:420
+#: src/ext_l10n.h:349
 msgid "ShortRotatefoilhead"
 msgstr ""
 
-#: src/ext_l10n.h:421
+#: src/ext_l10n.h:350
 msgid "ShortTitle"
 msgstr ""
 
-#: src/ext_l10n.h:422
+#: src/ext_l10n.h:351
 #, fuzzy
 msgid "Signature"
 msgstr "Þekil"
 
-#: src/ext_l10n.h:423
+#: src/ext_l10n.h:352
 #, fuzzy
 msgid "Slide"
 msgstr "Yüz"
 
-#: src/ext_l10n.h:424
+#: src/ext_l10n.h:353
 #, fuzzy
 msgid "Slide*"
 msgstr "Yüz"
 
-#: src/ext_l10n.h:425
+#: src/ext_l10n.h:354
 #, fuzzy
 msgid "SlideContents"
 msgstr "Ýçindekiler"
 
-#: src/ext_l10n.h:426
+#: src/ext_l10n.h:355
 msgid "SlideHeading"
 msgstr ""
 
-#: src/ext_l10n.h:427
+#: src/ext_l10n.h:356
 msgid "SlideSubHeading"
 msgstr ""
 
-#: src/ext_l10n.h:428
+#: src/ext_l10n.h:357
 #, fuzzy
 msgid "Solution"
 msgstr "Dönüþ açýsý"
 
-#: src/ext_l10n.h:429
+#: src/ext_l10n.h:358
 #, fuzzy
 msgid "Speaker"
 msgstr "Yazým Denetleyici"
 
-#: src/ext_l10n.h:430
+#: src/ext_l10n.h:359
 #, fuzzy
 msgid "Specialmail"
 msgstr "Özel hücre"
 
-#: src/ext_l10n.h:431
+#: src/ext_l10n.h:360
 msgid "Stadt"
 msgstr ""
 
-#: src/ext_l10n.h:432
+#: src/ext_l10n.h:361
 #, fuzzy
 msgid "Standard"
 msgstr "Standart|#S"
 
-#: src/ext_l10n.h:433
+#: src/ext_l10n.h:362
 #, fuzzy
 msgid "State"
 msgstr "Kaydet"
 
-#: src/ext_l10n.h:434
+#: src/ext_l10n.h:363
 msgid "Strasse"
 msgstr ""
 
-#: src/ext_l10n.h:435
+#: src/ext_l10n.h:364
 msgid "Street"
 msgstr ""
 
-#: src/ext_l10n.h:436
+#: src/ext_l10n.h:365
 #, fuzzy
-msgid "style"
-msgstr "Tarz: "
+msgid "SubSection"
+msgstr "Üst/alt süsler"
 
-#: src/ext_l10n.h:437
-#, fuzzy
-msgid "Style"
-msgstr "Tarz: "
+#: src/ext_l10n.h:366
+msgid "SubTitle"
+msgstr ""
 
-#: src/ext_l10n.h:438
-#, fuzzy
-msgid "Subitle"
-msgstr "Tek|#S"
-
-#: src/ext_l10n.h:439
+#: src/ext_l10n.h:367
 msgid "Subject"
 msgstr ""
 
-#: src/ext_l10n.h:440
+#: src/ext_l10n.h:368
 msgid "Subjectclass"
 msgstr ""
 
-#: src/ext_l10n.h:441
+#: src/ext_l10n.h:369
 #, fuzzy
 msgid "Subparagraph"
 msgstr "Sonraki paragrafý seç"
 
-#: src/ext_l10n.h:442
+#: src/ext_l10n.h:370
 msgid "Subparagraph*"
 msgstr ""
 
-#: src/ext_l10n.h:443
+#: src/ext_l10n.h:371
 #, fuzzy
 msgid "Subsection"
 msgstr "Üst/alt süsler"
 
-#: src/ext_l10n.h:444
+#: src/ext_l10n.h:372
 #, fuzzy
 msgid "Subsection*"
 msgstr "Üst/alt süsler"
 
-#: src/ext_l10n.h:445
-#, fuzzy
-msgid "Subsection-numbered"
-msgstr "Bölüm numaralandýrma derinliði"
-
-#: src/ext_l10n.h:446
+#: src/ext_l10n.h:373
 #, fuzzy
 msgid "Subsubsection"
 msgstr "Üst/alt süsler"
 
-#: src/ext_l10n.h:447
+#: src/ext_l10n.h:374
 #, fuzzy
 msgid "Subsubsection*"
 msgstr "Üst/alt süsler"
 
-#: src/ext_l10n.h:448
-#, fuzzy
-msgid "Subsubsection-numbered"
-msgstr "Bölüm numaralandýrma derinliði"
-
-#: src/ext_l10n.h:449
+#: src/ext_l10n.h:375
 msgid "Subtitle"
 msgstr ""
 
-#: src/ext_l10n.h:450
-msgid "SubTitle"
-msgstr ""
-
-#: src/ext_l10n.h:451
-msgid "Suggested"
-msgstr ""
-
-#: src/ext_l10n.h:452
+#: src/ext_l10n.h:376
 msgid "Summary"
 msgstr ""
 
-#: src/ext_l10n.h:453
-msgid "Summary-numbered"
-msgstr ""
-
-#: src/ext_l10n.h:454
-msgid "surname"
-msgstr ""
-
-#: src/ext_l10n.h:455
+#: src/ext_l10n.h:377
 msgid "Surname"
 msgstr ""
 
-#: src/ext_l10n.h:456
+#: src/ext_l10n.h:378
+msgid "TOC_Author"
+msgstr ""
+
+#: src/ext_l10n.h:379
+msgid "TOC_Title"
+msgstr ""
+
+#: src/ext_l10n.h:380
 #, fuzzy
 msgid "TableComments"
 msgstr "Ýçindekiler"
 
-#: src/ext_l10n.h:457
+#: src/ext_l10n.h:381
 #, fuzzy
 msgid "TableRefs"
 msgstr "Tablo%t"
 
-#: src/ext_l10n.h:458
+#: src/ext_l10n.h:382
 msgid "Telefax"
 msgstr ""
 
-#: src/ext_l10n.h:459
+#: src/ext_l10n.h:383
 #, fuzzy
 msgid "Telefon"
 msgstr "Üst/alt süsler"
 
-#: src/ext_l10n.h:460
+#: src/ext_l10n.h:384
 msgid "Telephone"
 msgstr ""
 
-#: src/ext_l10n.h:461
+#: src/ext_l10n.h:385
 #, fuzzy
 msgid "Telex"
 msgstr "Metin"
 
-#: src/ext_l10n.h:462
+#: src/ext_l10n.h:386
 msgid "Thanks"
 msgstr ""
 
-#: src/ext_l10n.h:463
+#: src/ext_l10n.h:387
 msgid "Theorem"
 msgstr ""
 
-#: src/ext_l10n.h:464
+#: src/ext_l10n.h:388
 msgid "Theorem*"
 msgstr ""
 
-#: src/ext_l10n.h:465
-msgid "Theorem-numbered"
-msgstr ""
-
-#: src/ext_l10n.h:466
-msgid "Theorem-plain"
-msgstr ""
-
-#: src/ext_l10n.h:467
+#: src/ext_l10n.h:389
 #, fuzzy
 msgid "TheoremTemplate"
 msgstr "Hazýr biçimler"
 
-#: src/ext_l10n.h:468
-#, fuzzy
-msgid "Theorem-unnumbered"
-msgstr "LaTeX Önyazý"
-
-#: src/ext_l10n.h:469
+#: src/ext_l10n.h:390
 msgid "Thesaurus"
 msgstr ""
 
-#: src/ext_l10n.h:470
+#: src/ext_l10n.h:391
 msgid "ThickLine"
 msgstr ""
 
-#: src/ext_l10n.h:471
-msgid "This"
-msgstr ""
-
-#: src/ext_l10n.h:472
+#: src/ext_l10n.h:392
 msgid "ThreeAffiliations"
 msgstr ""
 
-#: src/ext_l10n.h:473
+#: src/ext_l10n.h:393
 msgid "ThreeAuthors"
 msgstr ""
 
-#: src/ext_l10n.h:474
+#: src/ext_l10n.h:394
 msgid "TickList"
 msgstr ""
 
-#: src/ext_l10n.h:475 src/frontends/gnome/FormCitation.C:529
+#: src/ext_l10n.h:395 src/frontends/gnome/FormCitation.C:529
 #, fuzzy
 msgid "Title"
 msgstr "Dosya"
 
-#: src/ext_l10n.h:476
+#: src/ext_l10n.h:396
 msgid "Titlehead"
 msgstr ""
 
-#: src/ext_l10n.h:477
-msgid "Title_Running"
-msgstr ""
+#: src/ext_l10n.h:397
+#, fuzzy
+msgid "Topic"
+msgstr "Üst|#T"
 
-#: src/ext_l10n.h:478
-msgid "TOC_Author"
-msgstr ""
-
-#: src/ext_l10n.h:479
-msgid "TOC_Title"
-msgstr ""
-
-#: src/ext_l10n.h:480
+#: src/ext_l10n.h:398
 #, fuzzy
 msgid "Town"
 msgstr "Ýki|#T"
 
-#: src/ext_l10n.h:481
+#: src/ext_l10n.h:399
+msgid "Trans_Keywords"
+msgstr ""
+
+#: src/ext_l10n.h:400
 #, fuzzy
 msgid "Transition"
 msgstr "Dönüþümleri yap|#r"
 
-#: src/ext_l10n.h:482
-msgid "Trans_Keywords"
-msgstr ""
-
-#: src/ext_l10n.h:483
-msgid "Translated"
-msgstr ""
-
-#: src/ext_l10n.h:484
+#: src/ext_l10n.h:401
 msgid "TranslatedAbstract"
 msgstr ""
 
-#: src/ext_l10n.h:485
+#: src/ext_l10n.h:402
 msgid "Translated_Title"
 msgstr ""
 
-#: src/ext_l10n.h:486
+#: src/ext_l10n.h:403
 #, fuzzy
 msgid "Translator"
 msgstr "Dönüþümleri yap|#r"
 
-#: src/ext_l10n.h:487
+#: src/ext_l10n.h:404
 msgid "TwoAffiliations"
 msgstr ""
 
-#: src/ext_l10n.h:488
+#: src/ext_l10n.h:405
 msgid "TwoAuthors"
 msgstr ""
 
-#: src/ext_l10n.h:489
-msgid "Unterschrift"
-msgstr ""
-
-#: src/ext_l10n.h:490
-msgid "Uppertitleback"
-msgstr ""
-
 #. tooltips
-#: src/ext_l10n.h:491 src/frontends/gnome/FormUrl.C:117
+#: src/ext_l10n.h:406 src/frontends/gnome/FormUrl.C:117
 #: src/frontends/kde/urldlg.C:62 src/frontends/kde/urldlg.C:63
 #, fuzzy
 msgid "URL"
 msgstr "URL"
 
-#: src/ext_l10n.h:492
-msgid "Use"
+#: src/ext_l10n.h:407
+msgid "Unterschrift"
 msgstr ""
 
-#: src/ext_l10n.h:493
+#: src/ext_l10n.h:408
+msgid "Uppertitleback"
+msgstr ""
+
+#: src/ext_l10n.h:409
 #, fuzzy
 msgid "Verbatim"
 msgstr "Verbatim|#V"
 
-#: src/ext_l10n.h:494
+#: src/ext_l10n.h:410
 #, fuzzy
 msgid "Verse"
 msgstr "Azalt"
 
-#: src/ext_l10n.h:495
+#: src/ext_l10n.h:411
 msgid "Verteiler"
 msgstr ""
 
-#: src/ext_l10n.h:496
+#: src/ext_l10n.h:412
 msgid "VisibleText"
 msgstr ""
 
-#: src/ext_l10n.h:497
+#: src/ext_l10n.h:413
+msgid "YourMail"
+msgstr ""
+
+#: src/ext_l10n.h:414
+msgid "YourRef"
+msgstr ""
+
+#: src/ext_l10n.h:415
 #, fuzzy
 msgid "Yourmail"
 msgstr "Normal"
 
-#: src/ext_l10n.h:498
-msgid "YourMail"
-msgstr ""
-
-#: src/ext_l10n.h:499
+#: src/ext_l10n.h:416
 msgid "Yourref"
 msgstr ""
 
-#: src/ext_l10n.h:500
-msgid "YourRef"
-msgstr ""
-
-#: src/ext_l10n.h:501
+#: src/ext_l10n.h:417
 msgid "Zusatz"
 msgstr ""
 
-#: src/ext_l10n.h:502
+#: src/ext_l10n.h:418
+msgid "cc"
+msgstr ""
+
+#: src/ext_l10n.h:419
+#, fuzzy
+msgid "encl"
+msgstr "Vazgeç"
+
+#: src/ext_l10n.h:420
+#, fuzzy
+msgid "msnumber"
+msgstr "Numara"
+
+#: src/ext_l10n.h:421
+msgid "ps"
+msgstr ""
+
+#: src/ext_l10n.h:422
 msgid "Afrikaans"
 msgstr ""
 
-#: src/ext_l10n.h:503
+#: src/ext_l10n.h:423
 msgid "American"
 msgstr ""
 
-#: src/ext_l10n.h:504
+#: src/ext_l10n.h:424
 msgid "Arabic"
 msgstr ""
 
-#: src/ext_l10n.h:505
+#: src/ext_l10n.h:425
 msgid "Austrian"
 msgstr ""
 
-#: src/ext_l10n.h:506
+#: src/ext_l10n.h:426
 msgid "Bahasa"
 msgstr ""
 
-#: src/ext_l10n.h:507
-msgid "Brazil"
+#: src/ext_l10n.h:427
+msgid "Portuguese (Brazil)"
 msgstr ""
 
-#: src/ext_l10n.h:508
+#: src/ext_l10n.h:428
 #, fuzzy
 msgid "Breton"
 msgstr "Üst/alt süsler"
 
-#: src/ext_l10n.h:509
+#: src/ext_l10n.h:429
 msgid "British"
 msgstr ""
 
-#: src/ext_l10n.h:510
+#: src/ext_l10n.h:430
 #, fuzzy
 msgid "Canadian"
 msgstr "Dönüþ açýsý"
 
-#: src/ext_l10n.h:511
+#: src/ext_l10n.h:431
 msgid "French Canadian"
 msgstr ""
 
-#: src/ext_l10n.h:512
+#: src/ext_l10n.h:432
 msgid "Catalan"
 msgstr ""
 
-#: src/ext_l10n.h:513
+#: src/ext_l10n.h:433
 #, fuzzy
 msgid "Croatian"
 msgstr "Dönüþ açýsý"
 
-#: src/ext_l10n.h:514
+#: src/ext_l10n.h:434
 msgid "Czech"
 msgstr ""
 
-#: src/ext_l10n.h:515
+#: src/ext_l10n.h:435
 msgid "Danish"
 msgstr ""
 
-#: src/ext_l10n.h:516
+#: src/ext_l10n.h:436
 msgid "Dutch"
 msgstr ""
 
-#: src/ext_l10n.h:517 src/language.C:35
+#: src/ext_l10n.h:437 src/language.C:35
 msgid "English"
 msgstr ""
 
-#: src/ext_l10n.h:518
+#: src/ext_l10n.h:438
 msgid "Esperanto"
 msgstr ""
 
-#: src/ext_l10n.h:519
+#: src/ext_l10n.h:439
 msgid "Estonian"
 msgstr ""
 
-#: src/ext_l10n.h:520
+#: src/ext_l10n.h:440
 msgid "Finnish"
 msgstr ""
 
-#: src/ext_l10n.h:521
+#: src/ext_l10n.h:441
 msgid "French"
 msgstr ""
 
-#: src/ext_l10n.h:522
+#: src/ext_l10n.h:442
 msgid "French (GUTenberg)"
 msgstr ""
 
-#: src/ext_l10n.h:523
+#: src/ext_l10n.h:443
 msgid "Galician"
 msgstr ""
 
-#: src/ext_l10n.h:524
+#: src/ext_l10n.h:444
 msgid "German"
 msgstr ""
 
-#: src/ext_l10n.h:525
+#: src/ext_l10n.h:445
 msgid "German (new spelling)"
 msgstr ""
 
-#: src/ext_l10n.h:526 src/mathed/math_forms.C:26
+#: src/ext_l10n.h:446 src/mathed/math_forms.C:26
 msgid "Greek"
 msgstr "Yunan"
 
-#: src/ext_l10n.h:527
+#: src/ext_l10n.h:447
 msgid "Hebrew"
 msgstr ""
 
-#: src/ext_l10n.h:528
-msgid "Hungarian"
-msgstr ""
-
-#: src/ext_l10n.h:529
+#: src/ext_l10n.h:448
 msgid "Irish"
 msgstr ""
 
-#: src/ext_l10n.h:530
+#: src/ext_l10n.h:449
 #, fuzzy
 msgid "Italian"
 msgstr "Ýtalik"
 
-#: src/ext_l10n.h:531
+#: src/ext_l10n.h:450
 msgid "Lsorbian"
 msgstr ""
 
-#: src/ext_l10n.h:532
+#: src/ext_l10n.h:451
 #, fuzzy
 msgid "Magyar"
 msgstr "Mor"
 
-#: src/ext_l10n.h:533
+#: src/ext_l10n.h:452
 msgid "Norsk"
 msgstr ""
 
-#: src/ext_l10n.h:534
+#: src/ext_l10n.h:453
 msgid "Polish"
 msgstr ""
 
-#: src/ext_l10n.h:535
-msgid "Portuges"
+#: src/ext_l10n.h:454
+msgid "Portugese"
 msgstr ""
 
-#: src/ext_l10n.h:536
+#: src/ext_l10n.h:455
 #, fuzzy
 msgid "Romanian"
 msgstr "Roman"
 
-#: src/ext_l10n.h:537
+#: src/ext_l10n.h:456
 msgid "Russian"
 msgstr ""
 
-#: src/ext_l10n.h:538
+#: src/ext_l10n.h:457
 msgid "Scottish"
 msgstr ""
 
-#: src/ext_l10n.h:539
+#: src/ext_l10n.h:458
+#, fuzzy
+msgid "Serbian"
+msgstr "Ekle"
+
+#: src/ext_l10n.h:459
+#, fuzzy
+msgid "Serbo-Croatian"
+msgstr "Dönüþ açýsý"
+
+#: src/ext_l10n.h:460
 msgid "Spanish"
 msgstr ""
 
-#: src/ext_l10n.h:540
+#: src/ext_l10n.h:461
 msgid "Slovak"
 msgstr ""
 
-#: src/ext_l10n.h:541
+#: src/ext_l10n.h:462
 msgid "Slovene"
 msgstr ""
 
-#: src/ext_l10n.h:542
+#: src/ext_l10n.h:463
 msgid "Swedish"
 msgstr ""
 
-#: src/ext_l10n.h:543
+#: src/ext_l10n.h:464
+msgid "Thai"
+msgstr ""
+
+#: src/ext_l10n.h:465
 msgid "Turkish"
 msgstr ""
 
-#: src/ext_l10n.h:544
+#: src/ext_l10n.h:466
 #, fuzzy
 msgid "Ukrainian"
 msgstr "Dönüþümleri yap|#r"
 
-#: src/ext_l10n.h:545
+#: src/ext_l10n.h:467
 msgid "Usorbian"
 msgstr ""
 
-#: src/ext_l10n.h:546
+#: src/ext_l10n.h:468
 msgid "Welsh"
 msgstr ""
 
@@ -3194,7 +2893,7 @@ msgstr "Tam ekran öngörüntüleme|#v"
 msgid "Browse...|#B"
 msgstr "Tara...|#B"
 
-#: src/form1.C:114 src/frontends/xforms/form_citation.C:103
+#: src/form1.C:114 src/frontends/xforms/form_citation.C:89
 #: src/frontends/xforms/form_document.C:40
 #: src/frontends/xforms/form_graphics.C:144
 #: src/frontends/xforms/form_index.C:45
@@ -3212,8 +2911,8 @@ msgstr "Uygula|#A"
 #: src/form1.C:120 src/form1.C:264 src/frontends/xforms/form_graphics.C:150
 #: src/insets/insetbib.C:65 src/insets/insetbib.C:66
 #: src/insets/insetinclude.C:55 src/insets/insetinclude.C:56
-#: src/layout_forms.C:98 src/lyx.C:53 src/lyx_gui_misc.C:404
-#: src/lyx_gui_misc.C:408 src/lyx_gui_misc.C:424 src/mathed/math_forms.C:100
+#: src/layout_forms.C:98 src/lyx.C:53 src/lyx_gui_misc.C:408
+#: src/lyx_gui_misc.C:412 src/lyx_gui_misc.C:428 src/mathed/math_forms.C:100
 #: src/mathed/math_forms.C:130 src/mathed/math_forms.C:198 src/print_form.C:34
 #: src/sp_form.C:42
 msgid "Cancel|^["
@@ -3493,43 +3192,38 @@ msgstr ""
 msgid " Error "
 msgstr "Hata"
 
-#: src/frontends/gnome/FormIndex.C:89 src/frontends/xforms/form_index.C:28
-#, fuzzy
-msgid "Keyword"
-msgstr "Tuþ:|#K"
-
 #: src/frontends/gnome/FormIndex.C:119
 #, fuzzy
 msgid " Index "
 msgstr "Dizin"
 
-#: src/frontends/gnome/FormPrint.C:165 src/frontends/xforms/FormPrint.C:154
+#: src/frontends/gnome/FormPrint.C:165 src/frontends/xforms/FormPrint.C:158
 #, fuzzy
 msgid "Error:"
 msgstr "Hata:"
 
-#: src/frontends/gnome/FormPrint.C:166 src/frontends/xforms/FormPrint.C:155
+#: src/frontends/gnome/FormPrint.C:166 src/frontends/xforms/FormPrint.C:159
 #, fuzzy
 msgid "Unable to print"
 msgstr "Dosya okunamadý!"
 
-#: src/frontends/gnome/FormPrint.C:167 src/frontends/xforms/FormPrint.C:156
+#: src/frontends/gnome/FormPrint.C:167 src/frontends/xforms/FormPrint.C:160
 msgid "Check that your parameters are correct"
 msgstr "Parametrelerinizin doðruluðunu kontrol edin"
 
 #. goto button labels
-#: src/frontends/gnome/FormRef.C:48 src/frontends/xforms/FormRef.C:103
-#: src/frontends/xforms/FormRef.C:220 src/frontends/xforms/FormRef.C:243
+#: src/frontends/gnome/FormRef.C:48 src/frontends/xforms/FormRef.C:105
+#: src/frontends/xforms/FormRef.C:222 src/frontends/xforms/FormRef.C:245
 #, fuzzy
 msgid "Goto reference"
 msgstr "Kaynaða git|#G"
 
-#: src/frontends/gnome/FormRef.C:49 src/frontends/xforms/FormRef.C:212
+#: src/frontends/gnome/FormRef.C:49 src/frontends/xforms/FormRef.C:214
 #, fuzzy
 msgid "Go back"
 msgstr "Siyah"
 
-#: src/frontends/gnome/FormRef.C:91 src/frontends/xforms/FormRef.C:141
+#: src/frontends/gnome/FormRef.C:91 src/frontends/xforms/FormRef.C:143
 msgid "*** No labels found in document ***"
 msgstr "*** Belgede hiç etiket bulunamadý ***"
 
@@ -4076,11 +3770,11 @@ msgid "&Extra"
 msgstr "Ek Seçenekler|#X"
 
 #. FIXME: should be cleverer here
-#: src/frontends/kde/paradlg.C:95 src/paragraph.C:1913
+#: src/frontends/kde/paradlg.C:95 src/paragraph.C:1957
 msgid "Senseless with this layout!"
 msgstr "Bu belge düzeni ile anlamsýz!"
 
-#: src/frontends/kde/paraextradlg.C:25 src/lyxfont.C:52
+#: src/frontends/kde/paraextradlg.C:25 src/lyxfont.C:56
 msgid "Normal"
 msgstr "Normal"
 
@@ -4322,6 +4016,10 @@ msgstr ""
 msgid "Output as a hyperlink ?"
 msgstr ""
 
+#: src/frontends/xforms/FormCitation.C:37
+msgid "Citation"
+msgstr "Gönderme"
+
 #: src/frontends/xforms/form_citation.C:29
 #, fuzzy
 msgid "Inset keys|#I"
@@ -4371,20 +4069,10 @@ msgstr "Aldýrma"
 
 #: src/frontends/xforms/form_citation.C:71
 #, fuzzy
-msgid "Citation style|#s"
-msgstr "Gönderme"
-
-#: src/frontends/xforms/form_citation.C:79
-#, fuzzy
-msgid "Text before|#T"
-msgstr "Metin kipi"
-
-#: src/frontends/xforms/form_citation.C:86
-#, fuzzy
 msgid "Text after|#e"
 msgstr "Metin kipi"
 
-#: src/frontends/xforms/form_citation.C:93
+#: src/frontends/xforms/form_citation.C:79
 #: src/frontends/xforms/form_document.C:52
 #: src/frontends/xforms/form_index.C:34
 #: src/frontends/xforms/form_paragraph.C:334
@@ -4394,7 +4082,7 @@ msgstr "Metin kipi"
 msgid "Restore|#R"
 msgstr "Ters Sýra|#R"
 
-#: src/frontends/xforms/form_citation.C:110
+#: src/frontends/xforms/form_citation.C:96
 #: src/frontends/xforms/form_document.C:33
 #: src/frontends/xforms/form_index.C:53 src/frontends/xforms/form_ref.C:75
 #: src/frontends/xforms/form_tabular_create.C:39
@@ -4402,16 +4090,6 @@ msgstr "Ters Sýra|#R"
 #, fuzzy
 msgid "Cancel|#C^["
 msgstr "Vazgeç|^["
-
-#: src/frontends/xforms/FormCitation.C:37
-msgid "Citation"
-msgstr "Gönderme"
-
-#: src/frontends/xforms/form_copyright.C:41
-#: src/frontends/xforms/form_error.C:31 src/frontends/xforms/form_toc.C:48
-#, fuzzy
-msgid "Close|#C^[^M"
-msgstr "Kapat|#C^["
 
 #: src/frontends/xforms/FormCopyright.C:20
 msgid "Copyright and Warranty"
@@ -4457,6 +4135,134 @@ msgstr ""
 "belirtilen adresten bir kopyasýný isteyebilirsiniz:\n"
 "the Free Software Foundation, Inc.,\n"
 "675 Mass Ave, Cambridge, MA 02139, USA."
+
+#: src/frontends/xforms/form_copyright.C:41
+#: src/frontends/xforms/form_error.C:31 src/frontends/xforms/form_toc.C:48
+#, fuzzy
+msgid "Close|#C^[^M"
+msgstr "Kapat|#C^["
+
+#: src/frontends/xforms/FormDocument.C:48
+msgid "Document Layout"
+msgstr "Belge Düzeni"
+
+#: src/frontends/xforms/FormDocument.C:117
+msgid ""
+" Default | Custom | USletter | USlegal | USexecutive | A3 | A4 | A5 | B3 | "
+"B4 | B5 "
+msgstr ""
+" Öntanýmlý | Özel | USletter | USlegal | USexecutive | A3 | A4 | A5 | B3 | "
+"B4 | B5 "
+
+#: src/frontends/xforms/FormDocument.C:120
+msgid ""
+" None | A4 small Margins (only portrait) | A4 very small Margins (only "
+"portrait) | A4 very wide margins (only portrait) "
+msgstr ""
+" Hiçbiri | A4 küçük boþluk (sadece boyuna) | A4 çok küçük boþluk "
+"(sadeceboyuna) | A4 çok geniþ boþluk (sadece boyuna) "
+
+#: src/frontends/xforms/FormDocument.C:179
+msgid " Single | OneHalf | Double | Other "
+msgstr " Tek | Birbuçuk| Çift | Baþka "
+
+#: src/frontends/xforms/FormDocument.C:187
+msgid " Smallskip | Medskip | Bigskip | Length "
+msgstr " Küçük-ara | Orta-ara | Büyük-ara | Uzunluk "
+
+#: src/frontends/xforms/FormDocument.C:236
+msgid " ``text'' | ''text'' | ,,text`` | ,,text'' | «text» | »text« "
+msgstr " ``metin'' | ''metin'' | ,,metin`` | ,,metin'' | «metin» | »metin« "
+
+#: src/frontends/xforms/FormDocument.C:263
+msgid ""
+" default | tiny | script | footnote | small | normal | large | Large | LARGE "
+"| huge | Huge"
+msgstr ""
+" öntanýmlý | minik | betik | dipnot | küçük | normal | büyük | Büyük | BÜYÜK "
+"| dev | Dev"
+
+#: src/frontends/xforms/FormDocument.C:273 src/insets/figinset.C:1975
+#: src/insets/insetexternal.C:143 src/lyxfunc.C:3105 src/lyxfunc.C:3181
+#: src/lyxfunc.C:3313
+msgid "Document"
+msgstr "Belge"
+
+#: src/frontends/xforms/FormDocument.C:275
+#, fuzzy
+msgid "Paper"
+msgstr "Yapýþtýr"
+
+#: src/frontends/xforms/FormDocument.C:279
+#: src/frontends/xforms/FormParagraph.C:133
+#, fuzzy
+msgid "Extra"
+msgstr "Ek Seçenekler|#X"
+
+#: src/frontends/xforms/FormDocument.C:281
+#, fuzzy
+msgid "Bullets"
+msgstr "Bullet derinliði"
+
+#: src/frontends/xforms/FormDocument.C:284
+msgid ""
+"Your version of libXpm is older than 4.7.\n"
+"The `bullet' tab of the document popup has been disabled"
+msgstr ""
+
+#: src/frontends/xforms/FormDocument.C:308
+msgid "Document layout set"
+msgstr "Belge düzeni ayarlandý"
+
+#: src/frontends/xforms/FormDocument.C:426
+msgid "Converting document to new document class..."
+msgstr "Belge yeni belge sýnýfýna göre çevriliyor..."
+
+#: src/frontends/xforms/FormDocument.C:434
+msgid "One paragraph couldn't be converted"
+msgstr "Bir paragraf çevrilemedi"
+
+#: src/frontends/xforms/FormDocument.C:437
+msgid " paragraphs couldn't be converted"
+msgstr " adet paragraf çevrilemedi"
+
+#. problem changing class -- warn user and retain old style
+#: src/frontends/xforms/FormDocument.C:439
+#: src/frontends/xforms/FormDocument.C:446
+#: src/frontends/xforms/FormDocument.C:1108
+msgid "Conversion Errors!"
+msgstr "Çevrim hatalarý!"
+
+#: src/frontends/xforms/FormDocument.C:440
+msgid "into chosen document class"
+msgstr "seçilen belge sýnýfý için"
+
+#: src/frontends/xforms/FormDocument.C:447
+#, fuzzy
+msgid "Errors loading new document class."
+msgstr "seçilen belge sýnýfý için"
+
+#: src/frontends/xforms/FormDocument.C:448
+#: src/frontends/xforms/FormDocument.C:1110
+msgid "Reverting to original document class."
+msgstr "seçilen belge sýnýfý için"
+
+#: src/frontends/xforms/FormDocument.C:825
+#, fuzzy
+msgid "Document is read-only. No changes to layout permitted."
+msgstr "Belgeniz sadece okunabilir, deðiþtirilemez."
+
+#: src/frontends/xforms/FormDocument.C:1100
+msgid "Should I set some parameters to"
+msgstr "Bazý parametreleri bu belge sýnýfýnýn"
+
+#: src/frontends/xforms/FormDocument.C:1101
+msgid "the defaults of this document class?"
+msgstr "öntanýmlý deðerlerine göre ayarlayayým mý?"
+
+#: src/frontends/xforms/FormDocument.C:1109
+msgid "Unable to switch to new document class."
+msgstr "seçilen belge sýnýfý için"
 
 #: src/frontends/xforms/form_document.C:30
 #: src/frontends/xforms/form_paragraph.C:314
@@ -4699,131 +4505,18 @@ msgstr "Ding 4|#g"
 msgid "Ding 1|#D"
 msgstr "Ding 1|#D"
 
-#: src/frontends/xforms/FormDocument.C:48
-msgid "Document Layout"
-msgstr "Belge Düzeni"
-
-#: src/frontends/xforms/FormDocument.C:117
-msgid ""
-" Default | Custom | USletter | USlegal | USexecutive | A3 | A4 | A5 | B3 | "
-"B4 | B5 "
-msgstr ""
-" Öntanýmlý | Özel | USletter | USlegal | USexecutive | A3 | A4 | A5 | B3 | "
-"B4 | B5 "
-
-#: src/frontends/xforms/FormDocument.C:120
-msgid ""
-" None | A4 small Margins (only portrait) | A4 very small Margins (only "
-"portrait) | A4 very wide margins (only portrait) "
-msgstr ""
-" Hiçbiri | A4 küçük boþluk (sadece boyuna) | A4 çok küçük boþluk "
-"(sadeceboyuna) | A4 çok geniþ boþluk (sadece boyuna) "
-
-#: src/frontends/xforms/FormDocument.C:179
-msgid " Single | OneHalf | Double | Other "
-msgstr " Tek | Birbuçuk| Çift | Baþka "
-
-#: src/frontends/xforms/FormDocument.C:187
-msgid " Smallskip | Medskip | Bigskip | Length "
-msgstr " Küçük-ara | Orta-ara | Büyük-ara | Uzunluk "
-
-#: src/frontends/xforms/FormDocument.C:236
-msgid " ``text'' | ''text'' | ,,text`` | ,,text'' | «text» | »text« "
-msgstr " ``metin'' | ''metin'' | ,,metin`` | ,,metin'' | «metin» | »metin« "
-
-#: src/frontends/xforms/FormDocument.C:263
-msgid ""
-" default | tiny | script | footnote | small | normal | large | Large | LARGE "
-"| huge | Huge"
-msgstr ""
-" öntanýmlý | minik | betik | dipnot | küçük | normal | büyük | Büyük | BÜYÜK "
-"| dev | Dev"
-
-#: src/frontends/xforms/FormDocument.C:273 src/insets/figinset.C:1960
-#: src/insets/insetexternal.C:143 src/lyxfunc.C:3103 src/lyxfunc.C:3179
-#: src/lyxfunc.C:3311
-msgid "Document"
-msgstr "Belge"
-
-#: src/frontends/xforms/FormDocument.C:275
-#, fuzzy
-msgid "Paper"
-msgstr "Yapýþtýr"
-
-#: src/frontends/xforms/FormDocument.C:279
-#: src/frontends/xforms/FormParagraph.C:133
-#, fuzzy
-msgid "Extra"
-msgstr "Ek Seçenekler|#X"
-
-#: src/frontends/xforms/FormDocument.C:281
-#, fuzzy
-msgid "Bullets"
-msgstr "Bullet derinliði"
-
-#: src/frontends/xforms/FormDocument.C:284
-msgid ""
-"Your version of libXpm is older than 4.7.\n"
-"The `bullet' tab of the document popup has been disabled"
-msgstr ""
-
-#: src/frontends/xforms/FormDocument.C:308
-msgid "Document layout set"
-msgstr "Belge düzeni ayarlandý"
-
-#: src/frontends/xforms/FormDocument.C:426
-msgid "Converting document to new document class..."
-msgstr "Belge yeni belge sýnýfýna göre çevriliyor..."
-
-#: src/frontends/xforms/FormDocument.C:434
-msgid "One paragraph couldn't be converted"
-msgstr "Bir paragraf çevrilemedi"
-
-#: src/frontends/xforms/FormDocument.C:437
-msgid " paragraphs couldn't be converted"
-msgstr " adet paragraf çevrilemedi"
-
-#. problem changing class -- warn user and retain old style
-#: src/frontends/xforms/FormDocument.C:439
-#: src/frontends/xforms/FormDocument.C:446
-#: src/frontends/xforms/FormDocument.C:1108
-msgid "Conversion Errors!"
-msgstr "Çevrim hatalarý!"
-
-#: src/frontends/xforms/FormDocument.C:440
-msgid "into chosen document class"
-msgstr "seçilen belge sýnýfý için"
-
-#: src/frontends/xforms/FormDocument.C:447
-#, fuzzy
-msgid "Errors loading new document class."
-msgstr "seçilen belge sýnýfý için"
-
-#: src/frontends/xforms/FormDocument.C:448
-#: src/frontends/xforms/FormDocument.C:1110
-msgid "Reverting to original document class."
-msgstr "seçilen belge sýnýfý için"
-
-#: src/frontends/xforms/FormDocument.C:825
-#, fuzzy
-msgid "Document is read-only. No changes to layout permitted."
-msgstr "Belgeniz sadece okunabilir, deðiþtirilemez."
-
-#: src/frontends/xforms/FormDocument.C:1100
-msgid "Should I set some parameters to"
-msgstr "Bazý parametreleri bu belge sýnýfýnýn"
-
-#: src/frontends/xforms/FormDocument.C:1101
-msgid "the defaults of this document class?"
-msgstr "öntanýmlý deðerlerine göre ayarlayayým mý?"
-
-#: src/frontends/xforms/FormDocument.C:1109
-msgid "Unable to switch to new document class."
-msgstr "seçilen belge sýnýfý için"
-
 #: src/frontends/xforms/FormError.C:26
 msgid "LaTeX Error"
 msgstr "LaTeX Hatasý"
+
+#: src/frontends/xforms/FormGraphics.C:36
+#: src/frontends/xforms/FormGraphics.C:359
+msgid "Graphics"
+msgstr ""
+
+#: src/frontends/xforms/FormGraphics.C:368 src/insets/figinset.C:1974
+msgid "Clipart"
+msgstr "Clipart"
 
 #: src/frontends/xforms/form_graphics.C:33
 #, fuzzy
@@ -4842,7 +4535,7 @@ msgid "% of Page"
 msgstr "sayfanýn yüzde kaçý|#g"
 
 #: src/frontends/xforms/form_graphics.C:61
-#: src/frontends/xforms/form_graphics.C:82 src/lyxfont.C:409
+#: src/frontends/xforms/form_graphics.C:82 src/lyxfont.C:411
 msgid "Default"
 msgstr "Öntanýmlý"
 
@@ -4911,23 +4604,43 @@ msgstr "Güncelle|#Uu"
 msgid "Ok"
 msgstr ""
 
-#: src/frontends/xforms/FormGraphics.C:36
-#: src/frontends/xforms/FormGraphics.C:359
-msgid "Graphics"
-msgstr ""
-
-#: src/frontends/xforms/FormGraphics.C:368 src/insets/figinset.C:1959
-msgid "Clipart"
-msgstr "Clipart"
+#: src/frontends/xforms/FormIndex.C:29 src/insets/insetindex.C:36
+msgid "Index"
+msgstr "Dizin"
 
 #: src/frontends/xforms/form_index.C:29
 #, fuzzy
 msgid "Keyword|#K"
 msgstr "Tuþ:|#K"
 
-#: src/frontends/xforms/FormIndex.C:29 src/insets/insetindex.C:36
-msgid "Index"
-msgstr "Dizin"
+#: src/frontends/xforms/FormParagraph.C:33
+#, fuzzy
+msgid "Paragraph Layout"
+msgstr "'ParagraphExtra' Düzeni"
+
+#: src/frontends/xforms/FormParagraph.C:92
+#: src/frontends/xforms/FormParagraph.C:95
+msgid " None | Defskip | Smallskip | Medskip | Bigskip | VFill | Length "
+msgstr ""
+" Hiçbiri | Tanýmlý-ara | Küçük-ara | Orta-ara | Büyük-ara | Dikey-Doldur | "
+"Uzunluk "
+
+#. now make them fit together
+#: src/frontends/xforms/FormParagraph.C:132
+msgid "General"
+msgstr ""
+
+#: src/frontends/xforms/FormParagraph.C:680
+#: src/frontends/xforms/FormParagraph.C:717
+#: src/frontends/xforms/FormTabular.C:454
+#: src/frontends/xforms/FormTabular.C:466
+#: src/frontends/xforms/FormTabular.C:478
+msgid "Warning: Invalid Length (valid example: 10mm)"
+msgstr "Dikkat: Geçersiz uzunluk (geçerli örnek: 10mm)"
+
+#: src/frontends/xforms/FormParagraph.C:729
+msgid "Warning: Invalid percent value (0-100)"
+msgstr "Uyarý: Geçersiz yüzde deðeri (0-100)"
 
 #: src/frontends/xforms/form_paragraph.C:40
 msgid "Label Width:|#d"
@@ -5055,40 +4768,341 @@ msgstr "Tek-parça|#F"
 msgid "Cancel|C#C^["
 msgstr "Vazgeç|^["
 
-#: src/frontends/xforms/FormParagraph.C:33
+#: src/frontends/xforms/FormPreferences.C:68
 #, fuzzy
-msgid "Paragraph Layout"
-msgstr "'ParagraphExtra' Düzeni"
+msgid "Preferences"
+msgstr "Kaynak ekleniyor"
 
-#: src/frontends/xforms/FormParagraph.C:92
-#: src/frontends/xforms/FormParagraph.C:95
-msgid " None | Defskip | Smallskip | Medskip | Bigskip | VFill | Length "
-msgstr ""
-" Hiçbiri | Tanýmlý-ara | Küçük-ara | Orta-ara | Büyük-ara | Dikey-Doldur | "
-"Uzunluk "
-
-#. now make them fit together
-#: src/frontends/xforms/FormParagraph.C:132
-msgid "General"
+#: src/frontends/xforms/FormPreferences.C:220
+msgid "Look & Feel"
 msgstr ""
 
-#: src/frontends/xforms/FormParagraph.C:680
-#: src/frontends/xforms/FormParagraph.C:717
-#: src/frontends/xforms/FormTabular.C:454
-#: src/frontends/xforms/FormTabular.C:466
-#: src/frontends/xforms/FormTabular.C:478
-msgid "Warning: Invalid Length (valid example: 10mm)"
-msgstr "Dikkat: Geçersiz uzunluk (geçerli örnek: 10mm)"
+#: src/frontends/xforms/FormPreferences.C:223
+msgid "Lang Opts"
+msgstr ""
 
-#: src/frontends/xforms/FormParagraph.C:729
-msgid "Warning: Invalid percent value (0-100)"
-msgstr "Uyarý: Geçersiz yüzde deðeri (0-100)"
+#: src/frontends/xforms/FormPreferences.C:226
+#: src/frontends/xforms/FormPreferences.C:255
+#, fuzzy
+msgid "Converters"
+msgstr "Ortala|#n"
+
+#: src/frontends/xforms/FormPreferences.C:229
+#, fuzzy
+msgid "Inputs"
+msgstr "Girdi"
+
+#: src/frontends/xforms/FormPreferences.C:232
+msgid "Outputs"
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:238
+#, fuzzy
+msgid "Screen Fonts"
+msgstr "Ekran Seçenekleri"
+
+#: src/frontends/xforms/FormPreferences.C:241
+msgid "Interface"
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:244
+#, fuzzy
+msgid "Colors"
+msgstr "Kapat"
+
+#: src/frontends/xforms/FormPreferences.C:247
+#: src/frontends/xforms/FormPreferences.C:264
+#: src/frontends/xforms/FormPreferences.C:272 src/mathed/math_forms.C:46
+msgid "Misc"
+msgstr "Diðer"
+
+#: src/frontends/xforms/FormPreferences.C:252
+#, fuzzy
+msgid "Formats"
+msgstr "Tek-parça|#F"
+
+#: src/frontends/xforms/FormPreferences.C:261
+#, fuzzy
+msgid "Paths"
+msgstr "Matematik"
+
+#: src/frontends/xforms/FormPreferences.C:269
+#, fuzzy
+msgid "Printer"
+msgstr "Bastýr"
+
+#: src/frontends/xforms/FormPreferences.C:277
+#, fuzzy
+msgid "Spell checker"
+msgstr "Yazým Denetleyici"
+
+#: src/frontends/xforms/FormPreferences.C:533
+msgid "LyX objects that can be assigned a color."
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:536
+msgid ""
+"Modify the LyX object's color. Note: you must then \"Apply\" the change."
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:544
+msgid "Find a new color."
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:547
+msgid "Toggle between RGB and HSV color spaces."
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:742
+msgid "GUI background"
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:748
+msgid "GUI text"
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:757
+#, fuzzy
+msgid "GUI selection"
+msgstr "Üst/alt süsler"
+
+#: src/frontends/xforms/FormPreferences.C:763
+#, fuzzy
+msgid "GUI pointer"
+msgstr "Dosya okunamadý!"
+
+#: src/frontends/xforms/FormPreferences.C:896
+msgid "HSV"
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:928
+msgid "RGB"
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:1004
+msgid "All the currently defined converters known to LyX."
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:1006
+msgid "Convert \"from\" this format"
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:1008
+msgid "Convert \"to\" this format"
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:1010
+msgid ""
+"The conversion command. $$i is the input file name, $$b is the file name "
+"without its extension and $$o is the name of the output file."
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:1012
+msgid "Flags that control the converter behavior"
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:1014
+msgid ""
+"Remove the current converter from the list of available converters. Note: "
+"you must then \"Apply\" the change."
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:1016
+#: src/frontends/xforms/FormPreferences.C:1288
+#, fuzzy
+msgid "Add"
+msgstr "Ekle|#t"
+
+#: src/frontends/xforms/FormPreferences.C:1017
+msgid ""
+"Add the current converter to the list of available converters. Note: you "
+"must then \"Apply\" the change."
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:1019
+msgid ""
+"Modify the contents of the current converter. Note: you must then \"Apply\" "
+"the change."
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:1112
+#: src/frontends/xforms/FormPreferences.C:1114
+#: src/frontends/xforms/FormPreferences.C:1159
+#: src/frontends/xforms/FormPreferences.C:1161
+#: src/frontends/xforms/FormPreferences.C:1388
+#: src/frontends/xforms/FormPreferences.C:1389
+#: src/frontends/xforms/FormPreferences.C:1438
+#: src/frontends/xforms/FormPreferences.C:1440
+#: src/frontends/xforms/form_preferences.C:504
+#, fuzzy
+msgid "Modify|#M"
+msgstr "Orta|#M"
+
+#: src/frontends/xforms/FormPreferences.C:1148
+#: src/frontends/xforms/FormPreferences.C:1150
+#: src/frontends/xforms/FormPreferences.C:1427
+#: src/frontends/xforms/FormPreferences.C:1429
+#: src/frontends/xforms/form_preferences.C:607
+#: src/frontends/xforms/form_preferences.C:694
+#, fuzzy
+msgid "Add|#A"
+msgstr "Ekle|#t"
+
+#: src/frontends/xforms/FormPreferences.C:1274
+msgid "All the currently defined formats known to LyX."
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:1276
+msgid "The format identifier."
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:1278
+msgid "The format name as it will appear in the menus."
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:1280
+msgid "The keyboard accelerator. Use a letter in the GUI name. Case sensitive."
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:1282
+msgid "Used to recognize the file. E.g., ps, pdf, tex."
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:1284
+msgid "The command used to launch the viewer application."
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:1286
+msgid ""
+"Remove the current format from the list of available formats. Note: you must "
+"then \"Apply\" the change."
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:1289
+msgid ""
+"Add the current format to the list of available formats. Note: you must then "
+"\"Apply\" the change."
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:1291
+msgid ""
+"Modify the contents of the current format. Note: you must then \"Apply\" the "
+"change."
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:1407
+msgid "Cannot remove a Format used by a Converter. Remove the converter first."
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:1578
+msgid "Sys Bind"
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:1582
+#, fuzzy
+msgid "User Bind"
+msgstr "`include' kullan|#U"
+
+#: src/frontends/xforms/FormPreferences.C:1586
+#, fuzzy
+msgid "Bind file"
+msgstr "EPS dosyasý|#E"
+
+#: src/frontends/xforms/FormPreferences.C:1590
+msgid "Sys UI"
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:1594
+msgid "User UI"
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:1598
+#, fuzzy
+msgid "UI file"
+msgstr "[dosya yok]"
+
+#: src/frontends/xforms/FormPreferences.C:1794
+#: src/frontends/xforms/FormPreferences.C:1802
+#, fuzzy
+msgid "Key maps"
+msgstr "Tuþ eþlemeleri"
+
+#: src/frontends/xforms/FormPreferences.C:1798
+#: src/frontends/xforms/FormPreferences.C:1806
+#, fuzzy
+msgid "Keyboard map"
+msgstr "Tuþ:|#K"
+
+#: src/frontends/xforms/FormPreferences.C:1979
+#, fuzzy
+msgid " default | US letter | legal | executive | A3 | A4 | A5 | B5 "
+msgstr ""
+" Öntanýmlý | Özel | USletter | USlegal | USexecutive | A3 | A4 | A5 | B3 | "
+"B4 | B5 "
+
+#: src/frontends/xforms/FormPreferences.C:2231
+#, fuzzy
+msgid "Default path"
+msgstr "Öntanýmlý"
+
+#: src/frontends/xforms/FormPreferences.C:2236
+#, fuzzy
+msgid "Template path"
+msgstr "Hazýr biçimler"
+
+#: src/frontends/xforms/FormPreferences.C:2241
+msgid "Temp dir"
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:2245
+#, fuzzy
+msgid "User"
+msgstr "Kullanýcý1|#1"
+
+#: src/frontends/xforms/FormPreferences.C:2248
+#, fuzzy
+msgid "Lastfiles"
+msgstr "Tablo listesi"
+
+#: src/frontends/xforms/FormPreferences.C:2252
+msgid "Backup path"
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:2257
+msgid "LyX Server pipes"
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:2701
+msgid "Fonts must be positive!"
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:2724
+#, fuzzy
+msgid ""
+"Fonts must be input in the order tiny > script> footnote > small > normal > "
+"large > larger > largest > huge > huger."
+msgstr ""
+" öntanýmlý | minik | betik | dipnot | küçük | normal | büyük | Büyük | BÜYÜK "
+"| dev | Dev"
+
+#: src/frontends/xforms/FormPreferences.C:2840
+msgid " none | ispell | aspell "
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:2952
+#, fuzzy
+msgid "Personal dictionary"
+msgstr "Kiþisel sözlük içine ekle|#I"
+
+#: src/frontends/xforms/FormPreferences.C:3008
+msgid "WARNING!"
+msgstr ""
 
 #: src/LyXAction.C:154 src/frontends/xforms/form_preferences.C:44
 msgid "Save"
 msgstr "Kaydet"
 
-#: src/frontends/xforms/form_preferences.C:105 src/lyxfont.C:38
+#: src/frontends/xforms/form_preferences.C:105 src/lyxfont.C:42
 msgid "Roman"
 msgstr "Roman"
 
@@ -5097,7 +5111,7 @@ msgstr "Roman"
 msgid "Sans Serif"
 msgstr "Sans serif"
 
-#: src/frontends/xforms/form_preferences.C:111 src/lyxfont.C:38
+#: src/frontends/xforms/form_preferences.C:111 src/lyxfont.C:42
 msgid "Typewriter"
 msgstr "Daktilo"
 
@@ -5296,19 +5310,6 @@ msgstr "Tara|#B"
 msgid "LyX objects|#L"
 msgstr "LyX|#L"
 
-#: src/frontends/xforms/FormPreferences.C:1112
-#: src/frontends/xforms/FormPreferences.C:1114
-#: src/frontends/xforms/FormPreferences.C:1159
-#: src/frontends/xforms/FormPreferences.C:1161
-#: src/frontends/xforms/FormPreferences.C:1388
-#: src/frontends/xforms/FormPreferences.C:1389
-#: src/frontends/xforms/FormPreferences.C:1438
-#: src/frontends/xforms/FormPreferences.C:1440
-#: src/frontends/xforms/form_preferences.C:504
-#, fuzzy
-msgid "Modify|#M"
-msgstr "Orta|#M"
-
 #: src/frontends/xforms/form_preferences.C:511
 #, fuzzy
 msgid "S|#S"
@@ -5347,16 +5348,6 @@ msgstr ""
 #, fuzzy
 msgid "Delete|#D"
 msgstr "Çýkar|#D"
-
-#: src/frontends/xforms/FormPreferences.C:1148
-#: src/frontends/xforms/FormPreferences.C:1150
-#: src/frontends/xforms/FormPreferences.C:1427
-#: src/frontends/xforms/FormPreferences.C:1429
-#: src/frontends/xforms/form_preferences.C:607
-#: src/frontends/xforms/form_preferences.C:694
-#, fuzzy
-msgid "Add|#A"
-msgstr "Ekle|#t"
 
 #: src/frontends/xforms/form_preferences.C:614
 #, fuzzy
@@ -5528,6 +5519,11 @@ msgstr ""
 msgid "collated"
 msgstr "Eðik"
 
+#: src/frontends/xforms/form_preferences.C:920
+#, fuzzy
+msgid "landscape"
+msgstr "Enine|#L"
+
 #: src/frontends/xforms/form_preferences.C:923
 #, fuzzy
 msgid "to file"
@@ -5591,312 +5587,10 @@ msgstr ""
 msgid "Temp dir|#d"
 msgstr ""
 
-#: src/frontends/xforms/FormPreferences.C:68
-#, fuzzy
-msgid "Preferences"
-msgstr "Kaynak ekleniyor"
-
-#: src/frontends/xforms/FormPreferences.C:220
-msgid "Look & Feel"
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:223
-msgid "Lang Opts"
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:226
-#: src/frontends/xforms/FormPreferences.C:255
-#, fuzzy
-msgid "Converters"
-msgstr "Ortala|#n"
-
-#: src/frontends/xforms/FormPreferences.C:229
-#, fuzzy
-msgid "Inputs"
-msgstr "Girdi"
-
-#: src/frontends/xforms/FormPreferences.C:232
-msgid "Outputs"
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:238
-#, fuzzy
-msgid "Screen Fonts"
-msgstr "Ekran Seçenekleri"
-
-#: src/frontends/xforms/FormPreferences.C:241
-msgid "Interface"
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:244
-#, fuzzy
-msgid "Colors"
-msgstr "Kapat"
-
-#: src/frontends/xforms/FormPreferences.C:247
-#: src/frontends/xforms/FormPreferences.C:264
-#: src/frontends/xforms/FormPreferences.C:272 src/mathed/math_forms.C:46
-msgid "Misc"
-msgstr "Diðer"
-
-#: src/frontends/xforms/FormPreferences.C:252
-#, fuzzy
-msgid "Formats"
-msgstr "Tek-parça|#F"
-
-#: src/frontends/xforms/FormPreferences.C:261
-#, fuzzy
-msgid "Paths"
-msgstr "Matematik"
-
-#: src/frontends/xforms/FormPreferences.C:269
-#, fuzzy
-msgid "Printer"
+#: src/LyXAction.C:137 src/LyXAction.C:145 src/frontends/xforms/FormPrint.C:41
+#: src/frontends/xforms/form_print.C:129
+msgid "Print"
 msgstr "Bastýr"
-
-#: src/frontends/xforms/FormPreferences.C:277
-#, fuzzy
-msgid "Spell checker"
-msgstr "Yazým Denetleyici"
-
-#: src/frontends/xforms/FormPreferences.C:533
-msgid "LyX objects that can be assigned a color."
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:536
-msgid ""
-"Modify the LyX object's color. Note: you must then \"Apply\" the change."
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:544
-msgid "Find a new color."
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:547
-msgid "Toggle between RGB and HSV color spaces."
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:742
-msgid "GUI background"
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:748
-msgid "GUI text"
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:757
-#, fuzzy
-msgid "GUI selection"
-msgstr "Üst/alt süsler"
-
-#: src/frontends/xforms/FormPreferences.C:763
-#, fuzzy
-msgid "GUI pointer"
-msgstr "Dosya okunamadý!"
-
-#: src/frontends/xforms/FormPreferences.C:896
-msgid "HSV"
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:928
-msgid "RGB"
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:1004
-msgid "All the currently defined converters known to LyX."
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:1006
-msgid "Convert \"from\" this format"
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:1008
-msgid "Convert \"to\" this format"
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:1010
-msgid ""
-"The conversion command. $$i is the input file name, $$b is the file name "
-"without its extension and $$o is the name of the output file."
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:1012
-msgid "Flags that control the converter behavior"
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:1014
-msgid ""
-"Remove the current converter from the list of available converters. Note: "
-"you must then \"Apply\" the change."
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:1016
-#: src/frontends/xforms/FormPreferences.C:1288
-#, fuzzy
-msgid "Add"
-msgstr "Ekle|#t"
-
-#: src/frontends/xforms/FormPreferences.C:1017
-msgid ""
-"Add the current converter to the list of available converters. Note: you "
-"must then \"Apply\" the change."
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:1019
-msgid ""
-"Modify the contents of the current converter. Note: you must then \"Apply\" "
-"the change."
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:1274
-msgid "All the currently defined formats known to LyX."
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:1276
-msgid "The format identifier."
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:1278
-msgid "The format name as it will appear in the menus."
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:1280
-msgid "The keyboard accelerator. Use a letter in the GUI name. Case sensitive."
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:1282
-msgid "Used to recognize the file. E.g., ps, pdf, tex."
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:1284
-msgid "The command used to launch the viewer application."
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:1286
-msgid ""
-"Remove the current format from the list of available formats. Note: you must "
-"then \"Apply\" the change."
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:1289
-msgid ""
-"Add the current format to the list of available formats. Note: you must then "
-"\"Apply\" the change."
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:1291
-msgid ""
-"Modify the contents of the current format. Note: you must then \"Apply\" the "
-"change."
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:1407
-msgid "Cannot remove a Format used by a Converter. Remove the converter first."
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:1578
-msgid "Sys Bind"
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:1582
-#, fuzzy
-msgid "User Bind"
-msgstr "`include' kullan|#U"
-
-#: src/frontends/xforms/FormPreferences.C:1586
-#, fuzzy
-msgid "Bind file"
-msgstr "EPS dosyasý|#E"
-
-#: src/frontends/xforms/FormPreferences.C:1590
-msgid "Sys UI"
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:1594
-msgid "User UI"
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:1598
-#, fuzzy
-msgid "UI file"
-msgstr "[dosya yok]"
-
-#: src/frontends/xforms/FormPreferences.C:1794
-#: src/frontends/xforms/FormPreferences.C:1802
-#, fuzzy
-msgid "Key maps"
-msgstr "Tuþ eþlemeleri"
-
-#: src/frontends/xforms/FormPreferences.C:1798
-#: src/frontends/xforms/FormPreferences.C:1806
-#, fuzzy
-msgid "Keyboard map"
-msgstr "Tuþ:|#K"
-
-#: src/frontends/xforms/FormPreferences.C:1979
-#, fuzzy
-msgid " default | US letter | legal | executive | A3 | A4 | A5 | B5 "
-msgstr ""
-" Öntanýmlý | Özel | USletter | USlegal | USexecutive | A3 | A4 | A5 | B3 | "
-"B4 | B5 "
-
-#: src/frontends/xforms/FormPreferences.C:2231
-#, fuzzy
-msgid "Default path"
-msgstr "Öntanýmlý"
-
-#: src/frontends/xforms/FormPreferences.C:2236
-#, fuzzy
-msgid "Template path"
-msgstr "Hazýr biçimler"
-
-#: src/frontends/xforms/FormPreferences.C:2241
-msgid "Temp dir"
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:2245
-#, fuzzy
-msgid "User"
-msgstr "Kullanýcý1|#1"
-
-#: src/frontends/xforms/FormPreferences.C:2248
-#, fuzzy
-msgid "Lastfiles"
-msgstr "Tablo listesi"
-
-#: src/frontends/xforms/FormPreferences.C:2252
-msgid "Backup path"
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:2257
-msgid "LyX Server pipes"
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:2701
-msgid "Fonts must be positive!"
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:2724
-#, fuzzy
-msgid ""
-"Fonts must be input in the order tiny > script> footnote > small > normal > "
-"large > larger > largest > huge > huger."
-msgstr ""
-" öntanýmlý | minik | betik | dipnot | küçük | normal | büyük | Büyük | BÜYÜK "
-"| dev | Dev"
-
-#: src/frontends/xforms/FormPreferences.C:2840
-msgid " none | ispell | aspell "
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:2952
-#, fuzzy
-msgid "Personal dictionary"
-msgstr "Kiþisel sözlük içine ekle|#I"
-
-#: src/frontends/xforms/FormPreferences.C:3008
-msgid "WARNING!"
-msgstr ""
 
 #: src/frontends/xforms/form_print.C:37
 msgid "Printer|#P"
@@ -5946,14 +5640,13 @@ msgstr "Komut:|#C"
 msgid "to"
 msgstr " Tarih: "
 
-#: src/LyXAction.C:137 src/LyXAction.C:145 src/frontends/xforms/FormPrint.C:37
-#: src/frontends/xforms/form_print.C:129
-msgid "Print"
-msgstr "Bastýr"
-
 #: src/frontends/xforms/form_print.C:132
 msgid "Order"
 msgstr "Sýralama"
+
+#: src/frontends/xforms/FormRef.C:72
+msgid " Ref | Page | TextRef | TextPage | PrettyRef "
+msgstr ""
 
 #: src/frontends/xforms/form_ref.C:40
 #, fuzzy
@@ -5980,9 +5673,34 @@ msgstr "Kaynaða git|#G"
 msgid "Goto reference|#G"
 msgstr "Kaynaða git|#G"
 
-#: src/frontends/xforms/FormRef.C:72
-msgid " Ref | Page | TextRef | TextPage | PrettyRef "
-msgstr ""
+#: src/frontends/xforms/FormTabular.C:26
+#, fuzzy
+msgid "Tabular Layout"
+msgstr "Tablo Düzeni"
+
+#: src/frontends/xforms/FormTabular.C:127
+#, fuzzy
+msgid "Tabular"
+msgstr "Tablo Düzeni"
+
+#: src/frontends/xforms/FormTabular.C:129
+#, fuzzy
+msgid "Column/Row"
+msgstr "Sütun"
+
+#: src/frontends/xforms/FormTabular.C:131
+#, fuzzy
+msgid "Cell"
+msgstr "Sarý"
+
+#: src/frontends/xforms/FormTabular.C:133
+#, fuzzy
+msgid "LongTable"
+msgstr "Uzun tablo"
+
+#: src/frontends/xforms/FormTabular.C:440
+msgid "Warning: Wrong Cursor position, updated window"
+msgstr "Uyarý: Yanlýþ imleç konumu, pencere güncellendi"
 
 #: src/frontends/xforms/form_tabular.C:31 src/insets/insetinfo.C:216
 #: src/insets/insetinfo.C:221
@@ -6171,48 +5889,23 @@ msgstr "Dip"
 msgid "Special"
 msgstr "Özel:|#S"
 
-#: src/frontends/xforms/FormTabular.C:26
-#, fuzzy
-msgid "Tabular Layout"
-msgstr "Tablo Düzeni"
-
-#: src/frontends/xforms/FormTabular.C:127
-#, fuzzy
-msgid "Tabular"
-msgstr "Tablo Düzeni"
-
-#: src/frontends/xforms/FormTabular.C:129
-#, fuzzy
-msgid "Column/Row"
-msgstr "Sütun"
-
-#: src/frontends/xforms/FormTabular.C:131
-#, fuzzy
-msgid "Cell"
-msgstr "Sarý"
-
-#: src/frontends/xforms/FormTabular.C:133
-#, fuzzy
-msgid "LongTable"
-msgstr "Uzun tablo"
-
-#: src/frontends/xforms/FormTabular.C:440
-msgid "Warning: Wrong Cursor position, updated window"
-msgstr "Uyarý: Yanlýþ imleç konumu, pencere güncellendi"
-
 #: src/frontends/xforms/FormTabularCreate.C:31
 #, fuzzy
 msgid "Insert Tabular"
 msgstr "Tablo ekle"
+
+#: src/frontends/xforms/FormToc.C:71
+msgid " TOC | LOF | LOT | LOA "
+msgstr ""
 
 #: src/frontends/xforms/form_toc.C:40
 #, fuzzy
 msgid "Type|#T"
 msgstr "Tip:|#T"
 
-#: src/frontends/xforms/FormToc.C:71
-msgid " TOC | LOF | LOT | LOA "
-msgstr ""
+#: src/frontends/xforms/FormUrl.C:29
+msgid "Url"
+msgstr "Url"
 
 #: src/frontends/xforms/form_url.C:29
 #, fuzzy
@@ -6227,10 +5920,6 @@ msgstr "Alýcý Adý:|#N"
 #: src/frontends/xforms/form_url.C:47
 msgid "HTML type|#H"
 msgstr "HTML Tip:|#H"
-
-#: src/frontends/xforms/FormUrl.C:29
-msgid "Url"
-msgstr "Url"
 
 #: src/frontends/xforms/input_validators.C:102
 #, fuzzy
@@ -6296,13 +5985,13 @@ msgstr "Kenar boþluðu etiketi ekle"
 msgid "Goto Reference%m"
 msgstr "Kaynaða git|#G"
 
-#: src/frontends/xforms/xform_helpers.C:108 src/insets/figinset.C:1983
+#: src/frontends/xforms/xform_helpers.C:108 src/insets/figinset.C:1998
 #: src/insets/insetexternal.C:171
 msgid "Filename can't contain any of these characters:"
 msgstr "Dosya isminde aþaðýdaki karakterler bulunmamalý:"
 
 # , c-format
-#: src/frontends/xforms/xform_helpers.C:110 src/insets/figinset.C:1986
+#: src/frontends/xforms/xform_helpers.C:110 src/insets/figinset.C:2001
 #, no-c-format
 msgid "space, '#', '~', '$' or '%'."
 msgstr "boþluk, '#', '~', '$' veya '%'."
@@ -6383,49 +6072,49 @@ msgstr ""
 msgid "imported."
 msgstr "eklendi."
 
-#: src/insets/figinset.C:1025
+#: src/insets/figinset.C:1037
 msgid "[render error]"
 msgstr "[görüntüleme hatasý]"
 
-#: src/insets/figinset.C:1026
+#: src/insets/figinset.C:1038
 msgid "[rendering ... ]"
 msgstr "[görüntülüyorum ... ]"
 
-#: src/insets/figinset.C:1029
+#: src/insets/figinset.C:1041
 msgid "[no file]"
 msgstr "[dosya yok]"
 
-#: src/insets/figinset.C:1031
+#: src/insets/figinset.C:1043
 msgid "[bad file name]"
 msgstr ""
 
-#: src/insets/figinset.C:1033
+#: src/insets/figinset.C:1045
 msgid "[not displayed]"
 msgstr "[gösterilmiyor]"
 
-#: src/insets/figinset.C:1035
+#: src/insets/figinset.C:1047
 msgid "[no ghostscript]"
 msgstr "[ghostscript yok]"
 
-#: src/insets/figinset.C:1037
+#: src/insets/figinset.C:1049
 msgid "[unknown error]"
 msgstr "[bilinmeyen bir hata]"
 
-#: src/insets/figinset.C:1210
+#: src/insets/figinset.C:1222
 #, fuzzy
 msgid "Opened figure"
 msgstr "Inset açýldý"
 
-#: src/insets/figinset.C:1238
+#: src/insets/figinset.C:1250
 msgid "Figure"
 msgstr "Þekil"
 
-#: src/insets/figinset.C:1327 src/insets/figinset.C:1390
-#: src/insets/insetgraphics.C:488
+#: src/insets/figinset.C:1339 src/insets/figinset.C:1402
+#: src/insets/insetgraphics.C:492
 msgid "empty figure path"
 msgstr "Þekil yolu verilmemiþ"
 
-#: src/insets/figinset.C:1966 src/insets/figinset.C:1970
+#: src/insets/figinset.C:1981 src/insets/figinset.C:1985
 msgid "EPS Figure"
 msgstr "EPS Þekil"
 
@@ -6464,7 +6153,7 @@ msgstr "BibTeX"
 msgid "Opened inset"
 msgstr "Inset açýldý"
 
-#: src/insets/inseterror.C:54 src/insets/inseterror.C:76 src/lyxfunc.C:1438
+#: src/insets/inseterror.C:54 src/insets/inseterror.C:76 src/lyxfunc.C:1440
 msgid "Error"
 msgstr "Hata"
 
@@ -6481,7 +6170,7 @@ msgstr ""
 msgid "Opened ERT Inset"
 msgstr "Inset açýldý"
 
-#: src/insets/insetert.C:65 src/insets/insettabular.C:1698
+#: src/insets/insetert.C:65 src/insets/insettabular.C:1700
 msgid "Impossible Operation!"
 msgstr "Geçersiz Ýþlem!"
 
@@ -6504,7 +6193,7 @@ msgstr "boþluk, '#', '~', '$' veya '%'."
 msgid "Insert external inset"
 msgstr "Bibtex ekle"
 
-#: src/insets/insetexternal.C:422
+#: src/insets/insetexternal.C:439
 #, fuzzy
 msgid "External"
 msgstr "Ek Seçenekler|#X"
@@ -6530,26 +6219,26 @@ msgstr "Dip"
 msgid "Opened Footnote Inset"
 msgstr "Inset açýldý"
 
-#: src/insets/insetgraphics.C:219
+#: src/insets/insetgraphics.C:223
 #, fuzzy
 msgid "Unknown Error"
 msgstr "[bilinmeyen bir hata]"
 
-#: src/insets/insetgraphics.C:223
+#: src/insets/insetgraphics.C:227
 msgid "Loading..."
 msgstr ""
 
-#: src/insets/insetgraphics.C:227
+#: src/insets/insetgraphics.C:231
 #, fuzzy
 msgid "Error reading"
 msgstr "Okuma sýrasýnda hata oluþtu "
 
-#: src/insets/insetgraphics.C:231
+#: src/insets/insetgraphics.C:235
 #, fuzzy
 msgid "Error converting"
 msgstr "Okuma sýrasýnda hata oluþtu "
 
-#: src/insets/insetgraphics.C:239
+#: src/insets/insetgraphics.C:243
 msgid "Inline view disabled"
 msgstr ""
 
@@ -6582,8 +6271,8 @@ msgid "Use include|#U"
 msgstr "`include' kullan|#U"
 
 #. launches dialog
-#: src/insets/insetinclude.C:117 src/lyx_cb.C:197 src/lyxfunc.C:3052
-#: src/lyxfunc.C:3154 src/lyxfunc.C:3210 src/lyxfunc.C:3286
+#: src/insets/insetinclude.C:117 src/lyx_cb.C:197 src/lyxfunc.C:3054
+#: src/lyxfunc.C:3156 src/lyxfunc.C:3212 src/lyxfunc.C:3288
 msgid "Documents"
 msgstr "Belgeler"
 
@@ -6613,7 +6302,7 @@ msgstr "Dizin"
 msgid "Opened note"
 msgstr "Inset açýldý"
 
-#: src/insets/insetlabel.C:49 src/mathed/formula.C:1087
+#: src/insets/insetlabel.C:49 src/mathed/formula.C:1093
 #, fuzzy
 msgid "Enter label:"
 msgstr "Etiket ekle"
@@ -6657,7 +6346,7 @@ msgstr "Üstbelge:"
 msgid "Opened Tabular Inset"
 msgstr "Inset açýldý"
 
-#: src/insets/insettabular.C:1699
+#: src/insets/insettabular.C:1701
 msgid "Multicolumns can only be horizontally."
 msgstr "Çoklu-sütunlar sadece yatay olabilirler."
 
@@ -6666,20 +6355,20 @@ msgstr "Çoklu-sütunlar sadece yatay olabilirler."
 msgid "Opened Text Inset"
 msgstr "Inset açýldý"
 
-#: src/insets/insettext.C:971
+#: src/insets/insettext.C:970
 #, fuzzy
 msgid "Cannot include more than one paragraph!"
 msgstr "Tablo hücresi bir paragraftan fazlasýný içeremez!"
 
-#: src/insets/insettext.C:1037 src/lyxfunc.C:1258
+#: src/insets/insettext.C:1036 src/lyxfunc.C:1260
 msgid "Layout "
 msgstr "Düzen "
 
-#: src/insets/insettext.C:1037 src/lyxfunc.C:1259
+#: src/insets/insettext.C:1036 src/lyxfunc.C:1261
 msgid " not known"
 msgstr " bilinmiyor"
 
-#: src/insets/insettext.C:1090 src/lyxfunc.C:2111
+#: src/insets/insettext.C:1089 src/lyxfunc.C:2113
 #, fuzzy
 msgid "Unknown spacing argument: "
 msgstr "Eksik parametre"
@@ -6709,7 +6398,7 @@ msgstr "diðer..."
 msgid "Key Mappings"
 msgstr "Tuþ eþlemeleri"
 
-#: src/kbsequence.C:214
+#: src/kbsequence.C:215
 msgid "   options: "
 msgstr " seçenekler:"
 
@@ -6718,28 +6407,28 @@ msgstr " seçenekler:"
 msgid "Document wide language"
 msgstr "Belge düzeni ayarlandý"
 
-#: src/LaTeX.C:157 src/LaTeX.C:182 src/LaTeX.C:245 src/LaTeX.C:293
+#: src/LaTeX.C:177 src/LaTeX.C:252 src/LaTeX.C:300
 msgid "LaTeX run number "
 msgstr "LaTeX Önyazý"
 
-#: src/LaTeX.C:207 src/LaTeX.C:272
+#: src/LaTeX.C:210 src/LaTeX.C:279
 msgid "Running MakeIndex."
 msgstr "MakeIndex çalýþtýrýlýyor..."
 
-#: src/LaTeX.C:220
+#: src/LaTeX.C:223
 msgid "Running BibTeX."
 msgstr "BibTeX çalýþtýrýlýyor..."
 
-#: src/LaTeXLog.C:44 src/LaTeXLog.C:47
+#: src/LaTeXLog.C:59 src/LaTeXLog.C:62
 #, fuzzy
 msgid "No LaTeX log file found"
 msgstr "Hiç uyarý bulunamadý."
 
-#: src/LaTeXLog.C:54
+#: src/LaTeXLog.C:69
 msgid "Build Program Log"
 msgstr "Yazýlým Kütüðünü Yapýlandýr"
 
-#: src/LaTeXLog.C:54
+#: src/LaTeXLog.C:69
 msgid "LaTeX Log"
 msgstr "LaTeX Kütüðü"
 
@@ -6812,7 +6501,7 @@ msgstr "Bunlar asla deðiþmiyor"
 msgid "These are always toggled"
 msgstr "Bunlar hep deðiþiyor"
 
-#: src/layout_forms.C:90 src/lyx_gui_misc.C:425
+#: src/layout_forms.C:90 src/lyx_gui_misc.C:429
 msgid "OK|#O"
 msgstr "Peki|#O"
 
@@ -7241,7 +6930,7 @@ msgstr "Bibtex ekle"
 msgid "Insert a new external inset"
 msgstr "Bibtex ekle"
 
-#: src/LyXAction.C:197 src/lyx_cb.C:876
+#: src/LyXAction.C:197 src/lyx_cb.C:878
 msgid "Insert Figure"
 msgstr "Þekil ekle"
 
@@ -7599,7 +7288,7 @@ msgstr "Kayýt iþlemi baþarýsýz. Dosya ismini deðiþtirip yeniden deneyin."
 msgid "(If not, document is not saved.)"
 msgstr "(belge kaydedilmedi)"
 
-#: src/lyx_cb.C:198 src/lyxfunc.C:3053
+#: src/lyx_cb.C:198 src/lyxfunc.C:3055
 msgid "Templates"
 msgstr "Hazýr biçimler"
 
@@ -7681,204 +7370,204 @@ msgstr "Chktex baþarý ile çalýþtýrýldý"
 msgid "It seems chktex does not work."
 msgstr "Görünüþe göre chktex çalýþmýyor."
 
-#: src/lyx_cb.C:369
+#: src/lyx_cb.C:371
 msgid "Autosaving current document..."
 msgstr "Belgenin otomatik yedeði alýnýyor..."
 
-#: src/lyx_cb.C:409
+#: src/lyx_cb.C:411
 msgid "Autosave Failed!"
 msgstr "Otomatik yedekleme sýrasýnda hata oluþtu!"
 
-#: src/lyx_cb.C:465
+#: src/lyx_cb.C:467
 msgid "File to Insert"
 msgstr "Eklenecek dosya"
 
-#: src/lyx_cb.C:475
+#: src/lyx_cb.C:477
 msgid "Error! Specified file is unreadable: "
 msgstr "Hata! Belirtilen dosya okunamadý: "
 
-#: src/lyx_cb.C:482
+#: src/lyx_cb.C:484
 #, fuzzy
 msgid "Error! Cannot open specified file: "
 msgstr "Hata! Belirtilen dosya açýlamýyor:"
 
-#: src/lyx_cb.C:585 src/lyx_cb.C:588 src/mathed/formula.C:1082
-#: src/mathed/formula.C:1085
+#: src/lyx_cb.C:587 src/lyx_cb.C:590 src/mathed/formula.C:1088
+#: src/mathed/formula.C:1091
 msgid "Enter new label to insert:"
 msgstr "Eklenecek etiketi girin:"
 
-#: src/lyx_cb.C:622
+#: src/lyx_cb.C:624
 msgid "Character Style"
 msgstr "Karakter tarzý"
 
-#: src/lyx_cb.C:673
+#: src/lyx_cb.C:675
 msgid "LaTeX Preamble"
 msgstr "LaTeX Önyazý"
 
-#: src/lyx_cb.C:690
+#: src/lyx_cb.C:692
 msgid "Do you want to save the current settings"
 msgstr "Þu anki ayarlarý "
 
-#: src/lyx_cb.C:691
+#: src/lyx_cb.C:693
 msgid "for Character, Document, Paper and Quotes"
 msgstr "(karakter, belge, kaðýt ve alýntýlar)"
 
-#: src/lyx_cb.C:692
+#: src/lyx_cb.C:694
 msgid "as default for new documents?"
 msgstr "yeni belgeler için öntanýmlý yapmak istiyor musunuz?"
 
-#: src/lyx_cb.C:857
+#: src/lyx_cb.C:859
 msgid "LaTeX preamble set"
 msgstr "LaTeX önyazýsý ayarlandý"
 
-#: src/lyx_cb.C:892
+#: src/lyx_cb.C:894
 msgid "Inserting figure..."
 msgstr "Þekil ekleniyor..."
 
-#: src/lyx_cb.C:896 src/lyx_cb.C:952
+#: src/lyx_cb.C:898 src/lyx_cb.C:954
 msgid "Figure inserted"
 msgstr "Þekil eklendi"
 
-#: src/lyx_cb.C:975
+#: src/lyx_cb.C:977
 msgid "Running configure..."
 msgstr "Yapýlandýrma çalýþtýrýlýyor..."
 
-#: src/lyx_cb.C:982
+#: src/lyx_cb.C:984
 msgid "Reloading configuration..."
 msgstr "Yapýlandýrma bilgisi yeniden yükleniyor..."
 
-#: src/lyx_cb.C:984
+#: src/lyx_cb.C:986
 msgid "The system has been reconfigured."
 msgstr "Sistem yeniden yapýlandýrýldý."
 
-#: src/lyx_cb.C:985
+#: src/lyx_cb.C:987
 msgid "You need to restart LyX to make use of any"
 msgstr "Yenilenmiþ herhangi bir belge sýnýfýný kullanmak"
 
-#: src/lyx_cb.C:986
+#: src/lyx_cb.C:988
 msgid "updated document class specifications."
 msgstr "için LyX'i yeniden baþlatmalýsýnýz."
 
-#: src/lyxfont.C:38
+#: src/lyxfont.C:42
 msgid "Sans serif"
 msgstr "Sans serif"
 
-#: src/lyxfont.C:38
+#: src/lyxfont.C:42
 msgid "Symbol"
 msgstr "Sembol"
 
-#: src/lyxfont.C:38 src/lyxfont.C:43 src/lyxfont.C:47 src/lyxfont.C:54
-#: src/lyxfont.C:58
+#: src/lyxfont.C:42 src/lyxfont.C:47 src/lyxfont.C:51 src/lyxfont.C:58
+#: src/lyxfont.C:62
 msgid "Inherit"
 msgstr "Inherit"
 
-#: src/lyxfont.C:39 src/lyxfont.C:43 src/lyxfont.C:48 src/lyxfont.C:54
-#: src/lyxfont.C:58
+#: src/lyxfont.C:43 src/lyxfont.C:47 src/lyxfont.C:52 src/lyxfont.C:58
+#: src/lyxfont.C:62
 msgid "Ignore"
 msgstr "Aldýrma"
 
-#: src/lyxfont.C:43
+#: src/lyxfont.C:47
 msgid "Medium"
 msgstr "Ýnce"
 
-#: src/lyxfont.C:43
+#: src/lyxfont.C:47
 msgid "Bold"
 msgstr "Kalýn"
 
-#: src/lyxfont.C:47
+#: src/lyxfont.C:51
 msgid "Upright"
 msgstr "Dik"
 
-#: src/lyxfont.C:47
+#: src/lyxfont.C:51
 msgid "Italic"
 msgstr "Ýtalik"
 
-#: src/lyxfont.C:47
+#: src/lyxfont.C:51
 msgid "Slanted"
 msgstr "Eðik"
 
-#: src/lyxfont.C:47
+#: src/lyxfont.C:51
 msgid "Smallcaps"
 msgstr "Small Caps"
 
-#: src/lyxfont.C:52
+#: src/lyxfont.C:56
 msgid "Tiny"
 msgstr "Minicik"
 
-#: src/lyxfont.C:52
+#: src/lyxfont.C:56
 msgid "Smallest"
 msgstr "Çok küçük"
 
-#: src/lyxfont.C:52
+#: src/lyxfont.C:56
 msgid "Smaller"
 msgstr "Daha küçük"
 
-#: src/lyxfont.C:52
+#: src/lyxfont.C:56
 msgid "Small"
 msgstr "Küçük"
 
-#: src/lyxfont.C:52
+#: src/lyxfont.C:56
 msgid "Large"
 msgstr "Büyük"
 
-#: src/lyxfont.C:53
+#: src/lyxfont.C:57
 msgid "Larger"
 msgstr "Daha büyük"
 
-#: src/lyxfont.C:53
+#: src/lyxfont.C:57
 msgid "Largest"
 msgstr "Çok büyük"
 
-#: src/lyxfont.C:53
+#: src/lyxfont.C:57
 msgid "Huge"
 msgstr "Kocaman"
 
-#: src/lyxfont.C:53
+#: src/lyxfont.C:57
 msgid "Huger"
 msgstr "Dev gibi"
 
-#: src/lyxfont.C:53
+#: src/lyxfont.C:57
 msgid "Increase"
 msgstr "Arttýr"
 
-#: src/lyxfont.C:53
+#: src/lyxfont.C:57
 msgid "Decrease"
 msgstr "Azalt"
 
-#: src/lyxfont.C:58
+#: src/lyxfont.C:62
 msgid "Off"
 msgstr "Kapalý"
 
-#: src/lyxfont.C:58
+#: src/lyxfont.C:62
 msgid "On"
 msgstr "Açýk"
 
-#: src/lyxfont.C:58
+#: src/lyxfont.C:62
 msgid "Toggle"
 msgstr "Deðiþtir"
 
-#: src/lyxfont.C:399
+#: src/lyxfont.C:401
 msgid "Emphasis "
 msgstr "Vurgu "
 
-#: src/lyxfont.C:402
+#: src/lyxfont.C:404
 msgid "Underline "
 msgstr "Alt çizgi "
 
-#: src/lyxfont.C:405
+#: src/lyxfont.C:407
 msgid "Noun "
 msgstr "Ýsim "
 
-#: src/lyxfont.C:407
+#: src/lyxfont.C:409
 msgid "Latex "
 msgstr "LaTeX"
 
-#: src/lyxfont.C:411
+#: src/lyxfont.C:413
 #, fuzzy
 msgid "Language: "
 msgstr "Dil:"
 
-#: src/lyxfont.C:413
+#: src/lyxfont.C:415
 #, fuzzy
 msgid "  Number "
 msgstr "Numara"
@@ -7915,7 +7604,7 @@ msgstr "Bulundu."
 msgid "Unknown sequence:"
 msgstr "Bilinmeyen dizi:"
 
-#: src/lyxfunc.C:328 src/lyxfunc.C:2994
+#: src/lyxfunc.C:328 src/lyxfunc.C:2996
 msgid "Unknown action"
 msgstr "Bilinmeyen hareket"
 
@@ -7933,122 +7622,122 @@ msgstr "Bir belge açýk deðilken bu komut kullanýlamaz"
 msgid "Saving document"
 msgstr "Belge kaydediliyor"
 
-#: src/lyxfunc.C:1103 src/lyxfunc.C:2548
+#: src/lyxfunc.C:1105 src/lyxfunc.C:2550
 msgid "Missing argument"
 msgstr "Eksik parametre"
 
-#: src/lyxfunc.C:1114
+#: src/lyxfunc.C:1116
 msgid "Opening help file"
 msgstr "Yardým dosyasý açýlýyor"
 
-#: src/lyxfunc.C:1123
+#: src/lyxfunc.C:1125
 msgid "LyX Version "
 msgstr "LyX Sürümü: "
 
-#: src/lyxfunc.C:1128
+#: src/lyxfunc.C:1130
 msgid "Library directory: "
 msgstr "Kitaplýk dizini: "
 
-#: src/lyxfunc.C:1130
+#: src/lyxfunc.C:1132
 msgid "User directory: "
 msgstr "Kullanýcý dizini: "
 
-#: src/lyxfunc.C:1439
+#: src/lyxfunc.C:1441
 msgid "Couldn't find this label"
 msgstr "Bu etiket "
 
-#: src/lyxfunc.C:1440
+#: src/lyxfunc.C:1442
 msgid "in current document."
 msgstr "belgede bulunamadý"
 
-#: src/lyxfunc.C:1837
+#: src/lyxfunc.C:1839
 msgid "Mark removed"
 msgstr "Ýþaret kaldýrýldý"
 
-#: src/lyxfunc.C:1842
+#: src/lyxfunc.C:1844
 msgid "Mark set"
 msgstr "Ýþaret konuldu"
 
-#: src/lyxfunc.C:1947
+#: src/lyxfunc.C:1949
 msgid "Mark off"
 msgstr "Ýþaretleme devre dýþý"
 
-#: src/lyxfunc.C:1960
+#: src/lyxfunc.C:1962
 msgid "Mark on"
 msgstr "Ýþaretleme seçildi"
 
-#: src/lyxfunc.C:2462
+#: src/lyxfunc.C:2464
 msgid "Push-toolbar needs argument > 0"
 msgstr "Push-toolbar en az bir parametre ister"
 
-#: src/lyxfunc.C:2479
+#: src/lyxfunc.C:2481
 msgid "Usage: toolbar-add-to <LyX command>"
 msgstr "Kullaným: toolbar-add-to <LyX komutu>"
 
-#: src/lyxfunc.C:2496 src/mathed/formula.C:881
+#: src/lyxfunc.C:2498 src/mathed/formula.C:883
 msgid "Math greek mode on"
 msgstr "Yunan harfleri kipi"
 
-#: src/lyxfunc.C:2507 src/mathed/formula.C:892
+#: src/lyxfunc.C:2509 src/mathed/formula.C:894
 msgid "Math greek keyboard on"
 msgstr "Yunan harfleri klavye dizilimi"
 
-#: src/lyxfunc.C:2509 src/mathed/formula.C:894
+#: src/lyxfunc.C:2511 src/mathed/formula.C:896
 msgid "Math greek keyboard off"
 msgstr "Normal klavye dizilimi"
 
-#: src/lyxfunc.C:2563 src/mathed/formula.C:486
+#: src/lyxfunc.C:2565 src/mathed/formula.C:486
 msgid "Math editor mode"
 msgstr "Formül düzenleme kipi"
 
-#: src/lyxfunc.C:2570
+#: src/lyxfunc.C:2572
 msgid "This is only allowed in math mode!"
 msgstr "Bunu sadece matematik kipinde yapabilirsiniz!"
 
-#: src/lyxfunc.C:2759
+#: src/lyxfunc.C:2761
 msgid "Opening child document "
 msgstr "Alt belge açýlýyor "
 
-#: src/lyxfunc.C:2791
+#: src/lyxfunc.C:2793
 msgid "Unknown kind of footnote"
 msgstr "Bilinmeyen tür dipnot"
 
-#: src/lyxfunc.C:2910
+#: src/lyxfunc.C:2912
 msgid "Syntax: set-color <lyx_name> <x11_name>"
 msgstr ""
 
-#: src/lyxfunc.C:2916
+#: src/lyxfunc.C:2918
 msgid "Set-color \""
 msgstr ""
 
-#: src/lyxfunc.C:2918
+#: src/lyxfunc.C:2920
 msgid "\" failed - color is undefined or may not be redefined"
 msgstr ""
 
-#: src/lyxfunc.C:2933
+#: src/lyxfunc.C:2935
 #, fuzzy
 msgid "No document open"
 msgstr "* Açýk Belge Yok *"
 
-#: src/lyxfunc.C:2939
+#: src/lyxfunc.C:2941
 msgid "Document is read only"
 msgstr "Belge sadece okunabilir"
 
-#: src/lyxfunc.C:3054
+#: src/lyxfunc.C:3056
 msgid "Enter Filename for new document"
 msgstr "Yeni belge için dosya ismini girin"
 
-#: src/lyxfunc.C:3055
+#: src/lyxfunc.C:3057
 msgid "newfile"
 msgstr "yenidosya"
 
 #. Cancel: Do nothing
-#: src/lyxfunc.C:3059 src/lyxfunc.C:3086 src/lyxfunc.C:3163 src/lyxfunc.C:3221
-#: src/lyxfunc.C:3249 src/lyxfunc.C:3259 src/lyxfunc.C:3295
+#: src/lyxfunc.C:3061 src/lyxfunc.C:3088 src/lyxfunc.C:3165 src/lyxfunc.C:3223
+#: src/lyxfunc.C:3251 src/lyxfunc.C:3261 src/lyxfunc.C:3297
 msgid "Canceled."
 msgstr "Vazgeçildi."
 
-#: src/lyxfunc.C:3074 src/lyxfunc.C:3237
+#: src/lyxfunc.C:3076 src/lyxfunc.C:3239
 msgid ""
 "Do you want to close that document now?\n"
 "('No' will just switch to the open version)"
@@ -8056,71 +7745,71 @@ msgstr ""
 "Bu belgeyi þimdi kapatmak istiyor musunuz ?\n"
 "('Hayýr' açýk olan sürüme geçmenizi saðlayacak)"
 
-#: src/lyxfunc.C:3094
+#: src/lyxfunc.C:3096
 msgid "File already exists:"
 msgstr "Belirtilen dosya halihazýrda mevcut:"
 
-#: src/lyxfunc.C:3096
+#: src/lyxfunc.C:3098
 msgid "Do you want to open the document?"
 msgstr "Belgeyi açmak istiyor musunuz?"
 
 #. loads document
-#: src/lyxfunc.C:3098 src/lyxfunc.C:3174
+#: src/lyxfunc.C:3100 src/lyxfunc.C:3176
 msgid "Opening document"
 msgstr "Belge açýlýyor"
 
-#: src/lyxfunc.C:3105 src/lyxfunc.C:3181
+#: src/lyxfunc.C:3107 src/lyxfunc.C:3183
 msgid "opened."
 msgstr "açýldý."
 
-#: src/lyxfunc.C:3126
+#: src/lyxfunc.C:3128
 msgid "Choose template"
 msgstr "Hazýr biçimlerden birini seçin"
 
-#: src/lyxfunc.C:3155 src/lyxfunc.C:3211 src/lyxfunc.C:3287
+#: src/lyxfunc.C:3157 src/lyxfunc.C:3213 src/lyxfunc.C:3289
 msgid "Examples"
 msgstr "Örnekler"
 
-#: src/lyxfunc.C:3157
+#: src/lyxfunc.C:3159
 msgid "Select Document to Open"
 msgstr "Açýlacak belgeyi seçin"
 
-#: src/lyxfunc.C:3183
+#: src/lyxfunc.C:3185
 msgid "Could not open document"
 msgstr "Belge açýlamadý"
 
-#: src/lyxfunc.C:3213
+#: src/lyxfunc.C:3215
 #, fuzzy
 msgid "Select "
 msgstr "Seç|#S"
 
-#: src/lyxfunc.C:3214
+#: src/lyxfunc.C:3216
 #, fuzzy
 msgid " file to import"
 msgstr "Ekleneeck LaTeX dosyasýný seçin"
 
-#: src/lyxfunc.C:3256
+#: src/lyxfunc.C:3258
 msgid "A document by the name"
 msgstr "Ayný isimli, açýk baþka bir belge var!"
 
-#: src/lyxfunc.C:3258
+#: src/lyxfunc.C:3260
 msgid "already exists. Overwrite?"
 msgstr "Dosya zaten var, üzerine yazayým mý?"
 
-#: src/lyxfunc.C:3289
+#: src/lyxfunc.C:3291
 msgid "Select Document to Insert"
 msgstr "Eklenecek belgeyi seçin"
 
 #. Inserts document
-#: src/lyxfunc.C:3307
+#: src/lyxfunc.C:3309
 msgid "Inserting document"
 msgstr "Belge ekleniyor"
 
-#: src/lyxfunc.C:3313
+#: src/lyxfunc.C:3315
 msgid "inserted."
 msgstr "eklendi."
 
-#: src/lyxfunc.C:3315
+#: src/lyxfunc.C:3317
 msgid "Could not insert document"
 msgstr "Belge eklenemedi"
 
@@ -8175,28 +7864,28 @@ msgstr "Ref: "
 msgid "LyX Banner"
 msgstr "LyX Flamasý"
 
-#: src/lyx_gui_misc.C:337
+#: src/lyx_gui_misc.C:341
 msgid "Dismiss"
 msgstr "Kaldýr"
 
-#: src/lyx_gui_misc.C:373 src/lyx_gui_misc.C:402 src/lyx_gui_misc.C:406
+#: src/lyx_gui_misc.C:377 src/lyx_gui_misc.C:406 src/lyx_gui_misc.C:410
 msgid "Yes|Yy#y"
 msgstr "Evet|Yy#y"
 
-#: src/lyx_gui_misc.C:374 src/lyx_gui_misc.C:403 src/lyx_gui_misc.C:407
+#: src/lyx_gui_misc.C:378 src/lyx_gui_misc.C:407 src/lyx_gui_misc.C:411
 msgid "No|Nn#n"
 msgstr "Hayýr|Nn#n"
 
-#: src/lyx_gui_misc.C:426
+#: src/lyx_gui_misc.C:430
 #, fuzzy
 msgid "Clear|#e"
 msgstr "Sil|#e"
 
-#: src/lyx_gui_misc.C:439
+#: src/lyx_gui_misc.C:443
 msgid "Any changes will be ignored"
 msgstr "Deðiþiklikler belgeye yansýtýlmayacaktýr."
 
-#: src/lyx_gui_misc.C:440
+#: src/lyx_gui_misc.C:444
 msgid "The document is read-only:"
 msgstr "Belge sadece okunabilir:"
 
@@ -8256,65 +7945,65 @@ msgstr " ancak sorunlar çýkabilir."
 msgid "Expect problems."
 msgstr " Sorunlar bekleniyor."
 
-#: src/lyx_main.C:558
+#: src/lyx_main.C:563
 #, fuzzy
 msgid "You have specified an invalid LyX directory."
 msgstr "Ama sizin kiþisel bir LyX dizininiz yok ki."
 
-#: src/lyx_main.C:559
+#: src/lyx_main.C:564
 msgid "You don't have a personal LyX directory."
 msgstr "Ama sizin kiþisel bir LyX dizininiz yok ki."
 
-#: src/lyx_main.C:561
+#: src/lyx_main.C:566
 msgid "It is needed to keep your own configuration."
 msgstr "Kendi yapýlandýrmanýz için bu dizin gerekli."
 
-#: src/lyx_main.C:562
+#: src/lyx_main.C:567
 msgid "Should I try to set it up for you (recommended)?"
 msgstr "Sizin için bir tane yaratmamý ister misiniz (isteyin)?"
 
-#: src/lyx_main.C:563
+#: src/lyx_main.C:568
 msgid "Running without personal LyX directory."
 msgstr "Ama sizin kiþisel bir LyX dizininiz yok ki."
 
 #. Tell the user what is going on
-#: src/lyx_main.C:570
+#: src/lyx_main.C:575
 msgid "LyX: Creating directory "
 msgstr "LyX: Dizin yaratýlýyor "
 
-#: src/lyx_main.C:571
+#: src/lyx_main.C:576
 msgid " and running configure..."
 msgstr " ve yapýlandýrma çalýþtýrýlýyor..."
 
-#: src/lyx_main.C:577
+#: src/lyx_main.C:582
 msgid "Failed. Will use "
 msgstr "Baþarýsýz, yerine "
 
-#: src/lyx_main.C:578
+#: src/lyx_main.C:583
 msgid " instead."
 msgstr "eklendi."
 
-#: src/lyx_main.C:585
+#: src/lyx_main.C:590
 msgid "Done!"
 msgstr "Bitti!"
 
-#: src/lyx_main.C:599
+#: src/lyx_main.C:604
 msgid "LyX Warning!"
 msgstr "LyX uyarýsý!"
 
-#: src/lyx_main.C:600
+#: src/lyx_main.C:605
 msgid "Error while reading "
 msgstr "Okuma sýrasýnda hata oluþtu "
 
-#: src/lyx_main.C:601
+#: src/lyx_main.C:606
 msgid "Using built-in defaults."
 msgstr "Öntanýmlý bilgileri kullanýyorum."
 
-#: src/lyx_main.C:699
+#: src/lyx_main.C:704
 msgid "Setting debug level to "
 msgstr "Hata ayýklama seviyesi "
 
-#: src/lyx_main.C:711
+#: src/lyx_main.C:716
 #, fuzzy
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
@@ -8352,394 +8041,410 @@ msgstr ""
 "\n"
 "Diðer seçenekler için LyX man sayfasýna bakýnýz."
 
-#: src/lyx_main.C:744
+#: src/lyx_main.C:749
 msgid "List of supported debug flags:"
 msgstr "Hata ayýklama özellikleri dökümü:"
 
-#: src/lyx_main.C:756
+#: src/lyx_main.C:761
 msgid "Missing directory for -sysdir switch!"
 msgstr "-sysdir için gereken dizin eksik!"
 
-#: src/lyx_main.C:767
+#: src/lyx_main.C:772
 #, fuzzy
 msgid "Missing directory for -userdir switch!"
 msgstr "-sysdir için gereken dizin eksik!"
 
-#: src/lyx_main.C:790
+#: src/lyx_main.C:795
 #, fuzzy
 msgid "Missing command string after  -x switch!"
 msgstr "-x'ten sonra gereken komut kümesi eksik!"
 
-#: src/lyx_main.C:803
+#: src/lyx_main.C:808
 msgid "Missing file type [eg latex, ps...] after "
 msgstr "Eksik dosya türü [örn: Latex, ps... vb] "
 
-#: src/lyx_main.C:805 src/lyx_main.C:820
+#: src/lyx_main.C:810 src/lyx_main.C:825
 msgid " switch!"
 msgstr " seçeneðinden sonra"
 
-#: src/lyx_main.C:818
+#: src/lyx_main.C:823
 #, fuzzy
 msgid "Missing type [eg latex, ps...] after "
 msgstr "Eksik dosya türü [örn: Latex, ps... vb] "
 
-#: src/lyxrc.C:1602
+#: src/lyxrc.C:1644
 msgid ""
 "The font encoding used for the LaTeX2e fontenc package. T1 is highly "
 "recommended for non-English languages."
 msgstr ""
 
-#: src/lyxrc.C:1606
+#: src/lyxrc.C:1648
 msgid ""
 "The default printer to print on. If none is specified, LyX will use the "
 "environment variable PRINTER."
 msgstr ""
 
-#: src/lyxrc.C:1610
+#: src/lyxrc.C:1652
 msgid "Your favorite print program, e.g. \"dvips\", \"dvilj4\"."
 msgstr ""
 
-#: src/lyxrc.C:1614
+#: src/lyxrc.C:1656
 msgid "The option to print only even pages."
 msgstr ""
 
-#: src/lyxrc.C:1618
+#: src/lyxrc.C:1660
 msgid "The option to print only odd pages."
 msgstr ""
 
-#: src/lyxrc.C:1622
+#: src/lyxrc.C:1664
 msgid "The option for specifying a comma-separated list of pages to print."
 msgstr ""
 
-#: src/lyxrc.C:1626
+#: src/lyxrc.C:1668
 msgid "The option for specifying the number of copies to print."
 msgstr ""
 
-#: src/lyxrc.C:1630
+#: src/lyxrc.C:1672
 msgid "The option for specifying whether the copies should be collated."
 msgstr ""
 
-#: src/lyxrc.C:1634
+#: src/lyxrc.C:1676
 msgid "The option to reverse the order of the pages printed."
 msgstr ""
 
-#: src/lyxrc.C:1638
+#: src/lyxrc.C:1680
 msgid "The option to print out in landscape."
 msgstr ""
 
-#: src/lyxrc.C:1642
+#: src/lyxrc.C:1684
 msgid "The option to specify paper type."
 msgstr ""
 
-#: src/lyxrc.C:1646
+#: src/lyxrc.C:1688
 msgid "Option to specify the dimensions of the print paper."
 msgstr ""
 
-#: src/lyxrc.C:1650
+#: src/lyxrc.C:1692
 msgid "Option to pass to the print program to print on a specific printer."
 msgstr ""
 
-#: src/lyxrc.C:1654
+#: src/lyxrc.C:1696
 msgid ""
 "Select for LyX to pass the name of the destination printer to your print "
 "command."
 msgstr ""
 
-#: src/lyxrc.C:1658
+#: src/lyxrc.C:1700
 msgid "Option to pass to the print program to print to a file."
 msgstr ""
 
-#: src/lyxrc.C:1662
+#: src/lyxrc.C:1704
 msgid "Extension of printer program output file. Usually \".ps\"."
 msgstr ""
 
-#: src/lyxrc.C:1666
+#: src/lyxrc.C:1708
 msgid ""
 "Extra options to pass to printing program after everything else, but before "
 "the filename of the DVI file to be printed."
 msgstr ""
 
-#: src/lyxrc.C:1670
+#: src/lyxrc.C:1712
 msgid ""
 "When set, this printer option automatically prints to a file and then calls "
 "a separate print spooling program on that file with the given name and "
 "arguments."
 msgstr ""
 
-#: src/lyxrc.C:1674
+#: src/lyxrc.C:1716
 msgid ""
 "If you specify a printer name in the print dialog, the following argument is "
 "prepended along with the printer name after the spool command."
 msgstr ""
 
-#: src/lyxrc.C:1678
+#: src/lyxrc.C:1720
 msgid ""
 "DPI (dots per inch) of your monitor is auto-detected by LyX. If that goes "
 "wrong, override the setting here."
 msgstr ""
 
-#: src/lyxrc.C:1683
+#: src/lyxrc.C:1725
 #, no-c-format
 msgid ""
 "The zoom percentage for screen fonts. A setting of 100% will make the fonts "
 "roughly the same size as on paper."
 msgstr ""
 
-#: src/lyxrc.C:1687
+#: src/lyxrc.C:1729
 msgid "The font sizes used for calculating the scaling of the screen fonts."
 msgstr ""
 
-#: src/lyxrc.C:1693
+#: src/lyxrc.C:1735
 msgid "The screen fonts used to display the text while editing."
 msgstr ""
 
-#: src/lyxrc.C:1697
+#: src/lyxrc.C:1739
 msgid "The font for menus (and groups titles in popups)."
 msgstr ""
 
-#: src/lyxrc.C:1701
+#: src/lyxrc.C:1743
 msgid "The font for popups."
 msgstr ""
 
-#: src/lyxrc.C:1705
+#: src/lyxrc.C:1747
 msgid "The encoding for the screen fonts."
 msgstr ""
 
-#: src/lyxrc.C:1709
+#: src/lyxrc.C:1751
 msgid "The encoding for the menu/popups fonts."
 msgstr ""
 
-#: src/lyxrc.C:1716
+#: src/lyxrc.C:1758
 msgid ""
 "The time interval between auto-saves (in seconds). 0 means no auto-save."
 msgstr ""
 
-#: src/lyxrc.C:1720
+#: src/lyxrc.C:1762
 #, fuzzy
 msgid "The default path for your documents."
 msgstr "yeni belgeler için öntanýmlý yapmak istiyor musunuz?"
 
-#: src/lyxrc.C:1724
+#: src/lyxrc.C:1766
 msgid "The path that LyX will set when offering to choose a template."
 msgstr ""
 
-#: src/lyxrc.C:1728
+#: src/lyxrc.C:1770
 msgid ""
 "LyX will place its temporary directories in this path. They will be deleted "
 "when you quit LyX."
 msgstr ""
 
-#: src/lyxrc.C:1732
+#: src/lyxrc.C:1774
 msgid ""
 "Select if you wish to use a temporary directory structure to store temporary "
 "TeX output."
 msgstr ""
 
-#: src/lyxrc.C:1736
+#: src/lyxrc.C:1778
 msgid "The file where the last-files information should be stored."
 msgstr ""
 
-#: src/lyxrc.C:1740
+#: src/lyxrc.C:1782
 msgid ""
 "De-select if you don't want the current selection to be replaced "
 "automatically by what you type."
 msgstr ""
 
-#: src/lyxrc.C:1744
+#: src/lyxrc.C:1786
 msgid ""
 "Select if LyX is to take over the handling of the dead keys (a.k.a. accent "
 "keys) that may be defined for your keyboard."
 msgstr ""
 
-#: src/lyxrc.C:1749
+#: src/lyxrc.C:1791
 msgid ""
 "This starts the lyxserver. The pipes get an additional extension \".in\" and "
 "\".out\". Only for advanced users."
 msgstr ""
 
-#: src/lyxrc.C:1753
+#: src/lyxrc.C:1795
 msgid ""
 "Keybindings file. Can either specify an absolute path, or LyX will look in "
 "its global and local bind/ directories."
 msgstr ""
 
-#: src/lyxrc.C:1757
+#: src/lyxrc.C:1799
 msgid ""
 "The  UI (user interface) file. Can either specify an absolute path, or LyX "
 "will look in its global and local ui/ directories."
 msgstr ""
 
-#: src/lyxrc.C:1763
+#: src/lyxrc.C:1805
 msgid ""
 "Use this to set the correct mapping file for your keyboard. You'll need this "
 "if you for instance want to type German documents on an American keyboard."
 msgstr ""
 
-#: src/lyxrc.C:1777
+#: src/lyxrc.C:1819
 msgid ""
 "Use to define an external program to render tables in the ASCII output. E.g. "
 "\"groff -t -Tlatin1 $$FName\"  where $$FName is the input file. If \"none\" "
 "is specified, an internal routine is used."
 msgstr ""
 
-#: src/lyxrc.C:1781
+#: src/lyxrc.C:1823
 msgid ""
 "This is the maximum line length of an exported ASCII file (LaTeX, SGML or "
 "plain text)."
 msgstr ""
 
-#: src/lyxrc.C:1785
+#: src/lyxrc.C:1827
 msgid "Maximal number of lastfiles. Up to 9 can appear in the file menu."
 msgstr ""
 
-#: src/lyxrc.C:1789
+#: src/lyxrc.C:1831
 msgid "Select to check whether the lastfiles still exist."
 msgstr ""
 
-#: src/lyxrc.C:1796
+#: src/lyxrc.C:1838
 #, fuzzy
 msgid "Specify the default paper size."
 msgstr "Kaðýt boyu:|#P"
 
-#: src/lyxrc.C:1803
+#: src/lyxrc.C:1845
 msgid ""
 "Consider run-together words, such as \"diskdrive\" for \"disk drive\", as "
 "legal words?"
 msgstr ""
 
-#: src/lyxrc.C:1807
+#: src/lyxrc.C:1849
 msgid "What command runs the spell checker?"
 msgstr ""
 
-#: src/lyxrc.C:1811
+#: src/lyxrc.C:1853
 msgid ""
 "Specify whether to pass the -T input encoding option to ispell. Enable this "
 "if you can't spellcheck words with international letters in them. This may "
 "not work with all dictionaries."
 msgstr ""
 
-#: src/lyxrc.C:1816
+#: src/lyxrc.C:1858
 msgid ""
 "Specify an alternate language. The default is to use the language of the "
 "document."
 msgstr ""
 
-#: src/lyxrc.C:1821
+#: src/lyxrc.C:1863
 msgid ""
 "Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
 msgstr ""
 
-#: src/lyxrc.C:1826
+#: src/lyxrc.C:1868
 msgid "Specify additional chars that can be part of a word."
 msgstr ""
 
-#: src/lyxrc.C:1830
+#: src/lyxrc.C:1872
 msgid ""
 "Allow the use of scalable screen fonts? If false, LyX will use the closest "
 "existing size for a match. Use this if the scalable fonts look bad and you "
 "have many fixed size fonts."
 msgstr ""
 
-#: src/lyxrc.C:1834
+#: src/lyxrc.C:1876
 msgid ""
 "Define how to run chktex. E.g. \"chktex -n11 -n1 -n3 -n6 -n9 -22 -n25 -n30 "
 "-n38\" Refer to the ChkTeX documentation."
 msgstr ""
 
-#: src/lyxrc.C:1838
+#: src/lyxrc.C:1880
 msgid ""
 "LyX normally doesn't update the cursor position if you move the scrollbar. "
 "Set to true if you'd prefer to always have the cursor on screen."
 msgstr ""
 
-#: src/lyxrc.C:1842
+#: src/lyxrc.C:1884
 msgid ""
 "Sets whether LyX asks for a second confirmation to exit when you have "
 "changed documents. (LyX will still ask to save changed documents.)"
 msgstr ""
 
-#: src/lyxrc.C:1846
+#: src/lyxrc.C:1888
 msgid ""
 "LyX continously displays names of last command executed, along with a list "
 "of defined short-cuts for it in the minibuffer. Set to false if LyX seems "
 "slow."
 msgstr ""
 
-#: src/lyxrc.C:1850
+#: src/lyxrc.C:1892
 msgid "De-select if you don't want LyX to create backup files."
 msgstr ""
 
-#: src/lyxrc.C:1854
+#: src/lyxrc.C:1896
 msgid ""
 "The path for storing backup files. If it is an empty string, LyX will store "
 "the backup file in the same directory as the original file."
 msgstr ""
 
-#: src/lyxrc.C:1858
+#: src/lyxrc.C:1900
 msgid ""
 "Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
 msgstr ""
 
-#: src/lyxrc.C:1862
+#: src/lyxrc.C:1904
 msgid ""
 "Select to control the highlighting of words with a language foreign to that "
 "of the document."
 msgstr ""
 
-#: src/lyxrc.C:1866
+#: src/lyxrc.C:1908
 msgid ""
 "The latex command for loading the language package. E.g. "
 "\"\\usepackage{babel}\", \"\\usepackage{omega}\"."
 msgstr ""
 
-#: src/lyxrc.C:1870
+#: src/lyxrc.C:1912
+msgid ""
+"De-select if you don't want the language(s) used as an argument to "
+"\\documentclass."
+msgstr ""
+
+#: src/lyxrc.C:1916
+msgid ""
+"De-select if you don't want babel to be used when the language of the "
+"document is the default language."
+msgstr ""
+
+#: src/lyxrc.C:1920
 msgid ""
 "Select if a language switching command is needed at the beginning of the "
 "document."
 msgstr ""
 
-#: src/lyxrc.C:1874
+#: src/lyxrc.C:1924
 msgid ""
 "Select if a language switching command is needed at the end of the document."
 msgstr ""
 
-#: src/lyxrc.C:1878
+#: src/lyxrc.C:1928
 msgid ""
 "The latex command for changing from the language of the document to another "
 "language. E.g. \\selectlanguage{$$lang} where $$lang is substituted by the "
 "name of the second language."
 msgstr ""
 
-#: src/lyxrc.C:1882
+#: src/lyxrc.C:1932
 msgid "The latex command for changing back to the language of the document."
 msgstr ""
 
-#: src/lyxrc.C:1887
+#: src/lyxrc.C:1936
+msgid "The latex command for local changing of the language."
+msgstr ""
+
+#: src/lyxrc.C:1941
 #, no-c-format
 msgid ""
 "This accepts the normal strftime formats; see man strftime for full details. "
 "E.g.\"%A, %e. %B %Y\"."
 msgstr ""
 
-#: src/lyxrc.C:1891
+#: src/lyxrc.C:1945
 msgid "De-select if you don't want the startup banner."
 msgstr ""
 
-#: src/lyxrc.C:1895
+#: src/lyxrc.C:1949
 msgid "The wheel movement factor (for mice with wheels or five button mice)."
 msgstr ""
 
-#: src/lyxrc.C:1908
+#: src/lyxrc.C:1962
 msgid ""
 "This sets the behaviour if you want to be asked for a filename when creating "
 "a new document or wait until you save it and be asked then."
 msgstr ""
 
-#: src/lyxrc.C:1912
+#: src/lyxrc.C:1966
 msgid "New documents will be assigned this language."
 msgstr ""
 
-#: src/lyxrc.C:1916
+#: src/lyxrc.C:1970
 msgid "Maximum number of words in the initialization string for a new label"
 msgstr ""
 
@@ -8812,23 +8517,23 @@ msgstr " (deðiþtirildi)"
 msgid " (read only)"
 msgstr " (deðiþtirilemez)"
 
-#: src/mathed/formula.C:909 src/mathed/formula.C:1251
+#: src/mathed/formula.C:911 src/mathed/formula.C:1257
 msgid "TeX mode"
 msgstr "TeX kipi"
 
-#: src/mathed/formula.C:924
+#: src/mathed/formula.C:926
 msgid "No number"
 msgstr "Numarasýz"
 
-#: src/mathed/formula.C:927
+#: src/mathed/formula.C:929
 msgid "Number"
 msgstr "Numara"
 
-#: src/mathed/formula.C:1122
+#: src/mathed/formula.C:1128
 msgid "math text mode"
 msgstr "Matematik yazý kipi"
 
-#: src/mathed/formula.C:1131
+#: src/mathed/formula.C:1137
 msgid "Invalid action in math mode!"
 msgstr "Matematik kipi için geçersiz iþlem!"
 
@@ -9011,27 +8716,27 @@ msgstr "LyX|#L"
 msgid "Ascii|#s"
 msgstr "Ascii|#s"
 
-#: src/spellchecker.C:279
+#: src/spellchecker.C:286
 msgid "Spellchecker Options"
 msgstr "Yazým Denetleyici Seçenekleri"
 
-#: src/spellchecker.C:708
+#: src/spellchecker.C:717
 msgid "Spellchecker"
 msgstr "Yazým Denetleyici"
 
-#: src/spellchecker.C:954
+#: src/spellchecker.C:963
 msgid " words checked."
 msgstr " sözcük denetlendi."
 
-#: src/spellchecker.C:956
+#: src/spellchecker.C:965
 msgid " word checked."
 msgstr "sözcük denetlendi."
 
-#: src/spellchecker.C:958
+#: src/spellchecker.C:967
 msgid "Spellchecking completed!"
 msgstr "Yazým denetlenmesi tamamlandý!"
 
-#: src/spellchecker.C:962
+#: src/spellchecker.C:971
 #, fuzzy
 msgid ""
 "The spell checker has died for some reason.\n"
@@ -9168,16 +8873,16 @@ msgstr "Otomatik yedek dosyasý silinemedi!"
 msgid "unknown"
 msgstr "bilinmeyen"
 
-#: src/tabular.C:1693
+#: src/tabular.C:1705
 #, fuzzy
 msgid "Warning:"
 msgstr "Uyarý!"
 
-#: src/tabular.C:1694
+#: src/tabular.C:1706
 msgid "Tabular format < 5 is not supported anymore\n"
 msgstr ""
 
-#: src/tabular.C:1695
+#: src/tabular.C:1707
 msgid "Get an older version of LyX (< 1.1.x) for conversion!"
 msgstr ""
 
@@ -9209,7 +8914,7 @@ msgstr "Yarý tek-parçalarla çalýþamam."
 msgid "sorry."
 msgstr "üzgünüm."
 
-#: src/text.C:2000
+#: src/text.C:2003
 msgid ""
 "You cannot insert a space at the beginning of a paragraph.  Please read the "
 "Tutorial."
@@ -9217,30 +8922,135 @@ msgstr ""
 "Paragraf baþýna bir boþluk ekleyemezsiniz. Lütfen kullaným "
 "kýlavuzunabaþvurunuz."
 
-#: src/text.C:2002
+#: src/text.C:2005
 msgid "You cannot type two spaces this way.  Please read the Tutorial."
 msgstr "Ýki boþluðu bu þekilde yazamazsýnýz. Lütfen kullaným kýlavuzuna bakýn."
 
-#: src/text.C:3458 src/text.C:3464
+#: src/text.C:3462 src/text.C:3468
 #, fuzzy
 msgid "Page Break (top)"
 msgstr "Sayfa aralarý"
 
-#: src/text.C:3658 src/text.C:3664
+#: src/text.C:3662 src/text.C:3668
 msgid "Page Break (bottom)"
 msgstr ""
 
-#: src/text.C:3958
+#: src/text.C:3962
 msgid "You can't insert a float in a float!"
 msgstr "Tek-parça içine tek-parça eklenemez!"
 
-#: src/text.C:3966
+#: src/text.C:3970
 msgid "You can't insert a marginpar in a minipage!"
 msgstr "Bir sayfacýk içine bir marginpar eklenemez!"
 
-#: src/text.C:3993
+#: src/text.C:3997
 msgid "Float would include float!"
 msgstr "Tek-parça, tek-parça içermeli!"
+
+#, fuzzy
+#~ msgid "Acnowledgement"
+#~ msgstr "Hizalama"
+
+#, fuzzy
+#~ msgid "Axiom-numbered"
+#~ msgstr "Numarasýz"
+
+#, fuzzy
+#~ msgid "Current"
+#~ msgstr "Not:"
+
+#, fuzzy
+#~ msgid "Definition-numbered"
+#~ msgstr "Bölüm numaralandýrma derinliði"
+
+#, fuzzy
+#~ msgid "Example-plain"
+#~ msgstr "Örnekler"
+
+#, fuzzy
+#~ msgid "first"
+#~ msgstr "Inset"
+
+#, fuzzy
+#~ msgid "Idea"
+#~ msgstr "Dizin"
+
+#, fuzzy
+#~ msgid "journal"
+#~ msgstr "Normal"
+
+#, fuzzy
+#~ msgid "Lemma-unnumbered"
+#~ msgstr "LaTeX Önyazý"
+
+# , c-format
+#, fuzzy
+#~ msgid "modying"
+#~ msgstr "Dýþyazým%m%l"
+
+#, fuzzy
+#~ msgid "Notation-numbered"
+#~ msgstr "Numarasýz"
+
+#, fuzzy
+#~ msgid "Note-numbered"
+#~ msgstr "Numarasýz"
+
+#, fuzzy
+#~ msgid "Note-unnumbered"
+#~ msgstr "Numarasýz"
+
+#, fuzzy
+#~ msgid "Paragraph-numbered"
+#~ msgstr "Paragraf Ortamý"
+
+#, fuzzy
+#~ msgid "Parenthetical"
+#~ msgstr "Üstbelge:"
+
+#, fuzzy
+#~ msgid "Placefigure"
+#~ msgstr "Yeniden yapýlandýr"
+
+#, fuzzy
+#~ msgid "Section-numbered"
+#~ msgstr "Bölüm numaralandýrma derinliði"
+
+#, fuzzy
+#~ msgid "Send"
+#~ msgstr "Ýkincil"
+
+#, fuzzy
+#~ msgid "style"
+#~ msgstr "Tarz: "
+
+#, fuzzy
+#~ msgid "Style"
+#~ msgstr "Tarz: "
+
+#, fuzzy
+#~ msgid "Subitle"
+#~ msgstr "Tek|#S"
+
+#, fuzzy
+#~ msgid "Subsection-numbered"
+#~ msgstr "Bölüm numaralandýrma derinliði"
+
+#, fuzzy
+#~ msgid "Subsubsection-numbered"
+#~ msgstr "Bölüm numaralandýrma derinliði"
+
+#, fuzzy
+#~ msgid "Theorem-unnumbered"
+#~ msgstr "LaTeX Önyazý"
+
+#, fuzzy
+#~ msgid "Citation style|#s"
+#~ msgstr "Gönderme"
+
+#, fuzzy
+#~ msgid "Text before|#T"
+#~ msgstr "Metin kipi"
 
 #~ msgid "Text mode"
 #~ msgstr "Metin kipi"

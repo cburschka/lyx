@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.1.6\n"
-"POT-Creation-Date: 2001-07-10 15:47+0200\n"
+"POT-Creation-Date: 2001-07-24 15:15+0200\n"
 "PO-Revision-Date: 2001-07-10 17:40+01:00\n"
 "Last-Translator: Peter Sütterlin <P.Suetterlin@astro.uu.nl>\n"
 "Language-Team: German <de@li.org>\n"
@@ -13,127 +13,155 @@ msgstr ""
 "Content-Type: text/plain; charset=iso-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/buffer.C:513
-msgid "Textclass error"
-msgstr "Fehler Textklasse"
+#: src/buffer.C:321
+msgid "Couldn't set the layout for "
+msgstr ""
 
-#: src/buffer.C:514
-msgid "The document uses an unknown textclass \""
-msgstr "Das Dokument verwendet die unbekannte Textklasse \""
+#: src/buffer.C:323
+#, fuzzy
+msgid "one paragraph"
+msgstr "Einen Absatz zurück"
 
-#: src/buffer.C:516
-msgid "LyX will not be able to produce output correctly."
-msgstr "LyX kann keine korrekte Ausgabe erzeugen."
+#: src/buffer.C:326
+#, fuzzy
+msgid " paragraphs"
+msgstr "als Absätze|A"
 
 #. if the textclass wasn't loaded properly
 #. we need to either substitute another
 #. or stop loading the file.
 #. I can substitute but I don't see how I can
 #. stop loading... ideas??  ARRae980418
-#: src/buffer.C:525
+#: src/buffer.C:328 src/buffer.C:545
 msgid "Textclass Loading Error!"
 msgstr "Fehler beim Laden der Textklasse!"
 
-#: src/buffer.C:526
+#: src/buffer.C:329
+#, fuzzy
+msgid "When reading "
+msgstr "Fehler beim Lesen von "
+
+#: src/CutAndPaste.C:447 src/buffer.C:383
+msgid "Layout had to be changed from\n"
+msgstr "Das Layout mußte von\n"
+
+#: src/CutAndPaste.C:448 src/CutAndPaste.C:451 src/buffer.C:384
+#: src/converter.C:554
+msgid " to "
+msgstr " umzuwandeln in "
+
+#: src/buffer.C:533
+msgid "Textclass error"
+msgstr "Fehler Textklasse"
+
+#: src/buffer.C:534
+msgid "The document uses an unknown textclass \""
+msgstr "Das Dokument verwendet die unbekannte Textklasse \""
+
+#: src/buffer.C:536
+msgid "LyX will not be able to produce output correctly."
+msgstr "LyX kann keine korrekte Ausgabe erzeugen."
+
+#: src/buffer.C:546
 msgid "Can't load textclass "
 msgstr "Kann Textklasse nicht laden: "
 
-#: src/buffer.C:528
+#: src/buffer.C:548
 msgid "-- substituting default"
 msgstr "-- verwende stattdessen Standard"
 
-#: src/buffer.C:1085
+#: src/buffer.C:1105
 #, c-format
 msgid "Warning: need lyxformat %.2f but found %.2f"
 msgstr "Achtung: Benötige LyX-Format %.2f, die gewählte Datei enthält %.2f"
 
-#: src/buffer.C:1089
+#: src/buffer.C:1109
 #, c-format
 msgid "ERROR: need lyxformat %.2f but found %.2f"
 msgstr "FEHLER: Benötige LyX-Format %.2f, die gewählte Datei enthält %.2f"
 
 #. future format
-#: src/buffer.C:1100 src/buffer.C:1127 src/buffer.C:1147
+#: src/buffer.C:1120 src/buffer.C:1147 src/buffer.C:1167
 msgid "Warning!"
 msgstr "Achtung!"
 
-#: src/buffer.C:1101 src/buffer.C:1148
+#: src/buffer.C:1121 src/buffer.C:1168
 msgid "Reading of document is not complete"
 msgstr "Das Dokument wurde nicht vollständig eingelesen"
 
-#: src/buffer.C:1102 src/buffer.C:1149
+#: src/buffer.C:1122 src/buffer.C:1169
 msgid "Maybe the document is truncated"
 msgstr "Möglicherweise ist die Datei beschädigt"
 
 #. "\\lyxformat" not found
-#: src/buffer.C:1108 src/buffer.C:1134 src/buffer.C:1153 src/buffer.C:1156
+#: src/buffer.C:1128 src/buffer.C:1154 src/buffer.C:1173 src/buffer.C:1176
 msgid "ERROR!"
 msgstr "FEHLER!"
 
-#: src/buffer.C:1109 src/buffer.C:1135
+#: src/buffer.C:1129 src/buffer.C:1155
 msgid "Old LyX file format found. Use LyX 0.10.x to read this!"
 msgstr ""
 "Altes LyX-Dateiformat. Bitte benutzen Sie LyX 0.10.x, um diese Datei zu "
 "lesen!"
 
-#: src/buffer.C:1128
+#: src/buffer.C:1148
 msgid "LyX file format is newer that what"
 msgstr "Das LyX Format der Datei ist neuer als von dieser"
 
-#: src/buffer.C:1129
+#: src/buffer.C:1149
 msgid "is supported in this LyX version. Expect some problems."
 msgstr "Version unterstützt wird.  Rechnen sie mit Problemen"
 
-#: src/buffer.C:1153
+#: src/buffer.C:1173
 msgid "Not a LyX file!"
 msgstr "Dies ist keine LyX-Datei!"
 
-#: src/buffer.C:1156
+#: src/buffer.C:1176
 msgid "Unable to read file!"
 msgstr "Die Datei kann nicht gelesen werden!"
 
-#: src/buffer.C:1250 src/buffer.C:1253
+#: src/buffer.C:1270 src/buffer.C:1273
 msgid "Error! Document is read-only: "
 msgstr "Fehler! Das Dokument ist schreibgeschützt: "
 
-#: src/buffer.C:1263 src/buffer.C:1266
+#: src/buffer.C:1283 src/buffer.C:1286
 msgid "Error! Cannot write file: "
 msgstr "Fehler! Die Datei kann nicht geschrieben werden: "
 
-#: src/buffer.C:1274 src/buffer.C:1277
+#: src/buffer.C:1294 src/buffer.C:1297
 msgid "Error! Cannot open file: "
 msgstr "Fehler! Die Datei kann nicht geöffnet werden: "
 
-#: src/buffer.C:1573
+#: src/buffer.C:1593
 msgid "Error: Cannot write file:"
 msgstr "Fehler! Die Datei kann nicht geschrieben werden werden: "
 
-#: src/buffer.C:1607
+#: src/buffer.C:1627
 msgid "Error: Cannot open file: "
 msgstr "Fehler! Die Datei kann nicht geöffnet werden: "
 
-#: src/buffer.C:2243 src/buffer.C:2892
+#: src/buffer.C:2263 src/buffer.C:2912
 msgid "LYX_ERROR:"
 msgstr "LYX_FEHLER:"
 
-#: src/buffer.C:2243 src/buffer.C:2892
+#: src/buffer.C:2263 src/buffer.C:2912
 msgid "Cannot write file"
 msgstr "Die Datei kann nicht geschrieben werden"
 
-#: src/buffer.C:2330 src/buffer.C:2976
+#: src/buffer.C:2350 src/buffer.C:2996
 msgid "Error : Wrong depth for LatexType Command.\n"
 msgstr "Fehler: Falsche Umgebungstiefe für den Befehl LatexType.\n"
 
 #. path to LaTeX file
-#: src/buffer.C:3297
+#: src/buffer.C:3317
 msgid "Running chktex..."
 msgstr "ChkTeX wird ausgeführt..."
 
-#: src/buffer.C:3310
+#: src/buffer.C:3330
 msgid "chktex did not work!"
 msgstr "ChkTeX war nicht erfolgreich!"
 
-#: src/buffer.C:3311
+#: src/buffer.C:3331
 msgid "Could not run with file:"
 msgstr "Fehler bei der Ausführung mit der Datei: "
 
@@ -424,10 +452,6 @@ msgstr "Die Datei kann nicht umgewandelt werden"
 msgid "No information for converting from "
 msgstr "Keine Angaben vorhanden, um das Format "
 
-#: src/CutAndPaste.C:448 src/CutAndPaste.C:451 src/converter.C:554
-msgid " to "
-msgstr " umzuwandeln in "
-
 #: src/converter.C:642
 msgid "There were errors during the Build process."
 msgstr "Es sind Fehler beim Build-Lauf aufgetreten."
@@ -528,10 +552,6 @@ msgstr "Matthias"
 #: src/credits_form.C:29
 msgid "All these people have contributed to the LyX project. Thanks,"
 msgstr "All diese Menschen haben zum LyX-Projekt beigetragen. Danke,"
-
-#: src/CutAndPaste.C:447
-msgid "Layout had to be changed from\n"
-msgstr "Das Layout mußte von\n"
 
 #: src/CutAndPaste.C:450
 msgid ""
@@ -7818,16 +7838,16 @@ msgid ""
 "De-select if you don't want the language(s) used as an argument to "
 "\\documentclass."
 msgstr ""
-"Deselektieren Sie diese Auswahl, wenn die Sprachen nicht als Argument "
-"für \\documentclass verwendet werden sollen."
+"Deselektieren Sie diese Auswahl, wenn die Sprachen nicht als Argument für "
+"\\documentclass verwendet werden sollen."
 
 #: src/lyxrc.C:1916
 msgid ""
 "De-select if you don't want babel to be used when the language of the "
 "document is the default language."
-msgstr "Deaktivieren Sie diese Auswahl wenn sie nicht wollen daß das Paket "
-"Babel verwendet wird, wenn die Sprache des Dokumentes die Standard-Sprache "
-"ist."
+msgstr ""
+"Deaktivieren Sie diese Auswahl wenn sie nicht wollen daß das Paket Babel "
+"verwendet wird, wenn die Sprache des Dokumentes die Standard-Sprache ist."
 
 #: src/lyxrc.C:1920
 msgid ""
@@ -7861,8 +7881,7 @@ msgstr ""
 
 #: src/lyxrc.C:1936
 msgid "The latex command for local changing of the language."
-msgstr ""
-"Der LaTeX-Befehl, um lokal di Sprache des Dokumentes zu wechseln."
+msgstr "Der LaTeX-Befehl, um lokal di Sprache des Dokumentes zu wechseln."
 
 #: src/lyxrc.C:1941
 #, no-c-format
