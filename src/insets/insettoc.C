@@ -13,6 +13,7 @@
 #include "buffer.h"
 
 using std::ostream;
+using std::vector;
 using std::endl;
 
 string const InsetTOC::getScreenLabel() const 
