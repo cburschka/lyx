@@ -91,11 +91,6 @@ public:
 	void read();
 
 	///
-	Paragraph * TeXOnePar(Buffer const *, BufferParams const &,
-				 std::ostream &, TexRow & texrow,
-				 bool moving_arg);
-
-	///
 	int startTeXParParams(BufferParams const &, std::ostream &, bool) const;
 
 	///
@@ -106,9 +101,6 @@ public:
 	bool simpleTeXOnePar(Buffer const *, BufferParams const &,
 			     std::ostream &, TexRow & texrow, bool moving_arg);
 
-	///
-	Paragraph * TeXEnvironment(Buffer const *, BufferParams const &,
-				      std::ostream &, TexRow & texrow);
 	///
 	bool hasSameLayout(Paragraph const * par) const;
 
@@ -164,34 +156,34 @@ public:
 
 	/// initialise tracking for this par
 	void trackChanges(Change::Type = Change::UNCHANGED);
- 
+
 	/// stop tracking
 	void untrackChanges();
- 
+
 	/// set entire paragraph to new text for change tracking
 	void cleanChanges();
- 
+
 	/// look up change type at given pos
 	Change::Type lookupChange(lyx::pos_type pos) const;
- 
+
 	/// look up change at given pos
 	Change const lookupChangeFull(lyx::pos_type pos) const;
- 
+
 	/// is there a change within the given range ?
 	bool isChanged(lyx::pos_type start, lyx::pos_type end) const;
 
 	/// is there a non-addition in this range ?
 	bool isChangeEdited(lyx::pos_type start, lyx::pos_type end) const;
- 
+
 	/// accept change
 	void acceptChange(lyx::pos_type start, lyx::pos_type end);
 
 	/// reject change
 	void rejectChange(lyx::pos_type start, lyx::pos_type end);
- 
+
 	/// mark whole par as erased
 	void markErased();
- 
+
 	///
 	void previous(Paragraph *);
 	///
@@ -224,12 +216,12 @@ public:
 	depth_type getMaxDepthAfter() const;
 	///
 	void applyLayout(LyXLayout_ptr const & new_layout);
- 
+
 	/// erase the char at the given position
 	void erase(lyx::pos_type pos);
 	/// erase the given range. Returns true if actually erased.
 	bool erase(lyx::pos_type start, lyx::pos_type end);
- 
+
 	/** Get uninstantiated font setting. Returns the difference
 	    between the characters font and the layoutfont.
 	    This is what is stored in the fonttable
@@ -323,8 +315,8 @@ public:
 	//Counters & counters();
 
 	friend void breakParagraph(BufferParams const & bparams,
-                    Paragraph * par, lyx::pos_type pos, int flag);
- 
+		    Paragraph * par, lyx::pos_type pos, int flag);
+
 private:
 	///
 	LyXLayout_ptr layout_;
@@ -343,16 +335,16 @@ private:
 	Pimpl * pimpl_;
 };
 
- 
+
 inline bool isInsertedText(Paragraph const & par, lyx::pos_type pos)
 {
 	return par.lookupChange(pos) == Change::INSERTED;
 }
- 
- 
+
+
 inline bool isDeletedText(Paragraph const & par, lyx::pos_type pos)
 {
 	return par.lookupChange(pos) == Change::DELETED;
 }
- 
+
 #endif // PARAGRAPH_H

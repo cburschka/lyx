@@ -79,7 +79,7 @@ Paragraph::Pimpl::Pimpl(Pimpl const & p, Paragraph * owner, bool same_ids)
 void Paragraph::Pimpl::clear()
 {
 	text.clear();
-#warning changes ? 
+#warning changes ?
 }
 
 
@@ -99,20 +99,20 @@ void Paragraph::Pimpl::trackChanges(Change::Type type)
 		lyxerr[Debug::CHANGES] << "already tracking for par " << id_ << endl;
 		return;
 	}
- 
+
 	lyxerr[Debug::CHANGES] << "track changes for par "
 		<< id_ << " type " << type << endl;
 	changes_.reset(new Changes(type));
 	changes_->set(type, 0, size());
 }
 
- 
+
 void Paragraph::Pimpl::untrackChanges()
 {
 	changes_.reset(0);
 }
 
- 
+
 void Paragraph::Pimpl::cleanChanges()
 {
 	// if we're not tracking, we don't want to reset...
@@ -123,7 +123,7 @@ void Paragraph::Pimpl::cleanChanges()
 	changes_->set(Change::INSERTED, 0, size());
 }
 
- 
+
 bool Paragraph::Pimpl::isChanged(pos_type start, pos_type end) const
 {
 	if (!tracking())
@@ -141,7 +141,7 @@ bool Paragraph::Pimpl::isChangeEdited(pos_type start, pos_type end) const
 	return changes_->isChangeEdited(start, end);
 }
 
- 
+
 void Paragraph::Pimpl::setChange(pos_type pos, Change::Type type)
 {
 	if (!tracking())
@@ -150,7 +150,7 @@ void Paragraph::Pimpl::setChange(pos_type pos, Change::Type type)
 	changes_->set(type, pos);
 }
 
- 
+
 Change::Type Paragraph::Pimpl::lookupChange(pos_type pos) const
 {
 	if (!tracking())
@@ -158,7 +158,7 @@ Change::Type Paragraph::Pimpl::lookupChange(pos_type pos) const
 
 	return changes_->lookup(pos);
 }
- 
+
 
 Change const Paragraph::Pimpl::lookupChangeFull(pos_type pos) const
 {
@@ -167,8 +167,8 @@ Change const Paragraph::Pimpl::lookupChangeFull(pos_type pos) const
 
 	return changes_->lookupFull(pos);
 }
- 
- 
+
+
 void Paragraph::Pimpl::markErased()
 {
 	lyx::Assert(tracking());
@@ -180,18 +180,18 @@ void Paragraph::Pimpl::markErased()
 	changes_->reset(Change::DELETED);
 }
 
- 
+
 void Paragraph::Pimpl::acceptChange(pos_type start, pos_type end)
 {
 	if (!tracking())
 		return;
- 
+
 	if (!size()) {
 		changes_.reset(new Changes(Change::UNCHANGED));
 		return;
 	}
- 
-	lyxerr << "acceptchange" << endl; 
+
+	lyxerr << "acceptchange" << endl;
 	pos_type i = start;
 
 	for (; i < end; ++i) {
@@ -212,7 +212,7 @@ void Paragraph::Pimpl::acceptChange(pos_type start, pos_type end)
 		}
 	}
 
-	lyxerr << "endacceptchange" << endl; 
+	lyxerr << "endacceptchange" << endl;
 	changes_->reset(Change::UNCHANGED);
 }
 
@@ -221,12 +221,12 @@ void Paragraph::Pimpl::rejectChange(pos_type start, pos_type end)
 {
 	if (!tracking())
 		return;
- 
+
 	if (!size()) {
 		changes_.reset(new Changes(Change::UNCHANGED));
 		return;
 	}
- 
+
 	pos_type i = start;
 
 	for (; i < end; ++i) {
@@ -249,7 +249,7 @@ void Paragraph::Pimpl::rejectChange(pos_type start, pos_type end)
 	changes_->reset(Change::UNCHANGED);
 }
 
- 
+
 Paragraph::value_type Paragraph::Pimpl::getChar(pos_type pos) const
 {
 	// This is in the critical path for loading!
@@ -339,7 +339,7 @@ bool Paragraph::Pimpl::erasePos(pos_type pos)
 
 		// only allow the actual removal if it was /new/ text
 		if (changetype != Change::INSERTED) {
-			if (text[pos] == Paragraph::META_INSET) { 
+			if (text[pos] == Paragraph::META_INSET) {
 				Inset * i(owner_->getInset(pos));
 				i->markErased();
 			}
@@ -351,7 +351,7 @@ bool Paragraph::Pimpl::erasePos(pos_type pos)
 	return true;
 }
 
- 
+
 void Paragraph::Pimpl::eraseIntern(pos_type pos)
 {
 	// if it is an inset, delete the inset entry
@@ -401,7 +401,7 @@ void Paragraph::Pimpl::erase(pos_type pos)
 	erasePos(pos);
 }
 
- 
+
 bool Paragraph::Pimpl::erase(pos_type start, pos_type end)
 {
 	pos_type i = start;
@@ -413,13 +413,13 @@ bool Paragraph::Pimpl::erase(pos_type start, pos_type end)
 			++i;
 		} else {
 			any_erased = true;
-		} 
+		}
 		--count;
 	}
 	return any_erased;
 }
 
- 
+
 void Paragraph::Pimpl::simpleTeXBlanks(ostream & os, TexRow & texrow,
 				       pos_type const i,
 				       unsigned int & column,
@@ -480,7 +480,7 @@ bool Paragraph::Pimpl::isTextAt(string const & str, pos_type pos) const
 	return true;
 }
 
- 
+
 void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const * buf,
 					     BufferParams const & bparams,
 					     ostream & os,
@@ -510,13 +510,13 @@ void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const * buf,
 		// FIXME: remove this check
 		if (!inset)
 			break;
- 
+
 		if (inset->isTextInset()) {
 			column += Changes::latexMarkChange(os, running_change,
 				Change::UNCHANGED);
 			running_change = Change::UNCHANGED;
 		}
- 
+
 		bool close = false;
 		int const len = os.tellp();
 		//ostream::pos_type const len = os.tellp();
@@ -739,29 +739,6 @@ void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const * buf,
 			break;
 		}
 	}
-}
-
-
-
-Paragraph * Paragraph::Pimpl::TeXDeeper(Buffer const * buf,
-					BufferParams const & bparams,
-					ostream & os, TexRow & texrow)
-{
-	lyxerr[Debug::LATEX] << "TeXDeeper...     " << this << endl;
-	Paragraph * par = owner_;
-
-	while (par && par->params().depth() == owner_->params().depth()) {
-		if (par->layout()->isEnvironment()) {
-			par = par->TeXEnvironment(buf, bparams,
-						  os, texrow);
-		} else {
-			par = par->TeXOnePar(buf, bparams,
-					     os, texrow, false);
-		}
-	}
-	lyxerr[Debug::LATEX] << "TeXDeeper...done " << par << endl;
-
-	return par;
 }
 
 

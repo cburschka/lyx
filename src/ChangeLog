@@ -1,5 +1,13 @@
 2003-03-03  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
+	* buffer.C (latexParagraphs): adjust
+
+	* paragraph.C (TeXOnePar): move function...
+	(optArgInset): move function...
+	(TeXEnvironment): move function...
+	* paragraph_pimpl.C (TeXDeeper): move function...
+	* paragraph_funcs.C: ...here
+
 	* tabular.C (UseParbox): rewrite to use ParagraphList iterators.
 
 2003-03-02  Lars Gullik Bjønnes  <larsbj@gullik.net>

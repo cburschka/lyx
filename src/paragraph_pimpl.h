@@ -14,7 +14,7 @@
 #include "counters.h"
 
 #include <boost/scoped_ptr.hpp>
- 
+
 class LyXLayout;
 
 struct Paragraph::Pimpl {
@@ -51,24 +51,24 @@ struct Paragraph::Pimpl {
 	bool isChanged(lyx::pos_type start, lyx::pos_type end) const;
 	/// is there a non-addition in this range ?
 	bool isChangeEdited(lyx::pos_type start, lyx::pos_type end) const;
- 
+
 	/// set change at pos
 	void setChange(lyx::pos_type pos, Change::Type type);
- 
+
 	/// mark as erased
 	void markErased();
- 
+
 	/// accept change
 	void acceptChange(lyx::pos_type start, lyx::pos_type end);
 
 	/// reject change
 	void rejectChange(lyx::pos_type start, lyx::pos_type end);
- 
+
 	/// are we tracking changes ?
 	bool tracking() const {
 		return changes_.get();
 	}
- 
+
 	///
 	value_type getChar(lyx::pos_type pos) const;
 	///
@@ -148,9 +148,6 @@ struct Paragraph::Pimpl {
 	FontList fontlist;
 
 	///
-	Paragraph * TeXDeeper(Buffer const *, BufferParams const &,
-				 std::ostream &, TexRow & texrow);
-	///
 	void simpleTeXBlanks(std::ostream &, TexRow & texrow,
 			     lyx::pos_type const i,
 			     unsigned int & column,
@@ -187,7 +184,7 @@ private:
 
 	/// for recording and looking up changes in revision tracking mode
 	boost::scoped_ptr<Changes> changes_;
- 
+
 	/// Who owns us?
 	Paragraph * owner_;
 	///

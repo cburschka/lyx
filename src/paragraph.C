@@ -50,10 +50,6 @@ using std::upper_bound;
 
 using lyx::pos_type;
 
-// this is a bad idea, but how can Paragraph find its buffer to get
-// parameters? (JMarc)
-
-extern string bibitemWidest(Buffer const *);
 
 // this is a minibuffer
 
@@ -225,7 +221,7 @@ void Paragraph::write(Buffer const * buf, ostream & os,
 
 	Change running_change = Change(Change::UNCHANGED);
 	lyx::time_type const curtime(lyx::current_time());
- 
+
 	int column = 0;
 	for (pos_type i = 0; i < size(); ++i) {
 		if (!i) {
@@ -236,7 +232,7 @@ void Paragraph::write(Buffer const * buf, ostream & os,
 		Change change = pimpl_->lookupChangeFull(i);
 		Changes::lyxMarkChange(os, column, curtime, running_change, change);
 		running_change = change;
- 
+
 		// Write font changes
 		LyXFont font2 = getFontSettings(bparams, i);
 		if (font2 != font1) {
@@ -308,7 +304,7 @@ void Paragraph::write(Buffer const * buf, ostream & os,
 			Change(Change::UNCHANGED), running_change);
 	}
 	Changes::lyxMarkChange(os, column, curtime,
-		running_change, Change(Change::UNCHANGED)); 
+		running_change, Change(Change::UNCHANGED));
 }
 
 
@@ -391,7 +387,7 @@ bool Paragraph::erase(pos_type start, pos_type end)
 	return pimpl_->erase(start, end);
 }
 
- 
+
 bool Paragraph::checkInsertChar(LyXFont & font)
 {
 	if (pimpl_->inset_owner)
@@ -936,7 +932,7 @@ int Paragraph::getPositionOfInset(Inset const * inset) const
 	InsetList::iterator it = insetlist.begin();
 	InsetList::iterator end = insetlist.end();
 	for (; it != end; ++it)
-		if (it.getInset() == inset) 
+		if (it.getInset() == inset)
 			return it.getPos();
 	return -1;
 }
@@ -946,254 +942,10 @@ InsetBibitem * Paragraph::bibitem()
 {
 	InsetList::iterator it = insetlist.begin();
 	if (it != insetlist.end() && it.getInset()->lyxCode() == Inset::BIBTEX_CODE)
-		return static_cast<InsetBibitem *>(it.getInset()); 
+		return static_cast<InsetBibitem *>(it.getInset());
 	return 0;
 }
 
-namespace {
-
-InsetOptArg * optArgInset(Paragraph const & par)
-{
-	// Find the entry.
-	InsetList::iterator it = par.insetlist.begin();
-	InsetList::iterator end = par.insetlist.end();
-	for (; it != end; ++it) {
-		Inset * ins = it.getInset();
-		if (ins->lyxCode() == Inset::OPTARG_CODE) {
-			return static_cast<InsetOptArg *>(ins);
-		}
-	}
-	return 0;
-}
-
-} // end namespace
-
-Paragraph * Paragraph::TeXOnePar(Buffer const * buf,
-				 BufferParams const & bparams,
-				 ostream & os, TexRow & texrow,
-				 bool moving_arg)
-{
-	lyxerr[Debug::LATEX] << "TeXOnePar...     " << this << endl;
-	Inset const * in = inInset();
-	bool further_blank_line = false;
-	LyXLayout_ptr style;
-
-	// well we have to check if we are in an inset with unlimited
-	// lenght (all in one row) if that is true then we don't allow
-	// any special options in the paragraph and also we don't allow
-	// any environment other then "Standard" to be valid!
-	if ((in == 0) || !in->forceDefaultParagraphs(in)) {
-		style = layout();
-
-		if (params().startOfAppendix()) {
-			os << "\\appendix\n";
-			texrow.newline();
-		}
-
-		if (!params().spacing().isDefault()
-			&& (!previous() || !previous()->hasSameLayout(this))) {
-			os << params().spacing().writeEnvirBegin() << '\n';
-			texrow.newline();
-		}
-
-		if (style->isCommand()) {
-			os << '\n';
-			texrow.newline();
-		}
-
-		if (params().pagebreakTop()) {
-			os << "\\newpage";
-			further_blank_line = true;
-		}
-		if (params().spaceTop().kind() != VSpace::NONE) {
-			os << params().spaceTop().asLatexCommand(bparams);
-			further_blank_line = true;
-		}
-
-		if (params().lineTop()) {
-			os << "\\lyxline{\\" << getFont(bparams, 0).latexSize() << '}'
-			   << "\\vspace{-1\\parskip}";
-			further_blank_line = true;
-		}
-
-		if (further_blank_line) {
-			os << '\n';
-			texrow.newline();
-		}
-	} else {
-		style = bparams.getLyXTextClass().defaultLayout();
-	}
-
-	Language const * language = getParLanguage(bparams);
-	Language const * doc_language = bparams.language;
-	Language const * previous_language = previous()
-		? previous()->getParLanguage(bparams) : doc_language;
-
-	if (language->babel() != previous_language->babel()
-	    // check if we already put language command in TeXEnvironment()
-	    && !(style->isEnvironment()
-		 && (!previous() ||
-		     (previous()->layout() != layout() &&
-		      previous()->getDepth() <= getDepth())
-		     || previous()->getDepth() < getDepth())))
-	{
-		if (!lyxrc.language_command_end.empty() &&
-		    previous_language->babel() != doc_language->babel())
-		{
-			os << subst(lyxrc.language_command_end, "$$lang",
-				    previous_language->babel())
-			   << endl;
-			texrow.newline();
-		}
-
-		if (lyxrc.language_command_end.empty() ||
-		    language->babel() != doc_language->babel())
-		{
-			os << subst(lyxrc.language_command_begin, "$$lang",
-				    language->babel())
-			   << endl;
-			texrow.newline();
-		}
-	}
-
-	if (bparams.inputenc == "auto" &&
-	    language->encoding() != previous_language->encoding()) {
-		os << "\\inputencoding{"
-		   << language->encoding()->LatexName()
-		   << "}\n";
-		texrow.newline();
-	}
-
-	switch (style->latextype) {
-	case LATEX_COMMAND:
-		os << '\\' << style->latexname();
-
-		// Separate handling of optional argument inset.
-		if (style->optionalargs == 1) {
-			InsetOptArg * it = optArgInset(*this);
-			if (it)
-				it->latexOptional(buf, os, false, false);
-		}
-		else
-			os << style->latexparam();
-		break;
-	case LATEX_ITEM_ENVIRONMENT:
-	case LATEX_LIST_ENVIRONMENT:
-		os << "\\item ";
-		break;
-	case LATEX_BIB_ENVIRONMENT:
-		// ignore this, the inset will write itself
-		break;
-	default:
-		break;
-	}
-
-	bool need_par = simpleTeXOnePar(buf, bparams, os, texrow, moving_arg);
-
-	// Make sure that \\par is done with the font of the last
-	// character if this has another size as the default.
-	// This is necessary because LaTeX (and LyX on the screen)
-	// calculates the space between the baselines according
-	// to this font. (Matthias)
-	//
-	// Is this really needed ? (Dekel)
-	// We do not need to use to change the font for the last paragraph
-	// or for a command.
-	LyXFont const font =
-		(empty()
-		 ? getLayoutFont(bparams) : getFont(bparams, size() - 1));
-
-	bool is_command = style->isCommand();
-
-	if (style->resfont.size() != font.size() && next_ && !is_command) {
-		if (!need_par)
-			os << '{';
-		os << "\\" << font.latexSize() << " \\par}";
-	} else if (need_par) {
-		os << "\\par}";
-	} else if (is_command)
-		os << '}';
-
-	switch (style->latextype) {
-	case LATEX_ITEM_ENVIRONMENT:
-	case LATEX_LIST_ENVIRONMENT:
-		if (next_ && (params().depth() < next_->params().depth())) {
-			os << '\n';
-			texrow.newline();
-		}
-		break;
-	case LATEX_ENVIRONMENT:
-		// if its the last paragraph of the current environment
-		// skip it otherwise fall through
-		if (next_
-		    && (next_->layout() != layout()
-			|| next_->params().depth() != params().depth()))
-			break;
-		// fall through possible
-	default:
-		// we don't need it for the last paragraph!!!
-		if (next_) {
-			os << '\n';
-			texrow.newline();
-		}
-	}
-
-	if ((in == 0) || !in->forceDefaultParagraphs(in)) {
-		further_blank_line = false;
-		if (params().lineBottom()) {
-			os << "\\lyxline{\\" << font.latexSize() << '}';
-			further_blank_line = true;
-		}
-
-		if (params().spaceBottom().kind() != VSpace::NONE) {
-			os << params().spaceBottom().asLatexCommand(bparams);
-			further_blank_line = true;
-		}
-
-		if (params().pagebreakBottom()) {
-			os << "\\newpage";
-			further_blank_line = true;
-		}
-
-		if (further_blank_line) {
-			os << '\n';
-			texrow.newline();
-		}
-
-		if (!params().spacing().isDefault()
-			&& (!next_ || !next_->hasSameLayout(this))) {
-			os << params().spacing().writeEnvirEnd() << '\n';
-			texrow.newline();
-		}
-	}
-
-	// we don't need it for the last paragraph!!!
-	if (next_) {
-		os << '\n';
-		texrow.newline();
-	} else {
-		// Since \selectlanguage write the language to the aux file,
-		// we need to reset the language at the end of footnote or
-		// float.
-
-		if (language->babel() != doc_language->babel()) {
-			if (lyxrc.language_command_end.empty())
-				os << subst(lyxrc.language_command_begin,
-					    "$$lang",
-					    doc_language->babel())
-				   << endl;
-			else
-				os << subst(lyxrc.language_command_end,
-					    "$$lang",
-					    language->babel())
-				   << endl;
-			texrow.newline();
-		}
-	}
-
-	lyxerr[Debug::LATEX] << "TeXOnePar...done " << next_ << endl;
-	return next_;
-}
 
 
 // This could go to ParagraphParameters if we want to
@@ -1368,7 +1120,7 @@ bool Paragraph::simpleTeXOnePar(Buffer const * buf,
 	bool open_font = false;
 
 	Change::Type running_change = Change::UNCHANGED;
- 
+
 	texrow.start(this, 0);
 
 	// if the paragraph is empty, the loop will not be entered at all
@@ -1455,12 +1207,12 @@ bool Paragraph::simpleTeXOnePar(Buffer const * buf,
 			running_font = font;
 			open_font = true;
 		}
- 
+
 		Change::Type change = pimpl_->lookupChange(i);
- 
+
 		column += Changes::latexMarkChange(os, running_change, change);
 		running_change = change;
- 
+
 		if (c == Paragraph::META_NEWLINE) {
 			// newlines are handled differently here than
 			// the default in SimpleTeXSpecialChars().
@@ -1497,7 +1249,7 @@ bool Paragraph::simpleTeXOnePar(Buffer const * buf,
 
 	column += Changes::latexMarkChange(os,
 			running_change, Change::UNCHANGED);
- 
+
 	// If we have an open font definition, we have to close it
 	if (open_font) {
 #ifdef FIXED_LANGUAGE_END_DETECTION
@@ -1535,106 +1287,6 @@ bool Paragraph::simpleTeXOnePar(Buffer const * buf,
 }
 
 
-Paragraph * Paragraph::TeXEnvironment(Buffer const * buf,
-					    BufferParams const & bparams,
-					    ostream & os, TexRow & texrow)
-{
-	lyxerr[Debug::LATEX] << "TeXEnvironment...     " << this << endl;
-
-	LyXLayout_ptr const & style = layout();
-
-	Language const * language = getParLanguage(bparams);
-	Language const * doc_language = bparams.language;
-	Language const * previous_language = previous_
-		? previous_->getParLanguage(bparams) : doc_language;
-	if (language->babel() != previous_language->babel()) {
-
-		if (!lyxrc.language_command_end.empty() &&
-		    previous_language->babel() != doc_language->babel()) {
-			os << subst(lyxrc.language_command_end, "$$lang",
-				    previous_language->babel())
-			   << endl;
-			texrow.newline();
-		}
-
-		if (lyxrc.language_command_end.empty() ||
-		    language->babel() != doc_language->babel()) {
-			os << subst(lyxrc.language_command_begin, "$$lang",
-				    language->babel())
-			   << endl;
-			texrow.newline();
-		}
-	}
-
-	bool leftindent_open = false;
-	if (!params().leftIndent().zero()) {
-		os << "\\begin{LyXParagraphLeftIndent}{" <<
-			params().leftIndent().asLatexString() << "}\n";
-		texrow.newline();
-		leftindent_open = true;
-	}
-
-	if (style->isEnvironment()) {
-		if (style->latextype == LATEX_LIST_ENVIRONMENT) {
-			os << "\\begin{" << style->latexname() << "}{"
-			   << params().labelWidthString() << "}\n";
-		} else if (style->labeltype == LABEL_BIBLIO) {
-			// ale970405
-			os << "\\begin{" << style->latexname() << "}{"
-			   <<  bibitemWidest(buf)
-			   << "}\n";
-		} else if (style->latextype == LATEX_ITEM_ENVIRONMENT) {
-			os << "\\begin{" << style->latexname() << '}'
-			   << style->latexparam() << '\n';
-		} else
-			os << "\\begin{" << style->latexname() << '}'
-			   << style->latexparam() << '\n';
-		texrow.newline();
-	}
-	Paragraph * par = this;
-	do {
-		par = par->TeXOnePar(buf, bparams, os, texrow, false);
-
-		if (par && par->params().depth() > params().depth()) {
-			    if (par->layout()->isParagraph()) {
-
-			    // Thinko!
-			    // How to handle this? (Lgb)
-			    //&& !suffixIs(os, "\n\n")
-				    //) {
-				// There should be at least one '\n' already
-				// but we need there to be two for Standard
-				// paragraphs that are depth-increment'ed to be
-				// output correctly.  However, tables can
-				// also be paragraphs so don't adjust them.
-				// ARRae
-				// Thinkee:
-				// Will it ever harm to have one '\n' too
-				// many? i.e. that we sometimes will have
-				// three in a row. (Lgb)
-				os << '\n';
-				texrow.newline();
-			}
-			par = par->pimpl_->TeXDeeper(buf, bparams, os, texrow);
-		}
-	} while (par
-		 && par->layout() == layout()
-		 && par->params().depth() == params().depth()
-		 && par->params().leftIndent() == params().leftIndent());
-
-	if (style->isEnvironment()) {
-		os << "\\end{" << style->latexname() << "}\n";
-		texrow.newline();
-	}
-
-	if (leftindent_open) {
-		os << "\\end{LyXParagraphLeftIndent}\n";
-		texrow.newline();
-	}
-
-	lyxerr[Debug::LATEX] << "TeXEnvironment...done " << par << endl;
-	return par;  // ale970302
-}
 
 
 bool Paragraph::isHfill(pos_type pos) const
@@ -1831,7 +1483,7 @@ void Paragraph::trackChanges(Change::Type type)
 	pimpl_->trackChanges(type);
 }
 
- 
+
 void Paragraph::untrackChanges()
 {
 	pimpl_->untrackChanges();
@@ -1843,21 +1495,21 @@ void Paragraph::cleanChanges()
 	pimpl_->cleanChanges();
 }
 
- 
+
 Change::Type Paragraph::lookupChange(lyx::pos_type pos) const
 {
 	lyx::Assert(!size() || pos < size());
 	return pimpl_->lookupChange(pos);
 }
 
- 
+
 Change const Paragraph::lookupChangeFull(lyx::pos_type pos) const
 {
 	lyx::Assert(!size() || pos < size());
 	return pimpl_->lookupChangeFull(pos);
 }
 
- 
+
 bool Paragraph::isChanged(pos_type start, pos_type end) const
 {
 	return pimpl_->isChanged(start, end);
@@ -1869,25 +1521,25 @@ bool Paragraph::isChangeEdited(pos_type start, pos_type end) const
 	return pimpl_->isChangeEdited(start, end);
 }
 
- 
+
 void Paragraph::markErased()
 {
 	pimpl_->markErased();
 }
 
- 
+
 void Paragraph::acceptChange(pos_type start, pos_type end)
 {
 	return pimpl_->acceptChange(start, end);
 }
 
- 
+
 void Paragraph::rejectChange(pos_type start, pos_type end)
 {
 	return pimpl_->rejectChange(start, end);
 }
 
- 
+
 lyx::pos_type Paragraph::size() const
 {
 	return pimpl_->size();

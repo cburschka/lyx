@@ -16,11 +16,18 @@
 #include "ParagraphParameters.h"
 #include "lyxtextclasslist.h"
 #include "debug.h"
+#include "language.h"
+#include "encoding.h"
+#include "lyxrc.h"
+#include "support/lstrings.h"
+#include "insets/insetoptarg.h"
+
+extern string bibitemWidest(Buffer const *);
 
 using lyx::pos_type;
 //using lyx::layout_type;
 using std::endl;
-
+using std::ostream;
 
 void breakParagraph(BufferParams const & bparams,
 		    Paragraph * par,
@@ -37,7 +44,7 @@ void breakParagraph(BufferParams const & bparams,
 
 	if (bparams.tracking_changes)
 		tmp->trackChanges();
- 
+
 	// this is an idea for a more userfriendly layout handling, I will
 	// see what the users say
 
@@ -238,3 +245,377 @@ int getEndLabel(Paragraph * para, BufferParams const & bparams)
 	return END_LABEL_NO_LABEL;
 }
 #endif
+
+
+Paragraph * TeXDeeper(Buffer const * buf,
+		      BufferParams const & bparams,
+		      Paragraph * pit,
+		      ostream & os, TexRow & texrow)
+{
+	lyxerr[Debug::LATEX] << "TeXDeeper...     " << pit << endl;
+	Paragraph * par = pit;
+
+	while (par && par->params().depth() == pit->params().depth()) {
+		if (par->layout()->isEnvironment()) {
+			par = TeXEnvironment(buf, bparams, par,
+						  os, texrow);
+		} else {
+			par = TeXOnePar(buf, bparams, par,
+					     os, texrow, false);
+		}
+	}
+	lyxerr[Debug::LATEX] << "TeXDeeper...done " << par << endl;
+
+	return par;
+}
+
+
+Paragraph * TeXEnvironment(Buffer const * buf,
+			   BufferParams const & bparams,
+			   Paragraph * pit,
+			   ostream & os, TexRow & texrow)
+{
+	lyxerr[Debug::LATEX] << "TeXEnvironment...     " << pit << endl;
+
+	LyXLayout_ptr const & style = pit->layout();
+
+	Language const * language = pit->getParLanguage(bparams);
+	Language const * doc_language = bparams.language;
+	Language const * previous_language = pit->previous()
+		? pit->previous()->getParLanguage(bparams) : doc_language;
+	if (language->babel() != previous_language->babel()) {
+
+		if (!lyxrc.language_command_end.empty() &&
+		    previous_language->babel() != doc_language->babel()) {
+			os << subst(lyxrc.language_command_end, "$$lang",
+				    previous_language->babel())
+			   << endl;
+			texrow.newline();
+		}
+
+		if (lyxrc.language_command_end.empty() ||
+		    language->babel() != doc_language->babel()) {
+			os << subst(lyxrc.language_command_begin, "$$lang",
+				    language->babel())
+			   << endl;
+			texrow.newline();
+		}
+	}
+
+	bool leftindent_open = false;
+	if (!pit->params().leftIndent().zero()) {
+		os << "\\begin{LyXParagraphLeftIndent}{" <<
+			pit->params().leftIndent().asLatexString() << "}\n";
+		texrow.newline();
+		leftindent_open = true;
+	}
+
+	if (style->isEnvironment()) {
+		if (style->latextype == LATEX_LIST_ENVIRONMENT) {
+			os << "\\begin{" << style->latexname() << "}{"
+			   << pit->params().labelWidthString() << "}\n";
+		} else if (style->labeltype == LABEL_BIBLIO) {
+			// ale970405
+			os << "\\begin{" << style->latexname() << "}{"
+			   <<  bibitemWidest(buf)
+			   << "}\n";
+		} else if (style->latextype == LATEX_ITEM_ENVIRONMENT) {
+			os << "\\begin{" << style->latexname() << '}'
+			   << style->latexparam() << '\n';
+		} else
+			os << "\\begin{" << style->latexname() << '}'
+			   << style->latexparam() << '\n';
+		texrow.newline();
+	}
+	Paragraph * par = pit;
+	do {
+		par = TeXOnePar(buf, bparams, par, os, texrow, false);
+
+		if (par && par->params().depth() > pit->params().depth()) {
+			    if (par->layout()->isParagraph()) {
+
+			    // Thinko!
+			    // How to handle this? (Lgb)
+			    //&& !suffixIs(os, "\n\n")
+				    //) {
+				// There should be at least one '\n' already
+				// but we need there to be two for Standard
+				// paragraphs that are depth-increment'ed to be
+				// output correctly.  However, tables can
+				// also be paragraphs so don't adjust them.
+				// ARRae
+				// Thinkee:
+				// Will it ever harm to have one '\n' too
+				// many? i.e. that we sometimes will have
+				// three in a row. (Lgb)
+				os << '\n';
+				texrow.newline();
+			}
+			par = TeXDeeper(buf, bparams, par, os, texrow);
+		}
+	} while (par
+		 && par->layout() == pit->layout()
+		 && par->params().depth() == pit->params().depth()
+		 && par->params().leftIndent() == pit->params().leftIndent());
+
+	if (style->isEnvironment()) {
+		os << "\\end{" << style->latexname() << "}\n";
+		texrow.newline();
+	}
+
+	if (leftindent_open) {
+		os << "\\end{LyXParagraphLeftIndent}\n";
+		texrow.newline();
+	}
+
+	lyxerr[Debug::LATEX] << "TeXEnvironment...done " << par << endl;
+	return par;  // ale970302
+}
+
+
+namespace {
+
+InsetOptArg * optArgInset(Paragraph const & par)
+{
+	// Find the entry.
+	InsetList::iterator it = par.insetlist.begin();
+	InsetList::iterator end = par.insetlist.end();
+	for (; it != end; ++it) {
+		Inset * ins = it.getInset();
+		if (ins->lyxCode() == Inset::OPTARG_CODE) {
+			return static_cast<InsetOptArg *>(ins);
+		}
+	}
+	return 0;
+}
+
+} // end namespace
+
+
+Paragraph * TeXOnePar(Buffer const * buf,
+		      BufferParams const & bparams,
+		      Paragraph * pit,
+		      ostream & os, TexRow & texrow,
+		      bool moving_arg)
+{
+	lyxerr[Debug::LATEX] << "TeXOnePar...     " << pit << endl;
+	Inset const * in = pit->inInset();
+	bool further_blank_line = false;
+	LyXLayout_ptr style;
+
+	// well we have to check if we are in an inset with unlimited
+	// lenght (all in one row) if that is true then we don't allow
+	// any special options in the paragraph and also we don't allow
+	// any environment other then "Standard" to be valid!
+	if ((in == 0) || !in->forceDefaultParagraphs(in)) {
+		style = pit->layout();
+
+		if (pit->params().startOfAppendix()) {
+			os << "\\appendix\n";
+			texrow.newline();
+		}
+
+		if (!pit->params().spacing().isDefault()
+			&& (!pit->previous() || !pit->previous()->hasSameLayout(pit))) {
+			os << pit->params().spacing().writeEnvirBegin() << '\n';
+			texrow.newline();
+		}
+
+		if (style->isCommand()) {
+			os << '\n';
+			texrow.newline();
+		}
+
+		if (pit->params().pagebreakTop()) {
+			os << "\\newpage";
+			further_blank_line = true;
+		}
+		if (pit->params().spaceTop().kind() != VSpace::NONE) {
+			os << pit->params().spaceTop().asLatexCommand(bparams);
+			further_blank_line = true;
+		}
+
+		if (pit->params().lineTop()) {
+			os << "\\lyxline{\\" << pit->getFont(bparams, 0).latexSize() << '}'
+			   << "\\vspace{-1\\parskip}";
+			further_blank_line = true;
+		}
+
+		if (further_blank_line) {
+			os << '\n';
+			texrow.newline();
+		}
+	} else {
+		style = bparams.getLyXTextClass().defaultLayout();
+	}
+
+	Language const * language = pit->getParLanguage(bparams);
+	Language const * doc_language = bparams.language;
+	Language const * previous_language = pit->previous()
+		? pit->previous()->getParLanguage(bparams) : doc_language;
+
+	if (language->babel() != previous_language->babel()
+	    // check if we already put language command in TeXEnvironment()
+	    && !(style->isEnvironment()
+		 && (!pit->previous() ||
+		     (pit->previous()->layout() != pit->layout() &&
+		      pit->previous()->getDepth() <= pit->getDepth())
+		     || pit->previous()->getDepth() < pit->getDepth())))
+	{
+		if (!lyxrc.language_command_end.empty() &&
+		    previous_language->babel() != doc_language->babel())
+		{
+			os << subst(lyxrc.language_command_end, "$$lang",
+				    previous_language->babel())
+			   << endl;
+			texrow.newline();
+		}
+
+		if (lyxrc.language_command_end.empty() ||
+		    language->babel() != doc_language->babel())
+		{
+			os << subst(lyxrc.language_command_begin, "$$lang",
+				    language->babel())
+			   << endl;
+			texrow.newline();
+		}
+	}
+
+	if (bparams.inputenc == "auto" &&
+	    language->encoding() != previous_language->encoding()) {
+		os << "\\inputencoding{"
+		   << language->encoding()->LatexName()
+		   << "}\n";
+		texrow.newline();
+	}
+
+	switch (style->latextype) {
+	case LATEX_COMMAND:
+		os << '\\' << style->latexname();
+
+		// Separate handling of optional argument inset.
+		if (style->optionalargs == 1) {
+			InsetOptArg * it = optArgInset(*pit);
+			if (it)
+				it->latexOptional(buf, os, false, false);
+		}
+		else
+			os << style->latexparam();
+		break;
+	case LATEX_ITEM_ENVIRONMENT:
+	case LATEX_LIST_ENVIRONMENT:
+		os << "\\item ";
+		break;
+	case LATEX_BIB_ENVIRONMENT:
+		// ignore this, the inset will write itself
+		break;
+	default:
+		break;
+	}
+
+	bool need_par = pit->simpleTeXOnePar(buf, bparams, os, texrow, moving_arg);
+
+	// Make sure that \\par is done with the font of the last
+	// character if this has another size as the default.
+	// This is necessary because LaTeX (and LyX on the screen)
+	// calculates the space between the baselines according
+	// to this font. (Matthias)
+	//
+	// Is this really needed ? (Dekel)
+	// We do not need to use to change the font for the last paragraph
+	// or for a command.
+	LyXFont const font =
+		(pit->empty()
+		 ? pit->getLayoutFont(bparams) : pit->getFont(bparams, pit->size() - 1));
+
+	bool is_command = style->isCommand();
+
+	if (style->resfont.size() != font.size() && pit->next() && !is_command) {
+		if (!need_par)
+			os << '{';
+		os << "\\" << font.latexSize() << " \\par}";
+	} else if (need_par) {
+		os << "\\par}";
+	} else if (is_command)
+		os << '}';
+
+	switch (style->latextype) {
+	case LATEX_ITEM_ENVIRONMENT:
+	case LATEX_LIST_ENVIRONMENT:
+		if (pit->next() && (pit->params().depth() < pit->next()->params().depth())) {
+			os << '\n';
+			texrow.newline();
+		}
+		break;
+	case LATEX_ENVIRONMENT:
+		// if its the last paragraph of the current environment
+		// skip it otherwise fall through
+		if (pit->next()
+		    && (pit->next()->layout() != pit->layout()
+			|| pit->next()->params().depth() != pit->params().depth()))
+			break;
+		// fall through possible
+	default:
+		// we don't need it for the last paragraph!!!
+		if (pit->next()) {
+			os << '\n';
+			texrow.newline();
+		}
+	}
+
+	if ((in == 0) || !in->forceDefaultParagraphs(in)) {
+		further_blank_line = false;
+		if (pit->params().lineBottom()) {
+			os << "\\lyxline{\\" << font.latexSize() << '}';
+			further_blank_line = true;
+		}
+
+		if (pit->params().spaceBottom().kind() != VSpace::NONE) {
+			os << pit->params().spaceBottom().asLatexCommand(bparams);
+			further_blank_line = true;
+		}
+
+		if (pit->params().pagebreakBottom()) {
+			os << "\\newpage";
+			further_blank_line = true;
+		}
+
+		if (further_blank_line) {
+			os << '\n';
+			texrow.newline();
+		}
+
+		if (!pit->params().spacing().isDefault()
+			&& (!pit->next() || !pit->next()->hasSameLayout(pit))) {
+			os << pit->params().spacing().writeEnvirEnd() << '\n';
+			texrow.newline();
+		}
+	}
+
+	// we don't need it for the last paragraph!!!
+	if (pit->next()) {
+		os << '\n';
+		texrow.newline();
+	} else {
+		// Since \selectlanguage write the language to the aux file,
+		// we need to reset the language at the end of footnote or
+		// float.
+
+		if (language->babel() != doc_language->babel()) {
+			if (lyxrc.language_command_end.empty())
+				os << subst(lyxrc.language_command_begin,
+					    "$$lang",
+					    doc_language->babel())
+				   << endl;
+			else
+				os << subst(lyxrc.language_command_end,
+					    "$$lang",
+					    language->babel())
+				   << endl;
+			texrow.newline();
+		}
+	}
+
+	lyxerr[Debug::LATEX] << "TeXOnePar...done " << pit->next() << endl;
+	return pit->next();
+}

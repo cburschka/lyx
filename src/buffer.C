@@ -1865,12 +1865,12 @@ void Buffer::latexParagraphs(ostream & ofs, Paragraph * par,
 			if (layout->isEnvironment() ||
 				!par->params().leftIndent().zero())
 			{
-				par = par->TeXEnvironment(this, params, ofs, texrow);
+				par = TeXEnvironment(this, params, par, ofs, texrow);
 			} else {
-				par = par->TeXOnePar(this, params, ofs, texrow, moving_arg);
+				par = TeXOnePar(this, params, par, ofs, texrow, moving_arg);
 			}
 		} else {
-			par = par->TeXOnePar(this, params, ofs, texrow, moving_arg);
+			par = TeXOnePar(this, params, par, ofs, texrow, moving_arg);
 		}
 	}
 	// It might be that we only have a title in this document

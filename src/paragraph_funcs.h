@@ -14,8 +14,10 @@
 
 #include "support/types.h"
 
+class Buffer;
 class BufferParams;
 class Paragraph;
+class TexRow;
 
 ///
 void breakParagraph(BufferParams const & bparams,
@@ -48,5 +50,21 @@ bool isFirstInSequence(Paragraph * par);
     proof environment */
 int getEndLabel(Paragraph * para, BufferParams const & bparams);
 #endif
+
+Paragraph * TeXDeeper(Buffer const * buf,
+		      BufferParams const & bparams,
+		      Paragraph * pit,
+		      std::ostream & os, TexRow & texrow);
+
+Paragraph * TeXEnvironment(Buffer const * buf,
+			   BufferParams const & bparams,
+			   Paragraph * pit,
+			   std::ostream & os, TexRow & texrow);
+
+Paragraph * TeXOnePar(Buffer const * buf,
+		      BufferParams const & bparams,
+		      Paragraph * pit,
+		      std::ostream & os, TexRow & texrow,
+		      bool moving_arg);
 
 #endif // PARAGRAPH_FUNCS_H
