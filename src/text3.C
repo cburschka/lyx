@@ -240,7 +240,7 @@ void LyXText::cursorPrevious()
 {
 	int y = top_y();
 
-	if (!cursor.row()->previous()) {
+	if (cursor.row() == rows().begin()) {
 		if (y > 0) {
 			int new_y = bv()->text->top_y() - bv()->workHeight();
 			bv()->screen().draw(bv()->text, bv(), new_y < 0 ? 0 : new_y);
@@ -279,10 +279,10 @@ void LyXText::cursorPrevious()
 		}
 	}
 	bv()->screen().draw(bv()->text, bv(), new_y < 0 ? 0 : new_y);
-	if (cursor.row()->previous()) {
+	if (cursor.row() != rows().begin()) {
 		LyXCursor cur;
-		setCursor(cur, cursor.row()->previous()->par(),
-			  cursor.row()->previous()->pos(), false);
+		setCursor(cur, boost::prior(cursor.row())->par(),
+			  boost::prior(cursor.row())->pos(), false);
 		if (cur.y() > top_y()) {
 			cursorUp(true);
 		}
@@ -295,7 +295,7 @@ void LyXText::cursorNext()
 {
 	int topy = top_y();
 
-	if (!cursor.row()->next()) {
+	if (boost::next(cursor.row()) == rows().end()) {
 		int y = cursor.y() - cursor.row()->baseline() +
 			cursor.row()->height();
 		if (y > topy + bv()->workHeight()) {
@@ -340,10 +340,10 @@ void LyXText::cursorNext()
 		}
 	}
 	bv()->screen().draw(bv()->text, bv(), new_y);
-	if (cursor.row()->next()) {
+	if (boost::next(cursor.row()) != rows().end()) {
 		LyXCursor cur;
-		setCursor(cur, cursor.row()->next()->par(),
-						cursor.row()->next()->pos(), false);
+		setCursor(cur, boost::next(cursor.row())->par(),
+			  boost::next(cursor.row())->pos(), false);
 		if (cur.y() < top_y() + bv()->workHeight()) {
 			cursorDown(true);
 		}
@@ -416,7 +416,7 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 				setUndo(bv, Undo::EDIT, tmp, tmp->next());
 				tmp->params().startOfAppendix(false);
 				int tmpy;
-				setHeightOfRow(&*getRow(tmp, 0, tmpy));
+				setHeightOfRow(getRow(tmp, 0, tmpy));
 				break;
 			}
 		}

@@ -76,7 +76,6 @@ lyx_SOURCES = \
 	ParagraphParameters.h \
 	ParameterStruct.h \
 	PrinterParams.h \
-	RowList.C \
 	RowList.h \
 	ShareContainer.h \
 	Spacing.C \
@@ -172,6 +171,8 @@ lyx_SOURCES = \
 	lyxrc.h \
 	lyxrow.C \
 	lyxrow.h \
+	lyxrow_funcs.C \
+	lyxrow_funcs.h \
 	lyxserver.C \
 	lyxserver.h \
 	lyxtext.h \

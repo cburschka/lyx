@@ -13,12 +13,12 @@
 #ifndef SCREEN_H
 #define SCREEN_H
 
+#include "RowList.h"
 
 class LyXText;
 class LyXCursor;
 class WorkArea;
 class BufferView;
-struct Row;
 
 /**
  * LyXScreen - document rendering management
@@ -150,8 +150,9 @@ protected:
 	                int y_offset = 0, int x_offset = 0);
 
 	/// y is a coordinate of the text
-	void drawOneRow(LyXText *, BufferView *, Row * row,
-	                int y_text, int y_offset = 0, int x_offset = 0);
+	void drawOneRow(LyXText *, BufferView *,
+			RowList::iterator row,
+			int y_text, int y_offset = 0, int x_offset = 0);
 
 	/// is the blinking cursor currently drawn
 	bool cursor_visible_;

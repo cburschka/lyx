@@ -1,5 +1,38 @@
 2003-04-01  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
+	* lyxtext.h: adjust
+	* rowpainter.C: adjust
+	* text.C: adjust
+	* text2.C: adjust
+	* text3.C: adjust
+	
+	* lyxrow_funcs. [Ch]: new files
+
+	* lyxrow.[Ch]: remove next and previous pointers
+	(next,previous): remove accessor functions
+	(isParEnd): move to lyxrow_funcs
+	(lastPos): move to lyxrow_funcs
+	(nextRowIsAllInset): move to lyxrow_funcs
+	(lastPrintablePos): move to lyxrow_funcs
+	(numberOfSeparators): move to lyxrow_funcs
+	(numberOfHfills): move to lyxrow_funcs
+	(numberOfLabelHfills): move to lyxrow_funcs
+	(hfillExpansion): move to lyxrow_funcs
+
+	* lyxfunc.C: adjust
+
+	* bufferview_funcs.C (toggleAndShow): adjust
+
+	* RowList.h: Remove class RowList from file leave just a
+	std::list<Row>.
+
+	* RowList.C: delete file
+
+	* Makefile.am (lyx_SOURCES): remove RowList.C, add lyxrow_funcs.C
+	and lyxrow_funcs.h
+
+2003-04-01  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
 	* text3.C (cursorPrevious): adjust
 	(cursorNext): adjust
 	(dispatch): adjust

@@ -1210,7 +1210,7 @@ Inset::RESULT InsetText::localDispatch(FuncRequest const & ev)
 		break;
 
 	case LFUN_PRIOR:
-		if (!crow(bv)->previous())
+		if (crow(bv) == lt->rows().begin())
 			result = FINISHED_UP;
 		else {
 			lt->cursorPrevious();
@@ -1221,7 +1221,7 @@ Inset::RESULT InsetText::localDispatch(FuncRequest const & ev)
 		break;
 
 	case LFUN_NEXT:
-		if (!crow(bv)->next())
+		if (boost::next(crow(bv)) == lt->rows().end())
 			result = FINISHED_DOWN;
 		else {
 			lt->cursorNext();
@@ -1805,7 +1805,7 @@ InsetText::moveLeftIntern(BufferView * bv, bool front,
 
 Inset::RESULT InsetText::moveUp(BufferView * bv)
 {
-	if (!crow(bv)->previous())
+	if (crow(bv) == getLyXText(bv)->rows().begin())
 		return FINISHED_UP;
 	getLyXText(bv)->cursorUp(bv);
 	getLyXText(bv)->clearSelection();
@@ -1815,7 +1815,7 @@ Inset::RESULT InsetText::moveUp(BufferView * bv)
 
 Inset::RESULT InsetText::moveDown(BufferView * bv)
 {
-	if (!crow(bv)->next())
+	if (boost::next(crow(bv)) == getLyXText(bv)->rows().end())
 		return FINISHED_DOWN;
 	getLyXText(bv)->cursorDown(bv);
 	getLyXText(bv)->clearSelection();

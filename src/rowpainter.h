@@ -1,3 +1,4 @@
+// -** C++ -*-
 /**
  * \file rowpainter.h
  * This file is part of LyX, the document processor.

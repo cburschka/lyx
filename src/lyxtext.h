@@ -476,7 +476,7 @@ public:
 	int workWidth(Inset * inset) const;
 
 	///
-	void computeBidiTables(Buffer const *, Row const & row) const;
+	void computeBidiTables(Buffer const *, RowList::iterator row) const;
 	/// Maps positions in the visual string to positions in logical string.
 	lyx::pos_type log2vis(lyx::pos_type pos) const;
 	/// Maps positions in the logical string to positions in visual string.
@@ -568,13 +568,13 @@ public:
 	 * in LaTeX the beginning of the text fits in some cases
 	 * (for example sections) exactly the label-width.
 	 */
-	int leftMargin(RowList::iterator rit) const;
+	int leftMargin(Row const & row) const;
 	///
 	int rightMargin(Buffer const &, Row const & row) const;
 
 	/** this calculates the specified parameters. needed when setting
 	 * the cursor and when creating a visible row */
-	void prepareToPrint(RowList::iterator rit, float & x,
+	void prepareToPrint(RowList::iterator row, float & x,
 			    float & fill_separator,
 			    float & fill_hfill,
 			    float & fill_label_hfill,
@@ -600,7 +600,7 @@ private:
 	lyx::pos_type rowBreakPoint(Row const & row) const;
 
 	/// returns the minimum space a row needs on the screen in pixel
-	int fill(Row & row, int workwidth) const;
+	int fill(RowList::iterator row, int workwidth) const;
 
 	/**
 	 * returns the minimum space a manual label needs on the

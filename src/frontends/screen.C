@@ -265,7 +265,7 @@ void LyXScreen::update(BufferView & bv, int yo, int xo)
 	case LyXText::REFRESH_ROW:
 	{
 		// ok I will update the current cursor row
-		drawOneRow(text, &bv, &*text->refresh_row, text->refresh_y,
+		drawOneRow(text, &bv, text->refresh_row, text->refresh_y,
 			   yo, xo);
 		// this because if we had a major update the refresh_row could
 		// have been set to 0!
@@ -439,7 +439,8 @@ void LyXScreen::drawFromTo(LyXText * text, BufferView * bv,
 }
 
 
-void LyXScreen::drawOneRow(LyXText * text, BufferView * bv, Row * row,
+void LyXScreen::drawOneRow(LyXText * text, BufferView * bv,
+			   RowList::iterator row,
 	int y_text, int yo, int xo)
 {
 	int const y = y_text - text->top_y() + yo;

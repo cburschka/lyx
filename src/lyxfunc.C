@@ -821,7 +821,7 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 				owner->view_state_changed();
 				goto exit_with_message;
 			} else if (result == FINISHED_UP) {
-				if (TEXT()->cursor.irow()->previous()) {
+				if (TEXT()->cursor.irow() != TEXT()->rows().begin()) {
 #if 1
 					TEXT()->setCursorFromCoordinates(
 						TEXT()->cursor.ix() + inset_x,
@@ -838,7 +838,7 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 				}
 				goto exit_with_message;
 			} else if (result == FINISHED_DOWN) {
-				if (TEXT()->cursor.irow()->next()) {
+				if (boost::next(TEXT()->cursor.irow()) != TEXT()->rows().end()) {
 #if 1
 					TEXT()->setCursorFromCoordinates(
 						TEXT()->cursor.ix() + inset_x,
@@ -882,7 +882,7 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 					}
 					goto exit_with_message;
 				case LFUN_DOWN:
-					if (TEXT()->cursor.row()->next())
+					if (boost::next(TEXT()->cursor.row()) != TEXT()->rows().end())
 						TEXT()->cursorDown(view());
 					else
 						TEXT()->cursorRight(view());

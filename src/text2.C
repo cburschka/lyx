@@ -29,6 +29,7 @@
 #include "language.h"
 #include "ParagraphParameters.h"
 #include "counters.h"
+#include "lyxrow_funcs.h"
 
 #include "insets/inseterror.h"
 #include "insets/insetbibitem.h"
@@ -58,6 +59,7 @@ LyXText::LyXText(BufferView * bv)
 	anchor_row_ = rows().end();
 	need_break_row = rows().end();
 	refresh_row = rows().end();
+
 	clearPaint();
 }
 
@@ -69,6 +71,7 @@ LyXText::LyXText(BufferView * bv, InsetText * inset)
 	anchor_row_ = rows().end();
 	need_break_row = rows().end();
 	refresh_row = rows().end();
+
 	clearPaint();
 }
 
@@ -308,7 +311,8 @@ void LyXText::removeParagraph(RowList::iterator rit)
 void LyXText::insertParagraph(Paragraph * par, RowList::iterator rowit)
 {
 	// insert a new row, starting at position 0
-	RowList::iterator rit = rowlist_.insert(rowit, new Row(par, 0));
+	Row newrow(par, 0);
+	RowList::iterator rit = rowlist_.insert(rowit, newrow);
 
 	// and now append the whole paragraph before the new row
 	appendParagraph(rit);
@@ -889,18 +893,22 @@ void LyXText::cursorEnd()
 {
 	if (cursor.par()->empty())
 		return;
+#warning FIXME
+// There is a lot of unneeded recalculation going on here:
+//   - boost::next(curosr.row())
+//   - lastPost(*this, cursor.row())
 
-	if (!cursor.row()->next()
-	    || cursor.row()->next()->par() != cursor.row()->par()) {
-		setCursor(cursor.par(), cursor.row()->lastPos() + 1);
+	if (boost::next(cursor.row()) == rows().end()
+	    || boost::next(cursor.row())->par() != cursor.row()->par()) {
+		setCursor(cursor.par(), lastPos(*this, cursor.row()) + 1);
 	} else {
 		if (!cursor.par()->empty() &&
-		    (cursor.par()->getChar(cursor.row()->lastPos()) == ' '
-		     || cursor.par()->isNewline(cursor.row()->lastPos()))) {
-			setCursor(cursor.par(), cursor.row()->lastPos());
+		    (cursor.par()->getChar(lastPos(*this, cursor.row())) == ' '
+		     || cursor.par()->isNewline(lastPos(*this, cursor.row())))) {
+			setCursor(cursor.par(), lastPos(*this, cursor.row()));
 		} else {
 			setCursor(cursor.par(),
-				  cursor.row()->lastPos() + 1);
+				  lastPos(*this, cursor.row()) + 1);
 		}
 	}
 }
@@ -1579,11 +1587,11 @@ void LyXText::checkParagraph(Paragraph * par, pos_type pos)
 	}
 
 	int const tmpheight = row->height();
-	pos_type const tmplast = row->lastPos();
+	pos_type const tmplast = lastPos(*this, row);
 
-	breakAgain(&*row);
-	if (row->height() == tmpheight && row->lastPos() == tmplast) {
-		postRowPaint(&*row, y);
+	breakAgain(row);
+	if (row->height() == tmpheight && lastPos(*this, row) == tmplast) {
+		postRowPaint(row, y);
 	} else {
 		postPaint(y);
 	}
@@ -1591,7 +1599,7 @@ void LyXText::checkParagraph(Paragraph * par, pos_type pos)
 	// check the special right address boxes
 	if (par->layout()->margintype == MARGIN_RIGHT_ADDRESS_BOX) {
 		tmpcursor.par(par);
-		tmpcursor.row(&*row);
+		tmpcursor.row(row);
 		tmpcursor.y(y);
 		tmpcursor.x(0);
 		tmpcursor.x_fix(0);
@@ -1693,13 +1701,13 @@ void LyXText::setCursor(LyXCursor & cur, Paragraph * par,
 		y -= row->height();
 	}
 
-	cur.row(&*row);
+	cur.row(row);
 	// y is now the beginning of the cursor row
 	y += row->baseline();
 	// y is now the cursor baseline
 	cur.y(y);
 
-	pos_type last = old_row->lastPrintablePos();
+	pos_type last = lastPrintablePos(*this, old_row);
 
 	// None of these should happen, but we're scaredy-cats
 	if (pos > par->size()) {
@@ -1718,18 +1726,18 @@ void LyXText::setCursor(LyXCursor & cur, Paragraph * par,
 	}
 
 	// now get the cursors x position
-	float x = getCursorX(&*row, pos, last, boundary);
+	float x = getCursorX(row, pos, last, boundary);
 	cur.x(int(x));
 	cur.x_fix(cur.x());
 	if (old_row != row) {
-		x = getCursorX(&*old_row, pos, last, boundary);
+		x = getCursorX(old_row, pos, last, boundary);
 		cur.ix(int(x));
 	} else
 		cur.ix(cur.x());
 	//if the cursor is in a visible row, anchor to it
 	int topy = top_y();
 	if (topy < y && y < topy + bv()->workHeight())
-		anchor_row(&*row);
+		anchor_row(row);
 }
 
 
@@ -1777,7 +1785,8 @@ float LyXText::getCursorX(RowList::iterator rit,
 			if (rit->par()->isLineSeparator(body_pos - 1))
 				x -= singleWidth(rit->par(), body_pos - 1);
 		}
-		if (rit->hfillExpansion(pos)) {
+
+		if (hfillExpansion(*this, rit, pos)) {
 			x += singleWidth(rit->par(), pos);
 			if (pos >= body_pos)
 				x += fill_hfill;
@@ -1880,7 +1889,7 @@ LyXText::getColumnNearX(RowList::iterator rit, int & x, bool & boundary) const
 		       fill_hfill, fill_label_hfill);
 
 	pos_type vc = rit->pos();
-	pos_type last = rit->lastPrintablePos();
+	pos_type last = lastPrintablePos(*this, rit);
 	pos_type c = 0;
 
 	LyXLayout_ptr const & layout = rit->par()->layout();
@@ -1912,7 +1921,7 @@ LyXText::getColumnNearX(RowList::iterator rit, int & x, bool & boundary) const
 				tmpx -= singleWidth(rit->par(), body_pos - 1);
 		}
 
-		if (rit->hfillExpansion(c)) {
+		if (hfillExpansion(*this, rit, c)) {
 			tmpx += singleWidth(rit->par(), c);
 			if (c >= body_pos)
 				tmpx += fill_hfill;
@@ -1996,10 +2005,11 @@ namespace {
 	 * and the next row is filled by an inset that spans an entire
 	 * row.
 	 */
-	bool beforeFullRowInset(Row & row, LyXCursor & cur) {
-		if (!row.next())
+	bool beforeFullRowInset(LyXText & lt, RowList::iterator row,
+				LyXCursor & cur) {
+		if (boost::next(row) == lt.rows().end())
 			return false;
-		Row const & next = *row.next();
+		Row const & next = *boost::next(row);
 
 		if (next.pos() != cur.pos() || next.par() != cur.par())
 			return false;
@@ -2019,23 +2029,23 @@ void LyXText::setCursorFromCoordinates(LyXCursor & cur, int x, int y)
 
 	RowList::iterator row = getRowNearY(y);
 	bool bound = false;
-	pos_type const column = getColumnNearX(&*row, x, bound);
+	pos_type const column = getColumnNearX(row, x, bound);
 	cur.par(row->par());
 	cur.pos(row->pos() + column);
 	cur.x(x);
 	cur.y(y + row->baseline());
-	cur.row(&*row);
+	cur.row(row);
 
-	if (beforeFullRowInset(*row, cur)) {
-		pos_type last = row->lastPrintablePos();
-		float x = getCursorX(row->next(), cur.pos(), last, bound);
+	if (beforeFullRowInset(*this, row, cur)) {
+		pos_type last = lastPrintablePos(*this, row);
+		float x = getCursorX(boost::next(row), cur.pos(), last, bound);
 		cur.ix(int(x));
-		cur.iy(y + row->height() + row->next()->baseline());
-		cur.irow(row->next());
+		cur.iy(y + row->height() + boost::next(row)->baseline());
+		cur.irow(boost::next(row));
 	} else {
 		cur.iy(cur.y());
 		cur.ix(cur.x());
-		cur.irow(&*row);
+		cur.irow(row);
 	}
 	cur.boundary(bound);
 }
@@ -2257,9 +2267,9 @@ bool LyXText::deleteEmptyParagraphMechanism(LyXCursor const & old_cursor)
 
 		deleted = true;
 
-		if (old_cursor.row()->previous()) {
+		if (old_cursor.row() != rows().begin()) {
 			const_cast<LyXText *>(this)->postPaint(old_cursor.y() - old_cursor.row()->baseline()
-				  - old_cursor.row()->previous()->height());
+				  - boost::prior(old_cursor.row())->height());
 			tmpcursor = cursor;
 			cursor = old_cursor; // that undo can restore the right cursor position
 			Paragraph * endpar = old_cursor.par()->next();
@@ -2284,14 +2294,14 @@ bool LyXText::deleteEmptyParagraphMechanism(LyXCursor const & old_cursor)
 			 * The next row can change its height, if
 			 * there is another layout before */
 			if (refresh_row != rows().end()) {
-				if (refresh_row->next()) {
-					breakAgain(refresh_row->next());
+				if (boost::next(refresh_row) != rows().end()) {
+					breakAgain(boost::next(refresh_row));
 					updateCounters();
 				}
 				setHeightOfRow(refresh_row);
 			}
 		} else {
-			Row * nextrow = old_cursor.row()->next();
+			RowList::iterator nextrow = boost::next(old_cursor.row());
 			const_cast<LyXText *>(this)->postPaint(
 				old_cursor.y() - old_cursor.row()->baseline());
 
@@ -2319,7 +2329,7 @@ bool LyXText::deleteEmptyParagraphMechanism(LyXCursor const & old_cursor)
 			   the parindent that can occur or dissappear.
 			   The next row can change its height, if
 			   there is another layout before */
-			if (nextrow) {
+			if (nextrow != rows().end()) {
 				breakAgain(nextrow);
 				updateCounters();
 			}

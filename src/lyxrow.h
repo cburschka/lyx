@@ -4,7 +4,8 @@
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
- * \author unknown
+ * \author Matthias Ettrich
+ * \author Lars Gullik Bjønnes
  *
  * Full author contact details are available in file CREDITS
  *
@@ -59,48 +60,8 @@ public:
 	void baseline(unsigned int b);
 	///
 	unsigned int baseline() const;
-	///
-	void next(Row * r);
-	///
-	Row * next() const;
-	///
-	void previous(Row * r);
-	///
-	Row * previous() const;
-
 	/// return true if this row is the start of a paragraph
 	bool isParStart() const;
-
-	/// return true if this  row is the end of a paragraph
-	bool isParEnd() const;
-
-	/// return the position of the last character in this row
-	lyx::pos_type lastPos() const;
-	/// return the position of the last normal, printable character in this row
-	lyx::pos_type lastPrintablePos() const;
-
-	/**
-	 * Returns the number of separators.
-	 * The separator on the very last column doesnt count.
-	 */
-	int numberOfSeparators() const;
-
-	/**
-	 * Returns the number of hfills. It works like a LaTeX \hfill:
-	 * the hfills at the beginning and at the end are ignored.
-	 * This is much more useful than not to ignore!
-	 */
-	int numberOfHfills() const;
-
-	/// Returns the number of hfills in the manual label. See numberOfHfills().
-	int numberOfLabelHfills() const;
-
-	/**
-	 * Returns true if a expansion is needed at the given position.
-	 * Rules are given by LaTeX
-	 */
-	bool hfillExpansion(lyx::pos_type pos) const;
-
 private:
 	///
 	Paragraph * par_;
@@ -119,10 +80,6 @@ private:
 	unsigned int top_of_text_;
 	///
 	unsigned int baseline_;
-	///
-	Row * next_;
-	///
-	Row * previous_;
 };
 
 #endif

@@ -31,7 +31,7 @@
 #include "lyxrow.h"
 #include "rowpainter.h"
 #include "lyxrc.h"
-
+#include "lyxrow_funcs.h"
 
 using std::max;
 using lyx::pos_type;
@@ -53,10 +53,10 @@ BufferView * perv(BufferView const & bv)
 } // namespace anon
 
 
-RowPainter::RowPainter(BufferView const & bv, LyXText const & text, RowList::iterator rit)
+RowPainter::RowPainter(BufferView const & bv,
+		       LyXText const & text, RowList::iterator rit)
 	: bv_(bv), pain_(bv_.painter()), text_(text), row_(rit), par_(*rit->par())
-{
-}
+{}
 
 
 /// "temporary"
@@ -97,7 +97,7 @@ char const RowPainter::transformChar(char c, lyx::pos_type pos) const
 
 int RowPainter::leftMargin() const
 {
-	return text_.leftMargin(row_);
+	return text_.leftMargin(*row_);
 }
 
 
@@ -185,7 +185,7 @@ void RowPainter::paintArabicComposeChar(pos_type & vpos)
 void RowPainter::paintChars(pos_type & vpos, bool hebrew, bool arabic)
 {
 	pos_type pos = text_.vis2log(vpos);
-	pos_type const last = row_->lastPrintablePos();
+	pos_type const last = lastPrintablePos(text_, row_);
 	LyXFont orig_font(getFont(pos));
 
 	// first character
@@ -359,7 +359,7 @@ void RowPainter::paintSelection()
 		pain_.fillRectangle(xo_, yo_, int(x_), row_->height(), LColor::selection);
 
 	pos_type const body_pos = par_.beginningOfBody();
-	pos_type const last = row_->lastPrintablePos();
+	pos_type const last = lastPrintablePos(text_, row_);
 	float tmpx = x_;
 
 	for (pos_type vpos = row_->pos(); vpos <= last; ++vpos)  {
@@ -375,7 +375,7 @@ void RowPainter::paintSelection()
 				tmpx -= singleWidth(body_pos - 1);
 		}
 
-		if (row_->hfillExpansion(pos)) {
+		if (hfillExpansion(text_, row_, pos)) {
 			tmpx += singleWidth(pos);
 			if (pos >= body_pos)
 				tmpx += hfill_;
@@ -411,13 +411,13 @@ void RowPainter::paintSelection()
 void RowPainter::paintChangeBar()
 {
 	pos_type const start = row_->pos();
-	pos_type const end = row_->lastPrintablePos();
+	pos_type const end = lastPrintablePos(text_, row_);
 
 	if (!par_.isChanged(start, end))
 		return;
 
-	int const height = (row_->next()
-		? row_->height() + row_->next()->top_of_text()
+	int const height = (boost::next(row_) != text_.rows().end()
+		? row_->height() + boost::next(row_)->top_of_text()
 		: row_->baseline());
 
 	pain_.fillRectangle(4, yo_, 5, height, LColor::changebar);
@@ -450,11 +450,11 @@ void RowPainter::paintDepthBar()
 		return;
 
 	Paragraph::depth_type prev_depth = 0;
-	if (row_->previous())
-		prev_depth = row_->previous()->par()->getDepth();
+	if (row_ != text_.rows().begin())
+		prev_depth = boost::prior(row_)->par()->getDepth();
 	Paragraph::depth_type next_depth = 0;
-	if (row_->next())
-		next_depth = row_->next()->par()->getDepth();
+	if (boost::next(row_) != text_.rows().end())
+		next_depth = boost::next(row_)->par()->getDepth();
 
 	for (Paragraph::depth_type i = 1; i <= depth; ++i) {
 		int x = (PAPER_MARGIN / 5) * i + xo_;
@@ -620,7 +620,7 @@ void RowPainter::paintFirst()
 	}
 
 	// the top margin
-	if (!row_->previous() && !text_.isInInset())
+	if (row_ == text_.rows().begin() && !text_.isInInset())
 		y_top += PAPER_MARGIN;
 
 	// draw a top pagebreak
@@ -767,7 +767,7 @@ void RowPainter::paintLast()
 	int y_bottom = row_->height() - 1;
 
 	// the bottom margin
-	if (!row_->next() && !text_.isInInset())
+	if (boost::next(row_) == text_.rows().end() && !text_.isInInset())
 		y_bottom -= PAPER_MARGIN;
 
 	int const ww = bv_.workWidth();
@@ -846,7 +846,7 @@ void RowPainter::paintLast()
 
 void RowPainter::paintText()
 {
-	pos_type const last = row_->lastPrintablePos();
+	pos_type const last = lastPrintablePos(text_, row_);
 	pos_type body_pos = par_.beginningOfBody();
 	if (body_pos > 0 &&
 		(body_pos - 1 > last ||
@@ -914,7 +914,7 @@ void RowPainter::paintText()
 			pain_.line(int(x_), y1, int(x_), y0,
 				     LColor::added_space);
 
-			if (row_->hfillExpansion(pos)) {
+			if (hfillExpansion(text_, row_, pos)) {
 				int const y2 = (y0 + y1) / 2;
 
 				if (pos >= body_pos) {
@@ -998,7 +998,7 @@ void RowPainter::paint(int y_offset, int x_offset, int y)
 		paintFirst();
 	}
 
-	if (row_->isParEnd()) {
+	if (isParEnd(text_, row_)) {
 		paintLast();
 	}
 
