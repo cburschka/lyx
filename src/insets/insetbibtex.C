@@ -101,12 +101,12 @@ string normalize_name(Buffer const & buffer, OutputParams const & runparams,
 	string const fname = MakeAbsPath(name, buffer.filePath());
 	if (AbsolutePath(name) || !IsFileReadable(fname + ext))
 		return name;
-	else if (!runparams.nice) 
+	else if (!runparams.nice)
 		return fname;
-	else 
+	else
 		return MakeRelPath(fname, buffer.getMasterBuffer()->filePath());
 }
-	
+
 }
 
 
@@ -154,7 +154,7 @@ int InsetBibtex::latex(Buffer const & buffer, ostream & os,
 
 	if (!style.empty()) {
 		os << "\\bibliographystyle{"
-		   << os::external_path(normalize_name(buffer, runparams, 
+		   << os::external_path(normalize_name(buffer, runparams,
 						       style, ".bst"))
 		   << "}\n";
 		i += 1;
