@@ -1,3 +1,11 @@
+2001-10-03  José Matos  <jamatos@fep.up.pt>
+
+	* layouts/linuxdoc.layout:
+	* layouts/manpage.layout:
+	* layouts/db_lyxmacros.inc:
+	* layouts/db_stdlayouts.inc: remove bogus use of the now defunct
+	Latex tag.
+
 2001-10-03  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* languages: change default encoding for estonian to latin1

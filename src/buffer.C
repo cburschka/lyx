@@ -3361,20 +3361,18 @@ void Buffer::simpleDocBookOnePar(ostream & os, string & extra,
 			}
 		} else {
 			string sgml_string;
-			if (par->linuxDocConvertChar(c, sgml_string)
-			    && !style.free_spacing) { // in freespacing
-				                     // mode, spaces are
-				                     // non-breaking characters
-				// char is ' '
-				if (desc_on == 1) {
-					++char_line_count;
-					os << "\n</term><listitem><para>";
-					desc_on = 2;
-				} else {
-					os << c;
-				}
+			par->linuxDocConvertChar(c, sgml_string);
+
+			if (style.pass_thru) {
+				os << c;
+			} else if(style.free_spacing || c != ' ') {
+					os << sgml_string;
+			} else if (desc_on ==1) {
+				++char_line_count;
+				os << "\n</term><listitem><para>";
+				desc_on = 2;
 			} else {
-				os << sgml_string;
+				os << ' ';
 			}
 		}
 		font_old = font;

@@ -9,19 +9,25 @@ Input stdlayouts.inc
 
 # SGML style definition
 Style SGML
-  CopyStyle		LaTeX
-  LatexName		"!-- --"
+  Margin                Static
+  LatexType             Paragraph
+  LatexName             "!-- --"
+  NewLine               0
+  ParIndent             MM
+  ParSkip               0.4
+  ParSep                0.5
+  Align                 Left
+  AlignPossible         Block
+  LabelType             No_Label
+  FreeSpacing           1
+  PassThru		1
 End
-
-NoStyle LaTeX
 
 # Verbatim style definition
 Style Literal
   LatexType		Environment
   LatexName		literallayout
-  Font
-    Latex               Latex
-  EndFont
+  PassThru              1
 End
 
 # Quote style definition

@@ -378,9 +378,5 @@ Style SGML
   AlignPossible         Block, Left, Right, Center
   LabelType             No_Label
   FreeSpacing           1
-
-  # standard font definition
-  Font 
-    Latex               Latex
-  EndFont
+  PassThru		1
 End

@@ -13,11 +13,7 @@ Style Code
   LatexType		Environment
   LatexName		programlisting
   LatexParam		CDATA
-  Preamble
-  EndPreamble
-  Font
-    Latex               Latex
-  EndFont
+  PassThru		1
 End
 
 # Comment style definition
