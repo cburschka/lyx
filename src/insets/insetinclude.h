@@ -47,7 +47,7 @@ public:
 	/// This returns the list of bibkeys on the child buffer
 	string getKeys(char delim) const;
 	///
-	void Edit(BufferView *, int, int);
+	void Edit(BufferView *, int x, int y, unsigned int button);
 	///
 	unsigned char Editable() const
 	{

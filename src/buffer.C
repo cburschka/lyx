@@ -73,6 +73,8 @@ using std::setw;
 #include "insets/insetparent.h"
 #include "insets/insetspecialchar.h"
 #include "insets/figinset.h"
+#include "insets/insettext.h"
+#include "insets/insetert.h"
 #include "support/filetools.h"
 #include "support/path.h"
 #include "LaTeX.h"
@@ -740,6 +742,20 @@ bool Buffer::readLyXformat2(LyXLex & lex, LyXParagraph * par)
 				++pos;
 			} else if (tmptok == "Include") {
 				inset = new InsetInclude(string(), this);
+				inset->Read(lex);
+				par->InsertChar(pos, LyXParagraph::META_INSET); 
+				par->InsertInset(pos, inset);
+				par->SetFont(pos, font);
+				++pos;
+			} else if (tmptok == "ERT") {
+				inset = new InsetERT(this);
+				inset->Read(lex);
+				par->InsertChar(pos, LyXParagraph::META_INSET); 
+				par->InsertInset(pos, inset);
+				par->SetFont(pos, font);
+				++pos;
+			} else if (tmptok == "Text") {
+				inset = new InsetText(this);
 				inset->Read(lex);
 				par->InsertChar(pos, LyXParagraph::META_INSET); 
 				par->InsertInset(pos, inset);

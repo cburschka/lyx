@@ -70,9 +70,9 @@ public:
 	}
 
 	/// what appears in the minibuffer when opening
-	char const * EditMessage() const {return _("Math editor mode");}
+	const char * EditMessage() const {return _("Math editor mode");}
 	///
-	void Edit(BufferView *, int x, int y);
+	void Edit(BufferView *, int x, int y, unsigned int button);
 	///
 	bool display() const { return (disp_flag) ? true: false; }
 	///
@@ -99,7 +99,7 @@ public:
 	void InsetUnlock(BufferView *);
    
 	///  To allow transparent use of math editing functions
-	virtual bool LocalDispatch(BufferView *, int, char const *);
+	virtual RESULT LocalDispatch(BufferView *, int, string);
     
 	///
 	void InsertSymbol(BufferView *, char const *);

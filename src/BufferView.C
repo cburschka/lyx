@@ -736,7 +736,7 @@ void BufferView::workAreaButtonPress(int xpos, int ypos, unsigned int button)
 		selection_possible = false;
 		owner_->updateLayoutChoice();
 		owner_->getMiniBuffer()->Set(inset_hit->EditMessage());
-		inset_hit->Edit(this, xpos, ypos);
+		inset_hit->Edit(this, xpos, ypos, button);
 		return;
 	} 
 	
@@ -870,7 +870,7 @@ void BufferView::workAreaButtonRelease(int x, int y, unsigned int button)
 		}
 
 		owner_->getMiniBuffer()->Set(inset_hit->EditMessage());
-		inset_hit->Edit(this, x, y);
+		inset_hit->Edit(this, x, y, button);
 		return;
 	}
 
@@ -946,7 +946,7 @@ void BufferView::workAreaButtonRelease(int x, int y, unsigned int button)
 			    textclasslist
 			    .TextClass(buffer_->
 				       params.textclass).defaultfont())) {
-		text->cursor.par->bibkey->Edit(this, 0, 0);
+		text->cursor.par->bibkey->Edit(this, 0, 0, 0);
 	}
 
 	return;
@@ -1024,7 +1024,6 @@ Inset * BufferView::checkInsetHit(int & x, int & y)
 	}
 	return 0;
 }
-
 
 void BufferView::workAreaExpose()
 {
@@ -1427,7 +1426,7 @@ void BufferView::insetSleep()
 void BufferView::insetWakeup()
 {
 	if (the_locking_inset && inset_slept) {
-		the_locking_inset->Edit(this, slx, sly);
+		the_locking_inset->Edit(this, slx, sly, 0);
 		inset_slept = false;
 	}
 }
@@ -1459,6 +1458,18 @@ void BufferView::focus(bool f)
 bool BufferView::active() const
 {
 	return workarea->active();
+}
+
+
+Painter & BufferView::getPainter() const
+{
+    return workarea->getPainter();
+}
+
+
+unsigned short BufferView::paperWidth() const
+{
+    return text->paperWidth();
 }
 
 

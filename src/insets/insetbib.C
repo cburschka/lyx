@@ -156,7 +156,7 @@ InsetCitation::~InsetCitation()
 }
 
 
-void InsetCitation::Edit(BufferView * bv, int, int)
+void InsetCitation::Edit(BufferView * bv, int, int, unsigned int)
 {
 	if(bv->buffer()->isReadonly())
 		WarnReadonly(bv->buffer()->fileName());
@@ -265,7 +265,7 @@ string InsetBibKey::getScreenLabel() const
   upwards?
   (Joacim 1998-03-04)
 */
-void InsetBibKey::Edit(BufferView * bv, int, int)
+void InsetBibKey::Edit(BufferView * bv, int, int, unsigned int)
 {
 	if(bv->buffer()->isReadonly())
 		WarnReadonly(bv->buffer()->fileName());
@@ -419,7 +419,7 @@ string InsetBibtex::getKeys(char delim)
 
 
 // BibTeX should have its own dialog. This is provisional.
-void InsetBibtex::Edit(BufferView *, int, int)
+void InsetBibtex::Edit(BufferView *, int, int, unsigned int)
 {
 	if (!bibitem_form) {
 		bibitem_form = create_form_bibitem_form();

@@ -41,8 +41,7 @@ public:
 	///
 	int width(Painter &, LyXFont const & font) const;
 	///
-	void draw(Painter &, LyXFont const & font,
-		  int baseline, float & x) const;
+	void draw(Painter &, LyXFont const & font, int baseline, float & x) const;
 	///
 	void Write(ostream &) const;
 	///
@@ -58,9 +57,9 @@ public:
 	///
 	bool AutoDelete() const;
 	/// what appears in the minibuffer when opening
-	char const * EditMessage() const {return _("Opened error");}
+	const char * EditMessage() const {return _("Opened error");}
 	///
-	void Edit(BufferView *, int, int);
+	void Edit(BufferView *, int x, int y, unsigned int button);
 	///
 	unsigned char Editable() const;
 	///

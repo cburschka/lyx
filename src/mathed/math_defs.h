@@ -287,9 +287,9 @@ class MathedInset  {
 
     /// In a near future maybe we use a better fonts renderer than X
     void drawStr(Painter &, short, int, int, int, byte *, int);
-	///
+    ///
     friend class MathedCursor;
-	///
+    ///
     friend void mathed_init_fonts();
 };
 

@@ -17,6 +17,8 @@ libinsets_la_SOURCES = \
 	insetcommand.h \
 	inseterror.C \
 	inseterror.h \
+	insetert.C \
+	insetert.h \
 	insetinclude.C \
 	insetinclude.h \
 	insetindex.C \
@@ -41,6 +43,8 @@ libinsets_la_SOURCES = \
 	insetref.h \
 	insetspecialchar.C \
 	insetspecialchar.h \
+	insettext.C \
+	insettext.h \
 	insettoc.C \
 	insettoc.h \
 	inseturl.C \

@@ -2134,7 +2134,10 @@ void ToggleAndShow(BufferView * bv, LyXFont const & font)
 	if (bv->available()) { 
 		bv->hideCursor();
 		bv->update(-2);
-  		bv->text->ToggleFree(font, toggleall);
+		if (bv->the_locking_inset)
+			bv->the_locking_inset->SetFont(font, toggleall);
+		else
+			bv->text->ToggleFree(font, toggleall);
 		bv->update(1);
 	}
 }
@@ -3143,7 +3146,7 @@ extern "C" void FigureApplyCB(FL_OBJECT *, long)
 		InsetFig * new_inset = new InsetFig(100, 20, buffer);
 		current_view->insertInset(new_inset);
 		current_view->owner()->getMiniBuffer()->Set(_("Figure inserted"));
-		new_inset->Edit(current_view, 0, 0);
+		new_inset->Edit(current_view, 0, 0, 0);
 		return;
 	}
 	
@@ -3192,7 +3195,7 @@ extern "C" void FigureApplyCB(FL_OBJECT *, long)
       
 	Inset * new_inset = new InsetFig(100, 100, buffer);
 	current_view->insertInset(new_inset);
-	new_inset->Edit(current_view, 0, 0);
+	new_inset->Edit(current_view, 0, 0, 0);
 	current_view->update(0);
 	current_view->owner()->getMiniBuffer()->Set(_("Figure inserted"));
 	current_view->text->UnFreezeUndo();

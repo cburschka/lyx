@@ -43,10 +43,10 @@ InsetRef::InsetRef(InsetCommand const & inscmd, Buffer * bf)
 }
 
 
-void InsetRef::Edit(BufferView * bv, int, int)
+void InsetRef::Edit(BufferView * bv, int, int, unsigned int)
 {
-        bv->owner()->getLyXFunc()
-		->Dispatch(LFUN_REFGOTO, getContents().c_str());
+        bv->owner()->getLyXFunc()->
+		Dispatch(LFUN_REFGOTO, getContents().c_str());
 }
 
 

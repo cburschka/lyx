@@ -16,6 +16,7 @@
 
 #include "lyxinset.h"
 #include "debug.h"
+#include "BufferView.h"
 #include "support/lstrings.h"
 
 /* Insets default methods */
@@ -49,7 +50,7 @@ bool Inset::AutoDelete() const
 }
 
 
-void Inset::Edit(BufferView *, int, int)
+void Inset::Edit(BufferView *, int, int, unsigned int)
 {
 }
 
@@ -104,4 +105,49 @@ unsigned char UpdatableInset::Editable() const
 
 void UpdatableInset::ToggleInsetCursor(BufferView *)
 {
+}
+
+void UpdatableInset::Edit(BufferView * bv, int, int, unsigned int)
+{
+    LyXFont
+	font;
+//    bview = bv;
+    scx = 0;
+
+    mx_scx=abs((width(bv->getPainter(), font) - bv->paperWidth())/2);
+}
+
+
+void UpdatableInset::draw(Painter &, LyXFont const &,
+			  int baseline, float & x) const
+{
+    if (scx) x += float(scx);
+    top_x = int(x);
+    top_baseline = baseline;
+}
+
+
+void UpdatableInset::SetFont(LyXFont const &, bool )
+{
+}
+
+///  An updatable inset could handle lyx editing commands
+#ifdef SCROLL_INSET
+UpdatableInset::RESULT UpdatableInset::LocalDispatch(BufferView *, 
+						     int action, string arg) 
+#else
+UpdatableInset::RESULT UpdatableInset::LocalDispatch(BufferView *, int, string)
+#endif
+{
+#ifdef SCROLL_INSET
+    if (action==LFUN_SCROLL_INSET)
+	{
+	    float xx;
+	    sscanf(arg.c_str(), "%f", &xx);	
+	    scroll(xx);
+
+	    return DISPATCHED;
+	}
+#endif
+    return UNDISPATCHED; 
 }

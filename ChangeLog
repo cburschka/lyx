@@ -1,3 +1,26 @@
+2000-02-24  Juergen Vigna  <jug@sad.it>
+
+	* src/buffer.C:
+	* src/commandtags.h: 
+	* src/LyXAction.C:
+	* src/lyxfunc.C: added code for LFUN_INSET_ERT and LFUN_INSET_TEXT
+
+	* src/BufferView.h
+	* src/BufferView.C
+	* src/BufferView2.C: added/updated code for various inset-functions
+
+	* src/insets/insetert.[Ch]: added implementation of InsetERT
+
+	* src/insets/insettext.[Ch]: added implementation of InsetText
+
+	* src/insets/inset.C (Edit): added "unsigned int button" parameter
+	(draw): added preliminary code for inset scrolling not finshed yet
+
+	* src/insets/inset.C (LocalDispatch): changed arg parameter to string
+	as it is in lyxfunc.C now
+
+	* src/insets/lyxinset.h: Added functions for text-insets
+
 2000-02-22  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/lyx_cb.C src/UpdateInset.[Ch]: move the updateinsetlist into

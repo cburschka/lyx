@@ -41,6 +41,8 @@
 #include "insets/insetindex.h"
 #include "insets/insetinclude.h"
 #include "insets/insetbib.h"
+#include "insets/insettext.h"
+#include "insets/insetert.h"
 #include "mathed/formulamacro.h"
 #include "toolbar.h"
 #include "spellchecker.h" // RVDK_PATCH_5
@@ -524,44 +526,55 @@ string LyXFunc::Dispatch(int ac,
 				inset->GetCursorPos(slx, sly);
 				owner->view()->unlockInset(inset);
 				owner->view()->menuUndo();
-				inset = static_cast<UpdatableInset*>(owner->view()->text->cursor.par->GetInset(owner->view()->text->cursor.pos));
-				if (inset) 
-					inset->Edit(owner->view(), slx, sly);
+				inset = static_cast<UpdatableInset*>(
+					owner->view()->text->cursor.par->
+					GetInset(owner->view()->text->
+						 cursor.pos));
+				if (inset)
+					inset->Edit(owner->view(),slx,sly,0);
 				return string();
-			} else 
-				if (action == LFUN_REDO) {
-					int slx, sly;
-					UpdatableInset * inset = owner->view()->the_locking_inset;
-					inset->GetCursorPos(slx, sly);
-					owner->view()->unlockInset(inset);
-					owner->view()->menuRedo();
-					inset = static_cast<UpdatableInset*>(owner->view()->text->cursor.par->GetInset(owner->view()->text->cursor.pos));
-					if (inset)
-						inset->Edit(owner->view(),
-							    slx, sly);
+			} else if (action == LFUN_REDO) {
+				int slx, sly;
+				UpdatableInset * inset = owner->view()->
+					the_locking_inset;
+				inset->GetCursorPos(slx, sly);
+				owner->view()->unlockInset(inset);
+				owner->view()->menuRedo();
+				inset = static_cast<UpdatableInset*>(
+					owner->view()->text->cursor.par->
+					GetInset(owner->view()->text->
+						 cursor.pos));
+				if (inset)
+					inset->Edit(owner->view(),slx,sly,0); 
+				return string();
+			} else if (owner->view()->the_locking_inset->
+				   LocalDispatch(owner->view(),action,
+						 argument) ==
+				   UpdatableInset::DISPATCHED)
+				return string();
+			else {
+				setMessage(N_("Text mode"));
+				LyXDirection direction = owner->view()->text->
+					cursor.par->getParDirection();
+				if ((action == -1) ||
+				    ((action == LFUN_RIGHT) &&
+				     (direction == LYX_DIR_LEFT_TO_RIGHT))) {
+					owner->view()->text->CursorRight();
+					moveCursorUpdate(false);
+					owner->getMiniBuffer()->
+						Set(CurrentState());
+				}
+				if ((action == LFUN_LEFT) &&
+				    (direction == LYX_DIR_RIGHT_TO_LEFT)) {
+					owner->view()->text->CursorRight();
+					moveCursorUpdate(false);
+					owner->getMiniBuffer()->
+						Set(CurrentState());
+				}
+				if ((action == LFUN_LEFT) ||
+				    (action == LFUN_RIGHT))
 					return string();
-				} else
-					if (owner->view()->the_locking_inset->LocalDispatch(owner->view(), action, argument.c_str()))
-						return string();
-					else {
-						setMessage(N_("Text mode"));
-						LyXDirection direction = owner->view()->text->cursor.par->getParDirection();
-						if ( action == -1 ||
-						     (action == LFUN_RIGHT
-						      && direction == LYX_DIR_LEFT_TO_RIGHT)) {
-							owner->view()->text->CursorRight();
-							moveCursorUpdate(false);
-							owner->getMiniBuffer()->Set(CurrentState());
-						}
-						if ( action == LFUN_LEFT 
-						     && direction == LYX_DIR_RIGHT_TO_LEFT) {
-							owner->view()->text->CursorRight();
-							moveCursorUpdate(false);
-							owner->getMiniBuffer()->Set(CurrentState());
-						}
-						if (action == LFUN_LEFT || action == LFUN_RIGHT)
-							return string();
-					}
+			}
 		}
 	}
 
@@ -1288,7 +1301,7 @@ string LyXFunc::Dispatch(int ac,
 		    && tmptext->cursor.par->GetInset(tmptext->cursor.pos)->Editable() == 2){
 			Inset * tmpinset = tmptext->cursor.par->GetInset(tmptext->cursor.pos);
 			setMessage(tmpinset->EditMessage());
-			tmpinset->Edit(owner->view(), 0, 0);
+			tmpinset->Edit(owner->view(), 0, 0, 0);
 			break;
 		}
 		if (direction == LYX_DIR_LEFT_TO_RIGHT)
@@ -1319,7 +1332,8 @@ string LyXFunc::Dispatch(int ac,
 			tmpinset->Edit(owner->view(),
 				       tmpinset->width(owner->view()->painter(),
 						       txt->GetFont(txt->cursor.par,
-								    txt->cursor.pos)), 0);
+								    txt->cursor.pos)),
+				       0, 0);
 			break;
 		}
 		if  (direction == LYX_DIR_RIGHT_TO_LEFT)
@@ -1876,7 +1890,21 @@ string LyXFunc::Dispatch(int ac,
 		else
 			new_inset = new InsetUrl("url", "", "");
 		owner->view()->insertInset(new_inset);
-		new_inset->Edit(owner->view(), 0, 0);
+		new_inset->Edit(owner->view(), 0, 0, 0);
+	}
+	break;
+	case LFUN_INSET_TEXT:
+	{
+		InsetText * new_inset = new InsetText(owner->buffer());
+		owner->view()->insertInset(new_inset);
+		new_inset->Edit(owner->view(), 0, 0, 0);
+	}
+	break;
+	case LFUN_INSET_ERT:
+	{
+		InsetERT * new_inset = new InsetERT(owner->buffer());
+		owner->view()->insertInset(new_inset);
+		new_inset->Edit(owner->view(), 0, 0, 0);
 	}
 	break;
 
@@ -2169,7 +2197,7 @@ string LyXFunc::Dispatch(int ac,
 			owner->view()->insertInset(new_inset);
 		} else {
 			owner->view()->insertInset(new_inset);
-			new_inset->Edit(owner->view(), 0, 0);
+			new_inset->Edit(owner->view(), 0, 0, 0);
 		}
 	}
 	break;
@@ -2190,7 +2218,7 @@ string LyXFunc::Dispatch(int ac,
 		
 		owner->view()->insertInset(new_inset);
 		if (lsarg.empty()) {
-			new_inset->Edit(owner->view(), 0, 0);
+			new_inset->Edit(owner->view(), 0, 0, 0);
 		}
 	}
 	break;
@@ -2256,7 +2284,7 @@ string LyXFunc::Dispatch(int ac,
 
 			//don't edit it if the call was to INSERT_LAST
 			if(action != LFUN_INDEX_INSERT_LAST) {
-				new_inset->Edit(owner->view(), 0, 0);
+				new_inset->Edit(owner->view(), 0, 0, 0);
 			} else {
 				//it looks blank on the screen unless
 				//we do  something.  put it here.
@@ -2294,7 +2322,7 @@ string LyXFunc::Dispatch(int ac,
 		Inset * new_inset = new InsetInclude(argument,
 						     owner->buffer());
 		owner->view()->insertInset(new_inset, "Standard", true);
-		new_inset->Edit(owner->view(), 0, 0);
+		new_inset->Edit(owner->view(), 0, 0, 0);
 	}
 	break;
 

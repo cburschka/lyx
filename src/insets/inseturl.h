@@ -52,13 +52,13 @@ public:
 	///
 	void Validate(LaTeXFeatures &) const;
 	///
-	void Edit(BufferView *, int, int);
+	void Edit(BufferView *, int, int, unsigned int);
 	///
 	unsigned char Editable() const {
 		return 1;
 	}
 	///
-	char const * EditMessage() const {return _("Opened Url");}
+	const char * EditMessage() const {return _("Opened Url");}
         ///
 	bool display() const { return false; }
 	///

@@ -452,15 +452,15 @@ void InsetFormula::draw(Painter & pain, LyXFont const &,
 }
 
 
-void InsetFormula::Edit(BufferView * bv, int x, int y)
+void InsetFormula::Edit(BufferView * bv, int x, int y, unsigned int)
 {
-   mathcursor = new MathedCursor(par);
-   bv->lockInset(this);
-   par->Metrics();
-   bv->updateInset(this, false);
-   x += par->xo; 
-   y += par->yo; 
-   mathcursor->SetPos(x, y);
+    mathcursor = new MathedCursor(par);
+    bv->lockInset(this);
+    par->Metrics();
+    bv->updateInset(this, false);
+    x += par->xo; 
+    y += par->yo; 
+    mathcursor->SetPos(x, y);
     sel_x = sel_y = 0;
     sel_flag = false;
 }
@@ -712,16 +712,17 @@ bool InsetFormula::SetNumber(bool numbf)
 }
 
 
-bool InsetFormula::LocalDispatch(BufferView * bv, int action, char const * arg)
+UpdatableInset::RESULT InsetFormula::LocalDispatch(BufferView * bv,
+						   int action, string arg)
 {
 //   extern char *dispatch_result;
     MathedTextCodes varcode = LM_TC_MIN;       
-   bool was_macro = mathcursor->InMacroMode();
-   bool sel = false;
-   bool space_on = false;
-   bool was_selection = mathcursor->Selection();
-   bool result = true;
-   static MathSpaceInset * sp= 0;
+    bool was_macro = mathcursor->InMacroMode();
+    bool sel = false;
+    bool space_on = false;
+    bool was_selection = mathcursor->Selection();
+    RESULT result = DISPATCHED;
+    static MathSpaceInset * sp= 0;
 
    HideInsetCursor(bv);
 
@@ -734,23 +735,23 @@ bool InsetFormula::LocalDispatch(BufferView * bv, int action, char const * arg)
     case LFUN_RIGHTSEL: sel = true;
     case LFUN_RIGHT:
       {
-	 result = mathcursor->Right(sel);
+	 result = DISPATCH_RESULT(mathcursor->Right(sel));
 	 break;
       }
     case LFUN_LEFTSEL: sel = true;     
     case LFUN_LEFT:
       {
-	 result = mathcursor->Left(sel);
+	 result = DISPATCH_RESULT(mathcursor->Left(sel));
 	 break;
       }
     case LFUN_UPSEL: sel = true;  
     case LFUN_UP:
-      result = mathcursor->Up(sel);
+      result = DISPATCH_RESULT(mathcursor->Up(sel));
       break;
        
     case LFUN_DOWNSEL: sel = true;  
     case LFUN_DOWN:
-      result = mathcursor->Down(sel);
+      result = DISPATCH_RESULT(mathcursor->Down(sel));
       break;
     case LFUN_HOME:
       mathcursor->Home();
@@ -802,7 +803,7 @@ bool InsetFormula::LocalDispatch(BufferView * bv, int action, char const * arg)
     case LFUN_SETXY:
       {
 	 int x, y, x1, y1;
-         sscanf(arg, "%d %d", &x, &y);
+         sscanf(arg.c_str(), "%d %d", &x, &y);
 	 par->GetXY(x1, y1);
 	 mathcursor->SetPos(x1+x, y1+y);
       }
@@ -918,8 +919,8 @@ bool InsetFormula::LocalDispatch(BufferView * bv, int action, char const * arg)
     }
  
     case LFUN_MATH_SIZE:
-       if (arg) {
-	   latexkeys * l = in_word_set (arg, strlen(arg));
+       if (!arg.empty()) {
+	   latexkeys * l = in_word_set (arg.c_str(), strlen(arg.c_str()));
 	   int sz = (l) ? l->id: -1;
 	   mathcursor->SetSize(sz);
 	   UpdateLocal(bv);
@@ -929,7 +930,7 @@ bool InsetFormula::LocalDispatch(BufferView * bv, int action, char const * arg)
     case LFUN_INSERT_MATH:
     {
 	bv->lockedInsetStoreUndo(Undo::INSERT);
-	InsertSymbol(bv, arg);
+	InsertSymbol(bv, arg.c_str());
 	break;
     }
     
@@ -939,7 +940,7 @@ bool InsetFormula::LocalDispatch(BufferView * bv, int action, char const * arg)
        int k, m, n;
        char s[80], arg2[80];
        // This is just so that too long args won't ooze out of s.
-       strncpy(arg2, arg, 80); arg2[79]= '\0';
+       strncpy(arg2, arg.c_str(), 80); arg2[79]= '\0';
        k = sscanf(arg2, "%d %d %s", &m, &n, s);
        s[79] = '\0';
 	
@@ -967,8 +968,9 @@ bool InsetFormula::LocalDispatch(BufferView * bv, int action, char const * arg)
        latexkeys * l;
        string vdelim("(){}[]./|");
 	
-       if (!arg) break;
-       strncpy(arg2, arg, 40); arg2[39]= '\0';
+       if (arg.empty())
+	       break;
+       strncpy(arg2, arg.c_str(), 40); arg2[39]= '\0';
        int n = sscanf(arg2, "%s %s", lf, rg);
        lf[39] = '\0'; rg[39] = '\0';
 
@@ -1070,7 +1072,7 @@ bool InsetFormula::LocalDispatch(BufferView * bv, int action, char const * arg)
        break;
        
     default:
-      if ((action == -1  || action == LFUN_SELFINSERT) && arg)  {
+      if ((action == -1  || action == LFUN_SELFINSERT) && !arg.empty())  {
 	 unsigned char c = arg[0];
 	 bv->lockedInsetStoreUndo(Undo::INSERT);
 	 
@@ -1158,7 +1160,7 @@ bool InsetFormula::LocalDispatch(BufferView * bv, int action, char const * arg)
 		 space_on = true;
 	      } else {
 		  if (!mathcursor->Pop() && mathcursor->IsEnd()) 
-		    result = false;
+		    result = FINISHED;
 	      }
 	   } else
 	   if (c == '\'') {
@@ -1173,7 +1175,7 @@ bool InsetFormula::LocalDispatch(BufferView * bv, int action, char const * arg)
 	 UpdateLocal(bv);
       } else {
 	// lyxerr << "Closed by action " << action << endl;
-	result =  false;
+	result =  FINISHED;
       }
    }
    if (was_macro != mathcursor->InMacroMode()
@@ -1184,7 +1186,7 @@ bool InsetFormula::LocalDispatch(BufferView * bv, int action, char const * arg)
    if (mathcursor->Selection() || was_selection)
        ToggleInsetSelection(bv);
     
-   if (result)
+   if (result == DISPATCHED)
       ShowInsetCursor(bv);
    else
       bv->unlockInset(this);

@@ -49,9 +49,9 @@ public:
 	void Validate(LaTeXFeatures & features) const;
 
 	/// what appears in the minibuffer when opening
-	char const * EditMessage() const { return _("Opened figure"); }
+	const char * EditMessage() const { return _("Opened figure"); }
 	///
-	void Edit(BufferView *, int, int);
+	void Edit(BufferView *, int, int, unsigned int);
 	///
 	unsigned char Editable() const;
 	///

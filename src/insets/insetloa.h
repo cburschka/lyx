@@ -19,7 +19,7 @@
 #include "insetcommand.h"
 #include "gettext.h"
 
-// Created by Bernhard 970807
+class Buffer;
 
 /** Used to insert table of algorithms
  */

@@ -85,7 +85,7 @@ InsetIndex::~InsetIndex()
 }
 
 
-void InsetIndex::Edit(BufferView * bv, int, int)
+void InsetIndex::Edit(BufferView * bv, int, int, unsigned int)
 {
 	if(bv->buffer()->isReadonly())
 		WarnReadonly(bv->buffer()->fileName());

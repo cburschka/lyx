@@ -344,11 +344,11 @@ public:
 			  LyXAlignment align, 
 			  string labelwidthstring,
 			  bool noindent);
-        void SetParagraphExtraOpt(int type,
-                                  char const * width,
-                                  char const * widthp,
-                                  int alignment, bool hfill,
-                                  bool start_minipage);
+	void SetParagraphExtraOpt(int type,
+				  char const * width,
+				  char const * widthp,
+				  int alignment, bool hfill,
+				  bool start_minipage);
 
 	/* these things are for search and replace */
 
@@ -468,12 +468,12 @@ public:
 	void CursorLeftIntern() const;
 	///
 	void CursorRightIntern() const;
-        ///
-        void RemoveTableRow(LyXCursor * cursor) const;
-        ///
-        bool IsEmptyTableCell() const;
-        ///
-        void toggleAppendix();
+	///
+	void RemoveTableRow(LyXCursor * cursor) const;
+	///
+	bool IsEmptyTableCell() const;
+	///
+	void toggleAppendix();
 	///
 	unsigned short paperWidth() const { return paperwidth; }
 private:

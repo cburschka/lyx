@@ -371,7 +371,7 @@ void math_insert_symbol(char const * s)
 	 current_view->beforeChange();
 	 current_view->insertInset(new_inset);
 //	 Update(1);//BUG
-	 new_inset->Edit(current_view, 0, 0);
+	 new_inset->Edit(current_view, 0, 0, 0);
 	 new_inset->InsertSymbol(current_view, s);
       } else
 	if (current_view->the_locking_inset->LyxCode() == Inset::MATH_CODE)

@@ -35,10 +35,10 @@ InsetParent::InsetParent(string const & fn, Buffer * owner)
 }
 
 
-void InsetParent::Edit(BufferView * bv, int, int)
+void InsetParent::Edit(BufferView * bv, int, int, unsigned int)
 {    
-	bv->owner()->getLyXFunc()->Dispatch(LFUN_CHILDOPEN, 
-					    getContents().c_str());
+	bv->owner()->getLyXFunc()->
+		Dispatch(LFUN_CHILDOPEN, getContents().c_str());
 }
 
 

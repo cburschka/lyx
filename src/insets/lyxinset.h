@@ -76,7 +76,9 @@ public:
 		///
 		PARENT_CODE,
 		///
-		BIBTEX_CODE
+		BIBTEX_CODE,
+		///
+		TEXT_CODE
 	};
 
 	///
@@ -93,9 +95,9 @@ public:
 	///
 	virtual LyXFont ConvertFont(LyXFont font);
 	/// what appears in the minibuffer when opening
-	virtual char const * EditMessage() const {return _("Opened inset");}
+	virtual const char * EditMessage() const {return _("Opened inset");}
 	///
-	virtual void Edit(BufferView *, int, int);
+	virtual void Edit(BufferView *, int x, int y, unsigned int button);
 	///
 	virtual unsigned char Editable() const;
 	///
@@ -142,6 +144,8 @@ public:
 	virtual int GetNumberOfLabels() const {
 		return 0;
 	}
+	///
+	virtual void init(BufferView *) {}
 
 };
 
@@ -174,6 +178,28 @@ public:
   */
 class UpdatableInset: public Inset {
 public:
+	/** Dispatch result codes
+	    Now that nested updatable insets are allowed, the local dispatch
+	    becomes a bit complex, just two possible results (boolean)
+	    are not enough. 
+	 
+	    DISPATCHED   = the inset catched the action
+	    FINISHED     = the inset must be unlocked as a result
+	                   of the action
+	    UNDISPATCHED = the action was not catched, it should be
+	                   dispatched by lower level insets
+	*/ 
+	enum RESULT {
+	    UNDISPATCHED=0,
+	    DISPATCHED,
+	    FINISHED
+	};
+    
+	/// To convert old binary dispatch results
+	RESULT DISPATCH_RESULT(bool b) {
+		return (b) ? DISPATCHED: FINISHED;
+	}
+
 	///
 	//virtual ~UpdatableInset() {}
 	///
@@ -188,20 +214,48 @@ public:
 	///
 	virtual void InsetButtonRelease(BufferView *,
 					int x, int y, int button);
-	
 	///
 	virtual void InsetKeyPress(XKeyEvent * ev);
 	///
 	virtual void InsetMotionNotify(BufferView *, int x, int y, int state);
 	///
 	virtual void InsetUnlock(BufferView *);
-   
+	///
+	virtual void Edit(BufferView *, int x, int y, unsigned int button);
+	///
+	virtual void draw(Painter &, LyXFont const &,
+			  int baseline, float & x) const;
+	///
+	virtual void SetFont(LyXFont const &, bool toggleall = false);
+	///
+	virtual bool InsertInset(Inset *) { return false; }
+	///
+	virtual UpdatableInset * GetLockingInset() { return this; }
+	///
+	virtual int InsetInInsetY() { return 0; }
+	///
+	virtual bool UpdateInsetInInset(BufferView *, Inset *) {return false;}
+	///
+	virtual bool UnlockInsetInInset(BufferView *,Inset *,bool /*lr*/=false)
+		{return false;}
 	///  An updatable inset could handle lyx editing commands
-	virtual bool LocalDispatch(BufferView *, int, char const *) { return false; };
-	//
-	bool isCursorVisible() const { return cursor_visible; }
+	virtual RESULT LocalDispatch(BufferView *, int, string);
+	///
+	virtual bool isCursorVisible() const { return cursor_visible; }
+	///
+	virtual int getMaxWidth(UpdatableInset *) const { return -1; }
+
 protected:
 	///
+	// virtual void UpdateLocal(bool flag=true);
+	///
+	mutable int top_x;
+	mutable int top_baseline;
 	mutable bool cursor_visible;
+
+private:
+	///
+	int mx_scx;
+	mutable int scx;
 };
 #endif

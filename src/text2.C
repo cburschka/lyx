@@ -348,7 +348,7 @@ void LyXText::ToggleFootnote()
 void LyXText::OpenStuff()
 {
      	if (cursor.pos == 0 && cursor.par->bibkey){
-		cursor.par->bibkey->Edit(owner_, 0, 0);
+		cursor.par->bibkey->Edit(owner_, 0, 0, 0);
 	}
 	else if (cursor.pos < cursor.par->Last() 
 		 && cursor.par->GetChar(cursor.pos) == LyXParagraph::META_INSET
@@ -357,7 +357,7 @@ void LyXText::OpenStuff()
 			->Set(cursor.par->GetInset(cursor.pos)->EditMessage());
 		if (cursor.par->GetInset(cursor.pos)->Editable() != 2)
 			SetCursorParUndo();
-		cursor.par->GetInset(cursor.pos)->Edit(owner_, 0, 0);
+		cursor.par->GetInset(cursor.pos)->Edit(owner_, 0, 0, 0);
 	} else {
 		ToggleFootnote();
 	}

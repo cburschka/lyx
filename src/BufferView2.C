@@ -237,7 +237,7 @@ void BufferView::open_new_inset(UpdatableInset * new_inset)
 	insertInset(new_inset);
 	text->CursorLeft();
 	update(1);
-    	new_inset->Edit(this, 0, 0);
+    	new_inset->Edit(this, 0, 0, 0);
 }
 
 /* This is also a buffer property (ale) */
@@ -360,7 +360,7 @@ void BufferView::insertNote()
 {
 	InsetInfo * new_inset = new InsetInfo();
 	insertInset(new_inset);
-	new_inset->Edit(this, 0, 0);
+	new_inset->Edit(this, 0, 0, 0);
 }
 
 
@@ -684,6 +684,7 @@ void BufferView::replaceWord(string const & replacestring)
 // End of spellchecker stuff
 
 
+
 /* these functions return 1 if an error occured, 
    otherwise 0 */
 int BufferView::lockInset(UpdatableInset * inset)
@@ -756,16 +757,31 @@ void BufferView::updateInset(Inset * inset, bool mark_dirty)
 		return;
 
 	// first check for locking insets
-	if (the_locking_inset == inset) {
-		if (text->UpdateInset(inset)){
-			update();
-			if (mark_dirty){
-				if (buffer()->isLyxClean())
-					owner()->getMiniBuffer()->setTimer(4);
-				buffer()->markDirty();
+	if (the_locking_inset) {
+		if (the_locking_inset == inset) {
+			if (text->UpdateInset(inset)){
+				update();
+				if (mark_dirty){
+					if (buffer()->isLyxClean())
+						owner()->getMiniBuffer()->
+							setTimer(4);
+					buffer()->markDirty();
+				}
+				updateScrollbar();
+				return;
 			}
-			updateScrollbar();
-			return;
+		} else if (the_locking_inset->UpdateInsetInInset(this,inset)) {
+			if (text->UpdateInset(the_locking_inset)) {
+				update();
+				if (mark_dirty){
+					if (buffer()->isLyxClean())
+						owner()->getMiniBuffer()->
+							setTimer(4);
+					buffer()->markDirty();
+				}
+				updateScrollbar();
+				return;
+			}
 		}
 	}
   

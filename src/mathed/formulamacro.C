@@ -146,7 +146,7 @@ int InsetFormulaMacro::width(Painter & pain, LyXFont const & f) const
 
 
 void InsetFormulaMacro::draw(Painter & pain, LyXFont const & f,
-			     int baseline, float & x) const
+			     int baseline, float & x)
 {
 	LyXFont font(f);
 	tmacro->update();
@@ -173,11 +173,11 @@ void InsetFormulaMacro::draw(Painter & pain, LyXFont const & f,
 }
 
 
-void InsetFormulaMacro::Edit(BufferView * bv, int x, int y)
+void InsetFormulaMacro::Edit(BufferView * bv, int x, int y,unsigned int button)
 {
     opened = true;
     par = static_cast<MathParInset*>(tmacro->Clone());
-    InsetFormula::Edit(bv, x, y);
+    InsetFormula::Edit(bv, x, y, button);
 }
 
 	       
@@ -193,21 +193,21 @@ void InsetFormulaMacro::InsetUnlock(BufferView * bv)
 }
 
 
-bool InsetFormulaMacro::LocalDispatch(BufferView * bv,
-				      int action, char const * arg)
+UpdatableInset::RESULT InsetFormulaMacro::LocalDispatch(BufferView * bv,
+							int action, string arg)
 {
     if (action == LFUN_MATH_MACROARG) {
-	int i = atoi(arg) - 1;
+	int i = atoi(arg.c_str()) - 1;
 	if (i >= 0 && i < tmacro->getNoArgs()) {
 	    mathcursor->Insert(tmacro->getMacroPar(i), LM_TC_INSET);
 	    InsetFormula::UpdateLocal(bv);
 	}
 	
-	return true;
+	return DISPATCHED;
     }
     tmacro->setEditMode(true);
     tmacro->Metrics();
-    bool result = InsetFormula::LocalDispatch(bv, action, arg);
+    RESULT result = InsetFormula::LocalDispatch(bv, action, arg);
     tmacro->setEditMode(false);
     
     return result;

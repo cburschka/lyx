@@ -180,7 +180,7 @@ extern "C" void C_InsetInfo_CloseInfoCB(FL_OBJECT * ob, long data)
 }
 
 
-void InsetInfo::Edit(BufferView * bv, int, int)
+void InsetInfo::Edit(BufferView *bv, int, int, unsigned int)
 {
 	static int ow = -1, oh;
 

@@ -18,8 +18,7 @@
 
 #include "insetcommand.h"
 
-// Created by Alejandro 970222
-
+class Buffer;
 
 /** Used to insert citations  
  */
@@ -38,7 +37,7 @@ public:
     	///
 	string getScreenLabel()const;
         ///
-	void Edit(BufferView *, int, int);
+	void Edit(BufferView *, int x, int y, unsigned int button);
         ///
 	unsigned char Editable() const {
 		return 1;
@@ -77,7 +76,7 @@ public:
 	///
 	virtual string getScreenLabel() const;
         ///
-	void Edit(BufferView *, int, int);
+	void Edit(BufferView *, int x, int y, unsigned int button);
 	///
 	unsigned char Editable() const {
 		return 1;
@@ -126,7 +125,7 @@ public:
 	///
 	string getScreenLabel() const;
 	///
-	void Edit(BufferView *, int, int);
+	void Edit(BufferView *, int x, int y, unsigned int button);
 	/// 
 	int Latex(ostream &, signed char) const;
 	///

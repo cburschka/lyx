@@ -109,7 +109,7 @@ extern "C" void C_InsetUrl_CloseUrlCB(FL_OBJECT * ob, long data)
 }
 
 
-void InsetUrl::Edit(BufferView * bv, int, int)
+void InsetUrl::Edit(BufferView * bv, int, int, unsigned int)
 {
 	static int ow = -1, oh;
 

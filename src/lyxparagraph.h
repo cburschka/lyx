@@ -154,6 +154,8 @@ public:
 	LyXParagraph * TeXOnePar(string & file, TexRow & texrow,
 				string & foot, TexRow & foot_texrow,
 				int & foot_count);
+	///
+	bool SimpleTeXOnePar(string & file, TexRow & texrow);
 
 	///
 	LyXParagraph * TeXEnvironment(string & file, TexRow & texrow,
@@ -521,8 +523,6 @@ private:
 				   string & foot, TexRow & foot_texrow,
 				   int & foot_count,
 				   LyXDirection par_direction);
-	///
-	bool SimpleTeXOnePar(string & file, TexRow & texrow);
 	///
 	bool SimpleTeXOneTablePar(string & file, TexRow & texrow);
 	///

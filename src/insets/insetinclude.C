@@ -226,7 +226,7 @@ Inset * InsetInclude::Clone() const
 }
 
 
-void InsetInclude::Edit(BufferView * bv, int, int)
+void InsetInclude::Edit(BufferView * bv, int, int, unsigned int)
 {
 	if(bv->buffer()->isReadonly())
 		WarnReadonly(bv->buffer()->fileName());

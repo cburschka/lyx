@@ -41,6 +41,8 @@ public:
 	///
 	Painter & painter();
 	///
+	Painter & getPainter() const;
+	///
 	void buffer(Buffer * b);
 	///
 	void resize(int, int, int, int);
@@ -83,7 +85,11 @@ public:
 	*/
 	LyXText * text;
 	///
+	unsigned short paperWidth() const;
+	///
 	UpdatableInset * the_locking_inset;
+	///
+	void updateInset(Inset * inset, bool mark_dirty);
 	///
 	bool inset_slept;
 	///
@@ -264,8 +270,6 @@ private:
 	///
 	UpdateInset updatelist;
 public:
-	///
-	void updateInset(Inset *, bool);
 	///
 	void pushIntoUpdateList(Inset * i) {
 		updatelist.push(i);

@@ -57,9 +57,9 @@ public:
 	///
 	int DocBook(string & file) const;
 	/// what appears in the minibuffer when opening
-	char const * EditMessage() const {return _("Opened note");}
+	const char * EditMessage() const {return _("Opened note");}
 	///
-	void Edit(BufferView *, int, int);
+	void Edit(BufferView *, int, int, unsigned int);
 	///
 	unsigned char Editable() const;
 	///

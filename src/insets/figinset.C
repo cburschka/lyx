@@ -1036,8 +1036,7 @@ int InsetFig::width(Painter &, LyXFont const &) const
 }
 
 
-void InsetFig::draw(Painter & pain, LyXFont const & f,
-		    int baseline, float & x) const
+void InsetFig::draw(Painter & pain, LyXFont const & f, int baseline, float & x) const
 {
 	LyXFont font(f);
 	
@@ -1241,7 +1240,7 @@ bool InsetFig::Deletable() const
 }
 
 
-void InsetFig::Edit(BufferView * bv, int, int)
+void InsetFig::Edit(BufferView * bv, int, int, unsigned int)
 {
 	lyxerr.debug() << "Editing InsetFig." << endl;
 	Regenerate();

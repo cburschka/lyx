@@ -17,7 +17,8 @@
 
 #include "insetcommand.h"
 #include "gettext.h"
-// Created by asierra 970813
+
+class Buffer;
 
 /** Reference to the parent document.
 
@@ -41,7 +42,7 @@ public:
 		return string(_("Parent:")) + getContents();
 	}
         ///
-	void Edit(BufferView *, int, int);
+	void Edit(BufferView *, int, int, unsigned int);
         ///
 	unsigned char Editable() const {
 		return 1;

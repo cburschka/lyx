@@ -42,7 +42,7 @@ public:
 	///
 	int width(Painter &, LyXFont const &) const;
 	///
-	void draw(Painter &, LyXFont const &, int baseline, float & x) const;
+	void draw(Painter &, LyXFont const &, int baseline, float & x);
 	///
 	void Read(LyXLex & lex);
         ///
@@ -59,16 +59,18 @@ public:
 	Inset * Clone() const;
 
 	/// what appears in the minibuffer when opening
-	char const * EditMessage() const {return _("Math macro editor mode");}
+	const char * EditMessage() const {return _("Math macro editor mode");}
 	///
-	void Edit(BufferView *, int x, int y);
+	void Edit(BufferView *, int x, int y, unsigned int button);
 	///
 	void InsetUnlock(BufferView *);
 	///
-	bool LocalDispatch(BufferView *, int, char const *);
+	RESULT LocalDispatch(BufferView *, int, string);
+
 protected:
 	///
 	//void UpdateLocal();
+
 private:
 	///
         bool opened;

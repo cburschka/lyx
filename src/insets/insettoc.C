@@ -10,8 +10,9 @@
 #include "commandtags.h"
 #include "lyxfunc.h"
 #include "LyXView.h"
+#include "BufferView.h"
 
-void InsetTOC::Edit(BufferView * bv, int, int)
+void InsetTOC::Edit(BufferView * bv, int, int, unsigned int)
 {
 	bv->owner()->getLyXFunc()->Dispatch(LFUN_TOCVIEW);
 }

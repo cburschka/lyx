@@ -19,7 +19,7 @@
 #include "insetcommand.h"
 #include "gettext.h"
 
-// Created by Lgb 970527
+class Buffer;
 
 /** Used to insert table of contents
  */
@@ -34,7 +34,7 @@ public:
     	///
 	string getScreenLabel() const { return _("Table of Contents"); }
 	/// On edit, we open the TOC pop-up
-	void Edit(BufferView *, int, int);
+	void Edit(BufferView * bv, int, int, unsigned int);
         ///
 	unsigned char Editable() const {
 		return 1;
