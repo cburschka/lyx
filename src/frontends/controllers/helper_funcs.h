@@ -30,9 +30,10 @@ class LyXView;
     dir1 = (name, dir), dir2 = (name, dir): extra buttons on the dialog.
 */
 string const
-browseFile(LyXView *lv, string const & filename,
+browseFile(LyXView * lv, string const & filename,
 	   string const & title,
 	   string const & pattern,
+	   bool save = false,
 	   std::pair<string,string> const & dir1 =
 	   std::make_pair(string(), string()),
 	   std::pair<string,string> const & dir2 =
@@ -46,10 +47,11 @@ browseFile(LyXView *lv, string const & filename,
    intended to be useful for insets which encapsulate files/
 */
 string const
-browseRelFile(LyXView *lv, string const & filename,
+browseRelFile(LyXView * lv, string const & filename,
 	      string const & refpath,
 	      string const & title,
 	      string const & pattern,
+	      bool save = false,
 	      std::pair<string,string> const & dir1 =
 	      std::make_pair(string(), string()),
 	      std::pair<string,string> const & dir2 =

@@ -154,5 +154,5 @@ string const ControlExternal::Browse(string const & input) const
 	std::pair<string, string> dir1(N_("Documents|#o#O"),
 				  string(lyxrc.document_path));
 
-	return browseRelFile(&lv_, input, bufpath, title, pattern, dir1);
+	return browseRelFile(&lv_, input, bufpath, title, pattern, false, dir1);
 }

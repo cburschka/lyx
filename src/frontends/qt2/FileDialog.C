@@ -51,7 +51,7 @@ FileDialog::~FileDialog()
 }
 
 
-FileDialog::Result const FileDialog::Select(string const & path,
+FileDialog::Result const FileDialog::save(string const & path,
 					    string const & mask,
 					    string const & suggested)
 {
@@ -69,9 +69,33 @@ FileDialog::Result const FileDialog::Select(string const & path,
 	if (!suggested.empty())
 		dlg.setSelection(suggested.c_str());
 
-	// This code relies on DestructiveClose which is broken
-	// in Qt < 3.0.5. So we just don't allow it for now.
-	//if (success_ == LFUN_SELECT_FILE_SYNC) {
+	FileDialog::Result result;
+	lyxerr[Debug::GUI] << "Synchronous FileDialog : " << endl;
+	result.first = FileDialog::Chosen;
+	int res = dlg.exec();
+	lyxerr[Debug::GUI] << "result " << res << endl;
+	if (res == QDialog::Accepted)
+		result.second = string(dlg.selectedFile().data());
+	dlg.hide();
+	return result;
+}
+
+ 
+FileDialog::Result const FileDialog::open(string const & path,
+					    string const & mask,
+					    string const & suggested)
+{
+	string filter(mask);
+	if (mask.empty())
+		filter = _("*|All files");
+
+	LyXFileDialog dlg(path, filter, title_, private_->b1, private_->b2);
+	lyxerr[Debug::GUI] << "Select with path \"" << path
+			   << "\", mask \"" << filter
+			   << "\", suggested \"" << suggested << endl;
+
+	if (!suggested.empty())
+		dlg.setSelection(suggested.c_str());
 
 	FileDialog::Result result;
 	lyxerr[Debug::GUI] << "Synchronous FileDialog : " << endl;
@@ -82,8 +106,4 @@ FileDialog::Result const FileDialog::Select(string const & path,
 		result.second = string(dlg.selectedFile().data());
 	dlg.hide();
 	return result;
-#if 0
-	dlg->show();
-	return make_pair(FileDialog::Later, string());
-#endif
 }

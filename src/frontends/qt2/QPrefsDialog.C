@@ -312,7 +312,7 @@ void QPrefsDialog::switch_converter(int nr)
 }
 
  
-// FIXME: we would like to highlight the new entry ... also user must
+// FIXME: user must
 // specify unique from/to or it doesn't appear. This is really bad UI
 void QPrefsDialog::new_converter()
 { 
@@ -325,6 +325,7 @@ void QPrefsDialog::new_converter()
 		form_->converters_.updateLast(form_->formats_);
 	}
 	updateConverters();
+	convertersModule->convertersLB->setCurrentItem(convertersModule->convertersLB->count() - 1); 
 }
 
 

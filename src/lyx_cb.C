@@ -115,7 +115,7 @@ bool WriteAs(BufferView * bv, Buffer * buffer, string const & filename)
 			fname += ".lyx";
 
 		FileDialog::Result result =
-			fileDlg.Select(OnlyPath(fname),
+			fileDlg.save(OnlyPath(fname),
 				       _("*.lyx|LyX Documents (*.lyx)"),
 				       OnlyFilename(fname));
 
@@ -419,7 +419,7 @@ string getContentsOfAsciiFile(BufferView * bv, string const & f, bool asParagrap
 		FileDialog fileDlg(bv->owner(), _("Select file to insert"),
 			(asParagraph) ? LFUN_FILE_INSERT_ASCII_PARA : LFUN_FILE_INSERT_ASCII);
 
-		FileDialog::Result result = fileDlg.Select(bv->owner()->buffer()->filePath());
+		FileDialog::Result result = fileDlg.open(bv->owner()->buffer()->filePath());
 
 		if (result.first == FileDialog::Later)
 			return string();

@@ -1,5 +1,10 @@
 2002-11-17  John Levon  <levon@movementarian.org>
 
+	* FileDialog.C:  split into open/save so open
+	  no longer says "Save" !
+ 
+2002-11-17  John Levon  <levon@movementarian.org>
+
 	* QPrefsDialog.h:
 	* QPrefsDialog.C: implement converters
  

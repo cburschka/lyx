@@ -47,7 +47,7 @@ public:
 	/**
 	 * Constructs a file dialog attached to LyXView \param lv, with
 	 * title \param title. If \param a is \const LFUN_SELECT_FILE_SYNC
-	 * then a value will be returned immediately upon performing a Select(),
+	 * then a value will be returned immediately upon performing a open(),
 	 * otherwise a callback Dispatch() will be invoked with the filename as
 	 * argument, of action \param a.
 	 *
@@ -64,7 +64,7 @@ public:
 	~FileDialog();
 
 	/**
-	 * Choose a file for selection, starting in directory \param
+	 * Choose a file for opening, starting in directory \param
 	 * path, with the file selection \param mask. The \param mask
 	 * string is of the form :
 	 *
@@ -74,7 +74,20 @@ public:
 	 *
 	 * FIXME: should support multiple lines of these for different file types.
 	 */
-	Result const Select(string const & path = string(),
+	Result const open(string const & path = string(),
+		string const & mask = string(),
+		string const & suggested = string());
+
+	/**
+	 * Choose a file for saving, starting in directory \param
+	 * path, with the file selection \param mask. The \param mask
+	 * string is of the form :
+	 *
+	 * <glob to match> | <description>
+	 *
+	 * for example, "*.ps | PostScript files (*.ps)".
+	 */
+	Result const save(string const & path = string(),
 		string const & mask = string(),
 		string const & suggested = string());
 

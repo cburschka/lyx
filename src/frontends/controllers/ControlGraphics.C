@@ -93,7 +93,7 @@ string const ControlGraphics::Browse(string const & in_name)
 	pair<string, string> dir2(_("Documents|#o#O"), string(lyxrc.document_path));
 	// Show the file browser dialog
 	return browseRelFile(&lv_, in_name, buffer()->filePath(),
-			     title, "*.*", dir1, dir2);
+			     title, "*.*", false, dir1, dir2);
 }
 
 

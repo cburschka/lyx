@@ -857,7 +857,7 @@ void BufferView::Pimpl::MenuInsertLyXFile(string const & filen)
 				  string(AddPath(system_lyxdir, "examples"))));
 
 		FileDialog::Result result =
-			fileDlg.Select(initpath,
+			fileDlg.open(initpath,
 				       _("*.lyx| LyX Documents (*.lyx)"));
 
 		if (result.first == FileDialog::Later)

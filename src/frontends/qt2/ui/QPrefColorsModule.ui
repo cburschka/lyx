@@ -13,7 +13,7 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>305</width>
+            <width>301</width>
             <height>259</height>
         </rect>
     </property>
@@ -21,7 +21,7 @@
         <name>caption</name>
         <string>Colors</string>
     </property>
-    <grid>
+    <hbox>
         <property stdset="1">
             <name>margin</name>
             <number>11</number>
@@ -30,53 +30,108 @@
             <name>spacing</name>
             <number>6</number>
         </property>
-        <widget row="1"  column="0"  rowspan="2"  colspan="1" >
-            <class>QListBox</class>
-            <item>
-                <property>
-                    <name>text</name>
-                    <string>New Item</string>
+        <widget>
+            <class>QLayoutWidget</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>Layout2</cstring>
+            </property>
+            <vbox>
+                <property stdset="1">
+                    <name>margin</name>
+                    <number>0</number>
                 </property>
-            </item>
-            <property stdset="1">
-                <name>name</name>
-                <cstring>lyxObjectsLB</cstring>
-            </property>
+                <property stdset="1">
+                    <name>spacing</name>
+                    <number>6</number>
+                </property>
+                <widget>
+                    <class>QLabel</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>lyxObjectsLA</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>text</name>
+                        <string>&amp;Colors</string>
+                    </property>
+                    <property>
+                        <name>buddy</name>
+                        <cstring>lyxObjectsLB</cstring>
+                    </property>
+                </widget>
+                <widget>
+                    <class>QListBox</class>
+                    <item>
+                        <property>
+                            <name>text</name>
+                            <string>New Item</string>
+                        </property>
+                    </item>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>lyxObjectsLB</cstring>
+                    </property>
+                </widget>
+                <widget>
+                    <class>QLayoutWidget</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>Layout1</cstring>
+                    </property>
+                    <hbox>
+                        <property stdset="1">
+                            <name>margin</name>
+                            <number>0</number>
+                        </property>
+                        <property stdset="1">
+                            <name>spacing</name>
+                            <number>6</number>
+                        </property>
+                        <widget>
+                            <class>QPushButton</class>
+                            <property stdset="1">
+                                <name>name</name>
+                                <cstring>colorChangePB</cstring>
+                            </property>
+                            <property stdset="1">
+                                <name>text</name>
+                                <string>&amp;Alter ...</string>
+                            </property>
+                        </widget>
+                        <spacer>
+                            <property>
+                                <name>name</name>
+                                <cstring>Spacer3</cstring>
+                            </property>
+                            <property stdset="1">
+                                <name>orientation</name>
+                                <enum>Horizontal</enum>
+                            </property>
+                            <property stdset="1">
+                                <name>sizeType</name>
+                                <enum>Expanding</enum>
+                            </property>
+                            <property>
+                                <name>sizeHint</name>
+                                <size>
+                                    <width>20</width>
+                                    <height>20</height>
+                                </size>
+                            </property>
+                        </spacer>
+                    </hbox>
+                </widget>
+            </vbox>
         </widget>
-        <widget row="0"  column="0" >
-            <class>QLabel</class>
-            <property stdset="1">
-                <name>name</name>
-                <cstring>lyxObjectsLA</cstring>
-            </property>
-            <property stdset="1">
-                <name>text</name>
-                <string>LyX &amp;Objects:</string>
-            </property>
+        <spacer>
             <property>
-                <name>buddy</name>
-                <cstring>lyxObjectsLB</cstring>
-            </property>
-        </widget>
-        <widget row="1"  column="1" >
-            <class>QPushButton</class>
-            <property stdset="1">
                 <name>name</name>
-                <cstring>colorChangePB</cstring>
-            </property>
-            <property stdset="1">
-                <name>text</name>
-                <string>Chan&amp;ge Color...</string>
-            </property>
-        </widget>
-        <spacer row="2"  column="1" >
-            <property>
-                <name>name</name>
-                <cstring>Spacer6</cstring>
+                <cstring>Spacer2</cstring>
             </property>
             <property stdset="1">
                 <name>orientation</name>
-                <enum>Vertical</enum>
+                <enum>Horizontal</enum>
             </property>
             <property stdset="1">
                 <name>sizeType</name>
@@ -90,6 +145,6 @@
                 </size>
             </property>
         </spacer>
-    </grid>
+    </hbox>
 </widget>
 </UI>

@@ -1594,7 +1594,7 @@ void LyXFunc::menuNew(string const & name, bool fromTemplate)
 				  string(lyxrc.template_path)));
 
 		FileDialog::Result result =
-			fileDlg.Select(lyxrc.template_path,
+			fileDlg.open(lyxrc.template_path,
 				       _("*.lyx|LyX Documents (*.lyx)"));
 
 		if (result.first == FileDialog::Later)
@@ -1633,7 +1633,7 @@ void LyXFunc::open(string const & fname)
 				  string(AddPath(system_lyxdir, "examples"))));
 
 		FileDialog::Result result =
-			fileDlg.Select(initpath,
+			fileDlg.open(initpath,
 				       "*.lyx|LyX Documents (*.lyx)");
 
 		if (result.first == FileDialog::Later)
@@ -1722,7 +1722,7 @@ void LyXFunc::doImport(string const & argument)
 			+ "| " + formats.prettyName(format)
 			+ " (*." + formats.extension(format) + ")";
 
-		FileDialog::Result result = fileDlg.Select(initpath,
+		FileDialog::Result result = fileDlg.open(initpath,
 							   extension);
 
 		if (result.first == FileDialog::Later)

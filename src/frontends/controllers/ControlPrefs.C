@@ -70,7 +70,7 @@ string const ControlPrefs::browsebind(string const & file)
 	name = _("User Bind|#U#u");
 	pair<string,string> dir2(name, dir);
  
-	return browseFile(&lv_, file, _("Choose bind file"), "*.bind", dir1, dir2);
+	return browseFile(&lv_, file, _("Choose bind file"), "*.bind", false, dir1, dir2);
 }
 
 
@@ -86,7 +86,7 @@ string const ControlPrefs::browseUI(string const & file)
 	name = _("User UI|#U#u");
 	pair<string,string> dir2(name, dir);
  
-	return browseFile(&lv_, file, _("Choose UI file"), "*.ui", dir1, dir2);
+	return browseFile(&lv_, file, _("Choose UI file"), "*.ui", false, dir1, dir2);
 }
 
  
@@ -96,7 +96,7 @@ string const ControlPrefs::browsekbmap(string const & file)
 	string const name = _("Key maps|#K#k");
 	pair<string, string> dir1(name, dir);
  
-	return browseFile(&lv_, file, _("Choose keyboard map"), "*.kmap", dir1);
+	return browseFile(&lv_, file, _("Choose keyboard map"), "*.kmap", false, dir1);
 }
 
  
@@ -108,7 +108,7 @@ string const ControlPrefs::browsedict(string const & file)
  
 string const ControlPrefs::browse(string const & file, string const & title)
 {
-	return browseFile(&lv_, file, title, "*");
+	return browseFile(&lv_, file, title, "*", true);
 }
 
 

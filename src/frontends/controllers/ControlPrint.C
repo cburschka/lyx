@@ -80,7 +80,7 @@ string const ControlPrint::Browse(string const & in_name)
 
 	// Show the file browser dialog
 	return browseRelFile(&lv_, in_name, buffer()->filePath(),
-			     title, pattern);
+			     title, pattern, true);
 }
 
 

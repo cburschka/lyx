@@ -1,3 +1,8 @@
+2002-11-17  John Levon  <levon@movementarian.org>
+
+	* FileDialog.h: split Select() into open()/save() for
+	  benefit of Qt
+ 
 2002-11-01  Herbert Voss  <voss@perce.de>
  
  	* ControlGraphics.C: "Default" is now a part of the rotate-list

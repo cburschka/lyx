@@ -32,6 +32,7 @@ using std::make_pair;
 string const browseFile(LyXView * lv, string const & filename,
 			string const & title,
 			string const & pattern,
+			bool save,
 			pair<string,string> const & dir1,
 			pair<string,string> const & dir2)
 {
@@ -44,8 +45,12 @@ string const browseFile(LyXView * lv, string const & filename,
 	FileDialog::Result result;
 
 	while (true) {
-		result = fileDlg.Select(lastPath, pattern,
-					OnlyFilename(filename));
+		if (save) 
+			result = fileDlg.save(lastPath, pattern,
+				OnlyFilename(filename));
+		else
+			result = fileDlg.open(lastPath, pattern,
+				OnlyFilename(filename));
 
 		if (result.second.empty())
 			return result.second;
@@ -68,12 +73,13 @@ string const browseRelFile(LyXView * lv, string const & filename,
 			string const & refpath,
 			string const & title,
 			string const & pattern,
+		        bool save = false,
 			pair<string,string> const & dir1,
 			pair<string,string> const & dir2)
 {
 	string const fname = MakeAbsPath(filename, refpath);
 
-	string const outname = browseFile(lv, fname, title, pattern,
+	string const outname = browseFile(lv, fname, title, pattern, save,
 					  dir1, dir2);
 	string const reloutname = MakeRelPath(outname, refpath);
 	if (prefixIs(reloutname, "../"))
