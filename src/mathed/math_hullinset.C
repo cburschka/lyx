@@ -712,7 +712,7 @@ void MathHullInset::write(WriteStream & os) const
 		for (col_type col = 0; col < ncols(); ++col)
 			os << cell(index(row, col)) << eocString(col);
 		if (n) {
-			if (!label_[row].empty())
+			if (!label_[row].empty() && !nonum_[row])
 				os << "\\label{" << label_[row] << "}";
 			if (nonum_[row])
 				os << "\\nonumber ";

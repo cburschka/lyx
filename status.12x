@@ -65,6 +65,8 @@ What's new
 - fix bad latex output with math array environment included in an
   eqnarray environment
 
+- do not output labels in latex when numbering is off
+
 - harmonize the behavior of delete and backspace in main text,
   insettext, and tabulars, i.e. don't put stuff into the clipboard
 

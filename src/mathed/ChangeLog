@@ -1,3 +1,8 @@
+2002-10-31  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* math_hullinset.C (write): never output \label{} and \nonumber at
+	the same time
+
 2002-10-29  André Pönitz  <poenitz@gmx.net>
 
 	* math_arrayinset.C (write): Do not write \n at the end of an array
