@@ -61,6 +61,8 @@ public:
 		///
 		ALIGN_CENTER,
 		///
+		ALIGN_BLOCK,
+		///
 		VALIGN_TOP,
 		///
 		VALIGN_BOTTOM,

@@ -86,6 +86,7 @@ TabularFeature tabularFeature[] =
 	{ LyXTabular::ALIGN_LEFT, "align-left" },
 	{ LyXTabular::ALIGN_RIGHT, "align-right" },
 	{ LyXTabular::ALIGN_CENTER, "align-center" },
+	{ LyXTabular::ALIGN_BLOCK, "align-block" },
 	{ LyXTabular::VALIGN_TOP, "valign-top" },
 	{ LyXTabular::VALIGN_BOTTOM, "valign-bottom" },
 	{ LyXTabular::VALIGN_CENTER, "valign-center" },
@@ -1880,6 +1881,9 @@ void InsetTabular::tabularFeatures(BufferView * bv,
 	case LyXTabular::ALIGN_CENTER:
 		setAlign = LYX_ALIGN_CENTER;
 		break;
+	case LyXTabular::ALIGN_BLOCK:
+		setAlign = LYX_ALIGN_BLOCK;
+		break;
 	case LyXTabular::M_VALIGN_TOP:
 	case LyXTabular::VALIGN_TOP:
 		setVAlign = LyXTabular::LYX_VALIGN_TOP;
@@ -1926,6 +1930,13 @@ void InsetTabular::tabularFeatures(BufferView * bv,
 			}
 			updateLocal(bv, INIT, true);
 		}
+
+		if (vallen.zero() 
+		    && tabular->GetAlignment(actcell, true) == LYX_ALIGN_BLOCK)
+			tabularFeatures(bv, LyXTabular::ALIGN_CENTER, string());
+		else if (!vallen.zero()
+			 && tabular->GetAlignment(actcell, true) != LYX_ALIGN_BLOCK)
+			tabularFeatures(bv, LyXTabular::ALIGN_BLOCK, string());
 	}
 	break;
 	case LyXTabular::SET_MPWIDTH:
@@ -2050,6 +2061,7 @@ void InsetTabular::tabularFeatures(BufferView * bv,
 	case LyXTabular::ALIGN_LEFT:
 	case LyXTabular::ALIGN_RIGHT:
 	case LyXTabular::ALIGN_CENTER:
+	case LyXTabular::ALIGN_BLOCK:
 		for (int i = sel_row_start; i <= sel_row_end; ++i)
 			for (int j = sel_col_start; j <= sel_col_end; ++j)
 				tabular->SetAlignment(
@@ -2419,6 +2431,10 @@ FuncStatus InsetTabular::getStatus(string const & what) const
 		flag = false;
 	case LyXTabular::ALIGN_CENTER:
 		status.setOnOff(tabular->GetAlignment(actcell, flag) == LYX_ALIGN_CENTER);
+		break;
+	case LyXTabular::ALIGN_BLOCK:
+		status.disabled(tabular->GetPWidth(actcell).zero());
+		status.setOnOff(tabular->GetAlignment(actcell, flag) == LYX_ALIGN_BLOCK);
 		break;
 	case LyXTabular::M_VALIGN_TOP:
 		flag = false;

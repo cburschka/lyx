@@ -2244,19 +2244,17 @@ int LyXTabular::latex(Buffer const * buf,
 			if (column_info[i].left_line)
 				os << '|';
 			if (!column_info[i].p_width.zero()) {
-			  os << ">{";
 			  switch (column_info[i].alignment) {
 			  case LYX_ALIGN_LEFT:
-			    os << "\\raggedright";
+			    os << ">{\\raggedright}";
 			    break;
 			  case LYX_ALIGN_RIGHT:
-			    os << "\\raggedleft";
+			    os << ">{\\raggedleft}";
 			    break;
 			  case LYX_ALIGN_CENTER:
-			    os << "\\centering";
+			    os << ">{\\centering}";
 			    break;
 			  }
-			  os << "}";
 			  
 				switch (column_info[i].valignment) {
 				case LYX_VALIGN_TOP:

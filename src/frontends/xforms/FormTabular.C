@@ -315,12 +315,15 @@ void FormTabular::update()
 	fl_set_button(column_options_->radio_align_left, 0);
 	fl_set_button(column_options_->radio_align_right, 0);
 	fl_set_button(column_options_->radio_align_center, 0);
+	fl_set_button(column_options_->radio_align_block, 0);
 	if (align == LYX_ALIGN_LEFT)
 		fl_set_button(column_options_->radio_align_left, 1);
 	else if (align == LYX_ALIGN_RIGHT)
 		fl_set_button(column_options_->radio_align_right, 1);
-	else
+	else if (align == LYX_ALIGN_CENTER)
 		fl_set_button(column_options_->radio_align_center, 1);
+	else
+		fl_set_button(column_options_->radio_align_block, 1);
 	align = tabular->GetVAlignment(cell, true);
 	fl_set_button(column_options_->radio_valign_top, 0);
 	fl_set_button(column_options_->radio_valign_bottom, 0);
@@ -335,6 +338,7 @@ void FormTabular::update()
 	setEnabled(column_options_->radio_align_left,   true);
 	setEnabled(column_options_->radio_align_right,  true);
 	setEnabled(column_options_->radio_align_center, true);
+	setEnabled(column_options_->radio_align_block,   !pwidth.zero());
 	setEnabled(column_options_->radio_valign_top,    !pwidth.zero());
 	setEnabled(column_options_->radio_valign_bottom, !pwidth.zero());
 	setEnabled(column_options_->radio_valign_center, !pwidth.zero());
@@ -582,6 +586,8 @@ ButtonPolicy::SMInput FormTabular::input(FL_OBJECT * ob, long)
 		num = LyXTabular::ALIGN_RIGHT;
 	else if (ob == column_options_->radio_align_center)
 		num = LyXTabular::ALIGN_CENTER;
+	else if (ob == column_options_->radio_align_block)
+		num = LyXTabular::ALIGN_BLOCK;
 	else if (ob == column_options_->radio_valign_top)
 		num = LyXTabular::VALIGN_TOP;
 	else if (ob == column_options_->radio_valign_bottom)
