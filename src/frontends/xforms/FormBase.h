@@ -97,7 +97,9 @@ protected:
 		hide();
 	}
 	/// Restore from dialog
-	virtual void restore() {}
+	virtual void restore() {
+		update();
+	}
 	/// delete derived class variables when hide()ing
 	virtual void clearStore() {}
 	/// Pointer to the actual instantiation of xform's form

@@ -31,6 +31,7 @@
 #include "bufferlist.h"
 #include "minibuffer.h"
 #include "gettext.h"
+#include "lyx_gui_misc.h"
 
 using std::ifstream;
 using std::getline;
@@ -152,8 +153,8 @@ int LaTeX::run(TeXErrors & terr, MiniBuffer * minib)
 				<< "Dependency file has changed" << endl;
 			lyxerr[Debug::LATEX]
 				<< "Run #" << count << endl; 
-			minib->Set(string(_("LaTeX run number ")) + tostr(count));
-			minib->Store();
+			WriteStatus(minib,
+				    string(_("LaTeX run number ")) + tostr(count));
 			this->operator()();
 			scanres = scanLogFile(terr);
 			if (scanres & LaTeX::ERRORS) {
@@ -177,8 +178,8 @@ int LaTeX::run(TeXErrors & terr, MiniBuffer * minib)
 		lyxerr[Debug::LATEX]
 			<< "Run #" << count << endl;
 		head.insert(file, true);
-		minib->Set(string(_("LaTeX run number ")) + tostr(count));
-		minib->Store();
+		WriteStatus(minib,
+			    string(_("LaTeX run number ")) + tostr(count));
 		this->operator()();
 		scanres = scanLogFile(terr);
 		if (scanres & LaTeX::ERRORS) {
@@ -203,8 +204,7 @@ int LaTeX::run(TeXErrors & terr, MiniBuffer * minib)
 	if (head.haschanged(OnlyFilename(ChangeExtension(file, ".idx")))) {
 		// no checks for now
 		lyxerr[Debug::LATEX] << "Running MakeIndex." << endl;
-		minib->Set(_("Running MakeIndex."));
-		minib->Store();
+		WriteStatus(minib, _("Running MakeIndex."));
 		rerun = runMakeIndex(OnlyFilename(ChangeExtension(file, ".idx")));
 	}
 
@@ -217,8 +217,7 @@ int LaTeX::run(TeXErrors & terr, MiniBuffer * minib)
 		// tags is found -> run bibtex and set rerun = true;
 		// no checks for now
 		lyxerr[Debug::LATEX] << "Running BibTeX." << endl;
-		minib->Set(_("Running BibTeX."));
-		minib->Store();
+		WriteStatus(minib, _("Running BibTeX."));
 		rerun = runBibTeX(OnlyFilename(ChangeExtension(file, ".aux")), 
 				  head);
 	}
@@ -242,8 +241,8 @@ int LaTeX::run(TeXErrors & terr, MiniBuffer * minib)
 			<< "Dep. file has changed or rerun requested" << endl;
 		lyxerr[Debug::LATEX]
 			<< "Run #" << count << endl;
-		minib->Set(string(_("LaTeX run number ")) + tostr(count));
-		minib->Store();
+		WriteStatus(minib,
+			    string(_("LaTeX run number ")) + tostr(count));
 		this->operator()();
 		scanres = scanLogFile(terr);
 		if (scanres & LaTeX::ERRORS) {
@@ -270,8 +269,7 @@ int LaTeX::run(TeXErrors & terr, MiniBuffer * minib)
 	if (head.haschanged(OnlyFilename(ChangeExtension(file, ".idx")))) {
 		// no checks for now
 		lyxerr[Debug::LATEX] << "Running MakeIndex." << endl;
-		minib->Set(_("Running MakeIndex."));
-		minib->Store();
+		WriteStatus(minib, _("Running MakeIndex."));
 		rerun = runMakeIndex(OnlyFilename(ChangeExtension(file, ".idx")));
 	}
 	
@@ -292,8 +290,7 @@ int LaTeX::run(TeXErrors & terr, MiniBuffer * minib)
 		rerun = false;
 		++count;
 		lyxerr[Debug::LATEX] << "Run #" << count << endl;
-		minib->Set(string(_("LaTeX run number ")) + tostr(count));
-		minib->Store();
+		WriteStatus(minib, string(_("LaTeX run number ")) + tostr(count));
 		this->operator()();
 		scanres = scanLogFile(terr);
 		if (scanres & LaTeX::ERRORS) {

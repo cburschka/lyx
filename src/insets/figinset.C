@@ -905,6 +905,9 @@ void RegisterFigure(InsetFig * fi)
 static
 void UnregisterFigure(InsetFig * fi)
 {
+	if (!lyxrc.use_gui)
+		return;
+
 	Figref * tmpfig = fi->figure;
 
 	if (tmpfig->data) freefigdata(tmpfig->data);
@@ -1415,6 +1418,9 @@ void InsetFig::TempRegenerate()
 
 void InsetFig::Recompute()
 {
+	if (!lyxrc.use_gui)
+		return;
+
 	bool changed = changedfname;
 	int newx, newy, nraw_x, nraw_y;
 

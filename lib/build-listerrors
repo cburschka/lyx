@@ -3,81 +3,17 @@
 # Attempt to build listerrors (see examples/Literate.lyx) at build-time
 #
 # Author: Kayvan Sylvan <kayvan@sylvan.com>
-
-fakeprogram()
-{
-    L=listerrors
-    echo "#!/bin/sh" > $L
-    echo 'echo "This is NOT the listerrors program."' >> $L
-    echo 'echo ""' >> $L
-    echo 'echo "Here was the problem when we tried to build listerrors:"' >> $L
-    echo echo "$1" >> $L
-    chmod +x $L
-    exit 0
-}
-
-mywhich()
-{
-    arg=$1
-    for i in `echo $PATH | sed 's/:/ /g'`
-    do
-        if [ -x $i/$arg ]
-        then
-            echo $i/$arg
-        fi
-    done
-}
+#
+# Assume notangle is on the path
 
 if [ -r ../src/lyx ]
 then
     lyx=../src/lyx
 else
-    lyx=`mywhich lyx`
+    # Assumed to be on the path
+    lyx=lyx 
 fi
 
-if [ -z "$lyx" ]
-then
-    echo "You must build lyx first to build listerrors."
-    exit 1
-fi
-
-notangle=`mywhich notangle`
-
-if [ -z "$notangle" ]
-then
-    fakeprogram "The NOWEB notangle was not found."
-fi
-
-vncserver=`mywhich vncserver`
-if [ -z "$vncserver" ]
-then
-    # See if DISPLAY is set
-    #
-    if [ -z "$DISPLAY" ]
-    then
-        fakeprogram "Could not export Literate.nw. Export needs GUI, fix lyx!"
-    else
-        $lyx --export tex examples/Literate.lyx
-    fi
-else
-    # Use the vncserver to make a silent export
-    if [ -r $HOME/.vnc/passwd ]
-    then
-        had_vnc_passwd=1
-    else
-	mkdir $HOME/.vnc > /dev/null 2>&1
-        had_vnc_passwd=0
-        touch $HOME/.vnc/passwd; chmod 700 $HOME/.vnc/passwd
-    fi
-    $vncserver :10 -depth 16
-    DISPLAY=:10
-    export DISPLAY
-    $lyx --export tex examples/Literate.lyx
-    $vncserver -kill :10
-    if [ $had_vnc_passwd -eq 0 ]
-    then
-        rm $HOME/.vnc/passwd
-    fi
-fi
+$lyx --export tex examples/Literate.lyx
 mv examples/Literate.tex Literate.nw
-$notangle -Rbuild-script Literate.nw | sh
+notangle -Rbuild-script Literate.nw | sh

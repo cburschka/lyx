@@ -61,14 +61,13 @@ FormDocument::FormDocument(LyXView * lv, Dialogs * d)
 	: FormBase(lv, d, BUFFER_DEPENDENT, _("Document Layout"),
 		   new NoRepeatedApplyReadOnlyPolicy),
 	  dialog_(0), paper_(0), class_(0), language_(0), options_(0),
-	  bullets_(0)
+	  bullets_(0), current_bullet_panel(0), current_bullet_depth(0),
+	  fbullet(0), combo_language(0), combo_doc_class(0)
 {
     // let the popup be shown
     // This is a permanent connection so we won't bother
     // storing a copy because we won't be disconnecting.
     d->showLayoutDocument.connect(slot(this, &FormDocument::show));
-    current_bullet_depth = 0;
-    current_bullet_panel = 0;
 }
 
 

@@ -435,35 +435,38 @@ bool Converter::runLaTeX(Buffer * buffer, string const & command)
 {
 	
 	BufferView * bv = buffer->getUser();
-
-	if (!bv->text) return 0;
-
-	ProhibitInput(bv);
-
 	string name = buffer->getLatexName();
+	bool need_redraw = false;
 
-	bv->owner()->getMiniBuffer()->Set(_("Running LaTeX..."));   
+	if (bv) {
+		ProhibitInput(bv);
+		bv->owner()->getMiniBuffer()->Set(_("Running LaTeX..."));
+		// Remove all error insets
+		need_redraw = bv->removeAutoInsets();
+	}
 
-	// Remove all error insets
-	bool a = bv->removeAutoInsets();
 
 	// do the LaTex run(s)
 	TeXErrors terr;
 	LaTeX latex(command, name, buffer->filepath);
 	int result = latex.run(terr,
-			    bv->owner()->getMiniBuffer()); // running latex
+			       bv ? bv->owner()->getMiniBuffer() : 0);
+	
 
-	if ((result & LaTeX::ERRORS)) {
-		// Insert all errors as errors boxes
-		bv->insertErrors(terr);
+	if (bv) {
+		if ((result & LaTeX::ERRORS)) {
+			// Insert all errors as errors boxes
+			bv->insertErrors(terr);
+			need_redraw = true;
+		}
+
+		// if we removed error insets before we ran LaTeX or if we inserted
+		// error insets after we ran LaTeX this must be run:
+		if (need_redraw) {
+			bv->redraw();
+			bv->fitCursor(bv->text);
+		}
 	}
-
-	// if we removed error insets before we ran LaTeX or if we inserted
-	// error insets after we ran LaTeX this must be run:
-        if (a || (result & LaTeX::ERRORS)){
-                bv->redraw();
-                bv->fitCursor(bv->text);
-        }
 
 	// check return value from latex.run().
 	if ((result & LaTeX::NO_LOGFILE)) {
@@ -484,7 +487,9 @@ bool Converter::runLaTeX(Buffer * buffer, string const & command)
 		WriteAlert(_("There were errors during the LaTeX run."),
 			   s, t);
 	}
-        AllowInput(bv);
+
+	if (bv)
+		AllowInput(bv);
  
         return (result & (LaTeX::NO_LOGFILE | LaTeX::ERRORS)) == 0;
 

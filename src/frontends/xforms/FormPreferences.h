@@ -52,6 +52,8 @@ private:
 	virtual void ok();
 	/// Apply from dialog
 	virtual void apply();
+	/// Restore from dialog
+	virtual void restore();
 	/// Filter the inputs -- return true if entries are valid
 	virtual bool input(long);
 	/// Build the dialog

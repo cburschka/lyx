@@ -265,6 +265,16 @@ char const * flyx_ident_extract(char const * sc)
 }
 
 
+void WriteStatus(MiniBuffer * minib, string const & s)
+{
+	if (minib) {
+		minib->Set(s);
+		minib->Store();
+	} else
+		lyxerr << s << endl;
+}
+
+
 //
 void WriteAlert(string const & s1, string const & s2, string const & s3)
 {
@@ -272,14 +282,17 @@ void WriteAlert(string const & s1, string const & s2, string const & s3)
 	if (current_view && current_view->owner())
 		minibuffer = current_view->owner()->getMiniBuffer();
 	if (minibuffer) {
+		/// Write to minibuffer
 		ProhibitInput(current_view);
 		minibuffer->Set(s1, s2, s3);
-	}
-
-	fl_set_resource("flAlert.dismiss.label", _("Dismiss"));
-	fl_show_alert(s1.c_str(), s2.c_str(), s3.c_str(), 0);
-	if (minibuffer) {
+		fl_set_resource("flAlert.dismiss.label", _("Dismiss"));
+		fl_show_alert(s1.c_str(), s2.c_str(), s3.c_str(), 0);
 		AllowInput(current_view);
+	} else {
+		/// Write to lyxerr
+		lyxerr << "----------------------------------------" << endl
+		       << s1 << endl << s2 << endl << s3 << endl
+		       << "----------------------------------------" << endl;
 	}
 }
 

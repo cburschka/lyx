@@ -1417,7 +1417,7 @@ void LyXTabular::OldFormatRead(LyXLex & lex, string const & fl)
 		par->InsertChar(i, ' ');
 	    }
 	}
-	par->CopyIntoMinibuffer(current_view->buffer()->params, i);
+	par->CopyIntoMinibuffer(owner_->BufferOwner()->params, i);
 	inset->par->InsertFromMinibuffer(inset->par->Last());
     }
     delete par;

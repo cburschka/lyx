@@ -1,3 +1,30 @@
+2000-10-02  Allan Rae  <rae@lyx.org>
+
+	* src/frontends/xforms/FormPreferences.[Ch] (restore): D'oh.
+	Left this one out by accident.
+
+	* src/frontends/xforms/FormBase.h (restore): default to calling
+	update() since that will restore the original/currently-applied values.
+	Any input() triggered error messages will require the derived classes
+	to redefine restore().
+
+	* src/frontends/xforms/FormDocument.C: initialize a few variables to
+	avoid a segfault.  combo_doc_class is the main concern.
+
+2000-10-01  Kayvan A. Sylvan  <kayvan@camel.internal.sylvan.com>
+
+	* Simplify build-listerrors in view of GUI-less export ability!
+
+2000-10-01  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* src/lyx_main.C (easyParse): Disable gui when exporting
+
+	* src/insets/figinset.C: 
+	* src/LaTeX.C
+	* src/converter.C
+	* src/lyx_gui_misc.C
+	* src/tabular.C: Changes to allow no-gui.
+
 2000-10-02  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/support/utility.hpp: removed file

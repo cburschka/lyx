@@ -742,6 +742,7 @@ bool LyX::easyParse(int * argc, char * argv[])
 				string type(argv[i+1]);
 				removeargs = 2;
 				batch_command = "buffer-export " + type;
+				gui = false;
 			} else
 				lyxerr << _("Missing file type [eg latex, "
 					    "ps...] after ")

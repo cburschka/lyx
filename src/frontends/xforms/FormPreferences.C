@@ -523,3 +523,12 @@ void FormPreferences::ok()
 	FormBase::ok();
 	lv_->getLyXFunc()->Dispatch(LFUN_SAVEPREFERENCES);
 }
+
+
+void FormPreferences::restore()
+{
+	update();
+// if I add an error message line to the dialog it'll have to be controlled
+// within input().  I don't need it yet so I'll leave it commented out.
+//	bc_.valid(input(0));
+}
