@@ -383,9 +383,15 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 
 		// ensure that we have only one start_of_appendix in this document
 		Paragraph * tmp = ownerParagraph();
-		for (; tmp; tmp = tmp->next())
-			tmp->params().startOfAppendix(false);
+		for (; tmp; tmp = tmp->next()) {
+			if (tmp->params().startOfAppendix()) {
+				setUndo(bv, Undo::EDIT, tmp, tmp->next());
+				tmp->params().startOfAppendix(false);
+				break;
+			}
+		}
 
+		setUndo(bv, Undo::EDIT, par, par->next());
 		par->params().startOfAppendix(start);
 
 		// we can set the refreshing parameters now
