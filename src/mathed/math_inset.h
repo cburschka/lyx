@@ -56,8 +56,8 @@ public:
 	virtual void writeNormal(std::ostream &) const;
 	/// reproduce itself
 	virtual MathInset * clone() const = 0;
-	/// appends itself with macro arguments substituted
-	virtual void substitute(MathArray & array, MathMacro const & macro) const;
+	///substitutes macro arguments if necessary
+	virtual void substitute(MathMacro const & macro);
 	/// compute the size of the object, sets ascend_, descend_ and width_
 	virtual void metrics(MathStyles st) const;
 	/// 

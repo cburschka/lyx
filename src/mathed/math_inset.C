@@ -121,10 +121,8 @@ MathArray const & MathInset::cell(int) const
 }
 
 
-void MathInset::substitute(MathArray & array, MathMacro const &) const
-{
-	array.push_back(clone());
-}
+void MathInset::substitute(MathMacro const &)
+{}
 
 
 bool MathInset::idxNext(int &, int &) const

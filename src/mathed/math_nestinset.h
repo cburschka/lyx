@@ -23,7 +23,7 @@ public:
 	/// draw the object, sets xo_ and yo_ cached values 
 	void draw(Painter &, int x, int y) const;
 	/// appends itself with macro arguments substituted
-	void substitute(MathArray & array, MathMacro const & macro) const;
+	void substitute(MathMacro const & macro); 
 
 	/// The left key
 	bool idxLeft(int & idx, int & pos) const;

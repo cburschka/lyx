@@ -30,10 +30,8 @@ int MathArray::last() const
 
 void MathArray::substitute(MathMacro const & m)
 {
-	MathArray tmp;
 	for (iterator it = begin(); it != end(); ++it)
-		it->substitute(tmp, m);
-	swap(tmp);
+		it->substitute(m);
 }
 
 

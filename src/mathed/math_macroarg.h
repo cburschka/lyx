@@ -2,7 +2,7 @@
 #ifndef MATHMACROARGUMENT_H
 #define MATHMACROARGUMENT_H
 
-#include "math_inset.h"
+#include "math_nestinset.h"
 
 #ifdef __GNUG__
 #pragma interface
@@ -11,7 +11,7 @@
 /** A macro argument
     \author Alejandro Aguilar Sierra
 */
-class MathMacroArgument : public MathInset {
+class MathMacroArgument : public MathNestInset {
 public:
 	///
 	explicit MathMacroArgument(int);
@@ -26,19 +26,15 @@ public:
 	///
 	void writeNormal(std::ostream &) const;
 	///
-	void substitute(MathArray & array, MathMacro const & macro) const;
-	/// 
-	int ascent() const;
-	///
-	int descent() const;
-	///
-	int width() const;
+	void substitute(MathMacro const & macro);
 
 private:
 	/// A number between 1 and 9
 	int number_;
 	///
 	char str_[3];
+	///
+	bool expanded_;
 };
 
 #endif

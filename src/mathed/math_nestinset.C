@@ -41,15 +41,10 @@ MathArray const & MathNestInset::cell(int i) const
 }
 
 
-void MathNestInset::substitute(MathArray & array, MathMacro const & m) const
+void MathNestInset::substitute(MathMacro const & m)
 {
-#warning Huch?
-/*
-	MathNestInset * p = clone();
-	array.push_back(clone());
 	for (int i = 0; i < nargs(); ++i)
-		array.back().cellsubstitute(m);
-*/
+		cell(i).substitute(m);
 }
 
 

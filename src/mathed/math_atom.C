@@ -351,14 +351,14 @@ bool MathAtom::hasLimits() const
 }
 
 
-void MathAtom::substitute(MathArray & array, MathMacro const & m) const
+void MathAtom::substitute(MathMacro const & m)
 {
 	if (nucleus())
-		nucleus()->substitute(array, m);
+		nucleus()->substitute(m);
 	if (up())
-		up()->substitute(array, m);
+		up()->substitute(m);
 	if (down())
-		down()->substitute(array, m);
+		down()->substitute(m);
 }
 
 

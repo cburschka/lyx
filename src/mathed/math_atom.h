@@ -101,7 +101,7 @@ public:
 	///
 	MathInset * nucleus() const { return nucleus_; }
 	///
-	void substitute(MathArray &, const MathMacro &) const;
+	void substitute(const MathMacro &);
 	///
 	void write(std::ostream &, bool) const;
 	///

@@ -11,7 +11,7 @@
 
 
 MathMacroArgument::MathMacroArgument(int n)
-	: number_(n)
+	: MathNestInset(1), number_(n), expanded_(false)
 {
 	if (n < 1 || n > 9) {
 		lyxerr << "MathMacroArgument::MathMacroArgument: wrong Argument id: "
@@ -29,39 +29,30 @@ MathInset * MathMacroArgument::clone() const
 }
 
 
-void MathMacroArgument::draw(Painter & pain, int x, int y) const
-{
-	drawStr(pain, LM_TC_TEX, size(), x, y, str_);
-}
-
-
-int MathMacroArgument::ascent() const
-{
-	return mathed_char_ascent(LM_TC_TEX, size(), 'I');
-}
-
-
-int MathMacroArgument::descent() const
-{
-	return mathed_char_descent(LM_TC_TEX, size(), 'I');
-}
-
-
-int MathMacroArgument::width() const
-{
-	return mathed_string_width(LM_TC_TEX, size(), str_);
-}
-
-
 void MathMacroArgument::write(std::ostream & os, bool /*fragile*/) const
 {
-	os << '#' << number_ << ' ';
+	os << '#' << number_;
 }
 
 
 void MathMacroArgument::metrics(MathStyles st) const
 {
-	size_ = st;
+	if (expanded_) {
+		xcell(0).metrics(st);
+		width_   = xcell(0).width();
+		ascent_  = xcell(0).ascent();
+		descent_ = xcell(0).descent();
+	} else
+		mathed_string_dim(LM_TC_TEX, size(), str_, width_, ascent_, descent_);
+}
+
+
+void MathMacroArgument::draw(Painter & pain, int x, int y) const
+{
+	if (expanded_)
+		xcell(0).draw(pain, x, y);
+	else
+		drawStr(pain, LM_TC_TEX, size(), x, y, str_);
 }
 
 
@@ -71,8 +62,9 @@ void MathMacroArgument::writeNormal(std::ostream & os) const
 }
 
 
-void MathMacroArgument::substitute(MathArray & array, MathMacro const & m) const
+void MathMacroArgument::substitute(MathMacro const & m)
 {
-	array.push_back(m.cell(number_ - 1));
+	cell(0) = m.cell(number_ - 1);
+	expanded_ = true;
 }
 
