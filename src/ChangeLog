@@ -1,3 +1,10 @@
+2005-01-20  Asger Ottar Alstrup  <aalstrup@laerdal.dk>
+
+	* buffer.C:
+	* lyxlex_pimpl.[Ch]: use USE_COMPRESSION guard.
+
+	* output_plaintext.C: remove unneeded #include gzstream.h.
+	
 2005-01-20  Angus Leeming  <leeming@lyx.org>
 
 	* SpellBase.h: rename some of the elements of the Result enum.

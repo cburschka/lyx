@@ -140,6 +140,7 @@ bool LyXLex::Pimpl::setFile(string const & filename)
 	if (format == "gzip" || format == "zip" || format == "compress") {
 		lyxerr[Debug::LYXLEX] << "lyxlex: compressed" << endl;
 
+#ifdef USE_COMPRESSION
 		// The check only outputs a debug message, because it triggers
 		// a bug in compaq cxx 6.2, where is_open() returns 'true' for
 		// a fresh new filebuf.  (JMarc)
@@ -151,6 +152,9 @@ bool LyXLex::Pimpl::setFile(string const & filename)
 		name = filename;
 		lineno = 0;
 		return gz_.is_open() && is.good();
+#else
+		return false;
+#endif
 	} else {
 		lyxerr[Debug::LYXLEX] << "lyxlex: UNcompressed" << endl;
 

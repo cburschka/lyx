@@ -14,10 +14,13 @@
 
 #include "lyxlex.h"
 
-#include "support/gzstream.h"
+#ifdef USE_COMPRESSION
+# include "support/gzstream.h"
+#endif
 
 #include <boost/utility.hpp>
 
+#include <istream>
 #include <stack>
 #include <vector>
 
@@ -56,8 +59,11 @@ public:
 	void pushToken(std::string const &);
 	/// fb_ is only used to open files, the stream is accessed through is.
 	std::filebuf fb_;
+
+#ifdef HAVE_COMPRESSION
 	/// gz_ is only used to open files, the stream is accessed through is.
 	gz::gzstreambuf gz_;
+#endif
 
 	/// the stream that we use.
 	std::istream is;

@@ -22,8 +22,9 @@
 #include "ParagraphList_fwd.h"
 #include "ParagraphParameters.h"
 
-#include "support/gzstream.h"
 #include "support/lstrings.h"
+
+#include <fstream>
 
 using lyx::support::ascii_lowercase;
 using lyx::support::compare_ascii_no_case;
