@@ -15,7 +15,8 @@
  
 #include <qwidget.h>
 
-#include <map>
+#include <vector>
+#include <algorithm>
 
 class QPixmap;
 class QPushButton;
@@ -42,14 +43,13 @@ protected slots:
 	virtual void clicked();
 
 private:
-	typedef std::map<QPushButton *, string> ButtonMap;
-
-	int crow_;
-	int ccol_;
+	int maxcol_;
  
 	QGridLayout * layout_;
  
-	ButtonMap button_map_;
+	typedef std::pair<QPushButton *, string> Button;
+ 
+	std::vector<Button> buttons_;
 };
 
 #endif // ICONPALETTE_H

@@ -36,6 +36,8 @@ public:
 		setHScrollBarMode(AlwaysOff);
 		setVScrollBarMode(AlwaysOn);
 		setMinimumHeight(200);
+		setBackgroundMode(PaletteBackground);
+		viewport()->setBackgroundMode(PaletteBackground);
 	}
  
 	void setChild(QWidget * w) {
@@ -50,8 +52,7 @@ protected:
 		if (!w_)
 			return;
  
-		int h = max(w_->sizeHint().height(), e->size().height());
-		w_->resize(viewport()->width(), h);
+		w_->resize(viewport()->width(), w_->height());
 		resizeContents(w_->width(), w_->height());
 		setMinimumHeight(200);
 	}

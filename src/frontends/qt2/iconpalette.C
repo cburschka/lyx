@@ -18,9 +18,14 @@
 #include <qtooltip.h>
 
 using std::endl;
+using std::make_pair;
+using std::vector;
+using std::max;
+ 
+int const button_size = 40;
  
 IconPalette::IconPalette(QWidget * parent, char const * name)
-	: QWidget(parent, name), crow_(0), ccol_(0)
+	: QWidget(parent, name), maxcol_(-1)
 {
 	QVBoxLayout * top = new QVBoxLayout(this);
 	QHBoxLayout * row = new QHBoxLayout(top);
@@ -33,28 +38,70 @@ IconPalette::IconPalette(QWidget * parent, char const * name)
 void IconPalette::add(QPixmap const & pixmap, string name, string tooltip)
 {
 	QPushButton * p = new QPushButton(this);
-	p->setFixedSize(40, 40);
+	p->setFixedSize(button_size, button_size);
 	p->setPixmap(pixmap);
 	QToolTip::add(p, tooltip.c_str());
-	layout_->addWidget(p, crow_, ccol_);
-	if (++ccol_ == 5) {
-		ccol_ = 0;
-		++crow_;
-	}
-	resize(5 * 40, crow_ * 40);
-	button_map_[p] = name;
 	connect(p, SIGNAL(clicked()), this, SLOT(clicked())); 
+	buttons_.push_back(make_pair(p, name));
 }
 
 
 void IconPalette::clicked()
 {
-	string name = button_map_[(QPushButton*)(sender())];
-	emit button_clicked(name);
+	vector<Button>::const_iterator it(buttons_.begin());
+	vector<Button>::const_iterator const end(buttons_.end());
+	for (; it != end; ++it) {
+		if (sender() == it->first) {
+			emit button_clicked(it->second);
+			return;
+		}
+	}
 }
 
 
 void IconPalette::resizeEvent(QResizeEvent * e)
 {
 	lyxerr << "resize panel to " << e->size().width() << "," << e->size().height() << endl;
+ 
+	int maxcol = e->size().width() / button_size;
+ 
+	if (!layout_->isEmpty() && maxcol == maxcol_)
+		return;
+
+	lyxerr << "doing layout !" << maxcol << " " << width() << endl;
+	lyxerr << "before is " << maxcol_ << endl; 
+ 
+	setUpdatesEnabled(false);
+ 
+	// clear layout
+	QLayoutIterator lit = layout_->iterator();
+	while (lit.current()) {
+		lit.takeCurrent();
+	}
+		 
+	layout_->invalidate();
+ 
+	vector<Button>::const_iterator it(buttons_.begin());
+	vector<Button>::const_iterator const end(buttons_.end());
+
+	int row = 0;
+	int col = 0;
+	 
+	for (; it != end; ++it) {
+		layout_->addWidget(it->first, row, col++);
+		if (col >= maxcol) {
+			col = 0;
+			++row;
+		}
+	}
+
+	maxcol_ = maxcol;
+ 
+	// this is OK because width won't change, and we have the check above
+	setGeometry(x(), y(), width(), (row + 1) * button_size);
+ 
+	repaint();
+	lyxerr << "after is " << row << "," << maxcol << endl; 
+	setUpdatesEnabled(true);
+	update();
 }
