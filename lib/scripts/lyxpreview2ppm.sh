@@ -1,4 +1,14 @@
 #!/bin/sh
+#
+# \file lyxpreview2ppm.sh
+# Copyright 2002 the LyX Team
+# Read the file COPYING
+#
+# \author Angus Leeming, leeming@lyx.org
+#
+# with much help from David Kastrup, david.kastrup@t-online.de.
+# The sed script was created with advice from Praveen D V <praveend@sasken.com>
+# and the sed users' list sed-users@yahoogroups.com.
 
 # This script takes a LaTeX file and generates PPM files, one per page.
 # The idea is to use it with preview.sty to create small bitmap previews of
@@ -104,6 +114,30 @@ sed -f ${SEDSCRIPT} < ${PSFILE} > ${METRICS}
 STATUS=$?
 rm -f ${SEDSCRIPT}
 EXECUTABLE="extracting metrics"; CHECK_STATUS
+
+# The ppm files have spurious (?! say some !) white space on the left and right
+# sides. If you don't want this set REMOVE_WS=0.
+REMOVE_WS=1
+
+which pnmcrop > /dev/null
+STATUS=$?
+
+if [ ${STATUS} -ne 0 ]; then
+	REMOVE_WS=0
+fi
+
+if [ REMOVE_WS -eq 1 ]; then
+	TMP=.${BASE}.ppm
+	for FILE=`ls ${BASE}???.ppm`
+	do
+		pnmcrop -left -right ${FILE} > ${TMP}
+		STATUS=$?
+		if [ ${STATUS} -eq 0 ]; then
+			mv -f ${TMP} ${FILE}
+		fi
+	done
+	rm -f ${TMP}
+fi
 
 # All was successful, so remove everything except the ppm files and the
 # metrics file.
