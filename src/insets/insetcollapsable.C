@@ -187,6 +187,8 @@ void InsetCollapsable::draw(BufferView * bv, LyXFont const & f,
 	    h = pain.paperHeight();
 	if ((top_x + w) > pain.paperWidth())
 	    w = pain.paperWidth();
+	if (baseline < 0)
+	    h += (baseline - ascent(bv, f));
 	pain.fillRectangle(tx, ty - 1, w, h + 2);
 	cleared = true;
     }

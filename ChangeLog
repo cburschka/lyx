@@ -1,3 +1,16 @@
+2000-11-03  Juergen Vigna  <jug@sad.it>
+
+	* src/insets/insettabular.h: added fixed number to update codes so
+	that update is only in one direction.
+
+	* src/insets/insettabular.C (UpdateLocal): modified a bit don't think
+	it matters.
+
+	* src/insets/insettext.C (InsetButtonPress): set the_locking_inset
+	before call to edit because of redraw.
+
+	* src/insets/insetcollapsable.C (draw): fixed clearing too much.
+
 2000-11-03  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* lib/ui/default.ui: Populate "edit_float" menu

@@ -608,6 +608,7 @@ void InsetText::InsetButtonPress(BufferView * bv, int x, int y, int button)
 	    the_locking_inset->InsetUnlock(bv);
 	    inset_x = cx(bv) - top_x + drawTextXOffset;
 	    inset_y = cy(bv) + drawTextYOffset;
+	    the_locking_inset = static_cast<UpdatableInset*>(inset);
 	    inset->InsetButtonPress(bv, x - inset_x, y - inset_y, button);
 	    inset->Edit(bv, x - inset_x, y - inset_y, button);
 	    if (the_locking_inset) {
@@ -626,6 +627,7 @@ void InsetText::InsetButtonPress(BufferView * bv, int x, int y, int button)
 	    inset_y = cy(bv) + drawTextYOffset;
 	    inset_pos = cpos(bv);
 	    inset_par = cpar(bv);
+	    the_locking_inset = uinset;
 	    uinset->InsetButtonPress(bv, x - inset_x, y - inset_y, button);
 	    uinset->Edit(bv, x - inset_x, y - inset_y, 0);
 //	    TEXT(bv)->ClearSelection();

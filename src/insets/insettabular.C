@@ -444,7 +444,7 @@ void InsetTabular::Edit(BufferView * bv, int x, int y, unsigned int button)
     if (InsetHit(bv, x, y)) {
 	ActivateCellInset(bv, x, y, button);
     }
-    UpdateLocal(bv, NONE, false);
+//    UpdateLocal(bv, NONE, false);
 //    bv->getOwner()->getPopups().updateFormTabular();
 }
 
@@ -474,11 +474,14 @@ void InsetTabular::InsetUnlock(BufferView * bv)
 void InsetTabular::UpdateLocal(BufferView * bv, UpdateCodes what,
 			       bool mark_dirty) const
 {
-    need_update = what;
+    if (need_update < what) // only set this if it has greater update
+	need_update = what;
     // Dirty Cast! (Lgb)
-    bv->updateInset(const_cast<InsetTabular *>(this), mark_dirty);
-    if (locked && (what != NONE))
-	resetPos(bv);
+    if (need_update != NONE) {
+	bv->updateInset(const_cast<InsetTabular *>(this), mark_dirty);
+	if (locked) // && (what != NONE))
+	    resetPos(bv);
+    }
 }
 
 

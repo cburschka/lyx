@@ -70,11 +70,11 @@ public:
     ///
     enum UpdateCodes {
 	NONE = 0,
-	INIT,
-	FULL,
-	CELL,
-	CURSOR,
-	SELECTION
+	CURSOR = 1,
+	CELL = 2,
+	SELECTION = 3,
+	FULL = 4,
+	INIT = 5
     };
     ///
     InsetTabular(Buffer const &, int rows = 1, int columns = 1);
