@@ -5,20 +5,10 @@
 #include "Lsstream.h"
 
 
-CommandInset::CommandInset(string const & data)
+CommandInset::CommandInset(string const & name)
+	: name_(name)
 {
 	lock_ = true;
-
-	string::size_type idx0 = data.find("|++|");
-	name_ = data.substr(0, idx0);
-	if (idx0 == string::npos)
-		return;
-	idx0 += 4;
-	string::size_type idx1 = data.find("|++|", idx0);
-	cell(0) = asArray(data.substr(idx0, idx1 - idx0));
-	if (idx1 == string::npos)
-		return;
-	cell(1) = asArray(data.substr(idx1 + 4));
 }
 
 

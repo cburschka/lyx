@@ -20,8 +20,8 @@
 /// Inset for things like \name[options]{contents}
 class CommandInset : public ButtonInset {
 public:
-	/// name, contents, options deliminited by '|++|'
-	explicit CommandInset(string const & data);
+	///
+	explicit CommandInset(string const & name);
 	///
 	MathInset * clone() const;
 	///

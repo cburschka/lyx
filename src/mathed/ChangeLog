@@ -2,6 +2,8 @@
 
 	* command_inset.[Ch] (createDialogStr): a new function to generate
 	something that the frontend Dialogs will understand.
+	(c-tor): the string passed to the c-tor is now understood to be
+	simply the inset's name, not some strange beast containing "|++|".
 
 	* math_factory.[Ch] (createMathInset_fromDialogStr): new function
 	parses the string passed from the frontends.
