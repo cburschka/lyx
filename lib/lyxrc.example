@@ -207,24 +207,6 @@
 # is 150%.
 #\screen_zoom 100
 
-# LyX offers a faster method for drawing selected text if you uncomment the 
-# following line. The trick is to invert the color-information. This will 
-# switch between white and black and give almost random results for
-# other colors, so a white background is necessary. Any other settings of 
-# the background color will be ignored for this reason. This setting
-# is useful on monochrome screens and on slow systems. Fast selection
-# can cause cosmetic problems with a few broken X servers.
-#\fast_selection true
-
-# If you don't like the default background or selection color, you can
-# set your own here:
-#\background_color white
-#\background_color lightyellow
-#
-# For reference, the defaults are:
-#\background_color linen
-#\selection_color lightblue
-
 # LyX normally doesn't update the cursor position if you move the scrollbar.
 # If you scroll the cursor off the screen and then start typing LyX will
 # move you back to where the cursor was. If you'd prefer to always have the 

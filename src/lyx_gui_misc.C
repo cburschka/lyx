@@ -32,6 +32,7 @@
 #include "insets/insetindex.h"
 #include "LyXView.h"
 #include "bufferview_funcs.h"
+#include "support/filetools.h"
 
 using std::pair;
 using std::make_pair;
@@ -407,7 +408,7 @@ void WarnReadonly(string const & file)
 {
 	WriteAlert(_("Any changes will be ignored"),
 		   _("The document is read-only:"),
-		   file);
+		   MakeDisplayPath(file));
 }
 
 /// Get the dpi setting of the current screen

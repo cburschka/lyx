@@ -41,8 +41,6 @@ using std::endl;
 // not in lyxrc?? (Matthias) 
 // Because nobody put them there. (Asger)
 
-extern string background_color;
-extern char selection_color[];
 extern bool cursor_follows_scrollbar;
 extern LyXAction lyxaction;
 extern kb_keymap * toplevel_keymap;
@@ -102,8 +100,6 @@ enum LyXRCTags {
 	RC_KBMAP,
 	RC_KBMAP_PRIMARY,
 	RC_KBMAP_SECONDARY,
-	RC_SELECTION_COLOR,
-	RC_BACKGROUND_COLOR,
 	RC_FAX_COMMAND,
 	RC_PHONEBOOK,
 	RC_FAXPROGRAM,
@@ -170,7 +166,6 @@ keyword_item lyxrcTags[] = {
 	{ "\\auto_number", RC_AUTO_NUMBER },
 	{ "\\auto_region_delete", RC_AUTOREGIONDELETE },
 	{ "\\autosave", RC_AUTOSAVE },
-	{ "\\background_color", RC_BACKGROUND_COLOR },
 	{ "\\backupdir_path", RC_BACKUPDIR_PATH },
 	{ "\\begin_toolbar", RC_BEGINTOOLBAR },
 	{ "\\bind", RC_BIND },
@@ -254,7 +249,6 @@ keyword_item lyxrcTags[] = {
 	{ "\\screen_font_sizes", RC_SCREEN_FONT_SIZES },
 	{ "\\screen_font_typewriter", RC_SCREEN_FONT_TYPEWRITER },
 	{ "\\screen_zoom", RC_SCREEN_ZOOM },
-	{ "\\selection_color", RC_SELECTION_COLOR },
 	{ "\\serverpipe", RC_SERVERPIPE },
 	{ "\\show_banner", RC_SHOW_BANNER },
 	{ "\\spell_command", RC_SPELL_COMMAND },
@@ -903,15 +897,6 @@ int LyXRC::read(string const & filename)
 				cursor_follows_scrollbar = lexrc.GetBool();
 			break;
 
-		case RC_BACKGROUND_COLOR:
-			if (lexrc.next())
-				background_color = lexrc.GetString();
-			break;
-		case RC_SELECTION_COLOR:
-			if (lexrc.next())
-				strncpy(selection_color,
-					lexrc.GetString().c_str(), 31);
-			break;
 		case RC_FAX_COMMAND:
  			if (lexrc.next())
  				fax_command = lexrc.GetString();
@@ -1303,10 +1288,6 @@ void LyXRC::output(ostream & os) const
 	case RC_CURSOR_FOLLOWS_SCROLLBAR:
 		os << "\\cursor_follows_scrollbar "
 		   << tostr(cursor_follows_scrollbar) << "\n";
-	case RC_BACKGROUND_COLOR:
-		os << "\\background_color \"" << background_color << "\"\n";
-	case RC_SELECTION_COLOR:
-		os << "\\selection_color \"" << selection_color << "\"\n";
 	case RC_FAX_COMMAND:
 		os << "\\fax_command \"" << fax_command << "\"\n";
 	case RC_FAXPROGRAM:

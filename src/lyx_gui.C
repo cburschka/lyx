@@ -78,20 +78,7 @@ FL_CMD_OPT cmdopt[] =
 	{"-width", "*.width", XrmoptionSepArg, "690"},
 	{"-height", "*.height", XrmoptionSepArg, "510"},
 	{"-xpos", "*.xpos", XrmoptionSepArg, "-1"},
-	{"-ypos", "*.ypos", XrmoptionSepArg, "-1"},
-	{"-MathColor", "*.MathColor", XrmoptionSepArg, "blue"},
-	{"-MathFrameColor", "*.MathFrameColor", XrmoptionSepArg, "magenta"},
-	{"-FootColor", "*.FootColor", XrmoptionSepArg, "red"}, 
-	{"-NewLineColor", "*.NewLineColor", XrmoptionSepArg, "red"},
-	{"-LabelColor", "*.LabelColor", XrmoptionSepArg, "palegreen"},
-	{"-FillColor", "*.FillColor", XrmoptionSepArg, "magenta"},
-	{"-OnOffLineColor", "*.OnOffLineColor", XrmoptionSepArg, "magenta"},
-	{"-LatexColor", "*.LatexColor", XrmoptionSepArg, "red"},
-	{"-NoteColor", "*.NoteColor", XrmoptionSepArg, "yellow"},
-	{"-NoteFrameColor", "*.NoteFrameColor", XrmoptionSepArg, "black"},
-	{"-LightedColor", "*.LightedColor", XrmoptionSepArg, "gray80"},
-	{"-BackgroundColor", "*.BackgroundColor", XrmoptionSepArg, "linen"},
-	{"-SelectionColor", "*.SelectionColor", XrmoptionSepArg, "lightblue"}
+	{"-ypos", "*.ypos", XrmoptionSepArg, "-1"}
 };
 
 static int width;
@@ -99,20 +86,6 @@ static int height;
 static int xpos;
 static int ypos;
 bool	   cursor_follows_scrollbar;
-char	   math_color[32];
-char	   math_frame_color[32];
-char	   foot_color[32];
-char       new_line_color[32];
-char	   label_color[32];
-char	   fill_color[32];
-char	   on_off_line_color[32];
-char	   latex_color[32];
-char	   note_color[32];
-char       note_frame_color[32];
-char	   lighted_color[32];
-string    background_color;
-char	   b_c[32];
-char	   selection_color[32];
 
 
 FL_resource res[] =
@@ -120,20 +93,7 @@ FL_resource res[] =
 	{"width", "widthClass", FL_INT, &width, "690", 0},
 	{"height", "heightClass", FL_INT, &height, "510", 0},
 	{"xpos", "xposClass", FL_INT, &xpos, "-1", 0},
-	{"ypos", "yposClass", FL_INT, &ypos, "-1", 0},
-	{"MathColor", "colorClass", FL_STRING, math_color, "blue", 31},
-	{"MathFrameColor", "colorClass", FL_STRING, math_frame_color, "magenta", 31},
-	{"FootColor", "colorClass", FL_STRING, foot_color, "red", 31},
-	{"NewLineColor", "colorClass", FL_STRING, new_line_color, "red", 31},
-	{"LabelColor", "colorClass", FL_STRING, label_color, "palegreen", 31},
-	{"FillColor", "colorClass", FL_STRING, fill_color, "magenta", 31},
-	{"OnOffLineColor", "colorClass", FL_STRING, on_off_line_color, "magenta", 31},
-	{"LatexColor", "colorClass", FL_STRING, latex_color, "red", 31},
-	{"NoteColor", "colorClass", FL_STRING, note_color, "yellow", 31},
-	{"NoteFrameColor", "colorClass", FL_STRING, note_frame_color, "black", 31},
-	{"LightedColor", "colorClass", FL_STRING, lighted_color, "gray80", 31},
-	{"BackgroundColor", "colorClass", FL_STRING, b_c, "linen", 31},
-	{"SelectionColor", "colorClass", FL_STRING, selection_color, "lightblue", 31}
+	{"ypos", "yposClass", FL_INT, &ypos, "-1", 0}
 };
 
 
@@ -175,8 +135,6 @@ LyXGUI::LyXGUI(LyX * owner, int * argc, char * argv[], bool GUI)
 	fcntl(ConnectionNumber(display), F_SETFD, FD_CLOEXEC);
 	// X Error handler install goes here
 	XSetErrorHandler(LyX_XErrHandler);
-	
-	background_color = b_c;
 	
 	// Make sure default screen is not larger than monitor
 	if (width == 690 && height == 510) {

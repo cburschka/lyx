@@ -1,3 +1,17 @@
+2000-05-31  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* lib/lyxrc.example: remove mention of non-existing commands
+
+	* lyx.man: remove mention of color-related switches.
+
+	* src/lyxrc.C: remove RC_SELECTIONCOLOR and RC_BACKGROUNDCOLOR. 
+
+	* src/lyx_gui.C: remove all the color-related ressources, which
+	are not used anymore.
+
+	* src/lyx_gui_misc.C (WarnReadonly): use MakeDisplayPath on file
+	name. 
+
 2000-05-31 Dekel Tsur  <dekel@math.tau.ac.il>
 
 	* src/lyxrc.C (read): Add a missing break in the switch

@@ -32,11 +32,10 @@ about this concept in the online documentation under the Help menu.
 
 Currently, \fBLyX\fR uses the XForms library as a toolkit. \fBLyX\fR
 should run everywhere, where XForms runs. This is on all major Unix
-platforms as well as some PC platforms, including Sun, SGI, HP, DEC
-Alpha/OSF, IBM RS6000, Convex, Cray, i386/Linux, Alpha/Linux,
+platforms as well as some PC platforms, including Sun, SGI, HP, Compaq
+Tru64, IBM RS6000, Convex, Cray, i386/Linux, Alpha/Linux,
 i386/FreeBSD, i386/NetBSD, DecSystem(mips)/Ultrix, OS/2 with XFree or 
 PMX and others. 
-
 .SH OPTIONS
 \fBLyX\fR supports the following command-line switches, which can also
 be specified as X resources (e. g. in .Xdefaults) with class
@@ -74,43 +73,6 @@ is given, the main window is centered.
 .BI \-dbg " feature[,feature...]"
 where feature is a name or number.
 Use "\fBlyx -dbg\fR" to see the list of available debug features.
-.TP
-.BI \-Reverse
-swaps foreground and background colors.
-.TP
-.BI \-Mono
-runs \fBLyX\fR in black and white mode.
-.TP
-.BI \-FastSelection
-uses a fast black and white drawing routine for selections. If you use
-this, the switches BackgroundColor and SelectionColor are ignored.
-.PP
-The following options can be used to define the colors to use for
-different things:
-.TP
-.BI \-MathColor " color"
-.TP
-.BI \-MathFrameColor " color"
-.TP
-.BI \-FootColor " color"
-.TP
-.BI \-LabelColor " color"
-.TP
-.BI \-FillColor " color"
-.TP
-.BI \-NewLineColor " color"
-.TP
-.BI \-OnOffLineColor " color"
-.TP
-.BI \-LatexColor " color"
-.TP
-.BI \-NoteColor " color"
-.TP
-.BI \-LightedColor " color"
-.TP
-.BI \-BackgroundColor " color"
-.TP
-.BI \-SelectionColor " color"
 .PP
 Furthermore, \fBLyX\fR understands the following generic command line options 
 from the \fBForms Library\fR:
@@ -176,7 +138,6 @@ The system directory is determined by searching for the file
 4) <path of binary>/../share/<name of binary>/ 
 .br
 5) hardcoded lyx_dir (usually /usr/local/share/lyx on UNIX and %X11ROOT%\\XFree86\\lib\\X11\\lyx on OS/2 with XFree)
-
 .TP
 .B LYX_USERDIR_11x
 can be used to specify which user directory to use.
@@ -193,7 +154,6 @@ The user directory is, in order of precedence:
 .B LYX_LOCALEDIR
 can be used to tell LyX where to look for the translations of its GUI
 strings in other languages.
-
 .SH FILES
 .nf
 .ta \w'\fILIBDIR\fR/lyxrc.in  'u
@@ -215,36 +175,39 @@ strings in other languages.
 
 .I LIBDIR
 is the system directory. This is usually /usr/local/share/lyx on UNIX and %X11ROOT%\\XFree86\\lib\\X11\\lyx on OS/2 with XFree.
-
 .SH SEE ALSO
 reLyX(1), latex(1), xforms(5).
 
 Full documentation in either native \fBLyX\fR or postscript format.
 .SH BUGS/LIMITATIONS
 There are probably still some bugs in \fBLyX\fR. Please report them to
-lyx-devel@lists.lyx.org with detailed info, including which version of \fBLyX\fR
-you use.  Consult the "Known Bugs" item under the Help menu first if possible.
+lyx-devel@lists.lyx.org with detailed info, including which version of
+\fBLyX\fR you use. Consult the "Known Bugs" item under the Help menu
+first if possible.
 
-\fBLaTeX\fR import is still not perfect and may produce buggy *.lyx files. Consult the \fBreLyX\fR documentation.
+\fBLaTeX\fR import is still not perfect and may produce buggy *.lyx
+files. Consult the \fBreLyX\fR documentation.
 
-XFree on OS/2 currently does not support PC codepages. If you use \fBemTeX\fR to preview/print with cp850, etc., this might lead to strange \fBemTeX\fR error messages.
+XFree on OS/2 currently does not support PC codepages. If you use
+\fBemTeX\fR to preview/print with cp850, etc., this might lead to
+strange \fBemTeX\fR error messages.
 .B Remedy:
   1) In filenames use only A-Z, a-z, 1-9.
   2) Install a recent \fBLaTeX\fR package inputenc.sty. Select Layout->Document->encoding:latin1, so that \fBreLyX\fR adds the \fBLaTeX\fR command '\\usepackage[latin1]{inputenc}'.
 
-\fBLyX\fR server has some limitations under OS/2: See Help->Customization for details. 
+\fBLyX\fR server has some limitations under OS/2: See
+Help->Customization for details.
 
-Preview of inline images in rare cases does not show the image. If you want to preview the image, just click on it and choose fullscreen preview. 
+Preview of inline images in rare cases does not show the image. If you
+want to preview the image, just click on it and choose fullscreen
+preview.
 
-If you have performance problems, please go through the \fBlyxrc\fR 
-configuration file.  It contains settings that can be used to improve 
+If you have performance problems, please go through the \fBlyxrc\fR
+configuration file. It contains settings that can be used to improve
 performance on slow systems.
- 
-
-
-.SH AUTHOR
+.SH AUTHORS
 Copyright
 .Cr
-1995, 1996, 1997, 1998, 1999 by Matthias Ettrich (ettrich@informatik.uni-tuebingen.de)
-and the rest of the \fBLyX Team\fR (See Credits under the Help menu
-item).
+1995, 1996, 1997, 1998, 1999 by Matthias Ettrich
+(ettrich@informatik.uni-tuebingen.de) and the rest of the \fBLyX
+Team\fR (See Credits under the Help menu item).
