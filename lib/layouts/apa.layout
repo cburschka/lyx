@@ -29,17 +29,17 @@ DefaultFont
 EndFont
 
 Style Standard
-  LatexName 	dummy
+  LatexName	dummy
   LatexType	Paragraph
   Margin	Static
   ParIndent	MM
-  ParSkip 	0.4
+  ParSkip	0.4
   ParSep	0.4
   TopSep	1.0
   BottomSep	1.0
-  Align 	Block
+  Align	Block
   AlignPossible Block, Left, Right, Center
-  LabelType 	No_Label
+  LabelType	No_Label
 End
 
 Style Title
@@ -311,4 +311,3 @@ Style Seriate
   AlignPossible		Block, Left
   LabelType		Counter_EnumII
 End
-
