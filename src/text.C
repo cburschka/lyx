@@ -3510,7 +3510,7 @@ void LyXText::paintLastRow(DrawRowParams & p)
 	case END_LABEL_BOX:
 	case END_LABEL_FILLED_BOX:
 	{
-		LyXFont const font = getFont(buffer, par, last);
+		LyXFont const font = getLabelFont(buffer, par);
 		int const size = int(0.75 * lyxfont::maxAscent(font));
 		int const y = (p.yo + p.row->baseline()) - size;
 		int x = is_rtl ? LYX_PAPER_MARGIN : ww - LYX_PAPER_MARGIN - size;
@@ -3519,12 +3519,10 @@ void LyXText::paintLastRow(DrawRowParams & p)
 			x += (size - p.row->fill() + 1) * (is_rtl ? -1 : 1);
  
 		if (endlabel == END_LABEL_BOX) {
-			p.pain->line(x, y, x, y + size, LColor::eolmarker);
-			p.pain->line(x + size, y, x + size , y + size, LColor::eolmarker);
-			p.pain->line(x, y, x + size, y, LColor::eolmarker);
-			p.pain->line(x, y + size, x + size, y + size, LColor::eolmarker);
+			p.pain->rectangle(x, y, size, size, LColor::eolmarker);
 		} else {
-			p.pain->fillRectangle(x, y, size, size, LColor::eolmarker);
+			p.pain->fillRectangle(x, y, size, size,
+					      LColor::eolmarker);
 		}
 		break;
 	}

@@ -1,3 +1,9 @@
+2001-12-18  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* text.C (paintLastRow): use the label font instead of the font of
+	the last character to compute the size of *_BOX. This makes more
+	sense and avoids a crash with empty paragraphs.
+	Use Painter::rectangle to draw EMPTY_BOX.
 2001-12-19  Juergen Vigna  <jug@sad.it>
 
 	* undo_funcs.C (textHandleUndo): fixed setting of inset_owner of
