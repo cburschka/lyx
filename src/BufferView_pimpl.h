@@ -160,6 +160,6 @@ private:
 		Position(string const & f, int id, int pos)
                         : filename(f), par_id(id), par_pos(pos) {}
 	};
-	vector<Position> saved_positions;
+	std::vector<Position> saved_positions;
 };
 #endif
