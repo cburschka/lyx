@@ -1,6 +1,7 @@
 2002-05-30  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* GraphicsImageXPM.C: SigC to boot::signals changes.
+	(newImage): fix () bug when using new.
 
 2002-05-29  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 

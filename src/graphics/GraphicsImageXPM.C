@@ -31,7 +31,7 @@ namespace grfx {
 ImagePtr GImageXPM::newImage()
 {
 	ImagePtr ptr;
-	ptr.reset(new GImageXPM());
+	ptr.reset(new GImageXPM);
 	return ptr;
 }
 
