@@ -1,3 +1,11 @@
+2003-12-04  Angus Leeming  <leeming@lyx.org>
+
+	* ControlExternal.[Ch] (bbChanged): new accessor functions to a
+	boolean flag.
+	(readBB): attempt to read the BoundingBox from the graphics file.
+	If that fails, try the Graphics Cache.
+	(all_origins, origin_gui_str): helpers for the frontends.
+	
 2003-12-01  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* ControlVSpace.C: enable the buttons for new insets.

@@ -16,6 +16,8 @@
 
 #include "Dialog.h"
 
+#include "support/types.h"
+
 #include <boost/scoped_ptr.hpp>
 
 #include <string>
@@ -28,6 +30,7 @@ namespace lyx {
 namespace external {
 
 class Template;
+class RotationDataType;
 
 } // namespace external
 } // namespace lyx
@@ -61,9 +64,26 @@ public:
 	lyx::external::Template getTemplate(int) const;
 	///
 	std::string const Browse(std::string const &) const;
+
+	/// Read the Bounding Box from a eps or ps-file
+	std::string const readBB(std::string const & file);
+	///
+	void bbChanged(bool val) { bb_changed_ = val; }
+	bool bbChanged() const { return bb_changed_; }
 private:
 	///
 	boost::scoped_ptr<InsetExternalParams> params_;
+	bool bb_changed_;
 };
+
+
+namespace lyx {
+namespace external {
+
+std::vector<RotationDataType> const & all_origins();
+std::string const origin_gui_str(lyx::size_type i);
+
+} // namespace external
+} // namespace lyx
 
 #endif // CONTROLEXTERNAL_H

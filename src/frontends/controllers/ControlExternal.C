@@ -13,24 +13,35 @@
 #include <config.h>
 
 #include "ControlExternal.h"
+
 #include "funcrequest.h"
 #include "gettext.h"
 #include "helper_funcs.h"
 #include "lyxrc.h"
 
+#include "graphics/GraphicsCache.h"
+#include "graphics/GraphicsCacheItem.h"
+#include "graphics/GraphicsImage.h"
+
 #include "insets/insetexternal.h"
 #include "insets/ExternalSupport.h"
 #include "insets/ExternalTemplate.h"
 
+#include "support/filetools.h"
+#include "support/tostr.h"
 
 namespace external = lyx::external;
+
+using lyx::support::MakeAbsPath;
+using lyx::support::readBB_from_PSFile;
 
 using std::vector;
 using std::string;
 
 
 ControlExternal::ControlExternal(Dialog & parent)
-	: Dialog::Controller(parent)
+	: Dialog::Controller(parent),
+	  bb_changed_(false)
 {}
 
 
@@ -52,6 +63,7 @@ void ControlExternal::dispatchParams()
 {
 	string const lfun = InsetExternalMailer::params2string(params(),
 							       kernel().buffer());
+
 	kernel().dispatch(FuncRequest(LFUN_INSET_APPLY, lfun));
 }
 
@@ -136,11 +148,87 @@ string const ControlExternal::Browse(string const & input) const
 	if (et_ptr)
 		pattern = et_ptr->fileRegExp;
 
-	// FIXME: a temporary hack until the FileDialog interface is updated
-	pattern += '|';
-
 	std::pair<string, string> dir1(N_("Documents|#o#O"),
 				  string(lyxrc.document_path));
 
 	return browseRelFile(input, bufpath, title, pattern, false, dir1);
 }
+
+
+string const ControlExternal::readBB(string const & file)
+{
+	string const abs_file =
+		MakeAbsPath(file, kernel().bufferFilepath());
+
+	// try to get it from the file, if possible. Zipped files are
+	// unzipped in the readBB_from_PSFile-Function
+	string const bb = readBB_from_PSFile(abs_file);
+	if (!bb.empty())
+		return bb;
+
+	// we don't, so ask the Graphics Cache if it has loaded the file
+	int width = 0;
+	int height = 0;
+
+	lyx::graphics::Cache & gc = lyx::graphics::Cache::get();
+	if (gc.inCache(abs_file)) {
+		lyx::graphics::Image const * image = gc.item(abs_file)->image();
+
+		if (image) {
+			width  = image->getWidth();
+			height = image->getHeight();
+		}
+	}
+
+	return ("0 0 " + tostr(width) + ' ' + tostr(height));
+}
+
+
+namespace {
+
+external::RotationDataType origins_array[] = {
+	external::RotationData::DEFAULT,
+	external::RotationData::TOPLEFT,
+	external::RotationData::BOTTOMLEFT,
+	external::RotationData::BASELINELEFT,
+	external::RotationData::CENTER,
+	external::RotationData::TOPCENTER,
+	external::RotationData::BOTTOMCENTER,
+	external::RotationData::BASELINECENTER,
+	external::RotationData::TOPRIGHT,
+	external::RotationData::BOTTOMRIGHT,
+	external::RotationData::BASELINERIGHT
+};
+
+lyx::size_type const origins_array_size =
+sizeof(origins_array) / sizeof(origins_array[0]);
+
+vector<external::RotationDataType> const
+origins(origins_array, origins_array + origins_array_size);
+
+// These are the strings, corresponding to the above, that the GUI should
+// use. Note that they can/should be translated.
+char const * const origin_gui_strs[] = {
+	N_("Default"),
+	N_("Top left"), N_("Bottom left"), N_("Baseline left"),
+	N_("Center"), N_("Top center"), N_("Bottom center"), N_("Baseline center"),
+	N_("Top right"), N_("Bottom right"), N_("Baseline right")
+};
+
+} // namespace anon
+
+namespace lyx {
+namespace external {
+
+vector<RotationDataType> const & all_origins()
+{
+	return origins;
+}
+
+string const origin_gui_str(size_type i)
+{
+	return origin_gui_strs[i];
+}
+
+} // namespace external
+} // namespace lyx
