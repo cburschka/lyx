@@ -20,6 +20,7 @@
 #pragma interface
 #endif
 
+#include <vector>
 #include "bmtable.h"                 
 
 ///
@@ -65,21 +66,20 @@ enum SomeMathValues {
 };
 
 ///
-typedef FL_OBJECT * FL_OBJECTP;
-
 /// Class to manage bitmap menu bars
 class BitmapMenu {
    ///
    static BitmapMenu * active;
    ///
    friend int peek_event(FL_FORM *, void *);
-protected:
+   ///
+   typedef std::vector<FL_OBJECT *>   bitmaps_type;
+   ///
+   typedef bitmaps_type::size_type    size_type;
    ///
    BitmapMenu * next, * prev;
-   /// Number of bitmaps
-   int nb;
    /// Current bitmap
-   int i;
+   size_type current_;
    /// Border width
    int ww;
    ///
@@ -87,7 +87,7 @@ protected:
    ///
    FL_FORM * form;
    ///
-   FL_OBJECTP * bitmap;
+   bitmaps_type bitmaps_;
    ///
    FL_OBJECT * button;
  public:

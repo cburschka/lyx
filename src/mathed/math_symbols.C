@@ -130,15 +130,14 @@ bool math_insert_greek(char c);
 
 BitmapMenu * BitmapMenu::active = 0;
 
-BitmapMenu::BitmapMenu(int n,  FL_OBJECT * bt, BitmapMenu * prevx): nb(n)
+BitmapMenu::BitmapMenu(int n,  FL_OBJECT * bt, BitmapMenu * prevx)
+	: current_(0), bitmaps_(n)
 {
    w = h = 0;
    form = 0;
-   i = 0;
    ww = 2 * FL_abs(FL_BOUND_WIDTH);
    x = y = ww;
    y += 8;
-   bitmap = new FL_OBJECTP[nb];
    button = bt;
    button->u_vdata = this;
    prev = prevx;
@@ -153,7 +152,6 @@ BitmapMenu::~BitmapMenu()
 	delete next;
 	if (form->visible) Hide();
 	fl_free_form(form);  
-	delete[] bitmap;
 }
 
 
@@ -180,7 +178,7 @@ FL_OBJECT *
 BitmapMenu::AddBitmap(int id, int nx, int ny, int bw, int bh,
 		      unsigned char const * data, Bool vert)
 {
-   if (i >= nb)
+   if (current_ >= bitmaps_.size())
      return 0;
    int wx = bw+ww/2, wy = bh+ww/2;
    wx += (wx % nx);
@@ -199,20 +197,20 @@ BitmapMenu::AddBitmap(int id, int nx, int ny, int bw, int bh,
       w = max(x, w);
       h = max(y + wy + ww, h);
    }
-   bitmap[i++] = obj;
+   bitmaps_[current_++] = obj;
    return obj;
 }
 
 void BitmapMenu::Create()
 {
-   if (i < nb)  {
+   if (current_ < bitmaps_.size())  {
 	   lyxerr << "Error: Bitmaps not created!" << endl;
       return;
    }
    form = fl_bgn_form(FL_UP_BOX, w, h);   
-   for (i = 0; i < nb; ++i) {
-      fl_add_object(form, bitmap[i]);
-      bitmap[i]->u_vdata = this;
+   for (current_ = 0; current_ < bitmaps_.size(); ++current_) {
+      fl_add_object(form, bitmaps_[current_]);
+      bitmaps_[current_]->u_vdata = this;
    }
    fl_end_form();
    fl_register_raw_callback(form, KeyPressMask, C_peek_event);
@@ -222,10 +220,10 @@ int BitmapMenu::GetIndex(FL_OBJECT* ob)
 {
    if (active == this) {
       int k = 0;
-      for (i = 0; i < nb; ++i) {
-	 if (bitmap[i] == ob) 
+      for (current_ = 0; current_ < bitmaps_.size(); ++current_) {
+	 if (bitmaps_[current_] == ob) 
 	   return k+fl_get_bmtable(ob);
-	 k += fl_get_bmtable_maxitems(bitmap[i]);
+	 k += fl_get_bmtable_maxitems(bitmaps_[current_]);
       }
    }
    return -1;

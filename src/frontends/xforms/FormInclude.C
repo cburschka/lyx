@@ -8,6 +8,7 @@
  */
 #include <config.h>
 #include <algorithm>
+#include <iostream>
 
 #ifdef __GNUG__
 #pragma implementation
@@ -25,6 +26,8 @@
 #include "lyxfunc.h" 
  
 #include "form_include.h"
+
+using std::cout;
 
 FormInclude::FormInclude(LyXView * lv, Dialogs * d)
 	: FormCommand(lv, d, _("Include file"), new OkCancelPolicy),

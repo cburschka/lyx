@@ -4,7 +4,10 @@
 	  std::vector<MathMacroArgument>
 	* math_defs.h:
 	  math_inset.C: replace int[] with std::vector<int>
-
+	* math_panel.h:
+	* math_symbols.C: replace FL_OBJECTP[] with
+	std::vector<FL_OBJECT*>
+	
 2001-02-12  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* math_defs.h (struct MathedRowSt): make all private variables end

@@ -412,6 +412,9 @@ class MathParInset: public MathedInset  {
 struct MathedRowSt
 {
 	///
+	typedef vector<int> Widths;
+	
+	///
 	explicit
 	MathedRowSt(int n)
 		: asc_(0), desc_(0), y_(0), widths_(n + 1, 0),
@@ -451,7 +454,7 @@ private:
 	int desc_;
 	int y_;
 	/// widths 
-	std::vector<int> widths_;
+	Widths widths_;
 	/// 
 	string label_;
 	///
@@ -509,7 +512,8 @@ class MathMatrixInset: public MathParInset {
     /// 
     char v_align; // add approp. type
     ///
-    string h_align; // a vector would perhaps be more correct
+	//std::vector<char> h_align;
+	string h_align; // a vector would perhaps be more correct
     /// Vertical structure
     MathedRowSt * row;
 
