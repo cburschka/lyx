@@ -121,7 +121,7 @@ InsetFormulaBase::InsetFormulaBase()
 #warning This is needed as long the math parser is not re-entrant
 #endif
 	MathMacroTable::builtinMacros();
-	lyxerr << "sizeof MathInset: " << sizeof(MathInset) << "\n";
+	//lyxerr << "sizeof MathInset: " << sizeof(MathInset) << "\n";
 }
 
 
