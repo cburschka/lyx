@@ -155,11 +155,9 @@ void extractMatrices(MathArray & ar)
 	}
 
 	// second pass for AMS "pmatrix" etc
-	for (MathArray::size_type i = 0; i < ar.size(); ++i) {
+	for (MathArray::size_type i = 0; i < ar.size(); ++i)
 		if (ar[i]->asAMSArrayInset())
-			continue;
-		ar[i] = MathAtom(new MathMatrixInset(*(ar[i]->asGridInset())));
-	}
+			ar[i] = MathAtom(new MathMatrixInset(*(ar[i]->asGridInset())));
 	//lyxerr << "\nMatrices to: " << ar << "\n";
 }
 
@@ -786,6 +784,7 @@ void extractLims(MathArray & ar)
 
 void extractStructure(MathArray & ar)
 {
+	//lyxerr << "\nStructure from: " << ar << "\n";
 	extractIntegrals(ar);
 	extractSums(ar);
 	splitScripts(ar);
@@ -798,6 +797,7 @@ void extractStructure(MathArray & ar)
 	extractExps(ar);
 	extractLims(ar);
 	extractStrings(ar);
+	//lyxerr << "\nStructure to: " << ar << "\n";
 }
 
 
