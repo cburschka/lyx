@@ -62,7 +62,7 @@ private:
 class BranchList {
 public:
 	///
-	BranchList():  separator_("|") {};
+	BranchList() : separator_("|") {}
 	
 	///
 	typedef std::list<Branch> List;
@@ -70,13 +70,13 @@ public:
 	///
 	void clear();
 	///
-	bool empty() { return list.empty(); };
+	bool empty() { return list.empty(); }
 	///
-	bool size() const { return list.size(); };
+	bool size() const { return list.size(); }
 	///
-	List::const_iterator begin() const { return list.begin(); };
+	List::const_iterator begin() const { return list.begin(); }
 	///
-	List::const_iterator end() const { return list.end(); };
+	List::const_iterator end() const { return list.end(); }
 	///
 	string getColor(string const &) const;
 	///	

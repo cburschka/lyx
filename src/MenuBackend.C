@@ -628,6 +628,9 @@ void expandToc(Menu & tomenu, LyXView const * view)
 
 void expandPasteRecent(Menu & tomenu, LyXView const * view)
 {
+	if (!view || !view->buffer())
+		return;
+
 	vector<string> const selL =
 		CutAndPaste::availableSelections(*view->buffer());
 
@@ -644,6 +647,9 @@ void expandPasteRecent(Menu & tomenu, LyXView const * view)
 
 void expandBranches(Menu & tomenu, LyXView const * view)
 {
+	if (!view || !view->buffer())
+		return;
+
 	BufferParams const & params = view->buffer()->params;
 
 	std::list<Branch>::const_iterator cit = params.branchlist.begin();
