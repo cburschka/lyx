@@ -74,33 +74,44 @@ def get_value(lines, token, start, end = 0):
     return string.split(lines[i])[1]
 
 # Finds the paragraph that contains line i.
-import sys
 def get_paragraph(lines, i):
     while 1:
 	i = find_tokens_backwards(lines, ["\\end_inset", "\\layout"], i)
 	if check_token(lines[i], "\\layout"):
 	    return i
-	count = 1
-	while count > 0:
-	    i = find_tokens_backwards(lines, ["\\end_inset", "\\begin_inset"], i-1)
-	    if check_token(lines[i], "\\end_inset"):
-		count = count+1
-	    else:
-		count = count-1
+	i = find_beginning_of_inset(lines, i)
+
+# Finds the paragraph after the paragraph that contains line i.
+def get_next_paragraph(lines, i):
+    while 1:
+	i = find_tokens(lines, ["\\begin_inset", "\\layout"], i)
+	if check_token(lines[i], "\\layout"):
+	    return i
+	i = find_end_of_inset(lines, i)
 
 # Finds the matching \end_inset
 def find_end_of_inset(lines, i):
     count = 1
-    i = i+1
     while 1:
-	i = find_tokens(lines, ["\\end_inset", "\\begin_inset"], i)
+	i = find_tokens(lines, ["\\end_inset", "\\begin_inset"], i+1)
 	if check_token(lines[i], "\\begin_inset"):
 	    count = count+1
 	else:
 	    count = count-1
 	if count == 0:
 	    return i
-	i = i+1
+
+# Finds the matching \end_inset
+def find_beginning_of_inset(lines, i):
+    count = 1
+    while 1:
+	i = find_tokens_backwards(lines, ["\\end_inset", "\\begin_inset"], i-1)
+	if check_token(lines[i], "\\end_inset"):
+	    count = count+1
+	else:
+	    count = count-1
+	if count == 0:
+	    return i
 
 def is_nonempty_line(line):
     return line != " "*len(line)
@@ -112,7 +123,6 @@ def find_nonempty_line(lines, start, end = 0):
 	if is_nonempty_line(lines[i]):
 	    return i
     return -1
-
 
 def set_comment(lines, number):
     x = int(number)

@@ -47,7 +47,7 @@ floats = {
 }
 
 font_tokens = ["\\family", "\\series", "\\shape", "\\size", "\\emph",
-	       "\\bar", "\\noun", "\\color", "\\lang"]
+	       "\\bar", "\\noun", "\\color", "\\lang", "\\latex"]
 
 #
 # Change \begin_float .. \end_float into \begin_inset Float .. \end_inset
@@ -59,7 +59,9 @@ def remove_oldfloat(lines, language):
 	i = find_token(lines, "\\begin_float", i)
 	if i == -1:
 	    break
+	# There are no nested floats, so finding the end of the float is simple
 	j = find_token(lines, "\\end_float", i+1)
+
 	floattype = string.split(lines[i])[1]
 	if not floats.has_key(floattype):
 	    sys.stderr.write("Error! Unknown float type "+floattype+"\n")
@@ -70,11 +72,12 @@ def remove_oldfloat(lines, language):
 	while check_token(lines[i2], "\\end_deeper"):
 	    i2 = i2+1
 	if i2 > i+1:
-	    j2 = find_token(lines, "\\layout", j+1)
+	    j2 = get_next_paragraph(lines, j+1)
 	    lines[j2:j2] = ["\\end_deeper "]*(i2-(i+1))
 
 	new = floats[floattype]+[""]
 	new = new+lines[i2:j]+["\\end_inset ", ""]
+
 	# After a float, all font attribute are reseted.
 	# We need to output '\foo default' for every attribute foo
 	# whose value is not default before the float.
@@ -92,11 +95,11 @@ def remove_oldfloat(lines, language):
 		    flag = 1
 		    new.append("")
 		if token == "\\lang":
-		    new.append(token+" "+language+" ")
+		    new.append(token+" "+language)
 		else:
 		    new.append(token+" default ")
-	lines[i:j+1]= new
 
+	lines[i:j+1] = new
 	i = i+1
 
 def remove_oldminipage(lines):
@@ -401,12 +404,12 @@ def convert(header, body):
 	language = "english"
 
     change_preamble(header)
-    remove_oldertinset(body)
-    remove_oldert(body)
-    combine_ert(body)
     remove_oldminipage(body)
     remove_oldfloat(body, language)
     remove_figinset(body)
+    remove_oldertinset(body)
+    remove_oldert(body)
+    combine_ert(body)
 
 if __name__ == "__main__":
     pass
