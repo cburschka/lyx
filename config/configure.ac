@@ -123,6 +123,8 @@ AC_CHECK_LIB(Aiksaurus, main,
 fi
 AC_SUBST(AIKSAURUS_LIBS)
 
+LYX_USE_INCLUDED_BOOST
+
 ### Setup libtool
 AC_DISABLE_SHARED
 AC_LIBTOOL_WIN32_DLL
@@ -338,6 +340,11 @@ int mkstemp(char*);
 #else
 #define USE_BOOST_FORMAT 0
 #endif
+
+#define BOOST_DISABLE_THREADS 1
+#define BOOST_NO_EXCEPTIONS 1
+#define BOOST_NO_WREGEX 1
+#define BOOST_NO_WSTRING 1
 
 #endif
 ])

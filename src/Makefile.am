@@ -13,8 +13,12 @@ LYX_CONV_LIBS = mathed/libmathed.la insets/libinsets.la \
 	graphics/libgraphics.la \
 	support/libsupport.la
 
+if USE_INCLUDED_BOOST
 BOOST_LIBS = ../boost/libs/regex/src/libboostregex.la \
 	../boost/libs/signals/src/libboostsignals.la
+else
+BOOST_LIBS = -lboost_regex -lboost_signals
+endif
 
 lyx_LDADD = $(LYX_CONV_LIBS) $(BOOST_LIBS) $(INTLLIBS) \
 	$(AIKSAURUS_LIBS) @LIBS@

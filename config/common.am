@@ -8,6 +8,8 @@ AM_INSTALL_DATA_FLAGS = $(INSTALL) -m 644 -D
 
 ETAGS_ARGS = --lang=c++
 
+if USE_INCLUDED_BOOST
 BOOST_INCLUDES = -I$(top_srcdir)/boost
+endif
 
 LIBS =

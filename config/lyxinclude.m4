@@ -397,6 +397,17 @@ dnl    AC_MSG_RESULT([$with_included_string])
 ])
 
 
+dnl Usage: LYX_USE_INCLUDED_BOOST : select if the included boost should
+dnl        be used.
+AC_DEFUN(LYX_USE_INCLUDED_BOOST,[
+	AC_ARG_WITH(included-boost,
+	    [  --with-included-boost  use the boost lib supplied with LyX],
+	    [lyx_cv_with_included_boost=$withval
+		AC_MSG_RESULT([$with_included_boost])],
+	    [lyx_cv_with_included_boost=yes])
+	AM_CONDITIONAL(USE_INCLUDED_BOOST, test x$lyx_cv_with_included_boost = xyes)
+])
+
 dnl Usage: LYX_CXX_GOOD_STD_STRING : checks whether the C++ compiler
 dnl   has a std::string that is close to the standard. So close that
 dnl   methods not found in "unstandard" std::strings are present here.

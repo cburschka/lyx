@@ -1,5 +1,7 @@
 2003-05-07  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
+	* Makefile.am (BOOST_LIBS): allow boost as system lib.
+
 	* text2.C (changeDepth): parlist cleanup
 	(getColumnNearX): ditto
 

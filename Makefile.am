@@ -6,7 +6,13 @@ MAINTAINERCLEANFILES += $(srcdir)/aclocal.m4 \
 	$(srcdir)/configure \
 	$(srcdir)/acinclude.m4
 
+DIST_SUBDIRS = config development intl po boost src sourcedoc lib
+
+if USE_INCLUDED_BOOST
 SUBDIRS = config development intl po boost src sourcedoc lib
+else
+SUBDIRS = config development intl po src sourcedoc lib
+endif
 
 EXTRA_DIST = ANNOUNCE INSTALL.OS2 INSTALL.autoconf README.OS2 \
 	UPGRADING lyx.man autogen.sh images
