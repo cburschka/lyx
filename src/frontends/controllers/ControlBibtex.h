@@ -14,16 +14,30 @@
 #define CONTROLBIBTEX_H
 
 
-#include "ControlCommand.h"
+#include "Dialog.h"
+#include "insets/insetbibtex.h"
 #include <vector>
 
 
 /** A controller for Bibtex dialogs.
  */
-class ControlBibtex : public ControlCommand {
+class ControlBibtex : public Dialog::Controller {
 public:
 	///
 	ControlBibtex(Dialog &);
+
+	///
+	InsetBibtexParams & params() { return params_; }
+	///
+	InsetBibtexParams const & params() const { return params_; }
+	///
+	virtual bool initialiseParams(string const & data);
+	/// clean-up on hide.
+	virtual void clearParams();
+	/// clean-up on hide.
+	virtual void dispatchParams();
+	///
+	virtual bool isBufferDependent() const { return true; }
 
 	/// Browse for a file
 	string const Browse(string const &, string const &, string const &);
@@ -34,6 +48,10 @@ public:
 	/// build filelists of all availabe bib/bst/cls/sty-files. done through
 	/// kpsewhich and an external script, saved in *Files.lst
 	void rescanBibStyles() const;
+
+private:
+	///
+	InsetBibtexParams params_;
 };
 
 

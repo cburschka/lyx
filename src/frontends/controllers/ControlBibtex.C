@@ -14,11 +14,12 @@
 
 #include "ControlBibtex.h"
 #include "Kernel.h"
-
-#include "lyxrc.h"
 #include "helper_funcs.h"
 #include "tex_helpers.h"
+
+#include "funcrequest.h"
 #include "gettext.h"
+#include "lyxrc.h"
 
 #include "support/filetools.h"
 
@@ -29,8 +30,29 @@ using std::vector;
 
 
 ControlBibtex::ControlBibtex(Dialog & d)
-	: ControlCommand(d, "bibtex")
+	: Dialog::Controller(d)
 {}
+
+
+bool ControlBibtex::initialiseParams(string const & data)
+{
+	InsetBibtexMailer::string2params(data, kernel().buffer(), params_);
+	return true;
+}
+
+
+void ControlBibtex::clearParams()
+{
+	params_.erase();
+}
+
+
+void ControlBibtex::dispatchParams()
+{
+	string const lfun =
+		InsetBibtexMailer::params2string(params_, kernel().buffer());
+	kernel().dispatch(FuncRequest(LFUN_INSET_APPLY, lfun));
+}
 
 
 string const ControlBibtex::Browse(string const & in_name,
@@ -59,6 +81,10 @@ void ControlBibtex::getBibStyles(vector<string> & data) const
 	for (; it != end; ++it) {
 		*it = OnlyFilename(*it);
 	}
+	std::sort(data.begin(), end);
+
+	// Add an empy string to the list.
+	data.insert(data.begin(), " ");
 }
 
 

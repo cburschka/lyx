@@ -191,9 +191,11 @@ InsetOld * createInset(FuncRequest const & cmd)
 			return new InsetBibitem(icp);
 
 		} else if (name == "bibtex") {
-			InsetCommandParams icp;
-			InsetCommandMailer::string2params(cmd.argument, icp);
-			return new InsetBibtex(icp);
+			Buffer const & buffer = *cmd.view()->buffer();
+			InsetBibtexParams ibp;
+			InsetBibtexMailer::string2params(cmd.argument,
+							 buffer, ibp);
+			return new InsetBibtex(ibp);
 
 		} else if (name == "citation") {
 			InsetCommandParams icp;
@@ -320,8 +322,6 @@ InsetOld * readInset(LyXLex & lex, Buffer const & buf)
 		} else if (cmdName == "bibitem") {
 			lex.printError("Wrong place for bibitem");
 			inset = new InsetBibitem(inscmd);
-		} else if (cmdName == "bibtex") {
-			inset = new InsetBibtex(inscmd);
 		} else if (cmdName == "index") {
 			inset = new InsetIndex(inscmd);
 		} else if (cmdName == "include") {
@@ -355,6 +355,8 @@ InsetOld * readInset(LyXLex & lex, Buffer const & buf)
 	} else {
 		if (tmptok == "Quotes") {
 			inset = new InsetQuotes;
+		} else if (tmptok == "Bibtex") {
+			inset = new InsetBibtex;
 		} else if (tmptok == "External") {
 			inset = new InsetExternal;
 		} else if (tmptok == "FormulaMacro") {

@@ -15,6 +15,8 @@
 
 
 #include "FormDialogView.h"
+#include "RadioButtonGroup.h"
+#include <vector>
 
 class ControlBibtex;
 struct FD_bibtex;
@@ -26,6 +28,11 @@ class FormBibtex : public FormController<ControlBibtex, FormView<FD_bibtex> > {
 public:
 	///
 	FormBibtex(Dialog &);
+
+	enum PathStyle {ABSOLUTE_PATH = 1,
+			RELATIVE_PATH,
+			NAME_ONLY};
+
 private:
 	/// Set the Params variable for the Controller.
 	virtual void apply();
@@ -35,6 +42,22 @@ private:
 	virtual void update();
 	/// Filter the inputs on callback from xforms
 	virtual ButtonPolicy::SMInput input(FL_OBJECT *, long);
+
+	ButtonPolicy::SMInput add_database();
+	ButtonPolicy::SMInput browser_add_db(string const & name);
+	ButtonPolicy::SMInput browser_selected();
+	ButtonPolicy::SMInput browser_double_click();
+	ButtonPolicy::SMInput browser_delete();
+	ButtonPolicy::SMInput set_path(PathStyle);
+	ButtonPolicy::SMInput database_browse();
+	ButtonPolicy::SMInput style_browse();
+	void browser_deactivated();
+	void input_clear();
+	void input_database();
+
+	RadioButtonGroup storage_;
+	std::vector<string> bib_files_;
+	std::vector<string> bib_files_namesonly_;
 };
 
 #endif // FORMBIBTEX_H

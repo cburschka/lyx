@@ -51,15 +51,16 @@
 #        \converter lyxpreview ${FORMAT} "lyxpreview2bitmap.sh" ""
 # where ${FORMAT} is either ppm or png.
 
-# These four programs are used by the script.
+# These programs are used by the script.
 # Adjust their names to suit your setup.
 test -n "$LATEX" || LATEX=latex
+DVIPNG=/home/angus/preview-latex/devel/dvipng/dvipng
 DVIPS=dvips
 GS=gs
 PNMCROP=pnmcrop
 readonly LATEX DVIPS GS PNMCROP
 
-# Three helper functions.
+# Some helper functions.
 FIND_IT ()
 {
 	test $# -eq 1 || exit 1
@@ -89,40 +90,118 @@ REQUIRED_VERSION ()
 	grep 'Package: preview' $1
 }
 
+CHECK_FOR_PROGRAMS () {
+	test $# -eq 1 || exit 1
+	if [ $1 = "ppm" ]; then
+		# We use latex, dvips and gs, so check that they're all there.
+		FIND_IT ${LATEX}
+		FIND_IT ${DVIPS}
+		FIND_IT ${GS}
+	elif [ "$3" = "png" ]; then
+		# We use latex and dvipng
+		FIND_IT ${LATEX}
+		FIND_IT ${DVIPNG}
+	fi
+}
+
+GENERATE_PPM_FILES () {
+	test $# -eq 2 || exit 1
+
+	BASE=$1
+	RESOLUTION=$2
+
+	# DVI -> PostScript
+	PSFILE=${1}.ps
+
+	${DVIPS} -o ${PSFILE} ${DVIFILE} || {
+		BAIL_OUT "Failed: ${DVIPS} -o ${PSFILE} ${DVIFILE}"
+	}
+
+	# PostScript -> Bitmap files
+	# Older versions of gs have problems with a large degree of
+	# anti-aliasing at high resolutions
+
+	# test expects integer arguments.
+	# ${RESOLUTION} may be a float. Truncate it.
+	INT_RESOLUTION=`echo "${RESOLUTION} / 1" | bc`
+
+	ALPHA=4
+	if [ ${INT_RESOLUTION} -gt 150 ]; then
+		ALPHA=2
+	fi
+
+	GSDEVICE=pnmraw
+	GSSUFFIX=ppm
+
+	${GS} -q -dNOPAUSE -dBATCH -dSAFER \
+		-sDEVICE=${GSDEVICE} -sOutputFile=${BASE}%d.${GSSUFFIX} \
+		-dGraphicsAlphaBit=${ALPHA} -dTextAlphaBits=${ALPHA} \
+		-r${RESOLUTION} ${PSFILE} ||
+	{
+		BAIL_OUT "Failed: ${GS} ${PSFILE}"
+	}
+
+	# All has been successful, so remove everything except the bitmap files
+	# and the metrics file.
+	FILES=`ls ${BASE}* | sed -e "/${BASE}.metrics/d" \
+			 -e "/${BASE}\([0-9]*\).${GSSUFFIX}/d"`
+#	rm -f ${FILES} texput.log
+
+	# The bitmap files can have large amounts of whitespace to the left and
+	# right. This can be cropped if so desired.
+	CROP=1
+	type ${PNMCROP} > /dev/null || CROP=0
+
+	if [ ${CROP} -eq 1 ]; then
+		for FILE in ${BASE}*.${GSSUFFIX}
+		do
+			if ${PNMCROP} -left ${FILE} 2> /dev/null |\
+			   ${PNMCROP} -right  2> /dev/null > ${BASE}.tmp; then
+				mv ${BASE}.tmp ${FILE}
+			else
+				rm -f ${BASE}.tmp
+			fi
+		done
+		rm -f ${BASE}.tmp
+	fi
+}
+
+GENERATE_PNG_FILES () {
+	test $# -eq 2 || exit 1
+
+	BASE=$1
+	RESOLUTION=$2
+
+	${DVIPNG} -D${RESOLUTION} -o${BASE}%d.png ${DVIFILE}
+}
+
+echo $*
+
 # Preliminary check.
 if [ $# -ne 3 ]; then
 	exit 1
 fi
-
-# We use latex, dvips and gs, so check that they're all there.
-FIND_IT ${LATEX}
-FIND_IT ${DVIPS}
-FIND_IT ${GS}
 
 # Extract the params from the argument list.
 DIR=`dirname $1`
 BASE=`basename $1 .tex`
 
 SCALEFACTOR=$2
+OUTPUTFORMAT=$3
 
-if [ "$3" = "ppm" ]; then
-	GSDEVICE=pnmraw
-	GSSUFFIX=ppm
-elif [ "$3" = "png" ]; then
-	GSDEVICE=png16m
-	GSSUFFIX=png
-else
+if [ "${OUTPUTFORMAT}" != "ppm" -a "${OUTPUTFORMAT}" != "png" ]; then
 	BAIL_OUT "Unrecognised output format ${OUTPUTFORMAT}. \
 	Expected either \"ppm\" or \"png\"."
 fi
+
+CHECK_FOR_PROGRAMS ${OUTPUTFORMAT}
 
 # Initialise some variables.
 TEXFILE=${BASE}.tex
 LOGFILE=${BASE}.log
 DVIFILE=${BASE}.dvi
-PSFILE=${BASE}.ps
 METRICSFILE=${BASE}.metrics
-readonly TEXFILE LOGFILE DVIFILE PSFILE METRICSFILE
+readonly TEXFILE LOGFILE DVIFILE METRICSFILE
 
 # LaTeX -> DVI.
 cd ${DIR}
@@ -174,58 +253,11 @@ RESOLUTION=`echo "scale=2; \
 	${SCALEFACTOR} * (10/${LATEXFONT}) * (1000/${MAGNIFICATION})" \
 	| bc`
 
-# DVI -> PostScript
-${DVIPS} -o ${PSFILE} ${DVIFILE} ||
-{
-	BAIL_OUT "Failed: ${DVIPS} -o ${PSFILE} ${DVIFILE}"
-}
-
-# PostScript -> Bitmap files
-# Older versions of gs have problems with a large degree of
-# anti-aliasing at high resolutions
-
-# test expects integer arguments.
-# ${RESOLUTION} may be a float. Truncate it.
-INT_RESOLUTION=`echo "${RESOLUTION} / 1" | bc`
-
-ALPHA=4
-if [ ${INT_RESOLUTION} -gt 150 ]; then
-	ALPHA=2
-fi
-
-${GS} -q -dNOPAUSE -dBATCH -dSAFER \
-	-sDEVICE=${GSDEVICE} -sOutputFile=${BASE}%d.${GSSUFFIX} \
-	-dGraphicsAlphaBit=${ALPHA} -dTextAlphaBits=${ALPHA} \
-	-r${RESOLUTION} ${PSFILE} ||
-{
-	BAIL_OUT "Failed: ${GS} ${PSFILE}"
-}
-
-# All has been successful, so remove everything except the bitmap files
-# and the metrics file.
-FILES=`ls ${BASE}* | sed -e "/${BASE}.metrics/d" \
-			 -e "/${BASE}\([0-9]*\).${GSSUFFIX}/d"`
-rm -f ${FILES} texput.log
-
-# The bitmap files can have large amounts of whitespace to the left and
-# right. This can be cropped if so desired.
-CROP=1
-type ${PNMCROP} > /dev/null || CROP=0
-
-# There's no point cropping the image if using PNG images. If you want to
-# crop, use PPM.
-# Apparently dvipng will support cropping at some stage in the future...
-if [ ${CROP} -eq 1 -a "${GSDEVICE}" = "pnmraw" ]; then
-	for FILE in ${BASE}*.${GSSUFFIX}
-	do
-		if ${PNMCROP} -left ${FILE} 2> /dev/null |\
-		   ${PNMCROP} -right  2> /dev/null > ${BASE}.tmp; then
-			mv ${BASE}.tmp ${FILE}
-		else
-			rm -f ${BASE}.tmp
-		fi
-	done
-	rm -f ${BASE}.tmp
+# 4. Generate the bitmap files and clean-up.
+if [ "${OUTPUTFORMAT}" = "ppm" ]; then
+	GENERATE_PPM_FILES ${BASE} ${RESOLUTION}
+else
+	GENERATE_PNG_FILES ${BASE} ${RESOLUTION}
 fi
 
 echo "Previews generated!"

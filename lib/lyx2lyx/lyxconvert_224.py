@@ -18,7 +18,8 @@
 import re
 from parser_tools import find_token, find_tokens, find_end_of_inset
 from sys import stderr
-from string import replace, split
+from string import replace, split, strip
+import re
 
 def add_end_layout(lines):
     i = find_token(lines, '\\layout', 0)
@@ -104,12 +105,78 @@ def end_document(lines):
         lines.append("\\end_document")
         return
     lines[i] = "\\end_document"
-    
+
+def convert_bibtex(lines):
+    bibtex_header = "\\begin_inset LatexCommand \\bibtex"
+    i = 0
+    while 1:
+        i = find_token(lines, bibtex_header, i)
+        if i == -1:
+            break
+        # We've found a bibtex inset.
+        # I'd like to strip bibtex_header from the front of lines[i]
+        lines[i] = replace(lines[i], bibtex_header, "")
+
+        # Trim any space at extremes
+        lines[i] = strip(lines[i])
+
+        # Does the thing have an opt arg?
+        optarg_rexp = re.compile(r'^\[([^]]*)\]')
+        optarg = optarg_rexp.search(lines[i])
+        optarg_contents = ''
+        if optarg:
+                optarg_contents = optarg.group(1)
+                # strip [<optarg_contents>] from the front of lines[i]
+                lines[i] = replace (lines[i], '[' + optarg.group(0) + ']', '')
+
+        # lines[i] should now contain "{<list of databases>}"
+        mainarg_rexp = re.compile(r'{([^}]*)}')
+        mainarg = mainarg_rexp.search(lines[i])
+        mainarg_contents = ''
+        if mainarg:
+                mainarg_contents = mainarg.group(1)
+        else:
+                # complain about a mal-formed lyx file.
+                stderr.write("Mal-formed bibitem\n")
+
+        # optarg will contain either
+        #       "bibtotoc,<style>"
+        # or
+        #       "<style>"
+        # ie, these are a comma-separated list of arguments.
+        optarg_list = split(optarg_contents, ',')
+        if len(optarg_list) == 0:
+            bibtotoc, style = '',''
+        elif len(optarg_list) == 1:
+            bibtotoc, style = '',optarg_list[0]
+        else:
+            bibtotoc, style = 'true',optarg_list[1]
+        
+        # mainarg will contain a comma-separated list of files.
+        mainarg_list = split( mainarg_contents, ',')
+
+        new_syntax = ['\\begin_inset Bibtex']
+        for file in mainarg_list:
+            new_syntax.append('\t' + 'filename ' + file)
+
+        if style:
+            new_syntax.append('\t' + 'style ' + style)
+
+        if bibtotoc == 'true':
+            new_syntax.append('\t' + 'bibtotoc ' + bibtotoc)
+
+        # Replace old syntax with new
+        lines[i:i+1] = new_syntax
+
+        i = i + len(new_syntax) + 1
+
+        
 def convert(header, body):
     add_end_layout(body)
     layout2begin_layout(body)
     end_document(body)
     table_valignment_middle(body)
+    convert_bibtex(body)
 
 if __name__ == "__main__":
     pass

@@ -52,6 +52,7 @@
 #include "undo_funcs.h"
 #include "ParagraphParameters.h"
 
+#include "insets/insetbibtex.h"
 #include "insets/insetcommand.h"
 #include "insets/insetexternal.h"
 #include "insets/insettabular.h"
@@ -1440,7 +1441,6 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 		string const & name = argument;
 		string data;
 		if (name == "bibitem" ||
-		    name == "bibtex" ||
 		    name == "include" ||
 		    name == "index" ||
 		    name == "ref" ||
@@ -1448,6 +1448,10 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 		    name == "url") {
 			InsetCommandParams p(name);
 			data = InsetCommandMailer::params2string(name, p);
+		} else if (name == "bibtex") {
+			InsetBibtexParams p;
+			Buffer const & buffer = *owner->buffer();
+			data = InsetBibtexMailer::params2string(p, buffer);
 		} else if (name == "citation") {
 			InsetCommandParams p("cite");
 			data = InsetCommandMailer::params2string(name, p);
