@@ -319,7 +319,7 @@ int LyXText::singleWidth(ParagraphList::iterator pit,
 			//tmpinset->update(bv());
 			Dimension dim;
 			MetricsInfo mi(bv(), font, workWidth());
-			tmpinset->metrics(mi, dim);
+			tmpinset->metrics(mi, dim);	
 			return dim.wid;
 #else 
 			return tmpinset->width();

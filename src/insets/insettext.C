@@ -275,16 +275,15 @@ void InsetText::read(Buffer const * buf, LyXLex & lex)
 
 void InsetText::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	//lyxerr << "InsetText::metrics: " << getInsetName()
-	//	<< " width: " << mi.base.textwidth << "\n";
+	//lyxerr << "InsetText::metrics: width: " << mi.base.textwidth << "\n";
 	if (mi.base.textwidth)
 		textwidth_ = mi.base.textwidth;
 	BufferView * bv = mi.base.bv;
 	setViewCache(bv);
-	text_.rebuild(mi.base.textwidth);
-	dim.asc = text_.rows().begin()->ascent_of_text() + TEXT_TO_INSET_OFFSET;
-	dim.des = text_.height - dim.asc + TEXT_TO_INSET_OFFSET;
-	dim.wid = max(textwidth_, int(text_.width)) + 2 * TEXT_TO_INSET_OFFSET;
+	text_.metrics(mi, dim);
+	dim.asc += TEXT_TO_INSET_OFFSET;
+	dim.des += TEXT_TO_INSET_OFFSET;
+	dim.wid += 2 * TEXT_TO_INSET_OFFSET;
 	dim.wid = max(dim.wid, 10);
 	dim_ = dim;
 }

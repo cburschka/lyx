@@ -34,6 +34,8 @@ class UpdatableInset;
 class VSpace;
 class WordLangTuple;
 class ParagraphList;
+class MetricsInfo;
+class Dimension;
 
 
 /**
@@ -163,8 +165,8 @@ public:
 	void partialRebreak();
 	/// a full rebreak of the whole text
 	void fullRebreak();
-	/// rebuild RowList cache
-	void rebuild(int maxwidth);
+	/// compute text metrics
+	void metrics(MetricsInfo & mi, Dimension & dim);
 
 	///
 	RowList::iterator need_break_row;

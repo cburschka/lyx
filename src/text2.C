@@ -34,6 +34,7 @@
 #include "ParagraphParameters.h"
 #include "counters.h"
 #include "lyxrow_funcs.h"
+#include "metricsinfo.h"
 #include "paragraph_funcs.h"
 
 #include "insets/insetbibitem.h"
@@ -46,6 +47,8 @@
 #include "support/lstrings.h"
 
 #include <boost/tuple/tuple.hpp>
+
+#include <algorithm>
 
 using namespace lyx::support;
 
@@ -692,8 +695,11 @@ void LyXText::fullRebreak()
 }
 
 
-void LyXText::rebuild(int maxwidth)
+void LyXText::metrics(MetricsInfo & mi, Dimension & dim)
 {
+	lyxerr << "LyXText::metrics: width: " << mi.base.textwidth << "\n";
+
+	// rebuild row cache
 	rowlist_.clear();
 	need_break_row = rows().end();
 	width = height = 0;
@@ -705,6 +711,15 @@ void LyXText::rebuild(int maxwidth)
 	ParagraphList::iterator end = ownerParagraphs().end();
 
 	for (; pit != end; ++pit) {
+		// compute inset metrics
+		for (int pos = 0; pos != pit->size(); ++pos) {
+			if (pit->isInset(pos)) {
+				Dimension dim;
+				MetricsInfo m = mi;
+				pit->getInset(pos)->metrics(m, dim);
+			}
+		}
+
 		// insert a new row, starting at position 0
 		Row newrow(pit, 0);
 		RowList::iterator rit = rowlist_.insert(rowlist_.end(), newrow);
@@ -713,6 +728,17 @@ void LyXText::rebuild(int maxwidth)
 		appendParagraph(rit);
 	}
 
+	// compute height
+	//lyxerr << "height 0: " << height << "\n";
+	//for (RowList::iterator rit = rows().begin(); rit != rows().end(); ++rit) {
+	//	height += rit->height();
+	//}
+	//lyxerr << "height 1: " << height << "\n";
+
+	// final dimension
+	dim.asc = rows().begin()->ascent_of_text();
+	dim.des = height - dim.asc;
+	dim.wid = std::max(mi.base.textwidth, int(width));
 }
 
 
