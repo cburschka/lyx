@@ -27,7 +27,7 @@ using std::endl;
 Languages languages;
 Language const * english_language;
 Language const * default_language;
-Language ignore_lang("ignore", "ignore", "Ignore", false, 0, "ignore");
+Language ignore_lang("ignore", "ignore", "Ignore", false, 0, "ignore", "");
 Language const * ignore_language = &ignore_lang;
 
 void Languages::setDefaults()
@@ -35,7 +35,7 @@ void Languages::setDefaults()
 	languagelist["english"] = Language("english", "english", N_("English"),
 					   false, 
 					   encodings.getEncoding("iso8859-1"),
-					   "en");
+					   "en", "");
 	english_language = default_language = &languagelist["english"];
 }
 
@@ -44,7 +44,7 @@ void Languages::read(string const & filename)
 	LyXLex lex(0, 0);
 	lex.setFile(filename);
 	while (lex.IsOK()) {
-		string lang, babel, display, encoding_str, code;
+		string lang, babel, display, encoding_str, code, latex_options;
 		bool rtl = false;
 
 		if (lex.next())
@@ -63,6 +63,8 @@ void Languages::read(string const & filename)
 			encoding_str = lex.GetString();
 		if (lex.next())
 			code = lex.GetString();
+		if (lex.next())
+			latex_options = lex.GetString();
 
 		Encoding const * encoding = encodings.getEncoding(encoding_str);
 		if (!encoding) {
@@ -70,7 +72,8 @@ void Languages::read(string const & filename)
 			lyxerr << "Unknown encoding " << encoding_str << endl; 
 		}
 
-		languagelist[lang] = Language(lang, babel, display, rtl, encoding, code);
+		languagelist[lang] = Language(lang, babel, display, rtl, 
+					      encoding, code, latex_options);
 	}
 
 #ifdef DO_USE_DEFAULT_LANGUAGE

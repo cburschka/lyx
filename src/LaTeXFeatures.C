@@ -346,6 +346,13 @@ string const LaTeXFeatures::getMacros()
 		}
 	}
 
+	for (LanguageList::const_iterator cit = UsedLanguages.begin();
+	     cit != UsedLanguages.end(); ++cit)
+		if (!(*cit)->latex_options().empty())
+			macros += (*cit)->latex_options() + '\n';
+	if (!params.language->latex_options().empty())
+		macros += params.language->latex_options() + '\n';
+
 	return macros;
 }
 

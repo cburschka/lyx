@@ -28,9 +28,10 @@ public:
 	Language() : RightToLeft_(false) {}
 	///
 	Language(string const & l, string const & b, string const & d,
-		 bool rtl, Encoding const * e, string const & c)
+		 bool rtl, Encoding const * e, string const & c,
+		 string const & o)
 		: lang_(l), babel_(b), display_(d), RightToLeft_(rtl),
-		  encoding_(e), code_(c)
+		  encoding_(e), code_(c), latex_options_(o)
 		{}
 	///
 	string const & lang() const {
@@ -56,6 +57,10 @@ public:
 	string const & code() const {
 		return code_;
 	}
+	///
+	string const & latex_options() const {
+		return latex_options_;
+	}
 private:
 	///
 	string lang_;
@@ -69,6 +74,8 @@ private:
 	Encoding const * encoding_;
 	///
 	string code_;
+	///
+	string latex_options_;
 };
 
 class Languages

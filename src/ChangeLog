@@ -1,3 +1,11 @@
+2001-01-20  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* language.C (latex_options_): New field.
+
+	* LaTeXFeatures.C (getMacros): Add language macros.
+
+	* buffer.C (makeLaTeXFile): Small fix.
+
 2001-01-19  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* lyxfunc.C: fix the name of the inset for LFUN_CHILDINSERT
