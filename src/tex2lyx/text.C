@@ -103,7 +103,7 @@ void handle_ert(ostream & os, string const & s)
 	os << "\nstatus Collapsed\n\n\\layout Standard\n\n";
 	for (string::const_iterator it = s.begin(), et = s.end(); it != et; ++it) {
 		if (*it == '\\')
-			os << "\n\\backslash\n";
+			os << "\n\\backslash \n";
 		else
 			os << *it;
 	}
@@ -250,8 +250,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			if (t.character() == '~') {
 				if (active_environment() == "lyxcode")
 					os << ' ';
-				else
-					os << "\\SpecialChar ~\n";
+				else 
+					os << "\\InsetSpace ~\n";
 			} else
 				os << t.character();
 		}
@@ -287,11 +287,6 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		//
 		// control sequences
 		//
-
-		else if (t.cs() == "ldots") {
-			skip_braces(p);
-			os << "\n\\SpecialChar \\ldots{}\n";
-		}
 
 		else if (t.cs() == "(") {
 			begin_inset(os, "Formula");
@@ -340,25 +335,32 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				handle_par(os);
 				parse_text(p, os, FLAG_END, outer,
 					   textclass);
-			} else if (name == "enumerate" || name == "itemize"
-					|| name == "lyxlist") {
-				size_t const n = active_environments.size();
-				string const s = active_environments[n - 2];
-				bool const deeper = s == "enumerate" || s == "itemize"
-					|| s == "lyxlist";
-				if (deeper)
-					os << "\n\\begin_deeper";
-				os << "\n\\layout " << cap(name) << "\n\n";
-				if (name == "lyxlist")
+				// The single '=' is meant here.
+			} else if ((layout_ptr = findLayout(textclass, t.cs())).get() &&
+				   layout_ptr->isEnvironment()) {
+ 				size_t const n = active_environments.size();
+ 				string const s = active_environments[n - 2];
+ 				bool const deeper = s == "enumerate" || s == "itemize"
+ 					|| s == "lyxlist";
+ 				if (deeper)
+ 					os << "\n\\begin_deeper";
+				os << "\n\\layout " << layout_ptr->name() 
+				   << "\n\n";
+				switch (layout_ptr->latextype) {
+				case  LATEX_LIST_ENVIRONMENT:
+					os << "\\labelwidthstring "
+					   << p.verbatim_item() << '\n';
+					break;
+				case  LATEX_BIB_ENVIRONMENT:
 					p.verbatim_item(); // swallow next arg
+					break;
+				default:
+					break;
+				}
 				parse_text(p, os, FLAG_END, outer, textclass);
-				if (deeper)
-					os << "\n\\end_deeper\n";
+ 				if (deeper)
+ 					os << "\n\\end_deeper\n";
 				handle_par(os);
-			} else if (name == "thebibliography") {
-				p.verbatim_item(); // swallow next arg
-				parse_text(p, os, FLAG_END, outer, textclass);
-				os << "\n\\layout Bibliography\n\n";
 			} else {
 				handle_par(os);
 				parse_text(p, os, FLAG_END, outer, textclass);
@@ -388,7 +390,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				s = parse_text(p, FLAG_BRACK_LAST, outer, textclass);
 			}
 			handle_par(os);
-			os << s << ' ';
+			if (s.size())
+				os << s << ' ';
 		}
 
 		else if (t.cs() == "def") {
@@ -463,8 +466,13 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		else if (t.cs() == "makeindex" || t.cs() == "maketitle")
 			skip_braces(p); // swallow this
 
-		else if (t.cs() == "tableofcontents")
+		else if (t.cs() == "tableofcontents") {
+			begin_inset(os, "LatexCommand ");
+			os << '\\' << t.cs() << "{}\n";
+			end_inset(os);
 			skip_braces(p); // swallow this
+		}
+
 
 		else if (t.cs() == "textrm") {
 			os << "\n\\family roman \n";
@@ -517,7 +525,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		else if (t.cs() == "bibitem") {
 			os << "\n\\layout Bibliography\n\\bibitem ";
 			os << p.getOpt();
-			os << '{' << p.verbatim_item() << '}' << "\n\n";
+			os << '{' << p.verbatim_item() << '}' << "\n";
 		}
 
 		else if (is_known(t.cs(), known_latex_commands)) {
@@ -553,6 +561,11 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			skip_braces(p); // eat {}
 		}
 
+		else if (t.cs() == "ldots") {
+			skip_braces(p);
+			os << "\\SpecialChar \\ldots{}\n";
+		}
+
 		else if (t.cs() == "lyxarrow") {
 			os << "\\SpecialChar \\menuseparator\n";
 			skip_braces(p);
@@ -563,10 +576,13 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			skip_braces(p);
 		}
 
-		else if (t.cs() == "@") {
-			os << "\\SpecialChar \\@";
-			skip_braces(p);
+		else if (t.cs() == "@" && p.next_token().asInput() == ".") {
+			os << "\\SpecialChar \\@.\n";
+			p.get_token();
 		}
+
+		else if (t.cs() == "-")
+			os << "\\SpecialChar \\-\n";
 
 		else if (t.cs() == "textasciitilde") {
 			os << '~';
@@ -579,12 +595,13 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		}
 
 		else if (t.cs() == "textbackslash") {
-			os << "\n\\backslash\n";
+			os << "\n\\backslash \n";
 			skip_braces(p);
 		}
 
-		else if (t.cs() == "_" || t.cs() == "&" || t.cs() == "#" || t.cs() == "$"
-			    || t.cs() == "{" || t.cs() == "}" || t.cs() == "%")
+		else if (t.cs() == "_" || t.cs() == "&" || t.cs() == "#" 
+			    || t.cs() == "$" || t.cs() == "{" || t.cs() == "}" 
+			    || t.cs() == "%")
 			os << t.cs();
 
 		else if (t.cs() == "char") {
@@ -626,11 +643,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		else if (t.cs() == "i" || t.cs() == "j")
 			os << "\\" << t.cs() << ' ';
 
-		else if (t.cs() == "-")
-			os << "\\SpecialChar \\-\n";
-
 		else if (t.cs() == "\\")
-			os << "\n\\newline\n";
+			os << "\n\\newline \n";
 	
 		else if (t.cs() == "input")
 			handle_ert(os, "\\input{" + p.verbatim_item() + "}\n");

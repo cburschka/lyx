@@ -415,6 +415,9 @@ void handle_tabular(Parser & p, ostream & os,
 
 			} else {	
 				// FLAG_END is a hack, we need to read all of it
+				cellinfo[row][col].leftline = colinfo[col].leftline;
+				cellinfo[row][col].rightline = colinfo[col].rightline;
+				cellinfo[row][col].align = colinfo[col].align;
 				cellinfo[row][col].content = parse_text(p, FLAG_END, false, textclass);
 			}
 		}
@@ -435,21 +438,23 @@ void handle_tabular(Parser & p, ostream & os,
 
 	//cerr << "// output what we have\n";
 	// output what we have
-	os << "<lyxtabular version=\"3\" rows=\"" << rowinfo.size()
+	os << "\n<lyxtabular version=\"3\" rows=\"" << rowinfo.size()
 		 << "\" columns=\"" << colinfo.size() << "\">\n"
 		 << "<features>\n";
 
 	//cerr << "// after header\n";
 	for (size_t col = 0; col < colinfo.size(); ++col) {
-		os << "<column alignment=\"" << colinfo[col].align << "\"";
-		if (colinfo[col].rightline)
-			os << " rightline=\"true\"";
+		os << "<column alignment=\""
+		   << verbose_align(colinfo[col].align) << "\"";
+		os << " valignment=\"top\"";
 		if (colinfo[col].leftline)
 			os << " leftline=\"true\"";
+		if (colinfo[col].rightline)
+			os << " rightline=\"true\"";
+		if (colinfo[col].width.size())
+			os << " width=\"" << colinfo[col].width << "\"";
 		if (colinfo[col].special.size())
 			os << " special=\"" << colinfo[col].special << "\"";
-		os << " valignment=\"top\"";
-		os << " width=\"" << colinfo[col].width << "\"";
 		os << ">\n";
 	}
 	//cerr << "// after cols\n";
@@ -466,27 +471,28 @@ void handle_tabular(Parser & p, ostream & os,
 			os << "<cell";
 			if (cell.multi)
 				os << " multicolumn=\"" << cell.multi << "\"";
-			if (cell.leftline)
-				os << " leftline=\"true\"";
-			if (cell.rightline)
-				os << " rightline=\"true\"";
+			os << " alignment=\"" << verbose_align(cell.align) 
+			   << "\""
+			   << " valignment=\"top\"";
 			if (cell.topline)
 				os << " topline=\"true\"";
 			if (cell.bottomline)
 				os << " bottomline=\"true\"";
+			if (cell.leftline)
+				os << " leftline=\"true\"";
+			if (cell.rightline)
+				os << " rightline=\"true\"";
 			//cerr << "\nrow: " << row << " col: " << col;
 			//if (cell.topline)
 			//	cerr << " topline=\"true\"";
 			//if (cell.bottomline)
 			//	cerr << " bottomline=\"true\"";
-			os << " alignment=\"" << verbose_align(cell.align) << "\""
-				 << " valignment=\"top\""
-				 << " usebox=\"none\""
-				 << ">"
+			os << " usebox=\"none\""
+			   << ">"
 			   << "\n\\begin_inset Text"
 			   << "\n\n\\layout Standard\n\n"
 			   << cell.content
-			   << "\n\\end_inset\n\n"
+			   << "\n\\end_inset \n"
 			   << "</cell>\n";
 		}
 		os << "</row>\n";

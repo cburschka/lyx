@@ -1,7 +1,15 @@
-2003-07-27  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+2003-07-28  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* text.C (parse_text): read environment from layout file too. Now,
+	all layout entries are supported (but many hacks remain)
+
+	* table.C (handle_tabular): make the output more similar to LyX
+	and fix a little
 
 	* text.C (output_layout): fix handling of optional argument
-	(parse_text): small tweaks to make output format closer to lyx format
+	(parse_text): small tweaks to make output format closer to lyx
+	format; support \tableofcontents; fix/improve support for various
+	special characters
 
 2003-07-27  Angus Leeming  <leeming@lyx.org>
 
