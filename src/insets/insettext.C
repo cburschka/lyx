@@ -377,24 +377,36 @@ void InsetText::Read(LyXLex & lex)
 }
 
 
-int InsetText::ascent(Painter &, LyXFont const & font) const
+int InsetText::ascent(Painter &pain, LyXFont const & font) const
 {
+    if (init_inset) {
+	computeTextRows(pain);
+	init_inset = false;
+    }
     if (maxAscent)
 	return maxAscent;
     return font.maxAscent();
 }
 
 
-int InsetText::descent(Painter &, LyXFont const & font) const
+int InsetText::descent(Painter &pain, LyXFont const & font) const
 {
+    if (init_inset) {
+	computeTextRows(pain);
+	init_inset = false;
+    }
     if (maxDescent)
 	return maxDescent;
     return font.maxDescent();
 }
 
 
-int InsetText::width(Painter &, LyXFont const &) const
+int InsetText::width(Painter &pain, LyXFont const &) const
 {
+    if (init_inset) {
+	computeTextRows(pain);
+	init_inset = false;
+    }
     return insetWidth;
 }
 
@@ -416,6 +428,10 @@ int InsetText::getMaxWidth(UpdatableInset * inset) const
 void InsetText::draw(Painter & pain, LyXFont const & f,
 		     int baseline, float & x) const
 {
+//    if (init_inset) {
+	computeTextRows(pain);
+//	init_inset = false;
+//    }
     UpdatableInset::draw(pain, f, baseline, x);
     
     bool do_reset_pos = (x != top_x) || (baseline != top_baseline);
@@ -685,7 +701,7 @@ UpdatableInset::RESULT InsetText::LocalDispatch(BufferView * bv,
       case -1:
           par->InsertChar(actpos,arg[0]);
 	  par->SetFont(actpos,real_current_font);
-	  computeTextRows(bv);
+	  computeTextRows(bv->getPainter());
 	  bv->updateInset(this, true);
           ++actpos;
 	  selection_start = selection_end = actpos;
@@ -760,7 +776,7 @@ UpdatableInset::RESULT InsetText::LocalDispatch(BufferView * bv,
       case LFUN_DELETE:
           if (Delete()) { // we need update
 	      selection_start = selection_end = actpos;
-	      computeTextRows(bv);
+	      computeTextRows(bv->getPainter());
 	      bv->updateInset(this, true);
           } else if (hasSelection()) {
 	      selection_start = selection_end = actpos;
@@ -769,8 +785,8 @@ UpdatableInset::RESULT InsetText::LocalDispatch(BufferView * bv,
           break;
       case LFUN_HOME:
           for(; actpos > rows[actrow].pos; --actpos)
-              cx -= SingleWidth(bv, par, actpos);
-	  cx -= SingleWidth(bv, par, actpos);
+              cx -= SingleWidth(bv->getPainter(), par, actpos);
+	  cx -= SingleWidth(bv->getPainter(), par, actpos);
 	  if (hasSelection()) {
 	      selection_start = selection_end = actpos;
 	      bv->updateInset(this, false);
@@ -780,7 +796,7 @@ UpdatableInset::RESULT InsetText::LocalDispatch(BufferView * bv,
           break;
       case LFUN_END:
           for(; actpos < rows[actrow + 1].pos; ++actpos)
-              cx += SingleWidth(bv, par, actpos);
+              cx += SingleWidth(bv->getPainter(), par, actpos);
 	  if (hasSelection()) {
 	      selection_start = selection_end = actpos;
 	      bv->updateInset(this, false);
@@ -836,18 +852,17 @@ void InsetText::Validate(LaTeXFeatures & features) const
 
 
 // Returns the width of a character at a certain spot
-int InsetText::SingleWidth(BufferView * bv, LyXParagraph * par, int pos)
+int InsetText::SingleWidth(Painter & pain, LyXParagraph * par, int pos) const
 {
     LyXFont font = GetFont(par, pos);
     char c = par->GetChar(pos);
 
-    // The most common case is handled first (Asger)
     if (IsPrintable(c)) {
         return font.width(c);
     } else if (c == LyXParagraph::META_INSET) {
         Inset const * tmpinset=par->GetInset(pos);
         if (tmpinset)
-            return tmpinset->width(bv->getPainter(), font);
+            return tmpinset->width(pain, font);
         else
             return 0;
     } else if (IsSeparatorChar(c))
@@ -859,19 +874,18 @@ int InsetText::SingleWidth(BufferView * bv, LyXParagraph * par, int pos)
 
 
 // Returns the width of a character at a certain spot
-void InsetText::SingleHeight(BufferView * bv, LyXParagraph * par,int pos,
-			     int & asc, int & desc)
+void InsetText::SingleHeight(Painter & pain, LyXParagraph * par,int pos,
+			     int & asc, int & desc) const
 {
     LyXFont font = GetFont(par, pos);
     char c = par->GetChar(pos);
 
     asc = desc = 0;
-    // The most common case is handled first (Asger)
     if (c == LyXParagraph::META_INSET) {
         Inset const * tmpinset=par->GetInset(pos);
         if (tmpinset) {
-	    asc = tmpinset->ascent(bv->getPainter(),font);
-	    desc = tmpinset->descent(bv->getPainter(),font);
+	    asc = tmpinset->ascent(pain, font);
+	    desc = tmpinset->descent(pain, font);
         }
     } else {
         asc = font.maxAscent();
@@ -1042,13 +1056,13 @@ void InsetText::setPos(BufferView * bv, int x, int y, bool activate_inset)
     x += top_x;
 
     int swh;
-    int sw = swh = SingleWidth(bv, par,actpos);
+    int sw = swh = SingleWidth(bv->getPainter(), par,actpos);
     if (par->GetChar(actpos)!=LyXParagraph::META_INSET)
 	swh /= 2;
     while ((actpos < (rows[actrow + 1].pos - 1)) && ((cx + swh) < x)) {
 	cx += sw;
 	++actpos;
-	sw = swh = SingleWidth(bv, par,actpos);
+	sw = swh = SingleWidth(bv->getPainter(), par,actpos);
 	if (par->GetChar(actpos)!=LyXParagraph::META_INSET)
 	    swh /= 2;
     }
@@ -1138,7 +1152,7 @@ void InsetText::resetPos(BufferView * bv)
     setPos(bv, 0, cy, false);
     cx = top_x;
     while(actpos < old_pos) {
-	cx += SingleWidth(bv, par,actpos);
+	cx += SingleWidth(bv->getPainter(), par,actpos);
 	++actpos;
     }
 }
@@ -1166,7 +1180,7 @@ bool InsetText::InsertInset(BufferView * bv, Inset * inset)
 {
     par->InsertChar(actpos, LyXParagraph::META_INSET);
     par->InsertInset(actpos, inset);
-    computeTextRows(bv);
+    computeTextRows(bv->getPainter());
     bv->updateInset(this, true);
     the_locking_inset = static_cast<UpdatableInset*>(inset);
     inset_x = cx - top_x;
@@ -1220,7 +1234,7 @@ void InsetText::SetFont(BufferView * bv, LyXFont const & font, bool toggleall)
 	SetCharFont(s_start, newfont);
 	++s_start;
     }
-    computeTextRows(bv);
+    computeTextRows(bv->getPainter());
     bv->updateInset(this, true);
 }
 
@@ -1256,7 +1270,7 @@ void InsetText::SetCharFont(int pos, LyXFont const & f)
 }
 
 
-void InsetText::computeTextRows(BufferView * bv)
+void InsetText::computeTextRows(Painter & pain) const
 {
     int p,
 	nwp = 0,
@@ -1280,8 +1294,8 @@ void InsetText::computeTextRows(BufferView * bv)
     rows.push_back(row);
     if (maxWidth < 0) {
 	for(p=0; p < par->Last(); ++p) {
-	    insetWidth += SingleWidth(bv, par, p);
-	    SingleHeight(bv, par, p, asc, desc);
+	    insetWidth += SingleWidth(pain, par, p);
+	    SingleHeight(pain, par, p, asc, desc);
 	    if (asc > maxAscent)
 		maxAscent = asc;
 	    if (desc > maxDescent)
@@ -1300,10 +1314,10 @@ void InsetText::computeTextRows(BufferView * bv)
 	lastWordWidth=0;
 
     for(p = 0; p < par->Last(); ++p) {
-	cw = SingleWidth(bv, par, p);
+	cw = SingleWidth(pain, par, p);
 	width += cw;
 	lastWordWidth += cw;
-	SingleHeight(bv, par, p, asc, desc);
+	SingleHeight(pain, par, p, asc, desc);
 	if (asc > wordAscent)
 	    wordAscent = asc;
 	if (desc > wordDescent)
@@ -1335,7 +1349,7 @@ void InsetText::computeTextRows(BufferView * bv)
 	    rows[rows.size() - 1].desc = odesc;
 	    row.pos = ++p;
 	    rows.push_back(row);
-	    SingleHeight(bv, par, p, asc, desc);
+	    SingleHeight(pain, par, p, asc, desc);
 	    rows[rows.size() - 1].asc = asc;
 	    rows[rows.size() - 1].desc = desc;
 	    row.pos = nwp = p + 1;
@@ -1412,6 +1426,7 @@ void InsetText::computeTextRows(BufferView * bv)
     for (unsigned int i=1; i<rows.size()-1; ++i) {
 	maxDescent += rows[i].asc + rows[i].desc + interline_space;
     }
+#if 0
     if (the_locking_inset) {
 	computeBaselines(top_baseline);
 	actpos = inset_pos;
@@ -1419,6 +1434,7 @@ void InsetText::computeTextRows(BufferView * bv)
 	inset_x = cx-top_x;
 	inset_y = cy;
     }
+#endif
 }
 
 
@@ -1428,15 +1444,5 @@ void InsetText::computeBaselines(int baseline) const
     for (unsigned int i=1; i<rows.size()-1; i++) {
 	rows[i].baseline = rows[i-1].baseline + rows[i-1].desc + 
 	    rows[i].asc + interline_space;
-    }
-}
-
-
-void InsetText::init(BufferView * bv)
-{
-//    if (init_inset)
-    {
-	computeTextRows(bv);
-	init_inset = false;
     }
 }

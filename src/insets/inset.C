@@ -127,7 +127,7 @@ void UpdatableInset::draw(Painter &, LyXFont const &,
 }
 
 
-void UpdatableInset::SetFont(LyXFont const &, bool )
+void UpdatableInset::SetFont(BufferView *, LyXFont const &, bool )
 {
 }
 

@@ -2135,7 +2135,7 @@ void ToggleAndShow(BufferView * bv, LyXFont const & font)
 		bv->hideCursor();
 		bv->update(-2);
 		if (bv->the_locking_inset)
-			bv->the_locking_inset->SetFont(font, toggleall);
+			bv->the_locking_inset->SetFont(bv, font, toggleall);
 		else
 			bv->text->ToggleFree(font, toggleall);
 		bv->update(1);

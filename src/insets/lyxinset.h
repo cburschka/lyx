@@ -226,9 +226,9 @@ public:
 	virtual void draw(Painter &, LyXFont const &,
 			  int baseline, float & x) const;
 	///
-	virtual void SetFont(LyXFont const &, bool toggleall = false);
+	virtual void SetFont(BufferView *, LyXFont const &, bool toggleall=false);
 	///
-	virtual bool InsertInset(Inset *) { return false; }
+	virtual bool InsertInset(BufferView *, Inset *) { return false; }
 	///
 	virtual UpdatableInset * GetLockingInset() { return this; }
 	///

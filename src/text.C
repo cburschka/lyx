@@ -371,7 +371,6 @@ void LyXText::draw(Row const * row,
 	} else if (c == LyXParagraph::META_INSET) {
 		Inset * tmpinset = row->par->GetInset(pos);
 		if (tmpinset) {
-			tmpinset->init(owner_);
 			tmpinset->draw(owner_->painter(), font,
 				       offset + row->baseline, x);
 		}

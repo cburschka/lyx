@@ -103,8 +103,6 @@ public:
     UpdatableInset * GetLockingInset();
     ///
     void SetFont(BufferView *, LyXFont const &, bool toggleall = false);
-    ///
-    void init(BufferView *);
 
     LyXParagraph * par;
 
@@ -114,28 +112,28 @@ protected:
     ///
     void resetPos(BufferView *);
     ///
-    void drawSelection(Painter & pain, int pos, int baseline, float x);
+    void drawSelection(Painter &, int pos, int baseline, float x);
     ///
-    void SingleHeight(BufferView *, LyXParagraph * par,int pos,
-		      int & asc, int & desc);
+    void SingleHeight(Painter &, LyXParagraph * par,int pos,
+		      int & asc, int & desc) const;
     ///
-    int SingleWidth(BufferView * bv, LyXParagraph * par, int pos);
+    int SingleWidth(Painter &, LyXParagraph * par, int pos) const;
     ///
     LyXFont GetFont(LyXParagraph * par, int pos) const;
     ///
     Buffer * buffer;
     ///
     LyXFont current_font;
-	///
-        LyXFont real_current_font;
-	///
-	int maxWidth;
-	///
-        int maxAscent;
-	///
-	int maxDescent;
-	///
-	int insetWidth;
+    ///
+    LyXFont real_current_font;
+    ///
+    int maxWidth;
+    ///
+    mutable int maxAscent;
+    ///
+    mutable int maxDescent;
+    ///
+    mutable int insetWidth;
 
 private:
     ///
@@ -145,7 +143,7 @@ private:
     void drawRowText(Painter &, int startpos, int endpos, int baseline,
                      float x) const;
     ///
-    void computeTextRows(BufferView *);
+    void computeTextRows(Painter &) const;
     ///
     void computeBaselines(int) const;
     ///
@@ -195,7 +193,7 @@ private:
     ///
     bool no_selection;
     ///
-    bool init_inset;
+    mutable bool init_inset;
     ///
     UpdatableInset * the_locking_inset;
     ///
