@@ -155,9 +155,9 @@ unsigned int xformsImage::getWidth() const
 	if (!image_)
 		return 0;
 
-	// Why, oh why do we need such hacks?
+	// Why, oh why, do we need such hacks?
 	// Angus 12 July 2002
-	return image_->w + 2;
+	return image_->w + 4;
 }
 
 
@@ -310,7 +310,9 @@ void xformsImage::rotate(Params const & params)
 		flimage_rotate(image_,  900, FLIMAGE_SUBPIXEL);
 		flimage_rotate(image_, 1800, FLIMAGE_SUBPIXEL);
 	} else {
-		flimage_rotate(image_, params.angle * 10, FLIMAGE_SUBPIXEL);
+		flimage_rotate(image_,
+			       int(params.angle * 10),
+			       FLIMAGE_SUBPIXEL);
 	}
 }
 

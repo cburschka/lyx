@@ -1,3 +1,13 @@
+2002-10-21  Angus Leeming  <leeming@lyx.org>
+
+	* xformsImage.C (rotate): pass ints to flimage_rotate, fixing compiler
+	warning.
+
+2002-10-21  Garst Reese <reese@isn.net>
+
+	* xformsImage.C (getWidth): work-around xforms bug enabling the display
+	of the edges of an image.
+
 2002-10-21  Rob Lahaye  <lahaye@snu.ac.kr>
 
 	* Tooltips.C (init): pass the /formatted/ string to xforms...
