@@ -23,14 +23,16 @@
 #include "support/std_ostream.h"
 #include "support/tostr.h"
 
+#include <sstream>
+
 using lyx::support::subst;
 
 using std::make_pair;
 
 using std::ostream;
+using std::ostringstream;
 using std::pair;
 using std::string;
-
 
 namespace sgml {
 
@@ -91,6 +93,20 @@ pair<bool, string> escapeChar(char c)
 		break;
 	}
 	return make_pair(false, str);
+}
+
+
+string escapeString(string const & raw)
+{
+	ostringstream bin;
+
+	for(int i=0; i < raw.size(); ++i) {
+		bool ws;
+		string str;
+		boost::tie(ws, str) = sgml::escapeChar(raw[i]);
+		bin << str;
+	}
+	return bin.str();
 }
 
 

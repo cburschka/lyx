@@ -16,6 +16,7 @@
 #include "gettext.h"
 #include "LaTeXFeatures.h"
 #include "metricsinfo.h"
+#include "sgml.h"
 
 #include "support/std_ostream.h"
 
@@ -42,7 +43,7 @@ string const InsetIndex::getScreenLabel(Buffer const &) const
 int InsetIndex::docbook(Buffer const &, ostream & os,
 			OutputParams const &) const
 {
-	os << "<indexterm><primary>" << getContents()
+	os << "<indexterm><primary>" << sgml::escapeString(getContents())
 	   << "</primary></indexterm>";
 	return 0;
 }

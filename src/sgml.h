@@ -29,6 +29,9 @@ namespace sgml {
  */
 std::pair<bool, std::string> escapeChar(char c);
 
+/// Escape a word instead of a single character
+std::string escapeString(std::string const & raw);
+
 /// Opens tag
 int openTag(Buffer const & buf, std::ostream & os, lyx::depth_type depth,
 	    bool mixcont, std::string const & name,

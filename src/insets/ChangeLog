@@ -1,3 +1,7 @@
+2004-10-24  Andreas Vox  <vox@isp.uni-luebeck.de>
+
+	* insetindex.C (docbook): escape the index, to generate correct sgml.
+
 2004-10-23  José Matos  <jamatos@lyx.org>
 
 	* insettext.C (docbook): rearrange arguments, due to change in the upper
