@@ -9,14 +9,15 @@
 #include "math_mathmlstream.h"
 #include "math_streamstr.h"
 #include "math_support.h"
+#include "math_parser.h"
 #include "LaTeXFeatures.h"
 #include "textpainter.h"
 #include "frontends/Painter.h"
 
 
 
-MathFontInset::MathFontInset(string const & name)
-	: MathNestInset(1), name_(name)
+MathFontInset::MathFontInset(latexkeys const * key)
+	: MathNestInset(1), key_(key)
 {
 	//lock(true);
 }
@@ -30,7 +31,7 @@ MathInset * MathFontInset::clone() const
 
 void MathFontInset::metrics(MathMetricsInfo & mi) const
 {
-	MathFontSetChanger dummy(mi.base, name_.c_str());
+	MathFontSetChanger dummy(mi.base, key_->name.c_str());
 	dim_ = xcell(0).metrics(mi);
 	metricsMarkers();
 }
@@ -40,7 +41,7 @@ void MathFontInset::draw(MathPainterInfo & pi, int x, int y) const
 {
 	//lyxerr << "MathFontInset::draw\n";
 	//MathNestInset::draw(pi, x, y);
-	MathFontSetChanger dummy(pi.base, name_.c_str());
+	MathFontSetChanger dummy(pi.base, key_->name.c_str());
 	xcell(0).draw(pi, x + 1, y);
 	drawMarkers(pi, x, y);
 }
@@ -61,13 +62,13 @@ void MathFontInset::drawT(TextPainter & pain, int x, int y) const
 
 void MathFontInset::write(WriteStream & os) const
 {
-	os << '\\' << name_ << '{' << cell(0) << '}';
+	os << '\\' << key_->name << '{' << cell(0) << '}';
 }
 
 
 void MathFontInset::normalize(NormalStream & os) const
 {
-	os << "[font_ " << name_ << " " << cell(0) << "]";
+	os << "[font " << key_->name << " " << cell(0) << "]";
 }
 
 
@@ -75,12 +76,12 @@ void MathFontInset::validate(LaTeXFeatures & features) const
 {
 	// Make sure amssymb is put in preamble if Blackboard Bold or
 	// Fraktur used:
-	if (name_ == "mathfrak" || name_ == "mathbb")
+	if (key_->name == "mathfrak" || key_->name == "mathbb")
 		features.require("amssymb");
 }
 
 
 void MathFontInset::infoize(std::ostream & os) const
 {
-	os << "Font: " << name_;
+	os << "Font: " << key_->name;
 }

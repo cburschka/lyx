@@ -1026,12 +1026,8 @@ void Parser::parse1(MathGridInset & grid, unsigned flags,
 			latexkeys const * l = in_word_set(t.cs());
 			if (l) {
 				if (l->inset == "font") {
-					lyxerr << "starting font " << t.cs() << "\n";
-					MathAtom p = createMathInset(t.cs());
-					bool textmode = (t.cs()[0] == 't');
-					parse(p->cell(0), FLAG_ITEM, !textmode);
-					cell->push_back(p);
-					//lyxerr << "ending font\n";
+					cell->push_back(createMathInset(t.cs()));
+					parse(cell->back()->cell(0), FLAG_ITEM, l->extra == "mathmode");
 				}
 
 				else if (l->inset == "oldfont") {

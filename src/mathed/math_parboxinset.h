@@ -26,6 +26,8 @@ public:
 	///
 	void setPosition(string const & pos);
 private:
+	/// row corresponding to given position 
+	int pos2row(pos_type pos) const;
 	/// width on screen
 	int lyx_width_;
 	/// width for TeX

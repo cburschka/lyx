@@ -165,9 +165,7 @@ public:
 	///
 	void drawSelection(MathPainterInfo & pain) const;
 	///
-	void handleDelim(string const & l, string const & r);
-	///
-	void handleNest(MathInset * p);
+	void handleNest(MathAtom const & at);
 	/// splits cells and shifts right part to the next cell
 	void splitCell();
 	/// splits line and insert new row of cell

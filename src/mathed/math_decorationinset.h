@@ -13,10 +13,12 @@
     \author Alejandro Aguilar Sierra
  */
 
+class latexkeys;
+
 class MathDecorationInset : public MathNestInset {
 public:
 	///
-	explicit MathDecorationInset(string const & name);
+	explicit MathDecorationInset(latexkeys const * key);
 	///
 	MathInset * clone() const;
 	///
@@ -41,7 +43,7 @@ private:
 	bool wide() const;
 
 	///
-	string const name_;
+	latexkeys const * key_;
 	/// height cache of deco
 	mutable int dh_;
 	/// vertical offset cache of deco

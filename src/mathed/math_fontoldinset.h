@@ -1,6 +1,6 @@
 // -*- C++ -*-
-#ifndef MATH_FONTINSET_H
-#define MATH_FONTINSET_H
+#ifndef MATH_FONTOLDINSET_H
+#define MATH_FONTOLDINSET_H
 
 #include "math_nestinset.h"
 
@@ -8,18 +8,20 @@
 #pragma interface
 #endif
 
-/** Inset for font changes
+/** Old-style font changes
     \author André Pönitz
  */
 
 class latexkeys;
 
-class MathFontInset : public MathNestInset {
+class MathFontOldInset : public MathNestInset {
 public:
 	///
-	explicit MathFontInset(latexkeys const * key);
+	explicit MathFontOldInset(latexkeys const * key);
 	///
 	MathInset * clone() const;
+	/// we write extra braces in any case...
+	bool extraBraces() const { return true; }
 	///
 	void metrics(MathMetricsInfo & mi) const;
 	///
@@ -32,8 +34,6 @@ public:
 	void write(WriteStream & os) const;
 	///
 	void normalize(NormalStream &) const;
-	///
-	void validate(LaTeXFeatures & features) const;
 	///
 	void infoize(std::ostream & os) const;
 

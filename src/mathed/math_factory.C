@@ -10,6 +10,7 @@
 #include "math_dotsinset.h"
 #include "math_fboxinset.h"
 #include "math_fontinset.h"
+#include "math_fontoldinset.h"
 #include "math_fracinset.h"
 #include "math_kerninset.h"
 #include "math_lefteqninset.h"
@@ -222,11 +223,11 @@ MathAtom createMathInset(string const & s)
 		if (inset == "underset")
 			return MathAtom(new MathUndersetInset);
 		if (inset == "decoration")
-			return MathAtom(new MathDecorationInset(l->name));
+			return MathAtom(new MathDecorationInset(l));
 		if (inset == "space")
 			return MathAtom(new MathSpaceInset(l->name));
 		if (inset == "dots")
-			return MathAtom(new MathDotsInset(l->name));
+			return MathAtom(new MathDotsInset(l));
 		if (inset == "mbox")
 			return MathAtom(new MathBoxInset(l->name));
 		if (inset == "parbox")
@@ -236,9 +237,9 @@ MathAtom createMathInset(string const & s)
 		if (inset == "style")
 			return MathAtom(new MathSizeInset(l));
 		if (inset == "font")
-			return MathAtom(new MathFontInset(l->name));
+			return MathAtom(new MathFontInset(l));
 		if (inset == "oldfont")
-			return MathAtom(new MathFontInset(l->name));
+			return MathAtom(new MathFontOldInset(l));
 		if (inset == "matrix")
 			return MathAtom(new MathAMSArrayInset(s));
 		return MathAtom(new MathSymbolInset(l));

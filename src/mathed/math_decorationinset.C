@@ -12,8 +12,8 @@
 #include "support/LOstream.h"
 
 
-MathDecorationInset::MathDecorationInset(string const & name)
-	: MathNestInset(1), name_(name)
+MathDecorationInset::MathDecorationInset(latexkeys const * key)
+	: MathNestInset(1), key_(key)
 {}
 
 
@@ -25,53 +25,53 @@ MathInset * MathDecorationInset::clone() const
 
 bool MathDecorationInset::upper() const
 {
-	return name_.substr(0, 5) != "under";
+	return key_->name.substr(0, 5) != "under";
 }
 
 
 bool MathDecorationInset::isScriptable() const
 {
 	return
-			name_ == "overbrace" ||
-			name_ == "underbrace" ||
-			name_ == "overleftarrow" ||
-			name_ == "overrightarrow" ||
-			name_ == "overleftrightarrow" ||
-			name_ == "underleftarrow" ||
-			name_ == "underrightarrow" ||
-			name_ == "underleftrightarrow";
+			key_->name == "overbrace" ||
+			key_->name == "underbrace" ||
+			key_->name == "overleftarrow" ||
+			key_->name == "overrightarrow" ||
+			key_->name == "overleftrightarrow" ||
+			key_->name == "underleftarrow" ||
+			key_->name == "underrightarrow" ||
+			key_->name == "underleftrightarrow";
 }
 
 
 bool MathDecorationInset::protect() const
 {
 	return
-			name_ == "overbrace" ||
-			name_ == "underbrace" ||
-			name_ == "overleftarrow" ||
-			name_ == "overrightarrow" ||
-			name_ == "overleftrightarrow" ||
-			name_ == "underleftarrow" ||
-			name_ == "underrightarrow" ||
-			name_ == "underleftrightarrow";
+			key_->name == "overbrace" ||
+			key_->name == "underbrace" ||
+			key_->name == "overleftarrow" ||
+			key_->name == "overrightarrow" ||
+			key_->name == "overleftrightarrow" ||
+			key_->name == "underleftarrow" ||
+			key_->name == "underrightarrow" ||
+			key_->name == "underleftrightarrow";
 }
 
 
 bool MathDecorationInset::wide() const
 {
 	return
-			name_ == "overline" ||
-			name_ == "underline" ||
-			name_ == "overbrace" ||
-			name_ == "underbrace" ||
-			name_ == "overleftarrow" ||
-			name_ == "overrightarrow" ||
-			name_ == "overleftrightarrow" ||
-			name_ == "widehat" ||
-			name_ == "widetilde" ||
-			name_ == "underleftarrow" ||
-			name_ == "underrightarrow" ||
-			name_ == "underleftrightarrow";
+			key_->name == "overline" ||
+			key_->name == "underline" ||
+			key_->name == "overbrace" ||
+			key_->name == "underbrace" ||
+			key_->name == "overleftarrow" ||
+			key_->name == "overrightarrow" ||
+			key_->name == "overleftrightarrow" ||
+			key_->name == "widehat" ||
+			key_->name == "widetilde" ||
+			key_->name == "underleftarrow" ||
+			key_->name == "underrightarrow" ||
+			key_->name == "underleftrightarrow";
 }
 
 
@@ -98,9 +98,9 @@ void MathDecorationInset::draw(MathPainterInfo & pi, int x, int y) const
 {
 	xcell(0).draw(pi, x + 1, y);
 	if (wide())
-		mathed_draw_deco(pi, x + 1, y + dy_, width(), dh_, name_);
+		mathed_draw_deco(pi, x + 1, y + dy_, width(), dh_, key_->name);
 	else
-		mathed_draw_deco(pi, x + 1 + (width() - dw_) / 2, y + dy_, dw_, dh_, name_);
+		mathed_draw_deco(pi, x + 1 + (width() - dw_) / 2, y + dy_, dw_, dh_, key_->name);
 	drawMarkers(pi, x, y);
 }
 
@@ -109,17 +109,17 @@ void MathDecorationInset::write(WriteStream & os) const
 {
 	if (os.fragile() && protect())
 		os << "\\protect";
-	os << '\\' << name_ << '{' << cell(0) << '}';
+	os << '\\' << key_->name << '{' << cell(0) << '}';
 }
 
 
 void MathDecorationInset::normalize(NormalStream & os) const
 {
-	os << "[deco " << name_ << ' ' <<  cell(0) << ']';
+	os << "[deco " << key_->name << ' ' <<  cell(0) << ']';
 }
 
 
 void MathDecorationInset::infoize(std::ostream & os) const
 {
-	os << "Deco: " << name_;
+	os << "Deco: " << key_->name;
 }

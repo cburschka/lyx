@@ -63,6 +63,8 @@ libmathed_la_SOURCES = \
 	math_fboxinset.h \
 	math_fontinset.C \
 	math_fontinset.h \
+	math_fontoldinset.C \
+	math_fontoldinset.h \
 	math_fracinset.C \
 	math_fracinset.h \
 	math_fracbase.C \

@@ -34,16 +34,22 @@ void MathParboxInset::setWidth(string const & w)
 }
 
 
+int MathParboxInset::pos2row(pos_type pos) const
+{
+	for (int r = 0, n = rows_.size(); r < n; ++r) 
+		if (pos >= rows_[r].begin && pos < rows_[r].end)
+			return r;
+	lyxerr << "illegal row for pos " << pos << "\n";
+	return 0;
+}
+
+
 void MathParboxInset::getPos(idx_type idx, pos_type pos, int & x, int & y) const
 {
-	for (int r = 0, n = rows_.size(); r < n; ++r) {
-		if (pos >= rows_[r].begin && pos < rows_[r].end) {
-			//lyxerr << "found cursor at pos " << pos << " in row " << r << "\n";
-			x = cells_[0].xo() + cells_[0].pos2x(rows_[r].begin, pos, rows_[r].glue);
-			y = cells_[0].yo() + rows_[r].yo;
-			break;
-		}
-	}
+	int const r = pos2row(pos);
+	//lyxerr << "found cursor at pos " << pos << " in row " << r << "\n";
+	x = cells_[0].xo() + cells_[0].pos2x(rows_[r].begin, pos, rows_[r].glue);
+	y = cells_[0].yo() + rows_[r].yo;
 	// move cursor visually into empty cells ("blue rectangles");
 	if (cell(0).empty())
 		x += 2;

@@ -8,10 +8,11 @@
 #include "math_mathmlstream.h"
 #include "math_streamstr.h"
 #include "math_support.h"
+#include "math_parser.h"
 
 
-MathDotsInset::MathDotsInset(string const & name)
-	: name_(name)
+MathDotsInset::MathDotsInset(latexkeys const * key)
+	: key_(key)
 {}
 
 
@@ -24,38 +25,38 @@ MathInset * MathDotsInset::clone() const
 void MathDotsInset::metrics(MathMetricsInfo & mi) const
 {
 	mathed_char_dim(mi.base.font, 'M', dim_);
-	if (name_ == "ldots" || name_ == "dotsm") 
+	if (key_->name == "ldots" || key_->name == "dotsm") 
 		dh_ = 0;
-	else if (name_ == "cdots" || name_ == "dotsb"
-			|| name_ == "dotsm" || name_ == "dotsi")
+	else if (key_->name == "cdots" || key_->name == "dotsb"
+			|| key_->name == "dotsm" || key_->name == "dotsi")
 		dh_ = ascent() / 2;
-	else if (name_ == "dotsc")
+	else if (key_->name == "dotsc")
 		dh_ = ascent() / 4;
-	else if (name_ == "vdots")
+	else if (key_->name == "vdots")
 		dim_.w /= 2;
-	else if (name_ == "ddots")
+	else if (key_->name == "ddots")
 		dh_ = ascent();
 }
 
 
 void MathDotsInset::draw(MathPainterInfo & pain, int x, int y) const
 {
-	mathed_draw_deco(pain, x + 2, y - dh_, width() - 2, ascent(), name_);
-	if (name_ == "vdots" || name_ == "ddots")
+	mathed_draw_deco(pain, x + 2, y - dh_, width() - 2, ascent(), key_->name);
+	if (key_->name == "vdots" || key_->name == "ddots")
 		++x;
-	if (name_ != "vdots")
+	if (key_->name != "vdots")
 		--y;
-	mathed_draw_deco(pain, x + 2, y - dh_, width() - 2, ascent(), name_);
+	mathed_draw_deco(pain, x + 2, y - dh_, width() - 2, ascent(), key_->name);
 }
 
 
 void MathDotsInset::write(WriteStream & os) const
 {
-	os << '\\' << name_ << ' ';
+	os << '\\' << key_->name << ' ';
 }
 
 
 void MathDotsInset::normalize(NormalStream & os) const
 {
-	os << "[" << name_ << "] ";
+	os << "[" << key_->name << "] ";
 }

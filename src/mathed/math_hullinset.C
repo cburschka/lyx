@@ -352,11 +352,11 @@ void MathHullInset::header_write(WriteStream & os) const
 	else if (type_ == "eqnarray" || type_ == "align")
 			os << "\\begin{" << type_ << star(n) << "}\n";
 
-	else if (type_ == "alignat" || type_ == "xalignat" || type_ == "xxalignat") 
+	else if (type_ == "alignat" || type_ == "xalignat") 
 		os << "\\begin{" << type_ << star(n) << "}"
 		  << "{" << static_cast<unsigned int>(ncols()/2) << "}\n";
 
-	else if (type_ == "multline" || type_ == "gather") 
+	else if (type_ == "xxalignat" || type_ == "multline" || type_ == "gather") 
 		os << "\\begin{" << type_ << "}\n";
 
 	else 

@@ -40,7 +40,9 @@
 #include "Lsstream.h"
 #include "math_arrayinset.h"
 #include "math_charinset.h"
+#include "math_deliminset.h"
 #include "math_cursor.h"
+#include "math_factory.h"
 #include "math_fontinset.h"
 #include "math_hullinset.h"
 #include "math_iterator.h"
@@ -127,7 +129,7 @@ void InsetFormulaBase::handleFont
 	bool sel = mathcursor->selection();
 	if (sel)
 		updateLocal(bv, true);
-	mathcursor->handleNest(new MathFontInset(font));
+	mathcursor->handleNest(createMathInset(font));
 	mathcursor->insert(arg);
 	if (!sel)
 		updateLocal(bv, false);
@@ -665,7 +667,7 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 			rs = ')';
 
 		bv->lockedInsetStoreUndo(Undo::EDIT);
-		mathcursor->handleDelim(ls, rs);
+		mathcursor->handleNest(MathAtom(new MathDelimInset(ls, rs)));
 		updateLocal(bv, true);
 		break;
 	}

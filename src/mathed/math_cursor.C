@@ -35,7 +35,6 @@
 #include "math_boxinset.h"
 #include "math_casesinset.h"
 #include "math_charinset.h"
-#include "math_deliminset.h"
 #include "math_extern.h"
 #include "math_factory.h"
 #include "math_fboxinset.h"
@@ -703,16 +702,10 @@ void MathCursor::drawSelection(MathPainterInfo & pain) const
 }
 
 
-void MathCursor::handleDelim(string const & l, string const & r)
+void MathCursor::handleNest(MathAtom const & at)
 {
-	handleNest(new MathDelimInset(l, r));
-}
-
-
-void MathCursor::handleNest(MathInset * p)
-{
-	p->cell(0) = grabAndEraseSelection().glue();
-	insert(MathAtom(p)); // this invalidates p!
+	at->cell(0) = grabAndEraseSelection().glue();
+	insert(at);
 	pushRight(prevAtom());
 }
 
