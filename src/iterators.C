@@ -224,7 +224,7 @@ ParIterator::ParIterator(PosIterator const & pos)
 void ParIterator::lockPath(BufferView * bv) const
 {
 	LCursor & cur = bv->cursor();
-	cur.cursor_.clear();
+	cur.reset();
 	int const last = size() - 1;
 	for (int i = 0; i < last; ++i)
 		(*positions_[i].it)->inset->edit(cur, true);

@@ -178,14 +178,6 @@ bool performUndoOrRedo(BufferView * bv, Undo const & undo)
 	       << " pos: " << undo.cursor_pos
 	       << std::endl;
 
-	// set cursor again to force the position to be the right one
-	LCursor & cur = bv->cursor();
-	cur.par() = undo.cursor_par;
-	cur.pos() = undo.cursor_pos;
-
-	// clear any selection
-	cur.clearSelection();
-	cur.resetAnchor();
 	text->updateCounters();
 
 	// rebreak the entire lyxtext
@@ -193,7 +185,7 @@ bool performUndoOrRedo(BufferView * bv, Undo const & undo)
 
 	pit.lockPath(bv);
 	text->setCursor(undo.cursor_par, undo.cursor_pos);
-	
+
 	finishUndo();
 	return true;
 }
