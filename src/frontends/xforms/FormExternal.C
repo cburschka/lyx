@@ -46,6 +46,7 @@ using lyx::support::strToInt;
 using lyx::support::token;
 using lyx::support::trim;
 
+using std::find;
 using std::string;
 using std::vector;
 
