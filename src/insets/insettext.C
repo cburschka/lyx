@@ -54,6 +54,7 @@ using std::ifstream;
 using std::endl;
 using std::min;
 using std::max;
+using std::make_pair;
 
 extern unsigned char getCurrentTextClass(Buffer *);
 extern bool math_insert_greek(BufferView *, char);
