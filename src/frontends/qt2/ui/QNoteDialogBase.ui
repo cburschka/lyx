@@ -19,7 +19,7 @@
     </property>
     <property stdset="1">
         <name>caption</name>
-        <string>Annotation Settings</string>
+        <string>Note Settings</string>
     </property>
     <property stdset="1">
         <name>sizeGripEnabled</name>
@@ -91,7 +91,7 @@
                     </property>
                     <property stdset="1">
                         <name>text</name>
-                        <string>&amp;Note</string>
+                        <string>LyX &amp;Note</string>
                     </property>
                     <property>
                         <name>toolTip</name>
@@ -110,7 +110,7 @@
                     </property>
                     <property>
                         <name>toolTip</name>
-                        <string>Export to LaTeX but don't print</string>
+                        <string>Export to LaTeX/Docbook but don't print</string>
                     </property>
                 </widget>
                 <widget>

@@ -26,7 +26,7 @@ typedef QController<ControlNote, QView<QNoteDialog> > base_class;
 
 
 QNote::QNote(Dialog & parent)
-	: base_class(parent, _("LyX: Annotation Settings"))
+	: base_class(parent, _("LyX: Note Settings"))
 {}
 
 
