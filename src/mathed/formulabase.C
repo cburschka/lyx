@@ -692,8 +692,8 @@ InsetFormulaBase::priv_dispatch(FuncRequest const & cmd,
 			result = DispatchResult(false);
 		else
 			bv->owner()->getDialogs().show(name, data, 0);
+		break;
 	}
-	break;
 
 	case LFUN_INSET_APPLY: {
 		string const name = cmd.getArg(0);
@@ -712,8 +712,16 @@ InsetFormulaBase::priv_dispatch(FuncRequest const & cmd,
 				result = DispatchResult(false);
 			}
 		}
+		break;
 	}
-	break;
+
+	case LFUN_WORD_REPLACE:
+	case LFUN_WORD_FIND: {
+		result = 
+			searchForward(cmd.view(), cmd.getArg(0), false, false)
+				? DispatchResult(true, true) : DispatchResult(false);
+		break;
+	}
 
 	default:
 		result = DispatchResult(false);
