@@ -462,23 +462,23 @@ DispatchResult InsetText::priv_dispatch(FuncRequest const & cmd,
 		break;
 
 	case LFUN_RIGHT:
-		result = moveRight(bv);
+		result = text_.moveRight();
 		finishUndo();
 		break;
 
 	case LFUN_LEFT:
 		finishUndo();
-		result = moveLeft(bv);
+		result = text_.moveLeft();
 		break;
 
 	case LFUN_DOWN:
 		finishUndo();
-		result = moveDown(bv);
+		result = text_.moveDown();
 		break;
 
 	case LFUN_UP:
 		finishUndo();
-		result = moveUp(bv);
+		result = text_.moveUp();
 		break;
 
 	case LFUN_PRIOR:
@@ -674,73 +674,6 @@ int InsetText::insetInInsetY() const
 }
 
 
-DispatchResult InsetText::moveRight(BufferView * bv)
-{
-	if (text_.cursorPar()->isRightToLeftPar(bv->buffer()->params()))
-		return moveLeftIntern(bv, false, true, false);
-	else
-		return moveRightIntern(bv, true, true, false);
-}
-
-
-DispatchResult InsetText::moveLeft(BufferView * bv)
-{
-	if (text_.cursorPar()->isRightToLeftPar(bv->buffer()->params()))
-		return moveRightIntern(bv, true, true, false);
-	else
-		return moveLeftIntern(bv, false, true, false);
-}
-
-
-DispatchResult InsetText::moveRightIntern(BufferView * bv, bool front,
-			   bool activate_inset, bool selecting)
-{
-	ParagraphList::iterator c_par = cpar();
-	if (boost::next(c_par) == paragraphs.end() && cpos() >= c_par->size())
-		return DispatchResult(false, FINISHED_RIGHT);
-	if (activate_inset && checkAndActivateInset(bv, front))
-		return DispatchResult(true, true);
-	text_.cursorRight(bv);
-	if (!selecting)
-		text_.clearSelection();
-	return DispatchResult(true);
-}
-
-
-DispatchResult InsetText::moveLeftIntern(BufferView * bv, bool front,
-			  bool activate_inset, bool selecting)
-{
-	if (cpar() == paragraphs.begin() && cpos() <= 0)
-		return DispatchResult(false, FINISHED);
-	text_.cursorLeft(bv);
-	if (!selecting)
-		text_.clearSelection();
-	if (activate_inset && checkAndActivateInset(bv, front))
-		return DispatchResult(true, true);
-	return DispatchResult(true);
-}
-
-
-DispatchResult InsetText::moveUp(BufferView * bv)
-{
-	if (crow() == text_.firstRow())
-		return DispatchResult(false, FINISHED_UP);
-	text_.cursorUp(bv);
-	text_.clearSelection();
-	return DispatchResult(true);
-}
-
-
-DispatchResult InsetText::moveDown(BufferView * bv)
-{
-	if (crow() == text_.lastRow())
-		return DispatchResult(false, FINISHED_DOWN);
-	text_.cursorDown(bv);
-	text_.clearSelection();
-	return DispatchResult(true);
-}
-
-
 bool InsetText::insertInset(BufferView * bv, InsetOld * inset)
 {
 	inset->setOwner(this);
@@ -814,19 +747,6 @@ void InsetText::setFont(BufferView * bv, LyXFont const & font, bool toggleall,
 
 //	bv->fitCursor();
 	updateLocal(bv, true);
-}
-
-
-bool InsetText::checkAndActivateInset(BufferView * bv, bool front)
-{
-	if (cpos() == cpar()->size())
-		return false;
-	InsetOld * inset = cpar()->getInset(cpos());
-	if (!isHighlyEditableInset(inset))
-		return false;
-	inset->edit(bv, front);
-	updateLocal(bv, false);
-	return true;
 }
 
 

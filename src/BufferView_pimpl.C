@@ -872,16 +872,21 @@ namespace {
 		theTempCursor = LCursor(bv);
 		while (true) {
 			InsetOld * inset_hit = text->checkInsetHit(x, y);
-			if (!inset_hit)
+			if (!inset_hit) {
+				lyxerr << "no further inset hit" << endl;
 				break;
+			}
 			inset = inset_hit;
-			if (!inset_hit->descendable())
+			if (!inset_hit->descendable()) {
+				lyxerr << "not descendable" << endl;
 				break;
+			}
 			text = inset_hit->getText(0);
 			lyxerr << "Hit inset: " << inset << " at x: " << x
 				<< " text: " << text << " y: " << y << endl;
 			theTempCursor.push(static_cast<UpdatableInset*>(inset));
 		}
+		lyxerr << "theTempCursor: " << theTempCursor << endl;
 		return inset;
 	}
 

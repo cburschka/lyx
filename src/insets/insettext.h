@@ -186,30 +186,8 @@ private:
 	// If the inset is empty set the language of the current font to the
 	// language to the surronding text (if different).
 	void sanitizeEmptyText(BufferView *);
-
-	///
-	DispatchResult moveRight(BufferView *);
-	///
-	DispatchResult moveLeft(BufferView *);
-	///
-	DispatchResult moveRightIntern(BufferView *, bool front,
-					       bool activate_inset = true,
-					       bool selecting = false);
-	///
-	DispatchResult moveLeftIntern(BufferView *, bool front,
-					      bool activate_inset = true,
-					      bool selecting = false);
-
-	///
-	DispatchResult moveUp(BufferView *);
-	///
-	DispatchResult moveDown(BufferView *);
 	///
 	void setCharFont(Buffer const &, int pos, LyXFont const & font);
-	///
-	bool checkAndActivateInset(BufferView * bv, bool front);
-	///
-	bool checkAndActivateInset(BufferView * bv, int x = 0, int y = 0);
 	///
 	void removeNewlines();
 	///

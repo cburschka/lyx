@@ -227,9 +227,9 @@ public:
 	///
 	void cursorDown(bool selecting = false);
 	///
-	void cursorLeft(bool internal = true);
+	bool cursorLeft(bool internal = true);
 	///
-	void cursorRight(bool internal = true);
+	bool cursorRight(bool internal = true);
 	///
 	void cursorLeftOneWord();
 	///
@@ -443,6 +443,24 @@ public:
 	void cursorLeftOneWord(LyXCursor &);
 	///
 	void cursorRightOneWord(LyXCursor &);
+
+	///
+	DispatchResult moveRight();
+	///
+	DispatchResult moveLeft();
+	///
+	DispatchResult moveRightIntern(bool front,
+		bool activate_inset, bool selecting);
+	///
+	DispatchResult moveLeftIntern(bool front,
+		bool activate_inset, bool selecting);
+	///
+	DispatchResult moveUp();
+	///
+	DispatchResult moveDown();
+	///
+	bool checkAndActivateInset(bool front);
+
 
 private:
 	/** Cursor related data.

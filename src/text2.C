@@ -1580,7 +1580,87 @@ void LyXText::setCursorFromCoordinates(LyXCursor & cur, int x, int y)
 }
 
 
-void LyXText::cursorLeft(bool internal)
+
+bool LyXText::checkAndActivateInset(bool front)
+{
+	if (cursor.pos() == cursorPar()->size())
+		return false;
+	InsetOld * inset = cursorPar()->getInset(cursor.pos());
+	if (!isHighlyEditableInset(inset))
+		return false;
+	inset->edit(bv(), front);
+	return true;
+}
+
+
+DispatchResult LyXText::moveRight()
+{
+	if (cursorPar()->isRightToLeftPar(bv()->buffer()->params()))
+		return moveLeftIntern(false, true, false);
+	else
+		return moveRightIntern(true, true, false);
+}
+
+
+DispatchResult LyXText::moveLeft()
+{
+	if (cursorPar()->isRightToLeftPar(bv()->buffer()->params()))
+		return moveRightIntern(true, true, false);
+	else
+		return moveLeftIntern(false, true, false);
+}
+
+
+DispatchResult LyXText::moveRightIntern(bool front, bool activate_inset, bool selecting)
+{
+	ParagraphList::iterator c_par = cursorPar();
+	if (boost::next(c_par) == ownerParagraphs().end()
+		&& cursor.pos() >= c_par->size())
+		return DispatchResult(false, FINISHED_RIGHT);
+	if (activate_inset && checkAndActivateInset(front))
+		return DispatchResult(true, true);
+	cursorRight(bv());
+	if (!selecting)
+		clearSelection();
+	return DispatchResult(true);
+}
+
+
+DispatchResult LyXText::moveLeftIntern(bool front,
+			  bool activate_inset, bool selecting)
+{
+	if (cursor.par() == 0 && cursor.pos() <= 0)
+		return DispatchResult(false, FINISHED);
+	cursorLeft(bv());
+	if (!selecting)
+		clearSelection();
+	if (activate_inset && checkAndActivateInset(front))
+		return DispatchResult(true, true);
+	return DispatchResult(true);
+}
+
+
+DispatchResult LyXText::moveUp()
+{
+	if (cursorRow() == firstRow())
+		return DispatchResult(false, FINISHED_UP);
+	cursorUp(bv());
+	clearSelection();
+	return DispatchResult(true);
+}
+
+
+DispatchResult LyXText::moveDown()
+{
+	if (cursorRow() == lastRow())
+		return DispatchResult(false, FINISHED_DOWN);
+	cursorDown(bv());
+	clearSelection();
+	return DispatchResult(true);
+}
+
+
+bool LyXText::cursorLeft(bool internal)
 {
 	if (cursor.pos() > 0) {
 		bool boundary = cursor.boundary();
@@ -1588,28 +1668,40 @@ void LyXText::cursorLeft(bool internal)
 		if (!internal && !boundary &&
 		    bidi.isBoundary(*bv()->buffer(), *cursorPar(), cursor.pos() + 1))
 			setCursor(cursor.par(), cursor.pos() + 1, true, true);
-	} else if (cursor.par() != 0) {
+		return true;
+	}
+
+	if (cursor.par() != 0) {
 		// steps into the paragraph above
 		setCursor(cursor.par() - 1, boost::prior(cursorPar())->size());
+		return true;
 	}
+
+	return false;
 }
 
 
-void LyXText::cursorRight(bool internal)
+bool LyXText::cursorRight(bool internal)
 {
-	bool const at_end = (cursor.pos() == cursorPar()->size());
-	bool const at_newline = !at_end &&
-		cursorPar()->isNewline(cursor.pos());
-
-	if (!internal && cursor.boundary() && !at_newline)
+	if (!internal && cursor.boundary()) {
 		setCursor(cursor.par(), cursor.pos(), true, false);
-	else if (!at_end) {
+		return true;
+	}
+
+	if (cursor.pos() != cursorPar()->size()) {
 		setCursor(cursor.par(), cursor.pos() + 1, true, false);
 		if (!internal && bidi.isBoundary(*bv()->buffer(), *cursorPar(),
 						 cursor.pos()))
 			setCursor(cursor.par(), cursor.pos(), true, true);
-	} else if (cursor.par() + 1 != int(ownerParagraphs().size()))
+		return true;
+	}
+
+	if (cursor.par() + 1 != int(ownerParagraphs().size())) {
 		setCursor(cursor.par() + 1, 0);
+		return true;
+	}
+
+	return false;
 }
 
 
