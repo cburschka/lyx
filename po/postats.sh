@@ -15,9 +15,104 @@
 # Invocation:
 #    postats.sh po_files > "pathToWebPages"/i18n.php3
 
+error () {
+	while [ $# -ne 0 ]
+	do
+		echo $1
+		shift
+	done
+	exit 1
+}
 
-# *** The PHP header ***
+# $1 is a string like
+# '588 translated messages, 1248 fuzzy translations, 2 untranslated messages.'
+# $2 is the word following the number to be extracted,
+# ie, 'translated', 'fuzzy', or 'untranslated'.
+# Fills var $number with this number, or sets it to zero if the
+# word is not found in the string.
+extract_number () {
+	test $# -eq 2 || error 'extract_number expects 2 args'
 
+	number=0
+	echo $1 | grep $2 >/dev/null || return
+	number=`echo $1 | sed "s/\([0-9]*\)[ ]*$2.*/Z\1/" | cut -d 'Z' -f 2`
+}
+
+
+# Takes the name of the .po file and the .gmo file as input
+# Regenerates the .gmo file and manipulates the output to stderr to 
+# fill var $output
+run_msgfmt () {
+	test $# -eq 2 || error 'run_msgfmt expects 2 args'
+
+	rm -f $gmofile
+	message=`$msgfmt --statistics -o $gmofile $1 2>&1 | grep "^[1-9]"`
+	#message=`make $gmofile 2>&1 | grep "^[1-9]"`
+	
+	extract_number "$message" translated
+	output='"msg_tr" => '$number
+	extract_number "$message" fuzzy
+	output=$output', "msg_fu" => '$number
+	extract_number "$message" untranslated
+	output=$output', "msg_nt" => '$number
+}
+
+
+# Passed the name of the .po file
+dump_stats () {
+	test $# -eq 1 || error 'dump_stats expects 1 arg'
+
+	file=$1
+	test -f $file || {
+		echo "File $file does not exist"
+		return
+	}
+
+	dir=`dirname $file`
+	pofile=`basename $file`
+	gmofile=`echo $pofile | sed 's/po$/gmo/'`
+	test $pofile != '' -a $pofile != $gmofile || {
+		echo "File $file is not a po file"
+		return
+	}
+
+	(
+	cd $dir
+	# $output is a string of the form
+	# '"msg_tr" => A, "msg_fu" => B, "msg_nt" => C'
+	# where A, B, C are extracted from the process of generating the .gmo
+	# file
+	run_msgfmt $pofile $gmofile
+
+	# earching for a string of the form
+	# '"Last-Translator: Michael Schmitt <Michael.Schmitt@teststep.org>\n"'
+	translator='"translator" => ""'
+	email='"email" => ""'
+
+	input=`grep "Last-Translator" $pofile` && {
+		input=`echo $input | sed 's/  */ /g' | cut -d ' ' -f 2-`
+
+		translator=`echo $input | cut -d '<' -f 1 | sed 's/ *$//'`
+		translator='"translator" => "'$translator'"'
+
+		email=`echo $input | cut -d '<' -f 2 | cut -d '>' -f 1`
+		email='"email" => "'$email'"'
+	}
+	
+	# Searching for a string of the form
+	# '"PO-Revision-Date: 2003-01-18 03:00+0100\n"'
+	date=`grep 'Revision-Date' $pofile | sed 's/  */ /g' | cut -d ' ' -f 2`
+	date='"date" => "'$date'"'
+
+	langcode=`echo $pofile | sed 's/\.po//'`
+	echo "array ( 'langcode' => '"$langcode"',"
+	echo ${output},
+	echo ${translator}, ${email},
+	echo "${date} )"
+	)
+}
+
+dump_head () {
 cat <<EOF
 <?
 	// What's the title of the page?
@@ -34,39 +129,14 @@ cat <<EOF
 
 	error_reporting(E_ALL);
 ?>
+
+<?
+\$podata = array (
 EOF
+}
 
-# *** The po file analysis ***
 
-echo "<?"
-echo "\$podata = array ( "
-first=true
-for x
-do
-	if [ $first = true ] ; then
-		first=false ;
-	else
-		echo ", " ;
-	fi
-	y=`basename $x .po`
-	echo "array ( 'langcode' => '$y', "
-	touch $x
-	make 2>&1 $y.gmo | grep "^[1-9]" |
-		sed -e 's/\([0-9]*\) translated m[a-z]*[.,]/"msg_tr" => \1,/' |
-		sed -e 's/\([0-9]*\) fuzzy t[a-z]*[.,]/"msg_fu" => \1,/' |
-		sed -e 's/\([0-9]*\) untranslated m[a-z]*./"msg_nt" => \1,/'
-	# Format: "Last-Translator: Michael Schmitt <Michael.Schmitt@teststep.org>\n"
-	grep "Last-Translator" $x |
-		sed -e 's/"Last-Translator: \(.*\)\( *\)<\(.*\)>\\n"/"translator" => "\1", "email" => "\3", /'
-	# Format: "PO-Revision-Date: 2003-01-18 03:00+0100\n"
-	grep "PO-Revision-Date" $x |
-		sed -e 's/"PO-Revision-Date: \(.*\) .*/"date" => "\1" )/'
-done
-echo ");"
-echo "?>"
-
-# *** The PHP core part ***
-
+dump_tail () {
 cat <<EOF
 	<?
 		\$lang = array(
@@ -185,10 +255,30 @@ cat <<EOF
 			?>
 		</tbody>
 	</table>
-EOF
-
-cat <<EOF
 	<?
 		include("end.php3");
 	?>
 EOF
+}
+
+
+# The main body of the script
+msgfmt=`type msgfmt | sed 's/msgfmt is *//'`
+test msgfmt != '' || error "Unable to find 'msgfmt'"
+
+dump_head
+
+while [ $# -ne 0 ]
+do
+	dump_stats $1
+	shift
+	if [ $# -eq 0 ]; then
+	    echo ');'
+	    echo '?>'
+	else
+	    echo ','
+	fi
+done
+
+dump_tail
+

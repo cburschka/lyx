@@ -1,3 +1,13 @@
+2003-01-28  Angus Leeming  <leeming@lyx.org>
+
+	* es.po: msgfmt complained about a missing '\n'.
+
+	* postats.sh: rewritten. Michael's original version resulted in
+	php warnings about uninitialised variables if any of the 
+	translated, fuzzy or untranslated strings are missing (eg, because
+	there /are/ no untranslated strings).
+	Took the opportunity to make sure it does not need a Makefile to run.
+
 2003-01-28  Pauli Virtanen  <pauli.virtanen@hut.fi>
 
 	* fi.po: update
