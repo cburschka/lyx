@@ -154,13 +154,6 @@ TemplateManager & TemplateManager::get()
 }
 
 
-TemplateManager::Templates &
-TemplateManager::getTemplates()
-{
-	return templates;
-}
-
-
 TemplateManager::Templates const &
 TemplateManager::getTemplates() const
 {

@@ -1,3 +1,8 @@
+2003-10-07  Angus Leeming  <leeming@lyx.org>
+
+	* ExternalTemplate.[Ch] (TemplateManager::getTemplates): remove
+	non-const member function.
+
 2003-10-07  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* Makefile.am:

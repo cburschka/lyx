@@ -12,11 +12,11 @@
 #ifndef EXTERNALTEMPLATE_H
 #define EXTERNALTEMPLATE_H
 
-#include <boost/function.hpp>
 #include <boost/utility.hpp>
 
 #include <iosfwd>
 #include <map>
+#include <string>
 #include <vector>
 
 class LyXLex;
@@ -24,7 +24,6 @@ class LyXLex;
 namespace lyx {
 namespace external {
 
-///
 struct Template {
 	/// We have to have default commands for safety reasons!
 	Template();
@@ -52,7 +51,6 @@ struct Template {
 
 	/// This is the information needed to support a specific output format
 	struct Format {
-		/// This constructor has to default a command for safety reasons!
 		Format();
 		///
 		void readFormat(LyXLex &);
@@ -76,8 +74,8 @@ struct Template {
 
 
 /**
-   A singleton class that manages the external inset templates
-*/
+ *  A singleton class that manages the external inset templates
+ */
 class TemplateManager : boost::noncopyable {
 public:
 	/// Map from the LyX name of the template to the template structure
@@ -88,7 +86,7 @@ public:
 	typedef std::map<std::string, std::string> PreambleDefs;
 
 	static TemplateManager & get();
-	Templates & getTemplates();
+
 	Templates const & getTemplates() const;
 	/** return the template by LyX name.
 	 *  If it isn't found, return 0.
