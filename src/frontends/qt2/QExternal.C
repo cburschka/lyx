@@ -48,6 +48,7 @@ using lyx::support::trim;
 
 using std::string;
 using std::vector;
+using std::find;
 
 
 namespace {
