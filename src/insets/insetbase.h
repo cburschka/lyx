@@ -15,6 +15,7 @@
 #include "LString.h"
 
 #include <vector>
+#include <memory>
 
 class BufferView;
 class FuncRequest;

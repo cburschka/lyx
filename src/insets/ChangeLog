@@ -1,3 +1,8 @@
+2003-07-27	Martin Vermeer  <martin.vermeer@hut.fi>
+
+	* insetbase.h: add #include <memory> needed by gcc 2.95.2 at
+	least.
+
 2003-07-27  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* insetwrap.C (addToToc): adjust for lyx::toc
