@@ -69,7 +69,8 @@ bool math_font_available(string & name)
 		return true;
 	}
 
-	lyxerr[Debug::MATHED] << "font " << name << " not available and I can't fake it\n";
+	lyxerr[Debug::MATHED]
+		<< "font " << name << " not available and I can't fake it\n";
 	return false;
 }
 
@@ -233,7 +234,7 @@ MathAtom createMathInset(string const & s)
 		if (inset == "parbox")
 			return MathAtom(new MathParboxInset);
 		if (inset == "fbox")
-			return MathAtom(new MathFboxInset);
+			return MathAtom(new MathFboxInset(l));
 		if (inset == "style")
 			return MathAtom(new MathSizeInset(l));
 		if (inset == "font")

@@ -13,14 +13,16 @@
     \author André Pönitz
 */
 
+class latexkeys;
+
 class MathFboxInset : public MathNestInset {
 public:
 	///
-	MathFboxInset();
+	MathFboxInset(latexkeys const * key);
 	///
 	MathInset * clone() const;
 	///
-	mode_type currentMode() const { return TEXT_MODE; }
+	mode_type currentMode() const;
 	///
 	void metrics(MathMetricsInfo & mi) const;
 	///
@@ -29,6 +31,9 @@ public:
 	void write(WriteStream & os) const;
 	/// write normalized content
 	void normalize(NormalStream & ns) const;
+private:
+	///
+	latexkeys const * key_;
 };
 
 #endif
