@@ -209,9 +209,9 @@ void QDocument::apply()
 	params.language = languages.getLanguage(lang_[pos]);
 
 	// numbering
-	params.secnumdepth =
-		dialog_->numberingModule->tocDepthSB->value();
 	params.tocdepth =
+		dialog_->numberingModule->tocDepthSB->value();
+	params.secnumdepth =
 		dialog_->numberingModule->sectionnrDepthSB->value();
 
 	// bullets
@@ -434,9 +434,9 @@ void QDocument::update_contents()
 
 	// numbering
 	dialog_->numberingModule->tocDepthSB->setValue(
-		params.secnumdepth);
-	dialog_->numberingModule->sectionnrDepthSB->setValue(
 		params.tocdepth);
+	dialog_->numberingModule->sectionnrDepthSB->setValue(
+		params.secnumdepth);
 
 	// bullets
 	dialog_->bulletsModule->setBullet(0,params.user_defined_bullets[0]);

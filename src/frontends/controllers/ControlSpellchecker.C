@@ -215,7 +215,7 @@ void ControlSpellchecker::showSummary()
 
 #if USE_BOOST_FORMAT
 	if (count_ != 1) {
-		boost::format fmter("%1$d words checked.");
+		boost::format fmter(_("%1$d words checked."));
 		fmter % count_;
 		message += fmter.str();
 	} else {
@@ -223,7 +223,7 @@ void ControlSpellchecker::showSummary()
 	}
 #else
 	if (count_ != 1) {
-		message += tostr(count_) + " words checked";
+		message += tostr(count_) + _(" words checked.");
 	} else {
 		message = _("One word checked.");
 	}
