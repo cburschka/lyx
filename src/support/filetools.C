@@ -468,9 +468,11 @@ int DeleteAllFilesInDir(string const & path)
 
 		bool deleted = true;
 		FileInfo fi(unlinkpath);
-		if (fi.isOK() && fi.isDir())
+		if (fi.isOK() && fi.isDir()) {
 			deleted = (DeleteAllFilesInDir(unlinkpath) == 0);
-		deleted &= (lyx::unlink(unlinkpath) == 0);
+			deleted &= (lyx::rmdir(unlinkpath) == 0);
+		} else
+			deleted &= (lyx::unlink(unlinkpath) == 0);
 		if (!deleted) {
 			Alert::err_alert(_("Error! Could not remove file:"),
 				unlinkpath);
