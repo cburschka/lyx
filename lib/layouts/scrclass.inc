@@ -17,6 +17,7 @@ End
 
 Input stdlists.inc
 Input stdcounters.inc
+Input stdfloats.inc
 
 # Modify Description
 Style Description

@@ -353,6 +353,8 @@ End
 
 # all the standard LaTeX environments
 Input stdlayouts.inc
+Input stdfloats.inc
+Input stdcounters.inc
 
 # Finally add a few weird LyX environments.
 Input lyxmacros.inc

@@ -245,6 +245,9 @@ Input stdsections.inc
 # then define the unumbered sections, based on the numbered ones.
 Input stdstarsections.inc
 
+Input stdfloats.inc
+Input stdcounters.inc
+
 # remove the layouts that we do not need.
 NoStyle	Part
 NoStyle	Section
