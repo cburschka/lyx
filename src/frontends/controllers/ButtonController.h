@@ -39,8 +39,10 @@ public:
 	///
 	void eraseReadOnly() { read_only_.clear(); }
 
-	/// Refresh the widgets status.
+	/// Refresh the status of the Ok, Apply, Restore, Cancel buttons.
 	void refresh();
+	/// Refresh the status of any widgets in the read_only list
+	void refreshReadOnly();
 
 private:
 	/// Enable/Disable a widget
@@ -89,18 +91,21 @@ void GuiBC<Button, Widget>::refresh()
 		else
 			setButtonLabel(cancel_, close_label_);
 	}
+}
 
-	// Enable/Disable read-only handled widgets.
-	if (!read_only_.empty()) {
-		bool const enable = !bp().isReadOnly();
 
-		Widgets::const_iterator end = read_only_.end();
-		Widgets::const_iterator iter = read_only_.begin();
-		for (; iter != end; ++iter) {
-			setWidgetEnabled(*iter, enable);
-		}
+template <class Button, class Widget>
+void GuiBC<Button, Widget>::refreshReadOnly()
+{
+	if (read_only_.empty()) return;
+
+	bool const enable = !bp().isReadOnly();
+
+	Widgets::const_iterator end = read_only_.end();
+	Widgets::const_iterator iter = read_only_.begin();
+	for (; iter != end; ++iter) {
+		setWidgetEnabled(*iter, enable);
 	}
-
 }
 
 

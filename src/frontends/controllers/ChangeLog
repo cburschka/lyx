@@ -1,3 +1,16 @@
+2001-06-01  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* helper_funcs.C (getVectorFromString): bug fix.
+
+2001-05-30  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* ButtonController.h
+	* ButtonControllerBase.[Ch] (refreshReadOnly): new method, called direct
+	from ButtonControllerBase::readOnly. Updates the state of the widgets
+	in the read-only list only when the read-only status of the document
+	changes.
+	(refresh): moved this stuff into refreshReadOnly.
+
 2001-05-18  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* ControlPrint.C (c-tor):

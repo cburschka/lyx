@@ -62,6 +62,8 @@ public:
 	void hide();
 	///
 	virtual void refresh() = 0;
+	///
+	virtual void refreshReadOnly() = 0;
 
 	/// Passthrough function -- returns its input value
 	bool readOnly(bool = true);

@@ -11,6 +11,8 @@
  * \author Angus Leeming <a.leeming@ic.ac.uk>
  */
 
+#include <config.h>
+
 #include <vector>
 #include <algorithm>
 
@@ -18,13 +20,6 @@
 #pragma implementation
 #endif
 
-#include <config.h>
-
-/*
-#include "buffer.h"
-#include "Dialogs.h"
-#include "LyXView.h"
-*/
 #include "LString.h"
 #include "biblio.h"
 #include "helper_funcs.h"
@@ -34,7 +29,6 @@
 
 using std::find;
 using std::min;
-using std::pair;
 using std::vector;
 using std::sort;
 

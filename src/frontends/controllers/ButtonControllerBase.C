@@ -84,10 +84,11 @@ void ButtonControllerBase::invalid()
 bool ButtonControllerBase::readOnly(bool ro)
 {
 	if (ro) {
-		input(ButtonPolicy::SMI_READ_ONLY);
+		bp().input(ButtonPolicy::SMI_READ_ONLY);
 	} else {
-		input(ButtonPolicy::SMI_READ_WRITE);
+		bp().input(ButtonPolicy::SMI_READ_WRITE);
 	}
+	refreshReadOnly();
 	return ro;
 }
 

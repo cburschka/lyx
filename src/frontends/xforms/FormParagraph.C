@@ -126,9 +126,10 @@ void FormParagraph::update()
     if (!dialog_.get())
         return;
 
-    general_update();
-
+    // Do this first; some objects may be de/activated subsequently.
     bc_.readOnly(lv_->buffer()->isReadonly());
+
+    general_update();
 }
 
 
@@ -257,7 +258,7 @@ void FormParagraph::general_update()
     if (align == LYX_ALIGN_LAYOUT)
 	align = textclasslist.Style(buf->params.textclass,
 				    text->cursor.par()->GetLayout()).align;
-	 
+
     switch (align) {
     case LYX_ALIGN_RIGHT:
 	fl_set_button(general_->radio_align_right, 1);
@@ -273,6 +274,15 @@ void FormParagraph::general_update()
 	break;
     }
 
+    LyXAlignment alignpos =
+	    textclasslist.Style(buf->params.textclass,
+				text->cursor.par()->GetLayout()).alignpossible;
+
+    setEnabled(general_->radio_align_block,  bool(alignpos & LYX_ALIGN_BLOCK));
+    setEnabled(general_->radio_align_center, bool(alignpos & LYX_ALIGN_CENTER));
+    setEnabled(general_->radio_align_left,   bool(alignpos & LYX_ALIGN_LEFT));
+    setEnabled(general_->radio_align_right,  bool(alignpos & LYX_ALIGN_RIGHT));
+    
     fl_set_button(general_->check_lines_top,
 		  text->cursor.par()->params.lineTop());
     fl_set_button(general_->check_lines_bottom,

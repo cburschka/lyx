@@ -54,7 +54,10 @@ vector<string> const getVectorFromString(string const & str,
 
 	for(;;) {
 		string::size_type const idx = keys.find(delim);
-		if (idx == string::npos) break;
+		if (idx == string::npos) {
+			vec.push_back(keys);
+			break;
+		}
 
 		string const key = keys.substr(0, idx);
 		if (!key.empty())
@@ -63,9 +66,6 @@ vector<string> const getVectorFromString(string const & str,
 		string::size_type const start = idx + delim.size();
 		keys = keys.substr(start);
 	}
-
-	if (vec.empty()) // unable to separate
-		vec.push_back(str);
 
 	return vec;
 }
