@@ -1,6 +1,13 @@
+2002-12-14  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* Makefile.in.in (languages_l10n.pot): new target
+	(default_ui_l10n.pot): new target
+	(l10n_pots): add languages_l10n.pot and default_ui_l10n.pot
+	($(top_srcdir)/src/ext_l10n.h): delete target
+
 2002-12-16  Michael Schmitt  <Michael.Schmitt@teststep.org>
 
-	* de.po: update 
+	* de.po: update
 
 2002-12-09  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
