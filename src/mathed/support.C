@@ -26,73 +26,32 @@ bool isBinaryOp(char c, MathTextCodes type)
 class Matrix {
 public:
 	///
-	typedef double matriz_data[2][2];
+	Matrix(int, double, double);
 	///
-	Matrix();
-	///
-	void rotate(int);
-	///
-	void escalate(double, double);
-	///
-	void transform(double, double, double &, double &);
+	void transform(double &, double &);
 private:
 	///
-	matriz_data m_;
-	///
-	void multiply(matriz_data & a);
+	double m_[2][2];
 };
 
-Matrix::Matrix()
-{
-	m_[0][0] = 1;
-	m_[0][1] = 0;
-	m_[1][0] = 0;
-	m_[1][1] = 1;
-}
 
-void Matrix::rotate(int code)
+Matrix::Matrix(int code, double x, double y)
 {
-	matriz_data r;
-	r[0][0] = 1;
-	r[0][1] = 0;
-	r[1][0] = 0;
-	r[1][1] = 1;
 	double const cs = (code & 1) ? 0 : (1 - code);
 	double const sn = (code & 1) ? (2 - code) : 0;
-	r[0][0] = cs;
-	r[0][1] = sn;
-	r[1][0] = -r[0][1];
-	r[1][1] = r[0][0];
-	multiply(r);
+	m_[0][0] =  cs * x;
+	m_[0][1] =  sn * x;
+	m_[1][0] = -sn * y;
+	m_[1][1] =  cs * y;
 }
 
-void Matrix::escalate(double x, double y)
-{
-	matriz_data s;
-	s[0][0] = x;
-	s[0][1] = 0;
-	s[1][0] = 0;
-	s[1][1] = y;
-	multiply(s);
-}
 
-void Matrix::multiply(matriz_data & a)
+void Matrix::transform(double & x, double & y)
 {
-	matriz_data c;
-	c[0][0] = a[0][0] * m_[0][0] + a[0][1] * m_[1][0];
-	c[1][0] = a[1][0] * m_[0][0] + a[1][1] * m_[1][0];
-	c[0][1] = a[0][0] * m_[0][1] + a[0][1] * m_[1][1];
-	c[1][1] = a[1][0] * m_[0][1] + a[1][1] * m_[1][1];
-	m_[0][0] = c[0][0];	
-	m_[0][1] = c[0][1];	
-	m_[1][0] = c[1][0];	
-	m_[1][1] = c[1][1];	
-}
-
-void Matrix::transform(double xp, double yp, double & x, double & y)
-{
-	x = m_[0][0] * xp + m_[0][1] * yp;
-	y = m_[1][0] * xp + m_[1][1] * yp;
+	double xx = m_[0][0] * x + m_[0][1] * y;
+	double yy = m_[1][0] * x + m_[1][1] * y;
+	x = xx;
+	y = yy;
 }
 
 
@@ -645,22 +604,15 @@ void mathed_draw_deco(Painter & pain, int x, int y, int w, int h,
 		return;
 	}
 	
+	int const n = (w < h) ? w : h;
 	int const r = mds->angle;
 	double const * d = mds->data;
 	
 	if (h > 70 && (name == "(" || name == ")"))
 		d = parenthHigh;
 	
-	Matrix mt;
-	Matrix sqmt;
-
-	mt.rotate(r);
-	mt.escalate(w, h);
-	
-	int const n = (w < h) ? w : h;
-
-	sqmt.rotate(r);
-	sqmt.escalate(n, n);
+	Matrix mt(r, w, h);
+	Matrix sqmt(r, n, n);
 
 	if (r > 0 && r < 3)
 		y += h;
@@ -676,12 +628,11 @@ void mathed_draw_deco(Painter & pain, int x, int y, int w, int h,
 			double x2 = d[i++];
 			double y2 = d[i++];
 			if (code == 3) 
-				sqmt.transform(xx, yy, xx, yy);
+				sqmt.transform(xx, yy);
 			else
-				mt.transform(xx, yy, xx, yy);
-			mt.transform(x2, y2, x2, y2);
-			pain.line(x + int(xx), y + int(yy),
-					x + int(x2), y + int(y2),
+				mt.transform(xx, yy);
+			mt.transform(x2, y2);
+			pain.line(x + int(xx), y + int(yy), x + int(x2), y + int(y2),
 					LColor::mathline);
 		}	else {
 			int xp[32];
@@ -692,9 +643,9 @@ void mathed_draw_deco(Painter & pain, int x, int y, int w, int h,
 				double yy = d[i++];
 //	     lyxerr << " " << xx << " " << yy << " ";
 				if (code == 4) 
-					sqmt.transform(xx, yy, xx, yy);
+					sqmt.transform(xx, yy);
 				else
-					mt.transform(xx, yy, xx, yy);
+					mt.transform(xx, yy);
 				xp[j] = x + int(xx);
 				yp[j] = y + int(yy);
 				//  lyxerr << "P[" << j " " << xx << " " << yy << " " << x << " " << y << "]";
