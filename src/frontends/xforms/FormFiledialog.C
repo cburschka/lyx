@@ -31,16 +31,14 @@ using std::sort;
 
 #include <boost/bind.hpp>
 
-#ifdef HAVE_ERRNO_H
-#include <cerrno>
-#endif
+//#ifdef HAVE_ERRNO_H
+//#include <cerrno>
+//#endif
 
 #if HAVE_DIRENT_H
 # include <dirent.h>
-# define NAMLEN(dirent) strlen((dirent)->d_name)
 #else
 # define dirent direct
-# define NAMLEN(dirent) (dirent)->d_namlen
 # if HAVE_SYS_NDIR_H
 #  include <sys/ndir.h>
 # endif
@@ -50,22 +48,6 @@ using std::sort;
 # if HAVE_NDIR_H
 #  include <ndir.h>
 # endif
-#endif
-
-#if TIME_WITH_SYS_TIME
-# include <sys/time.h>
-# include <ctime>
-#else
-# if HAVE_SYS_TIME_H
-#  include <sys/time.h>
-# else
-#  include <ctime>
-# endif
-#endif
-
-// FIXME: should be autoconfiscated
-#ifdef BROKEN_HEADERS
-extern "C" int gettimeofday(struct timeval *, struct timezone *);
 #endif
 
 #ifdef __GNUG__
@@ -106,9 +88,6 @@ extern "C" {
 
 }
 
-} // namespace anon
-
-
 // *** User cache class implementation
 /// User cache class definition
 class UserCache {
@@ -134,18 +113,8 @@ private:
 
 void UserCache::add(uid_t ID) const
 {
-	string pszNewName;
-	struct passwd * pEntry;
-
-	// gets user name
-	if ((pEntry = getpwuid(ID)))
-		pszNewName = pEntry->pw_name;
-	else {
-		pszNewName = tostr(ID);
-	}
-
-	// adds new node
-	users[ID] = pszNewName;
+	struct passwd const * entry = getpwuid(ID);
+	users[ID] = entry ? entry->pw_name : tostr(ID);
 }
 
 
@@ -177,96 +146,85 @@ string const & GroupCache::find(gid_t ID) const
 
 void GroupCache::add(gid_t ID) const
 {
-	string pszNewName;
-	struct group * pEntry;
-
-	// gets user name
-	if ((pEntry = getgrgid(ID))) pszNewName = pEntry->gr_name;
-	else {
-		pszNewName = tostr(ID);
-	}
-	// adds new node
-	groups[ID] = pszNewName;
+	struct group const * entry = getgrgid(ID);
+	groups[ID] = entry ? entry->gr_name : tostr(ID);
 }
-
-
-namespace {
 
 // local instances
 UserCache lyxUserCache;
 GroupCache lyxGroupCache;
 
-} // namespace anon
-
-
 // compares two LyXDirEntry objects content (used for sort)
 class comp_direntry {
 public:
-	int operator()(DirEntry const & r1,
-		       DirEntry const & r2) const ;
-};
-	int comp_direntry::operator()(DirEntry const & r1,
-		       DirEntry const & r2) const {
-		bool r1d = suffixIs(r1.pszName, '/');
-		bool r2d = suffixIs(r2.pszName, '/');
-		if (r1d && !r2d) return 1;
-		if (!r1d && r2d) return 0;
-		return r1.pszName < r2.pszName;
+	bool operator()(DirEntry const & r1, DirEntry const & r2) const
+	{
+		bool const r1d = suffixIs(r1.name_, '/');
+		bool const r2d = suffixIs(r2.name_, '/');
+		if (r1d && !r2d)
+			return true;
+		if (!r1d && r2d)
+			return false;
+		return r1.name_ < r2.name_;
 	}
+};
+
+
+} // namespace anon
+
 
 
 // *** FileDialog::Private class implementation
 
 // static members
-FD_filedialog * FileDialog::Private::pFileDlgForm = 0;
-FileDialog::Private * FileDialog::Private::pCurrentDlg = 0;
+FD_filedialog * FileDialog::Private::file_dlg_form_ = 0;
+FileDialog::Private * FileDialog::Private::current_dlg_ = 0;
 
 
 // Reread: updates dialog list to match class directory
 void FileDialog::Private::Reread()
 {
 	// Opens directory
-	DIR * pDirectory = ::opendir(pszDirectory.c_str());
-	if (!pDirectory) {
+	DIR * dir = ::opendir(directory_.c_str());
+	if (!dir) {
 		Alert::err_alert(_("Warning! Couldn't open directory."),
-			     pszDirectory);
-		pszDirectory = lyx::getcwd();
-		pDirectory = ::opendir(pszDirectory.c_str());
+			     directory_);
+		directory_ = lyx::getcwd();
+		dir = ::opendir(directory_.c_str());
 	}
 
 	// Clear the present namelist
-	direntries.clear();
+	dir_entries_.clear();
 
 	// Updates display
-	fl_hide_object(pFileDlgForm->List);
-	fl_clear_browser(pFileDlgForm->List);
-	fl_set_input(pFileDlgForm->DirBox, pszDirectory.c_str());
+	fl_hide_object(file_dlg_form_->List);
+	fl_clear_browser(file_dlg_form_->List);
+	fl_set_input(file_dlg_form_->DirBox, directory_.c_str());
 
 	// Splits complete directory name into directories and compute depth
-	iDepth = 0;
+	depth_ = 0;
 	string line, Temp;
 	char szMode[15];
-	string File = pszDirectory;
+	string File = directory_;
 	if (File != "/") {
 		File = split(File, Temp, '/');
 	}
 	while (!File.empty() || !Temp.empty()) {
 		string dline = "@b"+line + Temp + '/';
-		fl_add_browser_line(pFileDlgForm->List, dline.c_str());
+		fl_add_browser_line(file_dlg_form_->List, dline.c_str());
 		File = split(File, Temp, '/');
 		line += ' ';
-		++iDepth;
+		++depth_;
 	}
 
 	// Parses all entries of the given subdirectory
 	time_t curTime = time(0);
-	rewinddir(pDirectory);
-	struct dirent * pDirEntry;
-	while ((pDirEntry = readdir(pDirectory))) {
+	rewinddir(dir);
+	while (dirent * pDirEntry = readdir(dir)) {
 		bool isLink = false, isDir = false;
 
 		// If the pattern doesn't start with a dot, skip hidden files
-		if (!pszMask.empty() && pszMask[0] != '.' &&
+		if (!mask_.empty() && mask_[0] != '.' &&
 		    pDirEntry->d_name[0] == '.')
 			continue;
 
@@ -278,7 +236,7 @@ void FileDialog::Private::Reread()
 			continue;
 
 		// gets file status
-		File = AddName(pszDirectory, fname);
+		File = AddName(directory_, fname);
 
 		FileInfo fileInfo(File, true);
 
@@ -342,122 +300,120 @@ void FileDialog::Private::Reread()
 		    || fileInfo.isChar()
 		    || fileInfo.isBlock()
 		    || fileInfo.isFifo()) {
-			if (!regexMatch(fname, pszMask))
+			if (!regexMatch(fname, mask_))
 				continue;
 		} else if (!(isDir = fileInfo.isDir()))
 			continue;
 
 		DirEntry tmp;
 
-		// Note pszLsEntry is an string!
-		tmp.pszLsEntry = Buffer;
+		// Note ls_entry_ is an string!
+		tmp.ls_entry_ = Buffer;
 		// creates used name
 		string temp = fname;
 		if (isDir) temp += '/';
 
-		tmp.pszName = temp;
+		tmp.name_ = temp;
 		// creates displayed name
 		temp = pDirEntry->d_name;
 		if (isLink)
 			temp += '@';
 		else
 			temp += fileInfo.typeIndicator();
-		tmp.pszDisplayed = temp;
+		tmp.displayed_ = temp;
 
-		direntries.push_back(tmp);
+		dir_entries_.push_back(tmp);
 	}
 
-	closedir(pDirectory);
+	closedir(dir);
 
 	// Sort the names
-	sort(direntries.begin(), direntries.end(), comp_direntry());
+	sort(dir_entries_.begin(), dir_entries_.end(), comp_direntry());
 
 	// Add them to directory box
-	for (DirEntries::const_iterator cit = direntries.begin();
-	     cit != direntries.end(); ++cit) {
-		string const temp = line + cit->pszDisplayed;
-		fl_add_browser_line(pFileDlgForm->List, temp.c_str());
+	for (DirEntries::const_iterator cit = dir_entries_.begin();
+	     cit != dir_entries_.end(); ++cit) {
+		string const temp = line + cit->displayed_;
+		fl_add_browser_line(file_dlg_form_->List, temp.c_str());
 	}
-	fl_set_browser_topline(pFileDlgForm->List, iDepth);
-	fl_show_object(pFileDlgForm->List);
-	iLastSel = -1;
+	fl_set_browser_topline(file_dlg_form_->List, depth_);
+	fl_show_object(file_dlg_form_->List);
+	last_sel_ = -1;
 }
 
 
 // SetDirectory: sets dialog current directory
-void FileDialog::Private::SetDirectory(string const & Path)
+void FileDialog::Private::SetDirectory(string const & path)
 {
-
 	string tmp;
-
-	if (Path.empty())
+	if (path.empty())
 		tmp = lyx::getcwd();
 	else
-		tmp = MakeAbsPath(ExpandPath(Path), pszDirectory);
+		tmp = MakeAbsPath(ExpandPath(path), directory_);
 
 	// must check the directory exists
-	DIR * pDirectory = ::opendir(tmp.c_str());
-	if (!pDirectory) {
+	DIR * dir = ::opendir(tmp.c_str());
+	if (!dir) {
 		Alert::err_alert(_("Warning! Couldn't open directory."), tmp);
 	} else {
-		::closedir(pDirectory);
-		pszDirectory = tmp;
+		::closedir(dir);
+		directory_ = tmp;
 	}
 }
 
 
 // SetMask: sets dialog file mask
-void FileDialog::Private::SetMask(string const & NewMask)
+void FileDialog::Private::SetMask(string const & newmask)
 {
-	pszMask = NewMask;
-	fl_set_input(pFileDlgForm->PatBox, pszMask.c_str());
+	mask_ = newmask;
+	fl_set_input(file_dlg_form_->PatBox, mask_.c_str());
 }
 
 
 // SetInfoLine: sets dialog information line
-void FileDialog::Private::SetInfoLine(string const & Line)
+void FileDialog::Private::SetInfoLine(string const & line)
 {
-	pszInfoLine = Line;
-	fl_set_object_label(pFileDlgForm->FileInfo, pszInfoLine.c_str());
+	info_line_ = line;
+	fl_set_object_label(file_dlg_form_->FileInfo, info_line_.c_str());
 }
 
 
 FileDialog::Private::Private(Dialogs & dia)
 {
-	pszDirectory = MakeAbsPath(string("."));
-	pszMask = '*';
+	directory_ = MakeAbsPath(string("."));
+	mask_ = '*';
 
 	// Creates form if necessary.
-	if (!pFileDlgForm) {
-		pFileDlgForm = build_filedialog(this);
+	if (!file_dlg_form_) {
+		file_dlg_form_ = build_filedialog(this);
 		// Set callbacks. This means that we don't need a patch file
-		fl_set_object_callback(pFileDlgForm->DirBox,
+		fl_set_object_callback(file_dlg_form_->DirBox,
 				       C_LyXFileDlg_FileDlgCB, 0);
-		fl_set_object_callback(pFileDlgForm->PatBox,
+		fl_set_object_callback(file_dlg_form_->PatBox,
 				       C_LyXFileDlg_FileDlgCB, 1);
-		fl_set_object_callback(pFileDlgForm->List,
+		fl_set_object_callback(file_dlg_form_->List,
 				       C_LyXFileDlg_FileDlgCB, 2);
-		fl_set_object_callback(pFileDlgForm->Filename,
+		fl_set_object_callback(file_dlg_form_->Filename,
 				       C_LyXFileDlg_FileDlgCB, 3);
-		fl_set_object_callback(pFileDlgForm->Rescan,
+		fl_set_object_callback(file_dlg_form_->Rescan,
 				       C_LyXFileDlg_FileDlgCB, 10);
-		fl_set_object_callback(pFileDlgForm->Home,
+		fl_set_object_callback(file_dlg_form_->Home,
 				       C_LyXFileDlg_FileDlgCB, 11);
-		fl_set_object_callback(pFileDlgForm->User1,
+		fl_set_object_callback(file_dlg_form_->User1,
 				       C_LyXFileDlg_FileDlgCB, 12);
-		fl_set_object_callback(pFileDlgForm->User2,
+		fl_set_object_callback(file_dlg_form_->User2,
 				       C_LyXFileDlg_FileDlgCB, 13);
 
 		// Make sure pressing the close box doesn't crash LyX. (RvdK)
-		fl_set_form_atclose(pFileDlgForm->form,
+		fl_set_form_atclose(file_dlg_form_->form,
 				    C_LyXFileDlg_CancelCB, 0);
 		// Register doubleclick callback
-		fl_set_browser_dblclick_callback(pFileDlgForm->List,
+		fl_set_browser_dblclick_callback(file_dlg_form_->List,
 						 C_LyXFileDlg_DoubleClickCB,
 						 0);
 	}
-	fl_hide_object(pFileDlgForm->User1);
-	fl_hide_object(pFileDlgForm->User2);
+	fl_hide_object(file_dlg_form_->User1);
+	fl_hide_object(file_dlg_form_->User2);
 
 	r_ = dia.redrawGUI.connect(boost::bind(&FileDialog::Private::redraw, this));
 }
@@ -471,33 +427,33 @@ FileDialog::Private::~Private()
 
 void FileDialog::Private::redraw()
 {
-	if (pFileDlgForm->form && pFileDlgForm->form->visible)
-		fl_redraw_form(pFileDlgForm->form);
+	if (file_dlg_form_->form && file_dlg_form_->form->visible)
+		fl_redraw_form(file_dlg_form_->form);
 }
 
 
 // SetButton: sets file selector user button action
-void FileDialog::Private::SetButton(int iIndex, string const & pszName,
+void FileDialog::Private::SetButton(int iIndex, string const & name_,
 			   string const & pszPath)
 {
-	FL_OBJECT * pObject;
+	FL_OBJECT * ob;
 	string * pTemp;
 
 	if (iIndex == 0) {
-		pObject = pFileDlgForm->User1;
-		pTemp = &pszUserPath1;
+		ob = file_dlg_form_->User1;
+		pTemp = &user_path1_;
 	} else if (iIndex == 1) {
-		pObject = pFileDlgForm->User2;
-		pTemp = &pszUserPath2;
+		ob = file_dlg_form_->User2;
+		pTemp = &user_path2_;
 	} else return;
 
-	if (!pszName.empty()) {
-		fl_set_object_label(pObject, idex(pszName.c_str()));
-		fl_set_button_shortcut(pObject, scex(pszName.c_str()), 1);
-		fl_show_object(pObject);
+	if (!name_.empty()) {
+		fl_set_object_label(ob, idex(name_.c_str()));
+		fl_set_button_shortcut(ob, scex(name_.c_str()), 1);
+		fl_show_object(ob);
 		*pTemp = pszPath;
 	} else {
-		fl_hide_object(pObject);
+		fl_hide_object(ob);
 		pTemp->erase();
 	}
 }
@@ -506,8 +462,8 @@ void FileDialog::Private::SetButton(int iIndex, string const & pszName,
 // GetDirectory: gets last dialog directory
 string const FileDialog::Private::GetDirectory() const
 {
-	if (!pszDirectory.empty())
-		return pszDirectory;
+	if (!directory_.empty())
+		return directory_;
 	else
 		return string(".");
 }
@@ -523,72 +479,71 @@ namespace {
 // RunDialog: handle dialog during file selection
 bool FileDialog::Private::RunDialog()
 {
-	force_cancel = false;
-	force_ok = false;
+	force_cancel_ = false;
+	force_ok_ = false;
 
 	// event loop
 	while (true) {
-		FL_OBJECT * pObject = fl_do_forms();
+		FL_OBJECT * ob = fl_do_forms();
 
-		if (pObject == pFileDlgForm->Ready) {
+		if (ob == file_dlg_form_->Ready) {
 			if (HandleOK())
 				return x_sync_kludge(true);
 
-		} else if (pObject == pFileDlgForm->Cancel
-			   || force_cancel)
+		} else if (ob == file_dlg_form_->Cancel
+			   || force_cancel_)
 			return x_sync_kludge(false);
 
-		else if (force_ok)
+		else if (force_ok_)
 			return x_sync_kludge(true);
 	}
 }
 
 
 // XForms objects callback (static)
-void FileDialog::Private::FileDlgCB(FL_OBJECT *, long lArgument)
+void FileDialog::Private::FileDlgCB(FL_OBJECT *, long arg)
 {
-	if (!pCurrentDlg) return;
+	if (!current_dlg_)
+		return;
 
-	switch (lArgument) {
+	switch (arg) {
 
 	case 0: // get directory
-		pCurrentDlg->SetDirectory(fl_get_input(pFileDlgForm->DirBox));
-		pCurrentDlg->Reread();
+		current_dlg_->SetDirectory(fl_get_input(file_dlg_form_->DirBox));
+		current_dlg_->Reread();
 		break;
 
 	case 1: // get mask
-		pCurrentDlg->SetMask(fl_get_input(pFileDlgForm->PatBox));
-		pCurrentDlg->Reread();
+		current_dlg_->SetMask(fl_get_input(file_dlg_form_->PatBox));
+		current_dlg_->Reread();
 		break;
 
 	case 2: // list
-		pCurrentDlg->HandleListHit();
+		current_dlg_->HandleListHit();
 		break;
 
 	case 10: // rescan
-		pCurrentDlg->SetDirectory(fl_get_input(pFileDlgForm->DirBox));
-		pCurrentDlg->SetMask(fl_get_input(pFileDlgForm->PatBox));
-		pCurrentDlg->Reread();
+		current_dlg_->SetDirectory(fl_get_input(file_dlg_form_->DirBox));
+		current_dlg_->SetMask(fl_get_input(file_dlg_form_->PatBox));
+		current_dlg_->Reread();
 		break;
 
 	case 11: // home
-		pCurrentDlg->SetDirectory(GetEnvPath("HOME"));
-		pCurrentDlg->SetMask(fl_get_input(pFileDlgForm->PatBox));
-		pCurrentDlg->Reread();
+		current_dlg_->SetDirectory(GetEnvPath("HOME"));
+		current_dlg_->SetMask(fl_get_input(file_dlg_form_->PatBox));
+		current_dlg_->Reread();
 		break;
 
 	case 12: // user button 1
-		pCurrentDlg->SetDirectory(pCurrentDlg->pszUserPath1);
-		pCurrentDlg->SetMask(fl_get_input(pFileDlgForm
-						  ->PatBox));
-		pCurrentDlg->Reread();
+		current_dlg_->SetDirectory(current_dlg_->user_path1_);
+		current_dlg_->SetMask(fl_get_input(file_dlg_form_->PatBox));
+		current_dlg_->Reread();
 		break;
 
 	case 13: // user button 2
-		pCurrentDlg->SetDirectory(pCurrentDlg->pszUserPath2);
-		pCurrentDlg->SetMask(fl_get_input(pFileDlgForm
-						  ->PatBox));
-		pCurrentDlg->Reread();
+		current_dlg_->SetDirectory(current_dlg_->user_path2_);
+		current_dlg_->SetMask(fl_get_input(file_dlg_form_->PatBox));
+		current_dlg_->Reread();
 		break;
 
 	}
@@ -599,40 +554,39 @@ void FileDialog::Private::FileDlgCB(FL_OBJECT *, long lArgument)
 void FileDialog::Private::HandleListHit()
 {
 	// set info line
-	int const iSelect = fl_get_browser(pFileDlgForm->List);
-	if (iSelect > iDepth)  {
-		SetInfoLine(direntries[iSelect - iDepth - 1].pszLsEntry);
-	} else {
+	int const select_ = fl_get_browser(file_dlg_form_->List);
+	if (select_ > depth_)
+		SetInfoLine(dir_entries_[select_ - depth_ - 1].ls_entry_);
+	else
 		SetInfoLine(string());
-	}
 }
 
 
 // Callback for double click in list
 void FileDialog::Private::DoubleClickCB(FL_OBJECT *, long)
 {
-	if (pCurrentDlg->HandleDoubleClick())
-		// Simulate click on OK button
-		pCurrentDlg->Force(false);
+	// Simulate click on OK button
+	if (current_dlg_->HandleDoubleClick())
+		current_dlg_->Force(false);
 }
 
 
 // Handle double click from list
 bool FileDialog::Private::HandleDoubleClick()
 {
-	string pszTemp;
+	string tmp;
 
 	// set info line
 	bool isDir = true;
-	int const iSelect = fl_get_browser(pFileDlgForm->List);
-	if (iSelect > iDepth)  {
-		pszTemp = direntries[iSelect - iDepth - 1].pszName;
-		SetInfoLine(direntries[iSelect - iDepth - 1].pszLsEntry);
-		if (!suffixIs(pszTemp, '/')) {
+	int const select_ = fl_get_browser(file_dlg_form_->List);
+	if (select_ > depth_)  {
+		tmp = dir_entries_[select_ - depth_ - 1].name_;
+		SetInfoLine(dir_entries_[select_ - depth_ - 1].ls_entry_);
+		if (!suffixIs(tmp, '/')) {
 			isDir = false;
-			fl_set_input(pFileDlgForm->Filename, pszTemp.c_str());
+			fl_set_input(file_dlg_form_->Filename, tmp.c_str());
 		}
-	} else if (iSelect != 0) {
+	} else if (select_ != 0) {
 		SetInfoLine(string());
 	} else
 		return true;
@@ -642,18 +596,18 @@ bool FileDialog::Private::HandleDoubleClick()
 		string Temp;
 
 		// builds new directory name
-		if (iSelect > iDepth) {
+		if (select_ > depth_) {
 			// Directory deeper down
 			// First, get directory with trailing /
-			Temp = fl_get_input(pFileDlgForm->DirBox);
+			Temp = fl_get_input(file_dlg_form_->DirBox);
 			if (!suffixIs(Temp, '/'))
 				Temp += '/';
-			Temp += pszTemp;
+			Temp += tmp;
 		} else {
 			// Directory higher up
 			Temp.erase();
-			for (int i = 0; i < iSelect; ++i) {
-				string piece = fl_get_browser_line(pFileDlgForm->List, i+1);
+			for (int i = 0; i < select_; ++i) {
+				string piece = fl_get_browser_line(file_dlg_form_->List, i+1);
 				// The '+2' is here to count the '@b' (JMarc)
 				Temp += piece.substr(i + 2);
 			}
@@ -672,32 +626,30 @@ bool FileDialog::Private::HandleDoubleClick()
 bool FileDialog::Private::HandleOK()
 {
 	// mask was changed
-	string pszTemp = fl_get_input(pFileDlgForm->PatBox);
-	if (pszTemp != pszMask) {
-		SetMask(pszTemp);
+	string tmp = fl_get_input(file_dlg_form_->PatBox);
+	if (tmp != mask_) {
+		SetMask(tmp);
 		Reread();
 		return false;
 	}
 
 	// directory was changed
-	pszTemp = fl_get_input(pFileDlgForm->DirBox);
-	if (pszTemp!= pszDirectory) {
-		SetDirectory(pszTemp);
+	tmp = fl_get_input(file_dlg_form_->DirBox);
+	if (tmp != directory_) {
+		SetDirectory(tmp);
 		Reread();
 		return false;
 	}
 
 	// Handle return from list
-	int const select = fl_get_browser(pFileDlgForm->List);
-	if (select > iDepth) {
-		string const temp = direntries[select - iDepth - 1].pszName;
+	int const select = fl_get_browser(file_dlg_form_->List);
+	if (select > depth_) {
+		string const temp = dir_entries_[select - depth_ - 1].name_;
 		if (!suffixIs(temp, '/')) {
 			// If user didn't type anything, use browser
-			string const name =
-				fl_get_input(pFileDlgForm->Filename);
-			if (name.empty()) {
-				fl_set_input(pFileDlgForm->Filename, temp.c_str());
-			}
+			string const name = fl_get_input(file_dlg_form_->Filename);
+			if (name.empty())
+				fl_set_input(file_dlg_form_->Filename, temp.c_str());
 			return true;
 		}
 	}
@@ -711,7 +663,7 @@ bool FileDialog::Private::HandleOK()
 int FileDialog::Private::CancelCB(FL_FORM *, void *)
 {
 	// Simulate a click on the cancel button
-	pCurrentDlg->Force(true);
+	current_dlg_->Force(true);
 	return FL_IGNORE;
 }
 
@@ -720,14 +672,14 @@ int FileDialog::Private::CancelCB(FL_FORM *, void *)
 void FileDialog::Private::Force(bool cancel)
 {
 	if (cancel) {
-		force_cancel = true;
-		fl_set_button(pFileDlgForm->Cancel, 1);
+		force_cancel_ = true;
+		fl_set_button(file_dlg_form_->Cancel, 1);
 	} else {
-		force_ok = true;
-		fl_set_button(pFileDlgForm->Ready, 1);
+		force_ok_ = true;
+		fl_set_button(file_dlg_form_->Ready, 1);
 	}
 	// Start timer to break fl_do_forms loop soon
-	fl_set_timer(pFileDlgForm->timer, 0.1);
+	fl_set_timer(file_dlg_form_->timer, 0.1);
 }
 
 
@@ -747,16 +699,15 @@ string const FileDialog::Private::Select(string const & title,
 		SetDirectory(path);
 		isOk = false;
 	}
-	if (!isOk) Reread();
+	if (!isOk)
+		Reread();
 
 	// highlight the suggested file in the browser, if it exists.
 	int sel = 0;
 	string const filename = OnlyFilename(suggested);
 	if (!filename.empty()) {
-		for (int i = 0;
-		     i < fl_get_browser_maxline(pFileDlgForm->List); ++i) {
-			string s =
-				fl_get_browser_line(pFileDlgForm->List, i + 1);
+		for (int i = 0; i < fl_get_browser_maxline(file_dlg_form_->List); ++i) {
+			string s = fl_get_browser_line(file_dlg_form_->List, i + 1);
 			s = strip(frontStrip(s));
 			if (s == filename) {
 				sel = i + 1;
@@ -765,39 +716,39 @@ string const FileDialog::Private::Select(string const & title,
 		}
 	}
 
-	if (sel != 0) fl_select_browser_line(pFileDlgForm->List, sel);
+	if (sel != 0) fl_select_browser_line(file_dlg_form_->List, sel);
 	int const top = max(sel - 5, 1);
-	fl_set_browser_topline(pFileDlgForm->List, top);
+	fl_set_browser_topline(file_dlg_form_->List, top);
 
 	// checks whether dialog can be started
-	if (pCurrentDlg) return string();
-	pCurrentDlg = this;
+	if (current_dlg_)
+		return string();
+	current_dlg_ = this;
 
 	// runs dialog
 	SetInfoLine(string());
-	fl_set_input(pFileDlgForm->Filename, suggested.c_str());
-	fl_set_button(pFileDlgForm->Cancel, 0);
-	fl_set_button(pFileDlgForm->Ready, 0);
-	fl_set_focus_object(pFileDlgForm->form, pFileDlgForm->Filename);
+	fl_set_input(file_dlg_form_->Filename, suggested.c_str());
+	fl_set_button(file_dlg_form_->Cancel, 0);
+	fl_set_button(file_dlg_form_->Ready, 0);
+	fl_set_focus_object(file_dlg_form_->form, file_dlg_form_->Filename);
 	fl_deactivate_all_forms();
-	fl_show_form(pFileDlgForm->form,
+	fl_show_form(file_dlg_form_->form,
 		     FL_PLACE_MOUSE | FL_FREE_SIZE, 0,
 		     title.c_str());
 
 	isOk = RunDialog();
 
-	fl_hide_form(pFileDlgForm->form);
+	fl_hide_form(file_dlg_form_->form);
 	fl_activate_all_forms();
-	pCurrentDlg = 0;
+	current_dlg_ = 0;
 
 	// Returns filename or string() if no valid selection was made
-	if (!isOk || !fl_get_input(pFileDlgForm->Filename)[0]) return string();
+	if (!isOk || !fl_get_input(file_dlg_form_->Filename)[0])
+		return string();
 
-	pszFileName = fl_get_input(pFileDlgForm->Filename);
+	file_name_ = fl_get_input(file_dlg_form_->Filename);
 
-	if (!AbsolutePath(pszFileName)) {
-		pszFileName = AddName(fl_get_input(pFileDlgForm->DirBox),
-				      pszFileName);
-	}
-	return pszFileName;
+	if (!AbsolutePath(file_name_))
+		file_name_ = AddName(fl_get_input(file_dlg_form_->DirBox), file_name_);
+	return file_name_;
 }

@@ -33,11 +33,11 @@ class Dialogs;
 class DirEntry {
 public:
 	///
-	string pszName;
+	string name_;
 	///
-	string pszDisplayed;
+	string displayed_;
 	///
-	string pszLsEntry;
+	string ls_entry_;
 };
 
 
@@ -76,35 +76,35 @@ public:
 
 private:
 	/// data
-	static FD_filedialog * pFileDlgForm;
+	static FD_filedialog * file_dlg_form_;
 	///
-	static FileDialog::Private * pCurrentDlg;
+	static FileDialog::Private * current_dlg_;
 	///
-	string pszUserPath1;
+	string user_path1_;
 	///
-	string pszUserPath2;
+	string user_path2_;
 	///
-	string pszDirectory;
+	string directory_;
 	///
-	string pszMask;
+	string mask_;
 	///
-	string pszFileName;
+	string file_name_;
 	///
-	int iDepth;
+	int depth_;
 	///
-	int iLastSel;
+	int last_sel_;
 	///
-	long lLastTime;
+	long last_time_;
 	///
-	string pszInfoLine;
+	string info_line_;
 	///
 	typedef std::vector<DirEntry> DirEntries;
 	///
-	DirEntries direntries;
+	DirEntries dir_entries_;
 	///
-	bool force_cancel;
+	bool force_cancel_;
 	///
-	bool force_ok;
+	bool force_ok_;
 
 	/** Redraw the form (on receipt of a Signal indicating, for example,
 	    that the xform colors have been re-mapped).
