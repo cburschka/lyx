@@ -263,13 +263,13 @@ void LyXText::removeRow(RowList::iterator rit)
 // remove all following rows of the paragraph of the specified row.
 void LyXText::removeParagraph(RowList::iterator rit)
 {
-	ParagraphList::iterator tmppit = getPar(rit);
-	++rit;
+	ParagraphList::iterator pit = getPar(rit);
+	RowList::iterator end = endRow(pit);
 
-	while (rit != rows().end() && getPar(rit) == tmppit) {
-		RowList::iterator tmprit = boost::next(rit);
+	for (++rit; rit != end; ) {
+		RowList::iterator rit2 = boost::next(rit);
 		removeRow(rit);
-		rit = tmprit;
+		rit = rit2;
 	}
 }
 
