@@ -128,8 +128,12 @@ fi
 # PostScript -> Bitmap files
 # Older versions of gs have problems with a large degree of anti-aliasing
 # at high resolutions
+
+# test expects integer arguments. ${RESOLUTION} may be a float. Truncate it.
+INT_RESOLUTION=`echo "${RESOLUTION} / 1" | bc`
+
 ALPHA=4
-if [ ${RESOLUTION} -gt 150 ]; then
+if [ ${INT_RESOLUTION} -gt 150 ]; then
 	ALPHA=2
 fi
 
