@@ -1,8 +1,8 @@
 /* This file is part of
- * ====================================================== 
- * 
+ * ======================================================
+ *
  *           LyX, The Document Processor
- * 	 
+ * 	
  *           Copyright 1995 Matthias Ettrich
  *           Copyright 1995-2001 The LyX Team.
  *
@@ -36,13 +36,13 @@ int const num_units = LyXLength::UNIT_NONE;
 char const * unit_name[num_units] = { "sp", "pt", "bp", "dd",
 				      "mm", "pc", "cc", "cm",
 				      "in", "ex", "em", "mu",
-				      "%",  "c%", "p%", "l%" }; 
+				      "%",  "c%", "p%", "l%" };
 
 
 /*  The following static items form a simple scanner for
  *  length strings, used by isValid[Glue]Length.  See comments there.
  */
-float           number[4] = { 0, 0, 0, 0 };
+double           number[4] = { 0, 0, 0, 0 };
 LyXLength::UNIT unit[4]   = { LyXLength::UNIT_NONE,
 			      LyXLength::UNIT_NONE,
 			      LyXLength::UNIT_NONE,
@@ -140,8 +140,10 @@ char nextToken(string & data)
 
 struct LaTeXLength {
 	char const * pattern;
-	int   plus_val_index, minus_val_index,
-		plus_uni_index, minus_uni_index;
+	int  plus_val_index;
+	int  minus_val_index;
+	int  plus_uni_index;
+	int  minus_uni_index;
 };
 
 
@@ -166,37 +168,29 @@ LaTeXLength table[] = {
 
 const char * stringFromUnit(int unit)
 {
-    if (unit < 0 || unit >= num_units)
-	return 0;
-    return unit_name[unit];
+	if (unit < 0 || unit >= num_units)
+		return 0;
+	return unit_name[unit];
 }
 
 
-LyXLength::UNIT unitFromString (string const & data)
-{
-	int i = 0;
-	while ((i < num_units) && (data != unit_name[i])) ++i;
-	return static_cast<LyXLength::UNIT>(i);
-}
-
-
-bool isValidGlueLength (string const & data, LyXGlueLength * result)
+bool isValidGlueLength(string const & data, LyXGlueLength * result)
 {
 	// This parser is table-driven.  First, it constructs a "pattern"
-        // that describes the sequence of tokens in "data".  For example,
+	// that describes the sequence of tokens in "data".  For example,
 	// "n-nu" means: number, minus sign, number, unit.  As we go along,
-        // numbers and units are stored into static arrays.  Then, "pattern"
-        // is searched in the "table".  If it is found, the associated
-        // table entries tell us which number and unit should go where
-        // in the LyXLength structure.  Example: if "data" has the "pattern"
-        // "nu+nu-nu", the associated table entries are "2, 3, 2, 3".  
+	// numbers and units are stored into static arrays.  Then, "pattern"
+	// is searched in the "table".  If it is found, the associated
+	// table entries tell us which number and unit should go where
+	// in the LyXLength structure.  Example: if "data" has the "pattern"
+	// "nu+nu-nu", the associated table entries are "2, 3, 2, 3".
 	// That means, "plus_val" is the second number that was seen
 	// in the input, "minus_val" is the third number, and "plus_uni"
 	// and "minus_uni" are the second and third units, respectively.
 	// ("val" and "uni" are always the first items seen in "data".)
-        //     This is the most elegant solution I could find -- a straight-
-        // forward approach leads to very long, tedious code that would be
-        // much harder to understand and maintain. (AS)
+	// This is the most elegant solution I could find -- a straight-
+	// forward approach leads to very long, tedious code that would be
+	// much harder to understand and maintain. (AS)
 
 	if (data.empty())
 		return true;
@@ -219,10 +213,12 @@ bool isValidGlueLength (string const & data, LyXGlueLength * result)
 	}
 	// end of hack
 	
-	int       pattern_index = 0, table_index = 0;
-	char      pattern[20];
+	int  pattern_index = 0;
+	int  table_index = 0;
+	char pattern[20];
 
-	number_index = unit_index = 1;  // entries at index 0 are sentinels
+	number_index = 1;
+	unit_index = 1;  // entries at index 0 are sentinels
 
 	// construct "pattern" from "data"
 	while (!isEndOfData (buffer)) {
@@ -237,19 +233,20 @@ bool isValidGlueLength (string const & data, LyXGlueLength * result)
 	table_index = 0;
 	while (compare(pattern, table[table_index].pattern)) {
 		++table_index;
-		if (!*table[table_index].pattern) return false;
+		if (!*table[table_index].pattern)
+			return false;
 	}
 	
 	// Get the values from the appropriate places.  If an index
 	// is zero, the corresponding array value is zero or UNIT_NONE,
 	// so we needn't check this.
 	if (result) {
-		result->val = number[1] * val_sign;
-		result->uni = unit[1];
-		result->plus_val  = number[table[table_index].plus_val_index];
-		result->minus_val = number[table[table_index].minus_val_index];
-		result->plus_uni  = unit  [table[table_index].plus_uni_index];
-		result->minus_uni = unit  [table[table_index].minus_uni_index];
+		result->val_        = number[1] * val_sign;
+		result->unit_       = unit[1];
+		result->plus_val_   = number[table[table_index].plus_val_index];
+		result->minus_val_  = number[table[table_index].minus_val_index];
+		result->plus_unit_  = unit  [table[table_index].plus_uni_index];
+		result->minus_unit_ = unit  [table[table_index].minus_uni_index];
 	}
 	return true;
 }
@@ -258,15 +255,15 @@ bool isValidGlueLength (string const & data, LyXGlueLength * result)
 bool isValidLength(string const & data, LyXLength * result)
 {
 	/// This is a trimmed down version of isValidGlueLength.
-	/// The parser may seem overkill for lengths without 
+	/// The parser may seem overkill for lengths without
 	/// glue, but since we already have it, using it is
 	/// easier than writing something from scratch.
 	if (data.empty())
 		return true;
 
-        string   buffer(data);
-	int       pattern_index = 0;
-	char      pattern[3];
+	string   buffer = data;
+	int      pattern_index = 0;
+	char     pattern[3];
 
 	// To make isValidLength recognize negative values
 	// this little hack is needed:
@@ -289,9 +286,11 @@ bool isValidLength(string const & data, LyXLength * result)
 
 	// construct "pattern" from "data"
 	while (!isEndOfData (buffer)) {
-		if (pattern_index > 2) return false;
+		if (pattern_index > 2)
+			return false;
 		pattern[pattern_index] = nextToken (buffer);
-		if (pattern[pattern_index] == 'E') return false;
+		if (pattern[pattern_index] == 'E')
+			return false;
 		++pattern_index;
 	}
 	pattern[pattern_index] = '\0';
@@ -299,17 +298,31 @@ bool isValidLength(string const & data, LyXLength * result)
 	// only the most basic pattern is accepted here
 	if (compare(pattern, "nu") != 0) return false;		
 	
-	// It _was_ a correct length string.  
+	// It _was_ a correct length string.
 	// Store away the values we found.
 	if (result) {
-		result->val = number[1] * val_sign;
-		result->uni = unit[1];
+		result->val_  = number[1] * val_sign;
+		result->unit_ = unit[1];
 	}
 	return true;
 }
 
 
-/// LyXLength class
+
+
+//
+// LyXLength
+//
+
+LyXLength::LyXLength()
+	: val_(0), unit_(LyXLength::PT)
+{}
+
+
+LyXLength::LyXLength(double v, LyXLength::UNIT u)
+	: val_(v), unit_(u)
+{}
+
 
 LyXLength::LyXLength(string const & data)
 {
@@ -317,17 +330,16 @@ LyXLength::LyXLength(string const & data)
 	
 	if (!isValidLength (data, &tmp))
 		return; // should raise an exception
-	else {
-		val = tmp.val;
-		uni = tmp.uni;
-	}
+
+	val_  = tmp.val_;
+	unit_ = tmp.unit_;
 }
 
 
 string const LyXLength::asString() const
 {
 	ostringstream buffer;
-	buffer << val << unit_name[uni]; // setw?
+	buffer << val_ << unit_name[unit_]; // setw?
 	return buffer.str().c_str();
 }
 
@@ -335,42 +347,85 @@ string const LyXLength::asString() const
 string const LyXLength::asLatexString() const
 {
 	ostringstream buffer;
-	switch(uni) {
+	switch(unit_) {
 	case PW:
 	case PE:
-	    buffer << abs(static_cast<int>(val/100)) << "." << abs(static_cast<int>(val)%100) << "\\columnwidth";
+	    buffer << abs(static_cast<int>(val_/100)) << "."
+				<< abs(static_cast<int>(val_)%100) << "\\columnwidth";
 	    break;
 	case PP:
-	    buffer << abs(static_cast<int>(val/100)) << "." << abs(static_cast<int>(val)%100) << "\\pagewidth";
+	    buffer << abs(static_cast<int>(val_/100)) << "."
+				<< abs(static_cast<int>(val_)%100) << "\\pagewidth";
 	    break;
 	case PL:
-	    buffer << abs(static_cast<int>(val/100)) << "." << abs(static_cast<int>(val)%100) << "\\linewidth";
+	    buffer << abs(static_cast<int>(val_/100)) << "."
+				<< abs(static_cast<int>(val_)%100) << "\\linewidth";
 	    break;
 	default:
-	    buffer << val << unit_name[uni]; // setw?
+	    buffer << val_ << unit_name[unit_]; // setw?
 	    break;
 	}
 	return buffer.str().c_str();
 }
 
 
-/*  LyXGlueLength class
- */
+double LyXLength::value() const
+{
+	return val_;
+}
 
-LyXGlueLength::LyXGlueLength (string const & data)
+
+LyXLength::UNIT LyXLength::unit() const
+{
+	return unit_;
+}
+
+
+bool operator==(LyXLength const & l1, LyXLength const & l2)
+{
+	return l1.value() == l2.value() && l1.unit() == l2.unit();
+}
+	
+
+LyXLength::UNIT unitFromString (string const & data)
+{
+	int i = 0;
+	while (i < num_units && data != unit_name[i])
+		++i;
+	return static_cast<LyXLength::UNIT>(i);
+}
+
+
+
+//
+// LyXGlueLength
+//
+
+
+LyXGlueLength::LyXGlueLength(
+			double v,  LyXLength::UNIT u,
+			double pv, LyXLength::UNIT pu,
+			double mv, LyXLength::UNIT mu)
+	: LyXLength(v, u),
+	  plus_val_(pv),  minus_val_(mv),
+	  plus_unit_(pu), minus_unit_(mu)
+{}
+
+
+LyXGlueLength::LyXGlueLength(string const & data)
 {
 	LyXGlueLength tmp(0.0, PT);
 
 	// we should really raise exception here
 	if (!isValidGlueLength(data, &tmp))
 		;
- 
-	val = tmp.val;
-	uni = tmp.uni;
-	plus_val = tmp.plus_val;
-	plus_uni = tmp.plus_uni;
-	minus_val = tmp.minus_val;
-	minus_uni = tmp.minus_uni;
+
+	val_        = tmp.val_;
+	unit_       = tmp.unit_;
+	plus_val_   = tmp.plus_val_;
+	plus_unit_  = tmp.plus_unit_;
+	minus_val_  = tmp.minus_val_;
+	minus_unit_ = tmp.minus_unit_;
 }
 
 
@@ -378,51 +433,51 @@ string const LyXGlueLength::asString() const
 {
 	ostringstream buffer;
 
-	if (plus_val != 0.0)
-		if (minus_val != 0.0)
-			if ((uni == plus_uni) && (uni == minus_uni))
-				if (plus_val == minus_val)
-					buffer << val << "+-"
-					       << plus_val << unit_name[uni];
+	if (plus_val_ != 0.0)
+		if (minus_val_ != 0.0)
+			if (unit_ == plus_unit_ && unit_ == minus_unit_)
+				if (plus_val_ == minus_val_)
+					buffer << val_ << "+-"
+					       << plus_val_ << unit_name[unit_];
 				else
-					buffer << val
-					       << '+' << plus_val
-					       << '-' << minus_val
-					       << unit_name[uni];
+					buffer << val_
+					       << '+' << plus_val_
+					       << '-' << minus_val_
+					       << unit_name[unit_];
 			else
-				if (plus_uni == minus_uni
-				    && plus_val == minus_val)
-					buffer << val << unit_name[uni]
-					       << "+-" << plus_val
-					       << unit_name[plus_uni];
+				if (plus_unit_ == minus_unit_
+				    && plus_val_ == minus_val_)
+					buffer << val_ << unit_name[unit_]
+					       << "+-" << plus_val_
+					       << unit_name[plus_unit_];
 	
 				else
-					buffer << val << unit_name[uni]
-					       << '+' << plus_val
-					       << unit_name[plus_uni]
-					       << '-' << minus_val
-					       << unit_name[minus_uni];
-		else 
-			if (uni == plus_uni)
-				buffer << val << '+' << plus_val
-				       << unit_name[uni];
+					buffer << val_ << unit_name[unit_]
+					       << '+' << plus_val_
+					       << unit_name[plus_unit_]
+					       << '-' << minus_val_
+					       << unit_name[minus_unit_];
+		else
+			if (unit_ == plus_unit_)
+				buffer << val_ << '+' << plus_val_
+				       << unit_name[unit_];
 			else
-				buffer << val << unit_name[uni]
-				       << '+' << plus_val
-				       << unit_name[plus_uni];
+				buffer << val_ << unit_name[unit_]
+				       << '+' << plus_val_
+				       << unit_name[plus_unit_];
 	
 	else
-		if (minus_val != 0.0)
-			if (uni == minus_uni)
-				buffer << val << '-' << minus_val
-				       << unit_name[uni];
+		if (minus_val_ != 0.0)
+			if (unit_ == minus_unit_)
+				buffer << val_ << '-' << minus_val_
+				       << unit_name[unit_];
 	
 			else
-				buffer << val << unit_name[uni]
-				       << '-' << minus_val
-				       << unit_name[minus_uni];
+				buffer << val_ << unit_name[unit_]
+				       << '-' << minus_val_
+				       << unit_name[minus_unit_];
 		else
-			buffer << val << unit_name[uni];
+			buffer << val_ << unit_name[unit_];
 
 	return buffer.str().c_str();
 }
@@ -432,116 +487,194 @@ string const LyXGlueLength::asLatexString() const
 {
 	ostringstream buffer;
 
-	if (plus_val != 0.0)
-		if (minus_val != 0.0)
-			buffer << val << unit_name[uni]
+	if (plus_val_ != 0.0)
+		if (minus_val_ != 0.0)
+			buffer << val_ << unit_name[unit_]
 			       << " plus "
-			       << plus_val << unit_name[plus_uni]
+			       << plus_val_ << unit_name[plus_unit_]
 			       << " minus "
-			       << minus_val << unit_name[minus_uni];
+			       << minus_val_ << unit_name[minus_unit_];
 		else
-			buffer << val << unit_name[uni]
+			buffer << val_ << unit_name[unit_]
 			       << " plus "
-			       << plus_val << unit_name[plus_uni];
+			       << plus_val_ << unit_name[plus_unit_];
 	else
-		if (minus_val != 0.0)
-			buffer << val << unit_name[uni]
+		if (minus_val_ != 0.0)
+			buffer << val_ << unit_name[unit_]
 			       << " minus "
-			       << minus_val << unit_name[minus_uni];
+			       << minus_val_ << unit_name[minus_unit_];
 		else
-			buffer << val << unit_name[uni];
+			buffer << val_ << unit_name[unit_];
 
 	return buffer.str().c_str();
 }
 
 
-/*  VSpace class
- */
-
-VSpace::VSpace (string const & data)
-	: kin (NONE), len (0.0, LyXLength::PT) 
+double LyXGlueLength::plusValue() const
 {
-	kp = false;
+	return plus_val_;
+}
+
+
+LyXLength::UNIT LyXGlueLength::plusUnit() const
+{
+	return plus_unit_;
+}
+
+
+double LyXGlueLength::minusValue() const
+{
+	return minus_val_;
+}
+
+
+LyXLength::UNIT LyXGlueLength::minusUnit() const
+{
+	return minus_unit_;
+}
+
+
+bool operator==(LyXGlueLength const & l1, LyXGlueLength const & l2)
+{
+	return l1.value() == l2.value()
+		&& l1.unit() == l2.unit()
+		&& l1.plusValue() == l2.plusValue()
+		&& l1.plusUnit() == l2.plusUnit()
+		&& l1.minusValue() == l2.minusValue()
+		&& l1.minusUnit() == l2.minusUnit();
+}
+
+
+
+
+//
+//  VSpace class
+//
+
+VSpace::VSpace()
+	: kind_(NONE), len_(0.0, LyXLength::PT), keep_(false)
+{}
+
+
+VSpace::VSpace(vspace_kind k)
+	: kind_(k), len_(0.0, LyXLength::PT), keep_(false)
+{}
+
+
+VSpace::VSpace(LyXGlueLength l)
+	: kind_(LENGTH), len_(l), keep_(false)
+{}
+
+
+VSpace::VSpace(double v, LyXLength::UNIT u)
+	: kind_(LENGTH), len_(v, u), keep_(false)
+{}
+
+
+VSpace::VSpace(string const & data)
+	: kind_(NONE), len_(0.0, LyXLength::PT), keep_(false)
+{
 	if (data.empty())
 		return;
-	float   value;
+	double value;
 	string input  = strip(data);
 
 	string::size_type const length = input.length();
 
 	if (length > 1 && input[length-1] == '*') {
-		kp = true;
+		keep_ = true;
 		input.erase(length - 1);
 	}
 
-	if      (prefixIs (input, "defskip"))   kin = DEFSKIP;
-	else if (prefixIs (input, "smallskip")) kin = SMALLSKIP;
-	else if (prefixIs (input, "medskip"))   kin = MEDSKIP;
-	else if (prefixIs (input, "bigskip"))   kin = BIGSKIP;
-	else if (prefixIs (input, "vfill"))     kin = VFILL;
-	else if (isValidGlueLength (input, &len))
-		kin = LENGTH;
-	else if (sscanf(input.c_str(), "%f", &value) == 1) {
+	if      (prefixIs (input, "defskip"))    kind_ = DEFSKIP;
+	else if (prefixIs (input, "smallskip"))  kind_ = SMALLSKIP;
+	else if (prefixIs (input, "medskip"))    kind_ = MEDSKIP;
+	else if (prefixIs (input, "bigskip"))    kind_ = BIGSKIP;
+	else if (prefixIs (input, "vfill"))      kind_ = VFILL;
+	else if (isValidGlueLength(input, &len_)) kind_ = LENGTH;
+	else if (sscanf(input.c_str(), "%lf", &value) == 1) {
 		// This last one is for reading old .lyx files
 		// without units in added_space_top/bottom.
 		// Let unit default to centimeters here.
-		kin = LENGTH;
-		len = LyXGlueLength (value, LyXLength::CM);
+		kind_ = LENGTH;
+		len_  = LyXGlueLength(value, LyXLength::CM);
 	}
+}
+
+
+VSpace::vspace_kind VSpace::kind() const
+{
+	return kind_;
+}
+
+
+LyXGlueLength VSpace::length() const
+{
+	return len_;
+}
+
+
+bool VSpace::keep() const
+{
+	return keep_;
+}
+
+
+void VSpace::setKeep(bool val)
+{
+	keep_ = val;
 }
 
 
 bool VSpace::operator==(VSpace const & other) const
 {
-	if (this->kin != other.kin)
+	if (kind_ != other.kind_)
 		return false;
- 
-	if (this->kin != LENGTH)
-		return this->kp == other.kp;
- 
-	if (!(this->len == other.len))
+
+	if (kind_ != LENGTH)
+		return this->keep_ == other.keep_;
+
+	if (len_ != other.len_)
 		return false;
- 
-	return this->kp == other.kp;
+
+	return keep_ == other.keep_;
 }
 
 
 string const VSpace::asLyXCommand() const
 {
-        string result;
-
-	switch (kin) {
+	string result;
+	switch (kind_) {
 	case NONE:      break;
 	case DEFSKIP:   result = "defskip";      break;
 	case SMALLSKIP: result = "smallskip";    break;
 	case MEDSKIP:   result = "medskip";      break;
 	case BIGSKIP:   result = "bigskip";      break;
 	case VFILL:     result = "vfill";        break;
-	case LENGTH:    result = len.asString(); break;
+	case LENGTH:    result = len_.asString(); break;
 	}
-	if (kp && (kin != NONE) && (kin != DEFSKIP))
-		return result += '*';
-	else
-		return result;
+	if (keep_ && kind_ != NONE && kind_ != DEFSKIP)
+		result += '*';
+	return result;
 }
 
 
 string const VSpace::asLatexCommand(BufferParams const & params) const
 {
-	switch (kin) {
+	switch (kind_) {
 	case NONE:      return string();
-	case DEFSKIP:   
+	case DEFSKIP:
 		return params.getDefSkip().asLatexCommand(params);
-	case SMALLSKIP: return kp ? "\\vspace*{\\smallskipamount}"
+	case SMALLSKIP: return keep_ ? "\\vspace*{\\smallskipamount}"
 				: "\\smallskip{}";
-	case MEDSKIP:   return kp ? "\\vspace*{\\medskipamount}"
+	case MEDSKIP:   return keep_ ? "\\vspace*{\\medskipamount}"
 				: "\\medskip{}";
-	case BIGSKIP:   return kp ? "\\vspace*{\\bigskipamount}"
+	case BIGSKIP:   return keep_ ? "\\vspace*{\\bigskipamount}"
 				: "\\bigskip{}";
-	case VFILL:     return kp ? "\\vspace*{\\fill}"
+	case VFILL:     return keep_ ? "\\vspace*{\\fill}"
 				: "\\vfill{}";
-	case LENGTH:    return kp ? "\\vspace*{" + len.asLatexString() + '}'
-				: "\\vspace{" + len.asLatexString() + '}';
+	case LENGTH:    return keep_ ? "\\vspace*{" + len_.asLatexString() + '}'
+				: "\\vspace{" + len_.asLatexString() + '}';
 	}
 	return string();  // should never be reached
 }
@@ -551,31 +684,35 @@ int VSpace::inPixels(BufferView * bv) const
 {
 	// Height of a normal line in pixels (zoom factor considered)
 	int height = bv->text->defaultHeight(); // [pixels]
-	int skip = 0;
+	int skip  = 0;
 	int width = bv->workWidth();
 
-	if (kin == DEFSKIP)
-	    skip = bv->buffer()->params.getDefSkip().inPixels(bv);
+	if (kind_ == DEFSKIP)
+		skip = bv->buffer()->params.getDefSkip().inPixels(bv);
 
 	return inPixels(height, skip, width);
 }
 
-int VSpace::inPixels(int default_height, int default_skip, int default_width) const
+
+int VSpace::inPixels(int default_height, int default_skip, int default_width)
+	const
 {
 	// Height of a normal line in pixels (zoom factor considered)
 	int height = default_height; // [pixels]
 	
 	// Zoom factor specified by user in percent
-	float const zoom = lyxrc.zoom / 100.0; // [percent]
+	double const zoom = lyxrc.zoom / 100.0; // [percent]
 
 	// DPI setting for monitor: pixels/inch
-	float const dpi = lyxrc.dpi; // screen resolution [pixels/inch]
+	double const dpi = lyxrc.dpi; // screen resolution [pixels/inch]
 
 	// We want the result in pixels
-	float result, value;
+	double result;
+	double value;
 
-	switch (kin) {
-	case NONE: return 0;
+	switch (kind_) {
+	case NONE:
+		return 0;
 
 	case DEFSKIP:
 		return default_skip;
@@ -596,10 +733,10 @@ int VSpace::inPixels(int default_height, int default_skip, int default_width) co
 		// we don't care about sign of value, we
 		// display negative space with text too
 		result = 0.0;
-		value = len.value();
+		value  = len_.value();
 		int val_sign = value < 0.0 ? -1 : 1;
 		
-		switch (len.unit()) {
+		switch (len_.unit()) {
 		case LyXLength::SP:
 			// Scaled point: sp = 1/65536 pt
 			result = zoom * dpi * value
@@ -664,9 +801,9 @@ int VSpace::inPixels(int default_height, int default_skip, int default_width) co
 			break;
 		case LyXLength::UNIT_NONE:
 			result = 0;  // this cannot happen
-			break;  
+			break;
 		}
-		return int (result * val_sign + 0.5);
+		return static_cast<int>(result * val_sign + 0.5);
 	}
 	return 0; // never reached
 }

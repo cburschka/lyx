@@ -1,9 +1,9 @@
 // -*- C++ -*-
 /* This file is part of
- * ====================================================== 
- * 
+ * ======================================================
+ *
  *           LyX, The Document Processor
- * 	 
+ * 	
  *           Copyright 1995 Matthias Ettrich
  *           Copyright 1995-2001 The LyX Team.
  *
@@ -21,7 +21,10 @@
 class BufferParams;
 class BufferView;
 
+
+//
 ///  LyXLength Class
+//
 class LyXLength {
 public:
 	/// length units
@@ -63,18 +66,17 @@ public:
 	};
 
 	///
-	LyXLength() : val(0), uni(LyXLength::PT) {}
+	LyXLength();
 	///
-	LyXLength(float v, LyXLength::UNIT u) : val(v), uni(u) {}
+	LyXLength(double v, LyXLength::UNIT u);
 
-	/** "data" must be a decimal number, followed by a unit. */
-	explicit
-        LyXLength(string const & data);
+	/// "data" must be a decimal number, followed by a unit
+	explicit LyXLength(string const & data);
 	
 	///
-	float value() const         { return val; }
+	double value() const;
 	///
-	LyXLength::UNIT unit() const { return uni; }
+	LyXLength::UNIT unit() const;
 
 	/// conversion
 	virtual string const asString() const;
@@ -83,62 +85,55 @@ public:
 
 	/** If "data" is valid, the length represented by it is
 	  stored into "result", if that is not 0. */
-	friend bool isValidLength(string const & data, 
-				  LyXLength * result = 0);
+	friend bool isValidLength(string const & data, LyXLength * result = 0);
 
 protected:
 	///
-	float           val;
+	double          val_;
 	///
-	LyXLength::UNIT uni;
+	LyXLength::UNIT unit_;
 };
 
 ///
-inline
-bool operator==(LyXLength const & l1, LyXLength const & l2)
-{
-	return l1.value() == l2.value()
-		&& l1.unit() == l2.unit();
-}
-	
+bool operator==(LyXLength const & l1, LyXLength const & l2);
 ///
-extern LyXLength::UNIT unitFromString (string const & data);
+LyXLength::UNIT unitFromString (string const & data);
 ///
-extern bool isValidLength(string const & data, LyXLength * result);
+bool isValidLength(string const & data, LyXLength * result);
 ///
-extern const char * stringFromUnit(int unit);
+const char * stringFromUnit(int unit);
 
+
+
+//
 /// LyXGlueLength class
+//
 class LyXGlueLength : public LyXLength {
 public:
 	///
-	LyXGlueLength(float v,
-		      LyXLength::UNIT u, 
-		      float pv = 0.0,
-		      LyXLength::UNIT pu = LyXLength::UNIT_NONE, 
-		      float mv = 0.0,
-		      LyXLength::UNIT mu = LyXLength::UNIT_NONE) 
-		: LyXLength (v, u), 
-		  plus_val(pv), minus_val(mv), 
-		  plus_uni(pu), minus_uni(mu) {}
+	LyXGlueLength(double v,
+		      LyXLength::UNIT u,
+		      double pv = 0.0,
+		      LyXLength::UNIT pu = LyXLength::UNIT_NONE,
+		      double mv = 0.0,
+		      LyXLength::UNIT mu = LyXLength::UNIT_NONE);
 
-	/** "data" must be a decimal number, followed by a unit, and 
+	/** "data" must be a decimal number, followed by a unit, and
 	  optional "glue" indicated by "+" and "-".  You may abbreviate
 	  reasonably.  Examples:
 	  1.2 cm  //  4mm +2pt  //  2cm -4mm +2mm  //  4+0.1-0.2cm
-	  The traditional Latex format is also accepted, like  
+	  The traditional Latex format is also accepted, like
 	  4cm plus 10pt minus 10pt */
-	explicit
-        LyXGlueLength(string const & data);
+	explicit LyXGlueLength(string const & data);
 	
 	///
-	float plusValue() const         { return plus_val; }
+	double plusValue() const;
 	///
-	LyXLength::UNIT plusUnit() const { return plus_uni; }
+	LyXLength::UNIT plusUnit() const;
 	///
-	float minusValue() const         { return minus_val; }
+	double minusValue() const;
 	///
-	LyXLength::UNIT minusUnit() const { return minus_uni; }
+	LyXLength::UNIT minusUnit() const;
 
 	/// conversion
 	virtual string const asString() const;
@@ -148,37 +143,29 @@ public:
 
 	/** If "data" is valid, the length represented by it is
 	  stored into "result", if that is not 0. */
-	friend bool isValidGlueLength(string const & data, 
+	friend bool isValidGlueLength(string const & data,
 				      LyXGlueLength* result = 0);
 
 protected:
 	///
-	float plus_val;
+	double plus_val_;
 	///
-	float minus_val;
+	double minus_val_;
 	///
-	LyXLength::UNIT plus_uni;
+	LyXLength::UNIT plus_unit_;
 	///
-	LyXLength::UNIT minus_uni;
+	LyXLength::UNIT minus_unit_;
 };
 
 ///
-inline
-bool operator==(LyXGlueLength const & l1, LyXGlueLength const & l2)
-{
-	return l1.value() == l2.value()
-		&& l1.unit() == l2.unit()
-		&& l1.plusValue() == l2.plusValue()
-		&& l1.plusUnit() == l2.plusUnit()
-		&& l1.minusValue() == l2.minusValue()
-		&& l1.minusUnit() == l2.minusUnit();
-}
-
-
+bool operator==(LyXGlueLength const & l1, LyXGlueLength const & l2);
 ///
-extern bool isValidGlueLength(string const & data, LyXGlueLength * result);
+bool isValidGlueLength(string const & data, LyXGlueLength * result);
 
+
+//
 ///  VSpace class
+//
 class VSpace {
 public:
 	/// The different kinds of spaces.
@@ -199,49 +186,32 @@ public:
 		LENGTH
 	};
 	/// Constructor
-	VSpace() : 
-		kin (NONE), 
-		len(0.0, LyXLength::PT),
-                kp (false) {}
+	VSpace();
 	/// Constructor
-	explicit
-	VSpace(vspace_kind k) :
-		kin (k), 
-		len (0.0, LyXLength::PT),
-	        kp (false) {}
+	explicit VSpace(vspace_kind k);
 	/// Constructor
-	explicit
-	VSpace(LyXGlueLength l) :
-		kin (LENGTH),
-		len (l),
-	        kp (false) {}
-
+	explicit VSpace(LyXGlueLength l);
 	/// Constructor
-	explicit
-	VSpace(float v, LyXLength::UNIT u) : 
-		kin (LENGTH), 
-		len (v, u),
-	        kp (false) {}
+	explicit VSpace(double v, LyXLength::UNIT u);
 
 	/// Constructor for reading from a .lyx file
-	explicit
-	VSpace(string const & data);
+	explicit VSpace(string const & data);
 	
 	/// access functions
-	vspace_kind kind() const { return  kin; }
+	vspace_kind kind() const;
 	///
-	LyXGlueLength   length() const { return len; }
+	LyXGlueLength  length() const;
 
 	// a flag that switches between \vspace and \vspace*
-        bool keep() const      { return kp; }
+	bool keep() const;
 	///
-	void setKeep(bool val) { kp = val; } 
+	void setKeep(bool val);
 	///
-        bool operator==(VSpace const &) const;
+	bool operator==(VSpace const &) const;
 
 	// conversion
-	///
-	string const asLyXCommand() const;  // how it goes into the LyX file
+	/// how it goes into the LyX file
+	string const asLyXCommand() const; 
 	///
 	string const asLatexCommand(BufferParams const & params) const;
 	///
@@ -250,11 +220,11 @@ public:
 	int inPixels(int default_height, int default_skip, int default_width=0) const;
 private:
 	/// This VSpace kind
-	vspace_kind kin;
+	vspace_kind kind_;
 	///
-	LyXGlueLength len;
+	LyXGlueLength len_;
 	///
-	bool kp;
+	bool keep_;
 };
 
 #endif
