@@ -1188,8 +1188,8 @@ void LyXText::cursorLeft(LCursor & cur)
 			if (false && !boundary &&
 					bidi.isBoundary(*bv()->buffer(), cur.paragraph(), cur.pos() + 1))
 				setCursor(cur, cur.par(), cur.pos() + 1, true, true);
-			return;
 		}
+		return;
 	}
 
 	if (cur.par() != 0) {
