@@ -1318,18 +1318,14 @@ void MathCursor::interpret(char c)
 			prevAtom()->asScriptInset()->ensure(up);
 			pushRight(prevAtom());
 			pos() = size();
-			idx() = up;
-			return;
-		}
-		if (hasNextAtom() && nextAtom()->asScriptInset()) {
+		} else if (hasNextAtom() && nextAtom()->asScriptInset()) {
 			nextAtom()->asScriptInset()->ensure(up);
 			pushLeft(nextAtom());
 			pos() = 0;
-			idx() = up;
-			return;
+		} else {
+			plainInsert(MathAtom(new MathScriptInset(up)));
+			pushRight(prevAtom());
 		}
-		plainInsert(MathAtom(new MathScriptInset(up)));
-		pushRight(prevAtom());
 		idx() = up;
 		selPaste();
 		return;
