@@ -5,9 +5,9 @@
  *           LyX, The Document Processor
  *        
  *           Copyright 1995 Matthias Ettrich
- *           Copyright 1995-1998 The LyX Team.
+ *           Copyright 1995-1999 The LyX Team.
  *
- * ======================================================*/
+ * ====================================================== */
 
 #include <config.h>
 
@@ -121,14 +121,8 @@ FileInfo::FileInfo(string const & path, bool link)
 FileInfo::FileInfo(int fildes)
 {
 	init();
-	status = fstat(fildes, buf);
+	status = fstat(fildes, &buf);
 	if (status) err = errno;
-}
-
-
-FileInfo::~FileInfo()
-{
-	delete[] buf;
 }
 
 
@@ -136,22 +130,21 @@ void FileInfo::init()
 {
 	status = 0;
 	err = NoErr;
-	buf = (struct stat*) new char[sizeof(struct stat)];
 }
 
 
 void FileInfo::dostat(bool link)
 {
 	if (link) {
-		status = lstat(fname.c_str(), buf);
+		status = lstat(fname.c_str(), &buf);
 	} else {
-		status = stat(fname.c_str(), buf);
+		status = stat(fname.c_str(), &buf);
 	}
 	if (status) err = errno;
 }
 
 
-FileInfo& FileInfo::newFile(string const &path, bool link)
+FileInfo & FileInfo::newFile(string const & path, bool link)
 {
 	fname = path;
 	
@@ -164,11 +157,11 @@ FileInfo& FileInfo::newFile(string const &path, bool link)
 }
 
 
-FileInfo& FileInfo::newFile(int fildes)
+FileInfo & FileInfo::newFile(int fildes)
 {
 	status = 0;
 	err = NoErr;
-	status = fstat(fildes, buf);
+	status = fstat(fildes, &buf);
 	if (status) err = errno;
 	return *this;
 }
@@ -176,17 +169,17 @@ FileInfo& FileInfo::newFile(int fildes)
 
 char const * FileInfo::typeIndicator() const
 {
-	if (S_ISDIR(buf->st_mode)) return ("/");
+	if (S_ISDIR(buf.st_mode)) return ("/");
 #ifdef S_ISLNK
-	if (S_ISLNK(buf->st_mode)) return ("@");
+	if (S_ISLNK(buf.st_mode)) return ("@");
 #endif
 #ifdef S_ISFIFO
-	if (S_ISFIFO(buf->st_mode)) return ("|");
+	if (S_ISFIFO(buf.st_mode)) return ("|");
 #endif
 #ifdef S_ISSOCK
-	if (S_ISSOCK(buf->st_mode)) return ("=");
+	if (S_ISSOCK(buf.st_mode)) return ("=");
 #endif
-	if (S_ISREG(buf->st_mode) && (buf->st_mode & (S_IEXEC | S_IXGRP | S_IXOTH)))
+	if (S_ISREG(buf.st_mode) && (buf.st_mode & (S_IEXEC | S_IXGRP | S_IXOTH)))
 		return ("*");
 	return "";
 }
@@ -194,13 +187,13 @@ char const * FileInfo::typeIndicator() const
 
 mode_t FileInfo::getMode() const
 {
-	return buf->st_mode;
+	return buf.st_mode;
 }
 
 long FileInfo::getBlockSize() const
 {
 #ifndef __EMX__
-	return buf->st_blksize; /* Preferred I/O block size */
+	return buf.st_blksize; /* Preferred I/O block size */
 #else
 #warning May be fixed in 0.13 (SMiyata)
 	return 512; /* Assume HPFS */
@@ -210,9 +203,9 @@ long FileInfo::getBlockSize() const
 void FileInfo::modeString(char * szString) const
 {
 	szString[0] = typeLetter();
-	flagRWX((buf->st_mode & 0700) << 0, &szString[1]);
-	flagRWX((buf->st_mode & 0070) << 3, &szString[4]);
-	flagRWX((buf->st_mode & 0007) << 6, &szString[7]);
+	flagRWX((buf.st_mode & 0700) << 0, &szString[1]);
+	flagRWX((buf.st_mode & 0070) << 3, &szString[4]);
+	flagRWX((buf.st_mode & 0007) << 6, &szString[7]);
 	setSticky(szString);
 	szString[10] = 0;
 }
@@ -221,25 +214,25 @@ void FileInfo::modeString(char * szString) const
 char FileInfo::typeLetter() const
 {
 #ifdef S_ISBLK
-	if (S_ISBLK(buf->st_mode)) return 'b';
+	if (S_ISBLK(buf.st_mode)) return 'b';
 #endif
-	if (S_ISCHR(buf->st_mode)) return 'c';
-	if (S_ISDIR(buf->st_mode)) return 'd';
-	if (S_ISREG(buf->st_mode)) return '-';
+	if (S_ISCHR(buf.st_mode)) return 'c';
+	if (S_ISDIR(buf.st_mode)) return 'd';
+	if (S_ISREG(buf.st_mode)) return '-';
 #ifdef S_ISFIFO
-	if (S_ISFIFO(buf->st_mode)) return 'p';
+	if (S_ISFIFO(buf.st_mode)) return 'p';
 #endif
 #ifdef S_ISLNK
-	if (S_ISLNK(buf->st_mode)) return 'l';
+	if (S_ISLNK(buf.st_mode)) return 'l';
 #endif
 #ifdef S_ISSOCK
-	if (S_ISSOCK(buf->st_mode)) return 's';
+	if (S_ISSOCK(buf.st_mode)) return 's';
 #endif
 #ifdef S_ISMPC
-	if (S_ISMPC(buf->st_mode)) return 'm';
+	if (S_ISMPC(buf.st_mode)) return 'm';
 #endif
 #ifdef S_ISNWK
-	if (S_ISNWK(buf->st_mode)) return 'n';
+	if (S_ISNWK(buf.st_mode)) return 'n';
 #endif
 	return '?';
 }
@@ -256,19 +249,19 @@ void FileInfo::flagRWX(unsigned short i, char * szString) const
 void FileInfo::setSticky(char * szString) const
 {
 #ifdef S_ISUID
-	if (buf->st_mode & S_ISUID) {
+	if (buf.st_mode & S_ISUID) {
 		if (szString[3] != 'x') szString[3] = 'S';
 		else szString[3] = 's';
 	}
 #endif
 #ifdef S_ISGID
-	if (buf->st_mode & S_ISGID) {
+	if (buf.st_mode & S_ISGID) {
 		if (szString[6] != 'x') szString[6] = 'S';
 		else szString[6] = 's';
 	}
 #endif
 #ifdef S_ISVTX
-	if (buf->st_mode & S_ISVTX) {
+	if (buf.st_mode & S_ISVTX) {
 		if (szString[9] != 'x') szString[9] = 'T';
 		else szString[9] = 't';
 	}
@@ -278,43 +271,43 @@ void FileInfo::setSticky(char * szString) const
 
 time_t FileInfo::getModificationTime() const
 {
-	return buf->st_mtime;
+	return buf.st_mtime;
 }
 
 
 time_t FileInfo::getAccessTime() const
 {
-	return buf->st_atime;
+	return buf.st_atime;
 }
 
 
 time_t  FileInfo::getStatusChangeTime() const
 {
-	return buf->st_ctime;
+	return buf.st_ctime;
 }
 
 
 nlink_t FileInfo::getNumberOfLinks() const
 {
-	return buf->st_nlink;
+	return buf.st_nlink;
 }
 
 
-uid_t  FileInfo::getUid() const
+uid_t FileInfo::getUid() const
 {
-	return buf->st_uid;
+	return buf.st_uid;
 }
 
 
-gid_t  FileInfo::getGid() const
+gid_t FileInfo::getGid() const
 {
-	return buf->st_gid;
+	return buf.st_gid;
 }
 
 
 off_t FileInfo::getSize() const
 {
-	return buf->st_size;
+	return buf.st_size;
 }
 
 
@@ -335,44 +328,44 @@ bool FileInfo::isOK() const
 
 bool FileInfo::isLink() const
 {
-	return S_ISLNK(buf->st_mode);
+	return S_ISLNK(buf.st_mode);
 }
 
 
 bool FileInfo::isRegular() const
 {
-	return S_ISREG(buf->st_mode);
+	return S_ISREG(buf.st_mode);
 }
 
 
 bool FileInfo::isDir() const
 {
-	return S_ISDIR(buf->st_mode);
+	return S_ISDIR(buf.st_mode);
 }
 
 
 bool FileInfo::isChar() const
 {
-	return S_ISCHR(buf->st_mode);
+	return S_ISCHR(buf.st_mode);
 }
 
 
 bool FileInfo::isBlock() const
 {
-	return S_ISBLK(buf->st_mode);
+	return S_ISBLK(buf.st_mode);
 }
 
 
 bool FileInfo::isFifo() const
 {
-	return S_ISFIFO(buf->st_mode);
+	return S_ISFIFO(buf.st_mode);
 }
 
 
 bool FileInfo::isSocket() const
 {
 #ifdef S_ISSOCK
-	return S_ISSOCK(buf->st_mode);
+	return S_ISSOCK(buf.st_mode);
 #else
 	return false;
 #endif

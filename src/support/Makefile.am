@@ -16,6 +16,10 @@ libsupport_a_SOURCES = \
 	LAssert.h \
 	LIstream.h \
 	LOstream.h \
+	LRegex.C \
+	LRegex.h \
+	LSubstring.C \
+	LSubstring.h \
 	filetools.C \
 	filetools.h \
 	lstrings.C \
