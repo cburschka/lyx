@@ -683,13 +683,16 @@ void LyXText::redoParagraphs(LyXCursor const & cur,
 
 	int y = cur.y() - tmprit->baseline();
 
-	Paragraph * first_phys_par = 0;
+	Paragraph * first_phys_par;
 	if (tmprit == rows().begin()) {
-		// a trick/hack for UNDO
-		// This is needed because in an UNDO/REDO we could have changed
-		// the ownerParagrah() so the paragraph inside the row is NOT
-		// my really first par anymore. Got it Lars ;) (Jug 20011206)
+		// A trick/hack for UNDO.
+		// This is needed because in an UNDO/REDO we could have
+		// changed the ownerParagrah() so the paragraph inside
+		// the row is NOT my really first par anymore.
+		// Got it Lars ;) (Jug 20011206)
 		first_phys_par = ownerParagraph();
+#warning FIXME
+		// In here prevrit could be set to rows().end(). (Lgb)
 	} else {
 		first_phys_par = tmprit->par();
 		while (tmprit != rows().begin()
@@ -698,37 +701,31 @@ void LyXText::redoParagraphs(LyXCursor const & cur,
 			--tmprit;
 			y -= tmprit->height();
 		}
+#warning FIXME
+		// Is it possible to put the prevrit setting in here? (Lgb)
 	}
 
 	RowList::iterator prevrit;
+	bool good_prevrit = false;
+#warning FIXME
+	// It seems to mee that good_prevrit is not needed if we let
+	// a bad prevrit have the value rows().end() (Lgb)
 	if (tmprit != rows().begin()) {
 		prevrit = boost::prior(tmprit);
-	} else {
-		prevrit = tmprit;
-		y = prevrit ->height();
+		good_prevrit = true;
 	}
 
 	// remove it
-	Paragraph * tmppar = 0;
-	if (boost::next(tmprit) != rows().end())
-		tmppar = boost::next(tmprit)->par();
-	while (boost::next(tmprit) != rows().end() && tmppar != endpar) {
-		removeRow(boost::next(tmprit));
-		if (boost::next(tmprit) != rows().end()) {
-			tmppar = boost::next(tmprit)->par();
-		} else {
-			tmppar = 0;
-		}
+	while (tmprit != rows().end() && tmprit->par() != endpar) {
+		RowList::iterator tmprit2 = tmprit++;
+		removeRow(tmprit2);
 	}
 
-	// remove the first one
-	RowList::iterator tmprit2 = tmprit; /* this is because tmprow->previous()
-				 can be 0 */
-	++tmprit;
-	removeRow(tmprit2);
-
 	// Reinsert the paragraphs.
-	tmppar = first_phys_par;
+	Paragraph * tmppar = first_phys_par;
+#warning FIXME
+	// See if this loop can be rewritten as a while loop instead.
+	// That should also make the code a bit easier to read. (Lgb)
 	do {
 		if (tmppar) {
 			insertParagraph(tmppar, tmprit);
@@ -740,11 +737,18 @@ void LyXText::redoParagraphs(LyXCursor const & cur,
 		}
 	} while (tmppar && tmppar != endpar);
 
-	setHeightOfRow(prevrit);
-	const_cast<LyXText *>(this)->postPaint(y - prevrit->height());
-
-	if (tmprit != rows().end() && boost::next(tmprit) != rows().end())
-		setHeightOfRow(boost::next(tmprit));
+#warning FIXME
+	// If the above changes are done, then we can compare prevrit
+	// with rows().end() here. (Lgb)
+	if (good_prevrit) {
+		setHeightOfRow(prevrit);
+		const_cast<LyXText *>(this)->postPaint(y - prevrit->height());
+	} else {
+		setHeightOfRow(rows().begin());
+		const_cast<LyXText *>(this)->postPaint(0);
+	}
+	if (tmprit != rows().end())
+		setHeightOfRow(tmprit);
 	updateCounters();
 }
 
