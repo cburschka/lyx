@@ -1,3 +1,9 @@
+
+2004-12-06  Alfredo Braunstein  <abraunst@lyx.org>
+
+	* text2.C (getSelectionSpan): remove
+	(changeDepth, changeDepthAllowed): adjust
+
 2004-12-05  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* Makefile.am (BOOST_LIBS): use boost variables

@@ -343,18 +343,6 @@ void LyXText::setLayout(LCursor & cur, string const & layout)
 namespace {
 
 
-void getSelectionSpan(LCursor & cur, pit_type & beg, pit_type & end)
-{
-	if (!cur.selection()) {
-		beg = cur.pit();
-		end = cur.pit() + 1;
-	} else {
-		beg = cur.selBegin().pit();
-		end = cur.selEnd().pit() + 1;
-	}
-}
-
-
 bool changeDepthAllowed(LyXText::DEPTH_CHANGE type,
 	Paragraph const & par, int max_depth)
 {
@@ -375,11 +363,9 @@ bool changeDepthAllowed(LyXText::DEPTH_CHANGE type,
 bool LyXText::changeDepthAllowed(LCursor & cur, DEPTH_CHANGE type) const
 {
 	BOOST_ASSERT(this == cur.text());
-	pit_type beg, end;
-	getSelectionSpan(cur, beg, end);
-	int max_depth = 0;
-	if (beg != 0)
-		max_depth = pars_[beg - 1].getMaxDepthAfter();
+	pit_type const beg = cur.selBegin().pit();
+	pit_type const end = cur.selEnd().pit() + 1;
+	int max_depth = (beg != 0 ? pars_[beg - 1].getMaxDepthAfter() : 0);
 
 	for (pit_type pit = beg; pit != end; ++pit) {
 		if (::changeDepthAllowed(type, pars_[pit], max_depth))
@@ -393,13 +379,10 @@ bool LyXText::changeDepthAllowed(LCursor & cur, DEPTH_CHANGE type) const
 void LyXText::changeDepth(LCursor & cur, DEPTH_CHANGE type)
 {
 	BOOST_ASSERT(this == cur.text());
-	pit_type beg, end;
-	getSelectionSpan(cur, beg, end);
+	pit_type const beg = cur.selBegin().pit();
+	pit_type const end = cur.selEnd().pit() + 1;
 	recordUndoSelection(cur);
-
-	int max_depth = 0;
-	if (beg != 0)
-		max_depth = pars_[beg - 1].getMaxDepthAfter();
+	int max_depth = (beg != 0 ? pars_[beg - 1].getMaxDepthAfter() : 0);
 
 	for (pit_type pit = beg; pit != end; ++pit) {
 		Paragraph & par = pars_[pit];
