@@ -20,14 +20,16 @@
 #include "math_factory.h"
 #include "math_hullinset.h"
 #include "math_mathmlstream.h"
+#include "math_macroarg.h"
+#include "math_mboxinset.h"
 #include "math_parser.h"
 #include "math_scriptinset.h"
 #include "math_spaceinset.h"
 #include "math_support.h"
-#include "math_mboxinset.h"
 #include "math_unknowninset.h"
 
 #include "BufferView.h"
+#include "CutAndPaste.h"
 #include "FuncStatus.h"
 #include "LColor.h"
 #include "bufferview_funcs.h"
@@ -46,10 +48,17 @@
 #include "frontends/LyXView.h"
 #include "frontends/Painter.h"
 
+using lyx::cap::copySelection;
+using lyx::cap::grabAndEraseSelection;
+using lyx::cap::cutSelection;
+using lyx::cap::pasteSelection;
+using lyx::cap::replaceSelection;
+using lyx::cap::selClearOrDel;
 
 using std::endl;
 using std::string;
 using std::istringstream;
+
 
 
 namespace {
@@ -185,7 +194,7 @@ void MathNestInset::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-void MathNestInset::drawSelection(PainterInfo & pi, int x, int y) const
+void MathNestInset::drawSelection(PainterInfo & pi, int, int) const
 {
 	// this should use the x/y values given, not the cached values
 	LCursor & cur = pi.base.bv->cursor();
@@ -195,8 +204,8 @@ void MathNestInset::drawSelection(PainterInfo & pi, int x, int y) const
 		return;
 	CursorSlice s1 = cur.selBegin();
 	CursorSlice s2 = cur.selEnd();
-	lyxerr << "MathNestInset::drawing selection: "
-		<< " s1: " << s1 << " s2: " << s2 << endl; 
+	//lyxerr << "MathNestInset::drawing selection: "
+	//	<< " s1: " << s1 << " s2: " << s2 << endl; 
 	if (s1.idx() == s2.idx()) {
 		MathArray const & c = cell(s1.idx());
 		int x1 = c.xo() + c.pos2x(s1.pos());
@@ -204,9 +213,9 @@ void MathNestInset::drawSelection(PainterInfo & pi, int x, int y) const
 		int x2 = c.xo() + c.pos2x(s2.pos());
 		int y2 = c.yo() + c.descent();
 		pi.pain.fillRectangle(x1, y1, x2 - x1, y2 - y1, LColor::selection);
-	lyxerr << "MathNestInset::drawing selection 3: "
-		<< " x1: " << x1 << " x2: " << x2
-		<< " y1: " << y1 << " y2: " << y2 << endl; 
+	//lyxerr << "MathNestInset::drawing selection 3: "
+	//	<< " x1: " << x1 << " x2: " << x2
+	//	<< " y1: " << y1 << " y2: " << y2 << endl; 
 	} else {
 		for (idx_type i = 0; i < nargs(); ++i) {
 			if (idxBetween(i, s1.idx(), s2.idx())) {
@@ -310,7 +319,7 @@ void MathNestInset::notifyCursorLeaves(LCursor & cur)
 #if 0
 	MathArray & ar = cur.cell();
 	// remove base-only "scripts"
-	for (pos_type i = 0; i + 1 < size(); ++i) {
+	for (pos_type i = 0; i + 1 < ar.size(); ++i) {
 		MathScriptInset * p = operator[](i).nucleus()->asScriptInset();
 		if (p && p->nargs() == 1) {
 			MathArray ar = p->nuc();
@@ -371,34 +380,28 @@ void MathNestInset::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 
 	switch (cmd.action) {
 
-	case LFUN_PASTESELECTION: {
-		MathArray ar;
-		mathed_parse_cell(ar, cur.bv().getClipboard());
-		cur.cell().insert(cur.pos(), ar);
-		cur.pos() += ar.size();
-		break;
-	}
-
-	case LFUN_PASTE:
-		if (!cmd.argument.empty()) {
-			MathArray ar;
-			mathed_parse_cell(ar, cmd.argument);
-			cur.cell().insert(cur.pos(), ar);
-			cur.pos() += ar.size();
-		}
-		break;
-/*
 	case LFUN_PASTE: {
+		cur.message(_("Paste"));
+		replaceSelection(cur);
 		size_t n = 0;
 		istringstream is(cmd.argument.c_str());
 		is >> n;
-		if (was_macro)
-			cur.macroModeClose();
-		recordUndo(cur, Undo::ATOMIC);
-		cur.selPaste(n);
+		pasteSelection(cur, n);
+		cur.clearSelection(); // bug 393
+		cur.bv().switchKeyMap();
+		finishUndo();
 		break;
 	}
-*/
+
+	case LFUN_CUT:
+		cutSelection(cur, true, true);
+		cur.message(_("Cut"));
+		break;
+
+	case LFUN_COPY:
+		copySelection(cur);
+		cur.message(_("Copy"));
+		break;
 
 	case LFUN_MOUSE_PRESS:
 		lfunMousePress(cur, cmd);
@@ -433,7 +436,6 @@ void MathNestInset::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 
 	case LFUN_RIGHTSEL:
 	case LFUN_RIGHT:
-		lyxerr << "mathnest RIGHT: from:\n" << cur << endl;
 		cur.selHandle(cmd.action == LFUN_RIGHTSEL);
 		cur.autocorrect() = false;
 		cur.clearTargetX();
@@ -447,7 +449,6 @@ void MathNestInset::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 			;
 		else
 			cmd = FuncRequest(LFUN_FINISHED_RIGHT);
-		lyxerr << "mathnest RIGHT: to:\n" << cur << endl;
 		break;
 
 	case LFUN_LEFTSEL:
@@ -634,15 +635,6 @@ void MathNestInset::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 		break;
 	}
 
-	case LFUN_CUT:
-		recordUndo(cur, Undo::DELETE);
-		cur.selCut();
-		break;
-
-	case LFUN_COPY:
-		cur.selCopy();
-		break;
-
 	// Special casing for superscript in case of LyX handling
 	// dead-keys:
 	case LFUN_CIRCUMFLEX:
@@ -710,7 +702,7 @@ void MathNestInset::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 	case LFUN_MATH_MODE:
 #if 1
 		cur.macroModeClose();
-		cur.selClearOrDel();
+		selClearOrDel(cur);
 		cur.plainInsert(MathAtom(new MathMBoxInset(cur.bv())));
 		cur.posLeft();
 		cur.pushLeft(*cur.nextInset());
@@ -1023,48 +1015,45 @@ bool MathNestInset::interpret(LCursor & cur, char c)
 {
 	lyxerr << "interpret 2: '" << c << "'" << endl;
 	cur.clearTargetX();
-	/// are we currently typing '#1' or '#2' or...?
-	if (cur.pos() > 0 && cur.prevAtom()->getChar() == '#') {
-		cur.posLeft();
-		cur.plainErase();
-#ifdef WITH_WARNINGS
-#warning FIXME
-#endif
-#if 0
-		int n = c - '0';
-		MathMacroTemplate const * p = formula()->asMacroTemplate();
-		if (p && 1 <= n && n <= p->numargs())
-			cur.insert(MathAtom(new MathMacroArgument(c - '0')));
-		else {
-			cur.insert(createMathInset("#"));
-			interpret(cur, c); // try again
-		}
-#endif
-		return true;
-	}
 
 	// handle macroMode
 	if (cur.inMacroMode()) {
 		string name = cur.macroName();
-		//lyxerr << "interpret name: '" << name << "'" << endl;
+		lyxerr << "interpret macro name: '" << name << "'" << endl;
+
+		/// are we currently typing '#1' or '#2' or...?
+		if (name == "\\#") {
+			cur.backspace();
+			int n = c - '0';
+			if (n >= 1 && n <= 9)
+				cur.insert(new MathMacroArgument(n));
+			return true;
+		}
 
 		if (isalpha(c)) {
-			cur.activeMacro()->setName(cur.activeMacro()->name() + c);
+			cur.activeMacro()->setName(name + c);
 			return true;
 		}
 
 		// handle 'special char' macros
 		if (name == "\\") {
 			// remove the '\\'
-			cur.backspace();
 			if (c == '\\') {
+				cur.backspace();
 				if (currentMode() == MathInset::TEXT_MODE)
 					cur.niceInsert(createMathInset("textbackslash"));
 				else
 					cur.niceInsert(createMathInset("backslash"));
 			} else if (c == '{') {
+				cur.backspace();
 				cur.niceInsert(MathAtom(new MathBraceInset));
+			} else if (c == '#') {
+				lyxerr << "setting name to " << name + c << endl;
+				BOOST_ASSERT(cur.activeMacro());
+				cur.activeMacro()->setName(name + c);
+				lyxerr << "set name to " << name + c << endl;
 			} else {
+				cur.backspace();
 				cur.niceInsert(createMathInset(string(1, c)));
 			}
 			return true;
@@ -1096,7 +1085,7 @@ bool MathNestInset::interpret(LCursor & cur, char c)
 		return true;
 	}
 
-	cur.selClearOrDel();
+	selClearOrDel(cur);
 
 	if (c == '\\') {
 		//lyxerr << "starting with macro" << endl;
@@ -1140,7 +1129,7 @@ bool MathNestInset::interpret(LCursor & cur, char c)
 		return true;
 	}
 
-	if (c == '{' || c == '}' || c == '#' || c == '&' || c == '$') {
+	if (c == '{' || c == '}' || c == '&' || c == '$' || c == '#') {
 		cur.niceInsert(createMathInset(string(1, c)));
 		return true;
 	}
@@ -1174,7 +1163,7 @@ bool MathNestInset::script(LCursor & cur, bool up)
 	}
 
 	cur.macroModeClose();
-	string safe = cur.grabAndEraseSelection();
+	string safe = grabAndEraseSelection(cur);
 	if (asScriptInset() && cur.idx() == 0) {
 		// we are in a nucleus of a script inset, move to _our_ script
 		MathScriptInset * inset = asScriptInset();

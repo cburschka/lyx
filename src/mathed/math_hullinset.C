@@ -19,13 +19,14 @@
 #include "math_support.h"
 
 #include "BufferView.h"
+#include "CutAndPaste.h"
+#include "LColor.h"
+#include "LaTeXFeatures.h"
 #include "cursor.h"
-#include "dispatchresult.h"
 #include "debug.h"
+#include "dispatchresult.h"
 #include "funcrequest.h"
 #include "gettext.h"
-#include "LaTeXFeatures.h"
-#include "LColor.h"
 #include "lyx_main.h"
 #include "lyxrc.h"
 #include "outputparams.h"
@@ -42,6 +43,7 @@
 
 #include <boost/bind.hpp>
 
+using lyx::cap::grabAndEraseSelection;
 
 using std::endl;
 using std::max;
@@ -822,7 +824,7 @@ void MathHullInset::doExtern(LCursor & cur, FuncRequest & func)
 		size_type pos = cur.cell().find_last(eq);
 		MathArray ar;
 		if (cur.inMathed() && cur.selection()) {
-			asArray(cur.grabAndEraseSelection(), ar);
+			asArray(grabAndEraseSelection(cur), ar);
 		} else if (pos == cur.cell().size()) {
 			ar = cur.cell();
 			lyxerr << "use whole cell: " << ar << endl;

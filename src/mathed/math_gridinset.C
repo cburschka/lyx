@@ -16,6 +16,7 @@
 #include "math_streamstr.h"
 
 #include "BufferView.h"
+#include "CutAndPaste.h"
 #include "FuncStatus.h"
 #include "LColor.h"
 #include "cursor.h"
@@ -1125,9 +1126,12 @@ void MathGridInset::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 	}
 
 	case LFUN_PASTE: {
-		//lyxerr << "pasting '" << cmd.argument << "'" << endl;
+		lyxerr << "MathGridInset: PASTE: " << cmd << std::endl;
+		istringstream is(cmd.argument);
+		int n = 0;
+		is >> n;
 		MathGridInset grid(1, 1);
-		mathed_parse_normal(grid, cmd.argument);
+		mathed_parse_normal(grid, lyx::cap::getSelection(cur.buffer(), n));
 		if (grid.nargs() == 1) {
 			// single cell/part of cell
 			cur.cell().insert(cur.pos(), grid.cell(0));
@@ -1163,12 +1167,17 @@ void MathGridInset::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 	case LFUN_WORDLEFT:
 		cur.selHandle(cmd.action == LFUN_WORDLEFTSEL || cmd.action == LFUN_HOMESEL);
 		cur.macroModeClose();
-		if (cur.pos() != 0)
+		if (cur.pos() != 0) {
 			cur.pos() = 0;
-		else if (cur.idx() != 0)
+		} else if (cur.idx() % cur.ncols() != 0) {
+			cur.idx() -= cur.idx() % cur.ncols();
+			cur.pos() = 0;
+		} else if (cur.idx() != 0) {
 			cur.idx() = 0;
-		else
+			cur.pos() = 0;
+		} else {
 			cmd = FuncRequest(LFUN_FINISHED_LEFT);
+		}
 		break;
 
 	case LFUN_WORDRIGHTSEL:
@@ -1178,12 +1187,17 @@ void MathGridInset::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 		cur.selHandle(cmd.action == LFUN_WORDRIGHTSEL || cmd.action == LFUN_ENDSEL);
 		cur.macroModeClose();
 		cur.clearTargetX();
-		if (cur.pos() != cur.lastpos())
+		if (cur.pos() != cur.lastpos()) {
 			cur.pos() = cur.lastpos();
-		else if (cur.idx() != cur.lastidx())
+		} else if ((cur.idx() + 1) % cur.ncols() != 0) {
+			cur.idx() += cur.ncols() - 1 - cur.idx() % cur.ncols();
+			cur.pos() = cur.lastpos();
+		} else if (cur.idx() != cur.lastidx()) {
 			cur.idx() = cur.lastidx();
-		else
+			cur.pos() = cur.lastpos();
+		} else {
 			cmd = FuncRequest(LFUN_FINISHED_RIGHT);
+		}
 		break;
 
 	default:
