@@ -896,11 +896,11 @@ UpdatableInset::RESULT InsetTabular::LocalDispatch(BufferView * bv,
 	    break;
 	bv->text->SetUndo(bv->buffer(), Undo::DELETE,
 #ifndef NEW_INSETS
-	  bv->text->cursor.par()->ParFromPos(bv->text->cursor.pos())->previous,
-	  bv->text->cursor.par()->ParFromPos(bv->text->cursor.pos())->next
+	  bv->text->cursor.par()->ParFromPos(bv->text->cursor.pos())->previous_,
+			  bv->text->cursor.par()->ParFromPos(bv->text->cursor.pos())->next_
 #else
-	  bv->text->cursor.par()->previous,
-	  bv->text->cursor.par()->next
+	  bv->text->cursor.par()->previous(),
+	  bv->text->cursor.par()->next()
 #endif
 		);
 	cutSelection();
@@ -983,11 +983,11 @@ UpdatableInset::RESULT InsetTabular::LocalDispatch(BufferView * bv,
 	if (hasPasteBuffer()) {
 	    bv->text->SetUndo(bv->buffer(), Undo::INSERT,
 #ifndef NEW_INSETS
-	      bv->text->cursor.par()->ParFromPos(bv->text->cursor.pos())->previous,
-	      bv->text->cursor.par()->ParFromPos(bv->text->cursor.pos())->next
+	      bv->text->cursor.par()->ParFromPos(bv->text->cursor.pos())->previous_,
+			      bv->text->cursor.par()->ParFromPos(bv->text->cursor.pos())->next_
 #else
-	      bv->text->cursor.par()->previous,
-	      bv->text->cursor.par()->next
+	      bv->text->cursor.par()->previous(),
+	      bv->text->cursor.par()->next()
 #endif
 		);
 	    pasteSelection(bv);
@@ -1511,11 +1511,11 @@ void InsetTabular::TabularFeatures(BufferView * bv,
     }
     bv->text->SetUndo(bv->buffer(), Undo::FINISH,
 #ifndef NEW_INSETS
-	      bv->text->cursor.par()->ParFromPos(bv->text->cursor.pos())->previous,
-	      bv->text->cursor.par()->ParFromPos(bv->text->cursor.pos())->next
+	      bv->text->cursor.par()->ParFromPos(bv->text->cursor.pos())->previous_,
+		      bv->text->cursor.par()->ParFromPos(bv->text->cursor.pos())->next_
 #else
-	      bv->text->cursor.par()->previous,
-	      bv->text->cursor.par()->next
+	      bv->text->cursor.par()->previous(),
+	      bv->text->cursor.par()->next()
 #endif
 	    );
 

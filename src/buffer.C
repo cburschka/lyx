@@ -156,11 +156,19 @@ Buffer::~Buffer()
 	
 	LyXParagraph * par = paragraph;
 	LyXParagraph * tmppar;
+#ifndef NEW_INSETS
 	while (par) {
-		tmppar = par->next;
+		tmppar = par->next_;
 		delete par;
 		par = tmppar;
 	}
+#else
+	while (par) {
+		tmppar = par->next();
+		delete par;
+		par = tmppar;
+	}
+#endif
 	paragraph = 0;
 }
 
@@ -1315,16 +1323,10 @@ string const Buffer::asciiParagraph(LyXParagraph const * par,
 
 	int noparbreak = 0;
 	int islatex = 0;
-	if (
 #ifndef NEW_INSETS
-		par->footnoteflag != LyXParagraph::NO_FOOTNOTE ||
-#endif
-		!par->previous
-#ifndef NEW_INSETS
-		|| par->previous->footnoteflag == LyXParagraph::NO_FOOTNOTE
-#endif
-		){
-#ifndef NEW_INSETS
+	if (par->footnoteflag != LyXParagraph::NO_FOOTNOTE ||
+	    !par->previous_
+	    || par->previous()->footnoteflag == LyXParagraph::NO_FOOTNOTE) {
 		/* begins a footnote environment ? */ 
 		if (footnoteflag != par->footnoteflag) {
 			footnoteflag = par->footnoteflag;
@@ -1341,6 +1343,8 @@ string const Buffer::asciiParagraph(LyXParagraph const * par,
 				currlinelen += j;
 			}
 		}
+#else
+		if (!par->previous()) {
 #endif
 		/* begins or ends a deeper area ?*/ 
 		if (depth != par->params.depth()) {
@@ -1359,19 +1363,19 @@ string const Buffer::asciiParagraph(LyXParagraph const * par,
 		string const tmp = textclasslist.NameOfLayout(params.textclass, par->layout);
 		if (tmp == "Itemize") {
 			ltype = 1;
-			ltype_depth = depth+1;
+			ltype_depth = depth + 1;
 		} else if (tmp == "Enumerate") {
 			ltype = 2;
-			ltype_depth = depth+1;
+			ltype_depth = depth + 1;
 		} else if (strstr(tmp.c_str(), "ection")) {
 			ltype = 3;
-			ltype_depth = depth+1;
+			ltype_depth = depth + 1;
 		} else if (strstr(tmp.c_str(), "aragraph")) {
 			ltype = 4;
-			ltype_depth = depth+1;
+			ltype_depth = depth + 1;
 		} else if (tmp == "Description") {
 			ltype = 5;
-			ltype_depth = depth+1;
+			ltype_depth = depth + 1;
 		} else if (tmp == "Abstract") {
 			ltype = 6;
 			ltype_depth = 0;
@@ -1535,7 +1539,7 @@ void Buffer::writeFileAscii(ostream & ofs, int linelen)
 	LyXParagraph * par = paragraph;
 	while (par) {
 		ofs << asciiParagraph(par, linelen);
-		par = par->next;
+		par = par->next();
 	}
 	ofs << "\n";
 }
@@ -2244,9 +2248,11 @@ void Buffer::makeLinuxDocFile(string const & fname, bool nice, bool body_only)
 				string const temp = "toc";
 				sgmlOpenTag(ofs, depth, temp);
 
-				par = par->next;
 #ifndef NEW_INSETS
+				par = par->next_;
 				linuxDocHandleFootnote(ofs, par, depth);
+#else
+				par = par->next();
 #endif
 				continue;
 			}
@@ -2330,14 +2336,16 @@ void Buffer::makeLinuxDocFile(string const & fname, bool nice, bool body_only)
 
 #ifndef NEW_INSETS
 		do {
-#endif
 			SimpleLinuxDocOnePar(ofs, par, desc_on, depth);
-
-			par = par->next;
-#ifndef NEW_INSETS
+			
+			par = par->next_;
 			linuxDocHandleFootnote(ofs, par, depth);
 		}
 		while(par && par->IsDummy());
+#else
+			SimpleLinuxDocOnePar(ofs, par, desc_on, depth);
+
+			par = par->next();
 #endif
 
 		ofs << "\n";
@@ -2380,7 +2388,7 @@ void Buffer::linuxDocHandleFootnote(ostream & os, LyXParagraph * & par,
 		sgmlOpenTag(os, depth + 1, tag);
 		SimpleLinuxDocOnePar(os, par, 0, depth + 1);
 		sgmlCloseTag(os, depth + 1, tag);
-		par = par->next;
+		par = par->next_;
 	}
 }
 #endif
@@ -2391,13 +2399,18 @@ void Buffer::DocBookHandleCaption(ostream & os, string & inner_tag,
 				  LyXParagraph * & par)
 {
 	LyXParagraph * tpar = par;
-	while (tpar
 #ifndef NEW_INSETS
+	while (tpar
 	       && (tpar->footnoteflag != LyXParagraph::NO_FOOTNOTE)
-#endif
 	       && (tpar->layout != textclasslist.NumberOfLayout(params.textclass,
 							     "Caption").second))
-		tpar = tpar->next;
+		tpar = tpar->next_;
+#else
+	while (tpar
+	       && (tpar->layout != textclasslist.NumberOfLayout(params.textclass,
+								"Caption").second))
+		tpar = tpar->next();
+#endif
 	if (tpar &&
 	    tpar->layout == textclasslist.NumberOfLayout(params.textclass,
 							 "Caption").second) {
@@ -2502,7 +2515,7 @@ void Buffer::DocBookHandleFootnote(ostream & os, LyXParagraph * & par,
 		tmp_par = frontStrip(strip(tmp_par));
 
 		last = present;
-		par = par->next;
+		par = par->next_;
 	}
 	os << tmp_par;
 	if (!inner_tag.empty()) sgmlCloseTag(os, depth + 1, inner_tag);
@@ -3039,16 +3052,18 @@ void Buffer::makeDocBookFile(string const & fname, bool nice, bool only_body)
 
 #ifndef NEW_INSETS
 		do {
-#endif
 			string extra_par;
 			SimpleDocBookOnePar(ofs, extra_par, par, desc_on,
 					    depth + 1 + command_depth);
-			par = par->next;
-#ifndef NEW_INSETS
+			par = par->next_;
 			DocBookHandleFootnote(ofs, par,
 					      depth + 1 + command_depth);
-		}
-		while(par && par->IsDummy());
+		} while(par && par->IsDummy());
+#else
+		string extra_par;
+		SimpleDocBookOnePar(ofs, extra_par, par, desc_on,
+				    depth + 1 + command_depth);
+		par = par->next();
 #endif
 		string end_tag;
 		// write closing SGML tags
@@ -3296,7 +3311,11 @@ void Buffer::validate(LaTeXFeatures & features) const
 		par->validate(features);
 
 		// and then the next paragraph
-		par = par->next;
+#ifndef NEW_INSETS
+		par = par->next_;
+#else
+		par = par->next();
+#endif
 	}
 
 	// the bullet shapes are buffer level not paragraph level
@@ -3458,8 +3477,10 @@ vector<vector<Buffer::TocItem> > const Buffer::getTocList() const
 			}
 #ifndef NEW_INSETS
 		}
+		par = par->next_;
+#else
+		par = par->next();
 #endif
-		par = par->next;
 	}
 	return l;
 }
@@ -3482,7 +3503,11 @@ vector<pair<string,string> > const Buffer::getBibkeyList()
 		if (par->bibkey)
 			keys.push_back(pair<string, string>(par->bibkey->getContents(),
 							   par->String(this, false)));
-		par = par->next;
+#ifndef NEW_INSETS
+		par = par->next_;
+#else
+		par = par->next();
+#endif
 	}
 
 	// Might be either using bibtex or a child has bibliography
@@ -3577,10 +3602,17 @@ void Buffer::resizeInsets(BufferView * bv)
 {
 	/// then remove all LyXText in text-insets
 	LyXParagraph * par = paragraph;
-	for (; par; par = par->next) {
+#ifndef NEW_INSETS
+	for (; par; par = par->next_) {
 	    par->resizeInsetsLyXText(bv);
 	}
+#else
+	for (; par; par = par->next()) {
+	    par->resizeInsetsLyXText(bv);
+	}
+#endif
 }
+
 
 void Buffer::ChangeLanguage(Language const * from, Language const * to)
 {
@@ -3588,7 +3620,11 @@ void Buffer::ChangeLanguage(Language const * from, Language const * to)
 	LyXParagraph * par = paragraph;
 	while (par) {
 		par->ChangeLanguage(params, from, to);
-		par = par->next;
+#ifndef NEW_INSETS
+		par = par->next_;
+#else
+		par = par->next();
+#endif
 	}
 }
 
@@ -3599,7 +3635,11 @@ bool Buffer::isMultiLingual()
 	while (par) {
 		if (par->isMultiLingual(params))
 			return true;
-		par = par->next;
+#ifndef NEW_INSETS
+		par = par->next_;
+#else
+		par = par->next();
+#endif
 	}
 	return false;
 }
@@ -3611,7 +3651,11 @@ Buffer::inset_iterator::inset_iterator(LyXParagraph * paragraph,
 {
 	it = par->InsetIterator(pos);
 	if (it == par->inset_iterator_end()) {
-		par = par->next;
+#ifndef NEW_INSETS
+		par = par->next_;
+#else
+		par = par->next();
+#endif
 		SetParagraph();
 	}
 }
@@ -3623,7 +3667,11 @@ void Buffer::inset_iterator::SetParagraph()
 		it = par->inset_iterator_begin();
 		if (it != par->inset_iterator_end())
 			return;
-		par = par->next;
+#ifndef NEW_INSETS
+		par = par->next_;
+#else
+		par = par->next();
+#endif
 	}
 	//it = 0;
 	// We maintain an invariant that whenever par = 0 then it = 0

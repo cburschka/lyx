@@ -120,13 +120,23 @@ InsetText::~InsetText()
 	delete (*cit).second;
 	(*cit).second = 0;
     }
-    LyXParagraph * p = par->next;
+#ifndef NEW_INSETS
+    LyXParagraph * p = par->next_;
     delete par;
     while(p) {
 	par = p;
-	p = p->next;
+	p = p->next_;
 	delete par;
     }
+#else
+    LyXParagraph * p = par->next();
+    delete par;
+    while(p) {
+	par = p;
+	p = p->next();
+	delete par;
+    }
+#endif
 }
 
 
@@ -138,13 +148,23 @@ void InsetText::clear()
 	delete (*cit).second;
 	(*cit).second = 0;
     }
-    LyXParagraph * p = par->next;
+#ifndef NEW_INSETS
+    LyXParagraph * p = par->next_;
     delete par;
     while(p) {
 	par = p;
-	p = p->next;
+	p = p->next_;
 	delete par;
     }
+#else
+    LyXParagraph * p = par->next();
+    delete par;
+    while(p) {
+	par = p;
+	p = p->next();
+	delete par;
+    }
+#endif
     par = new LyXParagraph();
 }
 
@@ -188,13 +208,23 @@ void InsetText::Read(Buffer const * buf, LyXLex & lex)
 	(*cit).second = 0;
     }
 
-    LyXParagraph * p = par->next;
+#ifndef NEW_INSETS
+    LyXParagraph * p = par->next_;
     delete par;
     while(p) {
 	par = p;
-	p = p->next;
+	p = p->next_;
 	delete par;
     }
+#else
+    LyXParagraph * p = par->next();
+    delete par;
+    while(p) {
+	par = p;
+	p = p->next();
+	delete par;
+    }
+#endif
     par = new LyXParagraph;
     while (lex.IsOK()) {
         lex.nextToken();
@@ -221,7 +251,11 @@ void InsetText::Read(Buffer const * buf, LyXLex & lex)
     par = return_par;
     while(return_par) {
 	return_par->SetInsetOwner(this);
-	return_par = return_par->next;
+#ifndef NEW_INSETS
+	return_par = return_par->next_;
+#else
+	return_par = return_par->next();
+#endif
     }
     
     if (token != "\\end_inset") {
@@ -512,7 +546,11 @@ void InsetText::Edit(BufferView * bv, int x, int y, unsigned int button)
 
     // If the inset is empty set the language of the current font to the
     // language to the surronding text.
-    if (par->Last() == 0 && !par->next) {
+#ifndef NEW_INSETS
+    if (par->Last() == 0 && !par->next_) {
+#else#
+    if (par->Last() == 0 && !par->next()) {
+#endif
 	LyXFont font(LyXFont::ALL_IGNORE);
 	font.setLanguage(bv->getParentLanguage(this));
 	SetFont(bv, font, false);
@@ -810,11 +848,11 @@ InsetText::LocalDispatch(BufferView * bv,
 
 	    bv->text->SetUndo(bv->buffer(), Undo::INSERT,
 #ifndef NEW_INSETS
-			      bv->text->cursor.par()->ParFromPos(bv->text->cursor.pos())->previous,
-			      bv->text->cursor.par()->ParFromPos(bv->text->cursor.pos())->next
+			      bv->text->cursor.par()->ParFromPos(bv->text->cursor.pos())->previous_,
+			      bv->text->cursor.par()->ParFromPos(bv->text->cursor.pos())->next_
 #else
-			      bv->text->cursor.par()->previous,
-			      bv->text->cursor.par()->next
+			      bv->text->cursor.par()->previous(),
+			      bv->text->cursor.par()->next()
 #endif
 		    );
 	    bv->setState();
@@ -897,11 +935,11 @@ InsetText::LocalDispatch(BufferView * bv,
     case LFUN_BACKSPACE:
 	bv->text->SetUndo(bv->buffer(), Undo::DELETE,
 #ifndef NEW_INSETS
-	  bv->text->cursor.par()->ParFromPos(bv->text->cursor.pos())->previous,
-	  bv->text->cursor.par()->ParFromPos(bv->text->cursor.pos())->next
+	  bv->text->cursor.par()->ParFromPos(bv->text->cursor.pos())->previous_,
+			  bv->text->cursor.par()->ParFromPos(bv->text->cursor.pos())->next_
 #else
-	  bv->text->cursor.par()->previous,
-	  bv->text->cursor.par()->next
+	  bv->text->cursor.par()->previous(),
+	  bv->text->cursor.par()->next()
 #endif
 		);
 	if (TEXT(bv)->selection)
@@ -913,11 +951,11 @@ InsetText::LocalDispatch(BufferView * bv,
     case LFUN_DELETE:
 	bv->text->SetUndo(bv->buffer(), Undo::DELETE,
 #ifndef NEW_INSETS
-	  bv->text->cursor.par()->ParFromPos(bv->text->cursor.pos())->previous,
-	  bv->text->cursor.par()->ParFromPos(bv->text->cursor.pos())->next
+	  bv->text->cursor.par()->ParFromPos(bv->text->cursor.pos())->previous_,
+			  bv->text->cursor.par()->ParFromPos(bv->text->cursor.pos())->next_
 #else
-	  bv->text->cursor.par()->previous,
-	  bv->text->cursor.par()->next
+	  bv->text->cursor.par()->previous(),
+	  bv->text->cursor.par()->next()
 #endif
 		);
 	if (TEXT(bv)->selection)
@@ -929,11 +967,11 @@ InsetText::LocalDispatch(BufferView * bv,
     case LFUN_CUT:
 	bv->text->SetUndo(bv->buffer(), Undo::DELETE,
 #ifndef NEW_INSETS
-	  bv->text->cursor.par()->ParFromPos(bv->text->cursor.pos())->previous,
-	  bv->text->cursor.par()->ParFromPos(bv->text->cursor.pos())->next
+	  bv->text->cursor.par()->ParFromPos(bv->text->cursor.pos())->previous_,
+			  bv->text->cursor.par()->ParFromPos(bv->text->cursor.pos())->next_
 #else
-	  bv->text->cursor.par()->previous,
-	  bv->text->cursor.par()->next
+	  bv->text->cursor.par()->previous(),
+	  bv->text->cursor.par()->next()
 #endif
 		);
 	TEXT(bv)->CutSelection(bv);
@@ -971,11 +1009,11 @@ InsetText::LocalDispatch(BufferView * bv,
 	}
 	bv->text->SetUndo(bv->buffer(), Undo::INSERT,
 #ifndef NEW_INSETS
-	  bv->text->cursor.par()->ParFromPos(bv->text->cursor.pos())->previous,
-	  bv->text->cursor.par()->ParFromPos(bv->text->cursor.pos())->next
+	  bv->text->cursor.par()->ParFromPos(bv->text->cursor.pos())->previous_,
+	  bv->text->cursor.par()->ParFromPos(bv->text->cursor.pos())->next_
 #else
-	  bv->text->cursor.par()->previous,
-	  bv->text->cursor.par()->next
+	  bv->text->cursor.par()->previous(),
+	  bv->text->cursor.par()->next()
 #endif
 		);
 	TEXT(bv)->PasteSelection(bv);
@@ -998,11 +1036,11 @@ InsetText::LocalDispatch(BufferView * bv,
 	    return DISPATCHED;
 	bv->text->SetUndo(bv->buffer(), Undo::INSERT,
 #ifndef NEW_INSETS
-	    bv->text->cursor.par()->ParFromPos(bv->text->cursor.pos())->previous,
-	    bv->text->cursor.par()->ParFromPos(bv->text->cursor.pos())->next
+	    bv->text->cursor.par()->ParFromPos(bv->text->cursor.pos())->previous_,
+	    bv->text->cursor.par()->ParFromPos(bv->text->cursor.pos())->next_
 #else
-	    bv->text->cursor.par()->previous,
-	    bv->text->cursor.par()->next
+	    bv->text->cursor.par()->previous(),
+	    bv->text->cursor.par()->next()
 #endif
 		);
 	TEXT(bv)->InsertChar(bv, LyXParagraph::META_NEWLINE);
@@ -1103,7 +1141,11 @@ InsetText::LocalDispatch(BufferView * bv,
 
     /// If the action has deleted all text in the inset, we need to change the
     // language to the language to the surronding text.
-    if (par->Last() == 0 && !par->next) {
+#ifndef NEW_INSETS
+    if (par->Last() == 0 && !par->next_) {
+#else
+    if (par->Last() == 0 && !par->next()) {
+#endif
 	LyXFont font(LyXFont::ALL_IGNORE);
 	font.setLanguage(bv->getParentLanguage(this));
 	SetFont(bv, font, false);
@@ -1135,7 +1177,11 @@ int InsetText::Ascii(Buffer const * buf, ostream & os, int linelen) const
 	tmp = buf->asciiParagraph(p, linelen);
 	lines += countChar(tmp, '\n');
 	os << tmp;
-	p = p->next;
+#ifndef NEW_INSETS
+	p = p->next();
+#else
+	p = p->next();
+#endif
     }
     return lines;
 }
@@ -1150,7 +1196,11 @@ int InsetText::DocBook(Buffer const * buf, ostream & os) const
     string tmp;
     while (p) {
 	buf->SimpleDocBookOnePar(os,tmp,p,desc,0);
-	p = p->next;
+#ifndef NEW_INSETS
+	p = p->next_;
+#else
+	p = p->next();
+#endif
     }
     
     return lines;
@@ -1162,7 +1212,11 @@ void InsetText::Validate(LaTeXFeatures & features) const
     LyXParagraph * p = par;
     while(p) {
 	p->validate(features);
-	p = p->next;
+#ifndef NEW_INSETS
+	p = p->next_;
+#else
+	p = p->next();
+#endif
     }
 }
 
@@ -1268,7 +1322,11 @@ UpdatableInset::RESULT
 InsetText::moveRightIntern(BufferView * bv, bool behind, 
 			   bool activate_inset, bool selecting)
 {
-    if (!cpar(bv)->next && (cpos(bv) >= cpar(bv)->Last()))
+#ifndef NEW_INSETS
+    if (!cpar(bv)->next_ && (cpos(bv) >= cpar(bv)->Last()))
+#else
+    if (!cpar(bv)->next() && (cpos(bv) >= cpar(bv)->Last()))
+#endif
 	return FINISHED;
     if (activate_inset && checkAndActivateInset(bv, behind))
 	return DISPATCHED;
@@ -1283,7 +1341,11 @@ UpdatableInset::RESULT
 InsetText::moveLeftIntern(BufferView * bv, bool behind,
 			  bool activate_inset, bool selecting)
 {
-    if (!cpar(bv)->previous && (cpos(bv) <= 0))
+#ifndef NEW_INSETS
+    if (!cpar(bv)->previous_ && (cpos(bv) <= 0))
+#else
+    if (!cpar(bv)->previous() && (cpos(bv) <= 0))
+#endif
 	return FINISHED;
     TEXT(bv)->CursorLeft(bv);
     if (!selecting)
@@ -1323,11 +1385,11 @@ bool InsetText::InsertInset(BufferView * bv, Inset * inset)
     }
     bv->text->SetUndo(bv->buffer(), Undo::INSERT,
 #ifndef NEW_INSETS
-	      bv->text->cursor.par()->ParFromPos(bv->text->cursor.pos())->previous,
-	      bv->text->cursor.par()->ParFromPos(bv->text->cursor.pos())->next
+	      bv->text->cursor.par()->ParFromPos(bv->text->cursor.pos())->previous_,
+	      bv->text->cursor.par()->ParFromPos(bv->text->cursor.pos())->next_
 #else
-	      bv->text->cursor.par()->previous,
-	      bv->text->cursor.par()->next
+	      bv->text->cursor.par()->previous(),
+	      bv->text->cursor.par()->next()
 #endif
 	    );
     inset->setOwner(this);
@@ -1366,11 +1428,11 @@ void InsetText::SetFont(BufferView * bv, LyXFont const & font, bool toggleall)
     if (TEXT(bv)->selection) {
 	bv->text->SetUndo(bv->buffer(), Undo::EDIT,
 #ifndef NEW_INSETS
-			  bv->text->cursor.par()->ParFromPos(bv->text->cursor.pos())->previous,
-			  bv->text->cursor.par()->ParFromPos(bv->text->cursor.pos())->next
+			  bv->text->cursor.par()->ParFromPos(bv->text->cursor.pos())->previous_,
+			  bv->text->cursor.par()->ParFromPos(bv->text->cursor.pos())->next_
 #else
-			  bv->text->cursor.par()->previous,
-			  bv->text->cursor.par()->next
+			  bv->text->cursor.par()->previous(),
+			  bv->text->cursor.par()->next()
 #endif
 	    );
     }
@@ -1450,7 +1512,7 @@ int InsetText::getMaxWidth(Painter & pain, UpdatableInset const * inset) const
 }
 
 
-void InsetText::SetParagraphData(LyXParagraph *p)
+void InsetText::SetParagraphData(LyXParagraph * p)
 {
     // delete all instances of LyXText before deleting the paragraps used
     // by it.
@@ -1459,26 +1521,49 @@ void InsetText::SetParagraphData(LyXParagraph *p)
 	(*cit).second = 0;
     }
 
+#ifndef NEW_INSETS
     LyXParagraph * np;
     if (par) {
-	np = par->next;
+	np = par->next_;
 	delete par;
-	while(np) {
+	while (np) {
 	    par = np;
-	    np = np->next;
+	    np = np->next_;
 	    delete par;
 	}
     }
     par = p->Clone();
     par->SetInsetOwner(this);
     np = par;
-    while(p->next) {
-	p = p->next;
-	np->next = p->Clone();
-	np->next->previous = np;
-	np = np->next;
+    while (p->next_) {
+	p = p->next_;
+	np->next(p->Clone());
+	np->next_->previous(np);
+	np = np->next_;
 	np->SetInsetOwner(this);
     }
+#else
+    LyXParagraph * np;
+    if (par) {
+	np = par->next();
+	delete par;
+	while(np) {
+	    par = np;
+	    np = np->next();
+	    delete par;
+	}
+    }
+    par = p->Clone();
+    par->SetInsetOwner(this);
+    np = par;
+    while(p->next()) {
+	p = p->next();
+	np->next(p->Clone());
+	np->next()->previous(np);
+	np = np->next();
+	np->SetInsetOwner(this);
+    }
+#endif
     need_update = INIT;
 }
 
@@ -1605,16 +1690,26 @@ void InsetText::deleteLyXText(BufferView * bv, bool recursive) const
     if (recursive) {
 	/// then remove all LyXText in text-insets
 	LyXParagraph * p = par;
-	for (;p;p = p->next) {
+#ifndef NEW_INSETS
+	for (; p; p = p->next_) {
 	    p->deleteInsetsLyXText(bv);
 	}
+#else
+	for (; p; p = p->next()) {
+	    p->deleteInsetsLyXText(bv);
+	}
+#endif
     }
 }
 
 
 void InsetText::resizeLyXText(BufferView * bv) const
 {
-    if (!par->next && !par->size()) // resize not neccessary!
+#ifndef NEW_INSETS
+    if (!par->next_ && !par->size()) // resize not neccessary!
+#else
+    if (!par->next() && !par->size()) // resize not neccessary!
+#endif
 	return;
     if ((cache.find(bv) == cache.end()) || !cache[bv])
 	return;
@@ -1675,9 +1770,15 @@ void InsetText::resizeLyXText(BufferView * bv) const
 	/// then resize all LyXText in text-insets
 	inset_x = cx(bv) - top_x + drawTextXOffset;
 	inset_y = cy(bv) + drawTextYOffset;
-	for (LyXParagraph * p = par; p; p = p->next) {
+#ifndef NEW_INSETS
+	for (LyXParagraph * p = par; p; p = p->next_) {
 	    p->resizeInsetsLyXText(bv);
 	}
+#else
+	for (LyXParagraph * p = par; p; p = p->next()) {
+	    p->resizeInsetsLyXText(bv);
+	}
+#endif
     }
     need_update = FULL;
 }
@@ -1685,7 +1786,11 @@ void InsetText::resizeLyXText(BufferView * bv) const
 
 void InsetText::removeNewlines()
 {
-    for (LyXParagraph * p = par; p; p = p->next) {
+#ifndef NEW_INSETS
+    for (LyXParagraph * p = par; p; p = p->next_) {
+#else
+    for (LyXParagraph * p = par; p; p = p->next()) {
+#endif
 	for (int i = 0; i < p->Last(); ++i) {
 	    if (p->GetChar(i) == LyXParagraph::META_NEWLINE)
 		p->Erase(i);

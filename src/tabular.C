@@ -2541,11 +2541,12 @@ void LyXTabular::Validate(LaTeXFeatures & features) const
 }
 
 
+#ifndef NEW_INSETS
 LyXTabular::BoxType LyXTabular::UseParbox(int cell) const
 {
     LyXParagraph * par = GetCellInset(cell)->par;
 
-    for (; par; par = par->next) {
+    for (; par; par = par->next_) {
 	for (int i = 0; i < par->Last(); ++i) {
 	    if (par->GetChar(i)	== LyXParagraph::META_NEWLINE)
 		return BOX_PARBOX;
@@ -2553,3 +2554,17 @@ LyXTabular::BoxType LyXTabular::UseParbox(int cell) const
     }
     return BOX_NONE;
 }
+#else
+LyXTabular::BoxType LyXTabular::UseParbox(int cell) const
+{
+    LyXParagraph * par = GetCellInset(cell)->par;
+
+    for (; par; par = par->next()) {
+	for (int i = 0; i < par->Last(); ++i) {
+	    if (par->GetChar(i)	== LyXParagraph::META_NEWLINE)
+		return BOX_PARBOX;
+	}
+    }
+    return BOX_NONE;
+}
+#endif

@@ -105,26 +105,35 @@ bool BufferView::removeAutoInsets()
 	LyXCursor cursor;
 
 	bool a = false;
+#ifndef NEW_INSETS
 	while (par) {
 		// this has to be done before the delete
-#ifndef NEW_INSETS
 		if (par->footnoteflag != LyXParagraph::CLOSED_FOOTNOTE)
-#endif
 			text->SetCursor(this, cursor, par, 0);
 		if (par->AutoDeleteInsets()){
 			a = true;
-#ifndef NEW_INSETS
 			if (par->footnoteflag != LyXParagraph::CLOSED_FOOTNOTE){
-#endif
 				text->RedoParagraphs(this, cursor,
-						     cursor.par()->Next());
+						     cursor.par()->next());
 				text->FullRebreak(this);
-#ifndef NEW_INSETS
 			}
-#endif
 		}
-		par = par->next;
+		par = par->next_;
 	}
+#else
+	while (par) {
+		// this has to be done before the delete
+		text->SetCursor(this, cursor, par, 0);
+		if (par->AutoDeleteInsets()){
+			a = true;
+			text->RedoParagraphs(this, cursor,
+					     cursor.par()->next());
+			text->FullRebreak(this);
+		}
+		par = par->next();
+	}
+#endif
+
 	// avoid forbidden cursor positions caused by error removing
 	if (tmpcursor.pos() > tmpcursor.par()->Last())
 		tmpcursor.pos(tmpcursor.par()->Last());
@@ -347,11 +356,11 @@ void BufferView::allFloats(char flag, char figmar)
 					)
 				    )
 				) {
-				if (par->previous
-				    && par->previous->footnoteflag != 
+				if (par->previous_
+				    && par->previous_->footnoteflag != 
 				    LyXParagraph::CLOSED_FOOTNOTE){ /* should be */ 
 					text->SetCursorIntern(this, 
-							      par->previous,
+							      par->previous_,
 							      0);
 					text->OpenFootnote(this);
 				}
@@ -384,7 +393,7 @@ void BufferView::allFloats(char flag, char figmar)
 				text->CloseFootnote(this);
 			}
 		}
-		par = par->next;
+		par = par->next_;
 	}
 
 	text->SetCursorIntern(this, cursor.par(), cursor.pos());
@@ -821,17 +830,17 @@ void BufferView::lockedInsetStoreUndo(Undo::undo_kind kind)
 		return; // shouldn't happen
 	if (kind == Undo::EDIT) // in this case insets would not be stored!
 		kind = Undo::FINISH;
-	text->SetUndo(buffer(), kind,
 #ifndef NEW_INSETS
+	text->SetUndo(buffer(), kind,
 		      text->cursor.par()->
-		      ParFromPos(text->cursor.pos())->previous, 
+		      ParFromPos(text->cursor.pos())->previous_, 
 		      text->cursor.par()->
-		      ParFromPos(text->cursor.pos())->next
+		      ParFromPos(text->cursor.pos())->next_);
 #else
-		      text->cursor.par()->previous, 
-		      text->cursor.par()->next
+	text->SetUndo(buffer(), kind,
+		      text->cursor.par()->previous(), 
+		      text->cursor.par()->next());
 #endif
-		);
 }
 
 
@@ -910,22 +919,31 @@ bool BufferView::ChangeInsets(Inset::Code code, string const & from, string cons
 				}
 			}
 		}
+#ifndef NEW_INSETS
 		if (flag2) {
 			flag = true;
-#ifndef NEW_INSETS
 			if (par->footnoteflag != LyXParagraph::CLOSED_FOOTNOTE){
-#endif
 				// this is possible now, since SetCursor takes
 				// care about footnotes
 				text->SetCursorIntern(this, par, 0);
 				text->RedoParagraphs(this, text->cursor,
-						     text->cursor.par()->Next());
+						     text->cursor.par()->next());
 				text->FullRebreak(this);
-#ifndef NEW_INSETS
 			}
-#endif
 		}
-		par = par->next;
+		par = par->next_;
+#else
+		if (flag2) {
+			flag = true;
+			// this is possible now, since SetCursor takes
+			// care about footnotes
+			text->SetCursorIntern(this, par, 0);
+			text->RedoParagraphs(this, text->cursor,
+					     text->cursor.par()->next());
+			text->FullRebreak(this);
+		}
+		par = par->next();
+#endif
 	}
 	text->SetCursorIntern(this, cursor.par(), cursor.pos());
 	return flag;

@@ -152,7 +152,7 @@ bool SearchForward(BufferView * bv, string const & str,
 			++pos;
 		else {
 			pos = 0;
-			par = par->Next();
+			par = par->next();
 		}
 	}
 	if (par) {
@@ -179,7 +179,7 @@ bool SearchBackward(BufferView * bv, string const & str,
 		else {
 			// We skip empty paragraphs (Asger)
 			do {
-				par = par->Previous();
+				par = par->previous();
 				if (par)
 					pos = par->Last() - 1;
 			} while (par && pos < 0);

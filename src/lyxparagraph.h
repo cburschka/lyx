@@ -261,23 +261,31 @@ public:
 	
 	///
 	char itemdepth;
-
+#ifdef NEW_INSETS
+private:
+#endif
 	///
-	LyXParagraph * next;
+	LyXParagraph * next_;
 	///
-	LyXParagraph * previous;
-
+	LyXParagraph * previous_;
+public:
         /// 
         InsetBibKey * bibkey;  // ale970302
 
+	///
+	void next(LyXParagraph *);
 	/** these function are able to hide closed footnotes
 	 */
-	LyXParagraph * Next();
-	
+	LyXParagraph * next();
 	///
-	LyXParagraph * Previous();
+	LyXParagraph const * next() const;
+
 	///
-	LyXParagraph const * Previous() const;
+	void previous(LyXParagraph *);
+	///
+	LyXParagraph * previous();
+	///
+	LyXParagraph const * previous() const;
 
 #ifndef NEW_INSETS
 	/** these function are able to hide open and closed footnotes

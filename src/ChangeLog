@@ -1,3 +1,11 @@
+2001-03-09  Lars Gullik Bjønnes  <larsbj@trylle.birdstep.com>
+
+	* lyxparagraph.h: rename next to next_, previous to previous_,
+	make them private for NEW_INSETS. Rename Next() to next(),
+	Previous() to previous().
+
+	* other files: changes because of the above.
+
 2001-03-08  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* BufferView.h: 

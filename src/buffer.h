@@ -414,7 +414,11 @@ public:
 			if (par) {
 				++it;
 				if (it == par->inset_iterator_end()) {
-					par = par->next;
+#ifndef NEW_INSETS
+					par = par->next_;
+#else
+					par = par->next();
+#endif
 					SetParagraph();
 				}
 			}
@@ -426,7 +430,11 @@ public:
 			if (par) {
 				++it;
 				if (it == par->inset_iterator_end()) {
-					par = par->next;
+#ifndef NEW_INSETS
+					par = par->next_;
+#else
+					par = par->next();
+#endif
 					SetParagraph();
 				}
 			}

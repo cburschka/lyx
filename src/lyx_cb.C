@@ -497,11 +497,12 @@ void MenuInsertLabel(BufferView * bv, string const & arg)
 			&textclasslist.Style(bv->buffer()->params.textclass,
 					     par->GetLayout());
 
-		if (layout->latextype == LATEX_PARAGRAPH && par->previous) {
 #ifndef NEW_INSETS
-			LyXParagraph * par2 = par->previous->FirstPhysicalPar();
+		if (layout->latextype == LATEX_PARAGRAPH && par->previous_) {
+			LyXParagraph * par2 = par->previous_->FirstPhysicalPar();
 #else
-			LyXParagraph * par2 = par->previous;
+		if (layout->latextype == LATEX_PARAGRAPH && par->previous()) {
+			LyXParagraph * par2 = par->previous();
 #endif
 			LyXLayout const * layout2 =
 				&textclasslist.Style(bv->buffer()->params.textclass,
