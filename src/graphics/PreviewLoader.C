@@ -40,13 +40,38 @@
 #include <map>
 
 using std::endl;
-using std::ofstream;
-using std::ostream;
+using std::find_if;
 using std::setfill;
 using std::setw;
+using std::sort;
 
+using std::map;
+using std::ofstream;
+using std::ostream;
+using std::pair;
+using std::vector;
 
 namespace {
+
+typedef pair<string, string> StrPair;
+
+struct CompSecond {
+	bool operator()(StrPair const & lhs, StrPair const & rhs)
+	{
+		return lhs.second < rhs.second;
+	}
+};
+
+struct FindFirst {
+	FindFirst(string const & comp) : comp_(comp) {}
+	bool operator()(StrPair const & sp)
+	{
+		return sp.first < comp_;
+	}
+private:
+	string const comp_;
+};
+
 
 string const unique_filename()
 {
@@ -84,54 +109,63 @@ struct PreviewLoader::Impl : public boost::signals::trackable {
 	///
 	void startLoading();
 
+	///
+	typedef pair<string, string> StrPair;
+	///
+	typedef map<string, string> PendingMap;
+
 private:
 	/// Called by the Forkedcall process that generated the bitmap files.
 	void finishedGenerating(string const &, pid_t, int);
 	///
 	void dumpPreamble(ostream &) const;
 	///
-	void dumpData(ostream &) const;
+	void dumpData(ostream &, vector<StrPair> const &) const;
 
 	///
 	static void setConverter();
 	/// We don't own this
 	static Converter const * pconverter_;
 
-	/** The cache allows easy retrieval of already-generated images
+	/** cache_ allows easy retrieval of already-generated images
 	 *  using the LaTeX snippet as the identifier.
 	 */
 	typedef boost::shared_ptr<PreviewImage> PreviewImagePtr;
 	///
-	typedef std::map<string, PreviewImagePtr> Cache;
+	typedef map<string, PreviewImagePtr> Cache;
 	///
 	Cache cache_;
 
-	/** The map stores the LaTeX snippet and the name of the generated
-	 *  bitmap image file.
+	/** pending_ stores the LaTeX snippet and the name of the generated
+	 *  bitmap image file in anticipation of them being sent to the
+	 *  converter.
 	 */
-	typedef std::map<string, string> PendingMap;
-	///
 	PendingMap pending_;
 
 	/// Store info on a currently executing, forked process.
 	struct InProgress {
 		///
-		typedef std::map<string, string> PendingMap;
-		///
 		InProgress() {}
 		///
-		InProgress(string const & mf, PendingMap const & s)
-			: metrics_file(mf), snippets(s)
-		{}
+		InProgress(string const & f, PendingMap const & m)
+			: metrics_file(f), snippets(m.begin(), m.end())
+		{
+			sort(snippets.begin(), snippets.end(), CompSecond());
+		}
+		
 		///
 		string metrics_file;
-		///
-		PendingMap snippets;
+
+		/** Store the info in the PendingMap as a vector.
+		    Ensures that the data is output in the order
+		    file001, file002 etc, as we expect, which is /not/ what
+		    happens when we iterate through the map.
+		 */
+		vector<StrPair> snippets;
 	};
-	friend class InProgress;
 	
 	/// Store all forked processes so that we can proceed thereafter.
-	typedef std::map<string, InProgress> InProgressMap;
+	typedef map<string, InProgress> InProgressMap;
 	///
 	InProgressMap in_progress_;
 
@@ -142,7 +176,6 @@ private:
 	///
 	Buffer const & buffer_;
 };
-
 
 Converter const * PreviewLoader::Impl::pconverter_;
 
@@ -245,13 +278,16 @@ PreviewLoader::Impl::status(string const & latex_snippet) const
 	if (pit != pending_.end())
 		return PreviewLoader::InQueue;
 
-	InProgressMap::const_iterator git  = in_progress_.begin();
-	InProgressMap::const_iterator gend = in_progress_.end();
+	InProgressMap::const_iterator ipit  = in_progress_.begin();
+	InProgressMap::const_iterator ipend = in_progress_.end();
 
-	for (; git != gend; ++git) {
-		PendingMap::const_iterator pit =
-			git->second.snippets.find(latex_snippet);
-		if (pit != git->second.snippets.end())
+	for (; ipit != ipend; ++ipit) {
+		vector<StrPair> const & snippets = ipit->second.snippets;
+		vector<StrPair>::const_iterator vit  = snippets.begin();
+		vector<StrPair>::const_iterator vend = snippets.end();
+		vit = find_if(vit, vend, FindFirst(latex_snippet));
+		
+		if (vit != vend)
 			return PreviewLoader::Processing;
 	}
 
@@ -296,19 +332,22 @@ void PreviewLoader::Impl::remove(string const & latex_snippet)
 	if (pit != pending_.end())
 		pending_.erase(pit);
 
-	InProgressMap::iterator git  = in_progress_.begin();
-	InProgressMap::iterator gend = in_progress_.end();
+	InProgressMap::iterator ipit  = in_progress_.begin();
+	InProgressMap::iterator ipend = in_progress_.end();
 
-	while (git != gend) {
-		InProgressMap::iterator curr = git;
-		++git;
+	while (ipit != ipend) {
+		InProgressMap::iterator curr = ipit;
+		++ipit;
 
-		PendingMap::iterator pit =
-			curr->second.snippets.find(latex_snippet);
-		if (pit != curr->second.snippets.end())
-			curr->second.snippets.erase(pit);
+		vector<StrPair> & snippets = curr->second.snippets;
+		vector<StrPair>::iterator vit  = snippets.begin();
+		vector<StrPair>::iterator vend = snippets.end();
+		vit = find_if(vit, vend, FindFirst(latex_snippet));
+		
+		if (vit != vend)
+			snippets.erase(vit, vit+1);
 
-		if (curr->second.snippets.empty())
+		if (snippets.empty())
 			in_progress_.erase(curr);
 	}
 }
@@ -327,31 +366,32 @@ void PreviewLoader::Impl::startLoading()
 
 	lyxerr[Debug::GRAPHICS] << "PreviewLoader::startLoading()" << endl;
 
+	// Create an InProgress instance to place in the map of all
+	// such processes if it starts correctly.
+	string const metrics_file = filename_base_ + ".metrics";
+	InProgress inprogress(metrics_file, pending_);
+
 	// Output the LaTeX file.
 	string const latexfile = filename_base_ + ".tex";
 
 	ofstream of(latexfile.c_str());
 	dumpPreamble(of);
 	of << "\n\\begin{document}\n";
-	dumpData(of);
+	dumpData(of, inprogress.snippets);
 	of << "\n\\end{document}\n";
 	of.close();
+
+	// Reset the filename and clear pending_, so we're ready to
+	// start afresh.
+	pending_.clear();
+	filename_base_ = unique_filename();
 
 	// The conversion command.
 	ostringstream cs;
 	cs << pconverter_->command << " " << latexfile << " "
 	   << tostr(0.01 * lyxrc.dpi * lyxrc.zoom);
 
-	// Store the generation process in a list of all generating processes
-	// (I anticipate that this will be small!)
 	string const command = cs.str().c_str();
-	string const metrics_file = filename_base_ + ".metrics";
-	in_progress_[command] = InProgress(metrics_file, pending_);
-
-	// Reset the filename and clear the data, so we're ready to
-	// start afresh.
-	pending_.clear();
-	filename_base_ = unique_filename();
 
 	// Initiate the conversion from LaTeX to bitmap images files.
 	Forkedcall::SignalTypePtr convert_ptr;
@@ -364,14 +404,15 @@ void PreviewLoader::Impl::startLoading()
 	int ret = call.startscript(command, convert_ptr);
 
 	if (ret != 0) {
-		InProgressMap::iterator it = in_progress_.find(command);
-		if (it != in_progress_.end())
-			in_progress_.erase(it);
-		
 		lyxerr[Debug::GRAPHICS] << "PreviewLoader::startLoading()\n"
 					<< "Unable to start process \n"
 					<< command << endl;
+		return;
 	}
+	
+	// Store the generation process in a list of all generating processes
+	// (I anticipate that this will be small!)
+	in_progress_[command] = inprogress;
 }
 
 
@@ -398,8 +439,8 @@ void PreviewLoader::Impl::finishedGenerating(string const & command,
 	
 	// Add these newly generated bitmap files to the cache and
 	// start loading them into LyX.
-	PendingMap::const_iterator it  = git->second.snippets.begin();
-	PendingMap::const_iterator end = git->second.snippets.end();
+	vector<StrPair>::const_iterator it  = git->second.snippets.begin();
+	vector<StrPair>::const_iterator end = git->second.snippets.end();
 
 	int metrics_counter = 0;
 	for (; it != end; ++it) {
@@ -469,32 +510,14 @@ void PreviewLoader::Impl::dumpPreamble(ostream & os) const
 }
 
 
-namespace {
-
-typedef std::pair<string, string> StrPair;
-
-struct CompSecond {
-	bool operator()(StrPair const & lhs, StrPair const & rhs)
-	{
-		return lhs.second < rhs.second;
-	}
-};
-
-} // namespace anon
-
-
-void PreviewLoader::Impl::dumpData(ostream & os) const
+void PreviewLoader::Impl::dumpData(ostream & os, 
+				   vector<StrPair> const & vec) const
 {
-	if (pending_.empty())
+	if (vec.empty())
 		return;
 
-	// Sorting by image filename ensures that the snippets are put into
-	// the LaTeX file in the expected order.
-	std::vector<StrPair> vec(pending_.begin(), pending_.end());
-	std::sort(vec.begin(), vec.end(), CompSecond());
-	
-	std::vector<StrPair>::const_iterator it  = vec.begin();
-	std::vector<StrPair>::const_iterator end = vec.end();
+	vector<StrPair>::const_iterator it  = vec.begin();
+	vector<StrPair>::const_iterator end = vec.end();
 
 	for (; it != end; ++it) {
 		os << "\\begin{preview}\n"
