@@ -26,41 +26,19 @@
 using SigC::slot;
 
 ControlVCLog::ControlVCLog(LyXView & lv, Dialogs & d)
-	: ControlConnectBD(lv, d)
+	: ControlDialog<ControlConnectBD>(lv, d)
 {
 	d_.showVCLogFile.connect(slot(this, &ControlVCLog::show));
 }
 
 
-void ControlVCLog::show()
+void ControlVCLog::setParams()
 {
-	if (!lv_.view()->available())
-		return;
-
 	logfile_ = lv_.view()->buffer()->lyxvc.getLogFile();
-
-	bc().readOnly(isReadonly());
-	view().show();
 }
 
 
-void ControlVCLog::update()
-{
-	if (!lv_.view()->available())
-		return;
-
-	logfile_ = lv_.view()->buffer()->lyxvc.getLogFile();
-	
-	bc().readOnly(isReadonly());
-	view().update();
-
-	lyx::unlink(logfile_); 
-}
-
-
-void ControlVCLog::hide()
+void ControlVCLog::clearParams()
 {
 	logfile_.erase();
-	disconnect();
-	view().hide();
 }

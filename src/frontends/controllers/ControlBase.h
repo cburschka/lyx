@@ -1,4 +1,3 @@
-// -*- C++ -*-
 /* This file is part of
  * ====================================================== 
  *
@@ -11,11 +10,17 @@
  * \file ControlBase.h
  * \author Angus Leeming <a.leeming@ic.ac.uk>
  *
- * The Controller connects the GUI-dependent popup to any appropriate
+ * ControlBase serves only to control the activation of the Ok, Apply, Cancel
+ * and Restore buttons on the View popup.
+ *
+ * More generally, the class is part of a hierarchy of controller classes
+ * that together connect the GUI-dependent popup to any appropriate
  * signals and dispatches any changes to the kernel.
- * It has no knowledge of the actual instantiation of the
+ *
+ * These controllers have no knowledge of the actual instantiation of the
  * GUI-dependent View and ButtonController, which should therefore
  * be created elsewhere.
+ *
  * Once created, the Controller will take care of their initialisation,
  * management and, ultimately, destruction.
  */
@@ -30,8 +35,6 @@
 #include "DialogBase.h" // This can go eventually
 #include "ButtonController.h"
 
-class Dialogs;
-class LyXView;
 class ViewBase;
 
 /** Abstract base class for Controllers with a ButtonController.
@@ -40,7 +43,7 @@ class ControlBase : public DialogBase
 {
 public: // methods
 	///
-	ControlBase(LyXView & lv) : lv_(lv) {}
+	ControlBase() {}
 	///
 	virtual ~ControlBase() {};
 
@@ -53,9 +56,6 @@ public: // methods
 	void CancelButton();
 	///
 	void RestoreButton();
-
-	/// The View may need to know if the buffer is read-only.
-	bool isReadonly() const;
 
 	/** Allow the view to access the ButtonController. This method must be
 	    instantiated in a daughter class that creates the actual instance
@@ -74,9 +74,6 @@ protected:
 	    instantiated in a daughter class that creates the actual instance
 	    of the View. */
 	virtual ViewBase & view() = 0;
-	
-	/// Get at the kernel Dispatch methods we need to apply() parameters.
-	LyXView & lv_;
 };
 
 #include "ViewBase.h"

@@ -1,3 +1,17 @@
+2001-03-22  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* FormCopyright.[Ch]:
+	* forms/form_copyright.fd: implemented controller-view split.
+
+	* FormCredits.[Ch]:
+	* forms/form_credits.fd: implemented controller-view split.
+
+	* Dialogs.C: associated changes.
+
+	* xforms_helpers.C (formatted): improved the function so that it now
+	repects '\n' characters in the input string. Ie, the user can now
+	specify line breaks explicitly.
+
 2001-03-21  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* FormCharacter.[Ch]:
@@ -25,13 +39,6 @@
 	* FormLog.[Ch]:
 	* FormVCLog.[Ch]:
 	* forms/form_browser.fd: implemented controller-view split.
-
-	* Dialogs.C: associated changes.
-
-2001-03-19  Angus Leeming  <a.leeming@ic.ac.uk>
-
-	* FormBibtex.[Ch]:
-	* forms/form_bibtex.fd: implemented controller-view split.
 
 	* Dialogs.C: associated changes.
 

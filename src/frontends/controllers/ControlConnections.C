@@ -20,13 +20,13 @@
 
 #include "ControlConnections.h"
 #include "Dialogs.h"
-#include "insets/lyxinset.h"
+#include "LyXView.h"
+#include "buffer.h"
 
 using SigC::slot;
 
 ControlConnectBase::ControlConnectBase(LyXView & lv, Dialogs & d)
-	: ControlBase(lv),
-	  d_(d), h_(0), r_(0)
+	: lv_(lv), d_(d), h_(0), r_(0)
 {}
 
 
@@ -46,6 +46,15 @@ void ControlConnectBase::disconnect()
 void ControlConnectBase::redraw()
 {
 	view().redraw();
+}
+
+
+bool ControlConnectBase::isReadonly() const
+{
+	if (!lv_.buffer())
+		return true;
+
+	return lv_.buffer()->isReadonly();
 }
 
 

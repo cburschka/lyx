@@ -28,10 +28,15 @@ libcontrollers_la_SOURCES=\
 	ControlCommand.h \
 	ControlConnections.C \
 	ControlConnections.h \
+	ControlCopyright.C \
+	ControlCredits.h \
+	ControlCredits.C \
+	ControlCopyright.h \
 	ControlLog.C \
 	ControlLog.h \
 	ControlVCLog.C \
 	ControlVCLog.h \
+	GUI.h \
 	ViewBase.h \
 	helper_funcs.C \
 	helper_funcs.h

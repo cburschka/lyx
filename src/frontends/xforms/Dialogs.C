@@ -4,7 +4,7 @@
  *           LyX, The Document Processor
  *
  *           Copyright 1995 Matthias Ettrich
- *           Copyright 1995-2000 The LyX Team.
+ *           Copyright 1995-2001 The LyX Team.
  *
  * ======================================================
  */
@@ -23,25 +23,31 @@
 #include "ControlBibtex.h"
 #include "ControlCharacter.h"
 #include "ControlCitation.h"
+#include "ControlCopyright.h"
+#include "ControlCredits.h"
 #include "ControlLog.h"
 #include "ControlVCLog.h"
 
-#include "combox.h"       // needed for clean destructtion of boost::scoped ptr
+#include "GUI.h"
+
+#include "combox.h"       // needed for clean destruction of boost::scoped_ptr
 #include "form_bibitem.h"
 #include "form_bibtex.h"
 #include "form_browser.h"
 #include "form_character.h"
 #include "form_citation.h"
+#include "form_copyright.h"
+#include "form_credits.h"
 
 #include "FormBibitem.h"
 #include "FormBibtex.h"
 #include "FormCharacter.h"
 #include "FormCitation.h"
+#include "FormCopyright.h"
+#include "FormCredits.h"
 #include "FormLog.h"
 #include "FormVCLog.h"
 
-#include "FormCopyright.h"
-#include "FormCredits.h"
 #include "FormDocument.h"
 #include "FormError.h"
 #include "FormExternal.h" 
@@ -74,11 +80,11 @@ Dialogs::Dialogs(LyXView * lv)
 	add(new GUIBibtex<FormBibtex, xformsBC>(*lv, *this));
 	add(new GUICharacter<FormCharacter, xformsBC>(*lv, *this));
 	add(new GUICitation<FormCitation, xformsBC>(*lv, *this));
+	add(new GUICopyright<FormCopyright, xformsBC>(*lv, *this));
+	add(new GUICredits<FormCredits, xformsBC>(*lv, *this));
 	add(new GUILog<FormLog, xformsBC>(*lv, *this));
 	add(new GUIVCLog<FormVCLog, xformsBC>(*lv, *this));
 
-	add(new FormCopyright(lv, this));
-	add(new FormCredits(lv, this));
 	add(new FormDocument(lv, this));
 	add(new FormError(lv, this));
 	add(new FormExternal(lv, this));

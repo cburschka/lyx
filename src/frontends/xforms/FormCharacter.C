@@ -81,12 +81,13 @@ void FormCharacter::build()
 	fl_addto_choice(dialog_->choice_color, choice.c_str());
 
 	// xforms appears to need this to prevent a crash...
-	// fl_addto_choice(dialog_->choice_language,
-	//		_(" English %l| German | French "));
+	fl_addto_choice(dialog_->choice_language, "prevent crash");
 
 	// insert default language box manually
 	fl_addto_form(dialog_->form);
 		FL_OBJECT * ob = dialog_->choice_language;
+		fl_deactivate_object(dialog_->choice_language);
+
 		combo_language2_.reset(new Combox(FL_COMBOX_DROPLIST));
 		combo_language2_->add(ob->x, ob->y, ob->w, ob->h, 250);
 		combo_language2_->shortcut("#L", 1);

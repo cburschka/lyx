@@ -4,69 +4,43 @@
  * See the file COPYING.
  *
  * \author Edwin Leuven, leuven@fee.uva.nl
+ * \author Angus Leeming, a.leeming@.ac.uk
  */
-
-#include <config.h>
-
-#include FORMS_H_LOCATION
 
 #ifdef __GNUG__
 #pragma implementation
 #endif
 
-#include "Dialogs.h"
-#include "LyXView.h"
-#include "form_credits.h"
+#include <config.h>
+
+#include "xformsBC.h"
+#include "ControlCredits.h"
 #include "FormCredits.h"
+#include "form_credits.h"
 #include "xforms_helpers.h"
-#include "support/filetools.h"
 
-using SigC::slot;
+using std::vector;
 
-FormCredits::FormCredits( LyXView * lv, Dialogs * d )
-  : FormBaseBI(lv, d, _("Credits"))
-{
-   // let the dialog be shown
-   // This is a permanent connection so we won't bother
-   // storing a copy because we won't be disconnecting.
-   d->showCredits.connect(slot(this, &FormCredits::show));
-}
+typedef FormCB<ControlCredits, FormDB<FD_form_credits> > base_class;
 
+FormCredits::FormCredits(ControlCredits & c)
+	: base_class(c, _("Credits"))
+{}
 
-FL_FORM * FormCredits::form() const
-{
-   if (dialog_.get()) 
-	   return dialog_->form;
-   return 0;
-}
-
-// needed for the browser
-extern string system_lyxdir;
 
 void FormCredits::build()
 {
-   dialog_.reset(build_credits());
+	dialog_.reset(build_credits());
 
-   // Manage the cancel/close button
-   bc_.setCancel(dialog_->button_cancel);
-   bc_.refresh();
-		
-   /* read the credits into the browser */ 
-		
-   /* try file LYX_DIR/CREDITS */ 
-   string real_file = AddName (system_lyxdir, "CREDITS");
-   
-   if (!fl_load_browser(dialog_->browser_credits,
-			real_file.c_str())) {
-      fl_add_browser_line(dialog_->browser_credits,
-			  _("ERROR: LyX wasn't able to read"
-			    " CREDITS file"));
-      fl_add_browser_line(dialog_->browser_credits, "");
-      fl_add_browser_line(dialog_->browser_credits,
-			  _("Please install correctly to estimate"
-			    " the great"));
-      fl_add_browser_line(dialog_->browser_credits,
-			  _("amount of work other people have done"
-			    " for the LyX project."));
-   }
+	// Manage the cancel/close button
+	bc().setCancel(dialog_->button_cancel);
+	bc().refresh();
+
+	vector<string> data = controller().getCredits();
+
+	/* read the credits into the browser */ 
+	for (vector<string>::const_iterator it = data.begin();
+	     it < data.end(); ++it) {
+		fl_add_browser_line(dialog_->browser_credits, it->c_str());
+	}
 }

@@ -45,7 +45,7 @@ FD_form_copyright * FormCopyright::build_copyright()
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_gravity(obj, FL_South, FL_South);
     fl_set_object_resize(obj, FL_RESIZE_NONE);
-    fl_set_object_callback(obj, C_FormBaseDeprecatedCancelCB, 0);
+    fl_set_object_callback(obj, C_FormBaseCancelCB, 0);
   fl_end_form();
 
   fdui->form->fdui = fdui;

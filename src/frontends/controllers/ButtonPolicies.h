@@ -1,8 +1,10 @@
-// -*- C++ -*-
-/* ButtonPolicies.h
+/*
+ * \file ButtonPolicies.h
+ * \author Allan Rae, rae@lyx.org
+ *
  * Provides a state machine implementation of the various button policies
  * used by the dialogs.
- * Author: Allan Rae <rae@lyx.org>
+ *
  * This file is part of
  * ======================================================
  *

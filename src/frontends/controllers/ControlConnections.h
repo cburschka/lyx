@@ -1,4 +1,3 @@
-// -*- C++ -*-
 /* This file is part of
  * ====================================================== 
  *
@@ -10,6 +9,22 @@
  *
  * \file ControlConnections.h
  * \author Angus Leeming <a.leeming@ic.ac.uk>
+ *
+ * ControlConnections.h contains the definition of three controller classes,
+ * ControlConnectBase, ControlConnectBI and ControlConnectBD.
+ *
+ * Together they control the connection/disconnection of signals with the LyX
+ * kernel. Controllers of individual popups interacting with the kernel through
+ * signals/slots will all be derived from ControlConnectBI or ControlConnectBD.
+ *
+ * A popup is classed as "Buffer Dependent" if its contents change with the
+ * buffer (document). An example would be the Citation popup. Such a popup
+ * would be derived, therefore, from ControlConnectBD.
+ *
+ * Conversely, a popup is "Buffer Independent" if its contents do not change
+ * when the buffer changes. An example would be the Copyright popup. Such a
+ * popup, is therefore derived from ControlConnectBI.
+ *
  */
 
 #ifndef CONTROLCONNECTIONS_H
@@ -21,6 +36,9 @@
 
 #include "ControlBase.h"
 
+class Dialogs;
+class LyXView;
+
 /** Base class to control connection/disconnection of signals with the LyX
     kernel. It is meant to be used solely as the parent class to
     ControlConnectBI and ControlConnectBD.
@@ -30,8 +48,13 @@ class ControlConnectBase : public ControlBase
 public:
 	///
 	ControlConnectBase(LyXView &, Dialogs &);
+	/// The View may need to know if the buffer is read-only.
+	bool isReadonly() const;
 
 protected:
+	/// True if the dialog depends on the buffer, else false.
+	virtual bool isBufferDependent() const = 0;
+
 	/// Connect signals
 	virtual void connect();
 	/// Disconnect signals
@@ -42,6 +65,8 @@ protected:
 	*/
 	void redraw();
 
+	/// Get at the kernel Dispatch methods we need to apply() parameters.
+	LyXView & lv_;
 	/// Contains the signals we have to connect to.
 	Dialogs & d_;
 	/// Hide connection.
@@ -64,6 +89,8 @@ public:
         ControlConnectBI(LyXView &, Dialogs &);
 
 protected:
+	///
+	virtual bool isBufferDependent() const { return false; }
 	/// Connect signals
 	virtual void connect();
 };
@@ -79,6 +106,8 @@ public:
 	ControlConnectBD(LyXView &, Dialogs &);
 
 protected:
+	///
+	virtual bool isBufferDependent() const { return true; }
 	/** Slot connected to update signal.
 	    Bool indicates if a buffer switch took place.
 	    Default behaviour is to ignore this and simply update().
@@ -93,88 +122,5 @@ private:
 	/// Update connection.
 	SigC::Connection u_;
 };
-
-/** Base class to control connection/disconnection of signals with the LyX
-    kernel for Inset dialogs.
- */
-class Inset;
-
-template <class Inset>
-class ControlConnectInset : public ControlConnectBD
-{
-public:
-	///
-	ControlConnectInset(LyXView &, Dialogs &);
-
-protected:
-	/// Slot connected to update signal.
-	virtual void updateSlot(bool);
-	/// Connect signals
-	void connectInset(Inset * = 0);
-	/// Disconnect signals
-	virtual void disconnect();
-	///
-	void disconnectInset();
-
-protected:
-	/// pointer to the inset passed through connectInset
-	Inset * inset_;
-
-private:
-	/// inset::hide connection.
-	SigC::Connection ih_;
-};
-
-
-template <class Inset>
-ControlConnectInset<Inset>::ControlConnectInset(LyXView & lv, Dialogs & d)
-	: ControlConnectBD(lv, d),
-	  inset_(0), ih_(0)
-{}
-
-
-template <class Inset>
-void ControlConnectInset<Inset>::updateSlot(bool switched)
-{
-	if (switched)
-		hide();
-	else
-		update();
-}
-
-
-template <class Inset>
-void ControlConnectInset<Inset>::disconnect()
-{
-	inset_ = 0;
-	ih_.disconnect();
-	ControlConnectBD::disconnect();
-}
-
-
-template <class Inset>
-void ControlConnectInset<Inset>::connectInset(Inset * inset)
-{
-	// If connected to another inset, disconnect from it.
-	if (inset_) {
-		ih_.disconnect();
-		inset_ = 0;
-	}
-
-	if (inset) {
-		inset_ = inset;
-		ih_ = inset->hideDialog.connect(
-			SigC::slot(this, &ControlConnectInset::hide));
-	}
-	connect();
-}
-
-
-template <class Inset>
-void ControlConnectInset<Inset>::disconnectInset()
-{
-	ih_.disconnect();
-}
-
 
 #endif // CONTROLCONNECTIONS_H

@@ -26,7 +26,7 @@
 #include "support/LAssert.h"
 
 ControlCommand::ControlCommand(LyXView & lv, Dialogs & d, kb_action ac)
-	: ControlConnectInset<InsetCommand>(lv, d),
+	: ControlInset<InsetCommand>(lv, d),
 	  params_(0), action_(ac)
 {}
 
@@ -83,6 +83,8 @@ void ControlCommand::hide()
 		delete params_;
 		params_ = 0;
 	}
+
+	clearParams();
 
 	disconnect();
 	view().hide();

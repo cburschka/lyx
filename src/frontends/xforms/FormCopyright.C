@@ -1,57 +1,48 @@
-/* FormCopyright.C
- * FormCopyright Interface Class Implementation
+/*
+ * \file FormCopyright.C
+ * Copyright 2000-2001 The LyX Team.
+ * See the file COPYING.
+ *
+ * \author Allan Rae
+ * \author Angus Leeming, a.leeming@.ac.uk
  */
-
-#include <config.h>
-
-#include FORMS_H_LOCATION
 
 #ifdef __GNUG__
 #pragma implementation
 #endif
 
-#include "Dialogs.h"
-#include "LyXView.h"
-#include "form_copyright.h"
+#include <config.h>
+
+#include "xformsBC.h"
+#include "ControlCopyright.h"
 #include "FormCopyright.h"
+#include "form_copyright.h"
 #include "xforms_helpers.h"
 
-using SigC::slot;
+typedef FormCB<ControlCopyright, FormDB<FD_form_copyright> > base_class;
 
-FormCopyright::FormCopyright( LyXView * lv, Dialogs * d	)
-	: FormBaseBI(lv, d, _("Copyright and Warranty"))
-{
-	// let the dialog be shown
-	// This is a permanent connection so we won't bother
-	// storing a copy because we won't be disconnecting.
-	d->showCopyright.connect(slot(this, &FormCopyright::show));
-}
-
-
-FL_FORM * FormCopyright::form() const
-{
-	if (dialog_.get()) return dialog_->form;
-	return 0;
-}
+FormCopyright::FormCopyright(ControlCopyright & c)
+	: base_class(c, _("Copyright and Warranty"))
+{}
 
 
 void FormCopyright::build()
 {
 	dialog_.reset(build_copyright());
 
-	string str = _("LyX is Copyright (C) 1995 by Matthias Ettrich, 1995-2001 LyX Team");
-	str = formatted(str, dialog_->text_copyright->w-10,
-			FL_NORMAL_SIZE, FL_NORMAL_STYLE);
+	string str = formatted(controller().getCopyright(),
+			       dialog_->text_copyright->w-10);
+
 	fl_set_object_label(dialog_->text_copyright, str.c_str());
 
-	str = _("This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.");
-	str = formatted(str, dialog_->text_licence->w-10,
-			FL_NORMAL_SIZE, FL_NORMAL_STYLE);
+	str = formatted(controller().getLicence(),
+			dialog_->text_licence->w-10);
+
 	fl_set_object_label(dialog_->text_licence, str.c_str());
 
-	str = _("LyX is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.");
-	str = formatted(str, dialog_->text_disclaimer->w-10,
-			FL_NORMAL_SIZE, FL_NORMAL_STYLE);
+	str = formatted(controller().getDisclaimer(),
+			dialog_->text_disclaimer->w-10);
+
 	fl_set_object_label(dialog_->text_disclaimer, str.c_str());
 	
         // Manage the cancel/close button

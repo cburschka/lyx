@@ -29,7 +29,7 @@ FD_form_credits * FormCredits::build_credits()
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_gravity(obj, FL_South, FL_South);
     fl_set_object_resize(obj, FL_RESIZE_NONE);
-    fl_set_object_callback(obj, C_FormBaseDeprecatedCancelCB, 0);
+    fl_set_object_callback(obj, C_FormBaseCancelCB, 0);
   obj = fl_add_text(FL_NORMAL_TEXT, 10, 40, 480, 30, _("Matthias"));
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_lalign(obj, FL_ALIGN_CENTER|FL_ALIGN_INSIDE);

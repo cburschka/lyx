@@ -1,3 +1,50 @@
+2001-03-22  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* lots of header files: improved explanatory notes.
+
+	* ControlBase.[Ch]: removed LyXView & lv_ and methods using it.
+	ControlBase is now a class that only controls the interaction of the
+	View with the ButtonController.
+
+	* ControlConnections.[Ch]: added LyXView & lv_ and associated methods
+	to ControlConnectBase. The class controls the connection/disconnection
+	of signals from the LyX kernel and makes available the kernel (through
+	lv_) to daughter controller classes.
+	Moved out class ControlConnectInset to a new file ControlDialogs.h.
+
+	* ControlDialogs.h: new file. Contains the definition of two template
+	controller classes, ControlDialog and ControlInset (was
+	ControlConnectInset). ControlInset is a parent class for controllers
+	of inset-popups. ControlDialogs is the rather uninspired name for
+	the base class of all non-inset popups. (Eg, Document and Paragraph.)
+	ControlDialogs is reaching a state of maturity as several popups now use
+	it and its functionality becomes clear. ControlInset is still in a state
+	of flux. It is likely that functionality will be moved out of
+	ControlCommands and into it.
+
+	* GUI.h: new file. Moved all the template GUIXXX classes out of the
+	individual Controller header files and into one place. These classes
+	serve only as convenient wrappers to simplify code in the respective
+	frontends' Dialogs::c-tor. Now all derived from a templatised parent.
+
+	* ControlCharacter.[Ch] (show, update, hide):
+	* ControlLog.[Ch] (show, update, hide):
+	* ControlVCLog.[Ch] (show, update, hide): moved back into
+	the ControlDialogs base class.
+	(setParams, clearParams): new methods containing controller-specific
+	code to set/reset the parameters manipulated by the view.
+
+	* ControlCommand.[Ch] (clearParams): a new virtual method, by default
+	empty.
+	(hide): calls clearParams.
+
+	* ControlCitation.[Ch] (hide): renamed as clearParams, a method called
+	by ControlCommand::hide().
+
+	* ControlCopyright.[Ch]:
+	* ControlCredits.[Ch]: new files; controllers for the copyright and
+	credits popups, respectively.
+
 2001-03-21  Lars Gullik Bjønnes  <larsbj@trylle.birdstep.com>
 
 	* ControlCharacter.C: fix typo

@@ -99,7 +99,7 @@ shortcut:
 resize: FL_RESIZE_NONE
 gravity: FL_South FL_South
 name: button_cancel
-callback: C_FormBaseDeprecatedCancelCB
+callback: C_FormBaseCancelCB
 argument: 0
 
 ==============================

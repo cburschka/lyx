@@ -56,37 +56,10 @@ public:
 	string const getBibkeyInfo(string const &);
 private:
 	/// Clean up, then hide dialog.
-	virtual void hide();
+	virtual void clearParams();
 	/// The info associated with each key
 	InfoMap bibkeysInfo_;
 };
-
-
-/** This class instantiates and makes available the GUI-specific
-    ButtonController and View.
- */
-template <class GUIview, class GUIbc>
-class GUICitation : public ControlCitation {
-public:
-	///
-	GUICitation(LyXView &, Dialogs &);
-	///
-	virtual ButtonControllerBase & bc() { return bc_; }
-	///
-	virtual ViewBase & view() { return view_; }
-
-private:
-	///
-	ButtonController<NoRepeatedApplyReadOnlyPolicy, GUIbc> bc_;
-	///
-	GUIview view_;
-};
-
-template <class GUIview, class GUIbc>
-GUICitation<GUIview, GUIbc>::GUICitation(LyXView & lv, Dialogs & d)
-	: ControlCitation(lv, d),
-	  view_(*this)
-{}
 
 /** Helper functions, of possible use to all frontends
  */

@@ -18,11 +18,8 @@
 
 #include <config.h>
 
-#include "buffer.h"
 #include "ButtonController.h"
 #include "ControlBase.h"
-#include "LyXView.h"
-#include "support/LAssert.h"
 
 void ControlBase::ApplyButton()
 {
@@ -50,10 +47,4 @@ void ControlBase::RestoreButton()
 {
 	update();
 	bc().undoAll();
-}
-
-
-bool ControlBase::isReadonly() const
-{
-	return lv_.buffer()->isReadonly();
 }

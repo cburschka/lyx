@@ -45,10 +45,9 @@ ControlCitation::ControlCitation(LyXView & lv, Dialogs & d)
 }
 
 
-void ControlCitation::hide()
+void ControlCitation::clearParams()
 {
 	bibkeysInfo_.clear();
-	ControlCommand::hide();	
 }
 
 

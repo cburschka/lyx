@@ -28,46 +28,27 @@ using SigC::slot;
 using std::vector;
 
 ControlCharacter::ControlCharacter(LyXView & lv, Dialogs & d)
-	: ControlConnectBD(lv, d), font_(0), toggleall_(false)
+	: ControlDialog<ControlConnectBD>(lv, d),
+	  font_(0), toggleall_(false)
 {
 	d.showLayoutCharacter.connect(slot(this, &ControlCharacter::show));
 	d.setUserFreeFont.connect(slot(this, &ControlCharacter::apply));
 }
 
 
-void ControlCharacter::show()
+void ControlCharacter::setParams()
 {
-	if (!lv_.view()->available()) return;
-
 	if (font_) delete font_;
 	font_ = new LyXFont(LyXFont::ALL_IGNORE);
-
-	bc().readOnly(isReadonly());
-	view().show();
 }
 
 
-void ControlCharacter::update()
-{
-	if (!lv_.view()->available()) return;
-
-	if (font_) delete font_;
-	font_ = new LyXFont(LyXFont::ALL_IGNORE);
-
-	bc().readOnly(isReadonly());
-	view().update();
-}
-
-
-void ControlCharacter::hide()
+void ControlCharacter::clearParams()
 {
 	if (font_) {
 		delete font_;
 		font_ = 0;
 	}
-
-	disconnect();
-	view().hide();
 }
 
 

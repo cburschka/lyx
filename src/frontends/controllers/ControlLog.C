@@ -22,43 +22,22 @@
 #include "Dialogs.h"
 #include "lyxrc.h"
 
-using std::make_pair;
 using SigC::slot;
 
 ControlLog::ControlLog(LyXView & lv, Dialogs & d)
-	: ControlConnectBD(lv, d)
+	: ControlDialog<ControlConnectBD>(lv, d)
 {
 	d_.showLogFile.connect(slot(this, &ControlLog::show));
 }
 
 
-void ControlLog::show()
+void ControlLog::setParams()
 {
-	if (!lv_.view()->available())
-		return;
-
 	logfile_ = lv_.view()->buffer()->getLogName();
-
-	bc().readOnly(isReadonly());
-	view().show();
 }
 
 
-void ControlLog::update()
-{
-	if (!lv_.view()->available())
-		return;
-
-	logfile_ = lv_.view()->buffer()->getLogName();
-	
-	bc().readOnly(isReadonly());
-	view().update();
-}
-
-
-void ControlLog::hide()
+void ControlLog::clearParams()
 {
 	logfile_.second.erase();
-	disconnect();
-	view().hide();
 }

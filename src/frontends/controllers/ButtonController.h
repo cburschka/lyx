@@ -1,5 +1,7 @@
-// -*- C++ -*-
-/* This file is part of
+/*
+ * \file ButtonController.h
+ *
+ * This file is part of
  * ====================================================== 
  *
  *           LyX, The Document Processor
@@ -8,8 +10,7 @@
  *
  * ======================================================
  *
- * \file ButtonController.h
- * \author Allan Rae
+ * \author Allan Rae, rae@lyx.org
  */
 
 #ifndef BUTTONCONTROLLER_H

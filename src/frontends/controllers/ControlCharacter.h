@@ -13,13 +13,13 @@
 #pragma interface
 #endif
 
-#include "ControlConnections.h"
+#include "ControlDialogs.h"
 #include "lyxfont.h"
 #include "LColor.h"
 
 /** A controller for Character dialogs.
  */
-class ControlCharacter : public ControlConnectBD
+class ControlCharacter : public ControlDialog<ControlConnectBD>
 {
 public:
 	///
@@ -74,12 +74,10 @@ public:
 protected:
 	/// Get changed parameters and Dispatch them to the kernel.
 	virtual void apply();
-	/// Show the dialog.
-	virtual void show();
-	/// Update the dialog.
-	virtual void update();
-	/// Hide the dialog.
-	virtual void hide();
+	/// set the params before show or update.
+	virtual void setParams();
+	/// clean-up on hide.
+	virtual void clearParams();
 
 private:
 	LyXFont * font_;
@@ -100,31 +98,5 @@ std::vector<ControlCharacter::BarPair>    const getBarData();
 std::vector<ControlCharacter::ColorPair>  const getColorData();
 ///
 std::vector<string> const getLanguageData();
-
-/** This class instantiates and makes available the GUI-specific
-    ButtonController and View.
- */
-template <class GUIview, class GUIbc>
-class GUICharacter : public ControlCharacter {
-public:
-	///
-	GUICharacter(LyXView &, Dialogs &);
-	///
-	virtual ButtonControllerBase & bc() { return bc_; }
-	///
-	virtual ViewBase & view() { return view_; }
-
-private:
-	///
-	ButtonController<NoRepeatedApplyReadOnlyPolicy, GUIbc> bc_;
-	///
-	GUIview view_;
-};
-
-template <class GUIview, class GUIbc>
-GUICharacter<GUIview, GUIbc>::GUICharacter(LyXView & lv, Dialogs & d)
-	: ControlCharacter(lv, d),
-	  view_(*this)
-{}
 
 #endif // CONTROLCHARACTER_H

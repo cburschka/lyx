@@ -11,10 +11,13 @@
  * \file ControlCommand.h
  * \author Angus Leeming <a.leeming@ic.ac.uk>
  *
- * Defines a Controller class for dialogs that create or modify
+ * ControlCommand is a controller class for dialogs that create or modify
  * an inset derived from InsetCommand.
- * Also defines the abstract base class from which the GUI-dependent Views
- * of this dialog should be derived.
+ *
+ * The class is likely to be changed as other Inset controllers are created
+ * and it becomes clear just what functionality can be moved back into
+ * ControlInset.
+ * 
  */
 
 #ifndef CONTROLCOMMAND_H
@@ -24,14 +27,14 @@
 #pragma interface
 #endif
 
-#include "ControlConnections.h"
+#include "ControlDialogs.h"
 #include "insets/insetcommand.h"
 #include "commandtags.h" // kb_action
 
 /** The Inset dialog controller. Connects/disconnects signals, launches 
     GUI-dependent View and returns the output from this View to the kernel.
  */
-class ControlCommand : public ControlConnectInset<InsetCommand>
+class ControlCommand : public ControlInset<InsetCommand>
 {
 public:
 	///
@@ -57,6 +60,10 @@ protected:
 	virtual void hide();
 	/// Update dialog before showing it.
 	virtual void update();
+
+	/// clean-up on hide.
+	virtual void clearParams() {}
+	
 
 private:
 	/** A local copy of the inset's params.

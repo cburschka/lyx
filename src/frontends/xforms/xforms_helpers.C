@@ -51,34 +51,50 @@ string formatted(string const & sin, int w, int size, int style)
 		if ((*sit) == ' ' || (*sit) == '\n') {
 			sentence.push_back(word);
 			word.erase();
+			if ((*sit) == '\n') word += '\n';
+			
 		} else {
 			word += (*sit);
 		}
 	}
+
 	// Flush remaining contents of word
 	if (!word.empty() ) sentence.push_back(word);
 
-	string line, l1;
+	string line, line_plus_word;
 	for (vector<string>::const_iterator vit = sentence.begin();
 	     vit != sentence.end(); ++vit) {
-		if (!l1.empty() ) l1 += ' ';
-		l1 += (*vit);
-		int length = fl_get_string_width(style, size, l1.c_str(),
-						 int(l1.length()));
-		if (length >= w) {
-			if (!sout.empty() ) sout += '\n';
-			sout += line;
-			l1 = (*vit);
+		string word = *vit;
+
+		char c = word[0];
+		if (c == '\n') {
+			sout += line + '\n';
+			word = word.substr(1);
+			line_plus_word.erase();
+			line.erase();
 		}
 
-		line = l1;
+		if (!line_plus_word.empty() ) line_plus_word += ' ';
+		line_plus_word += word;
+
+		int length = fl_get_string_width(style, size,
+						 line_plus_word.c_str(),
+						 int(line_plus_word.length()));
+		if (length >= w) {
+			sout += line + '\n';
+			line_plus_word = word;
+		}
+
+		line = line_plus_word;
 	}
 	// Flush remaining contents of line
 	if (!line.empty()) {
-		if (!sout.empty() ) sout += '\n';
 		sout += line;
 	}
-	
+
+	if (sout[sout.length()-1] == '\n')
+		sout.erase(sout.length()-1);
+
 	return sout;
 }
 

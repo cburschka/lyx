@@ -35,30 +35,4 @@ protected:
 	virtual void apply();
 };
 
-/** This class instantiates and makes available the GUI-specific
-    ButtonController and View.
- */
-template <class GUIview, class GUIbc>
-class GUIBibitem : public ControlBibitem {
-public:
-	///
-	GUIBibitem(LyXView &, Dialogs &);
-	///
-	virtual ButtonControllerBase & bc() { return bc_; }
-	///
-	virtual ViewBase & view() { return view_; }
-
-private:
-	///
-	ButtonController<OkCancelReadOnlyPolicy, GUIbc> bc_;
-	///
-	GUIview view_;
-};
-
-template <class GUIview, class GUIbc>
-GUIBibitem<GUIview, GUIbc>::GUIBibitem(LyXView & lv, Dialogs & d)
-	: ControlBibitem(lv, d),
-	  view_(*this)
-{}
-
 #endif // CONTROLBIBITEM_H
