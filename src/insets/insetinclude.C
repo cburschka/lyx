@@ -486,7 +486,7 @@ int InsetInclude::DocBook(Buffer const *, ostream & os) const
 	} 
 
 	if (isVerb()) {
-		os << "<!-- includefile verbatim=\"" << incfile << "\" -->";
+		os << "<inlinegraphic fileref=\"" << incfile << "\" format=\"linespecific\">";
 	} else 
 		os << '&' << include_label << ';';
 	

@@ -1,3 +1,21 @@
+2000-09-29  José Abílio Matos <jamatos@fep.up.pt>
+
+	* lib/examples/docbook_example.lyx
+	* lib/examples/docbook_article.lyx: file renamed to avoid confusion.
+
+	* lib/layouts/docbook-book.layout: new docbook book layout.
+
+	* lib/layouts/linuxdoc.layout: LatexName of Style SGML is now dummy.
+	
+	* lib/layouts/manpage.layout: Same as above. Style SubSection removed.
+
+	* src/insets/figinset.C (DocBook):fixed small typo.
+
+	* src/insets/insetinclude.C (DocBook): new export for verbatim type.
+
+	* src/insets/insetinclude.h: string include_label doesn't need to be
+	mutable.
+	
 2000-09-29  Allan Rae  <rae@lyx.org>
 
 	* src/frontends/xforms/FormBase.[Ch] (connect, disconnect): new.

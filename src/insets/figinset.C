@@ -1163,7 +1163,7 @@ int InsetFig::DocBook(Buffer const *, ostream & os) const
 	string figurename = MakeRelPath(fname, buf1);
 
 	if(suffixIs(figurename, ".eps"))
-		figurename.erase(fname.length() - 4);
+		figurename.erase(figurename.length() - 4);
 
 	os << "@<graphic fileref=\"" << figurename << "\"></graphic>";
 	return 0;

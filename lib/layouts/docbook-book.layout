@@ -1,0 +1,187 @@
+#% Do not delete the line below; configure depends on this
+#  \DeclareDocBookClass[book]{SGML (DocBook book)}
+# DocBook textclass definition file. 
+# Author : Jose' Matos <jamatos@lyx.org>
+# hacked for books: Luc Abom <luc@abom.com>
+
+# Input general definitions
+Input stdclass.inc
+
+OutputType		docbook
+
+MaxCounter		Counter_Section
+SecNumDepth		3
+TocDepth		3
+
+#docbook specific definitions
+Style Standard
+  LatexType 		Paragraph
+  LatexName 		para
+End
+
+# Quote style definition
+Style Quotation
+  LatexType 		Environment
+  LatexName 		blockquote
+  LatexParam		para
+End
+
+
+
+# Title style definition
+Style Title
+  LatexType		Command
+  LatexName		bookinfo
+  LatexParam		"1|"
+End
+
+
+
+# Title style definition
+Style Chapter
+  LatexType		Command
+  LatexName		chapter
+  LatexParam		"1|"
+End
+
+# Section style definition
+Style Section
+  LatexType		Command
+  LatexName		sect1
+  LatexParam		"2|"
+End
+
+# Subsection style definition
+Style Subsection
+  LatexType		Command
+  LatexName		sect2
+  LatexParam		"3|"
+End
+
+# Subsubsection style definition
+Style Subsubsection
+  LatexType		Command
+  LatexName		sect3
+  LatexParam		"4|"
+End
+
+# Paragraph style definition
+Style Paragraph
+  LatexType		Command
+  LatexName		sect4
+  LatexParam		"5|"
+End
+
+# Subparagraph style definition
+Style Subparagraph
+  LatexType		Command
+  LatexName		sect5
+  LatexParam		"6|"
+End
+
+# Enumerate style definition
+Style Enumerate
+  LatexType		Item_Environment
+  LatexName		orderedlist
+End
+
+# Itemize style definition
+Style Itemize
+  LatexType		Item_Environment
+  LatexName		itemizedlist
+End
+
+# Description style definition
+Style Description
+  LatexType		Item_environment
+  LatexName		variablelist
+End
+
+# Verbatim style definition
+Style Literal
+  LatexType		Environment
+  LatexName		literallayout
+  Font
+    Latex               Latex
+  EndFont
+End
+
+# Code style definition
+Style Code
+  CopyStyle		LyX-Code
+  LatexType		Environment
+  LatexName		programlisting
+  Font
+    Latex               Latex
+  EndFont
+End
+
+# Author style definition
+Style Author
+  LatexType		Environment
+  LatexName		author
+  KeepEmpty		1
+End
+
+# first name style definition
+Style FirstName
+  Margin  		Static
+  LatexType 		Paragraph
+  LatexName 		firstname
+  ParIndent		MM
+  ParSkip 		0.4
+  Align 		Center
+  AlignPossible 	Center
+  LabelType 		No_Label
+End
+
+# surname style definition
+Style Surname
+  Margin  		Static
+  LatexType 		Paragraph
+  LatexName 		surname
+  ParIndent		MM
+  ParSkip 		0.4
+  Align 		Center
+  AlignPossible 	Center
+  LabelType 		No_Label
+End
+
+# Date style definition
+Style Date
+  LatexType		Paragraph
+  LatexName		date
+End
+
+# Abstract style definition
+Style Abstract
+  LatexType		Environment
+  LatexName		abstract
+  LatexParam		para
+End 
+
+# SGML style definition
+Style SGML
+  CopyStyle		LaTeX
+End
+
+# There are no chapters or parts in an docbook article.
+#NoStyle Chapter
+NoStyle Chapter*
+NoStyle Part
+NoStyle Part*
+NoStyle LaTeX
+NoStyle LyX-Code
+NoStyle Address
+NoStyle Right_Address
+NoStyle LaTeX_Title
+NoStyle Verse
+NoStyle Section*
+NoStyle Subsection*
+NoStyle Subsubsection*
+NoStyle Paragraph*
+NoStyle Subparagraph*
+
+Style LyX-Code
+  ObsoletedBy		Code
+End

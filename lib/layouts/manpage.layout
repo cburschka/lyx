@@ -62,32 +62,6 @@ Style Section
   EndFont
 End
 
-# Subsubsection style definition
-Style SubSection
-  Margin		Dynamic
-  LatexType		Command
-  LatexName		sect2
-  NextNoIndent		1
-  LabelSep		xxx
-  ParSkip		0.4
-  TopSep		0.7
-  BottomSep		0.4
-  ParSep		0.4
-  Align			Block
-  AlignPossible		Block, Left
-  LabelType		Counter_SubSubSection
-
-  # standard font definition
-  Font 
-    Series 		Bold
-  EndFont
-
-  # label font definition
-  LabelFont 
-    Series		Bold
-  EndFont
-End
-
 # Enumerate style definition
 Style Enumerate
   Margin		Static
@@ -196,12 +170,12 @@ End
 Style SGML
   Margin                Static
   LatexType             Paragraph
-  LatexName             p
+  LatexName             dummy
   NewLine               0
   ParIndent             MM
   ParSkip               0.4
   ParSep                0.5
-  Align                 Center
+  Align                 Left
   AlignPossible         Block, Left, Right, Center
   LabelType             No_Label
   FreeSpacing           1

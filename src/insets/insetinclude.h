@@ -116,7 +116,7 @@ private:
         ///
 	Buffer * master;
 	///
-	mutable string include_label;
+	string include_label;
 };
 
 
