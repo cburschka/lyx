@@ -22,8 +22,6 @@
 #define LOADERQUEUE_H
 
 #include "GraphicsCache.h"
-#include "GraphicsCacheItem.h"
-
 #include "frontends/Timeout.h"
 
 #include <set>

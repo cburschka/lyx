@@ -11,6 +11,7 @@
 #include <config.h>
 
 #include "LoaderQueue.h"
+#include "GraphicsCacheItem.h"
 
 #include "debug.h"
 

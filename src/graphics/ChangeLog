@@ -1,3 +1,7 @@
+2003-09-04  Angus Leeming  <angus@localhost.localdomain>
+
+	* LoaderQueue.C (get): 
+
 2003-09-04  Angus Leeming  <leeming@lyx.org>
 
 	* GraphicsCache.C:
@@ -10,6 +14,8 @@
 	'using lyx::support'.
 
 	* Previews.h: cleaned up some comments.
+
+	* LoaderQueue.[Ch]: move #include "GraphicsCacheItem.h" into the .C file.
 
 2003-07-26  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
