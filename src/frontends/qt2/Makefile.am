@@ -22,8 +22,6 @@ libqt2_la_SOURCES = \
 	bulletstrings.C bulletstrings.h \
 	Dialogs.C \
 	Dialogs2.C \
-	Dialogs3.C \
-	Dialogs_impl.h \
 	FileDialog.C \
 	LyXKeySymFactory.C \
 	LyXScreenFactory.C \

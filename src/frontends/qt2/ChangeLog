@@ -2,6 +2,17 @@
 
 	* Dialogs.C:
 	* Dialogs2.C:
+	* Dialogs3.C:
+	* Dialogs_impl.h:
+	move the contents of Dialogs.C and Dialogs_impl.h into Dialogs2.C.
+	move Dialog3.C to Dialogs.C.
+
+	* Makefile.am: remove Dialogs_impl.h, Dialog3.C.
+
+2003-03-26  Angus Leeming  <leeming@lyx.org>
+
+	* Dialogs.C:
+	* Dialogs2.C:
 	* Dialogs_impl.h: remove the thesaurus dialog.
 
 	* Dialogs3.C: add it here.
