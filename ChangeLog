@@ -1,5 +1,32 @@
 1999-12-13  Allan Rae  <rae@lyx.org>
 
+	* src/mathed/math_hash.C (math_hash): renamed from hash(), name clash.
+ 	(in_word_set): hash() -> math_hash()
+
+	* src/LString.h: Used USING_EXCEPTIONS in SGI STL-3.2 support 
+
+	* acconfig.h: Added a test for whether we are using exceptions in the
+	current compilation run. If so USING_EXCEPTIONS is defined.
+
+	* config.in: Check for existance of stl_string_fwd.h
+	* src/LString.h: If compiling --with-included-string and SGI's
+	STL version 3.2 is present (see above test) we need to block their
+	forward declaration of string and supply a __get_c_string().
+	However, it turns out this is only necessary if compiling with
+	exceptions enabled so I've a bit more to add yet.
+
+	* src/insets/figinset.[Ch], src/insets/insetinclude.C,
+	  src/insets/insetloa.C, src/layout.h, src/lyxparagraph.h,
+          src/support/LRegex.h, src/undo.h:
+	Shuffle the order of the included files a little to ensure that
+	LString.h gets included before anything that includes stl_string_fwd.h
+
+	*  src/support/lyxstring.C: We need to #include LString.h instead of
+	lyxstring.h to get the necessary definition of __get_c_string.
+	(__get_c_string): New function.  This is defined static just like SGI's
+	although why they need to do this I'm not sure.  Perhaps it should be
+	in lstrings.C instead.
+
 	* lib/templates/IEEEtran.lyx:  New template file.
 
 1999-12-12  Lars Gullik Bjønnes  <larsbj@lyx.org>

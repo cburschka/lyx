@@ -19,10 +19,10 @@
 #pragma implementation "insetlot.h"
 #endif
 
-#include "LaTeXFeatures.h"
 #include "insetloa.h"
 #include "insetlof.h"
 #include "insetlot.h"
+#include "LaTeXFeatures.h"
 
 void InsetLOA::Validate(LaTeXFeatures & features) const 
 {

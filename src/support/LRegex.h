@@ -11,11 +11,11 @@
 #pragma interface
 #endif
 
+#include "LString.h"
+
 #include <vector>
 using std::vector;
 using std::pair;
-
-#include "LString.h"
 
 ///
 class LRegex {

@@ -16,11 +16,10 @@
 #pragma interface
 #endif
 
-#include <list>
-using std::list;
-
 #include "lyxparagraph.h"
 
+#include <list>
+using std::list;
 
 ///
 class Undo {

@@ -144,6 +144,16 @@ char * strerror(int n);
 /**/#undef const
 #endif
 
+/* Check on the run if we are using exceptions during this compilation.*/
+#if defined(__sgi) || defined(__GNUC__)
+#  ifdef __EXCEPTIONS
+#    define USING_EXCEPTIONS
+#  endif
+#endif
+
+#if defined(__USLC__) || defined(__SUNPRO_CC) || defined(__COMO__) || defined(__ICL)
+#  define USING_EXCEPTIONS
+#endif
 
 #ifdef __EMX__
 #include "os2_defines.h"

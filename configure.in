@@ -161,7 +161,7 @@ AC_LANG_CPLUSPLUS
 # some standard header files
 AC_HEADER_DIRENT
 AC_HEADER_MAJOR
-AC_CHECK_HEADERS(sys/time.h sys/types.h sys/select.h)
+AC_CHECK_HEADERS(sys/time.h sys/types.h sys/select.h stl_string_fwd.h)
 
 # some standard structures
 AC_HEADER_STAT

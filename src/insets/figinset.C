@@ -42,7 +42,6 @@ extern long int background_pixels;
 #include <fstream>
 using std::ofstream;
 
-#include "form1.h"
 #include "figinset.h"
 #include "lyx.h"
 #include "lyx_main.h"

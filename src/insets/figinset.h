@@ -8,8 +8,8 @@
 #define FIGINSET_H
 
 #include "form1.h"
-#include "buffer.h"
 #include "LString.h"
+#include "buffer.h"
 #include "LaTeXFeatures.h"
 #include "insets/lyxinset.h"
 /* the rest is figure stuff */

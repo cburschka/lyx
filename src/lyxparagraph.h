@@ -16,6 +16,13 @@
 #pragma interface
 #endif
 
+#include "insets/lyxinset.h"
+#include "insets/insetbib.h"
+#include "table.h"
+#include "vspace.h"
+#include "layout.h"
+#include "support/block.h"
+
 //#define NEW_TABLE 1
 
 #ifdef NEW_TABLE
@@ -23,13 +30,6 @@
 #endif
 
 #include <vector>
-
-#include "insets/lyxinset.h"
-#include "insets/insetbib.h"
-#include "table.h"
-#include "vspace.h"
-#include "layout.h"
-#include "support/block.h"
 
 class BufferParams;
 class LyXBuffer;

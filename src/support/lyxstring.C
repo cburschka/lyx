@@ -16,7 +16,7 @@
 #pragma implementation "lyxstring.h"
 #endif
 
-#include "lyxstring.h"
+#include "LString.h"
 #include <cstdlib>
 #include <cctype>
 #include <algorithm>
@@ -1443,6 +1443,19 @@ lyxstring::size_type lyxstring::copy(value_type * buf, size_type len,
 	memcpy(buf, &(rep->s[pos]), nn);
 	return nn;
 }
+
+
+#ifdef HAVE_STL_STRING_FWD_H
+// SGI's STL > 3.13 expects string to provide __get_c_string.
+// Due to a clash with SGI's forward declaration of string we have
+// to provide this ourselves and block their string declarations
+// as best we can.  ARRae.
+
+static const char* __get_c_string(const string & s)
+{
+	return s.c_str();
+}
+#endif
 
 
 ////////////////////

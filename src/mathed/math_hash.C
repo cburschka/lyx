@@ -17,7 +17,7 @@
 /* maximum key range = 483, duplicates = 40 */
 
 static unsigned int
-hash (register char const *str, register int len)
+math_hash (register char const *str, register int len)
 {
   static unsigned short asso_values[] = 
     {
@@ -357,7 +357,7 @@ in_word_set (register char const *str, register int len)
 {
   if (len <= MAX_WORD_LENGTH && len >= MIN_WORD_LENGTH)
     {
-      register int key = hash (str, len);
+      register int key = math_hash (str, len);
 
       if (key <= MAX_HASH_VALUE && key >= 0)
         {

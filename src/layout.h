@@ -16,13 +16,13 @@
 #pragma interface
 #endif
 
-#include <vector>
-using std::vector;
-using std::pair;
-
 #include "lyxlex.h"
 #include "lyxfont.h"
 #include "Spacing.h"
+
+#include <vector>
+using std::vector;
+using std::pair;
 
 /// Reads the style files
 extern void LyXSetStyle();

@@ -7,8 +7,8 @@
 #endif
 
 #include FORMS_H_LOCATION 
-#include "filedlg.h" 
 #include "insetinclude.h"
+#include "filedlg.h" 
 #include "buffer.h"
 #include "bufferlist.h"
 #include "debug.h"
