@@ -45,6 +45,7 @@
 #   remove               -> entfernen
 #   restore              -> zurücksetzen
 #   retrieve             -> abrufen
+#   rotate               -> drehen
 #   run                  -> ausführen
 #   scroll (bar)         -> verschieben / Rollbalken
 #   set                  -> festlegen / ... ein / (set to -> setzen auf)
@@ -511,7 +512,7 @@ msgstr "Abstand|#t"
 #: ../src/frontends/xforms/forms/form_document.fd:1215
 #: ../src/frontends/qt2/ui/LanguageModuleBase.ui:41
 msgid "Quote Style"
-msgstr "Stil von Anführungszeichen"
+msgstr "Stil der Anführungszeichen"
 
 #: ../src/frontends/xforms/forms/form_document.fd:1233
 #: ../src/frontends/xforms/forms/form_preferences.fd:326
@@ -998,11 +999,11 @@ msgstr "Text"
 
 #: ../src/frontends/xforms/forms/form_paragraph.fd:80
 msgid "Below"
-msgstr "Unter"
+msgstr "Unterhalb"
 
 #: ../src/frontends/xforms/forms/form_paragraph.fd:98
 msgid "Above"
-msgstr "Über"
+msgstr "Oberhalb"
 
 #: ../src/frontends/xforms/forms/form_paragraph.fd:116
 msgid "Line|#i"
@@ -1112,7 +1113,7 @@ msgstr "Winzig:"
 #: ../src/frontends/xforms/forms/form_preferences.fd:425
 #: ../src/frontends/qt2/ui/QPrefScreenFontsModule.ui:472
 msgid "Smallest:"
-msgstr "Sehr Klein:"
+msgstr "Sehr klein:"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:443
 #: ../src/frontends/qt2/ui/QPrefScreenFontsModule.ui:487
@@ -1142,7 +1143,7 @@ msgstr "Größer:"
 #: ../src/frontends/xforms/forms/form_preferences.fd:533
 #: ../src/frontends/qt2/ui/QPrefScreenFontsModule.ui:420
 msgid "Largest:"
-msgstr "Noch Größer:"
+msgstr "Noch größer:"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:551
 #: ../src/frontends/qt2/ui/QPrefScreenFontsModule.ui:442
@@ -1909,11 +1910,11 @@ msgstr "Ist leer"
 
 #: ../src/frontends/xforms/forms/form_tabular.fd:1710
 msgid "Border Above"
-msgstr "Rahmen über"
+msgstr "Rahmen oben"
 
 #: ../src/frontends/xforms/forms/form_tabular.fd:1728
 msgid "Border Below"
-msgstr "Rahmen unter"
+msgstr "Rahmen unten"
 
 #: ../src/frontends/xforms/forms/form_tabular.fd:1746
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1011
@@ -2021,7 +2022,7 @@ msgstr "Winzig"
 #: ../src/frontends/qt2/ui/BulletsModuleBase.ui:263
 #: src/frontends/controllers/character.C:125 src/lyxfont.C:52
 msgid "Smallest"
-msgstr "Sehr Klein"
+msgstr "Sehr klein"
 
 #: ../src/frontends/qt2/ui/BulletsModuleBase.ui:269
 #: src/frontends/controllers/character.C:129 src/lyxfont.C:52
@@ -2051,7 +2052,7 @@ msgstr "Größer"
 #: ../src/frontends/qt2/ui/BulletsModuleBase.ui:299
 #: src/frontends/controllers/character.C:149 src/lyxfont.C:53
 msgid "Largest"
-msgstr "Noch Größer"
+msgstr "Noch größer"
 
 #: ../src/frontends/qt2/ui/BulletsModuleBase.ui:305
 #: src/frontends/controllers/character.C:153 src/lyxfont.C:53
@@ -2984,7 +2985,7 @@ msgstr "&Drehpunkt:"
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:560
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:571
 msgid "The origin of the rotation"
-msgstr "Der Drehpunkt für die Rotation"
+msgstr "Der Ausgangspunkt für die Drehung"
 
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:588
 msgid "&Clipping"
@@ -3195,11 +3196,11 @@ msgstr "Matrix einfügen"
 
 #: ../src/frontends/qt2/ui/QMathDialogBase.ui:277
 msgid "Subscript"
-msgstr "Subscript"
+msgstr "Tiefgestellt"
 
 #: ../src/frontends/qt2/ui/QMathDialogBase.ui:296
 msgid "Superscript"
-msgstr "Superscript"
+msgstr "Hochgestellt"
 
 #: ../src/frontends/qt2/ui/QMathDialogBase.ui:315
 msgid "Show delimiter and bracket dialog"
@@ -3506,11 +3507,11 @@ msgstr "&Linien"
 
 #: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:583
 msgid "A&bove"
-msgstr "&Über"
+msgstr "&Oberhalb"
 
 #: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:594
 msgid "B&elow"
-msgstr "&Unter"
+msgstr "&Unterhalb"
 
 #: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:607
 msgid "&Page Breaks"
@@ -3518,11 +3519,11 @@ msgstr "&Seitenumbrüche"
 
 #: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:626
 msgid "Abo&ve"
-msgstr "Ü&ber"
+msgstr "O&berhalb"
 
 #: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:637
 msgid "Belo&w"
-msgstr "U&nter"
+msgstr "U&nterhalb"
 
 #: ../src/frontends/qt2/ui/QPreambleDialogBase.ui:22
 msgid "LaTeX pre-amble"
@@ -4423,7 +4424,7 @@ msgstr "Zeile"
 
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:254
 msgid "Append row (below)"
-msgstr "Zeile anfügen (unten)"
+msgstr "Zeile anfügen (unterhalb)"
 
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:265
 msgid "Dele&te"
@@ -4447,7 +4448,7 @@ msgstr "Einheit der Breite"
 
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:354
 msgid "Fixed width of the column"
-msgstr "Feste Breite der Spalte"
+msgstr "Feste Spaltenbreite"
 
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:398
 msgid "Vertical alignment for fixed width columns"
@@ -4463,7 +4464,7 @@ msgstr "Tabelle &drehen"
 
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:438
 msgid "Rotate the table by 90 deg"
-msgstr "Dreht die Tabelle um 90°"
+msgstr "Drehen Sie die Tabelle um 90°"
 
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:449
 msgid "Rotate &Cell"
@@ -4471,7 +4472,7 @@ msgstr "&Zelle drehen"
 
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:453
 msgid "Rotate this cell by 90 deg"
-msgstr "Dreht diese Zelle um 90°"
+msgstr "Drehen Sie diese Zelle um 90°"
 
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:466
 msgid "Custom column format (LaTeX)"
@@ -4543,11 +4544,11 @@ msgstr "Letzte Fußzeile:"
 
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1022
 msgid "Border above"
-msgstr "Rahmen über"
+msgstr "Rahmen oben"
 
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1033
 msgid "Border below"
-msgstr "Rahmen unter"
+msgstr "Rahmen unten"
 
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1044
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1055
@@ -5021,7 +5022,7 @@ msgstr "Fußnote"
 
 #: ../lib/layouts/IEEEtran.layout:505
 msgid "MarkBoth"
-msgstr "Beides Markieren"
+msgstr "Beides markieren"
 
 #: ../lib/layouts/aa.layout:50 ../lib/layouts/aapaper.layout:47
 #: ../lib/layouts/aastex.layout:76 ../lib/layouts/apa.layout:281
@@ -5416,7 +5417,7 @@ msgstr "Unterabschnitt"
 
 #: ../lib/layouts/cv.layout:62
 msgid "Topic"
-msgstr "Themenbereich"
+msgstr "Thema"
 
 #: ../lib/layouts/cv.layout:104 ../lib/layouts/foils.layout:200
 #: ../lib/layouts/aguplus.inc:73
@@ -5578,19 +5579,19 @@ msgstr "Stichwort"
 
 #: ../lib/layouts/foils.layout:40
 msgid "Foilhead"
-msgstr "Folienkopf"
+msgstr "Kopf Folie"
 
 #: ../lib/layouts/foils.layout:63
 msgid "ShortFoilhead"
-msgstr "Folienkopf kurz"
+msgstr "Kopf Folie kurz"
 
 #: ../lib/layouts/foils.layout:70
 msgid "Rotatefoilhead"
-msgstr "Folienkopf rotiert"
+msgstr "Kopf Folie gedreht"
 
 #: ../lib/layouts/foils.layout:77
 msgid "ShortRotatefoilhead"
-msgstr "Folienkopf kurz & rotiert"
+msgstr "Kopf Folie kurz & gedreht"
 
 #: ../lib/layouts/foils.layout:88
 msgid "TickList"
@@ -6381,11 +6382,11 @@ msgstr "Titelkopf"
 
 #: ../lib/layouts/scrclass.inc:210
 msgid "Uppertitleback"
-msgstr "Innenseite Oben"
+msgstr "Innenseite oben"
 
 #: ../lib/layouts/scrclass.inc:216
 msgid "Lowertitleback"
-msgstr "Innenseite Unten"
+msgstr "Innenseite unten"
 
 #: ../lib/layouts/scrclass.inc:222
 msgid "Extratitle"
@@ -6393,11 +6394,12 @@ msgstr "Zusatztitel"
 
 #: ../lib/layouts/scrclass.inc:246
 msgid "Captionabove"
-msgstr "Beschriftung Oben"
+msgstr "Beschriftung oben"
+
 
 #: ../lib/layouts/scrclass.inc:252
 msgid "Captionbelow"
-msgstr "Beschriftung Unten"
+msgstr "Beschriftung unten"
 
 #: ../lib/layouts/scrclass.inc:258
 msgid "Dictum"
@@ -7121,11 +7123,11 @@ msgstr "Externes Material...|E"
 
 #: ../lib/ui/default.ui:220
 msgid "Superscript|S"
-msgstr "Superscript|S"
+msgstr "Hochgestellt|o"
 
 #: ../lib/ui/default.ui:221
 msgid "Subscript|u"
-msgstr "Subscript|u"
+msgstr "Tiefgestellt|e"
 
 #: ../lib/ui/default.ui:222
 msgid "HFill|H"
@@ -7157,7 +7159,7 @@ msgstr "Satzendepunkt|p"
 
 #: ../lib/ui/default.ui:229
 msgid "Ordinary Quote|Q"
-msgstr "Anführungszeichen|A"
+msgstr "Normales Anführungszeichen|A"
 
 #: ../lib/ui/default.ui:230
 msgid "Menu Separator|M"
@@ -7169,11 +7171,11 @@ msgstr "Abgesetzte Formel|A"
 
 #: ../lib/ui/default.ui:236
 msgid "Eqnarray Environment|E"
-msgstr "Eqnarray-Umgebung|E"
+msgstr "Eqnarray-Umgebung|q"
 
 #: ../lib/ui/default.ui:237
 msgid "AMS align Environment|A"
-msgstr "AMS align-Umgebung|A"
+msgstr "AMS align-Umgebung|l"
 
 #: ../lib/ui/default.ui:238
 msgid "AMS alignat Environment|t"
@@ -9512,7 +9514,7 @@ msgstr "Papiergröße und Ausrichtung"
 
 #: src/frontends/qt2/QDocumentDialog.C:265
 msgid "Language Settings and Quote Style"
-msgstr "Spracheinstellungen und Stil von Anführungszeichen"
+msgstr "Spracheinstellungen und Stil der Anführungszeichen"
 
 #: src/frontends/qt2/QDocumentDialog.C:268
 msgid "Bullet Types"
@@ -10173,8 +10175,8 @@ msgid ""
 " Default | Tiny | Smallest | Smaller | Small | Normal | Large | Larger | "
 "Largest | Huge | Huger "
 msgstr ""
-" Standard | Winzig | Sehr Klein | Kleiner | Klein | Normal | Groß | Größer | "
-"Noch Größer | Riesig | Gigantisch "
+" Standard | Winzig | Sehr klein | Kleiner | Klein | Normal | Groß | Größer | "
+"Noch größer | Riesig | Gigantisch "
 
 #. Stack tabs
 #: src/frontends/xforms/FormDocument.C:352
@@ -10388,7 +10390,8 @@ msgstr "Schneide das Bild auf die Werte der Begrenzungsbox zu."
 msgid ""
 "Insert the rotation angle in degrees. Positive value rotates anti-clockwise, "
 "negative value clockwise."
-msgstr ""
+msgstr "Fügen Sie den Drehwinkel in Grad ein. Positive Werte drehen gegen den "
+"Uhrzeigersinn, negative Werte im Uhrzeigersinn."
 
 #: src/frontends/xforms/FormGraphics.C:255
 msgid "Insert the point of origin for rotation."
@@ -10521,7 +10524,7 @@ msgstr "Fügen Sie eine Trennlinie über diesem Absatz hinzu."
 
 #: src/frontends/xforms/FormParagraph.C:149
 msgid "Enforce a page break above this paragraph."
-msgstr "Erzwingen Sie einen Seitenumbruch vor diesem Absatz."
+msgstr "Erzwingen Sie einen Seitenumbruch über diesem Absatz."
 
 #: src/frontends/xforms/FormParagraph.C:151
 msgid "Add additional space above this paragraph."
@@ -10629,7 +10632,6 @@ msgid "Convert \"to\" this format"
 msgstr "\"Nach\" diesem Format konvertieren"
 
 #: src/frontends/xforms/FormPreferences.C:995
-#, fuzzy
 msgid ""
 "The conversion command. $$i is the input file name, $$b is the file name "
 "without its extension and $$o is the name of the output file. $$s can be "
@@ -10771,8 +10773,8 @@ msgid ""
 "Fonts must be input in the order Tiny > Smallest > Smaller > Small > Normal "
 "> Large > Larger > Largest > Huge > Huger."
 msgstr ""
-"Schriften müssen in der Reihenfolge Winzig > Sehr Klein > Kleiner > Klein > "
-"Normal > Groß > Größer > Noch Größer > Riesig > Gigantisch eingegeben werden."
+"Schriften müssen in der Reihenfolge Winzig > Sehr klein > Kleiner > Klein > "
+"Normal > Groß > Größer > Noch größer > Riesig > Gigantisch eingegeben werden."
 
 #: src/frontends/xforms/FormPreferences.C:2877
 msgid " ispell | aspell "
@@ -12923,7 +12925,7 @@ msgstr "Seitenumbruch (oben)"
 #. draw the additional space if needed:
 #: src/text.C:3353
 msgid "Space above"
-msgstr "Abstand oben"
+msgstr "Abstand oberhalb"
 
 #: src/text.C:3512
 msgid "Page Break (bottom)"
@@ -12931,7 +12933,7 @@ msgstr "Seitenumbruch (unten)"
 
 #: src/text.C:3519
 msgid "Space below"
-msgstr "Abstand unten"
+msgstr "Abstand unterhalb"
 
 #. Could only happen with user style
 #: src/text2.C:1008
