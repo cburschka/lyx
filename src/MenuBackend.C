@@ -314,6 +314,14 @@ void Menu::expand(Menu & tomenu, Buffer * buf) const
 		case MenuItem::ViewFormats:
 		case MenuItem::UpdateFormats:
 		case MenuItem::ExportFormats: {
+
+			if (!buf && cit->kind() != MenuItem::ImportFormats) {
+				tomenu.add(MenuItem(MenuItem::Command,
+						    _("No Documents Open!"),
+						    LFUN_NOACTION));
+				continue;
+			}				
+			
 			typedef vector<Format const *> Formats;
 
 			Formats formats;

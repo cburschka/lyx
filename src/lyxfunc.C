@@ -354,6 +354,11 @@ FuncStatus LyXFunc::getStatus(kb_action action,
 	FuncStatus flag;
 	Buffer * buf = owner->buffer();
 
+	if (action == LFUN_NOACTION) {
+		setStatusMessage(N_("Nothing to do"));
+		return flag.disabled(true);
+	}
+
 	if (action == LFUN_UNKNOWN_ACTION) {
 		setStatusMessage(N_("Unknown action"));
 		return flag.unknown(true);

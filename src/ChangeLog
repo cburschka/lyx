@@ -1,3 +1,10 @@
+2002-03-27  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* lyxfunc.C (getStatus): return 'disabled' early for LFUN_NOACTION
+
+	* MenuBackend.C (expand): fix export/view/update when there is no
+	document open.
+
 2002-03-27  Herbert Voss  <voss@lyx.org>
 
 	* lengthcommon.C: change c%, l%, p% t% to col%, line%, page%
