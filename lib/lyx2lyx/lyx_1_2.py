@@ -136,6 +136,7 @@ def remove_oldfloat(file):
 
 pextra_type2_rexp = re.compile(r".*\\pextra_type\s+[12]")
 pextra_type2_rexp2 = re.compile(r".*(\\layout|\\pextra_type\s+2)")
+pextra_widthp = re.compile(r"\\pextra_widthp")
 
 def remove_pextra(file):
     lines = file.body
@@ -145,6 +146,12 @@ def remove_pextra(file):
 	i = find_re(lines, pextra_type2_rexp, i)
 	if i == -1:
 	    break
+
+        # Sometimes the \pextra_widthp argument comes in it own
+        # line. If that happens insert it back in this line.
+        if pextra_widthp.search(lines[i+1]):
+            lines[i] = lines[i] + ' ' + lines[i+1]
+            del lines[i+1]
 
 	mo = pextra_rexp.search(lines[i])
         width = get_width(mo)
