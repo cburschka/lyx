@@ -1,5 +1,9 @@
 2001-02-01  Dekel Tsur  <dekelts@tau.ac.il>
 
+	* text.C (Backspace): Preserve the font when changing newline char
+	with a space.
+	(BreakParagraph): If the cursor is before a space, delete the space.
+
 	* lyx_cb.C (QuitLyX): Do not save files when running with no gui.
 
 2001-01-31  Dekel Tsur  <dekelts@tau.ac.il>

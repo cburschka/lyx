@@ -1749,11 +1749,14 @@ void LyXText::BreakParagraph(BufferView * bview, char keep_layout)
 #endif
 	   ); 
 
-   // please break always behind a space
+   // Always break behind a space
+   //
+   // It is better to erase the space (Dekel)
    if (cursor.pos() < cursor.par()->Last()
        && cursor.par()->IsLineSeparator(cursor.pos()))
-     cursor.pos(cursor.pos() + 1);
-   
+	   cursor.par()->Erase(cursor.pos());
+           // cursor.pos(cursor.pos() + 1);
+
    // break the paragraph
    if (keep_layout)
      keep_layout = 2;
@@ -2883,6 +2886,8 @@ void LyXText::Backspace(BufferView * bview)
 			
 			if (cursor.pos() < cursor.par()->Last() && !cursor.par()->IsSeparator(cursor.pos())) {
 				cursor.par()->InsertChar(cursor.pos(), ' ');
+				SetCharFont(bview->buffer(), cursor.par(), 
+					    cursor.pos(), current_font);
 				// refresh the positions
 				tmprow = row;
 				while (tmprow->next() && tmprow->next()->par() == row->par()) {
