@@ -882,7 +882,7 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, LyXParagraph *& par,
 		par->InsertChar(pos, LyXParagraph::META_NEWLINE, font);
 		++pos;
 	} else if (token == "\\LyXTable") {
-		Inset * inset = new InsetTabular(this);
+		Inset * inset = new InsetTabular(*this);
 		inset->Read(this, lex);
 		par->InsertInset(pos, inset, font);
 		++pos;
@@ -960,7 +960,7 @@ void Buffer::readInset(LyXLex & lex, LyXParagraph *& par,
 		} else if (inscmd.getCmdName() == "index") {
 			inset = new InsetIndex(inscmd);
 		} else if (inscmd.getCmdName() == "include") {
-			inset = new InsetInclude(inscmd, this);
+			inset = new InsetInclude(inscmd, *this);
 		} else if (inscmd.getCmdName() == "label") {
 			inset = new InsetLabel(inscmd);
 		} else if (inscmd.getCmdName() == "url"
@@ -973,7 +973,7 @@ void Buffer::readInset(LyXLex & lex, LyXParagraph *& par,
 			   || inscmd.getCmdName() == "prettyref") {
 			if (!inscmd.getOptions().empty()
 			    || !inscmd.getContents().empty()) {
-				inset = new InsetRef(inscmd);
+				inset = new InsetRef(inscmd, *this);
 			}
 		} else if (inscmd.getCmdName() == "tableofcontents"
 			   || inscmd.getCmdName() == "listofalgorithms"
@@ -983,7 +983,7 @@ void Buffer::readInset(LyXLex & lex, LyXParagraph *& par,
 		} else if (inscmd.getCmdName() == "printindex") {
 			inset = new InsetPrintIndex(inscmd);
 		} else if (inscmd.getCmdName() == "lyxparent") {
-			inset = new InsetParent(inscmd, this);
+			inset = new InsetParent(inscmd, *this);
 		}
 	} else {
 		if (tmptok == "Quotes") {
@@ -995,16 +995,16 @@ void Buffer::readInset(LyXLex & lex, LyXParagraph *& par,
 		} else if (tmptok == "Formula") {
 			inset = new InsetFormula;
 		} else if (tmptok == "Figure") {
-			inset = new InsetFig(100, 100, this);
+			inset = new InsetFig(100, 100, *this);
 		} else if (tmptok == "Info") {
 			inset = new InsetInfo;
 		} else if (tmptok == "Include") {
 			InsetCommandParams p( "Include" );
-			inset = new InsetInclude(p, this);
+			inset = new InsetInclude(p, *this);
 		} else if (tmptok == "ERT") {
 			inset = new InsetERT;
 		} else if (tmptok == "Tabular") {
-			inset = new InsetTabular(this);
+			inset = new InsetTabular(*this);
 		} else if (tmptok == "Text") {
 			inset = new InsetText;
 		} else if (tmptok == "Foot") {

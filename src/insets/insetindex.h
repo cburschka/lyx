@@ -27,7 +27,9 @@ public:
 	///
 	InsetIndex(InsetCommandParams const &);
 	///
-	Inset * Clone() const { return new InsetIndex(params());}
+	Inset * Clone(Buffer const &) const {
+		return new InsetIndex(params());
+	}
 	///
 	string const getScreenLabel() const;
 	///
@@ -42,7 +44,9 @@ public:
 	///
 	InsetPrintIndex(InsetCommandParams const &);
 	///
-	Inset * Clone() const { return new InsetPrintIndex(params());}
+	Inset * Clone(Buffer const &) const {
+		return new InsetPrintIndex(params());
+	}
 	/// Updates needed features for this inset.
 	void Validate(LaTeXFeatures & features) const;
 	///

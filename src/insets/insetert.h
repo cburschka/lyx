@@ -32,7 +32,7 @@ public:
 	///
 	void Write(Buffer const * buf, std::ostream & os) const;
 	///
-	Inset * Clone() const;
+	Inset * Clone(Buffer const &) const;
 	///
 	string const EditMessage() const;
 	///

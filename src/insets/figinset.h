@@ -20,7 +20,7 @@ struct Figref;
 class InsetFig: public Inset {
 public:
 	///
-	InsetFig(int tmpx, int tmpy, Buffer *);
+	InsetFig(int tmpx, int tmpy, Buffer const &);
 	///
 	~InsetFig();
 	///
@@ -58,7 +58,7 @@ public:
 	///
 	Inset::Code LyxCode() const;
 	///
-	Inset * Clone() const;
+	Inset * Clone(Buffer const &) const;
 	///
 	void CallbackFig(long arg);
 	///
@@ -134,7 +134,7 @@ public:
 private:
 
 	///
-	Buffer * owner;
+	Buffer const * owner;
 	/// restore values on the form
 	void RestoreForm();
 	/// recompute screen params

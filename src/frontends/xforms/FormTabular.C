@@ -707,7 +707,7 @@ void FormTabular::apply_create()
 //    comm->setMinibuffer(_("Inserting tabular inset..."));
     ysize = int(fl_get_slider_value(create_tabular_->slider_columns) + 0.5);
     xsize = int(fl_get_slider_value(create_tabular_->slider_rows) + 0.5);
-    InsetTabular * in = new InsetTabular(lv_->buffer(),xsize,ysize);
+    InsetTabular * in = new InsetTabular(*lv_->buffer(),xsize,ysize);
     if (!lv_->view()->open_new_inset(in)) {
 	delete in;
     }

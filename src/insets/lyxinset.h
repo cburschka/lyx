@@ -190,7 +190,7 @@ public:
 	}
 
 	///
-	virtual Inset * Clone() const = 0;
+	virtual Inset * Clone(Buffer const &) const = 0;
 
 	/// returns true to override begin and end inset in file
 	virtual bool DirectWrite() const;

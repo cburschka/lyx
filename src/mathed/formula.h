@@ -64,7 +64,7 @@ public:
 	///
 	void Validate(LaTeXFeatures &) const;
 	///
-	Inset * Clone() const;
+	Inset * Clone(Buffer const &) const;
 	///
 	Inset::Code LyxCode() const { return Inset::MATH_CODE; }
 	///

@@ -65,7 +65,7 @@ public:
 	///
 	EDITABLE Editable() const { return IS_EDITABLE; }
 	///
-	Inset * Clone() const { return new InsetError(contents); }
+	Inset * Clone(Buffer const &) const { return new InsetError(contents); }
 	///
 	Inset::Code LyxCode() const { return Inset::NO_CODE; }
 	/// We don't want "begin" and "end inset" in lyx-file

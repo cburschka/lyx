@@ -65,7 +65,7 @@ public:
 	///
 	int DocBook(Buffer const *, std::ostream &) const;
 	///
-	Inset * Clone() const;
+	Inset * Clone(Buffer const &) const;
 	///  
 	Inset::Code LyxCode() const
 	{

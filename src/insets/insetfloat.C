@@ -135,7 +135,7 @@ void InsetFloat::Validate(LaTeXFeatures & features) const
 }
 
 
-Inset * InsetFloat::Clone() const
+Inset * InsetFloat::Clone(Buffer const &) const
 {
 	InsetFloat * result = new InsetFloat(floatType);
 	result->inset->init(inset);

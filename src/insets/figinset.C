@@ -926,8 +926,8 @@ void UnregisterFigure(InsetFig * fi)
 }
 
 
-InsetFig::InsetFig(int tmpx, int tmpy, Buffer * o)
-	: owner(o)
+InsetFig::InsetFig(int tmpx, int tmpy, Buffer const & o)
+	: owner(&o)
 {
 	wid = tmpx;
 	hgh = tmpy;
@@ -1220,13 +1220,13 @@ void InsetFig::Edit(BufferView * bv, int, int, unsigned int)
 }
 
 
-Inset * InsetFig::Clone() const
+Inset * InsetFig::Clone(Buffer const & buffer) const
 {
-	InsetFig * tmp = new InsetFig(100, 100, owner);
+	InsetFig * tmp = new InsetFig(100, 100, buffer);
 
 	if (lyxerr.debugging()) {
 		lyxerr << "Clone Figure: buffer:["
-		       << current_view->buffer()
+		       << &buffer
 		       << "], cbuffer:[xx]" << endl;
 	}
 

@@ -1,3 +1,33 @@
+2000-10-10  Angus Leeming <a.leeming@ic.ac.uk>
+
+       * src/BufferView_pimpl.C (buffer): cleaned up a little.
+
+       * src/insets/figinset.[Ch]:
+       * src/insets/insetinclude.[Ch]:
+       * src/insets/insetinclude.[Ch]:
+       * src/insets/insetparent.[Ch]:
+       * src/insets/insetref.[Ch]:
+       * src/insets/insettabular.[Ch] (c-tor): Buffer passed as const &.
+
+       * src/insets/*.[Ch]:
+       * src/mathed/formula.[Ch]:
+       * src/mathed/formulamacro.C (Clone): passed Buffer const &.
+
+       * src/buffer.C (parseSingleLyXformat2Token, readInset):
+       * src/lyx_cb.C (FigureApplyCB):
+       * src/lyxfunc.C (getStatus, Dispatch):
+       * src/frontends/xforms/FormTabular.C:  use modified c-tors to some
+       insets.
+
+       * src/lyxfunc.C (Dispatch): string "ref" not used. Removed.
+
+       * src/converter.[Ch] (Formats::View):
+       * src/lyx_cb.[Ch] (ShowMessage): constify Buffer * parameter.
+
+       * src/paragraph.C (CopyIntoMinibuffer, Clone): Insets::Clone() passed
+       *current_view->buffer(). This will change later, but this patch is way
+       big enough already!
+
 2000-10-09  Juergen Vigna  <jug@sad.it>
 
 	* src/text.C (GetRow): small fix.

@@ -34,7 +34,7 @@ public:
 	///
 	~InsetBibKey();
 	///
-	Inset * Clone() const;
+	Inset * Clone(Buffer const &) const;
 	/** Currently \bibitem is used as a LyX2.x command,
 	    so we need this method.
 	*/
@@ -82,7 +82,9 @@ public:
 	///
 	~InsetBibtex();
 	///
-	Inset * Clone() const { return new InsetBibtex(params()); }
+	Inset * Clone(Buffer const &) const {
+		return new InsetBibtex(params());
+	}
 	///
 	string const getScreenLabel() const;
 	///

@@ -87,7 +87,7 @@ InsetBibKey::~InsetBibKey()
 }
 
 
-Inset * InsetBibKey::Clone() const
+Inset * InsetBibKey::Clone(Buffer const &) const
 {
 	InsetBibKey * b = new InsetBibKey(params());
 	b->setCounter(counter);

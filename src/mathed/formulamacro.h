@@ -56,7 +56,7 @@ public:
 	///
 	int DocBook(Buffer const *, std::ostream &) const;
 	///
-	Inset * Clone() const;
+	Inset * Clone(Buffer const &) const;
 
 	/// what appears in the minibuffer when opening
 	string const EditMessage() const;

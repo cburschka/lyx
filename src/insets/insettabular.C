@@ -115,8 +115,8 @@ bool cellstart(LyXParagraph::size_type p)
 }
 
 
-InsetTabular::InsetTabular(Buffer * buf, int rows, int columns)
-	: buffer(buf)
+InsetTabular::InsetTabular(Buffer const & buf, int rows, int columns)
+	: buffer(&buf)
 {
     if (rows <= 0)
         rows = 1;
@@ -137,8 +137,8 @@ InsetTabular::InsetTabular(Buffer * buf, int rows, int columns)
 }
 
 
-InsetTabular::InsetTabular(InsetTabular const & tab, Buffer * buf)
-	: buffer(buf)
+InsetTabular::InsetTabular(InsetTabular const & tab, Buffer const & buf)
+	: buffer(&buf)
 {
     tabular = new LyXTabular(this, *(tab.tabular));
     the_locking_inset = 0;
@@ -161,9 +161,9 @@ InsetTabular::~InsetTabular()
 }
 
 
-Inset * InsetTabular::Clone() const
+Inset * InsetTabular::Clone(Buffer const & buf) const
 {
-    InsetTabular * t = new InsetTabular(*this, buffer);
+    InsetTabular * t = new InsetTabular(*this, buf);
     delete t->tabular;
     t->tabular = tabular->Clone(t);
     return t;

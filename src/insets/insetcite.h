@@ -24,7 +24,9 @@ public:
 	///
 	InsetCitation(InsetCommandParams const &);
 	///
-	Inset * Clone() const { return new InsetCitation(params()); }
+	Inset * Clone(Buffer const &) const {
+		return new InsetCitation(params());
+	}
 	///
 	string const getScreenLabel() const;
 	///

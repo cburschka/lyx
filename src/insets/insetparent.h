@@ -27,9 +27,11 @@ class Buffer;
 class InsetParent : public InsetCommand {
 public:
 	///
-	InsetParent(InsetCommandParams const &, Buffer * owner = 0);
+	InsetParent(InsetCommandParams const &, Buffer const &);
 	///
-	Inset * Clone() const { return new InsetParent(params()); }
+	Inset * Clone(Buffer const & buffer) const {
+		return new InsetParent(params(), buffer);
+	}
     	///
 	string const getScreenLabel() const;
         ///

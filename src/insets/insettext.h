@@ -75,7 +75,7 @@ public:
     ///
     ~InsetText();
     ///
-    Inset * Clone() const;
+    Inset * Clone(Buffer const &) const;
     ///
     InsetText & operator=(InsetText const & it);
     ///

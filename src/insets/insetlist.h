@@ -28,7 +28,7 @@ public:
 	///
 	void Write(Buffer const * buf, std::ostream & os) const;
 	///
-	Inset * Clone() const;
+	Inset * Clone(Buffer const &) const;
 	///
 	Inset::Code LyxCode() const { return Inset::FOOT_CODE; }
 	///

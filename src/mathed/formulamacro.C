@@ -61,7 +61,7 @@ InsetFormulaMacro::~InsetFormulaMacro()
 }
 
 
-Inset * InsetFormulaMacro::Clone() const
+Inset * InsetFormulaMacro::Clone(Buffer const &) const
 {
    return new InsetFormulaMacro(name);
 }

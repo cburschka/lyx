@@ -19,7 +19,7 @@ extern bool BindFileSet;
 ///
 extern LyXFont const UserFreeFont(BufferParams const & params);
 ///
-void ShowMessage(Buffer * buf,
+void ShowMessage(Buffer const * buf,
 		 string const & msg1,
 		 string const & msg2 = string(),
 		 string const & msg3 = string(), int delay = 6);

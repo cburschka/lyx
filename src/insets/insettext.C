@@ -138,7 +138,7 @@ void InsetText::clear()
 }
 
 
-Inset * InsetText::Clone() const
+Inset * InsetText::Clone(Buffer const &) const
 {
     InsetText * t = new InsetText(*this);
     return t;

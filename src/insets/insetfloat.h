@@ -34,7 +34,7 @@ public:
 	///
 	void Validate(LaTeXFeatures & features) const;
 	///
-	Inset * Clone() const;
+	Inset * Clone(Buffer const &) const;
 	///
 	Inset::Code LyxCode() const { return Inset::FLOAT_CODE; }
 	///

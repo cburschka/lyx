@@ -27,7 +27,7 @@ public:
 	explicit
 	InsetUrl(InsetCommandParams const &);
         ///
-	Inset * Clone() const { return new InsetUrl(params()); }
+	Inset * Clone(Buffer const &) const { return new InsetUrl(params()); }
 	///
 	Inset::Code LyxCode() const { return Inset::URL_CODE; }
 	///

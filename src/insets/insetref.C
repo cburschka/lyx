@@ -16,11 +16,8 @@
 
 using std::ostream;
 
-extern BufferView * current_view;
-
-
-InsetRef::InsetRef(InsetCommandParams const & p)
-	: InsetCommand(p)
+InsetRef::InsetRef(InsetCommandParams const & p, Buffer const & buf)
+	: InsetCommand(p), isLatex(buf.isLatex())
 {}
 
 void InsetRef::Edit(BufferView * bv, int, int, unsigned int button)
@@ -50,7 +47,7 @@ string const InsetRef::getScreenLabel() const
 
 	temp += getContents();
 
-	if(!current_view->buffer()->isLatex()
+	if(!isLatex
 	   && !getOptions().empty()) {
 		temp += "||";
 		temp += getOptions();

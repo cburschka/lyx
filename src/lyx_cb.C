@@ -154,7 +154,7 @@ void MenuReload(Buffer * buf);
 void MenuLayoutSave();
 
 
-void ShowMessage(Buffer * buf,
+void ShowMessage(Buffer const * buf,
 		 string const & msg1,
 		 string const & msg2,
 		 string const & msg3, int delay)
@@ -836,7 +836,7 @@ void FigureApplyCB(FL_OBJECT *, long)
 	
 	current_view->owner()->getMiniBuffer()->Set(_("Inserting figure..."));
 	if (fl_get_button(fd_form_figure->radio_inline)) {
-		InsetFig * new_inset = new InsetFig(100, 20, buffer);
+		InsetFig * new_inset = new InsetFig(100, 20, *buffer);
 		current_view->insertInset(new_inset);
 		current_view->owner()->getMiniBuffer()->Set(_("Figure inserted"));
 		new_inset->Edit(current_view, 0, 0, 0);
@@ -890,7 +890,7 @@ void FigureApplyCB(FL_OBJECT *, long)
 	
 	current_view->update(BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
       
-	Inset * new_inset = new InsetFig(100, 100, buffer);
+	Inset * new_inset = new InsetFig(100, 100, *buffer);
 	current_view->insertInset(new_inset);
 	new_inset->Edit(current_view, 0, 0, 0);
 	current_view->update(BufferView::SELECT|BufferView::FITCUR);

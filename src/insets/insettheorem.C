@@ -54,7 +54,7 @@ void InsetTheorem::Write(Buffer const * buf, ostream & os) const
 }
 
 
-Inset * InsetTheorem::Clone() const
+Inset * InsetTheorem::Clone(Buffer const &) const
 {
 	InsetTheorem * result = new InsetTheorem;
 	

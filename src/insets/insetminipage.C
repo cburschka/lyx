@@ -75,7 +75,7 @@ void InsetMinipage::Write(Buffer const * buf, ostream & os) const
 }
 
 
-Inset * InsetMinipage::Clone() const
+Inset * InsetMinipage::Clone(Buffer const &) const
 {
 	InsetMinipage * result = new InsetMinipage;
 	result->inset->init(inset);

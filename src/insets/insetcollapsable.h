@@ -43,7 +43,7 @@ public:
     ///
     InsetCollapsable();
     ///
-    Inset * Clone() const;
+    Inset * Clone(Buffer const &) const;
     ///
     void Read(Buffer const *, LyXLex &);
     ///

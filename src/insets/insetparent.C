@@ -29,14 +29,11 @@
 using std::ostream;
 
 
-InsetParent::InsetParent(InsetCommandParams const & p, Buffer * bf)
+InsetParent::InsetParent(InsetCommandParams const & p, Buffer const & bf)
 	: InsetCommand(p)
 {
 	string fn = p.getContents();
-	if (bf)
-		setContents(MakeAbsPath(fn, OnlyPath(bf->fileName())));
-	else
-		setContents(fn);
+	setContents(MakeAbsPath(fn, OnlyPath(bf.fileName())));
 }
 
 

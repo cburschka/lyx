@@ -49,7 +49,7 @@ InsetCollapsable::InsetCollapsable()
 }
 
 
-Inset * InsetCollapsable::Clone() const
+Inset * InsetCollapsable::Clone(Buffer const &) const
 {
     InsetCollapsable * result = new InsetCollapsable();
     result->inset->init(inset);

@@ -35,7 +35,7 @@ InsetMarginal::InsetMarginal()
 }
 
 
-Inset * InsetMarginal::Clone() const
+Inset * InsetMarginal::Clone(Buffer const &) const
 {
 	InsetMarginal * result = new InsetMarginal;
 	result->inset->init(inset);

@@ -410,7 +410,7 @@ void LyXParagraph::CopyIntoMinibuffer(BufferParams const & bparams,
 	minibuffer_inset = 0;
 	if (minibuffer_char == LyXParagraph::META_INSET) {
 		if (GetInset(pos)) {
-			minibuffer_inset = GetInset(pos)->Clone();
+			minibuffer_inset = GetInset(pos)->Clone(*current_view->buffer());
 		} else {
 			minibuffer_inset = 0;
 			minibuffer_char = ' ';
@@ -1610,7 +1610,8 @@ LyXParagraph * LyXParagraph::Clone() const
    
         // ale970302
 	if (bibkey)
-		result->bibkey = static_cast<InsetBibKey *>(bibkey->Clone());
+		result->bibkey = static_cast<InsetBibKey *>
+			         (bibkey->Clone(*current_view->buffer()));
 	else
 		result->bibkey = 0;
     
@@ -1621,7 +1622,7 @@ LyXParagraph * LyXParagraph::Clone() const
 	result->insetlist = insetlist;
 	for (InsetList::iterator it = result->insetlist.begin();
 	     it != result->insetlist.end(); ++it)
-		(*it).inset = (*it).inset->Clone();
+		(*it).inset = (*it).inset->Clone(*current_view->buffer());
 	return result;
 }
 

@@ -392,7 +392,7 @@ void InsetExternal::Validate(LaTeXFeatures & features) const
 }
 
 
-Inset * InsetExternal::Clone() const
+Inset * InsetExternal::Clone(Buffer const &) const
 {
 	InsetExternal * inset = new InsetExternal();
 	inset->templatename = templatename;

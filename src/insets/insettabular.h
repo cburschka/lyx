@@ -73,13 +73,13 @@ public:
 	SELECTION
     };
     ///
-    InsetTabular(Buffer *, int rows = 1, int columns = 1);
+    InsetTabular(Buffer const &, int rows = 1, int columns = 1);
     ///
-    InsetTabular(InsetTabular const &, Buffer *);
+    InsetTabular(InsetTabular const &, Buffer const &);
     ///
     ~InsetTabular();
     ///
-    Inset * Clone() const;
+    Inset * Clone(Buffer const &) const;
     ///
     void Read(Buffer const *, LyXLex &);
     ///
@@ -160,7 +160,7 @@ public:
     ///
     int getMaxWidth(Painter & pain, UpdatableInset const *) const;
     ///
-    Buffer * BufferOwner() const { return buffer; }
+    Buffer * BufferOwner() const { return const_cast<Buffer *>(buffer); }
     ///
     LyXText * getLyXText(BufferView *) const;
     ///
@@ -235,7 +235,7 @@ private:
     ///
     InsetText * the_locking_inset;
     ///
-    Buffer * buffer;
+    Buffer const * buffer;
     ///
     mutable LyXCursor cursor;
     ///

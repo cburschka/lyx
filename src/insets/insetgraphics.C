@@ -663,7 +663,7 @@ InsetGraphicsParams InsetGraphics::getParams() const
 	return params;
 }
 
-Inset * InsetGraphics::Clone() const
+Inset * InsetGraphics::Clone(Buffer const &) const
 {
 	InsetGraphics * newInset = new InsetGraphics;
 

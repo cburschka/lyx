@@ -23,7 +23,7 @@ public:
 	///
 	InsetLabel(InsetCommandParams const &);
 	///
-	Inset * Clone() const { return new InsetLabel(params()); }
+	Inset * Clone(Buffer const &) const { return new InsetLabel(params()); }
 	///
 	string const getScreenLabel() const { return getContents(); }
 	///

@@ -523,7 +523,7 @@ LyXFunc::func_status LyXFunc::getStatus(int ac) const
 			flag |= ret;
 			disable = false;
 		} else {
-		    static InsetTabular inset(owner->buffer(), 1, 1);
+		    static InsetTabular inset(*owner->buffer(), 1, 1);
 		    func_status ret;
 
 		    disable = true;
@@ -855,7 +855,6 @@ string const LyXFunc::Dispatch(int ac,
 		meta_fake_bit = Mod1Mask;
 		string buf;
 		keyseq.print(buf, true);
-		string res = string("M-") + buf;
 		setMessage(buf); // RVDK_PATCH_5
 	}
 	break;  
@@ -1495,7 +1494,7 @@ string const LyXFunc::Dispatch(int ac,
 			InsetCommandParams p;
 			p.setFromString(argument);
 
-			InsetRef * inset = new InsetRef(p);
+			InsetRef * inset = new InsetRef(p, *owner->buffer());
 			if (!owner->view()->insertInset(inset))
 				delete inset;
 			else
@@ -2347,7 +2346,7 @@ string const LyXFunc::Dispatch(int ac,
 		if (!argument.empty())
 			::sscanf(argument.c_str(),"%d%d", &r, &c);
 		InsetTabular * new_inset =
-			new InsetTabular(owner->buffer(), r, c);
+			new InsetTabular(*owner->buffer(), r, c);
 		if (owner->view()->insertInset(new_inset))
 			new_inset->Edit(owner->view(), 0, 0, 0);
 		else
@@ -2796,7 +2795,7 @@ string const LyXFunc::Dispatch(int ac,
 	{
 		lyxerr << "arg " << argument << endl;
 		InsetCommandParams p( "lyxparent", argument );
-		Inset * inset = new InsetParent(p, owner->buffer());
+		Inset * inset = new InsetParent(p, *owner->buffer());
 		if (!owner->view()->insertInset(inset, "Standard", true))
 			delete inset;
 	}
@@ -2805,7 +2804,7 @@ string const LyXFunc::Dispatch(int ac,
 	case LFUN_CHILDINSERT:
 	{
 		InsetCommandParams p( "Include", argument );
-		Inset * inset = new InsetInclude(p, owner->buffer());
+		Inset * inset = new InsetInclude(p, *owner->buffer());
 		if (owner->view()->insertInset(inset, "Standard", true))
 			inset->Edit(owner->view(), 0, 0, 0);
 		else

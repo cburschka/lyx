@@ -24,9 +24,11 @@ struct LaTeXFeatures;
 class InsetRef : public InsetCommand {
 public:
 	///
-	InsetRef(InsetCommandParams const &);
+	InsetRef(InsetCommandParams const &, Buffer const &);
 	///
-	Inset * Clone() const { return new InsetRef(params()); }
+	Inset * Clone(Buffer const & buffer) const {
+		return new InsetRef(params(), buffer);
+	}
 	///
 	string const getScreenLabel() const;
 	///
@@ -51,5 +53,7 @@ public:
 private:
 	/// This function escapes 8-bit characters
 	string const escape(string const &) const;
+	///
+	bool isLatex;
 };
 #endif

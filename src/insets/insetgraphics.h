@@ -86,7 +86,7 @@ public:
 	Inset::Code LyxCode() const { return Inset::GRAPHICS_CODE; }
 
 	///
-	Inset * Clone() const;
+	Inset * Clone(Buffer const &) const;
 
 	/** Set the inset parameters, used by the GUIndependent dialog.
 	    Return true of new params are different from what was so far.

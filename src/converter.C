@@ -98,7 +98,7 @@ void Formats::SetViewer(string const & name, string const & command)
 }
 
 
-bool Formats::View(Buffer * buffer, string const & filename)
+bool Formats::View(Buffer const * buffer, string const & filename)
 {
 	if (filename.empty())
 		return false;

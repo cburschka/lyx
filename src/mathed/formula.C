@@ -301,7 +301,7 @@ InsetFormula::~InsetFormula()
 }
 
 
-Inset * InsetFormula::Clone() const
+Inset * InsetFormula::Clone(Buffer const &) const
 {
     InsetFormula * f = new InsetFormula(par);
     f->label = label;

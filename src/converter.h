@@ -81,7 +81,7 @@ public:
 	void SetViewer(string const & name, string const & command);
 	///
 	static
-	bool View(Buffer * buffer, string const & filename);
+	bool View(Buffer const * buffer, string const & filename);
 	///
 	static
 	Format * GetFormat(string const & name);

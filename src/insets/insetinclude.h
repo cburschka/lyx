@@ -27,11 +27,11 @@ struct LaTeXFeatures;
 class InsetInclude: public InsetCommand {
 public:
 	///
-	InsetInclude(InsetCommandParams const &, Buffer *);
+	InsetInclude(InsetCommandParams const &, Buffer const &);
 	///
 	~InsetInclude();
         ///
-        Inset * Clone() const;
+        Inset * Clone(Buffer const &) const;
 	///
 	Inset::Code LyxCode() const { return Inset::INCLUDE_CODE; }
 	/// This returns the list of labels on the child buffer
@@ -114,7 +114,7 @@ private:
 	///
         int flag;
         ///
-	Buffer * master;
+	Buffer const * master;
 	///
 	string include_label;
 };

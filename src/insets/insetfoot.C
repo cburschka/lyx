@@ -34,7 +34,7 @@ InsetFoot::InsetFoot()
 }
 
 
-Inset * InsetFoot::Clone() const
+Inset * InsetFoot::Clone(Buffer const &) const
 {
     InsetFoot * result = new InsetFoot;
     result->inset->init(inset);

@@ -161,12 +161,17 @@ void BufferView::Pimpl::buffer(Buffer * b)
 		bv_->text->first = screen_->TopCursorVisible(bv_->text);
 		owner_->updateMenubar();
 		owner_->updateToolbar();
+		// Similarly, buffer-dependent dialogs should be updated or
+		// hidden. This should go here because some dialogs (eg ToC)
+		// require bv_->text.
+		owner_->getDialogs()->updateBufferDependent();
 		redraw();
 		bv_->insetWakeup();
 	} else {
 		lyxerr[Debug::INFO] << "  No Buffer!" << endl;
 		owner_->updateMenubar();
 		owner_->updateToolbar();
+		owner_->getDialogs()->hideBufferDependent();
 		updateScrollbar();
 		workarea_->redraw();
 
@@ -181,15 +186,6 @@ void BufferView::Pimpl::buffer(Buffer * b)
 	owner_->updateLayoutChoice();
 	owner_->getMiniBuffer()->Init();
 	owner_->updateWindowTitle();
-	// Similarly, buffer-dependent dialogs should be updated or hidden.
-	// This should go here because some dialogs (ToC) require bv_->text.
-	if (buffer_) owner_->getDialogs()->updateBufferDependent();
-#ifdef WITH_WARNINGS
-#warning Is this the right place for this?
-// What was wrong with where it used to be in the previous if(buffer_) above?
-// There also used to be a hideBufferDependent somewhere here but I haven't
-// time at present to check.  This should at least fix the segfault.
-#endif
 }
 
 

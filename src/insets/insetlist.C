@@ -57,7 +57,7 @@ void InsetList::Write(Buffer const * buf, ostream & os) const
 }
 
 
-Inset * InsetList::Clone() const
+Inset * InsetList::Clone(Buffer const &) const
 {
 	InsetList * result = new InsetList;
 	result->inset->init(inset);

@@ -25,7 +25,7 @@ public:
 	///
 	InsetTOC(InsetCommandParams const & p) : InsetCommand(p) {}
 	///
-        Inset * Clone() const { return new InsetTOC(params()); }
+        Inset * Clone(Buffer const &) const { return new InsetTOC(params()); }
     	///
 	string const getScreenLabel() const;
 	///
