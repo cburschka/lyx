@@ -260,7 +260,7 @@ SEARCH_PROG([for a LaTeX preview],LATEX_VIEWER, "xterm -e less")
 
 # Search for a program to convert ps to pdf
 SEARCH_PROG([for a PS to PDF converter],ps_to_pdf_command,ps2pdf)
-test $ps_to_pdf_command = "ps2pdf" && ps_to_pdf_command="ps2pdf \$\$i"
+test $ps_to_pdf_command = "ps2pdf" && ps_to_pdf_command="ps2pdf -dCompatibilityLevel=1.3 \$\$i"
 
 # Search for a program to convert dvi to ps
 SEARCH_PROG([for a DVI to PS converter],dvi_to_ps_command,dvips)
@@ -302,7 +302,8 @@ dnl   fax_command="none"
 dnl fi
 
 # Search a GUI Fax program
-SEARCH_PROG([for a fax program], fax_command, ksendfax)
+SEARCH_PROG([for a fax program], fax_command, kdeprintfax ksendfax)
+test $fax_command = "kdeprintfax" && fax_command="kdeprintfax \$\$i"
 test $fax_command = "ksendfax" && fax_command="ksendfax \$\$i"
 
 # Search for LinuxDoc support
