@@ -77,7 +77,7 @@ ImageLoaderXPM::runImageLoader(string const & filename)
 	xpm_col.pixel = lyxColorHandler->colorPixel(LColor::graphicsbg);
 
 	XpmAttributes attrib;
-	attrib.valuemask = XpmCloseness | XpmColorSymbols | XpmColorKey;
+	attrib.valuemask = XpmCloseness | XpmColorSymbols;
 
 	attrib.closeness = 10000;
 
