@@ -889,7 +889,7 @@ void sigchldchecker(pid_t pid, int * status)
 					prev->next = p->next;
 				else
 					pw = p->next;
-				free(p);
+				delete p;
 				break;
 			}
 			prev = p;
@@ -1037,6 +1037,7 @@ InsetFig::InsetFig(int tmpx, int tmpy, Buffer * o)
 	pflags = flags = 9;
 	psubfigure = subfigure = false;
 	xwid = xhgh = angle = 0;
+	pswid = pshgh = 0;
 	raw_wid = raw_hgh = 0;
 	changedfname = false;
 	RegisterFigure(this);

@@ -10,6 +10,12 @@
 	members of the struct are correctly initialized to 0 (detected by
 	purify) 
 	* src/lyxrc.C (LyXRC): ditto for print_adapt_output.
+	* src/insets/figinset.C (InsetFig): ditto for pswid and pshgh.
+
+	* src/insets/figinset.C (sigchldchecker): use "delete" to free a
+	pidwait, since it was allocated with "new". This was potentially
+	very bad. Thanks to Michael Schmitt for running purify for us.
+
 
 2000-01-04  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
