@@ -1,3 +1,7 @@
+2004-04-29  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* FormBase.h (controller): gcc 3.4 compilation fix
+
 2003-12-29  Angus Leeming  <leeming@lyx.org>
 
 	* xforms_helpers.C (read, write): output a diagnostic message if

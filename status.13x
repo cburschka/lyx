@@ -19,6 +19,8 @@ What's new
 
 ** Updates
 
+- new textclass svglobal, needed for various Springer Verlag journals
+  for which no specific class exists
 
 - updated basque, danish, italian and romanian localizations; updated basque
   and german documentations
@@ -40,8 +42,10 @@ What's new
 - fix running makeindex and bibtex when the file name contains some
   special characters [bug #1526]
 
-- Prevent clashes with LaTeX packages defining "\boldsymbol".
+- Prevent clashes with LaTeX packages defining "\boldsymbol"
 
+- fix handling of floats and counters in  svjog and svprobth
+  textclasses [bug #1430]
 
 * User Interface:
 
@@ -69,6 +73,8 @@ What's new
 - fix compilation for OpenBSD
 
 - fix compilation with SGI C++ compiler
+
+- fix compilation with gcc 3.4
 
 - fix linking with Qt/Mac 3.3.1
 

@@ -1,3 +1,7 @@
+2004-04-29  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* BoostFormat.h: fix compilation with gcc 3.4
+
 2003-09-24  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* paragraph.C (TeXEnvironment): make sure that there is a line

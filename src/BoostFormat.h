@@ -15,7 +15,7 @@ namespace boost
 {
 
 extern
-template basic_format<char>;
+template class basic_format<char>;
 
 extern template
 std::ostream &

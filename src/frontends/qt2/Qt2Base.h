@@ -174,14 +174,14 @@ Qt2CB<Controller, Base>::Qt2CB(QString const & t)
 template <class Controller, class Base>
 Controller & Qt2CB<Controller, Base>::controller()
 {
-	return static_cast<Controller &>(getController());
+	return static_cast<Controller &>(this->getController());
 }
 
 
 template <class Controller, class Base>
 Controller const & Qt2CB<Controller, Base>::controller() const
 {
-	return static_cast<Controller const &>(getController());
+	return static_cast<Controller const &>(this->getController());
 }
 
 

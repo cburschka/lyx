@@ -1,3 +1,7 @@
+2004-04-29  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* Qt2Base.h (controller): gcc 3.4 compilation fix
+
 2004-01-22  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* QLPopupMenu.C (getLabel): fix bug #1350. The menu entry did not
