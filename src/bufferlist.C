@@ -376,9 +376,6 @@ Buffer * BufferList::readFile(string const & s, bool ronly)
 				// emergency file.
 				b->markDirty();
 				use_emergency = true;
-			} else {
-				// Here, we should delete the emergency save
-				lyx::unlink(e);
 			}
 		}
 	}
