@@ -29,6 +29,7 @@
 
 #include "frontends/LyXView.h"
 #include "frontends/Alert.h"
+#include "mathed/math_cursor.h"
 
 #include "support/lstrings.h"
 #include "Lsstream.h"
@@ -287,6 +288,9 @@ string const currentState(BufferView * bv)
 {
 	if (!bv->available())
 		return string();
+
+	if (mathcursor)
+		return mathcursor->info();
 
 	ostringstream state;
 
