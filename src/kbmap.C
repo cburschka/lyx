@@ -325,3 +325,17 @@ kb_keymap::findbindings(FuncRequest const & func,
 
 	return res;
 }
+
+
+std::pair<LyXKeySym const *, key_modifier::state>
+kb_keymap::find1keybinding(FuncRequest const & func) const
+{
+	Table::const_iterator end = table.end();
+	for (Table::const_iterator cit = table.begin();
+	    cit != end; ++cit) {
+		if (!cit->table.get() && cit->func == func) 
+			return std::make_pair(cit->code.get(), cit->mod.first);
+	}
+
+	return std::make_pair<LyXKeySym const *, key_modifier::state>(0, key_modifier::none);
+}	

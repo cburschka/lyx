@@ -1,3 +1,8 @@
+2004-06-24  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* kbmap.C (find1keybinding): new method, only used by LyX/Mac with
+	Qt frontend
+
 2004-07-05  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* BufferView_pimpl.C (setBuffer): set the layout combox value only

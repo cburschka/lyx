@@ -22,6 +22,12 @@
 
 #include "support/lstrings.h"
 
+#ifdef Q_WS_MACX
+#include "kbmap.h"
+#include "QLyXKeySym.h"
+extern boost::scoped_ptr<kb_keymap> toplevel_keymap;
+#endif
+
 using std::distance;
 using std::make_pair;
 using std::string;
@@ -44,13 +50,6 @@ string const getLabel(MenuItem const & mi)
 		string::size_type pos = label.find(shortcut);
 		if (pos != string::npos)
 			label.insert(pos, 1, '&');
-	}
-
-	if (mi.kind() == MenuItem::Command) {
-		string const binding(mi.binding());
-		if (!binding.empty()) {
-			label += '\t' + binding;
-		}
 	}
 
 	return label;
@@ -107,7 +106,30 @@ void QLPopupMenu::populate(Menu * menu)
 				funcs_.insert(funcs_.end(), m->func());
 			int const index = distance(funcs_.begin(), fit);
 
-			insertItem(toqstr(getLabel(*m)), index);
+			QString label = toqstr(getLabel(*m));
+#ifdef Q_WS_MACX
+			/* There are two constraints on Qt/Mac: (1)
+			   the bindings require a unicode string to be
+			   represented meaningfully and std::string
+			   does not work (2) only 1-key bindings can
+			   be represented in menus.
+			   
+			   This is why the unpleasant hack bellow is
+			   needed (JMarc)
+			*/
+			pair<LyXKeySym const *, key_modifier::state>
+				binding = toplevel_keymap->find1keybinding(m->func());
+			if (binding.first) {
+				QLyXKeySym const *key = static_cast<QLyXKeySym const *>(binding.first);
+				label += '\t' + key->qprint(binding.second);
+			}
+#else
+			string const binding(m->binding());
+			if (!binding.empty()) {
+				label += '\t' + toqstr(binding);
+			}
+#endif
+			insertItem(label, index);
 			setItemEnabled(index, status.enabled());
 			setItemChecked(index, status.onoff(true));
 		}

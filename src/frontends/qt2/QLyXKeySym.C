@@ -169,10 +169,9 @@ char QLyXKeySym::getISOEncoded(string const & encoding) const
 }
 
 
-string const QLyXKeySym::print(key_modifier::state mod) const
+QString const QLyXKeySym::qprint(key_modifier::state mod) const
 {
 	int tmpkey = key_;
-
 
 	if (mod & key_modifier::shift)
 		tmpkey += Qt::SHIFT;
@@ -181,7 +180,13 @@ string const QLyXKeySym::print(key_modifier::state mod) const
 	if (mod & key_modifier::alt)
 		tmpkey += Qt::ALT;
 
-	return fromqstr(QAccel::keyToString(tmpkey));
+	return QAccel::keyToString(tmpkey);
+}
+
+
+string const QLyXKeySym::print(key_modifier::state mod) const
+{
+	return fromqstr(qprint(mod));
 }
 
 

@@ -65,6 +65,15 @@ public:
 	/// Given an action, print the keybindings.
 	std::string const printbindings(FuncRequest const & func) const;
 
+ 	/**
+	 *  Given an action, find the first 1-key binding (if it exists).
+	 *  The LyXKeySym pointer is 0 is no key is found.
+	 *  [only used by the Qt/Mac frontend]
+	 */
+	std::pair<LyXKeySym const *, key_modifier::state>
+	find1keybinding(FuncRequest const & func) const;
+
+
 	/**
 	 * Returns a string of the given keysym, with modifiers.
 	 * @param key the key as a keysym

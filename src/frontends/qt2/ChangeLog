@@ -1,3 +1,11 @@
+2004-07-05  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* QLyXKeySym.C (qprint): like print, but return a QString
+	(print): use qprint.
+
+	* QLPopupMenu.C (getLabel): do not add the binding here anymore
+	(populate): changes to make bindings work on Qt/Mac. 
+
 2004-06-09  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* lyx_gui.C (getStatus): under Mac OS X, disable the
