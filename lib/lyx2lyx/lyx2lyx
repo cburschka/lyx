@@ -164,7 +164,7 @@ def main(argv):
 
     if opt.start:
         if opt.start != fmt:
-            print warning.dont_match + ":", opt.start, fmt
+            sys.stderr.write("%s: %s %s\n" % (warning.dont_match, opt.start, fmt))
     else:
         opt.start = fmt
 
