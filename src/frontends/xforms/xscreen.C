@@ -57,7 +57,6 @@ GC createGC()
 } // namespace anon
 
 
-// Constructor
 XScreen::XScreen(XWorkArea & o)
 	: LyXScreen(), owner_(o)
 {
@@ -81,7 +80,8 @@ XScreen::~XScreen()
 
 void XScreen::setCursorColor()
 {
-	if (!lyxColorHandler.get()) return;
+	if (!lyxColorHandler.get())
+		return;
 
 	GC gc = lyxColorHandler->getGCForeground(LColor::cursor);
 
@@ -205,7 +205,8 @@ void XScreen::expose(int x, int y, int w, int h)
 
 void XScreen::draw(LyXText * text, BufferView * bv, unsigned int y)
 {
-	if (cursor_visible_) hideCursor();
+	if (cursor_visible_)
+		hideCursor();
 
 	int const old_first = text->first_y;
 	bool const internal = (text == bv->text);
@@ -258,4 +259,4 @@ void XScreen::draw(LyXText * text, BufferView * bv, unsigned int y)
 	}
 
 	XSync(fl_get_display(), 0);
-}
+} 
