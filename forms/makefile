@@ -17,17 +17,11 @@ SHELL = /bin/sh
 # Various commands
 FDESIGN = fdesign
 
-SRCS = bibforms.fd credits_form.fd form1.fd include_form.fd \
-	log_form.fd lyx.fd math_forms.fd \
-	print_form.fd sp_form.fd
+SRCS = figure_form.fd print_form.fd sp_form.fd
 
-OBJS = bibforms.c credits_form.c form1.c include_form.c \
-	log_form.c lyx.c math_forms.c \
-	print_form.c sp_form.c
+OBJS = figure_form.c print_form.c sp_form.c
 
-COBJS = bibforms.C credits_form.C form1.C include_form.C \
-	log_form.C lyx.C math_forms.C \
-	print_form.C sp_form.C
+COBJS = figure_form.C print_form.C sp_form.C
 
 all:
 	@echo "This is a makefile intended for the maintainer only."
@@ -62,16 +56,11 @@ e: c
 
 updatesrc: d e
 	@echo
-	@echo "Beware some files may be installed in the wrong directory!" >&2
-	@echo "In particular be careful with gui-indep forms.  Make sure">&2
-	@echo "they have been removed from the files here otherwise we'll">&2
-	@echo "get junk code and errors at compile time.">&2
+	@echo "Be careful with gui-indep forms.  Make sure they have been">&2
+	@echo "removed from the files here otherwise we'll get junk code ">&2
+	@echo "and errors at compile time.">&2
 	for fil in *.C *.h ; do \
-		if [ $$fil = "math_forms.C" -o $$fil = "math_forms.h" ]; then \
-			cmp -s $$fil ../src/mathed/$$fil || cp $$fil ../src/mathed ; \
-		else \
-			cmp -s $$fil ../src/$$fil || cp $$fil ../src ; \
-		fi \
+		cmp -s $$fil ../src/$$fil || cp $$fil ../src ; \
 	done
 
 .fd.c:
