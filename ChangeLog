@@ -1,3 +1,11 @@
+2001-01-23  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* src/support/lstrings.C (strip): Add a fix for compilers with broken
+	string::find_last_not_of.
+
+	* src/support/filetools.C (AddPath): Simplify by using strip and
+ 	frontStrip.
+
 2001-01-24  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* src/MenuBackend.C (expand): Fix the sorting of the formats.

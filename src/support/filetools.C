@@ -942,12 +942,9 @@ string const AddPath(string const & path, string const & path_2)
 			buf += '/';
 	}
 
-	if (!path2.empty()) {
-	        string::size_type const p2start = path2.find_first_not_of('/');
-		string::size_type const p2end = path2.find_last_not_of('/');
-		string const tmp = path2.substr(p2start, p2end - p2start + 1);
-		buf += tmp + '/';
-	}
+	if (!path2.empty())
+		buf += frontStrip(strip(path2, '/'), '/') + '/';
+
 	return buf;
 }
 
