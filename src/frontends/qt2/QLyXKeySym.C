@@ -63,7 +63,8 @@ string QLyXKeySym::getSymbolName() const
 
 	if (sym.empty()) {
 		lyxerr[Debug::KEY] << "sym empty in getSymbolName()" << endl;
-		sym = text_.latin1();
+		if (!text_.isEmpty())
+			sym = text_.latin1();
 	}
 	lyxerr[Debug::KEY] << "getSymbolName() -> " << sym << endl;
 	return sym;
