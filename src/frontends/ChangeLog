@@ -1,3 +1,8 @@
+2002-12-17  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* lyx_gui.h: add new function lyx_gui::getStatus, which can be
+	used by a frontend to indicate that some lfun is not implemented.
+
 2002-12-12  John Levon  <levon@movementarian.org>
 
 	* LyXKeySym.h: add isText()

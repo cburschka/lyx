@@ -1,3 +1,9 @@
+2002-12-17  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* Menubar_pimpl.C (create_submenu): correctly ignore unknown lfuns
+
+	* lyx_gui.C (getStatus): implement as a dummy action
+
 2002-12-16  Angus Leeming  <leeming@lyx.org>
 
 	* XPainter.C: missed a #ifdef USE_XFORMS_IMAGE_LOADER.

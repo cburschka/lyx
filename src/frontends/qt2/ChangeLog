@@ -1,3 +1,15 @@
+2002-12-18  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* Alert_pimpl.C (askForText_pimpl): replace qt_() with _()
+
+2002-12-17  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* QLPopupMenu.C (populate): ignore unknown lfuns; do not insert
+	separator as first item of a menu
+
+	* lyx_gui.C (getStatus): indicate that LFUN_LAYOUT_PREAMBLE and
+	LFUN_TOOLTIPS_TOGGLE are not implemented
+
 2002-12-18  Edwin Leuven  <e.leuven@uva.nl>
 
 	* BulletsModule.C: fix crash on custom bullet cancel

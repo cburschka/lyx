@@ -26,7 +26,7 @@
 #include "Alert_pimpl.h"
 
 #include "BoostFormat.h"
-
+#include "gettext.h"
 
 using std::pair;
 using std::make_pair;
@@ -61,7 +61,7 @@ askForText_pimpl(string const & msg, string const & dflt)
 	fmt % msg;
 	string const title = fmt.str();
 #else
-	string const title = qt_("LyX: ") + msg;
+	string const title = _("LyX: ") + msg;
 #endif
 	QAskForTextDialog d(0, toqstr(title), true);
 	// less than ideal !

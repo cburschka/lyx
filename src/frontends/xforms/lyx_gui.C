@@ -317,6 +317,12 @@ void lyx_gui::exit()
 }
 
 
+FuncStatus lyx_gui::getStatus(FuncRequest const & /*ev*/)
+{
+	// Nothing interesting to do here
+	return FuncStatus();
+}
+
 string const lyx_gui::hexname(LColor::color col)
 {
 	string const name = lcolor.getX11Name(col);

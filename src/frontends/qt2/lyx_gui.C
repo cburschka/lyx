@@ -26,6 +26,7 @@
 #include "lyx_main.h"
 #include "lyxrc.h"
 #include "lyxfont.h"
+#include "funcrequest.h"
 
 // FIXME: move this stuff out again
 #include "bufferlist.h"
@@ -165,6 +166,21 @@ void lyx_gui::start(string const & batch, vector<string> const & files)
 void lyx_gui::exit()
 {
 	qApp->exit(0);
+}
+
+
+FuncStatus lyx_gui::getStatus(FuncRequest const & ev)
+{
+	FuncStatus flag;
+	switch (ev.action) {
+	case LFUN_LAYOUT_PREAMBLE:
+	case LFUN_TOOLTIPS_TOGGLE:
+		flag.unknown(true);
+		break;
+	default:
+		break;
+	}
+	return flag;
 }
 
 

@@ -14,12 +14,14 @@
 
 #include "LColor.h"
 #include "LString.h"
+#include "FuncStatus.h"
 
 #include <vector>
 
 class Dialogs;
 class LyXFont;
 class LyXComm;
+class FuncRequest;
 
 /// GUI interaction
 namespace lyx_gui {
@@ -43,6 +45,13 @@ void start(string const & batch, std::vector<string> const & files);
  * quit running LyX
  */
 void exit();
+
+
+/**
+ * return the status flag for a given action. This can be used to tell
+ * that a given lfun is not implemented by a frontend
+ */
+FuncStatus getStatus(FuncRequest const & ev);
 
 /** Eg, passing LColor::black returns "000000",
  *      passing LColor::white returns "ffffff".

@@ -271,9 +271,20 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 		return flag.disabled(true);
 	}
 
-	if (ev.action == LFUN_UNKNOWN_ACTION) {
+	switch (ev.action) {
+	case LFUN_UNKNOWN_ACTION:
+#ifndef HAVE_LIBAIKSAURUS
+	case LFUN_THESAURUS_ENTRY:
+#endif
+		flag.unknown(true);
+		break;
+	default:
+		flag |= lyx_gui::getStatus(ev);
+	}
+	
+	if (flag.unknown()) {
 		setStatusMessage(N_("Unknown action"));
-		return flag.unknown(true);
+		return flag;
 	}
 
 	// the default error message if we disable the command
@@ -331,11 +342,6 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 		}
 		disable = !mathcursor && !view()->getLyXText()->selection.set();
 		break;
-#ifndef HAVE_LIBAIKSAURUS
-	case LFUN_THESAURUS_ENTRY:
-		disable = true;
-		break;
-#endif
 	case LFUN_RUNCHKTEX:
 		disable = lyxrc.chktex_command == "none";
 		break;

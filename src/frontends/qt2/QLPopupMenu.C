@@ -119,7 +119,8 @@ void QLPopupMenu::populate(Menu * menu)
 	Menu::const_iterator end = menu->end();
 	for (; m != end; ++m) {
 		if (m->kind() == MenuItem::Separator) {
-			insertSeparator();
+			if (count() > 0)
+				insertSeparator();
 		} else if (m->kind() == MenuItem::Submenu) {
 			pair<int, QLPopupMenu *> res = createMenu(this, &(*m), owner_);
 			setItemEnabled(res.first, !disabled(m->submenu()));
@@ -127,7 +128,8 @@ void QLPopupMenu::populate(Menu * menu)
 		} else {
 			FuncStatus const status =
 				owner_->view()->getLyXFunc().getStatus(m->action());
-			if (status.disabled() && m->optional())
+			if ((status.disabled() && m->optional())
+				|| status.unknown())
 				continue;
 			insertItem(toqstr(getLabel(*m)), m->action());
 			setItemEnabled(m->action(), !status.disabled());
