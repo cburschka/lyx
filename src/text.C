@@ -1342,9 +1342,8 @@ void LyXText::setHeightOfRow(BufferView * bview, Row * row_ptr) const
 			maxasc += LYX_PAPER_MARGIN;
       
 		// add the vertical spaces, that the user added
-		if (firstpar->params().spaceTop().kind() != VSpace::NONE)
-			maxasc += int(firstpar->params().spaceTop().inPixels(bview));
-      
+		maxasc += getLengthMarkerHeight(bview, firstpar->params().spaceTop());
+ 
 		// do not forget the DTP-lines!
 		// there height depends on the font of the nearest character
 		if (firstpar->params().lineTop())
@@ -1456,8 +1455,7 @@ void LyXText::setHeightOfRow(BufferView * bview, Row * row_ptr) const
 			maxdesc += LYX_PAPER_MARGIN;
 	  
 		// add the vertical spaces, that the user added
-		if (firstpar->params().spaceBottom().kind() != VSpace::NONE)
-			maxdesc += int(firstpar->params().spaceBottom().inPixels(bview));
+		maxdesc += getLengthMarkerHeight(bview, firstpar->params().spaceBottom());
 	  
 		// do not forget the DTP-lines!
 		// there height depends on the font of the nearest character
@@ -3158,6 +3156,80 @@ void LyXText::paintRowDepthBar(DrawRowParams & p)
 	}
 }
 
+
+int LyXText::getLengthMarkerHeight(BufferView * bv, VSpace const & vsp) const
+{
+	if (vsp.kind() != VSpace::LENGTH) {
+		return int(vsp.inPixels(bv));
+	}
+
+	int const space_size = int(vsp.inPixels(bv));
+	int const arrow_size = 10;
+ 
+	LyXFont font;
+	font.decSize();
+	int const min_size = 2 * arrow_size + 10
+		+ lyxfont::maxAscent(font)
+		+ lyxfont::maxDescent(font);
+
+	return std::max(min_size, space_size);
+}
+
+ 
+int LyXText::drawLengthMarker(DrawRowParams & p, string const & prefix,
+	VSpace const & vsp, int start)
+{
+	string const str(prefix
+		+ " (" + vsp.asLyXCommand() + ")");
+ 
+	int const arrow_size = 10;
+ 
+	int const size = getLengthMarkerHeight(p.bv, vsp);
+ 
+	// first the string
+	int w = 0;
+	int a = 0;
+	int d = 0;
+ 
+	LyXFont font;
+	font.setColor(LColor::added_space).decSize();
+	lyxfont::rectText(str, font, w, a, d);
+ 
+	int const end = start + size;
+
+	p.pain->rectText(p.xo + 2 * arrow_size + 5, 
+		start + ((end - start) / 2) + d,
+		str, font,
+		backgroundColor(),
+		backgroundColor());
+ 
+	// adding or removing space
+	bool const added = !(vsp.length().len().value() < 0.0);
+
+	int const leftx = p.xo;
+	int const midx = leftx + arrow_size;
+	int const rightx = midx + arrow_size;
+ 
+	// top arrow
+	int const ty1 = added ? (start + arrow_size) : start;
+	int const ty2 = added ? start : (start + arrow_size);
+
+	p.pain->line(leftx, ty1, midx, ty2, LColor::added_space);
+	p.pain->line(midx, ty2, rightx, ty1, LColor::added_space);
+
+	// bottom arrow
+	int const by1 = added ? (end - arrow_size) : end;
+	int const by2 = added ? end : (end - arrow_size);
+ 
+	p.pain->line(leftx, by1, midx, by2, LColor::added_space);
+	p.pain->line(midx, by2, rightx, by1, LColor::added_space);
+
+	// joining line
+	p.pain->line(midx, ty2, midx, by2, LColor::added_space);
+
+	return size;
+}
+ 
  
 void LyXText::paintFirstRow(DrawRowParams & p)
 {
@@ -3170,7 +3242,7 @@ void LyXText::paintFirstRow(DrawRowParams & p)
 	}
 	
 	int y_top = 0;
-		
+
 	// think about the margins
 	if (!p.row->previous() && bv_owner)
 		y_top += LYX_PAPER_MARGIN;
@@ -3209,35 +3281,13 @@ void LyXText::paintFirstRow(DrawRowParams & p)
 		p.pain->line(x, y2, x, y1, LColor::added_space);
 		
 		y_top += 3 * defaultHeight();
+		y_top += int(parparams.spaceTop().inPixels(p.bv));
 	} else if (parparams.spaceTop().kind() == VSpace::LENGTH) {
-		string str = string(_("Space above")) + " ("
-			+ parparams.spaceTop().asLyXCommand()
-			+ ")";
- 
-		int const space = int(parparams.spaceTop().inPixels(p.bv));
-		int const y = p.yo + y_top + space / 2;
- 
-		p.pain->line(p.xo, y, p.xo + p.width, y, 
-			LColor::added_space, Painter::line_onoffdash);
- 
-		int w = 0;
-		int a = 0;
-		int d = 0;
- 
-		LyXFont pb_font;
-		pb_font.setColor(LColor::added_space).decSize();
-		lyxfont::rectText(str, pb_font, w, a, d);
-
-		// don't draw if it won't fit 
-		if (a + d + 4 < space) { 
-			p.pain->rectText(p.xo + (p.width - w)/2, y + d,
-				      str, pb_font,
-				      backgroundColor(),
-				      backgroundColor());
-		}
+		y_top += drawLengthMarker(p, _("Space above"),
+			parparams.spaceTop(), p.yo + y_top);
+	} else {
+		y_top += int(parparams.spaceTop().inPixels(p.bv));
 	}
-	
-	y_top += int(parparams.spaceTop().inPixels(p.bv));
 	
 	Buffer const * buffer = p.bv->buffer();
  
@@ -3426,37 +3476,16 @@ void LyXText::paintLastRow(DrawRowParams & p)
 		p.pain->line(x, y, x, y2, LColor::added_space);
  
 		y_bottom -= 3 * defaultHeight();
+		y_bottom -= int(parparams.spaceBottom().inPixels(p.bv));
 	} else if (parparams.spaceBottom().kind() == VSpace::LENGTH) {
-		string str = string(_("Space below"))
-			+ " ("
-			+ parparams.spaceBottom().asLyXCommand()
-			+ ")";
+		int const height =  getLengthMarkerHeight(p.bv, parparams.spaceBottom());
+		y_bottom -= drawLengthMarker(p, _("Space below"),
+				parparams.spaceBottom(),
+				p.yo + y_bottom - height);
  
-		int const space = int(parparams.spaceBottom().inPixels(p.bv));
-		int const y = p.yo + y_bottom - space / 2;
- 
-		p.pain->line(p.xo, y, p.xo + p.width, y,
-			LColor::added_space, Painter::line_onoffdash);
- 
-		int w = 0;
-		int a = 0;
-		int d = 0;
- 
-		LyXFont pb_font;
-		pb_font.setColor(LColor::added_space).decSize();
-		lyxfont::rectText(str, pb_font, w, a, d);
-
-		// don't draw if it won't fit 
-		if (a + d + 4 < space) { 
-			p.pain->rectText(p.xo + (p.width - w) / 2, y + d,
-				      str, pb_font,
-				      backgroundColor(),
-				      backgroundColor());
-		} 
+	} else {
+		y_bottom -= int(parparams.spaceBottom().inPixels(p.bv));
 	}
-	
-	// think about user added space
-	y_bottom -= int(parparams.spaceBottom().inPixels(p.bv));
 	
 	Buffer const * buffer = p.bv->buffer();
  

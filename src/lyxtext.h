@@ -590,6 +590,13 @@ private:
 	/// paint env depth bar 
 	void paintRowDepthBar(DrawRowParams & p);
  
+	/// get the on-screen size of the length marker
+	int getLengthMarkerHeight(BufferView * bv, VSpace const & vsp) const;
+ 
+	/// paint an added space marker
+	int drawLengthMarker(DrawRowParams & p, string const & str,
+		VSpace const & vsp, int start); 
+ 
 	/// paint a first row in a paragraph
 	void paintFirstRow(DrawRowParams & p);
  
