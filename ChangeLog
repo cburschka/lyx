@@ -1,3 +1,8 @@
+2000-07-20  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/paragraph.C (writeFile): NEW_INSETS: possible fix to the
+	layout write problem
+
 2000-07-20  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/Makefile.am (INCLUDES): remove image directory from include

@@ -130,16 +130,14 @@ void LyXParagraph::writeFile(Buffer const * buf, ostream & os,
 			     BufferParams const & params,
 			     char footflag, char dth) const
 {
+#ifndef NEW_INSETS
 	if (
-#ifndef NEW_INSETS
 		footnoteflag != LyXParagraph::NO_FOOTNOTE ||
-#endif
 	    !previous
-#ifndef NEW_INSETS
 	    || previous->footnoteflag == LyXParagraph::NO_FOOTNOTE
-#endif
 		) {
-
+#endif
+		
 #ifndef NEW_INSETS
 		// The beginning or the end of a footnote environment?
 		if (footflag != footnoteflag) {
@@ -241,16 +239,14 @@ void LyXParagraph::writeFile(Buffer const * buf, ostream & os,
                         }
 			os << '\n';
                 }
-	} else {
 #ifndef NEW_INSETS
+	} else {
    		// Dummy layout. This means that a footnote ended.
 		os << "\n\\end_float ";
 		footflag = LyXParagraph::NO_FOOTNOTE;
-#else
-		lyxerr << "Why don't we have a previous?" << endl;
-#endif
 	}
-#ifndef NEW_TABULAR	
+
+#ifndef NEW_TABULAR
 	// It might be a table.
 	if (table){
 		os << "\\LyXTable\n";
@@ -333,7 +329,8 @@ void LyXParagraph::writeFile(Buffer const * buf, ostream & os,
 			break;
 		}
 	}
-
+#endif
+	
 	// now write the next paragraph
 	if (next)
 		next->writeFile(buf, os, params, footflag, dth);
