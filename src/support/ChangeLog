@@ -1,3 +1,8 @@
+2003-07-18  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* BoostFormat.h (boost): remove one extern template. Gcc 3.4. does
+	not allow it (at least not in this form.)
+
 2003-07-01  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* os_win32.C: put namespace os in lyx::support.

@@ -1,3 +1,8 @@
+2003-07-18  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* math_parser.C (catInit): dont use unprintable control chars in
+	source.
+
 2003-07-17  Angus Leeming  <leeming@lyx.org>
 
 	* formulabase.C (localDispatch): return UNDISPATCHED for all

@@ -24,9 +24,6 @@
 namespace boost
 {
 
-extern
-template basic_format<char>;
-
 extern template
 std::ostream &
 operator<< <char, std::char_traits<char> >(std::ostream &,

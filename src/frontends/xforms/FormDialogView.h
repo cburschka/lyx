@@ -182,14 +182,14 @@ FormController<Controller, Base>::FormController(Dialog & p,
 template <class Controller, class Base>
 Controller & FormController<Controller, Base>::controller()
 {
-	return static_cast<Controller &>(getController());
+	return static_cast<Controller &>(this->getController());
 }
 
 
 template <class Controller, class Base>
 Controller const & FormController<Controller, Base>::controller() const
 {
-	return static_cast<Controller const &>(getController());
+	return static_cast<Controller const &>(this->getController());
 }
 
 

@@ -68,11 +68,11 @@ void ControlGraphics::clearParams()
 
 void ControlGraphics::dispatchParams()
 {
-	InsetGraphicsParams params(params());
+	InsetGraphicsParams tmp_params(params());
 	// core requires absolute path during runtime
-	params.filename = MakeAbsPath(params.filename,
+	tmp_params.filename = MakeAbsPath(tmp_params.filename,
 		kernel().buffer()->filePath());
-	string const lfun = InsetGraphicsMailer::params2string(params);
+	string const lfun = InsetGraphicsMailer::params2string(tmp_params);
 	kernel().dispatch(FuncRequest(LFUN_INSET_APPLY, lfun));
 }
 

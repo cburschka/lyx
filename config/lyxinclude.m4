@@ -211,6 +211,7 @@ if test x$GXX = xyes; then
       3.1*)    CXXFLAGS="$lyx_opt -finline-limit=500 -fno-exceptions";;
       3.2*)    CXXFLAGS="$lyx_opt -fno-exceptions";;
       3.3*)    CXXFLAGS="$lyx_opt -fno-exceptions";;
+      3.4*)    CXXFLAGS="$lyx_opt -fno-exceptions";;
       *)       CXXFLAGS="$lyx_opt";;
     esac
     if test x$enable_debug = xyes ; then

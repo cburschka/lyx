@@ -1,4 +1,3 @@
-
 #include <config.h>
 
 #include "texparser.h"
@@ -38,30 +37,30 @@ void catInit()
 	fill(theCatcode + 'a', theCatcode + 'z' + 1, catLetter);
 	fill(theCatcode + 'A', theCatcode + 'Z' + 1, catLetter);
 
-	theCatcode['\\'] = catEscape;
-	theCatcode['{']  = catBegin;
-	theCatcode['}']  = catEnd;
-	theCatcode['$']  = catMath;
-	theCatcode['&']  = catAlign;
+	theCatcode[int('\\')] = catEscape;
+	theCatcode[int('{')]  = catBegin;
+	theCatcode[int('}')]  = catEnd;
+	theCatcode[int('$')]  = catMath;
+	theCatcode[int('&')]  = catAlign;
 	theCatcode[10]   = catNewline;
-	theCatcode['#']  = catParameter;
-	theCatcode['^']  = catSuper;
-	theCatcode['_']  = catSub;
-	theCatcode[''] = catIgnore;
-	theCatcode[' ']  = catSpace;
-	theCatcode['\t'] = catSpace;
+	theCatcode[int('#')]  = catParameter;
+	theCatcode[int('^')]  = catSuper;
+	theCatcode[int('_')]  = catSub;
+	theCatcode[0x7f] = catIgnore;
+	theCatcode[int(' ')]  = catSpace;
+	theCatcode[int('\t')] = catSpace;
 	theCatcode[13]   = catIgnore;
-	theCatcode['~']  = catActive;
-	theCatcode['%']  = catComment;
+	theCatcode[int('~')]  = catActive;
+	theCatcode[int('%')]  = catComment;
 
 	// This is wrong!
-	theCatcode['@']  = catLetter;
+	theCatcode[int('@')]  = catLetter;
 }
 
 }
 
 
-// 
+//
 // catcodes
 //
 
@@ -171,7 +170,7 @@ void Parser::skip_spaces()
 	while (1) {
 		if (next_token().cat() == catSpace || next_token().cat() == catNewline)
 			get_token();
-		else if (next_token().cat() == catComment) 
+		else if (next_token().cat() == catComment)
 			while (next_token().cat() != catNewline)
 				get_token();
 		else
@@ -368,11 +367,11 @@ string Parser::verbatim_item()
 
 void Parser::setCatCode(char c, CatCode cat)
 {
-	theCatcode[c] = cat;	
+	theCatcode[(unsigned char)c] = cat;
 }
 
 
 CatCode Parser::getCatCode(char c) const
 {
-	return theCatcode[c];
+	return theCatcode[(unsigned char)c];
 }

@@ -160,7 +160,7 @@ void catInit()
 	theCatcode[int('#')]  = catParameter;
 	theCatcode[int('^')]  = catSuper;
 	theCatcode[int('_')]  = catSub;
-	theCatcode[int('')] = catIgnore;
+	theCatcode[int(0x7f)] = catIgnore;
 	theCatcode[int(' ')]  = catSpace;
 	theCatcode[int('\t')] = catSpace;
 	theCatcode[int('\r')] = catNewline;

@@ -1,9 +1,15 @@
+2003-07-18  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* texparser.C (catInit): same warning avoidance as in math_parser.C
+	(setCatCode): cast to safe type
+	(getCatCode): ditto
+
 2003-05-17  Joao Luis M. Assirati  <assirati@fma.if.usp.br>
 
 	* texparser.C: fix paragraph parsing after comment
 
 2003-04-29  André Pönitz  <poenitz@gmx.net>
-	
+
 	* Makefile.am:
 	  texparser.h: whitespace
 
@@ -13,7 +19,7 @@
 	versions of gcc to compile the code.
 
 2003-04-17  André Pönitz  <poenitz@gmx.net>
-	
+
 	* math.C:
 	  preamble.C:
 	  table.C:
@@ -50,4 +56,3 @@
 
 	* Makefile.am: empty, dummy file so that autogen.sh and configure
 	are happy.
-

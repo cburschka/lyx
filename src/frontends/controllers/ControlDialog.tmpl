@@ -27,13 +27,13 @@ ControlDialog<Base>::ControlDialog(LyXView & lv, Dialogs & d)
 template <class Base>
 void ControlDialog<Base>::show()
 {
-	if (isBufferDependent() && !bufferIsAvailable())
+	if (this->isBufferDependent() && !this->bufferIsAvailable())
 		return;
 
-	connect();
+	this->connect();
 
 	if (!dialog_built_) {
-		view().build();
+		this->view().build();
 		dialog_built_ = true;
 	}
 
@@ -43,17 +43,18 @@ void ControlDialog<Base>::show()
 		return;
 	}
 
-	bc().readOnly(bufferIsReadonly());
-	view().show();
+	this->bc().readOnly(this->bufferIsReadonly());
+	this->view().show();
 
 	// The widgets may not be valid, so refresh the button controller
-	bc().refresh();
+	this->bc().refresh();
 }
+
 
 template <class Base>
 void ControlDialog<Base>::update()
 {
-	if (isBufferDependent() && !bufferIsAvailable())
+	if (this->isBufferDependent() && !this->bufferIsAvailable())
 		return;
 
 	setParams();
@@ -62,12 +63,13 @@ void ControlDialog<Base>::update()
 		return;
 	}
 
-	bc().readOnly(bufferIsReadonly());
-	view().update();
+	this->bc().readOnly(this->bufferIsReadonly());
+	this->view().update();
 
 	// The widgets may not be valid, so refresh the button controller
-	bc().refresh();
+	this->bc().refresh();
 }
+
 
 template <class Base>
 void ControlDialog<Base>::hide()
@@ -75,6 +77,6 @@ void ControlDialog<Base>::hide()
 	this->emergency_exit_ = false;
 	clearParams();
 
-	disconnect();
-	view().hide();
+	this->disconnect();
+	this->view().hide();
 }

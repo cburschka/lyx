@@ -167,14 +167,14 @@ QController<Controller, Base>::QController(Dialog & p, string const & t)
 template <class Controller, class Base>
 Controller & QController<Controller, Base>::controller()
 {
-	return static_cast<Controller &>(getController());
+	return static_cast<Controller &>(this->getController());
 }
 
 
 template <class Controller, class Base>
 Controller const & QController<Controller, Base>::controller() const
 {
-	return static_cast<Controller const &>(getController());
+	return static_cast<Controller const &>(this->getController());
 }
 
 
