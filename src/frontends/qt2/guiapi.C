@@ -44,7 +44,8 @@
 #include "QLogDialog.h"
 #include "QMinipage.h"
 #include "QMinipageDialog.h"
-//#include "QParagraph.h"
+#include "QParagraph.h"
+#include "QParagraphDialog.h"
 #include "QPreamble.h"
 #include "QPreambleDialog.h"
 //#include "QPreferences.h"
@@ -149,6 +150,10 @@ controlIndexSingleton;
 GUISingleton<GUI<ControlMinipage, QMinipage,
 		 NoRepeatedApplyReadOnlyPolicy, Qt2BC> >
 controlMinipageSingleton;
+
+GUISingleton<GUI<ControlParagraph, QParagraph,
+		 OkApplyCancelReadOnlyPolicy, Qt2BC> >
+controlParagraphSingleton;
 
 //GUISingleton<QPreferences> formPreferencesSingleton;
 
@@ -344,6 +349,7 @@ extern "C" {
 
 	void gui_ShowParagraph(LyXView & lv, Dialogs & d)
 	{
+		controlParagraphSingleton.get(lv, d).show();
 #if 0
 		static GUI<ControlParagraph, QParagraph,
 			OkApplyCancelReadOnlyPolicy, Qt2BC> cp(lv, d);

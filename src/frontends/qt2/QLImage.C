@@ -60,7 +60,7 @@ Image::FormatList QLImage::loadableFormats()
 	QStrListIterator it(qt_formats);
 
 	for (; it.current(); ++it) {
-		lyxerr[Debug::GRAPHICS] << it.current() << endl;
+	   lyxerr[Debug::GRAPHICS] << it.current() << std::endl;
 
 		string ext = lowercase(it.current());
 	 

@@ -3,8 +3,7 @@ include $(top_srcdir)/config/common.am
 SUBDIRS = ui moc
 
 EXTRA_DIST = Makefile.dialogs QDocument.C QDocument.h \
-	QDocumentDialog.C QDocumentDialog.h QParagraph.h QParagraph.C \
-	QParagraphDialog.h QParagraphDialog.C
+	QDocumentDialog.C QDocumentDialog.h
 
 noinst_LTLIBRARIES = libqt2.la
 

@@ -16,6 +16,7 @@ DIALOGS = \
 	QIndex \
 	QLog \
 	QMinipage \
+	QParagraph \
 	QPreamble \
 	QPrint \
 	QRef \
@@ -58,6 +59,8 @@ DIALOGSOURCES = \
 	QLog.C QLogDialog.C \
 	QMinipage.h QMinipageDialog.h \
 	QMinipage.C QMinipageDialog.C \
+	QParagraph.h QParagraphDialog.h \
+	QParagraph.C QParagraphDialog.C \
 	QPreamble.h QPreambleDialog.h \
 	QPreamble.C QPreambleDialog.C \
 	QPrint.h QPrintDialog.h \
@@ -98,6 +101,7 @@ MOCDIALOGS = \
 	QIndexDialog_moc.C \
 	QLogDialog_moc.C \
 	QMinipageDialog_moc.C \
+	QParagraphDialog_moc.C \
 	QPreambleDialog_moc.C \
 	QPrintDialog_moc.C \
 	QRefDialog_moc.C \
@@ -142,6 +146,8 @@ UIDIALOGS = \
 	QLogDialogBase.C \
 	QMinipageDialogBase.h \
 	QMinipageDialogBase.C \
+	QParagraphDialogBase.h \
+	QParagraphDialogBase.C \
 	QPreambleDialogBase.h \
 	QPreambleDialogBase.C \
 	QPrintDialogBase.h \
@@ -183,6 +189,7 @@ UIMOCDIALOGS = \
 	QIndexDialogBase_moc.C \
 	QLogDialogBase_moc.C \
 	QMinipageDialogBase_moc.C \
+	QParagraphDialogBase_moc.C \
 	QPreambleDialogBase_moc.C \
 	QPrintDialogBase_moc.C \
 	QRefDialogBase_moc.C \
