@@ -101,6 +101,10 @@ public:
 	void setCharFont(BufferView *, Paragraph * par,
 			 lyx::pos_type pos, LyXFont const & font, bool toggleall);
 
+	/// return true if the row changed
+	void markChangeInDraw(BufferView * bv, Row * row, Row * next);
+	///
+	void breakAgainOneRow(BufferView *, Row * row);
 	/// what you expect when pressing <enter> at cursor position
 	void breakParagraph(BufferView *, char keep_layout = 0);
 
@@ -365,16 +369,9 @@ public:
 		text_uppercase = 2
 	};
 	/// Change the case of the word at cursor position.
-	void changeCase(BufferView *, TextCase action);
+	void changeCase(BufferView &, TextCase action);
 	///
 	void transposeChars(BufferView &);
-
-	/** returns a printed row in a pixmap. The y value is needed to
-	  decide, wether it is selected text or not. This is a strange
-	  solution but faster.
-	 */
-	void getVisibleRow(BufferView *, int y_offset, int x_offset,
-			   Row * row_ptr, int y, bool cleared=false);
 
 	///
 	void toggleInset(BufferView *);
@@ -440,9 +437,9 @@ public:
 	///
 	void checkParagraph(BufferView *, Paragraph * par, lyx::pos_type pos);
 	///
-	int workWidth(BufferView *) const;
+	int workWidth(BufferView &) const;
 	///
-	int workWidth(BufferView *, Inset * inset) const;
+	int workWidth(BufferView &, Inset * inset) const;
 	///
 	void computeBidiTables(Buffer const *, Row * row) const;
 
@@ -489,13 +486,8 @@ private:
 	///
 	float getCursorX(BufferView *, Row *, lyx::pos_type pos,
 					 lyx::pos_type last, bool boundary) const;
-	///
-	void changeRegionCase(BufferView * bv,
-				       LyXCursor const & from,
-				       LyXCursor const & to,
-				       LyXText::TextCase action);
 	/// used in setlayout
-	void makeFontEntriesLayoutSpecific(Buffer const *, Paragraph * par);
+	void makeFontEntriesLayoutSpecific(Buffer const &, Paragraph & par);
 
 	/** forces the redrawing of a paragraph. Needed when manipulating a
 	    right address box
@@ -527,80 +519,8 @@ private:
 
 	///
 	void breakAgain(BufferView *, Row * row) const;
-	///
-	void breakAgainOneRow(BufferView *, Row * row);
 	/// Calculate and set the height of the row
 	void setHeightOfRow(BufferView *, Row * row_ptr) const;
-
-	/** this calculates the specified parameters. needed when setting
-	 * the cursor and when creating a visible row */
-	void prepareToPrint(BufferView *, Row * row, float & x,
-			    float & fill_separator,
-			    float & fill_hfill,
-			    float & fill_label_hfill,
-			    bool bidi = true) const;
-
-	/// A struct used for drawing routines
-	struct DrawRowParams {
-		// the bufferview
-		BufferView * bv;
-		// the row
-		Row * row;
-		// the painter to use
-		Painter * pain;
-		// has the background been cleared
-		bool cleared;
-		/// x offset (e.g. for insets)
-		int xo;
-		/// y offset (e.g. for insets)
-		int yo;
-		/// FIXME
-		float x;
-		/// FIXME
-		int y;
-		/// the inset/view full width
-		int width;
-		/// hfill size
-		float hfill;
-		/// label hfill size
-		float label_hfill;
-		/// fill separator size
-		float separator;
-	};
-
-	/// paint the background
-	bool paintRowBackground(DrawRowParams & p);
-
-	/// paint the selection background
-	void paintRowSelection(DrawRowParams & p);
-
-	/// paint change bar
-	void paintChangeBar(DrawRowParams & p);
- 
-	/// paint appendix marker
-	void paintRowAppendix(DrawRowParams & p);
-
-	/// paint page break marker. Returns its height.
-	int paintPageBreak(string const & label, int y, DrawRowParams & p);
-
-	/// paint env depth bar
-	void paintRowDepthBar(DrawRowParams & p);
-
-	/// get the on-screen size of the length marker
-	int getLengthMarkerHeight(BufferView * bv, VSpace const & vsp) const;
-
-	/// paint an added space marker
-	int drawLengthMarker(DrawRowParams & p, string const & str,
-		VSpace const & vsp, int start);
-
-	/// paint a first row in a paragraph
-	void paintFirstRow(DrawRowParams & p);
-
-	/// paint a last row in a paragraph
-	void paintLastRow(DrawRowParams & p);
-
-	/// paint text
-	void paintRowText(DrawRowParams & p);
 
 	// fix the cursor `cur' after a characters has been deleted at `where'
 	// position. Called by deleteEmptyParagraphMechanism
@@ -624,6 +544,40 @@ public:
 	 */
 	Inset * checkInsetHit(BufferView * bv, int & x, int & y) const;
 
+	///
+	int singleWidth(BufferView *, Paragraph * par,
+		lyx::pos_type pos) const;
+	///
+	int singleWidth(BufferView *, Paragraph * par,
+		lyx::pos_type pos, char c) const;
+
+	/// return the color of the canvas
+	LColor::color backgroundColor() const;
+
+	///
+	mutable bool bidi_same_direction;
+
+	unsigned char transformChar(unsigned char c, Paragraph * par,
+				    lyx::pos_type pos) const;
+
+	/**
+	 * Returns the left beginning of the text.
+	 * This information cannot be taken from the layout object, because
+	 * in LaTeX the beginning of the text fits in some cases
+	 * (for example sections) exactly the label-width.
+	 */
+	int leftMargin(BufferView *, Row const * row) const;
+	///
+	int rightMargin(Buffer const &, Row const & row) const;
+
+	/** this calculates the specified parameters. needed when setting
+	 * the cursor and when creating a visible row */
+	void prepareToPrint(BufferView *, Row * row, float & x,
+			    float & fill_separator,
+			    float & fill_hfill,
+			    float & fill_label_hfill,
+			    bool bidi = true) const;
+
 private:
 	///
 	void setCounter(Buffer const *, Paragraph * par) const;
@@ -638,54 +592,20 @@ private:
 	 * some low level functions
 	 */
 
-	///
-	int singleWidth(BufferView *, Paragraph * par,
-		lyx::pos_type pos) const;
-	///
-	int singleWidth(BufferView *, Paragraph * par,
-		lyx::pos_type pos, char c) const;
-
-
-	/// draw normal chars
-	void drawChars(DrawRowParams & p, lyx::pos_type & vpos,
-		bool hebrew, bool arabic);
-	/// draw from arabic composed char
-	void drawArabicComposeChar(DrawRowParams & p, lyx::pos_type & vpos);
-	/// draw from hebrew composed char
-	void drawHebrewComposeChar(DrawRowParams & p, lyx::pos_type & vpos);
-	/// draw a mark for foreign language, starting from orig_x
-	void drawForeignMark(DrawRowParams & p, float const orig_x, LyXFont const & orig_font);
-	/// draw an inset
-	bool drawInset(DrawRowParams & p, lyx::pos_type const pos);
-	/// draw new line marker
-	void drawNewline(DrawRowParams & p, lyx::pos_type const pos);
-	/// draw text
-	bool draw(DrawRowParams & p, lyx::pos_type & vpos);
 
 	/// get the next breakpoint in a given paragraph
 	lyx::pos_type nextBreakPoint(BufferView *, Row const * row, int width) const;
 	/// returns the minimum space a row needs on the screen in pixel
-	int fill(BufferView *, Row * row, int workwidth) const;
-
-	/** returns the minimum space a manual label needs on the
-	  screen in pixel */
-	int labelFill(BufferView *, Row const * row) const;
+	int fill(BufferView &, Row & row, int workwidth) const;
 
 	/**
-	 * Returns the left beginning of the text.
-	 * This information cannot be taken from the layout object, because
-	 * in LaTeX the beginning of the text fits in some cases
-	 * (for example sections) exactly the label-width.
+	 * returns the minimum space a manual label needs on the
+	 * screen in pixels
 	 */
-	int leftMargin(BufferView *, Row const * row) const;
-	///
-	int rightMargin(Buffer const *, Row const * row) const;
-	///
-	int labelEnd (BufferView *, Row const * row) const;
+	int labelFill(BufferView &, Row const & row) const;
 
-	///
-	LColor::color backgroundColor();
-
+	/// FIXME
+	int labelEnd(BufferView &, Row const & row) const;
 
 	///
 	mutable std::vector<lyx::pos_type> log2vis_list;
@@ -703,13 +623,6 @@ private:
 	mutable lyx::pos_type bidi_end;
 
 	///
-	mutable bool bidi_same_direction;
-
-	///
-	unsigned char transformChar(unsigned char c, Paragraph * par,
-				    lyx::pos_type pos) const;
-
-	///
 	void charInserted();
 public:
 	//
@@ -723,6 +636,10 @@ public:
 
 	/// return true if this is the outer-most lyxtext
 	bool isTopLevel() const;
+
+	/// return true if this is owned by an inset. FIXME: why the difference
+	/// with isTopLevel() ??
+	bool isInInset() const;
 };
 
 /// return the default height of a row in pixels, considering font zoom

@@ -995,7 +995,7 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 
 	case LFUN_UPCASE_WORD:
 		update(bv, false);
-		changeCase(bv, LyXText::text_uppercase);
+		changeCase(*bv, LyXText::text_uppercase);
 		if (inset_owner)
 			bv->updateInset(inset_owner, true);
 		update(bv);
@@ -1003,7 +1003,7 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 
 	case LFUN_LOWCASE_WORD:
 		update(bv, false);
-		changeCase(bv, LyXText::text_lowercase);
+		changeCase(*bv, LyXText::text_lowercase);
 		if (inset_owner)
 			bv->updateInset(inset_owner, true);
 		update(bv);
@@ -1011,7 +1011,7 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 
 	case LFUN_CAPITALIZE_WORD:
 		update(bv, false);
-		changeCase(bv, LyXText::text_capitalization);
+		changeCase(*bv, LyXText::text_capitalization);
 		if (inset_owner)
 			bv->updateInset(inset_owner, true);
 		update(bv);

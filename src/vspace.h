@@ -62,7 +62,8 @@ public:
 	/// the latex representation
 	string const asLatexCommand(BufferParams const & params) const;
 	/// the size of the space on-screen
-	int inPixels(BufferView const * bv) const;
+	int inPixels(BufferView const & bv) const;
+
 private:
 	/// This VSpace kind
 	vspace_kind kind_;

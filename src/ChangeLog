@@ -1,3 +1,30 @@
+2003-02-26  John Levon  <levon@movementarian.org>
+
+	* lyxrow.h:
+	* lyxrow.C: add isParStart,isParEnd helpers
+
+	* paragraph.h: make isInserted/DeletedText take refs
+
+	* paragraph_funcs.h:
+	* paragraph_funcs.C: remove #if 0'd code
+
+	* lyxtext.h:
+	* text3.C:
+	* text2.C:
+	* text.C: use lyxrow helpers above.
+	Move draw and paint routines to RowPainter.
+	Make several methods use refs not pointers.
+	Make backgroundColor() const.
+	Add markChangeInDraw(), isInInset().
+	Merge changeRegionCase into changeCase.
+	Make workWidth() shouldn't-happen code into an Assert.
+
+	* rowpainter.h:
+	* rowpainter.C: new class for painting a row.
+
+	* vspace.h:
+	* vspace.C: make inPixels take a ref
+
 2003-02-26  Angus Leeming  <leeming@lyx.org>
 
 	* BufferView_pimpl.C (dispatch): use InsetCommand::localDispatch for

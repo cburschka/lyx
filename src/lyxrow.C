@@ -130,12 +130,24 @@ Row * Row::previous() const
 }
 
 
+bool Row::isParStart() const
+{
+	return !pos();
+}
+
+
+bool Row::isParEnd() const
+{
+	return !next() || next()->par() != par();
+}
+
+
 pos_type Row::lastPos() const
 {
 	if (!par()->size())
 		return 0;
 
-	if (!next() || next()->par() != par()) {
+	if (isParEnd()) {
 		return par()->size() - 1;
 	} else {
 		return next()->pos() - 1;
@@ -162,7 +174,7 @@ pos_type Row::lastPrintablePos() const
 	pos_type const last = lastPos();
 
 	// if this row is an end of par, just act like lastPos()
-	if (!next() || par() != next()->par())
+	if (isParEnd())
 		return last;
 
 	bool const nextrownotinset = !nextRowIsAllInset(*this, last);
@@ -256,7 +268,7 @@ bool Row::hfillExpansion(pos_type pos) const
 
 	// at the beginning of a row it does not count, if it is not
 	// the first row of a paragaph
-	if (!this->pos())
+	if (isParStart())
 		return true;
 
 	// in some labels  it does not count

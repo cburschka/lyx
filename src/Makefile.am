@@ -189,6 +189,8 @@ lyx_SOURCES = \
 	ispell.h \
 	pspell.C \
 	pspell.h \
+	rowpainter.C \
+	rowpainter.h \
 	sgml.C \
 	sgml.h \
 	tabular.C \

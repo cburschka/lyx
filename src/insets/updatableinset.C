@@ -168,7 +168,7 @@ int UpdatableInset::getMaxWidth(BufferView * bv, UpdatableInset const *) const
 		w = static_cast<UpdatableInset*>
 			(owner())->getMaxWidth(bv, this);
 	} else {
-		w = bv->text->workWidth(bv, const_cast<UpdatableInset *>(this));
+		w = bv->text->workWidth(*bv, const_cast<UpdatableInset *>(this));
 	}
 	if (w < 0) {
 		return -1;

@@ -53,17 +53,17 @@ using lyx::pos_type;
 
 LyXText::LyXText(BufferView * bv)
 	: height(0), width(0), first_y(0),
-	  inset_owner(0), the_locking_inset(0), need_break_row(0), 
+	  inset_owner(0), the_locking_inset(0), need_break_row(0),
 	  refresh_y(0), refresh_row(0), bv_owner(bv), 
 	  status_(LyXText::UNCHANGED), firstrow(0), lastrow(0)
 {}
 
 
 LyXText::LyXText(InsetText * inset)
-	:  height(0), width(0), first_y(0),
-	   inset_owner(inset), the_locking_inset(0), need_break_row(0), 
-	   refresh_y(0), refresh_row(0), bv_owner(0), 
-	   status_(LyXText::UNCHANGED), firstrow(0), lastrow(0)
+	: height(0), width(0), first_y(0),
+	  inset_owner(inset), the_locking_inset(0), need_break_row(0),
+	  refresh_y(0), refresh_row(0), bv_owner(0), 
+	  status_(LyXText::UNCHANGED), firstrow(0), lastrow(0)
 {}
 
 
@@ -409,21 +409,21 @@ void LyXText::toggleInset(BufferView * bview)
 
 /* used in setlayout */
 // Asger is not sure we want to do this...
-void LyXText::makeFontEntriesLayoutSpecific(Buffer const * buf,
-					    Paragraph * par)
+void LyXText::makeFontEntriesLayoutSpecific(Buffer const & buf,
+					    Paragraph & par)
 {
-	LyXLayout_ptr const & layout = par->layout();
+	LyXLayout_ptr const & layout = par.layout();
 
 	LyXFont layoutfont;
-	for (pos_type pos = 0; pos < par->size(); ++pos) {
-		if (pos < par->beginningOfMainBody())
+	for (pos_type pos = 0; pos < par.size(); ++pos) {
+		if (pos < par.beginningOfMainBody())
 			layoutfont = layout->labelfont;
 		else
 			layoutfont = layout->font;
 
-		LyXFont tmpfont = par->getFontSettings(buf->params, pos);
+		LyXFont tmpfont = par.getFontSettings(buf.params, pos);
 		tmpfont.reduce(layoutfont);
-		par->setFont(pos, tmpfont);
+		par.setFont(pos, tmpfont);
 	}
 }
 
@@ -458,7 +458,7 @@ Paragraph * LyXText::setLayout(BufferView * bview,
 
 	do {
 		par->applyLayout(lyxlayout);
-		makeFontEntriesLayoutSpecific(bview->buffer(), par);
+		makeFontEntriesLayoutSpecific(*bview->buffer(), *par);
 		Paragraph * fppar = par;
 		fppar->params().spaceTop(lyxlayout->fill_top ?
 					 VSpace(VSpace::VFILL)
@@ -1634,7 +1634,7 @@ void LyXText::checkParagraph(BufferView * bview, Paragraph * par,
 
 	// is there a break one row above
 	if (row->previous() && row->previous()->par() == row->par()) {
-		z = nextBreakPoint(bview, row->previous(), workWidth(bview));
+		z = nextBreakPoint(bview, row->previous(), workWidth(*bview));
 		if (z >= row->pos()) {
 			// set the dimensions of the row above
 			y -= row->previous()->height();
@@ -2370,6 +2370,12 @@ bool LyXText::isTopLevel() const
 {
 	/// only the top-level lyxtext has a non-null bv owner
 	return bv_owner;
+}
+
+
+bool LyXText::isInInset() const
+{
+	return inset_owner;
 }
 
 

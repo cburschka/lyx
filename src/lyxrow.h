@@ -67,6 +67,12 @@ public:
 	///
 	Row * previous() const;
 
+	/// return true if this row is the start of a paragraph
+	bool isParStart() const;
+
+	/// return true if this  row is the end of a paragraph
+	bool isParEnd() const;
+
 	/// return the position of the last character in this row
 	lyx::pos_type lastPos() const;
 	/// return the position of the last normal, printable character in this row

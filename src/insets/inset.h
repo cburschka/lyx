@@ -385,7 +385,7 @@ bool Inset::checkInsertChar(LyXFont &)
  * returns true if pointer argument is valid
  * and points to an editable inset
  */
-inline bool isEditableInset(Inset * i)
+inline bool isEditableInset(Inset const * i)
 {
 	return i && i->editable();
 }
@@ -394,7 +394,7 @@ inline bool isEditableInset(Inset * i)
  * returns true if pointer argument is valid
  * and points to a highly editable inset
  */
-inline bool isHighlyEditableInset(Inset * i)
+inline bool isHighlyEditableInset(Inset const * i)
 {
 	return i && i->editable() == Inset::HIGHLY_EDITABLE;
 }

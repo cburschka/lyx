@@ -344,15 +344,15 @@ private:
 };
 
  
-inline bool isInsertedText(Paragraph const * par, lyx::pos_type pos)
+inline bool isInsertedText(Paragraph const & par, lyx::pos_type pos)
 {
-	return par->lookupChange(pos) == Change::INSERTED;
+	return par.lookupChange(pos) == Change::INSERTED;
 }
  
  
-inline bool isDeletedText(Paragraph const * par, lyx::pos_type pos)
+inline bool isDeletedText(Paragraph const & par, lyx::pos_type pos)
 {
-	return par->lookupChange(pos) == Change::DELETED;
+	return par.lookupChange(pos) == Change::DELETED;
 }
  
 #endif // PARAGRAPH_H

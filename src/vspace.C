@@ -465,7 +465,7 @@ string const VSpace::asLatexCommand(BufferParams const & params) const
 
 
 
-int VSpace::inPixels(BufferView const * bv) const
+int VSpace::inPixels(BufferView const & bv) const
 {
 	// Height of a normal line in pixels (zoom factor considered)
 	int const default_height = defaultRowHeight(); // [pixels]
@@ -479,7 +479,7 @@ int VSpace::inPixels(BufferView const * bv) const
 		break;
 
 	case DEFSKIP:
-		retval = bv->buffer()->params.getDefSkip().inPixels(bv);
+		retval = bv.buffer()->params.getDefSkip().inPixels(bv);
 		break;
 
 	// This is how the skips are normally defined by LateX.
@@ -502,7 +502,7 @@ int VSpace::inPixels(BufferView const * bv) const
 		break;
 
 	case LENGTH:
-		retval = len_.len().inPixels(bv->workWidth());
+		retval = len_.len().inPixels(bv.workWidth());
 		break;
 
 	}

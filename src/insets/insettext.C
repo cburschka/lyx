@@ -36,6 +36,7 @@
 #include "WordLangTuple.h"
 #include "paragraph_funcs.h"
 #include "sgml.h"
+#include "rowpainter.h"
 
 #include "frontends/Alert.h"
 #include "frontends/Dialogs.h"
@@ -468,8 +469,10 @@ void InsetText::draw(BufferView * bv, LyXFont const & f,
 		int yf = y_offset + first;
 		y = 0;
 		while ((row != 0) && (yf < ph)) {
-			lt->getVisibleRow(bv, y + y_offset + first, int(x),
-					  row, y + lt->first_y, cleared);
+			Row * prev = row->previous();
+			RowPainter rp(*bv, *lt, *row);
+			if (rp.paint(y + y_offset + first, int(x), y + lt->first_y, cleared))
+				lt->markChangeInDraw(bv, row, prev);
 			if (bv->text->status() == LyXText::CHANGED_IN_DRAW) {
 				lt->need_break_row = row;
 				lt->fullRebreak(bv);

@@ -24,6 +24,7 @@
 #include "font_metrics.h"
 #include "language.h"
 #include "debug.h"
+#include "rowpainter.h"
 
 // Splash screen-specific stuff
 #include "lyxfont.h"
@@ -431,16 +432,23 @@ void LyXScreen::drawFromTo(LyXText * text, BufferView * bv,
 
 	while (row != 0 && y < y2) {
 		LyXText::text_status st = text->status();
-		text->getVisibleRow(bv, y + yo,
-				    xo, row, y + text->first_y);
+		// we need this here as the row pointer may be illegal
+		// at a later time (Jug20020502)
+		Row * prev = row->previous();
+		RowPainter rp(*bv, *text, *row);
+		if (rp.paint(y + yo, xo, y + text->first_y))
+			text->markChangeInDraw(bv, row, prev);
+
 		internal = internal && (st != LyXText::CHANGED_IN_DRAW);
 		while (internal && text->status() == LyXText::CHANGED_IN_DRAW) {
 			text->fullRebreak(bv);
 			st = LyXText::NEED_MORE_REFRESH;
 			text->setCursor(bv, text->cursor.par(), text->cursor.pos());
 			text->status(bv, st);
-			text->getVisibleRow(bv, y + yo,
-					    xo, row, y + text->first_y);
+			Row * prev = row->previous();
+			RowPainter rp(*bv, *text, *row);
+			if (rp.paint(y + yo, xo, y + text->first_y))
+				text->markChangeInDraw(bv, row, prev);
 		}
 		y += row->height();
 		row = row->next();
@@ -463,7 +471,10 @@ void LyXScreen::drawOneRow(LyXText * text, BufferView * bv, Row * row,
 
 	if (((y + row->height()) > 0) &&
 	    ((y - row->height()) <= static_cast<int>(workarea().workHeight()))) {
-		text->getVisibleRow(bv, y, xo, row, y + text->first_y);
+		Row * prev = row->previous();
+		RowPainter rp(*bv, *text, *row);
+		if (rp.paint(y, xo, y + text->first_y))
+			text->markChangeInDraw(bv, row, prev);
 	}
 	force_clear_ = false;
 }
