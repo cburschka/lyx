@@ -472,11 +472,14 @@ void QDocument::update_contents()
 	dialog_->packagesModule->amsCB->setChecked(
 		params.use_amsmath);
 
-	// FIXME: this is wrong
-	// QComboBox::setCurrentItem: (lspacingCO) Index 4 out of range
+	switch (params.spacing.getSpace()) {
+		case Spacing::Other: nitem = 3; break;
+		case Spacing::Double: nitem = 2; break;
+		case Spacing::Onehalf: nitem = 1; break;
+		case Spacing::Default: case Spacing::Single: nitem = 0; break;
+	}
  
-	dialog_->packagesModule->lspacingCO->
-		setCurrentItem(params.spacing.getSpace());
+	dialog_->packagesModule->lspacingCO->setCurrentItem(nitem);
 	if (params.spacing.getSpace() == Spacing::Other) {
 		dialog_->packagesModule->lspacingLE->setText(
 			tostr(params.spacing.getValue()).c_str());
