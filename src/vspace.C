@@ -1,13 +1,13 @@
 // -*- C++ -*-
 /* This file is part of
- * ======================================================
+ * ====================================================== 
  * 
  *           LyX, The Document Processor
  * 	 
  *	    Copyright 1995 Matthias Ettrich
  *          Copyright 1995-1999 The LyX Team.
  *
- * ======================================================*/
+ * ====================================================== */
 
 #include <config.h>
 
@@ -41,7 +41,7 @@ static char const * unit_name[num_units] = { "sp", "pt", "bp", "dd",
 
 LyXLength::UNIT unitFromString (string const & data)
 {
-	int i=0;
+	int i = 0;
 	while ((i<num_units) && (data != unit_name[i])) ++i;
 	return (LyXLength::UNIT)i;
 }
@@ -91,7 +91,7 @@ static char nextToken (string & data)
 	else {
 		string::size_type i;
 
-		// I really mean assignment ("=") below, not equality!
+		// I really mean assignment ("= ") below, not equality!
 		if ((i = data.find_last_of("0123456789.")) != string::npos) {
 			if (number_index > 3) return 'E';  // Error
                         string buffer = data.substr(0, i + 1);
@@ -102,7 +102,7 @@ static char nextToken (string & data)
 				return 'n';
 			} else 
 				return 'E';  // Error
-		} else if ((i=data.find_last_of("abcdefghijklmnopqrstuvwxyz"))
+		} else if ((i = data.find_last_of("abcdefghijklmnopqrstuvwxyz"))
 			   != string::npos) {
 			if (unit_index > 3) return 'E';  // Error
 			string buffer = data.substr(0, i + 1);
@@ -303,12 +303,12 @@ LyXGlueLength::LyXGlueLength (string const & data)
 	if (!isValidGlueLength (data, &tmp))
 		return; // should raise an exception
 	else {
-		val=tmp.val;
-		uni=tmp.uni;
-		plus_val =tmp.plus_val;
-		plus_uni =tmp.plus_uni;
-		minus_val=tmp.minus_val;
-		minus_uni=tmp.minus_uni;
+		val = tmp.val;
+		uni = tmp.uni;
+		plus_val = tmp.plus_val;
+		plus_uni = tmp.plus_uni;
+		minus_val = tmp.minus_val;
+		minus_uni = tmp.minus_uni;
 	}
 }
 
@@ -433,7 +433,7 @@ VSpace::VSpace (string const & data)
 }
 
 
-bool VSpace::operator== (VSpace const & other) const
+bool VSpace::operator==(VSpace const & other) const
 {
 	if (this->kin == other.kin) 
 		if (this->kin == LENGTH)

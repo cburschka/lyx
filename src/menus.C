@@ -1,13 +1,13 @@
 /*
  *  This file is part of
- * ==================================================
+ * ================================================== 
  *
  *       LyX, The Document Processor
  *
  *       Copyright 1995 Matthias Ettrich
  *       Copyright 1995-1999 The LyX Team.
  *
- * ==================================================
+ * ================================================== 
  */
 
 /* This file contains all the menu and submenu declarations.
@@ -210,122 +210,122 @@ void Menus::create_menus(int air)
 	int moffset = 0;
 
 	// menubar frame
-	obj = fl_add_frame(FL_UP_FRAME,0,0,form->w,mheight,"");
+	obj = fl_add_frame(FL_UP_FRAME, 0, 0, form->w, mheight, "");
 	fl_set_object_resize(obj, FL_RESIZE_ALL);
 	fl_set_object_gravity(obj, NorthWestGravity, NorthEastGravity);
 
 	menu_grp1 = fl_bgn_group();
 	
 	// File menu button
-	menu_file = obj =
+	menu_file = obj = 
 		fl_add_button(FL_TOUCH_BUTTON,
-			      air+moffset,yloc,
+			      air+moffset, yloc,
 			      fl_get_string_width(FL_BOLD_STYLE,
 						  MENU_LABEL_SIZE,
 						  _("File"),
 						  strlen(_("File"))) + mbadd,
-			      mbheight,_("File"));
+			      mbheight, _("File"));
 	moffset += obj->w + air;
 	fl_set_object_shortcut(obj, scex(_("MB|#F")), 1);
-	fl_set_object_callback(obj,C_Menus_ShowFileMenu, 0);
+	fl_set_object_callback(obj, C_Menus_ShowFileMenu, 0);
 	obj->u_vdata = this;
 	
 	// Edit menu button
-	menu_edit = obj =
+	menu_edit = obj = 
 		fl_add_button(FL_TOUCH_BUTTON,
-			      moffset,yloc,
+			      moffset, yloc,
 			      fl_get_string_width(FL_BOLD_STYLE,
 						  MENU_LABEL_SIZE,
 						  _("Edit"),
 						  strlen(_("Edit"))) + mbadd,
-			      mbheight,_("Edit"));
+			      mbheight, _("Edit"));
 	moffset += obj->w + air;
-	fl_set_object_shortcut(obj, scex(_("MB|#E")),1);
-	fl_set_object_callback(obj,C_Menus_ShowEditMenu,0);
+	fl_set_object_shortcut(obj, scex(_("MB|#E")), 1);
+	fl_set_object_callback(obj, C_Menus_ShowEditMenu, 0);
 	obj->u_vdata = this;
 	
 	// Layout menu button
-	menu_layout = obj =
+	menu_layout = obj = 
 		fl_add_button(FL_TOUCH_BUTTON,
-			      moffset,yloc,
+			      moffset, yloc,
 			      fl_get_string_width(FL_BOLD_STYLE,
 						  MENU_LABEL_SIZE,
 						  _("Layout"),
 						  strlen(_("Layout"))) + mbadd,
-					  mbheight,_("Layout"));
+					  mbheight, _("Layout"));
 	moffset += obj->w + air;
 	fl_set_object_shortcut(obj, scex(_("MB|#L")), 1);
-	fl_set_object_callback(obj,C_Menus_ShowLayoutMenu,0);
+	fl_set_object_callback(obj, C_Menus_ShowLayoutMenu, 0);
 	obj->u_vdata = this;
 	
 	// Insert menu button button
-	menu_insert = obj =
+	menu_insert = obj = 
 		fl_add_button(FL_TOUCH_BUTTON,
-			      moffset,yloc,
+			      moffset, yloc,
 			      fl_get_string_width(FL_BOLD_STYLE,
 						  MENU_LABEL_SIZE,
 						  _("Insert"),
 						  strlen(_("Insert"))) + mbadd,
-			      mbheight,_("Insert"));
+			      mbheight, _("Insert"));
 	moffset += obj->w + air;
 	fl_set_object_shortcut(obj, scex(_("MB|#I")), 1);
-	fl_set_object_callback(obj,C_Menus_ShowInsertMenu,0);
+	fl_set_object_callback(obj, C_Menus_ShowInsertMenu, 0);
 	obj->u_vdata = this;
 	
 	// Math menu button
-	menu_math = obj =
+	menu_math = obj = 
 		fl_add_button(FL_TOUCH_BUTTON,
-			      moffset,yloc,
+			      moffset, yloc,
 			      fl_get_string_width(FL_BOLD_STYLE,
 						  MENU_LABEL_SIZE,
 						  _("Math"),
 						  strlen(_("Math"))) + mbadd,
-			      mbheight,_("Math"));
+			      mbheight, _("Math"));
 	moffset += obj->w + air;
 	fl_set_object_shortcut(obj, scex(_("MB|#M")), 1);
-	fl_set_object_callback(obj,C_Menus_ShowMathMenu,0);
+	fl_set_object_callback(obj, C_Menus_ShowMathMenu, 0);
 	obj->u_vdata = this;
 	
 	// Options menu button
-	menu_options = obj =
+	menu_options = obj = 
 		fl_add_button(FL_TOUCH_BUTTON,
-			      moffset,yloc,
+			      moffset, yloc,
 			      fl_get_string_width(FL_BOLD_STYLE,
 						  MENU_LABEL_SIZE,
 						  _("Options"),
 						  strlen(_("Options"))) + mbadd,
-			      mbheight,_("Options"));
+			      mbheight, _("Options"));
 	moffset += obj->w + air;
 	fl_set_object_shortcut(obj, scex(_("MB|#O")), 1);
-	fl_set_object_callback(obj,C_Menus_ShowOptionsMenu, 0);
+	fl_set_object_callback(obj, C_Menus_ShowOptionsMenu, 0);
 	obj->u_vdata = this;
 
 	// Documents menu button
-	menu_buffer = obj =
+	menu_buffer = obj = 
 		fl_add_button(FL_TOUCH_BUTTON,
-			      moffset,yloc,
+			      moffset, yloc,
 			      fl_get_string_width(FL_BOLD_STYLE,
 						  MENU_LABEL_SIZE,
 						  _("Documents"),
 						  strlen(_("Documents"))) + mbadd,
-			      mbheight,_("Documents"));
+			      mbheight, _("Documents"));
 	moffset += obj->w + air;
 	fl_set_object_shortcut(obj, scex(_("MB|#D")), 1);
-	fl_set_object_callback(obj,C_Menus_ShowBufferMenu,0);
+	fl_set_object_callback(obj, C_Menus_ShowBufferMenu, 0);
 	obj->u_vdata = this;
 	
 	// Help menu button
-	menu_help = obj =
+	menu_help = obj = 
 		fl_add_button(FL_TOUCH_BUTTON,
-			      moffset,yloc,
+			      moffset, yloc,
 			      fl_get_string_width(FL_BOLD_STYLE,
 						  MENU_LABEL_SIZE,
 						  _("Help"),
 						  strlen(_("Help"))) + mbadd,
-			      mbheight,_("Help"));
+			      mbheight, _("Help"));
 	moffset += obj->w + air;
 	fl_set_object_shortcut(obj, scex(_("MB|#H")), 1);
-	fl_set_object_callback(obj,C_Menus_ShowHelpMenu,0);
+	fl_set_object_callback(obj, C_Menus_ShowHelpMenu, 0);
 	obj->u_vdata = this;
 	
 	fl_end_group();
@@ -335,12 +335,12 @@ void Menus::create_menus(int air)
 	obj = menu_grp1->next;
 	do {
 		fl_set_object_boxtype(obj, FL_FLAT_BOX);
-		fl_set_object_color(obj,FL_MCOL, FL_MCOL);
-		fl_set_object_lsize(obj,MENU_LABEL_SIZE);
-		fl_set_object_lstyle(obj,FL_BOLD_STYLE);
+		fl_set_object_color(obj, FL_MCOL, FL_MCOL);
+		fl_set_object_lsize(obj, MENU_LABEL_SIZE);
+		fl_set_object_lstyle(obj, FL_BOLD_STYLE);
 		fl_set_object_resize(obj, FL_RESIZE_ALL);
 		fl_set_object_gravity(obj, NorthWestGravity, NorthWestGravity);
-		obj=obj->next;
+		obj= obj->next;
 	} while (obj != 0 && obj->objclass != FL_END_GROUP);
 
 	// group 2
@@ -348,45 +348,45 @@ void Menus::create_menus(int air)
 	menu_grp2 = fl_bgn_group();
 	
 	// File menu button
-	menu_file2 = obj =
+	menu_file2 = obj = 
 		fl_add_button(FL_TOUCH_BUTTON,
-			      air+moffset,yloc,
+			      air+moffset, yloc,
 			      fl_get_string_width(FL_BOLD_STYLE,
 						  MENU_LABEL_SIZE,
 						  _("File"),
 						  strlen(_("File"))) + mbadd,
-			      mbheight,_("File"));
+			      mbheight, _("File"));
 	moffset += obj->w + air;
 	fl_set_object_shortcut(obj, scex(_("MB|#F")), 1);
-	fl_set_object_callback(obj,C_Menus_ShowFileMenu2, 0);
+	fl_set_object_callback(obj, C_Menus_ShowFileMenu2, 0);
 	obj->u_vdata = this;
 	
 	// Options menu button
-	menu_options2 = obj =
+	menu_options2 = obj = 
 		fl_add_button(FL_TOUCH_BUTTON,
-			      moffset,yloc,
+			      moffset, yloc,
 			      fl_get_string_width(FL_BOLD_STYLE,
 						  MENU_LABEL_SIZE,
 						  _("Options"),
 						  strlen(_("Options"))) +mbadd,
-			      mbheight,_("Options"));
+			      mbheight, _("Options"));
 	moffset += obj->w + air;
 	fl_set_object_shortcut(obj, scex(_("MB|#O")), 1);
-	fl_set_object_callback(obj,C_Menus_ShowOptionsMenu, 0);
+	fl_set_object_callback(obj, C_Menus_ShowOptionsMenu, 0);
 	obj->u_vdata = this;
 
 	// Help menu button
-	menu_help2 = obj =
+	menu_help2 = obj = 
 		fl_add_button(FL_TOUCH_BUTTON,
-			      moffset,yloc,
+			      moffset, yloc,
 			      fl_get_string_width(FL_BOLD_STYLE,
 						  MENU_LABEL_SIZE,
 						  _("Help"),
 						  strlen(_("Help"))) + mbadd,
-			      mbheight,_("Help"));
+			      mbheight, _("Help"));
 	moffset += obj->w + air;
 	fl_set_object_shortcut(obj, scex(_("MB|#H")), 1);
-	fl_set_object_callback(obj,C_Menus_ShowHelpMenu,0);
+	fl_set_object_callback(obj, C_Menus_ShowHelpMenu, 0);
 	obj->u_vdata = this;
 	
 	fl_end_group();
@@ -396,12 +396,12 @@ void Menus::create_menus(int air)
 	obj = menu_grp2->next;
 	do {
 		fl_set_object_boxtype(obj, FL_FLAT_BOX);
-		fl_set_object_color(obj,FL_MCOL, FL_MCOL);
-		fl_set_object_lsize(obj,MENU_LABEL_SIZE);
-		fl_set_object_lstyle(obj,FL_BOLD_STYLE);
+		fl_set_object_color(obj, FL_MCOL, FL_MCOL);
+		fl_set_object_lsize(obj, MENU_LABEL_SIZE);
+		fl_set_object_lstyle(obj, FL_BOLD_STYLE);
 		fl_set_object_resize(obj, FL_RESIZE_ALL);
 		fl_set_object_gravity(obj, NorthWestGravity, NorthWestGravity);
-		obj=obj->next;
+		obj= obj->next;
 	} while (obj != 0 && obj->objclass != FL_END_GROUP);
 }
 
@@ -420,7 +420,7 @@ void Menus::ScreenOptions()
 	fl_set_input(fd_form_screen->input_font_norm, 
 		     lyxrc->font_norm.c_str());
 	char tmpstring[10];
-	sprintf(tmpstring,"%d", lyxrc->zoom);
+	sprintf(tmpstring, "%d", lyxrc->zoom);
 	fl_set_input(fd_form_screen->intinput_size, tmpstring);
 	if (fd_form_screen->form_screen->visible) {
 		fl_raise_form(fd_form_screen->form_screen);
@@ -485,7 +485,7 @@ void Menus::ShowFileMenu(FL_OBJECT * ob, long)
 	// and now docbook also.
 	int SubFileExport = 0;
 	if (!LinuxDoc && !DocBook)
-		SubFileExport=fl_defpup(FL_ObjWin(ob),
+		SubFileExport= fl_defpup(FL_ObjWin(ob),
 					_("Export%t"
 					  "|as LaTeX...%x40"
 					  "|as DVI...%x41"
@@ -494,14 +494,14 @@ void Menus::ShowFileMenu(FL_OBJECT * ob, long)
 					  "|as HTML...%x44"
 					  "|Custom...%x45"));
         else if(LinuxDoc)
-		SubFileExport=fl_defpup(FL_ObjWin(ob),
+		SubFileExport= fl_defpup(FL_ObjWin(ob),
 					_("Export%t"
 					  "|as LinuxDoc...%x40"
 					  "|as DVI...%x41"
 					  "|as PostScript...%x42"
 					  "|as Ascii Text...%x43"));
         else if(DocBook)
-		SubFileExport=fl_defpup(FL_ObjWin(ob),
+		SubFileExport= fl_defpup(FL_ObjWin(ob),
 					_("Export%t"
 					  "|as DocBook...%x40"
 					  "|as DVI...%x41"
@@ -542,11 +542,11 @@ void Menus::ShowFileMenu(FL_OBJECT * ob, long)
 	fl_setpup_shortcut(FileMenu, 7, scex(_("FM|Rr#r#R")));
 	fl_setpup_shortcut(FileMenu, 8, scex(_("FM|dD#d#D")));
 	fl_setpup_shortcut(FileMenu, 9, scex(_("FM|wW#w#W")));
-	fl_setpup_shortcut(FileMenu,10, scex(_("FM|vV#v#V")));
-	fl_setpup_shortcut(FileMenu,11, scex(_("FM|Uu#u#U")));
-        fl_setpup_shortcut(FileMenu,12, scex(_("FM|Bb#b#B")));
-        fl_setpup_shortcut(FileMenu,13, scex(_("FM|Pp#p#P")));
-        fl_setpup_shortcut(FileMenu,14, scex(_("FM|Ff#f#F")));
+	fl_setpup_shortcut(FileMenu, 10, scex(_("FM|vV#v#V")));
+	fl_setpup_shortcut(FileMenu, 11, scex(_("FM|Uu#u#U")));
+        fl_setpup_shortcut(FileMenu, 12, scex(_("FM|Bb#b#B")));
+        fl_setpup_shortcut(FileMenu, 13, scex(_("FM|Pp#p#P")));
+        fl_setpup_shortcut(FileMenu, 14, scex(_("FM|Ff#f#F")));
 
 	// These commands are disabled when the corresponding programs
 	// are not installed. I simply grey them out, since I do not
@@ -592,11 +592,11 @@ void Menus::ShowFileMenu(FL_OBJECT * ob, long)
 	}
 
 	// xgettext:no-c-format
-	fl_addtopup(FileMenu,_("|Import%m"), SubFileImport);
+	fl_addtopup(FileMenu, _("|Import%m"), SubFileImport);
 	// xgettext:no-c-format
-	fl_addtopup(FileMenu,_("|Export%m%l"), SubFileExport);
+	fl_addtopup(FileMenu, _("|Export%m%l"), SubFileExport);
 	// xgettext:no-c-format
-	fl_addtopup(FileMenu,_("|Exit%l"));
+	fl_addtopup(FileMenu, _("|Exit%l"));
 	fl_setpup_shortcut(FileMenu, 15, scex(_("FM|Ii#i#I")));
 	fl_setpup_shortcut(FileMenu, 16, scex(_("FM|Ee#e#E")));
 	fl_setpup_shortcut(FileMenu, 17, scex(_("FM|xX#x#X")));
@@ -814,7 +814,7 @@ void Menus::ShowEditMenu(FL_OBJECT * ob, long)
 	LyXFunc * tmpfunc = men->_view->getLyXFunc();
 
 	// Floats & Insets submenu
-	int SubEditFloats=fl_defpup(FL_ObjWin(ob),
+	int SubEditFloats= fl_defpup(FL_ObjWin(ob),
 				    _("Floats & Insets%t"
 				    "|Open/Close%x21"
 				    "|Melt%x22"
@@ -942,7 +942,7 @@ void Menus::ShowEditMenu(FL_OBJECT * ob, long)
 		fl_setpup_shortcut(SubEditTable, 31, scex(_("EMT|Ii#i#I")));
 	}
 
-	int SubVersionControl =	fl_newpup(FL_ObjWin(ob));
+	int SubVersionControl = 	fl_newpup(FL_ObjWin(ob));
 	fl_addtopup(SubVersionControl, _("Version Control%t"));
 	if (tmpbuffer->lyxvc.inUse()) {
 		// xgettext:no-c-format
@@ -978,7 +978,7 @@ void Menus::ShowEditMenu(FL_OBJECT * ob, long)
 	fl_setpup_shortcut(SubVersionControl, 55, scex(_("EMV|Uu#u#U")));
 	fl_setpup_shortcut(SubVersionControl, 56, scex(_("EMV|Hh#h#H")));
 
-	int EditMenu=fl_defpup(FL_ObjWin(ob),
+	int EditMenu= fl_defpup(FL_ObjWin(ob),
 			       _("Undo"
 			       "|Redo %l"
 			       "|Cut"
@@ -1236,7 +1236,7 @@ void Menus::ShowInsertMenu(FL_OBJECT * ob, long)
 	fl_setpup_shortcut(SubInsertAscii, 41, scex(_("IMA|Ll#l#L")));
 	fl_setpup_shortcut(SubInsertAscii, 42, scex(_("IMA|Pp#p#P")));
 
-	int SubInsertTableList=fl_defpup(FL_ObjWin(ob),
+	int SubInsertTableList= fl_defpup(FL_ObjWin(ob),
 					 _("Lists & TOC%t"
 					   "|Table of Contents%x21"
 					   "|List of Figures%x22"
@@ -1661,8 +1661,8 @@ void Menus::MenuDocu(string const & docname)
 {
 	string fname = i18nLibFileSearch("doc", docname, "lyx");
 	_view->getMiniBuffer()->Set(_("Opening help file"),
-				    MakeDisplayPath(fname),"...");
-	currentView()->buffer(bufferlist.loadLyXFile(fname,false));
+				    MakeDisplayPath(fname), "...");
+	currentView()->buffer(bufferlist.loadLyXFile(fname, false));
 
 	if (docname == "Reference")
 		_view->getLyXFunc()->Dispatch(LFUN_TOCVIEW);

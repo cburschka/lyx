@@ -1,13 +1,13 @@
 // -*- C++ -*-
 /* This file is part of
- * ======================================================
+ * ====================================================== 
  * 
  *           LyX, The Document Processor
  *        
  *           Copyright 1995 Matthias Ettrich
  *           Copyright 1995-1999 The LyX Team.
  *
- * ======================================================*/
+ * ====================================================== */
 
 #include <config.h>
 
@@ -231,7 +231,7 @@ void BufferView::updateScrollbar()
 			     maximum_height - work_area->h);
 #if FL_REVISION > 85
 	double lineh = buffer_->text->DefaultHeight();
-	fl_set_slider_increment(scrollbar,work_area->h-lineh,lineh);
+	fl_set_slider_increment(scrollbar, work_area->h-lineh, lineh);
 #endif
 	if (maxfloat>0){
 		if ((hfloat/maxfloat) * float(height2) < 3)
@@ -318,7 +318,7 @@ int BufferView::resizeCurrentBuffer()
 	AllowInput();
 
 	// Now if the title form still exist kill it
-	TimerCB(0,0);
+	TimerCB(0, 0);
 
 	return 0;
 }
@@ -336,10 +336,10 @@ void BufferView::gotoError()
    
 	if (!buffer_->text->GotoNextError()) {
 		if (buffer_->text->cursor.pos 
-		    || buffer_->text->cursor.par !=
+		    || buffer_->text->cursor.par != 
 		    buffer_->text->FirstParagraph()) {
 			tmp = buffer_->text->cursor;
-			buffer_->text->cursor.par =
+			buffer_->text->cursor.par = 
 				buffer_->text->FirstParagraph();
 			buffer_->text->cursor.pos = 0;
 			if (!buffer_->text->GotoNextError()) {
@@ -353,7 +353,7 @@ void BufferView::gotoError()
 		}
 	}
 	buffer_->update(0);
-	buffer_->text->sel_cursor =
+	buffer_->text->sel_cursor = 
 		buffer_->text->cursor;
 }
 
@@ -389,18 +389,18 @@ void BufferView::create_view(int xpos, int ypos, int width, int height)
 
 	// a hack for the figinsets (Matthias)
 	// This one first, then it will probably be invisible. (Lgb)
-	::figinset_canvas = figinset_canvas = obj =
+	::figinset_canvas = figinset_canvas = obj = 
 		fl_add_canvas(FL_NORMAL_CANVAS,
 			      xpos + 1,
-			      ypos + 1,1,1,"");
-	fl_set_object_boxtype(obj,FL_NO_BOX);
+			      ypos + 1, 1, 1, "");
+	fl_set_object_boxtype(obj, FL_NO_BOX);
 	fl_set_object_resize(obj, FL_RESIZE_ALL);
 	fl_set_object_gravity(obj, NorthWestGravity, NorthWestGravity);
 
 	// a box
 	obj = fl_add_box(FL_BORDER_BOX, xpos, ypos,
 			 width - 15,
-			 height,"");
+			 height, "");
 	fl_set_object_resize(obj, FL_RESIZE_ALL);
 	fl_set_object_gravity(obj, NorthWestGravity, SouthEastGravity);
 
@@ -408,12 +408,12 @@ void BufferView::create_view(int xpos, int ypos, int width, int height)
 	work_area = obj = fl_add_free(FL_INPUT_FREE,
 				      xpos +bw, ypos+bw,
 				      width-15-2*bw /* scrollbarwidth */,
-				      height-2*bw,"",
+				      height-2*bw, "",
 				      C_BufferView_work_area_handler);
 	obj->wantkey = FL_KEY_TAB;
 	obj->u_vdata = this; /* This is how we pass the BufferView
 				       to the work_area_handler. */
-	fl_set_object_boxtype(obj,FL_DOWN_BOX);
+	fl_set_object_boxtype(obj, FL_DOWN_BOX);
 	fl_set_object_resize(obj, FL_RESIZE_ALL);
 	fl_set_object_gravity(obj, NorthWestGravity, SouthEastGravity);
 
@@ -430,18 +430,18 @@ void BufferView::create_view(int xpos, int ypos, int width, int height)
 	button_up = obj = fl_add_pixmapbutton(FL_TOUCH_BUTTON,
 					      width-15+4*bw,
 					      ypos,
-					      15,15,"");
-	fl_set_object_boxtype(obj,FL_UP_BOX);
-	fl_set_object_color(obj,FL_MCOL,FL_BLUE);
+					      15, 15, "");
+	fl_set_object_boxtype(obj, FL_UP_BOX);
+	fl_set_object_color(obj, FL_MCOL, FL_BLUE);
 	fl_set_object_resize(obj, FL_RESIZE_ALL);
-	fl_set_object_gravity(obj,NorthEastGravity, NorthEastGravity);
+	fl_set_object_gravity(obj, NorthEastGravity, NorthEastGravity);
 	fl_set_object_callback(obj, C_BufferView_UpCB, 0);
 	obj->u_vdata = this;
 	fl_set_pixmapbutton_data(obj, up_xpm);
 
 #if FL_REVISION > 85
 	// Remove the blue feedback rectangle
-	fl_set_pixmapbutton_focus_outline(obj,0);
+	fl_set_pixmapbutton_focus_outline(obj, 0);
 #endif	
 
 	// the scrollbar slider
@@ -449,8 +449,8 @@ void BufferView::create_view(int xpos, int ypos, int width, int height)
 	scrollbar = obj = fl_add_slider(FL_VERT_SLIDER,
 					width-15+4*bw,
 					ypos + 15,
-					15,height-30,"");
-	fl_set_object_color(obj,FL_COL1,FL_MCOL);
+					15, height-30, "");
+	fl_set_object_color(obj, FL_COL1, FL_MCOL);
 	fl_set_object_boxtype(obj, FL_UP_BOX);
 	fl_set_object_resize(obj, FL_RESIZE_ALL);
 	fl_set_object_gravity(obj, NorthEastGravity, SouthEastGravity);
@@ -466,9 +466,9 @@ void BufferView::create_view(int xpos, int ypos, int width, int height)
 	button_down = obj = fl_add_pixmapbutton(FL_TOUCH_BUTTON,
 						      width-15+4*bw,
 						      ypos + height-15,
-						      15,15,"");
-	fl_set_object_boxtype(obj,FL_UP_BOX);
-	fl_set_object_color(obj,FL_MCOL,FL_BLUE);
+						      15, 15, "");
+	fl_set_object_boxtype(obj, FL_UP_BOX);
+	fl_set_object_color(obj, FL_MCOL, FL_BLUE);
 	fl_set_object_resize(obj, FL_RESIZE_ALL);
 	fl_set_object_gravity(obj, SouthEastGravity, SouthEastGravity);
 	fl_set_object_callback(obj, C_BufferView_DownCB, 0);
@@ -478,7 +478,7 @@ void BufferView::create_view(int xpos, int ypos, int width, int height)
 
 #if FL_REVISION >85
 	// Remove the blue feedback rectangle
-	fl_set_pixmapbutton_focus_outline(obj,0);
+	fl_set_pixmapbutton_focus_outline(obj, 0);
 #endif	
 
 	//
@@ -487,8 +487,8 @@ void BufferView::create_view(int xpos, int ypos, int width, int height)
 	
 	// timer_cursor
 	timer_cursor = obj = fl_add_timer(FL_HIDDEN_TIMER,
-					  0,0,0,0,"Timer");
-	fl_set_object_callback(obj,C_BufferView_CursorToggleCB,0);
+					  0, 0, 0, 0, "Timer");
+	fl_set_object_callback(obj, C_BufferView_CursorToggleCB, 0);
 	obj->u_vdata = this;
 }
 
@@ -729,10 +729,10 @@ int BufferView::work_area_handler(FL_OBJECT * ob, int event,
 		view->workAreaExpose(); 
 		break;
 	case FL_PUSH:
-		view->WorkAreaButtonPress(ob, 0,0,0,ev,0);
+		view->WorkAreaButtonPress(ob, 0, 0, 0, ev, 0);
 		break; 
 	case FL_RELEASE:
-		view->WorkAreaButtonRelease(ob, 0,0,0,ev,0);
+		view->WorkAreaButtonRelease(ob, 0, 0, 0, ev, 0);
 		break;
 	case FL_MOUSE:
 		if (ev->xmotion.x != x_old || 
@@ -741,11 +741,11 @@ int BufferView::work_area_handler(FL_OBJECT * ob, int event,
 			x_old = ev->xmotion.x;
 			y_old = ev->xmotion.y;
 			scrollbar_value_old = view->current_scrollbar_value;
-			view->WorkAreaMotionNotify(ob, 0,0,0,ev,0);
+			view->WorkAreaMotionNotify(ob, 0, 0, 0, ev, 0);
 		}
 		break;
 	// Done by the raw callback:
-	//  case FL_KEYBOARD: WorkAreaKeyPress(ob, 0,0,0,ev,0); break;
+	//  case FL_KEYBOARD: WorkAreaKeyPress(ob, 0, 0, 0, ev, 0); break;
 	case FL_FOCUS:
 		if (!view->owner_->getMiniBuffer()->shows_no_match)
 			view->owner_->getMiniBuffer()->Init();
@@ -793,7 +793,7 @@ int BufferView::work_area_handler(FL_OBJECT * ob, int event,
 			view->screen->HideCursor(); 
 			view->screen->ToggleSelection(); 
 			view->buffer_->text->CursorHome();
-			view->buffer_->text->sel_cursor =
+			view->buffer_->text->sel_cursor = 
 				view->buffer_->text->cursor;
 			view->buffer_->text->CursorEnd();
 			view->buffer_->text->SetSelection();
@@ -806,7 +806,7 @@ int BufferView::work_area_handler(FL_OBJECT * ob, int event,
 	case FL_OTHER:
 		view->WorkAreaSelectionNotify(ob,
 					      view->owner_->getForm()->window,
-					      0,0,ev,0); 
+					      0, 0, ev, 0); 
 		break;
 	}
 	return 1;
@@ -1109,19 +1109,24 @@ int BufferView::WorkAreaButtonRelease(FL_OBJECT *ob, Window ,
 			c = buffer_->text->cursor.par->
 				GetChar(buffer_->text->cursor.pos);
 		}
-		if (c == LYX_META_FOOTNOTE || c == LYX_META_MARGIN
-		    || c == LYX_META_FIG || c == LYX_META_TAB
-		    || c == LYX_META_WIDE_FIG || c == LYX_META_WIDE_TAB
-                    || c == LYX_META_ALGORITHM){
+		if (c == LyXParagraph::META_FOOTNOTE
+		    || c == LyXParagraph::META_MARGIN
+		    || c == LyXParagraph::META_FIG
+		    || c == LyXParagraph::META_TAB
+		    || c == LyXParagraph::META_WIDE_FIG
+		    || c == LyXParagraph::META_WIDE_TAB
+                    || c == LyXParagraph::META_ALGORITHM){
 			hit = true;
 		} else if (buffer_->text->cursor.pos - 1 >= 0) {
 			c = buffer_->text->cursor.par->
 				GetChar(buffer_->text->cursor.pos - 1);
-			if (c == LYX_META_FOOTNOTE || c == LYX_META_MARGIN
-			    || c == LYX_META_FIG || c == LYX_META_TAB
-			    || c == LYX_META_WIDE_FIG 
-			    || c == LYX_META_WIDE_TAB
-			    || c == LYX_META_ALGORITHM){
+			if (c == LyXParagraph::META_FOOTNOTE
+			    || c == LyXParagraph::META_MARGIN
+			    || c == LyXParagraph::META_FIG
+			    || c == LyXParagraph::META_TAB
+			    || c == LyXParagraph::META_WIDE_FIG 
+			    || c == LyXParagraph::META_WIDE_TAB
+			    || c == LyXParagraph::META_ALGORITHM){
 				// We are one step too far to the right
 				buffer_->text->CursorLeft();
 				hit = true;
@@ -1135,7 +1140,7 @@ int BufferView::WorkAreaButtonRelease(FL_OBJECT *ob, Window ,
 	}
 
 	// Do we want to close a float? (click on the float-label)
-	if (buffer_->text->cursor.row->par->footnoteflag ==
+	if (buffer_->text->cursor.row->par->footnoteflag == 
 	    LyXParagraph::OPEN_FOOTNOTE
 	    && buffer_->text->cursor.pos == 0
 	    && buffer_->text->cursor.row->previous &&
@@ -1186,7 +1191,7 @@ Inset * BufferView::checkInsetHit(int & x, int & y)
   
 	LyXCursor cursor = buffer_->text->cursor;
 	if (cursor.pos < cursor.par->Last() 
-	    && cursor.par->GetChar(cursor.pos) == LYX_META_INSET
+	    && cursor.par->GetChar(cursor.pos) == LyXParagraph::META_INSET
 	    && cursor.par->GetInset(cursor.pos)
 	    && cursor.par->GetInset(cursor.pos)->Editable()) {
 
@@ -1203,7 +1208,7 @@ Inset * BufferView::checkInsetHit(int & x, int & y)
 			return tmpinset;
 		}
 	} else if (cursor.pos - 1 >= 0 
-		   && cursor.par->GetChar(cursor.pos - 1) == LYX_META_INSET
+		   && cursor.par->GetChar(cursor.pos - 1) == LyXParagraph::META_INSET
 		   && cursor.par->GetInset(cursor.pos - 1)
 		   && cursor.par->GetInset(cursor.pos - 1)->Editable()) {
 		buffer_->text->CursorLeft();

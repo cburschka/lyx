@@ -4,23 +4,23 @@
 * 
 *           LyX, The Document Processor
 *        
-*           Copyright (C) 1995,1996 Matthias Ettrich
+*           Copyright (C) 1995, 1996 Matthias Ettrich
 *
-*======================================================
+* ======================================================
  A table for translating OS/2 API return code into errno.
  Copied from emx library source.			 */
 
-#ifndef _OS2_ERRORTABLE_H
-#define _OS2_ERRORTABLE_H
-#ifndef _ERRNO_H
-#include <errno.h>
-#endif
+#ifndef OS2_ERRORTABLE_H
+#define OS2_ERRORTABLE_H
+//#ifndef _ERRNO_H
+#include <cerrno>
+//#endif
 
 static unsigned char const errno_tab[] =
 {
   EINVAL, EINVAL, ENOENT, ENOENT, EMFILE,  /* 0..4 */
   EACCES, EBADF,  EIO,    ENOMEM, EIO,     /* 5..9 */
-  EINVAL, ENOEXEC,EINVAL, EINVAL, EINVAL,  /* 10..14 */
+  EINVAL, ENOEXEC, EINVAL, EINVAL, EINVAL,  /* 10..14 */
   ENOENT, EBUSY,  EXDEV,  ENOENT, EROFS,   /* 15..19 */
   EIO,    EIO,    EIO,    EIO,    EIO,     /* 20..24 */
   EIO,    EIO,    EIO,    ENOSPC, EIO,     /* 25..29 */
@@ -56,11 +56,11 @@ static unsigned char const errno_tab[] =
   EINVAL, EINVAL, EINVAL, EINVAL, EINVAL,  /* 175..179 */
   EINVAL, EINVAL, EINVAL, EINVAL, ECHILD,  /* 180..184 */
   EINVAL, EINVAL, ENOENT, EINVAL, EINVAL,  /* 185..189 */
-  ENOEXEC,ENOEXEC,ENOEXEC,ENOEXEC,ENOEXEC, /* 190..194 */
-  ENOEXEC,ENOEXEC,ENOEXEC,ENOEXEC,ENOEXEC, /* 195..199 */
-  ENOEXEC,ENOEXEC,ENOEXEC,ENOENT, EINVAL,  /* 200..204 */
+  ENOEXEC, ENOEXEC, ENOEXEC, ENOEXEC, ENOEXEC, /* 190..194 */
+  ENOEXEC, ENOEXEC, ENOEXEC, ENOEXEC, ENOEXEC, /* 195..199 */
+  ENOEXEC, ENOEXEC, ENOEXEC, ENOENT, EINVAL,  /* 200..204 */
   EINVAL, ENAMETOOLONG, EINVAL, EINVAL, EINVAL,  /* 205..209 */
-  EINVAL, EINVAL, EACCES, ENOEXEC,ENOEXEC, /* 210..214 */
+  EINVAL, EINVAL, EACCES, ENOEXEC, ENOEXEC, /* 210..214 */
   EINVAL, EINVAL, EINVAL, EINVAL, EINVAL,  /* 215..219 */
   EINVAL, EINVAL, EINVAL, EINVAL, EINVAL,  /* 220..224 */
   EINVAL, EINVAL, EINVAL, ECHILD, EINVAL,  /* 225..229 */

@@ -1,13 +1,13 @@
 // -*- C++ -*-
 /* This file is part of
- * ======================================================
+ * ====================================================== 
  * 
  *           LyX, The Document Processor
  *        
  *           Copyright 1995 Matthias Ettrich
  *           Copyright 1995-1999 The LyX Team.
  *
- * ======================================================*/
+ * ====================================================== */
 
 #include <config.h>
 
@@ -55,7 +55,7 @@
 #endif
 
 #ifdef BROKEN_HEADERS
-extern "C" int gettimeofday(struct timeval *,struct timezone *);
+extern "C" int gettimeofday(struct timeval *, struct timezone *);
 #define remove(a) unlink(a)      
 #endif
 
@@ -65,7 +65,6 @@ extern "C" int gettimeofday(struct timeval *,struct timezone *);
 
 #include "support/filetools.h"
 #include "filedlg.h"
-#include "definitions.h"
 
 static const long SIX_MONTH_SEC = 6L * 30L * 24L * 60L * 60L; // six months, in seconds
 static const long ONE_HOUR_SEC = 60L * 60L;
@@ -73,14 +72,14 @@ static const long ONE_HOUR_SEC = 60L * 60L;
 // *** User cache class implementation
 
 // global instance (user cache root)
-UserCache lyxUserCache = UserCache(string(),0,0);
+UserCache lyxUserCache = UserCache(string(), 0, 0);
 
 // some "C" wrappers around callbacks
 extern "C" void C_LyXFileDlg_FileDlgCB(FL_OBJECT *, long lArgument);
 extern "C" void C_LyXFileDlg_DoubleClickCB(FL_OBJECT *, long);
 extern "C" int C_LyXFileDlg_CancelCB(FL_FORM *, void *);
-extern "C" int C_LyXDirEntryC_ldeCompProc(const void* r1, 
-					  const void* r2);
+extern "C" int C_LyXDirEntryC_ldeCompProc(const void * r1, 
+					  const void * r2);
 
 // Add: creates a new user entry
 UserCache * UserCache::Add(uid_t ID)
@@ -137,7 +136,7 @@ string UserCache::Find(uid_t ID)
 // *** Group cache class implementation
 
 // global instance (group cache root)
-GroupCache lyxGroupCache = GroupCache(string(),0,0);
+GroupCache lyxGroupCache = GroupCache(string(), 0, 0);
 
 // Add: creates a new group entry
 GroupCache * GroupCache::Add(gid_t ID)
@@ -295,7 +294,7 @@ void LyXFileDlg::Reread()
 		fileInfo.newFile(File, true);
 		fileInfo.modeString(szMode);
 		unsigned int nlink = fileInfo.getNumberOfLinks();
-		string user =	lyxUserCache.Find(fileInfo.getUid());
+		string user = 	lyxUserCache.Find(fileInfo.getUid());
 		string group = lyxGroupCache.Find(fileInfo.getGid());
 
 		time_t modtime = fileInfo.getModificationTime();
@@ -327,7 +326,7 @@ void LyXFileDlg::Reread()
 		if ((isLink = fileInfo.isLink())) {
 		  string Link;
 
-		  if (LyXReadLink(File,Link)) {
+		  if (LyXReadLink(File, Link)) {
 		       Buffer += " -> ";
 		       Buffer += Link;
 
@@ -381,7 +380,7 @@ void LyXFileDlg::Reread()
 		string temp = line + pCurrentNames[i].pszDisplayed;
 		fl_add_browser_line(pFileDlgForm->List, temp.c_str());
 	}
-	fl_set_browser_topline(pFileDlgForm->List,iDepth);
+	fl_set_browser_topline(pFileDlgForm->List, iDepth);
 	fl_show_object(pFileDlgForm->List);
 	iLastSel = -1;
 }
@@ -425,28 +424,28 @@ LyXFileDlg::LyXFileDlg()
 		pFileDlgForm = create_form_FileDlg();
 		// Set callbacks. This means that we don't need a patch file
 		fl_set_object_callback(pFileDlgForm->DirBox,
-				       C_LyXFileDlg_FileDlgCB,0);
+				       C_LyXFileDlg_FileDlgCB, 0);
 		fl_set_object_callback(pFileDlgForm->PatBox,
-				       C_LyXFileDlg_FileDlgCB,1);
+				       C_LyXFileDlg_FileDlgCB, 1);
 		fl_set_object_callback(pFileDlgForm->List,
-				       C_LyXFileDlg_FileDlgCB,2);
+				       C_LyXFileDlg_FileDlgCB, 2);
 		fl_set_object_callback(pFileDlgForm->Filename,
-				       C_LyXFileDlg_FileDlgCB,3);
+				       C_LyXFileDlg_FileDlgCB, 3);
 		fl_set_object_callback(pFileDlgForm->Rescan,
-				       C_LyXFileDlg_FileDlgCB,10);
+				       C_LyXFileDlg_FileDlgCB, 10);
 		fl_set_object_callback(pFileDlgForm->Home,
-				       C_LyXFileDlg_FileDlgCB,11);
+				       C_LyXFileDlg_FileDlgCB, 11);
 		fl_set_object_callback(pFileDlgForm->User1,
-				       C_LyXFileDlg_FileDlgCB,12);
+				       C_LyXFileDlg_FileDlgCB, 12);
 		fl_set_object_callback(pFileDlgForm->User2,
-				       C_LyXFileDlg_FileDlgCB,13);
+				       C_LyXFileDlg_FileDlgCB, 13);
 		
 		// Make sure pressing the close box doesn't crash LyX. (RvdK)
 		fl_set_form_atclose(pFileDlgForm->FileDlg, 
 				    C_LyXFileDlg_CancelCB, 0);
 	   	// Register doubleclick callback
 		fl_set_browser_dblclick_callback(pFileDlgForm->List,
-						 C_LyXFileDlg_DoubleClickCB,0);
+						 C_LyXFileDlg_DoubleClickCB, 0);
 	}
 	fl_hide_object(pFileDlgForm->User1);
 	fl_hide_object(pFileDlgForm->User2);
@@ -622,7 +621,7 @@ bool LyXFileDlg::HandleDoubleClick()
 			isDir = false;
 			fl_set_input(pFileDlgForm->Filename, pszTemp.c_str());
 		}
-	} else if (iSelect !=0) {
+	} else if (iSelect != 0) {
 		SetInfoLine(string());
 	} else
 		return true;
@@ -667,7 +666,7 @@ bool LyXFileDlg::HandleOK()
 
 	// mask was changed
 	pszTemp = fl_get_input(pFileDlgForm->PatBox);
-	if (pszTemp!=pszMask) {
+	if (pszTemp!= pszMask) {
 		SetMask(pszTemp);
 		Reread();
 		return false;
@@ -675,7 +674,7 @@ bool LyXFileDlg::HandleOK()
 
 	// directory was changed
 	pszTemp = fl_get_input(pFileDlgForm->DirBox);
-	if (pszTemp!=pszDirectory) {
+	if (pszTemp!= pszDirectory) {
 		SetDirectory(pszTemp);
 		Reread();
 		return false;

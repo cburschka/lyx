@@ -6,39 +6,26 @@
 #pragma interface
 #endif
 
+#include <map>
 #include "LString.h"
+
+using std::map;
 
 ///
 class CharacterSet {
 public:
 	///
-	CharacterSet();
+	bool loadFile(string const &);
 	///
-	~CharacterSet();
-	
+	string const & getName() const;
 	///
-	bool loadFile(const string&);
-	///
-	string getName();
-	///
-	bool encodeString(string&);
+	bool encodeString(string &) const;
 private:
 	///
 	string name_;
-	
 	///
-	struct Cdef {
-		///
-		unsigned char ic;
-		///
-		string str;
-		///
-		Cdef *next;
-	};
-	
+	typedef map<string, unsigned char> Cdef;
 	///
-	Cdef *map_;
-	///
-	void freeMap();
+	Cdef map_;
 };
 #endif

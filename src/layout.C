@@ -1,5 +1,5 @@
 /* This file is part of
- * ======================================================
+ * ====================================================== 
  * 
  *           LyX, The Document Processor
  * 	 
@@ -18,7 +18,6 @@
 using std::make_pair;
 using std::sort;
 
-#include "definitions.h"
 #include "layout.h"
 #include "lyxlex.h"
 #include "support/filetools.h"
@@ -240,7 +239,7 @@ bool LyXLayout::Read (LyXLex & lexrc, LyXTextClass const & tclass)
 		        if (lexrc.next()) {
 				if (tclass.hasLayout(lexrc.GetString())) {
 					string tmpname = name_;
-					this->operator=(tclass.GetLayout(lexrc.GetString()));
+					this->operator= (tclass.GetLayout(lexrc.GetString()));
 					name_ = tmpname;
 				} else {
 					lexrc.printError("Cannot copy known "
@@ -253,7 +252,7 @@ bool LyXLayout::Read (LyXLex & lexrc, LyXTextClass const & tclass)
 		        if (lexrc.next()) {
 				if (tclass.hasLayout(lexrc.GetString())) {
 					string tmpname = name_;
-					this->operator=(tclass.GetLayout(lexrc.GetString()));
+					this->operator= (tclass.GetLayout(lexrc.GetString()));
 					name_ = tmpname;
 					if (obsoleted_by().empty())
 					  obsoleted_by_ = lexrc.GetString();
@@ -292,19 +291,19 @@ bool LyXLayout::Read (LyXLex & lexrc, LyXTextClass const & tclass)
 		case LT_LATEXTYPE:	// Latex style definition.
 		        switch (lexrc.lex()) {
 			case LT_PARAGRAPH:
-				latextype=LATEX_PARAGRAPH;
+				latextype= LATEX_PARAGRAPH;
 				break;
 			case LT_COMMAND:
-				latextype=LATEX_COMMAND;
+				latextype= LATEX_COMMAND;
 				break;
 			case LT_ENVIRONMENT:
-				latextype=LATEX_ENVIRONMENT;
+				latextype= LATEX_ENVIRONMENT;
 				break;
 			case LT_ITEM_ENVIRONMENT:
-				latextype=LATEX_ITEM_ENVIRONMENT;
+				latextype= LATEX_ITEM_ENVIRONMENT;
 				break;
 			case LT_LIST_ENVIRONMENT:
-				latextype=LATEX_LIST_ENVIRONMENT;
+				latextype= LATEX_LIST_ENVIRONMENT;
 				break;
 			default:
 				lexrc.printError("Unknown latextype `$$Token'");
@@ -326,7 +325,7 @@ bool LyXLayout::Read (LyXLex & lexrc, LyXTextClass const & tclass)
 
 		case LT_FONT:
 			font.lyxRead(lexrc);
-			labelfont=font;
+			labelfont= font;
 			break;
 
 		case LT_TEXTFONT:
@@ -694,7 +693,7 @@ bool LyXTextClass::Read(string const & filename, bool merge)
 				} else {
 					LyXLayout lay;
 					lay.name(name);
-					if (!(error =do_readStyle(lexrc, lay)))
+					if (!(error = do_readStyle(lexrc, lay)))
 						layoutlist.push_back(lay);
 				}
 			}

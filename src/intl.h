@@ -65,7 +65,7 @@ public:
 	///
 	char *chsetcode;
 	///
-	static void DispatchCallback(FL_OBJECT*,long);
+	static void DispatchCallback(FL_OBJECT*, long);
 private:
 	///
 	//int SelectCharset(char const *code);

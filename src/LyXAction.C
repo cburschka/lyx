@@ -1,12 +1,12 @@
 /* This file is part of
- * ======================================================
+ * ====================================================== 
  * 
  *           LyX, The Document Processor
  * 	 
  *           Copyright 1995 Matthias Ettrich
  *           Copyright 1995-1999 The LyX Team.
  *
- * ======================================================*/
+ * ====================================================== */
 
 #include <config.h>
 
@@ -153,7 +153,9 @@ kb_func_table const lyx_func_table[] = {
 	{ "index-insert",                         LFUN_INDEX_INSERT },
 	{ "index-insert-last",                    LFUN_INDEX_INSERT_LAST },
 	{ "index-print",                          LFUN_INDEX_PRINT },
+#if 0
 	{ "inset-latex-insert",                   LFUN_INSERT_INSET_LATEX },
+#endif
 	{ "keymap-off",                           LFUN_KMAP_OFF },
 	{ "keymap-primary",                       LFUN_KMAP_PRIM },
 	{ "keymap-secondary",                     LFUN_KMAP_SEC },
@@ -282,11 +284,11 @@ kb_func_table const lyx_func_table[] = {
    field with attributes using these tags:
 
 enum FUNC_ATTRIB {
-    LFAT_NONE=0,     // Nothing special
-    LFAT_ISRO=1,     // Is readonly (does not modify a buffer)
-    LFAT_ISIA=2,     // Is interactive (requires a GUI)
-    LFAT_REQARG=4,   // Requires argument
-    LFAT_ISMO=8,     // Only math mode
+    LFAT_NONE= 0,     // Nothing special
+    LFAT_ISRO= 1,     // Is readonly (does not modify a buffer)
+    LFAT_ISIA= 2,     // Is interactive (requires a GUI)
+    LFAT_REQARG= 4,   // Requires argument
+    LFAT_ISMO= 8,     // Only math mode
     LFAT_ETCETC
 };
 
@@ -350,7 +352,9 @@ kb_action func_attrib_table[] = {
 	LFUN_INSERTFOOTNOTE,
 	LFUN_INSERT_BIBTEX,
 	LFUN_INSERT_CITATION,
+#if 0
 	LFUN_INSERT_INSET_LATEX,
+#endif
 	LFUN_INSERT_LABEL,
 	LFUN_INSERT_MATH,
 	LFUN_INSERT_MATRIX,
@@ -436,7 +440,7 @@ LyXAction::~LyXAction()
 // This is wrong, so I'll just disable it for now.
 // The problem is that we might free memory twice in some situations...
 // It's better to leak a bit that to crash. (Asger)
-//		for (int i=0; i < psd_idx; i++) {
+//		for (int i= 0; i < psd_idx; i++) {
 //			free(lyx_func_args[i].name);
 //		}
 		delete[] lyx_func_args;
@@ -449,8 +453,8 @@ LyXAction::~LyXAction()
 int  LyXAction::searchActionArg(kb_action action, char const *arg)
 {
 	kb_func_table *tb = &lyx_func_args[0];
-	for (int i=0; i<psd_idx; i++) {
-		if (action==tb->action && !strcmp(tb->name, arg)) {	 
+	for (int i= 0; i<psd_idx; i++) {
+		if (action == tb->action && !strcmp(tb->name, arg)) {	 
 
 			lyxerr[Debug::KEY] << "Pseudoaction already exist[" 
 					   << action << '|' 
@@ -472,7 +476,7 @@ int LyXAction::getPseudoAction(kb_action action, char const *arg)
    
 	if (psdaction >= 0) return psdaction;
 
-	if (psd_idx>=MAX_PSEUDO_ACTION) {
+	if (psd_idx>= MAX_PSEUDO_ACTION) {
 		lyxerr << "Lyx Error: No more pseudo-actions allowed"
 		       << "           Tell the developers." << endl;
 		return -1;
@@ -519,7 +523,7 @@ int LyXAction::LookupFunc(char const * func)
 	while (l < r) {
 		last_action_idx = (l+r)/2;
 		k = strcmp(lyx_func_table[last_action_idx].name, func);
-		if (k==0) {
+		if (k == 0) {
 			action = lyx_func_table[last_action_idx].action;
 			break;
 		} else
@@ -566,14 +570,14 @@ char const *LyXAction::getActionName(int action) const
 	// why LFUN_LASTACTION -1? Because LFUN_LASTACTION is too
 	// large an because there is one internal command, hence
 	// lyx_func_table is 2 less then LFUN_LASTACTION (Lgb)
-    for (int i=0; i < funcCount; i++) {
-	if (lyx_func_table[i].action==action)
+    for (int i= 0; i < funcCount; i++) {
+	if (lyx_func_table[i].action == action)
 	  return lyx_func_table[i].name;
     }
     
     // Hmm.. let's see whether this is a pseudoaction
     action -= LFUN_LASTACTION;
-    if (action>=0 && action<psd_idx) {
+    if (action>= 0 && action<psd_idx) {
 	return lyx_func_args[action].name;
     }
     
@@ -586,7 +590,7 @@ char const *LyXAction::getActionName(int action) const
 char const *LyXAction::helpText(kb_action action) const
 {
         static bool is_sorted = false;
-	static kb_func_table helpTexts[LFUN_LASTACTION] =
+	static kb_func_table helpTexts[LFUN_LASTACTION] = 
 	{
 		{ _("Describe command"), LFUN_APROPOS },
 		{ _("Select previous char"), LFUN_LEFTSEL },
@@ -686,7 +690,7 @@ char const *LyXAction::helpText(kb_action action) const
         
         // Sort to make it faster
         if (!is_sorted) {
-		int i=0; 
+		int i= 0; 
 	        while (i < LFUN_LASTACTION-1) {
 		    if (helpTexts[i].action == 0) {
 			helpTexts[i].action = (kb_action)i;
@@ -705,7 +709,7 @@ char const *LyXAction::helpText(kb_action action) const
 	        is_sorted = true;
 	}
 
-	if (action <=1 || action >=funcCount)
+	if (action <= 1 || action >= funcCount)
 		goto no_desc;
 		
         if (helpTexts[action].action == action) {
@@ -721,7 +725,7 @@ char const *LyXAction::helpText(kb_action action) const
 // Function to compare items from the attrib table.
 extern "C" int actioncomp(const void *a, const void *b)
 {
-    int const *ia=(int const*)a, *ib=(int const*)b;
+    int const *ia= (int const*)a, *ib= (int const*)b;
     return (*ia)-(*ib);
 }
 
@@ -734,7 +738,7 @@ bool LyXAction::isFuncRO(kb_action action) const
     if (!is_sorted) {
 	qsort(func_attrib_table, fCount, sizeof(kb_action), actioncomp);
 	is_sorted = true;
-//	for (int i=0; i<fCount; i++) 
+//	for (int i= 0; i<fCount; i++) 
 //	  fprintf(stdout, "%d: %d\n", i, func_attrib_table[i]);
     }
 
@@ -744,7 +748,7 @@ bool LyXAction::isFuncRO(kb_action action) const
     while (l < r) {
 	m = (l+r)/2;
 	k = func_attrib_table[m] - action;
-	if (k==0) {
+	if (k == 0) {
 	    is_ro = true;
 	    break;
 	} else

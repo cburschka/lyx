@@ -1,12 +1,12 @@
 /* This file is part of
- * ======================================================
+ * ====================================================== 
  * 
  *           LyX, The Document Processor
  * 	 
  *           Copyright 1995 Matthias Ettrich
  *           Copyright 1995-1999 The LyX Team.
  *
- * ======================================================*/
+ * ====================================================== */
 
 /*
  *	International support for LyX
@@ -29,10 +29,10 @@
 #include "trans_mgr.h"
 #include "support/lstrings.h"
 
-extern LyXRC* lyxrc;
+extern LyXRC * lyxrc;
 
 // a wrapper around the callback static member.
-extern "C" void C_Intl_DispatchCallback(FL_OBJECT *ob,long code);
+extern "C" void C_Intl_DispatchCallback(FL_OBJECT * ob, long code);
 
 
 Intl::Intl()
@@ -71,23 +71,23 @@ int Intl::SetSecondary(string const & lang)
 
 void Intl::update()
 {
-	int off,prim,sec;
+	int off, prim, sec;
 	
-	off=prim=sec=0;
+	off = prim = sec = 0;
 	
 	if (!keymapon) {
-		off=1;
+		off = 1;
 	} else {
 		if (primarykeymap) {
-			prim=1;
+			prim = 1;
 		} else {
-			sec=1;
+			sec = 1;
 		}
 	}
 	
-	fl_set_button(fd_form_keymap->KeyOffBtn,off);
-	fl_set_button(fd_form_keymap->KeyOnBtn,prim);
-	fl_set_button(fd_form_keymap->KeyOnBtn2,sec);
+	fl_set_button(fd_form_keymap->KeyOffBtn, off);
+	fl_set_button(fd_form_keymap->KeyOnBtn, prim);
+	fl_set_button(fd_form_keymap->KeyOnBtn2, sec);
 }
 
 
@@ -165,19 +165,17 @@ void Intl::KeyMapPrim()
 
 void Intl::KeyMapSec()
 {
-	int i;
-	string p;
-
 	fl_set_button(fd_form_keymap->KeyOffBtn, 0);
 	fl_set_button(fd_form_keymap->KeyOnBtn, 0);
 	fl_set_button(fd_form_keymap->KeyOnBtn2, 1);
 
 	/* read text from choice */
-	i = Language2->get();
+	int i = Language2->get();
 	
 	if (lyxerr.debugging(Debug::KBMAP))
 		lyxerr << "Table: " << tex_babel[i-1] << endl;
 
+	string p;
 	if (i == otherkeymap)
 		p = fl_get_input(fd_form_keymap->OtherKeymap2);
 	else
@@ -198,23 +196,23 @@ void Intl::KeyMapSec()
 }
 
 
-void Intl::LCombo(int, void *v)
+void Intl::LCombo(int, void * v)
 {
-	Intl *itl = (Intl*) v;
+	Intl * itl = static_cast<Intl*>(v);
 	itl->Keymap(23);
 	return;
 }
 
 
-void Intl::LCombo2(int, void *v)
+void Intl::LCombo2(int, void * v)
 {
-	Intl *itl = (Intl*) v;
+	Intl * itl = static_cast<Intl*>(v);
 	itl->Keymap(43);
 	return;
 }
 
 
-void Intl::DispatchCallback(FL_OBJECT *ob,long code)
+void Intl::DispatchCallback(FL_OBJECT * ob, long code)
 {
 	if (ob && (code == 0)) {
 		fl_hide_form(ob->form);
@@ -223,14 +221,14 @@ void Intl::DispatchCallback(FL_OBJECT *ob,long code)
 	if (!ob || !(ob->u_vdata))
 		return;
 	
-	Intl *itl=(Intl *)ob->u_vdata;
+	Intl * itl = static_cast<Intl *>(ob->u_vdata);
 
-	if (itl!=0) itl->Keymap(code);
+	if (itl!= 0) itl->Keymap(code);
 }
 
-extern "C" void C_Intl_DispatchCallback(FL_OBJECT *ob,long code)
+extern "C" void C_Intl_DispatchCallback(FL_OBJECT * ob, long code)
 {
-	Intl::DispatchCallback(ob,code);
+	Intl::DispatchCallback(ob, code);
 }
 
 void Intl::InitKeyMapper(bool on)
@@ -245,34 +243,34 @@ void Intl::InitKeyMapper(bool on)
 
 	Language = new Combox(FL_COMBOX_DROPLIST);
 	Language2 = new Combox(FL_COMBOX_DROPLIST);
-	Language->setcallback(LCombo,this);
-	Language2->setcallback(LCombo2,this);
+	Language->setcallback(LCombo, this);
+	Language2->setcallback(LCombo2, this);
 
 	fd_form_keymap = create_form_KeyMap();
 
 	// Add the Intl* pointer
-	fd_form_keymap->AcceptChset->u_vdata=
-		fd_form_keymap->Charset->u_vdata=
-		fd_form_keymap->Accept->u_vdata=
-		fd_form_keymap->OtherKeymap->u_vdata=
-		fd_form_keymap->KeyOnBtn->u_vdata=
-		fd_form_keymap->KeyOffBtn->u_vdata=
-		fd_form_keymap->KeyOnBtn2->u_vdata=(void *)this;
+	fd_form_keymap->AcceptChset->u_vdata =
+		fd_form_keymap->Charset->u_vdata =
+		fd_form_keymap->Accept->u_vdata =
+		fd_form_keymap->OtherKeymap->u_vdata =
+		fd_form_keymap->KeyOnBtn->u_vdata =
+		fd_form_keymap->KeyOffBtn->u_vdata =
+		fd_form_keymap->KeyOnBtn2->u_vdata = this;
 
 	// add the callbacks.
 	fl_set_object_callback(fd_form_keymap->AcceptChset,
-			       C_Intl_DispatchCallback,27);
+			       C_Intl_DispatchCallback, 27);
 	fl_set_object_callback(fd_form_keymap->Charset,
-			       C_Intl_DispatchCallback,26);
+			       C_Intl_DispatchCallback, 26);
 	fl_set_object_callback(fd_form_keymap->Accept,
-			       C_Intl_DispatchCallback,0);
+			       C_Intl_DispatchCallback, 0);
 
 	fl_set_object_callback(fd_form_keymap->KeyOnBtn,
-			       C_Intl_DispatchCallback,23);
+			       C_Intl_DispatchCallback, 23);
 	fl_set_object_callback(fd_form_keymap->KeyOffBtn,
-			       C_Intl_DispatchCallback,3);
+			       C_Intl_DispatchCallback, 3);
 	fl_set_object_callback(fd_form_keymap->KeyOnBtn2,
-			       C_Intl_DispatchCallback,43);
+			       C_Intl_DispatchCallback, 43);
 	
 	// Make sure pressing the close box does not kill LyX. (RvdK)
 	fl_set_form_atclose(fd_form_keymap->KeyMap, CancelCloseBoxCB, 0);
@@ -283,11 +281,11 @@ void Intl::InitKeyMapper(bool on)
 
 	// Adds two comboxes to the keyboard map
 	fl_addto_form(fd_form_keymap->KeyMap);
-	Language->add(120,30,160,30,300);	// Primary
-	Language2->add(120,110,160,30,300);	// Secondary
+	Language->add(120, 30, 160, 30, 300);	// Primary
+	Language2->add(120, 110, 160, 30, 300);	// Secondary
 	fl_end_form();
 
-	int n=0;
+	int n = 0;
 
  	while (true)
 		if (!strlen(tex_babel[n]))
@@ -325,8 +323,6 @@ void Intl::InitKeyMapper(bool on)
 
 void Intl::Keymap(long code)
 {
-	char const *p;
-
 	if (lyxerr.debugging(Debug::KBMAP))
 		lyxerr << "KeyMap callback: " << code << endl;
 
@@ -338,22 +334,22 @@ void Intl::Keymap(long code)
 	case 3:
 	case 23:
 	case 43:
-		if (code==3) {
+		if (code == 3) {
 			KeyMapOn(false);
 			return;
 		}
 		code -= 19;	// change to language change type code
 		
 	case 4: // 4 and 24 will never be called directly, they will only be
-	case 24: // called through 3,23,43 (lgb)
-		if (code==4) {
+	case 24: // called through 3, 23, 43 (lgb)
+		if (code == 4) {
 			KeyMapPrim();
 		} else {
 			KeyMapSec();
 		}
 		break;
 	case 27:	/* set new font norm */
-		p = fl_get_input(fd_form_keymap->Charset);
+		char const * p = fl_get_input(fd_form_keymap->Charset);
 		if (trans->setCharset(p))
 			fl_show_object(fd_form_keymap->ChsetErr);
 		else

@@ -7,7 +7,7 @@
  *           Copyright 1995 Matthias Ettrich
  *           Copyright 1995-1999 The LyX Team.
  *
- * ======================================================*/
+ * ====================================================== */
 
 #ifndef SPACING_H
 #define SPACING_H
@@ -51,11 +51,11 @@ public:
 		return space;
 	}
 	///
-	void set(Spacing::Space sp, float val= 1.0)
+	void set(Spacing::Space sp, float val = 1.0)
 	{
 		space = sp;
 		if (sp == Other) {
-			switch(int(val*1000 + 0.5)) {
+			switch(int(val * 1000 + 0.5)) {
 			case 1000: space = Single; break;
 			case 1250: space = Onehalf; break;
 			case 1667: space = Double; break;
@@ -64,16 +64,16 @@ public:
 		}
 	}
 	///
-	void set(Spacing::Space sp, char const* val)
+	void set(Spacing::Space sp, char const * val)
 	{
 		float fval;
-		sscanf(val,"%f",&fval);
-		set(sp,fval);
+		sscanf(val, "%f", &fval);
+		set(sp, fval);
 	}
 	///
-	void writeFile(FILE *file);
+	void writeFile(FILE * file);
 	///
-	friend bool operator!=(Spacing const &a, Spacing const &b)
+	friend bool operator!=(Spacing const & a, Spacing const & b)
 	{
 		if (a.space == b.space && a.getValue() == b.getValue())
 			return false;

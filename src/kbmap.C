@@ -1,12 +1,12 @@
 /* This file is part of
- * ======================================================
+ * ====================================================== 
  * 
  *          LyX, The Document Processor
  * 	 
  *          Copyright 1995 Matthias Ettrich
  *          Copyright 1995-1999 The LyX Team.
  *
- * ======================================================*/
+ * ====================================================== */
 
 #include <config.h>
 #include <cstring>
@@ -26,7 +26,7 @@
 enum { ModsMask = ShiftMask | ControlMask | Mod1Mask};
 
 
-// === static functions ===================================================
+// === static functions =================================================== 
 
 
 /* ---F+------------------------------------------------------------------ *\
@@ -112,7 +112,7 @@ int printKeyTab( kb_key *tabPt, char *buf, int maxLen )
 
 
 
-// === kb_sequence methods ================================================
+// === kb_sequence methods ================================================ 
 
 
 
@@ -126,9 +126,9 @@ int printKeyTab( kb_key *tabPt, char *buf, int maxLen )
     Returns   : action or -1 if error (no map defined or key not found)
 \* ---F------------------------------------------------------------------- */
 
-int kb_sequence::addkey(KeySym key, unsigned int mod, unsigned int nmod /*=0*/)
+int kb_sequence::addkey(KeySym key, unsigned int mod, unsigned int nmod /*= 0*/)
 {
-	if(length<0) length=0;
+	if(length<0) length = 0;
 
 	if(length+1 >= size) {
 		unsigned int *nseq = new unsigned int[size+KB_PREALLOC];
@@ -176,36 +176,36 @@ int kb_sequence::parse(char const*s)
 		if(s[i] && (s[i]) <= ' ') i++;
 		if(!s[i]) break;
 		
-		if(s[i+1]=='-')	{ // is implicit that s[i]==true
+		if(s[i+1] == '-')	{ // is implicit that s[i] == true
 			switch(s[i]) {
 			case 's': case 'S':
 				mod |= ShiftMask;
-				i+=2;
+				i+= 2;
 				continue;
 			case 'c': case 'C':
 				mod |= ControlMask;
-				i+=2;
+				i+= 2;
 				continue;
 			case 'm': case 'M':
 				mod |= Mod1Mask;
-				i+=2;
+				i+= 2;
 				continue;
 			default:
 				return i+1;
 			}
-		} else if(s[i]=='~' && s[i+1] && s[i+2]=='-') {
+		} else if(s[i] == '~' && s[i+1] && s[i+2] == '-') {
 			switch(s[i+1]) {
 			case 's': case 'S':
 				nmod |= ShiftMask;
-				i+=3;
+				i+= 3;
 				continue;
 			case 'c': case 'C':
 				nmod |= ControlMask;
-				i+=3;
+				i+= 3;
 				continue;
 			case 'm': case 'M':
 				nmod |= Mod1Mask;
-				i+=3;
+				i+= 3;
 				continue;
 			default:
 				return i+2;
@@ -300,7 +300,7 @@ int kb_sequence::printOptions(char *buf, int maxlen) const
 #warning reimplement kb_sequence using string
 #endif
 	char s[20];
-	strcpy(s,_("   options: "));
+	strcpy(s, _("   options: "));
 	strcpy( buf, s);
 	buf += strlen(s);
 	maxlen -= strlen(s);
@@ -337,7 +337,7 @@ void kb_sequence::delseq()
 KeySym kb_sequence::getsym()
 {
 	int l = length;
-	if(l==0) return NoSymbol;
+	if(l == 0) return NoSymbol;
 	if(l<0) l = -l;
 	return sequence[l-1];
 }
@@ -377,7 +377,7 @@ void kb_sequence::reset()
 }
 
 
-// === kb_keymap methods ==================================================
+// === kb_keymap methods ================================================== 
 
 // This binds a key to an action
 int kb_keymap::bind(char const *seq, int action)
@@ -509,7 +509,7 @@ int kb_keymap::print(char *buf, int maxLen) const
     Returns   : 0 if ok.
 \* ---F------------------------------------------------------------------- */
 
-int kb_keymap::defkey(kb_sequence *seq, int action, int idx /*=0*/)
+int kb_keymap::defkey(kb_sequence *seq, int action, int idx /*= 0*/)
 {
 	int      tsize;
 	unsigned int code, modmsk;
@@ -546,7 +546,7 @@ int kb_keymap::defkey(kb_sequence *seq, int action, int idx /*=0*/)
 	// --- check if key is already there --------------------------------
 
 	kb_key *t;
-	for(t = tab, tsize=1; t->code != NoSymbol; t++, tsize++) {
+	for(t = tab, tsize = 1; t->code != NoSymbol; t++, tsize++) {
 		if(code == t->code && modmsk == t->mod) { // -- overwrite binding ---
 			if(idx+1 == seq->length) {
 				char buf[20]; buf[0] = 0;
@@ -585,7 +585,7 @@ int kb_keymap::defkey(kb_sequence *seq, int action, int idx /*=0*/)
 		*ptab = nt;
 		delete[] tab;
 		tab = nt;
-		if(size>=0) size = tsize+KB_PREALLOC;
+		if(size>= 0) size = tsize+KB_PREALLOC;
 	}
 
 	// --- add action ---------------------------------------------------
@@ -597,7 +597,7 @@ int kb_keymap::defkey(kb_sequence *seq, int action, int idx /*=0*/)
 	
 	// --- convert list to hash table if necessary ----------------------
 
-	if(size>=0 && tsize>=32) {
+	if(size>= 0 && tsize>= 32) {
 		kb_key *oldtab = tab;
 		kb_key **nht = new kb_key*[KB_HASHSIZE];
 		for(int i = 0; i < KB_HASHSIZE; i++)
@@ -666,7 +666,7 @@ kb_keymap::~kb_keymap()
 {
 	if(!table) return;
 	if(size<0) {
-		for(int i=0; i < KB_HASHSIZE; i++) {
+		for(int i = 0; i < KB_HASHSIZE; i++) {
 			if(htable[i]) {
 				for(kb_key *t = htable[i]; t->code != NoSymbol; t++)
 					if(t->table)
@@ -696,7 +696,7 @@ string kb_keymap::findbinding(int act) const {
 		return res;
 
 	if (size<0) {
-		for(int i=0; i < KB_HASHSIZE; i++) {
+		for(int i = 0; i < KB_HASHSIZE; i++) {
 			if(htable[i]) {
 				for(kb_key *t = htable[i]; t->code != NoSymbol; t++) {
 					if(t->table) {

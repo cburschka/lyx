@@ -1,12 +1,12 @@
 /* This file is part of
- * ======================================================
+ * ====================================================== 
  * 
  *           LyX, The Document Processor
  * 	 
  *           Copyright 1995 Matthias Ettrich
  *           Copyright 1995-1999 The LyX Team.
  *
- * ======================================================*/
+ * ====================================================== */
 
 #include <config.h>
 
@@ -40,7 +40,7 @@ void LastFiles::setNumberOfFiles(unsigned int no)
 		num_files = no;
 	else {
 		lyxerr << "LyX: lastfiles: too many files\n"
-			"\tdefault (=" << int(DEFAULTFILES)
+			"\tdefault (= " << int(DEFAULTFILES)
 		       << ") used." << endl;
 		num_files = DEFAULTFILES;
 	}

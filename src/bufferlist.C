@@ -1,5 +1,5 @@
 /* This file is part of
- * ======================================================
+ * ====================================================== 
  * 
  *           LyX, The Document Word Processor
  *
@@ -9,7 +9,7 @@
  *           This file is Copyright 1996-1999
  *           Lars Gullik Bjønnes
  *
- * ======================================================
+ * ====================================================== 
  */
 
 #ifdef __GNUG__
@@ -47,7 +47,7 @@ extern int RunLinuxDoc(int, string const &);
 BufferStorage::BufferStorage()
 {
 	// Initialize the buffer array
-	for (int i=NUMBER_OF_BUFFERS-1; i >=0; i--) {
+	for (int i = NUMBER_OF_BUFFERS-1; i >= 0; i--) {
 		buffer[i] = 0;
 	}
 }
@@ -56,7 +56,7 @@ BufferStorage::BufferStorage()
 #ifndef NEW_STORE
 bool BufferStorage::isEmpty()
 {
-	for (int i=NUMBER_OF_BUFFERS-1; i >=0; i--) {
+	for (int i = NUMBER_OF_BUFFERS-1; i >= 0; i--) {
 		if (buffer[i]) return false;
 	}
 	return true;
@@ -98,7 +98,7 @@ Buffer * BufferStorage::newBuffer(string const & s,
 	container.push_back(tmpbuf);
 	return tmpbuf;
 #else
-	int i=0;
+	int i = 0;
 	while (i < NUMBER_OF_BUFFERS - 1
 	       && buffer[i]) i++;
 	buffer[i] = new Buffer(s, lyxrc, ronly);
@@ -129,7 +129,7 @@ Buffer * BufferStorage_Iter::operator() ()
 
 Buffer * BufferStorage_Iter::operator[] (int a)
 {
-	// a is >=1
+	// a is >= 1
 	if (a <= 0) return 0;
 	
 	int i = 0;
@@ -177,7 +177,7 @@ bool BufferList::QwriteAll()
 				break;
 			case 2: // No
 				askMoreConfirmation = true;
-				unsaved += MakeDisplayPath((*it)->filename,50);
+				unsaved += MakeDisplayPath((*it)->filename, 50);
 				unsaved += "\n";
 				break;
 			case 3: // Cancel
@@ -191,14 +191,14 @@ bool BufferList::QwriteAll()
 	while ((b = biter())) {
 		if (!b->isLyxClean()) {
 			switch(AskConfirmation(_("Changes in document:"),
-					       MakeDisplayPath(b->filename,50),
+					       MakeDisplayPath(b->filename, 50),
 					       _("Save document?"))) {
 			case 1: // Yes
 				MenuWrite(b);
 				break;
 			case 2: // No
 				askMoreConfirmation = true;
-				unsaved += MakeDisplayPath(b->filename,50);
+				unsaved += MakeDisplayPath(b->filename, 50);
 				unsaved += "\n";
                                 break;
 			case 3: // Cancel
@@ -222,7 +222,7 @@ bool BufferList::QwriteAll()
 bool BufferList::write(Buffer * buf, bool makeBackup)
 {
 	minibuffer->Set(_("Saving document"),
-			MakeDisplayPath(buf->filename),"...");
+			MakeDisplayPath(buf->filename), "...");
 
 	// We don't need autosaves in the immediate future. (Asger)
 	buf->resetAutosaveTimers();
@@ -258,14 +258,14 @@ bool BufferList::write(Buffer * buf, bool makeBackup)
 		if (finfo.exist()) {
 			mode_t fmode = finfo.getMode();
 
-			struct utimbuf *times =
+			struct utimbuf *times = 
 				(struct utimbuf*)new char[sizeof(struct utimbuf)];
 			times->actime = finfo.getAccessTime();
 			times->modtime = finfo.getModificationTime();
 			long blksize = finfo.getBlockSize();
 			lyxerr.debug() << "BlockSize: " << blksize << endl;
-			FilePtr fin(buf->filename,FilePtr::read);
-			FilePtr fout(s,FilePtr::truncate);
+			FilePtr fin(buf->filename, FilePtr::read);
+			FilePtr fout(s, FilePtr::truncate);
 			if (fin() && fout()) {
 				char * cbuf = new char[blksize+1];
 				size_t c_read = 0;
@@ -273,7 +273,7 @@ bool BufferList::write(Buffer * buf, bool makeBackup)
 				do {
 					c_read = fread(cbuf, 1, blksize, fin);
 					if (c_read != 0)
-						c_write =
+						c_write = 
 							fwrite(cbuf, 1, c_read, fout);
 				} while (c_read);
 				fin.close();
@@ -291,7 +291,7 @@ bool BufferList::write(Buffer * buf, bool makeBackup)
 		}
 	}
 	
-	if (buf->writeFile(buf->filename,false)) {
+	if (buf->writeFile(buf->filename, false)) {
 		buf->markLyxClean();
 
 		minibuffer->Set(_("Document saved as"),
@@ -365,7 +365,7 @@ bool BufferList::close(Buffer * buf)
 	if (buf->paragraph && !buf->isLyxClean() && !quitting) {
 		ProhibitInput();
                 switch(AskConfirmation(_("Changes in document:"),
-                              MakeDisplayPath(buf->filename,50),
+                              MakeDisplayPath(buf->filename, 50),
                                       _("Save document?"))){
 		case 1: // Yes
 			if (write(buf)) {
@@ -409,7 +409,7 @@ void BufferList::makePup(int pup)
 		++ant;
 	}
 #endif
-	if (ant == 0) fl_addtopup(pup,_("No Documents Open!%t"));
+	if (ant == 0) fl_addtopup(pup, _("No Documents Open!%t"));
 }
 
 
@@ -454,8 +454,8 @@ void BufferList::updateInset(Inset * inset, bool mark_dirty)
 	}
 #else
 	BufferStorage_Iter biter(bstore);
-	Buffer *b=0;
-	while ((b=biter())) {
+	Buffer *b = 0;
+	while ((b = biter())) {
 		if (b->text && b->text->UpdateInset(inset)) {
 			if (mark_dirty)
 				b->markDirty();
@@ -482,8 +482,8 @@ int BufferList::unlockInset(UpdatableInset * inset)
 	if (!inset) return 1;
 	
 	BufferStorage_Iter biter(bstore);
-	Buffer *b=0;
-	while ((b=biter())) {
+	Buffer *b = 0;
+	while ((b = biter())) {
 		if (b->the_locking_inset == inset) {
 			b->InsetUnlock();
 			return 0;
@@ -512,13 +512,13 @@ void BufferList::updateIncludedTeXfiles(string const & mastertmpdir)
 	}
 #else
 	BufferStorage_Iter biter(bstore);
-	Buffer *b=0;
-	while ((b=biter())) {
+	Buffer *b = 0;
+	while ((b = biter())) {
 		if (!b->isDepClean(mastertmpdir)) {
 			string writefile = mastertmpdir;
 			writefile += '/';
 			writefile += ChangeExtension(b->getFileName(), ".tex", true);
-			b->makeLaTeXFile(writefile,mastertmpdir,false,true);
+			b->makeLaTeXFile(writefile, mastertmpdir, false, true);
 			b->markDepClean(mastertmpdir);
 		}
 	}
@@ -532,7 +532,7 @@ void BufferList::emergencyWriteAll()
 	for (BufferStorage::iterator it = bstore.begin();
 	     it != bstore.end(); ++it) {
 		if (!(*it)->isLyxClean()) {
-			bool madeit=false;
+			bool madeit = false;
 			
 			lyxerr <<_("lyx: Attempting to save"
 				      " document ")
@@ -559,7 +559,7 @@ void BufferList::emergencyWriteAll()
 				
 				lyxerr << "  " << i + 1 << ") " << s << endl;
 				
-				if ((*it)->writeFile(s,true)) {
+				if ((*it)->writeFile(s, true)) {
 					(*it)->markLyxClean();
 					lyxerr << _("  Save seems successful. "
 						    "Phew.") << endl;
@@ -585,7 +585,7 @@ void BufferList::emergencyWriteAll()
 			       << b->filename
 			       << _(" as...") << endl;
 			
-			for (int i=0; i<3 && !madeit; i++) {
+			for (int i = 0; i<3 && !madeit; i++) {
 				string s;
 				
 				// We try to save three places:
@@ -605,7 +605,7 @@ void BufferList::emergencyWriteAll()
 				
 				lyxerr << "  " << i + 1 << ") " << s << endl;
 				
-				if (b->writeFile(s,true)) {
+				if (b->writeFile(s, true)) {
 					b->markLyxClean();
 					lyxerr << _("  Save seems successful. Phew.") << endl;
 					madeit = true;
@@ -642,7 +642,7 @@ Buffer* BufferList::readFile(string const & s, bool ronly)
 		if (fileInfoE.getModificationTime()
 		    > fileInfo2.getModificationTime()) {
 			if (AskQuestion(_("An emergency save of this document exists!"),
-					MakeDisplayPath(s,50),
+					MakeDisplayPath(s, 50),
 					_("Try to load that instead?"))) {
 				ts = e;
 				// the file is not saved if we load the
@@ -666,7 +666,7 @@ Buffer* BufferList::readFile(string const & s, bool ronly)
 			if (fileInfoA.getModificationTime()
 			    > fileInfo2.getModificationTime()) {
 				if (AskQuestion(_("Autosave file is newer."),
-						MakeDisplayPath(s,50),
+						MakeDisplayPath(s, 50),
 						_("Load that one instead?"))) {
 					ts = a;
 					// the file is not saved if we load the
@@ -744,7 +744,7 @@ Buffer * BufferList::newFile(string const & name, string tname)
 	}
 	if (!tname.empty() && IsLyXFilename(tname)){
 		bool templateok = false;
-		LyXLex lex(0,0);
+		LyXLex lex(0, 0);
 		lex.setFile(tname);
 		if (lex.IsOK()) {
 			if (b->readFile(lex)) {
@@ -752,20 +752,14 @@ Buffer * BufferList::newFile(string const & name, string tname)
 			}
 		}
 		if (!templateok) {
-			WriteAlert(_("Error!"),_("Unable to open template"), 
+			WriteAlert(_("Error!"), _("Unable to open template"), 
 				   MakeDisplayPath(tname));
 			// no template, start with empty buffer
 			b->paragraph = new LyXParagraph;
-#ifdef NEW_TEXT
-			b->paragraph->text.reserve(500);
-#endif
 		}
 	}
 	else {  // start with empty buffer
 		b->paragraph = new LyXParagraph;
-#ifdef NEW_TEXT
-		b->paragraph->text.reserve(500);
-#endif
 	}
 
 	b->markDirty();
@@ -789,7 +783,7 @@ Buffer * BufferList::loadLyXFile(string const & filename, bool tolastfiles)
 				s = ChangeExtension (s, ".lyx", false);
 			} else { // sgml2lyx failed
 				WriteAlert(_("Error!"),
-					   _("Could not convert file"),s);
+					   _("Could not convert file"), s);
 				return 0;
 			}
 		} else {
@@ -803,7 +797,7 @@ Buffer * BufferList::loadLyXFile(string const & filename, bool tolastfiles)
 	// file already open?
 	if (exists(s)) {
 		if (AskQuestion(_("Document is already open:"), 
-				MakeDisplayPath(s,50),
+				MakeDisplayPath(s, 50),
 				_("Do you want to reload that document?"))) {
 			// Reload is accomplished by closing and then loading
 			if (!close(getBuffer(s))) {
@@ -820,7 +814,7 @@ Buffer * BufferList::loadLyXFile(string const & filename, bool tolastfiles)
 	bool ro = false;
 	switch (IsFileWriteable(s)) {
 	case 0:
-		minibuffer->Set(_("File `")+MakeDisplayPath(s,50)+
+		minibuffer->Set(_("File `")+MakeDisplayPath(s, 50)+
 				_("' is read-only."));
 		ro = true;
 		// Fall through
@@ -838,11 +832,11 @@ Buffer * BufferList::loadLyXFile(string const & filename, bool tolastfiles)
 			lyxerr << "Do you want to checkout?" << endl;
 		}
 		if (AskQuestion(_("Cannot open specified file:"), 
-				MakeDisplayPath(s,50),
+				MakeDisplayPath(s, 50),
 				_("Create new document with this name?")))
 	    	{
 			// Find a free buffer
-			b = newFile(s,string());
+			b = newFile(s, string());
 	    	}
 		break;
 	}

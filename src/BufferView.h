@@ -1,13 +1,13 @@
 // -*- C++ -*-
 /* This file is part of
- * ======================================================
+ * ====================================================== 
  * 
  *           LyX, The Document Processor
  *        
  *           Copyright (C) 1995 Matthias Ettrich
  *           Copyright (C) 1995-1998 The LyX Team.
  *
- * ======================================================*/
+ * ====================================================== */
 
 #ifndef BUFFER_VIEW_H
 #define BUFFER_VIEW_H
@@ -28,7 +28,7 @@ class Inset;
 class BufferView {
 public:
 	///
-	BufferView(LyXView *owner, int ,int ,int, int);
+	BufferView(LyXView *owner, int , int , int, int);
 	///
 	Buffer * buffer() const { return buffer_; }
 	///

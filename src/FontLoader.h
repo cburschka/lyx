@@ -7,10 +7,10 @@
  *	      Copyright (C) 1997 Asger Alstrup
  * 			and the LyX Team.
  *
- *======================================================*/
+ * ====================================================== */
 
-#ifndef _FONTLOADER_H_
-#define _FONTLOADER_H_ 
+#ifndef FONTLOADER_H_
+#define FONTLOADER_H_ 
 
 #ifdef __GNUG__
 #pragma interface
@@ -43,10 +43,10 @@ public:
 			  LyXFont::FONT_SHAPE shape, 
 			  LyXFont::FONT_SIZE size)
 	{
-		if (fontstruct[family][series][shape][size]!=0)
+		if (fontstruct[family][series][shape][size]!= 0)
 			return fontstruct[family][series][shape][size];
 		else
-			return doLoad(family,series,shape,size);
+			return doLoad(family, series, shape, size);
 	};
 private:
 	/// Array of font structs

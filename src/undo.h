@@ -4,17 +4,21 @@
  * 
  *           LyX, The Document Processor
  * 	 
- *	    Copyright (C) 1995 Matthias Ettrich, 1995, 1996 LyX Team
+ *           Copyright 1995 Matthias Ettrich
+ *           Copyright 1995-1999 The LyX Team.
  *
- *======================================================*/
-#ifndef _UNDO_H
-#define _UNDO_H
+ * ====================================================== */
+
+#ifndef UNDO_H
+#define UNDO_H
 
 #ifdef __GNUG__
 #pragma interface
 #endif
 
-#include "definitions.h"
+#include <list>
+using std::list;
+
 #include "lyxparagraph.h"
 
 
@@ -43,12 +47,12 @@ public:
 	///
 	int cursor_pos; // valid if >= 0
 	///
-	LyXParagraph* par;
+	LyXParagraph * par;
 	///
 	Undo(undo_kind kind_arg,
 	     int number_before_arg, int number_behind_arg,
 	     int cursor_par_arg, int cursor_pos_arg,
-	     LyXParagraph* par_arg)
+	     LyXParagraph * par_arg)
 	{
 		kind = kind_arg;
 		number_of_before_par = number_before_arg;
@@ -58,8 +62,8 @@ public:
 		par = par_arg;
 	}
 	///
-	~Undo(){
-		LyXParagraph* tmppar;
+	~Undo() {
+		LyXParagraph * tmppar;
 		while (par) {
 			tmppar = par;
 			par = par->next;
@@ -69,94 +73,30 @@ public:
 };
 
 
-/// A limited Stack for the undo informations. Matthias 290496
+/// A limited Stack for the undo informations.
 class UndoStack{
 private:
 	///
-	struct StackAtom{
-		///
-		StackAtom* previous;
-		///
-		Undo* undo;
-	};
+	typedef list<Undo*> Stakk;
 	///
-	StackAtom* current;
-	///
-	StackAtom *tmp;
-	///
-	int size;
-	///
-	int limit;
+	Stakk stakk;
+	/// the maximum number of undo steps stored.
+	Stakk::size_type limit;
 public:
 	///
-	UndoStack(){
-		current = 0;
-		// size must be initialised (thornley)
-		size = 0;
-		limit = 100; // the maximum number of undo steps stored. 0 means NO LIMIT. 
-		// Limit can be changed with UndoStack::SetStackLimit(int) 
-	}
+	UndoStack();
 	///
-	Undo *Pop(){
-		Undo* result = 0;
-		if (current){
-			result = current->undo;
-			tmp = current;
-			current = current->previous;
-			delete tmp;
-			size--;
-		}
-		else {
-			size = 0; // for safety...
-		}
-		return result;
-	}
+	Undo * Pop();
 	///
-	Undo* Top(){
-		if (current)
-			return current->undo;
-		else
-			return 0;
-	}
+	Undo * Top();
 	///
-	~UndoStack(){
-		Clear();
-	}
+	~UndoStack();
 	///
-	void Clear(){
-		Undo* tmp_undo = Pop();
-		while (tmp_undo){
-			delete tmp_undo;
-			tmp_undo = Pop();
-		}
-	}
+	void Clear();
 	///
-	void SetStackLimit(int limit_arg) {
-		limit = limit_arg;
-	}
-    
+	void SetStackLimit(Stakk::size_type l);
 	///
-	void Push(Undo* undo_arg){
-		int i;
-		StackAtom* tmp2;
-		if (undo_arg){
-			tmp = new StackAtom;
-			tmp->undo = undo_arg;
-			tmp->previous = current;
-			current = tmp;
-			size++;
-			if (limit && size > limit){
-				for (i=0; i<limit && tmp; i++)
-					tmp = tmp->previous;
-				while(tmp && tmp->previous){
-					tmp2 = tmp->previous->previous;
-					delete tmp->previous;
-					size--;
-					tmp->previous = tmp2;
-				}
-			}
-		}
-	}
+	void Push(Undo * undo_arg);
 };
 
 #endif

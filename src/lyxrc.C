@@ -37,7 +37,7 @@ extern kb_keymap *toplevel_keymap;
 extern LyXAction lyxaction;
 
 enum _LyXRCTags {
-	RC_BEGINTOOLBAR=1,
+	RC_BEGINTOOLBAR = 1,
 	RC_FONT_ENCODING,
 	RC_PRINTER,
 	RC_PRINT_COMMAND,
@@ -253,7 +253,7 @@ LyXRC::LyXRC()
 	view_ps_command = "ghostview -swap";
 	view_pspic_command = "ghostview";
 	view_dvi_command = "xdvi";
-	default_papersize = PAPER_USLETTER;
+	default_papersize = BufferParams::PAPER_USLETTER;
 	custom_export_format = "ps";
 	chktex_command = "chktex -n1 -n3 -n6 -n9 -n22 -n25 -n30 -n38";
 	html_command = "tth -t";
@@ -302,7 +302,7 @@ LyXRC::LyXRC()
 int LyXRC::ReadBindFile(string const & name)
 {
 	hasBindFile = true;
-	string tmp = i18nLibFileSearch("bind",name,"bind");
+	string tmp = i18nLibFileSearch("bind", name, "bind");
 	lyxerr[Debug::LYXRC] << "Reading bindfile:" << tmp << endl;
 	int result = Read(tmp);
 	if (result) {
@@ -520,19 +520,19 @@ int LyXRC::Read(string const &filename)
                         if (lexrc.next()) {
 			        string size = lowercase(lexrc.GetString());
 				if (size == "usletter")
-				        default_papersize = PAPER_USLETTER;
+				        default_papersize = BufferParams::PAPER_USLETTER;
 				else if (size == "legal")
-				        default_papersize = PAPER_LEGALPAPER;
+				        default_papersize = BufferParams::PAPER_LEGALPAPER;
 				else if (size == "executive")
-				        default_papersize = PAPER_EXECUTIVEPAPER;
+				        default_papersize = BufferParams::PAPER_EXECUTIVEPAPER;
 				else if (size == "a3")
-				        default_papersize = PAPER_A3PAPER;
+				        default_papersize = BufferParams::PAPER_A3PAPER;
 				else if (size == "a4")
-				        default_papersize = PAPER_A4PAPER;
+				        default_papersize = BufferParams::PAPER_A4PAPER;
 				else if (size == "a5")
-				        default_papersize = PAPER_A5PAPER;
+				        default_papersize = BufferParams::PAPER_A5PAPER;
 				else if (size == "b5")
-				        default_papersize = PAPER_B5PAPER;
+				        default_papersize = BufferParams::PAPER_B5PAPER;
 			}
 			break;
 		case RC_VIEWDVI_COMMAND:
@@ -704,24 +704,24 @@ int LyXRC::Read(string const &filename)
 				ReadBindFile();
 
 			// !!!chb, dynamic key binding...
-			int action, res=0;
+			int action, res = 0;
 			string seq, cmd;
 
-			if (lexrc.lex()==LyXLex::LEX_DATA)  {
+			if (lexrc.lex() == LyXLex::LEX_DATA)  {
 				seq = lexrc.GetString();
 			} else {
 				lexrc.printError("Bad key sequence: `$$Token'");
 				break;
 			}
 
-			if (lexrc.lex()==LyXLex::LEX_DATA) {
+			if (lexrc.lex() == LyXLex::LEX_DATA) {
 				cmd = lexrc.GetString();
 			} else {
 				lexrc.printError("Bad command: `$$Token'");
 				break;
 			}
 
-			if ((action = lyxaction.LookupFunc(cmd.c_str()))>=0) {
+			if ((action = lyxaction.LookupFunc(cmd.c_str()))>= 0) {
 				if (lyxerr.debugging(Debug::KEY)) {
 					lyxerr << "RC_BIND: Sequence `"
 					       << seq << "' Command `"
@@ -760,7 +760,7 @@ int LyXRC::Read(string const &filename)
 		case RC_SELECTION_COLOR:
 			if (lexrc.next())
 				strncpy(selection_color,
-					lexrc.GetString().c_str(),31);
+					lexrc.GetString().c_str(), 31);
 			break;
 		case RC_FAX_COMMAND:
  			if (lexrc.next())

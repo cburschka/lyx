@@ -1,6 +1,6 @@
 // -*- C++ -*-
-#ifndef _Trans_Manager_h_
-#define _Trans_Manager_h_
+#ifndef Trans_Manager_h
+#define Trans_Manager_h
 
 #ifdef __GNUG__
 #pragma interface
@@ -8,10 +8,10 @@
 
 #include "tex-accent.h"
 #include "trans_decl.h"
+#include "chset.h"
+#include "LString.h"
 
 class LyXText;
-class LString;
-class CharacterSet;
 class Trans;
 
 /// Translation State
@@ -20,13 +20,13 @@ public:
 	///
 	virtual ~TransState();
 	///
-	virtual string normalkey(char,char*)=0;
+	virtual string normalkey(char, char *) = 0;
 	///
-	virtual bool backspace()=0;
+	virtual bool backspace() = 0;
 	///
-	virtual string deadkey(char,KmodInfo)=0;
+	virtual string deadkey(char, KmodInfo) = 0;
 	///
-	static const char TOKEN_SEP;
+	static char const TOKEN_SEP;
 };
 
 
@@ -34,8 +34,7 @@ public:
 class TransFSMData {
 protected:
 	///
-	virtual ~TransFSMData()
-	{}
+	virtual ~TransFSMData() {}
 	///
 	char deadkey_;
 	///
@@ -47,17 +46,17 @@ protected:
 	///
 	KmodException comb_info_;
 	///
-	TransState* init_state_;
+	TransState * init_state_;
 	///
-	TransState* deadkey_state_;
+	TransState * deadkey_state_;
 	///
-	TransState* combined_state_;
+	TransState * combined_state_;
 	///
 public:
 	///
 	TransFSMData();
 	///
-	TransState* currentState;
+	TransState * currentState;
 };
 
 
@@ -69,11 +68,11 @@ public:
 		///
 		TransInitState();
 		///
-		virtual string normalkey(char,char*);
+		virtual string normalkey(char, char *);
 		///
 		virtual bool backspace() { return true; }
 		///
-		virtual string deadkey(char,KmodInfo);
+		virtual string deadkey(char, KmodInfo);
 };
 
 
@@ -85,15 +84,15 @@ public:
 		///
 		TransDeadkeyState();
 		///
-		virtual string normalkey(char,char*);
+		virtual string normalkey(char, char *);
 		///
 		virtual bool backspace()
 	{
-		currentState=init_state_;
+		currentState = init_state_;
 		return false;
 	}
 		///
-		virtual string deadkey(char,KmodInfo);
+		virtual string deadkey(char, KmodInfo);
 };
 
 
@@ -105,19 +104,19 @@ public:
 		///
 		TransCombinedState();
 		///
-		virtual string normalkey(char,char*);
+		virtual string normalkey(char, char *);
 		///
 		virtual bool backspace()
 	{
 		// cancel the second deadkey
-		deadkey2_=0;
-		deadkey2_info_.accent=TEX_NOACCENT;
-		currentState=deadkey_state_;
+		deadkey2_ = 0;
+		deadkey2_info_.accent = TEX_NOACCENT;
+		currentState = deadkey_state_;
 		
 		return false;
 	}
 		///
-		virtual string deadkey(char,KmodInfo);
+		virtual string deadkey(char, KmodInfo);
 };
 
 
@@ -140,19 +139,19 @@ private:
 	///
 	TransFSM trans_fsm_;
 	///
-	Trans* active_;
+	Trans * active_;
 	///
-	Trans* t1_;
+	Trans * t1_;
 	///
-	Trans* t2_;
+	Trans * t2_;
 	///
-	static Trans* default_;
+	static Trans * default_;
 	///
-	CharacterSet* chset_;
+	CharacterSet chset_;
 	///
-	void insert(string,LyXText*);
+	void insert(string, LyXText *);
 	///
-	void insertVerbatim(const string&,LyXText*);
+	void insertVerbatim(string const &, LyXText *);
 public:
 	///
 	TransManager();
@@ -169,33 +168,33 @@ public:
 	///
 	void DisableKeymap();
 	///
-	bool setCharset(const char*);
+	bool setCharset(const char *);
 	///
 	bool backspace()
 	{
 		return trans_fsm_.currentState->backspace();
 	}
 	///
-	void TranslateAndInsert(char,LyXText*);
+	void TranslateAndInsert(char, LyXText *);
 	///
-	inline string deadkey(char,KmodInfo);
+	inline string deadkey(char, KmodInfo);
 	///
-	inline string normalkey(char,char*);
+	inline string normalkey(char, char *);
 	///
-	void deadkey(char,tex_accent,LyXText*);
+	void deadkey(char, tex_accent, LyXText *);
     
 };
 
 
-string TransManager::normalkey(char c,char *t)
+string TransManager::normalkey(char c, char * t)
 {
-	return trans_fsm_.currentState->normalkey(c,t);
+	return trans_fsm_.currentState->normalkey(c, t);
 }
 
 
-string TransManager::deadkey(char c,KmodInfo t)
+string TransManager::deadkey(char c, KmodInfo t)
 {
-	return trans_fsm_.currentState->deadkey(c,t);
+	return trans_fsm_.currentState->deadkey(c, t);
 }
 
 #endif

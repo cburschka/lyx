@@ -8,10 +8,10 @@
 *           This file is Copyright (C) 1996-1998
 *           Lars Gullik Bjønnes
 *
-*======================================================*/
+* ====================================================== */
 
-#ifndef _TOOLBAR_H_
-#define _TOOLBAR_H_
+#ifndef TOOLBAR_H
+#define TOOLBAR_H
 
 #ifdef __GNUG__
 #pragma interface
@@ -70,15 +70,15 @@ public:
 	/// sets up the default toolbar
 	void init();
 	/// (re)sets the toolbar
-	void set(bool doingmain=false);
+	void set(bool doingmain= false);
 
 	/** this is to be the entry point to the toolbar
 	  frame, where you can change the toolbar realtime. */
 	void edit();
 	/// add a new button to the toolbar.
-    	void add(int ,bool doclean=true);
+    	void add(int , bool doclean= true);
 	/// name of func instead of kb_action
-	void add(string const & , bool doclean=true);
+	void add(string const & , bool doclean= true);
 	/// invokes the n'th icon in the toolbar
 	void push(int);
 	/// activates the toolbar
@@ -152,7 +152,7 @@ private:
 	bool cleaned;
 
 	///
-	char **getPixmap(kb_action, string const & arg=string());
+	char **getPixmap(kb_action, string const & arg= string());
 	/// removes all toolbar buttons from the toolbar.
 	void clean();
 

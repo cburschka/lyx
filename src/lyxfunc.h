@@ -42,13 +42,13 @@ public:
 
 	// These can't be global because are part of the internat state (ale970227)
 	/// Get the current keyseq string
-	string keyseqStr(int l=190);
+	string keyseqStr(int l = 190);
 
 	/// Is the key sequence uncomplete?
 	bool keyseqUncomplete();
 
 	/// get options for the current keyseq
-	string keyseqOptions(int l=190);
+	string keyseqOptions(int l = 190);
 
 	/// Returns the name of a funcion given a keyseq
 	char const* getFunc(char*) 

@@ -73,7 +73,7 @@ enum tex_accent {
 	///
 	TEX_OGONEK,
 	///
-	TEX_MAX_ACCENT=TEX_OGONEK
+	TEX_MAX_ACCENT= TEX_OGONEK
 };
 
 

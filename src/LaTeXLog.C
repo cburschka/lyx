@@ -49,7 +49,7 @@ void ShowLatexLog()
 		fl_raise_form(fd_latex_log->LaTeXLog);
 	} else {
 		fl_show_form(fd_latex_log->LaTeXLog,
-			     FL_PLACE_MOUSE | FL_FREE_SIZE,FL_FULLBORDER,
+			     FL_PLACE_MOUSE | FL_FREE_SIZE, FL_FULLBORDER,
 			     use_build ? _("Build Program Log") : _("LaTeX Log"));
 		if (ow < 0) {
 			ow = fd_latex_log->LaTeXLog->w;

@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /* This file is part of
- * ======================================================
+ * ====================================================== 
  * 
  *           LyX, The Document Processor 	 
  *	     Copyright 1995 Matthias Ettrich
@@ -9,7 +9,7 @@
  *           This file is Copyright (C) 1996-1999
  *           Lars Gullik Bjønnes
  *
- *======================================================
+ * ====================================================== 
  */
 
 #ifndef LATEX_H
@@ -166,7 +166,7 @@ protected:
 	/// unavail
 	LaTeX(LaTeX const &);
 	/// unavail
-	LaTeX & operator=(LaTeX const &);
+	LaTeX & operator= (LaTeX const &);
 	
 	///
 	void deplog(DepTable & head);

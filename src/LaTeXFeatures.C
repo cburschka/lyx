@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /* This file is part of
- * ======================================================
+ * ====================================================== 
  * 
  *           LyX, The Document Processor
  *        
@@ -78,7 +78,7 @@ string LaTeXFeatures::getPackages(BufferParams const & params)
 	// color.sty
 	if (color) {
 		if (params.graphicsDriver == "default")
-			packages +="\\usepackage{color}\n";
+			packages += "\\usepackage{color}\n";
 		else
 			packages += "\\usepackage[" 
 				+ params.graphicsDriver + "]{color}\n";

@@ -4,14 +4,14 @@
  * generate the bullets in the bullet-panel's.
  *
  * This file is part of
- *======================================================
+ * ====================================================== 
  *
  *           LyX, The Document Processor
  *
  *           Copyright (C) 1997-1998 Allan Rae
  *           and the LyX Team
  *
- *======================================================*/
+ * ====================================================== */
 
 #include <config.h>
 
@@ -101,7 +101,7 @@ void Bullet::generateText()
 }
 
 
-const string & Bullet::bulletSize(const short & s)
+string const & Bullet::bulletSize(const short & s)
 {
 	// use a parameter rather than hard code `size' in here
 	// in case some future function may want to retrieve
@@ -117,7 +117,7 @@ const string & Bullet::bulletSize(const short & s)
 }
 
 
-const string & Bullet::bulletEntry(const short & f, const short & c)
+string const & Bullet::bulletEntry(const short & f, const short & c)
 {
 	// Despite how this may at first appear the static local variables
 	// are only initialized once..

@@ -6,7 +6,7 @@
  *  Description: A bitmap table uses a single bitmap to simulate a 2d array 
  *               of bitmap buttons. It can be used to build bitmap menus.
  *               
- *  Copyright 1995,1996 Alejandro Aguilar Sierra 
+ *  Copyright 1995, 1996 Alejandro Aguilar Sierra 
  *
  *  You are free to use and modify this code under the terms of
  *  the GNU General Public Licence version 2 or later. 
@@ -56,7 +56,7 @@ FL_OBJECT *fl_add_bmtable(int type, FL_Coord x, FL_Coord y,
 {
    FL_OBJECT *ob;
    
-   ob = fl_create_bmtable(type, x, y, w,h, label);  
+   ob = fl_create_bmtable(type, x, y, w, h, label);  
    fl_add_object(fl_current_form, ob); 
    
    return ob;
@@ -102,14 +102,14 @@ static void draw_bitmaptable(FL_OBJECT *ob)
 			xx = FL_abs(ob->bw) - sp->bx + 1;
 			mx = ob->x + FL_abs(ob->bw) + 1;
 		} else  {
-			xx =0;
+			xx = 0;
 			mx = ob->x + sp->bx;
 		}
 		if (sp->by < FL_abs(ob->bw) + 1)  {	 
 			yy = FL_abs(ob->bw) - sp->by + 1;
 			my = ob->y + FL_abs(ob->bw) + 1;
 		} else   {
-			yy =0;
+			yy = 0;
 			my = ob->y + sp->by;
 		}                 
 		ww = (mx + sp->bw < ob->x + ob->w - FL_abs(ob->bw)) ? 
@@ -134,19 +134,19 @@ static void draw_bitmaptable(FL_OBJECT *ob)
 		mx = ob->x + ob->w; 
 		my = ob->y + ob->h; 
 		ww = ob->w; 
-		for (yy=ob->y; yy<=my; yy+=sp->dy) {
-			if (ob->boxtype!=FL_FLAT_BOX && (yy==ob->y || yy>my-sp->dy)) 
+		for (yy= ob->y; yy<= my; yy+= sp->dy) {
+			if (ob->boxtype!= FL_FLAT_BOX && (yy == ob->y || yy>my-sp->dy)) 
 				continue;
-			if (lx>0 && yy>=my-sp->dy - sp->dy/2)
+			if (lx>0 && yy>= my-sp->dy - sp->dy/2)
 				ww = lx*sp->dx;
 			fl_diagline(ob->x, yy, ww, 1, FL_BOTTOM_BCOL); 
 			fl_diagline(ob->x, yy+1, ww-2, 1, FL_TOP_BCOL); 
 		}	   
 		hh = ob->h;
-		for (xx=ob->x; xx<=mx; xx+=sp->dx)  {
-			if (ob->boxtype!=FL_FLAT_BOX && (xx==ob->x || xx>mx-sp->dx))
+		for (xx= ob->x; xx<= mx; xx+= sp->dx)  {
+			if (ob->boxtype!= FL_FLAT_BOX && (xx == ob->x || xx>mx-sp->dx))
 				continue;
-			if (lx>0 && xx>=ob->x+lx*sp->dx)
+			if (lx>0 && xx>= ob->x+lx*sp->dx)
 				hh = (sp->ny-1)*sp->dy;
 			fl_diagline(xx, ob->y, 1, hh, FL_RIGHT_BCOL);
 			fl_diagline(xx+1, ob->y+1, 1, hh-2, FL_LEFT_BCOL);
@@ -183,7 +183,7 @@ extern "C" int handle_bitmaptable(FL_OBJECT *ob, int event, FL_Coord mx,
 			break;
 		}
 		i = (mx - ob->x)/sp->dx;  j = (my - ob->y)/sp->dy;
-		if (i>=0 && i< sp->nx && j>=0 && j< sp->ny)   {
+		if (i>= 0 && i< sp->nx && j>= 0 && j< sp->ny)   {
 			i += j*sp->nx;
 			if (i >= sp->maxi) i = -1;
 			if (sp->i !=  i)  {
@@ -291,7 +291,7 @@ void fl_set_bmtable_file(FL_OBJECT *ob, int nx, int ny, char const *filename)
    unsigned char *bdata;
    
    if(XReadBitmapFileData(filename, &bw, &bh,
-			  &bdata, &xh, &yh)==BitmapSuccess)
+			  &bdata, &xh, &yh) == BitmapSuccess)
      fl_set_bmtable_data(ob, nx, ny, bw, bh, bdata);
    XFlush(fl_display);
 }

@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /* This file is part of
- * ======================================================
+ * ====================================================== 
  * 
  *           LyX, The Document Processor
  * 	 
@@ -23,6 +23,7 @@
 #include "Bullet.h"
 #include "insets/insetquotes.h"
 #include "layout.h"
+#include "support/block.h"
 
 /**
   This class contains all the parameters for this a buffer uses. Some
@@ -31,15 +32,81 @@
   */
 class BufferParams {
 public:
+	///
+	enum PAPER_SIZE {
+		///
+		PAPER_DEFAULT,
+		///
+		PAPER_USLETTER,
+		///
+		PAPER_LEGALPAPER,
+		///
+		PAPER_EXECUTIVEPAPER,
+		///
+		PAPER_A3PAPER,
+		///
+		PAPER_A4PAPER,
+		///
+		PAPER_A5PAPER,
+		///
+		PAPER_B5PAPER
+	};
+	///
+	enum PAPER_PACKAGES {
+		///
+		PACKAGE_NONE,
+		///
+		PACKAGE_A4,
+		///
+		PACKAGE_A4WIDE,
+		///
+		PACKAGE_WIDEMARGINSA4
+	};
+	///
+	enum VMARGIN_PAPER_TYPE {
+		///
+		VM_PAPER_DEFAULT,
+		///
+		VM_PAPER_CUSTOM,
+		///
+		VM_PAPER_USLETTER,
+		///
+		VM_PAPER_USLEGAL,
+		///
+		VM_PAPER_USEXECUTIVE,
+		///
+		VM_PAPER_A3,
+		///
+		VM_PAPER_A4,
+		///
+		VM_PAPER_A5,
+		///
+		VM_PAPER_B3,
+		///
+		VM_PAPER_B4,
+		///
+		VM_PAPER_B5
+	};
+	///
+	enum PARSEP {
+		///
+		PARSEP_INDENT,
+		///
+		PARSEP_SKIP
+	};
+	///
+	enum PAPER_ORIENTATION {
+		///
+		ORIENTATION_PORTRAIT,
+		///
+		ORIENTATION_LANDSCAPE
+	};
 	//@Man: Constructors and Deconstructors
 	//@{
 	///
 	BufferParams();
 	//@}
 
-	/// Dummy destructor to shut up gcc
-	virtual ~BufferParams() {}
-	
 	///
 	void writeFile(FILE *);
 
@@ -56,7 +123,7 @@ public:
 	/** Wether paragraphs are separated by using a indent like in
 	  articles or by using a little skip like in letters.
 	  */
-  	char paragraph_separation; // add approp. signedness
+  	PARSEP paragraph_separation;
 	///
   	InsetQuotes::quote_language quotes_language;
 	///
@@ -67,14 +134,14 @@ public:
  	LyXTextClassList::ClassList::size_type textclass;
 
 	/* this are for the PaperLayout */
-   ///
+	///
   	char papersize; /* the general papersize (papersize2 or paperpackage */ // add approp. signedness
         ///
         char papersize2; /* the selected Geometry papersize */ // add approp. signedness
         ///
         char paperpackage; /* a special paperpackage .sty-file */ // add approp. signedness
         ///
-	char orientation; // add approp. signedness
+	PAPER_ORIENTATION orientation; // add approp. signedness
 	///
         bool use_geometry;
         ///
@@ -124,17 +191,15 @@ public:
 	///
 	string pagestyle;
 	///
-	Bullet temp_bullets[4];
+	block<Bullet, 4> temp_bullets;
 	///
-	Bullet user_defined_bullets[4];
+	block<Bullet, 4> user_defined_bullets;
 	///
-	void Copy(BufferParams const &p);
+	void readPreamble(LyXLex &);
 	///
-	virtual void readPreamble(LyXLex &);
+	void readLanguage(LyXLex &);
 	///
-	virtual void readLanguage(LyXLex &);
-	///
-	virtual void readGraphicsDriver(LyXLex &);
+	void readGraphicsDriver(LyXLex &);
 	/// do we allow accents on all chars in this buffer
 	bool allowAccents;
 	///

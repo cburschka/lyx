@@ -4,13 +4,13 @@
 * 
 *           LyX, the High Level Word Processor
 *        
-*           Copyright (C) 1995,1996 Matthias Ettrich
+*           Copyright (C) 1995, 1996 Matthias Ettrich
 *
-*======================================================
+* ======================================================
  A few prototypes and definitions needed for VMS / OpenVMS */
 
-#ifndef _VMS_DEFINES_H
-#define _VMS_DEFINES_H
+#ifndef VMS_DEFINES_H
+#define VMS_DEFINES_H
 
 /* Currently empty. */
 

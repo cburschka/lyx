@@ -2,7 +2,6 @@
 
 #include <cstdlib>
 
-#include "definitions.h"
 #include FORMS_H_LOCATION
 #include "layout_forms.h"
 #include "lyx_main.h"
@@ -122,7 +121,7 @@ bool UpdateLayoutPaper()
 			      params->use_geometry);
 		fl_set_button(fd_form_paper->radio_portrait, 0);
 		fl_set_button(fd_form_paper->radio_landscape, 0);
-		if (params->orientation == ORIENTATION_LANDSCAPE)
+		if (params->orientation == BufferParams::ORIENTATION_LANDSCAPE)
 			fl_set_button(fd_form_paper->radio_landscape, 1);
 		else
 			fl_set_button(fd_form_paper->radio_portrait, 1);
@@ -192,9 +191,9 @@ void PaperApplyCB(FL_OBJECT *, long)
 	params->paperpackage = fl_get_choice(fd->choice_paperpackage)-1;
 	params->use_geometry = fl_get_button(fd_form_paper->push_use_geometry);
 	if (fl_get_button(fd_form_paper->radio_landscape))
-		params->orientation = ORIENTATION_LANDSCAPE;
+		params->orientation = BufferParams::ORIENTATION_LANDSCAPE;
 	else
-		params->orientation = ORIENTATION_PORTRAIT;
+		params->orientation = BufferParams::ORIENTATION_PORTRAIT;
 	params->paperwidth = fl_get_input(fd->input_custom_width);
 	params->paperheight = fl_get_input(fd->input_custom_height);
 	params->leftmargin = fl_get_input(fd->input_left_margin);
@@ -220,8 +219,8 @@ void PaperCancelCB(FL_OBJECT *, long)
 
 void PaperOKCB(FL_OBJECT * ob, long data)
 {
-	PaperCancelCB(ob,data);
-	PaperApplyCB(ob,data);
+	PaperCancelCB(ob, data);
+	PaperApplyCB(ob, data);
 }
 
 
@@ -234,32 +233,36 @@ void PaperMarginsCB(FL_OBJECT * ob, long)
 	checkMarginValues();
 	if (ob == fd->choice_papersize2) {
 		val = fl_get_choice(fd->choice_papersize2)-1;
-		if (val == VM_PAPER_DEFAULT) {
+		if (val == BufferParams::VM_PAPER_DEFAULT) {
 			fl_set_button(fd->push_use_geometry, 0);
 			checkMarginValues();
 		} else {
-			if ((val != VM_PAPER_USLETTER) && (val != VM_PAPER_USLEGAL) &&
-			    (val != VM_PAPER_USEXECUTIVE) && (val != VM_PAPER_A4) &&
-			    (val != VM_PAPER_A5) && (val != VM_PAPER_B5)) {
+			if (val != BufferParams::VM_PAPER_USLETTER
+			    && val != BufferParams::VM_PAPER_USLEGAL
+			    && val != BufferParams::VM_PAPER_USEXECUTIVE
+			    && val != BufferParams::VM_PAPER_A4
+			    && val != BufferParams::VM_PAPER_A5
+			    && val != BufferParams::VM_PAPER_B5) {
 				fl_set_button(fd->push_use_geometry, 1);
 			}
-			fl_set_choice(fd->choice_paperpackage, PACKAGE_NONE + 1);
+			fl_set_choice(fd->choice_paperpackage, BufferParams::PACKAGE_NONE + 1);
 		}
 	} else if (ob == fd->choice_paperpackage) {
 		val = fl_get_choice(fd->choice_paperpackage)-1;
-		if (val != PACKAGE_NONE) {
-			fl_set_choice(fd->choice_papersize2, VM_PAPER_DEFAULT + 1);
+		if (val != BufferParams::PACKAGE_NONE) {
+			fl_set_choice(fd->choice_papersize2,
+				      BufferParams::VM_PAPER_DEFAULT + 1);
 			fl_set_button(fd->push_use_geometry, 0);
 		}
-	} else if ((ob==fd->input_custom_width)
-		   || (ob==fd->input_custom_height) 
-		   || (ob==fd->input_left_margin)
-		   || (ob==fd->input_right_margin) 
-		   || (ob==fd->input_top_margin)
-		   || (ob==fd->input_bottom_margin) 
-		   || (ob==fd->input_head_height)
-		   || (ob==fd->input_head_sep)
-		   || (ob==fd->input_foot_skip)) {
+	} else if (ob == fd->input_custom_width
+		   || ob == fd->input_custom_height 
+		   || ob == fd->input_left_margin
+		   || ob == fd->input_right_margin 
+		   || ob == fd->input_top_margin
+		   || ob == fd->input_bottom_margin 
+		   || ob == fd->input_head_height
+		   || ob == fd->input_head_sep
+		   || ob == fd->input_foot_skip) {
 		str = fl_get_input(ob);
 		if (!str.empty() && !isValidLength(str)) {
 			fl_set_object_label(fd_form_paper->text_warning,

@@ -1,6 +1,6 @@
 // -*- C++ -*-
-#ifndef _Trans_h_
-#define _Trans_h_
+#ifndef Trans_h
+#define Trans_h
 
 #ifdef __GNUG__
 #pragma interface
@@ -22,16 +22,16 @@ class TransManager;
 class TransInterface {
 public:
 	///
-	virtual string process(char,TransManager&)=0;
+	virtual string process(char, TransManager &) = 0;
 	///
-	virtual bool isAccentDefined(tex_accent,KmodInfo&)=0;
+	virtual bool isAccentDefined(tex_accent, KmodInfo &) = 0;
 };
 
 /**
   DefaultTrans: the default translation class. Hols info
   on tex-accents. Monostate
   */
-class DefaultTrans: public TransInterface {
+class DefaultTrans : public TransInterface {
 private:
 	///
 	static bool init_;
@@ -39,14 +39,14 @@ public:
 	///
 	DefaultTrans();
 	///
-	virtual string process(char,TransManager&);
+	virtual string process(char, TransManager &);
 };
 
 
 /**
   Trans: holds a .kmap file 
   */
-class Trans:public TransInterface {
+class Trans : public TransInterface {
 public:
 	///
 	Trans();
@@ -54,15 +54,15 @@ public:
 	virtual ~Trans();
 
 	///
-	int Load(string const &language);
+	int Load(string const & language);
 	///
 	bool IsDefined();
 	///
-	const string& GetName();
+	string const & GetName();
 	///
-	string process(char,TransManager&);
+	string process(char, TransManager &);
 	///
-	bool isAccentDefined(tex_accent,KmodInfo&);
+	bool isAccentDefined(tex_accent, KmodInfo &);
     
 private:
 	///
@@ -71,31 +71,31 @@ private:
 	typedef KmodException keyexc;
     
 	///
-	void AddDeadkey(tex_accent, const string&, const string&);
+	void AddDeadkey(tex_accent, string const &, string const &);
 	///
 	void FreeKeymap();
 	///
 	int Load(LyXLex &);
 	///
-	inline char* Match(char c);
+	inline char * Match(char c);
 	///
-	void InsertException(keyexc &exclist, char c,
-			     const string& data, bool = false,
+	void InsertException(keyexc & exclist, char c,
+			     string const & data, bool = false,
 			     tex_accent = TEX_NOACCENT);
 	///
-	void FreeException(keyexc& exclist);
+	void FreeException(keyexc & exclist);
 
 	///
 	string name_;
 	///
-	char *keymap_[256];
+	char * keymap_[256];
 	///
-	kmod_list_decl *kmod_list_[TEX_MAX_ACCENT+1];
+	kmod_list_decl * kmod_list_[TEX_MAX_ACCENT+1];
 
 };
 
 
-char* Trans::Match(char c)
+char * Trans::Match(char c)
 {
 	return keymap_[c];
 }

@@ -7,10 +7,10 @@
  *	    Copyright (C) 1995 1996 Matthias Ettrich
  *           and the LyX Team.
  *
- *======================================================*/
+ * ====================================================== */
 
-#ifndef _LYX_GUI_H_
-#define _LYX_GUI_H_
+#ifndef LYX_GUI_H
+#define LYX_GUI_H
 
 #ifdef __GNUG__
 #pragma interface

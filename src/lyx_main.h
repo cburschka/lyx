@@ -1,13 +1,13 @@
 // -*- C++ -*-
 /* This file is part of
-* ======================================================
+* ====================================================== 
 * 
 *           LyX, The Document Processor
 * 	 
 *	    Copyright (C) 1995 1996 Matthias Ettrich
 *           and the LyX Team.
 *
-*======================================================*/
+* ====================================================== */
 
 /* This is the declaration of the LyX class, there should only
  * exist _one_ instance of this in the application. */

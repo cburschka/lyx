@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /* This file is part of
- * ======================================================
+ * ====================================================== 
  * 
  *           LyX, The Document Processor 	 
  *           Copyright 1995 Matthias Ettrich
@@ -9,7 +9,7 @@
  *           This file is Copyright 1996
  *           Lars Gullik Bjønnes
  *
- * ======================================================*/
+ * ====================================================== */
 
 #ifndef BUFFER_LIST_H
 #define BUFFER_LIST_H
@@ -66,7 +66,7 @@ public:
 	///
 	void release(Buffer * buf);
 	///
-	Buffer* newBuffer(string const & s, LyXRC *, bool =false);
+	Buffer* newBuffer(string const & s, LyXRC *, bool = false);
 private:
 	enum {
 		/** The max number of buffers there are possible to have
@@ -92,7 +92,7 @@ class BufferStorage_Iter {
 public:
 	///
 	BufferStorage_Iter(BufferStorage const & bs)
-	{ cs =& bs; index = 0;}
+	{ cs = & bs; index = 0;}
 	/// next
 	Buffer* operator() ();
 	///

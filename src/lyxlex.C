@@ -56,7 +56,7 @@ void LyXLex::popTable()
 void LyXLex::printTable()
 {
 	lyxerr << "\nNumber of tags: " << no_items << endl;
-	for(int i=0; i<no_items; i++)
+	for(int i= 0; i<no_items; i++)
 		lyxerr << "table[" << i
 		       << "]:  tag: `" << table[i].tag
 		       << "'  code:" << table[i].code << endl;
@@ -97,7 +97,7 @@ void LyXLex::setFile(FILE * f)
 int LyXLex::lex()
 {
 	//NOTE: possible bug.
-   if (next() && status==LEX_TOKEN)
+   if (next() && status == LEX_TOKEN)
        return search_kw(buff);
    else
        return status;
@@ -194,21 +194,21 @@ bool LyXLex::GetBool()
 
 bool LyXLex::EatLine()
 {
-	int i=0;
+	int i= 0;
 	int c = '\0'; // getc() returns an int
 
-	while (!feof(file) && c!='\n' && i!=(LEX_MAX_BUFF-1)) {
+	while (!feof(file) && c!= '\n' && i!= (LEX_MAX_BUFF-1)) {
 		c = getc(file);
 		if (c != '\r')
 			buff[i++] = c;
 	}
-	if (i==(LEX_MAX_BUFF-1) && c !='\n') {
+	if (i == (LEX_MAX_BUFF-1) && c != '\n') {
    		printError("Line too long");
 		c = '\n'; // Pretend we had an end of line
 		--lineno; // but don't increase line counter (netto effect)
 		++i; // and preserve last character read.
 	}
-	if (c=='\n') {
+	if (c == '\n') {
 		++lineno;
 		buff[--i] = '\0'; // i can never be 0 here, so no danger
 		status = LEX_DATA;
@@ -222,7 +222,7 @@ bool LyXLex::EatLine()
 
 int LyXLex::search_kw(char const * const tag) const
 {
-	int m, k=0 , l= 0, r=no_items;
+	int m, k= 0 , l= 0, r= no_items;
 
 	while (l < r) {
 		m = (l+r)/2;
@@ -236,7 +236,7 @@ int LyXLex::search_kw(char const * const tag) const
 
 		if (table[m].tag)
 			k = compare_no_case(table[m].tag, tag);
-		if (k==0)
+		if (k == 0)
 			return table[m].code;
 		else
 			if (k<0) l = m+1; else r = m;
@@ -256,31 +256,31 @@ bool LyXLex::next(bool esc)
 		status = 0;
 		while (!feof(file) && !status) { 
 			c = getc(file);
-			if (c=='#') {
+			if (c == '#') {
 				// Read rest of line (fast :-)
 				fgets(buff, sizeof(buff), file);
 				++lineno;
 				continue;
 			}
 			
-			if (c=='\"') {
+			if (c == '\"') {
 				int i = -1;
 				do {
 					c = getc(file);
 					if (c != '\r')
 						buff[++i] = c;
-				} while (c!='\"' && c!='\n' && !feof(file) &&
-					 i!=(LEX_MAX_BUFF-2));
+				} while (c!= '\"' && c!= '\n' && !feof(file) &&
+					 i!= (LEX_MAX_BUFF-2));
 				
-				if (i==(LEX_MAX_BUFF-2)) {
+				if (i == (LEX_MAX_BUFF-2)) {
 					printError("Line too long");
 					c = '\"'; // Pretend we got a "
 					++i;
 				}
 				
-				if (c!='\"') {
+				if (c!= '\"') {
 					printError("Missing quote");
-					if (c=='\n')
+					if (c == '\n')
 						++lineno;
 				}
 				
@@ -289,7 +289,7 @@ bool LyXLex::next(bool esc)
 				break; 
 			}
 			
-			if (c==',')
+			if (c == ',')
 				continue;              /* Skip ','s */
 			
 			if (c > ' ' && !feof(file))  {
@@ -306,7 +306,7 @@ bool LyXLex::next(bool esc)
 				status = LEX_TOKEN;
 			}
 			
-			if (c== '\r' && !feof(file)) {
+			if (c == '\r' && !feof(file)) {
 				// The Windows support has lead to the
 				// possibility of "\r\n" at the end of
 				// a line.  This will stop LyX choking
@@ -314,7 +314,7 @@ bool LyXLex::next(bool esc)
 				c = getc(file);
 			}
 
-			if (c=='\n')
+			if (c == '\n')
 				++lineno;
 			
 		}
@@ -333,9 +333,9 @@ bool LyXLex::next(bool esc)
 			c = getc(file);
 
 			// skip ','s
-			if (c==',') continue;
+			if (c == ',') continue;
 			
-			if (c=='\\') {
+			if (c == '\\') {
 				// escape
 				int i = 0;
 				do {
@@ -355,7 +355,7 @@ bool LyXLex::next(bool esc)
 				continue;
 			}
 			
-			if (c=='#') {
+			if (c == '#') {
 				// Read rest of line (fast :-)
 				fgets(buff, sizeof(buff), file);
 				++lineno;
@@ -363,7 +363,7 @@ bool LyXLex::next(bool esc)
 			}
 
 			// string
-			if (c=='\"') {
+			if (c == '\"') {
 				int i = -1;
 				bool escaped = false;
 				do {
@@ -378,18 +378,18 @@ bool LyXLex::next(bool esc)
 					buff[++i] = c;
 				
 					if (!escaped && c == '\"') break;
-				} while (c!='\n' && !feof(file) &&
-					 i!=(LEX_MAX_BUFF-2));
+				} while (c!= '\n' && !feof(file) &&
+					 i!= (LEX_MAX_BUFF-2));
 				
-				if (i==(LEX_MAX_BUFF-2)) {
+				if (i == (LEX_MAX_BUFF-2)) {
 					printError("Line too long");
 					c = '\"'; // Pretend we got a "
 					++i;
 				}
 				
-				if (c!='\"') {
+				if (c!= '\"') {
 					printError("Missing quote");
-					if (c=='\n')
+					if (c == '\n')
 						++lineno;
 				}
 				
@@ -418,7 +418,7 @@ bool LyXLex::next(bool esc)
 			}
 
 			// new line
-			if (c=='\n')
+			if (c == '\n')
 				++lineno;
 		}
 		
@@ -460,12 +460,12 @@ bool LyXLex::nextToken()
 				printError("Line too long");
 			}
 
-			if (c == '\\') ungetc(c,file); // put it back
+			if (c == '\\') ungetc(c, file); // put it back
 			buff[i] = '\0';
 		        status = LEX_TOKEN;
 		}
 		  
-		if (c=='\n')
+		if (c == '\n')
 			++lineno;
 	
 	}

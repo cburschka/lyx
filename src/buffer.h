@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /* This file is part of
-* ======================================================
+* ====================================================== 
 * 
 *           LyX, The Document Processor 	 
 *	    Copyright (C) 1995 Matthias Ettrich
@@ -8,10 +8,10 @@
 *           This file is Copyleft (C) 1996
 *           Lars Gullik Bjønnes
 *
-*======================================================*/
+* ====================================================== */
  
 // Change Log:
-// ===========
+// =========== 
 // 23/03/98   Heinrich Bauer (heinrich.bauer@t-mobil.de)
 // Spots marked "changed Heinrich Bauer, 23/03/98" modified due to the
 // following bug: dvi file export did not work after printing (or previewing)
@@ -60,7 +60,7 @@ public:
 	/**@name Constructors and destructor */
 	//@{
 	///
-	Buffer(string const & file, LyXRC * lyxrc = 0, bool b= false);
+	Buffer(string const & file, LyXRC * lyxrc = 0, bool b = false);
 	
 	///
 	~Buffer();
@@ -98,7 +98,7 @@ public:
 	  Later this func will insert the BufferView into a real list,
 	  not just setting a pointer.
 	  */
-	void addUser(BufferView *u) { users = u; }
+	void addUser(BufferView * u) { users = u; }
 
 	/** Removes the BufferView from the users list.
  	  Since we only can have one at the moment, we just reset it.
@@ -109,13 +109,14 @@ public:
 	void update(signed char f);
 
 	///
-	void redraw(void){
+	void redraw() {
               users->redraw(); 
               users->fitCursor(); 
-              users->updateScrollbar(); }
+              users->updateScrollbar();
+	}
 
         /// Open and lock an updatable inset
-        void open_new_inset(UpdatableInset*);
+        void open_new_inset(UpdatableInset *);
 
 	///
 	void loadAutoSaveFile();
@@ -123,12 +124,12 @@ public:
 	/** Reads a file. 
 	    Returns false if it fails.
 	    If par is given, the file is inserted. */
-	bool readFile(LyXLex &, LyXParagraph *par = 0);
+	bool readFile(LyXLex &, LyXParagraph * par = 0);
 	
 	/** Reads a file without header.
 	    Returns false, if file is not completely read.
 	    If par is given, the file is inserted. */
-	bool readLyXformat2(LyXLex &,LyXParagraph *par = 0);
+	bool readLyXformat2(LyXLex &, LyXParagraph * par = 0);
 
 	/// Inserts a lyx file at cursor position. Returns false if it fails.
 	bool insertLyXFile(string const & filename);
@@ -253,21 +254,23 @@ public:
 	}
 
 	/// returns true if the buffer contains a LaTeX document
-	bool isLatex();
+	bool isLatex() const;
 	/// returns true if the buffer contains a LinuxDoc document
-	bool isLinuxDoc();
+	bool isLinuxDoc() const;
 	/// returns true if the buffer contains a DocBook document
-	bool isDocBook();
+	bool isDocBook() const;
 	/// returns true if the buffer contains either a LinuxDoc or DocBook document
-	bool isSGML();
+	bool isSGML() const;
         /// returns true if the buffer contains a Wed document
-        bool isLiterate();
+        bool isLiterate() const;
 
 	///
 	void setPaperStuff();
 
+#if 0
 	///
 	void setOldPaperStuff();
+#endif
 	
 	/** Validate a buffer for LaTeX.
 	  This validates the buffer, and returns a struct for use by
@@ -277,33 +280,33 @@ public:
 	  points to coresponding \labels). It should perhaps inset "error"
 	  insets to help the user correct obvious mistakes.
 	 */
-	void validate(LaTeXFeatures&); //the correct parameters to be
-				       //included later 
+	void validate(LaTeXFeatures &); //the correct parameters to be
+				        //included later 
 
 	/** Insert an inset into the buffer
 	  Insert inset into buffer, placing it in a layout of lout,
 	  if no_table make sure that it doesn't end up in a table. */
-	void insertInset(Inset *, string const &lout=string(), 
+	void insertInset(Inset *, string const & lout = string(), 
 			 bool no_table = false);
 
         ///
         void setCursorFromRow (int);
 
 	///
-	string getIncludeonlyList(char delim=',');
+	string getIncludeonlyList(char delim = ',');
 	///
-	string getReferenceList(char delim='|');
+	string getReferenceList(char delim = '|');
 	///
-	string getBibkeyList(char delim='|');
+	string getBibkeyList(char delim = '|');
 	///
-	bool gotoLabel(const string&);
+	bool gotoLabel(string const &);
 
 	/// removes all autodeletable insets
 	bool removeAutoInsets();
 
 	/** This will clearly have to change later. Later we can have more
 	  than one user per buffer. */
-	BufferView* getUser() const { return users; }
+	BufferView * getUser() const { return users; }
 
         //@}
 
@@ -318,15 +321,15 @@ public:
 	
 	/** is a list of paragraphs.
 	 */
-	LyXParagraph *paragraph;
+	LyXParagraph * paragraph;
 	
 	/** This holds the mapping between buffer paragraphs and screen rows.
 	    Should be moved to BufferView. (Asger)
 	 */
-	LyXText *text;
+	LyXText * text;
 
 	///
-	UpdatableInset* the_locking_inset;
+	UpdatableInset * the_locking_inset;
 
 	/// RCS object
 	LyXVC lyxvc;
@@ -362,32 +365,41 @@ private:
 	void insertErrors(TeXErrors &);
 	
         ///
-        void linuxDocHandleFootnote(FILE *file,LyXParagraph* &par, int const depth);
+        void linuxDocHandleFootnote(FILE * file,
+				    LyXParagraph * & par, int const depth);
         ///
-	void DocBookHandleCaption(FILE *file, string &inner_tag,
+	void DocBookHandleCaption(FILE * file, string & inner_tag,
 				  int const depth, int desc_on,
-				  LyXParagraph* &par);
+				  LyXParagraph * &par);
         ///
-	void DocBookHandleFootnote(FILE *file,LyXParagraph* &par, int const depth);
+	void DocBookHandleFootnote(FILE * file,
+				   LyXParagraph * & par, int const depth);
 	///
-        void sgmlOpenTag(FILE * file,int depth,string const & latexname) const;
+        void sgmlOpenTag(FILE * file, int depth,
+			 string const & latexname) const;
         ///
-        void sgmlCloseTag(FILE * file,int depth,string const & latexname) const;
+        void sgmlCloseTag(FILE * file, int depth,
+			  string const & latexname) const;
 	///
-	void LinuxDocError(LyXParagraph *par, int pos, char const *message);
+	void LinuxDocError(LyXParagraph * par, int pos, char const * message);
         ///
-	void SimpleLinuxDocOnePar(FILE *file, LyXParagraph *par, int desc_on, int const depth);
+	void SimpleLinuxDocOnePar(FILE * file, LyXParagraph * par,
+				  int desc_on, int const depth);
         ///
-	void SimpleDocBookOnePar(string &file, string &extra, LyXParagraph *par, int & desc_on, int const depth);
+	void SimpleDocBookOnePar(string & file, string & extra,
+				 LyXParagraph * par, int & desc_on,
+				 int const depth);
 
 	/// LinuxDoc.
-	void push_tag(FILE *file, char const *tag, int& pos, char stack[5][3]);
+	void push_tag(FILE * file, char const * tag,
+		      int & pos, char stack[5][3]);
 	
 	/// LinuxDoc.
-	void pop_tag(FILE *file, char const * tag, int& pos, char stack[5][3]);
+	void pop_tag(FILE * file, char const * tag,
+		     int & pos, char stack[5][3]);
 
 	///
-	void RoffAsciiTable(FILE *file, LyXParagraph *par);
+	void RoffAsciiTable(FILE * file, LyXParagraph * par);
 
 	/// is save needed
 	bool lyx_clean;
@@ -395,11 +407,11 @@ private:
 	/// is autosave needed
 	bool bak_clean;
 	
-	/// do we need to run LaTeX, changed 23/03/98, Heinrich Bauer
-	/// We have to distinguish between TeX-runs executed in the original
-	/// directory (in which the original LyX-file resides) and TeX-runs
-	/// executed in a temporary directory. The first situation is valid
-	/// for a dvi-export, the latter one for printing or previewing.
+	/** do we need to run LaTeX, changed 23/03/98, Heinrich Bauer
+	    We have to distinguish between TeX-runs executed in the original
+	    directory (in which the original LyX-file resides) and TeX-runs
+	    executed in a temporary directory. The first situation is valid
+	    for a dvi-export, the latter one for printing or previewing. */
 	bool dvi_clean_orgd;
 	bool dvi_clean_tmpd;
 
@@ -407,7 +419,7 @@ private:
         bool nw_clean;
 
 	/// is regenerating .tex necessary
-	DEPCLEAN *dep_clean;
+	DEPCLEAN * dep_clean;
 
 	/// buffer is r/o
 	bool read_only;
@@ -425,7 +437,7 @@ private:
 	  buffer->lyx_gui->bufferview->updateLayoutChoice. Just ask each
 	  of the buffers in the list of users to do a updateLayoutChoice.
 	  */
-	BufferView *users;
+	BufferView * users;
 
 	///
 	friend class BufferList;
@@ -459,10 +471,9 @@ void Buffer::InsetWakeup()
 
 
 inline  
-void Buffer::setParentName(string const &name)
+void Buffer::setParentName(string const & name)
 {
     params.parentname = name;    
 }
-
 
 #endif

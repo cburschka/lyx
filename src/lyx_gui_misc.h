@@ -7,12 +7,12 @@
 *           Copyright (C) 1995 1996 Matthias Ettrich
 *           and the LyX Team.
 *
-*======================================================*/
+* ====================================================== */
 
 // Misc. GUI specific routines
 
-#ifndef _LYX_GUI_MISC_H
-#define _LYX_GUI_MISC_H
+#ifndef LYX_GUI_MISC_H
+#define LYX_GUI_MISC_H
 
 #include FORMS_H_LOCATION
 #include "LString.h"
@@ -34,27 +34,27 @@ const char* flyx_shortcut_extract(const char*sc);
 #define scex flyx_shortcut_extract
 
 /// Extract shortcut from <ident>|<shortcut> string
-const char* flyx_ident_extract(const char *sc);
+const char* flyx_ident_extract(char const *sc);
 /// Make a shortnamed versjon of the above func
 #define idex flyx_ident_extract
 
 /// Show message
-void WriteAlert(string const & s1, string const & s2=string(), 
-		string const & s3=string());
+void WriteAlert(string const & s1, string const & s2 = string(), 
+		string const & s3 = string());
 
 /// Alarms user of something related to files
-void WriteFSAlert(string const & s1, string const & s2=string());
+void WriteFSAlert(string const & s1, string const & s2 = string());
 
 /// Asks "Yes" or "No". Returns true for yes, false for no
-bool AskQuestion(string const & s1, string const & s2=string(),
-		 string const & s3=string());
+bool AskQuestion(string const & s1, string const & s2 = string(),
+		 string const & s3 = string());
 
 /// Asks "Yes", "No" or "Cancel". Returns 1 for yes, 2 for no, 3 for cancel
-int AskConfirmation(string const & s1, string const & s2=string(), 
-		    string const & s3=string());
+int AskConfirmation(string const & s1, string const & s2 = string(), 
+		    string const & s3 = string());
 
 /// returns a text
-string askForText(string const & msg, string const & dflt=string());
+string askForText(string const & msg, string const & dflt = string());
 
 /// Informs the user that changes in the coming form will be ignored
 void WarnReadonly();

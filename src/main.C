@@ -1,12 +1,12 @@
 /* This file is part of
- * ======================================================
+ * ====================================================== 
  * 
  *           LyX, The Document Processor
  * 	 
  *	    Copyright 1995 Matthias Ettrich
  *          Copyright 1995-1999 The LyX Team.
  *
- *======================================================*/
+ * ====================================================== */
 
 #include <config.h>
 #include FORMS_H_LOCATION
@@ -40,6 +40,6 @@ int main(int argc, char *argv[]) {
 	_wildcard(&argc, &argv);
 #endif
 
-	LyX lyx(&argc,argv);
+	LyX lyx(&argc, argv);
 	return 0; // ok
 }

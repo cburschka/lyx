@@ -1,12 +1,12 @@
 /* -*- C++ -*- */
 /* This file is part of
-* ======================================================
+* ====================================================== 
 * 
 *           LyX, the High Level Word Processor
 *        
-*           Copyright (C) 1995,1996 Matthias Ettrich
+*           Copyright (C) 1995, 1996 Matthias Ettrich
 *
-*======================================================
+* ====================================================== 
  broken_const.h -- inhibits the `const' keyword for compilation */
 
 #ifdef const

@@ -21,15 +21,15 @@
  *    and support for middle and right buttons, as XForms choice object.
  */ 
 
-#ifndef _COMBOX_H_
-#define _COMBOX_H_
+#ifndef COMBOX_H
+#define COMBOX_H
 
 #ifdef __GNUG__
 #pragma interface
 #endif
 
 #include FORMS_H_LOCATION
-#include <stdlib.h>
+#include <cstdlib>
 
 ///
 enum combox_type {
@@ -51,7 +51,7 @@ typedef void (*FL_COMBO_PRE_POST) ();
 class Combox {
 public:
 	///
-	Combox(combox_type t=FL_COMBOX_NORMAL);
+	Combox(combox_type t = FL_COMBOX_NORMAL);
 	///
 	~Combox();
 
@@ -160,21 +160,21 @@ inline
 void Combox::resize(unsigned r)
 {
    fl_set_object_resize(button, r);
-   if (label!=button) fl_set_object_resize(label, r); 
+   if (label!= button) fl_set_object_resize(label, r); 
 }
 
 inline
 void Combox::gravity(unsigned g1, unsigned g2)
 {
    fl_set_object_gravity(button, g1, g2);
-   if (label!=button) fl_set_object_gravity(label, g1, g2); 
+   if (label!= button) fl_set_object_gravity(label, g1, g2); 
 }
 
 inline
 void Combox::shortcut(char const* s, int i)
 {
    if (button)
-      fl_set_object_shortcut(button,s,i);
+      fl_set_object_shortcut(button, s, i);
 }
 
 inline
@@ -205,7 +205,7 @@ int Combox::get()
 inline
 char const*Combox::getline()
 {
-    if (type==FL_COMBOX_INPUT) 
+    if (type == FL_COMBOX_INPUT) 
       return fl_get_input(label);
     else
       return ((browser) ? fl_get_browser_line(browser, sel): (char const*)0);

@@ -1,5 +1,5 @@
 /* This file is part of
- * ======================================================
+ * ====================================================== 
  * 
  *           LyX, The Document Processor 	 
  *	     Copyright 1995 Matthias Ettrich
@@ -8,7 +8,7 @@
  *           This file is Copyright 1999
  *           Kayvan A. Sylvan
  *
- * ======================================================
+ * ====================================================== 
  */
 
 #include <config.h>
@@ -38,7 +38,7 @@ Buffer * ImportNoweb::run()
         Systemcalls one;
 	Buffer * buf = 0;
 	int result= one.startscript(Systemcalls::System, tmp);
-	if (result==0) {
+	if (result == 0) {
 		string filename = file + ".lyx";
 		// File was generated without problems. Load it.
 		buf = bufferlist.loadLyXFile(filename);

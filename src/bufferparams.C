@@ -1,12 +1,12 @@
 /* This file is part of
- * ======================================================
+ * ====================================================== 
  * 
  *           LyX, The Document Processor
  * 	 
  *	     Copyright 1995 Matthias Ettrich
  *           Copyright 1995-1999 The LyX Team.
  *
- * ======================================================*/
+ * ====================================================== */
 
 #include <config.h>
 #include <cstdlib>
@@ -25,7 +25,7 @@
 
 BufferParams::BufferParams()
 {
-	paragraph_separation = LYX_PARSEP_INDENT;
+	paragraph_separation = PARSEP_INDENT;
 	defskip = VSpace(VSpace::MEDSKIP); 
 	quotes_language = InsetQuotes::EnglishQ;
 	quotes_times = InsetQuotes::DoubleQ;
@@ -51,61 +51,11 @@ BufferParams::BufferParams()
 		user_defined_bullets[iter] = temp_bullets[iter] 
 			                   = ITEMIZE_DEFAULTS[iter];
 	}
-	allowAccents=false;
+	allowAccents = false;
 }
 
 
-void BufferParams::Copy(BufferParams const &p)
-{
-	paragraph_separation = p.paragraph_separation;
-	defskip = p.defskip;
-	quotes_language = p.quotes_language;
-	quotes_times = p.quotes_times;
-	fontsize = p.fontsize;
-	textclass = p.textclass;
-	papersize = p.papersize;
-        papersize2 = p.papersize2;
-        paperpackage = p.paperpackage;
-	orientation = p.orientation;
-        use_geometry = p.use_geometry;
-        paperwidth = p.paperwidth;
-        paperheight = p.paperheight;
-        leftmargin = p.leftmargin;
-        topmargin = p.topmargin;
-        rightmargin = p.rightmargin;
-        bottommargin = p.bottommargin;
-        headheight = p.headheight;
-        headsep = p.headsep;
-        footskip = p.footskip;
-	graphicsDriver = p.graphicsDriver;
-	fonts = p.fonts;
-	spacing = p.spacing;
-	secnumdepth = p.secnumdepth;
-	tocdepth = p.tocdepth;
-	language = p.language;
-	inputenc = p.inputenc;
-	preamble = p.preamble;
-	options = p.options;
-	float_placement = p.float_placement;
-	columns = p.columns;
-	sides = p.sides;
-	pagestyle = p.pagestyle;
-
-	// WARNING destructor will deallocate paragraph!!
-	// this is not good and will cause an error somewhere else.
-	//paragraph = p.paragraph; 
-
-	for (int i = 0; i < 4; ++i) {
-		temp_bullets[i] = p.temp_bullets[i];
-		user_defined_bullets[i] = p.user_defined_bullets[i];
-	}
-
-	allowAccents=p.allowAccents;
-        use_amsmath = p.use_amsmath;
-}
-
-
-void BufferParams::writeFile(FILE *file)
+void BufferParams::writeFile(FILE * file)
 {
 	// The top of the file is written by the buffer.
 	// Prints out the buffer info into the .lyx file given by file
@@ -155,8 +105,8 @@ void BufferParams::writeFile(FILE *file)
 	fprintf(file, "\\papersize %s\n", string_papersize[papersize2]);
 	fprintf(file, "\\paperpackage %s\n",
                 string_paperpackages[paperpackage]);
-	fprintf(file, "\\use_geometry %d\n",use_geometry);
-	fprintf(file, "\\use_amsmath %d\n",use_amsmath);
+	fprintf(file, "\\use_geometry %d\n", use_geometry);
+	fprintf(file, "\\use_amsmath %d\n", use_amsmath);
 	fprintf(file, "\\paperorientation %s\n",
 		string_orientation[orientation]);
         if (!paperwidth.empty())
@@ -233,7 +183,7 @@ void BufferParams::useClassDefaults() {
 }
 
 
-void BufferParams::readPreamble(LyXLex &lex)
+void BufferParams::readPreamble(LyXLex & lex)
 {
 	if (lex.GetString() != "\\begin_preamble")
 		lyxerr << "Error (BufferParams::readPreamble):"
@@ -243,7 +193,7 @@ void BufferParams::readPreamble(LyXLex &lex)
 }
 
 
-void BufferParams::readLanguage(LyXLex &lex)
+void BufferParams::readLanguage(LyXLex & lex)
 {
 	string tmptok;
 	string test;
@@ -272,11 +222,11 @@ void BufferParams::readLanguage(LyXLex &lex)
 }
 
 
-void BufferParams::readGraphicsDriver(LyXLex &lex)
+void BufferParams::readGraphicsDriver(LyXLex & lex)
 {
 	string tmptok;
 	string test;
-	int n=0;
+	int n = 0;
 	
 	
 	if (!lex.next()) return;

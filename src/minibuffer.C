@@ -26,8 +26,8 @@
 #include "gettext.h"
 
 extern bool keyseqUncomplete();
-extern string keyseqOptions(int l=190);
-extern string keyseqStr(int l=190);
+extern string keyseqOptions(int l= 190);
+extern string keyseqStr(int l= 190);
 extern LyXAction lyxaction;
 
 void MiniBuffer::TimerCB(FL_OBJECT * ob, long)
@@ -134,7 +134,7 @@ extern "C" int C_MiniBuffer_peek_event(FL_OBJECT * ob, int event,
 				       FL_Coord, FL_Coord,
 				       int key, void * xev)
 {
-	return MiniBuffer::peek_event(ob,event,0,0,key,xev);
+	return MiniBuffer::peek_event(ob, event, 0, 0, key, xev);
 }
 
 
@@ -142,7 +142,7 @@ void MiniBuffer::ExecCommand()
 {
 	text.clear();
 	fl_set_input(the_buffer, "");
-	fl_set_focus_object(owner->getForm(),the_buffer);
+	fl_set_focus_object(owner->getForm(), the_buffer);
 }
 
 
@@ -151,13 +151,13 @@ FL_OBJECT * MiniBuffer::add(int type, FL_Coord x, FL_Coord y,
 {
 	FL_OBJECT * obj;
 	
-	the_buffer = obj = fl_add_input(type,x,y,w,h,text.c_str());
-        fl_set_object_boxtype(obj,FL_DOWN_BOX);
+	the_buffer = obj = fl_add_input(type, x, y, w, h, text.c_str());
+        fl_set_object_boxtype(obj, FL_DOWN_BOX);
         fl_set_object_resize(obj, FL_RESIZE_ALL);
         fl_set_object_gravity(obj, SouthWestGravity, SouthEastGravity);
-        fl_set_object_color(obj,FL_MCOL,FL_MCOL);
-        fl_set_object_lsize(obj,FL_NORMAL_SIZE);
-	fl_set_object_callback(obj,C_MiniBuffer_ExecutingCB, 0);
+        fl_set_object_color(obj, FL_MCOL, FL_MCOL);
+        fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+	fl_set_object_callback(obj, C_MiniBuffer_ExecutingCB, 0);
 
 	// To intercept Up, Down, Table for history
         fl_set_object_prehandler(obj, C_MiniBuffer_peek_event);
@@ -165,7 +165,7 @@ FL_OBJECT * MiniBuffer::add(int type, FL_Coord x, FL_Coord y,
         obj->wantkey = FL_KEY_TAB;
 	
 	// timer
-	timer = fl_add_timer(FL_HIDDEN_TIMER, 0,0,0,0, "Timer");
+	timer = fl_add_timer(FL_HIDDEN_TIMER, 0, 0, 0, 0, "Timer");
 	fl_set_object_callback(timer, C_MiniBuffer_TimerCB, 0);
 	timer->u_vdata = this;
 	fl_set_input(the_buffer, text.c_str());
@@ -210,7 +210,7 @@ void MiniBuffer::Init()
    
 	// Else, show the buffer state.
 	else if (owner->currentView()->available()) {
-			string nicename =
+			string nicename = 
 				MakeDisplayPath(owner->buffer()->
 						getFileName());
 			// Should we do this instead? (kindo like emacs)

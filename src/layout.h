@@ -20,13 +20,24 @@
 using std::vector;
 using std::pair;
 
-#include "definitions.h"
 #include "lyxlex.h"
 #include "lyxfont.h"
 #include "Spacing.h"
 
 /// Reads the style files
 extern void LyXSetStyle();
+
+///
+enum { // no good name for this
+	///
+        LYX_ENVIRONMENT_DEFAULT = 97,
+	///
+	LYX_LAYOUT_DEFAULT = 99
+};
+// Could this cause confusion that both DUMMY_LAYOUT and  LAYOUT_DEFAULT has
+// the same value? (Lgb)
+///
+#define LYX_DUMMY_LAYOUT 99
 
 /// The different output types
 enum OutputType {

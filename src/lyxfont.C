@@ -1,12 +1,12 @@
 /* This file is part of
- * ======================================================
+ * ====================================================== 
  * 
  *           LyX, The Document Processor
  * 	 
  *	    Copyright (C) 1995 Matthias Ettrich
  *          Copyright (C) 1995-1999 The LyX Team.
  *
- * ======================================================*/
+ * ====================================================== */
 
 #include <config.h>
 #include <clocale>
@@ -16,8 +16,8 @@
 #endif
 
 #include <cctype>
+
 #include "gettext.h"
-#include "definitions.h"
 #include "lyxfont.h"
 #include "debug.h"
 #include "lyxrc.h"
@@ -35,23 +35,23 @@ FontLoader fontloader;
 // Names for the GUI
 //
 
-string const GUIFamilyNames[6] =
+string const GUIFamilyNames[6] = 
 { N_("Roman"), N_("Sans serif"), N_("Typewriter"), N_("Symbol"), N_("Inherit"),
     N_("Ignore") };
   
-string const GUISeriesNames[4] =
+string const GUISeriesNames[4] = 
 { N_("Medium"), N_("Bold"), N_("Inherit"), N_("Ignore") };
 
-string const GUIShapeNames[6] =
+string const GUIShapeNames[6] = 
 { N_("Upright"), N_("Italic"), N_("Slanted"), N_("Smallcaps"), N_("Inherit"),
     N_("Ignore") };
 
-string const GUISizeNames[14] =
+string const GUISizeNames[14] = 
 { N_("Tiny"), N_("Smallest"), N_("Smaller"), N_("Small"), N_("Normal"), N_("Large"),
   N_("Larger"), N_("Largest"), N_("Huge"), N_("Huger"), N_("Increase"), N_("Decrease"), 
   N_("Inherit"), N_("Ignore") };
  
-string const lGUISizeNames[15] =
+string const lGUISizeNames[15] = 
 { N_("tiny"), N_("smallest"), N_("smaller"), N_("small"), N_("normal"), N_("large"),
   N_("larger"), N_("largest"), N_("huge"), N_("huger"), N_("increase"), N_("decrease"),
   N_("inherit"), N_("ignore"), string() };
@@ -67,24 +67,24 @@ string const GUIColorNames[13] =
 //
 // Strings used to read and write .lyx format files
 //
-string const LyXFamilyNames[6] =
+string const LyXFamilyNames[6] = 
 { "roman", "sans", "typewriter", "symbol", "default", "error" };
  
-string const LyXSeriesNames[4] =
+string const LyXSeriesNames[4] = 
 { "medium", "bold", "default", "error" };
  
 string const LyXShapeNames[6] = 
 { "up", "italic", "slanted", "smallcaps", "default", "error" };
  
-string const LyXSizeNames[14] =
+string const LyXSizeNames[14] = 
 { "tiny", "scriptsize", "footnotesize", "small", "normal", "large",
   "larger", "largest", "huge", "giant", 
   "increase-error", "decrease-error", "default", "error" };
 
-string const LyXMiscNames[12] =
+string const LyXMiscNames[12] = 
 { "off", "on", "toggle", "default", "error" };
 
-string const LyXColorNames[13] =
+string const LyXColorNames[13] = 
 { "none", "black", "white", "red", "green", "blue", "cyan", "magenta", 
   "yellow", "matherror", "inseterror", "default", "error" };
 
@@ -92,20 +92,20 @@ string const LyXColorNames[13] =
 // Strings used to write LaTeX files
 //
 
-string const LaTeXFamilyNames[6] =
+string const LaTeXFamilyNames[6] = 
 { "textrm", "textsf", "texttt", "error1", "error2", "error3" };
  
-string const LaTeXSeriesNames[4] =
+string const LaTeXSeriesNames[4] = 
 { "textmd", "textbf", "error4", "error5" };
  
-string const LaTeXShapeNames[6] =
+string const LaTeXShapeNames[6] = 
 { "textup", "textit", "textsl", "textsc", "error6", "error7" };
  
-string const LaTeXSizeNames[14] =
+string const LaTeXSizeNames[14] = 
 { "tiny", "scriptsize", "footnotesize", "small", "normalsize", "large",
   "Large", "LARGE", "huge", "Huge", "error8", "error9", "error10", "error11" };
  
-string const LaTeXColorNames[13] =
+string const LaTeXColorNames[13] = 
 { "none", "black", "white", "red", "green", "blue", "cyan", "magenta", 
   "yellow", "error12", "error13", "error14", "error15" };
 
@@ -375,7 +375,7 @@ LyXFont& LyXFont::setLyXFamily(string const & fam)
 {
 	string s = lowercase(fam);
 
-	int i=0;
+	int i= 0;
 	while (s != LyXFamilyNames[i] && LyXFamilyNames[i] != "error") i++;
 	if (s == LyXFamilyNames[i]) {
 		setFamily(LyXFont::FONT_FAMILY(i));
@@ -391,7 +391,7 @@ LyXFont& LyXFont::setLyXSeries(string const & ser)
 {
 	string s = lowercase(ser);
 
-	int i=0;
+	int i= 0;
 	while (s != LyXSeriesNames[i] && LyXSeriesNames[i] != "error") i++;
 	if (s == LyXSeriesNames[i]) {
 		setSeries(LyXFont::FONT_SERIES(i));
@@ -407,7 +407,7 @@ LyXFont& LyXFont::setLyXShape(string const & sha)
 {
 	string s = lowercase(sha);
 
-	int i=0;
+	int i= 0;
 	while (s != LyXShapeNames[i] && LyXShapeNames[i] != "error") i++;
 	if (s == LyXShapeNames[i]) {
 		setShape(LyXFont::FONT_SHAPE(i));
@@ -422,7 +422,7 @@ LyXFont& LyXFont::setLyXShape(string const & sha)
 LyXFont& LyXFont::setLyXSize(string const & siz)
 {
 	string s = lowercase(siz);
-	int i=0;
+	int i= 0;
 	while (s != LyXSizeNames[i] && LyXSizeNames[i] != "error") i++;
 	if (s == LyXSizeNames[i]) {
 		setSize(LyXFont::FONT_SIZE(i));
@@ -436,7 +436,7 @@ LyXFont& LyXFont::setLyXSize(string const & siz)
 LyXFont::FONT_MISC_STATE LyXFont::setLyXMisc(string const & siz)
 {
 	string s = lowercase(siz);
-	int i=0;
+	int i= 0;
 	while (s != LyXMiscNames[i] && LyXMiscNames[i] != "error") i++;
 	if (s == LyXMiscNames[i])
 		return FONT_MISC_STATE(i);
@@ -449,7 +449,7 @@ LyXFont::FONT_MISC_STATE LyXFont::setLyXMisc(string const & siz)
 LyXFont& LyXFont::setLyXColor(string const & col)
 {
 	string s = lowercase(col);
-	int i=0;
+	int i= 0;
 	while (s != LyXColorNames[i] && LyXColorNames[i] != "error") i++;
 	if (s == LyXColorNames[i]) {
 		setColor(LyXFont::FONT_COLOR(i));
@@ -464,7 +464,7 @@ LyXFont& LyXFont::setLyXColor(string const & col)
 LyXFont& LyXFont::setGUISize(string const & siz)
 {
 	string s = lowercase(siz);
-	int i=0;
+	int i= 0;
 	while (!lGUISizeNames[i].empty() &&
 	       s != _(lGUISizeNames[i].c_str()))
 	  i++;
@@ -817,7 +817,7 @@ GC LyXFont::getGC() const
 
 XFontStruct* LyXFont::getXFontstruct() const
 {
-	return fontloader.load(family(),series(),realShape(),size());
+	return fontloader.load(family(), series(), realShape(), size());
 }
 
 
@@ -882,7 +882,7 @@ int LyXFont::textWidth(char const *s, int n) const
 		smallfont.decSize();
 		smallfont.decSize();
 		smallfont.setShape(LyXFont::UP_SHAPE);
-		for (int i=0; i < n; i++){
+		for (int i= 0; i < n; i++){
 			c = s[i];
 			if (islower(c)){
 				c = toupper(c);
@@ -933,7 +933,7 @@ int LyXFont::drawText(char const* s, int n, Pixmap pm,
 		smallfont.decSize();
 		smallfont.decSize();
 		smallfont.setShape(LyXFont::UP_SHAPE);
-		for (i=0; i < n; i++){
+		for (i= 0; i < n; i++){
 			c = s[i];
 			if (islower(c)){
 				c = toupper(c);

@@ -1,6 +1,6 @@
 // -*- C++ -*-
-#ifndef _MINIBUFFER_H
-#define _MINIBUFFER_H
+#ifndef MINIBUFFER_H
+#define MINIBUFFER_H
 
 #include FORMS_H_LOCATION
 #include "LString.h"
@@ -34,7 +34,7 @@ public:
 	void Set(string const& = string(),
 		 string const& = string(),
 		 string const& = string(),
-		 int delay_secs=6);
+		 int delay_secs= 6);
 	/// 
 	string GetText() const { return text; }
 	///
@@ -81,7 +81,7 @@ private:
         int history_idx, history_cnt;
         ///
         void addHistory(string const &cmd) { 
-	        if (history_cnt==0 || (history_cnt>0 && cmd!=history[(history_cnt-1) % MAX_HISTORY])) {
+	        if (history_cnt == 0 || (history_cnt>0 && cmd!= history[(history_cnt-1) % MAX_HISTORY])) {
 		    history[history_cnt % MAX_HISTORY] = cmd;
 		    history_cnt++;
 		}

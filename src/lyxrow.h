@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /* This file is part of
- * ======================================================
+ * ====================================================== 
  * 
  *           LyX, The Document Processor
  * 	 
@@ -19,11 +19,7 @@ struct Row {
 	///
 	LyXParagraph * par;
 	///
-#ifdef NEW_TEXT
 	LyXParagraph::size_type pos;
-#else
-	int pos;
-#endif
 	///
 	unsigned short  baseline;
 	/** what is missing to a full row can be negative.

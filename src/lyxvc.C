@@ -85,7 +85,7 @@ void LyXVC::registrer()
 	// If the document is changed, we might want to save it
 	if (!vcs->owner()->isLyxClean() && 
 	    AskQuestion(_("Changes in document:"),
-			MakeDisplayPath(vcs->owner()->getFileName(),50),
+			MakeDisplayPath(vcs->owner()->getFileName(), 50),
 			_("Save document and proceed?"))) {
 		vcs->owner()->getUser()->owner()
 			->getLyXFunc()->Dispatch(LFUN_MENUWRITE);
@@ -115,7 +115,7 @@ void LyXVC::checkIn()
 	// If the document is changed, we might want to save it
 	if (!vcs->owner()->isLyxClean() && 
 	    AskQuestion(_("Changes in document:"),
-			MakeDisplayPath(vcs->owner()->getFileName(),50),
+			MakeDisplayPath(vcs->owner()->getFileName(), 50),
 			_("Save document and proceed?"))) {
 		vcs->owner()->getUser()->owner()
 			->getLyXFunc()->Dispatch(LFUN_MENUWRITE);
@@ -141,7 +141,7 @@ void LyXVC::checkOut()
 	lyxerr[Debug::LYXVC] << "LyXVC: checkOut" << endl;
 	if (!vcs->owner()->isLyxClean() 
 	    && !AskQuestion(_("Changes in document:"),
-			   MakeDisplayPath(vcs->owner()->getFileName(),50),
+			   MakeDisplayPath(vcs->owner()->getFileName(), 50),
 			   _("Ignore changes and proceed with check out?"))) {
 		return;
 	}
@@ -251,11 +251,11 @@ void LyXVC::viewLog(string const & fil)
 				    _("Close"));
 		fl_set_object_lsize(obj, FL_NORMAL_SIZE);
 		fl_set_object_callback(obj, C_LyXVC_logClose, 0);
-		obj = fl_add_button(FL_NORMAL_BUTTON,370,340,90,30,
+		obj = fl_add_button(FL_NORMAL_BUTTON, 370, 340, 90, 30,
 				    idex(_("Update|#Uu")));
-		fl_set_button_shortcut(obj,scex(_("Update|#Uu")),1);
-		fl_set_object_lsize(obj,FL_NORMAL_SIZE);
-		fl_set_object_callback(obj, C_LyXVC_logUpdate,0);
+		fl_set_button_shortcut(obj, scex(_("Update|#Uu")), 1);
+		fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+		fl_set_object_callback(obj, C_LyXVC_logUpdate, 0);
 		fl_end_form();
 		fl_set_form_atclose(browser->LaTeXLog, CancelCloseBoxCB, 0);
 	}

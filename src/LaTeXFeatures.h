@@ -1,13 +1,13 @@
 // -*- C++ -*-
 /* This file is part of
-* ======================================================
+* ====================================================== 
 * 
 *           LyX, The Document Processor
 *        
 *           Copyright (C) 1995 Matthias Ettrich
 *           Copyright (C) 1995-1999 the LyX Team.
 *
-*======================================================*/
+* ====================================================== */
 
 #ifndef LATEXFEATURES_H
 #define LATEXFEATURES_H

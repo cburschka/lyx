@@ -126,8 +126,8 @@ protected:
 	struct pushed_table {
 		///
 		pushed_table(){
-			next=0;
-			table_elem=0;
+			next= 0;
+			table_elem= 0;
 		}
 		///
 		pushed_table *next;

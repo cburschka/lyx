@@ -9,11 +9,11 @@
  *           This file is Copyright (C) 1998
  *           Asger Alstrup
  *
- *======================================================
+ * ======================================================
  */
 
-#ifndef _IMPORTLATEX_H
-#define _IMPORTLATEX_H
+#ifndef IMPORTLATEX_H
+#define IMPORTLATEX_H
 
 #ifdef __GNUG__
 #pragma interface

@@ -1,13 +1,13 @@
 // -*- C++ -*-
 /* This file is part of
- * ======================================================
+ * ====================================================== 
  * 
  *           LyX, The Document Processor
  *        
  *           Copyright 1995 Matthias Ettrich
  *           Copyright 1995-1999 The LyX Team.
  *
- * ======================================================*/
+ * ====================================================== */
 
 /**
   Docu   : To use the lyxserver define the name of the pipe in your
@@ -304,11 +304,11 @@ void LyXComm::callback(int fd, void *v)
 	errno = 0;
 	int status;
 	// the single = is intended here.
-	while((status = read(fd,charbuf,CMDBUFLEN-1)))
+	while((status = read(fd, charbuf, CMDBUFLEN-1)))
 	{// break and return in loop
 		if(status > 0) // got something
 		{
-			charbuf[status]='\0'; // turn it into a c string
+			charbuf[status]= '\0'; // turn it into a c string
 			lsbuf += strip(charbuf, '\r');
 			// commit any commands read
 			while(lsbuf.find('\n') != string::npos) // while still
@@ -317,7 +317,7 @@ void LyXComm::callback(int fd, void *v)
 			{
 				// split() grabs the entire string if
 				// the delim /wasn't/ found. ?:-P 
-				lsbuf=split(lsbuf, cmd,'\n');
+				lsbuf= split(lsbuf, cmd,'\n');
 				lyxerr[Debug::LYXSERVER]
 					<< "LyXComm: status:" << status
 					<< ", lsbuf:" << lsbuf 
@@ -348,7 +348,7 @@ void LyXComm::callback(int fd, void *v)
 	}
 	c->closeConnection();
 	c->openConnection();
-	errno=0;
+	errno= 0;
 }
 
 extern "C" void C_LyXComm_callback(int fd, void *v)
@@ -401,7 +401,7 @@ LyXServer::~LyXServer()
 	// modified june 1999 by stefano@zool.su.se to send as many bye
 	// messages as there are clients, each with client's name.
 	string message;
-	for (int i=0; i<numclients; i++) {
+	for (int i= 0; i<numclients; i++) {
 		message = "LYXSRV:" + clients[i] + ":bye\n";
 		pipes.send(message);
 	}
@@ -428,9 +428,9 @@ void LyXServer::callback(LyXServer * serv, string const & msg)
 	bool server_only = false;
 	while(*p) {
 		// --- 1. check 'header' ---
-	        if (strncmp(p, "LYXSRV:", 7)==0) {
+	        if (strncmp(p, "LYXSRV:", 7) == 0) {
 			server_only = true; 
-		} else if(0!=strncmp(p, "LYXCMD:", 7)) {
+		} else if(0!= strncmp(p, "LYXCMD:", 7)) {
 			lyxerr << "LyXServer: Unknown request" << endl;
 			return;
 		}
@@ -469,13 +469,13 @@ void LyXServer::callback(LyXServer * serv, string const & msg)
 			// we are listening.
 			if (cmd == "hello") {
 				// One more client
-				if(serv->numclients==MAX_CLIENTS){ //paranoid check
+				if(serv->numclients == MAX_CLIENTS){ //paranoid check
 					lyxerr[Debug::LYXSERVER]
 						<< "LyXServer: too many clients..."
 						<< endl;
 					return;
 				}
-				int i=0; //find place in clients[]
+				int i= 0; //find place in clients[]
 				while (!serv->clients[i].empty() 
 				       && i<serv->numclients) 
 					i++;
@@ -487,10 +487,10 @@ void LyXServer::callback(LyXServer * serv, string const & msg)
 					<< client << endl;
 				serv->pipes.send(buf);
 			} else if (cmd == "bye") {
-				// If clients==0 maybe we should reset the pipes
+				// If clients == 0 maybe we should reset the pipes
 				// to prevent fake callbacks
 				int i; //look if client is registered
-				for (i=0; i<serv->numclients; i++) {
+				for (i= 0; i<serv->numclients; i++) {
 					if (serv->clients[i] == client) break;
 				}
 				if (i<serv->numclients) {
@@ -524,7 +524,7 @@ void LyXServer::callback(LyXServer * serv, string const & msg)
 			//int action = -1;
 			string rval, buf;
 		    
-			if (action>=0) {
+			if (action>= 0) {
 				rval = serv->func->Dispatch(action, arg.c_str());
 			} else {
 				rval = "Unknown command";

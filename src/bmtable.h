@@ -6,15 +6,15 @@
  *  Description: A bitmap table uses a single bitmap to simulate a 2d array 
  *               of bitmap buttons. It can be used to build bitmap menus.
  *               
- *  Copyright (C) 1995,1996 Alejandro Aguilar Sierra 
+ *  Copyright (C) 1995, 1996 Alejandro Aguilar Sierra 
  *
  *  You are free to use and modify this code under the terms of
  *  the GNU General Public Licence version 2 or later. 
  * 
  */ 
 
-#ifndef __BMTABLE_H__
-#define __BMTABLE_H__ 
+#ifndef BMTABLE_H
+#define BMTABLE_H 
 
 #include FORMS_H_LOCATION
 
@@ -84,5 +84,5 @@ void fl_free_bmtable_bitmap(FL_OBJECT *ob);
 /** Free the current pixmap in preparation for installing a new one */
 void fl_free_bmtable_pixmap(FL_OBJECT *ob);
 
-#endif  /* __BMTABLE_H__ */
+#endif  /* BMTABLE_H */
 

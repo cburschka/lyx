@@ -1,7 +1,7 @@
 // -*- C++ -*-
 /* This is the bullet class definition file.
  * This file is part of
- * ======================================================
+ * ====================================================== 
  *
  *           LyX, The Document Processor
  *
@@ -10,7 +10,7 @@
  *
  *           This file Copyright 1997-1999
  *           Allan Rae
- * ======================================================*/
+ * ====================================================== */
 
 #ifndef BULLET_H
 #define BULLET_H
@@ -32,7 +32,7 @@ public:
 	Bullet(const int f = -1, const int c = -1, const int s = -1);
 
 	///
-	Bullet(const string &);
+	Bullet(string const &);
 
 	///
 	~Bullet();
@@ -44,7 +44,7 @@ public:
 	///
 	void setSize(const int);
 	///
-	void setText(const string &);
+	void setText(string const &);
 	///
 	int getCharacter() const;
 	///
@@ -118,9 +118,9 @@ private:
 	///
 	void generateText();
 	///
-	static const string & bulletSize(const short &);
+	static string const & bulletSize(const short &);
 	///
-	static const string & bulletEntry(const short &, const short &);
+	static string const & bulletEntry(const short &, const short &);
 
 	///
 	short font;
@@ -151,7 +151,7 @@ private:
 
 /*----------------Inline Bullet Member Functions------------------*/
 
-inline Bullet::Bullet(const string & t) 
+inline Bullet::Bullet(string const & t) 
   :  font(MIN), character(MIN), size(MIN), user_text(1), text(t)
 {
 #ifdef DEBUG_AS_DEFAULT
@@ -209,7 +209,7 @@ inline void Bullet::setSize(const int s)
 }
 
 
-inline void Bullet::setText(const string & t)
+inline void Bullet::setText(string const & t)
 {
 	font = character = size = MIN;
 	user_text = 1;
@@ -261,7 +261,7 @@ inline Bullet & Bullet::operator = (const Bullet & b)
 }
 
 
-inline const char * Bullet::c_str()
+inline char const * Bullet::c_str()
 {
 	return this->getText().c_str();
 }
@@ -274,5 +274,5 @@ inline const char * Bullet::c_str()
 static Bullet const ITEMIZE_DEFAULTS[4] = { Bullet( 0, 8 ),//"\\(\\bullet\\)"
                                             Bullet( 0, 0 ),//"\\normalfont\\bfseries{--}"
                                             Bullet( 0, 6 ),//"\\(\\ast\\)"
-                                            Bullet( 0,10 ) };//"\\(\\cdot\\)"
+                                            Bullet( 0, 10 ) };//"\\(\\cdot\\)"
 #endif /* BULLET_H_ */

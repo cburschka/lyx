@@ -1,12 +1,12 @@
 /* This file is part of
- * ======================================================
+ * ====================================================== 
  * 
  *           LyX, The Document Processor
  * 	 
  *	    Copyright 1995 Matthias Ettrich,
  *          Copyright 1995-1999 The LyX Team.
  *
- * ======================================================*/
+ * ====================================================== */
 
 #include <config.h>
 
@@ -143,8 +143,8 @@ void LyXFindReplace0::SetReplaceEnabled(bool fEnable)
         fl_deactivate_object(fd_fs->replace_button);
         fl_deactivate_object(fd_fs->replaceall_button);
         fl_deactivate_object(fd_fs->input_replace);
-		fl_set_object_lcol(fd_fs->replace_button,FL_INACTIVE);
-		fl_set_object_lcol(fd_fs->replaceall_button,FL_INACTIVE);
+		fl_set_object_lcol(fd_fs->replace_button, FL_INACTIVE);
+		fl_set_object_lcol(fd_fs->replaceall_button, FL_INACTIVE);
 		fl_set_object_lcol(fd_fs->input_replace, FL_INACTIVE);
 	}
 }

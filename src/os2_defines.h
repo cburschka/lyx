@@ -1,20 +1,20 @@
 /* -*- C++ -*- */
 /* This file is part of
-* ======================================================
+* ====================================================== 
 * 
 *           LyX, The Document Processor
 *        
-*           Copyright (C) 1995,1996 Matthias Ettrich
+*           Copyright (C) 1995, 1996 Matthias Ettrich
 *
-*======================================================
+* ====================================================== 
  A few prototypes and definitions needed for OS/2 */
 
-#ifndef _OS2_DEFINES_H
-#define _OS2_DEFINES_H
+#ifndef OS2_DEFINES_H
+#define OS2_DEFINES_H
 
-#include <ctype.h>
+#include <cctype>
 #include <process.h>
-#include <stdlib.h>
+#include <cstdlib>
 #include <unistd.h>
 #include <X11/Xlocale.h>
 /* #include <assert.h> */
@@ -22,8 +22,8 @@
 #define lstat stat
 #define S_ISLNK(x) false
 #define S_ISBLK(x) false
-#define readlink(s,t,l) (strcpy(t,s),strlen(t))
-/*#define mkfifo(p,m) (0) *//* LyXserver is temporary disabled. */
+#define readlink(s, t, l) (strcpy(t, s), strlen(t))
+/*#define mkfifo(p, m) (0) *//* LyXserver is temporary disabled. */
 #define getcwd _getcwd2
 #define chdir _chdir2
 #define strcasecmp stricmp

@@ -1,12 +1,12 @@
 /* This file is part of
- * ======================================================
+ * ====================================================== 
  * 
  *           LyX, The Document Processor
  * 	 
  *           Copyright 1995 Matthias Ettrich
  *           Copyright 1995-1999 The LyX Team.
  *
- * ======================================================*/
+ * ====================================================== */
 
 #include <config.h>
 
@@ -86,7 +86,7 @@ LyX::LyX(int * argc, char * argv[])
 	// Now the GUI and LyX have taken care of their arguments, so
 	// the only thing left on the command line should be
 	// filenames.
-	if ((*argc)==2) 
+	if ((*argc) == 2) 
 		lyxerr[Debug::INFO] << "Opening document..." << endl;
 	else if ((*argc)>2)
 		lyxerr[Debug::INFO] << "Opening documents..." << endl;
@@ -192,7 +192,7 @@ void LyX::init(int */*argc*/, char **argv)
 	// If we had a command line switch, system_lyxdir is already set
 	string searchpath;
 	if (!system_lyxdir.empty())
-		searchpath=MakeAbsPath(system_lyxdir) + ';';
+		searchpath= MakeAbsPath(system_lyxdir) + ';';
 
 	// LYX_DIR_10x environment variable
 	string lyxdir = GetEnvPath("LYX_DIR_10x");
@@ -224,11 +224,11 @@ void LyX::init(int */*argc*/, char **argv)
 		      OnlyFilename(binname)) + ';';
 
 	  // Follow Symlinks
-		FileInfo file(fullbinpath,true);
+		FileInfo file(fullbinpath, true);
 		FollowLink = file.isLink();
 		if (FollowLink) {
 			string Link;
-			if (LyXReadLink(fullbinpath,Link)) {
+			if (LyXReadLink(fullbinpath, Link)) {
 				fullbinpath = Link;
 				binpath = MakeAbsPath(OnlyPath(fullbinpath));
 			}
@@ -320,7 +320,7 @@ void LyX::init(int */*argc*/, char **argv)
 	}
 
 	// Calculate screen dpi as average of x-DPI and y-DPI:
-	Screen * scr=(DefaultScreenOfDisplay(fl_get_display()));
+	Screen * scr= (DefaultScreenOfDisplay(fl_get_display()));
 	lyxrc->dpi = ((HeightOfScreen(scr)* 25.4 / HeightMMOfScreen(scr)) +
 		      (WidthOfScreen(scr)* 25.4 / WidthMMOfScreen(scr))) / 2;
 	lyxerr[Debug::INFO] << "DPI setting detected to be "
@@ -400,7 +400,7 @@ void LyX::queryUserLyXDir()
 
 	// Run configure in user lyx directory
 	Path p(user_lyxdir);
-	system(AddName(system_lyxdir,"configure").c_str());
+	system(AddName(system_lyxdir, "configure").c_str());
 	lyxerr << "LyX: " << _("Done!") << endl;
 }
 
@@ -475,14 +475,14 @@ bool LyX::easyParse(int * argc, char * argv[])
 		if (arg == "-dbg") {
 			if (i+1 < *argc) {
 				int erri = 0;
-				sscanf(argv[i+1],"%d", &erri);
+				sscanf(argv[i+1], "%d", &erri);
 
 				setDebuggingLevel(erri);
 
 				// Now, remove these two arguments by shifting
 				// the following two places down.
 				(*argc) -= 2;
-				for (int j=i; j < (*argc); j++)
+				for (int j= i; j < (*argc); j++)
 					argv[j] = argv[j+2];
 				i--; // After shift, check this number again.
 			} else
@@ -497,7 +497,7 @@ bool LyX::easyParse(int * argc, char * argv[])
 				// Now, remove these two arguments by shifting
 				// the following two places down.
 				(*argc) -= 2;
-				for (int j=i; j < (*argc); j++)
+				for (int j= i; j < (*argc); j++)
 					argv[j] = argv[j+2];
 				i--; // After shift, check this number again.
 			} else
@@ -552,7 +552,7 @@ void error_handler(int err_sig)
 	bufferlist.emergencyWriteAll();
 
 	lyxerr << "Bye." << endl;
-	if(err_sig!=SIGHUP && (!GetEnv("LYXDEBUG").empty() || err_sig == SIGSEGV))
+	if(err_sig!= SIGHUP && (!GetEnv("LYXDEBUG").empty() || err_sig == SIGSEGV))
 		abort();
 	exit(0);
 }

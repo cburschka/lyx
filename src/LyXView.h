@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /* This file is part of
- * ======================================================
+ * ====================================================== 
  * 
  *           LyX, The Document Processor
  *        
@@ -61,7 +61,7 @@ public:
 	void setPosition(int, int);
 
 	/// Show the main form.
-	void show(int, int, char const * t= "LyX");
+	void show(int, int, char const * t = "LyX");
 
 	/// init (should probably be removed later) (Lgb)
 	void init();

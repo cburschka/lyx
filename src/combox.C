@@ -86,7 +86,7 @@ void Combox::remove()
 	}
 	
 	lyxerr.debug() << "Label: " << label << endl;
-	if (label && label!=button) {
+	if (label && label!= button) {
 		fl_delete_object(label);
 		fl_free_object(label); 
 	}
@@ -127,7 +127,7 @@ void Combox::addline(char const* text)
 bool Combox::select_text(char const* t)
 {
 	if (!browser || !t) return false;
-	for (int i=1; i<=fl_get_browser_maxline(browser); i++) {
+	for (int i= 1; i<= fl_get_browser_maxline(browser); i++) {
 		if (!strcmp(t, fl_get_browser_line(browser, i))) {
 			select(i);
 			return true;
@@ -140,7 +140,7 @@ bool Combox::select_text(char const* t)
 void Combox::select(int i)
 {
 	if (!browser || !button) return;
-	if (i>0 && i<=fl_get_browser_maxline(browser)) sel = i; 
+	if (i>0 && i<= fl_get_browser_maxline(browser)) sel = i; 
 	fl_deactivate_object(button);
 	
 	if (type == FL_COMBOX_INPUT)
@@ -159,39 +159,39 @@ void Combox::add(int x, int y, int w, int hmin, int hmax)
 	case FL_COMBOX_DROPLIST:
 	{
 		button = obj = fl_add_button(FL_NORMAL_BUTTON,
-					     x+w-22,y,22,hmin,"@2->");
-		fl_set_object_color(obj,FL_MCOL, FL_MCOL);
+					     x+w-22, y, 22, hmin, "@2->");
+		fl_set_object_color(obj, FL_MCOL, FL_MCOL);
 		fl_set_object_dblbuffer(obj, 1);
-		fl_set_object_callback(obj,C_Combox_combo_cb,0);
-	        label = obj = fl_add_button(FL_NORMAL_TEXT,x,y,w-22,hmin,"");
-		fl_set_object_boxtype(obj,FL_DOWN_BOX);
-		fl_set_object_color(obj,FL_MCOL,FL_BLACK);
-		fl_set_object_lalign(obj,FL_ALIGN_CENTER|FL_ALIGN_INSIDE);
+		fl_set_object_callback(obj, C_Combox_combo_cb, 0);
+	        label = obj = fl_add_button(FL_NORMAL_TEXT, x, y, w-22, hmin, "");
+		fl_set_object_boxtype(obj, FL_DOWN_BOX);
+		fl_set_object_color(obj, FL_MCOL, FL_BLACK);
+		fl_set_object_lalign(obj, FL_ALIGN_CENTER|FL_ALIGN_INSIDE);
 		fl_set_object_dblbuffer(obj, 1);
-		fl_set_object_callback(obj,C_Combox_combo_cb,0);
+		fl_set_object_callback(obj, C_Combox_combo_cb, 0);
 		break;
 	}
 	case FL_COMBOX_NORMAL:
 	{
-		button = obj = fl_add_button(FL_NORMAL_BUTTON,x,y,w,hmin,"");
-		fl_set_object_color(obj,FL_MCOL, FL_MCOL);
-		fl_set_object_boxtype(obj,FL_DOWN_BOX);
-		fl_set_object_callback(obj,C_Combox_combo_cb,0);
-		fl_set_object_color(obj,FL_MCOL,FL_BLACK);
+		button = obj = fl_add_button(FL_NORMAL_BUTTON, x, y, w, hmin, "");
+		fl_set_object_color(obj, FL_MCOL, FL_MCOL);
+		fl_set_object_boxtype(obj, FL_DOWN_BOX);
+		fl_set_object_callback(obj, C_Combox_combo_cb, 0);
+		fl_set_object_color(obj, FL_MCOL, FL_BLACK);
 		label = button;
 		break;
 	}
 	case FL_COMBOX_INPUT:
 	{
 		button = obj = fl_add_button(FL_NORMAL_BUTTON,
-					     x+w-22,y,22,hmin,"@2->");
-		fl_set_object_color(obj,FL_MCOL, FL_MCOL);
-		fl_set_object_callback(obj,C_Combox_combo_cb,0);
-		label = obj = fl_add_input(FL_NORMAL_INPUT,x,y,w-22,hmin,"");
-		fl_set_object_boxtype(obj,FL_DOWN_BOX);
+					     x+w-22, y, 22, hmin, "@2->");
+		fl_set_object_color(obj, FL_MCOL, FL_MCOL);
+		fl_set_object_callback(obj, C_Combox_combo_cb, 0);
+		label = obj = fl_add_input(FL_NORMAL_INPUT, x, y, w-22, hmin, "");
+		fl_set_object_boxtype(obj, FL_DOWN_BOX);
 		fl_set_object_return(obj, FL_RETURN_END_CHANGED);
-		fl_set_object_callback(obj,C_Combox_input_cb,0);
-		//fl_set_object_color(obj,FL_MCOL,FL_BLACK);
+		fl_set_object_callback(obj, C_Combox_input_cb, 0);
+		//fl_set_object_color(obj, FL_MCOL, FL_BLACK);
 		//fl_set_object_lalign(obj,FL_ALIGN_CENTER|FL_ALIGN_INSIDE);
 		break;
 	}
@@ -210,11 +210,11 @@ void Combox::add(int x, int y, int w, int hmin, int hmax)
 	bw = w+20; bh = hmax-hmin-12;
 
 	form = fl_bgn_form(FL_NO_BOX, bw, bh);
-	browser = obj = fl_add_browser(FL_HOLD_BROWSER, 0, 0, bw,bh,"");
-	fl_set_object_boxtype(obj,FL_UP_BOX);
-	fl_set_object_color(obj,FL_MCOL, FL_YELLOW);
+	browser = obj = fl_add_browser(FL_HOLD_BROWSER, 0, 0, bw, bh, "");
+	fl_set_object_boxtype(obj, FL_UP_BOX);
+	fl_set_object_color(obj, FL_MCOL, FL_YELLOW);
 	fl_set_object_gravity(obj, NorthWestGravity, NorthWestGravity);
-	fl_set_object_callback(obj,C_Combox_combo_cb,2);
+	fl_set_object_callback(obj, C_Combox_combo_cb, 2);
 	fl_end_form();
 	browser->u_vdata = (void*)this;
 	form->u_vdata = browser;
@@ -258,7 +258,7 @@ void Combox::Show()
 	XGrabPointer(fl_display, form->window, false,
 		     ButtonPressMask | ButtonReleaseMask | PointerMotionMask,
 		     GrabModeAsync, GrabModeAsync,
-		     0, 0,0);
+		     0, 0, 0);
 	XFlush(fl_display);
 }
 
@@ -272,7 +272,7 @@ void Combox::Hide(int who)
 		else
 			fl_set_object_label(label,
 					    fl_get_browser_line(browser, sel));		
-	        if (callback) callback(sel,cb_arg);
+	        if (callback) callback(sel, cb_arg);
 	}
         XUngrabPointer(fl_display, 0);
 	XFlush(fl_display);
@@ -359,7 +359,7 @@ void Combox::combo_cb(FL_OBJECT *ob, long data)
 
 extern "C" void C_Combox_combo_cb(FL_OBJECT *ob, long data) 
 {
-	Combox::combo_cb(ob,data);
+	Combox::combo_cb(ob, data);
 }
 
 
@@ -369,7 +369,7 @@ int Combox::peek_event(FL_FORM * form, void *xev)
 	Combox *combo = (Combox*)ob->u_vdata;
 	
 #if FL_REVISION < 86
-	if(((XEvent *)xev)->type==ButtonPress && !ob->belowmouse)
+	if(((XEvent *)xev)->type == ButtonPress && !ob->belowmouse)
 #endif
 #if FL_REVISION > 85
 // I don't know why belowmouse does not work, but it doesn't. (Asger)
@@ -398,7 +398,7 @@ int Combox::peek_event(FL_FORM * form, void *xev)
 		    fl_get_browser_maxline(combo->browser))
 			fl_select_browser_line(combo->browser,
 					       fl_get_browser(combo->browser)+1);
-		if (fl_get_browser(combo->browser)>=
+		if (fl_get_browser(combo->browser)>= 
 		    fl_get_browser_topline(combo->browser) +
 		    fl_get_browser_screenlines(combo->browser))
 			fl_set_browser_topline(combo->browser,
@@ -413,7 +413,7 @@ int Combox::peek_event(FL_FORM * form, void *xev)
 		if (fl_get_browser(combo->browser) > 1)
 			fl_select_browser_line(combo->browser,
 					       fl_get_browser(combo->browser)-1);
-		if (fl_get_browser(combo->browser)>=
+		if (fl_get_browser(combo->browser)>= 
 		    fl_get_browser_topline(combo->browser) +
 		    fl_get_browser_screenlines(combo->browser))
 			fl_set_browser_topline(combo->browser,
@@ -459,10 +459,10 @@ FD_test *create_form_test(void)
    FD_test *fdui = (FD_test *) fl_calloc(1, sizeof(*fdui));
    
    fdui->test = fl_bgn_form(FL_NO_BOX, 320, 190);
-   obj = fl_add_box(FL_UP_BOX,0,0,320,190,"");
-   obj = fl_add_box(FL_DOWN_BOX,10,50,300,110,"");
-   obj = fl_add_button(FL_NORMAL_BUTTON,250,10,50,30,_("Done"));
-   combo.add(10,15,120,25,135); 
+   obj = fl_add_box(FL_UP_BOX, 0, 0, 320, 190, "");
+   obj = fl_add_box(FL_DOWN_BOX, 10, 50, 300, 110, "");
+   obj = fl_add_button(FL_NORMAL_BUTTON, 250, 10, 50, 30, _("Done"));
+   combo.add(10, 15, 120, 25, 135); 
    fl_end_form();
 
   return fdui;
@@ -511,7 +511,7 @@ int main(int argc, char *argv[])
 //   combo.select(4);
    
    /* show the first form */
-   fl_show_form(fd_test->test,FL_PLACE_CENTER,FL_FULLBORDER,"test");
+   fl_show_form(fd_test->test, FL_PLACE_CENTER, FL_FULLBORDER, "test");
    fl_do_forms();
    return 0;
 }

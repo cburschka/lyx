@@ -1,12 +1,12 @@
 /* This file is part of                   -*- C++ -*-
-* ======================================================
+* ====================================================== 
 * 
 *           LyX, The Document Processor
 * 	 
 *	    Copyright (C) 1995-1997 Matthias Ettrich 
 *                                    & The LyX team
 *
-*======================================================*/
+* ====================================================== */
 
 /* This header file defines wrappers around the X input method related
    functions. This should probably be moved into LyXView (to have

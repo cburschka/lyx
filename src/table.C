@@ -1,12 +1,12 @@
 /* This file is part of
- * ======================================================
+ * ====================================================== 
  * 
  *           LyX, The Document Processor
  * 	 
  *	  Copyright (C) 1995 Matthias Ettrich
  *        Copyright (C) 1995-1998 The LyX Team.
  *
- *======================================================
+ * ====================================================== 
  */
 
 #include <config.h>
@@ -45,7 +45,7 @@ LyXTable::~LyXTable() {
 	delete[] columnofcell;
 	delete[] column_info;
         delete[] row_info;
-	for (i=0; i<rows; i++) {
+	for (i = 0; i<rows; i++) {
 		delete[] cell_info[i]; // verify that this shoudn't be freed with delete
 	}
 	delete[] cell_info;
@@ -57,17 +57,17 @@ LyXTable* LyXTable::Clone()
     LyXTable *result = new LyXTable(rows, columns);
     int row, column;;
 
-    for (row=0; row<rows; row++){
-        for (column=0; column<columns;column++){
+    for (row = 0; row<rows; row++){
+        for (column = 0; column<columns;column++){
             result->cell_info[row][column] = cell_info[row][column];
         }
     }
 
-    for (row=0; row<rows; row++){
+    for (row = 0; row<rows; row++){
         result->row_info[row] = row_info[row];
     }
 
-    for (column=0; column<columns; column++){
+    for (column = 0; column<columns; column++){
         result->column_info[column].left_line = column_info[column].left_line;
         result->column_info[column].right_line = column_info[column].right_line;
         result->column_info[column].alignment = column_info[column].alignment;
@@ -76,7 +76,7 @@ LyXTable* LyXTable::Clone()
     }
   
     result->SetLongTable(is_long_table);
-    result->rotate=rotate;
+    result->rotate = rotate;
     result->Reinit();
     return result;
 }
@@ -85,7 +85,7 @@ LyXTable* LyXTable::Clone()
 /* activates all lines and sets all widths to 0 */ 
 void LyXTable::Init(int rows_arg, int columns_arg)
 {
-    int i,j,cellno;
+    int i, j, cellno;
     rows = rows_arg;
     columns = columns_arg;
     column_info = new columnstruct[columns];
@@ -93,13 +93,13 @@ void LyXTable::Init(int rows_arg, int columns_arg)
     cell_info = new cellstruct*[rows];
 
     cellno = 0;
-    for (i=0; i<rows;i++) {
+    for (i = 0; i<rows;i++) {
         cell_info[i] = new cellstruct[columns];
         row_info[i].top_line = true;
         row_info[i].bottom_line = false;
         row_info[i].is_cont_row = false;
         row_info[i].newpage = false;
-        for (j=0; j<columns; j++) {
+        for (j = 0; j<columns; j++) {
             cell_info[i][j].cellno = cellno++;
             cell_info[i][j].width_of_cell = 0;
             cell_info[i][j].multicolumn = LyXTable::CELL_NORMAL;
@@ -114,7 +114,7 @@ void LyXTable::Init(int rows_arg, int columns_arg)
     row_info[i-1].bottom_line = true;
     row_info[0].bottom_line = true;
 
-    for (i=0; i<columns;i++) {
+    for (i = 0; i<columns;i++) {
         column_info[i].left_line = true;
         column_info[i].right_line = false;
         column_info[i].alignment = LYX_ALIGN_CENTER;
@@ -146,20 +146,20 @@ void LyXTable::AppendRow(int cell)
     cellstruct** cell_info2 = new cellstruct*[rows+1];
     int i;
 
-    for (i=0; i <= row; i++) {
+    for (i = 0; i <= row; i++) {
         cell_info2[i] = cell_info[i];
         row_info2[i] = row_info[i];
     }
-    for (i=rows-1; i >= row; i--) {
+    for (i = rows-1; i >= row; i--) {
         cell_info2[i+1] = cell_info[i];
         row_info2[i+1] = row_info[i];
     }
-    for (i=row;row_info[i].is_cont_row;i--);
-    if (((row+1)>=rows) || !row_info[row+1].is_cont_row)
+    for (i = row;row_info[i].is_cont_row;i--);
+    if (((row+1)>= rows) || !row_info[row+1].is_cont_row)
         row_info2[row+1].is_cont_row = false;
     row_info2[row+1].top_line = row_info[i].top_line;
     cell_info2[row+1] = new cellstruct[columns];
-    for (i=0; i<columns; i++) {
+    for (i = 0; i<columns; i++) {
         cell_info2[row+1][i].width_of_cell = 0;
         cell_info2[row+1][i] = cell_info2[row][i];
     }
@@ -185,13 +185,13 @@ void LyXTable::DeleteRow(int cell)
 	int i;
 
 	delete[] cell_info[row];
-	for (i=0; i < row; i++) {
+	for (i = 0; i < row; i++) {
 		cell_info2[i] = cell_info[i];
                 row_info2[i] = row_info[i];
 	}
         if (row_info[i].is_cont_row)
             row_info2[i-1].bottom_line = row_info[i].bottom_line;
-	for (i=row; i < rows - 1; i++) {
+	for (i = row; i < rows - 1; i++) {
 		cell_info2[i] = cell_info[i+1];
                 row_info2[i] = row_info[i+1];
 	}
@@ -210,39 +210,39 @@ void LyXTable::DeleteRow(int cell)
 
 void LyXTable::AppendColumn(int cell)
 {
-    int i,j;
+    int i, j;
     columnstruct *column_info2 = new columnstruct[columns+1];
     int column = right_column_of_cell(cell);
    
-    for (i=0; i<=column; i++){
+    for (i = 0; i<= column; i++){
         column_info2[i] = column_info[i];
     }
-    for (i=columns-1; i>=column; i--){
+    for (i = columns-1; i>= column; i--){
         column_info2[i+1] = column_info[i];
     }
     
     delete[] column_info;
     column_info = column_info2;
     
-    for (i=0; i<rows;i++){
+    for (i = 0; i<rows;i++){
         cellstruct* tmp = cell_info[i];
         cell_info[i] = new cellstruct[columns+1];
-        for (j=0; j<=column; j++){
-            cell_info[i][j]=tmp[j];
+        for (j = 0; j<= column; j++){
+            cell_info[i][j] = tmp[j];
         }
-        for (j=column; j<columns; j++){
-            cell_info[i][j+1]=tmp[j];
+        for (j = column; j<columns; j++){
+            cell_info[i][j+1] = tmp[j];
         }
         // care about multicolumns
         if (cell_info[i][column+1].multicolumn
-            ==LyXTable::CELL_BEGIN_OF_MULTICOLUMN){
-            cell_info[i][column+1].multicolumn =
+            == LyXTable::CELL_BEGIN_OF_MULTICOLUMN){
+            cell_info[i][column+1].multicolumn = 
                 LyXTable::CELL_PART_OF_MULTICOLUMN;
         }
         if (column + 1 == columns
             || cell_info[i][column+2].multicolumn
-            !=LyXTable::CELL_PART_OF_MULTICOLUMN){
-            cell_info[i][column+1].multicolumn =
+            != LyXTable::CELL_PART_OF_MULTICOLUMN){
+            cell_info[i][column+1].multicolumn = 
                 LyXTable::CELL_NORMAL;
         }
         
@@ -256,17 +256,17 @@ void LyXTable::AppendColumn(int cell)
 
 void LyXTable::Reinit()
 {   
-	int i,j;
+	int i, j;
 
-	for (i=0; i<rows;i++) {
-		for (j=0; j<columns; j++) {
+	for (i = 0; i<rows;i++) {
+		for (j = 0; j<columns; j++) {
 			cell_info[i][j].width_of_cell = 0;
                         if ((i+1 < rows) && !row_info[i+1].is_cont_row)
                             cell_info[i][j].has_cont_row = false;
 		}
 	}
   
-	for (i=0; i<columns;i++) {
+	for (i = 0; i<columns;i++) {
 		calculate_width_of_column(i);
 	}
 	calculate_width_of_table();
@@ -278,11 +278,11 @@ void LyXTable::Reinit()
 void LyXTable::set_row_column_number_info()
 {
 	int row = 0;
-	int c= 0;
+	int c = 0;
 	int column = 0;
 	numberofcells = -1;
-	for (row=0; row<rows; ++row) {
-		for (column=0; column<columns; ++column) {
+	for (row = 0; row<rows; ++row) {
+		for (column = 0; column<columns; ++column) {
 			if (cell_info[row][column].multicolumn
 			    != LyXTable::CELL_PART_OF_MULTICOLUMN)
 				++numberofcells;
@@ -301,8 +301,8 @@ void LyXTable::set_row_column_number_info()
 	columnofcell = new int[numberofcells];
   
 	while (c < numberofcells && row < rows && column < columns) {
-		rowofcell[c]=row;
-		columnofcell[c]=column;
+		rowofcell[c] = row;
+		columnofcell[c] = column;
 		c++;
 		do{
 			column++;
@@ -342,9 +342,9 @@ int LyXTable::GetNumberOfCells()
 int LyXTable::NumberOfCellsInRow(int cell)
 {
 	int row = row_of_cell(cell);
-	int i=0;
+	int i = 0;
 	int result = 0;
-	for (i=0; i<columns; i++){
+	for (i = 0; i<columns; i++){
 		if (cell_info[row][i].multicolumn != LyXTable::CELL_PART_OF_MULTICOLUMN)
 			result++;
 	}
@@ -374,7 +374,7 @@ int LyXTable::DeleteCellIfColumnIsDeleted(int cell, int delete_column_cell)
 /* returns 1 if there is a topline, returns 0 if not */ 
 bool LyXTable::TopLine(int cell)
 {
-    int row=row_of_cell(cell);
+    int row = row_of_cell(cell);
     
     if (IsContRow(cell))
         return TopLine(cell_info[row-1][column_of_cell(cell)].cellno);
@@ -390,7 +390,7 @@ bool LyXTable::BottomLine(int cell)
     if(cell >= numberofcells)
 	return false;
 
-    int row=row_of_cell(cell);
+    int row = row_of_cell(cell);
     
     if (RowHasContRow(cell))
         return BottomLine(cell_info[row+1][column_of_cell(cell)].cellno);
@@ -445,7 +445,7 @@ int LyXTable::AdditionalHeight(int cell)
 	int bottom = 1;
 	int column;
 	if (row){
-		for (column=0;column < columns-1 && bottom;column++){
+		for (column = 0;column < columns-1 && bottom;column++){
 			switch (cell_info[row-1][column].multicolumn){
 			case LyXTable::CELL_BEGIN_OF_MULTICOLUMN:
 				bottom = cell_info[row-1][column].bottom_line;
@@ -454,7 +454,7 @@ int LyXTable::AdditionalHeight(int cell)
 				bottom = row_info[row-1].bottom_line;
 			}
 		}
-		for (column=0;column < columns-1 && top;column++){
+		for (column = 0;column < columns-1 && top;column++){
 			switch (cell_info[row][column].multicolumn){
 			case LyXTable::CELL_BEGIN_OF_MULTICOLUMN:
 				top = cell_info[row][column].top_line;
@@ -489,8 +489,8 @@ int LyXTable::WidthOfColumn(int cell)
 	int column1 = column_of_cell(cell);
 	int column2 = right_column_of_cell(cell);
 	int i;
-	int result=0;
-	for (i=column1; i<=column2;i++){
+	int result = 0;
+	for (i = column1; i<= column2;i++){
 		result += column_info[i].width_of_column;
 	}
 	return result;
@@ -512,19 +512,19 @@ bool LyXTable::SetWidthOfMulticolCell(int cell, int new_width)
     int column1 = column_of_cell(cell);
     int column2 = right_column_of_cell(cell);
     int i;
-    int width=0;
+    int width = 0;
 
     // first set columns to 0 so we can calculate the right width
-    for (i=column1; i<=column2;i++) {
+    for (i = column1; i<= column2;i++) {
         cell_info[row][i].width_of_cell = 0;
     }
     // set the width to MAX_WIDTH until width > 0
     width = (new_width + 2*WIDTH_OF_LINE);
-    for (i=column1; (i<column2) && (width > 0);i++){
+    for (i = column1; (i<column2) && (width > 0);i++){
         cell_info[row][i].width_of_cell = column_info[i].width_of_column;
         width -= column_info[i].width_of_column;
     }
-    if (i==column2) {
+    if (i == column2) {
         cell_info[row][i].width_of_cell = width;
     }
     return true;
@@ -539,13 +539,13 @@ void LyXTable::recalculateMulticolCells(int cell, int new_width)
         i;
 
     // first set columns to 0 so we can calculate the right width
-    for (i=column1; i<=column2;++i)
+    for (i = column1; i<= column2;++i)
         cell_info[row][i].width_of_cell = 0;
-    for(i=cell+1;(i<numberofcells) && (!IsMultiColumn(i));++i)
+    for(i = cell+1;(i<numberofcells) && (!IsMultiColumn(i));++i)
         ;
     if (i < numberofcells)
-        recalculateMulticolCells(i,GetWidthOfCell(i)-(2*WIDTH_OF_LINE));
-    SetWidthOfMulticolCell(cell,new_width);
+        recalculateMulticolCells(i, GetWidthOfCell(i)-(2*WIDTH_OF_LINE));
+    SetWidthOfMulticolCell(cell, new_width);
 }
 
 /* returns 1 if a complete update is necessary, otherwise 0 */ 
@@ -553,8 +553,8 @@ bool LyXTable::SetWidthOfCell(int cell, int new_width)
 {
     int row = row_of_cell(cell);
     int column1 = column_of_cell(cell);
-    int tmp=0;
-    int width=0;
+    int tmp = 0;
+    int width = 0;
 
     if (IsMultiColumn(cell)) {
         tmp = SetWidthOfMulticolCell(cell, new_width);
@@ -568,13 +568,13 @@ bool LyXTable::SetWidthOfCell(int cell, int new_width)
     }
     if (tmp) {
         int i;
-        for(i=0; i<columns;++i)
+        for(i = 0; i<columns;++i)
             calculate_width_of_column_NMC(i);
-        for(i=0; (i<numberofcells) && !IsMultiColumn(i); ++i)
+        for(i = 0; (i<numberofcells) && !IsMultiColumn(i); ++i)
             ;
         if (i<numberofcells)
-            recalculateMulticolCells(i,GetWidthOfCell(i)-(2*WIDTH_OF_LINE));
-        for(i=0; i<columns;++i)
+            recalculateMulticolCells(i, GetWidthOfCell(i)-(2*WIDTH_OF_LINE));
+        for(i = 0; i<columns;++i)
             calculate_width_of_column(i);
         calculate_width_of_table();
         return true;
@@ -602,7 +602,7 @@ bool LyXTable::SetPWidth(int cell, string width)
     } else {
         column_info[column_of_cell(fvcell)].p_width = width;
 	if (!width.empty()) // do this only if there is a width
-		SetAlignment(cell,LYX_ALIGN_LEFT);
+		SetAlignment(cell, LYX_ALIGN_LEFT);
     }
     return true;
 }
@@ -618,10 +618,10 @@ bool LyXTable::SetAlignSpecial(int cell, string special, int what)
 
 bool LyXTable::SetAllLines(int cell, bool line)
 {
-    SetTopLine(cell,line);
-    SetBottomLine(cell,line);
-    SetRightLine(cell,line);
-    SetLeftLine(cell,line);
+    SetTopLine(cell, line);
+    SetBottomLine(cell, line);
+    SetRightLine(cell, line);
+    SetLeftLine(cell, line);
     return true;
 }
 
@@ -630,7 +630,7 @@ bool LyXTable::SetTopLine(int cell, bool line)
     int row = row_of_cell(cell);
 
     if (IsContRow(cell))
-        SetTopLine(cell_info[row-1][column_of_cell(cell)].cellno,line);
+        SetTopLine(cell_info[row-1][column_of_cell(cell)].cellno, line);
     else if (!IsMultiColumn(cell))
         row_info[row].top_line = line;
     else
@@ -644,7 +644,7 @@ bool LyXTable::SetBottomLine(int cell, bool line)
     int row = row_of_cell(cell);
 
     if (RowHasContRow(cell))
-        SetBottomLine(cell_info[row+1][column_of_cell(cell)].cellno,line);
+        SetBottomLine(cell_info[row+1][column_of_cell(cell)].cellno, line);
     else if (!IsMultiColumn(cell))
         row_info[row_of_cell(cell)].bottom_line = line;
     else
@@ -697,8 +697,8 @@ int LyXTable::GetWidthOfCell(int cell)
 	int column1 = column_of_cell(cell);
 	int column2 = right_column_of_cell(cell);
 	int i;
-	int result=0;
-	for (i=column1; i<=column2;i++){
+	int result = 0;
+	for (i = column1; i<= column2;i++){
 		result += cell_info[row][i].width_of_cell;
 	}
   
@@ -745,7 +745,7 @@ bool LyXTable::calculate_width_of_column(int column)
 	int i, max;
 	int old_column_width = column_info[column].width_of_column;
 	max = 0;
-	for (i=0; i<rows; i++) {
+	for (i = 0; i<rows; i++) {
 		if (cell_info[i][column].width_of_cell > max) {
 			max = cell_info[i][column].width_of_cell;
 		}
@@ -759,8 +759,8 @@ bool LyXTable::calculate_width_of_column_NMC(int column)
     int i, max;
     int old_column_width = column_info[column].width_of_column;
     max = 0;
-    for (i=0; i<rows; ++i) {
-        if (!IsMultiColumn(GetCellNumber(column,i)) &&
+    for (i = 0; i<rows; ++i) {
+        if (!IsMultiColumn(GetCellNumber(column, i)) &&
             (cell_info[i][column].width_of_cell > max)) {
             max = cell_info[i][column].width_of_cell;
         }
@@ -771,9 +771,8 @@ bool LyXTable::calculate_width_of_column_NMC(int column)
 
 void LyXTable::calculate_width_of_table()
 {
-	int i;
 	width_of_table = 0;
-	for (i=0; i<columns;i++) {
+	for (int i = 0; i < columns; ++i) {
 		width_of_table += column_info[i].width_of_column;
 	}
 }
@@ -812,16 +811,16 @@ int LyXTable::right_column_of_cell(int cell)
 
 void LyXTable::Write(FILE* file)
 {
-    int i,j;
+    int i, j;
     fprintf(file, "multicol5\n");
     fprintf(file, "%d %d %d %d %d %d %d %d\n", rows, columns, is_long_table,
             rotate, endhead, endfirsthead, endfoot, endlastfoot);
-    for (i=0; i<rows; i++){
+    for (i = 0; i<rows; i++){
         fprintf(file, "%d %d %d %d\n", row_info[i].top_line,
                 row_info[i].bottom_line, row_info[i].is_cont_row,
                 row_info[i].newpage);
     }
-    for (i=0; i<columns; i++){
+    for (i = 0; i<columns; i++){
         fprintf(file, "%d %d %d \"%s\" \"%s\"\n",
                 column_info[i].alignment, column_info[i].left_line,
                 column_info[i].right_line,
@@ -829,8 +828,8 @@ void LyXTable::Write(FILE* file)
                 column_info[i].align_special.c_str());
     }
 
-    for (i=0; i<rows;i++){
-        for (j=0;j<columns;j++){
+    for (i = 0; i<rows;i++){
+        for (j = 0;j<columns;j++){
             fprintf(file, "%d %d %d %d %d %d %d \"%s\" \"%s\"\n",
                     cell_info[i][j].multicolumn,
                     cell_info[i][j].alignment,
@@ -848,7 +847,7 @@ void LyXTable::Write(FILE* file)
 void LyXTable::Read(FILE* file)
 {
     int version;
-    int i,j;
+    int i, j;
     int rows_arg = 0;
     int columns_arg = 0;
     int is_long_table_arg = false;
@@ -874,12 +873,12 @@ void LyXTable::Read(FILE* file)
 #warning Insert a error message window here that this format is not supported anymore
 #endif
     if (version < 5) {
-	fprintf(stderr,"Tabular format < 5 is not supported anymore\n"
+	fprintf(stderr, "Tabular format < 5 is not supported anymore\n"
 		"Get an older version of LyX (< 1.1.x) for conversion!\n");
 	return;
     }
-    a=b=c=d=-1;
-    fgets(vtmp,sizeof(vtmp),file);
+    a = b = c = d = -1;
+    fgets(vtmp, sizeof(vtmp), file);
     sscanf(vtmp, "%d %d %d %d %d %d %d %d\n", &rows_arg, &columns_arg,
 	   &is_long_table_arg, &rotate_arg, &a, &b, &c, &d);
     Init(rows_arg, columns_arg);
@@ -889,9 +888,9 @@ void LyXTable::Read(FILE* file)
     endfirsthead = b;
     endfoot = c;
     endlastfoot = d;
-    for (i=0; i<rows; i++){
-        a=b=c=d=e=f=g=h=0;
-        fgets(vtmp,sizeof(vtmp),file);
+    for (i = 0; i<rows; i++){
+        a = b = c = d = e = f = g = h = 0;
+        fgets(vtmp, sizeof(vtmp), file);
         sscanf(vtmp, "%d %d %d %d\n",
                &a, &b, &c, &d);
         row_info[i].top_line = a;
@@ -899,10 +898,10 @@ void LyXTable::Read(FILE* file)
         row_info[i].is_cont_row = c;
         row_info[i].newpage = d;
     }
-    for (i=0; i<columns; i++){
+    for (i = 0; i<columns; i++){
         *stmp = 0;
         *atmp = 0;
-        fgets(vtmp,sizeof(vtmp),file);
+        fgets(vtmp, sizeof(vtmp), file);
         sscanf(vtmp, "%d %d %d %s %s", &a, &b, &c, stmp, atmp);
         column_info[i].alignment = (char) a;
         column_info[i].left_line = b;
@@ -922,12 +921,12 @@ void LyXTable::Read(FILE* file)
         } else if (*stmp)
             column_info[i].p_width = stmp;
     }
-    for (i=0; i<rows;i++){
-	for (j=0;j<columns;j++){
+    for (i = 0; i<rows;i++){
+	for (j = 0;j<columns;j++){
 	    *stmp = 0;
 	    *atmp = 0;
-	    a=b=c=d=e=f=g=0;
-	    fgets(vtmp,sizeof(vtmp),file);
+	    a = b = c = d = e = f = g = 0;
+	    fgets(vtmp, sizeof(vtmp), file);
 	    sscanf(vtmp, "%d %d %d %d %d %d %d %s %s\n",
 		   &a, &b, &c, &d, &e, &f, &g, stmp, atmp);
 	    cell_info[i][j].multicolumn = (char) a;
@@ -943,10 +942,10 @@ void LyXTable::Read(FILE* file)
 		*stmp = 0;
 		*atmp = 0;
 		if (stmp[1] == '"')
-		    sscanf(vtmp,"%*d %*d %*d %*d %*d %*d %*d %*s \"%[^\"]\"",
+		    sscanf(vtmp, "%*d %*d %*d %*d %*d %*d %*d %*s \"%[^\"]\"",
 			   atmp);
 		else // otherwise after the first empty "" read is aborded
-		    sscanf(vtmp,"%*d %*d %*d %*d %*d %*d %*d \"%[^\"]\" \"%[^\"]\"",
+		    sscanf(vtmp, "%*d %*d %*d %*d %*d %*d %*d \"%[^\"]\" \"%[^\"]\"",
 			   stmp, atmp);
 		cell_info[i][j].align_special = stmp;
 		cell_info[i][j].p_width = atmp;
@@ -960,12 +959,12 @@ void LyXTable::Read(FILE* file)
 
 // cell <0 will tex the preamble
 // returns the number of printed newlines
-int LyXTable::TexEndOfCell(string& file, int cell)
+int LyXTable::TexEndOfCell(string & file, int cell)
 {
     int i;
     int ret = 0;
     int tmp; // tmp2;
-    int fcell,nvcell;
+    int fcell, nvcell;
     if (ShouldBeVeryLastCell(cell)) {
         // the very end at the very beginning
         if (Linebreaks(cell))
@@ -982,7 +981,7 @@ int LyXTable::TexEndOfCell(string& file, int cell)
         tmp = 0;
         fcell = cell; 
         while (!IsFirstCell(fcell))fcell--;
-        for (i=0; i < NumberOfCellsInRow(fcell); i++){
+        for (i = 0; i < NumberOfCellsInRow(fcell); i++){
             if (BottomLine(fcell+i))
                 tmp++;
         }
@@ -990,7 +989,7 @@ int LyXTable::TexEndOfCell(string& file, int cell)
             file += "\\hline ";
         } else {
             tmp = 0;
-            for (i=0; i < NumberOfCellsInRow(fcell); i++){
+            for (i = 0; i < NumberOfCellsInRow(fcell); i++){
                 if (BottomLine(fcell+i)){
 		    file += "\\cline{";
 		    file += tostr(column_of_cell(fcell+i)+1);
@@ -1025,7 +1024,7 @@ int LyXTable::TexEndOfCell(string& file, int cell)
                 file += "\\begin{longtable}{";
             else
                 file += "\\begin{tabular}{";
-            for (i=0; i<columns;i++){
+            for (i = 0; i<columns;i++){
                 if (column_info[i].left_line)
 		    file += '|';
                 if (!column_info[i].align_special.empty()) {
@@ -1055,7 +1054,7 @@ int LyXTable::TexEndOfCell(string& file, int cell)
             tmp = 0;
             if (GetNumberOfCells()){
                 fcell = 0;
-                for (i=0; i < NumberOfCellsInRow(fcell); i++){
+                for (i = 0; i < NumberOfCellsInRow(fcell); i++){
                     if (TopLine(fcell+i))
                         tmp++;
                 }
@@ -1063,7 +1062,7 @@ int LyXTable::TexEndOfCell(string& file, int cell)
                     file += "\\hline ";
                 } else {
                     tmp = 0;
-                    for (i=0; i < NumberOfCellsInRow(fcell); i++){
+                    for (i = 0; i < NumberOfCellsInRow(fcell); i++){
                         if (TopLine(fcell+i)){
 			    file += "\\cline{";
 			    file += tostr(column_of_cell(fcell+i)+1);
@@ -1096,9 +1095,9 @@ int LyXTable::TexEndOfCell(string& file, int cell)
             }
             if (IsLastCell(cell)) {
                 int row = row_of_cell(cell);
-                string hline1,hline2;
+                string hline1, hline2;
                 bool print_hline = true;
-                bool pr_top_hline,flag1,flag2;
+                bool pr_top_hline, flag1, flag2;
                 flag1 = IsLongTable() &&
                     ((row == endhead) || (row == endfirsthead) ||
                      (row == endfoot) || (row == endlastfoot));
@@ -1122,7 +1121,7 @@ int LyXTable::TexEndOfCell(string& file, int cell)
                 fcell = cell;
                 while (!IsFirstCell(fcell))
                     fcell--;
-                for (i=0; i < NumberOfCellsInRow(cell); i++){
+                for (i = 0; i < NumberOfCellsInRow(cell); i++){
                     if (BottomLine(fcell+i))
                         tmp++;
                 }
@@ -1131,7 +1130,7 @@ int LyXTable::TexEndOfCell(string& file, int cell)
                     hline1 = "\\hline ";
                 } else {
                     tmp = 0;
-                    for (i=0; i < NumberOfCellsInRow(fcell); i++){
+                    for (i = 0; i < NumberOfCellsInRow(fcell); i++){
                         if (BottomLine(fcell+i)){
                             file += "\\cline{";
                             file += tostr(column_of_cell(fcell+i)+1);
@@ -1170,7 +1169,7 @@ int LyXTable::TexEndOfCell(string& file, int cell)
                 if (nvcell < numberofcells && (cell < GetNumberOfCells()-1) &&
                     !ShouldBeVeryLastCell(cell)) {
                     fcell = nvcell;
-                    for (i=0; i < NumberOfCellsInRow(fcell); i++){
+                    for (i = 0; i < NumberOfCellsInRow(fcell); i++){
                         if (TopLine(fcell+i))
                             tmp++;
                     }
@@ -1181,7 +1180,7 @@ int LyXTable::TexEndOfCell(string& file, int cell)
                     }
                     else {
                         tmp = 0;
-                        for (i=0; i < NumberOfCellsInRow(fcell); i++){
+                        for (i = 0; i < NumberOfCellsInRow(fcell); i++){
                             if (TopLine(fcell+i)){
                                 if (print_hline) {
 				    file += "\\cline{";
@@ -1276,10 +1275,10 @@ int LyXTable::TexEndOfCell(string& file, int cell)
                 }
                 if (RightLine(nvcell))
                     file += '|';
-                //if (column_of_cell(cell+2)!=0 && LeftLine(cell+2))
+                //if (column_of_cell(cell+2)!= 0 && LeftLine(cell+2))
                 if (((nvcell+1) < numberofcells) &&
                     (NextVirtualCell(nvcell+1) < numberofcells) &&
-                    (column_of_cell(NextVirtualCell(nvcell+1))!=0) &&
+                    (column_of_cell(NextVirtualCell(nvcell+1))!= 0) &&
                     LeftLine(NextVirtualCell(nvcell+1)))
                     file += '|';
                 file += "}{";
@@ -1300,13 +1299,13 @@ int LyXTable::TexEndOfCell(string& file, int cell)
 // returns the number of printed newlines
 int LyXTable::RoffEndOfCell(FILE* file, int cell)
 {
-    int i,j;
+    int i, j;
     int ret = 0;
 
     if (cell == GetNumberOfCells() - 1){
         // the very end at the very beginning
         if (CellHasContRow(cell) >= 0) {
-            fprintf(file,"\nT}");
+            fprintf(file, "\nT}");
             ret++;
         }
         fprintf(file, "\n");
@@ -1318,14 +1317,14 @@ int LyXTable::RoffEndOfCell(FILE* file, int cell)
         fprintf(file, ".TE\n.pl 1c");
     } else {  
         if (cell < 0){
-            int fcell=0;
+            int fcell = 0;
             // preamble
             fprintf(file, "\n.pl 500c\n.TS\n");
-            for (j=0; j<rows; j++) {
-                for (i=0; i<columns;i++,fcell++) {
+            for (j = 0; j<rows; j++) {
+                for (i = 0; i<columns;i++, fcell++) {
                     if (column_info[i].left_line)
                         fprintf(file, " | ");
-                    if (cell_info[j][i].multicolumn==CELL_PART_OF_MULTICOLUMN)
+                    if (cell_info[j][i].multicolumn == CELL_PART_OF_MULTICOLUMN)
                         fprintf(file, "s");
                     else {
                         switch (column_info[i].alignment) {
@@ -1353,17 +1352,17 @@ int LyXTable::RoffEndOfCell(FILE* file, int cell)
             fprintf(file, ".\n");
             ret++;
             if (row_info[0].top_line) {
-                fprintf(file,"_\n");
+                fprintf(file, "_\n");
                 ret++;
             }
             if (CellHasContRow(0) >= 0) {
-                fprintf(file,"T{\n");
+                fprintf(file, "T{\n");
                 ret++;
             }
         } else {
             // usual cells
             if (CellHasContRow(cell) >= 0) {
-                fprintf(file,"\nT}");
+                fprintf(file, "\nT}");
                 ret++;
             }
             if (right_column_of_cell(cell) == columns -1){
@@ -1382,7 +1381,7 @@ int LyXTable::RoffEndOfCell(FILE* file, int cell)
                 fprintf(file, "\t");
             if ((cell < GetNumberOfCells() - 1) &&
                 (CellHasContRow(cell+1) >= 0)) {
-                fprintf(file,"T{\n");
+                fprintf(file, "T{\n");
                 ret++;
             }
         }
@@ -1390,7 +1389,7 @@ int LyXTable::RoffEndOfCell(FILE* file, int cell)
     return ret;
 }
 
-const char *LyXTable::getDocBookAlign(int cell, bool isColumn)
+char const *LyXTable::getDocBookAlign(int cell, bool isColumn)
 {
     int i;
     if (isColumn)
@@ -1436,7 +1435,7 @@ const char *LyXTable::getDocBookAlign(int cell, bool isColumn)
 
 // cell <0 will tex the preamble
 // returns the number of printed newlines
-int LyXTable::DocBookEndOfCell(string& file, int cell, int &depth)
+int LyXTable::DocBookEndOfCell(string & file, int cell, int &depth)
 {
     int i;
     int ret = 0;
@@ -1469,14 +1468,14 @@ int LyXTable::DocBookEndOfCell(string& file, int cell, int &depth)
             file += "' COLSEP='1' ROWSEP='1'>";
            addNewlineAndDepth(file,++depth);
             ret++;
-            for (i=0; i<columns;i++) {
+            for (i = 0; i < columns; ++i) {
                 file += "<COLSPEC ALIGN='";
                file += getDocBookAlign(i, true);
                file += "' COLNAME='col";
                 file += tostr(i+1);
                 file += "' COLNUM='";
                 file += tostr(i+1);
-               file += "' COLSEP='";
+               file += "' COLSEP= '";
                if (i == (columns-1)) {
                     file += '1';
                } else {
@@ -1487,7 +1486,7 @@ int LyXTable::DocBookEndOfCell(string& file, int cell, int &depth)
                        file += '0';
                }
                file += "'>";
-               addNewlineAndDepth(file,depth);
+               addNewlineAndDepth(file, depth);
                 ret++;
 #ifdef NOT_HANDLED_YET_AS_I_DONT_KNOW_HOW
                 if (column_info[i].left_line)
@@ -1498,11 +1497,11 @@ int LyXTable::DocBookEndOfCell(string& file, int cell, int &depth)
            addNewlineAndDepth(file,++depth);
             file += "<ROW>";
            addNewlineAndDepth(file,++depth);
-            file += "<ENTRY ALIGN='";
+            file += "<ENTRY ALIGN= '";
             file += getDocBookAlign(0);
            file += "'";
            if (IsMultiColumn(0)) {
-               file += " NAMEST='col1' NAMEEND='col";
+               file += " NAMEST= 'col1' NAMEEND= 'col";
                file += tostr(cells_in_multicolumn(0));
                file += "'";
            }
@@ -1515,16 +1514,16 @@ int LyXTable::DocBookEndOfCell(string& file, int cell, int &depth)
                 file += "</ENTRY>";
                addNewlineAndDepth(file,--depth);
                 file += "</ROW>";
-               addNewlineAndDepth(file,depth);
+               addNewlineAndDepth(file, depth);
                file += "<ROW>";
                addNewlineAndDepth(file,++depth);
-                file += "<ENTRY ALIGN='";
+                file += "<ENTRY ALIGN= '";
                 file += getDocBookAlign(cell+1);
-                file += "' VALIGN='middle'";
+                file += "' VALIGN= 'middle'";
                if (IsMultiColumn(cell+1)) {
-                   file += " NAMEST='col";
+                   file += " NAMEST= 'col";
                    file += tostr(column_of_cell(cell+1) + 1);
-                   file += "' NAMEEND='col";
+                   file += "' NAMEEND= 'col";
                    file += tostr(column_of_cell(cell+1) +
                        cells_in_multicolumn(cell+1));
                    file += "'";
@@ -1535,14 +1534,14 @@ int LyXTable::DocBookEndOfCell(string& file, int cell, int &depth)
             } else {
                addNewlineAndDepth(file,--depth);
                 file += "</ENTRY>";
-               addNewlineAndDepth(file,depth);
-                file += "<ENTRY ALIGN='";
+               addNewlineAndDepth(file, depth);
+                file += "<ENTRY ALIGN= '";
                 file += getDocBookAlign(cell+1);
-                file += "' VALIGN='middle'";
+                file += "' VALIGN= 'middle'";
                if (IsMultiColumn(cell+1)) {
-                   file += " NAMEST='col";
+                   file += " NAMEST= 'col";
                    file += tostr(column_of_cell(cell+1) + 1);
-                   file += "' NAMEEND='col";
+                   file += "' NAMEEND= 'col";
                    file += tostr(column_of_cell(cell+1) +
                        cells_in_multicolumn(cell+1));
                    file += "'";
@@ -1583,12 +1582,12 @@ void LyXTable::SetMultiColumn(int cell, int number)
     cellinfo_of_cell(fvcell)->top_line = row_info[row_of_cell(fvcell)].top_line;
     cellinfo_of_cell(fvcell)->bottom_line = row_info[row_of_cell(fvcell)].bottom_line;
     for (number--;number>0;number--){
-        cellinfo_of_cell(fvcell+number)->multicolumn =
+        cellinfo_of_cell(fvcell+number)->multicolumn = 
             LyXTable::CELL_PART_OF_MULTICOLUMN;
         new_width += cellinfo_of_cell(fvcell+number)->width_of_cell;
     }
     set_row_column_number_info();
-    SetWidthOfCell(fvcell,new_width);
+    SetWidthOfCell(fvcell, new_width);
 }
 
 
@@ -1622,7 +1621,7 @@ int  LyXTable::UnsetMultiColumn(int cell)
         while (column < columns &&
                cell_info[row][column].multicolumn
                == LyXTable::CELL_PART_OF_MULTICOLUMN){
-            cell_info[row][column].multicolumn =
+            cell_info[row][column].multicolumn = 
                 LyXTable::CELL_NORMAL;
             column++;
             result++;
@@ -1635,27 +1634,27 @@ int  LyXTable::UnsetMultiColumn(int cell)
 
 void LyXTable::delete_column(int column)
 {
-    int i,j;
+    int i, j;
     columnstruct *column_info2 = new columnstruct[columns-1];
    
-    for (i=0; i<column; i++){
+    for (i = 0; i<column; i++){
         column_info2[i] = column_info[i];
     }
-    for (i=column; i<columns-1; i++){
+    for (i = column; i<columns-1; i++){
         column_info2[i] = column_info[i+1];
     }
    
     delete[] column_info;
     column_info = column_info2;
 
-    for (i=0; i<rows;i++){
+    for (i = 0; i<rows;i++){
         cellstruct* tmp = cell_info[i];
         cell_info[i] = new cellstruct[columns-1];
-        for (j=0; j<column; j++){
-            cell_info[i][j]=tmp[j];
+        for (j = 0; j<column; j++){
+            cell_info[i][j] = tmp[j];
         }
-        for (j=column; j<columns-1; j++){
-            cell_info[i][j]=tmp[j+1];
+        for (j = column; j<columns-1; j++){
+            cell_info[i][j] = tmp[j+1];
         }
         delete[] tmp;
     }
@@ -1698,8 +1697,8 @@ bool LyXTable::NeedRotating()
 {
     if (rotate)
         return true;
-    for (int i=0; i<rows;i++){
-        for (int j=0;j<columns;j++){
+    for (int i = 0; i<rows;i++){
+        for (int j = 0;j<columns;j++){
             if (cell_info[i][j].rotate)
                 return true;
         }
@@ -1711,7 +1710,7 @@ void LyXTable::AppendContRow(int cell)
 {
     int row = row_of_cell(cell)+1;
 
-    if (!RowHasContRow(cell) || (CellHasContRow(cell)>=0))
+    if (!RowHasContRow(cell) || (CellHasContRow(cell)>= 0))
         AppendRow(cell);
     row_info[row].is_cont_row = true;
     row_info[row].top_line = false;
@@ -1787,7 +1786,7 @@ bool LyXTable::ShouldBeVeryLastCell(int cell)
 
 bool LyXTable::ShouldBeVeryLastRow(int cell)
 {
-    if (CellHasContRow(cell)>=0)
+    if (CellHasContRow(cell)>= 0)
         return false;
     int row = row_of_cell(cell)+1;
     int column = column_of_cell(cell);

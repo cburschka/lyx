@@ -1,12 +1,12 @@
 /* This file is part of
- * ======================================================
+ * ====================================================== 
  * 
  *           LyX, The Document Processor
  * 	 
  *           Copyright 1995 Matthias Ettrich 
  *           Copyright 1995-1999 The LyX team.
  *
- * ======================================================*/
+ * ====================================================== */
 
 #include <config.h>
 
@@ -25,7 +25,7 @@
 
 static XIM xim;
 static XIC xic;
-XComposeStatus compose_status={0,0};
+XComposeStatus compose_status= {0, 0};
 
 // This is called after the main LyX window has been created
 void InitLyXLookup(Display* display, Window window) 
@@ -33,7 +33,7 @@ void InitLyXLookup(Display* display, Window window)
 	xic = 0;
 
 	// This part could be done before opening display
-	setlocale(LC_CTYPE,"");
+	setlocale(LC_CTYPE, "");
        	if (!XSupportsLocale()) {
 		lyxerr.debug() << "InitLyXLookup: X does not support this locale." << endl;
 		return;
@@ -202,7 +202,7 @@ void CloseLyXLookup()
 #include <X11/Xlib.h>
 #include <X11/Xutil.h>
 
-XComposeStatus compose_status={0,0};
+XComposeStatus compose_status= {0, 0};
 
 // This is called after the main LyX window has been created
 void InitLyXLookup(Display* , Window ) 

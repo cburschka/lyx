@@ -1,13 +1,13 @@
 // -*- C++ -*-
 /* This file is part of
- * ======================================================
+ * ====================================================== 
  * 
  *           LyX, The Document Processor
  *        
  *           Copyright 1995 Matthias Ettrich
  *           Copyright 1995-1999 The LyX Team.
  *
- * ======================================================*/
+ * ====================================================== */
 
 #include <config.h>
 
@@ -227,7 +227,7 @@ void updateAllVisibleBufferRelatedPopups()
 		}
 	}
 	if (fd_form_toc->browser_toc->visible) {
-		TocUpdateCB(0,0);
+		TocUpdateCB(0, 0);
 	}
 #ifdef ALWAYS_UPDATE_REF
 	// Ideally, the RefUpdateCB should be modified so that if the
@@ -239,7 +239,7 @@ void updateAllVisibleBufferRelatedPopups()
 	// of course a compromise and an annoyance for users switching
 	// between separate documents.  ARRae 241198
 	if (fd_form_ref->form_ref->visible) {
-		RefUpdateCB(0,0);
+		RefUpdateCB(0, 0);
 	}
 #endif
 	if (current_view->buffer()->isReadonly()) {
@@ -308,10 +308,10 @@ void updateAllVisibleBufferRelatedPopups()
 const char* flyx_shortcut_extract(const char*sc)
 {
 	// Find '|' in the sc and return the string after that.
-	register const char *sd = sc;
-	while(sd[0]!=0 && sd[0] != '|') sd++;
+	register char const *sd = sc;
+	while(sd[0]!= 0 && sd[0] != '|') sd++;
 
-	if (sd[0]=='|') {
+	if (sd[0] == '|') {
 		sd++;
 		//lyxerr << sd << endl;
 		return sd;
@@ -320,21 +320,21 @@ const char* flyx_shortcut_extract(const char*sc)
 }
 
 // Extract identifier from <ident>|<shortcut> string
-const char* flyx_ident_extract(const char *sc)
+const char* flyx_ident_extract(char const *sc)
 {
-	register const char *se = sc;
-	while(se[0]!=0 && se[0] != '|') se++;
+	register char const *se = sc;
+	while(se[0]!= 0 && se[0] != '|') se++;
 
-	if (se[0]==0) return sc;
+	if (se[0] == 0) return sc;
 	
 	char * sb = new char[se-sc + 1];
 	int index = 0;
-	register const char *sd = sc;
+	register char const *sd = sc;
 	while (sd != se) {
 		sb[index] = sd[0];
 		index++; sd++;
 	}
-	sb[index]=0;
+	sb[index] = 0;
 	return sb;
 }
 

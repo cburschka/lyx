@@ -1,12 +1,12 @@
 /* This file is part of
- * ======================================================
+ * ====================================================== 
  * 
  *           LyX, The Document Processor
  * 	 
  *	    Copyright 1995 Matthias Ettrich,
  *          Copyright 1995-1999 The LyX Team.
  *
- * ======================================================*/
+ * ====================================================== */
 
 #include <config.h>
 
@@ -31,7 +31,9 @@
 #include "credits.h"
 #include "insets/insetref.h"
 #include "insets/insetquotes.h"
+#if 0
 #include "insets/insetlatex.h"
+#endif
 #include "insets/insetlabel.h"
 #include "insets/insetinfo.h"
 #include "insets/insetspecialchar.h"
@@ -313,7 +315,7 @@ void SmallUpdate(signed char f)
 		current_view->buffer()->text->sel_cursor = 
 			current_view->buffer()->text->cursor;
 
-	if (f==1 || f==-1) {
+	if (f == 1 || f == -1) {
 		if (current_view->buffer()->isLyxClean()) {
 			current_view->buffer()->markDirty();
 			minibuffer->setTimer(4);
@@ -341,7 +343,7 @@ void MenuWrite(Buffer* buf)
 		string fname = buf->getFileName();
 		string s = MakeAbsPath(fname);
 		if (AskQuestion(_("Save failed. Rename and try again?"),
-				 MakeDisplayPath(s,50),
+				 MakeDisplayPath(s, 50),
 				 _("(If not, document is not saved.)"))) {
 			MenuWriteAs(buf);
 		}
@@ -379,14 +381,14 @@ void MenuWriteAs(Buffer *buffer)
 	}
 
 	// Make sure the absolute filename ends with appropriate suffix
-	string s= MakeAbsPath(fname);
+	string s = MakeAbsPath(fname);
 	if (!IsLyXFilename(s))
 		s += ".lyx";
 
 	// Same name as we have already?
 	if (s == oldname) {
 		if (!AskQuestion(_("Same name as document already has:"),
-				 MakeDisplayPath(s,50),
+				 MakeDisplayPath(s, 50),
 				 _("Save anyway?")))
 			return;
 		// Falls through to name change and save
@@ -394,7 +396,7 @@ void MenuWriteAs(Buffer *buffer)
 	// No, but do we have another file with this name open?
 	else if (bufferlist.exists(s)) {
 		if (AskQuestion(_("Another document with same name open!"),
-				MakeDisplayPath(s,50),
+				MakeDisplayPath(s, 50),
 				_("Replace with current document?")))
 			{
 				bufferlist.close(bufferlist.getBuffer(s));
@@ -412,7 +414,7 @@ void MenuWriteAs(Buffer *buffer)
 	else {
 		FileInfo myfile(s);
 		if (myfile.isOK() && !AskQuestion(_("Document already exists:"), 
-						  MakeDisplayPath(s,50),
+						  MakeDisplayPath(s, 50),
 						  _("Replace file?")))
 			return;
 	}
@@ -514,7 +516,7 @@ int MenuRunChktex(Buffer *buffer)
 		}
 		WriteAlert(_("Chktex run successfully"), s, t);
 	} else {
-		WriteAlert(_("Error!"),_("It seems chktex does not work."));
+		WriteAlert(_("Error!"), _("It seems chktex does not work."));
 	}
 	return ret;
 }
@@ -545,11 +547,11 @@ int MakeDVIOutput(Buffer *buffer)
 // Returns false if we fail.
 bool RunScript(Buffer * buffer, bool wait,
 	       string const & command, string const & orgname = string(),
-	       bool need_shell=true)
+	       bool need_shell = true)
 {
 	string path;
 	string cmd;
-	string name= orgname;
+	string name = orgname;
 	int result = 0;
 	
 	if (MakeDVIOutput(buffer) > 0)
@@ -605,12 +607,12 @@ bool RunScript(Buffer * buffer, bool wait,
 		result = one.startscript(wait ? Systemcalls::Wait
 					: Systemcalls::DontWait, cmd);
 	}
-	return (result==0);
+	return (result == 0);
 }
 
 
 // Returns false if we fail
-bool MenuRunDvips(Buffer *buffer, bool wait=false)
+bool MenuRunDvips(Buffer *buffer, bool wait = false)
 {
 	if (!buffer->text)
 		return false;
@@ -629,29 +631,29 @@ bool MenuRunDvips(Buffer *buffer, bool wait=false)
 	string paper;
 	
 	char real_papersize = buffer->params.papersize;
-	if (real_papersize == PAPER_DEFAULT)
+	if (real_papersize == BufferParams::PAPER_DEFAULT)
 		real_papersize = lyxrc->default_papersize;
 
 	switch (real_papersize) {
-	case PAPER_USLETTER:
+	case BufferParams::PAPER_USLETTER:
 		paper = "letter";
 		break;
-	case PAPER_A3PAPER:
+	case BufferParams::PAPER_A3PAPER:
 		paper = "a3";
 		break;
-	case PAPER_A4PAPER:
+	case BufferParams::PAPER_A4PAPER:
 		paper = "a4";
 		break;
-	case PAPER_A5PAPER:
+	case BufferParams::PAPER_A5PAPER:
 		paper = "a5";
 		break;
-	case PAPER_B5PAPER:
+	case BufferParams::PAPER_B5PAPER:
 		paper = "b5";
 		break;
-	case PAPER_EXECUTIVEPAPER:
+	case BufferParams::PAPER_EXECUTIVEPAPER:
 		paper = "foolscap";
 		break;
-	case PAPER_LEGALPAPER:
+	case BufferParams::PAPER_LEGALPAPER:
 		paper = "legal";
 		break;
 	default: /* If nothing else fits, keep an empty value... */
@@ -662,7 +664,7 @@ bool MenuRunDvips(Buffer *buffer, bool wait=false)
 	string command = "dvips " + lyxrc->print_to_file + ' ';
 	command += SpaceLess(ps);
 	if (buffer->params.use_geometry
-	    && buffer->params.papersize2 == VM_PAPER_CUSTOM
+	    && buffer->params.papersize2 == BufferParams::VM_PAPER_CUSTOM
 	    && !lyxrc->print_paper_dimension_flag.empty()
 	    && !buffer->params.paperwidth.empty()
 	    && !buffer->params.paperheight.empty()) {
@@ -672,14 +674,14 @@ bool MenuRunDvips(Buffer *buffer, bool wait=false)
 		command += buffer->params.paperwidth + ',';
 		command += buffer->params.paperheight;
 	} else if (!paper.empty()
-		   && (real_papersize != PAPER_USLETTER ||
-		       buffer->params.orientation == ORIENTATION_PORTRAIT)) {
+		   && (real_papersize != BufferParams::PAPER_USLETTER ||
+		       buffer->params.orientation == BufferParams::ORIENTATION_PORTRAIT)) {
 		// dvips won't accept -t letter -t landscape.  In all other
 		// cases, include the paper size explicitly.
 		command += ' ';
 		command += lyxrc->print_paper_flag + ' ' + paper;
 	}
-	if (buffer->params.orientation == ORIENTATION_LANDSCAPE) {
+	if (buffer->params.orientation == BufferParams::ORIENTATION_LANDSCAPE) {
 		command += ' ';
 		command += lyxrc->print_landscape_flag;
 	}
@@ -744,7 +746,7 @@ void MenuFax(Buffer *buffer)
                 help2 += " &";
                 Systemcalls one(Systemcalls::System, help2);
 	} else
-		send_fax(ps,lyxrc->fax_command);
+		send_fax(ps, lyxrc->fax_command);
 }
 
 
@@ -757,29 +759,29 @@ bool MenuPreview(Buffer *buffer)
 	string paper;
 	
 	char real_papersize = buffer->params.papersize;
-	if (real_papersize == PAPER_DEFAULT)
+	if (real_papersize == BufferParams::PAPER_DEFAULT)
 		real_papersize = lyxrc->default_papersize;
    
 	switch (real_papersize) {
-	case PAPER_USLETTER:
+	case BufferParams::PAPER_USLETTER:
 		paper = "us";
 		break;
-	case PAPER_A3PAPER:
+	case BufferParams::PAPER_A3PAPER:
 		paper = "a3";
 		break;
-	case PAPER_A4PAPER:
+	case BufferParams::PAPER_A4PAPER:
 		paper = "a4";
 		break;
-	case PAPER_A5PAPER:
+	case BufferParams::PAPER_A5PAPER:
 		paper = "a5";
 		break;
-	case PAPER_B5PAPER:
+	case BufferParams::PAPER_B5PAPER:
 		paper = "b5";
 		break;
-	case PAPER_EXECUTIVEPAPER:
+	case BufferParams::PAPER_EXECUTIVEPAPER:
 		paper = "foolscap";
 		break;
-	case PAPER_LEGALPAPER:
+	case BufferParams::PAPER_LEGALPAPER:
 		paper = "legal";
 		break;
 	default: /* If nothing else fits, keep the empty value */
@@ -787,14 +789,14 @@ bool MenuPreview(Buffer *buffer)
 	}
    
 	if (paper.empty()) {
-		if (buffer->params.orientation == ORIENTATION_LANDSCAPE)
+		if (buffer->params.orientation == BufferParams::ORIENTATION_LANDSCAPE)
 			// we HAVE to give a size when the page is in
 			// landscape, so use USletter.		
 			paper = " -paper usr";
 	} else {
 		paper = " -paper " + paper;
-		if (buffer->params.orientation == ORIENTATION_LANDSCAPE)
-			paper+='r';
+		if (buffer->params.orientation == BufferParams::ORIENTATION_LANDSCAPE)
+			paper+= 'r';
 	}
 
 	// push directorypath, if necessary 
@@ -821,7 +823,7 @@ void MenuMakeLaTeX(Buffer * buffer)
 		FilePtr myfile(s, FilePtr::read);
 		if (myfile() &&
 		    !AskQuestion(_("File already exists:"), 
-				MakeDisplayPath(s,50),
+				MakeDisplayPath(s, 50),
 				_("Do you want to overwrite the file?"))) {
 			minibuffer->Set(_("Canceled"));
 			return;
@@ -858,7 +860,7 @@ void MenuMakeLinuxDoc(Buffer *buffer)
 		FilePtr myfile(s, FilePtr::read);
 		if (myfile() &&
 		    !AskQuestion(_("File already exists:"), 
-				MakeDisplayPath(s,50),
+				MakeDisplayPath(s, 50),
 				_("Do you want to overwrite the file?"))) {
 			minibuffer->Set(_("Canceled"));
 			return;
@@ -891,7 +893,7 @@ void MenuMakeDocBook(Buffer *buffer)
 		FilePtr myfile(s, FilePtr::read);
 		if (myfile() &&
 		    !AskQuestion(_("File already exists:"), 
-				MakeDisplayPath(s,50),
+				MakeDisplayPath(s, 50),
 				_("Do you want to overwrite the file?"))) {
 			minibuffer->Set(_("Canceled"));
 			return;
@@ -918,7 +920,7 @@ void MenuMakeAscii(Buffer *buffer)
 		FilePtr myfile(s, FilePtr::read);
 		if (myfile() &&
 		    !AskQuestion(_("File already exists:"), 
-				MakeDisplayPath(s,50),
+				MakeDisplayPath(s, 50),
 				_("Do you want to overwrite the file?"))) {
 			minibuffer->Set(_("Canceled"));
 			return;
@@ -997,7 +999,7 @@ void AutoSave()
 	minibuffer->Set(_("Autosaving current document..."));
 	
 	// create autosave filename
-	string fname =	OnlyPath(current_view->buffer()->getFileName());
+	string fname = 	OnlyPath(current_view->buffer()->getFileName());
 	fname += "#";
 	fname += OnlyFilename(current_view->buffer()->getFileName());
 	fname += "#";
@@ -1073,7 +1075,7 @@ Buffer * NewLyxFile(string const & filename)
 		       << "\nTemplate is " << tmpname << endl;
 
 	// find a free buffer 
-	Buffer *tmpbuf = bufferlist.newFile(name,tmpname);
+	Buffer *tmpbuf = bufferlist.newFile(name, tmpname);
 	if (tmpbuf)
 		lastfiles->newFile(tmpbuf->getFileName());
 	return tmpbuf;
@@ -1103,23 +1105,18 @@ void InsertAsciiFile(string const & f, bool asParagraph)
 
 	if (!fi.exist() || !fi.readable() || !myfile()) {
 		WriteFSAlert(_("Error! Cannot open specified file:"),
-			     MakeDisplayPath(fname,50));
+			     MakeDisplayPath(fname, 50));
 		return;
 	}
 	
 	tmppar = new LyXParagraph;
-#ifdef NEW_TEXT
-	tmppar->text.reserve(500);
-#endif
 	tmppar->readSimpleWholeFile(myfile);
 	
 	// set the end of the string
-#ifdef NEW_TEXT
+#warning why do we do this?
 	// I don't think this is needed. Actually it might be plain wrong.
 	tmppar->InsertChar(tmppar->text.size() - 1,'\0');
-#else
-	tmppar->InsertChar(tmppar->last-1,'\0');
-#endif 
+
 	// insert the string
 	current_view->getScreen()->HideCursor();
       
@@ -1149,16 +1146,16 @@ void MenuShowTableOfContents()
 			ow = fd_form_toc->form_toc->w;
 			oh = fd_form_toc->form_toc->h;
 		}
-		fl_set_form_minsize(fd_form_toc->form_toc,ow,oh);
+		fl_set_form_minsize(fd_form_toc->form_toc, ow, oh);
 	}
 }
 
 
-void MenuInsertLabel(const char *arg)
+void MenuInsertLabel(char const *arg)
 {
 	string label = arg;
 	ProhibitInput();
-	//string label = fl_show_input(_("Enter new label to insert:"),"");
+	//string label = fl_show_input(_("Enter new label to insert:"), "");
 	if (label.empty())
 		label = frontStrip(strip(askForText(_("Enter new label to insert:"))));
 	if (!label.empty()) {
@@ -1185,7 +1182,7 @@ void MenuInsertRef()
 			ow = fd_form_ref->form_ref->w;
 			oh = fd_form_ref->form_ref->h;
 		}
-		fl_set_form_minsize(fd_form_ref->form_ref,ow,oh);
+		fl_set_form_minsize(fd_form_ref->form_ref, ow, oh);
 	}
 }
 
@@ -1256,11 +1253,11 @@ int RunLinuxDoc(int flag, string const & filename)
 	if (flag != -1) {
 		if (!current_view->available())
 			return 0;
-		current_view->buffer()->makeLinuxDocFile(name,0);
-		LYX_PAPER_SIZE ps = (LYX_PAPER_SIZE) current_view->buffer()->params.papersize;
+		current_view->buffer()->makeLinuxDocFile(name, 0);
+		BufferParams::PAPER_SIZE ps = current_view->buffer()->params.papersize;
 		switch (ps) {
-		case PAPER_A4PAPER:  add_flags = "-p a4";     break;
-		case PAPER_USLETTER: add_flags = "-p letter"; break;
+		case BufferParams::PAPER_A4PAPER:  add_flags = "-p a4";     break;
+		case BufferParams::PAPER_USLETTER: add_flags = "-p letter"; break;
 		default: /* nothing to be done yet ;-) */     break; 
 		}
 	}
@@ -1327,14 +1324,14 @@ int RunDocBook(int flag, string const & filename)
 	if (!current_view->available())
 		return 0;
 	
-	current_view->buffer()->makeDocBookFile(name,0);
+	current_view->buffer()->makeDocBookFile(name, 0);
 
 	// Shall this code go or should it stay? (Lgb)
 //  	string add_flags;
 //  	LYX_PAPER_SIZE ps = (LYX_PAPER_SIZE) current_view->buffer()->params.papersize;
 //  	switch (ps) {
-//  	case PAPER_A4PAPER:  add_flags = "-p a4";     break;
-//  	case PAPER_USLETTER: add_flags = "-p letter"; break;
+//  	case BufferParams::PAPER_A4PAPER:  add_flags = "-p a4";     break;
+//  	case BufferParams::PAPER_USLETTER: add_flags = "-p letter"; break;
 //  	default: /* nothing to be done yet ;-) */     break; 
 //  	}
 	ProhibitInput();
@@ -1412,7 +1409,7 @@ void AllFloats(char flag, char figmar)
 				    )
 				){
 				if (par->previous
-				    && par->previous->footnoteflag !=
+				    && par->previous->footnoteflag != 
 				    LyXParagraph::CLOSED_FOOTNOTE){ /* should be */ 
 					current_view->buffer()->text->SetCursorIntern(par->previous,
 								      0);
@@ -1466,13 +1463,13 @@ void MenuLayoutCharacter()
 		fl_raise_form(fd_form_character->form_character);
 	} else {
 		fl_show_form(fd_form_character->form_character,
-			     FL_PLACE_MOUSE | FL_FREE_SIZE,FL_FULLBORDER,
+			     FL_PLACE_MOUSE | FL_FREE_SIZE, FL_FULLBORDER,
 			     _("Character Style"));
 		if (ow < 0) {
 			ow = fd_form_character->form_character->w;
 			oh = fd_form_character->form_character->h;
 		}
-		fl_set_form_minsize(fd_form_character->form_character,ow,oh);
+		fl_set_form_minsize(fd_form_character->form_character, ow, oh);
 	}
 }
 
@@ -1556,7 +1553,7 @@ bool UpdateLayoutParagraph()
 
 	int align = buf->text->cursor.par->GetAlign();
 	if (align == LYX_ALIGN_LAYOUT)
-		align =	textclasslist.Style(buf->params.textclass,
+		align = 	textclasslist.Style(buf->params.textclass,
 				       buf->text->cursor.par->GetLayout()).align;
 	 
 	switch (align) {
@@ -1810,7 +1807,7 @@ bool UpdateLayoutDocument(BufferParams *params)
         
 	fl_set_button(fd_form_document->check_use_amsmath, params->use_amsmath);
 
-	if (params->paragraph_separation == LYX_PARSEP_INDENT)
+	if (params->paragraph_separation == BufferParams::PARSEP_INDENT)
 		fl_set_button(fd_form_document->radio_indent, 1);
 	else
 		fl_set_button(fd_form_document->radio_skip, 1);
@@ -1875,7 +1872,7 @@ bool UpdateLayoutDocument(BufferParams *params)
 		{
 			fl_set_choice(fd_form_document->choice_spacing, 4);
 			char sval[20];
-			sprintf(sval,"%g",params->spacing.getValue()); 
+			sprintf(sval, "%g", params->spacing.getValue()); 
 			fl_set_input(fd_form_document->input_spacing, sval);
 			break;
 		}
@@ -2017,7 +2014,7 @@ void MenuLayoutPreamble()
 				oh = fd_form_preamble->form_preamble->h;
 			}
 			fl_set_form_minsize(fd_form_preamble->form_preamble,
-					    ow,oh);
+					    ow, oh);
 		}
 	}
 }
@@ -2038,7 +2035,7 @@ void NoteCB()
 {
 	InsetInfo *new_inset = new InsetInfo();
 	current_view->buffer()->insertInset(new_inset);
-	new_inset->Edit(0,0);
+	new_inset->Edit(0, 0);
 	//current_view->buffer()->update(-1);
 }
 
@@ -2163,7 +2160,7 @@ void Newline()
 	if (current_view->available())  {
 		current_view->getScreen()->HideCursor();
 		current_view->buffer()->update(-2);
-		current_view->buffer()->text->InsertChar(LYX_META_NEWLINE);
+		current_view->buffer()->text->InsertChar(LyXParagraph::META_NEWLINE);
 		current_view->buffer()->update(-1);
 	}
 }
@@ -2174,7 +2171,7 @@ void ProtectedBlank()
 	if (current_view->available())  {
 		current_view->getScreen()->HideCursor();
 		current_view->buffer()->update(-2);
-		current_view->buffer()->text->InsertChar(LYX_META_PROTECTED_SEPARATOR);
+		current_view->buffer()->text->InsertChar(LyXParagraph::META_PROTECTED_SEPARATOR);
 		current_view->buffer()->update(-1);
 	}
 }
@@ -2185,7 +2182,7 @@ void HFill()
 	if (current_view->available())  {
 		current_view->getScreen()->HideCursor();
 		current_view->buffer()->update(-2);
-		current_view->buffer()->text->InsertChar(LYX_META_HFILL);
+		current_view->buffer()->text->InsertChar(LyXParagraph::META_HFILL);
 		current_view->buffer()->update(-1);
 	}
 }
@@ -2740,8 +2737,8 @@ extern "C" void CharacterCloseCB(FL_OBJECT *, long)
 
 extern "C" void CharacterOKCB(FL_OBJECT *ob, long data)
 {
-	CharacterApplyCB(ob,data);
-	CharacterCloseCB(ob,data);
+	CharacterApplyCB(ob, data);
+	CharacterCloseCB(ob, data);
 }
 
 
@@ -2849,7 +2846,7 @@ extern "C" void DocumentApplyCB(FL_OBJECT *, long)
 {
 	bool redo = false;
 	BufferParams *params = &(current_view->buffer()->params);
-	current_view->buffer()->params.language =
+	current_view->buffer()->params.language = 
 		combo_language->getline();
 
 	// If default skip is a "Length" but there's no text in the
@@ -2864,17 +2861,17 @@ extern "C" void DocumentApplyCB(FL_OBJECT *, long)
    
 	/* ChangeKeymap(buffer->parameters.language, TRUE, false,
 	   fl_get_choice(fd_form_document->choice_language)); */
-	params->fonts =
+	params->fonts = 
 		fl_get_choice_text(fd_form_document->choice_fonts);
-	params->inputenc =
+	params->inputenc = 
 		fl_get_choice_text(fd_form_document->choice_inputenc);
-	params->fontsize =
+	params->fontsize = 
 		fl_get_choice_text(fd_form_document->choice_fontsize);
-	params->pagestyle =
+	params->pagestyle = 
 		fl_get_choice_text(fd_form_document->choice_pagestyle);
-	params->graphicsDriver =
+	params->graphicsDriver = 
 		fl_get_choice_text(fd_form_document->choice_postscript_driver);
-	params->use_amsmath =
+	params->use_amsmath = 
 		fl_get_button(fd_form_document->check_use_amsmath);
    
 	if (!current_view->available())
@@ -2897,13 +2894,13 @@ extern "C" void DocumentApplyCB(FL_OBJECT *, long)
 
 			if (ret){
 				string s;
-				if (ret==1)
-					s= _("One paragraph couldn't be converted");
+				if (ret == 1)
+					s = _("One paragraph couldn't be converted");
 				else {
 					s += tostr(ret);
 					s += _(" paragraphs couldn't be converted");
 				}
-				WriteAlert(_("Conversion Errors!"),s,
+				WriteAlert(_("Conversion Errors!"), s,
 					   _("into chosen document class"));
 			}
 
@@ -2919,9 +2916,9 @@ extern "C" void DocumentApplyCB(FL_OBJECT *, long)
 
 	char tmpsep = params->paragraph_separation;
 	if (fl_get_button(fd_form_document->radio_indent))
-		params->paragraph_separation = LYX_PARSEP_INDENT;
+		params->paragraph_separation = BufferParams::PARSEP_INDENT;
 	else
-		params->paragraph_separation = LYX_PARSEP_SKIP;
+		params->paragraph_separation = BufferParams::PARSEP_SKIP;
 	if (tmpsep != params->paragraph_separation)
 		redo = true;
    
@@ -2981,7 +2978,7 @@ extern "C" void DocumentApplyCB(FL_OBJECT *, long)
 	params->tocdepth =  
 		static_cast<int>(fl_get_counter_value(fd_form_document->slider_tocdepth));
 
-	params->float_placement =
+	params->float_placement = 
 		fl_get_input(fd_form_document->input_float_placement);
 
 	// More checking should be done to ensure the string doesn't have
@@ -2993,7 +2990,7 @@ extern "C" void DocumentApplyCB(FL_OBJECT *, long)
 	minibuffer->Set(_("Document layout set"));
 	current_view->buffer()->markDirty();
 
-        params->options =
+        params->options = 
 		fl_get_input(fd_form_document->input_extra);
    
 }
@@ -3007,8 +3004,8 @@ extern "C" void DocumentCancelCB(FL_OBJECT *, long)
 
 extern "C" void DocumentOKCB(FL_OBJECT *ob, long data)
 {
-	DocumentCancelCB(ob,data);
-	DocumentApplyCB(ob,data);
+	DocumentCancelCB(ob, data);
+	DocumentApplyCB(ob, data);
 }
 
 
@@ -3031,11 +3028,11 @@ void GotoNote()
    
 	if (!current_view->buffer()->text->GotoNextNote()) {
 		if (current_view->buffer()->text->cursor.pos 
-		    || current_view->buffer()->text->cursor.par !=
+		    || current_view->buffer()->text->cursor.par != 
 		    current_view->buffer()->text->FirstParagraph())
 			{
 				tmp = current_view->buffer()->text->cursor;
-				current_view->buffer()->text->cursor.par =
+				current_view->buffer()->text->cursor.par = 
 					current_view->buffer()->text->FirstParagraph();
 				current_view->buffer()->text->cursor.pos = 0;
 				if (!current_view->buffer()->text->GotoNextNote()) {
@@ -3049,7 +3046,7 @@ void GotoNote()
 			}
 	}
 	current_view->buffer()->update(0);
-	current_view->buffer()->text->sel_cursor =
+	current_view->buffer()->text->sel_cursor = 
 		current_view->buffer()->text->cursor;
 }
 
@@ -3076,7 +3073,7 @@ extern "C" void QuotesApplyCB(FL_OBJECT *, long)
 		return;
 	
 	minibuffer->Set(_("Quotes type set"));
-	//current_view->buffer()->params.quotes_language =
+	//current_view->buffer()->params.quotes_language = 
 	//	fl_get_choice(fd_form_quotes->choice_quotes_language) - 1;
 	InsetQuotes::quote_language lga = InsetQuotes::EnglishQ;
 	switch(fl_get_choice(fd_form_quotes->choice_quotes_language) - 1) {
@@ -3136,7 +3133,7 @@ extern "C" void PreambleApplyCB(FL_OBJECT *, long)
 	if (!current_view->available())
 		return;
 	
-	current_view->buffer()->params.preamble =
+	current_view->buffer()->params.preamble = 
 		fl_get_input(fd_form_preamble->input_preamble);
 	current_view->buffer()->markDirty();
 	minibuffer->Set(_("LaTeX preamble set"));
@@ -3154,7 +3151,7 @@ extern "C" void PreambleOKCB(FL_OBJECT *ob, long data)
 
 extern "C" void TableApplyCB(FL_OBJECT *, long)
 {
-	int xsize,ysize;
+	int xsize, ysize;
 	if (!current_view->getScreen())
 		return;
    
@@ -3193,7 +3190,7 @@ extern "C" void TableApplyCB(FL_OBJECT *, long)
 	//if (!fl_get_button(fd_form_table->check_latex)){
 	// insert the new wysiwy table
 	current_view->buffer()->text->SetLayout(0); // standard layout
-	if (current_view->buffer()->text->cursor.par->footnoteflag ==
+	if (current_view->buffer()->text->cursor.par->footnoteflag == 
 	    LyXParagraph::NO_FOOTNOTE) {
 		current_view->buffer()->
 			text->SetParagraph(0, 0,
@@ -3219,8 +3216,8 @@ extern "C" void TableApplyCB(FL_OBJECT *, long)
 
 	current_view->buffer()->text->cursor.par->table = new LyXTable(xsize, ysize);
 	int i;
-	for (i=0; i<xsize * ysize - 1; i++)
-		current_view->buffer()->text->cursor.par->InsertChar(0,LYX_META_NEWLINE);
+	for (i = 0; i<xsize * ysize - 1; i++)
+		current_view->buffer()->text->cursor.par->InsertChar(0, LyXParagraph::META_NEWLINE);
 	current_view->buffer()->text->RedoParagraph();
    
 	current_view->buffer()->text->UnFreezeUndo();
@@ -3238,8 +3235,8 @@ extern "C" void TableCancelCB(FL_OBJECT *, long)
 
 extern "C" void TableOKCB(FL_OBJECT *ob, long data)
 {
-	TableApplyCB(ob,data);
-	TableCancelCB(ob,data);
+	TableApplyCB(ob, data);
+	TableCancelCB(ob, data);
 }
 
 
@@ -3250,11 +3247,11 @@ extern "C" void PrintCancelCB(FL_OBJECT *, long)
 	fl_hide_form(fd_form_print->form_print);
 }
 
-static bool stringOnlyContains (string const & LStr, const char * cset)
+static bool stringOnlyContains (string const & LStr, char const * cset)
 {
-	const char * cstr = LStr.c_str() ;
+	char const * cstr = LStr.c_str() ;
 
-	return strspn(cstr,cset) == strlen(cstr) ;
+	return strspn(cstr, cset) == strlen(cstr) ;
 }
 
 extern "C" void PrintApplyCB(FL_OBJECT *, long)
@@ -3316,7 +3313,7 @@ extern "C" void PrintApplyCB(FL_OBJECT *, long)
 		reverseflag = lyxrc->print_reverse_flag + ' ';
    
 	string orientationflag;
-	if (buffer->params.orientation == ORIENTATION_LANDSCAPE)
+	if (buffer->params.orientation == BufferParams::ORIENTATION_LANDSCAPE)
 		orientationflag = lyxrc->print_landscape_flag + ' ';
    
 	string ps_file = SpaceLess(fl_get_input(fd_form_print->input_file));
@@ -3336,31 +3333,31 @@ extern "C" void PrintApplyCB(FL_OBJECT *, long)
 		+ orientationflag + extraflags;
  
 	char real_papersize = buffer->params.papersize;
-	if (real_papersize == PAPER_DEFAULT)
+	if (real_papersize == BufferParams::PAPER_DEFAULT)
 		real_papersize = lyxrc->default_papersize;
         string
             paper;
 
 	switch (real_papersize) {
-	case PAPER_USLETTER:
+	case BufferParams::PAPER_USLETTER:
 		paper = "letter";
 		break;
-	case PAPER_A3PAPER:
+	case BufferParams::PAPER_A3PAPER:
 		paper = "a3";
 		break;
-	case PAPER_A4PAPER:
+	case BufferParams::PAPER_A4PAPER:
 		paper = "a4";
 		break;
-	case PAPER_A5PAPER:
+	case BufferParams::PAPER_A5PAPER:
 		paper = "a5";
 		break;
-	case PAPER_B5PAPER:
+	case BufferParams::PAPER_B5PAPER:
 		paper = "b5";
 		break;
-	case PAPER_EXECUTIVEPAPER:
+	case BufferParams::PAPER_EXECUTIVEPAPER:
 		paper = "foolscap";
 		break;
-	case PAPER_LEGALPAPER:
+	case BufferParams::PAPER_LEGALPAPER:
 		paper = "legal";
 		break;
 	default: /* If nothing else fits, keep an empty value... */
@@ -3368,7 +3365,7 @@ extern "C" void PrintApplyCB(FL_OBJECT *, long)
 	}
 
 	if (buffer->params.use_geometry
-	    && buffer->params.papersize2 == VM_PAPER_CUSTOM
+	    && buffer->params.papersize2 == BufferParams::VM_PAPER_CUSTOM
 	    && !lyxrc->print_paper_dimension_flag.empty()
 	    && !buffer->params.paperwidth.empty()
 	    && !buffer->params.paperheight.empty()) {
@@ -3379,8 +3376,8 @@ extern "C" void PrintApplyCB(FL_OBJECT *, long)
 		command += buffer->params.paperheight + ' ';
 	} else if (!lyxrc->print_paper_flag.empty()
 		   && !paper.empty()
-		   && (real_papersize != PAPER_USLETTER ||
-		       buffer->params.orientation == ORIENTATION_PORTRAIT)) {
+		   && (real_papersize != BufferParams::PAPER_USLETTER ||
+		       buffer->params.orientation == BufferParams::ORIENTATION_PORTRAIT)) {
 		command += " " + lyxrc->print_paper_flag + " " + paper + " ";
 	}
 	if (fl_get_button(fd_form_print->radio_file))
@@ -3421,7 +3418,7 @@ extern "C" void PrintApplyCB(FL_OBJECT *, long)
 extern "C" void PrintOKCB(FL_OBJECT *ob, long data)
 {
 	PrintCancelCB(ob, data);  
-	PrintApplyCB(ob,data);
+	PrintApplyCB(ob, data);
 }
 
 
@@ -3466,7 +3463,7 @@ extern "C" void FigureApplyCB(FL_OBJECT *, long)
 	// The standard layout should always be numer 0;
 	buffer->text->SetLayout(0);
 	
-	if (buffer->text->cursor.par->footnoteflag ==
+	if (buffer->text->cursor.par->footnoteflag == 
 	    LyXParagraph::NO_FOOTNOTE) {
 		buffer->text->SetParagraph(0, 0,
 					   0, 0,
@@ -3506,8 +3503,8 @@ extern "C" void FigureCancelCB(FL_OBJECT *, long)
 
 extern "C" void FigureOKCB(FL_OBJECT *ob, long data)
 {
-	FigureApplyCB(ob,data);
-	FigureCancelCB(ob,data);
+	FigureApplyCB(ob, data);
+	FigureCancelCB(ob, data);
 }
 
 extern "C" void ScreenApplyCB(FL_OBJECT *, long)
@@ -3534,8 +3531,8 @@ extern "C" void ScreenCancelCB(FL_OBJECT *, long)
 
 extern "C" void ScreenOKCB(FL_OBJECT *ob, long data)
 {
-	ScreenCancelCB(ob,data);
-	ScreenApplyCB(ob,data);
+	ScreenCancelCB(ob, data);
+	ScreenApplyCB(ob, data);
 }
 
 
@@ -3566,7 +3563,7 @@ void Reconfigure()
 	// Run configure in user lyx directory
 	Path p(user_lyxdir);
 	Systemcalls one(Systemcalls::System, 
-                          AddName(system_lyxdir,"configure"));
+                          AddName(system_lyxdir, "configure"));
 	p.pop();
 	minibuffer->Set(_("Reloading configuration..."));
 	lyxrc->Read(LibFileSearch(string(), "lyxrc.defaults"));
@@ -3664,7 +3661,7 @@ extern "C" void TocSelectCB(FL_OBJECT *ob, long)
 	int i = fl_get_browser(ob);
 	int a = 0;
 
-	for (a=1; a<i && tmptoclist->next; a++){
+	for (a = 1; a<i && tmptoclist->next; a++){
 		tmptoclist = tmptoclist->next;
 	}
 
@@ -3686,7 +3683,7 @@ extern "C" void TocSelectCB(FL_OBJECT *ob, long)
 	if (par) {
 		BeforeChange();
 		current_view->buffer()->text->SetCursor(par, 0);
-		current_view->buffer()->text->sel_cursor =
+		current_view->buffer()->text->sel_cursor = 
 			current_view->buffer()->text->cursor;
 		current_view->buffer()->update(0);
 	}
@@ -3750,7 +3747,7 @@ extern "C" void TocUpdateCB(FL_OBJECT *, long)
 			/* insert this into the table of contents */ 
 			/* first indent a little bit */ 
 			
-			for (pos=0; 
+			for (pos = 0; 
 			     pos < (labeltype - 
 				    textclasslist.TextClass(current_view->buffer()->
 						       params.textclass).maxcounter()) * 4 + 2;
@@ -3771,13 +3768,8 @@ extern "C" void TocUpdateCB(FL_OBJECT *, long)
 			pos++;
 			
 			/* now the contents */
-#ifdef NEW_TEXT
 			LyXParagraph::size_type i = 0;
 			while (pos < 199 && i < par->size()) {
-#else
-			int i = 0;
-			while (pos < 199 && i < par->last) {
-#endif
 				c = par->GetChar(i);
 				if (isprint(c) || c >= 128) {
 					line[pos] = c;
@@ -3799,7 +3791,7 @@ extern "C" void TocUpdateCB(FL_OBJECT *, long)
 			
 			tmptoclist->next = 0;
 			int a = 0;
-			for (a=0; a<6; a++){
+			for (a = 0; a<6; a++){
 				tmptoclist->counter[a] = par->GetFirstCounter(a);
 			}
 			tmptoclist->appendix = par->appendix;
@@ -3819,7 +3811,7 @@ extern "C" void RefSelectCB(FL_OBJECT *, long data)
 	if (!current_view->available())
 		return;
 
-	string s =
+	string s = 
 		fl_get_browser_line(fd_form_ref->browser_ref,
 				    fl_get_browser(fd_form_ref->browser_ref));
 	string u = frontStrip(strip(fl_get_input(fd_form_ref->ref_name)));
@@ -3827,13 +3819,13 @@ extern "C" void RefSelectCB(FL_OBJECT *, long data)
 	if (s.empty())
 		return;
 
-        if (data==2) {
+        if (data == 2) {
                 current_view->owner()->getLyXFunc()->Dispatch(LFUN_REFGOTO, s.c_str());
 	        return;
 	}
 	    
 	string t;
-	if (data==0)
+	if (data == 0)
 		t += "\\ref";
 	else
 		t += "\\pageref";
@@ -3843,7 +3835,7 @@ extern "C" void RefSelectCB(FL_OBJECT *, long data)
 	else
 		t += "{" + s + "}";
 
-	Inset *new_inset =
+	Inset *new_inset = 
 		new InsetRef(t, current_view->buffer());
 	current_view->buffer()->insertInset(new_inset);
 }
@@ -3859,9 +3851,9 @@ extern "C" void RefUpdateCB(FL_OBJECT *, long)
 	FL_OBJECT * brow = fd_form_ref->browser_ref;
 
 	// Get the current line, in order to restore it later
-	char const * const btmp=fl_get_browser_line(brow,
+	char const * const btmp = fl_get_browser_line(brow,
 						     fl_get_browser(brow));
-	string currentstr=btmp ? btmp : "";
+	string currentstr = btmp ? btmp : "";
 	//string currentstr = fl_get_browser_line(brow,
 	//					fl_get_browser(brow));
 
@@ -3871,7 +3863,7 @@ extern "C" void RefUpdateCB(FL_OBJECT *, long)
 	int topline = 1;
 
 #if FL_REVISION > 85
-	fl_addto_browser_chars(brow,refs.c_str());
+	fl_addto_browser_chars(brow, refs.c_str());
 	int total_lines = fl_get_browser_maxline(brow);
 	for (int i = 1; i <= total_lines ; i++) {
 		if (fl_get_browser_line(brow, i) == currentstr) {
@@ -3886,10 +3878,10 @@ extern "C" void RefUpdateCB(FL_OBJECT *, long)
 	int ref_num = 0;
                                        
 	while(true) {
-		curr_ref = refs.token('\n',ref_num);
+		curr_ref = refs.token('\n', ref_num);
 		if (curr_ref.empty())
 			break;
-		fl_add_browser_line(brow,curr_ref.c_str());
+		fl_add_browser_line(brow, curr_ref.c_str());
 		ref_num++;
 	}
 #endif

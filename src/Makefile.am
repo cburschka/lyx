@@ -72,7 +72,6 @@ lyx_SOURCES = \
 	credits_form.C \
 	credits_form.h \
 	debug.h \
-	definitions.h \
 	figure.h \
 	filedlg.C \
 	filedlg.h \
@@ -167,6 +166,7 @@ lyx_SOURCES = \
 	trans_decl.h \
 	trans_mgr.C \
 	trans_mgr.h \
+	undo.C \
 	undo.h \
 	vc-backend.C \
 	vc-backend.h \

@@ -1,12 +1,12 @@
 // -*- C++ -*-
 /* This file is part of
- * ======================================================
+ * ====================================================== 
  * 
  *           LyX, The Document Processor
  * 	 
  *	  Copyright (C) 1995, 1996 Matthias Ettrich
  *
- *======================================================*/
+ * ====================================================== */
 #ifndef TABLE_H
 #define TABLE_H
 
@@ -14,8 +14,8 @@
 #pragma interface
 #endif
 
-#include <stdio.h>
-#include "definitions.h"
+#include <cstdio>
+
 #include "lyxlex.h"
 #include "LString.h"
 
@@ -116,7 +116,7 @@ public:
         ///
 	bool SetPWidth(int cell, string width);
         ///
-	bool SetAlignSpecial(int cell, string special,int what);
+	bool SetAlignSpecial(int cell, string special, int what);
 	///
 	char GetAlignment(int cell); // add approp. signedness
         ///
@@ -166,11 +166,11 @@ public:
 	// cell <0 will tex the preamble
 	// returns the number of printed newlines
 	///
-	int TexEndOfCell(string& file, int cell);
+	int TexEndOfCell(string & file, int cell);
 	///
 	int RoffEndOfCell(FILE* file, int cell);
 	///
-	const char *getDocBookAlign(int cell, bool isColumn=false);
+	char const *getDocBookAlign(int cell, bool isColumn= false);
 	///
 	int DocBookEndOfCell(string &file, int cell, int &depth);
 

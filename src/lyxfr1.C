@@ -1,12 +1,12 @@
 /* This file is part of
- * ======================================================
+ * ====================================================== 
  * 
  *           LyX, The Document Processor
  * 	 
  *           Copyright 1995 Matthias Ettrich,
  *           Copyright 1995-1999 The LyX Team.
  *
- * ======================================================*/
+ * ====================================================== */
 
 #include <config.h>
 
@@ -33,6 +33,7 @@
 #include "lyx_gui_misc.h"
 #include "minibuffer.h"
 #include "support/lstrings.h"
+#include "support/textutils.h"
 
 extern BufferView *current_view; // called too many times in this file...
 extern MiniBuffer *minibuffer;
@@ -41,8 +42,6 @@ extern MiniBuffer *minibuffer;
 const int LYXSEARCH_MAXLEN =  128;
 
 // function prototypes
-
-bool IsLetterCharOrDigit(char ch);
 
 // If nothing selected, select the word at the cursor.
 // Returns the current selection
@@ -59,10 +58,6 @@ void SetSelectionOverLenChars(LyXText *lt, int len);
 
 //-------------------------------------------------------------
 
-bool IsLetterCharOrDigit(char ch)
-{
-	return IsLetterChar(ch) || isdigit(ch);
-}
 
 
 // Returns the current selection. If nothing is selected or if the selection
@@ -75,17 +70,10 @@ string const GetCurrentSelectionAsString(LyXText * lt)
 	LyXParagraph * par = lt->cursor.par;
 	if (lt->selection && (lt->sel_cursor.par == par)) {
 		// (selected) and (begin/end in same paragraph)
-#ifdef NEW_TEXT
-		LyXParagraph::size_type pos =
+		LyXParagraph::size_type pos = 
 			lt->sel_start_cursor.pos;
-		LyXParagraph::size_type endpos =
+		LyXParagraph::size_type endpos = 
 			lt->sel_end_cursor.pos;
-#else
-		int pos =
-			lt->sel_start_cursor.pos;
-		int endpos =
-			lt->sel_end_cursor.pos;
-#endif
 		int i = 0;
 		bool fPrevIsSpace = false;
 		char ch;
@@ -94,7 +82,7 @@ string const GetCurrentSelectionAsString(LyXText * lt)
 			ch = par->GetChar(pos);
 
 			//HB??: Maybe (ch <= ' ') 
-			if ((ch == ' ') || (ch <= LYX_META_INSET)) {
+			if ((ch == ' ') || (ch <= LyXParagraph::META_INSET)) {
 				// consecutive spaces --> 1 space char
 				if (fPrevIsSpace) {
 					pos++;		// Next text pos
@@ -130,7 +118,7 @@ void SetSelectionOverLenChars(LyXText *lt, int len)
 {
 	lt->sel_cursor = lt->cursor;
 	int i;
-	for (i=0; i < len; i++)
+	for (i= 0; i < len; i++)
 		lt->CursorRight();
 	lt->SetSelection();
 }
@@ -300,13 +288,9 @@ bool LyXFindReplace1::SearchCB(bool fForward)
 bool LyXFindReplace1::SearchForward(LyXText * lt)
 {
 	LyXParagraph * par = lt->cursor.par;
-#ifdef NEW_TEXT
 	LyXParagraph::size_type pos = lt->cursor.pos;
-#else
-	int pos = lt->cursor.pos;
-#endif
 
-	while (par && !IsSearchStringInText(par,pos)) {
+	while (par && !IsSearchStringInText(par, pos)) {
 		if (pos<par->Last()-1)
 			pos++;
 		else {
@@ -315,7 +299,7 @@ bool LyXFindReplace1::SearchForward(LyXText * lt)
 		}
 	}
 	if (par) {
-		lt->SetCursor(par,pos);
+		lt->SetCursor(par, pos);
 		return true;
 	} else
 		return false;
@@ -341,10 +325,10 @@ bool LyXFindReplace1::SearchBackward(LyXText *lt)
 					pos = par->Last()-1;
 			} while (par && pos<0);
 		}
-	} while (par && !IsSearchStringInText(par,pos));
+	} while (par && !IsSearchStringInText(par, pos));
   
 	if (par) {
-		lt->SetCursor(par,pos);
+		lt->SetCursor(par, pos);
 		return true;
 	} else
 		return false;
@@ -367,13 +351,8 @@ int LyXFindReplace1::CompareChars(char chSearch, char chText)
 
 // returns true if the search string is at the specified position 
 // (Copied from the original "LyXText::IsStringInText" in text2.C )
-#ifdef NEW_TEXT
 bool LyXFindReplace1::IsSearchStringInText(LyXParagraph * par,
 					   LyXParagraph::size_type pos)
-#else
-bool LyXFindReplace1::IsSearchStringInText(LyXParagraph * par,
-					   int pos)
-#endif
 {
 	char		chSrch = 0;
 	char		chText;

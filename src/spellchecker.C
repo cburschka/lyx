@@ -1,13 +1,13 @@
 /*
  *This file is part of
- * ======================================================
+ * ====================================================== 
  * 
  *           LyX, The Document Processor
  * 	 
  *	    Copyright 1995 Matthias Ettrich
  *          Copyright 1995-1998 The LyX Team
  *
- *======================================================
+ * ====================================================== 
  */
 
 #include <config.h>
@@ -115,11 +115,11 @@ void SpellOptionsUpdate()
 			     lyxrc->isp_alt_lang.c_str());
 	}
 	if (lyxrc->isp_use_alt_lang) {
-		fl_set_button(fd_form_spell_options->buflang,0);
-		fl_set_button(fd_form_spell_options->altlang,1);
+		fl_set_button(fd_form_spell_options->buflang, 0);
+		fl_set_button(fd_form_spell_options->altlang, 1);
 	} else {
-		fl_set_button(fd_form_spell_options->buflang,1);
-		fl_set_button(fd_form_spell_options->altlang,0);
+		fl_set_button(fd_form_spell_options->buflang, 1);
+		fl_set_button(fd_form_spell_options->altlang, 0);
 	}  
 
 	// Personal dictionary
@@ -153,23 +153,23 @@ void SpellOptionsUpdate()
 void SpellOptionsApplyCB(FL_OBJECT *, long)
 {
 	// Build new status from form data
-	lyxrc->isp_use_alt_lang =
+	lyxrc->isp_use_alt_lang = 
 		fl_get_button(fd_form_spell_options->altlang);
-	lyxrc->isp_use_pers_dict =
+	lyxrc->isp_use_pers_dict = 
 		fl_get_button(fd_form_spell_options->perdict);
-	lyxrc->isp_accept_compound =
+	lyxrc->isp_accept_compound = 
 		fl_get_button(fd_form_spell_options->compounds);
-	lyxrc->isp_use_esc_chars =
+	lyxrc->isp_use_esc_chars = 
 		fl_get_button(fd_form_spell_options->esc_chars);
-	lyxrc->isp_use_input_encoding =
+	lyxrc->isp_use_input_encoding = 
 		fl_get_button(fd_form_spell_options->inpenc);
 
 	// Update strings with data from input fields
-	lyxrc->isp_alt_lang =
+	lyxrc->isp_alt_lang = 
 		fl_get_input(fd_form_spell_options->altlang_input);
-	lyxrc->isp_pers_dict =
+	lyxrc->isp_pers_dict = 
 		fl_get_input(fd_form_spell_options->perdict_input);
-	lyxrc->isp_esc_chars =
+	lyxrc->isp_esc_chars = 
 		fl_get_input(fd_form_spell_options->esc_chars_input);
 
 	// Update form
@@ -213,7 +213,7 @@ void SpellCheckerOptions()
 		fl_raise_form(fd_form_spell_options->form_spell_options);
 	} else {
 		fl_show_form(fd_form_spell_options->form_spell_options,
-			     FL_PLACE_MOUSE,FL_FULLBORDER,
+			     FL_PLACE_MOUSE, FL_FULLBORDER,
 			     _("Spellchecker Options"));
 	}
 }
@@ -233,18 +233,18 @@ void create_ispell_pipe(string const & lang)
 
 	isp_pid = -1;
 
-	if(pipe(pipein)==-1 || pipe(pipeout)==-1) {
+	if(pipe(pipein) == -1 || pipe(pipeout) == -1) {
 		lyxerr << "LyX: Can't create pipe for spellchecker!" << endl;
 		return;
 	}
 
-	if ((out = fdopen(pipein[1], "w"))==0) {
+	if ((out = fdopen(pipein[1], "w")) == 0) {
 		lyxerr << "LyX: Can't create stream for pipe for spellchecker!"
 		       << endl;
 		return;
 	}
 
-	if ((in = fdopen(pipeout[0], "r"))==0) {
+	if ((in = fdopen(pipeout[0], "r")) == 0) {
 		lyxerr <<"LyX: Can't create stream for pipe for spellchecker!"
 		       << endl;
 		return;
@@ -256,13 +256,13 @@ void create_ispell_pipe(string const & lang)
 
 	isp_pid = fork();
 
-	if(isp_pid==-1) {
+	if(isp_pid == -1) {
 		lyxerr << "LyX: Can't create child process for spellchecker!"
 		       << endl;
 		return;
 	}
 
-	if(isp_pid==0) {        
+	if(isp_pid == 0) {        
 		/* child process */
 		dup2(pipein[0], STDIN_FILENO);
 		dup2(pipeout[1], STDOUT_FILENO);
@@ -317,7 +317,7 @@ void create_ispell_pipe(string const & lang)
 			// Specify an alternate personal dictionary
 			tmp = new char[3];
 			string("-p").copy(tmp, 2);
-			tmp[2]='\0';
+			tmp[2]= '\0';
 			argv[argc++] = tmp;
 			tmp = new char[lyxrc->isp_pers_dict.length() + 1];
 			lyxrc->isp_pers_dict.copy(tmp, lyxrc->isp_pers_dict.length());
@@ -341,7 +341,7 @@ void create_ispell_pipe(string const & lang)
 
 		// free the memory used by string::copy in the
 		// setup of argv
-		for (int i=0; i < argc -1; i++)
+		for (int i= 0; i < argc -1; i++)
 			delete[] argv[i];
 		
 		lyxerr << "LyX: Failed to start ispell!" << endl;
@@ -439,18 +439,18 @@ isp_result *ispell_check_word(char *word)
 		result->str = buf;
 		char * nb = new char[result->str.length() + 1];
 		result->str.copy(nb, result->str.length());
-		nb[result->str.length()]='\0';
+		nb[result->str.length()]= '\0';
 		p = strpbrk(nb+2, " ");
 		sscanf(p, "%d", &count); // Get near misses count
 		result->count = count;
 		if (count) result->misses = new char*[count];
 		p = strpbrk(nb, ":");
-		p +=2;
+		p += 2;
 		for (i = 0; i<count; i++) {
 			result->misses[i] = p;
 			p = strpbrk(p, ",\n");
 			*p = 0;
-			p+=2;
+			p+= 2;
 		}
 		break;
 	}
@@ -459,8 +459,8 @@ isp_result *ispell_check_word(char *word)
 	}
 
 	*buf = 0;
-	if (result->flag!=ISP_IGNORE) {
-		while (*buf!='\n') fgets(buf, 255, in); /* wait for ispell to finish */
+	if (result->flag!= ISP_IGNORE) {
+		while (*buf!= '\n') fgets(buf, 255, in); /* wait for ispell to finish */
 	}
 	return result;
 }
@@ -506,7 +506,7 @@ inline void ispell_accept_word(char const *word)
 }
 
 static
-inline void ispell_store_replacement(const char *mis, string const & cor) {
+inline void ispell_store_replacement(char const *mis, string const & cor) {
         if(actual_spell_checker == ASC_ASPELL) {
                 fputs("$$ra ", out);
                 fputs(mis, out);
@@ -544,7 +544,7 @@ void ShowSpellChecker()
 		fl_raise_form(fd_form_spell_check->form_spell_check);
 	} else {
 		fl_show_form(fd_form_spell_check->form_spell_check,
-			     FL_PLACE_MOUSE,FL_FULLBORDER,
+			     FL_PLACE_MOUSE, FL_FULLBORDER,
 			     _("Spellchecker"));
 	}
 	fl_deactivate_object(fd_form_spell_check->slider); 
@@ -667,18 +667,18 @@ bool RunSpellChecker(string const & lang)
 
 	while (true) {
 		word = NextWord(newval);
-		if (word==0) break;
+		if (word == 0) break;
 		word_count++;
 		
 		// Update slider if and only if value has changed
 		newvalue = int(100.0*newval);
-		if(newvalue!=oldval) {
+		if(newvalue!= oldval) {
 			oldval = newvalue;
 			fl_set_slider_value(fd_form_spell_check->slider, oldval);
 		}
 
 		result = ispell_check_word(word);
-		if (isp_pid==-1) {
+		if (isp_pid == -1) {
 			delete[] word;
 			break;
 		}
@@ -704,34 +704,34 @@ bool RunSpellChecker(string const & lang)
 			fl_set_object_label(fd_form_spell_check->text, word);
 			fl_set_input(fd_form_spell_check->input, word);
 			fl_clear_browser(fd_form_spell_check->browser);
-			for (i=0; i<result->count; i++) {
+			for (i= 0; i<result->count; i++) {
 				fl_add_browser_line(fd_form_spell_check->browser, result->misses[i]);
 			}
 
 			clickline = -1;
 			while (true) {
 				obj = fl_do_forms();
-				if (obj==fd_form_spell_check->insert) {
+				if (obj == fd_form_spell_check->insert) {
 					ispell_insert_word(word);
 					break;
 				}
-				if (obj==fd_form_spell_check->accept) {
+				if (obj == fd_form_spell_check->accept) {
 					ispell_accept_word(word);
 					break;
 				}
-				if (obj==fd_form_spell_check->ignore) {
+				if (obj == fd_form_spell_check->ignore) {
 					break;
 				}
-				if (obj==fd_form_spell_check->replace || 
-				    obj==fd_form_spell_check->input) {
+				if (obj == fd_form_spell_check->replace || 
+				    obj == fd_form_spell_check->input) {
 				        ispell_store_replacement(word, fl_get_input(fd_form_spell_check->input));
 					ReplaceWord(fl_get_input(fd_form_spell_check->input));
 					break;
 				}
-				if (obj==fd_form_spell_check->browser) {
+				if (obj == fd_form_spell_check->browser) {
 					// implements double click in the browser window.
 					// sent to lyx@via by Mark Burton <mark@cbl.leeds.ac.uk>
-					if (clickline ==
+					if (clickline == 
 					    fl_get_browser(fd_form_spell_check->browser)) {
 				                ispell_store_replacement(word, fl_get_input(fd_form_spell_check->input));
 						ReplaceWord(fl_get_input(fd_form_spell_check->input));
@@ -743,14 +743,14 @@ bool RunSpellChecker(string const & lang)
 									 fl_get_browser(fd_form_spell_check->browser)));
 						     
 				}
-				if (obj==fd_form_spell_check->stop) {
+				if (obj == fd_form_spell_check->stop) {
 					delete result;
 					delete[] word;
 					ispell_terminate();
 					return true;
 				}
 	    
-				if (obj==fd_form_spell_check->done) {
+				if (obj == fd_form_spell_check->done) {
 					delete result;
 					delete[] word;
 					ispell_terminate();
@@ -763,7 +763,7 @@ bool RunSpellChecker(string const & lang)
 		}
 	}
    
-	if(isp_pid!=-1) {
+	if(isp_pid!= -1) {
 		ispell_terminate();
 		string word_msg;
 		word_msg += tostr(word_count);
@@ -772,7 +772,7 @@ bool RunSpellChecker(string const & lang)
 		} else {
 			word_msg += _(" word checked.");
 		}
-		fl_show_message("",_("Spellchecking completed!"),
+		fl_show_message("", _("Spellchecking completed!"),
 				word_msg.c_str());
 		return false;
 	} else {
@@ -790,9 +790,9 @@ void sigchldhandler(pid_t pid, int *status)
 	//int status ;
 
 	if (isp_pid>0)
-		//if (waitpid(isp_pid,&status,WNOHANG)==isp_pid) {
+		//if (waitpid(isp_pid, &status, WNOHANG) == isp_pid) {
 		if (pid == isp_pid) {
-			isp_pid=-1;
+			isp_pid= -1;
 			fcntl(isp_fd, F_SETFL, O_NONBLOCK); /* set the file descriptor
 							       to nonblocking so we can 
 							       continue */

@@ -1,8 +1,8 @@
 #include <config.h>
 
 #include <cstdlib>
-#include "definitions.h"
 #include FORMS_H_LOCATION
+
 #include "layout_forms.h"
 #include "lyx_main.h"
 #include "lyxrc.h"
@@ -19,22 +19,21 @@
 
 extern void BeforeChange();
 
-/* Prototypes */
-extern FD_form_table_options *fd_form_table_options;
-extern FD_form_table_extra *fd_form_table_extra;
-extern BufferView *current_view;
+// Prototypes
+extern FD_form_table_options * fd_form_table_options;
+extern FD_form_table_extra * fd_form_table_extra;
+extern BufferView * current_view;
 
-static int
-    Confirmed = false,
-    ActCell;
+static int Confirmed = false;
+static int ActCell;
+
 // hack to keep the cursor from jumping to the end of the text in the Extra
 // form input fields during editing. The values in LyXTable itself is changed in
 // real-time, but we have no callbacks for the input fields, so I simply
 // store and restore the cursor position for now. (too much of a hazzle to
 // do it proper; we'll trash all this code in 1.1 anyway)
-    static int
-	extra_col_cursor_x, // need no y's, one-line input fields
-	extra_multicol_cursor_x;
+static int extra_col_cursor_x; // need no y's, one-line input fields
+static int extra_multicol_cursor_x;
 // Joacim
 
 bool UpdateLayoutTable(int flag)
@@ -44,31 +43,26 @@ bool UpdateLayoutTable(int flag)
         update = false;
     
     if (update && current_view->buffer()->text->cursor.par->table) {
-        int
-            align,
-            column,row;
-        char
-            buf[12];
-        string
-            pwidth, special;
-    
+        char buf[12];
+        string pwidth, special;
+   
         LyXTable * table = current_view->buffer()->text->cursor.par->table;
 
         int cell = current_view->buffer()->text->
             NumberOfCell(current_view->buffer()->text->cursor.par, 
                          current_view->buffer()->text->cursor.pos);
         ActCell = cell;
-        column = table->column_of_cell(cell)+1;
-        fl_set_object_label(fd_form_table_options->text_warning,"");
+        int column = table->column_of_cell(cell)+1;
+        fl_set_object_label(fd_form_table_options->text_warning, "");
         Confirmed = false;
         fl_activate_object(fd_form_table_extra->input_special_alignment);
         fl_activate_object(fd_form_table_extra->input_special_multialign);
         fl_activate_object(fd_form_table_options->input_column_width);
-        sprintf(buf,"%d",column);
+        sprintf(buf, "%d", column);
         fl_set_input(fd_form_table_options->input_table_column, buf);
         fl_deactivate_object(fd_form_table_options->input_table_column);
-        row = table->row_of_cell(cell)+1;
-        sprintf(buf,"%d",row);
+        int row = table->row_of_cell(cell)+1;
+        sprintf(buf, "%d", row);
         fl_set_input(fd_form_table_options->input_table_row, buf);
         fl_deactivate_object(fd_form_table_options->input_table_row);
         if (table->IsMultiColumn(cell))
@@ -95,11 +89,11 @@ bool UpdateLayoutTable(int flag)
             fl_set_button(fd_form_table_options->radio_border_right, 1);
         else
             fl_set_button(fd_form_table_options->radio_border_right, 0);
-        align = table->GetAlignment(cell);
+        int align = table->GetAlignment(cell);
         fl_set_button(fd_form_table_options->radio_align_left, 0);
         fl_set_button(fd_form_table_options->radio_align_right, 0);
         fl_set_button(fd_form_table_options->radio_align_center, 0);
-        special = table->GetAlignSpecial(cell,LyXTable::SET_SPECIAL_COLUMN);
+        special = table->GetAlignSpecial(cell, LyXTable::SET_SPECIAL_COLUMN);
         if (flag)
 	{
             fl_set_input(fd_form_table_extra->input_special_alignment,
@@ -109,7 +103,7 @@ bool UpdateLayoutTable(int flag)
 	}
         if (current_view->buffer()->isReadonly()) 
             fl_deactivate_object(fd_form_table_extra->input_special_alignment);
-        special = table->GetAlignSpecial(cell,LyXTable::SET_SPECIAL_MULTI);
+        special = table->GetAlignSpecial(cell, LyXTable::SET_SPECIAL_MULTI);
         if (flag)
 	{
             fl_set_input(fd_form_table_extra->input_special_multialign,
@@ -121,7 +115,7 @@ bool UpdateLayoutTable(int flag)
             fl_deactivate_object(fd_form_table_extra->input_special_multialign);
         pwidth = table->GetPWidth(cell);
         if (flag)
-            fl_set_input(fd_form_table_options->input_column_width,pwidth.c_str());
+            fl_set_input(fd_form_table_options->input_column_width, pwidth.c_str());
         if (current_view->buffer()->isReadonly()) 
             fl_deactivate_object(fd_form_table_options->input_column_width);
         if (!pwidth.empty()) {
@@ -134,7 +128,7 @@ bool UpdateLayoutTable(int flag)
             fl_deactivate_object(fd_form_table_options->radio_linebreak_cell);
 	    fl_set_object_lcol(fd_form_table_options->radio_linebreak_cell,
 			       FL_INACTIVE);
-            fl_set_button(fd_form_table_options->radio_linebreak_cell,0);
+            fl_set_button(fd_form_table_options->radio_linebreak_cell, 0);
         }
         if ((!pwidth.empty() && !table->IsMultiColumn(cell)) ||
             (align == LYX_ALIGN_LEFT))
@@ -164,7 +158,7 @@ bool UpdateLayoutTable(int flag)
 	    fl_set_object_lcol(fd_form_table_options->radio_align_center,
 			       FL_BLACK);
         }
-        fl_set_button(fd_form_table_options->radio_longtable,table->IsLongTable());
+        fl_set_button(fd_form_table_options->radio_longtable, table->IsLongTable());
         if (table->IsLongTable()) {
             fl_activate_object(fd_form_table_options->radio_lt_firsthead);
             fl_activate_object(fd_form_table_options->radio_lt_head);
@@ -197,11 +191,11 @@ bool UpdateLayoutTable(int flag)
             fl_deactivate_object(fd_form_table_options->radio_lt_foot);
             fl_deactivate_object(fd_form_table_options->radio_lt_lastfoot);
             fl_deactivate_object(fd_form_table_options->radio_lt_newpage);
-            fl_set_button(fd_form_table_options->radio_lt_firsthead,0);
-            fl_set_button(fd_form_table_options->radio_lt_head,0);
-            fl_set_button(fd_form_table_options->radio_lt_foot,0);
-            fl_set_button(fd_form_table_options->radio_lt_lastfoot,0);
-            fl_set_button(fd_form_table_options->radio_lt_newpage,0);
+            fl_set_button(fd_form_table_options->radio_lt_firsthead, 0);
+            fl_set_button(fd_form_table_options->radio_lt_head, 0);
+            fl_set_button(fd_form_table_options->radio_lt_foot, 0);
+            fl_set_button(fd_form_table_options->radio_lt_lastfoot, 0);
+            fl_set_button(fd_form_table_options->radio_lt_newpage, 0);
 	    fl_set_object_lcol(fd_form_table_options->radio_lt_firsthead,
 			       FL_INACTIVE);
 	    fl_set_object_lcol(fd_form_table_options->radio_lt_head,
@@ -225,24 +219,26 @@ bool UpdateLayoutTable(int flag)
     return update;
 }
 
+
 void OpenLayoutTableExtra()
 {
-    static int ow = -1, oh;
 
-    if (fd_form_table_extra->form_table_extra->visible) {
-        fl_raise_form(fd_form_table_extra->form_table_extra);
-    } else {
-        fl_show_form(fd_form_table_extra->form_table_extra,
-                     FL_PLACE_MOUSE | FL_FREE_SIZE,FL_FULLBORDER,
-                     _("Table Extra Form"));
+	if (fd_form_table_extra->form_table_extra->visible) {
+		fl_raise_form(fd_form_table_extra->form_table_extra);
+	} else {
+		static int ow = -1, oh;
+		fl_show_form(fd_form_table_extra->form_table_extra,
+			     FL_PLACE_MOUSE | FL_FREE_SIZE, FL_FULLBORDER,
+			     _("Table Extra Form"));
 		if (ow < 0) {
 			ow = fd_form_table_extra->form_table_extra->w;
 			oh = fd_form_table_extra->form_table_extra->h;
 		}
 		fl_set_form_minsize(fd_form_table_extra->form_table_extra,
-				    ow,oh);
-    }
+				    ow, oh);
+	}
 }
+
 
 void MenuLayoutTable(int flag)
 {
@@ -258,10 +254,10 @@ void MenuLayoutTable(int flag)
     }
 }
 
-void TableOptionsCB(FL_OBJECT *ob, long)
+
+void TableOptionsCB(FL_OBJECT * ob, long)
 {
-    LyXTable
-        *table = 0;
+    LyXTable * table = 0;
     int
         s,
         num = 0;
@@ -271,8 +267,7 @@ void TableOptionsCB(FL_OBJECT *ob, long)
 
     if (!current_view->available()
 	||
-	!(table = current_view->buffer()->text->cursor.par->table)) 
-      {
+	!(table = current_view->buffer()->text->cursor.par->table)) {
         MenuLayoutTable(0);
 	return;
       }
@@ -284,8 +279,8 @@ void TableOptionsCB(FL_OBJECT *ob, long)
         fl_set_object_label(fd_form_table_options->text_warning,
                             _("Warning: Wrong Cursor position, updated window"));
         fl_show_object(fd_form_table_options->text_warning);
-	extra_col_cursor_x=0; // would rather place it at the end, but...
-	extra_multicol_cursor_x=0;
+	extra_col_cursor_x = 0; // would rather place it at the end, but...
+	extra_multicol_cursor_x = 0;
         return;
     }
     // No point in processing directives that you can't do anything with
@@ -296,7 +291,7 @@ void TableOptionsCB(FL_OBJECT *ob, long)
     }
     
     if (ob != fd_form_table_options->button_table_delete) {
-        fl_set_object_label(fd_form_table_options->text_warning,"");
+        fl_set_object_label(fd_form_table_options->text_warning, "");
         Confirmed = false;
     }
     str = fl_get_input(fd_form_table_options->input_column_width);
@@ -306,8 +301,8 @@ void TableOptionsCB(FL_OBJECT *ob, long)
         fl_show_object(fd_form_table_options->text_warning);
         return;
     }
-    if (((ob==fd_form_table_options->button_delete_row) && (table->rows<=1)) ||
-        ((ob==fd_form_table_options->button_delete_column) && (table->columns<=1)))
+    if (((ob == fd_form_table_options->button_delete_row) && (table->rows<= 1)) ||
+        ((ob == fd_form_table_options->button_delete_column) && (table->columns<= 1)))
         ob = fd_form_table_options->button_table_delete;
     if (ob == fd_form_table_options->button_append_row)
         num = LyXTable::APPEND_ROW;
@@ -335,7 +330,7 @@ void TableOptionsCB(FL_OBJECT *ob, long)
         num = LyXTable::ALIGN_RIGHT;
     else if (ob == fd_form_table_options->radio_align_center)
         num = LyXTable::ALIGN_CENTER;
-    else if ((ob==fd_form_table_options->button_table_delete) && !Confirmed) {
+    else if ((ob == fd_form_table_options->button_table_delete) && !Confirmed) {
         fl_set_object_label(fd_form_table_options->text_warning,
                             _("Confirm: press Delete-Button again"));
         Confirmed = true;
@@ -347,7 +342,7 @@ void TableOptionsCB(FL_OBJECT *ob, long)
     } else if (ob == fd_form_table_options->radio_multicolumn)
         num = LyXTable::MULTICOLUMN;
     else if (ob == fd_form_table_options->radio_longtable) {
-        s=fl_get_button(fd_form_table_options->radio_longtable);
+        s = fl_get_button(fd_form_table_options->radio_longtable);
         if (s) {
             num = LyXTable::SET_LONGTABLE;
             fl_activate_object(fd_form_table_options->radio_lt_firsthead);
@@ -372,11 +367,11 @@ void TableOptionsCB(FL_OBJECT *ob, long)
             fl_deactivate_object(fd_form_table_options->radio_lt_foot);
             fl_deactivate_object(fd_form_table_options->radio_lt_lastfoot);
             fl_deactivate_object(fd_form_table_options->radio_lt_newpage);
-            fl_set_button(fd_form_table_options->radio_lt_firsthead,0);
-            fl_set_button(fd_form_table_options->radio_lt_firsthead,0);
-            fl_set_button(fd_form_table_options->radio_lt_firsthead,0);
-            fl_set_button(fd_form_table_options->radio_lt_firsthead,0);
-            fl_set_button(fd_form_table_options->radio_lt_firsthead,0);
+            fl_set_button(fd_form_table_options->radio_lt_firsthead, 0);
+            fl_set_button(fd_form_table_options->radio_lt_firsthead, 0);
+            fl_set_button(fd_form_table_options->radio_lt_firsthead, 0);
+            fl_set_button(fd_form_table_options->radio_lt_firsthead, 0);
+            fl_set_button(fd_form_table_options->radio_lt_firsthead, 0);
 	    fl_set_object_lcol(fd_form_table_options->radio_lt_firsthead,
 			       FL_INACTIVE);
 	    fl_set_object_lcol(fd_form_table_options->radio_lt_head,
@@ -389,13 +384,13 @@ void TableOptionsCB(FL_OBJECT *ob, long)
 			       FL_INACTIVE);
         }
     } else if (ob == fd_form_table_options->radio_rotate_table) {
-        s=fl_get_button(fd_form_table_options->radio_rotate_table);
+        s = fl_get_button(fd_form_table_options->radio_rotate_table);
 	if (s)
             num = LyXTable::SET_ROTATE_TABLE;
 	else
 	    num = LyXTable::UNSET_ROTATE_TABLE;
     } else if (ob == fd_form_table_options->radio_rotate_cell) {
-        s=fl_get_button(fd_form_table_options->radio_rotate_cell);
+        s = fl_get_button(fd_form_table_options->radio_rotate_cell);
 	if (s)
             num = LyXTable::SET_ROTATE_CELL;
 	else
@@ -416,12 +411,12 @@ void TableOptionsCB(FL_OBJECT *ob, long)
         OpenLayoutTableExtra();
         return;
     } else if (ob == fd_form_table_extra->input_special_alignment) {
-        special=fl_get_input(fd_form_table_extra->input_special_alignment);
+        special = fl_get_input(fd_form_table_extra->input_special_alignment);
 	int dummy;
 	fl_get_input_cursorpos(ob, &extra_col_cursor_x, &dummy);
         num = LyXTable::SET_SPECIAL_COLUMN;
     } else if (ob == fd_form_table_extra->input_special_multialign) {
-        special=fl_get_input(fd_form_table_extra->input_special_multialign);
+        special = fl_get_input(fd_form_table_extra->input_special_multialign);
 	int dummy;
 	fl_get_input_cursorpos(ob, &extra_multicol_cursor_x, &dummy);
         num = LyXTable::SET_SPECIAL_MULTI;
@@ -435,7 +430,7 @@ void TableOptionsCB(FL_OBJECT *ob, long)
         }
         if ((num == LyXTable::SET_SPECIAL_COLUMN) ||
             (num == LyXTable::SET_SPECIAL_MULTI))
-            current_view->buffer()->text->TableFeatures(num,special);
+            current_view->buffer()->text->TableFeatures(num, special);
         else
             current_view->buffer()->text->TableFeatures(num);
         current_view->buffer()->update(1);
@@ -467,7 +462,7 @@ void TableSpeCloseCB(FL_OBJECT *, long)
 
 void SetPWidthCB(FL_OBJECT *ob, long)
 {
-    fl_set_object_label(fd_form_table_options->text_warning,"");
+    fl_set_object_label(fd_form_table_options->text_warning, "");
     Confirmed = false;
     if (ob == fd_form_table_options->input_column_width) {
         string
@@ -485,7 +480,7 @@ void SetPWidthCB(FL_OBJECT *ob, long)
                 BeforeChange(); 
                 current_view->buffer()->update(-2);
             }
-            current_view->buffer()->text->TableFeatures(LyXTable::SET_PWIDTH,str);
+            current_view->buffer()->text->TableFeatures(LyXTable::SET_PWIDTH, str);
             current_view->buffer()->update(1);
         }
         MenuLayoutTable(0); // update for alignment

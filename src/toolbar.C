@@ -1,5 +1,5 @@
 /* This file is part of
- * ======================================================
+ * ====================================================== 
  * 
  *           LyX, The Document Processor
  *
@@ -9,7 +9,7 @@
  *           This file is Copyright 1996-1998
  *           Lars Gullik Bjønnes
  *
- * ======================================================*/
+ * ====================================================== */
 
 //  Added pseudo-action handling, asierra 180296
 
@@ -130,7 +130,7 @@ Toolbar::Toolbar(Toolbar const &rct, LyXView *o, int x, int y)
 		add(tmplist->action);
 		lyxerr[Debug::TOOLBAR] << "tool action: "
 				       << tmplist->action << endl;
-		tmplist=tmplist->next;
+		tmplist= tmplist->next;
 	}
 }
 
@@ -172,12 +172,12 @@ extern "C" int C_Toolbar_BubblePost(FL_OBJECT *ob, int event,
 				   FL_Coord /*mx*/, FL_Coord /*my*/, 
 				   int key, void *xev)
 {
-	return Toolbar::BubblePost(ob,event,0,0,key,xev);
+	return Toolbar::BubblePost(ob, event, 0, 0, key, xev);
 }
 
 void Toolbar::activate()
 {
-	toolbarItem *item, *tmp=0;
+	toolbarItem *item, *tmp= 0;
 	item = toollist;
 	while(item){
 		tmp = item->next;
@@ -191,7 +191,7 @@ void Toolbar::activate()
 
 void Toolbar::deactivate()
 {
-	toolbarItem *item, *tmp=0;
+	toolbarItem *item, *tmp= 0;
 	item = toollist;
 	while(item){
 		tmp = item->next;
@@ -288,7 +288,7 @@ void Toolbar::set(bool doingmain)
 	// add the time if it don't exist
 	if (bubble_timer == 0)
 		bubble_timer = fl_add_timer(FL_HIDDEN_TIMER,
-					    xpos,ypos,0,0,"Timer");
+					    xpos, ypos, 0, 0, "Timer");
 	
 	while(item != 0) {
 		switch(item->action){
@@ -309,22 +309,22 @@ void Toolbar::set(bool doingmain)
 			  break;
 		  default:
 			  xpos += standardspacing;
-			  item->icon = obj =
+			  item->icon = obj = 
 				  fl_add_pixmapbutton(FL_NORMAL_BUTTON,
-						      xpos,ypos,
+						      xpos, ypos,
 						      buttonwidth,
-						      height,"");
-			  fl_set_object_boxtype(obj,FL_UP_BOX);
-			  fl_set_object_color(obj,FL_MCOL,FL_BLUE);
+						      height, "");
+			  fl_set_object_boxtype(obj, FL_UP_BOX);
+			  fl_set_object_color(obj, FL_MCOL, FL_BLUE);
 			  fl_set_object_resize(obj, FL_RESIZE_ALL);
 			  fl_set_object_gravity(obj,
 						NorthWestGravity,
 						NorthWestGravity);
-			  fl_set_object_callback(obj,C_Toolbar_ToolbarCB,
+			  fl_set_object_callback(obj, C_Toolbar_ToolbarCB,
 						 (long)item->action);
 #if FL_REVISION >85
 			  // Remove the blue feedback rectangle
-			  fl_set_pixmapbutton_focus_outline(obj,0);
+			  fl_set_pixmapbutton_focus_outline(obj, 0);
 #endif
 
 			  // set the bubble-help (Matthias)
@@ -335,7 +335,7 @@ void Toolbar::set(bool doingmain)
 			  
 			  fl_set_object_posthandler(obj, C_Toolbar_BubblePost);
 
-			  fl_set_pixmapbutton_data(obj,item->pixmap);
+			  fl_set_pixmapbutton_data(obj, item->pixmap);
 			  item = item->next;
 			  // we must remember to update the positions
 			  xpos += buttonwidth;
@@ -441,7 +441,7 @@ void Toolbar::add(int action, bool doclean)
 		// first «hide» the toolbar buttons. This is not a real hide
 		// actually it deletes and frees the button altogether.
 		lyxerr << "Toolbar::add: «hide» the toolbar buttons." << endl;
-		toolbarItem *item, *tmp=0;
+		toolbarItem *item, *tmp= 0;
 		item = toollist;
 
 		lightReset();
@@ -555,7 +555,7 @@ void Toolbar::push(int nth)
 	
 	if (nth == 0) return;
 
-	int count=0;
+	int count= 0;
 	toolbarItem *tmp = toollist;
 	while (tmp) {
 		count++;

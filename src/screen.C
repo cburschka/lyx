@@ -1,12 +1,12 @@
 /* This file is part of
-* ======================================================
+* ====================================================== 
 * 
 *           LyX, The Document Processor
 * 	 
 *	    Copyright 1995 Matthias Ettrich
 *           Copyright 1995-1998 The LyX Team
 *
-*======================================================*/
+* ====================================================== */
 
 #include <config.h>
 
@@ -29,8 +29,8 @@ LyXScreen::LyXScreen(Window window,
 		     Dimension offset_x,
 		     Dimension offset_y,
 		     LyXText *text_ptr)
-	: text(text_ptr),_window(window), 
-	  _width(width),_height(height),
+	: text(text_ptr), _window(window), 
+	  _width(width), _height(height),
 	  _offset_x(offset_x), _offset_y(offset_y)
 {
 	first = 0;
@@ -127,7 +127,7 @@ void LyXScreen::DrawOneRow(Row *row, long &y_text)
 		/* ok there is something visible */
 		text->GetVisibleRow(*this, y, row, y + first);
 	}
-	y_text+=row->height;
+	y_text+= row->height;
 }
 
 
@@ -216,7 +216,7 @@ void LyXScreen::ShowCursor()
 			cursor_pixmap_h = y2 - y1 + 1;
 			cursor_pixmap_x = x;
 			cursor_pixmap_y = y1;
-			cursor_pixmap =
+			cursor_pixmap = 
 				XCreatePixmap(fl_display,
 					      fl_root,
 					      cursor_pixmap_w,
@@ -267,7 +267,7 @@ int LyXScreen::FitManualCursor(long /*x*/, long y, int asc, int desc)
 
 void  LyXScreen::HideManualCursor(long x, long y, int asc, int desc){
 	if (fast_selection || mono_video)
-		ShowManualCursor(x,y,asc,desc);
+		ShowManualCursor(x, y, asc, desc);
 	else
 		HideCursor();
 }
@@ -280,7 +280,7 @@ void  LyXScreen::ShowManualCursor(long x, long y, int asc, int desc)
 	
 	y1 = y - first - asc;
 	if (y1 < 0)
-		y1 =0;
+		y1 = 0;
 	y2 = y -first + desc;
 	if (y2 > _height)
 		y2 = _height;
@@ -305,7 +305,7 @@ void  LyXScreen::ShowManualCursor(long x, long y, int asc, int desc)
 			cursor_pixmap_h = y2 - y1 + 1;
 			cursor_pixmap_x = x,
 			cursor_pixmap_y = y1;
-			cursor_pixmap =
+			cursor_pixmap = 
 				XCreatePixmap (fl_display,
 					       fl_root,
 					       cursor_pixmap_w,
@@ -514,7 +514,7 @@ void LyXScreen::ToggleSelection(bool kill_selection)
 					top = 0;
 				if (bottom > _height)
 					bottom = _height;
-				XFillRectangle(fl_display,_window,
+				XFillRectangle(fl_display, _window,
 					       getGC(gc_select),
 					       text->sel_start_cursor.x
 					       +_offset_x, 
@@ -541,7 +541,7 @@ void LyXScreen::ToggleSelection(bool kill_selection)
 					top = 0;
 				if (bottom > _height)
 					bottom = _height;
-				XFillRectangle(fl_display,_window,
+				XFillRectangle(fl_display, _window,
 					       getGC(gc_select),
 					       text->sel_start_cursor.x
 					       +_offset_x, 
@@ -553,7 +553,7 @@ void LyXScreen::ToggleSelection(bool kill_selection)
 			
 			/* the main body */ 
 			
-			if (text->sel_start_cursor.row->next !=
+			if (text->sel_start_cursor.row->next != 
 			    text->sel_end_cursor.row) {
 				top = text->sel_start_cursor.y
 					- text->sel_start_cursor.row->baseline
@@ -598,7 +598,7 @@ void LyXScreen::ToggleSelection(bool kill_selection)
 					top = 0;
 				if (bottom > _height)
 					bottom = _height;
-				XFillRectangle(fl_display,_window,
+				XFillRectangle(fl_display, _window,
 					       getGC(gc_select),
 					       0+_offset_x, 
 					       top+_offset_y,
@@ -653,7 +653,7 @@ void LyXScreen::ToggleToggle()
 				bottom = top + text->toggle_cursor.row->height;
 				if (top < 0) top = 0;
 				if (bottom > _height) bottom = _height;
-				XFillRectangle(fl_display,_window,
+				XFillRectangle(fl_display, _window,
 					       getGC(gc_select),
 					       text->toggle_cursor.x+_offset_x, 
 					       top+_offset_y,
@@ -673,7 +673,7 @@ void LyXScreen::ToggleToggle()
 					top = 0;
 				if (bottom > _height)
 					bottom = _height;
-				XFillRectangle(fl_display,_window,
+				XFillRectangle(fl_display, _window,
 					       getGC(gc_select),
 					       text->toggle_cursor.x+_offset_x, 
 					       top+_offset_y,
@@ -683,7 +683,7 @@ void LyXScreen::ToggleToggle()
 			
 			/* the main body */ 
 			
-			if (text->toggle_cursor.row->next !=
+			if (text->toggle_cursor.row->next != 
 			    text->toggle_end_cursor.row) {
 				top = text->toggle_cursor.y
 					- text->toggle_cursor.row->baseline
@@ -702,7 +702,7 @@ void LyXScreen::ToggleToggle()
 					top = first + _height;
 				
 				if (top != bottom) {
-					XFillRectangle(fl_display,_window,
+					XFillRectangle(fl_display, _window,
 						       getGC(gc_select),
 						       0+_offset_x, 
 						       top - first+_offset_y,
@@ -724,7 +724,7 @@ void LyXScreen::ToggleToggle()
 					top = 0;
 				if (bottom > _height)
 					bottom = _height;
-				XFillRectangle(fl_display,_window,
+				XFillRectangle(fl_display, _window,
 					       getGC(gc_select),
 					       0+_offset_x, 
 					       top+_offset_y,
@@ -810,9 +810,9 @@ void LyXScreen::drawFrame(int /*ft*/, int x, int y, int w, int h,
 	// I think these calls to fl_color might make xforms sometimes
 	// draw the wrong color on other objects.
 	fl_color(FL_TOP_BCOL);
-	XFillRectangle(fl_display, foreground, fl_gc,x-d,y-d,w+2*d,d);
+	XFillRectangle(fl_display, foreground, fl_gc, x-d, y-d, w+2*d, d);
 	fl_color(FL_BOTTOM_BCOL);
-	XFillRectangle(fl_display, foreground, fl_gc,x-d,y+h,w+2*d,d);
+	XFillRectangle(fl_display, foreground, fl_gc, x-d, y+h, w+2*d, d);
  
 	// Now a couple of trapezoids
 	XPoint pl[4], pr[4]; 

@@ -1,13 +1,13 @@
 // -*- C++ -*-
 /* This file is part of
- * ======================================================
+ * ====================================================== 
  * 
  *           LyX, The Document Processor
  *        
  *           Copyright 1995 Matthias Ettrich
  *           Copyright 1995-1999 The LyX Team.
  *
- * ======================================================*/
+ * ====================================================== */
 
 #include <config.h>
 
@@ -50,7 +50,7 @@ extern "C" int C_LyXView_atCloseMainFormCB(FL_FORM *, void *);
 
 LyXView::LyXView(int width, int height)
 {
-	fd_form_main = create_form_form_main(width,height);
+	fd_form_main = create_form_form_main(width, height);
 	fl_set_form_atclose(_form, C_LyXView_atCloseMainFormCB, 0);
 	lyxerr[Debug::INIT] << "Initializing LyXFunc" << endl;
 	lyxfunc = new LyXFunc(this);
@@ -215,13 +215,13 @@ FD_form_main * LyXView::create_form_form_main(int width, int height)
 	
 	// timer_autosave
 	fdui->timer_autosave = obj = fl_add_timer(FL_HIDDEN_TIMER,
-						  0,0,0,0,"Timer");
-	fl_set_object_callback(obj,C_LyXView_AutosaveTimerCB,0);
+						  0, 0, 0, 0, "Timer");
+	fl_set_object_callback(obj, C_LyXView_AutosaveTimerCB, 0);
 	
 	// timer_update
 	fdui->timer_update = obj = fl_add_timer(FL_HIDDEN_TIMER,
-						0,0,0,0,"Timer");
-	fl_set_object_callback(obj,C_LyXView_UpdateTimerCB,0);
+						0, 0, 0, 0, "Timer");
+	fl_set_object_callback(obj, C_LyXView_UpdateTimerCB, 0);
 	obj->u_vdata = this;
 
 	//
@@ -284,7 +284,7 @@ void LyXView::updateLayoutChoice()
 
 	// this has a bi-effect that the layouts are not showed when no
 	// document is loaded.
-	if (bufferview == 0 || bufferview->buffer()==0) {
+	if (bufferview == 0 || bufferview->buffer() == 0) {
 		toolbar->combox->clear();
 		toolbar->combox->Redraw();
 		return;	
@@ -296,7 +296,7 @@ void LyXView::updateLayoutChoice()
 		toolbar->combox->clear();
 		for (int i = 0;
 		     textclasslist.NameOfLayout(buffer()->
-					   params.textclass, i) !="@@end@@";
+					   params.textclass, i) != "@@end@@";
 		     i++) {
 			LyXLayout const & layout = textclasslist.
 				Style(buffer()->params.textclass, i);
@@ -326,7 +326,7 @@ void LyXView::UpdateDocumentClassChoice()
 	int i;
 	if (fd_form_document) {
 		fl_clear_choice(fd_form_document->choice_class);
-		for (i = 0; textclasslist.DescOfClass (i)!="@@end@@"; i++) {
+		for (i = 0; textclasslist.DescOfClass (i)!= "@@end@@"; i++) {
 			fl_addto_choice(fd_form_document->choice_class,
 					textclasslist.DescOfClass(i).c_str());
 		}

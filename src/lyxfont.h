@@ -6,7 +6,7 @@
  * 	 
  *	    Copyright (C) 1995 Matthias Ettrich
  *
- *======================================================*/
+ * ====================================================== */
 
 #ifndef LYXFONT_H
 #define LYXFONT_H
@@ -191,7 +191,7 @@ public:
 	/// Shortcut initialization
 	LyXFont(LyXFont::FONT_INIT3);
 
-	/// LyXFont x,y; x=y;
+	/// LyXFont x, y; x = y;
 	LyXFont& operator=(LyXFont const & x);
  
 	/// Decreases font size by one
@@ -273,14 +273,14 @@ public:
 	/** Updates font settings according to request. If an
 	  attribute is IGNORE, the attribute is left as it is. */
  	/* 
- 	 * When toggleall=true, all properties that matches the font in use
+ 	 * When toggleall = true, all properties that matches the font in use
  	 * will have the effect that the properties is reset to the
  	 * default.  If we have a text that is TYPEWRITER_FAMILY, and is
  	 * update()'ed with TYPEWRITER_FAMILY, the operation will be as if
  	 * a INHERIT_FAMILY was asked for.  This is necessary for the
  	 * toggle-user-defined-style button on the toolbar.
  	 */
- 	void update(LyXFont const & newfont, bool toggleall=false);
+ 	void update(LyXFont const & newfont, bool toggleall = false);
  
 	/** Reduce font to fall back to template where possible.
 	  Equal fields are reduced to INHERIT */

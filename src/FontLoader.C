@@ -1,13 +1,13 @@
 // -*- C++ -*-
 /* This file is part of
- * ======================================================
+ * ====================================================== 
  * 
  *           LyX, The Document Processor
  * 	 
  *	    Copyright (C) 1997 Asger Alstrup
  *           and the LyX Team.
  *
- *======================================================*/
+ * ====================================================== */
 
 #include <config.h>
 #include <cmath>	// fabs()
@@ -50,11 +50,11 @@ void FontLoader::update()
 void FontLoader::reset()
 {
 	// Clear font infos, font structs and font metrics
-	for (int i1=0; i1<4; i1++)
-		for (int i2=0; i2<2; i2++)
-			for (int i3=0; i3<4; i3++) {
+	for (int i1 = 0; i1<4; i1++)
+		for (int i2 = 0; i2<2; i2++)
+			for (int i3 = 0; i3<4; i3++) {
 				fontinfo[i1][i2][i3] = 0;
-				for (int i4=0; i4<10; i4++) {
+				for (int i4 = 0; i4<10; i4++) {
 					fontstruct[i1][i2][i3][i4] = 0;
 				}
 			}
@@ -64,14 +64,14 @@ void FontLoader::reset()
 void FontLoader::unload() 
 {
 	// Unload all fonts
-	for (int i1=0; i1<4; i1++)
-		for (int i2=0; i2<2; i2++)
-			for (int i3=0; i3<4; i3++) {
+	for (int i1 = 0; i1<4; i1++)
+		for (int i2 = 0; i2<2; i2++)
+			for (int i3 = 0; i3<4; i3++) {
 				if (fontinfo[i1][i2][i3]) {
 					delete fontinfo[i1][i2][i3];
 					fontinfo[i1][i2][i3] = 0;
 				}
-				for (int i4=0; i4<10; i4++) {
+				for (int i4 = 0; i4<10; i4++) {
 					if (fontstruct[i1][i2][i3][i4]) {
 						XFreeFont(fl_display, fontstruct[i1][i2][i3][i4]);
 						fontstruct[i1][i2][i3][i4] = 0;
@@ -107,7 +107,7 @@ void FontLoader::getFontinfo(LyXFont::FONT_FAMILY family,
 	FontInfo * fi = new FontInfo();
 	fontinfo[family][series][shape] = fi;
 
-	for (int cfam=0; cfam < 2; cfam++) {
+	for (int cfam = 0; cfam < 2; cfam++) {
 		// Determine family name
 		switch (family) {
 		case LyXFont::ROMAN_FAMILY:
@@ -134,7 +134,7 @@ void FontLoader::getFontinfo(LyXFont::FONT_FAMILY family,
 		default: ;
 		}
 
-		for (int cser=0; cser < 4; cser++) {
+		for (int cser = 0; cser < 4; cser++) {
 			// Determine series name
 			switch (series) {
 			case LyXFont::MEDIUM_SERIES:
@@ -157,7 +157,7 @@ void FontLoader::getFontinfo(LyXFont::FONT_FAMILY family,
 			default: ;
 			}
 
-			for (int csha=0; csha < 2; csha++) {
+			for (int csha = 0; csha < 2; csha++) {
 				// Determine shape name
 				switch (shape) {
 				case LyXFont::UP_SHAPE:
@@ -201,7 +201,7 @@ XFontStruct * FontLoader::doLoad(LyXFont::FONT_FAMILY family,
 				LyXFont::FONT_SHAPE shape, 
 				LyXFont::FONT_SIZE size)
 {
-	getFontinfo(family,series,shape);
+	getFontinfo(family, series, shape);
 	int fsize = int( (lyxrc->font_sizes[size] * lyxrc->dpi * 
 			  (lyxrc->zoom/100.0) ) / 72.27 + 0.5 );
 

@@ -10,8 +10,8 @@
   ======================================================
   */
 
-#ifndef _LYX_STY_H
-#define _LYX_STY_H
+#ifndef LYX_STY_H
+#define LYX_STY_H
 
 #include "LString.h"
 

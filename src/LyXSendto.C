@@ -92,11 +92,11 @@ void SendtoApplyCB(FL_OBJECT *, long)
     Path p(path);
     // save the .lyx file in tmp_dir if this filetype is requested
     if (fl_get_button(fd_form_sendto->radio_ftype_lyx))
-        buffer->writeFile(fname,true);
+        buffer->writeFile(fname, true);
     // if the .tex file is requested save it to the tempdir
     // as now we don't do the MakeDVIOutput anymore
     if (fl_get_button(fd_form_sendto->radio_ftype_latex))
-        buffer->makeLaTeXFile(fname,path,false);
+        buffer->makeLaTeXFile(fname, path, false);
     // create the .txt file in tmp_dir if this filetype is requested
     if (fl_get_button(fd_form_sendto->radio_ftype_ascii))
         buffer->writeFileAscii(fname, lyxrc->ascii_linelen);
@@ -110,6 +110,6 @@ void SendtoCancelCB(FL_OBJECT *, long)
 
 void SendtoOKCB(FL_OBJECT *ob, long data)
 {
-    SendtoCancelCB(ob,data);
-    SendtoApplyCB(ob,data);
+    SendtoCancelCB(ob, data);
+    SendtoApplyCB(ob, data);
 }

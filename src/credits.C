@@ -1,12 +1,12 @@
 /* This file is part of
- * ======================================================
+ * ====================================================== 
  * 
  *           LyX, The Document Processor
  * 	 
  *	     Copyright 1995 Matthias Ettrich
  *           Copyright 1995-1999 The LyX Team.
  *
- * ======================================================*/
+ * ====================================================== */
 
 #include <config.h>
 
@@ -68,7 +68,7 @@ void ShowCredits()
 		fl_raise_form(fd_form_credits->form_credits);
 	} else {
 		fl_show_form(fd_form_credits->form_credits,
-			     FL_PLACE_MOUSE | FL_FREE_SIZE,FL_FULLBORDER,
+			     FL_PLACE_MOUSE | FL_FREE_SIZE, FL_FULLBORDER,
 			     _("Credits"));
 	}
 }

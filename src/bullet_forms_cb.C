@@ -12,8 +12,8 @@
 #include "lyx_gui_misc.h" // CancelCloseBoxCB + WriteAlert
 
 extern int mono_video;
-extern BufferView *current_view;
-FD_form_bullet *fd_form_bullet;
+extern BufferView * current_view;
+FD_form_bullet * fd_form_bullet;
 
 static int current_bullet_panel;
 static int current_bullet_depth;
@@ -47,7 +47,7 @@ void bulletForm()
 		}
 		else {
 			fl_show_form(fd_form_bullet->form_bullet,
-		        	     FL_PLACE_MOUSE,FL_FULLBORDER,
+		        	     FL_PLACE_MOUSE, FL_FULLBORDER,
 			             _("Itemize Bullet Selection"));
 		}
 	}

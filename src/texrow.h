@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /* This file is part of
- * ======================================================
+ * ====================================================== 
  * 
  *           LyX, The Document Processor
  * 	 
@@ -46,7 +46,7 @@ public:
 	void getIdFromRow(int row, int &id, int &pos);
 
 	/// Appends another TexRow
-	TexRow & operator+=(const TexRow &);
+	TexRow & operator+= (const TexRow &);
 
 private:
 	/// Linked list of items

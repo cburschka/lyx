@@ -223,11 +223,11 @@ void CVS::scanMaster()
 	string tmpf = "/" + OnlyFilename(file_) + "/";
 	lyxerr[Debug::LYXVC] << "\tlooking for `" << tmpf << "'" << endl;
 	string line;
+	LRegex reg("/(.*)/(.*)/(.*)/(.*)/(.*)");
 	while(getline(ifs, line)) {
 		lyxerr[Debug::LYXVC] << "\t  line: " << line << endl;
 		if (contains(line, tmpf)) {
 			// Ok extract the fields.
-			LRegex reg("/(.*)/(.*)/(.*)/(.*)/(.*)");
 			LRegex::SubMatches const & sm = reg.exec(line);
 			//sm[0]; // whole matched string
 			//sm[1]; // filename
@@ -254,14 +254,6 @@ void CVS::scanMaster()
 				locker_ = "Locked";
 				vcstat = LOCKED;
 			}
-#if 0			
-			for (LRegex::SubMatches::const_iterator cit = sm.begin();
-			     cit != sm.end(); ++cit) {
-				if ((*cit).first != string::npos)
-					lyxerr << string(line, (*cit).first,
-							 (*cit).second) << endl;
-			}
-#endif
 			break;
 		}
 	}
@@ -270,19 +262,24 @@ void CVS::scanMaster()
 
 void CVS::registrer(string const & msg)
 {
-	// cvs add
+	doVCCommand("cvs -q add -m \"" + msg + "\" \""
+		    + OnlyFilename(owner_->getFileName()) + "\"");
+	owner_->getUser()->owner()->getLyXFunc()->Dispatch("buffer-reload");
 }
 
 
 void CVS::checkIn(string const & msg)
 {
-	// cvs commit
+	doVCCommand("cvs -q commit -m \"" + msg + "\" \""
+		    + OnlyFilename(owner_->getFileName()) + "\"");
+	owner_->getUser()->owner()->getLyXFunc()->Dispatch("buffer-reload");
 }
 
 
 void CVS::checkOut()
 {
-	// cvs update
+	// cvs update or perhaps for cvs this should be a noop
+	lyxerr << "Sorry not implemented." << endl;
 }
 
 
@@ -290,7 +287,8 @@ void CVS::revert()
 {
 	// not sure how to do this...
 	// rm file
-	// cvs update  
+	// cvs update
+	lyxerr << "Sorry not implemented." << endl;
 }
 
 
@@ -299,9 +297,11 @@ void CVS::undoLast()
 	// merge the current with the previous version
 	// in a reverse patch kind of way, so that the
 	// result is to revert the last changes.
+	lyxerr << "Sorry not implemented." << endl;
 }
 
 
 void CVS::getLog(string const &)
 {
+	lyxerr << "Sorry not implemented." << endl;
 }

@@ -1,13 +1,13 @@
 // -*- C++ -*-
 /* This file is part of
- * ======================================================
+ * ====================================================== 
  * 
  *           LyX, The Document Processor
  * 	 
  *           Copyright 1995 Matthias Ettrich
  *           Copyright 1995-1999 The LyX Team.
  *
- * ======================================================*/
+ * ====================================================== */
 
 #ifndef LYXRC_H
 #define LYXRC_H
@@ -17,6 +17,7 @@
 #endif
 
 #include "toolbar.h"
+#include "bufferparams.h"
 
 /// This contains the runtime configuration of LyX
 class LyXRC {
@@ -93,7 +94,7 @@ public:
 	/// program for viewing dvi output (default "xdvi")
 	string view_dvi_command;
         /// default paper size for local xdvi/dvips/ghostview/whatever
-        LYX_PAPER_SIZE default_papersize;
+        BufferParams::PAPER_SIZE default_papersize;
 	/// command to run chktex incl. options
 	string chktex_command;
 	/// command to run an html converter incl. options

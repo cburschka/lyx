@@ -6,7 +6,7 @@
  *	    Copyright 1995 Matthias Ettrich
  *          Copyright 1995-1999 The LyX Team.
  *
- * ======================================================*/
+ * ====================================================== */
 
 #include <config.h>
 #include <cstdlib>
@@ -186,7 +186,7 @@ LyXGUI::LyXGUI(LyX *owner, int *argc, char *argv[], bool GUI)
 	
 	// Make sure default screen is not larger than monitor
 	if (width == 690 && height == 510) {
-		Screen * scr=(DefaultScreenOfDisplay(fl_get_display()));
+		Screen * scr = (DefaultScreenOfDisplay(fl_get_display()));
 		if (HeightOfScreen(scr)-24<height)
 			height = HeightOfScreen(scr)-24;
 		if (WidthOfScreen(scr)-8<width)
@@ -281,7 +281,7 @@ void LyXGUI::init()
 	// (petr 120997).
  	fl_setpup_fontstyle(FL_NORMAL_STYLE);
  	fl_setpup_fontsize(FL_NORMAL_SIZE);
- 	fl_setpup_color(FL_MCOL,FL_BLACK);
+ 	fl_setpup_color(FL_MCOL, FL_BLACK);
 	fl_set_goodies_font(FL_NORMAL_STYLE, FL_NORMAL_SIZE);
 
         // all lyxrc settings has to be done here as lyxrc has not yet
@@ -341,36 +341,36 @@ void LyXGUI::create_forms()
 	fl_set_form_atclose(fd_form_title->form_title, CancelCloseBoxCB, 0);
 	fl_addto_form(fd_form_title->form_title);
 #ifdef TWO_COLOR_ICONS
-	FL_OBJECT *obj = fl_add_bitmapbutton(FL_NORMAL_BUTTON,0,0,425,290,"");
-	  fl_set_bitmapbutton_data(obj,banner_bw_width,
+	FL_OBJECT *obj = fl_add_bitmapbutton(FL_NORMAL_BUTTON, 0, 0, 425, 290, "");
+	  fl_set_bitmapbutton_data(obj, banner_bw_width,
 				   banner_bw_height, banner_bw_bits);
-	  fl_set_object_color(obj,FL_WHITE,FL_BLACK);
+	  fl_set_object_color(obj, FL_WHITE, FL_BLACK);
 #else
-	FL_OBJECT *obj = fl_add_pixmapbutton(FL_NORMAL_BUTTON,0,0,425,290,"");
+	FL_OBJECT *obj = fl_add_pixmapbutton(FL_NORMAL_BUTTON, 0, 0, 425, 290, "");
 	  fl_set_pixmapbutton_data(obj, (char**)banner);
 #if FL_REVISION > 85
-	  fl_set_pixmapbutton_focus_outline(obj,3);
+	  fl_set_pixmapbutton_focus_outline(obj, 3);
 #endif
 #endif
-	  fl_set_button_shortcut(obj,"^M ^[",1);
-	  fl_set_object_boxtype(obj,FL_NO_BOX);
-	  fl_set_object_callback(obj,TimerCB,0);
+	  fl_set_button_shortcut(obj, "^M ^[", 1);
+	  fl_set_object_boxtype(obj, FL_NO_BOX);
+	  fl_set_object_callback(obj, TimerCB, 0);
 
-	obj = fl_add_text(FL_NORMAL_TEXT,248,265,170,16, LYX_VERSION);
-	  fl_set_object_lsize(obj,FL_NORMAL_SIZE);
+	obj = fl_add_text(FL_NORMAL_TEXT, 248, 265, 170, 16, LYX_VERSION);
+	  fl_set_object_lsize(obj, FL_NORMAL_SIZE);
 #ifdef TWO_COLOR_ICONS
-	  fl_set_object_color(obj,FL_WHITE,FL_WHITE);
-	  fl_set_object_lcol(obj,FL_BLACK);
+	  fl_set_object_color(obj, FL_WHITE, FL_WHITE);
+	  fl_set_object_lcol(obj, FL_BLACK);
 #else
-//	  fl_set_object_color(obj,FL_WHITE, FL_WHITE);
-//	  fl_set_object_lcol(obj,FL_BLACK);
+//	  fl_set_object_color(obj, FL_WHITE, FL_WHITE);
+//	  fl_set_object_lcol(obj, FL_BLACK);
           fl_mapcolor(FL_FREE_COL2, 0x05, 0x2e, 0x4c);
           fl_mapcolor(FL_FREE_COL3, 0xe1, 0xd2, 0x9b);
-	  fl_set_object_color(obj,FL_FREE_COL2, FL_FREE_COL2);
-	  fl_set_object_lcol(obj,FL_FREE_COL3);
+	  fl_set_object_color(obj, FL_FREE_COL2, FL_FREE_COL2);
+	  fl_set_object_lcol(obj, FL_FREE_COL3);
 #endif
-	  fl_set_object_lalign(obj,FL_ALIGN_CENTER|FL_ALIGN_INSIDE);
-	  fl_set_object_lstyle(obj,FL_BOLD_STYLE);
+	  fl_set_object_lalign(obj, FL_ALIGN_CENTER|FL_ALIGN_INSIDE);
+	  fl_set_object_lstyle(obj, FL_BOLD_STYLE);
 	fl_end_form();
 
 	// the paragraph form
@@ -433,36 +433,36 @@ void LyXGUI::create_forms()
 	fl_addto_choice(fd_form_document->choice_spacing,
 			_(" Single | OneHalf | Double | Other "));
 
-	fl_set_counter_bounds(fd_form_document->slider_secnumdepth,-1,5);
-	fl_set_counter_bounds(fd_form_document->slider_tocdepth,-1,5);
-	fl_set_counter_step(fd_form_document->slider_secnumdepth,1,1);
-	fl_set_counter_step(fd_form_document->slider_tocdepth,1,1);
+	fl_set_counter_bounds(fd_form_document->slider_secnumdepth,-1, 5);
+	fl_set_counter_bounds(fd_form_document->slider_tocdepth,-1, 5);
+	fl_set_counter_step(fd_form_document->slider_secnumdepth, 1, 1);
+	fl_set_counter_step(fd_form_document->slider_tocdepth, 1, 1);
 	fl_set_counter_precision(fd_form_document->slider_secnumdepth, 0);
 	fl_set_counter_precision(fd_form_document->slider_tocdepth, 0);
 	fl_addto_form(fd_form_document->form_document);
 	combo_language = new Combox(FL_COMBOX_DROPLIST);
 	FL_OBJECT *ob = fd_form_document->choice_language;
 	combo_language->add(ob->x, ob->y, ob->w, ob->h, 200);
-	combo_language->shortcut("#G",1);
+	combo_language->shortcut("#G", 1);
 	fl_end_form();
 	int n; // declared here because DEC cxx does not like multiple
 	       // declarations of variables in for() loops (JMarc)
-        for (n=0; tex_babel[n][0]; n++) {
+        for (n = 0; tex_babel[n][0]; n++) {
 	    combo_language->addto(tex_babel[n]);
 	}
 
 	// not really necessary, but we can do it anyway.
 	fl_addto_choice(fd_form_document->choice_fontsize, "default|10|11|12");
 	
-        for (n=0; tex_fonts[n][0]; n++) {
-	    fl_addto_choice(fd_form_document->choice_fonts,tex_fonts[n]);
+        for (n = 0; tex_fonts[n][0]; n++) {
+	    fl_addto_choice(fd_form_document->choice_fonts, tex_fonts[n]);
 	}
 
 	fl_addto_choice(fd_form_document->choice_inputenc,
 			"default|latin1|latin2|latin5"
 			"|koi8-r|koi8-u|cp866|cp1251");
 
-        for (n=0; tex_graphics[n][0]; n++) {
+        for (n = 0; tex_graphics[n][0]; n++) {
 	    fl_addto_choice(fd_form_document->choice_postscript_driver,
 					tex_graphics[n]);
 	}
@@ -541,8 +541,8 @@ void LyXGUI::create_forms()
 	// the table form
 	fd_form_table = create_form_form_table();
 	fl_set_form_atclose(fd_form_table->form_table, CancelCloseBoxCB, 0);
-	fl_set_slider_bounds(fd_form_table->slider_rows,1,50);
-	fl_set_slider_bounds(fd_form_table->slider_columns,1,50);
+	fl_set_slider_bounds(fd_form_table->slider_rows, 1, 50);
+	fl_set_slider_bounds(fd_form_table->slider_columns, 1, 50);
 	fl_set_slider_value(fd_form_table->slider_rows, 5);
 	fl_set_slider_value(fd_form_table->slider_columns, 5);
 	fl_set_slider_precision(fd_form_table->slider_rows, 0);
@@ -561,7 +561,7 @@ void LyXGUI::create_forms()
 
 	// the sendto form
 	fd_form_sendto = create_form_form_sendto();
-	fl_set_form_atclose(fd_form_sendto->form_sendto,CancelCloseBoxCB,0);
+	fl_set_form_atclose(fd_form_sendto->form_sendto, CancelCloseBoxCB, 0);
 
 	// the figure form
 	fd_form_figure = create_form_form_figure();
@@ -598,7 +598,7 @@ void LyXGUI::create_forms()
 	int main_placement = FL_PLACE_CENTER | FL_FREE_SIZE;
 	int title_placement = FL_PLACE_CENTER;
 	// Did we get a valid position?
-	if (xpos>=0 && ypos>=0) {
+	if (xpos>= 0 && ypos>= 0) {
 		lyxViews->setPosition(xpos, ypos);
 		// show the title form in the middle of the main form
 		fl_set_form_position(fd_form_title->form_title,

@@ -7,10 +7,10 @@
  *	    Copyright (C) 1997 Asger Alstrup
  *           and the LyX Team.
  *
- *======================================================*/
+ * ====================================================== */
 
-#ifndef _FONTINFO_H_
-#define _FONTINFO_H_ 
+#ifndef FONTINFO_H
+#define FONTINFO_H 
 
 #ifdef __GNUG__
 #pragma interface

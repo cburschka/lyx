@@ -1,12 +1,12 @@
 /* This file is part of
- * ======================================================
+ * ====================================================== 
  * 
  *           LyX, The Document Processor
  * 	 
  *	    Copyright (C) 1995 Matthias Ettrich
  *          Copyright (C) 1995-1999 The LyX Team.
  *
- * ======================================================*/
+ * ====================================================== */
 
 #include <config.h>
 
@@ -88,7 +88,7 @@ void TexRow::getIdFromRow(int row, int &id, int &pos)
 }
 
 
-TexRow & TexRow::operator+=(const TexRow &tr)
+TexRow & TexRow::operator+= (const TexRow &tr)
 {
 	// remember that the lists are stored in reverse 
 	// so you've got to turn the second one around 

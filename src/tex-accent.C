@@ -37,9 +37,9 @@
 // I am not sure how some of the XWindows names coresponds to the TeX ones.
 
 //static
-tex_accent_struct lyx_accent_table[18] ={
+tex_accent_struct lyx_accent_table[18] = {
 	{ (tex_accent)0, "", "", "",(kb_action)0},
-	{TEX_ACUTE,      "\\'",  " AEIOUYaeiouySZszRLCNrlcn","acute",   LFUN_ACUTE},
+	{TEX_ACUTE,      "\\'",  " AEIOUYaeiouySZszRLCNrlcn", "acute",   LFUN_ACUTE},
 	{TEX_GRAVE,      "\\`",  " aeiouAEIOU",           "grave",    LFUN_GRAVE},
 	{TEX_MACRON,     "\\=",  " EeAIOUaiou",           "macron",    LFUN_MACRON},
 	{TEX_TILDE,      "\\~",  " ANOanoIiUu",           "tilde",    LFUN_TILDE},
@@ -51,7 +51,7 @@ tex_accent_struct lyx_accent_table[18] ={
 	{TEX_TIE,        "\\t", " ",                     "tie",    LFUN_TIE},
 	{TEX_BREVE,      "\\u", " AaGgUu",               "breve",    LFUN_BREVE},
 	{TEX_CARON,      "\\v", " LSTZlstzCEDNRcednr",   "caron",    LFUN_CARON},
-//  {TEX_SPECIAL_CARON, "\\q", "","ooo",  LFUN_SPECIAL_CARON},
+//  {TEX_SPECIAL_CARON, "\\q", "", "ooo",  LFUN_SPECIAL_CARON},
 	{TEX_HUNGUML,    "\\H", " OUou",                 "hugarian_umlaut",    LFUN_HUNG_UMLAUT},
 	{TEX_UMLAUT,     "\\\"", " AEIOUaeiouy",          "umlaut",    LFUN_UMLAUT},
 	{TEX_DOT,        "\\.",  " ZzICGicgEe",           "dot",    LFUN_DOT},
@@ -61,8 +61,8 @@ tex_accent_struct lyx_accent_table[18] ={
 
 tex_accent_struct get_accent(kb_action action)
 {
-	int i=0;
-	while (i<=TEX_MAX_ACCENT){
+	int i= 0;
+	while (i<= TEX_MAX_ACCENT){
 		if (lyx_accent_table[i].action == action)
 			return lyx_accent_table[i];
 		i++;
@@ -72,22 +72,22 @@ tex_accent_struct get_accent(kb_action action)
 	return temp;
 }
 
-string DoAccent(const string& s,tex_accent accent)
+string DoAccent(string const & s, tex_accent accent)
 {
 	string res;
 	
-	res+=lyx_accent_table[accent].cmd;
-	res+='{';
-	if (s=="i" || s=="j") {
-		res+='\\';
+	res+= lyx_accent_table[accent].cmd;
+	res+= '{';
+	if (s == "i" || s == "j") {
+		res+= '\\';
 	}
-	res+=s;
-	res+='}';
+	res+= s;
+	res+= '}';
 	return res;
 }
 
-string DoAccent(char c,tex_accent accent)
+string DoAccent(char c, tex_accent accent)
 {
-	return DoAccent(tostr(c),accent);
+	return DoAccent(tostr(c), accent);
 }
 

@@ -1,5 +1,5 @@
 /* This file is part of
- * ======================================================
+ * ====================================================== 
  * 
  *           LyX, The Document Processor 	 
  *	     Copyright 1995 Matthias Ettrich
@@ -8,7 +8,7 @@
  *           This file is Copyright 1996-1999
  *           Lars Gullik Bjønnes
  *
- * ======================================================
+ * ====================================================== 
  */
 
 #include <config.h>
@@ -183,7 +183,7 @@ int LaTeX::run(TeXErrors & terr, MiniBuffer * minib)
 		lyxerr[Debug::LATEX] << "Running MakeIndex." << endl;
 		minib->Set(_("Running MakeIndex."));
 		minib->Store();
-		rerun=runMakeIndex(ChangeExtension(file,".idx",true));
+		rerun = runMakeIndex(ChangeExtension(file, ".idx", true));
 	}
 
 	// run bibtex
@@ -314,7 +314,7 @@ typedef pair<int, string> cmdret;
 static cmdret do_popen(string const & cmd)
 {
 	// One question is if we should use popen or
-	// create our own popen based on fork,exec,pipe
+	// create our own popen based on fork, exec, pipe
 	// of course the best would be to have a
 	// pstream (process stream), with the
 	// variants ipstream, opstream and
@@ -340,7 +340,7 @@ static string findtexfile(string const & fil, string const & format)
 	  return OnlyFilename(fil);
 	
 	// No we try to find it using kpsewhich.
-	string kpsecmd = "kpsewhich --format=" + format + " " + fil;
+	string kpsecmd = "kpsewhich --format= " + format + " " + fil;
 	cmdret c = do_popen(kpsecmd);
 
 	lyxerr << "kpse status = " << c.first << "\n"
@@ -371,9 +371,9 @@ bool LaTeX::runBibTeX(string const & file, DepTable & dep)
 					l = data.substr(0, b - 0);
 					data.erase(0, b + 1);
 				}
-				string full_l =
+				string full_l = 
 					findtexfile(
-						ChangeExtension(l,"bib",false),
+						ChangeExtension(l, "bib", false),
 						"bib");
 				lyxerr << "data = `"
 				       << full_l << "'" << endl;
@@ -389,7 +389,7 @@ bool LaTeX::runBibTeX(string const & file, DepTable & dep)
 			string style = token.substr(a, b - a);
 			// token is now the style file
 			// pass it to the helper
-			string full_l =
+			string full_l = 
 				findtexfile(
 					ChangeExtension(style, "bst", false),
 					"bst");
@@ -403,7 +403,7 @@ bool LaTeX::runBibTeX(string const & file, DepTable & dep)
 	}
 	if (using_bibtex) {
 		// run bibtex and
-		string tmp= "bibtex ";
+		string tmp = "bibtex ";
 		tmp += ChangeExtension(file, string(), true);
 		Systemcalls one;
 		one.startscript(Systemcalls::System, tmp);

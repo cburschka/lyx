@@ -1,13 +1,13 @@
 // -*- C++ -*-
 /* This file is part of
- * ======================================================
+ * ====================================================== 
  * 
  *           LyX, The Document Processor
  * 	 
  *	    Copyright (C) 1995 1996 Matthias Ettrich
  *           and the LyX Team.
  *
- *======================================================*/
+ * ====================================================== */
 
 #ifndef VSPACE_H
 #define VSPACE_H
@@ -71,7 +71,7 @@ public:
 	//@}
 
 	///
-        bool operator==(LyXLength const &) const;
+        bool operator== (LyXLength const &) const;
 
 	/// conversion
 	virtual string asString() const;
@@ -82,7 +82,7 @@ public:
 	/** If "data" is valid, the length represented by it is
 	  stored into "result", if that is not 0. */
 	friend bool isValidLength(string const & data, 
-				  LyXLength * result=0);
+				  LyXLength * result= 0);
 
 protected:
 	///
@@ -101,8 +101,8 @@ public:
 	//@{
 	///
 	LyXGlueLength(float v,      LyXLength::UNIT u, 
-		      float pv=0.0, LyXLength::UNIT pu=LyXLength::UNIT_NONE, 
-		      float mv=0.0, LyXLength::UNIT mu=LyXLength::UNIT_NONE) 
+		      float pv= 0.0, LyXLength::UNIT pu= LyXLength::UNIT_NONE, 
+		      float mv= 0.0, LyXLength::UNIT mu= LyXLength::UNIT_NONE) 
 		: LyXLength (v, u), 
 		  plus_val(pv), minus_val(mv), 
 		  plus_uni(pu), minus_uni(mu) {}
@@ -129,7 +129,7 @@ public:
 	//@}
 
 	///
-        bool operator==(LyXGlueLength const &) const;
+        bool operator == (LyXGlueLength const &) const;
 
 	/// conversion
 	virtual string asString() const;
@@ -140,7 +140,7 @@ public:
 	/** If "data" is valid, the length represented by it is
 	  stored into "result", if that is not 0. */
 	friend bool isValidGlueLength(string const & data, 
-				      LyXGlueLength* result=0);
+				      LyXGlueLength* result= 0);
 
 protected:
 	///
@@ -192,7 +192,7 @@ public:
 	///
 	void setKeep(bool val) { kp = val; } 
 	///
-        bool operator==(VSpace const &) const;
+        bool operator == (VSpace const &) const;
 
 	// conversion
 	///
