@@ -11,6 +11,7 @@
 #include <config.h>
 
 #include "LAssert.h"
+#include "debug.h"
 #include "support/lyxlib.h"
 
 #ifdef ENABLE_ASSERTIONS
@@ -33,6 +34,17 @@ void emergencyCleanup()
 }
 
 } // namespace anon
+
+
+void Assert(bool assertion, char const * message)
+{
+	if (!assertion) {
+		lyxerr << "Assert triggered: " << message << std::endl;
+		emergencyCleanup();
+		lyx::support::abort();
+	}
+}
+
 
 void Assert(bool assertion)
 {
