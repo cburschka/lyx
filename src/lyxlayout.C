@@ -394,17 +394,17 @@ bool LyXLayout::Read (LyXLex & lexrc, LyXTextClass const & tclass)
 
 		case LT_LABELSTRING:	// label string definition
 			if (lexrc.next())
-				labelstring_ = lexrc.getString();
+				labelstring_ = trim(lexrc.getString());
 			break;
 
 		case LT_ENDLABELSTRING:	// endlabel string definition
 			if (lexrc.next())
-				endlabelstring_ = lexrc.getString();
+				endlabelstring_ = trim(lexrc.getString());
 			break;
 
 		case LT_LABELSTRING_APPENDIX: // label string appendix definition
 			if (lexrc.next())
-				labelstring_appendix_ = lexrc.getString();
+				labelstring_appendix_ = trim(lexrc.getString());
 			break;
 
 		case LT_FREE_SPACING:	// Allow for free spacing.

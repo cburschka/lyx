@@ -1086,9 +1086,9 @@ void LyXText::setCounter(Buffer const * buf, ParagraphList::iterator pit)
 
 			// Is there a label? Useful for Chapter layout
 			if (!pit->params().appendix()) {
-				s << layout->labelstring();
+				s << buf->B_(layout->labelstring());
 			} else {
-				s << layout->labelstring_appendix();
+				s << buf->B_(layout->labelstring_appendix());
 			}
 
 			// Use of an integer is here less than elegant. For now.
@@ -1103,7 +1103,8 @@ void LyXText::setCounter(Buffer const * buf, ParagraphList::iterator pit)
 					langtype = "latin";
 			}
 
-			s << textclass.counters()
+			s << " "
+			  << textclass.counters()
 				.numberLabel(layout->latexname(),
 					     numbertype, langtype, head);
 
@@ -1150,7 +1151,7 @@ void LyXText::setCounter(Buffer const * buf, ParagraphList::iterator pit)
 		}
 		// In biblio should't be following counters but...
 	} else {
-		string s = layout->labelstring();
+		string s = buf->B_(layout->labelstring());
 
 		// the caption hack:
 		if (layout->labeltype == LABEL_SENSITIVE) {
@@ -1178,14 +1179,14 @@ void LyXText::setCounter(Buffer const * buf, ParagraphList::iterator pit)
 
 				// Doesn't work... yet.
 #if USE_BOOST_FORMAT
-				s = boost::io::str(boost::format(_("%1$s #:")) % fl.name());
+				s = boost::io::str(boost::format(_("%1$s #:")) % buf->B_(fl.name()));
 				// s << boost::format(_("%1$s %1$d:")
 				//        % fl.name()
 				//	  % buf->counters().value(fl.name());
 #else
 				ostringstream o;
 				//o << fl.name() << ' ' << buf->counters().value(fl.name()) << ":";
-				o << fl.name() << " #:";
+				o << buf->B_(fl.name()) << " #:";
 				s = STRCONV(o.str());
 #endif
 			} else {
