@@ -1,3 +1,14 @@
+2000-12-04  John Levon  <moz@compsoc.man.ac.uk>
+
+	* configure.in: add new KDE Makefiles
+	* src/vspace.h: return GlueLength not a normal one
+	* src/support/lstrings.h:
+	* src/support/lstrings.C: add isStrUnsignedInt(),
+	strToUnsignedInt()
+
+	* src/frontends/kde/*: big reorganisation, update
+	FormParagraph, add FormTabCreate
+
 2000-12-04  Angus Leeming <a.leeming@ic.ac.uk>
 
 	* lib/ui/default.ui: small grammatical change.

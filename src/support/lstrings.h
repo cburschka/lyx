@@ -44,8 +44,14 @@ int compare(char const * a, char const * b, unsigned int len)
 ///
 bool isStrInt(string const & str);
 
+/// does the string represent an unsigned integer value ?
+bool isStrUnsignedInt(string const & str);
+
 ///
 int strToInt(string const & str);
+
+/// convert string to an unsigned integer
+unsigned int strToUnsignedInt(string const & str);
 
 ///
 bool isStrDbl(string const & str);

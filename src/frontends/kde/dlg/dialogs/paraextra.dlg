@@ -7,7 +7,7 @@ Dialog {
 	DataSource {paraextradlgdata.C}
 	DataName {ParaExtraDialogData}
 	WindowBaseClass {QWidget}
-	UseGetText {TRUE}
+	UseGetText {true}
 	WindowFlags {0}
 }
 WidgetLayout {
@@ -18,7 +18,7 @@ MaxSize {32767 32767}
 Grid {5}
 
 ButtonGroup {
-		Exclusive {TRUE}
+		Exclusive {true}
 		Title {Alignment}
 		Alignment {Left}
 		Style {49}
@@ -31,15 +31,15 @@ ButtonGroup {
 		MinimumSize {0 0}
 		MaximumSize {32767 32767}
 		BackgroundPixmap {}
-		UseBackgroundPixmap {FALSE}
-		AdjustSize {FALSE}
-		ReadPixmapFromData {FALSE}
+		UseBackgroundPixmap {false}
+		AdjustSize {false}
+		ReadPixmapFromData {false}
 		DataVarName {}
 		DataLenName {}
-		minWidthSizeHint {FALSE}
-		minHeightSizeHint {FALSE}
-		maxWidthSizeHint {FALSE}
-		maxHeightSizeHint {FALSE}
+		minWidthSizeHint {false}
+		minHeightSizeHint {false}
+		maxWidthSizeHint {false}
+		maxHeightSizeHint {false}
 		FocusPolicy {NoFocus}
 		BackgroundMode {PaletteBackground}
 		FontPropagation {NoChildren}
@@ -49,9 +49,9 @@ ComboBox {
 		Style {ReadOnly}
 		SizeLimit {10}
 		Policy {AtBottom}
-		AutoResize {FALSE}
+		AutoResize {false}
 		MaxCount {2147483647}
-		AutoCompletion {FALSE}
+		AutoCompletion {false}
 		Rect {5 65 265 54}
 		Name {type}
 		Variable {type}
@@ -59,15 +59,15 @@ ComboBox {
 		MinimumSize {0 0}
 		MaximumSize {32767 32767}
 		BackgroundPixmap {}
-		UseBackgroundPixmap {FALSE}
-		AdjustSize {FALSE}
-		ReadPixmapFromData {FALSE}
+		UseBackgroundPixmap {false}
+		AdjustSize {false}
+		ReadPixmapFromData {false}
 		DataVarName {}
 		DataLenName {}
-		minWidthSizeHint {TRUE}
-		minHeightSizeHint {TRUE}
-		maxWidthSizeHint {FALSE}
-		maxHeightSizeHint {TRUE}
+		minWidthSizeHint {true}
+		minHeightSizeHint {true}
+		maxWidthSizeHint {false}
+		maxHeightSizeHint {true}
 		FocusPolicy {StrongFocus}
 		BackgroundMode {PaletteBackground}
 		FontPropagation {AllChildren}
@@ -76,7 +76,7 @@ ComboBox {
 Label {
 		Text {Type}
 		Alignment {289}
-		AutoResize {FALSE}
+		AutoResize {false}
 		Margin {-1}
 		Style {0}
 		LineWidth {1}
@@ -87,15 +87,15 @@ Label {
 		MinimumSize {0 0}
 		MaximumSize {32767 32767}
 		BackgroundPixmap {}
-		UseBackgroundPixmap {FALSE}
-		AdjustSize {FALSE}
-		ReadPixmapFromData {FALSE}
+		UseBackgroundPixmap {false}
+		AdjustSize {false}
+		ReadPixmapFromData {false}
 		DataVarName {}
 		DataLenName {}
-		minWidthSizeHint {TRUE}
-		minHeightSizeHint {TRUE}
-		maxWidthSizeHint {TRUE}
-		maxHeightSizeHint {TRUE}
+		minWidthSizeHint {true}
+		minHeightSizeHint {true}
+		maxWidthSizeHint {true}
+		maxHeightSizeHint {true}
 		FocusPolicy {NoFocus}
 		BackgroundMode {PaletteBackground}
 		FontPropagation {NoChildren}
@@ -104,7 +104,7 @@ Label {
 Label {
 		Text {Width}
 		Alignment {289}
-		AutoResize {FALSE}
+		AutoResize {false}
 		Margin {-1}
 		Style {0}
 		LineWidth {1}
@@ -115,15 +115,15 @@ Label {
 		MinimumSize {0 0}
 		MaximumSize {32767 32767}
 		BackgroundPixmap {}
-		UseBackgroundPixmap {FALSE}
-		AdjustSize {FALSE}
-		ReadPixmapFromData {FALSE}
+		UseBackgroundPixmap {false}
+		AdjustSize {false}
+		ReadPixmapFromData {false}
 		DataVarName {}
 		DataLenName {}
-		minWidthSizeHint {TRUE}
-		minHeightSizeHint {TRUE}
-		maxWidthSizeHint {TRUE}
-		maxHeightSizeHint {TRUE}
+		minWidthSizeHint {true}
+		minHeightSizeHint {true}
+		maxWidthSizeHint {true}
+		maxHeightSizeHint {true}
 		FocusPolicy {NoFocus}
 		BackgroundMode {PaletteBackground}
 		FontPropagation {NoChildren}
@@ -133,149 +133,149 @@ ComboBox {
 		Style {ReadOnly}
 		SizeLimit {10}
 		Policy {AtBottom}
-		AutoResize {FALSE}
+		AutoResize {false}
 		MaxCount {2147483647}
-		AutoCompletion {FALSE}
+		AutoCompletion {false}
 		Rect {367 65 173 54}
 		Name {widthvalueunits}
 		Variable {widthvalueunits}
 		MinimumSize {0 0}
 		MaximumSize {32767 32767}
 		BackgroundPixmap {}
-		UseBackgroundPixmap {FALSE}
-		AdjustSize {FALSE}
-		ReadPixmapFromData {FALSE}
+		UseBackgroundPixmap {false}
+		AdjustSize {false}
+		ReadPixmapFromData {false}
 		DataVarName {}
 		DataLenName {}
-		minWidthSizeHint {TRUE}
-		minHeightSizeHint {TRUE}
-		maxWidthSizeHint {FALSE}
-		maxHeightSizeHint {TRUE}
+		minWidthSizeHint {true}
+		minHeightSizeHint {true}
+		maxWidthSizeHint {false}
+		maxHeightSizeHint {true}
 		FocusPolicy {StrongFocus}
 		BackgroundMode {PaletteBackground}
 		FontPropagation {AllChildren}
 		PalettePropagation {AllChildren}
 }
 CheckBox {
-		Checked {FALSE}
+		Checked {false}
 		Text {&HFill between minipage paragraphs}
-		AutoRepeat {FALSE}
-		AutoResize {FALSE}
+		AutoRepeat {false}
+		AutoResize {false}
 		Rect {275 189 265 65}
 		Name {hfillbetween}
 		Variable {hfillbetween}
 		MinimumSize {0 0}
 		MaximumSize {32767 32767}
 		BackgroundPixmap {}
-		UseBackgroundPixmap {FALSE}
-		AdjustSize {FALSE}
-		ReadPixmapFromData {FALSE}
+		UseBackgroundPixmap {false}
+		AdjustSize {false}
+		ReadPixmapFromData {false}
 		DataVarName {}
 		DataLenName {}
-		minWidthSizeHint {TRUE}
-		minHeightSizeHint {TRUE}
-		maxWidthSizeHint {TRUE}
-		maxHeightSizeHint {TRUE}
+		minWidthSizeHint {true}
+		minHeightSizeHint {true}
+		maxWidthSizeHint {true}
+		maxHeightSizeHint {true}
 		FocusPolicy {TabFocus}
 		BackgroundMode {PaletteBackground}
 		FontPropagation {NoChildren}
 		PalettePropagation {NoChildren}
 }
 CheckBox {
-		Checked {FALSE}
+		Checked {false}
 		Text {&Start new minipage}
-		AutoRepeat {FALSE}
-		AutoResize {FALSE}
+		AutoRepeat {false}
+		AutoResize {false}
 		Rect {275 325 265 65}
 		Name {startnewminipage}
 		Variable {startnewminipage}
 		MinimumSize {0 0}
 		MaximumSize {32767 32767}
 		BackgroundPixmap {}
-		UseBackgroundPixmap {FALSE}
-		AdjustSize {FALSE}
-		ReadPixmapFromData {FALSE}
+		UseBackgroundPixmap {false}
+		AdjustSize {false}
+		ReadPixmapFromData {false}
 		DataVarName {}
 		DataLenName {}
-		minWidthSizeHint {TRUE}
-		minHeightSizeHint {TRUE}
-		maxWidthSizeHint {TRUE}
-		maxHeightSizeHint {TRUE}
+		minWidthSizeHint {true}
+		minHeightSizeHint {true}
+		maxWidthSizeHint {true}
+		maxHeightSizeHint {true}
 		FocusPolicy {TabFocus}
 		BackgroundMode {PaletteBackground}
 		FontPropagation {NoChildren}
 		PalettePropagation {NoChildren}
 }
 RadioButton {
-		Checked {FALSE}
+		Checked {false}
 		Text {&Top}
-		AutoRepeat {FALSE}
-		AutoResize {FALSE}
+		AutoRepeat {false}
+		AutoResize {false}
 		Rect {10 173 255 45}
 		Name {top}
 		Variable {top}
 		MinimumSize {0 0}
 		MaximumSize {32767 32767}
 		BackgroundPixmap {}
-		UseBackgroundPixmap {FALSE}
-		AdjustSize {FALSE}
-		ReadPixmapFromData {FALSE}
+		UseBackgroundPixmap {false}
+		AdjustSize {false}
+		ReadPixmapFromData {false}
 		DataVarName {}
 		DataLenName {}
-		minWidthSizeHint {TRUE}
-		minHeightSizeHint {TRUE}
-		maxWidthSizeHint {TRUE}
-		maxHeightSizeHint {TRUE}
+		minWidthSizeHint {true}
+		minHeightSizeHint {true}
+		maxWidthSizeHint {true}
+		maxHeightSizeHint {true}
 		FocusPolicy {TabFocus}
 		BackgroundMode {PaletteBackground}
 		FontPropagation {NoChildren}
 		PalettePropagation {NoChildren}
 }
 RadioButton {
-		Checked {FALSE}
+		Checked {false}
 		Text {&Middle}
-		AutoRepeat {FALSE}
-		AutoResize {FALSE}
+		AutoRepeat {false}
+		AutoResize {false}
 		Rect {10 267 255 45}
 		Name {middle}
 		Variable {middle}
 		MinimumSize {0 0}
 		MaximumSize {32767 32767}
 		BackgroundPixmap {}
-		UseBackgroundPixmap {FALSE}
-		AdjustSize {FALSE}
-		ReadPixmapFromData {FALSE}
+		UseBackgroundPixmap {false}
+		AdjustSize {false}
+		ReadPixmapFromData {false}
 		DataVarName {}
 		DataLenName {}
-		minWidthSizeHint {TRUE}
-		minHeightSizeHint {TRUE}
-		maxWidthSizeHint {TRUE}
-		maxHeightSizeHint {TRUE}
+		minWidthSizeHint {true}
+		minHeightSizeHint {true}
+		maxWidthSizeHint {true}
+		maxHeightSizeHint {true}
 		FocusPolicy {TabFocus}
 		BackgroundMode {PaletteBackground}
 		FontPropagation {NoChildren}
 		PalettePropagation {NoChildren}
 }
 RadioButton {
-		Checked {FALSE}
+		Checked {false}
 		Text {&Bottom}
-		AutoRepeat {FALSE}
-		AutoResize {FALSE}
+		AutoRepeat {false}
+		AutoResize {false}
 		Rect {10 361 255 45}
 		Name {bottom}
 		Variable {bottom}
 		MinimumSize {0 0}
 		MaximumSize {32767 32767}
 		BackgroundPixmap {}
-		UseBackgroundPixmap {FALSE}
-		AdjustSize {FALSE}
-		ReadPixmapFromData {FALSE}
+		UseBackgroundPixmap {false}
+		AdjustSize {false}
+		ReadPixmapFromData {false}
 		DataVarName {}
 		DataLenName {}
-		minWidthSizeHint {TRUE}
-		minHeightSizeHint {TRUE}
-		maxWidthSizeHint {TRUE}
-		maxHeightSizeHint {TRUE}
+		minWidthSizeHint {true}
+		minHeightSizeHint {true}
+		maxWidthSizeHint {true}
+		maxHeightSizeHint {true}
 		FocusPolicy {TabFocus}
 		BackgroundMode {PaletteBackground}
 		FontPropagation {NoChildren}
@@ -286,22 +286,22 @@ KDE::KRestrictedLine {
 		Text {}
 		EchoMode {Normal}
 		MaxLength {32767}
-		FrameShown {TRUE}
+		FrameShown {true}
 		Rect {275 65 87 54}
 		Name {widthvalue}
 		Variable {widthvalue}
 		MinimumSize {0 0}
 		MaximumSize {32767 32767}
 		BackgroundPixmap {}
-		UseBackgroundPixmap {FALSE}
-		AdjustSize {FALSE}
-		ReadPixmapFromData {FALSE}
+		UseBackgroundPixmap {false}
+		AdjustSize {false}
+		ReadPixmapFromData {false}
 		DataVarName {}
 		DataLenName {}
-		minWidthSizeHint {TRUE}
-		minHeightSizeHint {TRUE}
-		maxWidthSizeHint {FALSE}
-		maxHeightSizeHint {TRUE}
+		minWidthSizeHint {true}
+		minHeightSizeHint {true}
+		maxWidthSizeHint {false}
+		maxHeightSizeHint {true}
 		FocusPolicy {StrongFocus}
 		BackgroundMode {PaletteBase}
 		FontPropagation {NoChildren}

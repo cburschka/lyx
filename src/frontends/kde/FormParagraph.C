@@ -80,9 +80,7 @@ void FormParagraph::update(bool switched)
 #endif
 
 	if (physpar->added_space_top.kind()==VSpace::LENGTH) {
-		// FIXME: ??? this breaks badly if we ever add non glue length vspace to a paragraph
-		// I need some help here ... it is silly anyway !
-		LyXGlueLength above(physpar->added_space_top.length().asString());
+		LyXGlueLength above = physpar->added_space_top.length();
 		lyxerr[Debug::GUI] << "Reading above space : \"" << physpar->added_space_top.length().asString() << "\"" << endl;
 		dialog_->setAboveLength(above.value(), above.plusValue(), above.minusValue(),
 			above.unit(), above.plusUnit(), above.minusUnit());
@@ -90,9 +88,7 @@ void FormParagraph::update(bool switched)
 		dialog_->setAboveLength(0.0, 0.0, 0.0, LyXLength::UNIT_NONE, LyXLength::UNIT_NONE, LyXLength::UNIT_NONE);
 
 	if (physpar->added_space_bottom.kind()==VSpace::LENGTH) {
-		// FIXME: ??? this breaks badly if we ever add non glue length vspace to a paragraph
-		// I need some help here ... it is silly anyway !
-		LyXGlueLength below(physpar->added_space_bottom.length().asString());
+		LyXGlueLength below = physpar->added_space_bottom.length();
 		lyxerr[Debug::GUI] << "Reading below space : \"" << physpar->added_space_bottom.length().asString() << "\"" << endl;
 		dialog_->setBelowLength(below.value(), below.plusValue(), below.minusValue(),
 			below.unit(), below.plusUnit(), below.minusUnit());
@@ -150,6 +146,9 @@ void FormParagraph::apply()
 	else
 		spacebelow = VSpace(dialog_->getSpaceBelowKind());
 
+	spaceabove.setKeep(dialog_->getAboveKeep());
+	spacebelow.setKeep(dialog_->getBelowKeep());
+
 	lyxerr[Debug::GUI] << "Setting above space \"" << LyXGlueLength(spaceabove.length().asString()).asString() << "\"" << endl;
 	lyxerr[Debug::GUI] << "Setting below space \"" << LyXGlueLength(spacebelow.length().asString()).asString() << "\"" << endl;
 
@@ -178,6 +177,10 @@ void FormParagraph::apply()
 		dialog_->getExtraAlign(),
 		dialog_->getHfillBetween(),
 		dialog_->getStartNewMinipage());
+
+	lv_->view()->update(BufferView::SELECT | BufferView::FITCUR | BufferView::CHANGE);
+	lv_->buffer()->markDirty();
+	setMinibuffer(lv_, _("Paragraph layout set"));
 }
 
 void FormParagraph::show()

@@ -95,9 +95,39 @@ bool isStrInt(string const & str)
 }
 
 
+bool isStrUnsignedInt(string const & str)
+{
+	if (str.empty()) return false;
+       
+	// Remove leading and trailing white space chars.
+	string const tmpstr = frontStrip(strip(str, ' '), ' ');
+	if (tmpstr.empty()) return false;
+       
+	string::const_iterator cit = tmpstr.begin();
+	string::const_iterator end = tmpstr.end();
+	for (; cit != end; ++cit) {
+		if (!isdigit((*cit))) return false;
+	}
+	return true;
+}
+
+
 int strToInt(string const & str)
 {
 	if (isStrInt(str)) {
+		// Remove leading and trailing white space chars.
+		string const tmpstr = frontStrip(strip(str, ' '), ' ');
+		// Do the conversion proper.
+		return lyx::atoi(tmpstr);
+	} else {
+		return 0;
+	}
+}
+
+
+unsigned int strToUnsignedInt(string const & str)
+{
+	if (isStrUnsignedInt(str)) {
 		// Remove leading and trailing white space chars.
 		string const tmpstr = frontStrip(strip(str, ' '), ' ');
 		// Do the conversion proper.

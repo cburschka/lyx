@@ -1,0 +1,472 @@
+DlgEdit:v1.2:Dialog:
+Dialog {
+	ClassHeader {}
+	ClassSource {}
+	ClassName {}
+	DataHeader {parabelowdlgdata.h}
+	DataSource {parabelowdlgdata.C}
+	DataName {ParaBelowDialogData}
+	WindowBaseClass {QWidget}
+	UseGetText {true}
+	WindowFlags {0}
+}
+WidgetLayout {
+InitialPos {-1 -1}
+Size {315 290}
+MinSize {0 0}
+MaxSize {32767 32767}
+Grid {5}
+
+CheckBox {
+		Checked {false}
+		Text {Page break}
+		AutoRepeat {false}
+		AutoResize {false}
+		Rect {5 5 305 73}
+		Name {pagebreakbelow}
+		Variable {pagebreakbelow}
+		MinimumSize {0 0}
+		MaximumSize {32767 32767}
+		BackgroundPixmap {}
+		UseBackgroundPixmap {false}
+		AdjustSize {false}
+		ReadPixmapFromData {false}
+		DataVarName {}
+		DataLenName {}
+		minWidthSizeHint {true}
+		minHeightSizeHint {true}
+		maxWidthSizeHint {true}
+		maxHeightSizeHint {true}
+		FocusPolicy {TabFocus}
+		BackgroundMode {PaletteBackground}
+		FontPropagation {NoChildren}
+		PalettePropagation {NoChildren}
+}
+CheckBox {
+		Checked {false}
+		Text {Keep space when at bottom of page}
+		AutoRepeat {false}
+		AutoResize {false}
+		Rect {5 83 305 73}
+		Name {keepbelow}
+		Variable {keepbelow}
+		MinimumSize {0 0}
+		MaximumSize {32767 32767}
+		BackgroundPixmap {}
+		UseBackgroundPixmap {false}
+		AdjustSize {false}
+		ReadPixmapFromData {false}
+		DataVarName {}
+		DataLenName {}
+		minWidthSizeHint {true}
+		minHeightSizeHint {true}
+		maxWidthSizeHint {true}
+		maxHeightSizeHint {true}
+		FocusPolicy {TabFocus}
+		BackgroundMode {PaletteBackground}
+		FontPropagation {NoChildren}
+		PalettePropagation {NoChildren}
+}
+Label {
+		Text {Extra Space}
+		Alignment {289}
+		AutoResize {false}
+		Margin {-1}
+		Style {0}
+		LineWidth {1}
+		MidLineWidth {0}
+		FrameMargin {0}
+		Rect {5 161 100 36}
+		Name {belowlabel}
+		MinimumSize {0 0}
+		MaximumSize {32767 32767}
+		BackgroundPixmap {}
+		UseBackgroundPixmap {false}
+		AdjustSize {false}
+		ReadPixmapFromData {false}
+		DataVarName {}
+		DataLenName {}
+		minWidthSizeHint {true}
+		minHeightSizeHint {true}
+		maxWidthSizeHint {true}
+		maxHeightSizeHint {true}
+		FocusPolicy {NoFocus}
+		BackgroundMode {PaletteBackground}
+		FontPropagation {NoChildren}
+		PalettePropagation {NoChildren}
+}
+ComboBox {
+		Style {ReadOnly}
+		SizeLimit {10}
+		Policy {AtBottom}
+		AutoResize {false}
+		MaxCount {2147483647}
+		AutoCompletion {false}
+		Rect {110 161 200 36}
+		Name {spacebelow}
+		Variable {spacebelow}
+		Signal {[Protected]  highlighted --> spacebelowHighlighted  (int)}
+		MinimumSize {0 0}
+		MaximumSize {32767 32767}
+		BackgroundPixmap {}
+		UseBackgroundPixmap {false}
+		AdjustSize {false}
+		ReadPixmapFromData {false}
+		DataVarName {}
+		DataLenName {}
+		minWidthSizeHint {true}
+		minHeightSizeHint {true}
+		maxWidthSizeHint {false}
+		maxHeightSizeHint {true}
+		FocusPolicy {StrongFocus}
+		BackgroundMode {PaletteBackground}
+		FontPropagation {AllChildren}
+		PalettePropagation {AllChildren}
+}
+Label {
+		Text {Value}
+		Alignment {289}
+		AutoResize {false}
+		Margin {-1}
+		Style {0}
+		LineWidth {1}
+		MidLineWidth {0}
+		FrameMargin {0}
+		Rect {5 202 58 24}
+		Name {ValueLabel}
+		MinimumSize {0 0}
+		MaximumSize {32767 32767}
+		BackgroundPixmap {}
+		UseBackgroundPixmap {false}
+		AdjustSize {false}
+		ReadPixmapFromData {false}
+		DataVarName {}
+		DataLenName {}
+		minWidthSizeHint {true}
+		minHeightSizeHint {true}
+		maxWidthSizeHint {false}
+		maxHeightSizeHint {false}
+		FocusPolicy {NoFocus}
+		BackgroundMode {PaletteBackground}
+		FontPropagation {NoChildren}
+		PalettePropagation {NoChildren}
+}
+Label {
+		Text {Plus}
+		Alignment {289}
+		AutoResize {false}
+		Margin {-1}
+		Style {0}
+		LineWidth {1}
+		MidLineWidth {0}
+		FrameMargin {0}
+		Rect {5 231 58 25}
+		Name {Label_14}
+		MinimumSize {0 0}
+		MaximumSize {32767 32767}
+		BackgroundPixmap {}
+		UseBackgroundPixmap {false}
+		AdjustSize {false}
+		ReadPixmapFromData {false}
+		DataVarName {}
+		DataLenName {}
+		minWidthSizeHint {true}
+		minHeightSizeHint {true}
+		maxWidthSizeHint {false}
+		maxHeightSizeHint {false}
+		FocusPolicy {NoFocus}
+		BackgroundMode {PaletteBackground}
+		FontPropagation {NoChildren}
+		PalettePropagation {NoChildren}
+}
+Label {
+		Text {Minus}
+		Alignment {289}
+		AutoResize {false}
+		Margin {-1}
+		Style {0}
+		LineWidth {1}
+		MidLineWidth {0}
+		FrameMargin {0}
+		Rect {5 261 58 24}
+		Name {belowminuslabel}
+		MinimumSize {0 0}
+		MaximumSize {32767 32767}
+		BackgroundPixmap {}
+		UseBackgroundPixmap {false}
+		AdjustSize {false}
+		ReadPixmapFromData {false}
+		DataVarName {}
+		DataLenName {}
+		minWidthSizeHint {true}
+		minHeightSizeHint {true}
+		maxWidthSizeHint {false}
+		maxHeightSizeHint {false}
+		FocusPolicy {NoFocus}
+		BackgroundMode {PaletteBackground}
+		FontPropagation {NoChildren}
+		PalettePropagation {NoChildren}
+}
+KDE::KRestrictedLine {
+		ValidChars {0123456789.,}
+		Text {}
+		EchoMode {Normal}
+		MaxLength {8}
+		FrameShown {true}
+		Rect {68 202 3 24}
+		Name {spacebelowvalue}
+		Variable {spacebelowvalue}
+		MinimumSize {0 0}
+		MaximumSize {32767 32767}
+		BackgroundPixmap {}
+		UseBackgroundPixmap {false}
+		AdjustSize {false}
+		ReadPixmapFromData {false}
+		DataVarName {}
+		DataLenName {}
+		minWidthSizeHint {true}
+		minHeightSizeHint {true}
+		maxWidthSizeHint {false}
+		maxHeightSizeHint {true}
+		FocusPolicy {StrongFocus}
+		BackgroundMode {PaletteBase}
+		FontPropagation {NoChildren}
+		PalettePropagation {NoChildren}
+}
+KDE::KRestrictedLine {
+		ValidChars {0123456789.,}
+		Text {}
+		EchoMode {Normal}
+		MaxLength {8}
+		FrameShown {true}
+		Rect {68 231 3 25}
+		Name {spacebelowplus}
+		Variable {spacebelowplus}
+		MinimumSize {0 0}
+		MaximumSize {32767 32767}
+		BackgroundPixmap {}
+		UseBackgroundPixmap {false}
+		AdjustSize {false}
+		ReadPixmapFromData {false}
+		DataVarName {}
+		DataLenName {}
+		minWidthSizeHint {true}
+		minHeightSizeHint {true}
+		maxWidthSizeHint {false}
+		maxHeightSizeHint {true}
+		FocusPolicy {StrongFocus}
+		BackgroundMode {PaletteBase}
+		FontPropagation {NoChildren}
+		PalettePropagation {NoChildren}
+}
+KDE::KRestrictedLine {
+		ValidChars {0123456789.,}
+		Text {}
+		EchoMode {Normal}
+		MaxLength {8}
+		FrameShown {true}
+		Rect {68 261 3 24}
+		Name {spacebelowminus}
+		Variable {spacebelowminus}
+		MinimumSize {0 0}
+		MaximumSize {32767 32767}
+		BackgroundPixmap {}
+		UseBackgroundPixmap {false}
+		AdjustSize {false}
+		ReadPixmapFromData {false}
+		DataVarName {}
+		DataLenName {}
+		minWidthSizeHint {true}
+		minHeightSizeHint {true}
+		maxWidthSizeHint {false}
+		maxHeightSizeHint {true}
+		FocusPolicy {StrongFocus}
+		BackgroundMode {PaletteBase}
+		FontPropagation {NoChildren}
+		PalettePropagation {NoChildren}
+}
+ComboBox {
+		Style {ReadOnly}
+		SizeLimit {10}
+		Policy {AtBottom}
+		AutoResize {false}
+		MaxCount {2147483647}
+		AutoCompletion {false}
+		Rect {76 202 234 24}
+		Name {spacebelowvalueunits}
+		Variable {spacebelowvalueunits}
+		MinimumSize {0 0}
+		MaximumSize {32767 32767}
+		BackgroundPixmap {}
+		UseBackgroundPixmap {false}
+		AdjustSize {false}
+		ReadPixmapFromData {false}
+		DataVarName {}
+		DataLenName {}
+		minWidthSizeHint {true}
+		minHeightSizeHint {true}
+		maxWidthSizeHint {false}
+		maxHeightSizeHint {true}
+		FocusPolicy {StrongFocus}
+		BackgroundMode {PaletteBackground}
+		FontPropagation {AllChildren}
+		PalettePropagation {AllChildren}
+}
+ComboBox {
+		Style {ReadOnly}
+		SizeLimit {10}
+		Policy {AtBottom}
+		AutoResize {false}
+		MaxCount {2147483647}
+		AutoCompletion {false}
+		Rect {76 231 234 25}
+		Name {spacebelowplusunits}
+		Variable {spacebelowplusunits}
+		MinimumSize {0 0}
+		MaximumSize {32767 32767}
+		BackgroundPixmap {}
+		UseBackgroundPixmap {false}
+		AdjustSize {false}
+		ReadPixmapFromData {false}
+		DataVarName {}
+		DataLenName {}
+		minWidthSizeHint {true}
+		minHeightSizeHint {true}
+		maxWidthSizeHint {false}
+		maxHeightSizeHint {true}
+		FocusPolicy {StrongFocus}
+		BackgroundMode {PaletteBackground}
+		FontPropagation {AllChildren}
+		PalettePropagation {AllChildren}
+}
+ComboBox {
+		Style {ReadOnly}
+		SizeLimit {10}
+		Policy {AtBottom}
+		AutoResize {false}
+		MaxCount {2147483647}
+		AutoCompletion {false}
+		Rect {76 261 234 24}
+		Name {spacebelowminusunits}
+		Variable {spacebelowminusunits}
+		MinimumSize {0 0}
+		MaximumSize {32767 32767}
+		BackgroundPixmap {}
+		UseBackgroundPixmap {false}
+		AdjustSize {false}
+		ReadPixmapFromData {false}
+		DataVarName {}
+		DataLenName {}
+		minWidthSizeHint {true}
+		minHeightSizeHint {true}
+		maxWidthSizeHint {false}
+		maxHeightSizeHint {true}
+		FocusPolicy {StrongFocus}
+		BackgroundMode {PaletteBackground}
+		FontPropagation {AllChildren}
+		PalettePropagation {AllChildren}
+}
+
+Box_Layout-1{
+	Direction {TopToBottom}
+	Border {5}
+	AutoBorder {5}
+	Name {}
+	Strut {0}
+	Stretch {1}
+}
+Layout_Widget-1.1{
+	Widget {pagebreakbelow}
+	BoxStretch {2}
+	Alignment {1}
+}
+Layout_Widget-1.2{
+	Widget {keepbelow}
+	BoxStretch {2}
+	Alignment {1}
+}
+Box_Layout-1.3{
+	Direction {LeftToRight}
+	Border {5}
+	AutoBorder {5}
+	Name {}
+	Strut {0}
+	Stretch {1}
+}
+Layout_Widget-1.3.1{
+	Widget {belowlabel}
+	BoxStretch {1}
+	Alignment {1}
+}
+Layout_Widget-1.3.2{
+	Widget {spacebelow}
+	BoxStretch {2}
+	Alignment {36}
+}
+Grid_Layout-1.4{
+	Border {5}
+	AutoBorder {5}
+	Name {}
+	ColumnInfo {1 1}
+	ColumnInfo {3 0}
+	ColumnInfo {5 4}
+	BoxStretch {2}
+}
+Grid_Row-1.4.1{
+	Stretch {1}
+	Spacing {0}
+}
+Layout_Widget-1.4.1.1{
+	Widget {ValueLabel}
+	BoxStretch {1}
+	Alignment {36}
+}
+Layout_Widget-1.4.1.2{
+	Widget {spacebelowvalue}
+	BoxStretch {1}
+	Alignment {36}
+}
+Layout_Widget-1.4.1.3{
+	Widget {spacebelowvalueunits}
+	BoxStretch {1}
+	Alignment {36}
+}
+Grid_Row-1.4.2{
+	Stretch {1}
+	Spacing {0}
+}
+Layout_Widget-1.4.2.1{
+	Widget {Label_14}
+	BoxStretch {1}
+	Alignment {36}
+}
+Layout_Widget-1.4.2.2{
+	Widget {spacebelowplus}
+	BoxStretch {1}
+	Alignment {36}
+}
+Layout_Widget-1.4.2.3{
+	Widget {spacebelowplusunits}
+	BoxStretch {1}
+	Alignment {36}
+}
+Grid_Row-1.4.3{
+	Stretch {1}
+	Spacing {0}
+}
+Layout_Widget-1.4.3.1{
+	Widget {belowminuslabel}
+	BoxStretch {1}
+	Alignment {36}
+}
+Layout_Widget-1.4.3.2{
+	Widget {spacebelowminus}
+	BoxStretch {1}
+	Alignment {36}
+}
+Layout_Widget-1.4.3.3{
+	Widget {spacebelowminusunits}
+	BoxStretch {1}
+	Alignment {36}
+}
+}

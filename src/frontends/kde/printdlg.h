@@ -8,7 +8,7 @@
 #define PRINTDLG_H
 
 
-#include "printdlgdata.h"
+#include "dlg/printdlgdata.h"
 #include "support/lstrings.h"
 #include "lyxrc.h" 
 #include "PrinterParams.h"

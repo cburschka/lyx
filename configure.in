@@ -297,6 +297,9 @@ AC_OUTPUT([Makefile \
        src/frontends/support/Makefile \
        src/frontends/xforms/Makefile \
        src/frontends/kde/Makefile \
+       src/frontends/kde/moc/Makefile \
+       src/frontends/kde/dlg/Makefile \
+       src/frontends/kde/dlg/moc/Makefile \
        src/frontends/gnome/Makefile \
 ],  [sed -e "/POTFILES =/r po/POTFILES" po/Makefile.in > po/Makefile])
 

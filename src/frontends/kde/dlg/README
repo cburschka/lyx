@@ -1,10 +1,12 @@
-These files are generated with qtarch-1.4-5 which can be downloaded
+These files are generated with qtarch-1.4-6 which can be downloaded
 from 
 
 http://qtarch.sourceforge.net/
 
-FIXME. Note this is *not* the latest version, as they only
-support Qt 2.0.
+Currently you also need this patch : 
+http://www.movement.uklinux.net/patches/lyx/qtarch-1.4.6.diff
+ 
+Note this is *not* the latest version, as they only support Qt 2.0.
 
 You should compile in the KDE module when you compile qtarch-1.4.
 For me this was just a case of a make in the module/kde/ directory,

@@ -10,7 +10,7 @@
 #ifndef IndexDialog_included
 #define IndexDialog_included
 
-#include "indexdlgdata.h"
+#include "dlg/indexdlgdata.h"
 
 class FormIndex;
 

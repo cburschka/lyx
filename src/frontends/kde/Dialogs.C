@@ -24,11 +24,10 @@
 // temporary till ported
 extern void ShowCredits();
 
-
 // Signal enabling all visible popups to be redrawn if so desired.
-// E.g., when the GUI colours have been remapped.
+// E.g., when the GUI colours have been remapped. This will probably
+// work out different when xforms is gone
 Signal0<void> Dialogs::redrawGUI;
-
 
 Dialogs::Dialogs(LyXView * lv)
 {

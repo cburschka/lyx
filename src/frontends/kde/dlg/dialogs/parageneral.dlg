@@ -1,0 +1,421 @@
+DlgEdit:v1.2:Dialog:
+Dialog {
+	ClassHeader {parageneraldlg.h}
+	ClassSource {parageneraldlg.C}
+	ClassName {ParaGeneralDialog}
+	DataHeader {parageneraldlgdata.h}
+	DataSource {parageneraldlgdata.C}
+	DataName {ParaGeneralDialogData}
+	WindowBaseClass {QWidget}
+	UseGetText {true}
+	WindowFlags {0}
+}
+WidgetLayout {
+InitialPos {-1 -1}
+Size {750 550}
+MinSize {0 0}
+MaxSize {32767 32767}
+Grid {5}
+
+ButtonGroup {
+		Exclusive {true}
+		Title {Alignment}
+		Alignment {Left}
+		Style {49}
+		LineWidth {1}
+		MidLineWidth {0}
+		FrameMargin {0}
+		Rect {5 5 123 375}
+		Name {alignment}
+		Variable {alignment}
+		MinimumSize {0 0}
+		MaximumSize {32767 32767}
+		BackgroundPixmap {}
+		UseBackgroundPixmap {false}
+		AdjustSize {false}
+		ReadPixmapFromData {false}
+		DataVarName {}
+		DataLenName {}
+		minWidthSizeHint {true}
+		minHeightSizeHint {true}
+		maxWidthSizeHint {false}
+		maxHeightSizeHint {false}
+		FocusPolicy {NoFocus}
+		BackgroundMode {PaletteBackground}
+		FontPropagation {NoChildren}
+		PalettePropagation {NoChildren}
+}
+CheckBox {
+		Checked {false}
+		Text {Draw line above paragraph}
+		AutoRepeat {false}
+		AutoResize {false}
+		Rect {5 385 365 50}
+		Name {lineabove}
+		Variable {lineabove}
+		MinimumSize {0 0}
+		MaximumSize {32767 32767}
+		BackgroundPixmap {}
+		UseBackgroundPixmap {false}
+		AdjustSize {false}
+		ReadPixmapFromData {false}
+		DataVarName {}
+		DataLenName {}
+		minWidthSizeHint {true}
+		minHeightSizeHint {true}
+		maxWidthSizeHint {true}
+		maxHeightSizeHint {true}
+		FocusPolicy {TabFocus}
+		BackgroundMode {PaletteBackground}
+		FontPropagation {NoChildren}
+		PalettePropagation {NoChildren}
+}
+CheckBox {
+		Checked {false}
+		Text {Draw line below paragraph}
+		AutoRepeat {false}
+		AutoResize {false}
+		Rect {5 440 365 50}
+		Name {linebelow}
+		Variable {linebelow}
+		MinimumSize {0 0}
+		MaximumSize {32767 32767}
+		BackgroundPixmap {}
+		UseBackgroundPixmap {false}
+		AdjustSize {false}
+		ReadPixmapFromData {false}
+		DataVarName {}
+		DataLenName {}
+		minWidthSizeHint {true}
+		minHeightSizeHint {true}
+		maxWidthSizeHint {true}
+		maxHeightSizeHint {true}
+		FocusPolicy {TabFocus}
+		BackgroundMode {PaletteBackground}
+		FontPropagation {NoChildren}
+		PalettePropagation {NoChildren}
+}
+CheckBox {
+		Checked {false}
+		Text {Don't indent paragraph}
+		AutoRepeat {false}
+		AutoResize {false}
+		Rect {5 495 365 50}
+		Name {noindent}
+		Variable {noindent}
+		MinimumSize {0 0}
+		MaximumSize {32767 32767}
+		BackgroundPixmap {}
+		UseBackgroundPixmap {false}
+		AdjustSize {false}
+		ReadPixmapFromData {false}
+		DataVarName {}
+		DataLenName {}
+		minWidthSizeHint {true}
+		minHeightSizeHint {true}
+		maxWidthSizeHint {true}
+		maxHeightSizeHint {true}
+		FocusPolicy {TabFocus}
+		BackgroundMode {PaletteBackground}
+		FontPropagation {NoChildren}
+		PalettePropagation {NoChildren}
+}
+RadioButton {
+		Checked {false}
+		Text {Block}
+		AutoRepeat {false}
+		AutoResize {false}
+		Rect {10 62 113 37}
+		Name {block}
+		Variable {block}
+		MinimumSize {0 0}
+		MaximumSize {32767 32767}
+		BackgroundPixmap {}
+		UseBackgroundPixmap {false}
+		AdjustSize {false}
+		ReadPixmapFromData {false}
+		DataVarName {}
+		DataLenName {}
+		minWidthSizeHint {true}
+		minHeightSizeHint {true}
+		maxWidthSizeHint {true}
+		maxHeightSizeHint {true}
+		FocusPolicy {TabFocus}
+		BackgroundMode {PaletteBackground}
+		FontPropagation {NoChildren}
+		PalettePropagation {NoChildren}
+}
+RadioButton {
+		Checked {false}
+		Text {Center}
+		AutoRepeat {false}
+		AutoResize {false}
+		Rect {10 142 113 37}
+		Name {center}
+		Variable {center}
+		MinimumSize {0 0}
+		MaximumSize {32767 32767}
+		BackgroundPixmap {}
+		UseBackgroundPixmap {false}
+		AdjustSize {false}
+		ReadPixmapFromData {false}
+		DataVarName {}
+		DataLenName {}
+		minWidthSizeHint {true}
+		minHeightSizeHint {true}
+		maxWidthSizeHint {true}
+		maxHeightSizeHint {true}
+		FocusPolicy {TabFocus}
+		BackgroundMode {PaletteBackground}
+		FontPropagation {NoChildren}
+		PalettePropagation {NoChildren}
+}
+RadioButton {
+		Checked {false}
+		Text {Left}
+		AutoRepeat {false}
+		AutoResize {false}
+		Rect {10 221 113 37}
+		Name {left}
+		Variable {left}
+		MinimumSize {0 0}
+		MaximumSize {32767 32767}
+		BackgroundPixmap {}
+		UseBackgroundPixmap {false}
+		AdjustSize {false}
+		ReadPixmapFromData {false}
+		DataVarName {}
+		DataLenName {}
+		minWidthSizeHint {true}
+		minHeightSizeHint {true}
+		maxWidthSizeHint {true}
+		maxHeightSizeHint {true}
+		FocusPolicy {TabFocus}
+		BackgroundMode {PaletteBackground}
+		FontPropagation {NoChildren}
+		PalettePropagation {NoChildren}
+}
+RadioButton {
+		Checked {false}
+		Text {Right}
+		AutoRepeat {false}
+		AutoResize {false}
+		Rect {10 301 113 37}
+		Name {right}
+		Variable {right}
+		MinimumSize {0 0}
+		MaximumSize {32767 32767}
+		BackgroundPixmap {}
+		UseBackgroundPixmap {false}
+		AdjustSize {false}
+		ReadPixmapFromData {false}
+		DataVarName {}
+		DataLenName {}
+		minWidthSizeHint {true}
+		minHeightSizeHint {true}
+		maxWidthSizeHint {true}
+		maxHeightSizeHint {true}
+		FocusPolicy {TabFocus}
+		BackgroundMode {PaletteBackground}
+		FontPropagation {NoChildren}
+		PalettePropagation {NoChildren}
+}
+Label {
+		Text {Label width}
+		Alignment {289}
+		AutoResize {false}
+		Margin {-1}
+		Style {0}
+		LineWidth {1}
+		MidLineWidth {0}
+		FrameMargin {0}
+		Rect {375 385 183 160}
+		Name {labelwidthlabel}
+		MinimumSize {0 0}
+		MaximumSize {32767 32767}
+		BackgroundPixmap {}
+		UseBackgroundPixmap {false}
+		AdjustSize {false}
+		ReadPixmapFromData {false}
+		DataVarName {}
+		DataLenName {}
+		minWidthSizeHint {true}
+		minHeightSizeHint {true}
+		maxWidthSizeHint {true}
+		maxHeightSizeHint {true}
+		FocusPolicy {NoFocus}
+		BackgroundMode {PaletteBackground}
+		FontPropagation {NoChildren}
+		PalettePropagation {NoChildren}
+}
+LineEdit {
+		Text {}
+		EchoMode {Normal}
+		MaxLength {32767}
+		FrameShown {true}
+		Rect {563 385 182 160}
+		Name {labelwidth}
+		Variable {labelwidth}
+		MinimumSize {0 0}
+		MaximumSize {32767 32767}
+		BackgroundPixmap {}
+		UseBackgroundPixmap {false}
+		AdjustSize {false}
+		ReadPixmapFromData {false}
+		DataVarName {}
+		DataLenName {}
+		minWidthSizeHint {true}
+		minHeightSizeHint {true}
+		maxWidthSizeHint {false}
+		maxHeightSizeHint {true}
+		FocusPolicy {StrongFocus}
+		BackgroundMode {PaletteBase}
+		FontPropagation {NoChildren}
+		PalettePropagation {NoChildren}
+}
+User {
+		UserClassHeader {tabstack.h}
+		UserClassName {TabStack}
+		Rect {133 5 612 375}
+		Name {spacetab}
+		Variable {spacetab} 
+		MinimumSize {0 0}
+		MaximumSize {32767 32767}
+		BackgroundPixmap {}
+		UseBackgroundPixmap {false}
+		AdjustSize {false}
+		ReadPixmapFromData {false}
+		DataVarName {}
+		DataLenName {}
+		minWidthSizeHint {true}
+		minHeightSizeHint {true}
+		maxWidthSizeHint {false}
+		maxHeightSizeHint {false}
+		FocusPolicy {NoFocus}
+		BackgroundMode {PaletteBackground}
+		FontPropagation {NoChildren}
+		PalettePropagation {NoChildren}
+}
+
+Box_Layout-1{
+	Direction {TopToBottom}
+	Border {5}
+	AutoBorder {5}
+	Name {}
+	Strut {0}
+	Stretch {1}
+}
+Box_Layout-1.1{
+	Direction {LeftToRight}
+	Border {5}
+	AutoBorder {5}
+	Name {}
+	Strut {0}
+	Stretch {5}
+}
+Layout_Widget-1.1.1{
+	Widget {alignment}
+	BoxStretch {1}
+	Alignment {33}
+}
+Box_Layout-1.1.1.1{
+	Direction {TopToBottom}
+	Border {5}
+	AutoBorder {5}
+	Name {}
+	Strut {0}
+	Stretch {1}
+}
+Box_Spacing-1.1.1.1.1{
+	Spacing {15}
+}
+Box_Stretch-1.1.1.1.2{
+	Stretch {1}
+}
+Layout_Widget-1.1.1.1.3{
+	Widget {block}
+	BoxStretch {1}
+	Alignment {1}
+}
+Box_Stretch-1.1.1.1.4{
+	Stretch {1}
+}
+Layout_Widget-1.1.1.1.5{
+	Widget {center}
+	BoxStretch {1}
+	Alignment {1}
+}
+Box_Stretch-1.1.1.1.6{
+	Stretch {1}
+}
+Layout_Widget-1.1.1.1.7{
+	Widget {left}
+	BoxStretch {1}
+	Alignment {1}
+}
+Box_Stretch-1.1.1.1.8{
+	Stretch {1}
+}
+Layout_Widget-1.1.1.1.9{
+	Widget {right}
+	BoxStretch {1}
+	Alignment {1}
+}
+Box_Stretch-1.1.1.1.10{
+	Stretch {1}
+}
+Layout_Widget-1.1.2{
+	Widget {spacetab}
+	BoxStretch {5}
+	Alignment {36}
+}
+Box_Layout-1.2{
+	Direction {LeftToRight}
+	Border {5}
+	AutoBorder {5}
+	Name {}
+	Strut {0}
+	Stretch {2}
+}
+Box_Layout-1.2.1{
+	Direction {TopToBottom}
+	Border {5}
+	AutoBorder {5}
+	Name {}
+	Strut {0}
+	Stretch {1}
+}
+Layout_Widget-1.2.1.1{
+	Widget {lineabove}
+	BoxStretch {1}
+	Alignment {1}
+}
+Layout_Widget-1.2.1.2{
+	Widget {linebelow}
+	BoxStretch {1}
+	Alignment {1}
+}
+Layout_Widget-1.2.1.3{
+	Widget {noindent}
+	BoxStretch {1}
+	Alignment {1}
+}
+Box_Layout-1.2.2{
+	Direction {LeftToRight}
+	Border {5}
+	AutoBorder {5}
+	Name {}
+	Strut {0}
+	Stretch {1}
+}
+Layout_Widget-1.2.2.1{
+	Widget {labelwidthlabel}
+	BoxStretch {1}
+	Alignment {36}
+}
+Layout_Widget-1.2.2.2{
+	Widget {labelwidth}
+	BoxStretch {1}
+	Alignment {36}
+}
+}

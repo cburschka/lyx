@@ -37,7 +37,6 @@ ParaExtraDialog::ParaExtraDialog
 	widthvalueunits->insertItem(_("Big/PS points (1/72 inch)"));
 	widthvalueunits->insertItem(_("Didot points"));
 	widthvalueunits->insertItem(_("Cicero points"));
-	widthvalueunits->insertItem(_("Math units"));
 	widthvalueunits->insertItem(_("Percent of column"));
 }
 

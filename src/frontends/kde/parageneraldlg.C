@@ -22,27 +22,38 @@ ParaGeneralDialog::ParaGeneralDialog
 	Inherited( parent, name )
 {
 
-	spaceabove->insertItem(_("None"));
-	spaceabove->insertItem(_("Defskip"));
-	spaceabove->insertItem(_("Small skip"));
-	spaceabove->insertItem(_("Medium skip"));
-	spaceabove->insertItem(_("Big skip"));
-	spaceabove->insertItem(_("VFill"));
-	spaceabove->insertItem(_("Length"));
-	spacebelow->insertItem(_("None"));
-	spacebelow->insertItem(_("Defskip"));
-	spacebelow->insertItem(_("Small skip"));
-	spacebelow->insertItem(_("Medium skip"));
-	spacebelow->insertItem(_("Big skip"));
-	spacebelow->insertItem(_("VFill"));
-	spacebelow->insertItem(_("Length"));
+	abovepage = new ParaAboveDialog(this, "abovepage");
+	belowpage = new ParaBelowDialog(this, "belowpage");
+
+	// FIXME: free punctuation to whoever can make the value
+	// boxes not be overly large
+	spacetab->addTabPage(abovepage, _("Spacing Above"));
+	spacetab->addTabPage(belowpage, _("Spacing Below"));
+
+	connect(abovepage->spaceabove, SIGNAL(highlighted(int)), this, SLOT(spaceaboveHighlighted(int)));
+	connect(belowpage->spacebelow, SIGNAL(highlighted(int)), this, SLOT(spacebelowHighlighted(int)));
+
+	abovepage->spaceabove->insertItem(_("None"));
+	abovepage->spaceabove->insertItem(_("Defskip"));
+	abovepage->spaceabove->insertItem(_("Small skip"));
+	abovepage->spaceabove->insertItem(_("Medium skip"));
+	abovepage->spaceabove->insertItem(_("Big skip"));
+	abovepage->spaceabove->insertItem(_("VFill"));
+	abovepage->spaceabove->insertItem(_("Length"));
+	belowpage->spacebelow->insertItem(_("None"));
+	belowpage->spacebelow->insertItem(_("Defskip"));
+	belowpage->spacebelow->insertItem(_("Small skip"));
+	belowpage->spacebelow->insertItem(_("Medium skip"));
+	belowpage->spacebelow->insertItem(_("Big skip"));
+	belowpage->spacebelow->insertItem(_("VFill"));
+	belowpage->spacebelow->insertItem(_("Length"));
  
-	createUnits(spaceabovevalueunits);
-	createUnits(spaceaboveplusunits);
-	createUnits(spaceaboveminusunits);
-	createUnits(spacebelowvalueunits);
-	createUnits(spacebelowplusunits);
-	createUnits(spacebelowminusunits);
+	createUnits(abovepage->spaceabovevalueunits);
+	createUnits(abovepage->spaceaboveplusunits);
+	createUnits(abovepage->spaceaboveminusunits);
+	createUnits(belowpage->spacebelowvalueunits);
+	createUnits(belowpage->spacebelowplusunits);
+	createUnits(belowpage->spacebelowminusunits);
 }
 
 void ParaGeneralDialog::createUnits(QComboBox *box)
@@ -59,7 +70,6 @@ void ParaGeneralDialog::createUnits(QComboBox *box)
 	box->insertItem(_("Big/PS points (1/72 inch)"));
 	box->insertItem(_("Didot points"));
 	box->insertItem(_("Cicero points"));
-	box->insertItem(_("Math units"));
 }
 
 ParaGeneralDialog::~ParaGeneralDialog()
@@ -68,51 +78,20 @@ ParaGeneralDialog::~ParaGeneralDialog()
 
 void ParaGeneralDialog::spaceaboveHighlighted(int val)
 {
-	spaceabovevalue->setEnabled(val == 6);
-	spaceabovevalueunits->setEnabled(val == 6);
-	spaceaboveplus->setEnabled(val == 6);
-	spaceaboveplusunits->setEnabled(val == 6);
-	spaceaboveminus->setEnabled(val == 6);
-	spaceaboveminusunits->setEnabled(val == 6);
-}
-
-void ParaGeneralDialog::spaceabovevalueChanged(const char *text)
-{
-	// FIXME: the problem here is not validation, but what to do
-	// if it is not a valid double value ...
-}
-
-void ParaGeneralDialog::spaceaboveplusChanged(const char *text)
-{
-	// FIXME
-}
-
-void ParaGeneralDialog::spaceaboveminusChanged(const char *text)
-{
-	// FIXME
+	abovepage->spaceabovevalue->setEnabled(val == 6);
+	abovepage->spaceabovevalueunits->setEnabled(val == 6);
+	abovepage->spaceaboveplus->setEnabled(val == 6);
+	abovepage->spaceaboveplusunits->setEnabled(val == 6);
+	abovepage->spaceaboveminus->setEnabled(val == 6);
+	abovepage->spaceaboveminusunits->setEnabled(val == 6);
 }
 
 void ParaGeneralDialog::spacebelowHighlighted(int val)
 {
-	spacebelowvalue->setEnabled(val == 6);
-	spacebelowvalueunits->setEnabled(val == 6);
-	spacebelowplus->setEnabled(val == 6);
-	spacebelowplusunits->setEnabled(val == 6);
-	spacebelowminus->setEnabled(val == 6);
-	spacebelowminusunits->setEnabled(val == 6);
-}
-
-void ParaGeneralDialog::spacebelowvalueChanged(const char *text)
-{
-	// FIXME
-}
-
-void ParaGeneralDialog::spacebelowplusChanged(const char *text)
-{
-	// FIXME
-}
-
-void ParaGeneralDialog::spacebelowminusChanged(const char *text)
-{
-	// FIXME
+	belowpage->spacebelowvalue->setEnabled(val == 6);
+	belowpage->spacebelowvalueunits->setEnabled(val == 6);
+	belowpage->spacebelowplus->setEnabled(val == 6);
+	belowpage->spacebelowplusunits->setEnabled(val == 6);
+	belowpage->spacebelowminus->setEnabled(val == 6);
+	belowpage->spacebelowminusunits->setEnabled(val == 6);
 }

@@ -7,7 +7,7 @@ Dialog {
 	DataSource {indexdlgdata.C}
 	DataName {IndexDialogData}
 	WindowBaseClass {QWidget}
-	UseGetText {TRUE}
+	UseGetText {true}
 	WindowFlags {53248}
 }
 WidgetLayout {
@@ -20,7 +20,7 @@ Grid {5}
 Label {
 		Text {Keyword:}
 		Alignment {289}
-		AutoResize {FALSE}
+		AutoResize {false}
 		Margin {-1}
 		Style {0}
 		LineWidth {1}
@@ -32,15 +32,15 @@ Label {
 		MinimumSize {60 25}
 		MaximumSize {60 25}
 		BackgroundPixmap {}
-		UseBackgroundPixmap {FALSE}
-		AdjustSize {FALSE}
-		ReadPixmapFromData {FALSE}
+		UseBackgroundPixmap {false}
+		AdjustSize {false}
+		ReadPixmapFromData {false}
 		DataVarName {}
 		DataLenName {}
-		minWidthSizeHint {TRUE}
-		minHeightSizeHint {TRUE}
-		maxWidthSizeHint {TRUE}
-		maxHeightSizeHint {TRUE}
+		minWidthSizeHint {true}
+		minHeightSizeHint {true}
+		maxWidthSizeHint {true}
+		maxHeightSizeHint {true}
 		FocusPolicy {NoFocus}
 		BackgroundMode {PaletteBackground}
 		FontPropagation {NoChildren}
@@ -50,35 +50,35 @@ LineEdit {
 		Text {}
 		EchoMode {Normal}
 		MaxLength {32767}
-		FrameShown {TRUE}
+		FrameShown {true}
 		Rect {70 15 175 25}
 		Name {LineEdit_1}
 		Variable {index}
 		MinimumSize {125 25}
 		MaximumSize {32767 25}
 		BackgroundPixmap {}
-		UseBackgroundPixmap {FALSE}
-		AdjustSize {FALSE}
-		ReadPixmapFromData {FALSE}
+		UseBackgroundPixmap {false}
+		AdjustSize {false}
+		ReadPixmapFromData {false}
 		DataVarName {}
 		DataLenName {}
-		minWidthSizeHint {TRUE}
-		minHeightSizeHint {TRUE}
-		maxWidthSizeHint {FALSE}
-		maxHeightSizeHint {TRUE}
+		minWidthSizeHint {true}
+		minHeightSizeHint {true}
+		maxWidthSizeHint {false}
+		maxHeightSizeHint {true}
 		FocusPolicy {StrongFocus}
 		BackgroundMode {PaletteBase}
 		FontPropagation {NoChildren}
 		PalettePropagation {NoChildren}
 }
 PushButton {
-		ToggleButton {FALSE}
-		Default {FALSE}
-		AutoDefault {TRUE}
-		IsMenuButton {FALSE}
+		ToggleButton {false}
+		Default {false}
+		AutoDefault {true}
+		IsMenuButton {false}
 		Text {&OK}
-		AutoRepeat {FALSE}
-		AutoResize {FALSE}
+		AutoRepeat {false}
+		AutoResize {false}
 		Rect {24 65 80 25}
 		Name {PushButton_OK}
 		Variable {buttonOk}
@@ -86,28 +86,28 @@ PushButton {
 		MinimumSize {80 25}
 		MaximumSize {80 25}
 		BackgroundPixmap {}
-		UseBackgroundPixmap {FALSE}
-		AdjustSize {FALSE}
-		ReadPixmapFromData {FALSE}
+		UseBackgroundPixmap {false}
+		AdjustSize {false}
+		ReadPixmapFromData {false}
 		DataVarName {}
 		DataLenName {}
-		minWidthSizeHint {TRUE}
-		minHeightSizeHint {TRUE}
-		maxWidthSizeHint {TRUE}
-		maxHeightSizeHint {TRUE}
+		minWidthSizeHint {true}
+		minHeightSizeHint {true}
+		maxWidthSizeHint {true}
+		maxHeightSizeHint {true}
 		FocusPolicy {TabFocus}
 		BackgroundMode {PaletteBackground}
 		FontPropagation {NoChildren}
 		PalettePropagation {NoChildren}
 }
 PushButton {
-		ToggleButton {FALSE}
-		Default {FALSE}
-		AutoDefault {FALSE}
-		IsMenuButton {FALSE}
+		ToggleButton {false}
+		Default {false}
+		AutoDefault {false}
+		IsMenuButton {false}
 		Text {&Cancel}
-		AutoRepeat {FALSE}
-		AutoResize {FALSE}
+		AutoRepeat {false}
+		AutoResize {false}
 		Rect {146 65 80 25}
 		Name {PushButton_Cancel}
 		Variable {buttonCancel}
@@ -115,15 +115,15 @@ PushButton {
 		MinimumSize {80 25}
 		MaximumSize {80 25}
 		BackgroundPixmap {}
-		UseBackgroundPixmap {FALSE}
-		AdjustSize {FALSE}
-		ReadPixmapFromData {FALSE}
+		UseBackgroundPixmap {false}
+		AdjustSize {false}
+		ReadPixmapFromData {false}
 		DataVarName {}
 		DataLenName {}
-		minWidthSizeHint {TRUE}
-		minHeightSizeHint {TRUE}
-		maxWidthSizeHint {TRUE}
-		maxHeightSizeHint {TRUE}
+		minWidthSizeHint {true}
+		minHeightSizeHint {true}
+		maxWidthSizeHint {true}
+		maxHeightSizeHint {true}
 		FocusPolicy {TabFocus}
 		BackgroundMode {PaletteBackground}
 		FontPropagation {NoChildren}

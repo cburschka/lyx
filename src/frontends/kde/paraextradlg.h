@@ -10,7 +10,7 @@
 #ifndef ParaExtraDialog_included
 #define ParaExtraDialog_included
 
-#include "paraextradlgdata.h"
+#include "dlg/paraextradlgdata.h"
 
 class ParaDialog;
 

@@ -10,7 +10,7 @@
 #ifndef CopyrightDialog_included
 #define CopyrightDialog_included
 
-#include "copyrightdlgdata.h"
+#include "dlg/copyrightdlgdata.h"
 
 class CopyrightDialog : public CopyrightDialogData
 {

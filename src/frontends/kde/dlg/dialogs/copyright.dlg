@@ -7,7 +7,7 @@ Dialog {
 	DataSource {copyrightdlgdata.C}
 	DataName {CopyrightDialogData}
 	WindowBaseClass {QWidget}
-	UseGetText {TRUE}
+	UseGetText {true}
 	WindowFlags {53248}
 }
 WidgetLayout {
@@ -18,13 +18,13 @@ MaxSize {32767 65}
 Grid {5}
 
 PushButton {
-		ToggleButton {FALSE}
-		Default {FALSE}
-		AutoDefault {TRUE}
-		IsMenuButton {FALSE}
+		ToggleButton {false}
+		Default {false}
+		AutoDefault {true}
+		IsMenuButton {false}
 		Text {&OK}
-		AutoRepeat {FALSE}
-		AutoResize {FALSE}
+		AutoRepeat {false}
+		AutoResize {false}
 		Rect {157 343 151 107}
 		Name {PushButton_OK}
 		Variable {buttonOk}
@@ -32,15 +32,15 @@ PushButton {
 		MinimumSize {0 0}
 		MaximumSize {32767 32767}
 		BackgroundPixmap {}
-		UseBackgroundPixmap {FALSE}
-		AdjustSize {FALSE}
-		ReadPixmapFromData {FALSE}
+		UseBackgroundPixmap {false}
+		AdjustSize {false}
+		ReadPixmapFromData {false}
 		DataVarName {}
 		DataLenName {}
-		minWidthSizeHint {TRUE}
-		minHeightSizeHint {TRUE}
-		maxWidthSizeHint {TRUE}
-		maxHeightSizeHint {TRUE}
+		minWidthSizeHint {true}
+		minHeightSizeHint {true}
+		maxWidthSizeHint {true}
+		maxHeightSizeHint {true}
 		FocusPolicy {TabFocus}
 		BackgroundMode {PaletteBackground}
 		FontPropagation {NoChildren}
@@ -49,7 +49,7 @@ PushButton {
 Label {
 		Text {LyX is Copyright (C) 1995 by Matthias Ettrich, \n1995-2000 LyX Team}
 		Alignment {1316}
-		AutoResize {FALSE}
+		AutoResize {false}
 		Margin {-1}
 		Style {50}
 		LineWidth {1}
@@ -60,15 +60,15 @@ Label {
 		MinimumSize {0 0}
 		MaximumSize {32767 32767}
 		BackgroundPixmap {}
-		UseBackgroundPixmap {FALSE}
-		AdjustSize {FALSE}
-		ReadPixmapFromData {FALSE}
+		UseBackgroundPixmap {false}
+		AdjustSize {false}
+		ReadPixmapFromData {false}
 		DataVarName {}
 		DataLenName {}
-		minWidthSizeHint {TRUE}
-		minHeightSizeHint {TRUE}
-		maxWidthSizeHint {FALSE}
-		maxHeightSizeHint {FALSE}
+		minWidthSizeHint {true}
+		minHeightSizeHint {true}
+		maxWidthSizeHint {false}
+		maxHeightSizeHint {false}
 		FocusPolicy {NoFocus}
 		BackgroundMode {PaletteBackground}
 		FontPropagation {NoChildren}
@@ -77,7 +77,7 @@ Label {
 Label {
 		Text {This program is free software; you can redistribute it\nand/or modify it under the terms of the GNU General\nPublic License as published by the Free Software\nFoundation; either version 2 of the License, or\n(at your option) any later version.}
 		Alignment {1316}
-		AutoResize {FALSE}
+		AutoResize {false}
 		Margin {-1}
 		Style {50}
 		LineWidth {1}
@@ -88,15 +88,15 @@ Label {
 		MinimumSize {0 0}
 		MaximumSize {32767 32767}
 		BackgroundPixmap {}
-		UseBackgroundPixmap {FALSE}
-		AdjustSize {FALSE}
-		ReadPixmapFromData {FALSE}
+		UseBackgroundPixmap {false}
+		AdjustSize {false}
+		ReadPixmapFromData {false}
 		DataVarName {}
 		DataLenName {}
-		minWidthSizeHint {TRUE}
-		minHeightSizeHint {TRUE}
-		maxWidthSizeHint {FALSE}
-		maxHeightSizeHint {FALSE}
+		minWidthSizeHint {true}
+		minHeightSizeHint {true}
+		maxWidthSizeHint {false}
+		maxHeightSizeHint {false}
 		FocusPolicy {NoFocus}
 		BackgroundMode {PaletteBackground}
 		FontPropagation {NoChildren}
@@ -105,7 +105,7 @@ Label {
 Label {
 		Text {LyX is distributed in the hope that it will\nbe useful, but WITHOUT ANY WARRANTY;\nwithout even the implied warranty of MERCHANTABILITY\nor FITNESS FOR A PARTICULAR PURPOSE.\nSee the GNU General Public License for more details.\nYou should have received a copy of\nthe GNU General Public License\nalong with this program; if not, write to\nthe Free Software Foundation, Inc., \n675 Mass Ave, Cambridge, MA 02139, USA.}
 		Alignment {1316}
-		AutoResize {FALSE}
+		AutoResize {false}
 		Margin {-1}
 		Style {50}
 		LineWidth {1}
@@ -116,15 +116,15 @@ Label {
 		MinimumSize {0 0}
 		MaximumSize {32767 32767}
 		BackgroundPixmap {}
-		UseBackgroundPixmap {FALSE}
-		AdjustSize {FALSE}
-		ReadPixmapFromData {FALSE}
+		UseBackgroundPixmap {false}
+		AdjustSize {false}
+		ReadPixmapFromData {false}
 		DataVarName {}
 		DataLenName {}
-		minWidthSizeHint {TRUE}
-		minHeightSizeHint {TRUE}
-		maxWidthSizeHint {FALSE}
-		maxHeightSizeHint {FALSE}
+		minWidthSizeHint {true}
+		minHeightSizeHint {true}
+		maxWidthSizeHint {false}
+		maxHeightSizeHint {false}
 		FocusPolicy {NoFocus}
 		BackgroundMode {PaletteBackground}
 		FontPropagation {NoChildren}

@@ -23,16 +23,18 @@
 #include  "parageneraldlg.h"
 #include  "paraextradlg.h"
  
-#include <qtabdialog.h>
+//#include <qtabdialog.h>
  
 #include "vspace.h" 
 #include "lyxparagraph.h"
 #include "debug.h" 
 
+#include "dlg/paradlgdata.h"
+
 // to connect apply() and close()
 #include "FormParagraph.h"
 
-class ParaDialog : public QTabDialog  {
+class ParaDialog : public ParaDialogData  {
    Q_OBJECT
 public:
 	ParaDialog(FormParagraph *form, QWidget *parent=0, const char *name=0,
@@ -63,6 +65,14 @@ public:
 			return LYX_ALIGN_BLOCK;
 	}
 
+	bool getAboveKeep() const {
+		return generalpage->abovepage->keepabove->isChecked();
+	}
+
+	bool getBelowKeep() const {
+		return generalpage->belowpage->keepbelow->isChecked();
+	}
+
 	bool getLineAbove() const {
 		return generalpage->lineabove->isChecked();
 	}
@@ -72,11 +82,11 @@ public:
 	}
 
 	bool getPagebreakAbove() const {
-		return generalpage->pagebreakabove->isChecked();
+		return generalpage->abovepage->pagebreakabove->isChecked();
 	}
 
 	bool getPagebreakBelow() const {
-		return generalpage->pagebreakbelow->isChecked();
+		return generalpage->belowpage->pagebreakbelow->isChecked();
 	}
 
 	bool getNoIndent() const {
@@ -84,23 +94,13 @@ public:
 	}
 
 	VSpace::vspace_kind getSpaceAboveKind() const {
-		return getSpaceKind(generalpage->spaceabove->currentItem());
+		return getSpaceKind(generalpage->abovepage->spaceabove->currentItem());
 	}
 	
 	VSpace::vspace_kind getSpaceBelowKind() const {
-		return getSpaceKind(generalpage->spacebelow->currentItem());
+		return getSpaceKind(generalpage->belowpage->spacebelow->currentItem());
 	}
 	
-	bool getSpaceAboveKeep() const {
-		// FIXME
-		return true;
-	}
-
-	bool getSpaceBelowKeep() const {
-		// FIXME
-		return true;
-	}
-
 	LyXGlueLength getAboveLength() const;
 
 	LyXGlueLength getBelowLength() const;
@@ -166,18 +166,27 @@ private:
 	LyXLength::UNIT getUnits(QComboBox *box) const;
 
 private slots:
+
+	void ok_adaptor(void) {
+		apply_adaptor();
+		form_->close();
+		hide();
+	}
+
 	void apply_adaptor(void) {
 		form_->apply();
+	}
+
+	void restore_adaptor(void) {
+		// this will reset to known values
+		form_->update();
+	}
+	
+	void cancel_adaptor(void) {
 		form_->close();
 		hide();
 	}
 
-	void close_adaptor(void) {
-		form_->close();
-		hide();
-	}
-
-	void restore(void);
 };
 
 #endif

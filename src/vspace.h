@@ -222,7 +222,7 @@ public:
 	// access functions
 	vspace_kind kind() const  { return  kin; }
 	///
-	LyXLength   length() const { return len; }
+	LyXGlueLength   length() const { return len; }
 
 	// a flag that switches between \vspace and \vspace*
         bool keep() const      { return kp; }
