@@ -1,3 +1,8 @@
+2000-05-05  Juergen Vigna  <jug@sad.it>
+
+	* src/tabular.[Ch]: now using std:vector instead of arrays for all the
+	row, columns and cellstructures.
+
 2000-05-05  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* lib/lyxrc.example: remove obsolete entries.

@@ -15,6 +15,7 @@
 #endif
 
 #include <iosfwd>
+#include <vector>
 
 #include "lyxlex.h"
 #include "LString.h"
@@ -169,7 +170,7 @@ public:
     ///
     void Reinit();
     ///
-    void Init(int columns_arg, int rows_arg);
+    void Init(Buffer * buf, int columns_arg, int rows_arg);
     ///
     void Write(std::ostream &) const;
     ///
@@ -257,7 +258,7 @@ private: //////////////////////////////////////////////////////////////////
     ///
     struct cellstruct {
 	///
-        cellstruct(Buffer * buf);
+        cellstruct();
 	///
 	~cellstruct();
 	///
@@ -283,7 +284,7 @@ private: //////////////////////////////////////////////////////////////////
 	///
 	string p_width; // this is only set for multicolumn!!!
 	///
-	InsetText *inset;
+	InsetText * inset;
     };
     ///
     struct rowstruct {
@@ -328,11 +329,11 @@ private: //////////////////////////////////////////////////////////////////
     ///
     int * columnofcell;
     ///
-    rowstruct * row_info;
+    std::vector<rowstruct> row_info;
     ///
-    columnstruct * column_info;
+    std::vector<columnstruct> column_info;
     ///
-    cellstruct ** cell_info;
+    mutable std::vector< std::vector<cellstruct> > cell_info;
     ///
     int width_of_tabular;
     ///
