@@ -1,3 +1,9 @@
+2005-02-22  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* insetinclude.C (InsetInclude): when constructing from another
+	InsetInclude, set set_label_ to false, since the value is never
+	copied.
+
 2005-03-21  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* insettabular.C (getStatus): enable tabulator keys (bug 1836).

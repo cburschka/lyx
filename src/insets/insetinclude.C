@@ -107,7 +107,7 @@ InsetInclude::InsetInclude(InsetInclude const & other)
 	  params_(other.params_),
 	  include_label(other.include_label),
 	  preview_(new RenderMonitoredPreview(this)),
-	  set_label_(other.set_label_)
+	  set_label_(false)
 {
 	preview_->fileChanged(boost::bind(&InsetInclude::fileChanged, this));
 }
