@@ -125,13 +125,14 @@ Style Author
   ParSep		0
   Align			Center
   AlignPossible		Center
+  OptionalArgs          1
   # standard font definition
   Font 
     Series 		Bold
   EndFont
 End
 
-# Author Adress
+# Author Address
 Style Author_Address
   Margin		Static
   LatexType		Command
@@ -141,6 +142,7 @@ Style Author_Address
   AlignPossible		Center
   Labeltype             Static
   LabelString           "Address: "
+  OptionalArgs          1
   LabelFont
     Shape		Italic
   EndFont
@@ -191,6 +193,7 @@ Style Thanks
   LatexType		Command
   LatexName		thanks		
   InTitle		1
+  OptionalArgs          1
   Font	
     Size		Small
     Family		Typewriter
