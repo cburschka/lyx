@@ -21,52 +21,73 @@ if [ $# -ne 2 ]; then
 fi
 
 # A couple of helper functions
-FIND_EXECUTABLE=""
 FIND_IT () {
-	which ${FIND_EXECUTABLE} > /dev/null
+	which ${EXECUTABLE} > /dev/null
 	STATUS=$?
 	if [ ${STATUS} -ne 0 ]; then
-		echo "Unable to find \"${FIND_EXECUTABLE}\". Please install."
+		echo "Unable to find \"${EXECUTABLE}\". Please install."
 		exit 1
 	fi
 }
 
-CHECK_STATUS () {
-	if [ ${STATUS} -ne 0 ]; then
-		echo "${EXECUTABLE} failed."
-		# Remove everything except the original .tex file.
-		FILES=`ls ${BASE}* | sed -e "/${BASE}.tex/d"`
-		rm -f ${FILES}
-		exit ${STATUS}
-	fi
+BAIL_OUT () {
+	# Remove everything except the original .tex file.
+	FILES=`ls ${BASE}* | sed -e "/${BASE}.tex/d"`
+	rm -f ${FILES} texput.log
+	exit 1
 }
 
 # We use latex, dvips and gs, so check that they're all there.
-FIND_EXECUTABLE=latex; FIND_IT
-FIND_EXECUTABLE=dvips; FIND_IT
-FIND_EXECUTABLE=gs;    FIND_IT
+EXECUTABLE=latex; FIND_IT
+EXECUTABLE=dvips; FIND_IT
+EXECUTABLE=gs;    FIND_IT
 
 # Initialise some variables.
-TEXFILE=$1
+TEXFILE=`basename $1`
 RESOLUTION=$2
 
-DIR=`dirname ${TEXFILE}`
-BASE=`basename ${TEXFILE} .tex`
+DIR=`dirname $1`
+BASE=`basename $1 .tex`
 DVIFILE=${BASE}.dvi
 PSFILE=${BASE}.ps
 METRICS=${BASE}.metrics
 
-# Perform the conversion.
+# LaTeX -> DVI.
 cd ${DIR}
 latex ${TEXFILE}
 STATUS=$?
-EXECUTABLE="latex ${TEXFILE}"; CHECK_STATUS
+if [ ${STATUS} -ne 0 ]; then
+	# LaTeX failed.
+	# preview.sty has known problems with the showlabels option,
+	# so remove it and try again.
+	sed -e "/^[\]usepackage\(.*\){preview}/s/,showlabels//" \
+		< ${TEXFILE} > .${TEXFILE}
+	cmp -s ${TEXFILE} .${TEXFILE}
+	STATUS=$?
+	if [ ${STATUS} -eq 0 ]; then
+		rm -f .${TEXFILE}
+		echo "Failed: latex ${TEXFILE}"
+		BAIL_OUT
+	fi
 
+	mv -f .${TEXFILE} ${TEXFILE}
+	latex ${TEXFILE}
+	STATUS=$?
+	if [ ${STATUS} -ne 0 ]; then
+		echo "Failed: latex ${TEXFILE}"
+		BAIL_OUT
+	fi
+fi
+
+# DVI -> PostScript
 dvips -o ${PSFILE} ${DVIFILE}
-
 STATUS=$?
-EXECUTABLE="dvips ${DVIFILE}"; CHECK_STATUS
+if [ ${STATUS} -ne 0 ]; then
+	echo "Failed: dvips -o ${PSFILE} ${DVIFILE}"
+	BAIL_OUT
+fi
 
+# PostScript -> Bitmap files
 # Older versions of gs have problems with a large degree of anti-aliasing
 # at high resolutions
 ALPHA=4
@@ -79,7 +100,10 @@ gs -q -dNOPAUSE -dBATCH -dSAFER -sDEVICE=pnmraw -sOutputFile=${BASE}%03d.ppm \
     ${PSFILE}
 
 STATUS=$?
-EXECUTABLE="gs ${PSFILE}"; CHECK_STATUS
+if [ ${STATUS} -ne 0 ]; then
+	echo "Failed: gs ${PSFILE}"
+	BAIL_OUT
+fi
 
 # Attempt to generate a file ${METRICS} that contains only the tightpage
 # bounding box info, extract from ${PSFILE}
@@ -110,9 +134,7 @@ EOF
 
 # 2. Run sed!
 sed -f ${SEDSCRIPT} < ${PSFILE} > ${METRICS}
-STATUS=$?
 rm -f ${SEDSCRIPT}
-EXECUTABLE="extracting metrics"; CHECK_STATUS
 
 # The ppm files have spurious (?! say some !) white space on the left and right
 # sides. If you want this removed set REMOVE_WS=1.
@@ -139,5 +161,5 @@ fi
 
 # All was successful, so remove everything except the ppm files and the
 # metrics file.
-FILES=`ls ${BASE}* | sed -e "/${BASE}.metrics/d" -e "/${BASE}.*.ppm/d"`
+FILES=`ls ${BASE}* | sed -e "/${BASE}.metrics/d" -e "/${BASE}[0-9]\{3\}.ppm/d"`
 rm -f ${FILES}
