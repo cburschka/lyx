@@ -54,7 +54,7 @@ void FormWrap::build()
 	bc().addReadOnly(dialog_->choice_width_units);
 	bc().addReadOnly(dialog_->radio_left);
 	bc().addReadOnly(dialog_->radio_right);
-	bc().addReadOnly(dialog_->radio_inner);
+	bc().addReadOnly(dialog_->radio_outer);
 	bc().addReadOnly(dialog_->radio_default);
 }
 
@@ -69,7 +69,7 @@ void FormWrap::apply()
 		controller().params().placement = "l";
 	else if (fl_get_button(dialog_->radio_right))
 		controller().params().placement = "r";
-	else if (fl_get_button(dialog_->radio_inner))
+	else if (fl_get_button(dialog_->radio_outer))
 		controller().params().placement = "p";
 	else
 		controller().params().placement.erase();
@@ -87,7 +87,7 @@ void FormWrap::update()
 	else if (controller().params().placement == "r")
 		fl_set_button(dialog_->radio_right, 1);
 	else if (controller().params().placement == "p")
-		fl_set_button(dialog_->radio_inner, 1);
+		fl_set_button(dialog_->radio_outer, 1);
 	else
 		fl_set_button(dialog_->radio_default, 1);
 }
@@ -101,7 +101,7 @@ ButtonPolicy::SMInput FormWrap::input(FL_OBJECT * ob, long)
 
 	if (ob == dialog_->radio_left ||
 	    ob == dialog_->radio_right ||
-	    ob == dialog_->radio_inner ||
+	    ob == dialog_->radio_outer ||
 	    ob == dialog_->radio_default ||
 	    ob == dialog_->choice_width_units)
 		return ButtonPolicy::SMI_VALID;

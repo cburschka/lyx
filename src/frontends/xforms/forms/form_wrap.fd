@@ -166,11 +166,11 @@ alignment: FL_ALIGN_CENTER
 style: FL_NORMAL_STYLE
 size: FL_NORMAL_SIZE
 lcol: FL_BLACK
-label: Inner|#I
+label: Outer|#O
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: radio_inner
+name: radio_outer
 callback: C_FormBaseInputCB
 argument: 0
 

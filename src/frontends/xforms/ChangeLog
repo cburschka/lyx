@@ -1,3 +1,8 @@
+2002-09-25  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* forms/form_wrap.fd: floatflt has no "Inner" placement option.
+	The possible placements are default/outer/left/right.
+
 2002-09-24  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* Makefile.am (INCLUDES): loose SIGC_INCLUDES
