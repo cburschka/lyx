@@ -51,6 +51,14 @@
 #        \converter lyxpreview ${FORMAT} "lyxpreview2bitmap.sh" ""
 # where ${FORMAT} is either ppm or png.
 
+# These four programs are used by the script.
+# Adjust their names to suit your setup.
+LATEX=latex
+DVIPS=dvips
+GS=gs
+PNMCROP=pnmcrop
+readonly LATEX DVIPS GS PNMCROP
+
 # Three helper functions.
 FIND_IT ()
 {
@@ -65,7 +73,7 @@ FIND_IT ()
 BAIL_OUT ()
 {
 	# Remove everything except the original .tex file.
-	FILES=`ls ${BASE}* | sed -e "/${BASE}.tex/d"`
+	FILES=`ls ${BASE}* | sed -e "/${BASE}\.tex/d"`
 	rm -f ${FILES} texput.log
 	echo "Leaving ${BASE}.tex in ${DIR}"
 	exit 1
@@ -73,8 +81,10 @@ BAIL_OUT ()
 
 REQUIRED_VERSION ()
 {
+	test $# -eq 1 || exit 1
+
 	echo "We require preview.sty version 0.73 or newer. You're using"
-	grep 'Package: preview' ${LOGFILE}
+	grep 'Package: preview' $1
 }
 
 # Preliminary check.
@@ -101,9 +111,9 @@ else
 fi
 
 # We use latex, dvips and gs, so check that they're all there.
-FIND_IT latex
-FIND_IT dvips
-FIND_IT gs
+FIND_IT ${LATEX}
+FIND_IT ${DVIPS}
+FIND_IT ${GS}
 
 # Initialise some variables.
 TEXFILE=${BASE}.tex
@@ -111,12 +121,13 @@ LOGFILE=${BASE}.log
 DVIFILE=${BASE}.dvi
 PSFILE=${BASE}.ps
 METRICSFILE=${BASE}.metrics
+readonly TEXFILE LOGFILE DVIFILE PSFILE METRICSFILE
 
 # LaTeX -> DVI.
 cd ${DIR}
-latex ${TEXFILE} ||
+${LATEX} ${TEXFILE} ||
 {
-	echo "Failed: latex ${TEXFILE}"
+	echo "Failed: ${LATEX} ${TEXFILE}"
 	BAIL_OUT
 }
 
@@ -127,7 +138,7 @@ latex ${TEXFILE} ||
 grep -E 'Preview: [ST]' ${LOGFILE} > ${METRICSFILE} ||
 {
 	echo "Failed: grep -E 'Preview: [ST]' ${LOGFILE}"
-	REQUIRED_VERSION
+	REQUIRED_VERSION ${LOGFILE}
 	BAIL_OUT
 }
 
@@ -138,7 +149,7 @@ grep -E 'Preview: [ST]' ${LOGFILE} > ${METRICSFILE} ||
 LINE=`grep 'Preview: Fontsize' ${LOGFILE}` ||
 {
 	echo "Failed: grep 'Preview: Fontsize' ${LOGFILE}"
-	REQUIRED_VERSION
+	REQUIRED_VERSION ${LOGFILE}
 	BAIL_OUT
 }
 # The sed script strips out everything that won't form a decimal number
@@ -166,9 +177,9 @@ RESOLUTION=`echo "scale=2; \
 	| bc`
 
 # DVI -> PostScript
-dvips -o ${PSFILE} ${DVIFILE} ||
+${DVIPS} -o ${PSFILE} ${DVIFILE} ||
 {
-	echo "Failed: dvips -o ${PSFILE} ${DVIFILE}"
+	echo "Failed: ${DVIPS} -o ${PSFILE} ${DVIFILE}"
 	BAIL_OUT
 }
 
@@ -185,12 +196,12 @@ if [ ${INT_RESOLUTION} -gt 150 ]; then
 	ALPHA=2
 fi
 
-gs -q -dNOPAUSE -dBATCH -dSAFER \
+${GS} -q -dNOPAUSE -dBATCH -dSAFER \
 	-sDEVICE=${GSDEVICE} -sOutputFile=${BASE}%d.${GSSUFFIX} \
 	-dGraphicsAlphaBit=${ALPHA} -dTextAlphaBits=${ALPHA} \
 	-r${RESOLUTION} ${PSFILE} ||
 {
-	echo "Failed: gs ${PSFILE}"
+	echo "Failed: ${GS} ${PSFILE}"
 	BAIL_OUT
 }
 
@@ -203,7 +214,7 @@ rm -f ${FILES} texput.log
 # The bitmap files can have large amounts of whitespace to the left and
 # right. This can be cropped if so desired.
 CROP=1
-type pnmcrop > /dev/null || CROP=0
+type ${PNMCROP} > /dev/null || CROP=0
 
 # There's no point cropping the image if using PNG images. If you want to
 # crop, use PPM.
@@ -211,8 +222,8 @@ type pnmcrop > /dev/null || CROP=0
 if [ ${CROP} -eq 1 -a "${GSDEVICE}" = "pnmraw" ]; then
 	for FILE in ${BASE}*.${GSSUFFIX}
 	do
-		if pnmcrop -left ${FILE} 2> /dev/null |\
-		   pnmcrop -right  2> /dev/null > ${BASE}.tmp; then
+		if ${PNMCROP} -left ${FILE} 2> /dev/null |\
+		   ${PNMCROP} -right  2> /dev/null > ${BASE}.tmp; then
 			mv ${BASE}.tmp ${FILE}
 		else
 			rm -f ${BASE}.tmp

@@ -1,5 +1,11 @@
 2003-03-10  Angus Leeming  <leeming@lyx.org>
 
+	* scripts/lyxpreview2bitmap.sh: use variables for the names of
+	'latex', 'dvips', 'gs' and 'pnmcrop' and move their definition to
+	the top of the script.
+
+2003-03-10  Angus Leeming  <leeming@lyx.org>
+
 	* images/graphics-insert.xpm: rename as
 	dialog-show-new-inset_graphics.xpm.
 
