@@ -381,7 +381,7 @@ void doInsertInset(LyXText * lt, FuncRequest const & cmd,
 	if (inset) {
 		bool gotsel = false;
 		if (lt->selection.set()) {
-			lt->cutSelection(true, false);
+			bv->owner()->dispatch(FuncRequest(LFUN_CUT));
 			gotsel = true;
 		}
 		if (bv->insertInset(inset)) {
@@ -390,7 +390,7 @@ void doInsertInset(LyXText * lt, FuncRequest const & cmd,
 				inset->localDispatch(cmd);
 			}
 			if (gotsel && pastesel)
-				bv->owner()->dispatch(FuncRequest(LFUN_PASTESELECTION));
+				bv->owner()->dispatch(FuncRequest(LFUN_PASTE));
 		}
 		else
 			delete inset;
