@@ -23,36 +23,36 @@
 
 namespace Gnome
 {
-  class PixButton: public Gtk::Button
-  {
-  public:
-    PixButton(string label, string pixname): Button()
-    {
-      Gtk::Box * b = manage( new Gtk::HBox() );
-      l = manage( new Gtk::Label(label) );
-      Gnome::Pixmap * p = Gtk::wrap( GNOME_PIXMAP( gnome_stock_pixmap_widget(0, pixname.c_str()) ) );
+class PixButton: public Gtk::Button
+{
+public:
+	PixButton(string label, string pixname): Button()
+	{
+		Gtk::Box * b = manage( new Gtk::HBox() );
+		l = manage( new Gtk::Label(label) );
+		Gnome::Pixmap * p = Gtk::wrap( GNOME_PIXMAP( gnome_stock_pixmap_widget(0, pixname.c_str()) ) );
 
-      b->set_spacing(3);
-      b->children().push_back(Gtk::Box_Helpers::Element(*p, false, false));
-      b->children().push_back(Gtk::Box_Helpers::Element(*l, false, false));
+		b->set_spacing(3);
+		b->children().push_back(Gtk::Box_Helpers::Element(*p, false, false));
+		b->children().push_back(Gtk::Box_Helpers::Element(*l, false, false));
 
-      add(*b);
+		add(*b);
 
-      accelkey_ = l->parse_uline(label);
+		accelkey_ = l->parse_uline(label);
 
-      l->show();
-      p->show();
-      b->show();
-    }
+		l->show();
+		p->show();
+		b->show();
+	}
 
-    guint get_accelkey() { return accelkey_; }
+	guint get_accelkey() { return accelkey_; }
 
-    void set_text(string const & newlabel) { l->set_text(newlabel); }
+	void set_text(string const & newlabel) { l->set_text(newlabel); }
 
-  protected:
-    guint accelkey_;
-    Gtk::Label * l;
-  };
+protected:
+	guint accelkey_;
+	Gtk::Label * l;
+};
 }
 
 #endif

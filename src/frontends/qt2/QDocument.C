@@ -127,7 +127,7 @@ void QDocument::build_dialog()
 	     cit != textclasslist.end(); ++cit) {
 		if (cit->isTeXClassAvailable()) {
 			dialog_->latexModule->classCO->insertItem(toqstr(cit->description()));
-                } else {
+		} else {
 			string item =
 				bformat(_("Unavailable: %1$s"), cit->description());
 			dialog_->latexModule->classCO->insertItem(toqstr(item));
@@ -204,7 +204,7 @@ void QDocument::apply()
 
 	} else if (dialog_->biblioModule->citeJurabibRB->isChecked())
 		params.cite_engine = biblio::ENGINE_JURABIB;
-	
+
 	params.use_bibtopic =
 		dialog_->biblioModule->bibtopicCB->isChecked();
 

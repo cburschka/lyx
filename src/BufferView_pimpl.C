@@ -807,7 +807,7 @@ void BufferView::Pimpl::MenuInsertLyXFile(string const & filenm)
 	bool const res = bv_->buffer()->readFile(fname, bv_->cursor().par());
 	bv_->resize();
 
-  string s = res ? _("Document %1$s inserted.")
+	string s = res ? _("Document %1$s inserted.")
 	               : _("Could not insert document %1$s");
 	owner_->message(bformat(s, disp_fn));
 }

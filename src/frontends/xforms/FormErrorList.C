@@ -43,7 +43,7 @@ void FormErrorList::build()
 
 void FormErrorList::update()
 {
-        setTitle(controller().name());
+	setTitle(controller().name());
 	updateContents();
 }
 

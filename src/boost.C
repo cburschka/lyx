@@ -34,13 +34,13 @@ namespace {
 
 void emergencyCleanup()
 {
-        static bool didCleanup;
-        if (didCleanup)
-                return;
+	static bool didCleanup;
+	if (didCleanup)
+		return;
 
-        didCleanup = true;
+	didCleanup = true;
 
-        LyX::cref().emergencyCleanup();
+	LyX::cref().emergencyCleanup();
 }
 
 }

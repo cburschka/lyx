@@ -58,8 +58,8 @@ private:
 	std::string address_;
 	/// Maximum number of simultaneous clients
 	enum {
-                MAX_CLIENTS = 10
-        };
+		MAX_CLIENTS = 10
+	};
 	/// All connections
 	std::map<int, boost::shared_ptr<LyXDataSocket> > clients;
 };

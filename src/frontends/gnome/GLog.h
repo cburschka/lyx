@@ -27,7 +27,7 @@ namespace Gtk {
 class GLog : public GnomeCB<ControlLog> {
 public:
 	///
-        GLog();
+	GLog();
 	///
 	~GLog();
 

@@ -43,7 +43,7 @@ void GView::loadXML()
 #ifdef WITH_WARNINGS
 #warning Change this before declaring it production code! (be 20010325)
 #endif
-        string const path("src/frontends/gnome/dialogs/;frontends/gnome/dialogs/;");
+	string const path("src/frontends/gnome/dialogs/;frontends/gnome/dialogs/;");
 
 	string const file = FileOpenSearch(path, file_, "glade");
 

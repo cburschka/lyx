@@ -130,7 +130,7 @@ vector<string> split_options(string const & input)
 		} else if (t.cat() != catSpace)
 			option += t.asInput();
 	}
-	
+
 	if (!option.empty())
 		options.push_back(option);
 

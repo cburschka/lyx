@@ -218,7 +218,7 @@ bool stringSelected(BufferView * bv, string const & searchstr,
 
 
 int replace(BufferView * bv, string const & searchstr,
-      string const & replacestr, bool cs, bool mw, bool fw)
+	    string const & replacestr, bool cs, bool mw, bool fw)
 {
 	if (!searchAllowed(bv, searchstr) || bv->buffer()->isReadonly())
 		return 0;

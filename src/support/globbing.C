@@ -114,7 +114,7 @@ vector<string> const expand_globs(string const & mask,
 
 FileFilterList::FileFilterList(string const & qt_style_filter)
 {
-	string const filter = qt_style_filter 
+	string const filter = qt_style_filter
 		+ (qt_style_filter.empty() ? string() : ";;")
 		+ _("All files (*)");
 

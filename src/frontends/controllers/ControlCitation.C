@@ -41,7 +41,7 @@ bool ControlCitation::initialiseParams(string const & data)
 	kernel().buffer().fillWithBibKeys(blist);
 
 	biblio::CiteEngine const engine = biblio::getEngine(kernel().buffer());
-		
+
 	bool use_styles = engine != biblio::ENGINE_BASIC;
 
 	typedef std::map<string, string>::value_type InfoMapValue;

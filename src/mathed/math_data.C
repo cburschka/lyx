@@ -276,7 +276,7 @@ void MathArray::metrics(MetricsInfo & mi) const
 void MathArray::draw(PainterInfo & pi, int x, int y) const
 {
 	//lyxerr << "MathArray::draw: x: " << x << " y: " << y << endl;
-	setXY(x, y);	
+	setXY(x, y);
 
 	if (empty()) {
 		pi.pain.rectangle(x, y - ascent(), width(), height(), LColor::mathline);

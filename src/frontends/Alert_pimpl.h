@@ -16,8 +16,10 @@
 
 
 int prompt_pimpl(std::string const & title, std::string const & question,
-           int default_button, int escape_button,
-	   std::string const & b1, std::string const & b2, std::string const & b3);
+		 int default_button, int escape_button,
+		 std::string const & b1,
+		 std::string const & b2,
+		 std::string const & b3);
 
 void warning_pimpl(std::string const & title, std::string const & warning);
 void error_pimpl(std::string const & title, std::string const & warning);

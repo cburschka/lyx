@@ -23,8 +23,8 @@ using std::string;
 
 
 int Alert::prompt(string const & title, string const & question,
-           int default_button, int escape_button,
-	   string const & b1, string const & b2, string const & b3)
+		  int default_button, int escape_button,
+		  string const & b1, string const & b2, string const & b3)
 {
 	if (!lyx_gui::use_gui || lyxerr.debugging()) {
 		lyxerr << title << '\n'

@@ -19,7 +19,7 @@ void lyxbreaker(void const * data, const char * hint, int size);
 struct Point {
 	Point()
 		: x_(0), y_(0)
-	{}	
+	{}
 
 	Point(int x, int y) : x_(x), y_(y)
 	{
@@ -27,7 +27,7 @@ struct Point {
 		BOOST_ASSERT(x <  4000);
 		BOOST_ASSERT(y > -3000);
 		BOOST_ASSERT(y <  4000);
-	}	
+	}
 
 	int x_, y_;
 };
@@ -70,9 +70,9 @@ public:
 
 //	T * find(int x, int y) const
 //	{
-//		T * 
+//		T *
 //		cache_type iter
-//	} 
+//	}
 
 private:
 	friend class CoordCache;

@@ -55,9 +55,9 @@ void copySelection(LCursor & cur);
 void pasteSelection(LCursor & cur, size_t sel_index = 0);
 
 /** Needed to switch between different classes. This works
-    for a list of paragraphs beginning with the specified par
-    return value is the number of wrong conversions.
-*/
+ *  for a list of paragraphs beginning with the specified par
+ *  return value is the number of wrong conversions.
+ */
 int SwitchLayoutsBetweenClasses(lyx::textclass_type c1,
 				lyx::textclass_type c2,
 				ParagraphList & par,

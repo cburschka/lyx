@@ -184,7 +184,7 @@ InsetGraphics::~InsetGraphics()
 void InsetGraphics::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 {
 	switch (cmd.action) {
-        case LFUN_GRAPHICS_EDIT: {
+	case LFUN_GRAPHICS_EDIT: {
 		Buffer const & buffer = *cur.bv().buffer();
 		InsetGraphicsParams p;
 		InsetGraphicsMailer::string2params(cmd.argument, buffer, p);
@@ -343,10 +343,10 @@ string const InsetGraphics::toDocbookLength(LyXLength const & len) const
 	ostringstream result;
 	switch (len.unit() ) {
 		case LyXLength::SP: //< Scaled point (65536sp = 1pt) TeX's smallest unit.
-			result << len.value() * 65536.0 * 72 / 72.27 << "pt"; 
+			result << len.value() * 65536.0 * 72 / 72.27 << "pt";
 			break;
 		case LyXLength::PT: //< Point = 1/72.27in = 0.351mm
-			result << len.value() * 72 / 72.27 << "pt"; 
+			result << len.value() * 72 / 72.27 << "pt";
 			break;
 		case LyXLength::BP: //< Big point (72bp = 1in), also PostScript point
 			result << len.value() << "pt";
@@ -383,18 +383,18 @@ string const InsetGraphics::toDocbookLength(LyXLength const & len) const
 		case LyXLength::PCW: //< Percent of ColumnWidth
 		case LyXLength::PPW: //< Percent of PageWidth
 		case LyXLength::PLW: //< Percent of LineWidth
-		case LyXLength::PTH: //< Percent of TextHeight	
+		case LyXLength::PTH: //< Percent of TextHeight
 		case LyXLength::PPH: //< Percent of Paper
-			// Sigh, this will go wrong. 
+			// Sigh, this will go wrong.
 			result << len.value() << "%";
 			break;
 		default:
-			result << len.asString(); 
+			result << len.asString();
 			break;
 	}
 	return result.str();
 }
- 
+
 string const InsetGraphics::createDocBookAttributes() const
 {
 	// Calculate the options part of the command, we must do it to a string
@@ -420,7 +420,7 @@ string const InsetGraphics::createDocBookAttributes() const
 			options << "scalefit=\"1\" ";
 		}
 	}
-	
+
 
 	if (!params().special.empty())
 	    options << params().special << " ";

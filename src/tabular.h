@@ -205,11 +205,11 @@ public:
 	int getDescentOfRow(int row) const;
 	///
 	int getHeightOfTabular() const;
-	/// 
+	///
 	void setAscentOfRow(int row, int height);
-	/// 
+	///
 	void setDescentOfRow(int row, int height);
-	/// 
+	///
 	void setWidthOfCell(int cell, int new_width);
 	///
 	void setAllLines(int cell, bool line);

@@ -103,7 +103,7 @@ void QPrefs::build_dialog()
 	bcview().setRestore(dialog_->restorePB);
 
 	dialog_->uiModule->lastfilesSB->setMaxValue(maxlastfiles);
-	
+
 	QPrefLanguageModule * langmod(dialog_->languageModule);
 
 	langmod->defaultLanguageCO->clear();

@@ -141,9 +141,9 @@ string const asValidLatexCommand(string const & input,
 			output = input;
 
 		// Jurabib does not support the 'full' natbib style.
-                string::size_type const n = output.size() - 1;
-                if (output != "cite*" && output[n] == '*')
-                        output = output.substr(0, n);
+		string::size_type const n = output.size() - 1;
+		if (output != "cite*" && output[n] == '*')
+			output = output.substr(0, n);
 
 		break;
 	}

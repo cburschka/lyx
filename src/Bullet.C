@@ -37,7 +37,7 @@ Bullet const ITEMIZE_DEFAULTS[4] = { Bullet(0, 8),//"\\(\\bullet\\)"
 
 
 Bullet::Bullet(int f, int c, int s)
-  : font(f), character(c), size(s), user_text(0)
+	: font(f), character(c), size(s), user_text(0)
 {
 	if (f < MIN || f >= FONTMAX) {
 		font = MIN;

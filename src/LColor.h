@@ -23,13 +23,11 @@
 #include <string>
 
 /**
-  This is a stateless class.
-
-  It has one basic purposes:
-  To serve as a color-namespace container (the Color enum).
-
-
-  */
+ * This is a stateless class.
+ *
+ * It has one basic purposes:
+ * To serve as a color-namespace container (the Color enum).
+ */
 /**
  * \class LColor
  *
@@ -234,15 +232,15 @@ private:
  *  passed as a function argument without having to expose LColor.h.
  */
 class LColor_color {
-        LColor::color val_;
+	LColor::color val_;
 public:
-        /** The default constructor is nasty,
+	/** The default constructor is nasty,
 	 *  but allows us to use LColor_color in STL containers.
 	 */
 	LColor_color() : val_(static_cast<LColor::color>(-1)) {}
 
 	LColor_color(LColor::color val) : val_(val) {}
-        operator LColor::color() const{ return val_; }
+	operator LColor::color() const{ return val_; }
 };
 
 

@@ -239,7 +239,7 @@ void updateExternal(InsetExternalParams const & params,
 			exportdata.addExternalFile(rit->first, file);
 		}
 	}
-	
+
 	// Do we need to perform the conversion?
 	// Yes if to_file does not exist or if from_file is newer than to_file
 	if (support::compare_timestamps(abs_from_file, abs_to_file) < 0)

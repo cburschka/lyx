@@ -118,10 +118,10 @@ string const browseLibFile(string const & dir,
 {
 	pair<string,string> const dir1(_("System files|#S#s"),
 				       AddName(system_lyxdir(), dir));
-	
+
 	pair<string,string> const dir2(_("User files|#U#u"),
 				       AddName(user_lyxdir(), dir));
-	
+
 	string const result = browseFile(LibFileSearch(dir, name, ext), title,
 				   filters, false, dir1, dir2);
 

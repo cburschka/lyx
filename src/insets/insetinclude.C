@@ -632,8 +632,8 @@ void InsetInclude::draw(PainterInfo & pi, int x, int y) const
 }
 
 bool InsetInclude::display() const
-{ 
-	return type(params_) != INPUT; 
+{
+	return type(params_) != INPUT;
 }
 
 

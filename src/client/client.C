@@ -123,7 +123,7 @@ int connect(string const & name)
 		     << ": " << strerror(errno) << endl;
 		::close(fd);
 		return -1;
-        }
+	}
 	if (::fcntl(fd, F_SETFL, O_NONBLOCK) == -1) {
 		cerr << "lyxclient: Could not set O_NONBLOCK for socket: "
 		     << strerror(errno) << endl;
@@ -256,7 +256,7 @@ bool LyXDataSocket::connected() const
 bool LyXDataSocket::readln(string & line)
 {
 	int const charbuf_size = 100;
-        char charbuf[charbuf_size]; // buffer for the ::read() system call
+	char charbuf[charbuf_size]; // buffer for the ::read() system call
 	int count;
 	string::size_type pos;
 

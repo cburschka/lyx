@@ -358,9 +358,9 @@ string const hexname(LColor_color col)
 		lyxerr << "X can't find color for \"" << lcolor.getLyXName(col)
 		       << '"' << endl;
 		return string();
-        }
+	}
 
-        ostringstream os;
+	ostringstream os;
 
 	os << setbase(16) << setfill('0')
 	   << setw(2) << r

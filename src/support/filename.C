@@ -71,7 +71,7 @@ string const FileName::mangledFilename() const
 {
 	// We need to make sure that every FileName instance for a given
 	// filename returns the same mangled name.
-    typedef map<string, string> MangledMap;
+	typedef map<string, string> MangledMap;
 	static MangledMap mangledNames;
 	MangledMap::const_iterator const it = mangledNames.find(name_);
 	if (it != mangledNames.end())

@@ -24,18 +24,18 @@ class BufferParams;
 struct Language;
 
 /** The packages and commands that a buffer needs. This class
-    contains a list<string>.  Each of the LaTeX packages that a buffer needs
-    should be added with void require(string const & name).
-
-    i.e require("amssymb")
-
-    To add support you should only need to require() the package name as
-    packages which don't have special requirements are handled automatically.
-    If your new package does need special consideration you'll need to alter
-    string const getPackages() const;
-    Remember to update the validate function in buffer.C and paragraph.C
-    when you do so.
-*/
+ *  contains a list<string>.  Each of the LaTeX packages that a buffer needs
+ *  should be added with void require(string const & name).
+ *
+ *  i.e require("amssymb")
+ *
+ *  To add support you should only need to require() the package name as
+ *  packages which don't have special requirements are handled automatically.
+ *  If your new package does need special consideration you'll need to alter
+ *  string const getPackages() const;
+ *  Remember to update the validate function in buffer.C and paragraph.C
+ *  when you do so.
+ */
 class LaTeXFeatures {
 public:
 	///

@@ -39,11 +39,11 @@ public:
 		      LyXFont::FONT_SHAPE shape,
 		      LyXFont::FONT_SIZE size)
 	{
-                if (fonts_[family][series][shape][size])
-                        return fonts_[family][series][shape][size];
-                else
+		if (fonts_[family][series][shape][size])
+			return fonts_[family][series][shape][size];
+		else
 			return doLoad(family, series, shape, size);
-        }
+	}
 
 	bool isSpecial(LyXFont const & f)
 	{
@@ -72,9 +72,9 @@ private:
 
 	/** Does the actual loading of a font. Updates fontstruct. */
 	XftFont * doLoad(LyXFont::FONT_FAMILY family,
-                         LyXFont::FONT_SERIES series,
-                         LyXFont::FONT_SHAPE shape,
-                         LyXFont::FONT_SIZE size);
+			 LyXFont::FONT_SERIES series,
+			 LyXFont::FONT_SHAPE shape,
+			 LyXFont::FONT_SIZE size);
 };
 
 ///

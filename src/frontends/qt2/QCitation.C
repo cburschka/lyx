@@ -219,7 +219,7 @@ void QCitation::update_contents()
 
 
 void QCitation::updateBrowser(QListBox * browser,
-                              vector<string> const & keys) const
+			      vector<string> const & keys) const
 {
 	browser->clear();
 

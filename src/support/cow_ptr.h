@@ -60,9 +60,9 @@ cow_ptr<T>::cow_ptr(cow_ptr const & other)
 template <typename T>
 cow_ptr<T> & cow_ptr<T>::operator=(cow_ptr const & other)
 {
-        if (&other != this)
+	if (&other != this)
 		ptr_ = other.ptr_;
-        return *this;
+	return *this;
 }
 
 
@@ -114,7 +114,7 @@ T * cow_ptr<T>::get()
 template <typename T>
 void cow_ptr<T>::copy()
 {
-        if (!ptr_.unique())
+	if (!ptr_.unique())
 		ptr_ = boost::shared_ptr<T>(new T(*ptr_.get()));
 }
 

@@ -122,10 +122,10 @@ StyleChanger::StyleChanger(MetricsBase & mb, Styles style)
 	:	Changer<MetricsBase>(mb)
 {
 	static const int diff[4][4] =
-         { { 0, 0, -3, -5 },
-					 { 0, 0, -3, -5 },
-					 { 3, 3,  0, -2 },
-					 { 5, 5,  2,  0 } };
+		{ { 0, 0, -3, -5 },
+		  { 0, 0, -3, -5 },
+		  { 3, 3,  0, -2 },
+		  { 5, 5,  2,  0 } };
 	save_ = mb;
 	int t = diff[mb.style][style];
 	if (t > 0)

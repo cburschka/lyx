@@ -399,7 +399,7 @@ void Menu::checkShortcuts() const
 
 void MenuBackend::specialMenu(string const &name)
 {
-	if (hasMenu(name)) 
+	if (hasMenu(name))
 		specialmenu_ = &getMenu(name);
 }
 
@@ -801,7 +801,7 @@ void MenuBackend::expand(Menu const & frommenu, Menu & tomenu,
 			break;
 
 		case MenuItem::Command:
-			if (!specialmenu_ 
+			if (!specialmenu_
 			    || !specialmenu_->hasFunc(cit->func()))
 				tomenu.add(*cit, view);
 		}

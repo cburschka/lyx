@@ -20,11 +20,10 @@
 const long maxlastfiles = 20;
 
 /** The latest documents loaded.
-    This class takes care of the last .lyx files used by the LyX user. It
-    both reads and writes this information to a file. The number of files
-    kept are user defined, but defaults to four.
-    @author Lars Gullik Bjønnes
-*/
+ *  This class takes care of the last .lyx files used by the LyX user. It
+ *  both reads and writes this information to a file. The number of files
+ *  kept are user defined, but defaults to four.
+ */
 class LastFiles : boost::noncopyable {
 public:
 	///

@@ -31,7 +31,7 @@ public:
 	/// connect a connection notification from the LyXServerSocket
 	io_callback(int fd, boost::function<void()> func);
 private:
-        bool data_received(Glib::IOCondition);
+	bool data_received(Glib::IOCondition);
 	/// our notifier
 	sigc::connection conn_;
 	/// The callback function

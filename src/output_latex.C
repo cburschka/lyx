@@ -225,7 +225,7 @@ TeXOnePar(Buffer const & buf,
 
 	// In an an inset with unlimited length (all in one row),
 	// force layout to default
-	if (!pit->forceDefaultParagraphs()) 
+	if (!pit->forceDefaultParagraphs())
 		style = pit->layout();
 	else
 		style = bparams.getLyXTextClass().defaultLayout();
@@ -297,7 +297,7 @@ TeXOnePar(Buffer const & buf,
 			os << '\n';
 			texrow.newline();
 		}
-	} 
+	}
 
 	switch (style->latextype) {
 	case LATEX_COMMAND:

@@ -433,7 +433,7 @@ ButtonPolicy::SMInput FormCitation::input(FL_OBJECT * ob, long)
 			   controller().getCiteStrings(currentCitekey));
 		fl_set_choice(dialog_->choice_style, choice);
 	}
-	
+
 	// Invalid if no citation has been chosen
 	if (fl_get_browser_maxline(dialog_->browser_cite) < 1)
 		activate = ButtonPolicy::SMI_INVALID;

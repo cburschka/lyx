@@ -27,7 +27,7 @@ class TextView;
 class GPreamble : public GnomeCB<ControlPreamble> {
 public:
 	///
-        GPreamble();
+	GPreamble();
 	///
 	~GPreamble();
 

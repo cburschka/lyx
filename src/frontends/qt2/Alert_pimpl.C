@@ -32,8 +32,8 @@ using std::string;
 
 
 int prompt_pimpl(string const & tit, string const & question,
-           int default_button, int cancel_button,
-	   string const & b1, string const & b2, string const & b3)
+		 int default_button, int cancel_button,
+		 string const & b1, string const & b2, string const & b3)
 {
 	string const title = bformat(_("LyX: %1$s"), tit);
 

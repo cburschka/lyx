@@ -103,7 +103,7 @@ bool LyXText::isMainText() const
 
 
 // takes absolute x,y coordinates
-InsetBase * LyXText::checkInsetHit(int x, int y) const 
+InsetBase * LyXText::checkInsetHit(int x, int y) const
 {
 	par_type pit;
 	par_type end;
@@ -822,7 +822,7 @@ void LyXText::setCounter(Buffer const & buf, par_type pit)
 				    in->lyxCode() == InsetBase::WRAP_CODE) {
 					isOK = true;
 					break;
-				} 
+				}
 #ifdef WITH_WARNINGS
 #warning replace this code by something that works
 // This code does not work because we have currently no way to move up

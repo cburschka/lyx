@@ -12,7 +12,6 @@
 
 #include <config.h>
 
-
 #include "FormAboutlyx.h"
 #include "xformsBC.h"
 #include "ControlAboutlyx.h"

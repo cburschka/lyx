@@ -85,11 +85,11 @@ void GToc::updateType()
 
 	typestore_->clear();
 	vector<string> types = controller().getTypes();
-	
+
 	// Because tiny empty ComboBoxes just look silly
 	int const emptycombosize = 130;
 	typecombo_->set_size_request(types.empty() ? emptycombosize : -1, -1);
-	
+
 	vector<string>::iterator it = types.begin();
 	vector<string>::iterator end = types.end();
 	for(;it != end; ++it) {
@@ -137,7 +137,7 @@ void GToc::updateContents()
 
 	toc::Toc::const_iterator cit = contents.begin();
 	toc::Toc::const_iterator end = contents.end();
-	
+
 	for (int rowindex = 0; cit != end; ++cit, ++rowindex) {
 		Gtk::ListStore::iterator row = tocstore_->append();
 		(*row)[listCol_] = cit->asString();

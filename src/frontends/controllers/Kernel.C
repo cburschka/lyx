@@ -50,16 +50,16 @@ void Kernel::disconnect(string const & name) const
 bool Kernel::isBufferAvailable() const
 {
 	if (!lyxview_.view().get())
-                return false;
-        return lyxview_.view()->available();
+		return false;
+	return lyxview_.view()->available();
 }
 
 
 bool Kernel::isBufferReadonly() const
 {
 	if (!lyxview_.buffer())
-                return true;
-        return lyxview_.buffer()->isReadonly();
+		return true;
+	return lyxview_.buffer()->isReadonly();
 }
 
 

@@ -32,7 +32,7 @@ namespace Gtk {
 class GView : public ViewBase, public SigC::Object {
 public:
 	///
-        GView(string const & name);
+	GView(string const & name);
 	///
 	virtual ~GView();
 

@@ -130,8 +130,8 @@ void Formats::add(string const & name)
 
 
 void Formats::add(string const & name, string const & extension,
-                  string const & prettyname, string const & shortcut,
-                  string const & viewer, string const & editor)
+		  string const & prettyname, string const & shortcut,
+		  string const & viewer, string const & editor)
 {
 	FormatList::iterator it =
 		find_if(formatlist.begin(), formatlist.end(),
@@ -172,7 +172,7 @@ void Formats::setViewer(string const & name, string const & command)
 
 
 bool Formats::view(Buffer const & buffer, string const & filename,
-                   string const & format_name) const
+		   string const & format_name) const
 {
 	if (filename.empty())
 		return false;

@@ -2113,9 +2113,9 @@ int LyXText::dist(int x, int y) const
 	else if (y > yo_ + descent())
 		yy = y - yo_ - descent();
 
-	lyxerr << " xo_=" << xo_ << "  yo_=" << yo_ 
+	lyxerr << " xo_=" << xo_ << "  yo_=" << yo_
 	       << " width_=" << width_ << " ascent=" << ascent()
-	       << " descent=" << descent() 
+	       << " descent=" << descent()
 	       << " dist=" << xx+yy <<endl;
 	return xx + yy;
 }

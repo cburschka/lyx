@@ -1481,14 +1481,14 @@ bool IsInsetChar(char c)
 
 bool Paragraph::isHfill(pos_type pos) const
 {
-	return isInset(pos) 
+	return isInset(pos)
 		&& getInset(pos)->lyxCode() == InsetBase::HFILL_CODE;
 }
 
 
 bool Paragraph::isNewline(pos_type pos) const
 {
-	return isInset(pos) 
+	return isInset(pos)
 		&& getInset(pos)->lyxCode() == InsetBase::NEWLINE_CODE;
 }
 

@@ -48,10 +48,10 @@ enum CiteEngine {
 };
 
 class CiteEngine_enum {
-        CiteEngine val_;
+	CiteEngine val_;
 public:
 	CiteEngine_enum(CiteEngine val) : val_(val) {}
-        operator CiteEngine() const{ return val_; }
+	operator CiteEngine() const{ return val_; }
 };
 
 } // namespace biblio

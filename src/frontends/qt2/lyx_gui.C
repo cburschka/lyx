@@ -157,10 +157,10 @@ void parse_init(int & argc, char * argv[])
 	static LQApplication app(argc, argv);
 
 #if QT_VERSION >= 0x030200
-        // install translation file for Qt built-in dialogs
+	// install translation file for Qt built-in dialogs
 	// These are only installed since Qt 3.2.x
-        static QTranslator qt_trans(0);
-        if (qt_trans.load(QString("qt_") + QTextCodec::locale(),
+	static QTranslator qt_trans(0);
+	if (qt_trans.load(QString("qt_") + QTextCodec::locale(),
 			  qInstallPathTranslations())) {
 		app.installTranslator(&qt_trans);
 		// even if the language calls for RtL, don't do that

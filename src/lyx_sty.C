@@ -30,7 +30,7 @@ string const lyxline_def =
 string const noun_def = "\\newcommand{\\noun}[1]{\\textsc{#1}}";
 
 string const lyxarrow_def =
-      "\\newcommand{\\lyxarrow}{\\leavevmode\\,$\\triangleright$\\,\\allowbreak}";
+	"\\newcommand{\\lyxarrow}{\\leavevmode\\,$\\triangleright$\\,\\allowbreak}";
 
 // for quotes without babel. This does not give perfect results, but
 // anybody serious about non-english quotes should use babel (JMarc).

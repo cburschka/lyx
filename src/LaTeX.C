@@ -398,7 +398,7 @@ bool LaTeX::runMakeIndex(string const & f)
 	lyxerr[Debug::LATEX] << "idx file has been made,"
 		" running makeindex on file "
 			     <<  f << endl;
-        string tmp = lyxrc.index_command + " ";
+	string tmp = lyxrc.index_command + " ";
 	tmp += QuoteName(f);
 	Systemcall one;
 	one.startscript(Systemcall::Wait, tmp);

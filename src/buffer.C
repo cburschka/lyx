@@ -795,7 +795,7 @@ bool Buffer::do_writeFile(ostream & ofs) const
 	ofs << "\\begin_header\n";
 	params().writeFile(ofs);
 	ofs << "\\end_header\n";
-	
+
 	// write the text
 	ofs << "\n\\begin_body\n";
 	text().write(*this, ofs);
@@ -1002,7 +1002,7 @@ bool Buffer::isSGML() const
 
 void Buffer::makeLinuxDocFile(string const & fname,
 			      OutputParams const & runparams,
-                              bool body_only)
+			      bool body_only)
 {
 	ofstream ofs;
 	if (!openFileWrite(ofs, fname))

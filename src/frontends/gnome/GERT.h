@@ -27,7 +27,7 @@ namespace Gtk {
 class GERT : public GnomeCB<ControlERT> {
 public:
 	///
-        GERT();
+	GERT();
 	///
 	~GERT();
 

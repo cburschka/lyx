@@ -45,7 +45,7 @@ public:
 
 
 void GCharacter::PopulateComboBox(Gtk::ComboBox * combo,
-                                  vector<string> const & strings)
+				  vector<string> const & strings)
 {
 	stringcolumns * cols = new stringcolumns;
 	Glib::RefPtr<Gtk::ListStore> model = Gtk::ListStore::create(*cols);

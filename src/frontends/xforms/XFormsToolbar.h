@@ -66,7 +66,7 @@ public:
 	void add(FuncRequest const & func, std::string const & tooltip);
 	void hide(bool);
 	void show(bool);
- 	void update();
+	void update();
 	LayoutBox * layout() const { return layout_.get(); }
 
 	/// an item on the toolbar

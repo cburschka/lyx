@@ -61,7 +61,7 @@ MathArray const & MathXYArrowInset::targetCell() const
 		       << "target: n: " << n << " out of range" << endl;
 		n = 0;
 	}
-  return p->cell(n);
+	return p->cell(n);
 #else
 	static MathArray dummy;
 	return dummy;
@@ -72,7 +72,7 @@ MathArray const & MathXYArrowInset::targetCell() const
 MathArray const & MathXYArrowInset::sourceCell() const
 {
 #if 0
-  return targetMatrix()->cell(mi_.idx);
+	return targetMatrix()->cell(mi_.idx);
 #else
 	static MathArray dummy;
 	return dummy;

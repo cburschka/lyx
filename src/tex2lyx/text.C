@@ -310,7 +310,7 @@ void translate_box_len(string const & length, string & value, string & unit, str
  * in \p extensions.
  */
 string find_file(string const & name, string const & path,
-                 char const * const * extensions)
+		 char const * const * extensions)
 {
 	for (char const * const * what = extensions; *what; ++what) {
 		// We don't use ChangeExtension() because it does the wrong
@@ -500,7 +500,7 @@ void check_space(Parser const & p, ostream & os, Context & context)
  * \return true if the command was parsed, false otherwise.
  */
 bool parse_command(string const & command, Parser & p, ostream & os,
-                   bool outer, Context & context)
+		   bool outer, Context & context)
 {
 	if (known_commands.find(command) != known_commands.end()) {
 		vector<ArgumentType> const & template_arguments = known_commands[command];
@@ -532,7 +532,7 @@ bool parse_command(string const & command, Parser & p, ostream & os,
 
 /// Parses a minipage or parbox
 void parse_box(Parser & p, ostream & os, unsigned flags, bool outer,
-               Context & parent_context, bool use_parbox)
+	       Context & parent_context, bool use_parbox)
 {
 	string position;
 	string inner_pos;
@@ -811,7 +811,7 @@ void parse_comment(Parser & p, ostream & os, Token const & t, Context & context)
  * Spaces are skipped, but comments are written to \p os.
  */
 void eat_whitespace(Parser & p, ostream & os, Context & context,
-                    bool eatParagraph)
+		    bool eatParagraph)
 {
 	while (p.good()) {
 		Token const & t = p.get_token();
@@ -834,8 +834,8 @@ void eat_whitespace(Parser & p, ostream & os, Context & context,
  * \param newvalue New value of the attribute
  */
 void parse_text_attributes(Parser & p, ostream & os, unsigned flags, bool outer,
-                           Context & context, string const & attribute,
-                           string & currentvalue, string const & newvalue)
+			   Context & context, string const & attribute,
+			   string & currentvalue, string const & newvalue)
 {
 	context.check_layout(os);
 	string oldvalue = currentvalue;
@@ -849,7 +849,7 @@ void parse_text_attributes(Parser & p, ostream & os, unsigned flags, bool outer,
 
 /// get the arguments of a natbib or jurabib citation command
 std::pair<string, string> getCiteArguments(Parser & p, ostream & os,
-                                           Context & context, bool natbibOrder)
+					   Context & context, bool natbibOrder)
 {
 	// We need to distinguish "" and "[]", so we can't use p.getOpt().
 

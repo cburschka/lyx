@@ -63,10 +63,10 @@ void ControlCharacter::dispatchParams()
 	if (!font_.get())
 		return;
 
-        string data;
-        if (font2string(*font_.get(), toggleall_, data)) {
-                kernel().dispatch(FuncRequest(LFUN_FREEFONT_UPDATE, data));
-        }
+	string data;
+	if (font2string(*font_.get(), toggleall_, data)) {
+		kernel().dispatch(FuncRequest(LFUN_FREEFONT_UPDATE, data));
+	}
 }
 
 

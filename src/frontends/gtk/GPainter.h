@@ -114,7 +114,7 @@ public:
 		char const * str, size_t l,
 		LyXFont const & f);
 
-        virtual void text(int x, int y, wchar_t const * str, int l,
+	virtual void text(int x, int y, wchar_t const * str, int l,
 			       LyXFont const & f);
 
 	/// draw a char at position x, y (y is the baseline)

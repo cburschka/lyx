@@ -83,7 +83,7 @@ keyword_item lyxrcTags[] = {
 	{ "\\escape_chars", LyXRC::RC_ESC_CHARS },
 	{ "\\font_encoding", LyXRC::RC_FONT_ENCODING },
 	{ "\\format", LyXRC::RC_FORMAT },
-        { "\\index_command", LyXRC::RC_INDEX_COMMAND },
+	{ "\\index_command", LyXRC::RC_INDEX_COMMAND },
 	{ "\\input", LyXRC::RC_INPUT },
 	{ "\\kbmap", LyXRC::RC_KBMAP },
 	{ "\\kbmap_primary", LyXRC::RC_KBMAP_PRIMARY },
@@ -207,7 +207,7 @@ void LyXRC::setDefaults() {
 	chktex_command = "chktex -n1 -n3 -n6 -n9 -n22 -n25 -n30 -n38";
 	bibtex_command = "bibtex";
 	fontenc = "default";
-        index_command = "makeindex -c -q";
+	index_command = "makeindex -c -q";
 	dpi = 75;
 	// Because a screen typically is wider than a piece of paper:
 	zoom = 150;
@@ -588,11 +588,11 @@ int LyXRC::read(LyXLex & lexrc)
 			}
 			break;
 
-                case RC_INDEX_COMMAND:
-                        if (lexrc.next()) {
-                                index_command = lexrc.getString();
-                        }
-                        break;
+		case RC_INDEX_COMMAND:
+			if (lexrc.next()) {
+				index_command = lexrc.getString();
+			}
+			break;
 
 		case RC_SCREEN_DPI:
 			if (lexrc.next()) {
@@ -1254,11 +1254,11 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc) const
 		    bibtex_command != system_lyxrc.bibtex_command) {
 			os << "\\bibtex_command \"" << bibtex_command << "\"\n";
 		}
-        case RC_INDEX_COMMAND:
-                if (ignore_system_lyxrc ||
-                    index_command != system_lyxrc.index_command) {
-                        os << "\\index_command \"" << index_command << "\"\n";
-                }
+	case RC_INDEX_COMMAND:
+		if (ignore_system_lyxrc ||
+		    index_command != system_lyxrc.index_command) {
+			os << "\\index_command \"" << index_command << "\"\n";
+		}
 	case RC_KBMAP:
 		if (ignore_system_lyxrc ||
 		    use_kbmap != system_lyxrc.use_kbmap) {
@@ -2168,8 +2168,8 @@ string const LyXRC::getDescription(LyXRCTags tag)
 		str = _("Define the options of bibtex (cf. man bibtex) or select an alternative compiler (e.g. mlbibtex or bibulus).");
 		break;
 
-        case RC_INDEX_COMMAND:
-                str = _("Define the options of makeindex (cf. man makeindex) or select an alternative compiler (e.g. xindy).");
+	case RC_INDEX_COMMAND:
+		str = _("Define the options of makeindex (cf. man makeindex) or select an alternative compiler (e.g. xindy).");
 		break;
 
 	case RC_CURSOR_FOLLOWS_SCROLLBAR:

@@ -126,7 +126,7 @@ void QLPopupMenu::populate(Menu * menu)
 			   represented meaningfully and std::string
 			   does not work (2) only 1-key bindings can
 			   be represented in menus.
-			   
+
 			   This is why the unpleasant hack bellow is
 			   needed (JMarc)
 			*/

@@ -111,7 +111,7 @@ string const GLyXKeySym::print(key_modifier::state mod) const
 	//Uppercase the first letter, for Ctrl+N rather than Ctrl+n,
 	//and for Ctrl+Greater rather than Ctrl+GREATER
 	string symname = getSymbolName();
-  if (!symname.empty()) {
+	if (!symname.empty()) {
 	  symname[0] = lyx::support::uppercase(symname[0]);
 	  buf += symname;
 	}

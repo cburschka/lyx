@@ -95,7 +95,7 @@ string const ResizeLatexCommand::front_impl() const
 	if (data.no_resize())
 		return string();
 
-        std::ostringstream os;
+	std::ostringstream os;
 	if (data.usingScale()) {
 		double const scl = data.scale / 100.0;
 		os << "\\scalebox{" << scl << "}{" << scl << "}{";
@@ -188,14 +188,14 @@ string const RotationLatexCommand::front_impl() const
 	if (data.no_rotation())
 		return string();
 
-        std::ostringstream os;
-        os << "\\rotatebox";
+	std::ostringstream os;
+	os << "\\rotatebox";
 
 	if (data.origin() != RotationData::DEFAULT)
 		os << "[origin=" << data.origin() << ']';
 
 	os << '{' << data.angle() << "}{";
-        return os.str();
+	return os.str();
 }
 
 
@@ -227,7 +227,7 @@ string const ResizeLatexOption::option_impl() const
 	if (data.no_resize())
 		return string();
 
-        std::ostringstream os;
+	std::ostringstream os;
 	if (data.usingScale()) {
 		if (!float_equal(data.scale, 100.0, 0.05))
 			os << "scale=" << data.scale / 100.0 << ',';

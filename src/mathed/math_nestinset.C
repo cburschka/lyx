@@ -927,7 +927,7 @@ void MathNestInset::lfunMouseMotion(LCursor & cur, FuncRequest & cmd)
 	if (cmd.button() == mouse_button::button1) {
 		LCursor & bvcur = cur.bv().cursor();
 		if (abs(cmd.x - first_x) + abs(cmd.y - first_y) > 4
-        && bvcur.anchor_.hasPart(cur)) {
+		    && bvcur.anchor_.hasPart(cur)) {
 			first_x = cmd.x;
 			first_y = cmd.y;
 

@@ -7,12 +7,12 @@ CoordCache theCoords;
 // just a helper to be able to set a breakpoint
 void lyxbreaker(void const * data, const char * hint, int size)
 {
-	lyxerr << "break on pointer: " << data << " hint: " << hint 
+	lyxerr << "break on pointer: " << data << " hint: " << hint
 		<< " size: " << size << std::endl;
 }
 
 
-void CoordCache::clear() 
+void CoordCache::clear()
 {
 	lyxerr << "CoordCache: removing " << arrays_.data_.size()
 		<< " arrays" << std::endl;

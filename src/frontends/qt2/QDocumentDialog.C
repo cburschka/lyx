@@ -194,7 +194,7 @@ void QDocumentDialog::saveDefaultClicked()
 
 void QDocumentDialog::useDefaultsClicked()
 {
-    form_->useClassDefaults();
+	form_->useClassDefaults();
 }
 
 

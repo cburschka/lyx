@@ -150,7 +150,7 @@ void InsetBranch::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 		else if (cmd.argument == "close") {
 			setStatus(Collapsed);
 			leaveInset(cur, *this);
-        } else if (cmd.argument == "toggle") {
+		} else if (cmd.argument == "toggle") {
 			if (isOpen()) {
 				setStatus(Collapsed);
 				leaveInset(cur, *this);

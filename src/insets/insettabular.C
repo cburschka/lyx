@@ -270,10 +270,10 @@ void InsetTabular::draw(PainterInfo & pi, int x, int y) const
 	for (int i = 0; i < tabular.rows(); ++i) {
 		int nx = x;
 		idx = tabular.getCellNumber(i, 0);
-		if (y + tabular.getDescentOfRow(i) <= 0 
+		if (y + tabular.getDescentOfRow(i) <= 0
 		    && y - tabular.getAscentOfRow(i) < pi.pain.paperHeight()) {
-			y += tabular.getDescentOfRow(i) 
-				+ tabular.getAscentOfRow(i + 1) 
+			y += tabular.getDescentOfRow(i)
+				+ tabular.getAscentOfRow(i + 1)
 				+ tabular.getAdditionalHeight(i + 1);
 			continue;
 		}
@@ -1567,7 +1567,7 @@ bool InsetTabular::isRightToLeft(LCursor & cur) const
 	BOOST_ASSERT(cur.size() > 1);
 	Paragraph const & parentpar = cur[cur.size() - 2].paragraph();
 	LCursor::pos_type const parentpos = cur[cur.size() - 2].pos();
-	return parentpar.getFontSettings(cur.bv().buffer()->params(), 
+	return parentpar.getFontSettings(cur.bv().buffer()->params(),
 					 parentpos).language()->RightToLeft();
 }
 

@@ -334,9 +334,9 @@ int InsetCitation::latex(Buffer const & buffer, ostream & os,
 	biblio::CiteEngine const cite_engine = buffer.params().cite_engine;
 	string const cite_str =
 		biblio::asValidLatexCommand(getCmdName(), cite_engine);
-	
+
 	os << "\\" << cite_str;
-	
+
 	string const before = getSecOptions();
 	string const after  = getOptions();
 	if (!before.empty() && cite_engine != biblio::ENGINE_BASIC)

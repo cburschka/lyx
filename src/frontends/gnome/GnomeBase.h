@@ -32,7 +32,7 @@ namespace Gtk {
 class GnomeBase : public ViewBase, public SigC::Object {
 public:
 	///
-        GnomeBase(string const & name);
+	GnomeBase(string const & name);
 	///
 	virtual ~GnomeBase();
 

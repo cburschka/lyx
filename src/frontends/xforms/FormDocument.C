@@ -1032,7 +1032,7 @@ bool FormDocument::options_apply(BufferParams & params)
 		params.cite_engine = biblio::ENGINE_JURABIB;
 		break;
 	}
-	
+
 	params.use_bibtopic  = fl_get_button(options_->check_bibtopic);
 
 	int tmpchar = int(fl_get_counter_value(options_->counter_secnumdepth));

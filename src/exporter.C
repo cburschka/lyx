@@ -86,14 +86,14 @@ enum CopyStatus {
 
 /** copy file \p sourceFile to \p destFile. If \p force is false, the user
  *  will be asked before existing files are overwritten.
- *  \return 
+ *  \return
  *  - SUCCESS if this file got copied
  *  - FORCE   if subsequent calls should not ask for confirmation before
  *            overwriting files anymore.
  *  - CANCEL  if the export should be cancelled
  */
 CopyStatus copyFile(string const & sourceFile, string const & destFile,
-                   bool force)
+		    bool force)
 {
 	CopyStatus ret = force ? FORCE : SUCCESS;
 
@@ -281,8 +281,8 @@ bool operator==(ExportedFile const & f1, ExportedFile const & f2)
 
 
 void ExportData::addExternalFile(string const & format,
-                                 string const & sourceName,
-                                 string const & exportName)
+				 string const & sourceName,
+				 string const & exportName)
 {
 	BOOST_ASSERT(lyx::support::AbsolutePath(sourceName));
 
@@ -296,7 +296,7 @@ void ExportData::addExternalFile(string const & format,
 
 
 void ExportData::addExternalFile(string const & format,
-                                 string const & sourceName)
+				 string const & sourceName)
 {
 	addExternalFile(format, sourceName, OnlyFilename(sourceName));
 }

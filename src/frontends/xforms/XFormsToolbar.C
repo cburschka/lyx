@@ -143,8 +143,8 @@ void XFormsToolbar::toolbarItem::generateInactivePixmaps()
 	int idummy;
 	Window win;
 
-        XGetGeometry(display, active_pixmap, &win, &idummy, &idummy,
-                     &width, &height, &uidummy, &uidummy);
+	XGetGeometry(display, active_pixmap, &win, &idummy, &idummy,
+		     &width, &height, &uidummy, &uidummy);
 
 	// Produce a darker shade of the button background as the
 	// inactive color. Note the 'hsv.v - 0.2'.

@@ -1334,7 +1334,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd, bool verbose)
 				       << (unknown_tokens == 1 ? "" : "s")
 				       << endl;
 			}
-			
+
 			if (defaults.writeFile(defaults.fileName()))
 				setMessage(_("Document defaults saved in ")
 					   + MakeDisplayPath(fname));
