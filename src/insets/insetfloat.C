@@ -99,11 +99,25 @@ using std::endl;
 //
 // Lgb
 
+namespace {
+
+string floatname(string const & type)
+{
+	FloatList::const_iterator it = floatList[type];
+	if (it == floatList.end())
+		return type;
+
+	return _(it->second.name());
+}
+ 
+} // namespace anon
+
+
 InsetFloat::InsetFloat(BufferParams const & bp, string const & type)
 	: InsetCollapsable(bp), wide_(false)
 {
-	string lab(_("float:"));
-	lab += type;
+	string lab(_("float: "));
+	lab += floatname(type);
 	setLabel(lab);
 	LyXFont font(LyXFont::ALL_SANE);
 	font.decSize();
@@ -294,16 +308,14 @@ string const & InsetFloat::placement() const
 void InsetFloat::wide(bool w)
 {
 	wide_ = w;
-	if (wide_) {
-		string lab(_("float:"));
-		lab += floatType_;
+
+	string lab(_("float:"));
+	lab += floatname(floatType_);
+
+	if (wide_)
 		lab += "*";
-		setLabel(lab);
-	} else {
-		string lab(_("float:"));
-		lab += floatType_;
-		setLabel(lab);
-	}
+
+	setLabel(lab);
 }
 
 
