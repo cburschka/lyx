@@ -18,7 +18,7 @@
 import re
 from parser_tools import find_token, find_tokens, find_end_of_inset, find_end_of
 from sys import stderr
-from string import replace, split, find, replace, strip
+from string import replace, split, find, replace, strip, join
 
 def add_end_layout(lines):
     i = find_token(lines, '\\layout', 0)
@@ -173,18 +173,30 @@ def convert_minipage(lines):
 # Convert line and page breaks
 # Old:
 #\layout Standard
-#\line_top \line_bottom \pagebreak_top \pagebreak_bottom 
+#\line_top \line_bottom \pagebreak_top \pagebreak_bottom \added_space_top xxx \added_space_bottom yyy
 #0
 #
 # New:
+#\begin layout Standard
+#
+#\newpage 
+#
+#\lyxline
+#\begin_inset VSpace xxx
+#\end_inset
+#
+#\end_layout
 #\begin_layout Standard
-#\newpage 
 #
-#\lyxline 
 #0
+#\end_layout
+#\begin_layout Standard
+#
+#\begin_inset VSpace xxx
+#\end_inset
 #\lyxline 
 #
-#\newpage 
+#\newpage
 #
 #\end_layout
 
@@ -195,42 +207,58 @@ def convert_breaks(lines):
         if i == -1:
             return
         i = i + 1
-        line_top = find(lines[i],"\\line_top")
-        line_bot = find(lines[i],"\\line_bottom")
-        pb_top = find(lines[i],"\\pagebreak_top")
-        pb_bot = find(lines[i],"\\pagebreak_bottom")
+        line_top   = find(lines[i],"\\line_top")
+        line_bot   = find(lines[i],"\\line_bottom")
+        pb_top     = find(lines[i],"\\pagebreak_top")
+        pb_bot     = find(lines[i],"\\pagebreak_bottom")
+        vspace_top = find(lines[i],"\\added_space_top")
+        vspace_bot = find(lines[i],"\\added_space_bottom")
 
-        if line_top == -1 and line_bot == -1 and pb_bot == -1 and pb_top == -1:
+        if line_top == -1 and line_bot == -1 and pb_bot == -1 and pb_top == -1 and vspace_top == -1 and vspace_bot == -1:
             continue
 
         for tag in "\\line_top", "\\line_bottom", "\\pagebreak_top", "\\pagebreak_bottom":
             lines[i] = replace(lines[i], tag, "")
+
+        if vspace_top != -1:
+            # the position could be change because of the removal of other
+            # paragraph properties above
+            vspace_top = find(lines[i],"\\added_space_top")
+            tmp_list = split(lines[i][vspace_top:])
+            vspace_top_value = tmp_list[1]
+            lines[i] = lines[i][:vspace_top] + join(tmp_list[2:])
+
+        if vspace_bot != -1:
+            # the position could be change because of the removal of other
+            # paragraph properties above
+            vspace_bot = find(lines[i],"\\added_space_bottom")
+            tmp_list = split(lines[i][vspace_bot:])
+            vspace_bot_value = tmp_list[1]
+            lines[i] = lines[i][:vspace_bot] + join(tmp_list[2:])
+
         lines[i] = strip(lines[i])
         i = i + 1
 
         #  Create an empty paragraph for line and page break that belong
         # above the paragraph
-        #  To simplify the code, and maintain the same insertion point,
-        # I inserted by reverse order. It looks funny. :-)
-        if pb_top !=-1 or line_top != -1:
-            k = i - 3
-            lines.insert(k, '')
-            lines.insert(k, '\\end_layout')
-
-            if line_top != -1:
-                lines.insert(k, '')
-                lines.insert(k, "\\lyxline ")
-                i = i + 2
+        if pb_top !=-1 or line_top != -1 or vspace_bot != -1:
+            
+            paragraph_above = ['','\\begin_layout Standard','','']
 
             if pb_top != -1:
-                lines.insert(k, '')
-                lines.insert(k, "\\newpage ")
-                i = i + 2
+                paragraph_above.extend(['\\newpage ',''])
 
-            lines.insert(k, '')
-            lines.insert(k, '')
-            lines.insert(k, '\\begin_layout Standard')
-            i = i + 5
+            if vspace_top != -1:
+                paragraph_above.extend(['\\begin_inset VSpace ' + vspace_top_value,'\\end_inset ','',''])
+
+            if line_top != -1:
+                paragraph_above.extend(['\\lyxline ',''])
+
+            paragraph_above.extend(['\\end_layout',''])
+
+            #inset new paragraph above the current paragraph
+            lines[i-2:i-2] = paragraph_above
+            i = i + len(paragraph_above)
 
         # Ensure that nested style are converted later.
         k = find_end_of(lines, i, "\\begin_layout", "\\end_layout")
@@ -238,13 +266,23 @@ def convert_breaks(lines):
         if k == -1:
             return
 
-        if line_bot != -1:
-            lines.insert(k, "\\lyxline ")
-            k = k + 1
+        if pb_top !=-1 or line_top != -1 or vspace_bot != -1:
+            
+            paragraph_bellow = ['','\\begin_layout Standard','','']
 
-        if pb_bot != -1:
-            lines.insert(k, "\\newpage ")
-            k = k + 1
+            if line_bot != -1:
+                paragraph_bellow.extend(['\\lyxline ',''])
+
+            if vspace_bot != -1:
+                paragraph_bellow.extend(['\\begin_inset VSpace ' + vspace_bot_value,'\\end_inset ','',''])
+
+            if pb_bot != -1:
+                paragraph_bellow.extend(['\\newpage ',''])
+
+            paragraph_bellow.extend(['\\end_layout',''])
+
+            #inset new paragraph above the current paragraph
+            lines[k + 1: k + 1] = paragraph_bellow
 
 def convert(header, body):
     add_end_layout(body)
