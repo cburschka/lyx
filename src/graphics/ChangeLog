@@ -1,5 +1,10 @@
 2003-02-25  Alfredo Braunstein  <abraunst@libero.it>
 
+	* LoaderQueue.[Ch]: a simplification of the code, eliminated
+	the unneeded input bucket.
+
+2003-02-25  Alfredo Braunstein  <abraunst@libero.it>
+
 	* PreviewLoader.C (FindFirst): use ==, not < with std::find.
 
 2003-02-21  Alfredo Braunstein  <abraunst@libero.it>

@@ -1,3 +1,8 @@
+2003-02-25  Alfredo Braunstein <abraunst@libero.it>
+
+	* forkedcontr.C (timer): Start the loop afresh if an item is deleted.
+	Emiting the signal can result in an arbitrary change to the list.
+
 2003-02-25  Angus Leeming  <leeming@lyx.org>
 
 	* forkedcontr.C (timer): Use a while loop rather than for; makes it

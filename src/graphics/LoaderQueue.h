@@ -64,10 +64,6 @@ private:
 	///
 	static int s_millisecs_ ;
 
-	/// Moves bucket_ to cache_queue_
-	void emptyBucket();
-	/// Adds or reprioritizes one element in cache_queue_
-	void addToQueue(Cache::ItemPtr const & item);
 	/** This is the 'threaded' method, that does the loading in the
 	 *  background.
 	 */

@@ -23,6 +23,7 @@ namespace grfx {
 int LoaderQueue::s_numimages_ = 5;
 int LoaderQueue::s_millisecs_ = 500;
 
+
 LoaderQueue & LoaderQueue::get()
 {
 	static LoaderQueue singleton;
@@ -32,18 +33,18 @@ LoaderQueue & LoaderQueue::get()
 
 void LoaderQueue::loadNext()
 {
-	emptyBucket();
 	lyxerr[Debug::GRAPHICS] << "LoaderQueue: "
 				<< cache_queue_.size()
 				<< " items in the queue" << endl;
 	int counter = s_numimages_;
 	while (cache_queue_.size() && counter--) {
-		if(cache_queue_.front()->status() == WaitingToLoad)
-			cache_queue_.front()->startLoading();
-		cache_set_.erase(cache_queue_.front());
+		Cache::ItemPtr ptr = cache_queue_.front();
+		cache_set_.erase(ptr);
 		cache_queue_.pop_front();
+		if (ptr->status() == WaitingToLoad)
+			ptr->startLoading();
 	}
-	if (cache_queue_.size() || bucket_.size()) {
+	if (cache_queue_.size()) {
 		startLoader();
 	} else {
 		stopLoader();
@@ -66,17 +67,6 @@ LoaderQueue::LoaderQueue() : timer(s_millisecs_, Timeout::ONETIME),
 			     running_(false)
 {
 	timer.timeout.connect(boost::bind(&LoaderQueue::loadNext, this));
-}
-
-
-void LoaderQueue::emptyBucket()
-{
-	lyxerr[Debug::GRAPHICS] << "LoaderQueue: emptying bucket"
-				<< endl;
-	while (! bucket_.empty()) {
-		addToQueue(bucket_.front());
-		bucket_.pop();
-	}
 }
 
 
@@ -105,14 +95,6 @@ bool LoaderQueue::running() const
 
 void LoaderQueue::touch(Cache::ItemPtr const & item)
 {
-	if (! running_)
-		startLoader();
-	bucket_.push(item);
-}
-
-
-void LoaderQueue::addToQueue(Cache::ItemPtr const & item)
-{
 	if (! cache_set_.insert(item).second) {
 		list<Cache::ItemPtr>::iterator
 			it = cache_queue_.begin();
@@ -124,6 +106,8 @@ void LoaderQueue::addToQueue(Cache::ItemPtr const & item)
 			cache_queue_.erase(it);
 	}
 	cache_queue_.push_front(item);
+	if (!running_)
+		startLoader();
 }
 
 

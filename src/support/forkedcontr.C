@@ -131,11 +131,15 @@ void ForkedcallsController::timer()
 		}
 
 		if (remove_it) {
-			// Emit signal and remove the item from the list
+			forkedCalls.erase(it);
+
 			actCall->emitSignal();
 			delete actCall;
-			// erase returns the next element in the list
-			it = forkedCalls.erase(it);
+
+			/* start all over: emiting the signal can result
+			 * in changing the list (Ab)
+			 */
+			it = forkedCalls.begin();
 		} else {
 			++it;
 		}
