@@ -13,6 +13,7 @@
 #include "buffer.h"
 
 #include "author.h"
+#include "BranchList.h"
 #include "buffer_funcs.h"
 #include "bufferlist.h"
 #include "bufferparams.h"
@@ -394,6 +395,20 @@ int Buffer::readHeader(LyXLex & lex)
 	int unknown_tokens = 0;
 	int line = -1;
 	int begin_header_line = -1;
+
+	// Initialize parameters that may be/go lacking in header:
+	params().branchlist().clear();
+	params().options.erase();
+	params().float_placement.erase();
+	params().paperwidth.erase();
+	params().paperheight.erase();
+	params().leftmargin.erase();
+	params().rightmargin.erase();
+	params().topmargin.erase();
+	params().bottommargin.erase();
+	params().headheight.erase();
+	params().headsep.erase();
+	params().footskip.erase();
 
 	while (lex.isOK()) {
 		lex.next();

@@ -1,3 +1,9 @@
+2005-03-27  Martin Vermeer  <martin.vermeer@hut.fi>
+
+	* buffer.[Ch]:
+	* BranchList.h: fix bugs 1844,1845: document settings don't
+	stick
+
 2005-03-14  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* lyxrc.C (setDefaults, read, output, getDescription): add support
