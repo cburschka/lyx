@@ -106,7 +106,8 @@ void FormSplash::build()
 	obj = fl_add_text(FL_NORMAL_TEXT, 248, 265, 170, 16,
 			  controller().LyXVersion().c_str());
 	fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-	fl_mapcolor(FL_FREE_COL2, 0x05, 0x2e, 0x4c);
+//	fl_mapcolor(FL_FREE_COL2, 0x05, 0x2e, 0x4c);
+	fl_mapcolor(FL_FREE_COL2, 0x2b, 0x47, 0x82);
 	fl_mapcolor(FL_FREE_COL3, 0xe1, 0xd2, 0x9b);
 	fl_set_object_color(obj, FL_FREE_COL2, FL_FREE_COL2);
 	fl_set_object_lcol(obj, FL_FREE_COL3);
