@@ -14,7 +14,7 @@
             <x>0</x>
             <y>0</y>
             <width>422</width>
-            <height>393</height>
+            <height>124</height>
         </rect>
     </property>
     <property stdset="1">
@@ -52,7 +52,7 @@
             <class>QLayoutWidget</class>
             <property stdset="1">
                 <name>name</name>
-                <cstring>Layout4</cstring>
+                <cstring>Layout3</cstring>
             </property>
             <hbox>
                 <property stdset="1">
@@ -63,27 +63,6 @@
                     <name>spacing</name>
                     <number>6</number>
                 </property>
-                <spacer>
-                    <property>
-                        <name>name</name>
-                        <cstring>Spacer3</cstring>
-                    </property>
-                    <property stdset="1">
-                        <name>orientation</name>
-                        <enum>Horizontal</enum>
-                    </property>
-                    <property stdset="1">
-                        <name>sizeType</name>
-                        <enum>Expanding</enum>
-                    </property>
-                    <property>
-                        <name>sizeHint</name>
-                        <size>
-                            <width>20</width>
-                            <height>20</height>
-                        </size>
-                    </property>
-                </spacer>
                 <widget>
                     <class>QPushButton</class>
                     <property stdset="1">
@@ -128,6 +107,27 @@
                         <string>Save settings as LyX's default document settings</string>
                     </property>
                 </widget>
+                <spacer>
+                    <property>
+                        <name>name</name>
+                        <cstring>Spacer3</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>orientation</name>
+                        <enum>Horizontal</enum>
+                    </property>
+                    <property stdset="1">
+                        <name>sizeType</name>
+                        <enum>Expanding</enum>
+                    </property>
+                    <property>
+                        <name>sizeHint</name>
+                        <size>
+                            <width>20</width>
+                            <height>20</height>
+                        </size>
+                    </property>
+                </spacer>
             </hbox>
         </widget>
         <widget>
