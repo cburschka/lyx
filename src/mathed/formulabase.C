@@ -418,10 +418,10 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 		bv->updateInset(this, true);
 		break;
 
-		//    case LFUN_GETXY:
-		//      sprintf(dispatch_buffer, "%d %d",);
-		//      dispatch_result = dispatch_buffer;
-		//      break;
+	//    case LFUN_GETXY:
+	//      sprintf(dispatch_buffer, "%d %d",);
+	//      dispatch_result = dispatch_buffer;
+	//      break;
 	case LFUN_SETXY: {
 		lyxerr << "LFUN_SETXY broken!\n";
 		int x = 0;
@@ -611,12 +611,7 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 	}
 
 	lyx::Assert(mathcursor);
-	//mathcursor->normalize();
 
-	if (//was_macro != mathcursor->inMacroMode() &&
-				action >= 0 && action != LFUN_BACKSPACE) 
-  		updateLocal(bv, true);
-	
 	if (mathcursor->selection() || was_selection)
 		toggleInsetSelection(bv);
 

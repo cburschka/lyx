@@ -463,8 +463,8 @@ InsetFormula::localDispatch(BufferView * bv, kb_action action,
 
 		case LFUN_MATH_DISPLAY:
 		{
-			int x;
-			int y;
+			int x = 0;
+			int y = 0;
 			mathcursor->getPos(x, y);
 			if (mat()->getType() == LM_OT_SIMPLE)
 				mat()->mutate(LM_OT_EQUATION);
@@ -491,6 +491,7 @@ InsetFormula::localDispatch(BufferView * bv, kb_action action,
 			mat()->addCol(mat()->ncols());
 			mathcursor->normalize();
 			updateLocal(bv, true);
+			break;
 		}
 
 		default:
