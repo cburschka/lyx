@@ -15,15 +15,12 @@ lyx_gui (qt)
  
 Menubar_pimpl
 
-	- remove menubar-switching as discussed
-	- implement menu key shortcuts
-	- implement on/off switches in menus, enable/disable
-	- parse the submenus (*)
+	- fix disabling submenu labels when appropriate
 	- implement dynamic menus (may need serious backend changes) (*)(*)
 		- dynamic last files
 		- import/export/view/update
 		- navigate
-	- remove openByName
+	- implement openByName
 
 QAbout
 

@@ -53,6 +53,9 @@ QtView::QtView(unsigned int width, unsigned int height)
  
 	qApp->setMainWidget(this);
  
+	bufferview_.reset(new BufferView(this, 0, 0, width, height));
+	::current_view = bufferview_.get();
+
 	menubar_.reset(new Menubar(this, menubackend));
 
 	connect(menuBar(), SIGNAL(activated(int)),
@@ -63,9 +66,6 @@ QtView::QtView(unsigned int width, unsigned int height)
 
 	statusBar()->setSizeGripEnabled(false);
  
-	bufferview_.reset(new BufferView(this, 0, 0, width, height));
-	::current_view = bufferview_.get();
-
 	view_state_changed.connect(boost::bind(&QtView::update_view_state, this));
 	connect(&idle_timer_, SIGNAL(timeout()), this, SLOT(update_view_state_qt()));
  

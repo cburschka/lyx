@@ -14,7 +14,6 @@
 
 #include <vector>
 #include <map>
-#include <boost/smart_ptr.hpp>
 
 #include <config.h>
  
@@ -25,7 +24,6 @@
 #include "LString.h"
 #include "frontends/Menubar.h"
 #include "commandtags.h"
-//#include "MenuBackend.h"
 
 class LyXView;
 class QtView;
@@ -34,22 +32,56 @@ class Menu;
 class MenuItem;
 class MenuBackend;
 
-struct Menubar::Pimpl {
-public:
-	///
-	Pimpl(LyXView *, MenuBackend const &);
-	/// Opens a top-level submenu given its name
-	void openByName(string const &);
-
-        /// update the state of the menuitems
-        void update() {}
-
-private:
-	void makeMenu(QMenuData * parent, MenuItem const & menu);
+/// stored state for menu items
+struct MenuItemInfo {
+	// I REALLY hate this stupid requirement of std::map
+	MenuItemInfo::MenuItemInfo()
+		: parent_(0), id_(0), item_(0) {};
  
-	QtView * owner_;
-
-	MenuBackend const & menubackend_;
+	MenuItemInfo::MenuItemInfo(QMenuData * p, int id, MenuItem const * item)
+		: parent_(p), id_(id), item_(item) {};
+ 
+	/// menu containing item
+	QMenuData * parent_;
+ 
+	/// id in containing menu
+	int id_;
+ 
+	/// LyX info for item
+	MenuItem const * item_;
 };
  
-#endif
+
+struct Menubar::Pimpl {
+public:
+	Pimpl(LyXView *, MenuBackend const &);
+ 
+	/// opens a top-level submenu given its name
+	void openByName(string const &);
+
+	/// update the state of the menuitems
+	void update();
+
+private:
+	/// create a menu
+	void makeMenu(QMenuData * parent, MenuItem const & menu);
+ 
+	/// special handling updating a submenu label
+	void updateSubmenu(MenuItemInfo const & i);
+ 
+	/// update an individual item, returns true if enabled
+	void updateItem(MenuItemInfo const & i);
+
+	/// owning view
+	QtView * owner_;
+
+	/// menu controller
+	MenuBackend const & menubackend_;
+
+	typedef std::map<string, MenuItemInfo> ItemMap;
+
+	/// menu items
+	ItemMap items_;
+};
+ 
+#endif // MENUBAR_PIMPL_H
