@@ -39,6 +39,7 @@ extern BufferList bufferlist;
 
 using std::endl;
 using std::vector;
+using std::max;
 using std::pair;
 using std::find_if;
 using std::sort;
