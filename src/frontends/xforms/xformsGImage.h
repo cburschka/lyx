@@ -20,6 +20,10 @@
 
 #include "graphics/GraphicsImage.h"
 #include FORMS_H_LOCATION
+#if FL_VERSION > 0
+// FIXME: need FORMS_IMAGE_H_LOCATION I suppose
+#include <flimage.h> 
+#endif
 
 namespace grfx {
 

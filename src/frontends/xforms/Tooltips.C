@@ -33,7 +33,7 @@ bool Tooltips::enabled_ = true;
 SigC::Signal0<void> Tooltips::toggled;
 
 
-#if FL_REVISION >= 89
+#if FL_VERSION > 0 || FL_REVISION >= 89
 
 Tooltips::Tooltips()
 {

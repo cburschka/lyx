@@ -26,7 +26,7 @@
 #include "lyxserver.h"
 #include "lyxrc.h"
 #include "gettext.h"
-#if FL_REVISION < 89 || (FL_REVISION == 89 && FL_FIXLEVEL < 5)
+#if FL_VERSION < 1 && (FL_REVISION < 89 || (FL_REVISION == 89 && FL_FIXLEVEL < 5))
 #include "lyxlookup.h"
 #endif
 #include "bufferlist.h"
@@ -173,7 +173,7 @@ LyXGUI::~LyXGUI()
 	delete lyxserver;
 	lyxserver = 0;
 	delete lyxViews;
-#if FL_REVISION < 89 || (FL_REVISION == 89 && FL_FIXLEVEL < 5)
+#if FL_VERSION < 1 && (FL_REVISION < 89 || (FL_REVISION == 89 && FL_FIXLEVEL < 5))
 	CloseLyXLookup();
 #endif
 }
@@ -240,7 +240,7 @@ void LyXGUI::init()
 	fl_setpup_fontsize(FL_NORMAL_SIZE);
 	fl_setpup_color(FL_MCOL, FL_BLACK);
 	fl_set_goodies_font(FL_NORMAL_STYLE, FL_NORMAL_SIZE);
-#if FL_REVISION < 89
+#if FL_VERSION < 1 && FL_REVISION < 89
 	fl_set_oneliner_font(FL_NORMAL_STYLE, FL_NORMAL_SIZE);
 #else
 	fl_set_tooltip_font(FL_NORMAL_STYLE, FL_NORMAL_SIZE);

@@ -233,7 +233,7 @@ size_type const max_number_of_items = 25;
 inline
 string const fixlabel(string const & str)
 {
-#if FL_REVISION < 89
+#if FL_VERSION < 1 && FL_REVISION < 89
 	return subst(str, '%', '?');
 #else
 	return subst(str, "%", "%%");
