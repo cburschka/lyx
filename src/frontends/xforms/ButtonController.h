@@ -54,7 +54,7 @@ public:
 	/**@name Initialise Button Functions */
 	//@{
 	/// Call refresh() when finished setting the buttons.
-	void setOk(FL_OBJECT * obj)
+	void setOK(FL_OBJECT * obj)
 		{ okay_ = obj; }
 	///
 	void setApply(FL_OBJECT * obj)

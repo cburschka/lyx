@@ -62,7 +62,7 @@ void FormPreferences::build()
 	dialog_ = build_preferences();
 
 	// manage the restore, save, apply and cancel/close buttons
-	bc_->setOk(dialog_->button_ok);
+	bc_->setOK(dialog_->button_ok);
 	bc_->setApply(dialog_->button_apply);
 	bc_->setCancel(dialog_->button_cancel);
 	bc_->setUndoAll(dialog_->button_restore);

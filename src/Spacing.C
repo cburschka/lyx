@@ -111,7 +111,7 @@ string Spacing::writeEnvirBegin() const
 			char tmp[512];
 			ostrstream ost(tmp, 512);
 			ost << "\\begin{spacing}{"
-			    << getValue() << "}";
+			    << getValue() << "}" << '\0';
 			return ost.str();
 		}
 #endif

@@ -65,7 +65,8 @@ FormDocument::FormDocument(LyXView * lv, Dialogs * d)
 	: dialog_(0), paper_(0), class_(0), language_(0), options_(0),
 	  bullets_(0), lv_(lv), d_(d), u_(0), h_(0),
 	  status(POPUP_UNMODIFIED) ,
-	  bc_(new ButtonController<PreferencesPolicy>(_("Cancel"), _("Close")))
+	  bc_(new ButtonController<NoRepeatedApplyReadOnlyPolicy>(_("Cancel"),
+								  _("Close")))
 {
     // let the popup be shown
     // This is a permanent connection so we won't bother
@@ -89,7 +90,7 @@ void FormDocument::build()
     dialog_ = build_tabbed_document();
 
     // manage the restore, save, apply and cancel/close buttons
-    bc_->setOk(dialog_->button_ok);
+    bc_->setOK(dialog_->button_ok);
     bc_->setApply(dialog_->button_apply);
     bc_->setCancel(dialog_->button_cancel);
     bc_->setUndoAll(dialog_->button_restore);
