@@ -1,3 +1,8 @@
+2003-06-12  Angus Leeming  <leeming@lyx.org>
+
+	* FormExternal.C (input): do not activate Ok, Apply when clicking on
+	"Edit File".
+
 2003-06-11  Angus Leeming  <leeming@lyx.org>
 
 	* FormExternal.C: changes due to InsetExternal::Params no longer

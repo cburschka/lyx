@@ -1,3 +1,7 @@
+2003-06-12  Angus Leeming  <leeming@lyx.org>
+
+	* QExternalDialog.C (editClicked): do not call form_->changed().
+
 2003-06-11  Angus Leeming  <leeming@lyx.org>
 
 	* QExternal.C: changes due to InsetExternal::Params no longer

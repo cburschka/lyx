@@ -151,6 +151,7 @@ void FormExternal::update()
 
 ButtonPolicy::SMInput FormExternal::input(FL_OBJECT * ob, long)
 {
+	ButtonPolicy::SMInput result = ButtonPolicy::SMI_VALID;
 	if (ob == dialog_->choice_template) {
 
 		// set to the chosen template
@@ -164,9 +165,10 @@ ButtonPolicy::SMInput FormExternal::input(FL_OBJECT * ob, long)
 
 	} else if (ob == dialog_->button_edit) {
 		controller().editExternal();
+		result = ButtonPolicy::SMI_NOOP;
 	}
 
-	return ButtonPolicy::SMI_VALID;
+	return result;
 }
 
 

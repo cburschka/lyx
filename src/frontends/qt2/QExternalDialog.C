@@ -65,7 +65,6 @@ void QExternalDialog::closeEvent(QCloseEvent * e)
 
 void QExternalDialog::editClicked()
 {
-	form_->changed();
 	form_->controller().editExternal();
 }
 
