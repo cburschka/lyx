@@ -2759,6 +2759,7 @@ void FormPreferences::SpellOptions::apply()
 	
 	lyxrc.isp_command = choice;
 
+#if 0
 	// If spell checker == "none", all other input set to off.
 	if (fl_get_choice(dialog_->choice_spell_command) == 1) {
 		lyxrc.isp_use_alt_lang = false;
@@ -2773,6 +2774,7 @@ void FormPreferences::SpellOptions::apply()
 		lyxrc.isp_accept_compound = false;
 		lyxrc.isp_use_input_encoding = false;
 	} else {
+#else
 		int button = fl_get_button(dialog_->check_alt_lang);
 		choice = fl_get_input(dialog_->input_alt_lang);
 		if (button && choice.empty()) button = 0;
@@ -2802,7 +2804,10 @@ void FormPreferences::SpellOptions::apply()
 
 		button = fl_get_button(dialog_->check_input_enc);
 		lyxrc.isp_use_input_encoding = static_cast<bool>(button);
+#endif
+#if 0
 	}
+#endif
 
 	// Reset view
 	update();
@@ -2814,7 +2819,11 @@ void FormPreferences::SpellOptions::build()
 	dialog_.reset(parent_.build_spelloptions());
 
 	fl_addto_choice(dialog_->choice_spell_command,
+#if 0
 			_(" none | ispell | aspell "));
+#else
+			_(" ispell | aspell "));
+#endif
 	fl_set_input_return(dialog_->input_alt_lang,      FL_RETURN_CHANGED);
 	fl_set_input_return(dialog_->input_escape_chars,  FL_RETURN_CHANGED);
 	fl_set_input_return(dialog_->input_personal_dict, FL_RETURN_CHANGED);
@@ -2867,6 +2876,7 @@ bool FormPreferences::SpellOptions::input(FL_OBJECT const * const ob)
 	// objects,
 	// otherwise the function is called by an xforms CB via input().
 
+#if 0
 	// If spell checker == "none", disable all input.
 	if (!ob || ob == dialog_->choice_spell_command) {
 		if (fl_get_choice(dialog_->choice_spell_command) == 1) {
@@ -2887,6 +2897,7 @@ bool FormPreferences::SpellOptions::input(FL_OBJECT const * const ob)
 			fl_activate_object(dialog_->check_input_enc);
 		}
 	}
+#endif
 
 	if (!ob || ob == dialog_->check_alt_lang) {
 		bool const enable = fl_get_button(dialog_->check_alt_lang);
@@ -2917,12 +2928,19 @@ bool FormPreferences::SpellOptions::input(FL_OBJECT const * const ob)
 void FormPreferences::SpellOptions::update()
 {
 	int choice = 1;
+#if 0
 	if (lyxrc.isp_command == "none")
 		choice = 1;
 	else if (lyxrc.isp_command == "ispell")
 		choice = 2;
 	else if (lyxrc.isp_command == "aspell")
 		choice = 3;
+#else
+	if (lyxrc.isp_command == "ispell")
+		choice = 1;
+	else if (lyxrc.isp_command == "aspell")
+		choice = 2;
+#endif
 	fl_set_choice(dialog_->choice_spell_command, choice);
 	
 	string str;
