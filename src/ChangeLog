@@ -1,3 +1,8 @@
+2002-07-20  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* lyxfunc.C (dispatch): add 'done' message to minibuffer when
+	saving is finished
+
 2002-07-20  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* BufferView_pimpl.C (workAreaButtonRelease): Fix opening of
@@ -12,6 +17,18 @@
 	* lyxfunc.C: fix dispatch in a nicer way
  
 2002-07-20  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* lyxfunc.C (dispatch): 
+	* BufferView_pimpl.C: 
+	* BufferView_pimpl.h: 
+	* BufferView.C:
+	* BufferView.h: rename Dispatch() to dispatch()
+
+	* LaTeXFeatures.C (useLayout): honor LyXLayout::depends_on()
+
+	* lyxlayout.C (Read): honor DependsOn tag
+
+	* lyxlayout.[Ch] (depends_on): new method
 
 	* version.C.in: update lyx_docversion
 

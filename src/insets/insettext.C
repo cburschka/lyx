@@ -1528,7 +1528,7 @@ InsetText::localDispatch(BufferView * bv,
 	break;
 
 	default:
-		if (!bv->Dispatch(action, arg))
+		if (!bv->dispatch(action, arg))
 			result = UNDISPATCHED;
 		break;
 	}

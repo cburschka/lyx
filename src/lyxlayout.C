@@ -32,6 +32,7 @@ enum LayoutTags {
 	LT_MARGIN,
 	LT_BOTTOMSEP,
 	LT_COPYSTYLE,
+	LT_DEPENDSON,
 	LT_OBSOLETEDBY,
 	//LT_EMPTY,
 	LT_END,
@@ -114,45 +115,46 @@ bool LyXLayout::Read (LyXLex & lexrc, LyXTextClass const & tclass)
 {
 	// This table is sorted alphabetically [asierra 30March96]
 	keyword_item layoutTags[] = {
-		{ "align",			LT_ALIGN },
-		{ "alignpossible",		LT_ALIGNPOSSIBLE },
-		{ "bottomsep",			LT_BOTTOMSEP },
-		{ "copystyle",                  LT_COPYSTYLE },
-		{ "end",			LT_END },
+		{ "align",		LT_ALIGN },
+		{ "alignpossible",	LT_ALIGNPOSSIBLE },
+		{ "bottomsep",		LT_BOTTOMSEP },
+		{ "copystyle",          LT_COPYSTYLE },
+		{ "dependson", 		LT_DEPENDSON },
+		{ "end",		LT_END },
 		{ "endlabelstring",	LT_ENDLABELSTRING },
 		{ "endlabeltype",	LT_ENDLABELTYPE },
-		{ "fill_bottom",		LT_FILL_BOTTOM },
-		{ "fill_top",			LT_FILL_TOP },
-		{ "font",	LT_FONT },
-		{ "freespacing",		LT_FREE_SPACING },
-		{ "intitle",                    LT_INTITLE },
-		{ "itemsep",	LT_ITEMSEP },
-		{ "keepempty",                  LT_KEEPEMPTY },
-		{ "labelbottomsep",             LT_LABEL_BOTTOMSEP },
-		{ "labelfont",	LT_LABELFONT },
+		{ "fill_bottom",	LT_FILL_BOTTOM },
+		{ "fill_top",		LT_FILL_TOP },
+		{ "font",		LT_FONT },
+		{ "freespacing",	LT_FREE_SPACING },
+		{ "intitle",            LT_INTITLE },
+		{ "itemsep",		LT_ITEMSEP },
+		{ "keepempty",		LT_KEEPEMPTY },
+		{ "labelbottomsep",	LT_LABEL_BOTTOMSEP },
+		{ "labelfont",		LT_LABELFONT },
 		{ "labelindent",	LT_LABELINDENT },
-		{ "labelsep",	LT_LABELSEP },
+		{ "labelsep",		LT_LABELSEP },
 		{ "labelstring",	LT_LABELSTRING },
-		{ "labelstringappendix",        LT_LABELSTRING_APPENDIX },
-		{ "labeltype",	LT_LABELTYPE },
-		{ "latexname",	LT_LATEXNAME },
-		{ "latexparam",			LT_LATEXPARAM },
-		{ "latextype",	LT_LATEXTYPE },
-		{ "leftmargin",	LT_LEFTMARGIN },
-		{ "margin",	LT_MARGIN },
-		{ "needprotect",                LT_NEED_PROTECT },
-		{ "newline",			LT_NEWLINE },
-		{ "nextnoindent",		LT_NEXTNOINDENT },
-		{ "obsoletedby",                LT_OBSOLETEDBY },
-		{ "parindent",			LT_PARINDENT },
-		{ "parsep",			LT_PARSEP },
-		{ "parskip",			LT_PARSKIP },
-		{ "passthru",			LT_PASS_THRU },
-		{ "preamble",                   LT_PREAMBLE },
-		{ "rightmargin",		LT_RIGHTMARGIN },
-		{ "spacing",                    LT_SPACING },
-		{ "textfont",                   LT_TEXTFONT },
-		{ "topsep",			LT_TOPSEP }
+		{ "labelstringappendix", LT_LABELSTRING_APPENDIX },
+		{ "labeltype",		LT_LABELTYPE },
+		{ "latexname",		LT_LATEXNAME },
+		{ "latexparam",		LT_LATEXPARAM },
+		{ "latextype",		LT_LATEXTYPE },
+		{ "leftmargin",		LT_LEFTMARGIN },
+		{ "margin",		LT_MARGIN },
+		{ "needprotect",	LT_NEED_PROTECT },
+		{ "newline",		LT_NEWLINE },
+		{ "nextnoindent",	LT_NEXTNOINDENT },
+		{ "obsoletedby",	LT_OBSOLETEDBY },
+		{ "parindent",		LT_PARINDENT },
+		{ "parsep",		LT_PARSEP },
+		{ "parskip",		LT_PARSKIP },
+		{ "passthru",		LT_PASS_THRU },
+		{ "preamble",		LT_PREAMBLE },
+		{ "rightmargin",	LT_RIGHTMARGIN },
+		{ "spacing",		LT_SPACING },
+		{ "textfont",		LT_TEXTFONT },
+		{ "topsep",		LT_TOPSEP }
 	};
 
 	bool error = false;
@@ -222,6 +224,12 @@ bool LyXLayout::Read (LyXLex & lexrc, LyXTextClass const & tclass)
 					//		 " unknown style "
 					//		 "`$$Token'");
 				}
+			}
+			break;
+
+		case LT_DEPENDSON: 
+			if (lexrc.next()) {
+				depends_on_ = lexrc.getString();
 			}
 			break;
 
@@ -753,4 +761,10 @@ void LyXLayout::setName(string const & n)
 string const & LyXLayout::obsoleted_by() const
 {
 	return obsoleted_by_;
+}
+
+
+string const & LyXLayout::depends_on() const
+{
+	return depends_on_;
 }

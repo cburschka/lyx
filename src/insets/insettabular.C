@@ -1246,7 +1246,7 @@ InsetTabular::localDispatch(BufferView * bv, kb_action action,
 			case LFUN_DEFAULT:
 			case LFUN_UNDERLINE:
 			case LFUN_FONT_SIZE:
-				if (bv->Dispatch(action, arg))
+				if (bv->dispatch(action, arg))
 					result = DISPATCHED;
 				break;
 			default:

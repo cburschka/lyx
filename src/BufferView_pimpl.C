@@ -1468,7 +1468,7 @@ void BufferView::Pimpl::MenuInsertLyXFile(string const & filen)
 }
 
 
-bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
+bool BufferView::Pimpl::dispatch(kb_action action, string const & argument)
 {
 	lyxerr[Debug::ACTION] << "BufferView::Pimpl::Dispatch: action["
 			      << action <<"] arg[" << argument << "]" << endl;

@@ -44,11 +44,23 @@
 # - Fact 
 # - Fact*
 
+# A hack: this is used to provide a preamble which is needed by other 
+# style. Since this style has been obsoleted, it does not show up in 
+# layout lists
+Style TheoremStyle
+  ObsoletedBy		Standard
+  Preamble
+    \theoremstyle{plain}
+  EndPreamble
+End
+
+
 # Theorem-numbered style declaration
 Style Theorem
   Margin		First_Dynamic
   LatexType		Environment
   LatexName		thm
+  DependsOn		TheoremStyle
   NextNoIndent		1
   LabelSep		xx
   ParIndent             MMM  

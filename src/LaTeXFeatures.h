@@ -89,7 +89,7 @@ public:
 private:
 	string externalPreambles;
 
-	std::set<string> layout;
+	std::vector<string> usedLayouts;
 
 	/// Static preamble bits from the external material insets
 

@@ -1,3 +1,8 @@
+2002-07-20  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* insettext.C (localDispatch): BufferView::Dispatch has been
+	renamed to BufferView::dispatch
+
 2002-07-19  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* insetgraphicsParams.C (as_grfxParams): use the new

@@ -709,7 +709,7 @@ void LyXFunc::dispatch(int ac, bool verbose)
 
 void LyXFunc::dispatch(kb_action action, string argument, bool verbose)
 {
-	lyxerr[Debug::ACTION] << "LyXFunc::Dispatch: action[" << action
+	lyxerr[Debug::ACTION] << "LyXFunc::dispatch: action[" << action
 			      <<"] arg[" << argument << "]" << endl;
 
 	// we have not done anything wrong yet.
@@ -730,7 +730,7 @@ void LyXFunc::dispatch(kb_action action, string argument, bool verbose)
 
 	// We cannot use this function here
 	if (getStatus(action, argument).disabled()) {
-		lyxerr[Debug::ACTION] << "LyXFunc::Dispatch: "
+		lyxerr[Debug::ACTION] << "LyXFunc::dispatch: "
 		       << lyxaction.getActionName(action)
 		       << " [" << action << "] is disabled at this location"
 		       << endl;
@@ -965,6 +965,8 @@ void LyXFunc::dispatch(kb_action action, string argument, bool verbose)
 			   << MakeDisplayPath(owner->buffer()->fileName() + "...");
 			owner->message(s1.str().c_str());
 			MenuWrite(owner->view(), owner->buffer());
+			s1 << _(" done.");
+			owner->message(s1.str().c_str());
 		} else
 			WriteAs(owner->view(), owner->buffer());
 		break;
@@ -1534,7 +1536,7 @@ void LyXFunc::dispatch(kb_action action, string argument, bool verbose)
 	default:
 		// Then if it was none of the above
 		// Trying the BufferView::pimpl dispatch:
-		if (!owner->view()->Dispatch(action, argument))
+		if (!owner->view()->dispatch(action, argument))
 			lyxerr << "A truly unknown func ["
 			       << lyxaction.getActionName(action) << "]!"
 			       << endl;

@@ -201,7 +201,7 @@ public:
 	///
 	void stuffClipboard(string const &) const;
 	///
-	bool Dispatch(kb_action action, string const & argument);
+	bool dispatch(kb_action action, string const & argument);
 private:
 	///
 	struct Pimpl;

@@ -125,7 +125,7 @@ struct BufferView::Pimpl : public boost::signals::trackable {
 	///
 	void updateInset(Inset * inset, bool mark_dirty);
 	///
-	bool Dispatch(kb_action action, string const & argument);
+	bool dispatch(kb_action action, string const & argument);
 private:
 	/**
 	 * Return the on-screen dimensions of the inset at the cursor.

@@ -52,6 +52,8 @@ public:
 	///
 	string const & obsoleted_by() const;
 	///
+	string const & depends_on() const;
+	///
 	string const & latexname() const { return latexname_; }
 	///
 	string const & labelstring() const { return labelstring_; }
@@ -195,6 +197,12 @@ private:
 	    compatibility
 	*/
 	string obsoleted_by_;
+
+	/** Name of an layout which preamble must come before this one
+	    This is used when the preamble snippet uses macros defined in
+	    another preamble
+	 */
+	string depends_on_;
 
 	/// LaTeX name for environment
 	string latexname_;
