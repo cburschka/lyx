@@ -619,6 +619,9 @@ void Parser::parse1(MathGridInset & grid, unsigned flags,
 			cell->push_back(MathAtom(new MathMacroArgument(n.character()-'0')));
 		}
 
+		else if (t.cat() == catActive)
+			cell->push_back(MathAtom(new MathCharInset(t.character())));
+
 		else if (t.cat() == catBegin) {
 			MathArray ar;
 			parse(ar, FLAG_BRACE_LAST, mathmode);
