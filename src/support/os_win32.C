@@ -163,6 +163,15 @@ shell_type shell()
 #endif
 }
 
+char path_separator()
+{
+#if defined (_WIN32)
+	return ';';
+#else // Cygwin
+	return ':';
+#endif
+}
+
 } // namespace os
 } // namespace support
 } // namespace lyx

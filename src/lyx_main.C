@@ -343,31 +343,24 @@ void LyX::init(bool gui)
 	signal(SIGTERM, error_handler);
 	// SIGPIPE can be safely ignored.
 
+#if !defined (USE_POSIX_PACKAGING)
+	// Add the directory containing the LyX executable to the path
+	// so that LyX can find things like reLyX.
+	if (package.build_support().empty()) {
+		vector<string> path = getEnvPath("PATH");
+		path.insert(path.begin(), package.binary_dir());
+		setEnvPath("PATH", path);
+	}
+#endif
 #if defined (USE_MACOSX_PACKAGING)
-	// Set PATH for LyX/Mac
- 	//
- 	// LyX/Mac is a relocatable application bundle; here we add to
- 	// the PATH so it can find binaries like reLyX inside its own
- 	// application bundle, and also append PATH elements that it
-	// needs to run latex, previewers, etc.
-	string oldpath = GetEnv("PATH");
-	string newpath = "PATH=" + oldpath + ":" + package().binary_dir() + ":";
-	newpath += "/sw/bin:/usr/local/bin:"
-		"/usr/local/teTeX/bin/powerpc-apple-darwin-current";
-	PutEnv(newpath);
-	lyxerr[Debug::INIT] << "Running from LyX/Mac bundle. "
+	// This hard-coded nastiness should be moved into a LyXRC variable.
+	vector<string> path = getEnvPath("PATH");
+	path.insert(path.begin(), "/usr/local/teTeX/bin/powerpc-apple-darwin-current");
+	path.insert(path.begin(), "/usr/local/bin");
+	path.insert(path.begin(), "/sw/bin");
+	lyxerr[Debug::INIT]  << "Running from LyX/Mac bundle. "
 		"Setting PATH to: " << GetEnv("PATH") << endl;
 #endif
-
-	// Set the locale_dir.
-	string const & locale_dir = package().locale_dir();
-	FileInfo fi(locale_dir);
-	if (fi.isOK() && fi.isDir()) {
-		lyxerr[Debug::INIT]
-			<< "Setting locale directory to "
-			<< locale_dir << endl;
-		//gettext_init(locale_dir);
- 	}
 
 	// Check that user LyX directory is ok. We don't do that if
 	// running in batch mode.

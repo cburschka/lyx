@@ -21,32 +21,44 @@ namespace lyx {
 namespace support {
 namespace os {
 
-//
 enum shell_type {
 	UNIX,	// Do we have to distinguish sh and csh?
 	CMD_EXE
 };
 
-// do some work just once
+/// Do some work just once.
 void init(int argc, char * argv[]);
 
-// Returns the name of the NULL device (/dev/null, null).
+/// Returns the name of the NULL device (/dev/null, null).
 std::string const & nulldev();
-//
+
+/// Returns "/" on *nix, "C:/", etc on Windows.
 std::string current_root();
-//
+
+///
 shell_type shell();
-// DBCS aware!
+
+/// Extract the path common to both @c p1 and @c p2. DBCS aware!
 std::string::size_type common_path(std::string const & p1, std::string const & p2);
-// Converts a unix style path to host OS style.
+
+/// Converts a unix style path to host OS style.
 std::string external_path(std::string const & p);
-// Converts a host OS style path to unix style.
+
+/// Converts a host OS style path to unix style.
 std::string internal_path(std::string const & p);
-// is path absolute?
+
+/// Is the path absolute?
 bool is_absolute_path(std::string const & p);
-// returns a string suitable to be passed to popen when
-// same for popen().
-	char const * popen_read_mode();
+
+/** Returns a string suitable to be passed to popen when
+ *  reading a file.
+ */
+char const * popen_read_mode();
+
+/** The character used to separate paths returned by the
+ *  PATH environment variable.
+ */
+char path_separator();
 
 } // namespace os
 } // namespace support

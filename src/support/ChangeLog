@@ -1,14 +1,21 @@
 2005-01-12  Angus Leeming  <leeming@lyx.org>
 
+	* filetools.[Ch] (setEnvPath): new function to create a PATH-style
+	string from a vector of paths and to use it to set an environment
+	variable.
+	(putEnv): resurrect this from the grave.
+
+	* os.h, os_os2.C, os_unix.C, os_win32.C (path_separator): new
+	function returning the character used to separate paths returned
+	by the PATH environment variable.
+
+	* os_win32.C: add #include "lstring.h" back in.
+
 	* package.C.in (package): comment out the ASSERT for now.
 	(check_env_var_dir): write one of the strings to be translated
 	(any one, doesn't matter) on a single line so that the
 	gettext search mechanism in po/Makefile.in.in will register
 	package.C.in as a file containing strings that need translation.
-
-2005-01-12  Angus Leeming  <leeming@lyx.org>
-
-	* os_win32.C: add #include "lstring.h" back in.
 
 2005-01-10  Angus Leeming  <leeming@lyx.org>
 

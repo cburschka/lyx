@@ -123,6 +123,15 @@ std::string const GetEnv(std::string const & envname);
  */
 std::vector<std::string> const getEnvPath(std::string const & name);
 
+/** Set the contents of the environment variable \c name
+ *  using the paths stored in the \c env vector.
+ *  Each element is passed through os::external_path.
+ */
+void setEnvPath(std::string const & name, std::vector<std::string> const & env);
+
+/// Set an environment variable using a string of the form "name=FOO".
+bool putEnv(std::string const & envstr);
+
 /// Substitutes active latex characters with underscores in filename
 std::string const MakeLatexName(std::string const & file);
 

@@ -87,6 +87,11 @@ shell_type shell()
 	return UNIX;
 }
 
+char path_separator()
+{
+	return ':';
+}
+
 } // namespace os
 } // namespace support
 } // namespace lyx

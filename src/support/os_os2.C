@@ -202,6 +202,12 @@ shell_type shell()
 	return shell_;
 }
 
+
+char path_separator()
+{
+	return ';';
+}
+
 } // namespace os
 } // namespace support
 } // namespace lyx

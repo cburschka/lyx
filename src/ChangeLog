@@ -1,3 +1,13 @@
+2005-01-12  Angus Leeming  <leeming@lyx.org>
+
+	* lyx_main.C (init): set the PATH variable to include the
+	directory containing the LyX binary when running on Mac or Windows.
+
+2005-01-12  Angus Leeming  <leeming@lyx.org>
+
+	* lyx_main.C (init): remove cruft that purports to set the locale
+	dir. It doesn't and is not needed anyway.
+
 2005-01-10  Angus Leeming  <leeming@lyx.org>
 
 	* Makefile.am: remove the lyx_main.C special casing.

@@ -399,13 +399,8 @@ vector<string> const getEnvPath(string const & name)
 	typedef boost::char_separator<char> Separator;
 	typedef boost::tokenizer<Separator> Tokenizer;
 
-#if defined (__EMX__) || defined (_WIN32)
-	Separator const separator(";");
-#else
-	Separator const separator(":");
-#endif
-
 	string const env_var = GetEnv(name);
+	Separator const separator(string(1, os::path_separator()).c_str());
 	Tokenizer const tokens(env_var, separator);
 	Tokenizer::const_iterator it = tokens.begin();
 	Tokenizer::const_iterator const end = tokens.end();
@@ -418,14 +413,57 @@ vector<string> const getEnvPath(string const & name)
 }
 
 
-string const GetEnvPath(string const & name)
+void setEnvPath(string const & name, vector<string> const & env)
 {
-#ifndef __EMX__
-	string const pathlist = subst(GetEnv(name), ':', ';');
+	char const separator(os::path_separator());
+	std::ostringstream ss;
+	vector<string>::const_iterator it = env.begin();
+	vector<string>::const_iterator const end = env.end();
+	for (; it != end; ++it) {
+		if (ss.tellp() > 0)
+			ss << separator;
+		ss << os::external_path(*it);
+	}
+	putEnv(name + "=" + ss.str());
+}
+
+
+bool putEnv(string const & envstr)
+{
+	// CHECK Look at and fix this.
+	// f.ex. what about error checking?
+
+#if defined (HAVE_SETENV)
+	string name;
+	string const value = split(envstr, name, '=');
+	int const retval = ::setenv(name.c_str(), value.c_str(), true);
+#elif defined (HAVE_PUTENV)
+	// this leaks, but what can we do about it?
+	//   Is doing a getenv() and a free() of the older value
+	//   a good idea? (JMarc)
+	// Actually we don't have to leak...calling putenv like this
+	// should be enough: ... and this is obviously not enough if putenv
+	// does not make a copy of the string. It is also not very wise to
+	// put a string on the free store. If we have to leak we should do it
+	// like this:
+	char * leaker = new char[envstr.length() + 1];
+	envstr.copy(leaker, envstr.length());
+	leaker[envstr.length()] = '\0';
+	int const retval = ::putenv(leaker);
+
+	// If putenv does not make a copy of the char const * this
+	// is very dangerous. OTOH if it does take a copy this is the
+	// best solution.
+	// The  only implementation of putenv that I have seen does not
+	// allocate memory. _And_ after testing the putenv in glibc it
+	// seems that we need to make a copy of the string contents.
+	// I will enable the above.
+	//int retval = lyx::putenv(envstr.c_str());
 #else
-	string const pathlist = os::internal_path(GetEnv(name));
+	// No environment setting function. Can this happen?
+	int const retval = 1; //return an error condition.
 #endif
-	return rtrim(pathlist, ";");
+	return retval == 0;
 }
 
 
